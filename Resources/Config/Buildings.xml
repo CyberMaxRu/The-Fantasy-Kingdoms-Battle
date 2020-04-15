@@ -7,6 +7,9 @@
     <Cost>
       <Gold>1000</Gold>
     </Cost>
+    <IncomeResources>
+      <Gold>1000</Gold>
+    </IncomeResources>
   </Building>
   <Building>
     <ID>Lumberjack</ID>
@@ -15,6 +18,9 @@
     <Cost>
       <Gold>500</Gold>
     </Cost>
+    <IncomeResources>
+      <Wood>10</Wood>
+    </IncomeResources>
   </Building>
   <Building>
     <ID>CoreMine</ID>
@@ -24,6 +30,9 @@
       <Gold>500</Gold>
       <Wood>100</Wood>
     </Cost>
+    <IncomeResources>
+      <Core>10</Core>
+    </IncomeResources>
   </Building>
   <Building>
     <ID>MercuryHouse</ID>
@@ -32,6 +41,9 @@
     <Cost>
       <Gold>500</Gold>
     </Cost>
+    <IncomeResources>
+      <Mercury>1</Mercury>
+    </IncomeResources>
   </Building>
   <Building>
     <ID>CrystallMine</ID>
@@ -40,6 +52,9 @@
     <Cost>
       <Gold>500</Gold>
     </Cost>
+    <IncomeResources>
+      <Crystall>1</Crystall>
+    </IncomeResources>
   </Building>
   <Building>
     <ID>SulfurCareer</ID>
@@ -48,6 +63,9 @@
     <Cost>
       <Gold>500</Gold>
     </Cost>
+    <IncomeResources>
+      <Sulfur>1</Sulfur>
+    </IncomeResources>
   </Building>
   <Building>
     <ID>GemsSource</ID>
@@ -56,5 +74,8 @@
     <Cost>
       <Gold>7000</Gold>
     </Cost>
+    <IncomeResources>
+      <Gems>1</Gems>
+    </IncomeResources>
   </Building>
 </Buildings>  

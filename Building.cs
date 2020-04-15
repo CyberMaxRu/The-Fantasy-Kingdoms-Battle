@@ -60,6 +60,19 @@ namespace Fantasy_King_s_Battle
 
                 Cost[r] = value;
             }
+
+            // Доход ресурсов
+            IncomeResources = new int[FormMain.Config.Resources.Count()];
+            l = n.SelectSingleNode("IncomeResources");
+            for (int k = 0; k < l.ChildNodes.Count; k++)
+            {
+                r = FormMain.Config.FindResource(l.ChildNodes[k].LocalName);
+                value = Convert.ToInt32(l.ChildNodes[k].InnerText);
+                if (value <= 0)
+                    throw new Exception("У здания " + ID + " доход ресурсов " + r.ToString() + " меньше или равен нолю (" + value.ToString() + ").");
+
+                IncomeResources[r.Position] = value;
+            }
         }
 
         internal string ID { get; }
@@ -67,5 +80,6 @@ namespace Fantasy_King_s_Battle
         internal int Position { get; }
         internal TypeBuilding TypeBuilding { get; }
         internal Dictionary<Resource, int> Cost = new Dictionary<Resource, int>();
+        internal int[] IncomeResources;
     }
 }
