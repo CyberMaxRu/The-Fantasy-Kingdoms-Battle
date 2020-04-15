@@ -33,7 +33,10 @@ namespace Fantasy_King_s_Battle
 
             foreach (Building b in FormMain.Config.ExternalBuildings)
             {
-                ExternalBuildings[b.Position] = new List<BuildingOfPlayer>();
+                ExternalBuildings[b.Position] = new List<BuildingOfPlayer>
+                {
+                    new BuildingOfPlayer(b)
+                };
             }
         }
 
@@ -48,6 +51,15 @@ namespace Fantasy_King_s_Battle
         internal void CalcResultTurn()
         {
             Debug.Assert(IsLive == true);
+
+            for (int i = 0; i < ExternalBuildings.Count(); i++)
+            {
+                foreach (BuildingOfPlayer bp in ExternalBuildings[i])
+                {
+                    for (int r = 0; r < FormMain.Config.Resources.Count(); r++)
+                        Resources[r] += bp.Building.IncomeResources[r];
+                }
+            }
             //Resources[0] += 1000;
         }
 

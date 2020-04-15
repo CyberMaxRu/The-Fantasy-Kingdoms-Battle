@@ -9,8 +9,9 @@ namespace Fantasy_King_s_Battle
     // Класс здания, находящегося во владениях игрока
     internal sealed class BuildingOfPlayer
     {
-        public BuildingOfPlayer()
+        public BuildingOfPlayer(Building b)
         {
+            Building = b;
         }
 
         internal Building Building { get; }
