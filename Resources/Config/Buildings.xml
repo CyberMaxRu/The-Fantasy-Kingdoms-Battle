@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<Buildings>
+  <Building>
+    <ID>GoldMine</ID>
+    <Name>Золотая шахта</Name>
+    <TypeBuilding>External</TypeBuilding>
+    <Cost>
+      <Gold>1000</Gold>
+    </Cost>
+  </Building>
+  <Building>
+    <ID>Lumberjack</ID>
+    <Name>Лесорубка</Name>
+    <TypeBuilding>External</TypeBuilding>
+    <Cost>
+      <Gold>500</Gold>
+    </Cost>
+  </Building>
+  <Building>
+    <ID>CoreMine</ID>
+    <Name>Рудная шахта</Name>
+    <TypeBuilding>External</TypeBuilding>
+    <Cost>
+      <Gold>500</Gold>
+      <Wood>100</Wood>
+    </Cost>
+  </Building>
+  <Building>
+    <ID>MercuryHouse</ID>
+    <Name>Дом алхимика</Name>
+    <TypeBuilding>External</TypeBuilding>
+    <Cost>
+      <Gold>500</Gold>
+    </Cost>
+  </Building>
+  <Building>
+    <ID>CrystallMine</ID>
+    <Name>Залежи кристаллов</Name>
+    <TypeBuilding>External</TypeBuilding>
+    <Cost>
+      <Gold>500</Gold>
+    </Cost>
+  </Building>
+  <Building>
+    <ID>SulfurCareer</ID>
+    <Name>Серный карьер</Name>
+    <TypeBuilding>External</TypeBuilding>
+    <Cost>
+      <Gold>500</Gold>
+    </Cost>
+  </Building>
+  <Building>
+    <ID>GemsSource</ID>
+    <Name>Месторождение драгоценных камней</Name>
+    <TypeBuilding>External</TypeBuilding>
+    <Cost>
+      <Gold>7000</Gold>
+    </Cost>
+  </Building>
+</Buildings>  

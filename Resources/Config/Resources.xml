@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Resources>
+  <Resource>
+    <ID>Gold</ID>
+    <Name>Золото</Name>
+    <ImageIndex>0</ImageIndex> 
+  </Resource>
+  <Resource>
+    <ID>Wood</ID>
+    <Name>Лес</Name>
+    <ImageIndex>1</ImageIndex>
+  </Resource>
+  <Resource>
+    <ID>Core</ID>
+    <Name>Руда</Name>
+    <ImageIndex>2</ImageIndex>
+  </Resource>
+  <Resource>
+    <ID>Mercury</ID>
+    <Name>Ртуть</Name>
+    <ImageIndex>3</ImageIndex>
+  </Resource>
+  <Resource>
+    <ID>Crystall</ID>
+    <Name>Кристаллы</Name>
+    <ImageIndex>4</ImageIndex>
+  </Resource>
+  <Resource>
+    <ID>Sulfur</ID>
+    <Name>Сера</Name>
+    <ImageIndex>5</ImageIndex>
+  </Resource>
+  <Resource>
+    <ID>Gems</ID>
+    <Name>Драгоценные камни</Name>
+    <ImageIndex>6</ImageIndex>
+  </Resource>
+</Resources>
