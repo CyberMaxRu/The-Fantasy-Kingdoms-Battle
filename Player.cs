@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Fantasy_King_s_Battle
 {
@@ -40,6 +41,11 @@ namespace Fantasy_King_s_Battle
             {
                 ExternalBuildings[b.Position] = new List<BuildingOfPlayer>();
             }
+        }
+
+        internal void DoTurn()
+        {
+            Debug.Assert(TypePlayer == TypePlayer.Computer);
         }
 
         internal string Name { get; }

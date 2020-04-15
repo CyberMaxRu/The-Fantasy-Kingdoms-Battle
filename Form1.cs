@@ -99,6 +99,8 @@ namespace Fantasy_King_s_Battle
         internal ImageList ILFractions { get { return ilFractions; } }
         internal void ShowDataPlayer()
         {
+            tstbTurn.Text = "Ход: " + lobby.Turn.ToString();
+
             foreach (Resource r in Config.Resources)
             {
                 r.StatusLabel.Text = lobby.CurrentPlayer.Resources[r.Position].ToString();
@@ -107,7 +109,9 @@ namespace Fantasy_King_s_Battle
 
         private void ButtonEndTurn_Click(object sender, EventArgs e)
         {
+            lobby.DoEndTurn();
 
+            ShowDataPlayer();
         }
     }
 }
