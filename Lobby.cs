@@ -65,7 +65,10 @@ namespace Fantasy_King_s_Battle
 
         private void CalcEndTurn()
         {
-
+            foreach (Player p in Players)
+            {
+                p.CalcResultTurn();
+            }
         }
 
         internal Player[] Players { get; }

@@ -48,6 +48,11 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(TypePlayer == TypePlayer.Computer);
         }
 
+        internal void CalcResultTurn()
+        {
+            //Resources[0] += 1000;
+        }
+
         internal string Name { get; }
         internal Fraction Fraction { get; }
         internal TypePlayer TypePlayer { get; }
