@@ -36,6 +36,7 @@
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.ButtonEndTurn = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -120,11 +121,23 @@
             this.tabPage6.Text = "Сражение";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
+            // ButtonEndTurn
+            // 
+            this.ButtonEndTurn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ButtonEndTurn.Location = new System.Drawing.Point(832, 24);
+            this.ButtonEndTurn.Name = "ButtonEndTurn";
+            this.ButtonEndTurn.Size = new System.Drawing.Size(136, 48);
+            this.ButtonEndTurn.TabIndex = 2;
+            this.ButtonEndTurn.Text = "Конец\r\nхода";
+            this.ButtonEndTurn.UseVisualStyleBackColor = true;
+            this.ButtonEndTurn.Click += new System.EventHandler(this.ButtonEndTurn_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(979, 743);
+            this.Controls.Add(this.ButtonEndTurn);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.StatusStrip);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -148,6 +161,7 @@
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.Button ButtonEndTurn;
     }
 }
 

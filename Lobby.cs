@@ -13,9 +13,11 @@ namespace Fantasy_King_s_Battle
         {
             Random r = new Random();
             Players = new Player[quantityPlayers];
+            TypePlayer tp;
             for (int i = 0; i < quantityPlayers; i++)
             {
-                Players[i] = new Player("Игрок №" + (i + 1).ToString(), FormMain.Config.Fractions[r.Next(0, FormMain.Config.Fractions.Count)]);
+                tp = i == 0 ? TypePlayer.Human : TypePlayer.Computer;
+                Players[i] = new Player("Игрок №" + (i + 1).ToString(), FormMain.Config.Fractions[r.Next(0, FormMain.Config.Fractions.Count)], tp);
             }
 
             ApplyPlayer(0);

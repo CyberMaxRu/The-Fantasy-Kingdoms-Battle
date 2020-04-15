@@ -68,9 +68,11 @@ namespace Fantasy_King_s_Battle
             int top = Config.GRID_SIZE;
             foreach (Player p in lobby.Players)
             {
-                pap = new PanelAboutPlayer(p, ilFractions);
-                pap.Parent = tabPage1;
-                pap.Top = top;
+                pap = new PanelAboutPlayer(p, ilFractions)
+                {
+                    Parent = tabPage1,
+                    Top = top
+                };
 
                 top += pap.Height + Config.GRID_SIZE;
             }
@@ -101,6 +103,11 @@ namespace Fantasy_King_s_Battle
             {
                 r.StatusLabel.Text = lobby.CurrentPlayer.Resources[r.Position].ToString();
             }
+        }
+
+        private void ButtonEndTurn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

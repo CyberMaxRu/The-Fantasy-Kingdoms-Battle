@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace Fantasy_King_s_Battle
 {
+    internal enum TypePlayer { Human, Computer };
     // Класс игрока
     internal sealed class Player
     {
-        public Player(string name, Fraction fraction)
+        public Player(string name, Fraction fraction, TypePlayer typePlayer)
         {
             Name = name;
             Fraction = fraction;
+            TypePlayer = typePlayer;
             StepsToCastle = 5;
             Wins = 0;
             Loses = 0;
@@ -42,6 +44,7 @@ namespace Fantasy_King_s_Battle
 
         internal string Name { get; }
         internal Fraction Fraction { get; }
+        internal TypePlayer TypePlayer { get; }
         internal int[] Resources { get; }
         internal int Wins { get; }
         internal int Loses { get; }
