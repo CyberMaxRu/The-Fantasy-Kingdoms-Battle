@@ -50,6 +50,7 @@ namespace Fantasy_King_s_Battle
             XmlNode l;
             Resource r;
             int value;
+            Cost = new int[FormMain.Config.Resources.Count()];
             l = n.SelectSingleNode("Cost");
             for (int k = 0; k < l.ChildNodes.Count; k++)
             {
@@ -58,7 +59,7 @@ namespace Fantasy_King_s_Battle
                 if (value <= 0)
                     throw new Exception("У здания " + ID + " стоимость " + r.ToString() + " меньше или равна нолю (" + value.ToString() + ").");
 
-                Cost[r] = value;
+                Cost[r.Position] = value;
             }
 
             // Доход ресурсов
@@ -79,7 +80,7 @@ namespace Fantasy_King_s_Battle
         internal string Name { get; }
         internal int Position { get; }
         internal TypeBuilding TypeBuilding { get; }
-        internal Dictionary<Resource, int> Cost = new Dictionary<Resource, int>();
+        internal int[] Cost;
         internal int[] IncomeResources;
     }
 }
