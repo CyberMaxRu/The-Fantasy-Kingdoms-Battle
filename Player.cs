@@ -19,6 +19,7 @@ namespace Fantasy_King_s_Battle
             StepsToCastle = 5;
             Wins = 0;
             Loses = 0;
+            IsLive = true;
 
             // Инициализируем ресурсы               
             Resources = new int[FormMain.Config.Resources.Count];
@@ -46,10 +47,14 @@ namespace Fantasy_King_s_Battle
         internal void DoTurn()
         {
             Debug.Assert(TypePlayer == TypePlayer.Computer);
+            Debug.Assert(IsLive == true);
+            
+            // Здесь расчет хода для ИИ
         }
 
         internal void CalcResultTurn()
         {
+            Debug.Assert(IsLive == true);
             //Resources[0] += 1000;
         }
 
@@ -60,6 +65,7 @@ namespace Fantasy_King_s_Battle
         internal int Wins { get; }
         internal int Loses { get; }
         internal int StepsToCastle { get; }
+        internal bool IsLive { get; }
         internal List<BuildingOfPlayer>[] ExternalBuildings {get;}
 
         internal PanelAboutPlayer PanelAbout { get; set; }
