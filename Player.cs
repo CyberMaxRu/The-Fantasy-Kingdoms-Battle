@@ -23,16 +23,9 @@ namespace Fantasy_King_s_Battle
 
             // Инициализируем ресурсы               
             Resources = new int[FormMain.Config.Resources.Count];
-            foreach (Resource r in FormMain.Config.Resources)
+            for (int i = 0; i < fraction.StartResources.Count(); i++)
             {
-                if (r.ID == "Gold")
-                {
-                    Resources[r.Position] = 10000;
-                }
-                else
-                {
-                    Resources[r.Position] = 10;
-                }
+                Resources[i] = fraction.StartResources[i];
             }
 
             // Инициализация зданий

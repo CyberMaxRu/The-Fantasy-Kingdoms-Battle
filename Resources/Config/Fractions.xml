@@ -4,40 +4,88 @@
     <ID>Castle</ID>
     <Name>Замок</Name>
     <ImageIndex>0</ImageIndex>
+    <StartResources>
+      <Gold>1000</Gold>
+      <Wood>100</Wood>
+      <Core>100</Core>
+      <Gems>10</Gems>
+    </StartResources>
   </Fraction>
   <Fraction>
     <ID>Rampart</ID>
     <Name>Оплот</Name>
     <ImageIndex>1</ImageIndex>
+    <StartResources>
+      <Gold>1000</Gold>
+      <Wood>100</Wood>
+      <Core>100</Core>
+      <Gems>10</Gems>
+    </StartResources>
   </Fraction>
   <Fraction>
     <ID>Tower</ID>
     <Name>Башня</Name>
     <ImageIndex>2</ImageIndex>
+    <StartResources>
+      <Gold>1000</Gold>
+      <Wood>100</Wood>
+      <Core>100</Core>
+      <Gems>10</Gems>
+    </StartResources>
   </Fraction>
   <Fraction>
     <ID>Inferno</ID>
     <Name>Инферно</Name>
     <ImageIndex>3</ImageIndex>
+    <StartResources>
+      <Gold>1000</Gold>
+      <Wood>100</Wood>
+      <Core>100</Core>
+      <Gems>10</Gems>
+    </StartResources>
   </Fraction>
   <Fraction>
     <ID>Necropolis</ID>
     <Name>Некрополис</Name>
     <ImageIndex>4</ImageIndex>
+    <StartResources>
+      <Gold>1000</Gold>
+      <Wood>100</Wood>
+      <Core>100</Core>
+      <Gems>10</Gems>
+    </StartResources>
   </Fraction>
   <Fraction>
     <ID>Dungeon</ID>
     <Name>Подземелье</Name>
     <ImageIndex>5</ImageIndex>
+    <StartResources>
+      <Gold>1000</Gold>
+      <Wood>100</Wood>
+      <Core>100</Core>
+      <Gems>10</Gems>
+    </StartResources>
   </Fraction>
   <Fraction>
     <ID>Stronghold</ID>
     <Name>Цитадель</Name>
     <ImageIndex>6</ImageIndex>
+    <StartResources>
+      <Gold>1000</Gold>
+      <Wood>100</Wood>
+      <Core>100</Core>
+      <Gems>10</Gems>
+    </StartResources>
   </Fraction>
   <Fraction>
     <ID>Fortress</ID>
     <Name>Крепость</Name>
     <ImageIndex>7</ImageIndex>
+    <StartResources>
+      <Gold>1000</Gold>
+      <Wood>100</Wood>
+      <Core>100</Core>
+      <Gems>10</Gems>
+    </StartResources>
   </Fraction>
 </Fractions>

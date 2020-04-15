@@ -36,11 +36,28 @@ namespace Fantasy_King_s_Battle
                 }
             }
 
+            // Загружаем начальные ресурсы
+            StartResources = new int[FormMain.Config.Resources.Count];
+            XmlNode l;
+            Resource r;
+            int value;
+            l = n.SelectSingleNode("StartResources");
+            for (int k = 0; k < l.ChildNodes.Count; k++)
+            {
+                r = FormMain.Config.FindResource(l.ChildNodes[k].LocalName);
+                value = Convert.ToInt32(l.ChildNodes[k].InnerText);
+                if (value <= 0)
+                    throw new Exception("У фракции " + ID + " количество ресурса " + r.ToString() + " меньше или равно нолю (" + value.ToString() + ").");
+
+                StartResources[r.Position] = value;
+            }
         }
 
         internal string ID { get; }
         internal string Name { get; }
         internal int ImageIndex { get; }
         internal int Position { get; }
+        internal int[] StartResources;
+
     }
 }

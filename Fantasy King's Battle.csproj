@@ -90,7 +90,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Player.xml" />
     <Content Include="Resources\Config\Buildings.xml" />
     <Content Include="Resources\Config\Fractions.xml" />
     <Content Include="Resources\Config\Resources.xml" />
