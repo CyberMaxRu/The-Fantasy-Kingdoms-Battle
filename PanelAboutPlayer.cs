@@ -42,6 +42,8 @@ namespace Fantasy_King_s_Battle
 
             if (player == player.Lobby.CurrentPlayer)
                 BackColor = Color.LightBlue;
+            if (player == player.Lobby.CurrentPlayer.Opponent)
+                BackColor = Color.LightCoral;
         }
 
         internal void ShowData()
