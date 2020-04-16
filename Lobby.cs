@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Windows.Forms;    
 
 namespace Fantasy_King_s_Battle
 {
@@ -52,9 +53,9 @@ namespace Fantasy_King_s_Battle
                 p.Opponent = oppo;
                 oppo.Opponent = p;
                 if (!opponents.Remove(p))
-                    new Exception("Не смог удалить элемент " + p.Name + " из списка оппонентов");
+                    throw new Exception("Не смог удалить элемент " + p.Name + " из списка оппонентов");
                 if (!opponents.Remove(p.Opponent))
-                    new Exception("Не смог удалить элемент " + p.Opponent.Name + " из списка оппонентов");
+                    throw new Exception("Не смог удалить элемент " + p.Opponent.Name + " из списка оппонентов");
 
                 if (opponents.Count == 0)
                     break;
@@ -94,7 +95,52 @@ namespace Fantasy_King_s_Battle
 
         private void CalcBattles()
         {
+            CalcBattle(Players[0], Players[0].Opponent);
+        }
 
+        private void CalcBattle(Player player1, Player player2)
+        {
+            Debug.Assert((player1.IsLive == true) && (player2.IsLive == true));
+            
+            // Инициализируем случайность
+            Random r = new Random();
+
+            // Создаем отряды для сражения
+            List<SquadInBattle> Squad1 = new List<SquadInBattle>();
+            List<SquadInBattle> Squad2 = new List<SquadInBattle>();
+
+            MakeSquadsInBattle(player1, Squad1);
+            MakeSquadsInBattle(player2, Squad2);
+
+            // Делаем шаги расчета сражения
+            int step = 1;
+            for (; step < 500; step++)
+            {
+                // Вычисляем повреждение
+                Squad1[0].DoDamage(Squad2[0], r);
+                Squad2[0].DoDamage(Squad1[0], r);
+
+                // Убираем убитых юнитов
+                Squad1[0].RemoveDied();
+                Squad2[0].RemoveDied();
+
+                // Если отряд уничтожен, прекращаем сражение
+                if ((Squad1[0].UnitsAlive == 0) || (Squad2[0].UnitsAlive == 0))
+                    break;
+            }
+            
+            // Записываем результаты сражения
+            MessageBox.Show("Рассчитано шагов: " + step.ToString()
+                + Environment.NewLine + "Alive: " + Squad1[0].UnitsAlive.ToString() + " - " + Squad2[0].UnitsAlive.ToString()
+                + Environment.NewLine + "Killed: " + Squad1[0].Killed.ToString() + " - " + Squad2[0].Killed.ToString());
+
+            void MakeSquadsInBattle(Player p, List<SquadInBattle> list)
+            {
+                foreach (Squad s in p.Squads)
+                {
+                    list.Add(new SquadInBattle(s));
+                }
+            }
         }
 
         private void CalcEndTurn()

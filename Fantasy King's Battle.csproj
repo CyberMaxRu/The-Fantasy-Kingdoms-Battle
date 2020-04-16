@@ -74,6 +74,7 @@
     <Compile Include="Resource.cs" />
     <Compile Include="Squad.cs" />
     <Compile Include="Skill.cs" />
+    <Compile Include="SquadInBattle.cs" />
     <Compile Include="TypeUnit.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

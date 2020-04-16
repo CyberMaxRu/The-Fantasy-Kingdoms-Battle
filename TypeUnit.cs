@@ -37,7 +37,7 @@ namespace Fantasy_King_s_Battle
                     case "DamageMin":
                         DamageMin = value;
                         break;
-                    case "DamagekMax":
+                    case "DamageMax":
                         DamageMax = value;
                         break;
                     case "Health":
@@ -47,8 +47,7 @@ namespace Fantasy_King_s_Battle
                         Morale = value;
                         break;
                     default:
-                        new Exception("Неизвестный параметр: " + parName);
-                        break;
+                        throw new Exception("Неизвестный параметр: " + parName);
                 }
             }
 

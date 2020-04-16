@@ -37,7 +37,7 @@
             this.labelChieftainExp = new System.Windows.Forms.Label();
             this.LabelChieftainLevel = new System.Windows.Forms.Label();
             this.tabPageArmy = new System.Windows.Forms.TabPage();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.tabPageBattle = new System.Windows.Forms.TabPage();
             this.ButtonEndTurn = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tstbTurn = new System.Windows.Forms.ToolStripTextBox();
@@ -64,7 +64,7 @@
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPageChieftain);
             this.tabControl1.Controls.Add(this.tabPageArmy);
-            this.tabControl1.Controls.Add(this.tabPage6);
+            this.tabControl1.Controls.Add(this.tabPageBattle);
             this.tabControl1.Location = new System.Drawing.Point(8, 40);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -138,14 +138,14 @@
             this.tabPageArmy.Text = "Войско";
             this.tabPageArmy.UseVisualStyleBackColor = true;
             // 
-            // tabPage6
+            // tabPageBattle
             // 
-            this.tabPage6.Location = new System.Drawing.Point(4, 25);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(776, 627);
-            this.tabPage6.TabIndex = 5;
-            this.tabPage6.Text = "Сражение";
-            this.tabPage6.UseVisualStyleBackColor = true;
+            this.tabPageBattle.Location = new System.Drawing.Point(4, 25);
+            this.tabPageBattle.Name = "tabPageBattle";
+            this.tabPageBattle.Size = new System.Drawing.Size(776, 627);
+            this.tabPageBattle.TabIndex = 5;
+            this.tabPageBattle.Text = "Сражение";
+            this.tabPageBattle.UseVisualStyleBackColor = true;
             // 
             // ButtonEndTurn
             // 
@@ -208,7 +208,7 @@
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPageChieftain;
         private System.Windows.Forms.TabPage tabPageArmy;
-        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.TabPage tabPageBattle;
         private System.Windows.Forms.Button ButtonEndTurn;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripTextBox tstbTurn;

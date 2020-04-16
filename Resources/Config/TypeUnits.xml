@@ -10,7 +10,7 @@
     <Parameters>
       <DamageMin>2</DamageMin>
       <DamageMax>4</DamageMax>
-      <Health>20</Health>
+      <Health>10</Health>
       <Morale>0</Morale>
     </Parameters>
   </TypeUnit>
@@ -24,7 +24,7 @@
     <Parameters>
       <DamageMin>6</DamageMin>
       <DamageMax>10</DamageMax>
-      <Health>10</Health>
+      <Health>25</Health>
       <Morale>0</Morale>
     </Parameters>
   </TypeUnit>

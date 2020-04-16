@@ -10,6 +10,9 @@ namespace Fantasy_King_s_Battle
     internal sealed class Config
     {
         internal const int GRID_SIZE = 8;
+        internal const int UNIT_IN_ROW = 5;
+        internal const int ROWS_IN_SQUAD = 4;
+
         public Config(string pathResources, FormMain fm)
         {
             FormMain.Config = this;
