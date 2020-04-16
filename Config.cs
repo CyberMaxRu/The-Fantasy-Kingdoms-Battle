@@ -10,7 +10,7 @@ namespace Fantasy_King_s_Battle
     internal sealed class Config
     {
         internal const int GRID_SIZE = 8;
-        public Config(string pathResources)
+        public Config(string pathResources, FormMain fm)
         {
             FormMain.Config = this;
             PathResources = pathResources;
@@ -55,7 +55,7 @@ namespace Fantasy_King_s_Battle
 
             foreach (XmlNode n in xmlDoc.SelectNodes("/Fractions/Fraction"))
             {
-                Fractions.Add(new Fraction(n));
+                Fractions.Add(new Fraction(n, fm));
             }
 
             // Загрузка классов юнитов

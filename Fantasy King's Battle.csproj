@@ -65,6 +65,9 @@
     <Compile Include="PanelExternalBuilding.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="PanelSquad.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

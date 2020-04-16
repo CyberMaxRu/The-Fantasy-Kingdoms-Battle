@@ -16,6 +16,8 @@ namespace Fantasy_King_s_Battle
         {
             ID = n.SelectSingleNode("ID").InnerText;
             Name = n.SelectSingleNode("Name").InnerText;
+            ImageIndex = Convert.ToInt32(n.SelectSingleNode("ImageIndex").InnerText);
+            Fraction = FormMain.Config.FindFraction(n.SelectSingleNode("Fraction").InnerText);
             TypeMove = (TypeMove)Enum.Parse(typeof(TypeMove), n.SelectSingleNode("TypeMove").InnerText);
 
             // Стоимость покупки
@@ -54,6 +56,8 @@ namespace Fantasy_King_s_Battle
 
         internal string ID { get; }
         internal string Name { get; }
+        internal int ImageIndex { get; }
+        internal Fraction Fraction { get; }
         internal TypeMove TypeMove { get; }
         internal int DamageMin { get; }
         internal int DamageMax { get; }

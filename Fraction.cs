@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Windows.Forms;
 
 namespace Fantasy_King_s_Battle
 {
     // Класс фракции
     internal sealed class Fraction
     {
-        public Fraction(XmlNode n)
+        public Fraction(XmlNode n, FormMain fm)
         {
             ID = n.SelectSingleNode("ID").InnerText;
             Name = n.SelectSingleNode("Name").InnerText;
@@ -51,11 +52,17 @@ namespace Fantasy_King_s_Battle
 
                 StartResources[r.Position] = value;
             }
+
+            if (n.SelectSingleNode("Images") != null)
+            {
+                ILTypeUnits = fm.PrepareImageList(n.SelectSingleNode("Images").InnerText, 58, 64);
+            }
         }
 
         internal string ID { get; }
         internal string Name { get; }
         internal int ImageIndex { get; }
+        internal ImageList ILTypeUnits { get; }
         internal int Position { get; }
         internal int[] StartResources;
 

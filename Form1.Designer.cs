@@ -34,13 +34,13 @@
             this.tabPageExternal = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPageChieftain = new System.Windows.Forms.TabPage();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.labelChieftainExp = new System.Windows.Forms.Label();
+            this.LabelChieftainLevel = new System.Windows.Forms.Label();
+            this.tabPageArmy = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.ButtonEndTurn = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tstbTurn = new System.Windows.Forms.ToolStripTextBox();
-            this.LabelChieftainLevel = new System.Windows.Forms.Label();
-            this.labelChieftainExp = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPageChieftain.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -63,7 +63,7 @@
             this.tabControl1.Controls.Add(this.tabPageExternal);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPageChieftain);
-            this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPageArmy);
             this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Location = new System.Drawing.Point(8, 40);
             this.tabControl1.Name = "tabControl1";
@@ -111,14 +111,32 @@
             this.tabPageChieftain.Text = "Военачальник";
             this.tabPageChieftain.UseVisualStyleBackColor = true;
             // 
-            // tabPage4
+            // labelChieftainExp
             // 
-            this.tabPage4.Location = new System.Drawing.Point(4, 25);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(776, 627);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Войско";
-            this.tabPage4.UseVisualStyleBackColor = true;
+            this.labelChieftainExp.AutoSize = true;
+            this.labelChieftainExp.Location = new System.Drawing.Point(8, 48);
+            this.labelChieftainExp.Name = "labelChieftainExp";
+            this.labelChieftainExp.Size = new System.Drawing.Size(37, 13);
+            this.labelChieftainExp.TabIndex = 1;
+            this.labelChieftainExp.Text = "Опыт:";
+            // 
+            // LabelChieftainLevel
+            // 
+            this.LabelChieftainLevel.AutoSize = true;
+            this.LabelChieftainLevel.Location = new System.Drawing.Point(8, 24);
+            this.LabelChieftainLevel.Name = "LabelChieftainLevel";
+            this.LabelChieftainLevel.Size = new System.Drawing.Size(54, 13);
+            this.LabelChieftainLevel.TabIndex = 0;
+            this.LabelChieftainLevel.Text = "Уровень:";
+            // 
+            // tabPageArmy
+            // 
+            this.tabPageArmy.Location = new System.Drawing.Point(4, 25);
+            this.tabPageArmy.Name = "tabPageArmy";
+            this.tabPageArmy.Size = new System.Drawing.Size(776, 627);
+            this.tabPageArmy.TabIndex = 3;
+            this.tabPageArmy.Text = "Войско";
+            this.tabPageArmy.UseVisualStyleBackColor = true;
             // 
             // tabPage6
             // 
@@ -156,24 +174,6 @@
             this.tstbTurn.Name = "tstbTurn";
             this.tstbTurn.Size = new System.Drawing.Size(100, 23);
             // 
-            // LabelChieftainLevel
-            // 
-            this.LabelChieftainLevel.AutoSize = true;
-            this.LabelChieftainLevel.Location = new System.Drawing.Point(8, 24);
-            this.LabelChieftainLevel.Name = "LabelChieftainLevel";
-            this.LabelChieftainLevel.Size = new System.Drawing.Size(54, 13);
-            this.LabelChieftainLevel.TabIndex = 0;
-            this.LabelChieftainLevel.Text = "Уровень:";
-            // 
-            // labelChieftainExp
-            // 
-            this.labelChieftainExp.AutoSize = true;
-            this.labelChieftainExp.Location = new System.Drawing.Point(8, 48);
-            this.labelChieftainExp.Name = "labelChieftainExp";
-            this.labelChieftainExp.Size = new System.Drawing.Size(37, 13);
-            this.labelChieftainExp.TabIndex = 1;
-            this.labelChieftainExp.Text = "Опыт:";
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -207,7 +207,7 @@
         private System.Windows.Forms.TabPage tabPageExternal;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPageChieftain;
-        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TabPage tabPageArmy;
         private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.Button ButtonEndTurn;
         private System.Windows.Forms.MenuStrip menuStrip1;

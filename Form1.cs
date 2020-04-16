@@ -42,7 +42,7 @@ namespace Fantasy_King_s_Battle
 
             dirResources += "Resources\\";
 
-            _ = new Config(dirResources);
+            _ = new Config(dirResources, this);
 
             // Подготавливаем иконки
             ilResources24 = PrepareImageList("Resources24.png", 24, 24);
@@ -58,7 +58,7 @@ namespace Fantasy_King_s_Battle
             lobby = new Lobby(8);
 
             // Создаем метки под ресурсы
-            foreach(Resource r in Config.Resources)
+            foreach (Resource r in Config.Resources)
             {
                 r.StatusLabel = new ToolStripStatusLabel(r.Name)
                 {
@@ -90,23 +90,24 @@ namespace Fantasy_King_s_Battle
             DrawChieftain();
             ShowDataPlayer();
 
-            ImageList PrepareImageList(string filename, int width, int height)
-            {
-                ImageList il;
-                il = new ImageList()
-                {
-                    ColorDepth = ColorDepth.Depth32Bit
-                };
-                _ = il.ImageSize = new Size(width, height);
-                Bitmap icon;
-                icon = new Bitmap(dirResources + "Icons\\" + filename);
-                _ = il.Images.AddStrip(icon);
-
-                return il;
-            }
         }
         internal static Config Config { get; set; }
         internal ImageList ILFractions { get { return ilFractions; } }
+        internal ImageList PrepareImageList(string filename, int width, int height)
+        {
+            ImageList il;
+            il = new ImageList()
+            {
+                ColorDepth = ColorDepth.Depth32Bit
+            };
+            _ = il.ImageSize = new Size(width, height);
+            Bitmap icon;
+            icon = new Bitmap(dirResources + "Icons\\" + filename);
+            _ = il.Images.AddStrip(icon);
+
+            return il;
+        }
+
         internal void ShowDataPlayer()
         {
             tstbTurn.Text = "Ход: " + lobby.Turn.ToString();
@@ -115,17 +116,19 @@ namespace Fantasy_King_s_Battle
             {
                 r.StatusLabel.Text = lobby.CurrentPlayer.Resources[r.Position].ToString();
             }
-            
+
             // Если этого игрока не отрисовывали, формируем заново вкладки
             if (curAppliedPlayer != lobby.CurrentPlayerIndex)
             {
                 DrawExternalBuilding();
+                DrawSquad();
 
                 curAppliedPlayer = lobby.CurrentPlayerIndex;
             }
 
             ShowExternalBuildings();
             ShowChieftain();
+            ShowSquad();
         }
 
         private void DrawExternalBuilding()
@@ -194,6 +197,28 @@ namespace Fantasy_King_s_Battle
             {
                 SlotSkill[sc.Position].Image = ilSkills.Images[sc.Skill.Position * Config.MaxLevelSkill + sc.Level - 1];
             }
+        }
+
+        private void DrawSquad()
+        {
+            PanelSquad p;
+            int top = 0;
+            foreach (Squad s in lobby.CurrentPlayer.Squads)
+            {
+                p = new PanelSquad(s)
+                {
+                    Parent = tabPageArmy,
+                    Top = top,
+                    Left = Config.GRID_SIZE
+                };
+                s.PanelSquad = p;
+
+                top += p.Height + Config.GRID_SIZE;
+            }
+        }
+
+        private void ShowSquad()
+        {
         }
 
         private void ShowExternalBuildings()

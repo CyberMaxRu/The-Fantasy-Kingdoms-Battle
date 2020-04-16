@@ -41,6 +41,13 @@ namespace Fantasy_King_s_Battle
             }
 
             Chieftain = new Chieftain(this);
+
+            //
+            if (IsLive == true)
+            {
+                Squads.Add(new Squad(this, FormMain.Config.FindTypeUnit("Spearman")));
+                Squads.Add(new Squad(this, FormMain.Config.FindTypeUnit("Swordsman")));
+            }
         }
 
         internal void DoTurn()
@@ -70,6 +77,7 @@ namespace Fantasy_King_s_Battle
         internal Fraction Fraction { get; }
         internal TypePlayer TypePlayer { get; }
         internal Chieftain Chieftain { get; }
+        internal List<Squad> Squads { get; } = new List<Squad>();
         internal int[] Resources { get; }
         internal int Wins { get; }
         internal int Loses { get; }

@@ -8,6 +8,9 @@ namespace Fantasy_King_s_Battle
 {
     static class Program
     {
+        public static FormMain formMain;
+        public static Config config;
+
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
@@ -16,7 +19,8 @@ namespace Fantasy_King_s_Battle
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMain());
+            formMain = new FormMain();
+            Application.Run(formMain);
         }
     }
 }
