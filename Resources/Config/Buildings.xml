@@ -3,7 +3,7 @@
   <Building>
     <ID>GoldMine</ID>
     <Name>Золотая шахта</Name>
-    <TypeBuilding>External</TypeBuilding>
+    <PlaceBuilding>External</PlaceBuilding>
     <Cost>
       <Gold>1000</Gold>
     </Cost>
@@ -14,7 +14,7 @@
   <Building>
     <ID>Lumberjack</ID>
     <Name>Лесорубка</Name>
-    <TypeBuilding>External</TypeBuilding>
+    <PlaceBuilding>External</PlaceBuilding>
     <Cost>
       <Gold>500</Gold>
     </Cost>
@@ -25,7 +25,7 @@
   <Building>
     <ID>CoreMine</ID>
     <Name>Рудная шахта</Name>
-    <TypeBuilding>External</TypeBuilding>
+    <PlaceBuilding>External</PlaceBuilding>
     <Cost>
       <Gold>500</Gold>
       <Wood>100</Wood>
@@ -37,7 +37,7 @@
   <Building>
     <ID>MercuryHouse</ID>
     <Name>Дом алхимика</Name>
-    <TypeBuilding>External</TypeBuilding>
+    <PlaceBuilding>External</PlaceBuilding>
     <Cost>
       <Gold>500</Gold>
     </Cost>
@@ -48,7 +48,7 @@
   <Building>
     <ID>CrystallMine</ID>
     <Name>Залежи кристаллов</Name>
-    <TypeBuilding>External</TypeBuilding>
+    <PlaceBuilding>External</PlaceBuilding>
     <Cost>
       <Gold>500</Gold>
     </Cost>
@@ -59,7 +59,7 @@
   <Building>
     <ID>SulfurCareer</ID>
     <Name>Серный карьер</Name>
-    <TypeBuilding>External</TypeBuilding>
+    <PlaceBuilding>External</PlaceBuilding>
     <Cost>
       <Gold>500</Gold>
     </Cost>
@@ -70,12 +70,48 @@
   <Building>
     <ID>GemsSource</ID>
     <Name>Месторождение драгоценных камней</Name>
-    <TypeBuilding>External</TypeBuilding>
+    <PlaceBuilding>External</PlaceBuilding>
     <Cost>
       <Gold>7000</Gold>
     </Cost>
     <IncomeResources>
       <Gems>1</Gems>
     </IncomeResources>
+  </Building>
+  <Building>
+    <ID>Forge</ID>
+    <Name>Кузница</Name>
+    <PlaceBuilding>Internal</PlaceBuilding>
+    <TypeBuilding>Production</TypeBuilding>
+    <Cost>
+      <Gold>1000</Gold>
+    </Cost>
+  </Building>
+  <Building>
+    <ID>Market</ID>
+    <Name>Рынок</Name>
+    <PlaceBuilding>Internal</PlaceBuilding>
+    <TypeBuilding>Economy</TypeBuilding>
+    <Cost>
+      <Gold>1000</Gold>
+    </Cost>
+  </Building>
+  <Building>
+    <ID>Barrack</ID>
+    <Name>Казарма</Name>
+    <PlaceBuilding>Internal</PlaceBuilding>
+    <TypeBuilding>Military</TypeBuilding>
+    <Cost>
+      <Gold>1000</Gold>
+    </Cost>
+  </Building>
+  <Building>
+    <ID>Barrack</ID>
+    <Name>Казарма</Name>
+    <PlaceBuilding>Internal</PlaceBuilding>
+    <TypeBuilding>Military</TypeBuilding>
+    <Cost>
+      <Gold>1000</Gold>
+    </Cost>
   </Building>
 </Buildings>  

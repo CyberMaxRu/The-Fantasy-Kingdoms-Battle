@@ -33,12 +33,12 @@ namespace Fantasy_King_s_Battle
             {
                 b = new Building(n);
 
-                switch (b.TypeBuilding)
+                switch (b.PlaceBuilding)
                 {
-                    case TypeBuilding.External:
+                    case PlaceBuilding.External:
                         ExternalBuildings.Add(b);
                         break;
-                    case TypeBuilding.Internal:
+                    case PlaceBuilding.Internal:
                         InternalBuildings.Add(b);
                         break;
                     default:

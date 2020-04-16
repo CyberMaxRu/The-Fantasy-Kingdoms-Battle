@@ -7,7 +7,8 @@ using System.Xml;
 
 namespace Fantasy_King_s_Battle
 {
-    internal enum TypeBuilding { Internal, External };
+    internal enum PlaceBuilding { Internal, External };
+    internal enum TypeBuilding { Castle, Military, Economy, Production, Habitation, Resource, Other };
 
     // Класс здания
     internal sealed class Building
@@ -16,12 +17,12 @@ namespace Fantasy_King_s_Battle
         {
             ID = n.SelectSingleNode("ID").InnerText;
             Name = n.SelectSingleNode("Name").InnerText;
-            TypeBuilding = (TypeBuilding)Enum.Parse(typeof(TypeBuilding), n.SelectSingleNode("TypeBuilding").InnerText);
+            PlaceBuilding = (PlaceBuilding)Enum.Parse(typeof(PlaceBuilding), n.SelectSingleNode("PlaceBuilding").InnerText);
             //ImageIndex = n.SelectSingleNode("ImageIndex") != null ? Convert.ToInt32(n.SelectSingleNode("ImageIndex").InnerText) : -1;
             
-            switch (TypeBuilding) 
+            switch (PlaceBuilding) 
             {
-                case TypeBuilding.External:
+                case PlaceBuilding.External:
                     Position = FormMain.Config.ExternalBuildings.Count;
 
                     // Проверяем, что таких же ID и наименования нет
@@ -38,7 +39,7 @@ namespace Fantasy_King_s_Battle
                         }
                     }
                     break;
-                case TypeBuilding.Internal:
+                case PlaceBuilding.Internal:
                     Position = FormMain.Config.InternalBuildings.Count;
                     break;
                 default:
@@ -65,21 +66,24 @@ namespace Fantasy_King_s_Battle
             // Доход ресурсов
             IncomeResources = new int[FormMain.Config.Resources.Count()];
             l = n.SelectSingleNode("IncomeResources");
-            for (int k = 0; k < l.ChildNodes.Count; k++)
+            if (l != null)
             {
-                r = FormMain.Config.FindResource(l.ChildNodes[k].LocalName);
-                value = Convert.ToInt32(l.ChildNodes[k].InnerText);
-                if (value <= 0)
-                    throw new Exception("У здания " + ID + " доход ресурсов " + r.ToString() + " меньше или равен нолю (" + value.ToString() + ").");
+                for (int k = 0; k < l.ChildNodes.Count; k++)
+                {
+                    r = FormMain.Config.FindResource(l.ChildNodes[k].LocalName);
+                    value = Convert.ToInt32(l.ChildNodes[k].InnerText);
+                    if (value <= 0)
+                        throw new Exception("У здания " + ID + " доход ресурсов " + r.ToString() + " меньше или равен нолю (" + value.ToString() + ").");
 
-                IncomeResources[r.Position] = value;
+                    IncomeResources[r.Position] = value;
+                }
             }
         }
 
         internal string ID { get; }
         internal string Name { get; }
         internal int Position { get; }
-        internal TypeBuilding TypeBuilding { get; }
+        internal PlaceBuilding PlaceBuilding { get; }
         internal int[] Cost;
         internal int[] IncomeResources;
     }
