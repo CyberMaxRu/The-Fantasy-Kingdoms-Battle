@@ -65,6 +65,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resource.cs" />
+    <Compile Include="Squad.cs" />
+    <Compile Include="Skill.cs" />
     <Compile Include="TypeUnit.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -96,6 +98,7 @@
     <Content Include="Resources\Config\ClassesUnits.xml" />
     <Content Include="Resources\Config\Fractions.xml" />
     <Content Include="Resources\Config\Resources.xml" />
+    <Content Include="Resources\Config\Skills.xml" />
     <Content Include="Resources\Config\TypeUnits.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

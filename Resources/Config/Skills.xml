@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Skills>
+  <Skill>
+    <ID>Leadership</ID>
+    <Name>Лидерство</Name>
+    <Level1>
+      <MoraleAlly>+1</MoraleAlly>
+    </Level1>
+    <Level2>
+      <MoraleAlly>+2</MoraleAlly>
+    </Level2>
+    <Level3>
+      <MoraleAlly>+3</MoraleAlly>
+    </Level3>
+  </Skill>
+  <Skill>
+    <ID>Dread</ID>
+    <Name>Устрашение</Name>
+    <Level1>
+      <MoraleEnemy>-1</MoraleEnemy>
+    </Level1>
+    <Level2>
+      <MoraleEnemy>-2</MoraleEnemy>
+    </Level2>
+    <Level3>
+      <MoraleEnemy>-3</MoraleEnemy>
+    </Level3>
+  </Skill>
+  <Skill>
+    <ID>Luck</ID>
+    <Name>Удача</Name>
+    <Level1>
+      <LuckAlly>+1</LuckAlly>
+    </Level1>
+    <Level2>
+      <LuckAlly>+2</LuckAlly>
+    </Level2>
+    <Level3>
+      <LuckAlly>+3</LuckAlly>    
+    </Level3>
+  </Skill>
+</Skills>

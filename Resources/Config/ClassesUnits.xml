@@ -3,9 +3,16 @@
   <ClassUnit>
     <ID>Human</ID>
     <Name>Человек</Name>
+    <UseMorale>True</UseMorale>
   </ClassUnit>
   <ClassUnit>
-    <ID>Undead</ID>
-    <Name>Мертвец</Name>
+    <ID>Golem</ID>
+    <Name>Голем</Name>
+    <UseMorale>False</UseMorale>
+  </ClassUnit>
+  <ClassUnit>
+    <ID>Beast</ID>
+    <Name>Зверь</Name>
+    <UseMorale>True</UseMorale>
   </ClassUnit>
 </ClassesUnits>
