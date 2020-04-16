@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace Fantasy_King_s_Battle
 {
@@ -38,6 +39,9 @@ namespace Fantasy_King_s_Battle
 
             Height = pbFraction.Height + (Config.GRID_SIZE * 2);
             Width = 320;
+
+            if (player == player.Lobby.CurrentPlayer)
+                BackColor = Color.LightBlue;
         }
 
         internal void ShowData()
