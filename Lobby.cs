@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Fantasy_King_s_Battle
 {
@@ -18,13 +19,46 @@ namespace Fantasy_King_s_Battle
             for (int i = 0; i < quantityPlayers; i++)
             {
                 tp = i == 0 ? TypePlayer.Human : TypePlayer.Computer;
-                Players[i] = new Player("Игрок №" + (i + 1).ToString(), FormMain.Config.Fractions[r.Next(0, FormMain.Config.Fractions.Count)], tp);
+                Players[i] = new Player(this, "Игрок №" + (i + 1).ToString(), FormMain.Config.Fractions[r.Next(0, FormMain.Config.Fractions.Count)], tp);
             }
 
             ApplyPlayer(0);
 
             //
-            Turn = 0;
+            Turn = 1;
+
+            // Определяем противников
+            MakeOpponents();
+        }
+
+        private void MakeOpponents()
+        {
+            foreach (Player pl in Players)
+                pl.Opponent = null;
+
+            // Алгоритм простой - случайным образом подбираем пару
+            List<Player> opponents = new List<Player>();
+            opponents.AddRange(Players);
+            Random r = new Random();
+            Player p;
+            Player oppo;
+            for (; ; )
+            {
+                p = opponents[0];
+                oppo = opponents[r.Next(1, opponents.Count)];
+                Debug.Assert(p != oppo);
+                Debug.Assert(p.Opponent == null);
+                Debug.Assert(oppo.Opponent == null);
+                p.Opponent = oppo;
+                oppo.Opponent = p;
+                if (!opponents.Remove(p))
+                    new Exception("Не смог удалить элемент " + p.Name + " из списка оппонентов");
+                if (!opponents.Remove(p.Opponent))
+                    new Exception("Не смог удалить элемент " + p.Opponent.Name + " из списка оппонентов");
+
+                if (opponents.Count == 0)
+                    break;
+            }
         }
 
         private void ApplyPlayer(int index)

@@ -11,8 +11,9 @@ namespace Fantasy_King_s_Battle
     // Класс игрока
     internal sealed class Player
     {
-        public Player(string name, Fraction fraction, TypePlayer typePlayer)
+        public Player(Lobby lobby, string name, Fraction fraction, TypePlayer typePlayer)
         {
+            Lobby = lobby;
             Name = name;
             Fraction = fraction;
             TypePlayer = typePlayer;
@@ -20,6 +21,7 @@ namespace Fantasy_King_s_Battle
             Wins = 0;
             Loses = 0;
             IsLive = true;
+            Position = lobby.Players.Count();
 
             // Инициализируем ресурсы               
             Resources = new int[FormMain.Config.Resources.Count];
@@ -73,7 +75,9 @@ namespace Fantasy_King_s_Battle
             //Resources[0] += 1000;
         }
 
+        internal Lobby Lobby { get; }
         internal string Name { get; }
+        internal int Position { get; }
         internal Fraction Fraction { get; }
         internal TypePlayer TypePlayer { get; }
         internal Chieftain Chieftain { get; }
@@ -86,5 +90,8 @@ namespace Fantasy_King_s_Battle
         internal List<BuildingOfPlayer>[] ExternalBuildings {get;}
 
         internal PanelAboutPlayer PanelAbout { get; set; }
+
+        private Player opponent;
+        internal Player Opponent { get { return opponent; } set { if (value != this) opponent = value; else new Exception("Нельзя указать оппонентов самого себя."); } }
     }
 }
