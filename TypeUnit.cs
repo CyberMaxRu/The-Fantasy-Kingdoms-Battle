@@ -1,0 +1,63 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml;
+
+namespace Fantasy_King_s_Battle
+{
+    internal enum TypeMove { Ground, Fly };
+
+    // Класс типа юнита
+    internal sealed class TypeUnit
+    {
+        public TypeUnit(XmlNode n)
+        {
+            ID = n.SelectSingleNode("ID").InnerText;
+            Name = n.SelectSingleNode("Name").InnerText;
+            TypeMove = (TypeMove)Enum.Parse(typeof(TypeMove), n.SelectSingleNode("TypeMove").InnerText);
+
+            // Стоимость покупки
+            XmlNode l;
+            string parName;
+            int value;
+            l = n.SelectSingleNode("Parameters");
+            for (int k = 0; k < l.ChildNodes.Count; k++)
+            {
+                parName = l.ChildNodes[k].LocalName;
+                value = Convert.ToInt32(l.ChildNodes[k].InnerText);
+                if (value < 0)
+                    throw new Exception("У типа юнита " + ID + " параметр " + parName.ToString() + " меньше ноля (" + value.ToString() + ").");
+
+                switch (parName)
+                {
+                    case "DamageMin":
+                        DamageMin = value;
+                        break;
+                    case "DamagekMax":
+                        DamageMax = value;
+                        break;
+                    case "Health":
+                        Health = value;
+                        break;
+                    case "Morale":
+                        Morale = value;
+                        break;
+                    default:
+                        new Exception("Неизвестный параметр: " + parName);
+                        break;
+                }
+            }
+
+        }
+
+        internal string ID { get; }
+        internal string Name { get; }
+        internal TypeMove TypeMove { get; }
+        internal int DamageMin { get; }
+        internal int DamageMax { get; }
+        internal int Health { get; }
+        internal int Morale { get; }
+    }
+}

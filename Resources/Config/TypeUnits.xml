@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TypeUnits>
+  <TypeUnit>
+    <ID>Peasant</ID>
+    <Name>Крестьянин</Name>
+    <Fraction>Castle</Fraction>
+    <ClassUnit>Human</ClassUnit>
+    <TypeMove>Ground</TypeMove>
+    <Parameters>
+      <DamageMin>1</DamageMin>
+      <DamageMax>2</DamageMax>
+      <Health>5</Health>
+      <Morale>0</Morale>
+    </Parameters>
+  </TypeUnit>
+</TypeUnits>

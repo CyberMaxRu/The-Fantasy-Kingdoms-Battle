@@ -55,6 +55,22 @@ namespace Fantasy_King_s_Battle
                 Fractions.Add(new Fraction(n));
             }
 
+            // Загрузка классов юнитов
+            xmlDoc = CreateXmlDocument("Config\\ClassesUnits.xml");
+
+            foreach (XmlNode n in xmlDoc.SelectNodes("/ClassesUnits/ClassUnit"))
+            {
+                ClassesUnits.Add(new ClassUnit(n));
+            }
+
+            // Загрузка типов юнитов
+            xmlDoc = CreateXmlDocument("Config\\TypeUnits.xml");
+
+            foreach (XmlNode n in xmlDoc.SelectNodes("/TypeUnits/TypeUnit"))
+            {
+                TypeUnits.Add(new TypeUnit(n));
+            }
+
             // Вспомогательные методы
             XmlDocument CreateXmlDocument(string pathToXml)
             {
@@ -69,6 +85,8 @@ namespace Fantasy_King_s_Battle
         internal List<Building> ExternalBuildings { get; } = new List<Building>();
         internal List<Building> InternalBuildings { get; } = new List<Building>();
         internal List<Fraction> Fractions { get; } = new List<Fraction>();
+        internal List<ClassUnit> ClassesUnits { get; } = new List<ClassUnit>();
+        internal List<TypeUnit> TypeUnits { get; } = new List<TypeUnit>();
 
         internal Resource FindResource(string ID)
         {
@@ -120,6 +138,32 @@ namespace Fantasy_King_s_Battle
             }
 
             throw new Exception("Фракция " + ID + " не найдена.");
+        }
+
+        internal ClassUnit FindClassUnit(string ID)
+        {
+            foreach (ClassUnit cu in ClassesUnits)
+            {
+                if (cu.ID == ID)
+                {
+                    return cu;
+                }
+            }
+
+            throw new Exception("Класс юнитов " + ID + " не найден.");
+        }
+
+        internal TypeUnit FindTypeUnit(string ID)
+        {
+            foreach (TypeUnit tu in TypeUnits)
+            {
+                if (tu.ID == ID)
+                {
+                    return tu;
+                }
+            }
+
+            throw new Exception("Тип юнитов " + ID + " не найден.");
         }
     }
 }

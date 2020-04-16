@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ClassesUnits>
+  <ClassUnit>
+    <ID>Human</ID>
+    <Name>Человек</Name>
+  </ClassUnit>
+  <ClassUnit>
+    <ID>Undead</ID>
+    <Name>Мертвец</Name>
+  </ClassUnit>
+</ClassesUnits>
