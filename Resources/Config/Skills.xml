@@ -3,6 +3,7 @@
   <Skill>
     <ID>Leadership</ID>
     <Name>Лидерство</Name>
+    <ImageIndex>0</ImageIndex>
     <Level1>
       <MoraleAlly>+1</MoraleAlly>
     </Level1>
@@ -14,8 +15,23 @@
     </Level3>
   </Skill>
   <Skill>
+    <ID>Luck</ID>
+    <Name>Удача</Name>
+    <ImageIndex>1</ImageIndex>
+    <Level1>
+      <LuckAlly>+1</LuckAlly>
+    </Level1>
+    <Level2>
+      <LuckAlly>+2</LuckAlly>
+    </Level2>
+    <Level3>
+      <LuckAlly>+3</LuckAlly>
+    </Level3>
+  </Skill>
+  <Skill>
     <ID>Dread</ID>
     <Name>Устрашение</Name>
+    <ImageIndex>2</ImageIndex>
     <Level1>
       <MoraleEnemy>-1</MoraleEnemy>
     </Level1>
@@ -24,19 +40,6 @@
     </Level2>
     <Level3>
       <MoraleEnemy>-3</MoraleEnemy>
-    </Level3>
-  </Skill>
-  <Skill>
-    <ID>Luck</ID>
-    <Name>Удача</Name>
-    <Level1>
-      <LuckAlly>+1</LuckAlly>
-    </Level1>
-    <Level2>
-      <LuckAlly>+2</LuckAlly>
-    </Level2>
-    <Level3>
-      <LuckAlly>+3</LuckAlly>    
     </Level3>
   </Skill>
 </Skills>

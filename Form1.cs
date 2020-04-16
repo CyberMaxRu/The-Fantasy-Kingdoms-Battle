@@ -17,9 +17,12 @@ namespace Fantasy_King_s_Battle
         private readonly ImageList ilResources24;
         private readonly ImageList ilFractions;
         private readonly ImageList ilExternalBuildings;
+        private readonly ImageList ilSkills;
 
         private readonly Lobby lobby;
         private int curAppliedPlayer = -1;
+
+        private List<PictureBox> SlotSkill = new List<PictureBox>();
 
         public FormMain()
         {
@@ -48,6 +51,9 @@ namespace Fantasy_King_s_Battle
             ilFractions = PrepareImageList("Fractions.png", 78, 52);
 
             ilExternalBuildings = PrepareImageList("ExternalBuildings.png", 82, 64);
+
+            ilSkills = PrepareImageList("Skills.png", 82, 94);
+
             //    
             lobby = new Lobby(8);
 
@@ -81,6 +87,7 @@ namespace Fantasy_King_s_Battle
             }
 
             //
+            DrawChieftain();
             ShowDataPlayer();
 
             ImageList PrepareImageList(string filename, int width, int height)
@@ -118,6 +125,7 @@ namespace Fantasy_King_s_Battle
             }
 
             ShowExternalBuildings();
+            ShowChieftain();
         }
 
         private void DrawExternalBuilding()
@@ -144,6 +152,47 @@ namespace Fantasy_King_s_Battle
 
                 if (p != null)
                     top += p.Height;
+            }
+        }
+
+        private void DrawChieftain()
+        {
+            PictureBox pb;
+            int top = 64;
+            int stepFromLeft = 0;
+
+            foreach (Skill s in Config.Skills)
+            {
+                pb = new PictureBox()
+                {
+                    Parent = tabPageChieftain,
+                    BorderStyle = BorderStyle.FixedSingle,
+                    Top = top,
+                    Left = Config.GRID_SIZE + (stepFromLeft * (ilSkills.ImageSize.Width + Config.GRID_SIZE)),
+                    Width = ilSkills.ImageSize.Width,
+                    Height = ilSkills.ImageSize.Height
+                };
+
+                SlotSkill.Add(pb);
+
+                stepFromLeft++;
+                if (stepFromLeft == 4)
+                {
+                    top = top + ilSkills.ImageSize.Height + Config.GRID_SIZE;
+                    stepFromLeft = 0;
+                }
+            }
+        }
+
+        private void ShowChieftain()
+        {
+            Chieftain c = lobby.CurrentPlayer.Chieftain;
+            LabelChieftainLevel.Text = "Уровень: " + c.Level.ToString();
+            labelChieftainExp.Text = "Опыт: " + c.Experience.ToString();
+
+            foreach (SkillOfChieftain sc in c.Skills)
+            {
+                SlotSkill[sc.Position].Image = ilSkills.Images[sc.Skill.Position * Config.MaxLevelSkill + sc.Level - 1];
             }
         }
 

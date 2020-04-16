@@ -15,6 +15,9 @@ namespace Fantasy_King_s_Battle
             FormMain.Config = this;
             PathResources = pathResources;
 
+            // 
+            MaxLevelSkill = 3;
+
             //
             XmlDocument xmlDoc;
 
@@ -71,6 +74,14 @@ namespace Fantasy_King_s_Battle
                 TypeUnits.Add(new TypeUnit(n));
             }
 
+            // Загрузка навыков
+            xmlDoc = CreateXmlDocument("Config\\Skills.xml");
+
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Skills/Skill"))
+            {
+                Skills.Add(new Skill(n));
+            }
+
             // Вспомогательные методы
             XmlDocument CreateXmlDocument(string pathToXml)
             {
@@ -87,7 +98,8 @@ namespace Fantasy_King_s_Battle
         internal List<Fraction> Fractions { get; } = new List<Fraction>();
         internal List<ClassUnit> ClassesUnits { get; } = new List<ClassUnit>();
         internal List<TypeUnit> TypeUnits { get; } = new List<TypeUnit>();
-
+        internal List<Skill> Skills { get; } = new List<Skill>();
+        internal int MaxLevelSkill { get; }
         internal Resource FindResource(string ID)
         {
             foreach (Resource r in Resources)
@@ -164,6 +176,19 @@ namespace Fantasy_King_s_Battle
             }
 
             throw new Exception("Тип юнитов " + ID + " не найден.");
+        }
+
+        internal Skill FindSkill(string ID)
+        {
+            foreach (Skill s in Skills)
+            {
+                if (s.ID == ID)
+                {
+                    return s;
+                }
+            }
+
+            throw new Exception("Навык " + ID + " не найден.");
         }
     }
 }

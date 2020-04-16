@@ -39,6 +39,8 @@ namespace Fantasy_King_s_Battle
                     new BuildingOfPlayer(b),
                 };
             }
+
+            Chieftain = new Chieftain(this);
         }
 
         internal void DoTurn()
@@ -67,6 +69,7 @@ namespace Fantasy_King_s_Battle
         internal string Name { get; }
         internal Fraction Fraction { get; }
         internal TypePlayer TypePlayer { get; }
+        internal Chieftain Chieftain { get; }
         internal int[] Resources { get; }
         internal int Wins { get; }
         internal int Loses { get; }
