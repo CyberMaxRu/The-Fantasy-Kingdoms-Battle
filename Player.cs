@@ -35,7 +35,8 @@ namespace Fantasy_King_s_Battle
             {
                 ExternalBuildings[b.Position] = new List<BuildingOfPlayer>
                 {
-                    new BuildingOfPlayer(b)
+                    new BuildingOfPlayer(b),
+                    new BuildingOfPlayer(b),
                 };
             }
         }

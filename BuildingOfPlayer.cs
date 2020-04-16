@@ -14,6 +14,12 @@ namespace Fantasy_King_s_Battle
             Building = b;
         }
 
+        internal void CalcCollectResource()
+        {
+        }
+
         internal Building Building { get; }
+        internal int[] CollectedResource { get; }
+        private int[] TotalCollectedResource { get; }// Сделать расчет
     }
 }

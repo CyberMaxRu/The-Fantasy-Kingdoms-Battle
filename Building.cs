@@ -8,6 +8,7 @@ using System.Xml;
 namespace Fantasy_King_s_Battle
 {
     internal enum PlaceBuilding { Internal, External };
+
     internal enum TypeBuilding { Castle, Military, Economy, Production, Habitation, Resource, Other };
 
     // Класс здания
@@ -18,7 +19,7 @@ namespace Fantasy_King_s_Battle
             ID = n.SelectSingleNode("ID").InnerText;
             Name = n.SelectSingleNode("Name").InnerText;
             PlaceBuilding = (PlaceBuilding)Enum.Parse(typeof(PlaceBuilding), n.SelectSingleNode("PlaceBuilding").InnerText);
-            //ImageIndex = n.SelectSingleNode("ImageIndex") != null ? Convert.ToInt32(n.SelectSingleNode("ImageIndex").InnerText) : -1;
+            ImageIndex = n.SelectSingleNode("ImageIndex") != null ? Convert.ToInt32(n.SelectSingleNode("ImageIndex").InnerText) : -1;
             
             switch (PlaceBuilding) 
             {
@@ -82,6 +83,7 @@ namespace Fantasy_King_s_Battle
 
         internal string ID { get; }
         internal string Name { get; }
+        internal int ImageIndex { get; }
         internal int Position { get; }
         internal PlaceBuilding PlaceBuilding { get; }
         internal int[] Cost;

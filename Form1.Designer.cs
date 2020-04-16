@@ -31,7 +31,7 @@
             this.StatusStrip = new System.Windows.Forms.StatusStrip();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPageExternal = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
@@ -57,7 +57,7 @@
             // 
             this.tabControl1.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPageExternal);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage4);
@@ -78,21 +78,21 @@
             this.tabPage1.Text = "Игроки";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // tabPageExternal
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(776, 339);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Окрестности";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPageExternal.Location = new System.Drawing.Point(4, 25);
+            this.tabPageExternal.Name = "tabPageExternal";
+            this.tabPageExternal.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageExternal.Size = new System.Drawing.Size(776, 627);
+            this.tabPageExternal.TabIndex = 1;
+            this.tabPageExternal.Text = "Окрестности";
+            this.tabPageExternal.UseVisualStyleBackColor = true;
             // 
             // tabPage3
             // 
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(776, 339);
+            this.tabPage3.Size = new System.Drawing.Size(776, 627);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Замок";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -101,7 +101,7 @@
             // 
             this.tabPage5.Location = new System.Drawing.Point(4, 25);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(776, 339);
+            this.tabPage5.Size = new System.Drawing.Size(776, 627);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Полководец";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -110,7 +110,7 @@
             // 
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(776, 339);
+            this.tabPage4.Size = new System.Drawing.Size(776, 627);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Войско";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -119,7 +119,7 @@
             // 
             this.tabPage6.Location = new System.Drawing.Point(4, 25);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(776, 339);
+            this.tabPage6.Size = new System.Drawing.Size(776, 627);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "Сражение";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -179,7 +179,7 @@
         private System.Windows.Forms.StatusStrip StatusStrip;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPageExternal;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.TabPage tabPage4;

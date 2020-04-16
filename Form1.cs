@@ -16,8 +16,10 @@ namespace Fantasy_King_s_Battle
 
         private readonly ImageList ilResources24;
         private readonly ImageList ilFractions;
+        private readonly ImageList ilExternalBuildings;
 
         private readonly Lobby lobby;
+        private int curAppliedPlayer = -1;
 
         public FormMain()
         {
@@ -45,6 +47,7 @@ namespace Fantasy_King_s_Battle
 
             ilFractions = PrepareImageList("Fractions.png", 78, 52);
 
+            ilExternalBuildings = PrepareImageList("ExternalBuildings.png", 82, 64);
             //    
             lobby = new Lobby(8);
 
@@ -105,6 +108,50 @@ namespace Fantasy_King_s_Battle
             {
                 r.StatusLabel.Text = lobby.CurrentPlayer.Resources[r.Position].ToString();
             }
+            
+            // Если этого игрока не отрисовывали, формируем заново вкладки
+            if (curAppliedPlayer != lobby.CurrentPlayerIndex)
+            {
+                DrawExternalBuilding();
+
+                curAppliedPlayer = lobby.CurrentPlayerIndex;
+            }
+
+            ShowExternalBuildings();
+        }
+
+        private void DrawExternalBuilding()
+        {
+            tabPageExternal.Controls.Clear();
+            int top = 0;
+            int left;
+            PanelExternalBuilding p = null;
+
+            foreach (Building b in Config.ExternalBuildings)
+            {
+                left = 0;
+                foreach (BuildingOfPlayer bp in lobby.CurrentPlayer.ExternalBuildings[b.Position])
+                {
+                    p = new PanelExternalBuilding(lobby.CurrentPlayer, bp, ilExternalBuildings, ilResources24)
+                    {
+                        Parent = tabPageExternal,
+                        Top = top,
+                        Left = left
+                    };
+
+                    left += p.Width + Config.GRID_SIZE;
+                }
+
+                if (p != null)
+                    top += p.Height;
+            }
+        }
+
+        private void ShowExternalBuildings()
+        {
+            foreach (Control c in tabPageExternal.Controls)
+                if (c is PanelExternalBuilding)
+                    ((PanelExternalBuilding)c).ShowData();
         }
 
         private void ButtonEndTurn_Click(object sender, EventArgs e)
