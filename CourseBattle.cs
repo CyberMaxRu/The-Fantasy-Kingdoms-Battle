@@ -20,7 +20,7 @@ namespace Fantasy_King_s_Battle
 
         internal void AddLog(int step, string text)
         {
-            LogBattle += Environment.NewLine + text;
+            LogBattle += text + Environment.NewLine;
         }
 
         internal void EndBattle(int step, Player winner)

@@ -184,7 +184,7 @@ namespace Fantasy_King_s_Battle
                 cb.AddLog(0, s1.GetName() + ": юнитов " + s1.UnitsAlive.ToString() + "/" + s1.UnitsTotal.ToString());
                 cb.AddLog(0, s2.GetName() + ": юнитов " + s2.UnitsAlive.ToString() + "/" + s1.UnitsTotal.ToString());
 
-                cb.AddLog(0, Environment.NewLine);
+                cb.AddLog(0, "");
             }
 
             // Создает отряды игрока для проведения сражения
