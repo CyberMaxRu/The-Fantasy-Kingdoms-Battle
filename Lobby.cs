@@ -152,7 +152,8 @@ namespace Fantasy_King_s_Battle
                     break;
             }
             
-            Player winner = draw == true ? null : (activeSquad1.Count > 0) && (activeSquad1.Count == 0) ? player1 : (activeSquad1.Count == 0) && (activeSquad1.Count > 0) ? player2 : null;
+            Player winner = draw == true ? null : (activeSquad1.Count > 0) && (activeSquad2.Count == 0) ? player1 : (activeSquad1.Count == 0) && (activeSquad2.Count > 0) ? player2 : null;
+            cb.AddLog(0, winner != null ? "Результат сражения. Победитель: " + winner.Name : "Результат сражения. Ничья");
             cb.EndBattle(0, winner);
 
             // Записываем результаты сражения
