@@ -85,6 +85,7 @@ namespace Fantasy_King_s_Battle
         internal int[] Resources { get; }
         internal int Wins { get; }
         internal int Loses { get; }
+        internal int Draws { get; }
         internal int StepsToCastle { get; }
         internal bool IsLive { get; }
         internal List<BuildingOfPlayer>[] ExternalBuildings {get; }
