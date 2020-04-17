@@ -181,6 +181,9 @@ namespace Fantasy_King_s_Battle
                 player2.Draws++;
             }
 
+            player1.HistoryBattles.Add(cb);
+            player2.HistoryBattles.Add(cb);
+
             cb.AddLog(0, winner != null ? "Результат сражения. Победитель: " + winner.Name : "Результат сражения. Ничья");
             cb.EndBattle(0, winner);
 

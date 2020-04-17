@@ -12,22 +12,46 @@ namespace Fantasy_King_s_Battle
     internal sealed class PanelAboutPlayer : Panel
     {
         private readonly PictureBox pbFraction;
+        private readonly PictureBox pbResultBattle;
+        private readonly PictureBox pbTypeBattle;
         private readonly Label namePlayer;
         private readonly Label labelAboutBattles;
-        private readonly ImageList imageList;
+        private readonly ImageList imageListFraction;
+        private readonly ImageList imageListResultBattle;
+        private readonly ImageList imageListTypeBattle;
 
-        public PanelAboutPlayer(Player player, ImageList il)
+        public PanelAboutPlayer(Player player, ImageList ilFraction, ImageList ilResultBattle, ImageList ilTypeBattle)
         {
             Player = player;
             BorderStyle = BorderStyle.FixedSingle;
-            imageList = il;
+            imageListFraction = ilFraction;
+            imageListResultBattle = ilResultBattle;
+            imageListTypeBattle = ilTypeBattle;
 
             pbFraction = new PictureBox()
             {
                 Parent = this,
-                Width = il.ImageSize.Width,
-                Height = il.ImageSize.Height,
+                Width = ilFraction.ImageSize.Width,
+                Height = ilFraction.ImageSize.Height,
                 Left = Config.GRID_SIZE,
+                Top = Config.GRID_SIZE,
+            };
+
+            pbResultBattle = new PictureBox()
+            {
+                Parent = this,
+                Width = imageListResultBattle.ImageSize.Width,
+                Height = imageListResultBattle.ImageSize.Height,
+                Left = 240,
+                Top = Config.GRID_SIZE,
+            };
+
+            pbTypeBattle = new PictureBox()
+            {
+                Parent = this,
+                Width = imageListTypeBattle.ImageSize.Width,
+                Height = imageListTypeBattle.ImageSize.Height,
+                Left = pbResultBattle.Left + pbResultBattle.Width + Config.GRID_SIZE,
                 Top = Config.GRID_SIZE,
             };
 
@@ -49,15 +73,15 @@ namespace Fantasy_King_s_Battle
             };
 
             Height = pbFraction.Height + (Config.GRID_SIZE * 2);
-            Width = 320;
+            Width = pbTypeBattle.Left + pbTypeBattle.Width + Config.GRID_SIZE;
         }
 
         internal void ShowData()
         {
             if (Player.IsLive == true)
-                pbFraction.Image = imageList.Images[Player.Fraction.ImageIndex];
+                pbFraction.Image = imageListFraction.Images[Player.Fraction.ImageIndex];
             else
-                pbFraction.Image = imageList.Images[Player.Fraction.ImageIndex + FormMain.Config.Fractions.Count];
+                pbFraction.Image = imageListFraction.Images[Player.Fraction.ImageIndex + FormMain.Config.Fractions.Count];
 
             if (Player == Player.Lobby.CurrentPlayer)
                 BackColor = Color.LightBlue;
@@ -68,6 +92,16 @@ namespace Fantasy_King_s_Battle
 
             labelAboutBattles.Text = "Сражений: " + (Player.Wins + Player.Loses + Player.Draws).ToString() + " (" + Player.Wins.ToString()
                 + "/" + Player.Draws.ToString() + "/" + Player.Loses.ToString() + ")";
+
+            if (Player.HistoryBattles.Count > 0)
+            { 
+                CourseBattle cb = Player.HistoryBattles.Last();
+                int ii = cb.Winner == null ? 1 : cb.Winner == Player ? 0 : 2;
+
+                pbResultBattle.Image = imageListResultBattle.Images[ii];
+            }
+
+            pbTypeBattle.Image = imageListTypeBattle.Images[0];
         }
 
         internal Player Player { get; }

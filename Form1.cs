@@ -18,6 +18,8 @@ namespace Fantasy_King_s_Battle
         private readonly ImageList ilFractions;
         private readonly ImageList ilExternalBuildings;
         private readonly ImageList ilSkills;
+        private readonly ImageList ilResultBattle;
+        private readonly ImageList ilTypeBattle;
 
         private readonly Lobby lobby;
         private int curAppliedPlayer = -1;
@@ -53,6 +55,8 @@ namespace Fantasy_King_s_Battle
             ilExternalBuildings = PrepareImageList("ExternalBuildings.png", 82, 64, false);
 
             ilSkills = PrepareImageList("Skills.png", 82, 94, false);
+            ilResultBattle = PrepareImageList("ResultBattle52.png", 45, 52, false);
+            ilTypeBattle = PrepareImageList("TypeBattle52.png", 52, 52, false);
 
             //    
             lobby = new Lobby(8);
@@ -77,7 +81,7 @@ namespace Fantasy_King_s_Battle
             int top = Config.GRID_SIZE;
             foreach (Player p in lobby.Players)
             {
-                pap = new PanelAboutPlayer(p, ilFractions)
+                pap = new PanelAboutPlayer(p, ilFractions, ilResultBattle, ilTypeBattle)
                 {
                     Parent = tabPage1,
                     Top = top
