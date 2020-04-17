@@ -117,11 +117,16 @@ namespace Fantasy_King_s_Battle
             MakeSquadsInBattle(player1, activeSquad1);
             MakeSquadsInBattle(player2, activeSquad2);
 
+            bool draw = false;
             // Делаем шаги расчета сражения
             for (; ;)
             {
                 // Проводим сражение между первыми отрядами
-                BattleSquads(activeSquad1[0], activeSquad2[0]);
+                if (!BattleSquads(activeSquad1[0], activeSquad2[0]))
+                {
+                    draw = true;
+                    break;
+                }
 
                 // Если передовой отряд был уничтожен, переносим его в потери
                 if (activeSquad1[0].UnitsAlive == 0)
@@ -146,8 +151,8 @@ namespace Fantasy_King_s_Battle
                 if ((activeSquad1.Count == 0) || (activeSquad2.Count == 0))
                     break;
             }
-
-            Player winner = (activeSquad1.Count > 0) && (activeSquad1.Count == 0) ? player1 : (activeSquad1.Count == 0) && (activeSquad1.Count > 0) ? player2 : null;
+            
+            Player winner = draw == true ? null : (activeSquad1.Count > 0) && (activeSquad1.Count == 0) ? player1 : (activeSquad1.Count == 0) && (activeSquad1.Count > 0) ? player2 : null;
             cb.EndBattle(0, winner);
 
             // Записываем результаты сражения
@@ -156,7 +161,7 @@ namespace Fantasy_King_s_Battle
             //    + Environment.NewLine + "Killed: " + Squad1[0].Killed.ToString() + " - " + Squad2[0].Killed.ToString());
 
             // Проводит битву между двумя отрядами
-            void BattleSquads(SquadInBattle s1, SquadInBattle s2)
+            bool BattleSquads(SquadInBattle s1, SquadInBattle s2)
             {
                 //
                 cb.AddLog(0, "Начало боя.");
@@ -183,8 +188,9 @@ namespace Fantasy_King_s_Battle
                 cb.AddLog(0, "Результат боя: " + ((s1.UnitsAlive > 0) && (s2.UnitsAlive == 0) ? "Победил " + s1.GetName() : ((s2.UnitsAlive > 0) && (s1.UnitsAlive == 0) ? "Победил " + s2.GetName() : "Ничья")));
                 cb.AddLog(0, s1.GetName() + ": юнитов " + s1.UnitsAlive.ToString() + "/" + s1.UnitsTotal.ToString());
                 cb.AddLog(0, s2.GetName() + ": юнитов " + s2.UnitsAlive.ToString() + "/" + s1.UnitsTotal.ToString());
-
                 cb.AddLog(0, "");
+
+                return step < Config.MAX_STEP_IN_BATTLE_SQUADS;
             }
 
             // Создает отряды игрока для проведения сражения

@@ -12,7 +12,7 @@ namespace Fantasy_King_s_Battle
         internal const int GRID_SIZE = 8;
         internal const int UNIT_IN_ROW = 5;
         internal const int ROWS_IN_SQUAD = 4;
-        internal const int MAX_STEP_IN_BATTLE_SQUADS = 500;
+        internal const int MAX_STEP_IN_BATTLE_SQUADS = 5;
 
         public Config(string pathResources, FormMain fm)
         {
