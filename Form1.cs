@@ -45,14 +45,14 @@ namespace Fantasy_King_s_Battle
             _ = new Config(dirResources, this);
 
             // Подготавливаем иконки
-            ilResources24 = PrepareImageList("Resources24.png", 24, 24);
+            ilResources24 = PrepareImageList("Resources24.png", 24, 24, false);
             StatusStrip.ImageList = ilResources24;
 
-            ilFractions = PrepareImageList("Fractions.png", 78, 52);
+            ilFractions = PrepareImageList("Fractions.png", 78, 52, true);
+            
+            ilExternalBuildings = PrepareImageList("ExternalBuildings.png", 82, 64, false);
 
-            ilExternalBuildings = PrepareImageList("ExternalBuildings.png", 82, 64);
-
-            ilSkills = PrepareImageList("Skills.png", 82, 94);
+            ilSkills = PrepareImageList("Skills.png", 82, 94, false);
 
             //    
             lobby = new Lobby(8);
@@ -94,17 +94,47 @@ namespace Fantasy_King_s_Battle
         }
         internal static Config Config { get; set; }
         internal ImageList ILFractions { get { return ilFractions; } }
-        internal ImageList PrepareImageList(string filename, int width, int height)
+        internal ImageList PrepareImageList(string filename, int width, int height, bool convertToGrey)
         {
             ImageList il;
             il = new ImageList()
             {
                 ColorDepth = ColorDepth.Depth32Bit
             };
-            _ = il.ImageSize = new Size(width, height);
-            Bitmap icon;
-            icon = new Bitmap(dirResources + "Icons\\" + filename);
-            _ = il.Images.AddStrip(icon);
+            il.ImageSize = new Size(width, height);
+            Bitmap bmp;
+            bmp = new Bitmap(dirResources + "Icons\\" + filename);
+            _ = il.Images.AddStrip(bmp);
+
+            // Добавляем серые иконки
+            if (convertToGrey == true)
+            {
+                // Создаём Bitmap для черно-белого изображения
+                Bitmap output = new Bitmap(bmp.Width, bmp.Height);
+
+                // Перебираем в циклах все пиксели исходного изображения
+                for (int j = 0; j < bmp.Height; j++)
+                    for (int i = 0; i < bmp.Width; i++)
+                    {
+                        // получаем (i, j) пиксель
+                        UInt32 pixel = (UInt32)(bmp.GetPixel(i, j).ToArgb());
+
+                        // получаем компоненты цветов пикселя
+                        float R = (float)((pixel & 0x00FF0000) >> 16); // красный
+                        float G = (float)((pixel & 0x0000FF00) >> 8); // зеленый
+                        float B = (float)(pixel & 0x000000FF); // синий
+                                                               // делаем цвет черно-белым (оттенки серого) - находим среднее арифметическое
+                        R = G = B = (R + G + B) / 3.0f;
+
+                        // собираем новый пиксель по частям (по каналам)
+                        UInt32 newPixel = 0xFF000000 | ((UInt32)R << 16) | ((UInt32)G << 8) | ((UInt32)B);
+
+                        // добавляем его в Bitmap нового изображения
+                        output.SetPixel(i, j, Color.FromArgb((int)newPixel));
+                    }
+                // выводим черно-белый Bitmap в pictureBox2
+                il.Images.AddStrip(output);
+            }
 
             return il;
         }

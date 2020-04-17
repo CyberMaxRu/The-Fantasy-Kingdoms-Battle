@@ -11,13 +11,16 @@ namespace Fantasy_King_s_Battle
     // Класс панели, отображающей информацию об игроке
     internal sealed class PanelAboutPlayer : Panel
     {
-        internal PictureBox pbFraction;
-        internal Label namePlayer;
-        internal Label labelAboutBattles;
+        private readonly PictureBox pbFraction;
+        private readonly Label namePlayer;
+        private readonly Label labelAboutBattles;
+        private readonly ImageList imageList;
+
         public PanelAboutPlayer(Player player, ImageList il)
         {
             Player = player;
             BorderStyle = BorderStyle.FixedSingle;
+            imageList = il;
 
             pbFraction = new PictureBox()
             {
@@ -26,7 +29,6 @@ namespace Fantasy_King_s_Battle
                 Height = il.ImageSize.Height,
                 Left = Config.GRID_SIZE,
                 Top = Config.GRID_SIZE,
-                Image = il.Images[player.Fraction.ImageIndex]
             };
 
             namePlayer = new Label()
@@ -52,6 +54,11 @@ namespace Fantasy_King_s_Battle
 
         internal void ShowData()
         {
+            if (Player.IsLive == true)
+                pbFraction.Image = imageList.Images[Player.Fraction.ImageIndex];
+            else
+                pbFraction.Image = imageList.Images[Player.Fraction.ImageIndex + FormMain.Config.Fractions.Count];
+
             if (Player == Player.Lobby.CurrentPlayer)
                 BackColor = Color.LightBlue;
             else if (Player == Player.Lobby.CurrentPlayer.Opponent)

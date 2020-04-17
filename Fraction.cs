@@ -55,7 +55,7 @@ namespace Fantasy_King_s_Battle
 
             if (n.SelectSingleNode("Images") != null)
             {
-                ILTypeUnits = fm.PrepareImageList(n.SelectSingleNode("Images").InnerText, 58, 64);
+                ILTypeUnits = fm.PrepareImageList(n.SelectSingleNode("Images").InnerText, 58, 64, false);
             }
         }
 
