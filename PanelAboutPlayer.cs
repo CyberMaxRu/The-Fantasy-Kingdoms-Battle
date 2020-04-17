@@ -13,6 +13,7 @@ namespace Fantasy_King_s_Battle
     {
         internal PictureBox pbFraction;
         internal Label namePlayer;
+        internal Label labelAboutBattles;
         public PanelAboutPlayer(Player player, ImageList il)
         {
             Player = player;
@@ -37,6 +38,14 @@ namespace Fantasy_King_s_Battle
                 Font = new System.Drawing.Font(this.Font, System.Drawing.FontStyle.Bold)
             };
 
+            labelAboutBattles = new Label()
+            {
+                Parent = this,
+                Top = namePlayer.Top + (Config.GRID_SIZE * 3),
+                Left = pbFraction.Width + (Config.GRID_SIZE * 2),
+                AutoSize = true
+            };
+
             Height = pbFraction.Height + (Config.GRID_SIZE * 2);
             Width = 320;
         }
@@ -49,6 +58,9 @@ namespace Fantasy_King_s_Battle
                 BackColor = Color.LightCoral;
             else
                 BackColor = Color.FromKnownColor(KnownColor.Control);
+
+            labelAboutBattles.Text = "Сражений: " + (Player.Wins + Player.Loses + Player.Draws).ToString() + " (" + Player.Wins.ToString()
+                + "/" + Player.Draws.ToString() + "/" + Player.Loses.ToString() + ")";
         }
 
         internal Player Player { get; }

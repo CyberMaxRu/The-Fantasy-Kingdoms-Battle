@@ -83,9 +83,9 @@ namespace Fantasy_King_s_Battle
         internal Chieftain Chieftain { get; }
         internal List<Squad> Squads { get; } = new List<Squad>();
         internal int[] Resources { get; }
-        internal int Wins { get; }
-        internal int Loses { get; }
-        internal int Draws { get; }
+        internal int Wins { get; set; }
+        internal int Loses { get; set; }
+        internal int Draws { get; set; }
         internal int StepsToCastle { get; }
         internal bool IsLive { get; }
         internal List<BuildingOfPlayer>[] ExternalBuildings {get; }
