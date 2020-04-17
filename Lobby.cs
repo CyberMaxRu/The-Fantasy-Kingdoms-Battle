@@ -89,6 +89,7 @@ namespace Fantasy_King_s_Battle
             // Делаем начало хода
             Turn++;
             CurrentPlayerIndex = -1;
+            MakeOpponents();
 
             DoEndTurn();
         }
