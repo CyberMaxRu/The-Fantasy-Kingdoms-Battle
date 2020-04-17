@@ -83,6 +83,7 @@ namespace Fantasy_King_s_Battle
                     Top = top
                 };
 
+                p.PanelAbout = pap;
                 top += pap.Height + Config.GRID_SIZE;
             }
 
@@ -126,10 +127,19 @@ namespace Fantasy_King_s_Battle
                 curAppliedPlayer = lobby.CurrentPlayerIndex;
             }
 
+            ShowLobby();
             ShowExternalBuildings();
             ShowChieftain();
             ShowSquad();
             ShowBattle();
+        }
+
+        private void ShowLobby()
+        {
+            foreach(Player p in lobby.Players)
+            {
+                p.PanelAbout.ShowData();
+            }
         }
 
         private void DrawExternalBuilding()

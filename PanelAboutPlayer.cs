@@ -39,16 +39,16 @@ namespace Fantasy_King_s_Battle
 
             Height = pbFraction.Height + (Config.GRID_SIZE * 2);
             Width = 320;
-
-            if (player == player.Lobby.CurrentPlayer)
-                BackColor = Color.LightBlue;
-            if (player == player.Lobby.CurrentPlayer.Opponent)
-                BackColor = Color.LightCoral;
         }
 
         internal void ShowData()
         {
-
+            if (Player == Player.Lobby.CurrentPlayer)
+                BackColor = Color.LightBlue;
+            else if (Player == Player.Lobby.CurrentPlayer.Opponent)
+                BackColor = Color.LightCoral;
+            else
+                BackColor = Color.FromKnownColor(KnownColor.Control);
         }
 
         internal Player Player { get; }
