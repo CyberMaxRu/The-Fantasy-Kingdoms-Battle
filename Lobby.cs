@@ -96,11 +96,21 @@ namespace Fantasy_King_s_Battle
 
         private void CalcBattles()
         {
-            CalcBattle(Players[0], Players[0].Opponent);
+            foreach (Player p in Players)
+                p.BattleCalced = false;
+
+            foreach (Player p in Players)
+            {
+                if (p.BattleCalced == false)
+                    CalcBattle(p, p.Opponent);
+            }
         }
 
         private void CalcBattle(Player player1, Player player2)
         {
+            Debug.Assert(player1.BattleCalced == false);
+            Debug.Assert(player2.BattleCalced == false);
+
             CourseBattle cb = new CourseBattle(player1, player2, Turn);
             Battles.Add(cb);
 
@@ -156,6 +166,9 @@ namespace Fantasy_King_s_Battle
             Player winner = draw == true ? null : (activeSquad1.Count > 0) && (activeSquad2.Count == 0) ? player1 : (activeSquad1.Count == 0) && (activeSquad2.Count > 0) ? player2 : null;
             cb.AddLog(0, winner != null ? "Результат сражения. Победитель: " + winner.Name : "Результат сражения. Ничья");
             cb.EndBattle(0, winner);
+
+            player1.BattleCalced = true;
+            player2.BattleCalced = true;
 
             // Записываем результаты сражения
             //MessageBox.Show("Рассчитано шагов: " + step.ToString()

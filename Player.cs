@@ -91,5 +91,6 @@ namespace Fantasy_King_s_Battle
         internal PanelAboutPlayer PanelAbout { get; set; }
         private Player opponent;
         internal Player Opponent { get { return opponent; } set { if (value != this) opponent = value; else new Exception("Нельзя указать оппонентов самого себя."); } }
+        internal bool BattleCalced { get; set; }
     }
 }
