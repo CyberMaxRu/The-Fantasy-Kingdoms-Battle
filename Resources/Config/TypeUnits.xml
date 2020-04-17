@@ -9,7 +9,7 @@
     <TypeMove>Ground</TypeMove>
     <Parameters>
       <DamageMin>2</DamageMin>
-      <DamageMax>4</DamageMax>
+      <DamageMax>6</DamageMax>
       <Health>10</Health>
       <Morale>0</Morale>
     </Parameters>

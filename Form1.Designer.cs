@@ -41,8 +41,10 @@
             this.ButtonEndTurn = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tstbTurn = new System.Windows.Forms.ToolStripTextBox();
+            this.textBoxResultBattle = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPageChieftain.SuspendLayout();
+            this.tabPageBattle.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -140,6 +142,7 @@
             // 
             // tabPageBattle
             // 
+            this.tabPageBattle.Controls.Add(this.textBoxResultBattle);
             this.tabPageBattle.Location = new System.Drawing.Point(4, 25);
             this.tabPageBattle.Name = "tabPageBattle";
             this.tabPageBattle.Size = new System.Drawing.Size(776, 627);
@@ -174,6 +177,14 @@
             this.tstbTurn.Name = "tstbTurn";
             this.tstbTurn.Size = new System.Drawing.Size(100, 23);
             // 
+            // textBoxResultBattle
+            // 
+            this.textBoxResultBattle.Location = new System.Drawing.Point(8, 16);
+            this.textBoxResultBattle.Multiline = true;
+            this.textBoxResultBattle.Name = "textBoxResultBattle";
+            this.textBoxResultBattle.Size = new System.Drawing.Size(752, 480);
+            this.textBoxResultBattle.TabIndex = 0;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -192,6 +203,8 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPageChieftain.ResumeLayout(false);
             this.tabPageChieftain.PerformLayout();
+            this.tabPageBattle.ResumeLayout(false);
+            this.tabPageBattle.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -214,6 +227,7 @@
         private System.Windows.Forms.ToolStripTextBox tstbTurn;
         private System.Windows.Forms.Label labelChieftainExp;
         private System.Windows.Forms.Label LabelChieftainLevel;
+        private System.Windows.Forms.TextBox textBoxResultBattle;
     }
 }
 

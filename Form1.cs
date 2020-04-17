@@ -129,6 +129,7 @@ namespace Fantasy_King_s_Battle
             ShowExternalBuildings();
             ShowChieftain();
             ShowSquad();
+            ShowBattle();
         }
 
         private void DrawExternalBuilding()
@@ -226,6 +227,13 @@ namespace Fantasy_King_s_Battle
             foreach (Control c in tabPageExternal.Controls)
                 if (c is PanelExternalBuilding)
                     ((PanelExternalBuilding)c).ShowData();
+        }
+
+        private void ShowBattle()
+        {
+            CourseBattle cb = lobby.GetBattle(lobby.CurrentPlayer, lobby.Turn - 1);
+
+            textBoxResultBattle.Text = cb != null ? cb.LogBattle : "";
         }
 
         private void ButtonEndTurn_Click(object sender, EventArgs e)

@@ -72,6 +72,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resource.cs" />
+    <Compile Include="CourseBattle.cs" />
     <Compile Include="Squad.cs" />
     <Compile Include="Skill.cs" />
     <Compile Include="SquadInBattle.cs" />

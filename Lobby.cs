@@ -100,40 +100,94 @@ namespace Fantasy_King_s_Battle
 
         private void CalcBattle(Player player1, Player player2)
         {
+            CourseBattle cb = new CourseBattle(player1, player2, Turn);
+            Battles.Add(cb);
+
             Debug.Assert((player1.IsLive == true) && (player2.IsLive == true));
             
             // Инициализируем случайность
             Random r = new Random();
 
-            // Создаем отряды для сражения
-            List<SquadInBattle> Squad1 = new List<SquadInBattle>();
-            List<SquadInBattle> Squad2 = new List<SquadInBattle>();
+            // Создаем списки действуюих и уничтоженных отрядов
+            List<SquadInBattle> activeSquad1 = new List<SquadInBattle>();
+            List<SquadInBattle> activeSquad2 = new List<SquadInBattle>();
+            List<SquadInBattle> lossesSquad1 = new List<SquadInBattle>();
+            List<SquadInBattle> lossesSquad2 = new List<SquadInBattle>();
 
-            MakeSquadsInBattle(player1, Squad1);
-            MakeSquadsInBattle(player2, Squad2);
+            MakeSquadsInBattle(player1, activeSquad1);
+            MakeSquadsInBattle(player2, activeSquad2);
 
             // Делаем шаги расчета сражения
-            int step = 1;
-            for (; step < 500; step++)
+            for (; ;)
             {
-                // Вычисляем повреждение
-                Squad1[0].DoDamage(Squad2[0], r);
-                Squad2[0].DoDamage(Squad1[0], r);
+                // Проводим сражение между первыми отрядами
+                BattleSquads(activeSquad1[0], activeSquad2[0]);
 
-                // Убираем убитых юнитов
-                Squad1[0].RemoveDied();
-                Squad2[0].RemoveDied();
+                // Если передовой отряд был уничтожен, переносим его в потери
+                if (activeSquad1[0].UnitsAlive == 0)
+                {
+                    lossesSquad1.Add(activeSquad1[0]);
+                    activeSquad1.RemoveAt(0);
+                }
 
-                // Если отряд уничтожен, прекращаем сражение
-                if ((Squad1[0].UnitsAlive == 0) || (Squad2[0].UnitsAlive == 0))
+                if (activeSquad2[0].UnitsAlive == 0)
+                {
+                    lossesSquad2.Add(activeSquad2[0]);
+                    activeSquad2.RemoveAt(0);
+                }
+
+                // Переформировываем положение юнитов в отряде
+                if (activeSquad1.Count > 0)
+                    activeSquad1[0].RearrangeSquad();
+                if (activeSquad2.Count > 0)
+                    activeSquad2[0].RearrangeSquad();
+
+                // Если у хотя бы одного игрока больше нет отрядов, заканчиваем сражение
+                if ((activeSquad1.Count == 0) || (activeSquad2.Count == 0))
                     break;
             }
-            
-            // Записываем результаты сражения
-            MessageBox.Show("Рассчитано шагов: " + step.ToString()
-                + Environment.NewLine + "Alive: " + Squad1[0].UnitsAlive.ToString() + " - " + Squad2[0].UnitsAlive.ToString()
-                + Environment.NewLine + "Killed: " + Squad1[0].Killed.ToString() + " - " + Squad2[0].Killed.ToString());
 
+            Player winner = (activeSquad1.Count > 0) && (activeSquad1.Count == 0) ? player1 : (activeSquad1.Count == 0) && (activeSquad1.Count > 0) ? player2 : null;
+            cb.EndBattle(0, winner);
+
+            // Записываем результаты сражения
+            //MessageBox.Show("Рассчитано шагов: " + step.ToString()
+            //    + Environment.NewLine + "Alive: " + Squad1[0].UnitsAlive.ToString() + " - " + Squad2[0].UnitsAlive.ToString()
+            //    + Environment.NewLine + "Killed: " + Squad1[0].Killed.ToString() + " - " + Squad2[0].Killed.ToString());
+
+            // Проводит битву между двумя отрядами
+            void BattleSquads(SquadInBattle s1, SquadInBattle s2)
+            {
+                //
+                cb.AddLog(0, "Начало боя.");
+                cb.AddLog(0, s1.GetName() + " vs " + s2.GetName());
+
+                // Делаем шаги расчета сражения
+                int step = 1;
+                for (; step < Config.MAX_STEP_IN_BATTLE_SQUADS; step++)
+                {
+                    // Вычисляем повреждение
+                    s1.DoDamage(s2, r);
+                    s2.DoDamage(s1, r);
+
+                    // Убираем убитых юнитов
+                    s1.RemoveDied();
+                    s2.RemoveDied();
+
+                    // Если любой из отрядов уничтожен, прекращаем сражение
+                    if ((s1.UnitsAlive == 0) || (s2.UnitsAlive == 0))
+                        break;
+                }
+
+                cb.AddLog(0, "Выполнено шагов: " + step.ToString());
+                cb.AddLog(0, "Результат боя: " + ((s1.UnitsAlive > 0) && (s2.UnitsAlive == 0) ? "Победил " + s1.GetName() : ((s2.UnitsAlive > 0) && (s1.UnitsAlive == 0) ? "Победил " + s2.GetName() : "Ничья")));
+                cb.AddLog(0, s1.GetName() + ": юнитов " + s1.UnitsAlive.ToString() + "/" + s1.UnitsTotal.ToString());
+                cb.AddLog(0, s2.GetName() + ": юнитов " + s2.UnitsAlive.ToString() + "/" + s1.UnitsTotal.ToString());
+
+                cb.AddLog(0, Environment.NewLine);
+            }
+
+            // Создает отряды игрока для проведения сражения
             void MakeSquadsInBattle(Player p, List<SquadInBattle> list)
             {
                 foreach (Squad s in p.Squads)
@@ -151,9 +205,24 @@ namespace Fantasy_King_s_Battle
             }
         }
 
+        internal CourseBattle GetBattle(Player p, int turn)
+        {
+            if (turn == 0)
+                return null;
+
+            foreach (CourseBattle cb in Battles)
+            {
+                if (((cb.Player1 == p) || (cb.Player2 == p)) && (cb.Turn == turn))
+                    return cb;
+            }
+
+            throw new Exception("Сражение не найдено.");
+        }
+
         internal Player[] Players { get; }
         internal int CurrentPlayerIndex { get; private set; }
         internal Player CurrentPlayer { get; private set; }
         internal int Turn { get; private set; }
+        internal List<CourseBattle> Battles { get; } = new List<CourseBattle>();
     }
 }

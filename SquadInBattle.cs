@@ -68,7 +68,8 @@ namespace Fantasy_King_s_Battle
         public SquadInBattle(Squad s)
         {
             Squad = s;
-            UnitsAlive = Config.ROWS_IN_SQUAD * Config.UNIT_IN_ROW;
+            UnitsTotal = Config.ROWS_IN_SQUAD * Config.UNIT_IN_ROW;
+            UnitsAlive = UnitsTotal;
 
             // Создаем юнитов
             Units = new UnitInBattle[Config.ROWS_IN_SQUAD, Config.UNIT_IN_ROW];
@@ -82,6 +83,7 @@ namespace Fantasy_King_s_Battle
         internal Squad Squad { get; }
         internal UnitInBattle[,] Units { get; }
         internal List<UnitInBattle> LostUnits = new List<UnitInBattle>();
+        internal int UnitsTotal { get;}
         internal int UnitsAlive { get; set; }
 
         // Статистика отряда
@@ -92,6 +94,10 @@ namespace Fantasy_King_s_Battle
 
         internal void DoDamage(SquadInBattle enemy, Random r)
         {
+            Debug.Assert(enemy != null);
+            Debug.Assert(r != null);
+            Debug.Assert(this != enemy);
+
             UnitInBattle ourUnit;
             UnitInBattle enemyUnit;
 
@@ -111,6 +117,7 @@ namespace Fantasy_King_s_Battle
             }
         }
 
+        // Убираем убитых юнитов
         internal void RemoveDied()
         {
             UnitInBattle unit;
@@ -137,6 +144,20 @@ namespace Fantasy_King_s_Battle
                     }
                 }
             }
+        }
+
+        // Реструктуризирует живых юнитов отряда, размещая их заново по рядам
+        internal void RearrangeSquad()
+        {
+            if (Losses > 0)
+            {
+
+            }
+        }
+
+        internal string GetName()
+        {
+            return Squad.Player.Name + "." + Squad.TypeUnit.Name;
         }
     }
 }
