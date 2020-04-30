@@ -22,6 +22,7 @@ namespace Fantasy_King_s_Battle
         private readonly ImageList ilTypeBattle;
         private readonly ImageList ilGuilds;
         private readonly ImageList ilHeroes;
+        private readonly ImageList ilTabs;
 
         private readonly Lobby lobby;
         private int curAppliedPlayer = -1;
@@ -61,6 +62,7 @@ namespace Fantasy_King_s_Battle
             ilTypeBattle = PrepareImageList("TypeBattle52.png", 52, 52, false);
             ilGuilds = PrepareImageList("Guilds.png", 134, 134, true);
             ilHeroes = PrepareImageList("Heroes.png", 97, 97, false);
+            ilTabs = PrepareImageList("Tabs.png", 48, 48, false);
 
             //    
             lobby = new Lobby(8);
@@ -94,6 +96,11 @@ namespace Fantasy_King_s_Battle
                 p.PanelAbout = pap;
                 top += pap.Height + Config.GRID_SIZE;
             }
+
+            //
+            tabControl1.ImageList = ilTabs; 
+            tabPageGuilds.ImageIndex = 0;
+            tabPageGuilds.Text = "";
 
             //
             DrawGuilds();
