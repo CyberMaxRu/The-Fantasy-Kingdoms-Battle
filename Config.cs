@@ -33,6 +33,14 @@ namespace Fantasy_King_s_Battle
                 Resources.Add(new Resource(n));
             }
 
+            // Загрузка конфигурации гильдий
+            xmlDoc = CreateXmlDocument("Config\\Guilds.xml");
+
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Guilds/Guild"))
+            {
+                Guilds.Add(new Guild(n));
+            }
+
             // Загрузка конфигурации зданий
             xmlDoc = CreateXmlDocument("Config\\Buildings.xml");
             Building b;
@@ -97,6 +105,7 @@ namespace Fantasy_King_s_Battle
 
         internal string PathResources { get; }
         internal List<Resource> Resources { get; } = new List<Resource>();
+        internal List<Guild> Guilds { get; } = new List<Guild>();
         internal List<Building> ExternalBuildings { get; } = new List<Building>();
         internal List<Building> InternalBuildings { get; } = new List<Building>();
         internal List<Fraction> Fractions { get; } = new List<Fraction>();
@@ -193,6 +202,19 @@ namespace Fantasy_King_s_Battle
             }
 
             throw new Exception("Навык " + ID + " не найден.");
+        }
+
+        internal Guild FindGuild(string ID)
+        {
+            foreach (Guild g in Guilds)
+            {
+                if (g.ID == ID)
+                {
+                    return g;
+                }
+            }
+
+            throw new Exception("Гильдия " + ID + " не найдена.");
         }
     }
 }

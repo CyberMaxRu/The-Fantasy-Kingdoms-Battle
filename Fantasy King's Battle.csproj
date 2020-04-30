@@ -58,6 +58,8 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Fraction.cs" />
+    <Compile Include="Guild.cs" />
+    <Compile Include="Hero.cs" />
     <Compile Include="Lobby.cs" />
     <Compile Include="PanelAboutPlayer.cs">
       <SubType>Component</SubType>
@@ -103,6 +105,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Config\Guilds.xml" />
     <Content Include="Resources\Config\Buildings.xml" />
     <Content Include="Resources\Config\ClassesUnits.xml" />
     <Content Include="Resources\Config\Fractions.xml" />

@@ -38,10 +38,11 @@
             this.LabelChieftainLevel = new System.Windows.Forms.Label();
             this.tabPageArmy = new System.Windows.Forms.TabPage();
             this.tabPageBattle = new System.Windows.Forms.TabPage();
+            this.textBoxResultBattle = new System.Windows.Forms.TextBox();
             this.ButtonEndTurn = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tstbTurn = new System.Windows.Forms.ToolStripTextBox();
-            this.textBoxResultBattle = new System.Windows.Forms.TextBox();
+            this.tabPageGuilds = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.tabPageChieftain.SuspendLayout();
             this.tabPageBattle.SuspendLayout();
@@ -63,6 +64,7 @@
             this.tabControl1.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPageExternal);
+            this.tabControl1.Controls.Add(this.tabPageGuilds);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPageChieftain);
             this.tabControl1.Controls.Add(this.tabPageArmy);
@@ -150,6 +152,14 @@
             this.tabPageBattle.Text = "Сражение";
             this.tabPageBattle.UseVisualStyleBackColor = true;
             // 
+            // textBoxResultBattle
+            // 
+            this.textBoxResultBattle.Location = new System.Drawing.Point(8, 16);
+            this.textBoxResultBattle.Multiline = true;
+            this.textBoxResultBattle.Name = "textBoxResultBattle";
+            this.textBoxResultBattle.Size = new System.Drawing.Size(752, 480);
+            this.textBoxResultBattle.TabIndex = 0;
+            // 
             // ButtonEndTurn
             // 
             this.ButtonEndTurn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -177,13 +187,14 @@
             this.tstbTurn.Name = "tstbTurn";
             this.tstbTurn.Size = new System.Drawing.Size(100, 23);
             // 
-            // textBoxResultBattle
+            // tabPageGuilds
             // 
-            this.textBoxResultBattle.Location = new System.Drawing.Point(8, 16);
-            this.textBoxResultBattle.Multiline = true;
-            this.textBoxResultBattle.Name = "textBoxResultBattle";
-            this.textBoxResultBattle.Size = new System.Drawing.Size(752, 480);
-            this.textBoxResultBattle.TabIndex = 0;
+            this.tabPageGuilds.Location = new System.Drawing.Point(4, 25);
+            this.tabPageGuilds.Name = "tabPageGuilds";
+            this.tabPageGuilds.Size = new System.Drawing.Size(776, 627);
+            this.tabPageGuilds.TabIndex = 6;
+            this.tabPageGuilds.Text = "Гильдии";
+            this.tabPageGuilds.UseVisualStyleBackColor = true;
             // 
             // FormMain
             // 
@@ -228,6 +239,7 @@
         private System.Windows.Forms.Label labelChieftainExp;
         private System.Windows.Forms.Label LabelChieftainLevel;
         private System.Windows.Forms.TextBox textBoxResultBattle;
+        private System.Windows.Forms.TabPage tabPageGuilds;
     }
 }
 
