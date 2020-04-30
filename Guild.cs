@@ -46,5 +46,6 @@ namespace Fantasy_King_s_Battle
         internal int ImageIndex { get; }
         internal int Cost { get; }
         internal int LevelCastle { get; }
+        internal PanelGuild Panel { get; set; }
     }
 }

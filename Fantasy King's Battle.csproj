@@ -67,10 +67,14 @@
     <Compile Include="PanelExternalBuilding.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="PanelGuild.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="PanelSquad.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Player.cs" />
+    <Compile Include="PlayerGuild.cs" />
     <Compile Include="PlayerHero.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

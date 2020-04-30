@@ -20,6 +20,8 @@ namespace Fantasy_King_s_Battle
         private readonly ImageList ilSkills;
         private readonly ImageList ilResultBattle;
         private readonly ImageList ilTypeBattle;
+        private readonly ImageList ilGuilds;
+        private readonly ImageList ilHeroes;
 
         private readonly Lobby lobby;
         private int curAppliedPlayer = -1;
@@ -57,6 +59,8 @@ namespace Fantasy_King_s_Battle
             ilSkills = PrepareImageList("Skills.png", 82, 94, false);
             ilResultBattle = PrepareImageList("ResultBattle52.png", 45, 52, false);
             ilTypeBattle = PrepareImageList("TypeBattle52.png", 52, 52, false);
+            ilGuilds = PrepareImageList("Guilds.png", 134, 134, true);
+            ilHeroes = PrepareImageList("Heroes.png", 97, 97, false);
 
             //    
             lobby = new Lobby(8);
@@ -92,6 +96,7 @@ namespace Fantasy_King_s_Battle
             }
 
             //
+            DrawGuilds();
             DrawChieftain();
             ShowDataPlayer();
 
@@ -163,6 +168,7 @@ namespace Fantasy_King_s_Battle
 
             ShowLobby();
             ShowExternalBuildings();
+            ShowGuilds();
             ShowChieftain();
             ShowSquad();
             ShowBattle();
@@ -200,6 +206,46 @@ namespace Fantasy_King_s_Battle
 
                 if (p != null)
                     top += p.Height;
+            }
+        }
+        private void DrawGuilds()
+        {
+            int top = Config.GRID_SIZE;
+            int left;
+            int height = 0;
+            bool found;
+
+            for (int levelCastle = 1; ; levelCastle++)
+            {
+                left = Config.GRID_SIZE;
+                found = false;
+
+                foreach (Guild g in Config.Guilds)
+                {
+                    if (g.LevelCastle == levelCastle)
+                    {
+                        found = true;
+
+                        g.Panel = new PanelGuild(left, top, ilGuilds);
+                        g.Panel.Parent = tabPageGuilds;
+
+                        left += g.Panel.Width + Config.GRID_SIZE;
+                        height = g.Panel.Height;
+                    }
+                }
+
+                if (found == false)
+                    break;
+
+                top += height + Config.GRID_SIZE;
+            }
+        }
+
+        private void ShowGuilds()
+        {
+            foreach (PlayerGuild pg in lobby.CurrentPlayer.Guilds)
+            {
+                pg.UpdatePanel();
             }
         }
 

@@ -42,6 +42,12 @@ namespace Fantasy_King_s_Battle
                 };
             }
 
+            // Инициализация гильдий
+            foreach (Guild g in FormMain.Config.Guilds)
+            {
+                Guilds.Add(new PlayerGuild(this, g));
+            }
+
             Chieftain = new Chieftain(this);
 
             //
@@ -56,7 +62,7 @@ namespace Fantasy_King_s_Battle
         {
             Debug.Assert(TypePlayer == TypePlayer.Computer);
             Debug.Assert(IsLive == true);
-            
+
             // Здесь расчет хода для ИИ
         }
 
@@ -79,6 +85,7 @@ namespace Fantasy_King_s_Battle
         internal string Name { get; }
         internal int Position { get; }
         internal Fraction Fraction { get; }
+        internal List<PlayerGuild> Guilds { get; } = new List<PlayerGuild>();
         internal TypePlayer TypePlayer { get; }
         internal Chieftain Chieftain { get; }
         internal List<Squad> Squads { get; } = new List<Squad>();
