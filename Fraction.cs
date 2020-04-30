@@ -16,7 +16,7 @@ namespace Fantasy_King_s_Battle
             ID = n.SelectSingleNode("ID").InnerText;
             Name = n.SelectSingleNode("Name").InnerText;
             ImageIndex = n.SelectSingleNode("ImageIndex") != null ? Convert.ToInt32(n.SelectSingleNode("ImageIndex").InnerText) : -1;
-            Position = FormMain.Config.Resources.Count;
+            Position = FormMain.Config.Fractions.Count;
 
             // Проверяем, что таких же ID и наименования нет
             foreach (Fraction f in FormMain.Config.Fractions)
@@ -35,22 +35,6 @@ namespace Fantasy_King_s_Battle
                 {
                     throw new Exception("В конфигурации фракций повторяется ImageIndex = " + ImageIndex.ToString());
                 }
-            }
-
-            // Загружаем начальные ресурсы
-            StartResources = new int[FormMain.Config.Resources.Count];
-            XmlNode l;
-            Resource r;
-            int value;
-            l = n.SelectSingleNode("StartResources");
-            for (int k = 0; k < l.ChildNodes.Count; k++)
-            {
-                r = FormMain.Config.FindResource(l.ChildNodes[k].LocalName);
-                value = Convert.ToInt32(l.ChildNodes[k].InnerText);
-                if (value <= 0)
-                    throw new Exception("У фракции " + ID + " количество ресурса " + r.ToString() + " меньше или равно нолю (" + value.ToString() + ").");
-
-                StartResources[r.Position] = value;
             }
 
             if (n.SelectSingleNode("Images") != null)

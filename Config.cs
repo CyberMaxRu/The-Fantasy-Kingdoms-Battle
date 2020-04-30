@@ -25,14 +25,6 @@ namespace Fantasy_King_s_Battle
             //
             XmlDocument xmlDoc;
 
-            // Загрузка конфигурации ресурсов
-            xmlDoc = CreateXmlDocument("Config\\Resources.xml");
-
-            foreach (XmlNode n in xmlDoc.SelectNodes("/Resources/Resource"))
-            {
-                Resources.Add(new Resource(n));
-            }
-
             // Загрузка конфигурации гильдий
             xmlDoc = CreateXmlDocument("Config\\Guilds.xml");
 
@@ -56,18 +48,6 @@ namespace Fantasy_King_s_Battle
             {
                 b = new Building(n);
 
-                switch (b.PlaceBuilding)
-                {
-                    case PlaceBuilding.External:
-                        ExternalBuildings.Add(b);
-                        break;
-                    case PlaceBuilding.Internal:
-                        InternalBuildings.Add(b);
-                        break;
-                    default:
-                        new Exception("Неизвестный тип здания");
-                        break;
-                }
             }
 
             // Загрузка фракций
@@ -112,51 +92,23 @@ namespace Fantasy_King_s_Battle
         }
 
         internal string PathResources { get; }
-        internal List<Resource> Resources { get; } = new List<Resource>();
         internal List<Guild> Guilds { get; } = new List<Guild>();
         internal List<Hero> Heroes { get; } = new List<Hero>();
-        internal List<Building> ExternalBuildings { get; } = new List<Building>();
-        internal List<Building> InternalBuildings { get; } = new List<Building>();
         internal List<Fraction> Fractions { get; } = new List<Fraction>();
         internal List<ClassUnit> ClassesUnits { get; } = new List<ClassUnit>();
         internal List<TypeUnit> TypeUnits { get; } = new List<TypeUnit>();
         internal List<Skill> Skills { get; } = new List<Skill>();
         internal int MaxLevelSkill { get; }
-        internal Resource FindResource(string ID)
-        {
-            foreach (Resource r in Resources)
-            {
-                if (r.ID == ID)
-                {
-                    return r;
-                }
-            }
-
-            throw new Exception("Ресурс " + ID + " не найден.");
-        }
-
-        internal Building FindExternalBuilding(string ID)
-        {
-            foreach (Building b in ExternalBuildings)
-            {
-                if (b.ID == ID)
-                {
-                    return b;
-                }
-            }
-
-            throw new Exception("Здание " + ID + " не найдено.");
-        }
 
         internal Building FindInternalBuilding(string ID)
         {
-            foreach (Building b in InternalBuildings)
+/*            foreach (Building b in InternalBuildings)
             {
                 if (b.ID == ID)
                 {
                     return b;
                 }
-            }
+            }*/
 
             throw new Exception("Здание " + ID + " не найдено.");
         }

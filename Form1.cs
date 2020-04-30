@@ -16,17 +16,25 @@ namespace Fantasy_King_s_Battle
 
         private readonly ImageList ilResources24;
         private readonly ImageList ilFractions;
-        private readonly ImageList ilExternalBuildings;
         private readonly ImageList ilSkills;
         private readonly ImageList ilResultBattle;
         private readonly ImageList ilTypeBattle;
         private readonly ImageList ilGuilds;
         private readonly ImageList ilHeroes;
         private readonly ImageList ilGui;
+        private readonly ImageList ilGui16;
 
-        internal const int GUI_GUILDS = 0;
-        internal const int GUI_LEVELUP = 1;
-        internal const int GUI_BUY = 2;
+        private readonly ToolStripStatusLabel StatusLabelGold;
+
+        internal const int GUI_LOBBY = 0;
+        internal const int GUI_GUILDS = 1;
+        internal const int GUI_ECONOMY = 2;
+        internal const int GUI_DEFENSE = 3;
+        internal const int GUI_TEMPLE = 4;
+        internal const int GUI_LEVELUP = 5;
+        internal const int GUI_BUY = 6;
+
+        internal const int GUI_16_GOLD = 0;
 
         private readonly Lobby lobby;
         private int curAppliedPlayer = -1;
@@ -54,37 +62,29 @@ namespace Fantasy_King_s_Battle
             _ = new Config(dirResources, this);
 
             // Подготавливаем иконки
-            ilResources24 = PrepareImageList("Resources24.png", 24, 24, false);
-            StatusStrip.ImageList = ilResources24;
-
             ilFractions = PrepareImageList("Fractions.png", 78, 52, true);
             
-            ilExternalBuildings = PrepareImageList("ExternalBuildings.png", 82, 64, false);
-
             ilSkills = PrepareImageList("Skills.png", 82, 94, false);
             ilResultBattle = PrepareImageList("ResultBattle52.png", 45, 52, false);
             ilTypeBattle = PrepareImageList("TypeBattle52.png", 52, 52, false);
             ilGuilds = PrepareImageList("Guilds.png", 128, 128, true);
             ilHeroes = PrepareImageList("Heroes.png", 128, 128, false);
             ilGui = PrepareImageList("Gui.png", 48, 48, false);
+            ilGui16 = PrepareImageList("Gui16.png", 16, 16, false);
 
             //    
             lobby = new Lobby(8);
 
-            // Создаем метки под ресурсы
-            foreach (Resource r in Config.Resources)
+            // Создаем метку под золото
+            StatusStrip.ImageList = ilGui16;
+
+            StatusLabelGold = new ToolStripStatusLabel(StatusStrip.ImageList.Images[GUI_16_GOLD])
             {
-                r.StatusLabel = new ToolStripStatusLabel(r.Name)
-                {
-                    ImageIndex = r.ImageIndex,
-                    ImageAlign = ContentAlignment.MiddleLeft,
-                    AutoSize = false,
-                    Width = 64,
-                    ToolTipText = r.Name,
-                    AutoToolTip = true
-                };
-                StatusStrip.Items.Add(r.StatusLabel);
-            }
+                ImageAlign = ContentAlignment.MiddleLeft,
+                AutoSize = false,
+                Width = 64
+            };
+            StatusStrip.Items.Add(StatusLabelGold);
 
             // Создаем панели игроков
             PanelAboutPlayer pap;
@@ -93,7 +93,7 @@ namespace Fantasy_King_s_Battle
             {
                 pap = new PanelAboutPlayer(p, ilFractions, ilResultBattle, ilTypeBattle)
                 {
-                    Parent = tabPage1,
+                    Parent = tabPageLobby,
                     Top = top
                 };
 
@@ -102,9 +102,15 @@ namespace Fantasy_King_s_Battle
             }
 
             //
-            tabControl1.ImageList = ilGui; 
-            tabPageGuilds.ImageIndex = 0;
+            tabControl1.ImageList = ilGui;
+            tabPageLobby.ImageIndex = GUI_LOBBY;
+            tabPageLobby.Text = "";
+            tabPageGuilds.ImageIndex = GUI_GUILDS;
             tabPageGuilds.Text = "";
+            tabPageEconomic.ImageIndex = GUI_ECONOMY;
+            tabPageEconomic.Text = "";
+            tabPageTemples.ImageIndex = GUI_TEMPLE;
+            tabPageTemples.Text = "";
 
             //
             DrawGuilds();
@@ -164,22 +170,18 @@ namespace Fantasy_King_s_Battle
         {
             tstbTurn.Text = "Ход: " + lobby.Turn.ToString();
 
-            foreach (Resource r in Config.Resources)
-            {
-                r.StatusLabel.Text = lobby.CurrentPlayer.Resources[r.Position].ToString();
-            }
+            StatusLabelGold.Text = lobby.CurrentPlayer.Gold.ToString();
 
             // Если этого игрока не отрисовывали, формируем заново вкладки
             if (curAppliedPlayer != lobby.CurrentPlayerIndex)
             {
-                DrawExternalBuilding();
+                //DrawExternalBuilding();
                 DrawSquad();
 
                 curAppliedPlayer = lobby.CurrentPlayerIndex;
             }
 
             ShowLobby();
-            ShowExternalBuildings();
             ShowGuilds();
             ShowChieftain();
             ShowSquad();
@@ -194,32 +196,6 @@ namespace Fantasy_King_s_Battle
             }
         }
 
-        private void DrawExternalBuilding()
-        {
-            tabPageExternal.Controls.Clear();
-            int top = 0;
-            int left;
-            PanelExternalBuilding p = null;
-
-            foreach (Building b in Config.ExternalBuildings)
-            {
-                left = 0;
-                foreach (BuildingOfPlayer bp in lobby.CurrentPlayer.ExternalBuildings[b.Position])
-                {
-                    p = new PanelExternalBuilding(lobby.CurrentPlayer, bp, ilExternalBuildings, ilResources24)
-                    {
-                        Parent = tabPageExternal,
-                        Top = top,
-                        Left = left
-                    };
-
-                    left += p.Width + Config.GRID_SIZE;
-                }
-
-                if (p != null)
-                    top += p.Height;
-            }
-        }
         private void DrawGuilds()
         {
             int top = Config.GRID_SIZE;
@@ -322,13 +298,6 @@ namespace Fantasy_King_s_Battle
 
         private void ShowSquad()
         {
-        }
-
-        private void ShowExternalBuildings()
-        {
-            foreach (Control c in tabPageExternal.Controls)
-                if (c is PanelExternalBuilding)
-                    ((PanelExternalBuilding)c).ShowData();
         }
 
         private void ShowBattle()

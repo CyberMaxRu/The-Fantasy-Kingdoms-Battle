@@ -30,9 +30,9 @@
         {
             this.StatusStrip = new System.Windows.Forms.StatusStrip();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPageExternal = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabPageLobby = new System.Windows.Forms.TabPage();
+            this.tabPageGuilds = new System.Windows.Forms.TabPage();
+            this.tabPageEconomic = new System.Windows.Forms.TabPage();
             this.tabPageChieftain = new System.Windows.Forms.TabPage();
             this.labelChieftainExp = new System.Windows.Forms.Label();
             this.LabelChieftainLevel = new System.Windows.Forms.Label();
@@ -42,7 +42,7 @@
             this.ButtonEndTurn = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tstbTurn = new System.Windows.Forms.ToolStripTextBox();
-            this.tabPageGuilds = new System.Windows.Forms.TabPage();
+            this.tabPageTemples = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.tabPageChieftain.SuspendLayout();
             this.tabPageBattle.SuspendLayout();
@@ -62,10 +62,10 @@
             // tabControl1
             // 
             this.tabControl1.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPageExternal);
+            this.tabControl1.Controls.Add(this.tabPageLobby);
             this.tabControl1.Controls.Add(this.tabPageGuilds);
-            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPageEconomic);
+            this.tabControl1.Controls.Add(this.tabPageTemples);
             this.tabControl1.Controls.Add(this.tabPageChieftain);
             this.tabControl1.Controls.Add(this.tabPageArmy);
             this.tabControl1.Controls.Add(this.tabPageBattle);
@@ -75,34 +75,33 @@
             this.tabControl1.Size = new System.Drawing.Size(960, 656);
             this.tabControl1.TabIndex = 1;
             // 
-            // tabPage1
+            // tabPageLobby
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(776, 627);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Игроки";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPageLobby.Location = new System.Drawing.Point(4, 25);
+            this.tabPageLobby.Name = "tabPageLobby";
+            this.tabPageLobby.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageLobby.Size = new System.Drawing.Size(952, 627);
+            this.tabPageLobby.TabIndex = 0;
+            this.tabPageLobby.Text = "Лобби";
+            this.tabPageLobby.UseVisualStyleBackColor = true;
             // 
-            // tabPageExternal
+            // tabPageGuilds
             // 
-            this.tabPageExternal.Location = new System.Drawing.Point(4, 25);
-            this.tabPageExternal.Name = "tabPageExternal";
-            this.tabPageExternal.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageExternal.Size = new System.Drawing.Size(776, 627);
-            this.tabPageExternal.TabIndex = 1;
-            this.tabPageExternal.Text = "Окрестности";
-            this.tabPageExternal.UseVisualStyleBackColor = true;
+            this.tabPageGuilds.Location = new System.Drawing.Point(4, 25);
+            this.tabPageGuilds.Name = "tabPageGuilds";
+            this.tabPageGuilds.Size = new System.Drawing.Size(952, 627);
+            this.tabPageGuilds.TabIndex = 6;
+            this.tabPageGuilds.Text = "Гильдии";
+            this.tabPageGuilds.UseVisualStyleBackColor = true;
             // 
-            // tabPage3
+            // tabPageEconomic
             // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 25);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(776, 627);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Замок";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.tabPageEconomic.Location = new System.Drawing.Point(4, 25);
+            this.tabPageEconomic.Name = "tabPageEconomic";
+            this.tabPageEconomic.Size = new System.Drawing.Size(952, 627);
+            this.tabPageEconomic.TabIndex = 2;
+            this.tabPageEconomic.Text = "Экономика";
+            this.tabPageEconomic.UseVisualStyleBackColor = true;
             // 
             // tabPageChieftain
             // 
@@ -110,7 +109,7 @@
             this.tabPageChieftain.Controls.Add(this.LabelChieftainLevel);
             this.tabPageChieftain.Location = new System.Drawing.Point(4, 25);
             this.tabPageChieftain.Name = "tabPageChieftain";
-            this.tabPageChieftain.Size = new System.Drawing.Size(776, 627);
+            this.tabPageChieftain.Size = new System.Drawing.Size(952, 627);
             this.tabPageChieftain.TabIndex = 4;
             this.tabPageChieftain.Text = "Военачальник";
             this.tabPageChieftain.UseVisualStyleBackColor = true;
@@ -137,7 +136,7 @@
             // 
             this.tabPageArmy.Location = new System.Drawing.Point(4, 25);
             this.tabPageArmy.Name = "tabPageArmy";
-            this.tabPageArmy.Size = new System.Drawing.Size(776, 627);
+            this.tabPageArmy.Size = new System.Drawing.Size(952, 627);
             this.tabPageArmy.TabIndex = 3;
             this.tabPageArmy.Text = "Войско";
             this.tabPageArmy.UseVisualStyleBackColor = true;
@@ -147,7 +146,7 @@
             this.tabPageBattle.Controls.Add(this.textBoxResultBattle);
             this.tabPageBattle.Location = new System.Drawing.Point(4, 25);
             this.tabPageBattle.Name = "tabPageBattle";
-            this.tabPageBattle.Size = new System.Drawing.Size(776, 627);
+            this.tabPageBattle.Size = new System.Drawing.Size(952, 627);
             this.tabPageBattle.TabIndex = 5;
             this.tabPageBattle.Text = "Сражение";
             this.tabPageBattle.UseVisualStyleBackColor = true;
@@ -187,14 +186,14 @@
             this.tstbTurn.Name = "tstbTurn";
             this.tstbTurn.Size = new System.Drawing.Size(100, 23);
             // 
-            // tabPageGuilds
+            // tabPageTemples
             // 
-            this.tabPageGuilds.Location = new System.Drawing.Point(4, 25);
-            this.tabPageGuilds.Name = "tabPageGuilds";
-            this.tabPageGuilds.Size = new System.Drawing.Size(952, 627);
-            this.tabPageGuilds.TabIndex = 6;
-            this.tabPageGuilds.Text = "Гильдии";
-            this.tabPageGuilds.UseVisualStyleBackColor = true;
+            this.tabPageTemples.Location = new System.Drawing.Point(4, 25);
+            this.tabPageTemples.Name = "tabPageTemples";
+            this.tabPageTemples.Size = new System.Drawing.Size(952, 627);
+            this.tabPageTemples.TabIndex = 7;
+            this.tabPageTemples.Text = "Храмы";
+            this.tabPageTemples.UseVisualStyleBackColor = true;
             // 
             // FormMain
             // 
@@ -227,9 +226,8 @@
 
         private System.Windows.Forms.StatusStrip StatusStrip;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPageExternal;
-        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tabPageLobby;
+        private System.Windows.Forms.TabPage tabPageEconomic;
         private System.Windows.Forms.TabPage tabPageChieftain;
         private System.Windows.Forms.TabPage tabPageArmy;
         private System.Windows.Forms.TabPage tabPageBattle;
@@ -240,6 +238,7 @@
         private System.Windows.Forms.Label LabelChieftainLevel;
         private System.Windows.Forms.TextBox textBoxResultBattle;
         private System.Windows.Forms.TabPage tabPageGuilds;
+        private System.Windows.Forms.TabPage tabPageTemples;
     }
 }
 

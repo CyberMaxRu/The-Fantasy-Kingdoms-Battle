@@ -25,23 +25,6 @@ namespace Fantasy_King_s_Battle
 
             // Инициализируем ресурсы               
             Gold = 100_000;
-            Resources = new int[FormMain.Config.Resources.Count];
-            for (int i = 0; i < fraction.StartResources.Count(); i++)
-            {
-                Resources[i] = fraction.StartResources[i];
-            }
-
-            // Инициализация зданий
-            ExternalBuildings = new List<BuildingOfPlayer>[FormMain.Config.ExternalBuildings.Count];
-
-            foreach (Building b in FormMain.Config.ExternalBuildings)
-            {
-                ExternalBuildings[b.Position] = new List<BuildingOfPlayer>
-                {
-                    new BuildingOfPlayer(b),
-                    new BuildingOfPlayer(b),
-                };
-            }
 
             // Инициализация гильдий
             foreach (Guild g in FormMain.Config.Guilds)
@@ -71,14 +54,14 @@ namespace Fantasy_King_s_Battle
         {
             Debug.Assert(IsLive == true);
 
-            for (int i = 0; i < ExternalBuildings.Count(); i++)
+/*            for (int i = 0; i < ExternalBuildings.Count(); i++)
             {
                 foreach (BuildingOfPlayer bp in ExternalBuildings[i])
                 {
                     for (int r = 0; r < FormMain.Config.Resources.Count(); r++)
                         Resources[r] += bp.Building.IncomeResources[r];
                 }
-            }
+            }*/
             //Resources[0] += 1000;
         }
 
