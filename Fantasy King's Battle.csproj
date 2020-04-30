@@ -105,6 +105,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Config\Heroes.xml" />
     <Content Include="Resources\Config\Guilds.xml" />
     <Content Include="Resources\Config\Buildings.xml" />
     <Content Include="Resources\Config\ClassesUnits.xml" />

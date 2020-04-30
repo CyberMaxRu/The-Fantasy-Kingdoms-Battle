@@ -41,6 +41,14 @@ namespace Fantasy_King_s_Battle
                 Guilds.Add(new Guild(n));
             }
 
+            // Загрузка конфигурации героев
+            xmlDoc = CreateXmlDocument("Config\\Heroes.xml");
+
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Heroes/Hero"))
+            {
+                Heroes.Add(new Hero(n));
+            }
+
             // Загрузка конфигурации зданий
             xmlDoc = CreateXmlDocument("Config\\Buildings.xml");
             Building b;
@@ -106,6 +114,7 @@ namespace Fantasy_King_s_Battle
         internal string PathResources { get; }
         internal List<Resource> Resources { get; } = new List<Resource>();
         internal List<Guild> Guilds { get; } = new List<Guild>();
+        internal List<Hero> Heroes { get; } = new List<Hero>();
         internal List<Building> ExternalBuildings { get; } = new List<Building>();
         internal List<Building> InternalBuildings { get; } = new List<Building>();
         internal List<Fraction> Fractions { get; } = new List<Fraction>();
@@ -215,6 +224,17 @@ namespace Fantasy_King_s_Battle
             }
 
             throw new Exception("Гильдия " + ID + " не найдена.");
+        }
+
+        internal Hero FindHero(string ID)
+        {
+            foreach (Hero h in Heroes)
+            {
+                if (h.ID == ID)
+                    return h;
+            }
+
+            throw new Exception("Герой " + ID + " не найден.");
         }
     }
 }
