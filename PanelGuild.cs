@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Diagnostics;
 
 namespace Fantasy_King_s_Battle
 {
@@ -13,10 +14,16 @@ namespace Fantasy_King_s_Battle
     {
         private readonly PictureBox pbGuild;
         private readonly ImageList imageListGuild;
-        public PanelGuild(int left, int top,  ImageList ilGuild)
+        private readonly ImageList imageListGui;
+        private readonly Button btnBuy;
+        private readonly Button btnLevelUp;
+        private PlayerGuild guild;
+
+        public PanelGuild(int left, int top,  ImageList ilGuild, ImageList ilGui)
         {
             BorderStyle = BorderStyle.FixedSingle;
             imageListGuild = ilGuild;
+            imageListGui = ilGui;
             Left = left;
             Top = top;
 
@@ -29,16 +36,65 @@ namespace Fantasy_King_s_Battle
                 Top = Config.GRID_SIZE,
             };
 
+            btnBuy = new Button()
+            {
+                Parent = this,
+                Left = pbGuild.Left + pbGuild.Width + Config.GRID_SIZE,
+                Width = ilGui.ImageSize.Width + 8,
+                Height = ilGui.ImageSize.Height + 8,
+                Top = pbGuild.Top + pbGuild.Height - ilGui.ImageSize.Height - 8,
+                ImageList = imageListGui,
+            };
+            btnBuy.Click += BtnBuy_Click;
+
+            btnLevelUp = new Button()
+            {
+                Parent = this,
+                Left = btnBuy.Left,
+                Top = btnBuy.Top - btnBuy.Height - Config.GRID_SIZE,
+                Width = btnBuy.Width,
+                Height = btnBuy.Height,
+                ImageList = imageListGui,
+                ImageIndex = FormMain.GUI_LEVELUP
+            };
+
             Height = pbGuild.Height + (Config.GRID_SIZE * 2);
-            Width = pbGuild.Left + pbGuild.Width + Config.GRID_SIZE;
+            Width = btnBuy.Left + btnBuy.Width + Config.GRID_SIZE;
         }
 
+        private void BtnBuy_Click(object sender, EventArgs e)
+        {
+            if (guild.Level == 0)
+            {
+                guild.Buy();
+                UpdateData();
+            }
+        }
+    
         internal void ShowData(PlayerGuild pg)
         {
-            if (pg.Level > 0)
-                pbGuild.Image = imageListGuild.Images[pg.Guild.ImageIndex];
+            Debug.Assert(pg != null);
+
+            guild = pg;
+            UpdateData();
+        }
+
+        internal void UpdateData()
+        {
+            if (guild.Level > 0)
+            {
+                btnBuy.Text = guild.Level.ToString();
+                btnBuy.ImageIndex = -1;
+                btnLevelUp.Visible = true;
+                pbGuild.Image = imageListGuild.Images[guild.Guild.ImageIndex];
+            }
             else
-                pbGuild.Image = imageListGuild.Images[pg.Guild.ImageIndex + FormMain.Config.Guilds.Count];
+            {
+                btnBuy.Text = "";
+                btnBuy.ImageIndex = FormMain.GUI_BUY;
+                btnLevelUp.Visible = false;
+                pbGuild.Image = imageListGuild.Images[guild.Guild.ImageIndex + FormMain.Config.Guilds.Count];
+            }
         }
     }
 }

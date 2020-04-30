@@ -72,7 +72,7 @@
             this.tabControl1.Location = new System.Drawing.Point(8, 40);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(784, 656);
+            this.tabControl1.Size = new System.Drawing.Size(960, 656);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -191,7 +191,7 @@
             // 
             this.tabPageGuilds.Location = new System.Drawing.Point(4, 25);
             this.tabPageGuilds.Name = "tabPageGuilds";
-            this.tabPageGuilds.Size = new System.Drawing.Size(776, 627);
+            this.tabPageGuilds.Size = new System.Drawing.Size(952, 627);
             this.tabPageGuilds.TabIndex = 6;
             this.tabPageGuilds.Text = "Гильдии";
             this.tabPageGuilds.UseVisualStyleBackColor = true;

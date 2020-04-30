@@ -33,7 +33,7 @@
     <Name>Гильдия магов</Name>
     <ImageIndex>4</ImageIndex>
     <Cost>1000</Cost>
-    <LevelCastle>1</LevelCastle>
+    <LevelCastle>2</LevelCastle>
   </Guild>
   <Guild>
     <ID>GuildElf</ID>

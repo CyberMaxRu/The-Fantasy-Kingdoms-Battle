@@ -24,6 +24,10 @@ namespace Fantasy_King_s_Battle
         private readonly ImageList ilHeroes;
         private readonly ImageList ilGui;
 
+        internal const int GUI_GUILDS = 0;
+        internal const int GUI_LEVELUP = 1;
+        internal const int GUI_BUY = 2;
+
         private readonly Lobby lobby;
         private int curAppliedPlayer = -1;
 
@@ -234,7 +238,7 @@ namespace Fantasy_King_s_Battle
                     {
                         found = true;
 
-                        g.Panel = new PanelGuild(left, top, ilGuilds);
+                        g.Panel = new PanelGuild(left, top, ilGuilds, ilGui);
                         g.Panel.Parent = tabPageGuilds;
 
                         left += g.Panel.Width + Config.GRID_SIZE;

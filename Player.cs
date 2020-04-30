@@ -24,6 +24,7 @@ namespace Fantasy_King_s_Battle
             Position = lobby.Players.Count();
 
             // Инициализируем ресурсы               
+            Gold = 100_000;
             Resources = new int[FormMain.Config.Resources.Count];
             for (int i = 0; i < fraction.StartResources.Count(); i++)
             {
@@ -89,6 +90,7 @@ namespace Fantasy_King_s_Battle
         internal TypePlayer TypePlayer { get; }
         internal Chieftain Chieftain { get; }
         internal List<Squad> Squads { get; } = new List<Squad>();
+        internal int Gold { get; set; }
         internal int[] Resources { get; }
         internal int Wins { get; set; }
         internal int Loses { get; set; }
