@@ -5,7 +5,7 @@
     <Name>Замок</Name>
     <ImageIndex>0</ImageIndex>
     <StartResources>
-      <Gold>1000</Gold>
+      <Gold>10000</Gold>
       <Wood>100</Wood>
       <Core>100</Core>
       <Gems>10</Gems>
@@ -17,7 +17,7 @@
     <Name>Оплот</Name>
     <ImageIndex>1</ImageIndex>
     <StartResources>
-      <Gold>1000</Gold>
+      <Gold>10000</Gold>
       <Wood>100</Wood>
       <Core>100</Core>
       <Gems>10</Gems>
@@ -28,7 +28,7 @@
     <Name>Башня</Name>
     <ImageIndex>2</ImageIndex>
     <StartResources>
-      <Gold>1000</Gold>
+      <Gold>10000</Gold>
       <Wood>100</Wood>
       <Core>100</Core>
       <Gems>10</Gems>
@@ -39,7 +39,7 @@
     <Name>Инферно</Name>
     <ImageIndex>3</ImageIndex>
     <StartResources>
-      <Gold>1000</Gold>
+      <Gold>10000</Gold>
       <Wood>100</Wood>
       <Core>100</Core>
       <Gems>10</Gems>
@@ -50,7 +50,7 @@
     <Name>Некрополис</Name>
     <ImageIndex>4</ImageIndex>
     <StartResources>
-      <Gold>1000</Gold>
+      <Gold>10000</Gold>
       <Wood>100</Wood>
       <Core>100</Core>
       <Gems>10</Gems>
@@ -61,7 +61,7 @@
     <Name>Подземелье</Name>
     <ImageIndex>5</ImageIndex>
     <StartResources>
-      <Gold>1000</Gold>
+      <Gold>10000</Gold>
       <Wood>100</Wood>
       <Core>100</Core>
       <Gems>10</Gems>
@@ -72,7 +72,7 @@
     <Name>Цитадель</Name>
     <ImageIndex>6</ImageIndex>
     <StartResources>
-      <Gold>1000</Gold>
+      <Gold>10000</Gold>
       <Wood>100</Wood>
       <Core>100</Core>
       <Gems>10</Gems>
@@ -83,7 +83,7 @@
     <Name>Крепость</Name>
     <ImageIndex>7</ImageIndex>
     <StartResources>
-      <Gold>1000</Gold>
+      <Gold>10000</Gold>
       <Wood>100</Wood>
       <Core>100</Core>
       <Gems>10</Gems>
