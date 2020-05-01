@@ -7,7 +7,7 @@ using System.Xml;
 
 namespace Fantasy_King_s_Battle
 {
-    internal enum TypeBuilding { Castle, Economy};
+    internal enum TypeBuilding { Castle, Trade, Other };
 
     // Класс здания
     internal sealed class Building

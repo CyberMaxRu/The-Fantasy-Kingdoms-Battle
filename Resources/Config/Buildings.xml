@@ -25,42 +25,42 @@
     <ID>Market</ID>
     <Name>Рынок</Name>
     <ImageIndex>3</ImageIndex>
-    <TypeBuilding>Economy</TypeBuilding>
+    <TypeBuilding>Trade</TypeBuilding>
     <Cost>500</Cost>
   </Building>
   <Building>
     <ID>Smithy</ID>
     <Name>Кузница</Name>
     <ImageIndex>4</ImageIndex>
-    <TypeBuilding>Economy</TypeBuilding>
+    <TypeBuilding>Trade</TypeBuilding>
     <Cost>500</Cost>
   </Building>
   <Building>
     <ID>Tavern</ID>
     <Name>Таверна</Name>
     <ImageIndex>5</ImageIndex>
-    <TypeBuilding>Economy</TypeBuilding>
+    <TypeBuilding>Other</TypeBuilding>
     <Cost>250</Cost>
   </Building>
   <Building>
     <ID>MagicBazaar</ID>
     <Name>Магический базар</Name>
     <ImageIndex>6</ImageIndex>
-    <TypeBuilding>Economy</TypeBuilding>
+    <TypeBuilding>Trade</TypeBuilding>
     <Cost>1500</Cost>
   </Building>
   <Building>
     <ID>Statue</ID>
     <Name>Статуя</Name>
     <ImageIndex>7</ImageIndex>
-    <TypeBuilding>Economy</TypeBuilding>
+    <TypeBuilding>Other</TypeBuilding>
     <Cost>500</Cost>
   </Building>
   <Building>
     <ID>Library</ID>
     <Name>Библиотека</Name>
     <ImageIndex>8</ImageIndex>
-    <TypeBuilding>Economy</TypeBuilding>
+    <TypeBuilding>Other</TypeBuilding>
     <Cost>500</Cost>
   </Building>
 </Buildings>  
