@@ -64,6 +64,9 @@
     <Compile Include="PanelAboutPlayer.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="PanelBuilding.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="PanelGuild.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -71,6 +74,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Player.cs" />
+    <Compile Include="PlayerBuilding.cs" />
     <Compile Include="PlayerGuild.cs" />
     <Compile Include="PlayerHero.cs" />
     <Compile Include="Program.cs" />

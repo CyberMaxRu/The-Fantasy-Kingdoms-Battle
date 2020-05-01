@@ -32,6 +32,12 @@ namespace Fantasy_King_s_Battle
                 Guilds.Add(new PlayerGuild(this, g));
             }
 
+            // Инициализация зданий
+            foreach (Building b in FormMain.Config.Buildings)
+            {
+                Buildings.Add(new PlayerBuilding(this, b));
+            }
+
             Chieftain = new Chieftain(this);
 
             //
@@ -70,6 +76,7 @@ namespace Fantasy_King_s_Battle
         internal int Position { get; }
         internal Fraction Fraction { get; }
         internal List<PlayerGuild> Guilds { get; } = new List<PlayerGuild>();
+        internal List<PlayerBuilding> Buildings { get; } = new List<PlayerBuilding>();
         internal TypePlayer TypePlayer { get; }
         internal Chieftain Chieftain { get; }
         internal List<Squad> Squads { get; } = new List<Squad>();

@@ -7,7 +7,7 @@ using System.Xml;
 
 namespace Fantasy_King_s_Battle
 {
-    internal enum TypeBuilding { Castle, Military, Economy, Production, Habitation, Resource, Other };
+    internal enum TypeBuilding { Castle, Economy};
 
     // Класс здания
     internal sealed class Building
@@ -16,40 +16,33 @@ namespace Fantasy_King_s_Battle
         {
             ID = n.SelectSingleNode("ID").InnerText;
             Name = n.SelectSingleNode("Name").InnerText;
-            ImageIndex = n.SelectSingleNode("ImageIndex") != null ? Convert.ToInt32(n.SelectSingleNode("ImageIndex").InnerText) : -1;
+            ImageIndex = Convert.ToInt32(n.SelectSingleNode("ImageIndex").InnerText);
+            TypeBuilding = (TypeBuilding)Enum.Parse(typeof(TypeBuilding), n.SelectSingleNode("TypeBuilding").InnerText);
+            Cost = Convert.ToInt32(n.SelectSingleNode("Cost").InnerText);
+            Position = FormMain.Config.Buildings.Count;
 
-            /*            switch (PlaceBuilding) 
+            // Проверяем, что таких же ID и наименования нет
+            foreach (Building b in FormMain.Config.Buildings)
             {
-                case PlaceBuilding.External:
-                    Position = FormMain.Config.ExternalBuildings.Count;
+                if (b.ID == ID)
+                {
+                    throw new Exception("В конфигурации зданий повторяется ID = " + ID);
+                }
 
-                    // Проверяем, что таких же ID и наименования нет
-                    foreach (Building b in FormMain.Config.ExternalBuildings)
-                    {
-                        if (b.ID == ID)
-                        {
-                            throw new Exception("В конфигурации зданий повторяется ID = " + ID);
-                        }
-
-                        if (b.Name == Name)
-                        {
-                            throw new Exception("В конфигурации зданий повторяется Name = " + Name);
-                        }
-                    }
-                    break;
-                case PlaceBuilding.Internal:
-                    Position = FormMain.Config.InternalBuildings.Count;
-                    break;
-                default:
-                    new Exception("Неизвестный тип здания");
-                    break;
-            }                */
+                if (b.Name == Name)
+                {
+                    throw new Exception("В конфигурации зданий повторяется Name = " + Name);
+                }
+            }
         }
 
         internal string ID { get; }
         internal string Name { get; }
         internal int ImageIndex { get; }
         internal int Position { get; }
-        internal int Cost;
+        internal TypeBuilding TypeBuilding { get; }
+        internal int Cost { get; }
+
+        internal PanelBuilding Panel { get; set; }
     }
 }

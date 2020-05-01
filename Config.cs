@@ -33,21 +33,19 @@ namespace Fantasy_King_s_Battle
                 Guilds.Add(new Guild(n));
             }
 
+            // Загрузка конфигурации зданий
+            xmlDoc = CreateXmlDocument("Config\\Buildings.xml");
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Buildings/Building"))
+            {
+                Buildings.Add(new Building(n));
+            }
+
             // Загрузка конфигурации героев
             xmlDoc = CreateXmlDocument("Config\\Heroes.xml");
 
             foreach (XmlNode n in xmlDoc.SelectNodes("/Heroes/Hero"))
             {
                 Heroes.Add(new Hero(n));
-            }
-
-            // Загрузка конфигурации зданий
-            xmlDoc = CreateXmlDocument("Config\\Buildings.xml");
-            Building b;
-            foreach (XmlNode n in xmlDoc.SelectNodes("/Buildings/Building"))
-            {
-                b = new Building(n);
-
             }
 
             // Загрузка фракций
@@ -93,25 +91,13 @@ namespace Fantasy_King_s_Battle
 
         internal string PathResources { get; }
         internal List<Guild> Guilds { get; } = new List<Guild>();
+        internal List<Building> Buildings { get; } = new List<Building>();
         internal List<Hero> Heroes { get; } = new List<Hero>();
         internal List<Fraction> Fractions { get; } = new List<Fraction>();
         internal List<ClassUnit> ClassesUnits { get; } = new List<ClassUnit>();
         internal List<TypeUnit> TypeUnits { get; } = new List<TypeUnit>();
         internal List<Skill> Skills { get; } = new List<Skill>();
         internal int MaxLevelSkill { get; }
-
-        internal Building FindInternalBuilding(string ID)
-        {
-/*            foreach (Building b in InternalBuildings)
-            {
-                if (b.ID == ID)
-                {
-                    return b;
-                }
-            }*/
-
-            throw new Exception("Здание " + ID + " не найдено.");
-        }
 
         internal Fraction FindFraction(string ID)
         {
@@ -176,6 +162,19 @@ namespace Fantasy_King_s_Battle
             }
 
             throw new Exception("Гильдия " + ID + " не найдена.");
+        }
+
+        internal Building FindBuilding(string ID)
+        {
+            foreach (Building b in Buildings)
+            {
+                if (b.ID == ID)
+                {
+                    return b;
+                }
+            }
+
+            throw new Exception("Здание " + ID + " не найдено.");
         }
 
         internal Hero FindHero(string ID)

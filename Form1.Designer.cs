@@ -32,7 +32,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageLobby = new System.Windows.Forms.TabPage();
             this.tabPageGuilds = new System.Windows.Forms.TabPage();
-            this.tabPageEconomic = new System.Windows.Forms.TabPage();
+            this.tabPageBuildings = new System.Windows.Forms.TabPage();
+            this.tabPageTemples = new System.Windows.Forms.TabPage();
             this.tabPageChieftain = new System.Windows.Forms.TabPage();
             this.labelChieftainExp = new System.Windows.Forms.Label();
             this.LabelChieftainLevel = new System.Windows.Forms.Label();
@@ -42,7 +43,6 @@
             this.ButtonEndTurn = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tstbTurn = new System.Windows.Forms.ToolStripTextBox();
-            this.tabPageTemples = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.tabPageChieftain.SuspendLayout();
             this.tabPageBattle.SuspendLayout();
@@ -64,7 +64,7 @@
             this.tabControl1.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.tabControl1.Controls.Add(this.tabPageLobby);
             this.tabControl1.Controls.Add(this.tabPageGuilds);
-            this.tabControl1.Controls.Add(this.tabPageEconomic);
+            this.tabControl1.Controls.Add(this.tabPageBuildings);
             this.tabControl1.Controls.Add(this.tabPageTemples);
             this.tabControl1.Controls.Add(this.tabPageChieftain);
             this.tabControl1.Controls.Add(this.tabPageArmy);
@@ -94,14 +94,23 @@
             this.tabPageGuilds.Text = "Гильдии";
             this.tabPageGuilds.UseVisualStyleBackColor = true;
             // 
-            // tabPageEconomic
+            // tabPageBuildings
             // 
-            this.tabPageEconomic.Location = new System.Drawing.Point(4, 25);
-            this.tabPageEconomic.Name = "tabPageEconomic";
-            this.tabPageEconomic.Size = new System.Drawing.Size(952, 627);
-            this.tabPageEconomic.TabIndex = 2;
-            this.tabPageEconomic.Text = "Экономика";
-            this.tabPageEconomic.UseVisualStyleBackColor = true;
+            this.tabPageBuildings.Location = new System.Drawing.Point(4, 25);
+            this.tabPageBuildings.Name = "tabPageBuildings";
+            this.tabPageBuildings.Size = new System.Drawing.Size(952, 627);
+            this.tabPageBuildings.TabIndex = 2;
+            this.tabPageBuildings.Text = "Здания";
+            this.tabPageBuildings.UseVisualStyleBackColor = true;
+            // 
+            // tabPageTemples
+            // 
+            this.tabPageTemples.Location = new System.Drawing.Point(4, 25);
+            this.tabPageTemples.Name = "tabPageTemples";
+            this.tabPageTemples.Size = new System.Drawing.Size(952, 627);
+            this.tabPageTemples.TabIndex = 7;
+            this.tabPageTemples.Text = "Храмы";
+            this.tabPageTemples.UseVisualStyleBackColor = true;
             // 
             // tabPageChieftain
             // 
@@ -186,15 +195,6 @@
             this.tstbTurn.Name = "tstbTurn";
             this.tstbTurn.Size = new System.Drawing.Size(100, 23);
             // 
-            // tabPageTemples
-            // 
-            this.tabPageTemples.Location = new System.Drawing.Point(4, 25);
-            this.tabPageTemples.Name = "tabPageTemples";
-            this.tabPageTemples.Size = new System.Drawing.Size(952, 627);
-            this.tabPageTemples.TabIndex = 7;
-            this.tabPageTemples.Text = "Храмы";
-            this.tabPageTemples.UseVisualStyleBackColor = true;
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -227,7 +227,7 @@
         private System.Windows.Forms.StatusStrip StatusStrip;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPageLobby;
-        private System.Windows.Forms.TabPage tabPageEconomic;
+        private System.Windows.Forms.TabPage tabPageBuildings;
         private System.Windows.Forms.TabPage tabPageChieftain;
         private System.Windows.Forms.TabPage tabPageArmy;
         private System.Windows.Forms.TabPage tabPageBattle;

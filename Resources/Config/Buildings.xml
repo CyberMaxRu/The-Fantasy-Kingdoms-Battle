@@ -1,124 +1,59 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?> 
 <Buildings>
   <Building>
-    <ID>GoldMine</ID>
-    <Name>Золотая шахта</Name>
-    <PlaceBuilding>External</PlaceBuilding>
+    <ID>Castle</ID>
+    <Name>Замок</Name>
     <ImageIndex>0</ImageIndex>
-    <Cost>
-      <Gold>1000</Gold>
-    </Cost>
-    <IncomeResources>
-      <Gold>1000</Gold>
-    </IncomeResources>
+    <TypeBuilding>Castle</TypeBuilding>
+    <Cost>0</Cost>
   </Building>
   <Building>
-    <ID>Lumberjack</ID>
-    <Name>Лесорубка</Name>
-    <PlaceBuilding>External</PlaceBuilding>
+    <ID>House</ID>
+    <Name>Крестьянский дом</Name>
     <ImageIndex>1</ImageIndex>
-    <Cost>
-      <Gold>500</Gold>
-    </Cost>
-    <IncomeResources>
-      <Wood>10</Wood>
-    </IncomeResources>
+    <TypeBuilding>Castle</TypeBuilding>
+    <Cost>0</Cost>
   </Building>
   <Building>
-    <ID>CoreMine</ID>
-    <Name>Рудная шахта</Name>
-    <PlaceBuilding>External</PlaceBuilding>
+    <ID>Mill</ID>
+    <Name>Мельница</Name>
     <ImageIndex>2</ImageIndex>
-    <Cost>
-      <Gold>500</Gold>
-      <Wood>100</Wood>
-    </Cost>
-    <IncomeResources>
-      <Core>10</Core>
-    </IncomeResources>
-  </Building>
-  <Building>
-    <ID>MercuryHouse</ID>
-    <Name>Дом алхимика</Name>
-    <PlaceBuilding>External</PlaceBuilding>
-    <ImageIndex>3</ImageIndex>
-    <Cost>
-      <Gold>500</Gold>
-    </Cost>
-    <IncomeResources>
-      <Mercury>1</Mercury>
-    </IncomeResources>
-  </Building>
-  <Building>
-    <ID>CrystallMine</ID>
-    <Name>Залежи кристаллов</Name>
-    <PlaceBuilding>External</PlaceBuilding>
-    <ImageIndex>4</ImageIndex>
-    <Cost>
-      <Gold>500</Gold>
-    </Cost>
-    <IncomeResources>
-      <Crystall>1</Crystall>
-    </IncomeResources>
-  </Building>
-  <Building>
-    <ID>SulfurCareer</ID>
-    <Name>Серный карьер</Name>
-    <PlaceBuilding>External</PlaceBuilding>
-    <ImageIndex>5</ImageIndex>
-    <Cost>
-      <Gold>500</Gold>
-    </Cost>
-    <IncomeResources>
-      <Sulfur>1</Sulfur>
-    </IncomeResources>
-  </Building>
-  <Building>
-    <ID>GemsSource</ID>
-    <Name>Месторождение драгоценных камней</Name>
-    <PlaceBuilding>External</PlaceBuilding>
-    <ImageIndex>6</ImageIndex>
-    <Cost>
-      <Gold>7000</Gold>
-    </Cost>
-    <IncomeResources>
-      <Gems>1</Gems>
-    </IncomeResources>
-  </Building>
-  <Building>
-    <ID>Forge</ID>
-    <Name>Кузница</Name>
-    <PlaceBuilding>Internal</PlaceBuilding>
-    <TypeBuilding>Production</TypeBuilding>
-    <Cost>
-      <Gold>1000</Gold>
-    </Cost>
+    <TypeBuilding>Castle</TypeBuilding>
+    <Cost>0</Cost>
   </Building>
   <Building>
     <ID>Market</ID>
     <Name>Рынок</Name>
-    <PlaceBuilding>Internal</PlaceBuilding>
+    <ImageIndex>3</ImageIndex>
     <TypeBuilding>Economy</TypeBuilding>
-    <Cost>
-      <Gold>1000</Gold>
-    </Cost>
+    <Cost>500</Cost>
   </Building>
   <Building>
-    <ID>Barrack</ID>
-    <Name>Казарма</Name>
-    <PlaceBuilding>Internal</PlaceBuilding>
-    <TypeBuilding>Military</TypeBuilding>
-    <Cost>
-      <Gold>1000</Gold>
-    </Cost>
+    <ID>Smithy</ID>
+    <Name>Кузница</Name>
+    <ImageIndex>4</ImageIndex>
+    <TypeBuilding>Economy</TypeBuilding>
+    <Cost>500</Cost>
   </Building>
   <Building>
-    <ID>Barrack</ID>
-    <Name>Казарма</Name>
-    <PlaceBuilding>Internal</PlaceBuilding>
-    <TypeBuilding>Military</TypeBuilding>
-    <Cost>
-      <Gold>1000</Gold>
-    </Cost>
+    <ID>Tavern</ID>
+    <Name>Таверна</Name>
+    <ImageIndex>5</ImageIndex>
+    <TypeBuilding>Economy</TypeBuilding>
+    <Cost>250</Cost>
+  </Building>
+  <Building>
+    <ID>MagicBazaar</ID>
+    <Name>Магический базар</Name>
+    <ImageIndex>6</ImageIndex>
+    <TypeBuilding>Economy</TypeBuilding>
+    <Cost>1500</Cost>
+  </Building>
+  <Building>
+    <ID>Statue</ID>
+    <Name>Статуя</Name>
+    <ImageIndex>7</ImageIndex>
+    <TypeBuilding>Economy</TypeBuilding>
+    <Cost>500</Cost>
   </Building>
 </Buildings>  
