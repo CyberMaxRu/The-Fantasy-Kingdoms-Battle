@@ -68,6 +68,7 @@ namespace Fantasy_King_s_Battle
             {
                 building.Buy();
                 UpdateData();
+                Program.formMain.ShowGold();
             }
         }
 

@@ -174,8 +174,6 @@ namespace Fantasy_King_s_Battle
         {
             tstbTurn.Text = "Ход: " + lobby.Turn.ToString();
 
-            StatusLabelGold.Text = lobby.CurrentPlayer.Gold.ToString();
-
             // Если этого игрока не отрисовывали, формируем заново вкладки
             if (curAppliedPlayer != lobby.CurrentPlayerIndex)
             {
@@ -191,6 +189,7 @@ namespace Fantasy_King_s_Battle
             ShowTemples();
             ShowSquad();
             ShowBattle();
+            ShowGold();
         }
 
         private void ShowLobby()
@@ -345,6 +344,11 @@ namespace Fantasy_King_s_Battle
             lobby.DoEndTurn();
 
             ShowDataPlayer();
+        }
+
+        internal void ShowGold()
+        {
+            StatusLabelGold.Text = lobby.CurrentPlayer.Gold.ToString();
         }
     }
 }
