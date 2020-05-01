@@ -120,7 +120,6 @@ namespace Fantasy_King_s_Battle
             DrawGuilds();
             DrawBuildings();
             DrawTemples();
-            DrawChieftain();
             ShowDataPlayer();
 
         }
@@ -191,7 +190,6 @@ namespace Fantasy_King_s_Battle
             ShowGuilds();
             ShowBuildings();
             ShowTemples();
-            ShowChieftain();
             ShowSquad();
             ShowBattle();
         }
@@ -311,47 +309,6 @@ namespace Fantasy_King_s_Battle
             foreach (PlayerTemple pt in lobby.CurrentPlayer.Temples)
             {
                 pt.UpdatePanel();
-            }
-        }
-
-        private void DrawChieftain()
-        {
-            PictureBox pb;
-            int top = 64;
-            int stepFromLeft = 0;
-
-            foreach (Skill s in Config.Skills)
-            {
-                pb = new PictureBox()
-                {
-                    Parent = tabPageChieftain,
-                    BorderStyle = BorderStyle.FixedSingle,
-                    Top = top,
-                    Left = Config.GRID_SIZE + (stepFromLeft * (ilSkills.ImageSize.Width + Config.GRID_SIZE)),
-                    Width = ilSkills.ImageSize.Width,
-                    Height = ilSkills.ImageSize.Height
-                };
-
-                SlotSkill.Add(pb);
-
-                stepFromLeft++;
-                if (stepFromLeft == 4)
-                {
-                    top = top + ilSkills.ImageSize.Height + Config.GRID_SIZE;
-                    stepFromLeft = 0;
-                }
-            }
-        }
-
-        private void ShowChieftain()
-        {
-            Chieftain c = lobby.CurrentPlayer.Chieftain;
-            LabelChieftainLevel.Text = "Уровень: " + c.Level.ToString();
-            labelChieftainExp.Text = "Опыт: " + c.Experience.ToString();
-
-            foreach (SkillOfChieftain sc in c.Skills)
-            {
-                SlotSkill[sc.Position].Image = ilSkills.Images[sc.Skill.Position * Config.MaxLevelSkill + sc.Level - 1];
             }
         }
 

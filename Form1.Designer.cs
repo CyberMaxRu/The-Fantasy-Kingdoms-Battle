@@ -34,9 +34,6 @@
             this.tabPageGuilds = new System.Windows.Forms.TabPage();
             this.tabPageBuildings = new System.Windows.Forms.TabPage();
             this.tabPageTemples = new System.Windows.Forms.TabPage();
-            this.tabPageChieftain = new System.Windows.Forms.TabPage();
-            this.labelChieftainExp = new System.Windows.Forms.Label();
-            this.LabelChieftainLevel = new System.Windows.Forms.Label();
             this.tabPageArmy = new System.Windows.Forms.TabPage();
             this.tabPageBattle = new System.Windows.Forms.TabPage();
             this.textBoxResultBattle = new System.Windows.Forms.TextBox();
@@ -44,7 +41,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tstbTurn = new System.Windows.Forms.ToolStripTextBox();
             this.tabControl1.SuspendLayout();
-            this.tabPageChieftain.SuspendLayout();
             this.tabPageBattle.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -66,7 +62,6 @@
             this.tabControl1.Controls.Add(this.tabPageGuilds);
             this.tabControl1.Controls.Add(this.tabPageBuildings);
             this.tabControl1.Controls.Add(this.tabPageTemples);
-            this.tabControl1.Controls.Add(this.tabPageChieftain);
             this.tabControl1.Controls.Add(this.tabPageArmy);
             this.tabControl1.Controls.Add(this.tabPageBattle);
             this.tabControl1.Location = new System.Drawing.Point(8, 40);
@@ -111,35 +106,6 @@
             this.tabPageTemples.TabIndex = 7;
             this.tabPageTemples.Text = "Храмы";
             this.tabPageTemples.UseVisualStyleBackColor = true;
-            // 
-            // tabPageChieftain
-            // 
-            this.tabPageChieftain.Controls.Add(this.labelChieftainExp);
-            this.tabPageChieftain.Controls.Add(this.LabelChieftainLevel);
-            this.tabPageChieftain.Location = new System.Drawing.Point(4, 25);
-            this.tabPageChieftain.Name = "tabPageChieftain";
-            this.tabPageChieftain.Size = new System.Drawing.Size(952, 627);
-            this.tabPageChieftain.TabIndex = 4;
-            this.tabPageChieftain.Text = "Военачальник";
-            this.tabPageChieftain.UseVisualStyleBackColor = true;
-            // 
-            // labelChieftainExp
-            // 
-            this.labelChieftainExp.AutoSize = true;
-            this.labelChieftainExp.Location = new System.Drawing.Point(8, 48);
-            this.labelChieftainExp.Name = "labelChieftainExp";
-            this.labelChieftainExp.Size = new System.Drawing.Size(37, 13);
-            this.labelChieftainExp.TabIndex = 1;
-            this.labelChieftainExp.Text = "Опыт:";
-            // 
-            // LabelChieftainLevel
-            // 
-            this.LabelChieftainLevel.AutoSize = true;
-            this.LabelChieftainLevel.Location = new System.Drawing.Point(8, 24);
-            this.LabelChieftainLevel.Name = "LabelChieftainLevel";
-            this.LabelChieftainLevel.Size = new System.Drawing.Size(54, 13);
-            this.LabelChieftainLevel.TabIndex = 0;
-            this.LabelChieftainLevel.Text = "Уровень:";
             // 
             // tabPageArmy
             // 
@@ -211,8 +177,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fantasy King\'s Battle prototype";
             this.tabControl1.ResumeLayout(false);
-            this.tabPageChieftain.ResumeLayout(false);
-            this.tabPageChieftain.PerformLayout();
             this.tabPageBattle.ResumeLayout(false);
             this.tabPageBattle.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -228,14 +192,11 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPageLobby;
         private System.Windows.Forms.TabPage tabPageBuildings;
-        private System.Windows.Forms.TabPage tabPageChieftain;
         private System.Windows.Forms.TabPage tabPageArmy;
         private System.Windows.Forms.TabPage tabPageBattle;
         private System.Windows.Forms.Button ButtonEndTurn;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripTextBox tstbTurn;
-        private System.Windows.Forms.Label labelChieftainExp;
-        private System.Windows.Forms.Label LabelChieftainLevel;
         private System.Windows.Forms.TextBox textBoxResultBattle;
         private System.Windows.Forms.TabPage tabPageGuilds;
         private System.Windows.Forms.TabPage tabPageTemples;
