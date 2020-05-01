@@ -56,4 +56,11 @@
     <TypeBuilding>Economy</TypeBuilding>
     <Cost>500</Cost>
   </Building>
+  <Building>
+    <ID>Library</ID>
+    <Name>Библиотека</Name>
+    <ImageIndex>8</ImageIndex>
+    <TypeBuilding>Economy</TypeBuilding>
+    <Cost>500</Cost>
+  </Building>
 </Buildings>  
