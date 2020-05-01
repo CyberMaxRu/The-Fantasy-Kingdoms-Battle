@@ -14,7 +14,6 @@ namespace Fantasy_King_s_Battle
     {
         private readonly string dirResources;
 
-        private readonly ImageList ilResources24;
         private readonly ImageList ilFractions;
         private readonly ImageList ilSkills;
         private readonly ImageList ilResultBattle;
@@ -280,7 +279,7 @@ namespace Fantasy_King_s_Battle
         private void DrawTemples()
         {
             int top = Config.GRID_SIZE;
-            int height = 0;
+            int height;
             int left = Config.GRID_SIZE;
             int cnt = 0;
 

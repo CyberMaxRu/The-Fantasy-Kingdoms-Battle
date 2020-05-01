@@ -26,6 +26,7 @@ namespace Fantasy_King_s_Battle
 
             Debug.Assert(DefaultLevel >= 0);
             Debug.Assert(MaxLevel > 0);
+            Debug.Assert(MaxLevel <= 3);
             Debug.Assert(DefaultLevel <= MaxLevel);
 
             // Проверяем, что таких же ID и наименования нет
@@ -41,7 +42,19 @@ namespace Fantasy_King_s_Battle
                     throw new Exception("В конфигурации зданий повторяется ImageIndex = " + ImageIndex.ToString());
             }
 
-            // Загружаем доход
+            // Загружаем информацию об уровнях
+            Levels = new Level[MaxLevel + 1];// Для упрощения работы с уровнями, добавляем 1, чтобы уровень был равен индексу в массиве
+            Level level;
+            XmlNode nl = n.SelectSingleNode("Levels");
+            if (nl != null)
+            {
+                foreach (XmlNode l in nl.SelectNodes("Level"))
+                {
+                    level = new Level(l);
+                    Debug.Assert(Levels[level.Pos] == null);
+                    Levels[level.Pos] = level;
+                }
+            }
         }
 
         internal string ID { get; }
@@ -53,7 +66,7 @@ namespace Fantasy_King_s_Battle
         internal int DefaultLevel { get; }
         internal int MaxLevel { get; }
 
-        internal int[] Income;
+        internal Level[] Levels;
 
         internal PanelBuilding Panel { get; set; }
     }

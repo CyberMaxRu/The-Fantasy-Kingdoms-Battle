@@ -8,11 +8,23 @@
     <Cost>0</Cost>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>3</MaxLevel>
-    <IncomeLevel>
-      <Income>50</Income>
-      <Income>125</Income>
-      <Income>300</Income>
-    </IncomeLevel>
+    <Levels>
+      <Level>
+        <Pos>1</Pos>
+        <Cost>0</Cost>
+        <Income>50</Income>
+      </Level>
+      <Level>
+        <Pos>2</Pos>
+        <Cost>2000</Cost>
+        <Income>125</Income>
+      </Level>
+      <Level>
+        <Pos>3</Pos>
+        <Cost>4000</Cost>
+        <Income>275</Income>
+      </Level>
+    </Levels>
   </Building>
   <Building>
     <ID>House</ID>
@@ -22,9 +34,6 @@
     <Cost>0</Cost>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
-    <IncomeLevel>
-      <Income>50</Income>
-    </IncomeLevel>
   </Building>
   <Building>
     <ID>Mill</ID>
@@ -34,9 +43,6 @@
     <Cost>0</Cost>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
-    <IncomeLevel>
-      <Income>125</Income>
-    </IncomeLevel>
   </Building>
   <Building>
     <ID>Market</ID>
@@ -46,11 +52,6 @@
     <Cost>500</Cost>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
-    <IncomeLevel>
-      <Income>125</Income>
-      <Income>150</Income>
-      <Income>200</Income>
-    </IncomeLevel>
   </Building>
   <Building>
     <ID>Smithy</ID>
@@ -60,11 +61,6 @@
     <Cost>500</Cost>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
-    <IncomeLevel>
-      <Income>50</Income>
-      <Income>100</Income>
-      <Income>150</Income>
-    </IncomeLevel>
   </Building>
   <Building>
     <ID>Tavern</ID>
