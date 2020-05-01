@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Temples>
+  <Temple>
+    <ID>GuildDarkPriest</ID>
+    <Name>Храм Крипты</Name>
+    <ImageIndex>0</ImageIndex>
+    <Cost>3000</Cost>
+  </Temple>
+  <Temple>
+    <ID>GuildPriest</ID>
+    <Name>Храм Агрелы</Name>
+    <ImageIndex>1</ImageIndex>
+    <Cost>3000</Cost>
+  </Temple>
+  <Temple>
+    <ID>GuildPaladin</ID>
+    <Name>Храм Дауроса</Name>
+    <ImageIndex>2</ImageIndex>
+    <Cost>3000</Cost>
+  </Temple>
+  <Temple>
+    <ID>GuildBlademaster</ID>
+    <Name>Храм Крольма</Name>
+    <ImageIndex>3</ImageIndex>
+    <Cost>3000</Cost>
+  </Temple>
+  <Temple>
+    <ID>GuildBeastmaster</ID>
+    <Name>Храм Фервуса</Name>
+    <ImageIndex>4</ImageIndex>
+    <Cost>3000</Cost>
+  </Temple>
+  <Temple>
+    <ID>GuildMarksman</ID>
+    <Name>Храм Хелии</Name>
+    <ImageIndex>5</ImageIndex>
+    <Cost>3000</Cost>
+  </Temple>
+  <Temple>
+    <ID>GuildFireMage</ID>
+    <Name>Храм Огня</Name>
+    <ImageIndex>6</ImageIndex>
+    <Cost>3000</Cost>
+  </Temple>
+  <Temple>
+    <ID>GuildIceMage</ID>
+    <Name>Храм Холода</Name>
+    <ImageIndex>7</ImageIndex>
+    <Cost>3000</Cost>
+  </Temple>
+  <Temple>
+    <ID>GuildDeathKinght</ID>
+    <Name>Храм Лунорда</Name>
+    <ImageIndex>8</ImageIndex>
+    <Cost>3000</Cost>
+  </Temple>
+</Temples>

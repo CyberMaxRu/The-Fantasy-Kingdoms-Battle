@@ -40,6 +40,13 @@ namespace Fantasy_King_s_Battle
                 Buildings.Add(new Building(n));
             }
 
+            // Загрузка конфигурации храмов
+            xmlDoc = CreateXmlDocument("Config\\Temples.xml");
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Temples/Temple"))
+            {
+                Temples.Add(new Temple(n));
+            }
+
             // Загрузка конфигурации героев
             xmlDoc = CreateXmlDocument("Config\\Heroes.xml");
 
@@ -92,6 +99,7 @@ namespace Fantasy_King_s_Battle
         internal string PathResources { get; }
         internal List<Guild> Guilds { get; } = new List<Guild>();
         internal List<Building> Buildings { get; } = new List<Building>();
+        internal List<Temple> Temples { get; } = new List<Temple>();
         internal List<Hero> Heroes { get; } = new List<Hero>();
         internal List<Fraction> Fractions { get; } = new List<Fraction>();
         internal List<ClassUnit> ClassesUnits { get; } = new List<ClassUnit>();
@@ -175,6 +183,17 @@ namespace Fantasy_King_s_Battle
             }
 
             throw new Exception("Здание " + ID + " не найдено.");
+        }
+
+        internal Temple FindTemple(string ID)
+        {            
+            foreach (Temple t in Temples)
+            {
+                if (t.ID == ID)
+                    return t;
+            }
+
+            throw new Exception("Храм " + ID + " не найден.");
         }
 
         internal Hero FindHero(string ID)

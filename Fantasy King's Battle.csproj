@@ -73,13 +73,18 @@
     <Compile Include="PanelSquad.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="PanelTemple.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Player.cs" />
     <Compile Include="PlayerBuilding.cs" />
     <Compile Include="PlayerGuild.cs" />
     <Compile Include="PlayerHero.cs" />
+    <Compile Include="PlayerTemple.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CourseBattle.cs" />
+    <Compile Include="Temple.cs" />
     <Compile Include="Squad.cs" />
     <Compile Include="Skill.cs" />
     <Compile Include="SquadInBattle.cs" />
@@ -117,6 +122,7 @@
     <Content Include="Resources\Config\Fractions.xml" />
     <Content Include="Resources\Config\Skills.xml" />
     <Content Include="Resources\Config\TypeUnits.xml" />
+    <Content Include="Resources\Config\Temples.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

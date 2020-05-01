@@ -21,6 +21,7 @@ namespace Fantasy_King_s_Battle
         private readonly ImageList ilTypeBattle;
         private readonly ImageList ilGuilds;
         private readonly ImageList ilBuildings;
+        private readonly ImageList ilTemples;
         private readonly ImageList ilHeroes;
         private readonly ImageList ilGui;
         private readonly ImageList ilGui16;
@@ -70,6 +71,7 @@ namespace Fantasy_King_s_Battle
             ilTypeBattle = PrepareImageList("TypeBattle52.png", 52, 52, false);
             ilGuilds = PrepareImageList("Guilds.png", 128, 128, true);
             ilBuildings = PrepareImageList("Buildings.png", 126, 126, true);
+            ilTemples = PrepareImageList("Temples.png", 126, 126, true);
             ilHeroes = PrepareImageList("Heroes.png", 128, 128, false);
             ilGui = PrepareImageList("Gui.png", 48, 48, false);
             ilGui16 = PrepareImageList("Gui16.png", 16, 16, false);
@@ -117,6 +119,7 @@ namespace Fantasy_King_s_Battle
             //
             DrawGuilds();
             DrawBuildings();
+            DrawTemples();
             DrawChieftain();
             ShowDataPlayer();
 
@@ -187,6 +190,7 @@ namespace Fantasy_King_s_Battle
             ShowLobby();
             ShowGuilds();
             ShowBuildings();
+            ShowTemples();
             ShowChieftain();
             ShowSquad();
             ShowBattle();
@@ -272,6 +276,41 @@ namespace Fantasy_King_s_Battle
             foreach (PlayerBuilding pb in lobby.CurrentPlayer.Buildings)
             {
                 pb.UpdatePanel();
+            }
+        }
+
+        private void DrawTemples()
+        {
+            int top = Config.GRID_SIZE;
+            int height = 0;
+            int left = Config.GRID_SIZE;
+            int cnt = 0;
+
+            foreach (Temple t in Config.Temples)
+            {
+                t.Panel = new PanelTemple(left, top, ilTemples, ilGui);
+                t.Panel.Parent = tabPageTemples;
+
+                height = t.Panel.Height;
+                cnt++;
+                if (cnt == 3)
+                {
+                    cnt = 0;
+                    left = Config.GRID_SIZE;
+                    top += height + Config.GRID_SIZE;
+                }
+                else
+                {
+                    left += t.Panel.Width + Config.GRID_SIZE;
+                }
+            }
+        }
+
+        private void ShowTemples()
+        {
+            foreach (PlayerTemple pt in lobby.CurrentPlayer.Temples)
+            {
+                pt.UpdatePanel();
             }
         }
 
