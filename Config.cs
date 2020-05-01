@@ -79,6 +79,13 @@ namespace Fantasy_King_s_Battle
                 TypeUnits.Add(new TypeUnit(n));
             }
 
+            // Загрузка предметов
+            xmlDoc = CreateXmlDocument("Config\\Items.xml");
+
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Items/Item"))
+            {
+                Items.Add(new Item(n));
+            }
             // Загрузка навыков
             xmlDoc = CreateXmlDocument("Config\\Skills.xml");
 
@@ -104,6 +111,7 @@ namespace Fantasy_King_s_Battle
         internal List<Fraction> Fractions { get; } = new List<Fraction>();
         internal List<ClassUnit> ClassesUnits { get; } = new List<ClassUnit>();
         internal List<TypeUnit> TypeUnits { get; } = new List<TypeUnit>();
+        internal List<Item> Items { get; } = new List<Item>();
         internal List<Skill> Skills { get; } = new List<Skill>();
         internal int MaxLevelSkill { get; }
 

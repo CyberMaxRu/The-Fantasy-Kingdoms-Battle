@@ -44,8 +44,6 @@ namespace Fantasy_King_s_Battle
                 Temples.Add(new PlayerTemple(this, t));
             }
 
-            Chieftain = new Chieftain(this);
-
             //
             if (IsLive == true)
             {
@@ -85,7 +83,6 @@ namespace Fantasy_King_s_Battle
         internal List<PlayerBuilding> Buildings { get; } = new List<PlayerBuilding>();
         internal List<PlayerTemple> Temples { get; } = new List<PlayerTemple>();
         internal TypePlayer TypePlayer { get; }
-        internal Chieftain Chieftain { get; }
         internal List<Squad> Squads { get; } = new List<Squad>();
         internal int Gold { get; set; }
         internal int[] Resources { get; }

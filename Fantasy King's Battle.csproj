@@ -83,6 +83,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CourseBattle.cs" />
+    <Compile Include="Item.cs" />
     <Compile Include="Temple.cs" />
     <Compile Include="Squad.cs" />
     <Compile Include="Skill.cs" />
@@ -114,6 +115,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Config\Items.xml" />
     <Content Include="Resources\Config\Heroes.xml" />
     <Content Include="Resources\Config\Guilds.xml" />
     <Content Include="Resources\Config\Buildings.xml" />
