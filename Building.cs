@@ -44,10 +44,12 @@ namespace Fantasy_King_s_Battle
 
             // Загружаем информацию об уровнях
             Levels = new Level[MaxLevel + 1];// Для упрощения работы с уровнями, добавляем 1, чтобы уровень был равен индексу в массиве
-            Level level;
+
             XmlNode nl = n.SelectSingleNode("Levels");
             if (nl != null)
             {
+                Level level;
+
                 foreach (XmlNode l in nl.SelectNodes("Level"))
                 {
                     level = new Level(l);

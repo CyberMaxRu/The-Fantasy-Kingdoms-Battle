@@ -52,6 +52,41 @@
     <Cost>500</Cost>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
+    <Levels>
+      <Level>
+        <Pos>1</Pos>
+        <Cost>0</Cost>
+        <Income>75</Income>
+        <Requirements>
+          <Requirement>
+            <Building>Castle</Building>
+            <Level>1</Level>
+          </Requirement>
+        </Requirements>
+      </Level>
+      <Level>
+        <Pos>2</Pos>
+        <Cost>1000</Cost>
+        <Income>150</Income>
+        <Requirements>
+          <Requirement>
+            <Building>Castle</Building>
+            <Level>2</Level>
+          </Requirement>
+        </Requirements>
+      </Level>
+      <Level>
+        <Pos>3</Pos>
+        <Cost>1500</Cost>
+        <Income>225</Income>
+        <Requirements>
+          <Requirement>
+            <Building>Castle</Building>
+            <Level>2</Level>
+          </Requirement>
+        </Requirements>
+      </Level>
+    </Levels>
   </Building>
   <Building>
     <ID>Smithy</ID>
