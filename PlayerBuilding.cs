@@ -14,6 +14,8 @@ namespace Fantasy_King_s_Battle
         {
             Player = p;
             Building = b;
+
+            Level = b.DefaultLevel;
         }
 
         internal Player Player { get; }

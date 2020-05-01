@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Diagnostics;
 
 namespace Fantasy_King_s_Battle
 {
@@ -19,8 +20,13 @@ namespace Fantasy_King_s_Battle
             ImageIndex = Convert.ToInt32(n.SelectSingleNode("ImageIndex").InnerText);
             TypeBuilding = (TypeBuilding)Enum.Parse(typeof(TypeBuilding), n.SelectSingleNode("TypeBuilding").InnerText);
             Cost = Convert.ToInt32(n.SelectSingleNode("Cost").InnerText);
+            DefaultLevel = Convert.ToInt32(n.SelectSingleNode("DefaultLevel").InnerText);
             MaxLevel = Convert.ToInt32(n.SelectSingleNode("MaxLevel").InnerText);
             Position = FormMain.Config.Buildings.Count;
+
+            Debug.Assert(DefaultLevel >= 0);
+            Debug.Assert(MaxLevel > 0);
+            Debug.Assert(DefaultLevel <= MaxLevel);
 
             // Проверяем, что таких же ID и наименования нет
             foreach (Building b in FormMain.Config.Buildings)
@@ -44,6 +50,7 @@ namespace Fantasy_King_s_Battle
         internal int Position { get; }
         internal TypeBuilding TypeBuilding { get; }
         internal int Cost { get; }
+        internal int DefaultLevel { get; }
         internal int MaxLevel { get; }
 
         internal int[] Income;
