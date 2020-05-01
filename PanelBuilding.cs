@@ -67,7 +67,7 @@ namespace Fantasy_King_s_Battle
                 Left = Config.GRID_SIZE,
                 TextAlign = ContentAlignment.MiddleRight,
                 ImageAlign = ContentAlignment.MiddleLeft,
-                ImageIndex = 0,
+                ImageIndex = FormMain.GUI_16_GOLD,
                 ImageList = ilGui16
             };
 
