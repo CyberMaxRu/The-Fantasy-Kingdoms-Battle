@@ -97,5 +97,16 @@ namespace Fantasy_King_s_Battle
         internal Player Opponent { get { return opponent; } set { if (value != this) opponent = value; else new Exception("Нельзя указать оппонентов самого себя."); } }
         internal bool BattleCalced { get; set; }
         internal List<CourseBattle> HistoryBattles { get; } = new List<CourseBattle>();
+
+        internal PlayerBuilding GetPlayerBuilding(Building b)
+        {
+            foreach (PlayerBuilding pb in Buildings)
+            {
+                if (pb.Building == b)
+                    return pb;
+            }
+
+            throw new Exception("У игрока здание " + b.ID + " не найдено.");
+        }
     }
 }

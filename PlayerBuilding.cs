@@ -31,11 +31,29 @@ namespace Fantasy_King_s_Battle
         {
             Debug.Assert(Level < Building.MaxLevel);
 
-            if (Player.Gold >= Building.Levels[Level + 1].Cost)
+            if (CheckRequirements() == true)
             {
                 Player.Gold -= Building.Levels[Level + 1].Cost;
                 Level++;
             }
+        }
+
+        internal bool CheckRequirements()
+        {
+            // Сначала проверяем наличие золота
+            if (Player.Gold < Building.Levels[Level + 1].Cost)
+                return false;
+
+            // Проверяем требования к зданиям
+            PlayerBuilding pb;
+            foreach (Requirement r in Building.Levels[Level + 1].Requirements)
+            {
+                pb = Player.GetPlayerBuilding(r.Building);
+                if (r.Level > pb.Level)
+                    return false;
+            }
+
+            return true; 
         }
     }
 }

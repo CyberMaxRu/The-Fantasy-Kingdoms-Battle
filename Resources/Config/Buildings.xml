@@ -93,7 +93,7 @@
         <Requirements>
           <Requirement>
             <Building>Castle</Building>
-            <Level>2</Level>
+            <Level>3</Level>
           </Requirement>
         </Requirements>
       </Level>
