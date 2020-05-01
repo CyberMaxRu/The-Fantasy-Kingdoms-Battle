@@ -17,9 +17,10 @@ namespace Fantasy_King_s_Battle
         private readonly ImageList imageListGui;
         private readonly Button btnBuy;
         private readonly Button btnLevelUp;
+        private readonly Label lblIncome;
         private PlayerBuilding building;
 
-        public PanelBuilding(int left, int top, ImageList ilBuilding, ImageList ilGui)
+        public PanelBuilding(int left, int top, ImageList ilBuilding, ImageList ilGui, ImageList ilGui16)
         {
             BorderStyle = BorderStyle.FixedSingle;
             imageListBuilding = ilBuilding;
@@ -59,7 +60,18 @@ namespace Fantasy_King_s_Battle
             };
             btnLevelUp.Click += BtnLevelUp_Click;
 
-            Height = pbBuilding.Height + (Config.GRID_SIZE * 2);
+            lblIncome = new Label()
+            {
+                Parent = this,
+                Top = pbBuilding.Top + pbBuilding.Height + Config.GRID_SIZE,
+                Left = Config.GRID_SIZE,
+                TextAlign = ContentAlignment.MiddleRight,
+                ImageAlign = ContentAlignment.MiddleLeft,
+                ImageIndex = 0,
+                ImageList = ilGui16
+            };
+
+            Height = lblIncome.Top + lblIncome.Height + (Config.GRID_SIZE * 2);
             Width = btnBuy.Left + btnBuy.Width + Config.GRID_SIZE;
         }
 
@@ -93,6 +105,8 @@ namespace Fantasy_King_s_Battle
 
         internal void UpdateData()
         {
+            lblIncome.Text = "+" + building.Income().ToString();
+
             if (building.Level > 0)
             {
                 btnBuy.Text = building.Level.ToString();

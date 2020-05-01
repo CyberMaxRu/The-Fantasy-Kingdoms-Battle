@@ -255,7 +255,7 @@ namespace Fantasy_King_s_Battle
                 {
                     if (b.TypeBuilding == tb)
                     {
-                        b.Panel = new PanelBuilding(left, top, ilBuildings, ilGui);
+                        b.Panel = new PanelBuilding(left, top, ilBuildings, ilGui, ilGui16);
                         b.Panel.Parent = tabPageBuildings;
 
                         left += b.Panel.Width + Config.GRID_SIZE;
