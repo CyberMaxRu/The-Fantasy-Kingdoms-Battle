@@ -19,7 +19,6 @@ namespace Fantasy_King_s_Battle
             Name = n.SelectSingleNode("Name").InnerText;
             ImageIndex = Convert.ToInt32(n.SelectSingleNode("ImageIndex").InnerText);
             TypeBuilding = (TypeBuilding)Enum.Parse(typeof(TypeBuilding), n.SelectSingleNode("TypeBuilding").InnerText);
-            Cost = Convert.ToInt32(n.SelectSingleNode("Cost").InnerText);
             DefaultLevel = Convert.ToInt32(n.SelectSingleNode("DefaultLevel").InnerText);
             MaxLevel = Convert.ToInt32(n.SelectSingleNode("MaxLevel").InnerText);
             Position = FormMain.Config.Buildings.Count;
@@ -64,7 +63,6 @@ namespace Fantasy_King_s_Battle
         internal int ImageIndex { get; }
         internal int Position { get; }
         internal TypeBuilding TypeBuilding { get; }
-        internal int Cost { get; }
         internal int DefaultLevel { get; }
         internal int MaxLevel { get; }
 

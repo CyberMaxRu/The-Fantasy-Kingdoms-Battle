@@ -31,9 +31,9 @@ namespace Fantasy_King_s_Battle
         {
             Debug.Assert(Level == 0);
 
-            if (Player.Gold >= Building.Cost)
+            if (Player.Gold >= Building.Levels[1].Cost)
             {
-                Player.Gold -= Building.Cost;
+                Player.Gold -= Building.Levels[1].Cost;
                 Level = 1;
             }
         }
