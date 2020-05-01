@@ -85,7 +85,7 @@ namespace Fantasy_King_s_Battle
             {
                 ImageAlign = ContentAlignment.MiddleLeft,
                 AutoSize = false,
-                Width = 64
+                Width = 100
             };
             StatusStrip.Items.Add(StatusLabelGold);
 
@@ -348,7 +348,7 @@ namespace Fantasy_King_s_Battle
 
         internal void ShowGold()
         {
-            StatusLabelGold.Text = lobby.CurrentPlayer.Gold.ToString();
+            StatusLabelGold.Text = lobby.CurrentPlayer.Gold.ToString() + " (+" + lobby.CurrentPlayer.Income().ToString() + ")";
         }
     }
 }

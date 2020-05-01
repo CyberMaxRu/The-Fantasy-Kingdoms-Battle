@@ -64,10 +64,7 @@ namespace Fantasy_King_s_Battle
         {
             Debug.Assert(IsLive == true);
 
-            foreach (PlayerBuilding pb in Buildings)
-            {
-                Gold += pb.Income();
-            }
+            Gold += Income();
         }
 
         internal Lobby Lobby { get; }
@@ -102,6 +99,18 @@ namespace Fantasy_King_s_Battle
             }
 
             throw new Exception("У игрока здание " + b.ID + " не найдено.");
+        }
+
+        internal int Income()
+        {
+            int income = 0;
+
+            foreach (PlayerBuilding pb in Buildings)
+            {
+                income += pb.Income();
+            }
+
+            return income;
         }
     }
 }
