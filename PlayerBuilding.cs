@@ -55,5 +55,10 @@ namespace Fantasy_King_s_Battle
 
             return true; 
         }
+
+        internal int Income()
+        {
+            return Level > 0 ? Building.Levels[Level].Income : 0;
+        }
     }
 }

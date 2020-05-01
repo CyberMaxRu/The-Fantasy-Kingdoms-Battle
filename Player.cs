@@ -64,15 +64,10 @@ namespace Fantasy_King_s_Battle
         {
             Debug.Assert(IsLive == true);
 
-/*            for (int i = 0; i < ExternalBuildings.Count(); i++)
+            foreach (PlayerBuilding pb in Buildings)
             {
-                foreach (BuildingOfPlayer bp in ExternalBuildings[i])
-                {
-                    for (int r = 0; r < FormMain.Config.Resources.Count(); r++)
-                        Resources[r] += bp.Building.IncomeResources[r];
-                }
-            }*/
-            //Resources[0] += 1000;
+                Gold += pb.Income();
+            }
         }
 
         internal Lobby Lobby { get; }
