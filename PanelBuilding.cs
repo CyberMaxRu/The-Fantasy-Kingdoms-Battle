@@ -85,7 +85,7 @@ namespace Fantasy_King_s_Battle
             {
                 btnBuy.Text = building.Level.ToString();
                 btnBuy.ImageIndex = -1;
-                btnLevelUp.Visible = true;
+                btnLevelUp.Visible = building.Level < building.Building.MaxLevel;
                 pbBuilding.Image = imageListBuilding.Images[building.Building.ImageIndex];
             }
             else
