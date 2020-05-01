@@ -27,14 +27,14 @@ namespace Fantasy_King_s_Battle
             Building.Panel.ShowData(this);
         }
 
-        internal void Buy()
+        internal void BuyOrUpgrade()
         {
-            Debug.Assert(Level == 0);
+            Debug.Assert(Level < Building.MaxLevel);
 
-            if (Player.Gold >= Building.Levels[1].Cost)
+            if (Player.Gold >= Building.Levels[Level + 1].Cost)
             {
-                Player.Gold -= Building.Levels[1].Cost;
-                Level = 1;
+                Player.Gold -= Building.Levels[Level + 1].Cost;
+                Level++;
             }
         }
     }

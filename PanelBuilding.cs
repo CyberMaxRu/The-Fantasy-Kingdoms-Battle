@@ -57,16 +57,27 @@ namespace Fantasy_King_s_Battle
                 ImageList = imageListGui,
                 ImageIndex = FormMain.GUI_LEVELUP
             };
+            btnLevelUp.Click += BtnLevelUp_Click;
 
             Height = pbBuilding.Height + (Config.GRID_SIZE * 2);
             Width = btnBuy.Left + btnBuy.Width + Config.GRID_SIZE;
+        }
+
+        private void BtnLevelUp_Click(object sender, EventArgs e)
+        {
+            Debug.Assert(building.Level > 0);
+            Debug.Assert(building.Level < building.Building.MaxLevel);
+
+            building.BuyOrUpgrade();
+            UpdateData();
+            Program.formMain.ShowGold();
         }
 
         private void BtnBuy_Click(object sender, EventArgs e)
         {
             if (building.Level == 0)
             {
-                building.Buy();
+                building.BuyOrUpgrade();
                 UpdateData();
                 Program.formMain.ShowGold();
             }
