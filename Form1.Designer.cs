@@ -116,7 +116,7 @@
             this.tabPageHeroes.Name = "tabPageHeroes";
             this.tabPageHeroes.Size = new System.Drawing.Size(952, 667);
             this.tabPageHeroes.TabIndex = 3;
-            this.tabPageHeroes.Text = "Войско";
+            this.tabPageHeroes.Text = "Герои";
             this.tabPageHeroes.ToolTipText = "Герои";
             this.tabPageHeroes.UseVisualStyleBackColor = true;
             // 
