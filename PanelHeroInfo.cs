@@ -49,7 +49,7 @@ namespace Fantasy_King_s_Battle
             btnDismiss = new Button()
             {
                 Parent = this,
-                Left = pbHero.Left + pbHero.Width + Config.GRID_SIZE,
+                Left = GuiUtils.NextLeft(pbHero),
                 Top = pbHero.Top,
                 ImageList = Program.formMain.ilGui,
                 ImageIndex = FormMain.GUI_DISMISS,

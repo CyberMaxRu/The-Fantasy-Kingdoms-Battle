@@ -44,5 +44,15 @@ namespace Fantasy_King_s_Battle
         {
             return new Size(il.ImageSize.Width + 8, il.ImageSize.Height + 8);
         }
+
+        internal static int NextLeft(Control c)
+        {
+            return c.Left + c.Width + Config.GRID_SIZE;
+        }
+
+        internal static int NextTop(Control c)
+        {
+            return c.Top + c.Height + Config.GRID_SIZE;
+        }
     }
 }
