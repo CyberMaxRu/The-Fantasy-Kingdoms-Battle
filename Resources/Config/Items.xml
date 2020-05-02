@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Items>
   <Item>
-    <ID>ElixirOfHealth</ID>
+    <ID>PotionOfHealth</ID>
     <Name>Напиток здоровья</Name>
     <ImageIndex>0</ImageIndex>
-    <TypeItem>Potion</TypeItem>
+    <TypeItem>PotionHealth</TypeItem>
     <Building>Market</Building>
     <CostExamine>150</CostExamine>
     <Cost>50</Cost>
     <Perk></Perk>
   </Item>
   <Item>
-    <ID>ElixirOfMana</ID>
+    <ID>PotionOfMana</ID>
     <Name>Напиток маны</Name>
     <ImageIndex>1</ImageIndex>
-    <TypeItem>Potion</TypeItem>
+    <TypeItem>PotionMana</TypeItem>
     <Building>Market</Building>
     <CostExamine>300</CostExamine>
     <Cost>50</Cost>
@@ -24,7 +24,7 @@
     <ID>Regeneration</ID>
     <Name>Кулон регенерации</Name>
     <ImageIndex>2</ImageIndex>
-    <TypeItem>Thing</TypeItem>
+    <TypeItem>Artifact</TypeItem>
     <Building>Market</Building>
     <CostExamine>250</CostExamine>
     <Cost>50</Cost>
@@ -34,7 +34,7 @@
     <ID>Protection</ID>
     <Name>Защита</Name>
     <ImageIndex>3</ImageIndex>
-    <TypeItem>Thing</TypeItem>
+    <TypeItem>Artifact</TypeItem>
     <Building>Market</Building>
     <CostExamine>500</CostExamine>
     <Cost>50</Cost>
@@ -44,7 +44,7 @@
     <ID>ImpProtection</ID>
     <Name>Улучш. защита</Name>
     <ImageIndex>4</ImageIndex>
-    <TypeItem>Thing</TypeItem>
+    <TypeItem>Artifact</TypeItem>
     <Building>Market</Building>
     <CostExamine>1000</CostExamine>
     <Cost>50</Cost>

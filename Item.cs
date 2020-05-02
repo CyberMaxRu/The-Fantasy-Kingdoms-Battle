@@ -9,21 +9,21 @@ namespace Fantasy_King_s_Battle
 {
 
     // Класс предмета
-    internal sealed class ItemOld
+    internal sealed class Item
     {
-        public ItemOld(XmlNode n)
+        public Item(XmlNode n)
         {
             ID = n.SelectSingleNode("ID").InnerText;
             Name = n.SelectSingleNode("Name").InnerText;
             ImageIndex = Convert.ToInt32(n.SelectSingleNode("ImageIndex").InnerText);
-            TypeItem = (CategoryItem)Enum.Parse(typeof(CategoryItem), n.SelectSingleNode("TypeItem").InnerText);
+            TypeItem = FormMain.Config.FindTypeItem(n.SelectSingleNode("TypeItem").InnerText);
             Building = FormMain.Config.FindBuilding(n.SelectSingleNode("Building").InnerText);
             CostExamine = Convert.ToInt32(n.SelectSingleNode("CostExamine").InnerText);
             Cost = Convert.ToInt32(n.SelectSingleNode("Cost").InnerText);
             Position = FormMain.Config.Temples.Count;
 
             // Проверяем, что таких же ID и наименования нет
-            foreach (ItemOld i in FormMain.Config.Items)
+            foreach (Item i in FormMain.Config.Items)
             {
                 if (i.ID == ID)
                     throw new Exception("В конфигурации предметов повторяется ID = " + ID);
@@ -39,7 +39,7 @@ namespace Fantasy_King_s_Battle
         internal string ID { get; }
         internal string Name { get; }
         internal int ImageIndex { get; }
-        internal CategoryItem TypeItem { get; }
+        internal TypeItem TypeItem { get; }
         internal int Position { get; }
         internal Building Building { get; }
         internal int CostExamine { get; }

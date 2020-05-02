@@ -92,7 +92,7 @@ namespace Fantasy_King_s_Battle
 
             foreach (XmlNode n in xmlDoc.SelectNodes("/Items/Item"))
             {
-                Items.Add(new ItemOld(n));
+                Items.Add(new Item(n));
             }
             // Загрузка навыков
             xmlDoc = CreateXmlDocument("Config\\Skills.xml");
@@ -120,7 +120,7 @@ namespace Fantasy_King_s_Battle
         internal List<ClassUnit> ClassesUnits { get; } = new List<ClassUnit>();
         internal List<TypeUnit> TypeUnits { get; } = new List<TypeUnit>();
         internal List<TypeItem> TypeItems { get; } = new List<TypeItem>();
-        internal List<ItemOld> Items { get; } = new List<ItemOld>();
+        internal List<Item> Items { get; } = new List<Item>();
         internal List<Skill> Skills { get; } = new List<Skill>();
         internal int MaxLevelSkill { get; }
 
@@ -222,6 +222,17 @@ namespace Fantasy_King_s_Battle
             }
 
             throw new Exception("Герой " + ID + " не найден.");
+        }
+
+        internal TypeItem FindTypeItem(string ID)
+        {
+            foreach (TypeItem ti in TypeItems)
+            {
+                if (ti.ID == ID)
+                    return ti;
+            }
+
+            throw new Exception("Тип предмета " + ID + " не найден.");
         }
     }
 }

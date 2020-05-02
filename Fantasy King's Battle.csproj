@@ -91,7 +91,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CourseBattle.cs" />
-    <Compile Include="ItemOld.cs" />
+    <Compile Include="Item.cs" />
     <Compile Include="Temple.cs" />
     <Compile Include="Skill.cs" />
     <Compile Include="TypeUnit.cs" />
