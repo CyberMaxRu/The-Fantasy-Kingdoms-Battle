@@ -50,4 +50,64 @@
     <Cost>50</Cost>
     <Perk></Perk>
   </Item>
+  <Item>
+    <ID>Sword0</ID>
+    <Name>Обычный меч</Name>
+    <ImageIndex>4</ImageIndex>
+    <TypeItem>Weapon</TypeItem>
+    <Building>Smithy</Building>
+    <CostExamine>0</CostExamine>
+    <Cost>0</Cost>
+    <Perk></Perk>
+  </Item>
+  <Item>
+    <ID>ArmourWarrior0</ID>
+    <Name>Обычный доспех</Name>
+    <ImageIndex>4</ImageIndex>
+    <TypeItem>Weapon</TypeItem>
+    <Building>Smithy</Building>
+    <CostExamine>0</CostExamine>
+    <Cost>0</Cost>
+    <Perk></Perk>
+  </Item>
+  <Item>
+    <ID>Bow0</ID>
+    <Name>Обычный лук</Name>
+    <ImageIndex>4</ImageIndex>
+    <TypeItem>Weapon</TypeItem>
+    <Building>Smithy</Building>
+    <CostExamine>0</CostExamine>
+    <Cost>0</Cost>
+    <Perk></Perk>
+  </Item>
+  <Item>
+    <ID>ArmourRanger0</ID>
+    <Name>Обычный доспех</Name>
+    <ImageIndex>4</ImageIndex>
+    <TypeItem>Weapon</TypeItem>
+    <Building>Smithy</Building>
+    <CostExamine>0</CostExamine>
+    <Cost>0</Cost>
+    <Perk></Perk>
+  </Item>
+  <Item>
+    <ID>Staff0</ID>
+    <Name>Обычный посох</Name>
+    <ImageIndex>4</ImageIndex>
+    <TypeItem>Weapon</TypeItem>
+    <Building>Smithy</Building>
+    <CostExamine>0</CostExamine>
+    <Cost>0</Cost>
+    <Perk></Perk>
+  </Item>
+  <Item>
+    <ID>ArmourMage0</ID>
+    <Name>Обычный доспех</Name>
+    <ImageIndex>4</ImageIndex>
+    <TypeItem>Weapon</TypeItem>
+    <Building>Smithy</Building>
+    <CostExamine>0</CostExamine>
+    <Cost>0</Cost>
+    <Perk></Perk>
+  </Item>
 </Items>
