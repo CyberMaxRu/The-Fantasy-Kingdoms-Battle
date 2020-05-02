@@ -159,7 +159,7 @@ namespace Fantasy_King_s_Battle
             DrawGuilds();
             DrawBuildings();
             DrawTemples();
-            DrawHeroes();
+            DrawWarehouse();
             ShowDataPlayer();
 
         }
@@ -368,7 +368,7 @@ namespace Fantasy_King_s_Battle
             }
         }
 
-        private void DrawHeroes()
+        private void DrawWarehouse()
         {
             PictureBox pb;
 
@@ -452,7 +452,7 @@ namespace Fantasy_King_s_Battle
             {
                 panelHeroInfo = new PanelHeroInfo(ilHeroes, ilParameters, ilItems)
                 {
-                    Left = 400,
+                    Left = 568,
                     Top = Config.GRID_SIZE,
                     Parent = tabPageHeroes
                 };
@@ -467,7 +467,7 @@ namespace Fantasy_King_s_Battle
             {
                 panelHeroInfo = new PanelHeroInfo(ilHeroes, ilParameters, ilItems)
                 {
-                    Left = 488,
+                    Left = 568,
                     Top = Config.GRID_SIZE,
                     Parent = tabPageHeroes
                 };
