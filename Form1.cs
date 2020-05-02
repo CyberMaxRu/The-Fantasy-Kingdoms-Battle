@@ -338,7 +338,9 @@ namespace Fantasy_King_s_Battle
                         ph.Panel.Top = top;
                         ph.Panel.Left = left;
                     }
-                    
+
+                    ph.Panel.ShowData();
+
                     height = ph.Panel.Height;
                     cnt++;
                     if (cnt == 4)
