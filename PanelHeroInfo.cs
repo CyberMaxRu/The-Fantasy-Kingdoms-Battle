@@ -88,7 +88,7 @@ namespace Fantasy_King_s_Battle
                     {
                         BorderStyle = BorderStyle.FixedSingle,
                         Parent = this,
-                        Size = GuiUtils.SizeButtonWithImage(ilItems),
+                        Size = ilItems.ImageSize
                     };
                     pb.Left = Config.GRID_SIZE + ((pb.Width + Config.GRID_SIZE) * x);
                     pb.Top = GuiUtils.NextTop(lblSpeed) + ((pb.Height + Config.GRID_SIZE) * y);
@@ -139,9 +139,23 @@ namespace Fantasy_King_s_Battle
                 ShowParameter(lblDefenseMelee, ph.OurParameters.DefenseMelee, ph.ModifiedParameters.DefenseMelee);
                 ShowParameter(lblDefenseRange, ph.OurParameters.DefenseRange, ph.ModifiedParameters.DefenseRange);
                 ShowParameter(lblDefenseMagic, ph.OurParameters.DefenseMagic, ph.ModifiedParameters.DefenseMagic);
+
+                for (int i = 0; i < ph.Slots.Length; i++)
+                {
+                    if (ph.Slots[i] != null)
+                    {
+                        slots[i].Image = imageListItems.Images[ph.Slots[i].Item.ImageIndex];
+                    }
+                    else
+                    {
+                        slots[i].Image = null;
+                    }
+                }
+
             }
             else
                 Hide();
+
 
             void ShowParameter(Label l, int normalParam, int modParam)
             {

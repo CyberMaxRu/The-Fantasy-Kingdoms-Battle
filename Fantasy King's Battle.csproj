@@ -60,6 +60,7 @@
     <Compile Include="Guild.cs" />
     <Compile Include="GuiUtils.cs" />
     <Compile Include="Hero.cs" />
+    <Compile Include="PlayerItem.cs" />
     <Compile Include="TypeItem.cs" />
     <Compile Include="ItemSmithy.cs" />
     <Compile Include="Level.cs" />

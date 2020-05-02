@@ -15,6 +15,14 @@ namespace Fantasy_King_s_Battle
             Guild = pg;
             Hero = Guild.Guild.TrainedHero;
             Level = 1;
+
+            for (int i = 0; i < Hero.Slots.Length; i++)
+            {
+                if (Hero.Slots[i].DefaultItem != null)
+                {
+                    Slots[i] = new PlayerItem(Hero.Slots[i].DefaultItem);
+                }
+            }
         }
 
         internal PlayerGuild Guild { get; }        
@@ -27,6 +35,7 @@ namespace Fantasy_King_s_Battle
         internal int MaxMana;
         internal Parameters OurParameters { get; } = new Parameters();
         internal Parameters ModifiedParameters { get; } = new Parameters();
+        internal PlayerItem[] Slots { get; } = new PlayerItem[FormMain.SLOT_IN_INVENTORY];
         internal PanelHero Panel { get; set; }
 
         internal void ShowDate()
