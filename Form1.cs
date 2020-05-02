@@ -22,7 +22,7 @@ namespace Fantasy_King_s_Battle
         private readonly ImageList ilBuildings;
         private readonly ImageList ilTemples;
         private readonly ImageList ilHeroes;
-        private readonly ImageList ilGui;
+        internal readonly ImageList ilGui;
         private readonly ImageList ilGui16;
         private readonly ImageList ilGuiHeroes;
         internal readonly ImageList ilParameters;

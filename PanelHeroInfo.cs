@@ -26,6 +26,7 @@ namespace Fantasy_King_s_Battle
         private readonly Label lblDefenseMelee;
         private readonly Label lblDefenseRange;
         private readonly Label lblDefenseMagic;
+        private readonly Button btnDismiss;
 
         private readonly ImageList imageListHeroes;
         private readonly ImageList imageListParameters;
@@ -44,6 +45,18 @@ namespace Fantasy_King_s_Battle
                 Width = ilHeroes.ImageSize.Width,
                 Height = ilHeroes.ImageSize.Height,
             };
+
+            btnDismiss = new Button()
+            {
+                Parent = this,
+                Left = pbHero.Left + pbHero.Width + Config.GRID_SIZE,
+                Top = pbHero.Top,
+                ImageList = Program.formMain.ilGui,
+                ImageIndex = FormMain.GUI_DISMISS,
+                Width = Program.formMain.ilGui.ImageSize.Width + 8,
+                Height = Program.formMain.ilGui.ImageSize.Height + 8
+            };
+            btnDismiss.Click += BtnDismiss_Click;
 
             lblLevel = GuiUtils.CreateLabel(this, Config.GRID_SIZE, pbHero.Top + pbHero.Height + Config.GRID_SIZE);
             lblHealth = GuiUtils.CreateLabel(this, Config.GRID_SIZE, lblLevel.Top + lblLevel.Height + Config.GRID_SIZE);
@@ -67,25 +80,47 @@ namespace Fantasy_King_s_Battle
             Height = lblSpeed.Top + lblSpeed.Height + Config.GRID_SIZE;
         }
 
+        internal PlayerHero Hero { get; private set; }
+
+        private void BtnDismiss_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Уволить героя?", "FKB", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Hero.Dismiss();
+
+                ShowHero(null);
+                Program.formMain.ShowAllBuildings(); // Так как количество героев уменьшилось, обновляем здания
+                Program.formMain.ShowHeroes();
+            }
+        }
+
         internal void ShowHero(PlayerHero ph)
         {
-            pbHero.Image = imageListHeroes.Images[ph.Hero.ImageIndex];
+            Hero = ph;
 
-            lblLevel.Text = "Уровень: " + ph.Level.ToString();
-            lblHealth.Text = "Здоровье: " + ph.CurrentHealth.ToString() + "/" + ph.MaxHealth.ToString();
-            lblMana.Text = "Мана: " + ph.CurrentMana.ToString() + "/" + ph.MaxMana.ToString();
+            if (Hero != null)
+            {
+                Visible = true;
+                pbHero.Image = imageListHeroes.Images[ph.Hero.ImageIndex];
 
-            ShowParameter(lblStrength, ph.OurParameters.Strength, ph.ModifiedParameters.Strength);
-            ShowParameter(lblDexterity, ph.OurParameters.Dexterity, ph.ModifiedParameters.Dexterity);
-            ShowParameter(lblWisdom, ph.OurParameters.Wisdom, ph.ModifiedParameters.Wisdom);
-            ShowParameter(lblStamina, ph.OurParameters.Stamina, ph.ModifiedParameters.Stamina);
-            ShowParameter(lblSpeed, ph.OurParameters.Speed, ph.ModifiedParameters.Speed);
-            ShowParameter(lblAttackMelee, ph.OurParameters.AttackMelee, ph.ModifiedParameters.AttackMelee);
-            ShowParameter(lblAttackRange, ph.OurParameters.AttackRange, ph.ModifiedParameters.AttackRange);
-            ShowParameter(lblAttackMagic, ph.OurParameters.AttackMagic, ph.ModifiedParameters.AttackMagic);
-            ShowParameter(lblDefenseMelee, ph.OurParameters.DefenseMelee, ph.ModifiedParameters.DefenseMelee);
-            ShowParameter(lblDefenseRange, ph.OurParameters.DefenseRange, ph.ModifiedParameters.DefenseRange);
-            ShowParameter(lblDefenseMagic, ph.OurParameters.DefenseMagic, ph.ModifiedParameters.DefenseMagic);
+                lblLevel.Text = "Уровень: " + ph.Level.ToString();
+                lblHealth.Text = "Здоровье: " + ph.CurrentHealth.ToString() + "/" + ph.MaxHealth.ToString();
+                lblMana.Text = "Мана: " + ph.CurrentMana.ToString() + "/" + ph.MaxMana.ToString();
+
+                ShowParameter(lblStrength, ph.OurParameters.Strength, ph.ModifiedParameters.Strength);
+                ShowParameter(lblDexterity, ph.OurParameters.Dexterity, ph.ModifiedParameters.Dexterity);
+                ShowParameter(lblWisdom, ph.OurParameters.Wisdom, ph.ModifiedParameters.Wisdom);
+                ShowParameter(lblStamina, ph.OurParameters.Stamina, ph.ModifiedParameters.Stamina);
+                ShowParameter(lblSpeed, ph.OurParameters.Speed, ph.ModifiedParameters.Speed);
+                ShowParameter(lblAttackMelee, ph.OurParameters.AttackMelee, ph.ModifiedParameters.AttackMelee);
+                ShowParameter(lblAttackRange, ph.OurParameters.AttackRange, ph.ModifiedParameters.AttackRange);
+                ShowParameter(lblAttackMagic, ph.OurParameters.AttackMagic, ph.ModifiedParameters.AttackMagic);
+                ShowParameter(lblDefenseMelee, ph.OurParameters.DefenseMelee, ph.ModifiedParameters.DefenseMelee);
+                ShowParameter(lblDefenseRange, ph.OurParameters.DefenseRange, ph.ModifiedParameters.DefenseRange);
+                ShowParameter(lblDefenseMagic, ph.OurParameters.DefenseMagic, ph.ModifiedParameters.DefenseMagic);
+            }
+            else
+                Hide();
 
             void ShowParameter(Label l, int normalParam, int modParam)
             {

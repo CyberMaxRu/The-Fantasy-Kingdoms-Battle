@@ -35,5 +35,20 @@ namespace Fantasy_King_s_Battle
 
             Panel.ShowData();
         }
+
+        internal void Dismiss()
+        {
+            Debug.Assert(Guild.Heroes.IndexOf(this) != -1);
+            Debug.Assert(Guild.Player.Heroes.IndexOf(this) != -1);
+
+            if (Guild.Heroes.Remove(this) == false)
+                throw new Exception("Не смог удалить себя из списка героев гильдии.");
+
+            if (Guild.Player.Heroes.Remove(this) == false)
+                throw new Exception("Не смог удалить себя из списка героев игрока.");
+
+            if (Panel != null)
+                Panel.Dispose();
+        }
     }
 }
