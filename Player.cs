@@ -45,6 +45,8 @@ namespace Fantasy_King_s_Battle
             }
 
             //
+            Warehouse.Add(new PlayerItem(FormMain.Config.FindItem("Sword1"), 1));
+            Warehouse.Add(new PlayerItem(FormMain.Config.FindItem("ArmourWarrior1"), 1));
         }
 
         internal void DoTurn()
