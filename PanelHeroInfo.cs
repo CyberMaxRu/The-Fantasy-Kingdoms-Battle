@@ -28,12 +28,15 @@ namespace Fantasy_King_s_Battle
         private readonly Label lblDefenseMagic;
         private readonly Button btnDismiss;
 
-        private readonly ImageList imageListHeroes;
-        private readonly ImageList imageListParameters;
+        private PictureBox[] slots = new PictureBox[FormMain.SLOT_IN_INVENTORY];
 
-        public PanelHeroInfo(ImageList ilHeroes, ImageList ilParameters)
+        private readonly ImageList imageListHeroes;
+        private readonly ImageList imageListItems;
+
+        public PanelHeroInfo(ImageList ilHeroes, ImageList ilParameters, ImageList ilItems)
         {
             imageListHeroes = ilHeroes;
+            imageListItems = ilItems;
 
             BorderStyle = BorderStyle.FixedSingle;
 
@@ -75,8 +78,27 @@ namespace Fantasy_King_s_Battle
             lblDefenseRange = GuiUtils.CreateLabelParameter(this, lblAttackRange.Left + lblAttackRange.Width + Config.GRID_SIZE, lblAttackRange.Top, FormMain.GUI_PARAMETER_DEFENSE_RANGE);
             lblDefenseMagic = GuiUtils.CreateLabelParameter(this, lblAttackMagic.Left + lblAttackMagic.Width + Config.GRID_SIZE, lblAttackMagic.Top, FormMain.GUI_PARAMETER_DEFENSE_MAGIC);
 
+            // Слоты инвентаря
+            PictureBox pb;
+            for (int y = 0; y < FormMain.SLOTS_LINES; y++)
+            {
+                for (int x = 0; x < FormMain.SLOTS_IN_LINE; x++)
+                {
+                    pb = new PictureBox()
+                    {
+                        BorderStyle = BorderStyle.FixedSingle,
+                        Parent = this,
+                        Size = GuiUtils.SizeButtonWithImage(ilItems),
+                    };
+                    pb.Left = Config.GRID_SIZE + ((pb.Width + Config.GRID_SIZE) * x);
+                    pb.Top = GuiUtils.NextTop(lblSpeed) + ((pb.Height + Config.GRID_SIZE) * y);
+
+                    slots[x + y * FormMain.SLOTS_IN_LINE] = pb;
+                }
+            }
+
             Width = pbHero.Width + (Config.GRID_SIZE * 2) + 160;
-            Height = lblSpeed.Top + lblSpeed.Height + Config.GRID_SIZE;
+            Height = GuiUtils.NextTop(slots[FormMain.SLOT_IN_INVENTORY - 1]);
         }
 
         internal PlayerHero Hero { get; private set; }

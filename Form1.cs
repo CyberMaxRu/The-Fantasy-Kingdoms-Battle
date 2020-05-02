@@ -56,7 +56,9 @@ namespace Fantasy_King_s_Battle
 
         internal const int GUI_16_GOLD = 0;
         internal static int MAX_HEROES_AT_PLAYER = 16;
-        internal static int SLOT_IN_INVENTORY = 8;
+        internal static int SLOTS_IN_LINE = 4;
+        internal static int SLOTS_LINES = 2;
+        internal static int SLOT_IN_INVENTORY = SLOTS_IN_LINE * SLOTS_LINES;
 
         private readonly Lobby lobby;
         private int curAppliedPlayer = -1;
@@ -408,7 +410,7 @@ namespace Fantasy_King_s_Battle
         {
             if (panelHeroInfo == null)
             {
-                panelHeroInfo = new PanelHeroInfo(ilHeroes, ilParameters)
+                panelHeroInfo = new PanelHeroInfo(ilHeroes, ilParameters, ilItems)
                 {
                     Left = 400,
                     Top = Config.GRID_SIZE,
@@ -423,7 +425,7 @@ namespace Fantasy_King_s_Battle
         {
             if (panelHeroInfo == null)
             {
-                panelHeroInfo = new PanelHeroInfo(ilHeroes, ilParameters)
+                panelHeroInfo = new PanelHeroInfo(ilHeroes, ilParameters, ilItems)
                 {
                     Left = 488,
                     Top = Config.GRID_SIZE,
