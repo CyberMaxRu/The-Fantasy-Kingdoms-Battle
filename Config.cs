@@ -55,6 +55,14 @@ namespace Fantasy_King_s_Battle
                 TypeItems.Add(new TypeItem(n));
             }
 
+            // Загрузка предметов
+            xmlDoc = CreateXmlDocument("Config\\Items.xml");
+
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Items/Item"))
+            {
+                Items.Add(new Item(n));
+            }
+
             // Загрузка конфигурации героев
             xmlDoc = CreateXmlDocument("Config\\Heroes.xml");
 
@@ -87,13 +95,6 @@ namespace Fantasy_King_s_Battle
                 TypeUnits.Add(new TypeUnit(n));
             }
 
-            // Загрузка предметов
-            xmlDoc = CreateXmlDocument("Config\\Items.xml");
-
-            foreach (XmlNode n in xmlDoc.SelectNodes("/Items/Item"))
-            {
-                Items.Add(new Item(n));
-            }
             // Загрузка навыков
             xmlDoc = CreateXmlDocument("Config\\Skills.xml");
 
@@ -233,6 +234,17 @@ namespace Fantasy_King_s_Battle
             }
 
             throw new Exception("Тип предмета " + ID + " не найден.");
+        }
+
+        internal Item FindItem(string ID)
+        {
+            foreach (Item i in Items)
+            {
+                if (i.ID == ID)
+                    return i;
+            }
+
+            throw new Exception("Предмет " + ID + " не найден.");
         }
     }
 }

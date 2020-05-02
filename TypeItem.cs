@@ -16,6 +16,7 @@ namespace Fantasy_King_s_Battle
         {
             ID = n.SelectSingleNode("ID").InnerText;
             Category = (CategoryItem)Enum.Parse(typeof(CategoryItem), n.SelectSingleNode("Category").InnerText);
+            Required = Convert.ToBoolean(n.SelectSingleNode("Required").InnerText);
 
             // Проверяем, что таких же ID и наименования нет
             foreach (TypeItem ti in FormMain.Config.TypeItems)
@@ -29,5 +30,6 @@ namespace Fantasy_King_s_Battle
 
         internal string ID { get; }
         internal CategoryItem Category { get; }
+        internal bool Required { get; }
     }
 }

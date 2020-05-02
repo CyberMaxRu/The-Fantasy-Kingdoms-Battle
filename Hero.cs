@@ -11,16 +11,25 @@ namespace Fantasy_King_s_Battle
 {
     internal sealed class Slot
     {
-        public Slot(XmlNode n)
+        public Slot(Hero h, XmlNode n)
         {
             Pos = Convert.ToInt32(n.SelectSingleNode("Pos").InnerText) - 1;
             TypeItem = FormMain.Config.FindTypeItem(n.SelectSingleNode("TypeItem").InnerText);
             MaxQuantity = Convert.ToInt32(n.SelectSingleNode("MaxQuantity").InnerText);
+            if (n.SelectSingleNode("DefaultItem") != null)
+                DefaultItem = FormMain.Config.FindItem(n.SelectSingleNode("DefaultItem").InnerText);
+
+            if ((TypeItem.Required == true) && (DefaultItem == null))
+                throw new Exception("У слота " + Pos.ToString() + " " + h.ID + " не указано дефолтное значение.");
+
+            if ((TypeItem.Required == false) && (DefaultItem != null))
+                throw new Exception("У слота " + Pos.ToString() + " " + h.ID + " указано дефолтное значение.");
         }
 
         internal int Pos { get; }
         internal TypeItem TypeItem { get; }
         internal int MaxQuantity { get; }
+        internal Item DefaultItem { get; }
     }
 
     // Класс героя гильдии    
@@ -65,7 +74,7 @@ namespace Fantasy_King_s_Battle
 
             foreach (XmlNode l in nl.SelectNodes("Slot"))
             {
-                slot = new Slot(l);
+                slot = new Slot(this, l);
                 Debug.Assert(Slots[slot.Pos] == null);
 
                 Slots[slot.Pos] = slot;

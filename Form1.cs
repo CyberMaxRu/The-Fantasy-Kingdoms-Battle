@@ -26,6 +26,7 @@ namespace Fantasy_King_s_Battle
         private readonly ImageList ilGui16;
         private readonly ImageList ilGuiHeroes;
         internal readonly ImageList ilParameters;
+        internal readonly ImageList ilItems;
 
         private readonly ToolStripStatusLabel StatusLabelDay;
         private readonly ToolStripStatusLabel StatusLabelGold;
@@ -96,6 +97,7 @@ namespace Fantasy_King_s_Battle
             ilGuiHeroes = PrepareImageList("GuiHeroes.png", 48, 48, true);
             ilGui16 = PrepareImageList("Gui16.png", 16, 16, false);
             ilParameters = PrepareImageList("Parameters.png", 24, 24, false);
+            ilItems = PrepareImageList("Items.png", 48, 48, false);
 
             //    
             lobby = new Lobby(8);
@@ -158,15 +160,33 @@ namespace Fantasy_King_s_Battle
         internal ImageList ILFractions { get { return ilFractions; } }
         internal ImageList PrepareImageList(string filename, int width, int height, bool convertToGrey)
         {
-            ImageList il;
-            il = new ImageList()
+            ImageList il = new ImageList()
             {
-                ColorDepth = ColorDepth.Depth32Bit
+                ColorDepth = ColorDepth.Depth32Bit,
+                ImageSize = new Size(width, height)
             };
-            il.ImageSize = new Size(width, height);
-            Bitmap bmp;
-            bmp = new Bitmap(dirResources + "Icons\\" + filename);
-            _ = il.Images.AddStrip(bmp);
+
+            Bitmap bmp = new Bitmap(dirResources + "Icons\\" + filename);
+            // Если это многострочная картинка, нарезаем ее в однострочную картинку
+            if (bmp.Height % height != 0)
+                throw new Exception("Высота многострочной картинки не кратна высоте строки: " + filename);
+
+            int lines = bmp.Height / height;
+            if (lines > 1)
+            {
+                Bitmap bmpSingleline = new Bitmap(bmp.Width, height);
+                Graphics g = Graphics.FromImage(bmpSingleline);
+
+                for (int i = 0; i < lines; i++)
+                {
+                    g.DrawImage(bmpSingleline, new Rectangle(0, i * height, bmp.Width, height));
+                    _ = il.Images.AddStrip(bmpSingleline);
+                }
+            }
+            else
+            {
+                _ = il.Images.AddStrip(bmp);
+            }
 
             // Добавляем серые иконки
             if (convertToGrey == true)
