@@ -47,7 +47,7 @@
             // 
             // StatusStrip
             // 
-            this.StatusStrip.Location = new System.Drawing.Point(0, 721);
+            this.StatusStrip.Location = new System.Drawing.Point(0, 747);
             this.StatusStrip.Name = "StatusStrip";
             this.StatusStrip.ShowItemToolTips = true;
             this.StatusStrip.Size = new System.Drawing.Size(979, 22);
@@ -67,7 +67,8 @@
             this.tabControl1.Location = new System.Drawing.Point(8, 40);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(960, 656);
+            this.tabControl1.ShowToolTips = true;
+            this.tabControl1.Size = new System.Drawing.Size(960, 696);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPageLobby
@@ -75,45 +76,50 @@
             this.tabPageLobby.Location = new System.Drawing.Point(4, 25);
             this.tabPageLobby.Name = "tabPageLobby";
             this.tabPageLobby.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageLobby.Size = new System.Drawing.Size(952, 627);
+            this.tabPageLobby.Size = new System.Drawing.Size(952, 667);
             this.tabPageLobby.TabIndex = 0;
             this.tabPageLobby.Text = "Лобби";
+            this.tabPageLobby.ToolTipText = "Лобби";
             this.tabPageLobby.UseVisualStyleBackColor = true;
             // 
             // tabPageGuilds
             // 
             this.tabPageGuilds.Location = new System.Drawing.Point(4, 25);
             this.tabPageGuilds.Name = "tabPageGuilds";
-            this.tabPageGuilds.Size = new System.Drawing.Size(952, 627);
+            this.tabPageGuilds.Size = new System.Drawing.Size(952, 667);
             this.tabPageGuilds.TabIndex = 6;
             this.tabPageGuilds.Text = "Гильдии";
+            this.tabPageGuilds.ToolTipText = "Гильдии";
             this.tabPageGuilds.UseVisualStyleBackColor = true;
             // 
             // tabPageBuildings
             // 
             this.tabPageBuildings.Location = new System.Drawing.Point(4, 25);
             this.tabPageBuildings.Name = "tabPageBuildings";
-            this.tabPageBuildings.Size = new System.Drawing.Size(952, 627);
+            this.tabPageBuildings.Size = new System.Drawing.Size(952, 667);
             this.tabPageBuildings.TabIndex = 2;
             this.tabPageBuildings.Text = "Здания";
+            this.tabPageBuildings.ToolTipText = "Экономические и прочие здания";
             this.tabPageBuildings.UseVisualStyleBackColor = true;
             // 
             // tabPageTemples
             // 
             this.tabPageTemples.Location = new System.Drawing.Point(4, 25);
             this.tabPageTemples.Name = "tabPageTemples";
-            this.tabPageTemples.Size = new System.Drawing.Size(952, 627);
+            this.tabPageTemples.Size = new System.Drawing.Size(952, 667);
             this.tabPageTemples.TabIndex = 7;
             this.tabPageTemples.Text = "Храмы";
+            this.tabPageTemples.ToolTipText = "Храмы";
             this.tabPageTemples.UseVisualStyleBackColor = true;
             // 
-            // tabPageArmy
+            // tabPageHeroes
             // 
             this.tabPageHeroes.Location = new System.Drawing.Point(4, 25);
-            this.tabPageHeroes.Name = "tabPageArmy";
-            this.tabPageHeroes.Size = new System.Drawing.Size(952, 627);
+            this.tabPageHeroes.Name = "tabPageHeroes";
+            this.tabPageHeroes.Size = new System.Drawing.Size(952, 667);
             this.tabPageHeroes.TabIndex = 3;
             this.tabPageHeroes.Text = "Войско";
+            this.tabPageHeroes.ToolTipText = "Герои";
             this.tabPageHeroes.UseVisualStyleBackColor = true;
             // 
             // tabPageBattle
@@ -121,9 +127,10 @@
             this.tabPageBattle.Controls.Add(this.textBoxResultBattle);
             this.tabPageBattle.Location = new System.Drawing.Point(4, 25);
             this.tabPageBattle.Name = "tabPageBattle";
-            this.tabPageBattle.Size = new System.Drawing.Size(952, 627);
+            this.tabPageBattle.Size = new System.Drawing.Size(952, 667);
             this.tabPageBattle.TabIndex = 5;
             this.tabPageBattle.Text = "Сражение";
+            this.tabPageBattle.ToolTipText = "Сражение";
             this.tabPageBattle.UseVisualStyleBackColor = true;
             // 
             // textBoxResultBattle
@@ -165,7 +172,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(979, 743);
+            this.ClientSize = new System.Drawing.Size(979, 769);
             this.Controls.Add(this.ButtonEndTurn);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.StatusStrip);
