@@ -15,15 +15,17 @@ namespace Fantasy_King_s_Battle
         private readonly PictureBox pbGuild;
         private readonly ImageList imageListGuild;
         private readonly ImageList imageListGui;
+        private readonly ImageList imageListGuiHeroes;
         private readonly Button btnBuy;
         private readonly Button btnLevelUp;
         private PlayerGuild guild;
 
-        public PanelGuild(int left, int top,  ImageList ilGuild, ImageList ilGui)
+        public PanelGuild(int left, int top,  ImageList ilGuild, ImageList ilGui, ImageList ilGuiHeroes)
         {
             BorderStyle = BorderStyle.FixedSingle;
             imageListGuild = ilGuild;
             imageListGui = ilGui;
+            imageListGuiHeroes = ilGuiHeroes;
             Left = left;
             Top = top;
 
@@ -70,6 +72,10 @@ namespace Fantasy_King_s_Battle
                 UpdateData();
                 Program.formMain.ShowGold();
             }
+            else
+            {
+
+            }
         }
     
         internal void ShowData(PlayerGuild pg)
@@ -84,14 +90,14 @@ namespace Fantasy_King_s_Battle
         {
             if (guild.Level > 0)
             {
-                btnBuy.Text = guild.Level.ToString();
-                btnBuy.ImageIndex = -1;
+                btnBuy.ImageList = imageListGuiHeroes;
+                btnBuy.ImageIndex = guild.Guild.TrainedHero.ImageIndex;
                 btnLevelUp.Visible = true;
                 pbGuild.Image = imageListGuild.Images[guild.Guild.ImageIndex];
             }
             else
             {
-                btnBuy.Text = "";
+                btnBuy.ImageList = imageListGui;
                 btnBuy.ImageIndex = FormMain.GUI_BUY;
                 btnLevelUp.Visible = false;
                 pbGuild.Image = imageListGuild.Images[guild.Guild.ImageIndex + FormMain.Config.Guilds.Count];

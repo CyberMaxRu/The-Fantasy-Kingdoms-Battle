@@ -24,6 +24,7 @@ namespace Fantasy_King_s_Battle
         private readonly ImageList ilHeroes;
         private readonly ImageList ilGui;
         private readonly ImageList ilGui16;
+        private readonly ImageList ilGuiHeroes;
 
         private readonly ToolStripStatusLabel StatusLabelGold;
 
@@ -74,6 +75,7 @@ namespace Fantasy_King_s_Battle
             ilTemples = PrepareImageList("Temples.png", 126, 126, true);
             ilHeroes = PrepareImageList("Heroes.png", 126, 126, false);
             ilGui = PrepareImageList("Gui.png", 48, 48, false);
+            ilGuiHeroes = PrepareImageList("GuiHeroes.png", 48, 48, false);
             ilGui16 = PrepareImageList("Gui16.png", 16, 16, false);
 
             //    
@@ -221,7 +223,7 @@ namespace Fantasy_King_s_Battle
                     {
                         found = true;
 
-                        g.Panel = new PanelGuild(left, top, ilGuilds, ilGui);
+                        g.Panel = new PanelGuild(left, top, ilGuilds, ilGui, ilGuiHeroes);
                         g.Panel.Parent = tabPageGuilds;
 
                         left += g.Panel.Width + Config.GRID_SIZE;

@@ -18,6 +18,7 @@ namespace Fantasy_King_s_Battle
             ImageIndex = Convert.ToInt32(n.SelectSingleNode("ImageIndex").InnerText);
             Cost = Convert.ToInt32(n.SelectSingleNode("Cost").InnerText);
             Guild = FormMain.Config.FindGuild(n.SelectSingleNode("Guild").InnerText);
+            Guild.TrainedHero = this;
 
             // Проверяем, что таких же ID и наименования нет
             foreach (Hero h in FormMain.Config.Heroes)
