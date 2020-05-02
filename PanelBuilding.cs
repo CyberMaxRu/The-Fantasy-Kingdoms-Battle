@@ -81,8 +81,8 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(building.Level < building.Building.MaxLevel);
 
             building.BuyOrUpgrade();
-            UpdateData();
             Program.formMain.ShowGold();
+            Program.formMain.ShowAllBuildings();
         }
 
         private void BtnBuy_Click(object sender, EventArgs e)
@@ -97,6 +97,8 @@ namespace Fantasy_King_s_Battle
             {
 
             }
+
+            Program.formMain.ShowAllBuildings();
         }
 
         internal void ShowData(PlayerBuilding pb)
@@ -116,6 +118,8 @@ namespace Fantasy_King_s_Battle
                 btnBuy.Text = building.Level.ToString();
                 btnBuy.ImageIndex = -1;
                 btnLevelUp.Visible = building.Level < building.Building.MaxLevel;
+                if (btnLevelUp.Visible == true)
+                    btnLevelUp.Image = building.CheckRequirements() == true ? imageListGui.Images[FormMain.GUI_LEVELUP] : imageListGui.Images[FormMain.GUI_LEVELUP + imageListGui.Images.Count / 2];
                 pbBuilding.Image = imageListBuilding.Images[building.Building.ImageIndex];
             }
             else

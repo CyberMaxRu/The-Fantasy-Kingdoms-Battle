@@ -74,8 +74,8 @@ namespace Fantasy_King_s_Battle
             ilBuildings = PrepareImageList("Buildings.png", 126, 126, true);
             ilTemples = PrepareImageList("Temples.png", 126, 126, true);
             ilHeroes = PrepareImageList("Heroes.png", 126, 126, false);
-            ilGui = PrepareImageList("Gui.png", 48, 48, false);
-            ilGuiHeroes = PrepareImageList("GuiHeroes.png", 48, 48, false);
+            ilGui = PrepareImageList("Gui.png", 48, 48, true);
+            ilGuiHeroes = PrepareImageList("GuiHeroes.png", 48, 48, true);
             ilGui16 = PrepareImageList("Gui16.png", 16, 16, false);
 
             //    
@@ -354,6 +354,13 @@ namespace Fantasy_King_s_Battle
         internal void ShowGold()
         {
             StatusLabelGold.Text = lobby.CurrentPlayer.Gold.ToString() + " (+" + lobby.CurrentPlayer.Income().ToString() + ")";
+        }
+
+        internal void ShowAllBuildings()
+        {
+            ShowGuilds();
+            ShowBuildings();
+            ShowTemples();
         }
     }
 }
