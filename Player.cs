@@ -69,6 +69,7 @@ namespace Fantasy_King_s_Battle
         internal List<PlayerGuild> Guilds { get; } = new List<PlayerGuild>();
         internal List<PlayerBuilding> Buildings { get; } = new List<PlayerBuilding>();
         internal List<PlayerTemple> Temples { get; } = new List<PlayerTemple>();
+        internal List<PlayerHero> Heroes { get; } = new List<PlayerHero>();
         internal TypePlayer TypePlayer { get; }
         internal int Gold { get; set; }
         internal int[] Resources { get; }

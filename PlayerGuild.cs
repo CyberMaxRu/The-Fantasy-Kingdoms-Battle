@@ -37,12 +37,14 @@ namespace Fantasy_King_s_Battle
             }    
         }
 
-        internal PlayerHero TrainHero()
+        internal PlayerHero HireHero()
         {
             Debug.Assert(Heroes.Count < Guild.MaxHeroes);
+            Debug.Assert(Player.Heroes.Count < FormMain.MAX_HEROES_AT_PLAYER);
 
             PlayerHero h = new PlayerHero(this);
             Heroes.Add(h);
+            Player.Heroes.Add(h);
 
             return h;
         }
@@ -51,8 +53,9 @@ namespace Fantasy_King_s_Battle
         {
             Debug.Assert(Level > 0);
             Debug.Assert(Heroes.Count <= Guild.MaxHeroes);
+            Debug.Assert(Player.Heroes.Count <= FormMain.MAX_HEROES_AT_PLAYER);
 
-            return Heroes.Count < Guild.MaxHeroes;
+            return (Heroes.Count < Guild.MaxHeroes) && (Player.Heroes.Count < FormMain.MAX_HEROES_AT_PLAYER);
         }
     }
 }

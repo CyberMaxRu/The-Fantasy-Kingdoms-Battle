@@ -91,7 +91,7 @@ namespace Fantasy_King_s_Battle
             }
             else
             {
-                guild.TrainHero();
+                guild.HireHero();
                 Program.formMain.ShowHeroes();
             }
 
