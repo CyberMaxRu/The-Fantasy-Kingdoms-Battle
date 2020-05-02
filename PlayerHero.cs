@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Fantasy_King_s_Battle
 {
@@ -17,5 +18,14 @@ namespace Fantasy_King_s_Battle
 
         internal PlayerGuild Guild { get; }        
         internal Hero Hero { get; }
+
+        internal PanelHero Panel { get; set; }
+
+        internal void ShowDate()
+        {
+            Debug.Assert(Panel != null);
+
+            Panel.ShowData();
+        }
     }
 }

@@ -71,7 +71,7 @@
     <Compile Include="PanelGuild.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="PanelSquad.cs">
+    <Compile Include="PanelHero.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="PanelTemple.cs">
@@ -87,9 +87,7 @@
     <Compile Include="CourseBattle.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="Temple.cs" />
-    <Compile Include="Squad.cs" />
     <Compile Include="Skill.cs" />
-    <Compile Include="SquadInBattle.cs" />
     <Compile Include="TypeUnit.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

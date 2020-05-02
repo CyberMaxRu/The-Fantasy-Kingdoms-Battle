@@ -92,6 +92,7 @@ namespace Fantasy_King_s_Battle
             else
             {
                 guild.TrainHero();
+                Program.formMain.ShowHeroes();
             }
 
             Program.formMain.ShowAllBuildings();

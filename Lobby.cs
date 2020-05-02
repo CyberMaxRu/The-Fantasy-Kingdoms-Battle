@@ -120,7 +120,7 @@ namespace Fantasy_King_s_Battle
             Random r = new Random();
 
             // Создаем списки действуюих и уничтоженных отрядов
-            List<SquadInBattle> activeSquad1 = new List<SquadInBattle>();
+/*            List<SquadInBattle> activeSquad1 = new List<SquadInBattle>();
             List<SquadInBattle> activeSquad2 = new List<SquadInBattle>();
             List<SquadInBattle> lossesSquad1 = new List<SquadInBattle>();
             List<SquadInBattle> lossesSquad2 = new List<SquadInBattle>();
@@ -195,7 +195,7 @@ namespace Fantasy_King_s_Battle
             //    + Environment.NewLine + "Alive: " + Squad1[0].UnitsAlive.ToString() + " - " + Squad2[0].UnitsAlive.ToString()
             //    + Environment.NewLine + "Killed: " + Squad1[0].Killed.ToString() + " - " + Squad2[0].Killed.ToString());
 
-            // Проводит битву между двумя отрядами
+*            // Проводит битву между двумя отрядами
             bool BattleSquads(SquadInBattle s1, SquadInBattle s2)
             {
                 //
@@ -235,7 +235,7 @@ namespace Fantasy_King_s_Battle
                 {
                     list.Add(new SquadInBattle(s));
                 }
-            }
+            }*/
         }
 
         private void CalcEndTurn()

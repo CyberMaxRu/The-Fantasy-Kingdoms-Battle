@@ -28,7 +28,7 @@ namespace Fantasy_King_s_Battle
             Steps = step;
             Winner = winner;
 
-            // Подсчитываем статистику
+/*            // Подсчитываем статистику
             foreach (SquadInBattle s in SquadsPlayer1)
             {
                 Player1Damage += s.Damaged;
@@ -41,7 +41,7 @@ namespace Fantasy_King_s_Battle
                 Player2Damage += s.Damaged;
                 Player2Kill += s.Killed;
                 Player2KillSquad += s.UnitsAlive == 0 ? 1 : 0;
-            }
+            }*/
         }
 
         internal Player Player1 { get; }
@@ -50,8 +50,6 @@ namespace Fantasy_King_s_Battle
         internal int Turn { get; }
         internal int Steps { get; private set; }
         internal string LogBattle { get; private set; }
-        internal List<SquadInBattle> SquadsPlayer1 { get; } = new List<SquadInBattle>();
-        internal List<SquadInBattle> SquadsPlayer2 { get; } = new List<SquadInBattle>();
         internal int Player1Damage { get; private set; }
         internal int Player1Kill { get; private set; }
         internal int Player1KillSquad { get; private set; }

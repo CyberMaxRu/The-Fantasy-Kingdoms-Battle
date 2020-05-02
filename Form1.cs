@@ -183,7 +183,6 @@ namespace Fantasy_King_s_Battle
             if (curAppliedPlayer != lobby.CurrentPlayerIndex)
             {
                 //DrawExternalBuilding();
-                DrawSquad();
 
                 curAppliedPlayer = lobby.CurrentPlayerIndex;
             }
@@ -192,7 +191,7 @@ namespace Fantasy_King_s_Battle
             ShowGuilds();
             ShowBuildings();
             ShowTemples();
-            ShowSquad();
+            ShowHeroes();
             ShowBattle();
             ShowGold();
         }
@@ -315,26 +314,44 @@ namespace Fantasy_King_s_Battle
             }
         }
 
-        private void DrawSquad()
+        internal void ShowHeroes()
         {
-            PanelSquad p;
-            int top = 0;
-            foreach (Squad s in lobby.CurrentPlayer.Squads)
+            int top = Config.GRID_SIZE;
+            int left = Config.GRID_SIZE;
+            int height;
+            int cnt = 0;
+
+            foreach (PlayerGuild pg in lobby.CurrentPlayer.Guilds)
             {
-                p = new PanelSquad(s)
+                foreach (PlayerHero ph in pg.Heroes)
                 {
-                    Parent = tabPageHeroes,
-                    Top = top,
-                    Left = Config.GRID_SIZE
-                };
-                s.PanelSquad = p;
-
-                top += p.Height + Config.GRID_SIZE;
+                    if (ph.Panel == null)
+                    {
+                        ph.Panel = new PanelHero(ph, left, top, ilGuiHeroes, ilGui)
+                        {
+                            Parent = tabPageHeroes
+                        };
+                    }
+                    else
+                    {
+                        ph.Panel.Top = top;
+                        ph.Panel.Left = left;
+                    }
+                    
+                    height = ph.Panel.Height;
+                    cnt++;
+                    if (cnt == 4)
+                    {
+                        cnt = 0;
+                        left = Config.GRID_SIZE;
+                        top += height + Config.GRID_SIZE;
+                    }
+                    else
+                    {
+                        left += ph.Panel.Width + Config.GRID_SIZE;
+                    }
+                }
             }
-        }
-
-        private void ShowSquad()
-        {
         }
 
         private void ShowBattle()
