@@ -18,6 +18,8 @@ namespace Fantasy_King_s_Battle
         private readonly ImageList imageListGuiHeroes;
         private readonly Button btnBuy;
         private readonly Button btnLevelUp;
+        private readonly Label lblLevel;
+        private readonly Label lblHeroes;
         private PlayerGuild guild;
 
         public PanelGuild(int left, int top,  ImageList ilGuild, ImageList ilGui, ImageList ilGuiHeroes)
@@ -60,7 +62,22 @@ namespace Fantasy_King_s_Battle
                 ImageIndex = FormMain.GUI_LEVELUP
             };
 
-            Height = pbGuild.Height + (Config.GRID_SIZE * 2);
+            lblLevel = new Label()
+            {
+                Parent = this,
+                Left = pbGuild.Left,
+                Top = pbGuild.Top + pbGuild.Height + Config.GRID_SIZE,
+                Width = 80
+            };
+
+            lblHeroes = new Label()
+            {
+                Parent = this,
+                Left = lblLevel.Left + lblLevel.Width + Config.GRID_SIZE,
+                Top = lblLevel.Top
+            };
+
+            Height = lblLevel.Top + lblLevel.Height + Config.GRID_SIZE;
             Width = btnBuy.Left + btnBuy.Width + Config.GRID_SIZE;
         }
 
@@ -104,6 +121,8 @@ namespace Fantasy_King_s_Battle
                 }
                 btnLevelUp.Visible = true;
                 pbGuild.Image = imageListGuild.Images[guild.Guild.ImageIndex];
+                lblLevel.Text = guild.Level.ToString();
+                lblHeroes.Text = guild.Heroes.Count.ToString() + "/" + guild.Guild.MaxHeroes.ToString();
             }
             else
             {
@@ -111,6 +130,8 @@ namespace Fantasy_King_s_Battle
                 btnBuy.ImageIndex = FormMain.GUI_BUY;
                 btnLevelUp.Visible = false;
                 pbGuild.Image = imageListGuild.Images[guild.Guild.ImageIndex + FormMain.Config.Guilds.Count];
+                lblLevel.Text = "";
+                lblHeroes.Text = "";
             }
         }
     }
