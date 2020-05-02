@@ -176,13 +176,13 @@ namespace Fantasy_King_s_Battle
             int lines = bmp.Height / height;
             if (lines > 1)
             {
-                Bitmap bmpSingleline = new Bitmap(bmp.Width, height);
-                Graphics g = Graphics.FromImage(bmpSingleline);
-
                 for (int i = 0; i < lines; i++)
                 {
-                    g.DrawImage(bmpSingleline, new Rectangle(0, i * height, bmp.Width, height));
+                    Bitmap bmpSingleline = new Bitmap(bmp.Width, height);
+                    Graphics g = Graphics.FromImage(bmpSingleline);
+                    g.DrawImage(bmp, 0, 0, new Rectangle(0, i * height, bmp.Width, height), GraphicsUnit.Pixel);
                     _ = il.Images.AddStrip(bmpSingleline);
+                    g.Dispose();
                 }
             }
             else
