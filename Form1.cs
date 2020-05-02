@@ -429,11 +429,21 @@ namespace Fantasy_King_s_Battle
                     }
                 }
             }
+
+            ShowWarehouse();
         }
 
         internal void ShowWarehouse()
         {
+            for (int i = 0; i < lobby.CurrentPlayer.Warehouse.Count; i++)
+            {
+                SlotsWarehouse[i].Image = ilItems.Images[lobby.CurrentPlayer.Warehouse[i].Item.ImageIndex];
+            }
 
+            for (int i = lobby.CurrentPlayer.Warehouse.Count; i < SlotsWarehouse.Count; i++)
+            {
+                SlotsWarehouse[i].Image = null;
+            }
         }
 
         private void PanelHero_Click(object sender, EventArgs e)
