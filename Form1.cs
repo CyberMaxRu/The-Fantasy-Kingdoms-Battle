@@ -59,10 +59,14 @@ namespace Fantasy_King_s_Battle
         internal static int SLOTS_IN_LINE = 4;
         internal static int SLOTS_LINES = 2;
         internal static int SLOT_IN_INVENTORY = SLOTS_IN_LINE * SLOTS_LINES;
+        internal static int WH_SLOTS_IN_LINE = 10;
+        internal static int WH_SLOT_LINES = 3;
+        internal static int WH_MAX_SLOTS = WH_SLOTS_IN_LINE * WH_SLOT_LINES;
 
         private readonly Lobby lobby;
         private int curAppliedPlayer = -1;
 
+        private List<PictureBox> SlotsWarehouse = new List<PictureBox>();
         private List<PictureBox> SlotSkill = new List<PictureBox>();
 
         public FormMain()
@@ -155,6 +159,7 @@ namespace Fantasy_King_s_Battle
             DrawGuilds();
             DrawBuildings();
             DrawTemples();
+            DrawHeroes();
             ShowDataPlayer();
 
         }
@@ -363,6 +368,26 @@ namespace Fantasy_King_s_Battle
             }
         }
 
+        private void DrawHeroes()
+        {
+            PictureBox pb;
+
+            for (int y = 0; y < WH_SLOT_LINES; y++)
+                for (int x = 0; x < WH_SLOTS_IN_LINE; x++)
+                {
+                    pb = new PictureBox()
+                    {
+                        Parent = tabPageHeroes,
+                        BorderStyle = BorderStyle.FixedSingle,
+                        Left = Config.GRID_SIZE + (ilItems.ImageSize.Width + Config.GRID_SIZE) * x,
+                        Top = 400 + Config.GRID_SIZE + (ilItems.ImageSize.Height + Config.GRID_SIZE) * y,
+                        Size = ilItems.ImageSize
+                    };
+
+                    SlotsWarehouse.Add(pb);
+                }
+        }
+
         internal void ShowHeroes()
         {
             int top = Config.GRID_SIZE;
@@ -404,6 +429,11 @@ namespace Fantasy_King_s_Battle
                     }
                 }
             }
+        }
+
+        internal void ShowWarehouse()
+        {
+
         }
 
         private void PanelHero_Click(object sender, EventArgs e)
