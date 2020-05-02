@@ -9,16 +9,16 @@
     <MaxHeroes>4</MaxHeroes>
   </Guild>
   <Guild>
-    <ID>GuildHunter</ID>
-    <Name>Гильдия рейнджеров</Name>
+    <ID>GuildRogue</ID>
+    <Name>Гильдия разбойниц</Name>
     <ImageIndex>1</ImageIndex>
     <Cost>450</Cost>
     <LevelCastle>1</LevelCastle>
     <MaxHeroes>4</MaxHeroes>
   </Guild>
   <Guild>
-    <ID>GuildRogue</ID>
-    <Name>Гильдия разбойниц</Name>
+    <ID>GuildHunter</ID>
+    <Name>Гильдия рейнджеров</Name>
     <ImageIndex>2</ImageIndex>
     <Cost>450</Cost>
     <LevelCastle>1</LevelCastle>
