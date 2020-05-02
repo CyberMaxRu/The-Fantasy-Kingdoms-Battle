@@ -39,10 +39,8 @@
             this.textBoxResultBattle = new System.Windows.Forms.TextBox();
             this.ButtonEndTurn = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.tstbTurn = new System.Windows.Forms.ToolStripTextBox();
             this.tabControl1.SuspendLayout();
             this.tabPageBattle.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // StatusStrip
@@ -154,19 +152,11 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tstbTurn});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(979, 27);
+            this.menuStrip1.Size = new System.Drawing.Size(979, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // tstbTurn
-            // 
-            this.tstbTurn.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.tstbTurn.Name = "tstbTurn";
-            this.tstbTurn.Size = new System.Drawing.Size(100, 23);
             // 
             // FormMain
             // 
@@ -186,8 +176,6 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPageBattle.ResumeLayout(false);
             this.tabPageBattle.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -203,7 +191,6 @@
         private System.Windows.Forms.TabPage tabPageBattle;
         private System.Windows.Forms.Button ButtonEndTurn;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripTextBox tstbTurn;
         private System.Windows.Forms.TextBox textBoxResultBattle;
         private System.Windows.Forms.TabPage tabPageGuilds;
         private System.Windows.Forms.TabPage tabPageTemples;

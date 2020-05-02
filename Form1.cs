@@ -27,6 +27,7 @@ namespace Fantasy_King_s_Battle
         private readonly ImageList ilGuiHeroes;
         internal readonly ImageList ilParameters;
 
+        private readonly ToolStripStatusLabel StatusLabelDay;
         private readonly ToolStripStatusLabel StatusLabelGold;
         private PanelHeroInfo panelHeroInfo;
 
@@ -100,6 +101,14 @@ namespace Fantasy_King_s_Battle
 
             // Создаем метку под золото
             StatusStrip.ImageList = ilGui16;
+
+            StatusLabelDay = new ToolStripStatusLabel()
+            {
+                TextAlign = ContentAlignment.MiddleLeft,
+                AutoSize = false,
+                Width = 100
+            };
+            StatusStrip.Items.Add(StatusLabelDay);
 
             StatusLabelGold = new ToolStripStatusLabel(StatusStrip.ImageList.Images[GUI_16_GOLD])
             {
@@ -194,7 +203,7 @@ namespace Fantasy_King_s_Battle
 
         internal void ShowDataPlayer()
         {
-            tstbTurn.Text = "Ход: " + lobby.Turn.ToString();
+            StatusLabelDay.Text = "День: " + lobby.Turn.ToString();
 
             // Если этого игрока не отрисовывали, формируем заново вкладки
             if (curAppliedPlayer != lobby.CurrentPlayerIndex)
