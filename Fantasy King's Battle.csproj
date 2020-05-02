@@ -59,6 +59,7 @@
     <Compile Include="Fraction.cs" />
     <Compile Include="Guild.cs" />
     <Compile Include="Hero.cs" />
+    <Compile Include="ItemSmithy.cs" />
     <Compile Include="Level.cs" />
     <Compile Include="Lobby.cs" />
     <Compile Include="PanelAboutPlayer.cs">
@@ -116,6 +117,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Config\ItemSmithy.xml" />
     <Content Include="Resources\Config\Items.xml" />
     <Content Include="Resources\Config\Heroes.xml" />
     <Content Include="Resources\Config\Guilds.xml" />

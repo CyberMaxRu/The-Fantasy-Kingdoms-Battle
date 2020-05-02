@@ -7,6 +7,7 @@ using System.Xml;
 
 namespace Fantasy_King_s_Battle
 {
+    internal enum CategoryUnit { Warrior, Ranger, Mage }
     internal enum TypeMove { Ground, Fly };
 
     // Класс типа юнита

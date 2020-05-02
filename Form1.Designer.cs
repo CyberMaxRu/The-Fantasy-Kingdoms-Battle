@@ -34,7 +34,7 @@
             this.tabPageGuilds = new System.Windows.Forms.TabPage();
             this.tabPageBuildings = new System.Windows.Forms.TabPage();
             this.tabPageTemples = new System.Windows.Forms.TabPage();
-            this.tabPageArmy = new System.Windows.Forms.TabPage();
+            this.tabPageHeroes = new System.Windows.Forms.TabPage();
             this.tabPageBattle = new System.Windows.Forms.TabPage();
             this.textBoxResultBattle = new System.Windows.Forms.TextBox();
             this.ButtonEndTurn = new System.Windows.Forms.Button();
@@ -62,7 +62,7 @@
             this.tabControl1.Controls.Add(this.tabPageGuilds);
             this.tabControl1.Controls.Add(this.tabPageBuildings);
             this.tabControl1.Controls.Add(this.tabPageTemples);
-            this.tabControl1.Controls.Add(this.tabPageArmy);
+            this.tabControl1.Controls.Add(this.tabPageHeroes);
             this.tabControl1.Controls.Add(this.tabPageBattle);
             this.tabControl1.Location = new System.Drawing.Point(8, 40);
             this.tabControl1.Name = "tabControl1";
@@ -109,12 +109,12 @@
             // 
             // tabPageArmy
             // 
-            this.tabPageArmy.Location = new System.Drawing.Point(4, 25);
-            this.tabPageArmy.Name = "tabPageArmy";
-            this.tabPageArmy.Size = new System.Drawing.Size(952, 627);
-            this.tabPageArmy.TabIndex = 3;
-            this.tabPageArmy.Text = "Войско";
-            this.tabPageArmy.UseVisualStyleBackColor = true;
+            this.tabPageHeroes.Location = new System.Drawing.Point(4, 25);
+            this.tabPageHeroes.Name = "tabPageArmy";
+            this.tabPageHeroes.Size = new System.Drawing.Size(952, 627);
+            this.tabPageHeroes.TabIndex = 3;
+            this.tabPageHeroes.Text = "Войско";
+            this.tabPageHeroes.UseVisualStyleBackColor = true;
             // 
             // tabPageBattle
             // 
@@ -192,7 +192,7 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPageLobby;
         private System.Windows.Forms.TabPage tabPageBuildings;
-        private System.Windows.Forms.TabPage tabPageArmy;
+        private System.Windows.Forms.TabPage tabPageHeroes;
         private System.Windows.Forms.TabPage tabPageBattle;
         private System.Windows.Forms.Button ButtonEndTurn;
         private System.Windows.Forms.MenuStrip menuStrip1;

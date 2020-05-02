@@ -27,13 +27,14 @@ namespace Fantasy_King_s_Battle
 
         private readonly ToolStripStatusLabel StatusLabelGold;
 
-        internal const int GUI_LOBBY = 0;
+        internal const int GUI_HEROES = 0;
         internal const int GUI_GUILDS = 1;
         internal const int GUI_ECONOMY = 2;
         internal const int GUI_DEFENSE = 3;
         internal const int GUI_TEMPLE = 4;
         internal const int GUI_LEVELUP = 5;
         internal const int GUI_BUY = 6;
+        internal const int GUI_LOBBY = 7;
 
         internal const int GUI_16_GOLD = 0;
 
@@ -114,6 +115,8 @@ namespace Fantasy_King_s_Battle
             tabPageBuildings.Text = "";
             tabPageTemples.ImageIndex = GUI_TEMPLE;
             tabPageTemples.Text = "";
+            tabPageHeroes.ImageIndex = GUI_HEROES;
+            tabPageHeroes.Text = "";
 
             //
             DrawGuilds();
@@ -318,7 +321,7 @@ namespace Fantasy_King_s_Battle
             {
                 p = new PanelSquad(s)
                 {
-                    Parent = tabPageArmy,
+                    Parent = tabPageHeroes,
                     Top = top,
                     Left = Config.GRID_SIZE
                 };

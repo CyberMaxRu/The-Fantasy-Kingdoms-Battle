@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ItemsSmithy>
+  <ItemSmithy>
+    <ID>Sword1</ID>
+    <Name>Обычный меч</Name>
+    <ImageIndex>0</ImageIndex>
+    <TypeItem>Weapon</TypeItem>
+    <CategoryUnit>Warrior</CategoryUnit>
+    <CostExamine>250</CostExamine>
+    <Cost>50</Cost>
+    <Level>1</Level>
+    <Attack>0</Attack>
+  </ItemSmithy>
+  <ItemSmithy>
+    <ID>Sword2</ID>
+    <Name>Улучшенный меч</Name>
+    <ImageIndex>1</ImageIndex>
+    <TypeItem>Weapon</TypeItem>
+    <CategoryUnit>Warrior</CategoryUnit>
+    <CostExamine>1000</CostExamine>
+    <Cost>100</Cost>
+    <Level>2</Level>
+    <Attack>9</Attack>
+  </ItemSmithy>
+</ItemsSmithy>
