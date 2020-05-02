@@ -25,6 +25,7 @@ namespace Fantasy_King_s_Battle
         private readonly ImageList ilGui;
         private readonly ImageList ilGui16;
         private readonly ImageList ilGuiHeroes;
+        private readonly ImageList ilParameters;
 
         private readonly ToolStripStatusLabel StatusLabelGold;
 
@@ -36,6 +37,7 @@ namespace Fantasy_King_s_Battle
         internal const int GUI_LEVELUP = 5;
         internal const int GUI_BUY = 6;
         internal const int GUI_LOBBY = 7;
+        internal const int GUI_DISMISS = 8;
 
         internal const int GUI_16_GOLD = 0;
         internal static int MAX_HEROES_AT_PLAYER = 16;
@@ -78,6 +80,7 @@ namespace Fantasy_King_s_Battle
             ilGui = PrepareImageList("Gui.png", 48, 48, true);
             ilGuiHeroes = PrepareImageList("GuiHeroes.png", 48, 48, true);
             ilGui16 = PrepareImageList("Gui16.png", 16, 16, false);
+            ilParameters = PrepareImageList("Parameters.png", 24, 24, false);
 
             //    
             lobby = new Lobby(8);

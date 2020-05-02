@@ -77,6 +77,7 @@
     <Compile Include="PanelTemple.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Parameters.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PlayerBuilding.cs" />
     <Compile Include="PlayerGuild.cs" />
