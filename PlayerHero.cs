@@ -20,7 +20,7 @@ namespace Fantasy_King_s_Battle
             {
                 if (Hero.Slots[i].DefaultItem != null)
                 {
-                    Slots[i] = new PlayerItem(Hero.Slots[i].DefaultItem);
+                    Slots[i] = new PlayerItem(Hero.Slots[i].DefaultItem, 1);
                 }
             }
         }

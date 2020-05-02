@@ -110,4 +110,24 @@
     <Cost>0</Cost>
     <Perk></Perk>
   </Item>
+  <Item>
+    <ID>Sword1</ID>
+    <Name>Улучшенное рукопашное оружие</Name>
+    <ImageIndex>6</ImageIndex>
+    <TypeItem>Weapon</TypeItem>
+    <Building>Smithy</Building>
+    <CostExamine>0</CostExamine>
+    <Cost>0</Cost>
+    <Perk></Perk>
+  </Item>
+  <Item>
+    <ID>ArmourWarrior1</ID>
+    <Name>Улучшенная стальная броня</Name>
+    <ImageIndex>21</ImageIndex>
+    <TypeItem>Weapon</TypeItem>
+    <Building>Smithy</Building>
+    <CostExamine>0</CostExamine>
+    <Cost>0</Cost>
+    <Perk></Perk>
+  </Item>
 </Items>

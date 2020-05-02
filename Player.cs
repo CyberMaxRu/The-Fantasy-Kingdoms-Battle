@@ -78,6 +78,8 @@ namespace Fantasy_King_s_Battle
         internal int Draws { get; set; }
         internal int StepsToCastle { get; }
         internal bool IsLive { get; }
+
+        internal List<PlayerItem> Warehouse = new List<PlayerItem>();// Предметы на складе игрока
         internal List<BuildingOfPlayer>[] ExternalBuildings {get; }
         internal PanelAboutPlayer PanelAbout { get; set; }
         private Player opponent;
