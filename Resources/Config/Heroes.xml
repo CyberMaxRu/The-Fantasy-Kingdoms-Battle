@@ -41,19 +41,19 @@
     <MaxLevel>100</MaxLevel>
   </Hero>
   <Hero>
-    <ID>Dwarf</ID>
-    <Name>Гном</Name>
+    <ID>Elf</ID>
+    <Name>Эльфийка</Name>
     <ImageIndex>5</ImageIndex>
     <Cost>700</Cost>
-    <Guild>GuildDwarf</Guild>
+    <Guild>GuildElf</Guild>
     <MaxLevel>100</MaxLevel>
   </Hero>
   <Hero>
-    <ID>Elf</ID>
-    <Name>Эльфийка</Name>
+    <ID>Dwarf</ID>
+    <Name>Гном</Name>
     <ImageIndex>6</ImageIndex>
     <Cost>700</Cost>
-    <Guild>GuildElf</Guild>
+    <Guild>GuildDwarf</Guild>
     <MaxLevel>100</MaxLevel>
   </Hero>
 </Heroes>
