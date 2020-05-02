@@ -93,6 +93,10 @@ namespace Fantasy_King_s_Battle
                 UpdateData();
                 Program.formMain.ShowGold();
             }
+            else
+            {
+
+            }
         }
 
         internal void ShowData(PlayerBuilding pb)

@@ -69,10 +69,10 @@ namespace Fantasy_King_s_Battle
             ilSkills = PrepareImageList("Skills.png", 82, 94, false);
             ilResultBattle = PrepareImageList("ResultBattle52.png", 45, 52, false);
             ilTypeBattle = PrepareImageList("TypeBattle52.png", 52, 52, false);
-            ilGuilds = PrepareImageList("Guilds.png", 128, 128, true);
+            ilGuilds = PrepareImageList("Guilds.png", 126, 126, true);
             ilBuildings = PrepareImageList("Buildings.png", 126, 126, true);
             ilTemples = PrepareImageList("Temples.png", 126, 126, true);
-            ilHeroes = PrepareImageList("Heroes.png", 128, 128, false);
+            ilHeroes = PrepareImageList("Heroes.png", 126, 126, false);
             ilGui = PrepareImageList("Gui.png", 48, 48, false);
             ilGui16 = PrepareImageList("Gui16.png", 16, 16, false);
 
