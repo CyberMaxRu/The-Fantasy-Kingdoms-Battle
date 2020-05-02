@@ -25,7 +25,7 @@ namespace Fantasy_King_s_Battle
         private readonly ImageList ilGui;
         private readonly ImageList ilGui16;
         private readonly ImageList ilGuiHeroes;
-        private readonly ImageList ilParameters;
+        internal readonly ImageList ilParameters;
 
         private readonly ToolStripStatusLabel StatusLabelGold;
         private PanelHeroInfo panelHeroInfo;
@@ -39,6 +39,18 @@ namespace Fantasy_King_s_Battle
         internal const int GUI_BUY = 6;
         internal const int GUI_LOBBY = 7;
         internal const int GUI_DISMISS = 8;
+
+        internal const int GUI_PARAMETER_STRENGTH = 6;
+        internal const int GUI_PARAMETER_DEXTERITY = 7;
+        internal const int GUI_PARAMETER_WISDOM = 8;
+        internal const int GUI_PARAMETER_STAMINA = 9;
+        internal const int GUI_PARAMETER_SPEED = 10;
+        internal const int GUI_PARAMETER_ATTACK_MELEE = 0;
+        internal const int GUI_PARAMETER_ATTACK_RANGE = 1;
+        internal const int GUI_PARAMETER_ATTACK_MAGIC = 2;
+        internal const int GUI_PARAMETER_DEFENSE_MELEE = 3;
+        internal const int GUI_PARAMETER_DEFENSE_RANGE = 4;
+        internal const int GUI_PARAMETER_DEFENSE_MAGIC = 5;
 
         internal const int GUI_16_GOLD = 0;
         internal static int MAX_HEROES_AT_PLAYER = 16;
