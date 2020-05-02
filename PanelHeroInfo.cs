@@ -53,8 +53,7 @@ namespace Fantasy_King_s_Battle
                 Top = pbHero.Top,
                 ImageList = Program.formMain.ilGui,
                 ImageIndex = FormMain.GUI_DISMISS,
-                Width = Program.formMain.ilGui.ImageSize.Width + 8,
-                Height = Program.formMain.ilGui.ImageSize.Height + 8
+                Size = GuiUtils.SizeButtonWithImage(Program.formMain.ilGui)
             };
             btnDismiss.Click += BtnDismiss_Click;
 

@@ -44,8 +44,7 @@ namespace Fantasy_King_s_Battle
             {
                 Parent = this,
                 Left = pbGuild.Left + pbGuild.Width + Config.GRID_SIZE,
-                Width = ilGui.ImageSize.Width + 8,
-                Height = ilGui.ImageSize.Height + 8,
+                Size = GuiUtils.SizeButtonWithImage(ilGui),
                 Top = pbGuild.Top + pbGuild.Height - ilGui.ImageSize.Height - 8,
                 ImageList = imageListGui,
             };
@@ -56,8 +55,7 @@ namespace Fantasy_King_s_Battle
                 Parent = this,
                 Left = btnBuy.Left,
                 Top = btnBuy.Top - btnBuy.Height - Config.GRID_SIZE,
-                Width = btnBuy.Width,
-                Height = btnBuy.Height,
+                Size = GuiUtils.SizeButtonWithImage(ilGui),
                 ImageList = imageListGui,
                 ImageIndex = FormMain.GUI_LEVELUP
             };

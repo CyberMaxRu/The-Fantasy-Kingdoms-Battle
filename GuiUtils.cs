@@ -39,5 +39,10 @@ namespace Fantasy_King_s_Battle
 
             return l;
         }
+
+        internal static Size SizeButtonWithImage(ImageList il)
+        {
+            return new Size(il.ImageSize.Width + 8, il.ImageSize.Height + 8);
+        }
     }
 }
