@@ -47,6 +47,14 @@ namespace Fantasy_King_s_Battle
                 Temples.Add(new Temple(n));
             }
 
+            // Загрузка типов предметов
+            xmlDoc = CreateXmlDocument("Config\\TypeItems.xml");
+
+            foreach (XmlNode n in xmlDoc.SelectNodes("/TypeItems/TypeItem"))
+            {
+                TypeItems.Add(new TypeItem(n));
+            }
+
             // Загрузка конфигурации героев
             xmlDoc = CreateXmlDocument("Config\\Heroes.xml");
 
@@ -61,14 +69,6 @@ namespace Fantasy_King_s_Battle
             foreach (XmlNode n in xmlDoc.SelectNodes("/Fractions/Fraction"))
             {
                 Fractions.Add(new Fraction(n, fm));
-            }
-
-            // Загрузка типов предметов
-            xmlDoc = CreateXmlDocument("Config\\TypeItems.xml");
-
-            foreach (XmlNode n in xmlDoc.SelectNodes("/TypeItems/TypeItem"))
-            {
-                TypeItems.Add(new TypeItem(n));
             }
 
             // Загрузка классов юнитов

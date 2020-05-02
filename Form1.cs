@@ -55,6 +55,7 @@ namespace Fantasy_King_s_Battle
 
         internal const int GUI_16_GOLD = 0;
         internal static int MAX_HEROES_AT_PLAYER = 16;
+        internal static int SLOT_IN_INVENTORY = 8;
 
         private readonly Lobby lobby;
         private int curAppliedPlayer = -1;

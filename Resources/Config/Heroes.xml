@@ -7,6 +7,48 @@
     <Cost>200</Cost>
     <Guild>GuildWarrior</Guild>
     <MaxLevel>100</MaxLevel>
+    <Slots>
+      <Slot>
+        <Pos>1</Pos>
+        <TypeItem>Weapon</TypeItem>
+        <MaxQuantity>1</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>2</Pos>
+        <TypeItem>Armour</TypeItem>
+        <MaxQuantity>1</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>3</Pos>
+        <TypeItem>PotionHealth</TypeItem>
+        <MaxQuantity>5</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>4</Pos>
+        <TypeItem>Artifact</TypeItem>
+        <MaxQuantity>1</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>5</Pos>
+        <TypeItem>Artifact</TypeItem>
+        <MaxQuantity>1</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>6</Pos>
+        <TypeItem>Artifact</TypeItem>
+        <MaxQuantity>1</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>7</Pos>
+        <TypeItem>Elixir</TypeItem>
+        <MaxQuantity>3</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>8</Pos>
+        <TypeItem>Elixir</TypeItem>
+        <MaxQuantity>3</MaxQuantity>
+      </Slot>
+    </Slots>
   </Hero>
   <Hero>
     <ID>Rogue</ID>
@@ -15,6 +57,48 @@
     <Cost>100</Cost>
     <Guild>GuildRogue</Guild>
     <MaxLevel>100</MaxLevel>
+    <Slots>
+      <Slot>
+        <Pos>1</Pos>
+        <TypeItem>Weapon</TypeItem>
+        <MaxQuantity>1</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>2</Pos>
+        <TypeItem>Armour</TypeItem>
+        <MaxQuantity>1</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>3</Pos>
+        <TypeItem>PotionHealth</TypeItem>
+        <MaxQuantity>5</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>4</Pos>
+        <TypeItem>Artifact</TypeItem>
+        <MaxQuantity>1</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>5</Pos>
+        <TypeItem>Artifact</TypeItem>
+        <MaxQuantity>1</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>6</Pos>
+        <TypeItem>Artifact</TypeItem>
+        <MaxQuantity>1</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>7</Pos>
+        <TypeItem>Elixir</TypeItem>
+        <MaxQuantity>3</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>8</Pos>
+        <TypeItem>Elixir</TypeItem>
+        <MaxQuantity>3</MaxQuantity>
+      </Slot>
+    </Slots>
   </Hero>
   <Hero>
     <ID>Hunter</ID>
@@ -23,6 +107,48 @@
     <Cost>150</Cost>
     <Guild>GuildHunter</Guild>
     <MaxLevel>100</MaxLevel>
+    <Slots>
+      <Slot>
+        <Pos>1</Pos>
+        <TypeItem>Weapon</TypeItem>
+        <MaxQuantity>1</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>2</Pos>
+        <TypeItem>Armour</TypeItem>
+        <MaxQuantity>1</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>3</Pos>
+        <TypeItem>PotionHealth</TypeItem>
+        <MaxQuantity>5</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>4</Pos>
+        <TypeItem>Artifact</TypeItem>
+        <MaxQuantity>1</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>5</Pos>
+        <TypeItem>Artifact</TypeItem>
+        <MaxQuantity>1</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>6</Pos>
+        <TypeItem>Artifact</TypeItem>
+        <MaxQuantity>1</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>7</Pos>
+        <TypeItem>Elixir</TypeItem>
+        <MaxQuantity>3</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>8</Pos>
+        <TypeItem>Elixir</TypeItem>
+        <MaxQuantity>3</MaxQuantity>
+      </Slot>
+    </Slots>
   </Hero>
   <Hero>
     <ID>Cleric</ID>
@@ -31,6 +157,48 @@
     <Cost>350</Cost>
     <Guild>GuildCleric</Guild>
     <MaxLevel>100</MaxLevel>
+    <Slots>
+      <Slot>
+        <Pos>1</Pos>
+        <TypeItem>Weapon</TypeItem>
+        <MaxQuantity>1</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>2</Pos>
+        <TypeItem>Armour</TypeItem>
+        <MaxQuantity>1</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>3</Pos>
+        <TypeItem>PotionHealth</TypeItem>
+        <MaxQuantity>5</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>4</Pos>
+        <TypeItem>PotionMana</TypeItem>
+        <MaxQuantity>1</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>5</Pos>
+        <TypeItem>Artifact</TypeItem>
+        <MaxQuantity>1</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>6</Pos>
+        <TypeItem>Artifact</TypeItem>
+        <MaxQuantity>1</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>7</Pos>
+        <TypeItem>Elixir</TypeItem>
+        <MaxQuantity>3</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>8</Pos>
+        <TypeItem>Elixir</TypeItem>
+        <MaxQuantity>3</MaxQuantity>
+      </Slot>
+    </Slots>
   </Hero>
   <Hero>
     <ID>Mage</ID>
@@ -39,6 +207,48 @@
     <Cost>500</Cost>
     <Guild>GuildMage</Guild>
     <MaxLevel>100</MaxLevel>
+    <Slots>
+      <Slot>
+        <Pos>1</Pos>
+        <TypeItem>Weapon</TypeItem>
+        <MaxQuantity>1</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>2</Pos>
+        <TypeItem>Armour</TypeItem>
+        <MaxQuantity>1</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>3</Pos>
+        <TypeItem>PotionHealth</TypeItem>
+        <MaxQuantity>5</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>4</Pos>
+        <TypeItem>PotionMana</TypeItem>
+        <MaxQuantity>1</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>5</Pos>
+        <TypeItem>Artifact</TypeItem>
+        <MaxQuantity>1</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>6</Pos>
+        <TypeItem>Artifact</TypeItem>
+        <MaxQuantity>1</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>7</Pos>
+        <TypeItem>Elixir</TypeItem>
+        <MaxQuantity>3</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>8</Pos>
+        <TypeItem>Elixir</TypeItem>
+        <MaxQuantity>3</MaxQuantity>
+      </Slot>
+    </Slots>
   </Hero>
   <Hero>
     <ID>Elf</ID>
@@ -47,6 +257,48 @@
     <Cost>700</Cost>
     <Guild>GuildElf</Guild>
     <MaxLevel>100</MaxLevel>
+    <Slots>
+      <Slot>
+        <Pos>1</Pos>
+        <TypeItem>Weapon</TypeItem>
+        <MaxQuantity>1</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>2</Pos>
+        <TypeItem>Armour</TypeItem>
+        <MaxQuantity>1</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>3</Pos>
+        <TypeItem>PotionHealth</TypeItem>
+        <MaxQuantity>5</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>4</Pos>
+        <TypeItem>PotionMana</TypeItem>
+        <MaxQuantity>1</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>5</Pos>
+        <TypeItem>Artifact</TypeItem>
+        <MaxQuantity>1</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>6</Pos>
+        <TypeItem>Artifact</TypeItem>
+        <MaxQuantity>1</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>7</Pos>
+        <TypeItem>Elixir</TypeItem>
+        <MaxQuantity>3</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>8</Pos>
+        <TypeItem>Elixir</TypeItem>
+        <MaxQuantity>3</MaxQuantity>
+      </Slot>
+    </Slots>
   </Hero>
   <Hero>
     <ID>Dwarf</ID>
@@ -55,5 +307,47 @@
     <Cost>700</Cost>
     <Guild>GuildDwarf</Guild>
     <MaxLevel>100</MaxLevel>
+    <Slots>
+      <Slot>
+        <Pos>1</Pos>
+        <TypeItem>Weapon</TypeItem>
+        <MaxQuantity>1</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>2</Pos>
+        <TypeItem>Armour</TypeItem>
+        <MaxQuantity>1</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>3</Pos>
+        <TypeItem>PotionHealth</TypeItem>
+        <MaxQuantity>5</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>4</Pos>
+        <TypeItem>Artifact</TypeItem>
+        <MaxQuantity>1</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>5</Pos>
+        <TypeItem>Artifact</TypeItem>
+        <MaxQuantity>1</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>6</Pos>
+        <TypeItem>Artifact</TypeItem>
+        <MaxQuantity>1</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>7</Pos>
+        <TypeItem>Elixir</TypeItem>
+        <MaxQuantity>3</MaxQuantity>
+      </Slot>
+      <Slot>
+        <Pos>8</Pos>
+        <TypeItem>Elixir</TypeItem>
+        <MaxQuantity>3</MaxQuantity>
+      </Slot>
+    </Slots>
   </Hero>
 </Heroes>

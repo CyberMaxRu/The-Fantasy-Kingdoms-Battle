@@ -20,4 +20,8 @@
     <ID>PotionMana</ID>
     <Category>Potion</Category>
   </TypeItem>
+  <TypeItem>
+    <ID>Elixir</ID>
+    <Category>Potion</Category>
+  </TypeItem>
 </TypeItems>

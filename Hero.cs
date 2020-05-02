@@ -5,9 +5,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace Fantasy_King_s_Battle
 {
+    internal sealed class Slot
+    {
+        public Slot(XmlNode n)
+        {
+            Pos = Convert.ToInt32(n.SelectSingleNode("Pos").InnerText) - 1;
+            TypeItem = FormMain.Config.FindTypeItem(n.SelectSingleNode("TypeItem").InnerText);
+            MaxQuantity = Convert.ToInt32(n.SelectSingleNode("MaxQuantity").InnerText);
+        }
+
+        internal int Pos { get; }
+        internal TypeItem TypeItem { get; }
+        internal int MaxQuantity { get; }
+    }
+
     // Класс героя гильдии    
     internal sealed class Hero
     {
@@ -39,13 +54,37 @@ namespace Fantasy_King_s_Battle
                     throw new Exception("В конфигурации героев повторяется ImageIndex = " + ImageIndex.ToString());
                 }
             }
+
+            // Загружаем информацию о слотах
+            Slots = new Slot[FormMain.SLOT_IN_INVENTORY];
+
+            XmlNode nl = n.SelectSingleNode("Slots");
+            Debug.Assert(nl != null);
+
+            Slot slot;
+
+            foreach (XmlNode l in nl.SelectNodes("Slot"))
+            {
+                slot = new Slot(l);
+                Debug.Assert(Slots[slot.Pos] == null);
+
+                Slots[slot.Pos] = slot;
+            }
+
+            for (int i = 0; i < FormMain.SLOT_IN_INVENTORY; i++)
+            {
+                if (Slots[i] == null)
+                    throw new Exception("Не указан слот " + i.ToString());
+}
         }
-        
+
         internal string ID { get; }
         internal string Name { get; }
         internal int ImageIndex { get; }
         internal int Cost { get; }
         internal Guild Guild { get; }
         internal int MaxLevel { get; }
+        
+        internal Slot[] Slots { get; }
     }
 }
