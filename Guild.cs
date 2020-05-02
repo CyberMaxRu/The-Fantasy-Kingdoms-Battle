@@ -19,6 +19,7 @@ namespace Fantasy_King_s_Battle
             Cost = Convert.ToInt32(n.SelectSingleNode("Cost").InnerText);
             LevelCastle = Convert.ToInt32(n.SelectSingleNode("LevelCastle").InnerText);
             Position = FormMain.Config.Guilds.Count;
+            MaxHeroes = Convert.ToInt32(n.SelectSingleNode("MaxHeroes").InnerText);
 
             // Проверяем, что таких же ID и наименования нет
             foreach (Guild g in FormMain.Config.Guilds)
@@ -44,6 +45,7 @@ namespace Fantasy_King_s_Battle
         internal string Name { get; }
         internal int Position { get; }
         internal int ImageIndex { get; }
+        internal int MaxHeroes { get; }
         internal int Cost { get; }
         internal int LevelCastle { get; }
         internal PanelGuild Panel { get; set; }
