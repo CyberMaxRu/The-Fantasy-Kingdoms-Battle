@@ -18,7 +18,7 @@ namespace Fantasy_King_s_Battle
         internal int DefenseMelee { get; set; }
         internal int DefenseRange { get; set; }
         internal int DefenseMagic { get; set; }
-        internal int Vitality { get; set; }
+        internal int Stamina { get; set; }
         internal int Speed { get; set; }
     }
 }

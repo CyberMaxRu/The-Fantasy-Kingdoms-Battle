@@ -28,6 +28,7 @@ namespace Fantasy_King_s_Battle
         private readonly ImageList ilParameters;
 
         private readonly ToolStripStatusLabel StatusLabelGold;
+        private PanelHeroInfo panelHeroInfo;
 
         internal const int GUI_HEROES = 0;
         internal const int GUI_GUILDS = 1;
@@ -335,6 +336,7 @@ namespace Fantasy_King_s_Battle
                         {
                             Parent = tabPageHeroes
                         };
+                        ph.Panel.Click += PanelHero_Click;
                     }
                     else
                     {
@@ -358,6 +360,36 @@ namespace Fantasy_King_s_Battle
                     }
                 }
             }
+        }
+
+        private void PanelHero_Click(object sender, EventArgs e)
+        {
+            if (panelHeroInfo == null)
+            {
+                panelHeroInfo = new PanelHeroInfo(ilHeroes, ilParameters)
+                {
+                    Left = 400,
+                    Top = Config.GRID_SIZE,
+                    Parent = tabPageHeroes
+                };
+            }
+
+            panelHeroInfo.ShowHero((sender as PanelHero).Hero);
+        }
+
+        internal void ShowAboutHero(PlayerHero ph)
+        {
+            if (panelHeroInfo == null)
+            {
+                panelHeroInfo = new PanelHeroInfo(ilHeroes, ilParameters)
+                {
+                    Left = 488,
+                    Top = Config.GRID_SIZE,
+                    Parent = tabPageHeroes
+                };
+            }
+
+            panelHeroInfo.ShowHero(ph);
         }
 
         private void ShowBattle()

@@ -16,11 +16,10 @@ namespace Fantasy_King_s_Battle
         private readonly ImageList imageListGui;
         private readonly Label lblLevel;
         private readonly Button btnDismiss;
-        private PlayerHero hero;
 
         public PanelHero(PlayerHero ph, int left, int top, ImageList ilGuiHeroes, ImageList ilGui)
         {
-            hero = ph;
+            Hero = ph;
 
             BorderStyle = BorderStyle.FixedSingle;            
 
@@ -31,8 +30,9 @@ namespace Fantasy_King_s_Battle
                 Left = Config.GRID_SIZE,
                 Width = ilGuiHeroes.ImageSize.Width,
                 Height = ilGuiHeroes.ImageSize.Height,
-                Image = ilGuiHeroes.Images[hero.Hero.ImageIndex]
+                Image = ilGuiHeroes.Images[Hero.Hero.ImageIndex]
             };
+            pbHero.Click += PbHero_Click;
 
             lblLevel = new Label()
             {
@@ -52,9 +52,16 @@ namespace Fantasy_King_s_Battle
             Width = lblLevel.Left + lblLevel.Width + (Config.GRID_SIZE * 2);
         }
 
+        internal PlayerHero Hero { get; private set; }
+
         internal void ShowData()
         {
-            lblLevel.Text = hero.Level.ToString();
+            lblLevel.Text = Hero.Level.ToString();
         }
+        private void PbHero_Click(object sender, EventArgs e)
+        {
+            Program.formMain.ShowAboutHero(Hero);
+        }
+
     }
 }

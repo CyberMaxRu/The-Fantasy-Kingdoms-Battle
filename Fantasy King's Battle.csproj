@@ -58,6 +58,7 @@
     </Compile>
     <Compile Include="Fraction.cs" />
     <Compile Include="Guild.cs" />
+    <Compile Include="GuiUtils.cs" />
     <Compile Include="Hero.cs" />
     <Compile Include="ItemSmithy.cs" />
     <Compile Include="Level.cs" />
@@ -72,6 +73,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="PanelHero.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PanelHeroInfo.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="PanelTemple.cs">

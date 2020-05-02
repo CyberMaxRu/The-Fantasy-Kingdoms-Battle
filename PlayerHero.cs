@@ -21,6 +21,10 @@ namespace Fantasy_King_s_Battle
         internal Hero Hero { get; }
         internal int Level { get; }
 
+        internal int CurrentHealth;
+        internal int MaxHealth;
+        internal int CurrentMana;
+        internal int MaxMana;
         internal Parameters OurParameters { get; } = new Parameters();
         internal Parameters ModifiedParameters { get; } = new Parameters();
         internal PanelHero Panel { get; set; }
