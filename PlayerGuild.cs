@@ -19,6 +19,7 @@ namespace Fantasy_King_s_Battle
         internal Player Player { get;}
         internal Guild Guild { get; }
         internal int Level { get; private set; }
+        internal List<PlayerHero> Heroes { get; } = new List<PlayerHero>();
 
         internal void UpdatePanel()
         {
@@ -34,6 +35,24 @@ namespace Fantasy_King_s_Battle
                 Player.Gold -= Guild.Cost;
                 Level = 1;
             }    
+        }
+
+        internal PlayerHero TrainHero()
+        {
+            Debug.Assert(Heroes.Count < Guild.MaxHeroes);
+
+            PlayerHero h = new PlayerHero(this);
+            Heroes.Add(h);
+
+            return h;
+        }
+
+        internal bool CanTrainHero()
+        {
+            Debug.Assert(Level > 0);
+            Debug.Assert(Heroes.Count <= Guild.MaxHeroes);
+
+            return Heroes.Count < Guild.MaxHeroes;
         }
     }
 }

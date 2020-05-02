@@ -9,6 +9,13 @@ namespace Fantasy_King_s_Battle
     // Класс героя игрока
     internal sealed class PlayerHero
     {
+        public PlayerHero(PlayerGuild pg)
+        {
+            Guild = pg;
+            Hero = Guild.Guild.TrainedHero;
+        }
 
+        internal PlayerGuild Guild { get; }        
+        internal Hero Hero { get; }
     }
 }

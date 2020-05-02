@@ -74,10 +74,12 @@ namespace Fantasy_King_s_Battle
             }
             else
             {
-
+                guild.TrainHero();
             }
+
+            Program.formMain.ShowAllBuildings();
         }
-    
+
         internal void ShowData(PlayerGuild pg)
         {
             Debug.Assert(pg != null);
@@ -90,8 +92,16 @@ namespace Fantasy_King_s_Battle
         {
             if (guild.Level > 0)
             {
-                btnBuy.ImageList = imageListGuiHeroes;
-                btnBuy.ImageIndex = guild.Guild.TrainedHero.ImageIndex;
+                if (guild.CanTrainHero() == true)
+                {
+                    btnBuy.Visible = true;
+                    btnBuy.ImageList = imageListGuiHeroes;
+                    btnBuy.ImageIndex = guild.Guild.TrainedHero.ImageIndex;
+                }
+                else
+                {
+                    btnBuy.Visible = false;
+                }
                 btnLevelUp.Visible = true;
                 pbGuild.Image = imageListGuild.Images[guild.Guild.ImageIndex];
             }
