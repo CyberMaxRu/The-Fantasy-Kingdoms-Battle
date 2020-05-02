@@ -14,10 +14,12 @@ namespace Fantasy_King_s_Battle
         {
             Guild = pg;
             Hero = Guild.Guild.TrainedHero;
+            Level = 1;
         }
 
         internal PlayerGuild Guild { get; }        
         internal Hero Hero { get; }
+        internal int Level { get; }
 
         internal PanelHero Panel { get; set; }
 

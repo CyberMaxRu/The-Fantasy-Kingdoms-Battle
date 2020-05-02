@@ -6,6 +6,7 @@
     <ImageIndex>0</ImageIndex>
     <Cost>200</Cost>
     <Guild>GuildWarrior</Guild>
+    <MaxLevel>100</MaxLevel>
   </Hero>
   <Hero>
     <ID>Rogue</ID>
@@ -13,6 +14,7 @@
     <ImageIndex>1</ImageIndex>
     <Cost>100</Cost>
     <Guild>GuildRogue</Guild>
+    <MaxLevel>100</MaxLevel>
   </Hero>
   <Hero>
     <ID>Hunter</ID>
@@ -20,6 +22,7 @@
     <ImageIndex>2</ImageIndex>
     <Cost>150</Cost>
     <Guild>GuildHunter</Guild>
+    <MaxLevel>100</MaxLevel>
   </Hero>
   <Hero>
     <ID>Cleric</ID>
@@ -27,6 +30,7 @@
     <ImageIndex>3</ImageIndex>
     <Cost>350</Cost>
     <Guild>GuildCleric</Guild>
+    <MaxLevel>100</MaxLevel>
   </Hero>
   <Hero>
     <ID>Mage</ID>
@@ -34,6 +38,7 @@
     <ImageIndex>4</ImageIndex>
     <Cost>500</Cost>
     <Guild>GuildMage</Guild>
+    <MaxLevel>100</MaxLevel>
   </Hero>
   <Hero>
     <ID>Dwarf</ID>
@@ -41,6 +46,7 @@
     <ImageIndex>5</ImageIndex>
     <Cost>700</Cost>
     <Guild>GuildDwarf</Guild>
+    <MaxLevel>100</MaxLevel>
   </Hero>
   <Hero>
     <ID>Elf</ID>
@@ -48,5 +54,6 @@
     <ImageIndex>6</ImageIndex>
     <Cost>700</Cost>
     <Guild>GuildElf</Guild>
+    <MaxLevel>100</MaxLevel>
   </Hero>
 </Heroes>

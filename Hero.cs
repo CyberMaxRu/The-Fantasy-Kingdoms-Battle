@@ -19,6 +19,7 @@ namespace Fantasy_King_s_Battle
             Cost = Convert.ToInt32(n.SelectSingleNode("Cost").InnerText);
             Guild = FormMain.Config.FindGuild(n.SelectSingleNode("Guild").InnerText);
             Guild.TrainedHero = this;
+            MaxLevel = Convert.ToInt32(n.SelectSingleNode("MaxLevel").InnerText);
 
             // Проверяем, что таких же ID и наименования нет
             foreach (Hero h in FormMain.Config.Heroes)
@@ -45,5 +46,6 @@ namespace Fantasy_King_s_Battle
         internal int ImageIndex { get; }
         internal int Cost { get; }
         internal Guild Guild { get; }
+        internal int MaxLevel { get; }
     }
 }
