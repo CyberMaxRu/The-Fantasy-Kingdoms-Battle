@@ -90,7 +90,6 @@ namespace Fantasy_King_s_Battle
             if (building.Level == 0)
             {
                 building.BuyOrUpgrade();
-                UpdateData();
                 Program.formMain.ShowGold();
             }
             else
