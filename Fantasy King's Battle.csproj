@@ -60,6 +60,7 @@
     <Compile Include="Guild.cs" />
     <Compile Include="GuiUtils.cs" />
     <Compile Include="Hero.cs" />
+    <Compile Include="TypeItem.cs" />
     <Compile Include="ItemSmithy.cs" />
     <Compile Include="Level.cs" />
     <Compile Include="Lobby.cs" />
@@ -90,7 +91,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CourseBattle.cs" />
-    <Compile Include="Item.cs" />
+    <Compile Include="ItemOld.cs" />
     <Compile Include="Temple.cs" />
     <Compile Include="Skill.cs" />
     <Compile Include="TypeUnit.cs" />
@@ -130,6 +131,7 @@
     <Content Include="Resources\Config\Skills.xml" />
     <Content Include="Resources\Config\TypeUnits.xml" />
     <Content Include="Resources\Config\Temples.xml" />
+    <Content Include="Resources\Config\TypeItems.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

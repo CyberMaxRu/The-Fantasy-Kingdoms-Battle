@@ -7,24 +7,23 @@ using System.Xml;
 
 namespace Fantasy_King_s_Battle
 {
-    internal enum TypeItem { Elixir, Thing }
 
     // Класс предмета
-    internal sealed class Item
+    internal sealed class ItemOld
     {
-        public Item(XmlNode n)
+        public ItemOld(XmlNode n)
         {
             ID = n.SelectSingleNode("ID").InnerText;
             Name = n.SelectSingleNode("Name").InnerText;
             ImageIndex = Convert.ToInt32(n.SelectSingleNode("ImageIndex").InnerText);
-            TypeItem = (TypeItem)Enum.Parse(typeof(TypeItem), n.SelectSingleNode("TypeItem").InnerText);
+            TypeItem = (CategoryItem)Enum.Parse(typeof(CategoryItem), n.SelectSingleNode("TypeItem").InnerText);
             Building = FormMain.Config.FindBuilding(n.SelectSingleNode("Building").InnerText);
             CostExamine = Convert.ToInt32(n.SelectSingleNode("CostExamine").InnerText);
             Cost = Convert.ToInt32(n.SelectSingleNode("Cost").InnerText);
             Position = FormMain.Config.Temples.Count;
 
             // Проверяем, что таких же ID и наименования нет
-            foreach (Item i in FormMain.Config.Items)
+            foreach (ItemOld i in FormMain.Config.Items)
             {
                 if (i.ID == ID)
                     throw new Exception("В конфигурации предметов повторяется ID = " + ID);
@@ -40,7 +39,7 @@ namespace Fantasy_King_s_Battle
         internal string ID { get; }
         internal string Name { get; }
         internal int ImageIndex { get; }
-        internal TypeItem TypeItem { get; }
+        internal CategoryItem TypeItem { get; }
         internal int Position { get; }
         internal Building Building { get; }
         internal int CostExamine { get; }

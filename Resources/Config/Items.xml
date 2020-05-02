@@ -4,7 +4,7 @@
     <ID>ElixirOfHealth</ID>
     <Name>Напиток здоровья</Name>
     <ImageIndex>0</ImageIndex>
-    <TypeItem>Elixir</TypeItem>
+    <TypeItem>Potion</TypeItem>
     <Building>Market</Building>
     <CostExamine>150</CostExamine>
     <Cost>50</Cost>
@@ -14,7 +14,7 @@
     <ID>ElixirOfMana</ID>
     <Name>Напиток маны</Name>
     <ImageIndex>1</ImageIndex>
-    <TypeItem>Elixir</TypeItem>
+    <TypeItem>Potion</TypeItem>
     <Building>Market</Building>
     <CostExamine>300</CostExamine>
     <Cost>50</Cost>

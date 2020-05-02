@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TypeItems>
+  <TypeItem>
+    <ID>Weapon</ID>
+    <Category>Thing</Category>
+  </TypeItem>
+  <TypeItem>
+    <ID>Armour</ID>
+    <Category>Thing</Category>
+  </TypeItem>
+  <TypeItem>
+    <ID>Artifact</ID>
+    <Category>Thing</Category>
+  </TypeItem>
+  <TypeItem>
+    <ID>PotionHealth</ID>
+    <Category>Potion</Category>
+  </TypeItem>
+  <TypeItem>
+    <ID>PotionMana</ID>
+    <Category>Potion</Category>
+  </TypeItem>
+</TypeItems>
