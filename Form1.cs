@@ -597,9 +597,11 @@ namespace Fantasy_King_s_Battle
                 Debug.Assert(pbDragged != null);
                 if (pbForDragDrop.Visible == false)
                 {
-                    pbForDragDrop.Image = (sender as PictureBox).Image;
+                    pbForDragDrop.BringToFront();
                     pbForDragDrop.Show();
                 }
+
+                pbForDragDrop.Image = ilItems.Images[lobby.CurrentPlayer.Warehouse[(int)(sender as PictureBox).Tag].Item.ImageIndex];
 
                 //StatusLabelDay.Text = "PB Понес " + (sender as PictureBox).Tag.ToString() + ", " + e.X.ToString() + ":" + e.Y.ToString();
                 pbForDragDrop.Location = RealCoordCursorDrag(e.Location);
