@@ -700,6 +700,13 @@ namespace Fantasy_King_s_Battle
                 Debug.Assert((sender as PanelItem).NumberSlot >= 0);
 
                 heroItemDragged = panelHeroInfo.Hero.Slots[(sender as PanelItem).NumberSlot];
+                // Предмет нельзя выводить на склад, если он дефолтный
+                if (heroItemDragged != null)
+                {
+                    if (heroItemDragged.Item == panelHeroInfo.Hero.Hero.Slots[(sender as PanelItem).NumberSlot].DefaultItem)
+                        heroItemDragged = null;
+                }
+
                 if (heroItemDragged != null)
                 {
                     pbHeroDragged = (sender as PanelItem);
