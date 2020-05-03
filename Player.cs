@@ -128,5 +128,12 @@ namespace Fantasy_King_s_Battle
             Warehouse[toSlot] = Warehouse[fromSlot];
             Warehouse[fromSlot] = null;
         }
+
+        internal void SellItem(int slot)
+        {
+            Debug.Assert(Warehouse[slot] != null);
+
+            Warehouse[slot] = null;
+        }
     }
 }

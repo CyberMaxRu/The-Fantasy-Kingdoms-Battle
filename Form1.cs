@@ -527,14 +527,38 @@ namespace Fantasy_King_s_Battle
         {
             if ((e.Button == MouseButtons.Left) && (playerItemDragged != null))
             {
+                int fromSlot = (int)pbDragged.Tag;
                 int nSlot = SlotWarehouseUnderCursor(e.Location);
+
+                playerItemDragged = null;
+                pbForDragDrop.Hide();
+                pbDragged = null;
+
                 if (nSlot >= 0)
                 {
                     if (lobby.CurrentPlayer.Warehouse[nSlot] == null)
                     {
-                        if ((int)pbDragged.Tag != nSlot)
+                        if (nSlot != fromSlot)
                         {
-                            lobby.CurrentPlayer.MoveItem((int)pbDragged.Tag, nSlot);
+                            lobby.CurrentPlayer.MoveItem(fromSlot, nSlot);
+
+                            ShowWarehouse();
+                        }
+                    }
+                }
+                else
+                {
+                    if (ModifierKeys.HasFlag(Keys.Control) == true)
+                    {
+                        lobby.CurrentPlayer.SellItem(fromSlot);
+
+                        ShowWarehouse();
+                    }
+                    else
+                    {
+                        if (MessageBox.Show("Продать " + lobby.CurrentPlayer.Warehouse[fromSlot].Item.Name + "?", "FKB", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            lobby.CurrentPlayer.SellItem(fromSlot);
 
                             ShowWarehouse();
                         }
@@ -542,9 +566,6 @@ namespace Fantasy_King_s_Battle
                 }
                 //                Control c = tabPageHeroes.GetChildAtPoint(RealCoordCursorDrag());
                 //StatusLabelDay.Text = "Свободен";
-                playerItemDragged = null;
-                pbForDragDrop.Hide();
-                pbDragged = null;
                 StatusLabelDay.Text = "Свободен";
             }
         }
