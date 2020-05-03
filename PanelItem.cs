@@ -15,7 +15,7 @@ namespace Fantasy_King_s_Battle
         private readonly Label lblQuantity;
         private readonly ImageList imageListItems;
 
-        public PanelItem(Control parent, int left, int top, ImageList ilItems, int numberSlot)
+        public PanelItem(Control parent, ImageList ilItems, int numberSlot)
         {
             Debug.Assert(numberSlot >= 0);
 
@@ -24,8 +24,6 @@ namespace Fantasy_King_s_Battle
 
             Parent = parent;
             BorderStyle = BorderStyle.FixedSingle;
-            Left = left;
-            Top = top;
             Width = imageListItems.ImageSize.Width + 2;
             Height = imageListItems.ImageSize.Height + 2;
 

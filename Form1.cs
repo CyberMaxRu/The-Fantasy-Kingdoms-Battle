@@ -31,6 +31,7 @@ namespace Fantasy_King_s_Battle
 
         private readonly ToolStripStatusLabel StatusLabelDay;
         private readonly ToolStripStatusLabel StatusLabelGold;
+        private Panel panelWarehouse;
         private PanelHeroInfo panelHeroInfo;
 
         internal const int GUI_HEROES = 0;
@@ -429,7 +430,7 @@ namespace Fantasy_King_s_Battle
             {
                 panelHeroInfo = new PanelHeroInfo(ilHeroes, ilParameters, ilItems)
                 {
-                    Left = 568,
+                    Left = 600,
                     Top = Config.GRID_SIZE,
                     Parent = tabPageHeroes
                 };
@@ -481,19 +482,31 @@ namespace Fantasy_King_s_Battle
                 Name = "PB_For_Drag"
             };
 
+            panelWarehouse = new Panel()
+            {
+                Parent = tabPageHeroes,
+                BorderStyle = BorderStyle.FixedSingle,
+                Left = 0,
+                Top = 400
+            };
+
             PanelItem pi;
 
             for (int y = 0; y < WH_SLOT_LINES; y++)
                 for (int x = 0; x < WH_SLOTS_IN_LINE; x++)
                 {
-                    pi = new PanelItem(tabPageHeroes, Config.GRID_SIZE + (ilItems.ImageSize.Width + Config.GRID_SIZE) * x, 400 + Config.GRID_SIZE + (ilItems.ImageSize.Height + Config.GRID_SIZE) * y,
-                        ilItems, x + y * WH_SLOTS_IN_LINE);
+                    pi = new PanelItem(panelWarehouse, ilItems, x + y * WH_SLOTS_IN_LINE);
+                    pi.Left = Config.GRID_SIZE + (pi.Width + Config.GRID_SIZE) * x;
+                    pi.Top = Config.GRID_SIZE + (pi.Height + Config.GRID_SIZE) * y;
                     pi.MouseMove += PbWarehouseItem_MouseMove;
                     pi.MouseDown += PbWarehouse_MouseDown;
                     pi.MouseUp += PbWarehouse_MouseUp;
 
                     SlotsWarehouse.Add(pi);
                 }
+
+            panelWarehouse.Width = WH_SLOTS_IN_LINE * (SlotsWarehouse[0].Width + Config.GRID_SIZE) + Config.GRID_SIZE;
+            panelWarehouse.Height = WH_SLOT_LINES * (SlotsWarehouse[0].Height + Config.GRID_SIZE) + Config.GRID_SIZE;
         }
 
         internal void ShowWarehouse()
@@ -830,11 +843,11 @@ namespace Fantasy_King_s_Battle
 
         private Point RealCoordCursorWHDrag(Point locationMouse)
         {
-            return new Point(pbWarehouseDragged.Left + locationMouse.X - shiftDrag.X, pbWarehouseDragged.Top + locationMouse.Y - shiftDrag.Y);
+            return new Point(panelWarehouse.Left + pbWarehouseDragged.Left + locationMouse.X - shiftDrag.X, panelWarehouse.Top + pbWarehouseDragged.Top + locationMouse.Y - shiftDrag.Y);
         }
         private Point RealCoordCursorWHDragForCursor(Point locationMouse)
         {
-            return new Point(pbWarehouseDragged.Left + locationMouse.X, pbWarehouseDragged.Top + locationMouse.Y);
+            return new Point(panelWarehouse.Left + pbWarehouseDragged.Left + locationMouse.X, panelWarehouse.Top + pbWarehouseDragged.Top + locationMouse.Y);
         }
 
         private void TabPageHeroes_MouseMove(object sender, MouseEventArgs e)
