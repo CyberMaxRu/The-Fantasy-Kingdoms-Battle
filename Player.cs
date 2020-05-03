@@ -45,8 +45,11 @@ namespace Fantasy_King_s_Battle
             }
 
             //
-            AddItem(new PlayerItem(FormMain.Config.FindItem("Sword1"), 1), 0);
-            AddItem(new PlayerItem(FormMain.Config.FindItem("ArmourWarrior1"), 1), 1);
+            AddItem(new PlayerItem(FormMain.Config.FindItem("Sword1"), 1));
+            AddItem(new PlayerItem(FormMain.Config.FindItem("ArmourWarrior1"), 1));
+            AddItem(new PlayerItem(FormMain.Config.FindItem("PotionOfHealth"), 1));
+            AddItem(new PlayerItem(FormMain.Config.FindItem("PotionOfHealth"), 1));
+            AddItem(new PlayerItem(FormMain.Config.FindItem("PotionOfMana"), 1));
         }
 
         internal void DoTurn()
@@ -112,11 +115,47 @@ namespace Fantasy_King_s_Battle
             return income;
         }
 
+        // Поиск слота для предмета
+        private int FindSlotForItem(Item item)
+        { 
+            // Сначала ищем, есть ли такой предмет в слоте
+            for (int i = 0; i < Warehouse.Length; i++)
+            {
+                if ((Warehouse[i] != null) && (Warehouse[i].Item == item))
+                    return i;
+            }
+            
+            // Ищем первый свободный слот
+            for (int i = 0; i < Warehouse.Length; i++)
+            {
+                if (Warehouse[i] == null)
+                    return i;
+            }
+
+            return -1;
+        }
+
         internal void AddItem(PlayerItem pi, int nSlot)
         {
             Debug.Assert(Warehouse[nSlot] == null);
 
             Warehouse[nSlot] = pi;
+        }
+
+        internal bool AddItem(PlayerItem pi)
+        {
+            Debug.Assert(pi.Quantity > 0);
+
+            int slot = FindSlotForItem(pi.Item);
+            if (slot == -1)
+                return false;
+
+            if (Warehouse[slot] == null)
+                Warehouse[slot] = pi;
+            else
+                Warehouse[slot].Quantity += pi.Quantity;
+
+            return true;
         }
 
         internal void MoveItem(int fromSlot, int toSlot)
