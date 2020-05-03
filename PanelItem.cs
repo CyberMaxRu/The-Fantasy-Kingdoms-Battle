@@ -51,16 +51,18 @@ namespace Fantasy_King_s_Battle
 
                 Image = imageListItems.Images[pi.Item.ImageIndex];
 
-                lblQuantity.Parent = this;
-                lblQuantity.Invalidate();
-                lblQuantity.Visible = true;// pi.Quantity > 1;
-                if (lblQuantity.Visible == true)
+                if (pi.Quantity > 1)
+                {
+                    lblQuantity.Show();
                     lblQuantity.Text = pi.Quantity.ToString();
+                }
+                else
+                    lblQuantity.Hide();
             }
             else
             {
                 Image = null;
-                //lblQuantity.Hide();
+                lblQuantity.Hide();
             }
         }
     }
