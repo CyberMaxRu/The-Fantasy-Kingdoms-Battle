@@ -423,16 +423,18 @@ namespace Fantasy_King_s_Battle
 
         internal void ShowWarehouse()
         {
-            for (int i = 0; i < lobby.CurrentPlayer.Warehouse.Count; i++)
+            for (int i = 0; i < lobby.CurrentPlayer.Warehouse.Length; i++)
             {
-                SlotsWarehouse[i].Image = ilItems.Images[lobby.CurrentPlayer.Warehouse[i].Item.ImageIndex];
-                SlotsWarehouse[i].Tag = i;
-            }
-
-            for (int i = lobby.CurrentPlayer.Warehouse.Count; i < SlotsWarehouse.Count; i++)
-            {
-                SlotsWarehouse[i].Image = null;
-                SlotsWarehouse[i].Tag = null;
+                if (lobby.CurrentPlayer.Warehouse[i] != null)
+                {
+                    SlotsWarehouse[i].Image = ilItems.Images[lobby.CurrentPlayer.Warehouse[i].Item.ImageIndex];
+                    SlotsWarehouse[i].Tag = i;
+                }
+                else
+                {
+                    SlotsWarehouse[i].Image = null;
+                    SlotsWarehouse[i].Tag = null;
+                }
             }
         }
 

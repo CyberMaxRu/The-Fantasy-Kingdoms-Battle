@@ -45,8 +45,8 @@ namespace Fantasy_King_s_Battle
             }
 
             //
-            Warehouse.Add(new PlayerItem(FormMain.Config.FindItem("Sword1"), 1));
-            Warehouse.Add(new PlayerItem(FormMain.Config.FindItem("ArmourWarrior1"), 1));
+            AddItem(new PlayerItem(FormMain.Config.FindItem("Sword1"), 1), 0);
+            AddItem(new PlayerItem(FormMain.Config.FindItem("ArmourWarrior1"), 1), 1);
         }
 
         internal void DoTurn()
@@ -81,7 +81,7 @@ namespace Fantasy_King_s_Battle
         internal int StepsToCastle { get; }
         internal bool IsLive { get; }
 
-        internal List<PlayerItem> Warehouse = new List<PlayerItem>();// Предметы на складе игрока
+        internal PlayerItem[] Warehouse = new PlayerItem[FormMain.WH_MAX_SLOTS];// Предметы на складе игрока
         internal List<BuildingOfPlayer>[] ExternalBuildings {get; }
         internal PanelAboutPlayer PanelAbout { get; set; }
         private Player opponent;
@@ -110,6 +110,13 @@ namespace Fantasy_King_s_Battle
             }
 
             return income;
+        }
+
+        internal void AddItem(PlayerItem pi, int nSlot)
+        {
+            Debug.Assert(Warehouse[nSlot] == null);
+
+            Warehouse[nSlot] = pi;
         }
     }
 }
