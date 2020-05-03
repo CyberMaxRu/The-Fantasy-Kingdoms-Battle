@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace Fantasy_King_s_Battle
 {
@@ -67,6 +68,11 @@ namespace Fantasy_King_s_Battle
         private int curAppliedPlayer = -1;
 
         private List<PictureBox> SlotsWarehouse = new List<PictureBox>();
+        private PictureBox pbForDragDrop;
+        private PlayerItem playerItemDragged;
+        private PictureBox pbDragged;
+        private Point shiftDrag;
+
         private List<PictureBox> SlotSkill = new List<PictureBox>();
 
         public FormMain()
@@ -162,7 +168,9 @@ namespace Fantasy_King_s_Battle
             DrawWarehouse();
             ShowDataPlayer();
 
+            tabPageHeroes.MouseMove += TabPageHeroes_MouseMove;
         }
+
         internal static Config Config { get; set; }
         internal ImageList ILFractions { get { return ilFractions; } }
         internal ImageList PrepareImageList(string filename, int width, int height, bool convertToGrey)
@@ -368,26 +376,6 @@ namespace Fantasy_King_s_Battle
             }
         }
 
-        private void DrawWarehouse()
-        {
-            PictureBox pb;
-
-            for (int y = 0; y < WH_SLOT_LINES; y++)
-                for (int x = 0; x < WH_SLOTS_IN_LINE; x++)
-                {
-                    pb = new PictureBox()
-                    {
-                        Parent = tabPageHeroes,
-                        BorderStyle = BorderStyle.FixedSingle,
-                        Left = Config.GRID_SIZE + (ilItems.ImageSize.Width + Config.GRID_SIZE) * x,
-                        Top = 400 + Config.GRID_SIZE + (ilItems.ImageSize.Height + Config.GRID_SIZE) * y,
-                        Size = ilItems.ImageSize
-                    };
-
-                    SlotsWarehouse.Add(pb);
-                }
-        }
-
         internal void ShowHeroes()
         {
             int top = Config.GRID_SIZE;
@@ -438,11 +426,13 @@ namespace Fantasy_King_s_Battle
             for (int i = 0; i < lobby.CurrentPlayer.Warehouse.Count; i++)
             {
                 SlotsWarehouse[i].Image = ilItems.Images[lobby.CurrentPlayer.Warehouse[i].Item.ImageIndex];
+                SlotsWarehouse[i].Tag = i;
             }
 
             for (int i = lobby.CurrentPlayer.Warehouse.Count; i < SlotsWarehouse.Count; i++)
             {
                 SlotsWarehouse[i].Image = null;
+                SlotsWarehouse[i].Tag = null;
             }
         }
 
@@ -500,6 +490,93 @@ namespace Fantasy_King_s_Battle
             ShowGuilds();
             ShowBuildings();
             ShowTemples();
+        }
+
+        private void DrawWarehouse()
+        {
+            pbForDragDrop = new PictureBox()
+            {
+                Parent = tabPageHeroes,
+                Size = ilItems.ImageSize,
+                Visible = false
+            };
+
+            PictureBox pb;
+
+            for (int y = 0; y < WH_SLOT_LINES; y++)
+                for (int x = 0; x < WH_SLOTS_IN_LINE; x++)
+                {
+                    pb = new PictureBox()
+                    {
+                        Parent = tabPageHeroes,
+                        BorderStyle = BorderStyle.FixedSingle,
+                        Left = Config.GRID_SIZE + (ilItems.ImageSize.Width + Config.GRID_SIZE) * x,
+                        Top = 400 + Config.GRID_SIZE + (ilItems.ImageSize.Height + Config.GRID_SIZE) * y,
+                        Size = ilItems.ImageSize
+                    };
+                    pb.SendToBack();
+                    pb.MouseMove += PbWarehouseItem_MouseMove;
+                    pb.MouseDown += PbWarehouse_MouseDown;
+                    pb.MouseUp += PbWarehouse_MouseUp;
+
+                    SlotsWarehouse.Add(pb);
+                }
+        }
+
+        private void PbWarehouse_MouseUp(object sender, MouseEventArgs e)
+        {
+            if ((e.Button == MouseButtons.Left) && (playerItemDragged != null))
+            {
+                playerItemDragged = null;
+                pbForDragDrop.Hide();
+                pbDragged = null;
+                StatusLabelDay.Text = "Свободен";
+            }
+        }
+
+        private void PbWarehouse_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Debug.Assert(playerItemDragged == null);
+                Debug.Assert(pbForDragDrop.Visible == false);
+                Debug.Assert(pbDragged == null);
+
+                playerItemDragged = lobby.CurrentPlayer.Warehouse[(int)(sender as PictureBox).Tag];
+                pbDragged = (sender as PictureBox);
+                shiftDrag = e.Location;
+                StatusLabelDay.Text = "Взял " + (sender as PictureBox).Tag.ToString();
+            }
+        }
+
+        private void PbWarehouseItem_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (playerItemDragged != null)
+            {
+                Debug.Assert(pbDragged != null);
+                if (pbForDragDrop.Visible == false)
+                {
+                    pbForDragDrop.Image = (sender as PictureBox).Image;
+                    pbForDragDrop.Show();
+                }
+                StatusLabelDay.Text = "PB Понес " + (sender as PictureBox).Tag.ToString() + ", " + e.X.ToString() + ":" + e.Y.ToString();
+                pbForDragDrop.Left = pbDragged.Left + e.X - shiftDrag.X;
+                pbForDragDrop.Top = pbDragged.Top + e.Y - shiftDrag.Y;
+            }
+            else
+                StatusLabelDay.Text = "PB Нет пред., " + e.X.ToString() + ":" + e.Y.ToString();
+        }
+
+        private void TabPageHeroes_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (playerItemDragged != null)
+            {
+                pbForDragDrop.Left = e.X;
+                pbForDragDrop.Top = e.Y;
+                StatusLabelDay.Text = "Понес " + (sender as PictureBox).Tag.ToString() + ", " + e.X.ToString() + ":" + e.Y.ToString();
+            }
+            else
+                StatusLabelDay.Text = "Нет пред., " + e.X.ToString() + ":" + e.Y.ToString();
         }
     }
 }

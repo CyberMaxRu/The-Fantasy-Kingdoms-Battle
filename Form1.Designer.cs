@@ -71,6 +71,7 @@
             // 
             // tabPageLobby
             // 
+            this.tabPageLobby.AllowDrop = true;
             this.tabPageLobby.Location = new System.Drawing.Point(4, 25);
             this.tabPageLobby.Name = "tabPageLobby";
             this.tabPageLobby.Padding = new System.Windows.Forms.Padding(3);
@@ -167,6 +168,7 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.StatusStrip);
             this.Controls.Add(this.menuStrip1);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
