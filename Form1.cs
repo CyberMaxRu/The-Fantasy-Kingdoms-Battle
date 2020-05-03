@@ -123,7 +123,7 @@ namespace Fantasy_King_s_Battle
             {
                 TextAlign = ContentAlignment.MiddleLeft,
                 AutoSize = false,
-                Width = 160
+                Width = 200
             };
             StatusStrip.Items.Add(StatusLabelDay);
 
@@ -593,12 +593,16 @@ namespace Fantasy_King_s_Battle
 
         private PictureBox GetPicBoxSlotOfHero(Point p)
         {
-            PictureBox pb;
-            for(int i = 0; i < panelHeroInfo.slots.Length; i++)
+            if (panelHeroInfo != null)
             {
-                pb = panelHeroInfo.slots[i];
-                if ((p.Y >= pb.Top) && (p.Y <= pb.Top + pb.Height) && (p.X >= pb.Left) && (p.X <= pb.Left + pb.Width))
-                    return pb;
+                PictureBox pb;
+
+                for (int i = 0; i < panelHeroInfo.slots.Length; i++)
+                {
+                    pb = panelHeroInfo.slots[i];
+                    if ((p.Y >= panelHeroInfo.Top + pb.Top) && (p.Y <= panelHeroInfo.Top + pb.Top + pb.Height) && (p.X >= panelHeroInfo.Left + pb.Left) && (p.X <= panelHeroInfo.Left + pb.Left + pb.Width))
+                        return pb;
+                }
             }
 
             return null;
@@ -743,8 +747,9 @@ namespace Fantasy_King_s_Battle
 
                 //StatusLabelDay.Text = "PB Понес " + (sender as PictureBox).Tag.ToString() + ", " + e.X.ToString() + ":" + e.Y.ToString();
                 pbForDragDrop.Location = RealCoordCursorWHDrag(e.Location);
-                
-                PictureBox pb = GetPicBoxSlotOfWarehouse(RealCoordCursorWHDragForCursor(e.Location));
+
+                PictureBox pb;
+                pb = GetPicBoxSlotOfWarehouse(RealCoordCursorWHDragForCursor(e.Location));
                 if (pb != null)
                 {
                     if (pb.Tag != null)
@@ -761,7 +766,21 @@ namespace Fantasy_King_s_Battle
                     }
                 }
                 else
-                    StatusLabelDay.Text = "Подо мной контрола нет";
+                {
+                    pb = GetPicBoxSlotOfHero(RealCoordCursorWHDragForCursor(e.Location));
+                    if (pb != null)
+                    {
+                        Debug.Assert(pb.Tag != null);
+
+                        PlayerItem pi = panelHeroInfo.Hero.Slots[(int)pb.Tag];
+                        if (pi != null)
+                            StatusLabelDay.Text = "H under " + pi.Item.ID;
+                        else
+                            StatusLabelDay.Text = "H under " + pb.Name + " нет предмета";
+                    }
+                    else
+                        StatusLabelDay.Text = "Подо мной контрола нет";
+                }
             }
             else
                 StatusLabelDay.Text = "PB " + (sender as Control).Name + " Нет пред., " + e.X.ToString() + ":" + e.Y.ToString();
