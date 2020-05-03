@@ -88,7 +88,8 @@ namespace Fantasy_King_s_Battle
                     {
                         BorderStyle = BorderStyle.FixedSingle,
                         Parent = this,
-                        Size = ilItems.ImageSize
+                        Width = ilItems.ImageSize.Width + 2,
+                        Height = ilItems.ImageSize.Height + 2
                     };
                     pb.Left = Config.GRID_SIZE + ((pb.Width + Config.GRID_SIZE) * x);
                     pb.Top = GuiUtils.NextTop(lblSpeed) + ((pb.Height + Config.GRID_SIZE) * y);

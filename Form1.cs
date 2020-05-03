@@ -511,7 +511,8 @@ namespace Fantasy_King_s_Battle
                         BorderStyle = BorderStyle.FixedSingle,
                         Left = Config.GRID_SIZE + (ilItems.ImageSize.Width + Config.GRID_SIZE) * x,
                         Top = 400 + Config.GRID_SIZE + (ilItems.ImageSize.Height + Config.GRID_SIZE) * y,
-                        Size = ilItems.ImageSize,
+                        Width = ilItems.ImageSize.Width + 2,
+                        Height = ilItems.ImageSize.Height + 2,
                         Name = "PBWH_" + (x + y * WH_SLOTS_IN_LINE + 1).ToString()
                     };
                     pb.SendToBack();
