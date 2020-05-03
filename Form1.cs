@@ -607,6 +607,14 @@ namespace Fantasy_King_s_Battle
 
             return null;
         }
+        private int SlotHeroUnderCursor(Point locationMouse)
+        {
+            PictureBox pb = GetPicBoxSlotOfHero(locationMouse);
+            if (pb == null)
+                return -1;
+
+            return (int)pb.Tag;
+        }
 
         private void PBHeroSlot_MouseUp(object sender, MouseEventArgs e)
         {
@@ -671,23 +679,35 @@ namespace Fantasy_King_s_Battle
             if ((e.Button == MouseButtons.Left) && (playerItemDragged != null))
             {
                 int fromSlot = (int)pbWarehouseDragged.Tag;
-                int nSlot = SlotWarehouseUnderCursor(e.Location);
+                int nSlotWarehouse;
+                int nSlotHero = -1;
+
+                nSlotWarehouse = SlotWarehouseUnderCursor(RealCoordCursorWHDragForCursor(e.Location));
+                if (nSlotWarehouse == -1)
+                    nSlotHero = SlotHeroUnderCursor(RealCoordCursorWHDragForCursor(e.Location));
 
                 playerItemDragged = null;
                 pbForDragDrop.Hide();
                 pbWarehouseDragged = null;
 
-                if (nSlot >= 0)
+                if (nSlotWarehouse >= 0)
                 {
-                    if (lobby.CurrentPlayer.Warehouse[nSlot] == null)
+                    if (lobby.CurrentPlayer.Warehouse[nSlotWarehouse] == null)
                     {
-                        if (nSlot != fromSlot)
+                        if (nSlotWarehouse != fromSlot)
                         {
-                            lobby.CurrentPlayer.MoveItem(fromSlot, nSlot);
+                            lobby.CurrentPlayer.MoveItem(fromSlot, nSlotWarehouse);
 
                             ShowWarehouse();
                         }
                     }
+                }
+                if (nSlotHero >= 0)
+                {
+                    lobby.CurrentPlayer.GiveItemToHero(fromSlot, panelHeroInfo.Hero, nSlotHero);
+
+                    ShowWarehouse();
+                    panelHeroInfo.ShowHero(panelHeroInfo.Hero);
                 }
                 else
                 {
@@ -699,12 +719,12 @@ namespace Fantasy_King_s_Battle
                     }
                     else
                     {
-/*                        if (MessageBox.Show("Продать " + lobby.CurrentPlayer.Warehouse[fromSlot].Item.Name + "?", "FKB", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                        {
-                            lobby.CurrentPlayer.SellItem(fromSlot);
+                        /*                        if (MessageBox.Show("Продать " + lobby.CurrentPlayer.Warehouse[fromSlot].Item.Name + "?", "FKB", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                                                {
+                                                    lobby.CurrentPlayer.SellItem(fromSlot);
 
-                            ShowWarehouse();
-                        }*/
+                                                    ShowWarehouse();
+                                                }*/
                     }
                 }
                 //                Control c = tabPageHeroes.GetChildAtPoint(RealCoordCursorDrag());
@@ -788,7 +808,7 @@ namespace Fantasy_King_s_Battle
 
         private int SlotWarehouseUnderCursor(Point locationMouse)
         {
-            PictureBox pb = GetPicBoxSlotOfWarehouse(RealCoordCursorWHDragForCursor(locationMouse));
+            PictureBox pb = GetPicBoxSlotOfWarehouse(locationMouse);
             if (pb == null)
                 return -1;
 
