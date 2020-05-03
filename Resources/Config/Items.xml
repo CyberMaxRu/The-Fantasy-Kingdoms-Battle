@@ -64,7 +64,7 @@
     <ID>ArmourWarrior0</ID>
     <Name>Простая стальная броня</Name>
     <ImageIndex>20</ImageIndex>
-    <TypeItem>Weapon</TypeItem>
+    <TypeItem>Armour</TypeItem>
     <Building>Smithy</Building>
     <CostExamine>0</CostExamine>
     <Cost>0</Cost>
@@ -84,7 +84,7 @@
     <ID>ArmourRanger0</ID>
     <Name>Простая кожаная броня</Name>
     <ImageIndex>25</ImageIndex>
-    <TypeItem>Weapon</TypeItem>
+    <TypeItem>Armour</TypeItem>
     <Building>Smithy</Building>
     <CostExamine>0</CostExamine>
     <Cost>0</Cost>
@@ -104,7 +104,7 @@
     <ID>ArmourMage0</ID>
     <Name>Простая роба</Name>
     <ImageIndex>30</ImageIndex>
-    <TypeItem>Weapon</TypeItem>
+    <TypeItem>Armour</TypeItem>
     <Building>Smithy</Building>
     <CostExamine>0</CostExamine>
     <Cost>0</Cost>
@@ -124,7 +124,7 @@
     <ID>ArmourWarrior1</ID>
     <Name>Улучшенная стальная броня</Name>
     <ImageIndex>21</ImageIndex>
-    <TypeItem>Weapon</TypeItem>
+    <TypeItem>Armour</TypeItem>
     <Building>Smithy</Building>
     <CostExamine>0</CostExamine>
     <Cost>0</Cost>
@@ -144,7 +144,7 @@
     <ID>ArmourWarrior2</ID>
     <Name>Мастерская стальная броня</Name>
     <ImageIndex>22</ImageIndex>
-    <TypeItem>Weapon</TypeItem>
+    <TypeItem>Armour</TypeItem>
     <Building>Smithy</Building>
     <CostExamine>0</CostExamine>
     <Cost>0</Cost>

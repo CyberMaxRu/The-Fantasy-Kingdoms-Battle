@@ -15,12 +15,12 @@ namespace Fantasy_King_s_Battle
         private readonly Label lblQuantity;
         private readonly ImageList imageListItems;
 
-        public PanelItem(Control parent, ImageList ilItems, int numberSlot)
+        public PanelItem(Control parent, ImageList ilItems, int numberCell)
         {
-            Debug.Assert(numberSlot >= 0);
+            Debug.Assert(numberCell >= 0);
 
             imageListItems = ilItems;
-            NumberSlot = numberSlot;
+            NumberCell = numberCell;
 
             Parent = parent;
             BorderStyle = BorderStyle.FixedSingle;
@@ -42,7 +42,7 @@ namespace Fantasy_King_s_Battle
             lblQuantity.Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold);
         }
 
-        internal int NumberSlot { get; }
+        internal int NumberCell { get; }
         internal void ShowItem(PlayerItem pi)
         {
             if (pi != null)

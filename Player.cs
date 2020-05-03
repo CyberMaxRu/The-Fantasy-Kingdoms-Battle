@@ -53,6 +53,8 @@ namespace Fantasy_King_s_Battle
             AddItem(new PlayerItem(FormMain.Config.FindItem("PotionOfHealth"), 10));
             AddItem(new PlayerItem(FormMain.Config.FindItem("PotionOfMana"), 10));
             AddItem(new PlayerItem(FormMain.Config.FindItem("Regeneration"), 1));
+            AddItem(new PlayerItem(FormMain.Config.FindItem("Protection"), 1));
+            AddItem(new PlayerItem(FormMain.Config.FindItem("ImpProtection"), 2));
         }
 
         internal void DoTurn()
@@ -119,14 +121,23 @@ namespace Fantasy_King_s_Battle
         }
 
         // Поиск слота для предмета
-        private int FindSlotForItem(Item item)
-        { 
-            // Сначала ищем, есть ли такой предмет в слоте
+        internal int FindSlotWithItem(Item item)
+        {
             for (int i = 0; i < Warehouse.Length; i++)
             {
                 if ((Warehouse[i] != null) && (Warehouse[i].Item == item))
                     return i;
             }
+
+            return -1;
+        }
+
+        private int FindSlotForItem(Item item)
+        {
+            // Сначала ищем, есть ли такой предмет в слоте
+            int number = FindSlotWithItem(item);
+            if (number != -1)
+                return number;
             
             // Ищем первый свободный слот
             for (int i = 0; i < Warehouse.Length; i++)
@@ -138,37 +149,44 @@ namespace Fantasy_King_s_Battle
             return -1;
         }
 
-        internal void AddItem(PlayerItem pi, int nSlot)
-        {
-            Debug.Assert(Warehouse[nSlot] == null);
-
-            Warehouse[nSlot] = pi;
-        }
-
-        internal bool AddItem(PlayerItem pi)
+        internal void AddItem(PlayerItem pi)
         {
             Debug.Assert(pi.Quantity > 0);
 
-            int slot = FindSlotForItem(pi.Item);
-            if (slot == -1)
-                return false;
+            int numberCell = FindSlotForItem(pi.Item);
+            if (numberCell >= 0)
+                AddItem(pi, numberCell);
+        }
 
-            if (Warehouse[slot] == null)
-                Warehouse[slot] = pi;
+        internal void AddItem(PlayerItem pi, int numberCell)
+        {
+            if (Warehouse[numberCell] != null)
+            {
+                Debug.Assert(Warehouse[numberCell].Quantity > 0);
+
+                if (Warehouse[numberCell].Item == pi.Item)
+                {
+                    Warehouse[numberCell].Quantity += pi.Quantity;
+                    pi.Quantity = 0;
+                }
+            }
             else
-                Warehouse[slot].Quantity += pi.Quantity;
-
-            return true;
+            {
+                Warehouse[numberCell] = new PlayerItem(pi.Item, pi.Quantity);
+                pi.Quantity = 0;
+            }
         }
 
         internal void MoveItem(int fromSlot, int toSlot)
         {
             Debug.Assert(Warehouse[fromSlot] != null);
-            Debug.Assert(Warehouse[toSlot] == null);
             Debug.Assert(fromSlot != toSlot);
 
+            PlayerItem tmp = null;
+            if (Warehouse[toSlot] != null)
+                tmp = Warehouse[toSlot];
             Warehouse[toSlot] = Warehouse[fromSlot];
-            Warehouse[fromSlot] = null;
+            Warehouse[fromSlot] = tmp;
         }
 
         internal void SellItem(int slot)
@@ -178,12 +196,30 @@ namespace Fantasy_King_s_Battle
             Warehouse[slot] = null;
         }
 
-        internal void GiveItemToHero(int fromSlot, PlayerHero ph, int toSlot)
+        internal void SellItem(PlayerItem pi)
+        {
+
+        }
+
+        internal void GiveItemToHero(int fromSlot, PlayerHero ph, int quantity, int toSlot)
         {
             Debug.Assert(ph.Guild.Player == this);
             Debug.Assert(Warehouse[fromSlot] != null);
+            Debug.Assert(Warehouse[fromSlot].Quantity >= quantity);
 
-            if (ph.TryAcceptItem(Warehouse[fromSlot], toSlot) == true)
+            ph.AcceptItem(Warehouse[fromSlot], quantity, toSlot);
+            if (Warehouse[fromSlot].Quantity == 0)
+                Warehouse[fromSlot] = null;
+        }
+
+        internal void GiveItemToHero(int fromSlot, PlayerHero ph, int quantity)
+        {
+            Debug.Assert(ph.Guild.Player == this);
+            Debug.Assert(Warehouse[fromSlot] != null);
+            Debug.Assert(Warehouse[fromSlot].Quantity >= quantity);
+
+            ph.AcceptItem(Warehouse[fromSlot], quantity);
+            if (Warehouse[fromSlot].Quantity == 0)
                 Warehouse[fromSlot] = null;
         }
 
@@ -209,14 +245,44 @@ namespace Fantasy_King_s_Battle
 
             if (Warehouse[toSlot] != null)
             {
-                Debug.Assert(Warehouse[toSlot].Item == ph.Slots[fromSlot].Item);
-
-                Warehouse[toSlot].Quantity += ph.Slots[fromSlot].Quantity;
+                if (Warehouse[toSlot].Item == ph.Slots[fromSlot].Item)
+                {
+                    Warehouse[toSlot].Quantity += ph.Slots[fromSlot].Quantity;
+                    ph.Slots[fromSlot].Quantity = 0;
+                }
+                else
+                    return;
             }
             else
                 Warehouse[toSlot] = ph.Slots[fromSlot];
 
             ph.Slots[fromSlot] = null;
+            ph.ValidateCell(fromSlot);
+        }
+
+        // Забираем указанное количество предметов из ячейки
+        internal PlayerItem TakeItemFromWarehouse(int fromCell, int quantity)
+        {
+            Debug.Assert(quantity > 0);
+            Debug.Assert(Warehouse[fromCell] != null);
+            Debug.Assert(Warehouse[fromCell].Quantity > 0);
+            Debug.Assert(Warehouse[fromCell].Quantity >= quantity);
+
+            PlayerItem pi;
+
+            // Если забирают всё, то возвращаем ссылку на этот предмет и убираем его у себя, иначе делим предмет
+            if (Warehouse[fromCell].Quantity == quantity)
+            {
+                pi = Warehouse[fromCell];
+                Warehouse[fromCell] = null;
+            }
+            else
+            {
+                pi = new PlayerItem(Warehouse[fromCell].Item, quantity);
+                Warehouse[fromCell].Quantity -= quantity;
+            }
+
+            return pi;
         }
     }
 }

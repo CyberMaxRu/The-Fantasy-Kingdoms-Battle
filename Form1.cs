@@ -13,7 +13,7 @@ namespace Fantasy_King_s_Battle
 {
     public partial class FormMain : Form
     {
-        private enum SourceDrag { Warehouse, Hero }
+        private enum PlaceItemForDrag { None, Warehouse, Hero }
 
         private readonly string dirResources;
 
@@ -74,12 +74,10 @@ namespace Fantasy_King_s_Battle
 
         private PictureBox picBoxItemForDrag;// PictureBox с иконкой предмета для отображения под курсором при перетаскивании
         private Point shiftForMouseByDrag;// Смещение иконки предмета относится курсора мыши, чтобы она отображалась ровно так, как предмет взял пользователь
-        private SourceDrag sourceItemForDrag;// Источник предмета - склад, герой и т.д.
+        private PlaceItemForDrag placeItemForDrag = PlaceItemForDrag.None;// Источник предмета - склад, герой и т.д.
         private PanelItem panelItemForDrag;// Ячейка-источник предмета для переноса
-        private PlayerItem playerItemForDrag;// Предмет для переноса. Отдельно его храним, так как если он один, в ячейке он не остается
-        private PlayerItem playerItemTempForDrag;// Предмет для временного хранения одного экземпляра предмета при переносе
-        private PanelItem pbHeroDragged;
-        private PlayerItem heroItemDragged;
+        private PlayerItem itemForDrag;// Предмет для переноса. Отдельно его храним, так как если он один, в ячейке он не остается
+        private PlayerItem itemTempForDrag;// Предмет для временного хранения одного экземпляра предмета при переносе
 
         private List<PictureBox> SlotSkill = new List<PictureBox>();
 
@@ -168,7 +166,6 @@ namespace Fantasy_King_s_Battle
             tabPageTemples.Text = "";
             tabPageHeroes.ImageIndex = GUI_HEROES;
             tabPageHeroes.Text = "";
-            tabPageHeroes.MouseMove += TabPageHeroes_MouseMove;
 
             //
             DrawGuilds();
@@ -435,16 +432,16 @@ namespace Fantasy_King_s_Battle
             {
                 panelHeroInfo = new PanelHeroInfo(ilHeroes, ilParameters, ilItems)
                 {
-                    Left = 600,
+                    Left = 632,
                     Top = Config.GRID_SIZE,
                     Parent = tabPageHeroes
                 };
 
                 for (int i = 0; i < panelHeroInfo.slots.Length; i++)
                 {
-                    panelHeroInfo.slots[i].MouseDown += PBHeroSlot_MouseDown;
-                    panelHeroInfo.slots[i].MouseUp += PBHeroSlot_MouseUp;
-                    panelHeroInfo.slots[i].MouseMove += PBHeroSlot_MouseMove;
+                    panelHeroInfo.slots[i].MouseDown += PanelCellHero_MouseDown;
+                    panelHeroInfo.slots[i].MouseUp += PanelCellHero_MouseUp;
+                    panelHeroInfo.slots[i].MouseMove += PanelCell_MouseMove;
                 }
             }
 
@@ -503,9 +500,9 @@ namespace Fantasy_King_s_Battle
                     pi = new PanelItem(panelWarehouse, ilItems, x + y * WH_SLOTS_IN_LINE);
                     pi.Left = Config.GRID_SIZE + (pi.Width + Config.GRID_SIZE) * x;
                     pi.Top = Config.GRID_SIZE + (pi.Height + Config.GRID_SIZE) * y;
-                    pi.MouseMove += PbWarehouseItem_MouseMove;
-                    pi.MouseDown += PbWarehouse_MouseDown;
-                    pi.MouseUp += PbWarehouse_MouseUp;
+                    pi.MouseMove += PanelCell_MouseMove;
+                    pi.MouseDown += PanelCellWarehouse_MouseDown;
+                    pi.MouseUp += PanelCellWarehouse_MouseUp;
 
                     SlotsWarehouse.Add(pi);
                 }
@@ -535,57 +532,22 @@ namespace Fantasy_King_s_Battle
 
                 for (int i = 0; i < panelHeroInfo.slots.Length; i++)
                 {
-                    panelHeroInfo.slots[i].MouseDown += PBHeroSlot_MouseDown;
-                    panelHeroInfo.slots[i].MouseUp += PBHeroSlot_MouseUp;
-                    panelHeroInfo.slots[i].MouseMove += PBHeroSlot_MouseMove;
+                    panelHeroInfo.slots[i].MouseDown += PanelCellHero_MouseDown;
+                    panelHeroInfo.slots[i].MouseUp += PanelCellHero_MouseUp;
+                    panelHeroInfo.slots[i].MouseMove += PanelCell_MouseMove;
                 }
             }
 
             panelHeroInfo.ShowHero((sender as PanelHero).Hero);
         }
 
-        private void PBHeroSlot_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (heroItemDragged != null)
-            {
-                Debug.Assert(pbHeroDragged != null);
-                if (picBoxItemForDrag.Visible == false)
-                {
-                    picBoxItemForDrag.BringToFront();
-                    picBoxItemForDrag.Show();
-                }
-
-                picBoxItemForDrag.Image = ilItems.Images[panelHeroInfo.Hero.Slots[(sender as PanelItem).NumberSlot].Item.ImageIndex];
-
-                picBoxItemForDrag.Location = RealCoordCursorHeroDrag(e.Location);
-
-                PanelItem pb = GetPicBoxSlotOfHero(RealCoordCursorHeroDragForCursor(e.Location));
-                if (pb != null)
-                {
-                    PlayerItem pi = panelHeroInfo.Hero.Slots[pb.NumberSlot];
-                    if (pi != null)
-                        StatusLabelDay.Text = "Подо мной " + pi.Item.ID;
-                    else
-                        StatusLabelDay.Text = "Подо мной " + pb.Name + " нет предмета";
-                }
-                else
-                    StatusLabelDay.Text = "Подо мной контрола нет";
-            }
-            else
-                StatusLabelDay.Text = "PB " + (sender as Control).Name + " Нет пред., " + e.X.ToString() + ":" + e.Y.ToString();
-        }
-
         private Point RealCoordCursorHeroDrag(Point locationMouse)
         {
-            Debug.Assert(pbHeroDragged != null);
-
-            return new Point(panelHeroInfo.Left + pbHeroDragged.Left + locationMouse.X - shiftForMouseByDrag.X, panelHeroInfo.Top + pbHeroDragged.Top + locationMouse.Y - shiftForMouseByDrag.Y);
+            return new Point(panelHeroInfo.Left + panelItemForDrag.Left + locationMouse.X - shiftForMouseByDrag.X, panelHeroInfo.Top + panelItemForDrag.Top + locationMouse.Y - shiftForMouseByDrag.Y);
         }
         private Point RealCoordCursorHeroDragForCursor(Point locationMouse)
         {
-            Debug.Assert(pbHeroDragged != null);
-
-            return new Point(panelHeroInfo.Left + pbHeroDragged.Left + locationMouse.X, panelHeroInfo.Top + pbHeroDragged.Top + locationMouse.Y);
+            return new Point(panelHeroInfo.Left + panelItemForDrag.Left + locationMouse.X, panelHeroInfo.Top + panelItemForDrag.Top + locationMouse.Y);
         }
 
         private PanelItem GetPicBoxSlotOfHero(Point p)
@@ -610,69 +572,7 @@ namespace Fantasy_King_s_Battle
             if (pb == null)
                 return -1;
 
-            return pb.NumberSlot;
-        }
-
-        private void PBHeroSlot_MouseUp(object sender, MouseEventArgs e)
-        {
-            if ((e.Button == MouseButtons.Left) && (heroItemDragged != null))
-            {
-                int fromSlot = pbHeroDragged.NumberSlot;
-                int nSlotWarehouse;
-                int nSlotHero = -1;
-
-                nSlotWarehouse = SlotWarehouseUnderCursor(RealCoordCursorHeroDragForCursor(e.Location));
-                if (nSlotWarehouse == -1)
-                    nSlotHero = SlotHeroUnderCursor(RealCoordCursorHeroDragForCursor(e.Location));
-
-                picBoxItemForDrag.Hide();
-
-                if (nSlotWarehouse >= 0)
-                {
-                    if (lobby.CurrentPlayer.Warehouse[nSlotWarehouse] == null)
-                    {
-                        lobby.CurrentPlayer.GetItemFromHero(panelHeroInfo.Hero, fromSlot, nSlotWarehouse);
-
-                        ShowWarehouse();
-                        panelHeroInfo.RefreshHero();
-                    }
-                }
-                else if (nSlotHero >= 0)
-                {
-                    /*                    lobby.CurrentPlayer.GiveItemToHero(fromSlot, panelHeroInfo.Hero, nSlotHero);
-
-                                        ShowWarehouse();
-                                        panelHeroInfo.ShowHero(panelHeroInfo.Hero);*/
-                }
-                else
-                {
-                    if (CursorUnderPanelAboutHero(RealCoordCursorHeroDragForCursor(e.Location)) == false)
-                    {
-                        lobby.CurrentPlayer.GetItemFromHero(panelHeroInfo.Hero, fromSlot, -1);
-
-                        ShowWarehouse();
-                        panelHeroInfo.RefreshHero();
-                    }
-
-                    if (ModifierKeys.HasFlag(Keys.Control) == true)
-                    {
-                        //                        lobby.CurrentPlayer.SellItem(fromSlot);
-
-                        //ShowWarehouse();
-                    }
-                    else
-                    {
-                        /*                        if (MessageBox.Show("Продать " + lobby.CurrentPlayer.Warehouse[fromSlot].Item.Name + "?", "FKB", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                                                {
-                                                    lobby.CurrentPlayer.SellItem(fromSlot);
-
-                                                    ShowWarehouse();
-                                                }*/
-                    }
-                }
-                heroItemDragged = null;
-                pbHeroDragged = null;
-            }
+            return pb.NumberCell;
         }
 
         private bool PointInControl(int left, int top, int width, int height, Point p)
@@ -693,160 +593,226 @@ namespace Fantasy_King_s_Battle
             return PointInControl(panelWarehouse.Left, panelWarehouse.Top, panelWarehouse.Width, panelWarehouse.Height, p);
         }
 
-        private void PBHeroSlot_MouseDown(object sender, MouseEventArgs e)
+        // Подготовка будущего Drag&Drop. Сразу не забираем предмет, чтобы при обычном клике не было взятия/сброса предмета
+        private void PrepareDrag(PlaceItemForDrag place, PanelItem panel, Point location)
         {
-            if (e.Button == MouseButtons.Left)
+            Debug.Assert(picBoxItemForDrag.Visible == false);
+            Debug.Assert(panelItemForDrag == null);
+            Debug.Assert(itemTempForDrag == null);
+            Debug.Assert(placeItemForDrag == PlaceItemForDrag.None);
+            Debug.Assert(itemForDrag != null);
+
+            shiftForMouseByDrag = location;
+            placeItemForDrag = place;
+            panelItemForDrag = panel;
+        }
+
+        // Начала переноса. Показываем иконку переносимого предмета и забираем предметы с ячейки
+        private void BeginDrag()
+        {
+            switch (placeItemForDrag)
             {
-                Debug.Assert(playerItemForDrag == null);
-                Debug.Assert(heroItemDragged == null);
-                Debug.Assert(picBoxItemForDrag.Visible == false);
-                Debug.Assert(panelItemForDrag == null);
-                Debug.Assert(pbHeroDragged == null);                
-                Debug.Assert((sender as PanelItem).NumberSlot >= 0);
+                case PlaceItemForDrag.Warehouse:
+                    // Со склада по умолчанию показываем отбор одного предмета
+                    itemTempForDrag = lobby.CurrentPlayer.TakeItemFromWarehouse(panelItemForDrag.NumberCell, 1);
+                    ShowWarehouse();
 
-                heroItemDragged = panelHeroInfo.Hero.Slots[(sender as PanelItem).NumberSlot];
-                // Предмет нельзя выводить на склад, если он дефолтный
-                if (heroItemDragged != null)
-                {
-                    if (heroItemDragged.Item == panelHeroInfo.Hero.Hero.Slots[(sender as PanelItem).NumberSlot].DefaultItem)
-                        heroItemDragged = null;
-                }
+                    break;
+                case PlaceItemForDrag.Hero:
+                    // С инвентаря героя по умолчанию показываем отбор всех предметов
+                    itemTempForDrag = panelHeroInfo.Hero.TakeItem(panelItemForDrag.NumberCell, panelHeroInfo.Hero.Slots[panelItemForDrag.NumberCell].Quantity);
+                    panelHeroInfo.RefreshHero();
 
-                if (heroItemDragged != null)
-                {
-                    pbHeroDragged = (sender as PanelItem);
-                    shiftForMouseByDrag = e.Location;
-                    StatusLabelDay.Text = "Взял у героя " + (sender as PanelItem).NumberSlot.ToString();
-                }
+                    break;
+                default:
+                    throw new Exception("Неизвестный источник для предмета.");
+            }
+
+            picBoxItemForDrag.Image = ilItems.Images[itemTempForDrag.Item.ImageIndex];
+            picBoxItemForDrag.Show();
+        }
+
+        private void UpdateDrag(MouseEventArgs e)
+        {
+            switch (placeItemForDrag)
+            {
+                case PlaceItemForDrag.Warehouse:
+                    picBoxItemForDrag.Location = RealCoordCursorWHDrag(e.Location);
+                    break;
+                case PlaceItemForDrag.Hero:
+                    picBoxItemForDrag.Location = RealCoordCursorHeroDrag(e.Location);
+                    break;
+                default:
+                    throw new Exception("Неизвестный источник для предмета.");
             }
         }
 
-        private void PbWarehouse_MouseUp(object sender, MouseEventArgs e)
+        private void EndDrag()
         {
-            if ((e.Button == MouseButtons.Left) && (playerItemForDrag != null))
+            Debug.Assert(picBoxItemForDrag.Visible == true);
+            Debug.Assert(panelItemForDrag != null);
+            Debug.Assert(itemForDrag != null);
+            Debug.Assert(itemTempForDrag != null);
+
+            picBoxItemForDrag.Hide();
+
+            placeItemForDrag = PlaceItemForDrag.None;
+            panelItemForDrag = null;
+            itemForDrag = null;
+            itemTempForDrag = null;
+        }
+
+        private void PanelCellWarehouse_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
             {
-                int fromSlot = panelItemForDrag.NumberSlot;
-                int nSlotWarehouse;
-                int nSlotHero = -1;
+                Debug.Assert(itemForDrag == null);
+                Debug.Assert(sender is PanelItem);
 
-                nSlotWarehouse = SlotWarehouseUnderCursor(RealCoordCursorWHDragForCursor(e.Location));
-                if (nSlotWarehouse == -1)
-                    nSlotHero = SlotHeroUnderCursor(RealCoordCursorWHDragForCursor(e.Location));
+                itemForDrag = lobby.CurrentPlayer.Warehouse[((PanelItem)sender).NumberCell];
+                if (itemForDrag != null)
+                    PrepareDrag(PlaceItemForDrag.Warehouse, (PanelItem)sender, e.Location);
+            }
+        }
 
-                playerItemForDrag = null;
-                picBoxItemForDrag.Hide();
-                panelItemForDrag = null;
-
-                if (nSlotWarehouse >= 0)
+        private void PanelCellWarehouse_MouseUp(object sender, MouseEventArgs e)
+        {
+            if ((e.Button == MouseButtons.Left) && (itemForDrag != null))
+            {
+                // Если клик на ячейки, то вызова BeginDrag не было
+                if (itemTempForDrag != null)
                 {
-                    if (lobby.CurrentPlayer.Warehouse[nSlotWarehouse] == null)
+                    int fromSlot = panelItemForDrag.NumberCell;
+
+                    // Определяем, куда бросили предмет
+                    int numberCellWarehouse = SlotWarehouseUnderCursor(RealCoordCursorWHDragForCursor(e.Location));
+                    int numberCellHero = SlotHeroUnderCursor(RealCoordCursorWHDragForCursor(e.Location));
+
+                    if (numberCellWarehouse >= 0)// Бросили на другую ячейку склада
                     {
-                        if (nSlotWarehouse != fromSlot)
-                        {
-                            lobby.CurrentPlayer.MoveItem(fromSlot, nSlotWarehouse);
+                        lobby.CurrentPlayer.AddItem(itemTempForDrag, fromSlot);
 
-                            ShowWarehouse();
-                        }
+                        if (numberCellWarehouse != fromSlot)
+                            lobby.CurrentPlayer.MoveItem(fromSlot, numberCellWarehouse);
                     }
-                }
-                if (nSlotHero >= 0)
-                {
-                    lobby.CurrentPlayer.GiveItemToHero(fromSlot, panelHeroInfo.Hero, nSlotHero);
+                    else if (numberCellHero >= 0)// Бросили на ячейку инвентаря героя
+                    {
+                        lobby.CurrentPlayer.AddItem(itemTempForDrag, fromSlot);
+
+                        // Предмет бросаем в первую очередь в ячейку, которая уже есть с такими предметами
+                        int numberCellForExistItem = panelHeroInfo.Hero.FindSlotWithItem(itemTempForDrag.Item);
+                        numberCellHero = numberCellForExistItem >= 0 ? numberCellForExistItem : numberCellHero;
+                        lobby.CurrentPlayer.GiveItemToHero(fromSlot, panelHeroInfo.Hero, lobby.CurrentPlayer.Warehouse[fromSlot].Quantity, numberCellHero);
+
+                        panelHeroInfo.RefreshHero();
+                    }
+                    else if ((panelHeroInfo != null) && (CursorUnderPanelAboutHero(RealCoordCursorWHDragForCursor(e.Location)) == true))// Бросили на панель игрока
+                    {
+                        lobby.CurrentPlayer.AddItem(itemTempForDrag, fromSlot);
+                        lobby.CurrentPlayer.GiveItemToHero(fromSlot, panelHeroInfo.Hero, lobby.CurrentPlayer.Warehouse[fromSlot].Quantity);
+
+                        panelHeroInfo.RefreshHero();
+                    }
+                    else if ((CursorUnderPanelWarehouse(RealCoordCursorWHDragForCursor(e.Location)) == false))
+                    {
+                        // Бросили вне панели склада
+                        lobby.CurrentPlayer.SellItem(itemTempForDrag);
+                    }
+                    else
+                    {
+                        // Если предмет так никуда и не пристроили, возвращаем его обратно
+                        lobby.CurrentPlayer.AddItem(itemTempForDrag, fromSlot);
+                    }
 
                     ShowWarehouse();
-                    panelHeroInfo.ShowHero(panelHeroInfo.Hero);
                 }
-                else
-                {
-                    if (CursorUnderPanelAboutHero(RealCoordCursorHeroDragForCursor(e.Location)) == true)
-                    {
-                        PlayerItem pi = lobby.CurrentPlayer.Warehouse[fromSlot];
 
-                        lobby.CurrentPlayer.GetItemFromHero(panelHeroInfo.Hero, fromSlot, -1);
+                EndDrag();
+                // && (ModifierKeys.HasFlag(Keys.Control) == true)
+            }
+        }
+
+        private void PanelCell_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (itemForDrag != null)
+            {
+                if (picBoxItemForDrag.Visible == false)
+                    BeginDrag();
+
+                UpdateDrag(e);
+            }
+        }
+
+        private void PanelCellHero_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Debug.Assert(itemForDrag == null);
+                Debug.Assert(sender is PanelItem);
+
+                itemForDrag = panelHeroInfo.Hero.Slots[((PanelItem)sender).NumberCell];
+                // Дефолтный предмет нельзя перемещать
+                if (itemForDrag != null)
+                    if (itemForDrag.Item == panelHeroInfo.Hero.Hero.Slots[((PanelItem)sender).NumberCell].DefaultItem)
+                        itemForDrag = null;
+
+                if (itemForDrag != null)
+                    PrepareDrag(PlaceItemForDrag.Hero, (PanelItem)sender, e.Location);
+            }
+        }
+
+        private void PanelCellHero_MouseUp(object sender, MouseEventArgs e)
+        {
+            if ((e.Button == MouseButtons.Left) && (itemForDrag != null))
+            {
+                if (itemTempForDrag != null)
+                {
+                    int fromSlot = panelItemForDrag.NumberCell;
+
+                    int numberCellWarehouse = SlotWarehouseUnderCursor(RealCoordCursorHeroDragForCursor(e.Location));
+                    int numberCellHero = SlotHeroUnderCursor(RealCoordCursorHeroDragForCursor(e.Location));
+
+                    if (numberCellWarehouse >= 0)// Бросили на ячейку склада
+                    {
+                        panelHeroInfo.Hero.AcceptItem(itemTempForDrag, itemTempForDrag.Quantity, fromSlot);
+
+                        // Предмет бросаем в первую очередь в ячейку, которая уже есть с такими предметами
+                        int numberCellForExistItem = lobby.CurrentPlayer.FindSlotWithItem(itemTempForDrag.Item);
+                        numberCellWarehouse = numberCellForExistItem >= 0 ? numberCellForExistItem : numberCellWarehouse;
+                        lobby.CurrentPlayer.GetItemFromHero(panelHeroInfo.Hero, fromSlot, numberCellWarehouse);
+
+                        ShowWarehouse();
+                    }
+                    else if (numberCellHero >= 0)// Бросили на ячейку героя
+                    {
+                        panelHeroInfo.Hero.AcceptItem(itemTempForDrag, itemTempForDrag.Quantity, fromSlot);
+
+                        if (numberCellHero != fromSlot)
+                            panelHeroInfo.Hero.MoveItem(fromSlot, numberCellHero);
+                    }
+                    else if (CursorUnderPanelAboutHero(RealCoordCursorHeroDragForCursor(e.Location)) == false)
+                    {
+                        panelHeroInfo.Hero.AcceptItem(itemTempForDrag, itemTempForDrag.Quantity, fromSlot);
+                        lobby.CurrentPlayer.GetItemFromHero(panelHeroInfo.Hero, fromSlot);
 
                         ShowWarehouse();
                         panelHeroInfo.RefreshHero();
                     }
-
-                    if (ModifierKeys.HasFlag(Keys.Control) == true)
+                    else if (ModifierKeys.HasFlag(Keys.Control) == true)
                     {
-                        lobby.CurrentPlayer.SellItem(fromSlot);
+                        //                        lobby.CurrentPlayer.SellItem(fromSlot);
 
-                        ShowWarehouse();
+                        //ShowWarehouse();
                     }
                     else
-                    {
-                        /*                        if (MessageBox.Show("Продать " + lobby.CurrentPlayer.Warehouse[fromSlot].Item.Name + "?", "FKB", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                                                {
-                                                    lobby.CurrentPlayer.SellItem(fromSlot);
+                        // Возвращаем предмет обратно
+                        panelHeroInfo.Hero.AcceptItem(itemTempForDrag, itemTempForDrag.Quantity, fromSlot);
 
-                                                    ShowWarehouse();
-                                                }*/
-                    }
+                    panelHeroInfo.RefreshHero();
                 }
+
+                EndDrag();
             }
-        }
-
-        private void PbWarehouse_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                Debug.Assert(playerItemForDrag == null);
-                Debug.Assert(picBoxItemForDrag.Visible == false);
-                Debug.Assert(panelItemForDrag == null);
-
-                playerItemForDrag = lobby.CurrentPlayer.Warehouse[(sender as PanelItem).NumberSlot];
-                if (playerItemForDrag != null)
-                {
-                    panelItemForDrag = (sender as PanelItem);
-                    shiftForMouseByDrag = e.Location;
-                    StatusLabelDay.Text = "Взял " + panelItemForDrag.NumberSlot.ToString();
-                }
-            }
-        }
-
-        private void PbWarehouseItem_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (playerItemForDrag != null)
-            {
-                Debug.Assert(panelItemForDrag != null);
-                if (picBoxItemForDrag.Visible == false)
-                {
-                    picBoxItemForDrag.Image = ilItems.Images[lobby.CurrentPlayer.Warehouse[(sender as PanelItem).NumberSlot].Item.ImageIndex];
-                    picBoxItemForDrag.BringToFront();
-                    picBoxItemForDrag.Show();
-                }
-
-
-                picBoxItemForDrag.Location = RealCoordCursorWHDrag(e.Location);
-
-                PanelItem pb;
-                pb = GetPanelItemSlotOfWarehouse(RealCoordCursorWHDragForCursor(e.Location));
-                if (pb != null)
-                {
-                    PlayerItem pi = lobby.CurrentPlayer.Warehouse[pb.NumberSlot];
-                    if (pi != null)
-                        StatusLabelDay.Text = "Подо мной " + pi.Item.ID;
-                    else
-                        StatusLabelDay.Text = "Подо мной " + pb.Name + " нет предмета";
-                }
-                else
-                {
-                    pb = GetPicBoxSlotOfHero(RealCoordCursorWHDragForCursor(e.Location));
-                    if (pb != null)
-                    {
-                        PlayerItem pi = panelHeroInfo.Hero.Slots[pb.NumberSlot];
-                        if (pi != null)
-                            StatusLabelDay.Text = "H under " + pi.Item.ID;
-                        else
-                            StatusLabelDay.Text = "H under " + pb.Name + " нет предмета";
-                    }
-                    else
-                        StatusLabelDay.Text = "Подо мной контрола нет";
-                }
-            }
-            else
-                StatusLabelDay.Text = "PB " + (sender as Control).Name + " Нет пред., " + e.X.ToString() + ":" + e.Y.ToString();
         }
 
         private int SlotWarehouseUnderCursor(Point locationMouse)
@@ -855,7 +821,7 @@ namespace Fantasy_King_s_Battle
             if (pi == null)
                 return -1;
 
-            return pi.NumberSlot;
+            return pi.NumberCell;
         }
 
         private PanelItem GetPanelItemSlotOfWarehouse(Point p)
@@ -876,18 +842,6 @@ namespace Fantasy_King_s_Battle
         private Point RealCoordCursorWHDragForCursor(Point locationMouse)
         {
             return new Point(panelWarehouse.Left + panelItemForDrag.Left + locationMouse.X, panelWarehouse.Top + panelItemForDrag.Top + locationMouse.Y);
-        }
-
-        private void TabPageHeroes_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (playerItemForDrag != null)
-            {
-                picBoxItemForDrag.Left = e.X;
-                picBoxItemForDrag.Top = e.Y;
-                StatusLabelDay.Text = "Понес " + (sender as PanelItem).NumberSlot.ToString() + ", " + e.X.ToString() + ":" + e.Y.ToString();
-            }
-            else
-                StatusLabelDay.Text = "Нет пред., " + e.X.ToString() + ":" + e.Y.ToString();
         }
     }
 }
