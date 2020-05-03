@@ -45,8 +45,10 @@ namespace Fantasy_King_s_Battle
             }
 
             //
-            AddItem(new PlayerItem(FormMain.Config.FindItem("Sword1"), 1));
-            AddItem(new PlayerItem(FormMain.Config.FindItem("ArmourWarrior1"), 1));
+            AddItem(new PlayerItem(FormMain.Config.FindItem("Sword1"), 4));
+            AddItem(new PlayerItem(FormMain.Config.FindItem("Sword2"), 4));
+            AddItem(new PlayerItem(FormMain.Config.FindItem("ArmourWarrior1"), 4));
+            AddItem(new PlayerItem(FormMain.Config.FindItem("ArmourWarrior2"), 4));
             AddItem(new PlayerItem(FormMain.Config.FindItem("PotionOfHealth"), 1));
             AddItem(new PlayerItem(FormMain.Config.FindItem("PotionOfHealth"), 1));
             AddItem(new PlayerItem(FormMain.Config.FindItem("PotionOfMana"), 1));
@@ -179,35 +181,41 @@ namespace Fantasy_King_s_Battle
         {
             Debug.Assert(ph.Guild.Player == this);
             Debug.Assert(Warehouse[fromSlot] != null);
-            Debug.Assert(ph.Slots[toSlot] == null);
 
-            ph.Slots[toSlot] = Warehouse[fromSlot];
-            Warehouse[fromSlot] = null;
+            if (ph.TryAcceptItem(Warehouse[fromSlot], toSlot) == true)
+                Warehouse[fromSlot] = null;
         }
 
+
+        internal bool GetItemFromHero(PlayerHero ph, int fromSlot)
+        {
+            Debug.Assert(ph.Guild.Player == this);
+            Debug.Assert(ph.Slots[fromSlot] != null);
+            Debug.Assert(ph.Slots[fromSlot].Quantity > 0);
+
+            // Ищем слот для предмета
+            int toSlot = FindSlotForItem(ph.Slots[fromSlot].Item);
+            if (toSlot == -1)
+                return false;
+
+            GetItemFromHero(ph, fromSlot, toSlot);
+            return true;
+        }
         internal void GetItemFromHero(PlayerHero ph, int fromSlot, int toSlot)
         {
             Debug.Assert(ph.Guild.Player == this);
             Debug.Assert(ph.Slots[fromSlot] != null);
+            Debug.Assert(toSlot >= 0);
 
-            // Ищем слот для предмета
-            if (toSlot == -1)
+            if (Warehouse[toSlot] != null)
             {
-                for (int i = 0; i < Warehouse.Length; i++)
-                {
-                    if (Warehouse[i] == null)
-                    {
-                        toSlot = i;
-                        break;
-                    }    
-                }
+                Debug.Assert(Warehouse[toSlot].Item == ph.Slots[fromSlot].Item);
 
-                if (toSlot == -1)
-                    return;
+                Warehouse[toSlot].Quantity += ph.Slots[fromSlot].Quantity;
             }
-            Debug.Assert(Warehouse[toSlot] == null);
+            else
+                Warehouse[toSlot] = ph.Slots[fromSlot];
 
-            Warehouse[toSlot] = ph.Slots[fromSlot];
             ph.Slots[fromSlot] = null;
         }
     }

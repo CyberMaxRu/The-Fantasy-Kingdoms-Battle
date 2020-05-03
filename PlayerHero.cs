@@ -59,5 +59,65 @@ namespace Fantasy_King_s_Battle
             if (Panel != null)
                 Panel.Dispose();
         }
+
+        internal int FindSlotForItem(PlayerItem pi)
+        {
+            // Сначала ищем слот, заполненный таким же предметом, потом по типу предмета
+            for (int i = 0; i < Slots.Length; i++)
+            {
+                if ((Slots[i] != null) && (Slots[i].Item == pi.Item))
+                    return i;
+            }
+
+            for (int i = 0; i < Slots.Length; i++)
+            {
+                if ((Slots[i] == null) && (Hero.Slots[i].TypeItem == pi.Item.TypeItem))
+                    return i;
+            }
+
+            return -1;
+        }
+
+        internal bool TryAcceptItem(PlayerItem pi)
+        {
+            Debug.Assert(pi.Quantity > 0);
+
+            int slot = FindSlotForItem(pi);
+            if (slot == -1)
+                return false;
+
+            return TryAcceptItem(pi, slot);
+        }
+
+        internal bool TryAcceptItem(PlayerItem pi, int toSlot)
+        {
+            Debug.Assert(pi.Quantity > 0);
+
+            // Проверяем совместимость
+            if (pi.Item.TypeItem != Hero.Slots[toSlot].TypeItem)
+                return false;
+
+            if (Slots[toSlot] != null)
+            {
+                if (Hero.Slots[toSlot].DefaultItem != null)
+                {
+                    // Если это дефолтный предмет, удаляем его
+                    if (Slots[toSlot].Item == Hero.Slots[toSlot].DefaultItem)
+                        Slots[toSlot] = null;
+                    else
+                    {
+                        // Если не можем поместить вещь на склад, выходим
+                        if (Guild.Player.GetItemFromHero(this, toSlot) == false)
+                            return false;
+                    }
+                }
+
+                Slots[toSlot] = pi;
+            }
+            else
+                Slots[toSlot] = pi;
+
+            return true;
+        }
     }
 }

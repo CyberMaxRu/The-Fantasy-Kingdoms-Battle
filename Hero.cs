@@ -84,7 +84,7 @@ namespace Fantasy_King_s_Battle
             {
                 if (Slots[i] == null)
                     throw new Exception("Не указан слот " + i.ToString());
-}
+            }
         }
 
         internal string ID { get; }

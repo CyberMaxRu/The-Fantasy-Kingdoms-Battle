@@ -679,7 +679,13 @@ namespace Fantasy_King_s_Battle
         {
             if (panelHeroInfo != null)
                 return PointInControl(panelHeroInfo.Left, panelHeroInfo.Top, panelHeroInfo.Width, panelHeroInfo.Height, p);
+
             return false;
+        }
+
+        private bool CursorUnderPanelWarehouse(Point p)
+        {
+            return PointInControl(panelWarehouse.Left, panelWarehouse.Top, panelWarehouse.Width, panelWarehouse.Height, p);
         }
 
         private void PBHeroSlot_MouseDown(object sender, MouseEventArgs e)
@@ -740,6 +746,16 @@ namespace Fantasy_King_s_Battle
                 }
                 else
                 {
+                    if (CursorUnderPanelAboutHero(RealCoordCursorHeroDragForCursor(e.Location)) == true)
+                    {
+                        PlayerItem pi = lobby.CurrentPlayer.Warehouse[fromSlot];
+
+                        lobby.CurrentPlayer.GetItemFromHero(panelHeroInfo.Hero, fromSlot, -1);
+
+                        ShowWarehouse();
+                        panelHeroInfo.RefreshHero();
+                    }
+
                     if (ModifierKeys.HasFlag(Keys.Control) == true)
                     {
                         lobby.CurrentPlayer.SellItem(fromSlot);
