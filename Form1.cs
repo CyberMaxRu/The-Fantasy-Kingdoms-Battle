@@ -557,12 +557,12 @@ namespace Fantasy_King_s_Battle
                     }
                     else
                     {
-                        if (MessageBox.Show("Продать " + lobby.CurrentPlayer.Warehouse[fromSlot].Item.Name + "?", "FKB", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+/*                        if (MessageBox.Show("Продать " + lobby.CurrentPlayer.Warehouse[fromSlot].Item.Name + "?", "FKB", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
                             lobby.CurrentPlayer.SellItem(fromSlot);
 
                             ShowWarehouse();
-                        }
+                        }*/
                     }
                 }
                 //                Control c = tabPageHeroes.GetChildAtPoint(RealCoordCursorDrag());
