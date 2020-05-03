@@ -67,12 +67,12 @@ namespace Fantasy_King_s_Battle
         private readonly Lobby lobby;
         private int curAppliedPlayer = -1;
 
-        private List<PictureBox> SlotsWarehouse = new List<PictureBox>();
+        private List<PanelItem> SlotsWarehouse = new List<PanelItem>();
         private PictureBox pbForDragDrop;
         private PlayerItem playerItemDragged;
         private PlayerItem heroItemDragged;
-        private PictureBox pbWarehouseDragged;
-        private PictureBox pbHeroDragged;
+        private PanelItem pbWarehouseDragged;
+        private PanelItem pbHeroDragged;
         private Point shiftDrag;
 
         private List<PictureBox> SlotSkill = new List<PictureBox>();
@@ -481,27 +481,18 @@ namespace Fantasy_King_s_Battle
                 Name = "PB_For_Drag"
             };
 
-            PictureBox pb;
+            PanelItem pi;
 
             for (int y = 0; y < WH_SLOT_LINES; y++)
                 for (int x = 0; x < WH_SLOTS_IN_LINE; x++)
                 {
-                    pb = new PictureBox()
-                    {
-                        Parent = tabPageHeroes,
-                        BorderStyle = BorderStyle.FixedSingle,
-                        Left = Config.GRID_SIZE + (ilItems.ImageSize.Width + Config.GRID_SIZE) * x,
-                        Top = 400 + Config.GRID_SIZE + (ilItems.ImageSize.Height + Config.GRID_SIZE) * y,
-                        Width = ilItems.ImageSize.Width + 2,
-                        Height = ilItems.ImageSize.Height + 2,
-                        Name = "PBWH_" + (x + y * WH_SLOTS_IN_LINE + 1).ToString()
-                    };
-                    pb.SendToBack();
-                    pb.MouseMove += PbWarehouseItem_MouseMove;
-                    pb.MouseDown += PbWarehouse_MouseDown;
-                    pb.MouseUp += PbWarehouse_MouseUp;
+                    pi = new PanelItem(tabPageHeroes, Config.GRID_SIZE + (ilItems.ImageSize.Width + Config.GRID_SIZE) * x, 400 + Config.GRID_SIZE + (ilItems.ImageSize.Height + Config.GRID_SIZE) * y,
+                        ilItems, x + y * WH_SLOTS_IN_LINE);
+                    pi.MouseMove += PbWarehouseItem_MouseMove;
+                    pi.MouseDown += PbWarehouse_MouseDown;
+                    pi.MouseUp += PbWarehouse_MouseUp;
 
-                    SlotsWarehouse.Add(pb);
+                    SlotsWarehouse.Add(pi);
                 }
         }
 
@@ -509,12 +500,7 @@ namespace Fantasy_King_s_Battle
         {
             for (int i = 0; i < lobby.CurrentPlayer.Warehouse.Length; i++)
             {
-                if (lobby.CurrentPlayer.Warehouse[i] != null)
-                    SlotsWarehouse[i].Image = ilItems.Images[lobby.CurrentPlayer.Warehouse[i].Item.ImageIndex];
-                else
-                    SlotsWarehouse[i].Image = null;
-
-                SlotsWarehouse[i].Tag = i;
+                SlotsWarehouse[i].ShowItem(lobby.CurrentPlayer.Warehouse[i]);
             }
         }
 
@@ -551,25 +537,18 @@ namespace Fantasy_King_s_Battle
                     pbForDragDrop.Show();
                 }
 
-                pbForDragDrop.Image = ilItems.Images[panelHeroInfo.Hero.Slots[(int)(sender as PictureBox).Tag].Item.ImageIndex];
+                pbForDragDrop.Image = ilItems.Images[panelHeroInfo.Hero.Slots[(sender as PanelItem).NumberSlot].Item.ImageIndex];
 
                 pbForDragDrop.Location = RealCoordCursorHeroDrag(e.Location);
 
-                PictureBox pb = GetPicBoxSlotOfHero(RealCoordCursorHeroDragForCursor(e.Location));
+                PanelItem pb = GetPicBoxSlotOfHero(RealCoordCursorHeroDragForCursor(e.Location));
                 if (pb != null)
                 {
-                    if (pb.Tag != null)
-                    {
-                        PlayerItem pi = panelHeroInfo.Hero.Slots[(int)pb.Tag];
-                        if (pi != null)
-                            StatusLabelDay.Text = "Подо мной " + pi.Item.ID;
-                        else
-                            StatusLabelDay.Text = "Подо мной " + pb.Name + " нет предмета";
-                    }
+                    PlayerItem pi = panelHeroInfo.Hero.Slots[pb.NumberSlot];
+                    if (pi != null)
+                        StatusLabelDay.Text = "Подо мной " + pi.Item.ID;
                     else
-                    {
-                        StatusLabelDay.Text = "Подо мной " + pb.Name + " без Tag";
-                    }
+                        StatusLabelDay.Text = "Подо мной " + pb.Name + " нет предмета";
                 }
                 else
                     StatusLabelDay.Text = "Подо мной контрола нет";
@@ -591,11 +570,11 @@ namespace Fantasy_King_s_Battle
             return new Point(panelHeroInfo.Left + pbHeroDragged.Left + locationMouse.X, panelHeroInfo.Top + pbHeroDragged.Top + locationMouse.Y);
         }
 
-        private PictureBox GetPicBoxSlotOfHero(Point p)
+        private PanelItem GetPicBoxSlotOfHero(Point p)
         {
             if (panelHeroInfo != null)
             {
-                PictureBox pb;
+                PanelItem pb;
 
                 for (int i = 0; i < panelHeroInfo.slots.Length; i++)
                 {
@@ -609,18 +588,18 @@ namespace Fantasy_King_s_Battle
         }
         private int SlotHeroUnderCursor(Point locationMouse)
         {
-            PictureBox pb = GetPicBoxSlotOfHero(locationMouse);
+            PanelItem pb = GetPicBoxSlotOfHero(locationMouse);
             if (pb == null)
                 return -1;
 
-            return (int)pb.Tag;
+            return pb.NumberSlot;
         }
 
         private void PBHeroSlot_MouseUp(object sender, MouseEventArgs e)
         {
             if ((e.Button == MouseButtons.Left) && (heroItemDragged != null))
             {
-                int fromSlot = (int)pbHeroDragged.Tag;
+                int fromSlot = pbHeroDragged.NumberSlot;
                 int nSlotWarehouse;
                 int nSlotHero = -1;
 
@@ -699,14 +678,14 @@ namespace Fantasy_King_s_Battle
                 Debug.Assert(pbForDragDrop.Visible == false);
                 Debug.Assert(pbWarehouseDragged == null);
                 Debug.Assert(pbHeroDragged == null);                
-                Debug.Assert((sender as PictureBox).Tag != null);
+                Debug.Assert((sender as PanelItem).NumberSlot >= 0);
 
-                heroItemDragged = panelHeroInfo.Hero.Slots[(int)(sender as PictureBox).Tag];
+                heroItemDragged = panelHeroInfo.Hero.Slots[(sender as PanelItem).NumberSlot];
                 if (heroItemDragged != null)
                 {
-                    pbHeroDragged = (sender as PictureBox);
+                    pbHeroDragged = (sender as PanelItem);
                     shiftDrag = e.Location;
-                    StatusLabelDay.Text = "Взял у героя " + (sender as PictureBox).Tag.ToString();
+                    StatusLabelDay.Text = "Взял у героя " + (sender as PanelItem).NumberSlot.ToString();
                 }
             }
         }
@@ -715,7 +694,7 @@ namespace Fantasy_King_s_Battle
         {
             if ((e.Button == MouseButtons.Left) && (playerItemDragged != null))
             {
-                int fromSlot = (int)pbWarehouseDragged.Tag;
+                int fromSlot = pbWarehouseDragged.NumberSlot;
                 int nSlotWarehouse;
                 int nSlotHero = -1;
 
@@ -774,14 +753,13 @@ namespace Fantasy_King_s_Battle
                 Debug.Assert(playerItemDragged == null);
                 Debug.Assert(pbForDragDrop.Visible == false);
                 Debug.Assert(pbWarehouseDragged == null);
-                Debug.Assert((sender as PictureBox).Tag != null);
 
-                playerItemDragged = lobby.CurrentPlayer.Warehouse[(int)(sender as PictureBox).Tag];
+                playerItemDragged = lobby.CurrentPlayer.Warehouse[(sender as PanelItem).NumberSlot];
                 if (playerItemDragged != null)
                 {
-                    pbWarehouseDragged = (sender as PictureBox);
+                    pbWarehouseDragged = (sender as PanelItem);
                     shiftDrag = e.Location;
-                    StatusLabelDay.Text = "Взял " + (sender as PictureBox).Tag.ToString();
+                    StatusLabelDay.Text = "Взял " + pbWarehouseDragged.NumberSlot.ToString();
                 }
             }
         }
@@ -797,36 +775,26 @@ namespace Fantasy_King_s_Battle
                     pbForDragDrop.Show();
                 }
 
-                pbForDragDrop.Image = ilItems.Images[lobby.CurrentPlayer.Warehouse[(int)(sender as PictureBox).Tag].Item.ImageIndex];
+                pbForDragDrop.Image = ilItems.Images[lobby.CurrentPlayer.Warehouse[(sender as PanelItem).NumberSlot].Item.ImageIndex];
 
-                //StatusLabelDay.Text = "PB Понес " + (sender as PictureBox).Tag.ToString() + ", " + e.X.ToString() + ":" + e.Y.ToString();
                 pbForDragDrop.Location = RealCoordCursorWHDrag(e.Location);
 
-                PictureBox pb;
-                pb = GetPicBoxSlotOfWarehouse(RealCoordCursorWHDragForCursor(e.Location));
+                PanelItem pb;
+                pb = GetPanelItemSlotOfWarehouse(RealCoordCursorWHDragForCursor(e.Location));
                 if (pb != null)
                 {
-                    if (pb.Tag != null)
-                    {
-                        PlayerItem pi = lobby.CurrentPlayer.Warehouse[(int)pb.Tag];
-                        if (pi != null)
-                            StatusLabelDay.Text = "Подо мной " + pi.Item.ID;
-                        else
-                            StatusLabelDay.Text = "Подо мной " + pb.Name + " нет предмета";
-                    }
+                    PlayerItem pi = lobby.CurrentPlayer.Warehouse[pb.NumberSlot];
+                    if (pi != null)
+                        StatusLabelDay.Text = "Подо мной " + pi.Item.ID;
                     else
-                    {
-                        StatusLabelDay.Text = "Подо мной " + pb.Name + " без Tag";
-                    }
+                        StatusLabelDay.Text = "Подо мной " + pb.Name + " нет предмета";
                 }
                 else
                 {
                     pb = GetPicBoxSlotOfHero(RealCoordCursorWHDragForCursor(e.Location));
                     if (pb != null)
                     {
-                        Debug.Assert(pb.Tag != null);
-
-                        PlayerItem pi = panelHeroInfo.Hero.Slots[(int)pb.Tag];
+                        PlayerItem pi = panelHeroInfo.Hero.Slots[pb.NumberSlot];
                         if (pi != null)
                             StatusLabelDay.Text = "H under " + pi.Item.ID;
                         else
@@ -842,19 +810,19 @@ namespace Fantasy_King_s_Battle
 
         private int SlotWarehouseUnderCursor(Point locationMouse)
         {
-            PictureBox pb = GetPicBoxSlotOfWarehouse(locationMouse);
-            if (pb == null)
+            PanelItem pi = GetPanelItemSlotOfWarehouse(locationMouse);
+            if (pi == null)
                 return -1;
 
-            return (int)pb.Tag;
+            return pi.NumberSlot;
         }
 
-        private PictureBox GetPicBoxSlotOfWarehouse(Point p)
+        private PanelItem GetPanelItemSlotOfWarehouse(Point p)
         {
-            foreach (PictureBox pb in SlotsWarehouse)
+            foreach (PanelItem pi in SlotsWarehouse)
             {
-                if ((p.Y >= pb.Top) && (p.Y <= pb.Top + pb.Height) && (p.X >= pb.Left) && (p.X <= pb.Left + pb.Width))
-                    return pb;
+                if ((p.Y >= pi.Top) && (p.Y <= pi.Top + pi.Height) && (p.X >= pi.Left) && (p.X <= pi.Left + pi.Width))
+                    return pi;
             }
 
             return null;
@@ -875,7 +843,7 @@ namespace Fantasy_King_s_Battle
             {
                 pbForDragDrop.Left = e.X;
                 pbForDragDrop.Top = e.Y;
-                StatusLabelDay.Text = "Понес " + (sender as PictureBox).Tag.ToString() + ", " + e.X.ToString() + ":" + e.Y.ToString();
+                StatusLabelDay.Text = "Понес " + (sender as PanelItem).NumberSlot.ToString() + ", " + e.X.ToString() + ":" + e.Y.ToString();
             }
             else
                 StatusLabelDay.Text = "Нет пред., " + e.X.ToString() + ":" + e.Y.ToString();

@@ -61,6 +61,9 @@
     <Compile Include="GuiUtils.cs" />
     <Compile Include="Hero.cs" />
     <Compile Include="PlayerItem.cs" />
+    <Compile Include="PanelItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="TypeItem.cs" />
     <Compile Include="ItemSmithy.cs" />
     <Compile Include="Level.cs" />
