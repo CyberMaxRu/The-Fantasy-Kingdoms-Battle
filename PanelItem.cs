@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Drawing;
 
 namespace Fantasy_King_s_Battle
 {
@@ -16,6 +17,8 @@ namespace Fantasy_King_s_Battle
 
         public PanelItem(Control parent, int left, int top, ImageList ilItems, int numberSlot)
         {
+            Debug.Assert(numberSlot >= 0);
+
             imageListItems = ilItems;
             NumberSlot = numberSlot;
 
@@ -26,16 +29,41 @@ namespace Fantasy_King_s_Battle
             Width = imageListItems.ImageSize.Width + 2;
             Height = imageListItems.ImageSize.Height + 2;
 
-            SendToBack();
+            lblQuantity = new Label()
+            {
+                Parent = this,
+                AutoSize = false,
+                Left = 2,
+                Top = Height - 20,
+                Height = 16,
+                Width = Width - 4,
+                BackColor = Color.Transparent,
+                ForeColor = Color.FromKnownColor(KnownColor.White),
+                TextAlign = ContentAlignment.MiddleRight
+            };
+            lblQuantity.Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold);
         }
 
         internal int NumberSlot { get; }
         internal void ShowItem(PlayerItem pi)
         {
             if (pi != null)
+            {
+                Debug.Assert(pi.Quantity > 0);
+
                 Image = imageListItems.Images[pi.Item.ImageIndex];
+
+                lblQuantity.Parent = this;
+                lblQuantity.Invalidate();
+                lblQuantity.Visible = true;// pi.Quantity > 1;
+                if (lblQuantity.Visible == true)
+                    lblQuantity.Text = pi.Quantity.ToString();
+            }
             else
+            {
                 Image = null;
+                //lblQuantity.Hide();
+            }
         }
     }
 }

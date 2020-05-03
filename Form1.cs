@@ -162,15 +162,15 @@ namespace Fantasy_King_s_Battle
             tabPageTemples.Text = "";
             tabPageHeroes.ImageIndex = GUI_HEROES;
             tabPageHeroes.Text = "";
+            tabPageHeroes.MouseMove += TabPageHeroes_MouseMove;
 
             //
             DrawGuilds();
             DrawBuildings();
             DrawTemples();
             DrawWarehouse();
-            ShowDataPlayer();
 
-            tabPageHeroes.MouseMove += TabPageHeroes_MouseMove;
+            ShowDataPlayer();
         }
 
         internal static Config Config { get; set; }
@@ -771,11 +771,11 @@ namespace Fantasy_King_s_Battle
                 Debug.Assert(pbWarehouseDragged != null);
                 if (pbForDragDrop.Visible == false)
                 {
+                    pbForDragDrop.Image = ilItems.Images[lobby.CurrentPlayer.Warehouse[(sender as PanelItem).NumberSlot].Item.ImageIndex];
                     pbForDragDrop.BringToFront();
                     pbForDragDrop.Show();
                 }
 
-                pbForDragDrop.Image = ilItems.Images[lobby.CurrentPlayer.Warehouse[(sender as PanelItem).NumberSlot].Item.ImageIndex];
 
                 pbForDragDrop.Location = RealCoordCursorWHDrag(e.Location);
 

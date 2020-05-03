@@ -142,14 +142,7 @@ namespace Fantasy_King_s_Battle
 
                 for (int i = 0; i < ph.Slots.Length; i++)
                 {
-                    if (ph.Slots[i] != null)
-                    {
-                        slots[i].Image = imageListItems.Images[ph.Slots[i].Item.ImageIndex];
-                    }
-                    else
-                    {
-                        slots[i].Image = null;
-                    }
+                    slots[i].ShowItem(ph.Slots[i]);
                 }
 
             }
