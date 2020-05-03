@@ -121,7 +121,7 @@ namespace Fantasy_King_s_Battle
             {
                 TextAlign = ContentAlignment.MiddleLeft,
                 AutoSize = false,
-                Width = 100
+                Width = 160
             };
             StatusStrip.Items.Add(StatusLabelDay);
 
@@ -426,15 +426,11 @@ namespace Fantasy_King_s_Battle
             for (int i = 0; i < lobby.CurrentPlayer.Warehouse.Length; i++)
             {
                 if (lobby.CurrentPlayer.Warehouse[i] != null)
-                {
                     SlotsWarehouse[i].Image = ilItems.Images[lobby.CurrentPlayer.Warehouse[i].Item.ImageIndex];
-                    SlotsWarehouse[i].Tag = i;
-                }
                 else
-                {
                     SlotsWarehouse[i].Image = null;
-                    SlotsWarehouse[i].Tag = null;
-                }
+
+                SlotsWarehouse[i].Tag = i;
             }
         }
 
@@ -500,7 +496,8 @@ namespace Fantasy_King_s_Battle
             {
                 Parent = tabPageHeroes,
                 Size = ilItems.ImageSize,
-                Visible = false
+                Visible = false,
+                Name = "PB_For_Drag"
             };
 
             PictureBox pb;
@@ -514,7 +511,8 @@ namespace Fantasy_King_s_Battle
                         BorderStyle = BorderStyle.FixedSingle,
                         Left = Config.GRID_SIZE + (ilItems.ImageSize.Width + Config.GRID_SIZE) * x,
                         Top = 400 + Config.GRID_SIZE + (ilItems.ImageSize.Height + Config.GRID_SIZE) * y,
-                        Size = ilItems.ImageSize
+                        Size = ilItems.ImageSize,
+                        Name = "PBWH_" + (x + y * WH_SLOTS_IN_LINE + 1).ToString()
                     };
                     pb.SendToBack();
                     pb.MouseMove += PbWarehouseItem_MouseMove;
@@ -529,6 +527,21 @@ namespace Fantasy_King_s_Battle
         {
             if ((e.Button == MouseButtons.Left) && (playerItemDragged != null))
             {
+                int nSlot = SlotWarehouseUnderCursor(e.Location);
+                if (nSlot >= 0)
+                {
+                    if (lobby.CurrentPlayer.Warehouse[nSlot] == null)
+                    {
+                        if ((int)pbDragged.Tag != nSlot)
+                        {
+                            lobby.CurrentPlayer.MoveItem((int)pbDragged.Tag, nSlot);
+
+                            ShowWarehouse();
+                        }
+                    }
+                }
+                //                Control c = tabPageHeroes.GetChildAtPoint(RealCoordCursorDrag());
+                //StatusLabelDay.Text = "Свободен";
                 playerItemDragged = null;
                 pbForDragDrop.Hide();
                 pbDragged = null;
@@ -543,11 +556,15 @@ namespace Fantasy_King_s_Battle
                 Debug.Assert(playerItemDragged == null);
                 Debug.Assert(pbForDragDrop.Visible == false);
                 Debug.Assert(pbDragged == null);
+                Debug.Assert((sender as PictureBox).Tag != null);
 
                 playerItemDragged = lobby.CurrentPlayer.Warehouse[(int)(sender as PictureBox).Tag];
-                pbDragged = (sender as PictureBox);
-                shiftDrag = e.Location;
-                StatusLabelDay.Text = "Взял " + (sender as PictureBox).Tag.ToString();
+                if (playerItemDragged != null)
+                {
+                    pbDragged = (sender as PictureBox);
+                    shiftDrag = e.Location;
+                    StatusLabelDay.Text = "Взял " + (sender as PictureBox).Tag.ToString();
+                }
             }
         }
 
@@ -561,12 +578,60 @@ namespace Fantasy_King_s_Battle
                     pbForDragDrop.Image = (sender as PictureBox).Image;
                     pbForDragDrop.Show();
                 }
-                StatusLabelDay.Text = "PB Понес " + (sender as PictureBox).Tag.ToString() + ", " + e.X.ToString() + ":" + e.Y.ToString();
-                pbForDragDrop.Left = pbDragged.Left + e.X - shiftDrag.X;
-                pbForDragDrop.Top = pbDragged.Top + e.Y - shiftDrag.Y;
+
+                //StatusLabelDay.Text = "PB Понес " + (sender as PictureBox).Tag.ToString() + ", " + e.X.ToString() + ":" + e.Y.ToString();
+                pbForDragDrop.Location = RealCoordCursorDrag(e.Location);
+                
+                PictureBox pb = GetPicBoxSlotOfWarehouse(RealCoordCursorDragForCursor(e.Location));
+                if (pb != null)
+                {
+                    if (pb.Tag != null)
+                    {
+                        PlayerItem pi = lobby.CurrentPlayer.Warehouse[(int)pb.Tag];
+                        if (pi != null)
+                            StatusLabelDay.Text = "Подо мной " + pi.Item.ID;
+                        else
+                            StatusLabelDay.Text = "Подо мной " + pb.Name + " нет предмета";
+                    }
+                    else
+                    {
+                        StatusLabelDay.Text = "Подо мной " + pb.Name + " без Tag";
+                    }
+                }
+                else
+                    StatusLabelDay.Text = "Подо мной контрола нет";
             }
             else
-                StatusLabelDay.Text = "PB Нет пред., " + e.X.ToString() + ":" + e.Y.ToString();
+                StatusLabelDay.Text = "PB " + (sender as Control).Name + " Нет пред., " + e.X.ToString() + ":" + e.Y.ToString();
+        }
+
+        private int SlotWarehouseUnderCursor(Point locationMouse)
+        {
+            PictureBox pb = GetPicBoxSlotOfWarehouse(RealCoordCursorDragForCursor(locationMouse));
+            if (pb == null)
+                return -1;
+
+            return (int)pb.Tag;
+        }
+
+        private PictureBox GetPicBoxSlotOfWarehouse(Point p)
+        {
+            foreach (PictureBox pb in SlotsWarehouse)
+            {
+                if ((p.Y >= pb.Top) && (p.Y <= pb.Top + pb.Height) && (p.X >= pb.Left) && (p.X <= pb.Left + pb.Width))
+                    return pb;
+            }
+
+            return null;
+        }
+
+        private Point RealCoordCursorDrag(Point locationMouse)
+        {
+            return new Point(pbDragged.Left + locationMouse.X - shiftDrag.X, pbDragged.Top + locationMouse.Y - shiftDrag.Y);
+        }
+        private Point RealCoordCursorDragForCursor(Point locationMouse)
+        {
+            return new Point(pbDragged.Left + locationMouse.X, pbDragged.Top + locationMouse.Y);
         }
 
         private void TabPageHeroes_MouseMove(object sender, MouseEventArgs e)

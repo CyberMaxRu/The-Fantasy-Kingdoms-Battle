@@ -118,5 +118,15 @@ namespace Fantasy_King_s_Battle
 
             Warehouse[nSlot] = pi;
         }
+
+        internal void MoveItem(int fromSlot, int toSlot)
+        {
+            Debug.Assert(Warehouse[fromSlot] != null);
+            Debug.Assert(Warehouse[toSlot] == null);
+            Debug.Assert(fromSlot != toSlot);
+
+            Warehouse[toSlot] = Warehouse[fromSlot];
+            Warehouse[fromSlot] = null;
+        }
     }
 }
