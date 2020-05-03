@@ -138,6 +138,7 @@ namespace Fantasy_King_s_Battle
 
         internal void GiveItemToHero(int fromSlot, PlayerHero ph, int toSlot)
         {
+            Debug.Assert(ph.Guild.Player == this);
             Debug.Assert(Warehouse[fromSlot] != null);
             Debug.Assert(ph.Slots[toSlot] == null);
 
@@ -147,7 +148,24 @@ namespace Fantasy_King_s_Battle
 
         internal void GetItemFromHero(PlayerHero ph, int fromSlot, int toSlot)
         {
+            Debug.Assert(ph.Guild.Player == this);
             Debug.Assert(ph.Slots[fromSlot] != null);
+
+            // Ищем слот для предмета
+            if (toSlot == -1)
+            {
+                for (int i = 0; i < Warehouse.Length; i++)
+                {
+                    if (Warehouse[i] == null)
+                    {
+                        toSlot = i;
+                        break;
+                    }    
+                }
+
+                if (toSlot == -1)
+                    return;
+            }
             Debug.Assert(Warehouse[toSlot] == null);
 
             Warehouse[toSlot] = ph.Slots[fromSlot];

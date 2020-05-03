@@ -628,9 +628,7 @@ namespace Fantasy_King_s_Battle
                 if (nSlotWarehouse == -1)
                     nSlotHero = SlotHeroUnderCursor(RealCoordCursorHeroDragForCursor(e.Location));
 
-                heroItemDragged = null;
                 pbForDragDrop.Hide();
-                pbHeroDragged = null;
 
                 if (nSlotWarehouse >= 0)
                 {
@@ -644,16 +642,24 @@ namespace Fantasy_King_s_Battle
                 }
                 if (nSlotHero >= 0)
                 {
-/*                    lobby.CurrentPlayer.GiveItemToHero(fromSlot, panelHeroInfo.Hero, nSlotHero);
+                    /*                    lobby.CurrentPlayer.GiveItemToHero(fromSlot, panelHeroInfo.Hero, nSlotHero);
 
-                    ShowWarehouse();
-                    panelHeroInfo.ShowHero(panelHeroInfo.Hero);*/
+                                        ShowWarehouse();
+                                        panelHeroInfo.ShowHero(panelHeroInfo.Hero);*/
                 }
                 else
                 {
+                    if (CursorUnderPanelAboutHero(RealCoordCursorHeroDragForCursor(e.Location)) == false)
+                    {
+                        lobby.CurrentPlayer.GetItemFromHero(panelHeroInfo.Hero, fromSlot, -1);
+
+                        ShowWarehouse();
+                        panelHeroInfo.RefreshHero();
+                    }
+
                     if (ModifierKeys.HasFlag(Keys.Control) == true)
                     {
-//                        lobby.CurrentPlayer.SellItem(fromSlot);
+                        //                        lobby.CurrentPlayer.SellItem(fromSlot);
 
                         //ShowWarehouse();
                     }
@@ -667,7 +673,21 @@ namespace Fantasy_King_s_Battle
                                                 }*/
                     }
                 }
+                heroItemDragged = null;
+                pbHeroDragged = null;
             }
+        }
+
+        private bool PointInControl(int left, int top, int width, int height, Point p)
+        {
+            return (p.X >= left) && (p.X <= left + width) && (p.Y >= top) && (p.Y <= top + height);
+        }
+
+        private bool CursorUnderPanelAboutHero(Point p)
+        {
+            if (panelHeroInfo != null)
+                return PointInControl(panelHeroInfo.Left, panelHeroInfo.Top, panelHeroInfo.Width, panelHeroInfo.Height, p);
+            return false;
         }
 
         private void PBHeroSlot_MouseDown(object sender, MouseEventArgs e)
