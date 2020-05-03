@@ -834,7 +834,7 @@ namespace Fantasy_King_s_Battle
         {
             foreach (PanelItem pi in SlotsWarehouse)
             {
-                if ((p.Y >= pi.Top) && (p.Y <= pi.Top + pi.Height) && (p.X >= pi.Left) && (p.X <= pi.Left + pi.Width))
+                if ((p.Y >= panelWarehouse.Top + pi.Top) && (p.Y <= panelWarehouse.Top + pi.Top + pi.Height) && (p.X >= panelWarehouse.Left + pi.Left) && (p.X <= panelWarehouse.Left + pi.Left + pi.Width))
                     return pi;
             }
 
