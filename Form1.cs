@@ -640,7 +640,7 @@ namespace Fantasy_King_s_Battle
                         panelHeroInfo.RefreshHero();
                     }
                 }
-                if (nSlotHero >= 0)
+                else if (nSlotHero >= 0)
                 {
                     /*                    lobby.CurrentPlayer.GiveItemToHero(fromSlot, panelHeroInfo.Hero, nSlotHero);
 
