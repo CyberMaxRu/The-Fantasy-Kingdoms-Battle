@@ -52,6 +52,7 @@ namespace Fantasy_King_s_Battle
             AddItem(new PlayerItem(FormMain.Config.FindItem("PotionOfHealth"), 10));
             AddItem(new PlayerItem(FormMain.Config.FindItem("PotionOfHealth"), 10));
             AddItem(new PlayerItem(FormMain.Config.FindItem("PotionOfMana"), 10));
+            AddItem(new PlayerItem(FormMain.Config.FindItem("Regeneration"), 1));
         }
 
         internal void DoTurn()
