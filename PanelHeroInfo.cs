@@ -28,7 +28,7 @@ namespace Fantasy_King_s_Battle
         private readonly Label lblDefenseMagic;
         private readonly Button btnDismiss;
 
-        private PictureBox[] slots = new PictureBox[FormMain.SLOT_IN_INVENTORY];
+        internal PictureBox[] slots = new PictureBox[FormMain.SLOT_IN_INVENTORY];
 
         private readonly ImageList imageListHeroes;
         private readonly ImageList imageListItems;
@@ -89,7 +89,8 @@ namespace Fantasy_King_s_Battle
                         BorderStyle = BorderStyle.FixedSingle,
                         Parent = this,
                         Width = ilItems.ImageSize.Width + 2,
-                        Height = ilItems.ImageSize.Height + 2
+                        Height = ilItems.ImageSize.Height + 2,
+                        Tag = x + y * FormMain.SLOTS_IN_LINE
                     };
                     pb.Left = Config.GRID_SIZE + ((pb.Width + Config.GRID_SIZE) * x);
                     pb.Top = GuiUtils.NextTop(lblSpeed) + ((pb.Height + Config.GRID_SIZE) * y);
