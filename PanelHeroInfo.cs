@@ -117,6 +117,11 @@ namespace Fantasy_King_s_Battle
             }
         }
 
+        internal void RefreshHero()
+        {
+            ShowHero(Hero);
+        }
+
         internal void ShowHero(PlayerHero ph)
         {
             Hero = ph;

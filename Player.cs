@@ -144,5 +144,14 @@ namespace Fantasy_King_s_Battle
             ph.Slots[toSlot] = Warehouse[fromSlot];
             Warehouse[fromSlot] = null;
         }
+
+        internal void GetItemFromHero(PlayerHero ph, int fromSlot, int toSlot)
+        {
+            Debug.Assert(ph.Slots[fromSlot] != null);
+            Debug.Assert(Warehouse[toSlot] == null);
+
+            Warehouse[toSlot] = ph.Slots[fromSlot];
+            ph.Slots[fromSlot] = null;
+        }
     }
 }

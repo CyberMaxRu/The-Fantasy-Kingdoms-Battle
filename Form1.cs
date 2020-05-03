@@ -620,36 +620,53 @@ namespace Fantasy_King_s_Battle
         {
             if ((e.Button == MouseButtons.Left) && (heroItemDragged != null))
             {
-                Debug.Assert(pbHeroDragged != null);
+                int fromSlot = (int)pbHeroDragged.Tag;
+                int nSlotWarehouse;
+                int nSlotHero = -1;
 
-//                int fromSlot = (int)pbHeroDragged.Tag;
-//                int nSlot = SlotWarehouseUnderCursor(e.Location);
+                nSlotWarehouse = SlotWarehouseUnderCursor(RealCoordCursorHeroDragForCursor(e.Location));
+                if (nSlotWarehouse == -1)
+                    nSlotHero = SlotHeroUnderCursor(RealCoordCursorHeroDragForCursor(e.Location));
 
                 heroItemDragged = null;
                 pbForDragDrop.Hide();
                 pbHeroDragged = null;
 
-                /*if (nSlot >= 0)
+                if (nSlotWarehouse >= 0)
                 {
-                    if (lobby.CurrentPlayer.Warehouse[nSlot] == null)
+                    if (lobby.CurrentPlayer.Warehouse[nSlotWarehouse] == null)
                     {
-                        if (nSlot != fromSlot)
-                        {
-                            lobby.CurrentPlayer.MoveItem(fromSlot, nSlot);
+                        lobby.CurrentPlayer.GetItemFromHero(panelHeroInfo.Hero, fromSlot, nSlotWarehouse);
 
-                            ShowWarehouse();
-                        }
+                        ShowWarehouse();
+                        panelHeroInfo.RefreshHero();
                     }
+                }
+                if (nSlotHero >= 0)
+                {
+/*                    lobby.CurrentPlayer.GiveItemToHero(fromSlot, panelHeroInfo.Hero, nSlotHero);
+
+                    ShowWarehouse();
+                    panelHeroInfo.ShowHero(panelHeroInfo.Hero);*/
                 }
                 else
                 {
-                    //lobby.CurrentPlayer.SellItem(fromSlot);
+                    if (ModifierKeys.HasFlag(Keys.Control) == true)
+                    {
+//                        lobby.CurrentPlayer.SellItem(fromSlot);
 
-                    //ShowWarehouse();
+                        //ShowWarehouse();
+                    }
+                    else
+                    {
+                        /*                        if (MessageBox.Show("Продать " + lobby.CurrentPlayer.Warehouse[fromSlot].Item.Name + "?", "FKB", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                                                {
+                                                    lobby.CurrentPlayer.SellItem(fromSlot);
+
+                                                    ShowWarehouse();
+                                                }*/
+                    }
                 }
-                //                Control c = tabPageHeroes.GetChildAtPoint(RealCoordCursorDrag());
-                //StatusLabelDay.Text = "Свободен";
-                StatusLabelDay.Text = "Свободен";*/
             }
         }
 
@@ -727,9 +744,6 @@ namespace Fantasy_King_s_Battle
                                                 }*/
                     }
                 }
-                //                Control c = tabPageHeroes.GetChildAtPoint(RealCoordCursorDrag());
-                //StatusLabelDay.Text = "Свободен";
-                StatusLabelDay.Text = "Свободен";
             }
         }
 
