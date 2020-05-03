@@ -130,4 +130,24 @@
     <Cost>0</Cost>
     <Perk></Perk>
   </Item>
+  <Item>
+    <ID>Sword2</ID>
+    <Name>Мастерское рукопашное оружие</Name>
+    <ImageIndex>7</ImageIndex>
+    <TypeItem>Weapon</TypeItem>
+    <Building>Smithy</Building>
+    <CostExamine>0</CostExamine>
+    <Cost>0</Cost>
+    <Perk></Perk>
+  </Item>
+  <Item>
+    <ID>ArmourWarrior2</ID>
+    <Name>Мастерская стальная броня</Name>
+    <ImageIndex>22</ImageIndex>
+    <TypeItem>Weapon</TypeItem>
+    <Building>Smithy</Building>
+    <CostExamine>0</CostExamine>
+    <Cost>0</Cost>
+    <Perk></Perk>
+  </Item>
 </Items>
