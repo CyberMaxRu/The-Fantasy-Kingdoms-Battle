@@ -184,7 +184,7 @@
     <Name>Магический базар</Name>
     <ImageIndex>13</ImageIndex>
     <CategoryBuilding>Castle</CategoryBuilding>
-    <Line>3</Line>
+    <Line>2</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <MaxHeroes>0</MaxHeroes>
