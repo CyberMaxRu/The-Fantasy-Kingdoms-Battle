@@ -25,6 +25,7 @@ namespace Fantasy_King_s_Battle
 
         public PanelBuilding(Control parent, int left, int top, FormMain formMain)
         {
+            Parent = parent;
             BorderStyle = BorderStyle.FixedSingle;
             imageListBuilding = formMain.ilBuildings;
             imageListGui = formMain.ilGui;
