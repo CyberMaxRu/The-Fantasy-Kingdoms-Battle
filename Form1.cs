@@ -21,11 +21,11 @@ namespace Fantasy_King_s_Battle
         private readonly ImageList ilSkills;
         private readonly ImageList ilResultBattle;
         private readonly ImageList ilTypeBattle;
-        private readonly ImageList ilBuildings;
+        internal readonly ImageList ilBuildings;
         private readonly ImageList ilHeroes;
         internal readonly ImageList ilGui;
         private readonly ImageList ilGui16;
-        private readonly ImageList ilGuiHeroes;
+        internal readonly ImageList ilGuiHeroes;
         internal readonly ImageList ilParameters;
         internal readonly ImageList ilItems;
 
@@ -287,8 +287,7 @@ namespace Fantasy_King_s_Battle
                 {
                     if ((b.CategoryBuilding == category) && (b.Line == line))
                     {
-                        b.Panel = new PanelBuilding(left, top, ilBuildings, ilGui, ilGui16, ilGuiHeroes);
-                        b.Panel.Parent = parent;
+                        b.Panel = new PanelBuilding(parent, left, top, this);
 
                         left += b.Panel.Width + Config.GRID_SIZE;
                         height = b.Panel.Height;

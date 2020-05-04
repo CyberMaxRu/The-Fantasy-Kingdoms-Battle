@@ -23,20 +23,20 @@ namespace Fantasy_King_s_Battle
         private readonly Label lblHeroes;
         private PlayerBuilding building;
 
-        public PanelBuilding(int left, int top, ImageList ilBuilding, ImageList ilGui, ImageList ilGui16, ImageList ilGuiHeroes)
+        public PanelBuilding(Control parent, int left, int top, FormMain formMain)
         {
             BorderStyle = BorderStyle.FixedSingle;
-            imageListBuilding = ilBuilding;
-            imageListGui = ilGui;
-            imageListGuiHeroes = ilGuiHeroes;
+            imageListBuilding = formMain.ilBuildings;
+            imageListGui = formMain.ilGui;
+            imageListGuiHeroes = formMain.ilGuiHeroes;
             Left = left;
             Top = top;
 
             pbBuilding = new PictureBox()
             {
                 Parent = this,
-                Width = ilBuilding.ImageSize.Width + 2,// Окантовка
-                Height = ilBuilding.ImageSize.Height + 2,// Окантовка
+                Width = imageListBuilding.ImageSize.Width + 2,// Окантовка
+                Height = imageListBuilding.ImageSize.Height + 2,// Окантовка
                 Left = Config.GRID_SIZE,
                 Top = Config.GRID_SIZE,
             };
@@ -45,8 +45,8 @@ namespace Fantasy_King_s_Battle
             {
                 Parent = this,
                 Left = GuiUtils.NextLeft(pbBuilding),
-                Size = GuiUtils.SizeButtonWithImage(ilGui),
-                Top = pbBuilding.Top + pbBuilding.Height - ilGui.ImageSize.Height - 8,
+                Size = GuiUtils.SizeButtonWithImage(imageListGui),
+                Top = pbBuilding.Top + pbBuilding.Height - imageListGui.ImageSize.Height - 8,
                 ImageList = imageListGui,
             };
             btnBuy.Click += BtnBuy_Click;
@@ -85,7 +85,7 @@ namespace Fantasy_King_s_Battle
                 TextAlign = ContentAlignment.MiddleRight,
                 ImageAlign = ContentAlignment.MiddleLeft,
                 ImageIndex = FormMain.GUI_16_GOLD,
-                ImageList = ilGui16
+                ImageList = imageListGui
             };
 
             Height = lblIncome.Top + lblIncome.Height + (Config.GRID_SIZE * 2);
