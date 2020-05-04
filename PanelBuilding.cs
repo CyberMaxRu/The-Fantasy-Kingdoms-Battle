@@ -18,10 +18,12 @@ namespace Fantasy_King_s_Battle
         private readonly ImageList imageListGuiHeroes;
         private readonly Button btnBuy;
         private readonly Button btnLevelUp;
+        private readonly Label lblName;
         private readonly Label lblIncome;
         private readonly Label lblLevel;
         private readonly Label lblHeroes;
         private PlayerBuilding building;
+        private readonly Font fontLabel = new Font("Microsoft Sans Setif", 10, FontStyle.Bold);
 
         public PanelBuilding(Control parent, int left, int top, FormMain formMain)
         {
@@ -33,13 +35,23 @@ namespace Fantasy_King_s_Battle
             Left = left;
             Top = top;
 
+            lblName = new Label()
+            {
+                Parent = this,
+                Left = Config.GRID_SIZE,
+                Top = Config.GRID_SIZE,
+                Height = Config.GRID_SIZE * 2,
+                ForeColor = Color.FromKnownColor(KnownColor.Green),
+                Font = fontLabel
+            };
+
             pbBuilding = new PictureBox()
             {
                 Parent = this,
                 Width = imageListBuilding.ImageSize.Width + 2,// Окантовка
                 Height = imageListBuilding.ImageSize.Height + 2,// Окантовка
                 Left = Config.GRID_SIZE,
-                Top = Config.GRID_SIZE,
+                Top = GuiUtils.NextTop(lblName)
             };
 
             btnBuy = new Button()
@@ -91,6 +103,8 @@ namespace Fantasy_King_s_Battle
 
             Height = lblIncome.Top + lblIncome.Height + (Config.GRID_SIZE * 2);
             Width = btnBuy.Left + btnBuy.Width + Config.GRID_SIZE;
+
+            lblName.Width = Width - (Config.GRID_SIZE * 2) - 2;
         }
 
         private void BtnLevelUp_Click(object sender, EventArgs e)
@@ -130,6 +144,7 @@ namespace Fantasy_King_s_Battle
 
         internal void UpdateData()
         {
+            lblName.Text = building.Building.Name;
             lblIncome.Text = "+" + building.Income().ToString();
 
             if (building.Level > 0)
