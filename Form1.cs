@@ -78,6 +78,16 @@ namespace Fantasy_King_s_Battle
         private PlayerItem itemForDrag;// Предмет для переноса. Отдельно его храним, так как если он один, в ячейке он не остается
         private PlayerItem itemTempForDrag;// Предмет для временного хранения одного экземпляра предмета при переносе
 
+        private readonly Bitmap background;
+        private readonly List<PanelControls> pages = new List<PanelControls>();
+        private readonly PanelControls pageLobby;
+        private readonly PanelControls pageGuilds;
+        private readonly PanelControls pageBuildings;
+        private readonly PanelControls pageTemples;
+        private readonly PanelControls pageHeroes;
+        private readonly PanelControls pageBattle;
+        private PanelControls currentPage;
+
         private List<PictureBox> SlotSkill = new List<PictureBox>();
 
         public FormMain()
@@ -102,7 +112,7 @@ namespace Fantasy_King_s_Battle
 
             // Подготавливаем иконки
             ilFractions = PrepareImageList("Fractions.png", 78, 52, true);
-            
+
             ilSkills = PrepareImageList("Skills.png", 82, 94, false);
             ilResultBattle = PrepareImageList("ResultBattle52.png", 45, 52, false);
             ilTypeBattle = PrepareImageList("TypeBattle52.png", 52, 52, false);
@@ -113,6 +123,9 @@ namespace Fantasy_King_s_Battle
             ilGui16 = PrepareImageList("Gui16.png", 16, 16, false);
             ilParameters = PrepareImageList("Parameters.png", 24, 24, false);
             ilItems = PrepareImageList("Items.png", 48, 48, false);
+
+            background = new Bitmap(dirResources + "Icons\\Background.png");
+            BackgroundImage = background;
 
             //    
             lobby = new Lobby(8);
@@ -134,7 +147,26 @@ namespace Fantasy_King_s_Battle
                 AutoSize = false,
                 Width = 100
             };
+            StatusLabelGold.Font = new Font(StatusLabelGold.Font, FontStyle.Bold);
             StatusStrip.Items.Add(StatusLabelGold);
+
+            pageLobby = PreparePanel();
+            pageGuilds = PreparePanel();
+            pageBuildings = PreparePanel();
+            pageTemples = PreparePanel();
+            pageHeroes = PreparePanel();
+            pageBattle = PreparePanel();
+            pages.Add(pageLobby);
+            pages.Add(pageGuilds);
+            pages.Add(pageBuildings);
+            pages.Add(pageTemples);
+            pages.Add(pageHeroes);
+            pages.Add(pageBattle);
+
+            PanelControls PreparePanel()
+            {
+                return new PanelControls(this, Config.GRID_SIZE, GuiUtils.NextTop(tabControl1));
+            }
 
             // Создаем панели игроков
             PanelAboutPlayer pap;
@@ -143,13 +175,14 @@ namespace Fantasy_King_s_Battle
             {
                 pap = new PanelAboutPlayer(p, ilFractions, ilResultBattle, ilTypeBattle)
                 {
-                    Parent = tabPageLobby,
                     Top = top
                 };
+                pageLobby.AddControl(pap);
 
                 p.PanelAbout = pap;
                 top += pap.Height + Config.GRID_SIZE;
             }
+
 
             //
             tabControl1.ImageList = ilGui;
@@ -171,6 +204,8 @@ namespace Fantasy_King_s_Battle
             DrawWarehouse();
 
             ShowDataPlayer();
+
+            ActivatePage(pageLobby);
         }
 
         internal static Config Config { get; set; }
@@ -267,13 +302,13 @@ namespace Fantasy_King_s_Battle
 
         private void ShowLobby()
         {
-            foreach(Player p in lobby.Players)
+            foreach (Player p in lobby.Players)
             {
                 p.PanelAbout.ShowData();
             }
         }
 
-        private void DrawPageBuilding(Control parent, CategoryBuilding category)
+        private void DrawPageBuilding(PanelControls panel, CategoryBuilding category)
         {
             int top = Config.GRID_SIZE;
             int left;
@@ -287,7 +322,8 @@ namespace Fantasy_King_s_Battle
                 {
                     if ((b.CategoryBuilding == category) && (b.Line == line))
                     {
-                        b.Panel = new PanelBuilding(parent, left, top, this);
+                        b.Panel = new PanelBuilding(this, left, top, this);
+                        panel.AddControl(b.Panel);
 
                         left += b.Panel.Width + Config.GRID_SIZE;
                         height = b.Panel.Height;
@@ -300,7 +336,7 @@ namespace Fantasy_King_s_Battle
 
         private void DrawGuilds()
         {
-            DrawPageBuilding(tabPageGuilds, CategoryBuilding.Guild);
+            DrawPageBuilding(pageGuilds, CategoryBuilding.Guild);
         }
 
         private void ShowGuilds()
@@ -314,7 +350,7 @@ namespace Fantasy_King_s_Battle
 
         private void DrawBuildings()
         {
-            DrawPageBuilding(tabPageBuildings, CategoryBuilding.Castle);
+            DrawPageBuilding(pageBuildings, CategoryBuilding.Castle);
         }
 
         private void ShowBuildings()
@@ -327,7 +363,7 @@ namespace Fantasy_King_s_Battle
 
         private void DrawTemples()
         {
-            DrawPageBuilding(tabPageTemples, CategoryBuilding.Temple);
+            DrawPageBuilding(pageTemples, CategoryBuilding.Temple);
         }
 
         private void ShowTemples()
@@ -352,10 +388,8 @@ namespace Fantasy_King_s_Battle
                 {
                     if (ph.Panel == null)
                     {
-                        ph.Panel = new PanelHero(ph, left, top, ilGuiHeroes, ilGui)
-                        {
-                            Parent = tabPageHeroes
-                        };
+                        ph.Panel = new PanelHero(ph, left, top, ilGuiHeroes, ilGui);
+                        pageHeroes.AddControl(ph.Panel);
                         ph.Panel.Click += PanelHero_Click;
                     }
                     else
@@ -391,9 +425,9 @@ namespace Fantasy_King_s_Battle
                 panelHeroInfo = new PanelHeroInfo(ilHeroes, ilParameters, ilItems)
                 {
                     Left = 632,
-                    Top = Config.GRID_SIZE,
-                    Parent = tabPageHeroes
+                    Top = Config.GRID_SIZE
                 };
+                pageHeroes.AddControl(panelHeroInfo);
 
                 for (int i = 0; i < panelHeroInfo.slots.Length; i++)
                 {
@@ -436,19 +470,18 @@ namespace Fantasy_King_s_Battle
         {
             picBoxItemForDrag = new PictureBox()
             {
-                Parent = tabPageHeroes,
                 Size = ilItems.ImageSize,
-                Visible = false,
-                Name = "PB_For_Drag"
+                Visible = false
             };
+            pageHeroes.AddControl(picBoxItemForDrag);
 
             panelWarehouse = new Panel()
             {
-                Parent = tabPageHeroes,
                 BorderStyle = BorderStyle.FixedSingle,
                 Left = 0,
                 Top = 400
             };
+            pageHeroes.AddControl(panelWarehouse);
 
             PanelItem pi;
 
@@ -484,9 +517,9 @@ namespace Fantasy_King_s_Battle
                 panelHeroInfo = new PanelHeroInfo(ilHeroes, ilParameters, ilItems)
                 {
                     Left = 600,
-                    Top = Config.GRID_SIZE,
-                    Parent = tabPageHeroes
+                    Top = Config.GRID_SIZE
                 };
+                pageHeroes.AddControl(panelHeroInfo);
 
                 for (int i = 0; i < panelHeroInfo.slots.Length; i++)
                 {
@@ -814,6 +847,20 @@ namespace Fantasy_King_s_Battle
             }
 
             EndDrag();
+        }
+        private void tabControl1_Selected(object sender, TabControlEventArgs e)
+        {
+            ActivatePage(pages[e.TabPageIndex]);
+        }
+
+        private void ActivatePage(PanelControls pc)
+        {
+            if (currentPage != null)
+                currentPage.SetVisible(false);
+            pc.SetVisible(true);
+            currentPage = pc;
+
+            //Invalidate();
         }
     }
 }

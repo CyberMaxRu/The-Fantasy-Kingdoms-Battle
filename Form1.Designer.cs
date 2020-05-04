@@ -45,7 +45,7 @@
             // 
             // StatusStrip
             // 
-            this.StatusStrip.Location = new System.Drawing.Point(0, 747);
+            this.StatusStrip.Location = new System.Drawing.Point(0, 775);
             this.StatusStrip.Name = "StatusStrip";
             this.StatusStrip.ShowItemToolTips = true;
             this.StatusStrip.Size = new System.Drawing.Size(979, 22);
@@ -66,8 +66,9 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.ShowToolTips = true;
-            this.tabControl1.Size = new System.Drawing.Size(960, 696);
+            this.tabControl1.Size = new System.Drawing.Size(960, 60);
             this.tabControl1.TabIndex = 1;
+            this.tabControl1.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl1_Selected);
             // 
             // tabPageLobby
             // 
@@ -75,7 +76,7 @@
             this.tabPageLobby.Location = new System.Drawing.Point(4, 25);
             this.tabPageLobby.Name = "tabPageLobby";
             this.tabPageLobby.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageLobby.Size = new System.Drawing.Size(952, 667);
+            this.tabPageLobby.Size = new System.Drawing.Size(952, 31);
             this.tabPageLobby.TabIndex = 0;
             this.tabPageLobby.Text = "Лобби";
             this.tabPageLobby.ToolTipText = "Лобби";
@@ -85,7 +86,7 @@
             // 
             this.tabPageGuilds.Location = new System.Drawing.Point(4, 25);
             this.tabPageGuilds.Name = "tabPageGuilds";
-            this.tabPageGuilds.Size = new System.Drawing.Size(952, 667);
+            this.tabPageGuilds.Size = new System.Drawing.Size(952, 31);
             this.tabPageGuilds.TabIndex = 6;
             this.tabPageGuilds.Text = "Гильдии";
             this.tabPageGuilds.ToolTipText = "Гильдии";
@@ -95,7 +96,7 @@
             // 
             this.tabPageBuildings.Location = new System.Drawing.Point(4, 25);
             this.tabPageBuildings.Name = "tabPageBuildings";
-            this.tabPageBuildings.Size = new System.Drawing.Size(952, 667);
+            this.tabPageBuildings.Size = new System.Drawing.Size(952, 31);
             this.tabPageBuildings.TabIndex = 2;
             this.tabPageBuildings.Text = "Здания";
             this.tabPageBuildings.ToolTipText = "Экономические и прочие здания";
@@ -105,7 +106,7 @@
             // 
             this.tabPageTemples.Location = new System.Drawing.Point(4, 25);
             this.tabPageTemples.Name = "tabPageTemples";
-            this.tabPageTemples.Size = new System.Drawing.Size(952, 667);
+            this.tabPageTemples.Size = new System.Drawing.Size(952, 31);
             this.tabPageTemples.TabIndex = 7;
             this.tabPageTemples.Text = "Храмы";
             this.tabPageTemples.ToolTipText = "Храмы";
@@ -115,7 +116,7 @@
             // 
             this.tabPageHeroes.Location = new System.Drawing.Point(4, 25);
             this.tabPageHeroes.Name = "tabPageHeroes";
-            this.tabPageHeroes.Size = new System.Drawing.Size(952, 667);
+            this.tabPageHeroes.Size = new System.Drawing.Size(952, 31);
             this.tabPageHeroes.TabIndex = 3;
             this.tabPageHeroes.Text = "Герои";
             this.tabPageHeroes.ToolTipText = "Герои";
@@ -126,7 +127,7 @@
             this.tabPageBattle.Controls.Add(this.textBoxResultBattle);
             this.tabPageBattle.Location = new System.Drawing.Point(4, 25);
             this.tabPageBattle.Name = "tabPageBattle";
-            this.tabPageBattle.Size = new System.Drawing.Size(952, 667);
+            this.tabPageBattle.Size = new System.Drawing.Size(952, 31);
             this.tabPageBattle.TabIndex = 5;
             this.tabPageBattle.Text = "Сражение";
             this.tabPageBattle.ToolTipText = "Сражение";
@@ -143,7 +144,7 @@
             // ButtonEndTurn
             // 
             this.ButtonEndTurn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonEndTurn.Location = new System.Drawing.Point(832, 24);
+            this.ButtonEndTurn.Location = new System.Drawing.Point(844, 1);
             this.ButtonEndTurn.Name = "ButtonEndTurn";
             this.ButtonEndTurn.Size = new System.Drawing.Size(136, 48);
             this.ButtonEndTurn.TabIndex = 2;
@@ -163,7 +164,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(979, 769);
+            this.ClientSize = new System.Drawing.Size(979, 797);
             this.Controls.Add(this.ButtonEndTurn);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.StatusStrip);

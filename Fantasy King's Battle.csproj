@@ -63,6 +63,7 @@
     <Compile Include="PanelItem.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="PanelControls.cs" />
     <Compile Include="TypeItem.cs" />
     <Compile Include="ItemSmithy.cs" />
     <Compile Include="Level.cs" />
@@ -100,6 +101,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

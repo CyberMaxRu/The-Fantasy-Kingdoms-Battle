@@ -10,7 +10,7 @@ using System.Diagnostics;
 namespace Fantasy_King_s_Battle
 {
     // Класс панели здания
-    internal sealed class PanelBuilding : Panel
+    internal sealed class PanelBuilding : Control
     {
         private readonly PictureBox pbBuilding;
         private readonly ImageList imageListBuilding;
@@ -28,7 +28,7 @@ namespace Fantasy_King_s_Battle
         public PanelBuilding(Control parent, int left, int top, FormMain formMain)
         {
             Parent = parent;
-            BorderStyle = BorderStyle.FixedSingle;
+            //BorderStyle = BorderStyle.FixedSingle;
             imageListBuilding = formMain.ilBuildings;
             imageListGui = formMain.ilGui;
             imageListGuiHeroes = formMain.ilGuiHeroes;
