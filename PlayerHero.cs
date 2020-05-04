@@ -81,7 +81,12 @@ namespace Fantasy_King_s_Battle
             // Ищем пустой слот, разрешенный для такого типа предметов
             for (int i = 0; i < Slots.Length; i++)
             {
-                if ((Slots[i] == null) && (Hero.Slots[i].TypeItem == item.TypeItem))
+                if (item.TypeItem.Single == true)
+                {
+                    if (Hero.Slots[i].TypeItem == item.TypeItem)
+                        return i;
+                }
+                else if ((Slots[i] == null) && (Hero.Slots[i].TypeItem == item.TypeItem))
                     return i;
             }
 
