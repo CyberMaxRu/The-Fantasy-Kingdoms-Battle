@@ -525,7 +525,7 @@ namespace Fantasy_King_s_Battle
             {
                 panelHeroInfo = new PanelHeroInfo(ilHeroes, ilParameters, ilItems)
                 {
-                    Left = 568,
+                    Left = 600,
                     Top = Config.GRID_SIZE,
                     Parent = tabPageHeroes
                 };
@@ -649,12 +649,9 @@ namespace Fantasy_King_s_Battle
 
         private void EndDrag()
         {
-            Debug.Assert(picBoxItemForDrag.Visible == true);
-            Debug.Assert(panelItemForDrag != null);
-            Debug.Assert(itemForDrag != null);
-            Debug.Assert(itemTempForDrag != null);
-
-            picBoxItemForDrag.Hide();
+            // Если пользователь нажал и отпустил кнопку, то иконка предмета не отобразилась
+            if (picBoxItemForDrag.Visible == true)
+                picBoxItemForDrag.Hide();
 
             placeItemForDrag = PlaceItemForDrag.None;
             panelItemForDrag = null;
