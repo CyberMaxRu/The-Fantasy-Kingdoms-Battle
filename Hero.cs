@@ -24,6 +24,9 @@ namespace Fantasy_King_s_Battle
 
             if ((TypeItem.Required == false) && (DefaultItem != null))
                 throw new Exception("У слота " + Pos.ToString() + " " + h.ID + " указано дефолтное значение.");
+
+            if ((DefaultItem != null) && (DefaultItem.TypeItem != TypeItem))
+                throw new Exception("У слота " + Pos.ToString() + " " + h.ID + " у дефолтного предмета несовместимый тип.");
         }
 
         internal int Pos { get; }
