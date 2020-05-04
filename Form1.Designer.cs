@@ -144,7 +144,7 @@
             // ButtonEndTurn
             // 
             this.ButtonEndTurn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonEndTurn.Location = new System.Drawing.Point(844, 1);
+            this.ButtonEndTurn.Location = new System.Drawing.Point(844, 24);
             this.ButtonEndTurn.Name = "ButtonEndTurn";
             this.ButtonEndTurn.Size = new System.Drawing.Size(136, 48);
             this.ButtonEndTurn.TabIndex = 2;
