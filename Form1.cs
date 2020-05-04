@@ -840,5 +840,22 @@ namespace Fantasy_King_s_Battle
         {
             return new Point(panelWarehouse.Left + panelItemForDrag.Left + locationMouse.X, panelWarehouse.Top + panelItemForDrag.Top + locationMouse.Y);
         }
+
+        private void FormMain_Deactivate(object sender, EventArgs e)
+        {
+            switch (placeItemForDrag)
+            {
+                case PlaceItemForDrag.Warehouse:
+                    lobby.CurrentPlayer.AddItem(itemTempForDrag, panelItemForDrag.NumberCell);
+                    ShowWarehouse();
+                    break;
+                case PlaceItemForDrag.Hero:
+                    lobby.CurrentPlayer.AddItem(itemTempForDrag, panelItemForDrag.NumberCell);
+                    panelHeroInfo.RefreshHero();
+                    break;
+            }
+
+            EndDrag();
+        }
     }
 }

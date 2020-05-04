@@ -175,6 +175,7 @@
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fantasy King\'s Battle prototype";
+            this.Deactivate += new System.EventHandler(this.FormMain_Deactivate);
             this.tabControl1.ResumeLayout(false);
             this.tabPageBattle.ResumeLayout(false);
             this.tabPageBattle.PerformLayout();
