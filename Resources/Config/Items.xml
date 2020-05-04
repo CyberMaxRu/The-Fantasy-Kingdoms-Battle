@@ -81,7 +81,7 @@
     <Perk></Perk>
   </Item>
   <Item>
-    <ID>ArmourRanger0</ID>
+    <ID>ArmourArcher0</ID>
     <Name>Простая кожаная броня</Name>
     <ImageIndex>25</ImageIndex>
     <TypeItem>ArmourArcher</TypeItem>
@@ -145,6 +145,46 @@
     <Name>Мастерская стальная броня</Name>
     <ImageIndex>22</ImageIndex>
     <TypeItem>ArmourWarrior</TypeItem>
+    <Building>Smithy</Building>
+    <CostExamine>0</CostExamine>
+    <Cost>0</Cost>
+    <Perk></Perk>
+  </Item>
+  <Item>
+    <ID>Bow1</ID>
+    <Name>Улучшенное стрелковое оружие</Name>
+    <ImageIndex>11</ImageIndex>
+    <TypeItem>WeaponArcher</TypeItem>
+    <Building>Smithy</Building>
+    <CostExamine>0</CostExamine>
+    <Cost>0</Cost>
+    <Perk></Perk>
+  </Item>
+  <Item>
+    <ID>ArmourArcher1</ID>
+    <Name>Улучшенная кожаная броня</Name>
+    <ImageIndex>26</ImageIndex>
+    <TypeItem>ArmourArcher</TypeItem>
+    <Building>Smithy</Building>
+    <CostExamine>0</CostExamine>
+    <Cost>0</Cost>
+    <Perk></Perk>
+  </Item>
+  <Item>
+    <ID>Bow2</ID>
+    <Name>Мастерское стрелковое оружие</Name>
+    <ImageIndex>12</ImageIndex>
+    <TypeItem>WeaponArcher</TypeItem>
+    <Building>Smithy</Building>
+    <CostExamine>0</CostExamine>
+    <Cost>0</Cost>
+    <Perk></Perk>
+  </Item>
+  <Item>
+    <ID>ArmourArcher2</ID>
+    <Name>Мастерская кожаная броня</Name>
+    <ImageIndex>27</ImageIndex>
+    <TypeItem>ArmourArcher</TypeItem>
     <Building>Smithy</Building>
     <CostExamine>0</CostExamine>
     <Cost>0</Cost>

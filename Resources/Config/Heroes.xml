@@ -70,7 +70,7 @@
         <Pos>2</Pos>
         <TypeItem>ArmourArcher</TypeItem>
         <MaxQuantity>1</MaxQuantity>
-        <DefaultItem>ArmourRanger0</DefaultItem>
+        <DefaultItem>ArmourArcher0</DefaultItem>
       </Slot>
       <Slot>
         <Pos>3</Pos>
@@ -122,7 +122,7 @@
         <Pos>2</Pos>
         <TypeItem>ArmourArcher</TypeItem>
         <MaxQuantity>1</MaxQuantity>
-        <DefaultItem>ArmourRanger0</DefaultItem>
+        <DefaultItem>ArmourArcher0</DefaultItem>
       </Slot>
       <Slot>
         <Pos>3</Pos>
@@ -278,7 +278,7 @@
         <Pos>2</Pos>
         <TypeItem>ArmourArcher</TypeItem>
         <MaxQuantity>1</MaxQuantity>
-        <DefaultItem>ArmourRanger0</DefaultItem>
+        <DefaultItem>ArmourArcher0</DefaultItem>
       </Slot>
       <Slot>
         <Pos>3</Pos>

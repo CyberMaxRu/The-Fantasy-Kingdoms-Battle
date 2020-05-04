@@ -47,8 +47,12 @@ namespace Fantasy_King_s_Battle
             //
             AddItem(new PlayerItem(FormMain.Config.FindItem("Sword1"), 4));
             AddItem(new PlayerItem(FormMain.Config.FindItem("Sword2"), 4));
+            AddItem(new PlayerItem(FormMain.Config.FindItem("Bow1"), 4));
+            AddItem(new PlayerItem(FormMain.Config.FindItem("Bow2"), 4));
             AddItem(new PlayerItem(FormMain.Config.FindItem("ArmourWarrior1"), 4));
             AddItem(new PlayerItem(FormMain.Config.FindItem("ArmourWarrior2"), 4));
+            AddItem(new PlayerItem(FormMain.Config.FindItem("ArmourArcher1"), 4));
+            AddItem(new PlayerItem(FormMain.Config.FindItem("ArmourArcher2"), 4));
             AddItem(new PlayerItem(FormMain.Config.FindItem("PotionOfHealth"), 10));
             AddItem(new PlayerItem(FormMain.Config.FindItem("PotionOfHealth"), 10));
             AddItem(new PlayerItem(FormMain.Config.FindItem("PotionOfMana"), 10));
