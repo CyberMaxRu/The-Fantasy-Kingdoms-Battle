@@ -1,13 +1,37 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TypeItems>
   <TypeItem>
-    <ID>Weapon</ID>
+    <ID>WeaponWarrior</ID>
     <Category>Thing</Category>
     <Required>True</Required>
     <Single>True</Single>
   </TypeItem>
   <TypeItem>
-    <ID>Armour</ID>
+    <ID>WeaponArcher</ID>
+    <Category>Thing</Category>
+    <Required>True</Required>
+    <Single>True</Single>
+  </TypeItem>
+  <TypeItem>
+    <ID>WeaponMage</ID>
+    <Category>Thing</Category>
+    <Required>True</Required>
+    <Single>True</Single>
+  </TypeItem>
+  <TypeItem>
+    <ID>ArmourWarrior</ID>
+    <Category>Thing</Category>
+    <Required>True</Required>
+    <Single>True</Single>
+  </TypeItem>
+  <TypeItem>
+    <ID>ArmourArcher</ID>
+    <Category>Thing</Category>
+    <Required>True</Required>
+    <Single>True</Single>
+  </TypeItem>
+  <TypeItem>
+    <ID>ArmourMage</ID>
     <Category>Thing</Category>
     <Required>True</Required>
     <Single>True</Single>

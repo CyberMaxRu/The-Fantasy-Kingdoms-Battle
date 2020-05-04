@@ -54,7 +54,7 @@
     <ID>Sword0</ID>
     <Name>Простое рукопашное оружие</Name>
     <ImageIndex>5</ImageIndex>
-    <TypeItem>Weapon</TypeItem>
+    <TypeItem>WeaponWarrior</TypeItem>
     <Building>Smithy</Building>
     <CostExamine>0</CostExamine>
     <Cost>0</Cost>
@@ -64,7 +64,7 @@
     <ID>ArmourWarrior0</ID>
     <Name>Простая стальная броня</Name>
     <ImageIndex>20</ImageIndex>
-    <TypeItem>Armour</TypeItem>
+    <TypeItem>ArmourWarrior</TypeItem>
     <Building>Smithy</Building>
     <CostExamine>0</CostExamine>
     <Cost>0</Cost>
@@ -74,7 +74,7 @@
     <ID>Bow0</ID>
     <Name>Простое стрелковое оружие</Name>
     <ImageIndex>10</ImageIndex>
-    <TypeItem>Weapon</TypeItem>
+    <TypeItem>WeaponArcher</TypeItem>
     <Building>Smithy</Building>
     <CostExamine>0</CostExamine>
     <Cost>0</Cost>
@@ -84,7 +84,7 @@
     <ID>ArmourRanger0</ID>
     <Name>Простая кожаная броня</Name>
     <ImageIndex>25</ImageIndex>
-    <TypeItem>Armour</TypeItem>
+    <TypeItem>ArmourArcher</TypeItem>
     <Building>Smithy</Building>
     <CostExamine>0</CostExamine>
     <Cost>0</Cost>
@@ -94,7 +94,7 @@
     <ID>Staff0</ID>
     <Name>Простое магическое оружие</Name>
     <ImageIndex>15</ImageIndex>
-    <TypeItem>Weapon</TypeItem>
+    <TypeItem>WeaponMage</TypeItem>
     <Building>Smithy</Building>
     <CostExamine>0</CostExamine>
     <Cost>0</Cost>
@@ -104,7 +104,7 @@
     <ID>ArmourMage0</ID>
     <Name>Простая роба</Name>
     <ImageIndex>30</ImageIndex>
-    <TypeItem>Armour</TypeItem>
+    <TypeItem>ArmourMage</TypeItem>
     <Building>Smithy</Building>
     <CostExamine>0</CostExamine>
     <Cost>0</Cost>
@@ -114,7 +114,7 @@
     <ID>Sword1</ID>
     <Name>Улучшенное рукопашное оружие</Name>
     <ImageIndex>6</ImageIndex>
-    <TypeItem>Weapon</TypeItem>
+    <TypeItem>WeaponWarrior</TypeItem>
     <Building>Smithy</Building>
     <CostExamine>0</CostExamine>
     <Cost>0</Cost>
@@ -124,7 +124,7 @@
     <ID>ArmourWarrior1</ID>
     <Name>Улучшенная стальная броня</Name>
     <ImageIndex>21</ImageIndex>
-    <TypeItem>Armour</TypeItem>
+    <TypeItem>ArmourWarrior</TypeItem>
     <Building>Smithy</Building>
     <CostExamine>0</CostExamine>
     <Cost>0</Cost>
@@ -134,7 +134,7 @@
     <ID>Sword2</ID>
     <Name>Мастерское рукопашное оружие</Name>
     <ImageIndex>7</ImageIndex>
-    <TypeItem>Weapon</TypeItem>
+    <TypeItem>WeaponWarrior</TypeItem>
     <Building>Smithy</Building>
     <CostExamine>0</CostExamine>
     <Cost>0</Cost>
@@ -144,7 +144,7 @@
     <ID>ArmourWarrior2</ID>
     <Name>Мастерская стальная броня</Name>
     <ImageIndex>22</ImageIndex>
-    <TypeItem>Armour</TypeItem>
+    <TypeItem>ArmourWarrior</TypeItem>
     <Building>Smithy</Building>
     <CostExamine>0</CostExamine>
     <Cost>0</Cost>

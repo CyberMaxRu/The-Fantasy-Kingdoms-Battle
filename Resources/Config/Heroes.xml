@@ -10,13 +10,13 @@
     <Slots>
       <Slot>
         <Pos>1</Pos>
-        <TypeItem>Weapon</TypeItem>
+        <TypeItem>WeaponWarrior</TypeItem>
         <MaxQuantity>1</MaxQuantity>
         <DefaultItem>Sword0</DefaultItem>
       </Slot>
       <Slot>
         <Pos>2</Pos>
-        <TypeItem>Armour</TypeItem>
+        <TypeItem>ArmourWarrior</TypeItem>
         <MaxQuantity>1</MaxQuantity>
         <DefaultItem>ArmourWarrior0</DefaultItem>
       </Slot>
@@ -62,13 +62,13 @@
     <Slots>
       <Slot>
         <Pos>1</Pos>
-        <TypeItem>Weapon</TypeItem>
+        <TypeItem>WeaponWarrior</TypeItem>
         <MaxQuantity>1</MaxQuantity>
         <DefaultItem>Sword0</DefaultItem>
       </Slot>
       <Slot>
         <Pos>2</Pos>
-        <TypeItem>Armour</TypeItem>
+        <TypeItem>ArmourArcher</TypeItem>
         <MaxQuantity>1</MaxQuantity>
         <DefaultItem>ArmourRanger0</DefaultItem>
       </Slot>
@@ -114,13 +114,13 @@
     <Slots>
       <Slot>
         <Pos>1</Pos>
-        <TypeItem>Weapon</TypeItem>
+        <TypeItem>WeaponArcher</TypeItem>
         <MaxQuantity>1</MaxQuantity>
         <DefaultItem>Bow0</DefaultItem>
       </Slot>
       <Slot>
         <Pos>2</Pos>
-        <TypeItem>Armour</TypeItem>
+        <TypeItem>ArmourArcher</TypeItem>
         <MaxQuantity>1</MaxQuantity>
         <DefaultItem>ArmourRanger0</DefaultItem>
       </Slot>
@@ -166,13 +166,13 @@
     <Slots>
       <Slot>
         <Pos>1</Pos>
-        <TypeItem>Weapon</TypeItem>
+        <TypeItem>WeaponMage</TypeItem>
         <MaxQuantity>1</MaxQuantity>
         <DefaultItem>Staff0</DefaultItem>
       </Slot>
       <Slot>
         <Pos>2</Pos>
-        <TypeItem>Armour</TypeItem>
+        <TypeItem>ArmourMage</TypeItem>
         <MaxQuantity>1</MaxQuantity>
         <DefaultItem>ArmourMage0</DefaultItem>
       </Slot>
@@ -218,13 +218,13 @@
     <Slots>
       <Slot>
         <Pos>1</Pos>
-        <TypeItem>Weapon</TypeItem>
+        <TypeItem>WeaponMage</TypeItem>
         <MaxQuantity>1</MaxQuantity>
         <DefaultItem>Staff0</DefaultItem>
       </Slot>
       <Slot>
         <Pos>2</Pos>
-        <TypeItem>Armour</TypeItem>
+        <TypeItem>ArmourMage</TypeItem>
         <MaxQuantity>1</MaxQuantity>
         <DefaultItem>ArmourMage0</DefaultItem>
       </Slot>
@@ -270,13 +270,13 @@
     <Slots>
       <Slot>
         <Pos>1</Pos>
-        <TypeItem>Weapon</TypeItem>
+        <TypeItem>WeaponArcher</TypeItem>
         <MaxQuantity>1</MaxQuantity>
         <DefaultItem>Bow0</DefaultItem>
       </Slot>
       <Slot>
         <Pos>2</Pos>
-        <TypeItem>Armour</TypeItem>
+        <TypeItem>ArmourArcher</TypeItem>
         <MaxQuantity>1</MaxQuantity>
         <DefaultItem>ArmourRanger0</DefaultItem>
       </Slot>
@@ -322,13 +322,13 @@
     <Slots>
       <Slot>
         <Pos>1</Pos>
-        <TypeItem>Weapon</TypeItem>
+        <TypeItem>WeaponWarrior</TypeItem>
         <MaxQuantity>1</MaxQuantity>
         <DefaultItem>Sword0</DefaultItem>
       </Slot>
       <Slot>
         <Pos>2</Pos>
-        <TypeItem>Armour</TypeItem>
+        <TypeItem>ArmourWarrior</TypeItem>
         <MaxQuantity>1</MaxQuantity>
         <DefaultItem>ArmourWarrior0</DefaultItem>
       </Slot>
