@@ -48,6 +48,9 @@ namespace Fantasy_King_s_Battle
             Building.TrainedHero = this;
             MaxLevel = Convert.ToInt32(n.SelectSingleNode("MaxLevel").InnerText);
 
+            Debug.Assert(Cost > 0);
+            Debug.Assert(MaxLevel > 0);
+
             // Проверяем, что таких же ID и наименования нет
             foreach (Hero h in FormMain.Config.Heroes)
             {
