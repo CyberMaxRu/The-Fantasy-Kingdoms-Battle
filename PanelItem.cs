@@ -12,8 +12,12 @@ namespace Fantasy_King_s_Battle
     // Класс ячейки с предметами
     internal sealed class PanelItem : PictureBox
     {
-        private readonly Label lblQuantity;
         private readonly ImageList imageListItems;
+        private readonly Font fontQuantity = new Font("Courier New", 11, FontStyle.Bold);
+        private readonly Brush brQuantity = new SolidBrush(Color.Yellow);
+        private Point pointQuantity;
+        private PlayerItem playerItem;
+        private string quantity;
 
         public PanelItem(Control parent, ImageList ilItems, int numberCell)
         {
@@ -27,43 +31,26 @@ namespace Fantasy_King_s_Battle
             Width = imageListItems.ImageSize.Width + 2;
             Height = imageListItems.ImageSize.Height + 2;
 
-            lblQuantity = new Label()
+            Paint += PanelItem_Paint;
+
+            pointQuantity = new Point(2, Height - 16);
+        }
+
+        private void PanelItem_Paint(object sender, PaintEventArgs e)
+        {
+            if ((playerItem != null) && (playerItem.Quantity > 1))
             {
-                Parent = this,
-                AutoSize = false,
-                Left = 2,
-                Top = Height - 20,
-                Height = 16,
-                Width = Width - 4,
-                BackColor = Color.Transparent,
-                ForeColor = Color.FromKnownColor(KnownColor.White),
-                TextAlign = ContentAlignment.MiddleRight
-            };
-            lblQuantity.Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold);
+                quantity = playerItem.Quantity.ToString();
+                pointQuantity.X = Width - (quantity.Length * 9) - 6;
+                e.Graphics.DrawString(quantity, fontQuantity, brQuantity, pointQuantity);
+            }
         }
 
         internal int NumberCell { get; }
         internal void ShowItem(PlayerItem pi)
         {
-            if (pi != null)
-            {
-                Debug.Assert(pi.Quantity > 0);
-
-                Image = imageListItems.Images[pi.Item.ImageIndex];
-
-                if (pi.Quantity > 1)
-                {
-                    lblQuantity.Show();
-                    lblQuantity.Text = pi.Quantity.ToString();
-                }
-                else
-                    lblQuantity.Hide();
-            }
-            else
-            {
-                Image = null;
-                lblQuantity.Hide();
-            }
+            playerItem = pi;
+            Image = pi != null ? imageListItems.Images[pi.Item.ImageIndex] : null;
         }
     }
 }
