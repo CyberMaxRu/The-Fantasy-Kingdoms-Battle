@@ -21,6 +21,7 @@ namespace Fantasy_King_s_Battle
         internal Player Player { get; }
         internal Building Building { get; }
         internal int Level { get; private set; }
+        internal List<PlayerHero> Heroes { get; } = new List<PlayerHero>();
 
         internal void UpdatePanel()
         {
@@ -59,6 +60,27 @@ namespace Fantasy_King_s_Battle
         internal int Income()
         {
             return Level > 0 ? Building.Levels[Level].Income : 0;
+        }
+
+        internal PlayerHero HireHero()
+        {
+            Debug.Assert(Heroes.Count < Building.MaxHeroes);
+            Debug.Assert(Player.Heroes.Count < FormMain.MAX_HEROES_AT_PLAYER);
+
+            PlayerHero h = new PlayerHero(this);
+            Heroes.Add(h);
+            Player.Heroes.Add(h);
+
+            return h;
+        }
+
+        internal bool CanTrainHero()
+        {
+            Debug.Assert(Level > 0);
+            Debug.Assert(Heroes.Count <= Building.MaxHeroes);
+            Debug.Assert(Player.Heroes.Count <= FormMain.MAX_HEROES_AT_PLAYER);
+
+            return (Heroes.Count < Building.MaxHeroes) && (Player.Heroes.Count < FormMain.MAX_HEROES_AT_PLAYER);
         }
     }
 }

@@ -10,10 +10,10 @@ namespace Fantasy_King_s_Battle
     // Класс героя игрока
     internal sealed class PlayerHero
     {
-        public PlayerHero(PlayerGuild pg)
+        public PlayerHero(PlayerBuilding pb)
         {
-            Guild = pg;
-            Hero = Guild.Guild.TrainedHero;
+            Building = pb;
+            Hero = Building.Building.TrainedHero;
             Level = 1;
 
             for (int i = 0; i < Hero.Slots.Length; i++)
@@ -25,7 +25,7 @@ namespace Fantasy_King_s_Battle
             }
         }
 
-        internal PlayerGuild Guild { get; }        
+        internal PlayerBuilding Building { get; }        
         internal Hero Hero { get; }
         internal int Level { get; }
 
@@ -47,13 +47,13 @@ namespace Fantasy_King_s_Battle
 
         internal void Dismiss()
         {
-            Debug.Assert(Guild.Heroes.IndexOf(this) != -1);
-            Debug.Assert(Guild.Player.Heroes.IndexOf(this) != -1);
+            Debug.Assert(Building.Heroes.IndexOf(this) != -1);
+            Debug.Assert(Building.Player.Heroes.IndexOf(this) != -1);
 
-            if (Guild.Heroes.Remove(this) == false)
+            if (Building.Heroes.Remove(this) == false)
                 throw new Exception("Не смог удалить себя из списка героев гильдии.");
 
-            if (Guild.Player.Heroes.Remove(this) == false)
+            if (Building.Player.Heroes.Remove(this) == false)
                 throw new Exception("Не смог удалить себя из списка героев игрока.");
 
             if (Panel != null)
@@ -127,7 +127,7 @@ namespace Fantasy_King_s_Battle
                     {
                         // Иначе помещаем предмет на склад
                         // Если не можем поместить вещь на склад, выходим
-                        if (Guild.Player.GetItemFromHero(this, toCell) == true)
+                        if (Building.Player.GetItemFromHero(this, toCell) == true)
                             Slots[toCell] = null;
                         else
                             return;
@@ -137,7 +137,7 @@ namespace Fantasy_King_s_Battle
                 // Если разный тип предметов, то пытаемся поместить предмет на склад
                 if ((Slots[toCell] != null) && (Slots[toCell].Item != pi.Item))
                 {
-                    if (Guild.Player.GetItemFromHero(this, toCell) == true)
+                    if (Building.Player.GetItemFromHero(this, toCell) == true)
                         Slots[toCell] = null;
                     else
                         return;

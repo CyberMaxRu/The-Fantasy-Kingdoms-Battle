@@ -25,26 +25,11 @@ namespace Fantasy_King_s_Battle
             //
             XmlDocument xmlDoc;
 
-            // Загрузка конфигурации гильдий
-            xmlDoc = CreateXmlDocument("Config\\Guilds.xml");
-
-            foreach (XmlNode n in xmlDoc.SelectNodes("/Guilds/Guild"))
-            {
-                Guilds.Add(new Guild(n));
-            }
-
             // Загрузка конфигурации зданий
             xmlDoc = CreateXmlDocument("Config\\Buildings.xml");
             foreach (XmlNode n in xmlDoc.SelectNodes("/Buildings/Building"))
             {
                 Buildings.Add(new Building(n));
-            }
-
-            // Загрузка конфигурации храмов
-            xmlDoc = CreateXmlDocument("Config\\Temples.xml");
-            foreach (XmlNode n in xmlDoc.SelectNodes("/Temples/Temple"))
-            {
-                Temples.Add(new Temple(n));
             }
 
             // Загрузка типов предметов
@@ -87,14 +72,6 @@ namespace Fantasy_King_s_Battle
                 ClassesUnits.Add(new ClassUnit(n));
             }
 
-            // Загрузка типов юнитов
-            xmlDoc = CreateXmlDocument("Config\\TypeUnits.xml");
-
-            foreach (XmlNode n in xmlDoc.SelectNodes("/TypeUnits/TypeUnit"))
-            {
-                TypeUnits.Add(new TypeUnit(n));
-            }
-
             // Загрузка навыков
             xmlDoc = CreateXmlDocument("Config\\Skills.xml");
 
@@ -113,13 +90,10 @@ namespace Fantasy_King_s_Battle
         }
 
         internal string PathResources { get; }
-        internal List<Guild> Guilds { get; } = new List<Guild>();
         internal List<Building> Buildings { get; } = new List<Building>();
-        internal List<Temple> Temples { get; } = new List<Temple>();
         internal List<Hero> Heroes { get; } = new List<Hero>();
         internal List<Fraction> Fractions { get; } = new List<Fraction>();
         internal List<ClassUnit> ClassesUnits { get; } = new List<ClassUnit>();
-        internal List<TypeUnit> TypeUnits { get; } = new List<TypeUnit>();
         internal List<TypeItem> TypeItems { get; } = new List<TypeItem>();
         internal List<Item> Items { get; } = new List<Item>();
         internal List<Skill> Skills { get; } = new List<Skill>();
@@ -151,19 +125,6 @@ namespace Fantasy_King_s_Battle
             throw new Exception("Класс юнитов " + ID + " не найден.");
         }
 
-        internal TypeUnit FindTypeUnit(string ID)
-        {
-            foreach (TypeUnit tu in TypeUnits)
-            {
-                if (tu.ID == ID)
-                {
-                    return tu;
-                }
-            }
-
-            throw new Exception("Тип юнитов " + ID + " не найден.");
-        }
-
         internal Skill FindSkill(string ID)
         {
             foreach (Skill s in Skills)
@@ -177,19 +138,6 @@ namespace Fantasy_King_s_Battle
             throw new Exception("Навык " + ID + " не найден.");
         }
 
-        internal Guild FindGuild(string ID)
-        {
-            foreach (Guild g in Guilds)
-            {
-                if (g.ID == ID)
-                {
-                    return g;
-                }
-            }
-
-            throw new Exception("Гильдия " + ID + " не найдена.");
-        }
-
         internal Building FindBuilding(string ID)
         {
             foreach (Building b in Buildings)
@@ -201,17 +149,6 @@ namespace Fantasy_King_s_Battle
             }
 
             throw new Exception("Здание " + ID + " не найдено.");
-        }
-
-        internal Temple FindTemple(string ID)
-        {            
-            foreach (Temple t in Temples)
-            {
-                if (t.ID == ID)
-                    return t;
-            }
-
-            throw new Exception("Храм " + ID + " не найден.");
         }
 
         internal Hero FindHero(string ID)

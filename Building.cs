@@ -8,15 +8,22 @@ using System.Diagnostics;
 
 namespace Fantasy_King_s_Battle
 {
-    internal enum TypeBuilding { Castle, Trade, Other };
+    internal enum CategoryBuilding { Guild, Castle, Temple }
 
     // Класс здания
-    internal sealed class Building : Construction
+    internal sealed class Building
     {
-        public Building(XmlNode n) : base (n)
+        public Building(XmlNode n)
         {
-            TypeBuilding = (TypeBuilding)Enum.Parse(typeof(TypeBuilding), n.SelectSingleNode("TypeBuilding").InnerText);
+            ID = n.SelectSingleNode("ID").InnerText;
+            Name = n.SelectSingleNode("Name").InnerText;
+            ImageIndex = Convert.ToInt32(n.SelectSingleNode("ImageIndex").InnerText);
+            DefaultLevel = Convert.ToInt32(n.SelectSingleNode("DefaultLevel").InnerText);
+            MaxLevel = Convert.ToInt32(n.SelectSingleNode("MaxLevel").InnerText);
+            CategoryBuilding = (CategoryBuilding)Enum.Parse(typeof(CategoryBuilding), n.SelectSingleNode("CategoryBuilding").InnerText);
+            Line = Convert.ToInt32(n.SelectSingleNode("Line").InnerText);
             Position = FormMain.Config.Buildings.Count;
+            MaxHeroes = Convert.ToInt32(n.SelectSingleNode("MaxHeroes").InnerText);
 
             Debug.Assert(DefaultLevel >= 0);
             Debug.Assert(MaxLevel > 0);
@@ -35,10 +42,44 @@ namespace Fantasy_King_s_Battle
                 if (b.ImageIndex == ImageIndex)
                     throw new Exception("В конфигурации зданий повторяется ImageIndex = " + ImageIndex.ToString());
             }
+
+            // Загружаем информацию об уровнях
+            Levels = new Level[MaxLevel + 1];// Для упрощения работы с уровнями, добавляем 1, чтобы уровень был равен индексу в массиве
+
+            XmlNode nl = n.SelectSingleNode("Levels");
+            if (nl != null)
+            {
+                Level level;
+
+                foreach (XmlNode l in nl.SelectNodes("Level"))
+                {
+                    level = new Level(l);
+                    Debug.Assert(Levels[level.Pos] == null);
+                    Levels[level.Pos] = level;
+                }
+
+                for (int i = 1; i < Levels.Length; i++)
+                { 
+                    if (Levels[i] == null)
+                        throw new Exception("В конфигурации зданий у " + ID + " нет информации об уровне " + i.ToString());
+                }
+            }
+            else
+                throw new Exception("В конфигурации зданий у " + ID + " нет информации об уровнях. ");
         }
 
+        internal string ID { get; }
+        internal string Name { get; }
+        internal int ImageIndex { get; }
+        internal int DefaultLevel { get; }
+        internal int MaxLevel { get; }
+
+        internal Level[] Levels;
         internal int Position { get; }
-        internal TypeBuilding TypeBuilding { get; }
+        internal int MaxHeroes { get; }
+        internal Hero TrainedHero { get; set; }
+        internal CategoryBuilding CategoryBuilding { get; }
+        internal int Line { get; }
         internal PanelBuilding Panel { get; set; }
     }
 }

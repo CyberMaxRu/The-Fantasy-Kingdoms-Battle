@@ -32,7 +32,11 @@ namespace Fantasy_King_s_Battle
             Pos = Convert.ToInt32(n.SelectSingleNode("Pos").InnerText);
             Cost = Convert.ToInt32(n.SelectSingleNode("Cost").InnerText);
             Income = n.SelectSingleNode("Income").InnerText != null ? Convert.ToInt32(n.SelectSingleNode("Income").InnerText) : 0;
-            
+
+            Debug.Assert(Pos > 0);
+            Debug.Assert(Cost >= 0);
+            Debug.Assert(Income >= 0);
+
             // Загружаем требования
             XmlNode nr = n.SelectSingleNode("Requirements");
             if (nr != null)
@@ -46,7 +50,6 @@ namespace Fantasy_King_s_Battle
                         Convert.ToInt32(r.SelectSingleNode("Level").InnerText)));
                 }
             }
-
         }
 
         internal int Pos { get; }

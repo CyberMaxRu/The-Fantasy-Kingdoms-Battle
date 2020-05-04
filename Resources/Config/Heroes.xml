@@ -5,7 +5,7 @@
     <Name>Воин</Name>
     <ImageIndex>0</ImageIndex>
     <Cost>200</Cost>
-    <Guild>GuildWarrior</Guild>
+    <Building>GuildWarrior</Building>
     <MaxLevel>100</MaxLevel>
     <Slots>
       <Slot>
@@ -57,7 +57,7 @@
     <Name>Разбойница</Name>
     <ImageIndex>1</ImageIndex>
     <Cost>100</Cost>
-    <Guild>GuildRogue</Guild>
+    <Building>GuildRogue</Building>
     <MaxLevel>100</MaxLevel>
     <Slots>
       <Slot>
@@ -109,7 +109,7 @@
     <Name>Рейнджер</Name>
     <ImageIndex>2</ImageIndex>
     <Cost>150</Cost>
-    <Guild>GuildHunter</Guild>
+    <Building>GuildHunter</Building>
     <MaxLevel>100</MaxLevel>
     <Slots>
       <Slot>
@@ -161,7 +161,7 @@
     <Name>Послушница</Name>
     <ImageIndex>3</ImageIndex>
     <Cost>350</Cost>
-    <Guild>GuildCleric</Guild>
+    <Building>GuildCleric</Building>
     <MaxLevel>100</MaxLevel>
     <Slots>
       <Slot>
@@ -213,7 +213,7 @@
     <Name>Маг</Name>
     <ImageIndex>4</ImageIndex>
     <Cost>500</Cost>
-    <Guild>GuildMage</Guild>
+    <Building>GuildMage</Building>
     <MaxLevel>100</MaxLevel>
     <Slots>
       <Slot>
@@ -265,7 +265,7 @@
     <Name>Эльфийка</Name>
     <ImageIndex>5</ImageIndex>
     <Cost>700</Cost>
-    <Guild>GuildElf</Guild>
+    <Building>GuildElf</Building>
     <MaxLevel>100</MaxLevel>
     <Slots>
       <Slot>
@@ -317,7 +317,7 @@
     <Name>Гном</Name>
     <ImageIndex>6</ImageIndex>
     <Cost>700</Cost>
-    <Guild>GuildDwarf</Guild>
+    <Building>GuildDwarf</Building>
     <MaxLevel>100</MaxLevel>
     <Slots>
       <Slot>

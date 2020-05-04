@@ -20,7 +20,7 @@ namespace Fantasy_King_s_Battle
             Building = FormMain.Config.FindBuilding(n.SelectSingleNode("Building").InnerText);
             CostExamine = Convert.ToInt32(n.SelectSingleNode("CostExamine").InnerText);
             Cost = Convert.ToInt32(n.SelectSingleNode("Cost").InnerText);
-            Position = FormMain.Config.Temples.Count;
+            Position = FormMain.Config.Items.Count;
 
             // Проверяем, что таких же ID и наименования нет
             foreach (Item i in FormMain.Config.Items)

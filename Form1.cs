@@ -21,9 +21,7 @@ namespace Fantasy_King_s_Battle
         private readonly ImageList ilSkills;
         private readonly ImageList ilResultBattle;
         private readonly ImageList ilTypeBattle;
-        private readonly ImageList ilGuilds;
         private readonly ImageList ilBuildings;
-        private readonly ImageList ilTemples;
         private readonly ImageList ilHeroes;
         internal readonly ImageList ilGui;
         private readonly ImageList ilGui16;
@@ -66,6 +64,7 @@ namespace Fantasy_King_s_Battle
         internal static int WH_SLOTS_IN_LINE = 10;
         internal static int WH_SLOT_LINES = 3;
         internal static int WH_MAX_SLOTS = WH_SLOTS_IN_LINE * WH_SLOT_LINES;
+        internal const int BUILDING_MAX_LINES = 3;
 
         private readonly Lobby lobby;
         private int curAppliedPlayer = -1;
@@ -107,9 +106,7 @@ namespace Fantasy_King_s_Battle
             ilSkills = PrepareImageList("Skills.png", 82, 94, false);
             ilResultBattle = PrepareImageList("ResultBattle52.png", 45, 52, false);
             ilTypeBattle = PrepareImageList("TypeBattle52.png", 52, 52, false);
-            ilGuilds = PrepareImageList("Guilds.png", 126, 126, true);
             ilBuildings = PrepareImageList("Buildings.png", 126, 126, true);
-            ilTemples = PrepareImageList("Temples.png", 126, 126, true);
             ilHeroes = PrepareImageList("Heroes.png", 126, 126, false);
             ilGui = PrepareImageList("Gui.png", 48, 48, true);
             ilGuiHeroes = PrepareImageList("GuiHeroes.png", 48, 48, true);
@@ -191,27 +188,35 @@ namespace Fantasy_King_s_Battle
             if (bmp.Height % height != 0)
                 throw new Exception("Высота многострочной картинки не кратна высоте строки: " + filename);
 
-            int lines = bmp.Height / height;
-            if (lines > 1)
+            AddBitmapToImageList(bmp);
+
+            if (convertToGrey == true)
+                AddBitmapToImageList(GreyBitmap());
+
+            return il;
+
+            void AddBitmapToImageList(Bitmap bitmap)
             {
-                for (int i = 0; i < lines; i++)
+                int lines = bitmap.Height / height;
+                if (lines > 1)
                 {
-                    Bitmap bmpSingleline = new Bitmap(bmp.Width, height);
-                    Graphics g = Graphics.FromImage(bmpSingleline);
-                    g.DrawImage(bmp, 0, 0, new Rectangle(0, i * height, bmp.Width, height), GraphicsUnit.Pixel);
-                    _ = il.Images.AddStrip(bmpSingleline);
-                    g.Dispose();
+                    for (int i = 0; i < lines; i++)
+                    {
+                        Bitmap bmpSingleline = new Bitmap(bitmap.Width, height);
+                        Graphics g = Graphics.FromImage(bmpSingleline);
+                        g.DrawImage(bitmap, 0, 0, new Rectangle(0, i * height, bitmap.Width, height), GraphicsUnit.Pixel);
+                        _ = il.Images.AddStrip(bmpSingleline);
+                        g.Dispose();
+                    }
+                }
+                else
+                {
+                    _ = il.Images.AddStrip(bitmap);
                 }
             }
-            else
-            {
-                _ = il.Images.AddStrip(bmp);
-            }
 
-            // Добавляем серые иконки
-            if (convertToGrey == true)
+            Bitmap GreyBitmap()
             {
-                // Создаём Bitmap для черно-белого изображения
                 Bitmap output = new Bitmap(bmp.Width, bmp.Height);
 
                 // Перебираем в циклах все пиксели исходного изображения
@@ -219,27 +224,24 @@ namespace Fantasy_King_s_Battle
                     for (int i = 0; i < bmp.Width; i++)
                     {
                         // получаем (i, j) пиксель
-                        UInt32 pixel = (UInt32)(bmp.GetPixel(i, j).ToArgb());
-                        
+                        uint pixel = (uint)(bmp.GetPixel(i, j).ToArgb());
+
                         // получаем компоненты цветов пикселя
-                        float R = (float)((pixel & 0x00FF0000) >> 16); // красный
-                        float G = (float)((pixel & 0x0000FF00) >> 8); // зеленый
-                        float B = (float)(pixel & 0x000000FF); // синий
+                        float R = (pixel & 0x00FF0000) >> 16; // красный
+                        float G = (pixel & 0x0000FF00) >> 8; // зеленый
+                        float B = pixel & 0x000000FF; // синий
                         // делаем цвет черно-белым (оттенки серого) - находим среднее арифметическое
                         R = G = B = (R + G + B) / 3.0f;
 
                         // собираем новый пиксель по частям (по каналам)
-                        UInt32 newPixel = ((UInt32)bmp.GetPixel(i, j).A << 24) | ((UInt32)R << 16) | ((UInt32)G << 8) | ((UInt32)B);
-//                        UInt32 newPixel = 0xFF000000 | ((UInt32)R << 16) | ((UInt32)G << 8) | ((UInt32)B);
+                        uint newPixel = ((uint)bmp.GetPixel(i, j).A << 24) | ((uint)R << 16) | ((uint)G << 8) | ((uint)B);
 
                         // добавляем его в Bitmap нового изображения
                         output.SetPixel(i, j, Color.FromArgb((int)newPixel));
                     }
-                // выводим черно-белый Bitmap в pictureBox2
-                il.Images.AddStrip(output);
-            }
 
-            return il;
+                return output;
+            }
         }
 
         internal void ShowDataPlayer()
@@ -271,63 +273,22 @@ namespace Fantasy_King_s_Battle
             }
         }
 
-        private void DrawGuilds()
-        {
-            int top = Config.GRID_SIZE;
-            int left;
-            int height = 0;
-            bool found;
-
-            for (int levelCastle = 1; ; levelCastle++)
-            {
-                left = Config.GRID_SIZE;
-                found = false;
-
-                foreach (Guild g in Config.Guilds)
-                {
-                    if (g.LevelCastle == levelCastle)
-                    {
-                        found = true;
-
-                        g.Panel = new PanelGuild(left, top, ilGuilds, ilGui, ilGuiHeroes);
-                        g.Panel.Parent = tabPageGuilds;
-
-                        left += g.Panel.Width + Config.GRID_SIZE;
-                        height = g.Panel.Height;
-                    }
-                }
-
-                if (found == false)
-                    break;
-
-                top += height + Config.GRID_SIZE;
-            }
-        }
-
-        private void ShowGuilds()
-        {
-            foreach (PlayerGuild pg in lobby.CurrentPlayer.Guilds)
-            {
-                pg.UpdatePanel();
-            }
-        }
-
-        private void DrawBuildings()
+        private void DrawPageBuilding(Control parent, CategoryBuilding category)
         {
             int top = Config.GRID_SIZE;
             int left;
             int height = 0;
 
-            foreach (TypeBuilding tb in Enum.GetValues(typeof(TypeBuilding)))
+            for (int line = 1; line <= BUILDING_MAX_LINES; line++)
             {
                 left = Config.GRID_SIZE;
 
                 foreach (Building b in Config.Buildings)
                 {
-                    if (b.TypeBuilding == tb)
+                    if ((b.CategoryBuilding == category) && (b.Line == line))
                     {
-                        b.Panel = new PanelBuilding(left, top, ilBuildings, ilGui, ilGui16);
-                        b.Panel.Parent = tabPageBuildings;
+                        b.Panel = new PanelBuilding(left, top, ilBuildings, ilGui, ilGui16, ilGuiHeroes);
+                        b.Panel.Parent = parent;
 
                         left += b.Panel.Width + Config.GRID_SIZE;
                         height = b.Panel.Height;
@@ -336,6 +297,25 @@ namespace Fantasy_King_s_Battle
 
                 top += height + Config.GRID_SIZE;
             }
+        }
+
+        private void DrawGuilds()
+        {
+            DrawPageBuilding(tabPageGuilds, CategoryBuilding.Guild);
+        }
+
+        private void ShowGuilds()
+        {
+            foreach (PlayerBuilding pg in lobby.CurrentPlayer.Buildings)
+            {
+                if (pg.Building.CategoryBuilding == CategoryBuilding.Guild)
+                    pg.UpdatePanel();
+            }
+        }
+
+        private void DrawBuildings()
+        {
+            DrawPageBuilding(tabPageBuildings, CategoryBuilding.Castle);
         }
 
         private void ShowBuildings()
@@ -348,36 +328,15 @@ namespace Fantasy_King_s_Battle
 
         private void DrawTemples()
         {
-            int top = Config.GRID_SIZE;
-            int height;
-            int left = Config.GRID_SIZE;
-            int cnt = 0;
-
-            foreach (Temple t in Config.Temples)
-            {
-                t.Panel = new PanelTemple(left, top, ilTemples, ilGui);
-                t.Panel.Parent = tabPageTemples;
-
-                height = t.Panel.Height;
-                cnt++;
-                if (cnt == 3)
-                {
-                    cnt = 0;
-                    left = Config.GRID_SIZE;
-                    top += height + Config.GRID_SIZE;
-                }
-                else
-                {
-                    left += t.Panel.Width + Config.GRID_SIZE;
-                }
-            }
+            DrawPageBuilding(tabPageTemples, CategoryBuilding.Temple);
         }
 
         private void ShowTemples()
         {
-            foreach (PlayerTemple pt in lobby.CurrentPlayer.Temples)
+            foreach (PlayerBuilding pb in lobby.CurrentPlayer.Buildings)
             {
-                pt.UpdatePanel();
+                if (pb.Building.CategoryBuilding == CategoryBuilding.Temple)
+                    pb.UpdatePanel();
             }
         }
 
@@ -388,9 +347,9 @@ namespace Fantasy_King_s_Battle
             int height;
             int cnt = 0;
 
-            foreach (PlayerGuild pg in lobby.CurrentPlayer.Guilds)
+            foreach (PlayerBuilding pb in lobby.CurrentPlayer.Buildings)
             {
-                foreach (PlayerHero ph in pg.Heroes)
+                foreach (PlayerHero ph in pb.Heroes)
                 {
                     if (ph.Panel == null)
                     {

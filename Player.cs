@@ -26,22 +26,10 @@ namespace Fantasy_King_s_Battle
             // Инициализируем ресурсы               
             Gold = 100_000;
 
-            // Инициализация гильдий
-            foreach (Guild g in FormMain.Config.Guilds)
-            {
-                Guilds.Add(new PlayerGuild(this, g));
-            }
-
             // Инициализация зданий
             foreach (Building b in FormMain.Config.Buildings)
             {
                 Buildings.Add(new PlayerBuilding(this, b));
-            }
-
-            // Инициализация храмов
-            foreach (Temple t in FormMain.Config.Temples)
-            {
-                Temples.Add(new PlayerTemple(this, t));
             }
 
             //
@@ -80,9 +68,7 @@ namespace Fantasy_King_s_Battle
         internal string Name { get; }
         internal int Position { get; }
         internal Fraction Fraction { get; }
-        internal List<PlayerGuild> Guilds { get; } = new List<PlayerGuild>();
         internal List<PlayerBuilding> Buildings { get; } = new List<PlayerBuilding>();
-        internal List<PlayerTemple> Temples { get; } = new List<PlayerTemple>();
         internal List<PlayerHero> Heroes { get; } = new List<PlayerHero>();
         internal TypePlayer TypePlayer { get; }
         internal int Gold { get; set; }
@@ -207,7 +193,7 @@ namespace Fantasy_King_s_Battle
 
         internal void GiveItemToHero(int fromSlot, PlayerHero ph, int quantity, int toSlot)
         {
-            Debug.Assert(ph.Guild.Player == this);
+            Debug.Assert(ph.Building.Player == this);
             Debug.Assert(Warehouse[fromSlot] != null);
             Debug.Assert(Warehouse[fromSlot].Quantity >= quantity);
 
@@ -218,7 +204,7 @@ namespace Fantasy_King_s_Battle
 
         internal void GiveItemToHero(int fromSlot, PlayerHero ph, int quantity)
         {
-            Debug.Assert(ph.Guild.Player == this);
+            Debug.Assert(ph.Building.Player == this);
             Debug.Assert(Warehouse[fromSlot] != null);
             Debug.Assert(Warehouse[fromSlot].Quantity >= quantity);
 
@@ -229,7 +215,7 @@ namespace Fantasy_King_s_Battle
 
         internal bool GetItemFromHero(PlayerHero ph, int fromSlot)
         {
-            Debug.Assert(ph.Guild.Player == this);
+            Debug.Assert(ph.Building.Player == this);
             Debug.Assert(ph.Slots[fromSlot] != null);
             Debug.Assert(ph.Slots[fromSlot].Quantity > 0);
 
@@ -243,7 +229,7 @@ namespace Fantasy_King_s_Battle
         }
         internal void GetItemFromHero(PlayerHero ph, int fromSlot, int toSlot)
         {
-            Debug.Assert(ph.Guild.Player == this);
+            Debug.Assert(ph.Building.Player == this);
             Debug.Assert(ph.Slots[fromSlot] != null);
             Debug.Assert(toSlot >= 0);
 
