@@ -134,7 +134,7 @@ namespace Fantasy_King_s_Battle
 
             if (building.Level > 0)
             {
-                if (building.CanTrainHero() == true)
+                if ((building.Building.MaxHeroes > 0) && (building.CanTrainHero() == true))
                 {
                     btnBuy.Visible = true;
                     btnBuy.ImageList = imageListGuiHeroes;

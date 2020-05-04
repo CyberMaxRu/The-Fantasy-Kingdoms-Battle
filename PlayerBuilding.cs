@@ -66,10 +66,14 @@ namespace Fantasy_King_s_Battle
         {
             Debug.Assert(Heroes.Count < Building.MaxHeroes);
             Debug.Assert(Player.Heroes.Count < FormMain.MAX_HEROES_AT_PLAYER);
+            Debug.Assert(Player.Gold >= Building.TrainedHero.Cost);
 
             PlayerHero h = new PlayerHero(this);
             Heroes.Add(h);
             Player.Heroes.Add(h);
+            Player.Gold -= Building.TrainedHero.Cost;
+
+            Program.formMain.ShowGold();
 
             return h;
         }
@@ -80,7 +84,7 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(Heroes.Count <= Building.MaxHeroes);
             Debug.Assert(Player.Heroes.Count <= FormMain.MAX_HEROES_AT_PLAYER);
 
-            return (Heroes.Count < Building.MaxHeroes) && (Player.Heroes.Count < FormMain.MAX_HEROES_AT_PLAYER);
+            return (Player.Gold >= Building.TrainedHero.Cost) && (Heroes.Count < Building.MaxHeroes) && (Player.Heroes.Count < FormMain.MAX_HEROES_AT_PLAYER);
         }
     }
 }
