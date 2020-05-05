@@ -108,19 +108,18 @@ namespace Fantasy_King_s_Battle
 
         internal bool CanTrainHero()
         {
-            Debug.Assert(Level > 0);
             Debug.Assert(Heroes.Count <= Building.MaxHeroes);
             Debug.Assert(Player.Heroes.Count <= FormMain.MAX_HEROES_AT_PLAYER);
 
-            return (Player.Gold >= Building.TrainedHero.Cost) && (Heroes.Count < Building.MaxHeroes) && (Player.Heroes.Count < FormMain.MAX_HEROES_AT_PLAYER);
+            return (Level > 0) && (Player.Gold >= Building.TrainedHero.Cost) && (Heroes.Count < Building.MaxHeroes) && (Player.Heroes.Count < FormMain.MAX_HEROES_AT_PLAYER);
         }
 
         internal List<TextRequirement> GetTextRequirementsHire()
         {
-            if (Level == 0)
-                return null;
-
             List<TextRequirement> list = new List<TextRequirement>();
+
+            if (Level == 0)
+                list.Add(new TextRequirement(false, "Гильдия не построено"));
 
             if (Heroes.Count == Building.MaxHeroes)
                 list.Add(new TextRequirement(false, "Гильдия заполнена"));

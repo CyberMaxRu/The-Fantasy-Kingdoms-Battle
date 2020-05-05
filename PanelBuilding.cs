@@ -221,17 +221,17 @@ namespace Fantasy_King_s_Battle
             else
                 lblLevel.Hide();
 
+            if (building.Building.TrainedHero != null)
+            {
+                btnHireHero.Show();
+                btnHireHero.ImageIndex = GuiUtils.GetImageIndexWithGray(btnHireHero.ImageList, building.Building.TrainedHero.ImageIndex, building.CanTrainHero());
+                btnHireHero.Text = (building.Level == 0) || (building.CanTrainHero() == true) ? building.Building.TrainedHero.Cost.ToString() : ""; //building.Heroes.Count.ToString() + "/" + building.Building.MaxHeroes.ToString();
+            }
+            else
+                btnHireHero.Hide();
+
             if (building.Level > 0)
             {
-
-                if (building.Building.MaxHeroes > 0)
-                {
-                    btnHireHero.Show();
-                    btnHireHero.ImageIndex = GuiUtils.GetImageIndexWithGray(btnHireHero.ImageList, building.Building.TrainedHero.ImageIndex, building.CanTrainHero());
-                    btnHireHero.Text = building.CanTrainHero() == true ? building.Building.TrainedHero.Cost.ToString() : ""; //building.Heroes.Count.ToString() + "/" + building.Building.MaxHeroes.ToString();
-                }
-                else
-                    btnHireHero.Visible = false;
 
                 lblName.ForeColor = Color.Green;
 
@@ -249,7 +249,6 @@ namespace Fantasy_King_s_Battle
 
                 btnBuyOrUpgrade.Text = "";
                 btnBuyOrUpgrade.ImageIndex = GuiUtils.GetImageIndexWithGray(btnBuyOrUpgrade.ImageList, FormMain.GUI_BUY, building.CheckRequirements());
-                btnHireHero.Visible = false;
                 pbBuilding.Image = imageListBuilding.Images[building.Building.ImageIndex + FormMain.Config.Buildings.Count];
             }
 
