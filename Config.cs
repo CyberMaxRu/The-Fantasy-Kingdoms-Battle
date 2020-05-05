@@ -31,6 +31,12 @@ namespace Fantasy_King_s_Battle
             {
                 Buildings.Add(new Building(n));
             }
+            
+            foreach (Building b in Buildings)
+                foreach (Level l in b.Levels)
+                    if (l != null)
+                        foreach (Requirement r in l.Requirements)
+                            r.FindBuilding();
 
             // Загрузка типов предметов
             xmlDoc = CreateXmlDocument("Config\\TypeItems.xml");

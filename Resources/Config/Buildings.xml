@@ -20,11 +20,31 @@
         <Pos>2</Pos>
         <Cost>2000</Cost>
         <Income>125</Income>
+        <Requirements>
+          <Requirement>
+            <Building>Market</Building>
+            <Level>1</Level>
+          </Requirement>
+          <Requirement>
+            <Building>Smithy</Building>
+            <Level>1</Level>
+          </Requirement>
+        </Requirements>
       </Level>
       <Level>
         <Pos>3</Pos>
         <Cost>4000</Cost>
         <Income>275</Income>
+        <Requirements>
+          <Requirement>
+            <Building>Market</Building>
+            <Level>2</Level>
+          </Requirement>
+          <Requirement>
+            <Building>Smithy</Building>
+            <Level>2</Level>
+          </Requirement>
+        </Requirements>
       </Level>
     </Levels>
   </Building>

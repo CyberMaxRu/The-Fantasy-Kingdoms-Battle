@@ -11,17 +11,26 @@ namespace Fantasy_King_s_Battle
     // Класс требования
     internal sealed class Requirement
     {
-        public Requirement(Building b, int l)
+        private string nameBuilding;
+
+        public Requirement(string nameRequiredBuilding, int l)
         {
             Debug.Assert(l >= 0);
-            Debug.Assert(l <= b.MaxLevel);
 
-            Building = b;
+            nameBuilding = nameRequiredBuilding;
             Level = l;
         }
 
-        internal Building Building { get; }
+        internal Building Building { get; private set; }
         internal int Level { get; }
+
+        internal void FindBuilding()
+        {
+            Building = FormMain.Config.FindBuilding(nameBuilding);
+            nameBuilding = null;
+
+            Debug.Assert(Level <= Building.MaxLevel);
+        }
     }
 
     // Класс информации об уровне здания
@@ -46,7 +55,7 @@ namespace Fantasy_King_s_Battle
                 foreach (XmlNode r in nr.SelectNodes("Requirement"))
                 {
                     Requirements.Add(new Requirement(
-                        FormMain.Config.FindBuilding(r.SelectSingleNode("Building").InnerText),
+                        r.SelectSingleNode("Building").InnerText,
                         Convert.ToInt32(r.SelectSingleNode("Level").InnerText)));
                 }
             }
