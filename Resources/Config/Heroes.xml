@@ -3,6 +3,7 @@
   <Hero>
     <ID>Warrior</ID>
     <Name>Воин</Name>
+    <Description>- Весьма вынослив/- В первую очередь выполняет задания атаки и защиты/- На 5-ом уровне учится отвлекать врагов на себя</Description>
     <ImageIndex>0</ImageIndex>
     <Cost>200</Cost>
     <Building>GuildWarrior</Building>
@@ -55,6 +56,7 @@
   <Hero>
     <ID>Rogue</ID>
     <Name>Разбойница</Name>
+    <Description>- Любит деньги, охотно выполняет любые задания/- Умеет воровать/- Избегает серьезных боев</Description>
     <ImageIndex>1</ImageIndex>
     <Cost>100</Cost>
     <Building>GuildRogue</Building>
@@ -107,6 +109,7 @@
   <Hero>
     <ID>Hunter</ID>
     <Name>Рейнджер</Name>
+    <Description>- Любит выполнять задания исследования/- Лучше всего воюет против зверей</Description>
     <ImageIndex>2</ImageIndex>
     <Cost>150</Cost>
     <Building>GuildHunter</Building>
@@ -159,6 +162,7 @@
   <Hero>
     <ID>Cleric</ID>
     <Name>Послушница</Name>
+    <Description>- Умеет лечить/- Лучше всего воюет против нежити</Description>
     <ImageIndex>3</ImageIndex>
     <Cost>350</Cost>
     <Building>GuildCleric</Building>
@@ -211,6 +215,7 @@
   <Hero>
     <ID>Mage</ID>
     <Name>Маг</Name>
+    <Description>- Способен выучить множество разрушительных заклинаний/- Почти не защищен/- На 5-ом уровне изучает "Магический щит"</Description>
     <ImageIndex>4</ImageIndex>
     <Cost>500</Cost>
     <Building>GuildMage</Building>
@@ -263,6 +268,7 @@
   <Hero>
     <ID>Elf</ID>
     <Name>Эльфийка</Name>
+    <Description>- Прекрасно стреляет из лука/- Самая быстрая из героев/- Не любит гномов</Description>
     <ImageIndex>5</ImageIndex>
     <Cost>700</Cost>
     <Building>GuildElf</Building>
@@ -315,6 +321,7 @@
   <Hero>
     <ID>Dwarf</ID>
     <Name>Гном</Name>
+    <Description>- Обладает высоким сопротивлением магии/- В первую очередь выполняет задания атаки/- Умело рушит здания/- Не любит эльфов</Description>
     <ImageIndex>6</ImageIndex>
     <Cost>700</Cost>
     <Building>GuildDwarf</Building>

@@ -42,6 +42,8 @@ namespace Fantasy_King_s_Battle
         {
             ID = n.SelectSingleNode("ID").InnerText;
             Name = n.SelectSingleNode("Name").InnerText;
+            if (n.SelectSingleNode("Description") != null)
+                Description = n.SelectSingleNode("Description").InnerText;
             ImageIndex = Convert.ToInt32(n.SelectSingleNode("ImageIndex").InnerText);
             Cost = Convert.ToInt32(n.SelectSingleNode("Cost").InnerText);
             Building = FormMain.Config.FindBuilding(n.SelectSingleNode("Building").InnerText);
@@ -49,7 +51,10 @@ namespace Fantasy_King_s_Battle
             MaxLevel = Convert.ToInt32(n.SelectSingleNode("MaxLevel").InnerText);
 
             Debug.Assert(Cost > 0);
-            Debug.Assert(MaxLevel > 0);
+            Debug.Assert(ID.Length > 0);
+            Debug.Assert(Name.Length > 0);
+            //Debug.Assert(Description.Length > 0);
+            Debug.Assert(ImageIndex >= 0);
 
             // Проверяем, что таких же ID и наименования нет
             foreach (Hero h in FormMain.Config.Heroes)
@@ -95,6 +100,7 @@ namespace Fantasy_King_s_Battle
 
         internal string ID { get; }
         internal string Name { get; }
+        internal string Description { get; }
         internal int ImageIndex { get; }
         internal int Cost { get; }
         internal Building Building { get; }
