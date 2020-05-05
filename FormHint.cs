@@ -191,12 +191,13 @@ namespace Fantasy_King_s_Battle
                         Left = Config.GRID_SIZE,
                         Top = nextTop,
                         Width = Width - (Config.GRID_SIZE * 2),
-                        Height = 16,
+                        AutoSize = true,
                         BackColor = Color.Transparent,
                         ForeColor = tr.Performed == true ? Color.Lime : Color.Crimson,
                         Font = fontRequirement,
                         Text = tr.Text
                     };
+                    lr.MaximumSize = new Size(Width - Config.GRID_SIZE * 2, 0);
 
                     lblRequirement.Add(lr);
                     nextTop = GuiUtils.NextTop(lr);
