@@ -43,6 +43,7 @@ namespace Fantasy_King_s_Battle
             TopMost = true;
             StartPosition = FormStartPosition.Manual;
             ShowInTaskbar = false;
+            DoubleBuffered = true;
 
             lblHeader = new Label()
             {

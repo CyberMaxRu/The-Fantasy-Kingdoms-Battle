@@ -145,6 +145,11 @@ namespace Fantasy_King_s_Battle
 
         private void BtnBuyOrUpgrade_MouseEnter(object sender, EventArgs e)
         {
+            ShowHintBtnBuyOrUpgrade();
+        }
+
+        private void ShowHintBtnBuyOrUpgrade()
+        {
             Program.formMain.formHint.ShowHint(new Point(Program.formMain.Left + 10 + Left + btnBuyOrUpgrade.Left, Program.formMain.Top + 32 + Top + btnBuyOrUpgrade.Top + btnBuyOrUpgrade.Height),
                     building.Building.Name,
                     (building.Level == 0 ? "Уровень 1" : (building.CanLevelUp() == true) ? "Улучшить строение" : ""),
@@ -171,7 +176,7 @@ namespace Fantasy_King_s_Battle
             if (building.Player.Gold >= building.CostBuyOrUpgrade())
             {
                 building.BuyOrUpgrade();
-                //UpdateData();
+                ShowHintBtnBuyOrUpgrade();
                 Program.formMain.ShowGold();
                 Program.formMain.ShowAllBuildings();
             }
