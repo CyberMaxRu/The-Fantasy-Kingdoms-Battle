@@ -213,6 +213,10 @@
             <Building>Castle</Building>
             <Level>2</Level>
           </Requirement>
+          <Requirement>
+            <Building>GuildMage</Building>
+            <Level>1</Level>
+          </Requirement>
         </Requirements>
       </Level>
     </Levels>
