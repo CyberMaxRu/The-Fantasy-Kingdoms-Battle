@@ -13,8 +13,6 @@ namespace Fantasy_King_s_Battle
     internal sealed class PanelItem : PictureBox
     {
         private readonly ImageList imageListItems;
-        private readonly Font fontQuantity = new Font("Courier New", 11, FontStyle.Bold);
-        private readonly Brush brQuantity = new SolidBrush(Color.Yellow);
         private Point pointQuantity;
         private PlayerItem playerItem;
         private string quantity;
@@ -42,7 +40,7 @@ namespace Fantasy_King_s_Battle
             {
                 quantity = playerItem.Quantity.ToString();
                 pointQuantity.X = Width - (quantity.Length * 9) - 6;
-                e.Graphics.DrawString(quantity, fontQuantity, brQuantity, pointQuantity);
+                e.Graphics.DrawString(quantity, Program.formMain.fontQuantity, Program.formMain.brushQuantity, pointQuantity);
             }
         }
 

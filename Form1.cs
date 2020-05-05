@@ -29,6 +29,11 @@ namespace Fantasy_King_s_Battle
         internal readonly ImageList ilParameters;
         internal readonly ImageList ilItems;
 
+        internal readonly Font fontQuantity = new Font("Courier New", 11, FontStyle.Bold);
+        internal readonly Font fontCost = new Font("Arial", 12, FontStyle.Bold);
+        internal readonly Color ColorQuantity = Color.Yellow;
+        internal readonly Brush brushQuantity = new SolidBrush(Color.Yellow);
+
         private readonly ToolStripStatusLabel StatusLabelDay;
         private readonly ToolStripStatusLabel StatusLabelGold;
         private Panel panelWarehouse;
@@ -78,7 +83,8 @@ namespace Fantasy_King_s_Battle
         private PlayerItem itemForDrag;// Предмет для переноса. Отдельно его храним, так как если он один, в ячейке он не остается
         private PlayerItem itemTempForDrag;// Предмет для временного хранения одного экземпляра предмета при переносе
 
-        private readonly Bitmap background;
+        internal readonly Bitmap background;
+        internal readonly Bitmap bmpBackgroundButton;
         private readonly List<PanelControls> pages = new List<PanelControls>();
         private readonly PanelControls pageLobby;
         private readonly PanelControls pageGuilds;
@@ -126,6 +132,7 @@ namespace Fantasy_King_s_Battle
 
             background = new Bitmap(dirResources + "Icons\\Background.png");
             BackgroundImage = background;
+            bmpBackgroundButton = new Bitmap(dirResources + "Icons\\BackgroundButton.png");
 
             //    
             lobby = new Lobby(8);

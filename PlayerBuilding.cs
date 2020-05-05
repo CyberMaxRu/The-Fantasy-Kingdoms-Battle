@@ -31,12 +31,18 @@ namespace Fantasy_King_s_Battle
         internal void BuyOrUpgrade()
         {
             Debug.Assert(Level < Building.MaxLevel);
+            Debug.Assert(Player.Gold >= CostBuyOrUpgrade());
 
             if (CheckRequirements() == true)
             {
-                Player.Gold -= Building.Levels[Level + 1].Cost;
+                Player.Gold -= CostBuyOrUpgrade();
                 Level++;
             }
+        }
+
+        internal int CostBuyOrUpgrade()
+        {
+            return Level < Building.MaxLevel ? Building.Levels[Level + 1].Cost : 0;
         }
 
         internal bool CheckRequirements()

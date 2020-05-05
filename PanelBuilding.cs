@@ -63,7 +63,11 @@ namespace Fantasy_King_s_Battle
                 Left = GuiUtils.NextLeft(pbBuilding),
                 Size = GuiUtils.SizeButtonWithImage(imageListGui),
                 Top = pbBuilding.Top + pbBuilding.Height - imageListGui.ImageSize.Height - 8,
-                ImageList = imageListGui
+                ImageList = imageListGui,
+                TextAlign = ContentAlignment.BottomCenter,
+                Font = formMain.fontCost,
+                ForeColor = Color.White,
+                BackgroundImage = formMain.background
             };
             btnBuyOrUpgrade.Click += BtnBuyOrUprgade_Click;
 
@@ -195,6 +199,11 @@ namespace Fantasy_King_s_Battle
                 btnBuyOrUpgrade.ImageIndex = GuiUtils.GetImageIndexWithGray(btnBuyOrUpgrade.ImageList, FormMain.GUI_BUY, !building.CheckRequirements());
                 btnLevelUp.Visible = false;
                 pbBuilding.Image = imageListBuilding.Images[building.Building.ImageIndex + FormMain.Config.Buildings.Count];
+            }
+
+            //if (btnBuyOrUpgrade.Visible == true)
+            {
+                btnBuyOrUpgrade.Text = building.CostBuyOrUpgrade().ToString();
             }
         }
     }
