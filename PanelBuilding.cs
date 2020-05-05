@@ -222,7 +222,7 @@ namespace Fantasy_King_s_Battle
                 lblHeroes.Text = building.Heroes.Count.ToString() + "/" + building.Building.MaxHeroes.ToString();
 
                 btnBuyOrUpgrade.Visible = building.CanLevelUp();
-                if (btnBuyOrUpgrade.Visible == true)
+                if (building.CanLevelUp() == true)
                     btnBuyOrUpgrade.ImageIndex = GuiUtils.GetImageIndexWithGray(btnBuyOrUpgrade.ImageList, FormMain.GUI_LEVELUP, !building.CheckRequirements());
                     
                 //if (btnLevelUp.Visible == true)
