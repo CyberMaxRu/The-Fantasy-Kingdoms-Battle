@@ -75,12 +75,6 @@
         <Pos>1</Pos>
         <Cost>500</Cost>
         <Income>75</Income>
-        <Requirements>
-          <Requirement>
-            <Building>Castle</Building>
-            <Level>1</Level>
-          </Requirement>
-        </Requirements>
       </Level>
       <Level>
         <Pos>2</Pos>
@@ -120,12 +114,6 @@
         <Pos>1</Pos>
         <Cost>500</Cost>
         <Income>50</Income>
-        <Requirements>
-          <Requirement>
-            <Building>Castle</Building>
-            <Level>1</Level>
-          </Requirement>
-        </Requirements>
       </Level>
       <Level>
         <Pos>2</Pos>
@@ -145,7 +133,7 @@
         <Requirements>
           <Requirement>
             <Building>Castle</Building>
-            <Level>2</Level>
+            <Level>3</Level>
           </Requirement>
         </Requirements>
       </Level>
@@ -196,7 +184,7 @@
         <Requirements>
           <Requirement>
             <Building>Castle</Building>
-            <Level>1</Level>
+            <Level>2</Level>
           </Requirement>
         </Requirements>
       </Level>
@@ -216,12 +204,6 @@
         <Pos>1</Pos>
         <Cost>500</Cost>
         <Income>0</Income>
-        <Requirements>
-          <Requirement>
-            <Building>Castle</Building>
-            <Level>1</Level>
-          </Requirement>
-        </Requirements>
       </Level>
     </Levels>
   </Building>
@@ -239,23 +221,11 @@
         <Pos>1</Pos>
         <Cost>500</Cost>
         <Income>0</Income>
-        <Requirements>
-          <Requirement>
-            <Building>Castle</Building>
-            <Level>1</Level>
-          </Requirement>
-        </Requirements>
       </Level>
       <Level>
         <Pos>2</Pos>
         <Cost>400</Cost>
         <Income>0</Income>
-        <Requirements>
-          <Requirement>
-            <Building>Castle</Building>
-            <Level>1</Level>
-          </Requirement>
-        </Requirements>
       </Level>
     </Levels>
   </Building>
@@ -273,34 +243,16 @@
         <Pos>1</Pos>
         <Cost>550</Cost>
         <Income>0</Income>
-        <Requirements>
-          <Requirement>
-            <Building>Castle</Building>
-            <Level>1</Level>
-          </Requirement>
-        </Requirements>
       </Level>
       <Level>
         <Pos>2</Pos>
         <Cost>550</Cost>
         <Income>0</Income>
-        <Requirements>
-          <Requirement>
-            <Building>Castle</Building>
-            <Level>1</Level>
-          </Requirement>
-        </Requirements>
       </Level>
       <Level>
         <Pos>3</Pos>
         <Cost>550</Cost>
         <Income>0</Income>
-        <Requirements>
-          <Requirement>
-            <Building>Castle</Building>
-            <Level>1</Level>
-          </Requirement>
-        </Requirements>
       </Level>
     </Levels>
   </Building>
@@ -318,34 +270,16 @@
         <Pos>1</Pos>
         <Cost>450</Cost>
         <Income>0</Income>
-        <Requirements>
-          <Requirement>
-            <Building>Castle</Building>
-            <Level>1</Level>
-          </Requirement>
-        </Requirements>
       </Level>
       <Level>
         <Pos>2</Pos>
         <Cost>450</Cost>
         <Income>0</Income>
-        <Requirements>
-          <Requirement>
-            <Building>Castle</Building>
-            <Level>1</Level>
-          </Requirement>
-        </Requirements>
       </Level>
       <Level>
         <Pos>3</Pos>
         <Cost>450</Cost>
         <Income>0</Income>
-        <Requirements>
-          <Requirement>
-            <Building>Castle</Building>
-            <Level>1</Level>
-          </Requirement>
-        </Requirements>
       </Level>
     </Levels>
   </Building>
@@ -363,34 +297,16 @@
         <Pos>1</Pos>
         <Cost>450</Cost>
         <Income>0</Income>
-        <Requirements>
-          <Requirement>
-            <Building>Castle</Building>
-            <Level>1</Level>
-          </Requirement>
-        </Requirements>
       </Level>
       <Level>
         <Pos>2</Pos>
         <Cost>450</Cost>
         <Income>0</Income>
-        <Requirements>
-          <Requirement>
-            <Building>Castle</Building>
-            <Level>1</Level>
-          </Requirement>
-        </Requirements>
       </Level>
       <Level>
         <Pos>3</Pos>
         <Cost>450</Cost>
         <Income>0</Income>
-        <Requirements>
-          <Requirement>
-            <Building>Castle</Building>
-            <Level>1</Level>
-          </Requirement>
-        </Requirements>
       </Level>
     </Levels>
   </Building>
@@ -408,34 +324,16 @@
         <Pos>1</Pos>
         <Cost>700</Cost>
         <Income>0</Income>
-        <Requirements>
-          <Requirement>
-            <Building>Castle</Building>
-            <Level>1</Level>
-          </Requirement>
-        </Requirements>
       </Level>
       <Level>
         <Pos>2</Pos>
         <Cost>700</Cost>
         <Income>0</Income>
-        <Requirements>
-          <Requirement>
-            <Building>Castle</Building>
-            <Level>1</Level>
-          </Requirement>
-        </Requirements>
       </Level>
       <Level>
         <Pos>3</Pos>
         <Cost>700</Cost>
         <Income>0</Income>
-        <Requirements>
-          <Requirement>
-            <Building>Castle</Building>
-            <Level>1</Level>
-          </Requirement>
-        </Requirements>
       </Level>
     </Levels>
   </Building>
@@ -456,7 +354,7 @@
         <Requirements>
           <Requirement>
             <Building>Castle</Building>
-            <Level>1</Level>
+            <Level>2</Level>
           </Requirement>
         </Requirements>
       </Level>
@@ -467,7 +365,7 @@
         <Requirements>
           <Requirement>
             <Building>Castle</Building>
-            <Level>1</Level>
+            <Level>2</Level>
           </Requirement>
         </Requirements>
       </Level>
@@ -478,7 +376,7 @@
         <Requirements>
           <Requirement>
             <Building>Castle</Building>
-            <Level>1</Level>
+            <Level>2</Level>
           </Requirement>
         </Requirements>
       </Level>
