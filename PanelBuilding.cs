@@ -17,7 +17,7 @@ namespace Fantasy_King_s_Battle
         private readonly ImageList imageListGui;
         private readonly ImageList imageListGui16;
         private readonly ImageList imageListGuiHeroes;
-        private readonly Button btnBuy;
+        private readonly Button btnBuyOrUpgrade;
         private readonly Button btnLevelUp;
         private readonly Label lblName;
         private readonly Label lblIncome;
@@ -57,22 +57,22 @@ namespace Fantasy_King_s_Battle
                 Top = GuiUtils.NextTop(lblName)
             };
 
-            btnBuy = new Button()
+            btnBuyOrUpgrade = new Button()
             {
                 Parent = this,
                 Left = GuiUtils.NextLeft(pbBuilding),
                 Size = GuiUtils.SizeButtonWithImage(imageListGui),
                 Top = pbBuilding.Top + pbBuilding.Height - imageListGui.ImageSize.Height - 8,
-                ImageList = imageListGui,
+                ImageList = imageListGui
             };
-            btnBuy.Click += BtnBuy_Click;
+            btnBuyOrUpgrade.Click += BtnBuyOrUprgade_Click;
 
             btnLevelUp = new Button()
             {
                 Parent = this,
-                Left = btnBuy.Left,
-                Top = btnBuy.Top - btnBuy.Height - Config.GRID_SIZE,
-                Size = btnBuy.Size,
+                Left = btnBuyOrUpgrade.Left,
+                Top = btnBuyOrUpgrade.Top - btnBuyOrUpgrade.Height - Config.GRID_SIZE,
+                Size = btnBuyOrUpgrade.Size,
                 ImageList = imageListGui,
                 ImageIndex = FormMain.GUI_LEVELUP
             };
@@ -105,7 +105,7 @@ namespace Fantasy_King_s_Battle
             };
 
             Height = lblIncome.Top + lblIncome.Height + (Config.GRID_SIZE * 2);
-            Width = btnBuy.Left + btnBuy.Width + Config.GRID_SIZE;
+            Width = btnBuyOrUpgrade.Left + btnBuyOrUpgrade.Width + Config.GRID_SIZE;
 
             lblName.Width = Width - (Config.GRID_SIZE * 2) - 2;
 
@@ -130,7 +130,7 @@ namespace Fantasy_King_s_Battle
             Program.formMain.ShowAllBuildings();
         }
 
-        private void BtnBuy_Click(object sender, EventArgs e)
+        private void BtnBuyOrUprgade_Click(object sender, EventArgs e)
         {
             if (building.Level == 0)
             {
@@ -164,21 +164,21 @@ namespace Fantasy_King_s_Battle
             {
                 if ((building.Building.MaxHeroes > 0) && (building.CanTrainHero() == true))
                 {
-                    btnBuy.Visible = true;
-                    btnBuy.ImageList = imageListGuiHeroes;
-                    btnBuy.ImageIndex = building.Building.TrainedHero.ImageIndex;
+                    btnBuyOrUpgrade.Visible = true;
+                    //btnBuyOrUpgrade.ImageList = imageListGuiHeroes;
+                    //btnBuyOrUpgrade.ImageIndex = building.Building.TrainedHero.ImageIndex;
                 }
                 else
                 {
-                    btnBuy.Visible = false;
+                    btnBuyOrUpgrade.Visible = false;
                 }
 
                 lblName.ForeColor = Color.Green;
                 lblLevel.Text = building.Level.ToString();
                 lblHeroes.Text = building.Heroes.Count.ToString() + "/" + building.Building.MaxHeroes.ToString();
 
-                btnBuy.Text = building.Level.ToString();
-                btnBuy.ImageIndex = -1;
+                btnBuyOrUpgrade.Text = building.Level.ToString();
+                btnBuyOrUpgrade.ImageIndex = -1;
                 btnLevelUp.Visible = building.Level < building.Building.MaxLevel;
                 if (btnLevelUp.Visible == true)
                     btnLevelUp.Image = building.CheckRequirements() == true ? imageListGui.Images[FormMain.GUI_LEVELUP] : imageListGui.Images[FormMain.GUI_LEVELUP + imageListGui.Images.Count / 2];
@@ -190,9 +190,9 @@ namespace Fantasy_King_s_Battle
                 lblLevel.Text = "";
                 lblHeroes.Text = "";
 
-                btnBuy.Text = "";
-                btnBuy.ImageList = imageListGui;
-                btnBuy.ImageIndex = FormMain.GUI_BUY;
+                btnBuyOrUpgrade.Text = "";
+                btnBuyOrUpgrade.ImageList = imageListGui;
+                btnBuyOrUpgrade.ImageIndex = GuiUtils.GetImageIndexWithGray(btnBuyOrUpgrade.ImageList, FormMain.GUI_BUY, !building.CheckRequirements());
                 btnLevelUp.Visible = false;
                 pbBuilding.Image = imageListBuilding.Images[building.Building.ImageIndex + FormMain.Config.Buildings.Count];
             }

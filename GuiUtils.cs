@@ -54,5 +54,15 @@ namespace Fantasy_King_s_Battle
         {
             return c.Top + c.Height + Config.GRID_SIZE;
         }
+
+        internal static Image GetImageFromImageList(ImageList imageList, int imageIndex, bool gray)
+        {
+            return imageList.Images[imageIndex + (gray == false ? 0 : imageList.Images.Count / 2)];
+        }
+
+        internal static int GetImageIndexWithGray(ImageList imageList, int imageIndex, bool gray)
+        {
+            return imageIndex + (gray == false ? 0 : imageList.Images.Count / 2);
+        }
     }
 }
