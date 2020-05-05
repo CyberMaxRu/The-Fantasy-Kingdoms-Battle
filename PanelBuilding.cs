@@ -25,7 +25,7 @@ namespace Fantasy_King_s_Battle
         private readonly Label lblLevel;
         private readonly Label lblHeroes;
         private PlayerBuilding building;
-        private readonly Font fontLabel = new Font("Microsoft Sans Setif", 10, FontStyle.Bold);
+        private readonly Font fontLabel = new Font("Microsoft Sans Serif", 10, FontStyle.Bold);
         private readonly Pen penBorder;
         private readonly Rectangle rectBorder;
 
@@ -71,6 +71,8 @@ namespace Fantasy_King_s_Battle
                 BackgroundImage = formMain.background
             };
             btnBuyOrUpgrade.Click += BtnBuyOrUprgade_Click;
+            btnBuyOrUpgrade.MouseEnter += BtnBuyOrUpgrade_MouseEnter;
+            btnBuyOrUpgrade.MouseLeave += BtnBuyOrUpgrade_MouseLeave;
 
             btnLevelUp = new Button()
             {
@@ -123,6 +125,19 @@ namespace Fantasy_King_s_Battle
             rectBorder = new Rectangle(0, 0, Width - 1, Height - 1);
 
             Paint += PanelBuilding_Paint;
+        }
+
+        private void BtnBuyOrUpgrade_MouseLeave(object sender, EventArgs e)
+        {
+            Program.formMain.formHint.HideHint();
+        }
+
+        private void BtnBuyOrUpgrade_MouseEnter(object sender, EventArgs e)
+        {
+            Program.formMain.formHint.ShowHint(new Point(Program.formMain.Left + 10 + Left + btnBuyOrUpgrade.Left, Program.formMain.Top + 32 + Top + btnBuyOrUpgrade.Top + btnBuyOrUpgrade.Height),
+                    building.Building.Name,
+                    (building.Level == 0 ? "Уровень 1" : (building.CanLevelUp() == true) ? "Улучшить строение" : ""),
+                    building.Building.Description, building.GetTextRequirements(), building.CostBuyOrUpgrade(), building.Player.Gold >= building.CostBuyOrUpgrade());
         }
 
         private void PanelBuilding_Paint(object sender, PaintEventArgs e)

@@ -68,6 +68,20 @@ namespace Fantasy_King_s_Battle
             return true; 
         }
 
+        internal List<TextRequirement> GetTextRequirements()
+        {
+            List<TextRequirement> list = new List<TextRequirement>();
+            PlayerBuilding pb;
+
+            foreach (Requirement r in Building.Levels[Level + 1].Requirements)
+            {
+                pb = Player.GetPlayerBuilding(r.Building);
+                list.Add(new TextRequirement(r.Level <= pb.Level, pb.Building.Name + (pb.Building.MaxLevel > 1 ? " " + r.Level + " уровня" : "")));
+            }
+
+            return list;
+        }
+
         internal int Income()
         {
             return Level > 0 ? Building.Levels[Level].Income : 0;
