@@ -175,23 +175,26 @@ namespace Fantasy_King_s_Battle
             lblRequirement.Clear();
 
             Label lr;
-            foreach (TextRequirement tr in requirement)
+            if (requirement != null)
             {
-                lr = new Label()
+                foreach (TextRequirement tr in requirement)
                 {
-                    Parent = this,
-                    Left = Config.GRID_SIZE,
-                    Top = nextTop,
-                    Width = Width - (Config.GRID_SIZE * 2),
-                    Height = 16,
-                    BackColor = Color.Transparent,
-                    ForeColor = tr.Performed == true ? Color.Lime : Color.Crimson,
-                    Font = fontRequirement,
-                    Text = tr.Text
-                };
+                    lr = new Label()
+                    {
+                        Parent = this,
+                        Left = Config.GRID_SIZE,
+                        Top = nextTop,
+                        Width = Width - (Config.GRID_SIZE * 2),
+                        Height = 16,
+                        BackColor = Color.Transparent,
+                        ForeColor = tr.Performed == true ? Color.Lime : Color.Crimson,
+                        Font = fontRequirement,
+                        Text = tr.Text
+                    };
 
-                lblRequirement.Add(lr);
-                nextTop = GuiUtils.NextTop(lr);
+                    lblRequirement.Add(lr);
+                    nextTop = GuiUtils.NextTop(lr);
+                }
             }
 
             if (gold > 0)

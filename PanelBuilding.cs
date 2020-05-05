@@ -57,6 +57,8 @@ namespace Fantasy_King_s_Battle
                 Left = Config.GRID_SIZE,
                 Top = GuiUtils.NextTop(lblName)
             };
+            pbBuilding.MouseEnter += PbBuilding_MouseEnter;
+            pbBuilding.MouseLeave += Control_MouseLeave;
 
             btnBuyOrUpgrade = new Button()
             {
@@ -72,7 +74,7 @@ namespace Fantasy_King_s_Battle
             };
             btnBuyOrUpgrade.Click += BtnBuyOrUprgade_Click;
             btnBuyOrUpgrade.MouseEnter += BtnBuyOrUpgrade_MouseEnter;
-            btnBuyOrUpgrade.MouseLeave += BtnBuyOrUpgrade_MouseLeave;
+            btnBuyOrUpgrade.MouseLeave += Control_MouseLeave;
 
             btnLevelUp = new Button()
             {
@@ -127,7 +129,15 @@ namespace Fantasy_King_s_Battle
             Paint += PanelBuilding_Paint;
         }
 
-        private void BtnBuyOrUpgrade_MouseLeave(object sender, EventArgs e)
+        private void PbBuilding_MouseEnter(object sender, EventArgs e)
+        {
+            Program.formMain.formHint.ShowHint(new Point(Program.formMain.Left + 10 + Left + pbBuilding.Left, Program.formMain.Top + 32 + Top + pbBuilding.Top + pbBuilding.Height),
+                    building.Building.Name,
+                    building.Level > 0 ? "Уровень " + building.Level.ToString() : "",
+                    building.Building.Description, null, 0, false);
+        }
+
+        private void Control_MouseLeave(object sender, EventArgs e)
         {
             Program.formMain.formHint.HideHint();
         }
