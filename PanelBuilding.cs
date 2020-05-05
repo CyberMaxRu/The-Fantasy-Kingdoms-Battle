@@ -15,6 +15,7 @@ namespace Fantasy_King_s_Battle
         private readonly PictureBox pbBuilding;
         private readonly ImageList imageListBuilding;
         private readonly ImageList imageListGui;
+        private readonly ImageList imageListGui16;
         private readonly ImageList imageListGuiHeroes;
         private readonly Button btnBuy;
         private readonly Button btnLevelUp;
@@ -31,6 +32,7 @@ namespace Fantasy_King_s_Battle
             //BorderStyle = BorderStyle.FixedSingle;
             imageListBuilding = formMain.ilBuildings;
             imageListGui = formMain.ilGui;
+            imageListGui16 = formMain.ilGui16;
             imageListGuiHeroes = formMain.ilGuiHeroes;
             Left = left;
             Top = top;
@@ -80,7 +82,7 @@ namespace Fantasy_King_s_Battle
                 Parent = this,
                 Left = pbBuilding.Left,
                 Top = pbBuilding.Top + pbBuilding.Height + Config.GRID_SIZE,
-                Width = 80
+                Width = 60
             };
 
             lblHeroes = new Label()
@@ -98,7 +100,7 @@ namespace Fantasy_King_s_Battle
                 TextAlign = ContentAlignment.MiddleRight,
                 ImageAlign = ContentAlignment.MiddleLeft,
                 ImageIndex = FormMain.GUI_16_GOLD,
-                ImageList = imageListGui
+                ImageList = imageListGui16
             };
 
             Height = lblIncome.Top + lblIncome.Height + (Config.GRID_SIZE * 2);
