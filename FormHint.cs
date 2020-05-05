@@ -115,6 +115,11 @@ namespace Fantasy_King_s_Battle
             timerOpacity.Tick += TimerOpacity_Tick;
         }
 
+        protected override bool ShowWithoutActivation
+        {
+            get { return true; }
+        }
+
         private void TimerOpacity_Tick(object sender, EventArgs e)
         {
             TimeSpan timeSpan = DateTime.Now - dateTimeStartOpacity;
