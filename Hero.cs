@@ -53,7 +53,7 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(Cost > 0);
             Debug.Assert(ID.Length > 0);
             Debug.Assert(Name.Length > 0);
-            //Debug.Assert(Description.Length > 0);
+            Debug.Assert(Description.Length > 0);
             Debug.Assert(ImageIndex >= 0);
 
             // Проверяем, что таких же ID и наименования нет
