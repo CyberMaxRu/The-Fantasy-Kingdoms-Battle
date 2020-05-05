@@ -40,9 +40,14 @@ namespace Fantasy_King_s_Battle
             }
         }
 
+        internal bool CanLevelUp()
+        {
+            return Level < Building.MaxLevel;
+        }
+
         internal int CostBuyOrUpgrade()
         {
-            return Level < Building.MaxLevel ? Building.Levels[Level + 1].Cost : 0;
+            return CanLevelUp() == true ? Building.Levels[Level + 1].Cost : 0;
         }
 
         internal bool CheckRequirements()
