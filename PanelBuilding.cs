@@ -227,7 +227,7 @@ namespace Fantasy_King_s_Battle
                 if (building.Building.MaxHeroes > 0)
                 {
                     btnHireHero.Show();
-                    btnHireHero.ImageIndex = GuiUtils.GetImageIndexWithGray(btnHireHero.ImageList, building.Building.TrainedHero.ImageIndex, !building.CanTrainHero());
+                    btnHireHero.ImageIndex = GuiUtils.GetImageIndexWithGray(btnHireHero.ImageList, building.Building.TrainedHero.ImageIndex, building.CanTrainHero());
                     btnHireHero.Text = building.CanTrainHero() == true ? building.Building.TrainedHero.Cost.ToString() : ""; //building.Heroes.Count.ToString() + "/" + building.Building.MaxHeroes.ToString();
                 }
                 else
@@ -237,7 +237,7 @@ namespace Fantasy_King_s_Battle
 
                 btnBuyOrUpgrade.Visible = building.CanLevelUp();
                 if (building.CanLevelUp() == true)
-                    btnBuyOrUpgrade.ImageIndex = GuiUtils.GetImageIndexWithGray(btnBuyOrUpgrade.ImageList, FormMain.GUI_LEVELUP, !building.CheckRequirements());
+                    btnBuyOrUpgrade.ImageIndex = GuiUtils.GetImageIndexWithGray(btnBuyOrUpgrade.ImageList, FormMain.GUI_LEVELUP, building.CheckRequirements());
                     
                 //if (btnLevelUp.Visible == true)
                     //btnLevelUp.Image = building.CheckRequirements() == true ? imageListGui.Images[FormMain.GUI_LEVELUP] : imageListGui.Images[FormMain.GUI_LEVELUP + imageListGui.Images.Count / 2];
@@ -248,7 +248,7 @@ namespace Fantasy_King_s_Battle
                 lblName.ForeColor = Color.Gray;
 
                 btnBuyOrUpgrade.Text = "";
-                btnBuyOrUpgrade.ImageIndex = GuiUtils.GetImageIndexWithGray(btnBuyOrUpgrade.ImageList, FormMain.GUI_BUY, !building.CheckRequirements());
+                btnBuyOrUpgrade.ImageIndex = GuiUtils.GetImageIndexWithGray(btnBuyOrUpgrade.ImageList, FormMain.GUI_BUY, building.CheckRequirements());
                 btnHireHero.Visible = false;
                 pbBuilding.Image = imageListBuilding.Images[building.Building.ImageIndex + FormMain.Config.Buildings.Count];
             }
