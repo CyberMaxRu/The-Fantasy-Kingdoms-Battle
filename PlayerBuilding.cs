@@ -70,7 +70,10 @@ namespace Fantasy_King_s_Battle
 
         internal List<TextRequirement> GetTextRequirements()
         {
-            List<TextRequirement> list = new List<TextRequirement>();
+            if (Level == Building.MaxLevel)
+                return null;
+
+            List <TextRequirement> list = new List<TextRequirement>();
             PlayerBuilding pb;
 
             foreach (Requirement r in Building.Levels[Level + 1].Requirements)
