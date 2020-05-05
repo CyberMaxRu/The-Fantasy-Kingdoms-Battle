@@ -17,7 +17,7 @@ namespace Fantasy_King_s_Battle
         {
             ID = n.SelectSingleNode("ID").InnerText;
             Name = n.SelectSingleNode("Name").InnerText;
-            Description = n.SelectSingleNode("Description").InnerText.Replace("#NL#", Environment.NewLine);
+            Description = n.SelectSingleNode("Description").InnerText.Replace("/", Environment.NewLine);
             ImageIndex = Convert.ToInt32(n.SelectSingleNode("ImageIndex").InnerText);
             DefaultLevel = Convert.ToInt32(n.SelectSingleNode("DefaultLevel").InnerText);
             MaxLevel = Convert.ToInt32(n.SelectSingleNode("MaxLevel").InnerText);
@@ -28,7 +28,7 @@ namespace Fantasy_King_s_Battle
 
             Debug.Assert(ID.Length > 0);
             Debug.Assert(Name.Length > 0);
-            //Debug.Assert(Description.Length > 0);
+            Debug.Assert(Description.Length > 0);
             Debug.Assert(DefaultLevel >= 0);
             Debug.Assert(MaxLevel > 0);
             Debug.Assert(MaxLevel <= 3);
@@ -43,8 +43,8 @@ namespace Fantasy_King_s_Battle
                 if (b.Name == Name)
                     throw new Exception("В конфигурации зданий повторяется Name = " + Name);
 
-//                if (b.Description == Description)
-//                    throw new Exception("В конфигурации зданий повторяется Description = " + Description);
+                if (b.Description == Description)
+                    throw new Exception("В конфигурации зданий повторяется Description = " + Description);
 
                 if (b.ImageIndex == ImageIndex)
                     throw new Exception("В конфигурации зданий повторяется ImageIndex = " + ImageIndex.ToString());
