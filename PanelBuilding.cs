@@ -12,6 +12,7 @@ namespace Fantasy_King_s_Battle
     // Класс панели здания
     internal sealed class PanelBuilding : Control
     {
+        private static Font fontLevel = new Font("Arial", 12, FontStyle.Bold);
         private readonly PictureBox pbBuilding;
         private readonly ImageList imageListBuilding;
         private readonly ImageList imageListGui;
@@ -85,22 +86,26 @@ namespace Fantasy_King_s_Battle
             lblLevel = new Label()
             {
                 Parent = this,
-                Left = pbBuilding.Left,
-                Top = pbBuilding.Top + pbBuilding.Height + Config.GRID_SIZE,
-                Width = 60
+                AutoSize = false,
+                Top = lblName.Top,
+                Size = new Size(32, 16),
+                Font = fontLevel,
+                TextAlign = ContentAlignment.MiddleRight
             };
+            lblLevel.BringToFront();
 
             lblHeroes = new Label()
             {
                 Parent = this,
-                Left = GuiUtils.NextLeft(lblLevel),
-                Top = lblLevel.Top
+                Left = Config.GRID_SIZE,
+                Top = GuiUtils.NextTop(pbBuilding),
+                Width = 40
             };
 
             lblIncome = new Label()
             {
                 Parent = this,
-                Top = lblLevel.Top,
+                Top = lblHeroes.Top,
                 Left = GuiUtils.NextLeft(lblHeroes),
                 TextAlign = ContentAlignment.MiddleRight,
                 ImageAlign = ContentAlignment.MiddleLeft,
@@ -112,6 +117,7 @@ namespace Fantasy_King_s_Battle
             Width = btnBuyOrUpgrade.Left + btnBuyOrUpgrade.Width + Config.GRID_SIZE;
 
             lblName.Width = Width - (Config.GRID_SIZE * 2) - 2;
+            lblLevel.Left = Width - Config.GRID_SIZE - lblLevel.Width;
 
             penBorder = new Pen(Color.Black);
             rectBorder = new Rectangle(0, 0, Width - 1, Height - 1);
@@ -164,8 +170,28 @@ namespace Fantasy_King_s_Battle
             lblName.Text = building.Building.Name;
             lblIncome.Text = "+" + building.Income().ToString();
 
+            // Информация об уровне здания
+            if ((building.Level > 0) && (building.Building.MaxLevel > 1))
+            {
+                lblLevel.Show();
+
+                if (building.Level < building.Building.MaxLevel)
+                {
+                    lblLevel.Text = building.Level.ToString() + "/" + building.Building.MaxLevel.ToString();
+                    lblLevel.ForeColor = Color.Black;
+                }
+                else
+                {
+                    lblLevel.Text = building.Level.ToString();
+                    lblLevel.ForeColor = Color.Green;
+                }
+            }
+            else
+                lblLevel.Hide();
+
             if (building.Level > 0)
             {
+
                 if ((building.Building.MaxHeroes > 0) && (building.CanTrainHero() == true))
                 {
                     btnLevelUp.Visible = true;
@@ -178,7 +204,6 @@ namespace Fantasy_King_s_Battle
                 }
 
                 lblName.ForeColor = Color.Green;
-                lblLevel.Text = building.Level.ToString();
                 lblHeroes.Text = building.Heroes.Count.ToString() + "/" + building.Building.MaxHeroes.ToString();
 
                 btnBuyOrUpgrade.Visible = building.CanLevelUp();
@@ -192,7 +217,6 @@ namespace Fantasy_King_s_Battle
             else
             {
                 lblName.ForeColor = Color.Gray;
-                lblLevel.Text = "";
                 lblHeroes.Text = "";
 
                 btnBuyOrUpgrade.Text = "";
