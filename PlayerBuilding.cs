@@ -114,5 +114,21 @@ namespace Fantasy_King_s_Battle
 
             return (Player.Gold >= Building.TrainedHero.Cost) && (Heroes.Count < Building.MaxHeroes) && (Player.Heroes.Count < FormMain.MAX_HEROES_AT_PLAYER);
         }
+
+        internal List<TextRequirement> GetTextRequirementsHire()
+        {
+            if (Level == 0)
+                return null;
+
+            List<TextRequirement> list = new List<TextRequirement>();
+
+            if (Heroes.Count == Building.MaxHeroes)
+                list.Add(new TextRequirement(false, "Гильдия заполнена"));
+
+            if (Player.Heroes.Count == FormMain.MAX_HEROES_AT_PLAYER)
+                list.Add(new TextRequirement(false, "Максимальное кол-во героев"));
+
+            return list;
+        }
     }
 }

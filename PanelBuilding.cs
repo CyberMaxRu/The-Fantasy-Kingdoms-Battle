@@ -88,6 +88,8 @@ namespace Fantasy_King_s_Battle
                 ForeColor = Color.White
             };
             btnHireHero.Click += BtnHero_Click;
+            btnHireHero.MouseEnter += BtnHireHero_MouseEnter;
+            btnHireHero.MouseLeave += Control_MouseLeave;
 
             lblLevel = new Label()
             {
@@ -123,12 +125,21 @@ namespace Fantasy_King_s_Battle
             Paint += PanelBuilding_Paint;
         }
 
+        private void BtnHireHero_MouseEnter(object sender, EventArgs e)
+        {
+            Program.formMain.formHint.ShowHint(new Point(Program.formMain.Left + 10 + Left + btnHireHero.Left, Program.formMain.Top + 32 + Top + btnHireHero.Top + btnHireHero.Height),
+                building.Building.TrainedHero.Name, "",
+                building.Building.TrainedHero.Description,
+                building.GetTextRequirementsHire(),
+                building.Building.TrainedHero.Cost, building.Player.Gold >= building.Building.TrainedHero.Cost);
+        }
+
         private void PbBuilding_MouseEnter(object sender, EventArgs e)
         {
             Program.formMain.formHint.ShowHint(new Point(Program.formMain.Left + 10 + Left + pbBuilding.Left, Program.formMain.Top + 32 + Top + pbBuilding.Top + pbBuilding.Height),
-                    building.Building.Name,
-                    building.Level > 0 ? "Уровень " + building.Level.ToString() : "",
-                    building.Building.Description, null, 0, false);
+                building.Building.Name,
+                building.Level > 0 ? "Уровень " + building.Level.ToString() : "",
+                building.Building.Description, null, 0, false);
         }
 
         private void Control_MouseLeave(object sender, EventArgs e)
@@ -144,9 +155,9 @@ namespace Fantasy_King_s_Battle
         private void ShowHintBtnBuyOrUpgrade()
         {
             Program.formMain.formHint.ShowHint(new Point(Program.formMain.Left + 10 + Left + btnBuyOrUpgrade.Left, Program.formMain.Top + 32 + Top + btnBuyOrUpgrade.Top + btnBuyOrUpgrade.Height),
-                    building.Building.Name,
-                    (building.Level == 0 ? "Уровень 1" : (building.CanLevelUp() == true) ? "Улучшить строение" : ""),
-                    building.Level == 0 ? building.Building.Description : "", building.GetTextRequirements(), building.CostBuyOrUpgrade(), building.Player.Gold >= building.CostBuyOrUpgrade());
+                building.Building.Name,
+                (building.Level == 0 ? "Уровень 1" : (building.CanLevelUp() == true) ? "Улучшить строение" : ""),
+                building.Level == 0 ? building.Building.Description : "", building.GetTextRequirements(), building.CostBuyOrUpgrade(), building.Player.Gold >= building.CostBuyOrUpgrade());
         }
 
         private void PanelBuilding_Paint(object sender, PaintEventArgs e)
