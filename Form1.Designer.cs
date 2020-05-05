@@ -98,8 +98,8 @@
             this.tabPageBuildings.Name = "tabPageBuildings";
             this.tabPageBuildings.Size = new System.Drawing.Size(952, 31);
             this.tabPageBuildings.TabIndex = 2;
-            this.tabPageBuildings.Text = "Здания";
-            this.tabPageBuildings.ToolTipText = "Экономические и прочие здания";
+            this.tabPageBuildings.Text = "Строения";
+            this.tabPageBuildings.ToolTipText = "Экономические строения";
             this.tabPageBuildings.UseVisualStyleBackColor = true;
             // 
             // tabPageTemples
