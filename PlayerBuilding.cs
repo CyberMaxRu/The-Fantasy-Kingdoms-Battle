@@ -126,7 +126,7 @@ namespace Fantasy_King_s_Battle
                 list.Add(new TextRequirement(false, "Гильдия заполнена"));
 
             if (Player.Heroes.Count == FormMain.MAX_HEROES_AT_PLAYER)
-                list.Add(new TextRequirement(false, "Максимальное кол-во героев"));
+                list.Add(new TextRequirement(false, "Достигнуто максимальное количество героев"));
 
             return list;
         }
