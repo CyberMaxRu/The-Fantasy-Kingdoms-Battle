@@ -28,6 +28,7 @@ namespace Fantasy_King_s_Battle
         internal readonly Label lblAction;
         internal readonly Label lblDescription;
         internal readonly List<Label> lblRequirement = new List<Label>();
+        internal readonly Label lblIncome;
         internal readonly Label lblGold;
         internal readonly Timer timerDelayShow;
         internal readonly Timer timerOpacity;
@@ -80,7 +81,21 @@ namespace Fantasy_King_s_Battle
                 Font = new Font("Microsoft Sans Serif", 10)
             };
             lblDescription.MaximumSize = new Size(ClientSize.Width - (Config.GRID_SIZE * 2), 0);
-            
+
+            lblIncome = new Label()
+            {
+                Parent = this,
+                Left = Config.GRID_SIZE,
+                Top = Config.GRID_SIZE,
+                Width = ClientSize.Width - (Config.GRID_SIZE * 2),
+                ImageList = ilGui16,
+                ImageIndex = FormMain.GUI_16_GOLD,
+                ImageAlign = System.Drawing.ContentAlignment.MiddleLeft,
+                BackColor = Color.Transparent,
+                ForeColor = Color.Lime,
+                Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
+            };
+
             lblGold = new Label()
             {
                 Parent = this,
@@ -143,7 +158,7 @@ namespace Fantasy_King_s_Battle
             timerOpacity.Enabled = true; 
         }
 
-        internal void ShowHint(Point p, string header, string action, string description, List<TextRequirement> requirement, int gold, bool goldEnough)
+        internal void ShowHint(Point p, string header, string action, string description, List<TextRequirement> requirement, int gold, bool goldEnough, int income)
         {
             Left = p.X;
             Top = p.Y;
@@ -172,7 +187,18 @@ namespace Fantasy_King_s_Battle
             }
             else
                 lblDescription.Hide();
-            
+
+            if (income > 0)
+            {
+                lblIncome.Show();
+                lblIncome.Top = nextTop;
+                lblIncome.Text = "     +" + income.ToString();
+
+                nextTop = GuiUtils.NextTop(lblIncome);
+            }
+            else
+                lblIncome.Hide();
+
             // Секция требований
             foreach (Label l in lblRequirement)
             {

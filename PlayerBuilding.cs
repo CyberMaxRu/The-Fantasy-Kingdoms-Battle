@@ -89,6 +89,10 @@ namespace Fantasy_King_s_Battle
         {
             return Level > 0 ? Building.Levels[Level].Income : 0;
         }
+        internal int IncomeNextLevel()
+        {
+            return Level < Building.MaxLevel ? Building.Levels[Level + 1].Income : 0;
+        }
 
         internal PlayerHero HireHero()
         {
