@@ -43,7 +43,7 @@ namespace Fantasy_King_s_Battle
             ID = n.SelectSingleNode("ID").InnerText;
             Name = n.SelectSingleNode("Name").InnerText;
             if (n.SelectSingleNode("Description") != null)
-                Description = n.SelectSingleNode("Description").InnerText;
+                Description = n.SelectSingleNode("Description").InnerText.Replace("/", Environment.NewLine);
             ImageIndex = Convert.ToInt32(n.SelectSingleNode("ImageIndex").InnerText);
             Cost = Convert.ToInt32(n.SelectSingleNode("Cost").InnerText);
             Building = FormMain.Config.FindBuilding(n.SelectSingleNode("Building").InnerText);
