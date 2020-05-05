@@ -127,6 +127,11 @@ namespace Fantasy_King_s_Battle
 
         private void BtnHireHero_MouseEnter(object sender, EventArgs e)
         {
+            ShowHintBtnHireHero();
+        }
+
+        private void ShowHintBtnHireHero()
+        {
             Program.formMain.formHint.ShowHint(new Point(Program.formMain.Left + 10 + Left + btnHireHero.Left, Program.formMain.Top + 32 + Top + btnHireHero.Top + btnHireHero.Height),
                 building.Building.TrainedHero.Name, "",
                 building.Building.TrainedHero.Description,
@@ -173,6 +178,7 @@ namespace Fantasy_King_s_Battle
             if (building.CanTrainHero() == true)
             {
                 building.HireHero();
+                ShowHintBtnHireHero();
                 UpdateData();
                 Program.formMain.ShowHeroes();
             }
