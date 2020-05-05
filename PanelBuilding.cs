@@ -25,6 +25,8 @@ namespace Fantasy_King_s_Battle
         private readonly Label lblHeroes;
         private PlayerBuilding building;
         private readonly Font fontLabel = new Font("Microsoft Sans Setif", 10, FontStyle.Bold);
+        private readonly Pen penBorder;
+        private readonly Rectangle rectBorder;
 
         public PanelBuilding(Control parent, int left, int top, FormMain formMain)
         {
@@ -106,6 +108,16 @@ namespace Fantasy_King_s_Battle
             Width = btnBuy.Left + btnBuy.Width + Config.GRID_SIZE;
 
             lblName.Width = Width - (Config.GRID_SIZE * 2) - 2;
+
+            penBorder = new Pen(Color.Black);
+            rectBorder = new Rectangle(0, 0, Width - 1, Height - 1);
+
+            Paint += PanelBuilding_Paint;
+        }
+
+        private void PanelBuilding_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.DrawRectangle(penBorder, rectBorder);
         }
 
         private void BtnLevelUp_Click(object sender, EventArgs e)
