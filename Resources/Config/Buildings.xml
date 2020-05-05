@@ -3,6 +3,7 @@
   <Building>
     <ID>Castle</ID>
     <Name>Замок</Name>
+    <Description>- позволяет отдавать приказы строительства#NL#- содержит налоговую и охранную службы#NL#- здесь хранится казна королевства</Description>
     <ImageIndex>7</ImageIndex>
     <CategoryBuilding>Castle</CategoryBuilding>
     <Line>1</Line>
@@ -30,6 +31,7 @@
   <Building>
     <ID>House</ID>
     <Name>Крестьянский дом</Name>
+    <Description></Description>
     <ImageIndex>8</ImageIndex>
     <CategoryBuilding>Castle</CategoryBuilding>
     <Line>1</Line>
@@ -47,6 +49,7 @@
   <Building>
     <ID>Mill</ID>
     <Name>Мельница</Name>
+    <Description></Description>
     <ImageIndex>9</ImageIndex>
     <CategoryBuilding>Castle</CategoryBuilding>
     <Line>1</Line>
@@ -64,6 +67,7 @@
   <Building>
     <ID>Market</ID>
     <Name>Рынок</Name>
+    <Description></Description>
     <ImageIndex>10</ImageIndex>
     <CategoryBuilding>Castle</CategoryBuilding>
     <Line>2</Line>
@@ -103,6 +107,7 @@
   <Building>
     <ID>Smithy</ID>
     <Name>Кузница</Name>
+    <Description></Description>
     <ImageIndex>11</ImageIndex>
     <CategoryBuilding>Castle</CategoryBuilding>
     <Line>2</Line>
@@ -142,6 +147,7 @@
   <Building>
     <ID>Tavern</ID>
     <Name>Таверна</Name>
+    <Description></Description>
     <ImageIndex>12</ImageIndex>
     <CategoryBuilding>Castle</CategoryBuilding>
     <Line>3</Line>
@@ -170,6 +176,7 @@
   <Building>
     <ID>MagicBazaar</ID>
     <Name>Магический базар</Name>
+    <Description></Description>
     <ImageIndex>13</ImageIndex>
     <CategoryBuilding>Castle</CategoryBuilding>
     <Line>2</Line>
@@ -193,6 +200,7 @@
   <Building>
     <ID>Statue</ID>
     <Name>Статуя</Name>
+    <Description></Description>
     <ImageIndex>14</ImageIndex>
     <CategoryBuilding>Castle</CategoryBuilding>
     <Line>3</Line>
@@ -210,6 +218,7 @@
   <Building>
     <ID>Library</ID>
     <Name>Библиотека</Name>
+    <Description></Description>
     <ImageIndex>15</ImageIndex>
     <CategoryBuilding>Castle</CategoryBuilding>
     <Line>3</Line>
@@ -232,6 +241,7 @@
   <Building>
     <ID>GuildWarrior</ID>
     <Name>Гильдия воинов</Name>
+    <Description></Description>
     <ImageIndex>0</ImageIndex>
     <CategoryBuilding>Guild</CategoryBuilding>
     <Line>1</Line>
@@ -259,6 +269,7 @@
   <Building>
     <ID>GuildRogue</ID>
     <Name>Гильдия разбойниц</Name>
+    <Description></Description>
     <ImageIndex>1</ImageIndex>
     <CategoryBuilding>Guild</CategoryBuilding>
     <Line>1</Line>
@@ -286,6 +297,7 @@
   <Building>
     <ID>GuildHunter</ID>
     <Name>Гильдия рейнджеров</Name>
+    <Description></Description>
     <ImageIndex>2</ImageIndex>
     <CategoryBuilding>Guild</CategoryBuilding>
     <Line>1</Line>
@@ -313,6 +325,7 @@
   <Building>
     <ID>GuildCleric</ID>
     <Name>Гильдия послушниц</Name>
+    <Description></Description>
     <ImageIndex>3</ImageIndex>
     <CategoryBuilding>Guild</CategoryBuilding>
     <Line>1</Line>
@@ -340,6 +353,7 @@
   <Building>
     <ID>GuildMage</ID>
     <Name>Гильдия магов</Name>
+    <Description></Description>
     <ImageIndex>4</ImageIndex>
     <CategoryBuilding>Guild</CategoryBuilding>
     <Line>2</Line>
@@ -385,6 +399,7 @@
   <Building>
     <ID>GuildElf</ID>
     <Name>Бунгало эльфов</Name>
+    <Description></Description>
     <ImageIndex>5</ImageIndex>
     <CategoryBuilding>Guild</CategoryBuilding>
     <Line>2</Line>
@@ -427,6 +442,7 @@
   <Building>
     <ID>GuildDwarf</ID>
     <Name>Поселение гномов</Name>
+    <Description></Description>
     <ImageIndex>6</ImageIndex>
     <CategoryBuilding>Guild</CategoryBuilding>
     <Line>2</Line>
@@ -468,6 +484,7 @@
   </Building>
   <Building>
     <ID>GuildDarkPriest</ID>
+    <Description></Description>
     <Name>Храм Крипты</Name>
     <ImageIndex>16</ImageIndex>
     <CategoryBuilding>Temple</CategoryBuilding>
@@ -492,6 +509,7 @@
   <Building>
     <ID>GuildPriest</ID>
     <Name>Храм Агрелы</Name>
+    <Description></Description>
     <ImageIndex>17</ImageIndex>
     <CategoryBuilding>Temple</CategoryBuilding>
     <Line>1</Line>
@@ -515,6 +533,7 @@
   <Building>
     <ID>GuildPaladin</ID>
     <Name>Храм Дауроса</Name>
+    <Description></Description>
     <ImageIndex>18</ImageIndex>
     <CategoryBuilding>Temple</CategoryBuilding>
     <Line>1</Line>
@@ -538,6 +557,7 @@
   <Building>
     <ID>GuildBlademaster</ID>
     <Name>Храм Крольма</Name>
+    <Description></Description>
     <ImageIndex>19</ImageIndex>
     <CategoryBuilding>Temple</CategoryBuilding>
     <Line>2</Line>
@@ -561,6 +581,7 @@
   <Building>
     <ID>GuildBeastmaster</ID>
     <Name>Храм Фервуса</Name>
+    <Description></Description>
     <ImageIndex>20</ImageIndex>
     <CategoryBuilding>Temple</CategoryBuilding>
     <Line>2</Line>
@@ -584,6 +605,7 @@
   <Building>
     <ID>GuildMarksman</ID>
     <Name>Храм Хелии</Name>
+    <Description></Description>
     <ImageIndex>21</ImageIndex>
     <CategoryBuilding>Temple</CategoryBuilding>
     <Line>2</Line>
@@ -607,6 +629,7 @@
   <Building>
     <ID>GuildFireMage</ID>
     <Name>Храм Огня</Name>
+    <Description></Description>
     <ImageIndex>22</ImageIndex>
     <CategoryBuilding>Temple</CategoryBuilding>
     <Line>3</Line>
@@ -630,6 +653,7 @@
   <Building>
     <ID>GuildIceMage</ID>
     <Name>Храм Холода</Name>
+    <Description></Description>
     <ImageIndex>23</ImageIndex>
     <CategoryBuilding>Temple</CategoryBuilding>
     <Line>3</Line>
@@ -653,6 +677,7 @@
   <Building>
     <ID>GuildDeathKinght</ID>
     <Name>Храм Лунорда</Name>
+    <Description></Description>
     <ImageIndex>24</ImageIndex>
     <CategoryBuilding>Temple</CategoryBuilding>
     <Line>3</Line>
