@@ -76,7 +76,7 @@ namespace Fantasy_King_s_Battle
             foreach (Requirement r in Building.Levels[Level + 1].Requirements)
             {
                 pb = Player.GetPlayerBuilding(r.Building);
-                list.Add(new TextRequirement(r.Level <= pb.Level, pb.Building.Name + (pb.Building.MaxLevel > 1 ? " " + r.Level + " уровня" : "")));
+                list.Add(new TextRequirement(r.Level <= pb.Level, pb.Building.Name + (r.Level > 1 ? " " + r.Level + " уровня" : "")));
             }
 
             return list;
