@@ -96,6 +96,8 @@ namespace Fantasy_King_s_Battle
 
         private List<PictureBox> SlotSkill = new List<PictureBox>();
 
+        internal readonly FormHint formHint;
+
         public FormMain()
         {
             InitializeComponent();
@@ -213,6 +215,8 @@ namespace Fantasy_King_s_Battle
             ShowDataPlayer();
 
             ActivatePage(pageLobby);
+
+            formHint = new FormHint(background, ilGui16);
         }
 
         internal static Config Config { get; set; }
