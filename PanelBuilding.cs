@@ -169,11 +169,13 @@ namespace Fantasy_King_s_Battle
         {
             Debug.Assert(building.Level > 0);
             Debug.Assert(building.Level < building.Building.MaxLevel);
-            Debug.Assert(building.CanTrainHero() == true);
 
-            building.HireHero();
-            UpdateData();
-            Program.formMain.ShowHeroes();
+            if (building.CanTrainHero() == true)
+            {
+                building.HireHero();
+                UpdateData();
+                Program.formMain.ShowHeroes();
+            }
         }
 
         private void BtnBuyOrUprgade_Click(object sender, EventArgs e)
@@ -225,9 +227,8 @@ namespace Fantasy_King_s_Battle
                 if (building.Building.MaxHeroes > 0)
                 {
                     btnHireHero.Show();
-                    btnHireHero.ImageIndex = building.Building.TrainedHero.ImageIndex;
-                    btnHireHero.Enabled = building.CanTrainHero();
-                    btnHireHero.Text = building.Heroes.Count.ToString() + "/" + building.Building.MaxHeroes.ToString();
+                    btnHireHero.ImageIndex = GuiUtils.GetImageIndexWithGray(btnHireHero.ImageList, building.Building.TrainedHero.ImageIndex, !building.CanTrainHero());
+                    btnHireHero.Text = building.CanTrainHero() == true ? building.Building.TrainedHero.Cost.ToString() : ""; //building.Heroes.Count.ToString() + "/" + building.Building.MaxHeroes.ToString();
                 }
                 else
                     btnHireHero.Visible = false;
