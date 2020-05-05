@@ -3,7 +3,7 @@
   <Building>
     <ID>Castle</ID>
     <Name>Замок</Name>
-    <Description>- позволяет отдавать приказы строительства/- содержит налоговую и охранную службы/- здесь хранится казна королевства</Description>
+    <Description>- Позволяет отдавать приказы строительства/- Содержит налоговую и охранную службы/- Здесь хранится казна королевства</Description>
     <ImageIndex>7</ImageIndex>
     <CategoryBuilding>Castle</CategoryBuilding>
     <Line>1</Line>
@@ -51,7 +51,7 @@
   <Building>
     <ID>House</ID>
     <Name>Крестьянский дом</Name>
-    <Description>- приносит небольшой доход/- жилище крестьян</Description>
+    <Description>- Приносит небольшой доход/- Жилище крестьян</Description>
     <ImageIndex>8</ImageIndex>
     <CategoryBuilding>Castle</CategoryBuilding>
     <Line>1</Line>
@@ -69,7 +69,7 @@
   <Building>
     <ID>Mill</ID>
     <Name>Мельница</Name>
-    <Description>- приносит небольшой доход</Description>
+    <Description>- Приносит небольшой доход</Description>
     <Description></Description>
     <ImageIndex>9</ImageIndex>
     <CategoryBuilding>Castle</CategoryBuilding>
@@ -88,7 +88,7 @@
   <Building>
     <ID>Market</ID>
     <Name>Рынок</Name>
-    <Description>- приносит существенный доход/- здесь исследуют и продают зелья/- здесь исследуют и продают артефакты</Description>
+    <Description>- Приносит существенный доход/- Здесь исследуют и продают зелья/- Здесь исследуют и продают артефакты</Description>
     <ImageIndex>10</ImageIndex>
     <CategoryBuilding>Castle</CategoryBuilding>
     <Line>2</Line>
@@ -128,7 +128,7 @@
   <Building>
     <ID>Smithy</ID>
     <Name>Кузница</Name>
-    <Description>- приносит небольшой доход/- здесь изобретают и продают новые виды оружия и брони</Description>
+    <Description>- Приносит небольшой доход/- Здесь изобретают и продают новые виды оружия и брони</Description>
     <ImageIndex>11</ImageIndex>
     <CategoryBuilding>Castle</CategoryBuilding>
     <Line>2</Line>
@@ -168,7 +168,7 @@
   <Building>
     <ID>Tavern</ID>
     <Name>Таверна</Name>
-    <Description>- здесь героя могут отдыхать и лечиться/- позволяет собирать партии героев</Description>
+    <Description>- Здесь героя могут отдыхать и лечиться/- Позволяет собирать партии героев</Description>
     <ImageIndex>12</ImageIndex>
     <CategoryBuilding>Castle</CategoryBuilding>
     <Line>3</Line>
@@ -197,7 +197,7 @@
   <Building>
     <ID>MagicBazaar</ID>
     <Name>Магический базар</Name>
-    <Description>- приносит небольшой доход/- здесь изобретают и продают эликсиры</Description>
+    <Description>- Приносит небольшой доход/- Здесь изобретают и продают эликсиры</Description>
     <ImageIndex>13</ImageIndex>
     <CategoryBuilding>Castle</CategoryBuilding>
     <Line>2</Line>
@@ -225,7 +225,7 @@
   <Building>
     <ID>Statue</ID>
     <Name>Статуя</Name>
-    <Description>- повышает энтузиазм героев</Description>
+    <Description>- Повышает энтузиазм героев</Description>
     <ImageIndex>14</ImageIndex>
     <CategoryBuilding>Castle</CategoryBuilding>
     <Line>3</Line>
@@ -243,7 +243,7 @@
   <Building>
     <ID>Library</ID>
     <Name>Библиотека</Name>
-    <Description>- позволяет изучить заклинания</Description>
+    <Description>- Позволяет изучить заклинания</Description>
     <ImageIndex>15</ImageIndex>
     <CategoryBuilding>Castle</CategoryBuilding>
     <Line>3</Line>
@@ -266,7 +266,7 @@
   <Building>
     <ID>GuildWarrior</ID>
     <Name>Гильдия воинов</Name>
-    <Description>- позволяет нанимать воинов/- в гильдии исследуют и продают особые способности воинов/- здесь исследуют способность "Призыв к оружию"</Description>
+    <Description>- Позволяет нанимать воинов/- В гильдии исследуют и продают особые способности воинов/- Здесь исследуют способность "Призыв к оружию"</Description>
     <ImageIndex>0</ImageIndex>
     <CategoryBuilding>Guild</CategoryBuilding>
     <Line>1</Line>
@@ -294,7 +294,7 @@
   <Building>
     <ID>GuildRogue</ID>
     <Name>Гильдия разбойниц</Name>
-    <Description>- позволяет нанимать разбойниц/- в гильдии исследуют и продают особые способности разбойниц/- здесь исследуют и продают яды для оружия/- здесь исследуют способность "Вымогательство"</Description>
+    <Description>- Позволяет нанимать разбойниц/- В гильдии исследуют и продают особые способности разбойниц/- Здесь исследуют и продают яды для оружия/- Здесь исследуют способность "Вымогательство"</Description>
     <ImageIndex>1</ImageIndex>
     <CategoryBuilding>Guild</CategoryBuilding>
     <Line>1</Line>
@@ -322,7 +322,7 @@
   <Building>
     <ID>GuildHunter</ID>
     <Name>Гильдия рейнджеров</Name>
-    <Description>- позволяет нанимать рейнджеров/- в гильдии исследуют и продают особые способности рейнджеров/- здесь исследуют заклинание "Взгляд орла"</Description>
+    <Description>- Позволяет нанимать рейнджеров/- В гильдии исследуют и продают особые способности рейнджеров/- Здесь исследуют заклинание "Взгляд орла"</Description>
     <ImageIndex>2</ImageIndex>
     <CategoryBuilding>Guild</CategoryBuilding>
     <Line>1</Line>
@@ -350,7 +350,7 @@
   <Building>
     <ID>GuildCleric</ID>
     <Name>Гильдия послушниц</Name>
-    <Description>- позволяет нанимать послушниц/- в гильдии исследуют и продают особые способности послушниц/- здесь исследуют заклинание "Святое лечение"</Description>
+    <Description>- Позволяет нанимать послушниц/- В гильдии исследуют и продают особые способности послушниц/- Здесь исследуют заклинание "Святое лечение"</Description>
     <ImageIndex>3</ImageIndex>
     <CategoryBuilding>Guild</CategoryBuilding>
     <Line>1</Line>
@@ -378,7 +378,7 @@
   <Building>
     <ID>GuildMage</ID>
     <Name>Гильдия магов</Name>
-    <Description>- позволяет нанимать магов/- в гильдии исследуют и продают особые способности магов/- здесь исследуют разнообразные заклинания</Description>
+    <Description>- Позволяет нанимать магов/- В гильдии исследуют и продают особые способности магов/- Здесь исследуют разнообразные заклинания</Description>
     <ImageIndex>4</ImageIndex>
     <CategoryBuilding>Guild</CategoryBuilding>
     <Line>2</Line>
@@ -424,7 +424,7 @@
   <Building>
     <ID>GuildElf</ID>
     <Name>Бунгало эльфов</Name>
-    <Description>- позволяет нанимать эльфиек/- в гильдии исследуют и продают особые способности эльфиек/- эльфийки очень не любят гномов</Description>
+    <Description>- Позволяет нанимать эльфиек/- В гильдии исследуют и продают особые способности эльфиек/- Эльфийки очень не любят гномов</Description>
     <ImageIndex>5</ImageIndex>
     <CategoryBuilding>Guild</CategoryBuilding>
     <Line>2</Line>
@@ -467,7 +467,7 @@
   <Building>
     <ID>GuildDwarf</ID>
     <Name>Поселение гномов</Name>
-    <Description>- позволяет нанимать гномов/- в гильдии исследуют и продают особые способности гномов/- здесь исследуют заклинание "Наговор камня"/- гномы очень не любят эльфиек</Description>
+    <Description>- Позволяет нанимать гномов/- В гильдии исследуют и продают особые способности гномов/- Здесь исследуют заклинание "Наговор камня"/- Гномы очень не любят эльфиек</Description>
     <ImageIndex>6</ImageIndex>
     <CategoryBuilding>Guild</CategoryBuilding>
     <Line>2</Line>
@@ -510,7 +510,7 @@
   <Building>
     <ID>GuildDarkPriest</ID>
     <Name>Храм Крипты</Name>
-    <Description>- позволяет нанимать сестер Крипты/- здесь исследуют заклинание "Чума и разорение"/- сестры Крипты не любят паладинов</Description>
+    <Description>- Позволяет нанимать сестер Крипты/- Здесь исследуют заклинание "Чума и разорение"/- Сестры Крипты не любят паладинов</Description>
     <ImageIndex>16</ImageIndex>
     <CategoryBuilding>Temple</CategoryBuilding>
     <Line>1</Line>
@@ -538,7 +538,7 @@
   <Building>
     <ID>GuildPriest</ID>
     <Name>Храм Агрелы</Name>
-    <Description>- позволяет нанимать жриц Агрелы/- здесь исследуют заклинание "Возрождение"</Description>
+    <Description>- Позволяет нанимать жриц Агрелы/- Здесь исследуют заклинание "Возрождение"</Description>
     <ImageIndex>17</ImageIndex>
     <CategoryBuilding>Temple</CategoryBuilding>
     <Line>1</Line>
@@ -566,7 +566,7 @@
   <Building>
     <ID>GuildPaladin</ID>
     <Name>Храм Дауроса</Name>
-    <Description>- позволяет нанимать паладинов/- здесь исследуют заклинание "Святой щит"/- паладины не любят нежить, вызываемую сестрами Крипты</Description>
+    <Description>- Позволяет нанимать паладинов/- Здесь исследуют заклинание "Святой щит"/- Паладины не любят нежить, вызываемую сестрами Крипты</Description>
     <ImageIndex>18</ImageIndex>
     <CategoryBuilding>Temple</CategoryBuilding>
     <Line>1</Line>
@@ -594,7 +594,7 @@
   <Building>
     <ID>GuildBlademaster</ID>
     <Name>Храм Крольма</Name>
-    <Description>- позволяет нанимать мастеров меча/- здесь исследуют заклинание "Гнев Крольма"</Description>
+    <Description>- Позволяет нанимать мастеров меча/- Здесь исследуют заклинание "Гнев Крольма"</Description>
     <ImageIndex>19</ImageIndex>
     <CategoryBuilding>Temple</CategoryBuilding>
     <Line>2</Line>
@@ -622,7 +622,7 @@
   <Building>
     <ID>GuildBeastmaster</ID>
     <Name>Храм Фервуса</Name>
-    <Description>- позволяет нанимать звероловов/- здесь исследуют заклинание "Щит Хаоса"</Description>
+    <Description>- Позволяет нанимать звероловов/- Здесь исследуют заклинание "Щит Хаоса"</Description>
     <ImageIndex>20</ImageIndex>
     <CategoryBuilding>Temple</CategoryBuilding>
     <Line>2</Line>
@@ -650,7 +650,7 @@
   <Building>
     <ID>GuildMarksman</ID>
     <Name>Храм Хелии</Name>
-    <Description>- позволяет нанимать лучников Хелии/- здесь исследуют заклинание "Удар Солнца"</Description>
+    <Description>- Позволяет нанимать лучников Хелии/- Здесь исследуют заклинание "Удар Солнца"</Description>
     <ImageIndex>21</ImageIndex>
     <CategoryBuilding>Temple</CategoryBuilding>
     <Line>2</Line>
@@ -678,7 +678,7 @@
   <Building>
     <ID>GuildFireMage</ID>
     <Name>Храм Огня</Name>
-    <Description>- позволяет нанимать магов Огня</Description>
+    <Description>- Позволяет нанимать магов Огня</Description>
     <ImageIndex>22</ImageIndex>
     <CategoryBuilding>Temple</CategoryBuilding>
     <Line>3</Line>
@@ -706,7 +706,7 @@
   <Building>
     <ID>GuildIceMage</ID>
     <Name>Храм Холода</Name>
-    <Description>- позволяет нанимать магов Холода</Description>
+    <Description>- Позволяет нанимать магов Холода</Description>
     <ImageIndex>23</ImageIndex>
     <CategoryBuilding>Temple</CategoryBuilding>
     <Line>3</Line>
@@ -734,7 +734,7 @@
   <Building>
     <ID>GuildDeathKinght</ID>
     <Name>Храм Лунорда</Name>
-    <Description>- позволяет нанимать ассасинов</Description>
+    <Description>- Позволяет нанимать ассасинов</Description>
     <ImageIndex>24</ImageIndex>
     <CategoryBuilding>Temple</CategoryBuilding>
     <Line>3</Line>
