@@ -137,7 +137,7 @@ namespace Fantasy_King_s_Battle
             Program.formMain.formHint.ShowHint(new Point(Program.formMain.Left + 10 + Left + btnBuyOrUpgrade.Left, Program.formMain.Top + 32 + Top + btnBuyOrUpgrade.Top + btnBuyOrUpgrade.Height),
                     building.Building.Name,
                     (building.Level == 0 ? "Уровень 1" : (building.CanLevelUp() == true) ? "Улучшить строение" : ""),
-                    building.Building.Description, building.GetTextRequirements(), building.CostBuyOrUpgrade(), building.Player.Gold >= building.CostBuyOrUpgrade());
+                    building.Level == 0 ? building.Building.Description : "", building.GetTextRequirements(), building.CostBuyOrUpgrade(), building.Player.Gold >= building.CostBuyOrUpgrade());
         }
 
         private void PanelBuilding_Paint(object sender, PaintEventArgs e)
