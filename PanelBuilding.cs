@@ -43,7 +43,6 @@ namespace Fantasy_King_s_Battle
                 Left = Config.GRID_SIZE,
                 Top = Config.GRID_SIZE,
                 Height = Config.GRID_SIZE * 2,
-                ForeColor = Color.FromKnownColor(KnownColor.Green),
                 Font = fontLabel
             };
 
@@ -162,6 +161,7 @@ namespace Fantasy_King_s_Battle
                     btnBuy.Visible = false;
                 }
 
+                lblName.ForeColor = Color.Green;
                 lblLevel.Text = building.Level.ToString();
                 lblHeroes.Text = building.Heroes.Count.ToString() + "/" + building.Building.MaxHeroes.ToString();
 
@@ -174,6 +174,7 @@ namespace Fantasy_King_s_Battle
             }
             else
             {
+                lblName.ForeColor = Color.Gray;
                 lblLevel.Text = "";
                 lblHeroes.Text = "";
 
