@@ -39,6 +39,7 @@ namespace Fantasy_King_s_Battle
             imageListGuiHeroes = formMain.ilGuiHeroes;
             Left = left;
             Top = top;
+            BackColor = Color.PowderBlue;
 
             lblName = new Label()
             {
