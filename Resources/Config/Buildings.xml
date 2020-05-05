@@ -80,7 +80,7 @@
       <Level>
         <Pos>1</Pos>
         <Cost>0</Cost>
-        <Income>250</Income>
+        <Income>50</Income>
       </Level>
     </Levels>
   </Building>
@@ -98,12 +98,12 @@
       <Level>
         <Pos>1</Pos>
         <Cost>500</Cost>
-        <Income>75</Income>
+        <Income>175</Income>
       </Level>
       <Level>
         <Pos>2</Pos>
         <Cost>1000</Cost>
-        <Income>150</Income>
+        <Income>300</Income>
         <Requirements>
           <Requirement>
             <Building>Castle</Building>
@@ -114,7 +114,7 @@
       <Level>
         <Pos>3</Pos>
         <Cost>1500</Cost>
-        <Income>225</Income>
+        <Income>525</Income>
         <Requirements>
           <Requirement>
             <Building>Castle</Building>
@@ -143,7 +143,7 @@
       <Level>
         <Pos>2</Pos>
         <Cost>1000</Cost>
-        <Income>100</Income>
+        <Income>50</Income>
         <Requirements>
           <Requirement>
             <Building>Castle</Building>
@@ -154,7 +154,7 @@
       <Level>
         <Pos>3</Pos>
         <Cost>2000</Cost>
-        <Income>150</Income>
+        <Income>50</Income>
         <Requirements>
           <Requirement>
             <Building>Castle</Building>
@@ -207,7 +207,7 @@
       <Level>
         <Pos>1</Pos>
         <Cost>1500</Cost>
-        <Income>0</Income>
+        <Income>150</Income>
         <Requirements>
           <Requirement>
             <Building>Castle</Building>
