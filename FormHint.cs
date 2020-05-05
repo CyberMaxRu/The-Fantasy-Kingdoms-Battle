@@ -215,10 +215,14 @@ namespace Fantasy_King_s_Battle
             else
                 lblGold.Hide();
 
+            bool needReshow = (Visible == false) || (Height != nextTop);
             Height = nextTop;
 
-            Opacity = 0;
-            timerDelayShow.Enabled = true;
+            if (needReshow == true)
+            {
+                Opacity = 0;
+                timerDelayShow.Enabled = true;
+            }
         }
 
         internal void HideHint()
