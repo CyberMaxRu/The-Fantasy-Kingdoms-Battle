@@ -12,8 +12,6 @@ namespace Fantasy_King_s_Battle
     {
         private List<Control> Controls { get; } = new List<Control>();
         private Control Parent;
-        private int Left;
-        private int Top;
 
         public PanelControls(Control parent, int left, int top)
         {
@@ -21,6 +19,9 @@ namespace Fantasy_King_s_Battle
             Left = left;
             Top = top;
         }
+
+        internal int Left { get; }
+        internal int Top { get; }
 
         internal void AddControl(Control c)
         {
