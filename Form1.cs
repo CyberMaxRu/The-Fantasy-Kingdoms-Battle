@@ -25,6 +25,7 @@ namespace Fantasy_King_s_Battle
         private readonly ImageList ilHeroes;
         internal readonly ImageList ilGui;
         internal readonly ImageList ilGui16;
+        internal readonly ImageList ilGui45;
         internal readonly ImageList ilGuiHeroes;
         internal readonly ImageList ilParameters;
         internal readonly ImageList ilItems;
@@ -62,6 +63,10 @@ namespace Fantasy_King_s_Battle
         internal const int GUI_PARAMETER_DEFENSE_MAGIC = 5;
 
         internal const int GUI_16_GOLD = 0;
+
+        internal const int GUI_45_EMPTY = 0;
+        internal const int GUI_45_BORDER = 0;
+
         internal static int MAX_HEROES_AT_PLAYER = 16;
         internal static int SLOTS_IN_LINE = 4;
         internal static int SLOTS_LINES = 2;
@@ -129,6 +134,7 @@ namespace Fantasy_King_s_Battle
             ilGui = PrepareImageList("Gui.png", 48, 48, true);
             ilGuiHeroes = PrepareImageList("GuiHeroes.png", 48, 48, true);
             ilGui16 = PrepareImageList("Gui16.png", 16, 16, false);
+            ilGui45 = PrepareImageList("Gui45.png", 45, 45, false);
             ilParameters = PrepareImageList("Parameters.png", 24, 24, false);
             ilItems = PrepareImageList("Items.png", 48, 48, false);
 
