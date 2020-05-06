@@ -99,7 +99,8 @@ namespace Fantasy_King_s_Battle
                 ImageList = imageListGuiHeroes,
                 TextAlign = ContentAlignment.BottomCenter,
                 Font = formMain.fontCost,
-                ForeColor = Color.White
+                ForeColor = Color.White,
+                BackgroundImage = formMain.background
             };
             btnHireHero.Click += BtnHero_Click;
             btnHireHero.MouseEnter += BtnHireHero_MouseEnter;
@@ -243,7 +244,7 @@ namespace Fantasy_King_s_Battle
             if (building.Building.TrainedHero != null)
             {
                 btnHireHero.Show();
-                btnHireHero.ImageIndex = GuiUtils.GetImageIndexWithGray(btnHireHero.ImageList, building.Building.TrainedHero.ImageIndex, building.CanTrainHero());
+                btnHireHero.ImageIndex = (building.Heroes.Count == building.Building.MaxHeroes) || (building.MaxHeroesAtPlayer() == true)  ? -1 : GuiUtils.GetImageIndexWithGray(btnHireHero.ImageList, building.Building.TrainedHero.ImageIndex, building.CanTrainHero());
                 btnHireHero.Text = (building.Level == 0) || (building.CanTrainHero() == true) ? building.Building.TrainedHero.Cost.ToString() : ""; 
             }
             else
