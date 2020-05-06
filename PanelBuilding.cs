@@ -174,10 +174,13 @@ namespace Fantasy_King_s_Battle
 
         private void ShowHintBtnBuyOrUpgrade()
         {
-            Program.formMain.formHint.ShowHint(new Point(Program.formMain.Left + 10 + Left + btnBuyOrUpgrade.Left, Program.formMain.Top + 32 + Top + btnBuyOrUpgrade.Top + btnBuyOrUpgrade.Height),
-                building.Building.Name,
-                (building.Level == 0 ? "Уровень 1" : (building.CanLevelUp() == true) ? "Улучшить строение" : ""),
-                building.Level == 0 ? building.Building.Description : "", building.GetTextRequirements(), building.CostBuyOrUpgrade(), building.Player.Gold >= building.CostBuyOrUpgrade(), building.IncomeNextLevel());
+            if (building.Level < building.Building.MaxLevel)
+                Program.formMain.formHint.ShowHint(new Point(Program.formMain.Left + 10 + Left + btnBuyOrUpgrade.Left, Program.formMain.Top + 32 + Top + btnBuyOrUpgrade.Top + btnBuyOrUpgrade.Height),
+                    building.Building.Name,
+                    building.Level == 0 ? "Уровень 1" : (building.CanLevelUp() == true) ? "Улучшить строение" : "",
+                    building.Level == 0 ? building.Building.Description : "", building.GetTextRequirements(), building.CostBuyOrUpgrade(), building.Player.Gold >= building.CostBuyOrUpgrade(), building.IncomeNextLevel());
+            else
+                Program.formMain.formHint.HideHint();
         }
 
         private void PanelBuilding_Paint(object sender, PaintEventArgs e)
@@ -255,13 +258,19 @@ namespace Fantasy_King_s_Battle
 
                 lblName.ForeColor = Color.Green;
 
-                btnBuyOrUpgrade.Visible = building.CanLevelUp();
-                btnBuyOrUpgrade.Text = building.CostBuyOrUpgrade().ToString();
                 if (building.CanLevelUp() == true)
+                {
+                    btnBuyOrUpgrade.Text = building.CostBuyOrUpgrade().ToString();
                     btnBuyOrUpgrade.ImageIndex = GuiUtils.GetImageIndexWithGray(btnBuyOrUpgrade.ImageList, FormMain.GUI_LEVELUP, building.CheckRequirements());
-                    
+                }
+                else
+                {
+                    btnBuyOrUpgrade.Text = "";
+                    btnBuyOrUpgrade.ImageIndex = -1;
+                }
+
                 //if (btnLevelUp.Visible == true)
-                    //btnLevelUp.Image = building.CheckRequirements() == true ? imageListGui.Images[FormMain.GUI_LEVELUP] : imageListGui.Images[FormMain.GUI_LEVELUP + imageListGui.Images.Count / 2];
+                //btnLevelUp.Image = building.CheckRequirements() == true ? imageListGui.Images[FormMain.GUI_LEVELUP] : imageListGui.Images[FormMain.GUI_LEVELUP + imageListGui.Images.Count / 2];
                 pbBuilding.Image = imageListBuilding.Images[building.Building.ImageIndex];
             }
             else
