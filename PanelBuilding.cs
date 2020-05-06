@@ -285,7 +285,7 @@ namespace Fantasy_King_s_Battle
             {
                 lblName.ForeColor = Color.Gray;
 
-                btnBuyOrUpgrade.Text = "";
+                btnBuyOrUpgrade.Text = building.CostBuyOrUpgrade().ToString();
                 btnBuyOrUpgrade.ImageIndex = GuiUtils.GetImageIndexWithGray(btnBuyOrUpgrade.ImageList, FormMain.GUI_BUY, building.CheckRequirements());
                 pbBuilding.Image = imageListBuilding.Images[building.Building.ImageIndex + FormMain.Config.Buildings.Count];
             }
