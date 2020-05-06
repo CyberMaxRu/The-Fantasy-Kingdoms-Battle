@@ -20,7 +20,6 @@ namespace Fantasy_King_s_Battle
         private readonly ImageList ilFractions;
         private readonly ImageList ilSkills;
         private readonly ImageList ilResultBattle;
-        private readonly ImageList ilTypeBattle;
         internal readonly ImageList ilBuildings;
         private readonly ImageList ilHeroes;
         internal readonly ImageList ilGui;
@@ -129,7 +128,6 @@ namespace Fantasy_King_s_Battle
 
             ilSkills = PrepareImageList("Skills.png", 82, 94, false);
             ilResultBattle = PrepareImageList("ResultBattle52.png", 45, 52, false);
-            ilTypeBattle = PrepareImageList("TypeBattle52.png", 52, 52, false);
             ilBuildings = PrepareImageList("Buildings.png", 126, 126, true);
             ilHeroes = PrepareImageList("Heroes.png", 126, 126, false);
             ilGui = PrepareImageList("Gui.png", 48, 48, true);
@@ -189,7 +187,7 @@ namespace Fantasy_King_s_Battle
             int top = Config.GRID_SIZE;
             foreach (Player p in lobby.Players)
             {
-                pap = new PanelAboutPlayer(p, ilFractions, ilResultBattle, ilTypeBattle)
+                pap = new PanelAboutPlayer(p, ilFractions, ilResultBattle)
                 {
                     Top = top
                 };

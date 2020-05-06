@@ -13,20 +13,17 @@ namespace Fantasy_King_s_Battle
     {
         private readonly PictureBox pbFraction;
         private readonly PictureBox pbResultBattle;
-        private readonly PictureBox pbTypeBattle;
         private readonly Label namePlayer;
         private readonly Label labelAboutBattles;
         private readonly ImageList imageListFraction;
         private readonly ImageList imageListResultBattle;
-        private readonly ImageList imageListTypeBattle;
 
-        public PanelAboutPlayer(Player player, ImageList ilFraction, ImageList ilResultBattle, ImageList ilTypeBattle)
+        public PanelAboutPlayer(Player player, ImageList ilFraction, ImageList ilResultBattle)
         {
             Player = player;
             BorderStyle = BorderStyle.FixedSingle;
             imageListFraction = ilFraction;
             imageListResultBattle = ilResultBattle;
-            imageListTypeBattle = ilTypeBattle;
 
             pbFraction = new PictureBox()
             {
@@ -43,15 +40,6 @@ namespace Fantasy_King_s_Battle
                 Width = imageListResultBattle.ImageSize.Width,
                 Height = imageListResultBattle.ImageSize.Height,
                 Left = 240,
-                Top = Config.GRID_SIZE,
-            };
-
-            pbTypeBattle = new PictureBox()
-            {
-                Parent = this,
-                Width = imageListTypeBattle.ImageSize.Width,
-                Height = imageListTypeBattle.ImageSize.Height,
-                Left = pbResultBattle.Left + pbResultBattle.Width + Config.GRID_SIZE,
                 Top = Config.GRID_SIZE,
             };
 
@@ -73,7 +61,7 @@ namespace Fantasy_King_s_Battle
             };
 
             Height = pbFraction.Height + (Config.GRID_SIZE * 2);
-            Width = pbTypeBattle.Left + pbTypeBattle.Width + Config.GRID_SIZE;
+            Width = pbResultBattle.Left + pbResultBattle.Width + Config.GRID_SIZE;
         }
 
         internal void ShowData()
@@ -100,8 +88,6 @@ namespace Fantasy_King_s_Battle
 
                 pbResultBattle.Image = imageListResultBattle.Images[ii];
             }
-
-            pbTypeBattle.Image = imageListTypeBattle.Images[0];
         }
 
         internal Player Player { get; }
