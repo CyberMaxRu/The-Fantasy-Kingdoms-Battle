@@ -120,8 +120,14 @@ namespace Fantasy_King_s_Battle
             lblIncome = new Label()
             {
                 Parent = this,
-                Top = GuiUtils.NextTop(pbBuilding),
-                Left = pbBuilding.Left,
+                Left = btnBuyOrUpgrade.Left - Config.GRID_SIZE,
+                Top = btnHeroes.Top,
+                AutoSize = false,
+                Width = btnBuyOrUpgrade.Width + Config.GRID_SIZE,
+                Height = 20,
+                Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold),
+                BackColor = Color.Transparent,
+                ForeColor = Color.Green,
                 TextAlign = ContentAlignment.MiddleRight,
                 ImageAlign = ContentAlignment.MiddleLeft,
                 ImageIndex = FormMain.GUI_16_GOLD,
@@ -223,7 +229,9 @@ namespace Fantasy_King_s_Battle
         internal void UpdateData()
         {
             lblName.Text = building.Building.Name;
-            lblIncome.Text = "+" + building.Income().ToString();
+            lblIncome.ImageIndex = building.DoIncome() == true ? FormMain.GUI_16_GOLD : -1;
+            lblIncome.Text = building.DoIncome() == true ? "+" + building.Income().ToString() : "";
+            lblIncome.ForeColor = building.Level > 0 ? Color.Green : Color.Gray;
 
             // Информация об уровне здания
             if ((building.Level > 0) && (building.Building.MaxLevel > 1))
