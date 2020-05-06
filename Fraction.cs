@@ -36,17 +36,11 @@ namespace Fantasy_King_s_Battle
                     throw new Exception("В конфигурации фракций повторяется ImageIndex = " + ImageIndex.ToString());
                 }
             }
-
-            if (n.SelectSingleNode("Images") != null)
-            {
-                ILTypeUnits = fm.PrepareImageList(n.SelectSingleNode("Images").InnerText, 58, 64, false);
-            }
         }
 
         internal string ID { get; }
         internal string Name { get; }
         internal int ImageIndex { get; }
-        internal ImageList ILTypeUnits { get; }
         internal int Position { get; }
         internal int[] StartResources;
 
