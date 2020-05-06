@@ -45,7 +45,7 @@
             // 
             // StatusStrip
             // 
-            this.StatusStrip.Location = new System.Drawing.Point(0, 775);
+            this.StatusStrip.Location = new System.Drawing.Point(0, 855);
             this.StatusStrip.Name = "StatusStrip";
             this.StatusStrip.ShowItemToolTips = true;
             this.StatusStrip.Size = new System.Drawing.Size(979, 22);
@@ -164,7 +164,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(979, 797);
+            this.ClientSize = new System.Drawing.Size(979, 877);
             this.Controls.Add(this.ButtonEndTurn);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.StatusStrip);
