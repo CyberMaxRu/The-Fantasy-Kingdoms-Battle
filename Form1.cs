@@ -491,7 +491,8 @@ namespace Fantasy_King_s_Battle
             picBoxItemForDrag = new PictureBox()
             {
                 Size = ilItems.ImageSize,
-                Visible = false
+                Visible = false,
+                Tag = 0
             };
             pageHeroes.AddControl(picBoxItemForDrag);
 

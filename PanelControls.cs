@@ -37,7 +37,8 @@ namespace Fantasy_King_s_Battle
         {
             foreach(Control c in Controls)
             {
-                c.Visible = visible;
+                if (c.Tag == null)
+                    c.Visible = visible;
             }
         }
     }
