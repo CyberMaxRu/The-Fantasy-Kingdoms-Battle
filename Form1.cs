@@ -49,6 +49,7 @@ namespace Fantasy_King_s_Battle
         internal const int GUI_BUY = 6;
         internal const int GUI_LOBBY = 7;
         internal const int GUI_DISMISS = 8;
+        internal const int GUI_BATTLE = 9;
 
         internal const int GUI_PARAMETER_STRENGTH = 6;
         internal const int GUI_PARAMETER_DEXTERITY = 7;
@@ -211,6 +212,8 @@ namespace Fantasy_King_s_Battle
             tabPageTemples.Text = "";
             tabPageHeroes.ImageIndex = GUI_HEROES;
             tabPageHeroes.Text = "";
+            tabPageBattle.ImageIndex = GUI_BATTLE;
+            tabPageBattle.Text = "";
 
             //
             DrawGuilds();
