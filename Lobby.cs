@@ -96,17 +96,20 @@ namespace Fantasy_King_s_Battle
 
         private void CalcBattles()
         {
+            // Инициализируем случайность
+            Random r = new Random();
+
             foreach (Player p in Players)
                 p.BattleCalced = false;
 
             foreach (Player p in Players)
             {
                 if (p.BattleCalced == false)
-                    CalcBattle(p, p.Opponent);
+                    CalcBattle(p, p.Opponent, r);
             }
         }
 
-        private void CalcBattle(Player player1, Player player2)
+        private void CalcBattle(Player player1, Player player2, Random r)
         {
             Debug.Assert(player1.BattleCalced == false);
             Debug.Assert(player2.BattleCalced == false);
@@ -116,54 +119,54 @@ namespace Fantasy_King_s_Battle
 
             Debug.Assert((player1.IsLive == true) && (player2.IsLive == true));
             
-            // Инициализируем случайность
-            Random r = new Random();
-
             // Создаем списки действуюих и уничтоженных отрядов
-/*            List<SquadInBattle> activeSquad1 = new List<SquadInBattle>();
-            List<SquadInBattle> activeSquad2 = new List<SquadInBattle>();
-            List<SquadInBattle> lossesSquad1 = new List<SquadInBattle>();
-            List<SquadInBattle> lossesSquad2 = new List<SquadInBattle>();
+            /*            List<SquadInBattle> activeSquad1 = new List<SquadInBattle>();
+                        List<SquadInBattle> activeSquad2 = new List<SquadInBattle>();
+                        List<SquadInBattle> lossesSquad1 = new List<SquadInBattle>();
+                        List<SquadInBattle> lossesSquad2 = new List<SquadInBattle>();
 
-            MakeSquadsInBattle(player1, activeSquad1);
-            MakeSquadsInBattle(player2, activeSquad2);
+                        MakeSquadsInBattle(player1, activeSquad1);
+                        MakeSquadsInBattle(player2, activeSquad2);
 
-            bool draw = false;
-            // Делаем шаги расчета сражения
-            for (; ;)
-            {
-                // Проводим сражение между первыми отрядами
-                if (!BattleSquads(activeSquad1[0], activeSquad2[0]))
-                {
-                    draw = true;
-                    break;
-                }
+                        bool draw = false;
+                        // Делаем шаги расчета сражения
+                        for (; ;)
+                        {
+                            // Проводим сражение между первыми отрядами
+                            if (!BattleSquads(activeSquad1[0], activeSquad2[0]))
+                            {
+                                draw = true;
+                                break;
+                            }
 
-                // Если передовой отряд был уничтожен, переносим его в потери
-                if (activeSquad1[0].UnitsAlive == 0)
-                {
-                    lossesSquad1.Add(activeSquad1[0]);
-                    activeSquad1.RemoveAt(0);
-                }
+                            // Если передовой отряд был уничтожен, переносим его в потери
+                            if (activeSquad1[0].UnitsAlive == 0)
+                            {
+                                lossesSquad1.Add(activeSquad1[0]);
+                                activeSquad1.RemoveAt(0);
+                            }
 
-                if (activeSquad2[0].UnitsAlive == 0)
-                {
-                    lossesSquad2.Add(activeSquad2[0]);
-                    activeSquad2.RemoveAt(0);
-                }
+                            if (activeSquad2[0].UnitsAlive == 0)
+                            {
+                                lossesSquad2.Add(activeSquad2[0]);
+                                activeSquad2.RemoveAt(0);
+                            }
 
-                // Переформировываем положение юнитов в отряде
-                if (activeSquad1.Count > 0)
-                    activeSquad1[0].RearrangeSquad();
-                if (activeSquad2.Count > 0)
-                    activeSquad2[0].RearrangeSquad();
+                            // Переформировываем положение юнитов в отряде
+                            if (activeSquad1.Count > 0)
+                                activeSquad1[0].RearrangeSquad();
+                            if (activeSquad2.Count > 0)
+                                activeSquad2[0].RearrangeSquad();
 
-                // Если у хотя бы одного игрока больше нет отрядов, заканчиваем сражение
-                if ((activeSquad1.Count == 0) || (activeSquad2.Count == 0))
-                    break;
-            }
-            
-            Player winner = draw == true ? null : (activeSquad1.Count > 0) && (activeSquad2.Count == 0) ? player1 : (activeSquad1.Count == 0) && (activeSquad2.Count > 0) ? player2 : null;
+                            // Если у хотя бы одного игрока больше нет отрядов, заканчиваем сражение
+                            if ((activeSquad1.Count == 0) || (activeSquad2.Count == 0))
+                                break;
+                        }*/
+
+            int res = r.Next(3);
+            Player winner = res == 0 ? null : res == 1 ? player1 : player2;
+
+            //Player winner = draw == true ? null : (activeSquad1.Count > 0) && (activeSquad2.Count == 0) ? player1 : (activeSquad1.Count == 0) && (activeSquad2.Count > 0) ? player2 : null;
 
             if (winner == player1)
             {
@@ -195,8 +198,8 @@ namespace Fantasy_King_s_Battle
             //    + Environment.NewLine + "Alive: " + Squad1[0].UnitsAlive.ToString() + " - " + Squad2[0].UnitsAlive.ToString()
             //    + Environment.NewLine + "Killed: " + Squad1[0].Killed.ToString() + " - " + Squad2[0].Killed.ToString());
 
-*            // Проводит битву между двумя отрядами
-            bool BattleSquads(SquadInBattle s1, SquadInBattle s2)
+            // Проводит битву между двумя отрядами
+            /*bool BattleSquads(SquadInBattle s1, SquadInBattle s2)
             {
                 //
                 cb.AddLog(0, "Начало боя.");
