@@ -36,10 +36,7 @@ namespace Fantasy_King_s_Battle
         internal void SetVisible(bool visible)
         {
             foreach(Control c in Controls)
-            {
-                if (c.Tag == null)
-                    c.Visible = visible;
-            }
+                c.Visible = visible;
         }
     }
 }

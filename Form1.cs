@@ -490,11 +490,10 @@ namespace Fantasy_King_s_Battle
         {
             picBoxItemForDrag = new PictureBox()
             {
+                Parent = this,
                 Size = ilItems.ImageSize,
-                Visible = false,
-                Tag = 0
+                Visible = false
             };
-            pageHeroes.AddControl(picBoxItemForDrag);
 
             panelWarehouse = new Panel()
             {
