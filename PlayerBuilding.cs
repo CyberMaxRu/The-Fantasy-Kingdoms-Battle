@@ -126,7 +126,7 @@ namespace Fantasy_King_s_Battle
                 list.Add(new TextRequirement(false, Building.CategoryBuilding == CategoryBuilding.Guild ? "Гильдия не построена" : "Храм не построен"));
 
             if (Heroes.Count == Building.MaxHeroes)
-                list.Add(new TextRequirement(false, Building.CategoryBuilding == CategoryBuilding.Guild ? "Гильдия полна" : "Храм полон"));
+                list.Add(new TextRequirement(false, Building.CategoryBuilding == CategoryBuilding.Guild ? "Гильдия заполнена" : "Храм заполнен"));
 
             if (Player.Heroes.Count == FormMain.MAX_HEROES_AT_PLAYER)
                 list.Add(new TextRequirement(false, "Достигнуто максимальное количество героев"));
