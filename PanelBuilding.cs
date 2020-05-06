@@ -186,7 +186,7 @@ namespace Fantasy_King_s_Battle
 
         private void BtnHero_Click(object sender, EventArgs e)
         {
-            Debug.Assert(building.Level < building.Building.MaxLevel);
+            Debug.Assert(building.Level <= building.Building.MaxLevel);
 
             if ((building.Level > 0) && (building.CanTrainHero() == true))
             {
