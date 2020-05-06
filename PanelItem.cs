@@ -31,7 +31,7 @@ namespace Fantasy_King_s_Battle
 
             Paint += PanelItem_Paint;
 
-            pointQuantity = new Point(2, Height - 16);
+            pointQuantity = new Point(2, Height - 20);
         }
 
         private void PanelItem_Paint(object sender, PaintEventArgs e)
@@ -39,7 +39,7 @@ namespace Fantasy_King_s_Battle
             if ((playerItem != null) && (playerItem.Quantity > 1))
             {
                 quantity = playerItem.Quantity.ToString();
-                pointQuantity.X = Width - (quantity.Length * 9) - 6;
+                pointQuantity.X = Width - (quantity.Length * 12) - 6;
                 e.Graphics.DrawString(quantity, Program.formMain.fontQuantity, Program.formMain.brushQuantity, pointQuantity);
             }
         }

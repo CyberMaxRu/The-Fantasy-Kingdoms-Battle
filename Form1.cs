@@ -30,7 +30,7 @@ namespace Fantasy_King_s_Battle
         internal readonly ImageList ilParameters;
         internal readonly ImageList ilItems;
 
-        internal readonly Font fontQuantity = new Font("Courier New", 11, FontStyle.Bold);
+        internal readonly Font fontQuantity = new Font("Courier New", 14, FontStyle.Bold);
         internal readonly Font fontCost = new Font("Arial", 12, FontStyle.Bold);
         internal readonly Color ColorQuantity = Color.Yellow;
         internal readonly Brush brushQuantity = new SolidBrush(Color.Yellow);
