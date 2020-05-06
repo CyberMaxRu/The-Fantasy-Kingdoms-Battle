@@ -14,6 +14,7 @@ namespace Fantasy_King_s_Battle
     {
         private static Font fontLevel = new Font("Arial", 12, FontStyle.Bold);
         private readonly PictureBox pbBuilding;
+        private readonly Button btnHeroes;
         private readonly ImageList imageListBuilding;
         private readonly ImageList imageListGui;
         private readonly ImageList imageListGui16;
@@ -59,6 +60,19 @@ namespace Fantasy_King_s_Battle
             };
             pbBuilding.MouseEnter += PbBuilding_MouseEnter;
             pbBuilding.MouseLeave += Control_MouseLeave;
+
+            btnHeroes = new Button()
+            {
+                Parent = this,
+                ImageList = imageListGuiHeroes,
+                Size = GuiUtils.SizeButtonWithImage(imageListGuiHeroes),
+                Top = GuiUtils.NextTop(pbBuilding),
+                Left = Config.GRID_SIZE,
+                BackgroundImage = formMain.background,
+                Font = formMain.fontCost,
+                ForeColor = Color.White,
+                TextAlign = ContentAlignment.BottomCenter
+            };
 
             btnBuyOrUpgrade = new Button()
             {
@@ -113,7 +127,7 @@ namespace Fantasy_King_s_Battle
                 ImageList = imageListGui16
             };
 
-            Height = lblIncome.Top + lblIncome.Height + (Config.GRID_SIZE * 2);
+            Height = GuiUtils.NextTop(btnHeroes);// lblIncome. Top + lblIncome.Height + (Config.GRID_SIZE * 2);
             Width = btnBuyOrUpgrade.Left + btnBuyOrUpgrade.Width + Config.GRID_SIZE;
 
             lblName.Width = Width - (Config.GRID_SIZE * 2) - 2;
@@ -230,7 +244,7 @@ namespace Fantasy_King_s_Battle
             {
                 btnHireHero.Show();
                 btnHireHero.ImageIndex = GuiUtils.GetImageIndexWithGray(btnHireHero.ImageList, building.Building.TrainedHero.ImageIndex, building.CanTrainHero());
-                btnHireHero.Text = (building.Level == 0) || (building.CanTrainHero() == true) ? building.Building.TrainedHero.Cost.ToString() : ""; //building.Heroes.Count.ToString() + "/" + building.Building.MaxHeroes.ToString();
+                btnHireHero.Text = (building.Level == 0) || (building.CanTrainHero() == true) ? building.Building.TrainedHero.Cost.ToString() : ""; 
             }
             else
                 btnHireHero.Hide();
@@ -241,6 +255,7 @@ namespace Fantasy_King_s_Battle
                 lblName.ForeColor = Color.Green;
 
                 btnBuyOrUpgrade.Visible = building.CanLevelUp();
+                btnBuyOrUpgrade.Text = building.CostBuyOrUpgrade().ToString();
                 if (building.CanLevelUp() == true)
                     btnBuyOrUpgrade.ImageIndex = GuiUtils.GetImageIndexWithGray(btnBuyOrUpgrade.ImageList, FormMain.GUI_LEVELUP, building.CheckRequirements());
                     
@@ -257,9 +272,15 @@ namespace Fantasy_King_s_Battle
                 pbBuilding.Image = imageListBuilding.Images[building.Building.ImageIndex + FormMain.Config.Buildings.Count];
             }
 
-            //if (btnBuyOrUpgrade.Visible == true)
+            if ((building.Building.TrainedHero != null) && (building.Level > 0))
             {
-                btnBuyOrUpgrade.Text = building.CostBuyOrUpgrade().ToString();
+                btnHeroes.Text = building.Heroes.Count.ToString() + "/" + building.Building.MaxHeroes.ToString();
+                btnHeroes.ImageIndex = GuiUtils.GetImageIndexWithGray(btnHeroes.ImageList, building.Building.TrainedHero.ImageIndex, true);
+            }
+            else
+            {
+                btnHeroes.Text = "";
+                btnHeroes.ImageIndex = -1;
             }
         }
     }
