@@ -160,9 +160,9 @@ namespace Fantasy_King_s_Battle
             {
                 ImageAlign = ContentAlignment.MiddleLeft,
                 AutoSize = false,
-                Width = 100
+                Width = 120
             };
-            StatusLabelGold.Font = new Font(StatusLabelGold.Font, FontStyle.Bold);
+            r45.Font = new Font(StatusLabelGold.Font, FontStyle.Bold);
             StatusStrip.Items.Add(StatusLabelGold);
 
             pageLobby = PreparePanel();
