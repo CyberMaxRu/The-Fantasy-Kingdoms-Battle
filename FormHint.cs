@@ -33,7 +33,7 @@ namespace Fantasy_King_s_Battle
         internal readonly Timer timerDelayShow;
         internal readonly Timer timerOpacity;
         internal readonly double maxOpacity = 0.90;
-        internal readonly int timeOpacity = 100;
+        internal readonly int timeOpacity = 10000;
         internal int stepsOpacity = 0;
         internal int stepsInSecond = 50;// 25 кадров в секунду, больше не имеет смысла
         internal DateTime dateTimeStartOpacity;
@@ -130,10 +130,7 @@ namespace Fantasy_King_s_Battle
             timerOpacity.Tick += TimerOpacity_Tick;
         }
 
-        protected override bool ShowWithoutActivation
-        {
-            get { return true; }
-        }
+        protected override bool ShowWithoutActivation => true;
 
         private void TimerOpacity_Tick(object sender, EventArgs e)
         {
