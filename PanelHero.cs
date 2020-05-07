@@ -15,7 +15,7 @@ namespace Fantasy_King_s_Battle
         private readonly ImageList imageListGui;
         private Point pointLevel;
 
-        public PanelHero(int left, int top, ImageList ilGuiHeroes, ImageList ilGui)
+        public PanelHero(Point p, int left, int top, ImageList ilGuiHeroes, ImageList ilGui)
         {
             BorderStyle = BorderStyle.FixedSingle;
             imageListGuiHeroes = ilGuiHeroes;
@@ -26,7 +26,9 @@ namespace Fantasy_King_s_Battle
             Size = GuiUtils.SizePictureBoxWithImage(ilGuiHeroes);
             Click += PanelHero_Click;
             Paint += PanelHero_Paint;
-                
+
+            Point = p;
+
             pointLevel = new Point(2, Height - 20);
         }
 
@@ -40,6 +42,7 @@ namespace Fantasy_King_s_Battle
             }
         }
 
+        internal Point Point { get; }
         internal PlayerHero Hero { get; private set; }
 
         internal void RefreshHero()

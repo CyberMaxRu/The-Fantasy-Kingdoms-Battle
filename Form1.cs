@@ -8,12 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Web;
 
 namespace Fantasy_King_s_Battle
 {
     public partial class FormMain : Form
     {
-        private enum PlaceItemForDrag { None, Warehouse, Hero }
+        private enum SourceForDrag { None, ItemFromWarehouse, ItemFromHero, Hero }
 
         private readonly string dirResources;
 
@@ -86,10 +87,12 @@ namespace Fantasy_King_s_Battle
 
         private PictureBox picBoxItemForDrag;// PictureBox с иконкой предмета для отображения под курсором при перетаскивании
         private Point shiftForMouseByDrag;// Смещение иконки предмета относится курсора мыши, чтобы она отображалась ровно так, как предмет взял пользователь
-        private PlaceItemForDrag placeItemForDrag = PlaceItemForDrag.None;// Источник предмета - склад, герой и т.д.
+        private SourceForDrag placeItemForDrag = SourceForDrag.None;// Источник предмета - склад, герой и т.д.
         private PanelItem panelItemForDrag;// Ячейка-источник предмета для переноса
         private PlayerItem itemForDrag;// Предмет для переноса. Отдельно его храним, так как если он один, в ячейке он не остается
         private PlayerItem itemTempForDrag;// Предмет для временного хранения одного экземпляра предмета при переносе
+        private PanelHero panelHeroForDrag;// Ячейка-источник героя для переноса
+        private PlayerHero heroForDrag;// Герой для переноса
 
         internal readonly Bitmap background;
         internal readonly Bitmap bmpBackgroundButton;
@@ -403,7 +406,7 @@ namespace Fantasy_King_s_Battle
             for (int y = 0; y < LINES_HEROES; y++)
                 for (int x = 0; x < HEROES_IN_LINE; x++)
                 {
-                    ph = new PanelHero(Config.GRID_SIZE + x * (ilGuiHeroes.ImageSize.Width + Config.GRID_SIZE * 2), Config.GRID_SIZE + y * (ilGuiHeroes.ImageSize.Height + Config.GRID_SIZE * 2), ilGuiHeroes, ilGui);
+                    ph = new PanelHero(new Point(x, y), Config.GRID_SIZE + x * (ilGuiHeroes.ImageSize.Width + Config.GRID_SIZE * 2), Config.GRID_SIZE + y * (ilGuiHeroes.ImageSize.Height + Config.GRID_SIZE * 2), ilGuiHeroes, ilGui);
                     CellHeroes[y, x] = ph;
                     pageHeroes.AddControl(ph);
                     ph.Click += PanelHero_Click;
@@ -415,23 +418,59 @@ namespace Fantasy_King_s_Battle
 
         private void CellHero_MouseMove(object sender, MouseEventArgs e)
         {
+            if (panelHeroForDrag != null)
+            {
+                if (e.Button == MouseButtons.Left)
+                {
+                    if (picBoxItemForDrag.Visible == false)
+                        BeginDrag();
+
+                    UpdateDrag(e);
+                }
+                else
+                {
+                    EndDrag();
+                }
+            }
         }
 
         private void CellHero_MouseUp(object sender, MouseEventArgs e)
         {
+            if ((e.Button == MouseButtons.Left) && (panelHeroForDrag != null))
+            {
+                // Если клик на ячейке, то вызова BeginDrag не было
+                if (panelHeroForDrag != null)
+                {
+                    // Определяем, куда бросили предмет
+                    PanelHero ph = GetPanelHeroOnForm(RealCoordCursorHeroDragForCursor(e.Location));
+
+                    if (ph != panelHeroForDrag)
+                    {
+                        PlayerHero h = ph.Hero;
+                        lobby.CurrentPlayer.CellHeroes[ph.Point.Y, ph.Point.X] = panelHeroForDrag.Hero;
+                        lobby.CurrentPlayer.CellHeroes[panelHeroForDrag.Point.Y, panelHeroForDrag.Point.X] = h;
+
+                        ShowPageHeroes();
+                    }
+                }
+
+                EndDrag();
+            }
         }
 
         private void CellHero_MouseDown(object sender, MouseEventArgs e)
         {
-            /*if (e.Button == MouseButtons.Left)
+            if (e.Button == MouseButtons.Left)
             {
-                Debug.Assert(itemForDrag == null);
-                Debug.Assert(sender is PictureBox);
+                Debug.Assert(panelHeroForDrag == null);
+                Debug.Assert(sender is PanelHero);
 
-                itemForDrag = lobby.CurrentPlayer.Warehouse[((PanelItem)sender).NumberCell];
-                if (itemForDrag != null)
-                    PrepareDrag(PlaceItemForDrag.Warehouse, (PanelItem)sender, e.Location);
-            }*/
+                if (((PanelHero)sender).Hero != null)
+                {
+                    panelHeroForDrag = (PanelHero)sender;
+                    PrepareDrag(SourceForDrag.Hero, (PanelHero)sender, e.Location);
+                }
+            }
         }
 
         internal void ShowPageHeroes()
@@ -563,9 +602,15 @@ namespace Fantasy_King_s_Battle
 
         private Point RealCoordCursorHeroDrag(Point locationMouse)
         {
+            return new Point(panelHeroForDrag.Left + locationMouse.X - shiftForMouseByDrag.X, panelHeroForDrag.Top + locationMouse.Y - shiftForMouseByDrag.Y);
+        }
+
+        private Point RealCoordCursorHeroItemDrag(Point locationMouse)
+        {
             return new Point(panelHeroInfo.Left + panelItemForDrag.Left + locationMouse.X - shiftForMouseByDrag.X, panelHeroInfo.Top + panelItemForDrag.Top + locationMouse.Y - shiftForMouseByDrag.Y);
         }
-        private Point RealCoordCursorHeroDragForCursor(Point locationMouse)
+
+        private Point RealCoordCursorHeroItemDragForCursor(Point locationMouse)
         {
             return new Point(panelHeroInfo.Left + panelItemForDrag.Left + locationMouse.X, panelHeroInfo.Top + panelItemForDrag.Top + locationMouse.Y);
         }
@@ -614,17 +659,31 @@ namespace Fantasy_King_s_Battle
         }
 
         // Подготовка будущего Drag&Drop. Сразу не забираем предмет, чтобы при обычном клике не было взятия/сброса предмета
-        private void PrepareDrag(PlaceItemForDrag place, PanelItem panel, Point location)
+        private void PrepareDrag(SourceForDrag place, PictureBox panel, Point location)
         {
             Debug.Assert(picBoxItemForDrag.Visible == false);
             Debug.Assert(panelItemForDrag == null);
             Debug.Assert(itemTempForDrag == null);
-            Debug.Assert(placeItemForDrag == PlaceItemForDrag.None);
-            Debug.Assert(itemForDrag != null);
+            Debug.Assert(placeItemForDrag == SourceForDrag.None);
 
             shiftForMouseByDrag = location;
             placeItemForDrag = place;
-            panelItemForDrag = panel;
+
+            switch (place)
+            {
+                case SourceForDrag.ItemFromHero:
+                case SourceForDrag.ItemFromWarehouse:
+                    Debug.Assert(itemForDrag != null);
+                    panelItemForDrag = panel as PanelItem;
+
+                    break;
+                case SourceForDrag.Hero:
+                    panelHeroForDrag = panel as PanelHero;
+
+                    break;
+                default:
+                    throw new Exception("Неизвестный тип источника.");
+            }
         }
 
         // Начала переноса. Показываем иконку переносимого предмета и забираем предметы с ячейки
@@ -632,23 +691,30 @@ namespace Fantasy_King_s_Battle
         {
             switch (placeItemForDrag)
             {
-                case PlaceItemForDrag.Warehouse:
+                case SourceForDrag.ItemFromWarehouse:
                     // Со склада по умолчанию показываем отбор одного предмета
                     itemTempForDrag = lobby.CurrentPlayer.TakeItemFromWarehouse(panelItemForDrag.NumberCell, 1);
                     ShowWarehouse();
+                    picBoxItemForDrag.Image = ilItems.Images[itemTempForDrag.Item.ImageIndex];
 
                     break;
-                case PlaceItemForDrag.Hero:
+                case SourceForDrag.ItemFromHero:
                     // С инвентаря героя по умолчанию показываем отбор всех предметов
                     itemTempForDrag = panelHeroInfo.Hero.TakeItem(panelItemForDrag.NumberCell, panelHeroInfo.Hero.Slots[panelItemForDrag.NumberCell].Quantity);
                     panelHeroInfo.RefreshHero();
+                    picBoxItemForDrag.Image = ilItems.Images[itemTempForDrag.Item.ImageIndex];
+
+                    break;
+                case SourceForDrag.Hero:
+                    heroForDrag = panelHeroForDrag.Hero;
+                    Debug.Assert(heroForDrag != null);
+                    picBoxItemForDrag.Image = ilGuiHeroes.Images[heroForDrag.Hero.ImageIndex];
 
                     break;
                 default:
                     throw new Exception("Неизвестный источник для предмета.");
             }
 
-            picBoxItemForDrag.Image = ilItems.Images[itemTempForDrag.Item.ImageIndex];
             picBoxItemForDrag.Show();
         }
 
@@ -656,10 +722,13 @@ namespace Fantasy_King_s_Battle
         {
             switch (placeItemForDrag)
             {
-                case PlaceItemForDrag.Warehouse:
+                case SourceForDrag.ItemFromWarehouse:
                     picBoxItemForDrag.Location = RealCoordCursorWHDrag(e.Location);
                     break;
-                case PlaceItemForDrag.Hero:
+                case SourceForDrag.ItemFromHero:
+                    picBoxItemForDrag.Location = RealCoordCursorHeroItemDrag(e.Location);
+                    break;
+                case SourceForDrag.Hero:
                     picBoxItemForDrag.Location = RealCoordCursorHeroDrag(e.Location);
                     break;
                 default:
@@ -673,10 +742,12 @@ namespace Fantasy_King_s_Battle
             if (picBoxItemForDrag.Visible == true)
                 picBoxItemForDrag.Hide();
 
-            placeItemForDrag = PlaceItemForDrag.None;
+            placeItemForDrag = SourceForDrag.None;
             panelItemForDrag = null;
+            panelHeroForDrag = null;
             itemForDrag = null;
             itemTempForDrag = null;
+            heroForDrag = null;
         }
 
         private void PanelCellWarehouse_MouseDown(object sender, MouseEventArgs e)
@@ -688,7 +759,7 @@ namespace Fantasy_King_s_Battle
 
                 itemForDrag = lobby.CurrentPlayer.Warehouse[((PanelItem)sender).NumberCell];
                 if (itemForDrag != null)
-                    PrepareDrag(PlaceItemForDrag.Warehouse, (PanelItem)sender, e.Location);
+                    PrepareDrag(SourceForDrag.ItemFromWarehouse, (PanelItem)sender, e.Location);
             }
         }
 
@@ -696,7 +767,7 @@ namespace Fantasy_King_s_Battle
         {
             if ((e.Button == MouseButtons.Left) && (itemForDrag != null))
             {
-                // Если клик на ячейки, то вызова BeginDrag не было
+                // Если клик на ячейке, то вызова BeginDrag не было
                 if (itemTempForDrag != null)
                 {
                     int fromSlot = panelItemForDrag.NumberCell;
@@ -774,7 +845,7 @@ namespace Fantasy_King_s_Battle
                         itemForDrag = null;
 
                 if (itemForDrag != null)
-                    PrepareDrag(PlaceItemForDrag.Hero, (PanelItem)sender, e.Location);
+                    PrepareDrag(SourceForDrag.ItemFromHero, (PanelItem)sender, e.Location);
             }
         }
 
@@ -786,8 +857,8 @@ namespace Fantasy_King_s_Battle
                 {
                     int fromSlot = panelItemForDrag.NumberCell;
 
-                    int numberCellWarehouse = SlotWarehouseUnderCursor(RealCoordCursorHeroDragForCursor(e.Location));
-                    int numberCellHero = SlotHeroUnderCursor(RealCoordCursorHeroDragForCursor(e.Location));
+                    int numberCellWarehouse = SlotWarehouseUnderCursor(RealCoordCursorHeroItemDragForCursor(e.Location));
+                    int numberCellHero = SlotHeroUnderCursor(RealCoordCursorHeroItemDragForCursor(e.Location));
 
                     if (numberCellWarehouse >= 0)// Бросили на ячейку склада
                     {
@@ -807,7 +878,7 @@ namespace Fantasy_King_s_Battle
                         if (numberCellHero != fromSlot)
                             panelHeroInfo.Hero.MoveItem(fromSlot, numberCellHero);
                     }
-                    else if (CursorUnderPanelAboutHero(RealCoordCursorHeroDragForCursor(e.Location)) == false)
+                    else if (CursorUnderPanelAboutHero(RealCoordCursorHeroItemDragForCursor(e.Location)) == false)
                     {
                         panelHeroInfo.Hero.AcceptItem(itemTempForDrag, itemTempForDrag.Quantity, fromSlot);
                         lobby.CurrentPlayer.GetItemFromHero(panelHeroInfo.Hero, fromSlot);
@@ -850,6 +921,22 @@ namespace Fantasy_King_s_Battle
             }
 
             return null;
+
+        }
+        private PanelHero GetPanelHeroOnForm(Point p)
+        {
+            PanelHero ph;
+
+            for (int y = 0; y < CellHeroes.GetLength(0); y++)
+                for (int x = 0; x < CellHeroes.GetLength(1); x++)
+                {
+                    ph = CellHeroes[y, x];
+
+                    if ((p.Y >= ph.Top) && (p.Y <= ph.Top + ph.Height) && (p.X >= ph.Left) && (p.X <= ph.Left + ph.Width))
+                        return ph;
+                }
+
+            return null;
         }
 
         private Point RealCoordCursorWHDrag(Point locationMouse)
@@ -861,15 +948,20 @@ namespace Fantasy_King_s_Battle
             return new Point(panelWarehouse.Left + panelItemForDrag.Left + locationMouse.X, panelWarehouse.Top + panelItemForDrag.Top + locationMouse.Y);
         }
 
+        private Point RealCoordCursorHeroDragForCursor(Point locationMouse)
+        {
+            return new Point(panelHeroForDrag.Left + locationMouse.X, panelHeroForDrag.Top + locationMouse.Y);
+        }
+
         private void FormMain_Deactivate(object sender, EventArgs e)
         {
             switch (placeItemForDrag)
             {
-                case PlaceItemForDrag.Warehouse:
+                case SourceForDrag.ItemFromWarehouse:
                     lobby.CurrentPlayer.AddItem(itemTempForDrag, panelItemForDrag.NumberCell);
                     ShowWarehouse();
                     break;
-                case PlaceItemForDrag.Hero:
+                case SourceForDrag.ItemFromHero:
                     lobby.CurrentPlayer.AddItem(itemTempForDrag, panelItemForDrag.NumberCell);
                     panelHeroInfo.RefreshHero();
                     break;
