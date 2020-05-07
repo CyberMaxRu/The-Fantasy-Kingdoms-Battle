@@ -45,6 +45,11 @@ namespace Fantasy_King_s_Battle
             return new Size(il.ImageSize.Width + 8, il.ImageSize.Height + 8);
         }
 
+        internal static Size SizePictureBoxWithImage(ImageList il)
+        {
+            return new Size(il.ImageSize.Width + 2, il.ImageSize.Height + 2);
+        }
+
         internal static int NextLeft(Control c)
         {
             return c.Left + c.Width + Config.GRID_SIZE;
@@ -55,9 +60,9 @@ namespace Fantasy_King_s_Battle
             return c.Top + c.Height + Config.GRID_SIZE;
         }
 
-        internal static Image GetImageFromImageList(ImageList imageList, int imageIndex, bool gray)
+        internal static Image GetImageFromImageList(ImageList imageList, int imageIndex, bool normal)
         {
-            return imageList.Images[imageIndex + (gray == false ? 0 : imageList.Images.Count / 2)];
+            return imageList.Images[imageIndex + (normal == true ? 0 : imageList.Images.Count / 2)];
         }
 
         internal static int GetImageIndexWithGray(ImageList imageList, int imageIndex, bool normal)
