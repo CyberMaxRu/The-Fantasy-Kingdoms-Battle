@@ -33,7 +33,7 @@ namespace Fantasy_King_s_Battle
         internal readonly Timer timerDelayShow;
         internal readonly Timer timerOpacity;
         internal readonly double maxOpacity = 0.90;
-        internal readonly int timeOpacity = 10000;
+        internal readonly int timeOpacity = 150;
         internal int stepsOpacity = 0;
         internal int stepsInSecond = 50;// 25 кадров в секунду, больше не имеет смысла
         internal DateTime dateTimeStartOpacity;
@@ -41,10 +41,12 @@ namespace Fantasy_King_s_Battle
 
         public FormHint(Image backgroundImage, ImageList ilGui16)
         {
-            TopMost = true;
+            //TopMost = true;
             StartPosition = FormStartPosition.Manual;
             ShowInTaskbar = false;
             DoubleBuffered = true;
+            FormBorderStyle = FormBorderStyle.None;
+            BackgroundImage = backgroundImage;
 
             lblHeader = new Label()
             {
@@ -111,9 +113,6 @@ namespace Fantasy_King_s_Battle
 
             fontRequirement = new Font("Microsoft Sans Serif", 10, FontStyle.Bold);
 
-            FormBorderStyle = FormBorderStyle.None;            
-            BackgroundImage = backgroundImage;
-
             timerDelayShow = new Timer()
             {
                 Interval = 500,
@@ -131,6 +130,20 @@ namespace Fantasy_King_s_Battle
         }
 
         protected override bool ShowWithoutActivation => true;
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams baseParams = base.CreateParams;
+
+                const int WS_EX_NOACTIVATE = 0x08000000;
+                const int WS_EX_TOOLWINDOW = 0x00000080;
+                baseParams.ExStyle |= (WS_EX_NOACTIVATE | WS_EX_TOOLWINDOW);
+
+                return baseParams;
+            }
+        }
 
         private void TimerOpacity_Tick(object sender, EventArgs e)
         {
