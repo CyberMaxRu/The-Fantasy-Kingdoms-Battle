@@ -70,6 +70,7 @@ namespace Fantasy_King_s_Battle
         internal Fraction Fraction { get; }
         internal List<PlayerBuilding> Buildings { get; } = new List<PlayerBuilding>();
         internal List<PlayerHero> Heroes { get; } = new List<PlayerHero>();
+        internal PlayerHero[,] CellHeroes = new PlayerHero[FormMain.LINES_HEROES, FormMain.HEROES_IN_LINE];
         internal TypePlayer TypePlayer { get; }
         internal int Gold { get; set; }
         internal int[] Resources { get; }
@@ -96,6 +97,40 @@ namespace Fantasy_King_s_Battle
             }
 
             throw new Exception("У игрока здание " + b.ID + " не найдено.");
+        }
+
+        internal void AddHero(PlayerHero ph)
+        {
+            Heroes.Add(ph);
+
+            // Ищем место в ячейках героев
+            int line;
+            int pos = -1;
+
+            // Сначала ищем ячейку согласно типу атаки героя
+            line = ph.Hero.TypeAttack == TypeAttack.Melee ? 0 : 1;
+            pos = SearchFreeCell(line);
+
+            // Если не нашли свободную ячейку, ищем в другой
+            if (pos == -1)
+            {
+                line = 1 - line;
+                pos = SearchFreeCell(line);
+            }
+
+            Debug.Assert(pos != -1);
+            Debug.Assert(CellHeroes[line, pos] == null);
+
+            CellHeroes[line, pos] = ph;
+
+            int SearchFreeCell(int searchedLine)
+            {
+                for (int i = 0; i < CellHeroes.GetLength(1); i++)
+                    if (CellHeroes[searchedLine, i] == null)
+                        return i;
+
+                return -1;
+            }
         }
 
         internal int Income()

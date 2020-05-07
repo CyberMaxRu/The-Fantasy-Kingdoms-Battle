@@ -75,12 +75,14 @@ namespace Fantasy_King_s_Battle
         internal static int WH_SLOT_LINES = 3;
         internal static int WH_MAX_SLOTS = WH_SLOTS_IN_LINE * WH_SLOT_LINES;
         internal const int BUILDING_MAX_LINES = 3;
+        internal static int HEROES_IN_LINE = 8;
+        internal static int LINES_HEROES = 2;
 
         private readonly Lobby lobby;
         private int curAppliedPlayer = -1;
 
         private List<PanelItem> SlotsWarehouse = new List<PanelItem>();
-        //private PanelHero SlotsWarehouse = new List<PanelItem>();
+        private PanelHero[,] CellHeroes = new PanelHero[LINES_HEROES, HEROES_IN_LINE];
 
         private PictureBox picBoxItemForDrag;// PictureBox с иконкой предмета для отображения под курсором при перетаскивании
         private Point shiftForMouseByDrag;// Смещение иконки предмета относится курсора мыши, чтобы она отображалась ровно так, как предмет взял пользователь
@@ -218,6 +220,7 @@ namespace Fantasy_King_s_Battle
             DrawGuilds();
             DrawBuildings();
             DrawTemples();
+            DrawHeroes();
             DrawWarehouse();
 
             ShowDataPlayer();
@@ -314,7 +317,7 @@ namespace Fantasy_King_s_Battle
             ShowGuilds();
             ShowBuildings();
             ShowTemples();
-            ShowHeroes();
+            ShowPageHeroes();
             ShowBattle();
             ShowGold();
         }
@@ -394,47 +397,30 @@ namespace Fantasy_King_s_Battle
             }
         }
 
-        internal void ShowHeroes()
+        private void DrawHeroes()
         {
-            int top = Config.GRID_SIZE;
-            int left = Config.GRID_SIZE;
-            int height;
-            int cnt = 0;
-
-            foreach (PlayerBuilding pb in lobby.CurrentPlayer.Buildings)
-            {
-                foreach (PlayerHero ph in pb.Heroes)
+            PanelHero ph;
+            for (int y = 0; y < LINES_HEROES; y++)
+                for (int x = 0; x < HEROES_IN_LINE; x++)
                 {
-                    if (ph.Panel == null)
-                    {
-                        ph.Panel = new PanelHero(ph, left, top, ilGuiHeroes, ilGui);
-                        pageHeroes.AddControl(ph.Panel);
-                        ph.Panel.Click += PanelHero_Click;
-                    }
-                    else
-                    {
-                        ph.Panel.Top = pageHeroes.Top + top;
-                        ph.Panel.Left = pageHeroes.Left + left;
-                    }
-
-                    ph.Panel.ShowData();
-
-                    height = ph.Panel.Height;
-                    cnt++;
-                    if (cnt == 4)
-                    {
-                        cnt = 0;
-                        left = Config.GRID_SIZE;
-                        top += height + Config.GRID_SIZE;
-                    }
-                    else
-                    {
-                        left += ph.Panel.Width + Config.GRID_SIZE;
-                    }
+                    ph = new PanelHero(Config.GRID_SIZE + x * (ilGuiHeroes.ImageSize.Width + Config.GRID_SIZE * 3), Config.GRID_SIZE + y * (ilGuiHeroes.ImageSize.Height + Config.GRID_SIZE * 3), ilGuiHeroes, ilGui);
+                    CellHeroes[y, x] = ph;
+                    pageHeroes.AddControl(ph);
+                    ph.Click += PanelHero_Click;
                 }
-            }
+        }
 
-            ShowWarehouse();
+        internal void ShowPageHeroes()
+        {
+            for (int y = 0; y < LINES_HEROES; y++)
+                for (int x = 0; x < HEROES_IN_LINE; x++)
+                {
+                    CellHeroes[y, x].ShowData(lobby.CurrentPlayer.CellHeroes[y, x]);
+                    if (lobby.CurrentPlayer.CellHeroes[y, x] != null)
+                        lobby.CurrentPlayer.CellHeroes[y, x].Panel = CellHeroes[y, x];
+                }
+
+             ShowWarehouse();
         }
 
         internal void ShowAboutHero(PlayerHero ph)

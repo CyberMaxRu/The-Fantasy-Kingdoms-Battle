@@ -14,15 +14,14 @@ namespace Fantasy_King_s_Battle
         private readonly PictureBox pbHero;
         private readonly ImageList imageListGuiHeroes;
         private readonly ImageList imageListGui;
-        private readonly Label lblLevel;
         private readonly Button btnDismiss;
         private Point pointLevel;
 
-        public PanelHero(PlayerHero ph, int left, int top, ImageList ilGuiHeroes, ImageList ilGui)
+        public PanelHero(int left, int top, ImageList ilGuiHeroes, ImageList ilGui)
         {
-            Hero = ph;
-
-            BorderStyle = BorderStyle.FixedSingle;            
+            BorderStyle = BorderStyle.FixedSingle;
+            imageListGuiHeroes = ilGuiHeroes;
+            imageListGui = ilGui;
 
             pbHero = new PictureBox()
             {
@@ -30,44 +29,41 @@ namespace Fantasy_King_s_Battle
                 Top = Config.GRID_SIZE,
                 Left = Config.GRID_SIZE,
                 Width = ilGuiHeroes.ImageSize.Width,
-                Height = ilGuiHeroes.ImageSize.Height,
-                Image = ilGuiHeroes.Images[Hero.Hero.ImageIndex]
+                Height = ilGuiHeroes.ImageSize.Height
             };
             pbHero.Click += PbHero_Click;
             pbHero.Paint += PbHero_Paint;
-
-            lblLevel = new Label()
-            {
-                Parent = this,
-                Top = pbHero.Top,
-                Left = pbHero.Left + pbHero.Width + Config.GRID_SIZE,
-                Height = 32,
-                Width = 32,
-                TextAlign = ContentAlignment.MiddleCenter,
-                BorderStyle = BorderStyle.FixedSingle,
-                BackColor = Color.FromKnownColor(KnownColor.SkyBlue)
-            };
-
+            
             Top = top;
             Left = left;
             Height = pbHero.Height + (Config.GRID_SIZE * 2);
-            Width = lblLevel.Left + lblLevel.Width + (Config.GRID_SIZE * 2);
+            Width = GuiUtils.NextLeft(pbHero);
 
             pointLevel = new Point(2, pbHero.Height - 20);
         }
 
         private void PbHero_Paint(object sender, PaintEventArgs e)
         {
-            string level = Hero.Level.ToString();
-            pointLevel.X = pbHero.Width - (level.Length * 12) - 6;
-            e.Graphics.DrawString(level, Program.formMain.fontQuantity, Program.formMain.brushQuantity, pointLevel);
+            if (Hero != null)
+            {
+                string level = Hero.Level.ToString();
+                pointLevel.X = pbHero.Width - (level.Length * 12) - 6;
+                e.Graphics.DrawString(level, Program.formMain.fontQuantity, Program.formMain.brushQuantity, pointLevel);
+            }
         }
 
         internal PlayerHero Hero { get; private set; }
 
-        internal void ShowData()
+        internal void RefreshHero()
         {
-            //lblLevel.Text = Hero.Level.ToString();
+            ShowData(Hero);
+        }
+
+        internal void ShowData(PlayerHero ph)
+        {
+            Hero = ph;
+
+            pbHero.Image = ph != null ? GuiUtils.GetImageFromImageList(imageListGuiHeroes, Hero.Hero.ImageIndex, true) : null;
         }
         private void PbHero_Click(object sender, EventArgs e)
         {

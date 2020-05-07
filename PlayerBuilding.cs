@@ -105,7 +105,7 @@ namespace Fantasy_King_s_Battle
 
             PlayerHero h = new PlayerHero(this);
             Heroes.Add(h);
-            Player.Heroes.Add(h);
+            Player.AddHero(h);
             Player.Gold -= Building.TrainedHero.Cost;
 
             Program.formMain.ShowGold();

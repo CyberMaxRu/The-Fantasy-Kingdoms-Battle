@@ -203,7 +203,7 @@ namespace Fantasy_King_s_Battle
                 building.HireHero();
                 ShowHintBtnHireHero();
                 UpdateData();
-                Program.formMain.ShowHeroes();
+                Program.formMain.ShowPageHeroes();
             }
         }
 
