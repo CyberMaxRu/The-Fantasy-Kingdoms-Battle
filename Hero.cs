@@ -9,6 +9,7 @@ using System.Diagnostics;
 
 namespace Fantasy_King_s_Battle
 {
+    internal enum TypeAttack { Melee, Missile, Magic }
     internal sealed class Slot
     {
         public Slot(Hero h, XmlNode n)
@@ -49,6 +50,7 @@ namespace Fantasy_King_s_Battle
             Building = FormMain.Config.FindBuilding(n.SelectSingleNode("Building").InnerText);
             Building.TrainedHero = this;
             MaxLevel = Convert.ToInt32(n.SelectSingleNode("MaxLevel").InnerText);
+            TypeAttack = (TypeAttack)Enum.Parse(typeof(TypeAttack), n.SelectSingleNode("TypeAttack").InnerText);
 
             Debug.Assert(Cost > 0);
             Debug.Assert(ID.Length > 0);
@@ -105,7 +107,8 @@ namespace Fantasy_King_s_Battle
         internal int Cost { get; }
         internal Building Building { get; }
         internal int MaxLevel { get; }
-        
+        internal TypeAttack TypeAttack { get; }
+
         internal Slot[] Slots { get; }
     }
 }

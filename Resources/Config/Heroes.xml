@@ -8,6 +8,7 @@
     <Cost>200</Cost>
     <Building>GuildWarrior</Building>
     <MaxLevel>100</MaxLevel>
+    <TypeAttack>Melee</TypeAttack>
     <Slots>
       <Slot>
         <Pos>1</Pos>
@@ -61,6 +62,7 @@
     <Cost>100</Cost>
     <Building>GuildRogue</Building>
     <MaxLevel>100</MaxLevel>
+    <TypeAttack>Melee</TypeAttack>
     <Slots>
       <Slot>
         <Pos>1</Pos>
@@ -114,6 +116,7 @@
     <Cost>150</Cost>
     <Building>GuildHunter</Building>
     <MaxLevel>100</MaxLevel>
+    <TypeAttack>Missile</TypeAttack>
     <Slots>
       <Slot>
         <Pos>1</Pos>
@@ -167,6 +170,7 @@
     <Cost>350</Cost>
     <Building>GuildCleric</Building>
     <MaxLevel>100</MaxLevel>
+    <TypeAttack>Missile</TypeAttack>
     <Slots>
       <Slot>
         <Pos>1</Pos>
@@ -220,6 +224,7 @@
     <Cost>500</Cost>
     <Building>GuildMage</Building>
     <MaxLevel>100</MaxLevel>
+    <TypeAttack>Magic</TypeAttack>
     <Slots>
       <Slot>
         <Pos>1</Pos>
@@ -273,6 +278,7 @@
     <Cost>700</Cost>
     <Building>GuildElf</Building>
     <MaxLevel>100</MaxLevel>
+    <TypeAttack>Missile</TypeAttack>
     <Slots>
       <Slot>
         <Pos>1</Pos>
@@ -326,6 +332,7 @@
     <Cost>700</Cost>
     <Building>GuildDwarf</Building>
     <MaxLevel>100</MaxLevel>
+    <TypeAttack>Melee</TypeAttack>
     <Slots>
       <Slot>
         <Pos>1</Pos>
