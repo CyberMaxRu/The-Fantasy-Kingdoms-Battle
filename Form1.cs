@@ -80,6 +80,7 @@ namespace Fantasy_King_s_Battle
         private int curAppliedPlayer = -1;
 
         private List<PanelItem> SlotsWarehouse = new List<PanelItem>();
+        //private PanelHero SlotsWarehouse = new List<PanelItem>();
 
         private PictureBox picBoxItemForDrag;// PictureBox с иконкой предмета для отображения под курсором при перетаскивании
         private Point shiftForMouseByDrag;// Смещение иконки предмета относится курсора мыши, чтобы она отображалась ровно так, как предмет взял пользователь
