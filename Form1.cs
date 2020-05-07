@@ -162,7 +162,7 @@ namespace Fantasy_King_s_Battle
                 AutoSize = false,
                 Width = 120
             };
-            r45.Font = new Font(StatusLabelGold.Font, FontStyle.Bold);
+            StatusLabelGold.Font = new Font(StatusLabelGold.Font, FontStyle.Bold);
             StatusStrip.Items.Add(StatusLabelGold);
 
             pageLobby = PreparePanel();
