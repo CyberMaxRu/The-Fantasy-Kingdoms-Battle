@@ -38,6 +38,7 @@ namespace Fantasy_King_s_Battle
         private readonly ToolStripStatusLabel StatusLabelDay;
         private readonly ToolStripStatusLabel StatusLabelGold;
         private Panel panelWarehouse;
+        private Panel panelHeroes;
         private PanelHeroInfo panelHeroInfo;
 
         internal const int GUI_HEROES = 0;
@@ -402,18 +403,29 @@ namespace Fantasy_King_s_Battle
 
         private void DrawHeroes()
         {
+            panelHeroes = new Panel()
+            {
+                BorderStyle = BorderStyle.FixedSingle,
+                Left = 0,
+                Top = 64
+            };
+            pageHeroes.AddControl(panelHeroes);
+
             PanelHero ph;
             for (int y = 0; y < LINES_HEROES; y++)
                 for (int x = 0; x < HEROES_IN_LINE; x++)
                 {
                     ph = new PanelHero(new Point(x, y), Config.GRID_SIZE + x * (ilGuiHeroes.ImageSize.Width + Config.GRID_SIZE * 2), Config.GRID_SIZE + y * (ilGuiHeroes.ImageSize.Height + Config.GRID_SIZE * 2), ilGuiHeroes, ilGui);
+                    ph.Parent = panelHeroes;
                     CellHeroes[y, x] = ph;
-                    pageHeroes.AddControl(ph);
                     ph.Click += PanelHero_Click;
                     ph.MouseDown += CellHero_MouseDown;
                     ph.MouseUp += CellHero_MouseUp;
                     ph.MouseMove += CellHero_MouseMove;
                 }
+
+            panelHeroes.Width = GuiUtils.NextLeft(CellHeroes[LINES_HEROES - 1, HEROES_IN_LINE - 1]);
+            panelHeroes.Height = GuiUtils.NextTop(CellHeroes[LINES_HEROES - 1, HEROES_IN_LINE - 1]);
         }
 
         private void CellHero_MouseMove(object sender, MouseEventArgs e)
@@ -444,7 +456,7 @@ namespace Fantasy_King_s_Battle
                     // Определяем, куда бросили предмет
                     PanelHero ph = GetPanelHeroOnForm(RealCoordCursorHeroDragForCursor(e.Location));
 
-                    if (ph != panelHeroForDrag)
+                    if ((ph != null) && (ph != panelHeroForDrag))
                     {
                         PlayerHero h = ph.Hero;
                         lobby.CurrentPlayer.CellHeroes[ph.Point.Y, ph.Point.X] = panelHeroForDrag.Hero;
@@ -542,6 +554,7 @@ namespace Fantasy_King_s_Battle
                 Size = ilItems.ImageSize,
                 Visible = false
             };
+            picBoxItemForDrag.BringToFront();
 
             panelWarehouse = new Panel()
             {
@@ -602,7 +615,7 @@ namespace Fantasy_King_s_Battle
 
         private Point RealCoordCursorHeroDrag(Point locationMouse)
         {
-            return new Point(panelHeroForDrag.Left + locationMouse.X - shiftForMouseByDrag.X, panelHeroForDrag.Top + locationMouse.Y - shiftForMouseByDrag.Y);
+            return new Point(panelHeroes.Left + panelHeroForDrag.Left + locationMouse.X - shiftForMouseByDrag.X, panelHeroes.Top + panelHeroForDrag.Top + locationMouse.Y - shiftForMouseByDrag.Y);
         }
 
         private Point RealCoordCursorHeroItemDrag(Point locationMouse)
@@ -932,7 +945,7 @@ namespace Fantasy_King_s_Battle
                 {
                     ph = CellHeroes[y, x];
 
-                    if ((p.Y >= ph.Top) && (p.Y <= ph.Top + ph.Height) && (p.X >= ph.Left) && (p.X <= ph.Left + ph.Width))
+                    if ((p.Y >= panelHeroes.Top + ph.Top) && (p.Y <= panelHeroes.Top + ph.Top + ph.Height) && (p.X >= panelHeroes.Left + ph.Left) && (p.X <= panelHeroes.Left + ph.Left + ph.Width))
                         return ph;
                 }
 
@@ -950,7 +963,7 @@ namespace Fantasy_King_s_Battle
 
         private Point RealCoordCursorHeroDragForCursor(Point locationMouse)
         {
-            return new Point(panelHeroForDrag.Left + locationMouse.X, panelHeroForDrag.Top + locationMouse.Y);
+            return new Point(panelHeroes.Left + panelHeroForDrag.Left + locationMouse.X, panelHeroes.Top + panelHeroForDrag.Top + locationMouse.Y);
         }
 
         private void FormMain_Deactivate(object sender, EventArgs e)
