@@ -403,11 +403,35 @@ namespace Fantasy_King_s_Battle
             for (int y = 0; y < LINES_HEROES; y++)
                 for (int x = 0; x < HEROES_IN_LINE; x++)
                 {
-                    ph = new PanelHero(Config.GRID_SIZE + x * (ilGuiHeroes.ImageSize.Width + Config.GRID_SIZE * 3), Config.GRID_SIZE + y * (ilGuiHeroes.ImageSize.Height + Config.GRID_SIZE * 3), ilGuiHeroes, ilGui);
+                    ph = new PanelHero(Config.GRID_SIZE + x * (ilGuiHeroes.ImageSize.Width + Config.GRID_SIZE * 2), Config.GRID_SIZE + y * (ilGuiHeroes.ImageSize.Height + Config.GRID_SIZE * 2), ilGuiHeroes, ilGui);
                     CellHeroes[y, x] = ph;
                     pageHeroes.AddControl(ph);
                     ph.Click += PanelHero_Click;
+                    ph.MouseDown += CellHero_MouseDown;
+                    ph.MouseUp += CellHero_MouseUp;
+                    ph.MouseMove += CellHero_MouseMove;
                 }
+        }
+
+        private void CellHero_MouseMove(object sender, MouseEventArgs e)
+        {
+        }
+
+        private void CellHero_MouseUp(object sender, MouseEventArgs e)
+        {
+        }
+
+        private void CellHero_MouseDown(object sender, MouseEventArgs e)
+        {
+            /*if (e.Button == MouseButtons.Left)
+            {
+                Debug.Assert(itemForDrag == null);
+                Debug.Assert(sender is PictureBox);
+
+                itemForDrag = lobby.CurrentPlayer.Warehouse[((PanelItem)sender).NumberCell];
+                if (itemForDrag != null)
+                    PrepareDrag(PlaceItemForDrag.Warehouse, (PanelItem)sender, e.Location);
+            }*/
         }
 
         internal void ShowPageHeroes()
