@@ -34,8 +34,8 @@ namespace Fantasy_King_s_Battle
 
         private void PanelHero_Paint(object sender, PaintEventArgs e)
         {
-            if (Hero != null)
-            {
+            if ((Hero != null) && (this != Program.formMain.panelHeroForDrag))
+            { 
                 string level = Hero.Level.ToString();
                 pointLevel.X = Width - (level.Length * 12) - 6;
                 e.Graphics.DrawString(level, Program.formMain.fontQuantity, Program.formMain.brushQuantity, pointLevel);
@@ -54,7 +54,10 @@ namespace Fantasy_King_s_Battle
         {
             Hero = ph;
 
-            Image = ph != null ? GuiUtils.GetImageFromImageList(imageListGuiHeroes, Hero.Hero.ImageIndex, true) : null;
+            if (this != Program.formMain?.panelHeroForDrag)
+                Image = ph != null ? GuiUtils.GetImageFromImageList(imageListGuiHeroes, Hero.Hero.ImageIndex, true) : null;
+            else
+                Image = null;
         }
         private void PanelHero_Click(object sender, EventArgs e)
         {

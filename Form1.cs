@@ -92,7 +92,7 @@ namespace Fantasy_King_s_Battle
         private PanelItem panelItemForDrag;// Ячейка-источник предмета для переноса
         private PlayerItem itemForDrag;// Предмет для переноса. Отдельно его храним, так как если он один, в ячейке он не остается
         private PlayerItem itemTempForDrag;// Предмет для временного хранения одного экземпляра предмета при переносе
-        private PanelHero panelHeroForDrag;// Ячейка-источник героя для переноса
+        internal PanelHero panelHeroForDrag;// Ячейка-источник героя для переноса
         private PlayerHero heroForDrag;// Герой для переноса
 
         internal readonly Bitmap background;
@@ -435,7 +435,10 @@ namespace Fantasy_King_s_Battle
                 if (e.Button == MouseButtons.Left)
                 {
                     if (picBoxItemForDrag.Visible == false)
+                    {
+                        panelHeroForDrag.ShowData(panelHeroForDrag.Hero);
                         BeginDrag();
+                    }
 
                     UpdateDrag(e);
                 }
@@ -755,12 +758,16 @@ namespace Fantasy_King_s_Battle
             if (picBoxItemForDrag.Visible == true)
                 picBoxItemForDrag.Hide();
 
+            PanelHero ph = panelHeroForDrag;
             placeItemForDrag = SourceForDrag.None;
             panelItemForDrag = null;
             panelHeroForDrag = null;
             itemForDrag = null;
             itemTempForDrag = null;
             heroForDrag = null;
+
+            if (ph != null)
+                ph.ShowData(ph.Hero);
         }
 
         private void PanelCellWarehouse_MouseDown(object sender, MouseEventArgs e)
