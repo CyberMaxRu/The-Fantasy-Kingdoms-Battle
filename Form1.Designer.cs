@@ -39,6 +39,7 @@
             this.textBoxResultBattle = new System.Windows.Forms.TextBox();
             this.ButtonEndTurn = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.tabPageTowers = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.tabPageBattle.SuspendLayout();
             this.SuspendLayout();
@@ -60,6 +61,7 @@
             this.tabControl1.Controls.Add(this.tabPageGuilds);
             this.tabControl1.Controls.Add(this.tabPageBuildings);
             this.tabControl1.Controls.Add(this.tabPageTemples);
+            this.tabControl1.Controls.Add(this.tabPageTowers);
             this.tabControl1.Controls.Add(this.tabPageHeroes);
             this.tabControl1.Controls.Add(this.tabPageBattle);
             this.tabControl1.Location = new System.Drawing.Point(8, 40);
@@ -160,6 +162,16 @@
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // tabPageTowers
+            // 
+            this.tabPageTowers.Location = new System.Drawing.Point(4, 25);
+            this.tabPageTowers.Name = "tabPageTowers";
+            this.tabPageTowers.Size = new System.Drawing.Size(952, 31);
+            this.tabPageTowers.TabIndex = 8;
+            this.tabPageTowers.Text = "Защитные сооружения";
+            this.tabPageTowers.ToolTipText = "Защитные сооружения";
+            this.tabPageTowers.UseVisualStyleBackColor = true;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -198,6 +210,7 @@
         private System.Windows.Forms.TextBox textBoxResultBattle;
         private System.Windows.Forms.TabPage tabPageGuilds;
         private System.Windows.Forms.TabPage tabPageTemples;
+        private System.Windows.Forms.TabPage tabPageTowers;
     }
 }
 

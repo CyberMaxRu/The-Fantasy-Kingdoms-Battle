@@ -8,7 +8,7 @@ using System.Diagnostics;
 
 namespace Fantasy_King_s_Battle
 {
-    internal enum CategoryBuilding { Guild, Castle, Temple }
+    internal enum CategoryBuilding { Guild, Castle, Temple, Tower }
 
     // Класс здания
     internal sealed class Building

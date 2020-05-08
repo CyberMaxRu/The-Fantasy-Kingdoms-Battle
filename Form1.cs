@@ -102,6 +102,7 @@ namespace Fantasy_King_s_Battle
         private readonly PanelControls pageGuilds;
         private readonly PanelControls pageBuildings;
         private readonly PanelControls pageTemples;
+        private readonly PanelControls pageTowers;
         private readonly PanelControls pageHeroes;
         private readonly PanelControls pageBattle;
         private PanelControls currentPage;
@@ -175,12 +176,14 @@ namespace Fantasy_King_s_Battle
             pageGuilds = PreparePanel();
             pageBuildings = PreparePanel();
             pageTemples = PreparePanel();
+            pageTowers = PreparePanel();
             pageHeroes = PreparePanel();
             pageBattle = PreparePanel();
             pages.Add(pageLobby);
             pages.Add(pageGuilds);
             pages.Add(pageBuildings);
             pages.Add(pageTemples);
+            pages.Add(pageTowers);
             pages.Add(pageHeroes);
             pages.Add(pageBattle);
 
@@ -215,6 +218,8 @@ namespace Fantasy_King_s_Battle
             tabPageBuildings.Text = "";
             tabPageTemples.ImageIndex = GUI_TEMPLE;
             tabPageTemples.Text = "";
+            tabPageTowers.ImageIndex = GUI_DEFENSE;
+            tabPageTowers.Text = "";
             tabPageHeroes.ImageIndex = GUI_HEROES;
             tabPageHeroes.Text = "";
             tabPageBattle.ImageIndex = GUI_BATTLE;
@@ -224,6 +229,7 @@ namespace Fantasy_King_s_Battle
             DrawGuilds();
             DrawBuildings();
             DrawTemples();
+            DrawTowers();
             DrawHeroes();
             DrawWarehouse();
 
@@ -390,6 +396,11 @@ namespace Fantasy_King_s_Battle
         private void DrawTemples()
         {
             DrawPageBuilding(pageTemples, CategoryBuilding.Temple);
+        }
+
+        private void DrawTowers()
+        {
+            
         }
 
         private void ShowTemples()
