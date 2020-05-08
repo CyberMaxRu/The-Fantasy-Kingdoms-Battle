@@ -55,6 +55,25 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(IsLive == true);
 
             // Здесь расчет хода для ИИ
+            // Покупаем четыре гильдии и строим 16 героев. На этом пока всё
+            GetPlayerBuilding(FormMain.Config.FindBuilding("GuildWarrior")).BuyOrUpgrade();
+            GetPlayerBuilding(FormMain.Config.FindBuilding("GuildRogue")).BuyOrUpgrade();
+            GetPlayerBuilding(FormMain.Config.FindBuilding("GuildHunter")).BuyOrUpgrade();
+            GetPlayerBuilding(FormMain.Config.FindBuilding("GuildCleric")).BuyOrUpgrade();
+            HireAllHero(GetPlayerBuilding(FormMain.Config.FindBuilding("GuildWarrior")));
+
+            HireAllHero(GetPlayerBuilding(FormMain.Config.FindBuilding("GuildWarrior")));
+            HireAllHero(GetPlayerBuilding(FormMain.Config.FindBuilding("GuildRogue")));
+            HireAllHero(GetPlayerBuilding(FormMain.Config.FindBuilding("GuildHunter")));
+            HireAllHero(GetPlayerBuilding(FormMain.Config.FindBuilding("GuildCleric")));
+
+            void HireAllHero(PlayerBuilding bp)
+            {
+                for (; bp.Heroes.Count() < bp.Building.MaxHeroes;)
+                {
+                    bp.HireHero();
+                }
+            }
         }
 
         internal void CalcResultTurn()
