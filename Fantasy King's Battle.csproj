@@ -47,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Building.cs" />
-    <Compile Include="BuildingOfPlayer.cs" />
     <Compile Include="ClassUnit.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Form1.cs">

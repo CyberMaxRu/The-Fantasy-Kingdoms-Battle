@@ -100,7 +100,6 @@ namespace Fantasy_King_s_Battle
         internal bool IsLive { get; }
 
         internal PlayerItem[] Warehouse = new PlayerItem[FormMain.WH_MAX_SLOTS];// Предметы на складе игрока
-        internal List<BuildingOfPlayer>[] ExternalBuildings {get; }
         internal PanelAboutPlayer PanelAbout { get; set; }
         private Player opponent;
         internal Player Opponent { get { return opponent; } set { if (value != this) opponent = value; else new Exception("Нельзя указать оппонентов самого себя."); } }
