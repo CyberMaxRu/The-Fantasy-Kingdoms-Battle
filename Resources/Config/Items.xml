@@ -65,10 +65,9 @@
     <CostExamine>0</CostExamine>
     <Cost>0</Cost>
     <Perk></Perk>
-    <Parameters>
-      <TypeAttack>Melee</TypeAttack>
-      <Damage>5</Damage>
-    </Parameters>
+    <TypeAttack>Melee</TypeAttack>
+    <DamagePhysical>5</DamagePhysical>
+    <DamageMagic>0</DamageMagic>
   </Item>
   <Item>
     <ID>ArmourWarrior0</ID>
@@ -80,11 +79,8 @@
     <CostExamine>0</CostExamine>
     <Cost>0</Cost>
     <Perk></Perk>
-    <Parameters>
-      <DefenseMelee>5</DefenseMelee>
-      <DefenseMissile>5</DefenseMissile>
-      <DefenseMagic>0</DefenseMagic>
-    </Parameters>
+    <DefensePhysical>5</DefensePhysical>
+    <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
     <ID>Bow0</ID>
@@ -96,10 +92,8 @@
     <CostExamine>0</CostExamine>
     <Cost>0</Cost>
     <Perk></Perk>
-    <Parameters>
-      <TypeAttack>Missile</TypeAttack>
-      <Damage>3</Damage>
-    </Parameters>
+    <TypeAttack>Missile</TypeAttack>
+    <Damage>3</Damage>
   </Item>
   <Item>
     <ID>ArmourArcher0</ID>
@@ -122,10 +116,8 @@
     <CostExamine>0</CostExamine>
     <Cost>0</Cost>
     <Perk></Perk>
-    <Parameters>
-      <TypeAttack>Magic</TypeAttack>
-      <Damage>5</Damage>
-    </Parameters>
+    <TypeAttack>Magic</TypeAttack>
+    <DamageMagic>5</DamageMagic>
   </Item>
   <Item>
     <ID>ArmourMage0</ID>
@@ -148,10 +140,8 @@
     <CostExamine>0</CostExamine>
     <Cost>0</Cost>
     <Perk></Perk>
-    <Parameters>
-      <TypeAttack>Melee</TypeAttack>
-      <Damage>15</Damage>
-    </Parameters>
+    <TypeAttack>Melee</TypeAttack>
+    <DamagePhysical>15</DamagePhysical>
   </Item>
   <Item>
     <ID>ArmourWarrior1</ID>
@@ -196,10 +186,8 @@
     <CostExamine>0</CostExamine>
     <Cost>0</Cost>
     <Perk></Perk>
-    <Parameters>
-      <TypeAttack>Missile</TypeAttack>
-      <Damage>10</Damage>
-    </Parameters>
+    <TypeAttack>Missile</TypeAttack>
+    <DamagePhysical>10</DamagePhysical>
   </Item>
   <Item>
     <ID>ArmourArcher1</ID>
@@ -222,10 +210,8 @@
     <CostExamine>0</CostExamine>
     <Cost>0</Cost>
     <Perk></Perk>
-    <Parameters>
-      <TypeAttack>Missile</TypeAttack>
-      <Damage>15</Damage>
-    </Parameters>
+    <TypeAttack>Missile</TypeAttack>
+    <DamagePhysical>15</DamagePhysical>
   </Item>
   <Item>
     <ID>ArmourArcher2</ID>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,16 @@ namespace Fantasy_King_s_Battle
             CostExamine = Convert.ToInt32(n.SelectSingleNode("CostExamine").InnerText);
             Cost = Convert.ToInt32(n.SelectSingleNode("Cost").InnerText);            
             TypeAttack = n.SelectSingleNode("TypeAttack") == null ? TypeAttack.None : (TypeAttack)Enum.Parse(typeof(TypeAttack), n.SelectSingleNode("TypeAttack").InnerText);
+
+            DamagePhysical = n.SelectSingleNode("DamagePhysical") != null ? Convert.ToInt32(n.SelectSingleNode("DamagePhysical").InnerText) : 0;
+            DamageMagic = n.SelectSingleNode("DamageMagic") != null ? Convert.ToInt32(n.SelectSingleNode("DamageMagic").InnerText) : 0;
+            DefensePhysical = n.SelectSingleNode("DefensePhysical") != null ? Convert.ToInt32(n.SelectSingleNode("DefensePhysical").InnerText) : 0;
+            DefenseMagic = n.SelectSingleNode("DefenseMagic") != null ? Convert.ToInt32(n.SelectSingleNode("DefenseMagic").InnerText) : 0;
+
+            if (TypeAttack == TypeAttack.None)
+            {
+                Debug.Assert((DamagePhysical == 0) && (DamageMagic == 0));
+            }
 
             Position = FormMain.Config.Items.Count;
 
@@ -49,5 +60,9 @@ namespace Fantasy_King_s_Battle
         internal Building Building { get; }
         internal int CostExamine { get; }
         internal int Cost { get; }
+        internal int DamagePhysical { get; }
+        internal int DamageMagic { get; }
+        internal int DefensePhysical { get; }
+        internal int DefenseMagic { get; }
     }
 }
