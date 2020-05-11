@@ -15,6 +15,7 @@ namespace Fantasy_King_s_Battle
         {
             ID = n.SelectSingleNode("ID").InnerText;
             Name = n.SelectSingleNode("Name").InnerText;
+            Description = n.SelectSingleNode("Description").InnerText.Replace("/", Environment.NewLine);
             ImageIndex = Convert.ToInt32(n.SelectSingleNode("ImageIndex").InnerText);
             TypeItem = FormMain.Config.FindTypeItem(n.SelectSingleNode("TypeItem").InnerText);
             Building = FormMain.Config.FindBuilding(n.SelectSingleNode("Building").InnerText);
@@ -40,6 +41,7 @@ namespace Fantasy_King_s_Battle
 
         internal string ID { get; }
         internal string Name { get; }
+        internal string Description { get; }
         internal int ImageIndex { get; }
         internal TypeItem TypeItem { get; }
         internal TypeAttack TypeAttack { get; }
