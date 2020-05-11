@@ -49,6 +49,7 @@ namespace Fantasy_King_s_Battle
             AddItem(new PlayerItem(FormMain.Config.FindItem("ImpProtection"), 2));
 
             ValidateHeroes();
+            CalcBuilders();
         }
 
         internal void DoTurn()
@@ -86,6 +87,17 @@ namespace Fantasy_King_s_Battle
             Gold += Income();
 
             ValidateHeroes();
+            CalcBuilders();
+        }
+
+        private void CalcBuilders()
+        {
+            TotalBuilders = 0;
+            foreach (PlayerBuilding pb in Buildings)
+                if ((pb.Building.TrainedHero != null) && (pb.Building.TrainedHero.CanBuild == true))
+                    TotalBuilders += pb.Heroes.Count;
+
+            FreeBuilders = TotalBuilders;
         }
 
         private void ValidateHeroes()
@@ -104,6 +116,8 @@ namespace Fantasy_King_s_Battle
         internal PlayerHero[,] CellHeroes = new PlayerHero[FormMain.LINES_HEROES, FormMain.HEROES_IN_LINE];
         internal TypePlayer TypePlayer { get; }
         internal int Gold { get; set; }
+        internal int TotalBuilders { get; private set; }
+        internal int FreeBuilders { get; private set; }
         internal int[] Resources { get; }
         internal int Wins { get; set; }
         internal int Loses { get; set; }
