@@ -111,6 +111,8 @@ namespace Fantasy_King_s_Battle
 
         internal readonly FormHint formHint;
 
+        internal static Random Rnd = new Random();
+
         public FormMain()
         {
             InitializeComponent();

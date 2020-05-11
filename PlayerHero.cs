@@ -14,7 +14,7 @@ namespace Fantasy_King_s_Battle
         {
             Building = pb;
             Hero = Building.Building.TrainedHero;
-            Level = 1;
+            Level = 0;
 
             for (int i = 0; i < Hero.Slots.Length; i++)
             {
@@ -25,12 +25,15 @@ namespace Fantasy_King_s_Battle
             }
 
             OurParameters = new MainParameters(Hero.MainParameters);
-            ModifiedParameters = new MainParameters(Hero.MainParameters);
+
+            // Переходим на 1 уровень
+            LevelUp();
+            ModifiedParameters = new MainParameters(OurParameters);
         }
 
         internal PlayerBuilding Building { get; }        
         internal Hero Hero { get; }
-        internal int Level { get; }
+        internal int Level { get; private set; }
 
         internal int CurrentHealth;
         internal int MaxHealth;
@@ -212,6 +215,33 @@ namespace Fantasy_King_s_Battle
                 Slots[toSlot] = Slots[fromSlot];
                 Slots[fromSlot] = tmp;
             }
+        }
+
+        private void LevelUp()
+        {
+            Debug.Assert(Level < Hero.MaxLevel);
+
+            // Прибавляем безусловные параметры
+            OurParameters.Health += Hero.ConfigNextLevel.Health;
+            OurParameters.Mana += Hero.ConfigNextLevel.Mana;
+
+            // Прибавляем очки характеристик
+            int t;
+            for (int i = 0; i < Hero.ConfigNextLevel.StatPoints; i++)
+            {
+                t = FormMain.Rnd.Next(100);
+
+                if (t < Hero.ConfigNextLevel.WeightStrength)
+                    OurParameters.Strength++;
+                else if (t < Hero.ConfigNextLevel.WeightStrength + Hero.ConfigNextLevel.WeightDexterity)
+                    OurParameters.Dexterity++;
+                else if (t < Hero.ConfigNextLevel.WeightStrength + Hero.ConfigNextLevel.WeightDexterity + Hero.ConfigNextLevel.WeightMagic)
+                    OurParameters.Magic++;
+                else
+                    OurParameters.Vitality++;
+            }
+
+            Level++;
         }
     }
 }
