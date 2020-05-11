@@ -78,7 +78,6 @@
     <ID>Mill</ID>
     <Name>Мельница</Name>
     <Description>- Приносит небольшой доход</Description>
-    <Description></Description>
     <ImageIndex>9</ImageIndex>
     <CategoryBuilding>Castle</CategoryBuilding>
     <Line>1</Line>
