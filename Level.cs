@@ -52,14 +52,8 @@ namespace Fantasy_King_s_Battle
             XmlNode nr = n.SelectSingleNode("Requirements");
             if (nr != null)
             {
-                Level level;
-
                 foreach (XmlNode r in nr.SelectNodes("Requirement"))
-                {
-                    Requirements.Add(new Requirement(
-                        r.SelectSingleNode("Building").InnerText,
-                        Convert.ToInt32(r.SelectSingleNode("Level").InnerText)));
-                }
+                    Requirements.Add(new Requirement(r.SelectSingleNode("Building").InnerText, Convert.ToInt32(r.SelectSingleNode("Level").InnerText)));
             }
         }
 
