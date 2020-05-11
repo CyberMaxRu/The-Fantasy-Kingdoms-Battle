@@ -65,6 +65,7 @@ namespace Fantasy_King_s_Battle
             Magic = mp.Magic;
             Vitality = mp.Vitality;
             TimeAttack = mp.TimeAttack;
+
             CoefHealth = mp.CoefHealth;
             CoefMana = mp.CoefMana;
             CoefStamina = mp.CoefStamina;

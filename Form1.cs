@@ -134,7 +134,7 @@ namespace Fantasy_King_s_Battle
             _ = new Config(dirResources, this);
 
             // Подготавливаем иконки
-            ilFractions = PrepareImageList("Fractions.png", 78, 52, true);
+            ilFractions = PrepareImageList("Fractions.png", 48, 48, true);
 
             ilSkills = PrepareImageList("Skills.png", 82, 94, false);
             ilResultBattle = PrepareImageList("ResultBattle52.png", 45, 52, false);
