@@ -19,7 +19,9 @@ namespace Fantasy_King_s_Battle
             TypeItem = FormMain.Config.FindTypeItem(n.SelectSingleNode("TypeItem").InnerText);
             Building = FormMain.Config.FindBuilding(n.SelectSingleNode("Building").InnerText);
             CostExamine = Convert.ToInt32(n.SelectSingleNode("CostExamine").InnerText);
-            Cost = Convert.ToInt32(n.SelectSingleNode("Cost").InnerText);
+            Cost = Convert.ToInt32(n.SelectSingleNode("Cost").InnerText);            
+            TypeAttack = n.SelectSingleNode("TypeAttack") == null ? TypeAttack.None : (TypeAttack)Enum.Parse(typeof(TypeAttack), n.SelectSingleNode("TypeAttack").InnerText);
+
             Position = FormMain.Config.Items.Count;
 
             // Проверяем, что таких же ID и наименования нет
@@ -40,6 +42,7 @@ namespace Fantasy_King_s_Battle
         internal string Name { get; }
         internal int ImageIndex { get; }
         internal TypeItem TypeItem { get; }
+        internal TypeAttack TypeAttack { get; }
         internal int Position { get; }
         internal Building Building { get; }
         internal int CostExamine { get; }
