@@ -9,6 +9,7 @@ using System.Diagnostics;
 namespace Fantasy_King_s_Battle
 {
     internal enum CategoryBuilding { Guild, Castle, Temple, Tower }
+    internal enum TypeIncome { None, Persistent, PerHeroes }
 
     // Класс здания
     internal sealed class Building
@@ -22,6 +23,7 @@ namespace Fantasy_King_s_Battle
             DefaultLevel = Convert.ToInt32(n.SelectSingleNode("DefaultLevel").InnerText);
             MaxLevel = Convert.ToInt32(n.SelectSingleNode("MaxLevel").InnerText);
             CategoryBuilding = (CategoryBuilding)Enum.Parse(typeof(CategoryBuilding), n.SelectSingleNode("CategoryBuilding").InnerText);
+            TypeIncome = (TypeIncome)Enum.Parse(typeof(TypeIncome), n.SelectSingleNode("TypeIncome").InnerText);
             Line = Convert.ToInt32(n.SelectSingleNode("Line").InnerText);
             Position = FormMain.Config.Buildings.Count;
 
@@ -85,6 +87,7 @@ namespace Fantasy_King_s_Battle
         internal int Position { get; }
         internal Hero TrainedHero { get; set; }
         internal CategoryBuilding CategoryBuilding { get; }
+        internal TypeIncome TypeIncome { get; }
         internal int Line { get; }
         internal PanelBuilding Panel { get; set; }
     }

@@ -9,6 +9,7 @@
     <Line>1</Line>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>3</MaxLevel>
+    <TypeIncome>Persistent</TypeIncome>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -62,6 +63,7 @@
     <Line>1</Line>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <TypeIncome>PerHeroes</TypeIncome>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -82,6 +84,7 @@
     <Line>1</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <TypeIncome>PerHeroes</TypeIncome>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -101,6 +104,7 @@
     <Line>2</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
+    <TypeIncome>Persistent</TypeIncome>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -143,6 +147,7 @@
     <Line>2</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
+    <TypeIncome>Persistent</TypeIncome>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -185,6 +190,7 @@
     <Line>3</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>2</MaxLevel>
+    <TypeIncome>None</TypeIncome>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -215,6 +221,7 @@
     <Line>2</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <TypeIncome>Persistent</TypeIncome>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -243,6 +250,7 @@
     <Line>3</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <TypeIncome>None</TypeIncome>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -262,6 +270,7 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>2</MaxLevel>
     <MaxHeroes>0</MaxHeroes>
+    <TypeIncome>None</TypeIncome>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -286,6 +295,7 @@
     <Line>1</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
+    <TypeIncome>None</TypeIncome>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -319,6 +329,7 @@
     <Line>1</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
+    <TypeIncome>None</TypeIncome>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -352,6 +363,7 @@
     <Line>1</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
+    <TypeIncome>None</TypeIncome>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -385,6 +397,7 @@
     <Line>1</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
+    <TypeIncome>None</TypeIncome>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -418,6 +431,7 @@
     <Line>2</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
+    <TypeIncome>None</TypeIncome>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -469,6 +483,7 @@
     <Line>2</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>2</MaxLevel>
+    <TypeIncome>None</TypeIncome>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -515,6 +530,7 @@
     <Line>2</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>2</MaxLevel>
+    <TypeIncome>None</TypeIncome>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -561,6 +577,7 @@
     <Line>1</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <TypeIncome>None</TypeIncome>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -590,6 +607,7 @@
     <Line>1</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <TypeIncome>None</TypeIncome>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -619,6 +637,7 @@
     <Line>1</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <TypeIncome>None</TypeIncome>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -648,6 +667,7 @@
     <Line>2</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <TypeIncome>None</TypeIncome>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -677,6 +697,7 @@
     <Line>2</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <TypeIncome>None</TypeIncome>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -706,6 +727,7 @@
     <Line>2</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <TypeIncome>None</TypeIncome>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -735,6 +757,7 @@
     <Line>3</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <TypeIncome>None</TypeIncome>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -764,6 +787,7 @@
     <Line>3</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <TypeIncome>None</TypeIncome>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -793,6 +817,7 @@
     <Line>3</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <TypeIncome>None</TypeIncome>
     <Levels>
       <Level>
         <Pos>1</Pos>

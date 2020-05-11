@@ -112,7 +112,23 @@ namespace Fantasy_King_s_Battle
 
         internal int Income()
         {
-            return Level > 0 ? Building.Levels[Level].Income : 0;
+            int coef;
+            switch (Building.TypeIncome)
+            {
+                case TypeIncome.None:
+                    coef = 0;
+                    break;
+                case TypeIncome.Persistent:
+                    coef = 1;
+                    break;
+                case TypeIncome.PerHeroes:
+                    coef = Heroes.Count;
+                    break;
+                default:
+                    throw new Exception("Неизвестный тип дохода.");
+            }
+
+            return Level > 0 ? Building.Levels[Level].Income * coef : 0;
         }
 
         internal bool DoIncome()
