@@ -255,7 +255,7 @@ namespace Fantasy_King_s_Battle
             if (building.Building.TrainedHero != null)
             {
                 btnHireHero.Show();
-                btnHireHero.ImageIndex = (building.Heroes.Count == building.MaxHeroes()) || (building.MaxHeroesAtPlayer() == true)  ? -1 : GuiUtils.GetImageIndexWithGray(btnHireHero.ImageList, building.Building.TrainedHero.ImageIndex, building.CanTrainHero());
+                btnHireHero.ImageIndex = (building.Level > 0) && ((building.Heroes.Count == building.MaxHeroes()) || (building.MaxHeroesAtPlayer() == true))  ? -1 : GuiUtils.GetImageIndexWithGray(btnHireHero.ImageList, building.Building.TrainedHero.ImageIndex, building.CanTrainHero());
                 btnHireHero.Text = (building.Level == 0) || (building.CanTrainHero() == true) ? building.Building.TrainedHero.Cost.ToString() : ""; 
             }
             else
