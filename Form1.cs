@@ -37,6 +37,7 @@ namespace Fantasy_King_s_Battle
 
         private readonly ToolStripStatusLabel StatusLabelDay;
         private readonly ToolStripStatusLabel StatusLabelGold;
+        private readonly ToolStripStatusLabel StatusLabelBuilders;
         private Panel panelWarehouse;
         private Panel panelHeroes;
         private PanelHeroInfo panelHeroInfo;
@@ -65,6 +66,7 @@ namespace Fantasy_King_s_Battle
         internal const int GUI_PARAMETER_DEFENSE_MAGIC = 5;
 
         internal const int GUI_16_GOLD = 0;
+        internal const int GUI_16_PEASANT = 1;
 
         internal const int GUI_45_EMPTY = 0;
         internal const int GUI_45_BORDER = 0;
@@ -173,6 +175,15 @@ namespace Fantasy_King_s_Battle
             };
             StatusLabelGold.Font = new Font(StatusLabelGold.Font, FontStyle.Bold);
             StatusStrip.Items.Add(StatusLabelGold);
+
+            StatusLabelBuilders = new ToolStripStatusLabel(StatusStrip.ImageList.Images[GUI_16_PEASANT])
+            {
+                ImageAlign = ContentAlignment.MiddleLeft,
+                AutoSize = false,
+                Width = 120
+            };
+            StatusLabelBuilders.Font = new Font(StatusLabelBuilders.Font, FontStyle.Bold);
+            StatusStrip.Items.Add(StatusLabelBuilders);
 
             pageLobby = PreparePanel();
             pageGuilds = PreparePanel();
@@ -555,6 +566,7 @@ namespace Fantasy_King_s_Battle
         internal void ShowGold()
         {
             StatusLabelGold.Text = lobby.CurrentPlayer.Gold.ToString() + " (+" + lobby.CurrentPlayer.Income().ToString() + ")";
+            StatusLabelBuilders.Text = lobby.CurrentPlayer.FreeBuilders.ToString() + "/" + lobby.CurrentPlayer.TotalBuilders.ToString();
         }
 
         internal void ShowAllBuildings()
