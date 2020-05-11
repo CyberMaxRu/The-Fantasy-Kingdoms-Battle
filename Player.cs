@@ -146,33 +146,36 @@ namespace Fantasy_King_s_Battle
         {
             Heroes.Add(ph);
 
-            // Ищем место в ячейках героев
-            int line;
-            int pos = -1;
-
-            // Сначала ищем ячейку согласно типу атаки героя
-            line = ph.Hero.TypeAttack == TypeAttack.Melee ? 0 : 1;
-            pos = SearchFreeCell(line);
-
-            // Если не нашли свободную ячейку, ищем в другой
-            if (pos == -1)
+            if (ph.Building.Building.CategoryBuilding != CategoryBuilding.Castle)
             {
-                line = 1 - line;
+                // Ищем место в ячейках героев
+                int line;
+                int pos = -1;
+
+                // Сначала ищем ячейку согласно типу атаки героя
+                line = ph.Hero.TypeAttack == TypeAttack.Melee ? 0 : 1;
                 pos = SearchFreeCell(line);
-            }
 
-            Debug.Assert(pos != -1);
-            Debug.Assert(CellHeroes[line, pos] == null);
+                // Если не нашли свободную ячейку, ищем в другой
+                if (pos == -1)
+                {
+                    line = 1 - line;
+                    pos = SearchFreeCell(line);
+                }
 
-            CellHeroes[line, pos] = ph;
+                Debug.Assert(pos != -1);
+                Debug.Assert(CellHeroes[line, pos] == null);
 
-            int SearchFreeCell(int searchedLine)
-            {
-                for (int i = 0; i < CellHeroes.GetLength(1); i++)
-                    if (CellHeroes[searchedLine, i] == null)
-                        return i;
+                CellHeroes[line, pos] = ph;
 
-                return -1;
+                int SearchFreeCell(int searchedLine)
+                {
+                    for (int i = 0; i < CellHeroes.GetLength(1); i++)
+                        if (CellHeroes[searchedLine, i] == null)
+                            return i;
+
+                    return -1;
+                }
             }
         }
 
