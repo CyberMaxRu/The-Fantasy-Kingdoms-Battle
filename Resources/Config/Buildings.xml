@@ -9,17 +9,18 @@
     <Line>1</Line>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>3</MaxLevel>
-    <MaxHeroes>0</MaxHeroes>
     <Levels>
       <Level>
         <Pos>1</Pos>
         <Cost>0</Cost>
         <Income>50</Income>
+        <MaxHeroes>1</MaxHeroes>
       </Level>
       <Level>
         <Pos>2</Pos>
         <Cost>2000</Cost>
         <Income>125</Income>
+        <MaxHeroes>2</MaxHeroes>
         <Requirements>
           <Requirement>
             <Building>Market</Building>
@@ -35,6 +36,7 @@
         <Pos>3</Pos>
         <Cost>4000</Cost>
         <Income>275</Income>
+        <MaxHeroes>4</MaxHeroes>
         <Requirements>
           <Requirement>
             <Building>Market</Building>
@@ -57,12 +59,12 @@
     <Line>1</Line>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
-    <MaxHeroes>0</MaxHeroes>
     <Levels>
       <Level>
         <Pos>1</Pos>
         <Cost>0</Cost>
         <Income>50</Income>
+        <MaxHeroes>1</MaxHeroes>
       </Level>
     </Levels>
   </Building>
@@ -76,12 +78,12 @@
     <Line>1</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
-    <MaxHeroes>0</MaxHeroes>
     <Levels>
       <Level>
         <Pos>1</Pos>
         <Cost>0</Cost>
         <Income>50</Income>
+        <MaxHeroes>1</MaxHeroes>
       </Level>
     </Levels>
   </Building>
@@ -94,7 +96,6 @@
     <Line>2</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
-    <MaxHeroes>0</MaxHeroes>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -134,7 +135,6 @@
     <Line>2</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
-    <MaxHeroes>0</MaxHeroes>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -174,7 +174,6 @@
     <Line>3</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>2</MaxLevel>
-    <MaxHeroes>0</MaxHeroes>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -203,7 +202,6 @@
     <Line>2</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
-    <MaxHeroes>0</MaxHeroes>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -231,7 +229,6 @@
     <Line>3</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
-    <MaxHeroes>0</MaxHeroes>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -272,22 +269,24 @@
     <Line>1</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
-    <MaxHeroes>4</MaxHeroes>
     <Levels>
       <Level>
         <Pos>1</Pos>
         <Cost>550</Cost>
         <Income>0</Income>
+        <MaxHeroes>4</MaxHeroes>
       </Level>
       <Level>
         <Pos>2</Pos>
         <Cost>550</Cost>
         <Income>0</Income>
+        <MaxHeroes>4</MaxHeroes>
       </Level>
       <Level>
         <Pos>3</Pos>
         <Cost>550</Cost>
         <Income>0</Income>
+        <MaxHeroes>4</MaxHeroes>
       </Level>
     </Levels>
   </Building>
@@ -300,22 +299,24 @@
     <Line>1</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
-    <MaxHeroes>4</MaxHeroes>
     <Levels>
       <Level>
         <Pos>1</Pos>
         <Cost>450</Cost>
         <Income>0</Income>
+        <MaxHeroes>4</MaxHeroes>
       </Level>
       <Level>
         <Pos>2</Pos>
         <Cost>450</Cost>
         <Income>0</Income>
+        <MaxHeroes>4</MaxHeroes>
       </Level>
       <Level>
         <Pos>3</Pos>
         <Cost>450</Cost>
         <Income>0</Income>
+        <MaxHeroes>4</MaxHeroes>
       </Level>
     </Levels>
   </Building>
@@ -328,22 +329,24 @@
     <Line>1</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
-    <MaxHeroes>4</MaxHeroes>
     <Levels>
       <Level>
         <Pos>1</Pos>
         <Cost>450</Cost>
         <Income>0</Income>
+        <MaxHeroes>4</MaxHeroes>
       </Level>
       <Level>
         <Pos>2</Pos>
         <Cost>450</Cost>
         <Income>0</Income>
+        <MaxHeroes>4</MaxHeroes>
       </Level>
       <Level>
         <Pos>3</Pos>
         <Cost>450</Cost>
         <Income>0</Income>
+        <MaxHeroes>4</MaxHeroes>
       </Level>
     </Levels>
   </Building>
@@ -356,22 +359,24 @@
     <Line>1</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
-    <MaxHeroes>4</MaxHeroes>
     <Levels>
       <Level>
         <Pos>1</Pos>
         <Cost>700</Cost>
         <Income>0</Income>
+        <MaxHeroes>4</MaxHeroes>
       </Level>
       <Level>
         <Pos>2</Pos>
         <Cost>700</Cost>
         <Income>0</Income>
+        <MaxHeroes>4</MaxHeroes>
       </Level>
       <Level>
         <Pos>3</Pos>
         <Cost>700</Cost>
         <Income>0</Income>
+        <MaxHeroes>4</MaxHeroes>
       </Level>
     </Levels>
   </Building>
@@ -384,12 +389,12 @@
     <Line>2</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
-    <MaxHeroes>3</MaxHeroes>
     <Levels>
       <Level>
         <Pos>1</Pos>
         <Cost>1000</Cost>
         <Income>0</Income>
+        <MaxHeroes>3</MaxHeroes>
         <Requirements>
           <Requirement>
             <Building>Castle</Building>
@@ -401,6 +406,7 @@
         <Pos>2</Pos>
         <Cost>1000</Cost>
         <Income>0</Income>
+        <MaxHeroes>3</MaxHeroes>
         <Requirements>
           <Requirement>
             <Building>Castle</Building>
@@ -412,6 +418,7 @@
         <Pos>3</Pos>
         <Cost>1000</Cost>
         <Income>0</Income>
+        <MaxHeroes>3</MaxHeroes>
         <Requirements>
           <Requirement>
             <Building>Castle</Building>
@@ -430,12 +437,12 @@
     <Line>2</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>2</MaxLevel>
-    <MaxHeroes>3</MaxHeroes>
     <Levels>
       <Level>
         <Pos>1</Pos>
         <Cost>2500</Cost>
         <Income>0</Income>
+        <MaxHeroes>3</MaxHeroes>
         <Requirements>
           <Requirement>
             <Building>Castle</Building>
@@ -451,6 +458,7 @@
         <Pos>2</Pos>
         <Cost>2500</Cost>
         <Income>0</Income>
+        <MaxHeroes>3</MaxHeroes>
         <Requirements>
           <Requirement>
             <Building>Castle</Building>
@@ -473,12 +481,12 @@
     <Line>2</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>2</MaxLevel>
-    <MaxHeroes>3</MaxHeroes>
     <Levels>
       <Level>
         <Pos>1</Pos>
         <Cost>2000</Cost>
         <Income>0</Income>
+        <MaxHeroes>3</MaxHeroes>
         <Requirements>
           <Requirement>
             <Building>Castle</Building>
@@ -494,6 +502,7 @@
         <Pos>2</Pos>
         <Cost>2500</Cost>
         <Income>0</Income>
+        <MaxHeroes>3</MaxHeroes>
         <Requirements>
           <Requirement>
             <Building>Castle</Building>
@@ -516,12 +525,12 @@
     <Line>1</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
-    <MaxHeroes>2</MaxHeroes>
     <Levels>
       <Level>
         <Pos>1</Pos>
         <Cost>3000</Cost>
         <Income>0</Income>
+        <MaxHeroes>2</MaxHeroes>
         <Requirements>
           <Requirement>
             <Building>Castle</Building>
@@ -544,12 +553,12 @@
     <Line>1</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
-    <MaxHeroes>2</MaxHeroes>
     <Levels>
       <Level>
         <Pos>1</Pos>
         <Cost>3000</Cost>
         <Income>0</Income>
+        <MaxHeroes>2</MaxHeroes>
         <Requirements>
           <Requirement>
             <Building>Castle</Building>
@@ -572,12 +581,12 @@
     <Line>1</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
-    <MaxHeroes>2</MaxHeroes>
     <Levels>
       <Level>
         <Pos>1</Pos>
         <Cost>3000</Cost>
         <Income>0</Income>
+        <MaxHeroes>2</MaxHeroes>
         <Requirements>
           <Requirement>
             <Building>Castle</Building>
@@ -600,12 +609,12 @@
     <Line>2</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
-    <MaxHeroes>2</MaxHeroes>
     <Levels>
       <Level>
         <Pos>1</Pos>
         <Cost>3000</Cost>
         <Income>0</Income>
+        <MaxHeroes>2</MaxHeroes>
         <Requirements>
           <Requirement>
             <Building>Castle</Building>
@@ -628,12 +637,12 @@
     <Line>2</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
-    <MaxHeroes>2</MaxHeroes>
     <Levels>
       <Level>
         <Pos>1</Pos>
         <Cost>3000</Cost>
         <Income>0</Income>
+        <MaxHeroes>2</MaxHeroes>
         <Requirements>
           <Requirement>
             <Building>Castle</Building>
@@ -656,12 +665,12 @@
     <Line>2</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
-    <MaxHeroes>2</MaxHeroes>
     <Levels>
       <Level>
         <Pos>1</Pos>
         <Cost>3000</Cost>
         <Income>0</Income>
+        <MaxHeroes>2</MaxHeroes>
         <Requirements>
           <Requirement>
             <Building>Castle</Building>
@@ -684,12 +693,12 @@
     <Line>3</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
-    <MaxHeroes>2</MaxHeroes>
     <Levels>
       <Level>
         <Pos>1</Pos>
         <Cost>3000</Cost>
         <Income>0</Income>
+        <MaxHeroes>2</MaxHeroes>
         <Requirements>
           <Requirement>
             <Building>Castle</Building>
@@ -712,12 +721,12 @@
     <Line>3</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
-    <MaxHeroes>2</MaxHeroes>
     <Levels>
       <Level>
         <Pos>1</Pos>
         <Cost>3000</Cost>
         <Income>0</Income>
+        <MaxHeroes>2</MaxHeroes>
         <Requirements>
           <Requirement>
             <Building>Castle</Building>
@@ -740,12 +749,12 @@
     <Line>3</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
-    <MaxHeroes>2</MaxHeroes>
     <Levels>
       <Level>
         <Pos>1</Pos>
         <Cost>3000</Cost>
         <Income>0</Income>
+        <MaxHeroes>2</MaxHeroes>
         <Requirements>
           <Requirement>
             <Building>Castle</Building>

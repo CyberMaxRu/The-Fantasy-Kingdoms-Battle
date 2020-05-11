@@ -24,7 +24,6 @@ namespace Fantasy_King_s_Battle
             CategoryBuilding = (CategoryBuilding)Enum.Parse(typeof(CategoryBuilding), n.SelectSingleNode("CategoryBuilding").InnerText);
             Line = Convert.ToInt32(n.SelectSingleNode("Line").InnerText);
             Position = FormMain.Config.Buildings.Count;
-            MaxHeroes = Convert.ToInt32(n.SelectSingleNode("MaxHeroes").InnerText);
 
             Debug.Assert(ID.Length > 0);
             Debug.Assert(Name.Length > 0);
@@ -84,7 +83,6 @@ namespace Fantasy_King_s_Battle
 
         internal Level[] Levels;
         internal int Position { get; }
-        internal int MaxHeroes { get; }
         internal Hero TrainedHero { get; set; }
         internal CategoryBuilding CategoryBuilding { get; }
         internal int Line { get; }

@@ -99,7 +99,7 @@ namespace Fantasy_King_s_Battle
 
         internal PlayerHero HireHero()
         {
-            Debug.Assert(Heroes.Count < Building.MaxHeroes);
+            Debug.Assert(Heroes.Count < MaxHeroes());
             Debug.Assert(Player.Heroes.Count < FormMain.MAX_HEROES_AT_PLAYER);
             Debug.Assert(Player.Gold >= Building.TrainedHero.Cost);
 
@@ -115,10 +115,10 @@ namespace Fantasy_King_s_Battle
 
         internal bool CanTrainHero()
         {
-            Debug.Assert(Heroes.Count <= Building.MaxHeroes);
+            Debug.Assert(Heroes.Count <= MaxHeroes());
             Debug.Assert(Player.Heroes.Count <= FormMain.MAX_HEROES_AT_PLAYER);
 
-            return (Level > 0) && (Player.Gold >= Building.TrainedHero.Cost) && (Heroes.Count < Building.MaxHeroes) && (Player.Heroes.Count < FormMain.MAX_HEROES_AT_PLAYER);
+            return (Level > 0) && (Player.Gold >= Building.TrainedHero.Cost) && (Heroes.Count < MaxHeroes()) && (Player.Heroes.Count < FormMain.MAX_HEROES_AT_PLAYER);
         }
 
         internal bool MaxHeroesAtPlayer()
@@ -133,7 +133,7 @@ namespace Fantasy_King_s_Battle
             if (Level == 0)
                 list.Add(new TextRequirement(false, Building.CategoryBuilding == CategoryBuilding.Guild ? "Гильдия не построена" : "Храм не построен"));
 
-            if (Heroes.Count == Building.MaxHeroes)
+            if (Heroes.Count == MaxHeroes())
                 list.Add(new TextRequirement(false, Building.CategoryBuilding == CategoryBuilding.Guild ? "Гильдия заполнена" : "Храм заполнен"));
 
             if (MaxHeroesAtPlayer())
@@ -141,5 +141,10 @@ namespace Fantasy_King_s_Battle
 
             return list;
         }      
+
+        internal int MaxHeroes()
+        {
+            return Level > 0 ? Building.Levels[Level].MaxHeroes : 0;
+        }
     }
 }

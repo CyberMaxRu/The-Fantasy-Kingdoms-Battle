@@ -255,7 +255,7 @@ namespace Fantasy_King_s_Battle
             if (building.Building.TrainedHero != null)
             {
                 btnHireHero.Show();
-                btnHireHero.ImageIndex = (building.Heroes.Count == building.Building.MaxHeroes) || (building.MaxHeroesAtPlayer() == true)  ? -1 : GuiUtils.GetImageIndexWithGray(btnHireHero.ImageList, building.Building.TrainedHero.ImageIndex, building.CanTrainHero());
+                btnHireHero.ImageIndex = (building.Heroes.Count == building.MaxHeroes()) || (building.MaxHeroesAtPlayer() == true)  ? -1 : GuiUtils.GetImageIndexWithGray(btnHireHero.ImageList, building.Building.TrainedHero.ImageIndex, building.CanTrainHero());
                 btnHireHero.Text = (building.Level == 0) || (building.CanTrainHero() == true) ? building.Building.TrainedHero.Cost.ToString() : ""; 
             }
             else
@@ -292,7 +292,7 @@ namespace Fantasy_King_s_Battle
 
             if ((building.Building.TrainedHero != null) && (building.Level > 0))
             {
-                btnHeroes.Text = building.Heroes.Count == building.Building.MaxHeroes ? building.Heroes.Count.ToString() : building.Heroes.Count.ToString() + "/" + building.Building.MaxHeroes.ToString();
+                btnHeroes.Text = building.Heroes.Count == building.MaxHeroes() ? building.Heroes.Count.ToString() : building.Heroes.Count.ToString() + "/" + building.MaxHeroes().ToString();
                 btnHeroes.ImageIndex = GuiUtils.GetImageIndexWithGray(btnHeroes.ImageList, building.Building.TrainedHero.ImageIndex, true);
             }
             else
