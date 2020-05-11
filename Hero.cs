@@ -52,6 +52,7 @@ namespace Fantasy_King_s_Battle
             Building.TrainedHero = this;
             MaxLevel = Convert.ToInt32(n.SelectSingleNode("MaxLevel").InnerText);
             TypeAttack = (TypeAttack)Enum.Parse(typeof(TypeAttack), n.SelectSingleNode("TypeAttack").InnerText);
+            CanBuild = Convert.ToBoolean(n.SelectSingleNode("CanBuild").InnerText);
 
             //Debug.Assert(Cost > 0);
             Debug.Assert(ID.Length > 0);
@@ -120,6 +121,7 @@ namespace Fantasy_King_s_Battle
         internal Building Building { get; }
         internal int MaxLevel { get; }
         internal TypeAttack TypeAttack { get; }
+        internal bool CanBuild { get; }
         internal MainParameters MainParameters { get; }
         internal ConfigNextLevelHero ConfigNextLevel { get; }
 

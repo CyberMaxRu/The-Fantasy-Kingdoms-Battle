@@ -9,6 +9,7 @@
     <Building>GuildWarrior</Building>
     <MaxLevel>100</MaxLevel>
     <TypeAttack>Melee</TypeAttack>
+    <CanBuild>False</CanBuild>
     <MainParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -83,6 +84,7 @@
     <Building>GuildRogue</Building>
     <MaxLevel>100</MaxLevel>
     <TypeAttack>Melee</TypeAttack>
+    <CanBuild>False</CanBuild>
     <MainParameters>
       <Strength>10</Strength>
       <Dexterity>20</Dexterity>
@@ -157,6 +159,7 @@
     <Building>GuildHunter</Building>
     <MaxLevel>100</MaxLevel>
     <TypeAttack>Missile</TypeAttack>
+    <CanBuild>False</CanBuild>
     <MainParameters>
       <Strength>15</Strength>
       <Dexterity>20</Dexterity>
@@ -231,6 +234,7 @@
     <Building>GuildCleric</Building>
     <MaxLevel>100</MaxLevel>
     <TypeAttack>Missile</TypeAttack>
+    <CanBuild>False</CanBuild>
     <MainParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -305,6 +309,7 @@
     <Building>GuildMage</Building>
     <MaxLevel>100</MaxLevel>
     <TypeAttack>Missile</TypeAttack>
+    <CanBuild>False</CanBuild>
     <MainParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -379,6 +384,7 @@
     <Building>GuildElf</Building>
     <MaxLevel>100</MaxLevel>
     <TypeAttack>Missile</TypeAttack>
+    <CanBuild>False</CanBuild>
     <MainParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -453,6 +459,7 @@
     <Building>GuildDwarf</Building>
     <MaxLevel>100</MaxLevel>
     <TypeAttack>Melee</TypeAttack>
+    <CanBuild>True</CanBuild>
     <MainParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -527,6 +534,7 @@
     <Building>House</Building>
     <MaxLevel>1</MaxLevel>
     <TypeAttack>None</TypeAttack>
+    <CanBuild>True</CanBuild>
   </Hero>
   <Hero>
     <ID>Guardian</ID>
@@ -537,6 +545,7 @@
     <Building>Castle</Building>
     <MaxLevel>1</MaxLevel>
     <TypeAttack>Melee</TypeAttack>
+    <CanBuild>False</CanBuild>
     <MainParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -557,5 +566,6 @@
     <Building>Mill</Building>
     <MaxLevel>1</MaxLevel>
     <TypeAttack>None</TypeAttack>
+    <CanBuild>False</CanBuild>
   </Hero>
 </Heroes>
