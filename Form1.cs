@@ -545,9 +545,11 @@ namespace Fantasy_King_s_Battle
 
         private void ButtonEndTurn_Click(object sender, EventArgs e)
         {
+            ButtonEndTurn.Enabled = false;
             lobby.DoEndTurn();
 
             ShowDataPlayer();
+            ButtonEndTurn.Enabled = true;
         }
 
         internal void ShowGold()
