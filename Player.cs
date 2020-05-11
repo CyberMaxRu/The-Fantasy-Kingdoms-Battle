@@ -63,13 +63,13 @@ namespace Fantasy_King_s_Battle
             HireAllHero(GetPlayerBuilding(FormMain.Config.FindBuilding("GuildWarrior")));
 
             HireAllHero(GetPlayerBuilding(FormMain.Config.FindBuilding("GuildWarrior")));
-            HireAllHero(GetPlayerBuilding(FormMain.Config.FindBuilding("GuildRogue")));
-            HireAllHero(GetPlayerBuilding(FormMain.Config.FindBuilding("GuildHunter")));
-            HireAllHero(GetPlayerBuilding(FormMain.Config.FindBuilding("GuildCleric")));
+            //HireAllHero(GetPlayerBuilding(FormMain.Config.FindBuilding("GuildRogue")));
+            //HireAllHero(GetPlayerBuilding(FormMain.Config.FindBuilding("GuildHunter")));
+            //HireAllHero(GetPlayerBuilding(FormMain.Config.FindBuilding("GuildCleric")));
 
             void HireAllHero(PlayerBuilding bp)
             {
-                for (; bp.Heroes.Count() < bp.Building.MaxHeroes;)
+                //for (; bp.Heroes.Count() < bp.Building.MaxHeroes;)
                 {
                     bp.HireHero();
                 }
