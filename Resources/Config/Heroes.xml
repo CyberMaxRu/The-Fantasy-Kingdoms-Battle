@@ -518,4 +518,34 @@
       </Slot>
     </Slots>
   </Hero>
+  <Hero>
+    <ID>Peasant</ID>
+    <Name>Крестьянин</Name>
+    <Description>Это просто крестьяние, Сир. Они обучены строить и чинить здания.</Description>
+    <ImageIndex>7</ImageIndex>
+    <Cost>0</Cost>
+    <Building>House</Building>
+    <MaxLevel>1</MaxLevel>
+    <TypeAttack>None</TypeAttack>
+  </Hero>
+  <Hero>
+    <ID>Guardian</ID>
+    <Name>Королевский гвардеец</Name>
+    <Description>Королевские гвардейцы в меру своих сил охраняют покой короля.</Description>
+    <ImageIndex>8</ImageIndex>
+    <Cost>0</Cost>
+    <Building>Castle</Building>
+    <MaxLevel>1</MaxLevel>
+    <TypeAttack>Melee</TypeAttack>
+    <MainParameters>
+      <Strength>20</Strength>
+      <Dexterity>10</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>100</Vitality>
+      <TimeAttack>200</TimeAttack>
+      <CoefHealth>4</CoefHealth>
+      <CoefMana>1</CoefMana>
+      <CoefStamina>4</CoefStamina>
+    </MainParameters>
+  </Hero>
 </Heroes>

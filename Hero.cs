@@ -53,7 +53,7 @@ namespace Fantasy_King_s_Battle
             MaxLevel = Convert.ToInt32(n.SelectSingleNode("MaxLevel").InnerText);
             TypeAttack = (TypeAttack)Enum.Parse(typeof(TypeAttack), n.SelectSingleNode("TypeAttack").InnerText);
 
-            Debug.Assert(Cost > 0);
+            //Debug.Assert(Cost > 0);
             Debug.Assert(ID.Length > 0);
             Debug.Assert(Name.Length > 0);
             Debug.Assert(Description.Length > 0);
@@ -82,29 +82,34 @@ namespace Fantasy_King_s_Battle
             Slots = new Slot[FormMain.SLOT_IN_INVENTORY];
 
             XmlNode nl = n.SelectSingleNode("Slots");
-            Debug.Assert(nl != null);
-
-            Slot slot;
-
-            foreach (XmlNode l in nl.SelectNodes("Slot"))
+            if (nl != null)
             {
-                slot = new Slot(this, l);
-                Debug.Assert(Slots[slot.Pos] == null);
+                Slot slot;
 
-                Slots[slot.Pos] = slot;
-            }
+                foreach (XmlNode l in nl.SelectNodes("Slot"))
+                {
+                    slot = new Slot(this, l);
+                    Debug.Assert(Slots[slot.Pos] == null);
 
-            for (int i = 0; i < FormMain.SLOT_IN_INVENTORY; i++)
-            {
-                if (Slots[i] == null)
-                    throw new Exception("Не указан слот " + i.ToString());
+                    Slots[slot.Pos] = slot;
+                }
+
+                for (int i = 0; i < FormMain.SLOT_IN_INVENTORY; i++)
+                {
+                    if (Slots[i] == null)
+                        throw new Exception("Не указан слот " + i.ToString());
+                }
             }
 
             // Загружаем основные параметры
-            MainParameters = new MainParameters(n.SelectSingleNode("MainParameters"));
+            if (n.SelectSingleNode("MainParameters") != null)
+            {
+                MainParameters = new MainParameters(n.SelectSingleNode("MainParameters"));
 
-            //
-            ConfigNextLevel = new ConfigNextLevelHero(n.SelectSingleNode("NextLevel"));
+                //
+                if (n.SelectSingleNode("NextLevel") != null)
+                    ConfigNextLevel = new ConfigNextLevelHero(n.SelectSingleNode("NextLevel"));
+            }
         }
 
         internal string ID { get; }
