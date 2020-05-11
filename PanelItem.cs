@@ -32,6 +32,26 @@ namespace Fantasy_King_s_Battle
             Paint += PanelItem_Paint;
 
             pointQuantity = new Point(2, Height - 20);
+
+            MouseEnter += PanelItem_MouseEnter;
+            MouseLeave += PanelItem_MouseLeave;
+        }
+
+        private void PanelItem_MouseLeave(object sender, EventArgs e)
+        {
+            Program.formMain.formHint.HideHint();
+        }
+
+        private void PanelItem_MouseEnter(object sender, EventArgs e)
+        {
+            if (playerItem != null)
+                Program.formMain.formHint.ShowHint(new Point(Program.formMain.Left + 10 + Parent.Left + Left, Program.formMain.Top + 32 + Parent.Top + Top + Height),
+                    playerItem.Item.Name,
+                    "",
+                    playerItem.Item.Description,
+                    null,
+                    0,
+                    false, 0);
         }
 
         private void PanelItem_Paint(object sender, PaintEventArgs e)
