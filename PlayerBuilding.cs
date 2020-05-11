@@ -34,6 +34,21 @@ namespace Fantasy_King_s_Battle
             {
                 Player.Gold -= CostBuyOrUpgrade();
                 Level++;
+                ValidateHeroes();
+            }
+        }
+
+        internal void ValidateHeroes()
+        {
+            if ((Building.TrainedHero != null) && (Building.TrainedHero.Cost == 0))
+            {
+                if (Heroes.Count() < MaxHeroes())
+                {
+                    for (; Heroes.Count() < MaxHeroes();)
+                    {
+                        HireHero();
+                    }
+                }
             }
         }
 
@@ -106,9 +121,12 @@ namespace Fantasy_King_s_Battle
             PlayerHero h = new PlayerHero(this);
             Heroes.Add(h);
             Player.AddHero(h);
-            Player.Gold -= Building.TrainedHero.Cost;
 
-            Program.formMain.ShowGold();
+            if (Building.TrainedHero.Cost > 0)
+            {
+                Player.Gold -= Building.TrainedHero.Cost;
+                Program.formMain.ShowGold();
+            }
 
             return h;
         }

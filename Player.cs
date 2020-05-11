@@ -47,6 +47,8 @@ namespace Fantasy_King_s_Battle
             AddItem(new PlayerItem(FormMain.Config.FindItem("Regeneration"), 1));
             AddItem(new PlayerItem(FormMain.Config.FindItem("Protection"), 1));
             AddItem(new PlayerItem(FormMain.Config.FindItem("ImpProtection"), 2));
+
+            ValidateHeroes();
         }
 
         internal void DoTurn()
@@ -69,7 +71,8 @@ namespace Fantasy_King_s_Battle
 
             void HireAllHero(PlayerBuilding bp)
             {
-                //for (; bp.Heroes.Count() < bp.Building.MaxHeroes;)
+                for (; bp.Heroes.Count() < 1;)
+                //                    for (; bp.Heroes.Count() < bp.MaxHeroes();)
                 {
                     bp.HireHero();
                 }
@@ -81,7 +84,16 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(IsLive == true);
 
             Gold += Income();
+
+            ValidateHeroes();
         }
+
+        private void ValidateHeroes()
+        {
+            foreach (PlayerBuilding pb in Buildings)
+                pb.ValidateHeroes();
+        }
+
 
         internal Lobby Lobby { get; }
         internal string Name { get; }

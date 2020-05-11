@@ -14,21 +14,29 @@ namespace Fantasy_King_s_Battle
         {
             Building = pb;
             Hero = Building.Building.TrainedHero;
-            Level = 0;
-
-            for (int i = 0; i < Hero.Slots.Length; i++)
+            if (Hero.MaxLevel > 1)
             {
-                if (Hero.Slots[i].DefaultItem != null)
+                Level = 0;
+
+                if (Hero.Slots.Length > 0)
                 {
-                    Slots[i] = new PlayerItem(Hero.Slots[i].DefaultItem, 1);
+                    for (int i = 0; i < Hero.Slots.Length; i++)
+                    {
+                        if ((Hero.Slots[i] != null) && (Hero.Slots[i].DefaultItem != null))
+                        {
+                            Slots[i] = new PlayerItem(Hero.Slots[i].DefaultItem, 1);
+                        }
+                    }
                 }
+
+                OurParameters = new MainParameters(Hero.MainParameters);
+
+                // Переходим на 1 уровень
+                LevelUp();
+                ModifiedParameters = new MainParameters(OurParameters);
             }
-
-            OurParameters = new MainParameters(Hero.MainParameters);
-
-            // Переходим на 1 уровень
-            LevelUp();
-            ModifiedParameters = new MainParameters(OurParameters);
+            else
+                Level = 1;
         }
 
         internal PlayerBuilding Building { get; }        
@@ -222,23 +230,26 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(Level < Hero.MaxLevel);
 
             // Прибавляем безусловные параметры
-            OurParameters.Health += Hero.ConfigNextLevel.Health;
-            OurParameters.Mana += Hero.ConfigNextLevel.Mana;
-
-            // Прибавляем очки характеристик
-            int t;
-            for (int i = 0; i < Hero.ConfigNextLevel.StatPoints; i++)
+            if (Hero.ConfigNextLevel != null)
             {
-                t = FormMain.Rnd.Next(100);
+                OurParameters.Health += Hero.ConfigNextLevel.Health;
+                OurParameters.Mana += Hero.ConfigNextLevel.Mana;
 
-                if (t < Hero.ConfigNextLevel.WeightStrength)
-                    OurParameters.Strength++;
-                else if (t < Hero.ConfigNextLevel.WeightStrength + Hero.ConfigNextLevel.WeightDexterity)
-                    OurParameters.Dexterity++;
-                else if (t < Hero.ConfigNextLevel.WeightStrength + Hero.ConfigNextLevel.WeightDexterity + Hero.ConfigNextLevel.WeightMagic)
-                    OurParameters.Magic++;
-                else
-                    OurParameters.Vitality++;
+                // Прибавляем очки характеристик
+                int t;
+                for (int i = 0; i < Hero.ConfigNextLevel.StatPoints; i++)
+                {
+                    t = FormMain.Rnd.Next(100);
+
+                    if (t < Hero.ConfigNextLevel.WeightStrength)
+                        OurParameters.Strength++;
+                    else if (t < Hero.ConfigNextLevel.WeightStrength + Hero.ConfigNextLevel.WeightDexterity)
+                        OurParameters.Dexterity++;
+                    else if (t < Hero.ConfigNextLevel.WeightStrength + Hero.ConfigNextLevel.WeightDexterity + Hero.ConfigNextLevel.WeightMagic)
+                        OurParameters.Magic++;
+                    else
+                        OurParameters.Vitality++;
+                }
             }
 
             Level++;
