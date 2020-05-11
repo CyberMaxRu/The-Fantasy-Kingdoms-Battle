@@ -54,9 +54,9 @@ namespace Fantasy_King_s_Battle
 
         internal const int GUI_PARAMETER_STRENGTH = 6;
         internal const int GUI_PARAMETER_DEXTERITY = 7;
-        internal const int GUI_PARAMETER_WISDOM = 8;
-        internal const int GUI_PARAMETER_STAMINA = 9;
-        internal const int GUI_PARAMETER_SPEED = 10;
+        internal const int GUI_PARAMETER_MAGIC = 8;
+        internal const int GUI_PARAMETER_VITALITY = 9;
+        internal const int GUI_PARAMETER_SPEED_ATTACK = 10;
         internal const int GUI_PARAMETER_ATTACK_MELEE = 0;
         internal const int GUI_PARAMETER_ATTACK_RANGE = 1;
         internal const int GUI_PARAMETER_ATTACK_MAGIC = 2;

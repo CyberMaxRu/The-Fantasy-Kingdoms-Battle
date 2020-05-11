@@ -10,6 +10,7 @@ using System.Diagnostics;
 namespace Fantasy_King_s_Battle
 {
     internal enum TypeAttack { Melee, Missile, Magic }
+
     internal sealed class Slot
     {
         public Slot(Hero h, XmlNode n)
@@ -98,6 +99,12 @@ namespace Fantasy_King_s_Battle
                 if (Slots[i] == null)
                     throw new Exception("Не указан слот " + i.ToString());
             }
+
+            // Загружаем основные параметры
+            MainParameters = new MainParameters(n.SelectSingleNode("MainParameters"));
+
+            //
+            ConfigNextLevel = new ConfigNextLevelHero(n.SelectSingleNode("NextLevel"));
         }
 
         internal string ID { get; }
@@ -108,6 +115,8 @@ namespace Fantasy_King_s_Battle
         internal Building Building { get; }
         internal int MaxLevel { get; }
         internal TypeAttack TypeAttack { get; }
+        internal MainParameters MainParameters { get; }
+        internal ConfigNextLevelHero ConfigNextLevel { get; }
 
         internal Slot[] Slots { get; }
     }

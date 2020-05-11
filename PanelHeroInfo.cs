@@ -17,7 +17,8 @@ namespace Fantasy_King_s_Battle
         private readonly Label lblMana;
         private readonly Label lblStrength;
         private readonly Label lblDexterity;
-        private readonly Label lblWisdom;
+        private readonly Label lblMagic;
+        private readonly Label lblVitality;
         private readonly Label lblStamina;
         private readonly Label lblSpeed;
         private readonly Label lblAttackMelee;
@@ -66,13 +67,14 @@ namespace Fantasy_King_s_Battle
 
             lblStrength = GuiUtils.CreateLabelParameter(this, Config.GRID_SIZE, lblMana.Top + lblMana.Height + Config.GRID_SIZE, FormMain.GUI_PARAMETER_STRENGTH);
             lblDexterity = GuiUtils.CreateLabelParameter(this, Config.GRID_SIZE, lblStrength.Top + lblStrength.Height + Config.GRID_SIZE, FormMain.GUI_PARAMETER_DEXTERITY);
-            lblWisdom = GuiUtils.CreateLabelParameter(this, Config.GRID_SIZE, lblDexterity.Top + lblDexterity.Height + Config.GRID_SIZE, FormMain.GUI_PARAMETER_WISDOM);
-            lblStamina = GuiUtils.CreateLabelParameter(this, Config.GRID_SIZE, lblWisdom.Top + lblWisdom.Height + Config.GRID_SIZE, FormMain.GUI_PARAMETER_STAMINA);
-            lblSpeed = GuiUtils.CreateLabelParameter(this, Config.GRID_SIZE, lblStamina.Top + lblStamina.Height + Config.GRID_SIZE, FormMain.GUI_PARAMETER_SPEED);
+            lblMagic = GuiUtils.CreateLabelParameter(this, Config.GRID_SIZE, lblDexterity.Top + lblDexterity.Height + Config.GRID_SIZE, FormMain.GUI_PARAMETER_MAGIC);
+            lblVitality = GuiUtils.CreateLabelParameter(this, Config.GRID_SIZE, lblMagic.Top + lblMagic.Height + Config.GRID_SIZE, FormMain.GUI_PARAMETER_VITALITY);
+            lblSpeed = GuiUtils.CreateLabelParameter(this, Config.GRID_SIZE, lblVitality.Top + lblVitality.Height + Config.GRID_SIZE, FormMain.GUI_PARAMETER_SPEED_ATTACK);
 
+//            lblStamina = GuiUtils.CreateLabelParameter(this, Config.GRID_SIZE, lblWisdom.Top + lblWisdom.Height + Config.GRID_SIZE, FormMain.GUI_PARAMETER_STAMINA);
             lblAttackMelee = GuiUtils.CreateLabelParameter(this, lblStrength.Left + lblStrength.Width + Config.GRID_SIZE, lblStrength.Top, FormMain.GUI_PARAMETER_ATTACK_MELEE);
             lblAttackRange = GuiUtils.CreateLabelParameter(this, lblDexterity.Left + lblDexterity.Width + Config.GRID_SIZE, lblDexterity.Top, FormMain.GUI_PARAMETER_ATTACK_RANGE);
-            lblAttackMagic = GuiUtils.CreateLabelParameter(this, lblWisdom.Left + lblWisdom.Width + Config.GRID_SIZE, lblWisdom.Top, FormMain.GUI_PARAMETER_ATTACK_MAGIC);
+            lblAttackMagic = GuiUtils.CreateLabelParameter(this, lblMagic.Left + lblMagic.Width + Config.GRID_SIZE, lblMagic.Top, FormMain.GUI_PARAMETER_ATTACK_MAGIC);
 
             lblDefenseMelee = GuiUtils.CreateLabelParameter(this, lblAttackMelee.Left + lblAttackMelee.Width + Config.GRID_SIZE, lblAttackMelee.Top, FormMain.GUI_PARAMETER_DEFENSE_MELEE);
             lblDefenseRange = GuiUtils.CreateLabelParameter(this, lblAttackRange.Left + lblAttackRange.Width + Config.GRID_SIZE, lblAttackRange.Top, FormMain.GUI_PARAMETER_DEFENSE_RANGE);
@@ -130,14 +132,15 @@ namespace Fantasy_King_s_Battle
 
                 ShowParameter(lblStrength, ph.OurParameters.Strength, ph.ModifiedParameters.Strength);
                 ShowParameter(lblDexterity, ph.OurParameters.Dexterity, ph.ModifiedParameters.Dexterity);
-                ShowParameter(lblWisdom, ph.OurParameters.Wisdom, ph.ModifiedParameters.Wisdom);
-                ShowParameter(lblStamina, ph.OurParameters.Stamina, ph.ModifiedParameters.Stamina);
-                ShowParameter(lblSpeed, ph.OurParameters.Speed, ph.ModifiedParameters.Speed);
+                ShowParameter(lblMagic, ph.OurParameters.Magic, ph.ModifiedParameters.Magic);
+                ShowParameter(lblVitality, ph.OurParameters.Vitality, ph.ModifiedParameters.Vitality);
+                //ShowParameter(lblStamina, ph.OurParameters.Stamina, ph.ModifiedParameters.Stamina);
+                ShowParameter(lblSpeed, ph.OurParameters.TimeAttack, ph.ModifiedParameters.TimeAttack);
                 ShowParameter(lblAttackMelee, ph.OurParameters.AttackMelee, ph.ModifiedParameters.AttackMelee);
-                ShowParameter(lblAttackRange, ph.OurParameters.AttackRange, ph.ModifiedParameters.AttackRange);
+                ShowParameter(lblAttackRange, ph.OurParameters.AttackMissile, ph.ModifiedParameters.AttackMissile);
                 ShowParameter(lblAttackMagic, ph.OurParameters.AttackMagic, ph.ModifiedParameters.AttackMagic);
                 ShowParameter(lblDefenseMelee, ph.OurParameters.DefenseMelee, ph.ModifiedParameters.DefenseMelee);
-                ShowParameter(lblDefenseRange, ph.OurParameters.DefenseRange, ph.ModifiedParameters.DefenseRange);
+                ShowParameter(lblDefenseRange, ph.OurParameters.DefenseMissile, ph.ModifiedParameters.DefenseMissile);
                 ShowParameter(lblDefenseMagic, ph.OurParameters.DefenseMagic, ph.ModifiedParameters.DefenseMagic);
 
                 for (int i = 0; i < ph.Slots.Length; i++)

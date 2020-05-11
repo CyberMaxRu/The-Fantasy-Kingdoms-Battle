@@ -9,6 +9,23 @@
     <Building>GuildWarrior</Building>
     <MaxLevel>100</MaxLevel>
     <TypeAttack>Melee</TypeAttack>
+    <MainParameters>
+      <Strength>20</Strength>
+      <Dexterity>10</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>100</Vitality>
+      <TimeAttack>200</TimeAttack>
+    </MainParameters>
+    <NextLevel>
+      <StatPoints>5</StatPoints>
+      <WeightStrength>40</WeightStrength>
+      <WeightDexterity>10</WeightDexterity>
+      <WeightMagic>10</WeightMagic>
+      <WeightVitality>40</WeightVitality>
+      <Health>5</Health>
+      <Mana>2</Mana>
+      <ResistMagic>0</ResistMagic>    
+    </NextLevel>
     <Slots>
       <Slot>
         <Pos>1</Pos>
@@ -63,6 +80,23 @@
     <Building>GuildRogue</Building>
     <MaxLevel>100</MaxLevel>
     <TypeAttack>Melee</TypeAttack>
+    <MainParameters>
+      <Strength>10</Strength>
+      <Dexterity>20</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>50</Vitality>
+      <TimeAttack>200</TimeAttack>
+    </MainParameters>
+    <NextLevel>
+      <StatPoints>5</StatPoints>
+      <WeightStrength>25</WeightStrength>
+      <WeightDexterity>40</WeightDexterity>
+      <WeightMagic>10</WeightMagic>
+      <WeightVitality>25</WeightVitality>
+      <Health>3</Health>
+      <Mana>2</Mana>
+      <ResistMagic>0</ResistMagic>
+    </NextLevel>
     <Slots>
       <Slot>
         <Pos>1</Pos>
@@ -117,6 +151,23 @@
     <Building>GuildHunter</Building>
     <MaxLevel>100</MaxLevel>
     <TypeAttack>Missile</TypeAttack>
+    <MainParameters>
+      <Strength>15</Strength>
+      <Dexterity>20</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>75</Vitality>
+      <TimeAttack>200</TimeAttack>
+    </MainParameters>
+    <NextLevel>
+      <StatPoints>5</StatPoints>
+      <WeightStrength>40</WeightStrength>
+      <WeightDexterity>10</WeightDexterity>
+      <WeightMagic>10</WeightMagic>
+      <WeightVitality>40</WeightVitality>
+      <Health>5</Health>
+      <Mana>2</Mana>
+      <ResistMagic>0</ResistMagic>
+    </NextLevel>
     <Slots>
       <Slot>
         <Pos>1</Pos>
@@ -171,6 +222,23 @@
     <Building>GuildCleric</Building>
     <MaxLevel>100</MaxLevel>
     <TypeAttack>Missile</TypeAttack>
+    <MainParameters>
+      <Strength>20</Strength>
+      <Dexterity>10</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>100</Vitality>
+      <TimeAttack>200</TimeAttack>
+    </MainParameters>
+    <NextLevel>
+      <StatPoints>5</StatPoints>
+      <WeightStrength>40</WeightStrength>
+      <WeightDexterity>10</WeightDexterity>
+      <WeightMagic>10</WeightMagic>
+      <WeightVitality>40</WeightVitality>
+      <Health>5</Health>
+      <Mana>2</Mana>
+      <ResistMagic>0</ResistMagic>
+    </NextLevel>
     <Slots>
       <Slot>
         <Pos>1</Pos>
@@ -225,6 +293,23 @@
     <Building>GuildMage</Building>
     <MaxLevel>100</MaxLevel>
     <TypeAttack>Magic</TypeAttack>
+    <MainParameters>
+      <Strength>20</Strength>
+      <Dexterity>10</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>100</Vitality>
+      <TimeAttack>200</TimeAttack>
+    </MainParameters>
+    <NextLevel>
+      <StatPoints>5</StatPoints>
+      <WeightStrength>40</WeightStrength>
+      <WeightDexterity>10</WeightDexterity>
+      <WeightMagic>10</WeightMagic>
+      <WeightVitality>40</WeightVitality>
+      <Health>5</Health>
+      <Mana>2</Mana>
+      <ResistMagic>0</ResistMagic>
+    </NextLevel>
     <Slots>
       <Slot>
         <Pos>1</Pos>
@@ -279,6 +364,23 @@
     <Building>GuildElf</Building>
     <MaxLevel>100</MaxLevel>
     <TypeAttack>Missile</TypeAttack>
+    <MainParameters>
+      <Strength>20</Strength>
+      <Dexterity>10</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>100</Vitality>
+      <TimeAttack>200</TimeAttack>
+    </MainParameters>
+    <NextLevel>
+      <StatPoints>5</StatPoints>
+      <WeightStrength>40</WeightStrength>
+      <WeightDexterity>10</WeightDexterity>
+      <WeightMagic>10</WeightMagic>
+      <WeightVitality>40</WeightVitality>
+      <Health>5</Health>
+      <Mana>2</Mana>
+      <ResistMagic>0</ResistMagic>
+    </NextLevel>
     <Slots>
       <Slot>
         <Pos>1</Pos>
@@ -333,6 +435,23 @@
     <Building>GuildDwarf</Building>
     <MaxLevel>100</MaxLevel>
     <TypeAttack>Melee</TypeAttack>
+    <MainParameters>
+      <Strength>20</Strength>
+      <Dexterity>10</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>100</Vitality>
+      <TimeAttack>200</TimeAttack>
+    </MainParameters>
+    <NextLevel>
+      <StatPoints>5</StatPoints>
+      <WeightStrength>40</WeightStrength>
+      <WeightDexterity>10</WeightDexterity>
+      <WeightMagic>10</WeightMagic>
+      <WeightVitality>40</WeightVitality>
+      <Health>5</Health>
+      <Mana>2</Mana>
+      <ResistMagic>0</ResistMagic>
+    </NextLevel>
     <Slots>
       <Slot>
         <Pos>1</Pos>

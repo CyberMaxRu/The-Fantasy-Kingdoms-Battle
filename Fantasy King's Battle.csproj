@@ -83,7 +83,7 @@
     <Compile Include="PanelHeroInfo.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Parameters.cs" />
+    <Compile Include="MainParameters.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PlayerBuilding.cs" />
     <Compile Include="PlayerHero.cs" />

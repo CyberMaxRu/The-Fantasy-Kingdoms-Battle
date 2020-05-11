@@ -23,6 +23,9 @@ namespace Fantasy_King_s_Battle
                     Slots[i] = new PlayerItem(Hero.Slots[i].DefaultItem, 1);
                 }
             }
+
+            OurParameters = new MainParameters(Hero.MainParameters);
+            ModifiedParameters = new MainParameters(Hero.MainParameters);
         }
 
         internal PlayerBuilding Building { get; }        
@@ -33,8 +36,8 @@ namespace Fantasy_King_s_Battle
         internal int MaxHealth;
         internal int CurrentMana;
         internal int MaxMana;
-        internal Parameters OurParameters { get; } = new Parameters();
-        internal Parameters ModifiedParameters { get; } = new Parameters();
+        internal MainParameters OurParameters { get; }
+        internal MainParameters ModifiedParameters { get; }
         internal PlayerItem[] Slots { get; } = new PlayerItem[FormMain.SLOT_IN_INVENTORY];
         internal PanelHero Panel { get; set; }
 
