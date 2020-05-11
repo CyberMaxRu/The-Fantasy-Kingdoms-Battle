@@ -17,6 +17,7 @@
       <TimeAttack>200</TimeAttack>
       <CoefHealth>3</CoefHealth>
       <CoefMana>1</CoefMana>
+      <CoefStamina>3</CoefStamina>
     </MainParameters>
     <NextLevel>
       <StatPoints>5</StatPoints>
@@ -90,6 +91,7 @@
       <TimeAttack>200</TimeAttack>
       <CoefHealth>2</CoefHealth>
       <CoefMana>1</CoefMana>
+      <CoefStamina>2</CoefStamina>
     </MainParameters>
     <NextLevel>
       <StatPoints>5</StatPoints>
@@ -163,6 +165,7 @@
       <TimeAttack>200</TimeAttack>
       <CoefHealth>2</CoefHealth>
       <CoefMana>1</CoefMana>
+      <CoefStamina>2</CoefStamina>
     </MainParameters>
     <NextLevel>
       <StatPoints>5</StatPoints>
@@ -236,6 +239,7 @@
       <TimeAttack>200</TimeAttack>
       <CoefHealth>2</CoefHealth>
       <CoefMana>2</CoefMana>
+      <CoefStamina>2</CoefStamina>
     </MainParameters>
     <NextLevel>
       <StatPoints>5</StatPoints>
@@ -309,6 +313,7 @@
       <TimeAttack>200</TimeAttack>
       <CoefHealth>1</CoefHealth>
       <CoefMana>3</CoefMana>
+      <CoefStamina>1</CoefStamina>
     </MainParameters>
     <NextLevel>
       <StatPoints>5</StatPoints>
@@ -382,6 +387,7 @@
       <TimeAttack>200</TimeAttack>
       <CoefHealth>3</CoefHealth>
       <CoefMana>2</CoefMana>
+      <CoefStamina>4</CoefStamina>
     </MainParameters>
     <NextLevel>
       <StatPoints>5</StatPoints>
@@ -455,6 +461,7 @@
       <TimeAttack>200</TimeAttack>
       <CoefHealth>4</CoefHealth>
       <CoefMana>1</CoefMana>
+      <CoefStamina>4</CoefStamina>
     </MainParameters>
     <NextLevel>
       <StatPoints>5</StatPoints>

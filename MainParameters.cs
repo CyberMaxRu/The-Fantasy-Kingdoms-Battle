@@ -51,6 +51,11 @@ namespace Fantasy_King_s_Battle
             TimeAttack = Convert.ToInt32(n.SelectSingleNode("TimeAttack").InnerText);
             CoefHealth = Convert.ToInt32(n.SelectSingleNode("CoefHealth").InnerText);
             CoefMana = Convert.ToInt32(n.SelectSingleNode("CoefMana").InnerText);
+            CoefStamina = Convert.ToInt32(n.SelectSingleNode("CoefStamina").InnerText);
+
+            Health = Vitality * CoefHealth;
+            Mana = Magic * CoefMana;
+            Stamina = Vitality * CoefStamina;
         }
 
         public MainParameters(MainParameters mp)
@@ -62,18 +67,21 @@ namespace Fantasy_King_s_Battle
             TimeAttack = mp.TimeAttack;
             CoefHealth = mp.CoefHealth;
             CoefMana = mp.CoefMana;
+            CoefStamina = mp.CoefStamina;
 
-            Health = Vitality * CoefHealth;
-            Mana = Magic * CoefMana;
+            Health = mp.Health;
+            Mana = mp.Mana;
+            Stamina = mp.Stamina;
         }
 
         internal int Strength { get; set; }// Сила
         internal int Dexterity { get; set; }// Ловкость
         internal int Magic { get; set; }// Магия
         internal int Vitality { get; set; }// Живучесть
-        internal int TimeAttack { get; set; }
+        internal int TimeAttack { get; set; }// Время между атаками (в тиках)
         internal int CoefHealth { get; }
         internal int CoefMana { get; }
+        internal int CoefStamina { get; }
         internal int Stamina { get; set; }
         internal int Health { get; set; }
         internal int Mana { get; set; }
