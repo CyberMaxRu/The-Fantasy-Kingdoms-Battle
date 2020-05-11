@@ -51,7 +51,8 @@ namespace Fantasy_King_s_Battle
                     playerItem.Item.Description,
                     null,
                     0,
-                    false, 0);
+                    false, 0,
+                    0, false);
         }
 
         private void PanelItem_Paint(object sender, PaintEventArgs e)

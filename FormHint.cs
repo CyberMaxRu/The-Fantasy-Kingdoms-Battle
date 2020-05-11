@@ -30,6 +30,7 @@ namespace Fantasy_King_s_Battle
         internal readonly List<Label> lblRequirement = new List<Label>();
         internal readonly Label lblIncome;
         internal readonly Label lblGold;
+        internal readonly Label lblBuilders;
         internal readonly Timer timerDelayShow;
         internal readonly Timer timerOpacity;
         internal readonly double maxOpacity = 0.90;
@@ -111,6 +112,19 @@ namespace Fantasy_King_s_Battle
                 Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
             };
 
+            lblBuilders = new Label()
+            {
+                Parent = this,
+                Left = Config.GRID_SIZE,
+                Top = Config.GRID_SIZE,
+                Width = ClientSize.Width - (Config.GRID_SIZE * 2),
+                ImageList = ilGui16,
+                ImageIndex = FormMain.GUI_16_PEASANT,
+                ImageAlign = System.Drawing.ContentAlignment.MiddleLeft,
+                BackColor = Color.Transparent,
+                Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
+            };
+
             fontRequirement = new Font("Microsoft Sans Serif", 10, FontStyle.Bold);
 
             timerDelayShow = new Timer()
@@ -168,7 +182,7 @@ namespace Fantasy_King_s_Battle
             timerOpacity.Enabled = true; 
         }
 
-        internal void ShowHint(Point p, string header, string action, string description, List<TextRequirement> requirement, int gold, bool goldEnough, int income)
+        internal void ShowHint(Point p, string header, string action, string description, List<TextRequirement> requirement, int gold, bool goldEnough, int income, int builders, bool buildersEnough)
         {
             Left = p.X;
             Top = p.Y;
@@ -251,6 +265,18 @@ namespace Fantasy_King_s_Battle
             }
             else
                 lblGold.Hide();
+
+            if (builders > 0)
+            {
+                lblBuilders.ForeColor = buildersEnough == true ? Color.Lime : Color.Crimson;
+                lblBuilders.Top = nextTop;
+                lblBuilders.Text = "     " + builders.ToString();
+                lblBuilders.Show();
+
+                nextTop = GuiUtils.NextTop(lblBuilders);
+            }
+            else
+                lblBuilders.Hide();
 
             bool needReshow = (Visible == false) || (Height != nextTop);
             Height = nextTop;

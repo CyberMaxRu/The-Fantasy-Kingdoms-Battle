@@ -32,7 +32,11 @@ namespace Fantasy_King_s_Battle
         {
             if ((Level < Building.MaxLevel) && (Player.Gold >= CostBuyOrUpgrade()) && (CheckRequirements() == true))
             {
+                Debug.Assert(Player.Gold >= CostBuyOrUpgrade());
+                Debug.Assert(Player.FreeBuilders >= Builders());
+
                 Player.Gold -= CostBuyOrUpgrade();
+                Player.FreeBuilders -= Builders();
                 Level++;
                 ValidateHeroes();
             }
@@ -62,10 +66,19 @@ namespace Fantasy_King_s_Battle
             return CanLevelUp() == true ? Building.Levels[Level + 1].Cost : 0;
         }
 
+        internal int Builders()
+        {
+            return CanLevelUp() == true ? Building.Levels[Level + 1].Builders : 0;
+        }
+
         internal bool CheckRequirements()
         {
             // Сначала проверяем наличие золота
             if (Player.Gold < Building.Levels[Level + 1].Cost)
+                return false;
+
+            // Проверяем наличие строителей
+            if (Player.FreeBuilders < Building.Levels[Level + 1].Builders)
                 return false;
 
             // Проверяем требования к зданиям

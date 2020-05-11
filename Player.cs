@@ -106,7 +106,6 @@ namespace Fantasy_King_s_Battle
                 pb.ValidateHeroes();
         }
 
-
         internal Lobby Lobby { get; }
         internal string Name { get; }
         internal int Position { get; }
@@ -117,7 +116,7 @@ namespace Fantasy_King_s_Battle
         internal TypePlayer TypePlayer { get; }
         internal int Gold { get; set; }
         internal int TotalBuilders { get; private set; }
-        internal int FreeBuilders { get; private set; }
+        internal int FreeBuilders { get; set; }
         internal int[] Resources { get; }
         internal int Wins { get; set; }
         internal int Loses { get; set; }
