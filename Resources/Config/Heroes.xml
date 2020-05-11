@@ -15,6 +15,8 @@
       <Magic>10</Magic>
       <Vitality>100</Vitality>
       <TimeAttack>200</TimeAttack>
+      <CoefHealth>3</CoefHealth>
+      <CoefMana>1</CoefMana>
     </MainParameters>
     <NextLevel>
       <StatPoints>5</StatPoints>
@@ -86,6 +88,8 @@
       <Magic>10</Magic>
       <Vitality>50</Vitality>
       <TimeAttack>200</TimeAttack>
+      <CoefHealth>2</CoefHealth>
+      <CoefMana>1</CoefMana>
     </MainParameters>
     <NextLevel>
       <StatPoints>5</StatPoints>
@@ -157,6 +161,8 @@
       <Magic>10</Magic>
       <Vitality>75</Vitality>
       <TimeAttack>200</TimeAttack>
+      <CoefHealth>2</CoefHealth>
+      <CoefMana>1</CoefMana>
     </MainParameters>
     <NextLevel>
       <StatPoints>5</StatPoints>
@@ -228,6 +234,8 @@
       <Magic>10</Magic>
       <Vitality>100</Vitality>
       <TimeAttack>200</TimeAttack>
+      <CoefHealth>2</CoefHealth>
+      <CoefMana>2</CoefMana>
     </MainParameters>
     <NextLevel>
       <StatPoints>5</StatPoints>
@@ -299,6 +307,8 @@
       <Magic>10</Magic>
       <Vitality>100</Vitality>
       <TimeAttack>200</TimeAttack>
+      <CoefHealth>1</CoefHealth>
+      <CoefMana>3</CoefMana>
     </MainParameters>
     <NextLevel>
       <StatPoints>5</StatPoints>
@@ -370,6 +380,8 @@
       <Magic>10</Magic>
       <Vitality>100</Vitality>
       <TimeAttack>200</TimeAttack>
+      <CoefHealth>3</CoefHealth>
+      <CoefMana>2</CoefMana>
     </MainParameters>
     <NextLevel>
       <StatPoints>5</StatPoints>
@@ -441,6 +453,8 @@
       <Magic>10</Magic>
       <Vitality>100</Vitality>
       <TimeAttack>200</TimeAttack>
+      <CoefHealth>4</CoefHealth>
+      <CoefMana>1</CoefMana>
     </MainParameters>
     <NextLevel>
       <StatPoints>5</StatPoints>
