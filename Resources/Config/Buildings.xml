@@ -13,12 +13,14 @@
       <Level>
         <Pos>1</Pos>
         <Cost>0</Cost>
+        <Builders>0</Builders>
         <Income>50</Income>
-        <MaxHeroes>1</MaxHeroes>
+        <MaxHeroes>1</MaxHeroes>        
       </Level>
       <Level>
         <Pos>2</Pos>
         <Cost>2000</Cost>
+        <Builders>5</Builders>
         <Income>125</Income>
         <MaxHeroes>2</MaxHeroes>
         <Requirements>
@@ -35,6 +37,7 @@
       <Level>
         <Pos>3</Pos>
         <Cost>4000</Cost>
+        <Builders>10</Builders>
         <Income>275</Income>
         <MaxHeroes>4</MaxHeroes>
         <Requirements>
@@ -63,8 +66,9 @@
       <Level>
         <Pos>1</Pos>
         <Cost>0</Cost>
+        <Builders>0</Builders>
         <Income>50</Income>
-        <MaxHeroes>1</MaxHeroes>
+        <MaxHeroes>3</MaxHeroes>
       </Level>
     </Levels>
   </Building>
@@ -82,6 +86,7 @@
       <Level>
         <Pos>1</Pos>
         <Cost>0</Cost>
+        <Builders>0</Builders>
         <Income>50</Income>
         <MaxHeroes>1</MaxHeroes>
       </Level>
@@ -100,11 +105,13 @@
       <Level>
         <Pos>1</Pos>
         <Cost>500</Cost>
+        <Builders>1</Builders>
         <Income>175</Income>
       </Level>
       <Level>
         <Pos>2</Pos>
         <Cost>1000</Cost>
+        <Builders>2</Builders>
         <Income>300</Income>
         <Requirements>
           <Requirement>
@@ -116,6 +123,7 @@
       <Level>
         <Pos>3</Pos>
         <Cost>1500</Cost>
+        <Builders>3</Builders>
         <Income>525</Income>
         <Requirements>
           <Requirement>
@@ -139,12 +147,14 @@
       <Level>
         <Pos>1</Pos>
         <Cost>500</Cost>
+        <Builders>2</Builders>
         <Income>50</Income>
       </Level>
       <Level>
         <Pos>2</Pos>
         <Cost>1000</Cost>
         <Income>50</Income>
+        <Builders>3</Builders>
         <Requirements>
           <Requirement>
             <Building>Castle</Building>
@@ -155,6 +165,7 @@
       <Level>
         <Pos>3</Pos>
         <Cost>2000</Cost>
+        <Builders>4</Builders>
         <Income>50</Income>
         <Requirements>
           <Requirement>
@@ -178,11 +189,13 @@
       <Level>
         <Pos>1</Pos>
         <Cost>250</Cost>
+        <Builders>1</Builders>
         <Income>0</Income>
       </Level>
       <Level>
         <Pos>2</Pos>
         <Cost>1000</Cost>
+        <Builders>1</Builders>
         <Income>0</Income>
         <Requirements>
           <Requirement>
@@ -206,6 +219,7 @@
       <Level>
         <Pos>1</Pos>
         <Cost>1500</Cost>
+        <Builders>0</Builders>
         <Income>150</Income>
         <Requirements>
           <Requirement>
@@ -233,6 +247,7 @@
       <Level>
         <Pos>1</Pos>
         <Cost>500</Cost>
+        <Builders>1</Builders>
         <Income>0</Income>
       </Level>
     </Levels>
@@ -251,11 +266,13 @@
       <Level>
         <Pos>1</Pos>
         <Cost>500</Cost>
+        <Builders>2</Builders>
         <Income>0</Income>
       </Level>
       <Level>
         <Pos>2</Pos>
         <Cost>400</Cost>
+        <Builders>2</Builders>
         <Income>0</Income>
       </Level>
     </Levels>
@@ -273,18 +290,21 @@
       <Level>
         <Pos>1</Pos>
         <Cost>550</Cost>
+        <Builders>1</Builders>
         <Income>0</Income>
         <MaxHeroes>4</MaxHeroes>
       </Level>
       <Level>
         <Pos>2</Pos>
         <Cost>550</Cost>
+        <Builders>1</Builders>
         <Income>0</Income>
         <MaxHeroes>4</MaxHeroes>
       </Level>
       <Level>
         <Pos>3</Pos>
         <Cost>550</Cost>
+        <Builders>1</Builders>
         <Income>0</Income>
         <MaxHeroes>4</MaxHeroes>
       </Level>
@@ -303,18 +323,21 @@
       <Level>
         <Pos>1</Pos>
         <Cost>450</Cost>
+        <Builders>1</Builders>
         <Income>0</Income>
         <MaxHeroes>4</MaxHeroes>
       </Level>
       <Level>
         <Pos>2</Pos>
         <Cost>450</Cost>
+        <Builders>1</Builders>
         <Income>0</Income>
         <MaxHeroes>4</MaxHeroes>
       </Level>
       <Level>
         <Pos>3</Pos>
         <Cost>450</Cost>
+        <Builders>1</Builders>
         <Income>0</Income>
         <MaxHeroes>4</MaxHeroes>
       </Level>
@@ -333,18 +356,21 @@
       <Level>
         <Pos>1</Pos>
         <Cost>450</Cost>
+        <Builders>1</Builders>
         <Income>0</Income>
         <MaxHeroes>4</MaxHeroes>
       </Level>
       <Level>
         <Pos>2</Pos>
         <Cost>450</Cost>
+        <Builders>1</Builders>
         <Income>0</Income>
         <MaxHeroes>4</MaxHeroes>
       </Level>
       <Level>
         <Pos>3</Pos>
         <Cost>450</Cost>
+        <Builders>1</Builders>
         <Income>0</Income>
         <MaxHeroes>4</MaxHeroes>
       </Level>
@@ -363,18 +389,21 @@
       <Level>
         <Pos>1</Pos>
         <Cost>700</Cost>
+        <Builders>1</Builders>
         <Income>0</Income>
         <MaxHeroes>4</MaxHeroes>
       </Level>
       <Level>
         <Pos>2</Pos>
         <Cost>700</Cost>
+        <Builders>1</Builders>
         <Income>0</Income>
         <MaxHeroes>4</MaxHeroes>
       </Level>
       <Level>
         <Pos>3</Pos>
         <Cost>700</Cost>
+        <Builders>1</Builders>
         <Income>0</Income>
         <MaxHeroes>4</MaxHeroes>
       </Level>
@@ -393,6 +422,7 @@
       <Level>
         <Pos>1</Pos>
         <Cost>1000</Cost>
+        <Builders>0</Builders>
         <Income>0</Income>
         <MaxHeroes>3</MaxHeroes>
         <Requirements>
@@ -405,6 +435,7 @@
       <Level>
         <Pos>2</Pos>
         <Cost>1000</Cost>
+        <Builders>0</Builders>
         <Income>0</Income>
         <MaxHeroes>3</MaxHeroes>
         <Requirements>
@@ -417,6 +448,7 @@
       <Level>
         <Pos>3</Pos>
         <Cost>1000</Cost>
+        <Builders>0</Builders>
         <Income>0</Income>
         <MaxHeroes>3</MaxHeroes>
         <Requirements>
@@ -441,6 +473,7 @@
       <Level>
         <Pos>1</Pos>
         <Cost>2500</Cost>
+        <Builders>2</Builders>
         <Income>0</Income>
         <MaxHeroes>3</MaxHeroes>
         <Requirements>
@@ -457,6 +490,7 @@
       <Level>
         <Pos>2</Pos>
         <Cost>2500</Cost>
+        <Builders>2</Builders>
         <Income>0</Income>
         <MaxHeroes>3</MaxHeroes>
         <Requirements>
@@ -485,6 +519,7 @@
       <Level>
         <Pos>1</Pos>
         <Cost>2000</Cost>
+        <Builders>2</Builders>
         <Income>0</Income>
         <MaxHeroes>3</MaxHeroes>
         <Requirements>
@@ -501,6 +536,7 @@
       <Level>
         <Pos>2</Pos>
         <Cost>2500</Cost>
+        <Builders>2</Builders>
         <Income>0</Income>
         <MaxHeroes>3</MaxHeroes>
         <Requirements>
@@ -529,6 +565,7 @@
       <Level>
         <Pos>1</Pos>
         <Cost>3000</Cost>
+        <Builders>10</Builders>
         <Income>0</Income>
         <MaxHeroes>2</MaxHeroes>
         <Requirements>
@@ -557,6 +594,7 @@
       <Level>
         <Pos>1</Pos>
         <Cost>3000</Cost>
+        <Builders>10</Builders>
         <Income>0</Income>
         <MaxHeroes>2</MaxHeroes>
         <Requirements>
@@ -585,6 +623,7 @@
       <Level>
         <Pos>1</Pos>
         <Cost>3000</Cost>
+        <Builders>10</Builders>
         <Income>0</Income>
         <MaxHeroes>2</MaxHeroes>
         <Requirements>
@@ -613,6 +652,7 @@
       <Level>
         <Pos>1</Pos>
         <Cost>3000</Cost>
+        <Builders>10</Builders>
         <Income>0</Income>
         <MaxHeroes>2</MaxHeroes>
         <Requirements>
@@ -641,6 +681,7 @@
       <Level>
         <Pos>1</Pos>
         <Cost>3000</Cost>
+        <Builders>10</Builders>
         <Income>0</Income>
         <MaxHeroes>2</MaxHeroes>
         <Requirements>
@@ -669,6 +710,7 @@
       <Level>
         <Pos>1</Pos>
         <Cost>3000</Cost>
+        <Builders>10</Builders>
         <Income>0</Income>
         <MaxHeroes>2</MaxHeroes>
         <Requirements>
@@ -697,6 +739,7 @@
       <Level>
         <Pos>1</Pos>
         <Cost>3000</Cost>
+        <Builders>10</Builders>
         <Income>0</Income>
         <MaxHeroes>2</MaxHeroes>
         <Requirements>
@@ -725,6 +768,7 @@
       <Level>
         <Pos>1</Pos>
         <Cost>3000</Cost>
+        <Builders>10</Builders>
         <Income>0</Income>
         <MaxHeroes>2</MaxHeroes>
         <Requirements>
@@ -753,6 +797,7 @@
       <Level>
         <Pos>1</Pos>
         <Cost>3000</Cost>
+        <Builders>10</Builders>
         <Income>0</Income>
         <MaxHeroes>2</MaxHeroes>
         <Requirements>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,8 @@ namespace Fantasy_King_s_Battle
         internal const int UNIT_IN_ROW = 5;
         internal const int ROWS_IN_SQUAD = 4;
         internal const int MAX_STEP_IN_BATTLE_SQUADS = 500;
+
+        internal const string HERO_PEASANT = "Peasant";
 
         public Config(string pathResources, FormMain fm)
         {
