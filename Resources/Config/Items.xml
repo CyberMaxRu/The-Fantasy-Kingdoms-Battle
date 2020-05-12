@@ -116,7 +116,7 @@
     <CostExamine>0</CostExamine>
     <Cost>0</Cost>
     <Perk></Perk>
-    <TypeAttack>Magic</TypeAttack>
+    <TypeAttack>Missile</TypeAttack>
     <DamageMagic>5</DamageMagic>
   </Item>
   <Item>
