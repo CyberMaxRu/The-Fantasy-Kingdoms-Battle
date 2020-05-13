@@ -79,8 +79,8 @@ namespace Fantasy_King_s_Battle
         internal static int WH_SLOT_LINES = 3;
         internal static int WH_MAX_SLOTS = WH_SLOTS_IN_LINE * WH_SLOT_LINES;
         internal const int BUILDING_MAX_LINES = 3;
-        internal static int HEROES_IN_LINE = 8;
-        internal static int LINES_HEROES = 2;
+        internal static int HEROES_IN_LINE = 5;
+        internal static int LINES_HEROES = 3;
 
         private readonly Lobby lobby;
         private int curAppliedPlayer = -1;
