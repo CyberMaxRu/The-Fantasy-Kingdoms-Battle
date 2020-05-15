@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Battlefield width="7" height="3">
+  <Cells>
+    <Cell y="0" x="0">Special</Cell>
+    <Cell y="0" x="1">Melee</Cell>
+    <Cell y="0" x="2">Melee</Cell>
+    <Cell y="0" x="3">Melee</Cell>
+    <Cell y="0" x="4">Melee</Cell>
+    <Cell y="0" x="5">Melee</Cell>
+    <Cell y="0" x="6">Special</Cell>
+    <Cell y="1" x="0"></Cell>
+    <Cell y="1" x="1">Archer</Cell>
+    <Cell y="1" x="2">Archer</Cell>
+    <Cell y="1" x="3">Archer</Cell>
+    <Cell y="1" x="4">Archer</Cell>
+    <Cell y="1" x="5">Archer</Cell>
+    <Cell y="1" x="6"></Cell>
+    <Cell y="2" x="0"></Cell>
+    <Cell y="2" x="1">Mage</Cell>
+    <Cell y="2" x="2">Mage</Cell>
+    <Cell y="2" x="3">Mage</Cell>
+    <Cell y="2" x="4">Mage</Cell>
+    <Cell y="2" x="5">Mage</Cell>
+    <Cell y="2" x="6"></Cell>
+  </Cells>
+</Battlefield>

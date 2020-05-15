@@ -154,7 +154,7 @@ namespace Fantasy_King_s_Battle
             bmpBackgroundButton = new Bitmap(dirResources + "Icons\\BackgroundButton.png");
 
             //    
-            lobby = new Lobby(8);
+            lobby = new Lobby(dirResources, 8);
 
             // Создаем метку под золото
             StatusStrip.ImageList = ilGui16;
