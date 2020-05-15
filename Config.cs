@@ -14,6 +14,7 @@ namespace Fantasy_King_s_Battle
         internal const int UNIT_IN_ROW = 5;
         internal const int ROWS_IN_SQUAD = 4;
         internal const int MAX_STEP_IN_BATTLE_SQUADS = 500;
+        internal static int RESERVED_HEROES = 5;
 
         internal const string HERO_PEASANT = "Peasant";
 
@@ -96,6 +97,9 @@ namespace Fantasy_King_s_Battle
                 doc.Load(pathResources + pathToXml);
                 return doc;
             }
+
+            // Создаем конфигурацию поля боя для использования игроками
+            Battlefield = new Battlefield(pathResources + "\\Config\\Battlefield.xml");
         }
 
         internal string PathResources { get; }
@@ -107,6 +111,7 @@ namespace Fantasy_King_s_Battle
         internal List<Item> Items { get; } = new List<Item>();
         internal List<Skill> Skills { get; } = new List<Skill>();
         internal int MaxLevelSkill { get; }
+        internal Battlefield Battlefield { get; }
 
         internal Fraction FindFraction(string ID)
         {
