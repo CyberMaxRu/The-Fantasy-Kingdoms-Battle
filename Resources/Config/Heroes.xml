@@ -552,7 +552,7 @@
     <Cost>0</Cost>
     <Building>Castle</Building>
     <MaxLevel>1</MaxLevel>
-    <CategoryHero>Melee</CategoryHero>
+    <CategoryHero>Guard</CategoryHero>
     <TypeAttack>Melee</TypeAttack>
     <CanBuild>False</CanBuild>
     <MainParameters>

@@ -9,7 +9,7 @@ using System.Diagnostics;
 
 namespace Fantasy_King_s_Battle
 {
-    internal enum CategoryHero { Melee, Archer, Mage, Special, NonCombat }
+    internal enum CategoryHero { Melee, Archer, Mage, Special, Guard, NonCombat }
     internal enum TypeAttack { Melee, Missile, None }
 
     internal sealed class Slot
