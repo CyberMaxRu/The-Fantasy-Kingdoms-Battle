@@ -80,14 +80,12 @@ namespace Fantasy_King_s_Battle
         internal static int WH_SLOT_LINES = 3;
         internal static int WH_MAX_SLOTS = WH_SLOTS_IN_LINE * WH_SLOT_LINES;
         internal const int BUILDING_MAX_LINES = 3;
-        internal static int HEROES_IN_LINE = 5;
-        internal static int LINES_HEROES = 3;
 
         private readonly Lobby lobby;
         private int curAppliedPlayer = -1;
 
         private List<PanelItem> SlotsWarehouse = new List<PanelItem>();
-        private PanelHero[,] CellHeroes = new PanelHero[LINES_HEROES, HEROES_IN_LINE];
+        private PanelHero[,] CellHeroes;
 
         private PictureBox picBoxItemForDrag;// PictureBox с иконкой предмета для отображения под курсором при перетаскивании
         private Point shiftForMouseByDrag;// Смещение иконки предмета относится курсора мыши, чтобы она отображалась ровно так, как предмет взял пользователь
@@ -155,8 +153,10 @@ namespace Fantasy_King_s_Battle
             BackgroundImage = background;
             bmpBackgroundButton = new Bitmap(dirResources + "Icons\\BackgroundButton.png");
 
+            CellHeroes = new PanelHero[Config.Battlefield.Size.Height, Config.Battlefield.Size.Width];
+
             //    
-            lobby = new Lobby(dirResources, 8);
+            lobby = new Lobby(8);
 
             // Создаем метку под золото
             StatusStrip.ImageList = ilGui16;
@@ -437,21 +437,27 @@ namespace Fantasy_King_s_Battle
             };
             pageHeroes.AddControl(panelHeroes);
 
+            int width = 0;
+            int height = 0;
             PanelHero ph;
-            for (int y = 0; y < LINES_HEROES; y++)
-                for (int x = 0; x < HEROES_IN_LINE; x++)
-                {
-                    ph = new PanelHero(new Point(x, y), Config.GRID_SIZE + x * (ilGuiHeroes.ImageSize.Width + Config.GRID_SIZE * 2), Config.GRID_SIZE + y * (ilGuiHeroes.ImageSize.Height + Config.GRID_SIZE * 2), ilGuiHeroes, ilGui);
-                    ph.Parent = panelHeroes;
-                    CellHeroes[y, x] = ph;
-                    ph.Click += PanelHero_Click;
-                    ph.MouseDown += CellHero_MouseDown;
-                    ph.MouseUp += CellHero_MouseUp;
-                    ph.MouseMove += CellHero_MouseMove;
-                }
+            for (int y = 0; y < CellHeroes.GetLength(0); y++)
+                for (int x = 0; x < CellHeroes.GetLength(1); x++)
+                    if (Config.Battlefield.Cells[y, x] != null)
+                    {
+                        ph = new PanelHero(new Point(x, y), Config.GRID_SIZE + x * (ilGuiHeroes.ImageSize.Width + Config.GRID_SIZE * 2), Config.GRID_SIZE + y * (ilGuiHeroes.ImageSize.Height + Config.GRID_SIZE * 2), ilGuiHeroes, ilGui, ilCategoryHeroes);
+                        ph.Parent = panelHeroes;
+                        CellHeroes[y, x] = ph;
+                        ph.Click += PanelHero_Click;
+                        ph.MouseDown += CellHero_MouseDown;
+                        ph.MouseUp += CellHero_MouseUp;
+                        ph.MouseMove += CellHero_MouseMove;
 
-            panelHeroes.Width = GuiUtils.NextLeft(CellHeroes[LINES_HEROES - 1, HEROES_IN_LINE - 1]);
-            panelHeroes.Height = GuiUtils.NextTop(CellHeroes[LINES_HEROES - 1, HEROES_IN_LINE - 1]);
+                        width = Math.Max(width, GuiUtils.NextLeft(ph));
+                        height = Math.Max(height, GuiUtils.NextTop(ph));
+                    }
+
+            panelHeroes.Width = width;
+            panelHeroes.Height = height;
         }
 
         private void CellHero_MouseMove(object sender, MouseEventArgs e)
@@ -462,7 +468,7 @@ namespace Fantasy_King_s_Battle
                 {
                     if (picBoxItemForDrag.Visible == false)
                     {
-                        panelHeroForDrag.ShowData(panelHeroForDrag.Hero);
+                        panelHeroForDrag.ShowData(panelHeroForDrag.Hero, CellHeroes[panelHeroForDrag.Point.Y, panelHeroForDrag.Point.X].CategoryHero);
                         BeginDrag();
                     }
 
@@ -516,13 +522,14 @@ namespace Fantasy_King_s_Battle
 
         internal void ShowPageHeroes()
         {
-            for (int y = 0; y < LINES_HEROES; y++)
-                for (int x = 0; x < HEROES_IN_LINE; x++)
-                {
-                    CellHeroes[y, x].ShowData(lobby.CurrentPlayer.CellHeroes[y, x]);
-                    if (lobby.CurrentPlayer.CellHeroes[y, x] != null)
-                        lobby.CurrentPlayer.CellHeroes[y, x].Panel = CellHeroes[y, x];
-                }
+            for (int y = 0; y < CellHeroes.GetLength(0); y++)
+                for (int x = 0; x < CellHeroes.GetLength(1); x++)
+                    if (CellHeroes[y, x] != null)
+                    {
+                        CellHeroes[y, x].ShowData(lobby.CurrentPlayer.CellHeroes[y, x], Config.Battlefield.Cells[y, x].CategoryHero);
+                        if (lobby.CurrentPlayer.CellHeroes[y, x] != null)
+                            lobby.CurrentPlayer.CellHeroes[y, x].Panel = CellHeroes[y, x];
+                    }
 
              ShowWarehouse();
         }
@@ -796,7 +803,7 @@ namespace Fantasy_King_s_Battle
             heroForDrag = null;
 
             if (ph != null)
-                ph.ShowData(ph.Hero);
+                ph.ShowData(ph.Hero, CellHeroes[ph.Point.Y, ph.Point.X].CategoryHero);
         }
 
         private void PanelCellWarehouse_MouseDown(object sender, MouseEventArgs e)

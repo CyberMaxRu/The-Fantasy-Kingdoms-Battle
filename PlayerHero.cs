@@ -56,7 +56,7 @@ namespace Fantasy_King_s_Battle
         {
             Debug.Assert(Panel != null);
 
-            Panel.ShowData(this);
+            Panel.ShowData(this, Hero.CategoryHero);
         }
 
         internal void Dismiss()

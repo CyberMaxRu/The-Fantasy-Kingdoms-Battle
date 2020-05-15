@@ -11,7 +11,7 @@ namespace Fantasy_King_s_Battle
     // Класс лобби (королевской битвы)
     internal sealed class Lobby
     {
-        public Lobby(string pathResources, int quantityPlayers)
+        public Lobby(int quantityPlayers)
         {
             // Создание игроков
             Random r = new Random();
@@ -27,9 +27,6 @@ namespace Fantasy_King_s_Battle
 
             //
             Turn = 1;
-
-            // Создаем конфигурацию поля боя для использования игроками
-            ConfigBattlefield = new Battlefield(pathResources + "\\Config\\Battlefield.xml");
 
             // Определяем противников
             MakeOpponents();
@@ -270,7 +267,6 @@ namespace Fantasy_King_s_Battle
         internal int CurrentPlayerIndex { get; private set; }
         internal Player CurrentPlayer { get; private set; }
         internal int Turn { get; private set; }
-        internal Battlefield ConfigBattlefield { get; }
         internal List<CourseBattle> Battles { get; } = new List<CourseBattle>();
     }
 }

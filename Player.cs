@@ -31,6 +31,11 @@ namespace Fantasy_King_s_Battle
             {
                 Buildings.Add(new PlayerBuilding(this, b));
             }
+            
+            // Настройка ячеек героев
+            CellHeroes = new PlayerHero[FormMain.Config.Battlefield.Size.Height, FormMain.Config.Battlefield.Size.Width];
+
+            ReservedHeroes = new PlayerHero[Config.RESERVED_HEROES];
 
             //
             AddItem(new PlayerItem(FormMain.Config.FindItem("Sword1"), 4));
@@ -112,7 +117,8 @@ namespace Fantasy_King_s_Battle
         internal Fraction Fraction { get; }
         internal List<PlayerBuilding> Buildings { get; } = new List<PlayerBuilding>();
         internal List<PlayerHero> Heroes { get; } = new List<PlayerHero>();
-        internal PlayerHero[,] CellHeroes = new PlayerHero[FormMain.LINES_HEROES, FormMain.HEROES_IN_LINE];
+        internal PlayerHero[,] CellHeroes;
+        internal PlayerHero[] ReservedHeroes { get; }
         internal TypePlayer TypePlayer { get; }
         internal int Gold { get; set; }
         internal int TotalBuilders { get; private set; }
