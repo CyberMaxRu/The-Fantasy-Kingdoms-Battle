@@ -33,7 +33,6 @@ namespace Fantasy_King_s_Battle
             Cells = new CellBattlefield[Size.Height, Size.Width];
 
             int y, x;
-            CategoryHero ch;
             XmlNode xmlCells = n.SelectSingleNode("Cells");
             foreach (XmlNode c in xmlCells.SelectNodes("Cell"))
             {
