@@ -29,6 +29,7 @@ namespace Fantasy_King_s_Battle
         internal readonly ImageList ilGuiHeroes;
         internal readonly ImageList ilParameters;
         internal readonly ImageList ilItems;
+        internal readonly ImageList ilCategoryHeroes;
 
         internal readonly Font fontQuantity = new Font("Courier New", 14, FontStyle.Bold);
         internal readonly Font fontCost = new Font("Arial", 12, FontStyle.Bold);
@@ -148,6 +149,7 @@ namespace Fantasy_King_s_Battle
             ilGui45 = PrepareImageList("Gui45.png", 45, 45, false);
             ilParameters = PrepareImageList("Parameters.png", 24, 24, false);
             ilItems = PrepareImageList("Items.png", 48, 48, false);
+            ilCategoryHeroes = PrepareImageList("CategoryHeroes.png", 48, 48, false);
 
             background = new Bitmap(dirResources + "Icons\\Background.png");
             BackgroundImage = background;
