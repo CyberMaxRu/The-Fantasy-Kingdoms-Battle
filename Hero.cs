@@ -9,6 +9,7 @@ using System.Diagnostics;
 
 namespace Fantasy_King_s_Battle
 {
+    internal enum CategoryHero { Melee, Archer, Mage, Special, NonCombat }
     internal enum TypeAttack { Melee, Missile, None }
 
     internal sealed class Slot
@@ -51,6 +52,7 @@ namespace Fantasy_King_s_Battle
             Building = FormMain.Config.FindBuilding(n.SelectSingleNode("Building").InnerText);
             Building.TrainedHero = this;
             MaxLevel = Convert.ToInt32(n.SelectSingleNode("MaxLevel").InnerText);
+            CategoryHero = (CategoryHero)Enum.Parse(typeof(CategoryHero), n.SelectSingleNode("CategoryHero").InnerText);
             TypeAttack = (TypeAttack)Enum.Parse(typeof(TypeAttack), n.SelectSingleNode("TypeAttack").InnerText);
             CanBuild = Convert.ToBoolean(n.SelectSingleNode("CanBuild").InnerText);
 
@@ -120,6 +122,7 @@ namespace Fantasy_King_s_Battle
         internal int Cost { get; }
         internal Building Building { get; }
         internal int MaxLevel { get; }
+        internal CategoryHero CategoryHero { get; }
         internal TypeAttack TypeAttack { get; }
         internal bool CanBuild { get; }
         internal MainParameters MainParameters { get; }

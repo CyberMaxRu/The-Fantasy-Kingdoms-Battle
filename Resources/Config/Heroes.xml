@@ -8,6 +8,7 @@
     <Cost>200</Cost>
     <Building>GuildWarrior</Building>
     <MaxLevel>100</MaxLevel>
+    <CategoryHero>Melee</CategoryHero>
     <TypeAttack>Melee</TypeAttack>
     <CanBuild>False</CanBuild>
     <MainParameters>
@@ -83,6 +84,7 @@
     <Cost>100</Cost>
     <Building>GuildRogue</Building>
     <MaxLevel>100</MaxLevel>
+    <CategoryHero>Special</CategoryHero>
     <TypeAttack>Melee</TypeAttack>
     <CanBuild>False</CanBuild>
     <MainParameters>
@@ -158,6 +160,7 @@
     <Cost>150</Cost>
     <Building>GuildHunter</Building>
     <MaxLevel>100</MaxLevel>
+    <CategoryHero>Archer</CategoryHero>
     <TypeAttack>Missile</TypeAttack>
     <CanBuild>False</CanBuild>
     <MainParameters>
@@ -233,6 +236,7 @@
     <Cost>350</Cost>
     <Building>GuildCleric</Building>
     <MaxLevel>100</MaxLevel>
+    <CategoryHero>Mage</CategoryHero>
     <TypeAttack>Missile</TypeAttack>
     <CanBuild>False</CanBuild>
     <MainParameters>
@@ -308,6 +312,7 @@
     <Cost>500</Cost>
     <Building>GuildMage</Building>
     <MaxLevel>100</MaxLevel>
+    <CategoryHero>Mage</CategoryHero>
     <TypeAttack>Missile</TypeAttack>
     <CanBuild>False</CanBuild>
     <MainParameters>
@@ -383,6 +388,7 @@
     <Cost>700</Cost>
     <Building>GuildElf</Building>
     <MaxLevel>100</MaxLevel>
+    <CategoryHero>Archer</CategoryHero>
     <TypeAttack>Missile</TypeAttack>
     <CanBuild>False</CanBuild>
     <MainParameters>
@@ -458,6 +464,7 @@
     <Cost>700</Cost>
     <Building>GuildDwarf</Building>
     <MaxLevel>100</MaxLevel>
+    <CategoryHero>Melee</CategoryHero>
     <TypeAttack>Melee</TypeAttack>
     <CanBuild>True</CanBuild>
     <MainParameters>
@@ -533,6 +540,7 @@
     <Cost>0</Cost>
     <Building>House</Building>
     <MaxLevel>1</MaxLevel>
+    <CategoryHero>NonCombat</CategoryHero>
     <TypeAttack>None</TypeAttack>
     <CanBuild>True</CanBuild>
   </Hero>
@@ -544,6 +552,7 @@
     <Cost>0</Cost>
     <Building>Castle</Building>
     <MaxLevel>1</MaxLevel>
+    <CategoryHero>Melee</CategoryHero>
     <TypeAttack>Melee</TypeAttack>
     <CanBuild>False</CanBuild>
     <MainParameters>
@@ -565,6 +574,7 @@
     <Cost>0</Cost>
     <Building>Mill</Building>
     <MaxLevel>1</MaxLevel>
+    <CategoryHero>NonCombat</CategoryHero>
     <TypeAttack>None</TypeAttack>
     <CanBuild>False</CanBuild>
   </Hero>
