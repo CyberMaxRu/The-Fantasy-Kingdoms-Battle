@@ -241,25 +241,6 @@
     </Levels>
   </Building>
   <Building>
-    <ID>Statue</ID>
-    <Name>Статуя</Name>
-    <Description>- Повышает энтузиазм героев</Description>
-    <ImageIndex>14</ImageIndex>
-    <CategoryBuilding>Castle</CategoryBuilding>
-    <Line>3</Line>
-    <DefaultLevel>0</DefaultLevel>
-    <MaxLevel>1</MaxLevel>
-    <TypeIncome>None</TypeIncome>
-    <Levels>
-      <Level>
-        <Pos>1</Pos>
-        <Cost>500</Cost>
-        <Builders>1</Builders>
-        <Income>0</Income>
-      </Level>
-    </Levels>
-  </Building>
-  <Building>
     <ID>Library</ID>
     <Name>Библиотека</Name>
     <Description>- Позволяет изучить заклинания</Description>
@@ -281,6 +262,25 @@
         <Pos>2</Pos>
         <Cost>400</Cost>
         <Builders>2</Builders>
+        <Income>0</Income>
+      </Level>
+    </Levels>
+  </Building>
+  <Building>
+    <ID>Statue</ID>
+    <Name>Статуя</Name>
+    <Description>- Повышает энтузиазм героев</Description>
+    <ImageIndex>14</ImageIndex>
+    <CategoryBuilding>Castle</CategoryBuilding>
+    <Line>3</Line>
+    <DefaultLevel>0</DefaultLevel>
+    <MaxLevel>1</MaxLevel>
+    <TypeIncome>None</TypeIncome>
+    <Levels>
+      <Level>
+        <Pos>1</Pos>
+        <Cost>500</Cost>
+        <Builders>1</Builders>
         <Income>0</Income>
       </Level>
     </Levels>
@@ -313,41 +313,6 @@
       <Level>
         <Pos>3</Pos>
         <Cost>550</Cost>
-        <Builders>1</Builders>
-        <Income>0</Income>
-        <MaxHeroes>5</MaxHeroes>
-      </Level>
-    </Levels>
-  </Building>
-  <Building>
-    <ID>GuildRogue</ID>
-    <Name>Гильдия разбойниц</Name>
-    <Description>- Позволяет нанимать разбойниц/- В гильдии исследуют и продают особые способности разбойниц/- Здесь исследуют и продают яды для оружия/- Здесь исследуют способность "Вымогательство"</Description>
-    <ImageIndex>1</ImageIndex>
-    <CategoryBuilding>Guild</CategoryBuilding>
-    <Line>1</Line>
-    <DefaultLevel>0</DefaultLevel>
-    <MaxLevel>3</MaxLevel>
-    <TypeIncome>None</TypeIncome>
-    <Active>False</Active>
-    <Levels>
-      <Level>
-        <Pos>1</Pos>
-        <Cost>450</Cost>
-        <Builders>1</Builders>
-        <Income>0</Income>
-        <MaxHeroes>5</MaxHeroes>
-      </Level>
-      <Level>
-        <Pos>2</Pos>
-        <Cost>450</Cost>
-        <Builders>1</Builders>
-        <Income>0</Income>
-        <MaxHeroes>5</MaxHeroes>
-      </Level>
-      <Level>
-        <Pos>3</Pos>
-        <Cost>450</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
         <MaxHeroes>5</MaxHeroes>
@@ -573,6 +538,41 @@
             <Level>2</Level>
           </Requirement>
         </Requirements>
+      </Level>
+    </Levels>
+  </Building>
+  <Building>
+    <ID>GuildRogue</ID>
+    <Name>Гильдия разбойниц</Name>
+    <Description>- Позволяет нанимать разбойниц/- В гильдии исследуют и продают особые способности разбойниц/- Здесь исследуют и продают яды для оружия/- Здесь исследуют способность "Вымогательство"</Description>
+    <ImageIndex>1</ImageIndex>
+    <CategoryBuilding>Guild</CategoryBuilding>
+    <Line>1</Line>
+    <DefaultLevel>0</DefaultLevel>
+    <MaxLevel>3</MaxLevel>
+    <TypeIncome>None</TypeIncome>
+    <Active>False</Active>
+    <Levels>
+      <Level>
+        <Pos>1</Pos>
+        <Cost>450</Cost>
+        <Builders>1</Builders>
+        <Income>0</Income>
+        <MaxHeroes>5</MaxHeroes>
+      </Level>
+      <Level>
+        <Pos>2</Pos>
+        <Cost>450</Cost>
+        <Builders>1</Builders>
+        <Income>0</Income>
+        <MaxHeroes>5</MaxHeroes>
+      </Level>
+      <Level>
+        <Pos>3</Pos>
+        <Cost>450</Cost>
+        <Builders>1</Builders>
+        <Income>0</Income>
+        <MaxHeroes>5</MaxHeroes>
       </Level>
     </Levels>
   </Building>
