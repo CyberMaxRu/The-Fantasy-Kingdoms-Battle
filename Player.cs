@@ -155,33 +155,65 @@ namespace Fantasy_King_s_Battle
             if (ph.Building.Building.CategoryBuilding != CategoryBuilding.Castle)
             {
                 // Ищем место в ячейках героев
-                int line;
+                int line = 0;
                 int pos = -1;
+                List<int> positions = new List<int>();
 
-                // Сначала ищем ячейку согласно типу атаки героя
-                line = ph.Hero.TypeAttack == TypeAttack.Melee ? 0 : 1;
-                pos = SearchFreeCell(line);
-
-                // Если не нашли свободную ячейку, ищем в другой
-                if (pos == -1)
+                // Сначала ищем ячейку согласно категории героя
+                // Для этого ищем линию со свободными ячейками для категории героя, начиная с первой
+                // Пытаемся разместить его в середине линии, а затем в стороны от середины
+                for (int y = 0; y < FormMain.Config.Battlefield.Cells.GetLength(0); y++)
                 {
-                    line = 1 - line;
-                    pos = SearchFreeCell(line);
+                    line = y;
+                    positions.Clear();
+
+                    for (int x = 0; x < FormMain.Config.Battlefield.Cells.GetLength(1); x++)
+                        if ((FormMain.Config.Battlefield.Cells[y, x] != null)
+                            && (FormMain.Config.Battlefield.Cells[y, x].CategoryHero == ph.Hero.CategoryHero)
+                            && (CellHeroes[y, x] == null))
+                        {
+                            positions.Add(x);
+                        }
+
+                    if (positions.Count > 0)
+                    {
+                        int centre = (int)Math.Truncate(FormMain.Config.Battlefield.Cells.GetLength(1) / 2.0 + 0.5) - 1;
+                        if (positions.IndexOf(centre) != -1)
+                        {
+                            pos = centre;
+                        }
+                        else
+                        {
+                            int shift = 1;
+                            for (; ; shift++)
+                            {
+                                if (positions.IndexOf(centre - shift) != -1)
+                                {
+                                    pos = centre - shift;
+                                    break;
+                                }
+
+                                if (positions.IndexOf(centre + shift) != -1)
+                                {
+                                    pos = centre + shift;
+                                    break;
+                                }
+
+                                if (shift == centre)
+                                    break;
+                            }
+                        }
+                    }
+
+                    if (pos != -1)
+                        break;
+        
                 }
 
                 Debug.Assert(pos != -1);
                 Debug.Assert(CellHeroes[line, pos] == null);
 
                 CellHeroes[line, pos] = ph;
-
-                int SearchFreeCell(int searchedLine)
-                {
-                    for (int i = 0; i < CellHeroes.GetLength(1); i++)
-                        if (CellHeroes[searchedLine, i] == null)
-                            return i;
-
-                    return -1;
-                }
             }
         }
 
