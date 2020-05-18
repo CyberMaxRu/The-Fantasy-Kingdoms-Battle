@@ -96,16 +96,13 @@ namespace Fantasy_King_s_Battle
 
         private void CalcBattles()
         {
-            // Инициализируем случайность
-            Random r = new Random();
-
             foreach (Player p in Players)
                 p.BattleCalced = false;
 
             foreach (Player p in Players)
             {
                 if (p.BattleCalced == false)
-                    CalcBattle(p, p.Opponent, r);
+                    CalcBattle(p, p.Opponent, FormMain.Rnd);
             }
         }
 
