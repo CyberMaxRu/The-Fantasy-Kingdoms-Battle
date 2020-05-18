@@ -70,15 +70,14 @@ namespace Fantasy_King_s_Battle
             GetPlayerBuilding(FormMain.Config.FindBuilding("GuildCleric")).BuyOrUpgrade();
             HireAllHero(GetPlayerBuilding(FormMain.Config.FindBuilding("GuildWarrior")));
 
-            HireAllHero(GetPlayerBuilding(FormMain.Config.FindBuilding("GuildWarrior")));
+            //HireAllHero(GetPlayerBuilding(FormMain.Config.FindBuilding("GuildWarrior")));
             //HireAllHero(GetPlayerBuilding(FormMain.Config.FindBuilding("GuildRogue")));
             //HireAllHero(GetPlayerBuilding(FormMain.Config.FindBuilding("GuildHunter")));
             //HireAllHero(GetPlayerBuilding(FormMain.Config.FindBuilding("GuildCleric")));
 
             void HireAllHero(PlayerBuilding bp)
             {
-                for (; bp.Heroes.Count() < 1;)
-                //                    for (; bp.Heroes.Count() < bp.MaxHeroes();)
+                for (; bp.Heroes.Count() < bp.MaxHeroes();)
                 {
                     bp.HireHero();
                 }
