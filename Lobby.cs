@@ -14,7 +14,6 @@ namespace Fantasy_King_s_Battle
         public Lobby(int quantityPlayers)
         {
             // Создание игроков
-            Random r = new Random();
             Players = new Player[quantityPlayers];
             TypePlayer tp;
             for (int i = 0; i < quantityPlayers; i++)
