@@ -68,6 +68,7 @@
     <TypeAttack>Melee</TypeAttack>
     <DamagePhysical>5</DamagePhysical>
     <DamageMagic>0</DamageMagic>
+    <TimeHit>200</TimeHit>
   </Item>
   <Item>
     <ID>ArmourWarrior0</ID>
@@ -94,6 +95,7 @@
     <Perk></Perk>
     <TypeAttack>Missile</TypeAttack>
     <Damage>3</Damage>
+    <TimeHit>150</TimeHit>
   </Item>
   <Item>
     <ID>ArmourArcher0</ID>
@@ -118,6 +120,7 @@
     <Perk></Perk>
     <TypeAttack>Missile</TypeAttack>
     <DamageMagic>5</DamageMagic>
+    <TimeHit>200</TimeHit>
   </Item>
   <Item>
     <ID>ArmourMage0</ID>
@@ -142,6 +145,7 @@
     <Perk></Perk>
     <TypeAttack>Melee</TypeAttack>
     <DamagePhysical>15</DamagePhysical>
+    <TimeHit>200</TimeHit>
   </Item>
   <Item>
     <ID>ArmourWarrior1</ID>
@@ -164,6 +168,8 @@
     <CostExamine>0</CostExamine>
     <Cost>0</Cost>
     <Perk></Perk>
+    <TypeAttack>Melee</TypeAttack>
+    <TimeHit>200</TimeHit>
   </Item>
   <Item>
     <ID>ArmourWarrior2</ID>
@@ -188,6 +194,7 @@
     <Perk></Perk>
     <TypeAttack>Missile</TypeAttack>
     <DamagePhysical>10</DamagePhysical>
+    <TimeHit>140</TimeHit>
   </Item>
   <Item>
     <ID>ArmourArcher1</ID>
@@ -212,6 +219,7 @@
     <Perk></Perk>
     <TypeAttack>Missile</TypeAttack>
     <DamagePhysical>15</DamagePhysical>
+    <TimeHit>130</TimeHit>
   </Item>
   <Item>
     <ID>ArmourArcher2</ID>

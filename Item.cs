@@ -23,6 +23,7 @@ namespace Fantasy_King_s_Battle
             CostExamine = Convert.ToInt32(n.SelectSingleNode("CostExamine").InnerText);
             Cost = Convert.ToInt32(n.SelectSingleNode("Cost").InnerText);            
             TypeAttack = n.SelectSingleNode("TypeAttack") == null ? TypeAttack.None : (TypeAttack)Enum.Parse(typeof(TypeAttack), n.SelectSingleNode("TypeAttack").InnerText);
+            TimeHit = n.SelectSingleNode("TimeHit") == null ? 0 : Convert.ToInt32(n.SelectSingleNode("TimeHit").InnerText);
 
             DamagePhysical = n.SelectSingleNode("DamagePhysical") != null ? Convert.ToInt32(n.SelectSingleNode("DamagePhysical").InnerText) : 0;
             DamageMagic = n.SelectSingleNode("DamageMagic") != null ? Convert.ToInt32(n.SelectSingleNode("DamageMagic").InnerText) : 0;
@@ -32,6 +33,11 @@ namespace Fantasy_King_s_Battle
             if (TypeAttack == TypeAttack.None)
             {
                 Debug.Assert((DamagePhysical == 0) && (DamageMagic == 0));
+                Debug.Assert(TimeHit == 0);
+            }
+            else
+            {
+                Debug.Assert(TimeHit > 0);
             }
 
             Position = FormMain.Config.Items.Count;
@@ -56,6 +62,7 @@ namespace Fantasy_King_s_Battle
         internal int ImageIndex { get; }
         internal TypeItem TypeItem { get; }
         internal TypeAttack TypeAttack { get; }
+        internal int TimeHit { get; }
         internal int Position { get; }
         internal Building Building { get; }
         internal int CostExamine { get; }
