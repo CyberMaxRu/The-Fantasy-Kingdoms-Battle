@@ -7,7 +7,7 @@ using System.Xml;
 
 namespace Fantasy_King_s_Battle
 {
-    internal enum CategoryItem { Thing, Potion }
+    internal enum CategoryItem { Weapon, Armour, Thing, Potion }
 
     // Класс типа предмета
     internal sealed class TypeItem

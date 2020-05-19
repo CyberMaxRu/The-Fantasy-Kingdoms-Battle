@@ -2,37 +2,37 @@
 <TypeItems>
   <TypeItem>
     <ID>WeaponWarrior</ID>
-    <Category>Thing</Category>
+    <Category>Weapon</Category>
     <Required>True</Required>
     <Single>True</Single>
   </TypeItem>
   <TypeItem>
     <ID>WeaponArcher</ID>
-    <Category>Thing</Category>
+    <Category>Weapon</Category>
     <Required>True</Required>
     <Single>True</Single>
   </TypeItem>
   <TypeItem>
     <ID>WeaponMage</ID>
-    <Category>Thing</Category>
+    <Category>Weapon</Category>
     <Required>True</Required>
     <Single>True</Single>
   </TypeItem>
   <TypeItem>
     <ID>ArmourWarrior</ID>
-    <Category>Thing</Category>
+    <Category>Armour</Category>
     <Required>True</Required>
     <Single>True</Single>
   </TypeItem>
   <TypeItem>
     <ID>ArmourArcher</ID>
-    <Category>Thing</Category>
+    <Category>Armour</Category>
     <Required>True</Required>
     <Single>True</Single>
   </TypeItem>
   <TypeItem>
     <ID>ArmourMage</ID>
-    <Category>Thing</Category>
+    <Category>Armour</Category>
     <Required>True</Required>
     <Single>True</Single>
   </TypeItem>

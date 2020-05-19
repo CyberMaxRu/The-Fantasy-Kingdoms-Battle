@@ -59,7 +59,6 @@
     <Compile Include="Fraction.cs" />
     <Compile Include="GuiUtils.cs" />
     <Compile Include="Hero.cs" />
-    <Compile Include="HeroInBattle.cs" />
     <Compile Include="PanelCellHero.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -85,7 +84,7 @@
     <Compile Include="PanelHeroInfo.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="MainParameters.cs" />
+    <Compile Include="HeroParameters.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PlayerBuilding.cs" />
     <Compile Include="PlayerHero.cs" />

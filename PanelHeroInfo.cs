@@ -127,21 +127,29 @@ namespace Fantasy_King_s_Battle
                 pbHero.Image = imageListHeroes.Images[ph.Hero.ImageIndex];
 
                 lblLevel.Text = "Уровень: " + ph.Level.ToString();
-                lblHealth.Text = "Здоровье: " + ph.CurrentHealth.ToString() + "/" + ph.MaxHealth.ToString();
-                lblMana.Text = "Мана: " + ph.CurrentMana.ToString() + "/" + ph.MaxMana.ToString();
+                lblHealth.Text = "Здоровье: " + ph.ParametersWithAmmunition.CurrentHealth.ToString() + "/" + ph.ParametersWithAmmunition.Health.ToString();
+                lblMana.Text = "Мана: " + ph.ParametersWithAmmunition.CurrentMana.ToString() + "/" + ph.ParametersWithAmmunition.Mana.ToString();
 
-                ShowParameter(lblStrength, ph.OurParameters.Strength, ph.ModifiedParameters.Strength);
-                ShowParameter(lblDexterity, ph.OurParameters.Dexterity, ph.ModifiedParameters.Dexterity);
-                ShowParameter(lblMagic, ph.OurParameters.Magic, ph.ModifiedParameters.Magic);
-                ShowParameter(lblVitality, ph.OurParameters.Vitality, ph.ModifiedParameters.Vitality);
-                //ShowParameter(lblStamina, ph.OurParameters.Stamina, ph.ModifiedParameters.Stamina);
-                ShowParameter(lblSpeed, ph.OurParameters.TimeAttack, ph.ModifiedParameters.TimeAttack);
-                ShowParameter(lblAttackMelee, ph.OurParameters.AttackMelee, ph.ModifiedParameters.AttackMelee);
-                ShowParameter(lblAttackRange, ph.OurParameters.AttackMissile, ph.ModifiedParameters.AttackMissile);
-                ShowParameter(lblAttackMagic, ph.OurParameters.AttackMagic, ph.ModifiedParameters.AttackMagic);
-                ShowParameter(lblDefenseMelee, ph.OurParameters.DefenseMelee, ph.ModifiedParameters.DefenseMelee);
-                ShowParameter(lblDefenseRange, ph.OurParameters.DefenseMissile, ph.ModifiedParameters.DefenseMissile);
-                ShowParameter(lblDefenseMagic, ph.OurParameters.DefenseMagic, ph.ModifiedParameters.DefenseMagic);
+                ShowParameter(lblStrength, ph.ParametersBase.Strength, ph.ParametersWithAmmunition.Strength);
+                ShowParameter(lblDexterity, ph.ParametersBase.Dexterity, ph.ParametersWithAmmunition.Dexterity);
+                ShowParameter(lblMagic, ph.ParametersBase.Magic, ph.ParametersWithAmmunition.Magic);
+                ShowParameter(lblVitality, ph.ParametersBase.Vitality, ph.ParametersWithAmmunition.Vitality);
+                //ShowParameter(lblStamina, ph.ParametersBase.Stamina, ph.ParametersWithAmmunition.Stamina);
+                ShowParameter(lblSpeed, ph.ParametersBase.TimeAttack, ph.ParametersWithAmmunition.TimeAttack);
+                if (Hero.Hero.TypeAttack == TypeAttack.Melee)
+                {
+                    lblAttackMelee.Text = ph.ParametersWithAmmunition.MinPhysicalDamage.ToString() + " - " + ph.ParametersWithAmmunition.MaxPhysicalDamage.ToString();
+                    lblAttackRange.Text = "";
+                }
+                if (Hero.Hero.TypeAttack == TypeAttack.Missile)
+                {
+                    lblAttackMelee.Text = "";
+                    lblAttackRange.Text = ph.ParametersWithAmmunition.MinPhysicalDamage.ToString() + " - " + ph.ParametersWithAmmunition.MaxPhysicalDamage.ToString();
+                }
+                ShowParameter(lblAttackMagic, ph.ParametersBase.MagicDamage, ph.ParametersWithAmmunition.MagicDamage);
+                ShowParameter(lblDefenseMelee, ph.ParametersBase.DefenseMelee, ph.ParametersWithAmmunition.DefenseMelee);
+                ShowParameter(lblDefenseRange, ph.ParametersBase.DefenseMissile, ph.ParametersWithAmmunition.DefenseMissile);
+                ShowParameter(lblDefenseMagic, ph.ParametersBase.DefenseMagic, ph.ParametersWithAmmunition.DefenseMagic);
 
                 for (int i = 0; i < ph.Slots.Length; i++)
                 {

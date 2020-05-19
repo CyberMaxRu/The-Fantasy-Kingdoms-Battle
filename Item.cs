@@ -8,7 +8,6 @@ using System.Xml;
 
 namespace Fantasy_King_s_Battle
 {
-
     // Класс предмета
     internal sealed class Item
     {
@@ -27,7 +26,8 @@ namespace Fantasy_King_s_Battle
 
             DamagePhysical = n.SelectSingleNode("DamagePhysical") != null ? Convert.ToInt32(n.SelectSingleNode("DamagePhysical").InnerText) : 0;
             DamageMagic = n.SelectSingleNode("DamageMagic") != null ? Convert.ToInt32(n.SelectSingleNode("DamageMagic").InnerText) : 0;
-            DefensePhysical = n.SelectSingleNode("DefensePhysical") != null ? Convert.ToInt32(n.SelectSingleNode("DefensePhysical").InnerText) : 0;
+            DefenseMelee = n.SelectSingleNode("DefenseMelee") != null ? Convert.ToInt32(n.SelectSingleNode("DefenseMelee").InnerText) : 0;
+            DefenseMissile = n.SelectSingleNode("DefenseMissile") != null ? Convert.ToInt32(n.SelectSingleNode("DefenseMissile").InnerText) : 0;
             DefenseMagic = n.SelectSingleNode("DefenseMagic") != null ? Convert.ToInt32(n.SelectSingleNode("DefenseMagic").InnerText) : 0;
 
             if (TypeAttack == TypeAttack.None)
@@ -69,7 +69,8 @@ namespace Fantasy_King_s_Battle
         internal int Cost { get; }
         internal int DamagePhysical { get; }
         internal int DamageMagic { get; }
-        internal int DefensePhysical { get; }
+        internal int DefenseMelee { get; }
+        internal int DefenseMissile { get; }
         internal int DefenseMagic { get; }
     }
 }

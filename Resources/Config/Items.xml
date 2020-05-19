@@ -80,7 +80,8 @@
     <CostExamine>0</CostExamine>
     <Cost>0</Cost>
     <Perk></Perk>
-    <DefensePhysical>5</DefensePhysical>
+    <DefenseMelee>5</DefenseMelee>
+    <DefenseMissile>3</DefenseMissile>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>

@@ -11,16 +11,15 @@
     <CategoryHero>Melee</CategoryHero>
     <TypeAttack>Melee</TypeAttack>
     <CanBuild>False</CanBuild>
-    <MainParameters>
+    <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
       <Magic>10</Magic>
       <Vitality>100</Vitality>
-      <TimeAttack>200</TimeAttack>
       <CoefHealth>3</CoefHealth>
       <CoefMana>1</CoefMana>
       <CoefStamina>3</CoefStamina>
-    </MainParameters>
+    </BaseParameters>
     <NextLevel>
       <StatPoints>5</StatPoints>
       <WeightStrength>40</WeightStrength>
@@ -29,6 +28,7 @@
       <WeightVitality>40</WeightVitality>
       <Health>5</Health>
       <Mana>2</Mana>
+      <Stamina>4</Stamina>
       <ResistMagic>0</ResistMagic>    
     </NextLevel>
     <Slots>
@@ -87,16 +87,15 @@
     <CategoryHero>Special</CategoryHero>
     <TypeAttack>Melee</TypeAttack>
     <CanBuild>False</CanBuild>
-    <MainParameters>
+    <BaseParameters>
       <Strength>10</Strength>
       <Dexterity>20</Dexterity>
       <Magic>10</Magic>
       <Vitality>50</Vitality>
-      <TimeAttack>200</TimeAttack>
       <CoefHealth>2</CoefHealth>
       <CoefMana>1</CoefMana>
       <CoefStamina>2</CoefStamina>
-    </MainParameters>
+    </BaseParameters>
     <NextLevel>
       <StatPoints>5</StatPoints>
       <WeightStrength>25</WeightStrength>
@@ -105,6 +104,7 @@
       <WeightVitality>25</WeightVitality>
       <Health>3</Health>
       <Mana>2</Mana>
+      <Stamina>2</Stamina>
       <ResistMagic>0</ResistMagic>
     </NextLevel>
     <Slots>
@@ -163,16 +163,15 @@
     <CategoryHero>Archer</CategoryHero>
     <TypeAttack>Missile</TypeAttack>
     <CanBuild>False</CanBuild>
-    <MainParameters>
+    <BaseParameters>
       <Strength>15</Strength>
       <Dexterity>20</Dexterity>
       <Magic>10</Magic>
       <Vitality>75</Vitality>
-      <TimeAttack>200</TimeAttack>
       <CoefHealth>2</CoefHealth>
       <CoefMana>1</CoefMana>
       <CoefStamina>2</CoefStamina>
-    </MainParameters>
+    </BaseParameters>
     <NextLevel>
       <StatPoints>5</StatPoints>
       <WeightStrength>40</WeightStrength>
@@ -181,6 +180,7 @@
       <WeightVitality>40</WeightVitality>
       <Health>5</Health>
       <Mana>2</Mana>
+      <Stamina>3</Stamina>
       <ResistMagic>0</ResistMagic>
     </NextLevel>
     <Slots>
@@ -239,16 +239,15 @@
     <CategoryHero>Mage</CategoryHero>
     <TypeAttack>Missile</TypeAttack>
     <CanBuild>False</CanBuild>
-    <MainParameters>
+    <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
       <Magic>10</Magic>
       <Vitality>100</Vitality>
-      <TimeAttack>200</TimeAttack>
       <CoefHealth>2</CoefHealth>
       <CoefMana>2</CoefMana>
       <CoefStamina>2</CoefStamina>
-    </MainParameters>
+    </BaseParameters>
     <NextLevel>
       <StatPoints>5</StatPoints>
       <WeightStrength>40</WeightStrength>
@@ -257,6 +256,7 @@
       <WeightVitality>40</WeightVitality>
       <Health>5</Health>
       <Mana>2</Mana>
+      <Stamina>2</Stamina>
       <ResistMagic>0</ResistMagic>
     </NextLevel>
     <Slots>
@@ -315,16 +315,15 @@
     <CategoryHero>Mage</CategoryHero>
     <TypeAttack>Missile</TypeAttack>
     <CanBuild>False</CanBuild>
-    <MainParameters>
+    <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
       <Magic>10</Magic>
       <Vitality>100</Vitality>
-      <TimeAttack>200</TimeAttack>
       <CoefHealth>1</CoefHealth>
       <CoefMana>3</CoefMana>
       <CoefStamina>1</CoefStamina>
-    </MainParameters>
+    </BaseParameters>
     <NextLevel>
       <StatPoints>5</StatPoints>
       <WeightStrength>40</WeightStrength>
@@ -333,6 +332,7 @@
       <WeightVitality>40</WeightVitality>
       <Health>5</Health>
       <Mana>2</Mana>
+      <Stamina>1</Stamina>
       <ResistMagic>0</ResistMagic>
     </NextLevel>
     <Slots>
@@ -391,16 +391,15 @@
     <CategoryHero>Archer</CategoryHero>
     <TypeAttack>Missile</TypeAttack>
     <CanBuild>False</CanBuild>
-    <MainParameters>
+    <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
       <Magic>10</Magic>
       <Vitality>100</Vitality>
-      <TimeAttack>200</TimeAttack>
       <CoefHealth>3</CoefHealth>
       <CoefMana>2</CoefMana>
       <CoefStamina>4</CoefStamina>
-    </MainParameters>
+    </BaseParameters>
     <NextLevel>
       <StatPoints>5</StatPoints>
       <WeightStrength>40</WeightStrength>
@@ -409,6 +408,7 @@
       <WeightVitality>40</WeightVitality>
       <Health>5</Health>
       <Mana>2</Mana>
+      <Stamina>4</Stamina>
       <ResistMagic>0</ResistMagic>
     </NextLevel>
     <Slots>
@@ -467,16 +467,15 @@
     <CategoryHero>Melee</CategoryHero>
     <TypeAttack>Melee</TypeAttack>
     <CanBuild>True</CanBuild>
-    <MainParameters>
+    <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
       <Magic>10</Magic>
       <Vitality>100</Vitality>
-      <TimeAttack>200</TimeAttack>
       <CoefHealth>4</CoefHealth>
       <CoefMana>1</CoefMana>
       <CoefStamina>4</CoefStamina>
-    </MainParameters>
+    </BaseParameters>
     <NextLevel>
       <StatPoints>5</StatPoints>
       <WeightStrength>40</WeightStrength>
@@ -485,6 +484,7 @@
       <WeightVitality>40</WeightVitality>
       <Health>5</Health>
       <Mana>2</Mana>
+      <Stamina>6</Stamina>
       <ResistMagic>0</ResistMagic>
     </NextLevel>
     <Slots>
@@ -555,16 +555,15 @@
     <CategoryHero>Guard</CategoryHero>
     <TypeAttack>Melee</TypeAttack>
     <CanBuild>False</CanBuild>
-    <MainParameters>
+    <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
       <Magic>10</Magic>
       <Vitality>100</Vitality>
-      <TimeAttack>200</TimeAttack>
       <CoefHealth>4</CoefHealth>
       <CoefMana>1</CoefMana>
       <CoefStamina>4</CoefStamina>
-    </MainParameters>
+    </BaseParameters>
   </Hero>
   <Hero>
     <ID>Miller</ID>

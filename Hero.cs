@@ -105,9 +105,9 @@ namespace Fantasy_King_s_Battle
             }
 
             // Загружаем основные параметры
-            if (n.SelectSingleNode("MainParameters") != null)
+            if (n.SelectSingleNode("BaseParameters") != null)
             {
-                MainParameters = new MainParameters(n.SelectSingleNode("MainParameters"));
+                BaseParameters = new HeroParameters(n.SelectSingleNode("BaseParameters"));
 
                 //
                 if (n.SelectSingleNode("NextLevel") != null)
@@ -125,9 +125,8 @@ namespace Fantasy_King_s_Battle
         internal CategoryHero CategoryHero { get; }
         internal TypeAttack TypeAttack { get; }
         internal bool CanBuild { get; }
-        internal MainParameters MainParameters { get; }
+        internal HeroParameters BaseParameters { get; }
         internal ConfigNextLevelHero ConfigNextLevel { get; }
-
         internal Slot[] Slots { get; }
     }
 }

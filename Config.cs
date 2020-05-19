@@ -15,6 +15,7 @@ namespace Fantasy_King_s_Battle
         internal const int ROWS_IN_SQUAD = 4;
         internal const int MAX_STEP_IN_BATTLE_SQUADS = 500;
         internal static int RESERVED_HEROES = 5;
+        internal static int MAX_STAT_POINT_PER_LEVEL = 20;
 
         internal const string HERO_PEASANT = "Peasant";
 

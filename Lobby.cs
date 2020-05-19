@@ -114,7 +114,45 @@ namespace Fantasy_King_s_Battle
             Battles.Add(cb);
 
             Debug.Assert((player1.IsLive == true) && (player2.IsLive == true));
-            
+
+            //
+            int step = 0;
+
+            // Запоминаем героев в одном списке для упрощения расчетов
+            List<PlayerHero> heroes = new List<PlayerHero>();
+            foreach (PlayerHero ph in player1.Heroes)
+                heroes.Add(ph);
+            foreach (PlayerHero ph in player2.Heroes)
+                heroes.Add(ph);
+
+            // Подготавливаем игроков к бою
+            foreach (PlayerHero ph in heroes)
+                ph.PrepareToBattle();
+
+            // Расчет боя
+            for (; ; )
+            {
+                // Увеличиваем шаг
+                step++;
+
+                // Проверяем, окончен ли бой
+                if ((heroes.Where(h => h.Player == player1).Count() == 0) || (heroes.Where(h => h.Player == player2).Count() == 0) || (step == Config.MAX_STEP_IN_BATTLE_SQUADS))
+                    break;
+                
+                // Делаем действие каждым живым героем
+                foreach (PlayerHero ph in heroes)
+                    ph.DoStepBattle();
+
+                // Применяем полученный урон
+                foreach (PlayerHero ph in heroes)
+                    ph.ApplyStepBattle();
+
+                // Убираем мертвых героев из списка
+                foreach (PlayerHero ph in heroes)
+                    if (ph.IsLive == false)
+                        heroes.Remove(ph);
+            }
+
             // Создаем списки действуюих и уничтоженных отрядов
             /*            List<SquadInBattle> activeSquad1 = new List<SquadInBattle>();
                         List<SquadInBattle> activeSquad2 = new List<SquadInBattle>();

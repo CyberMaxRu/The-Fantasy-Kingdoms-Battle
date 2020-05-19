@@ -13,7 +13,11 @@ namespace Fantasy_King_s_Battle
         public PlayerHero(PlayerBuilding pb)
         {
             Building = pb;
+            Player = pb.Player;
             Hero = Building.Building.TrainedHero;
+
+            IsLive = true;
+
             if (Hero.MaxLevel > 1)
             {
                 Level = 0;
@@ -29,28 +33,43 @@ namespace Fantasy_King_s_Battle
                     }
                 }
 
-                OurParameters = new MainParameters(Hero.MainParameters);
+                ParametersBase = new HeroParameters(Hero.BaseParameters);
 
                 // Переходим на 1 уровень
                 LevelUp();
-                ModifiedParameters = new MainParameters(OurParameters);
+                ParametersWithAmmunition = new HeroParameters(ParametersBase);
             }
             else
                 Level = 1;
         }
 
-        internal PlayerBuilding Building { get; }        
+        internal Player Player { get; }
+        internal PlayerBuilding Building { get; }
         internal Hero Hero { get; }
         internal int Level { get; private set; }
 
-        internal int CurrentHealth;
-        internal int MaxHealth;
-        internal int CurrentMana;
-        internal int MaxMana;
-        internal MainParameters OurParameters { get; }
-        internal MainParameters ModifiedParameters { get; }
+        internal HeroParameters ParametersBase { get; }// Свои параметры, без учета амуниции
+        internal HeroParameters ParametersWithAmmunition { get; }// Параметры с учетом амуниции
+        internal HeroParameters ParametersInBattle { get; private set; }// Параметры во время боя, с учетом всех боевых перков, баффов и прочего
         internal PlayerItem[] Slots { get; } = new PlayerItem[FormMain.SLOT_IN_INVENTORY];
+        internal PlayerItem Weapon { get; private set; }// Оружие 
+        internal PlayerItem Armour { get; private set; }// Доспех
         internal PanelHero Panel { get; set; }
+        internal bool IsLive { get; private set; }
+
+        // Статистика за лобби
+        internal int Battles { get; }// Участвовал в сражениях
+        internal int Wins { get; }// Побед        
+        internal int Loses { get; }// Поражений
+        internal int Draws { get; }// Ничьих
+        internal int DoDamages { get; }// Нанес урона
+        internal int DoKills { get; }// Убил героев противника
+        internal int Dies { get; }// Сколько раз был убит
+        internal int WinStrike { get; }// Побед подряд
+        internal int LoseStrike { get; }// Поражений подряд
+        internal int DrawStrike { get; }// Ничьих подряд
+
+        // Параметры во время боя
 
         internal void ShowDate()
         {
@@ -174,6 +193,16 @@ namespace Fantasy_King_s_Battle
             }
 
             Debug.Assert(Slots[toCell] != null);
+
+            switch (pi.Item.TypeItem.Category)
+            {
+                case CategoryItem.Weapon:
+                    Weapon = pi;
+                    break;
+                case CategoryItem.Armour:
+                    Armour = pi;
+                    break;
+            }
         }
 
         internal PlayerItem TakeItem(int fromCell, int quantity)
@@ -197,6 +226,16 @@ namespace Fantasy_King_s_Battle
             {
                 pi = new PlayerItem(Slots[fromCell].Item, quantity);
                 Slots[fromCell].Quantity -= quantity;
+            }
+
+            switch (pi.Item.TypeItem.Category)
+            {
+                case CategoryItem.Weapon:
+                    Weapon = null;
+                    break;
+                case CategoryItem.Armour:
+                    Armour = null;
+                    break;
             }
 
             return pi;
@@ -232,8 +271,8 @@ namespace Fantasy_King_s_Battle
             // Прибавляем безусловные параметры
             if (Hero.ConfigNextLevel != null)
             {
-                OurParameters.Health += Hero.ConfigNextLevel.Health;
-                OurParameters.Mana += Hero.ConfigNextLevel.Mana;
+                ParametersBase.Health += Hero.ConfigNextLevel.Health;
+                ParametersBase.Mana += Hero.ConfigNextLevel.Mana;
 
                 // Прибавляем очки характеристик
                 int t;
@@ -242,17 +281,68 @@ namespace Fantasy_King_s_Battle
                     t = FormMain.Rnd.Next(100);
 
                     if (t < Hero.ConfigNextLevel.WeightStrength)
-                        OurParameters.Strength++;
+                        ParametersBase.Strength++;
                     else if (t < Hero.ConfigNextLevel.WeightStrength + Hero.ConfigNextLevel.WeightDexterity)
-                        OurParameters.Dexterity++;
+                        ParametersBase.Dexterity++;
                     else if (t < Hero.ConfigNextLevel.WeightStrength + Hero.ConfigNextLevel.WeightDexterity + Hero.ConfigNextLevel.WeightMagic)
-                        OurParameters.Magic++;
+                        ParametersBase.Magic++;
                     else
-                        OurParameters.Vitality++;
+                        ParametersBase.Vitality++;
                 }
             }
 
             Level++;
+        }
+
+        // Подготовка к сражению
+        internal void PrepareToBattle()
+        {
+            ParametersInBattle = new HeroParameters(ParametersWithAmmunition);
+        }
+
+        // Делает шаг битвы
+        internal void DoStepBattle()
+        {
+
+        }
+
+        // Применяем шаг битвы
+        internal void ApplyStepBattle()
+        {
+
+        }
+
+        internal void UpdateBaseParameters()
+        {
+            ParametersBase.Health = (ParametersBase.Vitality * ParametersBase.CoefHealth) + (Level * Hero.ConfigNextLevel.Health);
+            ParametersBase.Mana = (ParametersBase.Magic * ParametersBase.CoefMana) + (Level * Hero.ConfigNextLevel.Mana);
+            ParametersBase.Stamina = (ParametersBase.Vitality * ParametersBase.CoefStamina) + (Level * Hero.ConfigNextLevel.Stamina);
+
+            UpdateParamsWithAmmunition();
+        }
+
+        internal void UpdateParamsWithAmmunition()
+        {
+            // Копируем базовые параметры
+            ParametersWithAmmunition.GetFromParams(ParametersBase);
+
+            // Применяем амуницию
+            Debug.Assert(Weapon != null);
+            Debug.Assert(Armour != null);
+
+            ParametersWithAmmunition.MaxPhysicalDamage = Weapon.Item.DamagePhysical + (Weapon.Item.DamagePhysical * ParametersWithAmmunition.Strength / 100);
+            ParametersWithAmmunition.MinPhysicalDamage = ParametersWithAmmunition.MaxPhysicalDamage / 2;
+            ParametersWithAmmunition.MagicDamage = (ParametersWithAmmunition.Magic / 5) * Weapon.Item.DamageMagic + Level;
+            ParametersWithAmmunition.DefenseMelee = Armour.Item.DefenseMelee;
+            ParametersWithAmmunition.DefenseMissile = Armour.Item.DefenseMissile;
+            ParametersWithAmmunition.DefenseMagic = Armour.Item.DefenseMagic;
+
+            Debug.Assert((ParametersBase.MaxPhysicalDamage > 0) || (ParametersBase.MagicDamage > 0));
+        }
+
+        internal void UpdateParamsInBattle()
+        {
+
         }
     }
 }
