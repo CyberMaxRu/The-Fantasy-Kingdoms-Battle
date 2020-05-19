@@ -272,7 +272,7 @@ namespace Fantasy_King_s_Battle
         private void TimerDelayShow_Tick(object sender, EventArgs e)
         {
             Show();
-            WindowState = FormWindowState.Minimized;
+            WindowState = FormWindowState.Minimized;// Без этого если убрать фокус с главного окна и вернуть, то эта форма отображается под всеми другими окнами
             WindowState = FormWindowState.Normal;
             timerDelayShow.Enabled = false;
             dateTimeStartOpacity = DateTime.Now;
