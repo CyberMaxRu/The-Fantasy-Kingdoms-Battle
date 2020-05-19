@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.ComponentModel;
 using System.Windows.Forms.VisualStyles;
+using System.Runtime.InteropServices;
 
 namespace Fantasy_King_s_Battle
 {
@@ -24,6 +25,9 @@ namespace Fantasy_King_s_Battle
 
     internal sealed class FormHint : Form
     {
+        [DllImport("user32.dll")]
+        public static extern bool SetForegroundWindow(IntPtr hWnd);
+
         internal readonly Label lblHeader;
         internal readonly Label lblAction;
         internal readonly Label lblDescription;
@@ -176,6 +180,7 @@ namespace Fantasy_King_s_Battle
 
         private void TimerDelayShow_Tick(object sender, EventArgs e)
         {
+            SetForegroundWindow(Handle);
             Show();
             timerDelayShow.Enabled = false;
             dateTimeStartOpacity = DateTime.Now;
