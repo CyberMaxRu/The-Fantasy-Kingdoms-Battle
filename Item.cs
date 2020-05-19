@@ -35,8 +35,15 @@ namespace Fantasy_King_s_Battle
                 Debug.Assert((DamagePhysical == 0) && (DamageMagic == 0));
                 Debug.Assert(TimeHit == 0);
             }
-            else
+
+            if (TypeAttack == TypeAttack.Melee)
+            { 
+                Debug.Assert(DamagePhysical > 0);
+                Debug.Assert(TimeHit > 0);
+            }
+            if (TypeAttack == TypeAttack.Missile)
             {
+                Debug.Assert((DamagePhysical > 0) || (DamageMagic > 0));
                 Debug.Assert(TimeHit > 0);
             }
 
