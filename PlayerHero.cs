@@ -38,9 +38,13 @@ namespace Fantasy_King_s_Battle
                 // Переходим на 1 уровень
                 LevelUp();
                 ParametersWithAmmunition = new HeroParameters(ParametersBase);
+
+                FindWeaponAndArmour();
+                UpdateBaseParameters();
             }
             else
                 Level = 1;
+
         }
 
         internal Player Player { get; }
@@ -337,12 +341,36 @@ namespace Fantasy_King_s_Battle
             ParametersWithAmmunition.DefenseMissile = Armour.Item.DefenseMissile;
             ParametersWithAmmunition.DefenseMagic = Armour.Item.DefenseMagic;
 
-            Debug.Assert((ParametersBase.MaxPhysicalDamage > 0) || (ParametersBase.MagicDamage > 0));
+            Debug.Assert((ParametersWithAmmunition.MaxPhysicalDamage > 0) || (ParametersWithAmmunition.MagicDamage > 0));
         }
 
         internal void UpdateParamsInBattle()
         {
 
+        }
+
+        internal void FindWeaponAndArmour()
+        {
+            Weapon = null;
+            Armour = null;
+
+            foreach (PlayerItem pi in Slots)
+            {
+                if (pi != null)
+                {
+                    switch (pi.Item.TypeItem.Category)
+                    {
+                        case CategoryItem.Weapon:
+                            Debug.Assert(Weapon == null);
+                            Weapon = pi;
+                            break;
+                        case CategoryItem.Armour:
+                            Debug.Assert(Armour == null);
+                            Armour = pi;
+                            break;
+                    }
+                }
+            }
         }
     }
 }
