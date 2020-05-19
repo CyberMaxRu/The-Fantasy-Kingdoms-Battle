@@ -252,7 +252,7 @@ namespace Fantasy_King_s_Battle
 
             ActivatePage(pageLobby);
 
-            formHint = new FormHint(background, ilGui16);
+            formHint = new FormHint(background, ilGui16, ilParameters);
         }
 
         internal static Config Config { get; set; }

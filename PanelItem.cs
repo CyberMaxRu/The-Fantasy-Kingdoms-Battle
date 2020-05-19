@@ -52,7 +52,7 @@ namespace Fantasy_King_s_Battle
                     null,
                     0,
                     false, 0,
-                    0, false);
+                    0, false, playerItem);
         }
 
         private void PanelItem_Paint(object sender, PaintEventArgs e)

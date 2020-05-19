@@ -24,7 +24,8 @@ namespace Fantasy_King_s_Battle
             TypeAttack = n.SelectSingleNode("TypeAttack") == null ? TypeAttack.None : (TypeAttack)Enum.Parse(typeof(TypeAttack), n.SelectSingleNode("TypeAttack").InnerText);
             TimeHit = n.SelectSingleNode("TimeHit") == null ? 0 : Convert.ToInt32(n.SelectSingleNode("TimeHit").InnerText);
 
-            DamagePhysical = n.SelectSingleNode("DamagePhysical") != null ? Convert.ToInt32(n.SelectSingleNode("DamagePhysical").InnerText) : 0;
+            DamageMelee = n.SelectSingleNode("DamageMelee") != null ? Convert.ToInt32(n.SelectSingleNode("DamageMelee").InnerText) : 0;
+            DamageMissile = n.SelectSingleNode("DamageMissile") != null ? Convert.ToInt32(n.SelectSingleNode("DamageMissile").InnerText) : 0;
             DamageMagic = n.SelectSingleNode("DamageMagic") != null ? Convert.ToInt32(n.SelectSingleNode("DamageMagic").InnerText) : 0;
             DefenseMelee = n.SelectSingleNode("DefenseMelee") != null ? Convert.ToInt32(n.SelectSingleNode("DefenseMelee").InnerText) : 0;
             DefenseMissile = n.SelectSingleNode("DefenseMissile") != null ? Convert.ToInt32(n.SelectSingleNode("DefenseMissile").InnerText) : 0;
@@ -32,18 +33,18 @@ namespace Fantasy_King_s_Battle
 
             if (TypeAttack == TypeAttack.None)
             {
-                Debug.Assert((DamagePhysical == 0) && (DamageMagic == 0));
+                Debug.Assert((DamageMelee == 0) && (DamageMissile == 0) && (DamageMagic == 0));
                 Debug.Assert(TimeHit == 0);
             }
 
             if (TypeAttack == TypeAttack.Melee)
             { 
-                Debug.Assert(DamagePhysical > 0);
+                Debug.Assert(DamageMelee > 0);
                 Debug.Assert(TimeHit > 0);
             }
             if (TypeAttack == TypeAttack.Missile)
             {
-                Debug.Assert((DamagePhysical > 0) || (DamageMagic > 0));
+                Debug.Assert((DamageMissile > 0) || (DamageMagic > 0));
                 Debug.Assert(TimeHit > 0);
             }
 
@@ -74,7 +75,8 @@ namespace Fantasy_King_s_Battle
         internal Building Building { get; }
         internal int CostExamine { get; }
         internal int Cost { get; }
-        internal int DamagePhysical { get; }
+        internal int DamageMelee { get; }
+        internal int DamageMissile { get; }
         internal int DamageMagic { get; }
         internal int DefenseMelee { get; }
         internal int DefenseMissile { get; }

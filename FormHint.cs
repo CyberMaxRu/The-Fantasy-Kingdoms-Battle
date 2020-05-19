@@ -35,6 +35,13 @@ namespace Fantasy_King_s_Battle
         internal readonly Label lblIncome;
         internal readonly Label lblGold;
         internal readonly Label lblBuilders;
+        internal readonly Label lblDamageMelee;
+        internal readonly Label lblDamageMissile;
+        internal readonly Label lblDamageMagic;
+        internal readonly Label lblDefenseMelee;
+        internal readonly Label lblDefenseMissile;
+        internal readonly Label lblDefenseMagic;
+
         internal readonly Timer timerDelayShow;
         internal readonly Timer timerOpacity;
         internal readonly double maxOpacity = 0.90;
@@ -44,7 +51,7 @@ namespace Fantasy_King_s_Battle
         internal DateTime dateTimeStartOpacity;
         internal Font fontRequirement;
 
-        public FormHint(Image backgroundImage, ImageList ilGui16)
+        public FormHint(Image backgroundImage, ImageList ilGui16, ImageList ilParameters)
         {
             //TopMost = true;
             StartPosition = FormStartPosition.Manual;
@@ -129,6 +136,90 @@ namespace Fantasy_King_s_Battle
                 Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
             };
 
+            lblDamageMelee = new Label()
+            {
+                Parent = this,
+                Left = Config.GRID_SIZE,
+                Top = Config.GRID_SIZE,
+                Width = (ClientSize.Width - (Config.GRID_SIZE * 2)) / 3,
+                ImageList = ilParameters,
+                ImageIndex = FormMain.GUI_PARAMETER_ATTACK_MELEE,
+                ImageAlign = System.Drawing.ContentAlignment.MiddleLeft,
+                BackColor = Color.Transparent,
+                ForeColor = Color.White,
+                Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
+            };
+
+            lblDamageMissile = new Label()
+            {
+                Parent = this,
+                Left = lblDamageMelee.Left + lblDamageMelee.Width,
+                Top = Config.GRID_SIZE,
+                Width = (ClientSize.Width - (Config.GRID_SIZE * 2)) / 3,
+                ImageList = ilParameters,
+                ImageIndex = FormMain.GUI_PARAMETER_ATTACK_RANGE,
+                ImageAlign = System.Drawing.ContentAlignment.MiddleLeft,
+                BackColor = Color.Transparent,
+                ForeColor = Color.White,
+                Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
+            };
+
+            lblDamageMagic= new Label()
+            {
+                Parent = this,
+                Left = lblDamageMissile.Left + lblDamageMissile.Width,
+                Top = Config.GRID_SIZE,
+                Width = (ClientSize.Width - (Config.GRID_SIZE * 2)) / 3,
+                ImageList = ilParameters,
+                ImageIndex = FormMain.GUI_PARAMETER_ATTACK_MAGIC,
+                ImageAlign = System.Drawing.ContentAlignment.MiddleLeft,
+                BackColor = Color.Transparent,
+                ForeColor = Color.White,
+                Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
+            };
+
+            lblDefenseMelee = new Label()
+            {
+                Parent = this,
+                Left = Config.GRID_SIZE,
+                Top = Config.GRID_SIZE,
+                Width = (ClientSize.Width - (Config.GRID_SIZE * 2)) / 3,
+                ImageList = ilParameters,
+                ImageIndex = FormMain.GUI_PARAMETER_DEFENSE_MELEE,
+                ImageAlign = System.Drawing.ContentAlignment.MiddleLeft,
+                BackColor = Color.Transparent,
+                ForeColor = Color.White,
+                Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
+            };
+
+            lblDefenseMissile = new Label()
+            {
+                Parent = this,
+                Left = lblDefenseMelee.Left + lblDefenseMelee.Width,
+                Top = Config.GRID_SIZE,
+                Width = (ClientSize.Width - (Config.GRID_SIZE * 2)) / 3,
+                ImageList = ilParameters,
+                ImageIndex = FormMain.GUI_PARAMETER_DEFENSE_RANGE,
+                ImageAlign = System.Drawing.ContentAlignment.MiddleLeft,
+                BackColor = Color.Transparent,
+                ForeColor = Color.White,
+                Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
+            };
+
+            lblDefenseMagic = new Label()
+            {
+                Parent = this,
+                Left = lblDefenseMissile.Left + lblDefenseMissile.Width,
+                Top = Config.GRID_SIZE,
+                Width = (ClientSize.Width - (Config.GRID_SIZE * 2)) / 3,
+                ImageList = ilParameters,
+                ImageIndex = FormMain.GUI_PARAMETER_DEFENSE_MAGIC,
+                ImageAlign = System.Drawing.ContentAlignment.MiddleLeft,
+                BackColor = Color.Transparent,
+                ForeColor = Color.White,
+                Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
+            };
+
             fontRequirement = new Font("Microsoft Sans Serif", 10, FontStyle.Bold);
 
             timerDelayShow = new Timer()
@@ -187,7 +278,8 @@ namespace Fantasy_King_s_Battle
             timerOpacity.Enabled = true; 
         }
 
-        internal void ShowHint(Point p, string header, string action, string description, List<TextRequirement> requirement, int gold, bool goldEnough, int income, int builders, bool buildersEnough)
+        internal void ShowHint(Point p, string header, string action, string description, List<TextRequirement> requirement, int gold, bool goldEnough,
+            int income, int builders, bool buildersEnough, PlayerItem pi)
         {
             Left = p.X;
             Top = p.Y;
@@ -282,6 +374,50 @@ namespace Fantasy_King_s_Battle
             }
             else
                 lblBuilders.Hide();
+
+            lblDamageMelee.Hide();
+            lblDamageMissile.Hide();
+            lblDamageMagic.Hide();
+            lblDefenseMelee.Hide();
+            lblDefenseMissile.Hide();
+            lblDefenseMagic.Hide();
+
+            if (pi != null)
+            {
+                switch (pi.Item.TypeItem.Category)
+                {
+                    case CategoryItem.Weapon:
+                        lblDamageMelee.Top = nextTop;
+                        lblDamageMissile.Top = nextTop;
+                        lblDamageMagic.Top = nextTop;
+
+                        lblDamageMelee.Text = "     " + (pi.Item.DamageMelee > 0 ? pi.Item.DamageMelee.ToString() : "");
+                        lblDamageMissile.Text = "     " + (pi.Item.DamageMissile > 0 ? pi.Item.DamageMissile.ToString() : "");
+                        lblDamageMagic.Text = "     " + (pi.Item.DamageMagic > 0 ? pi.Item.DamageMagic.ToString() : "");
+
+                        lblDamageMelee.Show();
+                        lblDamageMissile.Show();
+                        lblDamageMagic.Show();
+
+                        nextTop = GuiUtils.NextTop(lblDamageMelee);
+                        break;
+                    case CategoryItem.Armour:
+                        lblDefenseMelee.Top = nextTop;
+                        lblDefenseMissile.Top = nextTop;
+                        lblDefenseMagic.Top = nextTop;
+
+                        lblDefenseMelee.Text = "     " + (pi.Item.DefenseMelee > 0 ? pi.Item.DefenseMelee.ToString() : "");
+                        lblDefenseMissile.Text = "     " + (pi.Item.DefenseMissile > 0 ? pi.Item.DefenseMissile.ToString() : "");
+                        lblDefenseMagic.Text = "     " + (pi.Item.DefenseMagic > 0 ? pi.Item.DefenseMagic.ToString() : "");
+
+                        lblDefenseMelee.Show();
+                        lblDefenseMissile.Show();
+                        lblDefenseMagic.Show();
+
+                        nextTop = GuiUtils.NextTop(lblDefenseMelee);
+                        break;
+                }
+            }
 
             bool needReshow = (Visible == false) || (Height != nextTop);
             Height = nextTop;

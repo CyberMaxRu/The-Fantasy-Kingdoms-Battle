@@ -138,13 +138,13 @@ namespace Fantasy_King_s_Battle
                 ShowParameter(lblSpeed, ph.ParametersBase.TimeAttack, ph.ParametersWithAmmunition.TimeAttack);
                 if (Hero.Hero.TypeAttack == TypeAttack.Melee)
                 {
-                    lblAttackMelee.Text = ph.ParametersWithAmmunition.MinPhysicalDamage.ToString() + " - " + ph.ParametersWithAmmunition.MaxPhysicalDamage.ToString();
+                    lblAttackMelee.Text = ph.ParametersWithAmmunition.MinMeleeDamage.ToString() + " - " + ph.ParametersWithAmmunition.MaxMeleeDamage.ToString();
                     lblAttackRange.Text = "";
                 }
                 if (Hero.Hero.TypeAttack == TypeAttack.Missile)
                 {
                     lblAttackMelee.Text = "";
-                    lblAttackRange.Text = ph.ParametersWithAmmunition.MinPhysicalDamage.ToString() + " - " + ph.ParametersWithAmmunition.MaxPhysicalDamage.ToString();
+                    lblAttackRange.Text = ph.ParametersWithAmmunition.MinMissileDamage.ToString() + " - " + ph.ParametersWithAmmunition.MaxMissileDamage.ToString();
                 }
                 ShowParameter(lblAttackMagic, ph.ParametersBase.MagicDamage, ph.ParametersWithAmmunition.MagicDamage);
                 ShowParameter(lblDefenseMelee, ph.ParametersBase.DefenseMelee, ph.ParametersWithAmmunition.DefenseMelee);

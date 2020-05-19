@@ -334,14 +334,16 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(Weapon != null);
             Debug.Assert(Armour != null);
 
-            ParametersWithAmmunition.MaxPhysicalDamage = Weapon.Item.DamagePhysical + (Weapon.Item.DamagePhysical * ParametersWithAmmunition.Strength / 100);
-            ParametersWithAmmunition.MinPhysicalDamage = ParametersWithAmmunition.MaxPhysicalDamage / 2;
+            ParametersWithAmmunition.MaxMeleeDamage = Weapon.Item.DamageMelee + (Weapon.Item.DamageMelee * ParametersWithAmmunition.Strength / 100);
+            ParametersWithAmmunition.MinMeleeDamage = ParametersWithAmmunition.MaxMeleeDamage / 2;
+            ParametersWithAmmunition.MaxMissileDamage = Weapon.Item.DamageMissile + (Weapon.Item.DamageMissile * ParametersWithAmmunition.Strength / 100);
+            ParametersWithAmmunition.MinMissileDamage = ParametersWithAmmunition.MaxMissileDamage / 2;
             ParametersWithAmmunition.MagicDamage = (ParametersWithAmmunition.Magic / 5) * Weapon.Item.DamageMagic + Level;
             ParametersWithAmmunition.DefenseMelee = Armour.Item.DefenseMelee;
             ParametersWithAmmunition.DefenseMissile = Armour.Item.DefenseMissile;
             ParametersWithAmmunition.DefenseMagic = Armour.Item.DefenseMagic;
 
-            Debug.Assert((ParametersWithAmmunition.MaxPhysicalDamage > 0) || (ParametersWithAmmunition.MagicDamage > 0));
+            Debug.Assert((ParametersWithAmmunition.MaxMeleeDamage > 0) || (ParametersWithAmmunition.MaxMissileDamage > 0) || (ParametersWithAmmunition.MagicDamage > 0));
         }
 
         internal void UpdateParamsInBattle()

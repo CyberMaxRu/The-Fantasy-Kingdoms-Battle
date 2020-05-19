@@ -66,7 +66,7 @@
     <Cost>0</Cost>
     <Perk></Perk>
     <TypeAttack>Melee</TypeAttack>
-    <DamagePhysical>5</DamagePhysical>
+    <DamageMelee>5</DamageMelee>
     <DamageMagic>0</DamageMagic>
     <TimeHit>200</TimeHit>
   </Item>
@@ -95,7 +95,7 @@
     <Cost>0</Cost>
     <Perk></Perk>
     <TypeAttack>Missile</TypeAttack>
-    <DamagePhysical>3</DamagePhysical>
+    <DamageMissile>3</DamageMissile>
     <TimeHit>150</TimeHit>
   </Item>
   <Item>
@@ -145,7 +145,7 @@
     <Cost>0</Cost>
     <Perk></Perk>
     <TypeAttack>Melee</TypeAttack>
-    <DamagePhysical>15</DamagePhysical>
+    <DamageMelee>15</DamageMelee>
     <TimeHit>200</TimeHit>
   </Item>
   <Item>
@@ -170,7 +170,7 @@
     <Cost>0</Cost>
     <Perk></Perk>
     <TypeAttack>Melee</TypeAttack>
-    <DamagePhysical>25</DamagePhysical>
+    <DamageMelee>25</DamageMelee>
     <TimeHit>200</TimeHit>
   </Item>
   <Item>
@@ -195,7 +195,7 @@
     <Cost>0</Cost>
     <Perk></Perk>
     <TypeAttack>Missile</TypeAttack>
-    <DamagePhysical>10</DamagePhysical>
+    <DamageMissile>10</DamageMissile>
     <TimeHit>140</TimeHit>
   </Item>
   <Item>
@@ -220,7 +220,7 @@
     <Cost>0</Cost>
     <Perk></Perk>
     <TypeAttack>Missile</TypeAttack>
-    <DamagePhysical>15</DamagePhysical>
+    <DamageMissile>15</DamageMissile>
     <TimeHit>130</TimeHit>
   </Item>
   <Item>

@@ -80,8 +80,10 @@ namespace Fantasy_King_s_Battle
         internal int Stamina { get; set; }
         internal int CurrentStamina { get; set; }
 
-        internal int MinPhysicalDamage { get; set; }
-        internal int MaxPhysicalDamage { get; set; }
+        internal int MinMeleeDamage { get; set; }
+        internal int MaxMeleeDamage { get; set; }
+        internal int MinMissileDamage { get; set; }
+        internal int MaxMissileDamage { get; set; }
         internal int MagicDamage { get; set; }
         internal int DefenseMelee { get; set; }
         internal int DefenseMissile { get; set; }
