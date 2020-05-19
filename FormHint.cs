@@ -271,8 +271,9 @@ namespace Fantasy_King_s_Battle
 
         private void TimerDelayShow_Tick(object sender, EventArgs e)
         {
-            SetForegroundWindow(Handle);
             Show();
+            WindowState = FormWindowState.Minimized;
+            WindowState = FormWindowState.Normal;
             timerDelayShow.Enabled = false;
             dateTimeStartOpacity = DateTime.Now;
             timerOpacity.Enabled = true; 
