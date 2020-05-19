@@ -95,7 +95,7 @@
     <Cost>0</Cost>
     <Perk></Perk>
     <TypeAttack>Missile</TypeAttack>
-    <Damage>3</Damage>
+    <DamagePhysical>3</DamagePhysical>
     <TimeHit>150</TimeHit>
   </Item>
   <Item>
@@ -170,6 +170,7 @@
     <Cost>0</Cost>
     <Perk></Perk>
     <TypeAttack>Melee</TypeAttack>
+    <DamagePhysical>25</DamagePhysical>
     <TimeHit>200</TimeHit>
   </Item>
   <Item>
