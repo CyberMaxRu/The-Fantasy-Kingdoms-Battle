@@ -28,18 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.StatusStrip = new System.Windows.Forms.StatusStrip();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageLobby = new System.Windows.Forms.TabPage();
             this.tabPageGuilds = new System.Windows.Forms.TabPage();
             this.tabPageBuildings = new System.Windows.Forms.TabPage();
             this.tabPageTemples = new System.Windows.Forms.TabPage();
+            this.tabPageTowers = new System.Windows.Forms.TabPage();
             this.tabPageHeroes = new System.Windows.Forms.TabPage();
             this.tabPageBattle = new System.Windows.Forms.TabPage();
             this.textBoxResultBattle = new System.Windows.Forms.TextBox();
             this.ButtonEndTurn = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.tabPageTowers = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.tabPageBattle.SuspendLayout();
             this.SuspendLayout();
@@ -114,6 +115,16 @@
             this.tabPageTemples.ToolTipText = "Храмы";
             this.tabPageTemples.UseVisualStyleBackColor = true;
             // 
+            // tabPageTowers
+            // 
+            this.tabPageTowers.Location = new System.Drawing.Point(4, 25);
+            this.tabPageTowers.Name = "tabPageTowers";
+            this.tabPageTowers.Size = new System.Drawing.Size(952, 31);
+            this.tabPageTowers.TabIndex = 8;
+            this.tabPageTowers.Text = "Защитные сооружения";
+            this.tabPageTowers.ToolTipText = "Защитные сооружения";
+            this.tabPageTowers.UseVisualStyleBackColor = true;
+            // 
             // tabPageHeroes
             // 
             this.tabPageHeroes.Location = new System.Drawing.Point(4, 25);
@@ -162,16 +173,6 @@
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // tabPageTowers
-            // 
-            this.tabPageTowers.Location = new System.Drawing.Point(4, 25);
-            this.tabPageTowers.Name = "tabPageTowers";
-            this.tabPageTowers.Size = new System.Drawing.Size(952, 31);
-            this.tabPageTowers.TabIndex = 8;
-            this.tabPageTowers.Text = "Защитные сооружения";
-            this.tabPageTowers.ToolTipText = "Защитные сооружения";
-            this.tabPageTowers.UseVisualStyleBackColor = true;
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -183,6 +184,7 @@
             this.Controls.Add(this.menuStrip1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "FormMain";
