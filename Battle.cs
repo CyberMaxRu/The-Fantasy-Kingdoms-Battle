@@ -40,25 +40,40 @@ namespace Fantasy_King_s_Battle
     // Класс боя между двумя игроками
     internal sealed class Battle
     {
+        internal PlayerHero[,] battlefield;
+
         internal Battle(Player player1, Player player2, int turn, Random r)
         {
             Debug.Assert(player1.BattleCalced == false);
             Debug.Assert(player2.BattleCalced == false);
-
-            // Определяем размер поля боя
-            SizeBattlefield = new Size(Config.HERO_IN_ROW, 2);
-
-            Debug.Assert((player1.IsLive == true) && (player2.IsLive == true));
+            Debug.Assert(player1.IsLive == true);
+            Debug.Assert(player2.IsLive == true);
 
             //
+            Player1 = player1;
+            Player2 = player2;
+            Turn = turn;
+
             int step = 0;
+            SizeBattlefield = new Size(Config.HERO_IN_ROW, 2);
+            battlefield = new PlayerHero[2, Config.HERO_IN_ROW];
 
             // Запоминаем героев в одном списке для упрощения расчетов
             List<PlayerHero> heroes = new List<PlayerHero>();
             foreach (PlayerHero ph in player1.Heroes)
+            {
+                Debug.Assert(ph.IsLive == true);
+
                 heroes.Add(ph);
+                // Поместить героя в ячейку TODO
+            }
+
             foreach (PlayerHero ph in player2.Heroes)
+            {
+                Debug.Assert(ph.IsLive == true);
+
                 heroes.Add(ph);
+            }
 
             // Подготавливаем героев к бою
             foreach (PlayerHero ph in heroes)
