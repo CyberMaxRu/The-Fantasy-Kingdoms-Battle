@@ -125,7 +125,7 @@ namespace Fantasy_King_s_Battle
             foreach (PlayerHero ph in player2.Heroes)
                 heroes.Add(ph);
 
-            // Подготавливаем игроков к бою
+            // Подготавливаем героев к бою
             foreach (PlayerHero ph in heroes)
                 ph.PrepareToBattle();
 
@@ -136,7 +136,8 @@ namespace Fantasy_King_s_Battle
                 step++;
 
                 // Проверяем, окончен ли бой
-                if ((heroes.Where(h => h.Player == player1).Count() == 0) || (heroes.Where(h => h.Player == player2).Count() == 0) || (step == Config.MAX_STEP_IN_BATTLE_SQUADS))
+                // Это либо убиты все герои одной из сторон, либо вышло время боя
+                if ((heroes.Where(h => h.Player == player1).Count() == 0) || (heroes.Where(h => h.Player == player2).Count() == 0) || (step == Config.MAX_STEPS_IN_BATTLE))
                     break;
                 
                 // Делаем действие каждым живым героем

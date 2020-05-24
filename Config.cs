@@ -11,12 +11,11 @@ namespace Fantasy_King_s_Battle
     internal sealed class Config
     {
         internal const int GRID_SIZE = 8;
-        internal const int UNIT_IN_ROW = 5;
-        internal const int ROWS_IN_SQUAD = 4;
-        internal const int MAX_STEP_IN_BATTLE_SQUADS = 500;
-        internal static int RESERVED_HEROES = 5;
+        internal const int HERO_IN_ROW = 10;
+        internal const int STEPS_IN_SECOND = 20;
+        internal const int MAX_STEPS_IN_BATTLE = STEPS_IN_SECOND * 60;// Длительность боя - не более 1 минуты
         internal static int MAX_STAT_POINT_PER_LEVEL = 20;
-
+        
         internal const string HERO_PEASANT = "Peasant";
 
         public Config(string pathResources, FormMain fm)
