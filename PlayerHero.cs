@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Drawing;
 
 namespace Fantasy_King_s_Battle
 {
@@ -62,6 +63,7 @@ namespace Fantasy_King_s_Battle
         internal PlayerItem Armour { get; private set; }// Доспех
         internal PanelHero Panel { get; set; }
         internal bool IsLive { get; private set; }
+        internal Point CoordInPlayer { get; set; }
 
         // Статистика за лобби
         internal int Battles { get; }// Участвовал в сражениях

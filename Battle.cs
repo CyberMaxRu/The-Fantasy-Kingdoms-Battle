@@ -62,18 +62,14 @@ namespace Fantasy_King_s_Battle
             List<PlayerHero> heroes = new List<PlayerHero>();
             foreach (PlayerHero ph in player1.Heroes)
             {
-                Debug.Assert(ph.IsLive == true);
-                Debug.Assert(ph.ParametersInBattle.CurrentHealth > 0);
-
-                heroes.Add(ph);
-                // Поместить героя в ячейку TODO
+                ph.ParametersInBattle.Coord = new Point(Config.HERO_ROWS - ph.CoordInPlayer.Y - 1, ph.CoordInPlayer.X);
+                AddHero(ph);
             }
 
             foreach (PlayerHero ph in player2.Heroes)
             {
-                Debug.Assert(ph.IsLive == true);
-
-                heroes.Add(ph);
+                ph.ParametersInBattle.Coord = new Point(ph.CoordInPlayer.Y, ph.CoordInPlayer.X);
+                AddHero(ph);
             }
 
             // Подготавливаем героев к бою
@@ -226,6 +222,16 @@ namespace Fantasy_King_s_Battle
                     list.Add(new SquadInBattle(s));
                 }
             }*/
+
+            void AddHero(PlayerHero ph)
+            {
+                Debug.Assert(ph.IsLive == true);
+                Debug.Assert(ph.ParametersInBattle.CurrentHealth > 0);
+                Debug.Assert(battlefield[ph.ParametersInBattle.Coord.Y, ph.ParametersInBattle.Coord.X] == null);
+
+                heroes.Add(ph);
+                battlefield[ph.ParametersInBattle.Coord.Y, ph.ParametersInBattle.Coord.X] = ph;
+            }
         }
 
         internal Player Player1 { get; }// Игрок №1        

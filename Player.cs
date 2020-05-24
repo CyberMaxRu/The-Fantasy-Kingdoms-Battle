@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Drawing;
 
 namespace Fantasy_King_s_Battle
 {
@@ -208,6 +209,7 @@ namespace Fantasy_King_s_Battle
                 Debug.Assert(CellHeroes[line, pos] == null);
 
                 CellHeroes[line, pos] = ph;
+                ph.CoordInPlayer = new Point(pos, line);
             }
         }
 
