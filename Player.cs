@@ -35,8 +35,6 @@ namespace Fantasy_King_s_Battle
             // Настройка ячеек героев
             CellHeroes = new PlayerHero[FormMain.Config.Battlefield.Size.Height, FormMain.Config.Battlefield.Size.Width];
 
-            ReservedHeroes = new PlayerHero[Config.RESERVED_HEROES];
-
             //
             AddItem(new PlayerItem(FormMain.Config.FindItem("Sword1"), 4));
             AddItem(new PlayerItem(FormMain.Config.FindItem("Sword2"), 4));
