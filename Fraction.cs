@@ -42,7 +42,5 @@ namespace Fantasy_King_s_Battle
         internal string Name { get; }
         internal int ImageIndex { get; }
         internal int Position { get; }
-        internal int[] StartResources;
-
     }
 }
