@@ -560,13 +560,19 @@ namespace Fantasy_King_s_Battle
         {
             CourseBattle cb = lobby.GetBattle(lobby.CurrentPlayer, lobby.Turn - 1);
 
-            textBoxResultBattle.Text = cb != null ? cb.LogBattle : "";
+
+
+
+            //textBoxResultBattle.Text = cb != null ? cb.LogBattle : "";
         }
 
         private void ButtonEndTurn_Click(object sender, EventArgs e)
         {
             ButtonEndTurn.Enabled = false;
             lobby.DoEndTurn();
+
+            ActivatePage(pageBattle);
+            ShowBattle();
 
             ShowDataPlayer();
             ButtonEndTurn.Enabled = true;

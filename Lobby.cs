@@ -132,6 +132,8 @@ namespace Fantasy_King_s_Battle
             // Расчет боя
             for (; ; )
             {
+                cb.AddStep(step, heroes);
+
                 // Увеличиваем шаг
                 step++;
 

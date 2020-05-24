@@ -8,10 +8,31 @@ namespace Fantasy_King_s_Battle
 {
     internal enum ResultBattle { Win, Lose, Draw };
 
+    internal sealed class HeroInBattle
+    {
+        public HeroInBattle (PlayerHero ph)
+        {
+            PlayerHero = ph;
+            Parameters = new HeroParameters(ph.ParametersInBattle);
+        }
+
+        internal PlayerHero PlayerHero { get; }
+        internal HeroParameters Parameters { get; }
+    }       
+
     // Класс шага сражения
     internal sealed class StepOfBattle
     {
+        public StepOfBattle(int step, List<PlayerHero> heroes)
+        {
+            Step = step;
 
+            foreach (PlayerHero ph in heroes)
+                Heroes.Add(new HeroInBattle(ph));
+        }
+
+        internal int Step { get; }
+        internal List<HeroInBattle> Heroes = new List<HeroInBattle>();
     }
 
     // Класс результата сражения между игроками
@@ -24,6 +45,13 @@ namespace Fantasy_King_s_Battle
             Turn = turn;
         }
 
+        internal List<StepOfBattle> Steps { get; } = new List<StepOfBattle>();
+
+        internal void AddStep(int step, List<PlayerHero> heroes)
+        {
+            Steps.Add(new StepOfBattle(step, heroes));
+        }
+
         internal void AddLog(int step, string text)
         {
             LogBattle += text + Environment.NewLine;
@@ -31,7 +59,7 @@ namespace Fantasy_King_s_Battle
 
         internal void EndBattle(int step, Player winner)
         {
-            Steps = step;
+            //Steps = step;
             Winner = winner;
 
 /*            // Подсчитываем статистику
@@ -54,7 +82,6 @@ namespace Fantasy_King_s_Battle
         internal Player Player2 { get; }
         internal Player Winner { get; private set; }
         internal int Turn { get; }
-        internal int Steps { get; private set; }
         internal string LogBattle { get; private set; }
         internal int Player1Damage { get; private set; }
         internal int Player1Kill { get; private set; }
