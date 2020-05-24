@@ -32,7 +32,6 @@ namespace Fantasy_King_s_Battle
         }
 
         internal PlayerHero Hero { get; private set; }
-        internal bool Enabled { get; set; }
 
         internal void RefreshHero()
         {
