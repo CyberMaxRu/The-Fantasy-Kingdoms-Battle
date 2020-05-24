@@ -7,6 +7,8 @@ using System.Diagnostics;
 
 namespace Fantasy_King_s_Battle
 {
+    internal enum StateHeroInBattle { Fight, Drink, Dead, Resurrection }// Состояние героя в бою
+
     // Класс героя игрока
     internal sealed class PlayerHero
     {
@@ -307,7 +309,8 @@ namespace Fantasy_King_s_Battle
         // Делает шаг битвы
         internal void DoStepBattle()
         {
-
+            // Ищем, кого атаковать
+            //foreach 
         }
 
         // Применяем шаг битвы

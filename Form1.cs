@@ -558,10 +558,7 @@ namespace Fantasy_King_s_Battle
 
         private void ShowBattle()
         {
-            CourseBattle cb = lobby.GetBattle(lobby.CurrentPlayer, lobby.Turn - 1);
-
-
-
+            //CourseBattle cb = lobby.GetBattle(lobby.CurrentPlayer, lobby.Turn - 1);
 
             //textBoxResultBattle.Text = cb != null ? cb.LogBattle : "";
         }

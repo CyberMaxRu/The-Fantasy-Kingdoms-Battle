@@ -132,7 +132,7 @@ namespace Fantasy_King_s_Battle
         private Player opponent;
         internal Player Opponent { get { return opponent; } set { if (value != this) opponent = value; else new Exception("Нельзя указать оппонентов самого себя."); } }
         internal bool BattleCalced { get; set; }
-        internal List<CourseBattle> HistoryBattles { get; } = new List<CourseBattle>();
+        internal List<Battle> HistoryBattles { get; } = new List<Battle>();
 
         internal PlayerBuilding GetPlayerBuilding(Building b)
         {

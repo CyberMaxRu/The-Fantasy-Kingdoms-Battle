@@ -83,8 +83,8 @@ namespace Fantasy_King_s_Battle
 
             if (Player.HistoryBattles.Count > 0)
             { 
-                CourseBattle cb = Player.HistoryBattles.Last();
-                int ii = cb.Winner == null ? 1 : cb.Winner == Player ? 0 : 2;
+                Battle b = Player.HistoryBattles.Last();
+                int ii = b.Winner == null ? 1 : b.Winner == Player ? 0 : 2;
 
                 pbResultBattle.Image = imageListResultBattle.Images[ii];
             }
