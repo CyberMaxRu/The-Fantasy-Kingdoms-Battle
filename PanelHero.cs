@@ -13,16 +13,14 @@ namespace Fantasy_King_s_Battle
     {
         private readonly ImageList imageListGuiHeroes;
         private readonly ImageList imageListGui;
-        private readonly ImageList imageListCategoryHeroes;
         private Point pointLevel;
 
-        public PanelHero(Point p, int left, int top, ImageList ilGuiHeroes, ImageList ilGui, ImageList ilCategoryHeroes)
+        public PanelHero(Point p, int left, int top, ImageList ilGuiHeroes, ImageList ilGui)
         {
             BorderStyle = BorderStyle.FixedSingle;
             imageListGuiHeroes = ilGuiHeroes;
             imageListGui = ilGui;
-            imageListCategoryHeroes = ilCategoryHeroes;
-
+            
             BackColor = Color.Transparent;
             Left = left;
             Top = top;
@@ -51,17 +49,16 @@ namespace Fantasy_King_s_Battle
 
         internal void RefreshHero()
         {
-            ShowData(Hero, CategoryHero);
+            ShowData(Hero);
         }
 
-        internal void ShowData(PlayerHero ph, CategoryHero category)
+        internal void ShowData(PlayerHero ph)
         {
             Hero = ph;
-            CategoryHero = category;
 
             if (this != Program.formMain?.panelHeroForDrag)
             {
-                Image = ph != null ? GuiUtils.GetImageFromImageList(imageListGuiHeroes, Hero.Hero.ImageIndex, true) : GuiUtils.GetImageFromImageList(imageListCategoryHeroes, (int)category, true);
+                Image = ph != null ? GuiUtils.GetImageFromImageList(imageListGuiHeroes, Hero.Hero.ImageIndex, true) : null;
             }
             else
                 Image = null;

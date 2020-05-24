@@ -33,7 +33,7 @@ namespace Fantasy_King_s_Battle
             }
             
             // Настройка ячеек героев
-            CellHeroes = new PlayerHero[FormMain.Config.Battlefield.Size.Height, FormMain.Config.Battlefield.Size.Width];
+            CellHeroes = new PlayerHero[Config.HERO_ROWS, Config.HERO_IN_ROW];
 
             //
             AddItem(new PlayerItem(FormMain.Config.FindItem("Sword1"), 4));
@@ -158,22 +158,20 @@ namespace Fantasy_King_s_Battle
                 // Сначала ищем ячейку согласно категории героя
                 // Для этого ищем линию со свободными ячейками для категории героя, начиная с первой
                 // Пытаемся разместить его в середине линии, а затем в стороны от середины
-                for (int y = 0; y < FormMain.Config.Battlefield.Cells.GetLength(0); y++)
+                for (int y = 0; y < CellHeroes.GetLength(0); y++)
                 {
                     line = y;
                     positions.Clear();
 
-                    for (int x = 0; x < FormMain.Config.Battlefield.Cells.GetLength(1); x++)
-                        if ((FormMain.Config.Battlefield.Cells[y, x] != null)
-                            && (FormMain.Config.Battlefield.Cells[y, x].CategoryHero == ph.Hero.CategoryHero)
-                            && (CellHeroes[y, x] == null))
+                    for (int x = 0; x < CellHeroes.GetLength(1); x++)
+                        if (CellHeroes[y, x] == null)
                         {
                             positions.Add(x);
                         }
 
                     if (positions.Count > 0)
                     {
-                        int centre = (int)Math.Truncate(FormMain.Config.Battlefield.Cells.GetLength(1) / 2.0 + 0.5) - 1;
+                        int centre = (int)Math.Truncate(CellHeroes.GetLength(1) / 2.0 + 0.5) - 1;
                         if (positions.IndexOf(centre) != -1)
                         {
                             pos = centre;

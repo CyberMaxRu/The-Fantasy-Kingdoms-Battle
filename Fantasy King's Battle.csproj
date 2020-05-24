@@ -75,7 +75,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="PanelControls.cs" />
-    <Compile Include="Battlefield.cs" />
     <Compile Include="TypeItem.cs" />
     <Compile Include="ItemSmithy.cs" />
     <Compile Include="Level.cs" />
@@ -129,7 +128,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FKS.ico" />
-    <Content Include="Resources\Config\Battlefield.xml" />
     <Content Include="Resources\Config\Items.xml" />
     <Content Include="Resources\Config\Heroes.xml" />
     <Content Include="Resources\Config\Buildings.xml" />

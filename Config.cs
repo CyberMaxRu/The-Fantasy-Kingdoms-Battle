@@ -11,7 +11,8 @@ namespace Fantasy_King_s_Battle
     internal sealed class Config
     {
         internal const int GRID_SIZE = 8;
-        internal const int HERO_IN_ROW = 10;
+        internal const int HERO_IN_ROW = 7;// Героев в ряду
+        internal const int HERO_ROWS = 7;// Рядов героев
         internal const int STEPS_IN_SECOND = 20;
         internal const int MAX_STEPS_IN_BATTLE = STEPS_IN_SECOND * 60;// Длительность боя - не более 1 минуты
         internal static int MAX_STAT_POINT_PER_LEVEL = 20;
@@ -97,9 +98,6 @@ namespace Fantasy_King_s_Battle
                 doc.Load(pathResources + pathToXml);
                 return doc;
             }
-
-            // Создаем конфигурацию поля боя для использования игроками
-            Battlefield = new Battlefield(pathResources + "\\Config\\Battlefield.xml");
         }
 
         internal string PathResources { get; }
@@ -111,7 +109,6 @@ namespace Fantasy_King_s_Battle
         internal List<Item> Items { get; } = new List<Item>();
         internal List<Skill> Skills { get; } = new List<Skill>();
         internal int MaxLevelSkill { get; }
-        internal Battlefield Battlefield { get; }
 
         internal Fraction FindFraction(string ID)
         {
