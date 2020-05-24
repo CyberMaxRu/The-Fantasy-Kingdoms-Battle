@@ -14,7 +14,7 @@ namespace Fantasy_King_s_Battle
         internal const int HERO_IN_ROW = 7;// Героев в ряду
         internal const int HERO_ROWS = 7;// Рядов героев
         internal const int STEPS_IN_SECOND = 20;
-        internal const int MAX_STEPS_IN_BATTLE = STEPS_IN_SECOND * 60;// Длительность боя - не более 1 минуты
+        internal const int MAX_STEPS_IN_BATTLE = STEPS_IN_SECOND * 600;// Длительность боя - не более 1 минуты. Изменил на 10 минут для теста длительности боев
         internal static int MAX_STAT_POINT_PER_LEVEL = 20;
         
         internal const string HERO_PEASANT = "Peasant";
