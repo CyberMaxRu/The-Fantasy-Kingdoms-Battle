@@ -63,6 +63,7 @@ namespace Fantasy_King_s_Battle
             foreach (PlayerHero ph in player1.Heroes)
             {
                 Debug.Assert(ph.IsLive == true);
+                Debug.Assert(ph.ParametersInBattle.CurrentHealth > 0);
 
                 heroes.Add(ph);
                 // Поместить героя в ячейку TODO

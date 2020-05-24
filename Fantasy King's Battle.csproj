@@ -50,7 +50,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Battle.cs" />
-    <Compile Include="BattleParameters.cs" />
     <Compile Include="Building.cs" />
     <Compile Include="ClassUnit.cs" />
     <Compile Include="Config.cs" />
