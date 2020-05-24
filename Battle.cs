@@ -55,8 +55,8 @@ namespace Fantasy_King_s_Battle
             Turn = turn;
 
             int step = 0;
-            SizeBattlefield = new Size(Config.HERO_IN_ROW, 2);
-            battlefield = new PlayerHero[2, Config.HERO_IN_ROW];
+            SizeBattlefield = new Size(Config.HERO_IN_ROW, Config.HERO_ROWS * 2);
+            battlefield = new PlayerHero[SizeBattlefield.Height, SizeBattlefield.Width];
 
             // Запоминаем героев в одном списке для упрощения расчетов
             List<PlayerHero> heroes = new List<PlayerHero>();
