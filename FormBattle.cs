@@ -74,7 +74,7 @@ namespace Fantasy_King_s_Battle
                     {
                         //Parent = this,
                         Left = Config.GRID_SIZE + (x * (Program.formMain.ilGuiHeroes.ImageSize.Width + Config.GRID_SIZE)),
-                        Top = Config.GRID_SIZE + (y * (Program.formMain.ilGuiHeroes.ImageSize.Height + 16 + Config.GRID_SIZE))
+                        Top = Config.GRID_SIZE * 4 + (y * (Program.formMain.ilGuiHeroes.ImageSize.Height + 16 + Config.GRID_SIZE))
                     };
 
                     cellHeroes[y, x] = p;
@@ -103,6 +103,9 @@ namespace Fantasy_King_s_Battle
 
                 cellHeroes[h.Parameters.Coord.Y, h.Parameters.Coord.X].Hero = h;
             }
+
+            lblStep.Text = "Шаг: " + currentStep.ToString();
+            lblTotalSteps.Text = "Всего шагов: " + battle.Steps.Count.ToString();
 
             Refresh();
         }
