@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace Fantasy_King_s_Battle
 {
+    internal enum StateHeroInBattle { Melee, Shoot, Cast, Drink, Healing, Rest, Dead, Resurrection, None }// Состояние героя в бою
+
     internal sealed class HeroInBattle
     {
         public HeroInBattle(Battle b, PlayerHero ph)
