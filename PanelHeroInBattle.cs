@@ -13,12 +13,13 @@ namespace Fantasy_King_s_Battle
     class PanelHeroInBattle : Control 
     {
         private ImageList ImageListHeroes;
-        private Pen penBandHealth = new Pen(Color.Red);
-        private Pen penBandHealthNone = new Pen(Color.LightPink);
-        private Pen penBandMana = new Pen(Color.Blue);
-        private Pen penBandManaNone = new Pen(Color.LightBlue);
-        private Pen penBandStamina = new Pen(Color.Black);
-        private Pen penBandStaminaNone = new Pen(Color.Gray);
+        private Pen penBorder = new Pen(Color.Silver);
+        private SolidBrush brushBandHealth = new SolidBrush(Color.Red);
+        private SolidBrush brushBandHealthNone = new SolidBrush(Color.LightPink);
+        private SolidBrush brushBandMana = new SolidBrush(Color.Blue);
+        private SolidBrush brushBandManaNone = new SolidBrush(Color.LightBlue);
+        private SolidBrush brushBandStamina = new SolidBrush(Color.Black);
+        private SolidBrush brushBandStaminaNone = new SolidBrush(Color.Gray);
 
         public PanelHeroInBattle(ImageList ilHeroes) : base()
         {
@@ -35,7 +36,6 @@ namespace Fantasy_King_s_Battle
         private void PanelHeroInBattle_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
-            e.Graphics.DrawRectangle(penBandHealth, 0, 0, Width - 1, Height - 1);
 
             // Рисуем иконку героя
             if (Hero != null)
@@ -43,14 +43,22 @@ namespace Fantasy_King_s_Battle
                 e.Graphics.DrawImageUnscaled(ImageListHeroes.Images[Hero.PlayerHero.Hero.ImageIndex], 0, 0);
 
                 // Рисуем полоски жизни, маны, бодрости
-                DrawBand(0, penBandHealth, penBandHealthNone, 100, 75);
-                DrawBand(1, penBandMana, penBandManaNone, 100, 75);
-                DrawBand(2, penBandStamina, penBandStaminaNone, 100, 75);
+                DrawBand(0, brushBandHealth, brushBandHealthNone, 75, 100);
+                DrawBand(1, brushBandMana, brushBandManaNone, 50, 100);
+                DrawBand(2, brushBandStamina, brushBandStaminaNone, 25, 100);
             }
 
-            void DrawBand(int line, Pen mainColor, Pen backColor, int MaxValue, int currentValue)
+            e.Graphics.DrawRectangle(penBorder, 0, 0, ImageListHeroes.ImageSize.Width - 1, ImageListHeroes.ImageSize.Height - 1);
+
+            void DrawBand(int line, Brush mainColor, Brush backColor, int currentValue, int MaxValue)
             {
-                e.Graphics.DrawRectangle(mainColor, new Rectangle(0, ImageListHeroes.ImageSize.Height + 2 + line * 4, Width, ImageListHeroes.ImageSize.Height + 2 + (line + 1) * 4 - 1));
+                Debug.Assert(currentValue <= MaxValue);
+
+                int widthMain = (int)Math.Round(currentValue / 1.00 / MaxValue * Width);
+                int widthNone = Width - widthMain;
+                e.Graphics.FillRectangle(mainColor, 0, ImageListHeroes.ImageSize.Height + 4 * line, widthMain, 4);
+                if (widthNone > 0)
+                    e.Graphics.FillRectangle(backColor, widthMain, ImageListHeroes.ImageSize.Height + 4 * line, widthNone, 4);
             }
         }
     }
