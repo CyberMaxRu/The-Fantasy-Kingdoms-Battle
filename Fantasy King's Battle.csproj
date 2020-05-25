@@ -81,7 +81,6 @@
     </Compile>
     <Compile Include="PanelControls.cs" />
     <Compile Include="TypeItem.cs" />
-    <Compile Include="ItemSmithy.cs" />
     <Compile Include="Level.cs" />
     <Compile Include="Lobby.cs" />
     <Compile Include="PanelAboutPlayer.cs">
