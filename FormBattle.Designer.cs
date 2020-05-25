@@ -47,7 +47,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(968, 637);
             this.Controls.Add(this.button1);
+            this.DoubleBuffered = true;
             this.Name = "FormBattle";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormBattle";
             this.ResumeLayout(false);
 

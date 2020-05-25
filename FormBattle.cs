@@ -16,10 +16,48 @@ namespace Fantasy_King_s_Battle
         private PanelHeroInBattle[,] cellHeroes;
         private int currentStep;
         private Battle battle;
+        private Pen penArrow = new Pen(Color.Fuchsia);
+        private Bitmap bmpBackground;
 
         public FormBattle()
         {
             InitializeComponent();
+
+            Paint += FormBattle_Paint;
+
+            BackgroundImage = Program.formMain.background;
+            penArrow.Width = 3;
+            penArrow.CustomEndCap = new System.Drawing.Drawing2D.AdjustableArrowCap(4.0F, 8.0F, true);
+            //bmpBackground = new Bitmap(Width, Height);
+            //bmpBackground.
+        }
+
+        private void FormBattle_Paint(object sender, PaintEventArgs e)
+        {
+            Bitmap bmpPanel = new Bitmap(cellHeroes[0, 0].Width, cellHeroes[0, 0].Height);
+
+            // Рисуем героев
+            for (int y = 0; y < battle.SizeBattlefield.Height; y++)
+                for (int x = 0; x < battle.SizeBattlefield.Width; x++)
+                {
+                    if (cellHeroes[y, x].Hero != null)
+                    {
+                        cellHeroes[y, x].DrawToBitmap(bmpPanel, new Rectangle(0, 0, bmpPanel.Width, bmpPanel.Height));
+                        e.Graphics.DrawImageUnscaled(bmpPanel, cellHeroes[y, x].Left, cellHeroes[y, x].Top);
+                    }
+                }
+
+            foreach (HeroInBattle h in battle.Steps[currentStep].Heroes)
+            {
+                if (h.PlayerHero.Target != null)
+                {
+                    PanelHeroInBattle p1 = cellHeroes[h.PlayerHero.ParametersInBattle.Coord.Y, h.PlayerHero.ParametersInBattle.Coord.X];
+                    PanelHeroInBattle p2 = cellHeroes[h.PlayerHero.Target.ParametersInBattle.Coord.Y, h.PlayerHero.Target.ParametersInBattle.Coord.X];
+
+                    penArrow.Color = h.PlayerHero.Player == battle.Player1 ? Color.Green : Color.Maroon;
+                    e.Graphics.DrawLine(penArrow, new Point(p1.Location.X + p1.Width / 2 , p1.Location.Y + p1.Height / 2), new Point(p2.Location.X + p2.Width / 2, p2.Location.Y + p2.Height / 2));
+                }
+            }
         }
 
         internal void ShowBattle(Battle b)
@@ -34,7 +72,7 @@ namespace Fantasy_King_s_Battle
                 {
                     p = new PanelHeroInBattle(Program.formMain.ilGuiHeroes)
                     {
-                        Parent = this,
+                        //Parent = this,
                         Left = Config.GRID_SIZE + (x * (Program.formMain.ilGuiHeroes.ImageSize.Width + Config.GRID_SIZE)),
                         Top = Config.GRID_SIZE + (y * (Program.formMain.ilGuiHeroes.ImageSize.Height + 16 + Config.GRID_SIZE))
                     };
@@ -66,7 +104,7 @@ namespace Fantasy_King_s_Battle
                 cellHeroes[h.Parameters.Coord.Y, h.Parameters.Coord.X].Hero = h;
             }
 
-            Refresh(); 
+            Refresh();
         }
     }
 }

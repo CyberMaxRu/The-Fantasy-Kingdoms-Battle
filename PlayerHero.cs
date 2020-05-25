@@ -356,6 +356,7 @@ namespace Fantasy_King_s_Battle
 
                 if (targets.Count > 0)
                 {
+                    Debug.Assert(this != targets[0]);
                     Target = targets[0];
                     State = StateHeroInBattle.Melee;
 
