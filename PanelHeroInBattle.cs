@@ -34,6 +34,7 @@ namespace Fantasy_King_s_Battle
 
         private void PanelHeroInBattle_Paint(object sender, PaintEventArgs e)
         {
+            e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
             e.Graphics.DrawRectangle(penBandHealth, 0, 0, Width - 1, Height - 1);
 
             // Рисуем иконку героя
