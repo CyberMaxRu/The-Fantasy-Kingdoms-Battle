@@ -12,7 +12,6 @@ namespace Fantasy_King_s_Battle
     // Класс отображения героя в бою
     class PanelHeroInBattle : Control 
     {
-        private PlayerHero playerHero;
         private ImageList ImageListHeroes;
         private Pen penBandHealth = new Pen(Color.Red);
         private Pen penBandHealthNone = new Pen(Color.LightPink);
@@ -21,9 +20,8 @@ namespace Fantasy_King_s_Battle
         private Pen penBandStamina = new Pen(Color.Black);
         private Pen penBandStaminaNone = new Pen(Color.Gray);
 
-        public PanelHeroInBattle(PlayerHero ph, ImageList ilHeroes) : base()
+        public PanelHeroInBattle(ImageList ilHeroes) : base()
         {
-            playerHero = ph;
             ImageListHeroes = ilHeroes;
 
             Width = ilHeroes.ImageSize.Width;
@@ -32,12 +30,16 @@ namespace Fantasy_King_s_Battle
             Paint += PanelHeroInBattle_Paint;
         }
 
+        internal HeroInBattle Hero { get; set; }
+
         private void PanelHeroInBattle_Paint(object sender, PaintEventArgs e)
         {
+            e.Graphics.DrawRectangle(penBandHealth, 0, 0, Width - 1, Height - 1);
+
             // Рисуем иконку героя
-            if (playerHero != null)
+            if (Hero != null)
             {
-                e.Graphics.DrawImage(ImageListHeroes.Images[playerHero.Hero.ImageIndex], 0, 0);
+                e.Graphics.DrawImageUnscaled(ImageListHeroes.Images[Hero.PlayerHero.Hero.ImageIndex], 0, 0);
 
                 // Рисуем полоски жизни, маны, бодрости
                 DrawBand(0, penBandHealth, penBandHealthNone, 100, 75);

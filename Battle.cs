@@ -44,6 +44,9 @@ namespace Fantasy_King_s_Battle
 
         internal Battle(Player player1, Player player2, int turn, Random r)
         {
+            Debug.Assert(player1 != null);
+            Debug.Assert(player2 != null);
+            Debug.Assert(player1 != player2);
             Debug.Assert(player1.BattleCalced == false);
             Debug.Assert(player2.BattleCalced == false);
             Debug.Assert(player1.IsLive == true);

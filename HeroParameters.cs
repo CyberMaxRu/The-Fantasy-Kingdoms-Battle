@@ -107,6 +107,7 @@ namespace Fantasy_King_s_Battle
             Health = hp.Health;
             Mana = hp.Mana;
             Stamina = hp.Stamina;
+            Coord = hp.Coord;
     }
 
     // Пересчитать параметры

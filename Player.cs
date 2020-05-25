@@ -76,7 +76,8 @@ namespace Fantasy_King_s_Battle
 
             void HireAllHero(PlayerBuilding bp)
             {
-                for (; bp.Heroes.Count() < bp.MaxHeroes();)
+                for (int x = 0; x < Math.Min(Config.HERO_IN_ROW, bp.MaxHeroes()); x++)
+//                for (; bp.Heroes.Count() < bp.MaxHeroes();)
                 {
                     bp.HireHero();
                 }
@@ -147,6 +148,8 @@ namespace Fantasy_King_s_Battle
 
         internal void AddHero(PlayerHero ph)
         {
+            Debug.Assert(Heroes.IndexOf(ph) == -1);
+
             Heroes.Add(ph);
 
             if (ph.Building.Building.CategoryBuilding != CategoryBuilding.Castle)
