@@ -42,6 +42,11 @@ namespace Fantasy_King_s_Battle
             {
                 e.Graphics.DrawImageUnscaled(ImageListHeroes.Images[Hero.PlayerHero.Hero.ImageIndex], 0, 0);
 
+                if (Hero.PlayerHero.State != StateHeroInBattle.None)
+                {
+                    e.Graphics.DrawImageUnscaled(Program.formMain.ilStateHero.Images[(int)Hero.PlayerHero.State], 0, 0);
+                }
+
                 // Рисуем полоски жизни, маны, бодрости
                 DrawBand(0, brushBandHealth, brushBandHealthNone, 75, 100);
                 DrawBand(1, brushBandMana, brushBandManaNone, 50, 100);
