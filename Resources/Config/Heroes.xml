@@ -84,7 +84,7 @@
     <Cost>100</Cost>
     <Building>GuildRogue</Building>
     <MaxLevel>100</MaxLevel>
-    <CategoryHero>Special</CategoryHero>
+    <CategoryHero>Melee</CategoryHero>
     <TypeAttack>Melee</TypeAttack>
     <CanBuild>False</CanBuild>
     <BaseParameters>
