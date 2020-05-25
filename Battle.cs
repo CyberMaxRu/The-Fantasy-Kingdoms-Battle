@@ -78,7 +78,7 @@ namespace Fantasy_King_s_Battle
                 if ((ph.Hero.CategoryHero == CategoryHero.Melee) || (ph.Hero.CategoryHero == CategoryHero.Archer) || (ph.Hero.CategoryHero == CategoryHero.Mage))
                 {
                     ph.PrepareToBattle();
-                    ph.ParametersInBattle.Coord = new Point(ph.CoordInPlayer.Y, ph.CoordInPlayer.X);
+                    ph.ParametersInBattle.Coord = new Point(ph.CoordInPlayer.Y + Config.HERO_ROWS, ph.CoordInPlayer.X);
                     AddHero(ph);
                 }
             }
