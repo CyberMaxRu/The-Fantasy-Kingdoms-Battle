@@ -341,7 +341,6 @@ namespace Fantasy_King_s_Battle
             ShowBuildings();
             ShowTemples();
             ShowPageHeroes();
-            ShowBattle();
             ShowGold();
         }
 
@@ -555,9 +554,13 @@ namespace Fantasy_King_s_Battle
 
         private void ShowBattle()
         {
-            //CourseBattle cb = lobby.GetBattle(lobby.CurrentPlayer, lobby.Turn - 1);
+            if (lobby.Turn > 1)
+            {
+                Battle b = lobby.GetBattle(lobby.CurrentPlayer, lobby.Turn - 1);
 
-            //textBoxResultBattle.Text = cb != null ? cb.LogBattle : "";
+                FormBattle fb = new FormBattle();
+                fb.ShowBattle(b);
+            }
         }
 
         private void ButtonEndTurn_Click(object sender, EventArgs e)
@@ -565,7 +568,6 @@ namespace Fantasy_King_s_Battle
             ButtonEndTurn.Enabled = false;
             lobby.DoEndTurn();
 
-            ActivatePage(pageBattle);
             ShowBattle();
 
             ShowDataPlayer();
@@ -1038,6 +1040,11 @@ namespace Fantasy_King_s_Battle
             currentPage = pc;
 
             //Invalidate();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ShowBattle();
         }
     }
 }

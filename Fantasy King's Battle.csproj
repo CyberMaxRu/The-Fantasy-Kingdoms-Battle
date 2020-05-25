@@ -59,6 +59,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormBattle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormBattle.Designer.cs">
+      <DependentUpon>FormBattle.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormHint.cs" />
     <Compile Include="Fraction.cs" />
     <Compile Include="GuiUtils.cs" />

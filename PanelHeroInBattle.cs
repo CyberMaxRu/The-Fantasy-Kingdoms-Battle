@@ -35,12 +35,15 @@ namespace Fantasy_King_s_Battle
         private void PanelHeroInBattle_Paint(object sender, PaintEventArgs e)
         {
             // Рисуем иконку героя
-            e.Graphics.DrawImage(ImageListHeroes.Images[playerHero.Hero.ImageIndex], 0, 0);
+            if (playerHero != null)
+            {
+                e.Graphics.DrawImage(ImageListHeroes.Images[playerHero.Hero.ImageIndex], 0, 0);
 
-            // Рисуем полоски жизни, маны, бодрости
-            DrawBand(0, penBandHealth, penBandHealthNone, 100, 75);
-            DrawBand(1, penBandMana, penBandManaNone, 100, 75);
-            DrawBand(2, penBandStamina, penBandStaminaNone, 100, 75);
+                // Рисуем полоски жизни, маны, бодрости
+                DrawBand(0, penBandHealth, penBandHealthNone, 100, 75);
+                DrawBand(1, penBandMana, penBandManaNone, 100, 75);
+                DrawBand(2, penBandStamina, penBandStaminaNone, 100, 75);
+            }
 
             void DrawBand(int line, Pen mainColor, Pen backColor, int MaxValue, int currentValue)
             {
