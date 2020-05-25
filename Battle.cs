@@ -62,19 +62,23 @@ namespace Fantasy_King_s_Battle
             List<PlayerHero> heroes = new List<PlayerHero>();
             foreach (PlayerHero ph in player1.Heroes)
             {
-                ph.ParametersInBattle.Coord = new Point(Config.HERO_ROWS - ph.CoordInPlayer.Y - 1, ph.CoordInPlayer.X);
-                AddHero(ph);
+                if ((ph.Hero.CategoryHero == CategoryHero.Melee) || (ph.Hero.CategoryHero == CategoryHero.Archer) || (ph.Hero.CategoryHero == CategoryHero.Mage))
+                {
+                    ph.PrepareToBattle();
+                    ph.ParametersInBattle.Coord = new Point(Config.HERO_ROWS - ph.CoordInPlayer.Y - 1, ph.CoordInPlayer.X);
+                    AddHero(ph);
+                }
             }
 
             foreach (PlayerHero ph in player2.Heroes)
             {
-                ph.ParametersInBattle.Coord = new Point(ph.CoordInPlayer.Y, ph.CoordInPlayer.X);
-                AddHero(ph);
+                if ((ph.Hero.CategoryHero == CategoryHero.Melee) || (ph.Hero.CategoryHero == CategoryHero.Archer) || (ph.Hero.CategoryHero == CategoryHero.Mage))
+                {
+                    ph.PrepareToBattle();
+                    ph.ParametersInBattle.Coord = new Point(ph.CoordInPlayer.Y, ph.CoordInPlayer.X);
+                    AddHero(ph);
+                }
             }
-
-            // Подготавливаем героев к бою
-            foreach (PlayerHero ph in heroes)
-                ph.PrepareToBattle();
 
             // Расчет боя
             for (; ; )
@@ -226,7 +230,7 @@ namespace Fantasy_King_s_Battle
             void AddHero(PlayerHero ph)
             {
                 Debug.Assert(ph.IsLive == true);
-                Debug.Assert(ph.ParametersInBattle.CurrentHealth > 0);
+                //Debug.Assert(ph.ParametersInBattle.CurrentHealth > 0);
                 Debug.Assert(battlefield[ph.ParametersInBattle.Coord.Y, ph.ParametersInBattle.Coord.X] == null);
 
                 heroes.Add(ph);
