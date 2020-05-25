@@ -124,7 +124,7 @@ namespace Fantasy_King_s_Battle
             if (Hero != null)
             {
                 Visible = true;
-                pbHero.Image = imageListHeroes.Images[ph.Hero.ImageIndex];
+                pbHero.Image = imageListHeroes.Images[ph.ClassHero.ImageIndex];
 
                 lblLevel.Text = "Уровень: " + ph.Level.ToString();
                 lblHealth.Text = "Здоровье: " + ph.ParametersWithAmmunition.CurrentHealth.ToString() + "/" + ph.ParametersWithAmmunition.Health.ToString();
@@ -136,12 +136,12 @@ namespace Fantasy_King_s_Battle
                 ShowParameter(lblVitality, ph.ParametersBase.Vitality, ph.ParametersWithAmmunition.Vitality);
                 //ShowParameter(lblStamina, ph.ParametersBase.Stamina, ph.ParametersWithAmmunition.Stamina);
                 ShowParameter(lblSpeed, ph.ParametersBase.TimeAttack, ph.ParametersWithAmmunition.TimeAttack);
-                if (Hero.Hero.TypeAttack == TypeAttack.Melee)
+                if (Hero.ClassHero.TypeAttack == TypeAttack.Melee)
                 {
                     lblAttackMelee.Text = ph.ParametersWithAmmunition.MinMeleeDamage.ToString() + " - " + ph.ParametersWithAmmunition.MaxMeleeDamage.ToString();
                     lblAttackRange.Text = "";
                 }
-                if (Hero.Hero.TypeAttack == TypeAttack.Missile)
+                if (Hero.ClassHero.TypeAttack == TypeAttack.Missile)
                 {
                     lblAttackMelee.Text = "";
                     lblAttackRange.Text = ph.ParametersWithAmmunition.MinMissileDamage.ToString() + " - " + ph.ParametersWithAmmunition.MaxMissileDamage.ToString();

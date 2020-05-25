@@ -42,7 +42,7 @@ namespace Fantasy_King_s_Battle
         {
             Hero = ph;
 
-            Image = ph != null ? GuiUtils.GetImageFromImageList(imageListHeroes, Hero.Hero.ImageIndex, true) : null;
+            Image = ph != null ? GuiUtils.GetImageFromImageList(imageListHeroes, Hero.ClassHero.ImageIndex, true) : null;
         }
     }
 }

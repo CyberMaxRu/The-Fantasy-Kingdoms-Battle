@@ -40,7 +40,7 @@ namespace Fantasy_King_s_Battle
             // Рисуем иконку героя
             if (Hero != null)
             {
-                Bitmap bmpIcon = new Bitmap(ImageListHeroes.Images[Hero.PlayerHero.Hero.ImageIndex]);
+                Bitmap bmpIcon = new Bitmap(ImageListHeroes.Images[Hero.PlayerHero.ClassHero.ImageIndex]);
                 if (Hero.PlayerHero.Player != Hero.Battle.Player1)
                     bmpIcon.RotateFlip(RotateFlipType.RotateNoneFlipX);
                 e.Graphics.DrawImageUnscaled(bmpIcon, 0, 0);

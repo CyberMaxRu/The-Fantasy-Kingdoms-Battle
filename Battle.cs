@@ -52,7 +52,7 @@ namespace Fantasy_King_s_Battle
             // Запоминаем героев в одном списке для упрощения расчетов
             foreach (PlayerHero ph in player1.Heroes)
             {
-                if ((ph.Hero.CategoryHero == CategoryHero.Melee) || (ph.Hero.CategoryHero == CategoryHero.Archer) || (ph.Hero.CategoryHero == CategoryHero.Mage))
+                if ((ph.ClassHero.CategoryHero == CategoryHero.Melee) || (ph.ClassHero.CategoryHero == CategoryHero.Archer) || (ph.ClassHero.CategoryHero == CategoryHero.Mage))
                 {
                     ph.PrepareToBattle();
                     ph.ParametersInBattle.Coord = new Point(Config.HERO_ROWS - ph.CoordInPlayer.Y - 1, ph.CoordInPlayer.X);
@@ -62,7 +62,7 @@ namespace Fantasy_King_s_Battle
 
             foreach (PlayerHero ph in player2.Heroes)
             {
-                if ((ph.Hero.CategoryHero == CategoryHero.Melee) || (ph.Hero.CategoryHero == CategoryHero.Archer) || (ph.Hero.CategoryHero == CategoryHero.Mage))
+                if ((ph.ClassHero.CategoryHero == CategoryHero.Melee) || (ph.ClassHero.CategoryHero == CategoryHero.Archer) || (ph.ClassHero.CategoryHero == CategoryHero.Mage))
                 {
                     ph.PrepareToBattle();
                     ph.ParametersInBattle.Coord = new Point(ph.CoordInPlayer.Y + Config.HERO_ROWS, ph.CoordInPlayer.X);

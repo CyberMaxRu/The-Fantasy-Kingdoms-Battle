@@ -58,7 +58,7 @@ namespace Fantasy_King_s_Battle
 
             if (this != Program.formMain?.panelHeroForDrag)
             {
-                Image = ph != null ? GuiUtils.GetImageFromImageList(imageListGuiHeroes, Hero.Hero.ImageIndex, true) : null;
+                Image = ph != null ? GuiUtils.GetImageFromImageList(imageListGuiHeroes, Hero.ClassHero.ImageIndex, true) : null;
             }
             else
                 Image = null;

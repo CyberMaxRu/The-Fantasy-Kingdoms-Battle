@@ -14,27 +14,25 @@ namespace Fantasy_King_s_Battle
         public PlayerHero(PlayerBuilding pb)
         {
             Building = pb;
-            Player = pb.Player;
-            Hero = Building.Building.TrainedHero;
 
             IsLive = true;
 
-            if (Hero.MaxLevel > 1)
+            if (ClassHero.MaxLevel > 1)
             {
                 Level = 0;
 
-                if (Hero.Slots.Length > 0)
+                if (ClassHero.Slots.Length > 0)
                 {
-                    for (int i = 0; i < Hero.Slots.Length; i++)
+                    for (int i = 0; i < ClassHero.Slots.Length; i++)
                     {
-                        if ((Hero.Slots[i] != null) && (Hero.Slots[i].DefaultItem != null))
+                        if ((ClassHero.Slots[i] != null) && (ClassHero.Slots[i].DefaultItem != null))
                         {
-                            Slots[i] = new PlayerItem(Hero.Slots[i].DefaultItem, 1);
+                            Slots[i] = new PlayerItem(ClassHero.Slots[i].DefaultItem, 1);
                         }
                     }
                 }
 
-                ParametersBase = new HeroParameters(Hero.BaseParameters);
+                ParametersBase = new HeroParameters(ClassHero.BaseParameters);
 
                 // Переходим на 1 уровень
                 LevelUp();
@@ -48,10 +46,10 @@ namespace Fantasy_King_s_Battle
 
         }
 
-        internal Player Player { get; }
         internal PlayerBuilding Building { get; }
-        internal Hero Hero { get; }
-        internal int Level { get; private set; }
+        internal Player Player => Building.Player;// Игрок, которому принадлежит герой
+        internal Hero ClassHero => Building.Building.TrainedHero; // Класс героя
+        internal int Level { get; private set; }// Уровень героя
 
         internal HeroParameters ParametersBase { get; }// Свои параметры, без учета амуниции
         internal HeroParameters ParametersWithAmmunition { get; }// Параметры с учетом амуниции
@@ -126,10 +124,10 @@ namespace Fantasy_King_s_Battle
             {
                 if (item.TypeItem.Single == true)
                 {
-                    if (Hero.Slots[i].TypeItem == item.TypeItem)
+                    if (ClassHero.Slots[i].TypeItem == item.TypeItem)
                         return i;
                 }
-                else if ((Slots[i] == null) && (Hero.Slots[i].TypeItem == item.TypeItem))
+                else if ((Slots[i] == null) && (ClassHero.Slots[i].TypeItem == item.TypeItem))
                     return i;
             }
 
@@ -156,15 +154,15 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(pi.Quantity >= quantity);
 
             // Проверяем совместимость
-            if (pi.Item.TypeItem != Hero.Slots[toCell].TypeItem)
+            if (pi.Item.TypeItem != ClassHero.Slots[toCell].TypeItem)
                 return;
 
             if (Slots[toCell] != null)
             {
-                if (Hero.Slots[toCell].DefaultItem != null)
+                if (ClassHero.Slots[toCell].DefaultItem != null)
                 {
                     // Если это дефолтный предмет, удаляем его
-                    if (Slots[toCell].Item == Hero.Slots[toCell].DefaultItem)
+                    if (Slots[toCell].Item == ClassHero.Slots[toCell].DefaultItem)
                         Slots[toCell] = null;
                     else
                     {
@@ -189,12 +187,12 @@ namespace Fantasy_King_s_Battle
 
             if (Slots[toCell] == null)
             {
-                Slots[toCell] = new PlayerItem(pi.Item, Math.Min(Hero.Slots[toCell].MaxQuantity, quantity));
+                Slots[toCell] = new PlayerItem(pi.Item, Math.Min(ClassHero.Slots[toCell].MaxQuantity, quantity));
                 pi.Quantity -= Slots[toCell].Quantity;
             }
             else
             {
-                int add = Math.Min(Hero.Slots[toCell].MaxQuantity - Slots[toCell].Quantity, quantity);
+                int add = Math.Min(ClassHero.Slots[toCell].MaxQuantity - Slots[toCell].Quantity, quantity);
                 if (add > 0)
                 {
                     Slots[toCell] = new PlayerItem(pi.Item, add);
@@ -253,9 +251,9 @@ namespace Fantasy_King_s_Battle
 
         internal void ValidateCell(int number)
         {
-            if ((Hero.Slots[number].DefaultItem != null) && (Slots[number] == null))
+            if ((ClassHero.Slots[number].DefaultItem != null) && (Slots[number] == null))
             {
-                Slots[number] = new PlayerItem(Hero.Slots[number].DefaultItem, 1);
+                Slots[number] = new PlayerItem(ClassHero.Slots[number].DefaultItem, 1);
             }
         }
 
@@ -264,7 +262,7 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(Slots[fromSlot] != null);
             Debug.Assert(fromSlot != toSlot);
 
-            if (Slots[fromSlot].Item.TypeItem == Hero.Slots[toSlot].TypeItem)
+            if (Slots[fromSlot].Item.TypeItem == ClassHero.Slots[toSlot].TypeItem)
             {
                 PlayerItem tmp = null;
                 if (Slots[toSlot] != null)
@@ -276,25 +274,25 @@ namespace Fantasy_King_s_Battle
 
         private void LevelUp()
         {
-            Debug.Assert(Level < Hero.MaxLevel);
+            Debug.Assert(Level < ClassHero.MaxLevel);
 
             // Прибавляем безусловные параметры
-            if (Hero.ConfigNextLevel != null)
+            if (ClassHero.ConfigNextLevel != null)
             {
-                ParametersBase.Health += Hero.ConfigNextLevel.Health;
-                ParametersBase.Mana += Hero.ConfigNextLevel.Mana;
+                ParametersBase.Health += ClassHero.ConfigNextLevel.Health;
+                ParametersBase.Mana += ClassHero.ConfigNextLevel.Mana;
 
                 // Прибавляем очки характеристик
                 int t;
-                for (int i = 0; i < Hero.ConfigNextLevel.StatPoints; i++)
+                for (int i = 0; i < ClassHero.ConfigNextLevel.StatPoints; i++)
                 {
                     t = FormMain.Rnd.Next(100);
 
-                    if (t < Hero.ConfigNextLevel.WeightStrength)
+                    if (t < ClassHero.ConfigNextLevel.WeightStrength)
                         ParametersBase.Strength++;
-                    else if (t < Hero.ConfigNextLevel.WeightStrength + Hero.ConfigNextLevel.WeightDexterity)
+                    else if (t < ClassHero.ConfigNextLevel.WeightStrength + ClassHero.ConfigNextLevel.WeightDexterity)
                         ParametersBase.Dexterity++;
-                    else if (t < Hero.ConfigNextLevel.WeightStrength + Hero.ConfigNextLevel.WeightDexterity + Hero.ConfigNextLevel.WeightMagic)
+                    else if (t < ClassHero.ConfigNextLevel.WeightStrength + ClassHero.ConfigNextLevel.WeightDexterity + ClassHero.ConfigNextLevel.WeightMagic)
                         ParametersBase.Magic++;
                     else
                         ParametersBase.Vitality++;
@@ -339,7 +337,7 @@ namespace Fantasy_King_s_Battle
 
             bool SearchTargetForMelee()
             {
-                Debug.Assert(Hero.CategoryHero == CategoryHero.Melee);
+                Debug.Assert(ClassHero.CategoryHero == CategoryHero.Melee);
 
                 // Ищем, кого атаковать
                 List<PlayerHero> targets = new List<PlayerHero>();
@@ -380,9 +378,9 @@ namespace Fantasy_King_s_Battle
 
         internal void UpdateBaseParameters()
         {
-            ParametersBase.Health = (ParametersBase.Vitality * ParametersBase.CoefHealth) + (Level * Hero.ConfigNextLevel.Health);
-            ParametersBase.Mana = (ParametersBase.Magic * ParametersBase.CoefMana) + (Level * Hero.ConfigNextLevel.Mana);
-            ParametersBase.Stamina = (ParametersBase.Vitality * ParametersBase.CoefStamina) + (Level * Hero.ConfigNextLevel.Stamina);
+            ParametersBase.Health = (ParametersBase.Vitality * ParametersBase.CoefHealth) + (Level * ClassHero.ConfigNextLevel.Health);
+            ParametersBase.Mana = (ParametersBase.Magic * ParametersBase.CoefMana) + (Level * ClassHero.ConfigNextLevel.Mana);
+            ParametersBase.Stamina = (ParametersBase.Vitality * ParametersBase.CoefStamina) + (Level * ClassHero.ConfigNextLevel.Stamina);
 
             UpdateParamsWithAmmunition();
         }

@@ -764,7 +764,7 @@ namespace Fantasy_King_s_Battle
                 case SourceForDrag.Hero:
                     heroForDrag = panelHeroForDrag.Hero;
                     Debug.Assert(heroForDrag != null);
-                    picBoxItemForDrag.Image = ilGuiHeroes.Images[heroForDrag.Hero.ImageIndex];
+                    picBoxItemForDrag.Image = ilGuiHeroes.Images[heroForDrag.ClassHero.ImageIndex];
 
                     break;
                 default:
@@ -901,7 +901,7 @@ namespace Fantasy_King_s_Battle
                 itemForDrag = panelHeroInfo.Hero.Slots[((PanelItem)sender).NumberCell];
                 // Дефолтный предмет нельзя перемещать
                 if (itemForDrag != null)
-                    if (itemForDrag.Item == panelHeroInfo.Hero.Hero.Slots[((PanelItem)sender).NumberCell].DefaultItem)
+                    if (itemForDrag.Item == panelHeroInfo.Hero.ClassHero.Slots[((PanelItem)sender).NumberCell].DefaultItem)
                         itemForDrag = null;
 
                 if (itemForDrag != null)
