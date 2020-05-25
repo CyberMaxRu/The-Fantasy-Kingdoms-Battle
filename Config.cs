@@ -75,14 +75,6 @@ namespace Fantasy_King_s_Battle
                 Fractions.Add(new Fraction(n, fm));
             }
 
-            // Загрузка классов юнитов
-            xmlDoc = CreateXmlDocument("Config\\ClassesUnits.xml");
-
-            foreach (XmlNode n in xmlDoc.SelectNodes("/ClassesUnits/ClassUnit"))
-            {
-                ClassesUnits.Add(new ClassUnit(n));
-            }
-
             // Загрузка навыков
             xmlDoc = CreateXmlDocument("Config\\Skills.xml");
 
@@ -104,7 +96,6 @@ namespace Fantasy_King_s_Battle
         internal List<Building> Buildings { get; } = new List<Building>();
         internal List<Hero> Heroes { get; } = new List<Hero>();
         internal List<Fraction> Fractions { get; } = new List<Fraction>();
-        internal List<ClassUnit> ClassesUnits { get; } = new List<ClassUnit>();
         internal List<TypeItem> TypeItems { get; } = new List<TypeItem>();
         internal List<Item> Items { get; } = new List<Item>();
         internal List<Skill> Skills { get; } = new List<Skill>();
@@ -121,19 +112,6 @@ namespace Fantasy_King_s_Battle
             }
 
             throw new Exception("Фракция " + ID + " не найдена.");
-        }
-
-        internal ClassUnit FindClassUnit(string ID)
-        {
-            foreach (ClassUnit cu in ClassesUnits)
-            {
-                if (cu.ID == ID)
-                {
-                    return cu;
-                }
-            }
-
-            throw new Exception("Класс юнитов " + ID + " не найден.");
         }
 
         internal Skill FindSkill(string ID)

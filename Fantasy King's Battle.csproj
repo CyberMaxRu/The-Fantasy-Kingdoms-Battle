@@ -51,7 +51,6 @@
   <ItemGroup>
     <Compile Include="Battle.cs" />
     <Compile Include="Building.cs" />
-    <Compile Include="ClassUnit.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -141,7 +140,6 @@
     <Content Include="Resources\Config\Items.xml" />
     <Content Include="Resources\Config\Heroes.xml" />
     <Content Include="Resources\Config\Buildings.xml" />
-    <Content Include="Resources\Config\ClassesUnits.xml" />
     <Content Include="Resources\Config\Fractions.xml" />
     <Content Include="Resources\Config\Skills.xml" />
     <Content Include="Resources\Config\TypeItems.xml" />
