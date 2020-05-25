@@ -8,6 +8,7 @@ using System.Diagnostics;
 
 namespace Fantasy_King_s_Battle
 {
+    // Класс вспомогательных методов
     internal sealed class Utils
     {
         internal static bool PointsIsNeighbor(Point p1, Point p2)
