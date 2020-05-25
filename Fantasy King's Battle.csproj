@@ -105,6 +105,7 @@
     <Compile Include="Item.cs" />
     <Compile Include="Skill.cs" />
     <Compile Include="TypeUnit.cs" />
+    <Compile Include="Utils.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

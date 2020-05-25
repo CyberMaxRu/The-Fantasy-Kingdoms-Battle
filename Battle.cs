@@ -62,7 +62,6 @@ namespace Fantasy_King_s_Battle
             battlefield = new PlayerHero[SizeBattlefield.Height, SizeBattlefield.Width];
 
             // Запоминаем героев в одном списке для упрощения расчетов
-            List<PlayerHero> heroes = new List<PlayerHero>();
             foreach (PlayerHero ph in player1.Heroes)
             {
                 if ((ph.Hero.CategoryHero == CategoryHero.Melee) || (ph.Hero.CategoryHero == CategoryHero.Archer) || (ph.Hero.CategoryHero == CategoryHero.Mage))
@@ -86,28 +85,28 @@ namespace Fantasy_King_s_Battle
             // Расчет боя
             for (; ; )
             {
-                Steps.Add(new StepOfBattle(step, heroes));
+                Steps.Add(new StepOfBattle(step, Heroes));
 
                 // Увеличиваем шаг
                 step++;
 
                 // Проверяем, окончен ли бой
                 // Это либо убиты все герои одной из сторон, либо вышло время боя
-                if ((heroes.Where(h => h.Player == player1).Count() == 0) || (heroes.Where(h => h.Player == player2).Count() == 0) || (step == Config.MAX_STEPS_IN_BATTLE))
+                if ((Heroes.Where(h => h.Player == player1).Count() == 0) || (Heroes.Where(h => h.Player == player2).Count() == 0) || (step == Config.MAX_STEPS_IN_BATTLE))
                     break;
 
                 // Делаем действие каждым живым героем
-                foreach (PlayerHero ph in heroes)
-                    ph.DoStepBattle();
+                foreach (PlayerHero ph in Heroes)
+                    ph.DoStepBattle(this);
 
                 // Применяем полученный урон, баффы/дебаффы
-                foreach (PlayerHero ph in heroes)
+                foreach (PlayerHero ph in Heroes)
                     ph.ApplyStepBattle();
 
                 // Убираем мертвых героев из списка
-                foreach (PlayerHero ph in heroes)
+                foreach (PlayerHero ph in Heroes)
                     if (ph.IsLive == false)
-                        heroes.Remove(ph);
+                        Heroes.Remove(ph);
             }
 
             // Создаем списки действуюих и уничтоженных отрядов
@@ -236,7 +235,7 @@ namespace Fantasy_King_s_Battle
                 //Debug.Assert(ph.ParametersInBattle.CurrentHealth > 0);
                 Debug.Assert(battlefield[ph.ParametersInBattle.Coord.Y, ph.ParametersInBattle.Coord.X] == null);
 
-                heroes.Add(ph);
+                Heroes.Add(ph);
                 battlefield[ph.ParametersInBattle.Coord.Y, ph.ParametersInBattle.Coord.X] = ph;
             }
         }
@@ -246,6 +245,7 @@ namespace Fantasy_King_s_Battle
         internal int Turn { get; }// Ход, на котором произошел бой
         internal Size SizeBattlefield { get;  }
         internal List<StepOfBattle> Steps { get; } = new List<StepOfBattle>();
+        internal List<PlayerHero> Heroes = new List<PlayerHero>();
         internal Player Winner { get; private set; }// Победитель
         internal string LogBattle { get; private set; }
         internal int Player1Damage { get; private set; }

@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace Fantasy_King_s_Battle
 {
-    internal enum StateHeroInBattle { Melee, Shoot, Cast, Drink, Rest, Dead, Resurrection }// Состояние героя в бою
+    internal enum StateHeroInBattle { None, Melee, Shoot, Cast, Drink, Healing, Rest, Dead, Resurrection }// Состояние героя в бою
 
     // Класс героя игрока
     internal sealed class PlayerHero
@@ -63,7 +63,11 @@ namespace Fantasy_King_s_Battle
         internal PlayerItem Armour { get; private set; }// Доспех
         internal PanelHero Panel { get; set; }
         internal bool IsLive { get; private set; }
+
+        // Параметры во время боя
         internal Point CoordInPlayer { get; set; }
+        internal StateHeroInBattle State { get; private set; }
+        internal PlayerHero Target { get; private set; }
 
         // Статистика за лобби
         internal int Battles { get; }// Участвовал в сражениях
@@ -305,14 +309,68 @@ namespace Fantasy_King_s_Battle
         // Подготовка к сражению
         internal void PrepareToBattle()
         {
+            Debug.Assert(Target == null);
+
             ParametersInBattle = new HeroParameters(ParametersWithAmmunition);
+            State = StateHeroInBattle.None;
         }
 
         // Делает шаг битвы
-        internal void DoStepBattle()
+        internal void DoStepBattle(Battle b)
         {
-            // Ищем, кого атаковать
-            //foreach 
+            Debug.Assert(IsLive == true);
+
+            switch (State)
+            {
+                case StateHeroInBattle.None:
+                    Debug.Assert(Target == null);
+
+                    // Если сейчас ничего не выполняем, ищем, что можно сделать
+                    // Сначала атакуем
+                    if (SearchTargetForMelee() == false)
+                    {
+
+                    }
+
+                    break;
+                case StateHeroInBattle.Melee:
+                    break;
+                default:
+                    break;
+            }
+
+            bool SearchTargetForMelee()
+            {
+                Debug.Assert(Hero.CategoryHero == CategoryHero.Melee);
+
+                // Ищем, кого атаковать
+                List<PlayerHero> targets = new List<PlayerHero>();
+
+                foreach (PlayerHero h in b.Heroes)
+                {
+                    // Собираем список вражеских героев вокруг себя
+                    if (h.Player != Player)
+                        if (IsNeighbour(h) == true)
+                            targets.Add(h);
+                }
+
+                if (targets.Count > 0)
+                {
+                    Target = targets[0];
+                    State = StateHeroInBattle.Melee;
+
+                    return true;
+                }
+                else
+                    return false;
+            }
+
+            bool IsNeighbour(PlayerHero ph)
+            {
+                Debug.Assert(this != ph);
+
+                return Utils.PointsIsNeighbor(this.ParametersInBattle.Coord, ph.ParametersInBattle.Coord);
+            }
         }
 
         // Применяем шаг битвы
