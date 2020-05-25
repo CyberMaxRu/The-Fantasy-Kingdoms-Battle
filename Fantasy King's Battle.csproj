@@ -69,6 +69,7 @@
     <Compile Include="Fraction.cs" />
     <Compile Include="GuiUtils.cs" />
     <Compile Include="Hero.cs" />
+    <Compile Include="HeroInBattle.cs" />
     <Compile Include="PanelCellHero.cs">
       <SubType>Component</SubType>
     </Compile>

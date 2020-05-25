@@ -10,20 +10,6 @@ namespace Fantasy_King_s_Battle
 {
     internal enum ResultBattle { Win, Lose, Draw };
 
-    internal sealed class HeroInBattle
-    {
-        public HeroInBattle(Battle b, PlayerHero ph)
-        {
-            Battle = b;
-            PlayerHero = ph;
-            Parameters = new HeroParameters(ph.ParametersInBattle);
-        }
-
-        internal PlayerHero PlayerHero { get; }
-        internal HeroParameters Parameters { get; }
-        internal Battle Battle { get; }
-    }
-
     // Класс шага сражения
     internal sealed class StepOfBattle
     {
