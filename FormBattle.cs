@@ -23,12 +23,19 @@ namespace Fantasy_King_s_Battle
             InitializeComponent();
 
             Paint += FormBattle_Paint;
+            FormClosing += FormBattle_FormClosing;
 
             BackgroundImage = Program.formMain.background;
             penArrow.Width = 3;
             penArrow.CustomEndCap = new System.Drawing.Drawing2D.AdjustableArrowCap(4.0F, 8.0F, true);
             //bmpBackground = new Bitmap(Width, Height);
             //bmpBackground.
+        }
+
+        private void FormBattle_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (battle.BattleCalced == false)
+                battle.CalcWholeBattle(); 
         }
 
         private void FormBattle_Paint(object sender, PaintEventArgs e)
