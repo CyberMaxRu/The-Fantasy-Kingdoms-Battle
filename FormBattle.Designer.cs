@@ -35,6 +35,7 @@
             this.lblDrawBack = new System.Windows.Forms.Label();
             this.lblDrawHeroes = new System.Windows.Forms.Label();
             this.lblSkippedFrames = new System.Windows.Forms.Label();
+            this.lblCalcStep = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -101,11 +102,21 @@
             this.lblSkippedFrames.TabIndex = 6;
             this.lblSkippedFrames.Text = "label1";
             // 
+            // lblCalcStep
+            // 
+            this.lblCalcStep.AutoSize = true;
+            this.lblCalcStep.Location = new System.Drawing.Point(760, 8);
+            this.lblCalcStep.Name = "lblCalcStep";
+            this.lblCalcStep.Size = new System.Drawing.Size(35, 13);
+            this.lblCalcStep.TabIndex = 7;
+            this.lblCalcStep.Text = "label1";
+            // 
             // FormBattle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(968, 637);
+            this.Controls.Add(this.lblCalcStep);
             this.Controls.Add(this.lblSkippedFrames);
             this.Controls.Add(this.lblDrawHeroes);
             this.Controls.Add(this.lblDrawBack);
@@ -131,5 +142,6 @@
         private System.Windows.Forms.Label lblDrawBack;
         private System.Windows.Forms.Label lblDrawHeroes;
         private System.Windows.Forms.Label lblSkippedFrames;
+        private System.Windows.Forms.Label lblCalcStep;
     }
 }

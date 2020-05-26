@@ -81,7 +81,11 @@ namespace Fantasy_King_s_Battle
 
                 if (battle.BattleCalced == false)
                 {
+                    st.Restart();
                     battle.CalcStep();
+                    st.Stop();
+                    lblCalcStep.Text = st.ElapsedMilliseconds.ToString();
+
                     ApplyStep();
                     Application.DoEvents();
                 }
@@ -185,7 +189,7 @@ namespace Fantasy_King_s_Battle
                 cellHeroes[h.Coord.Y, h.Coord.X].Hero = h;
             }
 
-            lblStep.Text = "Шаг: " + battle.Step.ToString() + " / " + ((DateTime.Now - startDateTime).TotalMilliseconds / Config.STEPS_IN_SECOND).ToString();
+            lblStep.Text = "Шаг: " + battle.Step.ToString() + " / " + ((DateTime.Now - startDateTime).TotalMilliseconds / (1000 / Config.STEPS_IN_SECOND)).ToString();
             lblTotalSteps.Text = battle.BattleCalced == false ? "Идет бой" : "Бой закончен";
             lblSkippedFrames.Text = skippedFrames.ToString();
 
