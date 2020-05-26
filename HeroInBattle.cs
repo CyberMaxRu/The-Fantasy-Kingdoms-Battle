@@ -8,11 +8,13 @@ using System.Drawing;
 
 namespace Fantasy_King_s_Battle
 {
-    internal enum StateHeroInBattle { Melee, Shoot, Cast, Drink, Healing, Rest, Resurrection, Dead, RestoreAfterAction, None }// Состояние героя в бою
+    internal enum StateHeroInBattle { Melee, Shoot, Cast, Drink, Healing, Rest, Resurrection, Dead, None }// Состояние героя в бою
 
     internal sealed class HeroInBattle
     {
         private int countAction;// Счетчик действия
+        private int timeAction;// Какое количество времени выполнения действие
+        private bool inRollbackAfterAction;// Герой во время отката после выполнения действия
 
         public HeroInBattle(Battle b, PlayerHero ph, Point coord)
         {
@@ -52,53 +54,59 @@ namespace Fantasy_King_s_Battle
         {
             Debug.Assert(IsLive == true);
 
-            switch (State)
+            if (inRollbackAfterAction == false)
             {
-                case StateHeroInBattle.None:
-                    Debug.Assert(Target == null);
-                    Debug.Assert(countAction == 0);
+                switch (State)
+                {
+                    case StateHeroInBattle.None:
+                        Debug.Assert(Target == null);
+                        Debug.Assert(countAction == 0);
 
-                    // Если сейчас ничего не выполняем, ищем, что можно сделать
-                    // Сначала атакуем
-                    if (SearchTargetForMelee() == false)
-                    {
-
-                    }
-
-                    break;
-                case StateHeroInBattle.Melee:
-                    countAction--;
-
-                    if (Target.IsLive == true)
-                    {
-                        if (countAction == 0)
+                        // Если сейчас ничего не выполняем, ищем, что можно сделать
+                        // Сначала атакуем
+                        if (SearchTargetForMelee() == false)
                         {
-                            // Делаем удар по противнику
-                            Target.GetDamage(CalcDamageMelee(Target), CalcDamageShoot(Target), CalcDamageMagic(Target));
-                            Target = null;
 
-                            // После удара делаем паузу длиной во время атаки
-                            countAction = TimeAttack();
-                            State = StateHeroInBattle.RestoreAfterAction;
                         }
-                    }
-                    else
-                    {
-                        // Противника уже убили, пропускаем ход
-                        Target = null;
-                        State = StateHeroInBattle.None;
-                        countAction = 0;
-                    }
 
-                    break;
-                case StateHeroInBattle.RestoreAfterAction:
-                    countAction--;
-                    if (countAction == 0)
-                        State = StateHeroInBattle.None;
+                        break;
+                    case StateHeroInBattle.Melee:
+                        countAction--;
 
-                    break;
-                default:
-                    break;
+                        if (Target.IsLive == true)
+                        {
+                            if (countAction == 0)
+                            {
+                                // Делаем удар по противнику
+                                Target.GetDamage(CalcDamageMelee(Target), CalcDamageShoot(Target), CalcDamageMagic(Target));
+                                Target = null;
+
+                                // После удара делаем паузу длиной во время атаки
+                                countAction = TimeAttack();
+                                inRollbackAfterAction = true;
+                            }
+                        }
+                        else
+                        {
+                            // Противника уже убили, пропускаем ход
+                            Target = null;
+                            State = StateHeroInBattle.None;
+                            countAction = timeAction - countAction;
+                            timeAction = countAction;
+                            inRollbackAfterAction = true;
+                        }
+
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                countAction--;
+                if (countAction == 0)
+                    State = StateHeroInBattle.None;
+
             }
 
             bool SearchTargetForMelee()
@@ -123,6 +131,7 @@ namespace Fantasy_King_s_Battle
                     State = StateHeroInBattle.Melee;
                     Target = targets[0];
                     countAction = TimeAttack();
+                    timeAction = countAction;
 
                     return true;
                 }
