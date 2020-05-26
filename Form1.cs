@@ -570,7 +570,7 @@ namespace Fantasy_King_s_Battle
             ButtonEndTurn.Enabled = false;
             lobby.DoEndTurn();
 
-            ShowBattle();
+            //ShowBattle();
 
             ShowDataPlayer();
             ButtonEndTurn.Enabled = true;

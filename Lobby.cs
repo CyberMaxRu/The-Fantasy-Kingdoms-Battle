@@ -97,13 +97,28 @@ namespace Fantasy_King_s_Battle
 
         private void CalcBattles()
         {
+            Battle b;
+            FormBattle formBattle;
+
             foreach (Player p in Players)
                 p.BattleCalced = false;
 
             foreach (Player p in Players)
             {
                 if (p.BattleCalced == false)
-                    Battles.Add(new Battle(p, p.Opponent, Turn, FormMain.Rnd));
+                {
+                    b = new Battle(p, p.Opponent, Turn, FormMain.Rnd);
+
+                    if ((p.TypePlayer == TypePlayer.Human) || (p.Opponent.TypePlayer == TypePlayer.Human))
+                    {
+                        formBattle = new FormBattle();
+                        formBattle.ShowBattle(b);
+                    }
+                    else
+                        b.CalcWholeBattle();
+
+                    Battles.Add(b);
+                }
             }
         }
 

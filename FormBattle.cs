@@ -14,7 +14,6 @@ namespace Fantasy_King_s_Battle
     public partial class FormBattle : Form
     {
         private PanelHeroInBattle[,] cellHeroes;
-        private int currentStep;
         private Battle battle;
         private Pen penArrow = new Pen(Color.Fuchsia);
         private Bitmap bmpBackground;
@@ -47,7 +46,7 @@ namespace Fantasy_King_s_Battle
                     }
                 }
 
-            foreach (HeroInBattle h in battle.Steps[currentStep].Heroes)
+            foreach (HeroInBattle h in battle.ActiveHeroes)
             {
                 if (h.Target != null)
                 {
@@ -63,7 +62,6 @@ namespace Fantasy_King_s_Battle
         internal void ShowBattle(Battle b)
         {
             battle = b;
-            currentStep = 0;
             PanelHeroInBattle p;
 
             cellHeroes = new PanelHeroInBattle[b.SizeBattlefield.Height, b.SizeBattlefield.Width];
@@ -87,8 +85,11 @@ namespace Fantasy_King_s_Battle
 
         private void button1_Click(object sender, EventArgs e)
         {
-            currentStep++;
-            ApplyStep();
+            if (battle.BattleCalced == false)
+            {
+                battle.CalcStep();
+                ApplyStep();
+            }
         }
 
         private void ApplyStep()
@@ -97,15 +98,15 @@ namespace Fantasy_King_s_Battle
                 for (int x = 0; x < battle.SizeBattlefield.Width; x++)
                     cellHeroes[y, x].Hero = null;
 
-            foreach (HeroInBattle h in battle.Steps[currentStep].Heroes)
+            foreach (HeroInBattle h in battle.ActiveHeroes)
             {
                 Debug.Assert(cellHeroes[h.Coord.Y, h.Coord.X].Hero == null);
 
                 cellHeroes[h.Coord.Y, h.Coord.X].Hero = h;
             }
 
-            lblStep.Text = "Шаг: " + currentStep.ToString();
-            lblTotalSteps.Text = "Всего шагов: " + battle.Steps.Count.ToString();
+            lblStep.Text = "Шаг: " + battle.Step.ToString();
+            lblTotalSteps.Text = battle.BattleCalced == false ? "Идет бой" : "Бой закончен";
 
             Refresh();
         }
