@@ -89,8 +89,6 @@ namespace Fantasy_King_s_Battle
         internal int DefenseMelee { get; set; }
         internal int DefenseMissile { get; set; }
         internal int DefenseMagic { get; set; }
-        internal Point Coord { get; set; }// Координаты героя на поле боя
-        internal bool IsLive { get; set; }// Герой жив
         internal int StepsInTumbstone { get; set; }// Сколько шагов боя герой уже в состоянии могилы
         internal int StepsInResurrection { get; set; }// Сколько шагов боя герой уже воскрешается
 
@@ -107,7 +105,6 @@ namespace Fantasy_King_s_Battle
             Health = hp.Health;
             Mana = hp.Mana;
             Stamina = hp.Stamina;
-            Coord = hp.Coord;
     }
 
     // Пересчитать параметры

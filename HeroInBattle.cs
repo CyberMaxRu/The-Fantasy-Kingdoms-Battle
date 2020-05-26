@@ -94,7 +94,7 @@ namespace Fantasy_King_s_Battle
             {
                 Debug.Assert(this != hb);
 
-                return Utils.PointsIsNeighbor(this.Parameters.Coord, hb.Parameters.Coord);
+                return Utils.PointsIsNeighbor(Coord, hb.Coord);
             }
         }
 

@@ -51,8 +51,8 @@ namespace Fantasy_King_s_Battle
             {
                 if (h.Target != null)
                 {
-                    PanelHeroInBattle p1 = cellHeroes[h.Parameters.Coord.Y, h.Parameters.Coord.X];
-                    PanelHeroInBattle p2 = cellHeroes[h.Target.Parameters.Coord.Y, h.Target.Parameters.Coord.X];
+                    PanelHeroInBattle p1 = cellHeroes[h.Coord.Y, h.Coord.X];
+                    PanelHeroInBattle p2 = cellHeroes[h.Target.Coord.Y, h.Target.Coord.X];
 
                     penArrow.Color = h.PlayerHero.Player == battle.Player1 ? Color.Green : Color.Maroon;
                     e.Graphics.DrawLine(penArrow, new Point(p1.Location.X + p1.Width / 2 , p1.Location.Y + p1.Height / 2), new Point(p2.Location.X + p2.Width / 2, p2.Location.Y + p2.Height / 2));
@@ -99,9 +99,9 @@ namespace Fantasy_King_s_Battle
 
             foreach (HeroInBattle h in battle.Steps[currentStep].Heroes)
             {
-                Debug.Assert(cellHeroes[h.Parameters.Coord.Y, h.Parameters.Coord.X].Hero == null);
+                Debug.Assert(cellHeroes[h.Coord.Y, h.Coord.X].Hero == null);
 
-                cellHeroes[h.Parameters.Coord.Y, h.Parameters.Coord.X].Hero = h;
+                cellHeroes[h.Coord.Y, h.Coord.X].Hero = h;
             }
 
             lblStep.Text = "Шаг: " + currentStep.ToString();
