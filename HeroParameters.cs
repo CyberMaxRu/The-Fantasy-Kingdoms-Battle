@@ -75,11 +75,8 @@ namespace Fantasy_King_s_Battle
         internal int CoefMana { get; set; }
         internal int CoefStamina { get; set; }
         internal int Health { get; set; }
-        internal int CurrentHealth { get; set; }
         internal int Mana { get; set; }
-        internal int CurrentMana { get; set; }
         internal int Stamina { get; set; }
-        internal int CurrentStamina { get; set; }
 
         internal int MinMeleeDamage { get; set; }
         internal int MaxMeleeDamage { get; set; }

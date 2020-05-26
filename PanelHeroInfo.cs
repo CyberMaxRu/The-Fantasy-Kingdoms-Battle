@@ -127,8 +127,8 @@ namespace Fantasy_King_s_Battle
                 pbHero.Image = imageListHeroes.Images[ph.ClassHero.ImageIndex];
 
                 lblLevel.Text = "Уровень: " + ph.Level.ToString();
-                lblHealth.Text = "Здоровье: " + ph.ParametersWithAmmunition.CurrentHealth.ToString() + "/" + ph.ParametersWithAmmunition.Health.ToString();
-                lblMana.Text = "Мана: " + ph.ParametersWithAmmunition.CurrentMana.ToString() + "/" + ph.ParametersWithAmmunition.Mana.ToString();
+                lblHealth.Text = "Здоровье: " + ph.ParametersWithAmmunition.Health.ToString();
+                lblMana.Text = "Мана: " + ph.ParametersWithAmmunition.Mana.ToString();
 
                 ShowParameter(lblStrength, ph.ParametersBase.Strength, ph.ParametersWithAmmunition.Strength);
                 ShowParameter(lblDexterity, ph.ParametersBase.Dexterity, ph.ParametersWithAmmunition.Dexterity);

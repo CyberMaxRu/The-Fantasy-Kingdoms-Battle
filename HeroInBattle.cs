@@ -12,6 +12,8 @@ namespace Fantasy_King_s_Battle
 
     internal sealed class HeroInBattle
     {
+        private int countAction;// Счетчик действия
+
         public HeroInBattle(Battle b, PlayerHero ph, Point coord)
         {
             Battle = b;
@@ -20,6 +22,15 @@ namespace Fantasy_King_s_Battle
             IsLive = true;
 
             Parameters = new HeroParameters(ph.ParametersWithAmmunition);
+
+            Debug.Assert(Parameters.Health > 0);
+            Debug.Assert(Parameters.Mana > 0);
+            Debug.Assert(Parameters.Stamina > 0);
+
+            CurrentHealth = Parameters.Health;
+            CurrentMana = Parameters.Mana;
+            CurrentStamina = Parameters.Stamina;
+
             State = StateHeroInBattle.None;
         }
 
@@ -31,6 +42,9 @@ namespace Fantasy_King_s_Battle
         internal Point Coord { get; set; }
         internal StateHeroInBattle State { get; private set; }
         internal HeroInBattle Target { get; private set; }
+        internal int CurrentHealth { get; set; }
+        internal int CurrentMana { get; set; }
+        internal int CurrentStamina { get; set; }
 
         // Делает шаг битвы
         internal void DoStepBattle(Battle b)
@@ -74,8 +88,10 @@ namespace Fantasy_King_s_Battle
                 if (targets.Count > 0)
                 {
                     Debug.Assert(this != targets[0]);
-                    Target = targets[0];
+
                     State = StateHeroInBattle.Melee;
+                    Target = targets[0];
+                    countAction = TimeAttack();
 
                     return true;
                 }
@@ -95,6 +111,15 @@ namespace Fantasy_King_s_Battle
         internal void ApplyStepBattle()
         {
 
+        }
+
+        private int TimeAttack()
+        {
+            int timeAttack = PlayerHero.Weapon.Item.TimeHit / 100 * Config.STEPS_IN_SECOND;
+
+            Debug.Assert(timeAttack > 0);
+
+            return timeAttack;
         }
     }
 }
