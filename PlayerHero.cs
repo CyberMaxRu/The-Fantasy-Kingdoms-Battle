@@ -45,9 +45,10 @@ namespace Fantasy_King_s_Battle
 
         }
 
-        internal PlayerBuilding Building { get; }
+        internal PlayerBuilding Building { get; }// Здание, которому принадлежит герой
         internal Player Player => Building.Player;// Игрок, которому принадлежит герой
         internal Hero ClassHero => Building.Building.TrainedHero; // Класс героя
+        // Основные параметры
         internal int Level { get; private set; }// Уровень героя
         internal HeroParameters ParametersBase { get; }// Свои параметры, без учета амуниции
         internal HeroParameters ParametersWithAmmunition { get; }// Параметры с учетом амуниции
@@ -55,9 +56,7 @@ namespace Fantasy_King_s_Battle
         internal PlayerItem Weapon { get; private set; }// Оружие 
         internal PlayerItem Armour { get; private set; }// Доспех
         internal PanelHero Panel { get; set; }
-
-        // Параметры во время боя
-        internal Point CoordInPlayer { get; set; }
+        internal Point CoordInPlayer { get; set; }// Координаты героя в слотах игрока
 
         // Статистика за лобби
         internal int TrainedDay { get; }// На каком дне нанят
