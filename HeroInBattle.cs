@@ -105,8 +105,10 @@ namespace Fantasy_King_s_Battle
             {
                 countAction--;
                 if (countAction == 0)
+                {
                     State = StateHeroInBattle.None;
-
+                    inRollbackAfterAction = false;
+                }
             }
 
             bool SearchTargetForMelee()
@@ -158,6 +160,8 @@ namespace Fantasy_King_s_Battle
                 CurrentHealth = 0;
                 State = StateHeroInBattle.Dead;
             }
+
+            ReceivedDamage = 0;
 
             Debug.Assert(CurrentHealth <= Parameters.Health);
             Debug.Assert(CurrentMana <= Parameters.Mana);
