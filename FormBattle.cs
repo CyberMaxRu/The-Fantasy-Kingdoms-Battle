@@ -17,6 +17,15 @@ namespace Fantasy_King_s_Battle
         private Battle battle;
         private Pen penArrow = new Pen(Color.Fuchsia);
         private Bitmap bmpBackground;
+        private Timer timerStep;
+        private DateTime lastLabel;
+        private int frames;
+        private int ticksPast = 0;
+        private DateTime startDateTime;
+        private Bitmap background;
+        private Stopwatch st = new Stopwatch();
+        private bool inDraw;
+        private int skippedFrames = 0;
 
         public FormBattle()
         {
@@ -25,11 +34,62 @@ namespace Fantasy_King_s_Battle
             Paint += FormBattle_Paint;
             FormClosing += FormBattle_FormClosing;
 
-            BackgroundImage = Program.formMain.background;
+            //BackgroundImage = Program.formMain.background;
             penArrow.Width = 3;
             penArrow.CustomEndCap = new System.Drawing.Drawing2D.AdjustableArrowCap(4.0F, 8.0F, true);
             //bmpBackground = new Bitmap(Width, Height);
             //bmpBackground.
+
+            // Подготавливаем подложку
+            background = new Bitmap(ClientSize.Width, ClientSize.Height);
+            int repX = ClientSize.Width / Program.formMain.background.Width + 1;
+            int repY = ClientSize.Height / Program.formMain.background.Height  + 1; 
+            Graphics g = Graphics.FromImage(background);
+            for (int y = 0; y < repY; y++)
+                for (int x = 0; x < repX; x++)
+                    g.DrawImageUnscaled(Program.formMain.background, x * Program.formMain.background.Width, y * Program.formMain.background.Height);
+            g.Dispose();
+
+            // Таймер для анимации
+            timerStep = new Timer()
+            {               
+                Interval = 1000 / Config.STEPS_IN_SECOND,
+                Enabled = false
+            };
+            timerStep.Tick += TimerStep_Tick;
+        }
+
+        private void TimerStep_Tick(object sender, EventArgs e)
+        {
+            if (ticksPast == 0)
+            {
+                startDateTime = DateTime.Now;
+                ticksPast = 1;
+            }
+
+            if (inDraw == false)
+            {
+                inDraw = true;
+                frames++;
+
+                if ((DateTime.Now - lastLabel).TotalMilliseconds > 1000)
+                {
+                    lblSpeed.Text = frames.ToString();
+                    lastLabel = DateTime.Now;
+                    frames = 0;
+                }
+
+                if (battle.BattleCalced == false)
+                {
+                    battle.CalcStep();
+                    ApplyStep();
+                    Application.DoEvents();
+                }
+
+                inDraw = false;
+            }
+            else
+                skippedFrames++;
         }
 
         private void FormBattle_FormClosing(object sender, FormClosingEventArgs e)
@@ -40,9 +100,17 @@ namespace Fantasy_King_s_Battle
 
         private void FormBattle_Paint(object sender, PaintEventArgs e)
         {
+            st.Restart();
+            e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
+            e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+            e.Graphics.DrawImageUnscaled(background, 0, 0);
+            st.Stop();
+            lblDrawBack.Text = st.ElapsedMilliseconds.ToString();
+
             Bitmap bmpPanel = new Bitmap(cellHeroes[0, 0].Width, cellHeroes[0, 0].Height);
 
             // Рисуем героев
+            st.Restart();
             for (int y = 0; y < battle.SizeBattlefield.Height; y++)
                 for (int x = 0; x < battle.SizeBattlefield.Width; x++)
                 {
@@ -52,6 +120,8 @@ namespace Fantasy_King_s_Battle
                         e.Graphics.DrawImageUnscaled(bmpPanel, cellHeroes[y, x].Left, cellHeroes[y, x].Top);
                     }
                 }
+            st.Stop();
+            lblDrawHeroes.Text = st.ElapsedMilliseconds.ToString();
 
             foreach (HeroInBattle h in battle.ActiveHeroes)
             {
@@ -86,7 +156,10 @@ namespace Fantasy_King_s_Battle
                 }
 
             ApplyStep();
-
+            timerStep.Start();
+            lastLabel = DateTime.Now;
+            frames = 0;
+            inDraw = false;
             ShowDialog();
         }
 
@@ -112,8 +185,9 @@ namespace Fantasy_King_s_Battle
                 cellHeroes[h.Coord.Y, h.Coord.X].Hero = h;
             }
 
-            lblStep.Text = "Шаг: " + battle.Step.ToString();
+            lblStep.Text = "Шаг: " + battle.Step.ToString() + " / " + ((DateTime.Now - startDateTime).TotalMilliseconds / Config.STEPS_IN_SECOND).ToString();
             lblTotalSteps.Text = battle.BattleCalced == false ? "Идет бой" : "Бой закончен";
+            lblSkippedFrames.Text = skippedFrames.ToString();
 
             Refresh();
         }

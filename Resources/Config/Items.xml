@@ -68,7 +68,7 @@
     <TypeAttack>Melee</TypeAttack>
     <DamageMelee>5</DamageMelee>
     <DamageMagic>0</DamageMagic>
-    <TimeHit>200</TimeHit>
+    <TimeHit>100</TimeHit>
   </Item>
   <Item>
     <ID>ArmourWarrior0</ID>
@@ -96,7 +96,7 @@
     <Perk></Perk>
     <TypeAttack>Missile</TypeAttack>
     <DamageMissile>3</DamageMissile>
-    <TimeHit>150</TimeHit>
+    <TimeHit>50</TimeHit>
   </Item>
   <Item>
     <ID>ArmourArcher0</ID>
@@ -121,7 +121,7 @@
     <Perk></Perk>
     <TypeAttack>Missile</TypeAttack>
     <DamageMagic>5</DamageMagic>
-    <TimeHit>200</TimeHit>
+    <TimeHit>100</TimeHit>
   </Item>
   <Item>
     <ID>ArmourMage0</ID>
@@ -146,7 +146,7 @@
     <Perk></Perk>
     <TypeAttack>Melee</TypeAttack>
     <DamageMelee>15</DamageMelee>
-    <TimeHit>200</TimeHit>
+    <TimeHit>100</TimeHit>
   </Item>
   <Item>
     <ID>ArmourWarrior1</ID>
@@ -171,7 +171,7 @@
     <Perk></Perk>
     <TypeAttack>Melee</TypeAttack>
     <DamageMelee>25</DamageMelee>
-    <TimeHit>200</TimeHit>
+    <TimeHit>100</TimeHit>
   </Item>
   <Item>
     <ID>ArmourWarrior2</ID>
@@ -196,7 +196,7 @@
     <Perk></Perk>
     <TypeAttack>Missile</TypeAttack>
     <DamageMissile>10</DamageMissile>
-    <TimeHit>140</TimeHit>
+    <TimeHit>40</TimeHit>
   </Item>
   <Item>
     <ID>ArmourArcher1</ID>
@@ -221,7 +221,7 @@
     <Perk></Perk>
     <TypeAttack>Missile</TypeAttack>
     <DamageMissile>15</DamageMissile>
-    <TimeHit>130</TimeHit>
+    <TimeHit>30</TimeHit>
   </Item>
   <Item>
     <ID>ArmourArcher2</ID>
