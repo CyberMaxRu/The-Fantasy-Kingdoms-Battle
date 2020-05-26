@@ -40,14 +40,14 @@ namespace Fantasy_King_s_Battle
             // Рисуем иконку героя
             if (Hero != null)
             {
-                Bitmap bmpIcon = new Bitmap(ImageListHeroes.Images[Hero.PlayerHero.ClassHero.ImageIndex]);
+                Bitmap bmpIcon = new Bitmap(ImageListHeroes.Images[GuiUtils.GetImageIndexWithGray(ImageListHeroes, Hero.PlayerHero.ClassHero.ImageIndex, Hero.IsLive)]);
                 if (Hero.PlayerHero.Player != Hero.Battle.Player1)
                     bmpIcon.RotateFlip(RotateFlipType.RotateNoneFlipX);
                 e.Graphics.DrawImageUnscaled(bmpIcon, 0, 0);
 
                 if (Hero.State != StateHeroInBattle.None)
                 {
-                    e.Graphics.DrawImageUnscaled(Program.formMain.ilStateHero.Images[(int)Hero.State], 0, 0);
+                    e.Graphics.DrawImageUnscaled(Program.formMain.ilStateHero.Images[(int)Hero.State], 0, 0);                    
                 }
 
                 // Рисуем полоски жизни, маны, бодрости

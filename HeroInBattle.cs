@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace Fantasy_King_s_Battle
 {
-    internal enum StateHeroInBattle { Melee, Shoot, Cast, Drink, Healing, Rest, Dead, Resurrection, RestoreAfterAction, None }// Состояние героя в бою
+    internal enum StateHeroInBattle { Melee, Shoot, Cast, Drink, Healing, Rest, Resurrection, Dead, RestoreAfterAction, None }// Состояние героя в бою
 
     internal sealed class HeroInBattle
     {
@@ -147,6 +147,7 @@ namespace Fantasy_King_s_Battle
             {
                 IsLive = false;
                 CurrentHealth = 0;
+                State = StateHeroInBattle.Dead;
             }
 
             Debug.Assert(CurrentHealth <= Parameters.Health);
