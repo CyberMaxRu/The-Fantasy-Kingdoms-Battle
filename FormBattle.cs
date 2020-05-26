@@ -49,10 +49,10 @@ namespace Fantasy_King_s_Battle
 
             foreach (HeroInBattle h in battle.Steps[currentStep].Heroes)
             {
-                if (h.PlayerHero.Target != null)
+                if (h.Target != null)
                 {
                     PanelHeroInBattle p1 = cellHeroes[h.PlayerHero.ParametersInBattle.Coord.Y, h.PlayerHero.ParametersInBattle.Coord.X];
-                    PanelHeroInBattle p2 = cellHeroes[h.PlayerHero.Target.ParametersInBattle.Coord.Y, h.PlayerHero.Target.ParametersInBattle.Coord.X];
+                    PanelHeroInBattle p2 = cellHeroes[h.Target.Parameters.Coord.Y, h.Target.Parameters.Coord.X];
 
                     penArrow.Color = h.PlayerHero.Player == battle.Player1 ? Color.Green : Color.Maroon;
                     e.Graphics.DrawLine(penArrow, new Point(p1.Location.X + p1.Width / 2 , p1.Location.Y + p1.Height / 2), new Point(p2.Location.X + p2.Width / 2, p2.Location.Y + p2.Height / 2));

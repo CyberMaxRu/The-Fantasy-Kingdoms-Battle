@@ -14,6 +14,7 @@ namespace Fantasy_King_s_Battle
         public PlayerHero(PlayerBuilding pb)
         {
             Building = pb;
+            TrainedDay = Player.Lobby.Turn;
 
             IsLive = true;
 
@@ -50,7 +51,6 @@ namespace Fantasy_King_s_Battle
         internal Player Player => Building.Player;// Игрок, которому принадлежит герой
         internal Hero ClassHero => Building.Building.TrainedHero; // Класс героя
         internal int Level { get; private set; }// Уровень героя
-
         internal HeroParameters ParametersBase { get; }// Свои параметры, без учета амуниции
         internal HeroParameters ParametersWithAmmunition { get; }// Параметры с учетом амуниции
         internal HeroParameters ParametersInBattle { get; private set; }// Параметры во время боя, с учетом всех боевых перков, баффов и прочего
@@ -62,10 +62,9 @@ namespace Fantasy_King_s_Battle
 
         // Параметры во время боя
         internal Point CoordInPlayer { get; set; }
-        internal StateHeroInBattle State { get; private set; }
-        internal PlayerHero Target { get; private set; }
 
         // Статистика за лобби
+        internal int TrainedDay { get; }// На каком дне нанят
         internal int Battles { get; }// Участвовал в сражениях
         internal int Wins { get; }// Побед        
         internal int Loses { get; }// Поражений
@@ -76,8 +75,7 @@ namespace Fantasy_King_s_Battle
         internal int WinStrike { get; }// Побед подряд
         internal int LoseStrike { get; }// Поражений подряд
         internal int DrawStrike { get; }// Ничьих подряд
-
-        // Параметры во время боя
+        internal ResultBattle PriorResultBattle { get; set; }// Предыдущий результат битвы для расчета страйков
 
         internal void ShowDate()
         {
@@ -300,80 +298,6 @@ namespace Fantasy_King_s_Battle
             }
 
             Level++;
-        }
-
-        // Подготовка к сражению
-        internal void PrepareToBattle()
-        {
-            Debug.Assert(Target == null);
-
-            ParametersInBattle = new HeroParameters(ParametersWithAmmunition);
-            State = StateHeroInBattle.None;
-        }
-
-        // Делает шаг битвы
-        internal void DoStepBattle(Battle b)
-        {
-            Debug.Assert(IsLive == true);
-
-            switch (State)
-            {
-                case StateHeroInBattle.None:
-                    Debug.Assert(Target == null);
-
-                    // Если сейчас ничего не выполняем, ищем, что можно сделать
-                    // Сначала атакуем
-                    if (SearchTargetForMelee() == false)
-                    {
-
-                    }
-
-                    break;
-                case StateHeroInBattle.Melee:
-                    break;
-                default:
-                    break;
-            }
-
-            bool SearchTargetForMelee()
-            {
-                Debug.Assert(ClassHero.CategoryHero == CategoryHero.Melee);
-
-                // Ищем, кого атаковать
-                List<PlayerHero> targets = new List<PlayerHero>();
-
-                foreach (PlayerHero h in b.Heroes)
-                {
-                    // Собираем список вражеских героев вокруг себя
-                    if (h.Player != Player)
-                        if (IsNeighbour(h) == true)
-                            targets.Add(h);
-                }
-
-                if (targets.Count > 0)
-                {
-                    Debug.Assert(this != targets[0]);
-                    Target = targets[0];
-                    State = StateHeroInBattle.Melee;
-
-                    return true;
-                }
-                else
-                    return false;
-            }
-
-            bool IsNeighbour(PlayerHero ph)
-            {
-                Debug.Assert(this != ph);
-
-                return Utils.PointsIsNeighbor(this.ParametersInBattle.Coord, ph.ParametersInBattle.Coord);
-            }
-        }
-
-        // Применяем шаг битвы
-        internal void ApplyStepBattle()
-        {
-
         }
 
         internal void UpdateBaseParameters()

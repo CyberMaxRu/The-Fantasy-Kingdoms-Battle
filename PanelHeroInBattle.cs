@@ -45,9 +45,9 @@ namespace Fantasy_King_s_Battle
                     bmpIcon.RotateFlip(RotateFlipType.RotateNoneFlipX);
                 e.Graphics.DrawImageUnscaled(bmpIcon, 0, 0);
 
-                if (Hero.PlayerHero.State != StateHeroInBattle.None)
+                if (Hero.State != StateHeroInBattle.None)
                 {
-                    e.Graphics.DrawImageUnscaled(Program.formMain.ilStateHero.Images[(int)Hero.PlayerHero.State], 0, 0);
+                    e.Graphics.DrawImageUnscaled(Program.formMain.ilStateHero.Images[(int)Hero.State], 0, 0);
                 }
 
                 // Рисуем полоски жизни, маны, бодрости
