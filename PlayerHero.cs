@@ -84,14 +84,14 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(Building.Heroes.IndexOf(this) != -1);
             Debug.Assert(Building.Player.Heroes.IndexOf(this) != -1);
 
-            if (Building.Heroes.Remove(this) == false)
-                throw new Exception("Не смог удалить себя из списка героев гильдии.");
-
-            if (Building.Player.Heroes.Remove(this) == false)
-                throw new Exception("Не смог удалить себя из списка героев игрока.");
+            Building.Heroes.Remove(this);
+            Building.Player.Heroes.Remove(this);
 
             if (Panel != null)
                 Panel.Dispose();
+
+            Debug.Assert(Building.Heroes.IndexOf(this) == -1);
+            Debug.Assert(Building.Player.Heroes.IndexOf(this) == -1);
         }
 
         internal int FindSlotWithItem(Item item)
