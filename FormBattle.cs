@@ -51,7 +51,7 @@ namespace Fantasy_King_s_Battle
             {
                 if (h.Target != null)
                 {
-                    PanelHeroInBattle p1 = cellHeroes[h.PlayerHero.ParametersInBattle.Coord.Y, h.PlayerHero.ParametersInBattle.Coord.X];
+                    PanelHeroInBattle p1 = cellHeroes[h.Parameters.Coord.Y, h.Parameters.Coord.X];
                     PanelHeroInBattle p2 = cellHeroes[h.Target.Parameters.Coord.Y, h.Target.Parameters.Coord.X];
 
                     penArrow.Color = h.PlayerHero.Player == battle.Player1 ? Color.Green : Color.Maroon;

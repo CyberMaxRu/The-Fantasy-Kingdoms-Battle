@@ -51,7 +51,6 @@ namespace Fantasy_King_s_Battle
         internal int Level { get; private set; }// Уровень героя
         internal HeroParameters ParametersBase { get; }// Свои параметры, без учета амуниции
         internal HeroParameters ParametersWithAmmunition { get; }// Параметры с учетом амуниции
-        internal HeroParameters ParametersInBattle { get; private set; }// Параметры во время боя, с учетом всех боевых перков, баффов и прочего
         internal PlayerItem[] Slots { get; } = new PlayerItem[FormMain.SLOT_IN_INVENTORY];
         internal PlayerItem Weapon { get; private set; }// Оружие 
         internal PlayerItem Armour { get; private set; }// Доспех
