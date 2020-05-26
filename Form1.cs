@@ -110,7 +110,7 @@ namespace Fantasy_King_s_Battle
 
         private List<PictureBox> SlotSkill = new List<PictureBox>();
 
-        internal readonly FormHint formHint;
+        internal FormHint formHint;
 
         internal static Random Rnd = new Random();
 
@@ -1047,6 +1047,13 @@ namespace Fantasy_King_s_Battle
         private void button1_Click(object sender, EventArgs e)
         {
             ShowBattle();
+        }
+
+        private void FormMain_Activated(object sender, EventArgs e)
+        {
+            // При деактивации пересоздаем окно, иначе оно отображается под главной формой
+            formHint.Dispose();
+            formHint = new FormHint(background, ilGui16, ilParameters);
         }
     }
 }
