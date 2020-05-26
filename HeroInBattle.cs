@@ -32,13 +32,6 @@ namespace Fantasy_King_s_Battle
         internal StateHeroInBattle State { get; private set; }
         internal HeroInBattle Target { get; private set; }
 
-        // Подготовка к сражению
-        internal void PrepareToBattle()
-        {
-            Debug.Assert(Target == null);
-
-        }
-
         // Делает шаг битвы
         internal void DoStepBattle(Battle b)
         {
