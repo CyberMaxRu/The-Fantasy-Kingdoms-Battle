@@ -13,12 +13,11 @@ namespace Fantasy_King_s_Battle
     // Класс шага сражения
     internal sealed class StepOfBattle
     {
-        public StepOfBattle(Battle b, int step, List<PlayerHero> heroes)
+        public StepOfBattle(Battle b, int step, List<HeroInBattle> heroes)
         {
             Step = step;
 
-            //foreach (PlayerHero ph in heroes)
-            //    Heroes.Add(new HeroInBattle(b, ph));
+            Heroes.AddRange(heroes);
         }
 
         internal int Step { get; }
@@ -65,7 +64,7 @@ namespace Fantasy_King_s_Battle
             // Расчет боя
             for (; ; )
             {
-                //Steps.Add(new StepOfBattle(this, step, Heroes));
+                Steps.Add(new StepOfBattle(this, step, ActiveHeroes));
 
                 // Увеличиваем шаг
                 step++;
