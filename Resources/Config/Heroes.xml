@@ -53,44 +53,36 @@
       <Slot>
         <Pos>1</Pos>
         <TypeItem>WeaponWarrior</TypeItem>
-        <MaxQuantity>1</MaxQuantity>
         <DefaultItem>Sword0</DefaultItem>
       </Slot>
       <Slot>
         <Pos>2</Pos>
         <TypeItem>ArmourWarrior</TypeItem>
-        <MaxQuantity>1</MaxQuantity>
         <DefaultItem>ArmourWarrior0</DefaultItem>
       </Slot>
       <Slot>
         <Pos>3</Pos>
         <TypeItem>PotionHealth</TypeItem>
-        <MaxQuantity>5</MaxQuantity>
       </Slot>
       <Slot>
         <Pos>4</Pos>
         <TypeItem>Artifact</TypeItem>
-        <MaxQuantity>1</MaxQuantity>
       </Slot>
       <Slot>
         <Pos>5</Pos>
         <TypeItem>Artifact</TypeItem>
-        <MaxQuantity>1</MaxQuantity>
       </Slot>
       <Slot>
         <Pos>6</Pos>
         <TypeItem>Artifact</TypeItem>
-        <MaxQuantity>1</MaxQuantity>
       </Slot>
       <Slot>
         <Pos>7</Pos>
         <TypeItem>Elixir</TypeItem>
-        <MaxQuantity>3</MaxQuantity>
       </Slot>
       <Slot>
         <Pos>8</Pos>
         <TypeItem>Elixir</TypeItem>
-        <MaxQuantity>3</MaxQuantity>
       </Slot>
     </Slots>
   </Hero>
@@ -147,44 +139,36 @@
       <Slot>
         <Pos>1</Pos>
         <TypeItem>WeaponWarrior</TypeItem>
-        <MaxQuantity>1</MaxQuantity>
         <DefaultItem>Sword0</DefaultItem>
       </Slot>
       <Slot>
         <Pos>2</Pos>
         <TypeItem>ArmourArcher</TypeItem>
-        <MaxQuantity>1</MaxQuantity>
         <DefaultItem>ArmourArcher0</DefaultItem>
       </Slot>
       <Slot>
         <Pos>3</Pos>
         <TypeItem>PotionHealth</TypeItem>
-        <MaxQuantity>5</MaxQuantity>
       </Slot>
       <Slot>
         <Pos>4</Pos>
         <TypeItem>Artifact</TypeItem>
-        <MaxQuantity>1</MaxQuantity>
       </Slot>
       <Slot>
         <Pos>5</Pos>
         <TypeItem>Artifact</TypeItem>
-        <MaxQuantity>1</MaxQuantity>
       </Slot>
       <Slot>
         <Pos>6</Pos>
         <TypeItem>Artifact</TypeItem>
-        <MaxQuantity>1</MaxQuantity>
       </Slot>
       <Slot>
         <Pos>7</Pos>
         <TypeItem>Elixir</TypeItem>
-        <MaxQuantity>3</MaxQuantity>
       </Slot>
       <Slot>
         <Pos>8</Pos>
         <TypeItem>Elixir</TypeItem>
-        <MaxQuantity>3</MaxQuantity>
       </Slot>
     </Slots>
   </Hero>
@@ -241,44 +225,36 @@
       <Slot>
         <Pos>1</Pos>
         <TypeItem>WeaponArcher</TypeItem>
-        <MaxQuantity>1</MaxQuantity>
         <DefaultItem>Bow0</DefaultItem>
       </Slot>
       <Slot>
         <Pos>2</Pos>
         <TypeItem>ArmourArcher</TypeItem>
-        <MaxQuantity>1</MaxQuantity>
         <DefaultItem>ArmourArcher0</DefaultItem>
       </Slot>
       <Slot>
         <Pos>3</Pos>
         <TypeItem>PotionHealth</TypeItem>
-        <MaxQuantity>5</MaxQuantity>
       </Slot>
       <Slot>
         <Pos>4</Pos>
         <TypeItem>Artifact</TypeItem>
-        <MaxQuantity>1</MaxQuantity>
       </Slot>
       <Slot>
         <Pos>5</Pos>
         <TypeItem>Artifact</TypeItem>
-        <MaxQuantity>1</MaxQuantity>
       </Slot>
       <Slot>
         <Pos>6</Pos>
         <TypeItem>Artifact</TypeItem>
-        <MaxQuantity>1</MaxQuantity>
       </Slot>
       <Slot>
         <Pos>7</Pos>
         <TypeItem>Elixir</TypeItem>
-        <MaxQuantity>3</MaxQuantity>
       </Slot>
       <Slot>
         <Pos>8</Pos>
         <TypeItem>Elixir</TypeItem>
-        <MaxQuantity>3</MaxQuantity>
       </Slot>
     </Slots>
   </Hero>
@@ -335,44 +311,36 @@
       <Slot>
         <Pos>1</Pos>
         <TypeItem>WeaponMage</TypeItem>
-        <MaxQuantity>1</MaxQuantity>
         <DefaultItem>Staff0</DefaultItem>
       </Slot>
       <Slot>
         <Pos>2</Pos>
         <TypeItem>ArmourMage</TypeItem>
-        <MaxQuantity>1</MaxQuantity>
         <DefaultItem>ArmourMage0</DefaultItem>
       </Slot>
       <Slot>
         <Pos>3</Pos>
         <TypeItem>PotionHealth</TypeItem>
-        <MaxQuantity>5</MaxQuantity>
       </Slot>
       <Slot>
         <Pos>4</Pos>
         <TypeItem>PotionMana</TypeItem>
-        <MaxQuantity>1</MaxQuantity>
       </Slot>
       <Slot>
         <Pos>5</Pos>
         <TypeItem>Artifact</TypeItem>
-        <MaxQuantity>1</MaxQuantity>
       </Slot>
       <Slot>
         <Pos>6</Pos>
         <TypeItem>Artifact</TypeItem>
-        <MaxQuantity>1</MaxQuantity>
       </Slot>
       <Slot>
         <Pos>7</Pos>
         <TypeItem>Elixir</TypeItem>
-        <MaxQuantity>3</MaxQuantity>
       </Slot>
       <Slot>
         <Pos>8</Pos>
         <TypeItem>Elixir</TypeItem>
-        <MaxQuantity>3</MaxQuantity>
       </Slot>
     </Slots>
   </Hero>
@@ -429,44 +397,36 @@
       <Slot>
         <Pos>1</Pos>
         <TypeItem>WeaponMage</TypeItem>
-        <MaxQuantity>1</MaxQuantity>
         <DefaultItem>Staff0</DefaultItem>
       </Slot>
       <Slot>
         <Pos>2</Pos>
         <TypeItem>ArmourMage</TypeItem>
-        <MaxQuantity>1</MaxQuantity>
         <DefaultItem>ArmourMage0</DefaultItem>
       </Slot>
       <Slot>
         <Pos>3</Pos>
         <TypeItem>PotionHealth</TypeItem>
-        <MaxQuantity>5</MaxQuantity>
       </Slot>
       <Slot>
         <Pos>4</Pos>
         <TypeItem>PotionMana</TypeItem>
-        <MaxQuantity>1</MaxQuantity>
       </Slot>
       <Slot>
         <Pos>5</Pos>
         <TypeItem>Artifact</TypeItem>
-        <MaxQuantity>1</MaxQuantity>
       </Slot>
       <Slot>
         <Pos>6</Pos>
         <TypeItem>Artifact</TypeItem>
-        <MaxQuantity>1</MaxQuantity>
       </Slot>
       <Slot>
         <Pos>7</Pos>
         <TypeItem>Elixir</TypeItem>
-        <MaxQuantity>3</MaxQuantity>
       </Slot>
       <Slot>
         <Pos>8</Pos>
         <TypeItem>Elixir</TypeItem>
-        <MaxQuantity>3</MaxQuantity>
       </Slot>
     </Slots>
   </Hero>
@@ -523,44 +483,36 @@
       <Slot>
         <Pos>1</Pos>
         <TypeItem>WeaponArcher</TypeItem>
-        <MaxQuantity>1</MaxQuantity>
         <DefaultItem>Bow0</DefaultItem>
       </Slot>
       <Slot>
         <Pos>2</Pos>
         <TypeItem>ArmourArcher</TypeItem>
-        <MaxQuantity>1</MaxQuantity>
         <DefaultItem>ArmourArcher0</DefaultItem>
       </Slot>
       <Slot>
         <Pos>3</Pos>
         <TypeItem>PotionHealth</TypeItem>
-        <MaxQuantity>5</MaxQuantity>
       </Slot>
       <Slot>
         <Pos>4</Pos>
         <TypeItem>PotionMana</TypeItem>
-        <MaxQuantity>1</MaxQuantity>
       </Slot>
       <Slot>
         <Pos>5</Pos>
         <TypeItem>Artifact</TypeItem>
-        <MaxQuantity>1</MaxQuantity>
       </Slot>
       <Slot>
         <Pos>6</Pos>
         <TypeItem>Artifact</TypeItem>
-        <MaxQuantity>1</MaxQuantity>
       </Slot>
       <Slot>
         <Pos>7</Pos>
         <TypeItem>Elixir</TypeItem>
-        <MaxQuantity>3</MaxQuantity>
       </Slot>
       <Slot>
         <Pos>8</Pos>
         <TypeItem>Elixir</TypeItem>
-        <MaxQuantity>3</MaxQuantity>
       </Slot>
     </Slots>
   </Hero>
@@ -617,44 +569,36 @@
       <Slot>
         <Pos>1</Pos>
         <TypeItem>WeaponWarrior</TypeItem>
-        <MaxQuantity>1</MaxQuantity>
         <DefaultItem>Sword0</DefaultItem>
       </Slot>
       <Slot>
         <Pos>2</Pos>
         <TypeItem>ArmourWarrior</TypeItem>
-        <MaxQuantity>1</MaxQuantity>
         <DefaultItem>ArmourWarrior0</DefaultItem>
       </Slot>
       <Slot>
         <Pos>3</Pos>
         <TypeItem>PotionHealth</TypeItem>
-        <MaxQuantity>5</MaxQuantity>
       </Slot>
       <Slot>
         <Pos>4</Pos>
         <TypeItem>Artifact</TypeItem>
-        <MaxQuantity>1</MaxQuantity>
       </Slot>
       <Slot>
         <Pos>5</Pos>
         <TypeItem>Artifact</TypeItem>
-        <MaxQuantity>1</MaxQuantity>
       </Slot>
       <Slot>
         <Pos>6</Pos>
         <TypeItem>Artifact</TypeItem>
-        <MaxQuantity>1</MaxQuantity>
       </Slot>
       <Slot>
         <Pos>7</Pos>
         <TypeItem>Elixir</TypeItem>
-        <MaxQuantity>3</MaxQuantity>
       </Slot>
       <Slot>
         <Pos>8</Pos>
         <TypeItem>Elixir</TypeItem>
-        <MaxQuantity>3</MaxQuantity>
       </Slot>
     </Slots>
   </Hero>

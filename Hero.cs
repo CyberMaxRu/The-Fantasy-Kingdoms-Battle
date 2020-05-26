@@ -33,7 +33,6 @@ namespace Fantasy_King_s_Battle
         {
             Pos = Convert.ToInt32(n.SelectSingleNode("Pos").InnerText) - 1;
             TypeItem = FormMain.Config.FindTypeItem(n.SelectSingleNode("TypeItem").InnerText);
-            MaxQuantity = Convert.ToInt32(n.SelectSingleNode("MaxQuantity").InnerText);
             if (n.SelectSingleNode("DefaultItem") != null)
                 DefaultItem = FormMain.Config.FindItem(n.SelectSingleNode("DefaultItem").InnerText);
 
@@ -49,7 +48,6 @@ namespace Fantasy_King_s_Battle
 
         internal int Pos { get; }
         internal TypeItem TypeItem { get; }
-        internal int MaxQuantity { get; }
         internal Item DefaultItem { get; }
     }
 
@@ -121,11 +119,21 @@ namespace Fantasy_King_s_Battle
 
             // Загружаем информацию о переносимых предметах
             XmlNode nc = n.SelectSingleNode("CarryTypeItems");
+            CarryTypeItem cti;
             if (nc != null)
             {
                 foreach (XmlNode l in nl.SelectNodes("CarryTypeItem"))
                 {
-                    CarryTypeItems.Add(new CarryTypeItem(l));
+                    cti = new CarryTypeItem(l);
+
+                    // Проверяем, что такой тип предмета не повторяется
+                    foreach (CarryTypeItem cti2 in CarryTypeItems)
+                    {
+                        if (cti.TypeItem == cti2.TypeItem)
+                            throw new Exception("Тип предмета " + cti.TypeItem.ID + " повторяется в списке переносимых.");
+                    }
+
+                    CarryTypeItems.Add(cti);
                 }
             }
             else
@@ -158,5 +166,18 @@ namespace Fantasy_King_s_Battle
         internal ConfigNextLevelHero ConfigNextLevel { get; }
         internal Slot[] Slots { get; }
         internal List<CarryTypeItem> CarryTypeItems { get; } = new List<CarryTypeItem>();
+
+        internal int MaxQuantityTypeItem(TypeItem ti)
+        {
+            foreach (CarryTypeItem cti in CarryTypeItems)
+            {
+                if (cti.TypeItem == ti)
+                {
+                    return cti.MaxQuantity;
+                }
+            }
+
+            return 0;
+        }
     }
 }

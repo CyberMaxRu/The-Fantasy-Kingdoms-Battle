@@ -210,12 +210,12 @@ namespace Fantasy_King_s_Battle
 
             if (Slots[toCell] == null)
             {
-                Slots[toCell] = new PlayerItem(pi.Item, Math.Min(ClassHero.Slots[toCell].MaxQuantity, quantity));
+                Slots[toCell] = new PlayerItem(pi.Item, Math.Min(ClassHero.MaxQuantityTypeItem(ClassHero.Slots[toCell].TypeItem), quantity));
                 pi.Quantity -= Slots[toCell].Quantity;
             }
             else
             {
-                int add = Math.Min(ClassHero.Slots[toCell].MaxQuantity - Slots[toCell].Quantity, quantity);
+                int add = Math.Min(ClassHero.MaxQuantityTypeItem(ClassHero.Slots[toCell].TypeItem) - Slots[toCell].Quantity, quantity);
                 if (add > 0)
                 {
                     Slots[toCell] = new PlayerItem(pi.Item, add);
