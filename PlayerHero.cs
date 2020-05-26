@@ -17,7 +17,7 @@ namespace Fantasy_King_s_Battle
         public PlayerHero(PlayerBuilding pb)
         {
             Building = pb;
-            TrainedDay = Player.Lobby.Turn;
+            DayOfHire = Player.Lobby.Turn;
 
             if (ClassHero.MaxLevel > 1)
             {
@@ -88,7 +88,7 @@ namespace Fantasy_King_s_Battle
         internal Point CoordInPlayer { get; set; }// Координаты героя в слотах игрока
 
         // Статистика за лобби
-        internal int TrainedDay { get; }// На каком дне нанят
+        internal int DayOfHire { get; }// На каком дне нанят
         internal int Battles { get; }// Участвовал в сражениях
         internal int Wins { get; }// Побед        
         internal int Loses { get; }// Поражений
