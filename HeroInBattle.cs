@@ -17,6 +17,7 @@ namespace Fantasy_King_s_Battle
             Battle = b;
             PlayerHero = ph;
             Coord = coord;
+            IsLive = true;
 
             Parameters = new HeroParameters(ph.ParametersWithAmmunition);
             State = StateHeroInBattle.None;
