@@ -34,7 +34,7 @@ namespace Fantasy_King_s_Battle
                     }
                 }
 
-                ParametersBase = new HeroParameters(ClassHero.BaseParameters);
+                ParametersBase = new HeroParameters(ClassHero.ParametersByHire);
 
                 // Переходим на 1 уровень
                 LevelUp();
