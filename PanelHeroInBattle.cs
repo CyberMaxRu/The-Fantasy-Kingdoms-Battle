@@ -51,9 +51,9 @@ namespace Fantasy_King_s_Battle
                 }
 
                 // Рисуем полоски жизни, маны, бодрости
-                DrawBand(0, brushBandHealth, brushBandHealthNone, 75, 100);
-                DrawBand(1, brushBandMana, brushBandManaNone, 50, 100);
-                DrawBand(2, brushBandStamina, brushBandStaminaNone, 25, 100);
+                DrawBand(0, brushBandHealth, brushBandHealthNone, Hero.CurrentHealth, Hero.Parameters.Health);
+                DrawBand(1, brushBandMana, brushBandManaNone, Hero.CurrentMana, Hero.Parameters.Mana);
+                DrawBand(2, brushBandStamina, brushBandStaminaNone, Hero.CurrentStamina, Hero.Parameters.Stamina);
             }
 
             e.Graphics.DrawRectangle(penBorder, 0, 0, ImageListHeroes.ImageSize.Width - 1, ImageListHeroes.ImageSize.Height - 1);

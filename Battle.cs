@@ -28,6 +28,7 @@ namespace Fantasy_King_s_Battle
     internal sealed class Battle
     {
         internal HeroInBattle[,] battlefield;
+        private List<HeroInBattle> heroesForDelete = new List<HeroInBattle>();
 
         internal Battle(Player player1, Player player2, int turn, Random r)
         {
@@ -74,6 +75,10 @@ namespace Fantasy_King_s_Battle
                 if ((ActiveHeroes.Where(h => h.PlayerHero.Player == player1).Count() == 0) || (ActiveHeroes.Where(h => h.PlayerHero.Player == player2).Count() == 0) || (step == Config.MAX_STEPS_IN_BATTLE))
                     break;
 
+                // Делаем расчет параметров (бафы/дебаффы и прочее)
+                foreach (HeroInBattle hb in ActiveHeroes)
+                    hb.CalcParameters();
+
                 // Делаем действие каждым живым героем
                 foreach (HeroInBattle hb in ActiveHeroes)
                     hb.DoStepBattle(this);
@@ -83,9 +88,17 @@ namespace Fantasy_King_s_Battle
                     hb.ApplyStepBattle();
 
                 // Убираем мертвых героев из списка
+                Debug.Assert(heroesForDelete.Count == 0);
+
                 foreach (HeroInBattle hb in ActiveHeroes)
                     if (hb.IsLive == false)
-                        ActiveHeroes.Remove(hb);
+                        heroesForDelete.Add(hb);
+
+                foreach (HeroInBattle hb in heroesForDelete)
+                    if (ActiveHeroes.Remove(hb) == false)
+                        throw new Exception("Герой не был удален из списка.");
+
+                heroesForDelete.Clear();
             }
 
             // Создаем списки действуюих и уничтоженных отрядов

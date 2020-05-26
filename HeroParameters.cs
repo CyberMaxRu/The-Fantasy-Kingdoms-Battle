@@ -102,10 +102,10 @@ namespace Fantasy_King_s_Battle
             Health = hp.Health;
             Mana = hp.Mana;
             Stamina = hp.Stamina;
-    }
+        }
 
-    // Пересчитать параметры
-    internal void RecalcParameter()
+        // Пересчитать параметры
+        internal void RecalcParameter()
         {
 
         }

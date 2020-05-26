@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace Fantasy_King_s_Battle
 {
-    internal enum StateHeroInBattle { Melee, Shoot, Cast, Drink, Healing, Rest, Dead, Resurrection, None }// Состояние героя в бою
+    internal enum StateHeroInBattle { Melee, Shoot, Cast, Drink, Healing, Rest, Dead, Resurrection, RestoreAfterAction, None }// Состояние героя в бою
 
     internal sealed class HeroInBattle
     {
@@ -45,6 +45,7 @@ namespace Fantasy_King_s_Battle
         internal int CurrentHealth { get; set; }
         internal int CurrentMana { get; set; }
         internal int CurrentStamina { get; set; }
+        internal int ReceivedDamage { get; private set; }
 
         // Делает шаг битвы
         internal void DoStepBattle(Battle b)
@@ -55,6 +56,7 @@ namespace Fantasy_King_s_Battle
             {
                 case StateHeroInBattle.None:
                     Debug.Assert(Target == null);
+                    Debug.Assert(countAction == 0);
 
                     // Если сейчас ничего не выполняем, ищем, что можно сделать
                     // Сначала атакуем
@@ -65,6 +67,35 @@ namespace Fantasy_King_s_Battle
 
                     break;
                 case StateHeroInBattle.Melee:
+                    countAction--;
+
+                    if (Target.IsLive == true)
+                    {
+                        if (countAction == 0)
+                        {
+                            // Делаем удар по противнику
+                            Target.GetDamage(CalcDamageMelee(Target), CalcDamageShoot(Target), CalcDamageMagic(Target));
+                            Target = null;
+
+                            // После удара делаем паузу длиной во время атаки
+                            countAction = TimeAttack();
+                            State = StateHeroInBattle.RestoreAfterAction;
+                        }
+                    }
+                    else
+                    {
+                        // Противника уже убили, пропускаем ход
+                        Target = null;
+                        State = StateHeroInBattle.None;
+                        countAction = 0;
+                    }
+
+                    break;
+                case StateHeroInBattle.RestoreAfterAction:
+                    countAction--;
+                    if (countAction == 0)
+                        State = StateHeroInBattle.None;
+
                     break;
                 default:
                     break;
@@ -110,7 +141,17 @@ namespace Fantasy_King_s_Battle
         // Применяем шаг битвы
         internal void ApplyStepBattle()
         {
+            CurrentHealth -= ReceivedDamage;
 
+            if (CurrentHealth <= 0)
+            {
+                IsLive = false;
+                CurrentHealth = 0;
+            }
+
+            Debug.Assert(CurrentHealth <= Parameters.Health);
+            Debug.Assert(CurrentMana <= Parameters.Mana);
+            Debug.Assert(CurrentStamina <= Parameters.Stamina);
         }
 
         private int TimeAttack()
@@ -120,6 +161,44 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(timeAttack > 0);
 
             return timeAttack;
+        }
+
+        private int CalcDamageMelee(HeroInBattle target)
+        {
+            int delta = Parameters.MaxMeleeDamage - Parameters.MinMeleeDamage;
+            int value = FormMain.Rnd.Next(delta);
+
+            int d = Parameters.MinMeleeDamage + value;
+            return d;
+        }
+
+        private int CalcDamageShoot(HeroInBattle target)
+        {
+            return 0;
+        }
+        private int CalcDamageMagic(HeroInBattle target)
+        {
+            return 0;
+        }
+
+        internal void GetDamage(int damageMelee, int damageMissile, int damageMagic)
+        {
+            Debug.Assert(damageMelee >= 0);
+            Debug.Assert(damageMissile >= 0);
+            Debug.Assert(damageMagic >= 0);
+
+            ReceivedDamage += damageMelee + damageMissile + damageMagic;
+        }
+
+        internal void CalcParameters()
+        {
+            // Расчет надо делать через модифицированные основные параметры, после которых уже применяются баффы/дебаффы на урон
+            // Сейчас для простоты берем уже посчитанные параметры с амуницией
+            Parameters.MinMeleeDamage = PlayerHero.ParametersWithAmmunition.MinMeleeDamage;
+            Parameters.MaxMeleeDamage = PlayerHero.ParametersWithAmmunition.MaxMeleeDamage;
+
+            Debug.Assert(Parameters.MinMeleeDamage <= Parameters.MaxMeleeDamage);
+            Debug.Assert(Parameters.MinMissileDamage <= Parameters.MaxMissileDamage);
         }
     }
 }
