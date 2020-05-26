@@ -16,8 +16,6 @@ namespace Fantasy_King_s_Battle
             Building = pb;
             TrainedDay = Player.Lobby.Turn;
 
-            IsLive = true;
-
             if (ClassHero.MaxLevel > 1)
             {
                 Level = 0;
@@ -58,7 +56,6 @@ namespace Fantasy_King_s_Battle
         internal PlayerItem Weapon { get; private set; }// Оружие 
         internal PlayerItem Armour { get; private set; }// Доспех
         internal PanelHero Panel { get; set; }
-        internal bool IsLive { get; private set; }
 
         // Параметры во время боя
         internal Point CoordInPlayer { get; set; }
