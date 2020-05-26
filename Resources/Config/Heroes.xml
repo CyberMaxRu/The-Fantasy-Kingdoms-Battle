@@ -15,7 +15,7 @@
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
       <Magic>10</Magic>
-      <Vitality>100</Vitality>
+      <Vitality>20</Vitality>
       <CoefHealth>3</CoefHealth>
       <CoefMana>1</CoefMana>
       <CoefStamina>3</CoefStamina>
