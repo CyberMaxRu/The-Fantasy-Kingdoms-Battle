@@ -72,7 +72,7 @@ namespace Fantasy_King_s_Battle
         internal int DrawStrike { get; }// Ничьих подряд
         internal ResultBattle PriorResultBattle { get; set; }// Предыдущий результат битвы для расчета страйков
 
-        internal void ShowDate()
+        internal void ShowData()
         {
             Debug.Assert(Panel != null);
 
