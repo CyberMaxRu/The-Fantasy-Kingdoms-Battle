@@ -11,6 +11,9 @@ namespace Fantasy_King_s_Battle
     // Класс героя игрока
     internal sealed class PlayerHero
     {
+        private int slotWeapon;
+        private int slotArmour;
+
         public PlayerHero(PlayerBuilding pb)
         {
             Building = pb;
@@ -37,7 +40,32 @@ namespace Fantasy_King_s_Battle
                 LevelUp();
                 ParametersWithAmmunition = new HeroParameters(ParametersBase);
 
-                FindWeaponAndArmour();
+                // Ищем слоты оружия и брони в инвентаре
+                slotWeapon = -1;
+                slotArmour = -1;
+
+                for (int i = 0; i < Slots.Length; i++)
+                {
+                    if (Slots[i] != null)
+                    {
+                        switch (Slots[i].Item.TypeItem.Category)
+                        {
+                            case CategoryItem.Weapon:
+                                Debug.Assert(slotWeapon == -1);
+                                slotWeapon = i;
+                                break;
+                            case CategoryItem.Armour:
+                                Debug.Assert(slotArmour == -1);
+                                slotArmour = i;
+                                break;
+                        }
+                    }
+                }
+
+                Debug.Assert(slotWeapon != -1);
+                Debug.Assert(slotArmour != -1);
+
+                //
                 UpdateBaseParameters();
             }
             else
@@ -79,6 +107,7 @@ namespace Fantasy_King_s_Battle
             Panel.ShowData(this);
         }
 
+        // Увольнение героя
         internal void Dismiss()
         {
             Debug.Assert(Building.Heroes.IndexOf(this) != -1);
@@ -265,6 +294,7 @@ namespace Fantasy_King_s_Battle
             }
         }
 
+        // Повышение уровня
         private void LevelUp()
         {
             Debug.Assert(Level < ClassHero.MaxLevel);
@@ -274,6 +304,7 @@ namespace Fantasy_King_s_Battle
             {
                 ParametersBase.Health += ClassHero.ConfigNextLevel.Health;
                 ParametersBase.Mana += ClassHero.ConfigNextLevel.Mana;
+                ParametersBase.Stamina += ClassHero.ConfigNextLevel.Stamina;
 
                 // Прибавляем очки характеристик
                 int t;
@@ -310,6 +341,8 @@ namespace Fantasy_King_s_Battle
             ParametersWithAmmunition.GetFromParams(ParametersBase);
 
             // Применяем амуницию
+            Weapon = Slots[slotWeapon];
+            Armour = Slots[slotWeapon];
             Debug.Assert(Weapon != null);
             Debug.Assert(Armour != null);
 
@@ -323,35 +356,6 @@ namespace Fantasy_King_s_Battle
             ParametersWithAmmunition.DefenseMagic = Armour.Item.DefenseMagic;
 
             Debug.Assert((ParametersWithAmmunition.MaxMeleeDamage > 0) || (ParametersWithAmmunition.MaxMissileDamage > 0) || (ParametersWithAmmunition.MagicDamage > 0));
-        }
-
-        internal void UpdateParamsInBattle()
-        {
-
-        }
-
-        internal void FindWeaponAndArmour()
-        {
-            Weapon = null;
-            Armour = null;
-
-            foreach (PlayerItem pi in Slots)
-            {
-                if (pi != null)
-                {
-                    switch (pi.Item.TypeItem.Category)
-                    {
-                        case CategoryItem.Weapon:
-                            Debug.Assert(Weapon == null);
-                            Weapon = pi;
-                            break;
-                        case CategoryItem.Armour:
-                            Debug.Assert(Armour == null);
-                            Armour = pi;
-                            break;
-                    }
-                }
-            }
         }
     }
 }
