@@ -31,6 +31,24 @@
       <Stamina>4</Stamina>
       <ResistMagic>0</ResistMagic>    
     </NextLevel>
+    <CarryTypeItems>
+      <CarryTypeItem>
+        <ID>WeaponWarrior</ID>
+        <MaxQuantity>1</MaxQuantity>
+      </CarryTypeItem>
+      <CarryTypeItem>
+        <ID>ArmourWarrior</ID>
+        <MaxQuantity>1</MaxQuantity>
+      </CarryTypeItem>
+      <CarryTypeItem>
+        <ID>PotionHealth</ID>
+        <MaxQuantity>5</MaxQuantity>
+      </CarryTypeItem>
+      <CarryTypeItem>
+        <ID>PotionMana</ID>
+        <MaxQuantity>1</MaxQuantity>
+      </CarryTypeItem>
+    </CarryTypeItems>
     <Slots>
       <Slot>
         <Pos>1</Pos>
@@ -107,6 +125,24 @@
       <Stamina>2</Stamina>
       <ResistMagic>0</ResistMagic>
     </NextLevel>
+    <CarryTypeItems>
+      <CarryTypeItem>
+        <ID>WeaponWarrior</ID>
+        <MaxQuantity>1</MaxQuantity>
+      </CarryTypeItem>
+      <CarryTypeItem>
+        <ID>ArmourArcher</ID>
+        <MaxQuantity>1</MaxQuantity>
+      </CarryTypeItem>
+      <CarryTypeItem>
+        <ID>PotionHealth</ID>
+        <MaxQuantity>5</MaxQuantity>
+      </CarryTypeItem>
+      <CarryTypeItem>
+        <ID>PotionMana</ID>
+        <MaxQuantity>1</MaxQuantity>
+      </CarryTypeItem>
+    </CarryTypeItems>
     <Slots>
       <Slot>
         <Pos>1</Pos>
@@ -183,6 +219,24 @@
       <Stamina>3</Stamina>
       <ResistMagic>0</ResistMagic>
     </NextLevel>
+    <CarryTypeItems>
+      <CarryTypeItem>
+        <ID>WeaponArcher</ID>
+        <MaxQuantity>1</MaxQuantity>
+      </CarryTypeItem>
+      <CarryTypeItem>
+        <ID>ArmourArcher</ID>
+        <MaxQuantity>1</MaxQuantity>
+      </CarryTypeItem>
+      <CarryTypeItem>
+        <ID>PotionHealth</ID>
+        <MaxQuantity>5</MaxQuantity>
+      </CarryTypeItem>
+      <CarryTypeItem>
+        <ID>PotionMana</ID>
+        <MaxQuantity>1</MaxQuantity>
+      </CarryTypeItem>
+    </CarryTypeItems>
     <Slots>
       <Slot>
         <Pos>1</Pos>
@@ -259,6 +313,24 @@
       <Stamina>2</Stamina>
       <ResistMagic>0</ResistMagic>
     </NextLevel>
+    <CarryTypeItems>
+      <CarryTypeItem>
+        <ID>WeaponMage</ID>
+        <MaxQuantity>1</MaxQuantity>
+      </CarryTypeItem>
+      <CarryTypeItem>
+        <ID>ArmourMage</ID>
+        <MaxQuantity>1</MaxQuantity>
+      </CarryTypeItem>
+      <CarryTypeItem>
+        <ID>PotionHealth</ID>
+        <MaxQuantity>5</MaxQuantity>
+      </CarryTypeItem>
+      <CarryTypeItem>
+        <ID>PotionMana</ID>
+        <MaxQuantity>1</MaxQuantity>
+      </CarryTypeItem>
+    </CarryTypeItems>
     <Slots>
       <Slot>
         <Pos>1</Pos>
@@ -335,6 +407,24 @@
       <Stamina>1</Stamina>
       <ResistMagic>0</ResistMagic>
     </NextLevel>
+    <CarryTypeItems>
+      <CarryTypeItem>
+        <ID>WeaponMage</ID>
+        <MaxQuantity>1</MaxQuantity>
+      </CarryTypeItem>
+      <CarryTypeItem>
+        <ID>ArmourMage</ID>
+        <MaxQuantity>1</MaxQuantity>
+      </CarryTypeItem>
+      <CarryTypeItem>
+        <ID>PotionHealth</ID>
+        <MaxQuantity>5</MaxQuantity>
+      </CarryTypeItem>
+      <CarryTypeItem>
+        <ID>PotionMana</ID>
+        <MaxQuantity>1</MaxQuantity>
+      </CarryTypeItem>
+    </CarryTypeItems>
     <Slots>
       <Slot>
         <Pos>1</Pos>
@@ -411,6 +501,24 @@
       <Stamina>4</Stamina>
       <ResistMagic>0</ResistMagic>
     </NextLevel>
+    <CarryTypeItems>
+      <CarryTypeItem>
+        <ID>WeaponArcher</ID>
+        <MaxQuantity>1</MaxQuantity>
+      </CarryTypeItem>
+      <CarryTypeItem>
+        <ID>ArmourArcher</ID>
+        <MaxQuantity>1</MaxQuantity>
+      </CarryTypeItem>
+      <CarryTypeItem>
+        <ID>PotionHealth</ID>
+        <MaxQuantity>5</MaxQuantity>
+      </CarryTypeItem>
+      <CarryTypeItem>
+        <ID>PotionMana</ID>
+        <MaxQuantity>1</MaxQuantity>
+      </CarryTypeItem>
+    </CarryTypeItems>
     <Slots>
       <Slot>
         <Pos>1</Pos>
@@ -487,6 +595,24 @@
       <Stamina>6</Stamina>
       <ResistMagic>0</ResistMagic>
     </NextLevel>
+    <CarryTypeItems>
+      <CarryTypeItem>
+        <ID>WeaponWarrior</ID>
+        <MaxQuantity>1</MaxQuantity>
+      </CarryTypeItem>
+      <CarryTypeItem>
+        <ID>ArmourWarrior</ID>
+        <MaxQuantity>1</MaxQuantity>
+      </CarryTypeItem>
+      <CarryTypeItem>
+        <ID>PotionHealth</ID>
+        <MaxQuantity>5</MaxQuantity>
+      </CarryTypeItem>
+      <CarryTypeItem>
+        <ID>PotionMana</ID>
+        <MaxQuantity>1</MaxQuantity>
+      </CarryTypeItem>
+    </CarryTypeItems>
     <Slots>
       <Slot>
         <Pos>1</Pos>
