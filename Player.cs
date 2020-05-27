@@ -126,7 +126,8 @@ namespace Fantasy_King_s_Battle
         internal string Name { get; }
         internal int ImageIndexAvatar { get; }
         internal int Position { get; }
-        internal int DurabilityCastle { get; private set; }
+        internal int PositionInLobby { get; set; }
+        internal int DurabilityCastle { get; set; }
         internal List<PlayerBuilding> Buildings { get; } = new List<PlayerBuilding>();
         internal List<PlayerHero> Heroes { get; } = new List<PlayerHero>();
         internal PlayerHero[,] CellHeroes;
