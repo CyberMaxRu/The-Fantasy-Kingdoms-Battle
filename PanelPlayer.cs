@@ -12,6 +12,8 @@ namespace Fantasy_King_s_Battle
     internal sealed class PanelPlayer : Control
     {
         private readonly Player player;
+        private Label lblDamageToCastle;
+        private readonly int LeftForResultBattle;
         private readonly Pen penBorder = new Pen(Color.Black);
         private readonly SolidBrush brushCurDurability = new SolidBrush(Color.Green);
         private readonly SolidBrush brushMaxDurability = new SolidBrush(Color.LightGreen);
@@ -23,6 +25,19 @@ namespace Fantasy_King_s_Battle
 
             Width = Config.GRID_SIZE + Program.formMain.ilPlayerAvatars.ImageSize.Width + Config.GRID_SIZE + Program.formMain.ilResultBattle.ImageSize.Width + Config.GRID_SIZE;
             Height = Config.GRID_SIZE + Program.formMain.ilPlayerAvatars.ImageSize.Height + Config.GRID_SIZE + Config.GRID_SIZE;
+
+            LeftForResultBattle = Width - Program.formMain.ilResultBattle.ImageSize.Width - Config.GRID_SIZE;
+
+            lblDamageToCastle = new Label()
+            {
+                Parent = this,
+                Left = LeftForResultBattle - Config.GRID_SIZE_HALF,
+                Top = Config.GRID_SIZE + Program.formMain.ilResultBattle.ImageSize.Height + Config.GRID_SIZE_HALF,
+                BackColor = Color.Transparent,
+                TextAlign = ContentAlignment.MiddleCenter,
+                MaximumSize = new Size(Program.formMain.ilResultBattle.ImageSize.Width + Config.GRID_SIZE, Program.formMain.ilResultBattle.ImageSize.Height),
+                Font = new Font("Microsoft Sans Serif", 8, FontStyle.Bold)
+            };
         }
 
         protected override void OnMouseEnter(EventArgs e)
@@ -62,7 +77,21 @@ namespace Fantasy_King_s_Battle
 
             // Результат последнего боя
             if (player.ResultLastBattle != ResultBattle.None)
-                e.Graphics.DrawImageUnscaled(Program.formMain.ilResultBattle.Images[(int)player.ResultLastBattle], Width - Program.formMain.ilResultBattle.ImageSize.Width - Config.GRID_SIZE, Config.GRID_SIZE);
+                e.Graphics.DrawImageUnscaled(Program.formMain.ilResultBattle.Images[(int)player.ResultLastBattle], LeftForResultBattle, Config.GRID_SIZE);
+
+            // Урон по Замку в последнем бою
+            if (player.LastBattleDamageToCastle != 0)
+            {
+                lblDamageToCastle.Show();
+                int dmg = player.LastBattleDamageToCastle <= 999 ? player.LastBattleDamageToCastle : Math.Sign(player.LastBattleDamageToCastle) * 999;
+                lblDamageToCastle.Text = dmg.ToString();
+                lblDamageToCastle.ForeColor = player.LastBattleDamageToCastle > 0 ? Color.Green : Color.Red;
+            }
+            else
+            {
+                lblDamageToCastle.Hide();
+            }
+
         }
     }
 }

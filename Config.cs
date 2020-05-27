@@ -11,6 +11,7 @@ namespace Fantasy_King_s_Battle
     internal sealed class Config
     {
         internal const int GRID_SIZE = 8;
+        internal const int GRID_SIZE_HALF = 4;
         internal const int HERO_IN_ROW = 7;// Героев в ряду
         internal const int HERO_ROWS = 7;// Рядов героев
         internal const int STEPS_IN_SECOND = 20;
