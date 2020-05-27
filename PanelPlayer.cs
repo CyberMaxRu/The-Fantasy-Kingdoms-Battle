@@ -26,6 +26,24 @@ namespace Fantasy_King_s_Battle
             Width = Program.formMain.ilPlayerAvatars.ImageSize.Width + Config.GRID_SIZE * 2;
             Height = Program.formMain.ilPlayerAvatars.ImageSize.Height + Config.GRID_SIZE * 3;
         }
+
+        protected override void OnMouseEnter(EventArgs e)
+        {
+            Program.formMain.formHint.ShowHint(new Point(Program.formMain.Left + Left, Program.formMain.Top + 32 + Top + Height + 2),
+                player.Name,
+                "",
+                "Прочность замка " + player.DurabilityCastle.ToString() + "/" + player.Lobby.TypeLobby.DurabilityCastle.ToString(),
+                null,
+                0,
+                false, 0,
+                0, false, null);
+        }
+
+        protected override void OnMouseLeave(EventArgs e)
+        {
+            Program.formMain.formHint.HideHint();
+        }
+
         protected override void OnPaint(PaintEventArgs e)
         {
             // Рамка вокруг панели
