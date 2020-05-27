@@ -84,7 +84,7 @@ namespace Fantasy_King_s_Battle
                 {
                     // Рисуем столько кадров, сколько должно было пройти
                     int pastFrames = (int)(timePassed.ElapsedMilliseconds / Config.STEP_IN_MSEC);
-                    while (battle.Step <= pastFrames)
+                    while ((battle.Step <= pastFrames) && (battle.BattleCalced == false))
                         battle.CalcStep();
 
                     DoFrame();
