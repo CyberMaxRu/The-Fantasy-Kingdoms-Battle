@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Diagnostics;
 
 namespace Fantasy_King_s_Battle
 {
@@ -68,6 +69,18 @@ namespace Fantasy_King_s_Battle
         internal static int GetImageIndexWithGray(ImageList imageList, int imageIndex, bool normal)
         {
             return imageIndex + (normal == true ? 0 : imageList.Images.Count / 2);
+        }
+
+        internal static void DrawBand(Graphics g, Rectangle r, Brush brushFore, Brush brushBack, int currentValue, int MaxValue)
+        {
+            Debug.Assert(currentValue <= MaxValue);
+
+            int widthMain = (int)Math.Round(currentValue / 1.00 / MaxValue * r.Width);
+            int widthNone = r.Width - widthMain;
+
+            g.FillRectangle(brushFore, r.Left, r.Top, widthMain, r.Height);
+            if (widthNone > 0)
+                g.FillRectangle(brushBack, r.Left + widthMain, r.Top, widthNone, r.Height);
         }
     }
 }
