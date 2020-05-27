@@ -34,7 +34,7 @@ namespace Fantasy_King_s_Battle
                 Left = LeftForResultBattle - Config.GRID_SIZE_HALF,
                 Top = Config.GRID_SIZE + Program.formMain.ilResultBattle.ImageSize.Height + Config.GRID_SIZE_HALF,
                 BackColor = Color.Transparent,
-                TextAlign = ContentAlignment.MiddleCenter,
+                TextAlign = ContentAlignment.TopCenter,
                 MaximumSize = new Size(Program.formMain.ilResultBattle.ImageSize.Width + Config.GRID_SIZE, Program.formMain.ilResultBattle.ImageSize.Height),
                 Font = new Font("Microsoft Sans Serif", 8, FontStyle.Bold)
             };
