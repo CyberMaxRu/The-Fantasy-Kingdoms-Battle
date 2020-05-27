@@ -27,6 +27,26 @@ namespace Fantasy_King_s_Battle
             if (p1.ResultLastBattle > p2.ResultLastBattle)
                 return -1;
 
+            // Сравниваем урон при победе/поражении последнего боя
+            if ((p1.ResultLastBattle == ResultBattle.Win) && (p2.ResultLastBattle == ResultBattle.Win))
+            { 
+                if (p1.LastBattleDamageToCastle > p2.LastBattleDamageToCastle)
+                    return 1;
+
+                if (p1.LastBattleDamageToCastle < p2.LastBattleDamageToCastle)
+                    return -1;
+            }
+
+            if ((p1.ResultLastBattle == ResultBattle.Lose) && (p2.ResultLastBattle == ResultBattle.Lose))
+            { 
+                if (p1.LastBattleDamageToCastle > p2.LastBattleDamageToCastle)
+                    return 1;
+
+                if (p1.LastBattleDamageToCastle < p2.LastBattleDamageToCastle)
+                    return -1;
+            }
+
+            // У игроков одинаковая позиция
             return 0;
         }
     }
