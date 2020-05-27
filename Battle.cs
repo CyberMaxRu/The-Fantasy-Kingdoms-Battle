@@ -137,20 +137,18 @@ namespace Fantasy_King_s_Battle
             BattleCalced = true;
 
             // Определяем результат боя
-            Player winner = null;
-
             if (Step < Config.MAX_STEPS_IN_BATTLE)
             {
                 int heroesPlayer1 = ActiveHeroes.Where(h => h.PlayerHero.Player == Player1).Count();
                 int heroesPlayer2 = ActiveHeroes.Where(h => h.PlayerHero.Player == Player2).Count();
 
                 if ((heroesPlayer1 > 0) && (heroesPlayer2 == 0))
-                    winner = Player1;
+                    Winner = Player1;
                 else if ((heroesPlayer1 == 0) && (heroesPlayer2 > 0))
-                    winner = Player2;
+                    Winner = Player2;
             }
 
-            if (winner == Player1)
+            if (Winner == Player1)
             {
                 Player1.Wins++;
                 Player1.ResultLastBattle = ResultBattle.Win;
@@ -159,7 +157,7 @@ namespace Fantasy_King_s_Battle
 
                 Player2.DurabilityCastle -= DamageToCastle();
             }
-            else if (winner == Player2)
+            else if (Winner == Player2)
             {
                 Player1.Loses++;
                 Player1.ResultLastBattle = ResultBattle.Lose;
@@ -179,8 +177,6 @@ namespace Fantasy_King_s_Battle
             Player1.HistoryBattles.Add(this);
             Player2.HistoryBattles.Add(this);
 
-            Winner = winner;
-
             Player1.BattleCalced = true;
             Player2.BattleCalced = true;
 
@@ -188,7 +184,7 @@ namespace Fantasy_King_s_Battle
             {
                 int damage = 0;
 
-                foreach (HeroInBattle h in ActiveHeroes.Where(h => h.PlayerHero.Player == winner))
+                foreach (HeroInBattle h in ActiveHeroes.Where(h => h.PlayerHero.Player == Winner))
                 {
                     damage += h.PlayerHero.ClassHero.DamageToCastle;
                 }
