@@ -157,7 +157,7 @@ namespace Fantasy_King_s_Battle
             CellPanelHeroes = new PanelHero[Config.HERO_ROWS, Config.HERO_IN_ROW];
 
             //    
-            lobby = new Lobby(8);
+            lobby = new Lobby(Config.TypeLobbies[0]);
 
             // Создаем метку под золото
             StatusStrip.ImageList = ilGui16;

@@ -32,6 +32,13 @@ namespace Fantasy_King_s_Battle
             //
             XmlDocument xmlDoc;
 
+            // Загрузка конфигураций лобби
+            xmlDoc = CreateXmlDocument("Config\\TypeLobby.xml");
+            foreach (XmlNode n in xmlDoc.SelectNodes("/TypeLobbies/TypeLobby"))
+            {
+                TypeLobbies.Add(new TypeLobby(n));
+            }
+
             // Загрузка конфигурации зданий
             xmlDoc = CreateXmlDocument("Config\\Buildings.xml");
             foreach (XmlNode n in xmlDoc.SelectNodes("/Buildings/Building"))
@@ -87,6 +94,7 @@ namespace Fantasy_King_s_Battle
         }
 
         internal string PathResources { get; }
+        internal List<TypeLobby> TypeLobbies { get; } = new List<TypeLobby>();
         internal List<Building> Buildings { get; } = new List<Building>();
         internal List<Hero> Heroes { get; } = new List<Hero>();
         internal List<TypeItem> TypeItems { get; } = new List<TypeItem>();

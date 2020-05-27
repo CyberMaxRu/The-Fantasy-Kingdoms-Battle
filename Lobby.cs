@@ -12,12 +12,14 @@ namespace Fantasy_King_s_Battle
     // Класс лобби (королевской битвы)
     internal sealed class Lobby
     {
-        public Lobby(int quantityPlayers)
+        public Lobby(TypeLobby tl)
         {
+            TypeLobby = tl;
+
             // Создание игроков
-            Players = new Player[quantityPlayers];
+            Players = new Player[tl.Players];
             TypePlayer tp;
-            for (int i = 0; i < quantityPlayers; i++)
+            for (int i = 0; i < TypeLobby.Players; i++)
             {
                 tp = i == 0 ? TypePlayer.Human : TypePlayer.Computer;
                 Players[i] = new Player(this, i + 1, "Игрок №" + (i + 1).ToString(), tp);
@@ -148,6 +150,7 @@ namespace Fantasy_King_s_Battle
             throw new Exception("Бой не найден.");
         }
 
+        internal TypeLobby TypeLobby { get; }
         internal Player[] Players { get; }
         internal int CurrentPlayerIndex { get; private set; }
         internal Player CurrentPlayer { get; private set; }
