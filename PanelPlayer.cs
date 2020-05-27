@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace Fantasy_King_s_Battle
 {
@@ -12,6 +13,7 @@ namespace Fantasy_King_s_Battle
     {
         private PictureBox pbPlayer;
         private Player player;
+        private Pen penBorder = new Pen(Color.Black);
 
         public PanelPlayer(Player p) : base()
         {
@@ -27,12 +29,16 @@ namespace Fantasy_King_s_Battle
                 Top = Config.GRID_SIZE,
             };
 
+            //BackColor = Color.LightBlue;
+
             Width = pbPlayer.Width + Config.GRID_SIZE * 2;
             Height = pbPlayer.Height + Config.GRID_SIZE * 3;
         }
         protected override void OnPaint(PaintEventArgs e)
         {
             pbPlayer.Image = Program.formMain.ilPlayerAvatars.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilPlayerAvatars, player.ImageIndexAvatar, player.IsLive)];
+
+            e.Graphics.DrawRectangle(penBorder, 0, 0, Width - 1, Height - 1);
         }
     }
 }
