@@ -135,15 +135,28 @@ namespace Fantasy_King_s_Battle
         private void CalcEndBattle()
         {
             BattleCalced = true;
-            int res = FormMain.Rnd.Next(3);
-            Player winner = res == 0 ? null : res == 1 ? Player1 : Player2;
 
-            //Player winner = draw == true ? null : (activeSquad1.Count > 0) && (activeSquad2.Count == 0) ? player1 : (activeSquad1.Count == 0) && (activeSquad2.Count > 0) ? player2 : null;
+            // Определяем результат боя
+            Player winner = null;
+
+            if (Step < Config.MAX_STEPS_IN_BATTLE)
+            {
+                int heroesPlayer1 = ActiveHeroes.Where(h => h.PlayerHero.Player == Player1).Count();
+                int heroesPlayer2 = ActiveHeroes.Where(h => h.PlayerHero.Player == Player2).Count();
+
+                if ((heroesPlayer1 > 0) && (heroesPlayer2 == 0))
+                    winner = Player1;
+                else if ((heroesPlayer1 == 0) && (heroesPlayer2 > 0))
+                    winner = Player2;
+            }
 
             if (winner == Player1)
             {
                 Player1.Wins++;
                 Player2.Loses++;
+
+                // Вычитаем прочность замка
+
             }
             else if (winner == Player2)
             {
