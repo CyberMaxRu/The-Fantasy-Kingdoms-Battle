@@ -76,10 +76,13 @@ namespace Fantasy_King_s_Battle
 
             void HireAllHero(PlayerBuilding bp)
             {
-                for (int x = 0; x < Math.Min(Config.HERO_IN_ROW, bp.MaxHeroes()); x++)
-//                for (; bp.Heroes.Count() < bp.MaxHeroes();)
+                if (bp.Heroes.Count < bp.MaxHeroes())
                 {
-                    bp.HireHero();
+                    for (int x = 0; x < Math.Min(Config.HERO_IN_ROW, bp.MaxHeroes()); x++)
+                    //                for (; bp.Heroes.Count() < bp.MaxHeroes();)
+                    {
+                        bp.HireHero();
+                    }
                 }
             }
         }
