@@ -150,21 +150,11 @@ namespace Fantasy_King_s_Battle
 
             if (Winner == Player1)
             {
-                Player1.Wins++;
-                Player1.ResultLastBattle = ResultBattle.Win;
-                Player2.Loses++;
-                Player2.ResultLastBattle = ResultBattle.Lose;
-
-                Player2.DurabilityCastle -= DamageToCastle();
+                ApplyWinAndLose(Player1, Player2);
             }
             else if (Winner == Player2)
             {
-                Player1.Loses++;
-                Player1.ResultLastBattle = ResultBattle.Lose;
-                Player2.Wins++;
-                Player2.ResultLastBattle = ResultBattle.Win;
-
-                Player1.DurabilityCastle -= DamageToCastle();
+                ApplyWinAndLose(Player2, Player1);
             }
             else
             {
@@ -179,6 +169,16 @@ namespace Fantasy_King_s_Battle
 
             Player1.BattleCalced = true;
             Player2.BattleCalced = true;
+
+            void ApplyWinAndLose(Player winner, Player loser)
+            {
+                winner.Wins++;
+                winner.ResultLastBattle = ResultBattle.Win;
+                loser.Loses++;
+                loser.ResultLastBattle = ResultBattle.Lose;
+
+                loser.DurabilityCastle -= DamageToCastle();
+            }
 
             int DamageToCastle()
             {
