@@ -133,7 +133,8 @@ namespace Fantasy_King_s_Battle
 
         internal PlayerItem[] Warehouse = new PlayerItem[FormMain.WH_MAX_SLOTS];// Предметы на складе игрока
         internal PanelAboutPlayer PanelAbout { get; set; }
-        private Player opponent;
+        internal PanelPlayer Panel { get; set; }
+        private Player opponent;// Убрать это
         internal Player Opponent { get { return opponent; } set { if (value != this) opponent = value; else new Exception("Нельзя указать оппонентов самого себя."); } }
         internal bool BattleCalced { get; set; }
         internal List<Battle> HistoryBattles { get; } = new List<Battle>();

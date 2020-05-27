@@ -210,16 +210,26 @@ namespace Fantasy_King_s_Battle
 
             // Создаем панели игроков
             PanelAboutPlayer pap;
+            PanelPlayer pp;
+
             int top = Config.GRID_SIZE;
             foreach (Player p in lobby.Players)
             {
                 pap = new PanelAboutPlayer(p, ilResultBattle)
                 {
-                    Top = top
+                    Top = top,
+                    Left = 80
                 };
                 pageLobby.AddControl(pap);
 
                 p.PanelAbout = pap;
+
+                pp = new PanelPlayer(p)
+                {
+                    Parent = this,
+                    Left = Config.GRID_SIZE
+                };
+
                 top += pap.Height + Config.GRID_SIZE;
             }
 
@@ -351,6 +361,13 @@ namespace Fantasy_King_s_Battle
             foreach (Player p in lobby.Players)
             {
                 p.PanelAbout.ShowData();
+            }
+
+            int top = GuiUtils.NextTop(tabControl1);
+            foreach (Player p in lobby.Players)
+            {
+                p.Panel.Top = top;
+                top = GuiUtils.NextTop(p.Panel);
             }
         }
 

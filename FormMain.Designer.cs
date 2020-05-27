@@ -66,11 +66,11 @@
             this.tabControl1.Controls.Add(this.tabPageTowers);
             this.tabControl1.Controls.Add(this.tabPageHeroes);
             this.tabControl1.Controls.Add(this.tabPageBattle);
-            this.tabControl1.Location = new System.Drawing.Point(8, 40);
+            this.tabControl1.Location = new System.Drawing.Point(72, 40);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.ShowToolTips = true;
-            this.tabControl1.Size = new System.Drawing.Size(960, 60);
+            this.tabControl1.Size = new System.Drawing.Size(896, 60);
             this.tabControl1.TabIndex = 1;
             this.tabControl1.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl1_Selected);
             // 
@@ -80,7 +80,7 @@
             this.tabPageLobby.Location = new System.Drawing.Point(4, 25);
             this.tabPageLobby.Name = "tabPageLobby";
             this.tabPageLobby.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageLobby.Size = new System.Drawing.Size(952, 31);
+            this.tabPageLobby.Size = new System.Drawing.Size(888, 31);
             this.tabPageLobby.TabIndex = 0;
             this.tabPageLobby.Text = "Лобби";
             this.tabPageLobby.ToolTipText = "Лобби";
