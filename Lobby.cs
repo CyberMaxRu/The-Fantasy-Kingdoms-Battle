@@ -195,9 +195,19 @@ namespace Fantasy_King_s_Battle
         private void SortPlayers()
         {
             int pos = 1;
-            foreach (Player p in Players.OrderByDescending(p => p, new ComparerPlayerForPosition()))
+            foreach (Player p in Players.Where(p => p.IsLive == true).OrderByDescending(p => p, new ComparerPlayerForPosition()))
             {
                 p.PositionInLobby = pos++;
+            }
+
+            // Проверяем, что нет ошибки в позициях
+            int curPos = 1;
+            foreach (Player p in Players.OrderBy(p => p.PositionInLobby))
+            {
+                if (p.PositionInLobby != curPos)
+                    throw new Exception("Позиция игрока должна быть " + curPos.ToString() + " вместо " + p.PositionInLobby.ToString());
+
+                curPos++;
             }
         }
     }
