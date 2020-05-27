@@ -92,12 +92,20 @@ namespace Fantasy_King_s_Battle
 
         internal void CalcResultTurn()
         {
-            Debug.Assert(IsLive == true);
+            if (IsLive == true)
+            {
+                if (DurabilityCastle > 0)
+                {
+                    Gold += Income();
 
-            Gold += Income();
-
-            ValidateHeroes();
-            CalcBuilders();
+                    ValidateHeroes();
+                    CalcBuilders();
+                }
+                else
+                {
+                    IsLive = false;
+                }
+            }
         }
 
         private void CalcBuilders()
@@ -133,7 +141,7 @@ namespace Fantasy_King_s_Battle
         internal int Loses { get; set; }
         internal int Draws { get; set; }
         internal int StepsToCastle { get; }
-        internal bool IsLive { get; }
+        internal bool IsLive { get; private set; }
 
         internal PlayerItem[] Warehouse = new PlayerItem[FormMain.WH_MAX_SLOTS];// Предметы на складе игрока
         internal PanelAboutPlayer PanelAbout { get; set; }
