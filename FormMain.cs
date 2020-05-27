@@ -366,6 +366,7 @@ namespace Fantasy_King_s_Battle
             int top = GuiUtils.NextTop(tabControl1);
             foreach (Player p in lobby.Players)
             {
+                p.Panel.Refresh();
                 p.Panel.Top = top;
                 top = GuiUtils.NextTop(p.Panel);
             }
