@@ -100,6 +100,8 @@ namespace Fantasy_King_s_Battle
 
                     ValidateHeroes();
                     CalcBuilders();
+
+                    QuantityHeroes = Heroes.Where(h => (h.ClassHero.CategoryHero != CategoryHero.Guard) && (h.ClassHero.CategoryHero != CategoryHero.NonCombat)).Count();
                 }
                 else
                 {
@@ -140,6 +142,7 @@ namespace Fantasy_King_s_Battle
         internal int FreeBuilders { get; set; }
         internal int[] Resources { get; }
         internal bool IsLive { get; private set; }
+        internal int QuantityHeroes { get; private set; }
 
         internal PlayerItem[] Warehouse = new PlayerItem[FormMain.WH_MAX_SLOTS];// Предметы на складе игрока
 

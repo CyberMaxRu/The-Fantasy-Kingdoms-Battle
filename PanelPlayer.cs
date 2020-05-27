@@ -14,6 +14,7 @@ namespace Fantasy_King_s_Battle
         private readonly Player player;
         private Label lblDamageToCastle;
         private Label lblStrike;
+        private Label lblQuantityHeroes;
         private readonly int LeftForResultBattle;
         private readonly Pen penBorder = new Pen(Color.Black);
         private readonly SolidBrush brushCurDurability = new SolidBrush(Color.Green);
@@ -36,7 +37,7 @@ namespace Fantasy_King_s_Battle
                 Top = Config.GRID_SIZE + Program.formMain.ilResultBattle.ImageSize.Height + Config.GRID_SIZE_HALF,
                 BackColor = Color.Transparent,
                 TextAlign = ContentAlignment.TopCenter,
-                MaximumSize = new Size(Program.formMain.ilResultBattle.ImageSize.Width + Config.GRID_SIZE, Program.formMain.ilResultBattle.ImageSize.Height),
+                MaximumSize = new Size(Program.formMain.ilResultBattle.ImageSize.Width + Config.GRID_SIZE, Config.GRID_SIZE * 2),
                 Font = new Font("Microsoft Sans Serif", 8, FontStyle.Bold)
             };
 
@@ -50,6 +51,18 @@ namespace Fantasy_King_s_Battle
                 TextAlign = ContentAlignment.MiddleCenter,
                 MaximumSize = Program.formMain.ilResultBattle.ImageSize,
                 Font = new Font("Microsoft Sans Serif", 12, FontStyle.Bold)
+            };
+
+            lblQuantityHeroes = new Label()
+            {
+                Parent = this,
+                Left = LeftForResultBattle,
+                Top = Height - Config.GRID_SIZE * 2 - Config.GRID_SIZE_HALF,
+                ForeColor = Color.Black,
+                BackColor = Color.Transparent,
+                TextAlign = ContentAlignment.BottomCenter,
+                MaximumSize = new Size(Program.formMain.ilResultBattle.ImageSize.Width, Config.GRID_SIZE * 2),
+                Font = new Font("Microsoft Sans Serif", 9)
             };
         }
 
@@ -114,6 +127,8 @@ namespace Fantasy_King_s_Battle
                 lblDamageToCastle.Hide();
             }
 
+            // Количество героев
+            lblQuantityHeroes.Text = player.QuantityHeroes.ToString();
         }
     }
 }
