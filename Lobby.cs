@@ -77,12 +77,15 @@ namespace Fantasy_King_s_Battle
             // Делаем ходы, перебирая всех игроков, пока все не совершат ход
             for (int i = CurrentPlayerIndex + 1; i < Players.Count(); i++)
             {
-                SetPlayerAsCurrent(i);
+                if (Players[i].IsLive == true)
+                {
+                    SetPlayerAsCurrent(i);
 
-                if (CurrentPlayer.TypePlayer == TypePlayer.Computer)
-                    CurrentPlayer.DoTurn();
-                else
-                    return;
+                    if (CurrentPlayer.TypePlayer == TypePlayer.Computer)
+                        CurrentPlayer.DoTurn();
+                    else
+                        return;
+                }
             }
 
 
