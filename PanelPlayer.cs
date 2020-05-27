@@ -11,8 +11,8 @@ namespace Fantasy_King_s_Battle
     // Класс панели игрока (сокращенная информация)
     internal sealed class PanelPlayer : Control
     {
-        private Player player;
-        private Pen penBorder = new Pen(Color.Black);
+        private readonly Player player;
+        private readonly Pen penBorder = new Pen(Color.Black);
 
         public PanelPlayer(Player p) : base()
         {
