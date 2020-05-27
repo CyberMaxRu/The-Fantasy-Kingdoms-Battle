@@ -60,13 +60,7 @@ namespace Fantasy_King_s_Battle
 
             void DrawBand(int line, Brush mainColor, Brush backColor, int currentValue, int MaxValue)
             {
-                Debug.Assert(currentValue <= MaxValue);
-
-                int widthMain = (int)Math.Round(currentValue / 1.00 / MaxValue * Width);
-                int widthNone = Width - widthMain;
-                e.Graphics.FillRectangle(mainColor, 0, ImageListHeroes.ImageSize.Height + 4 * line, widthMain, 4);
-                if (widthNone > 0)
-                    e.Graphics.FillRectangle(backColor, widthMain, ImageListHeroes.ImageSize.Height + 4 * line, widthNone, 4);
+                GuiUtils.DrawBand(e.Graphics, new Rectangle(0, ImageListHeroes.ImageSize.Height + 4 * line, Width, 4), mainColor, backColor, currentValue, MaxValue);
             }
         }
     }
