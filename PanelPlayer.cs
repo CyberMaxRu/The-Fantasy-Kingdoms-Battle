@@ -11,7 +11,6 @@ namespace Fantasy_King_s_Battle
     // Класс панели игрока (сокращенная информация)
     internal sealed class PanelPlayer : Control
     {
-        private PictureBox pbPlayer;
         private Player player;
         private Pen penBorder = new Pen(Color.Black);
 
@@ -20,15 +19,6 @@ namespace Fantasy_King_s_Battle
             player = p;
             player.Panel = this;
 
-            pbPlayer = new PictureBox()
-            {
-                Parent = this,
-                Width = Program.formMain.ilPlayerAvatars.ImageSize.Width,
-                Height = Program.formMain.ilPlayerAvatars.ImageSize.Height,
-                Left = Config.GRID_SIZE,
-                Top = Config.GRID_SIZE,
-            };
-
             //BackColor = Color.LightBlue;
 
             Width = pbPlayer.Width + Config.GRID_SIZE * 2;
@@ -36,7 +26,7 @@ namespace Fantasy_King_s_Battle
         }
         protected override void OnPaint(PaintEventArgs e)
         {
-            pbPlayer.Image = Program.formMain.ilPlayerAvatars.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilPlayerAvatars, player.ImageIndexAvatar, player.IsLive)];
+            e.Graphics.DrawImageUnscaled(Program.formMain.ilPlayerAvatars.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilPlayerAvatars, player.ImageIndexAvatar, player.IsLive)], Config.GRID_SIZE, Config.GRID_SIZE);
 
             e.Graphics.DrawRectangle(penBorder, 0, 0, Width - 1, Height - 1);
         }
