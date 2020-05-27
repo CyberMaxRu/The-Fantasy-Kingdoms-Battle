@@ -25,7 +25,7 @@ namespace Fantasy_King_s_Battle
                 Players[i] = new Player(this, i + 1, "Игрок №" + (i + 1).ToString(), tp);
             }
 
-            ApplyPlayer(0);
+            SetPlayerAsCurrent(0);
 
             //
             Turn = 1;
@@ -64,7 +64,7 @@ namespace Fantasy_King_s_Battle
             }
         }
 
-        private void ApplyPlayer(int index)
+        private void SetPlayerAsCurrent(int index)
         {
             Debug.Assert(Players[CurrentPlayerIndex].IsLive);
 
@@ -77,7 +77,7 @@ namespace Fantasy_King_s_Battle
             // Делаем ходы, перебирая всех игроков, пока все не совершат ход
             for (int i = CurrentPlayerIndex + 1; i < Players.Count(); i++)
             {
-                ApplyPlayer(i);
+                SetPlayerAsCurrent(i);
 
                 if (CurrentPlayer.TypePlayer == TypePlayer.Computer)
                     CurrentPlayer.DoTurn();
