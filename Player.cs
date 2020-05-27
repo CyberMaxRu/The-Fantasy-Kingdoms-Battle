@@ -17,7 +17,6 @@ namespace Fantasy_King_s_Battle
             Lobby = lobby;
             Name = name;
             TypePlayer = typePlayer;
-            StepsToCastle = 5;
             Wins = 0;
             Loses = 0;
             IsLive = true;
@@ -140,7 +139,6 @@ namespace Fantasy_King_s_Battle
         internal int Loses { get; set; }
         internal int Draws { get; set; }
         internal ResultBattle ResultLastBattle { get; set; }
-        internal int StepsToCastle { get; }
         internal bool IsLive { get; private set; }
 
         internal PlayerItem[] Warehouse = new PlayerItem[FormMain.WH_MAX_SLOTS];// Предметы на складе игрока
