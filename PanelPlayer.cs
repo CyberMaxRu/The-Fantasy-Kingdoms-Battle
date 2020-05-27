@@ -21,8 +21,8 @@ namespace Fantasy_King_s_Battle
             player = p;
             player.Panel = this;
 
-            Width = Program.formMain.ilPlayerAvatars.ImageSize.Width + Config.GRID_SIZE * 2;
-            Height = Program.formMain.ilPlayerAvatars.ImageSize.Height + Config.GRID_SIZE * 3;
+            Width = Config.GRID_SIZE + Program.formMain.ilPlayerAvatars.ImageSize.Width + Config.GRID_SIZE + Program.formMain.ilResultBattle.ImageSize.Width + Config.GRID_SIZE;
+            Height = Config.GRID_SIZE + Program.formMain.ilPlayerAvatars.ImageSize.Height + Config.GRID_SIZE + Config.GRID_SIZE;
         }
 
         protected override void OnMouseEnter(EventArgs e)
@@ -59,6 +59,10 @@ namespace Fantasy_King_s_Battle
 
             // Прочность замка
             GuiUtils.DrawBand(e.Graphics, new Rectangle(Config.GRID_SIZE, Config.GRID_SIZE + Program.formMain.ilPlayerAvatars.ImageSize.Height + 1, Program.formMain.ilPlayerAvatars.ImageSize.Width, 4), brushCurDurability, brushMaxDurability, player.DurabilityCastle, player.Lobby.TypeLobby.DurabilityCastle);
+
+            // Результат последнего боя
+            if (player.ResultLastBattle != ResultBattle.None)
+                e.Graphics.DrawImageUnscaled(Program.formMain.ilResultBattle.Images[(int)player.ResultLastBattle], Width - Program.formMain.ilResultBattle.ImageSize.Width - Config.GRID_SIZE, Config.GRID_SIZE);
         }
     }
 }

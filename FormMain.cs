@@ -20,7 +20,7 @@ namespace Fantasy_King_s_Battle
 
         internal readonly ImageList ilPlayerAvatars;
         private readonly ImageList ilSkills;
-        private readonly ImageList ilResultBattle;
+        internal readonly ImageList ilResultBattle;
         internal readonly ImageList ilBuildings;
         private readonly ImageList ilHeroes;
         internal readonly ImageList ilGui;
@@ -139,7 +139,7 @@ namespace Fantasy_King_s_Battle
             // Подготавливаем иконки
             ilPlayerAvatars = PrepareImageList("PlayerAvatars.png", 48, 48, true);
             ilSkills = PrepareImageList("Skills.png", 82, 94, false);
-            ilResultBattle = PrepareImageList("ResultBattle52.png", 45, 52, false);
+            ilResultBattle = PrepareImageList("ResultBattle.png", 24, 24, false);
             ilBuildings = PrepareImageList("Buildings.png", 126, 126, true);
             ilHeroes = PrepareImageList("Heroes.png", 126, 126, false);
             ilGui = PrepareImageList("Gui.png", 48, 48, true);
@@ -218,7 +218,7 @@ namespace Fantasy_King_s_Battle
                 pap = new PanelAboutPlayer(p, ilResultBattle)
                 {
                     Top = top,
-                    Left = 80
+                    Left = 120
                 };
                 pageLobby.AddControl(pap);
 
