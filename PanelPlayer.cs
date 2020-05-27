@@ -13,6 +13,7 @@ namespace Fantasy_King_s_Battle
     {
         private readonly Player player;
         private Label lblDamageToCastle;
+        private Label lblStrike;
         private readonly int LeftForResultBattle;
         private readonly Pen penBorder = new Pen(Color.Black);
         private readonly SolidBrush brushCurDurability = new SolidBrush(Color.Green);
@@ -37,6 +38,18 @@ namespace Fantasy_King_s_Battle
                 TextAlign = ContentAlignment.TopCenter,
                 MaximumSize = new Size(Program.formMain.ilResultBattle.ImageSize.Width + Config.GRID_SIZE, Program.formMain.ilResultBattle.ImageSize.Height),
                 Font = new Font("Microsoft Sans Serif", 8, FontStyle.Bold)
+            };
+
+            lblStrike = new Label()
+            {
+                Parent = this,
+                Left = LeftForResultBattle,
+                Top = Config.GRID_SIZE,
+                ForeColor = Color.Black,
+                BackColor = Color.Transparent,
+                TextAlign = ContentAlignment.MiddleCenter,
+                MaximumSize = Program.formMain.ilResultBattle.ImageSize,
+                Font = new Font("Microsoft Sans Serif", 12, FontStyle.Bold)
             };
         }
 
@@ -78,6 +91,15 @@ namespace Fantasy_King_s_Battle
             // Результат последнего боя
             if (player.ResultLastBattle != ResultBattle.None)
                 e.Graphics.DrawImageUnscaled(Program.formMain.ilResultBattle.Images[(int)player.ResultLastBattle], LeftForResultBattle, Config.GRID_SIZE);
+
+            // Указываем страйк, если он есть
+            if (player.Strike > 1)
+            {
+                lblStrike.Show();
+                lblStrike.Text = player.Strike.ToString();
+            }
+            else
+                lblStrike.Hide();
 
             // Урон по Замку в последнем бою
             if (player.LastBattleDamageToCastle != 0)
