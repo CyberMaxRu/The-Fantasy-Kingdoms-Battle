@@ -68,7 +68,7 @@
     <TypeAttack>Melee</TypeAttack>
     <DamageMelee>5</DamageMelee>
     <DamageMagic>0</DamageMagic>
-    <TimeHit>100</TimeHit>
+    <TimeHit>50</TimeHit>
   </Item>
   <Item>
     <ID>ArmourWarrior0</ID>
