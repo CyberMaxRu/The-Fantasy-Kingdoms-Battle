@@ -15,10 +15,12 @@ namespace Fantasy_King_s_Battle
             Name = n.SelectSingleNode("Name").InnerText;
             QuantityPlayers = Convert.ToInt32(n.SelectSingleNode("QuantityPlayers").InnerText);
             DurabilityCastle = Convert.ToInt32(n.SelectSingleNode("DurabilityCastle").InnerText);
+            Gold = Convert.ToInt32(n.SelectSingleNode("Gold").InnerText);
         }
 
         internal string Name { get; }
         internal int QuantityPlayers { get; }
         internal int DurabilityCastle { get; }
+        internal int Gold { get; }
     }
 }

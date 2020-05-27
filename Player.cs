@@ -26,9 +26,7 @@ namespace Fantasy_King_s_Battle
 
             // Настраиваем игрока согласно настройкам лобби
             DurabilityCastle = Lobby.TypeLobby.DurabilityCastle;
-
-            // Инициализируем ресурсы               
-            Gold = 100_000;
+            Gold = Lobby.TypeLobby.Gold;
 
             // Инициализация зданий
             foreach (Building b in FormMain.Config.Buildings)
