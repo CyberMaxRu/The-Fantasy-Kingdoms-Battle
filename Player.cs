@@ -24,6 +24,9 @@ namespace Fantasy_King_s_Battle
             Position = pos;
             ImageIndexAvatar = Position - 1;
 
+            // Настраиваем игрока согласно настройкам лобби
+            DurabilityCastle = Lobby.TypeLobby.DurabilityCastle;
+
             // Инициализируем ресурсы               
             Gold = 100_000;
 
@@ -117,6 +120,7 @@ namespace Fantasy_King_s_Battle
         internal string Name { get; }
         internal int ImageIndexAvatar { get; }
         internal int Position { get; }
+        internal int DurabilityCastle { get; private set; }
         internal List<PlayerBuilding> Buildings { get; } = new List<PlayerBuilding>();
         internal List<PlayerHero> Heroes { get; } = new List<PlayerHero>();
         internal PlayerHero[,] CellHeroes;
