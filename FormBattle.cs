@@ -24,6 +24,7 @@ namespace Fantasy_King_s_Battle
         private DateTime startDateTime;
         private Bitmap background;
         private Stopwatch st = new Stopwatch();
+        private Stopwatch timePassed = new Stopwatch();
         private bool inDraw;
         private int skippedFrames = 0;
 
@@ -52,7 +53,7 @@ namespace Fantasy_King_s_Battle
 
             // Таймер для анимации
             timerStep = new Timer()
-            {               
+            {
                 Interval = 1000 / Config.STEPS_IN_SECOND,
                 Enabled = false
             };
@@ -81,19 +82,24 @@ namespace Fantasy_King_s_Battle
 
                 if (battle.BattleCalced == false)
                 {
-                    st.Restart();
-                    battle.CalcStep();
-                    st.Stop();
-                    lblCalcStep.Text = st.ElapsedMilliseconds.ToString();
+                    // Рисуем столько кадров, сколько должно было пройти
+                    int pastFrames = (int)(timePassed.ElapsedMilliseconds / Config.STEP_IN_MSEC);
+                    while (battle.Step < pastFrames)
+                        battle.CalcStep();
 
-                    ApplyStep();
-                    Application.DoEvents();
+                    DoFrame();
                 }
 
                 inDraw = false;
             }
             else
                 skippedFrames++;
+        }
+
+        private void DoFrame()
+        {
+            ApplyStep();
+            Application.DoEvents();
         }
 
         private void FormBattle_FormClosing(object sender, FormClosingEventArgs e)
@@ -164,6 +170,7 @@ namespace Fantasy_King_s_Battle
             lastLabel = DateTime.Now;
             frames = 0;
             inDraw = false;
+            timePassed.Start();
             ShowDialog();
         }
 
