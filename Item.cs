@@ -36,14 +36,19 @@ namespace Fantasy_King_s_Battle
                 case TypeAttack.None:
                     Debug.Assert((DamageMelee == 0) && (DamageMissile == 0) && (DamageMagic == 0));
                     Debug.Assert(TimeHit == 0);
+
                     break;
                 case TypeAttack.Melee:
                     Debug.Assert(DamageMelee > 0);
                     Debug.Assert(TimeHit > 0);
+                    Debug.Assert(TimeHit * 10 % Config.STEP_IN_MSEC == 0);
+
                     break;
                 case TypeAttack.Missile:
                     Debug.Assert((DamageMissile > 0) || (DamageMagic > 0));
                     Debug.Assert(TimeHit > 0);
+                    Debug.Assert(TimeHit * 10 % Config.STEP_IN_MSEC == 0);
+
                     break;
                 default:
                     throw new Exception("Неизвестный тип атаки.");
