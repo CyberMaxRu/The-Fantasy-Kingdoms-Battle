@@ -21,8 +21,6 @@ namespace Fantasy_King_s_Battle
             player = p;
             player.Panel = this;
 
-            //BackColor = Color.LightBlue;
-
             Width = Program.formMain.ilPlayerAvatars.ImageSize.Width + Config.GRID_SIZE * 2;
             Height = Program.formMain.ilPlayerAvatars.ImageSize.Height + Config.GRID_SIZE * 3;
         }
@@ -46,6 +44,13 @@ namespace Fantasy_King_s_Battle
 
         protected override void OnPaint(PaintEventArgs e)
         {
+            if (player == player.Lobby.CurrentPlayer)
+                BackColor = Color.LightBlue;
+            else if (player == player.Lobby.CurrentPlayer.Opponent)
+                BackColor = Color.LightCoral;
+            else
+                BackColor = Color.FromKnownColor(KnownColor.Control);
+
             // Рамка вокруг панели
             e.Graphics.DrawRectangle(penBorder, 0, 0, Width - 1, Height - 1);
 
