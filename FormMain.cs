@@ -364,12 +364,16 @@ namespace Fantasy_King_s_Battle
             }
 
             int top = GuiUtils.NextTop(tabControl1);
-            foreach (Player p in lobby.Players)
+            foreach (Player p in lobby.Players.OrderBy(p => p.PositionInLobby))
             {
-                p.Panel.Refresh();
+                Debug.Assert(p.PositionInLobby >= 1);
+                Debug.Assert(p.PositionInLobby <= lobby.TypeLobby.QuantityPlayers);
+
                 p.Panel.Top = top;
                 top = GuiUtils.NextTop(p.Panel);
             }
+
+            Refresh();
         }
 
         private void DrawPageBuilding(PanelControls panel, CategoryBuilding category)
