@@ -20,7 +20,7 @@ namespace Fantasy_King_s_Battle
             for (int i = 0; i < quantityPlayers; i++)
             {
                 tp = i == 0 ? TypePlayer.Human : TypePlayer.Computer;
-                Players[i] = new Player(this, "Игрок №" + (i + 1).ToString(), FormMain.Config.Fractions[i], tp);
+                Players[i] = new Player(this, i + 1, "Игрок №" + (i + 1).ToString(), tp);
             }
 
             ApplyPlayer(0);

@@ -18,7 +18,7 @@ namespace Fantasy_King_s_Battle
 
         private readonly string dirResources;
 
-        private readonly ImageList ilFractions;
+        internal readonly ImageList ilPlayerAvatars;
         private readonly ImageList ilSkills;
         private readonly ImageList ilResultBattle;
         internal readonly ImageList ilBuildings;
@@ -118,6 +118,8 @@ namespace Fantasy_King_s_Battle
         {
             InitializeComponent();
 
+            Program.formMain = this;
+
             // Настройка переменной с папкой ресурсов
             dirResources = Environment.CurrentDirectory;
             if (dirResources.Contains("Debug"))
@@ -135,8 +137,7 @@ namespace Fantasy_King_s_Battle
             _ = new Config(dirResources, this);
 
             // Подготавливаем иконки
-            ilFractions = PrepareImageList("Fractions.png", 48, 48, true);
-
+            ilPlayerAvatars = PrepareImageList("PlayerAvatars.png", 48, 48, true);
             ilSkills = PrepareImageList("Skills.png", 82, 94, false);
             ilResultBattle = PrepareImageList("ResultBattle52.png", 45, 52, false);
             ilBuildings = PrepareImageList("Buildings.png", 126, 126, true);
@@ -212,7 +213,7 @@ namespace Fantasy_King_s_Battle
             int top = Config.GRID_SIZE;
             foreach (Player p in lobby.Players)
             {
-                pap = new PanelAboutPlayer(p, ilFractions, ilResultBattle)
+                pap = new PanelAboutPlayer(p, ilResultBattle)
                 {
                     Top = top
                 };
@@ -256,7 +257,6 @@ namespace Fantasy_King_s_Battle
         }
 
         internal static Config Config { get; set; }
-        internal ImageList ILFractions { get { return ilFractions; } }
         internal ImageList PrepareImageList(string filename, int width, int height, bool convertToGrey)
         {
             ImageList il = new ImageList()

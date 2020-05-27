@@ -12,17 +12,17 @@ namespace Fantasy_King_s_Battle
     // Класс игрока
     internal sealed class Player
     {
-        public Player(Lobby lobby, string name, Fraction fraction, TypePlayer typePlayer)
+        public Player(Lobby lobby, int pos, string name, TypePlayer typePlayer)
         {
             Lobby = lobby;
             Name = name;
-            Fraction = fraction;
             TypePlayer = typePlayer;
             StepsToCastle = 5;
             Wins = 0;
             Loses = 0;
             IsLive = true;
-            Position = lobby.Players.Count();
+            Position = pos;
+            ImageIndexAvatar = Position - 1;
 
             // Инициализируем ресурсы               
             Gold = 100_000;
@@ -115,8 +115,8 @@ namespace Fantasy_King_s_Battle
 
         internal Lobby Lobby { get; }
         internal string Name { get; }
+        internal int ImageIndexAvatar { get; }
         internal int Position { get; }
-        internal Fraction Fraction { get; }
         internal List<PlayerBuilding> Buildings { get; } = new List<PlayerBuilding>();
         internal List<PlayerHero> Heroes { get; } = new List<PlayerHero>();
         internal PlayerHero[,] CellHeroes;

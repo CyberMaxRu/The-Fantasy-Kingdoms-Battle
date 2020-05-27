@@ -18,7 +18,7 @@ namespace Fantasy_King_s_Battle
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            formMain = new FormMain();
+            new FormMain();
             Application.Run(formMain);
         }
     }

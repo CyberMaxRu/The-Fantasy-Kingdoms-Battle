@@ -15,21 +15,19 @@ namespace Fantasy_King_s_Battle
         private readonly PictureBox pbResultBattle;
         private readonly Label namePlayer;
         private readonly Label labelAboutBattles;
-        private readonly ImageList imageListFraction;
         private readonly ImageList imageListResultBattle;
 
-        public PanelAboutPlayer(Player player, ImageList ilFraction, ImageList ilResultBattle)
+        public PanelAboutPlayer(Player player, ImageList ilResultBattle)
         {
             Player = player;
             BorderStyle = BorderStyle.FixedSingle;
-            imageListFraction = ilFraction;
             imageListResultBattle = ilResultBattle;
 
             pbFraction = new PictureBox()
             {
                 Parent = this,
-                Width = ilFraction.ImageSize.Width,
-                Height = ilFraction.ImageSize.Height,
+                Width = Program.formMain.ilPlayerAvatars.ImageSize.Width,
+                Height = Program.formMain.ilPlayerAvatars.ImageSize.Height,
                 Left = Config.GRID_SIZE,
                 Top = Config.GRID_SIZE,
             };
@@ -66,10 +64,7 @@ namespace Fantasy_King_s_Battle
 
         internal void ShowData()
         {
-            if (Player.IsLive == true)
-                pbFraction.Image = imageListFraction.Images[Player.Fraction.ImageIndex];
-            else
-                pbFraction.Image = imageListFraction.Images[Player.Fraction.ImageIndex + FormMain.Config.Fractions.Count];
+            pbFraction.Image = Program.formMain.ilPlayerAvatars.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilPlayerAvatars, Player.ImageIndexAvatar, Player.IsLive)];
 
             if (Player == Player.Lobby.CurrentPlayer)
                 BackColor = Color.LightBlue;

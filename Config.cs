@@ -69,14 +69,6 @@ namespace Fantasy_King_s_Battle
                 Heroes.Add(new Hero(n));
             }
 
-            // Загрузка фракций
-            xmlDoc = CreateXmlDocument("Config\\Fractions.xml");
-
-            foreach (XmlNode n in xmlDoc.SelectNodes("/Fractions/Fraction"))
-            {
-                Fractions.Add(new Fraction(n, fm));
-            }
-
             // Загрузка навыков
             xmlDoc = CreateXmlDocument("Config\\Skills.xml");
 
@@ -97,24 +89,10 @@ namespace Fantasy_King_s_Battle
         internal string PathResources { get; }
         internal List<Building> Buildings { get; } = new List<Building>();
         internal List<Hero> Heroes { get; } = new List<Hero>();
-        internal List<Fraction> Fractions { get; } = new List<Fraction>();
         internal List<TypeItem> TypeItems { get; } = new List<TypeItem>();
         internal List<Item> Items { get; } = new List<Item>();
         internal List<Skill> Skills { get; } = new List<Skill>();
         internal int MaxLevelSkill { get; }
-
-        internal Fraction FindFraction(string ID)
-        {
-            foreach (Fraction f in Fractions)
-            {
-                if (f.ID == ID)
-                {
-                    return f;
-                }
-            }
-
-            throw new Exception("Фракция " + ID + " не найдена.");
-        }
 
         internal Skill FindSkill(string ID)
         {
