@@ -82,7 +82,7 @@ namespace Fantasy_King_s_Battle
         internal const int BUILDING_MAX_LINES = 3;
 
         private readonly Lobby lobby;
-        private int curAppliedPlayer = -1;
+        private Player curAppliedPlayer;
 
         private List<PanelItem> SlotsWarehouse = new List<PanelItem>();
         private PanelHero[,] CellPanelHeroes;
@@ -341,11 +341,11 @@ namespace Fantasy_King_s_Battle
             StatusLabelDay.Text = "День: " + lobby.Turn.ToString();
 
             // Если этого игрока не отрисовывали, формируем заново вкладки
-            if (curAppliedPlayer != lobby.CurrentPlayerIndex)
+            if (curAppliedPlayer != lobby.CurrentPlayer)
             {
                 //DrawExternalBuilding();
 
-                curAppliedPlayer = lobby.CurrentPlayerIndex;
+                curAppliedPlayer = lobby.CurrentPlayer;
             }
 
             ShowLobby();

@@ -12,7 +12,7 @@ namespace Fantasy_King_s_Battle
     // Класс игрока
     internal sealed class Player
     {
-        public Player(Lobby lobby, int pos, string name, TypePlayer typePlayer)
+        public Player(Lobby lobby, int index, string name, TypePlayer typePlayer)
         {
             Lobby = lobby;
             Name = name;
@@ -20,8 +20,8 @@ namespace Fantasy_King_s_Battle
             Wins = 0;
             Loses = 0;
             IsLive = true;
-            Position = pos;
-            ImageIndexAvatar = Position - 1;
+            PlayerIndex = index;
+            ImageIndexAvatar = PlayerIndex;
 
             // Настраиваем игрока согласно настройкам лобби
             DurabilityCastle = Lobby.TypeLobby.DurabilityCastle;
@@ -124,7 +124,7 @@ namespace Fantasy_King_s_Battle
         internal Lobby Lobby { get; }
         internal string Name { get; }
         internal int ImageIndexAvatar { get; }
-        internal int Position { get; }
+        internal int PlayerIndex { get; }
         internal int PositionInLobby { get; set; }
         internal int DurabilityCastle { get; set; }
         internal List<PlayerBuilding> Buildings { get; } = new List<PlayerBuilding>();

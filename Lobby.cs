@@ -44,7 +44,7 @@ namespace Fantasy_King_s_Battle
             for (int i = 0; i < TypeLobby.QuantityPlayers; i++)
             {
                 tp = i == 0 ? TypePlayer.Human : TypePlayer.Computer;
-                Players[i] = new Player(this, i + 1, "Игрок №" + (i + 1).ToString(), tp);
+                Players[i] = new Player(this, i, "Игрок №" + (i + 1).ToString(), tp);
             }
 
             SortPlayers();
@@ -60,7 +60,6 @@ namespace Fantasy_King_s_Battle
 
         internal TypeLobby TypeLobby { get; }
         internal Player[] Players { get; }
-        internal int CurrentPlayerIndex { get; private set; }
         internal Player CurrentPlayer { get; private set; }
         internal int Turn { get; private set; }
         internal List<Battle> Battles { get; } = new List<Battle>();
@@ -99,14 +98,14 @@ namespace Fantasy_King_s_Battle
         {
             Debug.Assert(Players[index].IsLive);
 
-            CurrentPlayerIndex = index;
-            CurrentPlayer = Players[CurrentPlayerIndex];
+            CurrentPlayer = Players[index];
         }
 
         internal void DoEndTurn()
         {
             // Делаем ходы, перебирая всех игроков, пока все не совершат ход
-            for (int i = CurrentPlayerIndex + 1; i < Players.Count(); i++)
+            int cpi = CurrentPlayer != null ? CurrentPlayer.PlayerIndex : -1;
+            for (int i = cpi + 1; i < Players.Count(); i++)
             {
                 if (Players[i].IsLive == true)
                 {
@@ -128,7 +127,7 @@ namespace Fantasy_King_s_Battle
 
             // Делаем начало хода
             Turn++;
-            CurrentPlayerIndex = -1;
+            CurrentPlayer = null;
             MakeOpponents();
 
             DoEndTurn();
