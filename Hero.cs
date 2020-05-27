@@ -68,12 +68,29 @@ namespace Fantasy_King_s_Battle
             CategoryHero = (CategoryHero)Enum.Parse(typeof(CategoryHero), n.SelectSingleNode("CategoryHero").InnerText);
             TypeAttack = (TypeAttack)Enum.Parse(typeof(TypeAttack), n.SelectSingleNode("TypeAttack").InnerText);
             CanBuild = Convert.ToBoolean(n.SelectSingleNode("CanBuild").InnerText);
+            DamageToCastle = Convert.ToInt32(n.SelectSingleNode("DamageToCastle").InnerText);
 
             //Debug.Assert(Cost > 0);
             Debug.Assert(ID.Length > 0);
             Debug.Assert(Name.Length > 0);
             Debug.Assert(Description.Length > 0);
             Debug.Assert(ImageIndex >= 0);
+            Debug.Assert(DamageToCastle >= 0);
+
+            switch (TypeAttack)
+            {
+                case TypeAttack.Melee:
+                    //Debug.Assert(DamageToCastle > 0);
+                    break;
+                case TypeAttack.Missile:
+                    Debug.Assert(DamageToCastle > 0);
+                    break;
+                case TypeAttack.None:
+                    Debug.Assert(DamageToCastle == 0); 
+                    break;
+                default:
+                    throw new Exception("Неизвестный тип атаки.");
+            }
 
             // Проверяем, что таких же ID и наименования нет
             foreach (Hero h in FormMain.Config.Heroes)
@@ -162,6 +179,7 @@ namespace Fantasy_King_s_Battle
         internal CategoryHero CategoryHero { get; }
         internal TypeAttack TypeAttack { get; }
         internal bool CanBuild { get; }
+        internal int DamageToCastle { get; }
         internal HeroParameters ParametersByHire { get; }// Параметры при найме героя
         internal ConfigNextLevelHero ConfigNextLevel { get; }
         internal Slot[] Slots { get; }

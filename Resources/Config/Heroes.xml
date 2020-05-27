@@ -11,6 +11,7 @@
     <CategoryHero>Melee</CategoryHero>
     <TypeAttack>Melee</TypeAttack>
     <CanBuild>False</CanBuild>
+    <DamageToCastle>1</DamageToCastle>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -97,6 +98,7 @@
     <CategoryHero>Melee</CategoryHero>
     <TypeAttack>Melee</TypeAttack>
     <CanBuild>False</CanBuild>
+    <DamageToCastle>1</DamageToCastle>
     <BaseParameters>
       <Strength>10</Strength>
       <Dexterity>20</Dexterity>
@@ -183,6 +185,7 @@
     <CategoryHero>Archer</CategoryHero>
     <TypeAttack>Missile</TypeAttack>
     <CanBuild>False</CanBuild>
+    <DamageToCastle>1</DamageToCastle>
     <BaseParameters>
       <Strength>15</Strength>
       <Dexterity>20</Dexterity>
@@ -269,6 +272,7 @@
     <CategoryHero>Mage</CategoryHero>
     <TypeAttack>Missile</TypeAttack>
     <CanBuild>False</CanBuild>
+    <DamageToCastle>1</DamageToCastle>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -355,6 +359,7 @@
     <CategoryHero>Mage</CategoryHero>
     <TypeAttack>Missile</TypeAttack>
     <CanBuild>False</CanBuild>
+    <DamageToCastle>1</DamageToCastle>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -441,6 +446,7 @@
     <CategoryHero>Archer</CategoryHero>
     <TypeAttack>Missile</TypeAttack>
     <CanBuild>False</CanBuild>
+    <DamageToCastle>1</DamageToCastle>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -527,6 +533,7 @@
     <CategoryHero>Melee</CategoryHero>
     <TypeAttack>Melee</TypeAttack>
     <CanBuild>True</CanBuild>
+    <DamageToCastle>2</DamageToCastle>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -613,6 +620,7 @@
     <CategoryHero>NonCombat</CategoryHero>
     <TypeAttack>None</TypeAttack>
     <CanBuild>True</CanBuild>
+    <DamageToCastle>0</DamageToCastle>
   </Hero>
   <Hero>
     <ID>Guardian</ID>
@@ -625,6 +633,7 @@
     <CategoryHero>Guard</CategoryHero>
     <TypeAttack>Melee</TypeAttack>
     <CanBuild>False</CanBuild>
+    <DamageToCastle>1</DamageToCastle>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -646,5 +655,6 @@
     <CategoryHero>NonCombat</CategoryHero>
     <TypeAttack>None</TypeAttack>
     <CanBuild>False</CanBuild>
+    <DamageToCastle>0</DamageToCastle>
   </Hero>
 </Heroes>
