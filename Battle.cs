@@ -173,6 +173,8 @@ namespace Fantasy_King_s_Battle
                 winner.ResultLastBattle = ResultBattle.Win;
                 loser.ResultLastBattle = ResultBattle.Lose;
 
+                winner.LastBattleDamageToCastle = DamageToCastle();
+                loser.LastBattleDamageToCastle = -DamageToCastle();
                 loser.DurabilityCastle -= DamageToCastle();
             }
 

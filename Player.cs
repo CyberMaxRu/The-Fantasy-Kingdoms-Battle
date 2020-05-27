@@ -130,6 +130,7 @@ namespace Fantasy_King_s_Battle
         internal int PlayerIndex { get; }
         internal int PositionInLobby { get; set; }
         internal int DurabilityCastle { get; set; }
+        internal int LastBattleDamageToCastle { get; set; }
         internal List<PlayerBuilding> Buildings { get; } = new List<PlayerBuilding>();
         internal List<PlayerHero> Heroes { get; } = new List<PlayerHero>();
         internal PlayerHero[,] CellHeroes;
