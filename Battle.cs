@@ -155,13 +155,14 @@ namespace Fantasy_King_s_Battle
                 Player1.Wins++;
                 Player2.Loses++;
 
-                // Вычитаем прочность замка
-
+                Player2.DurabilityCastle -= DamageToCastle();
             }
             else if (winner == Player2)
             {
                 Player1.Loses++;
                 Player2.Wins++;
+
+                Player1.DurabilityCastle -= DamageToCastle();
             }
             else
             {
@@ -176,6 +177,20 @@ namespace Fantasy_King_s_Battle
 
             Player1.BattleCalced = true;
             Player2.BattleCalced = true;
+
+            int DamageToCastle()
+            {
+                int damage = 0;
+
+                foreach (HeroInBattle h in ActiveHeroes.Where(h => h.PlayerHero.Player == winner))
+                {
+                    damage += h.PlayerHero.ClassHero.DamageToCastle;
+                }
+
+                Debug.Assert(damage > 0);
+
+                return damage;
+            }
         }
     }
 }
