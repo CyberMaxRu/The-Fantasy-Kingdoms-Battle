@@ -66,7 +66,7 @@ namespace Fantasy_King_s_Battle
 
         private void SetPlayerAsCurrent(int index)
         {
-            Debug.Assert(Players[CurrentPlayerIndex].IsLive);
+            Debug.Assert(Players[index].IsLive);
 
             CurrentPlayerIndex = index;
             CurrentPlayer = Players[CurrentPlayerIndex];
