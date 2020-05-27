@@ -137,7 +137,8 @@ namespace Fantasy_King_s_Battle
         {
             foreach (Player p in Players)
             {
-                p.CalcResultTurn();
+                if (p.IsLive == true)
+                    p.CalcResultTurn();
             }
         }
 
