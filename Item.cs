@@ -31,21 +31,22 @@ namespace Fantasy_King_s_Battle
             DefenseMissile = n.SelectSingleNode("DefenseMissile") != null ? Convert.ToInt32(n.SelectSingleNode("DefenseMissile").InnerText) : 0;
             DefenseMagic = n.SelectSingleNode("DefenseMagic") != null ? Convert.ToInt32(n.SelectSingleNode("DefenseMagic").InnerText) : 0;
 
-            if (TypeAttack == TypeAttack.None)
+            switch (TypeAttack)
             {
-                Debug.Assert((DamageMelee == 0) && (DamageMissile == 0) && (DamageMagic == 0));
-                Debug.Assert(TimeHit == 0);
-            }
-
-            if (TypeAttack == TypeAttack.Melee)
-            { 
-                Debug.Assert(DamageMelee > 0);
-                Debug.Assert(TimeHit > 0);
-            }
-            if (TypeAttack == TypeAttack.Missile)
-            {
-                Debug.Assert((DamageMissile > 0) || (DamageMagic > 0));
-                Debug.Assert(TimeHit > 0);
+                case TypeAttack.None:
+                    Debug.Assert((DamageMelee == 0) && (DamageMissile == 0) && (DamageMagic == 0));
+                    Debug.Assert(TimeHit == 0);
+                    break;
+                case TypeAttack.Melee:
+                    Debug.Assert(DamageMelee > 0);
+                    Debug.Assert(TimeHit > 0);
+                    break;
+                case TypeAttack.Missile:
+                    Debug.Assert((DamageMissile > 0) || (DamageMagic > 0));
+                    Debug.Assert(TimeHit > 0);
+                    break;
+                default:
+                    throw new Exception("Неизвестный тип атаки.");
             }
 
             Position = FormMain.Config.Items.Count;
