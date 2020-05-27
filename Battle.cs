@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace Fantasy_King_s_Battle
 {
-    internal enum ResultBattle { Win, Draw, Lose };
+    internal enum ResultBattle { Win, Draw, Lose, None };
 
     // Класс боя между двумя игроками
     internal sealed class Battle

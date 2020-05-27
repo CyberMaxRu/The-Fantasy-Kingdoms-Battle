@@ -22,6 +22,7 @@ namespace Fantasy_King_s_Battle
             IsLive = true;
             PlayerIndex = index;
             ImageIndexAvatar = PlayerIndex;
+            ResultLastBattle = ResultBattle.None;
 
             // Настраиваем игрока согласно настройкам лобби
             DurabilityCastle = Lobby.TypeLobby.DurabilityCastle;
