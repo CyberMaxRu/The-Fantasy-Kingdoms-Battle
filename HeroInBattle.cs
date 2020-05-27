@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace Fantasy_King_s_Battle
 {
-    internal enum StateHeroInBattle { Melee, Shoot, Cast, Drink, Healing, Rest, Resurrection, Dead, None }// Состояние героя в бою
+    internal enum StateHeroInBattle { Melee, Shoot, Cast, Drink, Healing, Rest, Resurrection, Tumbstone, Dead, None }// Состояние героя в бою
 
     internal sealed class HeroInBattle
     {
@@ -97,6 +97,17 @@ namespace Fantasy_King_s_Battle
                         }
 
                         break;
+                    case StateHeroInBattle.Tumbstone:
+                        Debug.Assert(Target == null);
+
+                        timeAction--;
+                        if (timeAction == 0)
+                        {
+                            IsLive = false;
+                            State = StateHeroInBattle.Dead;
+                        }
+
+                        break;
                     default:
                         break;
                 }
@@ -123,7 +134,8 @@ namespace Fantasy_King_s_Battle
                     // Собираем список вражеских героев вокруг себя
                     if (h.Player != Player)
                         if (IsNeighbour(h) == true)
-                            targets.Add(h);
+                            if (h.CurrentHealth > 0)
+                               targets.Add(h);
                 }
 
                 if (targets.Count > 0)
@@ -154,11 +166,15 @@ namespace Fantasy_King_s_Battle
         {
             CurrentHealth -= ReceivedDamage;
 
-            if (CurrentHealth <= 0)
+            if (State != StateHeroInBattle.Tumbstone)
             {
-                IsLive = false;
-                CurrentHealth = 0;
-                State = StateHeroInBattle.Dead;
+                if (CurrentHealth <= 0)
+                {
+                    State = StateHeroInBattle.Tumbstone;
+                    timeAction = Config.HERO_IN_TUMBSTONE;
+                    CurrentHealth = 0;
+                    inRollbackAfterAction = false;
+                }
             }
 
             ReceivedDamage = 0;
@@ -200,6 +216,9 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(damageMelee >= 0);
             Debug.Assert(damageMissile >= 0);
             Debug.Assert(damageMagic >= 0);
+            Debug.Assert(State != StateHeroInBattle.Tumbstone);
+            Debug.Assert(State != StateHeroInBattle.Dead);
+            Debug.Assert(State != StateHeroInBattle.Resurrection);
 
             ReceivedDamage += damageMelee + damageMissile + damageMagic;
         }
