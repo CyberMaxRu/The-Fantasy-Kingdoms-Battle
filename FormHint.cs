@@ -280,8 +280,8 @@ namespace Fantasy_King_s_Battle
         internal void ShowHint(Point p, string header, string action, string description, List<TextRequirement> requirement, int gold, bool goldEnough,
             int income, int builders, bool buildersEnough, PlayerItem pi)
         {
-            Left = p.X;
-            Top = p.Y;
+            Left = Program.formMain.Left + p.X;
+            Top = Program.formMain.Top + 32 + p.Y;
 
             lblHeader.Text = header;
             int nextTop = GuiUtils.NextTop(lblHeader);

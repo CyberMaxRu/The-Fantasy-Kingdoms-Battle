@@ -27,7 +27,7 @@ namespace Fantasy_King_s_Battle
 
         protected override void OnMouseEnter(EventArgs e)
         {
-            Program.formMain.formHint.ShowHint(new Point(Program.formMain.Left + Left, Program.formMain.Top + 32 + Top + Height + 2),
+            Program.formMain.formHint.ShowHint(new Point(Left, Top + Height + 2),
                 player.Name,
                 "Место №" + player.PositionInLobby.ToString(),
                 "Прочность замка " + player.DurabilityCastle.ToString() + "/" + player.Lobby.TypeLobby.DurabilityCastle.ToString(),
