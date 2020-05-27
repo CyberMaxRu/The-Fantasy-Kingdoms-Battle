@@ -139,6 +139,7 @@ namespace Fantasy_King_s_Battle
         internal int Wins { get; set; }
         internal int Loses { get; set; }
         internal int Draws { get; set; }
+        internal ResultBattle ResultLastBattle { get; set; }
         internal int StepsToCastle { get; }
         internal bool IsLive { get; private set; }
 

@@ -9,6 +9,28 @@ using System.Drawing;
 
 namespace Fantasy_King_s_Battle
 {
+    internal class ComparerPlayerForPosition : IComparer<Player>
+    {
+        public int Compare(Player p1, Player p2)
+        {
+            // Сначала сравниваем прочность Замка
+            if (p1.DurabilityCastle > p2.DurabilityCastle)
+                return 1;
+
+            if (p1.DurabilityCastle < p2.DurabilityCastle)
+                return -1;
+
+            // Сравниваем результат последнего боя
+            if (p1.ResultLastBattle < p2.ResultLastBattle)
+                return 1;
+
+            if (p1.ResultLastBattle > p2.ResultLastBattle)
+                return -1;
+
+            return 0;
+        }
+    }
+
     // Класс лобби (королевской битвы)
     internal sealed class Lobby
     {
@@ -24,6 +46,8 @@ namespace Fantasy_King_s_Battle
                 tp = i == 0 ? TypePlayer.Human : TypePlayer.Computer;
                 Players[i] = new Player(this, i + 1, "Игрок №" + (i + 1).ToString(), tp);
             }
+
+            SortPlayers();
 
             SetPlayerAsCurrent(0);
 
@@ -100,6 +124,8 @@ namespace Fantasy_King_s_Battle
 
             CalcEndTurn();
 
+            SortPlayers();
+
             // Делаем начало хода
             Turn++;
             CurrentPlayerIndex = -1;
@@ -164,6 +190,15 @@ namespace Fantasy_King_s_Battle
             }
 
             throw new Exception("Бой не найден.");
+        }
+
+        private void SortPlayers()
+        {
+            int pos = 1;
+            foreach (Player p in Players.OrderByDescending(p => p, new ComparerPlayerForPosition()))
+            {
+                p.PositionInLobby = pos++;
+            }
         }
     }
 }

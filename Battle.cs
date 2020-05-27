@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace Fantasy_King_s_Battle
 {
-    internal enum ResultBattle { Win, Lose, Draw };
+    internal enum ResultBattle { Win, Draw, Lose };
 
     // Класс боя между двумя игроками
     internal sealed class Battle
@@ -153,21 +153,27 @@ namespace Fantasy_King_s_Battle
             if (winner == Player1)
             {
                 Player1.Wins++;
+                Player1.ResultLastBattle = ResultBattle.Win;
                 Player2.Loses++;
+                Player2.ResultLastBattle = ResultBattle.Lose;
 
                 Player2.DurabilityCastle -= DamageToCastle();
             }
             else if (winner == Player2)
             {
                 Player1.Loses++;
+                Player1.ResultLastBattle = ResultBattle.Lose;
                 Player2.Wins++;
+                Player2.ResultLastBattle = ResultBattle.Win;
 
                 Player1.DurabilityCastle -= DamageToCastle();
             }
             else
             {
                 Player1.Draws++;
+                Player1.ResultLastBattle = ResultBattle.Draw;
                 Player2.Draws++;
+                Player2.ResultLastBattle = ResultBattle.Draw;
             }
 
             Player1.HistoryBattles.Add(this);
