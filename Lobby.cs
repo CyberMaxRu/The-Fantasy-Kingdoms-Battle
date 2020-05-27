@@ -34,6 +34,13 @@ namespace Fantasy_King_s_Battle
             MakeOpponents();
         }
 
+        internal TypeLobby TypeLobby { get; }
+        internal Player[] Players { get; }
+        internal int CurrentPlayerIndex { get; private set; }
+        internal Player CurrentPlayer { get; private set; }
+        internal int Turn { get; private set; }
+        internal List<Battle> Battles { get; } = new List<Battle>();
+
         private void MakeOpponents()
         {
             foreach (Player pl in Players)
@@ -158,12 +165,5 @@ namespace Fantasy_King_s_Battle
 
             throw new Exception("Бой не найден.");
         }
-
-        internal TypeLobby TypeLobby { get; }
-        internal Player[] Players { get; }
-        internal int CurrentPlayerIndex { get; private set; }
-        internal Player CurrentPlayer { get; private set; }
-        internal int Turn { get; private set; }
-        internal List<Battle> Battles { get; } = new List<Battle>();
     }
 }
