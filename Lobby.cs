@@ -66,6 +66,8 @@ namespace Fantasy_King_s_Battle
 
         private void ApplyPlayer(int index)
         {
+            Debug.Assert(Players[CurrentPlayerIndex].IsLive);
+
             CurrentPlayerIndex = index;
             CurrentPlayer = Players[CurrentPlayerIndex];
         }
@@ -107,19 +109,22 @@ namespace Fantasy_King_s_Battle
 
             foreach (Player p in Players)
             {
-                if (p.BattleCalced == false)
+                if (p.IsLive == true)
                 {
-                    b = new Battle(p, p.Opponent, Turn, FormMain.Rnd);
-
-                    if ((p.TypePlayer == TypePlayer.Human) || (p.Opponent.TypePlayer == TypePlayer.Human))
+                    if (p.BattleCalced == false)
                     {
-                        formBattle = new FormBattle();
-                        formBattle.ShowBattle(b);
-                    }
-                    else
-                        b.CalcWholeBattle();
+                        b = new Battle(p, p.Opponent, Turn, FormMain.Rnd);
 
-                    Battles.Add(b);
+                        if ((p.TypePlayer == TypePlayer.Human) || (p.Opponent.TypePlayer == TypePlayer.Human))
+                        {
+                            formBattle = new FormBattle();
+                            formBattle.ShowBattle(b);
+                        }
+                        else
+                            b.CalcWholeBattle();
+
+                        Battles.Add(b);
+                    }
                 }
             }
         }
