@@ -2,6 +2,7 @@
 <TypeLobbies>
   <TypeLobby>
     <Name>8 игроков</Name>
-    <Players>8</Players>
+    <QuantityPlayers>8</QuantityPlayers>
+    <DurabilityCastle>100</DurabilityCastle>
   </TypeLobby>
 </TypeLobbies>

@@ -17,9 +17,9 @@ namespace Fantasy_King_s_Battle
             TypeLobby = tl;
 
             // Создание игроков
-            Players = new Player[tl.Players];
+            Players = new Player[tl.QuantityPlayers];
             TypePlayer tp;
-            for (int i = 0; i < TypeLobby.Players; i++)
+            for (int i = 0; i < TypeLobby.QuantityPlayers; i++)
             {
                 tp = i == 0 ? TypePlayer.Human : TypePlayer.Computer;
                 Players[i] = new Player(this, i + 1, "Игрок №" + (i + 1).ToString(), tp);

@@ -13,10 +13,12 @@ namespace Fantasy_King_s_Battle
         public TypeLobby(XmlNode n)
         {
             Name = n.SelectSingleNode("Name").InnerText;
-            Players = Convert.ToInt32(n.SelectSingleNode("Players").InnerText);
+            QuantityPlayers = Convert.ToInt32(n.SelectSingleNode("QuantityPlayers").InnerText);
+            DurabilityCastle = Convert.ToInt32(n.SelectSingleNode("DurabilityCastle").InnerText);
         }
 
         internal string Name { get; }
-        internal int Players { get; }
+        internal int QuantityPlayers { get; }
+        internal int DurabilityCastle { get; }
     }
 }
