@@ -13,6 +13,8 @@ namespace Fantasy_King_s_Battle
     {
         private readonly Player player;
         private readonly Pen penBorder = new Pen(Color.Black);
+        private readonly SolidBrush brushCurDurability = new SolidBrush(Color.Green);
+        private readonly SolidBrush brushMaxDurability = new SolidBrush(Color.LightGreen);
 
         public PanelPlayer(Player p) : base()
         {
@@ -31,6 +33,9 @@ namespace Fantasy_King_s_Battle
 
             // Иконка героя
             e.Graphics.DrawImageUnscaled(Program.formMain.ilPlayerAvatars.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilPlayerAvatars, player.ImageIndexAvatar, player.IsLive)], Config.GRID_SIZE, Config.GRID_SIZE);
+
+            // Прочность замка
+            GuiUtils.DrawBand(e.Graphics, new Rectangle(Config.GRID_SIZE, Config.GRID_SIZE + Program.formMain.ilPlayerAvatars.ImageSize.Height + 1, Program.formMain.ilPlayerAvatars.ImageSize.Width, 4), brushCurDurability, brushMaxDurability, player.DurabilityCastle, player.Lobby.TypeLobby.DurabilityCastle);
         }
     }
 }
