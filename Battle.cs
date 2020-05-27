@@ -158,9 +158,7 @@ namespace Fantasy_King_s_Battle
             }
             else
             {
-                Player1.Draws++;
                 Player1.ResultLastBattle = ResultBattle.Draw;
-                Player2.Draws++;
                 Player2.ResultLastBattle = ResultBattle.Draw;
             }
 
@@ -172,9 +170,7 @@ namespace Fantasy_King_s_Battle
 
             void ApplyWinAndLose(Player winner, Player loser)
             {
-                winner.Wins++;
                 winner.ResultLastBattle = ResultBattle.Win;
-                loser.Loses++;
                 loser.ResultLastBattle = ResultBattle.Lose;
 
                 loser.DurabilityCastle -= DamageToCastle();

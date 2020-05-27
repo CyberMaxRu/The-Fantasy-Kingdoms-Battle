@@ -12,6 +12,8 @@ namespace Fantasy_King_s_Battle
     // Класс игрока
     internal sealed class Player
     {
+        private ResultBattle resultLastBattle;
+
         public Player(Lobby lobby, int index, string name, TypePlayer typePlayer)
         {
             Lobby = lobby;
@@ -136,13 +138,70 @@ namespace Fantasy_King_s_Battle
         internal int TotalBuilders { get; private set; }
         internal int FreeBuilders { get; set; }
         internal int[] Resources { get; }
-        internal int Wins { get; set; }
-        internal int Loses { get; set; }
-        internal int Draws { get; set; }
-        internal ResultBattle ResultLastBattle { get; set; }
         internal bool IsLive { get; private set; }
 
         internal PlayerItem[] Warehouse = new PlayerItem[FormMain.WH_MAX_SLOTS];// Предметы на складе игрока
+
+        // Статистика по боям
+        internal int Wins { get; set; }
+        internal int Loses { get; set; }
+        internal int Draws { get; set; }
+        internal int WinStrike { get; set; }
+        internal int LoseStrike { get; set; }
+        internal int DrawStrike { get; set; }
+        internal ResultBattle ResultLastBattle 
+        { get { return resultLastBattle; }
+            set
+            {
+                switch (value)
+                {
+                    case ResultBattle.Win:
+                        if (resultLastBattle == ResultBattle.Win)
+                            WinStrike++;
+                        else
+                        {
+                            LoseStrike = 0;
+                            DrawStrike = 0;
+                        }
+
+                        Wins++;
+
+                        break;
+                    case ResultBattle.Lose:
+                        if (resultLastBattle == ResultBattle.Lose)
+                            LoseStrike++;
+                        else
+                        {
+                            WinStrike = 0;
+                            DrawStrike = 0;
+                        }
+
+                        Loses++;
+
+                        break;
+                    case ResultBattle.Draw:
+                        if (resultLastBattle == ResultBattle.Draw)
+                            DrawStrike++;
+                        else
+                        {
+                            WinStrike = 0;
+                            LoseStrike = 0;
+                        }
+
+                        Draws++;
+
+                        break;
+                    case ResultBattle.None:
+                        break;
+                    default:
+                        throw new Exception("Неизвестный результат боя.");
+                }
+
+                resultLastBattle = value;
+            }
+        }
+
+        // Визуальные контролы
         internal PanelAboutPlayer PanelAbout { get; set; }
         internal PanelPlayer Panel { get; set; }
         private Player opponent;// Убрать это
