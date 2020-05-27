@@ -21,14 +21,16 @@ namespace Fantasy_King_s_Battle
 
             //BackColor = Color.LightBlue;
 
-            Width = pbPlayer.Width + Config.GRID_SIZE * 2;
-            Height = pbPlayer.Height + Config.GRID_SIZE * 3;
+            Width = Program.formMain.ilPlayerAvatars.ImageSize.Width + Config.GRID_SIZE * 2;
+            Height = Program.formMain.ilPlayerAvatars.ImageSize.Height + Config.GRID_SIZE * 3;
         }
         protected override void OnPaint(PaintEventArgs e)
         {
-            e.Graphics.DrawImageUnscaled(Program.formMain.ilPlayerAvatars.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilPlayerAvatars, player.ImageIndexAvatar, player.IsLive)], Config.GRID_SIZE, Config.GRID_SIZE);
-
+            // Рамка вокруг панели
             e.Graphics.DrawRectangle(penBorder, 0, 0, Width - 1, Height - 1);
+
+            // Иконка героя
+            e.Graphics.DrawImageUnscaled(Program.formMain.ilPlayerAvatars.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilPlayerAvatars, player.ImageIndexAvatar, player.IsLive)], Config.GRID_SIZE, Config.GRID_SIZE);
         }
     }
 }
