@@ -13,6 +13,7 @@ namespace Fantasy_King_s_Battle
     internal sealed class Player
     {
         private ResultBattle resultLastBattle;
+        private PlayerBuilding Castle;            
 
         public Player(Lobby lobby, int index, string name, TypePlayer typePlayer)
         {
@@ -35,6 +36,8 @@ namespace Fantasy_King_s_Battle
             {
                 Buildings.Add(new PlayerBuilding(this, b));
             }
+
+            Castle = GetPlayerBuilding(FormMain.Config.FindBuilding(Config.BUILDING_CASTLE));
             
             // Настройка ячеек героев
             CellHeroes = new PlayerHero[Config.HERO_ROWS, Config.HERO_IN_ROW];
@@ -134,6 +137,7 @@ namespace Fantasy_King_s_Battle
         internal int DurabilityCastle { get; set; }
         internal int LastBattleDamageToCastle { get; set; }
         internal List<PlayerBuilding> Buildings { get; } = new List<PlayerBuilding>();
+        internal int LevelCastle => Castle.Level;
         internal List<PlayerHero> Heroes { get; } = new List<PlayerHero>();
         internal PlayerHero[,] CellHeroes;
         internal TypePlayer TypePlayer { get; }

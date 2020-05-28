@@ -21,6 +21,7 @@ namespace Fantasy_King_s_Battle
         internal static int HERO_IN_TUMBSTONE = 5 * STEPS_IN_SECOND;
 
         internal const string HERO_PEASANT = "Peasant";
+        internal const string BUILDING_CASTLE = "Castle";
 
         public Config(string pathResources, FormMain fm)
         {

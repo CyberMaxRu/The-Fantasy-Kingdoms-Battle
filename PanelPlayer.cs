@@ -15,6 +15,7 @@ namespace Fantasy_King_s_Battle
         private Label lblDamageToCastle;
         private Label lblStrike;
         private Label lblQuantityHeroes;
+        private Label lblLevelCastle;
         private readonly int LeftForResultBattle;
         private readonly Pen penBorder = new Pen(Color.Black);
         private readonly SolidBrush brushCurDurability = new SolidBrush(Color.Green);
@@ -64,6 +65,18 @@ namespace Fantasy_King_s_Battle
                 MaximumSize = new Size(Program.formMain.ilResultBattle.ImageSize.Width, Config.GRID_SIZE * 2),
                 Font = new Font("Microsoft Sans Serif", 9)
             };
+
+            lblLevelCastle = new Label()
+            {
+                Parent = this,
+                Left = Config.GRID_SIZE,
+                Top = Config.GRID_SIZE,
+                ForeColor = Color.Yellow,
+                BackColor = Color.Transparent,
+                TextAlign = ContentAlignment.TopLeft,
+                MaximumSize = new Size(Config.GRID_SIZE * 2, Config.GRID_SIZE * 2),
+                Font = new Font("Microsoft Sans Serif", 9, FontStyle.Bold)
+            };            
         }
 
         protected override void OnMouseEnter(EventArgs e)
@@ -98,6 +111,9 @@ namespace Fantasy_King_s_Battle
 
             // Иконка героя
             e.Graphics.DrawImageUnscaled(Program.formMain.ilPlayerAvatars.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilPlayerAvatars, player.ImageIndexAvatar, player.IsLive)], Config.GRID_SIZE, Config.GRID_SIZE);
+
+            // Уровень замка
+            lblLevelCastle.Text = player.LevelCastle.ToString();
 
             // Прочность замка
             GuiUtils.DrawBand(e.Graphics, new Rectangle(Config.GRID_SIZE, Config.GRID_SIZE + Program.formMain.ilPlayerAvatars.ImageSize.Height + 1, Program.formMain.ilPlayerAvatars.ImageSize.Width, 4), brushCurDurability, brushMaxDurability, player.DurabilityCastle, player.Lobby.TypeLobby.DurabilityCastle);
