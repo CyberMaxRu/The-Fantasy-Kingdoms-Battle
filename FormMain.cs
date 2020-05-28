@@ -219,7 +219,9 @@ namespace Fantasy_King_s_Battle
                 top += pap.Height + Config.GRID_SIZE;
             }
 
+            tabControl1.Top = GuiUtils.NextTop(toolStripMain);
             tabControl1.Left = leftForPages;
+            tabControl1.Width = ClientSize.Width - tabControl1.Left - Config.GRID_SIZE;
 
             //
             tabControl1.ImageList = ilGui;
