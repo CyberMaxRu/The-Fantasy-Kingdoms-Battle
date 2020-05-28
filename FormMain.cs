@@ -72,6 +72,7 @@ namespace Fantasy_King_s_Battle
         internal const int GUI_16_PEASANT = 1;
 
         internal const int GUI_24_FIRE = 0;
+        internal const int GUI_24_HEROES = 1;
 
         internal const int GUI_45_EMPTY = 0;
         internal const int GUI_45_BORDER = 0;
@@ -363,7 +364,7 @@ namespace Fantasy_King_s_Battle
                 Debug.Assert(p.PositionInLobby <= lobby.TypeLobby.QuantityPlayers);
 
                 p.Panel.Top = top;
-                top = GuiUtils.NextTop(p.Panel);
+                top = GuiUtils.NextTopHalf(p.Panel);
             }
 
             Refresh();

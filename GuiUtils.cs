@@ -61,6 +61,11 @@ namespace Fantasy_King_s_Battle
             return c.Top + c.Height + Config.GRID_SIZE;
         }
 
+        internal static int NextTopHalf(Control c)
+        {
+            return c.Top + c.Height + Config.GRID_SIZE_HALF;
+        }
+
         internal static Image GetImageFromImageList(ImageList imageList, int imageIndex, bool normal)
         {
             return imageList.Images[imageIndex + (normal == true ? 0 : imageList.Images.Count / 2)];

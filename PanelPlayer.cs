@@ -16,7 +16,11 @@ namespace Fantasy_King_s_Battle
         private Label lblStrike;
         private Label lblQuantityHeroes;
         private Label lblLevelCastle;
-        private readonly int LeftForResultBattle;
+        private Rectangle rectBorder;
+        private Point pointIconAvatar;// Координаты для отрисовки аватара игрока
+        private Point pointIconResultBattle;// Координаты для иконки результата боя
+        private Point pointIconStrike;// Координаты для иконки страйка
+        private Point pointIconHeroes;// Координаты для иконки героев
         private readonly Pen penBorder = new Pen(Color.Black);
         private readonly SolidBrush brushCurDurability = new SolidBrush(Color.Green);
         private readonly SolidBrush brushMaxDurability = new SolidBrush(Color.LightGreen);
@@ -28,57 +32,67 @@ namespace Fantasy_King_s_Battle
 
             Parent = parent;
             Left = Config.GRID_SIZE;
-            Width = Config.GRID_SIZE + Program.formMain.ilPlayerAvatars.ImageSize.Width + Config.GRID_SIZE + Program.formMain.ilResultBattle.ImageSize.Width + Config.GRID_SIZE;
-            Height = Config.GRID_SIZE + Program.formMain.ilPlayerAvatars.ImageSize.Height + Config.GRID_SIZE + Config.GRID_SIZE;
 
-            LeftForResultBattle = Width - Program.formMain.ilResultBattle.ImageSize.Width - Config.GRID_SIZE;
+            pointIconAvatar = new Point(Config.GRID_SIZE, Config.GRID_SIZE);
+
+            lblLevelCastle = new Label()
+            {
+                Parent = this,
+                Location = pointIconAvatar,
+                ForeColor = Color.Yellow,
+                BackColor = Color.Transparent,
+                TextAlign = ContentAlignment.TopLeft,
+                MaximumSize = new Size(Config.GRID_SIZE * 2, Config.GRID_SIZE * 2),
+                Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
+            };
+
+            int leftForIcons = pointIconAvatar.X + Program.formMain.ilGuiHeroes.ImageSize.Width + Config.GRID_SIZE;
+            int leftForText = leftForIcons + Program.formMain.ilGui24.ImageSize.Width + Config.GRID_SIZE_HALF;
+
+            pointIconResultBattle = new Point(leftForIcons, pointIconAvatar.Y);
+            pointIconStrike = new Point(leftForIcons, pointIconResultBattle.Y + Program.formMain.ilResultBattle.ImageSize.Height +  Config.GRID_SIZE_HALF);
+            pointIconHeroes = new Point(leftForIcons, pointIconStrike.Y + Program.formMain.ilGui24.ImageSize.Height + Config.GRID_SIZE_HALF);
 
             lblDamageToCastle = new Label()
             {
                 Parent = this,
-                Left = LeftForResultBattle - Config.GRID_SIZE_HALF,
-                Top = Config.GRID_SIZE + Program.formMain.ilResultBattle.ImageSize.Height + Config.GRID_SIZE_HALF,
+                Left = leftForText,
+                Top = pointIconResultBattle.Y,
                 BackColor = Color.Transparent,
-                TextAlign = ContentAlignment.TopCenter,
-                MaximumSize = new Size(Program.formMain.ilResultBattle.ImageSize.Width + Config.GRID_SIZE, Config.GRID_SIZE * 2),
+                TextAlign = ContentAlignment.MiddleLeft,
+                MaximumSize = new Size(Program.formMain.ilResultBattle.ImageSize.Width + Config.GRID_SIZE, Program.formMain.ilResultBattle.ImageSize.Height),
                 Font = new Font("Microsoft Sans Serif", 8, FontStyle.Bold)
             };
 
             lblStrike = new Label()
             {
                 Parent = this,
-                Left = LeftForResultBattle,
-                Top = Config.GRID_SIZE,
+                Left = leftForText,
+                Top = pointIconStrike.Y,
                 ForeColor = Color.Black,
                 BackColor = Color.Transparent,
-                TextAlign = ContentAlignment.MiddleCenter,
-                MaximumSize = Program.formMain.ilResultBattle.ImageSize,
-                Font = new Font("Microsoft Sans Serif", 12, FontStyle.Bold)
+                TextAlign = ContentAlignment.MiddleLeft,
+                MaximumSize = Program.formMain.ilGui24.ImageSize,
+                Font = new Font("Microsoft Sans Serif", 8, FontStyle.Bold)
             };
 
             lblQuantityHeroes = new Label()
             {
                 Parent = this,
-                Left = LeftForResultBattle,
-                Top = Height - Config.GRID_SIZE * 2 - Config.GRID_SIZE_HALF,
+                Left = leftForText,
+                Top = pointIconHeroes.Y,
                 ForeColor = Color.Black,
                 BackColor = Color.Transparent,
-                TextAlign = ContentAlignment.BottomCenter,
-                MaximumSize = new Size(Program.formMain.ilResultBattle.ImageSize.Width, Config.GRID_SIZE * 2),
-                Font = new Font("Microsoft Sans Serif", 9)
+                TextAlign = ContentAlignment.MiddleLeft,
+                MaximumSize = Program.formMain.ilGui24.ImageSize,
+                Font = new Font("Microsoft Sans Serif", 8, FontStyle.Bold)
             };
 
-            lblLevelCastle = new Label()
-            {
-                Parent = this,
-                Left = Config.GRID_SIZE,
-                Top = Config.GRID_SIZE,
-                ForeColor = Color.Yellow,
-                BackColor = Color.Transparent,
-                TextAlign = ContentAlignment.TopLeft,
-                MaximumSize = new Size(Config.GRID_SIZE * 2, Config.GRID_SIZE * 2),
-                Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
-            };            
+            Width = leftForText + lblDamageToCastle.MaximumSize.Width + Config.GRID_SIZE_HALF;
+            Height = Math.Max(Config.GRID_SIZE + Program.formMain.ilPlayerAvatars.ImageSize.Height + Config.GRID_SIZE + Config.GRID_SIZE,
+                GuiUtils.NextTop(lblQuantityHeroes));
+
+            rectBorder = new Rectangle(0, 0, Width - 1, Height - 1);
         }
 
         protected override void OnMouseEnter(EventArgs e)
@@ -102,6 +116,7 @@ namespace Fantasy_King_s_Battle
 
         protected override void OnPaint(PaintEventArgs e)
         {
+            // Определение цвета фона
             if (player == player.Lobby.CurrentPlayer)
                 BackColor = Color.LightBlue;
             else if (player == player.Lobby.CurrentPlayer.Opponent)
@@ -110,12 +125,12 @@ namespace Fantasy_King_s_Battle
                 BackColor = Color.FromKnownColor(KnownColor.Control);
 
             // Рамка вокруг панели
-            e.Graphics.DrawRectangle(penBorder, 0, 0, Width - 1, Height - 1);
+            e.Graphics.DrawRectangle(penBorder, rectBorder);
 
             // Иконка героя
-            e.Graphics.DrawImageUnscaled(Program.formMain.ilPlayerAvatars.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilPlayerAvatars, player.ImageIndexAvatar, player.IsLive)], Config.GRID_SIZE, Config.GRID_SIZE);
+            e.Graphics.DrawImageUnscaled(Program.formMain.ilPlayerAvatars.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilPlayerAvatars, player.ImageIndexAvatar, player.IsLive)], pointIconAvatar);
 
-            // Уровень замка
+            // Уровень Замка
             lblLevelCastle.Text = player.LevelCastle.ToString();
 
             // Прочность замка
@@ -123,18 +138,8 @@ namespace Fantasy_King_s_Battle
 
             // Результат последнего боя
             if (player.ResultLastBattle != ResultBattle.None)
-                e.Graphics.DrawImageUnscaled(Program.formMain.ilResultBattle.Images[(int)player.ResultLastBattle], LeftForResultBattle, Config.GRID_SIZE);
+                e.Graphics.DrawImageUnscaled(Program.formMain.ilResultBattle.Images[(int)player.ResultLastBattle], pointIconResultBattle);
 
-            // Указываем страйк, если он есть
-            if (player.Strike > 1)
-            {
-                lblStrike.Show();
-                lblStrike.Text = player.Strike.ToString();
-            }
-            else
-                lblStrike.Hide();
-
-            // Урон по Замку в последнем бою
             if (player.LastBattleDamageToCastle != 0)
             {
                 lblDamageToCastle.Show();
@@ -147,8 +152,27 @@ namespace Fantasy_King_s_Battle
                 lblDamageToCastle.Hide();
             }
 
+            // Указываем страйк
+            if (player.ResultLastBattle != ResultBattle.None)
+            {
+                e.Graphics.DrawImageUnscaled(Program.formMain.ilGui24.Images[FormMain.GUI_24_FIRE], pointIconStrike);
+
+                lblStrike.Show();
+                lblStrike.Text = player.Strike.ToString();
+            }
+            else
+                lblStrike.Hide();
+
             // Количество героев
-            lblQuantityHeroes.Text = player.QuantityHeroes.ToString();
+            if (player.QuantityHeroes > 0)
+            {
+                lblQuantityHeroes.Show();
+                e.Graphics.DrawImageUnscaled(Program.formMain.ilGui24.Images[FormMain.GUI_24_HEROES], pointIconHeroes);
+                lblQuantityHeroes.Text = player.QuantityHeroes > 0 ? player.QuantityHeroes.ToString() : "";
+            }
+            else
+
+                lblQuantityHeroes.Hide();
         }
     }
 }
