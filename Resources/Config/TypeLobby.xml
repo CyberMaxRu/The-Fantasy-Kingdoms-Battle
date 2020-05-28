@@ -4,6 +4,6 @@
     <Name>8 игроков</Name>
     <QuantityPlayers>8</QuantityPlayers>
     <DurabilityCastle>20</DurabilityCastle>
-    <Gold>5000</Gold>
+    <Gold>10000</Gold>
   </TypeLobby>
 </TypeLobbies>
