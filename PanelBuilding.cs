@@ -165,7 +165,9 @@ namespace Fantasy_King_s_Battle
             Program.formMain.formHint.ShowHint(new Point(10 + Left + pbBuilding.Left, Top + pbBuilding.Top + pbBuilding.Height),
                 building.Building.Name,
                 building.Level > 0 ? "Уровень " + building.Level.ToString() : "",
-                building.Building.Description, null, 0, false, building.Income(), 0, false, null);
+                building.Building.Description
+                    + ((building.Level > 0) && (building.CanTrainHero() == true) ? Environment.NewLine + Environment.NewLine + "Героев: " + building.Heroes.Count.ToString() + "/" + building.MaxHeroes().ToString() : "")
+                , null, 0, false, building.Income(), 0, false, null);
         }
 
         private void Control_MouseLeave(object sender, EventArgs e)
