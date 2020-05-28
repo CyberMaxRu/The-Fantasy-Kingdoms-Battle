@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            this.StatusStrip = new System.Windows.Forms.StatusStrip();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageLobby = new System.Windows.Forms.TabPage();
             this.tabPageGuilds = new System.Windows.Forms.TabPage();
@@ -39,22 +38,19 @@
             this.tabPageHeroes = new System.Windows.Forms.TabPage();
             this.tabPageBattle = new System.Windows.Forms.TabPage();
             this.textBoxResultBattle = new System.Windows.Forms.TextBox();
-            this.ButtonEndTurn = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.button1 = new System.Windows.Forms.Button();
+            this.toolStripMain = new System.Windows.Forms.ToolStrip();
+            this.tslDay = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tslGold = new System.Windows.Forms.ToolStripLabel();
+            this.tslBuilders = new System.Windows.Forms.ToolStripLabel();
+            this.tslHeroes = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbEndTurn = new System.Windows.Forms.ToolStripButton();
             this.tabControl1.SuspendLayout();
             this.tabPageBattle.SuspendLayout();
+            this.toolStripMain.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // StatusStrip
-            // 
-            this.StatusStrip.Location = new System.Drawing.Point(0, 855);
-            this.StatusStrip.Name = "StatusStrip";
-            this.StatusStrip.ShowItemToolTips = true;
-            this.StatusStrip.Size = new System.Drawing.Size(979, 22);
-            this.StatusStrip.SizingGrip = false;
-            this.StatusStrip.TabIndex = 0;
-            this.StatusStrip.Text = "statusStrip";
             // 
             // tabControl1
             // 
@@ -66,7 +62,7 @@
             this.tabControl1.Controls.Add(this.tabPageTowers);
             this.tabControl1.Controls.Add(this.tabPageHeroes);
             this.tabControl1.Controls.Add(this.tabPageBattle);
-            this.tabControl1.Location = new System.Drawing.Point(72, 40);
+            this.tabControl1.Location = new System.Drawing.Point(80, 100);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.ShowToolTips = true;
@@ -90,7 +86,7 @@
             // 
             this.tabPageGuilds.Location = new System.Drawing.Point(4, 25);
             this.tabPageGuilds.Name = "tabPageGuilds";
-            this.tabPageGuilds.Size = new System.Drawing.Size(952, 31);
+            this.tabPageGuilds.Size = new System.Drawing.Size(888, 31);
             this.tabPageGuilds.TabIndex = 6;
             this.tabPageGuilds.Text = "Гильдии";
             this.tabPageGuilds.ToolTipText = "Гильдии";
@@ -100,7 +96,7 @@
             // 
             this.tabPageBuildings.Location = new System.Drawing.Point(4, 25);
             this.tabPageBuildings.Name = "tabPageBuildings";
-            this.tabPageBuildings.Size = new System.Drawing.Size(952, 31);
+            this.tabPageBuildings.Size = new System.Drawing.Size(888, 31);
             this.tabPageBuildings.TabIndex = 2;
             this.tabPageBuildings.Text = "Строения";
             this.tabPageBuildings.ToolTipText = "Экономические строения";
@@ -110,7 +106,7 @@
             // 
             this.tabPageTemples.Location = new System.Drawing.Point(4, 25);
             this.tabPageTemples.Name = "tabPageTemples";
-            this.tabPageTemples.Size = new System.Drawing.Size(952, 31);
+            this.tabPageTemples.Size = new System.Drawing.Size(888, 31);
             this.tabPageTemples.TabIndex = 7;
             this.tabPageTemples.Text = "Храмы";
             this.tabPageTemples.ToolTipText = "Храмы";
@@ -120,7 +116,7 @@
             // 
             this.tabPageTowers.Location = new System.Drawing.Point(4, 25);
             this.tabPageTowers.Name = "tabPageTowers";
-            this.tabPageTowers.Size = new System.Drawing.Size(952, 31);
+            this.tabPageTowers.Size = new System.Drawing.Size(888, 31);
             this.tabPageTowers.TabIndex = 8;
             this.tabPageTowers.Text = "Защитные сооружения";
             this.tabPageTowers.ToolTipText = "Защитные сооружения";
@@ -130,7 +126,7 @@
             // 
             this.tabPageHeroes.Location = new System.Drawing.Point(4, 25);
             this.tabPageHeroes.Name = "tabPageHeroes";
-            this.tabPageHeroes.Size = new System.Drawing.Size(952, 31);
+            this.tabPageHeroes.Size = new System.Drawing.Size(888, 31);
             this.tabPageHeroes.TabIndex = 3;
             this.tabPageHeroes.Text = "Герои";
             this.tabPageHeroes.ToolTipText = "Герои";
@@ -141,7 +137,7 @@
             this.tabPageBattle.Controls.Add(this.textBoxResultBattle);
             this.tabPageBattle.Location = new System.Drawing.Point(4, 25);
             this.tabPageBattle.Name = "tabPageBattle";
-            this.tabPageBattle.Size = new System.Drawing.Size(952, 31);
+            this.tabPageBattle.Size = new System.Drawing.Size(888, 31);
             this.tabPageBattle.TabIndex = 5;
             this.tabPageBattle.Text = "Сражение";
             this.tabPageBattle.ToolTipText = "Сражение";
@@ -155,17 +151,6 @@
             this.textBoxResultBattle.Size = new System.Drawing.Size(752, 480);
             this.textBoxResultBattle.TabIndex = 0;
             // 
-            // ButtonEndTurn
-            // 
-            this.ButtonEndTurn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ButtonEndTurn.Location = new System.Drawing.Point(844, 24);
-            this.ButtonEndTurn.Name = "ButtonEndTurn";
-            this.ButtonEndTurn.Size = new System.Drawing.Size(136, 48);
-            this.ButtonEndTurn.TabIndex = 2;
-            this.ButtonEndTurn.Text = "Конец\r\nхода";
-            this.ButtonEndTurn.UseVisualStyleBackColor = true;
-            this.ButtonEndTurn.Click += new System.EventHandler(this.ButtonEndTurn_Click);
-            // 
             // menuStrip1
             // 
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -174,26 +159,96 @@
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // button1
+            // toolStripMain
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(704, 24);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(136, 48);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Показать\r\nбой";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.toolStripMain.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tslDay,
+            this.toolStripSeparator1,
+            this.tslGold,
+            this.tslBuilders,
+            this.tslHeroes,
+            this.toolStripSeparator2,
+            this.tsbEndTurn});
+            this.toolStripMain.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
+            this.toolStripMain.Location = new System.Drawing.Point(0, 24);
+            this.toolStripMain.Name = "toolStripMain";
+            this.toolStripMain.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.toolStripMain.Size = new System.Drawing.Size(979, 51);
+            this.toolStripMain.TabIndex = 5;
+            this.toolStripMain.Text = "toolStrip1";
+            // 
+            // tslDay
+            // 
+            this.tslDay.AutoSize = false;
+            this.tslDay.AutoToolTip = true;
+            this.tslDay.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tslDay.Name = "tslDay";
+            this.tslDay.Size = new System.Drawing.Size(104, 48);
+            this.tslDay.Text = "toolStripLabel1";
+            this.tslDay.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tslDay.ToolTipText = "День игры";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.AutoSize = false;
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 50);
+            // 
+            // tslGold
+            // 
+            this.tslGold.AutoSize = false;
+            this.tslGold.AutoToolTip = true;
+            this.tslGold.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tslGold.Name = "tslGold";
+            this.tslGold.Size = new System.Drawing.Size(200, 48);
+            this.tslGold.Text = "toolStripLabel2";
+            this.tslGold.ToolTipText = "Количество золота в казне и постоянный доход в день";
+            // 
+            // tslBuilders
+            // 
+            this.tslBuilders.AutoSize = false;
+            this.tslBuilders.AutoToolTip = true;
+            this.tslBuilders.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tslBuilders.Name = "tslBuilders";
+            this.tslBuilders.Size = new System.Drawing.Size(120, 48);
+            this.tslBuilders.Text = "toolStripLabel3";
+            this.tslBuilders.ToolTipText = "Количество свободных строителей";
+            // 
+            // tslHeroes
+            // 
+            this.tslHeroes.AutoSize = false;
+            this.tslHeroes.AutoToolTip = true;
+            this.tslHeroes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tslHeroes.Name = "tslHeroes";
+            this.tslHeroes.Size = new System.Drawing.Size(120, 48);
+            this.tslHeroes.Text = "tslHeroes";
+            this.tslHeroes.ToolTipText = "Количество героев в Королевстве - текущее и максимальное";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.AutoSize = false;
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 50);
+            // 
+            // tsbEndTurn
+            // 
+            this.tsbEndTurn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbEndTurn.Image = ((System.Drawing.Image)(resources.GetObject("tsbEndTurn.Image")));
+            this.tsbEndTurn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbEndTurn.Name = "tsbEndTurn";
+            this.tsbEndTurn.Size = new System.Drawing.Size(23, 20);
+            this.tsbEndTurn.Text = "toolStripButton1";
+            this.tsbEndTurn.ToolTipText = "Конец хода";
+            this.tsbEndTurn.Click += new System.EventHandler(this.tsbEndTurn_Click);
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(979, 877);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.ButtonEndTurn);
+            this.Controls.Add(this.toolStripMain);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.StatusStrip);
             this.Controls.Add(this.menuStrip1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -208,26 +263,32 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPageBattle.ResumeLayout(false);
             this.tabPageBattle.PerformLayout();
+            this.toolStripMain.ResumeLayout(false);
+            this.toolStripMain.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.StatusStrip StatusStrip;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPageLobby;
         private System.Windows.Forms.TabPage tabPageBuildings;
         private System.Windows.Forms.TabPage tabPageHeroes;
         private System.Windows.Forms.TabPage tabPageBattle;
-        private System.Windows.Forms.Button ButtonEndTurn;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.TextBox textBoxResultBattle;
         private System.Windows.Forms.TabPage tabPageGuilds;
         private System.Windows.Forms.TabPage tabPageTemples;
         private System.Windows.Forms.TabPage tabPageTowers;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ToolStrip toolStripMain;
+        private System.Windows.Forms.ToolStripLabel tslDay;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripLabel tslGold;
+        private System.Windows.Forms.ToolStripLabel tslBuilders;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton tsbEndTurn;
+        private System.Windows.Forms.ToolStripLabel tslHeroes;
     }
 }
 

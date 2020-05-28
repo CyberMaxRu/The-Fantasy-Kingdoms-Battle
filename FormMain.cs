@@ -36,9 +36,8 @@ namespace Fantasy_King_s_Battle
         internal readonly Color ColorQuantity = Color.Yellow;
         internal readonly Brush brushQuantity = new SolidBrush(Color.Yellow);
 
-        private readonly ToolStripStatusLabel StatusLabelDay;
-        private readonly ToolStripStatusLabel StatusLabelGold;
-        private readonly ToolStripStatusLabel StatusLabelBuilders;
+        internal readonly Font fontToolBar = new Font("Microsodt Sans Serif", 12, FontStyle.Bold);
+
         private Panel panelWarehouse;
         private Panel panelHeroes;
         private PanelHeroInfo panelHeroInfo;
@@ -53,6 +52,8 @@ namespace Fantasy_King_s_Battle
         internal const int GUI_LOBBY = 7;
         internal const int GUI_DISMISS = 8;
         internal const int GUI_BATTLE = 9;
+        internal const int GUI_PEASANT = 10;
+        internal const int GUI_HOURGLASS = 11;
 
         internal const int GUI_PARAMETER_STRENGTH = 6;
         internal const int GUI_PARAMETER_DEXTERITY = 7;
@@ -156,37 +157,21 @@ namespace Fantasy_King_s_Battle
 
             CellPanelHeroes = new PanelHero[Config.HERO_ROWS, Config.HERO_IN_ROW];
 
-            //    
+            // Создаем лобби
             lobby = new Lobby(Config.TypeLobbies[0]);
 
-            // Создаем метку под золото
-            StatusStrip.ImageList = ilGui16;
+            // Подготавливаем тулбар
+            toolStripMain.ImageList = ilGui;
+            toolStripMain.ImageScalingSize = ilGui.ImageSize;
 
-            StatusLabelDay = new ToolStripStatusLabel()
-            {
-                TextAlign = ContentAlignment.MiddleLeft,
-                AutoSize = false,
-                Width = 200
-            };
-            StatusStrip.Items.Add(StatusLabelDay);
-
-            StatusLabelGold = new ToolStripStatusLabel(StatusStrip.ImageList.Images[GUI_16_GOLD])
-            {
-                ImageAlign = ContentAlignment.MiddleLeft,
-                AutoSize = false,
-                Width = 120
-            };
-            StatusLabelGold.Font = new Font(StatusLabelGold.Font, FontStyle.Bold);
-            StatusStrip.Items.Add(StatusLabelGold);
-
-            StatusLabelBuilders = new ToolStripStatusLabel(StatusStrip.ImageList.Images[GUI_16_PEASANT])
-            {
-                ImageAlign = ContentAlignment.MiddleLeft,
-                AutoSize = false,
-                Width = 120
-            };
-            StatusLabelBuilders.Font = new Font(StatusLabelBuilders.Font, FontStyle.Bold);
-            StatusStrip.Items.Add(StatusLabelBuilders);
+            tslDay.Font = fontToolBar;
+            tslGold.ImageIndex = GUI_BUY;
+            tslGold.Font = fontToolBar;
+            tslBuilders.ImageIndex = GUI_PEASANT;
+            tslBuilders.Font = fontToolBar;
+            tslHeroes.ImageIndex = GUI_HEROES;
+            tslHeroes.Font = fontToolBar;
+            tsbEndTurn.ImageIndex = GUI_HOURGLASS;
 
             // Создаем иконки игроков в левой части окна
             foreach (Player p in lobby.Players)
@@ -340,8 +325,8 @@ namespace Fantasy_King_s_Battle
 
         internal void ShowDataPlayer()
         {
-            StatusLabelDay.Text = "День: " + lobby.Turn.ToString();
-
+            tslDay.Text = "День: " + lobby.Turn.ToString();
+            
             // Если этого игрока не отрисовывали, формируем заново вкладки
             if (curAppliedPlayer != lobby.CurrentPlayer)
             {
@@ -589,21 +574,11 @@ namespace Fantasy_King_s_Battle
             }
         }
 
-        private void ButtonEndTurn_Click(object sender, EventArgs e)
-        {
-            ButtonEndTurn.Enabled = false;
-            lobby.DoEndTurn();
-
-            //ShowBattle();
-
-            ShowDataPlayer();
-            ButtonEndTurn.Enabled = true;
-        }
-
         internal void ShowGold()
         {
-            StatusLabelGold.Text = lobby.CurrentPlayer.Gold.ToString() + " (+" + lobby.CurrentPlayer.Income().ToString() + ")";
-            StatusLabelBuilders.Text = lobby.CurrentPlayer.FreeBuilders.ToString() + "/" + lobby.CurrentPlayer.TotalBuilders.ToString();
+            tslGold.Text = lobby.CurrentPlayer.Gold.ToString() + " (+" + lobby.CurrentPlayer.Income().ToString() + ")";
+            tslBuilders.Text = lobby.CurrentPlayer.FreeBuilders.ToString() + "/" + lobby.CurrentPlayer.TotalBuilders.ToString();
+            tslHeroes.Text = lobby.CurrentPlayer.CombatHeroes.Count.ToString() + "/" + lobby.TypeLobby.MaxHeroes.ToString();
         }
 
         internal void ShowAllBuildings()
@@ -1078,6 +1053,15 @@ namespace Fantasy_King_s_Battle
             // При деактивации пересоздаем окно, иначе оно отображается под главной формой
             formHint.Dispose();
             formHint = new FormHint(background, ilGui16, ilParameters);
+        }
+
+        private void tsbEndTurn_Click(object sender, EventArgs e)
+        {
+            tsbEndTurn.Enabled = false;
+            lobby.DoEndTurn();
+
+            ShowDataPlayer();
+            tsbEndTurn.Enabled = true;
         }
     }
 }
