@@ -102,7 +102,12 @@ namespace Fantasy_King_s_Battle
                 "Место №" + player.PositionInLobby.ToString(),
                 "Уровень Замка: " + player.LevelCastle.ToString() + Environment.NewLine
                     + "Прочность Замка " + player.DurabilityCastle.ToString() + "/" + player.Lobby.TypeLobby.DurabilityCastle.ToString() + Environment.NewLine
-                    + "Героев: " + player.QuantityHeroes.ToString(),
+                    + "Героев: " + player.QuantityHeroes.ToString() + Environment.NewLine
+                    + Environment.NewLine
+                    + "Побед: " + player.Wins.ToString() + Environment.NewLine
+                    + "Ничьих: " + player.Draws.ToString() + Environment.NewLine
+                    + "Поражений: " + player.Loses.ToString() + Environment.NewLine
+                    ,
                 null,
                 0,
                 false, 0,
