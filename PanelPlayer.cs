@@ -21,11 +21,13 @@ namespace Fantasy_King_s_Battle
         private readonly SolidBrush brushCurDurability = new SolidBrush(Color.Green);
         private readonly SolidBrush brushMaxDurability = new SolidBrush(Color.LightGreen);
 
-        public PanelPlayer(Player p) : base()
+        public PanelPlayer(Player p, Control parent) : base()
         {
             player = p;
             player.Panel = this;
 
+            Parent = parent;
+            Left = Config.GRID_SIZE;
             Width = Config.GRID_SIZE + Program.formMain.ilPlayerAvatars.ImageSize.Width + Config.GRID_SIZE + Program.formMain.ilResultBattle.ImageSize.Width + Config.GRID_SIZE;
             Height = Config.GRID_SIZE + Program.formMain.ilPlayerAvatars.ImageSize.Height + Config.GRID_SIZE + Config.GRID_SIZE;
 

@@ -107,6 +107,7 @@ namespace Fantasy_King_s_Battle
         private readonly PanelControls pageHeroes;
         private readonly PanelControls pageBattle;
         private PanelControls currentPage;
+        private readonly int leftForPages;
 
         private List<PictureBox> SlotSkill = new List<PictureBox>();
 
@@ -188,6 +189,14 @@ namespace Fantasy_King_s_Battle
             StatusLabelBuilders.Font = new Font(StatusLabelBuilders.Font, FontStyle.Bold);
             StatusStrip.Items.Add(StatusLabelBuilders);
 
+            // Создаем иконки игроков в левой части окна
+            foreach (Player p in lobby.Players)
+            {
+                new PanelPlayer(p, this);
+            }
+
+            leftForPages = GuiUtils.NextLeft(lobby.Players[0].Panel);
+
             pageLobby = PreparePanel();
             pageGuilds = PreparePanel();
             pageBuildings = PreparePanel();
@@ -205,12 +214,11 @@ namespace Fantasy_King_s_Battle
 
             PanelControls PreparePanel()
             {
-                return new PanelControls(this, Config.GRID_SIZE, GuiUtils.NextTop(tabControl1));
+                return new PanelControls(this, leftForPages, GuiUtils.NextTop(tabControl1));
             }
 
-            // Создаем панели игроков
+            // Создаем вкладку "Лобби"
             PanelAboutPlayer pap;
-            PanelPlayer pp;
 
             int top = Config.GRID_SIZE;
             foreach (Player p in lobby.Players)
@@ -218,21 +226,16 @@ namespace Fantasy_King_s_Battle
                 pap = new PanelAboutPlayer(p, ilResultBattle)
                 {
                     Top = top,
-                    Left = 120
+                    Left = 0
                 };
                 pageLobby.AddControl(pap);
 
                 p.PanelAbout = pap;
 
-                pp = new PanelPlayer(p)
-                {
-                    Parent = this,
-                    Left = Config.GRID_SIZE
-                };
-
                 top += pap.Height + Config.GRID_SIZE;
             }
 
+            tabControl1.Left = leftForPages;
 
             //
             tabControl1.ImageList = ilGui;
