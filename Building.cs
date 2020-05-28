@@ -67,13 +67,29 @@ namespace Fantasy_King_s_Battle
                 }
 
                 for (int i = 1; i < Levels.Length; i++)
-                { 
+                {
                     if (Levels[i] == null)
                         throw new Exception("В конфигурации зданий у " + ID + " нет информации об уровне " + i.ToString());
                 }
             }
             else
                 throw new Exception("В конфигурации зданий у " + ID + " нет информации об уровнях. ");
+
+            // Загружаем исследования
+            XmlNode nr = n.SelectSingleNode("Researches");
+            if (nr != null)
+            {
+                Researches = new Research[Convert.ToInt32(n.SelectSingleNode("LayersResearches").InnerText), Config.PLATE_HEIGHT, Config.PLATE_WIDTH];
+
+                Research research;
+
+                foreach (XmlNode l in nr.SelectNodes("Research"))
+                {
+                    research = new Research(l);
+                    Debug.Assert(Researches[research.Layer, research.Coord.Y, research.Coord.X] == null);
+                    Researches[research.Layer, research.Coord.Y, research.Coord.X] = research;
+                }
+            }
         }
 
         internal string ID { get; }
@@ -84,11 +100,21 @@ namespace Fantasy_King_s_Battle
         internal int MaxLevel { get; }
 
         internal Level[] Levels;
+        internal Research[,,] Researches;
         internal int Position { get; }
         internal Hero TrainedHero { get; set; }
         internal CategoryBuilding CategoryBuilding { get; }
         internal TypeIncome TypeIncome { get; }
         internal int Line { get; }
         internal PanelBuilding Panel { get; set; }
+
+        internal void TuneItemsInResearches()
+        {
+            if (Researches != null)
+                for (int z = 0; z < Researches.GetLength(0); z++)
+                    for (int y = 0; y < Researches.GetLength(1); y++)
+                        for (int x = 0; x < Researches.GetLength(2); x++)
+                            Researches[z, y, x]?.FindItem();
+        }
     }
 }

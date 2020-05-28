@@ -147,6 +147,7 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <TypeIncome>Persistent</TypeIncome>
+    <LayersResearches>1</LayersResearches>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -179,6 +180,50 @@
         </Requirements>
       </Level>
     </Levels>
+    <Researches>
+      <Research>
+        <PosX>1</PosX>
+        <PosY>1</PosY>
+        <Layer>1</Layer>
+        <Item>Sword1</Item>
+        <Cost>250</Cost>
+      </Research>
+      <Research>
+        <PosX>1</PosX>
+        <PosY>2</PosY>
+        <Layer>1</Layer>
+        <Item>ArmourWarrior1</Item>
+        <Cost>250</Cost>
+      </Research>
+      <Research>
+        <PosX>2</PosX>
+        <PosY>1</PosY>
+        <Layer>1</Layer>
+        <Item>Bow1</Item>
+        <Cost>250</Cost>
+      </Research>
+      <Research>
+        <PosX>2</PosX>
+        <PosY>2</PosY>
+        <Layer>1</Layer>
+        <Item>ArmourArcher1</Item>
+        <Cost>250</Cost>
+      </Research>
+      <Research>
+        <PosX>3</PosX>
+        <PosY>1</PosY>
+        <Layer>1</Layer>
+        <Item>Staff1</Item>
+        <Cost>250</Cost>
+      </Research>
+      <Research>
+        <PosX>3</PosX>
+        <PosY>2</PosY>
+        <Layer>1</Layer>
+        <Item>ArmourMage1</Item>
+        <Cost>250</Cost>
+      </Research>
+    </Researches>
   </Building>
   <Building>
     <ID>Tavern</ID>

@@ -73,6 +73,10 @@ namespace Fantasy_King_s_Battle
                 Items.Add(new Item(n));
             }
 
+            // Настраиваем исследования
+            foreach (Building b in Buildings)
+                b.TuneItemsInResearches();
+
             // Загрузка конфигурации видов героев
             xmlDoc = CreateXmlDocument("Config\\KindHeroes.xml");
 
