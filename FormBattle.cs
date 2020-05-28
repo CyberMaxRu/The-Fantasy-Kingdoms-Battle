@@ -18,15 +18,10 @@ namespace Fantasy_King_s_Battle
         private Pen penArrow = new Pen(Color.Fuchsia);
         private Bitmap bmpBackground;
         private Timer timerStep;
-        private DateTime lastLabel;
-        private int frames;
-        private int ticksPast = 0;
-        private DateTime startDateTime;
+        private int pastFrames;
         private Bitmap background;
-        private Stopwatch st = new Stopwatch();
         private Stopwatch timePassed = new Stopwatch();
         private bool inDraw;
-        private int skippedFrames = 0;
 
         public FormBattle()
         {
@@ -62,28 +57,14 @@ namespace Fantasy_King_s_Battle
 
         private void TimerStep_Tick(object sender, EventArgs e)
         {
-            if (ticksPast == 0)
-            {
-                startDateTime = DateTime.Now;
-                ticksPast = 1;
-            }
-
             if (inDraw == false)
             {
                 inDraw = true;
-                frames++;
-
-                if ((DateTime.Now - lastLabel).TotalMilliseconds > 1000)
-                {
-                    lblSpeed.Text = frames.ToString();
-                    lastLabel = DateTime.Now;
-                    frames = 0;
-                }
 
                 if (battle.BattleCalced == false)
                 {
                     // Рисуем столько кадров, сколько должно было пройти
-                    int pastFrames = (int)(timePassed.ElapsedMilliseconds / Config.STEP_IN_MSEC);
+                    pastFrames = (int)(timePassed.ElapsedMilliseconds / Config.STEP_IN_MSEC);
                     while ((battle.Step <= pastFrames) && (battle.BattleCalced == false))
                         battle.CalcStep();
 
@@ -92,8 +73,6 @@ namespace Fantasy_King_s_Battle
 
                 inDraw = false;
             }
-            else
-                skippedFrames++;
         }
 
         private void DoFrame()
@@ -110,17 +89,13 @@ namespace Fantasy_King_s_Battle
 
         private void FormBattle_Paint(object sender, PaintEventArgs e)
         {
-            st.Restart();
             e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
             e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
             e.Graphics.DrawImageUnscaled(background, 0, 0);
-            st.Stop();
-            lblDrawBack.Text = st.ElapsedMilliseconds.ToString();
 
             Bitmap bmpPanel = new Bitmap(cellHeroes[0, 0].Width, cellHeroes[0, 0].Height);
 
             // Рисуем героев
-            st.Restart();
             for (int y = 0; y < battle.SizeBattlefield.Height; y++)
                 for (int x = 0; x < battle.SizeBattlefield.Width; x++)
                 {
@@ -130,8 +105,6 @@ namespace Fantasy_King_s_Battle
                         e.Graphics.DrawImageUnscaled(bmpPanel, cellHeroes[y, x].Left, cellHeroes[y, x].Top);
                     }
                 }
-            st.Stop();
-            lblDrawHeroes.Text = st.ElapsedMilliseconds.ToString();
 
             foreach (HeroInBattle h in battle.ActiveHeroes)
             {
@@ -168,21 +141,12 @@ namespace Fantasy_King_s_Battle
                 }
 
             ApplyStep();
-            timerStep.Start();
-            lastLabel = DateTime.Now;
-            frames = 0;
-            inDraw = false;
-            timePassed.Start();
-            ShowDialog();
-        }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (battle.BattleCalced == false)
-            {
-                battle.CalcStep();
-                ApplyStep();
-            }
+            timerStep.Start();
+            timePassed.Start();
+            inDraw = false;
+
+            ShowDialog();
         }
 
         private void ApplyStep()
@@ -197,10 +161,6 @@ namespace Fantasy_King_s_Battle
 
                 cellHeroes[h.Coord.Y, h.Coord.X].Hero = h;
             }
-
-            lblStep.Text = "Шаг: " + battle.Step.ToString() + " / " + ((DateTime.Now - startDateTime).TotalMilliseconds / (1000 / Config.STEPS_IN_SECOND)).ToString();
-            lblTotalSteps.Text = battle.BattleCalced == false ? "Идет бой" : "Бой закончен";
-            lblSkippedFrames.Text = skippedFrames.ToString();
 
             Refresh();
         }
