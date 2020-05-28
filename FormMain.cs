@@ -356,7 +356,7 @@ namespace Fantasy_King_s_Battle
                 p.PanelAbout.ShowData();
             }
 
-            int top = GuiUtils.NextTop(tabControl1);
+            int top = tabControl1.Top;
             foreach (Player p in lobby.Players.OrderBy(p => p.PositionInLobby))
             {
                 Debug.Assert(p.PositionInLobby >= 1);
