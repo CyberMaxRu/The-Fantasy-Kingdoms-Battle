@@ -292,7 +292,7 @@ namespace Fantasy_King_s_Battle
 
             if ((building.Building.TrainedHero != null) && (building.Level > 0))
             {
-                btnHeroes.Text = building.Heroes.Count == building.MaxHeroes() ? building.Heroes.Count.ToString() : building.Heroes.Count.ToString() + "/" + building.MaxHeroes().ToString();
+                btnHeroes.Text = building.Heroes.Count.ToString();
                 btnHeroes.ImageIndex = GuiUtils.GetImageIndexWithGray(btnHeroes.ImageList, building.Building.TrainedHero.ImageIndex, true);
             }
             else
