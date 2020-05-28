@@ -75,7 +75,7 @@ namespace Fantasy_King_s_Battle
                 BackColor = Color.Transparent,
                 TextAlign = ContentAlignment.TopLeft,
                 MaximumSize = new Size(Config.GRID_SIZE * 2, Config.GRID_SIZE * 2),
-                Font = new Font("Microsoft Sans Serif", 9, FontStyle.Bold)
+                Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
             };            
         }
 
