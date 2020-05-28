@@ -72,7 +72,6 @@ namespace Fantasy_King_s_Battle
         internal const int GUI_45_EMPTY = 0;
         internal const int GUI_45_BORDER = 0;
 
-        internal static int MAX_HEROES_AT_PLAYER = 16;
         internal static int SLOTS_IN_LINE = 4;
         internal static int SLOTS_LINES = 2;
         internal static int SLOT_IN_INVENTORY = SLOTS_IN_LINE * SLOTS_LINES;
