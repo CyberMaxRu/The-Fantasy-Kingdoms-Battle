@@ -164,6 +164,7 @@ namespace Fantasy_King_s_Battle
 
                 lblStrike.Show();
                 lblStrike.Text = player.Strike.ToString();
+                lblStrike.ForeColor = lblDamageToCastle.ForeColor;
             }
             else
                 lblStrike.Hide();
