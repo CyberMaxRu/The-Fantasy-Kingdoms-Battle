@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Researches>
+  <Research>
+    <ID>Sword1</ID>
+    <Item>Sword1</Item>
+    <Cost>250</Cost>
+  </Research>
+  <Research>
+    <ID>ArmourWarrior1</ID>
+    <Item>ArmourWarrior1</Item>
+    <Cost>250</Cost>
+  </Research>
+  <Research>
+    <ID>Bow1</ID>
+    <Item>Bow1</Item>
+    <Cost>250</Cost>
+  </Research>
+  <Research>
+    <ID>ArmourArcher1</ID>
+    <Item>ArmourArcher1</Item>
+    <Cost>250</Cost>
+  </Research>
+  <Research>
+    <ID>Staff1</ID>
+    <Item>Staff1</Item>
+    <Cost>250</Cost>
+  </Research>
+  <Research>
+    <ID>ArmourMage1</ID>
+    <Item>ArmourMage1</Item>
+    <Cost>250</Cost>
+  </Research>
+</Researches>

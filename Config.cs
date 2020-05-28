@@ -94,6 +94,14 @@ namespace Fantasy_King_s_Battle
                 Skills.Add(new Skill(n));
             }
 
+            // Загрузка исследований
+            xmlDoc = CreateXmlDocument("Config\\Researches.xml");
+
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Researches/Research"))
+            {
+                Researches.Add(new Research(n));
+            }
+
             // Вспомогательные методы
             XmlDocument CreateXmlDocument(string pathToXml)
             {
@@ -111,6 +119,7 @@ namespace Fantasy_King_s_Battle
         internal List<TypeItem> TypeItems { get; } = new List<TypeItem>();
         internal List<Item> Items { get; } = new List<Item>();
         internal List<Skill> Skills { get; } = new List<Skill>();
+        internal List<Research> Researches { get; } = new List<Research>();
         internal int MaxLevelSkill { get; }
 
         internal Skill FindSkill(string ID)

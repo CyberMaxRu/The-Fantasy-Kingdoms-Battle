@@ -83,6 +83,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="PanelControls.cs" />
+    <Compile Include="Research.cs" />
     <Compile Include="TypeLobby.cs" />
     <Compile Include="TypeItem.cs" />
     <Compile Include="Level.cs" />
@@ -139,6 +140,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FKS.ico" />
+    <Content Include="Resources\Config\Researches.xml" />
     <Content Include="Resources\Config\KindHeroes.xml" />
     <Content Include="Resources\Config\TypeLobby.xml" />
     <Content Include="Resources\Config\Items.xml" />

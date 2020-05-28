@@ -234,4 +234,29 @@
     <Cost>0</Cost>
     <Perk></Perk>
   </Item>
+  <Item>
+    <ID>Staff1</ID>
+    <Name>Улучшенное магическое оружие</Name>
+    <Description></Description>
+    <ImageIndex>16</ImageIndex>
+    <TypeItem>WeaponMage</TypeItem>
+    <Building>Smithy</Building>
+    <CostExamine>0</CostExamine>
+    <Cost>0</Cost>
+    <Perk></Perk>
+    <TypeAttack>Missile</TypeAttack>
+    <DamageMissile>10</DamageMissile>
+    <TimeHit>40</TimeHit>
+  </Item>
+  <Item>
+    <ID>ArmourMage1</ID>
+    <Name>Улучшенная магическая роба</Name>
+    <Description></Description>
+    <ImageIndex>31</ImageIndex>
+    <TypeItem>ArmourMage</TypeItem>
+    <Building>Smithy</Building>
+    <CostExamine>0</CostExamine>
+    <Cost>0</Cost>
+    <Perk></Perk>
+  </Item>
 </Items>
