@@ -32,6 +32,7 @@ namespace Fantasy_King_s_Battle
         internal readonly ImageList ilParameters;
         internal readonly ImageList ilItems;
         internal readonly ImageList ilStateHero;
+        internal readonly Bitmap bmpPlate;
 
         internal readonly Font fontQuantity = new Font("Courier New", 14, FontStyle.Bold);
         internal readonly Font fontCost = new Font("Arial", 11, FontStyle.Bold);
@@ -114,6 +115,7 @@ namespace Fantasy_King_s_Battle
         private readonly PanelControls pageBattle;
         private PanelControls currentPage;
         private readonly int leftForPages;
+        private readonly Point pointPlate;
 
         private List<PictureBox> SlotSkill = new List<PictureBox>();
 
@@ -162,6 +164,8 @@ namespace Fantasy_King_s_Battle
             background = new Bitmap(dirResources + "Icons\\Background.png");
             BackgroundImage = background;
             bmpBackgroundButton = new Bitmap(dirResources + "Icons\\BackgroundButton.png");
+
+            bmpPlate = new Bitmap(dirResources + "Icons\\Plate.png");
 
             CellPanelHeroes = new PanelHero[Config.HERO_ROWS, Config.HERO_IN_ROW];
 
