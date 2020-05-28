@@ -186,6 +186,9 @@ namespace Fantasy_King_s_Battle
 
             leftForPages = GuiUtils.NextLeft(lobby.Players[0].Panel);
 
+            tabControl1.Top = GuiUtils.NextTop(toolStripMain);
+            tabControl1.Left = leftForPages;
+
             pageLobby = PreparePanel();
             pageGuilds = PreparePanel();
             pageBuildings = PreparePanel();
@@ -224,10 +227,6 @@ namespace Fantasy_King_s_Battle
                 top += pap.Height + Config.GRID_SIZE;
             }
 
-            tabControl1.Top = GuiUtils.NextTop(toolStripMain);
-            tabControl1.Left = leftForPages;
-            tabControl1.Width = ClientSize.Width - tabControl1.Left - Config.GRID_SIZE;
-
             //
             tabControl1.ImageList = ilGui;
             tabPageLobby.ImageIndex = GUI_LOBBY;
@@ -254,6 +253,9 @@ namespace Fantasy_King_s_Battle
             DrawWarehouse();
 
             ShowDataPlayer();
+
+            Height = GuiUtils.NextTop(lobby.Players[lobby.Players.Length - 1].Panel) + (Height - ClientSize.Height);
+            tabControl1.Width = ClientSize.Width - tabControl1.Left - Config.GRID_SIZE;
 
             ActivatePage(pageLobby);
 
@@ -372,13 +374,13 @@ namespace Fantasy_King_s_Battle
 
         private void DrawPageBuilding(PanelControls panel, CategoryBuilding category)
         {
-            int top = Config.GRID_SIZE;
+            int top = 0;
             int left;
             int height = 0;
 
             for (int line = 1; line <= BUILDING_MAX_LINES; line++)
             {
-                left = Config.GRID_SIZE;
+                left = 0;
 
                 foreach (Building b in Config.Buildings)
                 {
