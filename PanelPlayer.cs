@@ -71,7 +71,8 @@ namespace Fantasy_King_s_Battle
             Program.formMain.formHint.ShowHint(new Point(Left, Top + Height + 2),
                 player.Name,
                 "Место №" + player.PositionInLobby.ToString(),
-                "Прочность замка " + player.DurabilityCastle.ToString() + "/" + player.Lobby.TypeLobby.DurabilityCastle.ToString(),
+                "Прочность замка " + player.DurabilityCastle.ToString() + "/" + player.Lobby.TypeLobby.DurabilityCastle.ToString()
+                    + Environment.NewLine + "Героев: " + player.QuantityHeroes.ToString(),
                 null,
                 0,
                 false, 0,
