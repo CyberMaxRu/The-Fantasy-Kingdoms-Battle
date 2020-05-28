@@ -166,7 +166,7 @@ namespace Fantasy_King_s_Battle
                 building.Building.Name,
                 building.Level > 0 ? "Уровень " + building.Level.ToString() : "",
                 building.Building.Description
-                    + ((building.Level > 0) && (building.CanTrainHero() == true) ? Environment.NewLine + Environment.NewLine + "Героев: " + building.Heroes.Count.ToString() + "/" + building.MaxHeroes().ToString() : "")
+                    + ((building.Level > 0) && (building.Building.TrainedHero != null) ? Environment.NewLine + Environment.NewLine + "Героев: " + building.Heroes.Count.ToString() + "/" + building.MaxHeroes().ToString() : "")
                 , null, 0, false, building.Income(), 0, false, null);
         }
 
