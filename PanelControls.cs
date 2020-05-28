@@ -22,6 +22,7 @@ namespace Fantasy_King_s_Battle
 
         internal int Left { get; }
         internal int Top { get; }
+        internal int RightForParent { get; private set; }
 
         internal void AddControl(Control c)
         {
@@ -32,6 +33,8 @@ namespace Fantasy_King_s_Battle
             c.Top += Top;
             c.Parent = Parent;
             c.Visible = false;
+
+            RightForParent = Math.Max(RightForParent, c.Left + c.Width);
         }
 
         internal void SetVisible(bool visible)

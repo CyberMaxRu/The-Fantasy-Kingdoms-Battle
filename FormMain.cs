@@ -261,6 +261,15 @@ namespace Fantasy_King_s_Battle
 
             ShowDataPlayer();
 
+            // Определяем максимальную ширину окна            
+            int rightSide = 0;
+
+            foreach (PanelControls pc in pages)
+            {
+                rightSide = Math.Max(rightSide, pc.RightForParent);
+            }
+
+            Width = (Width - ClientSize.Width) + rightSide + Config.GRID_SIZE;
             Height = GuiUtils.NextTop(lobby.Players[lobby.Players.Length - 1].Panel) + (Height - ClientSize.Height);
             tabControl1.Width = ClientSize.Width - tabControl1.Left - Config.GRID_SIZE;
 
