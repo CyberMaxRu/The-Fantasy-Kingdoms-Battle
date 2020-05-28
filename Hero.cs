@@ -65,7 +65,6 @@ namespace Fantasy_King_s_Battle
             Building.TrainedHero = this;
             MaxLevel = Convert.ToInt32(n.SelectSingleNode("MaxLevel").InnerText);
             KindHero = FormMain.Config.FindKindHero(n.SelectSingleNode("KindHero").InnerText);
-            TypeAttack = (TypeAttack)Enum.Parse(typeof(TypeAttack), n.SelectSingleNode("TypeAttack").InnerText);
             CanBuild = Convert.ToBoolean(n.SelectSingleNode("CanBuild").InnerText);
             DamageToCastle = Convert.ToInt32(n.SelectSingleNode("DamageToCastle").InnerText);
 
@@ -76,7 +75,7 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(ImageIndex >= 0);
             Debug.Assert(DamageToCastle >= 0);
 
-            switch (TypeAttack)
+            switch (KindHero.TypeAttack)
             {
                 case TypeAttack.Melee:
                     //Debug.Assert(DamageToCastle > 0);
@@ -176,7 +175,6 @@ namespace Fantasy_King_s_Battle
         internal Building Building { get; }
         internal int MaxLevel { get; }
         internal KindHero KindHero { get; }
-        internal TypeAttack TypeAttack { get; }
         internal bool CanBuild { get; }
         internal int DamageToCastle { get; }
         internal HeroParameters ParametersByHire { get; }// Параметры при найме героя
