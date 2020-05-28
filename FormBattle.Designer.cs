@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBattle));
             this.button1 = new System.Windows.Forms.Button();
             this.lblStep = new System.Windows.Forms.Label();
             this.lblTotalSteps = new System.Windows.Forms.Label();
@@ -125,7 +126,12 @@
             this.Controls.Add(this.lblStep);
             this.Controls.Add(this.button1);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormBattle";
+            this.ShowInTaskbar = false;
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormBattle";
             this.ResumeLayout(false);

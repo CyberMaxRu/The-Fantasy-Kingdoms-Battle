@@ -148,6 +148,8 @@ namespace Fantasy_King_s_Battle
 
         internal void ShowBattle(Battle b)
         {
+            Text = "Бой. " + b.Player1.Name + " vs " + b.Player2.Name;
+
             battle = b;
             PanelHeroInBattle p;
 
