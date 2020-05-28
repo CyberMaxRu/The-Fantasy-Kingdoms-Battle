@@ -84,9 +84,13 @@ namespace Fantasy_King_s_Battle
             {
                 if (bp.Heroes.Count < bp.MaxHeroes())
                 {
-                    for (int x = 0; x < Math.Min(Config.HERO_IN_ROW, bp.MaxHeroes()); x++)
+                    int needHire = FormMain.Rnd.Next(5) + 1;
+
+                    for (int x = 0; x < needHire; x++)
                     //                for (; bp.Heroes.Count() < bp.MaxHeroes();)
                     {
+                        if (bp.Heroes.Count == bp.MaxHeroes())
+                            break;
                         bp.HireHero();
                     }
                 }
