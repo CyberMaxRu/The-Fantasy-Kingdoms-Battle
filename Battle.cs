@@ -37,16 +37,14 @@ namespace Fantasy_King_s_Battle
             battlefield = new HeroInBattle[SizeBattlefield.Height, SizeBattlefield.Width];
 
             // Запоминаем героев в одном списке для упрощения расчетов
-            foreach (PlayerHero ph in player1.Heroes)
+            foreach (PlayerHero ph in player1.CombatHeroes)
             {
-                if ((ph.ClassHero.CategoryHero == CategoryHero.Melee) || (ph.ClassHero.CategoryHero == CategoryHero.Archer) || (ph.ClassHero.CategoryHero == CategoryHero.Mage))
-                    AddHero(new HeroInBattle(this, ph, new Point(Config.HERO_ROWS - ph.CoordInPlayer.Y - 1, ph.CoordInPlayer.X)));
+                AddHero(new HeroInBattle(this, ph, new Point(Config.HERO_ROWS - ph.CoordInPlayer.Y - 1, ph.CoordInPlayer.X)));
             }
 
-            foreach (PlayerHero ph in player2.Heroes)
+            foreach (PlayerHero ph in player2.CombatHeroes)
             {
-                if ((ph.ClassHero.CategoryHero == CategoryHero.Melee) || (ph.ClassHero.CategoryHero == CategoryHero.Archer) || (ph.ClassHero.CategoryHero == CategoryHero.Mage))
-                    AddHero(new HeroInBattle(this, ph, new Point(ph.CoordInPlayer.Y + Config.HERO_ROWS, ph.CoordInPlayer.X)));
+                AddHero(new HeroInBattle(this, ph, new Point(ph.CoordInPlayer.Y + Config.HERO_ROWS, ph.CoordInPlayer.X)));
             }
 
             void AddHero(HeroInBattle hb)

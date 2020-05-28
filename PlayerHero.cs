@@ -112,16 +112,16 @@ namespace Fantasy_King_s_Battle
         internal void Dismiss()
         {
             Debug.Assert(Building.Heroes.IndexOf(this) != -1);
-            Debug.Assert(Building.Player.Heroes.IndexOf(this) != -1);
+            Debug.Assert(Building.Player.CombatHeroes.IndexOf(this) != -1);
 
             Building.Heroes.Remove(this);
-            Building.Player.Heroes.Remove(this);
+            Building.Player.CombatHeroes.Remove(this);
 
             if (Panel != null)
                 Panel.Dispose();
 
             Debug.Assert(Building.Heroes.IndexOf(this) == -1);
-            Debug.Assert(Building.Player.Heroes.IndexOf(this) == -1);
+            Debug.Assert(Building.Player.CombatHeroes.IndexOf(this) == -1);
         }
 
         internal int FindSlotWithItem(Item item)

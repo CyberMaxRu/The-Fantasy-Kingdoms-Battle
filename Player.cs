@@ -108,7 +108,7 @@ namespace Fantasy_King_s_Battle
                     ValidateHeroes();
                     CalcBuilders();
 
-                    QuantityHeroes = Heroes.Where(h => (h.ClassHero.CategoryHero != CategoryHero.Guard) && (h.ClassHero.CategoryHero != CategoryHero.NonCombat)).Count();
+                    QuantityHeroes = CombatHeroes.Count();
                 }
                 else
                 {
@@ -120,9 +120,9 @@ namespace Fantasy_King_s_Battle
         private void CalcBuilders()
         {
             TotalBuilders = 0;
-            foreach (PlayerBuilding pb in Buildings)
-                if ((pb.Building.TrainedHero != null) && (pb.Building.TrainedHero.CanBuild == true))
-                    TotalBuilders += pb.Heroes.Count;
+            foreach (PlayerHero ph in AllHeroes)
+                if (ph.ClassHero.CanBuild == true)
+                    TotalBuilders++;
 
             FreeBuilders = TotalBuilders;
         }
@@ -142,7 +142,8 @@ namespace Fantasy_King_s_Battle
         internal int LastBattleDamageToCastle { get; set; }
         internal List<PlayerBuilding> Buildings { get; } = new List<PlayerBuilding>();
         internal int LevelCastle => Castle.Level;
-        internal List<PlayerHero> Heroes { get; } = new List<PlayerHero>();
+        internal List<PlayerHero> CombatHeroes { get; } = new List<PlayerHero>();
+        internal List<PlayerHero> AllHeroes { get; } = new List<PlayerHero>();
         internal PlayerHero[,] CellHeroes;
         internal TypePlayer TypePlayer { get; }
         internal int Gold { get; set; }
@@ -223,9 +224,12 @@ namespace Fantasy_King_s_Battle
 
         internal void AddHero(PlayerHero ph)
         {
-            Debug.Assert(Heroes.IndexOf(ph) == -1);
+            Debug.Assert(CombatHeroes.IndexOf(ph) == -1);
+            Debug.Assert(AllHeroes.IndexOf(ph) == -1);
 
-            Heroes.Add(ph);
+            AllHeroes.Add(ph);
+            if (ph.ClassHero.KindHero.Hired == true)
+                CombatHeroes.Add(ph);
 
             if (ph.Building.Building.CategoryBuilding != CategoryBuilding.Castle)
             {

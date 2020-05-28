@@ -45,7 +45,6 @@ namespace Fantasy_King_s_Battle
 
         internal Point Point { get; }
         internal PlayerHero Hero { get; private set; }
-        internal CategoryHero CategoryHero { get; private set; }
 
         internal void RefreshHero()
         {

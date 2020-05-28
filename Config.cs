@@ -70,6 +70,14 @@ namespace Fantasy_King_s_Battle
                 Items.Add(new Item(n));
             }
 
+            // Загрузка конфигурации видов героев
+            xmlDoc = CreateXmlDocument("Config\\KindHeroes.xml");
+
+            foreach (XmlNode n in xmlDoc.SelectNodes("/KindHeroes/KindHero"))
+            {
+                KindHeroes.Add(new KindHero(n));
+            }
+
             // Загрузка конфигурации героев
             xmlDoc = CreateXmlDocument("Config\\Heroes.xml");
 
@@ -98,6 +106,7 @@ namespace Fantasy_King_s_Battle
         internal string PathResources { get; }
         internal List<TypeLobby> TypeLobbies { get; } = new List<TypeLobby>();
         internal List<Building> Buildings { get; } = new List<Building>();
+        internal List<KindHero> KindHeroes { get; } = new List<KindHero>();
         internal List<Hero> Heroes { get; } = new List<Hero>();
         internal List<TypeItem> TypeItems { get; } = new List<TypeItem>();
         internal List<Item> Items { get; } = new List<Item>();
@@ -161,6 +170,17 @@ namespace Fantasy_King_s_Battle
             }
 
             throw new Exception("Предмет " + ID + " не найден.");
+        }
+
+        internal KindHero FindKindHero(string ID)
+        {
+            foreach (KindHero kh in KindHeroes)
+            {
+                if (kh.ID == ID)
+                    return kh;
+            }
+
+            throw new Exception("Вид героя " + ID + " не найден.");
         }
     }
 }

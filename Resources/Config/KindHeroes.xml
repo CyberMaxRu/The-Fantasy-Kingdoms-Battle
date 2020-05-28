@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<KindHeroes>
+  <KindHero>
+    <ID>Melee</ID>
+    <TypeAttack>Melee</TypeAttack>
+    <Hired>True</Hired>
+  </KindHero>
+  <KindHero>
+    <ID>Shooter</ID>
+    <TypeAttack>Missile</TypeAttack>
+    <Hired>True</Hired>
+  </KindHero>
+  <KindHero>
+    <ID>Mage</ID>
+    <TypeAttack>Magic</TypeAttack>
+    <Hired>True</Hired>
+  </KindHero>
+  <KindHero>
+    <ID>Guardian</ID>
+    <TypeAttack>Melee</TypeAttack>
+    <Hired>False</Hired>
+  </KindHero>
+  <KindHero>
+    <ID>NonCombatant</ID>
+    <TypeAttack>None</TypeAttack>
+    <Hired>False</Hired>
+  </KindHero>
+</KindHeroes>

@@ -9,7 +9,6 @@ using System.Diagnostics;
 
 namespace Fantasy_King_s_Battle
 {
-    internal enum CategoryHero { Melee, Archer, Mage, Guard, NonCombat }
     internal enum TypeAttack { Melee, Missile, None }
 
     // Конфигурация типов предметов, которые героя может носить
@@ -65,7 +64,7 @@ namespace Fantasy_King_s_Battle
             Building = FormMain.Config.FindBuilding(n.SelectSingleNode("Building").InnerText);
             Building.TrainedHero = this;
             MaxLevel = Convert.ToInt32(n.SelectSingleNode("MaxLevel").InnerText);
-            CategoryHero = (CategoryHero)Enum.Parse(typeof(CategoryHero), n.SelectSingleNode("CategoryHero").InnerText);
+            KindHero = FormMain.Config.FindKindHero(n.SelectSingleNode("KindHero").InnerText);
             TypeAttack = (TypeAttack)Enum.Parse(typeof(TypeAttack), n.SelectSingleNode("TypeAttack").InnerText);
             CanBuild = Convert.ToBoolean(n.SelectSingleNode("CanBuild").InnerText);
             DamageToCastle = Convert.ToInt32(n.SelectSingleNode("DamageToCastle").InnerText);
@@ -155,7 +154,7 @@ namespace Fantasy_King_s_Battle
             }
             else
             {
-                Debug.Assert((CategoryHero == CategoryHero.Guard) || (CategoryHero == CategoryHero.NonCombat));
+                Debug.Assert(KindHero.Hired == false);
             }
 
             // Загружаем основные параметры
@@ -176,7 +175,7 @@ namespace Fantasy_King_s_Battle
         internal int Cost { get; }
         internal Building Building { get; }
         internal int MaxLevel { get; }
-        internal CategoryHero CategoryHero { get; }
+        internal KindHero KindHero { get; }
         internal TypeAttack TypeAttack { get; }
         internal bool CanBuild { get; }
         internal int DamageToCastle { get; }

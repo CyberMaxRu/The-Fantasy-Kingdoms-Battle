@@ -144,7 +144,7 @@ namespace Fantasy_King_s_Battle
         internal PlayerHero HireHero()
         {
             Debug.Assert(Heroes.Count < MaxHeroes());
-            Debug.Assert(Player.Heroes.Count < FormMain.MAX_HEROES_AT_PLAYER);
+            Debug.Assert(Player.CombatHeroes.Count < FormMain.MAX_HEROES_AT_PLAYER);
             Debug.Assert(Player.Gold >= Building.TrainedHero.Cost);
 
             PlayerHero h = new PlayerHero(this);
@@ -163,14 +163,14 @@ namespace Fantasy_King_s_Battle
         internal bool CanTrainHero()
         {
             Debug.Assert(Heroes.Count <= MaxHeroes());
-            Debug.Assert(Player.Heroes.Count <= FormMain.MAX_HEROES_AT_PLAYER);
+            Debug.Assert(Player.CombatHeroes.Count <= FormMain.MAX_HEROES_AT_PLAYER);
 
-            return (Level > 0) && (Player.Gold >= Building.TrainedHero.Cost) && (Heroes.Count < MaxHeroes()) && (Player.Heroes.Count < FormMain.MAX_HEROES_AT_PLAYER);
+            return (Level > 0) && (Player.Gold >= Building.TrainedHero.Cost) && (Heroes.Count < MaxHeroes()) && (Player.CombatHeroes.Count < FormMain.MAX_HEROES_AT_PLAYER);
         }
 
         internal bool MaxHeroesAtPlayer()
         {
-            return Player.Heroes.Count == FormMain.MAX_HEROES_AT_PLAYER;
+            return Player.CombatHeroes.Count == FormMain.MAX_HEROES_AT_PLAYER;
         }
 
         internal List<TextRequirement> GetTextRequirementsHire()

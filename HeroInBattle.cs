@@ -124,7 +124,7 @@ namespace Fantasy_King_s_Battle
 
             bool SearchTargetForMelee()
             {
-                Debug.Assert(PlayerHero.ClassHero.CategoryHero == CategoryHero.Melee);
+                Debug.Assert(PlayerHero.ClassHero.KindHero.TypeAttack == TypeAttack.Melee);
 
                 // Ищем, кого атаковать
                 List<HeroInBattle> targets = new List<HeroInBattle>();
