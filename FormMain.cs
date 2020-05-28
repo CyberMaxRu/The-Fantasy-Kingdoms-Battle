@@ -269,9 +269,14 @@ namespace Fantasy_King_s_Battle
                 rightSide = Math.Max(rightSide, pc.RightForParent);
             }
 
+            // Учитаем плиту под слоты
+            pointPlate = new Point(rightSide + Config.GRID_SIZE, ClientSize.Height - bmpPlate.Height - Config.GRID_SIZE);
+            rightSide += bmpPlate.Width + Config.GRID_SIZE;
+
             Width = (Width - ClientSize.Width) + rightSide + Config.GRID_SIZE;
             Height = GuiUtils.NextTop(lobby.Players[lobby.Players.Length - 1].Panel) + (Height - ClientSize.Height);
             tabControl1.Width = ClientSize.Width - tabControl1.Left - Config.GRID_SIZE;
+            pointPlate.Y = ClientSize.Height - bmpPlate.Height - Config.GRID_SIZE;
 
             ActivatePage(pageLobby);
 
@@ -490,6 +495,11 @@ namespace Fantasy_King_s_Battle
 
             panelHeroes.Width = width;
             panelHeroes.Height = height;
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            e.Graphics.DrawImageUnscaled(bmpPlate, pointPlate);
         }
 
         private void CellHero_MouseMove(object sender, MouseEventArgs e)
