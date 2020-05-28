@@ -74,6 +74,7 @@ namespace Fantasy_King_s_Battle
 
         internal const int GUI_24_FIRE = 0;
         internal const int GUI_24_HEROES = 1;
+        internal const int GUI_24_STAR = 2;
 
         internal const int GUI_45_EMPTY = 0;
         internal const int GUI_45_BORDER = 0;

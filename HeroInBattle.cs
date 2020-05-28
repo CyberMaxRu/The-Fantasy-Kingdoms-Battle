@@ -64,10 +64,11 @@ namespace Fantasy_King_s_Battle
 
                         // Если сейчас ничего не выполняем, ищем, что можно сделать
                         // Сначала атакуем
-                        if (SearchTargetForMelee() == false)
-                        {
+                        if (PlayerHero.ClassHero.KindHero.TypeAttack == TypeAttack.Melee)
+                            if (SearchTargetForMelee() == false)
+                            {
 
-                        }
+                            }
 
                         break;
                     case StateHeroInBattle.Melee:
