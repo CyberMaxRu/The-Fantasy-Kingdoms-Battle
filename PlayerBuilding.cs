@@ -16,12 +16,24 @@ namespace Fantasy_King_s_Battle
             Building = b;
 
             Level = b.DefaultLevel;
+
+            // Настраиваем исследования 
+            if (b.Researches != null)
+            {
+                ExecutedResearches = new bool[b.Researches.GetLength(0), b.Researches.GetLength(1), b.Researches.GetLength(2)];
+
+                for (int z = 0; z < ExecutedResearches.GetLength(0); z++)
+                    for (int y = 0; y < ExecutedResearches.GetLength(1); y++)
+                        for (int x = 0; x < ExecutedResearches.GetLength(2); x++)
+                            ExecutedResearches[z, y, x] = b.Researches[z, y, x] == null;
+            }
         }
 
         internal Player Player { get; }
         internal Building Building { get; }
         internal int Level { get; private set; }
         internal List<PlayerHero> Heroes { get; } = new List<PlayerHero>();
+        internal bool[,,] ExecutedResearches { get; }
 
         internal void UpdatePanel()
         {

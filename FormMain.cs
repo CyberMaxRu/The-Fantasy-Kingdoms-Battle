@@ -501,6 +501,18 @@ namespace Fantasy_King_s_Battle
         protected override void OnPaint(PaintEventArgs e)
         {
             e.Graphics.DrawImageUnscaled(bmpPlate, pointPlate);
+
+            if (SelectedPanelBuilding != null)
+            {
+                PlayerBuilding pb = SelectedPanelBuilding.Building;
+                if (pb.Building.Researches != null)
+                    for (int z = 0; z < pb.Building.Researches.GetLength(0); z++)
+                        for (int y = 0; y < pb.Building.Researches.GetLength(1); y++)
+                            for (int x = 0; x < pb.Building.Researches.GetLength(2); x++)
+                                if (pb.ExecutedResearches[z, y, x] == false)
+                                    e.Graphics.DrawImageUnscaled(ilItems.Images[pb.Building.Researches[z, y, x].Item.ImageIndex], pointPlate.X + 3 + (ilItems.ImageSize.Width + 3) * x, pointPlate.Y + 3 + (ilItems.ImageSize.Height + 3) * y);
+                //if (SelectedPanelBuilding.bui)
+            }
         }
 
         private void CellHero_MouseMove(object sender, MouseEventArgs e)
@@ -1112,6 +1124,8 @@ namespace Fantasy_King_s_Battle
                     oldPB.Refresh();
 
                 SelectedPanelBuilding.Refresh();
+
+                Refresh();
             }
         }
     }
