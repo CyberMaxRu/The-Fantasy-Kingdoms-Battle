@@ -60,6 +60,7 @@ namespace Fantasy_King_s_Battle
             };
             pbBuilding.MouseEnter += PbBuilding_MouseEnter;
             pbBuilding.MouseLeave += Control_MouseLeave;
+            pbBuilding.MouseClick += PbBuilding_MouseClick;
 
             btnHeroes = new Button()
             {
@@ -144,6 +145,23 @@ namespace Fantasy_King_s_Battle
             rectBorder = new Rectangle(0, 0, Width - 1, Height - 1);
 
             Paint += PanelBuilding_Paint;
+            MouseClick += PanelBuilding_MouseClick;
+        }
+
+        private void PanelBuilding_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Program.formMain.SelectBuilding(this);
+            }
+        }
+
+        private void PbBuilding_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Program.formMain.SelectBuilding(this);
+            }
         }
 
         private void BtnHireHero_MouseEnter(object sender, EventArgs e)
@@ -194,6 +212,14 @@ namespace Fantasy_King_s_Battle
         private void PanelBuilding_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.DrawRectangle(penBorder, rectBorder);
+
+            if (Program.formMain.SelectedPanelBuilding == this)
+            {
+                BackColor = Color.SkyBlue;
+                e.Graphics.DrawRectangle(penBorder, rectBorder.X + 1, rectBorder.Y + 1, rectBorder.Width - 2, rectBorder.Height - 2);
+            }
+            else
+                BackColor = Color.PowderBlue;
         }
 
         private void BtnHero_Click(object sender, EventArgs e)

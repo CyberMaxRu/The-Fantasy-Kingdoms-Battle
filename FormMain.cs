@@ -120,6 +120,7 @@ namespace Fantasy_King_s_Battle
         private List<PictureBox> SlotSkill = new List<PictureBox>();
 
         internal FormHint formHint;
+        internal PanelBuilding SelectedPanelBuilding { get; private set; }
 
         internal static Random Rnd = new Random();
 
@@ -1097,6 +1098,21 @@ namespace Fantasy_King_s_Battle
 
             ShowDataPlayer();
             tsbEndTurn.Enabled = true;
+        }
+
+        internal void SelectBuilding(PanelBuilding pb)
+        {
+            if (SelectedPanelBuilding != pb)
+            {
+                PanelBuilding oldPB = SelectedPanelBuilding;
+
+                SelectedPanelBuilding = pb;
+
+                if (oldPB != null)
+                    oldPB.Refresh();
+
+                SelectedPanelBuilding.Refresh();
+            }
         }
     }
 }
