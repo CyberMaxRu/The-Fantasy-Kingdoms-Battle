@@ -23,13 +23,13 @@ namespace Fantasy_King_s_Battle
 
             DoubleBuffered = true;
 
-            CellsMenu = new PanelResearch[FormMain.PANEL_RESEARCH_SIZE.Height, FormMain.PANEL_RESEARCH_SIZE.Width];
+            CellsMenu = new PanelCellMenu[FormMain.PANEL_RESEARCH_SIZE.Height, FormMain.PANEL_RESEARCH_SIZE.Width];
             for (int y = 0; y < FormMain.PANEL_RESEARCH_SIZE.Height; y++)
                 for (int x = 0; x < FormMain.PANEL_RESEARCH_SIZE.Width; x++)
-                    CellsMenu[y, x] = new PanelResearch(this, DISTANCE_BETWEEN_CELLS + (x * (Program.formMain.ilItems.ImageSize.Width + DISTANCE_BETWEEN_CELLS)), DISTANCE_BETWEEN_CELLS + (y * (Program.formMain.ilItems.ImageSize.Height + DISTANCE_BETWEEN_CELLS)));
+                    CellsMenu[y, x] = new PanelCellMenu(this, DISTANCE_BETWEEN_CELLS + (x * (Program.formMain.ilItems.ImageSize.Width + DISTANCE_BETWEEN_CELLS)), DISTANCE_BETWEEN_CELLS + (y * (Program.formMain.ilItems.ImageSize.Height + DISTANCE_BETWEEN_CELLS)));
         }
 
-        internal PanelResearch[,] CellsMenu { get; }
+        internal PanelCellMenu[,] CellsMenu { get; }
 
         protected override void OnPaint(PaintEventArgs e)
         {

@@ -81,7 +81,7 @@
     <Compile Include="PanelPlayer.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="PanelResearch.cs">
+    <Compile Include="PanelCellMenu.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="PlayerItem.cs" />

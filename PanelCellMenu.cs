@@ -9,10 +9,10 @@ using System.Drawing;
 namespace Fantasy_King_s_Battle
 {
     // Класс панели исследования
-    internal sealed class PanelResearch : Control
+    internal sealed class PanelCellMenu : Control
     {
         private PlayerResearch research;
-        public PanelResearch(Control parent, int left, int top)
+        public PanelCellMenu(Control parent, int left, int top)
         {
             Parent = parent;
             Left = left;
