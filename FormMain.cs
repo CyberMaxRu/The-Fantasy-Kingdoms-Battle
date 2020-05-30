@@ -35,6 +35,7 @@ namespace Fantasy_King_s_Battle
 
         internal readonly Font fontQuantity = new Font("Courier New", 14, FontStyle.Bold);
         internal readonly Font fontCost = new Font("Arial", 11, FontStyle.Bold);
+        internal readonly Color ColorCost = Color.White;
         internal readonly Color ColorQuantity = Color.Yellow;
         internal readonly Brush brushQuantity = new SolidBrush(Color.Yellow);
 

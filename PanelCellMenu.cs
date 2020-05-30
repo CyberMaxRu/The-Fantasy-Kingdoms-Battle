@@ -12,6 +12,8 @@ namespace Fantasy_King_s_Battle
     internal sealed class PanelCellMenu : PictureBox
     {
         private PlayerResearch research;
+        private Label lblCost;
+
         public PanelCellMenu(Control parent, int left, int top)
         {
             Parent = parent;
@@ -22,20 +24,44 @@ namespace Fantasy_King_s_Battle
             BackColor = Color.Transparent;
             //DoubleBuffered = true;
             Visible = false;
+
+            lblCost = new Label()
+            {
+                Parent = this,
+                Size = Size,
+                BackColor = Color.Transparent,
+                ForeColor = Program.formMain.ColorCost,
+                Font = Program.formMain.fontCost,
+                TextAlign = ContentAlignment.BottomCenter
+            };
+
+            lblCost.MouseEnter += LblCost_MouseEnter;
+            lblCost.MouseLeave += LblCost_MouseLeave;
+            lblCost.MouseClick += LblCost_MouseClick;
         }
 
-        internal PlayerResearch Research
+        private void LblCost_MouseClick(object sender, MouseEventArgs e)
         {
-            get { return research; } 
-            set { research = value; 
-                Visible = research != null;
-                if (Visible) Image = Program.formMain.ilItems.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilItems, research.Research.Item.ImageIndex, research.CheckRequirements())]; } 
+            base.OnMouseClick(e);
+
+            if (e.Button == MouseButtons.Left)
+            {
+                if (research.CheckRequirements())
+                {
+                    research.DoResearch();
+
+                    Program.formMain.UpdateMenu();
+                }
+            }
         }
 
-        protected override void OnMouseEnter(EventArgs e)
+        private void LblCost_MouseLeave(object sender, EventArgs e)
         {
-            base.OnMouseEnter(e);
+            Program.formMain.formHint.HideHint();
+        }
 
+        private void LblCost_MouseEnter(object sender, EventArgs e)
+        {
             if (research != null)
             {
                 Program.formMain.formHint.ShowHint(new Point(8 + Parent.Left + Left, Parent.Top + Top + Height + 2),
@@ -50,24 +76,17 @@ namespace Fantasy_King_s_Battle
             }
         }
 
-        protected override void OnMouseLeave(EventArgs e)
+        internal PlayerResearch Research
         {
-            base.OnMouseLeave(e);
-
-            Program.formMain.formHint.HideHint();
-        }
-
-        protected override void OnMouseClick(MouseEventArgs e)
-        {
-            base.OnMouseClick(e);
-
-            if (e.Button == MouseButtons.Left)
+            get { return research; }
+            set
             {
-                if (research.CheckRequirements())
+                research = value;
+                Visible = research != null;
+                if (Visible)
                 {
-                    research.DoResearch();
-
-                    Program.formMain.UpdateMenu();
+                    Image = Program.formMain.ilItems.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilItems, research.Research.Item.ImageIndex, research.CheckRequirements())];
+                    lblCost.Text = research.Cost().ToString();
                 }
             }
         }
