@@ -9,7 +9,7 @@ using System.Xml;
 namespace Fantasy_King_s_Battle
 {
     // Класс предмета
-    internal sealed class Item
+    internal sealed class Item : Entity
     {
         public Item(XmlNode n)
         {
