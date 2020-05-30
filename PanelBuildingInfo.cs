@@ -11,10 +11,13 @@ namespace Fantasy_King_s_Battle
     // Класс подробной информации о строении
     internal sealed class PanelBuildingInfo : BasePanel
     {
+        private enum Page { Products, Inhabitants };
+
         private PictureBox pbBuilding;
         private PlayerBuilding building;
         private Button btnInhabitants;
         private Button btnProducts;
+        private Label lblPage;
 
         public PanelBuildingInfo(int width, int height) : base(true)
         {
@@ -40,6 +43,7 @@ namespace Fantasy_King_s_Battle
                 ImageList = Program.formMain.ilGui,
                 ImageIndex = FormMain.GUI_PRODUCTS
             };
+            btnProducts.Click += BtnProducts_Click;
 
             btnInhabitants = new Button()
             {
@@ -51,6 +55,47 @@ namespace Fantasy_King_s_Battle
                 ImageList = Program.formMain.ilGui,
                 ImageIndex = FormMain.GUI_INHABITANTS
             };
+
+            btnInhabitants.Click += BtnInhabitants_Click;
+
+            lblPage = new Label()
+            {
+                Parent = this,
+                Left = 0,
+                Width = ClientSize.Width,
+                Top = GuiUtils.NextTop(btnProducts),
+                TextAlign = ContentAlignment.MiddleCenter,
+                Font = new Font("Microsoft Sans Serif", 12),
+                BackColor = Color.Transparent,
+                ForeColor = Color.White
+            };
+
+            SetPage(Page.Products);
+        }
+
+        private void SetPage(Page page)
+        {
+            switch (page)
+            {
+                case Page.Products:
+                    lblPage.Text = "Товары";
+                    break;
+                case Page.Inhabitants:
+                    lblPage.Text = "Жители";
+                    break;
+                default:
+                    throw new Exception("Неизвестная страница");
+            }
+        }
+
+        private void BtnInhabitants_Click(object sender, EventArgs e)
+        {
+            SetPage(Page.Inhabitants);
+        }
+
+        private void BtnProducts_Click(object sender, EventArgs e)
+        {
+            SetPage(Page.Products);
         }
 
         internal PlayerBuilding Building
