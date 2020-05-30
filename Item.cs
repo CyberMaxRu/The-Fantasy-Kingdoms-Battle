@@ -19,7 +19,6 @@ namespace Fantasy_King_s_Battle
             ImageIndex = Convert.ToInt32(n.SelectSingleNode("ImageIndex").InnerText);
             TypeItem = FormMain.Config.FindTypeItem(n.SelectSingleNode("TypeItem").InnerText);
             Building = FormMain.Config.FindBuilding(n.SelectSingleNode("Building").InnerText);
-            CostExamine = Convert.ToInt32(n.SelectSingleNode("CostExamine").InnerText);
             Cost = Convert.ToInt32(n.SelectSingleNode("Cost").InnerText);            
             TypeAttack = n.SelectSingleNode("TypeAttack") == null ? TypeAttack.None : (TypeAttack)Enum.Parse(typeof(TypeAttack), n.SelectSingleNode("TypeAttack").InnerText);
             TimeHit = n.SelectSingleNode("TimeHit") == null ? 0 : Convert.ToInt32(n.SelectSingleNode("TimeHit").InnerText);
@@ -79,7 +78,6 @@ namespace Fantasy_King_s_Battle
         internal int TimeHit { get; }
         internal int Position { get; }
         internal Building Building { get; }
-        internal int CostExamine { get; }
         internal int Cost { get; }
         internal int DamageMelee { get; }
         internal int DamageMissile { get; }
