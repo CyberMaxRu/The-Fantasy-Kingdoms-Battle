@@ -103,8 +103,9 @@ namespace Fantasy_King_s_Battle
         internal PanelHero panelHeroForDrag;// Ячейка-источник героя для переноса
         private PlayerHero heroForDrag;// Герой для переноса
 
-        internal readonly Bitmap background;
+        internal readonly Bitmap bmpForBackground;
         internal readonly Bitmap bmpBackgroundButton;
+
         private readonly List<PanelControls> pages = new List<PanelControls>();
         private readonly PanelControls pageLobby;
         private readonly PanelControls pageGuilds;
@@ -162,8 +163,8 @@ namespace Fantasy_King_s_Battle
             ilItems = PrepareImageList("Items.png", 48, 48, false);
             ilStateHero = PrepareImageList("StateHero.png", 24, 24, false);
 
-            background = new Bitmap(dirResources + "Icons\\Background.png");
-            BackgroundImage = background;
+            bmpForBackground = new Bitmap(dirResources + "Icons\\Background.png");
+            BackgroundImage = bmpForBackground;
             bmpBackgroundButton = new Bitmap(dirResources + "Icons\\BackgroundButton.png");
 
             bmpPlate = new Bitmap(dirResources + "Icons\\Plate.png");
@@ -281,7 +282,7 @@ namespace Fantasy_King_s_Battle
 
             ActivatePage(pageLobby);
 
-            formHint = new FormHint(background, ilGui16, ilParameters);
+            formHint = new FormHint(bmpForBackground, ilGui16, ilParameters);
         }
 
         internal static Config Config { get; set; }
@@ -1100,7 +1101,7 @@ namespace Fantasy_King_s_Battle
         {
             // При деактивации пересоздаем окно, иначе оно отображается под главной формой
             formHint.Dispose();
-            formHint = new FormHint(background, ilGui16, ilParameters);
+            formHint = new FormHint(bmpForBackground, ilGui16, ilParameters);
         }
 
         private void tsbEndTurn_Click(object sender, EventArgs e)

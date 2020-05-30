@@ -68,7 +68,7 @@ namespace Fantasy_King_s_Battle
                 Size = GuiUtils.SizeButtonWithImage(imageListGuiHeroes),
                 Top = GuiUtils.NextTop(pbBuilding),
                 Left = Config.GRID_SIZE,
-                BackgroundImage = formMain.background,
+                BackgroundImage = formMain.bmpForBackground,
                 Font = formMain.fontCost,
                 ForeColor = Color.White,
                 TextAlign = ContentAlignment.BottomCenter
@@ -84,7 +84,7 @@ namespace Fantasy_King_s_Battle
                 TextAlign = ContentAlignment.BottomCenter,
                 Font = formMain.fontCost,
                 ForeColor = Color.White,
-                BackgroundImage = formMain.background
+                BackgroundImage = formMain.bmpForBackground
             };
             btnBuyOrUpgrade.Click += BtnBuyOrUprgade_Click;
             btnBuyOrUpgrade.MouseEnter += BtnBuyOrUpgrade_MouseEnter;
@@ -100,7 +100,7 @@ namespace Fantasy_King_s_Battle
                 TextAlign = ContentAlignment.BottomCenter,
                 Font = formMain.fontCost,
                 ForeColor = Color.White,
-                BackgroundImage = formMain.background
+                BackgroundImage = formMain.bmpForBackground
             };
             btnHireHero.Click += BtnHero_Click;
             btnHireHero.MouseEnter += BtnHireHero_MouseEnter;

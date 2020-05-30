@@ -320,12 +320,12 @@ namespace Fantasy_King_s_Battle
 
             // Подготавливаем подложку
             bmpBackground = new Bitmap(ClientSize.Width, ClientSize.Height);
-            int repX = ClientSize.Width / Program.formMain.background.Width + 1;
-            int repY = ClientSize.Height / Program.formMain.background.Height + 1;
+            int repX = ClientSize.Width / Program.formMain.bmpForBackground.Width + 1;
+            int repY = ClientSize.Height / Program.formMain.bmpForBackground.Height + 1;
             Graphics g = Graphics.FromImage(bmpBackground);
             for (int y = 0; y < repY; y++)
                 for (int x = 0; x < repX; x++)
-                    g.DrawImageUnscaled(Program.formMain.background, x * Program.formMain.background.Width, y * Program.formMain.background.Height);
+                    g.DrawImageUnscaled(Program.formMain.bmpForBackground, x * Program.formMain.bmpForBackground.Width, y * Program.formMain.bmpForBackground.Height);
             g.Dispose();
 
             //
