@@ -115,6 +115,7 @@ namespace Fantasy_King_s_Battle
                 AutoSize = false,
                 Top = lblName.Top,
                 Size = new Size(32, 16),
+                BackColor = Color.Transparent,
                 Font = fontLevel,
                 TextAlign = ContentAlignment.MiddleRight
             };
