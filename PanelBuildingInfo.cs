@@ -19,6 +19,7 @@ namespace Fantasy_King_s_Battle
         private Button btnProducts;
         private Label lblPage;
         private Point pointPage;
+        private List<PanelEntity> panelEntities = new List<PanelEntity>();
 
         public PanelBuildingInfo(int width, int height) : base(true)
         {
@@ -82,9 +83,17 @@ namespace Fantasy_King_s_Battle
             {
                 case Page.Products:
                     lblPage.Text = "Товары";
+
+                    foreach (PanelEntity pe in panelEntities)
+                        pe.Show();
+
                     break;
                 case Page.Inhabitants:
                     lblPage.Text = "Жители";
+
+                    foreach (PanelEntity pe in panelEntities)
+                        pe.Hide();
+
                     break;
                 default:
                     throw new Exception("Неизвестная страница");
@@ -117,6 +126,31 @@ namespace Fantasy_King_s_Battle
         internal void ShowData()
         {
             pbBuilding.Image = Program.formMain.ilBuildings.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilBuildings, Building.Building.ImageIndex, Building.Level > 0)];
+
+            // Перестраиваем список товаров
+            foreach (PanelEntity p in panelEntities)
+                p.Dispose();
+
+            panelEntities.Clear();
+
+            PanelEntity pe;
+            int column = 0;
+            int row = 0;
+            foreach (Item i in building.Items)
+            {
+                pe = new PanelEntity(this, Program.formMain.ilItems, 0);
+                pe.Location = new Point(pointPage.X + column * (pe.Width + 1), pointPage.Y + row * (pe.Height + 1));
+                pe.ShowItem(i);
+
+                column++;
+                if (column == 3)
+                {
+                    column = 0;
+                    row++;
+                }
+
+                panelEntities.Add(pe);
+            }
 
             Show();    
         }
