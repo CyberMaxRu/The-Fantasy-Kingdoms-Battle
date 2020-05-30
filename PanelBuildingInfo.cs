@@ -12,7 +12,9 @@ namespace Fantasy_King_s_Battle
     internal sealed class PanelBuildingInfo : BasePanel
     {
         private PictureBox pbBuilding;
-        private PlayerBuilding building;        
+        private PlayerBuilding building;
+        private Button btnInhabitants;
+        private Button btnProducts;
 
         public PanelBuildingInfo(int width, int height) : base(true)
         {
@@ -26,6 +28,28 @@ namespace Fantasy_King_s_Battle
                 Location = new Point(Config.GRID_SIZE, Config.GRID_SIZE),
                 Size = Program.formMain.ilBuildings.ImageSize,
                 BackColor = Color.Transparent
+            };
+
+            btnProducts = new Button()
+            {
+                Parent = this,
+                Left = pbBuilding.Left,
+                Top = GuiUtils.NextTop(pbBuilding),
+                Size = GuiUtils.SizeButtonWithImage(Program.formMain.ilGui),
+                BackgroundImage = Program.formMain.bmpForBackground,
+                ImageList = Program.formMain.ilGui,
+                ImageIndex = FormMain.GUI_PRODUCTS
+            };
+
+            btnInhabitants = new Button()
+            {
+                Parent = this,
+                Left = GuiUtils.NextLeft(btnProducts),
+                Top = GuiUtils.NextTop(pbBuilding),
+                Size = GuiUtils.SizeButtonWithImage(Program.formMain.ilGui),
+                BackgroundImage = Program.formMain.bmpForBackground,
+                ImageList = Program.formMain.ilGui,
+                ImageIndex = FormMain.GUI_INHABITANTS
             };
         }
 
