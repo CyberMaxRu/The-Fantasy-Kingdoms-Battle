@@ -19,6 +19,7 @@ namespace Fantasy_King_s_Battle
             Top = top;
             Size = Program.formMain.ilItems.ImageSize;
             DoubleBuffered = true;
+            Visible = false;
         }
 
         internal PlayerResearch Research { get { return research; } set { research = value; Visible = research != null; } }
