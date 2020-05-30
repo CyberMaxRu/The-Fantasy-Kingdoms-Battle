@@ -92,7 +92,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="PlayerItem.cs" />
-    <Compile Include="PanelItem.cs">
+    <Compile Include="PanelEntity.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="PanelControls.cs" />

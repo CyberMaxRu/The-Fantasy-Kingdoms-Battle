@@ -29,7 +29,7 @@ namespace Fantasy_King_s_Battle
         private readonly Label lblDefenseMagic;
         private readonly Button btnDismiss;
 
-        internal PanelItem[] slots = new PanelItem[FormMain.SLOT_IN_INVENTORY];
+        internal PanelEntity[] slots = new PanelEntity[FormMain.SLOT_IN_INVENTORY];
 
         private readonly ImageList imageListHeroes;
         private readonly ImageList imageListItems;
@@ -81,12 +81,12 @@ namespace Fantasy_King_s_Battle
             lblDefenseMagic = GuiUtils.CreateLabelParameter(this, lblAttackMagic.Left + lblAttackMagic.Width + Config.GRID_SIZE, lblAttackMagic.Top, FormMain.GUI_PARAMETER_DEFENSE_MAGIC);
 
             // Слоты инвентаря
-            PanelItem pb;
+            PanelEntity pb;
             for (int y = 0; y < FormMain.SLOTS_LINES; y++)
             {
                 for (int x = 0; x < FormMain.SLOTS_IN_LINE; x++)
                 {
-                    pb = new PanelItem(this, ilItems, x + y * FormMain.SLOTS_IN_LINE);
+                    pb = new PanelEntity(this, ilItems, x + y * FormMain.SLOTS_IN_LINE);
                     pb.Left = Config.GRID_SIZE + ((pb.Width + Config.GRID_SIZE) * x);
                     pb.Top = GuiUtils.NextTop(lblSpeed) + ((pb.Height + Config.GRID_SIZE) * y);
 

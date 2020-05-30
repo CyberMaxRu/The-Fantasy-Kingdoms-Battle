@@ -94,13 +94,13 @@ namespace Fantasy_King_s_Battle
         private readonly Lobby lobby;
         private Player curAppliedPlayer;
 
-        private List<PanelItem> SlotsWarehouse = new List<PanelItem>();
+        private List<PanelEntity> SlotsWarehouse = new List<PanelEntity>();
         private PanelHero[,] CellPanelHeroes;
 
         private PictureBox picBoxItemForDrag;// PictureBox с иконкой предмета для отображения под курсором при перетаскивании
         private Point shiftForMouseByDrag;// Смещение иконки предмета относится курсора мыши, чтобы она отображалась ровно так, как предмет взял пользователь
         private SourceForDrag placeItemForDrag = SourceForDrag.None;// Источник предмета - склад, герой и т.д.
-        private PanelItem panelItemForDrag;// Ячейка-источник предмета для переноса
+        private PanelEntity panelItemForDrag;// Ячейка-источник предмета для переноса
         private PlayerItem itemForDrag;// Предмет для переноса. Отдельно его храним, так как если он один, в ячейке он не остается
         private PlayerItem itemTempForDrag;// Предмет для временного хранения одного экземпляра предмета при переносе
         internal PanelHero panelHeroForDrag;// Ячейка-источник героя для переноса
@@ -672,12 +672,12 @@ namespace Fantasy_King_s_Battle
             };
             pageHeroes.AddControl(panelWarehouse);
 
-            PanelItem pi;
+            PanelEntity pi;
 
             for (int y = 0; y < WH_SLOT_LINES; y++)
                 for (int x = 0; x < WH_SLOTS_IN_LINE; x++)
                 {
-                    pi = new PanelItem(panelWarehouse, ilItems, x + y * WH_SLOTS_IN_LINE);
+                    pi = new PanelEntity(panelWarehouse, ilItems, x + y * WH_SLOTS_IN_LINE);
                     pi.Left = Config.GRID_SIZE + (pi.Width + Config.GRID_SIZE) * x;
                     pi.Top = Config.GRID_SIZE + (pi.Height + Config.GRID_SIZE) * y;
                     pi.MouseMove += PanelCell_MouseMove;
@@ -736,11 +736,11 @@ namespace Fantasy_King_s_Battle
             return new Point(panelHeroInfo.Left + panelItemForDrag.Left + locationMouse.X, panelHeroInfo.Top + panelItemForDrag.Top + locationMouse.Y);
         }
 
-        private PanelItem GetPicBoxSlotOfHero(Point p)
+        private PanelEntity GetPicBoxSlotOfHero(Point p)
         {
             if (panelHeroInfo != null)
             {
-                PanelItem pb;
+                PanelEntity pb;
 
                 for (int i = 0; i < panelHeroInfo.slots.Length; i++)
                 {
@@ -754,7 +754,7 @@ namespace Fantasy_King_s_Battle
         }
         private int SlotHeroUnderCursor(Point locationMouse)
         {
-            PanelItem pb = GetPicBoxSlotOfHero(locationMouse);
+            PanelEntity pb = GetPicBoxSlotOfHero(locationMouse);
             if (pb == null)
                 return -1;
 
@@ -780,7 +780,7 @@ namespace Fantasy_King_s_Battle
         }
 
         // Подготовка будущего Drag&Drop. Сразу не забираем предмет, чтобы при обычном клике не было взятия/сброса предмета
-        private void PrepareDrag(SourceForDrag place, PictureBox panel, Point location)
+        private void PrepareDrag(SourceForDrag place, Control panel, Point location)
         {
             Debug.Assert(picBoxItemForDrag.Visible == false);
             Debug.Assert(panelItemForDrag == null);
@@ -795,7 +795,7 @@ namespace Fantasy_King_s_Battle
                 case SourceForDrag.ItemFromHero:
                 case SourceForDrag.ItemFromWarehouse:
                     Debug.Assert(itemForDrag != null);
-                    panelItemForDrag = panel as PanelItem;
+                    panelItemForDrag = panel as PanelEntity;
 
                     break;
                 case SourceForDrag.Hero:
@@ -880,11 +880,11 @@ namespace Fantasy_King_s_Battle
             if (e.Button == MouseButtons.Left)
             {
                 Debug.Assert(itemForDrag == null);
-                Debug.Assert(sender is PanelItem);
+                Debug.Assert(sender is PanelEntity);
 
-                itemForDrag = lobby.CurrentPlayer.Warehouse[((PanelItem)sender).NumberCell];
+                itemForDrag = lobby.CurrentPlayer.Warehouse[((PanelEntity)sender).NumberCell];
                 if (itemForDrag != null)
-                    PrepareDrag(SourceForDrag.ItemFromWarehouse, (PanelItem)sender, e.Location);
+                    PrepareDrag(SourceForDrag.ItemFromWarehouse, (PanelEntity)sender, e.Location);
             }
         }
 
@@ -961,16 +961,16 @@ namespace Fantasy_King_s_Battle
             if (e.Button == MouseButtons.Left)
             {
                 Debug.Assert(itemForDrag == null);
-                Debug.Assert(sender is PanelItem);
+                Debug.Assert(sender is PanelEntity);
 
-                itemForDrag = panelHeroInfo.Hero.Slots[((PanelItem)sender).NumberCell];
+                itemForDrag = panelHeroInfo.Hero.Slots[((PanelEntity)sender).NumberCell];
                 // Дефолтный предмет нельзя перемещать
                 if (itemForDrag != null)
-                    if (itemForDrag.Item == panelHeroInfo.Hero.ClassHero.Slots[((PanelItem)sender).NumberCell].DefaultItem)
+                    if (itemForDrag.Item == panelHeroInfo.Hero.ClassHero.Slots[((PanelEntity)sender).NumberCell].DefaultItem)
                         itemForDrag = null;
 
                 if (itemForDrag != null)
-                    PrepareDrag(SourceForDrag.ItemFromHero, (PanelItem)sender, e.Location);
+                    PrepareDrag(SourceForDrag.ItemFromHero, (PanelEntity)sender, e.Location);
             }
         }
 
@@ -1030,16 +1030,16 @@ namespace Fantasy_King_s_Battle
 
         private int SlotWarehouseUnderCursor(Point locationMouse)
         {
-            PanelItem pi = GetPanelItemSlotOfWarehouse(locationMouse);
+            PanelEntity pi = GetPanelItemSlotOfWarehouse(locationMouse);
             if (pi == null)
                 return -1;
 
             return pi.NumberCell;
         }
 
-        private PanelItem GetPanelItemSlotOfWarehouse(Point p)
+        private PanelEntity GetPanelItemSlotOfWarehouse(Point p)
         {
-            foreach (PanelItem pi in SlotsWarehouse)
+            foreach (PanelEntity pi in SlotsWarehouse)
             {
                 if ((p.Y >= panelWarehouse.Top + pi.Top) && (p.Y <= panelWarehouse.Top + pi.Top + pi.Height) && (p.X >= panelWarehouse.Left + pi.Left) && (p.X <= panelWarehouse.Left + pi.Left + pi.Width))
                     return pi;
