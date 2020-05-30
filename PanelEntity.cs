@@ -16,6 +16,7 @@ namespace Fantasy_King_s_Battle
         private Point pointIcon;
         private Point pointQuantity;
         private PlayerItem playerItem;
+        private Item item;
         private string quantity;
 
         public PanelEntity(Control parent, ImageList ilItems, int numberCell)
@@ -42,11 +43,11 @@ namespace Fantasy_King_s_Battle
 
         private void PanelItem_MouseEnter(object sender, EventArgs e)
         {
-            if (playerItem != null)
+            if (item != null)
                 Program.formMain.formHint.ShowHint(new Point(10 + Parent.Left + Left, Parent.Top + Top + Height),
-                    playerItem.Item.Name,
+                    item.Name,
                     "",
-                    playerItem.Item.Description,
+                    item.Description,
                     null,
                     0,
                     false, 0,
@@ -57,9 +58,9 @@ namespace Fantasy_King_s_Battle
         {
             base.OnPaint(e);
 
-            if (playerItem != null)
+            if (item != null)
             {
-                e.Graphics.DrawImageUnscaled(imageListItems.Images[playerItem.Item.ImageIndex], pointIcon);
+                e.Graphics.DrawImageUnscaled(imageListItems.Images[item.ImageIndex], pointIcon);
                 e.Graphics.DrawImageUnscaled(Program.formMain.bmpBorderForIcon, 0, 0);
             }
 
@@ -75,6 +76,15 @@ namespace Fantasy_King_s_Battle
         internal void ShowItem(PlayerItem pi)
         {
             playerItem = pi;
+            item = pi?.Item;
+            Invalidate();
+            //Image = pi != null ? imageListItems.Images[pi.Item.ImageIndex] : null;
+        }
+
+        internal void ShowItem(Item i)
+        {
+            playerItem = null;
+            item = i;
             Invalidate();
             //Image = pi != null ? imageListItems.Images[pi.Item.ImageIndex] : null;
         }
