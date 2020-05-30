@@ -108,6 +108,7 @@ namespace Fantasy_King_s_Battle
 
         internal readonly Bitmap bmpForBackground;
         internal readonly Bitmap bmpBackgroundButton;
+        internal readonly Bitmap bmpBorderForIcon;
         private readonly Bitmap bmpBackground;
 
         private readonly List<PanelControls> pages = new List<PanelControls>();
@@ -171,6 +172,7 @@ namespace Fantasy_King_s_Battle
 
             bmpForBackground = new Bitmap(dirResources + "Icons\\Background.png");
             bmpBackgroundButton = new Bitmap(dirResources + "Icons\\BackgroundButton.png");
+            bmpBorderForIcon = new Bitmap(dirResources + "Icons\\BorderIconEntity.png");
 
             CellPanelHeroes = new PanelHero[Config.HERO_ROWS, Config.HERO_IN_ROW];
 

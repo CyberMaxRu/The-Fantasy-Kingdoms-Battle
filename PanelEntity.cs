@@ -13,6 +13,7 @@ namespace Fantasy_King_s_Battle
     internal sealed class PanelEntity : Control
     {
         private readonly ImageList imageListItems;
+        private Point pointIcon;
         private Point pointQuantity;
         private PlayerItem playerItem;
         private string quantity;
@@ -25,10 +26,9 @@ namespace Fantasy_King_s_Battle
             NumberCell = numberCell;
 
             Parent = parent;
-            //BorderStyle = BorderStyle.FixedSingle;
-            Width = imageListItems.ImageSize.Width + 2;
-            Height = imageListItems.ImageSize.Height + 2;
+            Size = Program.formMain.bmpBorderForIcon.Size;
 
+            pointIcon = new Point(3, 1);
             pointQuantity = new Point(2, Height - 20);
 
             MouseEnter += PanelItem_MouseEnter;
@@ -58,7 +58,10 @@ namespace Fantasy_King_s_Battle
             base.OnPaint(e);
 
             if (playerItem != null)
-                e.Graphics.DrawImageUnscaled(imageListItems.Images[playerItem.Item.ImageIndex], 0, 0);
+            {
+                e.Graphics.DrawImageUnscaled(imageListItems.Images[playerItem.Item.ImageIndex], pointIcon);
+                e.Graphics.DrawImageUnscaled(Program.formMain.bmpBorderForIcon, 0, 0);
+            }
 
             if ((playerItem != null) && (playerItem.Quantity > 1))
             {
