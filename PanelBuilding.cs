@@ -27,6 +27,7 @@ namespace Fantasy_King_s_Battle
         private readonly Font fontLabel = new Font("Microsoft Sans Serif", 10, FontStyle.Bold);
         private readonly Pen penBorder;
         private readonly Rectangle rectBorder;
+        private readonly SolidBrush brushBackColor = new SolidBrush(Color.White);
 
         public PanelBuilding(Control parent, int left, int top, FormMain formMain)
         {
@@ -38,7 +39,6 @@ namespace Fantasy_King_s_Battle
             imageListGuiHeroes = formMain.ilGuiHeroes;
             Left = left;
             Top = top;
-            BackColor = Color.PowderBlue;
             DoubleBuffered = true;
 
             lblName = new Label()
@@ -47,6 +47,7 @@ namespace Fantasy_King_s_Battle
                 Left = Config.GRID_SIZE,
                 Top = Config.GRID_SIZE,
                 Height = Config.GRID_SIZE * 2,
+                BackColor = Color.Transparent,
                 Font = fontLabel
             };
 
@@ -56,7 +57,8 @@ namespace Fantasy_King_s_Battle
                 Width = imageListBuilding.ImageSize.Width + 2,// Окантовка
                 Height = imageListBuilding.ImageSize.Height + 2,// Окантовка
                 Left = Config.GRID_SIZE,
-                Top = GuiUtils.NextTop(lblName)
+                Top = GuiUtils.NextTop(lblName),
+                BackColor = Color.Transparent
             };
             pbBuilding.MouseEnter += Pbv_MouseEnter;
             pbBuilding.MouseLeave += Control_MouseLeave;
@@ -144,7 +146,6 @@ namespace Fantasy_King_s_Battle
             penBorder = new Pen(Color.Black);
             rectBorder = new Rectangle(0, 0, Width - 1, Height - 1);
 
-            Paint += PanelBuilding_Paint;
             MouseClick += PanelBuilding_MouseClick;
         }
 
@@ -211,8 +212,11 @@ namespace Fantasy_King_s_Battle
                 Program.formMain.formHint.HideHint();
         }
 
-        private void PanelBuilding_Paint(object sender, PaintEventArgs e)
+        protected override void OnPaint(PaintEventArgs e)
         {
+            brushBackColor.Color = Program.formMain.SelectedPanelBuilding == this ? Color.SkyBlue : BackColor = Color.PowderBlue;
+            e.Graphics.FillRectangle(brushBackColor, ClientRectangle);
+
             e.Graphics.DrawRectangle(penBorder, rectBorder);
 
             if (Program.formMain.SelectedPanelBuilding == this)
@@ -329,11 +333,6 @@ namespace Fantasy_King_s_Battle
                 btnHeroes.Text = "";
                 btnHeroes.ImageIndex = -1;
             }
-
-            if (Program.formMain.SelectedPanelBuilding == this)
-                BackColor = Color.SkyBlue;
-            else
-                BackColor = Color.PowderBlue;
         }
     }
 }
