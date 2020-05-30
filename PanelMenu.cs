@@ -13,7 +13,7 @@ namespace Fantasy_King_s_Battle
     {
         internal readonly Bitmap bmpMenu;
 
-        private const int distanceBetweenCellResearch = 3;
+        private const int DISTANCE_BETWEEN_CELLS = 3;
 
         public PanelMenu(Control parent, string dirResources) : base()
         {
@@ -26,7 +26,7 @@ namespace Fantasy_King_s_Battle
             CellsMenu = new PanelResearch[FormMain.PANEL_RESEARCH_SIZE.Height, FormMain.PANEL_RESEARCH_SIZE.Width];
             for (int y = 0; y < FormMain.PANEL_RESEARCH_SIZE.Height; y++)
                 for (int x = 0; x < FormMain.PANEL_RESEARCH_SIZE.Width; x++)
-                    CellsMenu[y, x] = new PanelResearch(this, distanceBetweenCellResearch + (x * (Program.formMain.ilItems.ImageSize.Width + distanceBetweenCellResearch)), distanceBetweenCellResearch + (y * (Program.formMain.ilItems.ImageSize.Height + distanceBetweenCellResearch)));
+                    CellsMenu[y, x] = new PanelResearch(this, DISTANCE_BETWEEN_CELLS + (x * (Program.formMain.ilItems.ImageSize.Width + DISTANCE_BETWEEN_CELLS)), DISTANCE_BETWEEN_CELLS + (y * (Program.formMain.ilItems.ImageSize.Height + DISTANCE_BETWEEN_CELLS)));
         }
 
         internal PanelResearch[,] CellsMenu { get; }
