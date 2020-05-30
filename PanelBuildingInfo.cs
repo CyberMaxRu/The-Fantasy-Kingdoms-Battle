@@ -20,6 +20,7 @@ namespace Fantasy_King_s_Battle
         private Label lblPage;
         private Point pointPage;
         private List<PanelEntity> panelEntities = new List<PanelEntity>();
+        private Page activePage;
 
         public PanelBuildingInfo(int width, int height) : base(true)
         {
@@ -76,11 +77,12 @@ namespace Fantasy_King_s_Battle
 
         private void SetPage(Page page)
         {
+            activePage = page;
+
             switch (page)
             {
                 case Page.Products:
                     lblPage.Text = "Товары";
-
                     foreach (PanelEntity pe in panelEntities)
                         pe.Show();
 
@@ -123,6 +125,10 @@ namespace Fantasy_King_s_Battle
         internal void ShowData()
         {
             pbBuilding.Image = Program.formMain.ilBuildings.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilBuildings, Building.Building.ImageIndex, Building.Level > 0)];
+
+            pbInhabitants.Visible = building.Building.TrainedHero != null;
+            if ((activePage == Page.Inhabitants) && (!pbInhabitants.Visible))
+                SetPage(Page.Products);
 
             // Перестраиваем список товаров
             foreach (PanelEntity p in panelEntities)
