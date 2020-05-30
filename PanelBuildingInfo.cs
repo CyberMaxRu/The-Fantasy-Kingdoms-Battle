@@ -18,6 +18,7 @@ namespace Fantasy_King_s_Battle
         private Button btnInhabitants;
         private Button btnProducts;
         private Label lblPage;
+        private Point pointPage;
 
         public PanelBuildingInfo(int width, int height) : base(true)
         {
@@ -70,6 +71,8 @@ namespace Fantasy_King_s_Battle
                 ForeColor = Color.White
             };
 
+            pointPage = new Point(Config.GRID_SIZE, GuiUtils.NextTop(lblPage));
+
             SetPage(Page.Products);
         }
 
@@ -113,8 +116,9 @@ namespace Fantasy_King_s_Battle
 
         internal void ShowData()
         {
-            Show();
             pbBuilding.Image = Program.formMain.ilBuildings.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilBuildings, Building.Building.ImageIndex, Building.Level > 0)];
+
+            Show();    
         }
     }
 }
