@@ -194,12 +194,6 @@
         <Layer>1</Layer>
         <Item>ArmourWarrior1</Item>
         <Cost>250</Cost>
-        <Requirements>
-          <Requirement>
-            <Building>Smithy</Building>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
       </Research>
       <Research>
         <PosX>2</PosX>
@@ -214,6 +208,12 @@
         <Layer>1</Layer>
         <Item>ArmourArcher1</Item>
         <Cost>250</Cost>
+        <Requirements>
+          <Requirement>
+            <Building>Smithy</Building>
+            <Level>2</Level>
+          </Requirement>
+        </Requirements>
       </Research>
       <Research>
         <PosX>3</PosX>

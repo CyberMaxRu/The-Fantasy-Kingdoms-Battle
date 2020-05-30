@@ -638,6 +638,8 @@ namespace Fantasy_King_s_Battle
             ShowGuilds();
             ShowBuildings();
             ShowTemples();
+
+            UpdateMenu();
         }
 
         private void DrawWarehouse()
@@ -1123,23 +1125,7 @@ namespace Fantasy_King_s_Battle
                 PanelBuilding oldSelected = SelectedPanelBuilding;
                 SelectedPanelBuilding = pb;
 
-                // Рисуем содержимое ячеек
-                if (SelectedPanelBuilding != null)
-                {
-                    PlayerBuilding plb = SelectedPanelBuilding.Building;
-
-                    for (int y = 0; y < PANEL_RESEARCH_SIZE.Height; y++)
-                        for (int x = 0; x < PANEL_RESEARCH_SIZE.Width; x++)
-                            panelMenu.CellsMenu[y, x].Research = null;
-
-                    if (plb.Building.Researches != null)
-                        foreach (PlayerResearch pr in plb.Researches)
-                        {
-                            Debug.Assert(panelMenu.CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research == null);
-
-                            panelMenu.CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research = pr;
-                        }
-                }
+                UpdateMenu();
 
                 if (oldSelected != null)
                     oldSelected.Invalidate(true);
@@ -1147,6 +1133,27 @@ namespace Fantasy_King_s_Battle
                     SelectedPanelBuilding.Invalidate(true);
 
                 panelMenu.Invalidate(true);
+            }
+        }
+
+        internal void UpdateMenu()
+        {
+            // Рисуем содержимое ячеек
+            if (SelectedPanelBuilding != null)
+            {
+                PlayerBuilding plb = SelectedPanelBuilding.Building;
+
+                for (int y = 0; y < PANEL_RESEARCH_SIZE.Height; y++)
+                    for (int x = 0; x < PANEL_RESEARCH_SIZE.Width; x++)
+                        panelMenu.CellsMenu[y, x].Research = null;
+
+                if (plb.Building.Researches != null)
+                    foreach (PlayerResearch pr in plb.Researches)
+                    {
+                        Debug.Assert(panelMenu.CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research == null);
+
+                        panelMenu.CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research = pr;
+                    }
             }
         }
     }
