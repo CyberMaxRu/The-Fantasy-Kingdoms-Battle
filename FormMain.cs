@@ -120,7 +120,7 @@ namespace Fantasy_King_s_Battle
         private readonly PanelControls pageBattle;
         private PanelControls currentPage;
         private readonly int leftForPages;
-        private readonly Point pointPlate;
+        private readonly Point pointMenu;
         private readonly PanelMenu panelMenu;
         private readonly PanelBuildingInfo panelBuildingInfo;
 
@@ -278,15 +278,15 @@ namespace Fantasy_King_s_Battle
             panelMenu = new PanelMenu(this, dirResources);
 
             // Учитываем плиту под слоты
-            pointPlate = new Point(rightSide + Config.GRID_SIZE, ClientSize.Height - panelMenu.Height - Config.GRID_SIZE);
+            pointMenu = new Point(rightSide + Config.GRID_SIZE, ClientSize.Height - panelMenu.Height - Config.GRID_SIZE);
             rightSide += panelMenu.Width + Config.GRID_SIZE;
 
-            panelMenu.Location = pointPlate;
+            panelMenu.Location = pointMenu;
 
             Width = (Width - ClientSize.Width) + rightSide + Config.GRID_SIZE;
             Height = GuiUtils.NextTop(lobby.Players[lobby.Players.Length - 1].Panel) + (Height - ClientSize.Height);
             tabControl1.Width = ClientSize.Width - tabControl1.Left - Config.GRID_SIZE;
-            pointPlate.Y = ClientSize.Height - panelMenu.Height - Config.GRID_SIZE;
+            pointMenu.Y = ClientSize.Height - panelMenu.Height - Config.GRID_SIZE;
 
             // Подготавливаем подложку
             bmpBackground = GuiUtils.MakeBackground(ClientSize);
@@ -295,7 +295,7 @@ namespace Fantasy_King_s_Battle
             panelBuildingInfo = new PanelBuildingInfo(panelMenu.Width, panelMenu.Top - GuiUtils.NextTop(tabControl1) - Config.GRID_SIZE)
             {
                 Parent = this,
-                Left = pointPlate.X,
+                Left = pointMenu.X,
                 Top = GuiUtils.NextTop(tabControl1),
                 Visible = false
             };            
@@ -529,9 +529,6 @@ namespace Fantasy_King_s_Battle
 
             // Рисуем подложку
             e.Graphics.DrawImageUnscaled(bmpBackground, 0, 0);
-
-            // Рисуем картинку с ячейками
-            //e.Graphics.DrawImageUnscaled(bmpPlate, pointPlate);
         }
 
         private void CellHero_MouseMove(object sender, MouseEventArgs e)
