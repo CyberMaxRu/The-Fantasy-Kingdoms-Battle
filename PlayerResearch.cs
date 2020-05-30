@@ -24,7 +24,11 @@ namespace Fantasy_King_s_Battle
 
         internal bool CheckRequirements()
         {
-            // Сначала проверяем наличие золота
+            // Сначала проверяем, построено ли здание
+            if (Building.Level == 0)
+                return false;
+
+            // Потом проверяем наличие золота
             if (Building.Player.Gold < Cost())
                 return false;
 
@@ -35,7 +39,11 @@ namespace Fantasy_King_s_Battle
         internal List<TextRequirement> GetTextRequirements()
         {
             List<TextRequirement> list = new List<TextRequirement>();
-            Building.Player.TextRequirements(Research.Requirements, list);
+
+            if (Building.Level == 0)
+                list.Add(new TextRequirement(false, "Здание не построено"));
+            else
+                Building.Player.TextRequirements(Research.Requirements, list);
 
             return list;
         }
