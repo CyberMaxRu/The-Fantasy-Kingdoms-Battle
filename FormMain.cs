@@ -509,6 +509,8 @@ namespace Fantasy_King_s_Battle
 
         protected override void OnPaint(PaintEventArgs e)
         {
+            base.OnPaint(e);
+
             e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
             e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
 

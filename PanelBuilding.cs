@@ -214,6 +214,8 @@ namespace Fantasy_King_s_Battle
 
         protected override void OnPaint(PaintEventArgs e)
         {
+            base.OnPaint(e);
+
             brushBackColor.Color = Program.formMain.SelectedPanelBuilding == this ? Color.SkyBlue : BackColor = Color.PowderBlue;
             e.Graphics.FillRectangle(brushBackColor, ClientRectangle);
 

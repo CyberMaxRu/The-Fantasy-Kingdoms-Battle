@@ -99,6 +99,8 @@ namespace Fantasy_King_s_Battle
 
         protected override void OnMouseEnter(EventArgs e)
         {
+            base.OnMouseEnter(e);
+
             Program.formMain.formHint.ShowHint(new Point(Left, Top + Height + 2),
                 player.Name,
                 "Место №" + player.PositionInLobby.ToString(),
@@ -118,11 +120,15 @@ namespace Fantasy_King_s_Battle
 
         protected override void OnMouseLeave(EventArgs e)
         {
+            base.OnMouseLeave(e);
+
             Program.formMain.formHint.HideHint();
         }
 
         protected override void OnPaint(PaintEventArgs e)
         {
+            base.OnPaint(e);
+
             e.Graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
             e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
             
