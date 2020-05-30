@@ -105,6 +105,7 @@ namespace Fantasy_King_s_Battle
 
         internal readonly Bitmap bmpForBackground;
         internal readonly Bitmap bmpBackgroundButton;
+        private readonly Bitmap bmpBackground;
 
         private readonly List<PanelControls> pages = new List<PanelControls>();
         private readonly PanelControls pageLobby;
@@ -164,7 +165,6 @@ namespace Fantasy_King_s_Battle
             ilStateHero = PrepareImageList("StateHero.png", 24, 24, false);
 
             bmpForBackground = new Bitmap(dirResources + "Icons\\Background.png");
-            BackgroundImage = bmpForBackground;
             bmpBackgroundButton = new Bitmap(dirResources + "Icons\\BackgroundButton.png");
 
             bmpPlate = new Bitmap(dirResources + "Icons\\Plate.png");
@@ -271,7 +271,7 @@ namespace Fantasy_King_s_Battle
                 rightSide = Math.Max(rightSide, pc.RightForParent);
             }
 
-            // Учитаем плиту под слоты
+            // Учитываем плиту под слоты
             pointPlate = new Point(rightSide + Config.GRID_SIZE, ClientSize.Height - bmpPlate.Height - Config.GRID_SIZE);
             rightSide += bmpPlate.Width + Config.GRID_SIZE;
 
@@ -279,6 +279,9 @@ namespace Fantasy_King_s_Battle
             Height = GuiUtils.NextTop(lobby.Players[lobby.Players.Length - 1].Panel) + (Height - ClientSize.Height);
             tabControl1.Width = ClientSize.Width - tabControl1.Left - Config.GRID_SIZE;
             pointPlate.Y = ClientSize.Height - bmpPlate.Height - Config.GRID_SIZE;
+
+            // Подготавливаем подложку
+            bmpBackground = GuiUtils.MakeBackground(ClientSize);
 
             ActivatePage(pageLobby);
 
@@ -501,7 +504,17 @@ namespace Fantasy_King_s_Battle
 
         protected override void OnPaint(PaintEventArgs e)
         {
+            e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
+            e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+
+            // Рисуем подложку
+            e.Graphics.DrawImageUnscaled(bmpBackground, 0, 0);
+
+            // Рисуем картинку с ячейками
             e.Graphics.DrawImageUnscaled(bmpPlate, pointPlate);
+
+            // Рисуем содержимое ячеек
+            e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
 
             if (SelectedPanelBuilding != null)
             {
@@ -512,7 +525,6 @@ namespace Fantasy_King_s_Battle
                             for (int x = 0; x < pb.Building.Researches.GetLength(2); x++)
                                 if (pb.ExecutedResearches[z, y, x] == false)
                                     e.Graphics.DrawImageUnscaled(ilItems.Images[pb.Building.Researches[z, y, x].Item.ImageIndex], pointPlate.X + 3 + (ilItems.ImageSize.Width + 3) * x, pointPlate.Y + 3 + (ilItems.ImageSize.Height + 3) * y);
-                //if (SelectedPanelBuilding.bui)
             }
         }
 

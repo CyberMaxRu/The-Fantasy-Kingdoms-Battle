@@ -87,5 +87,23 @@ namespace Fantasy_King_s_Battle
             if (widthNone > 0)
                 g.FillRectangle(brushBack, r.Left + widthMain, r.Top, widthNone, r.Height);
         }
+
+        internal static Bitmap MakeBackground(Size size)
+        {
+            Bitmap bmpBackground = new Bitmap(size.Width, size.Height);
+            Graphics g = Graphics.FromImage(bmpBackground);
+            g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
+
+            int repX = size.Width / Program.formMain.bmpForBackground.Width + 1;
+            int repY = size.Height / Program.formMain.bmpForBackground.Height + 1;
+
+            for (int y = 0; y < repY; y++)
+                for (int x = 0; x < repX; x++)
+                    g.DrawImageUnscaled(Program.formMain.bmpForBackground, x * Program.formMain.bmpForBackground.Width, y * Program.formMain.bmpForBackground.Height);
+
+            g.Dispose();
+
+            return bmpBackground;
+        }
     }
 }
