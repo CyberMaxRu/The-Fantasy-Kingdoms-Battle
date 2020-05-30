@@ -20,6 +20,9 @@ namespace Fantasy_King_s_Battle
             Layer = Convert.ToInt32(n.SelectSingleNode("Layer").InnerText) - 1;
             nameItem = n.SelectSingleNode("Item").InnerText;
             Cost = Convert.ToInt32(n.SelectSingleNode("Cost").InnerText);
+
+            // Загружаем требования
+            Utils.LoadRequirements(Requirements, n);
         }
 
         internal Point Coord { get; }// Координаты исследования
@@ -32,6 +35,9 @@ namespace Fantasy_King_s_Battle
         {
             Item = FormMain.Config.FindItem(nameItem);
             nameItem = null;
+
+            foreach (Requirement r in Requirements)
+                r.FindBuilding();
         }
     }
 }

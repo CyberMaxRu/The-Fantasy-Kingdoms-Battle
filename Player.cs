@@ -213,6 +213,8 @@ namespace Fantasy_King_s_Battle
 
         internal PlayerBuilding GetPlayerBuilding(Building b)
         {
+            Debug.Assert(b != null);
+
             foreach (PlayerBuilding pb in Buildings)
             {
                 if (pb.Building == b)
@@ -470,6 +472,30 @@ namespace Fantasy_King_s_Battle
             }
 
             return pi;
+        }
+
+        internal bool CheckRequirements(List<Requirement> list)
+        {
+            PlayerBuilding pb;
+            foreach (Requirement r in list)
+            {
+                pb = GetPlayerBuilding(r.Building);
+                if (r.Level > pb.Level)
+                    return false;
+            }
+
+            return true;
+        }
+
+        internal void TextRequirements(List<Requirement> listReq, List<TextRequirement> listTextReq)
+        {           
+            PlayerBuilding pb;
+
+            foreach (Requirement r in listReq)
+            {
+                pb = GetPlayerBuilding(r.Building);
+                listTextReq.Add(new TextRequirement(r.Level <= pb.Level, pb.Building.Name + (r.Level > 1 ? " " + r.Level + " уровня" : "")));
+            }
         }
     }
 }

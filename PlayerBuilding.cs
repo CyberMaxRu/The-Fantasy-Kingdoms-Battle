@@ -93,15 +93,7 @@ namespace Fantasy_King_s_Battle
                 return false;
 
             // Проверяем требования к зданиям
-            PlayerBuilding pb;
-            foreach (Requirement r in Building.Levels[Level + 1].Requirements)
-            {
-                pb = Player.GetPlayerBuilding(r.Building);
-                if (r.Level > pb.Level)
-                    return false;
-            }
-
-            return true; 
+            return Player.CheckRequirements(Building.Levels[Level + 1].Requirements);
         }
 
         internal List<TextRequirement> GetTextRequirements()
@@ -109,14 +101,8 @@ namespace Fantasy_King_s_Battle
             if (Level == Building.MaxLevel)
                 return null;
 
-            List <TextRequirement> list = new List<TextRequirement>();
-            PlayerBuilding pb;
-
-            foreach (Requirement r in Building.Levels[Level + 1].Requirements)
-            {
-                pb = Player.GetPlayerBuilding(r.Building);
-                list.Add(new TextRequirement(r.Level <= pb.Level, pb.Building.Name + (r.Level > 1 ? " " + r.Level + " уровня" : "")));
-            }
+            List<TextRequirement> list = new List<TextRequirement>();
+            Player.TextRequirements(Building.Levels[Level + 1].Requirements, list);
 
             return list;
         }

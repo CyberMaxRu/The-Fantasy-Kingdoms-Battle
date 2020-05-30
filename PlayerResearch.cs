@@ -21,5 +21,23 @@ namespace Fantasy_King_s_Battle
         {
             return Research.Cost;
         }
+
+        internal bool CheckRequirements()
+        {
+            // Сначала проверяем наличие золота
+            if (Building.Player.Gold < Cost())
+                return false;
+
+            // Проверяем требования к исследованию
+            return Building.Player.CheckRequirements(Research.Requirements);
+        }
+
+        internal List<TextRequirement> GetTextRequirements()
+        {
+            List<TextRequirement> list = new List<TextRequirement>();
+            Building.Player.TextRequirements(Research.Requirements, list);
+
+            return list;
+        }
     }
 }

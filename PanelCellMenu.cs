@@ -42,7 +42,7 @@ namespace Fantasy_King_s_Battle
                     research.Research.Item.Name,
                     "",
                     research.Research.Item.Description,
-                    null,
+                    research.GetTextRequirements(),
                     research.Cost(),
                     research.Cost() <= research.Building.Player.Gold,
                     0,

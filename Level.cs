@@ -24,12 +24,7 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(Income >= 0);
 
             // Загружаем требования
-            XmlNode nr = n.SelectSingleNode("Requirements");
-            if (nr != null)
-            {
-                foreach (XmlNode r in nr.SelectNodes("Requirement"))
-                    Requirements.Add(new Requirement(r.SelectSingleNode("Building").InnerText, Convert.ToInt32(r.SelectSingleNode("Level").InnerText)));
-            }
+            Utils.LoadRequirements(Requirements, n);
         }
 
         internal int Pos { get; }
