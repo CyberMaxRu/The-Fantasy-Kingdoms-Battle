@@ -10,7 +10,7 @@ using System.Drawing;
 namespace Fantasy_King_s_Battle
 {
     // Класс панели для рисования иконки сущности
-    internal sealed class PanelEntity : Panel
+    internal sealed class PanelEntity : PictureBox
     {
         private readonly ImageList imageListItems;
         private Point pointIcon;
