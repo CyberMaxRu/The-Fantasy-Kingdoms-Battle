@@ -6,7 +6,6 @@
     <Description>Восстанавливает часть здоровья</Description>
     <ImageIndex>0</ImageIndex>
     <TypeItem>PotionHealth</TypeItem>
-    <Building>Market</Building>
     <CostExamine>150</CostExamine>
     <Cost>50</Cost>
     <Perk></Perk>
@@ -17,7 +16,6 @@
     <ImageIndex>1</ImageIndex>
     <Description>Восстанавливает часть маны</Description>
     <TypeItem>PotionMana</TypeItem>
-    <Building>Market</Building>
     <CostExamine>300</CostExamine>
     <Cost>50</Cost>
     <Perk></Perk>
@@ -28,7 +26,6 @@
     <Description>Восстанавливает здоровье с течением времени</Description>
     <ImageIndex>2</ImageIndex>
     <TypeItem>Artifact</TypeItem>
-    <Building>Market</Building>
     <Cost>50</Cost>
     <Perk></Perk>
   </Item>
@@ -38,7 +35,6 @@
     <Description>Повышает защиту от атак всех типов</Description>
     <ImageIndex>3</ImageIndex>
     <TypeItem>Artifact</TypeItem>
-    <Building>Market</Building>
     <Cost>50</Cost>
     <Perk></Perk>
   </Item>
@@ -48,7 +44,6 @@
     <Description>Сильно повышает защиту от атак всех типов</Description>
     <ImageIndex>4</ImageIndex>
     <TypeItem>Artifact</TypeItem>
-    <Building>Market</Building>
     <Cost>50</Cost>
     <Perk></Perk>
   </Item>
@@ -58,7 +53,6 @@
     <Description>Безыскусное, но функциональное рукопашное оружие</Description>
     <ImageIndex>5</ImageIndex>
     <TypeItem>WeaponWarrior</TypeItem>
-    <Building>Smithy</Building>
     <Cost>0</Cost>
     <Perk></Perk>
     <TypeAttack>Melee</TypeAttack>
@@ -72,7 +66,6 @@
     <Description>Грубо выкованная кольчуга</Description>
     <ImageIndex>20</ImageIndex>
     <TypeItem>ArmourWarrior</TypeItem>
-    <Building>Smithy</Building>
     <Cost>0</Cost>
     <Perk></Perk>
     <DefenseMelee>5</DefenseMelee>
@@ -85,7 +78,6 @@
     <Description>Обычное добротное стрелковое оружие</Description>
     <ImageIndex>10</ImageIndex>
     <TypeItem>WeaponArcher</TypeItem>
-    <Building>Smithy</Building>
     <Cost>0</Cost>
     <Perk></Perk>
     <TypeAttack>Missile</TypeAttack>
@@ -98,7 +90,6 @@
     <Description>Броня из грубо выделанной кожи</Description>
     <ImageIndex>25</ImageIndex>
     <TypeItem>ArmourArcher</TypeItem>
-    <Building>Smithy</Building>
     <Cost>0</Cost>
     <Perk></Perk>
   </Item>
@@ -108,7 +99,6 @@
     <Description>Обыкновенная тисовая палка</Description>
     <ImageIndex>15</ImageIndex>
     <TypeItem>WeaponMage</TypeItem>
-    <Building>Smithy</Building>
     <Cost>0</Cost>
     <Perk></Perk>
     <TypeAttack>Missile</TypeAttack>
@@ -121,7 +111,6 @@
     <Description>Обычная льняная роба</Description>
     <ImageIndex>30</ImageIndex>
     <TypeItem>ArmourMage</TypeItem>
-    <Building>Smithy</Building>
     <Cost>0</Cost>
     <Perk></Perk>
   </Item>
@@ -131,7 +120,6 @@
     <Description></Description>
     <ImageIndex>6</ImageIndex>
     <TypeItem>WeaponWarrior</TypeItem>
-    <Building>Smithy</Building>
     <Cost>0</Cost>
     <Perk></Perk>
     <TypeAttack>Melee</TypeAttack>
@@ -144,7 +132,6 @@
     <Description></Description>
     <ImageIndex>21</ImageIndex>
     <TypeItem>ArmourWarrior</TypeItem>
-    <Building>Smithy</Building>
     <Cost>0</Cost>
     <Perk></Perk>
   </Item>
@@ -154,7 +141,6 @@
     <Description></Description>
     <ImageIndex>7</ImageIndex>
     <TypeItem>WeaponWarrior</TypeItem>
-    <Building>Smithy</Building>
     <Cost>0</Cost>
     <Perk></Perk>
     <TypeAttack>Melee</TypeAttack>
@@ -167,7 +153,6 @@
     <Description></Description>
     <ImageIndex>22</ImageIndex>
     <TypeItem>ArmourWarrior</TypeItem>
-    <Building>Smithy</Building>
     <Cost>0</Cost>
     <Perk></Perk>
   </Item>
@@ -177,7 +162,6 @@
     <Description></Description>
     <ImageIndex>11</ImageIndex>
     <TypeItem>WeaponArcher</TypeItem>
-    <Building>Smithy</Building>
     <Cost>0</Cost>
     <Perk></Perk>
     <TypeAttack>Missile</TypeAttack>
@@ -190,7 +174,6 @@
     <Description></Description>
     <ImageIndex>26</ImageIndex>
     <TypeItem>ArmourArcher</TypeItem>
-    <Building>Smithy</Building>
     <Cost>0</Cost>
     <Perk></Perk>
   </Item>
@@ -200,7 +183,6 @@
     <Description></Description>
     <ImageIndex>12</ImageIndex>
     <TypeItem>WeaponArcher</TypeItem>
-    <Building>Smithy</Building>
     <Cost>0</Cost>
     <Perk></Perk>
     <TypeAttack>Missile</TypeAttack>
@@ -213,7 +195,6 @@
     <Description></Description>
     <ImageIndex>27</ImageIndex>
     <TypeItem>ArmourArcher</TypeItem>
-    <Building>Smithy</Building>
     <Cost>0</Cost>
     <Perk></Perk>
   </Item>
@@ -223,7 +204,6 @@
     <Description></Description>
     <ImageIndex>16</ImageIndex>
     <TypeItem>WeaponMage</TypeItem>
-    <Building>Smithy</Building>
     <Cost>0</Cost>
     <Perk></Perk>
     <TypeAttack>Missile</TypeAttack>
@@ -236,7 +216,6 @@
     <Description></Description>
     <ImageIndex>31</ImageIndex>
     <TypeItem>ArmourMage</TypeItem>
-    <Building>Smithy</Building>
     <Cost>0</Cost>
     <Perk></Perk>
   </Item>
