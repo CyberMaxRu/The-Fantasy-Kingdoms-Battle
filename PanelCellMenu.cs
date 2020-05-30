@@ -47,7 +47,7 @@ namespace Fantasy_King_s_Battle
         {
             if (research != null)
             {
-                Program.formMain.formHint.ShowHint(new Point(10 + Parent.Left + Left, Parent.Top + Top + Height),
+                Program.formMain.formHint.ShowHint(new Point(8 + Parent.Left + Left, Parent.Top + Top + Height + 2),
                     research.Research.Item.Name,
                     "",
                     research.Research.Item.Description,
