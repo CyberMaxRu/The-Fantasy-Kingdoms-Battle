@@ -150,20 +150,20 @@ namespace Fantasy_King_s_Battle
 
         internal PlayerBuilding Building { get; set; }
 
+        private void SelectThisBuilding()
+        {
+            Program.formMain.SelectBuilding(this);
+        }
         private void PanelBuilding_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
-            {
-                Program.formMain.SelectBuilding(this);
-            }
+                SelectThisBuilding();
         }
 
         private void Pbv_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
-            {
-                Program.formMain.SelectBuilding(this);
-            }
+                SelectThisBuilding();
         }
 
         private void BtnHireHero_MouseEnter(object sender, EventArgs e)
@@ -223,6 +223,8 @@ namespace Fantasy_King_s_Battle
         {
             Debug.Assert(Building.Level <= Building.Building.MaxLevel);
 
+            SelectThisBuilding();
+
             if ((Building.Level > 0) && (Building.CanTrainHero() == true))
             {
                 Building.HireHero();
@@ -234,6 +236,8 @@ namespace Fantasy_King_s_Battle
 
         private void BtnBuyOrUprgade_Click(object sender, EventArgs e)
         {
+            SelectThisBuilding();
+
             if (Building.Player.Gold >= Building.CostBuyOrUpgrade())
             {
                 Building.BuyOrUpgrade();
