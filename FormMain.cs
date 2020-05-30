@@ -1159,7 +1159,7 @@ namespace Fantasy_King_s_Battle
             // Рисуем содержимое ячеек
             if (SelectedPanelBuilding != null)
             {
-                panelBuildingInfo.ShowData();
+                panelBuildingInfo.Building = SelectedPanelBuilding.Building;
 
                 PlayerBuilding plb = SelectedPanelBuilding.Building;
 
