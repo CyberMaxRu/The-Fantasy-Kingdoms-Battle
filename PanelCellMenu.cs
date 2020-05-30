@@ -29,7 +29,7 @@ namespace Fantasy_King_s_Battle
             get { return research; } 
             set { research = value; 
                 Visible = research != null;
-                if (Visible) Image = Program.formMain.ilItems.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilItems, research.Research.Item.ImageIndex, true)]; } 
+                if (Visible) Image = Program.formMain.ilItems.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilItems, research.Research.Item.ImageIndex, research.CheckRequirements())]; } 
         }
 
         protected override void OnMouseEnter(EventArgs e)

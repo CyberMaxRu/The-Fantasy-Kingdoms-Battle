@@ -162,7 +162,7 @@ namespace Fantasy_King_s_Battle
             ilGui24 = PrepareImageList("Gui24.png", 24, 24, false);
             ilGui45 = PrepareImageList("Gui45.png", 45, 45, false);
             ilParameters = PrepareImageList("Parameters.png", 24, 24, false);
-            ilItems = PrepareImageList("Items.png", 48, 48, false);
+            ilItems = PrepareImageList("Items.png", 48, 48, true);
             ilStateHero = PrepareImageList("StateHero.png", 24, 24, false);
 
             bmpForBackground = new Bitmap(dirResources + "Icons\\Background.png");
