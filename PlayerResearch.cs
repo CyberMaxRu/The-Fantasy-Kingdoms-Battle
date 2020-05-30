@@ -55,6 +55,7 @@ namespace Fantasy_King_s_Battle
 
             Building.Player.SpendGold(Cost());
             Building.Researches.Remove(this);
+            Building.Items.Add(Research.Item);
         }
     }
 }
