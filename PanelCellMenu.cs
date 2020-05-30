@@ -64,7 +64,11 @@ namespace Fantasy_King_s_Battle
             if (e.Button == MouseButtons.Left)
             {
                 if (research.CheckRequirements())
+                {
                     research.DoResearch();
+
+                    Program.formMain.UpdateMenu();
+                }
             }
         }
     }
