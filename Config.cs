@@ -75,7 +75,7 @@ namespace Fantasy_King_s_Battle
 
             // Настраиваем исследования
             foreach (Building b in Buildings)
-                b.TuneItemsInResearches();
+                b.TuneResearches();
 
             // Загрузка конфигурации видов героев
             xmlDoc = CreateXmlDocument("Config\\KindHeroes.xml");

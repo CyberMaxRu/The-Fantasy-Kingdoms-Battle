@@ -108,7 +108,7 @@ namespace Fantasy_King_s_Battle
         internal int Line { get; }
         internal PanelBuilding Panel { get; set; }
 
-        internal void TuneItemsInResearches()
+        internal void TuneResearches()
         {
             if (Researches != null)
                 for (int z = 0; z < Researches.GetLength(0); z++)
