@@ -58,6 +58,7 @@ namespace Fantasy_King_s_Battle
         internal const int GUI_PEASANT = 10;
         internal const int GUI_HOURGLASS = 11;
         internal const int GUI_PRODUCTS = 12;
+        internal const int GUI_INHABITANTS = 13;
 
         internal const int GUI_PARAMETER_STRENGTH = 6;
         internal const int GUI_PARAMETER_DEXTERITY = 7;
@@ -121,6 +122,7 @@ namespace Fantasy_King_s_Battle
         private readonly int leftForPages;
         private readonly Point pointPlate;
         private readonly PanelMenu panelMenu;
+        private readonly PanelBuildingInfo panelBuildingInfo;
 
         private List<PictureBox> SlotSkill = new List<PictureBox>();
 
@@ -288,6 +290,15 @@ namespace Fantasy_King_s_Battle
 
             // Подготавливаем подложку
             bmpBackground = GuiUtils.MakeBackground(ClientSize);
+
+            //
+            panelBuildingInfo = new PanelBuildingInfo(panelMenu.Width, panelMenu.Top - GuiUtils.NextTop(tabControl1) - Config.GRID_SIZE)
+            {
+                Parent = this,
+                Left = pointPlate.X,
+                Top = GuiUtils.NextTop(tabControl1),
+                Visible = false
+            };            
 
             //
             ActivatePage(pageLobby);
@@ -1134,7 +1145,12 @@ namespace Fantasy_King_s_Battle
                 if (oldSelected != null)
                     oldSelected.Invalidate(true);
                 if (SelectedPanelBuilding != null)
+                {
+                    panelBuildingInfo.Building = SelectedPanelBuilding.Building;
+                    panelBuildingInfo.ShowData();
+                    panelBuildingInfo.Show();
                     SelectedPanelBuilding.Invalidate(true);
+                }
 
                 panelMenu.Invalidate(true);
             }
