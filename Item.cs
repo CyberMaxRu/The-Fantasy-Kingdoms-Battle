@@ -19,7 +19,6 @@ namespace Fantasy_King_s_Battle
             ImageIndex = Convert.ToInt32(n.SelectSingleNode("ImageIndex").InnerText);
             TypeItem = FormMain.Config.FindTypeItem(n.SelectSingleNode("TypeItem").InnerText);
             Cost = Convert.ToInt32(n.SelectSingleNode("Cost").InnerText);            
-            TypeAttack = n.SelectSingleNode("TypeAttack") == null ? TypeAttack.None : (TypeAttack)Enum.Parse(typeof(TypeAttack), n.SelectSingleNode("TypeAttack").InnerText);
             TimeHit = n.SelectSingleNode("TimeHit") == null ? 0 : Convert.ToInt32(n.SelectSingleNode("TimeHit").InnerText);
 
             DamageMelee = n.SelectSingleNode("DamageMelee") != null ? Convert.ToInt32(n.SelectSingleNode("DamageMelee").InnerText) : 0;
@@ -29,7 +28,7 @@ namespace Fantasy_King_s_Battle
             DefenseMissile = n.SelectSingleNode("DefenseMissile") != null ? Convert.ToInt32(n.SelectSingleNode("DefenseMissile").InnerText) : 0;
             DefenseMagic = n.SelectSingleNode("DefenseMagic") != null ? Convert.ToInt32(n.SelectSingleNode("DefenseMagic").InnerText) : 0;
 
-            switch (TypeAttack)
+            /*switch (TypeAttack)
             {
                 case TypeAttack.None:
                     Debug.Assert((DamageMelee == 0) && (DamageMissile == 0) && (DamageMagic == 0));
@@ -50,7 +49,7 @@ namespace Fantasy_King_s_Battle
                     break;
                 default:
                     throw new Exception("Неизвестный тип атаки.");
-            }
+            }*/
 
             Position = FormMain.Config.Items.Count;
 
@@ -73,7 +72,6 @@ namespace Fantasy_King_s_Battle
         internal string Description { get; }
         internal int ImageIndex { get; }
         internal TypeItem TypeItem { get; }
-        internal TypeAttack TypeAttack { get; }
         internal int TimeHit { get; }
         internal int Position { get; }
         internal int Cost { get; }

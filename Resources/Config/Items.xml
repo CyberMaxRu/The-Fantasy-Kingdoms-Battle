@@ -55,7 +55,6 @@
     <TypeItem>WeaponWarrior</TypeItem>
     <Cost>0</Cost>
     <Perk></Perk>
-    <TypeAttack>Melee</TypeAttack>
     <DamageMelee>5</DamageMelee>
     <DamageMagic>0</DamageMagic>
     <TimeHit>50</TimeHit>
@@ -80,7 +79,6 @@
     <TypeItem>WeaponArcher</TypeItem>
     <Cost>0</Cost>
     <Perk></Perk>
-    <TypeAttack>Missile</TypeAttack>
     <DamageMissile>3</DamageMissile>
     <TimeHit>50</TimeHit>
   </Item>
@@ -101,7 +99,6 @@
     <TypeItem>WeaponMage</TypeItem>
     <Cost>0</Cost>
     <Perk></Perk>
-    <TypeAttack>Missile</TypeAttack>
     <DamageMagic>5</DamageMagic>
     <TimeHit>100</TimeHit>
   </Item>
@@ -122,7 +119,6 @@
     <TypeItem>WeaponWarrior</TypeItem>
     <Cost>0</Cost>
     <Perk></Perk>
-    <TypeAttack>Melee</TypeAttack>
     <DamageMelee>15</DamageMelee>
     <TimeHit>100</TimeHit>
   </Item>
@@ -143,7 +139,6 @@
     <TypeItem>WeaponWarrior</TypeItem>
     <Cost>0</Cost>
     <Perk></Perk>
-    <TypeAttack>Melee</TypeAttack>
     <DamageMelee>25</DamageMelee>
     <TimeHit>100</TimeHit>
   </Item>
@@ -164,7 +159,6 @@
     <TypeItem>WeaponArcher</TypeItem>
     <Cost>0</Cost>
     <Perk></Perk>
-    <TypeAttack>Missile</TypeAttack>
     <DamageMissile>10</DamageMissile>
     <TimeHit>40</TimeHit>
   </Item>
@@ -185,7 +179,6 @@
     <TypeItem>WeaponArcher</TypeItem>
     <Cost>0</Cost>
     <Perk></Perk>
-    <TypeAttack>Missile</TypeAttack>
     <DamageMissile>15</DamageMissile>
     <TimeHit>30</TimeHit>
   </Item>
@@ -206,7 +199,6 @@
     <TypeItem>WeaponMage</TypeItem>
     <Cost>0</Cost>
     <Perk></Perk>
-    <TypeAttack>Missile</TypeAttack>
     <DamageMissile>10</DamageMissile>
     <TimeHit>40</TimeHit>
   </Item>
