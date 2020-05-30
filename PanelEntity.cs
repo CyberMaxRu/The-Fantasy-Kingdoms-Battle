@@ -10,7 +10,7 @@ using System.Drawing;
 namespace Fantasy_King_s_Battle
 {
     // Класс панели для рисования иконки сущности
-    internal sealed class PanelEntity : Control
+    internal sealed class PanelEntity : Panel
     {
         private readonly ImageList imageListItems;
         private Point pointIcon;
@@ -28,6 +28,8 @@ namespace Fantasy_King_s_Battle
 
             Parent = parent;
             Size = Program.formMain.bmpBorderForIcon.Size;
+            BackColor = Color.Transparent;
+            DoubleBuffered = true;
 
             pointIcon = new Point(3, 1);
             pointQuantity = new Point(2, Height - 20);
