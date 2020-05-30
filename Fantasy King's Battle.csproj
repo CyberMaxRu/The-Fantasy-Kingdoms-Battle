@@ -75,6 +75,9 @@
     <Compile Include="PanelHeroInBattle.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="PanelMenu.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="PanelPlayer.cs">
       <SubType>Component</SubType>
     </Compile>

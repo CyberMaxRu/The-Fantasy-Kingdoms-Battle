@@ -32,7 +32,6 @@ namespace Fantasy_King_s_Battle
         internal readonly ImageList ilParameters;
         internal readonly ImageList ilItems;
         internal readonly ImageList ilStateHero;
-        internal readonly Bitmap bmpPlate;
 
         internal readonly Font fontQuantity = new Font("Courier New", 14, FontStyle.Bold);
         internal readonly Font fontCost = new Font("Arial", 11, FontStyle.Bold);
@@ -88,8 +87,6 @@ namespace Fantasy_King_s_Battle
         internal static int WH_MAX_SLOTS = WH_SLOTS_IN_LINE * WH_SLOT_LINES;
         internal const int BUILDING_MAX_LINES = 3;
         internal static Size PANEL_RESEARCH_SIZE = new Size(4, 3);
-        private const int distanceBetweenCellResearch = 3;
-        private PanelResearch[,] arrayResearches = new PanelResearch[PANEL_RESEARCH_SIZE.Height, PANEL_RESEARCH_SIZE.Width];
 
         private readonly Lobby lobby;
         private Player curAppliedPlayer;
@@ -121,6 +118,7 @@ namespace Fantasy_King_s_Battle
         private PanelControls currentPage;
         private readonly int leftForPages;
         private readonly Point pointPlate;
+        private readonly PanelMenu panelMenu;
 
         private List<PictureBox> SlotSkill = new List<PictureBox>();
 
@@ -169,8 +167,6 @@ namespace Fantasy_King_s_Battle
 
             bmpForBackground = new Bitmap(dirResources + "Icons\\Background.png");
             bmpBackgroundButton = new Bitmap(dirResources + "Icons\\BackgroundButton.png");
-
-            bmpPlate = new Bitmap(dirResources + "Icons\\Plate.png");
 
             CellPanelHeroes = new PanelHero[Config.HERO_ROWS, Config.HERO_IN_ROW];
 
@@ -274,23 +270,24 @@ namespace Fantasy_King_s_Battle
                 rightSide = Math.Max(rightSide, pc.RightForParent);
             }
 
-            // Учитываем плиту под слоты
-            pointPlate = new Point(rightSide + Config.GRID_SIZE, ClientSize.Height - bmpPlate.Height - Config.GRID_SIZE);
-            rightSide += bmpPlate.Width + Config.GRID_SIZE;
+            // Создаем панель с меню
+            panelMenu = new PanelMenu(this, dirResources);
 
-            // Готовим ячейки под исследования
-            for (int y = 0; y < PANEL_RESEARCH_SIZE.Height; y++)
-                for (int x = 0; x < PANEL_RESEARCH_SIZE.Width; x++)
-                    arrayResearches[y, x] = new PanelResearch(this, pointPlate.X + 3 + (x * (ilItems.ImageSize.Width + distanceBetweenCellResearch)), pointPlate.Y + 9 + (y * (ilItems.ImageSize.Height + distanceBetweenCellResearch)));
+            // Учитываем плиту под слоты
+            pointPlate = new Point(rightSide + Config.GRID_SIZE, ClientSize.Height - panelMenu.Height - Config.GRID_SIZE);
+            rightSide += panelMenu.Width + Config.GRID_SIZE;
+
+            panelMenu.Location = pointPlate;
 
             Width = (Width - ClientSize.Width) + rightSide + Config.GRID_SIZE;
             Height = GuiUtils.NextTop(lobby.Players[lobby.Players.Length - 1].Panel) + (Height - ClientSize.Height);
             tabControl1.Width = ClientSize.Width - tabControl1.Left - Config.GRID_SIZE;
-            pointPlate.Y = ClientSize.Height - bmpPlate.Height - Config.GRID_SIZE;
+            pointPlate.Y = ClientSize.Height - panelMenu.Height - Config.GRID_SIZE;
 
             // Подготавливаем подложку
             bmpBackground = GuiUtils.MakeBackground(ClientSize);
 
+            //
             ActivatePage(pageLobby);
 
             formHint = new FormHint(bmpForBackground, ilGui16, ilParameters);
@@ -519,7 +516,7 @@ namespace Fantasy_King_s_Battle
             e.Graphics.DrawImageUnscaled(bmpBackground, 0, 0);
 
             // Рисуем картинку с ячейками
-            e.Graphics.DrawImageUnscaled(bmpPlate, pointPlate);
+            //e.Graphics.DrawImageUnscaled(bmpPlate, pointPlate);
         }
 
         private void CellHero_MouseMove(object sender, MouseEventArgs e)
@@ -1123,6 +1120,7 @@ namespace Fantasy_King_s_Battle
         {
             if (SelectedPanelBuilding != pb)
             {
+                PanelBuilding oldSelected = SelectedPanelBuilding;
                 SelectedPanelBuilding = pb;
 
                 // Рисуем содержимое ячеек
@@ -1132,18 +1130,23 @@ namespace Fantasy_King_s_Battle
 
                     for (int y = 0; y < PANEL_RESEARCH_SIZE.Height; y++)
                         for (int x = 0; x < PANEL_RESEARCH_SIZE.Width; x++)
-                            arrayResearches[y, x].Research = null;
+                            panelMenu.CellsMenu[y, x].Research = null;
 
                     if (plb.Building.Researches != null)
                         foreach (PlayerResearch pr in plb.Researches)
                         {
-                            Debug.Assert(arrayResearches[pr.Research.Coord.Y, pr.Research.Coord.X].Research == null);
+                            Debug.Assert(panelMenu.CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research == null);
 
-                            arrayResearches[pr.Research.Coord.Y, pr.Research.Coord.X].Research = pr;
+                            panelMenu.CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research = pr;
                         }
                 }
 
-                Invalidate(true);
+                if (oldSelected != null)
+                    oldSelected.Invalidate(true);
+                if (SelectedPanelBuilding != null)
+                    SelectedPanelBuilding.Invalidate(true);
+
+                panelMenu.Invalidate(true);
             }
         }
     }
