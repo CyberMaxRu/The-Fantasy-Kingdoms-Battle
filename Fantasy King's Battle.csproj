@@ -55,6 +55,7 @@
     <Compile Include="Battle.cs" />
     <Compile Include="Building.cs" />
     <Compile Include="Config.cs" />
+    <Compile Include="Entity.cs" />
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
