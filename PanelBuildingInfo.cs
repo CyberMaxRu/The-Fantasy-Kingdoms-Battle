@@ -15,8 +15,8 @@ namespace Fantasy_King_s_Battle
 
         private PictureBox pbBuilding;
         private PlayerBuilding building;
-        private Button btnInhabitants;
-        private Button btnProducts;
+        private PictureBox pbInhabitants;
+        private PictureBox pbProducts;
         private Label lblPage;
         private Point pointPage;
         private List<PanelEntity> panelEntities = new List<PanelEntity>();
@@ -35,37 +35,34 @@ namespace Fantasy_King_s_Battle
                 BackColor = Color.Transparent
             };
 
-            btnProducts = new Button()
+            pbProducts = new PictureBox()
             {
                 Parent = this,
                 Left = pbBuilding.Left,
                 Top = GuiUtils.NextTop(pbBuilding),
                 Size = GuiUtils.SizeButtonWithImage(Program.formMain.ilGui),
                 BackgroundImage = Program.formMain.bmpForBackground,
-                ImageList = Program.formMain.ilGui,
-                ImageIndex = FormMain.GUI_PRODUCTS
+                Image = Program.formMain.ilGui.Images[FormMain.GUI_PRODUCTS]
             };
-            btnProducts.Click += BtnProducts_Click;
+            pbProducts.Click += BtnProducts_Click;
 
-            btnInhabitants = new Button()
+            pbInhabitants = new PictureBox()
             {
                 Parent = this,
-                Left = GuiUtils.NextLeft(btnProducts),
+                Left = GuiUtils.NextLeft(pbProducts),
                 Top = GuiUtils.NextTop(pbBuilding),
                 Size = GuiUtils.SizeButtonWithImage(Program.formMain.ilGui),
                 BackgroundImage = Program.formMain.bmpForBackground,
-                ImageList = Program.formMain.ilGui,
-                ImageIndex = FormMain.GUI_INHABITANTS
+                Image = Program.formMain.ilGui.Images[FormMain.GUI_INHABITANTS]
             };
-
-            btnInhabitants.Click += BtnInhabitants_Click;
+            pbInhabitants.Click += BtnInhabitants_Click;
 
             lblPage = new Label()
             {
                 Parent = this,
                 Left = 0,
                 Width = ClientSize.Width,
-                Top = GuiUtils.NextTop(btnProducts),
+                Top = GuiUtils.NextTop(pbProducts),
                 TextAlign = ContentAlignment.MiddleCenter,
                 Font = new Font("Microsoft Sans Serif", 12),
                 BackColor = Color.Transparent,
