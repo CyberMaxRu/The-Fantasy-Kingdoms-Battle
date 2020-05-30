@@ -78,11 +78,15 @@
     <Compile Include="PanelPlayer.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="PanelResearch.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="PlayerItem.cs" />
     <Compile Include="PanelItem.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="PanelControls.cs" />
+    <Compile Include="PlayerResearch.cs" />
     <Compile Include="Research.cs" />
     <Compile Include="TypeLobby.cs" />
     <Compile Include="TypeItem.cs" />

@@ -23,7 +23,7 @@ namespace Fantasy_King_s_Battle
         }
 
         internal Point Coord { get; }// Координаты исследования
-        internal int Layer { get; }// Слой исследования
+        internal int Layer { get; }// Визуальный слой исследования
         internal Item Item { get; private set; }// Получаемый предмет
         internal int Cost { get; }// Стоимость исследования
         internal List<Requirement> Requirements { get; } = new List<Requirement>();

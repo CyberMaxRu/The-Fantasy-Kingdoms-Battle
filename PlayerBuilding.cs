@@ -20,12 +20,11 @@ namespace Fantasy_King_s_Battle
             // Настраиваем исследования 
             if (b.Researches != null)
             {
-                ExecutedResearches = new bool[b.Researches.GetLength(0), b.Researches.GetLength(1), b.Researches.GetLength(2)];
-
-                for (int z = 0; z < ExecutedResearches.GetLength(0); z++)
-                    for (int y = 0; y < ExecutedResearches.GetLength(1); y++)
-                        for (int x = 0; x < ExecutedResearches.GetLength(2); x++)
-                            ExecutedResearches[z, y, x] = b.Researches[z, y, x] == null;
+                for (int z = 0; z < b.Researches.GetLength(0); z++)
+                    for (int y = 0; y < b.Researches.GetLength(1); y++)
+                        for (int x = 0; x < b.Researches.GetLength(2); x++)
+                            if (b.Researches[z, y, x] != null)
+                                Researches.Add(new PlayerResearch(this, b.Researches[z, y, x]));
             }
         }
 
@@ -33,7 +32,7 @@ namespace Fantasy_King_s_Battle
         internal Building Building { get; }
         internal int Level { get; private set; }
         internal List<PlayerHero> Heroes { get; } = new List<PlayerHero>();
-        internal bool[,,] ExecutedResearches { get; }
+        internal List<PlayerResearch> Researches { get; } = new List<PlayerResearch>();
 
         internal void UpdatePanel()
         {

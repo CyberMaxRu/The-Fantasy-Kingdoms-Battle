@@ -87,6 +87,9 @@ namespace Fantasy_King_s_Battle
         internal static int WH_SLOT_LINES = 3;
         internal static int WH_MAX_SLOTS = WH_SLOTS_IN_LINE * WH_SLOT_LINES;
         internal const int BUILDING_MAX_LINES = 3;
+        internal static Size PANEL_RESEARCH_SIZE = new Size(4, 3);
+        private const int distanceBetweenCellResearch = 3;
+        private PanelResearch[,] arrayResearches = new PanelResearch[PANEL_RESEARCH_SIZE.Height, PANEL_RESEARCH_SIZE.Width];
 
         private readonly Lobby lobby;
         private Player curAppliedPlayer;
@@ -274,6 +277,11 @@ namespace Fantasy_King_s_Battle
             // Учитываем плиту под слоты
             pointPlate = new Point(rightSide + Config.GRID_SIZE, ClientSize.Height - bmpPlate.Height - Config.GRID_SIZE);
             rightSide += bmpPlate.Width + Config.GRID_SIZE;
+
+            // Готовим ячейки под исследования
+            for (int y = 0; y < PANEL_RESEARCH_SIZE.Height; y++)
+                for (int x = 0; x < PANEL_RESEARCH_SIZE.Width; x++)
+                    arrayResearches[y, x] = new PanelResearch(this, pointPlate.X + 3 + (x * (ilItems.ImageSize.Width + distanceBetweenCellResearch)), pointPlate.Y + 9 + (y * (ilItems.ImageSize.Height + distanceBetweenCellResearch)));
 
             Width = (Width - ClientSize.Width) + rightSide + Config.GRID_SIZE;
             Height = GuiUtils.NextTop(lobby.Players[lobby.Players.Length - 1].Panel) + (Height - ClientSize.Height);
@@ -512,20 +520,6 @@ namespace Fantasy_King_s_Battle
 
             // Рисуем картинку с ячейками
             e.Graphics.DrawImageUnscaled(bmpPlate, pointPlate);
-
-            // Рисуем содержимое ячеек
-            e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
-
-            if (SelectedPanelBuilding != null)
-            {
-                PlayerBuilding pb = SelectedPanelBuilding.Building;
-                if (pb.Building.Researches != null)
-                    for (int z = 0; z < pb.Building.Researches.GetLength(0); z++)
-                        for (int y = 0; y < pb.Building.Researches.GetLength(1); y++)
-                            for (int x = 0; x < pb.Building.Researches.GetLength(2); x++)
-                                if (pb.ExecutedResearches[z, y, x] == false)
-                                    e.Graphics.DrawImageUnscaled(ilItems.Images[pb.Building.Researches[z, y, x].Item.ImageIndex], pointPlate.X + 3 + (ilItems.ImageSize.Width + 3) * x, pointPlate.Y + 3 + (ilItems.ImageSize.Height + 3) * y);
-            }
         }
 
         private void CellHero_MouseMove(object sender, MouseEventArgs e)
@@ -1129,9 +1123,25 @@ namespace Fantasy_King_s_Battle
         {
             if (SelectedPanelBuilding != pb)
             {
-                PanelBuilding oldPB = SelectedPanelBuilding;
-
                 SelectedPanelBuilding = pb;
+
+                // Рисуем содержимое ячеек
+                if (SelectedPanelBuilding != null)
+                {
+                    PlayerBuilding plb = SelectedPanelBuilding.Building;
+
+                    for (int y = 0; y < PANEL_RESEARCH_SIZE.Height; y++)
+                        for (int x = 0; x < PANEL_RESEARCH_SIZE.Width; x++)
+                            arrayResearches[y, x].Research = null;
+
+                    if (plb.Building.Researches != null)
+                        foreach (PlayerResearch pr in plb.Researches)
+                        {
+                            Debug.Assert(arrayResearches[pr.Research.Coord.Y, pr.Research.Coord.X].Research == null);
+
+                            arrayResearches[pr.Research.Coord.Y, pr.Research.Coord.X].Research = pr;
+                        }
+                }
 
                 Invalidate(true);
             }
