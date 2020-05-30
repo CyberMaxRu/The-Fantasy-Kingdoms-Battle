@@ -104,6 +104,7 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <TypeIncome>Persistent</TypeIncome>
+    <LayersResearches>1</LayersResearches>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -136,6 +137,55 @@
         </Requirements>
       </Level>
     </Levels>
+    <Researches>
+      <Research>
+        <PosX>1</PosX>
+        <PosY>1</PosY>
+        <Layer>1</Layer>
+        <Item>PotionOfHealth</Item>
+        <Cost>150</Cost>
+      </Research>
+      <Research>
+        <PosX>2</PosX>
+        <PosY>1</PosY>
+        <Layer>1</Layer>
+        <Item>PotionOfMana</Item>
+        <Cost>300</Cost>
+      </Research>
+      <Research>
+        <PosX>1</PosX>
+        <PosY>2</PosY>
+        <Layer>1</Layer>
+        <Item>Regeneration</Item>
+        <Cost>250</Cost>
+      </Research>
+      <Research>
+        <PosX>2</PosX>
+        <PosY>2</PosY>
+        <Layer>1</Layer>
+        <Item>Protection</Item>
+        <Cost>500</Cost>
+        <Requirements>
+          <Requirement>
+            <Building>Market</Building>
+            <Level>2</Level>
+          </Requirement>
+        </Requirements>
+      </Research>
+      <Research>
+        <PosX>3</PosX>
+        <PosY>2</PosY>
+        <Layer>1</Layer>
+        <Item>ImpProtection</Item>
+        <Cost>1000</Cost>
+        <Requirements>
+          <Requirement>
+            <Building>Market</Building>
+            <Level>3</Level>
+          </Requirement>
+        </Requirements>
+      </Research>
+    </Researches>
   </Building>
   <Building>
     <ID>Smithy</ID>
