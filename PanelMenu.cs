@@ -18,7 +18,7 @@ namespace Fantasy_King_s_Battle
         public PanelMenu(Control parent, string dirResources) : base()
         {
             Parent = parent;
-            bmpMenu = new Bitmap(dirResources + "Icons\\Plate.png");
+            bmpMenu = new Bitmap(dirResources + "Icons\\Menu.png");
             Size = bmpMenu.Size;
 
             DoubleBuffered = true;
