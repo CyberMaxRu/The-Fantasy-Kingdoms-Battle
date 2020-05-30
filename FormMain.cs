@@ -1147,8 +1147,6 @@ namespace Fantasy_King_s_Battle
                 if (SelectedPanelBuilding != null)
                 {
                     panelBuildingInfo.Building = SelectedPanelBuilding.Building;
-                    panelBuildingInfo.ShowData();
-                    panelBuildingInfo.Show();
                     SelectedPanelBuilding.Invalidate(true);
                 }
 
@@ -1161,6 +1159,8 @@ namespace Fantasy_King_s_Battle
             // Рисуем содержимое ячеек
             if (SelectedPanelBuilding != null)
             {
+                panelBuildingInfo.ShowData();
+
                 PlayerBuilding plb = SelectedPanelBuilding.Building;
 
                 for (int y = 0; y < PANEL_RESEARCH_SIZE.Height; y++)
@@ -1175,6 +1175,10 @@ namespace Fantasy_King_s_Battle
                         else if (panelMenu.CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research.Research.Layer > pr.Research.Layer)
                             panelMenu.CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research = pr;
                     }
+            }
+            else
+            {
+                panelBuildingInfo.Hide();
             }
         }
     }

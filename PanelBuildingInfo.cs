@@ -12,6 +12,7 @@ namespace Fantasy_King_s_Battle
     internal sealed class PanelBuildingInfo : BasePanel
     {
         private PictureBox pbBuilding;
+        private PlayerBuilding building;        
 
         public PanelBuildingInfo(int width, int height) : base(true)
         {
@@ -28,10 +29,22 @@ namespace Fantasy_King_s_Battle
             };
         }
 
-        internal PlayerBuilding Building { get; set; }
+        internal PlayerBuilding Building
+        {
+            get
+            {
+                return building;
+            }
+            set
+            {
+                building = value;
+                ShowData();
+            }
+        }
 
         internal void ShowData()
         {
+            Show();
             pbBuilding.Image = Program.formMain.ilBuildings.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilBuildings, Building.Building.ImageIndex, Building.Level > 0)];
         }
     }
