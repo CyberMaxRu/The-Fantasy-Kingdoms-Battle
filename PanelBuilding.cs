@@ -10,7 +10,7 @@ using System.Diagnostics;
 namespace Fantasy_King_s_Battle
 {
     // Класс панели здания
-    internal sealed class PanelBuilding : Control
+    internal sealed class PanelBuilding : BasePanel
     {
         private static Font fontLevel = new Font("Arial", 12, FontStyle.Bold);
         private readonly PictureBox pbBuilding;
@@ -29,7 +29,7 @@ namespace Fantasy_King_s_Battle
         private readonly Rectangle rectBorder;
         private readonly SolidBrush brushBackColor = new SolidBrush(Color.White);
 
-        public PanelBuilding(Control parent, int left, int top, FormMain formMain)
+        public PanelBuilding(Control parent, int left, int top, FormMain formMain) : base(false)
         {
             Parent = parent;
             //BorderStyle = BorderStyle.FixedSingle;
@@ -218,8 +218,6 @@ namespace Fantasy_King_s_Battle
 
             brushBackColor.Color = Program.formMain.SelectedPanelBuilding == this ? Color.SkyBlue : BackColor = Color.PowderBlue;
             e.Graphics.FillRectangle(brushBackColor, ClientRectangle);
-
-            e.Graphics.DrawRectangle(penBorder, rectBorder);
 
             if (Program.formMain.SelectedPanelBuilding == this)
                 e.Graphics.DrawRectangle(penBorder, rectBorder.X + 1, rectBorder.Y + 1, rectBorder.Width - 2, rectBorder.Height - 2);
