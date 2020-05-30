@@ -21,14 +21,7 @@ namespace Fantasy_King_s_Battle
             DoubleBuffered = true;
         }
 
-        internal PlayerResearch Research { get { return research; }
-            set
-            {
-                research = value;
-
-                Visible = research != null;
-            }
-        }// Исследование
+        internal PlayerResearch Research { get { return research; } set { research = value; Visible = research != null; } }
 
         protected override void OnPaint(PaintEventArgs e)
         {
