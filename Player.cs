@@ -497,5 +497,12 @@ namespace Fantasy_King_s_Battle
                 listTextReq.Add(new TextRequirement(r.Level <= pb.Level, pb.Building.Name + (r.Level > 1 ? " " + r.Level + " уровня" : "")));
             }
         }
+
+        internal void SpendGold(int gold)
+        {
+            Gold -= gold;
+
+            Debug.Assert(Gold >= 0);
+        }
     }
 }

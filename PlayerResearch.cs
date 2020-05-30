@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Fantasy_King_s_Battle
 {
@@ -46,6 +47,14 @@ namespace Fantasy_King_s_Battle
                 Building.Player.TextRequirements(Research.Requirements, list);
 
             return list;
+        }
+
+        internal void DoResearch()
+        {
+            Debug.Assert(CheckRequirements() == true);
+
+            Building.Player.SpendGold(Cost());
+            Building.Researches.Remove(this);
         }
     }
 }

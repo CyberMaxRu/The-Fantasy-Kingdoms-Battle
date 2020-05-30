@@ -56,5 +56,16 @@ namespace Fantasy_King_s_Battle
 
             Program.formMain.formHint.HideHint();
         }
+
+        protected override void OnMouseClick(MouseEventArgs e)
+        {
+            base.OnMouseClick(e);
+
+            if (e.Button == MouseButtons.Left)
+            {
+                if (research.CheckRequirements())
+                    research.DoResearch();
+            }
+        }
     }
 }
