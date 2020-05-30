@@ -1153,9 +1153,10 @@ namespace Fantasy_King_s_Battle
                 if (plb.Building.Researches != null)
                     foreach (PlayerResearch pr in plb.Researches)
                     {
-                        Debug.Assert(panelMenu.CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research == null);
-
-                        panelMenu.CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research = pr;
+                        if (panelMenu.CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research == null)
+                            panelMenu.CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research = pr;
+                        else if (panelMenu.CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research.Research.Layer > pr.Research.Layer)
+                            panelMenu.CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research = pr;
                     }
             }
         }

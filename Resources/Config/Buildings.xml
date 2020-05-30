@@ -147,7 +147,7 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <TypeIncome>Persistent</TypeIncome>
-    <LayersResearches>1</LayersResearches>
+    <LayersResearches>2</LayersResearches>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -208,12 +208,6 @@
         <Layer>1</Layer>
         <Item>ArmourArcher1</Item>
         <Cost>250</Cost>
-        <Requirements>
-          <Requirement>
-            <Building>Smithy</Building>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
       </Research>
       <Research>
         <PosX>3</PosX>
@@ -229,7 +223,27 @@
         <Item>ArmourMage1</Item>
         <Cost>250</Cost>
       </Research>
-    </Researches>
+      <Research>
+        <PosX>1</PosX>
+        <PosY>1</PosY>
+        <Layer>2</Layer>
+        <Item>Sword2</Item>
+        <Cost>1000</Cost>
+        <Requirements>
+          <Requirement>
+            <Building>Smithy</Building>
+            <Level>2</Level>
+          </Requirement>
+        </Requirements>
+      </Research>
+      <Research>
+        <PosX>1</PosX>
+        <PosY>2</PosY>
+        <Layer>2</Layer>
+        <Item>ArmourWarrior2</Item>
+        <Cost>1000</Cost>
+      </Research>
+    </Researches>    
   </Building>
   <Building>
     <ID>Tavern</ID>
