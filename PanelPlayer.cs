@@ -24,6 +24,7 @@ namespace Fantasy_King_s_Battle
         private readonly Pen penBorder = new Pen(Color.Black);
         private readonly SolidBrush brushCurDurability = new SolidBrush(Color.Green);
         private readonly SolidBrush brushMaxDurability = new SolidBrush(Color.LightGreen);
+        private readonly SolidBrush brushBackground = new SolidBrush(Color.White);
 
         public PanelPlayer(Player p, Control parent) : base()
         {
@@ -32,6 +33,7 @@ namespace Fantasy_King_s_Battle
 
             Parent = parent;
             Left = Config.GRID_SIZE;
+            DoubleBuffered = true;
 
             pointIconAvatar = new Point(Config.GRID_SIZE, Config.GRID_SIZE);
 
@@ -121,13 +123,18 @@ namespace Fantasy_King_s_Battle
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            // Определение цвета фона
+            e.Graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
+            e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+            
+            // Фон панели
             if (player == player.Lobby.CurrentPlayer)
-                BackColor = Color.LightBlue;
+                brushBackground.Color = Color.LightBlue;
             else if (player == player.Lobby.CurrentPlayer.Opponent)
-                BackColor = Color.LightCoral;
+                brushBackground.Color = Color.LightCoral;
             else
-                BackColor = Color.FromKnownColor(KnownColor.Control);
+                brushBackground.Color = Color.FromKnownColor(KnownColor.Control);
+
+            e.Graphics.FillRectangle(brushBackground, rectBorder);
 
             // Рамка вокруг панели
             e.Graphics.DrawRectangle(penBorder, rectBorder);
@@ -140,7 +147,7 @@ namespace Fantasy_King_s_Battle
 
             // Прочность замка
             GuiUtils.DrawBand(e.Graphics, new Rectangle(Config.GRID_SIZE, Config.GRID_SIZE + Program.formMain.ilPlayerAvatars.ImageSize.Height + 1, Program.formMain.ilPlayerAvatars.ImageSize.Width, 4), brushCurDurability, brushMaxDurability, player.DurabilityCastle, player.Lobby.TypeLobby.DurabilityCastle);
-
+            
             // Результат последнего боя
             if (player.ResultLastBattle != ResultBattle.None)
                 e.Graphics.DrawImageUnscaled(Program.formMain.ilResultBattle.Images[(int)player.ResultLastBattle], pointIconResultBattle);
