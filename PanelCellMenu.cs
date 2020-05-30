@@ -9,7 +9,7 @@ using System.Drawing;
 namespace Fantasy_King_s_Battle
 {
     // Класс панели исследования
-    internal sealed class PanelCellMenu : Control
+    internal sealed class PanelCellMenu : PictureBox
     {
         private PlayerResearch research;
         public PanelCellMenu(Control parent, int left, int top)
@@ -18,27 +18,24 @@ namespace Fantasy_King_s_Battle
             Left = left;
             Top = top;
             Size = Program.formMain.ilItems.ImageSize;
-            DoubleBuffered = true;
+            SizeMode = PictureBoxSizeMode.Normal;
+            BackColor = Color.Transparent;
+            //DoubleBuffered = true;
             Visible = false;
         }
 
-        internal PlayerResearch Research { get { return research; } set { research = value; Visible = research != null; } }
-
-        protected override void OnPaint(PaintEventArgs e)
+        internal PlayerResearch Research
         {
-            if (Research != null)
-            {
-                e.Graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
-                e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
-                e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
-
-                // Иконка исследования
-                e.Graphics.DrawImageUnscaled(Program.formMain.ilItems.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilItems, Research.Research.Item.ImageIndex, true)], 0, 0);
-            }
+            get { return research; } 
+            set { research = value; 
+                Visible = research != null;
+                if (Visible) Image = Program.formMain.ilItems.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilItems, research.Research.Item.ImageIndex, true)]; } 
         }
 
         protected override void OnMouseEnter(EventArgs e)
         {
+            base.OnMouseEnter(e);
+
             if (research != null)
             {
                 Program.formMain.formHint.ShowHint(new Point(8 + Parent.Left + Left, Parent.Top + Top + Height + 2),
@@ -55,6 +52,8 @@ namespace Fantasy_King_s_Battle
 
         protected override void OnMouseLeave(EventArgs e)
         {
+            base.OnMouseLeave(e);
+
             Program.formMain.formHint.HideHint();
         }
     }
