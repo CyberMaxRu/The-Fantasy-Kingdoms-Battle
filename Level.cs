@@ -8,31 +8,6 @@ using System.Diagnostics;
 
 namespace Fantasy_King_s_Battle
 {
-    // Класс требования
-    internal sealed class Requirement
-    {
-        private string nameBuilding;
-
-        public Requirement(string nameRequiredBuilding, int l)
-        {
-            Debug.Assert(l >= 0);
-
-            nameBuilding = nameRequiredBuilding;
-            Level = l;
-        }
-
-        internal Building Building { get; private set; }
-        internal int Level { get; }
-
-        internal void FindBuilding()
-        {
-            Building = FormMain.Config.FindBuilding(nameBuilding);
-            nameBuilding = null;
-
-            Debug.Assert(Level <= Building.MaxLevel);
-        }
-    }
-
     // Класс информации об уровне здания
     internal sealed class Level
     {
