@@ -39,6 +39,7 @@ namespace Fantasy_King_s_Battle
             Left = left;
             Top = top;
             BackColor = Color.PowderBlue;
+            DoubleBuffered = true;
 
             lblName = new Label()
             {
