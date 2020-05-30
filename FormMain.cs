@@ -1133,12 +1133,7 @@ namespace Fantasy_King_s_Battle
 
                 SelectedPanelBuilding = pb;
 
-                if (oldPB != null)
-                    oldPB.Refresh();
-
-                SelectedPanelBuilding.Refresh();
-
-                Refresh();
+                Invalidate(true);
             }
         }
     }
