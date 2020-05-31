@@ -318,9 +318,9 @@ namespace Fantasy_King_s_Battle
             // Перенести в класс
             for (int i = 0; i < panelHeroInfo.slots.Length; i++)
             {
-                panelHeroInfo.slots[i].MouseDown += PanelCellHero_MouseDown;
-                panelHeroInfo.slots[i].MouseUp += PanelCellHero_MouseUp;
-                panelHeroInfo.slots[i].MouseMove += PanelCell_MouseMove;
+                //panelHeroInfo.slots[i].MouseDown += PanelCellHero_MouseDown;
+                //panelHeroInfo.slots[i].MouseUp += PanelCellHero_MouseUp;
+                //panelHeroInfo.slots[i].MouseMove += PanelCell_MouseMove;
             }
 
             //
@@ -1137,7 +1137,10 @@ namespace Fantasy_King_s_Battle
                 {
                     panelBuildingInfo.Building = SelectedPanelBuilding.Building;
                     SelectedPanelBuilding.Invalidate(true);
+                    panelBuildingInfo.Show();
                 }
+                else
+                    panelBuildingInfo.Hide();
 
                 panelMenu.Invalidate(true);// Это точно надо?
             }
@@ -1161,7 +1164,10 @@ namespace Fantasy_King_s_Battle
                 {
                     panelHeroInfo.Hero = SelectedPanelHero.Hero;
                     SelectedPanelHero.Invalidate(true);
+                    panelHeroInfo.Show();
                 }
+                else
+                    panelHeroInfo.Hide();
 
                 panelMenu.Invalidate(true);// Это точно надо?
             }
