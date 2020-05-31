@@ -29,6 +29,8 @@ namespace Fantasy_King_s_Battle
         private readonly Label lblDefenseMagic;
         private readonly Button btnDismiss;
 
+        private List<PanelEntity> panelAbility = new List<PanelEntity>();
+
         internal PanelEntity[] slots = new PanelEntity[FormMain.SLOT_IN_INVENTORY];
 
         public PanelHeroInfo(int width, int height) : base(width, height)
@@ -141,7 +143,7 @@ namespace Fantasy_King_s_Battle
 
                 for (int i = 0; i < hero.Slots.Length; i++)
                 {
-                    slots[i].ShowItem(hero.Slots[i]);
+                    slots[i].ShowPlayerItem(hero.Slots[i]);
                 }
 
             }
@@ -159,6 +161,21 @@ namespace Fantasy_King_s_Battle
                 else 
                     l.ForeColor = Color.FromKnownColor(KnownColor.Red);
             }
+        }
+        protected override void ActivatePage(Page page)
+        {
+            switch (page)
+            {
+                case Page.Statistics:
+                    break;
+                case Page.Inventory:
+                    break;
+                case Page.Abilities:
+                    break;
+                default:
+                    throw new Exception("Неизвестная страница.");
+            }
+
         }
 
         protected override ImageList GetImageList() => Program.formMain.ilHeroes;

@@ -12,14 +12,17 @@ namespace Fantasy_King_s_Battle
     internal sealed class PanelBuildingInfo : PanelBaseInfo
     {
         private PlayerBuilding building;
-        private List<PanelEntity> panelProducts = new List<PanelEntity>();
-//        private List<PanelEntity> panelProducts = new List<PanelEntity>();
+        private readonly PanelWithPanelEntity panelProducts = new PanelWithPanelEntity(3);
 
         public PanelBuildingInfo(int width, int height) : base(width, height)
         {
             AddPage(Page.Products);
             AddPage(Page.Warehouse);
             AddPage(Page.Inhabitants);
+
+            panelProducts.Parent = this;
+            panelProducts.Left = (Width - panelProducts.Width) / 2;
+            panelProducts.Top = LeftTopPage().Y;
         }
 
         internal PlayerBuilding Building
@@ -39,19 +42,15 @@ namespace Fantasy_King_s_Battle
             switch (page)
             {
                 case Page.Products:
-                    foreach (PanelEntity pe in panelProducts)
-                        pe.Show();
+                    panelProducts.Show();
 
                     break;
                 case Page.Warehouse:
-                    foreach (PanelEntity pe in panelProducts)
-                        pe.Hide();
+                    panelProducts.Hide();
 
                     break;
                 case Page.Inhabitants:
-
-                    foreach (PanelEntity pe in panelProducts)
-                        pe.Hide();
+                    panelProducts.Hide();
 
                     break;
                 default:
@@ -65,30 +64,7 @@ namespace Fantasy_King_s_Battle
             SetPageVisible(Page.Warehouse, building.Building.TrainedHero != null);
             SetPageVisible(Page.Inhabitants, building.Building.TrainedHero != null);
 
-            // Перестраиваем список товаров
-            foreach (PanelEntity p in panelProducts)
-                p.Dispose();
-
-            panelProducts.Clear();
-
-            PanelEntity pe;
-            int column = 0;
-            int row = 0;
-            foreach (Item i in building.Items)
-            {
-                pe = new PanelEntity(this, Program.formMain.ilItems, 0);
-                pe.Location = new Point(LeftTopPage().X + column * (pe.Width + 1), LeftTopPage().Y + row * (pe.Height + 1));
-                pe.ShowItem(i);
-
-                column++;
-                if (column == 3)
-                {
-                    column = 0;
-                    row++;
-                }
-
-                panelProducts.Add(pe);
-            }
+            panelProducts.ApplyListItem(building.Items);
 
             Show();    
         }

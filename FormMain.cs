@@ -111,6 +111,7 @@ namespace Fantasy_King_s_Battle
         internal readonly Bitmap bmpForBackground;
         internal readonly Bitmap bmpBackgroundButton;
         internal readonly Bitmap bmpBorderForIcon;
+        internal readonly Bitmap bmpEmptyEntity;
         private readonly Bitmap bmpBackground;
 
         private readonly List<PanelControls> pages = new List<PanelControls>();
@@ -177,6 +178,7 @@ namespace Fantasy_King_s_Battle
             bmpForBackground = new Bitmap(dirResources + "Icons\\Background.png");
             bmpBackgroundButton = new Bitmap(dirResources + "Icons\\BackgroundButton.png");
             bmpBorderForIcon = new Bitmap(dirResources + "Icons\\BorderIconEntity.png");
+            bmpEmptyEntity = new Bitmap(dirResources + "Icons\\EmptyEntity.png");
 
             CellPanelHeroes = new PanelHero[Config.HERO_ROWS, Config.HERO_IN_ROW];
 
@@ -701,7 +703,7 @@ namespace Fantasy_King_s_Battle
         {
             for (int i = 0; i < lobby.CurrentPlayer.Warehouse.Length; i++)
             {
-                SlotsWarehouse[i].ShowItem(lobby.CurrentPlayer.Warehouse[i]);
+                SlotsWarehouse[i].ShowPlayerItem(lobby.CurrentPlayer.Warehouse[i]);
             }
         }
 

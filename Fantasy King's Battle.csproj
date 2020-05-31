@@ -95,6 +95,9 @@
     <Compile Include="PanelCellMenu.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="PanelWithPanelEntity.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="PlayerItem.cs" />
     <Compile Include="PanelEntity.cs">
       <SubType>Component</SubType>

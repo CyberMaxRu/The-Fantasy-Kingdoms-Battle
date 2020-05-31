@@ -22,6 +22,7 @@ namespace Fantasy_King_s_Battle
 
         internal static int PLATE_WIDTH = 4;
         internal static int PLATE_HEIGHT = 3;
+        internal static int MIN_ROWS_ENTITIES = 2;// Минимальное количество строк сущностей 
 
         internal const string HERO_PEASANT = "Peasant";
         internal const string BUILDING_CASTLE = "Castle";

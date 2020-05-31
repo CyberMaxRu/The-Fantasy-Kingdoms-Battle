@@ -65,6 +65,8 @@ namespace Fantasy_King_s_Battle
                 e.Graphics.DrawImageUnscaled(imageListItems.Images[item.ImageIndex], pointIcon);
                 e.Graphics.DrawImageUnscaled(Program.formMain.bmpBorderForIcon, 0, 0);
             }
+            else
+                e.Graphics.DrawImage(Program.formMain.bmpEmptyEntity, new Rectangle(1, 1, Program.formMain.bmpBorderForIcon.Width - 2, Program.formMain.bmpBorderForIcon.Height - 2));
 
             if ((playerItem != null) && (playerItem.Quantity > 1))
             {
@@ -75,7 +77,7 @@ namespace Fantasy_King_s_Battle
         }
 
         internal int NumberCell { get; }
-        internal void ShowItem(PlayerItem pi)
+        internal void ShowPlayerItem(PlayerItem pi)
         {
             playerItem = pi;
             item = pi?.Item;
@@ -89,6 +91,14 @@ namespace Fantasy_King_s_Battle
             item = i;
             Invalidate();
             //Image = pi != null ? imageListItems.Images[pi.Item.ImageIndex] : null;
+        }
+
+        internal void ShowEntity(Entity i)
+        {
+            if (i is Item)
+                ShowItem((Item)i);
+            else
+                throw new Exception("не поддерживается.");
         }
     }
 }
