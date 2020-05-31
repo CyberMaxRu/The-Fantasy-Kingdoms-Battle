@@ -175,5 +175,6 @@ namespace Fantasy_King_s_Battle
         protected override ImageList GetImageList() => Program.formMain.ilBuildings;
 
         protected override int GetImageIndex() => GuiUtils.GetImageIndexWithGray(Program.formMain.ilBuildings, Building.Building.ImageIndex, Building.Level > 0);
+        protected override string GetCaption() => building.Building.Name;
     }
 }
