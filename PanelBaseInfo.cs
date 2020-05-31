@@ -12,7 +12,7 @@ namespace Fantasy_King_s_Battle
     // Базовый класс панели информации
     internal abstract class PanelBaseInfo : BasePanel
     {
-        protected enum Page { Products, Warehouse, Inhabitants, Statistics, Abilities };
+        protected enum Page { Products, Warehouse, Inhabitants, Statistics, Inventory, Abilities };
 
         private readonly Label lblName;
         private readonly PictureBox pbIcon;
@@ -94,6 +94,9 @@ namespace Fantasy_King_s_Battle
                 case Page.Statistics:
                     imageIndex = FormMain.GUI_PARAMETERS;
                     break;
+                case Page.Inventory:
+                    imageIndex = FormMain.GUI_INVENTORY;
+                    break;
                 case Page.Abilities:
                     imageIndex = FormMain.GUI_ABILITY;
                     break;
@@ -114,7 +117,7 @@ namespace Fantasy_King_s_Battle
             pbPage.Click += PbPage_Click;
 
             btnPages.Add(pbPage);
-            leftForNextPage += GuiUtils.NextLeft(pbPage);
+            leftForNextPage = GuiUtils.NextLeft(pbPage);
 
             if (btnPages.Count == 1)
                 ActivatePage(page);
@@ -137,6 +140,9 @@ namespace Fantasy_King_s_Battle
                     break;
                 case Page.Statistics:
                     lblCaptionPage.Text = "Статистика";
+                    break;
+                case Page.Inventory:
+                    lblCaptionPage.Text = "Инвентарь";
                     break;
                 case Page.Abilities:
                     lblCaptionPage.Text = "Способности";

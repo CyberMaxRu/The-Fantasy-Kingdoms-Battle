@@ -44,6 +44,11 @@ namespace Fantasy_King_s_Battle
             };
             btnDismiss.Click += BtnDismiss_Click;
 
+            AddPage(Page.Statistics);
+            AddPage(Page.Inventory);
+            AddPage(Page.Abilities);
+
+            return;
             lblLevel = GuiUtils.CreateLabel(this, Config.GRID_SIZE, TopForControls());
             lblHealth = GuiUtils.CreateLabel(this, Config.GRID_SIZE, lblLevel.Top + lblLevel.Height + Config.GRID_SIZE);
             lblMana = GuiUtils.CreateLabel(this, Config.GRID_SIZE, lblHealth.Top + lblHealth.Height + Config.GRID_SIZE);
@@ -104,6 +109,7 @@ namespace Fantasy_King_s_Battle
         {
             base.ShowData();
 
+            return;
             if (Hero != null)
             {
                 Visible = true;
