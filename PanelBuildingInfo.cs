@@ -172,14 +172,8 @@ namespace Fantasy_King_s_Battle
             Show();    
         }
 
-        protected override ImageList GetImageList()
-        {
-            return Program.formMain.ilBuildings;
-        }
+        protected override ImageList GetImageList() => Program.formMain.ilBuildings;
 
-        protected override int GetImageIndex()
-        {
-            return GuiUtils.GetImageIndexWithGray(Program.formMain.ilBuildings, Building.Building.ImageIndex, Building.Level > 0);
-        }
+        protected override int GetImageIndex() => GuiUtils.GetImageIndexWithGray(Program.formMain.ilBuildings, Building.Building.ImageIndex, Building.Level > 0);
     }
 }
