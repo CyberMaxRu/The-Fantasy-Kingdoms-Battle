@@ -134,9 +134,10 @@ namespace Fantasy_King_s_Battle
 
             // Загружаем информацию о переносимых предметах
             XmlNode nc = n.SelectSingleNode("CarryTypeItems");
-            CarryTypeItem cti;
             if (nc != null)
             {
+                CarryTypeItem cti;
+
                 foreach (XmlNode l in nl.SelectNodes("CarryTypeItem"))
                 {
                     cti = new CarryTypeItem(l);
@@ -165,6 +166,27 @@ namespace Fantasy_King_s_Battle
                 if (n.SelectSingleNode("NextLevel") != null)
                     ConfigNextLevel = new ConfigNextLevelHero(n.SelectSingleNode("NextLevel"));
             }
+
+            // Загружаем дефолтные способности
+            XmlNode na = n.SelectSingleNode("Abilities");
+            if (na != null)
+            {
+                Ability a;
+
+                foreach (XmlNode l in na.SelectNodes("Ability"))
+                {
+                    a = FormMain.Config.FindAbility(l.InnerText);
+
+                    // Проверяем, что такая способность не повторяется
+                    foreach (Ability a2 in Abilities)
+                    {
+                        if (a.ID == a2.ID)
+                            throw new Exception("Способность " + a.ID + " повторяется в списке способностей героя.");
+                    }
+
+                    Abilities.Add(a);
+                }
+            }
         }
 
         internal string ID { get; }
@@ -180,6 +202,7 @@ namespace Fantasy_King_s_Battle
         internal HeroParameters ParametersByHire { get; }// Параметры при найме героя
         internal ConfigNextLevelHero ConfigNextLevel { get; }
         internal Slot[] Slots { get; }
+        internal List<Ability> Abilities { get; } = new List<Ability>();// Способности героя
         internal List<CarryTypeItem> CarryTypeItems { get; } = new List<CarryTypeItem>();
 
         internal int MaxQuantityTypeItem(TypeItem ti)

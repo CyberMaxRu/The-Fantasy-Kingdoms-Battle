@@ -198,5 +198,16 @@ namespace Fantasy_King_s_Battle
 
             throw new Exception("Вид героя " + ID + " не найден.");
         }
+
+        internal Ability FindAbility(string ID)
+        {
+            foreach (Ability a in Abilities)
+            {
+                if (a.ID == ID)
+                    return a;
+            }
+
+            throw new Exception("Способность " + ID + " не найдена.");
+        }
     }
 }

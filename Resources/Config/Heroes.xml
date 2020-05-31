@@ -31,6 +31,9 @@
       <Stamina>4</Stamina>
       <ResistMagic>0</ResistMagic>    
     </NextLevel>
+    <Abilities>
+      <Ability>WarriorBasicAttack</Ability>
+    </Abilities>
     <CarryTypeItems>
       <CarryTypeItem>
         <ID>WeaponWarrior</ID>
