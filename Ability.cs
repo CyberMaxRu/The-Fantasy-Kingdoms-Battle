@@ -18,6 +18,19 @@ namespace Fantasy_King_s_Battle
             TypeAbility = (TypeAbility)Enum.Parse(typeof(TypeAbility), n.SelectSingleNode("TypeAbility").InnerText);
             TypeAttack = (TypeAttack)Enum.Parse(typeof(TypeAttack), n.SelectSingleNode("TypeAttack").InnerText);
             SkillModificator = Convert.ToDouble(n.SelectSingleNode("SkillModif").InnerText);
+
+            // Проверяем, что таких же ID и наименования нет
+            foreach (Ability a in FormMain.Config.Abilities)
+            {
+                if (a.ID == ID)
+                    throw new Exception("В конфигурации способностей повторяется ID = " + ID);
+
+                if (a.Name == Name)
+                    throw new Exception("В конфигурации способностей повторяется Name = " + Name);
+
+                if (a.ImageIndex == ImageIndex)
+                    throw new Exception("В конфигурации способностей повторяется ImageIndex = " + ImageIndex.ToString());
+            }
         }
 
         internal TypeAbility TypeAbility { get; }
