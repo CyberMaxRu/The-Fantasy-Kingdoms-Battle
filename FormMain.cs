@@ -1123,6 +1123,9 @@ namespace Fantasy_King_s_Battle
         {
             if (SelectedPanelBuilding != pb)
             {
+                if (SelectedPanelHero != null)
+                    SelectHero(null);
+
                 PanelBuilding oldSelected = SelectedPanelBuilding;
                 SelectedPanelBuilding = pb;
 
