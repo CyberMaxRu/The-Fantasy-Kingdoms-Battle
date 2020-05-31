@@ -101,7 +101,7 @@ namespace Fantasy_King_s_Battle
         {
             base.OnMouseEnter(e);
 
-            Program.formMain.formHint.ShowHint(new Point(Left, Top + Height + 2),
+            Program.formMain.formHint.ShowHint(this,
                 player.Name,
                 "Место №" + player.PositionInLobby.ToString(),
                 "Уровень Замка: " + player.LevelCastle.ToString() + Environment.NewLine

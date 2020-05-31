@@ -175,7 +175,7 @@ namespace Fantasy_King_s_Battle
 
         private void ShowHintBtnHireHero()
         {
-            Program.formMain.formHint.ShowHint(new Point(10 + Left + btnHireHero.Left, Top + btnHireHero.Top + btnHireHero.Height),
+            Program.formMain.formHint.ShowHint(btnHireHero,
                 Building.Building.TrainedHero.Name, "",
                 Building.Building.TrainedHero.Description,
                 Building.GetTextRequirementsHire(),
@@ -184,7 +184,7 @@ namespace Fantasy_King_s_Battle
 
         private void Pbv_MouseEnter(object sender, EventArgs e)
         {
-            Program.formMain.formHint.ShowHint(new Point(10 + Left + pbBuilding.Left, Top + pbBuilding.Top + pbBuilding.Height),
+            Program.formMain.formHint.ShowHint(pbBuilding,
                 Building.Building.Name,
                 Building.Level > 0 ? "Уровень " + Building.Level.ToString() : "",
                 Building.Building.Description
@@ -205,7 +205,7 @@ namespace Fantasy_King_s_Battle
         private void ShowHintBtnBuyOrUpgrade()
         {
             if (Building.Level < Building.Building.MaxLevel)
-                Program.formMain.formHint.ShowHint(new Point(10 + Left + btnBuyOrUpgrade.Left, Top + btnBuyOrUpgrade.Top + btnBuyOrUpgrade.Height),
+                Program.formMain.formHint.ShowHint(btnBuyOrUpgrade,
                     Building.Building.Name,
                     Building.Level == 0 ? "Уровень 1" : (Building.CanLevelUp() == true) ? "Улучшить строение" : "",
                     Building.Level == 0 ? Building.Building.Description : "", Building.GetTextRequirements(), Building.CostBuyOrUpgrade(), Building.Player.Gold >= Building.CostBuyOrUpgrade(), Building.IncomeNextLevel(), Building.Builders(), Building.Player.FreeBuilders >= Building.Builders(), null);

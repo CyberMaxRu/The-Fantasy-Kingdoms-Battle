@@ -277,11 +277,10 @@ namespace Fantasy_King_s_Battle
             timerOpacity.Enabled = true; 
         }
 
-        internal void ShowHint(Point p, string header, string action, string description, List<TextRequirement> requirement, int gold, bool goldEnough,
+        internal void ShowHint(Control c, string header, string action, string description, List<TextRequirement> requirement, int gold, bool goldEnough,
             int income, int builders, bool buildersEnough, PlayerItem pi)
         {
-            Left = Program.formMain.Left + p.X;
-            Top = Program.formMain.Top + 32 + p.Y;
+            Location = c.PointToScreen(new Point(0, c.Height + 2));
 
             lblHeader.Text = header;
             int nextTop = GuiUtils.NextTop(lblHeader);

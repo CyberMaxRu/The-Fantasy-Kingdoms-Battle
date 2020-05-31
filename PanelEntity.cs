@@ -46,7 +46,7 @@ namespace Fantasy_King_s_Battle
         private void PanelItem_MouseEnter(object sender, EventArgs e)
         {
             if (item != null)
-                Program.formMain.formHint.ShowHint(new Point(10 + Parent.Left + Left, Parent.Top + Top + Height),
+                Program.formMain.formHint.ShowHint(this,
                     item.Name,
                     "",
                     item.Description,
