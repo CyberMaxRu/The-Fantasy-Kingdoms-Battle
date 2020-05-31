@@ -6,7 +6,6 @@
     <Description>Восстанавливает часть здоровья</Description>
     <ImageIndex>0</ImageIndex>
     <TypeItem>PotionHealth</TypeItem>
-    <CostExamine>150</CostExamine>
     <Cost>50</Cost>
     <Perk></Perk>
   </Item>
