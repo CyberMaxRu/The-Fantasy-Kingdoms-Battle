@@ -9,8 +9,9 @@ using System.Drawing;
 namespace Fantasy_King_s_Battle
 {
     // Класс подробной информации о герое
-    internal sealed class PanelHeroInfo : Panel
+    internal sealed class PanelHeroInfo : BasePanel
     {
+        private PlayerHero hero;
         private readonly PictureBox pbHero;
         private readonly Label lblLevel;
         private readonly Label lblHealth;
@@ -31,23 +32,16 @@ namespace Fantasy_King_s_Battle
 
         internal PanelEntity[] slots = new PanelEntity[FormMain.SLOT_IN_INVENTORY];
 
-        private readonly ImageList imageListHeroes;
-        private readonly ImageList imageListItems;
-
-        public PanelHeroInfo(ImageList ilHeroes, ImageList ilParameters, ImageList ilItems)
+        public PanelHeroInfo(int width, int height) : base(true)
         {
-            imageListHeroes = ilHeroes;
-            imageListItems = ilItems;
-
-            BorderStyle = BorderStyle.FixedSingle;
+            DoubleBuffered = true;
 
             pbHero = new PictureBox()
             {
                 Parent = this,
                 Top = Config.GRID_SIZE,
                 Left = Config.GRID_SIZE,
-                Width = ilHeroes.ImageSize.Width,
-                Height = ilHeroes.ImageSize.Height,
+                Size = Program.formMain.ilHeroes.ImageSize
             };
 
             btnDismiss = new Button()
@@ -86,7 +80,7 @@ namespace Fantasy_King_s_Battle
             {
                 for (int x = 0; x < FormMain.SLOTS_IN_LINE; x++)
                 {
-                    pb = new PanelEntity(this, ilItems, x + y * FormMain.SLOTS_IN_LINE);
+                    pb = new PanelEntity(this, Program.formMain.ilItems, x + y * FormMain.SLOTS_IN_LINE);
                     pb.Left = Config.GRID_SIZE + ((pb.Width + Config.GRID_SIZE) * x);
                     pb.Top = GuiUtils.NextTop(lblSpeed) + ((pb.Height + Config.GRID_SIZE) * y);
 
@@ -94,66 +88,67 @@ namespace Fantasy_King_s_Battle
                 }
             }
 
-            Width = pbHero.Width + (Config.GRID_SIZE * 2) + 160;
-            Height = GuiUtils.NextTop(slots[FormMain.SLOT_IN_INVENTORY - 1]);
+            Width = width;
+            Height = height;
         }
 
-        internal PlayerHero Hero { get; private set; }
+        internal PlayerHero Hero
+        {
+            get { return hero; }
+            set
+            {
+                hero = value;
+                ShowHero();
+            }
+        }
 
         private void BtnDismiss_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Уволить героя?", "FKB", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 Hero.Dismiss();
+                Hero = null;
 
-                ShowHero(null);
                 Program.formMain.ShowAllBuildings(); // Так как количество героев уменьшилось, обновляем здания
                 Program.formMain.ShowPageHeroes();
             }
         }
 
-        internal void RefreshHero()
+        internal void ShowHero()
         {
-            ShowHero(Hero);
-        }
-
-        internal void ShowHero(PlayerHero ph)
-        {
-            Hero = ph;
-
-            if (Hero != null)
+           if (Hero != null)
             {
                 Visible = true;
-                pbHero.Image = imageListHeroes.Images[ph.ClassHero.ImageIndex];
+                pbHero.Image = Program.formMain.ilHeroes.Images[hero.ClassHero.ImageIndex];
 
-                lblLevel.Text = "Уровень: " + ph.Level.ToString();
-                lblHealth.Text = "Здоровье: " + ph.ParametersWithAmmunition.Health.ToString();
-                lblMana.Text = "Мана: " + ph.ParametersWithAmmunition.Mana.ToString();
+                lblLevel.Text = "Уровень: " + hero.Level.ToString();
+                lblHealth.Text = "Здоровье: " + hero.ParametersWithAmmunition.Health.ToString();
+                lblMana.Text = "Мана: " + hero.ParametersWithAmmunition.Mana.ToString();
 
-                ShowParameter(lblStrength, ph.ParametersBase.Strength, ph.ParametersWithAmmunition.Strength);
-                ShowParameter(lblDexterity, ph.ParametersBase.Dexterity, ph.ParametersWithAmmunition.Dexterity);
-                ShowParameter(lblMagic, ph.ParametersBase.Magic, ph.ParametersWithAmmunition.Magic);
-                ShowParameter(lblVitality, ph.ParametersBase.Vitality, ph.ParametersWithAmmunition.Vitality);
+                ShowParameter(lblStrength, hero.ParametersBase.Strength, hero.ParametersWithAmmunition.Strength);
+                ShowParameter(lblDexterity, hero.ParametersBase.Dexterity, hero.ParametersWithAmmunition.Dexterity);
+                ShowParameter(lblMagic, hero.ParametersBase.Magic, hero.ParametersWithAmmunition.Magic);
+                ShowParameter(lblVitality, hero.ParametersBase.Vitality, hero.ParametersWithAmmunition.Vitality);
                 //ShowParameter(lblStamina, ph.ParametersBase.Stamina, ph.ParametersWithAmmunition.Stamina);
-                ShowParameter(lblSpeed, ph.ParametersBase.TimeAttack, ph.ParametersWithAmmunition.TimeAttack);
+                ShowParameter(lblSpeed, hero.ParametersBase.TimeAttack, hero.ParametersWithAmmunition.TimeAttack);
                 if (Hero.ClassHero.KindHero.TypeAttack == TypeAttack.Melee)
                 {
-                    lblAttackMelee.Text = ph.ParametersWithAmmunition.MinMeleeDamage.ToString() + " - " + ph.ParametersWithAmmunition.MaxMeleeDamage.ToString();
+                    lblAttackMelee.Text = hero.ParametersWithAmmunition.MinMeleeDamage.ToString() + " - " + hero.ParametersWithAmmunition.MaxMeleeDamage.ToString();
                     lblAttackRange.Text = "";
                 }
                 if (Hero.ClassHero.KindHero.TypeAttack == TypeAttack.Missile)
                 {
                     lblAttackMelee.Text = "";
-                    lblAttackRange.Text = ph.ParametersWithAmmunition.MinMissileDamage.ToString() + " - " + ph.ParametersWithAmmunition.MaxMissileDamage.ToString();
+                    lblAttackRange.Text = hero.ParametersWithAmmunition.MinMissileDamage.ToString() + " - " + hero.ParametersWithAmmunition.MaxMissileDamage.ToString();
                 }
-                ShowParameter(lblAttackMagic, ph.ParametersBase.MagicDamage, ph.ParametersWithAmmunition.MagicDamage);
-                ShowParameter(lblDefenseMelee, ph.ParametersBase.DefenseMelee, ph.ParametersWithAmmunition.DefenseMelee);
-                ShowParameter(lblDefenseRange, ph.ParametersBase.DefenseMissile, ph.ParametersWithAmmunition.DefenseMissile);
-                ShowParameter(lblDefenseMagic, ph.ParametersBase.DefenseMagic, ph.ParametersWithAmmunition.DefenseMagic);
+                ShowParameter(lblAttackMagic, hero.ParametersBase.MagicDamage, hero.ParametersWithAmmunition.MagicDamage);
+                ShowParameter(lblDefenseMelee, hero.ParametersBase.DefenseMelee, hero.ParametersWithAmmunition.DefenseMelee);
+                ShowParameter(lblDefenseRange, hero.ParametersBase.DefenseMissile, hero.ParametersWithAmmunition.DefenseMissile);
+                ShowParameter(lblDefenseMagic, hero.ParametersBase.DefenseMagic, hero.ParametersWithAmmunition.DefenseMagic);
 
-                for (int i = 0; i < ph.Slots.Length; i++)
+                for (int i = 0; i < hero.Slots.Length; i++)
                 {
-                    slots[i].ShowItem(ph.Slots[i]);
+                    slots[i].ShowItem(hero.Slots[i]);
                 }
 
             }

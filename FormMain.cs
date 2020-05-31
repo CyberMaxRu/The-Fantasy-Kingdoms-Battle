@@ -23,7 +23,7 @@ namespace Fantasy_King_s_Battle
         private readonly ImageList ilSkills;
         internal readonly ImageList ilResultBattle;
         internal readonly ImageList ilBuildings;
-        private readonly ImageList ilHeroes;
+        internal readonly ImageList ilHeroes;
         internal readonly ImageList ilGui;
         internal readonly ImageList ilGui16;
         internal readonly ImageList ilGui24;
@@ -43,7 +43,6 @@ namespace Fantasy_King_s_Battle
 
         private Panel panelWarehouse;
         private Panel panelHeroes;
-        private PanelHeroInfo panelHeroInfo;
 
         internal const int GUI_HEROES = 0;
         internal const int GUI_GUILDS = 1;
@@ -127,11 +126,13 @@ namespace Fantasy_King_s_Battle
         private readonly Point pointMenu;
         private readonly PanelMenu panelMenu;
         private readonly PanelBuildingInfo panelBuildingInfo;
+        private readonly PanelHeroInfo panelHeroInfo;
 
         private List<PictureBox> SlotSkill = new List<PictureBox>();
 
         internal FormHint formHint;
         internal PanelBuilding SelectedPanelBuilding { get; private set; }
+        internal PanelHero SelectedPanelHero { get; private set; }
 
         internal static Random Rnd = new Random();
 
@@ -296,14 +297,31 @@ namespace Fantasy_King_s_Battle
             // Подготавливаем подложку
             bmpBackground = GuiUtils.MakeBackground(ClientSize);
 
-            //
+            // Панель информации о здании
             panelBuildingInfo = new PanelBuildingInfo(panelMenu.Width, panelMenu.Top - GuiUtils.NextTop(tabControl1) - Config.GRID_SIZE)
             {
                 Parent = this,
                 Left = pointMenu.X,
                 Top = GuiUtils.NextTop(tabControl1),
                 Visible = false
-            };            
+            };
+
+            //
+            panelHeroInfo = new PanelHeroInfo(panelBuildingInfo.Width, panelBuildingInfo.Height)
+            {
+                Parent = this,
+                Left = panelBuildingInfo.Left,
+                Top = panelBuildingInfo.Top,
+                Visible = false
+            };
+
+            // Перенести в класс
+            for (int i = 0; i < panelHeroInfo.slots.Length; i++)
+            {
+                panelHeroInfo.slots[i].MouseDown += PanelCellHero_MouseDown;
+                panelHeroInfo.slots[i].MouseUp += PanelCellHero_MouseUp;
+                panelHeroInfo.slots[i].MouseMove += PanelCell_MouseMove;
+            }
 
             //
             ActivatePage(pageLobby);
@@ -612,24 +630,7 @@ namespace Fantasy_King_s_Battle
 
         internal void ShowAboutHero(PlayerHero ph)
         {
-            if (panelHeroInfo == null)
-            {
-                panelHeroInfo = new PanelHeroInfo(ilHeroes, ilParameters, ilItems)
-                {
-                    Left = 632,
-                    Top = Config.GRID_SIZE
-                };
-                pageHeroes.AddControl(panelHeroInfo);
-
-                for (int i = 0; i < panelHeroInfo.slots.Length; i++)
-                {
-                    panelHeroInfo.slots[i].MouseDown += PanelCellHero_MouseDown;
-                    panelHeroInfo.slots[i].MouseUp += PanelCellHero_MouseUp;
-                    panelHeroInfo.slots[i].MouseMove += PanelCell_MouseMove;
-                }
-            }
-
-            panelHeroInfo.ShowHero(ph);
+            panelHeroInfo.Hero = ph;
         }
 
         private void ShowBattle()
@@ -706,24 +707,7 @@ namespace Fantasy_King_s_Battle
 
         private void PanelHero_Click(object sender, EventArgs e)
         {
-            if (panelHeroInfo == null)
-            {
-                panelHeroInfo = new PanelHeroInfo(ilHeroes, ilParameters, ilItems)
-                {
-                    Left = 600,
-                    Top = Config.GRID_SIZE
-                };
-                pageHeroes.AddControl(panelHeroInfo);
-
-                for (int i = 0; i < panelHeroInfo.slots.Length; i++)
-                {
-                    panelHeroInfo.slots[i].MouseDown += PanelCellHero_MouseDown;
-                    panelHeroInfo.slots[i].MouseUp += PanelCellHero_MouseUp;
-                    panelHeroInfo.slots[i].MouseMove += PanelCell_MouseMove;
-                }
-            }
-
-            panelHeroInfo.ShowHero((sender as PanelHero).Hero);
+            SelectHero(sender as PanelHero);
         }
 
         private Point RealCoordCursorHeroDrag(Point locationMouse)
@@ -827,7 +811,7 @@ namespace Fantasy_King_s_Battle
                 case SourceForDrag.ItemFromHero:
                     // С инвентаря героя по умолчанию показываем отбор всех предметов
                     itemTempForDrag = panelHeroInfo.Hero.TakeItem(panelItemForDrag.NumberCell, panelHeroInfo.Hero.Slots[panelItemForDrag.NumberCell].Quantity);
-                    panelHeroInfo.RefreshHero();
+                    panelHeroInfo.ShowHero();
                     picBoxItemForDrag.Image = ilItems.Images[itemTempForDrag.Item.ImageIndex];
 
                     break;
@@ -922,14 +906,14 @@ namespace Fantasy_King_s_Battle
                         numberCellHero = numberCellForExistItem >= 0 ? numberCellForExistItem : numberCellHero;
                         lobby.CurrentPlayer.GiveItemToHero(fromSlot, panelHeroInfo.Hero, lobby.CurrentPlayer.Warehouse[fromSlot].Quantity, numberCellHero);
 
-                        panelHeroInfo.RefreshHero();
+                        panelHeroInfo.ShowHero();
                     }
                     else if ((panelHeroInfo != null) && (CursorUnderPanelAboutHero(RealCoordCursorWHDragForCursor(e.Location)) == true))// Бросили на панель игрока
                     {
                         lobby.CurrentPlayer.AddItem(itemTempForDrag, fromSlot);
                         lobby.CurrentPlayer.GiveItemToHero(fromSlot, panelHeroInfo.Hero, lobby.CurrentPlayer.Warehouse[fromSlot].Quantity);
 
-                        panelHeroInfo.RefreshHero();
+                        panelHeroInfo.ShowHero();
                     }
                     else if ((CursorUnderPanelWarehouse(RealCoordCursorWHDragForCursor(e.Location)) == false))
                     {
@@ -1014,7 +998,7 @@ namespace Fantasy_King_s_Battle
                         lobby.CurrentPlayer.GetItemFromHero(panelHeroInfo.Hero, fromSlot);
 
                         ShowWarehouse();
-                        panelHeroInfo.RefreshHero();
+                        panelHeroInfo.ShowHero();
                     }
                     else if (ModifierKeys.HasFlag(Keys.Control) == true)
                     {
@@ -1026,7 +1010,7 @@ namespace Fantasy_King_s_Battle
                         // Возвращаем предмет обратно
                         panelHeroInfo.Hero.AcceptItem(itemTempForDrag, itemTempForDrag.Quantity, fromSlot);
 
-                    panelHeroInfo.RefreshHero();
+                    panelHeroInfo.ShowHero();
                 }
 
                 EndDrag();
@@ -1093,7 +1077,7 @@ namespace Fantasy_King_s_Battle
                     break;
                 case SourceForDrag.ItemFromHero:
                     lobby.CurrentPlayer.AddItem(itemTempForDrag, panelItemForDrag.NumberCell);
-                    panelHeroInfo.RefreshHero();
+                    panelHeroInfo.ShowHero();
                     break;
             }
 
@@ -1152,7 +1136,31 @@ namespace Fantasy_King_s_Battle
                     SelectedPanelBuilding.Invalidate(true);
                 }
 
-                panelMenu.Invalidate(true);
+                panelMenu.Invalidate(true);// Это точно надо?
+            }
+        }
+
+        internal void SelectHero(PanelHero ph)
+        {
+            if (SelectedPanelHero != ph)
+            {
+                if (SelectedPanelBuilding != null)
+                    SelectBuilding(null);
+
+                PanelHero oldSelected = SelectedPanelHero;
+                SelectedPanelHero = ph;
+
+                UpdateMenu();
+
+                if (oldSelected != null)
+                    oldSelected.Invalidate(true);
+                if (SelectedPanelHero != null)
+                {
+                    panelHeroInfo.Hero = SelectedPanelHero.Hero;
+                    SelectedPanelHero.Invalidate(true);
+                }
+
+                panelMenu.Invalidate(true);// Это точно надо?
             }
         }
 
