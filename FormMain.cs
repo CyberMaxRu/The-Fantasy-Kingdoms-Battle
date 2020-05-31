@@ -811,7 +811,7 @@ namespace Fantasy_King_s_Battle
                 case SourceForDrag.ItemFromHero:
                     // С инвентаря героя по умолчанию показываем отбор всех предметов
                     itemTempForDrag = panelHeroInfo.Hero.TakeItem(panelItemForDrag.NumberCell, panelHeroInfo.Hero.Slots[panelItemForDrag.NumberCell].Quantity);
-                    panelHeroInfo.ShowHero();
+                    panelHeroInfo.ShowData();
                     picBoxItemForDrag.Image = ilItems.Images[itemTempForDrag.Item.ImageIndex];
 
                     break;
@@ -906,14 +906,14 @@ namespace Fantasy_King_s_Battle
                         numberCellHero = numberCellForExistItem >= 0 ? numberCellForExistItem : numberCellHero;
                         lobby.CurrentPlayer.GiveItemToHero(fromSlot, panelHeroInfo.Hero, lobby.CurrentPlayer.Warehouse[fromSlot].Quantity, numberCellHero);
 
-                        panelHeroInfo.ShowHero();
+                        panelHeroInfo.ShowData();
                     }
                     else if ((panelHeroInfo != null) && (CursorUnderPanelAboutHero(RealCoordCursorWHDragForCursor(e.Location)) == true))// Бросили на панель игрока
                     {
                         lobby.CurrentPlayer.AddItem(itemTempForDrag, fromSlot);
                         lobby.CurrentPlayer.GiveItemToHero(fromSlot, panelHeroInfo.Hero, lobby.CurrentPlayer.Warehouse[fromSlot].Quantity);
 
-                        panelHeroInfo.ShowHero();
+                        panelHeroInfo.ShowData();
                     }
                     else if ((CursorUnderPanelWarehouse(RealCoordCursorWHDragForCursor(e.Location)) == false))
                     {
@@ -998,7 +998,7 @@ namespace Fantasy_King_s_Battle
                         lobby.CurrentPlayer.GetItemFromHero(panelHeroInfo.Hero, fromSlot);
 
                         ShowWarehouse();
-                        panelHeroInfo.ShowHero();
+                        panelHeroInfo.ShowData();
                     }
                     else if (ModifierKeys.HasFlag(Keys.Control) == true)
                     {
@@ -1010,7 +1010,7 @@ namespace Fantasy_King_s_Battle
                         // Возвращаем предмет обратно
                         panelHeroInfo.Hero.AcceptItem(itemTempForDrag, itemTempForDrag.Quantity, fromSlot);
 
-                    panelHeroInfo.ShowHero();
+                    panelHeroInfo.ShowData();
                 }
 
                 EndDrag();
@@ -1077,7 +1077,7 @@ namespace Fantasy_King_s_Battle
                     break;
                 case SourceForDrag.ItemFromHero:
                     lobby.CurrentPlayer.AddItem(itemTempForDrag, panelItemForDrag.NumberCell);
-                    panelHeroInfo.ShowHero();
+                    panelHeroInfo.ShowData();
                     break;
             }
 

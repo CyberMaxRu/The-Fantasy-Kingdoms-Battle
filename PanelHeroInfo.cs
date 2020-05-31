@@ -9,10 +9,9 @@ using System.Drawing;
 namespace Fantasy_King_s_Battle
 {
     // Класс подробной информации о герое
-    internal sealed class PanelHeroInfo : BasePanel
+    internal sealed class PanelHeroInfo : PanelBaseInfo
     {
         private PlayerHero hero;
-        private readonly PictureBox pbHero;
         private readonly Label lblLevel;
         private readonly Label lblHealth;
         private readonly Label lblMana;
@@ -32,30 +31,20 @@ namespace Fantasy_King_s_Battle
 
         internal PanelEntity[] slots = new PanelEntity[FormMain.SLOT_IN_INVENTORY];
 
-        public PanelHeroInfo(int width, int height) : base(true)
+        public PanelHeroInfo(int width, int height) : base(width, height)
         {
-            DoubleBuffered = true;
-
-            pbHero = new PictureBox()
-            {
-                Parent = this,
-                Top = Config.GRID_SIZE,
-                Left = Config.GRID_SIZE,
-                Size = Program.formMain.ilHeroes.ImageSize
-            };
-
             btnDismiss = new Button()
             {
                 Parent = this,
-                Left = GuiUtils.NextLeft(pbHero),
-                Top = pbHero.Top,
+                Left = LeftAfterIcon(),
+                Top = TopForIcon(),
                 ImageList = Program.formMain.ilGui,
                 ImageIndex = FormMain.GUI_DISMISS,
                 Size = GuiUtils.SizeButtonWithImage(Program.formMain.ilGui)
             };
             btnDismiss.Click += BtnDismiss_Click;
 
-            lblLevel = GuiUtils.CreateLabel(this, Config.GRID_SIZE, pbHero.Top + pbHero.Height + Config.GRID_SIZE);
+            lblLevel = GuiUtils.CreateLabel(this, Config.GRID_SIZE, TopForControls());
             lblHealth = GuiUtils.CreateLabel(this, Config.GRID_SIZE, lblLevel.Top + lblLevel.Height + Config.GRID_SIZE);
             lblMana = GuiUtils.CreateLabel(this, Config.GRID_SIZE, lblHealth.Top + lblHealth.Height + Config.GRID_SIZE);
 
@@ -87,9 +76,6 @@ namespace Fantasy_King_s_Battle
                     slots[x + y * FormMain.SLOTS_IN_LINE] = pb;
                 }
             }
-
-            Width = width;
-            Height = height;
         }
 
         internal PlayerHero Hero
@@ -98,7 +84,7 @@ namespace Fantasy_King_s_Battle
             set
             {
                 hero = value;
-                ShowHero();
+                ShowData();
             }
         }
 
@@ -114,12 +100,13 @@ namespace Fantasy_King_s_Battle
             }
         }
 
-        internal void ShowHero()
+        internal override void ShowData()
         {
-           if (Hero != null)
+            base.ShowData();
+
+            if (Hero != null)
             {
                 Visible = true;
-                pbHero.Image = Program.formMain.ilHeroes.Images[hero.ClassHero.ImageIndex];
 
                 lblLevel.Text = "Уровень: " + hero.Level.ToString();
                 lblHealth.Text = "Здоровье: " + hero.ParametersWithAmmunition.Health.ToString();
@@ -167,5 +154,9 @@ namespace Fantasy_King_s_Battle
                     l.ForeColor = Color.FromKnownColor(KnownColor.Red);
             }
         }
+
+        protected override ImageList GetImageList() => Program.formMain.ilHeroes;
+
+        protected override int GetImageIndex() => hero.ClassHero.ImageIndex;
     }
 }

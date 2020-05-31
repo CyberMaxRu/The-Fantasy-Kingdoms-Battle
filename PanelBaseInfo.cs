@@ -31,6 +31,8 @@ namespace Fantasy_King_s_Battle
         // Используемые потомками методы
         protected int TopForControls() => GuiUtils.NextTop(pbIcon);
         protected int LeftForControls() => pbIcon.Left;
+        protected int TopForIcon() => pbIcon.Top;
+        protected int LeftAfterIcon() => GuiUtils.NextLeft(pbIcon);
 
         // Переопределяемые потомками методы
         protected abstract ImageList GetImageList();
