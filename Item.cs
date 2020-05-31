@@ -11,14 +11,9 @@ namespace Fantasy_King_s_Battle
     // Класс предмета
     internal sealed class Item : Entity
     {
-        public Item(XmlNode n)
+        public Item(XmlNode n) : base(n)
         {
-            ID = n.SelectSingleNode("ID").InnerText;
-            Name = n.SelectSingleNode("Name").InnerText;
-            Description = n.SelectSingleNode("Description").InnerText.Replace("/", Environment.NewLine);
-            ImageIndex = Convert.ToInt32(n.SelectSingleNode("ImageIndex").InnerText);
             TypeItem = FormMain.Config.FindTypeItem(n.SelectSingleNode("TypeItem").InnerText);
-            Cost = Convert.ToInt32(n.SelectSingleNode("Cost").InnerText);            
             TimeHit = n.SelectSingleNode("TimeHit") == null ? 0 : Convert.ToInt32(n.SelectSingleNode("TimeHit").InnerText);
 
             DamageMelee = n.SelectSingleNode("DamageMelee") != null ? Convert.ToInt32(n.SelectSingleNode("DamageMelee").InnerText) : 0;
@@ -67,14 +62,9 @@ namespace Fantasy_King_s_Battle
             }
         }
 
-        internal string ID { get; }
-        internal string Name { get; }
-        internal string Description { get; }
-        internal int ImageIndex { get; }
         internal TypeItem TypeItem { get; }
         internal int TimeHit { get; }
         internal int Position { get; }
-        internal int Cost { get; }
         internal int DamageMelee { get; }
         internal int DamageMissile { get; }
         internal int DamageMagic { get; }

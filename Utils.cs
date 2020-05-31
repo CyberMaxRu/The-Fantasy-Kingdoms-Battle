@@ -34,5 +34,10 @@ namespace Fantasy_King_s_Battle
                     list.Add(new Requirement(r.SelectSingleNode("Building").InnerText, Convert.ToInt32(r.SelectSingleNode("Level").InnerText)));
             }
         }
+
+        internal static string AdaptDescription(string s)
+        {
+            return s.Replace("/", Environment.NewLine);
+        }
     }
 }
