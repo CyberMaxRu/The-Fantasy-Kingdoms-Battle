@@ -1,24 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Abilities>
   <Ability>
-    <ID></ID>
-    <Name></Name>
-    <Description>35</Description>
-    <ImageIndex></ImageIndex>
-    <Cost></Cost>
-  </Ability>
-  <Ability>
-    <ID></ID>
-    <Name></Name>
-    <Description></Description>
-    <ImageIndex></ImageIndex>
-    <Cost></Cost>
-  </Ability>
-  <Ability>
-    <ID></ID>
-    <Name></Name>
-    <Description></Description>
-    <ImageIndex></ImageIndex>
-    <Cost></Cost>
+    <ID>WarriorBasicAttack</ID>
+    <Name>Рукопашная атака</Name>
+    <Description>- Обычная атака рукопашным оружие/- Наносит урон одной цели</Description>
+    <ImageIndex>35</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Attack</TypeAbility>
+    <TypeAttack>Melee</TypeAttack>
+    <SkillModif>1,0</SkillModif>
   </Ability>
 </Abilities>

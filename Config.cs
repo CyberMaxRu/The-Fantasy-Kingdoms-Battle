@@ -77,6 +77,14 @@ namespace Fantasy_King_s_Battle
             foreach (Building b in Buildings)
                 b.TuneResearches();
 
+            // Загрузка конфигурации способностей
+            xmlDoc = CreateXmlDocument("Config\\Abilities.xml");
+
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Abilities/Ability"))
+            {
+                Abilities.Add(new Ability(n));
+            }
+
             // Загрузка конфигурации видов героев
             xmlDoc = CreateXmlDocument("Config\\KindHeroes.xml");
 
@@ -113,6 +121,7 @@ namespace Fantasy_King_s_Battle
         internal string PathResources { get; }
         internal List<TypeLobby> TypeLobbies { get; } = new List<TypeLobby>();
         internal List<Building> Buildings { get; } = new List<Building>();
+        internal List<Ability> Abilities { get; } = new List<Ability>();
         internal List<KindHero> KindHeroes { get; } = new List<KindHero>();
         internal List<Hero> Heroes { get; } = new List<Hero>();
         internal List<TypeItem> TypeItems { get; } = new List<TypeItem>();
