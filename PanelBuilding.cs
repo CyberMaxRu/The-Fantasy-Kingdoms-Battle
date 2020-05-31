@@ -60,9 +60,9 @@ namespace Fantasy_King_s_Battle
                 Top = GuiUtils.NextTop(lblName),
                 BackColor = Color.Transparent
             };
-            pbBuilding.MouseEnter += Pbv_MouseEnter;
+            pbBuilding.MouseEnter += pbBuilding_MouseEnter;
             pbBuilding.MouseLeave += Control_MouseLeave;
-            pbBuilding.MouseClick += Pbv_MouseClick;
+            pbBuilding.MouseClick += pbBuilding_MouseClick;
 
             btnHeroes = new Button()
             {
@@ -162,7 +162,7 @@ namespace Fantasy_King_s_Battle
                 SelectThisBuilding();
         }
 
-        private void Pbv_MouseClick(object sender, MouseEventArgs e)
+        private void pbBuilding_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
                 SelectThisBuilding();
@@ -182,7 +182,7 @@ namespace Fantasy_King_s_Battle
                 Building.Building.TrainedHero.Cost, Building.Player.Gold >= Building.Building.TrainedHero.Cost, 0, 0, false, null);
         }
 
-        private void Pbv_MouseEnter(object sender, EventArgs e)
+        private void pbBuilding_MouseEnter(object sender, EventArgs e)
         {
             Program.formMain.formHint.ShowHint(pbBuilding,
                 Building.Building.Name,
