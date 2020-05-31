@@ -29,7 +29,7 @@ namespace Fantasy_King_s_Battle
         private readonly Label lblDefenseMagic;
         private readonly Button btnDismiss;
 
-        private List<PanelEntity> panelAbility = new List<PanelEntity>();
+        private readonly PanelWithPanelEntity panelAbilities = new PanelWithPanelEntity(3);
 
         internal PanelEntity[] slots = new PanelEntity[FormMain.SLOT_IN_INVENTORY];
 
@@ -49,6 +49,10 @@ namespace Fantasy_King_s_Battle
             AddPage(Page.Statistics);
             AddPage(Page.Inventory);
             AddPage(Page.Abilities);
+
+            panelAbilities.Parent = this;
+            panelAbilities.Left = (Width - panelAbilities.Width) / 2;
+            panelAbilities.Top = LeftTopPage().Y;
 
             return;
             lblLevel = GuiUtils.CreateLabel(this, Config.GRID_SIZE, TopForControls());
@@ -111,6 +115,8 @@ namespace Fantasy_King_s_Battle
         {
             base.ShowData();
 
+            panelAbilities.ApplyListAbility(Hero.Abilities);
+
             return;
             if (Hero != null)
             {
@@ -167,10 +173,13 @@ namespace Fantasy_King_s_Battle
             switch (page)
             {
                 case Page.Statistics:
+                    panelAbilities.Hide();
                     break;
                 case Page.Inventory:
+                    panelAbilities.Hide();
                     break;
                 case Page.Abilities:
+                    panelAbilities.Show();
                     break;
                 default:
                     throw new Exception("Неизвестная страница.");

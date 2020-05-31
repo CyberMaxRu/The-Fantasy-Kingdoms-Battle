@@ -32,21 +32,30 @@ namespace Fantasy_King_s_Battle
 
         internal void ApplyListItem(List<Item> list)
         {
+            ValidateRows(list.Count);
+
+            for (int x = 0; x < panelEntities.Count; x++)
+                panelEntities[x].ShowItem(x < list.Count ? list[x] : null);
+        }
+
+        internal void ApplyListAbility(List<Ability> list)
+        {
+            ValidateRows(list.Count);
+
+            for (int x = 0; x < panelEntities.Count; x++)
+                panelEntities[x].ShowEntity(x < list.Count ? list[x] : null);
+        }
+
+        private void ValidateRows(int count)
+        {
             // Определяем необходимое количество строк. Лишние удаляем, необходимые создаем
-            int needRows = Math.Max(list.Count / EntityInRow + (list.Count % EntityInRow == 0 ? 0 : 1), Config.MIN_ROWS_ENTITIES);
+            int needRows = Math.Max(count / EntityInRow + (count % EntityInRow == 0 ? 0 : 1), Config.MIN_ROWS_ENTITIES);
 
             while (rows > needRows)
                 RemoveRow();
 
             while (rows < needRows)
                 AddRow();
-
-            // 
-            for (int x = 0; x < panelEntities.Count; x++)
-                if (x < list.Count)
-                    panelEntities[x].ShowItem(list[x]);
-                else
-                    panelEntities[x].ShowItem(null);
         }
 
         private void AddRow()

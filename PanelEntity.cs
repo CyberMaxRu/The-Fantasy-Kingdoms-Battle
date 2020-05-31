@@ -17,6 +17,7 @@ namespace Fantasy_King_s_Battle
         private Point pointQuantity;
         private PlayerItem playerItem;
         private Item item;
+        private Ability ability;
         private string quantity;
 
         public PanelEntity(Control parent, ImageList ilItems, int numberCell)
@@ -65,6 +66,11 @@ namespace Fantasy_King_s_Battle
                 e.Graphics.DrawImageUnscaled(imageListItems.Images[item.ImageIndex], pointIcon);
                 e.Graphics.DrawImageUnscaled(Program.formMain.bmpBorderForIcon, 0, 0);
             }
+            if (ability != null)
+            {
+                e.Graphics.DrawImageUnscaled(imageListItems.Images[ability.ImageIndex], pointIcon);
+                e.Graphics.DrawImageUnscaled(Program.formMain.bmpBorderForIcon, 0, 0);
+            }
             else
                 e.Graphics.DrawImage(Program.formMain.bmpEmptyEntity, new Rectangle(1, 1, Program.formMain.bmpBorderForIcon.Width - 2, Program.formMain.bmpBorderForIcon.Height - 2));
 
@@ -81,6 +87,7 @@ namespace Fantasy_King_s_Battle
         {
             playerItem = pi;
             item = pi?.Item;
+            ability = null;
             Invalidate();
             //Image = pi != null ? imageListItems.Images[pi.Item.ImageIndex] : null;
         }
@@ -89,14 +96,33 @@ namespace Fantasy_King_s_Battle
         {
             playerItem = null;
             item = i;
+            ability = null;
+            Invalidate();
+            //Image = pi != null ? imageListItems.Images[pi.Item.ImageIndex] : null;
+        }
+
+        private void ShowAbility(Ability a)
+        {
+            playerItem = null;
+            item = null;
+            ability = a;
             Invalidate();
             //Image = pi != null ? imageListItems.Images[pi.Item.ImageIndex] : null;
         }
 
         internal void ShowEntity(Entity i)
         {
-            if (i is Item)
-                ShowItem((Item)i);
+            if (i is null)
+            {
+                playerItem = null;
+                item = null;
+                ability = null;
+                Invalidate();
+            }
+            else if (i is Item item1)
+                ShowItem(item1);
+            else if (i is Ability ability1)
+                ShowAbility(ability1);
             else
                 throw new Exception("не поддерживается.");
         }

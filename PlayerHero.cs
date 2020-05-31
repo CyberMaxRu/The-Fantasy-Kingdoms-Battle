@@ -19,6 +19,10 @@ namespace Fantasy_King_s_Battle
             Building = pb;
             DayOfHire = Player.Lobby.Turn;
 
+            // Применяем дефолтные способности
+            Abilities.AddRange(ClassHero.Abilities);
+            
+            //
             if (ClassHero.MaxLevel > 1)
             {
                 Level = 0;
@@ -86,6 +90,7 @@ namespace Fantasy_King_s_Battle
         internal PlayerItem Armour { get; private set; }// Доспех
         internal PanelHero Panel { get; set; }
         internal Point CoordInPlayer { get; set; }// Координаты героя в слотах игрока
+        internal List<Ability> Abilities { get; } = new List<Ability>();// Cпособности
 
         // Статистика за лобби
         internal int DayOfHire { get; }// На каком дне нанят
