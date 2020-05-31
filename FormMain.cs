@@ -59,6 +59,9 @@ namespace Fantasy_King_s_Battle
         internal const int GUI_HOURGLASS = 11;
         internal const int GUI_PRODUCTS = 12;
         internal const int GUI_INHABITANTS = 13;
+        internal const int GUI_INVENTORY = 14;
+        internal const int GUI_ABILITY = 15;
+        internal const int GUI_PARAMETERS = 16;
 
         internal const int GUI_PARAMETER_STRENGTH = 6;
         internal const int GUI_PARAMETER_DEXTERITY = 7;
