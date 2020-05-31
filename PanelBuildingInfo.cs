@@ -11,15 +11,17 @@ namespace Fantasy_King_s_Battle
     // Класс подробной информации о строении
     internal sealed class PanelBuildingInfo : BasePanel
     {
-        private enum Page { Products, Inhabitants };
+        private enum Page { Products, Warehouse, Inhabitants };
 
         private PictureBox pbBuilding;
         private PlayerBuilding building;
-        private PictureBox pbInhabitants;
         private PictureBox pbProducts;
+        private PictureBox pbWarehouse;
+        private PictureBox pbInhabitants;
         private Label lblPage;
         private Point pointPage;
-        private List<PanelEntity> panelEntities = new List<PanelEntity>();
+        private List<PanelEntity> panelProducts = new List<PanelEntity>();
+//        private List<PanelEntity> panelProducts = new List<PanelEntity>();
         private Page activePage;
 
         public PanelBuildingInfo(int width, int height) : base(true)
@@ -47,10 +49,21 @@ namespace Fantasy_King_s_Battle
             };
             pbProducts.Click += BtnProducts_Click;
 
-            pbInhabitants = new PictureBox()
+            pbWarehouse = new PictureBox()
             {
                 Parent = this,
                 Left = GuiUtils.NextLeft(pbProducts),
+                Top = GuiUtils.NextTop(pbBuilding),
+                Size = GuiUtils.SizeButtonWithImage(Program.formMain.ilGui),
+                BackgroundImage = Program.formMain.bmpForBackground,
+                Image = Program.formMain.ilGui.Images[FormMain.GUI_INVENTORY]
+            };
+            pbWarehouse.Click += PbWarehouse_Click;
+
+            pbInhabitants = new PictureBox()
+            {
+                Parent = this,
+                Left = GuiUtils.NextLeft(pbWarehouse),
                 Top = GuiUtils.NextTop(pbBuilding),
                 Size = GuiUtils.SizeButtonWithImage(Program.formMain.ilGui),
                 BackgroundImage = Program.formMain.bmpForBackground,
@@ -75,6 +88,11 @@ namespace Fantasy_King_s_Battle
             SetPage(Page.Products);
         }
 
+        private void PbWarehouse_Click(object sender, EventArgs e)
+        {
+            SetPage(Page.Warehouse);
+        }
+
         private void SetPage(Page page)
         {
             activePage = page;
@@ -83,14 +101,20 @@ namespace Fantasy_King_s_Battle
             {
                 case Page.Products:
                     lblPage.Text = "Товары";
-                    foreach (PanelEntity pe in panelEntities)
+                    foreach (PanelEntity pe in panelProducts)
                         pe.Show();
+
+                    break;
+                case Page.Warehouse:
+                    lblPage.Text = "Склад";
+                    foreach (PanelEntity pe in panelProducts)
+                        pe.Hide();
 
                     break;
                 case Page.Inhabitants:
                     lblPage.Text = "Жители";
 
-                    foreach (PanelEntity pe in panelEntities)
+                    foreach (PanelEntity pe in panelProducts)
                         pe.Hide();
 
                     break;
@@ -126,15 +150,18 @@ namespace Fantasy_King_s_Battle
         {
             pbBuilding.Image = Program.formMain.ilBuildings.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilBuildings, Building.Building.ImageIndex, Building.Level > 0)];
 
+            pbWarehouse.Visible = building.Building.TrainedHero != null;
             pbInhabitants.Visible = building.Building.TrainedHero != null;
+            if ((activePage == Page.Warehouse) && (!pbWarehouse.Visible))
+                SetPage(Page.Products);
             if ((activePage == Page.Inhabitants) && (!pbInhabitants.Visible))
                 SetPage(Page.Products);
 
             // Перестраиваем список товаров
-            foreach (PanelEntity p in panelEntities)
+            foreach (PanelEntity p in panelProducts)
                 p.Dispose();
 
-            panelEntities.Clear();
+            panelProducts.Clear();
 
             PanelEntity pe;
             int column = 0;
@@ -152,7 +179,7 @@ namespace Fantasy_King_s_Battle
                     row++;
                 }
 
-                panelEntities.Add(pe);
+                panelProducts.Add(pe);
             }
 
             Show();    
