@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ability.cs" />
     <Compile Include="BasePanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -154,6 +155,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Config\Abilities.xml" />
     <Content Include="FKS.ico" />
     <Content Include="Resources\Config\KindHeroes.xml" />
     <Content Include="Resources\Config\TypeLobby.xml" />
