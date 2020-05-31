@@ -66,7 +66,7 @@ namespace Fantasy_King_s_Battle
                 e.Graphics.DrawImageUnscaled(imageListItems.Images[item.ImageIndex], pointIcon);
                 e.Graphics.DrawImageUnscaled(Program.formMain.bmpBorderForIcon, 0, 0);
             }
-            if (ability != null)
+            else if (ability != null)
             {
                 e.Graphics.DrawImageUnscaled(imageListItems.Images[ability.ImageIndex], pointIcon);
                 e.Graphics.DrawImageUnscaled(Program.formMain.bmpBorderForIcon, 0, 0);

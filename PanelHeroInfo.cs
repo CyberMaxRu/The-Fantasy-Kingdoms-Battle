@@ -29,6 +29,7 @@ namespace Fantasy_King_s_Battle
         private readonly Label lblDefenseMagic;
         private readonly Button btnDismiss;
 
+        private readonly PanelWithPanelEntity panelInventory = new PanelWithPanelEntity(3);
         private readonly PanelWithPanelEntity panelAbilities = new PanelWithPanelEntity(3);
 
         internal PanelEntity[] slots = new PanelEntity[FormMain.SLOT_IN_INVENTORY];
@@ -49,6 +50,10 @@ namespace Fantasy_King_s_Battle
             AddPage(Page.Statistics);
             AddPage(Page.Inventory);
             AddPage(Page.Abilities);
+
+            panelInventory.Parent = this;
+            panelInventory.Left = (Width - panelAbilities.Width) / 2;
+            panelInventory.Top = LeftTopPage().Y;
 
             panelAbilities.Parent = this;
             panelAbilities.Left = (Width - panelAbilities.Width) / 2;
@@ -115,6 +120,12 @@ namespace Fantasy_King_s_Battle
         {
             base.ShowData();
 
+            List<Item> items = new List<Item>();
+            for (int x = 0; x < hero.Slots.Length; x++)
+                if (hero.Slots[x] != null)
+                    items.Add(hero.Slots[x].Item);
+
+            panelInventory.ApplyListItem(items);
             panelAbilities.ApplyListAbility(Hero.Abilities);
 
             return;
@@ -173,12 +184,15 @@ namespace Fantasy_King_s_Battle
             switch (page)
             {
                 case Page.Statistics:
+                    panelInventory.Hide();
                     panelAbilities.Hide();
                     break;
                 case Page.Inventory:
                     panelAbilities.Hide();
+                    panelInventory.Show();
                     break;
                 case Page.Abilities:
+                    panelInventory.Hide();
                     panelAbilities.Show();
                     break;
                 default:
