@@ -1185,9 +1185,7 @@ namespace Fantasy_King_s_Battle
 
                 PlayerBuilding plb = SelectedPanelBuilding.Building;
 
-                for (int y = 0; y < PANEL_RESEARCH_SIZE.Height; y++)
-                    for (int x = 0; x < PANEL_RESEARCH_SIZE.Width; x++)
-                        panelMenu.CellsMenu[y, x].Research = null;
+                ClearMenu();
 
                 if (plb.Building.Researches != null)
                     foreach (PlayerResearch pr in plb.Researches)
@@ -1201,6 +1199,14 @@ namespace Fantasy_King_s_Battle
             else
             {
                 panelBuildingInfo.Hide();
+                ClearMenu();
+            }
+
+            void ClearMenu()
+            {
+                for (int y = 0; y < PANEL_RESEARCH_SIZE.Height; y++)
+                    for (int x = 0; x < PANEL_RESEARCH_SIZE.Width; x++)
+                        panelMenu.CellsMenu[y, x].Research = null;
             }
         }
     }
