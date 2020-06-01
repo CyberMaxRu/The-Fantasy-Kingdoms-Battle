@@ -31,10 +31,12 @@ namespace Fantasy_King_s_Battle
             base.OnClientSizeChanged(e);
 
             if (bmpBackground != null)
+            {
                 bmpBackground.Dispose();
 
-            if ((Width > 2) && (Height > 2))
-                bmpBackground = GuiUtils.MakeBackground(new Size(Width - 2, Height - 2));
+                if ((Width > 2) && (Height > 2))
+                    bmpBackground = GuiUtils.MakeBackground(new Size(Width - 2, Height - 2));
+            }
         }
 
         protected override void OnPaint(PaintEventArgs e)
