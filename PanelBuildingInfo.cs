@@ -64,7 +64,7 @@ namespace Fantasy_King_s_Battle
             SetPageVisible(Page.Warehouse, building.Building.TrainedHero != null);
             SetPageVisible(Page.Inhabitants, building.Building.TrainedHero != null);
 
-            panelProducts.ApplyListEntity(building.Items);
+            panelProducts.ApplyList(building.Items);
 
             Show();    
         }

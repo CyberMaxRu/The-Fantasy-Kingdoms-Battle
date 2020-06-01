@@ -125,8 +125,8 @@ namespace Fantasy_King_s_Battle
                 if (hero.Slots[x] != null)
                     items.Add(hero.Slots[x].Item);
 
-            panelInventory.ApplyListItem(items);
-            panelAbilities.ApplyListAbility(Hero.Abilities);
+            panelInventory.ApplyList(items);
+            panelAbilities.ApplyList(Hero.Abilities);
 
             return;
             if (Hero != null)

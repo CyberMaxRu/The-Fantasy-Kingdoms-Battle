@@ -16,8 +16,7 @@ namespace Fantasy_King_s_Battle
         private Point pointIcon;
         private Point pointQuantity;
         private PlayerItem playerItem;
-        private Item item;
-        private Ability ability;
+        private Entity entity;
         private string quantity;
 
         public PanelEntity(Control parent, ImageList ilItems, int numberCell)
@@ -46,11 +45,11 @@ namespace Fantasy_King_s_Battle
 
         private void PanelItem_MouseEnter(object sender, EventArgs e)
         {
-            if (item != null)
+            if (entity != null)
                 Program.formMain.formHint.ShowHint(this,
-                    item.Name,
+                    entity.Name,
                     "",
-                    item.Description,
+                    entity.Description,
                     null,
                     0,
                     false, 0,
@@ -61,14 +60,9 @@ namespace Fantasy_King_s_Battle
         {
             base.OnPaint(e);
 
-            if (item != null)
+            if (entity != null)
             {
-                e.Graphics.DrawImageUnscaled(imageListItems.Images[item.ImageIndex], pointIcon);
-                e.Graphics.DrawImageUnscaled(Program.formMain.bmpBorderForIcon, 0, 0);
-            }
-            else if (ability != null)
-            {
-                e.Graphics.DrawImageUnscaled(imageListItems.Images[ability.ImageIndex], pointIcon);
+                e.Graphics.DrawImageUnscaled(imageListItems.Images[entity.ImageIndex], pointIcon);
                 e.Graphics.DrawImageUnscaled(Program.formMain.bmpBorderForIcon, 0, 0);
             }
             else
@@ -86,45 +80,17 @@ namespace Fantasy_King_s_Battle
         internal void ShowPlayerItem(PlayerItem pi)
         {
             playerItem = pi;
-            item = pi?.Item;
-            ability = null;
+            entity = pi?.Item;
             Invalidate();
             //Image = pi != null ? imageListItems.Images[pi.Item.ImageIndex] : null;
         }
 
-        internal void ShowItem(Item i)
+        internal void ShowEntity(Entity e)
         {
             playerItem = null;
-            item = i;
-            ability = null;
+            entity = e;
             Invalidate();
             //Image = pi != null ? imageListItems.Images[pi.Item.ImageIndex] : null;
-        }
-
-        private void ShowAbility(Ability a)
-        {
-            playerItem = null;
-            item = null;
-            ability = a;
-            Invalidate();
-            //Image = pi != null ? imageListItems.Images[pi.Item.ImageIndex] : null;
-        }
-
-        internal void ShowEntity(Entity i)
-        {
-            if (i is null)
-            {
-                playerItem = null;
-                item = null;
-                ability = null;
-                Invalidate();
-            }
-            else if (i is Item item1)
-                ShowItem(item1);
-            else if (i is Ability ability1)
-                ShowAbility(ability1);
-            else
-                throw new Exception("не поддерживается.");
         }
     }
 }
