@@ -441,6 +441,12 @@
         <Layer>1</Layer>
         <Ability>WarriorImpAttack</Ability>
         <Cost>200</Cost>
+        <Requirements>
+          <Requirement>
+            <Building>GuildWarrior</Building>
+            <Level>2</Level>
+          </Requirement>
+        </Requirements>
       </Research>
       <Research>
         <PosX>2</PosX>
@@ -448,13 +454,25 @@
         <Layer>1</Layer>
         <Ability>WarriorMaimAttack</Ability>
         <Cost>500</Cost>
+        <Requirements>
+          <Requirement>
+            <Building>GuildWarrior</Building>
+            <Level>3</Level>
+          </Requirement>
+        </Requirements>
       </Research>
       <Research>
         <PosX>3</PosX>
         <PosY>3</PosY>
         <Layer>1</Layer>
         <Ability>WarriorResistanceBuff</Ability>
-        <Cost>200</Cost>
+        <Cost>500</Cost>
+        <Requirements>
+          <Requirement>
+            <Building>GuildWarrior</Building>
+            <Level>3</Level>
+          </Requirement>
+        </Requirements>
       </Research>
     </Researches>
   </Building>
