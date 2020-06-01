@@ -3,7 +3,7 @@
   <Ability>
     <ID>WarriorBasicAttack</ID>
     <Name>Рукопашная атака</Name>
-    <Description>- Обычная атака рукопашным оружие/- Наносит урон одной цели</Description>
+    <Description>- Обычная атака рукопашным оружием/- Наносит урон одной цели</Description>
     <ImageIndex>35</ImageIndex>
     <Cost>20</Cost>
     <TypeAbility>Attack</TypeAbility>
