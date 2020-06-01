@@ -176,7 +176,7 @@ namespace Fantasy_King_s_Battle
             ilStateHero = PrepareImageList("StateHero.png", 24, 24, false);
 
             bmpForBackground = new Bitmap(dirResources + "Icons\\Background.png");
-            bmpBackgroundButton = new Bitmap(dirResources + "Icons\\BackgroundButton.png");
+            bmpBackgroundButton = GuiUtils.MakeBackground(GuiUtils.SizeButtonWithImage(ilGui));
             bmpBorderForIcon = new Bitmap(dirResources + "Icons\\BorderIconEntity.png");
             bmpEmptyEntity = new Bitmap(dirResources + "Icons\\EmptyEntity.png");
 

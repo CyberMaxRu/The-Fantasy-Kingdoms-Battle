@@ -13,6 +13,7 @@ namespace Fantasy_King_s_Battle
     internal sealed class PanelBuilding : BasePanel
     {
         private static Font fontLevel = new Font("Arial", 12, FontStyle.Bold);
+        private PlayerBuilding building;
         private readonly PictureBox pbBuilding;
         private readonly Button btnHeroes;
         private readonly ImageList imageListBuilding;
@@ -32,7 +33,6 @@ namespace Fantasy_King_s_Battle
         public PanelBuilding(Control parent, int left, int top, FormMain formMain) : base(false)
         {
             Parent = parent;
-            //BorderStyle = BorderStyle.FixedSingle;
             imageListBuilding = formMain.ilBuildings;
             imageListGui = formMain.ilGui;
             imageListGui16 = formMain.ilGui16;
@@ -63,7 +63,7 @@ namespace Fantasy_King_s_Battle
             pbBuilding.MouseEnter += pbBuilding_MouseEnter;
             pbBuilding.MouseLeave += Control_MouseLeave;
             pbBuilding.MouseClick += pbBuilding_MouseClick;
-
+            
             btnHeroes = new Button()
             {
                 Parent = this,
@@ -71,7 +71,7 @@ namespace Fantasy_King_s_Battle
                 Size = GuiUtils.SizeButtonWithImage(imageListGuiHeroes),
                 Top = GuiUtils.NextTop(pbBuilding),
                 Left = Config.GRID_SIZE,
-                BackgroundImage = formMain.bmpForBackground,
+                BackgroundImage = formMain.bmpBackgroundButton,
                 Font = formMain.fontCost,
                 ForeColor = formMain.ColorCost,
                 TextAlign = ContentAlignment.BottomCenter
@@ -86,8 +86,8 @@ namespace Fantasy_King_s_Battle
                 ImageList = imageListGui,
                 TextAlign = ContentAlignment.BottomCenter,
                 Font = formMain.fontCost,
-                ForeColor = formMain.ColorCost,
-                BackgroundImage = formMain.bmpForBackground
+                BackgroundImage = formMain.bmpBackgroundButton,
+                ForeColor = formMain.ColorCost
             };
             btnBuyOrUpgrade.Click += BtnBuyOrUprgade_Click;
             btnBuyOrUpgrade.MouseEnter += BtnBuyOrUpgrade_MouseEnter;
@@ -102,13 +102,13 @@ namespace Fantasy_King_s_Battle
                 ImageList = imageListGuiHeroes,
                 TextAlign = ContentAlignment.BottomCenter,
                 Font = formMain.fontCost,
-                ForeColor = Color.White,
-                BackgroundImage = formMain.bmpForBackground
+                BackgroundImage = formMain.bmpBackgroundButton,
+                ForeColor = Color.White
             };
             btnHireHero.Click += BtnHero_Click;
             btnHireHero.MouseEnter += BtnHireHero_MouseEnter;
             btnHireHero.MouseLeave += Control_MouseLeave;
-
+            
             lblLevel = new Label()
             {
                 Parent = this,
@@ -137,7 +137,7 @@ namespace Fantasy_King_s_Battle
                 ImageIndex = FormMain.GUI_16_GOLD,
                 ImageList = imageListGui16
             };
-
+           
             Height = GuiUtils.NextTop(btnHeroes);// lblIncome. Top + lblIncome.Height + (Config.GRID_SIZE * 2);
             Width = btnBuyOrUpgrade.Left + btnBuyOrUpgrade.Width + Config.GRID_SIZE;
 
@@ -150,7 +150,7 @@ namespace Fantasy_King_s_Battle
             MouseClick += PanelBuilding_MouseClick;
         }
 
-        internal PlayerBuilding Building { get; set; }
+        internal PlayerBuilding Building { get { return building; } set { building = value; UpdateData(); } }
 
         private void SelectThisBuilding()
         {
@@ -216,10 +216,7 @@ namespace Fantasy_King_s_Battle
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
-
-            brushBackColor.Color = Program.formMain.SelectedPanelBuilding == this ? Color.SkyBlue : BackColor = Color.PowderBlue;
-            e.Graphics.FillRectangle(brushBackColor, ClientRectangle);
-
+            
             if (Program.formMain.SelectedPanelBuilding == this)
                 e.Graphics.DrawRectangle(penBorder, rectBorder.X + 1, rectBorder.Y + 1, rectBorder.Width - 2, rectBorder.Height - 2);
         }
@@ -262,6 +259,8 @@ namespace Fantasy_King_s_Battle
 
         internal void UpdateData()
         {
+            BackColor = Program.formMain.SelectedPanelBuilding == this ? Color.SkyBlue : Color.PowderBlue;
+
             lblName.Text = Building.Building.Name;
             lblIncome.ImageIndex = Building.DoIncome() == true ? FormMain.GUI_16_GOLD : -1;
             lblIncome.Text = Building.DoIncome() == true ? "+" + Building.Income().ToString() : "";
@@ -334,6 +333,8 @@ namespace Fantasy_King_s_Battle
                 btnHeroes.Text = "";
                 btnHeroes.ImageIndex = -1;
             }
+
+            Invalidate();
         }
     }
 }
