@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace Fantasy_King_s_Battle
 {
@@ -55,9 +56,16 @@ namespace Fantasy_King_s_Battle
 
             Building.Player.SpendGold(Cost());
             Building.Researches.Remove(this);
-            Building.Items.Add(Research.Item);
+            AddItem(Research.Item);
 
             Program.formMain.ShowGold();
+        }
+
+        internal void AddItem(Item item)
+        {
+            Debug.Assert(item != null);
+
+            Building.Items.Add(item);
         }
     }
 }
