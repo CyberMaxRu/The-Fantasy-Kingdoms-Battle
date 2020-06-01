@@ -33,6 +33,8 @@
     </NextLevel>
     <Abilities>
       <Ability>WarriorBasicAttack</Ability>
+      <Ability>WarriorTaunt</Ability>
+      <Ability>WarriorAntiknockbackBuff</Ability>
     </Abilities>
     <CarryTypeItems>
       <CarryTypeItem>
