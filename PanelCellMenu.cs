@@ -64,15 +64,18 @@ namespace Fantasy_King_s_Battle
         {
             if (research != null)
             {
-                Program.formMain.formHint.ShowHint(this,
-                    research.Research.Item.Name,
-                    "",
-                    research.Research.Item.Description,
-                    research.GetTextRequirements(),
-                    research.Cost(),
-                    research.Cost() <= research.Building.Player.Gold,
-                    0,
-                    0, false, null);
+                if (Research.Research.Item != null)
+                {
+                    Program.formMain.formHint.ShowHint(this,
+                        research.Research.Item.Name,
+                        "",
+                        research.Research.Item.Description,
+                        research.GetTextRequirements(),
+                        research.Cost(),
+                        research.Cost() <= research.Building.Player.Gold,
+                        0,
+                        0, false, null);
+                }
             }
         }
 
@@ -85,7 +88,7 @@ namespace Fantasy_King_s_Battle
                 Visible = research != null;
                 if (Visible)
                 {
-                    Image = Program.formMain.ilItems.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilItems, research.Research.Item.ImageIndex, research.CheckRequirements())];
+                    Image = Program.formMain.ilItems.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilItems, research.Research.ImageIndex(), research.CheckRequirements())];
                     lblCost.Text = research.Cost().ToString();
                 }
             }

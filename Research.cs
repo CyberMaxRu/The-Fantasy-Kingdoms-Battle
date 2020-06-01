@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Diagnostics;
 using System.Drawing;
+using System.Deployment.Internal;
 
 namespace Fantasy_King_s_Battle
 {
@@ -55,6 +56,16 @@ namespace Fantasy_King_s_Battle
                 foreach (Requirement r in Requirements)
                     r.FindBuilding();
             }
+        }
+
+        internal int ImageIndex()
+        {
+            if (Item != null)
+                return Item.ImageIndex;
+            if (Ability != null)
+                return Ability.ImageIndex;
+
+            throw new Exception("Не могу определить ImageIndex.");
         }
     }
 }
