@@ -30,6 +30,14 @@ namespace Fantasy_King_s_Battle
 
         private int EntityInRow { get; }
 
+        internal void ApplyListEntity(List<Entity> list)
+        {
+            ValidateRows(list.Count);
+
+            for (int x = 0; x < panelEntities.Count; x++)
+                panelEntities[x].ShowEntity(x < list.Count ? list[x] : null);
+        }
+
         internal void ApplyListItem(List<Item> list)
         {
             ValidateRows(list.Count);

@@ -33,8 +33,7 @@ namespace Fantasy_King_s_Battle
 
         internal Point Coord { get; }// Координаты исследования
         internal int Layer { get; }// Визуальный слой исследования
-        internal Item Item { get; private set; }// Получаемый предмет
-        internal Ability Ability { get; private set; }// Получаемая способность
+        internal Entity Entity { get; private set; }// Получаемый предмет
         internal int Cost { get; }// Стоимость исследования
         internal List<Requirement> Requirements { get; } = new List<Requirement>();
 
@@ -42,7 +41,7 @@ namespace Fantasy_King_s_Battle
         {
             if (nameItem != "")
             {
-                Item = FormMain.Config.FindItem(nameItem);
+                Entity = FormMain.Config.FindItem(nameItem);
                 nameItem = null;
 
                 foreach (Requirement r in Requirements)
@@ -50,22 +49,12 @@ namespace Fantasy_King_s_Battle
             }
             else if (nameAbility != "")
             {
-                Ability = FormMain.Config.FindAbility(nameAbility);
+                Entity = FormMain.Config.FindAbility(nameAbility);
                 nameAbility = null;
 
                 foreach (Requirement r in Requirements)
                     r.FindBuilding();
             }
-        }
-
-        internal int ImageIndex()
-        {
-            if (Item != null)
-                return Item.ImageIndex;
-            if (Ability != null)
-                return Ability.ImageIndex;
-
-            throw new Exception("Не могу определить ImageIndex.");
         }
     }
 }

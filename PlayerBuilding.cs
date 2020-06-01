@@ -33,7 +33,7 @@ namespace Fantasy_King_s_Battle
         internal int Level { get; private set; }
         internal List<PlayerHero> Heroes { get; } = new List<PlayerHero>();
         internal List<PlayerResearch> Researches { get; } = new List<PlayerResearch>();
-        internal List<Item> Items { get; } = new List<Item>();// Товары, доступные в строении
+        internal List<Entity> Items { get; } = new List<Entity>();// Товары, доступные в строении
 
         internal void UpdatePanel()
         {

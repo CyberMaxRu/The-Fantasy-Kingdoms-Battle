@@ -56,16 +56,16 @@ namespace Fantasy_King_s_Battle
 
             Building.Player.SpendGold(Cost());
             Building.Researches.Remove(this);
-            AddItem(Research.Item);
+            AddEntity(Research.Entity);
 
             Program.formMain.ShowGold();
         }
 
-        internal void AddItem(Item item)
+        internal void AddEntity(Entity entity)
         {
-            Debug.Assert(item != null);
+            Debug.Assert(entity != null);
 
-            Building.Items.Add(item);
+            Building.Items.Add(entity);
         }
     }
 }
