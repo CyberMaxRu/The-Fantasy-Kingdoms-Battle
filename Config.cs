@@ -102,6 +102,9 @@ namespace Fantasy_King_s_Battle
                 Heroes.Add(new Hero(n));
             }
 
+            foreach (Ability a in Abilities)
+                a.TuneDeferredLinks();
+
             // Загрузка навыков
             xmlDoc = CreateXmlDocument("Config\\Skills.xml");
 

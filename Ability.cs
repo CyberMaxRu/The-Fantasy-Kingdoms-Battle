@@ -9,15 +9,23 @@ using System.Xml;
 namespace Fantasy_King_s_Battle
 {
     // Класс способности
-    internal enum TypeAbility { Attack, Spell }
+    internal enum TypeAbility { Attack, Spell, Buff }
+    internal enum TypeTarget { Self, EnemyUnit }// Тип цели для способности
+    internal enum Effect { Taunt, Slow }// Эффекты
 
     internal sealed class Ability : Entity
     {
+        private List<string> classesHeroesString = new List<string>();
         public Ability(XmlNode n) : base(n)
         {
             TypeAbility = (TypeAbility)Enum.Parse(typeof(TypeAbility), n.SelectSingleNode("TypeAbility").InnerText);
             TypeAttack = (TypeAttack)Enum.Parse(typeof(TypeAttack), n.SelectSingleNode("TypeAttack").InnerText);
+            TypeTarget = (TypeTarget)Enum.Parse(typeof(TypeTarget), n.SelectSingleNode("TypeTarget").InnerText);
+            MinUnitLevel = Convert.ToInt32(n.SelectSingleNode("MinUnitLevel").InnerText);
+            Ranged = Convert.ToBoolean(n.SelectSingleNode("Ranged").InnerText); ;
+            AoeRadius = Convert.ToInt32(n.SelectSingleNode("AoeRadius").InnerText); ;
             SkillModificator = Convert.ToDouble(n.SelectSingleNode("SkillModif").InnerText);
+            CoolDown = Convert.ToInt32(n.SelectSingleNode("CoolDown").InnerText);
 
             // Проверяем, что таких же ID и наименования нет
             foreach (Ability a in FormMain.Config.Abilities)
@@ -31,10 +39,69 @@ namespace Fantasy_King_s_Battle
                 if (a.ImageIndex == ImageIndex)
                     throw new Exception("В конфигурации способностей повторяется ImageIndex = " + ImageIndex.ToString());
             }
+
+            // Загружаем эффекты
+            XmlNode ne = n.SelectSingleNode("Effects");
+            Effect e;
+
+            foreach (XmlNode l in ne.SelectNodes("Effect"))
+            {
+                e = (Effect)Enum.Parse(typeof(Effect), l.InnerText);
+
+                // Проверяем, что такой эффект не повторяется
+                foreach (Effect e2 in Effects)
+                {
+                    if (e == e2)
+                        throw new Exception("Эффект " + e.ToString() + " повторяется в списке эффектов способности.");
+                }
+
+                Effects.Add(e);
+            }
+
+            if (TypeAbility == TypeAbility.Buff)
+            {
+                Debug.Assert(TypeAttack == TypeAttack.None);
+                //Debug.Assert(Effects.Count > 0);
+            }
+
+            // Загружаем классы героев, которые могут использовать способность
+            XmlNode nch = n.SelectSingleNode("ClassesHeroes");
+            string nameHero;
+
+            foreach (XmlNode l in nch.SelectNodes("ClassHero"))
+            {
+                nameHero = l.InnerText;
+
+                // Проверяем, что такой класс героев не повторяется
+                foreach (string nameHero2 in classesHeroesString)
+                {
+                    if (nameHero == nameHero2)
+                        throw new Exception("Класс героев " + nameHero + " повторяется в списке классов героев способности.");
+                }
+
+                classesHeroesString.Add(nameHero);
+            }
+
+            Debug.Assert(classesHeroesString.Count > 0);
         }
 
-        internal TypeAbility TypeAbility { get; }
         internal TypeAttack TypeAttack { get; }
+        internal TypeAbility TypeAbility { get; }
+        internal TypeTarget TypeTarget { get; }
+        internal int MinUnitLevel { get; }
+        internal bool Ranged { get; }
+        internal int AoeRadius { get; }
         internal double SkillModificator { get; }
+        internal int CoolDown { get; }
+        internal List<Effect> Effects { get; } = new List<Effect>();
+        internal List<Hero> ClassesHeroes { get; } = new List<Hero>();
+
+        internal void TuneDeferredLinks()
+        {
+            foreach (string nameHero in classesHeroesString)
+                ClassesHeroes.Add(FormMain.Config.FindHero(nameHero));
+
+            classesHeroesString = null;
+        }
     }
 }

@@ -8,6 +8,114 @@
     <Cost>20</Cost>
     <TypeAbility>Attack</TypeAbility>
     <TypeAttack>Melee</TypeAttack>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <AoeRadius>0</AoeRadius>
     <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Warrior</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>WarriorTaunt</ID>
+    <Name>Вызов на бой</Name>
+    <Description>Вынуждает врагов атаковать воина</Description>
+    <ImageIndex>36</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Attack</TypeAbility>
+    <TypeAttack>Melee</TypeAttack>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>5</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <AoeRadius>5</AoeRadius>
+    <SkillModif>1,5</SkillModif>
+    <CoolDown>15</CoolDown>
+    <Effects>
+      <Effect>Taunt</Effect>
+    </Effects>
+    <ClassesHeroes>
+      <ClassHero>Warrior</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>WarriorAntiknockbackBuff</ID>
+    <Name>Устойчивость</Name>
+    <Description>- Накладывает эффект, дающий иммунитет к отбрасыванию</Description>
+    <ImageIndex>37</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Buff</TypeAbility>
+    <TypeAttack>None</TypeAttack>
+    <TypeTarget>Self</TypeTarget>
+    <MinUnitLevel>10</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>60</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Warrior</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>WarriorImpAttack</ID>
+    <Name>Сокрушительный удар</Name>
+    <Description>- Наносит большой урон/- Рукопашная атака</Description>
+    <ImageIndex>38</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Attack</TypeAbility>
+    <TypeAttack>Melee</TypeAttack>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>3,0</SkillModif>
+    <Effects/>
+    <CoolDown>10</CoolDown>
+      <ClassesHeroes>
+      <ClassHero>Warrior</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>WarriorMaimAttack</ID>
+    <Name>Калечащий удар</Name>
+    <Description>- Наносит огромный урон/- Накладывает эффект, замедляющий цель/- Рукопашная атака</Description>
+    <ImageIndex>39</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Attack</TypeAbility>
+    <TypeAttack>Melee</TypeAttack>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>5,0</SkillModif>
+    <CoolDown>30</CoolDown>
+    <Effects>
+      <Effect>Slow</Effect>
+    </Effects>
+      <ClassesHeroes>
+      <ClassHero>Warrior</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>WarriorResistanceBuff</ID>
+    <Name>Сопротивление боли</Name>
+    <Description>- Накладывает на воина эффект, повышающий защиту от всех атак</Description>
+    <ImageIndex>40</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Buff</TypeAbility>
+    <TypeAttack>None</TypeAttack>
+    <TypeTarget>Self</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>60</CoolDown>
+    <Effects/>
+      <ClassesHeroes>
+      <ClassHero>Warrior</ClassHero>
+    </ClassesHeroes>
   </Ability>
 </Abilities>
