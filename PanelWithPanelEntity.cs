@@ -58,7 +58,8 @@ namespace Fantasy_King_s_Battle
 
             for (int x = 0; x < EntityInRow; x++)
             {
-                pe = new PanelEntity(this, Program.formMain.ilItems, 0);
+                pe = new PanelEntity();
+                pe.Parent = this;
                 pe.Left = x * (pe.Width + 1);
                 pe.Top = rows * (pe.Height + 1);
 

@@ -85,7 +85,8 @@ namespace Fantasy_King_s_Battle
             {
                 for (int x = 0; x < FormMain.SLOTS_IN_LINE; x++)
                 {
-                    pb = new PanelEntity(this, Program.formMain.ilItems, x + y * FormMain.SLOTS_IN_LINE);
+                    pb = new PanelEntity();
+                    pb.Parent = this;
                     pb.Left = Config.GRID_SIZE + ((pb.Width + Config.GRID_SIZE) * x);
                     pb.Top = GuiUtils.NextTop(lblSpeed) + ((pb.Height + Config.GRID_SIZE) * y);
 

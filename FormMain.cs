@@ -685,7 +685,8 @@ namespace Fantasy_King_s_Battle
             for (int y = 0; y < WH_SLOT_LINES; y++)
                 for (int x = 0; x < WH_SLOTS_IN_LINE; x++)
                 {
-                    pi = new PanelEntity(panelWarehouse, ilItems, x + y * WH_SLOTS_IN_LINE);
+                    pi = new PanelEntity();
+                    pi.Parent = panelWarehouse;
                     pi.Left = Config.GRID_SIZE + (pi.Width + Config.GRID_SIZE) * x;
                     pi.Top = Config.GRID_SIZE + (pi.Height + Config.GRID_SIZE) * y;
                     pi.MouseMove += PanelCell_MouseMove;

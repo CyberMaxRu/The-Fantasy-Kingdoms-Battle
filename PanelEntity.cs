@@ -12,21 +12,14 @@ namespace Fantasy_King_s_Battle
     // Класс панели для рисования иконки сущности
     internal sealed class PanelEntity : PictureBox
     {
-        private readonly ImageList imageListItems;
         private Point pointIcon;
         private Point pointQuantity;
         private PlayerItem playerItem;
         private Entity entity;
         private string quantity;
 
-        public PanelEntity(Control parent, ImageList ilItems, int numberCell)
+        public PanelEntity()
         {
-            Debug.Assert(numberCell >= 0);
-
-            imageListItems = ilItems;
-            NumberCell = numberCell;
-
-            Parent = parent;
             Size = Program.formMain.bmpBorderForIcon.Size;
             BackColor = Color.Transparent;
             DoubleBuffered = true;
@@ -62,7 +55,7 @@ namespace Fantasy_King_s_Battle
 
             if (entity != null)
             {
-                e.Graphics.DrawImageUnscaled(imageListItems.Images[entity.ImageIndex], pointIcon);
+                e.Graphics.DrawImageUnscaled(Program.formMain.ilItems.Images[entity.ImageIndex], pointIcon);
                 e.Graphics.DrawImageUnscaled(Program.formMain.bmpBorderForIcon, 0, 0);
             }
             else
