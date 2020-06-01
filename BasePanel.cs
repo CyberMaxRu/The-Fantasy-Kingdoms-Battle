@@ -12,7 +12,7 @@ namespace Fantasy_King_s_Battle
     internal class BasePanel : Control
     {
         private readonly Pen penBorder;
-        private readonly Rectangle rectBorder;
+        private Rectangle rectBorder;
         private Bitmap bmpBackground;
 
         public BasePanel(bool withBackground) : base()
@@ -30,6 +30,9 @@ namespace Fantasy_King_s_Battle
         {
             base.OnClientSizeChanged(e);
 
+            rectBorder.Width = Width - 1;
+            rectBorder.Height = Height - 1;
+            
             if (bmpBackground != null)
             {
                 bmpBackground.Dispose();
