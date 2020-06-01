@@ -410,6 +410,7 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <TypeIncome>None</TypeIncome>
+    <LayersResearches>1</LayersResearches>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -433,6 +434,29 @@
         <MaxHeroes>14</MaxHeroes>
       </Level>
     </Levels>
+    <Researches>
+      <Research>
+        <PosX>1</PosX>
+        <PosY>3</PosY>
+        <Layer>1</Layer>
+        <Ability>WarriorImpAttack</Ability>
+        <Cost>200</Cost>
+      </Research>
+      <Research>
+        <PosX>2</PosX>
+        <PosY>3</PosY>
+        <Layer>1</Layer>
+        <Ability>WarriorMaimAttack</Ability>
+        <Cost>500</Cost>
+      </Research>
+      <Research>
+        <PosX>3</PosX>
+        <PosY>3</PosY>
+        <Layer>1</Layer>
+        <Ability>WarriorResistanceBuff</Ability>
+        <Cost>200</Cost>
+      </Research>
+    </Researches>
   </Building>
   <Building>
     <ID>GuildHunter</ID>

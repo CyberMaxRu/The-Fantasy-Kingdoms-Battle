@@ -13,31 +13,48 @@ namespace Fantasy_King_s_Battle
     internal sealed class Research
     {
         private string nameItem;
+        private string nameAbility;
 
         public Research(XmlNode n)
         {
             Coord = new Point(Convert.ToInt32(n.SelectSingleNode("PosX").InnerText) - 1, Convert.ToInt32(n.SelectSingleNode("PosY").InnerText) - 1);
             Layer = Convert.ToInt32(n.SelectSingleNode("Layer").InnerText) - 1;
-            nameItem = n.SelectSingleNode("Item").InnerText;
+            nameItem = n.SelectSingleNode("Item") != null ? n.SelectSingleNode("Item").InnerText : "";
+            nameAbility = n.SelectSingleNode("Ability") != null ? n.SelectSingleNode("Ability").InnerText : "";
             Cost = Convert.ToInt32(n.SelectSingleNode("Cost").InnerText);
 
             // Загружаем требования
             Utils.LoadRequirements(Requirements, n);
+
+            Debug.Assert((nameItem != "") || (nameAbility != ""));
+            Debug.Assert(!((nameItem != "") && (nameAbility != "")));
         }
 
         internal Point Coord { get; }// Координаты исследования
         internal int Layer { get; }// Визуальный слой исследования
         internal Item Item { get; private set; }// Получаемый предмет
+        internal Ability Ability { get; private set; }// Получаемая способность
         internal int Cost { get; }// Стоимость исследования
         internal List<Requirement> Requirements { get; } = new List<Requirement>();
 
         internal void FindItem()
         {
-            Item = FormMain.Config.FindItem(nameItem);
-            nameItem = null;
+            if (nameItem != "")
+            {
+                Item = FormMain.Config.FindItem(nameItem);
+                nameItem = null;
 
-            foreach (Requirement r in Requirements)
-                r.FindBuilding();
+                foreach (Requirement r in Requirements)
+                    r.FindBuilding();
+            }
+            else if (nameAbility != "")
+            {
+                Ability = FormMain.Config.FindAbility(nameAbility);
+                nameAbility = null;
+
+                foreach (Requirement r in Requirements)
+                    r.FindBuilding();
+            }
         }
     }
 }

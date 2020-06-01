@@ -74,10 +74,6 @@ namespace Fantasy_King_s_Battle
                 Items.Add(new Item(n));
             }
 
-            // Настраиваем исследования
-            foreach (Building b in Buildings)
-                b.TuneResearches();
-
             // Загрузка конфигурации способностей
             xmlDoc = CreateXmlDocument("Config\\Abilities.xml");
 
@@ -107,6 +103,9 @@ namespace Fantasy_King_s_Battle
 
             foreach (Hero h in Heroes)
                 h.CheckAfterLoadConfig();
+
+            foreach (Building b in Buildings)
+                b.TuneResearches();
 
             // Загрузка навыков
             xmlDoc = CreateXmlDocument("Config\\Skills.xml");
