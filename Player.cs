@@ -509,8 +509,7 @@ namespace Fantasy_King_s_Battle
         // Реализация интерфейса
         ImageList ICell.ImageList() => Program.formMain.ilPlayerAvatars;
         int ICell.ImageIndex() => ImageIndexAvatar;
-        int ICell.Level() => Castle.Level;
-        int ICell.Quantity() => 0;
+        int ICell.Value() => Castle.Level;
         void ICell.PrepareHint()
         {
             

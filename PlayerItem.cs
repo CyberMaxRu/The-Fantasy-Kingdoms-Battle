@@ -26,8 +26,7 @@ namespace Fantasy_King_s_Battle
         // Реализация интерфейса
         ImageList ICell.ImageList() => Program.formMain.ilItems;
         int ICell.ImageIndex() => Item.ImageIndex;
-        int ICell.Level() => 0;
-        int ICell.Quantity() => Quantity;
+        int ICell.Value() => Quantity;
         void ICell.PrepareHint()
         {
 

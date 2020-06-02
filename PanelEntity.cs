@@ -14,8 +14,7 @@ namespace Fantasy_King_s_Battle
     {
         ImageList ImageList();
         int ImageIndex();
-        int Level();
-        int Quantity();
+        int Value();        
         void PrepareHint();
     }
 
@@ -23,24 +22,20 @@ namespace Fantasy_King_s_Battle
     internal sealed class PanelEntity : Label
     {
         private Point pointIcon;
-        private RectangleF rectQuantity;
-        private StringFormat strFormatQuantity = new StringFormat();
         private PlayerItem playerItem;
         private Entity entity;
-        private string quantity;
         private ICell cell;
 
         public PanelEntity()
         {
             Size = Program.formMain.bmpBorderForIcon.Size;
             BackColor = Color.Transparent;
-            ForeColor = Program.formMain.ColorLevel;
-            Font = Program.formMain.fontLevel;
-            TextAlign = ContentAlignment.TopRight;
-
+            ForeColor = Program.formMain.ColorQuantity;
+            Font = Program.formMain.fontQuantity;
+            TextAlign = ContentAlignment.BottomRight;
+            Padding = new Padding(0, 0, 0, 3);
+            
             pointIcon = new Point(3, 2);
-            rectQuantity = new RectangleF(4, Height - 24, Width - 8, 24);
-            strFormatQuantity.Alignment = StringAlignment.Far;
         }
 
         protected override void OnMouseEnter(EventArgs e)
@@ -80,12 +75,6 @@ namespace Fantasy_King_s_Battle
             else
                 e.Graphics.DrawImage(Program.formMain.bmpEmptyEntity, new Rectangle(1, 0, Program.formMain.bmpBorderForIcon.Width - 2, Program.formMain.bmpBorderForIcon.Height - 2));
 
-            if ((cell != null) && (cell.Quantity() > 0))
-            {
-                quantity = cell.Quantity().ToString();
-                e.Graphics.DrawString(quantity, Program.formMain.fontQuantity, Program.formMain.brushQuantity, rectQuantity, strFormatQuantity);
-            }
-
             base.OnPaint(e);
         }
 
@@ -112,7 +101,9 @@ namespace Fantasy_King_s_Battle
         internal void ShowCell(ICell c)
         {
             cell = c;
-            Text = (c != null) && (c.Level() > 0) ? c.Level().ToString() : "";
+
+            Text = (cell != null) && (cell.Value() > 0) ? c.Value().ToString() : "";
+
             Invalidate();
         }
     }

@@ -72,8 +72,7 @@ namespace Fantasy_King_s_Battle
         internal int DefenseMissile { get; }
         internal int DefenseMagic { get; }
 
-        protected override int GetLevel() => 0;
-        protected override int GetQuantity() => 0;
+        protected override int GetValue() => 0;
         protected override void DoPrepareHint()
         {
 

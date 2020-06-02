@@ -27,15 +27,13 @@ namespace Fantasy_King_s_Battle
         internal int Cost { get; }
 
         // Методы для потомков для возврата значений в интерфейс
-        protected abstract int GetLevel();
-        protected abstract int GetQuantity();
+        protected abstract int GetValue();
         protected abstract void DoPrepareHint();
 
         // Реализация интерфейса
         ImageList ICell.ImageList() => Program.formMain.ilItems;
         int ICell.ImageIndex() => ImageIndex;
-        int ICell.Level() => GetLevel();
-        int ICell.Quantity() => GetQuantity();
+        int ICell.Value() => GetValue();
         void ICell.PrepareHint() 
         {
             DoPrepareHint();

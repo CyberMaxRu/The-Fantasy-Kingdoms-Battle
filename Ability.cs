@@ -105,8 +105,7 @@ namespace Fantasy_King_s_Battle
             classesHeroesString = null;
         }
 
-        protected override int GetLevel() => 0;
-        protected override int GetQuantity() => 0;
+        protected override int GetValue() => 0;
         protected override void DoPrepareHint()
         {
 
