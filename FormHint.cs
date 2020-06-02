@@ -5,9 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
-using System.ComponentModel;
-using System.Windows.Forms.VisualStyles;
-using System.Runtime.InteropServices;
+using System.Diagnostics;
 
 namespace Fantasy_King_s_Battle
 {
@@ -47,6 +45,8 @@ namespace Fantasy_King_s_Battle
         internal int stepsInSecond = 50;// 25 кадров в секунду, больше не имеет смысла
         internal DateTime dateTimeStartOpacity;
         internal Font fontRequirement;
+
+        private int nextTop;
 
         public FormHint(Image backgroundImage, ImageList ilGui16, ImageList ilParameters)
         {
@@ -233,6 +233,8 @@ namespace Fantasy_King_s_Battle
                 Enabled = false
             };
             timerOpacity.Tick += TimerOpacity_Tick;
+
+            Clear();
         }
 
         protected override bool ShowWithoutActivation => true;
@@ -274,13 +276,34 @@ namespace Fantasy_King_s_Battle
             timerOpacity.Enabled = true; 
         }
 
-        internal void ShowHint(Control c, string header, string action, string description, List<TextRequirement> requirement, int gold, bool goldEnough,
-            int income, int builders, bool buildersEnough, PlayerItem pi)
+        internal void Clear()
         {
-            Location = c.PointToScreen(new Point(0, c.Height + 2));
+            lblAction.Hide();
+            lblDescription.Hide();
+            lblIncome.Hide();
+
+            foreach (Label l in lblRequirement)
+                l.Dispose();
+            lblRequirement.Clear();
+
+            lblGold.Hide();
+            lblBuilders.Hide();
+
+            lblDamageMelee.Hide();
+            lblDamageMissile.Hide();
+            lblDamageMagic.Hide();
+            lblDefenseMelee.Hide();
+            lblDefenseMissile.Hide();
+            lblDefenseMagic.Hide();
+
+            nextTop = GuiUtils.NextTop(lblHeader);
+        }
+
+        internal void AddStep1Header(string header, string action, string description)
+        {
+            Debug.Assert(header.Length > 0);
 
             lblHeader.Text = header;
-            int nextTop = GuiUtils.NextTop(lblHeader);
 
             if (action.Length > 0)
             {
@@ -290,8 +313,6 @@ namespace Fantasy_King_s_Battle
 
                 nextTop = GuiUtils.NextTop(lblAction);
             }
-            else
-                lblAction.Hide();
 
             if (description.Length > 0)
             {
@@ -301,9 +322,10 @@ namespace Fantasy_King_s_Battle
 
                 nextTop = GuiUtils.NextTop(lblDescription);
             }
-            else
-                lblDescription.Hide();
+        }
 
+        internal void AddStep2Income(int income)
+        {
             if (income > 0)
             {
                 lblIncome.Show();
@@ -312,40 +334,36 @@ namespace Fantasy_King_s_Battle
 
                 nextTop = GuiUtils.NextTop(lblIncome);
             }
-            else
-                lblIncome.Hide();
+        }
 
-            // Секция требований
-            foreach (Label l in lblRequirement)
-            {
-                l.Dispose();
-            }
-            lblRequirement.Clear();
+        internal void AddStep3Requirement(List<TextRequirement> requirement)
+        {
+            Debug.Assert(requirement != null);
 
             Label lr;
-            if (requirement != null)
+            foreach (TextRequirement tr in requirement)
             {
-                foreach (TextRequirement tr in requirement)
+                lr = new Label()
                 {
-                    lr = new Label()
-                    {
-                        Parent = this,
-                        Left = Config.GRID_SIZE,
-                        Top = nextTop,
-                        Width = Width - (Config.GRID_SIZE * 2),
-                        AutoSize = true,
-                        BackColor = Color.Transparent,
-                        ForeColor = tr.Performed == true ? Color.Lime : Color.Crimson,
-                        Font = fontRequirement,
-                        Text = tr.Text
-                    };
-                    lr.MaximumSize = new Size(Width - Config.GRID_SIZE * 2, 0);
+                    Parent = this,
+                    Left = Config.GRID_SIZE,
+                    Top = nextTop,
+                    Width = Width - (Config.GRID_SIZE * 2),
+                    AutoSize = true,
+                    BackColor = Color.Transparent,
+                    ForeColor = tr.Performed == true ? Color.Lime : Color.Crimson,
+                    Font = fontRequirement,
+                    Text = tr.Text
+                };
+                lr.MaximumSize = new Size(Width - Config.GRID_SIZE * 2, 0);
 
-                    lblRequirement.Add(lr);
-                    nextTop = GuiUtils.NextTop(lr);
-                }
+                lblRequirement.Add(lr);
+                nextTop = GuiUtils.NextTop(lr);
             }
+        }
 
+        internal void AddStep4Gold(int gold, bool goldEnough)
+        {
             if (gold > 0)
             {
                 lblGold.ForeColor = goldEnough == true ? Color.Lime : Color.Crimson;
@@ -355,64 +373,62 @@ namespace Fantasy_King_s_Battle
 
                 nextTop = GuiUtils.NextTop(lblGold);
             }
-            else
-                lblGold.Hide();
+        }
 
-            if (builders > 0)
+        internal void AddStep5Builders(int builders, bool buildersEnough)
+        {
+            Debug.Assert(builders > 0);
+
+            lblBuilders.ForeColor = buildersEnough == true ? Color.Lime : Color.Crimson;
+            lblBuilders.Top = nextTop;
+            lblBuilders.Text = "     " + builders.ToString();
+            lblBuilders.Show();
+
+            nextTop = GuiUtils.NextTop(lblBuilders);
+        }
+
+        internal void AddStep6PlayerItem(PlayerItem pi)
+        {
+            Debug.Assert(pi != null);
+
+            switch (pi.Item.TypeItem.Category)
             {
-                lblBuilders.ForeColor = buildersEnough == true ? Color.Lime : Color.Crimson;
-                lblBuilders.Top = nextTop;
-                lblBuilders.Text = "     " + builders.ToString();
-                lblBuilders.Show();
+                case CategoryItem.Weapon:
+                    lblDamageMelee.Top = nextTop;
+                    lblDamageMissile.Top = nextTop;
+                    lblDamageMagic.Top = nextTop;
 
-                nextTop = GuiUtils.NextTop(lblBuilders);
+                    lblDamageMelee.Text = "     " + (pi.Item.DamageMelee > 0 ? pi.Item.DamageMelee.ToString() : "");
+                    lblDamageMissile.Text = "     " + (pi.Item.DamageMissile > 0 ? pi.Item.DamageMissile.ToString() : "");
+                    lblDamageMagic.Text = "     " + (pi.Item.DamageMagic > 0 ? pi.Item.DamageMagic.ToString() : "");
+
+                    lblDamageMelee.Show();
+                    lblDamageMissile.Show();
+                    lblDamageMagic.Show();
+
+                    nextTop = GuiUtils.NextTop(lblDamageMelee);
+                    break;
+                case CategoryItem.Armour:
+                    lblDefenseMelee.Top = nextTop;
+                    lblDefenseMissile.Top = nextTop;
+                    lblDefenseMagic.Top = nextTop;
+
+                    lblDefenseMelee.Text = "     " + (pi.Item.DefenseMelee > 0 ? pi.Item.DefenseMelee.ToString() : "");
+                    lblDefenseMissile.Text = "     " + (pi.Item.DefenseMissile > 0 ? pi.Item.DefenseMissile.ToString() : "");
+                    lblDefenseMagic.Text = "     " + (pi.Item.DefenseMagic > 0 ? pi.Item.DefenseMagic.ToString() : "");
+
+                    lblDefenseMelee.Show();
+                    lblDefenseMissile.Show();
+                    lblDefenseMagic.Show();
+
+                    nextTop = GuiUtils.NextTop(lblDefenseMelee);
+                    break;
             }
-            else
-                lblBuilders.Hide();
+        }
 
-            lblDamageMelee.Hide();
-            lblDamageMissile.Hide();
-            lblDamageMagic.Hide();
-            lblDefenseMelee.Hide();
-            lblDefenseMissile.Hide();
-            lblDefenseMagic.Hide();
-
-            if (pi != null)
-            {
-                switch (pi.Item.TypeItem.Category)
-                {
-                    case CategoryItem.Weapon:
-                        lblDamageMelee.Top = nextTop;
-                        lblDamageMissile.Top = nextTop;
-                        lblDamageMagic.Top = nextTop;
-
-                        lblDamageMelee.Text = "     " + (pi.Item.DamageMelee > 0 ? pi.Item.DamageMelee.ToString() : "");
-                        lblDamageMissile.Text = "     " + (pi.Item.DamageMissile > 0 ? pi.Item.DamageMissile.ToString() : "");
-                        lblDamageMagic.Text = "     " + (pi.Item.DamageMagic > 0 ? pi.Item.DamageMagic.ToString() : "");
-
-                        lblDamageMelee.Show();
-                        lblDamageMissile.Show();
-                        lblDamageMagic.Show();
-
-                        nextTop = GuiUtils.NextTop(lblDamageMelee);
-                        break;
-                    case CategoryItem.Armour:
-                        lblDefenseMelee.Top = nextTop;
-                        lblDefenseMissile.Top = nextTop;
-                        lblDefenseMagic.Top = nextTop;
-
-                        lblDefenseMelee.Text = "     " + (pi.Item.DefenseMelee > 0 ? pi.Item.DefenseMelee.ToString() : "");
-                        lblDefenseMissile.Text = "     " + (pi.Item.DefenseMissile > 0 ? pi.Item.DefenseMissile.ToString() : "");
-                        lblDefenseMagic.Text = "     " + (pi.Item.DefenseMagic > 0 ? pi.Item.DefenseMagic.ToString() : "");
-
-                        lblDefenseMelee.Show();
-                        lblDefenseMissile.Show();
-                        lblDefenseMagic.Show();
-
-                        nextTop = GuiUtils.NextTop(lblDefenseMelee);
-                        break;
-                }
-            }
+        internal void ShowHint(Control c)
+        {
+            Location = c.PointToScreen(new Point(0, c.Height + 2));
 
             bool needReshow = (Visible == false) || (Height != nextTop);
             Height = nextTop;

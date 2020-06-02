@@ -29,7 +29,8 @@ namespace Fantasy_King_s_Battle
         int ICell.Value() => Quantity;
         void ICell.PrepareHint()
         {
-
+            Program.formMain.formHint.AddStep1Header(Item.Name, "", Item.Description);
+            Program.formMain.formHint.AddStep6PlayerItem(this);
         }
     }
 }

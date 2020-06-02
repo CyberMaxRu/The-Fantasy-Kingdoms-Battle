@@ -44,15 +44,11 @@ namespace Fantasy_King_s_Battle
         {
             base.OnMouseEnter(e);
 
-            Program.formMain.formHint.ShowHint(this,
-                research.Research.Entity.Name,
-                "",
-                research.Research.Entity.Description,
-                research.GetTextRequirements(),
-                research.Cost(),
-                research.Cost() <= research.Building.Player.Gold,
-                0,
-                0, false, null);
+            Program.formMain.formHint.Clear();
+            Program.formMain.formHint.AddStep1Header(research.Research.Entity.Name, "", research.Research.Entity.Description);
+            Program.formMain.formHint.AddStep3Requirement(research.GetTextRequirements());
+            Program.formMain.formHint.AddStep4Gold(research.Cost(), research.Cost() <= research.Building.Player.Gold);
+            Program.formMain.formHint.ShowHint(this);
 
             mouseOver = true;
             Invalidate();

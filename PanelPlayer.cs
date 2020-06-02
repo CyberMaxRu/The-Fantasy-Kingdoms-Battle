@@ -104,7 +104,8 @@ namespace Fantasy_King_s_Battle
         {
             base.OnMouseEnter(e);
 
-            Program.formMain.formHint.ShowHint(this,
+            Program.formMain.formHint.Clear();
+            Program.formMain.formHint.AddStep1Header(
                 player.Name,
                 "Место №" + player.PositionInLobby.ToString(),
                 "Уровень Замка: " + player.LevelCastle.ToString() + Environment.NewLine
@@ -113,12 +114,8 @@ namespace Fantasy_King_s_Battle
                     + Environment.NewLine
                     + "Побед: " + player.Wins.ToString() + Environment.NewLine
                     + "Ничьих: " + player.Draws.ToString() + Environment.NewLine
-                    + "Поражений: " + player.Loses.ToString() + Environment.NewLine
-                    ,
-                null,
-                0,
-                false, 0,
-                0, false, null);
+                    + "Поражений: " + player.Loses.ToString() + Environment.NewLine);
+            Program.formMain.formHint.ShowHint(this);
         }
 
         protected override void OnMouseLeave(EventArgs e)

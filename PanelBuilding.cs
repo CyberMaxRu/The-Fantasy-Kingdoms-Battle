@@ -174,21 +174,19 @@ namespace Fantasy_King_s_Battle
 
         private void ShowHintBtnHireHero()
         {
-            Program.formMain.formHint.ShowHint(btnHireHero,
-                Building.Building.TrainedHero.Name, "",
-                Building.Building.TrainedHero.Description,
-                Building.GetTextRequirementsHire(),
-                Building.Building.TrainedHero.Cost, Building.Player.Gold >= Building.Building.TrainedHero.Cost, 0, 0, false, null);
+            Program.formMain.formHint.Clear();
+            Program.formMain.formHint.AddStep1Header(Building.Building.TrainedHero.Name, "", Building.Building.TrainedHero.Description);
+            Program.formMain.formHint.AddStep3Requirement(Building.GetTextRequirementsHire());
+            Program.formMain.formHint.AddStep4Gold(Building.Building.TrainedHero.Cost, Building.Player.Gold >= Building.Building.TrainedHero.Cost);
+            Program.formMain.formHint.ShowHint(btnHireHero);
         }
 
         private void pbBuilding_MouseEnter(object sender, EventArgs e)
         {
-            Program.formMain.formHint.ShowHint(pbBuilding,
-                Building.Building.Name,
-                Building.Level > 0 ? "Уровень " + Building.Level.ToString() : "",
-                Building.Building.Description
-                    + ((Building.Level > 0) && (Building.Building.TrainedHero != null) ? Environment.NewLine + Environment.NewLine + "Героев: " + Building.Heroes.Count.ToString() + "/" + Building.MaxHeroes().ToString() : "")
-                , null, 0, false, Building.Income(), 0, false, null);
+            Program.formMain.formHint.Clear();
+            Program.formMain.formHint.AddStep1Header(Building.Building.Name, Building.Level > 0 ? "Уровень " + Building.Level.ToString() : "", Building.Building.Description + ((Building.Level > 0) && (Building.Building.TrainedHero != null) ? Environment.NewLine + Environment.NewLine + "Героев: " + Building.Heroes.Count.ToString() + "/" + Building.MaxHeroes().ToString() : ""));
+            Program.formMain.formHint.AddStep2Income(Building.Income());
+            Program.formMain.formHint.ShowHint(this);
         }
 
         private void Control_MouseLeave(object sender, EventArgs e)
@@ -204,10 +202,15 @@ namespace Fantasy_King_s_Battle
         private void ShowHintBtnBuyOrUpgrade()
         {
             if (Building.Level < Building.Building.MaxLevel)
-                Program.formMain.formHint.ShowHint(btnBuyOrUpgrade,
-                    Building.Building.Name,
-                    Building.Level == 0 ? "Уровень 1" : (Building.CanLevelUp() == true) ? "Улучшить строение" : "",
-                    Building.Level == 0 ? Building.Building.Description : "", Building.GetTextRequirements(), Building.CostBuyOrUpgrade(), Building.Player.Gold >= Building.CostBuyOrUpgrade(), Building.IncomeNextLevel(), Building.Builders(), Building.Player.FreeBuilders >= Building.Builders(), null);
+            {
+                Program.formMain.formHint.Clear();
+                Program.formMain.formHint.AddStep1Header(Building.Building.Name, Building.Level == 0 ? "Уровень 1" : (Building.CanLevelUp() == true) ? "Улучшить строение" : "", Building.Level == 0 ? Building.Building.Description : "");
+                Program.formMain.formHint.AddStep2Income(Building.IncomeNextLevel());
+                Program.formMain.formHint.AddStep3Requirement(Building.GetTextRequirements());
+                Program.formMain.formHint.AddStep4Gold(Building.CostBuyOrUpgrade(), Building.Player.Gold >= Building.CostBuyOrUpgrade());
+                Program.formMain.formHint.AddStep5Builders(Building.Builders(), Building.Player.FreeBuilders >= Building.Builders());
+                Program.formMain.formHint.ShowHint(btnBuyOrUpgrade);
+            }
             else
                 Program.formMain.formHint.HideHint();
         }

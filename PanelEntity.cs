@@ -40,15 +40,12 @@ namespace Fantasy_King_s_Battle
         {
             base.OnMouseEnter(e);
 
-            /*if (cell != null)
-                Program.formMain.formHint.ShowHint(this,
-                    entity.Name,
-                    "",
-                    entity.Description,
-                    null,
-                    0,
-                    false, 0,
-                    0, false, playerItem);*/
+            if (cell != null)
+            {
+                Program.formMain.formHint.Clear();
+                cell.PrepareHint();
+                Program.formMain.formHint.ShowHint(this);
+            }
         }
 
         protected override void OnMouseLeave(EventArgs e)
