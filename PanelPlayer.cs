@@ -33,7 +33,8 @@ namespace Fantasy_King_s_Battle
             panelAvatar = new PanelEntity()
             {
                 Parent = this,
-                Location = new Point(Config.GRID_SIZE, Config.GRID_SIZE)
+                Location = new Point(Config.GRID_SIZE, Config.GRID_SIZE),
+                ShowHint = false
             };
             panelAvatar.ShowCell(player);
             panelAvatar.MouseEnter += PanelAvatar_MouseEnter;
@@ -105,16 +106,7 @@ namespace Fantasy_King_s_Battle
             base.OnMouseEnter(e);
 
             Program.formMain.formHint.Clear();
-            Program.formMain.formHint.AddStep1Header(
-                player.Name,
-                "Место №" + player.PositionInLobby.ToString(),
-                "Уровень Замка: " + player.LevelCastle.ToString() + Environment.NewLine
-                    + "Прочность Замка " + player.DurabilityCastle.ToString() + "/" + player.Lobby.TypeLobby.DurabilityCastle.ToString() + Environment.NewLine
-                    + "Героев: " + player.QuantityHeroes.ToString() + Environment.NewLine
-                    + Environment.NewLine
-                    + "Побед: " + player.Wins.ToString() + Environment.NewLine
-                    + "Ничьих: " + player.Draws.ToString() + Environment.NewLine
-                    + "Поражений: " + player.Loses.ToString() + Environment.NewLine);
+            (player as ICell).PrepareHint();
             Program.formMain.formHint.ShowHint(this);
         }
 

@@ -512,7 +512,16 @@ namespace Fantasy_King_s_Battle
         int ICell.Value() => Castle.Level;
         void ICell.PrepareHint()
         {
-            
+            Program.formMain.formHint.AddStep1Header(
+                Name,
+                "Место №" + PositionInLobby.ToString(),
+                "Уровень Замка: " + LevelCastle.ToString() + Environment.NewLine
+                    + "Прочность Замка " + DurabilityCastle.ToString() + "/" + Lobby.TypeLobby.DurabilityCastle.ToString() + Environment.NewLine
+                    + "Героев: " + QuantityHeroes.ToString() + Environment.NewLine
+                    + Environment.NewLine
+                    + "Побед: " + Wins.ToString() + Environment.NewLine
+                    + "Ничьих: " + Draws.ToString() + Environment.NewLine
+                    + "Поражений: " + Loses.ToString() + Environment.NewLine);
         }
     }
 }

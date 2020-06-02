@@ -34,13 +34,17 @@ namespace Fantasy_King_s_Battle
             Padding = new Padding(0, 0, 0, 3);
             
             pointIcon = new Point(3, 2);
+
+            ShowHint = true;
         }
+
+        internal bool ShowHint { get; set; }
 
         protected override void OnMouseEnter(EventArgs e)
         {
             base.OnMouseEnter(e);
 
-            if (cell != null)
+            if ((cell != null) && (ShowHint == true))
             {
                 Program.formMain.formHint.Clear();
                 cell.PrepareHint();

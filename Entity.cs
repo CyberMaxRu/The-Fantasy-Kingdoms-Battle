@@ -28,7 +28,10 @@ namespace Fantasy_King_s_Battle
 
         // Методы для потомков для возврата значений в интерфейс
         protected abstract int GetValue();
-        protected abstract void DoPrepareHint();
+        protected virtual void DoPrepareHint()
+        {
+            Program.formMain.formHint.AddStep1Header(Name, "", Description);
+        }
 
         // Реализация интерфейса
         ImageList ICell.ImageList() => Program.formMain.ilItems;
@@ -36,8 +39,7 @@ namespace Fantasy_King_s_Battle
         int ICell.Value() => GetValue();
         void ICell.PrepareHint() 
         {
-            Program.formMain.formHint.AddStep1Header(Name, "", Description);
-            // DoPrepareHint();
+            DoPrepareHint();
         }
     }
 }
