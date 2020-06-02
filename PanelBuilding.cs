@@ -39,7 +39,6 @@ namespace Fantasy_King_s_Battle
             imageListGuiHeroes = formMain.ilGuiHeroes;
             Left = left;
             Top = top;
-            DoubleBuffered = true;
 
             lblName = new Label()
             {

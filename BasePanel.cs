@@ -11,6 +11,11 @@ namespace Fantasy_King_s_Battle
         private Rectangle rectBorder = new Rectangle(0, 0, 0, 0);
         private Bitmap bmpBackground;
 
+        public BasePanel()
+        {
+            DoubleBuffered = true;
+        }
+
         protected override void OnClientSizeChanged(EventArgs e)
         {
             base.OnClientSizeChanged(e);

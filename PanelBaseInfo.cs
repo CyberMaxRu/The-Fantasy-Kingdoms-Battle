@@ -26,7 +26,6 @@ namespace Fantasy_King_s_Battle
         {
             Width = width;
             Height = height;
-            DoubleBuffered = true;
 
             lblName = new Label()
             {

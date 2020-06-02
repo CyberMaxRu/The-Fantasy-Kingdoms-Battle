@@ -9,7 +9,7 @@ using System.Drawing;
 namespace Fantasy_King_s_Battle
 {
     // Класс панели игрока (сокращенная информация)
-    internal sealed class PanelPlayer : Control
+    internal sealed class PanelPlayer : BasePanel
     {
         private readonly Player player;
         private Label lblDamageToCastle;
@@ -33,7 +33,6 @@ namespace Fantasy_King_s_Battle
 
             Parent = parent;
             Left = Config.GRID_SIZE;
-            DoubleBuffered = true;
 
             pointIconAvatar = new Point(Config.GRID_SIZE, Config.GRID_SIZE);
 
