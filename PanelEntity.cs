@@ -39,7 +39,7 @@ namespace Fantasy_King_s_Battle
             TextAlign = ContentAlignment.TopRight;
 
             pointIcon = new Point(3, 2);
-            rectQuantity = new RectangleF(0, Height - 22, Width, 22);
+            rectQuantity = new RectangleF(4, Height - 24, Width - 8, 24);
             strFormatQuantity.Alignment = StringAlignment.Far;
         }
 
