@@ -30,7 +30,7 @@ namespace Fantasy_King_s_Battle
         private readonly Rectangle rectBorder;
         private readonly SolidBrush brushBackColor = new SolidBrush(Color.White);
 
-        public PanelBuilding(Control parent, int left, int top, FormMain formMain) : base(false)
+        public PanelBuilding(Control parent, int left, int top, FormMain formMain) : base()
         {
             Parent = parent;
             imageListBuilding = formMain.ilBuildings;

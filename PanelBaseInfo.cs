@@ -22,7 +22,7 @@ namespace Fantasy_King_s_Battle
         private Point pointPage;
         private Page activePage;
 
-        public PanelBaseInfo(int width, int height) : base(true)
+        public PanelBaseInfo(int width, int height) : base()
         {
             Width = width;
             Height = height;
