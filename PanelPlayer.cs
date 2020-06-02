@@ -134,7 +134,7 @@ namespace Fantasy_King_s_Battle
             e.Graphics.DrawRectangle(penBorder, rectBorder);
 
             // Прочность замка
-            GuiUtils.DrawBand(e.Graphics, new Rectangle(Config.GRID_SIZE, Config.GRID_SIZE + panelAvatar.Height + 1, panelAvatar.Width, 4), brushCurDurability, brushMaxDurability, player.DurabilityCastle, player.Lobby.TypeLobby.DurabilityCastle);
+            GuiUtils.DrawBand(e.Graphics, new Rectangle(Config.GRID_SIZE, Config.GRID_SIZE + panelAvatar.Height + 1, panelAvatar.Width, 6), brushCurDurability, brushMaxDurability, player.DurabilityCastle, player.Lobby.TypeLobby.DurabilityCastle);
             
             // Результат последнего боя
             if (player.ResultLastBattle != ResultBattle.None)
