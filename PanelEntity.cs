@@ -112,7 +112,7 @@ namespace Fantasy_King_s_Battle
         internal void ShowCell(ICell c)
         {
             cell = c;
-            Text = c != null ? c.Level().ToString() : "";
+            Text = (c != null) && (c.Level() > 0) ? c.Level().ToString() : "";
             Invalidate();
         }
     }
