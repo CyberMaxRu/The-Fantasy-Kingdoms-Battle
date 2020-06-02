@@ -93,7 +93,7 @@ namespace Fantasy_King_s_Battle
         internal static int WH_SLOT_LINES = 3;
         internal static int WH_MAX_SLOTS = WH_SLOTS_IN_LINE * WH_SLOT_LINES;
         internal const int BUILDING_MAX_LINES = 3;
-        internal static Size PANEL_RESEARCH_SIZE = new Size(4, 3);
+        internal static Size PANEL_MENU_CELLS = new Size(4, 3);
 
         private readonly Lobby lobby;
         private Player curAppliedPlayer;
@@ -1207,8 +1207,8 @@ namespace Fantasy_King_s_Battle
 
             void ClearMenu()
             {
-                for (int y = 0; y < PANEL_RESEARCH_SIZE.Height; y++)
-                    for (int x = 0; x < PANEL_RESEARCH_SIZE.Width; x++)
+                for (int y = 0; y < PANEL_MENU_CELLS.Height; y++)
+                    for (int x = 0; x < PANEL_MENU_CELLS.Width; x++)
                         panelMenu.CellsMenu[y, x].Research = null;
             }
         }
