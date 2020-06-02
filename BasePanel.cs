@@ -8,13 +8,8 @@ namespace Fantasy_King_s_Battle
     internal class BasePanel : Control
     {
         private readonly Pen penBorder = new Pen(Color.Black);
-        private Rectangle rectBorder;
+        private Rectangle rectBorder = new Rectangle(0, 0, 0, 0);
         private Bitmap bmpBackground;
-        
-        public BasePanel() : base()
-        {
-            rectBorder = new Rectangle(0, 0, Width - 1, Height - 1);            
-        }
 
         protected override void OnClientSizeChanged(EventArgs e)
         {
