@@ -43,7 +43,7 @@ namespace Fantasy_King_s_Battle
         internal readonly Brush brushQuantity = new SolidBrush(Color.Yellow);
         internal readonly Brush brushCost = new SolidBrush(Color.White);
 
-        internal readonly Font fontToolBar = new Font("Microsodt Sans Serif", 12, FontStyle.Bold);
+        internal readonly Font fontToolBar = new Font("Microsoft Sans Serif", 12, FontStyle.Bold);
 
         private Panel panelWarehouse;
         private Panel panelHeroes;
