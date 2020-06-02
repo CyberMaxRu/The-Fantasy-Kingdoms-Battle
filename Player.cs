@@ -44,20 +44,20 @@ namespace Fantasy_King_s_Battle
             CellHeroes = new PlayerHero[Config.HERO_ROWS, Config.HERO_IN_ROW];
 
             //
-            AddItem(new PlayerItem(FormMain.Config.FindItem("Sword1"), 4));
-            AddItem(new PlayerItem(FormMain.Config.FindItem("Sword2"), 4));
-            AddItem(new PlayerItem(FormMain.Config.FindItem("Bow1"), 4));
-            AddItem(new PlayerItem(FormMain.Config.FindItem("Bow2"), 4));
-            AddItem(new PlayerItem(FormMain.Config.FindItem("ArmourWarrior1"), 4));
-            AddItem(new PlayerItem(FormMain.Config.FindItem("ArmourWarrior2"), 4));
-            AddItem(new PlayerItem(FormMain.Config.FindItem("ArmourArcher1"), 4));
-            AddItem(new PlayerItem(FormMain.Config.FindItem("ArmourArcher2"), 4));
-            AddItem(new PlayerItem(FormMain.Config.FindItem("PotionOfHealth"), 10));
-            AddItem(new PlayerItem(FormMain.Config.FindItem("PotionOfHealth"), 10));
-            AddItem(new PlayerItem(FormMain.Config.FindItem("PotionOfMana"), 10));
-            AddItem(new PlayerItem(FormMain.Config.FindItem("Regeneration"), 1));
-            AddItem(new PlayerItem(FormMain.Config.FindItem("Protection"), 1));
-            AddItem(new PlayerItem(FormMain.Config.FindItem("ImpProtection"), 2));
+            AddItem(new PlayerItem(FormMain.Config.FindItem("Sword1"), 4, true));
+            AddItem(new PlayerItem(FormMain.Config.FindItem("Sword2"), 4, true));
+            AddItem(new PlayerItem(FormMain.Config.FindItem("Bow1"), 4, true));
+            AddItem(new PlayerItem(FormMain.Config.FindItem("Bow2"), 4, true));
+            AddItem(new PlayerItem(FormMain.Config.FindItem("ArmourWarrior1"), 4, true));
+            AddItem(new PlayerItem(FormMain.Config.FindItem("ArmourWarrior2"), 4, true));
+            AddItem(new PlayerItem(FormMain.Config.FindItem("ArmourArcher1"), 4, true));
+            AddItem(new PlayerItem(FormMain.Config.FindItem("ArmourArcher2"), 4, true));
+            AddItem(new PlayerItem(FormMain.Config.FindItem("PotionOfHealth"), 10, true));
+            AddItem(new PlayerItem(FormMain.Config.FindItem("PotionOfHealth"), 10, true));
+            AddItem(new PlayerItem(FormMain.Config.FindItem("PotionOfMana"), 10, true));
+            AddItem(new PlayerItem(FormMain.Config.FindItem("Regeneration"), 1, true));
+            AddItem(new PlayerItem(FormMain.Config.FindItem("Protection"), 1, true));
+            AddItem(new PlayerItem(FormMain.Config.FindItem("ImpProtection"), 2, true));
 
             ValidateHeroes();
             CalcBuilders();
@@ -362,7 +362,7 @@ namespace Fantasy_King_s_Battle
             }
             else
             {
-                Warehouse[numberCell] = new PlayerItem(pi.Item, pi.Quantity);
+                Warehouse[numberCell] = new PlayerItem(pi.Item, pi.Quantity, true);
                 pi.Quantity = 0;
             }
         }
@@ -468,7 +468,7 @@ namespace Fantasy_King_s_Battle
             }
             else
             {
-                pi = new PlayerItem(Warehouse[fromCell].Item, quantity);
+                pi = new PlayerItem(Warehouse[fromCell].Item, quantity, true);
                 Warehouse[fromCell].Quantity -= quantity;
             }
 

@@ -33,7 +33,7 @@ namespace Fantasy_King_s_Battle
                     {
                         if ((ClassHero.Slots[i] != null) && (ClassHero.Slots[i].DefaultItem != null))
                         {
-                            Slots[i] = new PlayerItem(ClassHero.Slots[i].DefaultItem, 1);
+                            Slots[i] = new PlayerItem(ClassHero.Slots[i].DefaultItem, 1, false);
                         }
                     }
                 }
@@ -215,7 +215,7 @@ namespace Fantasy_King_s_Battle
 
             if (Slots[toCell] == null)
             {
-                Slots[toCell] = new PlayerItem(pi.Item, Math.Min(ClassHero.MaxQuantityTypeItem(ClassHero.Slots[toCell].TypeItem), quantity));
+                Slots[toCell] = new PlayerItem(pi.Item, Math.Min(ClassHero.MaxQuantityTypeItem(ClassHero.Slots[toCell].TypeItem), quantity), false);
                 pi.Quantity -= Slots[toCell].Quantity;
             }
             else
@@ -223,7 +223,7 @@ namespace Fantasy_King_s_Battle
                 int add = Math.Min(ClassHero.MaxQuantityTypeItem(ClassHero.Slots[toCell].TypeItem) - Slots[toCell].Quantity, quantity);
                 if (add > 0)
                 {
-                    Slots[toCell] = new PlayerItem(pi.Item, add);
+                    Slots[toCell] = new PlayerItem(pi.Item, add, false);
                     pi.Quantity -= add;
                 }
             }
@@ -260,7 +260,7 @@ namespace Fantasy_King_s_Battle
             }
             else
             {
-                pi = new PlayerItem(Slots[fromCell].Item, quantity);
+                pi = new PlayerItem(Slots[fromCell].Item, quantity, false);
                 Slots[fromCell].Quantity -= quantity;
             }
 
@@ -281,7 +281,7 @@ namespace Fantasy_King_s_Battle
         {
             if ((ClassHero.Slots[number].DefaultItem != null) && (Slots[number] == null))
             {
-                Slots[number] = new PlayerItem(ClassHero.Slots[number].DefaultItem, 1);
+                Slots[number] = new PlayerItem(ClassHero.Slots[number].DefaultItem, 1, false);
             }
         }
 
