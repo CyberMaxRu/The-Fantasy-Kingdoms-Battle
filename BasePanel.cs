@@ -34,7 +34,9 @@ namespace Fantasy_King_s_Battle
         {
             base.OnPaint(e);
 
+            e.Graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
             e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
+            e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
 
             // Рисуем бордюр
             e.Graphics.DrawRectangle(penBorder, rectBorder);

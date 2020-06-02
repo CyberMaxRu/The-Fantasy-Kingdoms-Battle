@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 
@@ -127,10 +123,7 @@ namespace Fantasy_King_s_Battle
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
-
-            e.Graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
-            e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
-            
+           
             // Фон панели
             if (player == player.Lobby.CurrentPlayer)
                 brushBackground.Color = Color.LightBlue;
