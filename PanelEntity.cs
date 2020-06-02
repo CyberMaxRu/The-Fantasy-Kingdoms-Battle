@@ -24,7 +24,7 @@ namespace Fantasy_King_s_Battle
             BackColor = Color.Transparent;
             DoubleBuffered = true;
 
-            pointIcon = new Point(3, 1);
+            pointIcon = new Point(3, 2);
             pointQuantity = new Point(2, Height - 20);
 
             MouseEnter += PanelItem_MouseEnter;
@@ -59,7 +59,7 @@ namespace Fantasy_King_s_Battle
                 e.Graphics.DrawImageUnscaled(Program.formMain.bmpBorderForIcon, 0, 0);
             }
             else
-                e.Graphics.DrawImage(Program.formMain.bmpEmptyEntity, new Rectangle(1, 1, Program.formMain.bmpBorderForIcon.Width - 2, Program.formMain.bmpBorderForIcon.Height - 2));
+                e.Graphics.DrawImage(Program.formMain.bmpEmptyEntity, new Rectangle(1, 0, Program.formMain.bmpBorderForIcon.Width - 2, Program.formMain.bmpBorderForIcon.Height - 2));
 
             if ((playerItem != null) && (playerItem.Quantity > 1))
             {
