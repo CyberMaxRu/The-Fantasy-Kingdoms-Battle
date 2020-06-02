@@ -25,9 +25,6 @@ namespace Fantasy_King_s_Battle
 
     internal sealed class FormHint : Form
     {
-        [DllImport("user32.dll")]
-        public static extern bool SetForegroundWindow(IntPtr hWnd);
-
         internal readonly Label lblHeader;
         internal readonly Label lblAction;
         internal readonly Label lblDescription;
