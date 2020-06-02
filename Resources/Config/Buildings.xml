@@ -235,47 +235,54 @@
         <PosX>1</PosX>
         <PosY>1</PosY>
         <Layer>1</Layer>
-        <Item>Sword1</Item>
+        <Item>ArmourWarrior1</Item>
         <Cost>250</Cost>
       </Research>
       <Research>
         <PosX>1</PosX>
         <PosY>2</PosY>
         <Layer>1</Layer>
-        <Item>ArmourWarrior1</Item>
+        <Item>Sword1</Item>
         <Cost>250</Cost>
       </Research>
       <Research>
         <PosX>2</PosX>
         <PosY>1</PosY>
-        <Layer>1</Layer>
-        <Item>Bow1</Item>
-        <Cost>250</Cost>
-      </Research>
-      <Research>
-        <PosX>2</PosX>
-        <PosY>2</PosY>
         <Layer>1</Layer>
         <Item>ArmourArcher1</Item>
         <Cost>250</Cost>
       </Research>
       <Research>
+        <PosX>2</PosX>
+        <PosY>2</PosY>
+        <Layer>1</Layer>
+        <Item>Bow1</Item>
+        <Cost>250</Cost>
+      </Research>
+      <Research>
         <PosX>3</PosX>
         <PosY>1</PosY>
         <Layer>1</Layer>
-        <Item>Staff1</Item>
+        <Item>ArmourMage1</Item>
         <Cost>250</Cost>
       </Research>
       <Research>
         <PosX>3</PosX>
         <PosY>2</PosY>
         <Layer>1</Layer>
-        <Item>ArmourMage1</Item>
+        <Item>Staff1</Item>
         <Cost>250</Cost>
       </Research>
       <Research>
         <PosX>1</PosX>
         <PosY>1</PosY>
+        <Layer>2</Layer>
+        <Item>ArmourWarrior2</Item>
+        <Cost>1000</Cost>
+      </Research>
+      <Research>
+        <PosX>1</PosX>
+        <PosY>2</PosY>
         <Layer>2</Layer>
         <Item>Sword2</Item>
         <Cost>1000</Cost>
@@ -286,14 +293,7 @@
           </Requirement>
         </Requirements>
       </Research>
-      <Research>
-        <PosX>1</PosX>
-        <PosY>2</PosY>
-        <Layer>2</Layer>
-        <Item>ArmourWarrior2</Item>
-        <Cost>1000</Cost>
-      </Research>
-    </Researches>    
+    </Researches>
   </Building>
   <Building>
     <ID>Tavern</ID>
