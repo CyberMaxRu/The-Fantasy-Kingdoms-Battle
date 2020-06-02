@@ -161,7 +161,7 @@ namespace Fantasy_King_s_Battle
 
                 for (int i = 0; i < hero.Slots.Length; i++)
                 {
-                    slots[i].ShowPlayerItem(hero.Slots[i]);
+                    slots[i].ShowCell(hero.Slots[i]);
                 }
 
             }

@@ -22,8 +22,6 @@ namespace Fantasy_King_s_Battle
     internal sealed class PanelEntity : Label
     {
         private Point pointIcon;
-        private PlayerItem playerItem;
-        private Entity entity;
         private ICell cell;
 
         public PanelEntity()
@@ -42,7 +40,7 @@ namespace Fantasy_King_s_Battle
         {
             base.OnMouseEnter(e);
 
-            if (entity != null)
+            /*if (cell != null)
                 Program.formMain.formHint.ShowHint(this,
                     entity.Name,
                     "",
@@ -50,7 +48,7 @@ namespace Fantasy_King_s_Battle
                     null,
                     0,
                     false, 0,
-                    0, false, playerItem);
+                    0, false, playerItem);*/
         }
 
         protected override void OnMouseLeave(EventArgs e)
@@ -67,11 +65,6 @@ namespace Fantasy_King_s_Battle
                 e.Graphics.DrawImageUnscaled(cell.ImageList().Images[cell.ImageIndex()], pointIcon);
                 e.Graphics.DrawImageUnscaled(Program.formMain.bmpBorderForIcon, 0, 0);
             }
-            else if (entity != null)
-            {
-                e.Graphics.DrawImageUnscaled(Program.formMain.ilItems.Images[entity.ImageIndex], pointIcon);
-                e.Graphics.DrawImageUnscaled(Program.formMain.bmpBorderForIcon, 0, 0);
-            }
             else
                 e.Graphics.DrawImage(Program.formMain.bmpEmptyEntity, new Rectangle(1, 0, Program.formMain.bmpBorderForIcon.Width - 2, Program.formMain.bmpBorderForIcon.Height - 2));
 
@@ -79,24 +72,6 @@ namespace Fantasy_King_s_Battle
         }
 
         internal int NumberCell { get; }
-        internal void ShowPlayerItem(PlayerItem pi)
-        {
-            playerItem = pi;
-            entity = pi?.Item;
-            Invalidate();
-            //Image = pi != null ? imageListItems.Images[pi.Item.ImageIndex] : null;
-        }
-
-        internal void ShowEntity(Entity e)
-        {
-            playerItem = null;
-            entity = e;
-
-            //Text = e != null ? "1" : "";
-
-            Invalidate();
-            //Image = pi != null ? imageListItems.Images[pi.Item.ImageIndex] : null;
-        }
 
         internal void ShowCell(ICell c)
         {
