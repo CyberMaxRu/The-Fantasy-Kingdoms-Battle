@@ -7,19 +7,15 @@ namespace Fantasy_King_s_Battle
     // Баозвый класс панели
     internal class BasePanel : Control
     {
-        private readonly Pen penBorder;
+        private readonly Pen penBorder = new Pen(Color.Black);
         private Rectangle rectBorder;
         private Bitmap bmpBackground;
+        private readonly bool withBackground;
 
         public BasePanel(bool withBackground) : base()
         {
-            penBorder = new Pen(Color.Black);
+            this.withBackground = withBackground;
             rectBorder = new Rectangle(0, 0, Width - 1, Height - 1);            
-
-            if (withBackground)
-            {
-                bmpBackground = new Bitmap(2, 2);
-            }
         }
 
         protected override void OnClientSizeChanged(EventArgs e)
@@ -29,9 +25,9 @@ namespace Fantasy_King_s_Battle
             rectBorder.Width = Width - 1;
             rectBorder.Height = Height - 1;
             
-            if (bmpBackground != null)
+            if (withBackground)
             {
-                bmpBackground.Dispose();
+                bmpBackground?.Dispose();
 
                 if ((Width > 2) && (Height > 2))
                     bmpBackground = GuiUtils.MakeBackground(new Size(Width - 2, Height - 2));
@@ -45,7 +41,7 @@ namespace Fantasy_King_s_Battle
             // Рисуем бордюр
             e.Graphics.DrawRectangle(penBorder, rectBorder);
 
-            if (bmpBackground != null)
+            if (withBackground)
                 e.Graphics.DrawImageUnscaled(bmpBackground, 1, 1);
         }
     }
