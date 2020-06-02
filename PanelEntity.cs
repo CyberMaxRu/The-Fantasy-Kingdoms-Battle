@@ -9,8 +9,8 @@ using System.Drawing;
 
 namespace Fantasy_King_s_Battle
 {
-    // Класс панели для рисования иконки сущности
-    internal sealed class PanelEntity : PictureBox
+    // Класс панели для рисования иконки объекта, поддерживающего интерфейс ячейки
+    internal sealed class PanelEntity : Label
     {
         private Point pointIcon;
         private Point pointQuantity;
@@ -22,22 +22,18 @@ namespace Fantasy_King_s_Battle
         {
             Size = Program.formMain.bmpBorderForIcon.Size;
             BackColor = Color.Transparent;
-            DoubleBuffered = true;
+            ForeColor = Program.formMain.ColorLevel;
+            Font = Program.formMain.fontLevel;
+            TextAlign = ContentAlignment.TopRight;
 
             pointIcon = new Point(3, 2);
             pointQuantity = new Point(2, Height - 20);
-
-            MouseEnter += PanelItem_MouseEnter;
-            MouseLeave += PanelItem_MouseLeave;
         }
 
-        private void PanelItem_MouseLeave(object sender, EventArgs e)
+        protected override void OnMouseEnter(EventArgs e)
         {
-            Program.formMain.formHint.HideHint();
-        }
+            base.OnMouseEnter(e);
 
-        private void PanelItem_MouseEnter(object sender, EventArgs e)
-        {
             if (entity != null)
                 Program.formMain.formHint.ShowHint(this,
                     entity.Name,
@@ -49,10 +45,15 @@ namespace Fantasy_King_s_Battle
                     0, false, playerItem);
         }
 
+        protected override void OnMouseLeave(EventArgs e)
+        {
+            base.OnMouseLeave(e);
+
+            Program.formMain.formHint.HideHint();
+        }
+
         protected override void OnPaint(PaintEventArgs e)
         {
-            base.OnPaint(e);
-
             if (entity != null)
             {
                 e.Graphics.DrawImageUnscaled(Program.formMain.ilItems.Images[entity.ImageIndex], pointIcon);
@@ -67,6 +68,8 @@ namespace Fantasy_King_s_Battle
                 pointQuantity.X = Width - (quantity.Length * 12) - 6;
                 e.Graphics.DrawString(quantity, Program.formMain.fontQuantity, Program.formMain.brushQuantity, pointQuantity);
             }
+
+            base.OnPaint(e);
         }
 
         internal int NumberCell { get; }
@@ -82,6 +85,9 @@ namespace Fantasy_King_s_Battle
         {
             playerItem = null;
             entity = e;
+
+            //Text = e != null ? "1" : "";
+                
             Invalidate();
             //Image = pi != null ? imageListItems.Images[pi.Item.ImageIndex] : null;
         }
