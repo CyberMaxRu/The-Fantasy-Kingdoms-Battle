@@ -170,6 +170,7 @@
     <Content Include="Resources\Config\Buildings.xml" />
     <Content Include="Resources\Config\Skills.xml" />
     <Content Include="Resources\Config\TypeItems.xml" />
+    <Content Include="Resources\Config\Settings.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
