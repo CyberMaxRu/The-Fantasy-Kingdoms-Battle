@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Windows.Forms;
 
 namespace Fantasy_King_s_Battle
 {
     // Класс сущности. Общий для предметов, абилок, героев и т.д.
-    internal class Entity
+    internal abstract class Entity : ICell
     {
         public Entity(XmlNode n)
         {
@@ -24,5 +25,20 @@ namespace Fantasy_King_s_Battle
         internal string Description { get; }
         internal int ImageIndex { get; }
         internal int Cost { get; }
+
+        // Методы для потомков для возврата значений в интерфейс
+        protected abstract int GetLevel();
+        protected abstract int GetQuantity();
+        protected abstract void DoPrepareHint();
+
+        // Реализация интерфейса
+        ImageList ICell.ImageList() => Program.formMain.ilItems;
+        int ICell.ImageIndex() => ImageIndex;
+        int ICell.Level() => GetLevel();
+        int ICell.Quantity() => GetQuantity();
+        void ICell.PrepareHint() 
+        {
+            DoPrepareHint();
+        }
     }
 }

@@ -35,7 +35,7 @@ namespace Fantasy_King_s_Battle
             ValidateRows(list.Count);
 
             for (int x = 0; x < panelEntities.Count; x++)
-                panelEntities[x].ShowEntity(x < list.Count ? list[x] : null);
+                panelEntities[x].ShowCell(x < list.Count ? list[x] : null);
         }
 
         private void ValidateRows(int count)

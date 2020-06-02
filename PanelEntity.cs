@@ -9,6 +9,16 @@ using System.Drawing;
 
 namespace Fantasy_King_s_Battle
 {
+    // Интерфейс для работы с ячейкой
+    internal interface ICell
+    {
+        ImageList ImageList();
+        int ImageIndex();
+        int Level();
+        int Quantity();
+        void PrepareHint();
+    }
+
     // Класс панели для рисования иконки объекта, поддерживающего интерфейс ячейки
     internal sealed class PanelEntity : Label
     {
@@ -17,6 +27,7 @@ namespace Fantasy_King_s_Battle
         private PlayerItem playerItem;
         private Entity entity;
         private string quantity;
+        private ICell cell;
 
         public PanelEntity()
         {
@@ -54,7 +65,12 @@ namespace Fantasy_King_s_Battle
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            if (entity != null)
+            if (cell != null)
+            {
+                e.Graphics.DrawImageUnscaled(cell.ImageList().Images[cell.ImageIndex()], pointIcon);
+                e.Graphics.DrawImageUnscaled(Program.formMain.bmpBorderForIcon, 0, 0);
+            }
+            else if (entity != null)
             {
                 e.Graphics.DrawImageUnscaled(Program.formMain.ilItems.Images[entity.ImageIndex], pointIcon);
                 e.Graphics.DrawImageUnscaled(Program.formMain.bmpBorderForIcon, 0, 0);
@@ -87,9 +103,16 @@ namespace Fantasy_King_s_Battle
             entity = e;
 
             //Text = e != null ? "1" : "";
-                
+
             Invalidate();
             //Image = pi != null ? imageListItems.Images[pi.Item.ImageIndex] : null;
+        }
+
+        internal void ShowCell(ICell c)
+        {
+            cell = c;
+            Text = c != null ? c.Level().ToString() : "";
+            Invalidate();
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Xml;
 using System.Diagnostics;
 using System.Drawing;
 using System.Deployment.Internal;
+using System.Windows.Forms;
 
 namespace Fantasy_King_s_Battle
 {
@@ -33,7 +34,7 @@ namespace Fantasy_King_s_Battle
 
         internal Point Coord { get; }// Координаты исследования
         internal int Layer { get; }// Визуальный слой исследования
-        internal Entity Entity { get; private set; }// Получаемый предмет
+        internal Entity Entity { get; private set; }// Получаемая сущность
         internal int Cost { get; }// Стоимость исследования
         internal List<Requirement> Requirements { get; } = new List<Requirement>();
 

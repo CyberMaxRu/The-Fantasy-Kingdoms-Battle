@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Xml;
+using System.Windows.Forms;
 
 namespace Fantasy_King_s_Battle
 {
@@ -102,6 +103,13 @@ namespace Fantasy_King_s_Battle
                 ClassesHeroes.Add(FormMain.Config.FindHero(nameHero));
 
             classesHeroesString = null;
+        }
+
+        protected override int GetLevel() => 0;
+        protected override int GetQuantity() => 0;
+        protected override void DoPrepareHint()
+        {
+
         }
     }
 }
