@@ -32,12 +32,14 @@ namespace Fantasy_King_s_Battle
         internal readonly ImageList ilParameters;
         internal readonly ImageList ilItems;
         internal readonly ImageList ilStateHero;
+        internal readonly ImageList ilMenuCellFilters;
 
         internal readonly Font fontQuantity = new Font("Courier New", 14, FontStyle.Bold);
         internal readonly Font fontCost = new Font("Arial", 11, FontStyle.Bold);
         internal readonly Color ColorCost = Color.White;
         internal readonly Color ColorQuantity = Color.Yellow;
         internal readonly Brush brushQuantity = new SolidBrush(Color.Yellow);
+        internal readonly Brush brushCost = new SolidBrush(Color.White);
 
         internal readonly Font fontToolBar = new Font("Microsodt Sans Serif", 12, FontStyle.Bold);
 
@@ -174,6 +176,7 @@ namespace Fantasy_King_s_Battle
             ilParameters = PrepareImageList("Parameters.png", 24, 24, false);
             ilItems = PrepareImageList("Items.png", 48, 48, true);
             ilStateHero = PrepareImageList("StateHero.png", 24, 24, false);
+            ilMenuCellFilters = PrepareImageList("MenuCellFilters.png", 48, 48, true);
 
             bmpForBackground = new Bitmap(dirResources + "Icons\\Background.png");
             bmpBackgroundButton = GuiUtils.MakeBackground(GuiUtils.SizeButtonWithImage(ilGui));

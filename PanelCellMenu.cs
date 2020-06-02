@@ -9,71 +9,103 @@ using System.Drawing;
 namespace Fantasy_King_s_Battle
 {
     // Класс панели исследования
-    internal sealed class PanelCellMenu : PictureBox
+    internal sealed class PanelCellMenu : Label
     {
         private PlayerResearch research;
-        private Label lblCost;
+        private bool mouseOver;
+        private bool mouseClicked;
 
-        public PanelCellMenu(Control parent, int left, int top)
+        public PanelCellMenu(Control parent, Point location)
         {
             Parent = parent;
-            Left = left;
-            Top = top;
+            Location = location;
             Size = Program.formMain.ilItems.ImageSize;
-            SizeMode = PictureBoxSizeMode.Normal;
             BackColor = Color.Transparent;
-            //DoubleBuffered = true;
+            ForeColor = Program.formMain.ColorCost;
+            Font = Program.formMain.fontCost;
+            TextAlign = ContentAlignment.BottomCenter;
             Visible = false;
-
-            lblCost = new Label()
-            {
-                Parent = this,
-                Size = Size,
-                BackColor = Color.Transparent,
-                ForeColor = Program.formMain.ColorCost,
-                Font = Program.formMain.fontCost,
-                TextAlign = ContentAlignment.BottomCenter
-            };
-
-            lblCost.MouseEnter += LblCost_MouseEnter;
-            lblCost.MouseLeave += LblCost_MouseLeave;
-            lblCost.MouseClick += LblCost_MouseClick;
         }
 
-        private void LblCost_MouseClick(object sender, MouseEventArgs e)
+        protected override void OnMouseClick(MouseEventArgs e)
         {
             base.OnMouseClick(e);
 
-            if (e.Button == MouseButtons.Left)
+            if ((e.Button == MouseButtons.Left) && research.CheckRequirements())
             {
-                if (research.CheckRequirements())
-                {
-                    research.DoResearch();
+                research.DoResearch();
 
-                    Program.formMain.UpdateMenu();
-                }
+                Program.formMain.UpdateMenu();
+
             }
         }
 
-        private void LblCost_MouseLeave(object sender, EventArgs e)
+        protected override void OnMouseEnter(EventArgs e)
         {
+            base.OnMouseEnter(e);
+
+            Program.formMain.formHint.ShowHint(this,
+                research.Research.Entity.Name,
+                "",
+                research.Research.Entity.Description,
+                research.GetTextRequirements(),
+                research.Cost(),
+                research.Cost() <= research.Building.Player.Gold,
+                0,
+                0, false, null);
+
+            mouseOver = true;
+            Invalidate();
+        }
+
+        protected override void OnMouseLeave(EventArgs e)
+        {
+            base.OnMouseLeave(e);
+
             Program.formMain.formHint.HideHint();
+
+            mouseOver = false;
+            Invalidate();
         }
 
-        private void LblCost_MouseEnter(object sender, EventArgs e)
+        protected override void OnMouseDown(MouseEventArgs e)
         {
-            if (research != null)
+            base.OnMouseDown(e);
+
+            if (e.Button == MouseButtons.Left)
+                mouseClicked = e.Button == MouseButtons.Left;
+
+            Invalidate();
+        }
+
+        protected override void OnMouseUp(MouseEventArgs e)
+        {
+            base.OnMouseDown(e);
+
+            if (mouseClicked != false)
             {
-                Program.formMain.formHint.ShowHint(this,
-                    research.Research.Entity.Name,
-                    "",
-                    research.Research.Entity.Description,
-                    research.GetTextRequirements(),
-                    research.Cost(),
-                    research.Cost() <= research.Building.Player.Gold,
-                    0,
-                    0, false, null);
+                mouseClicked = false;
+                Invalidate();
             }
+        }
+
+        protected override void OnPaint(PaintEventArgs pe)
+        {
+            // Рисуем иконку
+            pe.Graphics.DrawImageUnscaled(Program.formMain.ilItems.Images[research.Research.Entity.ImageIndex], 0, 0);
+
+            // Накладываем фильтр
+            if (!research.CheckRequirements())
+                pe.Graphics.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.Images[3], 0, 0);
+            else if (mouseClicked)
+                pe.Graphics.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.Images[2], 0, 0);
+            else if (mouseOver)
+                pe.Graphics.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.Images[1], 0, 0);
+            else
+                pe.Graphics.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.Images[0], 0, 0);
+
+            // Рисуем цену
+            base.OnPaint(pe);
         }
 
         internal PlayerResearch Research
@@ -84,10 +116,8 @@ namespace Fantasy_King_s_Battle
                 research = value;
                 Visible = research != null;
                 if (Visible)
-                {
-                    Image = Program.formMain.ilItems.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilItems, research.Research.Entity.ImageIndex, research.CheckRequirements())];
-                    lblCost.Text = research.Cost().ToString();
-                }
+                    Text = research.Cost().ToString();
+
             }
         }
     }
