@@ -5,12 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace Fantasy_King_s_Battle
 {
     internal enum TypePlayer { Human, Computer };
     // Класс игрока
-    internal sealed class Player
+    internal sealed class Player : ICell
     {
         private ResultBattle resultLastBattle;
         private PlayerBuilding Castle;            
@@ -503,6 +504,16 @@ namespace Fantasy_King_s_Battle
             Gold -= gold;
 
             Debug.Assert(Gold >= 0);
+        }
+
+        // Реализация интерфейса
+        ImageList ICell.ImageList() => Program.formMain.ilPlayerAvatars;
+        int ICell.ImageIndex() => ImageIndexAvatar;
+        int ICell.Level() => Castle.Level;
+        int ICell.Quantity() => 0;
+        void ICell.PrepareHint()
+        {
+            
         }
     }
 }

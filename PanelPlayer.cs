@@ -8,10 +8,10 @@ namespace Fantasy_King_s_Battle
     internal sealed class PanelPlayer : BasePanel
     {
         private readonly Player player;
+        private PanelEntity panelAvatar;
         private Label lblDamageToCastle;
         private Label lblStrike;
         private Label lblQuantityHeroes;
-        private Label lblLevelCastle;
         private Rectangle rectBorder;
         private Point pointIconAvatar;// Координаты для отрисовки аватара игрока
         private Point pointIconResultBattle;// Координаты для иконки результата боя
@@ -30,18 +30,14 @@ namespace Fantasy_King_s_Battle
             Parent = parent;
             Left = Config.GRID_SIZE;
 
-            pointIconAvatar = new Point(Config.GRID_SIZE, Config.GRID_SIZE);
-
-            lblLevelCastle = new Label()
+            panelAvatar = new PanelEntity()
             {
                 Parent = this,
-                Location = pointIconAvatar,
-                ForeColor = Color.Yellow,
-                BackColor = Color.Transparent,
-                TextAlign = ContentAlignment.TopLeft,
-                MaximumSize = new Size(Config.GRID_SIZE * 2, Config.GRID_SIZE * 2),
-                Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
+                Location = new Point(Config.GRID_SIZE, Config.GRID_SIZE)
             };
+            panelAvatar.ShowCell(player);
+
+            pointIconAvatar = new Point(Config.GRID_SIZE, Config.GRID_SIZE);
 
             int leftForIcons = pointIconAvatar.X + Program.formMain.ilGuiHeroes.ImageSize.Width + Config.GRID_SIZE;
             int leftForText = leftForIcons + Program.formMain.ilGui24.ImageSize.Width + Config.GRID_SIZE_HALF;
@@ -137,14 +133,8 @@ namespace Fantasy_King_s_Battle
             // Рамка вокруг панели
             e.Graphics.DrawRectangle(penBorder, rectBorder);
 
-            // Аватар игрока
-            e.Graphics.DrawImageUnscaled(Program.formMain.ilPlayerAvatars.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilPlayerAvatars, player.ImageIndexAvatar, player.IsLive)], pointIconAvatar);
-
-            // Уровень Замка
-            lblLevelCastle.Text = player.LevelCastle.ToString();
-
             // Прочность замка
-            GuiUtils.DrawBand(e.Graphics, new Rectangle(Config.GRID_SIZE, Config.GRID_SIZE + Program.formMain.ilPlayerAvatars.ImageSize.Height + 1, Program.formMain.ilPlayerAvatars.ImageSize.Width, 4), brushCurDurability, brushMaxDurability, player.DurabilityCastle, player.Lobby.TypeLobby.DurabilityCastle);
+            GuiUtils.DrawBand(e.Graphics, new Rectangle(Config.GRID_SIZE, Config.GRID_SIZE + panelAvatar.Height + 1, panelAvatar.Width, 4), brushCurDurability, brushMaxDurability, player.DurabilityCastle, player.Lobby.TypeLobby.DurabilityCastle);
             
             // Результат последнего боя
             if (player.ResultLastBattle != ResultBattle.None)
