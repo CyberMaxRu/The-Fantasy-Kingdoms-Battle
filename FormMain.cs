@@ -524,7 +524,7 @@ namespace Fantasy_King_s_Battle
             {
                 BorderStyle = BorderStyle.FixedSingle,
                 Left = 0,
-                Top = 64
+                Top = 0
             };
             pageHeroes.AddControl(panelHeroes);
 
@@ -681,7 +681,7 @@ namespace Fantasy_King_s_Battle
             {
                 BorderStyle = BorderStyle.FixedSingle,
                 Left = 0,
-                Top = 400
+                Top = panelHeroes.Height + Config.GRID_SIZE
             };
             pageHeroes.AddControl(panelWarehouse);
 
@@ -709,7 +709,7 @@ namespace Fantasy_King_s_Battle
         {
             for (int i = 0; i < lobby.CurrentPlayer.Warehouse.Length; i++)
             {
-                SlotsWarehouse[i].ShowPlayerItem(lobby.CurrentPlayer.Warehouse[i]);
+                SlotsWarehouse[i].ShowCell(lobby.CurrentPlayer.Warehouse[i]);
             }
         }
 

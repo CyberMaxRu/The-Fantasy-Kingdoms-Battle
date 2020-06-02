@@ -23,7 +23,8 @@ namespace Fantasy_King_s_Battle
     internal sealed class PanelEntity : Label
     {
         private Point pointIcon;
-        private Point pointQuantity;
+        private RectangleF rectQuantity;
+        private StringFormat strFormatQuantity = new StringFormat();
         private PlayerItem playerItem;
         private Entity entity;
         private string quantity;
@@ -38,7 +39,8 @@ namespace Fantasy_King_s_Battle
             TextAlign = ContentAlignment.TopRight;
 
             pointIcon = new Point(3, 2);
-            pointQuantity = new Point(2, Height - 20);
+            rectQuantity = new RectangleF(0, Height - 22, Width, 22);
+            strFormatQuantity.Alignment = StringAlignment.Far;
         }
 
         protected override void OnMouseEnter(EventArgs e)
@@ -78,11 +80,10 @@ namespace Fantasy_King_s_Battle
             else
                 e.Graphics.DrawImage(Program.formMain.bmpEmptyEntity, new Rectangle(1, 0, Program.formMain.bmpBorderForIcon.Width - 2, Program.formMain.bmpBorderForIcon.Height - 2));
 
-            if ((playerItem != null) && (playerItem.Quantity > 1))
+            if ((cell != null) && (cell.Quantity() > 0))
             {
-                quantity = playerItem.Quantity.ToString();
-                pointQuantity.X = Width - (quantity.Length * 12) - 6;
-                e.Graphics.DrawString(quantity, Program.formMain.fontQuantity, Program.formMain.brushQuantity, pointQuantity);
+                quantity = cell.Quantity().ToString();
+                e.Graphics.DrawString(quantity, Program.formMain.fontQuantity, Program.formMain.brushQuantity, rectQuantity, strFormatQuantity);
             }
 
             base.OnPaint(e);
