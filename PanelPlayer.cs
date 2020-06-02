@@ -137,7 +137,7 @@ namespace Fantasy_King_s_Battle
             // Рамка вокруг панели
             e.Graphics.DrawRectangle(penBorder, rectBorder);
 
-            // Иконка героя
+            // Аватар игрока
             e.Graphics.DrawImageUnscaled(Program.formMain.ilPlayerAvatars.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilPlayerAvatars, player.ImageIndexAvatar, player.IsLive)], pointIconAvatar);
 
             // Уровень Замка
