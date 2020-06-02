@@ -36,6 +36,8 @@ namespace Fantasy_King_s_Battle
                 Location = new Point(Config.GRID_SIZE, Config.GRID_SIZE)
             };
             panelAvatar.ShowCell(player);
+            panelAvatar.MouseEnter += PanelAvatar_MouseEnter;
+            panelAvatar.MouseLeave += PanelAvatar_MouseLeave;
 
             pointIconAvatar = new Point(Config.GRID_SIZE, Config.GRID_SIZE);
 
@@ -86,6 +88,16 @@ namespace Fantasy_King_s_Battle
                 GuiUtils.NextTop(lblQuantityHeroes));
 
             rectBorder = new Rectangle(0, 0, Width - 1, Height - 1);
+        }
+
+        private void PanelAvatar_MouseLeave(object sender, EventArgs e)
+        {
+            OnMouseLeave(e);
+        }
+
+        private void PanelAvatar_MouseEnter(object sender, EventArgs e)
+        {
+            OnMouseEnter(e);
         }
 
         protected override void OnMouseEnter(EventArgs e)
