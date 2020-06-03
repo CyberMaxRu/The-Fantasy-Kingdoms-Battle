@@ -118,9 +118,6 @@
     <Compile Include="PanelBuilding.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="PanelHero.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="PanelHeroInfo.cs">
       <SubType>Component</SubType>
     </Compile>
