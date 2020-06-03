@@ -377,14 +377,15 @@ namespace Fantasy_King_s_Battle
 
         internal void AddStep5Builders(int builders, bool buildersEnough)
         {
-            Debug.Assert(builders > 0);
+            if builders > 0)
+            {
+                lblBuilders.ForeColor = buildersEnough == true ? Color.Lime : Color.Crimson;
+                lblBuilders.Top = nextTop;
+                lblBuilders.Text = "     " + builders.ToString();
+                lblBuilders.Show();
 
-            lblBuilders.ForeColor = buildersEnough == true ? Color.Lime : Color.Crimson;
-            lblBuilders.Top = nextTop;
-            lblBuilders.Text = "     " + builders.ToString();
-            lblBuilders.Show();
-
-            nextTop = GuiUtils.NextTop(lblBuilders);
+                nextTop = GuiUtils.NextTop(lblBuilders);
+            }
         }
 
         internal void AddStep6PlayerItem(PlayerItem pi)
