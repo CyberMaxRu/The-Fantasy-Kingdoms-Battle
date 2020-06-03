@@ -63,14 +63,14 @@ namespace Fantasy_King_s_Battle
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            /*if (cell != null)
+            if (cell != null)
             {
                 e.Graphics.DrawImageUnscaled(cell.ImageList().Images[cell.ImageIndex()], pointIcon);
                 e.Graphics.DrawImageUnscaled(Program.formMain.bmpBorderForIcon, 0, 0);
             }
             else
                 e.Graphics.DrawImage(Program.formMain.bmpEmptyEntity, new Rectangle(1, 0, Program.formMain.bmpBorderForIcon.Width - 2, Program.formMain.bmpBorderForIcon.Height - 2));
-            */
+
             base.OnPaint(e);
         }
 

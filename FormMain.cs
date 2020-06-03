@@ -614,9 +614,12 @@ namespace Fantasy_King_s_Battle
 
         private void ActivatePage(PanelPage pc)
         {
-            currentPage?.Hide();
-            currentPage = pc;
+            if (currentPage != null)
+                currentPage.Hide();
             pc.Show();
+            currentPage = pc;
+
+            //Invalidate();
         }
 
         private void button1_Click(object sender, EventArgs e)
