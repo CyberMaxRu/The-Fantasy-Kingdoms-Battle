@@ -377,7 +377,7 @@ namespace Fantasy_King_s_Battle
 
         internal void AddStep5Builders(int builders, bool buildersEnough)
         {
-            if builders > 0)
+            if (builders > 0)
             {
                 lblBuilders.ForeColor = buildersEnough == true ? Color.Lime : Color.Crimson;
                 lblBuilders.Top = nextTop;
