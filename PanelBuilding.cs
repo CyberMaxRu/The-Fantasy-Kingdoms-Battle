@@ -16,10 +16,6 @@ namespace Fantasy_King_s_Battle
         private PlayerBuilding building;
         private readonly PictureBox pbBuilding;
         private readonly Button btnHeroes;
-        private readonly ImageList imageListBuilding;
-        private readonly ImageList imageListGui;
-        private readonly ImageList imageListGui16;
-        private readonly ImageList imageListGuiHeroes;
         private readonly Button btnBuyOrUpgrade;
         private readonly Button btnHireHero;
         private readonly Label lblName;
@@ -30,16 +26,8 @@ namespace Fantasy_King_s_Battle
         private readonly Rectangle rectBorder;
         private readonly SolidBrush brushBackColor = new SolidBrush(Color.White);
 
-        public PanelBuilding(Control parent, int left, int top, FormMain formMain) : base()
+        public PanelBuilding() : base()
         {
-            Parent = parent;
-            imageListBuilding = formMain.ilBuildings;
-            imageListGui = formMain.ilGui;
-            imageListGui16 = formMain.ilGui16;
-            imageListGuiHeroes = formMain.ilGuiHeroes;
-            Left = left;
-            Top = top;
-
             lblName = new Label()
             {
                 Parent = this,
@@ -53,8 +41,8 @@ namespace Fantasy_King_s_Battle
             pbBuilding = new PictureBox()
             {
                 Parent = this,
-                Width = imageListBuilding.ImageSize.Width + 2,// Окантовка
-                Height = imageListBuilding.ImageSize.Height + 2,// Окантовка
+                Width = Program.formMain.ilBuildings.ImageSize.Width + 2,// Окантовка
+                Height = Program.formMain.ilBuildings.ImageSize.Height + 2,// Окантовка
                 Left = Config.GRID_SIZE,
                 Top = GuiUtils.NextTop(lblName),
                 BackColor = Color.Transparent
@@ -66,13 +54,13 @@ namespace Fantasy_King_s_Battle
             btnHeroes = new Button()
             {
                 Parent = this,
-                ImageList = imageListGuiHeroes,
-                Size = GuiUtils.SizeButtonWithImage(imageListGuiHeroes),
+                ImageList = Program.formMain.ilGuiHeroes,
+                Size = GuiUtils.SizeButtonWithImage(Program.formMain.ilGuiHeroes),
                 Top = GuiUtils.NextTop(pbBuilding),
                 Left = Config.GRID_SIZE,
-                BackgroundImage = formMain.bmpBackgroundButton,
-                Font = formMain.fontCost,
-                ForeColor = formMain.ColorCost,
+                BackgroundImage = Program.formMain.bmpBackgroundButton,
+                Font = Program.formMain.fontCost,
+                ForeColor = Program.formMain.ColorCost,
                 TextAlign = ContentAlignment.BottomCenter
             };
 
@@ -80,13 +68,13 @@ namespace Fantasy_King_s_Battle
             {
                 Parent = this,
                 Left = GuiUtils.NextLeft(pbBuilding),
-                Size = GuiUtils.SizeButtonWithImage(imageListGui),
-                Top = pbBuilding.Top + pbBuilding.Height - imageListGui.ImageSize.Height - 8,
-                ImageList = imageListGui,
+                Size = GuiUtils.SizeButtonWithImage(Program.formMain.ilGui),
+                Top = pbBuilding.Top + pbBuilding.Height - Program.formMain.ilGui.ImageSize.Height - 8,
+                ImageList = Program.formMain.ilGui,
                 TextAlign = ContentAlignment.BottomCenter,
-                Font = formMain.fontCost,
-                BackgroundImage = formMain.bmpBackgroundButton,
-                ForeColor = formMain.ColorCost
+                Font = Program.formMain.fontCost,
+                BackgroundImage = Program.formMain.bmpBackgroundButton,
+                ForeColor = Program.formMain.ColorCost
             };
             btnBuyOrUpgrade.Click += BtnBuyOrUprgade_Click;
             btnBuyOrUpgrade.MouseEnter += BtnBuyOrUpgrade_MouseEnter;
@@ -98,10 +86,10 @@ namespace Fantasy_King_s_Battle
                 Left = btnBuyOrUpgrade.Left,
                 Top = btnBuyOrUpgrade.Top - btnBuyOrUpgrade.Height - Config.GRID_SIZE,
                 Size = btnBuyOrUpgrade.Size,
-                ImageList = imageListGuiHeroes,
+                ImageList = Program.formMain.ilGuiHeroes,
                 TextAlign = ContentAlignment.BottomCenter,
-                Font = formMain.fontCost,
-                BackgroundImage = formMain.bmpBackgroundButton,
+                Font = Program.formMain.fontCost,
+                BackgroundImage = Program.formMain.bmpBackgroundButton,
                 ForeColor = Color.White
             };
             btnHireHero.Click += BtnHero_Click;
@@ -134,7 +122,7 @@ namespace Fantasy_King_s_Battle
                 TextAlign = ContentAlignment.MiddleRight,
                 ImageAlign = ContentAlignment.MiddleLeft,
                 ImageIndex = FormMain.GUI_16_GOLD,
-                ImageList = imageListGui16
+                ImageList = Program.formMain.ilGui16
             };
            
             Height = GuiUtils.NextTop(btnHeroes);// lblIncome. Top + lblIncome.Height + (Config.GRID_SIZE * 2);
@@ -314,7 +302,7 @@ namespace Fantasy_King_s_Battle
 
                 //if (btnLevelUp.Visible == true)
                 //btnLevelUp.Image = Building.CheckRequirements() == true ? imageListGui.Images[FormMain.GUI_LEVELUP] : imageListGui.Images[FormMain.GUI_LEVELUP + imageListGui.Images.Count / 2];
-                pbBuilding.Image = imageListBuilding.Images[Building.Building.ImageIndex];
+                pbBuilding.Image = Program.formMain.ilBuildings.Images[Building.Building.ImageIndex];
             }
             else
             {
@@ -322,7 +310,7 @@ namespace Fantasy_King_s_Battle
 
                 btnBuyOrUpgrade.Text = Building.CostBuyOrUpgrade().ToString();
                 btnBuyOrUpgrade.ImageIndex = GuiUtils.GetImageIndexWithGray(btnBuyOrUpgrade.ImageList, FormMain.GUI_BUY, Building.CheckRequirements());
-                pbBuilding.Image = imageListBuilding.Images[Building.Building.ImageIndex + FormMain.Config.Buildings.Count];
+                pbBuilding.Image = Program.formMain.ilBuildings.Images[Building.Building.ImageIndex + FormMain.Config.Buildings.Count];
             }
 
             if ((Building.Building.TrainedHero != null) && (Building.Level > 0))

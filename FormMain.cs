@@ -476,9 +476,10 @@ namespace Fantasy_King_s_Battle
                 {
                     if ((b.CategoryBuilding == category) && (b.Line == line))
                     {
-                        b.Panel = new PanelBuilding(panel, left, top, this)
+                        b.Panel = new PanelBuilding()
                         {
-
+                            Parent = panel,
+                            Location = new Point(left, top)
                         };
 
                         left += b.Panel.Width + Config.GRID_SIZE;
