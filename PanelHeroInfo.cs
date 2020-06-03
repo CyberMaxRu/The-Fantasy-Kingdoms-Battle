@@ -123,8 +123,7 @@ namespace Fantasy_King_s_Battle
 
             List<ICell> items = new List<ICell>();
             for (int x = 0; x < hero.Slots.Length; x++)
-                if (hero.Slots[x] != null)
-                    items.Add(hero.Slots[x]);
+                items.Add(hero.Slots[x]);
 
             panelInventory.ApplyList(items);
             panelAbilities.ApplyList(Hero.Abilities);
