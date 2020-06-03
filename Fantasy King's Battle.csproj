@@ -102,7 +102,9 @@
     <Compile Include="PanelEntity.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="PanelControls.cs" />
+    <Compile Include="PanelPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="PlayerResearch.cs" />
     <Compile Include="Requirement.cs" />
     <Compile Include="Research.cs" />

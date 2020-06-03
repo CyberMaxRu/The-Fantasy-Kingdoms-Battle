@@ -118,15 +118,15 @@ namespace Fantasy_King_s_Battle
         internal readonly Bitmap bmpEmptyEntity;
         private readonly Bitmap bmpBackground;
 
-        private readonly List<PanelControls> pages = new List<PanelControls>();
-        private readonly PanelControls pageLobby;
-        private readonly PanelControls pageGuilds;
-        private readonly PanelControls pageBuildings;
-        private readonly PanelControls pageTemples;
-        private readonly PanelControls pageTowers;
-        private readonly PanelControls pageHeroes;
-        private readonly PanelControls pageBattle;
-        private PanelControls currentPage;
+        private readonly List<PanelPage> pages = new List<PanelPage>();
+        private readonly PanelPage pageLobby;
+        private readonly PanelPage pageGuilds;
+        private readonly PanelPage pageBuildings;
+        private readonly PanelPage pageTemples;
+        private readonly PanelPage pageTowers;
+        private readonly PanelPage pageHeroes;
+        private readonly PanelPage pageBattle;
+        private PanelPage currentPage;
         private readonly int leftForPages;
         private readonly Point pointMenu;
         private readonly PanelMenu panelMenu;
@@ -229,9 +229,14 @@ namespace Fantasy_King_s_Battle
             pages.Add(pageHeroes);
             pages.Add(pageBattle);
 
-            PanelControls PreparePanel()
+            PanelPage PreparePanel()
             {
-                return new PanelControls(this, leftForPages, GuiUtils.NextTop(tabControl1));
+                return new PanelPage()
+                {
+                    Parent = this,
+                    Left = leftForPages,
+                    Top = GuiUtils.NextTop(tabControl1)
+                };
             }
 
             // Создаем вкладку "Лобби"
@@ -242,10 +247,10 @@ namespace Fantasy_King_s_Battle
             {
                 pap = new PanelAboutPlayer(p, ilResultBattle)
                 {
+                    Parent = pageLobby,
                     Top = top,
                     Left = 0
                 };
-                pageLobby.AddControl(pap);
 
                 p.PanelAbout = pap;
 
@@ -280,23 +285,34 @@ namespace Fantasy_King_s_Battle
             ShowDataPlayer();
 
             // Определяем максимальную ширину окна            
-            int rightSide = 0;
+            int maxWidthPages = 0;
+            int maxHeightPages = 0;
 
-            foreach (PanelControls pc in pages)
+            foreach (PanelPage pc in pages)
             {
-                rightSide = Math.Max(rightSide, pc.RightForParent);
+                foreach (Control c in pc.Controls)
+                {
+                    maxWidthPages = Math.Max(maxWidthPages, c.Left + c.Width);
+                    maxHeightPages = Math.Max(maxHeightPages, c.Top + c.Height);
+                }
+            }
+
+            foreach (PanelPage pc in pages)
+            {
+                pc.Width = maxWidthPages;
+                pc.Height = maxHeightPages;
             }
 
             // Создаем панель с меню
             panelMenu = new PanelMenu(this, dirResources);
 
             // Учитываем плиту под слоты
-            pointMenu = new Point(rightSide + Config.GRID_SIZE, ClientSize.Height - panelMenu.Height - Config.GRID_SIZE);
-            rightSide += panelMenu.Width + Config.GRID_SIZE;
+            pointMenu = new Point(leftForPages + maxWidthPages + Config.GRID_SIZE, ClientSize.Height - panelMenu.Height - Config.GRID_SIZE);
+            int calcedWidth = leftForPages + maxWidthPages +  panelMenu.Width + Config.GRID_SIZE;
 
             panelMenu.Location = pointMenu;
 
-            Width = (Width - ClientSize.Width) + rightSide + Config.GRID_SIZE;
+            Width = (Width - ClientSize.Width) + calcedWidth + Config.GRID_SIZE;
             Height = GuiUtils.NextTop(lobby.Players[lobby.Players.Length - 1].Panel) + (Height - ClientSize.Height);
             tabControl1.Width = ClientSize.Width - tabControl1.Left - Config.GRID_SIZE;
             pointMenu.Y = ClientSize.Height - panelMenu.Height - Config.GRID_SIZE;
@@ -446,7 +462,7 @@ namespace Fantasy_King_s_Battle
             Refresh();
         }
 
-        private void DrawPageBuilding(PanelControls panel, CategoryBuilding category)
+        private void DrawPageBuilding(PanelPage panel, CategoryBuilding category)
         {
             int top = 0;
             int left;
@@ -460,8 +476,10 @@ namespace Fantasy_King_s_Battle
                 {
                     if ((b.CategoryBuilding == category) && (b.Line == line))
                     {
-                        b.Panel = new PanelBuilding(this, left, top, this);
-                        panel.AddControl(b.Panel);
+                        b.Panel = new PanelBuilding(panel, left, top, this)
+                        {
+
+                        };
 
                         left += b.Panel.Width + Config.GRID_SIZE;
                         height = b.Panel.Height;
@@ -522,11 +540,11 @@ namespace Fantasy_King_s_Battle
         {
             panelHeroes = new Panel()
             {
+                Parent = pageHeroes,
                 BorderStyle = BorderStyle.FixedSingle,
                 Left = 0,
                 Top = 0
             };
-            pageHeroes.AddControl(panelHeroes);
 
             int width = 0;
             int height = 0;
@@ -679,11 +697,11 @@ namespace Fantasy_King_s_Battle
 
             panelWarehouse = new Panel()
             {
+                Parent = pageHeroes,
                 BorderStyle = BorderStyle.FixedSingle,
                 Left = 0,
                 Top = panelHeroes.Height + Config.GRID_SIZE
             };
-            pageHeroes.AddControl(panelWarehouse);
 
             PanelEntity pi;
 
@@ -1096,11 +1114,11 @@ namespace Fantasy_King_s_Battle
             ActivatePage(pages[e.TabPageIndex]);
         }
 
-        private void ActivatePage(PanelControls pc)
+        private void ActivatePage(PanelPage pc)
         {
             if (currentPage != null)
-                currentPage.SetVisible(false);
-            pc.SetVisible(true);
+                currentPage.Hide();
+            pc.Show();
             currentPage = pc;
 
             //Invalidate();
