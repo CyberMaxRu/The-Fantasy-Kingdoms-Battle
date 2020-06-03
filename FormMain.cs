@@ -45,7 +45,7 @@ namespace Fantasy_King_s_Battle
 
         internal readonly Font fontToolBar = new Font("Microsoft Sans Serif", 12, FontStyle.Bold);
 
-        private Panel panelWarehouse;
+        private PanelWithPanelEntity panelWarehouse;
         private Panel panelHeroes;
 
         internal const int GUI_HEROES = 0;
@@ -100,7 +100,6 @@ namespace Fantasy_King_s_Battle
         private readonly Lobby lobby;
         private Player curAppliedPlayer;
 
-        private List<PanelEntity> SlotsWarehouse = new List<PanelEntity>();
         private PanelHero[,] CellPanelHeroes;
 
         private PictureBox picBoxItemForDrag;// PictureBox с иконкой предмета для отображения под курсором при перетаскивании
@@ -696,40 +695,17 @@ namespace Fantasy_King_s_Battle
             };
             picBoxItemForDrag.BringToFront();
 
-            panelWarehouse = new Panel()
+            panelWarehouse = new PanelWithPanelEntity(WH_SLOTS_IN_LINE)
             {
                 Parent = pageHeroes,
-                BorderStyle = BorderStyle.FixedSingle,
                 Left = 0,
                 Top = panelHeroes.Height + Config.GRID_SIZE
             };
-
-            PanelEntity pi;
-
-            for (int y = 0; y < WH_SLOT_LINES; y++)
-                for (int x = 0; x < WH_SLOTS_IN_LINE; x++)
-                {
-                    pi = new PanelEntity();
-                    pi.Parent = panelWarehouse;
-                    pi.Left = Config.GRID_SIZE + (pi.Width + Config.GRID_SIZE) * x;
-                    pi.Top = Config.GRID_SIZE + (pi.Height + Config.GRID_SIZE) * y;
-                    pi.MouseMove += PanelCell_MouseMove;
-                    pi.MouseDown += PanelCellWarehouse_MouseDown;
-                    pi.MouseUp += PanelCellWarehouse_MouseUp;
-
-                    SlotsWarehouse.Add(pi);
-                }
-
-            panelWarehouse.Width = WH_SLOTS_IN_LINE * (SlotsWarehouse[0].Width + Config.GRID_SIZE) + Config.GRID_SIZE;
-            panelWarehouse.Height = WH_SLOT_LINES * (SlotsWarehouse[0].Height + Config.GRID_SIZE) + Config.GRID_SIZE;
         }
 
         internal void ShowWarehouse()
         {
-            for (int i = 0; i < lobby.CurrentPlayer.Warehouse.Length; i++)
-            {
-                SlotsWarehouse[i].ShowCell(lobby.CurrentPlayer.Warehouse[i]);
-            }
+            panelWarehouse.ApplyList(lobby.CurrentPlayer.Warehouse.ToList<ICell>());
         }
 
         private void PanelHero_Click(object sender, EventArgs e)
@@ -1055,11 +1031,11 @@ namespace Fantasy_King_s_Battle
 
         private PanelEntity GetPanelItemSlotOfWarehouse(Point p)
         {
-            foreach (PanelEntity pi in SlotsWarehouse)
+            /*foreach (PanelEntity pi in SlotsWarehouse)
             {
                 if ((p.Y >= panelWarehouse.Top + pi.Top) && (p.Y <= panelWarehouse.Top + pi.Top + pi.Height) && (p.X >= panelWarehouse.Left + pi.Left) && (p.X <= panelWarehouse.Left + pi.Left + pi.Width))
                     return pi;
-            }
+            }*/
 
             return null;
 
