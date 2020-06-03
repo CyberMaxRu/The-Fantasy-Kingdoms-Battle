@@ -278,6 +278,7 @@ namespace Fantasy_King_s_Battle
 
         internal void Clear()
         {
+            lblHeader.Text = "";
             lblAction.Hide();
             lblDescription.Hide();
             lblIncome.Hide();
@@ -429,6 +430,8 @@ namespace Fantasy_King_s_Battle
 
         internal void ShowHint(Control c)
         {
+            Debug.Assert(lblHeader.Text.Length > 0);
+
             Location = c.PointToScreen(new Point(0, c.Height + 2));
 
             bool needReshow = (Visible == false) || (Height != nextTop);
