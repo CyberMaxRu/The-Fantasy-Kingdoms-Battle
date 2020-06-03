@@ -34,12 +34,19 @@ namespace Fantasy_King_s_Battle
         }
 
         // Реализация интерфейса
+        PanelEntity ICell.Panel { get; set; }
         ImageList ICell.ImageList() => Program.formMain.ilItems;
         int ICell.ImageIndex() => ImageIndex;
         int ICell.Value() => GetValue();
+
         void ICell.PrepareHint() 
         {
             DoPrepareHint();
+        }
+
+        void ICell.Click()
+        {
+
         }
     }
 }

@@ -89,7 +89,6 @@ namespace Fantasy_King_s_Battle
         internal PlayerItem[] Slots { get; } = new PlayerItem[FormMain.SLOT_IN_INVENTORY];
         internal PlayerItem Weapon { get; private set; }// Оружие 
         internal PlayerItem Armour { get; private set; }// Доспех
-        internal PanelHero Panel { get; set; }
         internal Point CoordInPlayer { get; set; }// Координаты героя в слотах игрока
         internal List<Ability> Abilities { get; } = new List<Ability>();// Cпособности
 
@@ -107,13 +106,6 @@ namespace Fantasy_King_s_Battle
         internal int DrawStrike { get; }// Ничьих подряд
         internal ResultBattle PriorResultBattle { get; set; }// Предыдущий результат битвы для расчета страйков
 
-        internal void ShowData()
-        {
-            Debug.Assert(Panel != null);
-
-            Panel.ShowData(this);
-        }
-
         // Увольнение героя
         internal void Dismiss()
         {
@@ -122,9 +114,6 @@ namespace Fantasy_King_s_Battle
 
             Building.Heroes.Remove(this);
             Building.Player.CombatHeroes.Remove(this);
-
-            if (Panel != null)
-                Panel.Dispose();
 
             Debug.Assert(Building.Heroes.IndexOf(this) == -1);
             Debug.Assert(Building.Player.CombatHeroes.IndexOf(this) == -1);
@@ -366,12 +355,18 @@ namespace Fantasy_King_s_Battle
         }
 
         // Реализация интерфейса
+        PanelEntity ICell.Panel { get; set; }
         ImageList ICell.ImageList() => Program.formMain.ilGuiHeroes;
         int ICell.ImageIndex() => ClassHero.ImageIndex;
         int ICell.Value() => Level;
         void ICell.PrepareHint()
         {
             //DoPrepareHint();
+        }
+
+        void ICell.Click()
+        {
+            Program.formMain.SelectHero(this);
         }
     }
 }

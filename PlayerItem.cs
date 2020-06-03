@@ -26,13 +26,20 @@ namespace Fantasy_King_s_Battle
         internal bool OwnerIsPlayer { get; set; }
 
         // Реализация интерфейса
+        PanelEntity ICell.Panel { get; set; }
         ImageList ICell.ImageList() => Program.formMain.ilItems;
         int ICell.ImageIndex() => Item.ImageIndex;
         int ICell.Value() => !OwnerIsPlayer && Item.TypeItem.Required ? 0 : Quantity;
+
         void ICell.PrepareHint()
         {
             Program.formMain.formHint.AddStep1Header(Item.Name, "", Item.Description);
             Program.formMain.formHint.AddStep6PlayerItem(this);
+        }
+
+        void ICell.Click()
+        {
+
         }
     }
 }

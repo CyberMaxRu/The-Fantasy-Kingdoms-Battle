@@ -134,7 +134,7 @@ namespace Fantasy_King_s_Battle
 
         internal FormHint formHint;
         internal PanelBuilding SelectedPanelBuilding { get; private set; }
-        internal PanelHero SelectedPanelHero { get; private set; }
+        internal PlayerHero SelectedHero { get; private set; }
 
         internal static Random Rnd = new Random();
 
@@ -686,11 +686,6 @@ namespace Fantasy_King_s_Battle
             panelWarehouse.ApplyList(lobby.CurrentPlayer.Warehouse.ToList<ICell>());
         }
 
-        private void PanelHero_Click(object sender, EventArgs e)
-        {
-            SelectHero(sender as PanelHero);
-        }
-
         private Point RealCoordCursorHeroDrag(Point locationMouse)
         {
             return new Point(panelHeroes.Left + panelHeroForDrag.Left + locationMouse.X - shiftForMouseByDrag.X, panelHeroes.Top + panelHeroForDrag.Top + locationMouse.Y - shiftForMouseByDrag.Y);
@@ -1104,7 +1099,7 @@ namespace Fantasy_King_s_Battle
         {
             if (SelectedPanelBuilding != pb)
             {
-                if (SelectedPanelHero != null)
+                if (SelectedHero != null)
                     SelectHero(null);
 
                 PanelBuilding oldSelected = SelectedPanelBuilding;
@@ -1127,24 +1122,24 @@ namespace Fantasy_King_s_Battle
             }
         }
 
-        internal void SelectHero(PanelHero ph)
+        internal void SelectHero(PlayerHero ph)
         {
-            if (SelectedPanelHero != ph)
+            if (SelectedHero != ph)
             {
                 if (SelectedPanelBuilding != null)
                     SelectBuilding(null);
 
-                PanelHero oldSelected = SelectedPanelHero;
-                SelectedPanelHero = ph;
+                PlayerHero oldSelected = SelectedHero;
+                SelectedHero = ph;
 
                 UpdateMenu();
 
                 if (oldSelected != null)
-                    oldSelected.Invalidate(true);
-                if (SelectedPanelHero != null)
+                    ((ICell)oldSelected).Panel.Invalidate(true);
+                if (SelectedHero != null)
                 {
-                    panelHeroInfo.Hero = SelectedPanelHero.Hero;
-                    SelectedPanelHero.Invalidate(true);
+                    panelHeroInfo.Hero = SelectedHero;
+                    ((ICell)SelectedHero).Panel.Invalidate(true);
                     panelHeroInfo.Show();
                 }
                 else

@@ -507,6 +507,7 @@ namespace Fantasy_King_s_Battle
         }
 
         // Реализация интерфейса
+        PanelEntity ICell.Panel { get; set; }
         ImageList ICell.ImageList() => Program.formMain.ilPlayerAvatars;
         int ICell.ImageIndex() => ImageIndexAvatar;
         int ICell.Value() => Castle.Level;
@@ -522,6 +523,11 @@ namespace Fantasy_King_s_Battle
                     + "Побед: " + Wins.ToString() + Environment.NewLine
                     + "Ничьих: " + Draws.ToString() + Environment.NewLine
                     + "Поражений: " + Loses.ToString() + Environment.NewLine);
+        }
+
+        void ICell.Click()
+        { 
+
         }
     }
 }

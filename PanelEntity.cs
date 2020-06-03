@@ -12,10 +12,12 @@ namespace Fantasy_King_s_Battle
     // Интерфейс для работы с ячейкой
     internal interface ICell
     {
+        PanelEntity Panel { get; set; }
         ImageList ImageList();
         int ImageIndex();
         int Value();        
         void PrepareHint();
+        void Click();
     }
 
     // Класс панели для рисования иконки объекта, поддерживающего интерфейс ячейки
@@ -72,11 +74,23 @@ namespace Fantasy_King_s_Battle
             base.OnPaint(e);
         }
 
+        protected override void OnMouseClick(MouseEventArgs e)
+        {
+            base.OnMouseClick(e);
+
+            cell?.Click();
+        }
+
         internal int NumberCell { get; }
 
         internal void ShowCell(ICell c)
         {
+            if (cell != null)
+                cell.Panel = null;
+
             cell = c;
+            if (cell != null)
+                cell.Panel = this;
 
             Text = (cell != null) && (cell.Value() > 0) ? c.Value().ToString() : "";
 
