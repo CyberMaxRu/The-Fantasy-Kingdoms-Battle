@@ -5,11 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace Fantasy_King_s_Battle
 {
     // Класс героя игрока
-    internal sealed class PlayerHero
+    internal sealed class PlayerHero : ICell
     {
         private int slotWeapon;
         private int slotArmour;
@@ -362,6 +363,15 @@ namespace Fantasy_King_s_Battle
             ParametersWithAmmunition.DefenseMagic = Armour.Item.DefenseMagic;
 
             Debug.Assert((ParametersWithAmmunition.MaxMeleeDamage > 0) || (ParametersWithAmmunition.MaxMissileDamage > 0) || (ParametersWithAmmunition.MagicDamage > 0));
+        }
+
+        // Реализация интерфейса
+        ImageList ICell.ImageList() => Program.formMain.ilGuiHeroes;
+        int ICell.ImageIndex() => ClassHero.ImageIndex;
+        int ICell.Value() => Level;
+        void ICell.PrepareHint()
+        {
+            //DoPrepareHint();
         }
     }
 }
