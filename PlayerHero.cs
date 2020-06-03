@@ -361,7 +361,7 @@ namespace Fantasy_King_s_Battle
         int ICell.Value() => Level;
         void ICell.PrepareHint()
         {
-            //DoPrepareHint();
+            Program.formMain.formHint.AddStep1Header(ClassHero.Name, "", ClassHero.Description);
         }
 
         void ICell.Click()
