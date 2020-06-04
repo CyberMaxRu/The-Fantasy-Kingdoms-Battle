@@ -118,4 +118,118 @@
       <ClassHero>Warrior</ClassHero>
     </ClassesHeroes>
   </Ability>
+  <Ability>
+    <ID>RogueBasicAttack</ID>
+    <Name>Рукопашная атака</Name>
+    <Description>- Обычная атака рукопашным оружием/- Наносит урон одной цели</Description>
+    <ImageIndex>41</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Attack</TypeAbility>
+    <TypeAttack>Melee</TypeAttack>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Rogue</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>RogueWoundAttack</ID>
+    <Name>Поворот клинка</Name>
+    <Description>- Наносит средний урон/- Накладывает эффект, наносящий повреждения с течением времени/- Рукопашная атака</Description>
+    <ImageIndex>42</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Attack</TypeAbility>
+    <TypeAttack>Melee</TypeAttack>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>10</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>2,0</SkillModif>
+    <CoolDown>30</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Rogue</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>RoguePoisonAttack</ID>
+    <Name>Отравление</Name>
+    <Description>- Наносит небольшой урон/- Накладывает эффект, наносящий небольшие повреждения с течением времени/- Рукопашная атака</Description>
+    <ImageIndex>43</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Attack</TypeAbility>
+    <TypeAttack>Melee</TypeAttack>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>15</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Rogue</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>RogueImpAttack</ID>
+    <Name>Коварный удар</Name>
+    <Description>- Наносит большой урон/- Рукопашная атака</Description>
+    <ImageIndex>44</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Attack</TypeAbility>
+    <TypeAttack>Melee</TypeAttack>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>3,0</SkillModif>
+    <CoolDown>10</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Rogue</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>RogueKickAttack</ID>
+    <Name>Удар под дых</Name>
+    <Description>- Наносит небольшой урон/- Накладывает эффект, понижающий умение рукопашной атаки/- Рукопашная атака</Description>
+    <ImageIndex>45</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Attack</TypeAbility>
+    <TypeAttack>Melee</TypeAttack>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>1,5</SkillModif>
+    <CoolDown>10</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Rogue</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>RogueStunAttack</ID>
+    <Name>Оглушение</Name>
+    <Description>- Наносит небольшой урон/- Накладывает эффект, не позволяющий двигаться и атаковать/- Рукопашная атака</Description>
+    <ImageIndex>46</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Attack</TypeAbility>
+    <TypeAttack>Melee</TypeAttack>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>1,5</SkillModif>
+    <CoolDown>10</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Rogue</ClassHero>
+    </ClassesHeroes>
+  </Ability>
 </Abilities>

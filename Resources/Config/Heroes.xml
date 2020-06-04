@@ -122,6 +122,10 @@
       <Stamina>2</Stamina>
       <ResistMagic>0</ResistMagic>
     </NextLevel>
+    <Abilities>
+      <Ability>RogueBasicAttack</Ability>
+      <Ability>RogueWoundAttack</Ability>
+    </Abilities>
     <CarryTypeItems>
       <CarryTypeItem>
         <ID>WeaponWarrior</ID>

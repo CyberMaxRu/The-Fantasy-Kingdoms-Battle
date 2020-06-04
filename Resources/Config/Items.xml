@@ -47,6 +47,15 @@
     <Perk></Perk>
   </Item>
   <Item>
+    <ID>EnchantWeaponPoison</ID>
+    <Name>Яды для оружия</Name>
+    <Description>Гильдия разбойниц продает всем героям яды для оружия./Обработанное такие ядом оружие при ударе накладывает на противника "Жгучий яд".</Description>
+    <ImageIndex>47</ImageIndex>
+    <TypeItem>Enchant</TypeItem>
+    <Cost>100</Cost>
+    <Perk></Perk>
+  </Item>
+  <Item>
     <ID>Sword0</ID>
     <Name>Простое рукопашное оружие</Name>
     <Description>Безыскусное, но функциональное рукопашное оружие</Description>
