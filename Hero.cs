@@ -9,7 +9,7 @@ using System.Diagnostics;
 
 namespace Fantasy_King_s_Battle
 {
-    internal enum TypeAttack { Melee, Missile, None }
+    internal enum TypeAttack { Melee, Missile, Magic, None }
 
     // Конфигурация типов предметов, которые героя может носить
     internal sealed class CarryTypeItem
