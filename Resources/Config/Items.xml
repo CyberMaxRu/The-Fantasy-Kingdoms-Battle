@@ -56,6 +56,15 @@
     <Perk></Perk>
   </Item>
   <Item>
+    <ID>EnchantWeaponAttack</ID>
+    <Name>Зачарование оружия</Name>
+    <Description>Гильдия магов продает всем героям чары на оружие./Зачарованное оружие повышает умение всех атак.</Description>
+    <ImageIndex>62</ImageIndex>
+    <TypeItem>Enchant</TypeItem>
+    <Cost>100</Cost>
+    <Perk></Perk>
+  </Item>
+  <Item>
     <ID>Sword0</ID>
     <Name>Простое рукопашное оружие</Name>
     <Description>Безыскусное, но функциональное рукопашное оружие</Description>

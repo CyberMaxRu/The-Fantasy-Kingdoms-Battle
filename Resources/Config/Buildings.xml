@@ -638,6 +638,7 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <TypeIncome>None</TypeIncome>
+    <LayersResearches>1</LayersResearches>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -673,6 +674,61 @@
         </Requirements>
       </Level>
     </Levels>
+    <Researches>
+      <Research>
+        <PosX>3</PosX>
+        <PosY>1</PosY>
+        <Layer>1</Layer>
+        <Item>EnchantWeaponAttack</Item>
+        <Cost>300</Cost>
+      </Research>
+      <Research>
+        <PosX>1</PosX>
+        <PosY>3</PosY>
+        <Layer>1</Layer>
+        <Ability>MageFireballAttack</Ability>
+        <Cost>200</Cost>
+      </Research>
+      <Research>
+        <PosX>2</PosX>
+        <PosY>3</PosY>
+        <Layer>1</Layer>
+        <Ability>MageFreezeAttack</Ability>
+        <Cost>500</Cost>
+        <Requirements>
+          <Requirement>
+            <Building>GuildRogue</Building>
+            <Level>2</Level>
+          </Requirement>
+        </Requirements>
+      </Research>
+      <Research>
+        <PosX>3</PosX>
+        <PosY>3</PosY>
+        <Layer>1</Layer>
+        <Ability>MageGuardianWind</Ability>
+        <Cost>750</Cost>
+        <Requirements>
+          <Requirement>
+            <Building>GuildRogue</Building>
+            <Level>2</Level>
+          </Requirement>
+        </Requirements>
+      </Research>
+      <Research>
+        <PosX>4</PosX>
+        <PosY>3</PosY>
+        <Layer>1</Layer>
+        <Ability>MageFirestormAttack</Ability>
+        <Cost>2000</Cost>
+        <Requirements>
+          <Requirement>
+            <Building>GuildRogue</Building>
+            <Level>3</Level>
+          </Requirement>
+        </Requirements>
+      </Research>
+    </Researches>
   </Building>
   <Building>
     <ID>GuildElf</ID>

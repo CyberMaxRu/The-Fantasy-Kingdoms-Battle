@@ -394,6 +394,11 @@
       <Stamina>1</Stamina>
       <ResistMagic>0</ResistMagic>
     </NextLevel>
+    <Abilities>
+      <Ability>MagicBasicAttack</Ability>
+      <Ability>MageArcaneShield</Ability>
+      <Ability>MageSummonSerpent</Ability>
+    </Abilities>
     <CarryTypeItems>
       <CarryTypeItem>
         <ID>WeaponMage</ID>

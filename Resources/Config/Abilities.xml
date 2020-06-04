@@ -471,4 +471,127 @@
       <ClassHero>Cleric</ClassHero>
     </ClassesHeroes>
   </Ability>
+  <Ability>
+    <ID>MageArcaneShield</ID>
+    <Name>Магической щит</Name>
+    <Description>- Накладывает на мага эффект, повышающий защиту от рукопашных и магических атак/- Требует маны</Description>
+    <ImageIndex>60</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Buff</TypeAbility>
+    <TypeAttack>None</TypeAttack>
+    <TypeTarget>Self</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>60</CoolDown>
+    <ManaCost>10</ManaCost>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Mage</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>MageSummonSerpent</ID>
+    <Name>Вызов змея</Name>
+    <Description>- Вызывает змея-союзника/- Требует маны</Description>
+    <ImageIndex>61</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Buff</TypeAbility>
+    <TypeAttack>None</TypeAttack>
+    <TypeTarget>Self</TypeTarget>
+    <MinUnitLevel>15</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>20</CoolDown>
+    <ManaCost>10</ManaCost>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Mage</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>MageFireballAttack</ID>
+    <Name>Шар огня</Name>
+    <Description>- Наносит большой урон всем целям в радиусе./- Накладывает эффект, наносящий небольшие повреждения с течением времени/- Требует маны/- Магическая атака</Description>
+    <ImageIndex>63</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Attack</TypeAbility>
+    <TypeAttack>Magic</TypeAttack>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>True</Ranged>
+    <AoeRadius>3</AoeRadius>
+    <SkillModif>2,0</SkillModif>
+    <CoolDown>8</CoolDown>
+    <ManaCost>30</ManaCost>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Mage</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>MageFreezeAttack</ID>
+    <Name>Ледяная стрела</Name>
+    <Description>- Наносит большой урон./- Накладывает эффект, не позволяющий двигаться и атаковать/- Требует маны/- Магическая атака</Description>
+    <ImageIndex>64</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Attack</TypeAbility>
+    <TypeAttack>Magic</TypeAttack>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>True</Ranged>
+    <MissileVelocity>20</MissileVelocity>
+    <AoeRadius>3</AoeRadius>
+    <SkillModif>3,0</SkillModif>
+    <CoolDown>8</CoolDown>
+    <ManaCost>20</ManaCost>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Mage</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>MageGuardianWind</ID>
+    <Name>Воздушная буря</Name>
+    <Description>- Наносит средний урон всем целям в небольшом радиусе от мага/- Отбрасывает противника/- Требует маны/- Магическая атака</Description>
+    <ImageIndex>65</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Attack</TypeAbility>
+    <TypeAttack>Magic</TypeAttack>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <MissileVelocity>20</MissileVelocity>
+    <AoeRadius>5</AoeRadius>
+    <SkillModif>1,5</SkillModif>
+    <CoolDown>20</CoolDown>
+    <ManaCost>10</ManaCost>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Mage</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>MageFirestormAttack</ID>
+    <Name>Огненная буря</Name>
+    <Description>- Наносит огромный урон всем целям в радиусе/- Требует маны/- Магическая атака</Description>
+    <ImageIndex>66</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Attack</TypeAbility>
+    <TypeAttack>Magic</TypeAttack>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>True</Ranged>
+    <MissileVelocity>10</MissileVelocity>
+    <AoeRadius>5</AoeRadius>
+    <SkillModif>5,0</SkillModif>
+    <CoolDown>20</CoolDown>
+    <ManaCost>50</ManaCost>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Mage</ClassHero>
+    </ClassesHeroes>
+  </Ability>
 </Abilities>
