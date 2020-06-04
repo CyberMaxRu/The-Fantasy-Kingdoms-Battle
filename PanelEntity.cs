@@ -61,8 +61,10 @@ namespace Fantasy_King_s_Battle
             Program.formMain.formHint.HideHint();
         }
 
-        protected override void OnPaint(PaintEventArgs e)
+        protected override void OnPaintBackground(PaintEventArgs e)
         {
+            base.OnPaintBackground(e);
+
             if (cell != null)
             {
                 e.Graphics.DrawImageUnscaled(cell.ImageList().Images[cell.ImageIndex()], pointIcon);
@@ -70,8 +72,6 @@ namespace Fantasy_King_s_Battle
             }
             else
                 e.Graphics.DrawImage(Program.formMain.bmpEmptyEntity, new Rectangle(1, 0, Program.formMain.bmpBorderForIcon.Width - 2, Program.formMain.bmpBorderForIcon.Height - 2));
-
-            base.OnPaint(e);
         }
 
         protected override void OnMouseClick(MouseEventArgs e)
