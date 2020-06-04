@@ -214,7 +214,7 @@
     </ClassesHeroes>
   </Ability>
   <Ability>
-    <ID>RogueStunAttack</ID>
+    <ID>StunAttack</ID>
     <Name>Оглушение</Name>
     <Description>- Наносит небольшой урон/- Накладывает эффект, не позволяющий двигаться и атаковать/- Рукопашная атака</Description>
     <ImageIndex>46</ImageIndex>
@@ -230,6 +230,7 @@
     <Effects/>
     <ClassesHeroes>
       <ClassHero>Rogue</ClassHero>
+      <ClassHero>Dwarf</ClassHero>
     </ClassesHeroes>
   </Ability>
   <Ability>
@@ -672,6 +673,82 @@
     <Effects/>
     <ClassesHeroes>
       <ClassHero>Elf</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>DwarfBasicAttack</ID>
+    <Name>Рукопашная атака</Name>
+    <Description>- Обычная атака рукопашным оружием/- Наносит урон одной цели</Description>
+    <ImageIndex>71</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Attack</TypeAbility>
+    <TypeAttack>Melee</TypeAttack>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Dwarf</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>DwarfAntiBuildingAttack</ID>
+    <Name>Разрушение</Name>
+    <Description>- Наносит огромный урон по зданию/- Рукопашная атака</Description>
+    <ImageIndex>72</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Attack</TypeAbility>
+    <TypeAttack>Melee</TypeAttack>
+    <TypeTarget>EnemyBuilding</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>5,0</SkillModif>
+    <CoolDown>10</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Dwarf</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>DwarfImpAttack</ID>
+    <Name>Разящий удар</Name>
+    <Description>- Наносит большой урон/- Рукопашная атака</Description>
+    <ImageIndex>73</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Attack</TypeAbility>
+    <TypeAttack>Melee</TypeAttack>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>3,0</SkillModif>
+    <CoolDown>10</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Dwarf</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>DwarfBerserkBuff</ID>
+    <Name>Кровь камня</Name>
+    <Description>- Накладывает на гнома эффект, повышающий защиту от магических атак</Description>
+    <ImageIndex>74</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Buff</TypeAbility>
+    <TypeAttack>None</TypeAttack>
+    <TypeTarget>Self</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>60</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Dwarf</ClassHero>
     </ClassesHeroes>
   </Ability>
 </Abilities>

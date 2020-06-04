@@ -830,6 +830,7 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <TypeIncome>None</TypeIncome>
+    <LayersResearches>1</LayersResearches>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -873,6 +874,35 @@
         </Requirements>
       </Level>
     </Levels>
+    <Researches>
+      <Research>
+        <PosX>1</PosX>
+        <PosY>3</PosY>
+        <Layer>1</Layer>
+        <Ability>DwarfAntiBuildingAttack</Ability>
+        <Cost>500</Cost>
+      </Research>
+      <Research>
+        <PosX>2</PosX>
+        <PosY>3</PosY>
+        <Layer>1</Layer>
+        <Ability>DwarfImpAttack</Ability>
+        <Cost>300</Cost>
+      </Research>
+      <Research>
+        <PosX>3</PosX>
+        <PosY>3</PosY>
+        <Layer>1</Layer>
+        <Ability>DwarfBerserkBuff</Ability>
+        <Cost>750</Cost>
+        <Requirements>
+          <Requirement>
+            <Building>GuildDwarf</Building>
+            <Level>2</Level>
+          </Requirement>
+        </Requirements>
+      </Research>
+    </Researches>
   </Building>
   <Building>
     <ID>GuildRogue</ID>
@@ -954,7 +984,7 @@
         <PosX>4</PosX>
         <PosY>3</PosY>
         <Layer>1</Layer>
-        <Ability>RogueStunAttack</Ability>
+        <Ability>StunAttack</Ability>
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>

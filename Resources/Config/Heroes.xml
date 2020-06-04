@@ -575,6 +575,10 @@
       <Stamina>6</Stamina>
       <ResistMagic>0</ResistMagic>
     </NextLevel>
+    <Abilities>
+      <Ability>DwarfBasicAttack</Ability>
+      <Ability>StunAttack</Ability>
+    </Abilities>
     <CarryTypeItems>
       <CarryTypeItem>
         <ID>WeaponWarrior</ID>
