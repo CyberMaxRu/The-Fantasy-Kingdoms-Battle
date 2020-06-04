@@ -213,7 +213,7 @@
       <ResistMagic>0</ResistMagic>
     </NextLevel>
     <Abilities>
-      <Ability>HunterBasicAttack</Ability>
+      <Ability>ArcherBasicAttack</Ability>
       <Ability>HunterBeastSlayerAttack</Ability>
       <Ability>HunterAoeAttack</Ability>
     </Abilities>

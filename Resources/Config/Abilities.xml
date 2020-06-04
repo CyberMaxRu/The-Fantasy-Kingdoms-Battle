@@ -233,7 +233,7 @@
     </ClassesHeroes>
   </Ability>
   <Ability>
-    <ID>HunterBasicAttack</ID>
+    <ID>ArcherBasicAttack</ID>
     <Name>Стрелковая атака</Name>
     <Description>- Обычная атака стрелковым или метательным оружием/- Наносит урон одной цели</Description>
     <ImageIndex>48</ImageIndex>
@@ -249,6 +249,7 @@
     <Effects/>
     <ClassesHeroes>
       <ClassHero>Hunter</ClassHero>
+      <ClassHero>Elf</ClassHero>
     </ClassesHeroes>
   </Ability>
   <Ability>
