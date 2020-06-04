@@ -34,8 +34,8 @@ namespace Fantasy_King_s_Battle
                 if (a.ID == ID)
                     throw new Exception("В конфигурации способностей повторяется ID = " + ID);
 
-                if (a.Name == Name)
-                    throw new Exception("В конфигурации способностей повторяется Name = " + Name);
+                //if (a.Name == Name)
+                //    throw new Exception("В конфигурации способностей повторяется Name = " + Name);
 
                 if (a.ImageIndex == ImageIndex)
                     throw new Exception("В конфигурации способностей повторяется ImageIndex = " + ImageIndex.ToString());
@@ -108,7 +108,7 @@ namespace Fantasy_King_s_Battle
         protected override int GetValue() => 0;
         protected override void DoPrepareHint()
         {
-
+            base.DoPrepareHint();
         }
     }
 }

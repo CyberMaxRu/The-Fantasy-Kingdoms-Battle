@@ -75,7 +75,7 @@ namespace Fantasy_King_s_Battle
         protected override int GetValue() => 0;
         protected override void DoPrepareHint()
         {
-
+            base.DoPrepareHint();
         }
     }
 }
