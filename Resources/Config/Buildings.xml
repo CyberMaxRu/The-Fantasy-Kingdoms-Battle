@@ -486,6 +486,7 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <TypeIncome>None</TypeIncome>
+    <LayersResearches>1</LayersResearches>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -509,6 +510,47 @@
         <MaxHeroes>14</MaxHeroes>
       </Level>
     </Levels>
+    <Researches>
+      <Research>
+        <PosX>1</PosX>
+        <PosY>3</PosY>
+        <Layer>1</Layer>
+        <Ability>HunterImpAttack</Ability>
+        <Cost>200</Cost>
+        <Requirements>
+          <Requirement>
+            <Building>GuildHunter</Building>
+            <Level>2</Level>
+          </Requirement>
+        </Requirements>
+      </Research>
+      <Research>
+        <PosX>2</PosX>
+        <PosY>3</PosY>
+        <Layer>1</Layer>
+        <Ability>HunterStingShotAttack</Ability>
+        <Cost>1000</Cost>
+        <Requirements>
+          <Requirement>
+            <Building>GuildHunter</Building>
+            <Level>3</Level>
+          </Requirement>
+        </Requirements>
+      </Research>
+      <Research>
+        <PosX>3</PosX>
+        <PosY>3</PosY>
+        <Layer>1</Layer>
+        <Ability>HunterManaburnAttack</Ability>
+        <Cost>1000</Cost>
+        <Requirements>
+          <Requirement>
+            <Building>GuildHunter</Building>
+            <Level>3</Level>
+          </Requirement>
+        </Requirements>
+      </Research>
+    </Researches>
   </Building>
   <Building>
     <ID>GuildCleric</ID>

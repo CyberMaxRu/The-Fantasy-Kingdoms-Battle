@@ -212,6 +212,11 @@
       <Stamina>3</Stamina>
       <ResistMagic>0</ResistMagic>
     </NextLevel>
+    <Abilities>
+      <Ability>HunterBasicAttack</Ability>
+      <Ability>HunterBeastSlayerAttack</Ability>
+      <Ability>HunterAoeAttack</Ability>
+    </Abilities>
     <CarryTypeItems>
       <CarryTypeItem>
         <ID>WeaponArcher</ID>

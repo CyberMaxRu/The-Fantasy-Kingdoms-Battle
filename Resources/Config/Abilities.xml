@@ -232,4 +232,118 @@
       <ClassHero>Rogue</ClassHero>
     </ClassesHeroes>
   </Ability>
+  <Ability>
+    <ID>HunterBasicAttack</ID>
+    <Name>Стрелковая атака</Name>
+    <Description>- Обычная атака стрелковым или метательным оружием/- Наносит урон одной цели</Description>
+    <ImageIndex>48</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Attack</TypeAbility>
+    <TypeAttack>Missile</TypeAttack>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>True</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Hunter</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>HunterBeastSlayerAttack</ID>
+    <Name>Охотничий выстрел</Name>
+    <Description>- Наносит большой урон зверям/- Стрелковая атака</Description>
+    <ImageIndex>49</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Attack</TypeAbility>
+    <TypeAttack>Missile</TypeAttack>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>True</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>10</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Hunter</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>HunterAoeAttack</ID>
+    <Name>Дождь стрел</Name>
+    <Description>- Наносит большой урон всем целям в радиусе/- Стрелковая атака</Description>
+    <ImageIndex>50</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Attack</TypeAbility>
+    <TypeAttack>Missile</TypeAttack>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>10</MinUnitLevel>
+    <Ranged>True</Ranged>
+    <AoeRadius>7</AoeRadius>
+    <SkillModif>4,0</SkillModif>
+    <CoolDown>30</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Hunter</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>HunterImpAttack</ID>
+    <Name>Меткий выстрел</Name>
+    <Description>- Наносит большой урон/- Стрелковая атака</Description>
+    <ImageIndex>51</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Attack</TypeAbility>
+    <TypeAttack>Missile</TypeAttack>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>True</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>3,0</SkillModif>
+    <CoolDown>10</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Hunter</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>HunterStingShotAttack</ID>
+    <Name>Ослабляющий выстрел</Name>
+    <Description>- Наносит небольшой урон/-Накладывает эффект, понижающий умение рукопашной атаки/- Стрелковая атака</Description>
+    <ImageIndex>52</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Attack</TypeAbility>
+    <TypeAttack>Missile</TypeAttack>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>True</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>1,5</SkillModif>
+    <CoolDown>15</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Hunter</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>HunterManaburnAttack</ID>
+    <Name>Боль духа</Name>
+    <Description>- Наносит большой урон/-Накладывает эффект, уменьшающий количество маны с течением времени/- Стрелковая атака</Description>
+    <ImageIndex>53</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Attack</TypeAbility>
+    <TypeAttack>Missile</TypeAttack>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>True</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>1,5</SkillModif>
+    <CoolDown>15</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Hunter</ClassHero>
+    </ClassesHeroes>
+  </Ability>
 </Abilities>
