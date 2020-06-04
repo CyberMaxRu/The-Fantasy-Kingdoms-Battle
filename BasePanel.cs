@@ -4,7 +4,7 @@ using System.Drawing;
 
 namespace Fantasy_King_s_Battle
 {
-    // Баозвый класс панели
+    // Базовый класс панели
     internal class BasePanel : Control
     {
         private readonly Pen penBorder = new Pen(Color.Black);
@@ -30,19 +30,19 @@ namespace Fantasy_King_s_Battle
                 bmpBackground = GuiUtils.MakeBackground(new Size(Width - 2, Height - 2));
         }
 
-        protected override void OnPaint(PaintEventArgs e)
+        protected override void OnPaintBackground(PaintEventArgs pevent)
         {
-            base.OnPaint(e);
+            base.OnPaintBackground(pevent);
 
-            e.Graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
-            e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
-            e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+            pevent.Graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
+            pevent.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
+            pevent.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
 
             // Рисуем бордюр
-            e.Graphics.DrawRectangle(penBorder, rectBorder);
+            pevent.Graphics.DrawRectangle(penBorder, rectBorder);
 
             // Рисуем подложку
-            e.Graphics.DrawImageUnscaled(bmpBackground, 1, 1);
+            pevent.Graphics.DrawImageUnscaled(bmpBackground, 1, 1);
         }
     }
 }
