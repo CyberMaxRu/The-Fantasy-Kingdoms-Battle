@@ -81,8 +81,6 @@ namespace Fantasy_King_s_Battle
             cell?.Click();
         }
 
-        internal int NumberCell { get; }
-
         internal void ShowCell(ICell c)
         {
             if (cell != null)
