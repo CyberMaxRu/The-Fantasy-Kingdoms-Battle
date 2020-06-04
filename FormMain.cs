@@ -537,11 +537,12 @@ namespace Fantasy_King_s_Battle
             panelHeroes.ApplyList(list);
         }
 
-        protected override void OnPaint(PaintEventArgs e)
+        protected override void OnPaintBackground(PaintEventArgs e)
         {
-            base.OnPaint(e);
+            base.OnPaintBackground(e);
 
             e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
+            e.Graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
             e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
 
             // Рисуем подложку
