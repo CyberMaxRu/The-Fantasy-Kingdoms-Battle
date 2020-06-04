@@ -595,4 +595,83 @@
       <ClassHero>Mage</ClassHero>
     </ClassesHeroes>
   </Ability>
+  <Ability>
+    <ID>ElfRoots</ID>
+    <Name>Корни</Name>
+    <Description>- Наносит небольшой урон/- Накладывает эффект, не позволяющий двигаться/- Требует маны/- Стрелковая атака</Description>
+    <ImageIndex>67</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Attack</TypeAbility>
+    <TypeAttack>Missile</TypeAttack>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>True</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>1,5</SkillModif>
+    <CoolDown>30</CoolDown>
+    <ManaCost>20</ManaCost>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Elf</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>ElfImpAttack</ID>
+    <Name>Искусный выстрел</Name>
+    <Description>- Наносит большой урон/- Стрелковая атака</Description>
+    <ImageIndex>68</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Attack</TypeAbility>
+    <TypeAttack>Missile</TypeAttack>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>True</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>3,0</SkillModif>
+    <CoolDown>10</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Elf</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>ElfBuff</ID>
+    <Name>Эльфийское вдохновение</Name>
+    <Description>- Накладывает эффект, увеличивающий скорость передвижения/- Требует маны</Description>
+    <ImageIndex>69</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Buff</TypeAbility>
+    <TypeAttack>None</TypeAttack>
+    <TypeTarget>AllyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>True</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>20</CoolDown>
+    <ManaCost>10</ManaCost>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Elf</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>ElfMagicArrow</ID>
+    <Name>Магическая стрела</Name>
+    <Description>- Наносит огромный урон/- Требует маны/- Магическая атака</Description>
+    <ImageIndex>70</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Attack</TypeAbility>
+    <TypeAttack>Missile</TypeAttack>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>True</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>5,0</SkillModif>
+    <CoolDown>15</CoolDown>
+    <ManaCost>10</ManaCost>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Elf</ClassHero>
+    </ClassesHeroes>
+  </Ability>
 </Abilities>

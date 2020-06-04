@@ -485,6 +485,10 @@
       <Stamina>4</Stamina>
       <ResistMagic>0</ResistMagic>
     </NextLevel>
+    <Abilities>
+      <Ability>ArcherBasicAttack</Ability>
+      <Ability>ElfRoots</Ability>
+    </Abilities>
     <CarryTypeItems>
       <CarryTypeItem>
         <ID>WeaponArcher</ID>
