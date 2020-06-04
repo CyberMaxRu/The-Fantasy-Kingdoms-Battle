@@ -311,7 +311,7 @@
   <Ability>
     <ID>HunterStingShotAttack</ID>
     <Name>Ослабляющий выстрел</Name>
-    <Description>- Наносит небольшой урон/-Накладывает эффект, понижающий умение рукопашной атаки/- Стрелковая атака</Description>
+    <Description>- Наносит небольшой урон/- Накладывает эффект, понижающий умение рукопашной атаки/- Стрелковая атака</Description>
     <ImageIndex>52</ImageIndex>
     <Cost>20</Cost>
     <TypeAbility>Attack</TypeAbility>
@@ -330,7 +330,7 @@
   <Ability>
     <ID>HunterManaburnAttack</ID>
     <Name>Боль духа</Name>
-    <Description>- Наносит большой урон/-Накладывает эффект, уменьшающий количество маны с течением времени/- Стрелковая атака</Description>
+    <Description>- Наносит большой урон/- Накладывает эффект, уменьшающий количество маны с течением времени/- Стрелковая атака</Description>
     <ImageIndex>53</ImageIndex>
     <Cost>20</Cost>
     <TypeAbility>Attack</TypeAbility>
@@ -344,6 +344,130 @@
     <Effects/>
     <ClassesHeroes>
       <ClassHero>Hunter</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>ClericHeal</ID>
+    <Name>Святое лечение</Name>
+    <Description>- Восстанавливает часть здоровья дружественной цели/- Требует маны</Description>
+    <ImageIndex>54</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Heal</TypeAbility>
+    <TypeAttack>Magic</TypeAttack>
+    <TypeTarget>AllyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>True</Ranged>
+    <MissileVelocity>50</MissileVelocity>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>6,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <ManaCost>15</ManaCost>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Cleric</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>ClericBasicAttack</ID>
+    <Name>Магическая атака</Name>
+    <Description>- Обычная атака магией или магическим оружием/- Наносит урон одной цели</Description>
+    <ImageIndex>55</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Attack</TypeAbility>
+    <TypeAttack>Magic</TypeAttack>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>True</Ranged>
+    <MissileVelocity>10</MissileVelocity>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <ManaCost>15</ManaCost>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Cleric</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>ClericWisdomBuff</ID>
+    <Name>Начитанность</Name>
+    <Description>- Накладывает эффект, повышающий умение магической атаки и лечения/- Требует маны</Description>
+    <ImageIndex>56</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Buff</TypeAbility>
+    <TypeAttack>None</TypeAttack>
+    <TypeTarget>AllyUnit</TypeTarget>
+    <MinUnitLevel>10</MinUnitLevel>
+    <Ranged>True</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>20</CoolDown>
+    <ManaCost>10</ManaCost>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Cleric</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>ClericHolyAttack</ID>
+    <Name>Святая атака</Name>
+    <Description>- Наносит огромный урон нежити/- Требует маны/- Магическая атака</Description>
+    <ImageIndex>57</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Attack</TypeAbility>
+    <TypeAttack>Magic</TypeAttack>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>True</Ranged>
+    <MissileVelocity>10</MissileVelocity>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>8,0</SkillModif>
+    <CoolDown>5</CoolDown>
+    <ManaCost>10</ManaCost>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Cleric</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>ClericManaRegenBuff</ID>
+    <Name>Восстановление веры</Name>
+    <Description>- Накладывает эффект, восстанавливающий ману с течением времени/- Требует маны</Description>
+    <ImageIndex>58</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Buff</TypeAbility>
+    <TypeAttack>None</TypeAttack>
+    <TypeTarget>AllyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>True</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>20</CoolDown>
+    <ManaCost>10</ManaCost>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Cleric</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>ClericKnockbackAttack</ID>
+    <Name>Молот веры</Name>
+    <Description>- Наносит средний урон/- Отбрасывает противника/- Требует маны/- Магическая атака</Description>
+    <ImageIndex>59</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Buff</TypeAbility>
+    <TypeAttack>None</TypeAttack>
+    <TypeTarget>AllyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>True</Ranged>
+    <MissileVelocity>10</MissileVelocity>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>3,0</SkillModif>
+    <CoolDown>15</CoolDown>
+    <ManaCost>20</ManaCost>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Cleric</ClassHero>
     </ClassesHeroes>
   </Ability>
 </Abilities>

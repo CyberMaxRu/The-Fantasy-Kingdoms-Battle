@@ -303,6 +303,11 @@
       <Stamina>2</Stamina>
       <ResistMagic>0</ResistMagic>
     </NextLevel>
+    <Abilities>
+      <Ability>ClericHeal</Ability>
+      <Ability>ClericBasicAttack</Ability>
+      <Ability>ClericWisdomBuff</Ability>
+    </Abilities>
     <CarryTypeItems>
       <CarryTypeItem>
         <ID>WeaponMage</ID>
