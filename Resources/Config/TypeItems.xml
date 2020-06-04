@@ -60,4 +60,10 @@
     <Required>False</Required>
     <Single>False</Single>
   </TypeItem>
+  <TypeItem>
+    <ID>Enchant</ID>
+    <Category>Enchant</Category>
+    <Required>False</Required>
+    <Single>True</Single>
+  </TypeItem>
 </TypeItems>
