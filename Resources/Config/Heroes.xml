@@ -305,7 +305,7 @@
     </NextLevel>
     <Abilities>
       <Ability>ClericHeal</Ability>
-      <Ability>ClericBasicAttack</Ability>
+      <Ability>MagicBasicAttack</Ability>
       <Ability>ClericWisdomBuff</Ability>
     </Abilities>
     <CarryTypeItems>

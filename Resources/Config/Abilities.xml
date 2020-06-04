@@ -368,7 +368,7 @@
     </ClassesHeroes>
   </Ability>
   <Ability>
-    <ID>ClericBasicAttack</ID>
+    <ID>MagicBasicAttack</ID>
     <Name>Магическая атака</Name>
     <Description>- Обычная атака магией или магическим оружием/- Наносит урон одной цели</Description>
     <ImageIndex>55</ImageIndex>
@@ -386,6 +386,7 @@
     <Effects/>
     <ClassesHeroes>
       <ClassHero>Cleric</ClassHero>
+      <ClassHero>Mage</ClassHero>
     </ClassesHeroes>
   </Ability>
   <Ability>
