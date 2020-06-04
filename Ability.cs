@@ -10,8 +10,8 @@ using System.Windows.Forms;
 namespace Fantasy_King_s_Battle
 {
     // Класс способности
-    internal enum TypeAbility { Attack, Spell, Buff }
-    internal enum TypeTarget { Self, EnemyUnit }// Тип цели для способности
+    internal enum TypeAbility { Attack, Spell, Buff, Heal }
+    internal enum TypeTarget { Self, EnemyUnit, AllyUnit }// Тип цели для способности
     internal enum Effect { Taunt, Slow }// Эффекты
 
     internal sealed class Ability : Entity
@@ -23,10 +23,12 @@ namespace Fantasy_King_s_Battle
             TypeAttack = (TypeAttack)Enum.Parse(typeof(TypeAttack), n.SelectSingleNode("TypeAttack").InnerText);
             TypeTarget = (TypeTarget)Enum.Parse(typeof(TypeTarget), n.SelectSingleNode("TypeTarget").InnerText);
             MinUnitLevel = Convert.ToInt32(n.SelectSingleNode("MinUnitLevel").InnerText);
-            Ranged = Convert.ToBoolean(n.SelectSingleNode("Ranged").InnerText); ;
+            Ranged = Convert.ToBoolean(n.SelectSingleNode("Ranged").InnerText);
+            MissileVelocity = n.SelectSingleNode("MissileVelocity") != null ? Convert.ToInt32(n.SelectSingleNode("MissileVelocity").InnerText) : 0;
             AoeRadius = Convert.ToInt32(n.SelectSingleNode("AoeRadius").InnerText); ;
             SkillModificator = Convert.ToDouble(n.SelectSingleNode("SkillModif").InnerText);
             CoolDown = Convert.ToInt32(n.SelectSingleNode("CoolDown").InnerText);
+            ManaCost = n.SelectSingleNode("ManaCost") != null ? Convert.ToInt32(n.SelectSingleNode("ManaCost").InnerText) : 0;
 
             // Проверяем, что таких же ID и наименования нет
             foreach (Ability a in FormMain.Config.Abilities)
@@ -91,8 +93,10 @@ namespace Fantasy_King_s_Battle
         internal TypeTarget TypeTarget { get; }
         internal int MinUnitLevel { get; }
         internal bool Ranged { get; }
+        internal int MissileVelocity { get; }
         internal int AoeRadius { get; }
         internal double SkillModificator { get; }
+        internal int ManaCost { get; }
         internal int CoolDown { get; }
         internal List<Effect> Effects { get; } = new List<Effect>();
         internal List<Hero> ClassesHeroes { get; } = new List<Hero>();
