@@ -11,7 +11,7 @@ namespace Fantasy_King_s_Battle
 {
     // Класс способности
     internal enum TypeAbility { Attack, Spell, Buff, Heal }
-    internal enum TypeTarget { Self, EnemyUnit, AllyUnit }// Тип цели для способности
+    internal enum TypeTarget { Self, EnemyUnit, EnemyBuilding, AllyUnit }// Тип цели для способности
     internal enum Effect { Taunt, Slow }// Эффекты
 
     internal sealed class Ability : Entity
