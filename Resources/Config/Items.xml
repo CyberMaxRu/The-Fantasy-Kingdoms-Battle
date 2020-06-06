@@ -228,4 +228,76 @@
     <Cost>0</Cost>
     <Perk></Perk>
   </Item>
+  <Item>
+    <ID>ElixirMeleeProt</ID>
+    <Name>Каменная кожа</Name>
+    <Description>Повышает защиту от рукопашных атак</Description>
+    <ImageIndex>75</ImageIndex>
+    <TypeItem>Elixir</TypeItem>
+    <Cost>50</Cost>
+    <Perk></Perk>
+  </Item>
+  <Item>
+    <ID>ElixirRangeProt</ID>
+    <Name>Настойка на черепашьем панцире</Name>
+    <Description>Повышает защиту от стрелковых атак</Description>
+    <ImageIndex>76</ImageIndex>
+    <TypeItem>Elixir</TypeItem>
+    <Cost>50</Cost>
+    <Perk></Perk>
+  </Item>
+  <Item>
+    <ID>ElixirMagicProt</ID>
+    <Name>Антимагический настой</Name>
+    <Description>Повышает защиту от магических атак</Description>
+    <ImageIndex>77</ImageIndex>
+    <TypeItem>Elixir</TypeItem>
+    <Cost>50</Cost>
+    <Perk></Perk>
+  </Item>
+  <Item>
+    <ID>ElixirStrength</ID>
+    <Name>Сила огра</Name>
+    <Description>Увеличивает умение рукопашной атаки</Description>
+    <ImageIndex>78</ImageIndex>
+    <TypeItem>Elixir</TypeItem>
+    <Cost>50</Cost>
+    <Perk></Perk>
+  </Item>
+  <Item>
+    <ID>ElixirAccuracy</ID>
+    <Name>Глоток точного рома</Name>
+    <Description>Увеличивает умение стрелковой атаки</Description>
+    <ImageIndex>79</ImageIndex>
+    <TypeItem>Elixir</TypeItem>
+    <Cost>50</Cost>
+    <Perk></Perk>
+  </Item>
+  <Item>
+    <ID>ElixirWisdom</ID>
+    <Name>Мудрость змеи</Name>
+    <Description>Увеличивает умение магической атаки</Description>
+    <ImageIndex>80</ImageIndex>
+    <TypeItem>Elixir</TypeItem>
+    <Cost>50</Cost>
+    <Perk></Perk>
+  </Item>
+  <Item>
+    <ID>ElixirSpeed</ID>
+    <Name>Скорость зайца</Name>
+    <Description>Увеличивает скорость передвижения</Description>
+    <ImageIndex>81</ImageIndex>
+    <TypeItem>Elixir</TypeItem>
+    <Cost>50</Cost>
+    <Perk></Perk>
+  </Item>
+  <Item>
+    <ID>ElixirAntipoison</ID>
+    <Name>Защитный противоядный эликсир</Name>
+    <Description>В течении некоторого времени защищает от яда гоблинов</Description>
+    <ImageIndex>82</ImageIndex>
+    <TypeItem>Elixir</TypeItem>
+    <Cost>50</Cost>
+    <Perk></Perk>
+  </Item>
 </Items>

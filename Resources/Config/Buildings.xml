@@ -336,6 +336,7 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <TypeIncome>Persistent</TypeIncome>
+    <LayersResearches>1</LayersResearches>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -354,6 +355,64 @@
         </Requirements>
       </Level>
     </Levels>
+    <Researches>
+      <Research>
+        <PosX>1</PosX>
+        <PosY>1</PosY>
+        <Layer>1</Layer>
+        <Item>ElixirMeleeProt</Item>
+        <Cost>1000</Cost>
+      </Research>
+      <Research>
+        <PosX>2</PosX>
+        <PosY>1</PosY>
+        <Layer>1</Layer>
+        <Item>ElixirRangeProt</Item>
+        <Cost>1000</Cost>
+      </Research>
+      <Research>
+        <PosX>3</PosX>
+        <PosY>1</PosY>
+        <Layer>1</Layer>
+        <Item>ElixirMagicProt</Item>
+        <Cost>1000</Cost>
+      </Research>
+      <Research>
+        <PosX>1</PosX>
+        <PosY>2</PosY>
+        <Layer>1</Layer>
+        <Item>ElixirStrength</Item>
+        <Cost>2000</Cost>
+      </Research>
+      <Research>
+        <PosX>2</PosX>
+        <PosY>2</PosY>
+        <Layer>1</Layer>
+        <Item>ElixirAccuracy</Item>
+        <Cost>2000</Cost>
+      </Research>
+      <Research>
+        <PosX>3</PosX>
+        <PosY>2</PosY>
+        <Layer>1</Layer>
+        <Item>ElixirWisdom</Item>
+        <Cost>2000</Cost>
+      </Research>
+      <Research>
+        <PosX>1</PosX>
+        <PosY>3</PosY>
+        <Layer>1</Layer>
+        <Item>ElixirSpeed</Item>
+        <Cost>1500</Cost>
+      </Research>
+      <Research>
+        <PosX>2</PosX>
+        <PosY>3</PosY>
+        <Layer>1</Layer>
+        <Item>ElixirAntipoison</Item>
+        <Cost>500</Cost>
+      </Research>
+    </Researches>
   </Building>
   <Building>
     <ID>Library</ID>
