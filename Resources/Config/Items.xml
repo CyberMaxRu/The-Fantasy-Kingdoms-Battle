@@ -300,4 +300,13 @@
     <Cost>50</Cost>
     <Perk></Perk>
   </Item>
+  <Item>
+    <ID>ElixirRegeneration</ID>
+    <Name>Кровь тролля</Name>
+    <Description>Восстанавливает здоровье с течением времени</Description>
+    <ImageIndex>83</ImageIndex>
+    <TypeItem>Elixir</TypeItem>
+    <Cost>50</Cost>
+    <Perk></Perk>
+  </Item>
 </Items>

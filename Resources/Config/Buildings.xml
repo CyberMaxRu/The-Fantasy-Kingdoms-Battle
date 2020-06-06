@@ -412,6 +412,13 @@
         <Item>ElixirAntipoison</Item>
         <Cost>500</Cost>
       </Research>
+      <Research>
+        <PosX>3</PosX>
+        <PosY>3</PosY>
+        <Layer>1</Layer>
+        <Item>ElixirRegeneration</Item>
+        <Cost>1000</Cost>
+      </Research>
     </Researches>
   </Building>
   <Building>
