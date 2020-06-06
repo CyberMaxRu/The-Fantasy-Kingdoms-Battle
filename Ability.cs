@@ -61,10 +61,27 @@ namespace Fantasy_King_s_Battle
                 Effects.Add(e);
             }
 
-            if (TypeAbility == TypeAbility.Buff)
+            switch (TypeAbility)
             {
-                Debug.Assert(TypeAttack == TypeAttack.None);
-                //Debug.Assert(Effects.Count > 0);
+                case TypeAbility.Attack:
+                    Debug.Assert(TypeTarget != TypeTarget.Self);
+                    Debug.Assert(TypeTarget != TypeTarget.AllyUnit);
+
+                    break;
+                case TypeAbility.Buff:
+                    Debug.Assert(TypeAttack == TypeAttack.None);
+                    Debug.Assert(TypeTarget != TypeTarget.EnemyUnit);
+                    Debug.Assert(TypeTarget != TypeTarget.EnemyBuilding);
+
+                    //Debug.Assert(Effects.Count > 0);
+                    break;
+                case TypeAbility.Spell:
+                    break;
+                case TypeAbility.Heal:
+                    Debug.Assert(TypeTarget != TypeTarget.EnemyUnit);
+                    Debug.Assert(TypeTarget != TypeTarget.EnemyBuilding);
+
+                    break;
             }
 
             // Загружаем классы героев, которые могут использовать способность
