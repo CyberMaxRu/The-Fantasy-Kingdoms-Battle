@@ -70,7 +70,7 @@
         <Cost>0</Cost>
         <Builders>0</Builders>
         <Income>50</Income>
-        <MaxHeroes>5</MaxHeroes>
+        <MaxHeroes>10</MaxHeroes>
       </Level>
     </Levels>
   </Building>
@@ -1331,4 +1331,4 @@
       </Level>
     </Levels>
   </Building>
-</Buildings>  
+</Buildings>

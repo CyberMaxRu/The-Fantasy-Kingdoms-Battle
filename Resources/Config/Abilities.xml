@@ -389,6 +389,7 @@
     <ClassesHeroes>
       <ClassHero>Cleric</ClassHero>
       <ClassHero>Mage</ClassHero>
+      <ClassHero>DarkPriest</ClassHero>
     </ClassesHeroes>
   </Ability>
   <Ability>
@@ -749,6 +750,106 @@
     <Effects/>
     <ClassesHeroes>
       <ClassHero>Dwarf</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>DarkPriestSummonSeleton</ID>
+    <Name>Вызов скелетов</Name>
+    <Description>- Вызывает скелета-союзника/- Требует маны</Description>
+    <ImageIndex>84</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Buff</TypeAbility>
+    <TypeAttack>None</TypeAttack>
+    <TypeTarget>Self</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>20</CoolDown>
+    <ManaCost>10</ManaCost>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>DarkPriest</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>DarkPriestDrainLifeAttack</ID>
+    <Name>Вытягивание жизни</Name>
+    <Description>- Наносит большой урон/- Восстанавливает часть здоровья сестры Крипты/- Требует маны/- Магическая атака</Description>
+    <ImageIndex>85</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Attack</TypeAbility>
+    <TypeAttack>Magic</TypeAttack>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>True</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>3,0</SkillModif>
+    <CoolDown>10</CoolDown>
+    <ManaCost>15</ManaCost>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>DarkPriest</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>DarkPriestSummonLich</ID>
+    <Name>Вызов лича</Name>
+    <Description>- Вызов лича-союзника/- Требует маны</Description>
+    <ImageIndex>86</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Summon</TypeAbility>
+    <TypeAttack>None</TypeAttack>
+    <TypeTarget>Self</TypeTarget>
+    <MinUnitLevel>10</MinUnitLevel>
+    <Ranged>True</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>20</CoolDown>
+    <ManaCost>20</ManaCost>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>DarkPriest</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>DarkPriestPestilence</ID>
+    <Name>Чума</Name>
+    <Description>- Наносит небольшой урон всем целям в небольшом радиусе от жрицы/- Накладывает эффект, наносящий небольшие повреждения с течением времени/- Требует маны/- Магическая атака</Description>
+    <ImageIndex>87</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Attack</TypeAbility>
+    <TypeAttack>Magic</TypeAttack>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>5</MinUnitLevel>
+    <Ranged>True</Ranged>
+    <AoeRadius>5</AoeRadius>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>20</CoolDown>
+    <ManaCost>20</ManaCost>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>DarkPriest</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>DarkPriestSummonVampire</ID>
+    <Name>Вызов вампира</Name>
+    <Description>- Вызывает вампира-союзника/- Требует маны</Description>
+    <ImageIndex>88</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Summon</TypeAbility>
+    <TypeAttack>None</TypeAttack>
+    <TypeTarget>Self</TypeTarget>
+    <MinUnitLevel>15</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>20</CoolDown>
+    <ManaCost>10</ManaCost>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>DarkPriest</ClassHero>
     </ClassesHeroes>
   </Ability>
 </Abilities>
