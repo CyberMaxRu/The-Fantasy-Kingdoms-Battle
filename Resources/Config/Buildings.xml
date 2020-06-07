@@ -657,7 +657,7 @@
         <PosX>1</PosX>
         <PosY>3</PosY>
         <Layer>1</Layer>
-        <Ability>ClericHolyAttack</Ability>
+        <Ability>HolyAttack</Ability>
         <Cost>200</Cost>
         <Requirements>
           <Requirement>
