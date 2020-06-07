@@ -1302,7 +1302,7 @@
     </Levels>
   </Building>
   <Building>
-    <ID>GuildDeathKinght</ID>
+    <ID>GuildDeathKnight</ID>
     <Name>Храм Лунорда</Name>
     <Description>- Позволяет нанимать ассасинов</Description>
     <ImageIndex>24</ImageIndex>
