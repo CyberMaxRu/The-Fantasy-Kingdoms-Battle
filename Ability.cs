@@ -10,7 +10,7 @@ using System.Windows.Forms;
 namespace Fantasy_King_s_Battle
 {
     // Класс способности
-    internal enum TypeAbility { Attack, Spell, Buff, Heal }
+    internal enum TypeAbility { Attack, Spell, Buff, Heal, Summon }
     internal enum TypeTarget { Self, EnemyUnit, EnemyBuilding, AllyUnit }// Тип цели для способности
     internal enum Effect { Taunt, Slow }// Эффекты
 
