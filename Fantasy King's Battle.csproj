@@ -108,6 +108,7 @@
     <Compile Include="PlayerResearch.cs" />
     <Compile Include="Requirement.cs" />
     <Compile Include="Research.cs" />
+    <Compile Include="Resources\Config\Ammunition.cs" />
     <Compile Include="TypeLobby.cs" />
     <Compile Include="TypeItem.cs" />
     <Compile Include="Level.cs" />
