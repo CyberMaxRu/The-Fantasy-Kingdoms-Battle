@@ -39,8 +39,8 @@ namespace Fantasy_King_s_Battle
                 //if (a.Name == Name)
                 //    throw new Exception("В конфигурации способностей повторяется Name = " + Name);
 
-                if (a.ImageIndex == ImageIndex)
-                    throw new Exception("В конфигурации способностей повторяется ImageIndex = " + ImageIndex.ToString());
+                //if (a.ImageIndex == ImageIndex)
+                //    throw new Exception("В конфигурации способностей повторяется ImageIndex = " + ImageIndex.ToString());
             }
 
             // Загружаем эффекты
