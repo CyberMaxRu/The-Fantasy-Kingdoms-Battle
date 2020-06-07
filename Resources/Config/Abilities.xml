@@ -678,7 +678,7 @@
     </ClassesHeroes>
   </Ability>
   <Ability>
-    <ID>DwarfBasicAttack</ID>
+    <ID>HammerBasicAttack</ID>
     <Name>Рукопашная атака</Name>
     <Description>- Обычная атака рукопашным оружием/- Наносит урон одной цели</Description>
     <ImageIndex>71</ImageIndex>
@@ -694,6 +694,7 @@
     <Effects/>
     <ClassesHeroes>
       <ClassHero>Dwarf</ClassHero>
+      <ClassHero>Paladin</ClassHero>
     </ClassesHeroes>
   </Ability>
   <Ability>
@@ -911,6 +912,105 @@
     <Effects/>
     <ClassesHeroes>
       <ClassHero>Priest</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>PaladinTaunt</ID>
+    <Name>Вызов на бой</Name>
+    <Description>- Вынуждает врагов атаковать паладина</Description>
+    <ImageIndex>36</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Attack</TypeAbility>
+    <TypeAttack>Melee</TypeAttack>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <AoeRadius>5</AoeRadius>
+    <SkillModif>1,5</SkillModif>
+    <CoolDown>15</CoolDown>
+    <Effects>
+      <Effect>Taunt</Effect>
+    </Effects>
+    <ClassesHeroes>
+      <ClassHero>Paladin</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>PaladinImpAttack</ID>
+    <Name>Сокрушительный удар</Name>
+    <Description>- Наносит большой урон/- Рукопашная атака</Description>
+    <ImageIndex>73</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Attack</TypeAbility>
+    <TypeAttack>Melee</TypeAttack>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>3,5</SkillModif>
+    <CoolDown>10</CoolDown>
+    <Effects>
+      <Effect>Taunt</Effect>
+    </Effects>
+    <ClassesHeroes>
+      <ClassHero>Paladin</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>PaladinResistanceBuff</ID>
+    <Name>Святая защита</Name>
+    <Description>- Накладывает эффект, повышающий защиту от всех атак</Description>
+    <ImageIndex>40</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Buff</TypeAbility>
+    <TypeAttack>None</TypeAttack>
+    <TypeTarget>AllyUnit</TypeTarget>
+    <MinUnitLevel>5</MinUnitLevel>
+    <Ranged>True</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>15</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Paladin</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>PaladinHolyNovaAttack</ID>
+    <Name>Аура святости</Name>
+    <Description>- Наносит огромный урон нежити в небольшом радиусе от паладина/- Рукопашная атака</Description>
+    <ImageIndex>92</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Attack</TypeAbility>
+    <TypeAttack>Melee</TypeAttack>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <AoeRadius>10</AoeRadius>
+    <SkillModif>5,0</SkillModif>
+    <CoolDown>4</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Paladin</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>PaladinChargeAttack</ID>
+    <Name>Священный удар</Name>
+    <Description>- Наносит огромный урон/- Накладывает эффект, не позволяющий атаковать/- Магическая атака</Description>
+    <ImageIndex>93</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Attack</TypeAbility>
+    <TypeAttack>Magic</TypeAttack>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>10</MinUnitLevel>
+    <Ranged>True</Ranged>
+    <AoeRadius>10</AoeRadius>
+    <SkillModif>5,0</SkillModif>
+    <CoolDown>20</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Paladin</ClassHero>
     </ClassesHeroes>
   </Ability>
 </Abilities>
