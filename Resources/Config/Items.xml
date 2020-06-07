@@ -70,11 +70,59 @@
     <Description>Безыскусное, но функциональное рукопашное оружие</Description>
     <ImageIndex>5</ImageIndex>
     <TypeItem>WeaponWarrior</TypeItem>
-    <Cost>0</Cost>
-    <Perk></Perk>
-    <DamageMelee>5</DamageMelee>
-    <DamageMagic>0</DamageMagic>
+    <Cost>10</Cost>
+    <Params>
+      <DamageMelee>0</DamageMelee>
+    </Params>
     <TimeHit>50</TimeHit>
+  </Item>
+  <Item>
+    <ID>Sword1</ID>
+    <Name>Улучшенное рукопашное оружие</Name>
+    <Description>- Повышает умение рукопашной атаки</Description>
+    <ImageIndex>6</ImageIndex>
+    <TypeItem>WeaponWarrior</TypeItem>
+    <Cost>30</Cost>
+    <Params>
+      <DamageMelee>4</DamageMelee>
+    </Params>
+    <TimeHit>100</TimeHit>
+  </Item>
+  <Item>
+    <ID>Sword2</ID>
+    <Name>Мастерское рукопашное оружие</Name>
+    <Description>- Повышает умение рукопашной атаки</Description>
+    <ImageIndex>7</ImageIndex>
+    <TypeItem>WeaponWarrior</TypeItem>
+    <Cost>70</Cost>
+    <Params>
+      <DamageMelee>10</DamageMelee>
+    </Params>
+    <TimeHit>100</TimeHit>
+  </Item>
+  <Item>
+    <ID>Sword3</ID>
+    <Name>Экспертное рукопашное оружие</Name>
+    <Description>- Повышает умение рукопашной атаки</Description>
+    <ImageIndex>8</ImageIndex>
+    <TypeItem>WeaponWarrior</TypeItem>
+    <Cost>100</Cost>
+    <Params>
+      <DamageMelee>20</DamageMelee>
+    </Params>
+    <TimeHit>100</TimeHit>
+  </Item>
+  <Item>
+    <ID>Sword4</ID>
+    <Name>Руническое рукопашное оружие</Name>
+    <Description>- Повышает умение рукопашной атаки</Description>
+    <ImageIndex>9</ImageIndex>
+    <TypeItem>WeaponWarrior</TypeItem>
+    <Cost>120</Cost>
+    <Params>
+      <DamageMelee>35 </DamageMelee>
+    </Params>
+    <TimeHit>100</TimeHit>
   </Item>
   <Item>
     <ID>ArmourWarrior0</ID>
@@ -129,17 +177,6 @@
     <Perk></Perk>
   </Item>
   <Item>
-    <ID>Sword1</ID>
-    <Name>Улучшенное рукопашное оружие</Name>
-    <Description></Description>
-    <ImageIndex>6</ImageIndex>
-    <TypeItem>WeaponWarrior</TypeItem>
-    <Cost>0</Cost>
-    <Perk></Perk>
-    <DamageMelee>15</DamageMelee>
-    <TimeHit>100</TimeHit>
-  </Item>
-  <Item>
     <ID>ArmourWarrior1</ID>
     <Name>Улучшенная стальная броня</Name>
     <Description></Description>
@@ -147,17 +184,6 @@
     <TypeItem>ArmourWarrior</TypeItem>
     <Cost>0</Cost>
     <Perk></Perk>
-  </Item>
-  <Item>
-    <ID>Sword2</ID>
-    <Name>Мастерское рукопашное оружие</Name>
-    <Description></Description>
-    <ImageIndex>7</ImageIndex>
-    <TypeItem>WeaponWarrior</TypeItem>
-    <Cost>0</Cost>
-    <Perk></Perk>
-    <DamageMelee>25</DamageMelee>
-    <TimeHit>100</TimeHit>
   </Item>
   <Item>
     <ID>ArmourWarrior2</ID>
