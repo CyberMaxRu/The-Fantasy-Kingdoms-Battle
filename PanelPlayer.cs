@@ -129,7 +129,7 @@ namespace Fantasy_King_s_Battle
             else
                 brushBackground.Color = Color.FromKnownColor(KnownColor.Control);
 
-            e.Graphics.FillRectangle(brushBackground, rectBorder);
+            //e.Graphics.FillRectangle(brushBackground, rectBorder);
 
             // Рамка вокруг панели
             e.Graphics.DrawRectangle(penBorder, rectBorder);
