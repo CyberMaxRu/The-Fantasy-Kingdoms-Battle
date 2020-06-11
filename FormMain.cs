@@ -304,6 +304,10 @@ namespace Fantasy_King_s_Battle
             // Подготавливаем подложку
             bmpBackground = GuiUtils.MakeBackground(ClientSize);
 
+            //
+            toolStripMain.BackgroundImage = GuiUtils.MakeBackground(toolStripMain.Size);
+            toolStripMain.ForeColor = Color.White;
+
             // Панель информации о здании
             panelBuildingInfo = new PanelBuildingInfo(panelMenu.Width, panelMenu.Top - GuiUtils.NextTop(tabControl1) - Config.GRID_SIZE)
             {
