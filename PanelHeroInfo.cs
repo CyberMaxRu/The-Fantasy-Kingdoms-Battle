@@ -29,12 +29,12 @@ namespace Fantasy_King_s_Battle
         private readonly Label lblDefenseMagic;
         private readonly Button btnDismiss;
 
-        private readonly PanelWithPanelEntity panelInventory = new PanelWithPanelEntity(3);
-        private readonly PanelWithPanelEntity panelAbilities = new PanelWithPanelEntity(3);
+        private readonly PanelWithPanelEntity panelInventory = new PanelWithPanelEntity(4);
+        private readonly PanelWithPanelEntity panelAbilities = new PanelWithPanelEntity(4);
 
         internal PanelEntity[] slots = new PanelEntity[FormMain.SLOT_IN_INVENTORY];
 
-        public PanelHeroInfo(int width, int height) : base(width, height)
+        public PanelHeroInfo(int height) : base(height)
         {
             btnDismiss = new Button()
             {
@@ -47,17 +47,13 @@ namespace Fantasy_King_s_Battle
             };
             btnDismiss.Click += BtnDismiss_Click;
 
-            AddPage(Page.Statistics);
-            AddPage(Page.Inventory);
-            AddPage(Page.Abilities);
+            pageControl.AddPage("Статистика", (int)IconPages.Parameters, null);
+            pageControl.AddPage("Инвентарь", (int)IconPages.Inventory, panelInventory);
+            pageControl.AddPage("Способности", (int)IconPages.Abilities, panelAbilities);
+            pageControl.AddPage("История", (int)IconPages.History, null);
 
-            panelInventory.Parent = this;
-            panelInventory.Left = (Width - panelAbilities.Width) / 2;
-            panelInventory.Top = LeftTopPage().Y;
-
-            panelAbilities.Parent = this;
-            panelAbilities.Left = (Width - panelAbilities.Width) / 2;
-            panelAbilities.Top = LeftTopPage().Y;
+            pageControl.ApplyMinWidth();
+            Width = pageControl.Width + Config.GRID_SIZE * 2;
 
             return;
             lblLevel = GuiUtils.CreateLabel(this, Config.GRID_SIZE, TopForControls());
@@ -174,27 +170,6 @@ namespace Fantasy_King_s_Battle
                 else 
                     l.ForeColor = Color.FromKnownColor(KnownColor.Red);
             }
-        }
-        protected override void ActivatePage(Page page)
-        {
-            switch (page)
-            {
-                case Page.Statistics:
-                    panelInventory.Hide();
-                    panelAbilities.Hide();
-                    break;
-                case Page.Inventory:
-                    panelAbilities.Hide();
-                    panelInventory.Show();
-                    break;
-                case Page.Abilities:
-                    panelInventory.Hide();
-                    panelAbilities.Show();
-                    break;
-                default:
-                    throw new Exception("Неизвестная страница.");
-            }
-
         }
 
         protected override ImageList GetImageList() => Program.formMain.ilHeroes;

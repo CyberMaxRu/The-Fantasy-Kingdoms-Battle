@@ -31,6 +31,7 @@ namespace Fantasy_King_s_Battle
         internal readonly ImageList ilItems;
         internal readonly ImageList ilStateHero;
         internal readonly ImageList ilMenuCellFilters;
+        internal readonly ImageList ilPages;
 
         internal readonly Font fontLevel = new Font("Microsoft Sans Serif", 10, FontStyle.Bold);
         internal readonly Font fontQuantity = new Font("Arial", 13, FontStyle.Bold);
@@ -58,11 +59,6 @@ namespace Fantasy_King_s_Battle
         internal const int GUI_BATTLE = 9;
         internal const int GUI_PEASANT = 10;
         internal const int GUI_HOURGLASS = 11;
-        internal const int GUI_PRODUCTS = 12;
-        internal const int GUI_INHABITANTS = 13;
-        internal const int GUI_INVENTORY = 14;
-        internal const int GUI_ABILITY = 15;
-        internal const int GUI_PARAMETERS = 16;
 
         internal const int GUI_PARAMETER_STRENGTH = 6;
         internal const int GUI_PARAMETER_DEXTERITY = 7;
@@ -135,21 +131,18 @@ namespace Fantasy_King_s_Battle
 
             // Настройка переменной с папкой ресурсов
             dirResources = Environment.CurrentDirectory;
-            if (dirResources.Contains("Debug"))
-            {
-                dirResources = Environment.CurrentDirectory.Substring(0, Environment.CurrentDirectory.Length - 9);
-            }
 
-            if (dirResources.Contains("Release"))
-            {
+            if (dirResources.Contains("Debug"))
+                dirResources = Environment.CurrentDirectory.Substring(0, Environment.CurrentDirectory.Length - 9);
+            else if (dirResources.Contains("Release"))
                 dirResources = Environment.CurrentDirectory.Substring(0, Environment.CurrentDirectory.Length - 11);
-            }
 
             dirResources += "Resources\\";
 
+            // Загружаем конфигурацию
             _ = new Config(dirResources, this);
 
-            // Подготавливаем иконки
+            // Загружаем иконки
             ilPlayerAvatars = PrepareImageList("PlayerAvatars.png", 48, 48, true);
             ilPlayerAvatarsBig = PrepareImageList("PlayerAvatarsBig.png", 128, 128, true);
             ilSkills = PrepareImageList("Skills.png", 82, 94, false);
@@ -165,6 +158,7 @@ namespace Fantasy_King_s_Battle
             ilItems = PrepareImageList("Items.png", 48, 48, true);
             ilStateHero = PrepareImageList("StateHero.png", 24, 24, false);
             ilMenuCellFilters = PrepareImageList("MenuCellFilters.png", 48, 48, true);
+            ilPages = PrepareImageList("Pages.png", 48, 48, true);
 
             bmpForBackground = new Bitmap(dirResources + "Icons\\Background.png");
             bmpBackgroundButton = GuiUtils.MakeBackground(GuiUtils.SizeButtonWithImage(ilGui));
@@ -212,36 +206,7 @@ namespace Fantasy_King_s_Battle
             pages.Add(pageTowers);
             pages.Add(pageHeroes);
             pages.Add(pageBattle);
-
-            PanelPage PreparePanel()
-            {
-                return new PanelPage()
-                {
-                    Parent = this,
-                    Left = leftForPages,
-                    Top = GuiUtils.NextTop(tabControl1)
-                };
-            }
-
-            // Создаем вкладку "Лобби"
-            PanelAboutPlayer pap;
-
-            int top = Config.GRID_SIZE;
-            foreach (Player p in lobby.Players)
-            {
-                pap = new PanelAboutPlayer(p, ilResultBattle)
-                {
-                    Parent = pageLobby,
-                    Top = top,
-                    Left = 0
-                };
-
-                p.PanelAbout = pap;
-
-                top += pap.Height + Config.GRID_SIZE;
-            }
-
-            //
+            
             tabControl1.ImageList = ilGui;
             tabPageLobby.ImageIndex = GUI_LOBBY;
             tabPageLobby.Text = "";
@@ -258,7 +223,7 @@ namespace Fantasy_King_s_Battle
             tabPageBattle.ImageIndex = GUI_BATTLE;
             tabPageBattle.Text = "";
 
-            //
+            DrawLobby();
             DrawGuilds();
             DrawBuildings();
             DrawTemples();
@@ -266,9 +231,19 @@ namespace Fantasy_King_s_Battle
             DrawHeroes();
             DrawWarehouse();
 
+            PanelPage PreparePanel()
+            {
+                return new PanelPage()
+                {
+                    Parent = this,
+                    Left = leftForPages,
+                    Top = GuiUtils.NextTop(tabControl1)
+                };
+            }
+
             ShowDataPlayer();
 
-            // Определяем максимальную ширину окна            
+            // Определяем максимальную ширину страниц
             int maxWidthPages = 0;
             int maxHeightPages = 0;
 
@@ -289,10 +264,36 @@ namespace Fantasy_King_s_Battle
 
             // Создаем панель с меню
             panelMenu = new PanelMenu(this, dirResources);
+            panelMenu.Top = ClientSize.Height - panelMenu.Height - Config.GRID_SIZE;
+
+            // Панель информации о здании
+            panelBuildingInfo = new PanelBuildingInfo(panelMenu.Top - GuiUtils.NextTop(tabControl1) - Config.GRID_SIZE)
+            {
+                Parent = this,
+                Top = GuiUtils.NextTop(tabControl1),
+                Visible = false
+            };
+
+            //
+            panelHeroInfo = new PanelHeroInfo(panelBuildingInfo.Height)
+            {
+                Parent = this,
+                Top = panelBuildingInfo.Top,
+                Visible = false
+            };
+
+            // Подбираем ширину правой части
+            panelBuildingInfo.Width = panelHeroInfo.Width;
+            int widthRightPanel = Math.Max(panelMenu.Width, panelHeroInfo.Width);
+            Debug.Assert(widthRightPanel > panelMenu.Width);
+
+            panelBuildingInfo.Left = leftForPages + maxWidthPages + Config.GRID_SIZE;
+            panelHeroInfo.Left = panelBuildingInfo.Left;
 
             // Учитываем плиту под слоты
             pointMenu = new Point(leftForPages + maxWidthPages + Config.GRID_SIZE, ClientSize.Height - panelMenu.Height - Config.GRID_SIZE);
-            int calcedWidth = leftForPages + maxWidthPages +  panelMenu.Width + Config.GRID_SIZE;
+            pointMenu.X = pointMenu.X + ((widthRightPanel - panelMenu.Width) / 2);
+            int calcedWidth = leftForPages + maxWidthPages + widthRightPanel + Config.GRID_SIZE;
 
             panelMenu.Location = pointMenu;
 
@@ -307,24 +308,6 @@ namespace Fantasy_King_s_Battle
             //
             toolStripMain.BackgroundImage = GuiUtils.MakeBackground(toolStripMain.Size);
             toolStripMain.ForeColor = Color.White;
-
-            // Панель информации о здании
-            panelBuildingInfo = new PanelBuildingInfo(panelMenu.Width, panelMenu.Top - GuiUtils.NextTop(tabControl1) - Config.GRID_SIZE)
-            {
-                Parent = this,
-                Left = pointMenu.X,
-                Top = GuiUtils.NextTop(tabControl1),
-                Visible = false
-            };
-
-            //
-            panelHeroInfo = new PanelHeroInfo(panelBuildingInfo.Width, panelBuildingInfo.Height)
-            {
-                Parent = this,
-                Left = panelBuildingInfo.Left,
-                Top = panelBuildingInfo.Top,
-                Visible = false
-            };
 
             // Перенести в класс
             for (int i = 0; i < panelHeroInfo.slots.Length; i++)
@@ -476,6 +459,26 @@ namespace Fantasy_King_s_Battle
                 }
 
                 top += height + Config.GRID_SIZE;
+            }
+        }
+
+        private void DrawLobby()
+        {
+            PanelAboutPlayer pap;
+
+            int top = Config.GRID_SIZE;
+            foreach (Player p in lobby.Players)
+            {
+                pap = new PanelAboutPlayer(p, ilResultBattle)
+                {
+                    Parent = pageLobby,
+                    Top = top,
+                    Left = 0
+                };
+
+                p.PanelAbout = pap;
+
+                top += pap.Height + Config.GRID_SIZE;
             }
         }
 

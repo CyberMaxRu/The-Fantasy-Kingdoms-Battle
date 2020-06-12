@@ -12,17 +12,17 @@ namespace Fantasy_King_s_Battle
     internal sealed class PanelBuildingInfo : PanelBaseInfo
     {
         private PlayerBuilding building;
-        private readonly PanelWithPanelEntity panelProducts = new PanelWithPanelEntity(3);
+        private readonly PanelWithPanelEntity panelProducts = new PanelWithPanelEntity(4);
 
-        public PanelBuildingInfo(int width, int height) : base(width, height)
+        public PanelBuildingInfo(int height) : base(height)
         {
-            AddPage(Page.Products);
-            AddPage(Page.Warehouse);
-            AddPage(Page.Inhabitants);
+            pageControl.AddPage("Товары", (int)IconPages.Products, panelProducts);
+            pageControl.AddPage("Склад", (int)IconPages.Inventory, null);
+            pageControl.AddPage("Жители", (int)IconPages.Inhabitants, null);
+            pageControl.AddPage("История", (int)IconPages.History, null);
 
-            panelProducts.Parent = this;
-            panelProducts.Left = (Width - panelProducts.Width) / 2;
-            panelProducts.Top = LeftTopPage().Y;
+            pageControl.ApplyMinWidth();
+            Width = pageControl.Width + Config.GRID_SIZE * 2;
         }
 
         internal PlayerBuilding Building
@@ -35,34 +35,12 @@ namespace Fantasy_King_s_Battle
             }
         }
 
-        protected override void ActivatePage(Page page)
-        {
-            base.ActivatePage(page);
-
-            switch (page)
-            {
-                case Page.Products:
-                    panelProducts.Show();
-
-                    break;
-                case Page.Warehouse:
-                    panelProducts.Hide();
-
-                    break;
-                case Page.Inhabitants:
-                    panelProducts.Hide();
-
-                    break;
-                default:
-                    throw new Exception("Неизвестная страница.");
-            }
-        }
         internal override void ShowData()
         {
             base.ShowData();
 
-            SetPageVisible(Page.Warehouse, building.Building.TrainedHero != null);
-            SetPageVisible(Page.Inhabitants, building.Building.TrainedHero != null);
+            pageControl.SetPageVisible(1, building.Building.TrainedHero != null);
+            pageControl.SetPageVisible(2, building.Building.TrainedHero != null);
 
             panelProducts.ApplyList(building.Items);
 
