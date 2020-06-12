@@ -74,6 +74,9 @@
     <Compile Include="Hero.cs" />
     <Compile Include="HeroInBattle.cs" />
     <Compile Include="KindHero.cs" />
+    <Compile Include="PageControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="PanelBaseInfo.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -108,7 +111,7 @@
     <Compile Include="PlayerResearch.cs" />
     <Compile Include="Requirement.cs" />
     <Compile Include="Research.cs" />
-    <Compile Include="Resources\Config\Ammunition.cs" />
+    <Compile Include="Ammunition.cs" />
     <Compile Include="TypeLobby.cs" />
     <Compile Include="TypeItem.cs" />
     <Compile Include="Level.cs" />
@@ -163,6 +166,7 @@
   <ItemGroup>
     <Content Include="Resources\Config\Abilities.xml" />
     <Content Include="FKS.ico" />
+    <Content Include="Resources\Config\Armours.xml" />
     <Content Include="Resources\Config\KindHeroes.xml" />
     <Content Include="Resources\Config\TypeLobby.xml" />
     <Content Include="Resources\Config\Items.xml" />
@@ -171,6 +175,7 @@
     <Content Include="Resources\Config\Skills.xml" />
     <Content Include="Resources\Config\TypeItems.xml" />
     <Content Include="Resources\Config\Settings.xml" />
+    <Content Include="Resources\Config\Weapons.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

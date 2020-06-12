@@ -10,4 +10,14 @@ namespace Fantasy_King_s_Battle.Resources.Config
     internal class Ammunition
     {
     }
+
+    internal sealed class Weapon
+    {
+
+    }
+
+    internal sealed class Armour
+    {
+
+    }
 }
