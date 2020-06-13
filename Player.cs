@@ -152,7 +152,7 @@ namespace Fantasy_King_s_Battle
         internal int Wins { get; set; }
         internal int Loses { get; set; }
         internal int Draws { get; set; }
-        internal int Strike { get; set; }
+        internal int Streak { get; set; }
         internal ResultBattle ResultLastBattle 
         { get { return resultLastBattle; }
             set
@@ -161,27 +161,27 @@ namespace Fantasy_King_s_Battle
                 {
                     case ResultBattle.Win:
                         if (resultLastBattle == ResultBattle.Win)
-                            Strike++;
+                            Streak++;
                         else
-                            Strike = 1;
+                            Streak = 1;
 
                         Wins++;
 
                         break;
                     case ResultBattle.Lose:
                         if (resultLastBattle == ResultBattle.Lose)
-                            Strike++;
+                            Streak++;
                         else
-                            Strike = 1;
+                            Streak = 1;
 
                         Loses++;
 
                         break;
                     case ResultBattle.Draw:
                         if (resultLastBattle == ResultBattle.Draw)
-                            Strike++;
+                            Streak++;
                         else
-                            Strike = 1;
+                            Streak = 1;
 
                         Draws++;
 

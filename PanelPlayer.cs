@@ -159,7 +159,7 @@ namespace Fantasy_King_s_Battle
                 e.Graphics.DrawImageUnscaled(Program.formMain.ilGui24.Images[FormMain.GUI_24_FIRE], pointIconStrike);
 
                 lblStrike.Show();
-                lblStrike.Text = player.Strike.ToString();
+                lblStrike.Text = player.Streak.ToString();
                 lblStrike.ForeColor = lblDamageToCastle.ForeColor;
             }
             else

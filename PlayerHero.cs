@@ -65,9 +65,9 @@ namespace Fantasy_King_s_Battle
         internal int DoDamages { get; }// Нанес урона
         internal int DoKills { get; }// Убил героев противника
         internal int Dies { get; }// Сколько раз был убит
-        internal int WinStrike { get; }// Побед подряд
-        internal int LoseStrike { get; }// Поражений подряд
-        internal int DrawStrike { get; }// Ничьих подряд
+        internal int WinStreak { get; }// Побед подряд
+        internal int LoseStreak { get; }// Поражений подряд
+        internal int DrawStreak { get; }// Ничьих подряд
         internal ResultBattle PriorResultBattle { get; set; }// Предыдущий результат битвы для расчета страйков
 
         // Увольнение героя
