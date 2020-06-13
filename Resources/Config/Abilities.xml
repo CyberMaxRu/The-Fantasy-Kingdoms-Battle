@@ -367,6 +367,7 @@
     <Effects/>
     <ClassesHeroes>
       <ClassHero>Cleric</ClassHero>
+      <ClassHero>Priest</ClassHero>
     </ClassesHeroes>
   </Ability>
   <Ability>

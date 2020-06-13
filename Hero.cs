@@ -11,48 +11,12 @@ namespace Fantasy_King_s_Battle
 {
     internal enum TypeAttack { Melee, Missile, Magic, None }
 
-    // Конфигурация типов предметов, которые героя может носить
-    internal sealed class CarryTypeItem
-    {
-        public CarryTypeItem(XmlNode n)
-        {
-            TypeItem = FormMain.Config.FindTypeItem(n.SelectSingleNode("TypeItem").InnerText);
-            MaxQuantity = Convert.ToInt32(n.SelectSingleNode("MaxQuantity").InnerText);
-
-            Debug.Assert(MaxQuantity > 0);
-        }
-
-        internal TypeItem TypeItem { get; }
-        internal int MaxQuantity { get; }
-    }
-
-    internal sealed class Slot
-    {
-        public Slot(Hero h, XmlNode n)
-        {
-            Pos = Convert.ToInt32(n.SelectSingleNode("Pos").InnerText) - 1;
-            TypeItem = FormMain.Config.FindTypeItem(n.SelectSingleNode("TypeItem").InnerText);
-            if (n.SelectSingleNode("DefaultItem") != null)
-                DefaultItem = FormMain.Config.FindItem(n.SelectSingleNode("DefaultItem").InnerText);
-
-            if ((TypeItem.Required == true) && (DefaultItem == null))
-                throw new Exception("У слота " + Pos.ToString() + " " + h.ID + " не указано дефолтное значение.");
-
-            if ((TypeItem.Required == false) && (DefaultItem != null))
-                throw new Exception("У слота " + Pos.ToString() + " " + h.ID + " указано дефолтное значение.");
-
-            if ((DefaultItem != null) && (DefaultItem.TypeItem != TypeItem))
-                throw new Exception("У слота " + Pos.ToString() + " " + h.ID + " у дефолтного предмета несовместимый тип.");
-        }
-
-        internal int Pos { get; }
-        internal TypeItem TypeItem { get; }
-        internal Item DefaultItem { get; }
-    }
-
     // Класс героя гильдии    
     internal sealed class Hero
     {
+        private string nameWeapon;
+        private string nameArmour;
+
         public Hero(XmlNode n)
         {
             ID = n.SelectSingleNode("ID").InnerText;
@@ -109,47 +73,36 @@ namespace Fantasy_King_s_Battle
                 }
             }
 
-            // Загружаем информацию о слотах
-            Slots = new Slot[FormMain.SLOT_IN_INVENTORY];
+            // Загружаем дефолтное оружие и доспехи
+            nameWeapon = Utils.GetParamFromXmlString(n.SelectSingleNode("Weapon"));
+            nameArmour = Utils.GetParamFromXmlString(n.SelectSingleNode("Armour"));
 
-            XmlNode nl = n.SelectSingleNode("Slots");
-            if (nl != null)
+            if (KindHero.Hired)
             {
-                Slot slot;
-
-                foreach (XmlNode l in nl.SelectNodes("Slot"))
-                {
-                    slot = new Slot(this, l);
-                    Debug.Assert(Slots[slot.Pos] == null);
-
-                    Slots[slot.Pos] = slot;
-                }
-
-                for (int i = 0; i < FormMain.SLOT_IN_INVENTORY; i++)
-                {
-                    if (Slots[i] == null)
-                        throw new Exception("Не указан слот " + i.ToString());
-                }
+                Debug.Assert(nameWeapon != "");
+                Debug.Assert(nameArmour != "");
             }
 
             // Загружаем информацию о переносимых предметах
-            XmlNode nc = n.SelectSingleNode("CarryTypeItems");
+            XmlNode nc = n.SelectSingleNode("CarryItems");
             if (nc != null)
             {
-                CarryTypeItem cti;
+                Item item;
+                int maxQuantity;
 
-                foreach (XmlNode l in nl.SelectNodes("CarryTypeItem"))
+                foreach (XmlNode l in nc.SelectNodes("CarryItem"))
                 {
-                    cti = new CarryTypeItem(l);
+                    item = FormMain.Config.FindItem(l.SelectSingleNode("Item").InnerText);
+                    maxQuantity = Convert.ToInt32(l.SelectSingleNode("Item").Attributes[0]);
 
-                    // Проверяем, что такой тип предмета не повторяется
-                    foreach (CarryTypeItem cti2 in CarryTypeItems)
-                    {
-                        if (cti.TypeItem == cti2.TypeItem)
-                            throw new Exception("Тип предмета " + cti.TypeItem.ID + " повторяется в списке переносимых.");
-                    }
+                    Debug.Assert(maxQuantity > 0);
 
-                    CarryTypeItems.Add(cti);
+                    // Проверка на уникальность обеспечена Dictionary?
+                    //foreach (Item i in CarryItems)
+                    //    if (i == item)
+                    //        throw new Exception("Предмет " + item.ID + " уже ест в списке переносимых предметов.");
+
+                    CarryItems.Add(item, maxQuantity);
                 }
             }
             else
@@ -201,28 +154,39 @@ namespace Fantasy_King_s_Battle
         internal int DamageToCastle { get; }
         internal HeroParameters ParametersByHire { get; }// Параметры при найме героя
         internal ConfigNextLevelHero ConfigNextLevel { get; }
-        internal Slot[] Slots { get; }
         internal List<Ability> Abilities { get; } = new List<Ability>();// Способности героя
-        internal List<CarryTypeItem> CarryTypeItems { get; } = new List<CarryTypeItem>();
+        internal Weapon Weapon { get; private set; }// Оружие по умолчанию
+        internal Armour Armour { get; private set; }// Доспех по умолчанию
+        internal Dictionary<Item, int> CarryItems { get; } = new Dictionary<Item, int>();
 
-        internal int MaxQuantityTypeItem(TypeItem ti)
+        internal int MaxQuantityItem(Item i)
         {
-            foreach (CarryTypeItem cti in CarryTypeItems)
-            {
-                if (cti.TypeItem == ti)
-                {
-                    return cti.MaxQuantity;
-                }
-            }
-
-            return 0;
+            return CarryItems.ContainsKey(i) ? CarryItems[i] : 0;
         }
 
-        internal void CheckAfterLoadConfig()
+        internal void TuneDeferredLinks()
         {
-            foreach (Ability a in Abilities)
+            // Загружаем дефолтное оружие и доспехи
+            if (nameWeapon.Length > 0)
+            {
+                Weapon = FormMain.Config.FindWeapon(nameWeapon);
+                nameWeapon = null;
+
+                Debug.Assert(Weapon.ClassHero == this);
+            }
+
+            if (nameArmour.Length > 0)
+            {
+                Armour = FormMain.Config.FindArmour(nameArmour);
+                nameArmour = null;
+
+                Debug.Assert(Armour.ClassHero == this);
+            }
+
+            /*foreach (Ability a in Abilities)
                 if (a.ClassesHeroes.IndexOf(this) == -1)
                     throw new Exception("Класс героя " + ID + " отсутствует в списке доступных для способности " + a.ID);
+            */
         }
     }
 }

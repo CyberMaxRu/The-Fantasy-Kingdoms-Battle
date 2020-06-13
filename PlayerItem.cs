@@ -29,7 +29,7 @@ namespace Fantasy_King_s_Battle
         PanelEntity ICell.Panel { get; set; }
         ImageList ICell.ImageList() => Program.formMain.ilItems;
         int ICell.ImageIndex() => Item.ImageIndex;
-        int ICell.Value() => !OwnerIsPlayer && Item.TypeItem.Required ? 0 : Quantity;
+        int ICell.Value() => !OwnerIsPlayer ? 0 : Quantity;
 
         void ICell.PrepareHint()
         {

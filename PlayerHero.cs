@@ -12,9 +12,6 @@ namespace Fantasy_King_s_Battle
     // Класс героя игрока
     internal sealed class PlayerHero : ICell
     {
-        private int slotWeapon;
-        private int slotArmour;
-
         public PlayerHero(PlayerBuilding pb)
         {
             Building = pb;
@@ -22,53 +19,20 @@ namespace Fantasy_King_s_Battle
 
             // Применяем дефолтные способности
             Abilities.AddRange(ClassHero.Abilities);
-            
-            //
+
+            // Берем оружие и доспехи
+            Weapon = ClassHero.Weapon;
+            Armour = ClassHero.Armour;
+
             if (ClassHero.MaxLevel > 1)
             {
                 Level = 0;
-
-                if (ClassHero.Slots.Length > 0)
-                {
-                    for (int i = 0; i < ClassHero.Slots.Length; i++)
-                    {
-                        if ((ClassHero.Slots[i] != null) && (ClassHero.Slots[i].DefaultItem != null))
-                        {
-                            Slots[i] = new PlayerItem(ClassHero.Slots[i].DefaultItem, 1, false);
-                        }
-                    }
-                }
 
                 ParametersBase = new HeroParameters(ClassHero.ParametersByHire);
 
                 // Переходим на 1 уровень
                 LevelUp();
                 ParametersWithAmmunition = new HeroParameters(ParametersBase);
-
-                // Ищем слоты оружия и брони в инвентаре
-                slotWeapon = -1;
-                slotArmour = -1;
-
-                for (int i = 0; i < Slots.Length; i++)
-                {
-                    if (Slots[i] != null)
-                    {
-                        switch (Slots[i].Item.TypeItem.Category)
-                        {
-                            case CategoryItem.Weapon:
-                                Debug.Assert(slotWeapon == -1);
-                                slotWeapon = i;
-                                break;
-                            case CategoryItem.Armour:
-                                Debug.Assert(slotArmour == -1);
-                                slotArmour = i;
-                                break;
-                        }
-                    }
-                }
-
-                Debug.Assert(slotWeapon != -1);
-                Debug.Assert(slotArmour != -1);
 
                 //
                 UpdateBaseParameters();
@@ -86,9 +50,9 @@ namespace Fantasy_King_s_Battle
         internal int Level { get; private set; }// Уровень героя
         internal HeroParameters ParametersBase { get; }// Свои параметры, без учета амуниции
         internal HeroParameters ParametersWithAmmunition { get; }// Параметры с учетом амуниции
-        internal PlayerItem[] Slots { get; } = new PlayerItem[FormMain.SLOT_IN_INVENTORY];
-        internal PlayerItem Weapon { get; private set; }// Оружие 
-        internal PlayerItem Armour { get; private set; }// Доспех
+        internal Weapon Weapon { get; private set; }// Оружие 
+        internal Armour Armour { get; private set; }// Доспех
+        internal List<PlayerItem> Inventory { get; } = new List<PlayerItem>();
         internal Point CoordInPlayer { get; set; }// Координаты героя в слотах игрока
         internal List<Ability> Abilities { get; } = new List<Ability>();// Cпособности
 
@@ -122,11 +86,9 @@ namespace Fantasy_King_s_Battle
         internal int FindSlotWithItem(Item item)
         {
             // Сначала ищем слот, заполненный таким же предметом
-            for (int i = 0; i < Slots.Length; i++)
-            {
-                if ((Slots[i] != null) && (Slots[i].Item == item))
+            for (int i = 0; i < Inventory.Count; i++)
+                if (Inventory[i].Item == item)
                     return i;
-            }
 
             return -1;
         }
@@ -138,16 +100,9 @@ namespace Fantasy_King_s_Battle
                 return number;
 
             // Ищем пустой слот, разрешенный для такого типа предметов
-            for (int i = 0; i < Slots.Length; i++)
-            {
-                if (item.TypeItem.Single == true)
-                {
-                    if (ClassHero.Slots[i].TypeItem == item.TypeItem)
-                        return i;
-                }
-                else if ((Slots[i] == null) && (ClassHero.Slots[i].TypeItem == item.TypeItem))
-                    return i;
-            }
+            //for (int i = 0; i < Inventory.Count; i++)
+            //    if (Inventory[i].Item == item)
+            //        return i;
 
             return -1;
         }
@@ -172,7 +127,7 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(pi.Quantity >= quantity);
 
             // Проверяем совместимость
-            if (pi.Item.TypeItem != ClassHero.Slots[toCell].TypeItem)
+/*            if (pi.Item.TypeItem != ClassHero.Slots[toCell].TypeItem)
                 return;
 
             if (Slots[toCell] != null)
@@ -218,22 +173,13 @@ namespace Fantasy_King_s_Battle
                 }
             }
 
-            Debug.Assert(Slots[toCell] != null);
-
-            switch (pi.Item.TypeItem.Category)
-            {
-                case CategoryItem.Weapon:
-                    Weapon = pi;
-                    break;
-                case CategoryItem.Armour:
-                    Armour = pi;
-                    break;
-            }
+            Debug.Assert(Slots[toCell] != null);*/
         }
 
         internal PlayerItem TakeItem(int fromCell, int quantity)
         {
-            Debug.Assert(quantity > 0);
+            return null;
+            /*Debug.Assert(quantity > 0);
             Debug.Assert(Slots[fromCell] != null);
             Debug.Assert(Slots[fromCell].Quantity > 0);
             Debug.Assert(Slots[fromCell].Quantity >= quantity);
@@ -264,20 +210,20 @@ namespace Fantasy_King_s_Battle
                     break;
             }
 
-            return pi;
+            return pi;*/
         }
 
         internal void ValidateCell(int number)
         {
-            if ((ClassHero.Slots[number].DefaultItem != null) && (Slots[number] == null))
-            {
-                Slots[number] = new PlayerItem(ClassHero.Slots[number].DefaultItem, 1, false);
-            }
+            //if ((ClassHero.Slots[number].DefaultItem != null) && (Slots[number] == null))
+            //{
+            //    Slots[number] = new PlayerItem(ClassHero.Slots[number].DefaultItem, 1, false);
+            //}
         }
 
         internal void MoveItem(int fromSlot, int toSlot)
         {
-            Debug.Assert(Slots[fromSlot] != null);
+            /*Debug.Assert(Slots[fromSlot] != null);
             Debug.Assert(fromSlot != toSlot);
 
             if (Slots[fromSlot].Item.TypeItem == ClassHero.Slots[toSlot].TypeItem)
@@ -287,7 +233,7 @@ namespace Fantasy_King_s_Battle
                     tmp = Slots[toSlot];
                 Slots[toSlot] = Slots[fromSlot];
                 Slots[fromSlot] = tmp;
-            }
+            }*/
         }
 
         // Повышение уровня
@@ -337,19 +283,17 @@ namespace Fantasy_King_s_Battle
             ParametersWithAmmunition.GetFromParams(ParametersBase);
 
             // Применяем амуницию
-            Weapon = Slots[slotWeapon];
-            Armour = Slots[slotWeapon];
             Debug.Assert(Weapon != null);
             Debug.Assert(Armour != null);
 
-            ParametersWithAmmunition.MaxMeleeDamage = Weapon.Item.DamageMelee + (Weapon.Item.DamageMelee * ParametersWithAmmunition.Strength / 100);
+            ParametersWithAmmunition.MaxMeleeDamage = Weapon.DamageMelee + (Weapon.DamageMelee * ParametersWithAmmunition.Strength / 100);
             ParametersWithAmmunition.MinMeleeDamage = ParametersWithAmmunition.MaxMeleeDamage / 2;
-            ParametersWithAmmunition.MaxMissileDamage = Weapon.Item.DamageMissile + (Weapon.Item.DamageMissile * ParametersWithAmmunition.Strength / 100);
+            ParametersWithAmmunition.MaxMissileDamage = Weapon.DamageArcher + (Weapon.DamageArcher * ParametersWithAmmunition.Strength / 100);
             ParametersWithAmmunition.MinMissileDamage = ParametersWithAmmunition.MaxMissileDamage / 2;
-            ParametersWithAmmunition.MagicDamage = (ParametersWithAmmunition.Magic / 5) * Weapon.Item.DamageMagic + Level;
-            ParametersWithAmmunition.DefenseMelee = Armour.Item.DefenseMelee;
-            ParametersWithAmmunition.DefenseMissile = Armour.Item.DefenseMissile;
-            ParametersWithAmmunition.DefenseMagic = Armour.Item.DefenseMagic;
+            ParametersWithAmmunition.MagicDamage = (ParametersWithAmmunition.Magic / 5) * Weapon.DamageMagic + Level;
+            ParametersWithAmmunition.DefenseMelee = Armour.DefenseMelee;
+            ParametersWithAmmunition.DefenseMissile = Armour.DefenseMissile;
+            ParametersWithAmmunition.DefenseMagic = Armour.DefenseMagic;
 
             Debug.Assert((ParametersWithAmmunition.MaxMeleeDamage > 0) || (ParametersWithAmmunition.MaxMissileDamage > 0) || (ParametersWithAmmunition.MagicDamage > 0));
         }

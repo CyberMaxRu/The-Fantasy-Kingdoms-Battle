@@ -83,8 +83,6 @@ namespace Fantasy_King_s_Battle
         internal const int GUI_45_BORDER = 0;
 
         internal static int SLOTS_IN_LINE = 4;
-        internal static int SLOTS_LINES = 2;
-        internal static int SLOT_IN_INVENTORY = SLOTS_IN_LINE * SLOTS_LINES;
         internal static int WH_SLOTS_IN_LINE = 10;
         internal static int WH_SLOT_LINES = 3;
         internal static int WH_MAX_SLOTS = WH_SLOTS_IN_LINE * WH_SLOT_LINES;
@@ -310,7 +308,7 @@ namespace Fantasy_King_s_Battle
             toolStripMain.ForeColor = Color.White;
 
             // Перенести в класс
-            for (int i = 0; i < panelHeroInfo.slots.Length; i++)
+            for (int i = 0; i < panelHeroInfo.slots.Count; i++)
             {
                 //panelHeroInfo.slots[i].MouseDown += PanelCellHero_MouseDown;
                 //panelHeroInfo.slots[i].MouseUp += PanelCellHero_MouseUp;

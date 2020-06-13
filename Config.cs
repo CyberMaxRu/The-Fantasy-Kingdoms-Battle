@@ -58,20 +58,28 @@ namespace Fantasy_King_s_Battle
                         foreach (Requirement r in l.Requirements)
                             r.FindBuilding();
 
-            // Загрузка типов предметов
-            xmlDoc = CreateXmlDocument("Config\\TypeItems.xml");
-
-            foreach (XmlNode n in xmlDoc.SelectNodes("/TypeItems/TypeItem"))
-            {
-                TypeItems.Add(new TypeItem(n));
-            }
-
             // Загрузка предметов
             xmlDoc = CreateXmlDocument("Config\\Items.xml");
 
             foreach (XmlNode n in xmlDoc.SelectNodes("/Items/Item"))
             {
                 Items.Add(new Item(n));
+            }
+
+            // Загрузка оружия
+            xmlDoc = CreateXmlDocument("Config\\Weapons.xml");
+
+            foreach (XmlNode n in xmlDoc.SelectNodes("/GroupWeapons/GroupWeapon"))
+            {
+                GroupWeapons.Add(new GroupWeapon(n));
+            }
+
+            // Загрузка доспехов
+            xmlDoc = CreateXmlDocument("Config\\Armours.xml");
+
+            foreach (XmlNode n in xmlDoc.SelectNodes("/GroupArmours/GroupArmour"))
+            {
+                GroupArmours.Add(new GroupArmour(n));
             }
 
             // Загрузка конфигурации способностей
@@ -101,8 +109,14 @@ namespace Fantasy_King_s_Battle
             foreach (Ability a in Abilities)
                 a.TuneDeferredLinks();
 
+            foreach (GroupWeapon gw in GroupWeapons)
+                gw.TuneDeferredLinks();
+
+            foreach (GroupArmour ga in GroupArmours)
+                ga.TuneDeferredLinks();
+
             foreach (Hero h in Heroes)
-                h.CheckAfterLoadConfig();
+                h.TuneDeferredLinks();
 
             foreach (Building b in Buildings)
                 b.TuneResearches();
@@ -130,8 +144,9 @@ namespace Fantasy_King_s_Battle
         internal List<Ability> Abilities { get; } = new List<Ability>();
         internal List<KindHero> KindHeroes { get; } = new List<KindHero>();
         internal List<Hero> Heroes { get; } = new List<Hero>();
-        internal List<TypeItem> TypeItems { get; } = new List<TypeItem>();
         internal List<Item> Items { get; } = new List<Item>();
+        internal List<GroupWeapon> GroupWeapons { get; } = new List<GroupWeapon>();
+        internal List<GroupArmour> GroupArmours { get; } = new List<GroupArmour>();
         internal List<Skill> Skills { get; } = new List<Skill>();
         internal int MaxLevelSkill { get; }
 
@@ -172,17 +187,6 @@ namespace Fantasy_King_s_Battle
             throw new Exception("Герой " + ID + " не найден.");
         }
 
-        internal TypeItem FindTypeItem(string ID)
-        {
-            foreach (TypeItem ti in TypeItems)
-            {
-                if (ti.ID == ID)
-                    return ti;
-            }
-
-            throw new Exception("Тип предмета " + ID + " не найден.");
-        }
-
         internal Item FindItem(string ID)
         {
             foreach (Item i in Items)
@@ -214,6 +218,44 @@ namespace Fantasy_King_s_Battle
             }
 
             throw new Exception("Способность " + ID + " не найдена.");
+        }
+
+        internal GroupWeapon FindGroupWeapon(string ID)
+        {
+            foreach (GroupWeapon gw in GroupWeapons)
+                if (gw.ID == ID)
+                    return gw;
+
+            throw new Exception("Группа оружия " + ID + " не найдена.");
+        }
+
+        internal GroupArmour FindGroupArmour(string ID)
+        {
+            foreach (GroupArmour ga in GroupArmours)
+                if (ga.ID == ID)
+                    return ga;
+
+            throw new Exception("Группа доспехов " + ID + " не найдена.");
+        }
+
+        internal Weapon FindWeapon(string ID)
+        {
+            foreach (GroupWeapon gw in GroupWeapons)
+                foreach (Weapon w in gw.Weapons)
+                    if (w.ID == ID)
+                        return w;
+
+            throw new Exception("Оружие " + ID + " не найдено.");
+        }
+
+        internal Armour FindArmour(string ID)
+        {
+            foreach (GroupArmour ga in GroupArmours)
+                foreach (Armour a in ga.Armours)
+                    if (a.ID == ID)
+                        return a;
+
+            throw new Exception("Доспех " + ID + " не найден.");
         }
     }
 }

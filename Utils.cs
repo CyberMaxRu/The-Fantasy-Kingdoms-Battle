@@ -39,5 +39,15 @@ namespace Fantasy_King_s_Battle
         {
             return s.Replace("/", Environment.NewLine);
         }
+
+        internal static int GetParamFromXml(XmlNode n)
+        {
+            return n != null ? Convert.ToInt32(n.InnerText) : 0;
+        }
+
+        internal static string GetParamFromXmlString(XmlNode n)
+        {
+            return n != null ? n.InnerText : "";
+        }
     }
 }

@@ -113,7 +113,6 @@
     <Compile Include="Research.cs" />
     <Compile Include="Ammunition.cs" />
     <Compile Include="TypeLobby.cs" />
-    <Compile Include="TypeItem.cs" />
     <Compile Include="Level.cs" />
     <Compile Include="Lobby.cs" />
     <Compile Include="PanelAboutPlayer.cs">
@@ -173,7 +172,6 @@
     <Content Include="Resources\Config\Heroes.xml" />
     <Content Include="Resources\Config\Buildings.xml" />
     <Content Include="Resources\Config\Skills.xml" />
-    <Content Include="Resources\Config\TypeItems.xml" />
     <Content Include="Resources\Config\Settings.xml" />
     <Content Include="Resources\Config\Weapons.xml" />
   </ItemGroup>

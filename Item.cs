@@ -8,12 +8,14 @@ using System.Xml;
 
 namespace Fantasy_King_s_Battle
 {
+    internal enum CategoryItem { Potion, Enchant, Artifact, Elixir }
+
     // Класс предмета
     internal sealed class Item : Entity
     {
         public Item(XmlNode n) : base(n)
         {
-            TypeItem = FormMain.Config.FindTypeItem(n.SelectSingleNode("TypeItem").InnerText);
+            CategoryItem = (CategoryItem)Enum.Parse(typeof(CategoryItem), n.SelectSingleNode("CategoryItem").InnerText);
             TimeHit = n.SelectSingleNode("TimeHit") == null ? 0 : Convert.ToInt32(n.SelectSingleNode("TimeHit").InnerText);
 
             DamageMelee = n.SelectSingleNode("DamageMelee") != null ? Convert.ToInt32(n.SelectSingleNode("DamageMelee").InnerText) : 0;
@@ -62,7 +64,7 @@ namespace Fantasy_King_s_Battle
             }
         }
 
-        internal TypeItem TypeItem { get; }
+        internal CategoryItem CategoryItem { get; }
         internal int TimeHit { get; }
         internal int Position { get; }
         internal int DamageMelee { get; }

@@ -11,8 +11,8 @@
     <KindHero>Melee</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
-    <Weapon></Weapon>
-    <Armour></Armour>
+    <Weapon>WeaponWarrior0</Weapon>
+    <Armour>ArmourWarrior0</Armour>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -38,60 +38,10 @@
       <Ability>WarriorTaunt</Ability>
       <Ability>WarriorAntiknockbackBuff</Ability>
     </Abilities>
-    <CarryTypeItems>
-      <CarryTypeItem>
-        <ID>WeaponWarrior</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>ArmourWarrior</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>PotionHealth</ID>
-        <MaxQuantity>5</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>PotionMana</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-    </CarryTypeItems>
-    <Slots>
-      <Slot>
-        <Pos>1</Pos>
-        <TypeItem>WeaponWarrior</TypeItem>
-        <DefaultItem>Sword0</DefaultItem>
-      </Slot>
-      <Slot>
-        <Pos>2</Pos>
-        <TypeItem>ArmourWarrior</TypeItem>
-        <DefaultItem>ArmourWarrior0</DefaultItem>
-      </Slot>
-      <Slot>
-        <Pos>3</Pos>
-        <TypeItem>PotionHealth</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>4</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>5</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>6</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>7</Pos>
-        <TypeItem>Elixir</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>8</Pos>
-        <TypeItem>Elixir</TypeItem>
-      </Slot>
-    </Slots>
+    <CarryItems>
+      <Item MaxQuantity="5">PotionOfHealth</Item>
+      <Item MaxQuantity="1">PotionOfMana</Item>
+    </CarryItems>
   </Hero>
   <Hero>
     <ID>Rogue</ID>
@@ -104,6 +54,8 @@
     <KindHero>Melee</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
+    <Weapon>WeaponRogue0</Weapon>
+    <Armour>ArmourRogue0</Armour>
     <BaseParameters>
       <Strength>10</Strength>
       <Dexterity>20</Dexterity>
@@ -128,60 +80,10 @@
       <Ability>RogueBasicAttack</Ability>
       <Ability>RogueWoundAttack</Ability>
     </Abilities>
-    <CarryTypeItems>
-      <CarryTypeItem>
-        <ID>WeaponWarrior</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>ArmourArcher</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>PotionHealth</ID>
-        <MaxQuantity>5</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>PotionMana</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-    </CarryTypeItems>
-    <Slots>
-      <Slot>
-        <Pos>1</Pos>
-        <TypeItem>WeaponWarrior</TypeItem>
-        <DefaultItem>Sword0</DefaultItem>
-      </Slot>
-      <Slot>
-        <Pos>2</Pos>
-        <TypeItem>ArmourArcher</TypeItem>
-        <DefaultItem>ArmourArcher0</DefaultItem>
-      </Slot>
-      <Slot>
-        <Pos>3</Pos>
-        <TypeItem>PotionHealth</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>4</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>5</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>6</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>7</Pos>
-        <TypeItem>Elixir</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>8</Pos>
-        <TypeItem>Elixir</TypeItem>
-      </Slot>
-    </Slots>
+    <CarryItems>
+      <Item MaxQuantity="5">PotionOfHealth</Item>
+      <Item MaxQuantity="1">PotionOfMana</Item>
+    </CarryItems>
   </Hero>
   <Hero>
     <ID>Hunter</ID>
@@ -194,6 +96,8 @@
     <KindHero>Shooter</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
+    <Weapon>WeaponHunter0</Weapon>
+    <Armour>ArmourHunter0</Armour>
     <BaseParameters>
       <Strength>15</Strength>
       <Dexterity>20</Dexterity>
@@ -219,60 +123,10 @@
       <Ability>HunterBeastSlayerAttack</Ability>
       <Ability>HunterAoeAttack</Ability>
     </Abilities>
-    <CarryTypeItems>
-      <CarryTypeItem>
-        <ID>WeaponArcher</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>ArmourArcher</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>PotionHealth</ID>
-        <MaxQuantity>5</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>PotionMana</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-    </CarryTypeItems>
-    <Slots>
-      <Slot>
-        <Pos>1</Pos>
-        <TypeItem>WeaponArcher</TypeItem>
-        <DefaultItem>Bow0</DefaultItem>
-      </Slot>
-      <Slot>
-        <Pos>2</Pos>
-        <TypeItem>ArmourArcher</TypeItem>
-        <DefaultItem>ArmourArcher0</DefaultItem>
-      </Slot>
-      <Slot>
-        <Pos>3</Pos>
-        <TypeItem>PotionHealth</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>4</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>5</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>6</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>7</Pos>
-        <TypeItem>Elixir</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>8</Pos>
-        <TypeItem>Elixir</TypeItem>
-      </Slot>
-    </Slots>
+    <CarryItems>
+      <Item MaxQuantity="5">PotionOfHealth</Item>
+      <Item MaxQuantity="1">PotionOfMana</Item>
+    </CarryItems>
   </Hero>
   <Hero>
     <ID>Cleric</ID>
@@ -285,6 +139,8 @@
     <KindHero>Mage</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
+    <Weapon>WeaponCleric0</Weapon>
+    <Armour>ArmourCleric0</Armour>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -310,60 +166,10 @@
       <Ability>MagicBasicAttack</Ability>
       <Ability>ClericWisdomBuff</Ability>
     </Abilities>
-    <CarryTypeItems>
-      <CarryTypeItem>
-        <ID>WeaponMage</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>ArmourMage</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>PotionHealth</ID>
-        <MaxQuantity>5</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>PotionMana</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-    </CarryTypeItems>
-    <Slots>
-      <Slot>
-        <Pos>1</Pos>
-        <TypeItem>WeaponMage</TypeItem>
-        <DefaultItem>Staff0</DefaultItem>
-      </Slot>
-      <Slot>
-        <Pos>2</Pos>
-        <TypeItem>ArmourMage</TypeItem>
-        <DefaultItem>ArmourMage0</DefaultItem>
-      </Slot>
-      <Slot>
-        <Pos>3</Pos>
-        <TypeItem>PotionHealth</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>4</Pos>
-        <TypeItem>PotionMana</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>5</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>6</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>7</Pos>
-        <TypeItem>Elixir</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>8</Pos>
-        <TypeItem>Elixir</TypeItem>
-      </Slot>
-    </Slots>
+    <CarryItems>
+      <Item MaxQuantity="5">PotionOfHealth</Item>
+      <Item MaxQuantity="1">PotionOfMana</Item>
+    </CarryItems>
   </Hero>
   <Hero>
     <ID>Mage</ID>
@@ -376,6 +182,8 @@
     <KindHero>Mage</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
+    <Weapon>WeaponMage0</Weapon>
+    <Armour>ArmourMage0</Armour>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -401,60 +209,10 @@
       <Ability>MageArcaneShield</Ability>
       <Ability>MageSummonSerpent</Ability>
     </Abilities>
-    <CarryTypeItems>
-      <CarryTypeItem>
-        <ID>WeaponMage</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>ArmourMage</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>PotionHealth</ID>
-        <MaxQuantity>5</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>PotionMana</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-    </CarryTypeItems>
-    <Slots>
-      <Slot>
-        <Pos>1</Pos>
-        <TypeItem>WeaponMage</TypeItem>
-        <DefaultItem>Staff0</DefaultItem>
-      </Slot>
-      <Slot>
-        <Pos>2</Pos>
-        <TypeItem>ArmourMage</TypeItem>
-        <DefaultItem>ArmourMage0</DefaultItem>
-      </Slot>
-      <Slot>
-        <Pos>3</Pos>
-        <TypeItem>PotionHealth</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>4</Pos>
-        <TypeItem>PotionMana</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>5</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>6</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>7</Pos>
-        <TypeItem>Elixir</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>8</Pos>
-        <TypeItem>Elixir</TypeItem>
-      </Slot>
-    </Slots>
+    <CarryItems>
+      <Item MaxQuantity="5">PotionOfHealth</Item>
+      <Item MaxQuantity="1">PotionOfMana</Item>
+    </CarryItems>
   </Hero>
   <Hero>
     <ID>Elf</ID>
@@ -467,6 +225,8 @@
     <KindHero>Shooter</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
+    <Weapon>WeaponElf0</Weapon>
+    <Armour>ArmourElf0</Armour>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -491,60 +251,10 @@
       <Ability>ArcherBasicAttack</Ability>
       <Ability>ElfRoots</Ability>
     </Abilities>
-    <CarryTypeItems>
-      <CarryTypeItem>
-        <ID>WeaponArcher</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>ArmourArcher</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>PotionHealth</ID>
-        <MaxQuantity>5</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>PotionMana</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-    </CarryTypeItems>
-    <Slots>
-      <Slot>
-        <Pos>1</Pos>
-        <TypeItem>WeaponArcher</TypeItem>
-        <DefaultItem>Bow0</DefaultItem>
-      </Slot>
-      <Slot>
-        <Pos>2</Pos>
-        <TypeItem>ArmourArcher</TypeItem>
-        <DefaultItem>ArmourArcher0</DefaultItem>
-      </Slot>
-      <Slot>
-        <Pos>3</Pos>
-        <TypeItem>PotionHealth</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>4</Pos>
-        <TypeItem>PotionMana</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>5</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>6</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>7</Pos>
-        <TypeItem>Elixir</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>8</Pos>
-        <TypeItem>Elixir</TypeItem>
-      </Slot>
-    </Slots>
+    <CarryItems>
+      <Item MaxQuantity="5">PotionOfHealth</Item>
+      <Item MaxQuantity="1">PotionOfMana</Item>
+    </CarryItems>
   </Hero>
   <Hero>
     <ID>Dwarf</ID>
@@ -557,6 +267,8 @@
     <KindHero>Melee</KindHero>
     <CanBuild>True</CanBuild>
     <DamageToCastle>2</DamageToCastle>
+    <Weapon>WeaponDwarf0</Weapon>
+    <Armour>ArmourDwarf0</Armour>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -581,60 +293,10 @@
       <Ability>HammerBasicAttack</Ability>
       <Ability>StunAttack</Ability>
     </Abilities>
-    <CarryTypeItems>
-      <CarryTypeItem>
-        <ID>WeaponWarrior</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>ArmourWarrior</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>PotionHealth</ID>
-        <MaxQuantity>5</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>PotionMana</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-    </CarryTypeItems>
-    <Slots>
-      <Slot>
-        <Pos>1</Pos>
-        <TypeItem>WeaponWarrior</TypeItem>
-        <DefaultItem>Sword0</DefaultItem>
-      </Slot>
-      <Slot>
-        <Pos>2</Pos>
-        <TypeItem>ArmourWarrior</TypeItem>
-        <DefaultItem>ArmourWarrior0</DefaultItem>
-      </Slot>
-      <Slot>
-        <Pos>3</Pos>
-        <TypeItem>PotionHealth</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>4</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>5</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>6</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>7</Pos>
-        <TypeItem>Elixir</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>8</Pos>
-        <TypeItem>Elixir</TypeItem>
-      </Slot>
-    </Slots>
+    <CarryItems>
+      <Item MaxQuantity="5">PotionOfHealth</Item>
+      <Item MaxQuantity="1">PotionOfMana</Item>
+    </CarryItems>
   </Hero>
   <Hero>
     <ID>Peasant</ID>
@@ -692,8 +354,8 @@
     <KindHero>Mage</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
-    <Weapon></Weapon>
-    <Armour></Armour>
+    <Weapon>WeaponDarkPriest0</Weapon>
+    <Armour>ArmourDarkPriest0</Armour>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -722,60 +384,10 @@
       <Ability>DarkPriestPestilence</Ability>
       <Ability>DarkPriestSummonVampire</Ability>
     </Abilities>
-    <CarryTypeItems>
-      <CarryTypeItem>
-        <ID>WeaponWarrior</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>ArmourWarrior</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>PotionHealth</ID>
-        <MaxQuantity>5</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>PotionMana</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-    </CarryTypeItems>
-    <Slots>
-      <Slot>
-        <Pos>1</Pos>
-        <TypeItem>WeaponWarrior</TypeItem>
-        <DefaultItem>Sword0</DefaultItem>
-      </Slot>
-      <Slot>
-        <Pos>2</Pos>
-        <TypeItem>ArmourWarrior</TypeItem>
-        <DefaultItem>ArmourWarrior0</DefaultItem>
-      </Slot>
-      <Slot>
-        <Pos>3</Pos>
-        <TypeItem>PotionHealth</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>4</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>5</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>6</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>7</Pos>
-        <TypeItem>Elixir</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>8</Pos>
-        <TypeItem>Elixir</TypeItem>
-      </Slot>
-    </Slots>
+    <CarryItems>
+      <Item MaxQuantity="5">PotionOfHealth</Item>
+      <Item MaxQuantity="1">PotionOfMana</Item>
+    </CarryItems>
   </Hero>
   <Hero>
     <ID>Priest</ID>
@@ -788,8 +400,8 @@
     <KindHero>Mage</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
-    <Weapon></Weapon>
-    <Armour></Armour>
+    <Weapon>WeaponPriest0</Weapon>
+    <Armour>ArmourPriest0</Armour>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -818,60 +430,10 @@
       <Ability>PriestMassHeal</Ability>
       <Ability>PriestHotHeal</Ability>
     </Abilities>
-    <CarryTypeItems>
-      <CarryTypeItem>
-        <ID>WeaponWarrior</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>ArmourWarrior</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>PotionHealth</ID>
-        <MaxQuantity>5</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>PotionMana</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-    </CarryTypeItems>
-    <Slots>
-      <Slot>
-        <Pos>1</Pos>
-        <TypeItem>WeaponWarrior</TypeItem>
-        <DefaultItem>Sword0</DefaultItem>
-      </Slot>
-      <Slot>
-        <Pos>2</Pos>
-        <TypeItem>ArmourWarrior</TypeItem>
-        <DefaultItem>ArmourWarrior0</DefaultItem>
-      </Slot>
-      <Slot>
-        <Pos>3</Pos>
-        <TypeItem>PotionHealth</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>4</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>5</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>6</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>7</Pos>
-        <TypeItem>Elixir</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>8</Pos>
-        <TypeItem>Elixir</TypeItem>
-      </Slot>
-    </Slots>
+    <CarryItems>
+      <Item MaxQuantity="5">PotionOfHealth</Item>
+      <Item MaxQuantity="1">PotionOfMana</Item>
+    </CarryItems>
   </Hero>
   <Hero>
     <ID>Paladin</ID>
@@ -884,8 +446,8 @@
     <KindHero>Melee</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
-    <Weapon></Weapon>
-    <Armour></Armour>
+    <Weapon>WeaponPaladin0</Weapon>
+    <Armour>ArmourPaladin0</Armour>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -914,63 +476,13 @@
       <Ability>PaladinHolyNovaAttack</Ability>
       <Ability>PaladinChargeAttack</Ability>
     </Abilities>
-    <CarryTypeItems>
-      <CarryTypeItem>
-        <ID>WeaponWarrior</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>ArmourWarrior</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>PotionHealth</ID>
-        <MaxQuantity>5</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>PotionMana</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-    </CarryTypeItems>
-    <Slots>
-      <Slot>
-        <Pos>1</Pos>
-        <TypeItem>WeaponWarrior</TypeItem>
-        <DefaultItem>Sword0</DefaultItem>
-      </Slot>
-      <Slot>
-        <Pos>2</Pos>
-        <TypeItem>ArmourWarrior</TypeItem>
-        <DefaultItem>ArmourWarrior0</DefaultItem>
-      </Slot>
-      <Slot>
-        <Pos>3</Pos>
-        <TypeItem>PotionHealth</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>4</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>5</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>6</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>7</Pos>
-        <TypeItem>Elixir</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>8</Pos>
-        <TypeItem>Elixir</TypeItem>
-      </Slot>
-    </Slots>
+    <CarryItems>
+      <Item MaxQuantity="5">PotionOfHealth</Item>
+      <Item MaxQuantity="1">PotionOfMana</Item>
+    </CarryItems>
   </Hero>
   <Hero>
-    <ID>Blademaster</ID>
+    <ID>BladeMaster</ID>
     <Name>Мастер меча</Name>
     <Description>- Обладает самым сильным ударом/- Любит выполнять задания атаки/- На 5-ом уровне изучает "Калечащий удар"/- На 10-ом уровне изучает "Ураган клинков"/- Умеет отвлекать врагов на себя</Description>
     <ImageIndex>13</ImageIndex>
@@ -980,8 +492,8 @@
     <KindHero>Melee</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
-    <Weapon></Weapon>
-    <Armour></Armour>
+    <Weapon>WeaponBladeMaster0</Weapon>
+    <Armour>ArmourBladeMaster0</Armour>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -1010,63 +522,13 @@
       <Ability>PaladinHolyNovaAttack</Ability>
       <Ability>PaladinChargeAttack</Ability>
     </Abilities>
-    <CarryTypeItems>
-      <CarryTypeItem>
-        <ID>WeaponWarrior</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>ArmourWarrior</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>PotionHealth</ID>
-        <MaxQuantity>5</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>PotionMana</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-    </CarryTypeItems>
-    <Slots>
-      <Slot>
-        <Pos>1</Pos>
-        <TypeItem>WeaponWarrior</TypeItem>
-        <DefaultItem>Sword0</DefaultItem>
-      </Slot>
-      <Slot>
-        <Pos>2</Pos>
-        <TypeItem>ArmourWarrior</TypeItem>
-        <DefaultItem>ArmourWarrior0</DefaultItem>
-      </Slot>
-      <Slot>
-        <Pos>3</Pos>
-        <TypeItem>PotionHealth</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>4</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>5</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>6</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>7</Pos>
-        <TypeItem>Elixir</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>8</Pos>
-        <TypeItem>Elixir</TypeItem>
-      </Slot>
-    </Slots>
+    <CarryItems>
+      <Item MaxQuantity="5">PotionOfHealth</Item>
+      <Item MaxQuantity="1">PotionOfMana</Item>
+    </CarryItems>
   </Hero>
   <Hero>
-    <ID>Beastmaster</ID>
+    <ID>BeastMaster</ID>
     <Name>Зверолов</Name>
     <Description>- Вызывает себе на помощь волков Фервуса/- Любит выполнять задания исследования/- На 5-ом уровне изучает способность "Звериная ярость"/- С 10-го уровня призывает себе на помощь медведей Хаоса</Description>
     <ImageIndex>14</ImageIndex>
@@ -1076,8 +538,8 @@
     <KindHero>Shooter</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
-    <Weapon></Weapon>
-    <Armour></Armour>
+    <Weapon>WeaponBeastMaster0</Weapon>
+    <Armour>ArmourBeastMaster0</Armour>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -1106,60 +568,10 @@
       <Ability>PaladinHolyNovaAttack</Ability>
       <Ability>PaladinChargeAttack</Ability>
     </Abilities>
-    <CarryTypeItems>
-      <CarryTypeItem>
-        <ID>WeaponWarrior</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>ArmourWarrior</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>PotionHealth</ID>
-        <MaxQuantity>5</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>PotionMana</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-    </CarryTypeItems>
-    <Slots>
-      <Slot>
-        <Pos>1</Pos>
-        <TypeItem>WeaponWarrior</TypeItem>
-        <DefaultItem>Sword0</DefaultItem>
-      </Slot>
-      <Slot>
-        <Pos>2</Pos>
-        <TypeItem>ArmourWarrior</TypeItem>
-        <DefaultItem>ArmourWarrior0</DefaultItem>
-      </Slot>
-      <Slot>
-        <Pos>3</Pos>
-        <TypeItem>PotionHealth</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>4</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>5</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>6</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>7</Pos>
-        <TypeItem>Elixir</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>8</Pos>
-        <TypeItem>Elixir</TypeItem>
-      </Slot>
-    </Slots>
+    <CarryItems>
+      <Item MaxQuantity="5">PotionOfHealth</Item>
+      <Item MaxQuantity="1">PotionOfMana</Item>
+    </CarryItems>
   </Hero>
   <Hero>
     <ID>Marksman</ID>
@@ -1172,8 +584,8 @@
     <KindHero>Shooter</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
-    <Weapon></Weapon>
-    <Armour></Armour>
+    <Weapon>WeaponMarksman0</Weapon>
+    <Armour>ArmourMarksman0</Armour>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -1202,60 +614,10 @@
       <Ability>PaladinHolyNovaAttack</Ability>
       <Ability>PaladinChargeAttack</Ability>
     </Abilities>
-    <CarryTypeItems>
-      <CarryTypeItem>
-        <ID>WeaponWarrior</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>ArmourWarrior</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>PotionHealth</ID>
-        <MaxQuantity>5</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>PotionMana</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-    </CarryTypeItems>
-    <Slots>
-      <Slot>
-        <Pos>1</Pos>
-        <TypeItem>WeaponWarrior</TypeItem>
-        <DefaultItem>Sword0</DefaultItem>
-      </Slot>
-      <Slot>
-        <Pos>2</Pos>
-        <TypeItem>ArmourWarrior</TypeItem>
-        <DefaultItem>ArmourWarrior0</DefaultItem>
-      </Slot>
-      <Slot>
-        <Pos>3</Pos>
-        <TypeItem>PotionHealth</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>4</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>5</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>6</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>7</Pos>
-        <TypeItem>Elixir</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>8</Pos>
-        <TypeItem>Elixir</TypeItem>
-      </Slot>
-    </Slots>
+    <CarryItems>
+      <Item MaxQuantity="5">PotionOfHealth</Item>
+      <Item MaxQuantity="1">PotionOfMana</Item>
+    </CarryItems>
   </Hero>
   <Hero>
     <ID>FireMage</ID>
@@ -1268,8 +630,8 @@
     <KindHero>Mage</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
-    <Weapon></Weapon>
-    <Armour></Armour>
+    <Weapon>WeaponFireMage0</Weapon>
+    <Armour>ArmourFireMage0</Armour>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -1298,60 +660,10 @@
       <Ability>PaladinHolyNovaAttack</Ability>
       <Ability>PaladinChargeAttack</Ability>
     </Abilities>
-    <CarryTypeItems>
-      <CarryTypeItem>
-        <ID>WeaponWarrior</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>ArmourWarrior</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>PotionHealth</ID>
-        <MaxQuantity>5</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>PotionMana</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-    </CarryTypeItems>
-    <Slots>
-      <Slot>
-        <Pos>1</Pos>
-        <TypeItem>WeaponWarrior</TypeItem>
-        <DefaultItem>Sword0</DefaultItem>
-      </Slot>
-      <Slot>
-        <Pos>2</Pos>
-        <TypeItem>ArmourWarrior</TypeItem>
-        <DefaultItem>ArmourWarrior0</DefaultItem>
-      </Slot>
-      <Slot>
-        <Pos>3</Pos>
-        <TypeItem>PotionHealth</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>4</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>5</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>6</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>7</Pos>
-        <TypeItem>Elixir</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>8</Pos>
-        <TypeItem>Elixir</TypeItem>
-      </Slot>
-    </Slots>
+    <CarryItems>
+      <Item MaxQuantity="5">PotionOfHealth</Item>
+      <Item MaxQuantity="1">PotionOfMana</Item>
+    </CarryItems>
   </Hero>
   <Hero>
     <ID>IceMage</ID>
@@ -1364,8 +676,8 @@
     <KindHero>Mage</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
-    <Weapon></Weapon>
-    <Armour></Armour>
+    <Weapon>WeaponIceMage0</Weapon>
+    <Armour>ArmourIceMage0</Armour>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -1394,60 +706,10 @@
       <Ability>PaladinHolyNovaAttack</Ability>
       <Ability>PaladinChargeAttack</Ability>
     </Abilities>
-    <CarryTypeItems>
-      <CarryTypeItem>
-        <ID>WeaponWarrior</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>ArmourWarrior</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>PotionHealth</ID>
-        <MaxQuantity>5</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>PotionMana</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-    </CarryTypeItems>
-    <Slots>
-      <Slot>
-        <Pos>1</Pos>
-        <TypeItem>WeaponWarrior</TypeItem>
-        <DefaultItem>Sword0</DefaultItem>
-      </Slot>
-      <Slot>
-        <Pos>2</Pos>
-        <TypeItem>ArmourWarrior</TypeItem>
-        <DefaultItem>ArmourWarrior0</DefaultItem>
-      </Slot>
-      <Slot>
-        <Pos>3</Pos>
-        <TypeItem>PotionHealth</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>4</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>5</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>6</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>7</Pos>
-        <TypeItem>Elixir</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>8</Pos>
-        <TypeItem>Elixir</TypeItem>
-      </Slot>
-    </Slots>
+    <CarryItems>
+      <Item MaxQuantity="5">PotionOfHealth</Item>
+      <Item MaxQuantity="1">PotionOfMana</Item>
+    </CarryItems>
   </Hero>
   <Hero>
     <ID>DeathKnight</ID>
@@ -1460,8 +722,8 @@
     <KindHero>Melee</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
-    <Weapon></Weapon>
-    <Armour></Armour>
+    <Weapon>WeaponDeathKnight0</Weapon>
+    <Armour>ArmourDeathKnight0</Armour>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -1490,59 +752,9 @@
       <Ability>PaladinHolyNovaAttack</Ability>
       <Ability>PaladinChargeAttack</Ability>
     </Abilities>
-    <CarryTypeItems>
-      <CarryTypeItem>
-        <ID>WeaponWarrior</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>ArmourWarrior</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>PotionHealth</ID>
-        <MaxQuantity>5</MaxQuantity>
-      </CarryTypeItem>
-      <CarryTypeItem>
-        <ID>PotionMana</ID>
-        <MaxQuantity>1</MaxQuantity>
-      </CarryTypeItem>
-    </CarryTypeItems>
-    <Slots>
-      <Slot>
-        <Pos>1</Pos>
-        <TypeItem>WeaponWarrior</TypeItem>
-        <DefaultItem>Sword0</DefaultItem>
-      </Slot>
-      <Slot>
-        <Pos>2</Pos>
-        <TypeItem>ArmourWarrior</TypeItem>
-        <DefaultItem>ArmourWarrior0</DefaultItem>
-      </Slot>
-      <Slot>
-        <Pos>3</Pos>
-        <TypeItem>PotionHealth</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>4</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>5</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>6</Pos>
-        <TypeItem>Artifact</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>7</Pos>
-        <TypeItem>Elixir</TypeItem>
-      </Slot>
-      <Slot>
-        <Pos>8</Pos>
-        <TypeItem>Elixir</TypeItem>
-      </Slot>
-    </Slots>
+    <CarryItems>
+      <Item MaxQuantity="5">PotionOfHealth</Item>
+      <Item MaxQuantity="1">PotionOfMana</Item>
+    </CarryItems>
   </Hero>
 </Heroes>

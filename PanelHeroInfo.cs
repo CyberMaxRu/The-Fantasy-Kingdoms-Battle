@@ -31,8 +31,7 @@ namespace Fantasy_King_s_Battle
 
         private readonly PanelWithPanelEntity panelInventory = new PanelWithPanelEntity(4);
         private readonly PanelWithPanelEntity panelAbilities = new PanelWithPanelEntity(4);
-
-        internal PanelEntity[] slots = new PanelEntity[FormMain.SLOT_IN_INVENTORY];
+        internal List<PanelEntity> slots { get; } = new List<PanelEntity>();
 
         public PanelHeroInfo(int height) : base(height)
         {
@@ -56,7 +55,7 @@ namespace Fantasy_King_s_Battle
             Width = pageControl.Width + Config.GRID_SIZE * 2;
 
             return;
-            lblLevel = GuiUtils.CreateLabel(this, Config.GRID_SIZE, TopForControls());
+            /*lblLevel = GuiUtils.CreateLabel(this, Config.GRID_SIZE, TopForControls());
             lblHealth = GuiUtils.CreateLabel(this, Config.GRID_SIZE, lblLevel.Top + lblLevel.Height + Config.GRID_SIZE);
             lblMana = GuiUtils.CreateLabel(this, Config.GRID_SIZE, lblHealth.Top + lblHealth.Height + Config.GRID_SIZE);
 
@@ -88,7 +87,7 @@ namespace Fantasy_King_s_Battle
 
                     slots[x + y * FormMain.SLOTS_IN_LINE] = pb;
                 }
-            }
+            }*/
         }
 
         internal PlayerHero Hero
@@ -117,7 +116,7 @@ namespace Fantasy_King_s_Battle
         {
             base.ShowData();
 
-            panelInventory.ApplyList(hero.Slots.ToList<ICell>());
+            panelInventory.ApplyList(hero.Inventory);
             panelAbilities.ApplyList(Hero.Abilities);
 
             return;
@@ -149,11 +148,6 @@ namespace Fantasy_King_s_Battle
                 ShowParameter(lblDefenseMelee, hero.ParametersBase.DefenseMelee, hero.ParametersWithAmmunition.DefenseMelee);
                 ShowParameter(lblDefenseRange, hero.ParametersBase.DefenseMissile, hero.ParametersWithAmmunition.DefenseMissile);
                 ShowParameter(lblDefenseMagic, hero.ParametersBase.DefenseMagic, hero.ParametersWithAmmunition.DefenseMagic);
-
-                for (int i = 0; i < hero.Slots.Length; i++)
-                {
-                    slots[i].ShowCell(hero.Slots[i]);
-                }
 
             }
             else

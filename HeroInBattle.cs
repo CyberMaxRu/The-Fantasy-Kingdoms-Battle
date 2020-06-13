@@ -187,7 +187,7 @@ namespace Fantasy_King_s_Battle
 
         private int TimeAttack()
         {
-            int timeAttack = (int)(PlayerHero.Weapon.Item.TimeHit / 100.00 * Config.STEPS_IN_SECOND);
+            int timeAttack = (int)(PlayerHero.Weapon.TimeHit / 100.00 * Config.STEPS_IN_SECOND);
 
             Debug.Assert(timeAttack > 0);
 

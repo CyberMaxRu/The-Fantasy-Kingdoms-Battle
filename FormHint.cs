@@ -393,39 +393,44 @@ namespace Fantasy_King_s_Battle
         {
             Debug.Assert(pi != null);
 
-            switch (pi.Item.TypeItem.Category)
-            {
-                case CategoryItem.Weapon:
-                    lblDamageMelee.Top = nextTop;
-                    lblDamageMissile.Top = nextTop;
-                    lblDamageMagic.Top = nextTop;
+        }
 
-                    lblDamageMelee.Text = "     " + (pi.Item.DamageMelee > 0 ? pi.Item.DamageMelee.ToString() : "");
-                    lblDamageMissile.Text = "     " + (pi.Item.DamageMissile > 0 ? pi.Item.DamageMissile.ToString() : "");
-                    lblDamageMagic.Text = "     " + (pi.Item.DamageMagic > 0 ? pi.Item.DamageMagic.ToString() : "");
+        internal void AddStep7Weapon(Weapon w)
+        {
+            Debug.Assert(w != null);
 
-                    lblDamageMelee.Show();
-                    lblDamageMissile.Show();
-                    lblDamageMagic.Show();
+            lblDamageMelee.Top = nextTop;
+            lblDamageMissile.Top = nextTop;
+            lblDamageMagic.Top = nextTop;
 
-                    nextTop = GuiUtils.NextTop(lblDamageMelee);
-                    break;
-                case CategoryItem.Armour:
-                    lblDefenseMelee.Top = nextTop;
-                    lblDefenseMissile.Top = nextTop;
-                    lblDefenseMagic.Top = nextTop;
+            lblDamageMelee.Text = "     " + (w.DamageMelee > 0 ? w.DamageMelee.ToString() : "");
+            lblDamageMissile.Text = "     " + (w.DamageArcher > 0 ? w.DamageArcher.ToString() : "");
+            lblDamageMagic.Text = "     " + (w.DamageMagic > 0 ? w.DamageMagic.ToString() : "");
 
-                    lblDefenseMelee.Text = "     " + (pi.Item.DefenseMelee > 0 ? pi.Item.DefenseMelee.ToString() : "");
-                    lblDefenseMissile.Text = "     " + (pi.Item.DefenseMissile > 0 ? pi.Item.DefenseMissile.ToString() : "");
-                    lblDefenseMagic.Text = "     " + (pi.Item.DefenseMagic > 0 ? pi.Item.DefenseMagic.ToString() : "");
+            lblDamageMelee.Show();
+            lblDamageMissile.Show();
+            lblDamageMagic.Show();
 
-                    lblDefenseMelee.Show();
-                    lblDefenseMissile.Show();
-                    lblDefenseMagic.Show();
+            nextTop = GuiUtils.NextTop(lblDamageMelee);
+        }
 
-                    nextTop = GuiUtils.NextTop(lblDefenseMelee);
-                    break;
-            }
+        internal void AddStep8Armour(Armour a)
+        {
+            Debug.Assert(a != null);
+                
+            lblDefenseMelee.Top = nextTop;
+            lblDefenseMissile.Top = nextTop;
+            lblDefenseMagic.Top = nextTop;
+
+            lblDefenseMelee.Text = "     " + (a.DefenseMelee > 0 ? a.DefenseMelee.ToString() : "");
+            lblDefenseMissile.Text = "     " + (a.DefenseMissile > 0 ? a.DefenseMissile.ToString() : "");
+            lblDefenseMagic.Text = "     " + (a.DefenseMagic > 0 ? a.DefenseMagic.ToString() : "");
+
+            lblDefenseMelee.Show();
+            lblDefenseMissile.Show();
+            lblDefenseMagic.Show();
+
+            nextTop = GuiUtils.NextTop(lblDefenseMelee);
         }
 
         internal void ShowHint(Control c)

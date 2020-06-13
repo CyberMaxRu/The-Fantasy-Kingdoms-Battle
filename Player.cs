@@ -44,14 +44,6 @@ namespace Fantasy_King_s_Battle
             CellHeroes = new PlayerHero[Config.HERO_ROWS, Config.HERO_IN_ROW];
 
             //
-            AddItem(new PlayerItem(FormMain.Config.FindItem("Sword1"), 4, true));
-            AddItem(new PlayerItem(FormMain.Config.FindItem("Sword2"), 4, true));
-            AddItem(new PlayerItem(FormMain.Config.FindItem("Bow1"), 4, true));
-            AddItem(new PlayerItem(FormMain.Config.FindItem("Bow2"), 4, true));
-            AddItem(new PlayerItem(FormMain.Config.FindItem("ArmourWarrior1"), 4, true));
-            AddItem(new PlayerItem(FormMain.Config.FindItem("ArmourWarrior2"), 4, true));
-            AddItem(new PlayerItem(FormMain.Config.FindItem("ArmourArcher1"), 4, true));
-            AddItem(new PlayerItem(FormMain.Config.FindItem("ArmourArcher2"), 4, true));
             AddItem(new PlayerItem(FormMain.Config.FindItem("PotionOfHealth"), 10, true));
             AddItem(new PlayerItem(FormMain.Config.FindItem("PotionOfHealth"), 10, true));
             AddItem(new PlayerItem(FormMain.Config.FindItem("PotionOfMana"), 10, true));
@@ -415,7 +407,7 @@ namespace Fantasy_King_s_Battle
 
         internal bool GetItemFromHero(PlayerHero ph, int fromSlot)
         {
-            Debug.Assert(ph.Building.Player == this);
+            /*Debug.Assert(ph.Building.Player == this);
             Debug.Assert(ph.Slots[fromSlot] != null);
             Debug.Assert(ph.Slots[fromSlot].Quantity > 0);
 
@@ -424,12 +416,12 @@ namespace Fantasy_King_s_Battle
             if (toSlot == -1)
                 return false;
 
-            GetItemFromHero(ph, fromSlot, toSlot);
+            GetItemFromHero(ph, fromSlot, toSlot);*/
             return true;
         }
         internal void GetItemFromHero(PlayerHero ph, int fromSlot, int toSlot)
         {
-            Debug.Assert(ph.Building.Player == this);
+            /*Debug.Assert(ph.Building.Player == this);
             Debug.Assert(ph.Slots[fromSlot] != null);
             Debug.Assert(toSlot >= 0);
 
@@ -447,7 +439,7 @@ namespace Fantasy_King_s_Battle
                 Warehouse[toSlot] = ph.Slots[fromSlot];
 
             ph.Slots[fromSlot] = null;
-            ph.ValidateCell(fromSlot);
+            ph.ValidateCell(fromSlot);*/
         }
 
         // Забираем указанное количество предметов из ячейки
