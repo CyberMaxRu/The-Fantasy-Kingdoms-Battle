@@ -212,16 +212,16 @@ namespace Fantasy_King_s_Battle
             return 0;
         }
 
-        internal void GetDamage(int damageMelee, int damageMissile, int damageMagic)
+        internal void GetDamage(int damageMelee, int damageArcher, int damageMagic)
         {
             Debug.Assert(damageMelee >= 0);
-            Debug.Assert(damageMissile >= 0);
+            Debug.Assert(damageArcher >= 0);
             Debug.Assert(damageMagic >= 0);
             Debug.Assert(State != StateHeroInBattle.Tumbstone);
             Debug.Assert(State != StateHeroInBattle.Dead);
             Debug.Assert(State != StateHeroInBattle.Resurrection);
 
-            ReceivedDamage += damageMelee + damageMissile + damageMagic;
+            ReceivedDamage += damageMelee + damageArcher + damageMagic;
         }
 
         internal void CalcParameters()
@@ -232,7 +232,7 @@ namespace Fantasy_King_s_Battle
             Parameters.MaxMeleeDamage = PlayerHero.ParametersWithAmmunition.MaxMeleeDamage;
 
             Debug.Assert(Parameters.MinMeleeDamage <= Parameters.MaxMeleeDamage);
-            Debug.Assert(Parameters.MinMissileDamage <= Parameters.MaxMissileDamage);
+            Debug.Assert(Parameters.MinArcherDamage <= Parameters.MaxArcherDamage);
         }
     }
 }

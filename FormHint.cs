@@ -31,10 +31,10 @@ namespace Fantasy_King_s_Battle
         internal readonly Label lblGold;
         internal readonly Label lblBuilders;
         internal readonly Label lblDamageMelee;
-        internal readonly Label lblDamageMissile;
+        internal readonly Label lblDamageArcher;
         internal readonly Label lblDamageMagic;
         internal readonly Label lblDefenseMelee;
-        internal readonly Label lblDefenseMissile;
+        internal readonly Label lblDefenseArcher;
         internal readonly Label lblDefenseMagic;
 
         internal readonly Timer timerDelayShow;
@@ -147,7 +147,7 @@ namespace Fantasy_King_s_Battle
                 Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
             };
 
-            lblDamageMissile = new Label()
+            lblDamageArcher = new Label()
             {
                 Parent = this,
                 Left = lblDamageMelee.Left + lblDamageMelee.Width,
@@ -164,7 +164,7 @@ namespace Fantasy_King_s_Battle
             lblDamageMagic= new Label()
             {
                 Parent = this,
-                Left = lblDamageMissile.Left + lblDamageMissile.Width,
+                Left = lblDamageArcher.Left + lblDamageArcher.Width,
                 Top = Config.GRID_SIZE,
                 Width = (ClientSize.Width - (Config.GRID_SIZE * 2)) / 3,
                 ImageList = ilParameters,
@@ -189,7 +189,7 @@ namespace Fantasy_King_s_Battle
                 Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
             };
 
-            lblDefenseMissile = new Label()
+            lblDefenseArcher = new Label()
             {
                 Parent = this,
                 Left = lblDefenseMelee.Left + lblDefenseMelee.Width,
@@ -206,7 +206,7 @@ namespace Fantasy_King_s_Battle
             lblDefenseMagic = new Label()
             {
                 Parent = this,
-                Left = lblDefenseMissile.Left + lblDefenseMissile.Width,
+                Left = lblDefenseArcher.Left + lblDefenseArcher.Width,
                 Top = Config.GRID_SIZE,
                 Width = (ClientSize.Width - (Config.GRID_SIZE * 2)) / 3,
                 ImageList = ilParameters,
@@ -291,10 +291,10 @@ namespace Fantasy_King_s_Battle
             lblBuilders.Hide();
 
             lblDamageMelee.Hide();
-            lblDamageMissile.Hide();
+            lblDamageArcher.Hide();
             lblDamageMagic.Hide();
             lblDefenseMelee.Hide();
-            lblDefenseMissile.Hide();
+            lblDefenseArcher.Hide();
             lblDefenseMagic.Hide();
 
             nextTop = GuiUtils.NextTop(lblHeader);
@@ -400,15 +400,15 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(w != null);
 
             lblDamageMelee.Top = nextTop;
-            lblDamageMissile.Top = nextTop;
+            lblDamageArcher.Top = nextTop;
             lblDamageMagic.Top = nextTop;
 
             lblDamageMelee.Text = "     " + (w.DamageMelee > 0 ? w.DamageMelee.ToString() : "");
-            lblDamageMissile.Text = "     " + (w.DamageArcher > 0 ? w.DamageArcher.ToString() : "");
+            lblDamageArcher.Text = "     " + (w.DamageArcher > 0 ? w.DamageArcher.ToString() : "");
             lblDamageMagic.Text = "     " + (w.DamageMagic > 0 ? w.DamageMagic.ToString() : "");
 
             lblDamageMelee.Show();
-            lblDamageMissile.Show();
+            lblDamageArcher.Show();
             lblDamageMagic.Show();
 
             nextTop = GuiUtils.NextTop(lblDamageMelee);
@@ -419,15 +419,15 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(a != null);
                 
             lblDefenseMelee.Top = nextTop;
-            lblDefenseMissile.Top = nextTop;
+            lblDefenseArcher.Top = nextTop;
             lblDefenseMagic.Top = nextTop;
 
             lblDefenseMelee.Text = "     " + (a.DefenseMelee > 0 ? a.DefenseMelee.ToString() : "");
-            lblDefenseMissile.Text = "     " + (a.DefenseMissile > 0 ? a.DefenseMissile.ToString() : "");
+            lblDefenseArcher.Text = "     " + (a.DefenseArcher > 0 ? a.DefenseArcher.ToString() : "");
             lblDefenseMagic.Text = "     " + (a.DefenseMagic > 0 ? a.DefenseMagic.ToString() : "");
 
             lblDefenseMelee.Show();
-            lblDefenseMissile.Show();
+            lblDefenseArcher.Show();
             lblDefenseMagic.Show();
 
             nextTop = GuiUtils.NextTop(lblDefenseMelee);

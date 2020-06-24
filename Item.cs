@@ -19,16 +19,16 @@ namespace Fantasy_King_s_Battle
             TimeHit = n.SelectSingleNode("TimeHit") == null ? 0 : Convert.ToInt32(n.SelectSingleNode("TimeHit").InnerText);
 
             DamageMelee = n.SelectSingleNode("DamageMelee") != null ? Convert.ToInt32(n.SelectSingleNode("DamageMelee").InnerText) : 0;
-            DamageMissile = n.SelectSingleNode("DamageMissile") != null ? Convert.ToInt32(n.SelectSingleNode("DamageMissile").InnerText) : 0;
+            DamageArcher = n.SelectSingleNode("DamageArcher") != null ? Convert.ToInt32(n.SelectSingleNode("DamageArcher").InnerText) : 0;
             DamageMagic = n.SelectSingleNode("DamageMagic") != null ? Convert.ToInt32(n.SelectSingleNode("DamageMagic").InnerText) : 0;
             DefenseMelee = n.SelectSingleNode("DefenseMelee") != null ? Convert.ToInt32(n.SelectSingleNode("DefenseMelee").InnerText) : 0;
-            DefenseMissile = n.SelectSingleNode("DefenseMissile") != null ? Convert.ToInt32(n.SelectSingleNode("DefenseMissile").InnerText) : 0;
+            DefenseArcher = n.SelectSingleNode("DefenseArcher") != null ? Convert.ToInt32(n.SelectSingleNode("DefenseArcher").InnerText) : 0;
             DefenseMagic = n.SelectSingleNode("DefenseMagic") != null ? Convert.ToInt32(n.SelectSingleNode("DefenseMagic").InnerText) : 0;
 
             /*switch (TypeAttack)
             {
                 case TypeAttack.None:
-                    Debug.Assert((DamageMelee == 0) && (DamageMissile == 0) && (DamageMagic == 0));
+                    Debug.Assert((DamageMelee == 0) && (DamageArcher == 0) && (DamageMagic == 0));
                     Debug.Assert(TimeHit == 0);
 
                     break;
@@ -38,8 +38,8 @@ namespace Fantasy_King_s_Battle
                     Debug.Assert(TimeHit * 10 % Config.STEP_IN_MSEC == 0);
 
                     break;
-                case TypeAttack.Missile:
-                    Debug.Assert((DamageMissile > 0) || (DamageMagic > 0));
+                case TypeAttack.Archer:
+                    Debug.Assert((DamageArcher > 0) || (DamageMagic > 0));
                     Debug.Assert(TimeHit > 0);
                     Debug.Assert(TimeHit * 10 % Config.STEP_IN_MSEC == 0);
 
@@ -68,10 +68,10 @@ namespace Fantasy_King_s_Battle
         internal int TimeHit { get; }
         internal int Position { get; }
         internal int DamageMelee { get; }
-        internal int DamageMissile { get; }
+        internal int DamageArcher { get; }
         internal int DamageMagic { get; }
         internal int DefenseMelee { get; }
-        internal int DefenseMissile { get; }
+        internal int DefenseArcher { get; }
         internal int DefenseMagic { get; }
 
         protected override int GetValue() => 0;

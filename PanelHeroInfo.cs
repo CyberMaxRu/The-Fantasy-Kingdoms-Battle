@@ -159,14 +159,14 @@ namespace Fantasy_King_s_Battle
                     lblAttackMelee.Text = hero.ParametersWithAmmunition.MinMeleeDamage.ToString() + " - " + hero.ParametersWithAmmunition.MaxMeleeDamage.ToString();
                     lblAttackRange.Text = "";
                 }
-                if (Hero.ClassHero.KindHero.TypeAttack == TypeAttack.Missile)
+                if (Hero.ClassHero.KindHero.TypeAttack == TypeAttack.Archer)
                 {
                     lblAttackMelee.Text = "";
-                    lblAttackRange.Text = hero.ParametersWithAmmunition.MinMissileDamage.ToString() + " - " + hero.ParametersWithAmmunition.MaxMissileDamage.ToString();
+                    lblAttackRange.Text = hero.ParametersWithAmmunition.MinArcherDamage.ToString() + " - " + hero.ParametersWithAmmunition.MaxArcherDamage.ToString();
                 }
                 ShowParameter(lblAttackMagic, hero.ParametersBase.MagicDamage, hero.ParametersWithAmmunition.MagicDamage);
                 ShowParameter(lblDefenseMelee, hero.ParametersBase.DefenseMelee, hero.ParametersWithAmmunition.DefenseMelee);
-                ShowParameter(lblDefenseRange, hero.ParametersBase.DefenseMissile, hero.ParametersWithAmmunition.DefenseMissile);
+                ShowParameter(lblDefenseRange, hero.ParametersBase.DefenseArcher, hero.ParametersWithAmmunition.DefenseArcher);
                 ShowParameter(lblDefenseMagic, hero.ParametersBase.DefenseMagic, hero.ParametersWithAmmunition.DefenseMagic);
 
             }

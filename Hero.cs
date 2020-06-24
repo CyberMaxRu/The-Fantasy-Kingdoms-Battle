@@ -9,7 +9,7 @@ using System.Diagnostics;
 
 namespace Fantasy_King_s_Battle
 {
-    internal enum TypeAttack { Melee, Missile, Magic, None }
+    internal enum TypeAttack { Melee, Archer, Magic, None }
 
     // Класс героя гильдии    
     internal sealed class Hero
@@ -44,7 +44,7 @@ namespace Fantasy_King_s_Battle
                 case TypeAttack.Melee:
                     //Debug.Assert(DamageToCastle > 0);
                     break;
-                case TypeAttack.Missile:
+                case TypeAttack.Archer:
                     Debug.Assert(DamageToCastle > 0);
                     break;
                 case TypeAttack.None:

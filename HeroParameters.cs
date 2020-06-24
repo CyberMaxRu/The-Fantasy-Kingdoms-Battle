@@ -80,11 +80,11 @@ namespace Fantasy_King_s_Battle
 
         internal int MinMeleeDamage { get; set; }
         internal int MaxMeleeDamage { get; set; }
-        internal int MinMissileDamage { get; set; }
-        internal int MaxMissileDamage { get; set; }
+        internal int MinArcherDamage { get; set; }
+        internal int MaxArcherDamage { get; set; }
         internal int MagicDamage { get; set; }
         internal int DefenseMelee { get; set; }
-        internal int DefenseMissile { get; set; }
+        internal int DefenseArcher { get; set; }
         internal int DefenseMagic { get; set; }
         internal int StepsInTumbstone { get; set; }// Сколько шагов боя герой уже в состоянии могилы
         internal int StepsInResurrection { get; set; }// Сколько шагов боя герой уже воскрешается

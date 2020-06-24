@@ -55,7 +55,7 @@ namespace Fantasy_King_s_Battle
                     Debug.Assert(DamageArcher == 0);
                     Debug.Assert(DamageMagic == 0);
                     break;
-                case TypeAttack.Missile:
+                case TypeAttack.Archer:
                     Debug.Assert(DamageMelee == 0);
                     Debug.Assert(DamageMagic == 0);
                     break;
@@ -144,7 +144,7 @@ namespace Fantasy_King_s_Battle
             ID = n.SelectSingleNode("ID").InnerText;
             nameClassHero = n.SelectSingleNode("Hero").InnerText;
             DefenseMelee = Utils.GetParamFromXml(n.SelectSingleNode("DefenseMelee"));
-            DefenseMissile = Utils.GetParamFromXml(n.SelectSingleNode("DefenseMissile"));
+            DefenseArcher = Utils.GetParamFromXml(n.SelectSingleNode("DefenseArcher"));
             DefenseMagic = Utils.GetParamFromXml(n.SelectSingleNode("DefenseMagic"));
 
             Debug.Assert(ID.Length > 0);
@@ -161,7 +161,7 @@ namespace Fantasy_King_s_Battle
         internal GroupArmour GroupArmour { get; }
         internal Hero ClassHero { get; private set; }
         internal int DefenseMelee { get; }
-        internal int DefenseMissile { get; }
+        internal int DefenseArcher { get; }
         internal int DefenseMagic { get; }
 
         internal void TuneDeferredLinks()

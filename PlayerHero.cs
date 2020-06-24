@@ -288,14 +288,14 @@ namespace Fantasy_King_s_Battle
 
             ParametersWithAmmunition.MaxMeleeDamage = Weapon.DamageMelee + (Weapon.DamageMelee * ParametersWithAmmunition.Strength / 100);
             ParametersWithAmmunition.MinMeleeDamage = ParametersWithAmmunition.MaxMeleeDamage / 2;
-            ParametersWithAmmunition.MaxMissileDamage = Weapon.DamageArcher + (Weapon.DamageArcher * ParametersWithAmmunition.Strength / 100);
-            ParametersWithAmmunition.MinMissileDamage = ParametersWithAmmunition.MaxMissileDamage / 2;
+            ParametersWithAmmunition.MaxArcherDamage = Weapon.DamageArcher + (Weapon.DamageArcher * ParametersWithAmmunition.Strength / 100);
+            ParametersWithAmmunition.MinArcherDamage = ParametersWithAmmunition.MaxArcherDamage / 2;
             ParametersWithAmmunition.MagicDamage = (ParametersWithAmmunition.Magic / 5) * Weapon.DamageMagic + Level;
             ParametersWithAmmunition.DefenseMelee = Armour.DefenseMelee;
-            ParametersWithAmmunition.DefenseMissile = Armour.DefenseMissile;
+            ParametersWithAmmunition.DefenseArcher = Armour.DefenseArcher;
             ParametersWithAmmunition.DefenseMagic = Armour.DefenseMagic;
 
-            Debug.Assert((ParametersWithAmmunition.MaxMeleeDamage > 0) || (ParametersWithAmmunition.MaxMissileDamage > 0) || (ParametersWithAmmunition.MagicDamage > 0));
+            Debug.Assert((ParametersWithAmmunition.MaxMeleeDamage > 0) || (ParametersWithAmmunition.MaxArcherDamage > 0) || (ParametersWithAmmunition.MagicDamage > 0));
         }
 
         // Реализация интерфейса
