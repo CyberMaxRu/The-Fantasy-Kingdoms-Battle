@@ -169,6 +169,36 @@
     </Weapons>
   </GroupWeapon>
   <GroupWeapon>
+    <ID>WeaponArcher3</ID>
+    <Name>Экспертное стрелковое оружие</Name>
+    <Description></Description>
+    <ImageIndex>13</ImageIndex>
+    <Cost>0</Cost>
+    <Weapons>
+      <Weapon>
+        <ID>WeaponHunter3</ID>
+        <Hero>Hunter</Hero>
+        <TimeHit>50</TimeHit>
+        <DamageMissile>0</DamageMissile>
+      </Weapon>
+    </Weapons>
+  </GroupWeapon>
+  <GroupWeapon>
+    <ID>WeaponArcher4</ID>
+    <Name>Стрелковое оружие из демонического дерева</Name>
+    <Description>- Повышает умение стрелковой атаки</Description>
+    <ImageIndex>14</ImageIndex>
+    <Cost>0</Cost>
+    <Weapons>
+      <Weapon>
+        <ID>WeaponHunter4</ID>
+        <Hero>Hunter</Hero>
+        <TimeHit>50</TimeHit>
+        <DamageMissile>0</DamageMissile>
+      </Weapon>
+    </Weapons>
+  </GroupWeapon>
+  <GroupWeapon>
     <ID>WeaponMage0</ID>
     <Name>Простое магическое оружие</Name>
     <Description>Обыкновенная тисовая палка</Description>
@@ -222,6 +252,51 @@
     <Weapons>
       <Weapon>
         <ID>WeaponCleric1</ID>
+        <Hero>Cleric</Hero>
+        <TimeHit>50</TimeHit>
+        <DamageMissile>0</DamageMissile>
+      </Weapon>
+    </Weapons>
+  </GroupWeapon>
+  <GroupWeapon>
+    <ID>WeaponMage2</ID>
+    <Name>Мастерское магическое оружие</Name>
+    <Description></Description>
+    <ImageIndex>17</ImageIndex>
+    <Cost>0</Cost>
+    <Weapons>
+      <Weapon>
+        <ID>WeaponCleric2</ID>
+        <Hero>Cleric</Hero>
+        <TimeHit>50</TimeHit>
+        <DamageMissile>0</DamageMissile>
+      </Weapon>
+    </Weapons>
+  </GroupWeapon>
+  <GroupWeapon>
+    <ID>WeaponMage3</ID>
+    <Name>Экспертное магическое оружие</Name>
+    <Description></Description>
+    <ImageIndex>18</ImageIndex>
+    <Cost>0</Cost>
+    <Weapons>
+      <Weapon>
+        <ID>WeaponCleric3</ID>
+        <Hero>Cleric</Hero>
+        <TimeHit>50</TimeHit>
+        <DamageMissile>0</DamageMissile>
+      </Weapon>
+    </Weapons>
+  </GroupWeapon>
+  <GroupWeapon>
+    <ID>WeaponMage4</ID>
+    <Name>Магическое оружие из кости дракона</Name>
+    <Description></Description>
+    <ImageIndex>19</ImageIndex>
+    <Cost>0</Cost>
+    <Weapons>
+      <Weapon>
+        <ID>WeaponCleric4</ID>
         <Hero>Cleric</Hero>
         <TimeHit>50</TimeHit>
         <DamageMissile>0</DamageMissile>

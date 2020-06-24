@@ -77,6 +77,38 @@
     </Armours>
   </GroupArmour>
   <GroupArmour>
+    <ID>ArmourMelee3</ID>
+    <Name>Экспертная стальная броня</Name>
+    <Description></Description>
+    <ImageIndex>23</ImageIndex>
+    <Cost>10</Cost>
+    <Armours>
+      <Armour>
+        <ID>ArmourWarrior3</ID>
+        <Hero>Warrior</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+    </Armours>
+  </GroupArmour>
+  <GroupArmour>
+    <ID>ArmourMelee4</ID>
+    <Name>Доспех из неврила</Name>
+    <Description></Description>
+    <ImageIndex>24</ImageIndex>
+    <Cost>10</Cost>
+    <Armours>
+      <Armour>
+        <ID>ArmourWarrior4</ID>
+        <Hero>Warrior</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+    </Armours>
+  </GroupArmour>
+  <GroupArmour>
     <ID>ArmourArcher0</ID>
     <Name>Простая кожаная броня</Name>
     <Description>Броня из грубо выделанной кожи</Description>
@@ -167,6 +199,52 @@
     </Armours>
   </GroupArmour>
   <GroupArmour>
+    <ID>ArmourArcher3</ID>
+    <Name>Экспертная кожаная броня</Name>
+    <Description></Description>
+    <ImageIndex>28</ImageIndex>
+    <Cost>10</Cost>
+    <Armours>
+      <Armour>
+        <ID>ArmourRogue3</ID>
+        <Hero>Rogue</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourHunter3</ID>
+        <Hero>Hunter</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+    </Armours>
+  </GroupArmour>
+  <GroupArmour>
+    <ID>ArmourArcher4</ID>
+    <Name>Доспех из кожи дракона</Name>
+    <Description></Description>
+    <ImageIndex>29</ImageIndex>
+    <Cost>10</Cost>
+    <Armours>
+      <Armour>
+        <ID>ArmourRogue4</ID>
+        <Hero>Rogue</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourHunter4</ID>
+        <Hero>Hunter</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+    </Armours>
+  </GroupArmour>
+  <GroupArmour>
     <ID>ArmourMage0</ID>
     <Name>Простая роба</Name>
     <Description>Обычная льняная роба</Description>
@@ -226,6 +304,54 @@
     <Armours>
       <Armour>
         <ID>ArmourCleric1</ID>
+        <Hero>Cleric</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+    </Armours>
+  </GroupArmour>
+  <GroupArmour>
+    <ID>ArmourMage2</ID>
+    <Name>Мастерская магическая роба</Name>
+    <Description></Description>
+    <ImageIndex>32</ImageIndex>
+    <Cost>10</Cost>
+    <Armours>
+      <Armour>
+        <ID>ArmourCleric2</ID>
+        <Hero>Cleric</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+    </Armours>
+  </GroupArmour>
+  <GroupArmour>
+    <ID>ArmourMage3</ID>
+    <Name>Экспертная магическая роба</Name>
+    <Description></Description>
+    <ImageIndex>33</ImageIndex>
+    <Cost>10</Cost>
+    <Armours>
+      <Armour>
+        <ID>ArmourCleric3</ID>
+        <Hero>Cleric</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+    </Armours>
+  </GroupArmour>
+  <GroupArmour>
+    <ID>ArmourMage4</ID>
+    <Name>Роба из зачарованной ткани</Name>
+    <Description></Description>
+    <ImageIndex>34</ImageIndex>
+    <Cost>10</Cost>
+    <Armours>
+      <Armour>
+        <ID>ArmourCleric4</ID>
         <Hero>Cleric</Hero>
         <DefenseMelee>0</DefenseMelee>
         <DefenseArcher>0</DefenseArcher>
