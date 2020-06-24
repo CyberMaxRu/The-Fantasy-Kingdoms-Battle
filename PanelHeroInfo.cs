@@ -31,6 +31,8 @@ namespace Fantasy_King_s_Battle
 
         private readonly PanelWithPanelEntity panelInventory = new PanelWithPanelEntity(4);
         private readonly PanelWithPanelEntity panelAbilities = new PanelWithPanelEntity(4);
+        private PanelEntity panelWeapon;
+        private PanelEntity panelArmour;
         internal List<PanelEntity> slots { get; } = new List<PanelEntity>();
 
         public PanelHeroInfo(int height) : base(height)
@@ -46,6 +48,21 @@ namespace Fantasy_King_s_Battle
             };
             btnDismiss.Click += BtnDismiss_Click;
 
+            panelWeapon = new PanelEntity()
+            {
+                Parent = this,
+                Left = pageControl.Left,
+                Top = pageControl.Top
+            };
+
+            panelArmour = new PanelEntity()
+            {
+                Parent = this,
+                Left = GuiUtils.NextLeft(panelWeapon),
+                Top = panelWeapon.Top
+            };
+
+            pageControl.Top = GuiUtils.NextTop(panelWeapon);
             pageControl.AddPage("Статистика", (int)IconPages.Parameters, null);
             pageControl.AddPage("Инвентарь", (int)IconPages.Inventory, panelInventory);
             pageControl.AddPage("Способности", (int)IconPages.Abilities, panelAbilities);
@@ -115,6 +132,9 @@ namespace Fantasy_King_s_Battle
         internal override void ShowData()
         {
             base.ShowData();
+
+            panelWeapon.ShowCell(hero.Weapon);
+            panelArmour.ShowCell(hero.Armour);
 
             panelInventory.ApplyList(hero.Inventory);
             panelAbilities.ApplyList(Hero.Abilities);

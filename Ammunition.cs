@@ -5,16 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace Fantasy_King_s_Battle
 {
     // Класс оружия
-    internal sealed class Weapon
+    internal sealed class Weapon : ICell
     {
         private string nameClassHero;
 
-        public Weapon(XmlNode n)
+        public Weapon(GroupWeapon gw, XmlNode n)
         {
+            GroupWeapon = gw;
+
             ID = n.SelectSingleNode("ID").InnerText;
             nameClassHero = n.SelectSingleNode("Hero").InnerText;
             TimeHit = Convert.ToInt32(n.SelectSingleNode("TimeHit").InnerText);
@@ -27,13 +30,14 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(TimeHit > 0);
 
             // Проверяем, что такого же оружия нет
-            foreach (GroupWeapon gw in FormMain.Config.GroupWeapons)
-                foreach (Weapon w in gw.Weapons)
+            foreach (GroupWeapon g in FormMain.Config.GroupWeapons)
+                foreach (Weapon w in g.Weapons)
                     if (w.ID == ID)
                         throw new Exception("Оружие ID = " + ID + " уже существует.");
         }
 
         internal string ID { get; }
+        internal GroupWeapon GroupWeapon { get; }
         internal Hero ClassHero { get; private set; }
         internal int TimeHit { get; }
         internal int DamageMelee { get; }
@@ -63,6 +67,23 @@ namespace Fantasy_King_s_Battle
                     throw new Exception("Неизвестный тип атаки.");
             }
         }
+
+        // Реализация интерфейса
+        PanelEntity ICell.Panel { get; set; }
+        ImageList ICell.ImageList() => Program.formMain.ilItems;
+        int ICell.ImageIndex() => GroupWeapon.ImageIndex;
+        int ICell.Value() => 0;
+
+        void ICell.PrepareHint()
+        {
+            Program.formMain.formHint.AddStep1Header(GroupWeapon.Name, "", GroupWeapon.Description);
+            Program.formMain.formHint.AddStep7Weapon(this);
+        }
+
+        void ICell.Click()
+        {
+
+        }
     }
 
     // Класс группы оружий
@@ -91,7 +112,7 @@ namespace Fantasy_King_s_Battle
 
                 foreach (XmlNode l in nl.SelectNodes("Weapon"))
                 {
-                    w = new Weapon(l);
+                    w = new Weapon(this, l);
 
                     Weapons.Add(w);
                 }
@@ -113,11 +134,13 @@ namespace Fantasy_King_s_Battle
     }
 
     // Класс доспехов
-    internal sealed class Armour
+    internal sealed class Armour : ICell
     {
         private string nameClassHero;
-        public Armour(XmlNode n)
+        public Armour(GroupArmour ga, XmlNode n)
         {
+            GroupArmour = ga;
+
             ID = n.SelectSingleNode("ID").InnerText;
             nameClassHero = n.SelectSingleNode("Hero").InnerText;
             DefenseMelee = Utils.GetParamFromXml(n.SelectSingleNode("DefenseMelee"));
@@ -128,13 +151,14 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(nameClassHero.Length > 0);
 
             // Проверяем, что такого же доспеха нет
-            foreach (GroupArmour ga in FormMain.Config.GroupArmours)
-                foreach (Armour a in ga.Armours)
+            foreach (GroupArmour g in FormMain.Config.GroupArmours)
+                foreach (Armour a in g.Armours)
                     if (a.ID == ID)
                         throw new Exception("Доспех ID = " + ID + " уже существует.");
         }
 
         internal string ID { get; }
+        internal GroupArmour GroupArmour { get; }
         internal Hero ClassHero { get; private set; }
         internal int DefenseMelee { get; }
         internal int DefenseMissile { get; }
@@ -144,6 +168,23 @@ namespace Fantasy_King_s_Battle
         {
             ClassHero = FormMain.Config.FindHero(nameClassHero);
             nameClassHero = null;
+        }
+
+        // Реализация интерфейса
+        PanelEntity ICell.Panel { get; set; }
+        ImageList ICell.ImageList() => Program.formMain.ilItems;
+        int ICell.ImageIndex() => GroupArmour.ImageIndex;
+        int ICell.Value() => 0;
+
+        void ICell.PrepareHint()
+        {
+            Program.formMain.formHint.AddStep1Header(GroupArmour.Name, "", GroupArmour.Description);
+            Program.formMain.formHint.AddStep8Armour(this);
+        }
+
+        void ICell.Click()
+        {
+
         }
     }
 
@@ -172,7 +213,7 @@ namespace Fantasy_King_s_Battle
 
                 foreach (XmlNode l in nl.SelectNodes("Armour"))
                 {
-                    a = new Armour(l);
+                    a = new Armour(this, l);
 
                     Armours.Add(a);
                 }
