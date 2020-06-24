@@ -302,7 +302,7 @@ namespace Fantasy_King_s_Battle
 
                 //if (btnLevelUp.Visible == true)
                 //btnLevelUp.Image = Building.CheckRequirements() == true ? imageListGui.Images[FormMain.GUI_LEVELUP] : imageListGui.Images[FormMain.GUI_LEVELUP + imageListGui.Images.Count / 2];
-                pbBuilding.Image = Program.formMain.ilBuildings.Images[Building.Building.ImageIndex];
+                pbBuilding.Image = GuiUtils.GetImageFromImageList(Program.formMain.ilBuildings, Building.Building.ImageIndex, true);
             }
             else
             {
@@ -310,7 +310,7 @@ namespace Fantasy_King_s_Battle
 
                 btnBuyOrUpgrade.Text = Building.CostBuyOrUpgrade().ToString();
                 btnBuyOrUpgrade.ImageIndex = GuiUtils.GetImageIndexWithGray(btnBuyOrUpgrade.ImageList, FormMain.GUI_BUY, Building.CheckRequirements());
-                pbBuilding.Image = Program.formMain.ilBuildings.Images[Building.Building.ImageIndex + FormMain.Config.Buildings.Count];
+                pbBuilding.Image = GuiUtils.GetImageFromImageList(Program.formMain.ilBuildings, Building.Building.ImageIndex, false);
             }
 
             if ((Building.Building.TrainedHero != null) && (Building.Level > 0))
