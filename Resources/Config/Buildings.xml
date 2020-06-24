@@ -95,6 +95,26 @@
     </Levels>
   </Building>
   <Building>
+    <ID>Hostelry</ID>
+    <Name>Постоялый двор</Name>
+    <Description>- Приносит средний доход</Description>
+    <ImageIndex>27</ImageIndex>
+    <CategoryBuilding>Castle</CategoryBuilding>
+    <Line>1</Line>
+    <DefaultLevel>0</DefaultLevel>
+    <MaxLevel>1</MaxLevel>
+    <TypeIncome>Persistent</TypeIncome>
+    <Levels>
+      <Level>
+        <Pos>1</Pos>
+        <Cost>0</Cost>
+        <Builders>0</Builders>
+        <Income>150</Income>
+        <MaxHeroes>0</MaxHeroes>
+      </Level>
+    </Levels>
+  </Building>
+  <Building>
     <ID>Market</ID>
     <Name>Рынок</Name>
     <Description>- Приносит существенный доход/- Здесь исследуют и продают зелья/- Здесь исследуют и продают артефакты</Description>
@@ -422,6 +442,26 @@
     </Researches>
   </Building>
   <Building>
+    <ID>Bank</ID>
+    <Name>Банк</Name>
+    <Description>- Приносит небольшой доход/- Позволяет получать кредит/- Позволяет вкладываеть деньги под проценты</Description>
+    <ImageIndex>26</ImageIndex>
+    <CategoryBuilding>Castle</CategoryBuilding>
+    <Line>2</Line>
+    <DefaultLevel>0</DefaultLevel>
+    <MaxLevel>1</MaxLevel>
+    <TypeIncome>Persistent</TypeIncome>
+    <Levels>
+      <Level>
+        <Pos>1</Pos>
+        <Cost>0</Cost>
+        <Builders>0</Builders>
+        <Income>100</Income>
+        <MaxHeroes>0</MaxHeroes>
+      </Level>
+    </Levels>
+  </Building>
+  <Building>
     <ID>Library</ID>
     <Name>Библиотека</Name>
     <Description>- Позволяет изучить заклинания</Description>
@@ -463,6 +503,26 @@
         <Cost>500</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
+      </Level>
+    </Levels>
+  </Building>
+  <Building>
+    <ID>Academy</ID>
+    <Name>Военная академия</Name>
+    <Description>- Позволяет улучшать навыки героями</Description>
+    <ImageIndex>25</ImageIndex>
+    <CategoryBuilding>Castle</CategoryBuilding>
+    <Line>3</Line>
+    <DefaultLevel>0</DefaultLevel>
+    <MaxLevel>1</MaxLevel>
+    <TypeIncome>None</TypeIncome>
+    <Levels>
+      <Level>
+        <Pos>1</Pos>
+        <Cost>0</Cost>
+        <Builders>0</Builders>
+        <Income>0</Income>
+        <MaxHeroes>0</MaxHeroes>
       </Level>
     </Levels>
   </Building>
