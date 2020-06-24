@@ -7,12 +7,12 @@
   </KindHero>
   <KindHero>
     <ID>Shooter</ID>
-    <TypeAttack>Missile</TypeAttack>
+    <TypeAttack>Archer</TypeAttack>
     <Hired>True</Hired>
   </KindHero>
   <KindHero>
     <ID>Mage</ID>
-    <TypeAttack>Missile</TypeAttack>
+    <TypeAttack>Archer</TypeAttack>
     <Hired>True</Hired>
   </KindHero>
   <KindHero>

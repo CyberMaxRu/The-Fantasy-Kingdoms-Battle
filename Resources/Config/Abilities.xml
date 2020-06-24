@@ -240,7 +240,7 @@
     <ImageIndex>48</ImageIndex>
     <Cost>20</Cost>
     <TypeAbility>Attack</TypeAbility>
-    <TypeAttack>Missile</TypeAttack>
+    <TypeAttack>Archer</TypeAttack>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -260,7 +260,7 @@
     <ImageIndex>49</ImageIndex>
     <Cost>20</Cost>
     <TypeAbility>Attack</TypeAbility>
-    <TypeAttack>Missile</TypeAttack>
+    <TypeAttack>Archer</TypeAttack>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -279,7 +279,7 @@
     <ImageIndex>50</ImageIndex>
     <Cost>20</Cost>
     <TypeAbility>Attack</TypeAbility>
-    <TypeAttack>Missile</TypeAttack>
+    <TypeAttack>Archer</TypeAttack>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>10</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -298,7 +298,7 @@
     <ImageIndex>51</ImageIndex>
     <Cost>20</Cost>
     <TypeAbility>Attack</TypeAbility>
-    <TypeAttack>Missile</TypeAttack>
+    <TypeAttack>Archer</TypeAttack>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -317,7 +317,7 @@
     <ImageIndex>52</ImageIndex>
     <Cost>20</Cost>
     <TypeAbility>Attack</TypeAbility>
-    <TypeAttack>Missile</TypeAttack>
+    <TypeAttack>Archer</TypeAttack>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -336,7 +336,7 @@
     <ImageIndex>53</ImageIndex>
     <Cost>20</Cost>
     <TypeAbility>Attack</TypeAbility>
-    <TypeAttack>Missile</TypeAttack>
+    <TypeAttack>Archer</TypeAttack>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -606,7 +606,7 @@
     <ImageIndex>67</ImageIndex>
     <Cost>20</Cost>
     <TypeAbility>Attack</TypeAbility>
-    <TypeAttack>Missile</TypeAttack>
+    <TypeAttack>Archer</TypeAttack>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -626,7 +626,7 @@
     <ImageIndex>68</ImageIndex>
     <Cost>20</Cost>
     <TypeAbility>Attack</TypeAbility>
-    <TypeAttack>Missile</TypeAttack>
+    <TypeAttack>Archer</TypeAttack>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -665,7 +665,7 @@
     <ImageIndex>70</ImageIndex>
     <Cost>20</Cost>
     <TypeAbility>Attack</TypeAbility>
-    <TypeAttack>Missile</TypeAttack>
+    <TypeAttack>Archer</TypeAttack>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
