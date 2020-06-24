@@ -59,6 +59,8 @@ namespace Fantasy_King_s_Battle
         {
             base.ShowData();
 
+            lblIcon.Text = (building.Building.MaxLevel > 1) && (building.Level > 0) ? building.Level.ToString() : "";
+
             if (building.Building.HasTreasury)
             {
                 lblGold.Show();

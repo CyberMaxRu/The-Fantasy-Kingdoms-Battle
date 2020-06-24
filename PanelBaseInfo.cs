@@ -15,7 +15,7 @@ namespace Fantasy_King_s_Battle
         protected enum Page { Products, Warehouse, Inhabitants, Statistics, Inventory, Abilities, Description };
 
         private readonly Label lblName;
-        private readonly PictureBox pbIcon;
+        protected readonly Label lblIcon;
         protected PageControl pageControl;
 
         public PanelBaseInfo(int height) : base()
@@ -33,12 +33,16 @@ namespace Fantasy_King_s_Battle
                 BackColor = Color.Transparent
             };
 
-            pbIcon = new PictureBox()
+            lblIcon = new Label()
             {
                 Parent = this,
                 Left = Config.GRID_SIZE,
                 Top = GuiUtils.NextTop(lblName),
                 Size = GetImageList().ImageSize,
+                TextAlign = ContentAlignment.BottomRight,
+                Padding = new Padding(0, 0, 0, 3),
+                Font = Program.formMain.fontQuantity,
+                ForeColor = Program.formMain.ColorQuantity,
                 BackColor = Color.Transparent
             };
 
@@ -64,10 +68,10 @@ namespace Fantasy_King_s_Battle
         }
 
         // Используемые потомками методы
-        protected int TopForControls() => GuiUtils.NextTop(pbIcon);
-        protected int LeftForControls() => pbIcon.Left;
-        protected int TopForIcon() => pbIcon.Top;
-        protected int LeftAfterIcon() => GuiUtils.NextLeft(pbIcon);
+        protected int TopForControls() => GuiUtils.NextTop(lblIcon);
+        protected int LeftForControls() => lblIcon.Left;
+        protected int TopForIcon() => lblIcon.Top;
+        protected int LeftAfterIcon() => GuiUtils.NextLeft(lblIcon);
 
         //protected Point LeftTopPage() => pointPage;
 
@@ -80,7 +84,7 @@ namespace Fantasy_King_s_Battle
         internal virtual void ShowData()
         {
             lblName.Text = GetCaption();
-            pbIcon.Image = GetImageList().Images[GetImageIndex()];
+            lblIcon.Image = GetImageList().Images[GetImageIndex()];
         }
     }
 }
