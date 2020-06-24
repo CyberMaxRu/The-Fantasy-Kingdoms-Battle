@@ -60,6 +60,21 @@ namespace Fantasy_King_s_Battle
                 {
                     level = new Level(l);
                     Debug.Assert(Levels[level.Pos] == null);
+
+                    switch (TypeIncome)
+                    {
+                        case TypeIncome.None:
+                            Debug.Assert(level.Income == 0);
+                            break;
+                        case TypeIncome.PerHeroes:
+                            break;
+                        case TypeIncome.Persistent:
+                            Debug.Assert(level.Income > 0);
+                            break;
+                        default:
+                            throw new Exception("Неизвестный тип дохода.");
+                    }
+
                     Levels[level.Pos] = level;
                 }
 
