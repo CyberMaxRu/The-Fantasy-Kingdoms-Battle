@@ -25,9 +25,7 @@ namespace Fantasy_King_s_Battle
             lblName = new Label()
             {
                 Parent = this,
-                Width = Width - Config.GRID_SIZE * 2,
                 Height = Config.GRID_SIZE * 3,
-                MaximumSize = new Size(Width - Config.GRID_SIZE * 2, Config.GRID_SIZE * 3),
                 Location = new Point(Config.GRID_SIZE, Config.GRID_SIZE),
                 Font = new Font("Microsof Sans Serif", 13),
                 TextAlign = ContentAlignment.TopCenter,
@@ -52,6 +50,17 @@ namespace Fantasy_King_s_Battle
                 Top = TopForControls(),
                 Height = ClientSize.Height - TopForControls() - Config.GRID_SIZE
             };
+        }
+
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+
+            if (lblName != null)
+            {
+                lblName.MaximumSize = new Size(Width - Config.GRID_SIZE * 2, Config.GRID_SIZE * 3);
+                lblName.Width = Width - Config.GRID_SIZE * 2;
+            }
         }
 
         // Используемые потомками методы
