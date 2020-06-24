@@ -26,6 +26,9 @@ namespace Fantasy_King_s_Battle
                             if (b.Researches[z, y, x] != null)
                                 Researches.Add(new PlayerResearch(this, b.Researches[z, y, x]));
             }
+
+            if (Building.TrainedHero != null)
+                Warehouse.Add(new PlayerItem(FormMain.Config.FindItem("PotionOfHealth"), 3, true));
         }
 
         internal Player Player { get; }
@@ -34,6 +37,7 @@ namespace Fantasy_King_s_Battle
         internal List<PlayerHero> Heroes { get; } = new List<PlayerHero>();
         internal List<PlayerResearch> Researches { get; } = new List<PlayerResearch>();
         internal List<Entity> Items { get; } = new List<Entity>();// Товары, доступные в строении
+        internal List<PlayerItem> Warehouse { get; } = new List<PlayerItem>();// Склад здания
 
         internal void UpdatePanel()
         {
