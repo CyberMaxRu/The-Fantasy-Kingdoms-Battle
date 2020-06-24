@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace Fantasy_King_s_Battle
 {
-    internal enum StateHeroInBattle { Melee, Shoot, Cast, Drink, Healing, Rest, Resurrection, Tumbstone, Dead, None }// Состояние героя в бою
+    internal enum StateHeroInBattle { Melee, Archery, Cast, Drink, Healing, Rest, Resurrection, Tumbstone, Dead, None }// Состояние героя в бою
 
     internal sealed class HeroInBattle
     {
