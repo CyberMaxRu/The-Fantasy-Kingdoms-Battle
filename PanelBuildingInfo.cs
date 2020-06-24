@@ -13,12 +13,13 @@ namespace Fantasy_King_s_Battle
     {
         private PlayerBuilding building;
         private readonly PanelWithPanelEntity panelProducts = new PanelWithPanelEntity(4);
+        private readonly PanelWithPanelEntity panelInhabitants = new PanelWithPanelEntity(4);
 
         public PanelBuildingInfo(int height) : base(height)
         {
             pageControl.AddPage("Товары", (int)IconPages.Products, panelProducts);
             pageControl.AddPage("Склад", (int)IconPages.Inventory, null);
-            pageControl.AddPage("Жители", (int)IconPages.Inhabitants, null);
+            pageControl.AddPage("Жители", (int)IconPages.Inhabitants, panelInhabitants);
             pageControl.AddPage("История", (int)IconPages.History, null);
 
             pageControl.ApplyMinWidth();
@@ -43,6 +44,7 @@ namespace Fantasy_King_s_Battle
             pageControl.SetPageVisible(2, building.Building.TrainedHero != null);
 
             panelProducts.ApplyList(building.Items);
+            panelInhabitants.ApplyList(building.Heroes);
 
             Show();    
         }

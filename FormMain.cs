@@ -733,5 +733,12 @@ namespace Fantasy_King_s_Battle
                         panelMenu.CellsMenu[y, x].Research = null;
             }
         }
+
+        internal void UpdateBuildingInfo()
+        {
+            Debug.Assert(panelBuildingInfo != null);
+
+            panelBuildingInfo.ShowData();
+        }
     }
 }
