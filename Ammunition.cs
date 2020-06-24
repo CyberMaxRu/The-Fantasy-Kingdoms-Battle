@@ -126,7 +126,7 @@ namespace Fantasy_King_s_Battle
             foreach (Weapon w in Weapons)
                 w.TuneDeferredLinks();
 
-            Description += (Description.Length > 0 ? Environment.NewLine : "") + "Используется:";
+            Description += (Description.Length > 0 ? Environment.NewLine : "") + "- Используется:";
 
             foreach (Weapon w in Weapons)
             {
