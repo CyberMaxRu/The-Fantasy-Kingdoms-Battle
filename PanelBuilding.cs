@@ -164,7 +164,8 @@ namespace Fantasy_King_s_Battle
         {
             Program.formMain.formHint.Clear();
             Program.formMain.formHint.AddStep1Header(Building.Building.TrainedHero.Name, "", Building.Building.TrainedHero.Description);
-            Program.formMain.formHint.AddStep3Requirement(Building.GetTextRequirementsHire());
+            if ((Building.Building.TrainedHero != null) && (Building.Building.TrainedHero.Cost > 0))
+                Program.formMain.formHint.AddStep3Requirement(Building.GetTextRequirementsHire());
             Program.formMain.formHint.AddStep4Gold(Building.Building.TrainedHero.Cost, Building.Player.Gold >= Building.Building.TrainedHero.Cost);
             Program.formMain.formHint.ShowHint(btnHireHero);
         }
