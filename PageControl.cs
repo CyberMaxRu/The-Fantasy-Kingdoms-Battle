@@ -138,6 +138,9 @@ namespace Fantasy_King_s_Battle
             }
 
             leftForNextPage += page.Width + Config.GRID_SIZE_HALF;
+
+            if (ActivePage == -1)
+                ActivatePage(0);
         }
 
         internal void ActivatePage(int indexPage)
