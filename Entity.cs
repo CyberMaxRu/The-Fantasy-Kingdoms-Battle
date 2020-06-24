@@ -22,7 +22,7 @@ namespace Fantasy_King_s_Battle
 
         internal string ID { get; }
         internal string Name { get; }
-        internal string Description { get; }
+        internal string Description { get; set; }
         internal int ImageIndex { get; }
         internal int Cost { get; }
 

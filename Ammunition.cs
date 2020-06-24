@@ -125,6 +125,13 @@ namespace Fantasy_King_s_Battle
         {
             foreach (Weapon w in Weapons)
                 w.TuneDeferredLinks();
+
+            Description += (Description.Length > 0 ? Environment.NewLine : "") + "Используется:";
+
+            foreach (Weapon w in Weapons)
+            {
+                Description += Environment.NewLine + "  - " + w.ClassHero.Name;
+            }
         }
 
         protected override int GetValue()
@@ -226,6 +233,13 @@ namespace Fantasy_King_s_Battle
         {
             foreach (Armour a in Armours)
                 a.TuneDeferredLinks();
+
+            Description += (Description.Length > 0 ? Environment.NewLine : "") + "Используется:";
+
+            foreach (Armour a in Armours)
+            {
+                Description += Environment.NewLine + "  - " + a.ClassHero.Name;
+            }
         }
 
         protected override int GetValue()
