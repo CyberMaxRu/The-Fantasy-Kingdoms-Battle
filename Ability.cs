@@ -124,6 +124,13 @@ namespace Fantasy_King_s_Battle
                 ClassesHeroes.Add(FormMain.Config.FindHero(nameHero));
 
             classesHeroesString = null;
+
+            Description += (Description.Length > 0 ? Environment.NewLine : "") + "- Доступно:";
+
+            foreach (Hero h in ClassesHeroes)
+            {
+                Description += Environment.NewLine + "  - " + h.Name;
+            }
         }
 
         protected override int GetValue() => 0;
