@@ -30,7 +30,6 @@ namespace Fantasy_King_s_Battle
 
             // Настраиваем игрока согласно настройкам лобби
             DurabilityCastle = Lobby.TypeLobby.DurabilityCastle;
-            Gold = Lobby.TypeLobby.Gold;
 
             // Инициализация зданий
             foreach (Building b in FormMain.Config.Buildings)
@@ -39,7 +38,8 @@ namespace Fantasy_King_s_Battle
             }
 
             Castle = GetPlayerBuilding(FormMain.Config.FindBuilding(Config.BUILDING_CASTLE));
-            
+            Gold = Lobby.TypeLobby.Gold;
+
             // Настройка ячеек героев
             CellHeroes = new PlayerHero[Config.HERO_ROWS, Config.HERO_IN_ROW];
 
@@ -139,7 +139,7 @@ namespace Fantasy_King_s_Battle
         internal List<PlayerHero> AllHeroes { get; } = new List<PlayerHero>();
         internal PlayerHero[,] CellHeroes;
         internal TypePlayer TypePlayer { get; }
-        internal int Gold { get; set; }
+        internal int Gold { get => Castle.Gold; set { Castle.Gold = value; } }
         internal int TotalBuilders { get; private set; }
         internal int FreeBuilders { get; set; }
         internal int[] Resources { get; }

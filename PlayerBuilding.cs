@@ -39,7 +39,7 @@ namespace Fantasy_King_s_Battle
         internal Player Player { get; }
         internal Building Building { get; }
         internal int Level { get; private set; }
-        internal int Gold { get => gold; private set { Debug.Assert(Building.HasTreasury); gold = value; } }
+        internal int Gold { get => gold; set { Debug.Assert(Building.HasTreasury); gold = value; } }
         internal List<PlayerHero> Heroes { get; } = new List<PlayerHero>();
         internal List<PlayerResearch> Researches { get; } = new List<PlayerResearch>();
         internal List<Entity> Items { get; } = new List<Entity>();// Товары, доступные в строении
