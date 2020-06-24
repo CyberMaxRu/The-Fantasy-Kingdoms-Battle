@@ -93,7 +93,7 @@
     <Cost>150</Cost>
     <Building>GuildHunter</Building>
     <MaxLevel>100</MaxLevel>
-    <KindHero>Shooter</KindHero>
+    <KindHero>Archer</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
     <Weapon>WeaponHunter0</Weapon>
@@ -222,7 +222,7 @@
     <Cost>700</Cost>
     <Building>GuildElf</Building>
     <MaxLevel>100</MaxLevel>
-    <KindHero>Shooter</KindHero>
+    <KindHero>Archer</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
     <Weapon>WeaponElf0</Weapon>
@@ -535,7 +535,7 @@
     <Cost>1000</Cost>
     <Building>GuildBeastmaster</Building>
     <MaxLevel>100</MaxLevel>
-    <KindHero>Shooter</KindHero>
+    <KindHero>Archer</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
     <Weapon>WeaponBeastMaster0</Weapon>
@@ -581,7 +581,7 @@
     <Cost>1000</Cost>
     <Building>GuildMarksman</Building>
     <MaxLevel>100</MaxLevel>
-    <KindHero>Shooter</KindHero>
+    <KindHero>Archer</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
     <Weapon>WeaponMarksman0</Weapon>

@@ -6,7 +6,7 @@
     <Hired>True</Hired>
   </KindHero>
   <KindHero>
-    <ID>Shooter</ID>
+    <ID>Archer</ID>
     <TypeAttack>Archer</TypeAttack>
     <Hired>True</Hired>
   </KindHero>
