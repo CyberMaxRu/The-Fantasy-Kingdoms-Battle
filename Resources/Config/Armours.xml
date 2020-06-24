@@ -58,6 +58,34 @@
         <DefenseArcher>0</DefenseArcher>
         <DefenseMagic>0</DefenseMagic>
       </Armour>
+      <Armour>
+        <ID>ArmourDwarf1</ID>
+        <Hero>Dwarf</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourPaladin1</ID>
+        <Hero>Paladin</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourBladeMaster1</ID>
+        <Hero>BladeMaster</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourDeathKnight1</ID>
+        <Hero>DeathKnight</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
     </Armours>
   </GroupArmour>
   <GroupArmour>
@@ -70,6 +98,34 @@
       <Armour>
         <ID>ArmourWarrior2</ID>
         <Hero>Warrior</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourDwarf2</ID>
+        <Hero>Dwarf</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourPaladin2</ID>
+        <Hero>Paladin</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourBladeMaster2</ID>
+        <Hero>BladeMaster</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourDeathKnight2</ID>
+        <Hero>DeathKnight</Hero>
         <DefenseMelee>0</DefenseMelee>
         <DefenseArcher>0</DefenseArcher>
         <DefenseMagic>0</DefenseMagic>
@@ -90,6 +146,34 @@
         <DefenseArcher>0</DefenseArcher>
         <DefenseMagic>0</DefenseMagic>
       </Armour>
+      <Armour>
+        <ID>ArmourDwarf3</ID>
+        <Hero>Dwarf</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourPaladin3</ID>
+        <Hero>Paladin</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourBladeMaster3</ID>
+        <Hero>BladeMaster</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourDeathKnight3</ID>
+        <Hero>DeathKnight</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
     </Armours>
   </GroupArmour>
   <GroupArmour>
@@ -102,6 +186,34 @@
       <Armour>
         <ID>ArmourWarrior4</ID>
         <Hero>Warrior</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourDwarf4</ID>
+        <Hero>Dwarf</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourPaladin4</ID>
+        <Hero>Paladin</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourBladeMaster4</ID>
+        <Hero>BladeMaster</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourDeathKnight4</ID>
+        <Hero>DeathKnight</Hero>
         <DefenseMelee>0</DefenseMelee>
         <DefenseArcher>0</DefenseArcher>
         <DefenseMagic>0</DefenseMagic>
@@ -173,6 +285,27 @@
         <DefenseArcher>0</DefenseArcher>
         <DefenseMagic>0</DefenseMagic>
       </Armour>
+      <Armour>
+        <ID>ArmourElf1</ID>
+        <Hero>Elf</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourBeastMaster1</ID>
+        <Hero>BeastMaster</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourMarksman1</ID>
+        <Hero>Marksman</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
     </Armours>
   </GroupArmour>
   <GroupArmour>
@@ -192,6 +325,27 @@
       <Armour>
         <ID>ArmourHunter2</ID>
         <Hero>Hunter</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourElf2</ID>
+        <Hero>Elf</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourBeastMaster2</ID>
+        <Hero>BeastMaster</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourMarksman2</ID>
+        <Hero>Marksman</Hero>
         <DefenseMelee>0</DefenseMelee>
         <DefenseArcher>0</DefenseArcher>
         <DefenseMagic>0</DefenseMagic>
@@ -219,6 +373,27 @@
         <DefenseArcher>0</DefenseArcher>
         <DefenseMagic>0</DefenseMagic>
       </Armour>
+      <Armour>
+        <ID>ArmourElf3</ID>
+        <Hero>Elf</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourBeastMaster3</ID>
+        <Hero>BeastMaster</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourMarksman3</ID>
+        <Hero>Marksman</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
     </Armours>
   </GroupArmour>
   <GroupArmour>
@@ -238,6 +413,27 @@
       <Armour>
         <ID>ArmourHunter4</ID>
         <Hero>Hunter</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourElf4</ID>
+        <Hero>Elf</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourBeastMaster4</ID>
+        <Hero>BeastMaster</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourMarksman4</ID>
+        <Hero>Marksman</Hero>
         <DefenseMelee>0</DefenseMelee>
         <DefenseArcher>0</DefenseArcher>
         <DefenseMagic>0</DefenseMagic>
@@ -309,6 +505,41 @@
         <DefenseArcher>0</DefenseArcher>
         <DefenseMagic>0</DefenseMagic>
       </Armour>
+      <Armour>
+        <ID>ArmourMage1</ID>
+        <Hero>Mage</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourDarkPriest1</ID>
+        <Hero>DarkPriest</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourPriest1</ID>
+        <Hero>Priest</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourFireMage1</ID>
+        <Hero>FireMage</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourIceMage1</ID>
+        <Hero>IceMage</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
     </Armours>
   </GroupArmour>
   <GroupArmour>
@@ -321,6 +552,41 @@
       <Armour>
         <ID>ArmourCleric2</ID>
         <Hero>Cleric</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourMage2</ID>
+        <Hero>Mage</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourDarkPriest2</ID>
+        <Hero>DarkPriest</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourPriest2</ID>
+        <Hero>Priest</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourFireMage2</ID>
+        <Hero>FireMage</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourIceMage2</ID>
+        <Hero>IceMage</Hero>
         <DefenseMelee>0</DefenseMelee>
         <DefenseArcher>0</DefenseArcher>
         <DefenseMagic>0</DefenseMagic>
@@ -341,6 +607,41 @@
         <DefenseArcher>0</DefenseArcher>
         <DefenseMagic>0</DefenseMagic>
       </Armour>
+      <Armour>
+        <ID>ArmourMage3</ID>
+        <Hero>Mage</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourDarkPriest3</ID>
+        <Hero>DarkPriest</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourPriest3</ID>
+        <Hero>Priest</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourFireMage3</ID>
+        <Hero>FireMage</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourIceMage3</ID>
+        <Hero>IceMage</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
     </Armours>
   </GroupArmour>
   <GroupArmour>
@@ -353,6 +654,41 @@
       <Armour>
         <ID>ArmourCleric4</ID>
         <Hero>Cleric</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourMage4</ID>
+        <Hero>Mage</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourDarkPriest4</ID>
+        <Hero>DarkPriest</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourPriest4</ID>
+        <Hero>Priest</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourFireMage4</ID>
+        <Hero>FireMage</Hero>
+        <DefenseMelee>0</DefenseMelee>
+        <DefenseArcher>0</DefenseArcher>
+        <DefenseMagic>0</DefenseMagic>
+      </Armour>
+      <Armour>
+        <ID>ArmourIceMage4</ID>
+        <Hero>IceMage</Hero>
         <DefenseMelee>0</DefenseMelee>
         <DefenseArcher>0</DefenseArcher>
         <DefenseMagic>0</DefenseMagic>
