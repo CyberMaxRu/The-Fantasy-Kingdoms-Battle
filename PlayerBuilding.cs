@@ -10,6 +10,8 @@ namespace Fantasy_King_s_Battle
     // Класс здания игрока
     internal sealed class PlayerBuilding
     {
+        private int gold;
+
         public PlayerBuilding(Player p, Building b)
         {
             Player = p;
@@ -29,11 +31,15 @@ namespace Fantasy_King_s_Battle
 
             if (Building.TrainedHero != null)
                 Warehouse.Add(new PlayerItem(FormMain.Config.FindItem("PotionOfHealth"), 3, true));
+
+            if (Building.HasTreasury)
+                Gold = Building.GoldByConstruction;
         }
 
         internal Player Player { get; }
         internal Building Building { get; }
         internal int Level { get; private set; }
+        internal int Gold { get => gold; private set { Debug.Assert(Building.HasTreasury); gold = value; } }
         internal List<PlayerHero> Heroes { get; } = new List<PlayerHero>();
         internal List<PlayerResearch> Researches { get; } = new List<PlayerResearch>();
         internal List<Entity> Items { get; } = new List<Entity>();// Товары, доступные в строении

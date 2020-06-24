@@ -12,12 +12,30 @@ namespace Fantasy_King_s_Battle
     internal sealed class PanelBuildingInfo : PanelBaseInfo
     {
         private PlayerBuilding building;
+        private Label lblGold;
         private readonly PanelWithPanelEntity panelProducts = new PanelWithPanelEntity(4);
         private readonly PanelWithPanelEntity panelInhabitants = new PanelWithPanelEntity(4);
         private readonly PanelWithPanelEntity panelWarehouse = new PanelWithPanelEntity(4);
 
         public PanelBuildingInfo(int height) : base(height)
         {
+            lblGold = new Label()
+            {
+                Parent = this,
+                Top = pageControl.Top,
+                Left = pageControl.Left,
+                Width = 80,
+                Height = 16,
+                Font = Program.formMain.fontCost,
+                ImageList = Program.formMain.ilGui16,
+                ImageIndex = FormMain.GUI_16_GOLD,
+                ImageAlign = ContentAlignment.MiddleLeft,
+                TextAlign = ContentAlignment.MiddleRight,
+                ForeColor = Color.White,
+                BackColor = Color.Transparent
+            };
+
+            pageControl.Top = GuiUtils.NextTop(lblGold);
             pageControl.AddPage("Товары", (int)IconPages.Products, panelProducts);
             pageControl.AddPage("Склад", (int)IconPages.Inventory, panelWarehouse);
             pageControl.AddPage("Жители", (int)IconPages.Inhabitants, panelInhabitants);
@@ -40,6 +58,16 @@ namespace Fantasy_King_s_Battle
         internal override void ShowData()
         {
             base.ShowData();
+
+            if (building.Building.HasTreasury)
+            {
+                lblGold.Show();
+                lblGold.Text = building.Gold.ToString();
+            }
+            else
+            {
+                lblGold.Hide();
+            }
 
             pageControl.SetPageVisible(1, building.Building.TrainedHero != null);
             pageControl.SetPageVisible(2, building.Building.TrainedHero != null);

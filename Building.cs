@@ -26,6 +26,8 @@ namespace Fantasy_King_s_Battle
             TypeIncome = (TypeIncome)Enum.Parse(typeof(TypeIncome), n.SelectSingleNode("TypeIncome").InnerText);
             Line = Convert.ToInt32(n.SelectSingleNode("Line").InnerText);
             Position = FormMain.Config.Buildings.Count;
+            HasTreasury = Convert.ToBoolean(n.SelectSingleNode("HasTreasury").InnerText);
+            GoldByConstruction = Convert.ToInt32(n.SelectSingleNode("GoldByConstruction").InnerText);
 
             Debug.Assert(ID.Length > 0);
             Debug.Assert(Name.Length > 0);
@@ -34,6 +36,10 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(MaxLevel > 0);
             Debug.Assert(MaxLevel <= 3);
             Debug.Assert(DefaultLevel <= MaxLevel);
+            if (!HasTreasury)
+            {
+                Debug.Assert(GoldByConstruction == 0);
+            }
 
             // Проверяем, что таких же ID и наименования нет
             foreach (Building b in FormMain.Config.Buildings)
@@ -115,6 +121,8 @@ namespace Fantasy_King_s_Battle
         internal Research[,,] Researches;
         internal int Position { get; }
         internal Hero TrainedHero { get; set; }
+        internal bool HasTreasury { get; }// Имеет собственную казну
+        internal int GoldByConstruction { get; }// Количество золота в казне при постройке
         internal CategoryBuilding CategoryBuilding { get; }
         internal TypeIncome TypeIncome { get; }
         internal int Line { get; }

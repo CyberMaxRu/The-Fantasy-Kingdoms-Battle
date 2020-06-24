@@ -10,6 +10,8 @@
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <TypeIncome>Persistent</TypeIncome>
+    <HasTreasury>True</HasTreasury>
+    <GoldByConstruction>0</GoldByConstruction>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -64,6 +66,8 @@
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <TypeIncome>PerHeroes</TypeIncome>
+    <HasTreasury>False</HasTreasury>
+    <GoldByConstruction>0</GoldByConstruction>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -84,6 +88,8 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <TypeIncome>PerHeroes</TypeIncome>
+    <HasTreasury>False</HasTreasury>
+    <GoldByConstruction>0</GoldByConstruction>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -104,6 +110,8 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <TypeIncome>Persistent</TypeIncome>
+    <HasTreasury>False</HasTreasury>
+    <GoldByConstruction>0</GoldByConstruction>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -125,6 +133,8 @@
     <MaxLevel>3</MaxLevel>
     <TypeIncome>Persistent</TypeIncome>
     <LayersResearches>1</LayersResearches>
+    <HasTreasury>False</HasTreasury>
+    <GoldByConstruction>0</GoldByConstruction>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -217,6 +227,8 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <TypeIncome>Persistent</TypeIncome>
+    <HasTreasury>False</HasTreasury>
+    <GoldByConstruction>0</GoldByConstruction>
     <LayersResearches>4</LayersResearches>
     <Levels>
       <Level>
@@ -539,6 +551,8 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>2</MaxLevel>
     <TypeIncome>None</TypeIncome>
+    <HasTreasury>False</HasTreasury>
+    <GoldByConstruction>0</GoldByConstruction>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -570,6 +584,8 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <TypeIncome>Persistent</TypeIncome>
+    <HasTreasury>False</HasTreasury>
+    <GoldByConstruction>0</GoldByConstruction>
     <LayersResearches>1</LayersResearches>
     <Levels>
       <Level>
@@ -665,6 +681,8 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <TypeIncome>Persistent</TypeIncome>
+    <HasTreasury>False</HasTreasury>
+    <GoldByConstruction>0</GoldByConstruction>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -686,6 +704,8 @@
     <MaxLevel>2</MaxLevel>
     <MaxHeroes>0</MaxHeroes>
     <TypeIncome>None</TypeIncome>
+    <HasTreasury>False</HasTreasury>
+    <GoldByConstruction>0</GoldByConstruction>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -711,6 +731,8 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <TypeIncome>None</TypeIncome>
+    <HasTreasury>False</HasTreasury>
+    <GoldByConstruction>0</GoldByConstruction>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -730,6 +752,8 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <TypeIncome>None</TypeIncome>
+    <HasTreasury>False</HasTreasury>
+    <GoldByConstruction>0</GoldByConstruction>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -750,6 +774,8 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <TypeIncome>None</TypeIncome>
+    <HasTreasury>True</HasTreasury>
+    <GoldByConstruction>500</GoldByConstruction>
     <LayersResearches>1</LayersResearches>
     <Levels>
       <Level>
@@ -826,6 +852,8 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <TypeIncome>None</TypeIncome>
+    <HasTreasury>True</HasTreasury>
+    <GoldByConstruction>0</GoldByConstruction>
     <LayersResearches>1</LayersResearches>
     <Levels>
       <Level>
@@ -902,6 +930,8 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <TypeIncome>None</TypeIncome>
+    <HasTreasury>True</HasTreasury>
+    <GoldByConstruction>0</GoldByConstruction>
     <LayersResearches>1</LayersResearches>
     <Levels>
       <Level>
@@ -978,6 +1008,8 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <TypeIncome>None</TypeIncome>
+    <HasTreasury>True</HasTreasury>
+    <GoldByConstruction>0</GoldByConstruction>
     <LayersResearches>1</LayersResearches>
     <Levels>
       <Level>
@@ -1080,6 +1112,8 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <TypeIncome>None</TypeIncome>
+    <HasTreasury>True</HasTreasury>
+    <GoldByConstruction>0</GoldByConstruction>
     <LayersResearches>1</LayersResearches>
     <Levels>
       <Level>
@@ -1170,6 +1204,8 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <TypeIncome>None</TypeIncome>
+    <HasTreasury>True</HasTreasury>
+    <GoldByConstruction>0</GoldByConstruction>
     <LayersResearches>1</LayersResearches>
     <Levels>
       <Level>
@@ -1254,7 +1290,8 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <TypeIncome>None</TypeIncome>
-    <Active>False</Active>
+    <HasTreasury>True</HasTreasury>
+    <GoldByConstruction>0</GoldByConstruction>
     <LayersResearches>1</LayersResearches>
     <Levels>
       <Level>
@@ -1345,6 +1382,8 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <TypeIncome>None</TypeIncome>
+    <HasTreasury>True</HasTreasury>
+    <GoldByConstruction>0</GoldByConstruction>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -1375,6 +1414,8 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <TypeIncome>None</TypeIncome>
+    <HasTreasury>True</HasTreasury>
+    <GoldByConstruction>0</GoldByConstruction>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -1405,6 +1446,8 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <TypeIncome>None</TypeIncome>
+    <HasTreasury>True</HasTreasury>
+    <GoldByConstruction>0</GoldByConstruction>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -1435,6 +1478,8 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <TypeIncome>None</TypeIncome>
+    <HasTreasury>True</HasTreasury>
+    <GoldByConstruction>0</GoldByConstruction>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -1465,6 +1510,8 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <TypeIncome>None</TypeIncome>
+    <HasTreasury>True</HasTreasury>
+    <GoldByConstruction>0</GoldByConstruction>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -1495,6 +1542,8 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <TypeIncome>None</TypeIncome>
+    <HasTreasury>True</HasTreasury>
+    <GoldByConstruction>0</GoldByConstruction>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -1525,6 +1574,8 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <TypeIncome>None</TypeIncome>
+    <HasTreasury>True</HasTreasury>
+    <GoldByConstruction>0</GoldByConstruction>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -1555,6 +1606,8 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <TypeIncome>None</TypeIncome>
+    <HasTreasury>True</HasTreasury>
+    <GoldByConstruction>0</GoldByConstruction>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -1585,6 +1638,8 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <TypeIncome>None</TypeIncome>
+    <HasTreasury>True</HasTreasury>
+    <GoldByConstruction>0</GoldByConstruction>
     <Levels>
       <Level>
         <Pos>1</Pos>
