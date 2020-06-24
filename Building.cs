@@ -44,9 +44,6 @@ namespace Fantasy_King_s_Battle
                 if (b.Name == Name)
                     throw new Exception("В конфигурации зданий повторяется Name = " + Name);
 
-                if (b.Description == Description)
-                    throw new Exception("В конфигурации зданий повторяется Description = " + Description);
-
                 if (b.ImageIndex == ImageIndex)
                     throw new Exception("В конфигурации зданий повторяется ImageIndex = " + ImageIndex.ToString());
             }
