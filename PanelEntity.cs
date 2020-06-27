@@ -17,7 +17,7 @@ namespace Fantasy_King_s_Battle
         int ImageIndex();
         int Value();        
         void PrepareHint();
-        void Click();
+        void Click(PanelEntity pe);
     }
 
     // Класс панели для рисования иконки объекта, поддерживающего интерфейс ячейки
@@ -67,18 +67,39 @@ namespace Fantasy_King_s_Battle
 
             if (cell != null)
             {
+                //Debug.Assert(cell.Panel == this);
+
                 e.Graphics.DrawImageUnscaled(cell.ImageList().Images[cell.ImageIndex()], pointIcon);
+                if (Program.formMain.SelectedPanelEntity == this)
+                {
+                    e.Graphics.DrawImage(Program.formMain.ilMenuCellFilters.Images[2], new Rectangle(0, 0, Width - 1, Height - 1));
+                    e.Graphics.DrawImage(Program.formMain.ilMenuCellFilters.Images[2], new Rectangle(0, 0, Width - 1, Height - 1));
+                    e.Graphics.DrawImage(Program.formMain.ilMenuCellFilters.Images[2], new Rectangle(0, 0, Width - 1, Height - 1));
+                    e.Graphics.DrawImage(Program.formMain.ilMenuCellFilters.Images[2], new Rectangle(0, 0, Width - 1, Height - 1));
+                }
                 e.Graphics.DrawImageUnscaled(Program.formMain.bmpBorderForIcon, 0, 0);
             }
             else
                 e.Graphics.DrawImage(Program.formMain.bmpEmptyEntity, new Rectangle(1, 0, Program.formMain.bmpBorderForIcon.Width - 2, Program.formMain.bmpBorderForIcon.Height - 2));
         }
 
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+
+            if (cell != null)
+                cell.Panel = null;
+        }
+
         protected override void OnMouseClick(MouseEventArgs e)
         {
             base.OnMouseClick(e);
 
-            cell?.Click();
+            if (cell != null)
+            {
+                //Debug.Assert(cell.Panel == this);
+                cell?.Click(this);
+            }
         }
 
         internal void ShowCell(ICell c)

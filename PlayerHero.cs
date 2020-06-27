@@ -12,6 +12,7 @@ namespace Fantasy_King_s_Battle
     // Класс героя игрока
     internal sealed class PlayerHero : ICell
     {
+        private PanelEntity panelEntity;
         public PlayerHero(PlayerBuilding pb)
         {
             Building = pb;
@@ -299,7 +300,19 @@ namespace Fantasy_King_s_Battle
         }
 
         // Реализация интерфейса
-        PanelEntity ICell.Panel { get; set; }
+        PanelEntity ICell.Panel
+        {
+            get => panelEntity;
+            set
+            {
+                //if (value == null)
+                //    Debug.Assert(panelEntity != null);
+                //else
+                //    Debug.Assert(panelEntity == null);
+
+                panelEntity = value;
+            }
+        }
         ImageList ICell.ImageList() => Program.formMain.ilGuiHeroes;
         int ICell.ImageIndex() => ClassHero.ImageIndex;
         int ICell.Value() => Level;
@@ -308,9 +321,10 @@ namespace Fantasy_King_s_Battle
             Program.formMain.formHint.AddStep1Header(ClassHero.Name, "", ClassHero.Description);
         }
 
-        void ICell.Click()
+        void ICell.Click(PanelEntity pe)
         {
             Program.formMain.SelectHero(this);
+            Program.formMain.SelectPanelEntity(pe);
         }
     }
 }

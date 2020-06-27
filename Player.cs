@@ -517,7 +517,7 @@ namespace Fantasy_King_s_Battle
                     + "Поражений: " + Loses.ToString() + Environment.NewLine);
         }
 
-        void ICell.Click()
+        void ICell.Click(PanelEntity pe)
         { 
 
         }

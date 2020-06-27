@@ -37,7 +37,7 @@ namespace Fantasy_King_s_Battle
             Program.formMain.formHint.AddStep6PlayerItem(this);
         }
 
-        void ICell.Click()
+        void ICell.Click(PanelEntity pe)
         {
 
         }

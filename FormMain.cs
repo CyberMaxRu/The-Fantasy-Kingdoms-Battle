@@ -112,6 +112,7 @@ namespace Fantasy_King_s_Battle
         private readonly PanelMenu panelMenu;
         private readonly PanelBuildingInfo panelBuildingInfo;
         private readonly PanelHeroInfo panelHeroInfo;
+        internal PanelEntity SelectedPanelEntity;
 
         private List<PictureBox> SlotSkill = new List<PictureBox>();
 
@@ -653,6 +654,8 @@ namespace Fantasy_King_s_Battle
                 if (SelectedHero != null)
                     SelectHero(null);
 
+                SelectPanelEntity(null);
+
                 PanelBuilding oldSelected = SelectedPanelBuilding;
                 SelectedPanelBuilding = pb;
 
@@ -683,6 +686,8 @@ namespace Fantasy_King_s_Battle
                 PlayerHero oldSelected = SelectedHero;
                 SelectedHero = ph;
 
+                //SelectedPanelEntity = null;
+
                 UpdateMenu();
 
                 if (oldSelected != null)
@@ -690,6 +695,7 @@ namespace Fantasy_King_s_Battle
                 if (SelectedHero != null)
                 {
                     panelHeroInfo.Hero = SelectedHero;
+                    //SelectedPanelEntity = ((ICell)SelectedHero).Panel;
                     ((ICell)SelectedHero).Panel.Invalidate(true);
                     panelHeroInfo.Show();
                 }
@@ -697,6 +703,19 @@ namespace Fantasy_King_s_Battle
                     panelHeroInfo.Hide();
 
                 panelMenu.Invalidate(true);// Это точно надо?
+
+            }
+        }
+
+        internal void SelectPanelEntity(PanelEntity pe)
+        {
+            if (SelectedPanelEntity != pe)
+            {
+                PanelEntity oldPe = SelectedPanelEntity;
+                SelectedPanelEntity = pe;
+
+                oldPe?.Invalidate();
+                SelectedPanelEntity?.Invalidate();
             }
         }
 

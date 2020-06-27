@@ -44,7 +44,7 @@ namespace Fantasy_King_s_Battle
             DoPrepareHint();
         }
 
-        void ICell.Click()
+        void ICell.Click(PanelEntity pe)
         {
 
         }

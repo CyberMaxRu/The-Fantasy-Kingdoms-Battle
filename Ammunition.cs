@@ -80,7 +80,7 @@ namespace Fantasy_King_s_Battle
             Program.formMain.formHint.AddStep7Weapon(this);
         }
 
-        void ICell.Click()
+        void ICell.Click(PanelEntity pe)
         {
 
         }
@@ -189,7 +189,7 @@ namespace Fantasy_King_s_Battle
             Program.formMain.formHint.AddStep8Armour(this);
         }
 
-        void ICell.Click()
+        void ICell.Click(PanelEntity pe)
         {
 
         }
