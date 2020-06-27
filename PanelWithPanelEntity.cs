@@ -34,11 +34,13 @@ namespace Fantasy_King_s_Battle
         {
             ValidateRows(list.Count);
 
-            for (int x = 0; x < panelEntities.Count; x++)
-                if (x < list.Count)
-                    panelEntities[x].ShowCell(list[x]);
+            for (int i = 0; i < panelEntities.Count; i++)
+            {
+                if (i < list.Count)
+                    panelEntities[i].ShowCell(list[i]);
                 else
-                    panelEntities[x].ShowCell(null);
+                    panelEntities[i].ShowCell(null);
+            }
         }
 
         private void ValidateRows(int count)
@@ -61,8 +63,10 @@ namespace Fantasy_King_s_Battle
 
             for (int x = 0; x < EntityInRow; x++)
             {
-                pe = new PanelEntity();
-                pe.Parent = this;
+                pe = new PanelEntity
+                {
+                    Parent = this
+                };
                 pe.Left = x * (pe.Width + 1);
                 pe.Top = rows * (pe.Height + 1);
 
