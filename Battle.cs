@@ -157,7 +157,9 @@ namespace Fantasy_King_s_Battle
             else
             {
                 Player1.ResultLastBattle = ResultBattle.Draw;
+                Player1.LastBattleDamageToCastle = 0;
                 Player2.ResultLastBattle = ResultBattle.Draw;
+                Player2.LastBattleDamageToCastle = 0;
             }
 
             Player1.HistoryBattles.Add(this);
