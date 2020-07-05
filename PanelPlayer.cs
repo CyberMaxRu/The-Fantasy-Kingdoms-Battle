@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Diagnostics;
 
 namespace Fantasy_King_s_Battle
 {
@@ -120,7 +121,10 @@ namespace Fantasy_King_s_Battle
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
-           
+
+            Debug.Assert(player.LastBattleDamageToCastle >= -999);
+            Debug.Assert(player.LastBattleDamageToCastle <= 999);
+
             // Фон панели
             if (player == player.Lobby.CurrentPlayer)
                 brushBackground.Color = Color.LightBlue;
@@ -144,8 +148,7 @@ namespace Fantasy_King_s_Battle
             if (player.LastBattleDamageToCastle != 0)
             {
                 lblDamageToCastle.Show();
-                int dmg = player.LastBattleDamageToCastle <= 999 ? player.LastBattleDamageToCastle : Math.Sign(player.LastBattleDamageToCastle) * 999;
-                lblDamageToCastle.Text = dmg.ToString();
+                lblDamageToCastle.Text = player.LastBattleDamageToCastle.ToString();
                 lblDamageToCastle.ForeColor = player.LastBattleDamageToCastle > 0 ? Color.Green : Color.Red;
             }
             else
