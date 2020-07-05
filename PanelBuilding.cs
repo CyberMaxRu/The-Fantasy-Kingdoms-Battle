@@ -258,6 +258,8 @@ namespace Fantasy_King_s_Battle
             lblIncome.Text = Building.DoIncome() == true ? "+" + Building.Income().ToString() : "";
             lblIncome.ForeColor = Building.Level > 0 ? Color.Green : Color.Gray;
 
+            btnHeroes.Visible = building.Building.TrainedHero != null;
+
             // Информация об уровне здания
             if ((Building.Level > 0) && (Building.Building.MaxLevel > 1))
             {
