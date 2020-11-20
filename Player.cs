@@ -14,7 +14,7 @@ namespace Fantasy_King_s_Battle
     internal sealed class Player : ICell
     {
         private ResultBattle resultLastBattle;
-        private PlayerBuilding Castle;            
+        private PlayerBuilding Castle;
 
         public Player(Lobby lobby, int index, string name, TypePlayer typePlayer)
         {
@@ -77,7 +77,7 @@ namespace Fantasy_King_s_Battle
             {
                 if (bp.Heroes.Count < bp.MaxHeroes())
                 {
-                    int needHire = FormMain.Rnd.Next(5) + 1;
+                    int needHire = FormMain.Rnd.Next(10) + 1;
 
                     for (int x = 0; x < needHire; x++)
                     //                for (; bp.Heroes.Count() < bp.MaxHeroes();)
@@ -94,18 +94,17 @@ namespace Fantasy_King_s_Battle
         {
             if (IsLive == true)
             {
-                if (DurabilityCastle > 0)
-                {
-                    Gold += Income();
+                Gold += Income();
 
-                    ValidateHeroes();
-                    CalcBuilders();
+                ValidateHeroes();
+                CalcBuilders();
 
-                    QuantityHeroes = CombatHeroes.Count();
-                }
-                else
+                QuantityHeroes = CombatHeroes.Count();
+
+                if (DurabilityCastle <= 0)
                 {
                     IsLive = false;
+                    DayOfDie = Lobby.Turn;
                 }
             }
         }
@@ -144,6 +143,8 @@ namespace Fantasy_King_s_Battle
         internal int FreeBuilders { get; set; }
         internal int[] Resources { get; }
         internal bool IsLive { get; private set; }
+        internal int DayOfDie { get; private set; }
+
         internal int QuantityHeroes { get; private set; }
 
         internal PlayerItem[] Warehouse = new PlayerItem[FormMain.WH_MAX_SLOTS];// Предметы на складе игрока
@@ -496,6 +497,13 @@ namespace Fantasy_King_s_Battle
             Gold -= gold;
 
             Debug.Assert(Gold >= 0);
+        }
+
+        internal void MakeAlive()
+        {
+            IsLive = true;
+            DayOfDie = 0;
+            DurabilityCastle = 1;
         }
 
         // Реализация интерфейса
