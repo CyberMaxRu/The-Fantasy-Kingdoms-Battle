@@ -89,7 +89,7 @@ namespace Fantasy_King_s_Battle
         internal const int BUILDING_MAX_LINES = 3;
         internal static Size PANEL_MENU_CELLS = new Size(4, 3);
 
-        private readonly Lobby lobby;
+        private Lobby lobby;
         private Player curAppliedPlayer;
 
         internal readonly Bitmap bmpForBackground;
@@ -135,6 +135,8 @@ namespace Fantasy_King_s_Battle
                 dirResources = Environment.CurrentDirectory.Substring(0, Environment.CurrentDirectory.Length - 9);
             else if (dirResources.Contains("Release"))
                 dirResources = Environment.CurrentDirectory.Substring(0, Environment.CurrentDirectory.Length - 11);
+            else
+                dirResources += "\\";
 
             dirResources += "Resources\\";
 
@@ -645,6 +647,15 @@ namespace Fantasy_King_s_Battle
 
             ShowDataPlayer();
             tsbEndTurn.Enabled = true;
+
+            // Если вылетели из лобби, то показываем итоговое место и начинаем новое лобби
+            if (!lobby.CurrentPlayer.IsLive)
+            {
+                MessageBox.Show("Поражение..." + Environment.NewLine + "Вы заняли " + lobby.CurrentPlayer.PositionInLobby.ToString() + " место.");
+
+                lobby = new Lobby(Config.TypeLobbies[0]);
+                ShowDataPlayer();
+            }
         }
 
         internal void SelectBuilding(PanelBuilding pb)
