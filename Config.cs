@@ -155,6 +155,7 @@ namespace Fantasy_King_s_Battle
         internal int WarehouseWidth { get; private set; }// Количество ячеек в ряду склада
         internal int WarehouseHeight { get; private set; }// Количество рядов ячеек склада
         internal int WarehouseMaxCells { get; private set; }// Количество ячеек в складе
+        internal int BuildingMaxLines { get; private set; }// Максимальное количество линий зданий
         internal Skill FindSkill(string ID)
         {
             foreach (Skill s in Skills)
@@ -270,6 +271,7 @@ namespace Fantasy_King_s_Battle
             PlateWidth = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/PlateWidth").InnerText);
             PlateHeight = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/PlateHeight").InnerText);
             MinRowsEntities = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/MinRowsEntityInPlate").InnerText);
+            BuildingMaxLines = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/BuildingMaxLines").InnerText);
 
             HeroInRow = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battlefield/HeroInRow").InnerText);
             HeroRows = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battlefield/HeroRows").InnerText);

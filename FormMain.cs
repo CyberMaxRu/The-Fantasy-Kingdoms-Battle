@@ -82,7 +82,6 @@ namespace Fantasy_King_s_Battle
         internal const int GUI_45_EMPTY = 0;
         internal const int GUI_45_BORDER = 0;
 
-        internal const int BUILDING_MAX_LINES = 3;
         internal static Size PANEL_MENU_CELLS = new Size(4, 3);
 
         private Lobby lobby;
@@ -436,7 +435,7 @@ namespace Fantasy_King_s_Battle
             int left;
             int height = 0;
 
-            for (int line = 1; line <= BUILDING_MAX_LINES; line++)
+            for (int line = 1; line <= Config.BuildingMaxLines; line++)
             {
                 left = 0;
 

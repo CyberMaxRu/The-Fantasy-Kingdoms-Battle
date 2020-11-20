@@ -5,6 +5,7 @@
     <PlateWidth>4</PlateWidth>
     <PlateHeight>3</PlateHeight>
     <MinRowsEntityInPlate>2</MinRowsEntityInPlate>
+    <BuildingMaxLines>3</BuildingMaxLines>
   </Interface>
   <Heroes>
     <MaxStatPointPerLevel>20</MaxStatPointPerLevel>
