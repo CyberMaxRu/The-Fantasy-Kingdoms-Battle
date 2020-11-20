@@ -79,6 +79,7 @@ namespace Fantasy_King_s_Battle
         internal static void DrawBand(Graphics g, Rectangle r, Brush brushFore, Brush brushBack, int currentValue, int MaxValue)
         {
             Debug.Assert(currentValue <= MaxValue);
+            Debug.Assert(currentValue >= 0);
 
             int widthMain = (int)Math.Round(currentValue / 1.00 / MaxValue * r.Width);
             int widthNone = r.Width - widthMain;
