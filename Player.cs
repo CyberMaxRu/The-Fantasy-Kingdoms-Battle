@@ -37,11 +37,11 @@ namespace Fantasy_King_s_Battle
                 Buildings.Add(new PlayerBuilding(this, b));
             }
 
-            Castle = GetPlayerBuilding(FormMain.Config.FindBuilding(Config.BUILDING_CASTLE));
+            Castle = GetPlayerBuilding(FormMain.Config.FindBuilding(FormMain.Config.IDBuildingCastle));
             Gold = Lobby.TypeLobby.Gold;
 
             // Настройка ячеек героев
-            CellHeroes = new PlayerHero[Config.HERO_ROWS, Config.HERO_IN_ROW];
+            CellHeroes = new PlayerHero[FormMain.Config.HeroRows, FormMain.Config.HeroInRow];
 
             //
             AddItem(new PlayerItem(FormMain.Config.FindItem("PotionOfHealth"), 10, true));

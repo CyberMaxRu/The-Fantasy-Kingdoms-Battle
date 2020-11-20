@@ -10,23 +10,6 @@ namespace Fantasy_King_s_Battle
 {
     internal sealed class Config
     {
-        internal const int GRID_SIZE = 8;
-        internal const int GRID_SIZE_HALF = 4;
-        internal const int HERO_IN_ROW = 7;// Героев в ряду
-        internal const int HERO_ROWS = 7;// Рядов героев
-        internal const int STEPS_IN_SECOND = 20;
-        internal const int STEP_IN_MSEC = 1000 / STEPS_IN_SECOND;
-        internal const int MAX_STEPS_IN_BATTLE = STEPS_IN_SECOND * 600;// Длительность боя - не более 1 минуты. Изменил на 10 минут для теста длительности боев
-        internal static int MAX_STAT_POINT_PER_LEVEL = 20;
-        internal static int HERO_IN_TUMBSTONE = 5 * STEPS_IN_SECOND;
-
-        internal static int PLATE_WIDTH = 4;
-        internal static int PLATE_HEIGHT = 3;
-        internal static int MIN_ROWS_ENTITIES = 2;// Минимальное количество строк сущностей 
-
-        internal const string HERO_PEASANT = "Peasant";
-        internal const string BUILDING_CASTLE = "Castle";
-
         public Config(string pathResources, FormMain fm)
         {
             FormMain.Config = this;
@@ -37,6 +20,10 @@ namespace Fantasy_King_s_Battle
 
             //
             XmlDocument xmlDoc;
+
+            // Загружаем конфигурацию игры
+            xmlDoc = CreateXmlDocument("Config\\Game.xml");
+            LoadConfigGame(xmlDoc);
 
             // Загрузка конфигураций лобби
             xmlDoc = CreateXmlDocument("Config\\TypeLobby.xml");
@@ -51,7 +38,7 @@ namespace Fantasy_King_s_Battle
             {
                 Buildings.Add(new Building(n));
             }
-            
+
             foreach (Building b in Buildings)
                 foreach (Level l in b.Levels)
                     if (l != null)
@@ -149,6 +136,22 @@ namespace Fantasy_King_s_Battle
         internal List<GroupArmour> GroupArmours { get; } = new List<GroupArmour>();
         internal List<Skill> Skills { get; } = new List<Skill>();
         internal int MaxLevelSkill { get; }
+
+        // Константы
+        internal int GridSize { get; private set; }// Размер ячейки сетки
+        internal int GridSizeHalf { get; private set; }// Размер половины ячейки сетки
+        internal int HeroInRow { get; private set; }// Героев в ряду
+        internal int HeroRows { get; private set; }// Рядов героев
+        internal int StepsInSecond { get; private set; }// Шагов в секунду
+        internal int StepInMSec {get; private set; }// Время шага в миллисекундах
+        internal int MaxStepsInBattle { get; private set; }// Длительность боя - не более 1 минуты. Изменил на 10 минут для теста длительности боев
+        internal int MaxStatPointPerLevel { get; private set; }
+        internal int StepsHeroInTumbstone { get; private set; }// Сколько шагов герой в могиле перед исчезновением
+        internal int PlateWidth { get; private set; }// Количество ячеек на панели справа по горизонтали
+        internal int PlateHeight { get; private set; }// Количество ячеек на панели справа по вертикали
+        internal int MinRowsEntities { get; private set; }// Минимальное количество строк сущностей в панели справа
+        internal string IDHeroPeasant { get; private set; }// ID типа героя - крестьянин
+        internal string IDBuildingCastle { get; private set; }// ID Замка
 
         internal Skill FindSkill(string ID)
         {
@@ -256,6 +259,28 @@ namespace Fantasy_King_s_Battle
                         return a;
 
             throw new Exception("Доспех " + ID + " не найден.");
+        }
+
+        private void LoadConfigGame(XmlDocument xmlDoc)
+        {
+            GridSize = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/GridSize").InnerText);
+            GridSizeHalf = GridSize / 2;
+            PlateWidth = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/PlateWidth").InnerText);
+            PlateHeight = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/PlateHeight").InnerText);
+            MinRowsEntities = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/MinRowsEntityInPlate").InnerText);
+
+            HeroInRow = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battlefield/HeroInRow").InnerText);
+            HeroRows = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battlefield/HeroRows").InnerText);
+
+            StepsInSecond = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battle/StepsInSecond").InnerText);
+            StepInMSec = 1000 / StepsInSecond;
+            MaxStepsInBattle = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battle/MaxStepsInBattle").InnerText);
+
+            MaxStatPointPerLevel = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Heroes/MaxStatPointPerLevel").InnerText);
+            StepsHeroInTumbstone = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Heroes/StepsHeroInTumbstone").InnerText);
+
+            IDHeroPeasant = xmlDoc.SelectSingleNode("Game/Links/HeroPeasant").InnerText;
+            IDBuildingCastle = xmlDoc.SelectSingleNode("Game/Links/BuildingCastle").InnerText;
         }
     }
 }

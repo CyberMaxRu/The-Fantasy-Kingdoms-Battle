@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Game>
+  <Interface>
+    <GridSize>8</GridSize>
+    <PlateWidth>4</PlateWidth>
+    <PlateHeight>3</PlateHeight>
+    <MinRowsEntityInPlate>2</MinRowsEntityInPlate>
+  </Interface>
+  <Heroes>
+    <MaxStatPointPerLevel>20</MaxStatPointPerLevel>
+    <StepsHeroInTumbstone>100</StepsHeroInTumbstone>
+  </Heroes>
+  <Battle>
+    <StepsInSecond>20</StepsInSecond>
+    <MaxStepsInBattle>20</MaxStepsInBattle>
+  </Battle>
+  <Battlefield>
+    <HeroRows>7</HeroRows>
+    <HeroInRow>7</HeroInRow>
+  </Battlefield>
+  <Links>
+    <HeroPeasant>Peasant</HeroPeasant>
+    <BuildingCastle>Castle</BuildingCastle>
+  </Links>
+</Game>

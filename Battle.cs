@@ -33,18 +33,18 @@ namespace Fantasy_King_s_Battle
 
             BattleCalced = false;
             Step = 0;
-            SizeBattlefield = new Size(Config.HERO_ROWS * 2, Config.HERO_IN_ROW);
+            SizeBattlefield = new Size(FormMain.Config.HeroRows * 2, FormMain.Config.HeroInRow);
             battlefield = new HeroInBattle[SizeBattlefield.Height, SizeBattlefield.Width];
 
             // Запоминаем героев в одном списке для упрощения расчетов
             foreach (PlayerHero ph in player1.CombatHeroes)
             {
-                AddHero(new HeroInBattle(this, ph, new Point(Config.HERO_ROWS - ph.CoordInPlayer.Y - 1, ph.CoordInPlayer.X)));
+                AddHero(new HeroInBattle(this, ph, new Point(FormMain.Config.HeroRows - ph.CoordInPlayer.Y - 1, ph.CoordInPlayer.X)));
             }
 
             foreach (PlayerHero ph in player2.CombatHeroes)
             {
-                AddHero(new HeroInBattle(this, ph, new Point(ph.CoordInPlayer.Y + Config.HERO_ROWS, ph.CoordInPlayer.X)));
+                AddHero(new HeroInBattle(this, ph, new Point(ph.CoordInPlayer.Y + FormMain.Config.HeroRows, ph.CoordInPlayer.X)));
             }
 
             void AddHero(HeroInBattle hb)
@@ -85,7 +85,7 @@ namespace Fantasy_King_s_Battle
 
             // Проверяем, окончен ли бой
             // Это либо убиты все герои одной из сторон, либо вышло время боя
-            if ((ActiveHeroes.Where(h => h.PlayerHero.Player == Player1).Count() == 0) || (ActiveHeroes.Where(h => h.PlayerHero.Player == Player2).Count() == 0) || (Step == Config.MAX_STEPS_IN_BATTLE))
+            if ((ActiveHeroes.Where(h => h.PlayerHero.Player == Player1).Count() == 0) || (ActiveHeroes.Where(h => h.PlayerHero.Player == Player2).Count() == 0) || (Step == FormMain.Config.MaxStepsInBattle))
             {
                 CalcEndBattle();
 
@@ -135,7 +135,7 @@ namespace Fantasy_King_s_Battle
             BattleCalced = true;
 
             // Определяем результат боя
-            if (Step < Config.MAX_STEPS_IN_BATTLE)
+            if (Step < FormMain.Config.MaxStepsInBattle)
             {
                 int heroesPlayer1 = ActiveHeroes.Where(h => h.PlayerHero.Player == Player1).Count();
                 int heroesPlayer2 = ActiveHeroes.Where(h => h.PlayerHero.Player == Player2).Count();

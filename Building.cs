@@ -97,7 +97,7 @@ namespace Fantasy_King_s_Battle
             XmlNode nr = n.SelectSingleNode("Researches");
             if (nr != null)
             {
-                Researches = new Research[Convert.ToInt32(n.SelectSingleNode("LayersResearches").InnerText), Config.PLATE_HEIGHT, Config.PLATE_WIDTH];
+                Researches = new Research[Convert.ToInt32(n.SelectSingleNode("LayersResearches").InnerText), FormMain.Config.PlateHeight, FormMain.Config.PlateWidth];
 
                 Research research;
 

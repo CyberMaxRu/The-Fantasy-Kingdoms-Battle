@@ -60,8 +60,8 @@ namespace Fantasy_King_s_Battle
             lblHeader = new Label()
             {
                 Parent = this,
-                Left = Config.GRID_SIZE,
-                Top = Config.GRID_SIZE,
+                Left = FormMain.Config.GridSize,
+                Top = FormMain.Config.GridSize,
                 Width = ClientSize.Width,
                 Height = 18,
                 BackColor = Color.Transparent,
@@ -72,8 +72,8 @@ namespace Fantasy_King_s_Battle
             lblAction = new Label()
             {
                 Parent = this,
-                Left = Config.GRID_SIZE,
-                Top = Config.GRID_SIZE,
+                Left = FormMain.Config.GridSize,
+                Top = FormMain.Config.GridSize,
                 Width = ClientSize.Width,
                 Height = 18,
                 BackColor = Color.Transparent,
@@ -85,20 +85,20 @@ namespace Fantasy_King_s_Battle
             {
                 Parent = this,
                 AutoSize = true,
-                Left = Config.GRID_SIZE,
-                Top = Config.GRID_SIZE,
+                Left = FormMain.Config.GridSize,
+                Top = FormMain.Config.GridSize,
                 BackColor = Color.Transparent,
                 ForeColor = Color.Silver,
                 Font = new Font("Microsoft Sans Serif", 10)
             };
-            lblDescription.MaximumSize = new Size(ClientSize.Width - (Config.GRID_SIZE * 2), 0);
+            lblDescription.MaximumSize = new Size(ClientSize.Width - (FormMain.Config.GridSize * 2), 0);
 
             lblIncome = new Label()
             {
                 Parent = this,
-                Left = Config.GRID_SIZE,
-                Top = Config.GRID_SIZE,
-                Width = ClientSize.Width - (Config.GRID_SIZE * 2),
+                Left = FormMain.Config.GridSize,
+                Top = FormMain.Config.GridSize,
+                Width = ClientSize.Width - (FormMain.Config.GridSize * 2),
                 ImageList = ilGui16,
                 ImageIndex = FormMain.GUI_16_GOLD,
                 ImageAlign = System.Drawing.ContentAlignment.MiddleLeft,
@@ -110,9 +110,9 @@ namespace Fantasy_King_s_Battle
             lblGold = new Label()
             {
                 Parent = this,
-                Left = Config.GRID_SIZE,
-                Top = Config.GRID_SIZE,
-                Width = ClientSize.Width - (Config.GRID_SIZE * 2),
+                Left = FormMain.Config.GridSize,
+                Top = FormMain.Config.GridSize,
+                Width = ClientSize.Width - (FormMain.Config.GridSize * 2),
                 ImageList = ilGui16,
                 ImageIndex = FormMain.GUI_16_GOLD,
                 ImageAlign = System.Drawing.ContentAlignment.MiddleLeft,
@@ -123,9 +123,9 @@ namespace Fantasy_King_s_Battle
             lblBuilders = new Label()
             {
                 Parent = this,
-                Left = Config.GRID_SIZE,
-                Top = Config.GRID_SIZE,
-                Width = ClientSize.Width - (Config.GRID_SIZE * 2),
+                Left = FormMain.Config.GridSize,
+                Top = FormMain.Config.GridSize,
+                Width = ClientSize.Width - (FormMain.Config.GridSize * 2),
                 ImageList = ilGui16,
                 ImageIndex = FormMain.GUI_16_PEASANT,
                 ImageAlign = System.Drawing.ContentAlignment.MiddleLeft,
@@ -136,9 +136,9 @@ namespace Fantasy_King_s_Battle
             lblDamageMelee = new Label()
             {
                 Parent = this,
-                Left = Config.GRID_SIZE,
-                Top = Config.GRID_SIZE,
-                Width = (ClientSize.Width - (Config.GRID_SIZE * 2)) / 3,
+                Left = FormMain.Config.GridSize,
+                Top = FormMain.Config.GridSize,
+                Width = (ClientSize.Width - (FormMain.Config.GridSize * 2)) / 3,
                 ImageList = ilParameters,
                 ImageIndex = FormMain.GUI_PARAMETER_ATTACK_MELEE,
                 ImageAlign = System.Drawing.ContentAlignment.MiddleLeft,
@@ -151,8 +151,8 @@ namespace Fantasy_King_s_Battle
             {
                 Parent = this,
                 Left = lblDamageMelee.Left + lblDamageMelee.Width,
-                Top = Config.GRID_SIZE,
-                Width = (ClientSize.Width - (Config.GRID_SIZE * 2)) / 3,
+                Top = FormMain.Config.GridSize,
+                Width = (ClientSize.Width - (FormMain.Config.GridSize * 2)) / 3,
                 ImageList = ilParameters,
                 ImageIndex = FormMain.GUI_PARAMETER_ATTACK_RANGE,
                 ImageAlign = System.Drawing.ContentAlignment.MiddleLeft,
@@ -165,8 +165,8 @@ namespace Fantasy_King_s_Battle
             {
                 Parent = this,
                 Left = lblDamageArcher.Left + lblDamageArcher.Width,
-                Top = Config.GRID_SIZE,
-                Width = (ClientSize.Width - (Config.GRID_SIZE * 2)) / 3,
+                Top = FormMain.Config.GridSize,
+                Width = (ClientSize.Width - (FormMain.Config.GridSize * 2)) / 3,
                 ImageList = ilParameters,
                 ImageIndex = FormMain.GUI_PARAMETER_ATTACK_MAGIC,
                 ImageAlign = System.Drawing.ContentAlignment.MiddleLeft,
@@ -178,9 +178,9 @@ namespace Fantasy_King_s_Battle
             lblDefenseMelee = new Label()
             {
                 Parent = this,
-                Left = Config.GRID_SIZE,
-                Top = Config.GRID_SIZE,
-                Width = (ClientSize.Width - (Config.GRID_SIZE * 2)) / 3,
+                Left = FormMain.Config.GridSize,
+                Top = FormMain.Config.GridSize,
+                Width = (ClientSize.Width - (FormMain.Config.GridSize * 2)) / 3,
                 ImageList = ilParameters,
                 ImageIndex = FormMain.GUI_PARAMETER_DEFENSE_MELEE,
                 ImageAlign = System.Drawing.ContentAlignment.MiddleLeft,
@@ -193,8 +193,8 @@ namespace Fantasy_King_s_Battle
             {
                 Parent = this,
                 Left = lblDefenseMelee.Left + lblDefenseMelee.Width,
-                Top = Config.GRID_SIZE,
-                Width = (ClientSize.Width - (Config.GRID_SIZE * 2)) / 3,
+                Top = FormMain.Config.GridSize,
+                Width = (ClientSize.Width - (FormMain.Config.GridSize * 2)) / 3,
                 ImageList = ilParameters,
                 ImageIndex = FormMain.GUI_PARAMETER_DEFENSE_RANGE,
                 ImageAlign = System.Drawing.ContentAlignment.MiddleLeft,
@@ -207,8 +207,8 @@ namespace Fantasy_King_s_Battle
             {
                 Parent = this,
                 Left = lblDefenseArcher.Left + lblDefenseArcher.Width,
-                Top = Config.GRID_SIZE,
-                Width = (ClientSize.Width - (Config.GRID_SIZE * 2)) / 3,
+                Top = FormMain.Config.GridSize,
+                Width = (ClientSize.Width - (FormMain.Config.GridSize * 2)) / 3,
                 ImageList = ilParameters,
                 ImageIndex = FormMain.GUI_PARAMETER_DEFENSE_MAGIC,
                 ImageAlign = System.Drawing.ContentAlignment.MiddleLeft,
@@ -347,16 +347,16 @@ namespace Fantasy_King_s_Battle
                 lr = new Label()
                 {
                     Parent = this,
-                    Left = Config.GRID_SIZE,
+                    Left = FormMain.Config.GridSize,
                     Top = nextTop,
-                    Width = Width - (Config.GRID_SIZE * 2),
+                    Width = Width - (FormMain.Config.GridSize * 2),
                     AutoSize = true,
                     BackColor = Color.Transparent,
                     ForeColor = tr.Performed == true ? Color.Lime : Color.Crimson,
                     Font = fontRequirement,
                     Text = tr.Text
                 };
-                lr.MaximumSize = new Size(Width - Config.GRID_SIZE * 2, 0);
+                lr.MaximumSize = new Size(Width - FormMain.Config.GridSize * 2, 0);
 
                 lblRequirement.Add(lr);
                 nextTop = GuiUtils.NextTop(lr);

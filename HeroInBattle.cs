@@ -172,7 +172,7 @@ namespace Fantasy_King_s_Battle
                 if (CurrentHealth <= 0)
                 {
                     State = StateHeroInBattle.Tumbstone;
-                    timeAction = Config.HERO_IN_TUMBSTONE;
+                    timeAction = FormMain.Config.StepsHeroInTumbstone;
                     CurrentHealth = 0;
                     inRollbackAfterAction = false;
                 }
@@ -187,7 +187,7 @@ namespace Fantasy_King_s_Battle
 
         private int TimeAttack()
         {
-            int timeAttack = (int)(PlayerHero.Weapon.TimeHit / 100.00 * Config.STEPS_IN_SECOND);
+            int timeAttack = (int)(PlayerHero.Weapon.TimeHit / 100.00 * FormMain.Config.StepsInSecond);
 
             Debug.Assert(timeAttack > 0);
 

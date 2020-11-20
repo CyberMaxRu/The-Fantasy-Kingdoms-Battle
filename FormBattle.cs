@@ -54,7 +54,7 @@ namespace Fantasy_King_s_Battle
             lblPlayer1 = new Label()
             {
                 Parent = this,
-                Top = Config.GRID_SIZE,
+                Top = FormMain.Config.GridSize,
                 ForeColor = Color.White,
                 BackColor = Color.Transparent,
                 AutoSize = false,
@@ -67,7 +67,7 @@ namespace Fantasy_King_s_Battle
             lblPlayer2 = new Label()
             {
                 Parent = this,
-                Top = Config.GRID_SIZE,
+                Top = FormMain.Config.GridSize,
                 ForeColor = Color.White,
                 BackColor = Color.Transparent,
                 AutoSize = false,
@@ -139,7 +139,7 @@ namespace Fantasy_King_s_Battle
             // Таймер для анимации
             timerStep = new Timer()
             {
-                Interval = 1000 / Config.STEPS_IN_SECOND,
+                Interval = 1000 / FormMain.Config.StepsInSecond,
                 Enabled = false
             };
             timerStep.Tick += TimerStep_Tick;
@@ -163,7 +163,7 @@ namespace Fantasy_King_s_Battle
                 if (battle.BattleCalced == false)
                 {
                     // Рисуем столько кадров, сколько должно было пройти
-                    pastFrames = (int)(timePassed.ElapsedMilliseconds / Config.STEP_IN_MSEC);
+                    pastFrames = (int)(timePassed.ElapsedMilliseconds / FormMain.Config.StepInMSec);
                     while ((battle.Step <= pastFrames) && (battle.BattleCalced == false))
                         battle.CalcStep();
 
@@ -248,7 +248,7 @@ namespace Fantasy_King_s_Battle
                 }
             }
 
-            pastSeconds = battle.Step / Config.STEPS_IN_SECOND;
+            pastSeconds = battle.Step / FormMain.Config.StepsInSecond;
             TimeSpan ts = new TimeSpan(0, 0, pastSeconds);
             lblTimer.Text = ts.ToString("mm':'ss");
         }
@@ -263,12 +263,12 @@ namespace Fantasy_King_s_Battle
             // Расчет координат для отрисовки
             PanelHeroInBattle phb = new PanelHeroInBattle(Program.formMain.ilGuiHeroes);
 
-            Width = Config.GRID_SIZE + (phb.Width + Config.GRID_SIZE) * Config.HERO_ROWS * 2 + Config.GRID_SIZE + (Width - ClientSize.Width);
+            Width = FormMain.Config.GridSize + (phb.Width + FormMain.Config.GridSize) * FormMain.Config.HeroRows * 2 + FormMain.Config.GridSize + (Width - ClientSize.Width);
 
-            lblPlayer1.Left = Config.GRID_SIZE;
+            lblPlayer1.Left = FormMain.Config.GridSize;
             lblPlayer1.Text = battle.Player1.Name;
             pointAvatarPlayer1 = new Point(lblPlayer1.Left, lblPlayer1.Top + lblPlayer1.Height);
-            pointAvatarPlayer2 = new Point(ClientSize.Width - Program.formMain.ilPlayerAvatarsBig.ImageSize.Width - Config.GRID_SIZE, pointAvatarPlayer1.Y);
+            pointAvatarPlayer2 = new Point(ClientSize.Width - Program.formMain.ilPlayerAvatarsBig.ImageSize.Width - FormMain.Config.GridSize, pointAvatarPlayer1.Y);
             lblPlayer2.Left = pointAvatarPlayer2.X;
             lblPlayer2.Text = battle.Player2.Name;
 
@@ -281,27 +281,27 @@ namespace Fantasy_King_s_Battle
 
             //
             lblStateBattle.Top = pointAvatarPlayer1.Y;
-            lblStateBattle.Width = pointAvatarPlayer2.X - pointAvatarPlayer1.X - Program.formMain.ilPlayerAvatarsBig.ImageSize.Width - Config.GRID_SIZE * 2;
-            lblStateBattle.Left = pointAvatarPlayer1.X + Program.formMain.ilPlayerAvatarsBig.ImageSize.Width + Config.GRID_SIZE;
+            lblStateBattle.Width = pointAvatarPlayer2.X - pointAvatarPlayer1.X - Program.formMain.ilPlayerAvatarsBig.ImageSize.Width - FormMain.Config.GridSize * 2;
+            lblStateBattle.Left = pointAvatarPlayer1.X + Program.formMain.ilPlayerAvatarsBig.ImageSize.Width + FormMain.Config.GridSize;
 
             lblTimer.Top = lblStateBattle.Top + lblStateBattle.Height;
             lblTimer.Width = lblStateBattle.Width;
             lblTimer.Left = lblStateBattle.Left;
 
-            btnEndBattle.Top = lblTimer.Top + lblTimer.Height + Config.GRID_SIZE;
+            btnEndBattle.Top = lblTimer.Top + lblTimer.Height + FormMain.Config.GridSize;
             btnEndBattle.Width = 120;
             btnEndBattle.Height = 32;
             btnEndBattle.Left = pointAvatarPlayer1.X + Program.formMain.ilPlayerAvatarsBig.ImageSize.Width + (((pointAvatarPlayer2.X - pointAvatarPlayer1.X - Program.formMain.ilPlayerAvatarsBig.ImageSize.Width) - btnEndBattle.Width) / 2);
 
             //
             lblDamagePlayer1.Top = btnEndBattle.Top;
-            lblDamagePlayer1.Left = pointAvatarPlayer1.X + Program.formMain.ilPlayerAvatarsBig.ImageSize.Width + Config.GRID_SIZE;
+            lblDamagePlayer1.Left = pointAvatarPlayer1.X + Program.formMain.ilPlayerAvatarsBig.ImageSize.Width + FormMain.Config.GridSize;
             lblDamagePlayer1.Hide();
             lblDamagePlayer2.Top = btnEndBattle.Top;
-            lblDamagePlayer2.Left = pointAvatarPlayer2.X - Config.GRID_SIZE - 80;
+            lblDamagePlayer2.Left = pointAvatarPlayer2.X - FormMain.Config.GridSize - 80;
             lblDamagePlayer2.Hide();
             //
-            int topCells = rectBandHealthPlayer1.Y + rectBandHealthPlayer1.Height + Config.GRID_SIZE;
+            int topCells = rectBandHealthPlayer1.Y + rectBandHealthPlayer1.Height + FormMain.Config.GridSize;
             cellHeroes = new PanelHeroInBattle[b.SizeBattlefield.Height, b.SizeBattlefield.Width];
             for (int y = 0; y < b.SizeBattlefield.Height; y++)
                 for (int x = 0; x < b.SizeBattlefield.Width; x++)
@@ -309,14 +309,14 @@ namespace Fantasy_King_s_Battle
                     p = new PanelHeroInBattle(Program.formMain.ilGuiHeroes)
                     {
                         //Parent = this,
-                        Left = Config.GRID_SIZE + (x * (phb.Width + Config.GRID_SIZE)),
-                        Top = topCells + (y * (phb.Height + Config.GRID_SIZE))
+                        Left = FormMain.Config.GridSize + (x * (phb.Width + FormMain.Config.GridSize)),
+                        Top = topCells + (y * (phb.Height + FormMain.Config.GridSize))
                     };
 
                     cellHeroes[y, x] = p;
                 }
 
-            Height = topCells + (b.SizeBattlefield.Height * (phb.Height + Config.GRID_SIZE)) + (Height - ClientSize.Height);
+            Height = topCells + (b.SizeBattlefield.Height * (phb.Height + FormMain.Config.GridSize)) + (Height - ClientSize.Height);
 
             // Подготавливаем подложку
             bmpBackground = GuiUtils.MakeBackground(ClientSize);

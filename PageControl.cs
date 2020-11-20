@@ -103,7 +103,7 @@ namespace Fantasy_King_s_Battle
                 Parent = this,
                 Left = 0,
                 Width = ClientSize.Width,
-                Top = imageList.ImageSize.Height + Config.GRID_SIZE,
+                Top = imageList.ImageSize.Height + FormMain.Config.GridSize,
                 TextAlign = ContentAlignment.MiddleCenter,
                 Font = new Font("Microsoft Sans Serif", 12),
                 BackColor = Color.Transparent,
@@ -137,7 +137,7 @@ namespace Fantasy_King_s_Battle
                 controlForPage.Parent = this;
             }
 
-            leftForNextPage += page.Width + Config.GRID_SIZE_HALF;
+            leftForNextPage += page.Width + FormMain.Config.GridSizeHalf;
 
             if (ActivePage == -1)
                 ActivatePage(0);

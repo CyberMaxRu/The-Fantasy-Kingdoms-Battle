@@ -25,7 +25,7 @@ namespace Fantasy_King_s_Battle
             WeightVitality = Convert.ToInt32(n.SelectSingleNode("WeightVitality").InnerText);
 
             Debug.Assert(StatPoints > 0);
-            Debug.Assert(StatPoints <= Config.MAX_STAT_POINT_PER_LEVEL);
+            Debug.Assert(StatPoints <= FormMain.Config.MaxStatPointPerLevel);
             Debug.Assert(WeightStrength + WeightDexterity + WeightMagic + WeightVitality == 100);
         }
 

@@ -163,6 +163,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Config\Game.xml" />
     <Content Include="Resources\Config\Abilities.xml" />
     <Content Include="FKS.ico" />
     <Content Include="Resources\Config\Armours.xml" />

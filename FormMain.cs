@@ -265,10 +265,10 @@ namespace Fantasy_King_s_Battle
 
             // Создаем панель с меню
             panelMenu = new PanelMenu(this, dirResources);
-            panelMenu.Top = ClientSize.Height - panelMenu.Height - Config.GRID_SIZE;
+            panelMenu.Top = ClientSize.Height - panelMenu.Height - Config.GridSize;
 
             // Панель информации о здании
-            panelBuildingInfo = new PanelBuildingInfo(panelMenu.Top - GuiUtils.NextTop(tabControl1) - Config.GRID_SIZE)
+            panelBuildingInfo = new PanelBuildingInfo(panelMenu.Top - GuiUtils.NextTop(tabControl1) - Config.GridSize)
             {
                 Parent = this,
                 Top = GuiUtils.NextTop(tabControl1),
@@ -288,20 +288,20 @@ namespace Fantasy_King_s_Battle
             int widthRightPanel = Math.Max(panelMenu.Width, panelHeroInfo.Width);
             Debug.Assert(widthRightPanel > panelMenu.Width);
 
-            panelBuildingInfo.Left = leftForPages + maxWidthPages + Config.GRID_SIZE;
+            panelBuildingInfo.Left = leftForPages + maxWidthPages + Config.GridSize;
             panelHeroInfo.Left = panelBuildingInfo.Left;
 
             // Учитываем плиту под слоты
-            pointMenu = new Point(leftForPages + maxWidthPages + Config.GRID_SIZE, ClientSize.Height - panelMenu.Height - Config.GRID_SIZE);
+            pointMenu = new Point(leftForPages + maxWidthPages + Config.GridSize, ClientSize.Height - panelMenu.Height - Config.GridSize);
             pointMenu.X = pointMenu.X + ((widthRightPanel - panelMenu.Width) / 2);
-            int calcedWidth = leftForPages + maxWidthPages + widthRightPanel + Config.GRID_SIZE;
+            int calcedWidth = leftForPages + maxWidthPages + widthRightPanel + Config.GridSize;
 
             panelMenu.Location = pointMenu;
 
-            Width = (Width - ClientSize.Width) + calcedWidth + Config.GRID_SIZE;
+            Width = (Width - ClientSize.Width) + calcedWidth + Config.GridSize;
             Height = GuiUtils.NextTop(lobby.Players[lobby.Players.Length - 1].Panel) + (Height - ClientSize.Height);
-            tabControl1.Width = ClientSize.Width - tabControl1.Left - Config.GRID_SIZE;
-            pointMenu.Y = ClientSize.Height - panelMenu.Height - Config.GRID_SIZE;
+            tabControl1.Width = ClientSize.Width - tabControl1.Left - Config.GridSize;
+            pointMenu.Y = ClientSize.Height - panelMenu.Height - Config.GridSize;
 
             // Подготавливаем подложку
             bmpBackground = GuiUtils.MakeBackground(ClientSize);
@@ -454,12 +454,12 @@ namespace Fantasy_King_s_Battle
                             Location = new Point(left, top)
                         };
 
-                        left += b.Panel.Width + Config.GRID_SIZE;
+                        left += b.Panel.Width + Config.GridSize;
                         height = b.Panel.Height;
                     }
                 }
 
-                top += height + Config.GRID_SIZE;
+                top += height + Config.GridSize;
             }
         }
 
@@ -467,7 +467,7 @@ namespace Fantasy_King_s_Battle
         {
             PanelAboutPlayer pap;
 
-            int top = Config.GRID_SIZE;
+            int top = Config.GridSize;
             foreach (Player p in lobby.Players)
             {
                 pap = new PanelAboutPlayer(p, ilResultBattle)
@@ -479,7 +479,7 @@ namespace Fantasy_King_s_Battle
 
                 p.PanelAbout = pap;
 
-                top += pap.Height + Config.GRID_SIZE;
+                top += pap.Height + Config.GridSize;
             }
         }
 
@@ -531,7 +531,7 @@ namespace Fantasy_King_s_Battle
 
         private void DrawHeroes()
         {
-            panelHeroes = new PanelWithPanelEntity(Config.HERO_IN_ROW)
+            panelHeroes = new PanelWithPanelEntity(Config.HeroInRow)
             {
                 Parent = pageHeroes,
                 Left = 0,
@@ -539,7 +539,7 @@ namespace Fantasy_King_s_Battle
             };
 
             List<ICell> list = new List<ICell>();
-            for (int x = 0; x < Config.HERO_IN_ROW * Config.HERO_IN_ROW; x++)
+            for (int x = 0; x < Config.HeroInRow * Config.HeroInRow; x++)
                 list.Add(null);
 
             panelHeroes.ApplyList(list);
@@ -607,7 +607,7 @@ namespace Fantasy_King_s_Battle
             {
                 Parent = pageHeroes,
                 Left = 0,
-                Top = panelHeroes.Height + Config.GRID_SIZE
+                Top = panelHeroes.Height + Config.GridSize
             };
         }
 

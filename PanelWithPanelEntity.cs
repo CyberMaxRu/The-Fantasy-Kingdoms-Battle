@@ -21,11 +21,11 @@ namespace Fantasy_King_s_Battle
             BackColor = Color.Transparent;
             EntityInRow = entityInRow;
 
-            while (rows < Config.MIN_ROWS_ENTITIES)
+            while (rows < FormMain.Config.MinRowsEntities)
                 AddRow();
 
             Width = (panelEntities[0].Width + 1) * EntityInRow - 1;
-            Height = (panelEntities[0].Height + 1) * Config.MIN_ROWS_ENTITIES - 1;
+            Height = (panelEntities[0].Height + 1) * FormMain.Config.MinRowsEntities - 1;
         }
 
         private int EntityInRow { get; }
@@ -46,7 +46,7 @@ namespace Fantasy_King_s_Battle
         private void ValidateRows(int count)
         {
             // Определяем необходимое количество строк. Лишние удаляем, необходимые создаем
-            int needRows = Math.Max(count / EntityInRow + (count % EntityInRow == 0 ? 0 : 1), Config.MIN_ROWS_ENTITIES);
+            int needRows = Math.Max(count / EntityInRow + (count % EntityInRow == 0 ? 0 : 1), FormMain.Config.MinRowsEntities);
 
             while (rows > needRows)
                 RemoveRow();

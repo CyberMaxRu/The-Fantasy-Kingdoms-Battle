@@ -25,8 +25,8 @@ namespace Fantasy_King_s_Battle
             lblName = new Label()
             {
                 Parent = this,
-                Height = Config.GRID_SIZE * 3,
-                Location = new Point(Config.GRID_SIZE, Config.GRID_SIZE),
+                Height = FormMain.Config.GridSize * 3,
+                Location = new Point(FormMain.Config.GridSize, FormMain.Config.GridSize),
                 Font = new Font("Microsof Sans Serif", 13),
                 TextAlign = ContentAlignment.TopCenter,
                 ForeColor = Color.White,
@@ -36,7 +36,7 @@ namespace Fantasy_King_s_Battle
             lblIcon = new Label()
             {
                 Parent = this,
-                Left = Config.GRID_SIZE,
+                Left = FormMain.Config.GridSize,
                 Top = GuiUtils.NextTop(lblName),
                 Size = GetImageList().ImageSize,
                 TextAlign = ContentAlignment.BottomRight,
@@ -49,10 +49,10 @@ namespace Fantasy_King_s_Battle
             pageControl = new PageControl(Program.formMain.ilPages)
             {
                 Parent = this,
-                Left = Config.GRID_SIZE,
-                Width = ClientSize.Width - Config.GRID_SIZE * 2,
+                Left = FormMain.Config.GridSize,
+                Width = ClientSize.Width - FormMain.Config.GridSize * 2,
                 Top = TopForControls(),
-                Height = ClientSize.Height - TopForControls() - Config.GRID_SIZE
+                Height = ClientSize.Height - TopForControls() - FormMain.Config.GridSize
             };
         }
 
@@ -62,8 +62,8 @@ namespace Fantasy_King_s_Battle
 
             if (lblName != null)
             {
-                lblName.MaximumSize = new Size(Width - Config.GRID_SIZE * 2, Config.GRID_SIZE * 3);
-                lblName.Width = Width - Config.GRID_SIZE * 2;
+                lblName.MaximumSize = new Size(Width - FormMain.Config.GridSize * 2, FormMain.Config.GridSize * 3);
+                lblName.Width = Width - FormMain.Config.GridSize * 2;
             }
         }
 

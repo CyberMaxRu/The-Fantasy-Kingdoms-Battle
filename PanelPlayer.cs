@@ -29,26 +29,26 @@ namespace Fantasy_King_s_Battle
             player.Panel = this;
 
             Parent = parent;
-            Left = Config.GRID_SIZE;
+            Left = FormMain.Config.GridSize;
 
             panelAvatar = new PanelEntity()
             {
                 Parent = this,
-                Location = new Point(Config.GRID_SIZE, Config.GRID_SIZE),
+                Location = new Point(FormMain.Config.GridSize, FormMain.Config.GridSize),
                 ShowHint = false
             };
             panelAvatar.ShowCell(player);
             panelAvatar.MouseEnter += PanelAvatar_MouseEnter;
             panelAvatar.MouseLeave += PanelAvatar_MouseLeave;
 
-            pointIconAvatar = new Point(Config.GRID_SIZE, Config.GRID_SIZE);
+            pointIconAvatar = new Point(FormMain.Config.GridSize, FormMain.Config.GridSize);
 
-            int leftForIcons = pointIconAvatar.X + Program.formMain.ilGuiHeroes.ImageSize.Width + Config.GRID_SIZE;
-            int leftForText = leftForIcons + Program.formMain.ilGui24.ImageSize.Width + Config.GRID_SIZE_HALF;
+            int leftForIcons = pointIconAvatar.X + Program.formMain.ilGuiHeroes.ImageSize.Width + FormMain.Config.GridSize;
+            int leftForText = leftForIcons + Program.formMain.ilGui24.ImageSize.Width + FormMain.Config.GridSizeHalf;
 
             pointIconResultBattle = new Point(leftForIcons, pointIconAvatar.Y);
-            pointIconStrike = new Point(leftForIcons, pointIconResultBattle.Y + Program.formMain.ilResultBattle.ImageSize.Height +  Config.GRID_SIZE_HALF);
-            pointIconHeroes = new Point(leftForIcons, pointIconStrike.Y + Program.formMain.ilGui24.ImageSize.Height + Config.GRID_SIZE_HALF);
+            pointIconStrike = new Point(leftForIcons, pointIconResultBattle.Y + Program.formMain.ilResultBattle.ImageSize.Height + FormMain.Config.GridSizeHalf);
+            pointIconHeroes = new Point(leftForIcons, pointIconStrike.Y + Program.formMain.ilGui24.ImageSize.Height + FormMain.Config.GridSizeHalf);
 
             lblDamageToCastle = new Label()
             {
@@ -57,7 +57,7 @@ namespace Fantasy_King_s_Battle
                 Top = pointIconResultBattle.Y,
                 BackColor = Color.Transparent,
                 TextAlign = ContentAlignment.MiddleLeft,
-                MaximumSize = new Size(Program.formMain.ilResultBattle.ImageSize.Width + Config.GRID_SIZE, Program.formMain.ilResultBattle.ImageSize.Height),
+                MaximumSize = new Size(Program.formMain.ilResultBattle.ImageSize.Width + FormMain.Config.GridSize, Program.formMain.ilResultBattle.ImageSize.Height),
                 Font = new Font("Microsoft Sans Serif", 8, FontStyle.Bold)
             };
 
@@ -85,8 +85,8 @@ namespace Fantasy_King_s_Battle
                 Font = new Font("Microsoft Sans Serif", 8, FontStyle.Bold)
             };
 
-            Width = leftForText + lblDamageToCastle.MaximumSize.Width + Config.GRID_SIZE_HALF;
-            Height = Math.Max(Config.GRID_SIZE + Program.formMain.ilPlayerAvatars.ImageSize.Height + Config.GRID_SIZE + Config.GRID_SIZE,
+            Width = leftForText + lblDamageToCastle.MaximumSize.Width + FormMain.Config.GridSizeHalf;
+            Height = Math.Max(FormMain.Config.GridSize + Program.formMain.ilPlayerAvatars.ImageSize.Height + FormMain.Config.GridSize + FormMain.Config.GridSize,
                 GuiUtils.NextTop(lblQuantityHeroes));
 
             rectBorder = new Rectangle(0, 0, Width - 1, Height - 1);
@@ -139,7 +139,7 @@ namespace Fantasy_King_s_Battle
             e.Graphics.DrawRectangle(penBorder, rectBorder);
 
             // Прочность замка
-            GuiUtils.DrawBand(e.Graphics, new Rectangle(Config.GRID_SIZE, Config.GRID_SIZE + panelAvatar.Height + 1, panelAvatar.Width, 6), brushCurDurability, brushMaxDurability, player.DurabilityCastle, player.Lobby.TypeLobby.DurabilityCastle);
+            GuiUtils.DrawBand(e.Graphics, new Rectangle(FormMain.Config.GridSize, FormMain.Config.GridSize + panelAvatar.Height + 1, panelAvatar.Width, 6), brushCurDurability, brushMaxDurability, player.DurabilityCastle, player.Lobby.TypeLobby.DurabilityCastle);
             
             // Результат последнего боя
             if (player.ResultLastBattle != ResultBattle.None)

@@ -28,8 +28,8 @@ namespace Fantasy_King_s_Battle
                 Parent = this,
                 Width = Program.formMain.ilPlayerAvatars.ImageSize.Width,
                 Height = Program.formMain.ilPlayerAvatars.ImageSize.Height,
-                Left = Config.GRID_SIZE,
-                Top = Config.GRID_SIZE,
+                Left = FormMain.Config.GridSize,
+                Top = FormMain.Config.GridSize,
             };
 
             pbResultBattle = new PictureBox()
@@ -38,28 +38,28 @@ namespace Fantasy_King_s_Battle
                 Width = imageListResultBattle.ImageSize.Width,
                 Height = imageListResultBattle.ImageSize.Height,
                 Left = 240,
-                Top = Config.GRID_SIZE,
+                Top = FormMain.Config.GridSize,
             };
 
             namePlayer = new Label()
             {
                 Parent = this,
                 Text = player.Name,
-                Top = Config.GRID_SIZE,
-                Left = pbFraction.Width + (Config.GRID_SIZE * 2),
+                Top = FormMain.Config.GridSize,
+                Left = pbFraction.Width + (FormMain.Config.GridSize * 2),
                 Font = new System.Drawing.Font(this.Font, System.Drawing.FontStyle.Bold)
             };
 
             labelAboutBattles = new Label()
             {
                 Parent = this,
-                Top = namePlayer.Top + (Config.GRID_SIZE * 3),
-                Left = pbFraction.Width + (Config.GRID_SIZE * 2),
+                Top = namePlayer.Top + (FormMain.Config.GridSize * 3),
+                Left = pbFraction.Width + (FormMain.Config.GridSize * 2),
                 AutoSize = true
             };
 
-            Height = pbFraction.Height + (Config.GRID_SIZE * 2);
-            Width = pbResultBattle.Left + pbResultBattle.Width + Config.GRID_SIZE;
+            Height = pbFraction.Height + (FormMain.Config.GridSize * 2);
+            Width = pbResultBattle.Left + pbResultBattle.Width + FormMain.Config.GridSize;
         }
 
         internal void ShowData()

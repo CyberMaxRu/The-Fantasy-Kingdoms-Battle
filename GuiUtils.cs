@@ -53,17 +53,17 @@ namespace Fantasy_King_s_Battle
 
         internal static int NextLeft(Control c)
         {
-            return c.Left + c.Width + Config.GRID_SIZE;
+            return c.Left + c.Width + FormMain.Config.GridSize;
         }
 
         internal static int NextTop(Control c)
         {
-            return c.Top + c.Height + Config.GRID_SIZE;
+            return c.Top + c.Height + FormMain.Config.GridSize;
         }
 
         internal static int NextTopHalf(Control c)
         {
-            return c.Top + c.Height + Config.GRID_SIZE_HALF;
+            return c.Top + c.Height + FormMain.Config.GridSizeHalf;
         }
 
         internal static Image GetImageFromImageList(ImageList imageList, int imageIndex, bool normal)

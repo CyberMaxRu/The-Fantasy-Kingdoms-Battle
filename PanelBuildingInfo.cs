@@ -42,7 +42,7 @@ namespace Fantasy_King_s_Battle
             pageControl.AddPage("История", (int)IconPages.History, null);
 
             pageControl.ApplyMinWidth();
-            Width = pageControl.Width + Config.GRID_SIZE * 2;
+            Width = pageControl.Width + FormMain.Config.GridSize * 2;
         }
 
         internal PlayerBuilding Building

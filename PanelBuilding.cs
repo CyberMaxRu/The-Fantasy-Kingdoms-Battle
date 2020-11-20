@@ -31,9 +31,9 @@ namespace Fantasy_King_s_Battle
             lblName = new Label()
             {
                 Parent = this,
-                Left = Config.GRID_SIZE,
-                Top = Config.GRID_SIZE,
-                Height = Config.GRID_SIZE * 2,
+                Left = FormMain.Config.GridSize,
+                Top = FormMain.Config.GridSize,
+                Height = FormMain.Config.GridSize * 2,
                 BackColor = Color.Transparent,
                 Font = fontLabel
             };
@@ -43,7 +43,7 @@ namespace Fantasy_King_s_Battle
                 Parent = this,
                 Width = Program.formMain.ilBuildings.ImageSize.Width + 2,// Окантовка
                 Height = Program.formMain.ilBuildings.ImageSize.Height + 2,// Окантовка
-                Left = Config.GRID_SIZE,
+                Left = FormMain.Config.GridSize,
                 Top = GuiUtils.NextTop(lblName),
                 BackColor = Color.Transparent
             };
@@ -57,7 +57,7 @@ namespace Fantasy_King_s_Battle
                 ImageList = Program.formMain.ilGuiHeroes,
                 Size = GuiUtils.SizeButtonWithImage(Program.formMain.ilGuiHeroes),
                 Top = GuiUtils.NextTop(pbBuilding),
-                Left = Config.GRID_SIZE,
+                Left = FormMain.Config.GridSize,
                 BackgroundImage = Program.formMain.bmpBackgroundButton,
                 Font = Program.formMain.fontCost,
                 ForeColor = Program.formMain.ColorCost,
@@ -84,7 +84,7 @@ namespace Fantasy_King_s_Battle
             {
                 Parent = this,
                 Left = btnBuyOrUpgrade.Left,
-                Top = btnBuyOrUpgrade.Top - btnBuyOrUpgrade.Height - Config.GRID_SIZE,
+                Top = btnBuyOrUpgrade.Top - btnBuyOrUpgrade.Height - FormMain.Config.GridSize,
                 Size = btnBuyOrUpgrade.Size,
                 ImageList = Program.formMain.ilGuiHeroes,
                 TextAlign = ContentAlignment.BottomCenter,
@@ -111,10 +111,10 @@ namespace Fantasy_King_s_Battle
             lblIncome = new Label()
             {
                 Parent = this,
-                Left = btnBuyOrUpgrade.Left - Config.GRID_SIZE,
+                Left = btnBuyOrUpgrade.Left - FormMain.Config.GridSize,
                 Top = btnHeroes.Top,
                 AutoSize = false,
-                Width = btnBuyOrUpgrade.Width + Config.GRID_SIZE,
+                Width = btnBuyOrUpgrade.Width + FormMain.Config.GridSize,
                 Height = 20,
                 Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold),
                 BackColor = Color.Transparent,
@@ -126,10 +126,10 @@ namespace Fantasy_King_s_Battle
             };
            
             Height = GuiUtils.NextTop(btnHeroes);// lblIncome. Top + lblIncome.Height + (Config.GRID_SIZE * 2);
-            Width = btnBuyOrUpgrade.Left + btnBuyOrUpgrade.Width + Config.GRID_SIZE;
+            Width = btnBuyOrUpgrade.Left + btnBuyOrUpgrade.Width + FormMain.Config.GridSize;
 
-            lblName.Width = Width - (Config.GRID_SIZE * 2) - 2;
-            lblLevel.Left = Width - Config.GRID_SIZE - lblLevel.Width;
+            lblName.Width = Width - (FormMain.Config.GridSize * 2) - 2;
+            lblLevel.Left = Width - FormMain.Config.GridSize - lblLevel.Width;
 
             penBorder = new Pen(Color.Black);
             rectBorder = new Rectangle(0, 0, Width - 1, Height - 1);
