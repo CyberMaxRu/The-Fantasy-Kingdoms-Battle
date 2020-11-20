@@ -152,7 +152,9 @@ namespace Fantasy_King_s_Battle
         internal int MinRowsEntities { get; private set; }// Минимальное количество строк сущностей в панели справа
         internal string IDHeroPeasant { get; private set; }// ID типа героя - крестьянин
         internal string IDBuildingCastle { get; private set; }// ID Замка
-
+        internal int WarehouseWidth { get; private set; }// Количество ячеек в ряду склада
+        internal int WarehouseHeight { get; private set; }// Количество рядов ячеек склада
+        internal int WarehouseMaxCells { get; private set; }// Количество ячеек в складе
         internal Skill FindSkill(string ID)
         {
             foreach (Skill s in Skills)
@@ -281,6 +283,10 @@ namespace Fantasy_King_s_Battle
 
             IDHeroPeasant = xmlDoc.SelectSingleNode("Game/Links/HeroPeasant").InnerText;
             IDBuildingCastle = xmlDoc.SelectSingleNode("Game/Links/BuildingCastle").InnerText;
+
+            WarehouseWidth = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Warehouse/Width").InnerText);
+            WarehouseHeight = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Warehouse/Height").InnerText);
+            WarehouseMaxCells = WarehouseWidth * WarehouseHeight;
         }
     }
 }

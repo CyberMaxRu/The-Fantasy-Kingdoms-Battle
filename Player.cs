@@ -147,7 +147,7 @@ namespace Fantasy_King_s_Battle
 
         internal int QuantityHeroes { get; private set; }
 
-        internal PlayerItem[] Warehouse = new PlayerItem[FormMain.WH_MAX_SLOTS];// Предметы на складе игрока
+        internal PlayerItem[] Warehouse = new PlayerItem[FormMain.Config.WarehouseMaxCells];// Предметы на складе игрока
 
         // Статистика по боям
         internal int Wins { get; set; }

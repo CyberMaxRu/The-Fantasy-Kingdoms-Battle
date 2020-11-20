@@ -22,4 +22,8 @@
     <HeroPeasant>Peasant</HeroPeasant>
     <BuildingCastle>Castle</BuildingCastle>
   </Links>
+  <Warehouse>
+    <Width>10</Width>
+    <Height>3</Height>
+  </Warehouse>
 </Game>

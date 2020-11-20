@@ -82,9 +82,6 @@ namespace Fantasy_King_s_Battle
         internal const int GUI_45_EMPTY = 0;
         internal const int GUI_45_BORDER = 0;
 
-        internal static int WH_SLOTS_IN_LINE = 10;
-        internal static int WH_SLOT_LINES = 3;
-        internal static int WH_MAX_SLOTS = WH_SLOTS_IN_LINE * WH_SLOT_LINES;
         internal const int BUILDING_MAX_LINES = 3;
         internal static Size PANEL_MENU_CELLS = new Size(4, 3);
 
@@ -602,7 +599,7 @@ namespace Fantasy_King_s_Battle
 
         private void DrawWarehouse()
         {
-            panelWarehouse = new PanelWithPanelEntity(WH_SLOTS_IN_LINE)
+            panelWarehouse = new PanelWithPanelEntity(Config.WarehouseWidth)
             {
                 Parent = pageHeroes,
                 Left = 0,
