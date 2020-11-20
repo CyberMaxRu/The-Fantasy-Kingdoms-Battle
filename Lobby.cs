@@ -86,12 +86,15 @@ namespace Fantasy_King_s_Battle
 
         private void MakeOpponents()
         {
+            Debug.Assert(QuantityAlivePlayersIsEven());
+
             foreach (Player pl in Players)
                 pl.Opponent = null;
 
             // Алгоритм простой - случайным образом подбираем пару
             List<Player> opponents = new List<Player>();
-            opponents.AddRange(Players);
+            opponents.AddRange(Players.Where(pp => pp.IsLive));
+            Debug.Assert(opponents.Count % 2 == 0);
             Random r = new Random();
             Player p;
             Player oppo;
@@ -116,7 +119,7 @@ namespace Fantasy_King_s_Battle
 
         private void SetPlayerAsCurrent(int index)
         {
-            Debug.Assert(Players[index].IsLive);
+            Debug.Assert(Players[index].IsLive || (Players[index].DayOfDie == Turn));
 
             CurrentPlayer = Players[index];
         }
@@ -127,7 +130,7 @@ namespace Fantasy_King_s_Battle
             int cpi = CurrentPlayer != null ? CurrentPlayer.PlayerIndex : -1;
             for (int i = cpi + 1; i < Players.Count(); i++)
             {
-                if (Players[i].IsLive == true)
+                if ((Players[i].IsLive == true) || (Players[i].TypePlayer == TypePlayer.Human))
                 {
                     SetPlayerAsCurrent(i);
 
@@ -190,11 +193,37 @@ namespace Fantasy_King_s_Battle
 
         private void CalcEndTurn()
         {
+            // Делаем расчет итогов дня
             foreach (Player p in Players)
             {
                 if (p.IsLive == true)
                     p.CalcResultTurn();
             }
+
+            // Смотрим, сколько игроков осталось живо
+            // Если нечетное число, то одного воскрешаем
+            // Для этого ищем, кто находился на самом высоком месте и умер в текущий день 
+            if (!QuantityAlivePlayersIsEven())
+            {
+                foreach (Player p in Players.OrderByDescending(p => p.PositionInLobby))
+                    if (p.DayOfDie == Turn)
+                    {
+                        p.MakeAlive();
+                        break;
+                    }
+            }
+            Debug.Assert(QuantityAlivePlayersIsEven());
+
+        }
+
+        internal bool QuantityAlivePlayersIsEven()
+        {
+            bool evenPlayers = true;
+            foreach (Player p in Players)
+                if (p.IsLive)
+                    evenPlayers = !evenPlayers;
+
+            return evenPlayers;
         }
 
         internal Battle GetBattle(Player p, int turn)
@@ -214,7 +243,7 @@ namespace Fantasy_King_s_Battle
         private void SortPlayers()
         {
             int pos = 1;
-            foreach (Player p in Players.Where(p => p.IsLive == true).OrderByDescending(p => p, new ComparerPlayerForPosition()))
+            foreach (Player p in Players.Where(p => (p.IsLive == true) || (p.DayOfDie == Turn)).OrderByDescending(p => p, new ComparerPlayerForPosition()))
             {
                 p.PositionInLobby = pos++;
             }
