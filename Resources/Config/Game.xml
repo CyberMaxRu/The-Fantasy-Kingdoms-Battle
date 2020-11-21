@@ -13,7 +13,7 @@
   </Heroes>
   <Battle>
     <StepsInSecond>20</StepsInSecond>
-    <MaxStepsInBattle>20</MaxStepsInBattle>
+    <MaxStepsInBattle>1200</MaxStepsInBattle>
   </Battle>
   <Battlefield>
     <HeroRows>7</HeroRows>
