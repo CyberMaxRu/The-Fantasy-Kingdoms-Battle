@@ -52,6 +52,9 @@ namespace Fantasy_King_s_Battle
             Magic = Convert.ToInt32(n.SelectSingleNode("Magic").InnerText);
             Vitality = Convert.ToInt32(n.SelectSingleNode("Vitality").InnerText);
 
+            SecondsToMove = Convert.ToDouble(n.SelectSingleNode("SecondsToMove").InnerText.Replace(".", ","));
+            StepsToMoveToOtherTile = (int)(SecondsToMove * FormMain.Config.StepsInSecond);
+
             CoefHealth = Convert.ToInt32(n.SelectSingleNode("CoefHealth").InnerText);
             CoefMana = Convert.ToInt32(n.SelectSingleNode("CoefMana").InnerText);
             CoefStamina = Convert.ToInt32(n.SelectSingleNode("CoefStamina").InnerText);
@@ -71,6 +74,8 @@ namespace Fantasy_King_s_Battle
         internal int Magic { get; set; }// Магия
         internal int Vitality { get; set; }// Живучесть
         internal int TimeAttack { get; set; }// Время между атаками (в тиках)
+        internal double SecondsToMove { get; set; }// Время (в сек) на передвижение до другой клетки
+        internal int StepsToMoveToOtherTile { get; set; }// Количество шагов для движения в другую клетку
         internal int CoefHealth { get; set; }
         internal int CoefMana { get; set; }
         internal int CoefStamina { get; set; }
