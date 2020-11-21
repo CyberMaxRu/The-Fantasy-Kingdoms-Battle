@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Diagnostics;
 
 namespace Fantasy_King_s_Battle
 {
@@ -267,27 +268,60 @@ namespace Fantasy_King_s_Battle
         private void LoadConfigGame(XmlDocument xmlDoc)
         {
             GridSize = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/GridSize").InnerText);
+            Debug.Assert(GridSize >= 2);
+            Debug.Assert(GridSize <= 20);
+            Debug.Assert(GridSize % 2 == 0);
             GridSizeHalf = GridSize / 2;
+
             PlateWidth = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/PlateWidth").InnerText);
+            Debug.Assert(PlateWidth >= 2);
+            Debug.Assert(PlateWidth <= 8);
             PlateHeight = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/PlateHeight").InnerText);
+            Debug.Assert(PlateHeight >= 2);
+            Debug.Assert(PlateHeight <= 8);
             MinRowsEntities = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/MinRowsEntityInPlate").InnerText);
+            Debug.Assert(MinRowsEntities >= 2);
+            Debug.Assert(MinRowsEntities <= 6);
+
             BuildingMaxLines = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/BuildingMaxLines").InnerText);
+            Debug.Assert(BuildingMaxLines >= 2);
+            Debug.Assert(BuildingMaxLines <= 5);
 
             HeroInRow = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battlefield/HeroInRow").InnerText);
+            Debug.Assert(HeroInRow >= 3);
+            Debug.Assert(HeroInRow <= 11);
             HeroRows = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battlefield/HeroRows").InnerText);
+            Debug.Assert(HeroRows >= 3);
+            Debug.Assert(HeroRows <= 11);
 
             StepsInSecond = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battle/StepsInSecond").InnerText);
+            Debug.Assert(StepsInSecond >= 5);
+            Debug.Assert(StepsInSecond <= 50);
+            Debug.Assert(1000 % StepsInSecond == 0);
             StepInMSec = 1000 / StepsInSecond;
+            
             MaxStepsInBattle = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battle/MaxStepsInBattle").InnerText);
+            Debug.Assert(MaxStepsInBattle >= 100);
+            Debug.Assert(MaxStepsInBattle <= 10000);
 
             MaxStatPointPerLevel = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Heroes/MaxStatPointPerLevel").InnerText);
+            Debug.Assert(MaxStatPointPerLevel >= 5);
+            Debug.Assert(MaxStatPointPerLevel <= 100);
             StepsHeroInTumbstone = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Heroes/StepsHeroInTumbstone").InnerText);
+            Debug.Assert(StepsHeroInTumbstone >= 10);
+            Debug.Assert(StepsHeroInTumbstone <= 1000);
 
             IDHeroPeasant = xmlDoc.SelectSingleNode("Game/Links/HeroPeasant").InnerText;
+            Debug.Assert(IDHeroPeasant.Length > 0);
             IDBuildingCastle = xmlDoc.SelectSingleNode("Game/Links/BuildingCastle").InnerText;
+            Debug.Assert(IDBuildingCastle.Length > 0);
 
             WarehouseWidth = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Warehouse/Width").InnerText);
+            Debug.Assert(WarehouseWidth >= 5);
+            Debug.Assert(WarehouseWidth <= 30);
             WarehouseHeight = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Warehouse/Height").InnerText);
+            Debug.Assert(WarehouseHeight >= 1);
+            Debug.Assert(WarehouseHeight <= 10);
             WarehouseMaxCells = WarehouseWidth * WarehouseHeight;
         }
     }
