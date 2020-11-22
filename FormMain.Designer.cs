@@ -257,7 +257,7 @@
             this.MaximizeBox = false;
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Fantasy King\'s Battle concept (build at 18.11.2020)";
+            this.Text = "Fantasy King\'s Battle concept (build at 21.11.2020)";
             this.Activated += new System.EventHandler(this.FormMain_Activated);
             this.tabControl1.ResumeLayout(false);
             this.tabPageBattle.ResumeLayout(false);
