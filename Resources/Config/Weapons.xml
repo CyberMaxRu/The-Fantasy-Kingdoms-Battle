@@ -236,25 +236,25 @@
         <ID>WeaponHunter0</ID>
         <Hero>Hunter</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageArcher>5</DamageArcher>
       </Weapon>
       <Weapon>
         <ID>WeaponElf0</ID>
         <Hero>Elf</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageArcher>0</DamageArcher>
       </Weapon>
       <Weapon>
         <ID>WeaponBeastMaster0</ID>
         <Hero>BeastMaster</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageArcher>0</DamageArcher>
       </Weapon>
       <Weapon>
         <ID>WeaponMarksman0</ID>
         <Hero>Marksman</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageArcher>0</DamageArcher>
       </Weapon>
     </Weapons>
   </GroupWeapon>
@@ -269,25 +269,25 @@
         <ID>WeaponHunter1</ID>
         <Hero>Hunter</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageArcher>0</DamageArcher>
       </Weapon>
       <Weapon>
         <ID>WeaponElf1</ID>
         <Hero>Elf</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageArcher>0</DamageArcher>
       </Weapon>
       <Weapon>
         <ID>WeaponBeastMaster1</ID>
         <Hero>BeastMaster</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageArcher>0</DamageArcher>
       </Weapon>
       <Weapon>
         <ID>WeaponMarksman1</ID>
         <Hero>Marksman</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageArcher>0</DamageArcher>
       </Weapon>
     </Weapons>
   </GroupWeapon>
@@ -302,25 +302,25 @@
         <ID>WeaponHunter2</ID>
         <Hero>Hunter</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageArcher>0</DamageArcher>
       </Weapon>
       <Weapon>
         <ID>WeaponElf2</ID>
         <Hero>Elf</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageArcher>0</DamageArcher>
       </Weapon>
       <Weapon>
         <ID>WeaponBeastMaster2</ID>
         <Hero>BeastMaster</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageArcher>0</DamageArcher>
       </Weapon>
       <Weapon>
         <ID>WeaponMarksman2</ID>
         <Hero>Marksman</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageArcher>0</DamageArcher>
       </Weapon>
     </Weapons>
   </GroupWeapon>
@@ -335,25 +335,25 @@
         <ID>WeaponHunter3</ID>
         <Hero>Hunter</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageArcher>0</DamageArcher>
       </Weapon>
       <Weapon>
         <ID>WeaponElf3</ID>
         <Hero>Elf</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageArcher>0</DamageArcher>
       </Weapon>
       <Weapon>
         <ID>WeaponBeastMaster3</ID>
         <Hero>BeastMaster</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageArcher>0</DamageArcher>
       </Weapon>
       <Weapon>
         <ID>WeaponMarksman3</ID>
         <Hero>Marksman</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageArcher>0</DamageArcher>
       </Weapon>
     </Weapons>
   </GroupWeapon>
@@ -368,25 +368,25 @@
         <ID>WeaponHunter4</ID>
         <Hero>Hunter</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageArcher>0</DamageArcher>
       </Weapon>
       <Weapon>
         <ID>WeaponElf4</ID>
         <Hero>Elf</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageArcher>0</DamageArcher>
       </Weapon>
       <Weapon>
         <ID>WeaponBeastMaster4</ID>
         <Hero>BeastMaster</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageArcher>0</DamageArcher>
       </Weapon>
       <Weapon>
         <ID>WeaponMarksman4</ID>
         <Hero>Marksman</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageArcher>0</DamageArcher>
       </Weapon>
     </Weapons>
   </GroupWeapon>
@@ -401,37 +401,37 @@
         <ID>WeaponCleric0</ID>
         <Hero>Cleric</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageMagic>10</DamageMagic>
       </Weapon>
       <Weapon>
         <ID>WeaponMage0</ID>
         <Hero>Mage</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageMagic>10</DamageMagic>
       </Weapon>
       <Weapon>
         <ID>WeaponDarkPriest0</ID>
         <Hero>DarkPriest</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageMagic>0</DamageMagic>
       </Weapon>
       <Weapon>
         <ID>WeaponPriest0</ID>
         <Hero>Priest</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageMagic>0</DamageMagic>
       </Weapon>
       <Weapon>
         <ID>WeaponFireMage0</ID>
         <Hero>FireMage</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageMagic>0</DamageMagic>
       </Weapon>
       <Weapon>
         <ID>WeaponIceMage0</ID>
         <Hero>IceMage</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageMagic>0</DamageMagic>
       </Weapon>
     </Weapons>
   </GroupWeapon>
@@ -446,37 +446,37 @@
         <ID>WeaponCleric1</ID>
         <Hero>Cleric</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageMagic>0</DamageMagic>
       </Weapon>
       <Weapon>
         <ID>WeaponMage1</ID>
         <Hero>Mage</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageMagic>0</DamageMagic>
       </Weapon>
       <Weapon>
         <ID>WeaponDarkPriest1</ID>
         <Hero>DarkPriest</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageMagic>0</DamageMagic>
       </Weapon>
       <Weapon>
         <ID>WeaponPriest1</ID>
         <Hero>Priest</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageMagic>0</DamageMagic>
       </Weapon>
       <Weapon>
         <ID>WeaponFireMage1</ID>
         <Hero>FireMage</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageMagic>0</DamageMagic>
       </Weapon>
       <Weapon>
         <ID>WeaponIceMage1</ID>
         <Hero>IceMage</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageMagic>0</DamageMagic>
       </Weapon>
     </Weapons>
   </GroupWeapon>
@@ -491,37 +491,37 @@
         <ID>WeaponCleric2</ID>
         <Hero>Cleric</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageMagic>0</DamageMagic>
       </Weapon>
       <Weapon>
         <ID>WeaponMage2</ID>
         <Hero>Mage</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageMagic>0</DamageMagic>
       </Weapon>
       <Weapon>
         <ID>WeaponDarkPriest2</ID>
         <Hero>DarkPriest</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageMagic>0</DamageMagic>
       </Weapon>
       <Weapon>
         <ID>WeaponPriest2</ID>
         <Hero>Priest</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageMagic>0</DamageMagic>
       </Weapon>
       <Weapon>
         <ID>WeaponFireMage2</ID>
         <Hero>FireMage</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageMagic>0</DamageMagic>
       </Weapon>
       <Weapon>
         <ID>WeaponIceMage2</ID>
         <Hero>IceMage</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageMagic>0</DamageMagic>
       </Weapon>
     </Weapons>
   </GroupWeapon>
@@ -536,37 +536,37 @@
         <ID>WeaponCleric3</ID>
         <Hero>Cleric</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageMagic>0</DamageMagic>
       </Weapon>
       <Weapon>
         <ID>WeaponMage3</ID>
         <Hero>Mage</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageMagic>0</DamageMagic>
       </Weapon>
       <Weapon>
         <ID>WeaponDarkPriest3</ID>
         <Hero>DarkPriest</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageMagic>0</DamageMagic>
       </Weapon>
       <Weapon>
         <ID>WeaponPriest3</ID>
         <Hero>Priest</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageMagic>0</DamageMagic>
       </Weapon>
       <Weapon>
         <ID>WeaponFireMage3</ID>
         <Hero>FireMage</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageMagic>0</DamageMagic>
       </Weapon>
       <Weapon>
         <ID>WeaponIceMage3</ID>
         <Hero>IceMage</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageMagic>0</DamageMagic>
       </Weapon>
     </Weapons>
   </GroupWeapon>
@@ -581,37 +581,37 @@
         <ID>WeaponCleric4</ID>
         <Hero>Cleric</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageMagic>0</DamageMagic>
       </Weapon>
       <Weapon>
         <ID>WeaponMage4</ID>
         <Hero>Mage</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageMagic>0</DamageMagic>
       </Weapon>
       <Weapon>
         <ID>WeaponDarkPriest4</ID>
         <Hero>DarkPriest</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageMagic>0</DamageMagic>
       </Weapon>
       <Weapon>
         <ID>WeaponPriest4</ID>
         <Hero>Priest</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageMagic>0</DamageMagic>
       </Weapon>
       <Weapon>
         <ID>WeaponFireMage4</ID>
         <Hero>FireMage</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageMagic>0</DamageMagic>
       </Weapon>
       <Weapon>
         <ID>WeaponIceMage4</ID>
         <Hero>IceMage</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMissile>0</DamageMissile>
+        <DamageMagic>0</DamageMagic>
       </Weapon>
     </Weapons>
   </GroupWeapon>
