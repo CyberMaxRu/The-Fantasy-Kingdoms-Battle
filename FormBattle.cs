@@ -16,6 +16,7 @@ namespace Fantasy_King_s_Battle
         private PanelHeroInBattle[,] cellHeroes;
         private Battle battle;
         private Pen penArrow = new Pen(Color.Fuchsia);
+        private Pen penCircle = new Pen(new SolidBrush(Color.Fuchsia));
         private Timer timerStep;
         private int pastFrames;
         private Bitmap bmpBackground;
@@ -219,6 +220,10 @@ namespace Fantasy_King_s_Battle
             {
                 if ((h.Target != null) || (h.LastTarget != default))
                 {
+                    if (h.PlayerHero.ClassHero.KindHero.TypeAttack != TypeAttack.Melee)
+                        if (h.Target is null)
+                            continue;
+
                     Point coordTarget = h.Target != null ? h.Target.Coord : h.LastTarget;
 
                     PanelHeroInBattle p1 = cellHeroes[h.Coord.Y, h.Coord.X];
@@ -227,14 +232,25 @@ namespace Fantasy_King_s_Battle
                     // Делаем расчет точки назначения в зависимости от процент выполнения удара
                     Point pSource = new Point(p1.Location.X + p1.Width / 2, p1.Location.Y + p1.Height / 2);
                     Point pTarget = new Point(p2.Location.X + p2.Width / 2, p2.Location.Y + p2.Height / 2);
+
                     double percent = h.PercentExecuteAction();
-                    if (h.InRollbackAction() == true)
-                        percent = 1 - percent;
+                    if (h.PlayerHero.ClassHero.KindHero.TypeAttack == TypeAttack.Melee)
+                        if (h.InRollbackAction() == true)
+                            percent = 1 - percent;
+
                     pTarget.X = (int)(pSource.X + ((pTarget.X - pSource.X) * percent));
                     pTarget.Y = (int)(pSource.Y + ((pTarget.Y - pSource.Y) * percent));
 
                     penArrow.Color = h.PlayerHero.Player == battle.Player1 ? Color.Green : Color.Maroon;
-                    e.Graphics.DrawLine(penArrow, pSource, pTarget);
+                    penCircle.Color = h.PlayerHero.Player == battle.Player1 ? Color.Green : Color.Maroon;
+                    if (h.PlayerHero.ClassHero.KindHero.TypeAttack == TypeAttack.Melee)
+                    {
+                        e.Graphics.DrawLine(penArrow, pSource, pTarget);
+                    }
+                    else
+                    {
+                        e.Graphics.DrawEllipse(penCircle, pTarget.X - 3, pTarget.Y - 3, 6, 6);
+                    }
                 }
             }
 
