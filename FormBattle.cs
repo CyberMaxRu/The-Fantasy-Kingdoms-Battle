@@ -217,7 +217,7 @@ namespace Fantasy_King_s_Battle
             // Рисуем стрелки атаки
             foreach (HeroInBattle h in battle.ActiveHeroes)
             {
-                if ((h.Target != null) || !h.LastTarget.IsEmpty)
+                if ((h.Target != null) || (h.LastTarget != default))
                 {
                     Point coordTarget = h.Target != null ? h.Target.Coord : h.LastTarget;
 

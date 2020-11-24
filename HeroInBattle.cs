@@ -15,6 +15,7 @@ namespace Fantasy_King_s_Battle
         private int countAction;// Счетчик действия
         private int timeAction;// Какое количество времени выполнения действие
         private bool inRollbackAfterAction;// Герой во время отката после выполнения действия        
+        private HeroInBattle lastAttackedHero;
 
         public HeroInBattle(Battle b, PlayerHero ph, Point coord)
         {
@@ -34,6 +35,8 @@ namespace Fantasy_King_s_Battle
             CurrentStamina = Parameters.Stamina;
 
             State = StateHeroInBattle.None;
+
+            LastTarget = default;
         }
 
         internal PlayerHero PlayerHero { get; }
@@ -65,15 +68,29 @@ namespace Fantasy_King_s_Battle
 
                         // Если сейчас ничего не выполняем, ищем, что можно сделать
                         // Сначала атакуем
-                        if (PlayerHero.ClassHero.KindHero.TypeAttack == TypeAttack.Melee)
-                            if (SearchTargetForMelee() == false)
-                            {
-                                // Ищем цель на своей линии
-                                //if (Search)
-                            }
+                        switch (PlayerHero.ClassHero.KindHero.TypeAttack)
+                        { 
+                            case TypeAttack.Melee:                            
+                                if (SearchTargetForMelee() == false)
+                                {
+                                    // Ищем цель на своей линии
+                                    //if (Search)
+                                }
+                            break;
+                            case TypeAttack.Archer:
+                            case TypeAttack.Magic:
+                                if (SearchTargetForShoot() == false)
+                                {
+                                    // Ищем цель на своей линии
+                                    //if (Search)
+                                }
+                                break;
+                        }
 
                         break;
                     case StateHeroInBattle.Melee:
+                    case StateHeroInBattle.Archery:
+                    case StateHeroInBattle.Cast:
                         countAction--;
 
                         if (Target.IsLive == true)
@@ -159,6 +176,51 @@ namespace Fantasy_King_s_Battle
                     return false;
             }
 
+            bool SearchTargetForShoot()
+            {
+                Debug.Assert((PlayerHero.ClassHero.KindHero.TypeAttack == TypeAttack.Archer) || (PlayerHero.ClassHero.KindHero.TypeAttack == TypeAttack.Magic));
+
+                // Если герой, по которому стреляли, жив, атакуем его снова
+                if ((lastAttackedHero != null) && (lastAttackedHero.CurrentHealth > 0))
+                {
+                    Target = lastAttackedHero;
+                }
+                else
+                {
+                    // Ищем, кого атаковать
+                    List<HeroInBattle> targets = new List<HeroInBattle>();
+
+                    foreach (HeroInBattle h in b.ActiveHeroes)
+                    {
+                        // Собираем список вражеских героев
+                        if (h.Player != Player)
+                            if (h.CurrentHealth > 0)
+                                targets.Add(h);
+                    }
+
+                    if (targets.Count > 0)
+                    {
+                        Debug.Assert(this != targets[0]);
+                        Target = targets[Battle.Rnd.Next(0, targets.Count - 1)];
+                    }
+                }
+
+                if (Target != null)
+                { 
+                    if (PlayerHero.ClassHero.KindHero.TypeAttack == TypeAttack.Archer)
+                        State = StateHeroInBattle.Archery;
+                    else
+                        State = StateHeroInBattle.Cast;
+                    countAction = TimeAttack();
+                    timeAction = countAction;
+                    lastAttackedHero = Target;
+
+                    return true;
+                }
+                else
+                    return false;
+            }
+
             bool IsNeighbour(HeroInBattle hb)
             {
                 Debug.Assert(this != hb);
@@ -176,6 +238,7 @@ namespace Fantasy_King_s_Battle
             {
                 if (CurrentHealth <= 0)
                 {
+                    LastTarget = default;
                     State = StateHeroInBattle.Tumbstone;
                     timeAction = FormMain.Config.StepsHeroInTumbstone;
                     CurrentHealth = 0;
@@ -204,24 +267,30 @@ namespace Fantasy_King_s_Battle
             int delta = Parameters.MaxMeleeDamage - Parameters.MinMeleeDamage;
             int value = FormMain.Rnd.Next(delta);
 
-            int d = Parameters.MinMeleeDamage + value;
+            int d = Parameters.MaxMeleeDamage;// Parameters.MinMeleeDamage + value;
+
             return d;
         }
 
         private int CalcDamageShoot(HeroInBattle target)
         {
-            return 0;
+            int delta = Parameters.MaxArcherDamage - Parameters.MinArcherDamage;
+            int value = FormMain.Rnd.Next(delta);
+
+            int d = Parameters.MaxArcherDamage;// Parameters.MinArcherDamage + value;
+
+            return d;
         }
         private int CalcDamageMagic(HeroInBattle target)
         {
-            return 0;
+            int d = Parameters.MagicDamage;
+
+            return d;
         }
 
         internal void GetDamage(int damageMelee, int damageArcher, int damageMagic)
         {
-            Debug.Assert(damageMelee >= 0);
-            Debug.Assert(damageArcher >= 0);
-            Debug.Assert(damageMagic >= 0);
+            Debug.Assert((damageMelee > 0) || (damageArcher > 0) || (damageMagic > 0));
             Debug.Assert(State != StateHeroInBattle.Tumbstone);
             Debug.Assert(State != StateHeroInBattle.Dead);
             Debug.Assert(State != StateHeroInBattle.Resurrection);
@@ -235,6 +304,9 @@ namespace Fantasy_King_s_Battle
             // Сейчас для простоты берем уже посчитанные параметры с амуницией
             Parameters.MinMeleeDamage = PlayerHero.ParametersWithAmmunition.MinMeleeDamage;
             Parameters.MaxMeleeDamage = PlayerHero.ParametersWithAmmunition.MaxMeleeDamage;
+            Parameters.MinArcherDamage = PlayerHero.ParametersWithAmmunition.MinArcherDamage;
+            Parameters.MaxArcherDamage = PlayerHero.ParametersWithAmmunition.MaxArcherDamage;
+            Parameters.MagicDamage = PlayerHero.ParametersWithAmmunition.MagicDamage;
 
             Debug.Assert(Parameters.MinMeleeDamage <= Parameters.MaxMeleeDamage);
             Debug.Assert(Parameters.MinArcherDamage <= Parameters.MaxArcherDamage);

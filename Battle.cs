@@ -30,6 +30,7 @@ namespace Fantasy_King_s_Battle
             Player1 = player1;
             Player2 = player2;
             Turn = turn;
+            Rnd = r;
 
             BattleCalced = false;
             Step = 0;
@@ -62,6 +63,7 @@ namespace Fantasy_King_s_Battle
         internal Player Player1 { get; }// Игрок №1        
         internal Player Player2 { get; }// Игрок №2
         internal int Turn { get; }// Ход, на котором произошел бой
+        internal Random Rnd { get; }
         internal Size SizeBattlefield { get;  }
         internal int Step { get; private set; }// Шаг боя
         internal bool BattleCalced { get; private set; }
