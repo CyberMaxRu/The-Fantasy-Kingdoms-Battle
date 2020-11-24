@@ -12,7 +12,7 @@
   </KindHero>
   <KindHero>
     <ID>Mage</ID>
-    <TypeAttack>Archer</TypeAttack>
+    <TypeAttack>Magic</TypeAttack>
     <Hired>True</Hired>
   </KindHero>
   <KindHero>
