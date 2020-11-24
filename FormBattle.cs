@@ -47,8 +47,8 @@ namespace Fantasy_King_s_Battle
             Paint += FormBattle_Paint;
             FormClosing += FormBattle_FormClosing;
 
-            penArrow.Width = 3;
-            penArrow.CustomEndCap = new System.Drawing.Drawing2D.AdjustableArrowCap(4.0F, 8.0F, true);
+            penArrow.Width = 2;
+            penArrow.CustomEndCap = new System.Drawing.Drawing2D.AdjustableArrowCap(3.0F, 6.0F, true);
 
             // Создаем контролы
             lblPlayer1 = new Label()
@@ -214,15 +214,27 @@ namespace Fantasy_King_s_Battle
                     }
                 }
 
+            // Рисуем стрелки атаки
             foreach (HeroInBattle h in battle.ActiveHeroes)
             {
-                if (h.Target != null)
+                if ((h.Target != null) || !h.LastTarget.IsEmpty)
                 {
+                    Point coordTarget = h.Target != null ? h.Target.Coord : h.LastTarget;
+
                     PanelHeroInBattle p1 = cellHeroes[h.Coord.Y, h.Coord.X];
-                    PanelHeroInBattle p2 = cellHeroes[h.Target.Coord.Y, h.Target.Coord.X];
+                    PanelHeroInBattle p2 = cellHeroes[coordTarget.Y, coordTarget.X];
+
+                    // Делаем расчет точки назначения в зависимости от процент выполнения удара
+                    Point pSource = new Point(p1.Location.X + p1.Width / 2, p1.Location.Y + p1.Height / 2);
+                    Point pTarget = new Point(p2.Location.X + p2.Width / 2, p2.Location.Y + p2.Height / 2);
+                    double percent = h.PercentExecuteAction();
+                    if (h.InRollbackAction() == true)
+                        percent = 1 - percent;
+                    pTarget.X = (int)(pSource.X + ((pTarget.X - pSource.X) * percent));
+                    pTarget.Y = (int)(pSource.Y + ((pTarget.Y - pSource.Y) * percent));
 
                     penArrow.Color = h.PlayerHero.Player == battle.Player1 ? Color.Green : Color.Maroon;
-                    e.Graphics.DrawLine(penArrow, new Point(p1.Location.X + p1.Width / 2 , p1.Location.Y + p1.Height / 2), new Point(p2.Location.X + p2.Width / 2, p2.Location.Y + p2.Height / 2));
+                    e.Graphics.DrawLine(penArrow, pSource, pTarget);
                 }
             }
 
@@ -251,6 +263,8 @@ namespace Fantasy_King_s_Battle
             pastSeconds = battle.Step / FormMain.Config.StepsInSecond;
             TimeSpan ts = new TimeSpan(0, 0, pastSeconds);
             lblTimer.Text = ts.ToString("mm':'ss");
+
+            bmpPanel.Dispose();
         }
 
         internal void ShowBattle(Battle b)

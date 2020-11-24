@@ -14,7 +14,7 @@ namespace Fantasy_King_s_Battle
     {
         private int countAction;// Счетчик действия
         private int timeAction;// Какое количество времени выполнения действие
-        private bool inRollbackAfterAction;// Герой во время отката после выполнения действия
+        private bool inRollbackAfterAction;// Герой во время отката после выполнения действия        
 
         public HeroInBattle(Battle b, PlayerHero ph, Point coord)
         {
@@ -44,6 +44,7 @@ namespace Fantasy_King_s_Battle
         internal Point Coord { get; set; }
         internal StateHeroInBattle State { get; private set; }
         internal HeroInBattle Target { get; private set; }
+        internal Point LastTarget { get; private set; }
         internal int CurrentHealth { get; set; }
         internal int CurrentMana { get; set; }
         internal int CurrentStamina { get; set; }
@@ -67,7 +68,8 @@ namespace Fantasy_King_s_Battle
                         if (PlayerHero.ClassHero.KindHero.TypeAttack == TypeAttack.Melee)
                             if (SearchTargetForMelee() == false)
                             {
-
+                                // Ищем цель на своей линии
+                                //if (Search)
                             }
 
                         break;
@@ -80,6 +82,7 @@ namespace Fantasy_King_s_Battle
                             {
                                 // Делаем удар по противнику
                                 Target.GetDamage(CalcDamageMelee(Target), CalcDamageShoot(Target), CalcDamageMagic(Target));
+                                LastTarget = Target.Coord;
                                 Target = null;
 
                                 // После удара делаем паузу длиной во время атаки
@@ -90,6 +93,7 @@ namespace Fantasy_King_s_Battle
                         else
                         {
                             // Противника уже убили, пропускаем ход
+                            LastTarget = Target.Coord;
                             Target = null;
                             State = StateHeroInBattle.None;
                             countAction = timeAction - countAction;
@@ -118,6 +122,7 @@ namespace Fantasy_King_s_Battle
                 countAction--;
                 if (countAction == 0)
                 {
+                    LastTarget = default;
                     State = StateHeroInBattle.None;
                     inRollbackAfterAction = false;
                 }
@@ -233,6 +238,19 @@ namespace Fantasy_King_s_Battle
 
             Debug.Assert(Parameters.MinMeleeDamage <= Parameters.MaxMeleeDamage);
             Debug.Assert(Parameters.MinArcherDamage <= Parameters.MaxArcherDamage);
+        }
+
+        internal double PercentExecuteAction()
+        {
+            Debug.Assert(timeAction > 0);
+            Debug.Assert(countAction > 0);
+
+            return 1.00 * (timeAction - countAction) / timeAction;
+        }
+
+        internal bool InRollbackAction()
+        {
+            return inRollbackAfterAction;
         }
     }
 }
