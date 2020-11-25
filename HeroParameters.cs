@@ -55,6 +55,8 @@ namespace Fantasy_King_s_Battle
             SecondsToMove = Convert.ToDouble(n.SelectSingleNode("SecondsToMove").InnerText.Replace(".", ","));
             StepsToMoveToOtherTile = (int)(SecondsToMove * FormMain.Config.StepsInSecond);
 
+            Initiative = n.SelectSingleNode("Initiative") != null ? Convert.ToInt32(n.SelectSingleNode("Initiative").InnerText) : 1;
+
             CoefHealth = Convert.ToInt32(n.SelectSingleNode("CoefHealth").InnerText);
             CoefMana = Convert.ToInt32(n.SelectSingleNode("CoefMana").InnerText);
             CoefStamina = Convert.ToInt32(n.SelectSingleNode("CoefStamina").InnerText);
@@ -76,6 +78,7 @@ namespace Fantasy_King_s_Battle
         internal int TimeAttack { get; set; }// Время между атаками (в тиках)
         internal double SecondsToMove { get; set; }// Время (в сек) на передвижение до другой клетки
         internal int StepsToMoveToOtherTile { get; set; }// Количество шагов для движения в другую клетку
+        internal int Initiative { get; set; }// Инициатива. Герой с бОльшим значением получает право занять клетку, если на нее претендует несколько юнитов
         internal int CoefHealth { get; set; }
         internal int CoefMana { get; set; }
         internal int CoefStamina { get; set; }
