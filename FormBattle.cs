@@ -232,14 +232,18 @@ namespace Fantasy_King_s_Battle
             // Рисуем полоски жизней героев игроков
             GuiUtils.DrawBand(e.Graphics, rectBandHealthPlayer1, brushHealth, brushNoneHealth, CalcHealthPlayer(battle.Player1), maxHealthPlayer1);
             GuiUtils.DrawBand(e.Graphics, rectBandHealthPlayer2, brushHealth, brushNoneHealth, CalcHealthPlayer(battle.Player2), maxHealthPlayer2);
-            
+
             // Рисуем героев
+            HeroInBattle hero;
+
             for (int y = 0; y < battle.SizeBattlefield.Height; y++)
                 for (int x = 0; x < battle.SizeBattlefield.Width; x++)
                 {
                     cellHeroes[y, x].Hero = battle.Battlefield.Tiles[y, x].Unit;
                     if (cellHeroes[y, x].Hero != null)
                     {
+                        hero = cellHeroes[y, x].Hero;
+
                         Point shift = new Point(0, 0);
                         if (cellHeroes[y, x].Hero.TileForMove != null)
                         {
@@ -249,6 +253,16 @@ namespace Fantasy_King_s_Battle
 
                             shift.X = (int)((cellHeroes[tileforMove.Y, tileforMove.X].Left - cellHeroes[y, x].Left) * percent);
                             shift.Y = (int)((cellHeroes[tileforMove.Y, tileforMove.X].Top - cellHeroes[y, x].Top) * percent);
+                        }
+
+                        if (((hero.Target != null) || (hero.LastTarget != default)) && (hero.PlayerHero.ClassHero.KindHero.TypeAttack == TypeAttack.Melee) && (hero.DestinationForMove == null))
+                        {
+                            Point coordTarget = hero.Target != null ? hero.Target.Coord : hero.LastTarget;
+
+                            int shiftX = (int)((coordTarget.X > hero.Coord.X ? 1 : coordTarget.X < hero.Coord.X ? -1 : 0) * FormMain.Config.GridSize * hero.PercentExecuteAction());
+                            int shiftY = (int)((coordTarget.Y > hero.Coord.Y ? 1 : coordTarget.Y < hero.Coord.Y ? -1 : 0) * FormMain.Config.GridSize * hero.PercentExecuteAction());
+                            shift.X += shiftX;
+                            shift.Y += shiftY;
                         }
 
                         cellHeroes[y, x].DrawToBitmap(bmpPanel, new Rectangle(0, 0, bmpPanel.Width, bmpPanel.Height));
@@ -291,15 +305,18 @@ namespace Fantasy_King_s_Battle
                             pTarget.Y = (int)(pSource.Y + ((pTarget.Y - pSource.Y) * percent));
                         }
 
-                        penArrow.Color = h.PlayerHero.Player == battle.Player1 ? Color.Green : Color.Maroon;
-                        penCircle.Color = h.PlayerHero.Player == battle.Player1 ? Color.Green : Color.Maroon;
-                        if (h.PlayerHero.ClassHero.KindHero.TypeAttack == TypeAttack.Melee)
-                        {
-                            e.Graphics.DrawLine(penArrow, pSource, pTarget);
-                        }
-                        else
-                        {
-                            e.Graphics.DrawEllipse(penCircle, pTarget.X - 3, pTarget.Y - 3, 6, 6);
+                        if (h.PlayerHero.ClassHero.KindHero.TypeAttack != TypeAttack.Melee)
+                        { 
+                            penArrow.Color = h.PlayerHero.Player == battle.Player1 ? Color.Green : Color.Maroon;
+                            penCircle.Color = h.PlayerHero.Player == battle.Player1 ? Color.Green : Color.Maroon;
+                            if (h.PlayerHero.ClassHero.KindHero.TypeAttack == TypeAttack.Melee)
+                            {
+                                e.Graphics.DrawLine(penArrow, pSource, pTarget);
+                            }
+                            else
+                            {
+                                e.Graphics.DrawEllipse(penCircle, pTarget.X - 3, pTarget.Y - 3, 6, 6);
+                            }
                         }
                     }
                 }
