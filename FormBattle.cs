@@ -22,6 +22,12 @@ namespace Fantasy_King_s_Battle
         private Bitmap bmpBackground;
         private Stopwatch timePassed = new Stopwatch();
         private bool inDraw;
+        private Pen penGrid = new Pen(Color.Gray);
+        private Size sizeTile;
+        private Size sizeCell;
+        private Point topLeftGrid;
+        private Point topLeftCells;
+        private const int WIDTH_LINE = 1;
 
         private readonly Label lblPlayer1;
         private readonly Label lblPlayer2;
@@ -199,6 +205,16 @@ namespace Fantasy_King_s_Battle
             e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
             e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
             e.Graphics.DrawImageUnscaled(bmpBackground, 0, 0);
+
+            // Рисуем сетку
+            // Вертикальные линии
+            for (int x = 0; x <= battle.SizeBattlefield.Width; x++)
+                e.Graphics.DrawLine(penGrid, topLeftGrid.X + x * sizeTile.Width, topLeftGrid.Y, topLeftGrid.X + x * sizeTile.Width, topLeftGrid.Y + battle.SizeBattlefield.Height * sizeTile.Height);
+            // Горизонтальные линии
+            for (int y = 0; y <= battle.SizeBattlefield.Height; y++)
+                e.Graphics.DrawLine(penGrid, topLeftGrid.X, topLeftGrid.Y + y * sizeTile.Height, topLeftGrid.X + battle.SizeBattlefield.Width * sizeTile.Width, topLeftGrid.Y + y * sizeTile.Height);
+            
+            //
             e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
 
             // Рисуем аватарки игроков
@@ -362,8 +378,13 @@ namespace Fantasy_King_s_Battle
             lblDamagePlayer2.Top = btnEndBattle.Top;
             lblDamagePlayer2.Left = pointAvatarPlayer2.X - FormMain.Config.GridSize - 80;
             lblDamagePlayer2.Hide();
+
             //
-            int topCells = rectBandHealthPlayer1.Y + rectBandHealthPlayer1.Height + FormMain.Config.GridSize;
+            sizeCell = phb.Size;
+            sizeTile = new Size(phb.Size.Width + (FormMain.Config.GridSize * 2) + 1, phb.Size.Height + (FormMain.Config.GridSize * 2) + 1);
+            topLeftGrid = new Point(FormMain.Config.GridSize, rectBandHealthPlayer1.Y + rectBandHealthPlayer1.Height + FormMain.Config.GridSize);
+            topLeftCells = new Point(topLeftGrid.X + FormMain.Config.GridSize + 1, topLeftGrid.Y + FormMain.Config.GridSize + 1);
+
             cellHeroes = new PanelHeroInBattle[b.SizeBattlefield.Height, b.SizeBattlefield.Width];
             for (int y = 0; y < b.SizeBattlefield.Height; y++)
                 for (int x = 0; x < b.SizeBattlefield.Width; x++)
@@ -371,14 +392,15 @@ namespace Fantasy_King_s_Battle
                     p = new PanelHeroInBattle(Program.formMain.ilGuiHeroes)
                     {
                         //Parent = this,
-                        Left = FormMain.Config.GridSize + (x * (phb.Width + FormMain.Config.GridSize)),
-                        Top = topCells + (y * (phb.Height + FormMain.Config.GridSize))
+                        Left = topLeftCells.X + (x * sizeTile.Width),
+                        Top = topLeftCells.Y + (y * sizeTile.Height)
                     };
 
                     cellHeroes[y, x] = p;
                 }
 
-            Height = topCells + (b.SizeBattlefield.Height * (phb.Height + FormMain.Config.GridSize)) + (Height - ClientSize.Height);
+            Width = topLeftGrid.X + (b.SizeBattlefield.Width * sizeTile.Width) + WIDTH_LINE + FormMain.Config.GridSize + (Width - ClientSize.Width);
+            Height = topLeftGrid.Y + (b.SizeBattlefield.Height * sizeTile.Height + WIDTH_LINE) + FormMain.Config.GridSize +  (Height - ClientSize.Height);
 
             // Подготавливаем подложку
             bmpBackground = GuiUtils.MakeBackground(ClientSize);
