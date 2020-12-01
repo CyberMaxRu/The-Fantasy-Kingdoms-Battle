@@ -118,7 +118,7 @@ namespace Fantasy_King_s_Battle
                             if (SearchTargetForMove() == true)
                             {
                                 State = StateHeroInBattle.Move;
-                                countAction = TimeMove();
+                                countAction = (int)(TimeMove() * 1.00 * ((TileForMove.X != 0) && (TileForMove.Y != 0) ? 1.4 : 1));
                                 timeAction = countAction;
                                 inRollbackAfterAction = false;
                                 //State = StateHeroInBattle.PrepareMove;
@@ -478,7 +478,7 @@ namespace Fantasy_King_s_Battle
             int timeMove = (int)(PlayerHero.ParametersWithAmmunition.SecondsToMove / 100.00 * FormMain.Config.StepsInSecond);
             if (timeMove == 0)
                 timeMove = 1 * FormMain.Config.StepsInSecond;
-            timeMove = 3 * FormMain.Config.StepsInSecond;
+            //timeMove = 3 * FormMain.Config.StepsInSecond;
             Debug.Assert(timeMove > 0);
             return timeMove;
         }
