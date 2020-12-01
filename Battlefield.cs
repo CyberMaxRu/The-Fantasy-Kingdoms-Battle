@@ -39,7 +39,7 @@ namespace Fantasy_King_s_Battle
         public List<BattlefieldTile> _path;
 
         // Поиск пути
-        public bool Pathfind(BattlefieldTile fromTile, BattlefieldTile toTile)
+        public bool Pathfind(BattlefieldTile fromTile, BattlefieldTile toTile, Player throughPlayer)
         {
             Debug.Assert(fromTile != null);
             Debug.Assert(toTile != null);
@@ -70,7 +70,7 @@ namespace Fantasy_King_s_Battle
             }
             openSet.Clear();
 
-            FindPath(fromTile, toTile);
+            FindPath(fromTile, toTile, throughPlayer);
             Debug.Assert((_path.Count() == 0) || (Utils.PointsIsNeighbor(fromTile.Coord, _path.First().Coord) == true));
             Debug.Assert((_path.Count() == 0) || (_path.Last() == toTile));
 
@@ -78,13 +78,13 @@ namespace Fantasy_King_s_Battle
             for (int i = 0; i < _path.Count() - 1; i++)
             {
                 //Debug.Assert(_path[i].ReservedForMove == null);
-                Debug.Assert(_path[i].Unit == null);
+                //Debug.Assert(_path[i].Unit == null);
             }
 
             return _path.Count() > 0;
         }
 
-        public void FindPath(BattlefieldTile sourceTile, BattlefieldTile destTile)
+        public void FindPath(BattlefieldTile sourceTile, BattlefieldTile destTile, Player throughPlayer)
         {
             Debug.Assert(sourceTile.Unit != null);
             Debug.Assert(destTile.ReservedForMove == null);
@@ -121,30 +121,32 @@ namespace Fantasy_King_s_Battle
                 // Переделать на foreach
                 foreach (BattlefieldTile neighbourNode in currentNode.TilesAround)
                 {
-                    // Пропускаем ячейки, которые уже зарезервировали для движения
-                    if ((neighbourNode == destTile) || (neighbourNode.Unit == null))
-                    {
-                        // Если зарезервирована соседняя от начала пути ячейки, то обходим её
-                        // Когда сделаем шаг, она может быть уже не зарезервирована, поэтому продолжим тот же путь
-                        if (neighbourNode.ReservedForMove != null)
-                            if (neighbourNode.IsNeighbourTile(sourceTile) == true)                          
+                    // Если зарезервирована соседняя от начала пути ячейки, то обходим её
+                    // Когда сделаем шаг, она может быть уже не зарезервирована, поэтому продолжим тот же путь
+                    if (neighbourNode.ReservedForMove != null)
+                        if (neighbourNode.IsNeighbourTile(sourceTile) == true)
+                            continue;
+                    if (neighbourNode.Unit != null)
+                        if (neighbourNode != destTile)
+                            if (!((throughPlayer != null) && (neighbourNode.Unit.Player == throughPlayer)))
+                                //if (neighbourNode.IsNeighbourTile(sourceTile) == true)
                                 continue;
 
-                        //
-                        lengthFromStart = currentNode.PathLengthFromStart + currentNode.GetDistanceToTile(neighbourNode);
-                        if (((neighbourNode.PathLengthFromStart == 0) || (lengthFromStart < neighbourNode.PathLengthFromStart)) && (neighbourNode != sourceTile))
-                        {
-                            neighbourNode.PathLengthFromStart = lengthFromStart;
-                            neighbourNode.HeuristicEstimatePathLength = neighbourNode.GetHeuristicPathLength(destTile);
-                            neighbourNode.PriorTile = currentNode;
-                        }
+                    //
+                    lengthFromStart = currentNode.PathLengthFromStart + currentNode.GetDistanceToTile(neighbourNode);
+                    if (((neighbourNode.PathLengthFromStart == 0) || (lengthFromStart < neighbourNode.PathLengthFromStart)) && (neighbourNode != sourceTile))
+                    {
+                        neighbourNode.PathLengthFromStart = lengthFromStart;
+                        neighbourNode.HeuristicEstimatePathLength = neighbourNode.GetHeuristicPathLength(destTile);
+                        neighbourNode.PriorTile = currentNode;
+                    }
 
-                        // Шаг 7.
-                        if ((neighbourNode.Closed == false) && (neighbourNode.Opened == false))
-                        {
-                            openSet.Add(neighbourNode);
-                            neighbourNode.Opened = true;
-                        }
+                    // Шаг 7.
+                    if ((neighbourNode.Closed == false) && (neighbourNode.Opened == false))
+                    {
+                        openSet.Add(neighbourNode);
+                        neighbourNode.Opened = true;
+
                     }
                 }
             }

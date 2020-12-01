@@ -421,7 +421,13 @@ namespace Fantasy_King_s_Battle
             foreach (HeroInBattle h in Battle.ActiveHeroes)
                 if ((h.Player != Player) && (h.currentTile != null) && (h.State != StateHeroInBattle.Tumbstone))
                 {
-                    if (Battle.Battlefield.Pathfind(CurrentTile, h.currentTile) == true)
+                    bool pathFinded = Battle.Battlefield.Pathfind(CurrentTile, h.currentTile, null);
+
+                    // Если некуда идти, то надо идти в сторону противника. Возможно, после шага к нему можно будет пройти
+                    if (!pathFinded)
+                        pathFinded = Battle.Battlefield.Pathfind(CurrentTile, h.currentTile, Player);
+
+                    if (pathFinded && (Battle.Battlefield._path[0].Unit == null))
                     {
                         PathToDestination = Battle.Battlefield._path;
                         DestinationForMove = PathToDestination.Last();
@@ -455,7 +461,7 @@ namespace Fantasy_King_s_Battle
                             // if ((t.Unit.IsLive == true) && (t.Unit.State != StateHeroInBattle.Move))
                             {
                                 // Смотрим, можно ли к нему построить путь
-                                if (Battle.Battlefield.Pathfind(CurrentTile, t.Unit.currentTile) == true)
+                                if (Battle.Battlefield.Pathfind(CurrentTile, t.Unit.currentTile, null) == true)
                                 {
                                     PathToDestination = Battle.Battlefield._path;
                                     DestinationForMove = PathToDestination.Last();
@@ -478,7 +484,7 @@ namespace Fantasy_King_s_Battle
             int timeMove = (int)(PlayerHero.ParametersWithAmmunition.SecondsToMove / 100.00 * FormMain.Config.StepsInSecond);
             if (timeMove == 0)
                 timeMove = 1 * FormMain.Config.StepsInSecond;
-            timeMove = 5 * FormMain.Config.StepsInSecond;
+            //timeMove = 3 * FormMain.Config.StepsInSecond;
             Debug.Assert(timeMove > 0);
             return timeMove;
         }

@@ -17,7 +17,7 @@
         <ID>WeaponRogue0</ID>
         <Hero>Rogue</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMelee>0</DamageMelee>
+        <DamageMelee>5</DamageMelee>
       </Weapon>
       <Weapon>
         <ID>WeaponDwarf0</ID>
