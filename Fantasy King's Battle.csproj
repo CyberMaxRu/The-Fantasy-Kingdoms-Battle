@@ -54,6 +54,8 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Battle.cs" />
+    <Compile Include="Battlefield.cs" />
+    <Compile Include="BattlefieldTile.cs" />
     <Compile Include="Building.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Entity.cs" />

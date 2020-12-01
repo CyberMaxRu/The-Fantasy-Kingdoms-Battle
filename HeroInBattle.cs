@@ -8,7 +8,8 @@ using System.Drawing;
 
 namespace Fantasy_King_s_Battle
 {
-    internal enum StateHeroInBattle { Melee, Archery, Cast, Drink, Healing, Rest, Resurrection, Tumbstone, Dead, None }// Состояние героя в бою
+    internal enum StateHeroInBattle { Melee, Archery, Cast, Drink, Healing, Rest, Resurrection, Tumbstone, Dead, 
+        PrepareMove, Move, None }// Состояние героя в бою
 
     internal sealed class HeroInBattle
     {
@@ -16,12 +17,13 @@ namespace Fantasy_King_s_Battle
         private int timeAction;// Какое количество времени выполнения действие
         private bool inRollbackAfterAction;// Герой во время отката после выполнения действия        
         private HeroInBattle lastAttackedHero;
+        private BattlefieldTile currentTile;
 
         public HeroInBattle(Battle b, PlayerHero ph, Point coord)
         {
             Battle = b;
+            CurrentTile = b.Battlefield.Tiles[coord.Y, coord.X];            
             PlayerHero = ph;
-            Coord = coord;
             IsLive = true;
 
             Parameters = new HeroParameters(ph.ParametersWithAmmunition);
@@ -44,7 +46,6 @@ namespace Fantasy_King_s_Battle
         internal HeroParameters Parameters { get; }
         internal Battle Battle { get; }
         internal bool IsLive { get; set; }
-        internal Point Coord { get; set; }
         internal StateHeroInBattle State { get; private set; }
         internal HeroInBattle Target { get; private set; }
         internal Point LastTarget { get; private set; }
@@ -53,10 +54,32 @@ namespace Fantasy_King_s_Battle
         internal int CurrentStamina { get; set; }
         internal int ReceivedDamage { get; private set; }
 
+        //
+        internal Point Coord { get { return new Point(currentTile.X, currentTile.Y); } }
+        internal BattlefieldTile CurrentTile
+        {
+            get { return currentTile; }
+            set
+            {
+                Debug.Assert(value != null);
+
+                if (currentTile != null)
+                    currentTile.Unit = null;
+
+                currentTile = value;
+                currentTile.Unit = this;
+            }
+        }
+        internal BattlefieldTile DestinationForMove { get; set; }
+        internal BattlefieldTile TileForMove { get; set; }
+        internal List<BattlefieldTile> PathToDestination;
+        //internal int MoveStepPaa
+
         // Делает шаг битвы
         internal void DoStepBattle(Battle b)
         {
             Debug.Assert(IsLive == true);
+            Debug.Assert(CurrentTile != null);
 
             if (inRollbackAfterAction == false)
             {
@@ -65,6 +88,8 @@ namespace Fantasy_King_s_Battle
                     case StateHeroInBattle.None:
                         Debug.Assert(Target == null);
                         Debug.Assert(countAction == 0);
+                        Debug.Assert(CurrentHealth > 0);
+                        Debug.Assert(IsLive == true);
 
                         // Если сейчас ничего не выполняем, ищем, что можно сделать
                         // Сначала атакуем
@@ -87,13 +112,26 @@ namespace Fantasy_King_s_Battle
                                 break;
                         }
 
+                        // Если целей нет, идем к ней
+                        if (Target == null)
+                        {
+                            if (SearchTargetForMove() == true)
+                            {
+                                State = StateHeroInBattle.Move;
+                                countAction = TimeMove();
+                                timeAction = countAction;
+                                inRollbackAfterAction = false;
+                                //State = StateHeroInBattle.PrepareMove;
+                            }
+                        }
+
                         break;
                     case StateHeroInBattle.Melee:
                     case StateHeroInBattle.Archery:
                     case StateHeroInBattle.Cast:
                         countAction--;
 
-                        if (Target.IsLive == true)
+                        if (Target.State != StateHeroInBattle.Tumbstone)
                         {
                             if (countAction == 0)
                             {
@@ -127,6 +165,43 @@ namespace Fantasy_King_s_Battle
                         {
                             IsLive = false;
                             State = StateHeroInBattle.Dead;
+                            currentTile = null;
+                        }
+
+                        break;
+                    case StateHeroInBattle.Move:
+                        Debug.Assert(TileForMove != null);
+                        Debug.Assert(TileForMove.Unit == null);
+
+                        countAction--;
+                        if (countAction == 0)
+                        {
+                            Debug.Assert(TileForMove.ReservedForMove == this);
+
+                            // Пришли на тайл
+                            Target = null;
+                            CurrentTile = TileForMove;
+                            TileForMove.ReservedForMove = null;
+                            TileForMove = null;
+
+                            if (PathToDestination.Count() > 1)
+                            {
+                                // Заново осматриваемся
+                                State = StateHeroInBattle.None;
+
+                                /*TileForMove = PathToDestination.First();
+                                PathToDestination.RemoveAt(0);
+
+                                countAction = TimeMove();
+                                timeAction = countAction;*/
+                            }
+                            else
+                            {
+                                // Пришли на конечный тайл
+                                State = StateHeroInBattle.None;
+                            }
+                            PathToDestination = null;
+                            DestinationForMove = null;
                         }
 
                         break;
@@ -155,10 +230,11 @@ namespace Fantasy_King_s_Battle
                 foreach (HeroInBattle h in b.ActiveHeroes)
                 {
                     // Собираем список вражеских героев вокруг себя
-                    if (h.Player != Player)
-                        if (IsNeighbour(h) == true)
+                    if (h.IsLive == true)
+                        if (h.Player != Player)
                             if (h.CurrentHealth > 0)
-                               targets.Add(h);
+                                if (IsNeighbour(h) == true)
+                                   targets.Add(h);
                 }
 
                 if (targets.Count > 0)
@@ -316,13 +392,84 @@ namespace Fantasy_King_s_Battle
         {
             Debug.Assert(timeAction > 0);
             Debug.Assert(countAction > 0);
+            double percent = 1.00 * (timeAction - countAction) / timeAction;
 
-            return 1.00 * (timeAction - countAction) / timeAction;
+            Debug.Assert(percent <= 1);
+            return percent;
         }
 
         internal bool InRollbackAction()
         {
             return inRollbackAfterAction;
+        }
+
+        private bool SearchTargetForMove()
+        {
+            // Ищем ближайшего противника
+            // Здесь переделать на перебор всех противников, до которых можно добраться, и учесть их вес
+            foreach (HeroInBattle h in Battle.ActiveHeroes)
+                if ((h.Player != Player) && (h.currentTile != null) && (h.State != StateHeroInBattle.Tumbstone))
+                {
+                    if (Battle.Battlefield.Pathfind(CurrentTile, h.currentTile) == true)
+                    {
+                        PathToDestination = Battle.Battlefield._path;
+                        DestinationForMove = PathToDestination.Last();
+                        Debug.Assert(DestinationForMove == h.currentTile);
+                        TileForMove = PathToDestination.First();
+                        Debug.Assert(TileForMove.Unit == null);
+                        Debug.Assert(TileForMove.ReservedForMove == null);
+                        Debug.Assert(Utils.PointsIsNeighbor(Coord, new Point(TileForMove.X, TileForMove.Y)) == true);
+
+                        Debug.Assert(TileForMove.ReservedForMove == null);
+                        TileForMove.ReservedForMove = this;
+
+                        return true;
+                    }
+                }
+            //foreach (BattlefieldTile t in curTile.TilesAround)
+            //{
+            //    if (SearchAround(t) == true)
+            //        return true;
+            //}
+
+            return false;
+
+            bool SearchAround(BattlefieldTile tile)
+            {
+                foreach (BattlefieldTile t in tile.TilesAround)
+                {
+                    if (t.Unit != null)
+                        if (t.Unit.Player != Player)
+                            if (t.Unit.IsLive == true)
+                            // if ((t.Unit.IsLive == true) && (t.Unit.State != StateHeroInBattle.Move))
+                            {
+                                // Смотрим, можно ли к нему построить путь
+                                if (Battle.Battlefield.Pathfind(CurrentTile, t.Unit.currentTile) == true)
+                                {
+                                    PathToDestination = Battle.Battlefield._path;
+                                    DestinationForMove = PathToDestination.Last();
+                                    return true;
+                                }
+                            }
+                }
+
+                return false;
+            }
+        }
+
+        private void Move()
+        {
+
+        }
+
+        private int TimeMove()
+        {
+            int timeMove = (int)(PlayerHero.ParametersWithAmmunition.SecondsToMove / 100.00 * FormMain.Config.StepsInSecond);
+            if (timeMove == 0)
+                timeMove = 1 * FormMain.Config.StepsInSecond;
+
+            Debug.Assert(timeMove > 0);
+            return timeMove;
         }
     }
 }

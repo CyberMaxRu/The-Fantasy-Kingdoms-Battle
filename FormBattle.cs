@@ -165,8 +165,13 @@ namespace Fantasy_King_s_Battle
                 {
                     // Рисуем столько кадров, сколько должно было пройти
                     pastFrames = (int)(timePassed.ElapsedMilliseconds / FormMain.Config.StepInMSec);
+                    int calcFrames = 0;
                     while ((battle.Step <= pastFrames) && (battle.BattleCalced == false))
+                    {
                         battle.CalcStep();
+                        calcFrames++;
+                    }
+                    //lblPlayer1.Text = calcFrames.ToString();
 
                     DoFrame();
                 }
@@ -187,44 +192,68 @@ namespace Fantasy_King_s_Battle
                 battle.CalcWholeBattle(); 
         }
 
-        private void FormBattle_Paint(object sender, PaintEventArgs e)
+        protected override void OnPaintBackground(PaintEventArgs e)
         {
+            base.OnPaintBackground(e);
+
             e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
             e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
             e.Graphics.DrawImageUnscaled(bmpBackground, 0, 0);
             e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
 
-            Bitmap bmpPanel = new Bitmap(cellHeroes[0, 0].Width, cellHeroes[0, 0].Height);
-
             // Рисуем аватарки игроков
             e.Graphics.DrawImageUnscaled(Program.formMain.ilPlayerAvatarsBig.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilPlayerAvatarsBig, battle.Player1.ImageIndexAvatar, (battle.BattleCalced == false) || (battle.Winner == battle.Player1))], pointAvatarPlayer1);
             e.Graphics.DrawImageUnscaled(Program.formMain.ilPlayerAvatarsBig.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilPlayerAvatarsBig, battle.Player2.ImageIndexAvatar, (battle.BattleCalced == false) || (battle.Winner == battle.Player2))], pointAvatarPlayer2);
+        }
 
+        private void FormBattle_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+            e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
+            
+            Bitmap bmpPanel = new Bitmap(cellHeroes[0, 0].Width, cellHeroes[0, 0].Height);
+            
             // Рисуем полоски жизней героев игроков
             GuiUtils.DrawBand(e.Graphics, rectBandHealthPlayer1, brushHealth, brushNoneHealth, CalcHealthPlayer(battle.Player1), maxHealthPlayer1);
             GuiUtils.DrawBand(e.Graphics, rectBandHealthPlayer2, brushHealth, brushNoneHealth, CalcHealthPlayer(battle.Player2), maxHealthPlayer2);
-
+            
             // Рисуем героев
             for (int y = 0; y < battle.SizeBattlefield.Height; y++)
                 for (int x = 0; x < battle.SizeBattlefield.Width; x++)
                 {
+                    cellHeroes[y, x].Hero = battle.Battlefield.Tiles[y, x].Unit;
                     if (cellHeroes[y, x].Hero != null)
                     {
+                        Point shift = new Point(0, 0);
+                        if (cellHeroes[y, x].Hero.TileForMove != null)
+                        {
+                            BattlefieldTile tileforMove = cellHeroes[y, x].Hero.TileForMove;
+                            Debug.Assert(Utils.PointsIsNeighbor(cellHeroes[y, x].Hero.Coord, new Point(tileforMove.X, tileforMove.Y)) == true);
+                            double percent = cellHeroes[y, x].Hero.PercentExecuteAction();
+
+                            shift.X = (int)((cellHeroes[tileforMove.Y, tileforMove.X].Left - cellHeroes[y, x].Left) * percent);
+                            shift.Y = (int)((cellHeroes[tileforMove.Y, tileforMove.X].Top - cellHeroes[y, x].Top) * percent);
+                        }
+
                         cellHeroes[y, x].DrawToBitmap(bmpPanel, new Rectangle(0, 0, bmpPanel.Width, bmpPanel.Height));
-                        e.Graphics.DrawImageUnscaled(bmpPanel, cellHeroes[y, x].Left, cellHeroes[y, x].Top);
+                        e.Graphics.DrawImageUnscaled(bmpPanel, cellHeroes[y, x].Left + shift.X, cellHeroes[y, x].Top + shift.Y);
                     }
                 }
-
+            
             // Рисуем стрелки атаки
             foreach (HeroInBattle h in battle.ActiveHeroes)
             {
-                if ((h.Target != null) || (h.LastTarget != default))
+                if ((h.Target != null) || (h.LastTarget != default) || h.DestinationForMove != null)
                 {
                     if (h.PlayerHero.ClassHero.KindHero.TypeAttack != TypeAttack.Melee)
                         if (h.Target is null)
                             continue;
 
-                    Point coordTarget = h.Target != null ? h.Target.Coord : h.LastTarget;
+                    Point coordTarget;
+                    if (h.DestinationForMove == null)
+                        coordTarget = h.Target != null ? h.Target.Coord : h.LastTarget;
+                    else
+                        coordTarget = new Point(h.DestinationForMove.X, h.DestinationForMove.Y);
 
                     PanelHeroInBattle p1 = cellHeroes[h.Coord.Y, h.Coord.X];
                     PanelHeroInBattle p2 = cellHeroes[coordTarget.Y, coordTarget.X];
@@ -233,13 +262,16 @@ namespace Fantasy_King_s_Battle
                     Point pSource = new Point(p1.Location.X + p1.Width / 2, p1.Location.Y + p1.Height / 2);
                     Point pTarget = new Point(p2.Location.X + p2.Width / 2, p2.Location.Y + p2.Height / 2);
 
-                    double percent = h.PercentExecuteAction();
-                    if (h.PlayerHero.ClassHero.KindHero.TypeAttack == TypeAttack.Melee)
-                        if (h.InRollbackAction() == true)
-                            percent = 1 - percent;
+                    if (h.DestinationForMove == null)
+                    {
+                        double percent = h.PercentExecuteAction();
+                        if (h.PlayerHero.ClassHero.KindHero.TypeAttack == TypeAttack.Melee)
+                            if (h.InRollbackAction() == true)
+                                percent = 1 - percent;
 
-                    pTarget.X = (int)(pSource.X + ((pTarget.X - pSource.X) * percent));
-                    pTarget.Y = (int)(pSource.Y + ((pTarget.Y - pSource.Y) * percent));
+                        pTarget.X = (int)(pSource.X + ((pTarget.X - pSource.X) * percent));
+                        pTarget.Y = (int)(pSource.Y + ((pTarget.Y - pSource.Y) * percent));
+                    }
 
                     penArrow.Color = h.PlayerHero.Player == battle.Player1 ? Color.Green : Color.Maroon;
                     penCircle.Color = h.PlayerHero.Player == battle.Player1 ? Color.Green : Color.Maroon;
@@ -383,14 +415,16 @@ namespace Fantasy_King_s_Battle
 
             foreach (HeroInBattle h in battle.ActiveHeroes)
             {
-                Debug.Assert(cellHeroes[h.Coord.Y, h.Coord.X].Hero == null);
+                //Debug.Assert(cellHeroes[h.Coord.Y, h.Coord.X].Hero == null);
 
-                cellHeroes[h.Coord.Y, h.Coord.X].Hero = h;
+                //cellHeroes[h.Coord.Y, h.Coord.X].Hero = h;
             }
-
+            
             btnEndBattle.Enabled = !battle.BattleCalced;
             if (battle.BattleCalced)
             {
+                timerStep.Stop();
+
                 if (battle.Winner == battle.Player1)
                 {
                     lblDamagePlayer1.Show();
@@ -403,7 +437,7 @@ namespace Fantasy_King_s_Battle
                 }
             }
 
-            Refresh();
+            Refresh();// Увеличивает потребление ЦП
         }
     }
 }

@@ -177,6 +177,7 @@ namespace Fantasy_King_s_Battle
                         {
                             formBattle = new FormBattle();
                             formBattle.ShowBattle(b);
+                            formBattle.Dispose();
                         }
                         else
                             b.CalcWholeBattle();

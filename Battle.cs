@@ -13,7 +13,7 @@ namespace Fantasy_King_s_Battle
     // Класс боя между двумя игроками
     internal sealed class Battle
     {
-        internal HeroInBattle[,] battlefield;
+        internal Battlefield Battlefield;
         private List<HeroInBattle> heroesForDelete = new List<HeroInBattle>();
 
         internal Battle(Player player1, Player player2, int turn, Random r)
@@ -34,29 +34,29 @@ namespace Fantasy_King_s_Battle
 
             BattleCalced = false;
             Step = 0;
-            SizeBattlefield = new Size(FormMain.Config.HeroRows * 2, FormMain.Config.HeroInRow);
-            battlefield = new HeroInBattle[SizeBattlefield.Height, SizeBattlefield.Width];
+            SizeBattlefield = new Size(FormMain.Config.HeroRows * 2, FormMain.Config.HeroInRow);            
+            Battlefield = new Battlefield(SizeBattlefield.Width, SizeBattlefield.Height);
 
             // Запоминаем героев в одном списке для упрощения расчетов
             foreach (PlayerHero ph in player1.CombatHeroes)
             {
-                AddHero(new HeroInBattle(this, ph, new Point(FormMain.Config.HeroRows - ph.CoordInPlayer.Y - 1, ph.CoordInPlayer.X)));
+                AddHero(new HeroInBattle(this, ph, new Point(FormMain.Config.HeroRows - ph.CoordInPlayer.Y - 1 - 3, ph.CoordInPlayer.X)));
             }
 
             foreach (PlayerHero ph in player2.CombatHeroes)
             {
-                AddHero(new HeroInBattle(this, ph, new Point(ph.CoordInPlayer.Y + FormMain.Config.HeroRows, ph.CoordInPlayer.X)));
+                AddHero(new HeroInBattle(this, ph, new Point(ph.CoordInPlayer.Y + FormMain.Config.HeroRows + 3, ph.CoordInPlayer.X)));
             }
 
             void AddHero(HeroInBattle hb)
             {
                 Debug.Assert(hb.IsLive == true);
                 //Debug.Assert(ph.ParametersInBattle.CurrentHealth > 0);
-                Debug.Assert(battlefield[hb.Coord.Y, hb.Coord.X] == null);
+                //Debug.Assert(Battlefield.Tiles[hb.Coord.Y, hb.Coord.X].Unit == null);
 
                 ActiveHeroes.Add(hb);
                 AllHeroes.Add(hb);
-                battlefield[hb.Coord.Y, hb.Coord.X] = hb;
+                //Battlefield.Tiles[hb.Coord.Y, hb.Coord.X].Unit = hb;
             }
         }
 
@@ -100,7 +100,15 @@ namespace Fantasy_King_s_Battle
 
             // Делаем действие каждым живым героем
             foreach (HeroInBattle hb in ActiveHeroes)
+            {
+                // Для отладки проверяем, что нет героев, стоящих на одной клетке
+                foreach (HeroInBattle hb2 in ActiveHeroes)
+                    if (hb2 != hb)
+                        if ((hb2.CurrentTile != null) && (hb.CurrentTile != null) && (hb2.Coord.Equals(hb.Coord)))
+                            throw new Exception("Два героя стоят на " + hb2.Coord.ToString());
+
                 hb.DoStepBattle(this);
+            }
 
             // Применяем полученный урон, баффы/дебаффы
             foreach (HeroInBattle hb in ActiveHeroes)
