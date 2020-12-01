@@ -77,7 +77,7 @@ namespace Fantasy_King_s_Battle
 
             for (int i = 0; i < _path.Count() - 1; i++)
             {
-                Debug.Assert(_path[i].ReservedForMove == null);
+                //Debug.Assert(_path[i].ReservedForMove == null);
                 Debug.Assert(_path[i].Unit == null);
             }
 
@@ -100,7 +100,7 @@ namespace Fantasy_King_s_Battle
             while (openSet.Count > 0)
             {
                 // Текущая ячейка - с наименьшим числом отставшегося пути
-                currentNode = openSet.Where(node => node.ReservedForMove == null).OrderBy(node => node.EstimateFullPathLength).FirstOrDefault();
+                currentNode = openSet.OrderBy(node => node.EstimateFullPathLength).FirstOrDefault();
                 if (currentNode == null)
                 {
                     return;
@@ -122,8 +122,15 @@ namespace Fantasy_King_s_Battle
                 foreach (BattlefieldTile neighbourNode in currentNode.TilesAround)
                 {
                     // Пропускаем ячейки, которые уже зарезервировали для движения
-                    if ((neighbourNode.ReservedForMove == null) && ((neighbourNode == destTile) || (neighbourNode.Unit == null)))
+                    if ((neighbourNode == destTile) || (neighbourNode.Unit == null))
                     {
+                        // Если зарезервирована соседняя от начала пути ячейки, то обходим её
+                        // Когда сделаем шаг, она может быть уже не зарезервирована, поэтому продолжим тот же путь
+                        if (neighbourNode.ReservedForMove != null)
+                            if (neighbourNode.IsNeighbourTile(sourceTile) == true)                          
+                                continue;
+
+                        //
                         lengthFromStart = currentNode.PathLengthFromStart + currentNode.GetDistanceToTile(neighbourNode);
                         if (((neighbourNode.PathLengthFromStart == 0) || (lengthFromStart < neighbourNode.PathLengthFromStart)) && (neighbourNode != sourceTile))
                         {
@@ -151,7 +158,7 @@ namespace Fantasy_King_s_Battle
             while (currentNode != null)
             {
                 Debug.Assert(_path.IndexOf(currentNode) == -1);
-                Debug.Assert(currentNode.ReservedForMove == null);
+                //Debug.Assert(currentNode.ReservedForMove == null);
                 Debug.Assert((_path.Count == 0) || (Utils.PointsIsNeighbor(new Point(currentNode.X, currentNode.Y), new Point(_path.Last().X, _path.Last().Y)) == true));
 
                 _path.Add(currentNode);
