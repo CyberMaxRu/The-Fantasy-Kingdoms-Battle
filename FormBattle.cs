@@ -304,6 +304,20 @@ namespace Fantasy_King_s_Battle
                             pTarget.X = (int)(pSource.X + ((pTarget.X - pSource.X) * percent));
                             pTarget.Y = (int)(pSource.Y + ((pTarget.Y - pSource.Y) * percent));
                         }
+                        else
+                        {
+                            pSource = new Point(topLeftGrid.X + (h.Coord.X * sizeTile.Width) + (sizeTile.Width / 2), topLeftGrid.Y + (h.Coord.Y * sizeTile.Height) + (sizeTile.Height / 2));
+                            penArrow.Color = h.PlayerHero.Player == battle.Player1 ? Color.Green : Color.Maroon;
+
+                            // Рисуем путь юнита к цели
+                            foreach (BattlefieldTile t in h.PathToDestination)
+                            {
+                                pTarget = new Point(topLeftGrid.X + (t.Coord.X * sizeTile.Width) + (sizeTile.Width / 2), topLeftGrid.Y + (t.Coord.Y * sizeTile.Height) + (sizeTile.Height / 2));
+                                e.Graphics.DrawLine(penArrow, pSource, pTarget);
+
+                                pSource = pTarget;
+                            }
+                        }
 
                         if ((h.PlayerHero.ClassHero.KindHero.TypeAttack != TypeAttack.Melee) || (h.DestinationForMove != null))
                         { 

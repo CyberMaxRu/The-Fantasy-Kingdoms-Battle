@@ -469,7 +469,7 @@ namespace Fantasy_King_s_Battle
             int timeMove = (int)(PlayerHero.ParametersWithAmmunition.SecondsToMove / 100.00 * FormMain.Config.StepsInSecond);
             if (timeMove == 0)
                 timeMove = 1 * FormMain.Config.StepsInSecond;
-
+            timeMove = 10 * FormMain.Config.StepsInSecond;
             Debug.Assert(timeMove > 0);
             return timeMove;
         }
