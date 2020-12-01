@@ -765,5 +765,51 @@ namespace Fantasy_King_s_Battle
 
             panelBuildingInfo.ShowData();
         }
+
+        private void tslDay_MouseHover(object sender, EventArgs e)
+        {
+            ShowHintForToolButton(tslDay, "День игры", "День игры: " + lobby.Turn.ToString());
+        }
+
+        private void tslGold_MouseHover(object sender, EventArgs e)
+        {
+            ShowHintForToolButton(tslGold, "Казна", "Количество золота в казне и постоянный доход в день");
+        }
+
+        private void tslBuilders_MouseHover(object sender, EventArgs e)
+        {
+            ShowHintForToolButton(tslBuilders, "Крестьяне", "Количество свободных строителей");
+        }
+
+        private void tslHeroes_MouseHover(object sender, EventArgs e)
+        {
+            ShowHintForToolButton(tslHeroes, "Герои", "Количество героев в Королевстве - текущее и максимальное");
+        }
+
+        private void tsbEndTurn_MouseHover(object sender, EventArgs e)
+        {
+            ShowHintForToolButton(tsbEndTurn, "Конец хода", "Завершение хода");
+        }
+
+        private void ShowHintForToolButton(ToolStripItem tsi, string text, string hint)
+        {
+            formHint.Clear();
+            formHint.AddStep1Header(text, "", hint);
+
+            Point l = toolStripMain.PointToScreen(new Point(0, toolStripMain.Height + 2));
+            foreach (ToolStripItem i in toolStripMain.Items)
+            {
+                if (i == tsi)
+                    break;
+                l.X += i.Width;
+            }
+
+            formHint.ShowHint(l);
+        }
+
+        private void tsl_MouseLeave(object sender, EventArgs e)
+        {
+            formHint.HideHint();
+        }
     }
 }

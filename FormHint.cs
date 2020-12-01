@@ -449,6 +449,24 @@ namespace Fantasy_King_s_Battle
             }
         }
 
+        internal void ShowHint(Point location)
+        {
+            Debug.Assert(lblHeader.Text.Length > 0);
+            Debug.Assert(location.X >= 0);
+            Debug.Assert(location.Y >= 0);
+
+            Location = location;
+
+            bool needReshow = (Visible == false) || (Height != nextTop);
+            Height = nextTop;
+
+            if (needReshow == true)
+            {
+                Opacity = 0;
+                timerDelayShow.Enabled = true;
+            }
+        }
+
         internal void HideHint()
         {
             timerDelayShow.Enabled = false;

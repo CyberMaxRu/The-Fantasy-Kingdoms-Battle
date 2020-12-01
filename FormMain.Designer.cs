@@ -174,6 +174,7 @@
             this.toolStripMain.Location = new System.Drawing.Point(0, 24);
             this.toolStripMain.Name = "toolStripMain";
             this.toolStripMain.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.toolStripMain.ShowItemToolTips = false;
             this.toolStripMain.Size = new System.Drawing.Size(979, 51);
             this.toolStripMain.TabIndex = 5;
             this.toolStripMain.Text = "toolStrip1";
@@ -181,13 +182,13 @@
             // tslDay
             // 
             this.tslDay.AutoSize = false;
-            this.tslDay.AutoToolTip = true;
             this.tslDay.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tslDay.Name = "tslDay";
             this.tslDay.Size = new System.Drawing.Size(104, 48);
             this.tslDay.Text = "toolStripLabel1";
             this.tslDay.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tslDay.ToolTipText = "День игры";
+            this.tslDay.MouseLeave += new System.EventHandler(this.tsl_MouseLeave);
+            this.tslDay.MouseHover += new System.EventHandler(this.tslDay_MouseHover);
             // 
             // toolStripSeparator1
             // 
@@ -198,32 +199,32 @@
             // tslGold
             // 
             this.tslGold.AutoSize = false;
-            this.tslGold.AutoToolTip = true;
             this.tslGold.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.tslGold.Name = "tslGold";
             this.tslGold.Size = new System.Drawing.Size(200, 48);
             this.tslGold.Text = "toolStripLabel2";
-            this.tslGold.ToolTipText = "Количество золота в казне и постоянный доход в день";
+            this.tslGold.MouseLeave += new System.EventHandler(this.tsl_MouseLeave);
+            this.tslGold.MouseHover += new System.EventHandler(this.tslGold_MouseHover);
             // 
             // tslBuilders
             // 
             this.tslBuilders.AutoSize = false;
-            this.tslBuilders.AutoToolTip = true;
             this.tslBuilders.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.tslBuilders.Name = "tslBuilders";
             this.tslBuilders.Size = new System.Drawing.Size(120, 48);
             this.tslBuilders.Text = "toolStripLabel3";
-            this.tslBuilders.ToolTipText = "Количество свободных строителей";
+            this.tslBuilders.MouseLeave += new System.EventHandler(this.tsl_MouseLeave);
+            this.tslBuilders.MouseHover += new System.EventHandler(this.tslBuilders_MouseHover);
             // 
             // tslHeroes
             // 
             this.tslHeroes.AutoSize = false;
-            this.tslHeroes.AutoToolTip = true;
             this.tslHeroes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.tslHeroes.Name = "tslHeroes";
             this.tslHeroes.Size = new System.Drawing.Size(120, 48);
             this.tslHeroes.Text = "tslHeroes";
-            this.tslHeroes.ToolTipText = "Количество героев в Королевстве - текущее и максимальное";
+            this.tslHeroes.MouseLeave += new System.EventHandler(this.tsl_MouseLeave);
+            this.tslHeroes.MouseHover += new System.EventHandler(this.tslHeroes_MouseHover);
             // 
             // toolStripSeparator2
             // 
@@ -233,14 +234,16 @@
             // 
             // tsbEndTurn
             // 
+            this.tsbEndTurn.AutoToolTip = false;
             this.tsbEndTurn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbEndTurn.Image = ((System.Drawing.Image)(resources.GetObject("tsbEndTurn.Image")));
             this.tsbEndTurn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEndTurn.Name = "tsbEndTurn";
             this.tsbEndTurn.Size = new System.Drawing.Size(23, 20);
             this.tsbEndTurn.Text = "toolStripButton1";
-            this.tsbEndTurn.ToolTipText = "Конец хода";
             this.tsbEndTurn.Click += new System.EventHandler(this.tsbEndTurn_Click);
+            this.tsbEndTurn.MouseLeave += new System.EventHandler(this.tsl_MouseLeave);
+            this.tsbEndTurn.MouseHover += new System.EventHandler(this.tsbEndTurn_MouseHover);
             // 
             // FormMain
             // 
