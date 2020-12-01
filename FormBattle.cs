@@ -316,7 +316,7 @@ namespace Fantasy_King_s_Battle
                             // Рисуем путь юнита к цели
                             foreach (BattlefieldTile t in h.PathToDestination)
                             {
-                                pTarget = new Point(topLeftGrid.X + (t.Coord.X * sizeTile.Width) + (sizeTile.Width / 2), topLeftGrid.Y + (t.Coord.Y * sizeTile.Height) + (sizeTile.Height / 2));
+                                pTarget = new Point(topLeftGrid.X + (t.Coord.X * sizeTile.Width) + (sizeTile.Width / 2), topLeftGrid.Y + (t.Coord.Y * sizeTile.Height) + (sizeTile.Height / 2) + WIDTH_LINE);
                                 e.Graphics.DrawLine(penArrow, pSource, pTarget);
 
                                 pSource = pTarget;
