@@ -305,7 +305,7 @@ namespace Fantasy_King_s_Battle
                             pTarget.Y = (int)(pSource.Y + ((pTarget.Y - pSource.Y) * percent));
                         }
 
-                        if (h.PlayerHero.ClassHero.KindHero.TypeAttack != TypeAttack.Melee)
+                        if ((h.PlayerHero.ClassHero.KindHero.TypeAttack != TypeAttack.Melee) || (h.DestinationForMove != null))
                         { 
                             penArrow.Color = h.PlayerHero.Player == battle.Player1 ? Color.Green : Color.Maroon;
                             penCircle.Color = h.PlayerHero.Player == battle.Player1 ? Color.Green : Color.Maroon;
