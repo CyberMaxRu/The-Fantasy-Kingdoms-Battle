@@ -637,6 +637,8 @@ namespace Fantasy_King_s_Battle
 
         private void tsbEndTurn_Click(object sender, EventArgs e)
         {
+            formHint.HideHint();
+
             tsbEndTurn.Enabled = false;
             lobby.DoEndTurn();
 
