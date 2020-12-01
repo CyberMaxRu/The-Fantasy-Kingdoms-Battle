@@ -87,7 +87,7 @@ namespace Fantasy_King_s_Battle
 
             // Проверяем, окончен ли бой
             // Это либо убиты все герои одной из сторон, либо вышло время боя
-            if ((ActiveHeroes.Where(h => h.PlayerHero.Player == Player1).Count() == 0) || (ActiveHeroes.Where(h => h.PlayerHero.Player == Player2).Count() == 0) || (Step == FormMain.Config.MaxStepsInBattle))
+            if ((ActiveHeroes.Where(h => (h.PlayerHero.Player == Player1) && (h.State != StateHeroInBattle.Tumbstone)).Count() == 0) || (ActiveHeroes.Where(h => (h.PlayerHero.Player == Player2) && (h.State != StateHeroInBattle.Tumbstone)).Count() == 0) || (Step == FormMain.Config.MaxStepsInBattle))
             {
                 CalcEndBattle();
 
@@ -147,8 +147,8 @@ namespace Fantasy_King_s_Battle
             // Определяем результат боя
             if (Step < FormMain.Config.MaxStepsInBattle)
             {
-                int heroesPlayer1 = ActiveHeroes.Where(h => h.PlayerHero.Player == Player1).Count();
-                int heroesPlayer2 = ActiveHeroes.Where(h => h.PlayerHero.Player == Player2).Count();
+                int heroesPlayer1 = ActiveHeroes.Where(h => (h.PlayerHero.Player == Player1) && (h.State != StateHeroInBattle.Tumbstone)).Count();
+                int heroesPlayer2 = ActiveHeroes.Where(h => (h.PlayerHero.Player == Player2) && (h.State != StateHeroInBattle.Tumbstone)).Count();
 
                 if ((heroesPlayer1 > 0) && (heroesPlayer2 == 0))
                     Winner = Player1;
