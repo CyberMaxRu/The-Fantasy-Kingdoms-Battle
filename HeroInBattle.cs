@@ -315,6 +315,7 @@ namespace Fantasy_King_s_Battle
                 if (CurrentHealth <= 0)
                 {
                     LastTarget = default;
+                    Target = null;
                     State = StateHeroInBattle.Tumbstone;
                     timeAction = FormMain.Config.StepsHeroInTumbstone;
                     CurrentHealth = 0;
