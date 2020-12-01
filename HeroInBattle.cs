@@ -165,6 +165,7 @@ namespace Fantasy_King_s_Battle
                         {
                             IsLive = false;
                             State = StateHeroInBattle.Dead;
+                            currentTile.Unit = null;
                             currentTile = null;
                         }
 
