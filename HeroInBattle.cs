@@ -160,8 +160,8 @@ namespace Fantasy_King_s_Battle
                     case StateHeroInBattle.Tumbstone:
                         Debug.Assert(Target == null);
 
-                        timeAction--;
-                        if (timeAction == 0)
+                        countAction--;
+                        if (countAction == 0)
                         {
                             IsLive = false;
                             State = StateHeroInBattle.Dead;
@@ -278,7 +278,7 @@ namespace Fantasy_King_s_Battle
                     if (targets.Count > 0)
                     {
                         Debug.Assert(this != targets[0]);
-                        Target = targets[Battle.Rnd.Next(0, targets.Count - 1)];
+                        Target = targets[0];// targets[Battle.Rnd.Next(0, targets.Count - 1)];
                     }
                 }
 
@@ -317,8 +317,16 @@ namespace Fantasy_King_s_Battle
                 {
                     LastTarget = default;
                     Target = null;
+                    DestinationForMove = null;
+
+                    if (TileForMove != null)
+                    {
+                        TileForMove.ReservedForMove = null;
+                        TileForMove = null;
+                    }
                     State = StateHeroInBattle.Tumbstone;
-                    timeAction = FormMain.Config.StepsHeroInTumbstone;
+                    countAction = FormMain.Config.StepsHeroInTumbstone;
+                    timeAction = countAction;
                     CurrentHealth = 0;
                     inRollbackAfterAction = false;
                 }
@@ -396,6 +404,7 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(countAction > 0);
             double percent = 1.00 * (timeAction - countAction) / timeAction;
 
+            Debug.Assert(percent >= 0);
             Debug.Assert(percent <= 1);
             return percent;
         }
@@ -469,7 +478,7 @@ namespace Fantasy_King_s_Battle
             int timeMove = (int)(PlayerHero.ParametersWithAmmunition.SecondsToMove / 100.00 * FormMain.Config.StepsInSecond);
             if (timeMove == 0)
                 timeMove = 1 * FormMain.Config.StepsInSecond;
-            timeMove = 10 * FormMain.Config.StepsInSecond;
+            timeMove = 3 * FormMain.Config.StepsInSecond;
             Debug.Assert(timeMove > 0);
             return timeMove;
         }

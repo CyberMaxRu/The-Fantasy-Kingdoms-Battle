@@ -265,6 +265,10 @@ namespace Fantasy_King_s_Battle
                             shift.Y += shiftY;
                         }
 
+                        Debug.Assert(cellHeroes[y, x].Left + shift.X < Width);
+                        Debug.Assert(cellHeroes[y, x].Top + shift.Y >= topLeftCells.Y);
+                        Debug.Assert(cellHeroes[y, x].Top + shift.Y < Height);
+
                         cellHeroes[y, x].DrawToBitmap(bmpPanel, new Rectangle(0, 0, bmpPanel.Width, bmpPanel.Height));
                         e.Graphics.DrawImageUnscaled(bmpPanel, cellHeroes[y, x].Left + shift.X, cellHeroes[y, x].Top + shift.Y);
                     }
