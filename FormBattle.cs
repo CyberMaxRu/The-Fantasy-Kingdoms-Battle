@@ -426,8 +426,13 @@ namespace Fantasy_King_s_Battle
                         {
                             Point coordTarget = hero.Target != null ? hero.Target.Coord : hero.LastTarget;
 
-                            int shiftX = (int)((coordTarget.X > hero.Coord.X ? 1 : coordTarget.X < hero.Coord.X ? -1 : 0) * FormMain.Config.GridSize * hero.PercentExecuteAction());
-                            int shiftY = (int)((coordTarget.Y > hero.Coord.Y ? 1 : coordTarget.Y < hero.Coord.Y ? -1 : 0) * FormMain.Config.GridSize * hero.PercentExecuteAction());
+                            double percent = hero.PercentExecuteAction();
+                            if (hero.Target == null)
+                                percent = 1 - percent;
+
+                            int shiftX = (int)((coordTarget.X > hero.Coord.X ? 1 : coordTarget.X < hero.Coord.X ? -1 : 0) * FormMain.Config.GridSize * percent);
+                            int shiftY = (int)((coordTarget.Y > hero.Coord.Y ? 1 : coordTarget.Y < hero.Coord.Y ? -1 : 0) * FormMain.Config.GridSize * percent);
+
                             shift.X += shiftX;
                             shift.Y += shiftY;
                         }
