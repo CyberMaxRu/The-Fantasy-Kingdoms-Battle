@@ -433,38 +433,11 @@ namespace Fantasy_King_s_Battle
             lblPlayer1.Left = FormMain.Config.GridSize;
             lblPlayer1.Text = battle.Player1.Name;
             pointAvatarPlayer1 = new Point(lblPlayer1.Left, lblPlayer1.Top + lblPlayer1.Height);
-            pointAvatarPlayer2 = new Point(ClientSize.Width - Program.formMain.ilPlayerAvatarsBig.ImageSize.Width - FormMain.Config.GridSize, pointAvatarPlayer1.Y);
-            lblPlayer2.Left = pointAvatarPlayer2.X;
-            lblPlayer2.Text = battle.Player2.Name;
-
             rectBandHealthPlayer1 = new Rectangle(pointAvatarPlayer1.X, pointAvatarPlayer1.Y + Program.formMain.ilPlayerAvatarsBig.ImageSize.Height + 2, Program.formMain.ilPlayerAvatarsBig.ImageSize.Width, 6);
-            rectBandHealthPlayer2 = new Rectangle(pointAvatarPlayer2.X, pointAvatarPlayer2.Y + Program.formMain.ilPlayerAvatarsBig.ImageSize.Height + 2, Program.formMain.ilPlayerAvatarsBig.ImageSize.Width, 6);
 
             // Считаем максимальное количество здоровья у героев игроков
             maxHealthPlayer1 = CalcHealthPlayer(b.Player1);
             maxHealthPlayer2 = CalcHealthPlayer(b.Player2);
-
-            //
-            lblStateBattle.Top = pointAvatarPlayer1.Y;
-            lblStateBattle.Width = pointAvatarPlayer2.X - pointAvatarPlayer1.X - Program.formMain.ilPlayerAvatarsBig.ImageSize.Width - FormMain.Config.GridSize * 2;
-            lblStateBattle.Left = pointAvatarPlayer1.X + Program.formMain.ilPlayerAvatarsBig.ImageSize.Width + FormMain.Config.GridSize;
-
-            lblTimer.Top = lblStateBattle.Top + lblStateBattle.Height;
-            lblTimer.Width = lblStateBattle.Width;
-            lblTimer.Left = lblStateBattle.Left;
-
-            btnEndBattle.Top = lblTimer.Top + lblTimer.Height + FormMain.Config.GridSize;
-            btnEndBattle.Width = 120;
-            btnEndBattle.Height = 32;
-            btnEndBattle.Left = pointAvatarPlayer1.X + Program.formMain.ilPlayerAvatarsBig.ImageSize.Width + (((pointAvatarPlayer2.X - pointAvatarPlayer1.X - Program.formMain.ilPlayerAvatarsBig.ImageSize.Width) - btnEndBattle.Width) / 2);
-
-            //
-            lblDamagePlayer1.Top = btnEndBattle.Top;
-            lblDamagePlayer1.Left = pointAvatarPlayer1.X + Program.formMain.ilPlayerAvatarsBig.ImageSize.Width + FormMain.Config.GridSize;
-            lblDamagePlayer1.Hide();
-            lblDamagePlayer2.Top = btnEndBattle.Top;
-            lblDamagePlayer2.Left = pointAvatarPlayer2.X - FormMain.Config.GridSize - 80;
-            lblDamagePlayer2.Hide();
 
             //
             sizeCell = phb.Size;
@@ -488,6 +461,34 @@ namespace Fantasy_King_s_Battle
 
             Width = topLeftGrid.X + (b.SizeBattlefield.Width * sizeTile.Width) + WIDTH_LINE + FormMain.Config.GridSize + (Width - ClientSize.Width);
             Height = topLeftGrid.Y + (b.SizeBattlefield.Height * sizeTile.Height + WIDTH_LINE) + FormMain.Config.GridSize +  (Height - ClientSize.Height);
+
+            // Положение аватарки второго игрока
+            pointAvatarPlayer2 = new Point(ClientSize.Width - Program.formMain.ilPlayerAvatarsBig.ImageSize.Width - FormMain.Config.GridSize, pointAvatarPlayer1.Y);
+            lblPlayer2.Left = pointAvatarPlayer2.X;
+            lblPlayer2.Text = battle.Player2.Name;
+            rectBandHealthPlayer2 = new Rectangle(pointAvatarPlayer2.X, pointAvatarPlayer2.Y + Program.formMain.ilPlayerAvatarsBig.ImageSize.Height + 2, Program.formMain.ilPlayerAvatarsBig.ImageSize.Width, 6);
+
+            //
+            lblStateBattle.Top = pointAvatarPlayer1.Y;
+            lblStateBattle.Width = pointAvatarPlayer2.X - pointAvatarPlayer1.X - Program.formMain.ilPlayerAvatarsBig.ImageSize.Width - FormMain.Config.GridSize * 2;
+            lblStateBattle.Left = pointAvatarPlayer1.X + Program.formMain.ilPlayerAvatarsBig.ImageSize.Width + FormMain.Config.GridSize;
+
+            lblTimer.Top = lblStateBattle.Top + lblStateBattle.Height;
+            lblTimer.Width = lblStateBattle.Width;
+            lblTimer.Left = lblStateBattle.Left;
+
+            btnEndBattle.Top = lblTimer.Top + lblTimer.Height + FormMain.Config.GridSize;
+            btnEndBattle.Width = 120;
+            btnEndBattle.Height = 32;
+            btnEndBattle.Left = pointAvatarPlayer1.X + Program.formMain.ilPlayerAvatarsBig.ImageSize.Width + (((pointAvatarPlayer2.X - pointAvatarPlayer1.X - Program.formMain.ilPlayerAvatarsBig.ImageSize.Width) - btnEndBattle.Width) / 2);
+
+            //
+            lblDamagePlayer1.Top = btnEndBattle.Top;
+            lblDamagePlayer1.Left = pointAvatarPlayer1.X + Program.formMain.ilPlayerAvatarsBig.ImageSize.Width + FormMain.Config.GridSize;
+            lblDamagePlayer1.Hide();
+            lblDamagePlayer2.Top = btnEndBattle.Top;
+            lblDamagePlayer2.Left = pointAvatarPlayer2.X - FormMain.Config.GridSize - 80;
+            lblDamagePlayer2.Hide();
 
             // Подготавливаем подложку
             bmpBackground = GuiUtils.MakeBackground(ClientSize);
