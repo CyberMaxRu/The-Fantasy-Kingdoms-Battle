@@ -29,6 +29,7 @@ namespace Fantasy_King_s_Battle
         private Point topLeftCells;
         private const int WIDTH_LINE = 1;
 
+        private readonly Label lblSystemInfo;
         private readonly Label lblPlayer1;
         private readonly Label lblPlayer2;
         private Point pointAvatarPlayer1;
@@ -43,6 +44,11 @@ namespace Fantasy_King_s_Battle
         private readonly Label lblDamagePlayer1;
         private readonly Label lblDamagePlayer2;
         private int pastSeconds;
+        private readonly List<DateTime> Frames = new List<DateTime>();
+        private readonly List<DateTime> Steps = new List<DateTime>();
+        private readonly List<DateTime> Paints = new List<DateTime>();
+        private DateTime currentDateTime;
+        private TimeSpan diffTime;
 
         private int maxHealthPlayer1;
         private int maxHealthPlayer2;
@@ -58,10 +64,22 @@ namespace Fantasy_King_s_Battle
             penArrow.CustomEndCap = new System.Drawing.Drawing2D.AdjustableArrowCap(3.0F, 6.0F, true);
 
             // Создаем контролы
-            lblPlayer1 = new Label()
+            lblSystemInfo = new Label()
             {
                 Parent = this,
                 Top = FormMain.Config.GridSize,
+                Width = 200,
+                ForeColor = Color.White,
+                BackColor = Color.Transparent,
+                Height = 24,
+                TextAlign = ContentAlignment.MiddleLeft,
+                Font = new Font("Times New Roman", 12, FontStyle.Bold),
+            };
+
+            lblPlayer1 = new Label()
+            {
+                Parent = this,
+                Top = GuiUtils.NextTop(lblSystemInfo),
                 ForeColor = Color.White,
                 BackColor = Color.Transparent,
                 AutoSize = false,
@@ -74,7 +92,7 @@ namespace Fantasy_King_s_Battle
             lblPlayer2 = new Label()
             {
                 Parent = this,
-                Top = FormMain.Config.GridSize,
+                Top = lblPlayer1.Top,
                 ForeColor = Color.White,
                 BackColor = Color.Transparent,
                 AutoSize = false,
@@ -175,20 +193,24 @@ namespace Fantasy_King_s_Battle
                     while ((battle.Step <= pastFrames) && (battle.BattleCalced == false))
                     {
                         battle.CalcStep();
+                        Steps.Add(DateTime.Now);
                         calcFrames++;
                     }
                     //lblPlayer1.Text = calcFrames.ToString();
 
-                    DoFrame();
+                    DrawFrame();
                 }
 
                 inDraw = false;
             }
         }
 
-        private void DoFrame()
+        private void DrawFrame()
         {
             ApplyStep();
+            Frames.Add(currentDateTime);
+
+            DrawFps();
             Application.DoEvents();
         }
 
@@ -367,6 +389,33 @@ namespace Fantasy_King_s_Battle
             lblTimer.Text = ts.ToString("mm':'ss");
 
             bmpPanel.Dispose();
+
+            Paints.Add(DateTime.Now);
+        }
+
+        private void DrawFps()
+        {
+            // Считаем Frames per second
+            // Для этого удаляем все кадры, которые были более секунды назад, добавляем текущий и получаем итоговое количество
+            currentDateTime = DateTime.Now;
+            UpdateActions(Frames);
+            UpdateActions(Steps);
+            UpdateActions(Paints);
+
+            lblSystemInfo.Text = Frames.Count.ToString() + " fps; steps: " + Steps.Count.ToString() + "; paints: " + Paints.Count.ToString();
+
+            void UpdateActions(List<DateTime> list)
+            {
+                for (int i = 0; i < list.Count; i++)
+                {
+                    diffTime = currentDateTime - list[i];
+                    if (diffTime.TotalMilliseconds <= 1_000)
+                    {
+                        list.RemoveRange(0, i);
+                        break;
+                    }
+                }
+            }
         }
 
         internal void ShowBattle(Battle b)
