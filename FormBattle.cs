@@ -13,21 +13,33 @@ namespace Fantasy_King_s_Battle
 {
     public partial class FormBattle : Form
     {
+        enum SpeedBattle { VerySlow, Slow, Normal, Fast, VeryFast };
+
         private PanelHeroInBattle[,] cellHeroes;
         private Battle battle;
         private Pen penArrow = new Pen(Color.Fuchsia);
         private Pen penCircle = new Pen(new SolidBrush(Color.Fuchsia));
-        private Timer timerStep;
-        private int pastFrames;
         private Bitmap bmpBackground;
-        private Stopwatch timePassed = new Stopwatch();
-        private bool inDraw;
         private Pen penGrid = new Pen(Color.Gray);
         private Size sizeTile;
         private Size sizeCell;
         private Point topLeftGrid;
         private Point topLeftCells;
         private const int WIDTH_LINE = 1;
+
+        // Время битвы
+        private SpeedBattle currentSpeed = SpeedBattle.Normal;
+        private bool inPause = false;
+        private readonly List<DateTime> Frames = new List<DateTime>();
+        private readonly List<DateTime> Steps = new List<DateTime>();
+        private readonly List<DateTime> Paints = new List<DateTime>();
+        private DateTime timeStart;// Время начала битвы
+        private DateTime timeInternalFixed;// Внутреннее время битвы, с учетом изменения скорости
+        private DateTime timeInternalApprox;// Ориентировочное время битвы
+        private int stepsCalcedByCurrentSpeed;// Сколько шагов посчитано по текущей скорости
+        private Stopwatch timePassedCurrentSpeed = new Stopwatch();// Время, прошедшее с начала задействования текущей скорости
+
+        private bool needClose = false;
 
         private readonly Label lblSystemInfo;
         private readonly Label lblPlayer1;
@@ -41,14 +53,11 @@ namespace Fantasy_King_s_Battle
         private readonly Label lblStateBattle;
         private readonly Label lblTimer;
         private readonly Button btnEndBattle;
+        private readonly Button btnPlayPause;
+        private readonly Button btnDecSpeed;
+        private readonly Button btnIncSpeed;
         private readonly Label lblDamagePlayer1;
         private readonly Label lblDamagePlayer2;
-        private int pastSeconds;
-        private readonly List<DateTime> Frames = new List<DateTime>();
-        private readonly List<DateTime> Steps = new List<DateTime>();
-        private readonly List<DateTime> Paints = new List<DateTime>();
-        private DateTime currentDateTime;
-        private TimeSpan diffTime;
 
         private int maxHealthPlayer1;
         private int maxHealthPlayer2;
@@ -68,7 +77,7 @@ namespace Fantasy_King_s_Battle
             {
                 Parent = this,
                 Top = FormMain.Config.GridSize,
-                Width = 200,
+                Width = 320,
                 ForeColor = Color.White,
                 BackColor = Color.Transparent,
                 Height = 24,
@@ -108,7 +117,7 @@ namespace Fantasy_King_s_Battle
                 ForeColor = Color.White,
                 BackColor = Color.Transparent,
                 AutoSize = false,
-                Height = 40,
+                Height = 32,
                 TextAlign = ContentAlignment.MiddleCenter,
                 Font = new Font("Calibri", 20, FontStyle.Bold)
             };
@@ -119,7 +128,7 @@ namespace Fantasy_King_s_Battle
                 ForeColor = Color.White,
                 BackColor = Color.Transparent,
                 AutoSize = false,
-                Height = 40,
+                Height = 32,
                 TextAlign = ContentAlignment.MiddleCenter,
                 Font = new Font("Calibri", 20, FontStyle.Bold)
             };
@@ -161,19 +170,151 @@ namespace Fantasy_King_s_Battle
             };
             btnEndBattle.Click += BtnEndBattle_Click;
 
-            // Таймер для анимации
-            timerStep = new Timer()
+            btnPlayPause = new Button()
             {
-                Interval = 1000 / FormMain.Config.StepsInSecond,
-                Enabled = false
+                Parent = this,
+                Text = "Скорость"
             };
-            timerStep.Tick += TimerStep_Tick;
+            btnPlayPause.Click += BtnPlayPause_Click;
+
+            btnDecSpeed = new Button()
+            {
+                Parent = this,
+                Text = "<",
+                Width = FormMain.Config.GridSize * 3
+            };
+            btnDecSpeed.Click += BtnDecSpeed_Click;
+
+            btnIncSpeed = new Button()
+            {
+                Parent = this,
+                Text = ">",
+                Width = FormMain.Config.GridSize * 3
+            };
+            btnIncSpeed.Click += BtnIncSpeed_Click;
+
+            ApplySpeed();
+        }
+
+        // Фиксация прошедшего внутреннего времени битвы с текущей скоростью
+        private void LockPassedTimeSpeed()
+        {
+            timeInternalFixed = timeInternalFixed.AddMilliseconds(timePassedCurrentSpeed.ElapsedMilliseconds * ValueSpeed());
+            timePassedCurrentSpeed.Reset();
+            timePassedCurrentSpeed.Start();
+            stepsCalcedByCurrentSpeed = 0;
+        }
+
+        private void BtnIncSpeed_Click(object sender, EventArgs e)
+        {
+            Debug.Assert(!battle.BattleCalced);
+
+            // Фиксируем итоговое количество времени с текущей скоростью
+            LockPassedTimeSpeed();
+
+            switch (currentSpeed)
+            {
+                case SpeedBattle.VerySlow:
+                    currentSpeed = SpeedBattle.Slow;
+                    break;
+                case SpeedBattle.Slow:
+                    currentSpeed = SpeedBattle.Normal;
+                    break;
+                case SpeedBattle.Normal:
+                    currentSpeed = SpeedBattle.Fast;
+                    break;
+                case SpeedBattle.Fast:
+                    currentSpeed = SpeedBattle.VeryFast;
+                    break;
+                default:
+                    break;
+            }
+
+            ApplySpeed();
+        }
+
+        private void BtnDecSpeed_Click(object sender, EventArgs e)
+        {
+            Debug.Assert(!battle.BattleCalced);
+
+            // Фиксируем итоговое количество времени с текущей скоростью
+            LockPassedTimeSpeed();
+
+            switch (currentSpeed)
+            {
+                case SpeedBattle.Slow:
+                    currentSpeed = SpeedBattle.VerySlow;
+                    break;
+                case SpeedBattle.Normal:
+                    currentSpeed = SpeedBattle.Slow;
+                    break;
+                case SpeedBattle.Fast:
+                    currentSpeed = SpeedBattle.Normal;
+                    break;
+                case SpeedBattle.VeryFast:
+                    currentSpeed = SpeedBattle.Fast;
+                    break;
+                default:
+                    break;
+            }
+
+            ApplySpeed();
+        }
+
+        private void BtnPlayPause_Click(object sender, EventArgs e)
+        {
+            Debug.Assert(!battle.BattleCalced);
+
+            inPause = !inPause;
+            if (inPause)
+            {
+                Debug.Assert(timePassedCurrentSpeed.IsRunning);
+
+                timePassedCurrentSpeed.Stop();
+            }
+            else
+            {
+                Debug.Assert(!timePassedCurrentSpeed.IsRunning);
+
+                timePassedCurrentSpeed.Stop();
+            }
+
+            ApplySpeed();
+        }
+
+        private void ApplySpeed()
+        {
+            if (inPause)
+            {
+                btnPlayPause.Text = "Пауза";
+            }
+            else
+            {
+                btnPlayPause.Text = "Скорость " + ValueSpeed().ToString() + "x";
+            }
+        }
+
+        private double ValueSpeed()
+        {
+            switch (currentSpeed)
+            {
+                case SpeedBattle.VerySlow:
+                    return 0.2;
+                case SpeedBattle.Slow:
+                    return 0.5;
+                case SpeedBattle.Normal:
+                    return 1;
+                case SpeedBattle.Fast:
+                    return 2;
+                case SpeedBattle.VeryFast:
+                    return 5;
+                default:
+                    throw new Exception("Неизвестная скорость.");
+            }
         }
 
         private void BtnEndBattle_Click(object sender, EventArgs e)
         {
-            timerStep.Stop();
-
             battle.CalcWholeBattle();
 
             ApplyStep();
@@ -181,37 +322,41 @@ namespace Fantasy_King_s_Battle
 
         private void TimerStep_Tick(object sender, EventArgs e)
         {
-            if (inDraw == false)
-            {
-                inDraw = true;
+            if (inPause)
+                return;
 
-                if (battle.BattleCalced == false)
+            if (battle.BattleCalced == false)
+            {
+                // Примерное прошедшее время битвы
+                timeInternalApprox = timeInternalFixed.AddMilliseconds(timePassedCurrentSpeed.ElapsedMilliseconds * ValueSpeed());
+                // Считаем, сколько шагов в секунде по текущей скорости
+                int stepsPerSecond = (int)(FormMain.Config.StepsInSecond * ValueSpeed());
+                // Считаем столько шагов, сколько должно было посчитано по текущей скорости
+                int needSteps = (int)(timePassedCurrentSpeed.ElapsedMilliseconds / (1_000 / stepsPerSecond));
+
+                if (stepsCalcedByCurrentSpeed < needSteps)
                 {
-                    // Рисуем столько кадров, сколько должно было пройти
-                    pastFrames = (int)(timePassed.ElapsedMilliseconds / FormMain.Config.StepInMSec);
-                    int calcFrames = 0;
-                    while ((battle.Step <= pastFrames) && (battle.BattleCalced == false))
+                    while (stepsCalcedByCurrentSpeed < needSteps)
                     {
                         battle.CalcStep();
+                        stepsCalcedByCurrentSpeed++;
                         Steps.Add(DateTime.Now);
-                        calcFrames++;
+
+                        if (battle.BattleCalced)
+                            break;
                     }
-                    //lblPlayer1.Text = calcFrames.ToString();
 
                     DrawFrame();
                 }
-
-                inDraw = false;
             }
         }
 
         private void DrawFrame()
         {
-            ApplyStep();
-            Frames.Add(currentDateTime);
-
             DrawFps();
-            Application.DoEvents();
+            Frames.Add(DateTime.Now);
+
+            ApplyStep();
         }
 
         private void FormBattle_FormClosing(object sender, FormClosingEventArgs e)
@@ -384,7 +529,7 @@ namespace Fantasy_King_s_Battle
                 }
             }
 
-            pastSeconds = battle.Step / FormMain.Config.StepsInSecond;
+            int pastSeconds = battle.Step / FormMain.Config.StepsInSecond;
             TimeSpan ts = new TimeSpan(0, 0, pastSeconds);
             lblTimer.Text = ts.ToString("mm':'ss");
 
@@ -397,15 +542,19 @@ namespace Fantasy_King_s_Battle
         {
             // Считаем Frames per second
             // Для этого удаляем все кадры, которые были более секунды назад, добавляем текущий и получаем итоговое количество
-            currentDateTime = DateTime.Now;
+            DateTime currentDateTime = DateTime.Now;
             UpdateActions(Frames);
             UpdateActions(Steps);
             UpdateActions(Paints);
 
-            lblSystemInfo.Text = Frames.Count.ToString() + " fps; steps: " + Steps.Count.ToString() + "; paints: " + Paints.Count.ToString();
+            TimeSpan realTime = currentDateTime - timeStart;
+            
+            lblSystemInfo.Text = Frames.Count.ToString() + " fps; steps: " + Steps.Count.ToString() + "; paints: " + Paints.Count.ToString()
+                 + "; passed: " + realTime.ToString("mm':'ss"); 
 
             void UpdateActions(List<DateTime> list)
             {
+                TimeSpan diffTime;
                 for (int i = 0; i < list.Count; i++)
                 {
                     diffTime = currentDateTime - list[i];
@@ -477,10 +626,19 @@ namespace Fantasy_King_s_Battle
             lblTimer.Width = lblStateBattle.Width;
             lblTimer.Left = lblStateBattle.Left;
 
-            btnEndBattle.Top = lblTimer.Top + lblTimer.Height + FormMain.Config.GridSize;
-            btnEndBattle.Width = 120;
+            btnEndBattle.Top = lblTimer.Top + lblTimer.Height;
+            btnEndBattle.Width = 136;
             btnEndBattle.Height = 32;
             btnEndBattle.Left = pointAvatarPlayer1.X + Program.formMain.ilPlayerAvatarsBig.ImageSize.Width + (((pointAvatarPlayer2.X - pointAvatarPlayer1.X - Program.formMain.ilPlayerAvatarsBig.ImageSize.Width) - btnEndBattle.Width) / 2);
+
+            btnDecSpeed.Top = GuiUtils.NextTop(btnEndBattle);
+            btnDecSpeed.Left = btnEndBattle.Left;
+            btnIncSpeed.Top = btnDecSpeed.Top;
+            btnIncSpeed.Left = btnEndBattle.Left + btnEndBattle.Width - btnIncSpeed.Width;
+            btnPlayPause.Top = btnDecSpeed.Top;
+            btnPlayPause.Left = btnDecSpeed.Left + btnDecSpeed.Width;
+            btnPlayPause.Width = btnIncSpeed.Left - btnPlayPause.Left;
+            Debug.Assert(btnPlayPause.Width > 0);
 
             //
             lblDamagePlayer1.Top = btnEndBattle.Top;
@@ -496,13 +654,39 @@ namespace Fantasy_King_s_Battle
             //
             ApplyStep();
 
-            timerStep.Start();
-            timePassed.Start();
-            inDraw = false;
-
             phb.Dispose();
 
             ShowDialog();
+        }
+
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+
+            timeStart = DateTime.Now;
+            timeInternalFixed = timeStart; 
+            stepsCalcedByCurrentSpeed = 0;
+            timePassedCurrentSpeed.Start();
+            Application.DoEvents();
+
+            for (; ; )
+            {
+                TimerStep_Tick(this, e);
+                Application.DoEvents();
+
+                if (needClose)
+                    break;
+
+                if (battle.BattleCalced)
+                    break;
+            }
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            base.OnClosing(e);
+
+            needClose = e.Cancel;
         }
 
         private int CalcHealthPlayer(Player p)
@@ -531,10 +715,12 @@ namespace Fantasy_King_s_Battle
             }
             
             btnEndBattle.Enabled = !battle.BattleCalced;
+            btnDecSpeed.Enabled = btnEndBattle.Enabled;
+            btnIncSpeed.Enabled = btnEndBattle.Enabled;
+            btnPlayPause.Enabled = btnEndBattle.Enabled;
+
             if (battle.BattleCalced)
             {
-                timerStep.Stop();
-
                 if (battle.Winner == battle.Player1)
                 {
                     lblDamagePlayer1.Show();

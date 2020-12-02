@@ -12,8 +12,8 @@
     <StepsHeroInTumbstone>100</StepsHeroInTumbstone>
   </Heroes>
   <Battle>
-    <StepsInSecond>20</StepsInSecond>
-    <MaxStepsInBattle>1200</MaxStepsInBattle>
+    <StepsInSecond>50</StepsInSecond>
+    <MaxDurationBattle>120</MaxDurationBattle>
   </Battle>
   <Battlefield>
     <HeroRows>7</HeroRows>
