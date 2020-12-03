@@ -236,24 +236,28 @@
         <ID>WeaponHunter0</ID>
         <Hero>Hunter</Hero>
         <TimeHit>50</TimeHit>
+        <VelocityMissile>5</VelocityMissile>
         <DamageArcher>5</DamageArcher>
       </Weapon>
       <Weapon>
         <ID>WeaponElf0</ID>
         <Hero>Elf</Hero>
         <TimeHit>50</TimeHit>
+        <VelocityMissile>1</VelocityMissile>
         <DamageArcher>0</DamageArcher>
       </Weapon>
       <Weapon>
         <ID>WeaponBeastMaster0</ID>
         <Hero>BeastMaster</Hero>
         <TimeHit>50</TimeHit>
+        <VelocityMissile>1</VelocityMissile>
         <DamageArcher>0</DamageArcher>
       </Weapon>
       <Weapon>
         <ID>WeaponMarksman0</ID>
         <Hero>Marksman</Hero>
         <TimeHit>50</TimeHit>
+        <VelocityMissile>1</VelocityMissile>
         <DamageArcher>0</DamageArcher>
       </Weapon>
     </Weapons>

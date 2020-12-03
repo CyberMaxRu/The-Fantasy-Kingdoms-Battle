@@ -76,6 +76,7 @@
     <Compile Include="Hero.cs" />
     <Compile Include="HeroInBattle.cs" />
     <Compile Include="KindHero.cs" />
+    <Compile Include="Missile.cs" />
     <Compile Include="PageControl.cs">
       <SubType>Component</SubType>
     </Compile>

@@ -127,6 +127,34 @@ namespace Fantasy_King_s_Battle
 
                         break;
                     case StateHeroInBattle.Melee:
+                        countAction--;
+
+                        if (Target.State != StateHeroInBattle.Tumbstone)
+                        {
+                            if (countAction == 0)
+                            {
+                                // Делаем удар по противнику
+                                Target.GetDamage(CalcDamageMelee(Target), CalcDamageShoot(Target), CalcDamageMagic(Target));
+                                LastTarget = Target.Coord;
+                                Target = null;
+
+                                // После удара делаем паузу длиной во время атаки
+                                countAction = TimeAttack();
+                                inRollbackAfterAction = true;
+                            }
+                        }
+                        else
+                        {
+                            // Противника уже убили, пропускаем ход
+                            LastTarget = Target.Coord;
+                            Target = null;
+                            State = StateHeroInBattle.None;
+                            countAction = timeAction - countAction;
+                            timeAction = countAction;
+                            inRollbackAfterAction = true;
+                        }
+
+                        break;
                     case StateHeroInBattle.Archery:
                     case StateHeroInBattle.Cast:
                         countAction--;
@@ -292,6 +320,14 @@ namespace Fantasy_King_s_Battle
                     timeAction = countAction;
                     lastAttackedHero = Target;
 
+                    // Создаем выстрел
+                    Missile m;
+                    if (PlayerHero.ClassHero.KindHero.TypeAttack == TypeAttack.Archer)
+                        m = new Arrow(this, Target.CurrentTile);
+                    else 
+                        m = new MagicStrike(this, Target.CurrentTile);
+                    Battle.Missiles.Add(m);
+
                     return true;
                 }
                 else
@@ -348,7 +384,7 @@ namespace Fantasy_King_s_Battle
             return timeAttack;
         }
 
-        private int CalcDamageMelee(HeroInBattle target)
+        internal int CalcDamageMelee(HeroInBattle target)
         {
             int delta = Parameters.MaxMeleeDamage - Parameters.MinMeleeDamage;
             int value = FormMain.Rnd.Next(delta);
@@ -358,7 +394,7 @@ namespace Fantasy_King_s_Battle
             return d;
         }
 
-        private int CalcDamageShoot(HeroInBattle target)
+        internal int CalcDamageShoot(HeroInBattle target)
         {
             int delta = Parameters.MaxArcherDamage - Parameters.MinArcherDamage;
             int value = FormMain.Rnd.Next(delta);
@@ -367,7 +403,7 @@ namespace Fantasy_King_s_Battle
 
             return d;
         }
-        private int CalcDamageMagic(HeroInBattle target)
+        internal int CalcDamageMagic(HeroInBattle target)
         {
             int d = Parameters.MagicDamage;
 
@@ -377,6 +413,8 @@ namespace Fantasy_King_s_Battle
         internal void GetDamage(int damageMelee, int damageArcher, int damageMagic)
         {
             Debug.Assert((damageMelee > 0) || (damageArcher > 0) || (damageMagic > 0));
+            if ((State == StateHeroInBattle.Tumbstone) && (damageArcher > 0))
+                return;
             Debug.Assert(State != StateHeroInBattle.Tumbstone);
             Debug.Assert(State != StateHeroInBattle.Dead);
             Debug.Assert(State != StateHeroInBattle.Resurrection);

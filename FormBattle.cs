@@ -435,7 +435,7 @@ namespace Fantasy_King_s_Battle
                 }
 
             if (battle.BattleCalced == false)
-            {
+            {                
                 // Рисуем стрелки атаки
                 foreach (HeroInBattle h in battle.ActiveHeroes)
                 {
@@ -492,11 +492,22 @@ namespace Fantasy_King_s_Battle
                             }
                             else
                             {
-                                Brush b = h.PlayerHero.Player == battle.Player1 ? brushMagicStrikeAlly : brushMagicStrikeEnemy;
-                                gFrame.FillEllipse(b, pTarget.X - 5, pTarget.Y - 5, 11, 11);
+                                //Brush b = h.PlayerHero.Player == battle.Player1 ? brushMagicStrikeAlly : brushMagicStrikeEnemy;
+                                //gFrame.FillEllipse(b, pTarget.X - 5, pTarget.Y - 5, 11, 11);
                             }
                         }
                     }
+                }
+
+                // Рисуем снаряды
+                foreach (Missile m in battle.Missiles)
+                {
+                    PanelHeroInBattle ph1 = cellHeroes[m.SourceTile.Y, m.SourceTile.X];
+                    Point p1 = new Point(ph1.Location.X + ph1.Width / 2, ph1.Location.Y + ph1.Height / 2);
+                    PanelHeroInBattle ph2 = cellHeroes[m.DestTile.Y, m.DestTile.X];
+                    Point p2 = new Point(ph2.Location.X + ph2.Width / 2, ph2.Location.Y + ph2.Height / 2);
+
+                    m.Draw(gFrame, p1, p2);
                 }
             }
 

@@ -21,6 +21,8 @@ namespace Fantasy_King_s_Battle
             ID = n.SelectSingleNode("ID").InnerText;
             nameClassHero = n.SelectSingleNode("Hero").InnerText;
             TimeHit = Convert.ToInt32(n.SelectSingleNode("TimeHit").InnerText);
+            if (n.SelectSingleNode("VelocityMissile") != null)
+                VelocityMissile = Convert.ToDouble(n.SelectSingleNode("VelocityMissile").InnerText.Replace(".", ","));
             DamageMelee = Utils.GetParamFromXml(n.SelectSingleNode("DamageMelee"));
             DamageArcher = Utils.GetParamFromXml(n.SelectSingleNode("DamageArcher"));
             DamageMagic = Utils.GetParamFromXml(n.SelectSingleNode("DamageMagic"));
@@ -40,6 +42,7 @@ namespace Fantasy_King_s_Battle
         internal GroupWeapon GroupWeapon { get; }
         internal Hero ClassHero { get; private set; }
         internal int TimeHit { get; }
+        internal double VelocityMissile { get; }
         internal int DamageMelee { get; }
         internal int DamageArcher { get; }
         internal int DamageMagic { get; }

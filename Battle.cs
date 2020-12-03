@@ -69,6 +69,8 @@ namespace Fantasy_King_s_Battle
         internal bool BattleCalced { get; private set; }
         internal List<HeroInBattle> AllHeroes = new List<HeroInBattle>();// Все участники боя
         internal List<HeroInBattle> ActiveHeroes = new List<HeroInBattle>();// Оставшиеся в живых участники боя
+        internal List<Missile> Missiles = new List<Missile>();// Снаряды героев
+        internal List<Missile> deleteMissiles = new List<Missile>();// Удаляемые снаряды героев
         internal Player Winner { get; private set; }// Победитель
         internal string LogBattle { get; private set; }
         internal int Player1Damage { get; private set; }
@@ -109,6 +111,20 @@ namespace Fantasy_King_s_Battle
 
                 hb.DoStepBattle(this);
             }
+
+            // Обрабатываем летающие снаряды
+            foreach (Missile m in Missiles)
+            {
+                m.ApplyStep();
+                if (m.StepsPassed == m.StepsToTarget)
+                    deleteMissiles.Add(m);
+            }
+
+            foreach (Missile m in deleteMissiles)
+            {
+                Missiles.Remove(m);
+            }
+            deleteMissiles.Clear();
 
             // Применяем полученный урон, баффы/дебаффы
             foreach (HeroInBattle hb in ActiveHeroes)
