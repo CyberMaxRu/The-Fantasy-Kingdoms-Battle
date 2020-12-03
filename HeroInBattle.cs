@@ -164,7 +164,6 @@ namespace Fantasy_King_s_Battle
                             if (countAction == 0)
                             {
                                 // Делаем удар по противнику
-                                Target.GetDamage(CalcDamageMelee(Target), CalcDamageShoot(Target), CalcDamageMagic(Target));
                                 LastTarget = Target.Coord;
                                 Target = null;
 
