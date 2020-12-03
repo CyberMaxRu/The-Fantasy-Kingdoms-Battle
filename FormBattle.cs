@@ -20,7 +20,10 @@ namespace Fantasy_King_s_Battle
         private Pen penArrow = new Pen(Color.Fuchsia);
         private Pen penCircle = new Pen(new SolidBrush(Color.Fuchsia));
         private Bitmap bmpBackground;
-        private Bitmap bmpLay0;
+        private Bitmap bmpLayBackground;
+        private Bitmap bmpFrame;
+        private Graphics gFrame;
+        private Bitmap bmpUnit;
         private Pen penGrid = new Pen(Color.Gray);
         private Size sizeTile;
         private Size sizeCell;
@@ -33,7 +36,6 @@ namespace Fantasy_King_s_Battle
         private bool inPause = false;
         private readonly List<DateTime> Frames = new List<DateTime>();
         private readonly List<DateTime> Steps = new List<DateTime>();
-        private readonly List<DateTime> Paints = new List<DateTime>();
         private readonly List<DateTime> BackPaints = new List<DateTime>();
         private DateTime timeStart;// Время начала битвы
         private DateTime timeInternalFixed;// Внутреннее время битвы, с учетом изменения скорости
@@ -348,12 +350,12 @@ namespace Fantasy_King_s_Battle
                             break;
                     }
 
-                    DrawFrame();
+                    ShowFrame();
                 }
             }
         }
 
-        private void DrawFrame()
+        private void ShowFrame()
         {
             if (timeBetweenFrames.ElapsedMilliseconds >= FormMain.Config.MaxDurationFrame)
             {
@@ -361,8 +363,9 @@ namespace Fantasy_King_s_Battle
 
                 DrawFps();
                 Frames.Add(DateTime.Now);
-    
+                
                 ApplyStep();
+                DrawFrame();
                 Invalidate();
                 Refresh();
             }
@@ -370,40 +373,18 @@ namespace Fantasy_King_s_Battle
                 System.Threading.Thread.Sleep((FormMain.Config.MaxDurationFrame - (int)timeBetweenFrames.ElapsedMilliseconds));
         }
 
-        private void FormBattle_FormClosing(object sender, FormClosingEventArgs e)
+        private void DrawFrame()
         {
-            if (battle.BattleCalced == false)
-                battle.CalcWholeBattle(); 
-        }
+            // Рисуем подложку
+            gFrame.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
+            gFrame.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+            gFrame.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
+            gFrame.DrawImageUnscaled(bmpLayBackground, 0, 0);
 
-        protected override void OnPaintBackground(PaintEventArgs e)
-        {
-            base.OnPaintBackground(e);
-
-            BackPaints.Add(DateTime.Now);
-
-            e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;            
-            e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
-            e.Graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
-            e.Graphics.DrawImage(bmpLay0, e.ClipRectangle, e.ClipRectangle, GraphicsUnit.Pixel);
-            //e.Graphics.DrawImageUnscaled(bmpLay0, 0, 0);
-        }
-
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            base.OnPaint(e);
-
-            Paints.Add(DateTime.Now);
-            return;
-
-            e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
-            e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
-            
-            Bitmap bmpPanel = new Bitmap(cellHeroes[0, 0].Width, cellHeroes[0, 0].Height);
-            
             // Рисуем полоски жизней героев игроков
-            GuiUtils.DrawBand(e.Graphics, rectBandHealthPlayer1, brushHealth, brushNoneHealth, CalcHealthPlayer(battle.Player1), maxHealthPlayer1);
-            GuiUtils.DrawBand(e.Graphics, rectBandHealthPlayer2, brushHealth, brushNoneHealth, CalcHealthPlayer(battle.Player2), maxHealthPlayer2);
+            gFrame.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
+            GuiUtils.DrawBand(gFrame, rectBandHealthPlayer1, brushHealth, brushNoneHealth, CalcHealthPlayer(battle.Player1), maxHealthPlayer1);
+            GuiUtils.DrawBand(gFrame, rectBandHealthPlayer2, brushHealth, brushNoneHealth, CalcHealthPlayer(battle.Player2), maxHealthPlayer2);
 
             // Рисуем героев
             HeroInBattle hero;
@@ -446,11 +427,11 @@ namespace Fantasy_King_s_Battle
                         Debug.Assert(cellHeroes[y, x].Top + shift.Y >= topLeftCells.Y);
                         Debug.Assert(cellHeroes[y, x].Top + shift.Y < Height);
 
-                        cellHeroes[y, x].DrawToBitmap(bmpPanel, new Rectangle(0, 0, bmpPanel.Width, bmpPanel.Height));
-                        e.Graphics.DrawImageUnscaled(bmpPanel, cellHeroes[y, x].Left + shift.X, cellHeroes[y, x].Top + shift.Y);
+                        cellHeroes[y, x].DrawToBitmap(bmpUnit, new Rectangle(0, 0, bmpUnit.Width, bmpUnit.Height));
+                        gFrame.DrawImageUnscaled(bmpUnit, cellHeroes[y, x].Left + shift.X, cellHeroes[y, x].Top + shift.Y);
                     }
                 }
-            
+
             if (battle.BattleCalced == false)
             {
                 // Рисуем стрелки атаки
@@ -494,30 +475,29 @@ namespace Fantasy_King_s_Battle
                             foreach (BattlefieldTile t in h.PathToDestination)
                             {
                                 pTarget = new Point(topLeftGrid.X + (t.Coord.X * sizeTile.Width) + (sizeTile.Width / 2), topLeftGrid.Y + (t.Coord.Y * sizeTile.Height) + (sizeTile.Height / 2) + WIDTH_LINE);
-                                e.Graphics.DrawLine(penArrow, pSource, pTarget);
+                                gFrame.DrawLine(penArrow, pSource, pTarget);
 
                                 pSource = pTarget;
                             }
                         }
 
                         if ((h.PlayerHero.ClassHero.KindHero.TypeAttack != TypeAttack.Melee) || (h.DestinationForMove != null))
-                        { 
+                        {
                             penArrow.Color = h.PlayerHero.Player == battle.Player1 ? Color.Green : Color.Maroon;
                             penCircle.Color = h.PlayerHero.Player == battle.Player1 ? Color.Green : Color.Maroon;
                             if (h.PlayerHero.ClassHero.KindHero.TypeAttack == TypeAttack.Melee)
                             {
-                                e.Graphics.DrawLine(penArrow, pSource, pTarget);
+                                gFrame.DrawLine(penArrow, pSource, pTarget);
                             }
                             else
                             {
-                                e.Graphics.DrawEllipse(penCircle, pTarget.X - 3, pTarget.Y - 3, 6, 6);
+                                gFrame.DrawEllipse(penCircle, pTarget.X - 3, pTarget.Y - 3, 6, 6);
                             }
                         }
                     }
                 }
             }
 
-            // 
             if (battle.BattleCalced == false)
                 lblStateBattle.Text = "Идет бой";
             else
@@ -543,7 +523,28 @@ namespace Fantasy_King_s_Battle
             TimeSpan ts = new TimeSpan(0, 0, pastSeconds);
             lblTimer.Text = ts.ToString("mm':'ss");
 
-            bmpPanel.Dispose();
+            //e.Graphics.DrawImage(bmpLayBackground, e.ClipRectangle, e.ClipRectangle, GraphicsUnit.Pixel);
+            //e.Graphics.DrawImageUnscaled(bmpLay0, 0, 0);
+        }
+
+        private void FormBattle_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (battle.BattleCalced == false)
+                battle.CalcWholeBattle(); 
+        }
+
+        protected override void OnPaintBackground(PaintEventArgs e)
+        {
+            base.OnPaintBackground(e);
+
+            BackPaints.Add(DateTime.Now);
+
+            e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;            
+            e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+            e.Graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
+            e.Graphics.DrawImage(bmpFrame, e.ClipRectangle, e.ClipRectangle, GraphicsUnit.Pixel);
+            //e.Graphics.DrawImage(bmpLayBackground, e.ClipRectangle, e.ClipRectangle, GraphicsUnit.Pixel);
+            //e.Graphics.DrawImageUnscaled(bmpLay0, 0, 0);
         }
 
         private void DrawFps()
@@ -553,12 +554,11 @@ namespace Fantasy_King_s_Battle
             DateTime currentDateTime = DateTime.Now;
             UpdateActions(Frames);
             UpdateActions(Steps);
-            UpdateActions(Paints);
             UpdateActions(BackPaints);
 
             TimeSpan realTime = currentDateTime - timeStart;
             
-            lblSystemInfo.Text = Frames.Count.ToString() + " fps; steps: " + Steps.Count.ToString() + "; paints: " + Paints.Count.ToString()
+            lblSystemInfo.Text = Frames.Count.ToString() + " fps; steps: " + Steps.Count.ToString()
                   + "; backpaints: " + BackPaints.Count.ToString() + "; passed: " + realTime.ToString("mm':'ss"); 
 
             void UpdateActions(List<DateTime> list)
@@ -661,8 +661,8 @@ namespace Fantasy_King_s_Battle
             bmpBackground = GuiUtils.MakeBackground(ClientSize);
 
             // Подготавливаем фоновый рисунок
-            bmpLay0 = new Bitmap(bmpBackground);
-            Graphics g = Graphics.FromImage(bmpLay0);
+            bmpLayBackground = new Bitmap(bmpBackground);
+            Graphics g = Graphics.FromImage(bmpLayBackground);
 
             g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
             g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
@@ -672,12 +672,11 @@ namespace Fantasy_King_s_Battle
 
             // Рисуем сетку
             // Вертикальные линии
-            /*for (int x = 0; x <= battle.SizeBattlefield.Width; x++)
+            for (int x = 0; x <= battle.SizeBattlefield.Width; x++)
                 g.DrawLine(penGrid, topLeftGrid.X + x * sizeTile.Width, topLeftGrid.Y, topLeftGrid.X + x * sizeTile.Width, topLeftGrid.Y + battle.SizeBattlefield.Height * sizeTile.Height);
             // Горизонтальные линии
             for (int y = 0; y <= battle.SizeBattlefield.Height; y++)
                 g.DrawLine(penGrid, topLeftGrid.X, topLeftGrid.Y + y * sizeTile.Height, topLeftGrid.X + battle.SizeBattlefield.Width * sizeTile.Width, topLeftGrid.Y + y * sizeTile.Height);
-            */
 
             // Рисуем аватарки игроков
             g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
@@ -686,6 +685,11 @@ namespace Fantasy_King_s_Battle
 
             g.Dispose();
 
+            //
+            bmpFrame = new Bitmap(bmpLayBackground);
+            gFrame = Graphics.FromImage(bmpFrame);
+
+            bmpUnit = new Bitmap(cellHeroes[0, 0].Width, cellHeroes[0, 0].Height);
             //
             ApplyStep();
 
