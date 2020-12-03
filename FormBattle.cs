@@ -40,6 +40,7 @@ namespace Fantasy_King_s_Battle
         private DateTime timeInternalApprox;// Ориентировочное время битвы
         private int stepsCalcedByCurrentSpeed;// Сколько шагов посчитано по текущей скорости
         private Stopwatch timePassedCurrentSpeed = new Stopwatch();// Время, прошедшее с начала задействования текущей скорости
+        private Stopwatch timeBetweenFrames = new Stopwatch();// Время между перерисовками кадром, чтобы избежать слишком частого перерисовывания
 
         private bool needClose = false;
 
@@ -79,8 +80,8 @@ namespace Fantasy_King_s_Battle
             {
                 Parent = this,
                 Top = FormMain.Config.GridSize,
-                Width = 320,
-                ForeColor = Color.White,
+                Width = 560,
+                //ForeColor = Color.White,
                 BackColor = Color.Transparent,
                 Height = 24,
                 TextAlign = ContentAlignment.MiddleLeft,
@@ -340,7 +341,7 @@ namespace Fantasy_King_s_Battle
                 {
                     while (stepsCalcedByCurrentSpeed < needSteps)
                     {
-                        //battle.CalcStep();
+                        battle.CalcStep();
                         stepsCalcedByCurrentSpeed++;
                         Steps.Add(DateTime.Now);
 
@@ -350,19 +351,24 @@ namespace Fantasy_King_s_Battle
 
                     DrawFrame();
                 }
-                //else
-                //    thread.Sleep(1);
             }
         }
 
         private void DrawFrame()
         {
-            DrawFps();
-            Frames.Add(DateTime.Now);
+            if (timeBetweenFrames.ElapsedMilliseconds >= FormMain.Config.MaxDurationFrame)
+            {
+                timeBetweenFrames.Restart();
 
-            ApplyStep();
-            Invalidate();
-            Refresh();
+                DrawFps();
+                Frames.Add(DateTime.Now);
+    
+                ApplyStep();
+                Invalidate();
+                Refresh();
+            }
+            else
+                System.Threading.Thread.Sleep((FormMain.Config.MaxDurationFrame - (int)timeBetweenFrames.ElapsedMilliseconds));
         }
 
         private void FormBattle_FormClosing(object sender, FormClosingEventArgs e)
@@ -375,17 +381,20 @@ namespace Fantasy_King_s_Battle
         {
             base.OnPaintBackground(e);
 
+            BackPaints.Add(DateTime.Now);
+
             e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;            
             e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
-            e.Graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;           
-            e.Graphics.DrawImageUnscaled(bmpLay0, 0, 0);
-
-            BackPaints.Add(DateTime.Now);
+            e.Graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
+            e.Graphics.DrawImage(bmpLay0, e.ClipRectangle, e.ClipRectangle, GraphicsUnit.Pixel);
+            //e.Graphics.DrawImageUnscaled(bmpLay0, 0, 0);
         }
 
         private void FormBattle_Paint(object sender, PaintEventArgs e)
         {
+            Paints.Add(DateTime.Now);
             return;
+
             e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
             e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
             
@@ -534,8 +543,6 @@ namespace Fantasy_King_s_Battle
             lblTimer.Text = ts.ToString("mm':'ss");
 
             bmpPanel.Dispose();
-
-            Paints.Add(DateTime.Now);
         }
 
         private void DrawFps()
@@ -664,12 +671,12 @@ namespace Fantasy_King_s_Battle
 
             // Рисуем сетку
             // Вертикальные линии
-            for (int x = 0; x <= battle.SizeBattlefield.Width; x++)
+            /*for (int x = 0; x <= battle.SizeBattlefield.Width; x++)
                 g.DrawLine(penGrid, topLeftGrid.X + x * sizeTile.Width, topLeftGrid.Y, topLeftGrid.X + x * sizeTile.Width, topLeftGrid.Y + battle.SizeBattlefield.Height * sizeTile.Height);
             // Горизонтальные линии
             for (int y = 0; y <= battle.SizeBattlefield.Height; y++)
                 g.DrawLine(penGrid, topLeftGrid.X, topLeftGrid.Y + y * sizeTile.Height, topLeftGrid.X + battle.SizeBattlefield.Width * sizeTile.Width, topLeftGrid.Y + y * sizeTile.Height);
-
+            */
 
             // Рисуем аватарки игроков
             g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
@@ -694,6 +701,7 @@ namespace Fantasy_King_s_Battle
             timeInternalFixed = timeStart; 
             stepsCalcedByCurrentSpeed = 0;
             timePassedCurrentSpeed.Start();
+            timeBetweenFrames.Start();
             Application.DoEvents();
 
             for (; ; )

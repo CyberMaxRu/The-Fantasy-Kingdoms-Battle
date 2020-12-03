@@ -147,6 +147,8 @@ namespace Fantasy_King_s_Battle
         internal int StepInMSec {get; private set; }// Время шага в миллисекундах
         internal int MaxDurationBattle { get; private set; }// Максимальная длительность боя в секундах
         internal int MaxStepsInBattle { get; private set; }// Максимальная длительность боя в тактах
+        internal int MaxFramesPerSecond { get; private set; }// Максимальная частота перерисовки кадров
+        internal int MaxDurationFrame { get; private set; }// Максимальная длительность кадра
         internal int MaxStatPointPerLevel { get; private set; }
         internal int StepsHeroInTumbstone { get; private set; }// Сколько шагов герой в могиле перед исчезновением
         internal int PlateWidth { get; private set; }// Количество ячеек на панели справа по горизонтали
@@ -306,6 +308,12 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(MaxDurationBattle <= 3600);
 
             MaxStepsInBattle = MaxDurationBattle * StepsInSecond;
+
+            MaxFramesPerSecond = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battle/MaxFramesPerSecond").InnerText);
+            Debug.Assert(MaxFramesPerSecond >= 5);
+            Debug.Assert(MaxFramesPerSecond <= 100);
+
+            MaxDurationFrame = 1_000 / MaxFramesPerSecond;
 
             MaxStatPointPerLevel = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Heroes/MaxStatPointPerLevel").InnerText);
             Debug.Assert(MaxStatPointPerLevel >= 5);

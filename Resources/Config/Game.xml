@@ -14,6 +14,7 @@
   <Battle>
     <StepsInSecond>50</StepsInSecond>
     <MaxDurationBattle>120</MaxDurationBattle>
+    <MaxFramesPerSecond>50</MaxFramesPerSecond>
   </Battle>
   <Battlefield>
     <HeroRows>7</HeroRows>
