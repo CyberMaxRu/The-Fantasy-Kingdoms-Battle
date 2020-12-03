@@ -20,6 +20,7 @@ namespace Fantasy_King_s_Battle
         private Pen penArrow = new Pen(Color.Fuchsia);
         private Pen penCircle = new Pen(new SolidBrush(Color.Fuchsia));
         private Bitmap bmpBackground;
+        private Bitmap bmpLay0;
         private Pen penGrid = new Pen(Color.Gray);
         private Size sizeTile;
         private Size sizeCell;
@@ -374,30 +375,12 @@ namespace Fantasy_King_s_Battle
         {
             base.OnPaintBackground(e);
 
-            BackPaints.Add(DateTime.Now);
-
             e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;            
             e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
-            e.Graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
-            
-            e.Graphics.DrawImageUnscaled(bmpBackground, 0, 0);
-            return;
-            
-            // Рисуем сетку
-            // Вертикальные линии
-            for (int x = 0; x <= battle.SizeBattlefield.Width; x++)
-                e.Graphics.DrawLine(penGrid, topLeftGrid.X + x * sizeTile.Width, topLeftGrid.Y, topLeftGrid.X + x * sizeTile.Width, topLeftGrid.Y + battle.SizeBattlefield.Height * sizeTile.Height);
-            // Горизонтальные линии
-            for (int y = 0; y <= battle.SizeBattlefield.Height; y++)
-                e.Graphics.DrawLine(penGrid, topLeftGrid.X, topLeftGrid.Y + y * sizeTile.Height, topLeftGrid.X + battle.SizeBattlefield.Width * sizeTile.Width, topLeftGrid.Y + y * sizeTile.Height);
-            
-            //
-            
-            e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
-            
-            // Рисуем аватарки игроков
-            e.Graphics.DrawImageUnscaled(Program.formMain.ilPlayerAvatarsBig.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilPlayerAvatarsBig, battle.Player1.ImageIndexAvatar, (battle.BattleCalced == false) || (battle.Winner == battle.Player1))], pointAvatarPlayer1);
-            e.Graphics.DrawImageUnscaled(Program.formMain.ilPlayerAvatarsBig.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilPlayerAvatarsBig, battle.Player2.ImageIndexAvatar, (battle.BattleCalced == false) || (battle.Winner == battle.Player2))], pointAvatarPlayer2);
+            e.Graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;           
+            e.Graphics.DrawImageUnscaled(bmpLay0, 0, 0);
+
+            BackPaints.Add(DateTime.Now);
         }
 
         private void FormBattle_Paint(object sender, PaintEventArgs e)
@@ -668,6 +651,32 @@ namespace Fantasy_King_s_Battle
 
             // Подготавливаем подложку
             bmpBackground = GuiUtils.MakeBackground(ClientSize);
+
+            // Подготавливаем фоновый рисунок
+            bmpLay0 = new Bitmap(bmpBackground);
+            Graphics g = Graphics.FromImage(bmpLay0);
+
+            g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
+            g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+
+            g.DrawImageUnscaled(bmpBackground, 0, 0);
+
+            // Рисуем сетку
+            // Вертикальные линии
+            for (int x = 0; x <= battle.SizeBattlefield.Width; x++)
+                g.DrawLine(penGrid, topLeftGrid.X + x * sizeTile.Width, topLeftGrid.Y, topLeftGrid.X + x * sizeTile.Width, topLeftGrid.Y + battle.SizeBattlefield.Height * sizeTile.Height);
+            // Горизонтальные линии
+            for (int y = 0; y <= battle.SizeBattlefield.Height; y++)
+                g.DrawLine(penGrid, topLeftGrid.X, topLeftGrid.Y + y * sizeTile.Height, topLeftGrid.X + battle.SizeBattlefield.Width * sizeTile.Width, topLeftGrid.Y + y * sizeTile.Height);
+
+
+            // Рисуем аватарки игроков
+            g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
+            g.DrawImageUnscaled(Program.formMain.ilPlayerAvatarsBig.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilPlayerAvatarsBig, battle.Player1.ImageIndexAvatar, (battle.BattleCalced == false) || (battle.Winner == battle.Player1))], pointAvatarPlayer1);
+            g.DrawImageUnscaled(Program.formMain.ilPlayerAvatarsBig.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilPlayerAvatarsBig, battle.Player2.ImageIndexAvatar, (battle.BattleCalced == false) || (battle.Winner == battle.Player2))], pointAvatarPlayer2);
+
+            g.Dispose();
 
             //
             ApplyStep();
