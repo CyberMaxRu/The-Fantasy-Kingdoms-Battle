@@ -33,6 +33,7 @@ namespace Fantasy_King_s_Battle
         private readonly List<DateTime> Frames = new List<DateTime>();
         private readonly List<DateTime> Steps = new List<DateTime>();
         private readonly List<DateTime> Paints = new List<DateTime>();
+        private readonly List<DateTime> BackPaints = new List<DateTime>();
         private DateTime timeStart;// Время начала битвы
         private DateTime timeInternalFixed;// Внутреннее время битвы, с учетом изменения скорости
         private DateTime timeInternalApprox;// Ориентировочное время битвы
@@ -373,13 +374,14 @@ namespace Fantasy_King_s_Battle
         {
             base.OnPaintBackground(e);
 
-            
+            BackPaints.Add(DateTime.Now);
+
             e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;            
             e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
             e.Graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
-                        
-            e.Graphics.DrawImageUnscaled(bmpBackground, 0, 0);
             
+            e.Graphics.DrawImageUnscaled(bmpBackground, 0, 0);
+            return;
             
             // Рисуем сетку
             // Вертикальные линии
@@ -561,11 +563,12 @@ namespace Fantasy_King_s_Battle
             UpdateActions(Frames);
             UpdateActions(Steps);
             UpdateActions(Paints);
+            UpdateActions(BackPaints);
 
             TimeSpan realTime = currentDateTime - timeStart;
             
             lblSystemInfo.Text = Frames.Count.ToString() + " fps; steps: " + Steps.Count.ToString() + "; paints: " + Paints.Count.ToString()
-                 + "; passed: " + realTime.ToString("mm':'ss"); 
+                  + "; backpaints: " + BackPaints.Count.ToString() + "; passed: " + realTime.ToString("mm':'ss"); 
 
             void UpdateActions(List<DateTime> list)
             {
