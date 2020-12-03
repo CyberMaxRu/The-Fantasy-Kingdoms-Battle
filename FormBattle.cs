@@ -338,7 +338,7 @@ namespace Fantasy_King_s_Battle
                 {
                     while (stepsCalcedByCurrentSpeed < needSteps)
                     {
-                        battle.CalcStep();
+                        //battle.CalcStep();
                         stepsCalcedByCurrentSpeed++;
                         Steps.Add(DateTime.Now);
 
@@ -348,6 +348,8 @@ namespace Fantasy_King_s_Battle
 
                     DrawFrame();
                 }
+                //else
+                //    thread.Sleep(1);
             }
         }
 
@@ -357,6 +359,8 @@ namespace Fantasy_King_s_Battle
             Frames.Add(DateTime.Now);
 
             ApplyStep();
+            Invalidate();
+            Refresh();
         }
 
         private void FormBattle_FormClosing(object sender, FormClosingEventArgs e)
@@ -369,10 +373,14 @@ namespace Fantasy_King_s_Battle
         {
             base.OnPaintBackground(e);
 
-            e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
+            
+            e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;            
             e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+            e.Graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
+                        
             e.Graphics.DrawImageUnscaled(bmpBackground, 0, 0);
-
+            
+            
             // Рисуем сетку
             // Вертикальные линии
             for (int x = 0; x <= battle.SizeBattlefield.Width; x++)
@@ -382,8 +390,9 @@ namespace Fantasy_King_s_Battle
                 e.Graphics.DrawLine(penGrid, topLeftGrid.X, topLeftGrid.Y + y * sizeTile.Height, topLeftGrid.X + battle.SizeBattlefield.Width * sizeTile.Width, topLeftGrid.Y + y * sizeTile.Height);
             
             //
+            
             e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
-
+            
             // Рисуем аватарки игроков
             e.Graphics.DrawImageUnscaled(Program.formMain.ilPlayerAvatarsBig.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilPlayerAvatarsBig, battle.Player1.ImageIndexAvatar, (battle.BattleCalced == false) || (battle.Winner == battle.Player1))], pointAvatarPlayer1);
             e.Graphics.DrawImageUnscaled(Program.formMain.ilPlayerAvatarsBig.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilPlayerAvatarsBig, battle.Player2.ImageIndexAvatar, (battle.BattleCalced == false) || (battle.Winner == battle.Player2))], pointAvatarPlayer2);
@@ -391,6 +400,7 @@ namespace Fantasy_King_s_Battle
 
         private void FormBattle_Paint(object sender, PaintEventArgs e)
         {
+            return;
             e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
             e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
             
@@ -737,8 +747,6 @@ namespace Fantasy_King_s_Battle
                     lblDamagePlayer2.Text = battle.Player2.LastBattleDamageToCastle.ToString();
                 }
             }
-
-            Refresh();// Увеличивает потребление ЦП
         }
     }
 }
