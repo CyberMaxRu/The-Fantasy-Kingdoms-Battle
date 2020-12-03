@@ -19,6 +19,8 @@ namespace Fantasy_King_s_Battle
         private Battle battle;
         private Pen penArrow = new Pen(Color.Fuchsia);
         private Pen penCircle = new Pen(new SolidBrush(Color.Fuchsia));
+        private Brush brushMagicStrikeAlly = new SolidBrush(Color.Green);
+        private Brush brushMagicStrikeEnemy = new SolidBrush(Color.Maroon);
         private Bitmap bmpBackground;
         private Bitmap bmpLayBackground;
         private Bitmap bmpFrame;
@@ -483,15 +485,15 @@ namespace Fantasy_King_s_Battle
 
                         if ((h.PlayerHero.ClassHero.KindHero.TypeAttack != TypeAttack.Melee) || (h.DestinationForMove != null))
                         {
-                            penArrow.Color = h.PlayerHero.Player == battle.Player1 ? Color.Green : Color.Maroon;
-                            penCircle.Color = h.PlayerHero.Player == battle.Player1 ? Color.Green : Color.Maroon;
+                            penArrow.Color = h.PlayerHero.Player == battle.Player1 ? Color.Green : Color.Maroon;                            
                             if (h.PlayerHero.ClassHero.KindHero.TypeAttack == TypeAttack.Melee)
                             {
                                 gFrame.DrawLine(penArrow, pSource, pTarget);
                             }
                             else
                             {
-                                gFrame.DrawEllipse(penCircle, pTarget.X - 3, pTarget.Y - 3, 6, 6);
+                                Brush b = h.PlayerHero.Player == battle.Player1 ? brushMagicStrikeAlly : brushMagicStrikeEnemy;
+                                gFrame.FillEllipse(b, pTarget.X - 5, pTarget.Y - 5, 11, 11);
                             }
                         }
                     }
