@@ -69,7 +69,6 @@ namespace Fantasy_King_s_Battle
         {
             InitializeComponent();
 
-            Paint += FormBattle_Paint;
             FormClosing += FormBattle_FormClosing;
 
             penArrow.Width = 2;
@@ -390,8 +389,10 @@ namespace Fantasy_King_s_Battle
             //e.Graphics.DrawImageUnscaled(bmpLay0, 0, 0);
         }
 
-        private void FormBattle_Paint(object sender, PaintEventArgs e)
+        protected override void OnPaint(PaintEventArgs e)
         {
+            base.OnPaint(e);
+
             Paints.Add(DateTime.Now);
             return;
 
