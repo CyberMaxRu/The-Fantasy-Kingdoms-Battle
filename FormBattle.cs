@@ -524,8 +524,6 @@ namespace Fantasy_King_s_Battle
             GuiUtils.DrawBand(gFrame, rectBandHealthPlayer2, brushHealth, brushNoneHealth, CalcHealthPlayer(battle.Player2), maxHealthPlayer2);
 
             // Рисуем героев
-            if (battle.BattleCalced == false)
-            {
                 foreach (HeroInBattle hero in battle.ActiveHeroes)
                 {
                     Point coordIconHero = CellToClientCoord(hero.CurrentTile);
@@ -637,6 +635,8 @@ namespace Fantasy_King_s_Battle
 
                 }
 
+            if (battle.BattleCalced == false)
+            {
                 lblStateBattle.Text = "Идет бой";
             }
             else
