@@ -126,6 +126,7 @@ namespace Fantasy_King_s_Battle
                     if (neighbourNode.ReservedForMove != null)
                         if (neighbourNode.IsNeighbourTile(sourceTile) == true)
                             continue;
+
                     if (neighbourNode.Unit != null)
                         if (neighbourNode != destTile)
                             if (!((throughPlayer != null) && (neighbourNode.Unit.Player == throughPlayer)))
