@@ -18,11 +18,16 @@ namespace Fantasy_King_s_Battle
         private bool inRollbackAfterAction;// Герой во время отката после выполнения действия        
         private HeroInBattle lastAttackedHero;
         private BattlefieldTile currentTile;
+        private SolidBrush brushBandHealth;
+        private SolidBrush brushBandHealthNone;
+        private Bitmap bmpIcon;
+        private bool needRedraw;
+        private StateHeroInBattle priorState;
 
-        public HeroInBattle(Battle b, PlayerHero ph, Point coord)
+        public HeroInBattle(Battle b, PlayerHero ph, Point coord, bool needImage)
         {
             Battle = b;
-            CurrentTile = b.Battlefield.Tiles[coord.Y, coord.X];            
+            CurrentTile = b.Battlefield.Tiles[coord.Y, coord.X];
             PlayerHero = ph;
             IsLive = true;
 
@@ -39,6 +44,14 @@ namespace Fantasy_King_s_Battle
             State = StateHeroInBattle.None;
 
             LastTarget = default;
+
+            if (needImage)
+            {
+                bmpIcon = new Bitmap(Program.formMain.bmpBorderForIcon.Size.Width, Program.formMain.bmpBorderForIcon.Size.Height);
+                brushBandHealth = new SolidBrush(Color.Red);
+                brushBandHealthNone = new SolidBrush(Color.LightPink);
+                needRedraw = true;
+            }
         }
 
         internal PlayerHero PlayerHero { get; }
@@ -53,6 +66,18 @@ namespace Fantasy_King_s_Battle
         internal int CurrentMana { get; set; }
         internal int CurrentStamina { get; set; }
         internal int ReceivedDamage { get; private set; }
+
+        internal Bitmap BmpIcon
+        {
+            get
+            {
+                Debug.Assert(bmpIcon != null);
+
+                if (needRedraw)
+                    DrawIcon();
+                return bmpIcon;
+            }
+        }
 
         //
         internal Point Coord { get { return new Point(currentTile.X, currentTile.Y); } }
@@ -80,6 +105,8 @@ namespace Fantasy_King_s_Battle
         {
             Debug.Assert(IsLive == true);
             Debug.Assert(CurrentTile != null);
+
+            priorState = State;
 
             if (inRollbackAfterAction == false)
             {
@@ -247,6 +274,9 @@ namespace Fantasy_King_s_Battle
                     inRollbackAfterAction = false;
                 }
             }
+
+            if (priorState != State)
+                needRedraw = true;            
 
             bool SearchTargetForMelee()
             {
@@ -419,6 +449,7 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(State != StateHeroInBattle.Resurrection);
 
             ReceivedDamage += damageMelee + damageArcher + damageMagic;
+            needRedraw = true;
         }
 
         internal void CalcParameters()
@@ -524,6 +555,40 @@ namespace Fantasy_King_s_Battle
             //timeMove = 3 * FormMain.Config.StepsInSecond;
             Debug.Assert(timeMove > 0);
             return timeMove;
+        }
+
+        private void DrawIcon()
+        {
+            Debug.Assert(bmpIcon != null);
+            Debug.Assert(IsLive);
+
+            Graphics g = Graphics.FromImage(bmpIcon);
+
+            // Рисуем иконку героя
+            g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
+            g.DrawImageUnscaled(Program.formMain.ilGuiHeroes.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilGuiHeroes, PlayerHero.ClassHero.ImageIndex, State != StateHeroInBattle.Tumbstone)], FormMain.Config.ShiftForBorder);
+
+            // Если это противник, то обращаем его в противоположную сторону
+            if (PlayerHero.Player != Battle.Player1)
+                bmpIcon.RotateFlip(RotateFlipType.RotateNoneFlipX);
+
+            // Рисуем бордюр
+            g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
+            g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            g.DrawImageUnscaled(Program.formMain.bmpBorderForIcon, 0, 0);
+            
+            // Рисуем состояние
+            if (State != StateHeroInBattle.None)
+            {
+                g.DrawImageUnscaled(Program.formMain.ilStateHero.Images[(int)State], FormMain.Config.ShiftForBorder.X + 1, FormMain.Config.ShiftForBorder.Y + 1);
+            }
+            
+            // Рисуем полоску жизни
+            GuiUtils.DrawBand(g, new Rectangle(FormMain.Config.ShiftForBorder.X + 2, FormMain.Config.ShiftForBorder.Y + Program.formMain.ilGuiHeroes.ImageSize.Height - 6, Program.formMain.ilGuiHeroes.ImageSize.Height - 4, 4), brushBandHealth, brushBandHealthNone, CurrentHealth, Parameters.Health);
+
+            needRedraw = false;
+            g.Dispose();
         }
     }
 }

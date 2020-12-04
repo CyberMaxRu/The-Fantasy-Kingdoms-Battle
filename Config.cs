@@ -141,6 +141,7 @@ namespace Fantasy_King_s_Battle
         // Константы
         internal int GridSize { get; private set; }// Размер ячейки сетки
         internal int GridSizeHalf { get; private set; }// Размер половины ячейки сетки
+        internal Point ShiftForBorder { get; private set; }// Смещение иконки внутри рамки сущности
         internal int HeroInRow { get; private set; }// Героев в ряду
         internal int HeroRows { get; private set; }// Рядов героев
         internal int WidthBorderBattlefield { get; set; }// Ширина бордюра поля боя
@@ -276,6 +277,13 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(GridSize <= 20);
             Debug.Assert(GridSize % 2 == 0);
             GridSizeHalf = GridSize / 2;
+
+            ShiftForBorder = new Point(Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/ShiftForBorderX").InnerText),
+                Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/ShiftForBorderY").InnerText));
+            Debug.Assert(ShiftForBorder.X >= 0);
+            Debug.Assert(ShiftForBorder.X <= 10);
+            Debug.Assert(ShiftForBorder.Y >= 0);
+            Debug.Assert(ShiftForBorder.Y <= 10);
 
             PlateWidth = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/PlateWidth").InnerText);
             Debug.Assert(PlateWidth >= 2);

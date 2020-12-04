@@ -171,9 +171,10 @@ namespace Fantasy_King_s_Battle
                 {
                     if (p.BattleCalced == false)
                     {
-                        b = new Battle(p, p.Opponent, Turn, FormMain.Rnd);
+                        bool showForPlayer = (p.TypePlayer == TypePlayer.Human) || (p.Opponent.TypePlayer == TypePlayer.Human);
+                        b = new Battle(p, p.Opponent, Turn, FormMain.Rnd, showForPlayer);
 
-                        if ((p.TypePlayer == TypePlayer.Human) || (p.Opponent.TypePlayer == TypePlayer.Human))
+                        if (showForPlayer)
                         {
                             formBattle = new FormBattle();
                             formBattle.ShowBattle(b);

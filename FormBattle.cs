@@ -15,7 +15,6 @@ namespace Fantasy_King_s_Battle
     {
         enum SpeedBattle { VerySlow, Slow, Normal, Fast, VeryFast };
 
-        private PanelHeroInBattle[,] cellHeroes;
         private Battle battle;
         private Pen penArrow = new Pen(Color.Fuchsia);
         private Pen penCircle = new Pen(new SolidBrush(Color.Fuchsia));
@@ -25,7 +24,6 @@ namespace Fantasy_King_s_Battle
         private Bitmap bmpLayBackground;
         private Bitmap bmpFrame;
         private Graphics gFrame;
-        private Bitmap bmpUnit;
         private Pen penGrid = new Pen(Color.Gray);
         private Size sizeTile;
         private Size sizeCell;
@@ -501,6 +499,11 @@ namespace Fantasy_King_s_Battle
             g.Dispose();
         }
 
+        private Point CellToClientCoord(BattlefieldTile t)
+        {
+            return new Point(topLeftCells.X + (t.X * sizeTile.Width), topLeftCells.Y + (t.Y * sizeTile.Height));
+        }
+
         private void DrawFrame()
         {
             if (showGrid != chkbShowGrid.Checked)
@@ -521,80 +524,71 @@ namespace Fantasy_King_s_Battle
             GuiUtils.DrawBand(gFrame, rectBandHealthPlayer2, brushHealth, brushNoneHealth, CalcHealthPlayer(battle.Player2), maxHealthPlayer2);
 
             // Рисуем героев
-            HeroInBattle hero;
-
-            for (int y = 0; y < battle.SizeBattlefield.Height; y++)
-                for (int x = 0; x < battle.SizeBattlefield.Width; x++)
-                {
-                    cellHeroes[y, x].Hero = battle.Battlefield.Tiles[y, x].Unit;
-                    if (cellHeroes[y, x].Hero != null)
-                    {
-                        hero = cellHeroes[y, x].Hero;
-
-                        Point shift = new Point(0, 0);
-                        if (cellHeroes[y, x].Hero.TileForMove != null)
-                        {
-                            BattlefieldTile tileforMove = cellHeroes[y, x].Hero.TileForMove;
-                            Debug.Assert(Utils.PointsIsNeighbor(cellHeroes[y, x].Hero.Coord, new Point(tileforMove.X, tileforMove.Y)) == true);
-                            double percent = cellHeroes[y, x].Hero.PercentExecuteAction();
-
-                            shift.X = (int)((cellHeroes[tileforMove.Y, tileforMove.X].Left - cellHeroes[y, x].Left) * percent);
-                            shift.Y = (int)((cellHeroes[tileforMove.Y, tileforMove.X].Top - cellHeroes[y, x].Top) * percent);
-                        }
-
-                        if (((hero.Target != null) || (hero.LastTarget != default)) && (hero.PlayerHero.ClassHero.KindHero.TypeAttack == TypeAttack.Melee) && (hero.DestinationForMove == null))
-                        {
-                            Point coordTarget = hero.Target != null ? hero.Target.Coord : hero.LastTarget;
-
-                            double percent = hero.PercentExecuteAction();
-                            if (hero.Target == null)
-                                percent = 1 - percent;
-
-                            int shiftX = (int)((coordTarget.X > hero.Coord.X ? 1 : coordTarget.X < hero.Coord.X ? -1 : 0) * FormMain.Config.GridSize * percent);
-                            int shiftY = (int)((coordTarget.Y > hero.Coord.Y ? 1 : coordTarget.Y < hero.Coord.Y ? -1 : 0) * FormMain.Config.GridSize * percent);
-
-                            shift.X += shiftX;
-                            shift.Y += shiftY;
-                        }
-
-                        Debug.Assert(cellHeroes[y, x].Left + shift.X < Width);
-                        Debug.Assert(cellHeroes[y, x].Top + shift.Y >= topLeftCells.Y);
-                        Debug.Assert(cellHeroes[y, x].Top + shift.Y < Height);
-
-                        cellHeroes[y, x].DrawToBitmap(bmpUnit, new Rectangle(0, 0, bmpUnit.Width, bmpUnit.Height));
-                        gFrame.DrawImageUnscaled(bmpUnit, cellHeroes[y, x].Left + shift.X, cellHeroes[y, x].Top + shift.Y);
-                    }
-                }
-
             if (battle.BattleCalced == false)
-            {                
-                // Рисуем стрелки атаки
-                foreach (HeroInBattle h in battle.ActiveHeroes)
+            {
+                foreach (HeroInBattle hero in battle.ActiveHeroes)
                 {
-                    if ((h.Target != null) || (h.LastTarget != default) || h.DestinationForMove != null)
+                    Point coordIconHero = CellToClientCoord(hero.CurrentTile);
+                    Point shift = new Point(0, 0);
+
+                    if (hero.TileForMove != null)
                     {
-                        if (h.PlayerHero.ClassHero.KindHero.TypeAttack != TypeAttack.Melee)
-                            if (h.Target is null)
+                        BattlefieldTile tileforMove = hero.TileForMove;
+                        Point coordTileForMove = CellToClientCoord(tileforMove);
+                        Debug.Assert(Utils.PointsIsNeighbor(hero.Coord, new Point(tileforMove.X, tileforMove.Y)) == true);
+                        double percent = hero.PercentExecuteAction();
+
+                        shift.X = (int)((coordTileForMove.X - coordIconHero.X) * percent);
+                        shift.Y = (int)((coordTileForMove.Y - coordIconHero.Y) * percent);
+                    }
+
+                    if (((hero.Target != null) || (hero.LastTarget != default)) && (hero.PlayerHero.ClassHero.KindHero.TypeAttack == TypeAttack.Melee) && (hero.DestinationForMove == null))
+                    {
+                        Point coordTarget = hero.Target != null ? hero.Target.Coord : hero.LastTarget;
+
+                        double percent = hero.PercentExecuteAction();
+                        if (hero.Target == null)
+                            percent = 1 - percent;
+
+                        int shiftX = (int)((coordTarget.X > hero.Coord.X ? 1 : coordTarget.X < hero.Coord.X ? -1 : 0) * FormMain.Config.GridSize * percent);
+                        int shiftY = (int)((coordTarget.Y > hero.Coord.Y ? 1 : coordTarget.Y < hero.Coord.Y ? -1 : 0) * FormMain.Config.GridSize * percent);
+
+                        shift.X += shiftX;
+                        shift.Y += shiftY;
+                    }
+
+                    Debug.Assert(coordIconHero.X + shift.X < Width);
+                    Debug.Assert(coordIconHero.Y + shift.Y >= topLeftCells.Y);
+                    Debug.Assert(coordIconHero.Y + shift.Y < Height);
+
+                    //cellHeroes[y, x].DrawToBitmap(bmpUnit, new Rectangle(0, 0, bmpUnit.Width, bmpUnit.Height));
+                    gFrame.DrawImageUnscaled(hero.BmpIcon, coordIconHero.X + shift.X, coordIconHero.Y + shift.Y);
+
+                    // Рисуем стрелки атаки
+                    if ((hero.Target != null) || (hero.LastTarget != default) || hero.DestinationForMove != null)
+                    {
+                        if (hero.PlayerHero.ClassHero.KindHero.TypeAttack != TypeAttack.Melee)
+                            if (hero.Target is null)
                                 continue;
 
                         Point coordTarget;
-                        if (h.DestinationForMove == null)
-                            coordTarget = h.Target != null ? h.Target.Coord : h.LastTarget;
+                        if (hero.DestinationForMove == null)
+                            coordTarget = hero.Target != null ? hero.Target.Coord : hero.LastTarget;
                         else
-                            coordTarget = new Point(h.DestinationForMove.X, h.DestinationForMove.Y);
+                            coordTarget = new Point(hero.DestinationForMove.X, hero.DestinationForMove.Y);
 
-                        PanelHeroInBattle p1 = cellHeroes[h.Coord.Y, h.Coord.X];
-                        PanelHeroInBattle p2 = cellHeroes[coordTarget.Y, coordTarget.X];
+                        Point p2 = CellToClientCoord(battle.Battlefield.Tiles[coordTarget.Y, coordTarget.X]);
+
 
                         // Делаем расчет точки назначения в зависимости от процент выполнения удара
-                        Point pSource = new Point(p1.Location.X + p1.Width / 2, p1.Location.Y + p1.Height / 2);
-                        Point pTarget = new Point(p2.Location.X + p2.Width / 2, p2.Location.Y + p2.Height / 2);
+                        Point pSource = new Point(coordIconHero.X + sizeCell.Width / 2, coordIconHero.Y + sizeCell.Height / 2);
+                        Point pTarget = new Point(p2.X + sizeCell.Width / 2, p2.Y + sizeCell.Height / 2);
 
-                        if (h.DestinationForMove == null)
+                        if (hero.DestinationForMove == null)
                         {
-                            double percent = h.PercentExecuteAction();
-                            if (h.PlayerHero.ClassHero.KindHero.TypeAttack == TypeAttack.Melee)
-                                if (h.InRollbackAction() == true)
+                            double percent = hero.PercentExecuteAction();
+                            if (hero.PlayerHero.ClassHero.KindHero.TypeAttack == TypeAttack.Melee)
+                                if (hero.InRollbackAction() == true)
                                     percent = 1 - percent;
 
                             pTarget.X = (int)(pSource.X + ((pTarget.X - pSource.X) * percent));
@@ -602,11 +596,11 @@ namespace Fantasy_King_s_Battle
                         }
                         else
                         {
-                            pSource = new Point(topLeftGrid.X + (h.Coord.X * sizeTile.Width) + (sizeTile.Width / 2), topLeftGrid.Y + (h.Coord.Y * sizeTile.Height) + (sizeTile.Height / 2));
-                            penArrow.Color = h.PlayerHero.Player == battle.Player1 ? Color.Green : Color.Maroon;
+                            pSource = new Point(topLeftGrid.X + (hero.Coord.X * sizeTile.Width) + (sizeTile.Width / 2), topLeftGrid.Y + (hero.Coord.Y * sizeTile.Height) + (sizeTile.Height / 2));
+                            penArrow.Color = hero.PlayerHero.Player == battle.Player1 ? Color.Green : Color.Maroon;
 
                             // Рисуем путь юнита к цели
-                            foreach (BattlefieldTile t in h.PathToDestination)
+                            foreach (BattlefieldTile t in hero.PathToDestination)
                             {
                                 pTarget = new Point(topLeftGrid.X + (t.Coord.X * sizeTile.Width) + (sizeTile.Width / 2), topLeftGrid.Y + (t.Coord.Y * sizeTile.Height) + (sizeTile.Height / 2) + WIDTH_LINE);
                                 gFrame.DrawLine(penArrow, pSource, pTarget);
@@ -615,10 +609,10 @@ namespace Fantasy_King_s_Battle
                             }
                         }
 
-                        if ((h.PlayerHero.ClassHero.KindHero.TypeAttack != TypeAttack.Melee) || (h.DestinationForMove != null))
+                        if ((hero.PlayerHero.ClassHero.KindHero.TypeAttack != TypeAttack.Melee) || (hero.DestinationForMove != null))
                         {
-                            penArrow.Color = h.PlayerHero.Player == battle.Player1 ? Color.Green : Color.Maroon;                            
-                            if (h.PlayerHero.ClassHero.KindHero.TypeAttack == TypeAttack.Melee)
+                            penArrow.Color = hero.PlayerHero.Player == battle.Player1 ? Color.Green : Color.Maroon;
+                            if (hero.PlayerHero.ClassHero.KindHero.TypeAttack == TypeAttack.Melee)
                             {
                                 gFrame.DrawLine(penArrow, pSource, pTarget);
                             }
@@ -629,22 +623,22 @@ namespace Fantasy_King_s_Battle
                             }
                         }
                     }
+
+                    // Рисуем снаряды
+                    foreach (Missile m in battle.Missiles)
+                    {
+                        Point ph1 = CellToClientCoord(m.SourceTile);
+                        Point p1 = new Point(ph1.X + sizeCell.Width / 2, ph1.Y + sizeCell.Height / 2);
+                        Point ph2 = CellToClientCoord(m.DestTile);
+                        Point p2 = new Point(ph2.X + sizeCell.Width / 2, ph2.Y + sizeCell.Height / 2);
+
+                        m.Draw(gFrame, p1, p2);
+                    }
+
                 }
 
-                // Рисуем снаряды
-                foreach (Missile m in battle.Missiles)
-                {
-                    PanelHeroInBattle ph1 = cellHeroes[m.SourceTile.Y, m.SourceTile.X];
-                    Point p1 = new Point(ph1.Location.X + ph1.Width / 2, ph1.Location.Y + ph1.Height / 2);
-                    PanelHeroInBattle ph2 = cellHeroes[m.DestTile.Y, m.DestTile.X];
-                    Point p2 = new Point(ph2.Location.X + ph2.Width / 2, ph2.Location.Y + ph2.Height / 2);
-
-                    m.Draw(gFrame, p1, p2);
-                }
-            }
-
-            if (battle.BattleCalced == false)
                 lblStateBattle.Text = "Идет бой";
+            }
             else
             {
                 if ((battle.Winner != null) && (battle.Winner.TypePlayer == TypePlayer.Human))
@@ -726,12 +720,11 @@ namespace Fantasy_King_s_Battle
             Text = "Бой. " + b.Player1.Name + " vs " + b.Player2.Name;
 
             battle = b;
-            PanelHeroInBattle p;
 
             // Расчет координат для отрисовки
-            PanelHeroInBattle phb = new PanelHeroInBattle(Program.formMain.ilGuiHeroes);
+            sizeCell = Program.formMain.bmpBorderForIcon.Size;
 
-            Width = FormMain.Config.GridSize + (phb.Width + FormMain.Config.GridSize) * FormMain.Config.HeroRows * 2 + FormMain.Config.GridSize + (Width - ClientSize.Width);
+            Width = FormMain.Config.GridSize + (sizeCell.Width + FormMain.Config.GridSize) * FormMain.Config.HeroRows * 2 + FormMain.Config.GridSize + (Width - ClientSize.Width);
 
             lblPlayer1.Left = FormMain.Config.GridSize;
             lblPlayer1.Text = battle.Player1.Name;
@@ -743,24 +736,9 @@ namespace Fantasy_King_s_Battle
             maxHealthPlayer2 = CalcHealthPlayer(b.Player2);
 
             //
-            sizeCell = phb.Size;
-            sizeTile = new Size(phb.Size.Width + (FormMain.Config.GridSize * 2) + 1, phb.Size.Height + (FormMain.Config.GridSize * 2) + 1);
+            sizeTile = new Size(sizeCell.Width + (FormMain.Config.GridSize * 2) + 1, sizeCell.Height + (FormMain.Config.GridSize * 2) + 1);
             topLeftGrid = new Point(FormMain.Config.GridSize + FormMain.Config.WidthBorderBattlefield, rectBandHealthPlayer1.Y + rectBandHealthPlayer1.Height + FormMain.Config.GridSize + FormMain.Config.WidthBorderBattlefield);
             topLeftCells = new Point(topLeftGrid.X + FormMain.Config.GridSize + 1, topLeftGrid.Y + FormMain.Config.GridSize + 1);
-
-            cellHeroes = new PanelHeroInBattle[b.SizeBattlefield.Height, b.SizeBattlefield.Width];
-            for (int y = 0; y < b.SizeBattlefield.Height; y++)
-                for (int x = 0; x < b.SizeBattlefield.Width; x++)
-                {
-                    p = new PanelHeroInBattle(Program.formMain.ilGuiHeroes)
-                    {
-                        //Parent = this,
-                        Left = topLeftCells.X + (x * sizeTile.Width),
-                        Top = topLeftCells.Y + (y * sizeTile.Height)
-                    };
-
-                    cellHeroes[y, x] = p;
-                }
 
             Width = topLeftGrid.X + (b.SizeBattlefield.Width * sizeTile.Width) + WIDTH_LINE + FormMain.Config.GridSize
                 + FormMain.Config.WidthBorderBattlefield + (Width - ClientSize.Width);
@@ -830,11 +808,8 @@ namespace Fantasy_King_s_Battle
             bmpFrame = new Bitmap(bmpLayBackground);
             gFrame = Graphics.FromImage(bmpFrame);
 
-            bmpUnit = new Bitmap(cellHeroes[0, 0].Width, cellHeroes[0, 0].Height);
             //
             ApplyStep();
-
-            phb.Dispose();
 
             ShowDialog();
         }
@@ -883,18 +858,7 @@ namespace Fantasy_King_s_Battle
         }
 
         private void ApplyStep()
-        {
-            for (int y = 0; y < battle.SizeBattlefield.Height; y++)
-                for (int x = 0; x < battle.SizeBattlefield.Width; x++)
-                    cellHeroes[y, x].Hero = null;
-
-            foreach (HeroInBattle h in battle.ActiveHeroes)
-            {
-                //Debug.Assert(cellHeroes[h.Coord.Y, h.Coord.X].Hero == null);
-
-                //cellHeroes[h.Coord.Y, h.Coord.X].Hero = h;
-            }
-            
+        {           
             btnEndBattle.Enabled = !battle.BattleCalced;
             btnDecSpeed.Enabled = btnEndBattle.Enabled;
             btnIncSpeed.Enabled = btnEndBattle.Enabled;

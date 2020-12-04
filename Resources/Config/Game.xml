@@ -6,6 +6,8 @@
     <PlateHeight>3</PlateHeight>
     <MinRowsEntityInPlate>2</MinRowsEntityInPlate>
     <BuildingMaxLines>3</BuildingMaxLines>
+    <ShiftForBorderX>3</ShiftForBorderX>
+    <ShiftForBorderY>2</ShiftForBorderY>
   </Interface>
   <Heroes>
     <MaxStatPointPerLevel>20</MaxStatPointPerLevel>

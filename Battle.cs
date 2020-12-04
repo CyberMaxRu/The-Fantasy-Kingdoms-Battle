@@ -16,7 +16,7 @@ namespace Fantasy_King_s_Battle
         internal Battlefield Battlefield;
         private List<HeroInBattle> heroesForDelete = new List<HeroInBattle>();
 
-        internal Battle(Player player1, Player player2, int turn, Random r)
+        internal Battle(Player player1, Player player2, int turn, Random r, bool showForPlayer)
         {
             Debug.Assert(player1 != null);
             Debug.Assert(player2 != null);
@@ -40,12 +40,12 @@ namespace Fantasy_King_s_Battle
             // Запоминаем героев в одном списке для упрощения расчетов
             foreach (PlayerHero ph in player1.CombatHeroes)
             {
-                AddHero(new HeroInBattle(this, ph, new Point(FormMain.Config.HeroRows - ph.CoordInPlayer.Y - 1 - 3, ph.CoordInPlayer.X)));
+                AddHero(new HeroInBattle(this, ph, new Point(FormMain.Config.HeroRows - ph.CoordInPlayer.Y - 1 - 3, ph.CoordInPlayer.X), showForPlayer));
             }
 
             foreach (PlayerHero ph in player2.CombatHeroes)
             {
-                AddHero(new HeroInBattle(this, ph, new Point(ph.CoordInPlayer.Y + FormMain.Config.HeroRows + 3, ph.CoordInPlayer.X)));
+                AddHero(new HeroInBattle(this, ph, new Point(ph.CoordInPlayer.Y + FormMain.Config.HeroRows + 3, ph.CoordInPlayer.X), showForPlayer));
             }
 
             void AddHero(HeroInBattle hb)

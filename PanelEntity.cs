@@ -23,7 +23,6 @@ namespace Fantasy_King_s_Battle
     // Класс панели для рисования иконки объекта, поддерживающего интерфейс ячейки
     internal sealed class PanelEntity : Label
     {
-        private Point pointIcon;
         private ICell cell;
 
         public PanelEntity()
@@ -35,8 +34,6 @@ namespace Fantasy_King_s_Battle
             TextAlign = ContentAlignment.BottomRight;
             Padding = new Padding(0, 0, 0, 3);
             
-            pointIcon = new Point(3, 2);
-
             ShowHint = true;
         }
 
@@ -69,7 +66,7 @@ namespace Fantasy_King_s_Battle
             {
                 //Debug.Assert(cell.Panel == this);
 
-                e.Graphics.DrawImageUnscaled(cell.ImageList().Images[cell.ImageIndex()], pointIcon);
+                e.Graphics.DrawImageUnscaled(cell.ImageList().Images[cell.ImageIndex()], FormMain.Config.ShiftForBorder);
                 if (Program.formMain.SelectedPanelEntity == this)
                 {
                     e.Graphics.DrawImage(Program.formMain.ilMenuCellFilters.Images[2], new Rectangle(0, 0, Width - 1, Height - 1));
