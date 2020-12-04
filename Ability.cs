@@ -10,7 +10,7 @@ using System.Windows.Forms;
 namespace Fantasy_King_s_Battle
 {
     // Класс способности
-    internal enum TypeAbility { Attack, Spell, Buff, Heal, Summon }
+    internal enum TypeAbility { MeleeAttack, RangeAttack, Spell, Buff, Heal, Summon }
     internal enum TypeTarget { Self, EnemyUnit, EnemyBuilding, AllyUnit }// Тип цели для способности
     internal enum Effect { Taunt, Slow }// Эффекты
 
@@ -20,7 +20,6 @@ namespace Fantasy_King_s_Battle
         public Ability(XmlNode n) : base(n)
         {
             TypeAbility = (TypeAbility)Enum.Parse(typeof(TypeAbility), n.SelectSingleNode("TypeAbility").InnerText);
-            TypeAttack = (TypeAttack)Enum.Parse(typeof(TypeAttack), n.SelectSingleNode("TypeAttack").InnerText);
             TypeTarget = (TypeTarget)Enum.Parse(typeof(TypeTarget), n.SelectSingleNode("TypeTarget").InnerText);
             MinUnitLevel = Convert.ToInt32(n.SelectSingleNode("MinUnitLevel").InnerText);
             Ranged = Convert.ToBoolean(n.SelectSingleNode("Ranged").InnerText);
@@ -63,13 +62,17 @@ namespace Fantasy_King_s_Battle
 
             switch (TypeAbility)
             {
-                case TypeAbility.Attack:
+                case TypeAbility.MeleeAttack:
+                    Debug.Assert(TypeTarget != TypeTarget.Self);
+                    Debug.Assert(TypeTarget != TypeTarget.AllyUnit);
+
+                    break;
+                case TypeAbility.RangeAttack:
                     Debug.Assert(TypeTarget != TypeTarget.Self);
                     Debug.Assert(TypeTarget != TypeTarget.AllyUnit);
 
                     break;
                 case TypeAbility.Buff:
-                    Debug.Assert(TypeAttack == TypeAttack.None);
                     Debug.Assert(TypeTarget != TypeTarget.EnemyUnit);
                     Debug.Assert(TypeTarget != TypeTarget.EnemyBuilding);
 
@@ -105,7 +108,6 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(classesHeroesString.Count > 0);
         }
 
-        internal TypeAttack TypeAttack { get; }
         internal TypeAbility TypeAbility { get; }
         internal TypeTarget TypeTarget { get; }
         internal int MinUnitLevel { get; }

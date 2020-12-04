@@ -11,7 +11,7 @@
     <KindHero>Melee</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
-    <Weapon>WeaponWarrior0</Weapon>
+    <MeleeWeapon>WeaponWarrior0</MeleeWeapon>
     <Armour>ArmourWarrior0</Armour>
     <BaseParameters>
       <Strength>20</Strength>
@@ -56,7 +56,7 @@
     <KindHero>Melee</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
-    <Weapon>WeaponRogue0</Weapon>
+    <MeleeWeapon>WeaponRogue0</MeleeWeapon>
     <Armour>ArmourRogue0</Armour>
     <BaseParameters>
       <Strength>10</Strength>
@@ -100,7 +100,8 @@
     <KindHero>Archer</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
-    <Weapon>WeaponHunter0</Weapon>
+    <MeleeWeapon>WeaponHunter0</MeleeWeapon>
+    <RangeWeapon>BowHunter0</RangeWeapon>
     <Armour>ArmourHunter0</Armour>
     <BaseParameters>
       <Strength>15</Strength>
@@ -145,7 +146,7 @@
     <KindHero>Mage</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
-    <Weapon>WeaponCleric0</Weapon>
+    <MeleeWeapon>WeaponCleric0</MeleeWeapon>
     <Armour>ArmourCleric0</Armour>
     <BaseParameters>
       <Strength>20</Strength>
@@ -189,7 +190,7 @@
     <KindHero>Mage</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
-    <Weapon>WeaponMage0</Weapon>
+    <MeleeWeapon>WeaponMage0</MeleeWeapon>
     <Armour>ArmourMage0</Armour>
     <BaseParameters>
       <Strength>20</Strength>
@@ -233,7 +234,8 @@
     <KindHero>Archer</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
-    <Weapon>WeaponElf0</Weapon>
+    <MeleeWeapon>WeaponElf0</MeleeWeapon>
+    <RangeWeapon>BowElf0</RangeWeapon>
     <Armour>ArmourElf0</Armour>
     <BaseParameters>
       <Strength>20</Strength>
@@ -276,7 +278,7 @@
     <KindHero>Melee</KindHero>
     <CanBuild>True</CanBuild>
     <DamageToCastle>2</DamageToCastle>
-    <Weapon>WeaponDwarf0</Weapon>
+    <MeleeWeapon>WeaponDwarf0</MeleeWeapon>
     <Armour>ArmourDwarf0</Armour>
     <BaseParameters>
       <Strength>20</Strength>
@@ -365,7 +367,7 @@
     <KindHero>Mage</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
-    <Weapon>WeaponDarkPriest0</Weapon>
+    <MeleeWeapon>WeaponDarkPriest0</MeleeWeapon>
     <Armour>ArmourDarkPriest0</Armour>
     <BaseParameters>
       <Strength>20</Strength>
@@ -412,7 +414,7 @@
     <KindHero>Mage</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
-    <Weapon>WeaponPriest0</Weapon>
+    <MeleeWeapon>WeaponPriest0</MeleeWeapon>
     <Armour>ArmourPriest0</Armour>
     <BaseParameters>
       <Strength>20</Strength>
@@ -459,7 +461,7 @@
     <KindHero>Melee</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
-    <Weapon>WeaponPaladin0</Weapon>
+    <MeleeWeapon>WeaponPaladin0</MeleeWeapon>
     <Armour>ArmourPaladin0</Armour>
     <BaseParameters>
       <Strength>20</Strength>
@@ -506,7 +508,7 @@
     <KindHero>Melee</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
-    <Weapon>WeaponBladeMaster0</Weapon>
+    <MeleeWeapon>WeaponBladeMaster0</MeleeWeapon>
     <Armour>ArmourBladeMaster0</Armour>
     <BaseParameters>
       <Strength>20</Strength>
@@ -553,7 +555,8 @@
     <KindHero>Archer</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
-    <Weapon>WeaponBeastMaster0</Weapon>
+    <MeleeWeapon>WeaponBeastMaster0</MeleeWeapon>
+    <RangeWeapon>BowBeastMaster0</RangeWeapon>
     <Armour>ArmourBeastMaster0</Armour>
     <BaseParameters>
       <Strength>20</Strength>
@@ -600,7 +603,8 @@
     <KindHero>Archer</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
-    <Weapon>WeaponMarksman0</Weapon>
+    <MeleeWeapon>WeaponMarksman0</MeleeWeapon>
+    <RangeWeapon>BowMarksman0</RangeWeapon>
     <Armour>ArmourMarksman0</Armour>
     <BaseParameters>
       <Strength>20</Strength>
@@ -647,7 +651,7 @@
     <KindHero>Mage</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
-    <Weapon>WeaponFireMage0</Weapon>
+    <MeleeWeapon>WeaponFireMage0</MeleeWeapon>
     <Armour>ArmourFireMage0</Armour>
     <BaseParameters>
       <Strength>20</Strength>
@@ -694,7 +698,7 @@
     <KindHero>Mage</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
-    <Weapon>WeaponIceMage0</Weapon>
+    <MeleeWeapon>WeaponIceMage0</MeleeWeapon>
     <Armour>ArmourIceMage0</Armour>
     <BaseParameters>
       <Strength>20</Strength>
@@ -741,7 +745,7 @@
     <KindHero>Melee</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
-    <Weapon>WeaponDeathKnight0</Weapon>
+    <MeleeWeapon>WeaponDeathKnight0</MeleeWeapon>
     <Armour>ArmourDeathKnight0</Armour>
     <BaseParameters>
       <Strength>20</Strength>

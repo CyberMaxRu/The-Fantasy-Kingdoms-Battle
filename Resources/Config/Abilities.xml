@@ -6,8 +6,7 @@
     <Description>- Обычная атака рукопашным оружием/- Наносит урон одной цели</Description>
     <ImageIndex>35</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>Attack</TypeAbility>
-    <TypeAttack>Melee</TypeAttack>
+    <TypeAbility>MeleeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>False</Ranged>
@@ -25,9 +24,8 @@
     <Description>Вынуждает врагов атаковать воина</Description>
     <ImageIndex>36</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>Attack</TypeAbility>
-    <TypeAttack>Melee</TypeAttack>
-    <TypeTarget>EnemyUnit</TypeTarget>
+    <TypeAbility>Buff</TypeAbility>
+    <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>5</MinUnitLevel>
     <Ranged>False</Ranged>
     <AoeRadius>5</AoeRadius>
@@ -47,7 +45,6 @@
     <ImageIndex>37</ImageIndex>
     <Cost>20</Cost>
     <TypeAbility>Buff</TypeAbility>
-    <TypeAttack>None</TypeAttack>
     <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>10</MinUnitLevel>
     <Ranged>False</Ranged>
@@ -65,8 +62,7 @@
     <Description>- Наносит большой урон/- Рукопашная атака</Description>
     <ImageIndex>38</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>Attack</TypeAbility>
-    <TypeAttack>Melee</TypeAttack>
+    <TypeAbility>MeleeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>False</Ranged>
@@ -84,8 +80,7 @@
     <Description>- Наносит огромный урон/- Накладывает эффект, замедляющий цель/- Рукопашная атака</Description>
     <ImageIndex>39</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>Attack</TypeAbility>
-    <TypeAttack>Melee</TypeAttack>
+    <TypeAbility>MeleeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>False</Ranged>
@@ -106,7 +101,6 @@
     <ImageIndex>40</ImageIndex>
     <Cost>20</Cost>
     <TypeAbility>Buff</TypeAbility>
-    <TypeAttack>None</TypeAttack>
     <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>False</Ranged>
@@ -124,8 +118,7 @@
     <Description>- Обычная атака рукопашным оружием/- Наносит урон одной цели</Description>
     <ImageIndex>41</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>Attack</TypeAbility>
-    <TypeAttack>Melee</TypeAttack>
+    <TypeAbility>MeleeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>False</Ranged>
@@ -143,8 +136,7 @@
     <Description>- Наносит средний урон/- Накладывает эффект, наносящий повреждения с течением времени/- Рукопашная атака</Description>
     <ImageIndex>42</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>Attack</TypeAbility>
-    <TypeAttack>Melee</TypeAttack>
+    <TypeAbility>MeleeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>10</MinUnitLevel>
     <Ranged>False</Ranged>
@@ -162,8 +154,7 @@
     <Description>- Наносит небольшой урон/- Накладывает эффект, наносящий небольшие повреждения с течением времени/- Рукопашная атака</Description>
     <ImageIndex>43</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>Attack</TypeAbility>
-    <TypeAttack>Melee</TypeAttack>
+    <TypeAbility>MeleeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>False</Ranged>
@@ -181,8 +172,7 @@
     <Description>- Наносит большой урон/- Рукопашная атака</Description>
     <ImageIndex>44</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>Attack</TypeAbility>
-    <TypeAttack>Melee</TypeAttack>
+    <TypeAbility>MeleeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>False</Ranged>
@@ -200,8 +190,7 @@
     <Description>- Наносит небольшой урон/- Накладывает эффект, понижающий умение рукопашной атаки/- Рукопашная атака</Description>
     <ImageIndex>45</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>Attack</TypeAbility>
-    <TypeAttack>Melee</TypeAttack>
+    <TypeAbility>MeleeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>False</Ranged>
@@ -219,8 +208,7 @@
     <Description>- Наносит небольшой урон/- Накладывает эффект, не позволяющий двигаться и атаковать/- Рукопашная атака</Description>
     <ImageIndex>46</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>Attack</TypeAbility>
-    <TypeAttack>Melee</TypeAttack>
+    <TypeAbility>MeleeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>False</Ranged>
@@ -239,8 +227,7 @@
     <Description>- Обычная атака стрелковым или метательным оружием/- Наносит урон одной цели</Description>
     <ImageIndex>48</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>Attack</TypeAbility>
-    <TypeAttack>Archer</TypeAttack>
+    <TypeAbility>RangeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -259,8 +246,7 @@
     <Description>- Наносит большой урон зверям/- Стрелковая атака</Description>
     <ImageIndex>49</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>Attack</TypeAbility>
-    <TypeAttack>Archer</TypeAttack>
+    <TypeAbility>RangeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -278,8 +264,7 @@
     <Description>- Наносит большой урон всем целям в радиусе/- Стрелковая атака</Description>
     <ImageIndex>50</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>Attack</TypeAbility>
-    <TypeAttack>Archer</TypeAttack>
+    <TypeAbility>RangeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>10</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -297,8 +282,7 @@
     <Description>- Наносит большой урон/- Стрелковая атака</Description>
     <ImageIndex>51</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>Attack</TypeAbility>
-    <TypeAttack>Archer</TypeAttack>
+    <TypeAbility>RangeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -316,8 +300,7 @@
     <Description>- Наносит небольшой урон/- Накладывает эффект, понижающий умение рукопашной атаки/- Стрелковая атака</Description>
     <ImageIndex>52</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>Attack</TypeAbility>
-    <TypeAttack>Archer</TypeAttack>
+    <TypeAbility>RangeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -335,8 +318,7 @@
     <Description>- Наносит большой урон/- Накладывает эффект, уменьшающий количество маны с течением времени/- Стрелковая атака</Description>
     <ImageIndex>53</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>Attack</TypeAbility>
-    <TypeAttack>Archer</TypeAttack>
+    <TypeAbility>RangeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -355,7 +337,6 @@
     <ImageIndex>54</ImageIndex>
     <Cost>20</Cost>
     <TypeAbility>Heal</TypeAbility>
-    <TypeAttack>Magic</TypeAttack>
     <TypeTarget>AllyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -376,8 +357,7 @@
     <Description>- Обычная атака магией или магическим оружием/- Наносит урон одной цели</Description>
     <ImageIndex>55</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>Attack</TypeAbility>
-    <TypeAttack>Magic</TypeAttack>
+    <TypeAbility>Spell</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -401,7 +381,6 @@
     <ImageIndex>56</ImageIndex>
     <Cost>20</Cost>
     <TypeAbility>Buff</TypeAbility>
-    <TypeAttack>None</TypeAttack>
     <TypeTarget>AllyUnit</TypeTarget>
     <MinUnitLevel>10</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -420,8 +399,7 @@
     <Description>- Наносит огромный урон нежити/- Требует маны/- Магическая атака</Description>
     <ImageIndex>57</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>Attack</TypeAbility>
-    <TypeAttack>Magic</TypeAttack>
+    <TypeAbility>Spell</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -442,7 +420,6 @@
     <ImageIndex>58</ImageIndex>
     <Cost>20</Cost>
     <TypeAbility>Buff</TypeAbility>
-    <TypeAttack>None</TypeAttack>
     <TypeTarget>AllyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -462,7 +439,6 @@
     <ImageIndex>59</ImageIndex>
     <Cost>20</Cost>
     <TypeAbility>Buff</TypeAbility>
-    <TypeAttack>None</TypeAttack>
     <TypeTarget>AllyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -483,7 +459,6 @@
     <ImageIndex>60</ImageIndex>
     <Cost>20</Cost>
     <TypeAbility>Buff</TypeAbility>
-    <TypeAttack>None</TypeAttack>
     <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>False</Ranged>
@@ -503,7 +478,6 @@
     <ImageIndex>61</ImageIndex>
     <Cost>20</Cost>
     <TypeAbility>Buff</TypeAbility>
-    <TypeAttack>None</TypeAttack>
     <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>15</MinUnitLevel>
     <Ranged>False</Ranged>
@@ -522,8 +496,7 @@
     <Description>- Наносит большой урон всем целям в радиусе./- Накладывает эффект, наносящий небольшие повреждения с течением времени/- Требует маны/- Магическая атака</Description>
     <ImageIndex>63</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>Attack</TypeAbility>
-    <TypeAttack>Magic</TypeAttack>
+    <TypeAbility>Spell</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -542,8 +515,7 @@
     <Description>- Наносит большой урон./- Накладывает эффект, не позволяющий двигаться и атаковать/- Требует маны/- Магическая атака</Description>
     <ImageIndex>64</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>Attack</TypeAbility>
-    <TypeAttack>Magic</TypeAttack>
+    <TypeAbility>Spell</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -563,8 +535,7 @@
     <Description>- Наносит средний урон всем целям в небольшом радиусе от мага/- Отбрасывает противника/- Требует маны/- Магическая атака</Description>
     <ImageIndex>65</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>Attack</TypeAbility>
-    <TypeAttack>Magic</TypeAttack>
+    <TypeAbility>Spell</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>False</Ranged>
@@ -584,8 +555,7 @@
     <Description>- Наносит огромный урон всем целям в радиусе/- Требует маны/- Магическая атака</Description>
     <ImageIndex>66</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>Attack</TypeAbility>
-    <TypeAttack>Magic</TypeAttack>
+    <TypeAbility>Spell</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -605,8 +575,7 @@
     <Description>- Наносит небольшой урон/- Накладывает эффект, не позволяющий двигаться/- Требует маны/- Стрелковая атака</Description>
     <ImageIndex>67</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>Attack</TypeAbility>
-    <TypeAttack>Archer</TypeAttack>
+    <TypeAbility>RangeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -625,8 +594,7 @@
     <Description>- Наносит большой урон/- Стрелковая атака</Description>
     <ImageIndex>68</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>Attack</TypeAbility>
-    <TypeAttack>Archer</TypeAttack>
+    <TypeAbility>RangeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -645,7 +613,6 @@
     <ImageIndex>69</ImageIndex>
     <Cost>20</Cost>
     <TypeAbility>Buff</TypeAbility>
-    <TypeAttack>None</TypeAttack>
     <TypeTarget>AllyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -664,8 +631,7 @@
     <Description>- Наносит огромный урон/- Требует маны/- Магическая атака</Description>
     <ImageIndex>70</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>Attack</TypeAbility>
-    <TypeAttack>Archer</TypeAttack>
+    <TypeAbility>RangeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -684,8 +650,7 @@
     <Description>- Обычная атака рукопашным оружием/- Наносит урон одной цели</Description>
     <ImageIndex>71</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>Attack</TypeAbility>
-    <TypeAttack>Melee</TypeAttack>
+    <TypeAbility>MeleeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>False</Ranged>
@@ -704,8 +669,7 @@
     <Description>- Наносит огромный урон по зданию/- Рукопашная атака</Description>
     <ImageIndex>72</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>Attack</TypeAbility>
-    <TypeAttack>Melee</TypeAttack>
+    <TypeAbility>MeleeAttack</TypeAbility>
     <TypeTarget>EnemyBuilding</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>False</Ranged>
@@ -723,8 +687,7 @@
     <Description>- Наносит большой урон/- Рукопашная атака</Description>
     <ImageIndex>73</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>Attack</TypeAbility>
-    <TypeAttack>Melee</TypeAttack>
+    <TypeAbility>MeleeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>False</Ranged>
@@ -743,7 +706,6 @@
     <ImageIndex>74</ImageIndex>
     <Cost>20</Cost>
     <TypeAbility>Buff</TypeAbility>
-    <TypeAttack>None</TypeAttack>
     <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>False</Ranged>
@@ -762,7 +724,6 @@
     <ImageIndex>84</ImageIndex>
     <Cost>20</Cost>
     <TypeAbility>Buff</TypeAbility>
-    <TypeAttack>None</TypeAttack>
     <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>False</Ranged>
@@ -781,8 +742,7 @@
     <Description>- Наносит большой урон/- Восстанавливает часть здоровья сестры Крипты/- Требует маны/- Магическая атака</Description>
     <ImageIndex>85</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>Attack</TypeAbility>
-    <TypeAttack>Magic</TypeAttack>
+    <TypeAbility>Spell</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -802,7 +762,6 @@
     <ImageIndex>86</ImageIndex>
     <Cost>20</Cost>
     <TypeAbility>Summon</TypeAbility>
-    <TypeAttack>None</TypeAttack>
     <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>10</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -821,8 +780,7 @@
     <Description>- Наносит небольшой урон всем целям в небольшом радиусе от жрицы/- Накладывает эффект, наносящий небольшие повреждения с течением времени/- Требует маны/- Магическая атака</Description>
     <ImageIndex>87</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>Attack</TypeAbility>
-    <TypeAttack>Magic</TypeAttack>
+    <TypeAbility>Spell</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>5</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -842,7 +800,6 @@
     <ImageIndex>88</ImageIndex>
     <Cost>20</Cost>
     <TypeAbility>Summon</TypeAbility>
-    <TypeAttack>None</TypeAttack>
     <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>15</MinUnitLevel>
     <Ranged>False</Ranged>
@@ -862,7 +819,6 @@
     <ImageIndex>89</ImageIndex>
     <Cost>20</Cost>
     <TypeAbility>Buff</TypeAbility>
-    <TypeAttack>None</TypeAttack>
     <TypeTarget>AllyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>False</Ranged>
@@ -882,7 +838,6 @@
     <ImageIndex>90</ImageIndex>
     <Cost>20</Cost>
     <TypeAbility>Heal</TypeAbility>
-    <TypeAttack>None</TypeAttack>
     <TypeTarget>AllyUnit</TypeTarget>
     <MinUnitLevel>10</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -902,7 +857,6 @@
     <ImageIndex>91</ImageIndex>
     <Cost>20</Cost>
     <TypeAbility>Heal</TypeAbility>
-    <TypeAttack>None</TypeAttack>
     <TypeTarget>AllyUnit</TypeTarget>
     <MinUnitLevel>10</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -921,9 +875,8 @@
     <Description>- Вынуждает врагов атаковать паладина</Description>
     <ImageIndex>36</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>Attack</TypeAbility>
-    <TypeAttack>Melee</TypeAttack>
-    <TypeTarget>EnemyUnit</TypeTarget>
+    <TypeAbility>Buff</TypeAbility>
+    <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>False</Ranged>
     <AoeRadius>5</AoeRadius>
@@ -942,8 +895,7 @@
     <Description>- Наносит большой урон/- Рукопашная атака</Description>
     <ImageIndex>73</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>Attack</TypeAbility>
-    <TypeAttack>Melee</TypeAttack>
+    <TypeAbility>MeleeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>False</Ranged>
@@ -964,7 +916,6 @@
     <ImageIndex>40</ImageIndex>
     <Cost>20</Cost>
     <TypeAbility>Buff</TypeAbility>
-    <TypeAttack>None</TypeAttack>
     <TypeTarget>AllyUnit</TypeTarget>
     <MinUnitLevel>5</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -982,8 +933,7 @@
     <Description>- Наносит огромный урон нежити в небольшом радиусе от паладина/- Рукопашная атака</Description>
     <ImageIndex>92</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>Attack</TypeAbility>
-    <TypeAttack>Melee</TypeAttack>
+    <TypeAbility>MeleeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>False</Ranged>
@@ -1001,8 +951,7 @@
     <Description>- Наносит огромный урон/- Накладывает эффект, не позволяющий атаковать/- Магическая атака</Description>
     <ImageIndex>93</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>Attack</TypeAbility>
-    <TypeAttack>Magic</TypeAttack>
+    <TypeAbility>Spell</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>10</MinUnitLevel>
     <Ranged>True</Ranged>

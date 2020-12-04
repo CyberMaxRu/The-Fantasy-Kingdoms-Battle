@@ -22,7 +22,8 @@ namespace Fantasy_King_s_Battle
             Abilities.AddRange(ClassHero.Abilities);
 
             // Берем оружие и доспехи
-            Weapon = ClassHero.Weapon;
+            MeleeWeapon = ClassHero.WeaponMelee;
+            RangeWeapon = ClassHero.WeaponRange;
             Armour = ClassHero.Armour;
 
             if (ClassHero.MaxLevel > 1)
@@ -51,7 +52,8 @@ namespace Fantasy_King_s_Battle
         internal int Level { get; private set; }// Уровень героя
         internal HeroParameters ParametersBase { get; }// Свои параметры, без учета амуниции
         internal HeroParameters ParametersWithAmmunition { get; }// Параметры с учетом амуниции
-        internal Weapon Weapon { get; private set; }// Оружие 
+        internal Weapon MeleeWeapon { get; private set; }// Рукопашное оружие 
+        internal Weapon RangeWeapon { get; private set; }// Стрелковое оружие 
         internal Armour Armour { get; private set; }// Доспех
         internal List<PlayerItem> Inventory { get; } = new List<PlayerItem>();
         internal Point CoordInPlayer { get; set; }// Координаты героя в слотах игрока
@@ -284,17 +286,25 @@ namespace Fantasy_King_s_Battle
             ParametersWithAmmunition.GetFromParams(ParametersBase);
 
             // Применяем амуницию
-            Debug.Assert(Weapon != null);
+            Debug.Assert(MeleeWeapon != null);
             Debug.Assert(Armour != null);
 
-            ParametersWithAmmunition.MaxMeleeDamage = Weapon.DamageMelee + (Weapon.DamageMelee * ParametersWithAmmunition.Strength / 100);
+            ParametersWithAmmunition.MaxMeleeDamage = MeleeWeapon.DamageMelee + (MeleeWeapon.DamageMelee * ParametersWithAmmunition.Strength / 100);
             ParametersWithAmmunition.MinMeleeDamage = ParametersWithAmmunition.MaxMeleeDamage / 2;
-            ParametersWithAmmunition.MaxArcherDamage = Weapon.DamageRange + (Weapon.DamageRange * ParametersWithAmmunition.Strength / 100);
-            ParametersWithAmmunition.MinArcherDamage = ParametersWithAmmunition.MaxArcherDamage / 2;
-            if (Weapon.DamageMagic > 0)
-                ParametersWithAmmunition.MagicDamage = (ParametersWithAmmunition.Magic / 5) * Weapon.DamageMagic + Level;
+            if (RangeWeapon != null)
+            {
+                ParametersWithAmmunition.MaxArcherDamage = RangeWeapon.DamageRange + (RangeWeapon.DamageRange * ParametersWithAmmunition.Strength / 100);
+                ParametersWithAmmunition.MinArcherDamage = ParametersWithAmmunition.MaxArcherDamage / 2;
+            }
             else
-                ParametersWithAmmunition.MagicDamage = 0;
+            {
+                ParametersWithAmmunition.MaxArcherDamage = 0;
+                ParametersWithAmmunition.MinArcherDamage = 0;
+            }
+            /*            if (Weapon.DamageMagic > 0)
+                            ParametersWithAmmunition.MagicDamage = (ParametersWithAmmunition.Magic / 5) * Weapon.DamageMagic + Level;
+                        else
+                            ParametersWithAmmunition.MagicDamage = 0;*/
             ParametersWithAmmunition.DefenseMelee = Armour.DefenseMelee;
             ParametersWithAmmunition.DefenseArcher = Armour.DefenseArcher;
             ParametersWithAmmunition.DefenseMagic = Armour.DefenseMagic;

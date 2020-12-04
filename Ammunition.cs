@@ -51,25 +51,8 @@ namespace Fantasy_King_s_Battle
         {
             ClassHero = FormMain.Config.FindHero(nameClassHero);
             nameClassHero = null;
-
-            switch (ClassHero.KindHero.TypeAttack)
-            {
-                case TypeAttack.Melee:
-                    Debug.Assert(DamageRange == 0);
-                    Debug.Assert(DamageMagic == 0);
-                    break;
-                case TypeAttack.Archer:
-                    Debug.Assert(DamageMelee == 0);
-                    Debug.Assert(DamageMagic == 0);
-                    break;
-                case TypeAttack.Magic:
-                    Debug.Assert(DamageMelee == 0);
-                    Debug.Assert(DamageRange == 0);
-                    break;
-                default:
-                    throw new Exception("Неизвестный тип атаки.");
-            }
         }
+
 
         // Реализация интерфейса
         PanelEntity ICell.Panel { get; set; }

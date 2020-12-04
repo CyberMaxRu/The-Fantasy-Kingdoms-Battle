@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace Fantasy_King_s_Battle
 {
-    internal enum StateHeroInBattle { Melee, Archery, Cast, Drink, Healing, Rest, Resurrection, Tumbstone, Dead, 
+    internal enum StateHeroInBattle { MeleeAttack, RangeAttack, Cast, Drink, Healing, Rest, Resurrection, Tumbstone, Dead, 
         PrepareMove, Move, None }// Состояние героя в бою
 
     internal sealed class HeroInBattle
@@ -119,41 +119,47 @@ namespace Fantasy_King_s_Battle
                         Debug.Assert(IsLive == true);
 
                         // Если сейчас ничего не выполняем, ищем, что можно сделать
-                        // Сначала атакуем
-                        switch (PlayerHero.ClassHero.KindHero.TypeAttack)
-                        { 
-                            case TypeAttack.Melee:                            
-                                if (SearchTargetForMelee() == false)
+                        // Сначала пробуем атаковать стрелковым оружием
+
+                        if (PlayerHero.RangeWeapon != null)
+                        {
+                            bool underMeleeAttack = false;
+                            // Если юнит не атакован врукопашную, можно атаковать стрелковой атакой
+                            foreach (HeroInBattle h in b.ActiveHeroes)
+                            {
+                                if ((h != this) && (h.Target == this) && (h.State == StateHeroInBattle.MeleeAttack))
                                 {
-                                    // Ищем цель на своей линии
-                                    //if (Search)
+                                    underMeleeAttack = true;
+                                    break;
                                 }
-                            break;
-                            case TypeAttack.Archer:
-                            case TypeAttack.Magic:
-                                if (SearchTargetForShoot() == false)
-                                {
-                                    // Ищем цель на своей линии
-                                    //if (Search)
-                                }
-                                break;
+                            }
+                            
+                            if (!underMeleeAttack)
+                                SearchTargetForShoot();
                         }
 
-                        // Если целей нет, идем к ней
                         if (Target == null)
                         {
-                            if (SearchTargetForMove() == true)
+                            if (!SearchTargetForMelee())
                             {
-                                State = StateHeroInBattle.Move;
-                                countAction = (int)(TimeMove() * 1.00 * ((TileForMove.X != 0) && (TileForMove.Y != 0) ? 1.4 : 1));
-                                timeAction = countAction;
-                                inRollbackAfterAction = false;
-                                //State = StateHeroInBattle.PrepareMove;
+                                // Если целей нет, идем к ней
+                                if (Target == null)
+                                {
+                                    if (SearchTargetForMove() == true)
+                                    {
+                                        State = StateHeroInBattle.Move;
+                                        countAction = (int)(TimeMove() * 1.00 * ((TileForMove.X != 0) && (TileForMove.Y != 0) ? 1.4 : 1));
+                                        timeAction = countAction;
+                                        inRollbackAfterAction = false;
+                                        //State = StateHeroInBattle.PrepareMove;
+                                    }
+                                }
                             }
+
                         }
 
                         break;
-                    case StateHeroInBattle.Melee:
+                    case StateHeroInBattle.MeleeAttack:
                         countAction--;
 
                         if (Target.State != StateHeroInBattle.Tumbstone)
@@ -182,7 +188,7 @@ namespace Fantasy_King_s_Battle
                         }
 
                         break;
-                    case StateHeroInBattle.Archery:
+                    case StateHeroInBattle.RangeAttack:
                     case StateHeroInBattle.Cast:
                         countAction--;
 
@@ -280,8 +286,6 @@ namespace Fantasy_King_s_Battle
 
             bool SearchTargetForMelee()
             {
-                Debug.Assert(PlayerHero.ClassHero.KindHero.TypeAttack == TypeAttack.Melee);
-
                 // Ищем, кого атаковать
                 List<HeroInBattle> targets = new List<HeroInBattle>();
 
@@ -299,7 +303,7 @@ namespace Fantasy_King_s_Battle
                 {
                     Debug.Assert(this != targets[0]);
 
-                    State = StateHeroInBattle.Melee;
+                    State = StateHeroInBattle.MeleeAttack;
                     Target = targets[0];
                     countAction = TimeAttack();
                     timeAction = countAction;
@@ -312,7 +316,7 @@ namespace Fantasy_King_s_Battle
 
             bool SearchTargetForShoot()
             {
-                Debug.Assert((PlayerHero.ClassHero.KindHero.TypeAttack == TypeAttack.Archer) || (PlayerHero.ClassHero.KindHero.TypeAttack == TypeAttack.Magic));
+                Debug.Assert(PlayerHero.RangeWeapon != null);
 
                 // Если герой, по которому стреляли, жив, атакуем его снова
                 if ((lastAttackedHero != null) && (lastAttackedHero.CurrentHealth > 0))
@@ -341,21 +345,13 @@ namespace Fantasy_King_s_Battle
 
                 if (Target != null)
                 { 
-                    if (PlayerHero.ClassHero.KindHero.TypeAttack == TypeAttack.Archer)
-                        State = StateHeroInBattle.Archery;
-                    else
-                        State = StateHeroInBattle.Cast;
+                    State = StateHeroInBattle.RangeAttack;
                     countAction = TimeAttack();
                     timeAction = countAction;
                     lastAttackedHero = Target;
 
                     // Создаем выстрел
-                    Missile m;
-                    if (PlayerHero.ClassHero.KindHero.TypeAttack == TypeAttack.Archer)
-                        m = new Arrow(this, Target.CurrentTile);
-                    else 
-                        m = new MagicStrike(this, Target.CurrentTile);
-                    Battle.Missiles.Add(m);
+                    Battle.Missiles.Add(new Arrow(this, Target.CurrentTile));
 
                     return true;
                 }
@@ -406,7 +402,20 @@ namespace Fantasy_King_s_Battle
 
         private int TimeAttack()
         {
-            int timeAttack = (int)(PlayerHero.Weapon.TimeHit / 100.00 * FormMain.Config.StepsInSecond);
+            Debug.Assert((State == StateHeroInBattle.MeleeAttack) || (State == StateHeroInBattle.RangeAttack));
+
+            int timeAttack;
+            switch (State)
+            {
+                case StateHeroInBattle.MeleeAttack:
+                    timeAttack = (int)(PlayerHero.MeleeWeapon.TimeHit / 100.00 * FormMain.Config.StepsInSecond);
+                    break;
+                case StateHeroInBattle.RangeAttack:
+                    timeAttack = (int)(PlayerHero.RangeWeapon.TimeHit / 100.00 * FormMain.Config.StepsInSecond);
+                    break;
+                default:
+                    throw new Exception("Неизвестное состояние.");
+            }
 
             Debug.Assert(timeAttack > 0);
 

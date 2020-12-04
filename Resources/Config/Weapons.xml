@@ -43,6 +43,34 @@
         <TimeHit>50</TimeHit>
         <DamageMelee>0</DamageMelee>
       </Weapon>
+      <Weapon>
+        <ID>WeaponHunter0</ID>
+        <Hero>Hunter</Hero>
+        <TimeHit>50</TimeHit>
+        <VelocityMissile>5</VelocityMissile>
+        <DamageArcher>5</DamageArcher>
+      </Weapon>
+      <Weapon>
+        <ID>WeaponElf0</ID>
+        <Hero>Elf</Hero>
+        <TimeHit>50</TimeHit>
+        <VelocityMissile>1</VelocityMissile>
+        <DamageArcher>0</DamageArcher>
+      </Weapon>
+      <Weapon>
+        <ID>WeaponBeastMaster0</ID>
+        <Hero>BeastMaster</Hero>
+        <TimeHit>50</TimeHit>
+        <VelocityMissile>1</VelocityMissile>
+        <DamageArcher>0</DamageArcher>
+      </Weapon>
+      <Weapon>
+        <ID>WeaponMarksman0</ID>
+        <Hero>Marksman</Hero>
+        <TimeHit>50</TimeHit>
+        <VelocityMissile>1</VelocityMissile>
+        <DamageArcher>0</DamageArcher>
+      </Weapon>
     </Weapons>
   </GroupWeapon>
   <GroupWeapon>
@@ -233,28 +261,28 @@
     <Cost>0</Cost>
     <Weapons>
       <Weapon>
-        <ID>WeaponHunter0</ID>
+        <ID>BowHunter0</ID>
         <Hero>Hunter</Hero>
         <TimeHit>50</TimeHit>
         <VelocityMissile>5</VelocityMissile>
         <DamageArcher>5</DamageArcher>
       </Weapon>
       <Weapon>
-        <ID>WeaponElf0</ID>
+        <ID>BowElf0</ID>
         <Hero>Elf</Hero>
         <TimeHit>50</TimeHit>
         <VelocityMissile>1</VelocityMissile>
         <DamageArcher>0</DamageArcher>
       </Weapon>
       <Weapon>
-        <ID>WeaponBeastMaster0</ID>
+        <ID>BowBeastMaster0</ID>
         <Hero>BeastMaster</Hero>
         <TimeHit>50</TimeHit>
         <VelocityMissile>1</VelocityMissile>
         <DamageArcher>0</DamageArcher>
       </Weapon>
       <Weapon>
-        <ID>WeaponMarksman0</ID>
+        <ID>BowMarksman0</ID>
         <Hero>Marksman</Hero>
         <TimeHit>50</TimeHit>
         <VelocityMissile>1</VelocityMissile>

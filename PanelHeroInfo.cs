@@ -133,7 +133,7 @@ namespace Fantasy_King_s_Battle
         {
             base.ShowData();
 
-            panelWeapon.ShowCell(hero.Weapon);
+            panelWeapon.ShowCell(hero.RangeWeapon != null ? hero.RangeWeapon : hero.MeleeWeapon);
             panelArmour.ShowCell(hero.Armour);
 
             panelInventory.ApplyList(hero.Inventory);
@@ -154,16 +154,8 @@ namespace Fantasy_King_s_Battle
                 ShowParameter(lblVitality, hero.ParametersBase.Vitality, hero.ParametersWithAmmunition.Vitality);
                 //ShowParameter(lblStamina, ph.ParametersBase.Stamina, ph.ParametersWithAmmunition.Stamina);
                 ShowParameter(lblSpeed, hero.ParametersBase.TimeAttack, hero.ParametersWithAmmunition.TimeAttack);
-                if (Hero.ClassHero.KindHero.TypeAttack == TypeAttack.Melee)
-                {
-                    lblAttackMelee.Text = hero.ParametersWithAmmunition.MinMeleeDamage.ToString() + " - " + hero.ParametersWithAmmunition.MaxMeleeDamage.ToString();
-                    lblAttackRange.Text = "";
-                }
-                if (Hero.ClassHero.KindHero.TypeAttack == TypeAttack.Archer)
-                {
-                    lblAttackMelee.Text = "";
-                    lblAttackRange.Text = hero.ParametersWithAmmunition.MinArcherDamage.ToString() + " - " + hero.ParametersWithAmmunition.MaxArcherDamage.ToString();
-                }
+                lblAttackMelee.Text = hero.ParametersWithAmmunition.MinMeleeDamage.ToString() + " - " + hero.ParametersWithAmmunition.MaxMeleeDamage.ToString();
+                lblAttackRange.Text = hero.ParametersWithAmmunition.MinArcherDamage.ToString() + " - " + hero.ParametersWithAmmunition.MaxArcherDamage.ToString();
                 ShowParameter(lblAttackMagic, hero.ParametersBase.MagicDamage, hero.ParametersWithAmmunition.MagicDamage);
                 ShowParameter(lblDefenseMelee, hero.ParametersBase.DefenseMelee, hero.ParametersWithAmmunition.DefenseMelee);
                 ShowParameter(lblDefenseRange, hero.ParametersBase.DefenseArcher, hero.ParametersWithAmmunition.DefenseArcher);

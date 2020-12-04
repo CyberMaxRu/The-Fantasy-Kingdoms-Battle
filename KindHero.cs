@@ -14,7 +14,6 @@ namespace Fantasy_King_s_Battle
         public KindHero(XmlNode n)
         {
             ID = n.SelectSingleNode("ID").InnerText;
-            TypeAttack = (TypeAttack)Enum.Parse(typeof(TypeAttack), n.SelectSingleNode("TypeAttack").InnerText);
             Hired = Convert.ToBoolean(n.SelectSingleNode("Hired").InnerText);
 
             // Проверяем, что таких же ID нет
@@ -28,7 +27,6 @@ namespace Fantasy_King_s_Battle
         }
 
         internal string ID { get; }
-        internal TypeAttack TypeAttack { get; }
         internal bool Hired { get; }
     }
 }

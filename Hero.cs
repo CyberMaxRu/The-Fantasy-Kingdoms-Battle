@@ -9,12 +9,11 @@ using System.Diagnostics;
 
 namespace Fantasy_King_s_Battle
 {
-    internal enum TypeAttack { Melee, Archer, Magic, None }
-
     // Класс героя гильдии    
     internal sealed class Hero
     {
-        private string nameWeapon;
+        private string nameMeleeWeapon;
+        private string nameRangeWeapon;
         private string nameArmour;
 
         public Hero(XmlNode n)
@@ -39,24 +38,6 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(ImageIndex >= 0);
             Debug.Assert(DamageToCastle >= 0);
 
-            switch (KindHero.TypeAttack)
-            {
-                case TypeAttack.Melee:
-                    //Debug.Assert(DamageToCastle > 0);
-                    break;
-                case TypeAttack.Archer:
-                    Debug.Assert(DamageToCastle > 0);
-                    break;
-                case TypeAttack.Magic:
-                    Debug.Assert(DamageToCastle > 0);
-                    break;
-                case TypeAttack.None:
-                    Debug.Assert(DamageToCastle == 0); 
-                    break;
-                default:
-                    throw new Exception("Неизвестный тип атаки.");
-            }
-
             // Проверяем, что таких же ID и наименования нет
             foreach (Hero h in FormMain.Config.Heroes)
             {
@@ -77,12 +58,13 @@ namespace Fantasy_King_s_Battle
             }
 
             // Загружаем дефолтное оружие и доспехи
-            nameWeapon = Utils.GetParamFromXmlString(n.SelectSingleNode("Weapon"));
+            nameMeleeWeapon = Utils.GetParamFromXmlString(n.SelectSingleNode("MeleeWeapon"));
+            nameRangeWeapon = Utils.GetParamFromXmlString(n.SelectSingleNode("RangeWeapon"));
             nameArmour = Utils.GetParamFromXmlString(n.SelectSingleNode("Armour"));
 
             if (KindHero.Hired)
             {
-                Debug.Assert(nameWeapon != "");
+                Debug.Assert(nameMeleeWeapon != "");
                 Debug.Assert(nameArmour != "");
             }
 
@@ -158,7 +140,8 @@ namespace Fantasy_King_s_Battle
         internal HeroParameters ParametersByHire { get; }// Параметры при найме героя
         internal ConfigNextLevelHero ConfigNextLevel { get; }
         internal List<Ability> Abilities { get; } = new List<Ability>();// Способности героя
-        internal Weapon Weapon { get; private set; }// Оружие по умолчанию
+        internal Weapon WeaponMelee { get; private set; }// Рукопашное оружие
+        internal Weapon WeaponRange { get; private set; }// Стрелковое оружие
         internal Armour Armour { get; private set; }// Доспех по умолчанию
         internal Dictionary<Item, int> CarryItems { get; } = new Dictionary<Item, int>();
 
@@ -170,12 +153,20 @@ namespace Fantasy_King_s_Battle
         internal void TuneDeferredLinks()
         {
             // Загружаем дефолтное оружие и доспехи
-            if (nameWeapon.Length > 0)
+            if (nameMeleeWeapon.Length > 0)
             {
-                Weapon = FormMain.Config.FindWeapon(nameWeapon);
-                nameWeapon = null;
+                WeaponMelee = FormMain.Config.FindWeapon(nameMeleeWeapon);
+                nameMeleeWeapon = null;
 
-                Debug.Assert(Weapon.ClassHero == this);
+                Debug.Assert(WeaponMelee.ClassHero == this);
+            }
+
+            if (nameRangeWeapon.Length > 0)
+            {
+                WeaponRange = FormMain.Config.FindWeapon(nameRangeWeapon);
+                nameRangeWeapon = null;
+
+                Debug.Assert(WeaponMelee.ClassHero == this);
             }
 
             if (nameArmour.Length > 0)
