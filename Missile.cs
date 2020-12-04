@@ -77,7 +77,7 @@ namespace Fantasy_King_s_Battle
 
             // Устанавливаем длину стрелы
             double currentLength = Utils.DistanceBetweenPoints(p1, p);
-            double cutLength = currentLength - 10;
+            double cutLength = currentLength - 30;
             if (cutLength > 0)
             {
                 double proportion = cutLength / Utils.DistanceBetweenPoints(p1, p2);
