@@ -94,6 +94,8 @@ namespace Fantasy_King_s_Battle
         internal readonly Bitmap bmpBorderForIcon;
         internal readonly Bitmap bmpEmptyEntity;
         private readonly Bitmap bmpBackground;
+        internal readonly Bitmap bmpBorderBattlefield;
+        internal int LengthSideBorderBattlefield { get; private set; }
 
         private readonly List<PanelPage> pages = new List<PanelPage>();
         private readonly PanelPage pageLobby;
@@ -162,6 +164,9 @@ namespace Fantasy_King_s_Battle
             bmpBackgroundButton = GuiUtils.MakeBackground(GuiUtils.SizeButtonWithImage(ilGui));
             bmpBorderForIcon = new Bitmap(dirResources + "Icons\\BorderIconEntity.png");
             bmpEmptyEntity = new Bitmap(dirResources + "Icons\\EmptyEntity.png");
+            bmpBorderBattlefield = new Bitmap(dirResources + "Icons\\BorderBattlefield.png");
+            LengthSideBorderBattlefield = bmpBorderBattlefield.Width - (Config.WidthBorderBattlefield * 2);
+            Debug.Assert(LengthSideBorderBattlefield > 0);
 
             // Создаем лобби
             lobby = new Lobby(Config.TypeLobbies[0]);

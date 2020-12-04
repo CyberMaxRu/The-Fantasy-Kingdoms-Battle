@@ -143,6 +143,7 @@ namespace Fantasy_King_s_Battle
         internal int GridSizeHalf { get; private set; }// Размер половины ячейки сетки
         internal int HeroInRow { get; private set; }// Героев в ряду
         internal int HeroRows { get; private set; }// Рядов героев
+        internal int WidthBorderBattlefield { get; set; }// Ширина бордюра поля боя
         internal int StepsInSecond { get; private set; }// Шагов в секунду
         internal int StepInMSec {get; private set; }// Время шага в миллисекундах
         internal int MaxDurationBattle { get; private set; }// Максимальная длительность боя в секундах
@@ -296,6 +297,10 @@ namespace Fantasy_King_s_Battle
             HeroRows = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battlefield/HeroRows").InnerText);
             Debug.Assert(HeroRows >= 3);
             Debug.Assert(HeroRows <= 11);
+
+            WidthBorderBattlefield = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battlefield/WidthBorder").InnerText);
+            Debug.Assert(HeroRows >= 1);
+            Debug.Assert(HeroRows <= 32);
 
             StepsInSecond = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battle/StepsInSecond").InnerText);
             Debug.Assert(StepsInSecond >= 5);

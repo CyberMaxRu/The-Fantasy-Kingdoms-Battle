@@ -19,6 +19,7 @@
   <Battlefield>
     <HeroRows>7</HeroRows>
     <HeroInRow>7</HeroInRow>
+    <WidthBorder>14</WidthBorder>
   </Battlefield>
   <Links>
     <HeroPeasant>Peasant</HeroPeasant>
