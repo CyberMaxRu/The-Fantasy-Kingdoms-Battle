@@ -24,7 +24,7 @@ namespace Fantasy_King_s_Battle
             if (n.SelectSingleNode("VelocityMissile") != null)
                 VelocityMissile = Convert.ToDouble(n.SelectSingleNode("VelocityMissile").InnerText.Replace(".", ","));
             DamageMelee = Utils.GetParamFromXml(n.SelectSingleNode("DamageMelee"));
-            DamageArcher = Utils.GetParamFromXml(n.SelectSingleNode("DamageArcher"));
+            DamageRange = Utils.GetParamFromXml(n.SelectSingleNode("DamageArcher"));
             DamageMagic = Utils.GetParamFromXml(n.SelectSingleNode("DamageMagic"));
 
             Debug.Assert(ID.Length > 0);
@@ -44,7 +44,7 @@ namespace Fantasy_King_s_Battle
         internal int TimeHit { get; }
         internal double VelocityMissile { get; }
         internal int DamageMelee { get; }
-        internal int DamageArcher { get; }
+        internal int DamageRange { get; }
         internal int DamageMagic { get; }
 
         internal void TuneDeferredLinks()
@@ -55,7 +55,7 @@ namespace Fantasy_King_s_Battle
             switch (ClassHero.KindHero.TypeAttack)
             {
                 case TypeAttack.Melee:
-                    Debug.Assert(DamageArcher == 0);
+                    Debug.Assert(DamageRange == 0);
                     Debug.Assert(DamageMagic == 0);
                     break;
                 case TypeAttack.Archer:
@@ -64,7 +64,7 @@ namespace Fantasy_King_s_Battle
                     break;
                 case TypeAttack.Magic:
                     Debug.Assert(DamageMelee == 0);
-                    Debug.Assert(DamageArcher == 0);
+                    Debug.Assert(DamageRange == 0);
                     break;
                 default:
                     throw new Exception("Неизвестный тип атаки.");

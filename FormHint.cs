@@ -404,7 +404,7 @@ namespace Fantasy_King_s_Battle
             lblDamageMagic.Top = nextTop;
 
             lblDamageMelee.Text = "     " + (w.DamageMelee > 0 ? w.DamageMelee.ToString() : "");
-            lblDamageArcher.Text = "     " + (w.DamageArcher > 0 ? w.DamageArcher.ToString() : "");
+            lblDamageArcher.Text = "     " + (w.DamageRange > 0 ? w.DamageRange.ToString() : "");
             lblDamageMagic.Text = "     " + (w.DamageMagic > 0 ? w.DamageMagic.ToString() : "");
 
             lblDamageMelee.Show();

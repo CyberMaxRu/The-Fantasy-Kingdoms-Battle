@@ -289,7 +289,7 @@ namespace Fantasy_King_s_Battle
 
             ParametersWithAmmunition.MaxMeleeDamage = Weapon.DamageMelee + (Weapon.DamageMelee * ParametersWithAmmunition.Strength / 100);
             ParametersWithAmmunition.MinMeleeDamage = ParametersWithAmmunition.MaxMeleeDamage / 2;
-            ParametersWithAmmunition.MaxArcherDamage = Weapon.DamageArcher + (Weapon.DamageArcher * ParametersWithAmmunition.Strength / 100);
+            ParametersWithAmmunition.MaxArcherDamage = Weapon.DamageRange + (Weapon.DamageRange * ParametersWithAmmunition.Strength / 100);
             ParametersWithAmmunition.MinArcherDamage = ParametersWithAmmunition.MaxArcherDamage / 2;
             if (Weapon.DamageMagic > 0)
                 ParametersWithAmmunition.MagicDamage = (ParametersWithAmmunition.Magic / 5) * Weapon.DamageMagic + Level;
