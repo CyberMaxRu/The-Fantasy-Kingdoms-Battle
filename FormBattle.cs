@@ -32,6 +32,8 @@ namespace Fantasy_King_s_Battle
         private Point topLeftGrid;
         private Point topLeftCells;
         private const int WIDTH_LINE = 1;
+        private CheckBox chkbShowGrid;
+        private bool showGrid;
 
         // Время битвы
         private SpeedBattle currentSpeed = SpeedBattle.Normal;
@@ -84,11 +86,21 @@ namespace Fantasy_King_s_Battle
                 Parent = this,
                 Top = FormMain.Config.GridSize,
                 Width = 560,
-                //ForeColor = Color.White,
+                ForeColor = Color.White,
                 BackColor = Color.Transparent,
                 Height = 24,
                 TextAlign = ContentAlignment.MiddleLeft,
                 Font = new Font("Times New Roman", 12, FontStyle.Bold),
+            };
+
+            chkbShowGrid = new CheckBox()
+            {
+                Parent = this,
+                AutoSize = true,
+                Top = lblSystemInfo.Top,
+                Text = "Показать сетку",
+                ForeColor = Color.White,
+                BackColor = Color.Transparent
             };
 
             lblPlayer1 = new Label()
@@ -375,8 +387,43 @@ namespace Fantasy_King_s_Battle
                 System.Threading.Thread.Sleep((FormMain.Config.MaxDurationFrame - (int)timeBetweenFrames.ElapsedMilliseconds));
         }
 
+        private void DrawBackground()
+        {
+            Graphics g = Graphics.FromImage(bmpLayBackground);
+
+            g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
+            g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+
+            g.DrawImageUnscaled(bmpBackground, 0, 0);
+
+            // Рисуем сетку
+            if (showGrid)
+            {
+                // Вертикальные линии
+                for (int x = 0; x <= battle.SizeBattlefield.Width; x++)
+                    g.DrawLine(penGrid, topLeftGrid.X + x * sizeTile.Width, topLeftGrid.Y, topLeftGrid.X + x * sizeTile.Width, topLeftGrid.Y + battle.SizeBattlefield.Height * sizeTile.Height);
+                // Горизонтальные линии
+                for (int y = 0; y <= battle.SizeBattlefield.Height; y++)
+                    g.DrawLine(penGrid, topLeftGrid.X, topLeftGrid.Y + y * sizeTile.Height, topLeftGrid.X + battle.SizeBattlefield.Width * sizeTile.Width, topLeftGrid.Y + y * sizeTile.Height);
+            }
+
+            // Рисуем аватарки игроков
+            g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
+            g.DrawImageUnscaled(Program.formMain.ilPlayerAvatarsBig.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilPlayerAvatarsBig, battle.Player1.ImageIndexAvatar, (battle.BattleCalced == false) || (battle.Winner == battle.Player1))], pointAvatarPlayer1);
+            g.DrawImageUnscaled(Program.formMain.ilPlayerAvatarsBig.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilPlayerAvatarsBig, battle.Player2.ImageIndexAvatar, (battle.BattleCalced == false) || (battle.Winner == battle.Player2))], pointAvatarPlayer2);
+
+            g.Dispose();
+        }
+
         private void DrawFrame()
         {
+            if (showGrid != chkbShowGrid.Checked)
+            {
+                showGrid = chkbShowGrid.Checked;
+                DrawBackground();
+            }
+
             // Рисуем подложку
             gFrame.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
             gFrame.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
@@ -675,28 +722,11 @@ namespace Fantasy_King_s_Battle
 
             // Подготавливаем фоновый рисунок
             bmpLayBackground = new Bitmap(bmpBackground);
-            Graphics g = Graphics.FromImage(bmpLayBackground);
 
-            g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
-            g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-
-            g.DrawImageUnscaled(bmpBackground, 0, 0);
-
-            // Рисуем сетку
-            // Вертикальные линии
-            for (int x = 0; x <= battle.SizeBattlefield.Width; x++)
-                g.DrawLine(penGrid, topLeftGrid.X + x * sizeTile.Width, topLeftGrid.Y, topLeftGrid.X + x * sizeTile.Width, topLeftGrid.Y + battle.SizeBattlefield.Height * sizeTile.Height);
-            // Горизонтальные линии
-            for (int y = 0; y <= battle.SizeBattlefield.Height; y++)
-                g.DrawLine(penGrid, topLeftGrid.X, topLeftGrid.Y + y * sizeTile.Height, topLeftGrid.X + battle.SizeBattlefield.Width * sizeTile.Width, topLeftGrid.Y + y * sizeTile.Height);
-
-            // Рисуем аватарки игроков
-            g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
-            g.DrawImageUnscaled(Program.formMain.ilPlayerAvatarsBig.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilPlayerAvatarsBig, battle.Player1.ImageIndexAvatar, (battle.BattleCalced == false) || (battle.Winner == battle.Player1))], pointAvatarPlayer1);
-            g.DrawImageUnscaled(Program.formMain.ilPlayerAvatarsBig.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilPlayerAvatarsBig, battle.Player2.ImageIndexAvatar, (battle.BattleCalced == false) || (battle.Winner == battle.Player2))], pointAvatarPlayer2);
-
-            g.Dispose();
+            //
+            chkbShowGrid.Left = ClientSize.Width - chkbShowGrid.Width - FormMain.Config.GridSize;
+            chkbShowGrid.Checked = FormMain.ShowGrid;
+            showGrid = !chkbShowGrid.Checked;
 
             //
             bmpFrame = new Bitmap(bmpLayBackground);

@@ -87,6 +87,8 @@ namespace Fantasy_King_s_Battle
         private Lobby lobby;
         private Player curAppliedPlayer;
 
+        internal static bool ShowGrid { get; set; } = true;
+
         internal readonly Bitmap bmpForBackground;
         internal readonly Bitmap bmpBackgroundButton;
         internal readonly Bitmap bmpBorderForIcon;
