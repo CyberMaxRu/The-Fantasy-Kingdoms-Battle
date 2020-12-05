@@ -23,7 +23,7 @@
         <ID>WeaponDwarf0</ID>
         <Hero>Dwarf</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMelee>0</DamageMelee>
+        <DamageMelee>20</DamageMelee>
       </Weapon>
       <Weapon>
         <ID>WeaponPaladin0</ID>
@@ -271,8 +271,8 @@
         <ID>BowElf0</ID>
         <Hero>Elf</Hero>
         <TimeHit>50</TimeHit>
-        <VelocityMissile>1</VelocityMissile>
-        <DamageArcher>0</DamageArcher>
+        <VelocityMissile>5</VelocityMissile>
+        <DamageArcher>25</DamageArcher>
       </Weapon>
       <Weapon>
         <ID>BowBeastMaster0</ID>

@@ -29,7 +29,7 @@ namespace Fantasy_King_s_Battle
             if (hero.PlayerHero.RangeWeapon != null)
                 StepsToTarget = (int)(distance / hero.PlayerHero.RangeWeapon.VelocityMissile * FormMain.Config.StepsInSecond);
             else
-                StepsToTarget = (int)(distance / 3 * FormMain.Config.StepsInSecond);
+                StepsToTarget = (int)(distance / 5 * FormMain.Config.StepsInSecond);
 
             Debug.Assert(StepsToTarget > 0);
         }
