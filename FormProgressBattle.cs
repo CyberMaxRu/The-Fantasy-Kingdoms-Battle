@@ -46,7 +46,7 @@ namespace Fantasy_King_s_Battle
         internal void SetBattle(Battle b, int totalPairs, int pair)
         {
             Debug.Assert(pair <= totalPairs);
-            Text = "Пара №" + pair.ToString() + " из " + totalPairs.ToString();
+            Text = "Расчет битвы пары №" + pair.ToString() + " из " + totalPairs.ToString();
             battle = b;
             progressBar.Maximum = FormMain.Config.MaxStepsInBattle;
             steps.Clear();
