@@ -28,6 +28,7 @@ namespace Fantasy_King_s_Battle
         private Point topLeftCells;
         private const int WIDTH_LINE = 1;
         private CheckBox chkbShowGrid;
+        private CheckBox chkbShowPath;
         private bool showGrid;
         private int widthBorder;
         private int lengthBandBorder;
@@ -103,6 +104,16 @@ namespace Fantasy_King_s_Battle
                 AutoSize = true,
                 Top = lblSystemInfo.Top,
                 Text = "Показать сетку",
+                ForeColor = FormMain.Config.BattlefieldSystemInfo,
+                BackColor = Color.Transparent
+            };
+
+            chkbShowPath = new CheckBox()
+            {
+                Parent = this,
+                AutoSize = true,
+                Top = lblSystemInfo.Top,
+                Text = "Показать путь",
                 ForeColor = FormMain.Config.BattlefieldSystemInfo,
                 BackColor = Color.Transparent
             };
@@ -595,16 +606,19 @@ namespace Fantasy_King_s_Battle
                     }
                     else
                     {
-                        pSource = new Point(topLeftGrid.X + (hero.Coord.X * sizeTile.Width) + (sizeTile.Width / 2), topLeftGrid.Y + (hero.Coord.Y * sizeTile.Height) + (sizeTile.Height / 2));
-
-                        // Рисуем путь юнита к цели
-                        foreach (BattlefieldTile t in hero.PathToDestination)
+                        if (chkbShowPath.Checked)
                         {
-                            penArrow.Color = hero.PlayerHero.Player == battle.Player1 ? FormMain.Config.BattlefieldAllyColor : FormMain.Config.BattlefieldEnemyColor;
-                            pTarget = new Point(topLeftGrid.X + (t.Coord.X * sizeTile.Width) + (sizeTile.Width / 2), topLeftGrid.Y + (t.Coord.Y * sizeTile.Height) + (sizeTile.Height / 2) + WIDTH_LINE);
-                            gFrame.DrawLine(penArrow, pSource, pTarget);
+                            pSource = new Point(topLeftGrid.X + (hero.Coord.X * sizeTile.Width) + (sizeTile.Width / 2), topLeftGrid.Y + (hero.Coord.Y * sizeTile.Height) + (sizeTile.Height / 2));
 
-                            pSource = pTarget;
+                            // Рисуем путь юнита к цели
+                            foreach (BattlefieldTile t in hero.PathToDestination)
+                            {
+                                penArrow.Color = hero.PlayerHero.Player == battle.Player1 ? FormMain.Config.BattlefieldAllyColor : FormMain.Config.BattlefieldEnemyColor;
+                                pTarget = new Point(topLeftGrid.X + (t.Coord.X * sizeTile.Width) + (sizeTile.Width / 2), topLeftGrid.Y + (t.Coord.Y * sizeTile.Height) + (sizeTile.Height / 2) + WIDTH_LINE);
+                                gFrame.DrawLine(penArrow, pSource, pTarget);
+
+                                pSource = pTarget;
+                            }
                         }
                     }
                 }
@@ -765,6 +779,8 @@ namespace Fantasy_King_s_Battle
             chkbShowGrid.Left = ClientSize.Width - chkbShowGrid.Width - FormMain.Config.GridSize;
             chkbShowGrid.Checked = FormMain.ShowGrid;
             showGrid = !chkbShowGrid.Checked;
+            chkbShowPath.Left = chkbShowGrid.Left - chkbShowPath.Width - FormMain.Config.GridSize;
+            chkbShowPath.Checked = FormMain.ShowPath;
 
             //
             widthBorder = FormMain.Config.WidthBorderBattlefield;
@@ -850,6 +866,14 @@ namespace Fantasy_King_s_Battle
                     lblDamagePlayer2.Text = battle.Player2.LastBattleDamageToCastle.ToString();
                 }
             }
+        }
+
+        protected override void OnFormClosed(FormClosedEventArgs e)
+        {
+            base.OnFormClosed(e);
+
+            FormMain.ShowGrid = chkbShowGrid.Checked;
+            FormMain.ShowPath = chkbShowPath.Checked;
         }
     }
 }
