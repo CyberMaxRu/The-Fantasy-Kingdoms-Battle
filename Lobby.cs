@@ -234,8 +234,8 @@ namespace Fantasy_King_s_Battle
                         break;
                     }
             }
-            Debug.Assert(QuantityAlivePlayersIsEven());
 
+            Debug.Assert(QuantityAlivePlayersIsEven());
         }
 
         internal bool QuantityAlivePlayersIsEven()
