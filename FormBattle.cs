@@ -16,15 +16,12 @@ namespace Fantasy_King_s_Battle
         enum SpeedBattle { VerySlow, Slow, Normal, Fast, VeryFast };
 
         private Battle battle;
-        private Pen penArrow = new Pen(Color.Fuchsia);
-        private Pen penCircle = new Pen(new SolidBrush(Color.Fuchsia));
-        private Brush brushMagicStrikeAlly = new SolidBrush(Color.Green);
-        private Brush brushMagicStrikeEnemy = new SolidBrush(Color.Maroon);
+        private Pen penArrow;
         private Bitmap bmpBackground;
         private Bitmap bmpLayBackground;
         private Bitmap bmpFrame;
         private Graphics gFrame;
-        private Pen penGrid = new Pen(Color.Gray);
+        private Pen penGrid = new Pen(FormMain.Config.BattlefieldGrid);
         private Size sizeTile;
         private Size sizeCell;
         private Point topLeftGrid;
@@ -61,8 +58,8 @@ namespace Fantasy_King_s_Battle
         private Point pointAvatarPlayer2;
         private Rectangle rectBandHealthPlayer1;
         private Rectangle rectBandHealthPlayer2;
-        private readonly SolidBrush brushHealth = new SolidBrush(Color.Green);
-        private readonly SolidBrush brushNoneHealth = new SolidBrush(Color.LightGreen);
+        private readonly SolidBrush brushHealth = new SolidBrush(FormMain.Config.BattlefieldPlayerHealth);
+        private readonly SolidBrush brushNoneHealth = new SolidBrush(FormMain.Config.BattlefieldPlayerHealthNone);
         private readonly Label lblStateBattle;
         private readonly Label lblTimer;
         private readonly Button btnEndBattle;
@@ -81,8 +78,11 @@ namespace Fantasy_King_s_Battle
 
             FormClosing += FormBattle_FormClosing;
 
-            penArrow.Width = 2;
-            penArrow.CustomEndCap = new System.Drawing.Drawing2D.AdjustableArrowCap(3.0F, 6.0F, true);
+            penArrow = new Pen(FormMain.Config.BattlefieldAllyColor)
+            {
+                Width = 2,
+                CustomEndCap = new System.Drawing.Drawing2D.AdjustableArrowCap(3.0F, 6.0F, true)
+            };
 
             // Создаем контролы
             lblSystemInfo = new Label()
@@ -90,7 +90,7 @@ namespace Fantasy_King_s_Battle
                 Parent = this,
                 Top = FormMain.Config.GridSize,
                 Width = 560,
-                ForeColor = Color.White,
+                ForeColor = FormMain.Config.BattlefieldSystemInfo,
                 BackColor = Color.Transparent,
                 Height = 24,
                 TextAlign = ContentAlignment.MiddleLeft,
@@ -103,7 +103,7 @@ namespace Fantasy_King_s_Battle
                 AutoSize = true,
                 Top = lblSystemInfo.Top,
                 Text = "Показать сетку",
-                ForeColor = Color.White,
+                ForeColor = FormMain.Config.BattlefieldSystemInfo,
                 BackColor = Color.Transparent
             };
 
@@ -111,7 +111,7 @@ namespace Fantasy_King_s_Battle
             {
                 Parent = this,
                 Top = GuiUtils.NextTop(lblSystemInfo),
-                ForeColor = Color.White,
+                ForeColor = FormMain.Config.BattlefieldPlayerName,
                 BackColor = Color.Transparent,
                 AutoSize = false,
                 Width = Program.formMain.ilPlayerAvatarsBig.ImageSize.Width,
@@ -124,7 +124,7 @@ namespace Fantasy_King_s_Battle
             {
                 Parent = this,
                 Top = lblPlayer1.Top,
-                ForeColor = Color.White,
+                ForeColor = FormMain.Config.BattlefieldPlayerName,
                 BackColor = Color.Transparent,
                 AutoSize = false,
                 Width = Program.formMain.ilPlayerAvatarsBig.ImageSize.Width,
@@ -136,7 +136,7 @@ namespace Fantasy_King_s_Battle
             lblStateBattle = new Label()
             {
                 Parent = this,
-                ForeColor = Color.White,
+                ForeColor = FormMain.Config.BattlefieldPlayerName,
                 BackColor = Color.Transparent,
                 AutoSize = false,
                 Height = 32,
@@ -147,7 +147,7 @@ namespace Fantasy_King_s_Battle
             lblTimer = new Label()
             {
                 Parent = this,
-                ForeColor = Color.White,
+                ForeColor = FormMain.Config.BattlefieldPlayerName,
                 BackColor = Color.Transparent,
                 AutoSize = false,
                 Height = 32,
@@ -158,7 +158,7 @@ namespace Fantasy_King_s_Battle
             lblDamagePlayer1 = new Label()
             {
                 Parent = this,
-                ForeColor = Color.White,
+                ForeColor = FormMain.Config.BattlefieldPlayerName,
                 BackColor = Color.Transparent,
                 AutoSize = false,
                 ImageList = Program.formMain.ilGui24,
@@ -173,7 +173,7 @@ namespace Fantasy_King_s_Battle
             lblDamagePlayer2 = new Label()
             {
                 Parent = this,
-                ForeColor = Color.White,
+                ForeColor = FormMain.Config.BattlefieldPlayerName,
                 BackColor = Color.Transparent,
                 AutoSize = false,
                 ImageList = Program.formMain.ilGui24,
@@ -595,11 +595,11 @@ namespace Fantasy_King_s_Battle
                     else
                     {
                         pSource = new Point(topLeftGrid.X + (hero.Coord.X * sizeTile.Width) + (sizeTile.Width / 2), topLeftGrid.Y + (hero.Coord.Y * sizeTile.Height) + (sizeTile.Height / 2));
-                        penArrow.Color = hero.PlayerHero.Player == battle.Player1 ? Color.Green : Color.Maroon;
 
                         // Рисуем путь юнита к цели
                         foreach (BattlefieldTile t in hero.PathToDestination)
                         {
+                            penArrow.Color = hero.PlayerHero.Player == battle.Player1 ? FormMain.Config.BattlefieldAllyColor : FormMain.Config.BattlefieldEnemyColor;
                             pTarget = new Point(topLeftGrid.X + (t.Coord.X * sizeTile.Width) + (sizeTile.Width / 2), topLeftGrid.Y + (t.Coord.Y * sizeTile.Height) + (sizeTile.Height / 2) + WIDTH_LINE);
                             gFrame.DrawLine(penArrow, pSource, pTarget);
 
@@ -630,17 +630,17 @@ namespace Fantasy_King_s_Battle
                 if ((battle.Winner != null) && (battle.Winner.TypePlayer == TypePlayer.Human))
                 {
                     lblStateBattle.Text = "Победа!";
-                    lblStateBattle.ForeColor = Color.Green;
+                    lblStateBattle.ForeColor = FormMain.Config.BattlefieldTextWin;
                 }
                 else if (battle.Winner == null)
                 {
                     lblStateBattle.Text = "Ничья";
-                    lblStateBattle.ForeColor = Color.White;
+                    lblStateBattle.ForeColor = FormMain.Config.BattlefieldTextDraw;
                 }
                 else
                 {
                     lblStateBattle.Text = "Поражение";
-                    lblStateBattle.ForeColor = Color.Red;
+                    lblStateBattle.ForeColor = FormMain.Config.BattlefieldTextLose;
                 }
             }
 

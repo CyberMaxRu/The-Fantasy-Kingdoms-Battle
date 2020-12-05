@@ -48,8 +48,8 @@ namespace Fantasy_King_s_Battle
             if (needImage)
             {
                 bmpIcon = new Bitmap(Program.formMain.bmpBorderForIcon.Size.Width, Program.formMain.bmpBorderForIcon.Size.Height);
-                brushBandHealth = new SolidBrush(Color.Red);
-                brushBandHealthNone = new SolidBrush(Color.LightPink);
+                brushBandHealth = new SolidBrush(FormMain.Config.UnitHealth);
+                brushBandHealthNone = new SolidBrush(FormMain.Config.UnitHealthNone);
                 needRedraw = true;
             }
         }

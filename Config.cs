@@ -162,6 +162,23 @@ namespace Fantasy_King_s_Battle
         internal int WarehouseHeight { get; private set; }// Количество рядов ячеек склада
         internal int WarehouseMaxCells { get; private set; }// Количество ячеек в складе
         internal int BuildingMaxLines { get; private set; }// Максимальное количество линий зданий
+
+        // Цвета
+        internal Color BattlefieldSystemInfo { get; private set; }
+        internal Color BattlefieldPlayerName { get; private set; }
+        internal Color BattlefieldPlayerHealth { get; private set; }
+        internal Color BattlefieldPlayerHealthNone { get; private set; }
+        internal Color BattlefieldGrid { get; private set; }
+        internal Color BattlefieldAllyColor { get; private set; }
+        internal Color BattlefieldEnemyColor { get; private set; }
+        internal Color BattlefieldTextWin { get; private set; }
+        internal Color BattlefieldTextDraw { get; private set; }
+        internal Color BattlefieldTextLose { get; private set; }
+
+        internal Color UnitHealth { get; private set; }
+        internal Color UnitHealthNone { get; private set; }
+
+        //
         internal Skill FindSkill(string ID)
         {
             foreach (Skill s in Skills)
@@ -347,6 +364,21 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(WarehouseHeight >= 1);
             Debug.Assert(WarehouseHeight <= 10);
             WarehouseMaxCells = WarehouseWidth * WarehouseHeight;
+
+            // Цвета
+            BattlefieldSystemInfo = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Battlefield/SystemInfo").InnerText);
+            BattlefieldPlayerName = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Battlefield/PlayerName").InnerText);
+            BattlefieldPlayerHealth = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Battlefield/PlayerHealth").InnerText);
+            BattlefieldPlayerHealthNone = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Battlefield/PlayerHealthNone").InnerText);
+            BattlefieldGrid = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Battlefield/Grid").InnerText);
+            BattlefieldAllyColor = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Battlefield/AllyColor").InnerText);
+            BattlefieldEnemyColor = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Battlefield/EnemyColor").InnerText);
+            BattlefieldTextWin = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Battlefield/TextWin").InnerText);
+            BattlefieldTextDraw = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Battlefield/TextDraw").InnerText);
+            BattlefieldTextLose = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Battlefield/TextLose").InnerText);
+
+            UnitHealth = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Unit/Health").InnerText);
+            UnitHealthNone = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Unit/HealthNone").InnerText);
         }
     }
 }

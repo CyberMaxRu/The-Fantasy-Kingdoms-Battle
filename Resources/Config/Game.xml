@@ -9,6 +9,24 @@
     <ShiftForBorderX>3</ShiftForBorderX>
     <ShiftForBorderY>2</ShiftForBorderY>
   </Interface>
+  <Colors>
+    <Battlefield>
+      <SystemInfo>White</SystemInfo>
+      <PlayerName>White</PlayerName>
+      <PlayerHealth>Green</PlayerHealth>
+      <PlayerHealthNone>LightGreen</PlayerHealthNone>
+      <Grid>Gray</Grid>
+      <AllyColor>Green</AllyColor>
+      <EnemyColor>Maroon</EnemyColor>
+      <TextWin>Green</TextWin>
+      <TextDraw>White</TextDraw>
+      <TextLose>Red</TextLose>
+    </Battlefield>
+    <Unit>
+      <Health>Red</Health>
+      <HealthNone>LightPink</HealthNone>
+    </Unit>
+  </Colors>
   <Heroes>
     <MaxStatPointPerLevel>20</MaxStatPointPerLevel>
     <StepsHeroInTumbstone>100</StepsHeroInTumbstone>
