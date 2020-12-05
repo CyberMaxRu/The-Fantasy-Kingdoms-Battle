@@ -43,14 +43,20 @@ namespace Fantasy_King_s_Battle
         {
             Debug.Assert(fromTile != null);
             Debug.Assert(toTile != null);
+            Debug.Assert(fromTile != toTile);
 
-            // Если клетка зарезервирована, но она не соседняя, то идти на нее можно
-            // Когда сделаем шаг, возможно, она уже освободится
-            if ((toTile.ReservedForMove != null) && fromTile.IsNeighbourTile(toTile))
-                return false;
-
-            // А* с учетом направления
             _path = new List<BattlefieldTile>();// Наиболее легкий найденный путь
+
+            // Если это соседняя ячейка, то не надо искать путь
+            if (fromTile.IsNeighbourTile(toTile))
+            {
+                // Если клетка зарезервирована или на ней есть юнит, идти на нее нельзя
+                if ((toTile.ReservedForMove != null) || (toTile.Unit != null))
+                    return false;
+
+                _path.Add(toTile);
+                return true;
+            }
 
             // Очистка данных
             foreach (BattlefieldTile t in closedSet)
@@ -117,7 +123,7 @@ namespace Fantasy_King_s_Battle
                     // Если зарезервирована соседняя от начала пути ячейки, то обходим её
                     // Когда сделаем шаг, она может быть уже не зарезервирована, поэтому продолжим тот же путь
                     if (neighbourNode.ReservedForMove != null)
-                        if (neighbourNode.IsNeighbourTile(sourceTile) == true)
+                        if (neighbourNode.IsNeighbourTile(sourceTile))
                             continue;
 
                     if (neighbourNode.Unit != null)
