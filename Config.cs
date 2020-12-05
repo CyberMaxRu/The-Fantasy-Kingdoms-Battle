@@ -400,5 +400,10 @@ namespace Fantasy_King_s_Battle
             UnitHealth = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Unit/Health").InnerText);
             UnitHealthNone = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Unit/HealthNone").InnerText);
         }
+
+        internal Color ColorEntity(bool ally)
+        {
+            return ally ? FormMain.Config.BattlefieldAllyColor : FormMain.Config.BattlefieldEnemyColor;
+        }
     }
 }
