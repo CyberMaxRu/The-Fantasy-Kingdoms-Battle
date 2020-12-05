@@ -29,7 +29,7 @@ namespace Fantasy_King_s_Battle
                 Location = new Point(FormMain.Config.GridSize, FormMain.Config.GridSize),
                 Font = new Font("Microsof Sans Serif", 13),
                 TextAlign = ContentAlignment.TopCenter,
-                ForeColor = Color.White,
+                ForeColor = FormMain.Config.BattlefieldPlayerName,
                 BackColor = Color.Transparent
             };
 

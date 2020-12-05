@@ -24,7 +24,6 @@ namespace Fantasy_King_s_Battle
         private readonly Font fontLabel = new Font("Microsoft Sans Serif", 10, FontStyle.Bold);
         private readonly Pen penBorder;
         private readonly Rectangle rectBorder;
-        private readonly SolidBrush brushBackColor = new SolidBrush(Color.White);
 
         public PanelBuilding() : base()
         {
