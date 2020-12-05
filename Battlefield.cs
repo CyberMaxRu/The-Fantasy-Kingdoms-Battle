@@ -77,16 +77,18 @@ namespace Fantasy_King_s_Battle
             BattlefieldTile currentNode;
             int lengthFromStart;
             //List<BattlefieldTile> path = new List<BattlefieldTile>();
-            BattlefieldTile bestTile;
+            BattlefieldTile bestTile = null;
+            int bestPath = 0;
 
             // Стартуем с начальной ячейки
             openSet.Add(sourceTile);
             sourceTile.Opened = true;
 
+            // Цикл, пока есть открытые (необработанные) клетки
             while (openSet.Count > 0)
             {
                 // Текущая ячейка - с наименьшим числом отставшегося пути
-                bestTile = openSet[0].First();
+                bestTile = openSet.First();
 
                 foreach (BattlefieldTile t in openSet)
                 {
@@ -104,8 +106,8 @@ namespace Fantasy_King_s_Battle
                 }
 
                 // Убираем ячейку из необработанных и добавляем в обработанные
-                openSet.Remove(bestTile);
-                closedSet.Add(currentNode);
+                openSet.Remove(currentNode);
+                closedSet.Add(currentNode);// Только для того, чтобы по ней потом очистить данные для поиска пути
                 currentNode.Opened = false;
                 currentNode.Closed = true;
                 // Шаг 6.
@@ -135,11 +137,14 @@ namespace Fantasy_King_s_Battle
                     }
 
                     // Шаг 7.
-                    if ((neighbourNode.Closed == false) && (neighbourNode.Opened == false))
+                    if (!neighbourNode.Closed && !neighbourNode.Opened)
                     {
                         openSet.Add(neighbourNode);
                         neighbourNode.Opened = true;
 
+                        // Запоминаем клетку с лучшим путем
+                        //if (neighbourNode.EstimateFullPathLength < bestPath)
+                        //    bestTile = neighbourNode;
                     }
                 }
             }

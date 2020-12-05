@@ -37,25 +37,23 @@ namespace Fantasy_King_s_Battle
 			}
 		}
 
-		internal HeroInBattle Unit { get; set; }
-		internal HeroInBattle OutgoingUnit { get; set; }
-
-		internal HeroInBattle ReservedForMove { get; set; }
+		internal HeroInBattle Unit;
+		internal HeroInBattle OutgoingUnit;
+		internal HeroInBattle ReservedForMove;
 
 		internal List<BattlefieldTile> TilesAround = new List<BattlefieldTile>();
 		internal int PathLengthFromStart;// Длина пути от старта
 		internal int HeuristicEstimatePathLength;// Примерное расстояние до цели
 		internal int EstimateFullPathLength;
 		internal BattlefieldTile PriorTile;
-
-		internal bool Opened { get; set; }
-		internal bool Closed { get; set; }
+		internal bool Opened;
+		internal bool Closed;
 
 		// Ожидаемое полное расстояние до цели.
 
 		internal int GetDistanceToTile(BattlefieldTile toTile)
 		{
-			//Debug.Assert(_listTilesAround.IndexOf(toTile) != -1);
+			Debug.Assert(this != toTile);
 
 			return (X == toTile.X) || (Y == toTile.Y) ? 10 : 14;
 		}
