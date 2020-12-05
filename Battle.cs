@@ -128,10 +128,13 @@ namespace Fantasy_King_s_Battle
             foreach (HeroInBattle hb in ActiveHeroes)
             {
                 // Для отладки проверяем, что нет героев, стоящих на одной клетке
-                foreach (HeroInBattle hb2 in ActiveHeroes)
-                    if (hb2 != hb)
-                        if ((hb2.CurrentTile != null) && (hb.CurrentTile != null) && (hb2.Coord.Equals(hb.Coord)))
-                            throw new Exception("Два героя стоят на " + hb2.Coord.ToString());
+                if (hb.CurrentTile != null)
+                {
+                    foreach (HeroInBattle hb2 in ActiveHeroes)
+                        if ((hb2 != hb) && (hb2.CurrentTile != null))
+                            if ((hb2.Coord.X == hb.Coord.X) && (hb2.Coord.Y == hb.Coord.Y))
+                                throw new Exception("Два героя стоят на " + hb2.Coord.ToString());
+                }
 
                 hb.DoStepBattle(this);
             }
