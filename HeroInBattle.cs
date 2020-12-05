@@ -588,9 +588,11 @@ namespace Fantasy_King_s_Battle
             g.DrawImageUnscaled(Program.formMain.bmpBorderForIcon, 0, 0);
             
             // Рисуем состояние
-            if (State != StateHeroInBattle.None)
+            if ((State != StateHeroInBattle.None) || (priorState != StateHeroInBattle.None))
             {
-                g.DrawImageUnscaled(Program.formMain.ilStateHero.Images[(int)State], FormMain.Config.ShiftForBorder.X + 1, FormMain.Config.ShiftForBorder.Y + 1);
+                StateHeroInBattle s = State != StateHeroInBattle.None ? State : priorState;
+
+                g.DrawImageUnscaled(Program.formMain.ilStateHero.Images[(int)s], FormMain.Config.ShiftForBorder.X + 1, FormMain.Config.ShiftForBorder.Y + 1);
             }
             
             // Рисуем полоску жизни
