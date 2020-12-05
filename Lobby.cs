@@ -161,6 +161,10 @@ namespace Fantasy_King_s_Battle
         {
             Battle b;
             FormBattle formBattle;
+            FormProgressBattle formProgressBattle = null;
+            Debug.Assert(Players.Count() % 2 == 0);
+            int pairs = (Players.Count() / 2) - 1;
+            int numberPair = 0;
 
             foreach (Player p in Players)
                 p.BattleCalced = false;
@@ -181,12 +185,22 @@ namespace Fantasy_King_s_Battle
                             formBattle.Dispose();
                         }
                         else
-                            b.CalcWholeBattle();
+                        {
+                            numberPair++;
+                            if (formProgressBattle == null)
+                                formProgressBattle = new FormProgressBattle();
+
+                            formProgressBattle.SetBattle(b, pairs, numberPair);
+                            b.CalcWholeBattle(formProgressBattle);
+                        }
 
                         Battles.Add(b);
                     }
                 }
             }
+
+            if (formProgressBattle != null)
+                formProgressBattle.Dispose();
         }
 
         private void CalcBattle(Player player1, Player player2, Random r)

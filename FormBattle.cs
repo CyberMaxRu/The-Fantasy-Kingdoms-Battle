@@ -337,7 +337,7 @@ namespace Fantasy_King_s_Battle
 
         private void BtnEndBattle_Click(object sender, EventArgs e)
         {
-            battle.CalcWholeBattle();
+            battle.CalcWholeBattle(null);
 
             ApplyStep();
         }
@@ -655,7 +655,7 @@ namespace Fantasy_King_s_Battle
         private void FormBattle_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (battle.BattleCalced == false)
-                battle.CalcWholeBattle(); 
+                battle.CalcWholeBattle(null); 
         }
 
         protected override void OnPaintBackground(PaintEventArgs e)
@@ -677,28 +677,14 @@ namespace Fantasy_King_s_Battle
             // Считаем Frames per second
             // Для этого удаляем все кадры, которые были более секунды назад, добавляем текущий и получаем итоговое количество
             DateTime currentDateTime = DateTime.Now;
-            UpdateActions(Frames);
-            UpdateActions(Steps);
-            UpdateActions(BackPaints);
+            Utils.TrimActions(Frames);
+            Utils.TrimActions(Steps);
+            Utils.TrimActions(BackPaints);
 
             TimeSpan realTime = currentDateTime - timeStart;
             
             lblSystemInfo.Text = Frames.Count.ToString() + " fps; steps: " + Steps.Count.ToString()
                   + "; backpaints: " + BackPaints.Count.ToString() + "; passed: " + realTime.ToString("mm':'ss"); 
-
-            void UpdateActions(List<DateTime> list)
-            {
-                TimeSpan diffTime;
-                for (int i = 0; i < list.Count; i++)
-                {
-                    diffTime = currentDateTime - list[i];
-                    if (diffTime.TotalMilliseconds <= 1_000)
-                    {
-                        list.RemoveRange(0, i);
-                        break;
-                    }
-                }
-            }
         }
 
         internal void ShowBattle(Battle b)

@@ -237,6 +237,14 @@ namespace Fantasy_King_s_Battle
             Clear();
         }
 
+        protected override void Dispose(bool disposing)
+        {
+            timerDelayShow.Dispose();
+            timerOpacity.Dispose();
+
+            base.Dispose(disposing);
+        }
+
         protected override bool ShowWithoutActivation => true;
 
         protected override CreateParams CreateParams

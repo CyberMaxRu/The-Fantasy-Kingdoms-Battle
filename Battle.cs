@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace Fantasy_King_s_Battle
 {
@@ -146,13 +147,18 @@ namespace Fantasy_King_s_Battle
             return true;
         }
 
-        internal void CalcWholeBattle()
+        internal void CalcWholeBattle(FormProgressBattle formProgress)
         {
             // Полный расчет боя
             for (; ; )
             {
                 if (CalcStep() == false)
                     break;
+
+                if (formProgress != null)
+                    formProgress.ShowStep();
+
+                Application.DoEvents();
             }
         }
 
