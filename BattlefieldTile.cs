@@ -12,6 +12,8 @@ namespace Fantasy_King_s_Battle
     {
 		private Entity entity;
 
+		private static Dictionary<int, int> pathLength = new Dictionary<int, int>();
+
 		public BattlefieldTile(int x, int y)
 		{
 			X = x;
@@ -62,8 +64,14 @@ namespace Fantasy_King_s_Battle
 		{
 			int deltaX = Math.Abs(X - toTile.X);
 			int deltaY = Math.Abs(Y - toTile.Y);
+			int len;
 
-			return Convert.ToInt32(Math.Sqrt(deltaX * deltaX + deltaY * deltaY) * 20);
+			if (pathLength.TryGetValue(deltaX + 1000 + deltaY, out len))
+				return len;
+			
+			len = Convert.ToInt32(Math.Sqrt(deltaX * deltaX + deltaY * deltaY) * 20);
+			pathLength.Add(deltaX + 1000 + deltaY, len);
+			return len;
 		}
 
 		// Добавить соседнюю ячейку
