@@ -393,6 +393,8 @@ namespace Fantasy_King_s_Battle
 
         internal void ShowDataPlayer()
         {
+            Debug.Assert(lobby.CurrentPlayer.TypePlayer == TypePlayer.Human);
+
             tslDay.Text = "День: " + lobby.Turn.ToString();
             
             // Если этого игрока не отрисовывали, формируем заново вкладки
@@ -584,6 +586,8 @@ namespace Fantasy_King_s_Battle
 
         internal void ShowGold()
         {
+            Debug.Assert(lobby.CurrentPlayer.TypePlayer == TypePlayer.Human);
+
             tslGold.Text = lobby.CurrentPlayer.Gold.ToString() + " (+" + lobby.CurrentPlayer.Income().ToString() + ")";
             tslBuilders.Text = lobby.CurrentPlayer.FreeBuilders.ToString() + "/" + lobby.CurrentPlayer.TotalBuilders.ToString();
             tslHeroes.Text = lobby.CurrentPlayer.CombatHeroes.Count.ToString() + "/" + lobby.TypeLobby.MaxHeroes.ToString();
@@ -644,11 +648,12 @@ namespace Fantasy_King_s_Battle
             tsbEndTurn.Enabled = false;
             lobby.DoEndTurn();
 
-            ShowDataPlayer();
-            tsbEndTurn.Enabled = true;
-
-            // Если вылетели из лобби, то показываем итоговое место и начинаем новое лобби
-            if (!lobby.CurrentPlayer.IsLive)
+            if (lobby.CurrentPlayer.IsLive)
+            {
+                ShowDataPlayer();
+                tsbEndTurn.Enabled = true;
+            }
+            else// Если вылетели из лобби, то показываем итоговое место и начинаем новое лобби
             {
                 MessageBox.Show("Поражение..." + Environment.NewLine + "Вы заняли " + lobby.CurrentPlayer.PositionInLobby.ToString() + " место.");
 
