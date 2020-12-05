@@ -191,6 +191,9 @@ namespace Fantasy_King_s_Battle
 
         internal Color UnitHealth { get; private set; }
         internal Color UnitHealthNone { get; private set; }
+        internal Color UnitNormalParam { get; private set; }
+        internal Color UnitLowNormalParam { get; private set; }
+        internal Color UnitHighNormalParam { get; private set; }
 
         //
         internal Skill FindSkill(string ID)
@@ -407,6 +410,9 @@ namespace Fantasy_King_s_Battle
 
             UnitHealth = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Unit/Health").InnerText);
             UnitHealthNone = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Unit/HealthNone").InnerText);
+            UnitNormalParam = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Unit/NormalParam").InnerText);
+            UnitLowNormalParam = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Unit/LowNormalParam").InnerText);
+            UnitHighNormalParam = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Unit/HighNormalParam").InnerText);
         }
 
         internal Color ColorEntity(bool ally)

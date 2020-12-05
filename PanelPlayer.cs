@@ -79,7 +79,7 @@ namespace Fantasy_King_s_Battle
                 Left = leftForText,
                 Top = pointIconHeroes.Y,
                 ForeColor = Color.Black,
-                BackColor = Color.Transparent,
+                BackColor = FormMain.Config.CommonBorder,
                 TextAlign = ContentAlignment.MiddleLeft,
                 MaximumSize = Program.formMain.ilGui24.ImageSize,
                 Font = new Font("Microsoft Sans Serif", 8, FontStyle.Bold)

@@ -42,6 +42,9 @@
     <Unit>
       <Health>Red</Health>
       <HealthNone>LightPink</HealthNone>
+      <NormalParam>Black</NormalParam>
+      <LowNormalParam>Red</LowNormalParam>
+      <HighNormalParam>Green</HighNormalParam>
     </Unit>
   </Colors>
   <Heroes>

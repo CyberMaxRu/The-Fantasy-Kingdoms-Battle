@@ -170,11 +170,11 @@ namespace Fantasy_King_s_Battle
             {
                 l.Text = modParam.ToString();
                 if (normalParam == modParam)
-                    l.ForeColor = Color.FromKnownColor(KnownColor.Black);
+                    l.ForeColor = FormMain.Config.UnitNormalParam;
                 else if (normalParam > modParam)
-                    l.ForeColor = Color.FromKnownColor(KnownColor.Green);
-                else 
-                    l.ForeColor = Color.FromKnownColor(KnownColor.Red);
+                    l.ForeColor = FormMain.Config.UnitHighNormalParam;
+                else
+                    l.ForeColor = FormMain.Config.UnitLowNormalParam;
             }
         }
 
