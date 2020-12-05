@@ -52,28 +52,16 @@ namespace Fantasy_King_s_Battle
             // А* с учетом направления
             _path = new List<BattlefieldTile>();// Наиболее легкий найденный путь
 
+            // Очистка данных
             foreach (BattlefieldTile t in closedSet)
-            {
-                t.PathLengthFromStart = 0;
-                t.HeuristicEstimatePathLength = 0;
-                t.EstimateFullPathLength = 0;
-                t.Closed = false;
-                t.Opened = false;
-                t.PriorTile = null;
-            }
+                t.ClearPathData();
             closedSet.Clear();
 
             foreach (BattlefieldTile t in openSet)
-            {
-                t.PathLengthFromStart = 0;
-                t.HeuristicEstimatePathLength = 0;
-                t.EstimateFullPathLength = 0;
-                t.Closed = false;
-                t.Opened = false;
-                t.PriorTile = null;
-            }
+                t.ClearPathData();
             openSet.Clear();
 
+            // Ищем путь
             FindPath(fromTile, toTile, throughPlayer);
 
             Debug.Assert((_path.Count() == 0) || (Utils.PointsIsNeighbor(fromTile.Coord, _path.First().Coord) == true));

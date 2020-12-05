@@ -101,5 +101,15 @@ namespace Fantasy_King_s_Battle
 
 			return ((tile.X >= X - 1) && (tile.X <= X + 1) && (tile.Y >= Y - 1) && (tile.Y <= Y + 1));
 		}
+
+		internal void ClearPathData()
+        {
+			PathLengthFromStart = 0;
+			HeuristicEstimatePathLength = 0;
+			EstimateFullPathLength = 0;
+			Closed = false;
+			Opened = false;
+			PriorTile = null;
+		}
 	}
 }
