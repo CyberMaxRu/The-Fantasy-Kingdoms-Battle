@@ -27,7 +27,7 @@ namespace Fantasy_King_s_Battle
                 Parent = this,
                 Height = FormMain.Config.GridSize * 3,
                 Location = new Point(FormMain.Config.GridSize, FormMain.Config.GridSize),
-                Font = new Font("Microsof Sans Serif", 13),
+                Font = FormMain.Config.FontNamePage,
                 TextAlign = ContentAlignment.TopCenter,
                 ForeColor = FormMain.Config.BattlefieldPlayerName,
                 BackColor = Color.Transparent

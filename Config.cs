@@ -203,6 +203,15 @@ namespace Fantasy_King_s_Battle
         internal Font FontLevel { get; private set; }
         internal Font FontQuantity { get; private set; }
         internal Font FontCost { get; private set; }
+        internal Font FontCaptionPage { get; private set; }
+        internal Font FontNamePage { get; private set; }
+        internal Font FontBattlefieldPlayer { get; private set; }
+        internal Font FontBattlefieldTimer { get; private set; }
+        internal Font FontBattlefieldDamage { get; private set; }
+        internal Font FontHintMainText { get; private set; }
+        internal Font FontHintAdditionalText { get; private set; }
+        internal Font FontBuildingLevel { get; private set; }
+        internal Font FontBuildingCaption { get; private set; }
 
         //
         internal Skill FindSkill(string ID)
@@ -427,17 +436,26 @@ namespace Fantasy_King_s_Battle
             UnitHighNormalParam = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Unit/HighNormalParam").InnerText);
 
             // Шрифты
-            FontToolbar = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/FontToolbar"));
-            FontLevel = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/FontLevel"));
-            FontQuantity = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/FontQuantity"));
-            FontCost = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/FontCost"));
+            FontToolbar = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/Toolbar"));
+            FontLevel = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/Level"));
+            FontQuantity = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/Quantity"));
+            FontCost = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/Cost"));
+            FontCaptionPage = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/CaptionPage"));
+            FontNamePage = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/NamePage"));
+            FontBattlefieldPlayer = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/Battlefield/Player"));
+            FontBattlefieldTimer = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/Battlefield/Timer"));
+            FontBattlefieldDamage = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/Battlefield/Damage"));
+            FontHintMainText = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/Hint/MainText"));
+            FontHintAdditionalText = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/Hint/AdditionalText"));
+            FontBuildingLevel = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/Building/Level"));
+            FontBuildingCaption = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/Building/Caption"));
 
             Font CreateFont(XmlNode n)
             {
                 if (Convert.ToBoolean(n.SelectSingleNode("Bold").InnerText))
-                    return new Font(n.SelectSingleNode("Name").InnerText, Convert.ToInt32(n.SelectSingleNode("Size").InnerText));
-                else
                     return new Font(n.SelectSingleNode("Name").InnerText, Convert.ToInt32(n.SelectSingleNode("Size").InnerText), FontStyle.Bold);
+                else
+                    return new Font(n.SelectSingleNode("Name").InnerText, Convert.ToInt32(n.SelectSingleNode("Size").InnerText));
             }
         }
 

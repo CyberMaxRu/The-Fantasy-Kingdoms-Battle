@@ -105,7 +105,7 @@ namespace Fantasy_King_s_Battle
                 Width = ClientSize.Width,
                 Top = imageList.ImageSize.Height + FormMain.Config.GridSize,
                 TextAlign = ContentAlignment.MiddleCenter,
-                Font = new Font("Microsoft Sans Serif", 12),
+                Font = FormMain.Config.FontCaptionPage,
                 ForeColor = FormMain.Config.CommonCaptionPage,
                 BackColor = Color.Transparent,
                 Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right

@@ -12,7 +12,6 @@ namespace Fantasy_King_s_Battle
     // Класс панели здания
     internal sealed class PanelBuilding : BasePanel
     {
-        private static Font fontLevel = new Font("Arial", 12, FontStyle.Bold);
         private PlayerBuilding building;
         private readonly PictureBox pbBuilding;
         private readonly Button btnHeroes;
@@ -21,7 +20,6 @@ namespace Fantasy_King_s_Battle
         private readonly Label lblName;
         private readonly Label lblIncome;
         private readonly Label lblLevel;
-        private readonly Font fontLabel = new Font("Microsoft Sans Serif", 10, FontStyle.Bold);
         private readonly Pen penBorder;
         private readonly Rectangle rectBorder;
 
@@ -34,7 +32,7 @@ namespace Fantasy_King_s_Battle
                 Top = FormMain.Config.GridSize,
                 Height = FormMain.Config.GridSize * 2,
                 BackColor = Color.Transparent,
-                Font = fontLabel
+                Font = FormMain.Config.FontBuildingCaption
             };
 
             pbBuilding = new PictureBox()
@@ -102,7 +100,7 @@ namespace Fantasy_King_s_Battle
                 Top = lblName.Top,
                 Size = new Size(32, 16),
                 BackColor = Color.Transparent,
-                Font = fontLevel,
+                Font = FormMain.Config.FontBuildingLevel,
                 TextAlign = ContentAlignment.MiddleRight
             };
             lblLevel.BringToFront();

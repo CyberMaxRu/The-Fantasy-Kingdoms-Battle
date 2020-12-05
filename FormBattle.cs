@@ -94,7 +94,7 @@ namespace Fantasy_King_s_Battle
                 BackColor = Color.Transparent,
                 Height = 24,
                 TextAlign = ContentAlignment.MiddleLeft,
-                Font = new Font("Times New Roman", 12, FontStyle.Bold),
+                Font = FormMain.Config.FontBattlefieldPlayer
             };
 
             chkbShowGrid = new CheckBox()
@@ -117,7 +117,7 @@ namespace Fantasy_King_s_Battle
                 Width = Program.formMain.ilPlayerAvatarsBig.ImageSize.Width,
                 Height = 24,
                 TextAlign = ContentAlignment.BottomCenter,
-                Font = new Font("Times New Roman", 12, FontStyle.Bold),                
+                Font = FormMain.Config.FontBattlefieldPlayer
             };
 
             lblPlayer2 = new Label()
@@ -130,7 +130,7 @@ namespace Fantasy_King_s_Battle
                 Width = Program.formMain.ilPlayerAvatarsBig.ImageSize.Width,
                 Height = 24,
                 TextAlign = ContentAlignment.BottomCenter,
-                Font = new Font("Times New Roman", 12, FontStyle.Bold)
+                Font = FormMain.Config.FontBattlefieldPlayer
             };
 
             lblStateBattle = new Label()
@@ -141,7 +141,7 @@ namespace Fantasy_King_s_Battle
                 AutoSize = false,
                 Height = 32,
                 TextAlign = ContentAlignment.MiddleCenter,
-                Font = new Font("Calibri", 20, FontStyle.Bold)
+                Font = FormMain.Config.FontBattlefieldTimer
             };
 
             lblTimer = new Label()
@@ -152,7 +152,7 @@ namespace Fantasy_King_s_Battle
                 AutoSize = false,
                 Height = 32,
                 TextAlign = ContentAlignment.MiddleCenter,
-                Font = new Font("Calibri", 20, FontStyle.Bold)
+                Font = FormMain.Config.FontBattlefieldTimer
             };
 
             lblDamagePlayer1 = new Label()
@@ -167,7 +167,7 @@ namespace Fantasy_King_s_Battle
                 Width = 64,
                 ImageAlign = ContentAlignment.MiddleLeft,
                 TextAlign = ContentAlignment.MiddleRight,
-                Font = new Font("Microsoft Sans Serif", 14, FontStyle.Bold)
+                Font = FormMain.Config.FontBattlefieldDamage
             };
 
             lblDamagePlayer2 = new Label()
@@ -182,7 +182,7 @@ namespace Fantasy_King_s_Battle
                 Width = 64,
                 ImageAlign = ContentAlignment.MiddleLeft,
                 TextAlign = ContentAlignment.MiddleRight,
-                Font = new Font("Microsoft Sans Serif", 14, FontStyle.Bold)
+                Font = FormMain.Config.FontBattlefieldDamage
             };
 
             btnEndBattle = new Button()

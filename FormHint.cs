@@ -66,7 +66,7 @@ namespace Fantasy_King_s_Battle
                 Height = 18,
                 ForeColor = FormMain.Config.HintHeader,
                 BackColor = Color.Transparent,
-                Font = new Font("Microsoft Sans Serif", 12, FontStyle.Bold)
+                Font = FormMain.Config.FontHintMainText
             };
 
             lblAction = new Label()
@@ -78,7 +78,7 @@ namespace Fantasy_King_s_Battle
                 Height = 18,
                 ForeColor = FormMain.Config.HintAction,
                 BackColor = Color.Transparent,
-                Font = new Font("Microsoft Sans Serif", 12, FontStyle.Bold)
+                Font = FormMain.Config.FontHintMainText
             };
 
             lblDescription = new Label()
@@ -89,7 +89,7 @@ namespace Fantasy_King_s_Battle
                 Top = FormMain.Config.GridSize,
                 ForeColor = FormMain.Config.HintDescription,
                 BackColor = Color.Transparent,
-                Font = new Font("Microsoft Sans Serif", 10)
+                Font = FormMain.Config.FontHintAdditionalText
             };
             lblDescription.MaximumSize = new Size(ClientSize.Width - (FormMain.Config.GridSize * 2), 0);
 
@@ -104,7 +104,7 @@ namespace Fantasy_King_s_Battle
                 ImageAlign = ContentAlignment.MiddleLeft,
                 ForeColor = FormMain.Config.HintIncome,
                 BackColor = Color.Transparent,
-                Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
+                Font = FormMain.Config.FontHintAdditionalText
             };
 
             lblGold = new Label()
@@ -117,7 +117,7 @@ namespace Fantasy_King_s_Battle
                 ImageIndex = FormMain.GUI_16_GOLD,
                 ImageAlign = ContentAlignment.MiddleLeft,
                 BackColor = Color.Transparent,
-                Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
+                Font = FormMain.Config.FontHintAdditionalText
             };
 
             lblBuilders = new Label()
@@ -130,7 +130,7 @@ namespace Fantasy_King_s_Battle
                 ImageIndex = FormMain.GUI_16_PEASANT,
                 ImageAlign = ContentAlignment.MiddleLeft,
                 BackColor = Color.Transparent,
-                Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
+                Font = FormMain.Config.FontHintAdditionalText
             };
 
             lblDamageMelee = new Label()
@@ -144,7 +144,7 @@ namespace Fantasy_King_s_Battle
                 ImageAlign = ContentAlignment.MiddleLeft,
                 ForeColor = FormMain.Config.HintParameter,
                 BackColor = Color.Transparent,
-                Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
+                Font = FormMain.Config.FontHintAdditionalText
             };
 
             lblDamageArcher = new Label()
@@ -158,7 +158,7 @@ namespace Fantasy_King_s_Battle
                 ImageAlign = ContentAlignment.MiddleLeft,
                 ForeColor = FormMain.Config.HintParameter,
                 BackColor = Color.Transparent,
-                Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
+                Font = FormMain.Config.FontHintAdditionalText
             };
 
             lblDamageMagic= new Label()
@@ -172,7 +172,7 @@ namespace Fantasy_King_s_Battle
                 ImageAlign = ContentAlignment.MiddleLeft,
                 ForeColor = FormMain.Config.HintParameter,
                 BackColor = Color.Transparent,
-                Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
+                Font = FormMain.Config.FontHintAdditionalText
             };
 
             lblDefenseMelee = new Label()
@@ -186,7 +186,7 @@ namespace Fantasy_King_s_Battle
                 ImageAlign = ContentAlignment.MiddleLeft,
                 ForeColor = FormMain.Config.HintParameter,
                 BackColor = Color.Transparent,
-                Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
+                Font = FormMain.Config.FontHintAdditionalText
             };
 
             lblDefenseArcher = new Label()
@@ -200,7 +200,7 @@ namespace Fantasy_King_s_Battle
                 ImageAlign = ContentAlignment.MiddleLeft,
                 ForeColor = FormMain.Config.HintParameter,
                 BackColor = Color.Transparent,
-                Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
+                Font = FormMain.Config.FontHintAdditionalText
             };
 
             lblDefenseMagic = new Label()
@@ -214,10 +214,10 @@ namespace Fantasy_King_s_Battle
                 ImageAlign = ContentAlignment.MiddleLeft,
                 ForeColor = FormMain.Config.HintParameter,
                 BackColor = Color.Transparent,
-                Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
+                Font = FormMain.Config.FontHintAdditionalText
             };
 
-            fontRequirement = new Font("Microsoft Sans Serif", 10, FontStyle.Bold);
+            fontRequirement = FormMain.Config.FontHintAdditionalText;
 
             timerDelayShow = new Timer()
             {
