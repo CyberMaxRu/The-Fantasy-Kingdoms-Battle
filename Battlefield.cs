@@ -92,6 +92,7 @@ namespace Fantasy_King_s_Battle
             BattlefieldTile currentNode;
             int lengthFromStart;
             //List<BattlefieldTile> path = new List<BattlefieldTile>();
+            BattlefieldTile bestTile;
 
             // Стартуем с начальной ячейки
             openSet.Add(sourceTile);
@@ -100,11 +101,15 @@ namespace Fantasy_King_s_Battle
             while (openSet.Count > 0)
             {
                 // Текущая ячейка - с наименьшим числом отставшегося пути
-                currentNode = openSet.OrderBy(node => node.EstimateFullPathLength).FirstOrDefault();
-                if (currentNode == null)
+                bestTile = null;
+                for (int i = 0; i < openSet.Count; i++)
                 {
-                    return;
+                    if ((bestTile == null) || (openSet[i].EstimateFullPathLength < bestTile.EstimateFullPathLength))
+                        bestTile = openSet[i];
                 }
+                Debug.Assert(bestTile != null);
+                currentNode = bestTile;
+
                 // Если пришли к конечной точке - строим путь и выходим
                 if (currentNode == destTile)
                 {
