@@ -445,7 +445,14 @@ namespace Fantasy_King_s_Battle
         {
             Debug.Assert(lblHeader.Text.Length > 0);
 
-            Location = c.PointToScreen(new Point(0, c.Height + 2));
+            Point l = c.PointToScreen(new Point(0, c.Height + 2));
+            // Если подсказка уходит за экран, меняем ее положение
+            if (l.X + Width > Screen.PrimaryScreen.WorkingArea.Width)
+                l.X = Screen.PrimaryScreen.WorkingArea.Width - Width;
+            if (l.Y + nextTop > Screen.PrimaryScreen.WorkingArea.Height)
+                l.Y = l.Y - c.Height - Height;
+
+            Location = l;
 
             bool needReshow = (Visible == false) || (Height != nextTop);
             Height = nextTop;
