@@ -28,6 +28,7 @@ namespace Fantasy_King_s_Battle
         // Реализация интерфейса
         PanelEntity ICell.Panel { get; set; }
         ImageList ICell.ImageList() => Program.formMain.ilItems;
+        bool ICell.NormalImage() => true;
         int ICell.ImageIndex() => Item.ImageIndex;
         int ICell.Value() => !OwnerIsPlayer ? 0 : Quantity;
 

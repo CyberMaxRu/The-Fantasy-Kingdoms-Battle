@@ -15,6 +15,7 @@ namespace Fantasy_King_s_Battle
         PanelEntity Panel { get; set; }
         ImageList ImageList();
         int ImageIndex();
+        bool NormalImage();
         int Value();        
         void PrepareHint();
         void Click(PanelEntity pe);
@@ -65,8 +66,8 @@ namespace Fantasy_King_s_Battle
             if (cell != null)
             {
                 //Debug.Assert(cell.Panel == this);
-
-                e.Graphics.DrawImageUnscaled(cell.ImageList().Images[cell.ImageIndex()], FormMain.Config.ShiftForBorder);
+                
+                e.Graphics.DrawImageUnscaled(GuiUtils.GetImageFromImageList(cell.ImageList(), cell.ImageIndex(), cell.NormalImage()), FormMain.Config.ShiftForBorder);
                 if (Program.formMain.SelectedPanelEntity == this)
                 {
                     e.Graphics.DrawImage(Program.formMain.ilMenuCellFilters.Images[2], new Rectangle(0, 0, Width - 1, Height - 1));

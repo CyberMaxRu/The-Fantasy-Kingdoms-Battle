@@ -328,6 +328,7 @@ namespace Fantasy_King_s_Battle
         }
         ImageList ICell.ImageList() => Program.formMain.ilGuiHeroes;
         int ICell.ImageIndex() => ClassHero.ImageIndex;
+        bool ICell.NormalImage() => true;
         int ICell.Value() => Level;
         void ICell.PrepareHint()
         {
