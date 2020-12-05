@@ -12,6 +12,7 @@
   <Colors>
     <Common>
       <Border>Black</Border>
+      <CaptionPage>White</CaptionPage>
     </Common>
     <Hint>
       <Header>Gold</Header>

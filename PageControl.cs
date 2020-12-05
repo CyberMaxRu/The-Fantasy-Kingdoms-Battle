@@ -17,7 +17,7 @@ namespace Fantasy_King_s_Battle
         private int imageIndex;
         private ImageList imageList;
         private int mouseOver;
-        private Pen penBorder = new Pen(Color.Black);
+        private Pen penBorder = new Pen(FormMain.Config.CommonBorder);
 
         public PictureBoxPage()
         {
@@ -106,8 +106,8 @@ namespace Fantasy_King_s_Battle
                 Top = imageList.ImageSize.Height + FormMain.Config.GridSize,
                 TextAlign = ContentAlignment.MiddleCenter,
                 Font = new Font("Microsoft Sans Serif", 12),
+                ForeColor = FormMain.Config.CommonCaptionPage,
                 BackColor = Color.Transparent,
-                ForeColor = Color.White,
                 Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right
             };
         }
