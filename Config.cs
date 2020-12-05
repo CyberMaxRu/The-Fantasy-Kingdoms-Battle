@@ -144,6 +144,7 @@ namespace Fantasy_King_s_Battle
         internal Point ShiftForBorder { get; private set; }// Смещение иконки внутри рамки сущности
         internal int HeroInRow { get; private set; }// Героев в ряду
         internal int HeroRows { get; private set; }// Рядов героев
+        internal int RowsBetweenSides { get; private set; }// Рядов между сторонами
         internal int WidthBorderBattlefield { get; set; }// Ширина бордюра поля боя
         internal int StepsInSecond { get; private set; }// Шагов в секунду
         internal int StepInMSec {get; private set; }// Время шага в миллисекундах
@@ -357,6 +358,9 @@ namespace Fantasy_King_s_Battle
             HeroRows = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battlefield/HeroRows").InnerText);
             Debug.Assert(HeroRows >= 3);
             Debug.Assert(HeroRows <= 11);
+            RowsBetweenSides = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battlefield/RowsBetweenSides").InnerText);
+            Debug.Assert(RowsBetweenSides >= 0);
+            Debug.Assert(RowsBetweenSides <= 4);
 
             WidthBorderBattlefield = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battlefield/WidthBorder").InnerText);
             Debug.Assert(HeroRows >= 1);

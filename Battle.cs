@@ -35,18 +35,18 @@ namespace Fantasy_King_s_Battle
 
             BattleCalced = false;
             Step = 0;
-            SizeBattlefield = new Size(FormMain.Config.HeroRows * 2, FormMain.Config.HeroInRow);            
+            SizeBattlefield = new Size((FormMain.Config.HeroRows * 2) + FormMain.Config.RowsBetweenSides, FormMain.Config.HeroInRow);            
             Battlefield = new Battlefield(SizeBattlefield.Width, SizeBattlefield.Height);
 
             // Запоминаем героев в одном списке для упрощения расчетов
             foreach (PlayerHero ph in player1.CombatHeroes)
             {
-                AddHero(new HeroInBattle(this, ph, new Point(FormMain.Config.HeroRows - ph.CoordInPlayer.Y - 1 - 3, ph.CoordInPlayer.X), showForPlayer));
+                AddHero(new HeroInBattle(this, ph, new Point(FormMain.Config.HeroRows - ph.CoordInPlayer.Y - 1, ph.CoordInPlayer.X), showForPlayer));
             }
 
             foreach (PlayerHero ph in player2.CombatHeroes)
             {
-                AddHero(new HeroInBattle(this, ph, new Point(ph.CoordInPlayer.Y + FormMain.Config.HeroRows + 3, ph.CoordInPlayer.X), showForPlayer));
+                AddHero(new HeroInBattle(this, ph, new Point(ph.CoordInPlayer.Y + FormMain.Config.HeroRows + FormMain.Config.RowsBetweenSides, ph.CoordInPlayer.X), showForPlayer));
             }
 
             void AddHero(HeroInBattle hb)

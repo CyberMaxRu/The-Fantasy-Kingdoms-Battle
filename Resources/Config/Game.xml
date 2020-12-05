@@ -135,6 +135,7 @@
   <Battlefield>
     <HeroRows>7</HeroRows>
     <HeroInRow>7</HeroInRow>
+    <RowsBetweenSides>3</RowsBetweenSides>
     <WidthBorder>14</WidthBorder>
   </Battlefield>
   <Links>
