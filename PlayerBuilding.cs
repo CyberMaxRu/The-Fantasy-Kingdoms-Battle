@@ -162,7 +162,8 @@ namespace Fantasy_King_s_Battle
             if (Building.TrainedHero.Cost > 0)
             {
                 Player.Gold -= Building.TrainedHero.Cost;
-                Program.formMain.ShowGold();
+                if (Player.TypePlayer == TypePlayer.Human)
+                    Program.formMain.ShowGold();
             }
 
             return h;
