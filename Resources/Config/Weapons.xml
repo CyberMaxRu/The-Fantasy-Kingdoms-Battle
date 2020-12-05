@@ -433,37 +433,37 @@
         <ID>WeaponCleric0</ID>
         <Hero>Cleric</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMagic>10</DamageMagic>
+        <DamageMelee>10</DamageMelee>
       </Weapon>
       <Weapon>
         <ID>WeaponMage0</ID>
         <Hero>Mage</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMagic>10</DamageMagic>
+        <DamageMelee>10</DamageMelee>
       </Weapon>
       <Weapon>
         <ID>WeaponDarkPriest0</ID>
         <Hero>DarkPriest</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMagic>0</DamageMagic>
+        <DamageMelee>0</DamageMelee>
       </Weapon>
       <Weapon>
         <ID>WeaponPriest0</ID>
         <Hero>Priest</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMagic>0</DamageMagic>
+        <DamageMelee>0</DamageMelee>
       </Weapon>
       <Weapon>
         <ID>WeaponFireMage0</ID>
         <Hero>FireMage</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMagic>0</DamageMagic>
+        <DamageMelee>0</DamageMelee>
       </Weapon>
       <Weapon>
         <ID>WeaponIceMage0</ID>
         <Hero>IceMage</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMagic>0</DamageMagic>
+        <DamageMelee>0</DamageMelee>
       </Weapon>
     </Weapons>
   </GroupWeapon>
@@ -478,37 +478,37 @@
         <ID>WeaponCleric1</ID>
         <Hero>Cleric</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMagic>0</DamageMagic>
+        <DamageMelee>0</DamageMelee>
       </Weapon>
       <Weapon>
         <ID>WeaponMage1</ID>
         <Hero>Mage</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMagic>0</DamageMagic>
+        <DamageMelee>0</DamageMelee>
       </Weapon>
       <Weapon>
         <ID>WeaponDarkPriest1</ID>
         <Hero>DarkPriest</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMagic>0</DamageMagic>
+        <DamageMelee>0</DamageMelee>
       </Weapon>
       <Weapon>
         <ID>WeaponPriest1</ID>
         <Hero>Priest</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMagic>0</DamageMagic>
+        <DamageMelee>0</DamageMelee>
       </Weapon>
       <Weapon>
         <ID>WeaponFireMage1</ID>
         <Hero>FireMage</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMagic>0</DamageMagic>
+        <DamageMelee>0</DamageMelee>
       </Weapon>
       <Weapon>
         <ID>WeaponIceMage1</ID>
         <Hero>IceMage</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMagic>0</DamageMagic>
+        <DamageMelee>0</DamageMelee>
       </Weapon>
     </Weapons>
   </GroupWeapon>
@@ -523,37 +523,37 @@
         <ID>WeaponCleric2</ID>
         <Hero>Cleric</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMagic>0</DamageMagic>
+        <DamageMelee>0</DamageMelee>
       </Weapon>
       <Weapon>
         <ID>WeaponMage2</ID>
         <Hero>Mage</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMagic>0</DamageMagic>
+        <DamageMelee>0</DamageMelee>
       </Weapon>
       <Weapon>
         <ID>WeaponDarkPriest2</ID>
         <Hero>DarkPriest</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMagic>0</DamageMagic>
+        <DamageMelee>0</DamageMelee>
       </Weapon>
       <Weapon>
         <ID>WeaponPriest2</ID>
         <Hero>Priest</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMagic>0</DamageMagic>
+        <DamageMelee>0</DamageMelee>
       </Weapon>
       <Weapon>
         <ID>WeaponFireMage2</ID>
         <Hero>FireMage</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMagic>0</DamageMagic>
+        <DamageMelee>0</DamageMelee>
       </Weapon>
       <Weapon>
         <ID>WeaponIceMage2</ID>
         <Hero>IceMage</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMagic>0</DamageMagic>
+        <DamageMelee>0</DamageMelee>
       </Weapon>
     </Weapons>
   </GroupWeapon>
@@ -568,37 +568,37 @@
         <ID>WeaponCleric3</ID>
         <Hero>Cleric</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMagic>0</DamageMagic>
+        <DamageMelee>0</DamageMelee>
       </Weapon>
       <Weapon>
         <ID>WeaponMage3</ID>
         <Hero>Mage</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMagic>0</DamageMagic>
+        <DamageMelee>0</DamageMelee>
       </Weapon>
       <Weapon>
         <ID>WeaponDarkPriest3</ID>
         <Hero>DarkPriest</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMagic>0</DamageMagic>
+        <DamageMelee>0</DamageMelee>
       </Weapon>
       <Weapon>
         <ID>WeaponPriest3</ID>
         <Hero>Priest</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMagic>0</DamageMagic>
+        <DamageMelee>0</DamageMelee>
       </Weapon>
       <Weapon>
         <ID>WeaponFireMage3</ID>
         <Hero>FireMage</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMagic>0</DamageMagic>
+        <DamageMelee>0</DamageMelee>
       </Weapon>
       <Weapon>
         <ID>WeaponIceMage3</ID>
         <Hero>IceMage</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMagic>0</DamageMagic>
+        <DamageMelee>0</DamageMelee>
       </Weapon>
     </Weapons>
   </GroupWeapon>
@@ -613,37 +613,37 @@
         <ID>WeaponCleric4</ID>
         <Hero>Cleric</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMagic>0</DamageMagic>
+        <DamageMelee>0</DamageMelee>
       </Weapon>
       <Weapon>
         <ID>WeaponMage4</ID>
         <Hero>Mage</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMagic>0</DamageMagic>
+        <DamageMelee>0</DamageMelee>
       </Weapon>
       <Weapon>
         <ID>WeaponDarkPriest4</ID>
         <Hero>DarkPriest</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMagic>0</DamageMagic>
+        <DamageMelee>0</DamageMelee>
       </Weapon>
       <Weapon>
         <ID>WeaponPriest4</ID>
         <Hero>Priest</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMagic>0</DamageMagic>
-      </Weapon>
+        <DamageMelee>0</DamageMelee>      
+    </Weapon>
       <Weapon>
         <ID>WeaponFireMage4</ID>
         <Hero>FireMage</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMagic>0</DamageMagic>
+        <DamageMelee>0</DamageMelee>
       </Weapon>
       <Weapon>
         <ID>WeaponIceMage4</ID>
         <Hero>IceMage</Hero>
         <TimeHit>50</TimeHit>
-        <DamageMagic>0</DamageMagic>
+        <DamageMelee>0</DamageMelee>
       </Weapon>
     </Weapons>
   </GroupWeapon>
