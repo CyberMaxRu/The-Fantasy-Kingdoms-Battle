@@ -7,7 +7,7 @@ namespace Fantasy_King_s_Battle
     // Базовый класс панели
     internal class BasePanel : Control
     {
-        private readonly Pen penBorder = new Pen(Color.Black);
+        private readonly Pen penBorder = new Pen(FormMain.Config.CommonBorder);
         private Rectangle rectBorder = new Rectangle(0, 0, 0, 0);
         private Bitmap bmpBackground;
 

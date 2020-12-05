@@ -10,6 +10,9 @@
     <ShiftForBorderY>2</ShiftForBorderY>
   </Interface>
   <Colors>
+    <Common>
+      <Border>Black</Border>
+    </Common>
     <Battlefield>
       <SystemInfo>White</SystemInfo>
       <PlayerName>White</PlayerName>

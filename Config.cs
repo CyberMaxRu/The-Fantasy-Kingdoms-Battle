@@ -164,6 +164,8 @@ namespace Fantasy_King_s_Battle
         internal int BuildingMaxLines { get; private set; }// Максимальное количество линий зданий
 
         // Цвета
+        internal Color CommonBorder { get; private set; }
+
         internal Color BattlefieldSystemInfo { get; private set; }
         internal Color BattlefieldPlayerName { get; private set; }
         internal Color BattlefieldPlayerHealth { get; private set; }
@@ -366,6 +368,8 @@ namespace Fantasy_King_s_Battle
             WarehouseMaxCells = WarehouseWidth * WarehouseHeight;
 
             // Цвета
+            CommonBorder = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Common/Border").InnerText);
+
             BattlefieldSystemInfo = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Battlefield/SystemInfo").InnerText);
             BattlefieldPlayerName = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Battlefield/PlayerName").InnerText);
             BattlefieldPlayerHealth = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Battlefield/PlayerHealth").InnerText);
