@@ -18,9 +18,9 @@ namespace Fantasy_King_s_Battle
         private Point pointIconResultBattle;// Координаты для иконки результата боя
         private Point pointIconStrike;// Координаты для иконки страйка
         private Point pointIconHeroes;// Координаты для иконки героев
-        private readonly Pen penBorder = new Pen(Color.Black);
-        private readonly SolidBrush brushCurDurability = new SolidBrush(Color.Green);
-        private readonly SolidBrush brushMaxDurability = new SolidBrush(Color.LightGreen);
+        private readonly Pen penBorder = new Pen(FormMain.Config.CommonBorder);
+        private readonly SolidBrush brushCurDurability = new SolidBrush(FormMain.Config.BattlefieldPlayerHealth);
+        private readonly SolidBrush brushMaxDurability = new SolidBrush(FormMain.Config.BattlefieldPlayerHealthNone);
         private readonly SolidBrush brushBackground = new SolidBrush(Color.White);
 
         public PanelPlayer(Player p, Control parent) : base()
@@ -149,7 +149,7 @@ namespace Fantasy_King_s_Battle
             {
                 lblDamageToCastle.Show();
                 lblDamageToCastle.Text = player.LastBattleDamageToCastle.ToString();
-                lblDamageToCastle.ForeColor = player.LastBattleDamageToCastle > 0 ? Color.Green : Color.Red;
+                lblDamageToCastle.ForeColor = player.LastBattleDamageToCastle > 0 ? FormMain.Config.DamageToCastlePositive : FormMain.Config.DamageToCastleNegative;
             }
             else
             {

@@ -167,6 +167,9 @@ namespace Fantasy_King_s_Battle
         internal Color CommonBorder { get; private set; }
         internal Color CommonCaptionPage { get; private set; }
 
+        internal Color DamageToCastlePositive { get; private set; }
+        internal Color DamageToCastleNegative { get; private set; }
+
         internal Color HintHeader { get; private set; }
         internal Color HintAction { get; private set; }
         internal Color HintDescription { get; private set; }
@@ -379,6 +382,9 @@ namespace Fantasy_King_s_Battle
             // Цвета
             CommonBorder = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Common/Border").InnerText);
             CommonCaptionPage = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Common/CaptionPage").InnerText);
+
+            DamageToCastlePositive = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Player/DamageToCastlePositive").InnerText);
+            DamageToCastleNegative = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Player/DamageToCastleNegative").InnerText);
 
             HintHeader = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Hint/Header").InnerText);
             HintAction = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Hint/Action").InnerText);
