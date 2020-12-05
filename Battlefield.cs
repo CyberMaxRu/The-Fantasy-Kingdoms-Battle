@@ -11,10 +11,10 @@ namespace Fantasy_King_s_Battle
     // Класс поля битвы
     internal sealed class Battlefield
     {
-		// Основные параметры
+        // Основные параметры
         // Поиск пути
-        List<BattlefieldTile> closedSet = new List<BattlefieldTile>();
-        List<BattlefieldTile> openSet = new List<BattlefieldTile>();
+        HashSet<BattlefieldTile> closedSet = new HashSet< BattlefieldTile>();
+        HashSet<BattlefieldTile> openSet = new HashSet<BattlefieldTile>();
 
         public Battlefield(int width, int height)
         {
@@ -44,7 +44,9 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(fromTile != null);
             Debug.Assert(toTile != null);
 
-            if (toTile.ReservedForMove != null)
+            // Если клетка зарезервирована, но она не соседняя, то идти на нее можно
+            // Когда сделаем шаг, возможно, она уже освободится
+            if ((toTile.ReservedForMove != null) && fromTile.IsNeighbourTile(toTile))
                 return false;
 
             // А* с учетом направления
@@ -54,6 +56,7 @@ namespace Fantasy_King_s_Battle
             {
                 t.PathLengthFromStart = 0;
                 t.HeuristicEstimatePathLength = 0;
+                t.EstimateFullPathLength = 0;
                 t.Closed = false;
                 t.Opened = false;
                 t.PriorTile = null;
@@ -64,6 +67,7 @@ namespace Fantasy_King_s_Battle
             {
                 t.PathLengthFromStart = 0;
                 t.HeuristicEstimatePathLength = 0;
+                t.EstimateFullPathLength = 0;
                 t.Closed = false;
                 t.Opened = false;
                 t.PriorTile = null;
@@ -71,15 +75,9 @@ namespace Fantasy_King_s_Battle
             openSet.Clear();
 
             FindPath(fromTile, toTile, throughPlayer);
+
             Debug.Assert((_path.Count() == 0) || (Utils.PointsIsNeighbor(fromTile.Coord, _path.First().Coord) == true));
             Debug.Assert((_path.Count() == 0) || (_path.Last() == toTile));
-
-
-            for (int i = 0; i < _path.Count() - 1; i++)
-            {
-                //Debug.Assert(_path[i].ReservedForMove == null);
-                //Debug.Assert(_path[i].Unit == null);
-            }
 
             return _path.Count() > 0;
         }
@@ -87,7 +85,6 @@ namespace Fantasy_King_s_Battle
         public void FindPath(BattlefieldTile sourceTile, BattlefieldTile destTile, Player throughPlayer)
         {
             Debug.Assert(sourceTile.Unit != null);
-            Debug.Assert(destTile.ReservedForMove == null);
 
             BattlefieldTile currentNode;
             int lengthFromStart;
@@ -101,11 +98,12 @@ namespace Fantasy_King_s_Battle
             while (openSet.Count > 0)
             {
                 // Текущая ячейка - с наименьшим числом отставшегося пути
-                bestTile = null;
-                for (int i = 0; i < openSet.Count; i++)
+                bestTile = openSet[0].First();
+
+                foreach (BattlefieldTile t in openSet)
                 {
-                    if ((bestTile == null) || (openSet[i].EstimateFullPathLength < bestTile.EstimateFullPathLength))
-                        bestTile = openSet[i];
+                    if (t.EstimateFullPathLength < bestTile.EstimateFullPathLength)
+                        currentNode = t;
                 }
                 Debug.Assert(bestTile != null);
                 currentNode = bestTile;
@@ -118,7 +116,7 @@ namespace Fantasy_King_s_Battle
                 }
 
                 // Убираем ячейку из необработанных и добавляем в обработанные
-                openSet.Remove(currentNode);
+                openSet.Remove(bestTile);
                 closedSet.Add(currentNode);
                 currentNode.Opened = false;
                 currentNode.Closed = true;
@@ -144,6 +142,7 @@ namespace Fantasy_King_s_Battle
                     {
                         neighbourNode.PathLengthFromStart = lengthFromStart;
                         neighbourNode.HeuristicEstimatePathLength = neighbourNode.GetHeuristicPathLength(destTile);
+                        neighbourNode.EstimateFullPathLength = neighbourNode.PathLengthFromStart + neighbourNode.HeuristicEstimatePathLength;
                         neighbourNode.PriorTile = currentNode;
                     }
 

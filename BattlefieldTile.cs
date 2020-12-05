@@ -45,13 +45,13 @@ namespace Fantasy_King_s_Battle
 		internal List<BattlefieldTile> TilesAround = new List<BattlefieldTile>();
 		internal int PathLengthFromStart;// Длина пути от старта
 		internal int HeuristicEstimatePathLength;// Примерное расстояние до цели
+		internal int EstimateFullPathLength;
 		internal BattlefieldTile PriorTile;
 
 		internal bool Opened { get; set; }
 		internal bool Closed { get; set; }
 
 		// Ожидаемое полное расстояние до цели.
-		public int EstimateFullPathLength { get { return PathLengthFromStart + HeuristicEstimatePathLength; } }
 
 		internal int GetDistanceToTile(BattlefieldTile toTile)
 		{
