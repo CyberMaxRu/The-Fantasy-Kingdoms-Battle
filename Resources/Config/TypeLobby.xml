@@ -4,7 +4,7 @@
     <Name>8 игроков</Name>
     <QuantityPlayers>8</QuantityPlayers>
     <DurabilityCastle>20</DurabilityCastle>
-    <Gold>10000</Gold>
+    <Gold>20000</Gold>
     <MaxHeroes>49</MaxHeroes>
   </TypeLobby>
 </TypeLobbies>
