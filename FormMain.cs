@@ -33,13 +33,8 @@ namespace Fantasy_King_s_Battle
         internal readonly ImageList ilMenuCellFilters;
         internal readonly ImageList ilPages;
 
-        internal readonly Font fontLevel = new Font("Microsoft Sans Serif", 10, FontStyle.Bold);
-        internal readonly Font fontQuantity = new Font("Arial", 13, FontStyle.Bold);
-        internal readonly Font fontCost = new Font("Arial", 12, FontStyle.Bold);
         internal Brush brushQuantity;
         internal Brush brushCost;
-
-        internal readonly Font fontToolBar = new Font("Microsoft Sans Serif", 12, FontStyle.Bold);
 
         private PanelWithPanelEntity panelWarehouse;
         private PanelWithPanelEntity panelHeroes;
@@ -175,13 +170,13 @@ namespace Fantasy_King_s_Battle
             toolStripMain.ImageList = ilGui;
             toolStripMain.ImageScalingSize = ilGui.ImageSize;
 
-            tslDay.Font = fontToolBar;
+            tslDay.Font = Config.FontToolbar;
             tslGold.ImageIndex = GUI_BUY;
-            tslGold.Font = fontToolBar;
+            tslGold.Font = Config.FontToolbar;
             tslBuilders.ImageIndex = GUI_PEASANT;
-            tslBuilders.Font = fontToolBar;
+            tslBuilders.Font = Config.FontToolbar;
             tslHeroes.ImageIndex = GUI_HEROES;
-            tslHeroes.Font = fontToolBar;
+            tslHeroes.Font = Config.FontToolbar;
             tsbEndTurn.ImageIndex = GUI_HOURGLASS;
 
             // Создаем иконки игроков в левой части окна

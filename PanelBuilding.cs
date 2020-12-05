@@ -58,7 +58,7 @@ namespace Fantasy_King_s_Battle
                 Top = GuiUtils.NextTop(pbBuilding),
                 Left = FormMain.Config.GridSize,
                 BackgroundImage = Program.formMain.bmpBackgroundButton,
-                Font = Program.formMain.fontCost,
+                Font = FormMain.Config.FontCost,
                 ForeColor = FormMain.Config.CommonCost,
                 TextAlign = ContentAlignment.BottomCenter
             };
@@ -71,7 +71,7 @@ namespace Fantasy_King_s_Battle
                 Top = pbBuilding.Top + pbBuilding.Height - Program.formMain.ilGui.ImageSize.Height - 8,
                 ImageList = Program.formMain.ilGui,
                 TextAlign = ContentAlignment.BottomCenter,
-                Font = Program.formMain.fontCost,
+                Font = FormMain.Config.FontCost,
                 BackgroundImage = Program.formMain.bmpBackgroundButton,
                 ForeColor = FormMain.Config.CommonCost
             };
@@ -87,7 +87,7 @@ namespace Fantasy_King_s_Battle
                 Size = btnBuyOrUpgrade.Size,
                 ImageList = Program.formMain.ilGuiHeroes,
                 TextAlign = ContentAlignment.BottomCenter,
-                Font = Program.formMain.fontCost,
+                Font = FormMain.Config.FontCost,
                 BackgroundImage = Program.formMain.bmpBackgroundButton,
                 ForeColor = Color.White
             };

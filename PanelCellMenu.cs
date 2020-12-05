@@ -22,7 +22,7 @@ namespace Fantasy_King_s_Battle
             Size = Program.formMain.ilItems.ImageSize;
             BackColor = Color.Transparent;
             ForeColor = FormMain.Config.CommonCost;
-            Font = Program.formMain.fontCost;
+            Font = FormMain.Config.FontCost;
             TextAlign = ContentAlignment.BottomCenter;
             Visible = false;
         }

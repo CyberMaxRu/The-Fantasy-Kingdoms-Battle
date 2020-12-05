@@ -28,7 +28,7 @@ namespace Fantasy_King_s_Battle
         {
             string level = Hero.Level.ToString();
             pointLevel.X = Width - (level.Length * 12) - 6;
-            e.Graphics.DrawString(level, Program.formMain.fontQuantity, Program.formMain.brushQuantity, pointLevel);
+            e.Graphics.DrawString(level, FormMain.Config.FontQuantity, Program.formMain.brushQuantity, pointLevel);
         }
 
         internal PlayerHero Hero { get; private set; }

@@ -198,6 +198,12 @@ namespace Fantasy_King_s_Battle
         internal Color UnitLowNormalParam { get; private set; }
         internal Color UnitHighNormalParam { get; private set; }
 
+        // Шрифты
+        internal Font FontToolbar { get; private set; }
+        internal Font FontLevel { get; private set; }
+        internal Font FontQuantity { get; private set; }
+        internal Font FontCost { get; private set; }
+
         //
         internal Skill FindSkill(string ID)
         {
@@ -419,6 +425,20 @@ namespace Fantasy_King_s_Battle
             UnitNormalParam = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Unit/NormalParam").InnerText);
             UnitLowNormalParam = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Unit/LowNormalParam").InnerText);
             UnitHighNormalParam = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Unit/HighNormalParam").InnerText);
+
+            // Шрифты
+            FontToolbar = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/FontToolbar"));
+            FontLevel = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/FontLevel"));
+            FontQuantity = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/FontQuantity"));
+            FontCost = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/FontCost"));
+
+            Font CreateFont(XmlNode n)
+            {
+                if (Convert.ToBoolean(n.SelectSingleNode("Bold").InnerText))
+                    return new Font(n.SelectSingleNode("Name").InnerText, Convert.ToInt32(n.SelectSingleNode("Size").InnerText));
+                else
+                    return new Font(n.SelectSingleNode("Name").InnerText, Convert.ToInt32(n.SelectSingleNode("Size").InnerText), FontStyle.Bold);
+            }
         }
 
         internal Color ColorEntity(bool ally)

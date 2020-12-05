@@ -50,6 +50,28 @@
       <HighNormalParam>Green</HighNormalParam>
     </Unit>
   </Colors>
+  <Fonts>
+    <FontToolbar>
+      <Name>Microsoft Sans Serif</Name>
+      <Size>12</Size>
+      <Bold>true</Bold>
+    </FontToolbar>
+    <FontLevel>
+      <Name>Microsoft Sans Serif</Name>
+      <Size>10</Size>
+      <Bold>true</Bold>
+    </FontLevel>
+    <FontQuantity>
+      <Name>Arial</Name>
+      <Size>13</Size>
+      <Bold>true</Bold>
+    </FontQuantity>
+    <FontCost>
+      <Name>Arial</Name>
+      <Size>12</Size>
+      <Bold>true</Bold>
+    </FontCost>  
+</Fonts>
   <Heroes>
     <MaxStatPointPerLevel>20</MaxStatPointPerLevel>
     <StepsHeroInTumbstone>100</StepsHeroInTumbstone>

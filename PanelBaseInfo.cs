@@ -41,7 +41,7 @@ namespace Fantasy_King_s_Battle
                 Size = GetImageList().ImageSize,
                 TextAlign = ContentAlignment.BottomRight,
                 Padding = new Padding(0, 0, 0, 3),
-                Font = Program.formMain.fontQuantity,
+                Font = FormMain.Config.FontQuantity,
                 ForeColor = FormMain.Config.CommonQuantity,
                 BackColor = Color.Transparent
             };

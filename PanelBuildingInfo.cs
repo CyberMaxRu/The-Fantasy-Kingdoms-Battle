@@ -26,7 +26,7 @@ namespace Fantasy_King_s_Battle
                 Left = pageControl.Left,
                 Width = 80,
                 Height = 16,
-                Font = Program.formMain.fontCost,
+                Font = FormMain.Config.FontCost,
                 ImageList = Program.formMain.ilGui16,
                 ImageIndex = FormMain.GUI_16_GOLD,
                 ImageAlign = ContentAlignment.MiddleLeft,
