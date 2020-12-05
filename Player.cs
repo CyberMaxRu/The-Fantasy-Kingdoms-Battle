@@ -30,6 +30,8 @@ namespace Fantasy_King_s_Battle
 
             // Настраиваем игрока согласно настройкам лобби
             DurabilityCastle = Lobby.TypeLobby.DurabilityCastle;
+            //if (TypePlayer == TypePlayer.Human)
+            //    DurabilityCastle = 100;
 
             // Инициализация зданий
             foreach (Building b in FormMain.Config.Buildings)
@@ -512,6 +514,7 @@ namespace Fantasy_King_s_Battle
         PanelEntity ICell.Panel { get; set; }
         ImageList ICell.ImageList() => Program.formMain.ilPlayerAvatars;
         int ICell.ImageIndex() => ImageIndexAvatar;
+        bool ICell.NormalImage() => IsLive;
         int ICell.Value() => Castle.Level;
         void ICell.PrepareHint()
         {
@@ -524,7 +527,8 @@ namespace Fantasy_King_s_Battle
                     + Environment.NewLine
                     + "Побед: " + Wins.ToString() + Environment.NewLine
                     + "Ничьих: " + Draws.ToString() + Environment.NewLine
-                    + "Поражений: " + Loses.ToString() + Environment.NewLine);
+                    + "Поражений: " + Loses.ToString() + Environment.NewLine
+                    + (IsLive ? "" : Environment.NewLine + "Игрок покинул лобби на " + DayOfDie + " ходу"));
         }
 
         void ICell.Click(PanelEntity pe)
