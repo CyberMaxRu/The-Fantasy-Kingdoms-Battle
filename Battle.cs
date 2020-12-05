@@ -88,9 +88,32 @@ namespace Fantasy_King_s_Battle
             // Увеличиваем шаг
             Step++;
 
-            // Проверяем, окончен ли бой
-            // Это либо убиты все герои одной из сторон, либо вышло время боя
-            if ((ActiveHeroes.Where(h => (h.PlayerHero.Player == Player1) && (h.State != StateHeroInBattle.Tumbstone)).Count() == 0) || (ActiveHeroes.Where(h => (h.PlayerHero.Player == Player2) && (h.State != StateHeroInBattle.Tumbstone)).Count() == 0) || (Step == FormMain.Config.MaxStepsInBattle))
+            // Проверяем, окончен ли бой - убиты все герои одной из сторон
+            bool player1HeroLives = false;
+            bool player2HeroLives = false;
+            for (int i = 0; i < ActiveHeroes.Count; i++)
+            {
+                if (player1HeroLives && player2HeroLives)
+                    break;
+
+                if (!player1HeroLives)
+                    if ((ActiveHeroes[i].Player == Player1) && (ActiveHeroes[i].State != StateHeroInBattle.Tumbstone))
+                        player1HeroLives = true;
+
+                if (!player2HeroLives)
+                    if ((ActiveHeroes[i].Player == Player2) && (ActiveHeroes[i].State != StateHeroInBattle.Tumbstone))
+                        player2HeroLives = true;
+            }
+
+            if (!player1HeroLives || !player2HeroLives)
+            {
+                CalcEndBattle();
+
+                return false;
+            }
+
+            // Если все живые, но время вышло, оканчиваем бой
+            if (Step == FormMain.Config.MaxStepsInBattle)
             {
                 CalcEndBattle();
 
