@@ -126,6 +126,9 @@ namespace Fantasy_King_s_Battle
 
         internal void DoEndTurn()
         {
+            // Реальный игрок должен быть жив
+            Debug.Assert(Players[0].IsLive);
+
             // Делаем ходы, перебирая всех игроков, пока все не совершат ход
             int cpi = CurrentPlayer != null ? CurrentPlayer.PlayerIndex : -1;
             for (int i = cpi + 1; i < Players.Count(); i++)
@@ -147,6 +150,9 @@ namespace Fantasy_King_s_Battle
             CalcEndTurn();
 
             SortPlayers();
+
+            if (!Players[0].IsLive)
+                return;
 
             // Делаем начало хода
             Turn++;
