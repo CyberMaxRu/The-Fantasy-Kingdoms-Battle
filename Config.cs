@@ -166,6 +166,14 @@ namespace Fantasy_King_s_Battle
         // Цвета
         internal Color CommonBorder { get; private set; }
 
+        internal Color HintHeader { get; private set; }
+        internal Color HintAction { get; private set; }
+        internal Color HintDescription { get; private set; }
+        internal Color HintIncome { get; private set; }
+        internal Color HintParameter { get; private set; }
+        internal Color HintRequirementsMet { get; private set; }
+        internal Color HintRequirementsNotMet { get; private set; }
+
         internal Color BattlefieldSystemInfo { get; private set; }
         internal Color BattlefieldPlayerName { get; private set; }
         internal Color BattlefieldPlayerHealth { get; private set; }
@@ -369,6 +377,14 @@ namespace Fantasy_King_s_Battle
 
             // Цвета
             CommonBorder = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Common/Border").InnerText);
+
+            HintHeader = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Hint/Header").InnerText);
+            HintAction = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Hint/Action").InnerText);
+            HintDescription = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Hint/Description").InnerText);
+            HintIncome = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Hint/Income").InnerText);
+            HintParameter = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Hint/Parameter").InnerText);
+            HintRequirementsMet = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Hint/RequirementsMet").InnerText);
+            HintRequirementsNotMet = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Hint/RequirementsNotMet").InnerText);
 
             BattlefieldSystemInfo = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Battlefield/SystemInfo").InnerText);
             BattlefieldPlayerName = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Battlefield/PlayerName").InnerText);

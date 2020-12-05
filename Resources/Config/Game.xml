@@ -13,6 +13,15 @@
     <Common>
       <Border>Black</Border>
     </Common>
+    <Hint>
+      <Header>Gold</Header>
+      <Action>WhiteSmoke</Action>
+      <Description>Silver</Description>
+      <Income>Lime</Income>
+      <Parameter>White</Parameter>
+      <RequirementsMet>Lime</RequirementsMet>
+      <RequirementsNotMet>Crimson</RequirementsNotMet>
+    </Hint>
     <Battlefield>
       <SystemInfo>White</SystemInfo>
       <PlayerName>White</PlayerName>

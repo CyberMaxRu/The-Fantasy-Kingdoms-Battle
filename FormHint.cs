@@ -64,8 +64,8 @@ namespace Fantasy_King_s_Battle
                 Top = FormMain.Config.GridSize,
                 Width = ClientSize.Width,
                 Height = 18,
+                ForeColor = FormMain.Config.HintHeader,
                 BackColor = Color.Transparent,
-                ForeColor = Color.Gold,
                 Font = new Font("Microsoft Sans Serif", 12, FontStyle.Bold)
             };
 
@@ -76,8 +76,8 @@ namespace Fantasy_King_s_Battle
                 Top = FormMain.Config.GridSize,
                 Width = ClientSize.Width,
                 Height = 18,
+                ForeColor = FormMain.Config.HintAction,
                 BackColor = Color.Transparent,
-                ForeColor = Color.WhiteSmoke,
                 Font = new Font("Microsoft Sans Serif", 12, FontStyle.Bold)
             };
 
@@ -87,8 +87,8 @@ namespace Fantasy_King_s_Battle
                 AutoSize = true,
                 Left = FormMain.Config.GridSize,
                 Top = FormMain.Config.GridSize,
+                ForeColor = FormMain.Config.HintDescription,
                 BackColor = Color.Transparent,
-                ForeColor = Color.Silver,
                 Font = new Font("Microsoft Sans Serif", 10)
             };
             lblDescription.MaximumSize = new Size(ClientSize.Width - (FormMain.Config.GridSize * 2), 0);
@@ -101,9 +101,9 @@ namespace Fantasy_King_s_Battle
                 Width = ClientSize.Width - (FormMain.Config.GridSize * 2),
                 ImageList = ilGui16,
                 ImageIndex = FormMain.GUI_16_GOLD,
-                ImageAlign = System.Drawing.ContentAlignment.MiddleLeft,
+                ImageAlign = ContentAlignment.MiddleLeft,
+                ForeColor = FormMain.Config.HintIncome,
                 BackColor = Color.Transparent,
-                ForeColor = Color.Lime,
                 Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
             };
 
@@ -115,7 +115,7 @@ namespace Fantasy_King_s_Battle
                 Width = ClientSize.Width - (FormMain.Config.GridSize * 2),
                 ImageList = ilGui16,
                 ImageIndex = FormMain.GUI_16_GOLD,
-                ImageAlign = System.Drawing.ContentAlignment.MiddleLeft,
+                ImageAlign = ContentAlignment.MiddleLeft,
                 BackColor = Color.Transparent,
                 Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
             };
@@ -128,7 +128,7 @@ namespace Fantasy_King_s_Battle
                 Width = ClientSize.Width - (FormMain.Config.GridSize * 2),
                 ImageList = ilGui16,
                 ImageIndex = FormMain.GUI_16_PEASANT,
-                ImageAlign = System.Drawing.ContentAlignment.MiddleLeft,
+                ImageAlign = ContentAlignment.MiddleLeft,
                 BackColor = Color.Transparent,
                 Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
             };
@@ -141,9 +141,9 @@ namespace Fantasy_King_s_Battle
                 Width = (ClientSize.Width - (FormMain.Config.GridSize * 2)) / 3,
                 ImageList = ilParameters,
                 ImageIndex = FormMain.GUI_PARAMETER_ATTACK_MELEE,
-                ImageAlign = System.Drawing.ContentAlignment.MiddleLeft,
+                ImageAlign = ContentAlignment.MiddleLeft,
+                ForeColor = FormMain.Config.HintParameter,
                 BackColor = Color.Transparent,
-                ForeColor = Color.White,
                 Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
             };
 
@@ -155,9 +155,9 @@ namespace Fantasy_King_s_Battle
                 Width = (ClientSize.Width - (FormMain.Config.GridSize * 2)) / 3,
                 ImageList = ilParameters,
                 ImageIndex = FormMain.GUI_PARAMETER_ATTACK_RANGE,
-                ImageAlign = System.Drawing.ContentAlignment.MiddleLeft,
+                ImageAlign = ContentAlignment.MiddleLeft,
+                ForeColor = FormMain.Config.HintParameter,
                 BackColor = Color.Transparent,
-                ForeColor = Color.White,
                 Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
             };
 
@@ -169,9 +169,9 @@ namespace Fantasy_King_s_Battle
                 Width = (ClientSize.Width - (FormMain.Config.GridSize * 2)) / 3,
                 ImageList = ilParameters,
                 ImageIndex = FormMain.GUI_PARAMETER_ATTACK_MAGIC,
-                ImageAlign = System.Drawing.ContentAlignment.MiddleLeft,
+                ImageAlign = ContentAlignment.MiddleLeft,
+                ForeColor = FormMain.Config.HintParameter,
                 BackColor = Color.Transparent,
-                ForeColor = Color.White,
                 Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
             };
 
@@ -183,9 +183,9 @@ namespace Fantasy_King_s_Battle
                 Width = (ClientSize.Width - (FormMain.Config.GridSize * 2)) / 3,
                 ImageList = ilParameters,
                 ImageIndex = FormMain.GUI_PARAMETER_DEFENSE_MELEE,
-                ImageAlign = System.Drawing.ContentAlignment.MiddleLeft,
+                ImageAlign = ContentAlignment.MiddleLeft,
+                ForeColor = FormMain.Config.HintParameter,
                 BackColor = Color.Transparent,
-                ForeColor = Color.White,
                 Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
             };
 
@@ -197,9 +197,9 @@ namespace Fantasy_King_s_Battle
                 Width = (ClientSize.Width - (FormMain.Config.GridSize * 2)) / 3,
                 ImageList = ilParameters,
                 ImageIndex = FormMain.GUI_PARAMETER_DEFENSE_RANGE,
-                ImageAlign = System.Drawing.ContentAlignment.MiddleLeft,
+                ImageAlign = ContentAlignment.MiddleLeft,
+                ForeColor = FormMain.Config.HintParameter,
                 BackColor = Color.Transparent,
-                ForeColor = Color.White,
                 Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
             };
 
@@ -211,9 +211,9 @@ namespace Fantasy_King_s_Battle
                 Width = (ClientSize.Width - (FormMain.Config.GridSize * 2)) / 3,
                 ImageList = ilParameters,
                 ImageIndex = FormMain.GUI_PARAMETER_DEFENSE_MAGIC,
-                ImageAlign = System.Drawing.ContentAlignment.MiddleLeft,
+                ImageAlign = ContentAlignment.MiddleLeft,
+                ForeColor = FormMain.Config.HintParameter,
                 BackColor = Color.Transparent,
-                ForeColor = Color.White,
                 Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold)
             };
 
@@ -351,8 +351,8 @@ namespace Fantasy_King_s_Battle
                     Top = nextTop,
                     Width = Width - (FormMain.Config.GridSize * 2),
                     AutoSize = true,
+                    ForeColor = ColorRequirements(tr.Performed),
                     BackColor = Color.Transparent,
-                    ForeColor = tr.Performed == true ? Color.Lime : Color.Crimson,
                     Font = fontRequirement,
                     Text = tr.Text
                 };
@@ -367,7 +367,7 @@ namespace Fantasy_King_s_Battle
         {
             if (gold > 0)
             {
-                lblGold.ForeColor = goldEnough == true ? Color.Lime : Color.Crimson;
+                lblGold.ForeColor = ColorRequirements(goldEnough);
                 lblGold.Top = nextTop;
                 lblGold.Text = "     " + gold.ToString();
                 lblGold.Show();
@@ -380,7 +380,7 @@ namespace Fantasy_King_s_Battle
         {
             if (builders > 0)
             {
-                lblBuilders.ForeColor = buildersEnough == true ? Color.Lime : Color.Crimson;
+                lblBuilders.ForeColor = ColorRequirements(buildersEnough);
                 lblBuilders.Top = nextTop;
                 lblBuilders.Text = "     " + builders.ToString();
                 lblBuilders.Show();
@@ -473,6 +473,11 @@ namespace Fantasy_King_s_Battle
             timerOpacity.Enabled = false;
 
             Hide();
+        }
+
+        private Color ColorRequirements(bool met)
+        {
+            return met ? FormMain.Config.HintRequirementsMet : FormMain.Config.HintRequirementsNotMet;
         }
     }
 }
