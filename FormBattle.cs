@@ -387,8 +387,8 @@ namespace Fantasy_King_s_Battle
                 Invalidate();
                 Refresh();
             }
-            else
-                System.Threading.Thread.Sleep((FormMain.Config.MaxDurationFrame - (int)timeBetweenFrames.ElapsedMilliseconds));
+            //else
+            //    System.Threading.Thread.Sleep((FormMain.Config.MaxDurationFrame - (int)timeBetweenFrames.ElapsedMilliseconds));
         }
 
         private void DrawBackground()
