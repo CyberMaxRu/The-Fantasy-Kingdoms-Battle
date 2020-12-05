@@ -168,8 +168,15 @@ namespace Fantasy_King_s_Battle
             Battle b;
             FormBattle formBattle;
             FormProgressBattle formProgressBattle = null;
-            Debug.Assert(Players.Count() % 2 == 0);
-            int pairs = (Players.Count() / 2) - 1;
+
+            int livePlayers = 0;
+            foreach (Player p in Players)
+            {
+                if (p.IsLive == true)
+                    livePlayers++;
+            }
+            Debug.Assert(livePlayers % 2 == 0);
+            int pairs = (livePlayers / 2) - 1;
             int numberPair = 0;
 
             foreach (Player p in Players)
