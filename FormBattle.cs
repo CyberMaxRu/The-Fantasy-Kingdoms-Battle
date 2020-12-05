@@ -563,11 +563,12 @@ namespace Fantasy_King_s_Battle
                 gFrame.DrawImageUnscaled(hero.BmpIcon, coordIconHero.X + shift.X, coordIconHero.Y + shift.Y);
 
                 // Рисуем стрелки атаки
-                if ((hero.Target != null) || (hero.LastTarget != default) || hero.DestinationForMove != null)
+                if ((hero.Target != null) || (hero.LastTarget != default) || (hero.DestinationForMove != null))
                 {
                     if ((hero.State == StateHeroInBattle.RangeAttack) || (hero.State != StateHeroInBattle.Cast))
-                        if (hero.Target is null)
-                            continue;
+                        if (hero.DestinationForMove == null)
+                            if (hero.Target is null)
+                                continue;
 
                     Point coordTarget;
                     if (hero.DestinationForMove == null)
