@@ -91,11 +91,7 @@ namespace Fantasy_King_s_Battle
 		{
 			Debug.Assert(tile != null);
 
-			foreach (BattlefieldTile t in TilesAround)
-				if (t == tile)
-					return true;
-
-			return false;
+			return ((tile.X >= X - 1) && (tile.X <= X + 1) && (tile.Y >= Y - 1) && (tile.Y <= Y + 1));
 		}
 	}
 }
