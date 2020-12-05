@@ -8,7 +8,7 @@ using System.Diagnostics;
 
 namespace Fantasy_King_s_Battle
 {
-	internal enum StateTile { Undefined, Opened, Closed };
+	internal enum StateTile { Undefined, Opened, Closed, Unavailable };
     internal sealed class BattlefieldTile
     {
 		private Entity entity;
@@ -104,7 +104,7 @@ namespace Fantasy_King_s_Battle
         {
 			PathLengthFromStart = 0;
 			HeuristicEstimatePathLength = 0;
-			EstimateFullPathLength = 0;
+			EstimateFullPathLength = int.MaxValue;
 			State = StateTile.Undefined;
 			PriorTile = null;
 		}

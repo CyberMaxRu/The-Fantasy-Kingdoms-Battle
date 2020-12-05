@@ -84,7 +84,6 @@ namespace Fantasy_King_s_Battle
             int lengthFromStart;
             //List<BattlefieldTile> path = new List<BattlefieldTile>();
             BattlefieldTile bestTile = null;
-            int bestPath = 0;
 
             // Стартуем с начальной ячейки
             openSet.Add(sourceTile);
@@ -112,25 +111,37 @@ namespace Fantasy_King_s_Battle
                 }
 
                 // Убираем ячейку из необработанных и добавляем в обработанные
-                openSet.Remove(currentNode);
+                if (!openSet.Remove(currentNode)) 
+                    throw new Exception("Ячейка не удалена из списка.");
                 closedSet.Add(currentNode);// Только для того, чтобы по ней потом очистить данные для поиска пути
                 currentNode.State = StateTile.Closed;
 
-                // Шаг 6.
-                // Переделать на foreach
                 foreach (BattlefieldTile neighbourNode in currentNode.TilesAround)
                 {
+                    // Если клетка недоступна, просто пропускаем ее
+                    if (neighbourNode.State == StateTile.Unavailable)
+                        continue;
+
                     // Если зарезервирована соседняя от начала пути ячейки, то обходим её
                     // Когда сделаем шаг, она может быть уже не зарезервирована, поэтому продолжим тот же путь
-                    if (neighbourNode.ReservedForMove != null)
-                        if (neighbourNode.IsNeighbourTile(sourceTile))
-                            continue;
+                    if ((neighbourNode.ReservedForMove != null) && neighbourNode.IsNeighbourTile(sourceTile))
+                    {
+                        neighbourNode.State = StateTile.Unavailable;
+                        openSet.Remove(neighbourNode);
+                        closedSet.Add(neighbourNode);
 
-                    if (neighbourNode.Unit != null)
-                        if (neighbourNode != destTile)
-                            if (!((throughPlayer != null) && (neighbourNode.Unit.Player == throughPlayer)))
-                                //if (neighbourNode.IsNeighbourTile(sourceTile) == true)
-                                continue;
+                        continue;
+                    }
+
+                    // Если на клетке есть юнит и это не клетка назначения, то пропускаем её
+                    if ((neighbourNode.Unit != null) && (neighbourNode != destTile) && !((throughPlayer != null) && (neighbourNode.Unit.Player == throughPlayer)))
+                    {
+                        neighbourNode.State = StateTile.Unavailable;
+                        openSet.Remove(neighbourNode);
+                        closedSet.Add(neighbourNode);
+
+                        continue;
+                    }
 
                     //
                     lengthFromStart = currentNode.PathLengthFromStart + currentNode.GetDistanceToTile(neighbourNode);
@@ -142,15 +153,10 @@ namespace Fantasy_King_s_Battle
                         neighbourNode.PriorTile = currentNode;
                     }
 
-                    // Шаг 7.
                     if (neighbourNode.State == StateTile.Undefined)
                     {
                         openSet.Add(neighbourNode);
                         neighbourNode.State = StateTile.Opened;
-
-                        // Запоминаем клетку с лучшим путем
-                        //if (neighbourNode.EstimateFullPathLength < bestPath)
-                        //    bestTile = neighbourNode;
                     }
                 }
             }
