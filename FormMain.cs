@@ -36,11 +36,8 @@ namespace Fantasy_King_s_Battle
         internal readonly Font fontLevel = new Font("Microsoft Sans Serif", 10, FontStyle.Bold);
         internal readonly Font fontQuantity = new Font("Arial", 13, FontStyle.Bold);
         internal readonly Font fontCost = new Font("Arial", 12, FontStyle.Bold);
-        internal readonly Color ColorLevel = Color.Yellow;
-        internal readonly Color ColorCost = Color.White;
-        internal readonly Color ColorQuantity = Color.Yellow;
-        internal readonly Brush brushQuantity = new SolidBrush(Color.Yellow);
-        internal readonly Brush brushCost = new SolidBrush(Color.White);
+        internal Brush brushQuantity;
+        internal Brush brushCost;
 
         internal readonly Font fontToolBar = new Font("Microsoft Sans Serif", 12, FontStyle.Bold);
 
@@ -141,6 +138,9 @@ namespace Fantasy_King_s_Battle
 
             // Загружаем конфигурацию
             _ = new Config(dirResources, this);
+
+            brushQuantity = new SolidBrush(Config.CommonQuantity);
+            brushCost = new SolidBrush(Config.CommonCost);
 
             // Загружаем иконки
             ilPlayerAvatars = PrepareImageList("PlayerAvatars.png", 48, 48, true);

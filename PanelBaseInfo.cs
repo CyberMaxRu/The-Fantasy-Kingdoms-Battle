@@ -42,7 +42,7 @@ namespace Fantasy_King_s_Battle
                 TextAlign = ContentAlignment.BottomRight,
                 Padding = new Padding(0, 0, 0, 3),
                 Font = Program.formMain.fontQuantity,
-                ForeColor = Program.formMain.ColorQuantity,
+                ForeColor = FormMain.Config.CommonQuantity,
                 BackColor = Color.Transparent
             };
 

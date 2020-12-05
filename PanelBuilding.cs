@@ -59,7 +59,7 @@ namespace Fantasy_King_s_Battle
                 Left = FormMain.Config.GridSize,
                 BackgroundImage = Program.formMain.bmpBackgroundButton,
                 Font = Program.formMain.fontCost,
-                ForeColor = Program.formMain.ColorCost,
+                ForeColor = FormMain.Config.CommonCost,
                 TextAlign = ContentAlignment.BottomCenter
             };
 
@@ -73,7 +73,7 @@ namespace Fantasy_King_s_Battle
                 TextAlign = ContentAlignment.BottomCenter,
                 Font = Program.formMain.fontCost,
                 BackgroundImage = Program.formMain.bmpBackgroundButton,
-                ForeColor = Program.formMain.ColorCost
+                ForeColor = FormMain.Config.CommonCost
             };
             btnBuyOrUpgrade.Click += BtnBuyOrUprgade_Click;
             btnBuyOrUpgrade.MouseEnter += BtnBuyOrUpgrade_MouseEnter;

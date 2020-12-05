@@ -13,6 +13,9 @@
     <Common>
       <Border>Black</Border>
       <CaptionPage>White</CaptionPage>
+      <Level>Yellow</Level>
+      <Cost>White</Cost>
+      <Quantity>Yellow</Quantity>
     </Common>
     <Player>
       <DamageToCastlePositive>Green</DamageToCastlePositive>

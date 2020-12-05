@@ -29,7 +29,7 @@ namespace Fantasy_King_s_Battle
         {
             Size = Program.formMain.bmpBorderForIcon.Size;
             BackColor = Color.Transparent;
-            ForeColor = Program.formMain.ColorQuantity;
+            ForeColor = FormMain.Config.CommonQuantity;
             Font = Program.formMain.fontQuantity;
             TextAlign = ContentAlignment.BottomRight;
             Padding = new Padding(0, 0, 0, 3);
