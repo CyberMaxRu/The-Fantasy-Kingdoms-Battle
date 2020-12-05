@@ -39,6 +39,8 @@ namespace Fantasy_King_s_Battle
 
             Castle = GetPlayerBuilding(FormMain.Config.FindBuilding(FormMain.Config.IDBuildingCastle));
             Gold = Lobby.TypeLobby.Gold;
+            if (TypePlayer == TypePlayer.Computer)
+                Gold = 100_000;
 
             // Настройка ячеек героев
             CellHeroes = new PlayerHero[FormMain.Config.HeroRows, FormMain.Config.HeroInRow];

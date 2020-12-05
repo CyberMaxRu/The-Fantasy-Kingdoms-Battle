@@ -25,7 +25,11 @@ namespace Fantasy_King_s_Battle
             // Считаем количество шагов до цели
             // Для этого вычисляем расстояние в клетках и делим на скорость
             double distance = Utils.DistanceBetweenPoints(SourceTile.Coord, DestTile.Coord);
-            StepsToTarget = (int)(distance / hero.PlayerHero.RangeWeapon.VelocityMissile * FormMain.Config.StepsInSecond);
+            // Костыль для магов
+            if (hero.PlayerHero.RangeWeapon != null)
+                StepsToTarget = (int)(distance / hero.PlayerHero.RangeWeapon.VelocityMissile * FormMain.Config.StepsInSecond);
+            else
+                StepsToTarget = (int)(distance / 3 * FormMain.Config.StepsInSecond);
 
             Debug.Assert(StepsToTarget > 0);
         }

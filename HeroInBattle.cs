@@ -121,7 +121,7 @@ namespace Fantasy_King_s_Battle
                         // Если сейчас ничего не выполняем, ищем, что можно сделать
                         // Сначала пробуем атаковать стрелковым оружием
 
-                        if (PlayerHero.RangeWeapon != null)
+                        if ((PlayerHero.RangeWeapon != null) || (PlayerHero.ClassHero.ID == "Cleric") || (PlayerHero.ClassHero.ID == "Mage"))
                         {
                             bool underMeleeAttack = false;
                             // Если юнит не атакован врукопашную, можно атаковать стрелковой атакой
@@ -316,7 +316,7 @@ namespace Fantasy_King_s_Battle
 
             bool SearchTargetForShoot()
             {
-                Debug.Assert(PlayerHero.RangeWeapon != null);
+                //Debug.Assert(PlayerHero.RangeWeapon != null);
 
                 // Если герой, по которому стреляли, жив, атакуем его снова
                 if ((lastAttackedHero != null) && (lastAttackedHero.CurrentHealth > 0))
@@ -351,7 +351,10 @@ namespace Fantasy_King_s_Battle
                     lastAttackedHero = Target;
 
                     // Создаем выстрел
-                    Battle.Missiles.Add(new Arrow(this, Target.CurrentTile));
+                    if (PlayerHero.RangeWeapon != null)
+                        Battle.Missiles.Add(new Arrow(this, Target.CurrentTile));
+                    else
+                        Battle.Missiles.Add(new MagicStrike(this, Target.CurrentTile));
 
                     return true;
                 }
@@ -411,7 +414,11 @@ namespace Fantasy_King_s_Battle
                     timeAttack = (int)(PlayerHero.MeleeWeapon.TimeHit / 100.00 * FormMain.Config.StepsInSecond);
                     break;
                 case StateHeroInBattle.RangeAttack:
-                    timeAttack = (int)(PlayerHero.RangeWeapon.TimeHit / 100.00 * FormMain.Config.StepsInSecond);
+                    // Костыль для магов
+                    if (PlayerHero.RangeWeapon != null)
+                        timeAttack = (int)(PlayerHero.RangeWeapon.TimeHit / 100.00 * FormMain.Config.StepsInSecond);
+                    else
+                        timeAttack = (int)(PlayerHero.MeleeWeapon.TimeHit / 100.00 * FormMain.Config.StepsInSecond);
                     break;
                 default:
                     throw new Exception("Неизвестное состояние.");
@@ -451,9 +458,12 @@ namespace Fantasy_King_s_Battle
         internal void GetDamage(int damageMelee, int damageArcher, int damageMagic)
         {
             Debug.Assert((damageMelee > 0) || (damageArcher > 0) || (damageMagic > 0));
-            if ((State == StateHeroInBattle.Tumbstone) && (damageArcher > 0))
+            if (State == StateHeroInBattle.Tumbstone)
                 return;
-            Debug.Assert(State != StateHeroInBattle.Tumbstone);
+            //if ((State == StateHeroInBattle.Tumbstone) && (damageArcher > 0))
+            //    return;
+            // Временно отключено, до реализации урона магами через заклинание
+            //Debug.Assert(State != StateHeroInBattle.Tumbstone);
             Debug.Assert(State != StateHeroInBattle.Dead);
             Debug.Assert(State != StateHeroInBattle.Resurrection);
 
