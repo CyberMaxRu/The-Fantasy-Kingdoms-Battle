@@ -60,7 +60,7 @@ namespace Fantasy_King_s_Battle
             Utils.TrimActions(steps);
 
             progressBar.Value = battle.Step;
-            speedCalc.Text = steps.Count().ToString();
+            speedCalc.Text = steps.Count().ToString() + " (" + battle.Step.ToString() + ")";
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
