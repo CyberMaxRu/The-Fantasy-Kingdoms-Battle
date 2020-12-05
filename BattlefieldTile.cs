@@ -8,6 +8,7 @@ using System.Diagnostics;
 
 namespace Fantasy_King_s_Battle
 {
+	internal enum StateTile { Undefined, Opened, Closed };
     internal sealed class BattlefieldTile
     {
 		private Entity entity;
@@ -46,8 +47,7 @@ namespace Fantasy_King_s_Battle
 		internal int HeuristicEstimatePathLength;// Примерное расстояние до цели
 		internal int EstimateFullPathLength;
 		internal BattlefieldTile PriorTile;
-		internal bool Opened;
-		internal bool Closed;
+		internal StateTile State;
 
 		// Ожидаемое полное расстояние до цели.
 
@@ -105,8 +105,7 @@ namespace Fantasy_King_s_Battle
 			PathLengthFromStart = 0;
 			HeuristicEstimatePathLength = 0;
 			EstimateFullPathLength = 0;
-			Closed = false;
-			Opened = false;
+			State = StateTile.Undefined;
 			PriorTile = null;
 		}
 	}

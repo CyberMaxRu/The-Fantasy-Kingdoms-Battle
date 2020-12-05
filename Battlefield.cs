@@ -82,7 +82,7 @@ namespace Fantasy_King_s_Battle
 
             // Стартуем с начальной ячейки
             openSet.Add(sourceTile);
-            sourceTile.Opened = true;
+            sourceTile.State = StateTile.Opened;
 
             // Цикл, пока есть открытые (необработанные) клетки
             while (openSet.Count > 0)
@@ -108,8 +108,8 @@ namespace Fantasy_King_s_Battle
                 // Убираем ячейку из необработанных и добавляем в обработанные
                 openSet.Remove(currentNode);
                 closedSet.Add(currentNode);// Только для того, чтобы по ней потом очистить данные для поиска пути
-                currentNode.Opened = false;
-                currentNode.Closed = true;
+                currentNode.State = StateTile.Closed;
+
                 // Шаг 6.
                 // Переделать на foreach
                 foreach (BattlefieldTile neighbourNode in currentNode.TilesAround)
@@ -137,10 +137,10 @@ namespace Fantasy_King_s_Battle
                     }
 
                     // Шаг 7.
-                    if (!neighbourNode.Closed && !neighbourNode.Opened)
+                    if (neighbourNode.State == StateTile.Undefined)
                     {
                         openSet.Add(neighbourNode);
-                        neighbourNode.Opened = true;
+                        neighbourNode.State = StateTile.Opened;
 
                         // Запоминаем клетку с лучшим путем
                         //if (neighbourNode.EstimateFullPathLength < bestPath)
