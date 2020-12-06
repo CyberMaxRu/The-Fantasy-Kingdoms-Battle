@@ -123,6 +123,8 @@ namespace Fantasy_King_s_Battle
             if (player == null)
                 return;
 
+            Debug.Assert(Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
+
             Debug.Assert(player.LastBattleDamageToCastle >= -999);
             Debug.Assert(player.LastBattleDamageToCastle <= 999);
 

@@ -54,8 +54,10 @@ namespace Fantasy_King_s_Battle
     // Класс лобби (королевской битвы)
     internal sealed class Lobby
     {
+        private static int generation = 0;
         public Lobby(TypeLobby tl)
         {
+            ID = generation++;
             TypeLobby = tl;
 
             // Создание игроков
@@ -78,6 +80,7 @@ namespace Fantasy_King_s_Battle
             MakeOpponents();
         }
 
+        internal int ID { get; private set; }
         internal TypeLobby TypeLobby { get; }
         internal Player[] Players { get; }
         internal Player CurrentPlayer { get; private set; }

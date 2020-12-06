@@ -79,6 +79,7 @@ namespace Fantasy_King_s_Battle
         private Lobby lobby;
         private Player curAppliedPlayer;
 
+        internal Lobby CurrentLobby { get { return lobby; } }
         internal static bool ShowGrid { get; set; } = true;
         internal static bool ShowPath { get; set; } = true;
 
@@ -107,6 +108,7 @@ namespace Fantasy_King_s_Battle
         internal PanelEntity SelectedPanelEntity;
         private readonly List<PanelAboutPlayer> panelAboutPlayers = new List<PanelAboutPlayer>();
         private readonly List<PanelPlayer> panelPlayers = new List<PanelPlayer>();
+        private readonly List<PanelBuilding> listPanelBuildings = new List<PanelBuilding>();
 
         private List<PictureBox> SlotSkill = new List<PictureBox>();
 
@@ -497,7 +499,6 @@ namespace Fantasy_King_s_Battle
             for (int i = 0; i < panelPlayers.Count; i++)
             {
                 panelPlayers[i].Player = lobby.Players[i];                
-                //lobby.Players[i].Panel.Refresh();
             }
         }
 
