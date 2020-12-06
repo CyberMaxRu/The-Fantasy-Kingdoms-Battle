@@ -609,6 +609,8 @@ namespace Fantasy_King_s_Battle
                         if (chkbShowPath.Checked)
                         {
                             pSource = new Point(topLeftGrid.X + (hero.Coord.X * sizeTile.Width) + (sizeTile.Width / 2), topLeftGrid.Y + (hero.Coord.Y * sizeTile.Height) + (sizeTile.Height / 2));
+                            pSource.X += shift.X;
+                            pSource.Y += shift.Y;
 
                             // Рисуем путь юнита к цели
                             foreach (BattlefieldTile t in hero.PathToDestination)
