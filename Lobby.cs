@@ -83,6 +83,7 @@ namespace Fantasy_King_s_Battle
         internal Player CurrentPlayer { get; private set; }
         internal int Turn { get; private set; }
         internal List<Battle> Battles { get; } = new List<Battle>();
+        internal bool HumanIsWin { get; private set; }
 
         private void MakeOpponents()
         {
@@ -157,7 +158,31 @@ namespace Fantasy_King_s_Battle
             // Делаем начало хода
             Turn++;
             CurrentPlayer = null;
-            MakeOpponents();
+
+            int livePlayers = 0;
+            foreach (Player p in Players)
+            {
+                if (p.IsLive)
+                    livePlayers++;
+            }
+
+            if (livePlayers > 1)
+                MakeOpponents();
+            else
+            {
+                foreach (Player p in Players)
+                {
+                    if (p.IsLive)
+                    {
+                        if (p.TypePlayer == TypePlayer.Human)
+                        {
+                            HumanIsWin = true;
+                        }
+                    }
+                }
+
+                return;
+            }
 
             DoEndTurn();
         }
@@ -172,7 +197,7 @@ namespace Fantasy_King_s_Battle
             int livePlayers = 0;
             foreach (Player p in Players)
             {
-                if (p.IsLive == true)
+                if (p.IsLive)
                     livePlayers++;
             }
             Debug.Assert(livePlayers % 2 == 0);
@@ -223,26 +248,35 @@ namespace Fantasy_King_s_Battle
         private void CalcEndTurn()
         {
             // Делаем расчет итогов дня
+            int livePlayers = 0;
             foreach (Player p in Players)
             {
                 if (p.IsLive == true)
+                {
                     p.CalcResultTurn();
+                    livePlayers++;
+                }
             }
 
             // Смотрим, сколько игроков осталось живо
-            // Если нечетное число, то одного воскрешаем
-            // Для этого ищем, кто находился на самом высоком месте и умер в текущий день 
-            if (!QuantityAlivePlayersIsEven())
+            // Если их больше одного, то воскрешаем до четного количества
+            // Если меньше, то выявился победитель
+            if (livePlayers > 2)
             {
-                foreach (Player p in Players.OrderByDescending(p => p.PositionInLobby))
-                    if (p.DayOfDie == Turn)
-                    {
-                        p.MakeAlive();
-                        break;
-                    }
-            }
+                // Если нечетное число, то одного воскрешаем
+                // Для этого ищем, кто находился на самом высоком месте и умер в текущий день 
+                if (!QuantityAlivePlayersIsEven())
+                {
+                    foreach (Player p in Players.OrderByDescending(p => p.PositionInLobby))
+                        if (p.DayOfDie == Turn)
+                        {
+                            p.MakeAlive();
+                            break;
+                        }
+                }
 
-            Debug.Assert(QuantityAlivePlayersIsEven());
+                Debug.Assert(QuantityAlivePlayersIsEven());
+            }
         }
 
         internal bool QuantityAlivePlayersIsEven()
