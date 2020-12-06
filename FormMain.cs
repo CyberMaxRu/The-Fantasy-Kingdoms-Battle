@@ -704,12 +704,6 @@ namespace Fantasy_King_s_Battle
             lobby = new Lobby(Config.TypeLobbies[0]);
 
             DrawLobby();
-            DrawGuilds();
-            DrawBuildings();
-            DrawTemples();
-            DrawTowers();
-            DrawHeroes();
-            DrawWarehouse();
 
             ShowDataPlayer();
 
