@@ -187,6 +187,8 @@ namespace Fantasy_King_s_Battle
 
         private void ShowHintBtnBuyOrUpgrade()
         {
+            Debug.Assert(Building.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
+
             if (Building.Level < Building.Building.MaxLevel)
             {
                 Program.formMain.formHint.Clear();
@@ -211,6 +213,7 @@ namespace Fantasy_King_s_Battle
 
         private void BtnHero_Click(object sender, EventArgs e)
         {
+            Debug.Assert(Building.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
             Debug.Assert(Building.Level <= Building.Building.MaxLevel);
 
             SelectThisBuilding();
@@ -227,6 +230,8 @@ namespace Fantasy_King_s_Battle
 
         private void BtnBuyOrUprgade_Click(object sender, EventArgs e)
         {
+            Debug.Assert(Building.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
+
             SelectThisBuilding();
 
             if (Building.Player.Gold >= Building.CostBuyOrUpgrade())
@@ -243,11 +248,15 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(pb != null);
 
             Building = pb;
+            Debug.Assert(Building.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
+
             UpdateData();
         }
 
         internal void UpdateData()
         {
+            Debug.Assert(Building.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
+
             BackColor = Program.formMain.SelectedPanelBuilding == this ? Color.SkyBlue : Color.PowderBlue;
 
             lblName.Text = Building.Building.Name;
