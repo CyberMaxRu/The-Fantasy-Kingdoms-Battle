@@ -511,8 +511,9 @@ namespace Fantasy_King_s_Battle
                     bool pathFinded = Battle.Battlefield.Pathfind(CurrentTile, h.currentTile, null);
 
                     // Если некуда идти, то надо идти в сторону противника. Возможно, после шага к нему можно будет пройти
-                    if (!pathFinded)
-                        pathFinded = Battle.Battlefield.Pathfind(CurrentTile, h.currentTile, Player);
+                    // for test
+                    //if (!pathFinded)
+                    //pathFinded = Battle.Battlefield.Pathfind(CurrentTile, h.currentTile, Player);
 
                     if (pathFinded && (Battle.Battlefield._path[0].Unit == null))
                     {

@@ -187,7 +187,7 @@ namespace Fantasy_King_s_Battle
 
         private void ShowHintBtnBuyOrUpgrade()
         {
-            Debug.Assert(Building.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
+            //Debug.Assert(Building.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
 
             if (Building.Level < Building.Building.MaxLevel)
             {

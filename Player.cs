@@ -30,8 +30,9 @@ namespace Fantasy_King_s_Battle
 
             // Настраиваем игрока согласно настройкам лобби
             DurabilityCastle = Lobby.TypeLobby.DurabilityCastle;
-            //if (TypePlayer == TypePlayer.Human)
-            //    DurabilityCastle = 100;
+            // for test
+            if (TypePlayer == TypePlayer.Human)
+                DurabilityCastle = 1000;
 
             // Инициализация зданий
             foreach (Building b in FormMain.Config.Buildings)
@@ -81,12 +82,15 @@ namespace Fantasy_King_s_Battle
             {
                 if (bp.Heroes.Count < bp.MaxHeroes())
                 {
+                    //int needHire = 20;
                     int needHire = FormMain.Rnd.Next(2) + 1;
 
                     for (int x = 0; x < needHire; x++)
                     //                for (; bp.Heroes.Count() < bp.MaxHeroes();)
                     {
                         if (bp.Heroes.Count == bp.MaxHeroes())
+                            break;
+                        if (CombatHeroes.Count == Lobby.TypeLobby.MaxHeroes)
                             break;
                         bp.HireHero();
                     }

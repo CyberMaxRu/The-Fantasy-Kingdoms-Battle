@@ -78,6 +78,9 @@ namespace Fantasy_King_s_Battle
 
         internal static void DrawBand(Graphics g, Rectangle r, Brush brushFore, Brush brushBack, int currentValue, int MaxValue)
         {
+            // for test
+            if (currentValue > MaxValue)
+                currentValue = MaxValue;
             Debug.Assert(currentValue <= MaxValue);
             Debug.Assert(currentValue >= 0);
 
