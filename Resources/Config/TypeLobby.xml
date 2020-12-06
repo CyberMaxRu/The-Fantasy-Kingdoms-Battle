@@ -3,7 +3,7 @@
   <TypeLobby>
     <Name>8 игроков</Name>
     <QuantityPlayers>8</QuantityPlayers>
-    <DurabilityCastle>20</DurabilityCastle>
+    <DurabilityCastle>5</DurabilityCastle>
     <Gold>20000</Gold>
     <MaxHeroes>49</MaxHeroes>
   </TypeLobby>

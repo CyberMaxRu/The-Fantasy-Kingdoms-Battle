@@ -156,7 +156,10 @@ namespace Fantasy_King_s_Battle
             SortPlayers();
 
             if (!Players[0].IsLive)
+            {
+                CurrentPlayer = null;
                 return;
+            }
 
             // Делаем начало хода
             Turn++;

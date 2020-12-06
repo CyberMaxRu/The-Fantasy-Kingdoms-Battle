@@ -668,10 +668,6 @@ namespace Fantasy_King_s_Battle
             tsbEndTurn.Enabled = false;
             lobby.DoEndTurn();
 
-            MessageBox.Show("Поздравляем, вы победитель!", "ПОБЕДА!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            StartNewLobby();
-            return;
             if (lobby.CurrentPlayer == null)
             {
                 // Лобби для текущего игрока закончено
@@ -680,13 +676,15 @@ namespace Fantasy_King_s_Battle
                     MessageBox.Show("Поздравляем, вы победитель!", "ПОБЕДА!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     StartNewLobby();
+                    return;
                 }
                 else// Если вылетели из лобби, то показываем итоговое место и начинаем новое лобби
                 {
-                    MessageBox.Show("Поражение..." + Environment.NewLine + "Вы заняли " + lobby.CurrentPlayer.PositionInLobby.ToString() + " место.");
+                    // Здесь заложено, что реальный игрок под номером 0. Это может быть не так
+                    MessageBox.Show("Поражение..." + Environment.NewLine + "Вы заняли " + lobby.Players[0].PositionInLobby.ToString() + " место.", "ПОРАЖЕНИЕ", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    lobby = new Lobby(Config.TypeLobbies[0]);
-                    ShowDataPlayer();
+                    StartNewLobby();
+                    return;
                 }
 
             }

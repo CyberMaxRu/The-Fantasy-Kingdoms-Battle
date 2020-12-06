@@ -30,9 +30,6 @@ namespace Fantasy_King_s_Battle
 
             // Настраиваем игрока согласно настройкам лобби
             DurabilityCastle = Lobby.TypeLobby.DurabilityCastle;
-            // for test
-            if (TypePlayer == TypePlayer.Human)
-                DurabilityCastle = 1000;
 
             // Инициализация зданий
             foreach (Building b in FormMain.Config.Buildings)
