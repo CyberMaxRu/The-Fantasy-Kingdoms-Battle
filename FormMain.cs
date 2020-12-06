@@ -105,6 +105,8 @@ namespace Fantasy_King_s_Battle
         private readonly PanelBuildingInfo panelBuildingInfo;
         private readonly PanelHeroInfo panelHeroInfo;
         internal PanelEntity SelectedPanelEntity;
+        private readonly List<PanelAboutPlayer> panelAboutPlayers = new List<PanelAboutPlayer>();
+        private readonly List<PanelPlayer> panelPlayers = new List<PanelPlayer>();
 
         private List<PictureBox> SlotSkill = new List<PictureBox>();
 
@@ -181,9 +183,12 @@ namespace Fantasy_King_s_Battle
             tsbEndTurn.ImageIndex = GUI_HOURGLASS;
 
             // Создаем иконки игроков в левой части окна
+            PanelPlayer pp;
             foreach (Player p in lobby.Players)
             {
-                new PanelPlayer(p, this);
+                pp = new PanelPlayer(this);
+                pp.Player = p;
+                panelPlayers.Add(pp);
             }
 
             leftForPages = GuiUtils.NextLeft(lobby.Players[0].Panel);
@@ -467,6 +472,12 @@ namespace Fantasy_King_s_Battle
         {
             PanelAboutPlayer pap;
 
+            foreach (PanelAboutPlayer p in panelAboutPlayers)
+            {
+                p.Dispose();
+            }
+            panelAboutPlayers.Clear();
+
             int top = Config.GridSize;
             foreach (Player p in lobby.Players)
             {
@@ -478,8 +489,15 @@ namespace Fantasy_King_s_Battle
                 };
 
                 p.PanelAbout = pap;
+                panelAboutPlayers.Add(pap);
 
                 top += pap.Height + Config.GridSize;
+            }
+
+            for (int i = 0; i < panelPlayers.Count; i++)
+            {
+                panelPlayers[i].Player = lobby.Players[i];                
+                //lobby.Players[i].Panel.Refresh();
             }
         }
 
@@ -649,18 +667,52 @@ namespace Fantasy_King_s_Battle
             tsbEndTurn.Enabled = false;
             lobby.DoEndTurn();
 
+            MessageBox.Show("Поздравляем, вы победитель!", "ПОБЕДА!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            StartNewLobby();
+            return;
+            if (lobby.CurrentPlayer == null)
+            {
+                // Лобби для текущего игрока закончено
+                if (lobby.HumanIsWin)
+                {
+                    MessageBox.Show("Поздравляем, вы победитель!", "ПОБЕДА!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    StartNewLobby();
+                }
+                else// Если вылетели из лобби, то показываем итоговое место и начинаем новое лобби
+                {
+                    MessageBox.Show("Поражение..." + Environment.NewLine + "Вы заняли " + lobby.CurrentPlayer.PositionInLobby.ToString() + " место.");
+
+                    lobby = new Lobby(Config.TypeLobbies[0]);
+                    ShowDataPlayer();
+                }
+
+            }
+
+            Debug.Assert(lobby.CurrentPlayer.IsLive);
             if (lobby.CurrentPlayer.IsLive)
             {
                 ShowDataPlayer();
                 tsbEndTurn.Enabled = true;
             }
-            else// Если вылетели из лобби, то показываем итоговое место и начинаем новое лобби
-            {
-                MessageBox.Show("Поражение..." + Environment.NewLine + "Вы заняли " + lobby.CurrentPlayer.PositionInLobby.ToString() + " место.");
+        }
 
-                lobby = new Lobby(Config.TypeLobbies[0]);
-                ShowDataPlayer();
-            }
+        private void StartNewLobby()
+        {
+            lobby = new Lobby(Config.TypeLobbies[0]);
+
+            DrawLobby();
+            DrawGuilds();
+            DrawBuildings();
+            DrawTemples();
+            DrawTowers();
+            DrawHeroes();
+            DrawWarehouse();
+
+            ShowDataPlayer();
+
+            tsbEndTurn.Enabled = true;
         }
 
         internal void SelectBuilding(PanelBuilding pb)

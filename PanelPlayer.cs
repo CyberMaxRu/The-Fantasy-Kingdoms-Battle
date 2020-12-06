@@ -8,7 +8,7 @@ namespace Fantasy_King_s_Battle
     // Класс панели игрока (сокращенная информация)
     internal sealed class PanelPlayer : BasePanel
     {
-        private readonly Player player;
+        private Player player;
         private PanelEntity panelAvatar;
         private Label lblDamageToCastle;
         private Label lblStrike;
@@ -23,11 +23,8 @@ namespace Fantasy_King_s_Battle
         private readonly SolidBrush brushMaxDurability = new SolidBrush(FormMain.Config.BattlefieldPlayerHealthNone);
         private readonly SolidBrush brushBackground = new SolidBrush(Color.White);
 
-        public PanelPlayer(Player p, Control parent) : base()
+        public PanelPlayer(Control parent) : base()
         {
-            player = p;
-            player.Panel = this;
-
             Parent = parent;
             Left = FormMain.Config.GridSize;
 
@@ -37,7 +34,6 @@ namespace Fantasy_King_s_Battle
                 Location = new Point(FormMain.Config.GridSize, FormMain.Config.GridSize),
                 ShowHint = false
             };
-            panelAvatar.ShowCell(player);
             panelAvatar.MouseEnter += PanelAvatar_MouseEnter;
             panelAvatar.MouseLeave += PanelAvatar_MouseLeave;
 
@@ -92,6 +88,8 @@ namespace Fantasy_King_s_Battle
             rectBorder = new Rectangle(0, 0, Width - 1, Height - 1);
         }
 
+        internal Player Player { get { return player; } set { player = value; player.Panel = this; panelAvatar.ShowCell(player); Refresh(); } }
+
         private void PanelAvatar_MouseLeave(object sender, EventArgs e)
         {
             OnMouseLeave(e);
@@ -121,6 +119,9 @@ namespace Fantasy_King_s_Battle
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
+
+            if (player == null)
+                return;
 
             Debug.Assert(player.LastBattleDamageToCastle >= -999);
             Debug.Assert(player.LastBattleDamageToCastle <= 999);
