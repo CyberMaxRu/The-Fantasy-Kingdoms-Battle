@@ -38,7 +38,6 @@
             this.tabPageHeroes = new System.Windows.Forms.TabPage();
             this.tabPageBattle = new System.Windows.Forms.TabPage();
             this.textBoxResultBattle = new System.Windows.Forms.TextBox();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMain = new System.Windows.Forms.ToolStrip();
             this.tslDay = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -153,14 +152,6 @@
             this.textBoxResultBattle.Size = new System.Drawing.Size(752, 480);
             this.textBoxResultBattle.TabIndex = 0;
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(979, 24);
-            this.menuStrip1.TabIndex = 3;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
             // toolStripMain
             // 
             this.toolStripMain.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
@@ -173,7 +164,7 @@
             this.toolStripSeparator2,
             this.tsbEndTurn});
             this.toolStripMain.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
-            this.toolStripMain.Location = new System.Drawing.Point(0, 24);
+            this.toolStripMain.Location = new System.Drawing.Point(0, 0);
             this.toolStripMain.Name = "toolStripMain";
             this.toolStripMain.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.toolStripMain.ShowItemToolTips = false;
@@ -264,11 +255,9 @@
             this.Controls.Add(this.axWindowsMediaPlayer1);
             this.Controls.Add(this.toolStripMain);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.menuStrip1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -291,7 +280,6 @@
         private System.Windows.Forms.TabPage tabPageBuildings;
         private System.Windows.Forms.TabPage tabPageHeroes;
         private System.Windows.Forms.TabPage tabPageBattle;
-        private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.TextBox textBoxResultBattle;
         private System.Windows.Forms.TabPage tabPageGuilds;
         private System.Windows.Forms.TabPage tabPageTemples;
