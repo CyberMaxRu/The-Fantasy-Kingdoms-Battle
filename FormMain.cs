@@ -380,10 +380,14 @@ namespace Fantasy_King_s_Battle
             //WindowState = FormWindowState.Maximized;
             //FormBorderStyle = FormBorderStyle.None;
 
+            KeyDown += FormMain_KeyDown;
+            KeyPreview = true;
+
             axWindowsMediaPlayer1.URL = dirResources + "Video\\Rebirth.ogg";
             axWindowsMediaPlayer1.uiMode = "none";
             axWindowsMediaPlayer1.Location = new Point(0, 0);
             axWindowsMediaPlayer1.Size = ClientSize;
+            axWindowsMediaPlayer1.MouseDownEvent += AxWindowsMediaPlayer1_MouseDownEvent;
             axWindowsMediaPlayer1.PlayStateChange += AxWindowsMediaPlayer1_PlayStateChange;
             axWindowsMediaPlayer1.Ctlcontrols.play();
 
@@ -392,6 +396,17 @@ namespace Fantasy_King_s_Battle
                 lblStage.Text = text + "...";
                 lblStage.Refresh();
             }
+        }
+        
+        private void FormMain_KeyDown(object sender, KeyEventArgs e)
+        {
+            axWindowsMediaPlayer1.Ctlcontrols.stop();
+            KeyDown -= FormMain_KeyDown;
+        }
+
+        private void AxWindowsMediaPlayer1_MouseDownEvent(object sender, AxWMPLib._WMPOCXEvents_MouseDownEvent e)
+        {
+            axWindowsMediaPlayer1.Ctlcontrols.stop();
         }
 
         private void AxWindowsMediaPlayer1_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
