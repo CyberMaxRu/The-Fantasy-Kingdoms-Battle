@@ -24,7 +24,7 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(Income >= 0);
 
             // Загружаем требования
-            Utils.LoadRequirements(Requirements, n);
+            XmlUtils.LoadRequirements(Requirements, n);
         }
 
         internal int Pos { get; }

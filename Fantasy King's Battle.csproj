@@ -139,6 +139,7 @@
     <Compile Include="Item.cs" />
     <Compile Include="Skill.cs" />
     <Compile Include="Utils.cs" />
+    <Compile Include="XmlUtils.cs" />
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>

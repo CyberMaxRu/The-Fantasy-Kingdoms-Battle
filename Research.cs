@@ -25,12 +25,12 @@ namespace Fantasy_King_s_Battle
             Layer = Convert.ToInt32(n.SelectSingleNode("Layer").InnerText) - 1;
             nameItem = n.SelectSingleNode("Item") != null ? n.SelectSingleNode("Item").InnerText : "";
             nameAbility = n.SelectSingleNode("Ability") != null ? n.SelectSingleNode("Ability").InnerText : "";
-            nameGroupWeapon = Utils.GetParamFromXmlString(n.SelectSingleNode("GroupWeapon"));
-            nameGroupArmour = Utils.GetParamFromXmlString(n.SelectSingleNode("GroupArmour"));
+            nameGroupWeapon = XmlUtils.GetParamFromXmlString(n.SelectSingleNode("GroupWeapon"));
+            nameGroupArmour = XmlUtils.GetParamFromXmlString(n.SelectSingleNode("GroupArmour"));
             Cost = Convert.ToInt32(n.SelectSingleNode("Cost").InnerText);
 
             // Загружаем требования
-            Utils.LoadRequirements(Requirements, n);
+            XmlUtils.LoadRequirements(Requirements, n);
 
             Debug.Assert((nameItem != "") || (nameAbility != "") || (nameGroupWeapon != "") || (nameGroupArmour != ""));
             Debug.Assert(!((nameItem != "") && (nameAbility != "") && (nameGroupWeapon != "") && (nameGroupArmour != "")));
