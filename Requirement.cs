@@ -14,6 +14,7 @@ namespace Fantasy_King_s_Battle
 
         public Requirement(string nameRequiredBuilding, int l)
         {
+            Debug.Assert(nameRequiredBuilding.Length > 0);
             Debug.Assert(l >= 0);
 
             nameBuilding = nameRequiredBuilding;

@@ -13,9 +13,10 @@ namespace Fantasy_King_s_Battle
             if (nr != null)
             {
                 foreach (XmlNode r in nr.SelectNodes("Requirement"))
-                    list.Add(new Requirement(r.SelectSingleNode("Building").InnerText, Convert.ToInt32(r.SelectSingleNode("Level").InnerText)));
+                    list.Add(new Requirement(r.SelectSingleNode("Building").InnerText, GetParamFromXmlInteger(r.SelectSingleNode("Level"))));
             }
         }
+
         internal static int GetParamFromXmlInteger(XmlNode n)
         {
             return n != null ? Convert.ToInt32(n.InnerText) : 0;
