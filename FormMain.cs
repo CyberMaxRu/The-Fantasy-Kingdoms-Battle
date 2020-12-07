@@ -402,6 +402,7 @@ namespace Fantasy_King_s_Battle
         {
             axWindowsMediaPlayer1.Ctlcontrols.stop();
             KeyDown -= FormMain_KeyDown;
+            KeyPreview = false;
         }
 
         private void AxWindowsMediaPlayer1_MouseDownEvent(object sender, AxWMPLib._WMPOCXEvents_MouseDownEvent e)
