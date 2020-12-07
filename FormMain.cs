@@ -122,8 +122,6 @@ namespace Fantasy_King_s_Battle
         {
             InitializeComponent();
 
-            Program.formMain = this;
-
             // Настройка переменной с папкой ресурсов
             dirResources = Environment.CurrentDirectory;
 
@@ -136,13 +134,61 @@ namespace Fantasy_King_s_Battle
 
             dirResources += "Resources\\";
 
+            // Формируем и показываем сплэш-заставку
+            Image splashBitmap = new Bitmap(dirResources + "\\Icons\\Splash.png");
+
+            Form splashForm = new Form()
+            {
+                StartPosition = FormStartPosition.CenterScreen,
+                ShowInTaskbar = false,
+                FormBorderStyle = FormBorderStyle.None,
+                ClientSize = splashBitmap.Size,
+                BackgroundImage = splashBitmap,
+                TopMost = true
+            };
+
+            Label lblCaption = new Label()
+            {
+                Parent = splashForm,
+                AutoSize = false,
+                TextAlign = ContentAlignment.MiddleCenter,
+                Top = 8,
+                Left = 0,
+                Height = 32,
+                Width = splashForm.ClientSize.Width,
+                ForeColor = Color.Yellow,
+                BackColor = Color.Transparent,
+                Font = new Font("Times New Roman", 16, FontStyle.Bold),
+                Text = "The Fantasy Kingdoms Battle"
+            };
+
+            Label lblStage = new Label()
+            {
+                Parent = splashForm,
+                AutoSize = false,
+                TextAlign = ContentAlignment.MiddleCenter,
+                Top = splashForm.ClientSize.Height - 32,
+                Left = 0,
+                Width = splashForm.ClientSize.Width,
+                ForeColor = Color.LightBlue,
+                BackColor = Color.Transparent,
+                Font = new Font("Times New Roman", 13)
+            };
+
+            splashForm.Show();
+            splashForm.Refresh();
+
+            Program.formMain = this;
+
             // Загружаем конфигурацию
+            SetStage("Открываем сундуки");
             _ = new Config(dirResources, this);
 
             brushQuantity = new SolidBrush(Config.CommonQuantity);
             brushCost = new SolidBrush(Config.CommonCost);
 
             // Загружаем иконки
+            SetStage("Рассматриваем картины");
             ilPlayerAvatars = PrepareImageList("PlayerAvatars.png", 48, 48, true);
             ilPlayerAvatarsBig = PrepareImageList("PlayerAvatarsBig.png", 128, 128, true);
             ilSkills = PrepareImageList("Skills.png", 82, 94, false);
@@ -172,6 +218,7 @@ namespace Fantasy_King_s_Battle
             lobby = new Lobby(Config.TypeLobbies[0]);
 
             // Подготавливаем тулбар
+            SetStage("Строим замок");
             toolStripMain.ImageList = ilGui;
             toolStripMain.ImageScalingSize = ilGui.ImageSize;
 
@@ -212,7 +259,7 @@ namespace Fantasy_King_s_Battle
             pages.Add(pageTowers);
             pages.Add(pageHeroes);
             pages.Add(pageBattle);
-            
+
             tabControl1.ImageList = ilGui;
             tabPageLobby.ImageIndex = GUI_LOBBY;
             tabPageLobby.Text = "";
@@ -315,6 +362,7 @@ namespace Fantasy_King_s_Battle
             toolStripMain.BackgroundImage = GuiUtils.MakeBackground(toolStripMain.Size);
             toolStripMain.ForeColor = Color.White;
 
+            SetStage("Прибираем после строителей");
             // Перенести в класс
             for (int i = 0; i < panelHeroInfo.slots.Count; i++)
             {
@@ -327,6 +375,29 @@ namespace Fantasy_King_s_Battle
             ActivatePage(pageLobby);
 
             formHint = new FormHint(bmpForBackground, ilGui16, ilParameters);
+
+            splashForm.Dispose();
+            //WindowState = FormWindowState.Maximized;
+            //FormBorderStyle = FormBorderStyle.None;
+
+            axWindowsMediaPlayer1.URL = dirResources + "Video\\Rebirth.ogg";
+            axWindowsMediaPlayer1.uiMode = "none";
+            axWindowsMediaPlayer1.Location = new Point(0, 0);
+            axWindowsMediaPlayer1.Size = ClientSize;
+            axWindowsMediaPlayer1.PlayStateChange += AxWindowsMediaPlayer1_PlayStateChange;
+            axWindowsMediaPlayer1.Ctlcontrols.play();
+
+            void SetStage(string text)
+            {
+                lblStage.Text = text + "...";
+                lblStage.Refresh();
+            }
+        }
+
+        private void AxWindowsMediaPlayer1_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
+        {
+            if (e.newState == (int)WMPLib.WMPPlayState.wmppsStopped)
+                axWindowsMediaPlayer1.Dispose();
         }
 
         internal static Config Config { get; set; }

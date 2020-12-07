@@ -13,7 +13,7 @@ namespace Fantasy_King_s_Battle
     {
         public TypeLobby(XmlNode n)
         {
-            Name = n.SelectSingleNode("Name").InnerText;
+            Name = XmlUtils.GetParamFromXmlString(n.SelectSingleNode("Name"));
             QuantityPlayers = XmlUtils.GetParamFromXmlInteger(n.SelectSingleNode("QuantityPlayers"));
             DurabilityCastle = XmlUtils.GetParamFromXmlInteger(n.SelectSingleNode("DurabilityCastle"));
             Gold = XmlUtils.GetParamFromXmlInteger(n.SelectSingleNode("Gold"));
