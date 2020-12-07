@@ -58,6 +58,24 @@ namespace Fantasy_King_s_Battle
                 return true;
             }
 
+            // Если режим прохода сквозь юнита, то проверяем, есть ли вокруг ячейки для прохода
+            // Если нет, выходиим
+            if (throughPlayer != null)
+            {
+                bool foundedFree = false;
+                foreach (BattlefieldTile t in fromTile.TilesAround)
+                {
+                    if ((t.Unit == null) && (t.ReservedForMove == null))
+                    {
+                        foundedFree = true;
+                        break;
+                    }    
+                }
+
+                if (!foundedFree)
+                    return false;
+            }
+
             // Очистка данных
             foreach (BattlefieldTile t in closedSet)
                 t.ClearPathData();
