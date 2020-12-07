@@ -51,7 +51,24 @@ namespace Fantasy_King_s_Battle
             progressBar.Maximum = FormMain.Config.MaxStepsInBattle;
             steps.Clear();
 
-            Show();
+            ShowDialog();
+        }
+
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+
+            // Полный расчет боя
+            for (; ; )
+            {
+                if (!battle.CalcStep())
+                    break;
+
+                ShowStep();
+                Application.DoEvents();
+            }
+
+            Close();
         }
 
         internal void ShowStep()

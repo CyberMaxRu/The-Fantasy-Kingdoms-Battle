@@ -235,7 +235,6 @@ namespace Fantasy_King_s_Battle
                                 formProgressBattle = new FormProgressBattle();
 
                             formProgressBattle.SetBattle(b, pairs, numberPair);
-                            b.CalcWholeBattle(formProgressBattle);
                         }
 
                         Battles.Add(b);
