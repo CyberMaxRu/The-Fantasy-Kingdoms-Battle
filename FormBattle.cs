@@ -351,6 +351,8 @@ namespace Fantasy_King_s_Battle
             battle.CalcWholeBattle(null);
 
             ApplyStep();
+            ShowResultBattle();
+            ShowTimerBattle();
         }
 
         private void TimerStep_Tick(object sender, EventArgs e)
@@ -376,7 +378,11 @@ namespace Fantasy_King_s_Battle
                         Steps.Add(DateTime.Now);
 
                         if (battle.BattleCalced)
+                        {
+                            ShowResultBattle();
+
                             break;
+                        }
                     }
 
                     ShowFrame();
@@ -638,35 +644,51 @@ namespace Fantasy_King_s_Battle
                 m.Draw(gFrame, p1, p2);
             }
 
-            if (battle.BattleCalced == false)
-            {
-                lblStateBattle.Text = "Идет бой";
-            }
-            else
-            {
-                if ((battle.Winner != null) && (battle.Winner.TypePlayer == TypePlayer.Human))
-                {
-                    lblStateBattle.Text = "Победа!";
-                    lblStateBattle.ForeColor = FormMain.Config.BattlefieldTextWin;
-                }
-                else if (battle.Winner == null)
-                {
-                    lblStateBattle.Text = "Ничья";
-                    lblStateBattle.ForeColor = FormMain.Config.BattlefieldTextDraw;
-                }
-                else
-                {
-                    lblStateBattle.Text = "Поражение";
-                    lblStateBattle.ForeColor = FormMain.Config.BattlefieldTextLose;
-                }
-            }
-
-            int pastSeconds = battle.Step / FormMain.Config.StepsInSecond;
-            TimeSpan ts = new TimeSpan(0, 0, pastSeconds);
-            lblTimer.Text = ts.ToString("mm':'ss");
+            ShowTimerBattle();
 
             //e.Graphics.DrawImage(bmpLayBackground, e.ClipRectangle, e.ClipRectangle, GraphicsUnit.Pixel);
             //e.Graphics.DrawImageUnscaled(bmpLay0, 0, 0);
+        }
+
+        private void ShowTimerBattle()
+        {
+            int pastSeconds = battle.Step / FormMain.Config.StepsInSecond;
+            TimeSpan ts = new TimeSpan(0, 0, pastSeconds);
+            lblTimer.Text = ts.ToString("mm':'ss");
+        }
+
+        private void ShowResultBattle()
+        {
+            Debug.Assert(battle.BattleCalced);
+
+            // Показываем урон по Замку
+            if (battle.Winner == battle.Player1)
+            {
+                lblDamagePlayer1.Show();
+                lblDamagePlayer1.Text = battle.Player1.LastBattleDamageToCastle.ToString();
+            }
+            else if (battle.Winner == battle.Player2)
+            {
+                lblDamagePlayer2.Show();
+                lblDamagePlayer2.Text = battle.Player2.LastBattleDamageToCastle.ToString();
+            }
+
+            // Показываем состояние
+            if ((battle.Winner != null) && (battle.Winner.TypePlayer == TypePlayer.Human))
+            {
+                lblStateBattle.Text = "Победа!";
+                lblStateBattle.ForeColor = FormMain.Config.BattlefieldTextWin;
+            }
+            else if (battle.Winner == null)
+            {
+                lblStateBattle.Text = "Ничья";
+                lblStateBattle.ForeColor = FormMain.Config.BattlefieldTextDraw;
+            }
+            else
+            {
+                lblStateBattle.Text = "Поражение";
+                lblStateBattle.ForeColor = FormMain.Config.BattlefieldTextLose;
+            }
         }
 
         private void FormBattle_FormClosing(object sender, FormClosingEventArgs e)
@@ -744,6 +766,7 @@ namespace Fantasy_King_s_Battle
             lblStateBattle.Top = pointAvatarPlayer1.Y;
             lblStateBattle.Width = pointAvatarPlayer2.X - pointAvatarPlayer1.X - Program.formMain.ilPlayerAvatarsBig.ImageSize.Width - FormMain.Config.GridSize * 2;
             lblStateBattle.Left = pointAvatarPlayer1.X + Program.formMain.ilPlayerAvatarsBig.ImageSize.Width + FormMain.Config.GridSize;
+            lblStateBattle.Text = "Идет бой";
 
             lblTimer.Top = lblStateBattle.Top + lblStateBattle.Height;
             lblTimer.Width = lblStateBattle.Width;
@@ -854,20 +877,6 @@ namespace Fantasy_King_s_Battle
             btnDecSpeed.Enabled = btnEndBattle.Enabled;
             btnIncSpeed.Enabled = btnEndBattle.Enabled;
             btnPlayPause.Enabled = btnEndBattle.Enabled;
-
-            if (battle.BattleCalced)
-            {
-                if (battle.Winner == battle.Player1)
-                {
-                    lblDamagePlayer1.Show();
-                    lblDamagePlayer1.Text = battle.Player1.LastBattleDamageToCastle.ToString();
-                }
-                else if (battle.Winner == battle.Player2)
-                {
-                    lblDamagePlayer2.Show();
-                    lblDamagePlayer2.Text = battle.Player2.LastBattleDamageToCastle.ToString();
-                }
-            }
         }
 
         protected override void OnFormClosed(FormClosedEventArgs e)
