@@ -366,7 +366,7 @@ namespace Fantasy_King_s_Battle
             {
                 Debug.Assert(this != hb);
 
-                return Utils.PointsIsNeighbor(Coord, hb.Coord);
+                return currentTile.IsNeighbourTile(hb.currentTile);
             }
         }
 
@@ -522,7 +522,7 @@ namespace Fantasy_King_s_Battle
                         TileForMove = PathToDestination.First();
                         Debug.Assert(TileForMove.Unit == null);
                         Debug.Assert(TileForMove.ReservedForMove == null);
-                        Debug.Assert(Utils.PointsIsNeighbor(Coord, new Point(TileForMove.X, TileForMove.Y)) == true);
+                        Debug.Assert(currentTile.IsNeighbourTile(TileForMove));
 
                         Debug.Assert(TileForMove.ReservedForMove == null);
                         TileForMove.ReservedForMove = this;

@@ -550,7 +550,7 @@ namespace Fantasy_King_s_Battle
                 {
                     BattlefieldTile tileforMove = hero.TileForMove;
                     Point coordTileForMove = CellToClientCoord(tileforMove);
-                    Debug.Assert(Utils.PointsIsNeighbor(hero.Coord, new Point(tileforMove.X, tileforMove.Y)) == true);
+                    Debug.Assert(hero.CurrentTile.IsNeighbourTile(tileforMove));
                     double percent = hero.PercentExecuteAction();
 
                     shift.X = (int)((coordTileForMove.X - coordIconHero.X) * percent);

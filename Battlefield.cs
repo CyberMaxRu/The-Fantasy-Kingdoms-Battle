@@ -88,7 +88,7 @@ namespace Fantasy_King_s_Battle
             // Ищем путь
             FindPath(fromTile, toTile, throughPlayer);
 
-            Debug.Assert((_path.Count() == 0) || (Utils.PointsIsNeighbor(fromTile.Coord, _path.First().Coord) == true));
+            Debug.Assert((_path.Count() == 0) || fromTile.IsNeighbourTile(_path.First()));
             Debug.Assert((_path.Count() == 0) || (_path.Last() == toTile));
 
             return _path.Count() > 0;
@@ -189,7 +189,7 @@ namespace Fantasy_King_s_Battle
             {
                 Debug.Assert(_path.IndexOf(currentNode) == -1);
                 //Debug.Assert(currentNode.ReservedForMove == null);
-                Debug.Assert((_path.Count == 0) || (Utils.PointsIsNeighbor(new Point(currentNode.X, currentNode.Y), new Point(_path.Last().X, _path.Last().Y)) == true));
+                Debug.Assert((_path.Count == 0) || currentNode.IsNeighbourTile(_path.Last()));
 
                 _path.Add(currentNode);
                 currentNode = currentNode.PriorTile;
