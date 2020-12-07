@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Drawing;
 using System.Diagnostics;
-using System.Xml;
 
 namespace Fantasy_King_s_Battle
 {
@@ -19,7 +15,7 @@ namespace Fantasy_King_s_Battle
 
         internal static double DistanceBetweenPoints(Point p1, Point p2)
         {
-            return Math.Sqrt(Math.Pow((p2.X - p1.X), 2) + Math.Pow((p2.Y - p1.Y), 2));
+            return Math.Sqrt(Math.Pow(p2.X - p1.X, 2) + Math.Pow(p2.Y - p1.Y, 2));
         }
 
         internal static void TrimActions(List<DateTime> list)
@@ -37,6 +33,5 @@ namespace Fantasy_King_s_Battle
                 }
             }
         }
-
     }
 }
