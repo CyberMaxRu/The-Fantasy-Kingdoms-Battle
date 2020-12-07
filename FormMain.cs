@@ -14,7 +14,7 @@ namespace Fantasy_King_s_Battle
 {
     public partial class FormMain : Form
     {
-        private readonly string dirResources;
+        internal readonly string dirResources;
 
         internal readonly ImageList ilPlayerAvatars;
         internal readonly ImageList ilPlayerAvatarsBig;
