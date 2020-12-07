@@ -14,11 +14,12 @@ namespace Fantasy_King_s_Battle
         public TypeLobby(XmlNode n)
         {
             Name = n.SelectSingleNode("Name").InnerText;
-            QuantityPlayers = Convert.ToInt32(n.SelectSingleNode("QuantityPlayers").InnerText);
-            DurabilityCastle = Convert.ToInt32(n.SelectSingleNode("DurabilityCastle").InnerText);
-            Gold = Convert.ToInt32(n.SelectSingleNode("Gold").InnerText);
-            MaxHeroes = Convert.ToInt32(n.SelectSingleNode("MaxHeroes").InnerText);
+            QuantityPlayers = XmlUtils.GetParamFromXmlInteger(n.SelectSingleNode("QuantityPlayers"));
+            DurabilityCastle = XmlUtils.GetParamFromXmlInteger(n.SelectSingleNode("DurabilityCastle"));
+            Gold = XmlUtils.GetParamFromXmlInteger(n.SelectSingleNode("Gold"));
+            MaxHeroes = XmlUtils.GetParamFromXmlInteger(n.SelectSingleNode("MaxHeroes"));
 
+            Debug.Assert(Name.Length > 0);
             Debug.Assert(QuantityPlayers >= 2);
             Debug.Assert(QuantityPlayers >= 8);
             Debug.Assert(QuantityPlayers % 2 == 0);
