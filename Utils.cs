@@ -15,6 +15,7 @@ namespace Fantasy_King_s_Battle
         internal static void LoadRequirements(List<Requirement> list, XmlNode n)
         {
             XmlNode nr = n.SelectSingleNode("Requirements");
+
             if (nr != null)
             {
                 foreach (XmlNode r in nr.SelectNodes("Requirement"))
@@ -27,7 +28,7 @@ namespace Fantasy_King_s_Battle
             return s.Replace("/", Environment.NewLine);
         }
 
-        internal static int GetParamFromXml(XmlNode n)
+        internal static int GetParamFromXmlInteger(XmlNode n)
         {
             return n != null ? Convert.ToInt32(n.InnerText) : 0;
         }
