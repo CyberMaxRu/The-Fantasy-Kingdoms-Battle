@@ -29,6 +29,12 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(Gold <= 100000);
             Debug.Assert(MaxHeroes >= 1);
             Debug.Assert(MaxHeroes <= 100);// Здесь проверять через максим. число героев на поле боя
+
+            foreach (TypeLobby t in FormMain.Config.TypeLobbies)
+            {
+                if (Name == t.Name)
+                    throw new Exception("Лобби с наименованием [" + Name + "] уже существует.");
+            }
         }
 
         internal string Name { get; }
