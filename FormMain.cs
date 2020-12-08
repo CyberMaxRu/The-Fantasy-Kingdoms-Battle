@@ -18,6 +18,9 @@ namespace Fantasy_King_s_Battle
 {
     public partial class FormMain : Form
     {
+        private const string NAME_PROJECT = "The Fantasy Kingdoms Battle";
+        private const string VERSION = "0.2.00";
+        private const string VERSION_POSTFIX = "в разработке";
         internal readonly string dirResources;
 
         internal readonly ImageList ilPlayerAvatars;
@@ -125,6 +128,7 @@ namespace Fantasy_King_s_Battle
         public FormMain()
         {
             InitializeComponent();
+            Text = NAME_PROJECT + " (сборка " + VERSION + ")";
 
             // Настройка переменной с папкой ресурсов
             dirResources = Environment.CurrentDirectory;

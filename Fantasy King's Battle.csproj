@@ -193,6 +193,7 @@
     <Content Include="Resources\Config\Skills.xml" />
     <Content Include="Resources\Config\Settings.xml" />
     <Content Include="Resources\Config\Weapons.xml" />
+    <Content Include="Resources\Versions.xml" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="AxWMPLib">
