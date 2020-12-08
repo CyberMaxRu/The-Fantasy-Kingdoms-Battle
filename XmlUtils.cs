@@ -26,5 +26,12 @@ namespace Fantasy_King_s_Battle
         {
             return n != null ? n.InnerText : "";
         }
+
+        internal static Version GetVersionFromXml(XmlNode n)
+        {
+            return new Version(Convert.ToByte(n.SelectSingleNode("Major").InnerText),
+                Convert.ToByte(n.SelectSingleNode("Minor").InnerText),
+                Convert.ToByte(n.SelectSingleNode("Build").InnerText));
+        }
     }
 }
