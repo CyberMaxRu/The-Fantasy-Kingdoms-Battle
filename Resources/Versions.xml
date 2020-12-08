@@ -1,7 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Versions>
   <Version>
-    <Number></Number>
-    <Description></Description>
+    <Number>0.2.00</Number>
+    <DateRelease>07.12.2020</DateRelease>
+    <Description>
+      <Line>[+] Добавлен сплеш-экран</Line>
+      <Line>[+] Добавлена заставка при запуске игры</Line>
+    </Description>
+  </Version>
+  <Version>
+    <Number>0.2.01</Number>
+    <DateRelease>08.12.2020</DateRelease>
+    <Description>
+      <Line>[+] Сделано проверка обновления игры</Line>
+    </Description>
   </Version>
 </Versions>

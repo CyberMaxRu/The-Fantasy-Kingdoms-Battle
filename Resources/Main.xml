@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Main>
+  <Version>
+    <Number>0.2.00</Number>
+  </Version>
+  <Preferences>
+    <CheckUpdates>true</CheckUpdates>
+  </Preferences>
+  <AutoUpdate>
+    <URLVersion>https://drive.google.com/uc?export=download&id=14wNW_sPWLUikIp_3TjzU_v8yoF_Cu-Bq</URLVersion>
+    <URLArchive></URLArchive>
+  </AutoUpdate>
+</Main>
