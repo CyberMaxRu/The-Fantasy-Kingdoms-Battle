@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Web;
+using System.Net;
+using System.IO;
+using System.IO.Compression;
+
 
 namespace Fantasy_King_s_Battle
 {
@@ -379,6 +383,17 @@ namespace Fantasy_King_s_Battle
             splashForm.Dispose();
             //WindowState = FormWindowState.Maximized;
             //FormBorderStyle = FormBorderStyle.None;
+
+            // 
+            //https://drive.google.com/file/d/1UTJeu5PvHdxBGeRL_wRBc-Y_Bfx4opja/view?usp=sharing
+            /*string url = "https://drive.google.com/uc?export=download&id=1UTJeu5PvHdxBGeRL_wRBc-Y_Bfx4opja";
+            WebClient client = new WebClient();
+            //client.Credential = new NetworkCredential("XXXX", "XXXX");
+            client.DownloadFile(url, @"f:\\test\\fkb.zip");
+            client.Dispose();*/
+
+            //ZipFile.CreateFromDirectory(@"f:\test\", @"f:\test.zip");
+            //ZipFile.ExtractToDirectory(@"f:\test.zip", @"f:\test2\");
 
             KeyDown += FormMain_KeyDown;
             KeyPreview = true;
