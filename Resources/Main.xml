@@ -1,13 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Main>
   <Version>
-    <Number>0.2.00</Number>
+    <Major>0</Major>
+    <Minor>2</Minor>
+    <Build>0</Build>
   </Version>
   <Preferences>
     <CheckUpdates>true</CheckUpdates>
   </Preferences>
   <AutoUpdate>
-    <URLVersion>https://drive.google.com/uc?export=download&id=14wNW_sPWLUikIp_3TjzU_v8yoF_Cu-Bq</URLVersion>
-    <URLArchive></URLArchive>
+    <URLDrive>drive.google.com/uc?export=download</URLDrive>
+    <UIDVersion>14wNW_sPWLUikIp_3TjzU_v8yoF_Cu-Bq</UIDVersion>
+    <UIDArchive>1UTJeu5PvHdxBGeRL_wRBc-Y_Bfx4opja</UIDArchive>
   </AutoUpdate>
 </Main>
