@@ -371,17 +371,7 @@ namespace Fantasy_King_s_Battle
             //FormBorderStyle = FormBorderStyle.None;
 
             // 
-            //https://drive.google.com/file/d/1UTJeu5PvHdxBGeRL_wRBc-Y_Bfx4opja/view?usp=sharing
-            /*string url = "https://drive.google.com/uc?export=download&id=1UTJeu5PvHdxBGeRL_wRBc-Y_Bfx4opja";
-            WebClient client = new WebClient();
-            //client.Credential = new NetworkCredential("XXXX", "XXXX");
-            client.DownloadFile(url, @"f:\\test\\fkb.zip");
-            client.Dispose();*/
-
-            //ZipFile.CreateFromDirectory(@"f:\test\", @"f:\test.zip");
-            //ZipFile.ExtractToDirectory(@"f:\test.zip", @"f:\test2\");
-
-            KeyDown += FormMain_KeyDown;
+            /*KeyDown += FormMain_KeyDown;
             KeyPreview = true;
 
             axWindowsMediaPlayer1.URL = dirResources + "Video\\Rebirth.ogg";
@@ -390,7 +380,8 @@ namespace Fantasy_King_s_Battle
             axWindowsMediaPlayer1.Size = ClientSize;
             axWindowsMediaPlayer1.MouseDownEvent += AxWindowsMediaPlayer1_MouseDownEvent;
             axWindowsMediaPlayer1.PlayStateChange += AxWindowsMediaPlayer1_PlayStateChange;
-            axWindowsMediaPlayer1.Ctlcontrols.play();
+            axWindowsMediaPlayer1.Ctlcontrols.play();*/
+            axWindowsMediaPlayer1.Dispose();
 
             void SetStage(string text)
             {
@@ -518,8 +509,9 @@ namespace Fantasy_King_s_Battle
                 Debug.Assert(p.PositionInLobby <= lobby.TypeLobby.QuantityPlayers);
 
                 p.Panel.Top = top;
-                top = GuiUtils.NextTopHalf(p.Panel);
+                top = GuiUtils.NextTop(p.Panel);
             }
+
 
             Refresh();
         }
@@ -619,7 +611,7 @@ namespace Fantasy_King_s_Battle
             e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
 
             // Рисуем подложку
-            e.Graphics.DrawImageUnscaled(bmpBackground, 0, 0);
+            e.Graphics.DrawImageUnscaled(bmpBackground, e.ClipRectangle);
         }
 
         internal void ShowPageHeroes()
