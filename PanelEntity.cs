@@ -118,6 +118,9 @@ namespace Fantasy_King_s_Battle
         {
             Graphics g = Graphics.FromImage(bmpImage);
 
+            // Перед отрисовкой надо очистить картинку, чтобы новая не накладывалась на старую
+            g.Clear(Color.Transparent);
+            
             if (cell != null)
             {
                 //Debug.Assert(cell.Panel == this);
