@@ -106,5 +106,17 @@ namespace Fantasy_King_s_Battle
 
             return bmpBackground;
         }
+
+        internal static PictureBox BorderSelected(Control parent, Size size)
+        {
+            PictureBox pbox = new PictureBox()
+            {
+                Width = size.Width + 3 + 3,
+                Height = size.Height + 2 + 5,
+                Parent = parent
+            };
+            
+            return pbox;
+        }
     }
 }
