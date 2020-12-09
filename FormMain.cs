@@ -160,7 +160,7 @@ namespace Fantasy_King_s_Battle
                 Left = 0,
                 Height = 32,
                 Width = splashForm.ClientSize.Width,
-                ForeColor = Color.Yellow,
+                ForeColor = Color.SkyBlue,
                 BackColor = Color.Transparent,
                 Font = new Font("Times New Roman", 16, FontStyle.Bold),
                 Text = "The Fantasy Kingdoms Battle"
