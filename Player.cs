@@ -203,7 +203,6 @@ namespace Fantasy_King_s_Battle
         }
 
         // Визуальные контролы
-        internal PanelAboutPlayer PanelAbout { get; set; }
         internal PanelPlayer Panel { get; set; }
         private Player opponent;// Убрать это
         internal Player Opponent { get { return opponent; } set { if (value != this) opponent = value; else new Exception("Нельзя указать оппонентов самого себя."); } }

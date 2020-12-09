@@ -30,14 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPageLobby = new System.Windows.Forms.TabPage();
             this.tabPageGuilds = new System.Windows.Forms.TabPage();
             this.tabPageBuildings = new System.Windows.Forms.TabPage();
             this.tabPageTemples = new System.Windows.Forms.TabPage();
-            this.tabPageTowers = new System.Windows.Forms.TabPage();
             this.tabPageHeroes = new System.Windows.Forms.TabPage();
-            this.tabPageBattle = new System.Windows.Forms.TabPage();
-            this.textBoxResultBattle = new System.Windows.Forms.TextBox();
             this.toolStripMain = new System.Windows.Forms.ToolStrip();
             this.tslDay = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -48,7 +44,6 @@
             this.tsbEndTurn = new System.Windows.Forms.ToolStripButton();
             this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
             this.tabControl1.SuspendLayout();
-            this.tabPageBattle.SuspendLayout();
             this.toolStripMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
             this.SuspendLayout();
@@ -56,13 +51,10 @@
             // tabControl1
             // 
             this.tabControl1.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
-            this.tabControl1.Controls.Add(this.tabPageLobby);
             this.tabControl1.Controls.Add(this.tabPageGuilds);
             this.tabControl1.Controls.Add(this.tabPageBuildings);
             this.tabControl1.Controls.Add(this.tabPageTemples);
-            this.tabControl1.Controls.Add(this.tabPageTowers);
             this.tabControl1.Controls.Add(this.tabPageHeroes);
-            this.tabControl1.Controls.Add(this.tabPageBattle);
             this.tabControl1.Location = new System.Drawing.Point(80, 100);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -70,18 +62,6 @@
             this.tabControl1.Size = new System.Drawing.Size(896, 60);
             this.tabControl1.TabIndex = 1;
             this.tabControl1.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl1_Selected);
-            // 
-            // tabPageLobby
-            // 
-            this.tabPageLobby.AllowDrop = true;
-            this.tabPageLobby.Location = new System.Drawing.Point(4, 25);
-            this.tabPageLobby.Name = "tabPageLobby";
-            this.tabPageLobby.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageLobby.Size = new System.Drawing.Size(888, 31);
-            this.tabPageLobby.TabIndex = 0;
-            this.tabPageLobby.Text = "Лобби";
-            this.tabPageLobby.ToolTipText = "Лобби";
-            this.tabPageLobby.UseVisualStyleBackColor = true;
             // 
             // tabPageGuilds
             // 
@@ -113,16 +93,6 @@
             this.tabPageTemples.ToolTipText = "Храмы";
             this.tabPageTemples.UseVisualStyleBackColor = true;
             // 
-            // tabPageTowers
-            // 
-            this.tabPageTowers.Location = new System.Drawing.Point(4, 25);
-            this.tabPageTowers.Name = "tabPageTowers";
-            this.tabPageTowers.Size = new System.Drawing.Size(888, 31);
-            this.tabPageTowers.TabIndex = 8;
-            this.tabPageTowers.Text = "Защитные сооружения";
-            this.tabPageTowers.ToolTipText = "Защитные сооружения";
-            this.tabPageTowers.UseVisualStyleBackColor = true;
-            // 
             // tabPageHeroes
             // 
             this.tabPageHeroes.Location = new System.Drawing.Point(4, 25);
@@ -132,25 +102,6 @@
             this.tabPageHeroes.Text = "Герои";
             this.tabPageHeroes.ToolTipText = "Герои";
             this.tabPageHeroes.UseVisualStyleBackColor = true;
-            // 
-            // tabPageBattle
-            // 
-            this.tabPageBattle.Controls.Add(this.textBoxResultBattle);
-            this.tabPageBattle.Location = new System.Drawing.Point(4, 25);
-            this.tabPageBattle.Name = "tabPageBattle";
-            this.tabPageBattle.Size = new System.Drawing.Size(888, 31);
-            this.tabPageBattle.TabIndex = 5;
-            this.tabPageBattle.Text = "Сражение";
-            this.tabPageBattle.ToolTipText = "Сражение";
-            this.tabPageBattle.UseVisualStyleBackColor = true;
-            // 
-            // textBoxResultBattle
-            // 
-            this.textBoxResultBattle.Location = new System.Drawing.Point(8, 16);
-            this.textBoxResultBattle.Multiline = true;
-            this.textBoxResultBattle.Name = "textBoxResultBattle";
-            this.textBoxResultBattle.Size = new System.Drawing.Size(752, 480);
-            this.textBoxResultBattle.TabIndex = 0;
             // 
             // toolStripMain
             // 
@@ -264,8 +215,6 @@
             this.Text = "The Fantasy Kingdoms Battle 0.2 (developer version)";
             this.Activated += new System.EventHandler(this.FormMain_Activated);
             this.tabControl1.ResumeLayout(false);
-            this.tabPageBattle.ResumeLayout(false);
-            this.tabPageBattle.PerformLayout();
             this.toolStripMain.ResumeLayout(false);
             this.toolStripMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
@@ -276,14 +225,10 @@
 
         #endregion
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPageLobby;
         private System.Windows.Forms.TabPage tabPageBuildings;
         private System.Windows.Forms.TabPage tabPageHeroes;
-        private System.Windows.Forms.TabPage tabPageBattle;
-        private System.Windows.Forms.TextBox textBoxResultBattle;
         private System.Windows.Forms.TabPage tabPageGuilds;
         private System.Windows.Forms.TabPage tabPageTemples;
-        private System.Windows.Forms.TabPage tabPageTowers;
         private System.Windows.Forms.ToolStrip toolStripMain;
         private System.Windows.Forms.ToolStripLabel tslDay;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;

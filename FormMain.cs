@@ -99,13 +99,10 @@ namespace Fantasy_King_s_Battle
         internal int LengthSideBorderBattlefield { get; private set; }
 
         private readonly List<PanelPage> pages = new List<PanelPage>();
-        private readonly PanelPage pageLobby;
         private readonly PanelPage pageGuilds;
         private readonly PanelPage pageBuildings;
         private readonly PanelPage pageTemples;
-        private readonly PanelPage pageTowers;
         private readonly PanelPage pageHeroes;
-        private readonly PanelPage pageBattle;
         private PanelPage currentPage;
         private readonly int leftForPages;
         private readonly Point pointMenu;
@@ -113,7 +110,6 @@ namespace Fantasy_King_s_Battle
         private readonly PanelBuildingInfo panelBuildingInfo;
         private readonly PanelHeroInfo panelHeroInfo;
         internal PanelEntity SelectedPanelEntity;
-        private readonly List<PanelAboutPlayer> panelAboutPlayers = new List<PanelAboutPlayer>();
         private readonly List<PanelPlayer> panelPlayers = new List<PanelPlayer>();
         private readonly List<PanelBuilding> listPanelBuildings = new List<PanelBuilding>();
 
@@ -253,42 +249,28 @@ namespace Fantasy_King_s_Battle
             tabControl1.Top = GuiUtils.NextTop(toolStripMain);
             tabControl1.Left = leftForPages;
 
-            pageLobby = PreparePanel();
             pageGuilds = PreparePanel();
             pageBuildings = PreparePanel();
             pageTemples = PreparePanel();
-            pageTowers = PreparePanel();
             pageHeroes = PreparePanel();
-            pageBattle = PreparePanel();
-            pages.Add(pageLobby);
             pages.Add(pageGuilds);
             pages.Add(pageBuildings);
             pages.Add(pageTemples);
-            pages.Add(pageTowers);
             pages.Add(pageHeroes);
-            pages.Add(pageBattle);
 
             tabControl1.ImageList = ilGui;
-            tabPageLobby.ImageIndex = GUI_LOBBY;
-            tabPageLobby.Text = "";
             tabPageGuilds.ImageIndex = GUI_GUILDS;
             tabPageGuilds.Text = "";
             tabPageBuildings.ImageIndex = GUI_ECONOMY;
             tabPageBuildings.Text = "";
             tabPageTemples.ImageIndex = GUI_TEMPLE;
             tabPageTemples.Text = "";
-            tabPageTowers.ImageIndex = GUI_DEFENSE;
-            tabPageTowers.Text = "";
             tabPageHeroes.ImageIndex = GUI_HEROES;
             tabPageHeroes.Text = "";
-            tabPageBattle.ImageIndex = GUI_BATTLE;
-            tabPageBattle.Text = "";
 
-            DrawLobby();
             DrawGuilds();
             DrawBuildings();
             DrawTemples();
-            DrawTowers();
             DrawHeroes();
             DrawWarehouse();
 
@@ -380,7 +362,7 @@ namespace Fantasy_King_s_Battle
             }
 
             //
-            ActivatePage(pageLobby);
+            ActivatePage(pageGuilds);
 
             formHint = new FormHint(bmpForBackground, ilGui16, ilParameters);
 
@@ -529,11 +511,6 @@ namespace Fantasy_King_s_Battle
 
         private void ShowLobby()
         {
-            foreach (Player p in lobby.Players)
-            {
-                p.PanelAbout.ShowData();
-            }
-
             int top = tabControl1.Top;
             foreach (Player p in lobby.Players.OrderBy(p => p.PositionInLobby))
             {
@@ -576,38 +553,6 @@ namespace Fantasy_King_s_Battle
             }
         }
 
-        private void DrawLobby()
-        {
-            PanelAboutPlayer pap;
-
-            foreach (PanelAboutPlayer p in panelAboutPlayers)
-            {
-                p.Dispose();
-            }
-            panelAboutPlayers.Clear();
-
-            int top = Config.GridSize;
-            foreach (Player p in lobby.Players)
-            {
-                pap = new PanelAboutPlayer(p, ilResultBattle)
-                {
-                    Parent = pageLobby,
-                    Top = top,
-                    Left = 0
-                };
-
-                p.PanelAbout = pap;
-                panelAboutPlayers.Add(pap);
-
-                top += pap.Height + Config.GridSize;
-            }
-
-            for (int i = 0; i < panelPlayers.Count; i++)
-            {
-                panelPlayers[i].Player = lobby.Players[i];                
-            }
-        }
-
         private void DrawGuilds()
         {
             DrawPageBuilding(pageGuilds, CategoryBuilding.Guild);
@@ -638,11 +583,6 @@ namespace Fantasy_King_s_Battle
         private void DrawTemples()
         {
             DrawPageBuilding(pageTemples, CategoryBuilding.Temple);
-        }
-
-        private void DrawTowers()
-        {
-            
         }
 
         private void ShowTemples()
@@ -812,6 +752,14 @@ namespace Fantasy_King_s_Battle
             ShowDataPlayer();
 
             tsbEndTurn.Enabled = true;
+        }
+
+        private void DrawLobby()
+        {
+            for (int i = 0; i < panelPlayers.Count; i++)
+            {
+                panelPlayers[i].Player = lobby.Players[i];
+            }
         }
 
         internal void SelectBuilding(PanelBuilding pb)

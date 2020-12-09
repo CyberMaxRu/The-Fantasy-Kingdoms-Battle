@@ -128,9 +128,6 @@
     <Compile Include="TypeLobby.cs" />
     <Compile Include="Level.cs" />
     <Compile Include="Lobby.cs" />
-    <Compile Include="PanelAboutPlayer.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="PanelBuilding.cs">
       <SubType>Component</SubType>
     </Compile>
