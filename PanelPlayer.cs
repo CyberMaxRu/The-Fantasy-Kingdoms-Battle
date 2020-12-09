@@ -12,7 +12,6 @@ namespace Fantasy_King_s_Battle
         private PanelEntity panelAvatar;
         private Label lblDamageToCastle;
         private Label lblStrike;
-        private Label lblQuantityHeroes;
         private Rectangle rectBorder;
         private Point pointIconAvatar;// Координаты для отрисовки аватара игрока
         private Point pointIconResultBattle;// Координаты для иконки результата боя
@@ -44,7 +43,6 @@ namespace Fantasy_King_s_Battle
 
             pointIconResultBattle = new Point(leftForIcons, pointIconAvatar.Y);
             pointIconStrike = new Point(leftForIcons, pointIconResultBattle.Y + Program.formMain.ilResultBattle.ImageSize.Height + FormMain.Config.GridSizeHalf);
-            pointIconHeroes = new Point(leftForIcons, pointIconStrike.Y + Program.formMain.ilGui24.ImageSize.Height + FormMain.Config.GridSizeHalf);
 
             lblDamageToCastle = new Label()
             {
@@ -69,21 +67,9 @@ namespace Fantasy_King_s_Battle
                 Font = new Font("Microsoft Sans Serif", 8, FontStyle.Bold)
             };
 
-            lblQuantityHeroes = new Label()
-            {
-                Parent = this,
-                Left = leftForText,
-                Top = pointIconHeroes.Y,
-                ForeColor = FormMain.Config.CommonBorder,
-                BackColor = Color.Transparent,
-                TextAlign = ContentAlignment.MiddleLeft,
-                MaximumSize = Program.formMain.ilGui24.ImageSize,
-                Font = new Font("Microsoft Sans Serif", 8, FontStyle.Bold)
-            };
-
             Width = leftForText + lblDamageToCastle.MaximumSize.Width + FormMain.Config.GridSizeHalf;
             Height = Math.Max(FormMain.Config.GridSize + Program.formMain.ilPlayerAvatars.ImageSize.Height + FormMain.Config.GridSize + FormMain.Config.GridSize,
-                GuiUtils.NextTop(lblQuantityHeroes));
+                GuiUtils.NextTop(lblStrike) + 8);
 
             rectBorder = new Rectangle(0, 0, Width - 1, Height - 1);
         }
@@ -171,17 +157,6 @@ namespace Fantasy_King_s_Battle
             }
             else
                 lblStrike.Hide();
-
-            // Количество героев
-            if (player.QuantityHeroes > 0)
-            {
-                lblQuantityHeroes.Show();
-                e.Graphics.DrawImageUnscaled(Program.formMain.ilGui24.Images[FormMain.GUI_24_HEROES], pointIconHeroes);
-                lblQuantityHeroes.Text = player.QuantityHeroes > 0 ? player.QuantityHeroes.ToString() : "";
-            }
-            else
-
-                lblQuantityHeroes.Hide();
         }
     }
 }
