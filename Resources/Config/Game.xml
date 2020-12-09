@@ -12,12 +12,14 @@
   <Colors>
     <Common>
       <Border>Black</Border>
+      <SelectedBorder>Yellow</SelectedBorder>
       <CaptionPage>White</CaptionPage>
       <Level>Yellow</Level>
       <Cost>White</Cost>
       <Quantity>Yellow</Quantity>
     </Common>
     <Player>
+      <SelectedBorder>SkyBlue</SelectedBorder>
       <DamageToCastlePositive>Green</DamageToCastlePositive>
       <DamageToCastleNegative>Red</DamageToCastleNegative>
     </Player>

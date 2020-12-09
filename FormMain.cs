@@ -512,7 +512,6 @@ namespace Fantasy_King_s_Battle
                 top = GuiUtils.NextTop(p.Panel);
             }
 
-
             Refresh();
         }
 

@@ -203,14 +203,6 @@ namespace Fantasy_King_s_Battle
                 Program.formMain.formHint.HideHint();
         }
 
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            base.OnPaint(e);
-            
-            if (Program.formMain.SelectedPanelBuilding == this)
-                e.Graphics.DrawRectangle(penBorder, rectBorder.X + 1, rectBorder.Y + 1, rectBorder.Width - 2, rectBorder.Height - 2);
-        }
-
         private void BtnHero_Click(object sender, EventArgs e)
         {
             Debug.Assert(Building.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
@@ -262,8 +254,6 @@ namespace Fantasy_King_s_Battle
         internal void UpdateData()
         {
             Debug.Assert(Building.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
-
-            BackColor = Program.formMain.SelectedPanelBuilding == this ? Color.SkyBlue : Color.PowderBlue;
 
             lblName.Text = Building.Building.Name;
             lblIncome.ImageIndex = Building.DoIncome() == true ? FormMain.GUI_16_GOLD : -1;
@@ -341,6 +331,10 @@ namespace Fantasy_King_s_Battle
             }
 
             Invalidate();
+        }
+        protected override Color ColorBorder()
+        {
+            return FormMain.Config.ColorBorder(Program.formMain.SelectedPanelBuilding == this);
         }
     }
 }

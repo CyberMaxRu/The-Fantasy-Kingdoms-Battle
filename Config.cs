@@ -166,11 +166,13 @@ namespace Fantasy_King_s_Battle
 
         // Цвета
         internal Color CommonBorder { get; private set; }
+        internal Color CommonSelectedBorder { get; private set; }
         internal Color CommonCaptionPage { get; private set; }
         internal Color CommonLevel { get; private set; }
         internal Color CommonCost { get; private set; }
         internal Color CommonQuantity { get; private set; }
 
+        internal Color SelectedPlayerBorder { get; private set; }
         internal Color DamageToCastlePositive { get; private set; }
         internal Color DamageToCastleNegative { get; private set; }
 
@@ -406,11 +408,13 @@ namespace Fantasy_King_s_Battle
 
             // Цвета
             CommonBorder = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Common/Border").InnerText);
+            CommonSelectedBorder = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Common/SelectedBorder").InnerText);
             CommonCaptionPage = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Common/CaptionPage").InnerText);
             CommonLevel = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Common/Level").InnerText);
             CommonCost = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Common/Cost").InnerText);
             CommonQuantity = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Common/Quantity").InnerText);
 
+            SelectedPlayerBorder = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Player/SelectedBorder").InnerText);
             DamageToCastlePositive = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Player/DamageToCastlePositive").InnerText);
             DamageToCastleNegative = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Player/DamageToCastleNegative").InnerText);
 
@@ -465,7 +469,12 @@ namespace Fantasy_King_s_Battle
 
         internal Color ColorEntity(bool ally)
         {
-            return ally ? FormMain.Config.BattlefieldAllyColor : FormMain.Config.BattlefieldEnemyColor;
+            return ally ? BattlefieldAllyColor : BattlefieldEnemyColor;
+        }
+
+        internal Color ColorBorder(bool selected)
+        {
+            return selected ? CommonSelectedBorder : CommonBorder;
         }
     }
 }

@@ -125,6 +125,7 @@ namespace Fantasy_King_s_Battle
             //e.Graphics.FillRectangle(brushBackground, rectBorder);
 
             // Рамка вокруг панели
+            penBorder.Color = player == player.Lobby.CurrentPlayer ? FormMain.Config.SelectedPlayerBorder : FormMain.Config.CommonBorder;
             e.Graphics.DrawRectangle(penBorder, rectBorder);
 
             // Прочность замка

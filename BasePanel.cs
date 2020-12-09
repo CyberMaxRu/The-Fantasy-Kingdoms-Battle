@@ -39,10 +39,16 @@ namespace Fantasy_King_s_Battle
             pevent.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
 
             // Рисуем бордюр
+            penBorder.Color = ColorBorder();
             pevent.Graphics.DrawRectangle(penBorder, rectBorder);
 
             // Рисуем подложку
             pevent.Graphics.DrawImageUnscaled(bmpBackground, 1, 1);
+        }
+
+        protected virtual Color ColorBorder()
+        {
+            return FormMain.Config.CommonBorder;
         }
     }
 }
