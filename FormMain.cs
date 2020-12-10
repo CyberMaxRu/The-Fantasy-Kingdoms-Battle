@@ -150,6 +150,7 @@ namespace Fantasy_King_s_Battle
         public FormMain()
         {
             InitializeComponent();
+
             Text = NAME_PROJECT + " (сборка " + VERSION + ")";
 
             // Настройка переменной с папкой ресурсов
@@ -446,8 +447,16 @@ namespace Fantasy_King_s_Battle
             formHint = new FormHint(bmpForBackground, ilGui16, ilParameters);
 
             splashForm.Dispose();
-            //WindowState = FormWindowState.Maximized;
-            //FormBorderStyle = FormBorderStyle.None;
+
+            //
+            if (Settings.FullScreenMode)
+            {
+                WindowState = FormWindowState.Maximized;
+                FormBorderStyle = FormBorderStyle.None;
+                Application.DoEvents();
+            }
+            else
+                Location = new Point((Screen.PrimaryScreen.WorkingArea.Width - Width) / 2, (Screen.PrimaryScreen.WorkingArea.Height - Height) / 2);
 
             // 
             if (Settings.ShowSplashVideo)
@@ -551,13 +560,14 @@ namespace Fantasy_King_s_Battle
 
         private void BtnQuit_Click(object sender, EventArgs e)
         {
-            TryClose();
+            Close();
         }
 
-        private void TryClose()
+        protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Выйти из игры?", NAME_PROJECT, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                Close();
+            base.OnFormClosing(e);
+
+            e.Cancel = MessageBox.Show("Выйти из игры?", NAME_PROJECT, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No;
         }
 
         private void ArrangeControls()
@@ -1024,11 +1034,6 @@ namespace Fantasy_King_s_Battle
         private void tsl_MouseLeave(object sender, EventArgs e)
         {
             formHint.HideHint();
-        }
-
-        private void tspExit_Click(object sender, EventArgs e)
-        {
-            Close();
         }
 
         private void Control_MouseLeave(object sender, EventArgs e)
