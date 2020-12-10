@@ -23,6 +23,9 @@ namespace Fantasy_King_s_Battle
         private const string VERSION_POSTFIX = "в разработке";
         internal readonly string dirResources;
 
+        private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer;
+
+        // ImageList'ы
         internal readonly ImageList ilPlayerAvatars;
         internal readonly ImageList ilPlayerAvatarsBig;
         internal readonly ImageList ilResultBattle;
@@ -42,6 +45,21 @@ namespace Fantasy_King_s_Battle
         internal Brush brushQuantity;
         internal Brush brushCost;
 
+        // Контролы главного меню
+        private readonly Label labelGold;
+        private readonly Label labelDay;
+        private readonly Label labelPeasants;
+
+        private readonly Button btnPreferences;
+        private readonly Button btnHelp;
+        private readonly Button btnQuit;
+
+        private readonly Button btnPageGuilds;
+        private readonly Button btnPageBuildings;
+        private readonly Button btnPageTemples;
+        private readonly Button btnPageHeroes;
+        private readonly Button btnEndTurn;
+
         private PanelWithPanelEntity panelWarehouse;
         private PanelWithPanelEntity panelHeroes;
 
@@ -57,6 +75,12 @@ namespace Fantasy_King_s_Battle
         internal const int GUI_BATTLE = 9;
         internal const int GUI_PEASANT = 10;
         internal const int GUI_HOURGLASS = 11;
+        internal const int GUI_GOODS = 12;
+        internal const int GUI_HOME = 13;
+        internal const int GUI_INVENTORY = 14;
+        internal const int GUI_TARGET = 15;
+        internal const int GUI_BOOK = 16;
+        internal const int GUI_EXIT = 17;
 
         internal const int GUI_PARAMETER_STRENGTH = 6;
         internal const int GUI_PARAMETER_DEXTERITY = 7;
@@ -104,6 +128,10 @@ namespace Fantasy_King_s_Battle
         private readonly PanelPage pageHeroes;
         private PanelPage currentPage;
         private readonly int leftForPages;
+        private readonly int heightToolBar;
+        private readonly int heightBandLobby;
+        private readonly int heightBandBuildings;
+        private readonly int heightBandInfoAndMenu;
         private readonly Point pointMenu;
         private readonly PanelMenu panelMenu;
         private readonly PanelBuildingInfo panelBuildingInfo;
@@ -217,21 +245,20 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(LengthSideBorderBattlefield > 0);
 
             // Создаем лобби
+            // Переместить уже после создания всех контролов, чтобы обеспечить связь лобби-контролы
             lobby = new Lobby(Config.TypeLobbies[0]);
 
-            // Подготавливаем тулбар
             SetStage("Строим замок");
-            toolStripMain.ImageList = ilGui;
-            toolStripMain.ImageScalingSize = ilGui.ImageSize;
 
-            tslDay.Font = Config.FontToolbar;
-            tslGold.ImageIndex = GUI_BUY;
-            tslGold.Font = Config.FontToolbar;
-            tslBuilders.ImageIndex = GUI_PEASANT;
-            tslBuilders.Font = Config.FontToolbar;
-            tslHeroes.ImageIndex = GUI_HEROES;
-            tslHeroes.Font = Config.FontToolbar;
-            tsbEndTurn.ImageIndex = GUI_HOURGLASS;
+            // Кнопки в правом верхнем углу
+            btnPreferences = GuiUtils.CreateButtonWithIcon(this, 0, Config.GridSize, GUI_INVENTORY);
+            btnPreferences.Click += BtnPreferences_Click;
+            btnHelp = GuiUtils.CreateButtonWithIcon(this, 0, Config.GridSize, GUI_BOOK);
+            btnHelp.Click += BtnHelp_Click;
+            btnQuit = GuiUtils.CreateButtonWithIcon(this, 0, Config.GridSize, GUI_EXIT);
+            btnQuit.Click += BtnQuit_Click;
+
+            heightToolBar = btnQuit.Height + (Config.GridSize * 2);
 
             // Создаем иконки игроков в левой части окна
             PanelPlayer pp;
@@ -240,13 +267,38 @@ namespace Fantasy_King_s_Battle
                 pp = new PanelPlayer(this);
                 pp.Player = p;
                 panelPlayers.Add(pp);
+                heightBandLobby = pp.Top + pp.Height;
             }
 
             leftForPages = GuiUtils.NextLeft(lobby.Players[0].Panel);
 
-            tabControl1.Top = GuiUtils.NextTop(toolStripMain);
-            tabControl1.Left = leftForPages;
+            // Текст с информацией о Королевстве
+            labelDay = GuiUtils.CreateLabel(this, Config.GridSize, Config.GridSize, 80, "День");
+            labelDay.Height = 20;
+            labelDay.Font = Config.FontToolbar;
+            labelDay.ForeColor = Color.White;
+            labelDay.BackColor = Color.Transparent;
+            labelDay.MouseHover += LabelDay_MouseHover;
+            labelGold = GuiUtils.CreateLabel(this, Config.GridSize, labelDay.Top + labelDay.Height, 80, "");
+            labelGold.Height = 20;
+            labelGold.ImageList = ilGui16;
+            labelGold.ImageIndex = GUI_16_GOLD;
+            labelGold.Font = Config.FontToolbar;
+            labelGold.ForeColor = Color.White;
+            labelGold.BackColor = Color.Transparent;
+            labelGold.ImageAlign = ContentAlignment.MiddleLeft;
+            labelGold.MouseHover += LabelGold_MouseHover;
+            labelPeasants = GuiUtils.CreateLabel(this, Config.GridSize, labelGold.Top + labelGold.Height, 80, "");
+            labelPeasants.Height = 20;
+            labelPeasants.ImageList = ilGui16;
+            labelPeasants.ImageIndex = GUI_16_PEASANT;
+            labelPeasants.Font = Config.FontToolbar;
+            labelPeasants.ForeColor = Color.White;
+            labelPeasants.BackColor = Color.Transparent;
+            labelPeasants.ImageAlign = ContentAlignment.MiddleLeft;
+            labelPeasants.MouseHover += LabelPeasants_MouseHover;
 
+            // Страницы меню
             pageGuilds = PreparePanel();
             pageBuildings = PreparePanel();
             pageTemples = PreparePanel();
@@ -256,31 +308,44 @@ namespace Fantasy_King_s_Battle
             pages.Add(pageTemples);
             pages.Add(pageHeroes);
 
-            tabControl1.ImageList = ilGui;
-            tabPageGuilds.ImageIndex = GUI_GUILDS;
-            tabPageGuilds.Text = "";
-            tabPageBuildings.ImageIndex = GUI_ECONOMY;
-            tabPageBuildings.Text = "";
-            tabPageTemples.ImageIndex = GUI_TEMPLE;
-            tabPageTemples.Text = "";
-            tabPageHeroes.ImageIndex = GUI_HEROES;
-            tabPageHeroes.Text = "";
-
-            DrawGuilds();
-            DrawBuildings();
-            DrawTemples();
-            DrawHeroes();
-            DrawWarehouse();
-
             PanelPage PreparePanel()
             {
                 return new PanelPage()
                 {
                     Parent = this,
                     Left = leftForPages,
-                    Top = GuiUtils.NextTop(tabControl1)
+                    Top = GuiUtils.NextTop(btnQuit)
                 };
             }
+
+            // Кнопки страниц и конца хода
+            btnPageGuilds = CreateButtonPage(pageGuilds, GUI_GUILDS);
+            btnPageBuildings = CreateButtonPage(pageBuildings, GUI_ECONOMY);
+            btnPageTemples = CreateButtonPage(pageTemples, GUI_TEMPLE);
+            btnPageHeroes = CreateButtonPage(pageHeroes, GUI_HEROES);
+
+            btnEndTurn = GuiUtils.CreateButtonWithIcon(this, 0, Config.GridSize, GUI_BATTLE);
+            btnEndTurn.Text = "Конец хода";
+            btnEndTurn.Width = 160;
+            btnEndTurn.ImageAlign = ContentAlignment.MiddleLeft;
+            btnEndTurn.MouseHover += BtnEndTurn_MouseHover;
+            btnEndTurn.Click += BtnEndTurn_Click;
+
+            Button CreateButtonPage(PanelPage p, int imageIndex)
+            {
+                Button b = GuiUtils.CreateButtonWithIcon(this, 0, Config.GridSize, imageIndex);
+                b.FlatAppearance.BorderColor = Color.DarkBlue;
+                b.Tag = p;
+                b.Click += BtnPage_Click;
+
+                return b;
+            }
+
+            DrawGuilds();
+            DrawBuildings();
+            DrawTemples();
+            DrawHeroes();
+            DrawWarehouse();
 
             ShowDataPlayer();
 
@@ -308,10 +373,10 @@ namespace Fantasy_King_s_Battle
             panelMenu.Top = ClientSize.Height - panelMenu.Height - Config.GridSize;
 
             // Панель информации о здании
-            panelBuildingInfo = new PanelBuildingInfo(panelMenu.Top - GuiUtils.NextTop(tabControl1) - Config.GridSize)
+            panelBuildingInfo = new PanelBuildingInfo(panelMenu.Top - GuiUtils.NextTop(btnPageGuilds) - Config.GridSize)
             {
                 Parent = this,
-                Top = GuiUtils.NextTop(tabControl1),
+                Top = GuiUtils.NextTop(btnPageGuilds),
                 Visible = false
             };
 
@@ -336,19 +401,30 @@ namespace Fantasy_King_s_Battle
             pointMenu.X = pointMenu.X + ((widthRightPanel - panelMenu.Width) / 2);
             int calcedWidth = leftForPages + maxWidthPages + widthRightPanel + Config.GridSize;
 
+            // Определяем высоту бэнда зданий
+            heightBandBuildings = 0;
+            foreach (Building b in Config.Buildings)
+                if (b.Panel != null)
+                    heightBandBuildings = Math.Max(heightBandBuildings, b.Panel.Height + b.Panel.Top);
+
+            // Определяем высоту бэнда информации
+            //heightBandInfoAndMenu = panelMenu.Height + Math.Max(panelBuildingInfo.Height, panelHeroInfo.Height);
+
+            //
+            Width = (Width - ClientSize.Width) + calcedWidth + Config.GridSize;
+            // Высота - это наибольшая высота бэндов лобби, зданий и информации с меню
+            Height = heightToolBar + Math.Max(heightBandLobby, heightBandBuildings)
+                 + (Height - ClientSize.Height) + Config.GridSize;
+            pointMenu.Y = ClientSize.Height - panelMenu.Height - Config.GridSize;
+
             panelMenu.Location = pointMenu;
 
-            Width = (Width - ClientSize.Width) + calcedWidth + Config.GridSize;
-            Height = GuiUtils.NextTop(lobby.Players[lobby.Players.Length - 1].Panel) + (Height - ClientSize.Height);
-            tabControl1.Width = ClientSize.Width - tabControl1.Left - Config.GridSize;
-            pointMenu.Y = ClientSize.Height - panelMenu.Height - Config.GridSize;
+            panelBuildingInfo.Height = ClientSize.Height - panelBuildingInfo.Top - panelMenu.Height - (Config.GridSize * 2);
+            panelHeroInfo.Height = panelBuildingInfo.Height;
 
             // Подготавливаем подложку
             bmpBackground = GuiUtils.MakeBackground(ClientSize);
 
-            //
-            toolStripMain.BackgroundImage = GuiUtils.MakeBackground(toolStripMain.Size);
-            toolStripMain.ForeColor = Color.White;
 
             SetStage("Прибираем после строителей");
             // Перенести в класс
@@ -360,6 +436,9 @@ namespace Fantasy_King_s_Battle
             }
 
             //
+
+            ArrangeControls();
+
             ActivatePage(pageGuilds);
 
             formHint = new FormHint(bmpForBackground, ilGui16, ilParameters);
@@ -370,16 +449,18 @@ namespace Fantasy_King_s_Battle
 
             // 
             /*KeyDown += FormMain_KeyDown;
-            KeyPreview = true;
+            KeyPreview = true;*/
 
-            axWindowsMediaPlayer1.URL = dirResources + "Video\\Rebirth.ogg";
+            AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer = new AxWMPLib.AxWindowsMediaPlayer();
+            axWindowsMediaPlayer.Parent = this;
+            /*axWindowsMediaPlayer1.URL = dirResources + "Video\\Rebirth.ogg";
             axWindowsMediaPlayer1.uiMode = "none";
             axWindowsMediaPlayer1.Location = new Point(0, 0);
             axWindowsMediaPlayer1.Size = ClientSize;
             axWindowsMediaPlayer1.MouseDownEvent += AxWindowsMediaPlayer1_MouseDownEvent;
             axWindowsMediaPlayer1.PlayStateChange += AxWindowsMediaPlayer1_PlayStateChange;
             axWindowsMediaPlayer1.Ctlcontrols.play();*/
-            axWindowsMediaPlayer1.Dispose();
+            axWindowsMediaPlayer.Dispose();
 
             void SetStage(string text)
             {
@@ -387,23 +468,119 @@ namespace Fantasy_King_s_Battle
                 lblStage.Refresh();
             }
         }
-        
+
+        private void BtnEndTurn_Click(object sender, EventArgs e)
+        {
+            formHint.HideHint();
+
+            btnEndTurn.Enabled = false;
+            lobby.DoEndTurn();
+
+            if (lobby.CurrentPlayer == null)
+            {
+                // Лобби для текущего игрока закончено
+                if (lobby.HumanIsWin)
+                {
+                    MessageBox.Show("Поздравляем, вы победитель!", "ПОБЕДА!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    StartNewLobby();
+                    return;
+                }
+                else// Если вылетели из лобби, то показываем итоговое место и начинаем новое лобби
+                {
+                    // Здесь заложено, что реальный игрок под номером 0. Это может быть не так
+                    MessageBox.Show("Поражение..." + Environment.NewLine + "Вы заняли " + lobby.Players[0].PositionInLobby.ToString() + " место.", "ПОРАЖЕНИЕ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    StartNewLobby();
+                    return;
+                }
+
+            }
+
+            Debug.Assert(lobby.CurrentPlayer.IsLive);
+            if (lobby.CurrentPlayer.IsLive)
+            {
+                ShowDataPlayer();
+                btnEndTurn.Enabled = true;
+            }
+        }
+
+        private void BtnEndTurn_MouseHover(object sender, EventArgs e)
+        {
+            ShowHintForToolButton(btnEndTurn, "Конец хода", "Завершение хода");
+        }
+
+        private void LabelPeasants_MouseHover(object sender, EventArgs e)
+        {
+            ShowHintForToolButton(labelPeasants, "Крестьяне", "Количество свободных строителей");
+        }
+
+        private void LabelGold_MouseHover(object sender, EventArgs e)
+        {
+            ShowHintForToolButton(labelGold, "Казна", "Количество золота в казне и постоянный доход в день");
+        }
+
+        private void LabelDay_MouseHover(object sender, EventArgs e)
+        {
+            ShowHintForToolButton(labelDay, "День игры", "День игры: " + lobby.Turn.ToString());
+        }
+
+        private void BtnPage_Click(object sender, EventArgs e)
+        {
+            ActivatePage((PanelPage)((Button)sender).Tag);
+        }
+
+        private void BtnPreferences_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnHelp_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnQuit_Click(object sender, EventArgs e)
+        {
+            TryClose();
+        }
+
+        private void TryClose()
+        {
+            if (MessageBox.Show("Выйти из игры?", NAME_PROJECT, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                Close();
+        }
+
+        private void ArrangeControls()
+        {
+            btnQuit.Left = ClientSize.Width - btnQuit.Width - Config.GridSize;
+            btnHelp.Left = btnQuit.Left - btnQuit.Width - Config.GridSize;
+            btnPreferences.Left = btnHelp.Left - btnHelp.Width - Config.GridSize;
+
+            btnPageGuilds.Left = leftForPages;
+            btnPageBuildings.Left = GuiUtils.NextLeft(btnPageGuilds);
+            btnPageTemples.Left = GuiUtils.NextLeft(btnPageBuildings);
+            btnPageHeroes.Left = GuiUtils.NextLeft(btnPageTemples);
+
+            btnEndTurn.Left = panelBuildingInfo.Left - btnEndTurn.Width - Config.GridSize;
+        }
+
         private void FormMain_KeyDown(object sender, KeyEventArgs e)
         {
-            axWindowsMediaPlayer1.Ctlcontrols.stop();
+            axWindowsMediaPlayer.Ctlcontrols.stop();
             KeyDown -= FormMain_KeyDown;
             KeyPreview = false;
         }
 
         private void AxWindowsMediaPlayer1_MouseDownEvent(object sender, AxWMPLib._WMPOCXEvents_MouseDownEvent e)
         {
-            axWindowsMediaPlayer1.Ctlcontrols.stop();
+            axWindowsMediaPlayer.Ctlcontrols.stop();
         }
 
         private void AxWindowsMediaPlayer1_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
         {
             if (e.newState == (int)WMPLib.WMPPlayState.wmppsStopped)
-                axWindowsMediaPlayer1.Dispose();
+                axWindowsMediaPlayer.Dispose();
         }
 
         internal static Config Config { get; set; }
@@ -480,7 +657,7 @@ namespace Fantasy_King_s_Battle
         {
             Debug.Assert(lobby.CurrentPlayer.TypePlayer == TypePlayer.Human);
 
-            tslDay.Text = "День: " + lobby.Turn.ToString();
+            labelDay.Text = "День: " + lobby.Turn.ToString();
             
             // Если этого игрока не отрисовывали, формируем заново вкладки
             if (curAppliedPlayer != lobby.CurrentPlayer)
@@ -500,7 +677,7 @@ namespace Fantasy_King_s_Battle
 
         private void ShowLobby()
         {
-            int top = tabControl1.Top;
+            int top = heightToolBar;
             foreach (Player p in lobby.Players.OrderBy(p => p.PositionInLobby))
             {
                 Debug.Assert(p.PositionInLobby >= 1);
@@ -643,9 +820,8 @@ namespace Fantasy_King_s_Battle
         {
             Debug.Assert(lobby.CurrentPlayer.TypePlayer == TypePlayer.Human);
 
-            tslGold.Text = lobby.CurrentPlayer.Gold.ToString() + " (+" + lobby.CurrentPlayer.Income().ToString() + ")";
-            tslBuilders.Text = lobby.CurrentPlayer.FreeBuilders.ToString() + "/" + lobby.CurrentPlayer.TotalBuilders.ToString();
-            tslHeroes.Text = lobby.CurrentPlayer.CombatHeroes.Count.ToString() + "/" + lobby.TypeLobby.MaxHeroes.ToString();
+            labelGold.Text = "     " + lobby.CurrentPlayer.Gold.ToString() + " (+" + lobby.CurrentPlayer.Income().ToString() + ")";
+            labelPeasants.Text = "     " + lobby.CurrentPlayer.FreeBuilders.ToString() + "/" + lobby.CurrentPlayer.TotalBuilders.ToString();
         }
 
         internal void ShowAllBuildings()
@@ -696,42 +872,6 @@ namespace Fantasy_King_s_Battle
             formHint = new FormHint(bmpForBackground, ilGui16, ilParameters);
         }
 
-        private void tsbEndTurn_Click(object sender, EventArgs e)
-        {
-            formHint.HideHint();
-
-            tsbEndTurn.Enabled = false;
-            lobby.DoEndTurn();
-
-            if (lobby.CurrentPlayer == null)
-            {
-                // Лобби для текущего игрока закончено
-                if (lobby.HumanIsWin)
-                {
-                    MessageBox.Show("Поздравляем, вы победитель!", "ПОБЕДА!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    StartNewLobby();
-                    return;
-                }
-                else// Если вылетели из лобби, то показываем итоговое место и начинаем новое лобби
-                {
-                    // Здесь заложено, что реальный игрок под номером 0. Это может быть не так
-                    MessageBox.Show("Поражение..." + Environment.NewLine + "Вы заняли " + lobby.Players[0].PositionInLobby.ToString() + " место.", "ПОРАЖЕНИЕ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    StartNewLobby();
-                    return;
-                }
-
-            }
-
-            Debug.Assert(lobby.CurrentPlayer.IsLive);
-            if (lobby.CurrentPlayer.IsLive)
-            {
-                ShowDataPlayer();
-                tsbEndTurn.Enabled = true;
-            }
-        }
-
         private void StartNewLobby()
         {
             lobby = new Lobby(Config.TypeLobbies[0]);
@@ -740,7 +880,7 @@ namespace Fantasy_King_s_Battle
 
             ShowDataPlayer();
 
-            tsbEndTurn.Enabled = true;
+            btnEndTurn.Enabled = true;
         }
 
         private void DrawLobby()
@@ -864,48 +1004,25 @@ namespace Fantasy_King_s_Battle
             panelBuildingInfo.ShowData();
         }
 
-        private void tslDay_MouseHover(object sender, EventArgs e)
-        {
-            ShowHintForToolButton(tslDay, "День игры", "День игры: " + lobby.Turn.ToString());
-        }
 
-        private void tslGold_MouseHover(object sender, EventArgs e)
-        {
-            ShowHintForToolButton(tslGold, "Казна", "Количество золота в казне и постоянный доход в день");
-        }
-
-        private void tslBuilders_MouseHover(object sender, EventArgs e)
-        {
-            ShowHintForToolButton(tslBuilders, "Крестьяне", "Количество свободных строителей");
-        }
-
-        private void tslHeroes_MouseHover(object sender, EventArgs e)
-        {
-            ShowHintForToolButton(tslHeroes, "Герои", "Количество героев в Королевстве - текущее и максимальное");
-        }
-
-        private void tsbEndTurn_MouseHover(object sender, EventArgs e)
-        {
-            ShowHintForToolButton(tsbEndTurn, "Конец хода", "Завершение хода");
-        }
-
-        private void ShowHintForToolButton(ToolStripItem tsi, string text, string hint)
+        private void ShowHintForToolButton(Control c, string text, string hint)
         {
             formHint.Clear();
             formHint.AddStep1Header(text, "", hint);
-
-            Point l = toolStripMain.PointToScreen(new Point(0, toolStripMain.Height + 2));
-            foreach (ToolStripItem i in toolStripMain.Items)
-            {
-                if (i == tsi)
-                    break;
-                l.X += i.Width;
-            }
-
-            formHint.ShowHint(l);
+            formHint.ShowHint(c);
         }
 
         private void tsl_MouseLeave(object sender, EventArgs e)
+        {
+            formHint.HideHint();
+        }
+
+        private void tspExit_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void Control_MouseLeave(object sender, EventArgs e)
         {
             formHint.HideHint();
         }

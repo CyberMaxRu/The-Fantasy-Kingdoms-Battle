@@ -29,183 +29,13 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPageGuilds = new System.Windows.Forms.TabPage();
-            this.tabPageBuildings = new System.Windows.Forms.TabPage();
-            this.tabPageTemples = new System.Windows.Forms.TabPage();
-            this.tabPageHeroes = new System.Windows.Forms.TabPage();
-            this.toolStripMain = new System.Windows.Forms.ToolStrip();
-            this.tslDay = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tslGold = new System.Windows.Forms.ToolStripLabel();
-            this.tslBuilders = new System.Windows.Forms.ToolStripLabel();
-            this.tslHeroes = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbEndTurn = new System.Windows.Forms.ToolStripButton();
-            this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
-            this.tabControl1.SuspendLayout();
-            this.toolStripMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
-            this.tabControl1.Controls.Add(this.tabPageGuilds);
-            this.tabControl1.Controls.Add(this.tabPageBuildings);
-            this.tabControl1.Controls.Add(this.tabPageTemples);
-            this.tabControl1.Controls.Add(this.tabPageHeroes);
-            this.tabControl1.Location = new System.Drawing.Point(80, 100);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.ShowToolTips = true;
-            this.tabControl1.Size = new System.Drawing.Size(896, 60);
-            this.tabControl1.TabIndex = 1;
-            this.tabControl1.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl1_Selected);
-            // 
-            // tabPageGuilds
-            // 
-            this.tabPageGuilds.Location = new System.Drawing.Point(4, 25);
-            this.tabPageGuilds.Name = "tabPageGuilds";
-            this.tabPageGuilds.Size = new System.Drawing.Size(888, 31);
-            this.tabPageGuilds.TabIndex = 6;
-            this.tabPageGuilds.Text = "Гильдии";
-            this.tabPageGuilds.ToolTipText = "Гильдии";
-            this.tabPageGuilds.UseVisualStyleBackColor = true;
-            // 
-            // tabPageBuildings
-            // 
-            this.tabPageBuildings.Location = new System.Drawing.Point(4, 25);
-            this.tabPageBuildings.Name = "tabPageBuildings";
-            this.tabPageBuildings.Size = new System.Drawing.Size(888, 31);
-            this.tabPageBuildings.TabIndex = 2;
-            this.tabPageBuildings.Text = "Строения";
-            this.tabPageBuildings.ToolTipText = "Экономические строения";
-            this.tabPageBuildings.UseVisualStyleBackColor = true;
-            // 
-            // tabPageTemples
-            // 
-            this.tabPageTemples.Location = new System.Drawing.Point(4, 25);
-            this.tabPageTemples.Name = "tabPageTemples";
-            this.tabPageTemples.Size = new System.Drawing.Size(888, 31);
-            this.tabPageTemples.TabIndex = 7;
-            this.tabPageTemples.Text = "Храмы";
-            this.tabPageTemples.ToolTipText = "Храмы";
-            this.tabPageTemples.UseVisualStyleBackColor = true;
-            // 
-            // tabPageHeroes
-            // 
-            this.tabPageHeroes.Location = new System.Drawing.Point(4, 25);
-            this.tabPageHeroes.Name = "tabPageHeroes";
-            this.tabPageHeroes.Size = new System.Drawing.Size(888, 31);
-            this.tabPageHeroes.TabIndex = 3;
-            this.tabPageHeroes.Text = "Герои";
-            this.tabPageHeroes.ToolTipText = "Герои";
-            this.tabPageHeroes.UseVisualStyleBackColor = true;
-            // 
-            // toolStripMain
-            // 
-            this.toolStripMain.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tslDay,
-            this.toolStripSeparator1,
-            this.tslGold,
-            this.tslBuilders,
-            this.tslHeroes,
-            this.toolStripSeparator2,
-            this.tsbEndTurn});
-            this.toolStripMain.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
-            this.toolStripMain.Location = new System.Drawing.Point(0, 0);
-            this.toolStripMain.Name = "toolStripMain";
-            this.toolStripMain.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStripMain.ShowItemToolTips = false;
-            this.toolStripMain.Size = new System.Drawing.Size(979, 51);
-            this.toolStripMain.TabIndex = 5;
-            this.toolStripMain.Text = "toolStrip1";
-            // 
-            // tslDay
-            // 
-            this.tslDay.AutoSize = false;
-            this.tslDay.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tslDay.Name = "tslDay";
-            this.tslDay.Size = new System.Drawing.Size(104, 48);
-            this.tslDay.Text = "toolStripLabel1";
-            this.tslDay.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tslDay.MouseLeave += new System.EventHandler(this.tsl_MouseLeave);
-            this.tslDay.MouseHover += new System.EventHandler(this.tslDay_MouseHover);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.AutoSize = false;
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 50);
-            // 
-            // tslGold
-            // 
-            this.tslGold.AutoSize = false;
-            this.tslGold.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tslGold.Name = "tslGold";
-            this.tslGold.Size = new System.Drawing.Size(200, 48);
-            this.tslGold.Text = "toolStripLabel2";
-            this.tslGold.MouseLeave += new System.EventHandler(this.tsl_MouseLeave);
-            this.tslGold.MouseHover += new System.EventHandler(this.tslGold_MouseHover);
-            // 
-            // tslBuilders
-            // 
-            this.tslBuilders.AutoSize = false;
-            this.tslBuilders.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tslBuilders.Name = "tslBuilders";
-            this.tslBuilders.Size = new System.Drawing.Size(120, 48);
-            this.tslBuilders.Text = "toolStripLabel3";
-            this.tslBuilders.MouseLeave += new System.EventHandler(this.tsl_MouseLeave);
-            this.tslBuilders.MouseHover += new System.EventHandler(this.tslBuilders_MouseHover);
-            // 
-            // tslHeroes
-            // 
-            this.tslHeroes.AutoSize = false;
-            this.tslHeroes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tslHeroes.Name = "tslHeroes";
-            this.tslHeroes.Size = new System.Drawing.Size(120, 48);
-            this.tslHeroes.Text = "tslHeroes";
-            this.tslHeroes.MouseLeave += new System.EventHandler(this.tsl_MouseLeave);
-            this.tslHeroes.MouseHover += new System.EventHandler(this.tslHeroes_MouseHover);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.AutoSize = false;
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 50);
-            // 
-            // tsbEndTurn
-            // 
-            this.tsbEndTurn.AutoToolTip = false;
-            this.tsbEndTurn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbEndTurn.Image = ((System.Drawing.Image)(resources.GetObject("tsbEndTurn.Image")));
-            this.tsbEndTurn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbEndTurn.Name = "tsbEndTurn";
-            this.tsbEndTurn.Size = new System.Drawing.Size(23, 20);
-            this.tsbEndTurn.Text = "toolStripButton1";
-            this.tsbEndTurn.Click += new System.EventHandler(this.tsbEndTurn_Click);
-            this.tsbEndTurn.MouseLeave += new System.EventHandler(this.tsl_MouseLeave);
-            this.tsbEndTurn.MouseHover += new System.EventHandler(this.tsbEndTurn_MouseHover);
-            // 
-            // axWindowsMediaPlayer1
-            // 
-            this.axWindowsMediaPlayer1.Enabled = true;
-            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(848, 512);
-            this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
-            this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
-            this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(115, 55);
-            this.axWindowsMediaPlayer1.TabIndex = 6;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(979, 877);
-            this.Controls.Add(this.axWindowsMediaPlayer1);
-            this.Controls.Add(this.toolStripMain);
-            this.Controls.Add(this.tabControl1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -214,30 +44,11 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "The Fantasy Kingdoms Battle 0.2 (developer version)";
             this.Activated += new System.EventHandler(this.FormMain_Activated);
-            this.tabControl1.ResumeLayout(false);
-            this.toolStripMain.ResumeLayout(false);
-            this.toolStripMain.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPageBuildings;
-        private System.Windows.Forms.TabPage tabPageHeroes;
-        private System.Windows.Forms.TabPage tabPageGuilds;
-        private System.Windows.Forms.TabPage tabPageTemples;
-        private System.Windows.Forms.ToolStrip toolStripMain;
-        private System.Windows.Forms.ToolStripLabel tslDay;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripLabel tslGold;
-        private System.Windows.Forms.ToolStripLabel tslBuilders;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton tsbEndTurn;
-        private System.Windows.Forms.ToolStripLabel tslHeroes;
-        private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
     }
 }
 

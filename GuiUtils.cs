@@ -118,5 +118,38 @@ namespace Fantasy_King_s_Battle
             
             return pbox;
         }
+
+        internal static Label CreateLabel(Control parent, int left, int top, int width, string text)
+        {
+            return new Label()
+            {
+                Parent = parent,
+                Left = left,
+                Top = top,
+                AutoSize = false,
+                Width = width,
+                Text = text
+            };
+        }
+
+        internal static Button CreateButtonWithIcon(Control parent, int left, int top, int imageIndex)
+        {
+            Button b = new Button()
+            {
+                Parent = parent,
+                Left = left,
+                Top = top,
+                FlatStyle = FlatStyle.Flat,
+                ImageList = Program.formMain.ilGui,
+                ImageIndex = imageIndex,
+                BackColor = Color.Transparent,
+                BackgroundImage = Program.formMain.bmpBackgroundButton,
+                Size = SizeButtonWithImage(Program.formMain.ilGui)
+            };
+            //b.FlatAppearance.BorderSize = 0;
+            b.FlatAppearance.BorderColor = Color.Black;
+
+            return b;
+        }
     }
 }
