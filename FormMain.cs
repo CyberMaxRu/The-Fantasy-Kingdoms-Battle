@@ -25,9 +25,6 @@ namespace Fantasy_King_s_Battle
 
         private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer;
 
-        //
-        private Settings settings;
-
         // ImageList'ы
         internal readonly ImageList ilPlayerAvatars;
         internal readonly ImageList ilPlayerAvatarsBig;
@@ -113,8 +110,6 @@ namespace Fantasy_King_s_Battle
         private Player curAppliedPlayer;
 
         internal Lobby CurrentLobby { get { return lobby; } }
-        internal static bool ShowGrid { get; set; } = false;
-        internal static bool ShowPath { get; set; } = false;
 
         internal readonly Bitmap bmpForBackground;
         internal readonly Bitmap bmpBackgroundButton;
@@ -150,6 +145,9 @@ namespace Fantasy_King_s_Battle
         internal PlayerHero SelectedHero { get; private set; }
 
         internal static Random Rnd = new Random();
+
+        //
+        internal Settings Settings { get; private set; }
 
         public FormMain()
         {
@@ -210,7 +208,7 @@ namespace Fantasy_King_s_Battle
             };
 
             // Загружаем настройки
-            settings = new Settings(dirResources);
+            Settings = new Settings(dirResources);
 
             splashForm.Show();
             splashForm.Refresh();
@@ -539,7 +537,7 @@ namespace Fantasy_King_s_Battle
         private void BtnPreferences_Click(object sender, EventArgs e)
         {
             FormSettings f = new FormSettings();
-            f.ApplySettings(settings);
+            f.ApplySettings(Settings);
             if (f.ShowDialog() == DialogResult.OK)
             {
 

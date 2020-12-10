@@ -802,10 +802,10 @@ namespace Fantasy_King_s_Battle
 
             //
             chkbShowGrid.Left = ClientSize.Width - chkbShowGrid.Width - FormMain.Config.GridSize;
-            chkbShowGrid.Checked = FormMain.ShowGrid;
+            chkbShowGrid.Checked = Program.formMain.Settings.BattlefieldShowGrid;
             showGrid = !chkbShowGrid.Checked;
             chkbShowPath.Left = chkbShowGrid.Left - chkbShowPath.Width - FormMain.Config.GridSize;
-            chkbShowPath.Checked = FormMain.ShowPath;
+            chkbShowPath.Checked = Program.formMain.Settings.BattlefieldShowPath;
 
             //
             widthBorder = FormMain.Config.WidthBorderBattlefield;
@@ -883,8 +883,8 @@ namespace Fantasy_King_s_Battle
         {
             base.OnFormClosed(e);
 
-            FormMain.ShowGrid = chkbShowGrid.Checked;
-            FormMain.ShowPath = chkbShowPath.Checked;
+            Program.formMain.Settings.BattlefieldShowGrid = chkbShowGrid.Checked;
+            Program.formMain.Settings.BattlefieldShowPath = chkbShowPath.Checked;
         }
     }
 }

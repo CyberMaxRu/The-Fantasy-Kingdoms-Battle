@@ -43,5 +43,10 @@ namespace Fantasy_King_s_Battle
         internal bool BattlefieldShowGrid { get; set; }
         internal string NamePlayer { get; set; }
         internal int IndexAvatar { get; set; }
+
+        internal void SaveSettings()
+        {
+
+        }
     }
 }

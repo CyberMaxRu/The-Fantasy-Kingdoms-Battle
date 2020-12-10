@@ -52,6 +52,8 @@ namespace Fantasy_King_s_Battle
                 settings.BattlefieldShowGrid = chkbShowGrid.Checked;
 
                 settings.NamePlayer = txtbNamePlayer.Text;
+
+                settings.SaveSettings();
             }
         }
 
