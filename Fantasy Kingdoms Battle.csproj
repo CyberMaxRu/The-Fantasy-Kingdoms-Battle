@@ -125,6 +125,7 @@
     <Compile Include="Requirement.cs" />
     <Compile Include="Research.cs" />
     <Compile Include="Ammunition.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="TypeLobby.cs" />
     <Compile Include="Level.cs" />
     <Compile Include="Lobby.cs" />
@@ -178,6 +179,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Settings.xml" />
     <Content Include="Resources\Main.xml" />
     <Content Include="Resources\Config\Game.xml" />
     <Content Include="Resources\Config\Abilities.xml" />

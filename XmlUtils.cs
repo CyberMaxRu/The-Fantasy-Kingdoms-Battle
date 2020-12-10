@@ -27,6 +27,11 @@ namespace Fantasy_King_s_Battle
             return n != null ? n.InnerText : "";
         }
 
+        internal static bool GetParamFromXmlBool(XmlNode n, bool defValue)
+        {
+            return n != null ? Convert.ToBoolean(n.InnerText) : defValue;
+        }
+
         internal static Version GetVersionFromXml(XmlNode n)
         {
             return new Version(Convert.ToByte(n.SelectSingleNode("Major").InnerText),

@@ -25,6 +25,9 @@ namespace Fantasy_King_s_Battle
 
         private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer;
 
+        //
+        private Settings settings;
+
         // ImageList'ы
         internal readonly ImageList ilPlayerAvatars;
         internal readonly ImageList ilPlayerAvatarsBig;
@@ -205,6 +208,9 @@ namespace Fantasy_King_s_Battle
                 BackColor = Color.Transparent,
                 Font = new Font("Times New Roman", 13)
             };
+
+            // Загружаем настройки
+            settings = new Settings(dirResources);
 
             splashForm.Show();
             splashForm.Refresh();

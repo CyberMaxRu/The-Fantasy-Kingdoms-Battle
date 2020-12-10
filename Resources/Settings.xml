@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Settings>
+  <Options>
+    <ShowSplashVideo>true</ShowSplashVideo>
+    <FullScreenMode>false</FullScreenMode>
+    <CheckUpdatesOnStartup>true</CheckUpdatesOnStartup>
+  </Options>
+  <Player>
+    <Name>Игрок №1</Name>
+    <IndexAvatar>0</IndexAvatar>
+  </Player>
+</Settings>
