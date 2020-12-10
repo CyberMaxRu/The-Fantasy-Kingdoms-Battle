@@ -11,8 +11,11 @@ namespace Fantasy_King_s_Battle
     // Класс настроек
     internal sealed class Settings
     {
+        private string pathToResources;
         public Settings(string path)
         {
+            pathToResources = path;
+
             XmlDocument doc = new XmlDocument();
             doc.Load(path + "Settings.xml");
 
@@ -46,7 +49,32 @@ namespace Fantasy_King_s_Battle
 
         internal void SaveSettings()
         {
+            XmlTextWriter textWriter = new XmlTextWriter(pathToResources + "Settings.xml", Encoding.UTF8);
+            textWriter.WriteStartDocument();
+            textWriter.Formatting = Formatting.Indented;
 
+            textWriter.WriteStartElement("Settings");
+
+            // Записываем информацию о настройках игры
+            textWriter.WriteStartElement("Game");
+            textWriter.WriteElementString("ShowSplashVideo", ShowSplashVideo.ToString());
+            textWriter.WriteElementString("FullScreenMode", FullScreenMode.ToString());
+            textWriter.WriteElementString("CheckUpdatesOnStartup", CheckUpdateOnStartup.ToString());
+            textWriter.WriteEndElement();
+
+            textWriter.WriteStartElement("Battlefield");
+            textWriter.WriteElementString("ShowPath", BattlefieldShowPath.ToString());
+            textWriter.WriteElementString("ShowGrid", BattlefieldShowGrid.ToString());
+            textWriter.WriteEndElement();
+
+            textWriter.WriteStartElement("Player");
+            textWriter.WriteElementString("Name", NamePlayer);
+            textWriter.WriteElementString("IndexAvatar", IndexAvatar.ToString());
+            textWriter.WriteEndElement();
+
+            textWriter.WriteEndElement();
+            textWriter.Close();
+            textWriter.Dispose();
         }
     }
 }
