@@ -23,8 +23,6 @@ namespace Fantasy_King_s_Battle
         private const string VERSION_POSTFIX = "в разработке";
         internal readonly string dirResources;
 
-        private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer;
-
         // ImageList'ы
         internal readonly ImageList ilPlayerAvatars;
         internal readonly ImageList ilPlayerAvatarsBig;
@@ -452,19 +450,21 @@ namespace Fantasy_King_s_Battle
             //FormBorderStyle = FormBorderStyle.None;
 
             // 
-            /*KeyDown += FormMain_KeyDown;
-            KeyPreview = true;*/
+            if (Settings.ShowSplashVideo)
+            {
+                KeyDown += FormMain_KeyDown;
+                KeyPreview = true;
 
-            AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer = new AxWMPLib.AxWindowsMediaPlayer();
-            axWindowsMediaPlayer.Parent = this;
-            /*axWindowsMediaPlayer1.URL = dirResources + "Video\\Rebirth.ogg";
-            axWindowsMediaPlayer1.uiMode = "none";
-            axWindowsMediaPlayer1.Location = new Point(0, 0);
-            axWindowsMediaPlayer1.Size = ClientSize;
-            axWindowsMediaPlayer1.MouseDownEvent += AxWindowsMediaPlayer1_MouseDownEvent;
-            axWindowsMediaPlayer1.PlayStateChange += AxWindowsMediaPlayer1_PlayStateChange;
-            axWindowsMediaPlayer1.Ctlcontrols.play();*/
-            axWindowsMediaPlayer.Dispose();
+                axWindowsMediaPlayer1.URL = dirResources + @"Video\Rebirth.ogg";
+                axWindowsMediaPlayer1.uiMode = "none";
+                axWindowsMediaPlayer1.Location = new Point(0, 0);
+                axWindowsMediaPlayer1.Size = ClientSize;
+                axWindowsMediaPlayer1.MouseDownEvent += AxWindowsMediaPlayer1_MouseDownEvent;
+                axWindowsMediaPlayer1.PlayStateChange += AxWindowsMediaPlayer1_PlayStateChange;
+                axWindowsMediaPlayer1.Ctlcontrols.play();
+            }
+            else
+                axWindowsMediaPlayer1.Dispose();
 
             void SetStage(string text)
             {
@@ -576,20 +576,20 @@ namespace Fantasy_King_s_Battle
 
         private void FormMain_KeyDown(object sender, KeyEventArgs e)
         {
-            axWindowsMediaPlayer.Ctlcontrols.stop();
+            axWindowsMediaPlayer1.Ctlcontrols.stop();
             KeyDown -= FormMain_KeyDown;
             KeyPreview = false;
         }
 
         private void AxWindowsMediaPlayer1_MouseDownEvent(object sender, AxWMPLib._WMPOCXEvents_MouseDownEvent e)
         {
-            axWindowsMediaPlayer.Ctlcontrols.stop();
+            axWindowsMediaPlayer1.Ctlcontrols.stop();
         }
 
         private void AxWindowsMediaPlayer1_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
         {
             if (e.newState == (int)WMPLib.WMPPlayState.wmppsStopped)
-                axWindowsMediaPlayer.Dispose();
+                axWindowsMediaPlayer1.Dispose();
         }
 
         internal static Config Config { get; set; }
