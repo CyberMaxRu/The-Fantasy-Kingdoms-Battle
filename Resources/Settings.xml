@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Settings>
   <Game>
-    <ShowSplashVideo>true</ShowSplashVideo>
-    <FullScreenMode>false</FullScreenMode>
-    <CheckUpdatesOnStartup>true</CheckUpdatesOnStartup>
+    <ShowSplashVideo>True</ShowSplashVideo>
+    <FullScreenMode>False</FullScreenMode>
+    <CheckUpdatesOnStartup>True</CheckUpdatesOnStartup>
   </Game>
   <Battlefield>
-    <ShowPath>false</ShowPath>
-    <ShoeGrid>false</ShoeGrid>
+    <ShowPath>False</ShowPath>
+    <ShowGrid>False</ShowGrid>
   </Battlefield>
   <Player>
     <Name>Игрок №1</Name>
