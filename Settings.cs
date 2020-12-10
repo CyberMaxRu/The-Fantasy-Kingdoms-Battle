@@ -16,9 +16,12 @@ namespace Fantasy_King_s_Battle
             XmlDocument doc = new XmlDocument();
             doc.Load(path + "Settings.xml");
 
-            ShowSplashVideo = XmlUtils.GetParamFromXmlBool(doc.SelectSingleNode("Settings/Options/ShowSplashVideo"), true);
-            FullScreenMode = XmlUtils.GetParamFromXmlBool(doc.SelectSingleNode("Settings/Options/FullScreenMode"), false);
-            CheckUpdateOnStartup = XmlUtils.GetParamFromXmlBool(doc.SelectSingleNode("Settings/Options/CheckUpdatesOnStartup"), true);
+            ShowSplashVideo = XmlUtils.GetParamFromXmlBool(doc.SelectSingleNode("Settings/Game/ShowSplashVideo"), true);
+            FullScreenMode = XmlUtils.GetParamFromXmlBool(doc.SelectSingleNode("Settings/Game/FullScreenMode"), false);
+            CheckUpdateOnStartup = XmlUtils.GetParamFromXmlBool(doc.SelectSingleNode("Settings/Game/CheckUpdatesOnStartup"), true);
+
+            BattlefieldShowPath = XmlUtils.GetParamFromXmlBool(doc.SelectSingleNode("Settings/Battlefield/ShowPath"), false);
+            BattlefieldShowGrid = XmlUtils.GetParamFromXmlBool(doc.SelectSingleNode("Settings/Battlefield/ShowGrid"), false);
 
             NamePlayer = XmlUtils.GetParamFromXmlString(doc.SelectSingleNode("Settings/Player/Name"));
             if (NamePlayer.Length == 0)
@@ -33,10 +36,12 @@ namespace Fantasy_King_s_Battle
             //    IndexAvatar = Program.formMain.ilPlayerAvatars.Images.Count - 1;
         }
 
-        internal bool ShowSplashVideo { get; private set; }
-        internal bool FullScreenMode { get; private set; }
-        internal bool CheckUpdateOnStartup { get; private set; }
-        internal string NamePlayer { get; private set; }
-        internal int IndexAvatar { get; private set; }
+        internal bool ShowSplashVideo { get; set; }
+        internal bool FullScreenMode { get; set; }
+        internal bool CheckUpdateOnStartup { get; set; }
+        internal bool BattlefieldShowPath { get; set; }
+        internal bool BattlefieldShowGrid { get; set; }
+        internal string NamePlayer { get; set; }
+        internal int IndexAvatar { get; set; }
     }
 }

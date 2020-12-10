@@ -1,10 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Settings>
-  <Options>
+  <Game>
     <ShowSplashVideo>true</ShowSplashVideo>
     <FullScreenMode>false</FullScreenMode>
     <CheckUpdatesOnStartup>true</CheckUpdatesOnStartup>
-  </Options>
+  </Game>
+  <Battlefield>
+    <ShowPath>false</ShowPath>
+    <ShoeGrid>false</ShoeGrid>
+  </Battlefield>
   <Player>
     <Name>Игрок №1</Name>
     <IndexAvatar>0</IndexAvatar>

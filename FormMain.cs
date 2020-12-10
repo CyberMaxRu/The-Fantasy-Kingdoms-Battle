@@ -538,7 +538,12 @@ namespace Fantasy_King_s_Battle
 
         private void BtnPreferences_Click(object sender, EventArgs e)
         {
+            FormSettings f = new FormSettings();
+            f.ApplySettings(settings);
+            if (f.ShowDialog() == DialogResult.OK)
+            {
 
+            }
         }
 
         private void BtnHelp_Click(object sender, EventArgs e)
