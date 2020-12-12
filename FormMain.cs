@@ -44,8 +44,8 @@ namespace Fantasy_King_s_Battle
         internal Brush brushCost;
 
         // Контролы главного меню
-        private readonly Label labelGold;
         private readonly Label labelDay;
+        private readonly Label labelGold;
         private readonly Label labelPeasants;
 
         private readonly Button btnPreferences;
@@ -92,8 +92,9 @@ namespace Fantasy_King_s_Battle
         internal const int GUI_PARAMETER_DEFENSE_RANGE = 4;
         internal const int GUI_PARAMETER_DEFENSE_MAGIC = 5;
 
-        internal const int GUI_16_GOLD = 0;
-        internal const int GUI_16_PEASANT = 1;
+        internal const int GUI_16_DAY = 0;
+        internal const int GUI_16_GOLD = 1;
+        internal const int GUI_16_PEASANT = 2;
 
         internal const int GUI_24_FIRE = 0;
         internal const int GUI_24_HEROES = 1;
@@ -284,7 +285,10 @@ namespace Fantasy_King_s_Battle
             // Текст с информацией о Королевстве
             labelDay = GuiUtils.CreateLabel(this, Config.GridSize, Config.GridSize, 80, "День");
             labelDay.Height = 20;
+            labelDay.ImageList = ilGui16;
+            labelDay.ImageIndex = GUI_16_DAY;
             labelDay.Font = Config.FontToolbar;
+            labelDay.ImageAlign = ContentAlignment.MiddleLeft;
             labelDay.ForeColor = Color.White;
             labelDay.BackColor = Color.Transparent;
             labelDay.MouseHover += LabelDay_MouseHover;
@@ -757,7 +761,7 @@ namespace Fantasy_King_s_Battle
         {
             Debug.Assert(lobby.CurrentPlayer.TypePlayer == TypePlayer.Human);
 
-            labelDay.Text = "День: " + lobby.Turn.ToString();
+            labelDay.Text = "     " + lobby.Turn.ToString();
             
             // Если этого игрока не отрисовывали, формируем заново вкладки
             if (curAppliedPlayer != lobby.CurrentPlayer)
