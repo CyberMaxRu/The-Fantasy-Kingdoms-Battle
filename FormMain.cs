@@ -113,9 +113,15 @@ namespace Fantasy_King_s_Battle
         internal readonly Bitmap bmpBackgroundButton;
         internal readonly Bitmap bmpBorderForIcon;
         internal readonly Bitmap bmpEmptyEntity;
-        private readonly Bitmap bmpBackground;
+        private Bitmap bmpBackground;
         internal readonly Bitmap bmpBorderBattlefield;
         internal int LengthSideBorderBattlefield { get; private set; }
+        private int calcedWidth;
+        private int calcedHeight;
+        private Size minSizeForm;
+        private Point shiftControls;
+        private int maxWidthPages;
+
 
         private readonly List<PanelPage> pages = new List<PanelPage>();
         private readonly PanelPage pageGuilds;
@@ -150,6 +156,8 @@ namespace Fantasy_King_s_Battle
         public FormMain()
         {
             InitializeComponent();
+
+            Program.formMain = this;
 
             Text = NAME_PROJECT + " (сборка " + VERSION + ")";
 
@@ -211,8 +219,6 @@ namespace Fantasy_King_s_Battle
 
             splashForm.Show();
             splashForm.Refresh();
-
-            Program.formMain = this;
 
             // Загружаем конфигурацию
             SetStage("Открываем сундуки");
@@ -331,6 +337,9 @@ namespace Fantasy_King_s_Battle
             btnEndTurn.Text = "Конец хода";
             btnEndTurn.Width = 160;
             btnEndTurn.ImageAlign = ContentAlignment.MiddleLeft;
+            btnEndTurn.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnEndTurn.Font = Config.FontCaptionPage;
+            btnEndTurn.ForeColor = Config.CommonCaptionPage;
             btnEndTurn.MouseHover += BtnEndTurn_MouseHover;
             btnEndTurn.Click += BtnEndTurn_Click;
 
@@ -353,7 +362,6 @@ namespace Fantasy_King_s_Battle
             ShowDataPlayer();
 
             // Определяем максимальную ширину страниц
-            int maxWidthPages = 0;
             int maxHeightPages = 0;
 
             foreach (PanelPage pc in pages)
@@ -402,7 +410,7 @@ namespace Fantasy_King_s_Battle
             // Учитываем плиту под слоты
             pointMenu = new Point(leftForPages + maxWidthPages + Config.GridSize, ClientSize.Height - panelMenu.Height - Config.GridSize);
             pointMenu.X = pointMenu.X + ((widthRightPanel - panelMenu.Width) / 2);
-            int calcedWidth = leftForPages + maxWidthPages + widthRightPanel + Config.GridSize;
+            calcedWidth = leftForPages + maxWidthPages + widthRightPanel + Config.GridSize;
 
             // Определяем высоту бэнда зданий
             heightBandBuildings = 0;
@@ -416,18 +424,16 @@ namespace Fantasy_King_s_Battle
             //
             Width = (Width - ClientSize.Width) + calcedWidth + Config.GridSize;
             // Высота - это наибольшая высота бэндов лобби, зданий и информации с меню
-            Height = heightToolBar + Math.Max(heightBandLobby, heightBandBuildings)
-                 + (Height - ClientSize.Height) + Config.GridSize;
+            calcedHeight = heightToolBar + Math.Max(heightBandLobby, heightBandBuildings);
+            Height = (Height - ClientSize.Height) + calcedHeight + Config.GridSize;
+            minSizeForm = new Size(Width, Height);
+
             pointMenu.Y = ClientSize.Height - panelMenu.Height - Config.GridSize;
 
             panelMenu.Location = pointMenu;
 
             panelBuildingInfo.Height = ClientSize.Height - panelBuildingInfo.Top - panelMenu.Height - (Config.GridSize * 2);
             panelHeroInfo.Height = panelBuildingInfo.Height;
-
-            // Подготавливаем подложку
-            bmpBackground = GuiUtils.MakeBackground(ClientSize);
-
 
             SetStage("Прибираем после строителей");
             // Перенести в класс
@@ -440,6 +446,7 @@ namespace Fantasy_King_s_Battle
 
             //
 
+            PrepareBackground();
             ArrangeControls();
 
             ActivatePage(pageGuilds);
@@ -449,14 +456,8 @@ namespace Fantasy_King_s_Battle
             splashForm.Dispose();
 
             //
-            if (Settings.FullScreenMode)
-            {
-                WindowState = FormWindowState.Maximized;
-                FormBorderStyle = FormBorderStyle.None;
-                Application.DoEvents();
-            }
-            else
-                Location = new Point((Screen.PrimaryScreen.WorkingArea.Width - Width) / 2, (Screen.PrimaryScreen.WorkingArea.Height - Height) / 2);
+            Location = new Point((Screen.PrimaryScreen.WorkingArea.Width - Width) / 2, (Screen.PrimaryScreen.WorkingArea.Height - Height) / 2);
+            ApplyFullScreen(true);
 
             // 
             if (Settings.ShowSplashVideo)
@@ -479,6 +480,62 @@ namespace Fantasy_King_s_Battle
             {
                 lblStage.Text = text + "...";
                 lblStage.Refresh();
+            }
+        }
+
+        internal void ApplyFullScreen(bool force)
+        {
+            if (force || (MaximizeBox != Settings.FullScreenMode))
+            {
+                if (Settings.FullScreenMode)
+                {
+                    MaximizeBox = true;
+                    FormBorderStyle = FormBorderStyle.None;
+                    WindowState = FormWindowState.Maximized;
+                }
+                else
+                {
+                    FormBorderStyle = FormBorderStyle.FixedSingle;
+                    MaximizeBox = false;
+                    WindowState = FormWindowState.Normal;
+                }
+
+                ApplySize();
+                PrepareBackground();
+                ArrangeControls();
+
+                Refresh();
+            }
+        }
+
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+
+            if (Program.formMain != null)
+            {
+                PrepareBackground();
+                ArrangeControls();
+            }
+        }
+
+        private void PrepareBackground()
+        {
+            if ((bmpBackground == null) || !bmpBackground.Size.Equals(ClientSize))
+            {
+                bmpBackground?.Dispose();
+                bmpBackground = GuiUtils.MakeBackground(ClientSize);
+            }
+        }
+
+        private void ApplySize()
+        {
+            if (minSizeForm != default)
+            {
+                if (WindowState != FormWindowState.Maximized)
+                {
+                    Size = minSizeForm;
+                }
             }
         }
 
@@ -549,7 +606,7 @@ namespace Fantasy_King_s_Battle
             f.ApplySettings(Settings);
             if (f.ShowDialog() == DialogResult.OK)
             {
-
+                ApplyFullScreen(false);
             }
         }
 
@@ -572,16 +629,40 @@ namespace Fantasy_King_s_Battle
 
         private void ArrangeControls()
         {
-            btnQuit.Left = ClientSize.Width - btnQuit.Width - Config.GridSize;
+            shiftControls = new Point(Config.GridSize, Config.GridSize);
+
+            if (Settings.FullScreenMode)
+            {
+                shiftControls.X = (ClientSize.Width - calcedWidth) / 2;
+                shiftControls.Y = (ClientSize.Height - calcedHeight) / 2;
+            }
+
+            labelDay.Left = shiftControls.X;
+            labelGold.Left = shiftControls.X;
+            labelPeasants.Left = shiftControls.X;
+
+            ShowLobby();
+
+            pageGuilds.Left = shiftControls.X + leftForPages - Config.GridSize;
+            pageBuildings.Left = pageGuilds.Left;
+            pageTemples.Left = pageGuilds.Left;
+            pageHeroes.Left = pageGuilds.Left;
+
+            btnQuit.Left = shiftControls.X + minSizeForm.Width - btnQuit.Width - (Config.GridSize * 4);
             btnHelp.Left = btnQuit.Left - btnQuit.Width - Config.GridSize;
             btnPreferences.Left = btnHelp.Left - btnHelp.Width - Config.GridSize;
 
-            btnPageGuilds.Left = leftForPages;
+            btnPageGuilds.Left = leftForPages + shiftControls.X - Config.GridSize;
             btnPageBuildings.Left = GuiUtils.NextLeft(btnPageGuilds);
             btnPageTemples.Left = GuiUtils.NextLeft(btnPageBuildings);
             btnPageHeroes.Left = GuiUtils.NextLeft(btnPageTemples);
 
+            panelBuildingInfo.Left = shiftControls.X + leftForPages + maxWidthPages;
+            panelHeroInfo.Left = panelBuildingInfo.Left;
+
             btnEndTurn.Left = panelBuildingInfo.Left - btnEndTurn.Width - Config.GridSize;
+
+            panelMenu.Left = shiftControls.X + pointMenu.X - Config.GridSize;
         }
 
         private void FormMain_KeyDown(object sender, KeyEventArgs e)
@@ -702,11 +783,12 @@ namespace Fantasy_King_s_Battle
                 Debug.Assert(p.PositionInLobby >= 1);
                 Debug.Assert(p.PositionInLobby <= lobby.TypeLobby.QuantityPlayers);
 
+                p.Panel.Left = shiftControls.X;
                 p.Panel.Top = top;
                 top = GuiUtils.NextTop(p.Panel);
             }
 
-            Refresh();
+            //Refresh();
         }
 
         private void DrawPageBuilding(PanelPage panel, CategoryBuilding category)
@@ -797,14 +879,19 @@ namespace Fantasy_King_s_Battle
 
         protected override void OnPaintBackground(PaintEventArgs e)
         {
+            Debug.Assert(bmpBackground.Size.Equals(ClientSize));
+
             base.OnPaintBackground(e);
 
-            e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
-            e.Graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
-            e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+            if (bmpBackground != null)
+            {
+                e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
+                e.Graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
+                e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
 
-            // Рисуем подложку
-            e.Graphics.DrawImageUnscaled(bmpBackground, e.ClipRectangle);
+                // Рисуем подложку
+                e.Graphics.DrawImage(bmpBackground, e.ClipRectangle, e.ClipRectangle, GraphicsUnit.Pixel);
+            }
         }
 
         internal void ShowPageHeroes()
