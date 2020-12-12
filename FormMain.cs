@@ -153,6 +153,7 @@ namespace Fantasy_King_s_Battle
 
         //
         internal Settings Settings { get; private set; }
+        internal MainConfig MainConfig { get; private set; }
 
         public FormMain()
         {
@@ -173,6 +174,31 @@ namespace Fantasy_King_s_Battle
                 dirResources += "\\";
 
             dirResources += "Resources\\";
+
+            // Загружаем настройки
+            Settings = new Settings(dirResources);
+
+            MainConfig = new MainConfig(dirResources);
+
+            // Если включено автообновление, проверяем на их наличие
+            if (Settings.CheckUpdateOnStartup)
+            {
+                if (MainConfig.CheckForNewVersion())
+                { 
+                    if (MessageBox.Show("Обнаружена новая версия " + MainConfig.ActualVersion.ToString() + "."
+                        + Environment.NewLine + "Выполнить обновление?", "Обновление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        Process p = new Process();
+                        p.StartInfo.WorkingDirectory = Environment.CurrentDirectory;
+                        p.StartInfo.CreateNoWindow = true;
+                        p.StartInfo.FileName = @"Updater.exe";
+                        p.StartInfo.Arguments = "-silence";
+                        p.Start();
+
+                        Environment.Exit(0);
+                    }
+                }
+            }
 
             // Формируем и показываем сплэш-заставку
             Image splashBitmap = new Bitmap(dirResources + "\\Icons\\Splash.png");
@@ -214,9 +240,6 @@ namespace Fantasy_King_s_Battle
                 BackColor = Color.Transparent,
                 Font = new Font("Times New Roman", 13)
             };
-
-            // Загружаем настройки
-            Settings = new Settings(dirResources);
 
             splashForm.Show();
             splashForm.Refresh();

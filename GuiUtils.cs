@@ -9,7 +9,7 @@ using System.Diagnostics;
 
 namespace Fantasy_King_s_Battle
 {
-    internal sealed class GuiUtils
+    public sealed class GuiUtils
     {
 
         internal static Label CreateLabel(Control parent, int left, int top)
@@ -164,6 +164,11 @@ namespace Fantasy_King_s_Battle
             b.FlatAppearance.BorderColor = Color.Black;
 
             return b;
+        }
+
+        public static void ShowError(string text)
+        {
+            MessageBox.Show(text, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

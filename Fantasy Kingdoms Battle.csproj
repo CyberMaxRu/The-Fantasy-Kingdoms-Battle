@@ -95,6 +95,7 @@
     <Compile Include="Hero.cs" />
     <Compile Include="HeroInBattle.cs" />
     <Compile Include="KindHero.cs" />
+    <Compile Include="MainConfig.cs" />
     <Compile Include="Missile.cs" />
     <Compile Include="PageControl.cs">
       <SubType>Component</SubType>
@@ -150,6 +151,7 @@
     <Compile Include="Item.cs" />
     <Compile Include="Skill.cs" />
     <Compile Include="Utils.cs" />
+    <Compile Include="WebUtils.cs" />
     <Compile Include="XmlUtils.cs" />
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>

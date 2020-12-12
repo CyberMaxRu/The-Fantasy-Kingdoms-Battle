@@ -1,5 +1,5 @@
 ﻿
-namespace AutoUpdater
+namespace Updater
 {
     partial class Form1
     {

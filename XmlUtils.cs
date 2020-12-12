@@ -4,7 +4,7 @@ using System.Xml;
 
 namespace Fantasy_King_s_Battle
 {
-    internal sealed class XmlUtils
+    public sealed class XmlUtils
     {
         internal static void LoadRequirements(List<Requirement> list, XmlNode n)
         {
@@ -32,7 +32,7 @@ namespace Fantasy_King_s_Battle
             return n != null ? Convert.ToBoolean(n.InnerText) : defValue;
         }
 
-        internal static Version GetVersionFromXml(XmlNode n)
+        public static Version GetVersionFromXml(XmlNode n)
         {
             return new Version(Convert.ToByte(n.SelectSingleNode("Major").InnerText),
                 Convert.ToByte(n.SelectSingleNode("Minor").InnerText),

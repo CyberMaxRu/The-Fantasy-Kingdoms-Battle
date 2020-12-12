@@ -8,10 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
-using System.Net;
 using System.IO.Compression;
+using Fantasy_King_s_Battle;
+using System.Diagnostics;
 
-namespace AutoUpdater
+namespace Updater
 {
     public partial class Form1 : Form
     {
@@ -23,6 +24,7 @@ namespace AutoUpdater
         private string UIDVersion;
         private string UIDArchive;
         private bool needUpdate = false;
+        private bool autoUpdate = false;
 
         public Form1()
         {
@@ -37,9 +39,9 @@ namespace AutoUpdater
             dirResources = Environment.CurrentDirectory;
 
             if (dirResources.Contains("Debug"))
-                dirResources = Environment.CurrentDirectory.Substring(0, Environment.CurrentDirectory.Length - 21);
+                dirResources = Environment.CurrentDirectory.Substring(0, Environment.CurrentDirectory.Length - 9);
             else if (dirResources.Contains("Release"))
-                dirResources = Environment.CurrentDirectory.Substring(0, Environment.CurrentDirectory.Length - 32);
+                dirResources = Environment.CurrentDirectory.Substring(0, Environment.CurrentDirectory.Length - 11);
             else
                 dirResources += "\\";
 
@@ -50,7 +52,7 @@ namespace AutoUpdater
             xmlDoc.Load(dirResources + "Main.xml");
             try
             {
-                currentVersion = GetVersionFromXml(xmlDoc.SelectSingleNode("Main/Version"));
+                currentVersion = XmlUtils.GetVersionFromXml(xmlDoc.SelectSingleNode("Main/Version"));
 
                 URLDrive = xmlDoc.SelectSingleNode("Main/AutoUpdate/URLDrive").InnerText;
                 if (URLDrive.Length == 0)
@@ -64,22 +66,37 @@ namespace AutoUpdater
             }
             catch (Exception exc)
             {
-                ShowError(exc.Message);
+                GuiUtils.ShowError(exc.Message);
                 Close();
             }
 
             if ((currentVersion.Major == 0) && (currentVersion.Minor == 0) && (currentVersion.Build == 0))
             {
-                ShowError("Не найден текущий номер версии.");
+                GuiUtils.ShowError("Не найден текущий номер версии.");
                 Close();
             }
 
             labelVersion.Text = "Текущая версия: " + currentVersion + ".";
-        }
 
-        private void ShowError(string text)
-        {
-            MessageBox.Show(text, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            foreach (string s in Environment.GetCommandLineArgs())
+            {
+                if (s == "-silence")
+                {
+                    autoUpdate = true;
+                    CheckUpdate();
+                    if (needUpdate)
+                        Update();
+
+                     Process p = new Process();
+                    p.StartInfo.WorkingDirectory = Environment.CurrentDirectory;
+                    p.StartInfo.CreateNoWindow = true;
+                    p.StartInfo.FileName = @"Fantasy King's Battle.exe.exe";
+                    p.StartInfo.Arguments = "-silence";
+                    p.Start();
+
+                    Environment.Exit(0);
+                }
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -96,7 +113,7 @@ namespace AutoUpdater
             string filenameVersion = Environment.CurrentDirectory + @"\ActualVersion.xml";
             SetState("Скачиваем файл с версиями...");
 
-            if (DownloadFile(UIDVersion, filenameVersion))
+            if (WebUtils.DownloadFile(URLDrive, UIDVersion, filenameVersion))
             {
                 // Смотрим, какая там последняя версия
                 try
@@ -104,7 +121,7 @@ namespace AutoUpdater
                     XmlDocument xmlDoc = new XmlDocument();
                     xmlDoc.Load(filenameVersion);
 
-                    actualVersion = GetVersionFromXml(xmlDoc.SelectSingleNode("Versions/ActualVersion"));
+                    actualVersion = XmlUtils.GetVersionFromXml(xmlDoc.SelectSingleNode("Versions/ActualVersion"));
                     if (actualVersion > currentVersion)
                     {
                         SetState("Найдена новая версия: " + actualVersion.ToString());
@@ -123,7 +140,7 @@ namespace AutoUpdater
                 }
                 catch (Exception exc)
                 {
-                    ShowError(exc.Message);
+                    GuiUtils.ShowError(exc.Message);
                 }
             }
             else
@@ -143,7 +160,7 @@ namespace AutoUpdater
             Version v;
             foreach(XmlNode n in nc.SelectNodes("Version"))
             {
-                v = GetVersionFromXml(n);
+                v = XmlUtils.GetVersionFromXml(n);
                 line = v.ToString() + " от " + n.SelectSingleNode("DateBuild").InnerText + Environment.NewLine;
 
                 foreach (XmlNode ld in n.SelectNodes("Description/Line"))
@@ -166,7 +183,7 @@ namespace AutoUpdater
             SetState("Скачиваем архив с обновлением...");
 
             string filenameZip = Environment.CurrentDirectory + @"\update.zip";
-            if (DownloadFile(UIDArchive, filenameZip))
+            if (WebUtils.DownloadFile(URLDrive, UIDArchive, filenameZip))
             {
                 // Удаляем папку с обновлениями
                 if (System.IO.Directory.Exists(pathUpdate))
@@ -209,32 +226,6 @@ namespace AutoUpdater
             else
             {
                 labelActualVersion.Text = "Произошла ошибка при скачивании файла с обновлением.";
-            }
-        }
-
-        private static Version GetVersionFromXml(XmlNode n)
-        {
-            return new Version(Convert.ToByte(n.SelectSingleNode("Major").InnerText),
-                Convert.ToByte(n.SelectSingleNode("Minor").InnerText),
-                Convert.ToByte(n.SelectSingleNode("Build").InnerText));
-        }
-
-        private bool DownloadFile(string uid, string filename)
-        {
-            WebClient client = new WebClient();
-            try
-            {
-                client.DownloadFile("https://" + URLDrive + "&id=" + uid, filename);
-                return true;
-            }
-            catch (Exception exc)
-            {
-                ShowError(exc.Message);
-                return false;
-            }
-            finally
-            {
-                client.Dispose();
             }
         }
 
