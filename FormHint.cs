@@ -494,5 +494,12 @@ namespace Fantasy_King_s_Battle
         {
             return met ? FormMain.Config.HintRequirementsMet : FormMain.Config.HintRequirementsNotMet;
         }
+
+        protected override void OnMouseEnter(EventArgs e)
+        {
+            base.OnMouseEnter(e);
+
+            HideHint();
+        }
     }
 }
