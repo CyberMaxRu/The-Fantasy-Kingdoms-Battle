@@ -3,7 +3,7 @@
   <Game>
     <ShowSplashVideo>False</ShowSplashVideo>
     <FullScreenMode>True</FullScreenMode>
-    <CheckUpdatesOnStartup>True</CheckUpdatesOnStartup>
+    <CheckUpdatesOnStartup>False</CheckUpdatesOnStartup>
   </Game>
   <Battlefield>
     <ShowPath>False</ShowPath>

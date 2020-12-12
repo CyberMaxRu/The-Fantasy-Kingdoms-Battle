@@ -19,7 +19,7 @@ namespace Fantasy_King_s_Battle
     public partial class FormMain : Form
     {
         private const string NAME_PROJECT = "The Fantasy Kingdoms Battle";
-        private const string VERSION = "0.2.00";
+        private const string VERSION = "0.2.1";
         private const string VERSION_POSTFIX = "в разработке";
         internal readonly string dirResources;
 
@@ -639,7 +639,9 @@ namespace Fantasy_King_s_Battle
 
         private void BtnHelp_Click(object sender, EventArgs e)
         {
-
+            FormAbout f = new FormAbout();
+            f.ShowDialog();
+            f.Dispose();
         }
 
         private void BtnQuit_Click(object sender, EventArgs e)
