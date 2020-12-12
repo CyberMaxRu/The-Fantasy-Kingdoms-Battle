@@ -3,7 +3,7 @@
   <ActualVersion>
     <Major>0</Major>
     <Minor>2</Minor>
-    <Build>2</Build>
+    <Build>3</Build>
   </ActualVersion>
   <Version>
     <Major>0</Major>
@@ -39,6 +39,15 @@
     <DateBuild>12.12.2020</DateBuild>
     <Description>
       <Line>[*] Сборка с новой версией для проверки автообновления.</Line>
+    </Description>
+  </Version>
+  <Version>
+    <Major>0</Major>
+    <Minor>2</Minor>
+    <Build>3</Build>
+    <DateBuild>12.12.2020</DateBuild>
+    <Description>
+      <Line>[+] Добавлено окно "О программе".</Line>
     </Description>
   </Version>
 </Versions>

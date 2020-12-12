@@ -9,8 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using System.IO.Compression;
-using Fantasy_King_s_Battle;
 using System.Diagnostics;
+using System.Security.AccessControl;
+using System.IO;
+using System.Net;
 
 namespace Updater
 {
@@ -52,7 +54,7 @@ namespace Updater
             xmlDoc.Load(dirResources + "Main.xml");
             try
             {
-                currentVersion = XmlUtils.GetVersionFromXml(xmlDoc.SelectSingleNode("Main/Version"));
+                currentVersion = GetVersionFromXml(xmlDoc.SelectSingleNode("Main/Version"));
 
                 URLDrive = xmlDoc.SelectSingleNode("Main/AutoUpdate/URLDrive").InnerText;
                 if (URLDrive.Length == 0)
@@ -66,13 +68,13 @@ namespace Updater
             }
             catch (Exception exc)
             {
-                GuiUtils.ShowError(exc.Message);
+                ShowError(exc.Message);
                 Close();
             }
 
             if ((currentVersion.Major == 0) && (currentVersion.Minor == 0) && (currentVersion.Build == 0))
             {
-                GuiUtils.ShowError("Не найден текущий номер версии.");
+                ShowError("Не найден текущий номер версии.");
                 Close();
             }
 
@@ -102,7 +104,7 @@ namespace Updater
             string filenameVersion = Environment.CurrentDirectory + @"\ActualVersion.xml";
             SetState("Скачиваем файл с версиями...");
 
-            if (WebUtils.DownloadFile(URLDrive, UIDVersion, filenameVersion))
+            if (DownloadFile(URLDrive, UIDVersion, filenameVersion))
             {
                 // Смотрим, какая там последняя версия
                 try
@@ -110,7 +112,7 @@ namespace Updater
                     XmlDocument xmlDoc = new XmlDocument();
                     xmlDoc.Load(filenameVersion);
 
-                    actualVersion = XmlUtils.GetVersionFromXml(xmlDoc.SelectSingleNode("Versions/ActualVersion"));
+                    actualVersion = GetVersionFromXml(xmlDoc.SelectSingleNode("Versions/ActualVersion"));
                     if (actualVersion > currentVersion)
                     {
                         SetState("Найдена новая версия: " + actualVersion.ToString());
@@ -129,7 +131,7 @@ namespace Updater
                 }
                 catch (Exception exc)
                 {
-                    GuiUtils.ShowError(exc.Message);
+                    ShowError(exc.Message);
                 }
             }
             else
@@ -149,7 +151,7 @@ namespace Updater
             Version v;
             foreach(XmlNode n in nc.SelectNodes("Version"))
             {
-                v = XmlUtils.GetVersionFromXml(n);
+                v = GetVersionFromXml(n);
                 line = v.ToString() + " от " + n.SelectSingleNode("DateBuild").InnerText + Environment.NewLine;
 
                 foreach (XmlNode ld in n.SelectNodes("Description/Line"))
@@ -165,14 +167,62 @@ namespace Updater
             textBox1.Text = changes;
         }
 
+        public void AddFileSecurity(string fileName, string account, FileSystemRights rights, AccessControlType controlType)
+        {
+
+            // Get a FileSecurity object that represents the
+            // current security settings.
+            FileSecurity fSecurity = File.GetAccessControl(fileName);
+
+            // Add the FileSystemAccessRule to the security settings.
+            fSecurity.AddAccessRule(new FileSystemAccessRule(account, rights, controlType));
+
+            // Set the new access settings.
+            File.SetAccessControl(fileName, fSecurity);
+        }
+
+        public void AddDirectorySecurity(string dirName, string account, FileSystemRights rights, AccessControlType controlType)
+        {
+
+            // Get a FileSecurity object that represents the
+            // current security settings.
+            DirectorySecurity dSecurity = Directory.GetAccessControl(dirName);
+
+            // Add the FileSystemAccessRule to the security settings.
+            dSecurity.AddAccessRule(new FileSystemAccessRule(account, rights, controlType));
+
+            // Set the new access settings.
+            Directory.SetAccessControl(dirName, dSecurity);
+        }
+
         private void Update()
         {
+            bool b = false;
+            //получаем имя компьютора и пользователя
+            System.Security.Principal.WindowsIdentity wi = System.Security.Principal.WindowsIdentity.GetCurrent();
+            string user = wi.Name;
+
+            try
+            {
+                // Add the access control entry to the file
+                AddDirectorySecurity(Environment.CurrentDirectory, @user, FileSystemRights.FullControl, AccessControlType.Allow);
+
+                b = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            if (!b)
+                return;
+
             string pathUpdate = Environment.CurrentDirectory + @"\update";
             // Скачиваем архив
             SetState("Скачиваем архив с обновлением...");
 
             string filenameZip = Environment.CurrentDirectory + @"\update.zip";
-            if (WebUtils.DownloadFile(URLDrive, UIDArchive, filenameZip))
+            if (DownloadFile(URLDrive, UIDArchive, filenameZip))
             {
                 // Удаляем папку с обновлениями
                 if (System.IO.Directory.Exists(pathUpdate))
@@ -191,8 +241,13 @@ namespace Updater
                 foreach (string file in System.IO.Directory.EnumerateFiles(pathUpdate))
                 {
                     newName = Environment.CurrentDirectory + @"\" + System.IO.Path.GetFileName(file);
+                    if (Path.GetFileName(newName) == "Updater.exe")
+                        newName += ".new";
                     if (System.IO.File.Exists(newName))
+                    {
+                        AddFileSecurity(newName, @user, FileSystemRights.FullControl, AccessControlType.Allow);
                         System.IO.File.Delete(newName);
+                    }
                     System.IO.File.Move(file, newName);
                 }
 
@@ -224,6 +279,37 @@ namespace Updater
         {
             labelActualVersion.Text = text;
             labelActualVersion.Refresh();
+        }
+
+        public static void ShowError(string text)
+        {
+            MessageBox.Show(text, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public static Version GetVersionFromXml(XmlNode n)
+        {
+            return new Version(Convert.ToByte(n.SelectSingleNode("Major").InnerText),
+                Convert.ToByte(n.SelectSingleNode("Minor").InnerText),
+                Convert.ToByte(n.SelectSingleNode("Build").InnerText));
+        }
+
+        public static bool DownloadFile(string urlDrive, string uid, string filename)
+        {
+            WebClient client = new WebClient();
+            try
+            {
+                client.DownloadFile("https://" + urlDrive + "&id=" + uid, filename);
+                return true;
+            }
+            catch (Exception e)
+            {
+                ShowError(e.Message);
+                return false;
+            }
+            finally
+            {
+                client.Dispose();
+            }
         }
     }
 }

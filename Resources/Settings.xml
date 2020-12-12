@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Settings>
   <Game>
-    <ShowSplashVideo>False</ShowSplashVideo>
+    <ShowSplashVideo>True</ShowSplashVideo>
     <FullScreenMode>True</FullScreenMode>
-    <CheckUpdatesOnStartup>False</CheckUpdatesOnStartup>
+    <CheckUpdatesOnStartup>True</CheckUpdatesOnStartup>
   </Game>
   <Battlefield>
     <ShowPath>False</ShowPath>
