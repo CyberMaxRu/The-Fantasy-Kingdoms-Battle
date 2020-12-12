@@ -36,7 +36,7 @@ namespace Fantasy_King_s_Battle
         {
             base.OnPaintBackground(e);
 
-            e.Graphics.DrawImageUnscaled(bmpBackground, e.ClipRectangle);
+            e.Graphics.DrawImage(bmpBackground, e.ClipRectangle, e.ClipRectangle, GraphicsUnit.Pixel);
         }
 
         protected override void OnClosed(EventArgs e)
