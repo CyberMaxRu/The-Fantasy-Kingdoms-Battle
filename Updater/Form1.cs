@@ -84,17 +84,6 @@ namespace Updater
                 {
                     autoUpdate = true;
                     CheckUpdate();
-                    if (needUpdate)
-                        Update();
-
-                     Process p = new Process();
-                    p.StartInfo.WorkingDirectory = Environment.CurrentDirectory;
-                    p.StartInfo.CreateNoWindow = true;
-                    p.StartInfo.FileName = @"Fantasy King's Battle.exe.exe";
-                    p.StartInfo.Arguments = "-silence";
-                    p.Start();
-
-                    Environment.Exit(0);
                 }
             }
         }
@@ -211,6 +200,8 @@ namespace Updater
                 foreach (string dir in System.IO.Directory.EnumerateDirectories(pathUpdate))
                 {
                     newdir = Environment.CurrentDirectory + dir.Substring(Environment.CurrentDirectory.Length + 7);
+                    if (System.IO.Directory.Exists(newdir))
+                        System.IO.Directory.Delete(newdir, true);
                     System.IO.Directory.Move(dir, newdir);
                 }
 
