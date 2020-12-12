@@ -36,26 +36,20 @@ namespace Fantasy_King_s_Battle
         internal readonly Label lblDefenseMelee;
         internal readonly Label lblDefenseArcher;
         internal readonly Label lblDefenseMagic;
+        private Bitmap bmpBackground;
 
         internal readonly Timer timerDelayShow;
-        internal readonly Timer timerOpacity;
-        internal readonly double maxOpacity = 0.90;
-        internal readonly int timeOpacity = 150;
-        internal int stepsOpacity = 0;
-        internal int stepsInSecond = 50;// 25 кадров в секунду, больше не имеет смысла
-        internal DateTime dateTimeStartOpacity;
         internal Font fontRequirement;
 
         private int nextTop;
 
-        public FormHint(Image backgroundImage, ImageList ilGui16, ImageList ilParameters)
+        public FormHint(ImageList ilGui16, ImageList ilParameters)
         {
             //TopMost = true;
             StartPosition = FormStartPosition.Manual;
             ShowInTaskbar = false;
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
-            BackgroundImage = backgroundImage;
 
             lblHeader = new Label()
             {
@@ -226,21 +220,12 @@ namespace Fantasy_King_s_Battle
             };
             timerDelayShow.Tick += TimerDelayShow_Tick;
 
-            stepsOpacity = 0;
-            timerOpacity = new Timer()
-            {
-                Interval = 1000 / stepsInSecond,
-                Enabled = false
-            };
-            timerOpacity.Tick += TimerOpacity_Tick;
-
             Clear();
         }
 
         protected override void Dispose(bool disposing)
         {
             timerDelayShow.Dispose();
-            timerOpacity.Dispose();
 
             base.Dispose(disposing);
         }
@@ -261,27 +246,10 @@ namespace Fantasy_King_s_Battle
             }
         }
 
-        private void TimerOpacity_Tick(object sender, EventArgs e)
-        {
-            TimeSpan timeSpan = DateTime.Now - dateTimeStartOpacity;
-            double percent = timeSpan.TotalMilliseconds * 100 / timeOpacity;
-            if (percent >= 100)
-            {
-                Opacity = maxOpacity;
-                timerOpacity.Enabled = false;
-            }
-            else
-            {
-                Opacity = maxOpacity * percent / 100;
-            }
-        }
-      
         private void TimerDelayShow_Tick(object sender, EventArgs e)
         {
             Show();
             timerDelayShow.Enabled = false;
-            dateTimeStartOpacity = DateTime.Now;
-            timerOpacity.Enabled = true; 
         }
 
         internal void Clear()
@@ -456,28 +424,11 @@ namespace Fantasy_King_s_Battle
 
             bool needReshow = (Visible == false) || (Height != nextTop);
             Height = nextTop;
+            bmpBackground?.Dispose();
+            bmpBackground = GuiUtils.MakeBackgroundWithBorder(ClientSize, FormMain.Config.CommonBorder);
 
             if (needReshow == true)
             {
-                Opacity = 0;
-                timerDelayShow.Enabled = true;
-            }
-        }
-
-        internal void ShowHint(Point location)
-        {
-            Debug.Assert(lblHeader.Text.Length > 0);
-            Debug.Assert(location.X >= 0);
-            Debug.Assert(location.Y >= 0);
-
-            Location = location;
-
-            bool needReshow = (Visible == false) || (Height != nextTop);
-            Height = nextTop;
-
-            if (needReshow == true)
-            {
-                Opacity = 0;
                 timerDelayShow.Enabled = true;
             }
         }
@@ -485,7 +436,6 @@ namespace Fantasy_King_s_Battle
         internal void HideHint()
         {
             timerDelayShow.Enabled = false;
-            timerOpacity.Enabled = false;
 
             Hide();
         }
@@ -500,6 +450,13 @@ namespace Fantasy_King_s_Battle
             base.OnMouseEnter(e);
 
             HideHint();
+        }
+
+        protected override void OnPaintBackground(PaintEventArgs e)
+        {
+            base.OnPaintBackground(e);
+
+            e.Graphics.DrawImage(bmpBackground, e.ClipRectangle, e.ClipRectangle, GraphicsUnit.Pixel);
         }
     }
 }

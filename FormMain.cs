@@ -455,7 +455,7 @@ namespace Fantasy_King_s_Battle
 
             ActivatePage(pageGuilds);
 
-            formHint = new FormHint(bmpForBackground, ilGui16, ilParameters);
+            formHint = new FormHint(ilGui16, ilParameters);
 
             splashForm.Dispose();
 
@@ -979,7 +979,7 @@ namespace Fantasy_King_s_Battle
         {
             // При деактивации пересоздаем окно, иначе оно отображается под главной формой
             formHint.Dispose();
-            formHint = new FormHint(bmpForBackground, ilGui16, ilParameters);
+            formHint = new FormHint(ilGui16, ilParameters);
         }
 
         private void StartNewLobby()
