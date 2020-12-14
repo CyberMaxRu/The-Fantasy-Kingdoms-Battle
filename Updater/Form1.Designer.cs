@@ -33,6 +33,7 @@ namespace Updater
             this.labelVersion = new System.Windows.Forms.Label();
             this.labelActualVersion = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.labelAction = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -57,25 +58,35 @@ namespace Updater
             // labelActualVersion
             // 
             this.labelActualVersion.AutoSize = true;
-            this.labelActualVersion.Location = new System.Drawing.Point(8, 56);
+            this.labelActualVersion.Location = new System.Drawing.Point(8, 64);
             this.labelActualVersion.Name = "labelActualVersion";
-            this.labelActualVersion.Size = new System.Drawing.Size(308, 13);
+            this.labelActualVersion.Size = new System.Drawing.Size(112, 13);
             this.labelActualVersion.TabIndex = 2;
-            this.labelActualVersion.Text = "Нажмите кнопку для проверки необходимости обновления";
+            this.labelActualVersion.Text = "История изменений:";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(8, 72);
+            this.textBox1.Location = new System.Drawing.Point(8, 80);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(440, 216);
+            this.textBox1.Size = new System.Drawing.Size(488, 200);
             this.textBox1.TabIndex = 3;
+            // 
+            // labelAction
+            // 
+            this.labelAction.AutoSize = true;
+            this.labelAction.Location = new System.Drawing.Point(272, 28);
+            this.labelAction.Name = "labelAction";
+            this.labelAction.Size = new System.Drawing.Size(57, 13);
+            this.labelAction.TabIndex = 4;
+            this.labelAction.Text = "Действие";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(459, 302);
+            this.ClientSize = new System.Drawing.Size(504, 281);
+            this.Controls.Add(this.labelAction);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.labelActualVersion);
             this.Controls.Add(this.labelVersion);
@@ -96,6 +107,7 @@ namespace Updater
         private System.Windows.Forms.Label labelVersion;
         private System.Windows.Forms.Label labelActualVersion;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label labelAction;
     }
 }
 

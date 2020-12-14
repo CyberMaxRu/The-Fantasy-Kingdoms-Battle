@@ -37,6 +37,8 @@ namespace Updater
         {
             base.OnLoad(e);
 
+            labelAction.Text = "";
+
             // Настройка переменной с папкой ресурсов
             dirResources = Environment.CurrentDirectory;
 
@@ -88,6 +90,12 @@ namespace Updater
                     CheckUpdate();
                 }
             }
+
+            // Показываем историю изменений текущей версии
+            string filenameVersion = Environment.CurrentDirectory + @"\ActualVersion.xml";
+            XmlDocument xmlDocHistory = new XmlDocument();
+            xmlDocHistory.Load(filenameVersion);
+            ShowChanges(xmlDocHistory);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -122,11 +130,11 @@ namespace Updater
                     }
                     else if (actualVersion == currentVersion)
                     {
-                        labelActualVersion.Text = "У вас актуальная версия игры";
+                        labelAction.Text = "Установлена актуальная версия игры";
                     }
                     else
                     {
-                        labelActualVersion.Text = "У вас более новая версия игры, чем должна была быть!";
+                        labelAction.Text = "У вас более новая версия игры, чем должна была быть!";
                     }
                 }
                 catch (Exception exc)
@@ -279,8 +287,8 @@ namespace Updater
 
         private void SetState(string text)
         {
-            labelActualVersion.Text = text;
-            labelActualVersion.Refresh();
+            labelAction.Text = text;
+            labelAction.Refresh();
         }
 
         public static void ShowError(string text)
