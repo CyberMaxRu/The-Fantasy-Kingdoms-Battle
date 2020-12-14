@@ -487,6 +487,17 @@ namespace Fantasy_King_s_Battle
             ApplyFullScreen(true);
 
             // 
+            void SetStage(string text)
+            {
+                lblStage.Text = text + "...";
+                lblStage.Refresh();
+            }
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
             if (Settings.ShowSplashVideo)
             {
                 KeyDown += FormMain_KeyDown;
@@ -495,19 +506,13 @@ namespace Fantasy_King_s_Battle
                 axWindowsMediaPlayer1.URL = dirResources + @"Video\Rebirth.ogg";
                 axWindowsMediaPlayer1.uiMode = "none";
                 axWindowsMediaPlayer1.Location = new Point(0, 0);
-                axWindowsMediaPlayer1.Size = ClientSize;
+                axWindowsMediaPlayer1.enableContextMenu = false;
+                axWindowsMediaPlayer1.Ctlcontrols.play();
                 axWindowsMediaPlayer1.MouseDownEvent += AxWindowsMediaPlayer1_MouseDownEvent;
                 axWindowsMediaPlayer1.PlayStateChange += AxWindowsMediaPlayer1_PlayStateChange;
-                axWindowsMediaPlayer1.Ctlcontrols.play();
             }
             else
                 axWindowsMediaPlayer1.Dispose();
-
-            void SetStage(string text)
-            {
-                lblStage.Text = text + "...";
-                lblStage.Refresh();
-            }
         }
 
         internal void ApplyFullScreen(bool force)
@@ -522,8 +527,8 @@ namespace Fantasy_King_s_Battle
                 }
                 else
                 {
-                    FormBorderStyle = FormBorderStyle.FixedSingle;
                     MaximizeBox = false;
+                    FormBorderStyle = FormBorderStyle.FixedSingle;
                     WindowState = FormWindowState.Normal;
                 }
 
@@ -544,6 +549,9 @@ namespace Fantasy_King_s_Battle
                 PrepareBackground();
                 ArrangeControls();
             }
+
+            if (axWindowsMediaPlayer1 != null)
+                axWindowsMediaPlayer1.Size = ClientSize;
         }
 
         private void PrepareBackground()
@@ -708,8 +716,11 @@ namespace Fantasy_King_s_Battle
 
         private void AxWindowsMediaPlayer1_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
         {
-            if (e.newState == (int)WMPLib.WMPPlayState.wmppsStopped)
+            if (e.newState != (int)WMPLib.WMPPlayState.wmppsPlaying)
+            {
                 axWindowsMediaPlayer1.Dispose();
+                axWindowsMediaPlayer1 = null;
+            }
         }
 
         internal static Config Config { get; set; }
