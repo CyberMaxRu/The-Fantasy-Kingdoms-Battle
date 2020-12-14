@@ -20,6 +20,7 @@ namespace Fantasy_King_s_Battle
 
             bmpBackground = GuiUtils.MakeBackgroundWithBorder(Size, Color.DarkOrange);
             button1.BackgroundImage = GuiUtils.MakeBackground(button1.Size);
+            button2.BackgroundImage = GuiUtils.MakeBackground(button2.Size);
         }
 
         protected override void OnPaintBackground(PaintEventArgs e)
@@ -37,6 +38,16 @@ namespace Fantasy_King_s_Battle
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start("https://discord.com/invite/3R4PDsR");        
+        }
+
+        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://docs.google.com/document/d/1LCYOQM2Rxf-KXgc8VmsWx1K0W97vhTwsHMQiwZr4z8Q/edit?usp=sharing");        
+        }
+
+        private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://docs.google.com/document/d/12Jw_20kLgtPcKbpVl9Ry4NawdG9dybXgvNPReBHWH2Q/edit?usp=sharing");
         }
     }
 }
