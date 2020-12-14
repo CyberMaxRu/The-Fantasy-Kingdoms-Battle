@@ -240,7 +240,9 @@ namespace Updater
                 string newName;
                 foreach (string file in System.IO.Directory.EnumerateFiles(pathUpdate))
                 {
-                    newName = Environment.CurrentDirectory + @"\" + System.IO.Path.GetFileName(file);
+                    newName = Environment.CurrentDirectory + @"\" + System.IO.Path.GetFileName(file);                    
+                    if (Path.GetFileName(newName) == "Settings.xml")// Настройки пропускаем, не заменяем
+                        continue;
                     if (Path.GetFileName(newName) == "Updater.exe")
                         newName += ".new";
                     if (System.IO.File.Exists(newName))
