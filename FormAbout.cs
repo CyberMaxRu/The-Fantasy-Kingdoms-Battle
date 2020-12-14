@@ -21,6 +21,8 @@ namespace Fantasy_King_s_Battle
             bmpBackground = GuiUtils.MakeBackgroundWithBorder(Size, Color.DarkOrange);
             button1.BackgroundImage = GuiUtils.MakeBackground(button1.Size);
             button2.BackgroundImage = GuiUtils.MakeBackground(button2.Size);
+
+            label5.Text = "Сборка " + FormMain.VERSION + " от " + FormMain.DATE_VERSION;
         }
 
         protected override void OnPaintBackground(PaintEventArgs e)
