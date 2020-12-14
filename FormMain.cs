@@ -720,6 +720,8 @@ namespace Fantasy_King_s_Battle
             {
                 axWindowsMediaPlayer1.Dispose();
                 axWindowsMediaPlayer1 = null;
+                KeyDown -= FormMain_KeyDown;
+                KeyPreview = false;
             }
         }
 
