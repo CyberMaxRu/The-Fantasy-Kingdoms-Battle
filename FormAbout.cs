@@ -51,5 +51,10 @@ namespace Fantasy_King_s_Battle
         {
             System.Diagnostics.Process.Start("https://docs.google.com/document/d/12Jw_20kLgtPcKbpVl9Ry4NawdG9dybXgvNPReBHWH2Q/edit?usp=sharing");
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            button2.Text = Program.formMain.CheckForNewVersion() ? "Версия " + Program.formMain.MainConfig.ActualVersion.ToString() : "Новой версии не найдено";
+        }
     }
 }

@@ -184,21 +184,7 @@ namespace Fantasy_King_s_Battle
             // Если включено автообновление, проверяем на их наличие
             if (Settings.CheckUpdateOnStartup)
             {
-                if (MainConfig.CheckForNewVersion())
-                { 
-                    if (MessageBox.Show("Обнаружена новая версия " + MainConfig.ActualVersion.ToString() + "."
-                        + Environment.NewLine + "Выполнить обновление?", "Обновление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    {
-                        Process p = new Process();
-                        p.StartInfo.WorkingDirectory = Environment.CurrentDirectory;
-                        p.StartInfo.CreateNoWindow = true;
-                        p.StartInfo.FileName = @"Updater.exe";
-                        p.StartInfo.Arguments = "-silence";
-                        p.Start();
-
-                        Environment.Exit(0);
-                    }
-                }
+                CheckForNewVersion();
             }
 
             // Формируем и показываем сплэш-заставку
@@ -493,6 +479,27 @@ namespace Fantasy_King_s_Battle
                 lblStage.Text = text + "...";
                 lblStage.Refresh();
             }
+        }
+
+        internal bool CheckForNewVersion()
+        {
+            if (MainConfig.CheckForNewVersion())
+            {
+                if (MessageBox.Show("Обнаружена новая версия " + MainConfig.ActualVersion.ToString() + "."
+                    + Environment.NewLine + "Выполнить обновление?", "Обновление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    Process p = new Process();
+                    p.StartInfo.WorkingDirectory = Environment.CurrentDirectory;
+                    p.StartInfo.CreateNoWindow = true;
+                    p.StartInfo.FileName = @"Updater.exe";
+                    p.StartInfo.Arguments = "-silence";
+                    p.Start();
+
+                    Environment.Exit(0);
+                }
+                return true;
+            }
+            return false;
         }
 
         protected override void OnLoad(EventArgs e)

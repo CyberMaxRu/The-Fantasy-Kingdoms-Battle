@@ -181,25 +181,25 @@ namespace Fantasy_King_s_Battle
             // button2
             // 
             this.button2.BackColor = System.Drawing.SystemColors.Control;
-            this.button2.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.ForeColor = System.Drawing.Color.DodgerBlue;
             this.button2.Location = new System.Drawing.Point(8, 312);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(136, 23);
+            this.button2.Size = new System.Drawing.Size(152, 23);
             this.button2.TabIndex = 12;
             this.button2.Text = "Проверить обновление";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label5
             // 
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label5.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.label5.Location = new System.Drawing.Point(152, 312);
+            this.label5.Location = new System.Drawing.Point(168, 312);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(320, 24);
+            this.label5.Size = new System.Drawing.Size(304, 24);
             this.label5.TabIndex = 13;
             this.label5.Text = "label5";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
