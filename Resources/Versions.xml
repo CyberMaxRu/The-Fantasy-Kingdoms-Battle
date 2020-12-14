@@ -3,7 +3,7 @@
   <ActualVersion>
     <Major>0</Major>
     <Minor>2</Minor>
-    <Build>3</Build>
+    <Build>4</Build>
   </ActualVersion>
   <Version>
     <Major>0</Major>
@@ -48,6 +48,21 @@
     <DateBuild>12.12.2020</DateBuild>
     <Description>
       <Line>[+] Добавлено окно "О программе".</Line>
+    </Description>
+  </Version>
+  <Version>
+    <Major>0</Major>
+    <Minor>2</Minor>
+    <Build>4</Build>
+    <DateBuild>14.12.2020</DateBuild>
+    <Description>
+      <Line>[F] Исправлен показ видео-заставки в части экрана при полноэкранном режиме.</Line>
+      <Line>[F] При обновлении заменялся файл настроек на дефолтный.</Line>
+      <Line>[*] Updater при запуске сразу показывает текущую историю изменений.</Line>
+      <Line>[*] Текущее действие в Updater'е показывается справа от кнопки обновления.</Line>
+      <Line>[*] Окно "О программе" - добавлены ссылки на Дорожную карту, ДизДок, изменен текст.</Line>
+      <Line>[*] Окно "О программе" - добавлен номер и дата сборки.</Line>
+      <Line>[*] Окно "О программе" - сделана проверка обновления и переход к обновлению.</Line>
     </Description>
   </Version>
 </Versions>
