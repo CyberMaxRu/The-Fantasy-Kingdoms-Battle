@@ -15,7 +15,7 @@ namespace Fantasy_King_s_Battle
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.Load(dirResources + "Main.xml");
 
-            CurrentVersion = XmlUtils.GetVersionFromXml(xmlDoc.SelectSingleNode("Main/Version"));
+            CurrentVersion = XmlUtils.GetVersionFromXml(xmlDoc.SelectSingleNode("Main"), "Version");
 
             URLDrive = xmlDoc.SelectSingleNode("Main/AutoUpdate/URLDrive").InnerText;
             if (URLDrive.Length == 0)
@@ -42,7 +42,7 @@ namespace Fantasy_King_s_Battle
                 XmlDocument xmlDoc = new XmlDocument();
                 xmlDoc.Load(filenameVersion);
 
-                ActualVersion = XmlUtils.GetVersionFromXml(xmlDoc.SelectSingleNode("Versions/ActualVersion"));
+                ActualVersion = XmlUtils.GetVersionFromXml(xmlDoc.SelectSingleNode("Versions"), "ActualVersion");
                 return ActualVersion > CurrentVersion;
             }
             else

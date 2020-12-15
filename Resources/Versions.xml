@@ -1,14 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Versions>
-  <ActualVersion>
-    <Major>0</Major>
-    <Minor>2</Minor>
-    <Build>4</Build>
-  </ActualVersion>
+  <ActualVersion>0.2.4</ActualVersion>
   <Version>
-    <Major>0</Major>
-    <Minor>2</Minor>
-    <Build>0</Build>
+    <Number>0.2.0</Number>
     <DateBuild>07.12.2020</DateBuild>
     <Description>
       <Line>[+] Добавлен сплэш-экран.</Line>
@@ -16,9 +10,7 @@
     </Description>
   </Version>
   <Version>
-    <Major>0</Major>
-    <Minor>2</Minor>
-    <Build>1</Build>
+    <Number>0.2.1</Number>
     <DateBuild>12.12.2020</DateBuild>
     <Description>
       <Line>[+] Добавлен Updater.exe для автообновления игры.</Line>
@@ -33,27 +25,21 @@
     </Description>
   </Version>
   <Version>
-    <Major>0</Major>
-    <Minor>2</Minor>
-    <Build>2</Build>
+    <Number>0.2.2</Number>
     <DateBuild>12.12.2020</DateBuild>
     <Description>
       <Line>[*] Сборка с новой версией для проверки автообновления.</Line>
     </Description>
   </Version>
   <Version>
-    <Major>0</Major>
-    <Minor>2</Minor>
-    <Build>3</Build>
+    <Number>0.2.3</Number>
     <DateBuild>12.12.2020</DateBuild>
     <Description>
       <Line>[+] Добавлено окно "О программе".</Line>
     </Description>
   </Version>
   <Version>
-    <Major>0</Major>
-    <Minor>2</Minor>
-    <Build>4</Build>
+    <Number>0.2.4</Number>
     <DateBuild>14.12.2020</DateBuild>
     <Description>
       <Line>[F] Исправлен показ видео-заставки в части экрана при полноэкранном режиме.</Line>

@@ -58,7 +58,7 @@ namespace Updater
             xmlDoc.Load(dirResources + "Main.xml");
             try
             {
-                currentVersion = GetVersionFromXml(xmlDoc.SelectSingleNode("Main/Version"));
+                currentVersion = GetVersionFromXml(xmlDoc.SelectSingleNode("Main"), "Version");
 
                 URLDrive = xmlDoc.SelectSingleNode("Main/AutoUpdate/URLDrive").InnerText;
                 if (URLDrive.Length == 0)
@@ -94,10 +94,18 @@ namespace Updater
             }
 
             // Показываем историю изменений текущей версии
+            LoadAndShowChanges();
+        }
+
+        private void LoadAndShowChanges()
+        {
             string filenameVersion = Environment.CurrentDirectory + @"\ActualVersion.xml";
-            XmlDocument xmlDocHistory = new XmlDocument();
-            xmlDocHistory.Load(filenameVersion);
-            ShowChanges(xmlDocHistory);
+            if (File.Exists(filenameVersion))
+            {
+                XmlDocument xmlDocHistory = new XmlDocument();
+                xmlDocHistory.Load(filenameVersion);
+                ShowChanges(xmlDocHistory);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -142,13 +150,12 @@ namespace Updater
                     XmlDocument xmlDoc = new XmlDocument();
                     xmlDoc.Load(filenameVersion);
 
-                    actualVersion = GetVersionFromXml(xmlDoc.SelectSingleNode("Versions/ActualVersion"));
+                    actualVersion = GetVersionFromXml(xmlDoc.SelectSingleNode("Versions"), "ActualVersion");
                     if (actualVersion > currentVersion)
                     {
                         SetState("Найдена новая версия: " + actualVersion.ToString());
                         button1.Text = "Обновить игру";
                         State = State.Update;
-                        ShowChanges(xmlDoc);
                     }
                     else if (actualVersion == currentVersion)
                     {
@@ -158,6 +165,8 @@ namespace Updater
                     {
                         labelAction.Text = "У вас более новая версия игры, чем должна была быть!";
                     }
+
+                    LoadAndShowChanges();
                 }
                 catch (Exception exc)
                 {
@@ -181,7 +190,7 @@ namespace Updater
             Version v;
             foreach(XmlNode n in nc.SelectNodes("Version"))
             {
-                v = GetVersionFromXml(n);
+                v = GetVersionFromXml(n, "Number");
                 line = v.ToString() + " от " + n.SelectSingleNode("DateBuild").InnerText + Environment.NewLine;
 
                 foreach (XmlNode ld in n.SelectNodes("Description/Line"))
@@ -320,11 +329,9 @@ namespace Updater
             MessageBox.Show(text, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        public static Version GetVersionFromXml(XmlNode n)
+        public static Version GetVersionFromXml(XmlNode n, string name)
         {
-            return new Version(Convert.ToByte(n.SelectSingleNode("Major").InnerText),
-                Convert.ToByte(n.SelectSingleNode("Minor").InnerText),
-                Convert.ToByte(n.SelectSingleNode("Build").InnerText));
+            return new Version(n.SelectSingleNode(name).InnerText);
         }
 
         public static bool DownloadFile(string urlDrive, string uid, string filename)
