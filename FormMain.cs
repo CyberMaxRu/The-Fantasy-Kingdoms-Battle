@@ -27,7 +27,7 @@ namespace Fantasy_King_s_Battle
 
         // ImageList'ы
         internal readonly ImageList ilPlayerAvatars;
-        internal readonly ImageList ilPlayerAvatarsBig;
+        internal ImageList ilPlayerAvatarsBig;
         internal readonly ImageList ilResultBattle;
         internal readonly ImageList ilBuildings;
         internal readonly ImageList ilHeroes;
@@ -156,6 +156,7 @@ namespace Fantasy_King_s_Battle
         //
         internal Settings Settings { get; private set; }
         internal MainConfig MainConfig { get; private set; }
+        internal int AvatarCount { get; private set; }
 
         public FormMain()
         {
@@ -261,8 +262,13 @@ namespace Fantasy_King_s_Battle
 
             // Загружаем иконки
             SetStage("Рассматриваем картины");
-            ilPlayerAvatars = PrepareImageList("PlayerAvatars.png", 48, 48, true);
-            ilPlayerAvatarsBig = PrepareImageList("PlayerAvatarsBig.png", 128, 128, true);
+            ilPlayerAvatars = new ImageList()
+            {
+                ColorDepth = ColorDepth.Depth32Bit,
+                ImageSize = new Size(48, 48)
+            };
+
+            ValidateAvatars();
             ilResultBattle = PrepareImageList("ResultBattle.png", 24, 24, false);
             ilBuildings = PrepareImageList("Buildings.png", 126, 126, true);
             ilHeroes = PrepareImageList("Heroes.png", 126, 126, false);
@@ -488,6 +494,8 @@ namespace Fantasy_King_s_Battle
 
             formHint = new FormHint(ilGui16, ilParameters);
 
+            ValidateAvatars();
+
             splashForm.Dispose();
 
             //
@@ -675,6 +683,12 @@ namespace Fantasy_King_s_Battle
                     lobby.CurrentPlayer.Name = Settings.NamePlayer;
                 }
 
+                if (Settings.IndexAvatar() != lobby.CurrentPlayer.ImageIndexAvatar)
+                {
+                    lobby.CurrentPlayer.ImageIndexAvatar = lobby.CurrentPlayer.ImageIndexAvatar;
+                    lobby.CurrentPlayer.Panel.Refresh();
+                }
+
                 ApplyFullScreen(false);
             }
         }
@@ -760,6 +774,55 @@ namespace Fantasy_King_s_Battle
         }
 
         internal static Config Config { get; set; }
+
+        private void AddBitmapToImageList(ImageList il, Bitmap bitmap, int height)
+        {
+            int lines = bitmap.Height / height;
+            if (lines > 1)
+            {
+                for (int i = 0; i < lines; i++)
+                {
+                    Bitmap bmpSingleline = new Bitmap(bitmap.Width, height);
+                    Graphics g = Graphics.FromImage(bmpSingleline);
+                    g.DrawImage(bitmap, 0, 0, new Rectangle(0, i * height, bitmap.Width, height), GraphicsUnit.Pixel);
+                    _ = il.Images.AddStrip(bmpSingleline);
+                    g.Dispose();
+                }
+            }
+            else
+            {
+                _ = il.Images.AddStrip(bitmap);
+            }
+        }
+
+        private Bitmap GreyBitmap(Bitmap bmp)
+        {
+            Bitmap output = new Bitmap(bmp.Width, bmp.Height);
+
+            // Перебираем в циклах все пиксели исходного изображения
+            for (int j = 0; j < bmp.Height; j++)
+                for (int i = 0; i < bmp.Width; i++)
+                {
+                    // получаем (i, j) пиксель
+                    uint pixel = (uint)(bmp.GetPixel(i, j).ToArgb());
+
+                    // получаем компоненты цветов пикселя
+                    float R = (pixel & 0x00FF0000) >> 16; // красный
+                    float G = (pixel & 0x0000FF00) >> 8; // зеленый
+                    float B = pixel & 0x000000FF; // синий
+                                                  // делаем цвет черно-белым (оттенки серого) - находим среднее арифметическое
+                    R = G = B = (R + G + B) / 3.0f;
+
+                    // собираем новый пиксель по частям (по каналам)
+                    uint newPixel = ((uint)bmp.GetPixel(i, j).A << 24) | ((uint)R << 16) | ((uint)G << 8) | ((uint)B);
+
+                    // добавляем его в Bitmap нового изображения
+                    output.SetPixel(i, j, Color.FromArgb((int)newPixel));
+                }
+
+            return output;
+        }
+
         internal ImageList PrepareImageList(string filename, int width, int height, bool convertToGrey)
         {
             ImageList il = new ImageList()
@@ -771,62 +834,14 @@ namespace Fantasy_King_s_Battle
             Bitmap bmp = new Bitmap(dirResources + "Icons\\" + filename);
             // Если это многострочная картинка, нарезаем ее в однострочную картинку
             if (bmp.Height % height != 0)
-                throw new Exception("Высота многострочной картинки не кратна высоте строки: " + filename);
+                throw new Exception("Высота многострочной картинки не кратна высоте строки.");
 
-            AddBitmapToImageList(bmp);
+            AddBitmapToImageList(il, bmp, height);
 
             if (convertToGrey == true)
-                AddBitmapToImageList(GreyBitmap());
+                AddBitmapToImageList(il, GreyBitmap(bmp), height);
 
             return il;
-
-            void AddBitmapToImageList(Bitmap bitmap)
-            {
-                int lines = bitmap.Height / height;
-                if (lines > 1)
-                {
-                    for (int i = 0; i < lines; i++)
-                    {
-                        Bitmap bmpSingleline = new Bitmap(bitmap.Width, height);
-                        Graphics g = Graphics.FromImage(bmpSingleline);
-                        g.DrawImage(bitmap, 0, 0, new Rectangle(0, i * height, bitmap.Width, height), GraphicsUnit.Pixel);
-                        _ = il.Images.AddStrip(bmpSingleline);
-                        g.Dispose();
-                    }
-                }
-                else
-                {
-                    _ = il.Images.AddStrip(bitmap);
-                }
-            }
-
-            Bitmap GreyBitmap()
-            {
-                Bitmap output = new Bitmap(bmp.Width, bmp.Height);
-
-                // Перебираем в циклах все пиксели исходного изображения
-                for (int j = 0; j < bmp.Height; j++)
-                    for (int i = 0; i < bmp.Width; i++)
-                    {
-                        // получаем (i, j) пиксель
-                        uint pixel = (uint)(bmp.GetPixel(i, j).ToArgb());
-
-                        // получаем компоненты цветов пикселя
-                        float R = (pixel & 0x00FF0000) >> 16; // красный
-                        float G = (pixel & 0x0000FF00) >> 8; // зеленый
-                        float B = pixel & 0x000000FF; // синий
-                        // делаем цвет черно-белым (оттенки серого) - находим среднее арифметическое
-                        R = G = B = (R + G + B) / 3.0f;
-
-                        // собираем новый пиксель по частям (по каналам)
-                        uint newPixel = ((uint)bmp.GetPixel(i, j).A << 24) | ((uint)R << 16) | ((uint)G << 8) | ((uint)B);
-
-                        // добавляем его в Bitmap нового изображения
-                        output.SetPixel(i, j, Color.FromArgb((int)newPixel));
-                    }
-
-                return output;
-            }
         }
 
         internal void ShowDataPlayer()
@@ -834,7 +849,7 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(lobby.CurrentPlayer.TypePlayer == TypePlayer.Human);
 
             labelDay.Text = "     " + lobby.Turn.ToString();
-            
+
             // Если этого игрока не отрисовывали, формируем заново вкладки
             if (curAppliedPlayer != lobby.CurrentPlayer)
             {
@@ -1202,6 +1217,36 @@ namespace Fantasy_King_s_Battle
         private void Control_MouseLeave(object sender, EventArgs e)
         {
             formHint.HideHint();
+        }
+
+        internal void ValidateAvatars()
+        {
+            ilPlayerAvatarsBig = PrepareImageList("PlayerAvatarsBig.png", 128, 128, false);
+
+            Settings.LoadAvatar();
+            if (Settings.Avatar != null)
+            {
+                ilPlayerAvatarsBig.Images.Add(Settings.Avatar);
+            }
+
+            Bitmap bmp;
+            AvatarCount = ilPlayerAvatarsBig.Images.Count;
+            for (int i = 0; i < AvatarCount; i++)
+            {
+                bmp = new Bitmap(ilPlayerAvatarsBig.Images[i]);
+                ilPlayerAvatarsBig.Images.Add(GreyBitmap(bmp));
+            }
+
+            ilPlayerAvatars.Images.Clear();
+            ilPlayerAvatars.ImageSize = new Size(48, 48);
+            foreach (Image i in ilPlayerAvatarsBig.Images)
+            {
+                Bitmap bmpDest = new Bitmap(48, 48);
+                Graphics gDest = Graphics.FromImage(bmpDest);
+                gDest.DrawImage(i, new Rectangle(0, 0, 48, 48), new Rectangle(0, 0, 128, 128), GraphicsUnit.Pixel);
+                ilPlayerAvatars.Images.Add(bmpDest);
+                gDest.Dispose();
+            }
         }
     }
 }

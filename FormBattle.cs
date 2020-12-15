@@ -413,7 +413,7 @@ namespace Fantasy_King_s_Battle
             Graphics g = Graphics.FromImage(bmpLayBackground);
 
             g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
-            g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
             g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
 
             g.DrawImageUnscaled(bmpBackground, 0, 0);

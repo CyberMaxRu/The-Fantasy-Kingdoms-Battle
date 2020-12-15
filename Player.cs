@@ -25,7 +25,7 @@ namespace Fantasy_King_s_Battle
             Loses = 0;
             IsLive = true;
             PlayerIndex = index;
-            ImageIndexAvatar = PlayerIndex;
+            ImageIndexAvatar = typePlayer == TypePlayer.Computer ? PlayerIndex : Program.formMain.Settings.IndexAvatar();
             ResultLastBattle = ResultBattle.None;
 
             // Настраиваем игрока согласно настройкам лобби
@@ -132,7 +132,7 @@ namespace Fantasy_King_s_Battle
 
         internal Lobby Lobby { get; }
         internal string Name { get; set; }
-        internal int ImageIndexAvatar { get; }
+        internal int ImageIndexAvatar { get; set; }
         internal int PlayerIndex { get; }
         internal int PositionInLobby { get; set; }
         internal int DurabilityCastle { get; set; }

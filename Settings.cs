@@ -34,9 +34,9 @@ namespace Fantasy_King_s_Battle
             if (NamePlayer.Length > 31)
                 throw new Exception("Длина имени игрока более 31 символа.");
 
-            IndexAvatar = XmlUtils.GetParamFromXmlInteger(doc.SelectSingleNode("Settings/Player/IndexAvatar"));
-            if (IndexAvatar < -1)
-                IndexAvatar = 0;
+            IndexInternalAvatar = XmlUtils.GetParamFromXmlInteger(doc.SelectSingleNode("Settings/Player/IndexAvatar"));
+            if (IndexInternalAvatar < -1)
+                IndexInternalAvatar = 0;
             FileNameAvatar = XmlUtils.GetParamFromXmlString(doc.SelectSingleNode("Settings/Player/FileNameAvatar"));
             //if (IndexAvatar >= Program.formMain.ilPlayerAvatars.Images.Count)
             //    IndexAvatar = Program.formMain.ilPlayerAvatars.Images.Count - 1;
@@ -48,14 +48,14 @@ namespace Fantasy_King_s_Battle
         internal bool BattlefieldShowPath { get; set; }
         internal bool BattlefieldShowGrid { get; set; }
         internal string NamePlayer { get; set; }
-        internal int IndexAvatar { get; set; }
+        internal int IndexInternalAvatar { get; set; }
         internal string FileNameAvatar { get; set; }
-
         internal Bitmap Avatar { get; private set; }
 
         internal void LoadAvatar()
         {
-            Avatar = GuiUtils.PrepareAvatar(FileNameAvatar);
+            Avatar?.Dispose();
+            Avatar = FileNameAvatar.Length > 0 ? GuiUtils.PrepareAvatar(FileNameAvatar) : null;
         }
 
         internal void SaveSettings()
@@ -80,13 +80,18 @@ namespace Fantasy_King_s_Battle
 
             textWriter.WriteStartElement("Player");
             textWriter.WriteElementString("Name", NamePlayer);
-            textWriter.WriteElementString("IndexAvatar", IndexAvatar.ToString());
+            textWriter.WriteElementString("IndexAvatar", IndexInternalAvatar.ToString());
             textWriter.WriteElementString("FileNameAvatar", FileNameAvatar);
             textWriter.WriteEndElement();
 
             textWriter.WriteEndElement();
             textWriter.Close();
             textWriter.Dispose();
+        }
+
+        internal int IndexAvatar()
+        {
+            return FileNameAvatar.Length > 0 ? Program.formMain.AvatarCount - 1 : IndexInternalAvatar;
         }
     }
 }

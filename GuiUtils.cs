@@ -180,9 +180,21 @@ namespace Fantasy_King_s_Battle
                 Bitmap newAvatar = new Bitmap(Program.formMain.ilPlayerAvatarsBig.ImageSize.Width, Program.formMain.ilPlayerAvatarsBig.ImageSize.Height);
 
                 Graphics gAvatar = Graphics.FromImage(newAvatar);
-                gAvatar.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                gAvatar.DrawImage(bmpRaw, new Rectangle(0, 0, newAvatar.Width, newAvatar.Height), new Rectangle(0, 0, bmpRaw.Width, bmpRaw.Height), GraphicsUnit.Pixel);
+                gAvatar.InterpolationMode = InterpolationMode.High;
+                // У оригинальных картинок размер 126 * 126
+                gAvatar.DrawImage(bmpRaw, new Rectangle(1, 1, newAvatar.Width - 2, newAvatar.Height - 2), new Rectangle(0, 0, bmpRaw.Width, bmpRaw.Height), GraphicsUnit.Pixel);
+
+                // Применяем округление
+                Bitmap bmpOrg = new Bitmap(Program.formMain.ilPlayerAvatarsBig.Images[0]);
+                for (int y = 0; y < newAvatar.Height; y++)
+                    for (int x = 0; x < newAvatar.Width; x++)
+                    {                        
+                        newAvatar.SetPixel(x, y, Color.FromArgb(bmpOrg.GetPixel(x, y).A, newAvatar.GetPixel(x, y)));
+                    }
+
+                //
                 gAvatar.Dispose();
+                bmpOrg.Dispose();
 
                 return newAvatar;
             }

@@ -56,6 +56,8 @@ namespace Fantasy_King_s_Battle
                 settings.NamePlayer = txtbNamePlayer.Text;
                 settings.FileNameAvatar = filenameAvatar;
                 settings.SaveSettings();
+
+                Program.formMain.ValidateAvatars();
             }
         }
 
