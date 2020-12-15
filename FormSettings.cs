@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Fantasy_King_s_Battle
 {
@@ -14,12 +15,13 @@ namespace Fantasy_King_s_Battle
     {
         private Bitmap bmpBackground;
         private Settings settings;
-
+        private string filenameAvatar;
         public FormSettings()
         {
             InitializeComponent();
 
             bmpBackground = GuiUtils.MakeBackground(Size);
+            button1.BackgroundImage = GuiUtils.MakeBackground(button1.Size);
 
             chkbShowSplashVideo.ForeColor = FormMain.Config.CommonCaptionPage;
             chkbFullScreenMode.ForeColor = FormMain.Config.CommonCaptionPage;
@@ -52,7 +54,7 @@ namespace Fantasy_King_s_Battle
                 settings.BattlefieldShowGrid = chkbShowGrid.Checked;
 
                 settings.NamePlayer = txtbNamePlayer.Text;
-
+                settings.FileNameAvatar = filenameAvatar;
                 settings.SaveSettings();
             }
         }
@@ -68,6 +70,28 @@ namespace Fantasy_King_s_Battle
             chkbShowGrid.Checked = settings.BattlefieldShowGrid;
 
             txtbNamePlayer.Text = settings.NamePlayer;
+            filenameAvatar = settings.FileNameAvatar;
+            ShowAvatar();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog OPF = new OpenFileDialog();
+            OPF.InitialDirectory = filenameAvatar.Length > 0 ? Path.GetDirectoryName(filenameAvatar) : Environment.CurrentDirectory;
+            OPF.FileName = filenameAvatar.Length > 0 ? Path.GetFileName(filenameAvatar) : "";
+            OPF.CheckFileExists = true;
+            OPF.Multiselect = false;
+            OPF.Filter = "png files (*.png)|*.png|jpg files (*.jpg)|*.jpg";
+            if (OPF.ShowDialog() == DialogResult.OK)
+            {
+                filenameAvatar = OPF.FileName;
+                ShowAvatar();
+            }
+        }
+
+        private void ShowAvatar()
+        {
+            picxBoxAvatar.Image = filenameAvatar.Length > 0 ? GuiUtils.PrepareAvatar(filenameAvatar) : null;
         }
     }
 }

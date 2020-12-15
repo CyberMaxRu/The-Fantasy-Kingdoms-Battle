@@ -38,7 +38,7 @@ namespace Fantasy_King_s_Battle
             this.chkbShowPath = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.picxBoxAvatar = new System.Windows.Forms.PictureBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -48,7 +48,7 @@ namespace Fantasy_King_s_Battle
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picxBoxAvatar)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -130,7 +130,7 @@ namespace Fantasy_King_s_Battle
             // 
             this.groupBox3.BackColor = System.Drawing.Color.Transparent;
             this.groupBox3.Controls.Add(this.button1);
-            this.groupBox3.Controls.Add(this.pictureBox1);
+            this.groupBox3.Controls.Add(this.picxBoxAvatar);
             this.groupBox3.Controls.Add(this.comboBox1);
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Controls.Add(this.label1);
@@ -144,20 +144,25 @@ namespace Fantasy_King_s_Battle
             // 
             // button1
             // 
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.Color.SkyBlue;
             this.button1.Location = new System.Drawing.Point(8, 176);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 5;
             this.button1.Text = "Загрузить";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // pictureBox1
+            // picxBoxAvatar
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(88, 72);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(128, 128);
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
+            this.picxBoxAvatar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picxBoxAvatar.Location = new System.Drawing.Point(88, 72);
+            this.picxBoxAvatar.Name = "picxBoxAvatar";
+            this.picxBoxAvatar.Size = new System.Drawing.Size(128, 128);
+            this.picxBoxAvatar.TabIndex = 4;
+            this.picxBoxAvatar.TabStop = false;
             // 
             // comboBox1
             // 
@@ -205,6 +210,8 @@ namespace Fantasy_King_s_Battle
             // btnOk
             // 
             this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnOk.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOk.Location = new System.Drawing.Point(352, 248);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
@@ -234,7 +241,7 @@ namespace Fantasy_King_s_Battle
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picxBoxAvatar)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -250,7 +257,7 @@ namespace Fantasy_King_s_Battle
         private System.Windows.Forms.CheckBox chkbShowPath;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox picxBoxAvatar;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;

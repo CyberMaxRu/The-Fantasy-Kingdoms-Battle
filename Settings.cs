@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Diagnostics;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 
 namespace Fantasy_King_s_Battle
 {
@@ -35,6 +37,7 @@ namespace Fantasy_King_s_Battle
             IndexAvatar = XmlUtils.GetParamFromXmlInteger(doc.SelectSingleNode("Settings/Player/IndexAvatar"));
             if (IndexAvatar < -1)
                 IndexAvatar = 0;
+            FileNameAvatar = XmlUtils.GetParamFromXmlString(doc.SelectSingleNode("Settings/Player/FileNameAvatar"));
             //if (IndexAvatar >= Program.formMain.ilPlayerAvatars.Images.Count)
             //    IndexAvatar = Program.formMain.ilPlayerAvatars.Images.Count - 1;
         }
@@ -46,6 +49,14 @@ namespace Fantasy_King_s_Battle
         internal bool BattlefieldShowGrid { get; set; }
         internal string NamePlayer { get; set; }
         internal int IndexAvatar { get; set; }
+        internal string FileNameAvatar { get; set; }
+
+        internal Bitmap Avatar { get; private set; }
+
+        internal void LoadAvatar()
+        {
+            Avatar = GuiUtils.PrepareAvatar(FileNameAvatar);
+        }
 
         internal void SaveSettings()
         {
@@ -70,6 +81,7 @@ namespace Fantasy_King_s_Battle
             textWriter.WriteStartElement("Player");
             textWriter.WriteElementString("Name", NamePlayer);
             textWriter.WriteElementString("IndexAvatar", IndexAvatar.ToString());
+            textWriter.WriteElementString("FileNameAvatar", FileNameAvatar);
             textWriter.WriteEndElement();
 
             textWriter.WriteEndElement();

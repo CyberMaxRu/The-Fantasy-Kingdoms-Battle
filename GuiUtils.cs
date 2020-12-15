@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Diagnostics;
 
 namespace Fantasy_King_s_Battle
@@ -169,6 +170,27 @@ namespace Fantasy_King_s_Battle
         public static void ShowError(string text)
         {
             MessageBox.Show(text, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        internal static Bitmap PrepareAvatar(string filename)
+        {
+            try
+            {
+                Bitmap bmpRaw = new Bitmap(filename);
+                Bitmap newAvatar = new Bitmap(Program.formMain.ilPlayerAvatarsBig.ImageSize.Width, Program.formMain.ilPlayerAvatarsBig.ImageSize.Height);
+
+                Graphics gAvatar = Graphics.FromImage(newAvatar);
+                gAvatar.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                gAvatar.DrawImage(bmpRaw, new Rectangle(0, 0, newAvatar.Width, newAvatar.Height), new Rectangle(0, 0, bmpRaw.Width, bmpRaw.Height), GraphicsUnit.Pixel);
+                gAvatar.Dispose();
+
+                return newAvatar;
+            }
+            catch (Exception e)
+            {
+                ShowError(e.Message);
+                return null;
+            }
         }
     }
 }
