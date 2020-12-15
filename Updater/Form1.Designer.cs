@@ -40,7 +40,7 @@ namespace Updater
             // 
             this.button1.Location = new System.Drawing.Point(8, 24);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(256, 23);
+            this.button1.Size = new System.Drawing.Size(208, 23);
             this.button1.TabIndex = 0;
             this.button1.Text = "Проверить на наличие новой версии";
             this.button1.UseVisualStyleBackColor = true;
@@ -75,7 +75,7 @@ namespace Updater
             // labelAction
             // 
             this.labelAction.AutoSize = true;
-            this.labelAction.Location = new System.Drawing.Point(272, 28);
+            this.labelAction.Location = new System.Drawing.Point(224, 28);
             this.labelAction.Name = "labelAction";
             this.labelAction.Size = new System.Drawing.Size(57, 13);
             this.labelAction.TabIndex = 4;

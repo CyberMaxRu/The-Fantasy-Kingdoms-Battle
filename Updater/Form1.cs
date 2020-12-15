@@ -16,6 +16,8 @@ using System.Net;
 
 namespace Updater
 {
+    internal enum State { CheckUpdate, Update, Run }
+
     public partial class Form1 : Form
     {
         private string dirResources;
@@ -25,7 +27,7 @@ namespace Updater
         private string URLDrive;
         private string UIDVersion;
         private string UIDArchive;
-        private bool needUpdate = false;
+        private State State = State.CheckUpdate;
         private bool autoUpdate = false;
 
         public Form1()
@@ -100,10 +102,30 @@ namespace Updater
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (needUpdate)
-                Update();
-            else
-                CheckUpdate();
+            switch (State)
+            {
+                case State.CheckUpdate:
+                    CheckUpdate();
+                    break;
+                case State.Update:
+                    Update();
+                    break;
+                case State.Run:
+                    if (File.Exists(Environment.CurrentDirectory + "\\The Fantasy Kingdoms Battle.exe"))
+                    {
+                        Process p = new Process();
+                        p.StartInfo.WorkingDirectory = Environment.CurrentDirectory;
+                        p.StartInfo.FileName = "The Fantasy Kingdoms Battle.exe";
+                        p.Start();
+
+                        Environment.Exit(0);
+                    }
+                    else
+                        ShowError("Не могу найти файл игры.");
+                    break;
+                default:
+                    throw new Exception("Неизвестное состояние.");
+            }
         }
 
         private void CheckUpdate()
@@ -125,7 +147,7 @@ namespace Updater
                     {
                         SetState("Найдена новая версия: " + actualVersion.ToString());
                         button1.Text = "Обновить игру";
-                        needUpdate = true;
+                        State = State.Update;
                         ShowChanges(xmlDoc);
                     }
                     else if (actualVersion == currentVersion)
@@ -269,7 +291,7 @@ namespace Updater
                         System.IO.Directory.Delete(newdir, true);
                     System.IO.Directory.Move(dir, newdir);
                 }
-
+                
                 // Удаляем архив
                 SetState("Удаляем папку и архив с обновлением...");
                 if (System.IO.Directory.Exists(pathUpdate))
@@ -278,6 +300,8 @@ namespace Updater
 
                 // Обновление завершено
                 SetState("Обновление завершено...");
+                button1.Text = "Запустить игру";
+                State = State.Run;
             }
             else
             {
