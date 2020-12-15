@@ -1565,38 +1565,6 @@
     </Levels>
   </Building>
   <Building>
-    <ID>GuildFireMage</ID>
-    <Name>Храм Огня</Name>
-    <Description>- Позволяет нанимать магов Огня</Description>
-    <ImageIndex>22</ImageIndex>
-    <CategoryBuilding>Temple</CategoryBuilding>
-    <Line>3</Line>
-    <DefaultLevel>0</DefaultLevel>
-    <MaxLevel>1</MaxLevel>
-    <TypeIncome>None</TypeIncome>
-    <HasTreasury>True</HasTreasury>
-    <GoldByConstruction>0</GoldByConstruction>
-    <Levels>
-      <Level>
-        <Pos>1</Pos>
-        <Cost>3000</Cost>
-        <Builders>10</Builders>
-        <Income>0</Income>
-        <MaxHeroes>14</MaxHeroes>
-        <Requirements>
-          <Requirement>
-            <Building>Castle</Building>
-            <Level>3</Level>
-          </Requirement>
-          <Requirement>
-            <Building>GuildMage</Building>
-            <Level>1</Level>
-          </Requirement>
-        </Requirements>
-      </Level>
-    </Levels>
-  </Building>
-  <Building>
     <ID>GuildIceMage</ID>
     <Name>Храм Холода</Name>
     <Description>- Позволяет нанимать магов Холода</Description>
@@ -1654,6 +1622,38 @@
           </Requirement>
           <Requirement>
             <Building>GuildRogue</Building>
+            <Level>1</Level>
+          </Requirement>
+        </Requirements>
+      </Level>
+    </Levels>
+  </Building>
+  <Building>
+    <ID>GuildFireMage</ID>
+    <Name>Храм Огня</Name>
+    <Description>- Позволяет нанимать магов Огня</Description>
+    <ImageIndex>22</ImageIndex>
+    <CategoryBuilding>Temple</CategoryBuilding>
+    <Line>3</Line>
+    <DefaultLevel>0</DefaultLevel>
+    <MaxLevel>1</MaxLevel>
+    <TypeIncome>None</TypeIncome>
+    <HasTreasury>True</HasTreasury>
+    <GoldByConstruction>0</GoldByConstruction>
+    <Levels>
+      <Level>
+        <Pos>1</Pos>
+        <Cost>3000</Cost>
+        <Builders>10</Builders>
+        <Income>0</Income>
+        <MaxHeroes>14</MaxHeroes>
+        <Requirements>
+          <Requirement>
+            <Building>Castle</Building>
+            <Level>3</Level>
+          </Requirement>
+          <Requirement>
+            <Building>GuildMage</Building>
             <Level>1</Level>
           </Requirement>
         </Requirements>
