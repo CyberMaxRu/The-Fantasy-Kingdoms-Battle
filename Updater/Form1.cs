@@ -156,7 +156,7 @@ namespace Updater
                     if (actualVersion > currentVersion)
                     {
                         SetState("Найдена новая версия: " + actualVersion.ToString());
-                        button1.Text = "Обновить игру";
+                        button1.Text = "Обновить";
                         State = State.Update;
                     }
                     else if (actualVersion == currentVersion)
@@ -258,11 +258,11 @@ namespace Updater
             if (!b)
                 return;
 
-            string pathUpdate = Environment.CurrentDirectory + @"\update";
+            string pathUpdate = Environment.CurrentDirectory + @"\Update";
             // Скачиваем архив
             SetState("Скачиваем архив с обновлением...");
 
-            string filenameZip = Environment.CurrentDirectory + @"\update.zip";
+            string filenameZip = Environment.CurrentDirectory + @"\Update.zip";
             if (DownloadFile(URLDrive, UIDArchive, filenameZip))
             {
                 // Удаляем папку с обновлениями
@@ -284,7 +284,7 @@ namespace Updater
                     newName = Environment.CurrentDirectory + @"\" + System.IO.Path.GetFileName(file);                    
                     if (Path.GetFileName(newName) == "Settings.xml")// Настройки пропускаем, не заменяем
                         continue;
-                    if (Path.GetFileName(newName) == "Updater.exe")
+                    if (Path.GetFileName(newName).StartsWith("Updater"))
                         newName += ".new";
                     if (System.IO.File.Exists(newName))
                     {
@@ -311,7 +311,7 @@ namespace Updater
 
                 // Обновление завершено
                 SetState("Обновление завершено...");
-                button1.Text = "Запустить игру";
+                button1.Text = "Запустить";
                 State = State.Run;
             }
             else
