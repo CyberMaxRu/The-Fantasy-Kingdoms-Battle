@@ -22,6 +22,7 @@ namespace Fantasy_King_s_Battle
         internal const string VERSION = "0.2.4";
         internal const string DATE_VERSION = "14.12.2020";
         private const string VERSION_POSTFIX = "в разработке";
+        internal readonly string dirCurrent;
         internal readonly string dirResources;
 
         // ImageList'ы
@@ -165,16 +166,35 @@ namespace Fantasy_King_s_Battle
             Text = NAME_PROJECT + " (сборка " + VERSION + ")";
 
             // Настройка переменной с папкой ресурсов
-            dirResources = Environment.CurrentDirectory;
+            dirCurrent = Environment.CurrentDirectory;
 
-            if (dirResources.Contains("Debug"))
-                dirResources = Environment.CurrentDirectory.Substring(0, Environment.CurrentDirectory.Length - 9);
-            else if (dirResources.Contains("Release"))
-                dirResources = Environment.CurrentDirectory.Substring(0, Environment.CurrentDirectory.Length - 11);
+            if (dirCurrent.Contains("Debug"))
+                dirCurrent = Environment.CurrentDirectory.Substring(0, Environment.CurrentDirectory.Length - 9);
+            else if (dirCurrent.Contains("Release"))
+                dirCurrent = Environment.CurrentDirectory.Substring(0, Environment.CurrentDirectory.Length - 11);
             else
-                dirResources += "\\";
+                dirCurrent += "\\";
 
-            dirResources += "Resources\\";
+            dirResources = dirCurrent + "Resources\\";
+
+            // Обновляем обновлятор
+            string newName;
+            foreach (string file in System.IO.Directory.EnumerateFiles(dirCurrent))
+            {
+                if (Path.GetFileName(file).StartsWith("Updater.") && Path.GetFileName(file).EndsWith(".new"))
+                    try
+                    {
+                        newName = file.Substring(0, file.Length - 4);
+                        if (File.Exists(newName))
+                            File.Delete(newName);
+                        File.Move(file, newName);
+                    }
+                    catch (Exception exc)
+                    {
+                        GuiUtils.ShowError(exc.Message);
+                        break;
+                    }
+            }
 
             // Загружаем настройки
             Settings = new Settings(dirResources);
