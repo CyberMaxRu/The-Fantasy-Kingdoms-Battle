@@ -33,6 +33,8 @@ namespace Updater
         public Form1()
         {
             InitializeComponent();
+
+            Text += " v1.0";
         }
 
         protected override void OnLoad(EventArgs e)
