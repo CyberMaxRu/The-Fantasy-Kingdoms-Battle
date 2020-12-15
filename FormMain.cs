@@ -175,7 +175,8 @@ namespace Fantasy_King_s_Battle
             else
                 dirCurrent += "\\";
 
-            dirResources = dirCurrent + "Resources\\";
+            // Ищем главную пользовательскую модификацию
+            dirResources = Directory.Exists(dirCurrent + @"User_mods\Main") ? dirCurrent + @"User_mods\Main\" : dirCurrent + @"Resources\";
 
             // Обновляем обновлятор
             string newName;
