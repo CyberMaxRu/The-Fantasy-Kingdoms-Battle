@@ -669,6 +669,11 @@ namespace Fantasy_King_s_Battle
             f.ApplySettings(Settings);
             if (f.ShowDialog() == DialogResult.OK)
             {
+                if (Settings.NamePlayer != lobby.CurrentPlayer.Name)
+                {
+                    lobby.CurrentPlayer.Name = Settings.NamePlayer;
+                }
+
                 ApplyFullScreen(false);
             }
         }

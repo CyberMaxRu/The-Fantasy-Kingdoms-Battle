@@ -63,10 +63,12 @@ namespace Fantasy_King_s_Battle
             // Создание игроков
             Players = new Player[tl.QuantityPlayers];
             TypePlayer tp;
+            string namePlayer;
             for (int i = 0; i < TypeLobby.QuantityPlayers; i++)
             {
                 tp = i == 0 ? TypePlayer.Human : TypePlayer.Computer;
-                Players[i] = new Player(this, i, "Игрок №" + (i + 1).ToString(), tp);
+                namePlayer = tp == TypePlayer.Computer ? "Игрок №" + (i + 1).ToString() : Program.formMain.Settings.NamePlayer;
+                Players[i] = new Player(this, i, namePlayer, tp);
             }
 
             SortPlayers();
