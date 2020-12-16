@@ -54,9 +54,8 @@ namespace Fantasy_King_s_Battle
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(544, 64);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Автобаттлер на основе \"Majesty 2: The Fantasy Kingdom Sim\".\r\nИгра разрабатывается" +
-    " для реализации концепта автобаттлера на основе вселенной Majesty и распространя" +
-    "ется на бесплатной основе.";
+            this.label1.Text = "Автобаттлер на основе \"Majesty 2: The Fantasy Kingdom Sim\".\r\nПроект разрабатывает" +
+    "ся как фан-сервис.";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // linkLabel1
