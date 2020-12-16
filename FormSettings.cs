@@ -22,6 +22,7 @@ namespace Fantasy_King_s_Battle
 
             bmpBackground = GuiUtils.MakeBackground(Size);
             button1.BackgroundImage = GuiUtils.MakeBackground(button1.Size);
+            button2.BackgroundImage = GuiUtils.MakeBackground(button1.Size);
 
             chkbShowSplashVideo.ForeColor = FormMain.Config.CommonCaptionPage;
             chkbFullScreenMode.ForeColor = FormMain.Config.CommonCaptionPage;
@@ -94,6 +95,12 @@ namespace Fantasy_King_s_Battle
         private void ShowAvatar()
         {
             picxBoxAvatar.Image = filenameAvatar.Length > 0 ? GuiUtils.PrepareAvatar(filenameAvatar) : null;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            filenameAvatar = "";
+            ShowAvatar();
         }
     }
 }

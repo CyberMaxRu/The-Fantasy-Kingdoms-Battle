@@ -1250,6 +1250,12 @@ namespace Fantasy_King_s_Battle
                 ilPlayerAvatars.Images.Add(bmpDest);
                 gDest.Dispose();
             }
+
+            if (lobby != null)
+            {
+                lobby.CurrentPlayer.ImageIndexAvatar = Settings.IndexAvatar();
+                lobby.CurrentPlayer.Panel.Refresh();
+            }
         }
 
         private void MakeAlpha()
