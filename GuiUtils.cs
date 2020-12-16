@@ -198,7 +198,7 @@ namespace Fantasy_King_s_Battle
             }
             catch (Exception e)
             {
-                ShowError(e.Message);
+                ShowError("Ошибка при загрузке пользовательского аватара: " + e.Message);
                 return null;
             }
         }

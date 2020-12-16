@@ -99,6 +99,8 @@ namespace Fantasy_King_s_Battle
         private void ShowAvatar()
         {
             picxBoxAvatar.Image = filenameAvatar.Length > 0 ? GuiUtils.PrepareAvatar(filenameAvatar) : null;
+            if (picxBoxAvatar.Image == null)
+                filenameAvatar = "";
         }
 
         private void button2_Click(object sender, EventArgs e)

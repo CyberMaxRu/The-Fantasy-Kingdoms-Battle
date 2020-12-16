@@ -57,7 +57,14 @@ namespace Fantasy_King_s_Battle
         internal void LoadAvatar()
         {
             Avatar?.Dispose();
-            Avatar = FileNameAvatar.Length > 0 ? GuiUtils.PrepareAvatar(FileNameAvatar) : null;
+            if (FileNameAvatar.Length == 0)
+                Avatar = null;
+            else
+            {
+                Avatar = GuiUtils.PrepareAvatar(FileNameAvatar);
+                if (Avatar == null)
+                    FileNameAvatar = "";
+            }
         }
 
         internal void SaveSettings()
