@@ -118,6 +118,7 @@ namespace Fantasy_King_s_Battle
         internal readonly Bitmap bmpEmptyEntity;
         private Bitmap bmpBackground;
         internal readonly Bitmap bmpBorderBattlefield;
+        internal readonly Bitmap MaskAvatar;
         internal int LengthSideBorderBattlefield { get; private set; }
         private int calcedWidth;
         private int calcedHeight;
@@ -268,7 +269,9 @@ namespace Fantasy_King_s_Battle
                 ImageSize = new Size(48, 48)
             };
 
+            MaskAvatar = new Bitmap(dirResources + @"Icons\MaskAvatar.png");
             ValidateAvatars();
+
             ilResultBattle = PrepareImageList("ResultBattle.png", 24, 24, false);
             ilBuildings = PrepareImageList("Buildings.png", 126, 126, true);
             ilHeroes = PrepareImageList("Heroes.png", 126, 126, false);
@@ -1247,6 +1250,17 @@ namespace Fantasy_King_s_Battle
                 ilPlayerAvatars.Images.Add(bmpDest);
                 gDest.Dispose();
             }
+        }
+
+        private void MakeAlpha()
+        {
+            /*Bitmap b = new Bitmap(ilPlayerAvatarsBig.Images[0]);
+            for (int y = 0; y < b.Height; y++)
+                for (int x = 0; x < b.Width; x++)
+                {
+                    b.SetPixel(x, y, Color.FromArgb(b.GetPixel(x, y).A, 0, 0, 0));
+                }
+            b.Save(@"f:\Projects\C-Sharp\Fantasy King's Battle\Resources\Icons\1.png");*/
         }
     }
 }
