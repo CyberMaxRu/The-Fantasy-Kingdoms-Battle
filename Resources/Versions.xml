@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Versions>
-  <ActualVersion>0.2.4</ActualVersion>
+  <ActualVersion>0.2.5</ActualVersion>
   <Version>
     <Number>0.2.0</Number>
     <DateBuild>07.12.2020</DateBuild>
@@ -49,6 +49,20 @@
       <Line>[*] Окно "О программе" - добавлены ссылки на Дорожную карту, ДизДок, изменен текст.</Line>
       <Line>[*] Окно "О программе" - добавлен номер и дата сборки.</Line>
       <Line>[*] Окно "О программе" - сделана проверка обновления и переход к обновлению.</Line>
+    </Description>
+  </Version>
+  <Version>
+    <Number>0.2.5</Number>
+    <DateBuild>16.12.2020</DateBuild>
+    <Description>
+      <Line>[+] Настроен инсталлятор игры.</Line>
+      <Line>[+] Игра при запуске обновляет Обновлятор.</Line>
+      <Line>[+] Если обнаруживается папка \User_mods\Main\, ресурсы берутся из неё.</Line>
+      <Line>[+] Загрузка пользовательской аватарки в окне настроек.</Line>
+      <Line>[*] Изменено расположение Храма Огня (сделано как в Majesty 2).</Line>
+      <Line>[*] Обновлятор после обновления предлагает запустить игру.</Line>
+      <Line>[*] В Обновляторе в истории изменений моноширинный шрифт.</Line>
+      <Line>[*] Изменение описания игры.</Line>
     </Description>
   </Version>
 </Versions>
