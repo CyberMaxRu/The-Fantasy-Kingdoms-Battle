@@ -38,6 +38,7 @@ namespace Fantasy_King_s_Battle
             if (IndexInternalAvatar < -1)
                 IndexInternalAvatar = 0;
             FileNameAvatar = XmlUtils.GetParamFromXmlString(doc.SelectSingleNode("Settings/Player/FileNameAvatar"));
+            DirectoryAvatar = XmlUtils.GetParamFromXmlString(doc.SelectSingleNode("Settings/Player/DirectoryAvatar"));
             //if (IndexAvatar >= Program.formMain.ilPlayerAvatars.Images.Count)
             //    IndexAvatar = Program.formMain.ilPlayerAvatars.Images.Count - 1;
         }
@@ -50,6 +51,7 @@ namespace Fantasy_King_s_Battle
         internal string NamePlayer { get; set; }
         internal int IndexInternalAvatar { get; set; }
         internal string FileNameAvatar { get; set; }
+        internal string DirectoryAvatar { get; set; }
         internal Bitmap Avatar { get; private set; }
 
         internal void LoadAvatar()
@@ -82,6 +84,7 @@ namespace Fantasy_King_s_Battle
             textWriter.WriteElementString("Name", NamePlayer);
             textWriter.WriteElementString("IndexAvatar", IndexInternalAvatar.ToString());
             textWriter.WriteElementString("FileNameAvatar", FileNameAvatar);
+            textWriter.WriteElementString("DirectoryAvatar", DirectoryAvatar);
             textWriter.WriteEndElement();
 
             textWriter.WriteEndElement();

@@ -16,6 +16,7 @@ namespace Fantasy_King_s_Battle
         private Bitmap bmpBackground;
         private Settings settings;
         private string filenameAvatar;
+        private string directoryAvatar;
         public FormSettings()
         {
             InitializeComponent();
@@ -56,6 +57,7 @@ namespace Fantasy_King_s_Battle
 
                 settings.NamePlayer = txtbNamePlayer.Text;
                 settings.FileNameAvatar = filenameAvatar;
+                settings.DirectoryAvatar = directoryAvatar;
                 settings.SaveSettings();
 
                 Program.formMain.ValidateAvatars();
@@ -74,13 +76,14 @@ namespace Fantasy_King_s_Battle
 
             txtbNamePlayer.Text = settings.NamePlayer;
             filenameAvatar = settings.FileNameAvatar;
+            directoryAvatar = settings.DirectoryAvatar;
             ShowAvatar();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             OpenFileDialog OPF = new OpenFileDialog();
-            OPF.InitialDirectory = filenameAvatar.Length > 0 ? Path.GetDirectoryName(filenameAvatar) : Environment.CurrentDirectory;
+            OPF.InitialDirectory = filenameAvatar.Length > 0 ? Path.GetDirectoryName(filenameAvatar) : directoryAvatar?.Length > 0 ? directoryAvatar : Environment.CurrentDirectory;
             OPF.FileName = filenameAvatar.Length > 0 ? Path.GetFileName(filenameAvatar) : "";
             OPF.CheckFileExists = true;
             OPF.Multiselect = false;
@@ -88,6 +91,7 @@ namespace Fantasy_King_s_Battle
             if (OPF.ShowDialog() == DialogResult.OK)
             {
                 filenameAvatar = OPF.FileName;
+                directoryAvatar = Path.GetDirectoryName(filenameAvatar);
                 ShowAvatar();
             }
         }
