@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "The Fantasy Kingdoms Battle"
-#define MyAppVersion "1"
+#define MyAppVersion "0.2"
 #define MyAppPublisher "Majesty 2: Project Rebirth"
 #define MyAppURL "https://vk.com/majesty_2_vozrozhdeniye"
 #define MyAppExeName "The Fantasy Kingdoms Battle.exe"
