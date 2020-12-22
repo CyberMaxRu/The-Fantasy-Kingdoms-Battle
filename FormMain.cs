@@ -115,6 +115,8 @@ namespace Fantasy_King_s_Battle
         internal readonly Bitmap bmpForBackground;
         internal readonly Bitmap bmpBackgroundButton;
         internal readonly Bitmap bmpBorderForIcon;
+        internal readonly Bitmap bmpBorderForIconAlly;
+        internal readonly Bitmap bmpBorderForIconEnemy;
         internal readonly Bitmap bmpEmptyEntity;
         private Bitmap bmpBackground;
         internal readonly Bitmap bmpBorderBattlefield;
@@ -293,6 +295,44 @@ namespace Fantasy_King_s_Battle
             bmpBorderBattlefield = new Bitmap(dirResources + "Icons\\BorderBattlefield.png");
             LengthSideBorderBattlefield = bmpBorderBattlefield.Width - (Config.WidthBorderBattlefield * 2);
             Debug.Assert(LengthSideBorderBattlefield > 0);
+
+            // Делаем рамки для союзников и врагов
+            bmpBorderForIconAlly = new Bitmap(bmpBorderForIcon);
+            bmpBorderForIconEnemy = new Bitmap(bmpBorderForIcon);
+            Color orgColor;
+            for (int y = 0; y < bmpBorderForIcon.Height; y++)
+                for (int x = 0; x < bmpBorderForIcon.Width; x++)
+                {
+                    // получаем (i, j) пиксель
+                    uint pixel = (uint)(bmpBorderForIcon.GetPixel(x, y).ToArgb());
+
+                    // получаем компоненты цветов пикселя
+                    float R = (pixel & 0x00FF0000) >> 16; // красный
+                    float G = (pixel & 0x0000FF00) >> 8; // зеленый
+                    float B = pixel & 0x000000FF; // синий
+                                                  // делаем цвет черно-белым (оттенки серого) - находим среднее арифметическое
+                    R = G = B = (R + G + B) / 3.0f;
+
+                    // собираем новый пиксель по частям (по каналам)
+                    float G2 = G + 64.0f;
+                    if (G2 > 255)
+                        G2 = 255;
+                    uint newPixel = ((uint)bmpBorderForIcon.GetPixel(x, y).A << 24) | ((uint)G2 << 8);
+//                    uint newPixel = ((uint)bmpBorderForIcon.GetPixel(x, y).A << 24) | ((uint)R << 16) | ((uint)G << 8) | ((uint)B);
+
+                    // добавляем его в Bitmap нового изображения
+                    bmpBorderForIconAlly.SetPixel(x, y, Color.FromArgb((int)newPixel));
+
+                    float R2 = R + 64.0f;
+                    if (R2 > 255)
+                        R2 = 255;
+                    newPixel = ((uint)bmpBorderForIcon.GetPixel(x, y).A << 24) | ((uint)R2 << 16);
+                    bmpBorderForIconEnemy.SetPixel(x, y, Color.FromArgb((int)newPixel));
+
+                    //orgColor = bmpBorderForIcon.GetPixel(x, y);
+                    //bmpBorderForIconAlly.SetPixel(x, y, Color.FromArgb(orgColor.A, orgColor.R, 192, orgColor.B));
+                    //bmpBorderForIconEnemy.SetPixel(x, y, Color.FromArgb(orgColor.A, 192, orgColor.G, orgColor.B));
+                }
 
             // Создаем лобби
             // Переместить уже после создания всех контролов, чтобы обеспечить связь лобби-контролы

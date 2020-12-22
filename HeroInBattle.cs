@@ -595,7 +595,7 @@ namespace Fantasy_King_s_Battle
             g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
             g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            g.DrawImageUnscaled(Program.formMain.bmpBorderForIcon, 0, 0);
+            g.DrawImageUnscaled(PlayerHero.Player == Battle.Player1 ? Program.formMain.bmpBorderForIconAlly : Program.formMain.bmpBorderForIconEnemy, 0, 0);
             
             // Рисуем состояние
             if ((State != StateHeroInBattle.None) || (priorState != StateHeroInBattle.None))
