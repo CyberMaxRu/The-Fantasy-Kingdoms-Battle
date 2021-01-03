@@ -13,7 +13,7 @@ namespace Fantasy_King_s_Battle
 {
     public partial class FormBattle : Form
     {
-        enum SpeedBattle { VerySlow, Slow, Normal, Fast, VeryFast };
+        enum SpeedBattle { Minimal, VerySlow, Slow, Normal, Fast, VeryFast, Maximal };
 
         private Battle battle;
         private Pen penArrow;
@@ -247,6 +247,9 @@ namespace Fantasy_King_s_Battle
 
             switch (currentSpeed)
             {
+                case SpeedBattle.Minimal:
+                    currentSpeed = SpeedBattle.VerySlow;
+                    break;
                 case SpeedBattle.VerySlow:
                     currentSpeed = SpeedBattle.Slow;
                     break;
@@ -258,6 +261,9 @@ namespace Fantasy_King_s_Battle
                     break;
                 case SpeedBattle.Fast:
                     currentSpeed = SpeedBattle.VeryFast;
+                    break;
+                case SpeedBattle.VeryFast:
+                    currentSpeed = SpeedBattle.Maximal;
                     break;
                 default:
                     break;
@@ -275,6 +281,9 @@ namespace Fantasy_King_s_Battle
 
             switch (currentSpeed)
             {
+                case SpeedBattle.VerySlow:
+                    currentSpeed = SpeedBattle.Minimal;
+                    break;
                 case SpeedBattle.Slow:
                     currentSpeed = SpeedBattle.VerySlow;
                     break;
@@ -286,6 +295,9 @@ namespace Fantasy_King_s_Battle
                     break;
                 case SpeedBattle.VeryFast:
                     currentSpeed = SpeedBattle.Fast;
+                    break;
+                case SpeedBattle.Maximal:
+                    currentSpeed = SpeedBattle.VeryFast;
                     break;
                 default:
                     break;
@@ -331,6 +343,8 @@ namespace Fantasy_King_s_Battle
         {
             switch (currentSpeed)
             {
+                case SpeedBattle.Minimal:
+                    return 0.1;
                 case SpeedBattle.VerySlow:
                     return 0.2;
                 case SpeedBattle.Slow:
@@ -341,6 +355,8 @@ namespace Fantasy_King_s_Battle
                     return 2;
                 case SpeedBattle.VeryFast:
                     return 5;
+                case SpeedBattle.Maximal:
+                    return 10;
                 default:
                     throw new Exception("Неизвестная скорость.");
             }
