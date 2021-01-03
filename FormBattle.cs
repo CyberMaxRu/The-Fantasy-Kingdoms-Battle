@@ -309,7 +309,7 @@ namespace Fantasy_King_s_Battle
             {
                 Debug.Assert(!timePassedCurrentSpeed.IsRunning);
 
-                timePassedCurrentSpeed.Stop();
+                timePassedCurrentSpeed.Start();
             }
 
             ApplySpeed();
