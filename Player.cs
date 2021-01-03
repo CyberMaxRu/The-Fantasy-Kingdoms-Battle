@@ -233,66 +233,71 @@ namespace Fantasy_King_s_Battle
 
             if (ph.Building.Building.CategoryBuilding != CategoryBuilding.Castle)
             {
-                // Ищем место в ячейках героев
-                int line = 0;
-                int pos = -1;
-                List<int> positions = new List<int>();
+                RearrangeHeroes(ph);
+            }
+        }
 
-                // Сначала ищем ячейку согласно категории героя
-                // Для этого ищем линию со свободными ячейками для категории героя, начиная с первой
-                // Пытаемся разместить его в середине линии, а затем в стороны от середины
+        private void RearrangeHeroes(PlayerHero ph)
+        {
+            // Ищем место в ячейках героев
+            int coordY = -1;
+            int coordX = 0;
+            List<int> positions = new List<int>();
+
+            // Сначала ищем ячейку согласно категории героя
+            // Для этого ищем линию со свободными ячейками для категории героя, начиная с первой
+            // Пытаемся разместить его в середине линии, а затем в стороны от середины
+            for (int x = CellHeroes.GetLength(1) - 1; x >= 0; x--)
+            {
+                coordX = x;
+                positions.Clear();
+
                 for (int y = 0; y < CellHeroes.GetLength(0); y++)
-                {
-                    line = y;
-                    positions.Clear();
-
-                    for (int x = 0; x < CellHeroes.GetLength(1); x++)
-                        if (CellHeroes[y, x] == null)
-                        {
-                            positions.Add(x);
-                        }
-
-                    if (positions.Count > 0)
+                    if (CellHeroes[y, x] == null)
                     {
-                        int centre = (int)Math.Truncate(CellHeroes.GetLength(1) / 2.0 + 0.5) - 1;
-                        if (positions.IndexOf(centre) != -1)
-                        {
-                            pos = centre;
-                        }
-                        else
-                        {
-                            int shift = 1;
-                            for (; ; shift++)
-                            {
-                                if (positions.IndexOf(centre - shift) != -1)
-                                {
-                                    pos = centre - shift;
-                                    break;
-                                }
-
-                                if (positions.IndexOf(centre + shift) != -1)
-                                {
-                                    pos = centre + shift;
-                                    break;
-                                }
-
-                                if (shift == centre)
-                                    break;
-                            }
-                        }
+                        positions.Add(y);
                     }
 
-                    if (pos != -1)
-                        break;
-        
+                if (positions.Count > 0)
+                {
+                    int centre = (int)Math.Truncate(CellHeroes.GetLength(0) / 2.0 + 0.5) - 1;
+                    if (positions.IndexOf(centre) != -1)
+                    {
+                        coordY = centre;
+                    }
+                    else
+                    {
+                        int shift = 1;
+                        for (; ; shift++)
+                        {
+                            if (positions.IndexOf(centre - shift) != -1)
+                            {
+                                coordY = centre - shift;
+                                break;
+                            }
+
+                            if (positions.IndexOf(centre + shift) != -1)
+                            {
+                                coordY = centre + shift;
+                                break;
+                            }
+
+                            if (shift == centre)
+                                break;
+                        }
+                    }
                 }
 
-                Debug.Assert(pos != -1);
-                Debug.Assert(CellHeroes[line, pos] == null);
+                if (coordY != -1)
+                    break;
 
-                CellHeroes[line, pos] = ph;
-                ph.CoordInPlayer = new Point(pos, line);
             }
+
+            Debug.Assert(coordY != -1);
+            Debug.Assert(CellHeroes[coordY, coordX] == null);
+
+            CellHeroes[coordY, coordX] = ph;
+            ph.CoordInPlayer = new Point(coordX, coordY);
         }
 
         internal int Income()
