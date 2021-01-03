@@ -233,11 +233,11 @@ namespace Fantasy_King_s_Battle
 
             if (ph.Building.Building.CategoryBuilding != CategoryBuilding.Castle)
             {
-                RearrangeHeroes(ph);
+                SetPosForHero(ph);
             }
         }
 
-        private void RearrangeHeroes(PlayerHero ph)
+        private void SetPosForHero(PlayerHero ph)
         {
             // Ищем место в ячейках героев
             int coordY = -1;
