@@ -13,6 +13,7 @@
     <DamageToCastle>1</DamageToCastle>
     <MeleeWeapon>WeaponWarrior0</MeleeWeapon>
     <Armour>ArmourWarrior0</Armour>
+    <DefaultPositionPriority>70</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -58,6 +59,7 @@
     <DamageToCastle>1</DamageToCastle>
     <MeleeWeapon>WeaponRogue0</MeleeWeapon>
     <Armour>ArmourRogue0</Armour>
+    <DefaultPositionPriority>20</DefaultPositionPriority>
     <BaseParameters>
       <Strength>10</Strength>
       <Dexterity>20</Dexterity>
@@ -103,6 +105,7 @@
     <MeleeWeapon>WeaponHunter0</MeleeWeapon>
     <RangeWeapon>BowHunter0</RangeWeapon>
     <Armour>ArmourHunter0</Armour>
+    <DefaultPositionPriority>100</DefaultPositionPriority>
     <BaseParameters>
       <Strength>15</Strength>
       <Dexterity>20</Dexterity>
@@ -148,6 +151,7 @@
     <DamageToCastle>1</DamageToCastle>
     <MeleeWeapon>WeaponCleric0</MeleeWeapon>
     <Armour>ArmourCleric0</Armour>
+    <DefaultPositionPriority>200</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -192,6 +196,7 @@
     <DamageToCastle>1</DamageToCastle>
     <MeleeWeapon>WeaponMage0</MeleeWeapon>
     <Armour>ArmourMage0</Armour>
+    <DefaultPositionPriority>210</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -237,6 +242,7 @@
     <MeleeWeapon>WeaponElf0</MeleeWeapon>
     <RangeWeapon>BowElf0</RangeWeapon>
     <Armour>ArmourElf0</Armour>
+    <DefaultPositionPriority>110</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -280,6 +286,7 @@
     <DamageToCastle>2</DamageToCastle>
     <MeleeWeapon>WeaponDwarf0</MeleeWeapon>
     <Armour>ArmourDwarf0</Armour>
+    <DefaultPositionPriority>50</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -369,6 +376,7 @@
     <DamageToCastle>1</DamageToCastle>
     <MeleeWeapon>WeaponDarkPriest0</MeleeWeapon>
     <Armour>ArmourDarkPriest0</Armour>
+    <DefaultPositionPriority>220</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -416,6 +424,7 @@
     <DamageToCastle>1</DamageToCastle>
     <MeleeWeapon>WeaponPriest0</MeleeWeapon>
     <Armour>ArmourPriest0</Armour>
+    <DefaultPositionPriority>230</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -463,6 +472,7 @@
     <DamageToCastle>1</DamageToCastle>
     <MeleeWeapon>WeaponPaladin0</MeleeWeapon>
     <Armour>ArmourPaladin0</Armour>
+    <DefaultPositionPriority>30</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -510,6 +520,7 @@
     <DamageToCastle>1</DamageToCastle>
     <MeleeWeapon>WeaponBladeMaster0</MeleeWeapon>
     <Armour>ArmourBladeMaster0</Armour>
+    <DefaultPositionPriority>10</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -558,6 +569,7 @@
     <MeleeWeapon>WeaponBeastMaster0</MeleeWeapon>
     <RangeWeapon>BowBeastMaster0</RangeWeapon>
     <Armour>ArmourBeastMaster0</Armour>
+    <DefaultPositionPriority>140</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -606,6 +618,7 @@
     <MeleeWeapon>WeaponMarksman0</MeleeWeapon>
     <RangeWeapon>BowMarksman0</RangeWeapon>
     <Armour>ArmourMarksman0</Armour>
+    <DefaultPositionPriority>130</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -653,6 +666,7 @@
     <DamageToCastle>1</DamageToCastle>
     <MeleeWeapon>WeaponFireMage0</MeleeWeapon>
     <Armour>ArmourFireMage0</Armour>
+    <DefaultPositionPriority>250</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -700,6 +714,7 @@
     <DamageToCastle>1</DamageToCastle>
     <MeleeWeapon>WeaponIceMage0</MeleeWeapon>
     <Armour>ArmourIceMage0</Armour>
+    <DefaultPositionPriority>260</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -747,6 +762,7 @@
     <DamageToCastle>1</DamageToCastle>
     <MeleeWeapon>WeaponDeathKnight0</MeleeWeapon>
     <Armour>ArmourDeathKnight0</Armour>
+    <DefaultPositionPriority>80</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>

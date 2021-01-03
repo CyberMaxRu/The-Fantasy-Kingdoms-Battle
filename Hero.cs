@@ -30,6 +30,7 @@ namespace Fantasy_King_s_Battle
             KindHero = FormMain.Config.FindKindHero(n.SelectSingleNode("KindHero").InnerText);
             CanBuild = Convert.ToBoolean(n.SelectSingleNode("CanBuild").InnerText);
             DamageToCastle = Convert.ToInt32(n.SelectSingleNode("DamageToCastle").InnerText);
+            DefaultPositionPriority = XmlUtils.GetParamFromXmlInteger(n.SelectSingleNode("DefaultPositionPriority"));
 
             //Debug.Assert(Cost > 0);
             Debug.Assert(ID.Length > 0);
@@ -55,6 +56,11 @@ namespace Fantasy_King_s_Battle
                 {
                     throw new Exception("В конфигурации героев повторяется ImageIndex = " + ImageIndex.ToString());
                 }
+
+                if (KindHero.Hired && (h.DefaultPositionPriority == DefaultPositionPriority))
+                {
+                    throw new Exception("У героя " + h.Name + " уже указан приоритет " + DefaultPositionPriority.ToString());
+                }
             }
 
             // Загружаем дефолтное оружие и доспехи
@@ -66,6 +72,10 @@ namespace Fantasy_King_s_Battle
             {
                 Debug.Assert(nameMeleeWeapon != "");
                 Debug.Assert(nameArmour != "");
+            }
+            else
+            {
+                Debug.Assert(DefaultPositionPriority == 0);
             }
 
             // Загружаем информацию о переносимых предметах
@@ -143,6 +153,7 @@ namespace Fantasy_King_s_Battle
         internal Weapon WeaponMelee { get; private set; }// Рукопашное оружие
         internal Weapon WeaponRange { get; private set; }// Стрелковое оружие
         internal Armour Armour { get; private set; }// Доспех по умолчанию
+        internal int DefaultPositionPriority { get; private set; }// Приоритет расположения на поле боя по умолчанию
         internal Dictionary<Item, int> CarryItems { get; } = new Dictionary<Item, int>();
 
         internal int MaxQuantityItem(Item i)
