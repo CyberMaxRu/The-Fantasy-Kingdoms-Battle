@@ -340,5 +340,12 @@ namespace Fantasy_King_s_Battle
             Program.formMain.SelectHero(this);
             Program.formMain.SelectPanelEntity(pe);
         }
+
+        internal int Priority()
+        {
+            int posInPlayer = Player.CombatHeroes.IndexOf(this);
+            Debug.Assert(posInPlayer != -1);
+            return ClassHero.DefaultPositionPriority * 1000 + posInPlayer;
+        }
     }
 }

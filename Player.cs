@@ -233,8 +233,25 @@ namespace Fantasy_King_s_Battle
 
             if (ph.Building.Building.CategoryBuilding != CategoryBuilding.Castle)
             {
-                SetPosForHero(ph);
+                RearrangeHeroes();
             }
+        }
+
+        private void RearrangeHeroes()
+        {
+            // Очищаем все координаты героев
+            foreach (PlayerHero ph in CellHeroes)
+            {
+                if (ph != null)
+                {
+                    CellHeroes[ph.CoordInPlayer.Y, ph.CoordInPlayer.X] = null;
+                    ph.CoordInPlayer = new Point(-1, -1);
+                }
+            }
+
+            // Проставляем координаты для героев
+            foreach (PlayerHero ph in CombatHeroes.OrderBy(ph => ph.Priority()))
+                SetPosForHero(ph);
         }
 
         private void SetPosForHero(PlayerHero ph)
