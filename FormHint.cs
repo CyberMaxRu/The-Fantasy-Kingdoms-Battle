@@ -414,11 +414,11 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(lblHeader.Text.Length > 0);
 
             Point l = c.PointToScreen(new Point(0, c.Height + 2));
-            // Если подсказка уходит за экран, меняем ее положение
-            if (l.X + Width > Screen.PrimaryScreen.WorkingArea.Width)
-                l.X = Screen.PrimaryScreen.WorkingArea.Width - Width;
-            if (l.Y + nextTop > Screen.PrimaryScreen.WorkingArea.Height)
-                l.Y = l.Y - c.Height - Height;
+            // Если подсказка уходит за пределы экрана игры, меняем ее положение
+            if (l.X + Width > Program.formMain.Location.X + Program.formMain.ClientSize.Width)
+                l.X = Program.formMain.Location.X + Program.formMain.ClientSize.Width - Width;
+            if (l.Y + nextTop > Program.formMain.Location.Y + Program.formMain.ClientSize.Height)
+                l.Y = l.Y - nextTop - c.Height - 4;
 
             Location = l;
 
