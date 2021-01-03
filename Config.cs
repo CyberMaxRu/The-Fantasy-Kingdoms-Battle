@@ -154,6 +154,7 @@ namespace Fantasy_King_s_Battle
         internal int MaxDurationFrame { get; private set; }// Максимальная длительность кадра
         internal int MaxStatPointPerLevel { get; private set; }
         internal int StepsHeroInTumbstone { get; private set; }// Сколько шагов герой в могиле перед исчезновением
+        internal int UnitStepsTimeToDisappearance { get; private set; }// Сколько шагов могила юнита исчезает
         internal int PlateWidth { get; private set; }// Количество ячеек на панели справа по горизонтали
         internal int PlateHeight { get; private set; }// Количество ячеек на панели справа по вертикали
         internal int MinRowsEntities { get; private set; }// Минимальное количество строк сущностей в панели справа
@@ -392,6 +393,11 @@ namespace Fantasy_King_s_Battle
             StepsHeroInTumbstone = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Heroes/StepsHeroInTumbstone").InnerText);
             Debug.Assert(StepsHeroInTumbstone >= 10);
             Debug.Assert(StepsHeroInTumbstone <= 1000);
+            double timeToDisappearance = XmlUtils.GetParamFromXmlDouble(xmlDoc.SelectSingleNode("Game/Heroes/TimeToDisappearance"));
+            Debug.Assert(timeToDisappearance >= 0);
+            Debug.Assert(timeToDisappearance <= 10);
+            UnitStepsTimeToDisappearance = (int)(timeToDisappearance * StepsInSecond);
+            Debug.Assert(StepsHeroInTumbstone >= UnitStepsTimeToDisappearance);
 
             IDHeroPeasant = xmlDoc.SelectSingleNode("Game/Links/HeroPeasant").InnerText;
             Debug.Assert(IDHeroPeasant.Length > 0);

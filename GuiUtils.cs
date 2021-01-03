@@ -202,5 +202,22 @@ namespace Fantasy_King_s_Battle
                 return null;
             }
         }
+
+        internal static Bitmap ApplyDisappearance(Image i, int curDisappearance, int MaxValue)
+        {
+            Debug.Assert(curDisappearance <= MaxValue);
+
+            double percent = (double)curDisappearance / MaxValue;
+
+            Bitmap b = new Bitmap(i);
+            for (int y = 0; y < b.Height; y++)
+                for (int x = 0; x < b.Width; x++)
+                {
+                    Color pixel = b.GetPixel(x, y);
+                    b.SetPixel(x, y, Color.FromArgb((int)(pixel.A * percent), pixel));
+                }
+
+            return b;
+        }
     }
 }

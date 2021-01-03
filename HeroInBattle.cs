@@ -20,10 +20,12 @@ namespace Fantasy_King_s_Battle
         private BattlefieldTile currentTile;
         private SolidBrush brushBandHealth;
         private SolidBrush brushBandHealthNone;
+        private Bitmap bmpIconOriginal;
         private Bitmap bmpIcon;
+        private bool inDisappearance = false;
         private bool needRedraw;
         private StateHeroInBattle priorState;
-
+        
         public HeroInBattle(Battle b, PlayerHero ph, Point coord, bool needImage)
         {
             Battle = b;
@@ -47,7 +49,7 @@ namespace Fantasy_King_s_Battle
 
             if (needImage)
             {
-                bmpIcon = new Bitmap(Program.formMain.bmpBorderForIcon.Size.Width, Program.formMain.bmpBorderForIcon.Size.Height);
+                bmpIconOriginal  = new Bitmap(Program.formMain.bmpBorderForIcon.Size.Width, Program.formMain.bmpBorderForIcon.Size.Height);
                 brushBandHealth = new SolidBrush(FormMain.Config.UnitHealth);
                 brushBandHealthNone = new SolidBrush(FormMain.Config.UnitHealthNone);
                 needRedraw = true;
@@ -71,10 +73,10 @@ namespace Fantasy_King_s_Battle
         {
             get
             {
-                Debug.Assert(bmpIcon != null);
-
                 if (needRedraw)
                     DrawIcon();
+
+                Debug.Assert(bmpIcon != null);
                 return bmpIcon;
             }
         }
@@ -227,6 +229,15 @@ namespace Fantasy_King_s_Battle
                             State = StateHeroInBattle.Dead;
                             currentTile.Unit = null;
                             currentTile = null;
+                        }
+                        else
+                        {
+                            // Если осталось шагов меньше, чем шагов на исчезновение, то надо перерисовать иконку
+                            if (countAction <= FormMain.Config.UnitStepsTimeToDisappearance)
+                            {
+                                inDisappearance = true;
+                                needRedraw = true;
+                            }
                         }
 
                         break;
@@ -578,14 +589,21 @@ namespace Fantasy_King_s_Battle
 
         private void DrawIcon()
         {
-            Debug.Assert(bmpIcon != null);
+            Debug.Assert(bmpIconOriginal != null);
             Debug.Assert(IsLive);
 
+            bmpIcon?.Dispose();
+            bmpIcon = new Bitmap(bmpIconOriginal);
             Graphics g = Graphics.FromImage(bmpIcon);
 
             // Рисуем иконку героя
             g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
-            g.DrawImageUnscaled(Program.formMain.ilGuiHeroes.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilGuiHeroes, PlayerHero.ClassHero.ImageIndex, State != StateHeroInBattle.Tumbstone)], FormMain.Config.ShiftForBorder);
+                g.DrawImageUnscaled(Program.formMain.ilGuiHeroes.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilGuiHeroes, PlayerHero.ClassHero.ImageIndex, State != StateHeroInBattle.Tumbstone)], FormMain.Config.ShiftForBorder);
+
+            // Если юнит в могиле и исчезает, применяем исчезновение
+            if (countAction <= FormMain.Config.UnitStepsTimeToDisappearance)
+            {
+            }
 
             // Если это противник, то обращаем его в противоположную сторону
             if (PlayerHero.Player != Battle.Player1)
@@ -596,7 +614,7 @@ namespace Fantasy_King_s_Battle
             g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
             g.DrawImageUnscaled(PlayerHero.Player == Battle.Player1 ? Program.formMain.bmpBorderForIconAlly : Program.formMain.bmpBorderForIconEnemy, 0, 0);
-            
+
             // Рисуем состояние
             if ((State != StateHeroInBattle.None) || (priorState != StateHeroInBattle.None))
             {
@@ -604,9 +622,15 @@ namespace Fantasy_King_s_Battle
 
                 g.DrawImageUnscaled(Program.formMain.ilStateHero.Images[(int)s], FormMain.Config.ShiftForBorder.X + 1, FormMain.Config.ShiftForBorder.Y + 1);
             }
-            
+
             // Рисуем полоску жизни
             GuiUtils.DrawBand(g, new Rectangle(FormMain.Config.ShiftForBorder.X + 2, FormMain.Config.ShiftForBorder.Y + Program.formMain.ilGuiHeroes.ImageSize.Height - 6, Program.formMain.ilGuiHeroes.ImageSize.Height - 4, 4), brushBandHealth, brushBandHealthNone, CurrentHealth, Parameters.Health);
+
+            // Применяем исчезновение
+            if (inDisappearance)
+            {
+                bmpIcon = GuiUtils.ApplyDisappearance(bmpIcon, countAction, FormMain.Config.UnitStepsTimeToDisappearance);
+            }
 
             needRedraw = false;
             g.Dispose();

@@ -128,6 +128,7 @@
   <Heroes>
     <MaxStatPointPerLevel>20</MaxStatPointPerLevel>
     <StepsHeroInTumbstone>100</StepsHeroInTumbstone>
+    <TimeToDisappearance>0.8</TimeToDisappearance>
   </Heroes>
   <Battle>
     <StepsInSecond>50</StepsInSecond>
