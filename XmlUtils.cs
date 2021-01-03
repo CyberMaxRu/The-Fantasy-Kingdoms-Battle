@@ -32,6 +32,11 @@ namespace Fantasy_King_s_Battle
             return n != null ? Convert.ToBoolean(n.InnerText) : defValue;
         }
 
+        internal static Double GetParamFromXmlDouble(XmlNode n)
+        {
+            return n != null ? Convert.ToDouble(n.InnerText.Replace(".", ",")) : 0;
+        }
+
         public static Version GetVersionFromXml(XmlNode n, string name)
         {
             return new Version(n.SelectSingleNode(name).InnerText);

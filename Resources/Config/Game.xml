@@ -127,7 +127,7 @@
   </Fonts>
   <Heroes>
     <MaxStatPointPerLevel>20</MaxStatPointPerLevel>
-    <StepsHeroInTumbstone>100</StepsHeroInTumbstone>
+    <TimeInTumbstone>2.0</TimeInTumbstone>
     <TimeToDisappearance>0.8</TimeToDisappearance>
   </Heroes>
   <Battle>

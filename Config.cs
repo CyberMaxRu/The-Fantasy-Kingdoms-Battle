@@ -390,7 +390,10 @@ namespace Fantasy_King_s_Battle
             MaxStatPointPerLevel = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Heroes/MaxStatPointPerLevel").InnerText);
             Debug.Assert(MaxStatPointPerLevel >= 5);
             Debug.Assert(MaxStatPointPerLevel <= 100);
-            StepsHeroInTumbstone = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Heroes/StepsHeroInTumbstone").InnerText);
+            double timeInTumbstone = XmlUtils.GetParamFromXmlDouble(xmlDoc.SelectSingleNode("Game/Heroes/TimeInTumbstone"));
+            Debug.Assert(timeInTumbstone >= 0);
+            Debug.Assert(timeInTumbstone <= 10);
+            StepsHeroInTumbstone = (int)(timeInTumbstone * StepsInSecond);
             Debug.Assert(StepsHeroInTumbstone >= 10);
             Debug.Assert(StepsHeroInTumbstone <= 1000);
             double timeToDisappearance = XmlUtils.GetParamFromXmlDouble(xmlDoc.SelectSingleNode("Game/Heroes/TimeToDisappearance"));
