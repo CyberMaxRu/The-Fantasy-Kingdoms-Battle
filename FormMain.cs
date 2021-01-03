@@ -343,10 +343,13 @@ namespace Fantasy_King_s_Battle
             // Кнопки в правом верхнем углу
             btnPreferences = GuiUtils.CreateButtonWithIcon(this, 0, Config.GridSize, GUI_INVENTORY);
             btnPreferences.Click += BtnPreferences_Click;
+            btnPreferences.MouseHover += BtnPreferences_MouseHover;
             btnHelp = GuiUtils.CreateButtonWithIcon(this, 0, Config.GridSize, GUI_BOOK);
             btnHelp.Click += BtnHelp_Click;
+            btnHelp.MouseHover += BtnHelp_MouseHover;
             btnQuit = GuiUtils.CreateButtonWithIcon(this, 0, Config.GridSize, GUI_EXIT);
             btnQuit.Click += BtnQuit_Click;
+            btnQuit.MouseHover += BtnQuit_MouseHover;
 
             heightToolBar = btnQuit.Height + (Config.GridSize * 2);
 
@@ -551,6 +554,21 @@ namespace Fantasy_King_s_Battle
                 lblStage.Text = text + "...";
                 lblStage.Refresh();
             }
+        }
+
+        private void BtnQuit_MouseHover(object sender, EventArgs e)
+        {
+            ShowHintForToolButton(btnQuit, "Выход", "Выход из игры");
+        }
+
+        private void BtnHelp_MouseHover(object sender, EventArgs e)
+        {
+            ShowHintForToolButton(btnHelp, "Справка", "Справка об игре");
+        }
+
+        private void BtnPreferences_MouseHover(object sender, EventArgs e)
+        {
+            ShowHintForToolButton(btnPreferences, "Настройки", "Настройки игры");
         }
 
         internal bool CheckForNewVersion()
