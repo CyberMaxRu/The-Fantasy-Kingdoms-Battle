@@ -220,6 +220,7 @@ namespace Fantasy_King_s_Battle
             };
             timerDelayShow.Tick += TimerDelayShow_Tick;
 
+            Opacity = 0.8;
             Clear();
         }
 
