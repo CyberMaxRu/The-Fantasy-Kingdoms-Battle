@@ -13,7 +13,9 @@ namespace Fantasy_King_s_Battle
     {
         public Unit(XmlNode n) : base(n)
         {
-
+            TypeUnit = FormMain.Config.FindTypeUnit(n.SelectSingleNode("TypeUnit").InnerText);
         }
+
+        internal TypeUnit TypeUnit { get; }
     }
 }

@@ -284,6 +284,17 @@ namespace Fantasy_King_s_Battle
             throw new Exception("Предмет " + ID + " не найден.");
         }
 
+        internal TypeUnit FindTypeUnit(string ID)
+        {
+            foreach (TypeUnit tu in TypeUnits)
+            {
+                if (tu.ID == ID)
+                    return tu;
+            }
+
+            throw new Exception("Тип юнита " + ID + " не найден.");
+        }
+
         internal KindHero FindKindHero(string ID)
         {
             foreach (KindHero kh in KindHeroes)
