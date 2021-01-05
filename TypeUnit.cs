@@ -9,7 +9,7 @@ using System.Xml;
 namespace Fantasy_King_s_Battle
 {
     // Тип юнита
-    class TypeUnit
+    internal sealed class TypeUnit
     {
         public TypeUnit(XmlNode n)
         {
