@@ -134,6 +134,7 @@ namespace Fantasy_King_s_Battle
         {
             // Реальный игрок должен быть жив
             Debug.Assert(Players[0].IsLive);
+            Debug.Assert(Players[0].TargetLair != null);
 
             // Делаем ходы, перебирая всех игроков, пока все не совершат ход
             int cpi = CurrentPlayer != null ? CurrentPlayer.PlayerIndex : -1;

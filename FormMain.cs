@@ -714,6 +714,12 @@ namespace Fantasy_King_s_Battle
         {
             formHint.HideHint();
 
+            if (lobby.CurrentPlayer.TargetLair == null)
+            {
+                ActivatePage(pageLairs);
+                return;
+            }
+
             btnEndTurn.Enabled = false;
             lobby.DoEndTurn();
 
