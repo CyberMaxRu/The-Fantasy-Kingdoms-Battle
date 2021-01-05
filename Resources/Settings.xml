@@ -1,16 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Settings>
   <Game>
-    <ShowSplashVideo>True</ShowSplashVideo>
-    <FullScreenMode>True</FullScreenMode>
-    <CheckUpdatesOnStartup>True</CheckUpdatesOnStartup>
+    <ShowSplashVideo>False</ShowSplashVideo>
+    <FullScreenMode>False</FullScreenMode>
+    <CheckUpdatesOnStartup>False</CheckUpdatesOnStartup>
   </Game>
   <Battlefield>
     <ShowPath>False</ShowPath>
     <ShowGrid>False</ShowGrid>
   </Battlefield>
   <Player>
-    <Name>Игрок №1</Name>
+    <Name>Maxim</Name>
     <IndexAvatar>0</IndexAvatar>
+    <FileNameAvatar>F:\Projects\C-Sharp\Fantasy King's Battle\Resources\Icons\Avatars\mage_cold.png</FileNameAvatar>
+    <DirectoryAvatar>F:\Projects\C-Sharp\Fantasy King's Battle\Resources\Icons\Avatars</DirectoryAvatar>
   </Player>
 </Settings>

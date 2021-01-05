@@ -214,7 +214,6 @@
     <Content Include="Resources\Config\Lairs.xml" />
     <Content Include="Resources\Config\Monsters.xml" />
     <Content Include="Resources\Config\TypeUnits.xml" />
-    <Content Include="Resources\Settings.xml" />
     <Content Include="Resources\Main.xml" />
     <Content Include="Resources\Config\Game.xml" />
     <Content Include="Resources\Config\Abilities.xml" />
