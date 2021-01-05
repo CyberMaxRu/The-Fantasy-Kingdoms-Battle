@@ -11,7 +11,6 @@ namespace Fantasy_King_s_Battle
     // Класс логова монстров
     internal sealed class Lair
     {
-
         public Lair(XmlNode n)
         {
             ID = n.SelectSingleNode("ID").InnerText;
