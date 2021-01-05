@@ -31,6 +31,7 @@ namespace Fantasy_King_s_Battle
         internal readonly ImageList ilResultBattle;
         internal readonly ImageList ilBuildings;
         internal readonly ImageList ilLairs;
+        internal readonly ImageList ilLairsSmall;
         internal readonly ImageList ilHeroes;
         internal readonly ImageList ilMonsters;
         internal readonly ImageList ilGui;
@@ -296,6 +297,7 @@ namespace Fantasy_King_s_Battle
             ilStateHero = PrepareImageList("StateHero.png", 24, 24, false);
             ilMenuCellFilters = PrepareImageList("MenuCellFilters.png", 48, 48, true);
             ilPages = PrepareImageList("Pages.png", 48, 48, true);
+            MakeAlpha();
 
             bmpForBackground = new Bitmap(dirResources + "Icons\\Background.png");
             bmpBackgroundButton = GuiUtils.MakeBackground(GuiUtils.SizeButtonWithImage(ilGui));
@@ -1415,6 +1417,14 @@ namespace Fantasy_King_s_Battle
 
         private void MakeAlpha()
         {
+/*            Bitmap b = new Bitmap(ilItems.Images[1]);
+            for (int y = 0; y < b.Height; y++)
+                for (int x = 0; x < b.Width; x++)
+                {
+                    b.SetPixel(x, y, Color.FromArgb(b.GetPixel(x, y).A, 0, 0, 0));
+                }
+            b.Save(@"f:\Projects\C-Sharp\Fantasy King's Battle\Resources\Icons\1.png");*/
+
             /*Bitmap b = new Bitmap(ilPlayerAvatarsBig.Images[0]);
             for (int y = 0; y < b.Height; y++)
                 for (int x = 0; x < b.Width; x++)
