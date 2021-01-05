@@ -188,7 +188,7 @@ namespace Fantasy_King_s_Battle
                 for (int y = 0; y < newAvatar.Height; y++)
                     for (int x = 0; x < newAvatar.Width; x++)
                     {                        
-                        newAvatar.SetPixel(x, y, Color.FromArgb(Program.formMain.MaskAvatar.GetPixel(x, y).A, newAvatar.GetPixel(x, y)));
+                        newAvatar.SetPixel(x, y, Color.FromArgb(Program.formMain.bmpMaskBig.GetPixel(x, y).A, newAvatar.GetPixel(x, y)));
                     }
 
                 //

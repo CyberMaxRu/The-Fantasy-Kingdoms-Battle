@@ -126,8 +126,8 @@ namespace Fantasy_King_s_Battle
         internal readonly Bitmap bmpEmptyEntity;
         private Bitmap bmpBackground;
         internal readonly Bitmap bmpBorderBattlefield;
-        internal readonly Bitmap MaskAvatar;
-        internal readonly Bitmap MaskSmall;
+        internal readonly Bitmap bmpMaskBig;
+        internal readonly Bitmap bmpMaskSmall;
         internal int LengthSideBorderBattlefield { get; private set; }
         private int calcedWidth;
         private int calcedHeight;
@@ -281,10 +281,10 @@ namespace Fantasy_King_s_Battle
                 ImageSize = new Size(48, 48)
             };
 
-            MaskAvatar = new Bitmap(dirResources + @"Icons\MaskAvatar.png");
+            bmpMaskBig = new Bitmap(dirResources + @"Icons\MaskAvatar.png");
             ValidateAvatars();
 
-            MaskSmall = new Bitmap(dirResources + @"Icons\MaskSmall.png");
+            bmpMaskSmall = new Bitmap(dirResources + @"Icons\MaskSmall.png");
             ilLairs = PrepareImageList("Lairs.png", 128, 128, true);
             ilLairsSmall = BigIconToSmall(ilLairs);
 
