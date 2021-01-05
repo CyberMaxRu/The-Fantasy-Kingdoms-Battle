@@ -21,11 +21,9 @@ namespace Fantasy_King_s_Battle
             Cost = Convert.ToInt32(n.SelectSingleNode("Cost").InnerText);
             Building = FormMain.Config.FindBuilding(n.SelectSingleNode("Building").InnerText);
             Building.TrainedHero = this;
-            MaxLevel = Convert.ToInt32(n.SelectSingleNode("MaxLevel").InnerText);
             KindHero = FormMain.Config.FindKindHero(n.SelectSingleNode("KindHero").InnerText);
             CanBuild = Convert.ToBoolean(n.SelectSingleNode("CanBuild").InnerText);
             DamageToCastle = Convert.ToInt32(n.SelectSingleNode("DamageToCastle").InnerText);
-            DefaultPositionPriority = XmlUtils.GetParamFromXmlInteger(n.SelectSingleNode("DefaultPositionPriority"));
 
             //Debug.Assert(Cost > 0);
             Debug.Assert(DamageToCastle >= 0);
@@ -96,51 +94,16 @@ namespace Fantasy_King_s_Battle
                 Debug.Assert(KindHero.Hired == false);
             }
 
-            // Загружаем основные параметры
-            if (n.SelectSingleNode("BaseParameters") != null)
-            {
-                ParametersByHire = new HeroParameters(n.SelectSingleNode("BaseParameters"));
-
-                //
-                if (n.SelectSingleNode("NextLevel") != null)
-                    ConfigNextLevel = new ConfigNextLevelHero(n.SelectSingleNode("NextLevel"));
-            }
-
-            // Загружаем дефолтные способности
-            XmlNode na = n.SelectSingleNode("Abilities");
-            if (na != null)
-            {
-                Ability a;
-
-                foreach (XmlNode l in na.SelectNodes("Ability"))
-                {
-                    a = FormMain.Config.FindAbility(l.InnerText);
-
-                    // Проверяем, что такая способность не повторяется
-                    foreach (Ability a2 in Abilities)
-                    {
-                        if (a.ID == a2.ID)
-                            throw new Exception("Способность " + a.ID + " повторяется в списке способностей героя.");
-                    }
-
-                    Abilities.Add(a);
-                }
-            }
         }
 
         internal int Cost { get; }
         internal Building Building { get; }
-        internal int MaxLevel { get; }
         internal KindHero KindHero { get; }
         internal bool CanBuild { get; }
         internal int DamageToCastle { get; }
-        internal HeroParameters ParametersByHire { get; }// Параметры при найме героя
-        internal ConfigNextLevelHero ConfigNextLevel { get; }
-        internal List<Ability> Abilities { get; } = new List<Ability>();// Способности героя
         internal Weapon WeaponMelee { get; private set; }// Рукопашное оружие
         internal Weapon WeaponRange { get; private set; }// Стрелковое оружие
         internal Armour Armour { get; private set; }// Доспех по умолчанию
-        internal int DefaultPositionPriority { get; private set; }// Приоритет расположения на поле боя по умолчанию
         internal Dictionary<Item, int> CarryItems { get; } = new Dictionary<Item, int>();
 
         internal int MaxQuantityItem(Item i)
