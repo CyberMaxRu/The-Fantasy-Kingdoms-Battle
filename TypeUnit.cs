@@ -23,7 +23,7 @@ namespace Fantasy_King_s_Battle
                     throw new Exception("В конфигурации типов юнитов повторяется ID = " + ID);
 
                 if (tu.Name == Name)
-                    throw new Exception("В конфигурации типов повторяется Name = " + Name);
+                    throw new Exception("В конфигурации типов юнитов повторяется Name = " + Name);
             }
         }
 
