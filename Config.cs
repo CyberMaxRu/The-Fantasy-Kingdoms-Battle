@@ -102,6 +102,27 @@ namespace Fantasy_King_s_Battle
                 Heroes.Add(new Hero(n));
             }
 
+            // Загрузка монстров
+            xmlDoc = CreateXmlDocument("Config\\Monsters.xml");
+
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Monsters/Monster"))
+            {
+                Monsters.Add(new Monster(n));
+            }
+
+            // Загрузка логов монстров
+            xmlDoc = CreateXmlDocument("Config\\Lairs.xml");
+
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Lairs/Lair"))
+            {
+                Lairs.Add(new Lair(n));
+            }
+
+            // Составляем общий пул навыков
+            Units.AddRange(Heroes);
+            Units.AddRange(Monsters);
+
+            // Настраиваем связи
             foreach (Ability a in Abilities)
                 a.TuneDeferredLinks();
 
@@ -125,14 +146,6 @@ namespace Fantasy_King_s_Battle
                 Skills.Add(new Skill(n));
             }
 
-            // Загрузка логов монстров
-            xmlDoc = CreateXmlDocument("Config\\Lairs.xml");
-
-            foreach (XmlNode n in xmlDoc.SelectNodes("/Lairs/Lair"))
-            {
-                Lairs.Add(new Lair(n));
-            }
-
             // Вспомогательные методы
             XmlDocument CreateXmlDocument(string pathToXml)
             {
@@ -154,7 +167,9 @@ namespace Fantasy_King_s_Battle
         internal List<GroupArmour> GroupArmours { get; } = new List<GroupArmour>();
         internal List<Skill> Skills { get; } = new List<Skill>();
         internal int MaxLevelSkill { get; }
+        internal List<Monster> Monsters { get; } = new List<Monster>();
         internal List<Lair> Lairs { get; } = new List<Lair>();
+        internal List<Unit> Units { get; } = new List<Unit>();
 
         // Константы
         internal int GridSize { get; private set; }// Размер ячейки сетки
@@ -273,6 +288,17 @@ namespace Fantasy_King_s_Battle
             throw new Exception("Герой " + ID + " не найден.");
         }
 
+        internal Monster FindMonster(string ID)
+        {
+            foreach (Monster m in Monsters)
+            {
+                if (m.ID == ID)
+                    return m;
+            }
+
+            throw new Exception("Монстр " + ID + " не найден.");
+        }
+
         internal Item FindItem(string ID)
         {
             foreach (Item i in Items)
@@ -315,6 +341,17 @@ namespace Fantasy_King_s_Battle
             }
 
             throw new Exception("Способность " + ID + " не найдена.");
+        }
+
+        internal Unit FindUnit(string ID)
+        {
+            foreach (Unit u in Units)
+            {
+                if (u.ID == ID)
+                    return u;
+            }
+
+            throw new Exception("Класс юнитов " + ID + " не найден.");
         }
 
         internal GroupWeapon FindGroupWeapon(string ID)

@@ -24,7 +24,7 @@ namespace Fantasy_King_s_Battle
             MinUnitLevel = Convert.ToInt32(n.SelectSingleNode("MinUnitLevel").InnerText);
             Ranged = Convert.ToBoolean(n.SelectSingleNode("Ranged").InnerText);
             MissileVelocity = n.SelectSingleNode("MissileVelocity") != null ? Convert.ToInt32(n.SelectSingleNode("MissileVelocity").InnerText) : 0;
-            AoeRadius = Convert.ToInt32(n.SelectSingleNode("AoeRadius").InnerText); ;
+            AoeRadius = XmlUtils.GetParamFromXmlInteger(n.SelectSingleNode("AoeRadius"));
             SkillModificator = Convert.ToDouble(n.SelectSingleNode("SkillModif").InnerText);
             CoolDown = Convert.ToInt32(n.SelectSingleNode("CoolDown").InnerText);
             ManaCost = n.SelectSingleNode("ManaCost") != null ? Convert.ToInt32(n.SelectSingleNode("ManaCost").InnerText) : 0;
@@ -118,20 +118,20 @@ namespace Fantasy_King_s_Battle
         internal int ManaCost { get; }
         internal int CoolDown { get; }
         internal List<Effect> Effects { get; } = new List<Effect>();
-        internal List<Hero> ClassesHeroes { get; } = new List<Hero>();
+        internal List<Unit> ClassesHeroes { get; } = new List<Unit>();
 
         internal void TuneDeferredLinks()
         {
             foreach (string nameHero in classesHeroesString)
-                ClassesHeroes.Add(FormMain.Config.FindHero(nameHero));
+                ClassesHeroes.Add(FormMain.Config.FindUnit(nameHero));
 
             classesHeroesString = null;
 
             Description += (Description.Length > 0 ? Environment.NewLine : "") + "- Доступно:";
 
-            foreach (Hero h in ClassesHeroes)
+            foreach (Unit u in ClassesHeroes)
             {
-                Description += Environment.NewLine + "  - " + h.Name;
+                Description += Environment.NewLine + "  - " + u.Name;
             }
         }
 

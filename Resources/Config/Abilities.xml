@@ -963,4 +963,20 @@
       <ClassHero>Paladin</ClassHero>
     </ClassesHeroes>
   </Ability>
+  <Ability>
+    <ID>WolfBasicAttack</ID>
+    <Name>Укус</Name>
+    <Description>- Наносит малый урон</Description>
+    <ImageIndex>-1</ImageIndex>
+    <TypeAbility>MeleeAttack</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>s
+    <ClassesHeroes>
+      <ClassHero>Wolf</ClassHero>
+  </ClassesHeroes>
+  </Ability>
 </Abilities>
