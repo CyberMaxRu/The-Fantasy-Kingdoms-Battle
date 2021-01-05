@@ -161,6 +161,8 @@ namespace Fantasy_King_s_Battle
 
         internal PlayerItem[] Warehouse = new PlayerItem[FormMain.Config.WarehouseMaxCells];// Предметы на складе игрока
 
+        internal PlayerLair TargetLair { get; set; }// Логово для атаки
+
         // Статистика по боям
         internal int Wins { get; set; }
         internal int Loses { get; set; }

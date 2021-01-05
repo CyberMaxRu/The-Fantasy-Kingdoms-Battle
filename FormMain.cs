@@ -12,7 +12,7 @@ using System.Web;
 using System.Net;
 using System.IO;
 using System.IO.Compression;
-
+using System.Drawing.Drawing2D;
 
 namespace Fantasy_King_s_Battle
 {
@@ -62,6 +62,7 @@ namespace Fantasy_King_s_Battle
         private readonly Button btnPageTemples;
         private readonly Button btnPageHeroes;
         private readonly Button btnPageLairs;
+        private readonly Button btnTarget;
         private readonly Button btnEndTurn;
 
         private PanelWithPanelEntity panelWarehouse;
@@ -126,6 +127,7 @@ namespace Fantasy_King_s_Battle
         private Bitmap bmpBackground;
         internal readonly Bitmap bmpBorderBattlefield;
         internal readonly Bitmap MaskAvatar;
+        internal readonly Bitmap MaskSmall;
         internal int LengthSideBorderBattlefield { get; private set; }
         private int calcedWidth;
         private int calcedHeight;
@@ -282,9 +284,12 @@ namespace Fantasy_King_s_Battle
             MaskAvatar = new Bitmap(dirResources + @"Icons\MaskAvatar.png");
             ValidateAvatars();
 
+            MaskSmall = new Bitmap(dirResources + @"Icons\MaskSmall.png");
+            ilLairs = PrepareImageList("Lairs.png", 128, 128, true);
+            ilLairsSmall = BigIconToSmall(ilLairs);
+
             ilResultBattle = PrepareImageList("ResultBattle.png", 24, 24, false);
             ilBuildings = PrepareImageList("Buildings.png", 126, 126, true);
-            ilLairs = PrepareImageList("Lairs.png", 128, 128, true);
             ilHeroes = PrepareImageList("Heroes.png", 126, 126, false);
             ilMonsters = PrepareImageList("Monsters.png", 128, 128, false);
             ilGui = PrepareImageList("Gui.png", 48, 48, true);
@@ -430,6 +435,10 @@ namespace Fantasy_King_s_Battle
             btnPageTemples = CreateButtonPage(pageTemples, GUI_TEMPLE);
             btnPageHeroes = CreateButtonPage(pageHeroes, GUI_HEROES);
             btnPageLairs = CreateButtonPage(pageLairs, GUI_LAIR);
+
+            btnTarget = GuiUtils.CreateButtonWithIcon(this, 0, Config.GridSize, -1);
+            btnTarget.ImageList = ilLairsSmall;
+            btnTarget.TabStop = false;
 
             btnEndTurn = GuiUtils.CreateButtonWithIcon(this, 0, Config.GridSize, GUI_BATTLE);
             btnEndTurn.Text = "Конец хода";
@@ -833,6 +842,7 @@ namespace Fantasy_King_s_Battle
             panelHeroInfo.Left = panelBuildingInfo.Left;
 
             btnEndTurn.Left = panelBuildingInfo.Left - btnEndTurn.Width - Config.GridSize;
+            btnTarget.Left = btnEndTurn.Left - btnTarget.Width - Config.GridSize;
 
             panelMenu.Left = shiftControls.X + pointMenu.X - Config.GridSize;
         }
@@ -1415,6 +1425,29 @@ namespace Fantasy_King_s_Battle
             }
         }
 
+        internal ImageList BigIconToSmall(ImageList ilBig)
+        {
+            ImageList ilSmall = new ImageList()
+            {
+                ColorDepth = ColorDepth.Depth32Bit,
+                ImageSize = new Size(48, 48)
+            };
+
+            foreach (Image i in ilBig.Images)
+            {
+                Bitmap bmpDest = new Bitmap(48, 48);
+                Graphics gDest = Graphics.FromImage(bmpDest);
+                gDest.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                gDest.SmoothingMode = SmoothingMode.HighQuality;
+                gDest.DrawImage(i, new Rectangle(0, 0, 48, 48), new Rectangle(0, 0, 128, 128), GraphicsUnit.Pixel);
+                //gDest.DrawImageUnscaled(MaskSmall, 0, 0);
+                ilSmall.Images.Add(bmpDest);
+                gDest.Dispose();
+            }
+
+            return ilSmall;
+        }
+
         private void MakeAlpha()
         {
 /*            Bitmap b = new Bitmap(ilItems.Images[1]);
@@ -1432,6 +1465,11 @@ namespace Fantasy_King_s_Battle
                     b.SetPixel(x, y, Color.FromArgb(b.GetPixel(x, y).A, 0, 0, 0));
                 }
             b.Save(@"f:\Projects\C-Sharp\Fantasy King's Battle\Resources\Icons\1.png");*/
+        }
+
+        internal void UpdateTarget()
+        {
+            btnTarget.ImageIndex = lobby.CurrentPlayer.TargetLair != null ? lobby.CurrentPlayer.TargetLair.Lair.ImageIndex : -1;
         }
     }
 }

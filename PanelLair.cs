@@ -56,7 +56,7 @@ namespace Fantasy_King_s_Battle
                 BackgroundImage = Program.formMain.bmpBackgroundButton,
                 ForeColor = Color.White
             };
-            //btnHireHero.Click += BtnHero_Click;
+            btnSetAsTarget.Click += BtnSetAsTarget_Click;
 
             Height = GuiUtils.NextTop(pbLair);// lblIncome. Top + lblIncome.Height + (Config.GRID_SIZE * 2);
             Width = btnSetAsTarget.Left + btnSetAsTarget.Width + FormMain.Config.GridSize;// btnBuyOrUpgrade.Left + btnBuyOrUpgrade.Width + FormMain.Config.GridSize;
@@ -65,6 +65,12 @@ namespace Fantasy_King_s_Battle
             //lblLevel.Left = Width - FormMain.Config.GridSize - lblLevel.Width;
 
             MouseClick += PanelLair_MouseClick;
+        }
+
+        private void BtnSetAsTarget_Click(object sender, EventArgs e)
+        {
+            lair.Player.TargetLair = lair;
+            Program.formMain.UpdateTarget();
         }
 
         private void PbLair_MouseClick(object sender, MouseEventArgs e)
