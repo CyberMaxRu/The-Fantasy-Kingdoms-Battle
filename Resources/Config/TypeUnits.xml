@@ -25,6 +25,10 @@
     <Name>Минотавр</Name>
   </TypeUnit>
   <TypeUnit>
+    <ID>Ogre</ID>
+    <Name>Огр</Name>
+  </TypeUnit>
+  <TypeUnit>
     <ID>Dragon</ID>
     <Name>Дракон</Name>
   </TypeUnit>
