@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Fantasy_King_s_Battle
@@ -35,7 +33,7 @@ namespace Fantasy_King_s_Battle
 
             BattleCalced = false;
             Step = 0;
-            SizeBattlefield = new Size((FormMain.Config.HeroRows * 2) + FormMain.Config.RowsBetweenSides, FormMain.Config.HeroInRow);            
+            SizeBattlefield = new Size((FormMain.Config.HeroRows * 2) + FormMain.Config.RowsBetweenSides, FormMain.Config.HeroInRow);
             Battlefield = new Battlefield(SizeBattlefield.Width, SizeBattlefield.Height);
 
             // Запоминаем героев в одном списке для упрощения расчетов
@@ -65,7 +63,7 @@ namespace Fantasy_King_s_Battle
         internal Player Player2 { get; }// Игрок №2
         internal int Turn { get; }// Ход, на котором произошел бой
         internal Random Rnd { get; }
-        internal Size SizeBattlefield { get;  }
+        internal Size SizeBattlefield { get; }
         internal int Step { get; private set; }// Шаг боя
         internal bool BattleCalced { get; private set; }
         internal List<HeroInBattle> AllHeroes = new List<HeroInBattle>();// Все участники боя
