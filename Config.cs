@@ -117,6 +117,14 @@ namespace Fantasy_King_s_Battle
                 Skills.Add(new Skill(n));
             }
 
+            // Загрузка логов монстров
+            xmlDoc = CreateXmlDocument("Config\\Lairs.xml");
+
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Lairs/Lair"))
+            {
+                Lairs.Add(new Lair(n));
+            }
+
             // Вспомогательные методы
             XmlDocument CreateXmlDocument(string pathToXml)
             {
@@ -137,6 +145,7 @@ namespace Fantasy_King_s_Battle
         internal List<GroupArmour> GroupArmours { get; } = new List<GroupArmour>();
         internal List<Skill> Skills { get; } = new List<Skill>();
         internal int MaxLevelSkill { get; }
+        internal List<Lair> Lairs { get; } = new List<Lair>();
 
         // Константы
         internal int GridSize { get; private set; }// Размер ячейки сетки

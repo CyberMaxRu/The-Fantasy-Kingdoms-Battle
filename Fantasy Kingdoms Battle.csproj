@@ -138,6 +138,7 @@
     <Compile Include="Requirement.cs" />
     <Compile Include="Research.cs" />
     <Compile Include="Ammunition.cs" />
+    <Compile Include="Lair.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="TypeLobby.cs" />
     <Compile Include="Level.cs" />
@@ -199,6 +200,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Config\Lairs.xml" />
     <Content Include="Resources\Settings.xml" />
     <Content Include="Resources\Main.xml" />
     <Content Include="Resources\Config\Game.xml" />
