@@ -6,6 +6,7 @@
     <Description>- Весьма вынослив/- В первую очередь выполняет задания атаки и защиты/- На 5-ом уровне учится отвлекать врагов на себя</Description>
     <ImageIndex>0</ImageIndex>
     <TypeUnit>Human</TypeUnit>
+    <Reward>100</Reward>
     <Cost>200</Cost>
     <Building>GuildWarrior</Building>
     <MaxLevel>100</MaxLevel>
@@ -53,6 +54,7 @@
     <Description>- Любит деньги, охотно выполняет любые задания/- Умеет воровать/- Избегает серьезных боев</Description>
     <ImageIndex>1</ImageIndex>
     <TypeUnit>Human</TypeUnit>
+    <Reward>50</Reward>
     <Cost>100</Cost>
     <Building>GuildRogue</Building>
     <MaxLevel>100</MaxLevel>
@@ -99,6 +101,7 @@
     <Description>- Любит выполнять задания исследования/- Лучше всего воюет против зверей</Description>
     <ImageIndex>2</ImageIndex>
     <TypeUnit>Human</TypeUnit>
+    <Reward>75</Reward>
     <Cost>150</Cost>
     <Building>GuildHunter</Building>
     <MaxLevel>100</MaxLevel>
@@ -147,6 +150,7 @@
     <Description>- Умеет лечить/- Лучше всего воюет против нежити</Description>
     <ImageIndex>3</ImageIndex>
     <TypeUnit>Human</TypeUnit>
+    <Reward>125</Reward>
     <Cost>350</Cost>
     <Building>GuildCleric</Building>
     <MaxLevel>100</MaxLevel>
@@ -193,6 +197,7 @@
     <Description>- Способен выучить множество разрушительных заклинаний/- Почти не защищен/- На 5-ом уровне изучает "Магический щит"</Description>
     <ImageIndex>4</ImageIndex>
     <TypeUnit>Human</TypeUnit>
+    <Reward>150</Reward>
     <Cost>500</Cost>
     <Building>GuildMage</Building>
     <MaxLevel>100</MaxLevel>
@@ -239,6 +244,7 @@
     <Description>- Прекрасно стреляет из лука/- Самая быстрая из героев/- Не любит гномов</Description>
     <ImageIndex>5</ImageIndex>
     <TypeUnit>Elf</TypeUnit>
+    <Reward>200</Reward>
     <Cost>700</Cost>
     <Building>GuildElf</Building>
     <MaxLevel>100</MaxLevel>
@@ -285,6 +291,7 @@
     <Description>- Обладает высоким сопротивлением магии/- В первую очередь выполняет задания атаки/- Умело рушит здания/- Не любит эльфов</Description>
     <ImageIndex>6</ImageIndex>
     <TypeUnit>Dwarf</TypeUnit>
+    <Reward>250</Reward>
     <Cost>700</Cost>
     <Building>GuildDwarf</Building>
     <MaxLevel>100</MaxLevel>
@@ -330,6 +337,7 @@
     <Description>Это просто крестьяние, Сир. Они обучены строить и чинить здания.</Description>
     <ImageIndex>7</ImageIndex>
     <TypeUnit>Human</TypeUnit>
+    <Reward>1</Reward>
     <Cost>0</Cost>
     <Building>House</Building>
     <MaxLevel>1</MaxLevel>
@@ -343,6 +351,7 @@
     <Description>Королевские гвардейцы в меру своих сил охраняют покой короля.</Description>
     <ImageIndex>8</ImageIndex>
     <TypeUnit>Human</TypeUnit>
+    <Reward>25</Reward>
     <Cost>0</Cost>
     <Building>Castle</Building>
     <MaxLevel>1</MaxLevel>
@@ -366,6 +375,7 @@
     <Description>Мельник работает на мельнице.</Description>
     <ImageIndex>9</ImageIndex>
     <TypeUnit>Human</TypeUnit>
+    <Reward>1</Reward>
     <Cost>0</Cost>
     <Building>Mill</Building>
     <MaxLevel>1</MaxLevel>
@@ -379,6 +389,7 @@
     <Description>- Вызывает себе на помощь скелетов/- Любит выполнять задания атаки/- На 5-ом уровне изучает заклинание "Чума"/- С 10-го уровня призывает себе на помощь темных личей/- Не любит паладинов Дауроса</Description>
     <ImageIndex>10</ImageIndex>
     <TypeUnit>Human</TypeUnit>
+    <Reward>500</Reward>
     <Cost>1000</Cost>
     <Building>GuildDarkPriest</Building>
     <MaxLevel>100</MaxLevel>
@@ -428,6 +439,7 @@
     <Description>- Умеет лечить/- Лучше всего воюет против нежити/- На 10-ом уровне изучает "Массовое лечение"</Description>
     <ImageIndex>11</ImageIndex>
     <TypeUnit>Human</TypeUnit>
+    <Reward>500</Reward>
     <Cost>1000</Cost>
     <Building>GuildPriest</Building>
     <MaxLevel>100</MaxLevel>
@@ -477,6 +489,7 @@
     <Description>- Самый выносливый из героев/- Не знает страха/- На 5-ом уровне изучает заклинание "Святая защита"/- На 10-ом уровне изучает "Священный удар"/- Умеет отвлекать врагов на себя/- Не любит нежить, вызванную сестрами Крипты</Description>
     <ImageIndex>12</ImageIndex>
     <TypeUnit>Human</TypeUnit>
+    <Reward>500</Reward>
     <Cost>1000</Cost>
     <Building>GuildPaladin</Building>
     <MaxLevel>100</MaxLevel>
@@ -526,6 +539,7 @@
     <Description>- Обладает самым сильным ударом/- Любит выполнять задания атаки/- На 5-ом уровне изучает "Калечащий удар"/- На 10-ом уровне изучает "Ураган клинков"/- Умеет отвлекать врагов на себя</Description>
     <ImageIndex>13</ImageIndex>
     <TypeUnit>Human</TypeUnit>
+    <Reward>500</Reward>
     <Cost>1000</Cost>
     <Building>GuildBlademaster</Building>
     <MaxLevel>100</MaxLevel>
@@ -575,6 +589,7 @@
     <Description>- Вызывает себе на помощь волков Фервуса/- Любит выполнять задания исследования/- На 5-ом уровне изучает способность "Звериная ярость"/- С 10-го уровня призывает себе на помощь медведей Хаоса</Description>
     <ImageIndex>14</ImageIndex>
     <TypeUnit>Human</TypeUnit>
+    <Reward>500</Reward>
     <Cost>1000</Cost>
     <Building>GuildBeastmaster</Building>
     <MaxLevel>100</MaxLevel>
@@ -625,6 +640,7 @@
     <Description>- Лучший из стрелков/- Любит выполнять задания исследования/- На 5-ом уровне изучает "Смертельный выстрел"/- На 10-ом уровне изучает заклинание "Солнечная стрела"</Description>
     <ImageIndex>15</ImageIndex>
     <TypeUnit>Human</TypeUnit>
+    <Reward>500</Reward>
     <Cost>1000</Cost>
     <Building>GuildMarksman</Building>
     <MaxLevel>100</MaxLevel>
@@ -675,6 +691,7 @@
     <Description>- Способен выучить множество заклинаний/- Почти не защищен/- На 5-ом уровне изучает "Магический щит"</Description>
     <ImageIndex>16</ImageIndex>
     <TypeUnit>Human</TypeUnit>
+    <Reward>500</Reward>
     <Cost>1000</Cost>
     <Building>GuildFireMage</Building>
     <MaxLevel>100</MaxLevel>
@@ -724,6 +741,7 @@
     <Description>- Любит выполнять задания атаки/- Знает множество разрушительных заклинаний/- На 5-ом уровне изучает заклинания "Заморозка" и "Щит Холода"/- На 10-ом уровне изучает заклинание "Гнев Холода"</Description>
     <ImageIndex>17</ImageIndex>
     <TypeUnit>Human</TypeUnit>
+    <Reward>500</Reward>
     <Cost>1000</Cost>
     <Building>GuildIceMage</Building>
     <MaxLevel>100</MaxLevel>
@@ -773,6 +791,7 @@
     <Description>- Любит деньги, охотно выполняет любые задания/- Умеет воровать/- На 5-ом уровне изучает "Умелое оглушение"/- На 10-ом уровне изучает "Черный яд"</Description>
     <ImageIndex>18</ImageIndex>
     <TypeUnit>Human</TypeUnit>
+    <Reward>500</Reward>
     <Cost>1000</Cost>
     <Building>GuildDeathKnight</Building>
     <MaxLevel>100</MaxLevel>

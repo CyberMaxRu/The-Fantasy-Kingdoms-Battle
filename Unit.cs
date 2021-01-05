@@ -16,6 +16,14 @@ namespace Fantasy_King_s_Battle
             TypeUnit = FormMain.Config.FindTypeUnit(n.SelectSingleNode("TypeUnit").InnerText);
             MaxLevel = Convert.ToInt32(n.SelectSingleNode("MaxLevel").InnerText);
             DefaultPositionPriority = XmlUtils.GetParamFromXmlInteger(n.SelectSingleNode("DefaultPositionPriority"));
+            Reward = XmlUtils.GetParamFromXmlInteger(n.SelectSingleNode("Reward"));
+
+            Debug.Assert(MaxLevel >= 1);
+            Debug.Assert(MaxLevel <= 100);
+            Debug.Assert(DefaultPositionPriority >= 0);
+            Debug.Assert(DefaultPositionPriority <= 1000);
+            Debug.Assert(Reward > 0);
+            Debug.Assert(Reward <= 1000);
 
             // Загружаем основные параметры
             if (n.SelectSingleNode("BaseParameters") != null)
@@ -49,8 +57,9 @@ namespace Fantasy_King_s_Battle
             }
         }
 
-        internal TypeUnit TypeUnit { get; }
-        internal int MaxLevel { get; }
+        internal TypeUnit TypeUnit { get; }// Тип юнита
+        internal int Reward { get; }// Награда за убийство юнита
+        internal int MaxLevel { get; }// Максимальный уровень юнита
         internal HeroParameters ParametersByHire { get; }// Параметры при создании юнита
         internal ConfigNextLevelHero ConfigNextLevel { get; }
         internal List<Ability> Abilities { get; } = new List<Ability>();// Способности юнита
