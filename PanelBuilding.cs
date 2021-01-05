@@ -248,7 +248,7 @@ namespace Fantasy_King_s_Battle
             Building = pb;
             Debug.Assert(Building.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
 
-            UpdateData();
+            UpdateData();// Это не надо по идее - Building = pb вызывает UpdateData
         }
 
         internal void UpdateData()

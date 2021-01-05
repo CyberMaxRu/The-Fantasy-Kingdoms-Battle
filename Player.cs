@@ -37,6 +37,12 @@ namespace Fantasy_King_s_Battle
                 Buildings.Add(new PlayerBuilding(this, b));
             }
 
+            // Инициализация логов
+            foreach (Lair l in FormMain.Config.Lairs)
+            {
+                Lairs.Add(new PlayerLair(this, l));
+            }
+
             Castle = GetPlayerBuilding(FormMain.Config.FindBuilding(FormMain.Config.IDBuildingCastle));
             Gold = Lobby.TypeLobby.Gold;
             if (TypePlayer == TypePlayer.Computer)
@@ -138,6 +144,7 @@ namespace Fantasy_King_s_Battle
         internal int DurabilityCastle { get; set; }
         internal int LastBattleDamageToCastle { get; set; }
         internal List<PlayerBuilding> Buildings { get; } = new List<PlayerBuilding>();
+        internal List<PlayerLair> Lairs { get; } = new List<PlayerLair>();
         internal int LevelCastle => Castle.Level;
         internal List<PlayerHero> CombatHeroes { get; } = new List<PlayerHero>();
         internal List<PlayerHero> AllHeroes { get; } = new List<PlayerHero>();

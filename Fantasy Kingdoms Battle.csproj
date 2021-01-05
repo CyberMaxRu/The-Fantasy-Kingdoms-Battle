@@ -66,6 +66,13 @@
     <Compile Include="Building.cs" />
     <Compile Include="Monster.cs" />
     <Compile Include="Object.cs" />
+    <Compile Include="PanelLair.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PanelLairInfo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PlayerLair.cs" />
     <Compile Include="TypeUnit.cs" />
     <Compile Include="Unit.cs" />
     <Compile Include="Config.cs" />

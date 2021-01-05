@@ -30,7 +30,9 @@ namespace Fantasy_King_s_Battle
         internal ImageList ilPlayerAvatarsBig;
         internal readonly ImageList ilResultBattle;
         internal readonly ImageList ilBuildings;
+        internal readonly ImageList ilLairs;
         internal readonly ImageList ilHeroes;
+        internal readonly ImageList ilMonsters;
         internal readonly ImageList ilGui;
         internal readonly ImageList ilGui16;
         internal readonly ImageList ilGui24;
@@ -58,6 +60,7 @@ namespace Fantasy_King_s_Battle
         private readonly Button btnPageBuildings;
         private readonly Button btnPageTemples;
         private readonly Button btnPageHeroes;
+        private readonly Button btnPageLairs;
         private readonly Button btnEndTurn;
 
         private PanelWithPanelEntity panelWarehouse;
@@ -81,6 +84,7 @@ namespace Fantasy_King_s_Battle
         internal const int GUI_TARGET = 15;
         internal const int GUI_BOOK = 16;
         internal const int GUI_EXIT = 17;
+        internal const int GUI_LAIR = 18;
 
         internal const int GUI_PARAMETER_STRENGTH = 6;
         internal const int GUI_PARAMETER_DEXTERITY = 7;
@@ -134,6 +138,7 @@ namespace Fantasy_King_s_Battle
         private readonly PanelPage pageBuildings;
         private readonly PanelPage pageTemples;
         private readonly PanelPage pageHeroes;
+        private readonly PanelPage pageLairs;
         private PanelPage currentPage;
         private readonly int leftForPages;
         private readonly int heightToolBar;
@@ -143,6 +148,7 @@ namespace Fantasy_King_s_Battle
         private readonly Point pointMenu;
         private readonly PanelMenu panelMenu;
         private readonly PanelBuildingInfo panelBuildingInfo;
+        private readonly PanelLairInfo panelLairInfo;
         private readonly PanelHeroInfo panelHeroInfo;
         internal PanelEntity SelectedPanelEntity;
         private readonly List<PanelPlayer> panelPlayers = new List<PanelPlayer>();
@@ -152,6 +158,7 @@ namespace Fantasy_King_s_Battle
 
         internal FormHint formHint;
         internal PanelBuilding SelectedPanelBuilding { get; private set; }
+        internal PanelLair SelectedPanelLair { get; private set; }
         internal PlayerHero SelectedHero { get; private set; }
 
         internal static Random Rnd = new Random();
@@ -276,7 +283,9 @@ namespace Fantasy_King_s_Battle
 
             ilResultBattle = PrepareImageList("ResultBattle.png", 24, 24, false);
             ilBuildings = PrepareImageList("Buildings.png", 126, 126, true);
+            ilLairs = PrepareImageList("Lairs.png", 128, 128, true);
             ilHeroes = PrepareImageList("Heroes.png", 126, 126, false);
+            ilMonsters = PrepareImageList("Monsters.png", 128, 128, false);
             ilGui = PrepareImageList("Gui.png", 48, 48, true);
             ilGuiHeroes = PrepareImageList("GuiHeroes.png", 48, 48, true);
             ilGui16 = PrepareImageList("Gui16.png", 16, 16, false);
@@ -399,19 +408,18 @@ namespace Fantasy_King_s_Battle
             pageBuildings = PreparePanel();
             pageTemples = PreparePanel();
             pageHeroes = PreparePanel();
-            pages.Add(pageGuilds);
-            pages.Add(pageBuildings);
-            pages.Add(pageTemples);
-            pages.Add(pageHeroes);
+            pageLairs = PreparePanel();
 
             PanelPage PreparePanel()
             {
-                return new PanelPage()
+                PanelPage tpp = new PanelPage()
                 {
                     Parent = this,
                     Left = leftForPages,
                     Top = GuiUtils.NextTop(btnQuit)
                 };
+                pages.Add(tpp);
+                return tpp;
             }
 
             // Кнопки страниц и конца хода
@@ -419,6 +427,7 @@ namespace Fantasy_King_s_Battle
             btnPageBuildings = CreateButtonPage(pageBuildings, GUI_ECONOMY);
             btnPageTemples = CreateButtonPage(pageTemples, GUI_TEMPLE);
             btnPageHeroes = CreateButtonPage(pageHeroes, GUI_HEROES);
+            btnPageLairs = CreateButtonPage(pageLairs, GUI_LAIR);
 
             btnEndTurn = GuiUtils.CreateButtonWithIcon(this, 0, Config.GridSize, GUI_BATTLE);
             btnEndTurn.Text = "Конец хода";
@@ -445,6 +454,7 @@ namespace Fantasy_King_s_Battle
             DrawTemples();
             DrawHeroes();
             DrawWarehouse();
+            DrawPageLair();
 
             ShowDataPlayer();
 
@@ -478,6 +488,14 @@ namespace Fantasy_King_s_Battle
                 Visible = false
             };
 
+            // Панель информации о логове
+            panelLairInfo = new PanelLairInfo(panelMenu.Top - GuiUtils.NextTop(btnPageGuilds) - Config.GridSize)
+            {
+                Parent = this,
+                Top = GuiUtils.NextTop(btnPageGuilds),
+                Visible = false
+            };
+
             //
             panelHeroInfo = new PanelHeroInfo(panelBuildingInfo.Height)
             {
@@ -488,10 +506,12 @@ namespace Fantasy_King_s_Battle
 
             // Подбираем ширину правой части
             panelBuildingInfo.Width = panelHeroInfo.Width;
+            panelLairInfo.Width = panelBuildingInfo.Width;
             int widthRightPanel = Math.Max(panelMenu.Width, panelHeroInfo.Width);
             Debug.Assert(widthRightPanel > panelMenu.Width);
 
             panelBuildingInfo.Left = leftForPages + maxWidthPages + Config.GridSize;
+            panelLairInfo.Left = panelBuildingInfo.Left;
             panelHeroInfo.Left = panelBuildingInfo.Left;
 
             // Учитываем плиту под слоты
@@ -520,6 +540,7 @@ namespace Fantasy_King_s_Battle
             panelMenu.Location = pointMenu;
 
             panelBuildingInfo.Height = ClientSize.Height - panelBuildingInfo.Top - panelMenu.Height - (Config.GridSize * 2);
+            panelLairInfo.Height = panelBuildingInfo.Height;
             panelHeroInfo.Height = panelBuildingInfo.Height;
 
             SetStage("Прибираем после строителей");
@@ -793,6 +814,7 @@ namespace Fantasy_King_s_Battle
             pageBuildings.Left = pageGuilds.Left;
             pageTemples.Left = pageGuilds.Left;
             pageHeroes.Left = pageGuilds.Left;
+            pageLairs.Left = pageGuilds.Left;
 
             btnQuit.Left = shiftControls.X + minSizeForm.Width - btnQuit.Width - (Config.GridSize * 4);
             btnHelp.Left = btnQuit.Left - btnQuit.Width - Config.GridSize;
@@ -802,8 +824,10 @@ namespace Fantasy_King_s_Battle
             btnPageBuildings.Left = GuiUtils.NextLeft(btnPageGuilds);
             btnPageTemples.Left = GuiUtils.NextLeft(btnPageBuildings);
             btnPageHeroes.Left = GuiUtils.NextLeft(btnPageTemples);
-
+            btnPageLairs.Left = GuiUtils.NextLeft(btnPageHeroes);
+            
             panelBuildingInfo.Left = shiftControls.X + leftForPages + maxWidthPages;
+            panelLairInfo.Left = panelBuildingInfo.Left;
             panelHeroInfo.Left = panelBuildingInfo.Left;
 
             btnEndTurn.Left = panelBuildingInfo.Left - btnEndTurn.Width - Config.GridSize;
@@ -924,6 +948,7 @@ namespace Fantasy_King_s_Battle
             ShowBuildings();
             ShowTemples();
             ShowPageHeroes();
+            ShowPageLairs();
             ShowGold();
         }
 
@@ -965,6 +990,35 @@ namespace Fantasy_King_s_Battle
 
                         left += b.Panel.Width + Config.GridSize;
                         height = b.Panel.Height;
+                    }
+                }
+
+                top += height + Config.GridSize;
+            }
+        }
+
+        private void DrawPageLair()
+        {
+            int top = 0;
+            int left;
+            int height = 0;
+
+            for (int line = 1; line <= Config.BuildingMaxLines; line++)
+            {
+                left = 0;
+
+                foreach (Lair l in Config.Lairs)
+                {
+                    if (l.Line == line)
+                    {
+                        l.Panel = new PanelLair()
+                        {
+                            Parent = pageLairs,
+                            Location = new Point(left, top)
+                        };
+
+                        left += l.Panel.Width + Config.GridSize;
+                        height = l.Panel.Height;
                     }
                 }
 
@@ -1027,6 +1081,14 @@ namespace Fantasy_King_s_Battle
                 list.Add(null);
 
             panelHeroes.ApplyList(list);
+        }
+
+        private void ShowPageLairs()
+        {
+            foreach (PlayerLair pl in lobby.CurrentPlayer.Lairs)
+            {
+                pl.UpdatePanel();
+            }
         }
 
         protected override void OnPaintBackground(PaintEventArgs e)
@@ -1155,6 +1217,8 @@ namespace Fantasy_King_s_Battle
             {
                 if (SelectedHero != null)
                     SelectHero(null);
+                if (SelectedPanelLair != null)
+                    SelectLair(null);
 
                 SelectPanelEntity(null);
 
@@ -1178,12 +1242,45 @@ namespace Fantasy_King_s_Battle
             }
         }
 
+        internal void SelectLair(PanelLair pl)
+        {
+            if (SelectedPanelLair != pl)
+            {
+                if (SelectedHero != null)
+                    SelectHero(null);
+                if (SelectedPanelBuilding != null)
+                    SelectBuilding(null);
+
+                SelectPanelEntity(null);
+
+                PanelLair oldSelected = SelectedPanelLair;
+                SelectedPanelLair = pl;
+
+                UpdateMenu();
+
+                if (oldSelected != null)
+                    oldSelected.Invalidate(true);
+                if (SelectedPanelLair != null)
+                {
+                    panelLairInfo.Lair = SelectedPanelLair.Lair;
+                    SelectedPanelLair.Invalidate(true);
+                    panelLairInfo.Show();
+                }
+                else
+                    panelBuildingInfo.Hide();
+
+                panelMenu.Invalidate(true);// Это точно надо?
+            }
+        }
+
         internal void SelectHero(PlayerHero ph)
         {
             if (SelectedHero != ph)
             {
                 if (SelectedPanelBuilding != null)
                     SelectBuilding(null);
+                if (SelectedPanelLair != null)
+                    SelectLair(null);
 
                 PlayerHero oldSelected = SelectedHero;
                 SelectedHero = ph;

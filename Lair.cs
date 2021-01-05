@@ -17,6 +17,10 @@ namespace Fantasy_King_s_Battle
             Name = n.SelectSingleNode("Name").InnerText;
             Description = n.SelectSingleNode("Description").InnerText.Replace("/", Environment.NewLine);
             ImageIndex = Convert.ToInt32(n.SelectSingleNode("ImageIndex").InnerText);
+            Line = XmlUtils.GetParamFromXmlInteger(n.SelectSingleNode("Line"));
+
+            Debug.Assert(Line >= 1);
+            Debug.Assert(Line <= 3);
 
             // Проверяем, что таких же ID и наименования нет
             foreach (Lair l in FormMain.Config.Lairs)
@@ -36,5 +40,8 @@ namespace Fantasy_King_s_Battle
         internal string Name { get; }
         internal string Description { get; }
         internal int ImageIndex { get; }
+        internal int Line { get; }
+        internal PanelLair Panel { get; set; }
+
     }
 }
