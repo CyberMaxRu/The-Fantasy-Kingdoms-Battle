@@ -11,7 +11,7 @@ namespace Fantasy_King_s_Battle
     // Базовый класс для всех юнитов
     internal class Unit : Object
     {
-        public Unit(XmlNode n) : base (n)
+        public Unit(XmlNode n) : base(n)
         {
 
         }

@@ -10,19 +10,14 @@ using System.Diagnostics;
 namespace Fantasy_King_s_Battle
 {
     // Класс героя гильдии    
-    internal sealed class Hero
+    internal sealed class Hero : Unit
     {
         private string nameMeleeWeapon;
         private string nameRangeWeapon;
         private string nameArmour;
 
-        public Hero(XmlNode n)
+        public Hero(XmlNode n) : base(n)
         {
-            ID = n.SelectSingleNode("ID").InnerText;
-            Name = n.SelectSingleNode("Name").InnerText;
-            if (n.SelectSingleNode("Description") != null)
-                Description = n.SelectSingleNode("Description").InnerText.Replace("/", Environment.NewLine);
-            ImageIndex = Convert.ToInt32(n.SelectSingleNode("ImageIndex").InnerText);
             Cost = Convert.ToInt32(n.SelectSingleNode("Cost").InnerText);
             Building = FormMain.Config.FindBuilding(n.SelectSingleNode("Building").InnerText);
             Building.TrainedHero = this;
@@ -137,10 +132,6 @@ namespace Fantasy_King_s_Battle
             }
         }
 
-        internal string ID { get; }
-        internal string Name { get; }
-        internal string Description { get; }
-        internal int ImageIndex { get; }
         internal int Cost { get; }
         internal Building Building { get; }
         internal int MaxLevel { get; }
