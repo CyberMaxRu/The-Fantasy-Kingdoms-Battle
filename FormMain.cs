@@ -297,7 +297,7 @@ namespace Fantasy_King_s_Battle
             ilStateHero = PrepareImageList("StateHero.png", 24, 24, false);
             ilMenuCellFilters = PrepareImageList("MenuCellFilters.png", 48, 48, true);
             ilPages = PrepareImageList("Pages.png", 48, 48, true);
-            MakeAlpha();
+            //MakeAlpha();
 
             bmpForBackground = new Bitmap(dirResources + "Icons\\Background.png");
             bmpBackgroundButton = GuiUtils.MakeBackground(GuiUtils.SizeButtonWithImage(ilGui));
