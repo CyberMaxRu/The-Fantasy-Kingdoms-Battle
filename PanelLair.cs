@@ -25,7 +25,6 @@ namespace Fantasy_King_s_Battle
                 Left = FormMain.Config.GridSize,
                 Top = FormMain.Config.GridSize,
                 Height = FormMain.Config.GridSize * 2,
-                ForeColor = Color.Green,
                 BackColor = Color.Transparent,
                 Font = FormMain.Config.FontBuildingCaption
             };
@@ -52,6 +51,7 @@ namespace Fantasy_King_s_Battle
                 ImageList = Program.formMain.ilGui,
                 ImageIndex = FormMain.GUI_BATTLE,
                 TextAlign = ContentAlignment.BottomCenter,
+                FlatStyle = FlatStyle.Flat,
                 Font = FormMain.Config.FontCost,
                 BackgroundImage = Program.formMain.bmpBackgroundButton,
                 ForeColor = Color.White
@@ -69,8 +69,7 @@ namespace Fantasy_King_s_Battle
 
         private void BtnSetAsTarget_Click(object sender, EventArgs e)
         {
-            lair.Player.TargetLair = lair;
-            Program.formMain.UpdateTarget();
+            Program.formMain.UpdateTarget(lair);
         }
 
         private void PbLair_MouseClick(object sender, MouseEventArgs e)
@@ -115,6 +114,8 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(Lair.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
 
             lblName.Text = lair.Lair.Name;
+            lblName.ForeColor = lair.Player.TargetLair == lair ? Color.OrangeRed : Color.Green;
+            btnSetAsTarget.FlatAppearance.BorderColor = lair.Player.TargetLair == lair ? Color.OrangeRed : Color.Black;
             pbLair.Image = GuiUtils.GetImageFromImageList(Program.formMain.ilLairs, lair.Lair.ImageIndex, true);
         }
 

@@ -1473,8 +1473,18 @@ namespace Fantasy_King_s_Battle
             b.Save(@"f:\Projects\C-Sharp\Fantasy King's Battle\Resources\Icons\1.png");*/
         }
 
-        internal void UpdateTarget()
+        internal void UpdateTarget(PlayerLair newLair)
         {
+            Debug.Assert(lobby.CurrentPlayer == newLair.Player);
+
+            if (lobby.CurrentPlayer.TargetLair != null)
+            {
+                PlayerLair plOld = lobby.CurrentPlayer.TargetLair;
+                lobby.CurrentPlayer.TargetLair = null;
+                plOld.UpdatePanel();
+            }
+            lobby.CurrentPlayer.TargetLair = newLair;
+            lobby.CurrentPlayer.TargetLair.UpdatePanel();
             btnTarget.ImageIndex = lobby.CurrentPlayer.TargetLair != null ? lobby.CurrentPlayer.TargetLair.Lair.ImageIndex : -1;
         }
     }
