@@ -78,6 +78,14 @@ namespace Fantasy_King_s_Battle
                 Abilities.Add(new Ability(n));
             }
 
+            // Загрузка конфигурации типов юнитов
+            xmlDoc = CreateXmlDocument("Config\\TypeUnits.xml");
+
+            foreach (XmlNode n in xmlDoc.SelectNodes("/TypeUnits/TypeUnit"))
+            {
+                TypeUnits.Add(new TypeUnit(n));
+            }
+
             // Загрузка конфигурации видов героев
             xmlDoc = CreateXmlDocument("Config\\KindHeroes.xml");
 
@@ -138,6 +146,7 @@ namespace Fantasy_King_s_Battle
         internal List<TypeLobby> TypeLobbies { get; } = new List<TypeLobby>();
         internal List<Building> Buildings { get; } = new List<Building>();
         internal List<Ability> Abilities { get; } = new List<Ability>();
+        internal List<TypeUnit> TypeUnits { get; } = new List<TypeUnit>();
         internal List<KindHero> KindHeroes { get; } = new List<KindHero>();
         internal List<Hero> Heroes { get; } = new List<Hero>();
         internal List<Item> Items { get; } = new List<Item>();
