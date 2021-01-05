@@ -281,7 +281,7 @@ namespace Fantasy_King_s_Battle
                 ImageSize = new Size(48, 48)
             };
 
-            bmpMaskBig = new Bitmap(dirResources + @"Icons\MaskAvatar.png");
+            bmpMaskBig = new Bitmap(dirResources + @"Icons\MaskBig.png");
             ValidateAvatars();
 
             bmpMaskSmall = new Bitmap(dirResources + @"Icons\MaskSmall.png");
@@ -439,6 +439,7 @@ namespace Fantasy_King_s_Battle
             btnTarget = GuiUtils.CreateButtonWithIcon(this, 0, Config.GridSize, -1);
             btnTarget.ImageList = ilLairsSmall;
             btnTarget.TabStop = false;
+            btnTarget.MouseHover += BtnTarget_MouseHover;
 
             btnEndTurn = GuiUtils.CreateButtonWithIcon(this, 0, Config.GridSize, GUI_BATTLE);
             btnEndTurn.Text = "Конец хода";
@@ -586,6 +587,11 @@ namespace Fantasy_King_s_Battle
                 lblStage.Text = text + "...";
                 lblStage.Refresh();
             }
+        }
+
+        private void BtnTarget_MouseHover(object sender, EventArgs e)
+        {
+            ShowHintForToolButton(btnTarget, "Атакуемое логово", lobby.CurrentPlayer.TargetLair != null ? lobby.CurrentPlayer.TargetLair.Lair.Name : "Не выбрано");
         }
 
         private void BtnQuit_MouseHover(object sender, EventArgs e)
