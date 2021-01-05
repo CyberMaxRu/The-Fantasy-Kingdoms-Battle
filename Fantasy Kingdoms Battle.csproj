@@ -64,6 +64,8 @@
     <Compile Include="Battlefield.cs" />
     <Compile Include="BattlefieldTile.cs" />
     <Compile Include="Building.cs" />
+    <Compile Include="Object.cs" />
+    <Compile Include="Unit.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="FormAbout.cs">
@@ -201,6 +203,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Config\Lairs.xml" />
+    <Content Include="Resources\Config\Monsters.xml" />
     <Content Include="Resources\Settings.xml" />
     <Content Include="Resources\Main.xml" />
     <Content Include="Resources\Config\Game.xml" />
