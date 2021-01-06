@@ -9,7 +9,7 @@ using System.Xml;
 namespace Fantasy_King_s_Battle
 {
     // Базовый класс для всех юнитов
-    internal class KindCreature : Object
+    internal abstract class KindCreature : Object
     {
         public KindCreature(XmlNode n) : base(n)
         {
