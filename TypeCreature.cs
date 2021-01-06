@@ -8,7 +8,7 @@ using System.Xml;
 
 namespace Fantasy_King_s_Battle
 {
-    // Тип юнита
+    // Типы существ
     internal sealed class TypeCreature
     {
         public TypeCreature(XmlNode n)
@@ -17,13 +17,10 @@ namespace Fantasy_King_s_Battle
             Name = n.SelectSingleNode("Name").InnerText;
 
             // Проверяем, что таких же ID и наименования нет
-            foreach (TypeCreature tu in FormMain.Config.TypeUnits)
+            foreach (TypeCreature tc in FormMain.Config.TypesCreatures)
             {
-                if (tu.ID == ID)
-                    throw new Exception("В конфигурации типов существ повторяется ID = " + ID);
-
-                if (tu.Name == Name)
-                    throw new Exception("В конфигурации типов существ повторяется Name = " + Name);
+                Debug.Assert(tc.ID != ID);
+                Debug.Assert(tc.Name == Name);
             }
         }
 
