@@ -82,13 +82,15 @@ namespace Fantasy_King_s_Battle
             foreach (XmlNode l in n.SelectNodes("Monster"))
             {
                 mll = new MonsterLevelLair(l);
-                MonsterLevelLairs.Add(mll);
+                Monsters.Add(mll);
             }
             // Информация о награде
+            if (n.SelectSingleNode("Reward") != null)
+                Reward = new RewardLevelLair(n.SelectSingleNode("Reward"));
         }
 
-        internal List<MonsterLevelLair> MonsterLevelLairs { get; } = new List<MonsterLevelLair>();
-        internal List<RewardLevelLair> RewardLevelLairs { get; } = new List<RewardLevelLair>();
+        internal List<MonsterLevelLair> Monsters { get; } = new List<MonsterLevelLair>();
+        internal RewardLevelLair Reward { get; }
     }
 
     // Класс логова монстров
