@@ -27,6 +27,14 @@ namespace Fantasy_King_s_Battle
             return n != null ? n.InnerText : "";
         }
 
+        internal static string GetStringNotNull(XmlNode n)
+        {
+            if (n == null)
+                throw new Exception("Параметр пуст");
+
+            return n.InnerText;
+        }
+
         internal static bool GetParamFromXmlBool(XmlNode n, bool defValue)
         {
             return n != null ? Convert.ToBoolean(n.InnerText) : defValue;

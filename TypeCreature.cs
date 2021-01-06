@@ -13,8 +13,8 @@ namespace Fantasy_King_s_Battle
     {
         public TypeCreature(XmlNode n)
         {
-            ID = n.SelectSingleNode("ID").InnerText;
-            Name = n.SelectSingleNode("Name").InnerText;
+            ID = XmlUtils.GetStringNotNull(n.SelectSingleNode("ID"));
+            Name = XmlUtils.GetStringNotNull(n.SelectSingleNode("Name"));
 
             // Проверяем, что таких же ID и наименования нет
             foreach (TypeCreature tc in FormMain.Config.TypesCreatures)
