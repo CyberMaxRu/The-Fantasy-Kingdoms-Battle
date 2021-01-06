@@ -20,7 +20,7 @@ namespace Fantasy_King_s_Battle
             foreach (TypeCreature tc in FormMain.Config.TypesCreatures)
             {
                 Debug.Assert(tc.ID != ID);
-                Debug.Assert(tc.Name == Name);
+                Debug.Assert(tc.Name != Name);
             }
         }
 
