@@ -13,7 +13,7 @@ namespace Fantasy_King_s_Battle
     {
         public Unit(XmlNode n) : base(n)
         {
-            TypeCreature = FormMain.Config.FindTypeUnit(n.SelectSingleNode("TypeCreature").InnerText);
+            TypeCreature = FormMain.Config.FindTypeCreature(n.SelectSingleNode("TypeCreature").InnerText);
             MaxLevel = Convert.ToInt32(n.SelectSingleNode("MaxLevel").InnerText);
             DefaultPositionPriority = XmlUtils.GetParamFromXmlInteger(n.SelectSingleNode("DefaultPositionPriority"));
             Reward = XmlUtils.GetParamFromXmlInteger(n.SelectSingleNode("Reward"));

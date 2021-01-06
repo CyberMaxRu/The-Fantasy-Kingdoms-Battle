@@ -313,7 +313,7 @@ namespace Fantasy_King_s_Battle
             throw new Exception("Предмет " + ID + " не найден.");
         }
 
-        internal TypeCreature FindTypeUnit(string ID)
+        internal TypeCreature FindTypeCreature(string ID)
         {
             foreach (TypeCreature tu in TypesCreatures)
             {
