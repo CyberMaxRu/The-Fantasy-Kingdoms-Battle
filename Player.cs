@@ -144,7 +144,6 @@ namespace Fantasy_King_s_Battle
         internal int DurabilityCastle { get; set; }
         internal int LastBattleDamageToCastle { get; set; }
         internal List<PlayerBuilding> Buildings { get; } = new List<PlayerBuilding>();
-        internal List<PlayerLair> Lairs { get; } = new List<PlayerLair>();
         internal int LevelCastle => Castle.Level;
         internal List<PlayerHero> CombatHeroes { get; } = new List<PlayerHero>();
         internal List<PlayerHero> AllHeroes { get; } = new List<PlayerHero>();
@@ -161,6 +160,8 @@ namespace Fantasy_King_s_Battle
 
         internal PlayerItem[] Warehouse = new PlayerItem[FormMain.Config.WarehouseMaxCells];// Предметы на складе игрока
 
+        // Логова
+        internal List<PlayerLair> Lairs { get; } = new List<PlayerLair>();
         internal PlayerLair TargetLair { get; set; }// Логово для атаки
 
         // Статистика по боям

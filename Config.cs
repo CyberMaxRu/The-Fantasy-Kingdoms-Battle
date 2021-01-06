@@ -138,6 +138,9 @@ namespace Fantasy_King_s_Battle
             foreach (Building b in Buildings)
                 b.TuneResearches();
 
+            foreach (Lair l in Lairs)
+                l.TuneDeferredLinks();
+
             // Загрузка навыков
             xmlDoc = CreateXmlDocument("Config\\Skills.xml");
 

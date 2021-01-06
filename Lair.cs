@@ -41,19 +41,11 @@ namespace Fantasy_King_s_Battle
         internal int QuantityRespawn { get; }
         internal List<LairMonster> Monsters { get; } = new List<LairMonster>();
 
-        internal void SetDeferredLink()
+        internal void TuneDeferredLinks()
         {
             Monster = FormMain.Config.FindMonster(idMonster);
             idMonster = null;
             Debug.Assert(Level <= Monster.MaxLevel);
-
-            // Создаем монстров
-            /*LairMonster m;
-            for (int i = 0; i < StartQuantity; i++)
-            {
-                m = new LairMonster(Monster, Level);
-                Monsters.Add(m);
-            }*/
         }
     }
 
@@ -91,6 +83,14 @@ namespace Fantasy_King_s_Battle
 
         internal List<MonsterLevelLair> Monsters { get; } = new List<MonsterLevelLair>();
         internal RewardLevelLair Reward { get; }
+
+        internal void TuneDeferredLinks()
+        {
+            foreach (MonsterLevelLair mll in Monsters)
+            {
+                mll.TuneDeferredLinks();
+            }
+        }
     }
 
     // Класс логова монстров
@@ -144,5 +144,12 @@ namespace Fantasy_King_s_Battle
         internal List<LevelLair> LevelLairs { get; } = new List<LevelLair>();
         internal PanelLair Panel { get; set; }
 
+        internal void TuneDeferredLinks()
+        {
+            foreach (LevelLair ll in LevelLairs)
+            {
+                ll.TuneDeferredLinks();
+            }
+        }
     }
 }

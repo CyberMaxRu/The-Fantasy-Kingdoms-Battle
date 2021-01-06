@@ -40,7 +40,7 @@ namespace Fantasy_King_s_Battle
 
             //lblIcon.Text = (lair.Lair.MaxLevel > 1) && (building.Level > 0) ? building.Level.ToString() : "";
 
-            //panelInhabitants.ApplyList(lair.Heroes);
+            panelInhabitants.ApplyList(lair.Monsters);
 
             Show();
         }

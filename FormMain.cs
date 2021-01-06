@@ -34,6 +34,7 @@ namespace Fantasy_King_s_Battle
         internal readonly ImageList ilLairsSmall;
         internal readonly ImageList ilHeroes;
         internal readonly ImageList ilMonsters;
+        internal readonly ImageList ilMonstersSmall;
         internal readonly ImageList ilGui;
         internal readonly ImageList ilGui16;
         internal readonly ImageList ilGui24;
@@ -292,6 +293,7 @@ namespace Fantasy_King_s_Battle
             ilBuildings = PrepareImageList("Buildings.png", 126, 126, true);
             ilHeroes = PrepareImageList("Heroes.png", 126, 126, false);
             ilMonsters = PrepareImageList("Monsters.png", 128, 128, false);
+            ilMonstersSmall = BigIconToSmall(ilMonsters);
             ilGui = PrepareImageList("Gui.png", 48, 48, true);
             ilGuiHeroes = PrepareImageList("GuiHeroes.png", 48, 48, true);
             ilGui16 = PrepareImageList("Gui16.png", 16, 16, false);
