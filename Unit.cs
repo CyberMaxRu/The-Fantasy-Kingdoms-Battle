@@ -57,7 +57,7 @@ namespace Fantasy_King_s_Battle
             }
         }
 
-        internal TypeUnit TypeUnit { get; }// Тип юнита
+        internal TypeCreature TypeUnit { get; }// Тип юнита
         internal int Reward { get; }// Награда за убийство юнита
         internal int MaxLevel { get; }// Максимальный уровень юнита
         internal HeroParameters ParametersByHire { get; }// Параметры при создании юнита

@@ -12,12 +12,12 @@ namespace Fantasy_King_s_Battle
     {
         private PanelEntity panelEntity;
 
-        public Creature(TypeUnit tc)
+        public Creature(TypeCreature tc)
         {
             TypeCreature = tc;
         }
 
-        internal TypeUnit TypeCreature { get; }
+        internal TypeCreature TypeCreature { get; }
         internal int Level { get; private set; }// Уровень
 
         // Реализация интерфейса

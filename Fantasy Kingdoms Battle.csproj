@@ -75,7 +75,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="PlayerLair.cs" />
-    <Compile Include="TypeUnit.cs" />
+    <Compile Include="TypeCreature.cs" />
     <Compile Include="Unit.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Entity.cs" />

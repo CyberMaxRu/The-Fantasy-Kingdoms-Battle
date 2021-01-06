@@ -83,7 +83,7 @@ namespace Fantasy_King_s_Battle
 
             foreach (XmlNode n in xmlDoc.SelectNodes("/TypeUnits/TypeUnit"))
             {
-                TypeUnits.Add(new TypeUnit(n));
+                TypeUnits.Add(new TypeCreature(n));
             }
 
             // Загрузка конфигурации видов героев
@@ -162,7 +162,7 @@ namespace Fantasy_King_s_Battle
         internal List<TypeLobby> TypeLobbies { get; } = new List<TypeLobby>();
         internal List<Building> Buildings { get; } = new List<Building>();
         internal List<Ability> Abilities { get; } = new List<Ability>();
-        internal List<TypeUnit> TypeUnits { get; } = new List<TypeUnit>();
+        internal List<TypeCreature> TypeUnits { get; } = new List<TypeCreature>();
         internal List<KindHero> KindHeroes { get; } = new List<KindHero>();
         internal List<Hero> Heroes { get; } = new List<Hero>();
         internal List<Item> Items { get; } = new List<Item>();
@@ -313,9 +313,9 @@ namespace Fantasy_King_s_Battle
             throw new Exception("Предмет " + ID + " не найден.");
         }
 
-        internal TypeUnit FindTypeUnit(string ID)
+        internal TypeCreature FindTypeUnit(string ID)
         {
-            foreach (TypeUnit tu in TypeUnits)
+            foreach (TypeCreature tu in TypeUnits)
             {
                 if (tu.ID == ID)
                     return tu;

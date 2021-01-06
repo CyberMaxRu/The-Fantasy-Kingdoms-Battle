@@ -9,21 +9,21 @@ using System.Xml;
 namespace Fantasy_King_s_Battle
 {
     // Тип юнита
-    internal sealed class TypeUnit
+    internal sealed class TypeCreature
     {
-        public TypeUnit(XmlNode n)
+        public TypeCreature(XmlNode n)
         {
             ID = n.SelectSingleNode("ID").InnerText;
             Name = n.SelectSingleNode("Name").InnerText;
 
             // Проверяем, что таких же ID и наименования нет
-            foreach (TypeUnit tu in FormMain.Config.TypeUnits)
+            foreach (TypeCreature tu in FormMain.Config.TypeUnits)
             {
                 if (tu.ID == ID)
-                    throw new Exception("В конфигурации типов юнитов повторяется ID = " + ID);
+                    throw new Exception("В конфигурации типов существ повторяется ID = " + ID);
 
                 if (tu.Name == Name)
-                    throw new Exception("В конфигурации типов юнитов повторяется Name = " + Name);
+                    throw new Exception("В конфигурации типов существ повторяется Name = " + Name);
             }
         }
 
