@@ -118,7 +118,7 @@ namespace Fantasy_King_s_Battle
         internal int ManaCost { get; }
         internal int CoolDown { get; }
         internal List<Effect> Effects { get; } = new List<Effect>();
-        internal List<Unit> ClassesHeroes { get; } = new List<Unit>();
+        internal List<KindCreature> ClassesHeroes { get; } = new List<KindCreature>();
 
         internal void TuneDeferredLinks()
         {
@@ -129,7 +129,7 @@ namespace Fantasy_King_s_Battle
 
             Description += (Description.Length > 0 ? Environment.NewLine : "") + "- Доступно:";
 
-            foreach (Unit u in ClassesHeroes)
+            foreach (KindCreature u in ClassesHeroes)
             {
                 Description += Environment.NewLine + "  - " + u.Name;
             }

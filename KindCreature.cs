@@ -9,9 +9,9 @@ using System.Xml;
 namespace Fantasy_King_s_Battle
 {
     // Базовый класс для всех юнитов
-    internal class Unit : Object
+    internal class KindCreature : Object
     {
-        public Unit(XmlNode n) : base(n)
+        public KindCreature(XmlNode n) : base(n)
         {
             TypeCreature = FormMain.Config.FindTypeCreature(n.SelectSingleNode("TypeCreature").InnerText);
             MaxLevel = Convert.ToInt32(n.SelectSingleNode("MaxLevel").InnerText);

@@ -10,7 +10,7 @@ using System.Diagnostics;
 namespace Fantasy_King_s_Battle
 {
     // Класс героя гильдии    
-    internal sealed class Hero : Unit
+    internal sealed class Hero : KindCreature
     {
         private string nameMeleeWeapon;
         private string nameRangeWeapon;

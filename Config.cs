@@ -172,7 +172,7 @@ namespace Fantasy_King_s_Battle
         internal int MaxLevelSkill { get; }
         internal List<Monster> Monsters { get; } = new List<Monster>();
         internal List<Lair> Lairs { get; } = new List<Lair>();
-        internal List<Unit> Units { get; } = new List<Unit>();
+        internal List<KindCreature> Units { get; } = new List<KindCreature>();
 
         // Константы
         internal int GridSize { get; private set; }// Размер ячейки сетки
@@ -346,9 +346,9 @@ namespace Fantasy_King_s_Battle
             throw new Exception("Способность " + ID + " не найдена.");
         }
 
-        internal Unit FindUnit(string ID)
+        internal KindCreature FindUnit(string ID)
         {
-            foreach (Unit u in Units)
+            foreach (KindCreature u in Units)
             {
                 if (u.ID == ID)
                     return u;
