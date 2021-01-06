@@ -13,7 +13,7 @@ namespace Fantasy_King_s_Battle
     {
         public Unit(XmlNode n) : base(n)
         {
-            TypeUnit = FormMain.Config.FindTypeUnit(n.SelectSingleNode("TypeUnit").InnerText);
+            TypeCreature = FormMain.Config.FindTypeUnit(n.SelectSingleNode("TypeCreature").InnerText);
             MaxLevel = Convert.ToInt32(n.SelectSingleNode("MaxLevel").InnerText);
             DefaultPositionPriority = XmlUtils.GetParamFromXmlInteger(n.SelectSingleNode("DefaultPositionPriority"));
             Reward = XmlUtils.GetParamFromXmlInteger(n.SelectSingleNode("Reward"));
@@ -57,7 +57,7 @@ namespace Fantasy_King_s_Battle
             }
         }
 
-        internal TypeCreature TypeUnit { get; }// Тип юнита
+        internal TypeCreature TypeCreature { get; }// Тип существа
         internal int Reward { get; }// Награда за убийство юнита
         internal int MaxLevel { get; }// Максимальный уровень юнита
         internal HeroParameters ParametersByHire { get; }// Параметры при создании юнита
