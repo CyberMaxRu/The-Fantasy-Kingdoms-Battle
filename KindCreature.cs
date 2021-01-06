@@ -14,7 +14,7 @@ namespace Fantasy_King_s_Battle
         public KindCreature(XmlNode n) : base(n)
         {
             TypeCreature = FormMain.Config.FindTypeCreature(n.SelectSingleNode("TypeCreature").InnerText);
-            MaxLevel = Convert.ToInt32(n.SelectSingleNode("MaxLevel").InnerText);
+            MaxLevel = XmlUtils.GetParamFromXmlInteger(n.SelectSingleNode("MaxLevel"));
             DefaultPositionPriority = XmlUtils.GetParamFromXmlInteger(n.SelectSingleNode("DefaultPositionPriority"));
             Reward = XmlUtils.GetParamFromXmlInteger(n.SelectSingleNode("Reward"));
 
