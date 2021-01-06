@@ -1492,6 +1492,7 @@ namespace Fantasy_King_s_Battle
             lobby.CurrentPlayer.TargetLair = newLair;
             lobby.CurrentPlayer.TargetLair.UpdatePanel();
             btnTarget.ImageIndex = lobby.CurrentPlayer.TargetLair != null ? lobby.CurrentPlayer.TargetLair.Lair.ImageIndex : -1;
+            SelectLair(newLair.Lair.Panel);
         }
     }
 }
