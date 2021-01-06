@@ -64,6 +64,7 @@
     <Compile Include="Battlefield.cs" />
     <Compile Include="BattlefieldTile.cs" />
     <Compile Include="Building.cs" />
+    <Compile Include="LairMonster.cs" />
     <Compile Include="Monster.cs" />
     <Compile Include="Object.cs" />
     <Compile Include="PanelLair.cs">

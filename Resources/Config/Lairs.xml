@@ -6,6 +6,21 @@
     <Description>Не рекомендуется гулять по чумным кладбищам. Вас могут принять за зомби, которых полным полно в таких местах.</Description>
     <ImageIndex>0</ImageIndex>
     <Line>1</Line>
+    <Levels>
+      <Level>
+        <Monster>
+          <ID>Zombie</ID>
+          <StartQuantity>5</StartQuantity>
+          <MaxQuantity>10</MaxQuantity>
+          <Level>5</Level>
+          <DaysRespawn>2</DaysRespawn>
+          <QuantityRespawn>1</QuantityRespawn>
+        </Monster>
+        <Reward>
+          <Gold>500</Gold>
+        </Reward>  
+      </Level>
+    </Levels>
   </Lair>
   <Lair>
     <ID>GraveyardSkeletons</ID>
