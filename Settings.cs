@@ -21,24 +21,24 @@ namespace Fantasy_King_s_Battle
             XmlDocument doc = new XmlDocument();
             doc.Load(path + "Settings.xml");
 
-            ShowSplashVideo = XmlUtils.GetParamFromXmlBool(doc.SelectSingleNode("Settings/Game/ShowSplashVideo"), true);
-            FullScreenMode = XmlUtils.GetParamFromXmlBool(doc.SelectSingleNode("Settings/Game/FullScreenMode"), false);
-            CheckUpdateOnStartup = XmlUtils.GetParamFromXmlBool(doc.SelectSingleNode("Settings/Game/CheckUpdatesOnStartup"), true);
+            ShowSplashVideo = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Game/ShowSplashVideo"), true);
+            FullScreenMode = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Game/FullScreenMode"), false);
+            CheckUpdateOnStartup = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Game/CheckUpdatesOnStartup"), true);
 
-            BattlefieldShowPath = XmlUtils.GetParamFromXmlBool(doc.SelectSingleNode("Settings/Battlefield/ShowPath"), false);
-            BattlefieldShowGrid = XmlUtils.GetParamFromXmlBool(doc.SelectSingleNode("Settings/Battlefield/ShowGrid"), false);
+            BattlefieldShowPath = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Battlefield/ShowPath"), false);
+            BattlefieldShowGrid = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Battlefield/ShowGrid"), false);
 
-            NamePlayer = XmlUtils.GetParamFromXmlString(doc.SelectSingleNode("Settings/Player/Name"));
+            NamePlayer = XmlUtils.GetString(doc.SelectSingleNode("Settings/Player/Name"));
             if (NamePlayer.Length == 0)
                 NamePlayer = "Игрок №1";
             if (NamePlayer.Length > 31)
                 throw new Exception("Длина имени игрока более 31 символа.");
 
-            IndexInternalAvatar = XmlUtils.GetParamFromXmlInteger(doc.SelectSingleNode("Settings/Player/IndexAvatar"));
+            IndexInternalAvatar = XmlUtils.GetInteger(doc.SelectSingleNode("Settings/Player/IndexAvatar"));
             if (IndexInternalAvatar < -1)
                 IndexInternalAvatar = 0;
-            FileNameAvatar = XmlUtils.GetParamFromXmlString(doc.SelectSingleNode("Settings/Player/FileNameAvatar"));
-            DirectoryAvatar = XmlUtils.GetParamFromXmlString(doc.SelectSingleNode("Settings/Player/DirectoryAvatar"));
+            FileNameAvatar = XmlUtils.GetString(doc.SelectSingleNode("Settings/Player/FileNameAvatar"));
+            DirectoryAvatar = XmlUtils.GetString(doc.SelectSingleNode("Settings/Player/DirectoryAvatar"));
             //if (IndexAvatar >= Program.formMain.ilPlayerAvatars.Images.Count)
             //    IndexAvatar = Program.formMain.ilPlayerAvatars.Images.Count - 1;
         }

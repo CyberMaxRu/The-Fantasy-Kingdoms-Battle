@@ -53,9 +53,9 @@ namespace Fantasy_King_s_Battle
             }
 
             // Загружаем дефолтное оружие и доспехи
-            nameMeleeWeapon = XmlUtils.GetParamFromXmlString(n.SelectSingleNode("MeleeWeapon"));
-            nameRangeWeapon = XmlUtils.GetParamFromXmlString(n.SelectSingleNode("RangeWeapon"));
-            nameArmour = XmlUtils.GetParamFromXmlString(n.SelectSingleNode("Armour"));
+            nameMeleeWeapon = XmlUtils.GetString(n.SelectSingleNode("MeleeWeapon"));
+            nameRangeWeapon = XmlUtils.GetString(n.SelectSingleNode("RangeWeapon"));
+            nameArmour = XmlUtils.GetString(n.SelectSingleNode("Armour"));
 
             if (KindHero.Hired)
             {

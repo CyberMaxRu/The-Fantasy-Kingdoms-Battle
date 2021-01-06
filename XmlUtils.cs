@@ -13,16 +13,16 @@ namespace Fantasy_King_s_Battle
             if (nr != null)
             {
                 foreach (XmlNode r in nr.SelectNodes("Requirement"))
-                    list.Add(new Requirement(r.SelectSingleNode("Building").InnerText, GetParamFromXmlInteger(r.SelectSingleNode("Level"))));
+                    list.Add(new Requirement(r.SelectSingleNode("Building").InnerText, GetInteger(r.SelectSingleNode("Level"))));
             }
         }
 
-        internal static int GetParamFromXmlInteger(XmlNode n)
+        internal static int GetInteger(XmlNode n)
         {
             return n != null ? Convert.ToInt32(n.InnerText) : 0;
         }
 
-        internal static string GetParamFromXmlString(XmlNode n)
+        internal static string GetString(XmlNode n)
         {
             return n != null ? n.InnerText : "";
         }
@@ -35,12 +35,12 @@ namespace Fantasy_King_s_Battle
             return n.InnerText;
         }
 
-        internal static bool GetParamFromXmlBool(XmlNode n, bool defValue)
+        internal static bool GetBool(XmlNode n, bool defValue)
         {
             return n != null ? Convert.ToBoolean(n.InnerText) : defValue;
         }
 
-        internal static Double GetParamFromXmlDouble(XmlNode n)
+        internal static double GetDouble(XmlNode n)
         {
             return n != null ? Convert.ToDouble(n.InnerText.Replace(".", ",")) : 0;
         }

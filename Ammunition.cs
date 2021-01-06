@@ -23,9 +23,9 @@ namespace Fantasy_King_s_Battle
             TimeHit = Convert.ToInt32(n.SelectSingleNode("TimeHit").InnerText);
             if (n.SelectSingleNode("VelocityMissile") != null)
                 VelocityMissile = Convert.ToDouble(n.SelectSingleNode("VelocityMissile").InnerText.Replace(".", ","));
-            DamageMelee = XmlUtils.GetParamFromXmlInteger(n.SelectSingleNode("DamageMelee"));
-            DamageRange = XmlUtils.GetParamFromXmlInteger(n.SelectSingleNode("DamageArcher"));
-            DamageMagic = XmlUtils.GetParamFromXmlInteger(n.SelectSingleNode("DamageMagic"));
+            DamageMelee = XmlUtils.GetInteger(n.SelectSingleNode("DamageMelee"));
+            DamageRange = XmlUtils.GetInteger(n.SelectSingleNode("DamageArcher"));
+            DamageMagic = XmlUtils.GetInteger(n.SelectSingleNode("DamageMagic"));
 
             Debug.Assert(ID.Length > 0);
             Debug.Assert(nameClassHero.Length > 0);
@@ -137,9 +137,9 @@ namespace Fantasy_King_s_Battle
 
             ID = n.SelectSingleNode("ID").InnerText;
             nameClassHero = n.SelectSingleNode("Hero").InnerText;
-            DefenseMelee = XmlUtils.GetParamFromXmlInteger(n.SelectSingleNode("DefenseMelee"));
-            DefenseArcher = XmlUtils.GetParamFromXmlInteger(n.SelectSingleNode("DefenseArcher"));
-            DefenseMagic = XmlUtils.GetParamFromXmlInteger(n.SelectSingleNode("DefenseMagic"));
+            DefenseMelee = XmlUtils.GetInteger(n.SelectSingleNode("DefenseMelee"));
+            DefenseArcher = XmlUtils.GetInteger(n.SelectSingleNode("DefenseArcher"));
+            DefenseMagic = XmlUtils.GetInteger(n.SelectSingleNode("DefenseMagic"));
 
             Debug.Assert(ID.Length > 0);
             Debug.Assert(nameClassHero.Length > 0);

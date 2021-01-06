@@ -16,11 +16,11 @@ namespace Fantasy_King_s_Battle
         public MonsterLevelLair(XmlNode n)
         {
             idMonster = n.SelectSingleNode("ID").InnerText;
-            StartQuantity = XmlUtils.GetParamFromXmlInteger(n.SelectSingleNode("StartQuantity"));
-            MaxQuantity = XmlUtils.GetParamFromXmlInteger(n.SelectSingleNode("MaxQuantity"));
-            Level = XmlUtils.GetParamFromXmlInteger(n.SelectSingleNode("Level"));
-            DaysRespawn = XmlUtils.GetParamFromXmlInteger(n.SelectSingleNode("DaysRespawn"));
-            QuantityRespawn = XmlUtils.GetParamFromXmlInteger(n.SelectSingleNode("QuantityRespawn"));
+            StartQuantity = XmlUtils.GetInteger(n.SelectSingleNode("StartQuantity"));
+            MaxQuantity = XmlUtils.GetInteger(n.SelectSingleNode("MaxQuantity"));
+            Level = XmlUtils.GetInteger(n.SelectSingleNode("Level"));
+            DaysRespawn = XmlUtils.GetInteger(n.SelectSingleNode("DaysRespawn"));
+            QuantityRespawn = XmlUtils.GetInteger(n.SelectSingleNode("QuantityRespawn"));
 
             Debug.Assert(idMonster.Length > 0);
             Debug.Assert(StartQuantity >= 0);
@@ -54,7 +54,7 @@ namespace Fantasy_King_s_Battle
     {
         public RewardLevelLair(XmlNode n)
         {
-            Gold = XmlUtils.GetParamFromXmlInteger(n.SelectSingleNode("Gold"));
+            Gold = XmlUtils.GetInteger(n.SelectSingleNode("Gold"));
 
             Debug.Assert(Gold >= 0);
             Debug.Assert(Gold <= 50_000);
@@ -102,7 +102,7 @@ namespace Fantasy_King_s_Battle
             Name = n.SelectSingleNode("Name").InnerText;
             Description = n.SelectSingleNode("Description").InnerText.Replace("/", Environment.NewLine);
             ImageIndex = Convert.ToInt32(n.SelectSingleNode("ImageIndex").InnerText);
-            Line = XmlUtils.GetParamFromXmlInteger(n.SelectSingleNode("Line"));
+            Line = XmlUtils.GetInteger(n.SelectSingleNode("Line"));
 
             Debug.Assert(Line >= 1);
             Debug.Assert(Line <= 3);
