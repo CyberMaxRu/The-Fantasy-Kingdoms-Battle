@@ -56,6 +56,7 @@ namespace Fantasy_King_s_Battle
                 BackgroundImage = Program.formMain.bmpBackgroundButton,
                 ForeColor = Color.White
             };
+            btnSetAsTarget.FlatAppearance.BorderColor = FormMain.Config.CommonBorder;
             btnSetAsTarget.Click += BtnSetAsTarget_Click;
 
             Height = GuiUtils.NextTop(pbLair);// lblIncome. Top + lblIncome.Height + (Config.GRID_SIZE * 2);
@@ -115,7 +116,7 @@ namespace Fantasy_King_s_Battle
 
             lblName.Text = lair.Lair.Name;
             lblName.ForeColor = lair.Player.TargetLair == lair ? Color.OrangeRed : Color.Green;
-            btnSetAsTarget.FlatAppearance.BorderColor = lair.Player.TargetLair == lair ? Color.OrangeRed : Color.Black;
+            //btnSetAsTarget.FlatAppearance.BorderColor = lair.Player.TargetLair == lair ? Color.OrangeRed : Color.Black;
             pbLair.Image = GuiUtils.GetImageFromImageList(Program.formMain.ilLairs, lair.Lair.ImageIndex, true);
         }
 
