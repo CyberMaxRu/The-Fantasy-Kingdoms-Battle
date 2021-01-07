@@ -19,7 +19,6 @@ namespace Fantasy_King_s_Battle
             MaxLevel = Convert.ToInt32(n.SelectSingleNode("MaxLevel").InnerText);
             CategoryBuilding = (CategoryBuilding)Enum.Parse(typeof(CategoryBuilding), n.SelectSingleNode("CategoryBuilding").InnerText);
             TypeIncome = (TypeIncome)Enum.Parse(typeof(TypeIncome), n.SelectSingleNode("TypeIncome").InnerText);
-            Position = FormMain.Config.Buildings.Count;
             HasTreasury = Convert.ToBoolean(n.SelectSingleNode("HasTreasury").InnerText);
             GoldByConstruction = Convert.ToInt32(n.SelectSingleNode("GoldByConstruction").InnerText);
 
@@ -108,7 +107,6 @@ namespace Fantasy_King_s_Battle
 
         internal Level[] Levels;
         internal Research[,,] Researches;
-        internal int Position { get; }
         internal TypeHero TrainedHero { get; set; }
         internal bool HasTreasury { get; }// Имеет собственную казну
         internal int GoldByConstruction { get; }// Количество золота в казне при постройке
