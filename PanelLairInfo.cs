@@ -17,7 +17,7 @@ namespace Fantasy_King_s_Battle
         public PanelLairInfo(int height) : base(height)
         {
             pageControl.Top = pageControl.Top;
-            pageControl.AddPage("Жители", (int)IconPages.Inhabitants, panelInhabitants);
+            pageControl.AddPage("Существа", (int)IconPages.Inhabitants, panelInhabitants);
             pageControl.AddPage("История", (int)IconPages.History, null);
 
             pageControl.ApplyMinWidth();
