@@ -10,12 +10,12 @@ using System.Diagnostics;
 namespace Fantasy_King_s_Battle
 {
     // Класс вида горожанина - стражники, крестьяне
-    internal sealed class KindCitizen : TypeCreature
+    internal sealed class TypeCitizen : TypeCreature
     {
-        public KindCitizen(XmlNode n) : base(n)
+        public TypeCitizen(XmlNode n) : base(n)
         {
             // Проверяем, что таких же ID и наименования нет
-            foreach (KindCitizen kc in FormMain.Config.KindCitizens)
+            foreach (TypeCitizen kc in FormMain.Config.TypeCitizens)
             {
                 if (kc.ID == ID)
                 {

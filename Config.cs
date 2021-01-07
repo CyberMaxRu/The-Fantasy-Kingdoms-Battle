@@ -85,7 +85,7 @@ namespace Fantasy_King_s_Battle
                 Abilities.Add(new Ability(n));
             }
 
-            // Загрузка конфигурации типов юнитов
+            // Загрузка конфигурации типов существ
             xmlDoc = CreateXmlDocument("Config\\KindCreatures.xml");
 
             foreach (XmlNode n in xmlDoc.SelectNodes("/KindCreatures/KindCreature"))
@@ -94,11 +94,11 @@ namespace Fantasy_King_s_Battle
             }
 
             // Загрузка конфигурации горожан
-            xmlDoc = CreateXmlDocument("Config\\KindCitizens.xml");
+            xmlDoc = CreateXmlDocument("Config\\TypeCitizens.xml");
 
-            foreach (XmlNode n in xmlDoc.SelectNodes("/Citizens/Citizen"))
+            foreach (XmlNode n in xmlDoc.SelectNodes("/TypeCitizens/TypeCitizen"))
             {
-                KindCitizens.Add(new KindCitizen(n));
+                TypeCitizens.Add(new TypeCitizen(n));
             }
 
             // Загрузка конфигурации героев
@@ -127,7 +127,7 @@ namespace Fantasy_King_s_Battle
 
             // Составляем общий пул существ
             KindCreatures2.AddRange(KindHeroes);
-            KindCreatures2.AddRange(KindCitizens);
+            KindCreatures2.AddRange(TypeCitizens);
             KindCreatures2.AddRange(Monsters);
 
             // Настраиваем связи
@@ -171,7 +171,7 @@ namespace Fantasy_King_s_Battle
         internal List<Building> Buildings { get; } = new List<Building>();
         internal List<Ability> Abilities { get; } = new List<Ability>();
         internal List<KindCreature> KindCreatures { get; } = new List<KindCreature>();
-        internal List<KindCitizen> KindCitizens { get; } = new List<KindCitizen>();
+        internal List<TypeCitizen> TypeCitizens { get; } = new List<TypeCitizen>();
         internal List<KindHero> KindHeroes { get; } = new List<KindHero>();
         internal List<Item> Items { get; } = new List<Item>();
         internal List<GroupWeapon> GroupWeapons { get; } = new List<GroupWeapon>();

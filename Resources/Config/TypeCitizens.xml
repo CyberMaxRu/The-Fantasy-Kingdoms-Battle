@@ -1,24 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<KindCitizens>
-  <KindCitizen>
+<TypeCitizens>
+  <TypeCitizen>
     <ID>Peasant</ID>
     <Name>Крестьянин</Name>
     <Description>Это просто крестьяние, Сир. Они обучены строить и чинить здания.</Description>
     <ImageIndex>7</ImageIndex>
-    <TypeCreature>Human</TypeCreature>
+    <KindCreature>Human</KindCreature>
     <Reward>1</Reward>
     <Cost>0</Cost>
     <Building>House</Building>
     <MaxLevel>1</MaxLevel>
     <CanBuild>True</CanBuild>
     <DamageToCastle>0</DamageToCastle>
-  </KindCitizen>
-  <KindCitizen>
+  </TypeCitizen>
+  <TypeCitizen>
     <ID>Guardian</ID>
     <Name>Королевский гвардеец</Name>
     <Description>Королевские гвардейцы в меру своих сил охраняют покой короля.</Description>
     <ImageIndex>8</ImageIndex>
-    <TypeCreature>Human</TypeCreature>
+    <KindCreature>Human</KindCreature>
     <Reward>25</Reward>
     <Cost>0</Cost>
     <Building>Castle</Building>
@@ -35,13 +35,13 @@
       <CoefMana>1</CoefMana>
       <CoefStamina>4</CoefStamina>
     </BaseParameters>
-  </KindCitizen>
-  <KindCitizen>
+  </TypeCitizen>
+  <TypeCitizen>
     <ID>Miller</ID>
     <Name>Мельник</Name>
     <Description>Мельник работает на мельнице.</Description>
     <ImageIndex>9</ImageIndex>
-    <TypeCreature>Human</TypeCreature>
+    <KindCreature>Human</KindCreature>
     <Reward>1</Reward>
     <Cost>0</Cost>
     <Building>Mill</Building>
@@ -49,5 +49,5 @@
     <KindHero>NonCombatant</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>0</DamageToCastle>
-  </KindCitizen>
-</KindCitizens>
+  </TypeCitizen>
+</TypeCitizens>
