@@ -6,7 +6,7 @@ using System.Xml;
 namespace Fantasy_King_s_Battle
 {
     // Базовый тип существа
-    internal abstract class TypeCreature : Object
+    internal abstract class TypeCreature : TypeObject
     {
         public TypeCreature(XmlNode n) : base(n)
         {

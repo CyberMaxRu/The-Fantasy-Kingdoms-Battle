@@ -9,10 +9,10 @@ using System.Windows.Forms;
 
 namespace Fantasy_King_s_Battle
 {
-    // Базовый класс для всех объектов - зданий, логов, существ
-    internal abstract class Object
+    // Базовый тип для всех объектов - зданий, логов, существ
+    internal abstract class TypeObject
     {
-        public Object(XmlNode n)
+        public TypeObject(XmlNode n)
         {
             ID = XmlUtils.GetStringNotNull(n.SelectSingleNode("ID"));
             Name = XmlUtils.GetStringNotNull(n.SelectSingleNode("Name"));

@@ -73,7 +73,7 @@
     <Compile Include="TypeConstructionWithHero.cs" />
     <Compile Include="TypeConstructionOfKingdom.cs" />
     <Compile Include="TypeMonster.cs" />
-    <Compile Include="Object.cs" />
+    <Compile Include="TypeObject.cs" />
     <Compile Include="PanelLair.cs">
       <SubType>Component</SubType>
     </Compile>
