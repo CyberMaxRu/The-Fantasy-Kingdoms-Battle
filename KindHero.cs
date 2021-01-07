@@ -9,14 +9,14 @@ using System.Diagnostics;
 
 namespace Fantasy_King_s_Battle
 {
-    // Класс героя гильдии    
-    internal sealed class Hero : KindCreature
+    // Класс вида героя гильдии    
+    internal sealed class KindHero : KindCreature
     {
         private string nameMeleeWeapon;
         private string nameRangeWeapon;
         private string nameArmour;
 
-        public Hero(XmlNode n) : base(n)
+        public KindHero(XmlNode n) : base(n)
         {
             Cost = Convert.ToInt32(n.SelectSingleNode("Cost").InnerText);
             Building = FormMain.Config.FindBuilding(n.SelectSingleNode("Building").InnerText);
@@ -28,7 +28,7 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(DamageToCastle >= 0);
 
             // Проверяем, что таких же ID и наименования нет
-            foreach (Hero h in FormMain.Config.Heroes)
+            foreach (KindHero h in FormMain.Config.KindHeroes)
             {
                 if (h.ID == ID)
                 {

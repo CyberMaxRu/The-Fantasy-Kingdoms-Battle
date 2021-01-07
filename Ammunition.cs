@@ -40,7 +40,7 @@ namespace Fantasy_King_s_Battle
 
         internal string ID { get; }
         internal GroupWeapon GroupWeapon { get; }
-        internal Hero ClassHero { get; private set; }
+        internal KindHero ClassHero { get; private set; }
         internal int TimeHit { get; }
         internal double VelocityMissile { get; }
         internal int DamageMelee { get; }
@@ -153,7 +153,7 @@ namespace Fantasy_King_s_Battle
 
         internal string ID { get; }
         internal GroupArmour GroupArmour { get; }
-        internal Hero ClassHero { get; private set; }
+        internal KindHero ClassHero { get; private set; }
         internal int DefenseMelee { get; }
         internal int DefenseArcher { get; }
         internal int DefenseMagic { get; }

@@ -120,7 +120,7 @@ namespace Fantasy_King_s_Battle
         internal Level[] Levels;
         internal Research[,,] Researches;
         internal int Position { get; }
-        internal Hero TrainedHero { get; set; }
+        internal KindHero TrainedHero { get; set; }
         internal bool HasTreasury { get; }// Имеет собственную казну
         internal int GoldByConstruction { get; }// Количество золота в казне при постройке
         internal CategoryBuilding CategoryBuilding { get; }

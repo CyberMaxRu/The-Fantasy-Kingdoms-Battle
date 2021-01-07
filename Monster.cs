@@ -31,7 +31,7 @@ namespace Fantasy_King_s_Battle
                 }
             }
 
-            foreach (Hero h in FormMain.Config.Heroes)
+            foreach (KindHero h in FormMain.Config.KindHeroes)
             {
                 if (h.ID == ID)
                 {

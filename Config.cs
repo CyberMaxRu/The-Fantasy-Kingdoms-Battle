@@ -102,11 +102,11 @@ namespace Fantasy_King_s_Battle
             }
 
             // Загрузка конфигурации героев
-            xmlDoc = CreateXmlDocument("Config\\Heroes.xml");
+            xmlDoc = CreateXmlDocument("Config\\KindHeroes.xml");
 
             foreach (XmlNode n in xmlDoc.SelectNodes("/Heroes/Hero"))
             {
-                Heroes.Add(new Hero(n));
+                KindHeroes.Add(new KindHero(n));
             }
 
             // Загрузка монстров
@@ -126,7 +126,7 @@ namespace Fantasy_King_s_Battle
             }
 
             // Составляем общий пул существ
-            KindCreatures.AddRange(Heroes);
+            KindCreatures.AddRange(KindHeroes);
             KindCreatures.AddRange(KindCitizens);
             KindCreatures.AddRange(Monsters);
 
@@ -140,7 +140,7 @@ namespace Fantasy_King_s_Battle
             foreach (GroupArmour ga in GroupArmours)
                 ga.TuneDeferredLinks();
 
-            foreach (Hero h in Heroes)
+            foreach (KindHero h in KindHeroes)
                 h.TuneDeferredLinks();
 
             foreach (Building b in Buildings)
@@ -172,7 +172,7 @@ namespace Fantasy_King_s_Battle
         internal List<Ability> Abilities { get; } = new List<Ability>();
         internal List<TypeCreature> TypesCreatures { get; } = new List<TypeCreature>();
         internal List<KindCitizen> KindCitizens { get; } = new List<KindCitizen>();
-        internal List<Hero> Heroes { get; } = new List<Hero>();
+        internal List<KindHero> KindHeroes { get; } = new List<KindHero>();
         internal List<Item> Items { get; } = new List<Item>();
         internal List<GroupWeapon> GroupWeapons { get; } = new List<GroupWeapon>();
         internal List<GroupArmour> GroupArmours { get; } = new List<GroupArmour>();
@@ -288,9 +288,9 @@ namespace Fantasy_King_s_Battle
             throw new Exception("Здание " + ID + " не найдено.");
         }
 
-        internal Hero FindHero(string ID)
+        internal KindHero FindHero(string ID)
         {
-            foreach (Hero h in Heroes)
+            foreach (KindHero h in KindHeroes)
             {
                 if (h.ID == ID)
                     return h;

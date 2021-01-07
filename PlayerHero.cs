@@ -46,7 +46,7 @@ namespace Fantasy_King_s_Battle
 
         internal PlayerBuilding Building { get; }// Здание, которому принадлежит герой
         internal Player Player => Building.Player;// Игрок, которому принадлежит герой
-        internal Hero ClassHero => Building.Building.TrainedHero; // Класс героя
+        internal KindHero ClassHero => Building.Building.TrainedHero; // Класс героя
 
         // Основные параметры
         internal int Level { get; private set; }// Уровень героя
