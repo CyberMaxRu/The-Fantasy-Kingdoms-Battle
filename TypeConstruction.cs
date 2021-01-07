@@ -20,6 +20,11 @@ namespace Fantasy_King_s_Battle
 
             DefaultLevel = XmlUtils.GetInteger(n.SelectSingleNode("DefaultLevel"));
             Line = XmlUtils.GetInteger(n.SelectSingleNode("Line"));
+
+            Debug.Assert(DefaultLevel >= 0);
+            Debug.Assert(DefaultLevel <= 5);
+            Debug.Assert(Line >= 1);
+            Debug.Assert(Line <= 3);
         }
 
         internal string ID { get; }

@@ -94,30 +94,16 @@ namespace Fantasy_King_s_Battle
     }
 
     // Класс логова монстров
-    internal sealed class Lair
+    internal sealed class TypeLair : TypeConstruction
     {
-        public Lair(XmlNode n)
+        public TypeLair(XmlNode n) : base(n)
         {
-            ID = n.SelectSingleNode("ID").InnerText;
-            Name = n.SelectSingleNode("Name").InnerText;
-            Description = n.SelectSingleNode("Description").InnerText.Replace("/", Environment.NewLine);
-            ImageIndex = Convert.ToInt32(n.SelectSingleNode("ImageIndex").InnerText);
-            Line = XmlUtils.GetInteger(n.SelectSingleNode("Line"));
-
-            Debug.Assert(Line >= 1);
-            Debug.Assert(Line <= 3);
-
             // Проверяем, что таких же ID и наименования нет
-            foreach (Lair l in FormMain.Config.Lairs)
+            foreach (TypeLair tl in FormMain.Config.TypeLairs)
             {
-                if (l.ID == ID)
-                    throw new Exception("В конфигурации логов повторяется ID = " + ID);
-
-                if (l.Name == Name)
-                    throw new Exception("В конфигурации логов повторяется Name = " + Name);
-
-                if (l.ImageIndex == ImageIndex)
-                    throw new Exception("В конфигурации логов повторяется ImageIndex = " + ImageIndex.ToString());
+                Debug.Assert(tl.ID != ID);
+                Debug.Assert(tl.Name != Name);
+                Debug.Assert(tl.ImageIndex != ImageIndex);
             }
 
             // Загружаем информацию об уровнях
@@ -136,11 +122,6 @@ namespace Fantasy_King_s_Battle
             //    throw new Exception("В конфигурации логова у " + ID + " нет информации об уровнях. ");
         }
 
-        internal string ID { get; }
-        internal string Name { get; }
-        internal string Description { get; }
-        internal int ImageIndex { get; }
-        internal int Line { get; }
         internal List<LevelLair> LevelLairs { get; } = new List<LevelLair>();
         internal PanelLair Panel { get; set; }
 

@@ -1033,7 +1033,7 @@ namespace Fantasy_King_s_Battle
             {
                 left = 0;
 
-                foreach (Lair l in Config.Lairs)
+                foreach (TypeLair l in Config.TypeLairs)
                 {
                     if (l.Line == line)
                     {

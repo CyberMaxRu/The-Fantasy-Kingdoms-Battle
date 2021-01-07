@@ -152,7 +152,7 @@
     <Compile Include="Requirement.cs" />
     <Compile Include="Research.cs" />
     <Compile Include="Ammunition.cs" />
-    <Compile Include="Lair.cs" />
+    <Compile Include="TypeLair.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="TypeLobby.cs" />
     <Compile Include="Level.cs" />
@@ -216,7 +216,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Config\TypeCitizens.xml" />
-    <Content Include="Resources\Config\Lairs.xml" />
+    <Content Include="Resources\Config\TypeLairs.xml" />
     <Content Include="Resources\Config\TypeMonsters.xml" />
     <Content Include="Resources\Config\KindCreatures.xml" />
     <Content Include="Resources\Main.xml" />

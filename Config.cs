@@ -118,11 +118,11 @@ namespace Fantasy_King_s_Battle
             }
 
             // Загрузка логов монстров
-            xmlDoc = CreateXmlDocument("Config\\Lairs.xml");
+            xmlDoc = CreateXmlDocument("Config\\TypeLairs.xml");
 
-            foreach (XmlNode n in xmlDoc.SelectNodes("/Lairs/Lair"))
+            foreach (XmlNode n in xmlDoc.SelectNodes("/TypeLairs/TypeLair"))
             {
-                Lairs.Add(new Lair(n));
+                TypeLairs.Add(new TypeLair(n));
             }
 
             // Составляем общий пул существ
@@ -146,7 +146,7 @@ namespace Fantasy_King_s_Battle
             foreach (Building b in Buildings)
                 b.TuneResearches();
 
-            foreach (Lair l in Lairs)
+            foreach (TypeLair l in TypeLairs)
                 l.TuneDeferredLinks();
 
             // Загрузка навыков
@@ -179,7 +179,7 @@ namespace Fantasy_King_s_Battle
         internal List<Skill> Skills { get; } = new List<Skill>();
         internal int MaxLevelSkill { get; }
         internal List<TypeMonster> TypeMonsters { get; } = new List<TypeMonster>();
-        internal List<Lair> Lairs { get; } = new List<Lair>();
+        internal List<TypeLair> TypeLairs { get; } = new List<TypeLair>();
         internal List<TypeCreature> TypeCreatures { get; } = new List<TypeCreature>();
 
         // Константы

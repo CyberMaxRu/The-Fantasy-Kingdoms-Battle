@@ -38,7 +38,7 @@ namespace Fantasy_King_s_Battle
             }
 
             // Инициализация логов
-            foreach (Lair l in FormMain.Config.Lairs)
+            foreach (TypeLair l in FormMain.Config.TypeLairs)
             {
                 Lairs.Add(new PlayerLair(this, l));
             }

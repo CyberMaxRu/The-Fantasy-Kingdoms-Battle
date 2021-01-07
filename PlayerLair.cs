@@ -10,7 +10,7 @@ namespace Fantasy_King_s_Battle
     // Класс логова игрока
     internal sealed class PlayerLair
     {
-        public PlayerLair(Player p, Lair l)
+        public PlayerLair(Player p, TypeLair l)
         {
             Player = p;
             Lair = l;
@@ -22,7 +22,7 @@ namespace Fantasy_King_s_Battle
                 CreateMonsters();            
         }
         internal Player Player { get; }
-        internal Lair Lair { get; }
+        internal TypeLair Lair { get; }
         internal int Level { get; private set; }// Текущий уровень логова
         internal List<LairMonster> Monsters { get; } = new List<LairMonster>();// Монстры текущего уровня
 
