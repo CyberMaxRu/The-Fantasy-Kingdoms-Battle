@@ -17,20 +17,9 @@ namespace Fantasy_King_s_Battle
             // Проверяем, что таких же ID и наименования нет
             foreach (TypeCitizen kc in FormMain.Config.TypeCitizens)
             {
-                if (kc.ID == ID)
-                {
-                    throw new Exception("В конфигурации горожан повторяется ID = " + ID);
-                }
-
-                if (kc.Name == Name)
-                {
-                    throw new Exception("В конфигурации горожан повторяется Name = " + Name);
-                }
-
-                if (kc.ImageIndex == ImageIndex)
-                {
-                    throw new Exception("В конфигурации горожан повторяется ImageIndex = " + ImageIndex.ToString());
-                }
+                Debug.Assert(kc.ID != ID);
+                Debug.Assert(kc.Name != Name);
+                Debug.Assert(kc.ImageIndex != ImageIndex);
             }
         }
     }
