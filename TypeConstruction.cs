@@ -19,10 +19,14 @@ namespace Fantasy_King_s_Battle
             ImageIndex = XmlUtils.GetInteger(n.SelectSingleNode("ImageIndex"));
 
             DefaultLevel = XmlUtils.GetInteger(n.SelectSingleNode("DefaultLevel"));
+            MaxLevel = Convert.ToInt32(n.SelectSingleNode("MaxLevel").InnerText);
             Line = XmlUtils.GetInteger(n.SelectSingleNode("Line"));
 
             Debug.Assert(DefaultLevel >= 0);
             Debug.Assert(DefaultLevel <= 5);
+            Debug.Assert(MaxLevel > 0);
+            Debug.Assert(MaxLevel <= 5);
+            Debug.Assert(DefaultLevel <= MaxLevel);
             Debug.Assert(Line >= 1);
             Debug.Assert(Line <= 3);
         }
@@ -33,6 +37,7 @@ namespace Fantasy_King_s_Battle
         internal int ImageIndex { get; }
 
         internal int DefaultLevel { get; }
+        internal int MaxLevel { get; }
         internal int Line { get; }
     }
 }
