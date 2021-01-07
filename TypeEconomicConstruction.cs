@@ -9,7 +9,7 @@ using System.Diagnostics;
 namespace Fantasy_King_s_Battle
 {
     // Класс здания
-    internal sealed class TypeEconomicConstruction : TypeConstructionOfKingdom
+    internal sealed class TypeEconomicConstruction : TypeConstruction
     {
         public TypeEconomicConstruction(XmlNode n) : base(n)
         {

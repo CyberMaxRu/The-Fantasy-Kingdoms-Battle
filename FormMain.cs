@@ -994,11 +994,11 @@ namespace Fantasy_King_s_Battle
 
         private void DrawPageConstructions()
         {
-            DrawPage(pageGuilds, Config.TypeGuilds.ToList<TypeConstructionOfKingdom>());
-            DrawPage(pageBuildings, Config.TypeEconomicConstructions.ToList<TypeConstructionOfKingdom>());
-            DrawPage(pageTemples, Config.TypeTemples.ToList<TypeConstructionOfKingdom>());
+            DrawPage(pageGuilds, Config.TypeGuilds.ToList<TypeConstruction>());
+            DrawPage(pageBuildings, Config.TypeEconomicConstructions.ToList<TypeConstruction>());
+            DrawPage(pageTemples, Config.TypeTemples.ToList<TypeConstruction>());
 
-            void DrawPage(PanelPage panel, List<TypeConstructionOfKingdom> list)
+            void DrawPage(PanelPage panel, List<TypeConstruction> list)
             {
                 int top = 0;
                 int left;
@@ -1008,7 +1008,7 @@ namespace Fantasy_King_s_Battle
                 {
                     left = 0;
 
-                    foreach (TypeConstructionOfKingdom tck in list)
+                    foreach (TypeConstruction tck in list)
                     {
                         if (tck.Line == line)
                         {

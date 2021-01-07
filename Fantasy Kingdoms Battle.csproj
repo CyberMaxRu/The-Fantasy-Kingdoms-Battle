@@ -67,11 +67,11 @@
     <Compile Include="TypeCitizen.cs" />
     <Compile Include="Creature.cs" />
     <Compile Include="LairMonster.cs" />
-    <Compile Include="TypeConstruction.cs" />
+    <Compile Include="TypeMapObject.cs" />
     <Compile Include="TypeGuild.cs" />
     <Compile Include="TypeTemple.cs" />
     <Compile Include="TypeConstructionWithHero.cs" />
-    <Compile Include="TypeConstructionOfKingdom.cs" />
+    <Compile Include="TypeConstruction.cs" />
     <Compile Include="TypeMonster.cs" />
     <Compile Include="TypeObject.cs" />
     <Compile Include="PanelLair.cs">

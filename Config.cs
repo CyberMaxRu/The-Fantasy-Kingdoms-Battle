@@ -158,7 +158,7 @@ namespace Fantasy_King_s_Battle
             foreach (TypeHero h in TypeHeroes)
                 h.TuneDeferredLinks();
 
-            foreach (TypeConstruction tc in TypeConstructions)
+            foreach (TypeMapObject tc in TypeConstructions)
                 tc.TuneDeferredLinks();
 
             //foreach (TypeLair l in TypeLairs)
@@ -190,8 +190,8 @@ namespace Fantasy_King_s_Battle
         internal List<TypeEconomicConstruction> TypeEconomicConstructions { get; } = new List<TypeEconomicConstruction>();
         internal List<TypeTemple> TypeTemples { get; } = new List<TypeTemple>();
         internal List<TypeLair> TypeLairs { get; } = new List<TypeLair>();
-        internal List<TypeConstructionOfKingdom> TypeConstructionsOfKingdom { get; } = new List<TypeConstructionOfKingdom>();
-        internal List<TypeConstruction> TypeConstructions { get; } = new List<TypeConstruction>();
+        internal List<TypeConstruction> TypeConstructionsOfKingdom { get; } = new List<TypeConstruction>();
+        internal List<TypeMapObject> TypeConstructions { get; } = new List<TypeMapObject>();
 
         //
         internal List<Ability> Abilities { get; } = new List<Ability>();
@@ -298,9 +298,9 @@ namespace Fantasy_King_s_Battle
             throw new Exception("Навык " + ID + " не найден.");
         }
 
-        internal TypeConstructionOfKingdom FindTypeConstructionOfKingdom(string ID)
+        internal TypeConstruction FindTypeConstructionOfKingdom(string ID)
         {
-            foreach (TypeConstructionOfKingdom tck in TypeConstructionsOfKingdom)
+            foreach (TypeConstruction tck in TypeConstructionsOfKingdom)
             {
                 if (tck.ID == ID)
                     return tck;

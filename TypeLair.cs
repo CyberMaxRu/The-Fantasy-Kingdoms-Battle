@@ -94,7 +94,7 @@ namespace Fantasy_King_s_Battle
     }
 
     // Класс логова монстров
-    internal sealed class TypeLair : TypeConstruction
+    internal sealed class TypeLair : TypeMapObject
     {
         public TypeLair(XmlNode n) : base(n)
         {

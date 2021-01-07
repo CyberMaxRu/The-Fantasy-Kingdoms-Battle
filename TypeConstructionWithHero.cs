@@ -9,7 +9,7 @@ using System.Diagnostics;
 namespace Fantasy_King_s_Battle
 {
     // Тип здания с героями
-    internal abstract class TypeConstructionWithHero : TypeConstructionOfKingdom
+    internal abstract class TypeConstructionWithHero : TypeConstruction
     {
         public TypeConstructionWithHero(XmlNode n) : base(n)
         {

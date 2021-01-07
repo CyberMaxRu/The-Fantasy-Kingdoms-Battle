@@ -12,7 +12,7 @@ namespace Fantasy_King_s_Battle
     {
         private int gold;
 
-        public PlayerBuilding(Player p, TypeConstructionOfKingdom b)
+        public PlayerBuilding(Player p, TypeConstruction b)
         {
             Player = p;
             Building = b;
@@ -38,7 +38,7 @@ namespace Fantasy_King_s_Battle
         }
 
         internal Player Player { get; }
-        internal TypeConstructionOfKingdom Building { get; }
+        internal TypeConstruction Building { get; }
         internal int Level { get; private set; }
         internal int Gold { get => gold; set { Debug.Assert(Building.HasTreasury); gold = value; } }
         internal List<PlayerHero> Heroes { get; } = new List<PlayerHero>();

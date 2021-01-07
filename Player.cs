@@ -32,7 +32,7 @@ namespace Fantasy_King_s_Battle
             DurabilityCastle = Lobby.TypeLobby.DurabilityCastle;
 
             // Инициализация зданий
-            foreach (TypeConstructionOfKingdom tck in FormMain.Config.TypeConstructionsOfKingdom)
+            foreach (TypeConstruction tck in FormMain.Config.TypeConstructionsOfKingdom)
             {
                 Buildings.Add(new PlayerBuilding(this, tck));
             }
@@ -219,7 +219,7 @@ namespace Fantasy_King_s_Battle
         internal bool BattleCalced { get; set; }
         internal List<Battle> HistoryBattles { get; } = new List<Battle>();
 
-        internal PlayerBuilding GetPlayerBuilding(TypeConstructionOfKingdom b)
+        internal PlayerBuilding GetPlayerBuilding(TypeConstruction b)
         {
             Debug.Assert(b != null);
 
