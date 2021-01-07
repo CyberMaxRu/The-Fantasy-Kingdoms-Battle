@@ -8,7 +8,7 @@ using System.Diagnostics;
 
 namespace Fantasy_King_s_Battle
 {
-    internal sealed class Monster : KindCreature
+    internal sealed class Monster : KindCreature2
     {
         public Monster(XmlNode n) : base(n)
         {

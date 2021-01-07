@@ -86,11 +86,11 @@ namespace Fantasy_King_s_Battle
             }
 
             // Загрузка конфигурации типов юнитов
-            xmlDoc = CreateXmlDocument("Config\\TypeUnits.xml");
+            xmlDoc = CreateXmlDocument("Config\\KindCreatures.xml");
 
-            foreach (XmlNode n in xmlDoc.SelectNodes("/TypeUnits/TypeUnit"))
+            foreach (XmlNode n in xmlDoc.SelectNodes("/KindCreatures/KindCreature"))
             {
-                TypesCreatures.Add(new TypeCreature(n));
+                KindCreatures.Add(new KindCreature(n));
             }
 
             // Загрузка конфигурации горожан
@@ -126,9 +126,9 @@ namespace Fantasy_King_s_Battle
             }
 
             // Составляем общий пул существ
-            KindCreatures.AddRange(KindHeroes);
-            KindCreatures.AddRange(KindCitizens);
-            KindCreatures.AddRange(Monsters);
+            KindCreatures2.AddRange(KindHeroes);
+            KindCreatures2.AddRange(KindCitizens);
+            KindCreatures2.AddRange(Monsters);
 
             // Настраиваем связи
             foreach (Ability a in Abilities)
@@ -170,7 +170,7 @@ namespace Fantasy_King_s_Battle
         internal List<TypeLobby> TypeLobbies { get; } = new List<TypeLobby>();
         internal List<Building> Buildings { get; } = new List<Building>();
         internal List<Ability> Abilities { get; } = new List<Ability>();
-        internal List<TypeCreature> TypesCreatures { get; } = new List<TypeCreature>();
+        internal List<KindCreature> KindCreatures { get; } = new List<KindCreature>();
         internal List<KindCitizen> KindCitizens { get; } = new List<KindCitizen>();
         internal List<KindHero> KindHeroes { get; } = new List<KindHero>();
         internal List<Item> Items { get; } = new List<Item>();
@@ -180,7 +180,7 @@ namespace Fantasy_King_s_Battle
         internal int MaxLevelSkill { get; }
         internal List<Monster> Monsters { get; } = new List<Monster>();
         internal List<Lair> Lairs { get; } = new List<Lair>();
-        internal List<KindCreature> KindCreatures { get; } = new List<KindCreature>();
+        internal List<KindCreature2> KindCreatures2 { get; } = new List<KindCreature2>();
 
         // Константы
         internal int GridSize { get; private set; }// Размер ячейки сетки
@@ -321,9 +321,9 @@ namespace Fantasy_King_s_Battle
             throw new Exception("Предмет " + ID + " не найден.");
         }
 
-        internal TypeCreature FindTypeCreature(string ID)
+        internal KindCreature FindKindCreature(string ID)
         {
-            foreach (TypeCreature tu in TypesCreatures)
+            foreach (KindCreature tu in KindCreatures)
             {
                 if (tu.ID == ID)
                     return tu;
@@ -343,9 +343,9 @@ namespace Fantasy_King_s_Battle
             throw new Exception("Способность " + ID + " не найдена.");
         }
 
-        internal KindCreature FindUnit(string ID)
+        internal KindCreature2 FindUnit(string ID)
         {
-            foreach (KindCreature u in KindCreatures)
+            foreach (KindCreature2 u in KindCreatures2)
             {
                 if (u.ID == ID)
                     return u;

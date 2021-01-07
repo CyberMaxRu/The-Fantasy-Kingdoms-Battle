@@ -76,8 +76,8 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="PlayerLair.cs" />
-    <Compile Include="TypeCreature.cs" />
     <Compile Include="KindCreature.cs" />
+    <Compile Include="KindCreature2.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="FormAbout.cs">
@@ -217,7 +217,7 @@
     <Content Include="Resources\Config\KindCitizens.xml" />
     <Content Include="Resources\Config\Lairs.xml" />
     <Content Include="Resources\Config\Monsters.xml" />
-    <Content Include="Resources\Config\TypeUnits.xml" />
+    <Content Include="Resources\Config\KindCreatures.xml" />
     <Content Include="Resources\Main.xml" />
     <Content Include="Resources\Config\Game.xml" />
     <Content Include="Resources\Config\Abilities.xml" />

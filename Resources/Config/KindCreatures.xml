@@ -1,35 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<TypeUnits>
-  <TypeUnit>
+<KindCreatures>
+  <KindCreature>
     <ID>Human</ID>
     <Name>Человек</Name>
-  </TypeUnit>
-  <TypeUnit>
+  </KindCreature>
+  <KindCreature>
     <ID>Beast</ID>
     <Name>Зверь</Name>
-  </TypeUnit>
-  <TypeUnit>
+  </KindCreature>
+  <KindCreature>
     <ID>Undead</ID>
     <Name>Нежить</Name>
-  </TypeUnit>
-  <TypeUnit>
+  </KindCreature>
+  <KindCreature>
     <ID>Dwarf</ID>
     <Name>Гном</Name>
-  </TypeUnit>
-  <TypeUnit>
+  </KindCreature>
+  <KindCreature>
     <ID>Elf</ID>
     <Name>Эльф</Name>
-  </TypeUnit>
-  <TypeUnit>
+  </KindCreature>
+  <KindCreature>
     <ID>Minotaur</ID>
     <Name>Минотавр</Name>
-  </TypeUnit>
-  <TypeUnit>
+  </KindCreature>
+  <KindCreature>
     <ID>Ogre</ID>
     <Name>Огр</Name>
-  </TypeUnit>
-  <TypeUnit>
+  </KindCreature>
+  <KindCreature>
     <ID>Dragon</ID>
     <Name>Дракон</Name>
-  </TypeUnit>
-</TypeUnits>
+  </KindCreature>
+</KindCreatures>

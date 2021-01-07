@@ -10,7 +10,7 @@ using System.Diagnostics;
 namespace Fantasy_King_s_Battle
 {
     // Класс вида горожанина - стражники, крестьяне
-    internal sealed class KindCitizen : KindCreature
+    internal sealed class KindCitizen : KindCreature2
     {
         public KindCitizen(XmlNode n) : base(n)
         {
