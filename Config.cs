@@ -126,9 +126,9 @@ namespace Fantasy_King_s_Battle
             }
 
             // Составляем общий пул существ
-            KindCreatures2.AddRange(TypeHeroes);
-            KindCreatures2.AddRange(TypeCitizens);
-            KindCreatures2.AddRange(Monsters);
+            TypeCreatures.AddRange(TypeHeroes);
+            TypeCreatures.AddRange(TypeCitizens);
+            TypeCreatures.AddRange(Monsters);
 
             // Настраиваем связи
             foreach (Ability a in Abilities)
@@ -180,7 +180,7 @@ namespace Fantasy_King_s_Battle
         internal int MaxLevelSkill { get; }
         internal List<Monster> Monsters { get; } = new List<Monster>();
         internal List<Lair> Lairs { get; } = new List<Lair>();
-        internal List<TypeCreature> KindCreatures2 { get; } = new List<TypeCreature>();
+        internal List<TypeCreature> TypeCreatures { get; } = new List<TypeCreature>();
 
         // Константы
         internal int GridSize { get; private set; }// Размер ячейки сетки
@@ -343,15 +343,15 @@ namespace Fantasy_King_s_Battle
             throw new Exception("Способность " + ID + " не найдена.");
         }
 
-        internal TypeCreature FindUnit(string ID)
+        internal TypeCreature FindTypeCreature(string ID)
         {
-            foreach (TypeCreature u in KindCreatures2)
+            foreach (TypeCreature tc in TypeCreatures)
             {
-                if (u.ID == ID)
-                    return u;
+                if (tc.ID == ID)
+                    return tc;
             }
 
-            throw new Exception("Класс юнитов " + ID + " не найден.");
+            throw new Exception("Тип существ " + ID + " не найден.");
         }
 
         internal GroupWeapon FindGroupWeapon(string ID)

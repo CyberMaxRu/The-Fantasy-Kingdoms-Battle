@@ -123,7 +123,7 @@ namespace Fantasy_King_s_Battle
         internal void TuneDeferredLinks()
         {
             foreach (string nameHero in classesHeroesString)
-                ClassesHeroes.Add(FormMain.Config.FindUnit(nameHero));
+                ClassesHeroes.Add(FormMain.Config.FindTypeCreature(nameHero));
 
             classesHeroesString = null;
 
