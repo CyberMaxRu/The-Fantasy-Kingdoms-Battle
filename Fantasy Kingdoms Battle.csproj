@@ -198,9 +198,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="Font\Majesty.ttf" />
     <None Include="Font\Majesty2.otf" />
-    <None Include="Font\Majesty2.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -211,8 +209,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Font\FKB_Main.otf" />
-    <None Include="Resources\Font\FKB_Main.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
