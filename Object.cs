@@ -14,8 +14,8 @@ namespace Fantasy_King_s_Battle
     {
         public Object(XmlNode n)
         {
-            ID = n.SelectSingleNode("ID").InnerText;
-            Name = n.SelectSingleNode("Name").InnerText;
+            ID = XmlUtils.GetStringNotNull(n.SelectSingleNode("ID"));
+            Name = XmlUtils.GetStringNotNull(n.SelectSingleNode("Name"));
             Description = XmlUtils.GetDescription(n.SelectSingleNode("Description"));
             ImageIndex = XmlUtils.GetInteger(n.SelectSingleNode("ImageIndex"));
 
