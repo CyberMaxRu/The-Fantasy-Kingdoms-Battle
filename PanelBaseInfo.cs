@@ -25,6 +25,7 @@ namespace Fantasy_King_s_Battle
             lblName = new Label()
             {
                 Parent = this,
+                AutoSize = false,
                 Height = FormMain.Config.GridSize * 3,
                 Location = new Point(FormMain.Config.GridSize, FormMain.Config.GridSize),
                 Font = FormMain.Config.FontNamePage,
