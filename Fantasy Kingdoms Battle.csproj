@@ -112,7 +112,7 @@
       <DependentUpon>FormSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="GuiUtils.cs" />
-    <Compile Include="KindHero.cs" />
+    <Compile Include="TypeHero.cs" />
     <Compile Include="HeroInBattle.cs" />
     <Compile Include="MainConfig.cs" />
     <Compile Include="Missile.cs" />
@@ -225,7 +225,7 @@
     <Content Include="Resources\Config\Armours.xml" />
     <Content Include="Resources\Config\TypeLobby.xml" />
     <Content Include="Resources\Config\Items.xml" />
-    <Content Include="Resources\Config\KindHeroes.xml" />
+    <Content Include="Resources\Config\TypeHeroes.xml" />
     <Content Include="Resources\Config\Buildings.xml" />
     <Content Include="Resources\Config\Skills.xml" />
     <Content Include="Resources\Config\Settings.xml" />

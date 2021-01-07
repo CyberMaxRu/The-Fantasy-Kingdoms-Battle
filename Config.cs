@@ -102,11 +102,11 @@ namespace Fantasy_King_s_Battle
             }
 
             // Загрузка конфигурации героев
-            xmlDoc = CreateXmlDocument("Config\\KindHeroes.xml");
+            xmlDoc = CreateXmlDocument("Config\\TypeHeroes.xml");
 
-            foreach (XmlNode n in xmlDoc.SelectNodes("/Heroes/Hero"))
+            foreach (XmlNode n in xmlDoc.SelectNodes("/TypeHeroes/TypeHero"))
             {
-                KindHeroes.Add(new KindHero(n));
+                TypeHeroes.Add(new TypeHero(n));
             }
 
             // Загрузка монстров
@@ -126,7 +126,7 @@ namespace Fantasy_King_s_Battle
             }
 
             // Составляем общий пул существ
-            KindCreatures2.AddRange(KindHeroes);
+            KindCreatures2.AddRange(TypeHeroes);
             KindCreatures2.AddRange(TypeCitizens);
             KindCreatures2.AddRange(Monsters);
 
@@ -140,7 +140,7 @@ namespace Fantasy_King_s_Battle
             foreach (GroupArmour ga in GroupArmours)
                 ga.TuneDeferredLinks();
 
-            foreach (KindHero h in KindHeroes)
+            foreach (TypeHero h in TypeHeroes)
                 h.TuneDeferredLinks();
 
             foreach (Building b in Buildings)
@@ -172,7 +172,7 @@ namespace Fantasy_King_s_Battle
         internal List<Ability> Abilities { get; } = new List<Ability>();
         internal List<KindCreature> KindCreatures { get; } = new List<KindCreature>();
         internal List<TypeCitizen> TypeCitizens { get; } = new List<TypeCitizen>();
-        internal List<KindHero> KindHeroes { get; } = new List<KindHero>();
+        internal List<TypeHero> TypeHeroes { get; } = new List<TypeHero>();
         internal List<Item> Items { get; } = new List<Item>();
         internal List<GroupWeapon> GroupWeapons { get; } = new List<GroupWeapon>();
         internal List<GroupArmour> GroupArmours { get; } = new List<GroupArmour>();
@@ -288,9 +288,9 @@ namespace Fantasy_King_s_Battle
             throw new Exception("Здание " + ID + " не найдено.");
         }
 
-        internal KindHero FindHero(string ID)
+        internal TypeHero FindHero(string ID)
         {
-            foreach (KindHero h in KindHeroes)
+            foreach (TypeHero h in TypeHeroes)
             {
                 if (h.ID == ID)
                     return h;

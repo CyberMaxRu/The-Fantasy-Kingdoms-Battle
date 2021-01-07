@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Heroes>
-  <Hero>
+<TypeHeroes>
+  <TypeHero>
     <ID>Warrior</ID>
     <Name>Воин</Name>
     <Description>- Весьма вынослив/- В первую очередь выполняет задания атаки и защиты/- На 5-ом уровне учится отвлекать врагов на себя</Description>
@@ -46,8 +46,8 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-  </Hero>
-  <Hero>
+  </TypeHero>
+  <TypeHero>
     <ID>Rogue</ID>
     <Name>Разбойница</Name>
     <Description>- Любит деньги, охотно выполняет любые задания/- Умеет воровать/- Избегает серьезных боев</Description>
@@ -92,8 +92,8 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-  </Hero>
-  <Hero>
+  </TypeHero>
+  <TypeHero>
     <ID>Hunter</ID>
     <Name>Рейнджер</Name>
     <Description>- Любит выполнять задания исследования/- Лучше всего воюет против зверей</Description>
@@ -140,8 +140,8 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-  </Hero>
-  <Hero>
+  </TypeHero>
+  <TypeHero>
     <ID>Cleric</ID>
     <Name>Послушница</Name>
     <Description>- Умеет лечить/- Лучше всего воюет против нежити</Description>
@@ -186,8 +186,8 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-  </Hero>
-  <Hero>
+  </TypeHero>
+  <TypeHero>
     <ID>Mage</ID>
     <Name>Маг</Name>
     <Description>- Способен выучить множество разрушительных заклинаний/- Почти не защищен/- На 5-ом уровне изучает "Магический щит"</Description>
@@ -232,8 +232,8 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-  </Hero>
-  <Hero>
+  </TypeHero>
+  <TypeHero>
     <ID>Elf</ID>
     <Name>Эльфийка</Name>
     <Description>- Прекрасно стреляет из лука/- Самая быстрая из героев/- Не любит гномов</Description>
@@ -278,8 +278,8 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-  </Hero>
-  <Hero>
+  </TypeHero>
+  <TypeHero>
     <ID>Dwarf</ID>
     <Name>Гном</Name>
     <Description>- Обладает высоким сопротивлением магии/- В первую очередь выполняет задания атаки/- Умело рушит здания/- Не любит эльфов</Description>
@@ -323,8 +323,8 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-  </Hero>
-  <Hero>
+  </TypeHero>
+  <TypeHero>
     <ID>DarkPriest</ID>
     <Name>Сестра Крипты</Name>
     <Description>- Вызывает себе на помощь скелетов/- Любит выполнять задания атаки/- На 5-ом уровне изучает заклинание "Чума"/- С 10-го уровня призывает себе на помощь темных личей/- Не любит паладинов Дауроса</Description>
@@ -372,8 +372,8 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-  </Hero>
-  <Hero>
+  </TypeHero>
+  <TypeHero>
     <ID>Priest</ID>
     <Name>Жрица Агрелы</Name>
     <Description>- Умеет лечить/- Лучше всего воюет против нежити/- На 10-ом уровне изучает "Массовое лечение"</Description>
@@ -421,8 +421,8 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-  </Hero>
-  <Hero>
+  </TypeHero>
+  <TypeHero>
     <ID>Paladin</ID>
     <Name>Паладин</Name>
     <Description>- Самый выносливый из героев/- Не знает страха/- На 5-ом уровне изучает заклинание "Святая защита"/- На 10-ом уровне изучает "Священный удар"/- Умеет отвлекать врагов на себя/- Не любит нежить, вызванную сестрами Крипты</Description>
@@ -470,8 +470,8 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-  </Hero>
-  <Hero>
+  </TypeHero>
+  <TypeHero>
     <ID>BladeMaster</ID>
     <Name>Мастер меча</Name>
     <Description>- Обладает самым сильным ударом/- Любит выполнять задания атаки/- На 5-ом уровне изучает "Калечащий удар"/- На 10-ом уровне изучает "Ураган клинков"/- Умеет отвлекать врагов на себя</Description>
@@ -519,8 +519,8 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-  </Hero>
-  <Hero>
+  </TypeHero>
+  <TypeHero>
     <ID>BeastMaster</ID>
     <Name>Зверолов</Name>
     <Description>- Вызывает себе на помощь волков Фервуса/- Любит выполнять задания исследования/- На 5-ом уровне изучает способность "Звериная ярость"/- С 10-го уровня призывает себе на помощь медведей Хаоса</Description>
@@ -569,8 +569,8 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-  </Hero>
-  <Hero>
+  </TypeHero>
+  <TypeHero>
     <ID>Marksman</ID>
     <Name>Лучник Хелии</Name>
     <Description>- Лучший из стрелков/- Любит выполнять задания исследования/- На 5-ом уровне изучает "Смертельный выстрел"/- На 10-ом уровне изучает заклинание "Солнечная стрела"</Description>
@@ -619,8 +619,8 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-  </Hero>
-  <Hero>
+  </TypeHero>
+  <TypeHero>
     <ID>FireMage</ID>
     <Name>Маг Огня</Name>
     <Description>- Способен выучить множество заклинаний/- Почти не защищен/- На 5-ом уровне изучает "Магический щит"</Description>
@@ -668,8 +668,8 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-  </Hero>
-  <Hero>
+  </TypeHero>
+  <TypeHero>
     <ID>IceMage</ID>
     <Name>Маг Холода</Name>
     <Description>- Любит выполнять задания атаки/- Знает множество разрушительных заклинаний/- На 5-ом уровне изучает заклинания "Заморозка" и "Щит Холода"/- На 10-ом уровне изучает заклинание "Гнев Холода"</Description>
@@ -717,8 +717,8 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-  </Hero>
-  <Hero>
+  </TypeHero>
+  <TypeHero>
     <ID>DeathKnight</ID>
     <Name>Ассасин</Name>
     <Description>- Любит деньги, охотно выполняет любые задания/- Умеет воровать/- На 5-ом уровне изучает "Умелое оглушение"/- На 10-ом уровне изучает "Черный яд"</Description>
@@ -766,5 +766,5 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-  </Hero>
-</Heroes>
+  </TypeHero>
+</TypeHeroes>
