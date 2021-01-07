@@ -110,11 +110,11 @@ namespace Fantasy_King_s_Battle
             }
 
             // Загрузка монстров
-            xmlDoc = CreateXmlDocument("Config\\Monsters.xml");
+            xmlDoc = CreateXmlDocument("Config\\TypeMonsters.xml");
 
-            foreach (XmlNode n in xmlDoc.SelectNodes("/Monsters/Monster"))
+            foreach (XmlNode n in xmlDoc.SelectNodes("/TypeMonsters/TypeMonster"))
             {
-                Monsters.Add(new Monster(n));
+                TypeMonsters.Add(new TypeMonster(n));
             }
 
             // Загрузка логов монстров
@@ -128,7 +128,7 @@ namespace Fantasy_King_s_Battle
             // Составляем общий пул существ
             TypeCreatures.AddRange(TypeHeroes);
             TypeCreatures.AddRange(TypeCitizens);
-            TypeCreatures.AddRange(Monsters);
+            TypeCreatures.AddRange(TypeMonsters);
 
             // Настраиваем связи
             foreach (Ability a in Abilities)
@@ -178,7 +178,7 @@ namespace Fantasy_King_s_Battle
         internal List<GroupArmour> GroupArmours { get; } = new List<GroupArmour>();
         internal List<Skill> Skills { get; } = new List<Skill>();
         internal int MaxLevelSkill { get; }
-        internal List<Monster> Monsters { get; } = new List<Monster>();
+        internal List<TypeMonster> TypeMonsters { get; } = new List<TypeMonster>();
         internal List<Lair> Lairs { get; } = new List<Lair>();
         internal List<TypeCreature> TypeCreatures { get; } = new List<TypeCreature>();
 
@@ -288,26 +288,26 @@ namespace Fantasy_King_s_Battle
             throw new Exception("Здание " + ID + " не найдено.");
         }
 
-        internal TypeHero FindHero(string ID)
+        internal TypeHero FindTypeHero(string ID)
         {
-            foreach (TypeHero h in TypeHeroes)
+            foreach (TypeHero th in TypeHeroes)
             {
-                if (h.ID == ID)
-                    return h;
+                if (th.ID == ID)
+                    return th;
             }
 
             throw new Exception("Герой " + ID + " не найден.");
         }
 
-        internal Monster FindMonster(string ID)
+        internal TypeMonster FindTypeMonster(string ID)
         {
-            foreach (Monster m in Monsters)
+            foreach (TypeMonster tm in TypeMonsters)
             {
-                if (m.ID == ID)
-                    return m;
+                if (tm.ID == ID)
+                    return tm;
             }
 
-            throw new Exception("Монстр " + ID + " не найден.");
+            throw new Exception("Тип монстра " + ID + " не найден.");
         }
 
         internal Item FindItem(string ID)
@@ -329,7 +329,7 @@ namespace Fantasy_King_s_Battle
                     return tu;
             }
 
-            throw new Exception("Тип юнита " + ID + " не найден.");
+            throw new Exception("Вид существа " + ID + " не найден.");
         }
 
         internal Ability FindAbility(string ID)

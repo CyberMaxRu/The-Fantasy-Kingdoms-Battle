@@ -13,7 +13,7 @@ namespace Fantasy_King_s_Battle
     {
         private PanelEntity panelEntity;
 
-        public LairMonster(Monster m, int level)
+        public LairMonster(TypeMonster m, int level)
         {
             Debug.Assert(m != null);
             Debug.Assert(level > 0);
@@ -22,7 +22,7 @@ namespace Fantasy_King_s_Battle
 
         }
 
-        internal Monster Monster { get; }
+        internal TypeMonster Monster { get; }
 
         // Реализация интерфейса
         PanelEntity ICell.Panel

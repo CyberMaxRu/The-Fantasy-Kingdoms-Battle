@@ -67,7 +67,7 @@
     <Compile Include="TypeCitizen.cs" />
     <Compile Include="Creature.cs" />
     <Compile Include="LairMonster.cs" />
-    <Compile Include="Monster.cs" />
+    <Compile Include="TypeMonster.cs" />
     <Compile Include="Object.cs" />
     <Compile Include="PanelLair.cs">
       <SubType>Component</SubType>
@@ -216,7 +216,7 @@
   <ItemGroup>
     <Content Include="Resources\Config\TypeCitizens.xml" />
     <Content Include="Resources\Config\Lairs.xml" />
-    <Content Include="Resources\Config\Monsters.xml" />
+    <Content Include="Resources\Config\TypeMonsters.xml" />
     <Content Include="Resources\Config\KindCreatures.xml" />
     <Content Include="Resources\Main.xml" />
     <Content Include="Resources\Config\Game.xml" />

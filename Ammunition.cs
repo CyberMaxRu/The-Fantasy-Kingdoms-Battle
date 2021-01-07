@@ -49,7 +49,7 @@ namespace Fantasy_King_s_Battle
 
         internal void TuneDeferredLinks()
         {
-            ClassHero = FormMain.Config.FindHero(nameClassHero);
+            ClassHero = FormMain.Config.FindTypeHero(nameClassHero);
             nameClassHero = null;
         }
 
@@ -160,7 +160,7 @@ namespace Fantasy_King_s_Battle
 
         internal void TuneDeferredLinks()
         {
-            ClassHero = FormMain.Config.FindHero(nameClassHero);
+            ClassHero = FormMain.Config.FindTypeHero(nameClassHero);
             nameClassHero = null;
         }
 

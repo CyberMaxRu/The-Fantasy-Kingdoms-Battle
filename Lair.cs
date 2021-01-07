@@ -33,7 +33,7 @@ namespace Fantasy_King_s_Battle
             //Debug.Assert(QuantityRespawn <= 49);
         }
 
-        internal Monster Monster { get; private set; }
+        internal TypeMonster Monster { get; private set; }
         internal int StartQuantity { get; }
         internal int MaxQuantity { get; }
         internal int Level { get; }
@@ -43,7 +43,7 @@ namespace Fantasy_King_s_Battle
 
         internal void TuneDeferredLinks()
         {
-            Monster = FormMain.Config.FindMonster(idMonster);
+            Monster = FormMain.Config.FindTypeMonster(idMonster);
             idMonster = null;
             Debug.Assert(Level <= Monster.MaxLevel);
         }

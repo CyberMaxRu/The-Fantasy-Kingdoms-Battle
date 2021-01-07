@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Monsters>
-  <Monster>
+<TypeMonsters>
+  <TypeMonster>
     <ID>Zombie</ID>
     <Name>Зомби</Name>
     <Description>Зомби - любимые игрушки некромантов. Зомби весьма сильны, но очень медлительны. Основной прием самозащиты от зомби - бег трусцой.</Description>
@@ -34,8 +34,8 @@
     <Abilities>
       <Ability>ZombieBasicAttack</Ability>
     </Abilities>
-  </Monster>
-  <Monster>
+  </TypeMonster>
+  <TypeMonster>
     <ID>Skelet</ID>
     <Name>Скелет</Name>
     <Description>Эти ожившие кости движимы черной магией неизвестного происхождения.</Description>
@@ -69,8 +69,8 @@
     <Abilities>
       <Ability>SkeletBasicAttack</Ability>
     </Abilities>
-  </Monster>
-  <Monster>
+  </TypeMonster>
+  <TypeMonster>
     <ID>SkeletArcher</ID>
     <Name>Скелет-лучник</Name>
     <Description>Скелет лучника - прекрасная анатомическая модель. Жаль, что подойти к ней не так-то просто, а убежать от неё еще труднее.</Description>
@@ -104,8 +104,8 @@
     <Abilities>
       <Ability>SkeletArcherBasicAttack</Ability>
     </Abilities>
-  </Monster>
-  <Monster>
+  </TypeMonster>
+  <TypeMonster>
     <ID>SkeletVeteran</ID>
     <Name>Скелет ветерана</Name>
     <Description>Скелет ветеран не потерял ни капли своего боевого опыта потому гораздо опаснее обычного скелета.</Description>
@@ -139,8 +139,8 @@
     <Abilities>
       <Ability>SkeletVeteranBasicAttack</Ability>
     </Abilities>
-  </Monster>
-  <Monster>
+  </TypeMonster>
+  <TypeMonster>
     <ID>SkeletSniper</ID>
     <Name>Скелет-снайпер</Name>
     <Description>Этот стрелок-снайпер с веками нисколько не потерял, а скорее приобрез заметную "смертельность".</Description>
@@ -174,8 +174,8 @@
     <Abilities>
       <Ability>SkeletSniperBasicAttack</Ability>
     </Abilities>
-  </Monster>
-  <Monster>
+  </TypeMonster>
+  <TypeMonster>
     <ID>Ghost</ID>
     <Name>Призрак</Name>
     <Description>Прозрачные, почти незаметные духи павших героев после смерти дают волю накопленным при жизни обидам и принимаются мстить живым.</Description>
@@ -209,8 +209,8 @@
     <Abilities>
       <Ability>GhostBasicAttack</Ability>
     </Abilities>
-  </Monster>
-  <Monster>
+  </TypeMonster>
+  <TypeMonster>
     <ID>Lich</ID>
     <Name>Лич</Name>
     <Description>Лич - это, как правило, могущественный маг, ставший еще более могущественным после смерти.</Description>
@@ -244,8 +244,8 @@
     <Abilities>
       <Ability>LichBasicAttack</Ability>
     </Abilities>
-  </Monster>
-  <Monster>
+  </TypeMonster>
+  <TypeMonster>
     <ID>Vampire</ID>
     <Name>Вампир</Name>
     <Description>Вампиры - древний вид, вымирающий вот уже несколько тысяч лет. Носят черное, потому что цвета темнее ещё не придумали, из напитков предпочитают свежую человеческую кровь. С предубеждением относятся к чесноку, серебру, осиновым колам и яркому солнцу.</Description>
@@ -279,8 +279,8 @@
     <Abilities>
       <Ability>VampireAttack</Ability>
     </Abilities>
-  </Monster>
-  <Monster>
+  </TypeMonster>
+  <TypeMonster>
     <ID>AncientLich</ID>
     <Name>Древний лич</Name>
     <Description>Это один из темных магов, которыми так богата древняя история Ардании. Его особенность лишь в том, что этот сумел возродиться и, похоже, ничуть не потерял в своей силе, хотя и похудел изрядно.</Description>
@@ -314,8 +314,8 @@
     <Abilities>
       <Ability>LichBasicAttack</Ability>
     </Abilities>
-  </Monster>
-  <Monster>
+  </TypeMonster>
+  <TypeMonster>
     <ID>Wolf</ID>
     <Name>Волк</Name>
     <Description>Волки - такая же привычная часть пейзажа в лесах Ардании, как, скажем, деревья. Но деревья, в отличие от волков, не грызут героев и простой люд.</Description>
@@ -349,8 +349,8 @@
     <Abilities>
       <Ability>WolfBasicAttack</Ability>
     </Abilities>
-  </Monster>
-  <Monster>
+  </TypeMonster>
+  <TypeMonster>
     <ID>OldWolf</ID>
     <Name>Старый волк</Name>
     <Description>Старый волк сильнее, хитрее и опасней своих "зеленых" сородичей. С возрастом его зубы становятся крепче, а клыки - острее.</Description>
@@ -384,8 +384,8 @@
     <Abilities>
       <Ability>WolfBasicAttack</Ability>
     </Abilities>
-  </Monster>
-  <Monster>
+  </TypeMonster>
+  <TypeMonster>
     <ID>Serpent</ID>
     <Name>Змей</Name>
     <Description>Говорят, именно летающие змеи виновны в исчезновении героев, забредающих слишком далеко от своих гильдий.</Description>
@@ -419,8 +419,8 @@
     <Abilities>
       <Ability>SerpentBasicAttack</Ability>
     </Abilities>
-  </Monster>
-  <Monster>
+  </TypeMonster>
+  <TypeMonster>
     <ID>Bear</ID>
     <Name>Медведь</Name>
     <Description>Медведи любят полакомиться заблудившимися героями, приблизившимися к берлоге.</Description>
@@ -454,8 +454,8 @@
     <Abilities>
       <Ability>BearBasicAttack</Ability>
     </Abilities>
-  </Monster>
-  <Monster>
+  </TypeMonster>
+  <TypeMonster>
     <ID>GreatBear</ID>
     <Name>Великий медведь</Name>
     <Description>Это агрессивный и жестокий хищник. Великий медведь может разодрать в клочья даже героя, защищенного крепким доспехом!</Description>
@@ -489,8 +489,8 @@
     <Abilities>
       <Ability>BearBasicAttack</Ability>
     </Abilities>
-  </Monster>
-  <Monster>
+  </TypeMonster>
+  <TypeMonster>
     <ID>WerewolfBear</ID>
     <Name>Медведь-оборотень</Name>
     <Description>Огромный прямоходящий медведь - гроза всех четверолапых Ардании. Любит полакомиться героями, но не брезгует и простыми крестьянами.</Description>
@@ -524,8 +524,8 @@
     <Abilities>
       <Ability>WerewolfBearBasicAttack</Ability>
     </Abilities>
-  </Monster>
-  <Monster>
+  </TypeMonster>
+  <TypeMonster>
     <ID>Minotaur</ID>
     <Name>Минотавр</Name>
     <Description>Огромные полулюди-полубыки, обожающие сеять разрушение и смерть. В малом количестве они не очень опасны, но стадо минотавров способно сровнять с землей небольшое королевство.</Description>
@@ -559,8 +559,8 @@
     <Abilities>
       <Ability>MinotaurBasicAttack</Ability>
     </Abilities>
-  </Monster>
-  <Monster>
+  </TypeMonster>
+  <TypeMonster>
     <ID>BlackMinotaur</ID>
     <Name>Черный минотавр</Name>
     <Description>Черные минотавры еще свирепей и опасней своих менее загорелых собратьев.</Description>
@@ -594,8 +594,8 @@
     <Abilities>
       <Ability>MinotaurBasicAttack</Ability>
     </Abilities>
-  </Monster>
-  <Monster>
+  </TypeMonster>
+  <TypeMonster>
     <ID>Ogre</ID>
     <Name>Огр</Name>
     <Description>Огры-людоеды знамениты своими размерами, силой и привычкой ложиться спать в самых неожиданных местах.</Description>
@@ -629,8 +629,8 @@
     <Abilities>
       <Ability>OgreBasicAttack</Ability>
     </Abilities>
-  </Monster>
-  <Monster>
+  </TypeMonster>
+  <TypeMonster>
     <ID>GrendarOgre</ID>
     <Name>Грендар Огр</Name>
     <Description>Грендар - самый большой, самый сильный и самый ленивый из огров. Больше всего любит с большим шумом разрушать здания, а то и целые деревни.</Description>
@@ -664,8 +664,8 @@
     <Abilities>
       <Ability>OgreBasicAttack</Ability>
     </Abilities>
-  </Monster>
-  <Monster>
+  </TypeMonster>
+  <TypeMonster>
     <ID>Werewolf</ID>
     <Name>Волколак</Name>
     <Description>Волколак - это человек, зараженный редким вирусом ликантропии. Всем известно, что излечить его измученное тело и спасти заблудшую душу можно, лишь убив его. Такое лечение опасно - немало "докторов" теперь сами воют на луну по ночам.</Description>
@@ -699,8 +699,8 @@
     <Abilities>
       <Ability>WerewolfBasicAttack</Ability>
     </Abilities>
-  </Monster>
-  <Monster>
+  </TypeMonster>
+  <TypeMonster>
     <ID>Dragon</ID>
     <Name>Дракон</Name>
     <Description>Гадалки Ардании говорят, что встретить дракона, знак крылатой смерти, - дурная примета. Сулит огромные потери. Тот, кто увидит дракона должен будет в ближайшем будущем принять решительные и активные действия, возможно, у него появится тяга к перемене мест или он станет глубоко верующим человеком.</Description>
@@ -734,5 +734,5 @@
     <Abilities>
       <Ability>DragonBasicAttack</Ability>
     </Abilities>
-  </Monster>
-</Monsters>
+  </TypeMonster>
+</TypeMonsters>
