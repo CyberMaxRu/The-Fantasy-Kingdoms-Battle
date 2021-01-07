@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace Fantasy_King_s_Battle
 {
-    // Базовый класс для всех объектов - зданий, логов, юнитов
+    // Базовый класс для всех объектов - зданий, логов, существ
     internal abstract class Object
     {
         public Object(XmlNode n)
