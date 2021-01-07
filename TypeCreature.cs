@@ -1,19 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Xml;
 
 namespace Fantasy_King_s_Battle
 {
-    // Базовый класс для всех юнитов
-    internal abstract class KindCreature2 : Object
+    // Базовый тип существа
+    internal abstract class TypeCreature : Object
     {
-        public KindCreature2(XmlNode n) : base(n)
+        public TypeCreature(XmlNode n) : base(n)
         {
-            KindCreature = FormMain.Config.FindKindCreature(n.SelectSingleNode("KindCreature").InnerText);
+            KindCreature = FormMain.Config.FindKindCreature(XmlUtils.GetStringNotNull(n.SelectSingleNode("KindCreature"));
             MaxLevel = XmlUtils.GetInteger(n.SelectSingleNode("MaxLevel"));
             DefaultPositionPriority = XmlUtils.GetInteger(n.SelectSingleNode("DefaultPositionPriority"));
             Reward = XmlUtils.GetInteger(n.SelectSingleNode("Reward"));
@@ -58,11 +55,11 @@ namespace Fantasy_King_s_Battle
         }
 
         internal KindCreature KindCreature { get; }// Вид существа
-        internal int Reward { get; }// Награда за убийство юнита
-        internal int MaxLevel { get; }// Максимальный уровень юнита
-        internal HeroParameters ParametersByHire { get; }// Параметры при создании юнита
+        internal int Reward { get; }// Награда за убийство существа
+        internal int MaxLevel { get; }// Максимальный уровень существа
+        internal HeroParameters ParametersByHire { get; }// Параметры при создании существа
         internal ConfigNextLevelHero ConfigNextLevel { get; }
-        internal List<Ability> Abilities { get; } = new List<Ability>();// Способности юнита
+        internal List<Ability> Abilities { get; } = new List<Ability>();// Способности существа
         internal int DefaultPositionPriority { get; private set; }// Приоритет расположения на поле боя по умолчанию
     }
 }

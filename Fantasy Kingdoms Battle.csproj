@@ -77,7 +77,7 @@
     </Compile>
     <Compile Include="PlayerLair.cs" />
     <Compile Include="KindCreature.cs" />
-    <Compile Include="KindCreature2.cs" />
+    <Compile Include="TypeCreature.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="FormAbout.cs">
