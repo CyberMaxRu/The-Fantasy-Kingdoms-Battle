@@ -64,6 +64,7 @@
     <Compile Include="Battlefield.cs" />
     <Compile Include="BattlefieldTile.cs" />
     <Compile Include="Building.cs" />
+    <Compile Include="KindCitizen.cs" />
     <Compile Include="Creature.cs" />
     <Compile Include="LairMonster.cs" />
     <Compile Include="Monster.cs" />
@@ -113,7 +114,6 @@
     <Compile Include="GuiUtils.cs" />
     <Compile Include="Hero.cs" />
     <Compile Include="HeroInBattle.cs" />
-    <Compile Include="KindHero.cs" />
     <Compile Include="MainConfig.cs" />
     <Compile Include="Missile.cs" />
     <Compile Include="PageControl.cs">
@@ -214,6 +214,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Config\KindCitizens.xml" />
     <Content Include="Resources\Config\Lairs.xml" />
     <Content Include="Resources\Config\Monsters.xml" />
     <Content Include="Resources\Config\TypeUnits.xml" />
@@ -222,7 +223,6 @@
     <Content Include="Resources\Config\Abilities.xml" />
     <Content Include="FKS.ico" />
     <Content Include="Resources\Config\Armours.xml" />
-    <Content Include="Resources\Config\KindHeroes.xml" />
     <Content Include="Resources\Config\TypeLobby.xml" />
     <Content Include="Resources\Config\Items.xml" />
     <Content Include="Resources\Config\Heroes.xml" />

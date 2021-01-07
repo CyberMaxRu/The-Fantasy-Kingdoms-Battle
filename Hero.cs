@@ -21,7 +21,6 @@ namespace Fantasy_King_s_Battle
             Cost = Convert.ToInt32(n.SelectSingleNode("Cost").InnerText);
             Building = FormMain.Config.FindBuilding(n.SelectSingleNode("Building").InnerText);
             Building.TrainedHero = this;
-            KindHero = FormMain.Config.FindKindHero(n.SelectSingleNode("KindHero").InnerText);
             CanBuild = Convert.ToBoolean(n.SelectSingleNode("CanBuild").InnerText);
             DamageToCastle = Convert.ToInt32(n.SelectSingleNode("DamageToCastle").InnerText);
 
@@ -46,7 +45,7 @@ namespace Fantasy_King_s_Battle
                     throw new Exception("В конфигурации героев повторяется ImageIndex = " + ImageIndex.ToString());
                 }
 
-                if (KindHero.Hired && (h.DefaultPositionPriority == DefaultPositionPriority))
+                if (h.DefaultPositionPriority == DefaultPositionPriority)
                 {
                     throw new Exception("У героя " + h.Name + " уже указан приоритет " + DefaultPositionPriority.ToString());
                 }
@@ -57,15 +56,8 @@ namespace Fantasy_King_s_Battle
             nameRangeWeapon = XmlUtils.GetString(n.SelectSingleNode("RangeWeapon"));
             nameArmour = XmlUtils.GetString(n.SelectSingleNode("Armour"));
 
-            if (KindHero.Hired)
-            {
-                Debug.Assert(nameMeleeWeapon != "");
-                Debug.Assert(nameArmour != "");
-            }
-            else
-            {
-                Debug.Assert(DefaultPositionPriority == 0);
-            }
+            Debug.Assert(nameMeleeWeapon != "");
+            Debug.Assert(nameArmour != "");
 
             // Загружаем информацию о переносимых предметах
             XmlNode nc = n.SelectSingleNode("CarryItems");
@@ -89,16 +81,10 @@ namespace Fantasy_King_s_Battle
                     CarryItems.Add(item, maxQuantity);
                 }
             }
-            else
-            {
-                Debug.Assert(KindHero.Hired == false);
-            }
-
         }
 
         internal int Cost { get; }
         internal Building Building { get; }
-        internal KindHero KindHero { get; }
         internal bool CanBuild { get; }
         internal int DamageToCastle { get; }
         internal Weapon WeaponMelee { get; private set; }// Рукопашное оружие

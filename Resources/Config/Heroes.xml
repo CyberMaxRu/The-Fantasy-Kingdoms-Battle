@@ -10,7 +10,6 @@
     <Cost>200</Cost>
     <Building>GuildWarrior</Building>
     <MaxLevel>100</MaxLevel>
-    <KindHero>Melee</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
     <MeleeWeapon>WeaponWarrior0</MeleeWeapon>
@@ -58,7 +57,6 @@
     <Cost>100</Cost>
     <Building>GuildRogue</Building>
     <MaxLevel>100</MaxLevel>
-    <KindHero>Melee</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
     <MeleeWeapon>WeaponRogue0</MeleeWeapon>
@@ -105,7 +103,6 @@
     <Cost>150</Cost>
     <Building>GuildHunter</Building>
     <MaxLevel>100</MaxLevel>
-    <KindHero>Archer</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
     <MeleeWeapon>WeaponHunter0</MeleeWeapon>
@@ -154,7 +151,6 @@
     <Cost>350</Cost>
     <Building>GuildCleric</Building>
     <MaxLevel>100</MaxLevel>
-    <KindHero>Mage</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
     <MeleeWeapon>WeaponCleric0</MeleeWeapon>
@@ -201,7 +197,6 @@
     <Cost>500</Cost>
     <Building>GuildMage</Building>
     <MaxLevel>100</MaxLevel>
-    <KindHero>Mage</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
     <MeleeWeapon>WeaponMage0</MeleeWeapon>
@@ -248,7 +243,6 @@
     <Cost>700</Cost>
     <Building>GuildElf</Building>
     <MaxLevel>100</MaxLevel>
-    <KindHero>Archer</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
     <MeleeWeapon>WeaponElf0</MeleeWeapon>
@@ -295,7 +289,6 @@
     <Cost>700</Cost>
     <Building>GuildDwarf</Building>
     <MaxLevel>100</MaxLevel>
-    <KindHero>Melee</KindHero>
     <CanBuild>True</CanBuild>
     <DamageToCastle>2</DamageToCastle>
     <MeleeWeapon>WeaponDwarf0</MeleeWeapon>
@@ -332,58 +325,6 @@
     </CarryItems>
   </Hero>
   <Hero>
-    <ID>Peasant</ID>
-    <Name>Крестьянин</Name>
-    <Description>Это просто крестьяние, Сир. Они обучены строить и чинить здания.</Description>
-    <ImageIndex>7</ImageIndex>
-    <TypeCreature>Human</TypeCreature>
-    <Reward>1</Reward>
-    <Cost>0</Cost>
-    <Building>House</Building>
-    <MaxLevel>1</MaxLevel>
-    <KindHero>NonCombatant</KindHero>
-    <CanBuild>True</CanBuild>
-    <DamageToCastle>0</DamageToCastle>
-  </Hero>
-  <Hero>
-    <ID>Guardian</ID>
-    <Name>Королевский гвардеец</Name>
-    <Description>Королевские гвардейцы в меру своих сил охраняют покой короля.</Description>
-    <ImageIndex>8</ImageIndex>
-    <TypeCreature>Human</TypeCreature>
-    <Reward>25</Reward>
-    <Cost>0</Cost>
-    <Building>Castle</Building>
-    <MaxLevel>1</MaxLevel>
-    <KindHero>Guardian</KindHero>
-    <CanBuild>False</CanBuild>
-    <DamageToCastle>1</DamageToCastle>
-    <BaseParameters>
-      <Strength>20</Strength>
-      <Dexterity>10</Dexterity>
-      <Magic>10</Magic>
-      <Vitality>100</Vitality>
-      <SecondsToMove>2.0</SecondsToMove>
-      <CoefHealth>4</CoefHealth>
-      <CoefMana>1</CoefMana>
-      <CoefStamina>4</CoefStamina>
-    </BaseParameters>
-  </Hero>
-  <Hero>
-    <ID>Miller</ID>
-    <Name>Мельник</Name>
-    <Description>Мельник работает на мельнице.</Description>
-    <ImageIndex>9</ImageIndex>
-    <TypeCreature>Human</TypeCreature>
-    <Reward>1</Reward>
-    <Cost>0</Cost>
-    <Building>Mill</Building>
-    <MaxLevel>1</MaxLevel>
-    <KindHero>NonCombatant</KindHero>
-    <CanBuild>False</CanBuild>
-    <DamageToCastle>0</DamageToCastle>
-  </Hero>
-  <Hero>
     <ID>DarkPriest</ID>
     <Name>Сестра Крипты</Name>
     <Description>- Вызывает себе на помощь скелетов/- Любит выполнять задания атаки/- На 5-ом уровне изучает заклинание "Чума"/- С 10-го уровня призывает себе на помощь темных личей/- Не любит паладинов Дауроса</Description>
@@ -393,7 +334,6 @@
     <Cost>1000</Cost>
     <Building>GuildDarkPriest</Building>
     <MaxLevel>100</MaxLevel>
-    <KindHero>Mage</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
     <MeleeWeapon>WeaponDarkPriest0</MeleeWeapon>
@@ -443,7 +383,6 @@
     <Cost>1000</Cost>
     <Building>GuildPriest</Building>
     <MaxLevel>100</MaxLevel>
-    <KindHero>Mage</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
     <MeleeWeapon>WeaponPriest0</MeleeWeapon>
@@ -493,7 +432,6 @@
     <Cost>1000</Cost>
     <Building>GuildPaladin</Building>
     <MaxLevel>100</MaxLevel>
-    <KindHero>Melee</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
     <MeleeWeapon>WeaponPaladin0</MeleeWeapon>
@@ -543,7 +481,6 @@
     <Cost>1000</Cost>
     <Building>GuildBlademaster</Building>
     <MaxLevel>100</MaxLevel>
-    <KindHero>Melee</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
     <MeleeWeapon>WeaponBladeMaster0</MeleeWeapon>
@@ -593,7 +530,6 @@
     <Cost>1000</Cost>
     <Building>GuildBeastmaster</Building>
     <MaxLevel>100</MaxLevel>
-    <KindHero>Archer</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
     <MeleeWeapon>WeaponBeastMaster0</MeleeWeapon>
@@ -644,7 +580,6 @@
     <Cost>1000</Cost>
     <Building>GuildMarksman</Building>
     <MaxLevel>100</MaxLevel>
-    <KindHero>Archer</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
     <MeleeWeapon>WeaponMarksman0</MeleeWeapon>
@@ -695,7 +630,6 @@
     <Cost>1000</Cost>
     <Building>GuildFireMage</Building>
     <MaxLevel>100</MaxLevel>
-    <KindHero>Mage</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
     <MeleeWeapon>WeaponFireMage0</MeleeWeapon>
@@ -745,7 +679,6 @@
     <Cost>1000</Cost>
     <Building>GuildIceMage</Building>
     <MaxLevel>100</MaxLevel>
-    <KindHero>Mage</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
     <MeleeWeapon>WeaponIceMage0</MeleeWeapon>
@@ -795,7 +728,6 @@
     <Cost>1000</Cost>
     <Building>GuildDeathKnight</Building>
     <MaxLevel>100</MaxLevel>
-    <KindHero>Melee</KindHero>
     <CanBuild>False</CanBuild>
     <DamageToCastle>1</DamageToCastle>
     <MeleeWeapon>WeaponDeathKnight0</MeleeWeapon>

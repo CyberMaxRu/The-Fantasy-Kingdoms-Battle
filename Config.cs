@@ -93,12 +93,12 @@ namespace Fantasy_King_s_Battle
                 TypesCreatures.Add(new TypeCreature(n));
             }
 
-            // Загрузка конфигурации видов героев
-            xmlDoc = CreateXmlDocument("Config\\KindHeroes.xml");
+            // Загрузка конфигурации горожан
+            xmlDoc = CreateXmlDocument("Config\\KindCitizens.xml");
 
-            foreach (XmlNode n in xmlDoc.SelectNodes("/KindHeroes/KindHero"))
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Citizens/Citizen"))
             {
-                KindHeroes.Add(new KindHero(n));
+                KindCitizens.Add(new KindCitizen(n));
             }
 
             // Загрузка конфигурации героев
@@ -125,8 +125,9 @@ namespace Fantasy_King_s_Battle
                 Lairs.Add(new Lair(n));
             }
 
-            // Составляем общий пул навыков
+            // Составляем общий пул существ
             Units.AddRange(Heroes);
+            Units.AddRange(KindCitizens);
             Units.AddRange(Monsters);
 
             // Настраиваем связи
@@ -170,7 +171,7 @@ namespace Fantasy_King_s_Battle
         internal List<Building> Buildings { get; } = new List<Building>();
         internal List<Ability> Abilities { get; } = new List<Ability>();
         internal List<TypeCreature> TypesCreatures { get; } = new List<TypeCreature>();
-        internal List<KindHero> KindHeroes { get; } = new List<KindHero>();
+        internal List<KindCitizen> KindCitizens { get; } = new List<KindCitizen>();
         internal List<Hero> Heroes { get; } = new List<Hero>();
         internal List<Item> Items { get; } = new List<Item>();
         internal List<GroupWeapon> GroupWeapons { get; } = new List<GroupWeapon>();
@@ -329,17 +330,6 @@ namespace Fantasy_King_s_Battle
             }
 
             throw new Exception("Тип юнита " + ID + " не найден.");
-        }
-
-        internal KindHero FindKindHero(string ID)
-        {
-            foreach (KindHero kh in KindHeroes)
-            {
-                if (kh.ID == ID)
-                    return kh;
-            }
-
-            throw new Exception("Вид героя " + ID + " не найден.");
         }
 
         internal Ability FindAbility(string ID)

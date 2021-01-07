@@ -238,8 +238,7 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(AllHeroes.IndexOf(ph) == -1);
 
             AllHeroes.Add(ph);
-            if (ph.ClassHero.KindHero.Hired == true)
-                CombatHeroes.Add(ph);
+            CombatHeroes.Add(ph);
 
             if (ph.Building.Building.CategoryBuilding != CategoryBuilding.Castle)
             {
