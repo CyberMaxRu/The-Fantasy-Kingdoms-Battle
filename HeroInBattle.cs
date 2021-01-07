@@ -123,7 +123,7 @@ namespace Fantasy_King_s_Battle
                         // Если сейчас ничего не выполняем, ищем, что можно сделать
                         // Сначала пробуем атаковать стрелковым оружием
 
-                        if ((PlayerHero.RangeWeapon != null) || (PlayerHero.ClassHero.ID == "Cleric") || (PlayerHero.ClassHero.ID == "Mage"))
+                        if ((PlayerHero.RangeWeapon != null) || (PlayerHero.TypeHero.ID == "Cleric") || (PlayerHero.TypeHero.ID == "Mage"))
                         {
                             bool underMeleeAttack = false;
                             // Если юнит не атакован врукопашную, можно атаковать стрелковой атакой
@@ -598,7 +598,7 @@ namespace Fantasy_King_s_Battle
 
             // Рисуем иконку героя
             g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
-                g.DrawImageUnscaled(Program.formMain.ilGuiHeroes.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilGuiHeroes, PlayerHero.ClassHero.ImageIndex, State != StateHeroInBattle.Tumbstone)], FormMain.Config.ShiftForBorder);
+                g.DrawImageUnscaled(Program.formMain.ilGuiHeroes.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilGuiHeroes, PlayerHero.TypeHero.ImageIndex, State != StateHeroInBattle.Tumbstone)], FormMain.Config.ShiftForBorder);
 
             // Если юнит в могиле и исчезает, применяем исчезновение
             if (countAction <= FormMain.Config.UnitStepsTimeToDisappearance)

@@ -19,18 +19,18 @@ namespace Fantasy_King_s_Battle
             DayOfHire = Player.Lobby.Turn;
 
             // Применяем дефолтные способности
-            Abilities.AddRange(ClassHero.Abilities);
+            Abilities.AddRange(TypeHero.Abilities);
 
             // Берем оружие и доспехи
-            MeleeWeapon = ClassHero.WeaponMelee;
-            RangeWeapon = ClassHero.WeaponRange;
-            Armour = ClassHero.Armour;
+            MeleeWeapon = TypeHero.WeaponMelee;
+            RangeWeapon = TypeHero.WeaponRange;
+            Armour = TypeHero.Armour;
 
-            if (ClassHero.MaxLevel > 1)
+            if (TypeHero.MaxLevel > 1)
             {
                 Level = 0;
 
-                ParametersBase = new HeroParameters(ClassHero.ParametersByHire);
+                ParametersBase = new HeroParameters(TypeHero.ParametersByHire);
 
                 // Переходим на 1 уровень
                 LevelUp();
@@ -46,7 +46,7 @@ namespace Fantasy_King_s_Battle
 
         internal PlayerBuilding Building { get; }// Здание, которому принадлежит герой
         internal Player Player => Building.Player;// Игрок, которому принадлежит герой
-        internal TypeHero ClassHero => Building.Building.TrainedHero; // Класс героя
+        internal TypeHero TypeHero => Building.Building.TrainedHero; // Класс героя
 
         // Основные параметры
         internal int Level { get; private set; }// Уровень героя
@@ -242,26 +242,26 @@ namespace Fantasy_King_s_Battle
         // Повышение уровня
         private void LevelUp()
         {
-            Debug.Assert(Level < ClassHero.MaxLevel);
+            Debug.Assert(Level < TypeHero.MaxLevel);
 
             // Прибавляем безусловные параметры
-            if (ClassHero.ConfigNextLevel != null)
+            if (TypeHero.ConfigNextLevel != null)
             {
-                ParametersBase.Health += ClassHero.ConfigNextLevel.Health;
-                ParametersBase.Mana += ClassHero.ConfigNextLevel.Mana;
-                ParametersBase.Stamina += ClassHero.ConfigNextLevel.Stamina;
+                ParametersBase.Health += TypeHero.ConfigNextLevel.Health;
+                ParametersBase.Mana += TypeHero.ConfigNextLevel.Mana;
+                ParametersBase.Stamina += TypeHero.ConfigNextLevel.Stamina;
 
                 // Прибавляем очки характеристик
                 int t;
-                for (int i = 0; i < ClassHero.ConfigNextLevel.StatPoints; i++)
+                for (int i = 0; i < TypeHero.ConfigNextLevel.StatPoints; i++)
                 {
                     t = FormMain.Rnd.Next(100);
 
-                    if (t < ClassHero.ConfigNextLevel.WeightStrength)
+                    if (t < TypeHero.ConfigNextLevel.WeightStrength)
                         ParametersBase.Strength++;
-                    else if (t < ClassHero.ConfigNextLevel.WeightStrength + ClassHero.ConfigNextLevel.WeightDexterity)
+                    else if (t < TypeHero.ConfigNextLevel.WeightStrength + TypeHero.ConfigNextLevel.WeightDexterity)
                         ParametersBase.Dexterity++;
-                    else if (t < ClassHero.ConfigNextLevel.WeightStrength + ClassHero.ConfigNextLevel.WeightDexterity + ClassHero.ConfigNextLevel.WeightMagic)
+                    else if (t < TypeHero.ConfigNextLevel.WeightStrength + TypeHero.ConfigNextLevel.WeightDexterity + TypeHero.ConfigNextLevel.WeightMagic)
                         ParametersBase.Magic++;
                     else
                         ParametersBase.Vitality++;
@@ -273,9 +273,9 @@ namespace Fantasy_King_s_Battle
 
         internal void UpdateBaseParameters()
         {
-            ParametersBase.Health = (ParametersBase.Vitality * ParametersBase.CoefHealth) + (Level * ClassHero.ConfigNextLevel.Health);
-            ParametersBase.Mana = (ParametersBase.Magic * ParametersBase.CoefMana) + (Level * ClassHero.ConfigNextLevel.Mana);
-            ParametersBase.Stamina = (ParametersBase.Vitality * ParametersBase.CoefStamina) + (Level * ClassHero.ConfigNextLevel.Stamina);
+            ParametersBase.Health = (ParametersBase.Vitality * ParametersBase.CoefHealth) + (Level * TypeHero.ConfigNextLevel.Health);
+            ParametersBase.Mana = (ParametersBase.Magic * ParametersBase.CoefMana) + (Level * TypeHero.ConfigNextLevel.Mana);
+            ParametersBase.Stamina = (ParametersBase.Vitality * ParametersBase.CoefStamina) + (Level * TypeHero.ConfigNextLevel.Stamina);
 
             UpdateParamsWithAmmunition();
         }
@@ -327,12 +327,12 @@ namespace Fantasy_King_s_Battle
             }
         }
         ImageList ICell.ImageList() => Program.formMain.ilGuiHeroes;
-        int ICell.ImageIndex() => ClassHero.ImageIndex;
+        int ICell.ImageIndex() => TypeHero.ImageIndex;
         bool ICell.NormalImage() => true;
         int ICell.Value() => Level;
         void ICell.PrepareHint()
         {
-            Program.formMain.formHint.AddStep1Header(ClassHero.Name, "", ClassHero.Description);
+            Program.formMain.formHint.AddStep1Header(TypeHero.Name, "", TypeHero.Description);
         }
 
         void ICell.Click(PanelEntity pe)
@@ -345,7 +345,7 @@ namespace Fantasy_King_s_Battle
         {
             int posInPlayer = Player.CombatHeroes.IndexOf(this);
             Debug.Assert(posInPlayer != -1);
-            return ClassHero.DefaultPositionPriority * 1000 + posInPlayer;
+            return TypeHero.DefaultPositionPriority * 1000 + posInPlayer;
         }
     }
 }

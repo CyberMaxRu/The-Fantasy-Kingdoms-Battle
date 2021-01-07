@@ -179,7 +179,7 @@ namespace Fantasy_King_s_Battle
         }
 
         protected override ImageList GetImageList() => Program.formMain.ilHeroes;
-        protected override int GetImageIndex() => hero.ClassHero.ImageIndex;
-        protected override string GetCaption() => hero.ClassHero.Name;
+        protected override int GetImageIndex() => hero.TypeHero.ImageIndex;
+        protected override string GetCaption() => hero.TypeHero.Name;
     }
 }

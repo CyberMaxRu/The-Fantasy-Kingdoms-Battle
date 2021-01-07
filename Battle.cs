@@ -240,7 +240,7 @@ namespace Fantasy_King_s_Battle
 
                 foreach (HeroInBattle h in ActiveHeroes.Where(h => h.PlayerHero.Player == Winner))
                 {
-                    damage += h.PlayerHero.ClassHero.DamageToCastle;
+                    damage += h.PlayerHero.TypeHero.DamageToCastle;
                 }
 
                 Debug.Assert(damage > 0);

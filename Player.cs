@@ -124,7 +124,7 @@ namespace Fantasy_King_s_Battle
         {
             TotalBuilders = 0;
             foreach (PlayerHero ph in AllHeroes)
-                if (ph.ClassHero.CanBuild == true)
+                if (ph.TypeHero.CanBuild == true)
                     TotalBuilders++;
 
             FreeBuilders = TotalBuilders;
