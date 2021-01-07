@@ -59,5 +59,15 @@ namespace Fantasy_King_s_Battle.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Majesty2 {
+            get {
+                object obj = ResourceManager.GetObject("Majesty2", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

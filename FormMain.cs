@@ -288,7 +288,7 @@ namespace Fantasy_King_s_Battle
             bmpMaskSmall = new Bitmap(dirResources + @"Icons\MaskSmall.png");
             ilLairs = PrepareImageList("Lairs.png", 128, 128, true);
             ilLairsSmall = BigIconToSmall(ilLairs);
-
+            
             ilResultBattle = PrepareImageList("ResultBattle.png", 24, 24, false);
             ilBuildings = PrepareImageList("Buildings.png", 126, 126, true);
             ilHeroes = PrepareImageList("Heroes.png", 126, 126, false);

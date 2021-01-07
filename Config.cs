@@ -6,11 +6,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Diagnostics;
+using System.Drawing.Text;
+using System.IO;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace Fantasy_King_s_Battle
 {
     internal sealed class Config
     {
+        private PrivateFontCollection pfc = new PrivateFontCollection();
+        private FontFamily ffMajesty2;
+
         public Config(string pathResources, FormMain fm)
         {
             FormMain.Config = this;
@@ -521,7 +528,26 @@ namespace Fantasy_King_s_Battle
             UnitLowNormalParam = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Unit/LowNormalParam").InnerText);
             UnitHighNormalParam = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Unit/HighNormalParam").InnerText);
 
-            // Шрифты
+            // Добавляем шрифт из ресурсов
+            FontFamily GetResourceFontFamily(byte[] fontbytes)
+            {
+                // Шрифт Majesty2 не хочет работать из ресурсов. Другие шрифты работают.
+                // Причину этого так и не выяснил. Поэтому шрифт выгружается в файл, загружается в шрифты и удаляется
+                string fileFont = Path.GetTempFileName();
+                File.WriteAllBytes(fileFont, fontbytes);
+                pfc.AddFontFile(fileFont);
+                return pfc.Families[0];
+
+                /*IntPtr fontMemPointer = Marshal.AllocCoTaskMem(fontbytes.Length);
+                Marshal.Copy(fontbytes, 0, fontMemPointer, fontbytes.Length);
+                pfc.AddMemoryFont(fontMemPointer, fontbytes.Length);
+                Marshal.FreeCoTaskMem(fontMemPointer);
+                return pfc.Families[0];*/
+            }
+
+            // Шрифты            
+            ffMajesty2 = GetResourceFontFamily(Properties.Resources.Majesty2);
+
             FontToolbar = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/Toolbar"));
             FontLevel = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/Level"));
             FontQuantity = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/Quantity"));
@@ -538,10 +564,22 @@ namespace Fantasy_King_s_Battle
 
             Font CreateFont(XmlNode n)
             {
-                if (Convert.ToBoolean(n.SelectSingleNode("Bold").InnerText))
-                    return new Font(n.SelectSingleNode("Name").InnerText, Convert.ToInt32(n.SelectSingleNode("Size").InnerText), FontStyle.Bold);
+                string name = n.SelectSingleNode("Name").InnerText;
+                
+                if (name == "Majesty2")
+                {
+                    if (XmlUtils.GetBool(n.SelectSingleNode("Bold"), false))
+                        return new Font(ffMajesty2, Convert.ToInt32(n.SelectSingleNode("Size").InnerText), FontStyle.Bold);
+                    else
+                        return new Font(ffMajesty2, Convert.ToInt32(n.SelectSingleNode("Size").InnerText));
+                }
                 else
-                    return new Font(n.SelectSingleNode("Name").InnerText, Convert.ToInt32(n.SelectSingleNode("Size").InnerText));
+                {
+                    if (XmlUtils.GetBool(n.SelectSingleNode("Bold"), false))
+                        return new Font(name, Convert.ToInt32(n.SelectSingleNode("Size").InnerText), FontStyle.Bold);
+                    else
+                        return new Font(name, Convert.ToInt32(n.SelectSingleNode("Size").InnerText));
+                }
             }
         }
 
