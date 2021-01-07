@@ -9,15 +9,10 @@ using System.Diagnostics;
 namespace Fantasy_King_s_Battle
 {
     // Тип объекта карты - базовый класс для всех зданий, построек и логов
-    internal abstract class TypeMapObject
+    internal abstract class TypeMapObject : TypeObject
     {
-        public TypeMapObject(XmlNode n)
+        public TypeMapObject(XmlNode n) : base(n)
         {
-            ID = XmlUtils.GetStringNotNull(n.SelectSingleNode("ID"));
-            Name = XmlUtils.GetStringNotNull(n.SelectSingleNode("Name"));
-            Description = XmlUtils.GetDescription(n.SelectSingleNode("Description"));
-            ImageIndex = XmlUtils.GetInteger(n.SelectSingleNode("ImageIndex"));
-
             DefaultLevel = XmlUtils.GetInteger(n.SelectSingleNode("DefaultLevel"));
             MaxLevel = Convert.ToInt32(n.SelectSingleNode("MaxLevel").InnerText);
             Line = XmlUtils.GetInteger(n.SelectSingleNode("Line"));
@@ -31,18 +26,9 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(Line <= 3);
         }
 
-        internal string ID { get; }
-        internal string Name { get; }
-        internal string Description { get; }
-        internal int ImageIndex { get; }
-
         internal int DefaultLevel { get; }
         internal int MaxLevel { get; }
         internal int Line { get; }
 
-        internal virtual void TuneDeferredLinks()
-        {
-
-        }
     }
 }

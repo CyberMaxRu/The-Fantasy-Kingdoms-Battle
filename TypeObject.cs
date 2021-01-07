@@ -29,5 +29,10 @@ namespace Fantasy_King_s_Battle
         internal string Name { get; }
         internal string Description { get; set; }
         internal int ImageIndex { get; }
+
+        internal virtual void TuneDeferredLinks()
+        {
+
+        }
     }
 }
