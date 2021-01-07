@@ -25,10 +25,10 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(ImageIndex >= 0);
         }
 
-        internal string ID { get; }
-        internal string Name { get; }
-        internal string Description { get; }
-        internal int ImageIndex { get; }
+        internal string ID { get; }// Уникальный (в пределах списка) код типа объекта
+        internal string Name { get; }// Наименование типа объекта
+        internal string Description { get; }// Описание типа объекта
+        internal int ImageIndex { get; }// Код иконки типа объекта
 
         internal virtual void TuneDeferredLinks()
         {
