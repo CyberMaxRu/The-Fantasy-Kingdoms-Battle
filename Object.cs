@@ -16,7 +16,7 @@ namespace Fantasy_King_s_Battle
         {
             ID = n.SelectSingleNode("ID").InnerText;
             Name = n.SelectSingleNode("Name").InnerText;
-            Description = Utils.AdaptDescription(n.SelectSingleNode("Description").InnerText);
+            Description = XmlUtils.GetDescription(n.SelectSingleNode("Description"));
             ImageIndex = XmlUtils.GetInteger(n.SelectSingleNode("ImageIndex"));
 
             Debug.Assert(ID.Length > 0);

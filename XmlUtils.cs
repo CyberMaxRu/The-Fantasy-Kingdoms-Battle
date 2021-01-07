@@ -35,6 +35,11 @@ namespace Fantasy_King_s_Battle
             return n.InnerText;
         }
 
+        internal static string GetDescription(XmlNode n)
+        {
+            return GetStringNotNull(n).Replace("/", Environment.NewLine);
+        }
+
         internal static bool GetBool(XmlNode n, bool defValue)
         {
             return n != null ? Convert.ToBoolean(n.InnerText) : defValue;

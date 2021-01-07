@@ -67,6 +67,7 @@
     <Compile Include="TypeCitizen.cs" />
     <Compile Include="Creature.cs" />
     <Compile Include="LairMonster.cs" />
+    <Compile Include="TypeConstruction.cs" />
     <Compile Include="TypeMonster.cs" />
     <Compile Include="Object.cs" />
     <Compile Include="PanelLair.cs">

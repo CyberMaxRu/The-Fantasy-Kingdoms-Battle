@@ -12,19 +12,13 @@ namespace Fantasy_King_s_Battle
     internal enum TypeIncome { None, Persistent, PerHeroes }
 
     // Класс здания
-    internal sealed class Building
+    internal sealed class Building : TypeConstruction
     {
-        public Building(XmlNode n)
+        public Building(XmlNode n) : base(n)
         {
-            ID = n.SelectSingleNode("ID").InnerText;
-            Name = n.SelectSingleNode("Name").InnerText;
-            Description = n.SelectSingleNode("Description").InnerText.Replace("/", Environment.NewLine);
-            ImageIndex = Convert.ToInt32(n.SelectSingleNode("ImageIndex").InnerText);
-            DefaultLevel = Convert.ToInt32(n.SelectSingleNode("DefaultLevel").InnerText);
             MaxLevel = Convert.ToInt32(n.SelectSingleNode("MaxLevel").InnerText);
             CategoryBuilding = (CategoryBuilding)Enum.Parse(typeof(CategoryBuilding), n.SelectSingleNode("CategoryBuilding").InnerText);
             TypeIncome = (TypeIncome)Enum.Parse(typeof(TypeIncome), n.SelectSingleNode("TypeIncome").InnerText);
-            Line = Convert.ToInt32(n.SelectSingleNode("Line").InnerText);
             Position = FormMain.Config.Buildings.Count;
             HasTreasury = Convert.ToBoolean(n.SelectSingleNode("HasTreasury").InnerText);
             GoldByConstruction = Convert.ToInt32(n.SelectSingleNode("GoldByConstruction").InnerText);
@@ -110,11 +104,6 @@ namespace Fantasy_King_s_Battle
             }
         }
 
-        internal string ID { get; }
-        internal string Name { get; }
-        internal string Description { get; }
-        internal int ImageIndex { get; }
-        internal int DefaultLevel { get; }
         internal int MaxLevel { get; }
 
         internal Level[] Levels;
@@ -125,7 +114,6 @@ namespace Fantasy_King_s_Battle
         internal int GoldByConstruction { get; }// Количество золота в казне при постройке
         internal CategoryBuilding CategoryBuilding { get; }
         internal TypeIncome TypeIncome { get; }
-        internal int Line { get; }
         internal PanelBuilding Panel { get; set; }
 
         internal void TuneResearches()

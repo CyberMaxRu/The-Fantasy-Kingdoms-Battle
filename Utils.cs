@@ -8,11 +8,6 @@ namespace Fantasy_King_s_Battle
     // Класс вспомогательных методов
     internal sealed class Utils
     {
-        internal static string AdaptDescription(string s)
-        {
-            return s.Replace("/", Environment.NewLine);
-        }
-
         internal static double DistanceBetweenPoints(Point p1, Point p2)
         {
             return Math.Sqrt(Math.Pow(p2.X - p1.X, 2) + Math.Pow(p2.Y - p1.Y, 2));
