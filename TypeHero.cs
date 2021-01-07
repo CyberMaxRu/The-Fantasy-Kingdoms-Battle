@@ -15,7 +15,7 @@ namespace Fantasy_King_s_Battle
         public TypeHero(XmlNode n) : base(n)
         {
             Cost = Convert.ToInt32(n.SelectSingleNode("Cost").InnerText);
-            Building = FormMain.Config.FindBuilding(n.SelectSingleNode("Building").InnerText);
+            Building = FormMain.Config.FindTypeConstructionWithHero(n.SelectSingleNode("Building").InnerText);
             Building.TrainedHero = this;
             CanBuild = Convert.ToBoolean(n.SelectSingleNode("CanBuild").InnerText);
             DamageToCastle = Convert.ToInt32(n.SelectSingleNode("DamageToCastle").InnerText);
@@ -80,7 +80,7 @@ namespace Fantasy_King_s_Battle
         }
 
         internal int Cost { get; }
-        internal Building Building { get; }
+        internal TypeConstructionWithHero Building { get; }
         internal bool CanBuild { get; }
         internal int DamageToCastle { get; }
         internal Weapon WeaponMelee { get; private set; }// Рукопашное оружие

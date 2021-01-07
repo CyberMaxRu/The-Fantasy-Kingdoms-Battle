@@ -32,9 +32,9 @@ namespace Fantasy_King_s_Battle
             DurabilityCastle = Lobby.TypeLobby.DurabilityCastle;
 
             // Инициализация зданий
-            foreach (Building b in FormMain.Config.Buildings)
+            foreach (TypeConstructionOfKingdom tck in FormMain.Config.TypeConstructionsOfKingdom)
             {
-                Buildings.Add(new PlayerBuilding(this, b));
+                Buildings.Add(new PlayerBuilding(this, tck));
             }
 
             // Инициализация логов
@@ -43,7 +43,7 @@ namespace Fantasy_King_s_Battle
                 Lairs.Add(new PlayerLair(this, l));
             }
 
-            Castle = GetPlayerBuilding(FormMain.Config.FindBuilding(FormMain.Config.IDBuildingCastle));
+            Castle = GetPlayerBuilding(FormMain.Config.FindTypeEconomicConstruction(FormMain.Config.IDBuildingCastle));
             Gold = Lobby.TypeLobby.Gold;
             if (TypePlayer == TypePlayer.Computer)
                 Gold = 100_000;
@@ -70,16 +70,16 @@ namespace Fantasy_King_s_Battle
 
             // Здесь расчет хода для ИИ
             // Покупаем четыре гильдии и строим 16 героев. На этом пока всё
-            GetPlayerBuilding(FormMain.Config.FindBuilding("GuildWarrior")).BuyOrUpgrade();
-            GetPlayerBuilding(FormMain.Config.FindBuilding("GuildRogue")).BuyOrUpgrade();
-            GetPlayerBuilding(FormMain.Config.FindBuilding("GuildHunter")).BuyOrUpgrade();
-            GetPlayerBuilding(FormMain.Config.FindBuilding("GuildCleric")).BuyOrUpgrade();
-            GetPlayerBuilding(FormMain.Config.FindBuilding("GuildMage")).BuyOrUpgrade();
+            GetPlayerBuilding(FormMain.Config.FindTypeEconomicConstruction("GuildWarrior")).BuyOrUpgrade();
+            GetPlayerBuilding(FormMain.Config.FindTypeEconomicConstruction("GuildRogue")).BuyOrUpgrade();
+            GetPlayerBuilding(FormMain.Config.FindTypeEconomicConstruction("GuildHunter")).BuyOrUpgrade();
+            GetPlayerBuilding(FormMain.Config.FindTypeEconomicConstruction("GuildCleric")).BuyOrUpgrade();
+            GetPlayerBuilding(FormMain.Config.FindTypeEconomicConstruction("GuildMage")).BuyOrUpgrade();
 
-            HireAllHero(GetPlayerBuilding(FormMain.Config.FindBuilding("GuildWarrior")));
-            HireAllHero(GetPlayerBuilding(FormMain.Config.FindBuilding("GuildHunter")));
-            HireAllHero(GetPlayerBuilding(FormMain.Config.FindBuilding("GuildCleric")));
-            HireAllHero(GetPlayerBuilding(FormMain.Config.FindBuilding("GuildMage")));
+            HireAllHero(GetPlayerBuilding(FormMain.Config.FindTypeEconomicConstruction("GuildWarrior")));
+            HireAllHero(GetPlayerBuilding(FormMain.Config.FindTypeEconomicConstruction("GuildHunter")));
+            HireAllHero(GetPlayerBuilding(FormMain.Config.FindTypeEconomicConstruction("GuildCleric")));
+            HireAllHero(GetPlayerBuilding(FormMain.Config.FindTypeEconomicConstruction("GuildMage")));
 
             void HireAllHero(PlayerBuilding bp)
             {
@@ -219,7 +219,7 @@ namespace Fantasy_King_s_Battle
         internal bool BattleCalced { get; set; }
         internal List<Battle> HistoryBattles { get; } = new List<Battle>();
 
-        internal PlayerBuilding GetPlayerBuilding(Building b)
+        internal PlayerBuilding GetPlayerBuilding(TypeConstructionOfKingdom b)
         {
             Debug.Assert(b != null);
 
@@ -240,10 +240,11 @@ namespace Fantasy_King_s_Battle
             AllHeroes.Add(ph);
             CombatHeroes.Add(ph);
 
-            if (ph.Building.Building.CategoryBuilding != CategoryBuilding.Castle)
+            // Восстановить
+            /*if (ph.Building.Building.CategoryBuilding != CategoryBuilding.Castle)
             {
                 RearrangeHeroes();
-            }
+            }*/
         }
 
         private void RearrangeHeroes()

@@ -63,12 +63,15 @@
     <Compile Include="Battle.cs" />
     <Compile Include="Battlefield.cs" />
     <Compile Include="BattlefieldTile.cs" />
-    <Compile Include="Building.cs" />
+    <Compile Include="TypeEconomicConstruction.cs" />
     <Compile Include="TypeCitizen.cs" />
     <Compile Include="Creature.cs" />
     <Compile Include="LairMonster.cs" />
     <Compile Include="TypeConstruction.cs" />
-    <Compile Include="TypeKingdomConstruction.cs" />
+    <Compile Include="TypeGuild.cs" />
+    <Compile Include="TypeTemple.cs" />
+    <Compile Include="TypeConstructionWithHero.cs" />
+    <Compile Include="TypeConstructionOfKingdom.cs" />
     <Compile Include="TypeMonster.cs" />
     <Compile Include="Object.cs" />
     <Compile Include="PanelLair.cs">
@@ -217,9 +220,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Config\TypeCitizens.xml" />
+    <Content Include="Resources\Config\TypeGuilds.xml" />
     <Content Include="Resources\Config\TypeLairs.xml" />
     <Content Include="Resources\Config\TypeMonsters.xml" />
     <Content Include="Resources\Config\KindCreatures.xml" />
+    <Content Include="Resources\Config\TypeTemples.xml" />
     <Content Include="Resources\Main.xml" />
     <Content Include="Resources\Config\Game.xml" />
     <Content Include="Resources\Config\Abilities.xml" />
@@ -228,7 +233,7 @@
     <Content Include="Resources\Config\TypeLobby.xml" />
     <Content Include="Resources\Config\Items.xml" />
     <Content Include="Resources\Config\TypeHeroes.xml" />
-    <Content Include="Resources\Config\Buildings.xml" />
+    <Content Include="Resources\Config\TypeEconomicConstructions.xml" />
     <Content Include="Resources\Config\Skills.xml" />
     <Content Include="Resources\Config\Settings.xml" />
     <Content Include="Resources\Config\Weapons.xml" />

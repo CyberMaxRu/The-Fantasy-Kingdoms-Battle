@@ -71,8 +71,8 @@ namespace Fantasy_King_s_Battle
                 lblGold.Hide();
             }
 
-            pageControl.SetPageVisible(1, building.Building.TrainedHero != null);
-            pageControl.SetPageVisible(2, building.Building.TrainedHero != null);
+            //pageControl.SetPageVisible(1, building.Building.TrainedHero != null);
+            //pageControl.SetPageVisible(2, building.Building.TrainedHero != null);
 
             panelProducts.ApplyList(building.Items);
             panelWarehouse.ApplyList(building.Warehouse);

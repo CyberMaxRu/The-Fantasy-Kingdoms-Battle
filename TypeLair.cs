@@ -125,7 +125,7 @@ namespace Fantasy_King_s_Battle
         internal List<LevelLair> LevelLairs { get; } = new List<LevelLair>();
         internal PanelLair Panel { get; set; }
 
-        internal void TuneDeferredLinks()
+        internal override void TuneDeferredLinks()
         {
             foreach (LevelLair ll in LevelLairs)
             {

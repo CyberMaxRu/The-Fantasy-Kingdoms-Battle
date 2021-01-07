@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml;
+using System.Diagnostics;
+
+namespace Fantasy_King_s_Battle
+{
+    // Тип храма
+    internal sealed class TypeTemple : TypeConstructionWithHero
+    {
+        public TypeTemple(XmlNode n) : base(n)
+        {
+
+        }
+    }
+}

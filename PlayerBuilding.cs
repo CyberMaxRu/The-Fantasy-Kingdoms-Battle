@@ -12,7 +12,7 @@ namespace Fantasy_King_s_Battle
     {
         private int gold;
 
-        public PlayerBuilding(Player p, Building b)
+        public PlayerBuilding(Player p, TypeConstructionOfKingdom b)
         {
             Player = p;
             Building = b;
@@ -29,15 +29,16 @@ namespace Fantasy_King_s_Battle
                                 Researches.Add(new PlayerResearch(this, b.Researches[z, y, x]));
             }
 
-            if (Building.TrainedHero != null)
+            if (Building is TypeConstructionWithHero)
                 Warehouse.Add(new PlayerItem(FormMain.Config.FindItem("PotionOfHealth"), 3, true));
 
-            if (Building.HasTreasury)
-                Gold = Building.GoldByConstruction;
+            // Восстановить
+            //if (Building.HasTreasury)
+            //    Gold = Building.GoldByConstruction;
         }
 
         internal Player Player { get; }
-        internal Building Building { get; }
+        internal TypeConstructionOfKingdom Building { get; }
         internal int Level { get; private set; }
         internal int Gold { get => gold; set { Debug.Assert(Building.HasTreasury); gold = value; } }
         internal List<PlayerHero> Heroes { get; } = new List<PlayerHero>();
@@ -68,7 +69,8 @@ namespace Fantasy_King_s_Battle
 
         internal void ValidateHeroes()
         {
-            if ((Building.TrainedHero != null) && (Building.TrainedHero.Cost == 0))
+            // Восстановить
+            /*if ((Building.TrainedHero != null) && (Building.TrainedHero.Cost == 0))
             {
                 if (Heroes.Count() < MaxHeroes())
                 {
@@ -77,7 +79,7 @@ namespace Fantasy_King_s_Battle
                         HireHero();
                     }
                 }
-            }
+            }*/
         }
 
         internal bool CanLevelUp()
@@ -122,23 +124,7 @@ namespace Fantasy_King_s_Battle
 
         internal int Income()
         {
-            int coef;
-            switch (Building.TypeIncome)
-            {
-                case TypeIncome.None:
-                    coef = 0;
-                    break;
-                case TypeIncome.Persistent:
-                    coef = 1;
-                    break;
-                case TypeIncome.PerHeroes:
-                    coef = Heroes.Count;
-                    break;
-                default:
-                    throw new Exception("Неизвестный тип дохода.");
-            }
-
-            return Level > 0 ? Building.Levels[Level].Income * coef : 0;
+            return Level > 0 ? Building.Levels[Level].Income : 0;
         }
 
         internal bool DoIncome()
@@ -155,18 +141,19 @@ namespace Fantasy_King_s_Battle
         {
             Debug.Assert(Heroes.Count < MaxHeroes());
             Debug.Assert(Player.CombatHeroes.Count < Player.Lobby.TypeLobby.MaxHeroes);
-            Debug.Assert(Player.Gold >= Building.TrainedHero.Cost);
+            //Debug.Assert(Player.Gold >= Building.TrainedHero.Cost);
 
             PlayerHero h = new PlayerHero(this);
             Heroes.Add(h);
             Player.AddHero(h);
 
-            if (Building.TrainedHero.Cost > 0)
+            // Восстановить
+            /*if (Building.TrainedHero.Cost > 0)
             {
                 Player.Gold -= Building.TrainedHero.Cost;
                 if (Player.TypePlayer == TypePlayer.Human)
                     Program.formMain.ShowGold();
-            }
+            }*/
 
             return h;
         }
@@ -176,7 +163,8 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(Heroes.Count <= MaxHeroes());
             Debug.Assert(Player.CombatHeroes.Count <= Player.Lobby.TypeLobby.MaxHeroes);
 
-            return (Level > 0) && (Player.Gold >= Building.TrainedHero.Cost) && (Heroes.Count < MaxHeroes()) && (Player.CombatHeroes.Count < Player.Lobby.TypeLobby.MaxHeroes);
+            return false;
+            //return (Level > 0) && (Player.Gold >= Building.TrainedHero.Cost) && (Heroes.Count < MaxHeroes()) && (Player.CombatHeroes.Count < Player.Lobby.TypeLobby.MaxHeroes);
         }
 
         internal bool MaxHeroesAtPlayer()
@@ -188,12 +176,12 @@ namespace Fantasy_King_s_Battle
         {
             List<TextRequirement> list = new List<TextRequirement>();
 
-            if (Level == 0)
+            /*if (Level == 0)
                 list.Add(new TextRequirement(false, Building.CategoryBuilding == CategoryBuilding.Guild ? "Гильдия не построена" : "Храм не построен"));
 
             if ((Level > 0) && (Heroes.Count == MaxHeroes()))
                 list.Add(new TextRequirement(false, Building.CategoryBuilding == CategoryBuilding.Guild ? "Гильдия заполнена" : "Храм заполнен"));
-
+            */
             if (MaxHeroesAtPlayer())
                 list.Add(new TextRequirement(false, "Достигнуто максимальное количество героев в королевстве"));
 

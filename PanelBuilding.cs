@@ -159,20 +159,22 @@ namespace Fantasy_King_s_Battle
 
         private void ShowHintBtnHireHero()
         {
-            Program.formMain.formHint.Clear();
+            /*Program.formMain.formHint.Clear();
             Program.formMain.formHint.AddStep1Header(Building.Building.TrainedHero.Name, "", Building.Building.TrainedHero.Description);
             if ((Building.Building.TrainedHero != null) && (Building.Building.TrainedHero.Cost > 0))
                 Program.formMain.formHint.AddStep3Requirement(Building.GetTextRequirementsHire());
             Program.formMain.formHint.AddStep4Gold(Building.Building.TrainedHero.Cost, Building.Player.Gold >= Building.Building.TrainedHero.Cost);
             Program.formMain.formHint.ShowHint(btnHireHero);
+            */
         }
 
         private void pbBuilding_MouseEnter(object sender, EventArgs e)
         {
-            Program.formMain.formHint.Clear();
+            /*Program.formMain.formHint.Clear();
             Program.formMain.formHint.AddStep1Header(Building.Building.Name, Building.Level > 0 ? "Уровень " + Building.Level.ToString() : "", Building.Building.Description + ((Building.Level > 0) && (Building.Building.TrainedHero != null) ? Environment.NewLine + Environment.NewLine + "Героев: " + Building.Heroes.Count.ToString() + "/" + Building.MaxHeroes().ToString() : ""));
             Program.formMain.formHint.AddStep2Income(Building.Income());
             Program.formMain.formHint.ShowHint(this);
+            */
         }
 
         private void Control_MouseLeave(object sender, EventArgs e)
@@ -208,7 +210,8 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(Building.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
             Debug.Assert(Building.Level <= Building.Building.MaxLevel);
 
-            SelectThisBuilding();
+            // Восстановить
+            /* SelectThisBuilding();
 
             if ((Building.Level > 0) && (Building.CanTrainHero() == true))
             {
@@ -224,6 +227,7 @@ namespace Fantasy_King_s_Battle
                 Program.formMain.ShowPageHeroes();
                 Program.formMain.UpdateBuildingInfo();// Надо обновить список жителей гильдии
             }
+            */
         }
 
         private void BtnBuyOrUprgade_Click(object sender, EventArgs e)
@@ -260,7 +264,8 @@ namespace Fantasy_King_s_Battle
             lblIncome.Text = Building.DoIncome() == true ? "+" + Building.Income().ToString() : "";
             lblIncome.ForeColor = Building.Level > 0 ? Color.Green : Color.Gray;
 
-            btnHeroes.Visible = building.Building.TrainedHero != null;
+            // Восстановить
+            //btnHeroes.Visible = building.Building.TrainedHero != null;
 
             // Информация об уровне здания
             if ((Building.Level > 0) && (Building.Building.MaxLevel > 1))
@@ -281,6 +286,8 @@ namespace Fantasy_King_s_Battle
             else
                 lblLevel.Hide();
 
+            // Восстановить
+            /*
             if (Building.Building.TrainedHero != null)
             {
                 btnHireHero.Show();
@@ -289,7 +296,7 @@ namespace Fantasy_King_s_Battle
             }
             else
                 btnHireHero.Hide();
-
+            */
             if (Building.Level > 0)
             {
 
@@ -319,6 +326,8 @@ namespace Fantasy_King_s_Battle
                 pbBuilding.Image = GuiUtils.GetImageFromImageList(Program.formMain.ilBuildings, Building.Building.ImageIndex, false);
             }
 
+            // Восстановить
+            /*
             if ((Building.Building.TrainedHero != null) && (Building.Level > 0))
             {
                 btnHeroes.Text = Building.Heroes.Count.ToString();
@@ -329,6 +338,7 @@ namespace Fantasy_King_s_Battle
                 btnHeroes.Text = "";
                 btnHeroes.ImageIndex = -1;
             }
+            */
 
             Invalidate();
         }

@@ -463,9 +463,7 @@ namespace Fantasy_King_s_Battle
                 return b;
             }
 
-            DrawGuilds();
-            DrawBuildings();
-            DrawTemples();
+            DrawPageConstructions();
             DrawHeroes();
             DrawWarehouse();
             DrawPageLair();
@@ -535,9 +533,9 @@ namespace Fantasy_King_s_Battle
 
             // Определяем высоту бэнда зданий
             heightBandBuildings = 0;
-            foreach (Building b in Config.Buildings)
-                if (b.Panel != null)
-                    heightBandBuildings = Math.Max(heightBandBuildings, b.Panel.Height + b.Panel.Top);
+            foreach (TypeEconomicConstruction tec in Config.TypeEconomicConstructions)
+                if (tec.Panel != null)
+                    heightBandBuildings = Math.Max(heightBandBuildings, tec.Panel.Height + tec.Panel.Top);
 
             // Определяем высоту бэнда информации
             //heightBandInfoAndMenu = panelMenu.Height + Math.Max(panelBuildingInfo.Height, panelHeroInfo.Height);
@@ -994,32 +992,39 @@ namespace Fantasy_King_s_Battle
             //Refresh();
         }
 
-        private void DrawPageBuilding(PanelPage panel, CategoryBuilding category)
+        private void DrawPageConstructions()
         {
-            int top = 0;
-            int left;
-            int height = 0;
+            DrawPage(pageGuilds, Config.TypeGuilds.ToList<TypeConstructionOfKingdom>());
+            DrawPage(pageBuildings, Config.TypeEconomicConstructions.ToList<TypeConstructionOfKingdom>());
+            DrawPage(pageTemples, Config.TypeTemples.ToList<TypeConstructionOfKingdom>());
 
-            for (int line = 1; line <= Config.BuildingMaxLines; line++)
+            void DrawPage(PanelPage panel, List<TypeConstructionOfKingdom> list)
             {
-                left = 0;
+                int top = 0;
+                int left;
+                int height = 0;
 
-                foreach (Building b in Config.Buildings)
+                for (int line = 1; line <= Config.BuildingMaxLines; line++)
                 {
-                    if ((b.CategoryBuilding == category) && (b.Line == line))
+                    left = 0;
+
+                    foreach (TypeConstructionOfKingdom tck in list)
                     {
-                        b.Panel = new PanelBuilding()
+                        if (tck.Line == line)
                         {
-                            Parent = panel,
-                            Location = new Point(left, top)
-                        };
+                            tck.Panel = new PanelBuilding()
+                            {
+                                Parent = panel,
+                                Location = new Point(left, top)
+                            };
 
-                        left += b.Panel.Width + Config.GridSize;
-                        height = b.Panel.Height;
+                            left += tck.Panel.Width + Config.GridSize;
+                            height = tck.Panel.Height;
+                        }
                     }
-                }
 
-                top += height + Config.GridSize;
+                    top += height + Config.GridSize;
+                }
             }
         }
 
@@ -1052,43 +1057,29 @@ namespace Fantasy_King_s_Battle
             }
         }
 
-        private void DrawGuilds()
-        {
-            DrawPageBuilding(pageGuilds, CategoryBuilding.Guild);
-        }
-
         private void ShowGuilds()
         {
-            foreach (PlayerBuilding pg in lobby.CurrentPlayer.Buildings)
+            foreach (PlayerBuilding pb in lobby.CurrentPlayer.Buildings)
             {
-                if (pg.Building.CategoryBuilding == CategoryBuilding.Guild)
-                    pg.UpdatePanel();
+                if (pb.Building is TypeGuild)
+                    pb.UpdatePanel();
             }
-        }
-
-        private void DrawBuildings()
-        {
-            DrawPageBuilding(pageBuildings, CategoryBuilding.Castle);
         }
 
         private void ShowBuildings()
         {
             foreach (PlayerBuilding pb in lobby.CurrentPlayer.Buildings)
             {
-                pb.UpdatePanel();
+                if (pb.Building is TypeEconomicConstruction)
+                    pb.UpdatePanel();
             }
-        }
-
-        private void DrawTemples()
-        {
-            DrawPageBuilding(pageTemples, CategoryBuilding.Temple);
         }
 
         private void ShowTemples()
         {
             foreach (PlayerBuilding pb in lobby.CurrentPlayer.Buildings)
             {
-                if (pb.Building.CategoryBuilding == CategoryBuilding.Temple)
+                if (pb.Building is TypeTemple)
                     pb.UpdatePanel();
             }
         }

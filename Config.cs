@@ -40,18 +40,41 @@ namespace Fantasy_King_s_Battle
                 TypeLobbies.Add(new TypeLobby(n));
             }
 
-            // Загрузка конфигурации зданий
-            xmlDoc = CreateXmlDocument("Config\\Buildings.xml");
-            foreach (XmlNode n in xmlDoc.SelectNodes("/Buildings/Building"))
+            // Загрузка конфигурации гильдий
+            xmlDoc = CreateXmlDocument(@"Config\TypeGuilds.xml");
+            foreach (XmlNode n in xmlDoc.SelectNodes("/TypeGuilds/TypeGuild"))
             {
-                Buildings.Add(new Building(n));
+                TypeGuilds.Add(new TypeGuild(n));
             }
 
-            foreach (Building b in Buildings)
-                foreach (Level l in b.Levels)
-                    if (l != null)
-                        foreach (Requirement r in l.Requirements)
-                            r.FindBuilding();
+            // Загрузка конфигурации экономических зданий
+            xmlDoc = CreateXmlDocument(@"Config\TypeEconomicConstructions.xml");
+            foreach (XmlNode n in xmlDoc.SelectNodes("/TypeConstructionEconomics/TypeConstructionEconomic"))
+            {
+                TypeEconomicConstructions.Add(new TypeEconomicConstruction(n));
+            }
+
+            // Загрузка конфигурации храмов
+            xmlDoc = CreateXmlDocument(@"Config\TypeTemples.xml");
+            foreach (XmlNode n in xmlDoc.SelectNodes("/TypeTemples/TypeTemple"))
+            {
+                TypeTemples.Add(new TypeTemple(n));
+            }
+
+            // Загрузка логов монстров
+            xmlDoc = CreateXmlDocument("Config\\TypeLairs.xml");
+
+            foreach (XmlNode n in xmlDoc.SelectNodes("/TypeLairs/TypeLair"))
+            {
+                TypeLairs.Add(new TypeLair(n));
+            }
+
+            // Создаем единую конфигурацию сооружений
+            TypeConstructionsOfKingdom.AddRange(TypeGuilds);
+            TypeConstructionsOfKingdom.AddRange(TypeEconomicConstructions);
+            TypeConstructionsOfKingdom.AddRange(TypeTemples);
+            TypeConstructions.AddRange(TypeConstructionsOfKingdom);
+            TypeConstructions.AddRange(TypeLairs);
 
             // Загрузка предметов
             xmlDoc = CreateXmlDocument("Config\\Items.xml");
@@ -117,14 +140,6 @@ namespace Fantasy_King_s_Battle
                 TypeMonsters.Add(new TypeMonster(n));
             }
 
-            // Загрузка логов монстров
-            xmlDoc = CreateXmlDocument("Config\\TypeLairs.xml");
-
-            foreach (XmlNode n in xmlDoc.SelectNodes("/TypeLairs/TypeLair"))
-            {
-                TypeLairs.Add(new TypeLair(n));
-            }
-
             // Составляем общий пул существ
             TypeCreatures.AddRange(TypeHeroes);
             TypeCreatures.AddRange(TypeCitizens);
@@ -143,11 +158,11 @@ namespace Fantasy_King_s_Battle
             foreach (TypeHero h in TypeHeroes)
                 h.TuneDeferredLinks();
 
-            foreach (Building b in Buildings)
-                b.TuneResearches();
+            foreach (TypeConstruction tc in TypeConstructions)
+                tc.TuneDeferredLinks();
 
-            foreach (TypeLair l in TypeLairs)
-                l.TuneDeferredLinks();
+            //foreach (TypeLair l in TypeLairs)
+            //    l.TuneDeferredLinks();
 
             // Загрузка навыков
             xmlDoc = CreateXmlDocument("Config\\Skills.xml");
@@ -167,8 +182,18 @@ namespace Fantasy_King_s_Battle
         }
 
         internal string PathResources { get; }
-        internal List<TypeLobby> TypeLobbies { get; } = new List<TypeLobby>();
-        internal List<Building> Buildings { get; } = new List<Building>();
+        internal List<TypeLobby> TypeLobbies { get; } = new List<TypeLobby>();       
+        internal List<TypeMonster> TypeMonsters { get; } = new List<TypeMonster>();
+
+        // Сооружения, постройки, логова
+        internal List<TypeGuild> TypeGuilds { get; } = new List<TypeGuild>();
+        internal List<TypeEconomicConstruction> TypeEconomicConstructions { get; } = new List<TypeEconomicConstruction>();
+        internal List<TypeTemple> TypeTemples { get; } = new List<TypeTemple>();
+        internal List<TypeLair> TypeLairs { get; } = new List<TypeLair>();
+        internal List<TypeConstructionOfKingdom> TypeConstructionsOfKingdom { get; } = new List<TypeConstructionOfKingdom>();
+        internal List<TypeConstruction> TypeConstructions { get; } = new List<TypeConstruction>();
+
+        //
         internal List<Ability> Abilities { get; } = new List<Ability>();
         internal List<KindCreature> KindCreatures { get; } = new List<KindCreature>();
         internal List<TypeCitizen> TypeCitizens { get; } = new List<TypeCitizen>();
@@ -178,8 +203,6 @@ namespace Fantasy_King_s_Battle
         internal List<GroupArmour> GroupArmours { get; } = new List<GroupArmour>();
         internal List<Skill> Skills { get; } = new List<Skill>();
         internal int MaxLevelSkill { get; }
-        internal List<TypeMonster> TypeMonsters { get; } = new List<TypeMonster>();
-        internal List<TypeLair> TypeLairs { get; } = new List<TypeLair>();
         internal List<TypeCreature> TypeCreatures { get; } = new List<TypeCreature>();
 
         // Константы
@@ -275,17 +298,43 @@ namespace Fantasy_King_s_Battle
             throw new Exception("Навык " + ID + " не найден.");
         }
 
-        internal Building FindBuilding(string ID)
+        internal TypeConstructionOfKingdom FindTypeConstructionOfKingdom(string ID)
         {
-            foreach (Building b in Buildings)
+            foreach (TypeConstructionOfKingdom tck in TypeConstructionsOfKingdom)
             {
-                if (b.ID == ID)
-                {
-                    return b;
-                }
+                if (tck.ID == ID)
+                    return tck;
             }
 
-            throw new Exception("Здание " + ID + " не найдено.");
+            throw new Exception("Сооружение Королевства " + ID + " не найдено.");
+        }
+
+        internal TypeConstructionWithHero FindTypeConstructionWithHero(string ID)
+        {
+            foreach (TypeGuild tg in TypeGuilds)
+            {
+                if (tg.ID == ID)
+                    return tg;
+            }
+
+            foreach (TypeTemple tt in TypeTemples)
+            {
+                if (tt.ID == ID)
+                    return tt;
+            }
+
+            throw new Exception("Сооружение для найма героев " + ID + " не найдено.");
+        }
+
+        internal TypeEconomicConstruction FindTypeEconomicConstruction(string ID)
+        {
+            foreach (TypeEconomicConstruction tec in TypeEconomicConstructions)
+            {
+                if (tec.ID == ID)
+                    return tec;
+            }
+
+            throw new Exception("Экономическое сооружение " + ID + " не найдено.");
         }
 
         internal TypeHero FindTypeHero(string ID)

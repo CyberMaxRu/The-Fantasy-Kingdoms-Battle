@@ -17,6 +17,7 @@ namespace Fantasy_King_s_Battle
         {
             Building = pb;
             DayOfHire = Player.Lobby.Turn;
+            TypeHero = (pb.Building as TypeConstructionWithHero).TrainedHero;
 
             // Применяем дефолтные способности
             Abilities.AddRange(TypeHero.Abilities);
@@ -46,7 +47,7 @@ namespace Fantasy_King_s_Battle
 
         internal PlayerBuilding Building { get; }// Здание, которому принадлежит герой
         internal Player Player => Building.Player;// Игрок, которому принадлежит герой
-        internal TypeHero TypeHero => Building.Building.TrainedHero; // Класс героя
+        internal TypeHero TypeHero { get; } // Класс героя
 
         // Основные параметры
         internal int Level { get; private set; }// Уровень героя

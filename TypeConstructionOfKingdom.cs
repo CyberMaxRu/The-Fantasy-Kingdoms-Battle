@@ -9,10 +9,12 @@ using System.Diagnostics;
 namespace Fantasy_King_s_Battle
 {
     // Класс сооружения в Королевстве
-    internal abstract class TypeKingdomConstruction : TypeConstruction
+    internal abstract class TypeConstructionOfKingdom : TypeConstruction
     {
-        public TypeKingdomConstruction(XmlNode n) : base(n)
+        public TypeConstructionOfKingdom(XmlNode n) : base(n)
         {
+            HasTreasury = XmlUtils.GetBool(n.SelectSingleNode("HasTreasury"), false);
+
             // Загружаем информацию об уровнях
             Levels = new Level[MaxLevel + 1];// Для упрощения работы с уровнями, добавляем 1, чтобы уровень был равен индексу в массиве
 
@@ -71,14 +73,26 @@ namespace Fantasy_King_s_Battle
 
         internal Level[] Levels;
         internal Research[,,] Researches;
+        internal PanelBuilding Panel { get; set; }
+        internal bool HasTreasury { get; }// Имеет собственную казну
 
-        internal void TuneResearches()
+        internal override void TuneDeferredLinks()
         {
+            foreach (Level l in Levels)
+            {
+                if (l != null)
+                    foreach (Requirement r in l.Requirements)
+                        r.FindBuilding();
+            }
+
             if (Researches != null)
+            {
                 for (int z = 0; z < Researches.GetLength(0); z++)
                     for (int y = 0; y < Researches.GetLength(1); y++)
                         for (int x = 0; x < Researches.GetLength(2); x++)
                             Researches[z, y, x]?.FindItem();
+            }
+
         }
     }
 }

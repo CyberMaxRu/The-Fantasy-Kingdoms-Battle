@@ -39,5 +39,10 @@ namespace Fantasy_King_s_Battle
         internal int DefaultLevel { get; }
         internal int MaxLevel { get; }
         internal int Line { get; }
+
+        internal virtual void TuneDeferredLinks()
+        {
+
+        }
     }
 }

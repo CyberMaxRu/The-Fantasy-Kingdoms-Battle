@@ -13,7 +13,7 @@ namespace Fantasy_King_s_Battle
             if (nr != null)
             {
                 foreach (XmlNode r in nr.SelectNodes("Requirement"))
-                    list.Add(new Requirement(r.SelectSingleNode("Building").InnerText, GetInteger(r.SelectSingleNode("Level"))));
+                    list.Add(new Requirement(r.SelectSingleNode("TypeConstruction").InnerText, GetInteger(r.SelectSingleNode("Level"))));
             }
         }
 
