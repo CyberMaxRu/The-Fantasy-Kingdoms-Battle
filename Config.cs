@@ -126,9 +126,9 @@ namespace Fantasy_King_s_Battle
             }
 
             // Составляем общий пул существ
-            Units.AddRange(Heroes);
-            Units.AddRange(KindCitizens);
-            Units.AddRange(Monsters);
+            KindCreatures.AddRange(Heroes);
+            KindCreatures.AddRange(KindCitizens);
+            KindCreatures.AddRange(Monsters);
 
             // Настраиваем связи
             foreach (Ability a in Abilities)
@@ -180,7 +180,7 @@ namespace Fantasy_King_s_Battle
         internal int MaxLevelSkill { get; }
         internal List<Monster> Monsters { get; } = new List<Monster>();
         internal List<Lair> Lairs { get; } = new List<Lair>();
-        internal List<KindCreature> Units { get; } = new List<KindCreature>();
+        internal List<KindCreature> KindCreatures { get; } = new List<KindCreature>();
 
         // Константы
         internal int GridSize { get; private set; }// Размер ячейки сетки
@@ -345,7 +345,7 @@ namespace Fantasy_King_s_Battle
 
         internal KindCreature FindUnit(string ID)
         {
-            foreach (KindCreature u in Units)
+            foreach (KindCreature u in KindCreatures)
             {
                 if (u.ID == ID)
                     return u;
