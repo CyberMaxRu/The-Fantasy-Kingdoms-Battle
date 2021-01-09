@@ -472,10 +472,10 @@ namespace Fantasy_King_s_Battle
 
             HeroInRow = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battlefield/HeroInRow").InnerText);
             Debug.Assert(HeroInRow >= 3);
-            Debug.Assert(HeroInRow <= 11);
+            Debug.Assert(HeroInRow <= 14);
             HeroRows = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battlefield/HeroRows").InnerText);
             Debug.Assert(HeroRows >= 3);
-            Debug.Assert(HeroRows <= 11);
+            Debug.Assert(HeroRows <= 14);
             RowsBetweenSides = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battlefield/RowsBetweenSides").InnerText);
             Debug.Assert(RowsBetweenSides >= 0);
             Debug.Assert(RowsBetweenSides <= 4);
