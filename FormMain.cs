@@ -1081,11 +1081,11 @@ namespace Fantasy_King_s_Battle
 
         private void DrawHeroes()
         {
-            panelHeroes = new PanelWithPanelEntity(Config.HeroInRow);
+            panelHeroes = new PanelWithPanelEntity(Config.HeroRows);
             pageHeroes.AddContainer(panelHeroes, new Point(0, 0));
 
             List<ICell> list = new List<ICell>();
-            for (int x = 0; x < Config.HeroInRow * Config.HeroInRow; x++)
+            for (int x = 0; x < Config.HeroRows * Config.HeroInRow; x++)
                 list.Add(null);
 
             panelHeroes.ApplyList(list);
