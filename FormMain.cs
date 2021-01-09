@@ -1107,9 +1107,9 @@ namespace Fantasy_King_s_Battle
 
             if (bmpBackground != null)
             {
-                e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
-                e.Graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
-                e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+                e.Graphics.CompositingMode = CompositingMode.SourceCopy;
+                e.Graphics.CompositingQuality = CompositingQuality.HighSpeed;
+                e.Graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
 
                 // Рисуем подложку
                 e.Graphics.DrawImage(bmpBackground, e.ClipRectangle, e.ClipRectangle, GraphicsUnit.Pixel);
