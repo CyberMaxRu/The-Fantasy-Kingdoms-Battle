@@ -87,7 +87,7 @@ namespace Fantasy_King_s_Battle
             {
                 AutoSize = false,
                 Size = new Size(32, 16),
-                //BackColor = Color.Transparent,
+                BackColor = Color.Transparent,
                 Font = FormMain.Config.FontBuildingLevel,
                 TextAlign = ContentAlignment.MiddleRight
             };
