@@ -32,7 +32,7 @@ namespace Fantasy_King_s_Battle
         }
         internal string NamePage { get; set; }
         internal int IndexPage { get; set; }
-        internal Control ContextPage { get; set; }
+        internal ControlContainer ContextPage { get; set; }
 
         private void UpdateImage()
         {
@@ -114,7 +114,7 @@ namespace Fantasy_King_s_Battle
 
         internal int ActivePage { get; set; }
 
-        internal void AddPage(string namePage, int imageIndex, Control controlForPage)
+        internal void AddPage(string namePage, int imageIndex, ControlContainer controlForPage)
         {
             PictureBoxPage page = new PictureBoxPage()
             {
@@ -133,7 +133,7 @@ namespace Fantasy_King_s_Battle
             {
                 controlForPage.Left = 0;
                 controlForPage.Top = GuiUtils.NextTop(lblCaptionPage);
-                controlForPage.Hide();
+                controlForPage.SetVisible(false);
                 controlForPage.Parent = this;
             }
 
@@ -150,10 +150,10 @@ namespace Fantasy_King_s_Battle
                 ActivePage = indexPage;
 
                 activePage?.Invalidate();
-                activePage?.ContextPage?.Hide();
+                activePage?.ContextPage?.SetVisible(false);
                 activePage = btnPages[indexPage];
                 lblCaptionPage.Text = activePage.NamePage;
-                activePage.ContextPage?.Show();
+                activePage.ContextPage?.SetVisible(true);
                 activePage.Invalidate();
             }
         }
@@ -166,10 +166,7 @@ namespace Fantasy_King_s_Battle
             {
                 if (p.ContextPage != null)
                 {
-                    foreach (Control c in p.ContextPage.Controls)
-                    {
-                        minWidth = Math.Max(minWidth, c.Left + c.Width);
-                    }
+                    minWidth = p.ContextPage.MaxSize().Width;
                 }
             }
 

@@ -10,15 +10,15 @@ using System.Drawing;
 namespace Fantasy_King_s_Battle
 {
     // Класс панели с расположенными на ней панелями сущностей
-    internal sealed class PanelWithPanelEntity : PictureBox
+    internal sealed class PanelWithPanelEntity : ControlContainer
     {
         private List<PanelEntity> panelEntities = new List<PanelEntity>();
         private int rows;// Сколько сейчас строк подготовлено
 
-        public PanelWithPanelEntity(int entityInRow)
+        public PanelWithPanelEntity(int entityInRow) : base()
         {
-            DoubleBuffered = true;
-            BackColor = Color.Transparent;
+            //DoubleBuffered = true;
+            //BackColor = Color.Transparent;
             EntityInRow = entityInRow;
 
             while (rows < FormMain.Config.MinRowsEntities)
@@ -63,13 +63,9 @@ namespace Fantasy_King_s_Battle
 
             for (int x = 0; x < EntityInRow; x++)
             {
-                pe = new PanelEntity
-                {
-                    Parent = this
-                };
-                pe.Left = x * (pe.Width + 1);
-                pe.Top = rows * (pe.Height + 1);
-
+                pe = new PanelEntity();
+                AddControl(pe, new Point(x * (pe.Width + 1), rows * (pe.Height + 1)));
+                pe.Visible = false;
                 panelEntities.Add(pe);
             }
 
@@ -87,6 +83,7 @@ namespace Fantasy_King_s_Battle
             {
                 pe = panelEntities[panelEntities.Count - 1];
                 panelEntities.Remove(pe);
+                Controls.Remove(pe);
                 pe.Dispose();
             }
 

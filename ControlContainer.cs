@@ -62,7 +62,7 @@ namespace Fantasy_King_s_Battle
         {
             foreach (KeyValuePair<Control, Point> p in Controls)
             {
-                ArrangeControl(p);
+                ArrangeControl(p.Key, p.Value);
             }
 
             foreach (KeyValuePair<ControlContainer, Point> p in Containers)
@@ -71,10 +71,13 @@ namespace Fantasy_King_s_Battle
             }
         }
 
-        private void ArrangeControl(KeyValuePair<Control, Point> p)
+        internal void ArrangeControl(Control c, Point p)
         {
-            p.Key.Left = Left + p.Value.X;
-            p.Key.Top = Top + p.Value.Y;
+            if (!Controls[c].Equals(p))
+                Controls[c] = p;
+
+            c.Left = Left + p.X;
+            c.Top = Top + p.Y;
         }
 
         private void ArrangeContainer(KeyValuePair<ControlContainer, Point> p)
@@ -94,7 +97,7 @@ namespace Fantasy_King_s_Battle
             if (Parent != null)
                 c.Parent = Parent;
 
-            ArrangeControl(Controls.Last());
+            ArrangeControl(c, p);
         }
 
         internal void AddContainer(ControlContainer cc, Point p)

@@ -10,7 +10,7 @@ using System.Diagnostics;
 namespace Fantasy_King_s_Battle
 {
     // Класс панели здания
-    internal sealed class PanelBuilding : BasePanel
+    internal sealed class PanelBuilding : ControlContainer
     {
         private PlayerBuilding building;
         private readonly PictureBox pbBuilding;
@@ -27,89 +27,75 @@ namespace Fantasy_King_s_Battle
         {
             lblName = new Label()
             {
-                Parent = this,
-                Left = FormMain.Config.GridSize,
-                Top = FormMain.Config.GridSize,
                 Height = FormMain.Config.GridSize * 2,
                 BackColor = Color.Transparent,
                 Font = FormMain.Config.FontBuildingCaption
             };
+            AddControl(lblName, new Point(FormMain.Config.GridSize, FormMain.Config.GridSize));
 
             pbBuilding = new PictureBox()
             {
-                Parent = this,
                 Width = Program.formMain.ilBuildings.ImageSize.Width + 2,// Окантовка
                 Height = Program.formMain.ilBuildings.ImageSize.Height + 2,// Окантовка
-                Left = FormMain.Config.GridSize,
-                Top = GuiUtils.NextTop(lblName),
                 BackColor = Color.Transparent
             };
+            AddControl(pbBuilding, new Point(FormMain.Config.GridSize, GuiUtils.NextTop(lblName)));
             pbBuilding.MouseEnter += pbBuilding_MouseEnter;
             pbBuilding.MouseLeave += Control_MouseLeave;
             pbBuilding.MouseClick += pbBuilding_MouseClick;
             
             btnHeroes = new Button()
             {
-                Parent = this,
                 ImageList = Program.formMain.ilGuiHeroes,
                 Size = GuiUtils.SizeButtonWithImage(Program.formMain.ilGuiHeroes),
-                Top = GuiUtils.NextTop(pbBuilding),
-                Left = FormMain.Config.GridSize,
-                BackgroundImage = Program.formMain.bmpBackgroundButton,
+                //BackgroundImage = Program.formMain.bmpBackgroundButton,
                 Font = FormMain.Config.FontCost,
                 ForeColor = FormMain.Config.CommonCost,
                 TextAlign = ContentAlignment.BottomCenter
             };
+            AddControl(btnHeroes, new Point(FormMain.Config.GridSize, GuiUtils.NextTop(pbBuilding)));
 
             btnBuyOrUpgrade = new Button()
             {
-                Parent = this,
-                Left = GuiUtils.NextLeft(pbBuilding),
                 Size = GuiUtils.SizeButtonWithImage(Program.formMain.ilGui),
-                Top = pbBuilding.Top + pbBuilding.Height - Program.formMain.ilGui.ImageSize.Height - 8,
                 ImageList = Program.formMain.ilGui,
                 TextAlign = ContentAlignment.BottomCenter,
                 Font = FormMain.Config.FontCost,
-                BackgroundImage = Program.formMain.bmpBackgroundButton,
+                //BackgroundImage = Program.formMain.bmpBackgroundButton,
                 ForeColor = FormMain.Config.CommonCost
             };
+            AddControl(btnBuyOrUpgrade, new Point(GuiUtils.NextLeft(pbBuilding), pbBuilding.Top + pbBuilding.Height - Program.formMain.ilGui.ImageSize.Height - 8));
             btnBuyOrUpgrade.Click += BtnBuyOrUprgade_Click;
             btnBuyOrUpgrade.MouseEnter += BtnBuyOrUpgrade_MouseEnter;
             btnBuyOrUpgrade.MouseLeave += Control_MouseLeave;
 
             btnHireHero = new Button()
             {
-                Parent = this,
-                Left = btnBuyOrUpgrade.Left,
-                Top = btnBuyOrUpgrade.Top - btnBuyOrUpgrade.Height - FormMain.Config.GridSize,
                 Size = btnBuyOrUpgrade.Size,
                 ImageList = Program.formMain.ilGuiHeroes,
                 TextAlign = ContentAlignment.BottomCenter,
                 Font = FormMain.Config.FontCost,
-                BackgroundImage = Program.formMain.bmpBackgroundButton,
+                //BackgroundImage = Program.formMain.bmpBackgroundButton,
                 ForeColor = Color.White
             };
+            AddControl(btnHireHero, new Point(btnBuyOrUpgrade.Left, btnBuyOrUpgrade.Top - btnBuyOrUpgrade.Height - FormMain.Config.GridSize));
             btnHireHero.Click += BtnHero_Click;
             btnHireHero.MouseEnter += BtnHireHero_MouseEnter;
             btnHireHero.MouseLeave += Control_MouseLeave;
-            
+
             lblLevel = new Label()
             {
-                Parent = this,
                 AutoSize = false,
-                Top = lblName.Top,
                 Size = new Size(32, 16),
-                BackColor = Color.Transparent,
+                //BackColor = Color.Transparent,
                 Font = FormMain.Config.FontBuildingLevel,
                 TextAlign = ContentAlignment.MiddleRight
             };
+            AddControl(lblLevel, new Point(0, lblName.Top));
             lblLevel.BringToFront();
 
             lblIncome = new Label()
             {
-                Parent = this,
-                Left = btnBuyOrUpgrade.Left - FormMain.Config.GridSize,
-                Top = btnHeroes.Top,
                 AutoSize = false,
                 Width = btnBuyOrUpgrade.Width + FormMain.Config.GridSize,
                 Height = 20,
@@ -121,20 +107,22 @@ namespace Fantasy_King_s_Battle
                 ImageIndex = FormMain.GUI_16_GOLD,
                 ImageList = Program.formMain.ilGui16
             };
-           
+            AddControl(lblIncome, new Point(btnBuyOrUpgrade.Left, btnHeroes.Top));
+
             Height = GuiUtils.NextTop(btnHeroes);// lblIncome. Top + lblIncome.Height + (Config.GRID_SIZE * 2);
             Width = btnBuyOrUpgrade.Left + btnBuyOrUpgrade.Width + FormMain.Config.GridSize;
 
             lblName.Width = Width - (FormMain.Config.GridSize * 2) - 2;
-            lblLevel.Left = Width - FormMain.Config.GridSize - lblLevel.Width;
+            ArrangeControl(lblLevel, new Point(Width - FormMain.Config.GridSize - lblLevel.Width, lblLevel.Top));
 
             penBorder = new Pen(Color.Black);
             rectBorder = new Rectangle(0, 0, Width - 1, Height - 1);
 
-            MouseClick += PanelBuilding_MouseClick;
+            // Восстановить
+            //MouseClick += PanelBuilding_MouseClick;
         }
 
-        internal PlayerBuilding Building { get { return building; } set { building = value; UpdateData(); } }
+        internal PlayerBuilding Building { get { return building; } set { Debug.Assert(value != null); building = value; UpdateData(); } }
 
         private void SelectThisBuilding()
         {
@@ -259,6 +247,10 @@ namespace Fantasy_King_s_Battle
         {
             Debug.Assert(Building.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
 
+            btnHeroes.Parent = null;
+            btnBuyOrUpgrade.Parent = null;
+            btnHireHero.Parent = null;
+
             lblName.Text = Building.Building.Name;
             lblIncome.ImageIndex = Building.DoIncome() == true ? FormMain.GUI_16_GOLD : -1;
             lblIncome.Text = Building.DoIncome() == true ? "+" + Building.Income().ToString() : "";
@@ -270,7 +262,7 @@ namespace Fantasy_King_s_Battle
             // Информация об уровне здания
             if ((Building.Level > 0) && (Building.Building.MaxLevel > 1))
             {
-                lblLevel.Show();
+                //lblLevel.Parent = Parent;
 
                 if (Building.Level < Building.Building.MaxLevel)
                 {
@@ -283,8 +275,8 @@ namespace Fantasy_King_s_Battle
                     lblLevel.ForeColor = Color.Green;
                 }
             }
-            else
-                lblLevel.Hide();
+            //else
+             //   lblLevel.Parent = null;
 
             // Восстановить
             /*
@@ -340,11 +332,11 @@ namespace Fantasy_King_s_Battle
             }
             */
 
-            Invalidate();
+            //Invalidate();
         }
-        protected override Color ColorBorder()
+        /*protected override Color ColorBorder()
         {
             return FormMain.Config.ColorBorder(Program.formMain.SelectedPanelBuilding == this);
-        }
+        }*/
     }
 }

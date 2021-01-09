@@ -467,6 +467,11 @@ namespace Fantasy_King_s_Battle
 
             ShowDataPlayer();
 
+            foreach (ControlContainer cc in pages)
+            {
+                cc.SetVisible(false);
+            }
+
             // Определяем максимальную ширину страниц
             int maxHeightPages = 0;
             Size maxSizePanelPage;
@@ -1009,7 +1014,7 @@ namespace Fantasy_King_s_Battle
                         if (tck.Line == line)
                         {
                             tck.Panel = new PanelBuilding();
-                            panel.AddControl(tck.Panel, new Point(left, top));
+                            panel.AddContainer(tck.Panel, new Point(left, top));
 
                             left += tck.Panel.Width + Config.GridSize;
                             height = tck.Panel.Height;
@@ -1077,7 +1082,7 @@ namespace Fantasy_King_s_Battle
         private void DrawHeroes()
         {
             panelHeroes = new PanelWithPanelEntity(Config.HeroInRow);
-            pageHeroes.AddControl(panelHeroes, new Point(0, 0));
+            pageHeroes.AddContainer(panelHeroes, new Point(0, 0));
 
             List<ICell> list = new List<ICell>();
             for (int x = 0; x < Config.HeroInRow * Config.HeroInRow; x++)
@@ -1159,7 +1164,7 @@ namespace Fantasy_King_s_Battle
         private void DrawWarehouse()
         {
             panelWarehouse = new PanelWithPanelEntity(Config.WarehouseWidth);
-            pageHeroes.AddControl(panelWarehouse, new Point(0, panelHeroes.Height + Config.GridSize));
+            pageHeroes.AddContainer(panelWarehouse, new Point(0, panelHeroes.Height + Config.GridSize));
         }
 
         internal void ShowWarehouse()
@@ -1227,11 +1232,11 @@ namespace Fantasy_King_s_Battle
                 UpdateMenu();
 
                 if (oldSelected != null)
-                    oldSelected.Invalidate(true);
+                    oldSelected.Repaint();
                 if (SelectedPanelBuilding != null)
                 {
                     panelBuildingInfo.Building = SelectedPanelBuilding.Building;
-                    SelectedPanelBuilding.Invalidate(true);
+                    SelectedPanelBuilding.Repaint();
                     panelBuildingInfo.Show();
                 }
                 else
@@ -1322,6 +1327,7 @@ namespace Fantasy_King_s_Battle
             // Рисуем содержимое ячеек
             if (SelectedPanelBuilding != null)
             {
+                Debug.Assert(SelectedPanelBuilding.Building != null);
                 panelBuildingInfo.Building = SelectedPanelBuilding.Building;
 
                 PlayerBuilding plb = SelectedPanelBuilding.Building;
@@ -1456,6 +1462,7 @@ namespace Fantasy_King_s_Battle
 
         internal void UpdateTarget(PlayerLair newLair)
         {
+            Debug.Assert(newLair != null);
             Debug.Assert(lobby.CurrentPlayer == newLair.Player);
 
             if (lobby.CurrentPlayer.TargetLair != null)
