@@ -9,13 +9,13 @@ using System.Drawing;
 
 namespace Fantasy_King_s_Battle
 {
-    internal sealed class PanelPage
+    internal sealed class ControlContainer
     {
         private Dictionary<Control, Point> Controls = new Dictionary<Control, Point>();
         private int left;
         private int top;
 
-        public PanelPage(Control parent)
+        public ControlContainer(Control parent)
         {
             Parent = parent;
 

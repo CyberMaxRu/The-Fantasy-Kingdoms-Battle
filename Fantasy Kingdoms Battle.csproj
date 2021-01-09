@@ -149,7 +149,7 @@
     <Compile Include="PanelEntity.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="PanelPage.cs">
+    <Compile Include="ControlContainer.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="PlayerResearch.cs" />

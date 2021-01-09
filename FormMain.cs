@@ -137,13 +137,13 @@ namespace Fantasy_King_s_Battle
         private int maxWidthPages;
 
 
-        private readonly List<PanelPage> pages = new List<PanelPage>();
-        private readonly PanelPage pageGuilds;
-        private readonly PanelPage pageBuildings;
-        private readonly PanelPage pageTemples;
-        private readonly PanelPage pageHeroes;
-        private readonly PanelPage pageLairs;
-        private PanelPage currentPage;
+        private readonly List<ControlContainer> pages = new List<ControlContainer>();
+        private readonly ControlContainer pageGuilds;
+        private readonly ControlContainer pageBuildings;
+        private readonly ControlContainer pageTemples;
+        private readonly ControlContainer pageHeroes;
+        private readonly ControlContainer pageLairs;
+        private ControlContainer currentPage;
         private readonly int leftForPages;
         private readonly int heightToolBar;
         private readonly int heightBandLobby;
@@ -419,9 +419,9 @@ namespace Fantasy_King_s_Battle
             pageHeroes = PreparePanel();
             pageLairs = PreparePanel();
 
-            PanelPage PreparePanel()
+            ControlContainer PreparePanel()
             {
-                PanelPage tpp = new PanelPage(this);
+                ControlContainer tpp = new ControlContainer(this);
                 tpp.Left = leftForPages;
                 tpp.Top = GuiUtils.NextTop(btnQuit);
                 pages.Add(tpp);
@@ -450,7 +450,7 @@ namespace Fantasy_King_s_Battle
             btnEndTurn.MouseHover += BtnEndTurn_MouseHover;
             btnEndTurn.Click += BtnEndTurn_Click;
 
-            Button CreateButtonPage(PanelPage p, int imageIndex)
+            Button CreateButtonPage(ControlContainer p, int imageIndex)
             {
                 Button b = GuiUtils.CreateButtonWithIcon(this, 0, Config.GridSize, imageIndex);
                 b.FlatAppearance.BorderColor = Color.DarkBlue;
@@ -471,7 +471,7 @@ namespace Fantasy_King_s_Battle
             int maxHeightPages = 0;
             Size maxSizePanelPage;
 
-            foreach (PanelPage pc in pages)
+            foreach (ControlContainer pc in pages)
             {
                 maxSizePanelPage = pc.MaxSize();
                 maxWidthPages = Math.Max(maxWidthPages, maxSizePanelPage.Width);
@@ -770,7 +770,7 @@ namespace Fantasy_King_s_Battle
 
         private void BtnPage_Click(object sender, EventArgs e)
         {
-            ActivatePage((PanelPage)((Button)sender).Tag);
+            ActivatePage((ControlContainer)((Button)sender).Tag);
         }
 
         private void BtnPreferences_Click(object sender, EventArgs e)
@@ -994,7 +994,7 @@ namespace Fantasy_King_s_Battle
             DrawPage(pageBuildings, Config.TypeEconomicConstructions.ToList<TypeConstruction>());
             DrawPage(pageTemples, Config.TypeTemples.ToList<TypeConstruction>());
 
-            void DrawPage(PanelPage panel, List<TypeConstruction> list)
+            void DrawPage(ControlContainer panel, List<TypeConstruction> list)
             {
                 int top = 0;
                 int left;
@@ -1172,7 +1172,7 @@ namespace Fantasy_King_s_Battle
             ActivatePage(pages[e.TabPageIndex]);
         }
 
-        private void ActivatePage(PanelPage pc)
+        private void ActivatePage(ControlContainer pc)
         {
             currentPage?.SetVisible(false);
             pc.SetVisible(true);
