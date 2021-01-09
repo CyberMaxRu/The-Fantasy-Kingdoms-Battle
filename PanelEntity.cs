@@ -71,13 +71,13 @@ namespace Fantasy_King_s_Battle
         {
             base.OnPaintBackground(e);
 
-            //if ((lastEmptyCell != (cell == null)) || ((cell != null) && ((lastImageIndex != cell.ImageIndex()) || (lastNormal != cell.NormalImage()) || (lastSelected != (Program.formMain.SelectedPanelEntity == this)))))
+            if ((lastEmptyCell != (cell == null)) || ((cell != null) && ((lastImageIndex != cell.ImageIndex()) || (lastNormal != cell.NormalImage()) || (lastSelected != (Program.formMain.SelectedPanelEntity == this)))))
                 DrawCell();
 
             e.Graphics.CompositingMode = CompositingMode.SourceOver;
             e.Graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
             e.Graphics.CompositingQuality = CompositingQuality.HighSpeed;
-            e.Graphics.DrawImageUnscaled(bmpImage, e.ClipRectangle);
+            e.Graphics.DrawImage(bmpImage, e.ClipRectangle, e.ClipRectangle, GraphicsUnit.Pixel);
         }
 
         protected override void Dispose(bool disposing)
