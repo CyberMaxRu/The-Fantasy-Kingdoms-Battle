@@ -421,12 +421,9 @@ namespace Fantasy_King_s_Battle
 
             PanelPage PreparePanel()
             {
-                PanelPage tpp = new PanelPage()
-                {
-                    Parent = this,
-                    Left = leftForPages,
-                    Top = GuiUtils.NextTop(btnQuit)
-                };
+                PanelPage tpp = new PanelPage(this);
+                tpp.Left = leftForPages;
+                tpp.Top = GuiUtils.NextTop(btnQuit);
                 pages.Add(tpp);
                 return tpp;
             }
@@ -472,21 +469,20 @@ namespace Fantasy_King_s_Battle
 
             // Определяем максимальную ширину страниц
             int maxHeightPages = 0;
+            Size maxSizePanelPage;
 
             foreach (PanelPage pc in pages)
             {
-                foreach (Control c in pc.Controls)
-                {
-                    maxWidthPages = Math.Max(maxWidthPages, c.Left + c.Width);
-                    maxHeightPages = Math.Max(maxHeightPages, c.Top + c.Height);
-                }
+                maxSizePanelPage = pc.MaxSize();
+                maxWidthPages = Math.Max(maxWidthPages, maxSizePanelPage.Width);
+                maxHeightPages = Math.Max(maxHeightPages, maxSizePanelPage.Height);
             }
 
-            foreach (PanelPage pc in pages)
+/*            foreach (PanelPage pc in pages)
             {
                 pc.Width = maxWidthPages;
                 pc.Height = maxHeightPages;
-            }
+            }*/
 
             // Создаем панель с меню
             panelMenu = new PanelMenu(this, dirResources);
@@ -1012,11 +1008,8 @@ namespace Fantasy_King_s_Battle
                     {
                         if (tck.Line == line)
                         {
-                            tck.Panel = new PanelBuilding()
-                            {
-                                Parent = panel,
-                                Location = new Point(left, top)
-                            };
+                            tck.Panel = new PanelBuilding();
+                            panel.AddControl(tck.Panel, new Point(left, top));
 
                             left += tck.Panel.Width + Config.GridSize;
                             height = tck.Panel.Height;
@@ -1042,11 +1035,8 @@ namespace Fantasy_King_s_Battle
                 {
                     if (l.Line == line)
                     {
-                        l.Panel = new PanelLair()
-                        {
-                            Parent = pageLairs,
-                            Location = new Point(left, top)
-                        };
+                        l.Panel = new PanelLair();
+                        pageLairs.AddControl(l.Panel, new Point(left, top));
 
                         left += l.Panel.Width + Config.GridSize;
                         height = l.Panel.Height;
@@ -1086,12 +1076,8 @@ namespace Fantasy_King_s_Battle
 
         private void DrawHeroes()
         {
-            panelHeroes = new PanelWithPanelEntity(Config.HeroInRow)
-            {
-                Parent = pageHeroes,
-                Left = 0,
-                Top = 0
-            };
+            panelHeroes = new PanelWithPanelEntity(Config.HeroInRow);
+            pageHeroes.AddControl(panelHeroes, new Point(0, 0));
 
             List<ICell> list = new List<ICell>();
             for (int x = 0; x < Config.HeroInRow * Config.HeroInRow; x++)
@@ -1172,12 +1158,8 @@ namespace Fantasy_King_s_Battle
 
         private void DrawWarehouse()
         {
-            panelWarehouse = new PanelWithPanelEntity(Config.WarehouseWidth)
-            {
-                Parent = pageHeroes,
-                Left = 0,
-                Top = panelHeroes.Height + Config.GridSize
-            };
+            panelWarehouse = new PanelWithPanelEntity(Config.WarehouseWidth);
+            pageHeroes.AddControl(panelWarehouse, new Point(0, panelHeroes.Height + Config.GridSize));
         }
 
         internal void ShowWarehouse()
@@ -1192,8 +1174,8 @@ namespace Fantasy_King_s_Battle
 
         private void ActivatePage(PanelPage pc)
         {
-            currentPage?.Hide();
-            pc.Show();
+            currentPage?.SetVisible(false);
+            pc.SetVisible(true);
             currentPage = pc;
         }
 
