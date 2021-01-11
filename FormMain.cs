@@ -1579,6 +1579,7 @@ namespace Fantasy_King_s_Battle
             VisualControl curControl = ControlUnderMouse();
             if (curControl != null)
             {
+                Debug.Assert(!formHint.Visible);
                 controlWithHint = curControl;
                 controlWithHint.DoShowHint();
             }
