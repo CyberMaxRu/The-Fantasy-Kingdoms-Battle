@@ -50,6 +50,10 @@ namespace Fantasy_King_s_Battle
         internal Brush brushCost;
 
         // Контролы главного меню
+        private Bitmap bmpFrame;// Готовый кадр
+        private Graphics grfFrame;
+        internal Bitmap bmpBackground;// Фон кадра
+
         private readonly Label labelDay;
         private readonly Label labelGold;
         private readonly Label labelPeasants;
@@ -125,7 +129,6 @@ namespace Fantasy_King_s_Battle
         internal readonly Bitmap bmpBorderForIconAlly;
         internal readonly Bitmap bmpBorderForIconEnemy;
         internal readonly Bitmap bmpEmptyEntity;
-        internal Bitmap bmpBackground;
         internal readonly Bitmap bmpBorderBattlefield;
         internal readonly Bitmap bmpMaskBig;
         internal readonly Bitmap bmpMaskSmall;
@@ -288,7 +291,7 @@ namespace Fantasy_King_s_Battle
             bmpMaskSmall = new Bitmap(dirResources + @"Icons\MaskSmall.png");
             ilLairs = PrepareImageList("Lairs.png", 128, 128, true);
             ilLairsSmall = BigIconToSmall(ilLairs);
-            
+
             ilResultBattle = PrepareImageList("ResultBattle.png", 24, 24, false);
             ilBuildings = PrepareImageList("Buildings.png", 126, 126, true);
             ilHeroes = PrepareImageList("Heroes.png", 126, 126, false);
@@ -336,7 +339,7 @@ namespace Fantasy_King_s_Battle
                     if (G2 > 255)
                         G2 = 255;
                     uint newPixel = ((uint)bmpBorderForIcon.GetPixel(x, y).A << 24) | ((uint)G2 << 8);
-//                    uint newPixel = ((uint)bmpBorderForIcon.GetPixel(x, y).A << 24) | ((uint)R << 16) | ((uint)G << 8) | ((uint)B);
+                    //                    uint newPixel = ((uint)bmpBorderForIcon.GetPixel(x, y).A << 24) | ((uint)R << 16) | ((uint)G << 8) | ((uint)B);
 
                     // добавляем его в Bitmap нового изображения
                     bmpBorderForIconAlly.SetPixel(x, y, Color.FromArgb((int)newPixel));
@@ -483,11 +486,11 @@ namespace Fantasy_King_s_Battle
                 maxHeightPages = Math.Max(maxHeightPages, maxSizePanelPage.Height);
             }
 
-/*            foreach (PanelPage pc in pages)
-            {
-                pc.Width = maxWidthPages;
-                pc.Height = maxHeightPages;
-            }*/
+            /*            foreach (PanelPage pc in pages)
+                        {
+                            pc.Width = maxWidthPages;
+                            pc.Height = maxHeightPages;
+                        }*/
 
             // Создаем панель с меню
             panelMenu = new PanelMenu(this, dirResources);
@@ -581,6 +584,9 @@ namespace Fantasy_King_s_Battle
             //
             Location = new Point((Screen.PrimaryScreen.WorkingArea.Width - Width) / 2, (Screen.PrimaryScreen.WorkingArea.Height - Height) / 2);
             ApplyFullScreen(true);
+            
+            DrawFrame();// Готовим кадр
+            Invalidate();// Рисуем кадр
 
             // 
             void SetStage(string text)
@@ -695,8 +701,19 @@ namespace Fantasy_King_s_Battle
         {
             if ((bmpBackground == null) || !bmpBackground.Size.Equals(ClientSize))
             {
+                // Переформировываем картинку фона
                 bmpBackground?.Dispose();
                 bmpBackground = GuiUtils.MakeBackground(ClientSize);
+
+                // Переформировываем картинку кадра
+                if ((bmpFrame == null) || (bmpFrame.Width != ClientSize.Width) || (bmpFrame.Height != ClientSize.Height))
+                {
+                    bmpFrame?.Dispose();
+                    bmpFrame = new Bitmap(ClientSize.Width, ClientSize.Height);
+
+                    grfFrame?.Dispose();
+                    grfFrame = Graphics.FromImage(bmpFrame);
+                }
             }
         }
 
@@ -849,7 +866,7 @@ namespace Fantasy_King_s_Battle
             btnPageTemples.Left = GuiUtils.NextLeft(btnPageBuildings);
             btnPageHeroes.Left = GuiUtils.NextLeft(btnPageTemples);
             btnPageLairs.Left = GuiUtils.NextLeft(btnPageHeroes);
-            
+
             panelBuildingInfo.Left = shiftControls.X + leftForPages + maxWidthPages;
             panelLairInfo.Left = panelBuildingInfo.Left;
             panelHeroInfo.Left = panelBuildingInfo.Left;
@@ -1096,24 +1113,6 @@ namespace Fantasy_King_s_Battle
             foreach (PlayerLair pl in lobby.CurrentPlayer.Lairs)
             {
                 pl.UpdatePanel();
-            }
-        }
-
-        protected override void OnPaintBackground(PaintEventArgs e)
-        {
-            Debug.Assert(bmpBackground.Size.Equals(ClientSize));
-
-            base.OnPaintBackground(e);
-
-            if (bmpBackground != null)
-            {
-                e.Graphics.CompositingMode = CompositingMode.SourceCopy;
-                //e.Graphics.CompositingQuality = CompositingQuality.HighSpeed;
-                //e.Graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
-                //e.Graphics.SmoothingMode = SmoothingMode.HighSpeed;
-
-                // Рисуем подложку
-                e.Graphics.DrawImage(bmpBackground, e.ClipRectangle, e.ClipRectangle, GraphicsUnit.Pixel);
             }
         }
 
@@ -1453,13 +1452,13 @@ namespace Fantasy_King_s_Battle
 
         private void MakeAlpha()
         {
-/*            Bitmap b = new Bitmap(ilItems.Images[1]);
-            for (int y = 0; y < b.Height; y++)
-                for (int x = 0; x < b.Width; x++)
-                {
-                    b.SetPixel(x, y, Color.FromArgb(b.GetPixel(x, y).A, 0, 0, 0));
-                }
-            b.Save(@"f:\Projects\C-Sharp\Fantasy King's Battle\Resources\Icons\1.png");*/
+            /*            Bitmap b = new Bitmap(ilItems.Images[1]);
+                        for (int y = 0; y < b.Height; y++)
+                            for (int x = 0; x < b.Width; x++)
+                            {
+                                b.SetPixel(x, y, Color.FromArgb(b.GetPixel(x, y).A, 0, 0, 0));
+                            }
+                        b.Save(@"f:\Projects\C-Sharp\Fantasy King's Battle\Resources\Icons\1.png");*/
 
             /*Bitmap b = new Bitmap(ilPlayerAvatarsBig.Images[0]);
             for (int y = 0; y < b.Height; y++)
@@ -1485,6 +1484,23 @@ namespace Fantasy_King_s_Battle
             lobby.CurrentPlayer.TargetLair.UpdatePanel();
             btnTarget.ImageIndex = lobby.CurrentPlayer.TargetLair != null ? lobby.CurrentPlayer.TargetLair.Lair.ImageIndex : -1;
             SelectLair(newLair.Lair.Panel);
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+
+            e.Graphics.DrawImage(bmpFrame, e.ClipRectangle, e.ClipRectangle, GraphicsUnit.Pixel);
+        }
+
+        // Рисование кадра главной формы
+        private void DrawFrame()
+        {
+            Debug.Assert(bmpBackground.Size.Equals(ClientSize));
+
+            // Рисуем фон
+            grfFrame.CompositingMode = CompositingMode.SourceCopy; 
+            grfFrame.DrawImageUnscaled(bmpBackground, 0, 0);
         }
     }
 }
