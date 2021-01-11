@@ -177,6 +177,8 @@
     <Compile Include="Item.cs" />
     <Compile Include="Skill.cs" />
     <Compile Include="Utils.cs" />
+    <Compile Include="VCButton.cs" />
+    <Compile Include="VisualControl.cs" />
     <Compile Include="WebUtils.cs" />
     <Compile Include="XmlUtils.cs" />
     <EmbeddedResource Include="FormAbout.resx">

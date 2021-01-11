@@ -54,13 +54,17 @@ namespace Fantasy_King_s_Battle
         private Graphics grfFrame;
         internal Bitmap bmpBackground;// Фон кадра
 
+        private readonly List<VisualControl> VisualControls = new List<VisualControl>();// Список всех визуальных контролов
+        private VisualControl controlWithHint;
+        private Point mousePos;
+
         private readonly Label labelDay;
         private readonly Label labelGold;
         private readonly Label labelPeasants;
 
         private readonly Button btnPreferences;
         private readonly Button btnHelp;
-        private readonly Button btnQuit;
+        private readonly VCButton btnQuit;
 
         private readonly Button btnPageGuilds;
         private readonly Button btnPageBuildings;
@@ -368,9 +372,7 @@ namespace Fantasy_King_s_Battle
             btnHelp = GuiUtils.CreateButtonWithIcon(this, 0, Config.GridSize, GUI_BOOK);
             btnHelp.Click += BtnHelp_Click;
             btnHelp.MouseHover += BtnHelp_MouseHover;
-            btnQuit = GuiUtils.CreateButtonWithIcon(this, 0, Config.GridSize, GUI_EXIT);
-            btnQuit.Click += BtnQuit_Click;
-            btnQuit.MouseHover += BtnQuit_MouseHover;
+            btnQuit = CreateButton(ilGui, GUI_EXIT, 0, Config.GridSize, BtnQuit_Click, BtnQuit_MouseHover);
 
             heightToolBar = btnQuit.Height + (Config.GridSize * 2);
 
@@ -426,7 +428,7 @@ namespace Fantasy_King_s_Battle
             {
                 ControlContainer tpp = new ControlContainer(this);
                 tpp.Left = leftForPages;
-                tpp.Top = GuiUtils.NextTop(btnQuit);
+                tpp.Top = btnQuit.NextTop();
                 pages.Add(tpp);
                 return tpp;
             }
@@ -584,9 +586,8 @@ namespace Fantasy_King_s_Battle
             //
             Location = new Point((Screen.PrimaryScreen.WorkingArea.Width - Width) / 2, (Screen.PrimaryScreen.WorkingArea.Height - Height) / 2);
             ApplyFullScreen(true);
-            
-            DrawFrame();// Готовим кадр
-            Invalidate();// Рисуем кадр
+
+            ShowFrame();
 
             // 
             void SetStage(string text)
@@ -603,7 +604,7 @@ namespace Fantasy_King_s_Battle
 
         private void BtnQuit_MouseHover(object sender, EventArgs e)
         {
-            ShowHintForToolButton(btnQuit, "Выход", "Выход из игры");
+            ShowHintForVisualControl(btnQuit, "Выход", "Выход из игры");
         }
 
         private void BtnHelp_MouseHover(object sender, EventArgs e)
@@ -1381,6 +1382,13 @@ namespace Fantasy_King_s_Battle
             formHint.ShowHint(c);
         }
 
+        private void ShowHintForVisualControl(VisualControl vc, string text, string hint)
+        {
+            formHint.Clear();
+            formHint.AddStep1Header(text, "", hint);
+            formHint.ShowHint(vc);
+        }
+
         private void tsl_MouseLeave(object sender, EventArgs e)
         {
             formHint.HideHint();
@@ -1493,6 +1501,12 @@ namespace Fantasy_King_s_Battle
             e.Graphics.DrawImage(bmpFrame, e.ClipRectangle, e.ClipRectangle, GraphicsUnit.Pixel);
         }
 
+        private void ShowFrame()
+        {
+            DrawFrame();// Готовим кадр
+            Invalidate();// Рисуем кадр
+        }
+
         // Рисование кадра главной формы
         private void DrawFrame()
         {
@@ -1501,6 +1515,77 @@ namespace Fantasy_King_s_Battle
             // Рисуем фон
             grfFrame.CompositingMode = CompositingMode.SourceCopy; 
             grfFrame.DrawImageUnscaled(bmpBackground, 0, 0);
+
+            // Рисуем контролы
+            grfFrame.CompositingMode = CompositingMode.SourceOver;
+
+            foreach (VisualControl vc in VisualControls)
+            {
+                vc.Draw(grfFrame);
+            }
+        }
+
+        internal VCButton CreateButton(ImageList imageList, int imageIndex, int left, int top, EventHandler click, EventHandler showHint)
+        {
+            VCButton b = new VCButton(imageList, imageIndex)
+            {
+                Left = left,
+                Top = top
+            };
+            b.Click += click;
+            b.ShowHint += showHint;
+
+            VisualControls.Add(b);
+
+            return b;
+        }
+
+        private VisualControl ControlUnderMouse()
+        {
+            foreach (VisualControl vc in VisualControls)
+            {
+                if ((vc.Left <= mousePos.X) && (vc.Top <= mousePos.Y) && (vc.Left + vc.Width >= mousePos.X) && (vc.Top + vc.Height >= mousePos.Y))
+                    return vc;
+            }
+
+            return null;
+        }
+
+        protected override void OnMouseClick(MouseEventArgs e)
+        {
+            base.OnMouseClick(e);
+
+            if (e.Button == MouseButtons.Left)
+            {
+                VisualControl vc = ControlUnderMouse();
+                vc?.DoClick();
+            }
+        }
+
+        protected override void OnMouseMove(MouseEventArgs e)
+        {
+            base.OnMouseMove(e);
+
+            mousePos = e.Location;
+            VisualControl curControl = ControlUnderMouse();
+
+            if ((controlWithHint != null) && (curControl != controlWithHint))
+            {
+                controlWithHint = null;
+                formHint.HideHint();
+            }
+        }
+
+        protected override void OnMouseHover(EventArgs e)
+        {
+            base.OnMouseHover(e);
+
+            VisualControl curControl = ControlUnderMouse();
+            if (curControl != null)
+            {
+                controlWithHint = curControl;
+                controlWithHint.DoShowHint();
+            }
         }
     }
 }

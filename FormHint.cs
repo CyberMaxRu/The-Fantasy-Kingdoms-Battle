@@ -434,6 +434,30 @@ namespace Fantasy_King_s_Battle
             }
         }
 
+        internal void ShowHint(VisualControl vc)
+        {
+            Debug.Assert(lblHeader.Text.Length > 0);
+
+            Point l = Program.formMain.PointToScreen(new Point(vc.Left, vc.Top + vc.Height + 2));
+            // Если подсказка уходит за пределы экрана игры, меняем ее положение
+            if (l.X + Width > Program.formMain.Location.X + Program.formMain.ClientSize.Width)
+                l.X = Program.formMain.Location.X + Program.formMain.ClientSize.Width - Width;
+            if (l.Y + nextTop > Program.formMain.Location.Y + Program.formMain.ClientSize.Height)
+                l.Y = l.Y - nextTop - vc.Height - 4;
+
+            Location = l;
+
+            bool needReshow = (Visible == false) || (Height != nextTop);
+            Height = nextTop;
+            bmpBackground?.Dispose();
+            bmpBackground = GuiUtils.MakeBackgroundWithBorder(ClientSize, FormMain.Config.CommonBorder);
+
+            if (needReshow == true)
+            {
+                timerDelayShow.Enabled = true;
+            }
+        }
+
         internal void HideHint()
         {
             timerDelayShow.Enabled = false;
