@@ -62,8 +62,8 @@ namespace Fantasy_King_s_Battle
         private readonly Label labelGold;
         private readonly Label labelPeasants;
 
-        private readonly Button btnPreferences;
-        private readonly Button btnHelp;
+        private readonly VCButton btnPreferences;
+        private readonly VCButton btnHelp;
         private readonly VCButton btnQuit;
 
         private readonly Button btnPageGuilds;
@@ -366,12 +366,8 @@ namespace Fantasy_King_s_Battle
             SetStage("Строим замок");
 
             // Кнопки в правом верхнем углу
-            btnPreferences = GuiUtils.CreateButtonWithIcon(this, 0, Config.GridSize, GUI_INVENTORY);
-            btnPreferences.Click += BtnPreferences_Click;
-            btnPreferences.MouseHover += BtnPreferences_MouseHover;
-            btnHelp = GuiUtils.CreateButtonWithIcon(this, 0, Config.GridSize, GUI_BOOK);
-            btnHelp.Click += BtnHelp_Click;
-            btnHelp.MouseHover += BtnHelp_MouseHover;
+            btnPreferences = CreateButton(ilGui, GUI_INVENTORY, 0, Config.GridSize, BtnPreferences_Click, BtnPreferences_MouseHover);
+            btnHelp = CreateButton(ilGui, GUI_BOOK, 0, Config.GridSize, BtnHelp_Click, BtnHelp_MouseHover);
             btnQuit = CreateButton(ilGui, GUI_EXIT, 0, Config.GridSize, BtnQuit_Click, BtnQuit_MouseHover);
 
             heightToolBar = btnQuit.Height + (Config.GridSize * 2);
@@ -609,12 +605,12 @@ namespace Fantasy_King_s_Battle
 
         private void BtnHelp_MouseHover(object sender, EventArgs e)
         {
-            ShowHintForToolButton(btnHelp, "Справка", "Справка об игре");
+            ShowHintForVisualControl(btnHelp, "Справка", "Справка об игре");
         }
 
         private void BtnPreferences_MouseHover(object sender, EventArgs e)
         {
-            ShowHintForToolButton(btnPreferences, "Настройки", "Настройки игры");
+            ShowHintForVisualControl(btnPreferences, "Настройки", "Настройки игры");
         }
 
         internal bool CheckForNewVersion()
@@ -1567,8 +1563,8 @@ namespace Fantasy_King_s_Battle
             base.OnMouseMove(e);
 
             mousePos = e.Location;
-            VisualControl curControl = ControlUnderMouse();
 
+            VisualControl curControl = ControlUnderMouse();
             if ((controlWithHint != null) && (curControl != controlWithHint))
             {
                 controlWithHint = null;
