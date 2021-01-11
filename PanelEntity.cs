@@ -30,13 +30,14 @@ namespace Fantasy_King_s_Battle
         private int lastImageIndex;
         private bool lastNormal;
         private bool lastSelected;
+        private bool lastWithBack;
         private Bitmap bmpImage;
 
         public PanelEntity()
         {
             Size = Program.formMain.bmpBorderForIcon.Size;
             ForeColor = FormMain.Config.CommonQuantity;
-            BackColor = Color.Transparent;
+            //BackColor = Color.Transparent;
             TextAlign = ContentAlignment.BottomRight;
             Padding = new Padding(0, 0, 0, 3);
             Font = FormMain.Config.FontQuantity;
@@ -67,17 +68,17 @@ namespace Fantasy_King_s_Battle
             Program.formMain.formHint.HideHint();
         }
 
-        protected override void OnPaintBackground(PaintEventArgs e)
+        protected override void OnPaint(PaintEventArgs e)
         {
-            base.OnPaintBackground(e);
-
-            if ((lastEmptyCell != (cell == null)) || ((cell != null) && ((lastImageIndex != cell.ImageIndex()) || (lastNormal != cell.NormalImage()) || (lastSelected != (Program.formMain.SelectedPanelEntity == this)))))
+            if (!lastWithBack || (lastEmptyCell != (cell == null)) || ((cell != null) && ((lastImageIndex != cell.ImageIndex()) || (lastNormal != cell.NormalImage()) || (lastSelected != (Program.formMain.SelectedPanelEntity == this)))))
                 DrawCell();
 
             e.Graphics.CompositingMode = CompositingMode.SourceOver;
             e.Graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
             e.Graphics.CompositingQuality = CompositingQuality.HighSpeed;
             e.Graphics.DrawImage(bmpImage, e.ClipRectangle, e.ClipRectangle, GraphicsUnit.Pixel);
+
+            base.OnPaint(e);
         }
 
         protected override void Dispose(bool disposing)
@@ -119,7 +120,12 @@ namespace Fantasy_King_s_Battle
             Graphics g = Graphics.FromImage(bmpImage);
 
             // Перед отрисовкой надо очистить картинку, чтобы новая не накладывалась на старую
-            g.Clear(Color.Transparent);
+            // Берем картинку с главной формы            
+            lastWithBack = Program.formMain.bmpBackground != null;
+            if (lastWithBack)
+                g.DrawImage(Program.formMain.bmpBackground, ClientRectangle, ClientRectangle, GraphicsUnit.Pixel);
+            else
+                g.Clear(Color.Transparent);
             
             if (cell != null)
             {

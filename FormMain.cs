@@ -125,7 +125,7 @@ namespace Fantasy_King_s_Battle
         internal readonly Bitmap bmpBorderForIconAlly;
         internal readonly Bitmap bmpBorderForIconEnemy;
         internal readonly Bitmap bmpEmptyEntity;
-        private Bitmap bmpBackground;
+        internal Bitmap bmpBackground;
         internal readonly Bitmap bmpBorderBattlefield;
         internal readonly Bitmap bmpMaskBig;
         internal readonly Bitmap bmpMaskSmall;
@@ -1108,8 +1108,9 @@ namespace Fantasy_King_s_Battle
             if (bmpBackground != null)
             {
                 e.Graphics.CompositingMode = CompositingMode.SourceCopy;
-                e.Graphics.CompositingQuality = CompositingQuality.HighSpeed;
-                e.Graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
+                //e.Graphics.CompositingQuality = CompositingQuality.HighSpeed;
+                //e.Graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
+                //e.Graphics.SmoothingMode = SmoothingMode.HighSpeed;
 
                 // Рисуем подложку
                 e.Graphics.DrawImage(bmpBackground, e.ClipRectangle, e.ClipRectangle, GraphicsUnit.Pixel);
@@ -1179,9 +1180,18 @@ namespace Fantasy_King_s_Battle
 
         private void ActivatePage(ControlContainer pc)
         {
+            //SendMessage(Handle, WM_SETREDRAW, false, 0);
+
             currentPage?.SetVisible(false);
+            //SendMessage(Handle, WM_SETREDRAW, true, 0);
+            //Invalidate(true);
+            //SendMessage(Handle, WM_SETREDRAW, false, 0);
             pc.SetVisible(true);
             currentPage = pc;
+
+            //SendMessage(Handle, WM_SETREDRAW, true, 0);
+            //Invalidate(true);
+            //Update();
         }
 
         private void button1_Click(object sender, EventArgs e)
