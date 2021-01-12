@@ -56,6 +56,7 @@ namespace Fantasy_King_s_Battle
 
         private readonly List<VisualControl> VisualControls = new List<VisualControl>();// Список всех визуальных контролов
         private VisualControl controlWithHint;
+        private Label ctrlTransparent;
         private Point mousePos;
 
         private readonly Label labelDay;
@@ -320,6 +321,14 @@ namespace Fantasy_King_s_Battle
             bmpBorderBattlefield = new Bitmap(dirResources + "Icons\\BorderBattlefield.png");
             LengthSideBorderBattlefield = bmpBorderBattlefield.Width - (Config.WidthBorderBattlefield * 2);
             Debug.Assert(LengthSideBorderBattlefield > 0);
+
+            ctrlTransparent = new Label()
+            {
+                Parent = this,
+                BackColor = Color.Transparent
+            };
+            ctrlTransparent.MouseHover += CtrlTransparent_MouseHover;
+            ctrlTransparent.MouseLeave += CtrlTransparent_MouseLeave;
 
             // Делаем рамки для союзников и врагов
             bmpBorderForIconAlly = new Bitmap(bmpBorderForIcon);
@@ -600,17 +609,17 @@ namespace Fantasy_King_s_Battle
 
         private void BtnQuit_MouseHover(object sender, EventArgs e)
         {
-            ShowHintForVisualControl(btnQuit, "Выход", "Выход из игры");
+            ShowHintForToolButton(ctrlTransparent, "Выход", "Выход из игры");
         }
 
         private void BtnHelp_MouseHover(object sender, EventArgs e)
         {
-            ShowHintForVisualControl(btnHelp, "Справка", "Справка об игре");
+            ShowHintForToolButton(ctrlTransparent, "Справка", "Справка об игре");
         }
 
         private void BtnPreferences_MouseHover(object sender, EventArgs e)
         {
-            ShowHintForVisualControl(btnPreferences, "Настройки", "Настройки игры");
+            ShowHintForToolButton(ctrlTransparent, "Настройки", "Настройки игры");
         }
 
         internal bool CheckForNewVersion()
@@ -1538,6 +1547,8 @@ namespace Fantasy_King_s_Battle
 
         private VisualControl ControlUnderMouse()
         {
+            mousePos = PointToClient(Cursor.Position);
+
             foreach (VisualControl vc in VisualControls)
             {
                 if ((vc.Left <= mousePos.X) && (vc.Top <= mousePos.Y) && (vc.Left + vc.Width >= mousePos.X) && (vc.Top + vc.Height >= mousePos.Y))
@@ -1561,21 +1572,24 @@ namespace Fantasy_King_s_Battle
         protected override void OnMouseMove(MouseEventArgs e)
         {
             base.OnMouseMove(e);
-
-            mousePos = e.Location;
-
+            
             VisualControl curControl = ControlUnderMouse();
-            if ((controlWithHint != null) && (curControl != controlWithHint))
+            if ((curControl != null) && (curControl != controlWithHint))
             {
-                controlWithHint = null;
-                formHint.HideHint();
+                ctrlTransparent.Left = curControl.Left;
+                ctrlTransparent.Top = curControl.Top;
+                ctrlTransparent.Width = curControl.Width;
+                ctrlTransparent.Height = curControl.Height;
             }
         }
 
-        protected override void OnMouseHover(EventArgs e)
+        private void CtrlTransparent_MouseLeave(object sender, EventArgs e)
         {
-            base.OnMouseHover(e);
+            formHint.HideHint();
+        }
 
+        private void CtrlTransparent_MouseHover(object sender, EventArgs e)
+        {
             VisualControl curControl = ControlUnderMouse();
             if (curControl != null)
             {
