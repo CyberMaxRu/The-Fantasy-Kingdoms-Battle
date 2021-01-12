@@ -329,6 +329,7 @@ namespace Fantasy_King_s_Battle
             };
             ctrlTransparent.MouseHover += CtrlTransparent_MouseHover;
             ctrlTransparent.MouseLeave += CtrlTransparent_MouseLeave;
+            ctrlTransparent.MouseClick += CtrlTransparent_MouseClick;
 
             // Делаем рамки для союзников и врагов
             bmpBorderForIconAlly = new Bitmap(bmpBorderForIcon);
@@ -445,7 +446,7 @@ namespace Fantasy_King_s_Battle
             btnPageHeroes = CreateButtonPage(pageHeroes, GUI_HEROES);
             btnPageLairs = CreateButtonPage(pageLairs, GUI_LAIR);
 
-            btnTarget = CreateButton(ilLairsSmall, -1, 0, Config.GridSize, null, BtnTarget_MouseHover);
+            btnTarget = CreateButton(ilLairsSmall, -1, 0, Config.GridSize, BtnTarget_Click, BtnTarget_MouseHover);            
 
             btnEndTurn = GuiUtils.CreateButtonWithIcon(this, 0, Config.GridSize, GUI_BATTLE);
             btnEndTurn.Text = "Конец хода";
@@ -597,6 +598,12 @@ namespace Fantasy_King_s_Battle
                 lblStage.Text = text + "...";
                 lblStage.Refresh();
             }
+        }
+
+        private void BtnTarget_Click(object sender, EventArgs e)
+        {
+            ActivatePage(pageLairs);
+            SelectLair(lobby.CurrentPlayer.TargetLair.Lair.Panel);
         }
 
         private void BtnTarget_MouseHover(object sender, EventArgs e)
@@ -1530,17 +1537,6 @@ namespace Fantasy_King_s_Battle
             return null;
         }
 
-        protected override void OnMouseClick(MouseEventArgs e)
-        {
-            base.OnMouseClick(e);
-
-            if (e.Button == MouseButtons.Left)
-            {
-                VisualControl vc = ControlUnderMouse();
-                vc?.DoClick();
-            }
-        }
-
         protected override void OnMouseMove(MouseEventArgs e)
         {
             base.OnMouseMove(e);
@@ -1565,9 +1561,17 @@ namespace Fantasy_King_s_Battle
             VisualControl curControl = ControlUnderMouse();
             if (curControl != null)
             {
-                Debug.Assert(!formHint.Visible);
+                //Debug.Assert(!formHint.Visible);
                 controlWithHint = curControl;
                 controlWithHint.DoShowHint();
+            }
+        }
+
+        private void CtrlTransparent_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                controlWithHint.DoClick();
             }
         }
     }
