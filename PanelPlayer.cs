@@ -5,7 +5,7 @@ using System.Diagnostics;
 
 namespace Fantasy_King_s_Battle
 {
-    // Класс панели игрока (сокращенная информация)
+    // Класс панели игрока лобби
     internal sealed class PanelPlayer : BasePanel
     {
         private Player player;
@@ -16,7 +16,6 @@ namespace Fantasy_King_s_Battle
         private Point pointIconAvatar;// Координаты для отрисовки аватара игрока
         private Point pointIconResultBattle;// Координаты для иконки результата боя
         private Point pointIconStrike;// Координаты для иконки страйка
-        private Point pointIconHeroes;// Координаты для иконки героев
         private readonly Pen penBorder = new Pen(FormMain.Config.CommonBorder);
         private readonly SolidBrush brushCurDurability = new SolidBrush(FormMain.Config.BattlefieldPlayerHealth);
         private readonly SolidBrush brushMaxDurability = new SolidBrush(FormMain.Config.BattlefieldPlayerHealthNone);
