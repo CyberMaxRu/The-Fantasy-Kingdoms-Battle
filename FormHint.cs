@@ -220,7 +220,7 @@ namespace Fantasy_King_s_Battle
             };
             timerDelayShow.Tick += TimerDelayShow_Tick;
 
-            Opacity = 0.8;
+            Opacity = 0;
             Clear();
         }
 
@@ -249,8 +249,8 @@ namespace Fantasy_King_s_Battle
 
         private void TimerDelayShow_Tick(object sender, EventArgs e)
         {
-            Show();
             timerDelayShow.Enabled = false;
+            Opacity = 0.8;
         }
 
         internal void Clear()
@@ -431,6 +431,8 @@ namespace Fantasy_King_s_Battle
             if (needReshow == true)
             {
                 timerDelayShow.Enabled = true;
+                Opacity = 0;
+                Show();
             }
         }
 
@@ -457,6 +459,7 @@ namespace Fantasy_King_s_Battle
         {
             base.OnPaintBackground(e);
 
+            e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
             e.Graphics.DrawImage(bmpBackground, e.ClipRectangle, e.ClipRectangle, GraphicsUnit.Pixel);
         }
     }
