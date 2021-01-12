@@ -56,7 +56,7 @@ namespace Fantasy_King_s_Battle
 
         private readonly List<VisualControl> VisualControls = new List<VisualControl>();// Список всех визуальных контролов
         private VisualControl controlWithHint;
-        private Label ctrlTransparent;
+        private Label ctrlTransparent;// Прозрачный контрол используется для активации MouseHover
         private Point mousePos;
 
         private readonly Label labelDay;
@@ -1385,23 +1385,6 @@ namespace Fantasy_King_s_Battle
             formHint.Clear();
             formHint.AddStep1Header(text, "", hint);
             formHint.ShowHint(c);
-        }
-
-        private void ShowHintForVisualControl(VisualControl vc, string text, string hint)
-        {
-            formHint.Clear();
-            formHint.AddStep1Header(text, "", hint);
-            formHint.ShowHint(vc);
-        }
-
-        private void tsl_MouseLeave(object sender, EventArgs e)
-        {
-            formHint.HideHint();
-        }
-
-        private void Control_MouseLeave(object sender, EventArgs e)
-        {
-            formHint.HideHint();
         }
 
         internal void ValidateAvatars()
