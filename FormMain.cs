@@ -1178,11 +1178,6 @@ namespace Fantasy_King_s_Battle
             panelWarehouse.ApplyList(lobby.CurrentPlayer.Warehouse.ToList<ICell>());
         }
 
-        private void tabControl1_Selected(object sender, TabControlEventArgs e)
-        {
-            ActivatePage(pages[e.TabPageIndex]);
-        }
-
         private void ActivatePage(ControlContainer pc)
         {
             //SendMessage(Handle, WM_SETREDRAW, false, 0);
@@ -1197,11 +1192,6 @@ namespace Fantasy_King_s_Battle
             //SendMessage(Handle, WM_SETREDRAW, true, 0);
             //Invalidate(true);
             //Update();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            ShowBattle();
         }
 
         private void FormMain_Activated(object sender, EventArgs e)
