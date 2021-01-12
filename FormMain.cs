@@ -67,7 +67,7 @@ namespace Fantasy_King_s_Battle
         private readonly VCButton btnHelp;
         private readonly VCButton btnQuit;
         private readonly VCButton btnTarget;
-        private readonly Button btnEndTurn;
+        private readonly VCButton btnEndTurn;
 
         private readonly Button btnPageGuilds;
         private readonly Button btnPageBuildings;
@@ -380,6 +380,9 @@ namespace Fantasy_King_s_Battle
             btnHelp = CreateButton(ilGui, GUI_BOOK, 0, Config.GridSize, BtnHelp_Click, BtnHelp_MouseHover);
             btnQuit = CreateButton(ilGui, GUI_EXIT, 0, Config.GridSize, BtnQuit_Click, BtnQuit_MouseHover);
 
+            btnTarget = CreateButton(ilLairsSmall, -1, 0, Config.GridSize, BtnTarget_Click, BtnTarget_MouseHover);
+            btnEndTurn = CreateButton(ilGui, GUI_BATTLE, 0, Config.GridSize, BtnEndTurn_Click, BtnEndTurn_MouseHover);
+
             heightToolBar = btnQuit.Height + (Config.GridSize * 2);
 
             // Создаем иконки игроков в левой части окна
@@ -445,18 +448,6 @@ namespace Fantasy_King_s_Battle
             btnPageTemples = CreateButtonPage(pageTemples, GUI_TEMPLE);
             btnPageHeroes = CreateButtonPage(pageHeroes, GUI_HEROES);
             btnPageLairs = CreateButtonPage(pageLairs, GUI_LAIR);
-
-            btnTarget = CreateButton(ilLairsSmall, -1, 0, Config.GridSize, BtnTarget_Click, BtnTarget_MouseHover);            
-
-            btnEndTurn = GuiUtils.CreateButtonWithIcon(this, 0, Config.GridSize, GUI_BATTLE);
-            btnEndTurn.Text = "Конец хода";
-            btnEndTurn.Width = 160;
-            btnEndTurn.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEndTurn.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnEndTurn.Font = Config.FontCaptionPage;
-            btnEndTurn.ForeColor = Config.CommonCaptionPage;
-            btnEndTurn.MouseHover += BtnEndTurn_MouseHover;
-            btnEndTurn.Click += BtnEndTurn_Click;
 
             Button CreateButtonPage(ControlContainer p, int imageIndex)
             {
@@ -748,7 +739,6 @@ namespace Fantasy_King_s_Battle
                 return;
             }
 
-            btnEndTurn.Enabled = false;
             lobby.DoEndTurn();
 
             if (lobby.CurrentPlayer == null)
@@ -776,13 +766,12 @@ namespace Fantasy_King_s_Battle
             if (lobby.CurrentPlayer.IsLive)
             {
                 ShowDataPlayer();
-                btnEndTurn.Enabled = true;
             }
         }
 
         private void BtnEndTurn_MouseHover(object sender, EventArgs e)
         {
-            ShowHintForToolButton(btnEndTurn, "Конец хода", "Завершение хода");
+            ShowHintForToolButton(ctrlTransparent, "Конец хода", "Завершение хода");
         }
 
         private void LabelPeasants_MouseHover(object sender, EventArgs e)
@@ -1212,8 +1201,6 @@ namespace Fantasy_King_s_Battle
             DrawLobby();
 
             ShowDataPlayer();
-
-            btnEndTurn.Enabled = true;
         }
 
         private void DrawLobby()
