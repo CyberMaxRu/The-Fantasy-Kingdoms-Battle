@@ -13,29 +13,37 @@ namespace Fantasy_King_s_Battle
     {
         private Bitmap picture;
         private readonly Pen penBorder = new Pen(FormMain.Config.CommonBorder);
+        private int imageIndex;
 
         public VCButton(ImageList imageList, int imageIndex)
         {
             ImageList = imageList;
             ImageIndex = imageIndex;
 
-            Width = ImageList.ImageSize.Width + 4;
-            Height = ImageList.ImageSize.Height + 4;
-
             PrepareImage();
         }
 
         internal ImageList ImageList { get; }
-        internal int ImageIndex { get; }
+        internal int ImageIndex { get => imageIndex; set { imageIndex = value; PrepareImage(); } }
 
         internal void PrepareImage()
         {
-            picture?.Dispose();
+            Width = ImageList.ImageSize.Width + 4;
+            Height = ImageList.ImageSize.Height + 4;
 
-            picture = new Bitmap(Width, Height);
+            if ((picture == null) || (picture.Width != Width) || (picture.Height != Height))
+            {                
+                picture?.Dispose();
+                picture = new Bitmap(Width, Height);
+            }
+
             Graphics g = Graphics.FromImage(picture);
+            if (ImageIndex == -1)
+                g.Clear(Color.Transparent);
             g.DrawRectangle(penBorder, 0, 0, Width - 1, Height - 1);
-            g.DrawImageUnscaled(GuiUtils.GetImageFromImageList(ImageList, ImageIndex, true), 2, 2);
+            if (ImageIndex >= 0)
+                g.DrawImageUnscaled(GuiUtils.GetImageFromImageList(ImageList, ImageIndex, true), 2, 2);
+
             g.Dispose();
         }
 

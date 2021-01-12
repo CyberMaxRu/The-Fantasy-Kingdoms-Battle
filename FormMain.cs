@@ -66,14 +66,14 @@ namespace Fantasy_King_s_Battle
         private readonly VCButton btnPreferences;
         private readonly VCButton btnHelp;
         private readonly VCButton btnQuit;
+        private readonly VCButton btnTarget;
+        private readonly Button btnEndTurn;
 
         private readonly Button btnPageGuilds;
         private readonly Button btnPageBuildings;
         private readonly Button btnPageTemples;
         private readonly Button btnPageHeroes;
         private readonly Button btnPageLairs;
-        private readonly Button btnTarget;
-        private readonly Button btnEndTurn;
 
         private PanelWithPanelEntity panelWarehouse;
         private PanelWithPanelEntity panelHeroes;
@@ -445,10 +445,7 @@ namespace Fantasy_King_s_Battle
             btnPageHeroes = CreateButtonPage(pageHeroes, GUI_HEROES);
             btnPageLairs = CreateButtonPage(pageLairs, GUI_LAIR);
 
-            btnTarget = GuiUtils.CreateButtonWithIcon(this, 0, Config.GridSize, -1);
-            btnTarget.ImageList = ilLairsSmall;
-            btnTarget.TabStop = false;
-            btnTarget.MouseHover += BtnTarget_MouseHover;
+            btnTarget = CreateButton(ilLairsSmall, -1, 0, Config.GridSize, null, BtnTarget_MouseHover);
 
             btnEndTurn = GuiUtils.CreateButtonWithIcon(this, 0, Config.GridSize, GUI_BATTLE);
             btnEndTurn.Text = "Конец хода";
@@ -604,7 +601,7 @@ namespace Fantasy_King_s_Battle
 
         private void BtnTarget_MouseHover(object sender, EventArgs e)
         {
-            ShowHintForToolButton(btnTarget, "Атакуемое логово", lobby.CurrentPlayer.TargetLair != null ? lobby.CurrentPlayer.TargetLair.Lair.Name : "Не выбрано");
+            ShowHintForToolButton(ctrlTransparent, "Атакуемое логово", lobby.CurrentPlayer.TargetLair != null ? lobby.CurrentPlayer.TargetLair.Lair.Name : "Не выбрано");
         }
 
         private void BtnQuit_MouseHover(object sender, EventArgs e)
@@ -1470,6 +1467,8 @@ namespace Fantasy_King_s_Battle
             lobby.CurrentPlayer.TargetLair.UpdatePanel();
             btnTarget.ImageIndex = lobby.CurrentPlayer.TargetLair != null ? lobby.CurrentPlayer.TargetLair.Lair.ImageIndex : -1;
             SelectLair(newLair.Lair.Panel);
+
+            ShowFrame();
         }
 
         protected override void OnPaint(PaintEventArgs e)
