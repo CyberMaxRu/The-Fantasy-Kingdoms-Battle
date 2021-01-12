@@ -601,7 +601,7 @@ namespace Fantasy_King_s_Battle
 
         private void BtnTarget_MouseHover(object sender, EventArgs e)
         {
-            ShowHintForToolButton(ctrlTransparent, "Атакуемое логово", lobby.CurrentPlayer.TargetLair != null ? lobby.CurrentPlayer.TargetLair.Lair.Name : "Не выбрано");
+            ShowHintForToolButton(ctrlTransparent, lobby.CurrentPlayer.TargetLair != null ? lobby.CurrentPlayer.TargetLair.Lair.Name : "Цель отсутствует", lobby.CurrentPlayer.TargetLair != null ? "Будет атаковано в этом ходу" : "");
         }
 
         private void BtnQuit_MouseHover(object sender, EventArgs e)
