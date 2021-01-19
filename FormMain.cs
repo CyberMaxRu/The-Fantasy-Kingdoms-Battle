@@ -831,6 +831,7 @@ namespace Fantasy_King_s_Battle
                 fp.Top = Config.GridSize;
                 fp.Left = leftForNextButtonPage;
                 fp.Page.Left = shiftControls.X + leftForPages - Config.GridSize;
+                fp.Page.Width = maxWidthPages;
 
                 leftForNextButtonPage = fp.NextLeft();
             }
@@ -990,7 +991,7 @@ namespace Fantasy_King_s_Battle
 
             void DrawPage(VisualControl panel, List<TypeConstruction> list)
             {
-                int top = 0;
+                int top = 32;
                 int left;
                 int height = 0;
 

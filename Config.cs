@@ -285,6 +285,9 @@ namespace Fantasy_King_s_Battle
         internal Font FontBuildingCaption { get; private set; }
 
         //
+        internal Brush brushControl { get; private set; } = new SolidBrush(Color.White);
+
+        //
         internal Skill FindSkill(string ID)
         {
             foreach (Skill s in Skills)

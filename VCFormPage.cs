@@ -7,6 +7,7 @@ namespace Fantasy_King_s_Battle
 {
     internal sealed class VCFormPage : VCButton
     {
+        private VCLabel lblCaption;
         public VCFormPage(List<VCFormPage> list, ImageList imageList, int imageIndex, string caption, EventHandler onClick) : base(imageList, imageIndex)
         {
             Caption = caption;
@@ -17,6 +18,10 @@ namespace Fantasy_King_s_Battle
             Click += onClick;
 
             list.Add(this);
+
+            lblCaption = new VCLabel(FormMain.Config.FontCaptionPage, FormMain.Config.CommonCaptionPage, FormMain.Config.GridSize * 3, caption);
+            Page.AddControl(lblCaption, new Point(0, 0));
+            ArrangeControlsAndContainers();
         }
 
         internal VisualControl Page { get; }
@@ -27,6 +32,7 @@ namespace Fantasy_King_s_Battle
             base.ArrangeControlsAndContainers();
 
             Page.Top = NextTop();
+            lblCaption.Width = Page.Width;
         }
 
         internal override void Draw(Bitmap b, Graphics g, int x, int y)

@@ -176,6 +176,7 @@
     <Compile Include="VCCell.cs" />
     <Compile Include="VCFormPage.cs" />
     <Compile Include="VCImage.cs" />
+    <Compile Include="VCLabel.cs" />
     <Compile Include="VisualControl.cs" />
     <Compile Include="WebUtils.cs" />
     <Compile Include="XmlUtils.cs" />

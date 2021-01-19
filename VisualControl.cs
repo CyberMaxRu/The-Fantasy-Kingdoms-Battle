@@ -67,7 +67,10 @@ namespace Fantasy_King_s_Battle
 
         protected virtual void ArrangeControlsAndContainers()
         {
-
+            foreach (KeyValuePair<VisualControl, Point> vc in Controls)
+            {
+                ArrangeControl(vc);
+            }
         }
 
         internal int NextTop()
@@ -87,8 +90,8 @@ namespace Fantasy_King_s_Battle
 
         private void ArrangeControl(KeyValuePair<VisualControl, Point> p)
         {
-            //p.Key.Left = Left + p.Value.X;
-            //p.Key.Top = Top + p.Value.Y;
+            p.Key.Left = Left + p.Value.X;
+            p.Key.Top = Top + p.Value.Y;
         }
 
         internal void AddControl(VisualControl cc, Point p)
