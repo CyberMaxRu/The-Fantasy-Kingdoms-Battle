@@ -37,5 +37,11 @@ namespace Fantasy_King_s_Battle
             if (Page.Visible)
                 Page.Draw(b, g, Page.Left, Page.Top);
         }
+
+        internal override bool PrepareHint()
+        {
+            Program.formMain.formHint.AddStep1Header(Caption, "", "");
+            return true;
+        }
     }
 }
