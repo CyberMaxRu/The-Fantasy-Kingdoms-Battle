@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Fantasy_King_s_Battle
@@ -13,20 +10,22 @@ namespace Fantasy_King_s_Battle
         public VCFormPage(List<VCFormPage> list, ImageList imageList, int imageIndex, string caption, EventHandler onClick) : base(imageList, imageIndex)
         {
             Caption = caption;
-            Page = new VisualControl();
-            Page.Visible = false;
+            Page = new VisualControl
+            {
+                Visible = false
+            };
             Click += onClick;
 
             list.Add(this);
         }
 
         internal VisualControl Page { get; }
-        internal string Caption { get; }        
+        internal string Caption { get; }
+        
         protected override void ArrangeControlsAndContainers()
         {
             base.ArrangeControlsAndContainers();
 
-            //Page.Left = Left;
             Page.Top = NextTop();
         }
 
