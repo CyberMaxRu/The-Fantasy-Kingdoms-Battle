@@ -48,7 +48,7 @@ namespace Fantasy_King_s_Battle
 
         // Контролы главного меню
         private Bitmap bmpFrame;// Готовый кадр
-        private Graphics grfFrame;
+        private Graphics grfFrame;// Graphics кадра, чтобы контролы работали сразу с ним
         internal Bitmap bmpBackground;// Фон кадра
 
         private readonly List<VisualControl> VisualControls = new List<VisualControl>();// Список всех визуальных контролов
@@ -543,7 +543,7 @@ namespace Fantasy_King_s_Battle
             //
             Width = (Width - ClientSize.Width) + calcedWidth + Config.GridSize;
             // Высота - это наибольшая высота бэндов лобби, зданий и информации с меню
-            calcedHeight = heightToolBar + Math.Max(heightBandLobby, heightBandBuildings);
+            calcedHeight = heightToolBar + Math.Max(heightBandLobby, Math.Max(pageHeroes.Top + pageHeroes.MaxSize().Height, heightBandBuildings));
             Height = (Height - ClientSize.Height) + calcedHeight + Config.GridSize;
             minSizeForm = new Size(Width, Height);
 
@@ -1105,6 +1105,7 @@ namespace Fantasy_King_s_Battle
                 list.Add(null);
 
             panelHeroes.ApplyList(list);
+            panelHeroes.Height = panelHeroes.MaxSize().Height;
         }
 
         private void ShowPageLairs()
@@ -1163,7 +1164,7 @@ namespace Fantasy_King_s_Battle
         private void DrawWarehouse()
         {
             panelWarehouse = new PanelWithPanelEntity(Config.WarehouseWidth);
-            pageHeroes.AddControl(panelWarehouse, new Point(0, panelHeroes.Height + Config.GridSize));
+            pageHeroes.AddControl(panelWarehouse, new Point(0, panelHeroes.Top + panelHeroes.Height + Config.GridSize));
         }
 
         internal void ShowWarehouse()
