@@ -97,7 +97,7 @@ namespace Fantasy_King_s_Battle
 		{
 			Debug.Assert(tile != null);
 
-			return ((tile.X >= X - 1) && (tile.X <= X + 1) && (tile.Y >= Y - 1) && (tile.Y <= Y + 1));
+			return (tile.X >= X - 1) && (tile.X <= X + 1) && (tile.Y >= Y - 1) && (tile.Y <= Y + 1);
 		}
 
 		internal void ClearPathData()
