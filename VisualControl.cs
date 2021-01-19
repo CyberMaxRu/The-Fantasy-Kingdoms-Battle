@@ -19,13 +19,15 @@ namespace Fantasy_King_s_Battle
 
         public VisualControl()
         {
-
+            //Visible = true;
         }
 
         internal int Left { get { return left; } set { left = value; ArrangeControlsAndContainers(); } }
         internal int Top { get { return top; } set { top = value; ArrangeControlsAndContainers(); } }
         internal int Width { get { return width; } set { width = value; } }
         internal int Height { get { return height; } set { height = value; } }
+        internal bool Visible { get; set; } = true;
+
         // Список контролов, расположенных на нём, со смещением относительно левого верхнего угла
         internal Dictionary<VisualControl, Point> Controls = new Dictionary<VisualControl, Point>();
 

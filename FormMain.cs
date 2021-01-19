@@ -66,11 +66,13 @@ namespace Fantasy_King_s_Battle
         private readonly VCButton btnTarget;
         private readonly VCButton btnEndTurn;
 
-        private readonly Button btnPageGuilds;
-        private readonly Button btnPageBuildings;
-        private readonly Button btnPageTemples;
-        private readonly Button btnPageHeroes;
-        private readonly Button btnPageLairs;
+        // Главные страницы игры
+        private readonly List<VCFormPage> pages = new List<VCFormPage>();
+        private readonly VCFormPage pageGuilds;
+        private readonly VCFormPage pageBuildings;
+        private readonly VCFormPage pageTemples;
+        private readonly VCFormPage pageHeroes;
+        private readonly VCFormPage pageLairs;
 
         private PanelWithPanelEntity panelWarehouse;
         private PanelWithPanelEntity panelHeroes;
@@ -142,13 +144,7 @@ namespace Fantasy_King_s_Battle
         private int maxWidthPages;
 
 
-        private readonly List<VisualControl> pages = new List<VisualControl>();
-        private readonly VisualControl pageGuilds;
-        private readonly VisualControl pageBuildings;
-        private readonly VisualControl pageTemples;
-        private readonly VisualControl pageHeroes;
-        private readonly VisualControl pageLairs;
-        private VisualControl currentPage;
+        private VCFormPage currentPage;
         private readonly int leftForPages;
         private readonly int heightToolBar;
         private readonly int heightBandLobby;
@@ -426,37 +422,16 @@ namespace Fantasy_King_s_Battle
             labelPeasants.ImageAlign = ContentAlignment.MiddleLeft;
             labelPeasants.MouseHover += LabelPeasants_MouseHover;
 
-            // Страницы меню
-            pageGuilds = PreparePanel();
-            pageBuildings = PreparePanel();
-            pageTemples = PreparePanel();
-            pageHeroes = PreparePanel();
-            pageLairs = PreparePanel();
+            // Страницы игры
+            pageGuilds = new VCFormPage(pages, ilGui, GUI_GUILDS, "Гильдии", BtnPage_Click);
+            pageBuildings = new VCFormPage(pages, ilGui, GUI_ECONOMY, "Экономические строения", BtnPage_Click);
+            pageTemples = new VCFormPage(pages, ilGui, GUI_TEMPLE, "Храмы", BtnPage_Click);
+            pageHeroes = new VCFormPage(pages, ilGui, GUI_HEROES, "Герои", BtnPage_Click); 
+            pageLairs = new VCFormPage(pages, ilGui, GUI_LAIR, "Логова", BtnPage_Click);
 
-            VisualControl PreparePanel()
+            foreach (VCFormPage fp in pages)
             {
-                VisualControl tpp = new VisualControl();
-                tpp.Left = leftForPages;
-                tpp.Top = btnQuit.NextTop();// Топ - от низа кнопки страницы
-                pages.Add(tpp);
-                return tpp;
-            }
-
-            // Кнопки страниц и конца хода
-            btnPageGuilds = CreateButtonPage(pageGuilds, GUI_GUILDS);
-            btnPageBuildings = CreateButtonPage(pageBuildings, GUI_ECONOMY);
-            btnPageTemples = CreateButtonPage(pageTemples, GUI_TEMPLE);
-            btnPageHeroes = CreateButtonPage(pageHeroes, GUI_HEROES);
-            btnPageLairs = CreateButtonPage(pageLairs, GUI_LAIR);
-
-            Button CreateButtonPage(VisualControl p, int imageIndex)
-            {
-                Button b = GuiUtils.CreateButtonWithIcon(this, 0, Config.GridSize, imageIndex);
-                b.FlatAppearance.BorderColor = Color.DarkBlue;
-                b.Tag = p;
-                b.Click += BtnPage_Click;
-
-                return b;
+                VisualControls.Add(fp);
             }
 
             DrawPageConstructions();
@@ -475,9 +450,9 @@ namespace Fantasy_King_s_Battle
             int maxHeightPages = 0;
             Size maxSizePanelPage;
 
-            foreach (VisualControl pc in pages)
+            foreach (VCFormPage pc in pages)
             {
-                maxSizePanelPage = pc.MaxSize();
+                maxSizePanelPage = pc.Page.MaxSize();
                 maxWidthPages = Math.Max(maxWidthPages, maxSizePanelPage.Width);
                 maxHeightPages = Math.Max(maxHeightPages, maxSizePanelPage.Height);
             }
@@ -493,18 +468,18 @@ namespace Fantasy_King_s_Battle
             panelMenu.Top = ClientSize.Height - panelMenu.Height - Config.GridSize;
 
             // Панель информации о здании
-            panelBuildingInfo = new PanelBuildingInfo(panelMenu.Top - GuiUtils.NextTop(btnPageGuilds) - Config.GridSize)
+            panelBuildingInfo = new PanelBuildingInfo(panelMenu.Top - pageGuilds.NextTop() - Config.GridSize)
             {
                 Parent = this,
-                Top = GuiUtils.NextTop(btnPageGuilds),
+                Top = pageGuilds.NextTop(),
                 Visible = false
             };
 
             // Панель информации о логове
-            panelLairInfo = new PanelLairInfo(panelMenu.Top - GuiUtils.NextTop(btnPageGuilds) - Config.GridSize)
+            panelLairInfo = new PanelLairInfo(panelMenu.Top - pageGuilds.NextTop() - Config.GridSize)
             {
                 Parent = this,
-                Top = GuiUtils.NextTop(btnPageGuilds),
+                Top = pageGuilds.NextTop(),
                 Visible = false
             };
 
@@ -543,7 +518,7 @@ namespace Fantasy_King_s_Battle
             //
             Width = (Width - ClientSize.Width) + calcedWidth + Config.GridSize;
             // Высота - это наибольшая высота бэндов лобби, зданий и информации с меню
-            calcedHeight = heightToolBar + Math.Max(heightBandLobby, Math.Max(pageHeroes.Top + pageHeroes.MaxSize().Height, heightBandBuildings));
+            calcedHeight = heightToolBar + Math.Max(heightBandLobby, Math.Max(pageHeroes.Page.Top + pageHeroes.Page.MaxSize().Height, heightBandBuildings));
             Height = (Height - ClientSize.Height) + calcedHeight + Config.GridSize;
             minSizeForm = new Size(Width, Height);
 
@@ -791,7 +766,7 @@ namespace Fantasy_King_s_Battle
 
         private void BtnPage_Click(object sender, EventArgs e)
         {
-            ActivatePage((VisualControl)((Button)sender).Tag);
+            ActivatePage((VCFormPage)sender);
         }
 
         private void BtnPreferences_Click(object sender, EventArgs e)
@@ -850,21 +825,19 @@ namespace Fantasy_King_s_Battle
 
             ShowLobby();
 
-            pageGuilds.Left = shiftControls.X + leftForPages - Config.GridSize;
-            pageBuildings.Left = pageGuilds.Left;
-            pageTemples.Left = pageGuilds.Left;
-            pageHeroes.Left = pageGuilds.Left;
-            pageLairs.Left = pageGuilds.Left;
+            int leftForNextButtonPage = shiftControls.X + leftForPages - Config.GridSize;
+            foreach (VCFormPage fp in pages)
+            {
+                fp.Top = Config.GridSize;
+                fp.Left = leftForNextButtonPage;
+                fp.Page.Left = shiftControls.X + leftForPages - Config.GridSize;
+
+                leftForNextButtonPage = fp.NextLeft();
+            }
 
             btnQuit.Left = shiftControls.X + minSizeForm.Width - btnQuit.Width - (Config.GridSize * 4);
             btnHelp.Left = btnQuit.Left - btnQuit.Width - Config.GridSize;
             btnPreferences.Left = btnHelp.Left - btnHelp.Width - Config.GridSize;
-
-            btnPageGuilds.Left = leftForPages + shiftControls.X - Config.GridSize;
-            btnPageBuildings.Left = GuiUtils.NextLeft(btnPageGuilds);
-            btnPageTemples.Left = GuiUtils.NextLeft(btnPageBuildings);
-            btnPageHeroes.Left = GuiUtils.NextLeft(btnPageTemples);
-            btnPageLairs.Left = GuiUtils.NextLeft(btnPageHeroes);
 
             panelBuildingInfo.Left = shiftControls.X + leftForPages + maxWidthPages;
             panelLairInfo.Left = panelBuildingInfo.Left;
@@ -1011,9 +984,9 @@ namespace Fantasy_King_s_Battle
 
         private void DrawPageConstructions()
         {
-            DrawPage(pageGuilds, Config.TypeGuilds.ToList<TypeConstruction>());
-            DrawPage(pageBuildings, Config.TypeEconomicConstructions.ToList<TypeConstruction>());
-            DrawPage(pageTemples, Config.TypeTemples.ToList<TypeConstruction>());
+            DrawPage(pageGuilds.Page, Config.TypeGuilds.ToList<TypeConstruction>());
+            DrawPage(pageBuildings.Page, Config.TypeEconomicConstructions.ToList<TypeConstruction>());
+            DrawPage(pageTemples.Page, Config.TypeTemples.ToList<TypeConstruction>());
 
             void DrawPage(VisualControl panel, List<TypeConstruction> list)
             {
@@ -1057,7 +1030,7 @@ namespace Fantasy_King_s_Battle
                     if (l.Line == line)
                     {
                         l.Panel = new PanelLair();
-                        //pageLairs.AddControl(l.Panel, new Point(left, top));
+                        //pageLairs.Page.AddControl(l.Panel, new Point(left, top));
 
                         left += l.Panel.Width + Config.GridSize;
                         height = l.Panel.Height;
@@ -1098,7 +1071,7 @@ namespace Fantasy_King_s_Battle
         private void DrawHeroes()
         {
             panelHeroes = new PanelWithPanelEntity(Config.HeroRows);
-            pageHeroes.AddControl(panelHeroes, new Point(0, 0));
+            pageHeroes.Page.AddControl(panelHeroes, new Point(0, 0));
 
             List<ICell> list = new List<ICell>();
             for (int x = 0; x < Config.HeroRows * Config.HeroInRow; x++)
@@ -1164,7 +1137,7 @@ namespace Fantasy_King_s_Battle
         private void DrawWarehouse()
         {
             panelWarehouse = new PanelWithPanelEntity(Config.WarehouseWidth);
-            pageHeroes.AddControl(panelWarehouse, new Point(0, panelHeroes.Top + panelHeroes.Height + Config.GridSize));
+            pageHeroes.Page.AddControl(panelWarehouse, new Point(0, panelHeroes.Top + panelHeroes.Height + Config.GridSize));
         }
 
         internal void ShowWarehouse()
@@ -1172,21 +1145,14 @@ namespace Fantasy_King_s_Battle
             panelWarehouse.ApplyList(lobby.CurrentPlayer.Warehouse.ToList<ICell>());
         }
 
-        private void ActivatePage(VisualControl pc)
+        private void ActivatePage(VCFormPage pc)
         {
-            //SendMessage(Handle, WM_SETREDRAW, false, 0);
-
-            //currentPage?.SetVisible(false);
-            //SendMessage(Handle, WM_SETREDRAW, true, 0);
-            //Invalidate(true);
-            //SendMessage(Handle, WM_SETREDRAW, false, 0);
-            //pc.SetVisible(true);
+            if (currentPage != null)
+                currentPage.Page.Visible = false;
             currentPage = pc;
-            ShowFrame();
+            currentPage.Page.Visible = true;
 
-            //SendMessage(Handle, WM_SETREDRAW, true, 0);
-            //Invalidate(true);
-            //Update();
+            ShowFrame();
         }
 
         private void FormMain_Activated(object sender, EventArgs e)
@@ -1497,10 +1463,9 @@ namespace Fantasy_King_s_Battle
 
             foreach (VisualControl vc in VisualControls)
             {
-                vc.Draw(bmpFrame, grfFrame, vc.Left, vc.Top);
+                if (vc.Visible)
+                    vc.Draw(bmpFrame, grfFrame, vc.Left, vc.Top);
             }
-
-            currentPage.Draw(bmpFrame, grfFrame, leftForPages, btnQuit.NextTop());
         }
 
         internal VCButton CreateButton(ImageList imageList, int imageIndex, int left, int top, EventHandler click, EventHandler showHint)
@@ -1546,7 +1511,7 @@ namespace Fantasy_King_s_Battle
                 //controlWithHint = null;
                 //formHint.HideHint();
 
-                // Когда покидаем контрол, который находится впритык к другому, скрываем текущий на 1 пиксел, чтобы
+                // Когда покидаем контрол, который находится впритык к другому, скрываем текущий на 1 движение, чтобы
                 // заново срабатывало событие MouseHover
                 if (controlWithHint != null)
                 {
@@ -1597,6 +1562,12 @@ namespace Fantasy_King_s_Battle
         {
             if (e.Button == MouseButtons.Left)
             {
+                if (controlWithHint == null)
+                {
+                    controlWithHint = ControlUnderMouse();
+                    Debug.Assert(controlWithHint != null);
+                }
+
                 controlWithHint.DoClick();
             }
         }

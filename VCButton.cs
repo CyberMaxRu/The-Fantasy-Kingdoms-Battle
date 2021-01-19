@@ -9,7 +9,7 @@ using System.Drawing;
 namespace Fantasy_King_s_Battle
 {
     // Визуальный контрол - кнопка c иконкой
-    internal sealed class VCButton : VCImage
+    internal class VCButton : VCImage
     {
         private readonly Pen penBorder = new Pen(FormMain.Config.CommonBorder);
 
