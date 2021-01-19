@@ -28,5 +28,10 @@ namespace Fantasy_King_s_Battle
                 }
             }
         }
+
+        internal static bool PointInRectagle(int left, int top, int width, int height, int x, int y)
+        {
+            return (left <= x) && (top <= y) && (left + width >= x) && (top + height >= y);
+        }
     }
 }
