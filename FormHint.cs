@@ -412,6 +412,8 @@ namespace Fantasy_King_s_Battle
 
         internal void ShowHint(Control c)
         {
+            Debug.Assert(c.Width > 8);
+            Debug.Assert(c.Height > 8);
             Debug.Assert(lblHeader.Text.Length > 0);
 
             Point l = c.PointToScreen(new Point(0, c.Height + 2));
