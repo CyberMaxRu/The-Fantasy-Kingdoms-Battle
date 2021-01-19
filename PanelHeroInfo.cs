@@ -50,19 +50,17 @@ namespace Fantasy_King_s_Battle
 
             panelWeapon = new PanelEntity()
             {
-                Parent = this,
                 Left = pageControl.Left,
                 Top = pageControl.Top
             };
 
             panelArmour = new PanelEntity()
             {
-                Parent = this,
-                Left = GuiUtils.NextLeft(panelWeapon),
+                Left = panelWeapon.NextLeft(),
                 Top = panelWeapon.Top
             };
 
-            pageControl.Top = GuiUtils.NextTop(panelWeapon);
+            pageControl.Top = panelWeapon.NextTop();
             pageControl.AddPage("Статистика", (int)IconPages.Parameters, null);
             pageControl.AddPage("Инвентарь", (int)IconPages.Inventory, panelInventory);
             pageControl.AddPage("Способности", (int)IconPages.Abilities, panelAbilities);

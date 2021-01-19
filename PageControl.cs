@@ -32,7 +32,7 @@ namespace Fantasy_King_s_Battle
         }
         internal string NamePage { get; set; }
         internal int IndexPage { get; set; }
-        internal ControlContainer ContextPage { get; set; }
+        internal VisualControl ContextPage { get; set; }
 
         private void UpdateImage()
         {
@@ -114,7 +114,7 @@ namespace Fantasy_King_s_Battle
 
         internal int ActivePage { get; set; }
 
-        internal void AddPage(string namePage, int imageIndex, ControlContainer controlForPage)
+        internal void AddPage(string namePage, int imageIndex, VisualControl controlForPage)
         {
             PictureBoxPage page = new PictureBoxPage()
             {
@@ -133,8 +133,8 @@ namespace Fantasy_King_s_Battle
             {
                 controlForPage.Left = 0;
                 controlForPage.Top = GuiUtils.NextTop(lblCaptionPage);
-                controlForPage.SetVisible(false);
-                controlForPage.Parent = this;
+                //controlForPage.SetVisible(false);
+                //controlForPage.Parent = this;
             }
 
             leftForNextPage += page.Width + FormMain.Config.GridSizeHalf;
@@ -150,10 +150,10 @@ namespace Fantasy_King_s_Battle
                 ActivePage = indexPage;
 
                 activePage?.Invalidate();
-                activePage?.ContextPage?.SetVisible(false);
+                //activePage?.ContextPage?.SetVisible(false);
                 activePage = btnPages[indexPage];
                 lblCaptionPage.Text = activePage.NamePage;
-                activePage.ContextPage?.SetVisible(true);
+                //activePage.ContextPage?.SetVisible(true);
                 activePage.Invalidate();
             }
         }

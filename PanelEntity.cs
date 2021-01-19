@@ -23,7 +23,7 @@ namespace Fantasy_King_s_Battle
     }
 
     // Класс панели для рисования иконки объекта, поддерживающего интерфейс ячейки
-    internal sealed class PanelEntity : Label
+    internal sealed class PanelEntity : VisualControl
     {
         private ICell cell;
         private bool lastEmptyCell;
@@ -33,42 +33,40 @@ namespace Fantasy_King_s_Battle
         private bool lastWithBack;
         private Bitmap bmpImage;
 
-        public PanelEntity()
+        public PanelEntity() : base()
         {
-            Size = Program.formMain.bmpBorderForIcon.Size;
-            ForeColor = FormMain.Config.CommonQuantity;
+            //ForeColor = FormMain.Config.CommonQuantity;
             //BackColor = Color.Transparent;
-            TextAlign = ContentAlignment.BottomRight;
-            Padding = new Padding(0, 0, 0, 3);
-            Font = FormMain.Config.FontQuantity;
+            //TextAlign = ContentAlignment.BottomRight;
+            //Padding = new Padding(0, 0, 0, 3);
+            //Font = FormMain.Config.FontQuantity;
 
-            ShowHint = true;
+            Width = Program.formMain.bmpBorderForIcon.Width;
+            Height = Program.formMain.bmpBorderForIcon.Height;
 
-            bmpImage = new Bitmap(Size.Width, Size.Height);
+            bmpImage = new Bitmap(Width, Height);
+
         }
 
-        internal bool ShowHint { get; set; }
-
-        protected override void OnMouseEnter(EventArgs e)
+        internal override bool PrepareHint()
         {
-            base.OnMouseEnter(e);
-
-            if ((cell != null) && ShowHint)
+            if (cell != null)
             {
-                Program.formMain.formHint.Clear();
                 cell.PrepareHint();
-                Program.formMain.formHint.ShowHint(this);
+                return true;
             }
+
+            return false;
         }
 
-        protected override void OnMouseLeave(EventArgs e)
+        protected void OnMouseLeave(EventArgs e)
         {
-            base.OnMouseLeave(e);
+            //base.OnMouseLeave(e);
 
             Program.formMain.formHint.HideHint();
         }
 
-        protected override void OnPaint(PaintEventArgs e)
+        protected void OnPaint(PaintEventArgs e)
         {
             if (!lastWithBack || (lastEmptyCell != (cell == null)) || ((cell != null) && ((lastImageIndex != cell.ImageIndex()) || (lastNormal != cell.NormalImage()) || (lastSelected != (Program.formMain.SelectedPanelEntity == this)))))
                 DrawCell();
@@ -78,20 +76,20 @@ namespace Fantasy_King_s_Battle
             e.Graphics.CompositingQuality = CompositingQuality.HighSpeed;
             e.Graphics.DrawImage(bmpImage, e.ClipRectangle, e.ClipRectangle, GraphicsUnit.Pixel);
 
-            base.OnPaint(e);
+            //base.OnPaint(e);
         }
 
-        protected override void Dispose(bool disposing)
+        protected void Dispose(bool disposing)
         {
-            base.Dispose(disposing);
+            //base.Dispose(disposing);
 
             if (cell != null)
                 cell.Panel = null;
         }
 
-        protected override void OnMouseClick(MouseEventArgs e)
+        protected void OnMouseClick(MouseEventArgs e)
         {
-            base.OnMouseClick(e);
+            //base.OnMouseClick(e);
 
             if (cell != null)
             {
@@ -109,10 +107,10 @@ namespace Fantasy_King_s_Battle
             if (cell != null)
                 cell.Panel = this;
 
-            Text = (cell != null) && (cell.Value() > 0) ? c.Value().ToString() : "";
+            //Text = (cell != null) && (cell.Value() > 0) ? c.Value().ToString() : "";
 
             DrawCell();
-            Invalidate();
+            //Invalidate();
         }
 
         private void DrawCell()
@@ -122,11 +120,12 @@ namespace Fantasy_King_s_Battle
             // Перед отрисовкой надо очистить картинку, чтобы новая не накладывалась на старую
             // Берем картинку с главной формы            
             lastWithBack = Program.formMain.bmpBackground != null;
-            if (lastWithBack)
-                g.DrawImage(Program.formMain.bmpBackground, ClientRectangle, ClientRectangle, GraphicsUnit.Pixel);
-            else
+            //if (lastWithBack)
+                //g.DrawImage(Program.formMain.bmpBackground, ClientRectangle, ClientRectangle, GraphicsUnit.Pixel);
+//                g.DrawImage(Program.formMain.bmpBackground, ClientRectangle, ClientRectangle, GraphicsUnit.Pixel);
+            //else
                 g.Clear(Color.Transparent);
-            
+
             if (cell != null)
             {
                 //Debug.Assert(cell.Panel == this);
@@ -155,6 +154,12 @@ namespace Fantasy_King_s_Battle
                 lastNormal = cell.NormalImage();
                 lastSelected = Program.formMain.SelectedPanelEntity == this;
             }
+        }
+        internal override void Draw(Bitmap b, Graphics g, int x, int y)
+        {
+            //DrawCell();
+            g.DrawImageUnscaled(bmpImage, x, y);
+            //DrawToBitmap(b, new Rectangle(Left + panelAvatar.Left, Top + panelAvatar.Top, panelAvatar.Width, panelAvatar.Height)
         }
     }
 }

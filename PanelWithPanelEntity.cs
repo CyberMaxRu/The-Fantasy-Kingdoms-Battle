@@ -10,7 +10,7 @@ using System.Drawing;
 namespace Fantasy_King_s_Battle
 {
     // Класс панели с расположенными на ней панелями сущностей
-    internal sealed class PanelWithPanelEntity : ControlContainer
+    internal sealed class PanelWithPanelEntity : VisualControl
     {
         private List<PanelEntity> panelEntities = new List<PanelEntity>();
         private int rows;// Сколько сейчас строк подготовлено
@@ -65,7 +65,7 @@ namespace Fantasy_King_s_Battle
             {
                 pe = new PanelEntity();
                 AddControl(pe, new Point(x * (pe.Width + 1), rows * (pe.Height + 1)));
-                pe.Visible = false;
+                //pe.Visible = false;
                 panelEntities.Add(pe);
             }
 
@@ -83,12 +83,20 @@ namespace Fantasy_King_s_Battle
             {
                 pe = panelEntities[panelEntities.Count - 1];
                 panelEntities.Remove(pe);
-                Controls.Remove(pe);
-                pe.Dispose();
+                //Controls.Remove(pe);
+                //pe.Dispose();
             }
 
             rows--;
             Height = panelEntities[panelEntities.Count - 1].Top + panelEntities[panelEntities.Count - 1].Height;
+        }
+
+        internal override void Draw(Bitmap b, Graphics g, int x, int y)
+        {
+            foreach (KeyValuePair <VisualControl, Point> vc in Controls)
+            {
+                vc.Key.Draw(b, g, x + vc.Value.X, y + vc.Value.Y);
+            }
         }
     }
 }

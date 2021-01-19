@@ -8,10 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
-using System.Web;
-using System.Net;
 using System.IO;
-using System.IO.Compression;
 using System.Drawing.Drawing2D;
 
 namespace Fantasy_King_s_Battle
@@ -56,7 +53,7 @@ namespace Fantasy_King_s_Battle
 
         private readonly List<VisualControl> VisualControls = new List<VisualControl>();// Список всех визуальных контролов
         private VisualControl controlWithHint;
-        private Label ctrlTransparent;// Прозрачный контрол используется для активации MouseHover
+        internal Label ctrlTransparent;// Прозрачный контрол используется для активации MouseHover
         private Point mousePos;
 
         private readonly Label labelDay;
@@ -145,13 +142,13 @@ namespace Fantasy_King_s_Battle
         private int maxWidthPages;
 
 
-        private readonly List<ControlContainer> pages = new List<ControlContainer>();
-        private readonly ControlContainer pageGuilds;
-        private readonly ControlContainer pageBuildings;
-        private readonly ControlContainer pageTemples;
-        private readonly ControlContainer pageHeroes;
-        private readonly ControlContainer pageLairs;
-        private ControlContainer currentPage;
+        private readonly List<VisualControl> pages = new List<VisualControl>();
+        private readonly VisualControl pageGuilds;
+        private readonly VisualControl pageBuildings;
+        private readonly VisualControl pageTemples;
+        private readonly VisualControl pageHeroes;
+        private readonly VisualControl pageLairs;
+        private VisualControl currentPage;
         private readonly int leftForPages;
         private readonly int heightToolBar;
         private readonly int heightBandLobby;
@@ -327,6 +324,7 @@ namespace Fantasy_King_s_Battle
                 Parent = this,
                 BackColor = Color.Transparent
             };
+            ctrlTransparent.MouseMove += CtrlTransparent_MouseMove;
             ctrlTransparent.MouseHover += CtrlTransparent_MouseHover;
             ctrlTransparent.MouseLeave += CtrlTransparent_MouseLeave;
             ctrlTransparent.MouseClick += CtrlTransparent_MouseClick;
@@ -389,13 +387,15 @@ namespace Fantasy_King_s_Battle
             PanelPlayer pp;
             foreach (Player p in lobby.Players)
             {
-                pp = new PanelPlayer(this);
+                pp = new PanelPlayer(p.ImageIndexAvatar);
+                pp.Left = Config.GridSize;
                 pp.Player = p;
                 panelPlayers.Add(pp);
-                heightBandLobby = pp.Top + pp.Height;
+                VisualControls.Add(pp);                
             }
+            heightBandLobby = (panelPlayers[0].Height + Config.GridSize) * panelPlayers.Count();
 
-            leftForPages = GuiUtils.NextLeft(lobby.Players[0].Panel);
+            leftForPages = lobby.Players[0].Panel.NextLeft();
 
             // Текст с информацией о Королевстве
             labelDay = GuiUtils.CreateLabel(this, Config.GridSize, Config.GridSize, 80, "День");
@@ -433,11 +433,11 @@ namespace Fantasy_King_s_Battle
             pageHeroes = PreparePanel();
             pageLairs = PreparePanel();
 
-            ControlContainer PreparePanel()
+            VisualControl PreparePanel()
             {
-                ControlContainer tpp = new ControlContainer(this);
+                VisualControl tpp = new VisualControl();
                 tpp.Left = leftForPages;
-                tpp.Top = btnQuit.NextTop();
+                tpp.Top = btnQuit.NextTop();// Топ - от низа кнопки страницы
                 pages.Add(tpp);
                 return tpp;
             }
@@ -449,7 +449,7 @@ namespace Fantasy_King_s_Battle
             btnPageHeroes = CreateButtonPage(pageHeroes, GUI_HEROES);
             btnPageLairs = CreateButtonPage(pageLairs, GUI_LAIR);
 
-            Button CreateButtonPage(ControlContainer p, int imageIndex)
+            Button CreateButtonPage(VisualControl p, int imageIndex)
             {
                 Button b = GuiUtils.CreateButtonWithIcon(this, 0, Config.GridSize, imageIndex);
                 b.FlatAppearance.BorderColor = Color.DarkBlue;
@@ -466,16 +466,16 @@ namespace Fantasy_King_s_Battle
 
             ShowDataPlayer();
 
-            foreach (ControlContainer cc in pages)
-            {
-                cc.SetVisible(false);
-            }
+            //foreach (ControlContainer cc in pages)
+            //{
+            //    cc.SetVisible(false);
+            //}
 
             // Определяем максимальную ширину страниц
             int maxHeightPages = 0;
             Size maxSizePanelPage;
 
-            foreach (ControlContainer pc in pages)
+            foreach (VisualControl pc in pages)
             {
                 maxSizePanelPage = pc.MaxSize();
                 maxWidthPages = Math.Max(maxWidthPages, maxSizePanelPage.Width);
@@ -520,7 +520,7 @@ namespace Fantasy_King_s_Battle
             panelBuildingInfo.Width = panelHeroInfo.Width;
             panelLairInfo.Width = panelBuildingInfo.Width;
             int widthRightPanel = Math.Max(panelMenu.Width, panelHeroInfo.Width);
-            Debug.Assert(widthRightPanel > panelMenu.Width);
+            //Debug.Assert(widthRightPanel > panelMenu.Width);
 
             panelBuildingInfo.Left = leftForPages + maxWidthPages + Config.GridSize;
             panelLairInfo.Left = panelBuildingInfo.Left;
@@ -791,7 +791,7 @@ namespace Fantasy_King_s_Battle
 
         private void BtnPage_Click(object sender, EventArgs e)
         {
-            ActivatePage((ControlContainer)((Button)sender).Tag);
+            ActivatePage((VisualControl)((Button)sender).Tag);
         }
 
         private void BtnPreferences_Click(object sender, EventArgs e)
@@ -808,7 +808,7 @@ namespace Fantasy_King_s_Battle
                 if (Settings.IndexAvatar() != lobby.CurrentPlayer.ImageIndexAvatar)
                 {
                     lobby.CurrentPlayer.ImageIndexAvatar = lobby.CurrentPlayer.ImageIndexAvatar;
-                    lobby.CurrentPlayer.Panel.Refresh();
+                    ShowFrame();
                 }
 
                 ApplyFullScreen(false);
@@ -1003,7 +1003,7 @@ namespace Fantasy_King_s_Battle
 
                 p.Panel.Left = shiftControls.X;
                 p.Panel.Top = top;
-                top = GuiUtils.NextTop(p.Panel);
+                top = p.Panel.NextTop();
             }
 
             //Refresh();
@@ -1015,7 +1015,7 @@ namespace Fantasy_King_s_Battle
             DrawPage(pageBuildings, Config.TypeEconomicConstructions.ToList<TypeConstruction>());
             DrawPage(pageTemples, Config.TypeTemples.ToList<TypeConstruction>());
 
-            void DrawPage(ControlContainer panel, List<TypeConstruction> list)
+            void DrawPage(VisualControl panel, List<TypeConstruction> list)
             {
                 int top = 0;
                 int left;
@@ -1030,7 +1030,7 @@ namespace Fantasy_King_s_Battle
                         if (tck.Line == line)
                         {
                             tck.Panel = new PanelBuilding();
-                            panel.AddContainer(tck.Panel, new Point(left, top));
+                            panel.AddControl(tck.Panel, new Point(left, top));
 
                             left += tck.Panel.Width + Config.GridSize;
                             height = tck.Panel.Height;
@@ -1057,7 +1057,7 @@ namespace Fantasy_King_s_Battle
                     if (l.Line == line)
                     {
                         l.Panel = new PanelLair();
-                        pageLairs.AddControl(l.Panel, new Point(left, top));
+                        //pageLairs.AddControl(l.Panel, new Point(left, top));
 
                         left += l.Panel.Width + Config.GridSize;
                         height = l.Panel.Height;
@@ -1098,7 +1098,7 @@ namespace Fantasy_King_s_Battle
         private void DrawHeroes()
         {
             panelHeroes = new PanelWithPanelEntity(Config.HeroRows);
-            pageHeroes.AddContainer(panelHeroes, new Point(0, 0));
+            pageHeroes.AddControl(panelHeroes, new Point(0, 0));
 
             List<ICell> list = new List<ICell>();
             for (int x = 0; x < Config.HeroRows * Config.HeroInRow; x++)
@@ -1163,7 +1163,7 @@ namespace Fantasy_King_s_Battle
         private void DrawWarehouse()
         {
             panelWarehouse = new PanelWithPanelEntity(Config.WarehouseWidth);
-            pageHeroes.AddContainer(panelWarehouse, new Point(0, panelHeroes.Height + Config.GridSize));
+            pageHeroes.AddControl(panelWarehouse, new Point(0, panelHeroes.Height + Config.GridSize));
         }
 
         internal void ShowWarehouse()
@@ -1171,16 +1171,17 @@ namespace Fantasy_King_s_Battle
             panelWarehouse.ApplyList(lobby.CurrentPlayer.Warehouse.ToList<ICell>());
         }
 
-        private void ActivatePage(ControlContainer pc)
+        private void ActivatePage(VisualControl pc)
         {
             //SendMessage(Handle, WM_SETREDRAW, false, 0);
 
-            currentPage?.SetVisible(false);
+            //currentPage?.SetVisible(false);
             //SendMessage(Handle, WM_SETREDRAW, true, 0);
             //Invalidate(true);
             //SendMessage(Handle, WM_SETREDRAW, false, 0);
-            pc.SetVisible(true);
+            //pc.SetVisible(true);
             currentPage = pc;
+            ShowFrame();
 
             //SendMessage(Handle, WM_SETREDRAW, true, 0);
             //Invalidate(true);
@@ -1227,18 +1228,19 @@ namespace Fantasy_King_s_Battle
 
                 UpdateMenu();
 
-                if (oldSelected != null)
-                    oldSelected.Repaint();
+                //if (oldSelected != null)
+                //    oldSelected.Repaint();
                 if (SelectedPanelBuilding != null)
                 {
                     panelBuildingInfo.Building = SelectedPanelBuilding.Building;
-                    SelectedPanelBuilding.Repaint();
+                    //SelectedPanelBuilding.Repaint();
                     panelBuildingInfo.Show();
                 }
                 else
                     panelBuildingInfo.Hide();
 
-                panelMenu.Invalidate(true);// Это точно надо?
+                ShowFrame();
+                //panelMenu.Invalidate(true);// Это точно надо?
             }
         }
 
@@ -1289,18 +1291,19 @@ namespace Fantasy_King_s_Battle
 
                 UpdateMenu();
 
-                if (oldSelected != null)
-                    ((ICell)oldSelected).Panel.Invalidate(true);
+                //if (oldSelected != null)
+                //    ((ICell)oldSelected).Panel.Invalidate(true);
                 if (SelectedHero != null)
                 {
                     panelHeroInfo.Hero = SelectedHero;
                     //SelectedPanelEntity = ((ICell)SelectedHero).Panel;
-                    ((ICell)SelectedHero).Panel.Invalidate(true);
+                 //   ((ICell)SelectedHero).Panel.Invalidate(true);
                     panelHeroInfo.Show();
                 }
                 else
                     panelHeroInfo.Hide();
 
+                ShowFrame();
                 panelMenu.Invalidate(true);// Это точно надо?
 
             }
@@ -1313,8 +1316,9 @@ namespace Fantasy_King_s_Battle
                 PanelEntity oldPe = SelectedPanelEntity;
                 SelectedPanelEntity = pe;
 
-                oldPe?.Invalidate();
-                SelectedPanelEntity?.Invalidate();
+                ShowFrame();
+                //oldPe?.Invalidate();
+                //SelectedPanelEntity?.Invalidate();
             }
         }
 
@@ -1400,7 +1404,7 @@ namespace Fantasy_King_s_Battle
             if (lobby != null)
             {
                 lobby.CurrentPlayer.ImageIndexAvatar = Settings.IndexAvatar();
-                lobby.CurrentPlayer.Panel.Refresh();
+                ShowFrame();
             }
         }
 
@@ -1492,8 +1496,10 @@ namespace Fantasy_King_s_Battle
 
             foreach (VisualControl vc in VisualControls)
             {
-                vc.Draw(grfFrame);
+                vc.Draw(bmpFrame, grfFrame, vc.Left, vc.Top);
             }
+
+            currentPage.Draw(bmpFrame, grfFrame, leftForPages, btnQuit.NextTop());
         }
 
         internal VCButton CreateButton(ImageList imageList, int imageIndex, int left, int top, EventHandler click, EventHandler showHint)
@@ -1517,29 +1523,62 @@ namespace Fantasy_King_s_Battle
 
             foreach (VisualControl vc in VisualControls)
             {
-                if ((vc.Left <= mousePos.X) && (vc.Top <= mousePos.Y) && (vc.Left + vc.Width >= mousePos.X) && (vc.Top + vc.Height >= mousePos.Y))
-                    return vc;
+                if (Utils.PointInRectagle(vc.Left, vc.Top, vc.Width, vc.Height, mousePos.X, mousePos.Y))
+                    return vc.GetControl(mousePos.X - vc.Left, mousePos.Y - vc.Top);
             }
 
             return null;
         }
 
+        private void DoMouseMove()
+        {
+            VisualControl curControl = ControlUnderMouse();
+
+            if (curControl == null)
+            {
+                controlWithHint = null;
+                formHint.HideHint();
+                ctrlTransparent.Hide();
+            }
+            else if (curControl != controlWithHint)
+            {
+                //controlWithHint = null;
+                //formHint.HideHint();
+
+                // Когда покидаем контрол, который находится впритык к другому, скрываем текущий на 1 пиксел, чтобы
+                // заново срабатывало событие MouseHover
+                if (controlWithHint != null)
+                {
+                    controlWithHint = null;
+                    formHint.HideHint();
+                    ctrlTransparent.Hide();
+                }
+                else
+                {
+                    ctrlTransparent.Left = curControl.Left;
+                    ctrlTransparent.Top = curControl.Top;
+                    ctrlTransparent.Width = curControl.Width;
+                    ctrlTransparent.Height = curControl.Height;
+                    ctrlTransparent.Show();
+                }
+            }
+        }
+
         protected override void OnMouseMove(MouseEventArgs e)
         {
             base.OnMouseMove(e);
-            
-            VisualControl curControl = ControlUnderMouse();
-            if ((curControl != null) && (curControl != controlWithHint))
-            {
-                ctrlTransparent.Left = curControl.Left;
-                ctrlTransparent.Top = curControl.Top;
-                ctrlTransparent.Width = curControl.Width;
-                ctrlTransparent.Height = curControl.Height;
-            }
+
+            DoMouseMove();            
+        }
+
+        private void CtrlTransparent_MouseMove(object sender, MouseEventArgs e)
+        {
+            DoMouseMove();
         }
 
         private void CtrlTransparent_MouseLeave(object sender, EventArgs e)
         {
+            controlWithHint = null;
             formHint.HideHint();
         }
 

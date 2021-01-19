@@ -6,105 +6,40 @@ using System.Diagnostics;
 namespace Fantasy_King_s_Battle
 {
     // Класс панели игрока лобби
-    internal sealed class PanelPlayer : BasePanel
+    internal sealed class PanelPlayer : VisualControl
     {
         private Player player;
         private PanelEntity panelAvatar;
-        private Label lblDamageToCastle;
-        private Label lblStrike;
         private Rectangle rectBorder;
-        private Point pointIconAvatar;// Координаты для отрисовки аватара игрока
-        private Point pointIconResultBattle;// Координаты для иконки результата боя
-        private Point pointIconStrike;// Координаты для иконки страйка
         private readonly Pen penBorder = new Pen(FormMain.Config.CommonBorder);
         private readonly SolidBrush brushCurDurability = new SolidBrush(FormMain.Config.BattlefieldPlayerHealth);
         private readonly SolidBrush brushMaxDurability = new SolidBrush(FormMain.Config.BattlefieldPlayerHealthNone);
         private readonly SolidBrush brushBackground = new SolidBrush(Color.White);
 
-        public PanelPlayer(Control parent) : base()
+        public PanelPlayer(int imageIndex) : base()
         {
-            Parent = parent;
-            Left = FormMain.Config.GridSize;
+            panelAvatar = new PanelEntity();
+            AddControl(panelAvatar, new Point(FormMain.Config.GridSize, FormMain.Config.GridSize));
+            //panelAvatar.MouseEnter += PanelAvatar_MouseEnter;
 
-            panelAvatar = new PanelEntity()
-            {
-                Parent = this,
-                Location = new Point(FormMain.Config.GridSize, FormMain.Config.GridSize),
-                ShowHint = false
-            };
-            panelAvatar.MouseEnter += PanelAvatar_MouseEnter;
-            panelAvatar.MouseLeave += PanelAvatar_MouseLeave;
-
-            pointIconAvatar = new Point(FormMain.Config.GridSize, FormMain.Config.GridSize);
-
-            int leftForIcons = pointIconAvatar.X + Program.formMain.ilGuiHeroes.ImageSize.Width + FormMain.Config.GridSize;
-            int leftForText = leftForIcons + Program.formMain.ilGui24.ImageSize.Width + FormMain.Config.GridSizeHalf;
-
-            pointIconResultBattle = new Point(leftForIcons, pointIconAvatar.Y);
-            pointIconStrike = new Point(leftForIcons, pointIconResultBattle.Y + Program.formMain.ilResultBattle.ImageSize.Height + FormMain.Config.GridSizeHalf);
-
-            lblDamageToCastle = new Label()
-            {
-                Parent = this,
-                Left = leftForText,
-                Top = pointIconResultBattle.Y,
-                BackColor = Color.Transparent,
-                TextAlign = ContentAlignment.MiddleLeft,
-                MaximumSize = new Size(Program.formMain.ilResultBattle.ImageSize.Width + FormMain.Config.GridSize, Program.formMain.ilResultBattle.ImageSize.Height),
-                Font = new Font("Microsoft Sans Serif", 8, FontStyle.Bold)
-            };
-
-            lblStrike = new Label()
-            {
-                Parent = this,
-                Left = leftForText,
-                Top = pointIconStrike.Y,
-                ForeColor = Color.Black,
-                BackColor = Color.Transparent,
-                TextAlign = ContentAlignment.MiddleLeft,
-                MaximumSize = Program.formMain.ilGui24.ImageSize,
-                Font = new Font("Microsoft Sans Serif", 8, FontStyle.Bold)
-            };
-
-            Width = leftForText + lblDamageToCastle.MaximumSize.Width + FormMain.Config.GridSizeHalf;
-            Height = Math.Max(FormMain.Config.GridSize + Program.formMain.ilPlayerAvatars.ImageSize.Height + FormMain.Config.GridSize + FormMain.Config.GridSize,
-                GuiUtils.NextTop(lblStrike) + 8);
-
-            rectBorder = new Rectangle(0, 0, Width - 1, Height - 1);
+            Width = panelAvatar.NextLeft();
+            Height = panelAvatar.NextTop();
         }
 
-        internal Player Player { get { return player; } set { player = value; player.Panel = this; panelAvatar.ShowCell(player); Refresh(); } }
+        internal Player Player { get { return player; }
+            set { player = value; player.Panel = this; panelAvatar.ShowCell(player); /*Refresh()*/; } }
 
-        private void PanelAvatar_MouseLeave(object sender, EventArgs e)
+        protected void OnMouseEnter(EventArgs e)
         {
-            OnMouseLeave(e);
-        }
-
-        private void PanelAvatar_MouseEnter(object sender, EventArgs e)
-        {
-            OnMouseEnter(e);
-        }
-
-        protected override void OnMouseEnter(EventArgs e)
-        {
-            base.OnMouseEnter(e);
+            //base.OnMouseEnter(e);
 
             Program.formMain.formHint.Clear();
             (player as ICell).PrepareHint();
-            Program.formMain.formHint.ShowHint(this);
+            //Program.formMain.formHint.ShowHint(this);
         }
 
-        protected override void OnMouseLeave(EventArgs e)
+        protected void OnPaint(PaintEventArgs e)
         {
-            base.OnMouseLeave(e);
-
-            Program.formMain.formHint.HideHint();
-        }
-
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            base.OnPaint(e);
-
             if (player == null)
                 return;
 
@@ -130,33 +65,46 @@ namespace Fantasy_King_s_Battle
             // Прочность замка
             int dur = player.DurabilityCastle >= 0 ? player.DurabilityCastle : 0;
             GuiUtils.DrawBand(e.Graphics, new Rectangle(FormMain.Config.GridSize, FormMain.Config.GridSize + panelAvatar.Height + 1, panelAvatar.Width, 6), brushCurDurability, brushMaxDurability, dur, player.Lobby.TypeLobby.DurabilityCastle);
-            
-            // Результат последнего боя
-            if (player.ResultLastBattle != ResultBattle.None)
-                e.Graphics.DrawImageUnscaled(Program.formMain.ilResultBattle.Images[(int)player.ResultLastBattle], pointIconResultBattle);
 
-            if (player.LastBattleDamageToCastle != 0)
-            {
-                lblDamageToCastle.Show();
-                lblDamageToCastle.Text = player.LastBattleDamageToCastle.ToString();
-                lblDamageToCastle.ForeColor = player.LastBattleDamageToCastle > 0 ? FormMain.Config.DamageToCastlePositive : FormMain.Config.DamageToCastleNegative;
-            }
-            else
-            {
-                lblDamageToCastle.Hide();
-            }
+        }
 
-            // Указываем страйк
-            if (player.ResultLastBattle != ResultBattle.None)
-            {
-                e.Graphics.DrawImageUnscaled(Program.formMain.ilGui24.Images[FormMain.GUI_24_FIRE], pointIconStrike);
+        protected override void ArrangeControlsAndContainers()
+        {
+            rectBorder = new Rectangle(Left, Top, Width - 1, Height - 1);
+        }
 
-                lblStrike.Show();
-                lblStrike.Text = player.Streak.ToString();
-                lblStrike.ForeColor = lblDamageToCastle.ForeColor;
-            }
-            else
-                lblStrike.Hide();
+        internal override void Draw(Bitmap b, Graphics g, int x, int y)
+        {
+            // Рамка вокруг панели
+            penBorder.Color = player == player.Lobby.CurrentPlayer ? FormMain.Config.SelectedPlayerBorder : FormMain.Config.CommonBorder;
+            g.DrawRectangle(penBorder, rectBorder);
+
+            // Аватар игрока
+            panelAvatar.Left = x + Controls[panelAvatar].X;
+            panelAvatar.Top = y + Controls[panelAvatar].Y;
+            panelAvatar.Draw(b, g, panelAvatar.Left, panelAvatar.Top);
+        }
+
+        internal override void DoClick()
+        {
+
+        }
+
+        internal override bool PrepareHint()
+        {
+            //panelAvatar.PrepareHint();
+            return false;
+            //(player as ICell).PrepareHint();
+            //Program.formMain.formHint.ShowHint(this);
+        }
+
+        internal override VisualControl GetControl(int x, int y)
+        {
+
+            if (Utils.PointInRectagle(Controls[panelAvatar].X, Controls[panelAvatar].Y, panelAvatar.Width, panelAvatar.Height, x, y))
+                return panelAvatar;
+
+            return this;
         }
     }
 }

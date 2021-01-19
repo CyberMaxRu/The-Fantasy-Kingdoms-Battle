@@ -147,12 +147,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="PlayerItem.cs" />
-    <Compile Include="PanelEntity.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ControlContainer.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="PanelEntity.cs" />
     <Compile Include="PlayerResearch.cs" />
     <Compile Include="Requirement.cs" />
     <Compile Include="Research.cs" />
@@ -178,6 +173,8 @@
     <Compile Include="Skill.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="VCButton.cs" />
+    <Compile Include="VCCell.cs" />
+    <Compile Include="VCImage.cs" />
     <Compile Include="VisualControl.cs" />
     <Compile Include="WebUtils.cs" />
     <Compile Include="XmlUtils.cs" />
