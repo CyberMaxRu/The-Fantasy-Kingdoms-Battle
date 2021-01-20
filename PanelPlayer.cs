@@ -20,23 +20,13 @@ namespace Fantasy_King_s_Battle
         {
             panelAvatar = new PanelEntity();
             AddControl(panelAvatar, new Point(FormMain.Config.GridSize, FormMain.Config.GridSize));
-            //panelAvatar.MouseEnter += PanelAvatar_MouseEnter;
 
-            Width = panelAvatar.NextLeft();
-            Height = panelAvatar.NextTop();
+            Width = panelAvatar.Width + (FormMain.Config.GridSize * 2);
+            Height = panelAvatar.Height + (FormMain.Config.GridSize * 2);
         }
 
         internal Player Player { get { return player; }
             set { player = value; player.Panel = this; panelAvatar.ShowCell(player); /*Refresh()*/; } }
-
-        protected void OnMouseEnter(EventArgs e)
-        {
-            //base.OnMouseEnter(e);
-
-            Program.formMain.formHint.Clear();
-            (player as ICell).PrepareHint();
-            //Program.formMain.formHint.ShowHint(this);
-        }
 
         protected void OnPaint(PaintEventArgs e)
         {
@@ -92,15 +82,11 @@ namespace Fantasy_King_s_Battle
 
         internal override bool PrepareHint()
         {
-            //panelAvatar.PrepareHint();
             return false;
-            //(player as ICell).PrepareHint();
-            //Program.formMain.formHint.ShowHint(this);
         }
 
         internal override VisualControl GetControl(int x, int y)
         {
-
             if (Utils.PointInRectagle(Controls[panelAvatar].X, Controls[panelAvatar].Y, panelAvatar.Width, panelAvatar.Height, x, y))
                 return panelAvatar;
 
