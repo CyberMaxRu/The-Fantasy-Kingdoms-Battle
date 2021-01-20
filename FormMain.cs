@@ -56,6 +56,8 @@ namespace Fantasy_King_s_Battle
         internal Label ctrlTransparent;// Прозрачный контрол используется для активации MouseHover
         private Point mousePos;
 
+        private readonly VisualControl panelPlayers;// Панель, на которой находятся панели игроков лобби
+
         private readonly Label labelDay;
         private readonly Label labelGold;
         private readonly Label labelPeasants;
@@ -147,7 +149,6 @@ namespace Fantasy_King_s_Battle
         private VCFormPage currentPage;
         private readonly int leftForPages;
         private readonly int heightToolBar;
-        private readonly int heightBandLobby;
         private readonly int heightBandBuildings;
         private readonly int heightBandInfoAndMenu;
         private readonly Point pointMenu;
@@ -156,7 +157,6 @@ namespace Fantasy_King_s_Battle
         private readonly PanelLairInfo panelLairInfo;
         private readonly PanelHeroInfo panelHeroInfo;
         internal PanelEntity SelectedPanelEntity;
-        private readonly List<PanelPlayer> panelPlayers = new List<PanelPlayer>();
         private readonly List<PanelBuilding> listPanelBuildings = new List<PanelBuilding>();
 
         private List<PictureBox> SlotSkill = new List<PictureBox>();
@@ -380,14 +380,19 @@ namespace Fantasy_King_s_Battle
             heightToolBar = btnQuit.Height + (Config.GridSize * 2);
 
             // Создаем иконки игроков в левой части окна
+            panelPlayers = new VisualControl(MainControl, new Point(0, 0));
+
             PanelPlayer pp;
+            int nextTopPanelPlayer = 0;
             foreach (Player p in lobby.Players)
             {
-                pp = new PanelPlayer(MainControl, new Point(Config.GridSize, 0));
-                pp.Player = p;
-                panelPlayers.Add(pp);
+                pp = new PanelPlayer(panelPlayers, new Point(0, nextTopPanelPlayer))
+                {
+                    Player = p
+                };
+                nextTopPanelPlayer = pp.NextTop();
             }
-            heightBandLobby = (panelPlayers[0].Height + Config.GridSize) * panelPlayers.Count();
+            panelPlayers.ApplyMaxSize();
 
             leftForPages = lobby.Players[0].Panel.NextLeft();
 
@@ -505,7 +510,7 @@ namespace Fantasy_King_s_Battle
             //
             Width = (Width - ClientSize.Width) + calcedWidth + Config.GridSize;
             // Высота - это наибольшая высота бэндов лобби, зданий и информации с меню
-            calcedHeight = heightToolBar + Math.Max(heightBandLobby, Math.Max(pageHeroes.Page.Top + pageHeroes.Page.MaxSize().Height, heightBandBuildings));
+            calcedHeight = heightToolBar + Math.Max(panelPlayers.Height, Math.Max(pageHeroes.Page.Top + pageHeroes.Page.MaxSize().Height, heightBandBuildings));
             Height = (Height - ClientSize.Height) + calcedHeight + Config.GridSize;
             minSizeForm = new Size(Width, Height);
 
@@ -1157,10 +1162,12 @@ namespace Fantasy_King_s_Battle
 
         private void DrawLobby()
         {
-            for (int i = 0; i < panelPlayers.Count; i++)
+            foreach (Player p in lobby.Players)
             {
-                panelPlayers[i].Player = lobby.Players[i];
+                p.Panel.ShiftOnParent = new Point(p.Panel.ShiftOnParent.X, (p.PositionInLobby - 1) * (p.Panel.Height + Config.GridSize));
             }
+
+            panelPlayers.ArrangeControls();
         }
 
         internal void SelectBuilding(PanelBuilding pb)
