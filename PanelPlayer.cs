@@ -8,8 +8,8 @@ namespace Fantasy_King_s_Battle
     {
         private Player player;
         private readonly PanelEntity panelAvatar;
-        private Rectangle rectBorder;
         private readonly Pen penBorder = new Pen(FormMain.Config.CommonBorder);
+        private Rectangle rectBorder;
 
         public PanelPlayer(VisualControl parent, Point shift) : base(parent, shift)
         {
