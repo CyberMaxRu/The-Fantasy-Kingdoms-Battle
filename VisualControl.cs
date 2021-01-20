@@ -75,7 +75,7 @@ namespace Fantasy_King_s_Battle
             }
         }
 
-        protected virtual void ArrangeControls()
+        internal virtual void ArrangeControls()
         {
             foreach (VisualControl vc in Controls)
             {
@@ -126,11 +126,18 @@ namespace Fantasy_King_s_Battle
 
             foreach (VisualControl vc in Controls)
             {
-                maxSize.Width = Math.Max(maxSize.Width, vc.left + vc.Width);
-                maxSize.Height = Math.Max(maxSize.Height, vc.top + vc.Height);
+                maxSize.Width = Math.Max(maxSize.Width, vc.ShiftOnParent.X + vc.Width);
+                maxSize.Height = Math.Max(maxSize.Height, vc.ShiftOnParent.Y + vc.Height);
             }
 
             return maxSize;
+        }
+
+        internal virtual void ApplyMaxSize()
+        {
+            Size s = MaxSize();
+            Width = s.Width;
+            Height = s.Height;
         }
     }
 }

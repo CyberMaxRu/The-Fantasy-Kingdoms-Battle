@@ -39,7 +39,7 @@ namespace Fantasy_King_s_Battle
 //            label.DrawToBitmap(b, new Rectangle(label.Left, label.Top, label.Width, label.Height));
         }
 
-        protected override void ArrangeControls()
+        internal override void ArrangeControls()
         {
             label.Left = Left;
             label.Top = Top;

@@ -25,7 +25,7 @@ namespace Fantasy_King_s_Battle
             set { Debug.Assert(value != null); player = value; player.Panel = this; panelAvatar.ShowCell(player); }
         }
 
-        protected override void ArrangeControls()
+        internal override void ArrangeControls()
         {
             base.ArrangeControls();
 

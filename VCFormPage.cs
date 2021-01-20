@@ -26,7 +26,7 @@ namespace Fantasy_King_s_Battle
         internal VisualControl Page { get; }
         internal string Caption { get; }
         
-        protected override void ArrangeControls()
+        internal override void ArrangeControls()
         {
             base.ArrangeControls();
 
