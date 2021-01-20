@@ -17,17 +17,19 @@ namespace Fantasy_King_s_Battle
         private int width;
         private int height;
 
-        public VisualControl(bool b)
+        public VisualControl()
         {
-            ShiftOnParent = new Point(0, 0);
+            //ShiftX = 0;
+            //ShiftY = 0;
         }
 
-        public VisualControl(VisualControl parent, Point shift)
+        public VisualControl(VisualControl parent, int shiftX, int shiftY)
         {
             Debug.Assert(parent != null);
             Debug.Assert(parent != this);
 
-            ShiftOnParent = shift;
+            ShiftX = shiftX;
+            ShiftY = shiftY;
             parent.AddControl(this);
         }
 
@@ -35,7 +37,8 @@ namespace Fantasy_King_s_Battle
         internal int Top { get { return top; } set { top = value; ArrangeControls(); } }
         internal int Width { get { return width; } set { width = value; } }
         internal int Height { get { return height; } set { height = value; } }
-        internal Point ShiftOnParent { get; set; }// Смещение контрола относительно левого верхнего края на родителе
+        internal int ShiftX { get; set; }// Смещение контрола относительно левого края на родителе
+        internal int ShiftY { get; set; }// Смещение контрола относительно верхнего края на родителе
         internal bool Visible { get; set; } = true;
 
         // Список контролов, расположенных на нём, со смещением относительно левого верхнего угла
@@ -85,12 +88,12 @@ namespace Fantasy_King_s_Battle
 
         internal int NextTop()
         {
-            return ShiftOnParent.Y + Height + FormMain.Config.GridSize;
+            return ShiftY + Height + FormMain.Config.GridSize;
         }
 
         internal int NextLeft()
         {
-            return ShiftOnParent.X + Width + FormMain.Config.GridSize;
+            return ShiftX + Width + FormMain.Config.GridSize;
         }
 
         internal virtual VisualControl GetControl(int x, int y)
@@ -113,8 +116,8 @@ namespace Fantasy_King_s_Battle
 
         private void ArrangeControl(VisualControl vc)
         {
-            vc.Left = Left + vc.ShiftOnParent.X;
-            vc.Top = Top + vc.ShiftOnParent.Y;
+            vc.Left = Left + vc.ShiftX;
+            vc.Top = Top + vc.ShiftY;
 
             vc.ArrangeControls();
         }
@@ -133,8 +136,8 @@ namespace Fantasy_King_s_Battle
 
             foreach (VisualControl vc in Controls)
             {
-                maxSize.Width = Math.Max(maxSize.Width, vc.ShiftOnParent.X + vc.Width);
-                maxSize.Height = Math.Max(maxSize.Height, vc.ShiftOnParent.Y + vc.Height);
+                maxSize.Width = Math.Max(maxSize.Width, vc.ShiftX + vc.Width);
+                maxSize.Height = Math.Max(maxSize.Height, vc.ShiftY + vc.Height);
             }
 
             return maxSize;

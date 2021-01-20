@@ -12,7 +12,7 @@ namespace Fantasy_King_s_Battle
     {
         private Label label;
 
-        public VCLabel(VisualControl parent, Point shift, Font font, Color foreColor, int height, string text) : base(parent, shift)
+        public VCLabel(VisualControl parent, int shiftX, int shiftY, Font font, Color foreColor, int height, string text) : base(parent, shiftX, shiftY)
         {
             Height = height;
 

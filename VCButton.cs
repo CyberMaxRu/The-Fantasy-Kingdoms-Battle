@@ -13,7 +13,7 @@ namespace Fantasy_King_s_Battle
     {
         private readonly Pen penBorder = new Pen(FormMain.Config.CommonBorder);
 
-        public VCButton(VisualControl parent, Point shift, ImageList imageList, int imageIndex) : base(parent, shift, imageList, imageIndex)
+        public VCButton(VisualControl parent, int shiftX, int shiftY, ImageList imageList, int imageIndex) : base(parent, shiftX, shiftY, imageList, imageIndex)
         {
         }
 

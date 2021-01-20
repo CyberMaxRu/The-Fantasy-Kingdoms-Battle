@@ -18,7 +18,7 @@ namespace Fantasy_King_s_Battle
         protected readonly Label lblIcon;
         protected PageControl pageControl;
 
-        public PanelBaseInfo(VisualControl parent, Point shift, int height) : base(parent, shift)
+        public PanelBaseInfo(VisualControl parent, int shiftX, int shiftY, int height) : base(parent, shiftX, shiftY)
         {
             Height = height;
 

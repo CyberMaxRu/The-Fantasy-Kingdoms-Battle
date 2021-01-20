@@ -17,11 +17,11 @@ namespace Fantasy_King_s_Battle
         private readonly PanelWithPanelEntity panelInhabitants;
         private readonly PanelWithPanelEntity panelWarehouse;
 
-        public PanelBuildingInfo(VisualControl parent, Point shift, int height) : base(parent, shift, height)
+        public PanelBuildingInfo(VisualControl parent, int shiftX, int shiftY, int height) : base(parent, shiftX, shiftY, height)
         {
-            panelProducts = new PanelWithPanelEntity(this, new Point(0, 0), 4);
-            panelInhabitants = new PanelWithPanelEntity(this, new Point(0, 0), 4);
-            panelWarehouse = new PanelWithPanelEntity(this, new Point(0, 0), 4);
+            panelProducts = new PanelWithPanelEntity(this, 0, 0, 4);
+            panelInhabitants = new PanelWithPanelEntity(this, 0, 0, 4);
+            panelWarehouse = new PanelWithPanelEntity(this, 0, 0, 4);
 
             lblGold = new Label()
             {

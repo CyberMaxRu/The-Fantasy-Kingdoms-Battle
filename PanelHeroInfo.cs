@@ -35,10 +35,10 @@ namespace Fantasy_King_s_Battle
         private PanelEntity panelArmour;
         internal List<PanelEntity> slots { get; } = new List<PanelEntity>();
 
-        public PanelHeroInfo(VisualControl parent, Point shift, int height) : base(parent, shift, height)
+        public PanelHeroInfo(VisualControl parent, int shiftX, int shiftY, int height) : base(parent, shiftX, shiftY, height)
         {
-            panelInventory = new PanelWithPanelEntity(this, new Point(0, 0), 4);
-            panelAbilities = new PanelWithPanelEntity(this, new Point(0, 0), 4);
+            panelInventory = new PanelWithPanelEntity(this, 0, 0, 4);
+            panelAbilities = new PanelWithPanelEntity(this, 0, 0, 4);
 
             btnDismiss = new Button()
             {
@@ -51,9 +51,9 @@ namespace Fantasy_King_s_Battle
             };
             btnDismiss.Click += BtnDismiss_Click;
 
-            panelWeapon = new PanelEntity(this, new Point(Left = pageControl.Left, pageControl.Top));
+            panelWeapon = new PanelEntity(this, Left = pageControl.Left, pageControl.Top);
 
-            panelArmour = new PanelEntity(this, new Point(panelWeapon.NextLeft(), panelWeapon.Top));
+            panelArmour = new PanelEntity(this, panelWeapon.NextLeft(), panelWeapon.Top);
 
             pageControl.Top = panelWeapon.NextTop();
             pageControl.AddPage("Статистика", (int)IconPages.Parameters, null);

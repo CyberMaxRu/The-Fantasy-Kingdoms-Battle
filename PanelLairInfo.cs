@@ -14,9 +14,9 @@ namespace Fantasy_King_s_Battle
         private PlayerLair lair;
         private readonly PanelWithPanelEntity panelInhabitants;
 
-        public PanelLairInfo(VisualControl parent, Point shift, int height) : base(parent, shift, height)
+        public PanelLairInfo(VisualControl parent, int shiftX, int shiftY, int height) : base(parent, shiftX, shiftY, height)
         {
-            panelInhabitants = new PanelWithPanelEntity(this, new Point(0, 0), 4);
+            panelInhabitants = new PanelWithPanelEntity(this, 0, 0, 4);
 
             pageControl.Top = pageControl.Top;
             pageControl.AddPage("Существа", (int)IconPages.Inhabitants, panelInhabitants);

@@ -11,7 +11,7 @@ namespace Fantasy_King_s_Battle
         private Rectangle rectBorder = new Rectangle(0, 0, 0, 0);
         private Bitmap bmpBackground;
 
-        public BasePanel(VisualControl parent, Point shift) : base(parent, shift)
+        public BasePanel(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
         }
 

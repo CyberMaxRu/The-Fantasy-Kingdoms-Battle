@@ -11,9 +11,9 @@ namespace Fantasy_King_s_Battle
         private readonly Pen penBorder = new Pen(FormMain.Config.CommonBorder);
         private Rectangle rectBorder;
 
-        public PanelPlayer(VisualControl parent, Point shift) : base(parent, shift)
+        public PanelPlayer(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
-            panelAvatar = new PanelEntity(this, new Point(FormMain.Config.GridSize, FormMain.Config.GridSize));
+            panelAvatar = new PanelEntity(this, FormMain.Config.GridSize, FormMain.Config.GridSize);
 
             Width = panelAvatar.Width + (FormMain.Config.GridSize * 2);
             Height = panelAvatar.Height + (FormMain.Config.GridSize * 2);

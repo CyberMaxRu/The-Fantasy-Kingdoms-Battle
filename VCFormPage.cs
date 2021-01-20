@@ -8,10 +8,10 @@ namespace Fantasy_King_s_Battle
     internal sealed class VCFormPage : VCButton
     {
         private VCLabel lblCaption;
-        public VCFormPage(VisualControl parent, Point shift, List<VCFormPage> list, ImageList imageList, int imageIndex, string caption, EventHandler onClick) : base(parent, shift, imageList, imageIndex)
+        public VCFormPage(VisualControl parent, int shiftX, int shiftY, List<VCFormPage> list, ImageList imageList, int imageIndex, string caption, EventHandler onClick) : base(parent, shiftX, shiftY, imageList, imageIndex)
         {
             Caption = caption;
-            Page = new VisualControl(false)
+            Page = new VisualControl()
             {
                 Visible = false
             };
@@ -19,7 +19,7 @@ namespace Fantasy_King_s_Battle
 
             list.Add(this);
 
-            lblCaption = new VCLabel(Page, new Point(0, 0), FormMain.Config.FontCaptionPage, FormMain.Config.CommonCaptionPage, FormMain.Config.GridSize * 3, caption);
+            lblCaption = new VCLabel(Page, 0, 0, FormMain.Config.FontCaptionPage, FormMain.Config.CommonCaptionPage, FormMain.Config.GridSize * 3, caption);
             ArrangeControls();
         }
 

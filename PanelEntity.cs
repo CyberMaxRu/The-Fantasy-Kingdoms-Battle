@@ -33,7 +33,7 @@ namespace Fantasy_King_s_Battle
         private bool lastWithBack;
         private Bitmap bmpImage;
 
-        public PanelEntity(VisualControl parent, Point shift) : base(parent, shift)
+        public PanelEntity(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
             //ForeColor = FormMain.Config.CommonQuantity;
             //BackColor = Color.Transparent;

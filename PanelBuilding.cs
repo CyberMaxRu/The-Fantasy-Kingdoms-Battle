@@ -23,7 +23,7 @@ namespace Fantasy_King_s_Battle
         private readonly Pen penBorder;
         private readonly Rectangle rectBorder;
 
-        public PanelBuilding(VisualControl parent, Point shift) : base(parent, shift)
+        public PanelBuilding(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
             lblName = new Label()
             {

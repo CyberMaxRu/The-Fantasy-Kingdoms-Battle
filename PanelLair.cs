@@ -17,7 +17,7 @@ namespace Fantasy_King_s_Battle
         private readonly PictureBox pbLair;
         private readonly Button btnSetAsTarget;
 
-        public PanelLair(VisualControl parent, Point shift) : base(parent, shift)
+        public PanelLair(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
             lblName = new Label()
             {

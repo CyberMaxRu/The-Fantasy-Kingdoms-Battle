@@ -15,7 +15,7 @@ namespace Fantasy_King_s_Battle
         private List<PanelEntity> panelEntities = new List<PanelEntity>();
         private int rows;// Сколько сейчас строк подготовлено
 
-        public PanelWithPanelEntity(VisualControl parent, Point shift, int entityInRow) : base(parent, shift)
+        public PanelWithPanelEntity(VisualControl parent, int shiftX, int shiftY, int entityInRow) : base(parent, shiftX, shiftY)
         {
             //DoubleBuffered = true;
             //BackColor = Color.Transparent;
@@ -64,8 +64,9 @@ namespace Fantasy_King_s_Battle
 
             for (int x = 0; x < EntityInRow; x++)
             {
-                pe = new PanelEntity(this, defPoint);
-                pe.ShiftOnParent = new Point(x * (pe.Width + 1), rows * (pe.Height + 1));
+                pe = new PanelEntity(this, 0, 0);
+                pe.ShiftX = x * (pe.Width + 1);
+                pe.ShiftY = rows * (pe.Height + 1);
                 panelEntities.Add(pe);
             }
 

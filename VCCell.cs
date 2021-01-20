@@ -11,7 +11,7 @@ namespace Fantasy_King_s_Battle
     // Визуальный контрол - ячейка
     internal sealed class VCCell : VCImage
     {
-        public VCCell(VisualControl parent, Point shift, ImageList imageList, int imageIndex) : base(parent, shift, imageList, imageIndex)
+        public VCCell(VisualControl parent, int shiftX, int shiftY, ImageList imageList, int imageIndex) : base(parent, shiftX, shiftY, imageList, imageIndex)
         {
         }
 
