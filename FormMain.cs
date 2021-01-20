@@ -386,10 +386,9 @@ namespace Fantasy_King_s_Battle
             int nextTopPanelPlayer = 0;
             foreach (Player p in lobby.Players)
             {
-                pp = new PanelPlayer(panelPlayers, new Point(0, nextTopPanelPlayer))
-                {
-                    Player = p
-                };
+                pp = new PanelPlayer(panelPlayers, new Point(0, nextTopPanelPlayer));
+                // !!! Эту привязку переместить в StartNewLobby()
+                pp.LinkToLobby(p);
                 nextTopPanelPlayer = pp.NextTop();
             }
             panelPlayers.ApplyMaxSize();

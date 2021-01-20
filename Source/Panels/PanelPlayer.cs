@@ -19,10 +19,13 @@ namespace Fantasy_King_s_Battle
             Height = panelAvatar.Height + (FormMain.Config.GridSize * 2);
         }
 
-        internal Player Player
+        internal void LinkToLobby(Player p)
         {
-            get { return player; }
-            set { Debug.Assert(value != null); player = value; player.Panel = this; panelAvatar.ShowCell(player); }
+            Debug.Assert(p != null);
+
+            player = p;
+            player.Panel = this;
+            panelAvatar.ShowCell(player);
         }
 
         internal override void ArrangeControls()
