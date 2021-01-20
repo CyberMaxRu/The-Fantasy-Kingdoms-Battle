@@ -62,7 +62,7 @@
     <Compile Include="Battle.cs" />
     <Compile Include="Battlefield.cs" />
     <Compile Include="BattlefieldTile.cs" />
-    <Compile Include="PanelPlayer.cs" />
+    <Compile Include="Source\Panels\PanelPlayer.cs" />
     <Compile Include="TypeEconomicConstruction.cs" />
     <Compile Include="TypeCitizen.cs" />
     <Compile Include="Creature.cs" />
