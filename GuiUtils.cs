@@ -92,6 +92,9 @@ namespace Fantasy_King_s_Battle
 
         internal static Bitmap MakeBackground(Size size)
         {
+            Debug.Assert(size.Width > FormMain.Config.GridSize);
+            Debug.Assert(size.Height > FormMain.Config.GridSize);
+
             Bitmap bmpBackground = new Bitmap(size.Width, size.Height);
             Graphics g = Graphics.FromImage(bmpBackground);
             g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
