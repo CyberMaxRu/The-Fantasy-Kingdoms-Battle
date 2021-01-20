@@ -34,7 +34,7 @@ namespace Fantasy_King_s_Battle
         internal override void Draw(Graphics g, int x, int y)
         {
             // Рамка вокруг панели
-            penBorder.Color = player == player.Lobby.CurrentPlayer ? FormMain.Config.SelectedPlayerBorder : FormMain.Config.CommonBorder;
+            penBorder.Color = FormMain.Config.ColorBorderPlayer(player);
             g.DrawRectangle(penBorder, rectBorder);
 
             // Аватар игрока
