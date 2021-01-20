@@ -9,7 +9,7 @@ namespace Fantasy_King_s_Battle
     internal sealed class PanelPlayer : VisualControl
     {
         private Player player;
-        private PanelEntity panelAvatar;
+        private readonly PanelEntity panelAvatar;
         private Rectangle rectBorder;
         private readonly Pen penBorder = new Pen(FormMain.Config.CommonBorder);
 
@@ -43,11 +43,6 @@ namespace Fantasy_King_s_Battle
             panelAvatar.Left = x + Controls[panelAvatar].X;
             panelAvatar.Top = y + Controls[panelAvatar].Y;
             panelAvatar.Draw(g, panelAvatar.Left, panelAvatar.Top);
-        }
-
-        internal override void DoClick()
-        {
-
         }
 
         internal override VisualControl GetControl(int x, int y)
