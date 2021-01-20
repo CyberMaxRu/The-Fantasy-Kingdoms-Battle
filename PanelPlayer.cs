@@ -1,6 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Diagnostics;
 
 namespace Fantasy_King_s_Battle
@@ -43,14 +41,6 @@ namespace Fantasy_King_s_Battle
             panelAvatar.Left = x + Controls[panelAvatar].X;
             panelAvatar.Top = y + Controls[panelAvatar].Y;
             panelAvatar.Draw(g, panelAvatar.Left, panelAvatar.Top);
-        }
-
-        internal override VisualControl GetControl(int x, int y)
-        {
-            if (Utils.PointInRectagle(Controls[panelAvatar].X, Controls[panelAvatar].Y, panelAvatar.Width, panelAvatar.Height, x, y))
-                return panelAvatar;
-
-            return this;
         }
     }
 }

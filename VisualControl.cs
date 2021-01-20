@@ -85,6 +85,12 @@ namespace Fantasy_King_s_Battle
 
         internal virtual VisualControl GetControl(int left, int top)
         {
+            foreach (KeyValuePair<VisualControl, Point> vc in Controls)
+            {
+                if (Utils.PointInRectagle(vc.Value.X, vc.Value.Y, vc.Key.Width, vc.Key.Height, left, top))
+                    return vc.Key;
+            }
+
             return this;
         }
 
