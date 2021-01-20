@@ -28,7 +28,8 @@ namespace Fantasy_King_s_Battle
 
         protected override void ArrangeControlsAndContainers()
         {
-            rectBorder = new Rectangle(Left, Top, Width - 1, Height - 1);
+            if ((rectBorder.Left != Left) || (rectBorder.Top != Top) || (rectBorder.Width != Width - 1) || (rectBorder.Height != Height - 1))
+                rectBorder = new Rectangle(Left, Top, Width - 1, Height - 1);
         }
 
         internal override void Draw(Graphics g, int x, int y)
