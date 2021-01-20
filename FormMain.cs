@@ -48,7 +48,7 @@ namespace Fantasy_King_s_Battle
 
         // Контролы главного меню
         private Bitmap bmpFrame;// Готовый кадр
-        private Graphics grfFrame;// Graphics кадра, чтобы контролы работали сразу с ним
+        private Graphics gfxFrame;// Graphics кадра, чтобы контролы работали сразу с ним
         internal Bitmap bmpBackground;// Фон кадра
 
         private readonly VisualControl MainControl = new VisualControl(true);
@@ -674,8 +674,8 @@ namespace Fantasy_King_s_Battle
                     bmpFrame?.Dispose();
                     bmpFrame = new Bitmap(ClientSize.Width, ClientSize.Height);
 
-                    grfFrame?.Dispose();
-                    grfFrame = Graphics.FromImage(bmpFrame);
+                    gfxFrame?.Dispose();
+                    gfxFrame = Graphics.FromImage(bmpFrame);
                 }
             }
         }
@@ -1439,16 +1439,16 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(bmpBackground.Size.Equals(ClientSize));
 
             // Рисуем фон
-            grfFrame.CompositingMode = CompositingMode.SourceCopy; 
-            grfFrame.DrawImageUnscaled(bmpBackground, 0, 0);
+            gfxFrame.CompositingMode = CompositingMode.SourceCopy; 
+            gfxFrame.DrawImageUnscaled(bmpBackground, 0, 0);
 
             // Рисуем контролы
-            grfFrame.CompositingMode = CompositingMode.SourceOver;
+            gfxFrame.CompositingMode = CompositingMode.SourceOver;
 
             foreach (VisualControl vc in MainControl.Controls)
             {
                 if (vc.Visible)
-                    vc.Draw(grfFrame);
+                    vc.Draw(gfxFrame);
             }
         }
 
