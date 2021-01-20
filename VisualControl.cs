@@ -33,12 +33,13 @@ namespace Fantasy_King_s_Battle
             parent.AddControl(this);
         }
 
-        internal int Left { get { return left; } set { left = value; ArrangeControls(); } }
-        internal int Top { get { return top; } set { top = value; ArrangeControls(); } }
-        internal int Width { get { return width; } set { width = value; } }
-        internal int Height { get { return height; } set { height = value; } }
+        internal int Left { get { return left; } set { left = value; ValidateRectangle(); ArrangeControls(); } }
+        internal int Top { get { return top; } set { top = value; ValidateRectangle(); ArrangeControls(); } }
+        internal int Width { get { return width; } set { width = value; ValidateRectangle(); } }
+        internal int Height { get { return height; } set { height = value; ValidateRectangle(); } }
         internal int ShiftX { get; set; }// Смещение контрола относительно левого края на родителе
         internal int ShiftY { get; set; }// Смещение контрола относительно верхнего края на родителе
+        internal Rectangle Rectangle { get; private set; }
         internal bool Visible { get; set; } = true;
 
         // Список контролов, расположенных на нём, со смещением относительно левого верхнего угла
@@ -59,6 +60,12 @@ namespace Fantasy_King_s_Battle
         internal virtual void DoClick()
         {
             Click?.Invoke(this, new EventArgs());
+        }
+
+        private void ValidateRectangle()
+        {
+            if ((Rectangle.Left != Left) || (Rectangle.Top != Top) || (Rectangle.Width != Width) || (Rectangle.Height != Height))
+                Rectangle = new Rectangle(Left, Top, Width, Height);
         }
 
         internal virtual bool PrepareHint()
@@ -106,7 +113,7 @@ namespace Fantasy_King_s_Battle
                     if (ivc != vc)
                         return ivc;
 
-                    if (Utils.PointInRectagle(vc.Left, vc.Top, vc.Width, vc.Height, x, y))
+                    if (vc.Rectangle.Contains(x, y))
                         return vc;
                 }
             }
