@@ -383,7 +383,7 @@ namespace Fantasy_King_s_Battle
             PanelPlayer pp;
             foreach (Player p in lobby.Players)
             {
-                pp = new PanelPlayer(p.ImageIndexAvatar);
+                pp = new PanelPlayer();
                 pp.Left = Config.GridSize;
                 pp.Player = p;
                 panelPlayers.Add(pp);
@@ -1465,7 +1465,7 @@ namespace Fantasy_King_s_Battle
             foreach (VisualControl vc in VisualControls)
             {
                 if (vc.Visible)
-                    vc.Draw(bmpFrame, grfFrame, vc.Left, vc.Top);
+                    vc.Draw(grfFrame, vc.Left, vc.Top);
             }
         }
 

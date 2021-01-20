@@ -12,11 +12,8 @@ namespace Fantasy_King_s_Battle
         private PanelEntity panelAvatar;
         private Rectangle rectBorder;
         private readonly Pen penBorder = new Pen(FormMain.Config.CommonBorder);
-        private readonly SolidBrush brushCurDurability = new SolidBrush(FormMain.Config.BattlefieldPlayerHealth);
-        private readonly SolidBrush brushMaxDurability = new SolidBrush(FormMain.Config.BattlefieldPlayerHealthNone);
-        private readonly SolidBrush brushBackground = new SolidBrush(Color.White);
 
-        public PanelPlayer(int imageIndex) : base()
+        public PanelPlayer() : base()
         {
             panelAvatar = new PanelEntity();
             AddControl(panelAvatar, new Point(FormMain.Config.GridSize, FormMain.Config.GridSize));
