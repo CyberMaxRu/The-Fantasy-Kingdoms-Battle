@@ -42,7 +42,7 @@ namespace Fantasy_King_s_Battle
         protected abstract void ValidateSize();
         protected abstract void DrawImage(Graphics g, int x, int y);
 
-        internal override void Draw(Bitmap b, Graphics g, int x, int y)
+        internal override void Draw(Graphics g, int x, int y)
         {
             // x == Left, y == Top !
             if (imageIndex != -1)

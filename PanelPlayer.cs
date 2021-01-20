@@ -63,7 +63,7 @@ namespace Fantasy_King_s_Battle
             rectBorder = new Rectangle(Left, Top, Width - 1, Height - 1);
         }
 
-        internal override void Draw(Bitmap b, Graphics g, int x, int y)
+        internal override void Draw(Graphics g, int x, int y)
         {
             // Рамка вокруг панели
             penBorder.Color = player == player.Lobby.CurrentPlayer ? FormMain.Config.SelectedPlayerBorder : FormMain.Config.CommonBorder;
@@ -72,7 +72,7 @@ namespace Fantasy_King_s_Battle
             // Аватар игрока
             panelAvatar.Left = x + Controls[panelAvatar].X;
             panelAvatar.Top = y + Controls[panelAvatar].Y;
-            panelAvatar.Draw(b, g, panelAvatar.Left, panelAvatar.Top);
+            panelAvatar.Draw(g, panelAvatar.Left, panelAvatar.Top);
         }
 
         internal override void DoClick()

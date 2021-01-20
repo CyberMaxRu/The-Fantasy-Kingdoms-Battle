@@ -155,7 +155,7 @@ namespace Fantasy_King_s_Battle
                 lastSelected = Program.formMain.SelectedPanelEntity == this;
             }
         }
-        internal override void Draw(Bitmap b, Graphics g, int x, int y)
+        internal override void Draw(Graphics g, int x, int y)
         {
             //DrawCell();
             g.DrawImageUnscaled(bmpImage, x, y);

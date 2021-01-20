@@ -342,7 +342,7 @@ namespace Fantasy_King_s_Battle
             return FormMain.Config.ColorBorder(Program.formMain.SelectedPanelBuilding == this);
         }*/
 
-        internal override void Draw(Bitmap b, Graphics g, int x, int y)
+        internal override void Draw(Graphics g, int x, int y)
         {
             g.DrawImage(GuiUtils.GetImageFromImageList(Program.formMain.ilBuildings, building.Building.ImageIndex, Building.Level > 0), x + pbBuilding.Left, y + pbBuilding.Top);
             
