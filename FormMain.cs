@@ -1474,7 +1474,7 @@ namespace Fantasy_King_s_Battle
             foreach (VisualControl vc in MainControl.Controls)
             {
                 if (Utils.PointInRectagle(vc.Left, vc.Top, vc.Width, vc.Height, mousePos.X, mousePos.Y))
-                    return vc.GetControl(mousePos.X - vc.Left, mousePos.Y - vc.Top);
+                    return vc.GetControl(mousePos.X, mousePos.Y);
             }
 
             return null;

@@ -93,11 +93,11 @@ namespace Fantasy_King_s_Battle
             return Left + Width + FormMain.Config.GridSize;
         }
 
-        internal virtual VisualControl GetControl(int left, int top)
+        internal virtual VisualControl GetControl(int x, int y)
         {
             foreach (VisualControl vc in Controls.Where(vc => vc.Visible))
-            {                
-                if (Utils.PointInRectagle(vc.ShiftOnParent.X, vc.ShiftOnParent.Y, vc.Width, vc.Height, left, top))
+            {
+                if (Utils.PointInRectagle(vc.Left, vc.Top, vc.Width, vc.Height, x, y))
                     return vc;
             }
 
