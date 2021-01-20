@@ -27,6 +27,8 @@ namespace Fantasy_King_s_Battle
 
         protected override void ArrangeControls()
         {
+            base.ArrangeControls();
+
             if ((rectBorder.Left != Left) || (rectBorder.Top != Top) || (rectBorder.Width != Width - 1) || (rectBorder.Height != Height - 1))
                 rectBorder = new Rectangle(Left, Top, Width - 1, Height - 1);
         }
@@ -38,8 +40,6 @@ namespace Fantasy_King_s_Battle
             g.DrawRectangle(penBorder, rectBorder);
 
             // Аватар игрока
-            panelAvatar.Left = x + panelAvatar.ShiftOnParent.X;
-            panelAvatar.Top = y + panelAvatar.ShiftOnParent.Y;
             panelAvatar.Draw(g, panelAvatar.Left, panelAvatar.Top);
         }
     }
