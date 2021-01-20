@@ -380,7 +380,7 @@ namespace Fantasy_King_s_Battle
             heightToolBar = btnQuit.Height + (Config.GridSize * 2);
 
             // Создаем иконки игроков в левой части окна
-            panelPlayers = new VisualControl(MainControl, new Point(0, 0));
+            panelPlayers = new VisualControl(MainControl, new Point(Config.GridSize, btnQuit.NextTop()));
 
             PanelPlayer pp;
             int nextTopPanelPlayer = 0;
@@ -819,13 +819,15 @@ namespace Fantasy_King_s_Battle
             int leftForNextButtonPage = shiftControls.X + leftForPages - Config.GridSize;
             foreach (VCFormPage fp in pages)
             {
-                fp.Top = Config.GridSize;
-                fp.Left = leftForNextButtonPage;
+                fp.ShiftOnParent = new Point(leftForNextButtonPage, Config.GridSize);
                 fp.Page.Left = shiftControls.X + leftForPages - Config.GridSize;
                 fp.Page.Width = maxWidthPages;
 
                 leftForNextButtonPage = fp.NextLeft();
             }
+
+            panelPlayers.ShiftOnParent = new Point(Config.GridSize, btnQuit.NextTop());
+            MainControl.ArrangeControls();
 
             btnQuit.Left = shiftControls.X + minSizeForm.Width - btnQuit.Width - (Config.GridSize * 4);
             btnHelp.Left = btnQuit.Left - btnQuit.Width - Config.GridSize;

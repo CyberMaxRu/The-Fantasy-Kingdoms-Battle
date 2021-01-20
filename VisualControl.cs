@@ -85,20 +85,27 @@ namespace Fantasy_King_s_Battle
 
         internal int NextTop()
         {
-            return Top + Height + FormMain.Config.GridSize;
+            return ShiftOnParent.Y + Height + FormMain.Config.GridSize;
         }
 
         internal int NextLeft()
         {
-            return Left + Width + FormMain.Config.GridSize;
+            return ShiftOnParent.X + Width + FormMain.Config.GridSize;
         }
 
         internal virtual VisualControl GetControl(int x, int y)
         {
-            foreach (VisualControl vc in Controls.Where(vc => vc.Visible))
+            foreach (VisualControl vc in Controls)
             {
-                if (Utils.PointInRectagle(vc.Left, vc.Top, vc.Width, vc.Height, x, y))
-                    return vc;
+                if (vc.Visible)
+                {
+                    VisualControl ivc = vc.GetControl(x, y);
+                    if (ivc != vc)
+                        return ivc;
+
+                    if (Utils.PointInRectagle(vc.Left, vc.Top, vc.Width, vc.Height, x, y))
+                        return vc;
+                }
             }
 
             return this;
