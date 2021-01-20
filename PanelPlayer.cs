@@ -25,8 +25,11 @@ namespace Fantasy_King_s_Battle
             Height = panelAvatar.Height + (FormMain.Config.GridSize * 2);
         }
 
-        internal Player Player { get { return player; }
-            set { player = value; player.Panel = this; panelAvatar.ShowCell(player); /*Refresh()*/; } }
+        internal Player Player
+        {
+            get { return player; }
+            set { player = value; player.Panel = this; panelAvatar.ShowCell(player); /*Refresh()*/; }
+        }
 
         protected void OnPaint(PaintEventArgs e)
         {
