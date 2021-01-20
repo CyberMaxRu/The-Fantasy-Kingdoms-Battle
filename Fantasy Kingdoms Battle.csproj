@@ -58,9 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Ability.cs" />
-    <Compile Include="BasePanel.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="BasePanel.cs" />
     <Compile Include="Battle.cs" />
     <Compile Include="Battlefield.cs" />
     <Compile Include="BattlefieldTile.cs" />
@@ -76,12 +74,8 @@
     <Compile Include="TypeConstruction.cs" />
     <Compile Include="TypeMonster.cs" />
     <Compile Include="TypeObject.cs" />
-    <Compile Include="PanelLair.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="PanelLairInfo.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="PanelLair.cs" />
+    <Compile Include="PanelLairInfo.cs" />
     <Compile Include="PlayerLair.cs" />
     <Compile Include="KindCreature.cs" />
     <Compile Include="TypeCreature.cs" />
@@ -126,12 +120,8 @@
     <Compile Include="PageControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="PanelBaseInfo.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="PanelBuildingInfo.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="PanelBaseInfo.cs" />
+    <Compile Include="PanelBuildingInfo.cs" />
     <Compile Include="PanelCellHero.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -154,9 +144,7 @@
     <Compile Include="Level.cs" />
     <Compile Include="Lobby.cs" />
     <Compile Include="PanelBuilding.cs" />
-    <Compile Include="PanelHeroInfo.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="PanelHeroInfo.cs" />
     <Compile Include="HeroParameters.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PlayerBuilding.cs" />
