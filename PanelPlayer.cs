@@ -50,11 +50,6 @@ namespace Fantasy_King_s_Battle
 
         }
 
-        internal override bool PrepareHint()
-        {
-            return false;
-        }
-
         internal override VisualControl GetControl(int x, int y)
         {
             if (Utils.PointInRectagle(Controls[panelAvatar].X, Controls[panelAvatar].Y, panelAvatar.Width, panelAvatar.Height, x, y))
