@@ -64,6 +64,7 @@
     <Compile Include="Battle.cs" />
     <Compile Include="Battlefield.cs" />
     <Compile Include="BattlefieldTile.cs" />
+    <Compile Include="PanelPlayer.cs" />
     <Compile Include="TypeEconomicConstruction.cs" />
     <Compile Include="TypeCitizen.cs" />
     <Compile Include="Creature.cs" />
@@ -137,15 +138,10 @@
     <Compile Include="PanelMenu.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="PanelPlayer.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="PanelCellMenu.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="PanelWithPanelEntity.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="PanelWithPanelEntity.cs" />
     <Compile Include="PlayerItem.cs" />
     <Compile Include="PanelEntity.cs" />
     <Compile Include="PlayerResearch.cs" />
@@ -157,9 +153,7 @@
     <Compile Include="TypeLobby.cs" />
     <Compile Include="Level.cs" />
     <Compile Include="Lobby.cs" />
-    <Compile Include="PanelBuilding.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="PanelBuilding.cs" />
     <Compile Include="PanelHeroInfo.cs">
       <SubType>Component</SubType>
     </Compile>
