@@ -28,37 +28,7 @@ namespace Fantasy_King_s_Battle
         internal Player Player
         {
             get { return player; }
-            set { player = value; player.Panel = this; panelAvatar.ShowCell(player); /*Refresh()*/; }
-        }
-
-        protected void OnPaint(PaintEventArgs e)
-        {
-            if (player == null)
-                return;
-
-            Debug.Assert(Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
-
-            Debug.Assert(player.LastBattleDamageToCastle >= -999);
-            Debug.Assert(player.LastBattleDamageToCastle <= 999);
-
-            // Фон панели
-            if (player == player.Lobby.CurrentPlayer)
-                brushBackground.Color = Color.LightBlue;
-            else if (player == player.Lobby.CurrentPlayer.Opponent)
-                brushBackground.Color = Color.LightCoral;
-            else
-                brushBackground.Color = Color.FromKnownColor(KnownColor.Control);
-
-            //e.Graphics.FillRectangle(brushBackground, rectBorder);
-
-            // Рамка вокруг панели
-            penBorder.Color = player == player.Lobby.CurrentPlayer ? FormMain.Config.SelectedPlayerBorder : FormMain.Config.CommonBorder;
-            e.Graphics.DrawRectangle(penBorder, rectBorder);
-
-            // Прочность замка
-            int dur = player.DurabilityCastle >= 0 ? player.DurabilityCastle : 0;
-            GuiUtils.DrawBand(e.Graphics, new Rectangle(FormMain.Config.GridSize, FormMain.Config.GridSize + panelAvatar.Height + 1, panelAvatar.Width, 6), brushCurDurability, brushMaxDurability, dur, player.Lobby.TypeLobby.DurabilityCastle);
-
+            set { player = value; player.Panel = this; panelAvatar.ShowCell(player); }
         }
 
         protected override void ArrangeControlsAndContainers()
