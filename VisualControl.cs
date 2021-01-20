@@ -95,8 +95,8 @@ namespace Fantasy_King_s_Battle
 
         internal virtual VisualControl GetControl(int left, int top)
         {
-            foreach (VisualControl vc in Controls)
-            {
+            foreach (VisualControl vc in Controls.Where(vc => vc.Visible))
+            {                
                 if (Utils.PointInRectagle(vc.ShiftOnParent.X, vc.ShiftOnParent.Y, vc.Width, vc.Height, left, top))
                     return vc;
             }
