@@ -34,12 +34,12 @@ namespace Fantasy_King_s_Battle
             lblCaption.Width = Page.Width;
         }
 
-        internal override void Draw(Graphics g, int x, int y)
+        internal override void Draw(Graphics g)
         {
-            base.Draw(g, x, y);
+            base.Draw(g);
 
             if (Page.Visible)
-                Page.Draw(g, Page.Left, Page.Top);
+                Page.Draw(g);
         }
 
         internal override bool PrepareHint()

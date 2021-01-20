@@ -155,10 +155,10 @@ namespace Fantasy_King_s_Battle
                 lastSelected = Program.formMain.SelectedPanelEntity == this;
             }
         }
-        internal override void Draw(Graphics g, int x, int y)
+        internal override void Draw(Graphics g)
         {
             //DrawCell();
-            g.DrawImageUnscaled(bmpImage, x, y);
+            g.DrawImageUnscaled(bmpImage, Left, Top);
             //DrawToBitmap(b, new Rectangle(Left + panelAvatar.Left, Top + panelAvatar.Top, panelAvatar.Width, panelAvatar.Height)
         }
     }

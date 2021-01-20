@@ -35,20 +35,20 @@ namespace Fantasy_King_s_Battle
             }
 
             Graphics g = Graphics.FromImage(picture);
-            DrawImage(g, 0, 0);
+            DrawImage(g);
             g.Dispose();
         }
 
         protected abstract void ValidateSize();
-        protected abstract void DrawImage(Graphics g, int x, int y);
+        protected abstract void DrawImage(Graphics g);
 
-        internal override void Draw(Graphics g, int x, int y)
+        internal override void Draw(Graphics g)
         {
             // x == Left, y == Top !
             if (imageIndex != -1)
-                g.DrawImageUnscaled(picture, x, y);
+                g.DrawImageUnscaled(picture, Left, Top);
             else
-                g.DrawImage(Program.formMain.bmpEmptyEntity, new Rectangle(x + 1, y + 0, Program.formMain.bmpBorderForIcon.Width - 2, Program.formMain.bmpBorderForIcon.Height - 2));
+                g.DrawImage(Program.formMain.bmpEmptyEntity, new Rectangle(Left + 1, Top + 0, Program.formMain.bmpBorderForIcon.Width - 2, Program.formMain.bmpBorderForIcon.Height - 2));
         }
     }
 }

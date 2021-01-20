@@ -1448,7 +1448,7 @@ namespace Fantasy_King_s_Battle
             foreach (VisualControl vc in MainControl.Controls)
             {
                 if (vc.Visible)
-                    vc.Draw(grfFrame, vc.Left, vc.Top);
+                    vc.Draw(grfFrame);
             }
         }
 

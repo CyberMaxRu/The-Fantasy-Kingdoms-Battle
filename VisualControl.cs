@@ -45,11 +45,11 @@ namespace Fantasy_King_s_Battle
         internal event EventHandler ShowHint;
 
         // Метод для рисования. Передается Bitmap, подготовленный Graphics, смещение контрола относительно левого верхнего угла
-        internal virtual void Draw(Graphics g, int x, int y)
+        internal virtual void Draw(Graphics g)
         {
             foreach (VisualControl vc in Controls)
             {
-                vc.Draw(g, x + vc.ShiftOnParent.X, y + vc.ShiftOnParent.Y);
+                vc.Draw(g);
             }
         }
 

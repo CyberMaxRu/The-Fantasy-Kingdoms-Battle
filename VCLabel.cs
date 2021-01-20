@@ -26,7 +26,7 @@ namespace Fantasy_King_s_Battle
             label.Height = height;
         }
 
-        internal override void Draw(Graphics g, int x, int y)
+        internal override void Draw(Graphics g)
         {
             //Bitmap bmp = new Bitmap(label.Width, label.Height);
             //bmp.MakeTransparent();

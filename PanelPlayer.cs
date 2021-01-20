@@ -33,14 +33,14 @@ namespace Fantasy_King_s_Battle
                 rectBorder = new Rectangle(Left, Top, Width - 1, Height - 1);
         }
 
-        internal override void Draw(Graphics g, int x, int y)
+        internal override void Draw(Graphics g)
         {
             // Рамка вокруг панели
             penBorder.Color = FormMain.Config.ColorBorderPlayer(player);
             g.DrawRectangle(penBorder, rectBorder);
 
             // Аватар игрока
-            panelAvatar.Draw(g, panelAvatar.Left, panelAvatar.Top);
+            panelAvatar.Draw(g);
         }
     }
 }
