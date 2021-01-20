@@ -62,7 +62,7 @@ namespace Fantasy_King_s_Battle
             Click?.Invoke(this, new EventArgs());
         }
 
-        private void ValidateRectangle()
+        protected virtual void ValidateRectangle()
         {
             if ((Rectangle.Left != Left) || (Rectangle.Top != Top) || (Rectangle.Width != Width) || (Rectangle.Height != Height))
                 Rectangle = new Rectangle(Left, Top, Width, Height);

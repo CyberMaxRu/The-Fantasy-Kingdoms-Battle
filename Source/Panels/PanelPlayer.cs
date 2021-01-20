@@ -28,9 +28,9 @@ namespace Fantasy_King_s_Battle
             panelAvatar.ShowCell(player);
         }
 
-        internal override void ArrangeControls()
+        protected override void ValidateRectangle()
         {
-            base.ArrangeControls();
+            base.ValidateRectangle();
 
             if ((rectBorder.Left != Left) || (rectBorder.Top != Top) || (rectBorder.Width != Width - 1) || (rectBorder.Height != Height - 1))
                 rectBorder = new Rectangle(Left, Top, Width - 1, Height - 1);
