@@ -25,7 +25,7 @@ namespace Fantasy_King_s_Battle
         internal Player Player
         {
             get { return player; }
-            set { player = value; player.Panel = this; panelAvatar.ShowCell(player); }
+            set { Debug.Assert(value != null); player = value; player.Panel = this; panelAvatar.ShowCell(player); }
         }
 
         protected override void ArrangeControlsAndContainers()
