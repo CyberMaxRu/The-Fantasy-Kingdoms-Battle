@@ -17,19 +17,29 @@ namespace Fantasy_King_s_Battle
         private int width;
         private int height;
 
-        public VisualControl()
+        public VisualControl(bool b)
         {
-            //Visible = true;
+            ShiftOnParent = new Point(0, 0);
         }
 
-        internal int Left { get { return left; } set { left = value; ArrangeControlsAndContainers(); } }
-        internal int Top { get { return top; } set { top = value; ArrangeControlsAndContainers(); } }
+        public VisualControl(VisualControl parent, Point shift)
+        {
+            Debug.Assert(parent != null);
+            Debug.Assert(parent != this);
+
+            ShiftOnParent = shift;
+            parent.AddControl(this);
+        }
+
+        internal int Left { get { return left; } set { left = value; ArrangeControls(); } }
+        internal int Top { get { return top; } set { top = value; ArrangeControls(); } }
         internal int Width { get { return width; } set { width = value; } }
         internal int Height { get { return height; } set { height = value; } }
+        internal Point ShiftOnParent { get; set; }// Смещение контрола относительно левого верхнего края на родителе
         internal bool Visible { get; set; } = true;
 
         // Список контролов, расположенных на нём, со смещением относительно левого верхнего угла
-        internal Dictionary<VisualControl, Point> Controls = new Dictionary<VisualControl, Point>();
+        internal List<VisualControl> Controls = new List<VisualControl>();
 
         internal event EventHandler Click;
         internal event EventHandler ShowHint;
@@ -37,9 +47,9 @@ namespace Fantasy_King_s_Battle
         // Метод для рисования. Передается Bitmap, подготовленный Graphics, смещение контрола относительно левого верхнего угла
         internal virtual void Draw(Graphics g, int x, int y)
         {
-            foreach (KeyValuePair<VisualControl, Point> c in Controls)
+            foreach (VisualControl vc in Controls)
             {
-                c.Key.Draw(g, x + c.Value.X, y + c.Value.Y);
+                vc.Draw(g, x + vc.ShiftOnParent.X, y + vc.ShiftOnParent.Y);
             }
         }
 
@@ -65,9 +75,9 @@ namespace Fantasy_King_s_Battle
             }
         }
 
-        protected virtual void ArrangeControlsAndContainers()
+        protected virtual void ArrangeControls()
         {
-            foreach (KeyValuePair<VisualControl, Point> vc in Controls)
+            foreach (VisualControl vc in Controls)
             {
                 ArrangeControl(vc);
             }
@@ -85,37 +95,39 @@ namespace Fantasy_King_s_Battle
 
         internal virtual VisualControl GetControl(int left, int top)
         {
-            foreach (KeyValuePair<VisualControl, Point> vc in Controls)
+            foreach (VisualControl vc in Controls)
             {
-                if (Utils.PointInRectagle(vc.Value.X, vc.Value.Y, vc.Key.Width, vc.Key.Height, left, top))
-                    return vc.Key;
+                if (Utils.PointInRectagle(vc.ShiftOnParent.X, vc.ShiftOnParent.Y, vc.Width, vc.Height, left, top))
+                    return vc;
             }
 
             return this;
         }
 
-        private void ArrangeControl(KeyValuePair<VisualControl, Point> p)
+        private void ArrangeControl(VisualControl vc)
         {
-            p.Key.Left = Left + p.Value.X;
-            p.Key.Top = Top + p.Value.Y;
+            vc.Left = Left + vc.ShiftOnParent.X;
+            vc.Top = Top + vc.ShiftOnParent.Y;
+
+            vc.ArrangeControls();
         }
 
-        internal void AddControl(VisualControl cc, Point p)
+        internal void AddControl(VisualControl vc)
         {
-            Debug.Assert(cc != this);
+            Debug.Assert(vc != null);
+            Debug.Assert(vc != this);
 
-            Controls.Add(cc, p);
-            //ArrangeControl(Controls.Last());
+            Controls.Add(vc);
         }
 
         internal virtual Size MaxSize()
         {
             Size maxSize = new Size(Width, Height);
 
-            foreach (KeyValuePair<VisualControl, Point> c in Controls)
+            foreach (VisualControl vc in Controls)
             {
-                maxSize.Width = Math.Max(maxSize.Width, c.Value.X + c.Key.Width);
-                maxSize.Height = Math.Max(maxSize.Height, c.Value.Y + c.Key.Height);
+                maxSize.Width = Math.Max(maxSize.Width, vc.left + vc.Width);
+                maxSize.Height = Math.Max(maxSize.Height, vc.top + vc.Height);
             }
 
             return maxSize;

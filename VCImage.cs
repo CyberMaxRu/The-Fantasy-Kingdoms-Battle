@@ -14,7 +14,7 @@ namespace Fantasy_King_s_Battle
         private Bitmap picture;
         private int imageIndex;
 
-        public VCImage(ImageList imageList, int imageIndex)
+        public VCImage(VisualControl parent, Point shift, ImageList imageList, int imageIndex) : base(parent, shift)
         {
             ImageList = imageList;
             ValidateSize();

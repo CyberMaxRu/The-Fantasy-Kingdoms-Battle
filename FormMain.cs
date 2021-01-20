@@ -51,7 +51,7 @@ namespace Fantasy_King_s_Battle
         private Graphics grfFrame;// Graphics кадра, чтобы контролы работали сразу с ним
         internal Bitmap bmpBackground;// Фон кадра
 
-        private readonly List<VisualControl> VisualControls = new List<VisualControl>();// Список всех визуальных контролов
+        private readonly VisualControl MainControl = new VisualControl(true);
         private VisualControl controlWithHint;
         internal Label ctrlTransparent;// Прозрачный контрол используется для активации MouseHover
         private Point mousePos;
@@ -383,11 +383,9 @@ namespace Fantasy_King_s_Battle
             PanelPlayer pp;
             foreach (Player p in lobby.Players)
             {
-                pp = new PanelPlayer();
-                pp.Left = Config.GridSize;
+                pp = new PanelPlayer(MainControl, new Point(Config.GridSize, 0));
                 pp.Player = p;
                 panelPlayers.Add(pp);
-                VisualControls.Add(pp);                
             }
             heightBandLobby = (panelPlayers[0].Height + Config.GridSize) * panelPlayers.Count();
 
@@ -423,16 +421,11 @@ namespace Fantasy_King_s_Battle
             labelPeasants.MouseHover += LabelPeasants_MouseHover;
 
             // Страницы игры
-            pageGuilds = new VCFormPage(pages, ilGui, GUI_GUILDS, "Гильдии", BtnPage_Click);
-            pageBuildings = new VCFormPage(pages, ilGui, GUI_ECONOMY, "Экономические строения", BtnPage_Click);
-            pageTemples = new VCFormPage(pages, ilGui, GUI_TEMPLE, "Храмы", BtnPage_Click);
-            pageHeroes = new VCFormPage(pages, ilGui, GUI_HEROES, "Герои", BtnPage_Click); 
-            pageLairs = new VCFormPage(pages, ilGui, GUI_LAIR, "Логова", BtnPage_Click);
-
-            foreach (VCFormPage fp in pages)
-            {
-                VisualControls.Add(fp);
-            }
+            pageGuilds = new VCFormPage(MainControl, new Point(0, 0), pages, ilGui, GUI_GUILDS, "Гильдии", BtnPage_Click);
+            pageBuildings = new VCFormPage(MainControl, new Point(0, 0), pages, ilGui, GUI_ECONOMY, "Экономические строения", BtnPage_Click);
+            pageTemples = new VCFormPage(MainControl, new Point(0, 0), pages, ilGui, GUI_TEMPLE, "Храмы", BtnPage_Click);
+            pageHeroes = new VCFormPage(MainControl, new Point(0, 0), pages, ilGui, GUI_HEROES, "Герои", BtnPage_Click); 
+            pageLairs = new VCFormPage(MainControl, new Point(0, 0), pages, ilGui, GUI_LAIR, "Логова", BtnPage_Click);
 
             DrawPageConstructions();
             DrawHeroes();
@@ -468,26 +461,20 @@ namespace Fantasy_King_s_Battle
             panelMenu.Top = ClientSize.Height - panelMenu.Height - Config.GridSize;
 
             // Панель информации о здании
-            panelBuildingInfo = new PanelBuildingInfo(panelMenu.Top - pageGuilds.NextTop() - Config.GridSize)
+            panelBuildingInfo = new PanelBuildingInfo(MainControl, new Point(0, pageGuilds.NextTop()), panelMenu.Top - pageGuilds.NextTop() - Config.GridSize)
             {
-                Parent = this,
-                Top = pageGuilds.NextTop(),
                 Visible = false
             };
 
             // Панель информации о логове
-            panelLairInfo = new PanelLairInfo(panelMenu.Top - pageGuilds.NextTop() - Config.GridSize)
+            panelLairInfo = new PanelLairInfo(MainControl, new Point(0, pageGuilds.NextTop()), panelMenu.Top - pageGuilds.NextTop() - Config.GridSize)
             {
-                Parent = this,
-                Top = pageGuilds.NextTop(),
                 Visible = false
             };
 
             //
-            panelHeroInfo = new PanelHeroInfo(panelBuildingInfo.Height)
+            panelHeroInfo = new PanelHeroInfo(MainControl, new Point(0, pageGuilds.NextTop()), panelBuildingInfo.Height)
             {
-                Parent = this,
-                Top = panelBuildingInfo.Top,
                 Visible = false
             };
 
@@ -1003,8 +990,7 @@ namespace Fantasy_King_s_Battle
                     {
                         if (tck.Line == line)
                         {
-                            tck.Panel = new PanelBuilding();
-                            panel.AddControl(tck.Panel, new Point(left, top));
+                            tck.Panel = new PanelBuilding(panel, new Point(left, top));
 
                             left += tck.Panel.Width + Config.GridSize;
                             height = tck.Panel.Height;
@@ -1030,8 +1016,7 @@ namespace Fantasy_King_s_Battle
                 {
                     if (l.Line == line)
                     {
-                        l.Panel = new PanelLair();
-                        //pageLairs.Page.AddControl(l.Panel, new Point(left, top));
+                        l.Panel = new PanelLair(pageLairs.Page, new Point(left, top));
 
                         left += l.Panel.Width + Config.GridSize;
                         height = l.Panel.Height;
@@ -1071,8 +1056,7 @@ namespace Fantasy_King_s_Battle
 
         private void DrawHeroes()
         {
-            panelHeroes = new PanelWithPanelEntity(Config.HeroRows);
-            pageHeroes.Page.AddControl(panelHeroes, new Point(0, 0));
+            panelHeroes = new PanelWithPanelEntity(pageHeroes.Page, new Point(0, 0), Config.HeroRows);
 
             List<ICell> list = new List<ICell>();
             for (int x = 0; x < Config.HeroRows * Config.HeroInRow; x++)
@@ -1137,8 +1121,7 @@ namespace Fantasy_King_s_Battle
 
         private void DrawWarehouse()
         {
-            panelWarehouse = new PanelWithPanelEntity(Config.WarehouseWidth);
-            pageHeroes.Page.AddControl(panelWarehouse, new Point(0, panelHeroes.Top + panelHeroes.Height + Config.GridSize));
+            panelWarehouse = new PanelWithPanelEntity(pageHeroes.Page, new Point(0, panelHeroes.Top + panelHeroes.Height + Config.GridSize), Config.WarehouseWidth);
         }
 
         internal void ShowWarehouse()
@@ -1202,10 +1185,10 @@ namespace Fantasy_King_s_Battle
                 {
                     panelBuildingInfo.Building = SelectedPanelBuilding.Building;
                     //SelectedPanelBuilding.Repaint();
-                    panelBuildingInfo.Show();
+                    panelBuildingInfo.Visible = true;
                 }
                 else
-                    panelBuildingInfo.Hide();
+                    panelBuildingInfo.Visible = false;
 
                 ShowFrame();
                 //panelMenu.Invalidate(true);// Это точно надо?
@@ -1228,16 +1211,16 @@ namespace Fantasy_King_s_Battle
 
                 UpdateMenu();
 
-                if (oldSelected != null)
-                    oldSelected.Invalidate(true);
+                //if (oldSelected != null)
+                //    oldSelected.Invalidate(true);
                 if (SelectedPanelLair != null)
                 {
                     panelLairInfo.Lair = SelectedPanelLair.Lair;
-                    SelectedPanelLair.Invalidate(true);
-                    panelLairInfo.Show();
+                    //SelectedPanelLair.Invalidate(true);
+                    panelLairInfo.Visible = true;
                 }
                 else
-                    panelBuildingInfo.Hide();
+                    panelBuildingInfo.Visible = false;
 
                 panelMenu.Invalidate(true);// Это точно надо?
             }
@@ -1265,11 +1248,11 @@ namespace Fantasy_King_s_Battle
                 {
                     panelHeroInfo.Hero = SelectedHero;
                     //SelectedPanelEntity = ((ICell)SelectedHero).Panel;
-                 //   ((ICell)SelectedHero).Panel.Invalidate(true);
-                    panelHeroInfo.Show();
+                    //   ((ICell)SelectedHero).Panel.Invalidate(true);
+                    panelHeroInfo.Visible = true;
                 }
                 else
-                    panelHeroInfo.Hide();
+                    panelHeroInfo.Visible = false;
 
                 ShowFrame();
                 panelMenu.Invalidate(true);// Это точно надо?
@@ -1313,7 +1296,7 @@ namespace Fantasy_King_s_Battle
             }
             else
             {
-                panelBuildingInfo.Hide();
+                panelBuildingInfo.Visible = false;
                 ClearMenu();
             }
 
@@ -1462,7 +1445,7 @@ namespace Fantasy_King_s_Battle
             // Рисуем контролы
             grfFrame.CompositingMode = CompositingMode.SourceOver;
 
-            foreach (VisualControl vc in VisualControls)
+            foreach (VisualControl vc in MainControl.Controls)
             {
                 if (vc.Visible)
                     vc.Draw(grfFrame, vc.Left, vc.Top);
@@ -1471,15 +1454,9 @@ namespace Fantasy_King_s_Battle
 
         internal VCButton CreateButton(ImageList imageList, int imageIndex, int left, int top, EventHandler click, EventHandler showHint)
         {
-            VCButton b = new VCButton(imageList, imageIndex)
-            {
-                Left = left,
-                Top = top
-            };
+            VCButton b = new VCButton(MainControl, new Point(left, top), imageList, imageIndex);
             b.Click += click;
             b.ShowHint += showHint;
-
-            VisualControls.Add(b);
 
             return b;
         }
@@ -1488,7 +1465,7 @@ namespace Fantasy_King_s_Battle
         {
             mousePos = PointToClient(Cursor.Position);
 
-            foreach (VisualControl vc in VisualControls)
+            foreach (VisualControl vc in MainControl.Controls)
             {
                 if (Utils.PointInRectagle(vc.Left, vc.Top, vc.Width, vc.Height, mousePos.X, mousePos.Y))
                     return vc.GetControl(mousePos.X - vc.Left, mousePos.Y - vc.Top);

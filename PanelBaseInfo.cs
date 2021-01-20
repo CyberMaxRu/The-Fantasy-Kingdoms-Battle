@@ -18,13 +18,13 @@ namespace Fantasy_King_s_Battle
         protected readonly Label lblIcon;
         protected PageControl pageControl;
 
-        public PanelBaseInfo(int height) : base()
+        public PanelBaseInfo(VisualControl parent, Point shift, int height) : base(parent, shift)
         {
             Height = height;
 
             lblName = new Label()
             {
-                Parent = this,
+                //Parent = this,
                 AutoSize = false,
                 Height = FormMain.Config.GridSize * 3,
                 Location = new Point(FormMain.Config.GridSize, FormMain.Config.GridSize),
@@ -36,7 +36,7 @@ namespace Fantasy_King_s_Battle
 
             lblIcon = new Label()
             {
-                Parent = this,
+                //Parent = this,
                 Left = FormMain.Config.GridSize,
                 Top = GuiUtils.NextTop(lblName),
                 Size = GetImageList().ImageSize,
@@ -49,17 +49,17 @@ namespace Fantasy_King_s_Battle
 
             pageControl = new PageControl(Program.formMain.ilPages)
             {
-                Parent = this,
+                //Parent = this,
                 Left = FormMain.Config.GridSize,
-                Width = ClientSize.Width - FormMain.Config.GridSize * 2,
+                Width = Width - FormMain.Config.GridSize * 2,
                 Top = TopForControls(),
-                Height = ClientSize.Height - TopForControls() - FormMain.Config.GridSize
+                Height = Height - TopForControls() - FormMain.Config.GridSize
             };
         }
 
-        protected override void OnResize(EventArgs e)
+        protected  void OnResize(EventArgs e)
         {
-            base.OnResize(e);
+            //base.OnResize(e);
 
             if (lblName != null)
             {

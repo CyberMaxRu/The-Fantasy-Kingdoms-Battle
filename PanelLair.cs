@@ -17,11 +17,11 @@ namespace Fantasy_King_s_Battle
         private readonly PictureBox pbLair;
         private readonly Button btnSetAsTarget;
 
-        public PanelLair() : base()
+        public PanelLair(VisualControl parent, Point shift) : base(parent, shift)
         {
             lblName = new Label()
             {
-                Parent = this,
+                //Parent = this,
                 Left = FormMain.Config.GridSize,
                 Top = FormMain.Config.GridSize,
                 Height = FormMain.Config.GridSize * 2,
@@ -31,7 +31,7 @@ namespace Fantasy_King_s_Battle
 
             pbLair = new PictureBox()
             {
-                Parent = this,
+                //Parent = this,
                 Width = Program.formMain.ilLairs.ImageSize.Width,
                 Height = Program.formMain.ilLairs.ImageSize.Height,
                 Left = FormMain.Config.GridSize,
@@ -44,7 +44,7 @@ namespace Fantasy_King_s_Battle
 
             btnSetAsTarget = new Button()
             {
-                Parent = this,
+                //Parent = this,
                 Left = GuiUtils.NextLeft(pbLair),
                 Top = pbLair.Top,
                 Size = GuiUtils.SizeButtonWithImage(Program.formMain.ilGui),
@@ -65,7 +65,7 @@ namespace Fantasy_King_s_Battle
             lblName.Width = Width - (FormMain.Config.GridSize * 2) - 2;
             //lblLevel.Left = Width - FormMain.Config.GridSize - lblLevel.Width;
 
-            MouseClick += PanelLair_MouseClick;
+            //MouseClick += PanelLair_MouseClick;
         }
 
         private void BtnSetAsTarget_Click(object sender, EventArgs e)
@@ -86,9 +86,9 @@ namespace Fantasy_King_s_Battle
 
         private void PbLair_MouseEnter(object sender, EventArgs e)
         {
-            Program.formMain.formHint.Clear();
-            Program.formMain.formHint.AddStep1Header(Lair.Lair.Name, "", Lair.Lair.Description);
-            Program.formMain.formHint.ShowHint(this);
+            //Program.formMain.formHint.Clear();
+            //Program.formMain.formHint.AddStep1Header(Lair.Lair.Name, "", Lair.Lair.Description);
+            //Program.formMain.formHint.ShowHint(this);
         }
 
         private void PanelLair_MouseClick(object sender, MouseEventArgs e)

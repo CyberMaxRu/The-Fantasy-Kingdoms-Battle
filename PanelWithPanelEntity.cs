@@ -15,7 +15,7 @@ namespace Fantasy_King_s_Battle
         private List<PanelEntity> panelEntities = new List<PanelEntity>();
         private int rows;// Сколько сейчас строк подготовлено
 
-        public PanelWithPanelEntity(int entityInRow) : base()
+        public PanelWithPanelEntity(VisualControl parent, Point shift, int entityInRow) : base(parent, shift)
         {
             //DoubleBuffered = true;
             //BackColor = Color.Transparent;
@@ -60,12 +60,12 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(panelEntities.Count % EntityInRow == 0);
 
             PanelEntity pe;
+            Point defPoint = new Point(0, 0);
 
             for (int x = 0; x < EntityInRow; x++)
             {
-                pe = new PanelEntity();
-                AddControl(pe, new Point(x * (pe.Width + 1), rows * (pe.Height + 1)));
-                //pe.Visible = false;
+                pe = new PanelEntity(this, defPoint);
+                pe.ShiftOnParent = new Point(x * (pe.Width + 1), rows * (pe.Height + 1));
                 panelEntities.Add(pe);
             }
 
@@ -93,9 +93,9 @@ namespace Fantasy_King_s_Battle
 
         internal override void Draw(Graphics g, int x, int y)
         {
-            foreach (KeyValuePair <VisualControl, Point> vc in Controls)
+            foreach (VisualControl vc in Controls)
             {
-                vc.Key.Draw(g, x + vc.Value.X, y + vc.Value.Y);
+                vc.Draw(g, vc.Left, vc.Top);
             }
         }
     }

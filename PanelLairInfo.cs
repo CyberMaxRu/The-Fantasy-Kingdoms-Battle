@@ -12,10 +12,12 @@ namespace Fantasy_King_s_Battle
     internal sealed class PanelLairInfo : PanelBaseInfo
     {
         private PlayerLair lair;
-        private readonly PanelWithPanelEntity panelInhabitants = new PanelWithPanelEntity(4);
+        private readonly PanelWithPanelEntity panelInhabitants;
 
-        public PanelLairInfo(int height) : base(height)
+        public PanelLairInfo(VisualControl parent, Point shift, int height) : base(parent, shift, height)
         {
+            panelInhabitants = new PanelWithPanelEntity(this, new Point(0, 0), 4);
+
             pageControl.Top = pageControl.Top;
             pageControl.AddPage("Существа", (int)IconPages.Inhabitants, panelInhabitants);
             pageControl.AddPage("История", (int)IconPages.History, null);
@@ -42,7 +44,7 @@ namespace Fantasy_King_s_Battle
 
             panelInhabitants.ApplyList(lair.Monsters);
 
-            Show();
+            Visible = true;
         }
 
         protected override ImageList GetImageList() => Program.formMain.ilLairs;

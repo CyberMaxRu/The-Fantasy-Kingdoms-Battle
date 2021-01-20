@@ -12,7 +12,7 @@ namespace Fantasy_King_s_Battle
     {
         private Label label;
 
-        public VCLabel(Font font, Color foreColor, int height, string text) : base()
+        public VCLabel(VisualControl parent, Point shift, Font font, Color foreColor, int height, string text) : base(parent, shift)
         {
             Height = height;
 
@@ -39,7 +39,7 @@ namespace Fantasy_King_s_Battle
 //            label.DrawToBitmap(b, new Rectangle(label.Left, label.Top, label.Width, label.Height));
         }
 
-        protected override void ArrangeControlsAndContainers()
+        protected override void ArrangeControls()
         {
             label.Left = Left;
             label.Top = Top;

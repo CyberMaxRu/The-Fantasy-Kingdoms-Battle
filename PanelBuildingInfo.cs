@@ -13,15 +13,19 @@ namespace Fantasy_King_s_Battle
     {
         private PlayerBuilding building;
         private Label lblGold;
-        private readonly PanelWithPanelEntity panelProducts = new PanelWithPanelEntity(4);
-        private readonly PanelWithPanelEntity panelInhabitants = new PanelWithPanelEntity(4);
-        private readonly PanelWithPanelEntity panelWarehouse = new PanelWithPanelEntity(4);
+        private readonly PanelWithPanelEntity panelProducts;
+        private readonly PanelWithPanelEntity panelInhabitants;
+        private readonly PanelWithPanelEntity panelWarehouse;
 
-        public PanelBuildingInfo(int height) : base(height)
+        public PanelBuildingInfo(VisualControl parent, Point shift, int height) : base(parent, shift, height)
         {
+            panelProducts = new PanelWithPanelEntity(this, new Point(0, 0), 4);
+            panelInhabitants = new PanelWithPanelEntity(this, new Point(0, 0), 4);
+            panelWarehouse = new PanelWithPanelEntity(this, new Point(0, 0), 4);
+
             lblGold = new Label()
             {
-                Parent = this,
+                //Parent = this,
                 Top = pageControl.Top,
                 Left = pageControl.Left,
                 Width = 80,
@@ -78,7 +82,7 @@ namespace Fantasy_King_s_Battle
             panelWarehouse.ApplyList(building.Warehouse);
             panelInhabitants.ApplyList(building.Heroes);
 
-            Show();    
+            Visible = true;
         }
 
         protected override ImageList GetImageList() => Program.formMain.ilBuildings;

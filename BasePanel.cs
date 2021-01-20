@@ -5,20 +5,19 @@ using System.Drawing;
 namespace Fantasy_King_s_Battle
 {
     // Базовый класс панели
-    internal class BasePanel : Control
+    internal class BasePanel : VisualControl
     {
         private readonly Pen penBorder = new Pen(FormMain.Config.CommonBorder);
         private Rectangle rectBorder = new Rectangle(0, 0, 0, 0);
         private Bitmap bmpBackground;
 
-        public BasePanel()
+        public BasePanel(VisualControl parent, Point shift) : base(parent, shift)
         {
-            DoubleBuffered = true;
         }
 
-        protected override void OnClientSizeChanged(EventArgs e)
+        protected void OnClientSizeChanged(EventArgs e)
         {
-            base.OnClientSizeChanged(e);
+            //base.OnClientSizeChanged(e);
 
             rectBorder.Width = Width - 1;
             rectBorder.Height = Height - 1;
@@ -30,9 +29,9 @@ namespace Fantasy_King_s_Battle
                 bmpBackground = GuiUtils.MakeBackground(new Size(Width - 2, Height - 2));
         }
 
-        protected override void OnPaintBackground(PaintEventArgs pevent)
+        protected void OnPaintBackground(PaintEventArgs pevent)
         {
-            base.OnPaintBackground(pevent);
+            //base.OnPaintBackground(pevent);
 
             pevent.Graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
             pevent.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;

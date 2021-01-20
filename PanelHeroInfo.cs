@@ -29,17 +29,20 @@ namespace Fantasy_King_s_Battle
         private readonly Label lblDefenseMagic;
         private readonly Button btnDismiss;
 
-        private readonly PanelWithPanelEntity panelInventory = new PanelWithPanelEntity(4);
-        private readonly PanelWithPanelEntity panelAbilities = new PanelWithPanelEntity(4);
+        private readonly PanelWithPanelEntity panelInventory;
+        private readonly PanelWithPanelEntity panelAbilities;
         private PanelEntity panelWeapon;
         private PanelEntity panelArmour;
         internal List<PanelEntity> slots { get; } = new List<PanelEntity>();
 
-        public PanelHeroInfo(int height) : base(height)
+        public PanelHeroInfo(VisualControl parent, Point shift, int height) : base(parent, shift, height)
         {
+            panelInventory = new PanelWithPanelEntity(this, new Point(0, 0), 4);
+            panelAbilities = new PanelWithPanelEntity(this, new Point(0, 0), 4);
+
             btnDismiss = new Button()
             {
-                Parent = this,
+                //Parent = this,
                 Left = LeftAfterIcon(),
                 Top = TopForIcon(),
                 ImageList = Program.formMain.ilGui,
@@ -48,17 +51,9 @@ namespace Fantasy_King_s_Battle
             };
             btnDismiss.Click += BtnDismiss_Click;
 
-            panelWeapon = new PanelEntity()
-            {
-                Left = pageControl.Left,
-                Top = pageControl.Top
-            };
+            panelWeapon = new PanelEntity(this, new Point(Left = pageControl.Left, pageControl.Top));
 
-            panelArmour = new PanelEntity()
-            {
-                Left = panelWeapon.NextLeft(),
-                Top = panelWeapon.Top
-            };
+            panelArmour = new PanelEntity(this, new Point(panelWeapon.NextLeft(), panelWeapon.Top));
 
             pageControl.Top = panelWeapon.NextTop();
             pageControl.AddPage("Статистика", (int)IconPages.Parameters, null);
@@ -161,7 +156,7 @@ namespace Fantasy_King_s_Battle
 
             }
             else
-                Hide();
+                Visible = false;
 
 
             void ShowParameter(Label l, int normalParam, int modParam)
