@@ -82,7 +82,7 @@ namespace Fantasy_King_s_Battle
             {
                 Program.formMain.formHint.Clear();
                 if (PrepareHint())
-                    Program.formMain.formHint.ShowHint(Program.formMain.ctrlTransparent);
+                    Program.formMain.formHint.ShowHint(this);
             }
         }
 

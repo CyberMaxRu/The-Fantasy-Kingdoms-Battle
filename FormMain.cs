@@ -53,7 +53,6 @@ namespace Fantasy_King_s_Battle
 
         private readonly VisualControl MainControl = new VisualControl();
         private VisualControl controlWithHint;
-        internal Label ctrlTransparent;// Прозрачный контрол используется для активации MouseHover
         private Point mousePos;
 
         private readonly VisualControl panelPlayers;// Панель, на которой находятся панели игроков лобби
@@ -314,17 +313,7 @@ namespace Fantasy_King_s_Battle
             bmpBorderBattlefield = new Bitmap(dirResources + "Icons\\BorderBattlefield.png");
             LengthSideBorderBattlefield = bmpBorderBattlefield.Width - (Config.WidthBorderBattlefield * 2);
             Debug.Assert(LengthSideBorderBattlefield > 0);
-
-            ctrlTransparent = new Label()
-            {
-                Parent = this,
-                BackColor = Color.Transparent
-            };
-            ctrlTransparent.MouseMove += CtrlTransparent_MouseMove;
-            ctrlTransparent.MouseHover += CtrlTransparent_MouseHover;
-            ctrlTransparent.MouseLeave += CtrlTransparent_MouseLeave;
-            ctrlTransparent.MouseClick += CtrlTransparent_MouseClick;
-
+            
             // Делаем рамки для союзников и врагов
             bmpBorderForIconAlly = new Bitmap(bmpBorderForIcon);
             bmpBorderForIconEnemy = new Bitmap(bmpBorderForIcon);
@@ -565,22 +554,22 @@ namespace Fantasy_King_s_Battle
 
         private void BtnTarget_MouseHover(object sender, EventArgs e)
         {
-            ShowHintForToolButton(ctrlTransparent, lobby.CurrentPlayer.TargetLair != null ? lobby.CurrentPlayer.TargetLair.Lair.Name : "Цель отсутствует", lobby.CurrentPlayer.TargetLair != null ? "Будет атаковано в этом ходу" : "");
+            ShowHintForToolButton(btnTarget, lobby.CurrentPlayer.TargetLair != null ? lobby.CurrentPlayer.TargetLair.Lair.Name : "Цель отсутствует", lobby.CurrentPlayer.TargetLair != null ? "Будет атаковано в этом ходу" : "");
         }
 
         private void BtnQuit_MouseHover(object sender, EventArgs e)
         {
-            ShowHintForToolButton(ctrlTransparent, "Выход", "Выход из игры");
+            ShowHintForToolButton(btnQuit, "Выход", "Выход из игры");
         }
 
         private void BtnHelp_MouseHover(object sender, EventArgs e)
         {
-            ShowHintForToolButton(ctrlTransparent, "Справка", "Справка об игре");
+            ShowHintForToolButton(btnHelp, "Справка", "Справка об игре");
         }
 
         private void BtnPreferences_MouseHover(object sender, EventArgs e)
         {
-            ShowHintForToolButton(ctrlTransparent, "Настройки", "Настройки игры");
+            ShowHintForToolButton(btnPreferences, "Настройки", "Настройки игры");
         }
 
         internal bool CheckForNewVersion()
@@ -737,7 +726,7 @@ namespace Fantasy_King_s_Battle
 
         private void BtnEndTurn_MouseHover(object sender, EventArgs e)
         {
-            ShowHintForToolButton(ctrlTransparent, "Конец хода", "Завершение хода");
+            ShowHintForToolButton(btnEndTurn, "Конец хода", "Завершение хода");
         }
 
         private void LabelPeasants_MouseHover(object sender, EventArgs e)
@@ -1332,6 +1321,13 @@ namespace Fantasy_King_s_Battle
             formHint.ShowHint(c);
         }
 
+        private void ShowHintForToolButton(VisualControl c, string text, string hint)
+        {
+            formHint.Clear();
+            formHint.AddStep1Header(text, "", hint);
+            formHint.ShowHint(c);
+        }
+
         internal void ValidateAvatars()
         {
             ilPlayerAvatarsBig = PrepareImageList("PlayerAvatarsBig.png", 128, 128, false);
@@ -1483,79 +1479,42 @@ namespace Fantasy_King_s_Battle
             return null;
         }
 
-        private void DoMouseMove()
+        protected override void OnMouseMove(MouseEventArgs e)
         {
+            base.OnMouseMove(e);
+
             VisualControl curControl = ControlUnderMouse();
+
+            //formHint.HideHint();
 
             if (curControl == null)
             {
                 controlWithHint = null;
                 formHint.HideHint();
-                ctrlTransparent.Hide();
             }
             else if (curControl != controlWithHint)
             {
-                //controlWithHint = null;
-                //formHint.HideHint();
-
-                // Когда покидаем контрол, который находится впритык к другому, скрываем текущий на 1 движение, чтобы
-                // заново срабатывало событие MouseHover
-                if (controlWithHint != null)
-                {
-                    controlWithHint = null;
-                    formHint.HideHint();
-                    ctrlTransparent.Hide();
-                }
-                else
-                {
-                    ctrlTransparent.Left = curControl.Left;
-                    ctrlTransparent.Top = curControl.Top;
-                    ctrlTransparent.Width = curControl.Width;
-                    ctrlTransparent.Height = curControl.Height;
-                    ctrlTransparent.Show();
-                }
-            }
-        }
-
-        protected override void OnMouseMove(MouseEventArgs e)
-        {
-            base.OnMouseMove(e);
-
-            DoMouseMove();            
-        }
-
-        private void CtrlTransparent_MouseMove(object sender, MouseEventArgs e)
-        {
-            DoMouseMove();
-        }
-
-        private void CtrlTransparent_MouseLeave(object sender, EventArgs e)
-        {
-            controlWithHint = null;
-            formHint.HideHint();
-        }
-
-        private void CtrlTransparent_MouseHover(object sender, EventArgs e)
-        {
-            VisualControl curControl = ControlUnderMouse();
-            if (curControl != null)
-            {
+                formHint.HideHint();
                 controlWithHint = curControl;
                 controlWithHint.DoShowHint();
             }
         }
 
-        private void CtrlTransparent_MouseClick(object sender, MouseEventArgs e)
+        protected override void OnMouseLeave(EventArgs e)
         {
+            base.OnMouseLeave(e);
+
+            controlWithHint = null;
+            formHint.HideHint();
+        }
+
+        protected override void OnMouseClick(MouseEventArgs e)
+        {
+            base.OnMouseClick(e);
+
             if (e.Button == MouseButtons.Left)
             {
-                if (controlWithHint == null)
-                {
-                    controlWithHint = ControlUnderMouse();
-                    Debug.Assert(controlWithHint != null);
-                }
-
-                controlWithHint.DoClick();
+                controlWithHint?.DoClick();
             }
         }
     }
