@@ -213,9 +213,11 @@ namespace Fantasy_King_s_Battle
 
             fontRequirement = FormMain.Config.FontHintAdditionalText;
 
+            // Пауза перед показом формы нужна, чтобы успела выполниться отрисовка изображения,
+            // Иначе видно изменение текста невооруженным взглядом
             timerDelayShow = new Timer()
             {
-                Interval = SystemInformation.MouseHoverTime,
+                Interval = 300,
                 Enabled = false
             };
             timerDelayShow.Tick += TimerDelayShow_Tick;
@@ -249,8 +251,8 @@ namespace Fantasy_King_s_Battle
 
         private void TimerDelayShow_Tick(object sender, EventArgs e)
         {
-            //timerDelayShow.Enabled = false;
-            //Opacity = 0.8;
+            timerDelayShow.Enabled = false;
+            Opacity = 0.8;
         }
 
         internal void Clear()
@@ -431,10 +433,9 @@ namespace Fantasy_King_s_Battle
 
             //if (needReshow == true)
             {
-                //timerDelayShow.Enabled = true;
+                timerDelayShow.Enabled = true;
                 Opacity = 0;
                 Show();
-                Opacity = 0.8;
             }
         }
 
@@ -460,16 +461,15 @@ namespace Fantasy_King_s_Battle
 
             //if (needReshow == true)
             {
-                //timerDelayShow.Enabled = true;
+                timerDelayShow.Enabled = true;
                 Opacity = 0;
                 Show();
-                Opacity = 0.8;
             }
         }
 
         internal void HideHint()
         {
-            //timerDelayShow.Enabled = false;
+            timerDelayShow.Enabled = false;
 
             if (Visible)
                 Hide();
