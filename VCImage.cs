@@ -25,6 +25,7 @@ namespace Fantasy_King_s_Battle
 
         internal ImageList ImageList { get; }
         internal int ImageIndex { get => imageIndex; set { imageIndex = value; PrepareImage(); } }
+        internal bool NormalImage { get; set; } = true;
 
         private void PrepareImage()
         {
@@ -49,8 +50,8 @@ namespace Fantasy_King_s_Battle
             // x == Left, y == Top !
             if (imageIndex != -1)
                 g.DrawImageUnscaled(picture, Left, Top);
-            else
-                g.DrawImage(Program.formMain.bmpEmptyEntity, new Rectangle(Left + 1, Top + 0, Program.formMain.bmpBorderForIcon.Width - 2, Program.formMain.bmpBorderForIcon.Height - 2));
+            //else
+            //    g.DrawImage(Program.formMain.bmpEmptyEntity, new Rectangle(Left + 1, Top + 0, Program.formMain.bmpBorderForIcon.Width - 2, Program.formMain.bmpBorderForIcon.Height - 2));
         }
     }
 }
