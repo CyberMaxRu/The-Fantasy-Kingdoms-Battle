@@ -32,9 +32,6 @@ namespace Fantasy_King_s_Battle
             BorderColor = FormMain.Config.ColorBorderPlayer(player);
 
             base.Draw(g);
-
-            // Аватар игрока
-            panelAvatar.Draw(g);
         }
     }
 }
