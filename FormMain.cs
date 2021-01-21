@@ -1476,26 +1476,18 @@ namespace Fantasy_King_s_Battle
             return b;
         }
 
-        private VisualControl ControlUnderMouse()
-        {
-            mousePos = PointToClient(Cursor.Position);
-
-            foreach (VisualControl vc in MainControl.Controls)
-            {
-                if (Utils.PointInRectagle(vc.Left, vc.Top, vc.Width, vc.Height, mousePos.X, mousePos.Y))
-                    return vc.GetControl(mousePos.X, mousePos.Y);
-            }
-
-            return null;
-        }
-
         protected override void OnMouseMove(MouseEventArgs e)
         {
             base.OnMouseMove(e);
 
-            if (!mousePos.Equals(PointToClient(Cursor.Position)))
-            { 
-                VisualControl curControl = ControlUnderMouse();
+            Point newMousePos = PointToClient(Cursor.Position);
+
+            if (!mousePos.Equals(newMousePos))
+            {
+                mousePos = newMousePos;
+                VisualControl curControl = MainControl.GetControl(mousePos.X, mousePos.Y);
+                if (curControl == MainControl)
+                    curControl = null;
 
                 if (curControl == null)
                 {
