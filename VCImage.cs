@@ -44,6 +44,8 @@ namespace Fantasy_King_s_Battle
 
         internal override void Draw(Graphics g)
         {
+            base.Draw(g);
+
             // x == Left, y == Top !
             if (imageIndex != -1)
                 g.DrawImageUnscaled(picture, Left, Top);
