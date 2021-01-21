@@ -43,7 +43,7 @@ namespace Fantasy_King_s_Battle
         internal Rectangle Rectangle { get; private set; }
         internal bool Visible { get; set; } = true;
         internal bool ShowBorder { get; set; }
-        internal Color BorderColor { get; set; }
+        internal Color BorderColor { get; set; } = FormMain.Config.CommonBorder;
 
         // Список контролов, расположенных на нём, со смещением относительно левого верхнего угла
         internal List<VisualControl> Controls = new List<VisualControl>();
@@ -95,7 +95,11 @@ namespace Fantasy_King_s_Battle
         internal virtual void DoShowHint()
         {
             if (ShowHint != null)
+            {
+                Program.formMain.formHint.Clear();
                 ShowHint.Invoke(this, new EventArgs());
+                Program.formMain.formHint.ShowHint(this);
+            }
             else
             {
                 Program.formMain.formHint.Clear();
