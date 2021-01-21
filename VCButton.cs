@@ -14,7 +14,6 @@ namespace Fantasy_King_s_Battle
         public VCButton(VisualControl parent, int shiftX, int shiftY, ImageList imageList, int imageIndex) : base(parent, shiftX, shiftY, imageList, imageIndex)
         {
             ShowBorder = true;
-            BorderColor = FormMain.Config.CommonBorder;
         }
 
         protected override void ValidateSize()
@@ -28,7 +27,7 @@ namespace Fantasy_King_s_Battle
             //base.DrawImage(g);
 
             if (ImageIndex >= 0)
-                g.DrawImageUnscaled(GuiUtils.GetImageFromImageList(ImageList, ImageIndex, true), Left + 2, Top + 2);
+                g.DrawImageUnscaled(GuiUtils.GetImageFromImageList(ImageList, ImageIndex, NormalImage), 2, 2);
         }
     }
 }
