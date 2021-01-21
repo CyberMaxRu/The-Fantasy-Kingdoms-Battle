@@ -409,7 +409,6 @@ namespace Fantasy_King_s_Battle
 
             nextTop = GuiUtils.NextTop(lblDefenseMelee);
         }
-
         internal void ShowHint(Control c)
         {
             Debug.Assert(c.Width > 8);
@@ -417,6 +416,34 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(lblHeader.Text.Length > 0);
 
             Point l = c.PointToScreen(new Point(0, c.Height + 2));
+            // Если подсказка уходит за пределы экрана игры, меняем ее положение
+            if (l.X + Width > Program.formMain.Location.X + Program.formMain.ClientSize.Width)
+                l.X = Program.formMain.Location.X + Program.formMain.ClientSize.Width - Width;
+            if (l.Y + nextTop > Program.formMain.Location.Y + Program.formMain.ClientSize.Height)
+                l.Y = l.Y - nextTop - c.Height - 4;
+
+            Location = l;
+
+            bool needReshow = (Visible == false) || (Height != nextTop);
+            Height = nextTop;
+            bmpBackground?.Dispose();
+            bmpBackground = GuiUtils.MakeBackgroundWithBorder(ClientSize, FormMain.Config.CommonBorder);
+
+            if (needReshow == true)
+            {
+                timerDelayShow.Enabled = true;
+                Opacity = 0;
+                Show();
+            }
+        }
+
+        internal void ShowHint(VisualControl c)
+        {
+            Debug.Assert(c.Width > 8);
+            Debug.Assert(c.Height > 8);
+            Debug.Assert(lblHeader.Text.Length > 0);
+
+            Point l = Program.formMain.PointToScreen(new Point(c.Left, c.Top + c.Height + 2));
             // Если подсказка уходит за пределы экрана игры, меняем ее положение
             if (l.X + Width > Program.formMain.Location.X + Program.formMain.ClientSize.Width)
                 l.X = Program.formMain.Location.X + Program.formMain.ClientSize.Width - Width;
