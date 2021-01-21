@@ -38,6 +38,11 @@ namespace Fantasy_King_s_Battle
 
         internal override void Draw(Graphics g)
         {
+            Debug.Assert(rectBorder.Left == Left);
+            Debug.Assert(rectBorder.Top == Top);
+            Debug.Assert(rectBorder.Width == Width - 1);
+            Debug.Assert(rectBorder.Height == Height - 1);
+
             // Рамка вокруг панели
             penBorder.Color = FormMain.Config.ColorBorderPlayer(player);
             g.DrawRectangle(penBorder, rectBorder);
