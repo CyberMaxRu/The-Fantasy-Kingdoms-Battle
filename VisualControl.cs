@@ -94,14 +94,14 @@ namespace Fantasy_King_s_Battle
             }
         }
 
-        internal int NextTop()
-        {
-            return ShiftY + Height + FormMain.Config.GridSize;
-        }
-
         internal int NextLeft()
         {
             return ShiftX + Width + FormMain.Config.GridSize;
+        }
+
+        internal int NextTop()
+        {
+            return ShiftY + Height + FormMain.Config.GridSize;
         }
 
         internal virtual VisualControl GetControl(int x, int y)
