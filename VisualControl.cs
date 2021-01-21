@@ -17,10 +17,11 @@ namespace Fantasy_King_s_Battle
         private int width;
         private int height;
 
+        private readonly Pen penBorder = new Pen(FormMain.Config.CommonBorder);
+        private Rectangle rectBorder;
+
         public VisualControl()
         {
-            //ShiftX = 0;
-            //ShiftY = 0;
         }
 
         public VisualControl(VisualControl parent, int shiftX, int shiftY)
@@ -41,6 +42,8 @@ namespace Fantasy_King_s_Battle
         internal int ShiftY { get; set; }// Смещение контрола относительно верхнего края на родителе
         internal Rectangle Rectangle { get; private set; }
         internal bool Visible { get; set; } = true;
+        internal bool ShowBorder { get; set; }
+        internal Color BorderColor { get; set; }
 
         // Список контролов, расположенных на нём, со смещением относительно левого верхнего угла
         internal List<VisualControl> Controls = new List<VisualControl>();
@@ -51,6 +54,18 @@ namespace Fantasy_King_s_Battle
         // Метод для рисования. Передается Bitmap, подготовленный Graphics, смещение контрола относительно левого верхнего угла
         internal virtual void Draw(Graphics g)
         {
+            Debug.Assert(rectBorder.Left == Left);
+            Debug.Assert(rectBorder.Top == Top);
+            Debug.Assert(rectBorder.Width == Width - 1);
+            Debug.Assert(rectBorder.Height == Height - 1);
+
+            // Рамка вокруг панели
+            if (ShowBorder)
+            {
+                penBorder.Color = BorderColor;
+                g.DrawRectangle(penBorder, rectBorder);
+            }
+
             foreach (VisualControl vc in Controls)
             {
                 if (vc.Visible)
@@ -66,7 +81,10 @@ namespace Fantasy_King_s_Battle
         protected virtual void ValidateRectangle()
         {
             if ((Rectangle.Left != Left) || (Rectangle.Top != Top) || (Rectangle.Width != Width) || (Rectangle.Height != Height))
+            {
                 Rectangle = new Rectangle(Left, Top, Width, Height);
+                rectBorder = new Rectangle(Left, Top, Width - 1, Height - 1);
+            }
         }
 
         internal virtual bool PrepareHint()

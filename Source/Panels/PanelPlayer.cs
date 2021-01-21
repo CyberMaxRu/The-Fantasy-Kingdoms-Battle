@@ -8,8 +8,6 @@ namespace Fantasy_King_s_Battle
     {
         private Player player;
         private readonly PanelEntity panelAvatar;
-        private readonly Pen penBorder = new Pen(FormMain.Config.CommonBorder);
-        private Rectangle rectBorder;
 
         public PanelPlayer(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
@@ -17,6 +15,7 @@ namespace Fantasy_King_s_Battle
 
             Width = panelAvatar.Width + (FormMain.Config.GridSize * 2);
             Height = panelAvatar.Height + (FormMain.Config.GridSize * 2);
+            ShowBorder = true;
         }
 
         internal void LinkToLobby(Player p)
@@ -28,24 +27,11 @@ namespace Fantasy_King_s_Battle
             panelAvatar.ShowCell(player);
         }
 
-        protected override void ValidateRectangle()
-        {
-            base.ValidateRectangle();
-
-            if ((rectBorder.Left != Left) || (rectBorder.Top != Top) || (rectBorder.Width != Width - 1) || (rectBorder.Height != Height - 1))
-                rectBorder = new Rectangle(Left, Top, Width - 1, Height - 1);
-        }
-
         internal override void Draw(Graphics g)
         {
-            Debug.Assert(rectBorder.Left == Left);
-            Debug.Assert(rectBorder.Top == Top);
-            Debug.Assert(rectBorder.Width == Width - 1);
-            Debug.Assert(rectBorder.Height == Height - 1);
+            BorderColor = FormMain.Config.ColorBorderPlayer(player);
 
-            // Рамка вокруг панели
-            penBorder.Color = FormMain.Config.ColorBorderPlayer(player);
-            g.DrawRectangle(penBorder, rectBorder);
+            base.Draw(g);
 
             // Аватар игрока
             panelAvatar.Draw(g);

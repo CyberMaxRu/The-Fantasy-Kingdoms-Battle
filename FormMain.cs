@@ -51,7 +51,7 @@ namespace Fantasy_King_s_Battle
         private Graphics gfxFrame;// Graphics кадра, чтобы контролы работали сразу с ним
         internal Bitmap bmpBackground;// Фон кадра
 
-        private readonly VisualControl MainControl = new VisualControl();
+        private readonly VisualControl MainControl;
 
         private Point mousePos;
         private VisualControl controlWithHint;
@@ -361,6 +361,9 @@ namespace Fantasy_King_s_Battle
             lobby = new Lobby(Config.TypeLobbies[0]);
 
             SetStage("Строим замок");
+
+            //
+            MainControl = new VisualControl();
 
             // Кнопки в правом верхнем углу
             btnPreferences = CreateButton(ilGui, GUI_INVENTORY, 0, Config.GridSize, BtnPreferences_Click, BtnPreferences_MouseHover);
