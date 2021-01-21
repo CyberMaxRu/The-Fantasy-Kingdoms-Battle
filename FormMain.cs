@@ -52,8 +52,10 @@ namespace Fantasy_King_s_Battle
         internal Bitmap bmpBackground;// Фон кадра
 
         private readonly VisualControl MainControl = new VisualControl();
-        private VisualControl controlWithHint;
+
         private Point mousePos;
+        private VisualControl controlWithHint;
+        private bool hintShowed = false;
 
         private readonly VisualControl panelPlayers;// Панель, на которой находятся панели игроков лобби
 
@@ -171,6 +173,8 @@ namespace Fantasy_King_s_Battle
         internal Settings Settings { get; private set; }
         internal MainConfig MainConfig { get; private set; }
         internal int AvatarCount { get; private set; }
+
+        private Timer timerHover;
 
         public FormMain()
         {
@@ -531,6 +535,12 @@ namespace Fantasy_King_s_Battle
             ValidateAvatars();
 
             splashForm.Dispose();
+
+            //
+            timerHover = new Timer();
+            timerHover.Interval = SystemInformation.MouseHoverTime;
+            timerHover.Enabled = false;
+            timerHover.Tick += TimerHover_Tick;
 
             //
             Location = new Point((Screen.PrimaryScreen.WorkingArea.Width - Width) / 2, (Screen.PrimaryScreen.WorkingArea.Height - Height) / 2);
@@ -1483,20 +1493,31 @@ namespace Fantasy_King_s_Battle
         {
             base.OnMouseMove(e);
 
-            VisualControl curControl = ControlUnderMouse();
+            if (!mousePos.Equals(PointToClient(Cursor.Position)))
+            { 
+                VisualControl curControl = ControlUnderMouse();
 
-            //formHint.HideHint();
-
-            if (curControl == null)
-            {
-                controlWithHint = null;
-                formHint.HideHint();
-            }
-            else if (curControl != controlWithHint)
-            {
-                formHint.HideHint();
-                controlWithHint = curControl;
-                controlWithHint.DoShowHint();
+                if (curControl == null)
+                {
+                    timerHover.Stop();
+                    formHint.HideHint();
+                    hintShowed = false;
+                    controlWithHint = null;
+                }
+                else if (curControl == controlWithHint)
+                {
+                    if (hintShowed)
+                    {
+                        timerHover.Stop();
+                        formHint.HideHint();
+                    }
+                }
+                else
+                {
+                    hintShowed = false;
+                    controlWithHint = curControl;
+                    timerHover.Start();
+                }
             }
         }
 
@@ -1515,6 +1536,16 @@ namespace Fantasy_King_s_Battle
             if (e.Button == MouseButtons.Left)
             {
                 controlWithHint?.DoClick();
+            }
+        }
+
+        private void TimerHover_Tick(object sender, EventArgs e)
+        {
+            if (controlWithHint != null)
+            {
+                timerHover.Stop();
+                controlWithHint.DoShowHint();
+                hintShowed = true;
             }
         }
     }
