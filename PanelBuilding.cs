@@ -20,11 +20,11 @@ namespace Fantasy_King_s_Battle
         private readonly Label lblName;
         private readonly Label lblIncome;
         private readonly Label lblLevel;
-        private readonly Pen penBorder;
-        private readonly Rectangle rectBorder;
 
         public PanelBuilding(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
+            ShowBorder = true;
+
             lblName = new Label()
             {
                 Height = FormMain.Config.GridSize * 2,
@@ -117,9 +117,6 @@ namespace Fantasy_King_s_Battle
 
             lblName.Width = Width - (FormMain.Config.GridSize * 2) - 2;
             //ArrangeControl(lblLevel, new Point(Width - FormMain.Config.GridSize - lblLevel.Width, lblLevel.Top));
-
-            penBorder = new Pen(Color.Black);
-            rectBorder = new Rectangle(0, 0, Width - 1, Height - 1);
 
             // Восстановить
             //MouseClick += PanelBuilding_MouseClick;
@@ -337,13 +334,13 @@ namespace Fantasy_King_s_Battle
 
             //Invalidate();
         }
-        /*protected override Color ColorBorder()
-        {
-            return FormMain.Config.ColorBorder(Program.formMain.SelectedPanelBuilding == this);
-        }*/
 
         internal override void Draw(Graphics g)
         {
+            BorderColor = FormMain.Config.ColorBorder(Program.formMain.SelectedPanelBuilding == this);
+
+            base.Draw(g);
+
             g.DrawImage(GuiUtils.GetImageFromImageList(Program.formMain.ilBuildings, building.Building.ImageIndex, Building.Level > 0), Left + pbBuilding.Left, Top + pbBuilding.Top);
             
             // Если картинки нет, 
