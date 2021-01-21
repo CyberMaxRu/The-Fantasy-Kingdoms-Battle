@@ -53,7 +53,8 @@ namespace Fantasy_King_s_Battle
         {
             foreach (VisualControl vc in Controls)
             {
-                vc.Draw(g);
+                if (vc.Visible)
+                    vc.Draw(g);
             }
         }
 
