@@ -13,7 +13,7 @@ namespace Fantasy_King_s_Battle
     internal sealed class PanelBuilding : VisualControl
     {
         private PlayerBuilding building;
-        private readonly PictureBox pbBuilding;
+        private VCButton imageConstruction;
         private readonly Button btnHeroes;
         private readonly Button btnBuyOrUpgrade;
         private readonly Button btnHireHero;
@@ -25,6 +25,11 @@ namespace Fantasy_King_s_Battle
         {
             ShowBorder = true;
 
+            imageConstruction = new VCButton(this, FormMain.Config.GridSize, FormMain.Config.GridSize, Program.formMain.ilBuildings, -1);
+            imageConstruction.ShowBorder = false;
+            imageConstruction.Click += ImageConstruction_Click;
+            imageConstruction.ShowHint += ImageConstruction_ShowHint;
+
             lblName = new Label()
             {
                 Height = FormMain.Config.GridSize * 2,
@@ -33,16 +38,7 @@ namespace Fantasy_King_s_Battle
             };
             //AddControl(lblName, new Point(FormMain.Config.GridSize, FormMain.Config.GridSize));
 
-            pbBuilding = new PictureBox()
-            {
-                Width = Program.formMain.ilBuildings.ImageSize.Width + 2,// Окантовка
-                Height = Program.formMain.ilBuildings.ImageSize.Height + 2,// Окантовка
-                BackColor = Color.Transparent
-            };
             //AddControl(pbBuilding, new Point(FormMain.Config.GridSize, GuiUtils.NextTop(lblName)));
-            pbBuilding.MouseEnter += pbBuilding_MouseEnter;
-            pbBuilding.MouseLeave += Control_MouseLeave;
-            pbBuilding.MouseClick += pbBuilding_MouseClick;
             
             btnHeroes = new Button()
             {
@@ -122,6 +118,18 @@ namespace Fantasy_King_s_Battle
             //MouseClick += PanelBuilding_MouseClick;
         }
 
+        private void ImageConstruction_ShowHint(object sender, EventArgs e)
+        {
+            Program.formMain.formHint.AddStep1Header(Building.Building.Name, Building.Level > 0 ? "Уровень " + Building.Level.ToString() : "", Building.Building.Description + ((Building.Level > 0) ? Environment.NewLine + Environment.NewLine + "Героев: " + Building.Heroes.Count.ToString() + "/" + Building.MaxHeroes().ToString() : ""));
+            //Program.formMain.formHint.AddStep1Header(Building.Building.Name, Building.Level > 0 ? "Уровень " + Building.Level.ToString() : "", Building.Building.Description + ((Building.Level > 0) && (Building.Building.TrainedHero != null) ? Environment.NewLine + Environment.NewLine + "Героев: " + Building.Heroes.Count.ToString() + "/" + Building.MaxHeroes().ToString() : ""));
+            Program.formMain.formHint.AddStep2Income(Building.Income());
+        }
+
+        private void ImageConstruction_Click(object sender, EventArgs e)
+        {
+            SelectThisBuilding();
+        }
+
         internal PlayerBuilding Building { get { return building; } set { Debug.Assert(value != null); building = value; UpdateData(); } }
 
         private void SelectThisBuilding()
@@ -130,14 +138,6 @@ namespace Fantasy_King_s_Battle
         }
         private void PanelBuilding_MouseClick(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-                SelectThisBuilding();
-        }
-
-        private void pbBuilding_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-                SelectThisBuilding();
         }
 
         private void BtnHireHero_MouseEnter(object sender, EventArgs e)
@@ -153,15 +153,6 @@ namespace Fantasy_King_s_Battle
                 Program.formMain.formHint.AddStep3Requirement(Building.GetTextRequirementsHire());
             Program.formMain.formHint.AddStep4Gold(Building.Building.TrainedHero.Cost, Building.Player.Gold >= Building.Building.TrainedHero.Cost);
             Program.formMain.formHint.ShowHint(btnHireHero);
-            */
-        }
-
-        private void pbBuilding_MouseEnter(object sender, EventArgs e)
-        {
-            /*Program.formMain.formHint.Clear();
-            Program.formMain.formHint.AddStep1Header(Building.Building.Name, Building.Level > 0 ? "Уровень " + Building.Level.ToString() : "", Building.Building.Description + ((Building.Level > 0) && (Building.Building.TrainedHero != null) ? Environment.NewLine + Environment.NewLine + "Героев: " + Building.Heroes.Count.ToString() + "/" + Building.MaxHeroes().ToString() : ""));
-            Program.formMain.formHint.AddStep2Income(Building.Income());
-            Program.formMain.formHint.ShowHint(this);
             */
         }
 
@@ -307,7 +298,6 @@ namespace Fantasy_King_s_Battle
 
                 //if (btnLevelUp.Visible == true)
                 //btnLevelUp.Image = Building.CheckRequirements() == true ? imageListGui.Images[FormMain.GUI_LEVELUP] : imageListGui.Images[FormMain.GUI_LEVELUP + imageListGui.Images.Count / 2];
-                pbBuilding.Image = GuiUtils.GetImageFromImageList(Program.formMain.ilBuildings, Building.Building.ImageIndex, true);
             }
             else
             {
@@ -315,7 +305,6 @@ namespace Fantasy_King_s_Battle
 
                 btnBuyOrUpgrade.Text = Building.CostBuyOrUpgrade().ToString();
                 btnBuyOrUpgrade.ImageIndex = GuiUtils.GetImageIndexWithGray(btnBuyOrUpgrade.ImageList, FormMain.GUI_BUY, Building.CheckRequirements());
-                pbBuilding.Image = GuiUtils.GetImageFromImageList(Program.formMain.ilBuildings, Building.Building.ImageIndex, false);
             }
 
             // Восстановить
@@ -338,10 +327,12 @@ namespace Fantasy_King_s_Battle
         internal override void Draw(Graphics g)
         {
             BorderColor = FormMain.Config.ColorBorder(Program.formMain.SelectedPanelBuilding == this);
+            imageConstruction.ImageIndex = Building.Building.ImageIndex;
+            imageConstruction.NormalImage = Building.Level > 0;
 
             base.Draw(g);
 
-            g.DrawImage(GuiUtils.GetImageFromImageList(Program.formMain.ilBuildings, building.Building.ImageIndex, Building.Level > 0), Left + pbBuilding.Left, Top + pbBuilding.Top);
+            //g.DrawImage(GuiUtils.GetImageFromImageList(Program.formMain.ilBuildings, building.Building.ImageIndex, Building.Level > 0), Left + pbBuilding.Left, Top + pbBuilding.Top);
             
             // Если картинки нет, 
             //if (ImageIndex == -1)
