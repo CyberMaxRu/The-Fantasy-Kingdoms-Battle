@@ -655,8 +655,11 @@ namespace Fantasy_King_s_Battle
 
             if (Program.formMain != null)
             {
-                PrepareBackground();
-                ArrangeControls();
+                if ((bmpBackground == null) || ((WindowState != FormWindowState.Minimized) && (!ClientSize.Equals(bmpBackground.Size))))
+                {
+                    PrepareBackground();
+                    ArrangeControls();
+                }
             }
 
             if (axWindowsMediaPlayer1 != null)
