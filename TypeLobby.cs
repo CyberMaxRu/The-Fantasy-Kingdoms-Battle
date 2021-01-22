@@ -18,6 +18,10 @@ namespace Fantasy_King_s_Battle
             DurabilityCastle = XmlUtils.GetInteger(n.SelectSingleNode("DurabilityCastle"));
             Gold = XmlUtils.GetInteger(n.SelectSingleNode("Gold"));
             MaxHeroes = XmlUtils.GetInteger(n.SelectSingleNode("MaxHeroes"));
+            StartPointConstructionGuild = XmlUtils.GetInteger(n.SelectSingleNode("StartPointConstructionGuild"));
+            StartPointConstructionEconomic = XmlUtils.GetInteger(n.SelectSingleNode("StartPointConstructionEconomic"));
+            PointConstructionGuildPerDay = XmlUtils.GetInteger(n.SelectSingleNode("PointConstructionGuildPerDay"));
+            PointConstructionEconomicPerDay = XmlUtils.GetInteger(n.SelectSingleNode("PointConstructionEconomicPerDay"));
 
             Debug.Assert(Name.Length > 0);
             Debug.Assert(QuantityPlayers >= 2);
@@ -29,6 +33,14 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(Gold <= 100000);
             Debug.Assert(MaxHeroes >= 1);
             Debug.Assert(MaxHeroes <= 100);// Здесь проверять через максим. число героев на поле боя
+            Debug.Assert(StartPointConstructionGuild >= 1);
+            Debug.Assert(StartPointConstructionGuild <= 10);
+            Debug.Assert(StartPointConstructionEconomic >= 1);
+            Debug.Assert(StartPointConstructionEconomic <= 10);
+            Debug.Assert(PointConstructionGuildPerDay >= 1);
+            Debug.Assert(PointConstructionGuildPerDay <= 10);
+            Debug.Assert(PointConstructionEconomicPerDay >= 1);
+            Debug.Assert(PointConstructionEconomicPerDay <= 10);
 
             foreach (TypeLobby t in FormMain.Config.TypeLobbies)
             {
@@ -42,5 +54,9 @@ namespace Fantasy_King_s_Battle
         internal int DurabilityCastle { get; }
         internal int Gold { get; }
         internal int MaxHeroes { get; }
+        internal int StartPointConstructionGuild { get; }
+        internal int StartPointConstructionEconomic { get; }
+        internal int PointConstructionGuildPerDay { get; }
+        internal int PointConstructionEconomicPerDay { get; }
     }
 }
