@@ -73,7 +73,7 @@ namespace Fantasy_King_s_Battle
 
         internal Level[] Levels;
         internal Research[,,] Researches;
-        internal PanelBuilding Panel { get; set; }
+        internal PanelConstruction Panel { get; set; }
         internal bool HasTreasury { get; }// Имеет собственную казну
         internal TypeHero TrainedHero { get; set; }
 

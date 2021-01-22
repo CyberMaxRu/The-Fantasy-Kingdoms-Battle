@@ -158,12 +158,12 @@ namespace Fantasy_King_s_Battle
         private readonly PanelLairInfo panelLairInfo;
         private readonly PanelHeroInfo panelHeroInfo;
         internal PanelEntity SelectedPanelEntity;
-        private readonly List<PanelBuilding> listPanelBuildings = new List<PanelBuilding>();
+        private readonly List<PanelConstruction> listPanelBuildings = new List<PanelConstruction>();
 
         private List<PictureBox> SlotSkill = new List<PictureBox>();
 
         internal FormHint formHint;
-        internal PanelBuilding SelectedPanelBuilding { get; private set; }
+        internal PanelConstruction SelectedPanelBuilding { get; private set; }
         internal PanelLair SelectedPanelLair { get; private set; }
         internal PlayerHero SelectedHero { get; private set; }
 
@@ -1002,7 +1002,7 @@ namespace Fantasy_King_s_Battle
                     {
                         if (tck.Line == line)
                         {
-                            tck.Panel = new PanelBuilding(panel, left, top, tck);
+                            tck.Panel = new PanelConstruction(panel, left, top, tck);
 
                             left += tck.Panel.Width + Config.GridSize;
                             height = tck.Panel.Height;
@@ -1177,7 +1177,7 @@ namespace Fantasy_King_s_Battle
             panelPlayers.ArrangeControls();
         }
 
-        internal void SelectBuilding(PanelBuilding pb)
+        internal void SelectBuilding(PanelConstruction pb)
         {
             if (SelectedPanelBuilding != pb)
             {
@@ -1188,7 +1188,7 @@ namespace Fantasy_King_s_Battle
 
                 SelectPanelEntity(null);
 
-                PanelBuilding oldSelected = SelectedPanelBuilding;
+                PanelConstruction oldSelected = SelectedPanelBuilding;
                 SelectedPanelBuilding = pb;
 
                 UpdateMenu();

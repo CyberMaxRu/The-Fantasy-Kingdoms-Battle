@@ -10,7 +10,7 @@ using System.Diagnostics;
 namespace Fantasy_King_s_Battle
 {
     // Класс панели здания
-    internal sealed class PanelBuilding : VisualControl
+    internal sealed class PanelConstruction : VisualControl
     {
         private PlayerBuilding building;
         private VCImage imageConstruction;
@@ -21,7 +21,7 @@ namespace Fantasy_King_s_Battle
         private readonly Label lblIncome;
         private readonly Label lblLevel;
 
-        public PanelBuilding(VisualControl parent, int shiftX, int shiftY, TypeConstruction typeConstruction) : base(parent, shiftX, shiftY)
+        public PanelConstruction(VisualControl parent, int shiftX, int shiftY, TypeConstruction typeConstruction) : base(parent, shiftX, shiftY)
         {
             ShowBorder = true;
 
