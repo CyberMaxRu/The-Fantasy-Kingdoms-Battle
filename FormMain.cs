@@ -1451,6 +1451,13 @@ namespace Fantasy_King_s_Battle
         private void ShowFrame()
         {
             DrawFrame();// Готовим кадр
+            if (controlWithHint != null)
+            {
+                Pen p = new Pen(Color.Red);
+                gfxFrame.DrawRectangle(p, controlWithHint.Rectangle);
+                p.Dispose();
+            }
+            
             Invalidate();// Рисуем кадр
         }
 
@@ -1515,6 +1522,7 @@ namespace Fantasy_King_s_Battle
                     hintShowed = false;
                     controlWithHint = curControl;
                     timerHover.Start();
+                    ShowFrame();
                 }
             }
         }
