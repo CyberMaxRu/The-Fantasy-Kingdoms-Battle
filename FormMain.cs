@@ -1500,7 +1500,11 @@ namespace Fantasy_King_s_Battle
                 mousePos = newMousePos;
                 VisualControl curControl = MainControl.GetControl(mousePos.X, mousePos.Y);
                 if (curControl == MainControl)
-                    curControl = null;
+                {
+                    curControl = currentPage.Page.GetControl(mousePos.X, mousePos.Y);
+                    if (curControl == currentPage)
+                        curControl = null;
+                }
 
                 if (curControl == null)
                 {
