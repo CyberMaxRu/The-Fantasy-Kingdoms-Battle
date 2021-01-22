@@ -19,7 +19,6 @@ namespace Fantasy_King_s_Battle
         private readonly VCButtonWithCost btnHireHero;
         private readonly VCLabel lblName;
         private readonly Label lblIncome;
-        private readonly Label lblLevel;
 
         public PanelConstruction(VisualControl parent, int shiftX, int shiftY, TypeConstruction typeConstruction) : base(parent, shiftX, shiftY)
         {
@@ -57,17 +56,6 @@ namespace Fantasy_King_s_Battle
                 btnHireHero.ShowHint += BtnHireHero_ShowHint;
             }
 
-            lblLevel = new Label()
-            {
-                AutoSize = false,
-                Size = new Size(32, 16),
-                BackColor = Color.Transparent,
-                Font = FormMain.Config.FontBuildingLevel,
-                TextAlign = ContentAlignment.MiddleRight
-            };
-            //AddControl(lblLevel, new Point(0, lblName.Top));
-            lblLevel.BringToFront();
-
             lblIncome = new Label()
             {
                 AutoSize = false,
@@ -87,7 +75,6 @@ namespace Fantasy_King_s_Battle
             Width = btnBuyOrUpgrade.NextLeft();
 
             Height = 192;
-            //ArrangeControl(lblLevel, new Point(Width - FormMain.Config.GridSize - lblLevel.Width, lblLevel.Top));
 
             // Восстановить
             //MouseClick += PanelBuilding_MouseClick;
@@ -211,25 +198,6 @@ namespace Fantasy_King_s_Battle
             // Восстановить
             //btnHeroes.Visible = building.Building.TrainedHero != null;
 
-            // Информация об уровне здания
-            if ((Building.Level > 0) && (Building.Building.MaxLevel > 1))
-            {
-                //lblLevel.Parent = Parent;
-
-                if (Building.Level < Building.Building.MaxLevel)
-                {
-                    lblLevel.Text = Building.Level.ToString() + "/" + Building.Building.MaxLevel.ToString();
-                    lblLevel.ForeColor = Color.Black;
-                }
-                else
-                {
-                    lblLevel.Text = Building.Level.ToString();
-                    lblLevel.ForeColor = Color.Green;
-                }
-            }
-            //else
-             //   lblLevel.Parent = null;
-
             // Восстановить
             /*
             if ((Building.Building.TrainedHero != null) && (Building.Level > 0))
@@ -284,6 +252,8 @@ namespace Fantasy_King_s_Battle
                 btnHireHero.ImageIndex = (Building.Level > 0) && ((Building.Heroes.Count == Building.MaxHeroes()) || (Building.MaxHeroesAtPlayer() == true))  ? -1 : GuiUtils.GetImageIndexWithGray(btnHireHero.ImageList, c.TrainedHero.ImageIndex, Building.CanTrainHero());
                 btnHireHero.Cost = (Building.Level == 0) || (Building.CanTrainHero() == true) ? c.TrainedHero.Cost : 0;
             }
+
+            imageConstruction.Level = Building.Level;
 
             base.Draw(g);
         }
