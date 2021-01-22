@@ -17,6 +17,5 @@ namespace Fantasy_King_s_Battle
         }
 
         internal int GoldByConstruction { get; }// Количество золота в казне при постройке
-        internal TypeHero TrainedHero { get; set; }
     }
 }

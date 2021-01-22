@@ -75,6 +75,7 @@ namespace Fantasy_King_s_Battle
         internal Research[,,] Researches;
         internal PanelBuilding Panel { get; set; }
         internal bool HasTreasury { get; }// Имеет собственную казну
+        internal TypeHero TrainedHero { get; set; }
 
         internal override void TuneDeferredLinks()
         {
