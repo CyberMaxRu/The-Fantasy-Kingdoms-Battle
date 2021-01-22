@@ -9,7 +9,7 @@ using System.Drawing;
 namespace Fantasy_King_s_Battle
 {
     // Визуальный контрол - кнопка c иконкой
-    internal class VCButton : VCCustomImage
+    internal class VCButton : VCImage
     {
         public VCButton(VisualControl parent, int shiftX, int shiftY, ImageList imageList, int imageIndex) : base(parent, shiftX, shiftY, imageList, imageIndex)
         {

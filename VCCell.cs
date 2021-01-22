@@ -9,7 +9,7 @@ using System.Windows.Forms;
 namespace Fantasy_King_s_Battle
 {
     // Визуальный контрол - ячейка
-    internal sealed class VCCell : VCCustomImage
+    internal sealed class VCCell : VCImage
     {
         public VCCell(VisualControl parent, int shiftX, int shiftY, ImageList imageList, int imageIndex) : base(parent, shiftX, shiftY, imageList, imageIndex)
         {
