@@ -17,7 +17,7 @@ namespace Fantasy_King_s_Battle
         private readonly Button btnHeroes;
         private readonly Button btnBuyOrUpgrade;
         private readonly Button btnHireHero;
-        private readonly Label lblName;
+        private readonly VCLabel lblName;
         private readonly Label lblIncome;
         private readonly Label lblLevel;
 
@@ -25,21 +25,14 @@ namespace Fantasy_King_s_Battle
         {
             ShowBorder = true;
 
-            imageConstruction = new VCButton(this, FormMain.Config.GridSize, FormMain.Config.GridSize, Program.formMain.ilBuildings, -1);
+            lblName = new VCLabel(this, FormMain.Config.GridSize, FormMain.Config.GridSize, FormMain.Config.FontBuildingCaption, Color.Transparent, FormMain.Config.GridSize * 2, "");
+            lblName.StringFormat.Alignment = StringAlignment.Near;
+
+            imageConstruction = new VCButton(this, FormMain.Config.GridSize, lblName.NextTop(), Program.formMain.ilBuildings, -1);
             imageConstruction.ShowBorder = false;
             imageConstruction.Click += ImageConstruction_Click;
             imageConstruction.ShowHint += ImageConstruction_ShowHint;
 
-            lblName = new Label()
-            {
-                Height = FormMain.Config.GridSize * 2,
-                BackColor = Color.Transparent,
-                Font = FormMain.Config.FontBuildingCaption
-            };
-            //AddControl(lblName, new Point(FormMain.Config.GridSize, FormMain.Config.GridSize));
-
-            //AddControl(pbBuilding, new Point(FormMain.Config.GridSize, GuiUtils.NextTop(lblName)));
-            
             btnHeroes = new Button()
             {
                 ImageList = Program.formMain.ilGuiHeroes,
@@ -111,7 +104,6 @@ namespace Fantasy_King_s_Battle
             Width = 192;
             Height = 192;
 
-            lblName.Width = Width - (FormMain.Config.GridSize * 2) - 2;
             //ArrangeControl(lblLevel, new Point(Width - FormMain.Config.GridSize - lblLevel.Width, lblLevel.Top));
 
             // Восстановить
@@ -242,7 +234,7 @@ namespace Fantasy_King_s_Battle
             btnBuyOrUpgrade.Parent = null;
             btnHireHero.Parent = null;
 
-            lblName.Text = Building.Building.Name;
+            lblName. Text = Building.Building.Name;
             lblIncome.ImageIndex = Building.DoIncome() == true ? FormMain.GUI_16_GOLD : -1;
             lblIncome.Text = Building.DoIncome() == true ? "+" + Building.Income().ToString() : "";
             lblIncome.ForeColor = Building.Level > 0 ? Color.Green : Color.Gray;
@@ -283,8 +275,6 @@ namespace Fantasy_King_s_Battle
             if (Building.Level > 0)
             {
 
-                lblName.ForeColor = Color.Green;
-
                 if (Building.CanLevelUp() == true)
                 {
                     btnBuyOrUpgrade.Text = Building.CostBuyOrUpgrade().ToString();
@@ -301,8 +291,6 @@ namespace Fantasy_King_s_Battle
             }
             else
             {
-                lblName.ForeColor = Color.Gray;
-
                 btnBuyOrUpgrade.Text = Building.CostBuyOrUpgrade().ToString();
                 btnBuyOrUpgrade.ImageIndex = GuiUtils.GetImageIndexWithGray(btnBuyOrUpgrade.ImageList, FormMain.GUI_BUY, Building.CheckRequirements());
             }
@@ -329,6 +317,8 @@ namespace Fantasy_King_s_Battle
             BorderColor = FormMain.Config.ColorBorder(Program.formMain.SelectedPanelBuilding == this);
             imageConstruction.ImageIndex = Building.Building.ImageIndex;
             imageConstruction.NormalImage = Building.Level > 0;
+
+            lblName.Color = FormMain.Config.ColorMapObjectCaption(Building.Level > 0);
 
             base.Draw(g);
 
