@@ -9,47 +9,35 @@ using System.Windows.Forms;
 namespace Fantasy_King_s_Battle
 {
     // Визуальный контрол - иконка
-    internal abstract class VCCustomImage : VisualControl
+    internal class VCCustomImage : VisualControl
     {
-        private Bitmap picture;
-        private int imageIndex;
+        private int shiftImage;
 
         public VCCustomImage(VisualControl parent, int shiftX, int shiftY, ImageList imageList, int imageIndex) : base(parent, shiftX, shiftY)
         {
             ImageList = imageList;
-            ValidateSize();
-
             ImageIndex = imageIndex;
-            PrepareImage();
+
+            ValidateSize();
         }
 
         internal ImageList ImageList { get; }
-        internal int ImageIndex { get => imageIndex; set { imageIndex = value; PrepareImage(); } }
+        internal int ImageIndex { get; set; }
         internal bool NormalImage { get; set; } = true;
+        protected int ShiftImage { get => shiftImage; set { shiftImage = value; ValidateSize(); } }
 
-        private void PrepareImage()
+        private void ValidateSize()
         {
-            if ((picture == null) || (picture.Width != Width) || (picture.Height != Height))
-            {
-                picture?.Dispose();
-                picture = new Bitmap(Width, Height);
-            }
-
-            Graphics g = Graphics.FromImage(picture);
-            DrawImage(g);
-            g.Dispose();
+            Width = ImageList.ImageSize.Width + (ShiftImage * 2);
+            Height = ImageList.ImageSize.Height + (ShiftImage * 2);
         }
-
-        protected abstract void ValidateSize();
-        protected abstract void DrawImage(Graphics g);
 
         internal override void Draw(Graphics g)
         {
             base.Draw(g);
 
-            // x == Left, y == Top !
-            if (imageIndex != -1)
-                g.DrawImageUnscaled(picture, Left, Top);
+            if (ImageIndex != -1)
+                g.DrawImageUnscaled(GuiUtils.GetImageFromImageList(ImageList, ImageIndex, NormalImage), Left + ShiftImage, Top + ShiftImage);
             //else
             //    g.DrawImage(Program.formMain.bmpEmptyEntity, new Rectangle(Left + 1, Top + 0, Program.formMain.bmpBorderForIcon.Width - 2, Program.formMain.bmpBorderForIcon.Height - 2));
         }

@@ -15,19 +15,15 @@ namespace Fantasy_King_s_Battle
         {
         }
 
-        protected override void ValidateSize()
+        internal override void Draw(Graphics g)
         {
-            Width = ImageList.ImageSize.Width + 4;
-            Height = ImageList.ImageSize.Height + 4;
-        }
+            base.Draw(g);
 
-        protected override void DrawImage(Graphics g)
-        {
             // Если картинки нет, 
-            if (ImageIndex == -1)
-                g.Clear(Color.Transparent);
-            else                    
-                g.DrawImageUnscaled(GuiUtils.GetImageFromImageList(ImageList, ImageIndex, true), Left + 2, Top + 2);
+//            if (ImageIndex == -1)
+//                g.Clear(Color.Transparent);
+            //else                    
+                //g.DrawImageUnscaled(GuiUtils.GetImageFromImageList(ImageList, ImageIndex, true), Left + 2, Top + 2);
 
             //g.DrawImage(Program.formMain.bmpEmptyEntity, new Rectangle(1, 0, Program.formMain.bmpBorderForIcon.Width - 2, Program.formMain.bmpBorderForIcon.Height - 2));
         }
