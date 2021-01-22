@@ -13,7 +13,7 @@ namespace Fantasy_King_s_Battle
     internal sealed class PanelBuilding : VisualControl
     {
         private PlayerBuilding building;
-        private VCButton imageConstruction;
+        private VCCustomImage imageConstruction;
         private readonly Button btnHeroes;
         private readonly Button btnBuyOrUpgrade;
         private readonly Button btnHireHero;
@@ -28,7 +28,7 @@ namespace Fantasy_King_s_Battle
             lblName = new VCLabel(this, FormMain.Config.GridSize, FormMain.Config.GridSize, FormMain.Config.FontBuildingCaption, Color.Transparent, FormMain.Config.GridSize * 2, "");
             lblName.StringFormat.Alignment = StringAlignment.Near;
 
-            imageConstruction = new VCButton(this, FormMain.Config.GridSize, lblName.NextTop(), Program.formMain.ilBuildings, -1);
+            imageConstruction = new VCCustomImage(this, FormMain.Config.GridSize, lblName.NextTop(), Program.formMain.ilBuildings, -1);
             imageConstruction.ShowBorder = false;
             imageConstruction.Click += ImageConstruction_Click;
             imageConstruction.ShowHint += ImageConstruction_ShowHint;
