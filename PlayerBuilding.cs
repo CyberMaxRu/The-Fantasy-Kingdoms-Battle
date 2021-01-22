@@ -163,8 +163,7 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(Heroes.Count <= MaxHeroes());
             Debug.Assert(Player.CombatHeroes.Count <= Player.Lobby.TypeLobby.MaxHeroes);
 
-            return false;
-            //return (Level > 0) && (Player.Gold >= Building.TrainedHero.Cost) && (Heroes.Count < MaxHeroes()) && (Player.CombatHeroes.Count < Player.Lobby.TypeLobby.MaxHeroes);
+            return (Level > 0) && (Player.Gold >= Building.TrainedHero.Cost) && (Heroes.Count < MaxHeroes()) && (Player.CombatHeroes.Count < Player.Lobby.TypeLobby.MaxHeroes);
         }
 
         internal bool MaxHeroesAtPlayer()
