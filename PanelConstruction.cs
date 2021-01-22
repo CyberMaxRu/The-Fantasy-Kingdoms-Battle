@@ -84,11 +84,9 @@ namespace Fantasy_King_s_Battle
             //AddControl(lblIncome, new Point(btnBuyOrUpgrade.Left, btnHeroes.Top));
 
             Height = GuiUtils.NextTop(btnHeroes);// lblIncome. Top + lblIncome.Height + (Config.GRID_SIZE * 2);
-            Width = btnBuyOrUpgrade.Left + btnBuyOrUpgrade.Width + FormMain.Config.GridSize;
+            Width = btnBuyOrUpgrade.NextLeft();
 
-            Width = 192;
             Height = 192;
-
             //ArrangeControl(lblLevel, new Point(Width - FormMain.Config.GridSize - lblLevel.Width, lblLevel.Top));
 
             // Восстановить
