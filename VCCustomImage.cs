@@ -9,12 +9,12 @@ using System.Windows.Forms;
 namespace Fantasy_King_s_Battle
 {
     // Визуальный контрол - иконка
-    internal abstract class VCImage : VisualControl
+    internal abstract class VCCustomImage : VisualControl
     {
         private Bitmap picture;
         private int imageIndex;
 
-        public VCImage(VisualControl parent, int shiftX, int shiftY, ImageList imageList, int imageIndex) : base(parent, shiftX, shiftY)
+        public VCCustomImage(VisualControl parent, int shiftX, int shiftY, ImageList imageList, int imageIndex) : base(parent, shiftX, shiftY)
         {
             ImageList = imageList;
             ValidateSize();
