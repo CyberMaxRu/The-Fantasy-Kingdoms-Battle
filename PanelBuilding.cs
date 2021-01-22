@@ -15,15 +15,17 @@ namespace Fantasy_King_s_Battle
         private PlayerBuilding building;
         private VCImage imageConstruction;
         private readonly Button btnHeroes;
-        private readonly Button btnBuyOrUpgrade;
-        private readonly Button btnHireHero;
+        private readonly VCButtonWithCost btnBuyOrUpgrade;
+        private readonly VCButtonWithCost btnHireHero;
         private readonly VCLabel lblName;
         private readonly Label lblIncome;
         private readonly Label lblLevel;
 
-        public PanelBuilding(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
+        public PanelBuilding(VisualControl parent, int shiftX, int shiftY, TypeConstruction typeConstruction) : base(parent, shiftX, shiftY)
         {
             ShowBorder = true;
+
+            TypeConstruction = typeConstruction;
 
             lblName = new VCLabel(this, FormMain.Config.GridSize, FormMain.Config.GridSize, FormMain.Config.FontBuildingCaption, Color.Transparent, FormMain.Config.GridSize * 2, "");
             lblName.StringFormat.Alignment = StringAlignment.Near;
@@ -44,33 +46,16 @@ namespace Fantasy_King_s_Battle
             };
             //AddControl(btnHeroes, new Point(FormMain.Config.GridSize, GuiUtils.NextTop(pbBuilding)));
 
-            btnBuyOrUpgrade = new Button()
-            {
-                Size = GuiUtils.SizeButtonWithImage(Program.formMain.ilGui),
-                ImageList = Program.formMain.ilGui,
-                TextAlign = ContentAlignment.BottomCenter,
-                Font = FormMain.Config.FontCost,
-                //BackgroundImage = Program.formMain.bmpBackgroundButton,
-                ForeColor = FormMain.Config.CommonCost
-            };
-            //AddControl(btnBuyOrUpgrade, new Point(GuiUtils.NextLeft(pbBuilding), pbBuilding.Top + pbBuilding.Height - Program.formMain.ilGui.ImageSize.Height - 8));
+            btnBuyOrUpgrade = new VCButtonWithCost(this, imageConstruction.NextLeft(), imageConstruction.ShiftY, Program.formMain.ilGui, -1);
             btnBuyOrUpgrade.Click += BtnBuyOrUprgade_Click;
-            btnBuyOrUpgrade.MouseEnter += BtnBuyOrUpgrade_MouseEnter;
-            btnBuyOrUpgrade.MouseLeave += Control_MouseLeave;
+            btnBuyOrUpgrade.ShowHint += BtnBuyOrUpgrade_ShowHint;
 
-            btnHireHero = new Button()
+            if (TypeConstruction.TrainedHero != null)
             {
-                Size = btnBuyOrUpgrade.Size,
-                ImageList = Program.formMain.ilGuiHeroes,
-                TextAlign = ContentAlignment.BottomCenter,
-                Font = FormMain.Config.FontCost,
-                //BackgroundImage = Program.formMain.bmpBackgroundButton,
-                ForeColor = Color.White
-            };
-            //AddControl(btnHireHero, new Point(btnBuyOrUpgrade.Left, btnBuyOrUpgrade.Top - btnBuyOrUpgrade.Height - FormMain.Config.GridSize));
-            btnHireHero.Click += BtnHero_Click;
-            btnHireHero.MouseEnter += BtnHireHero_MouseEnter;
-            btnHireHero.MouseLeave += Control_MouseLeave;
+                btnHireHero = new VCButtonWithCost(this, imageConstruction.NextLeft(), btnBuyOrUpgrade.NextTop(), Program.formMain.ilGuiHeroes, -1);
+                btnHireHero.Click += BtnHero_Click;
+                btnHireHero.ShowHint += BtnHireHero_ShowHint;
+            }
 
             lblLevel = new Label()
             {
@@ -110,10 +95,21 @@ namespace Fantasy_King_s_Battle
             //MouseClick += PanelBuilding_MouseClick;
         }
 
+        internal TypeConstruction TypeConstruction { get; }
+
+        private void BtnHireHero_ShowHint(object sender, EventArgs e)
+        {
+            ShowHintBtnHireHero();
+        }
+
+        private void BtnBuyOrUpgrade_ShowHint(object sender, EventArgs e)
+        {
+            ShowHintBtnBuyOrUpgrade();
+        }
+
         private void ImageConstruction_ShowHint(object sender, EventArgs e)
         {
-            Program.formMain.formHint.AddStep1Header(Building.Building.Name, Building.Level > 0 ? "Уровень " + Building.Level.ToString() : "", Building.Building.Description + ((Building.Level > 0) ? Environment.NewLine + Environment.NewLine + "Героев: " + Building.Heroes.Count.ToString() + "/" + Building.MaxHeroes().ToString() : ""));
-            //Program.formMain.formHint.AddStep1Header(Building.Building.Name, Building.Level > 0 ? "Уровень " + Building.Level.ToString() : "", Building.Building.Description + ((Building.Level > 0) && (Building.Building.TrainedHero != null) ? Environment.NewLine + Environment.NewLine + "Героев: " + Building.Heroes.Count.ToString() + "/" + Building.MaxHeroes().ToString() : ""));
+            Program.formMain.formHint.AddStep1Header(Building.Building.Name, Building.Level > 0 ? "Уровень " + Building.Level.ToString() : "", Building.Building.Description + ((Building.Level > 0) && (Building.Building.TrainedHero != null) ? Environment.NewLine + Environment.NewLine + "Героев: " + Building.Heroes.Count.ToString() + "/" + Building.MaxHeroes().ToString() : ""));
             Program.formMain.formHint.AddStep2Income(Building.Income());
         }
 
@@ -128,34 +124,13 @@ namespace Fantasy_King_s_Battle
         {
             Program.formMain.SelectBuilding(this);
         }
-        private void PanelBuilding_MouseClick(object sender, MouseEventArgs e)
-        {
-        }
-
-        private void BtnHireHero_MouseEnter(object sender, EventArgs e)
-        {
-            ShowHintBtnHireHero();
-        }
 
         private void ShowHintBtnHireHero()
         {
-            /*Program.formMain.formHint.Clear();
-            Program.formMain.formHint.AddStep1Header(Building.Building.TrainedHero.Name, "", Building.Building.TrainedHero.Description);
-            if ((Building.Building.TrainedHero != null) && (Building.Building.TrainedHero.Cost > 0))
+            Program.formMain.formHint.AddStep1Header(TypeConstruction.TrainedHero.Name, "", TypeConstruction.TrainedHero.Description);
+            if ((TypeConstruction.TrainedHero != null) && (TypeConstruction.TrainedHero.Cost > 0))
                 Program.formMain.formHint.AddStep3Requirement(Building.GetTextRequirementsHire());
-            Program.formMain.formHint.AddStep4Gold(Building.Building.TrainedHero.Cost, Building.Player.Gold >= Building.Building.TrainedHero.Cost);
-            Program.formMain.formHint.ShowHint(btnHireHero);
-            */
-        }
-
-        private void Control_MouseLeave(object sender, EventArgs e)
-        {
-            Program.formMain.formHint.HideHint();
-        }
-
-        private void BtnBuyOrUpgrade_MouseEnter(object sender, EventArgs e)
-        {
-            ShowHintBtnBuyOrUpgrade();
+            Program.formMain.formHint.AddStep4Gold(TypeConstruction.TrainedHero.Cost, Building.Player.Gold >= TypeConstruction.TrainedHero.Cost);
         }
 
         private void ShowHintBtnBuyOrUpgrade()
@@ -181,12 +156,11 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(Building.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
             Debug.Assert(Building.Level <= Building.Building.MaxLevel);
 
-            // Восстановить
-            /* SelectThisBuilding();
+            SelectThisBuilding();
 
             if ((Building.Level > 0) && (Building.CanTrainHero() == true))
             {
-                if (Building.Building.CategoryBuilding == CategoryBuilding.Temple)
+                if (Building.Building is TypeTemple)
                 {
                     MessageBox.Show("Найм храмовых героев в этой версии не реализован.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -198,7 +172,6 @@ namespace Fantasy_King_s_Battle
                 Program.formMain.ShowPageHeroes();
                 Program.formMain.UpdateBuildingInfo();// Надо обновить список жителей гильдии
             }
-            */
         }
 
         private void BtnBuyOrUprgade_Click(object sender, EventArgs e)
@@ -231,8 +204,6 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(Building.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
 
             btnHeroes.Parent = null;
-            btnBuyOrUpgrade.Parent = null;
-            btnHireHero.Parent = null;
 
             lblName. Text = Building.Building.Name;
             lblIncome.ImageIndex = Building.DoIncome() == true ? FormMain.GUI_16_GOLD : -1;
@@ -263,40 +234,6 @@ namespace Fantasy_King_s_Battle
 
             // Восстановить
             /*
-            if (Building.Building.TrainedHero != null)
-            {
-                btnHireHero.Show();
-                btnHireHero.ImageIndex = (Building.Level > 0) && ((Building.Heroes.Count == Building.MaxHeroes()) || (Building.MaxHeroesAtPlayer() == true))  ? -1 : GuiUtils.GetImageIndexWithGray(btnHireHero.ImageList, Building.Building.TrainedHero.ImageIndex, Building.CanTrainHero());
-                btnHireHero.Text = (Building.Level == 0) || (Building.CanTrainHero() == true) ? Building.Building.TrainedHero.Cost.ToString() : ""; 
-            }
-            else
-                btnHireHero.Hide();
-            */
-            if (Building.Level > 0)
-            {
-
-                if (Building.CanLevelUp() == true)
-                {
-                    btnBuyOrUpgrade.Text = Building.CostBuyOrUpgrade().ToString();
-                    btnBuyOrUpgrade.ImageIndex = GuiUtils.GetImageIndexWithGray(btnBuyOrUpgrade.ImageList, FormMain.GUI_LEVELUP, Building.CheckRequirements());
-                }
-                else
-                {
-                    btnBuyOrUpgrade.Text = "";
-                    btnBuyOrUpgrade.ImageIndex = -1;
-                }
-
-                //if (btnLevelUp.Visible == true)
-                //btnLevelUp.Image = Building.CheckRequirements() == true ? imageListGui.Images[FormMain.GUI_LEVELUP] : imageListGui.Images[FormMain.GUI_LEVELUP + imageListGui.Images.Count / 2];
-            }
-            else
-            {
-                btnBuyOrUpgrade.Text = Building.CostBuyOrUpgrade().ToString();
-                btnBuyOrUpgrade.ImageIndex = GuiUtils.GetImageIndexWithGray(btnBuyOrUpgrade.ImageList, FormMain.GUI_BUY, Building.CheckRequirements());
-            }
-
-            // Восстановить
-            /*
             if ((Building.Building.TrainedHero != null) && (Building.Level > 0))
             {
                 btnHeroes.Text = Building.Heroes.Count.ToString();
@@ -320,6 +257,36 @@ namespace Fantasy_King_s_Battle
 
             lblName.Color = FormMain.Config.ColorMapObjectCaption(Building.Level > 0);
 
+            if (Building.Level > 0)
+            {
+
+                if (Building.CanLevelUp())
+                {
+                    btnBuyOrUpgrade.Cost = Building.CostBuyOrUpgrade();
+                    btnBuyOrUpgrade.ImageIndex = GuiUtils.GetImageIndexWithGray(btnBuyOrUpgrade.ImageList, FormMain.GUI_LEVELUP, Building.CheckRequirements());
+                }
+                else
+                {
+                    btnBuyOrUpgrade.Cost = 0;
+                    btnBuyOrUpgrade.ImageIndex = -1;
+                }
+
+                //if (btnLevelUp.Visible == true)
+                //btnLevelUp.Image = Building.CheckRequirements() == true ? imageListGui.Images[FormMain.GUI_LEVELUP] : imageListGui.Images[FormMain.GUI_LEVELUP + imageListGui.Images.Count / 2];
+            }
+            else
+            {
+                btnBuyOrUpgrade.Cost = Building.CostBuyOrUpgrade();
+                btnBuyOrUpgrade.ImageIndex = GuiUtils.GetImageIndexWithGray(btnBuyOrUpgrade.ImageList, FormMain.GUI_BUY, Building.CheckRequirements());
+            }
+
+            if (btnHireHero != null)
+            {
+                TypeConstructionWithHero c = (TypeConstructionWithHero)Building.Building;
+                btnHireHero.ImageIndex = (Building.Level > 0) && ((Building.Heroes.Count == Building.MaxHeroes()) || (Building.MaxHeroesAtPlayer() == true))  ? -1 : GuiUtils.GetImageIndexWithGray(btnHireHero.ImageList, c.TrainedHero.ImageIndex, Building.CanTrainHero());
+                btnHireHero.Cost = (Building.Level == 0) || (Building.CanTrainHero() == true) ? c.TrainedHero.Cost : 0;
+            }
+
             base.Draw(g);
 
             //g.DrawImage(GuiUtils.GetImageFromImageList(Program.formMain.ilBuildings, building.Building.ImageIndex, Building.Level > 0), Left + pbBuilding.Left, Top + pbBuilding.Top);
@@ -332,7 +299,7 @@ namespace Fantasy_King_s_Battle
         }
         internal override Size MaxSize()
         {
-            return new Size(128, 128);
+            return new Size(btnBuyOrUpgrade.NextLeft(), 128);
         }
     }
 }

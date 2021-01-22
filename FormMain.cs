@@ -1002,7 +1002,7 @@ namespace Fantasy_King_s_Battle
                     {
                         if (tck.Line == line)
                         {
-                            tck.Panel = new PanelBuilding(panel, left, top);
+                            tck.Panel = new PanelBuilding(panel, left, top, tck);
 
                             left += tck.Panel.Width + Config.GridSize;
                             height = tck.Panel.Height;
