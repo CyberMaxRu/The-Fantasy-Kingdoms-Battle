@@ -375,7 +375,7 @@ namespace Fantasy_King_s_Battle
 
             heightToolBar = btnQuit.Height + (Config.GridSize * 2);
 
-            // Создаем иконки игроков в левой части окна
+            // Создаем панели игроков в левой части окна
             panelPlayers = new VisualControl(MainControl, Config.GridSize, btnQuit.NextTop());
 
             PanelPlayer pp;
@@ -389,7 +389,7 @@ namespace Fantasy_King_s_Battle
             }
             panelPlayers.ApplyMaxSize();
 
-            leftForPages = lobby.Players[0].Panel.NextLeft();
+            leftForPages = lobby.Players[0].Panel.NextLeft() + panelPlayers.ShiftX;
 
             // Текст с информацией о Королевстве
             labelDay = GuiUtils.CreateLabel(this, Config.GridSize, Config.GridSize, 80, "День");
