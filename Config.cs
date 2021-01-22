@@ -639,5 +639,10 @@ namespace Fantasy_King_s_Battle
         {
             return p == p.Lobby.CurrentPlayer ? SelectedPlayerBorder : CommonBorder;
         }
+
+        internal Color ColorMapObjectCaption(bool allowed)
+        {
+            return allowed ? Color.Green : Color.Gray;
+        }
     }
 }
