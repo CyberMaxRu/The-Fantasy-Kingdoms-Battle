@@ -44,7 +44,7 @@ namespace Fantasy_King_s_Battle
                 ForeColor = FormMain.Config.CommonCost,
                 TextAlign = ContentAlignment.BottomCenter
             };
-            //AddControl(btnHeroes, new Point(FormMain.Config.GridSize, GuiUtils.NextTop(pbBuilding)));
+            //AddControl(btnHeroes, new Point(FormMain.Config.GridSize, GuiUtils.NextTop(imageConstruction)));
 
             btnBuyOrUpgrade = new VCButtonWithCost(this, imageConstruction.NextLeft(), imageConstruction.ShiftY, Program.formMain.ilGui, -1);
             btnBuyOrUpgrade.Click += BtnBuyOrUprgade_Click;
@@ -288,18 +288,6 @@ namespace Fantasy_King_s_Battle
             }
 
             base.Draw(g);
-
-            //g.DrawImage(GuiUtils.GetImageFromImageList(Program.formMain.ilBuildings, building.Building.ImageIndex, Building.Level > 0), Left + pbBuilding.Left, Top + pbBuilding.Top);
-            
-            // Если картинки нет, 
-            //if (ImageIndex == -1)
-            //    g.Clear(Color.Transparent);
-            //else
-            //    g.DrawImageUnscaled(GuiUtils.GetImageFromImageList(ImageList, ImageIndex, true), 2, 2);
-        }
-        internal override Size MaxSize()
-        {
-            return new Size(btnBuyOrUpgrade.NextLeft(), 128);
         }
     }
 }
