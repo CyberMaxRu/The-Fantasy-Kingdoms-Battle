@@ -40,6 +40,7 @@ namespace Fantasy_King_s_Battle
         internal bool NormalImage { get; set; } = true;
         protected int ShiftImage { get => shiftImage; set { shiftImage = value; ValidateSize(); } }
         internal int Cost { get; set; }
+        internal bool ShowCostZero { get; set; }
         internal int Level { get; set; }
 
         private void ValidateSize()
@@ -60,7 +61,7 @@ namespace Fantasy_King_s_Battle
             //else
             //    g.DrawImage(Program.formMain.bmpEmptyEntity, new Rectangle(Left + 1, Top + 0, Program.formMain.bmpBorderForIcon.Width - 2, Program.formMain.bmpBorderForIcon.Height - 2));
 
-            if (Cost > 0)
+            if ((Cost > 0) || ShowCostZero)
             {
                 labelCost.Text = Cost.ToString();
                 labelCost.Draw(g);

@@ -154,8 +154,7 @@ namespace Fantasy_King_s_Battle
                 Building.HireHero();
                 ShowHintBtnHireHero();
                 UpdateData();
-                Program.formMain.ShowPageHeroes();
-                Program.formMain.UpdateBuildingInfo();// Надо обновить список жителей гильдии
+                Program.formMain.ShowFrame();
             }
         }
 

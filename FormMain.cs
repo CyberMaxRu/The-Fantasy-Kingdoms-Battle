@@ -424,7 +424,8 @@ namespace Fantasy_King_s_Battle
             pageGuilds = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_GUILDS, "Гильдии", BtnPage_Click);
             pageBuildings = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_ECONOMY, "Экономические строения", BtnPage_Click);
             pageTemples = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_TEMPLE, "Храмы", BtnPage_Click);
-            pageHeroes = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_HEROES, "Герои", BtnPage_Click); 
+            pageHeroes = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_HEROES, "Герои", BtnPage_Click);
+            pageHeroes.ShowCostZero = true;
             pageLairs = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_LAIR, "Логова", BtnPage_Click);
 
             DrawPageConstructions();
@@ -1448,7 +1449,7 @@ namespace Fantasy_King_s_Battle
             e.Graphics.DrawImage(bmpFrame, e.ClipRectangle, e.ClipRectangle, GraphicsUnit.Pixel);
         }
 
-        private void ShowFrame()
+        internal void ShowFrame()
         {
             DrawFrame();// Готовим кадр
             if (controlWithHint != null)
@@ -1473,7 +1474,7 @@ namespace Fantasy_King_s_Battle
             //
             pageGuilds.Level = lobby.CurrentPlayer.PointConstructionGuild;
             pageBuildings.Level = lobby.CurrentPlayer.PointConstructionEconomic;
-            //pageHeroes.
+            pageHeroes.Cost = lobby.CurrentPlayer.CombatHeroes.Count;
 
             // Рисуем контролы
             gfxFrame.CompositingMode = CompositingMode.SourceOver;
