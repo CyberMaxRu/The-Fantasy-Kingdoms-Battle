@@ -168,8 +168,7 @@ namespace Fantasy_King_s_Battle
             {
                 Building.BuyOrUpgrade();
                 ShowHintBtnBuyOrUpgrade();
-                Program.formMain.ShowGold();
-                Program.formMain.ShowAllBuildings();
+                Program.formMain.ShowFrame();
             }
         }
 
