@@ -157,7 +157,6 @@
     <Compile Include="Skill.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="VCButton.cs" />
-    <Compile Include="VCButtonWithCost.cs" />
     <Compile Include="VCCell.cs" />
     <Compile Include="VCFormPage.cs" />
     <Compile Include="VCImage.cs" />

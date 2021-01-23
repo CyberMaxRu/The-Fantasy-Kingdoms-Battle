@@ -15,8 +15,8 @@ namespace Fantasy_King_s_Battle
         private PlayerBuilding building;
         private VCImage imageConstruction;
         private readonly Button btnHeroes;
-        private readonly VCButtonWithCost btnBuyOrUpgrade;
-        private readonly VCButtonWithCost btnHireHero;
+        private readonly VCButton btnBuyOrUpgrade;
+        private readonly VCButton btnHireHero;
         private readonly VCLabel lblName;
         private readonly Label lblIncome;
 
@@ -45,13 +45,13 @@ namespace Fantasy_King_s_Battle
             };
             //AddControl(btnHeroes, new Point(FormMain.Config.GridSize, GuiUtils.NextTop(imageConstruction)));
 
-            btnBuyOrUpgrade = new VCButtonWithCost(this, imageConstruction.NextLeft(), imageConstruction.ShiftY, Program.formMain.ilGui, -1);
+            btnBuyOrUpgrade = new VCButton(this, imageConstruction.NextLeft(), imageConstruction.ShiftY, Program.formMain.ilGui, -1);
             btnBuyOrUpgrade.Click += BtnBuyOrUprgade_Click;
             btnBuyOrUpgrade.ShowHint += BtnBuyOrUpgrade_ShowHint;
 
             if (TypeConstruction.TrainedHero != null)
             {
-                btnHireHero = new VCButtonWithCost(this, imageConstruction.NextLeft(), btnBuyOrUpgrade.NextTop(), Program.formMain.ilGuiHeroes, -1);
+                btnHireHero = new VCButton(this, imageConstruction.NextLeft(), btnBuyOrUpgrade.NextTop(), Program.formMain.ilGuiHeroes, -1);
                 btnHireHero.Click += BtnHero_Click;
                 btnHireHero.ShowHint += BtnHireHero_ShowHint;
             }

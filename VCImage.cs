@@ -13,6 +13,7 @@ namespace Fantasy_King_s_Battle
     internal class VCImage : VisualControl
     {
         private int shiftImage;
+        private VCLabel labelCost;
         private VCLabel labelLevel;
 
         public VCImage(VisualControl parent, int shiftX, int shiftY, ImageList imageList, int imageIndex) : base(parent, shiftX, shiftY)
@@ -21,6 +22,11 @@ namespace Fantasy_King_s_Battle
             ImageIndex = imageIndex;
 
             ValidateSize();
+
+            labelCost = new VCLabel(this, 0, Height - 16, FormMain.Config.FontCost, FormMain.Config.CommonCost, 16, "");
+            labelCost.Width = Width;
+            labelCost.StringFormat.LineAlignment = StringAlignment.Far;
+            labelCost.Visible = false;// Текст перекрывается иконкой. Поэтому рисуем вручную
 
             labelLevel = new VCLabel(this, 0, FormMain.Config.GridSize, FormMain.Config.FontBuildingLevel, FormMain.Config.CommonLevel, 16, "");
             labelLevel.Width = Width - FormMain.Config.GridSizeHalf;
@@ -32,8 +38,9 @@ namespace Fantasy_King_s_Battle
         internal ImageList ImageList { get; }
         internal int ImageIndex { get; set; }
         internal bool NormalImage { get; set; } = true;
-        internal int Level { get; set; }
         protected int ShiftImage { get => shiftImage; set { shiftImage = value; ValidateSize(); } }
+        internal int Cost { get; set; }
+        internal int Level { get; set; }
 
         private void ValidateSize()
         {
@@ -43,14 +50,21 @@ namespace Fantasy_King_s_Battle
 
         internal override void Draw(Graphics g)
         {
+            Debug.Assert(Cost >= 0);
             Debug.Assert(Level >= 0);
 
             base.Draw(g);
 
             if (ImageIndex != -1)
-                g.DrawImageUnscaled(GuiUtils.GetImageFromImageList(ImageList, ImageIndex, NormalImage), Left + ShiftImage, Top + ShiftImage);            
+                g.DrawImageUnscaled(GuiUtils.GetImageFromImageList(ImageList, ImageIndex, NormalImage), Left + ShiftImage, Top + ShiftImage);
             //else
             //    g.DrawImage(Program.formMain.bmpEmptyEntity, new Rectangle(Left + 1, Top + 0, Program.formMain.bmpBorderForIcon.Width - 2, Program.formMain.bmpBorderForIcon.Height - 2));
+
+            if (Cost > 0)
+            {
+                labelCost.Text = Cost.ToString();
+                labelCost.Draw(g);
+            }
 
             if (Level > 0)
             {
