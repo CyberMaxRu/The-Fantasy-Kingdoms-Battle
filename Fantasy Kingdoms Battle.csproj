@@ -99,7 +99,9 @@
     <Compile Include="FormBattle.Designer.cs">
       <DependentUpon>FormBattle.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormHint.cs" />
+    <Compile Include="FormHint.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormProgressBattle.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -9,18 +9,6 @@ using System.Diagnostics;
 
 namespace Fantasy_King_s_Battle
 {
-    internal sealed class TextRequirement
-    {
-        public TextRequirement(bool performed, string text)
-        {
-            Performed = performed;
-            Text = text;
-        }
-
-        internal bool Performed { get; }
-        internal string Text { get; }
-    }
-
     internal sealed class FormHint : Form
     {
         internal readonly Label lblHeader;
@@ -120,8 +108,6 @@ namespace Fantasy_King_s_Battle
                 Left = FormMain.Config.GridSize,
                 Top = FormMain.Config.GridSize,
                 Width = ClientSize.Width - (FormMain.Config.GridSize * 2),
-                ImageList = ilGui16,
-                ImageIndex = FormMain.GUI_16_PEASANT,
                 ImageAlign = ContentAlignment.MiddleLeft,
                 BackColor = Color.Transparent,
                 Font = FormMain.Config.FontHintAdditionalText
@@ -355,13 +341,13 @@ namespace Fantasy_King_s_Battle
             }
         }
 
-        internal void AddStep5Builders(int builders, bool buildersEnough)
+        internal void AddStep5Builders(bool pointConstructionEnough)
         {
-            if (builders > 0)
+            if (!pointConstructionEnough)
             {
-                lblBuilders.ForeColor = ColorRequirements(buildersEnough);
+                lblBuilders.ForeColor = ColorRequirements(pointConstructionEnough);
                 lblBuilders.Top = nextTop;
-                lblBuilders.Text = "     " + builders.ToString();
+                lblBuilders.Text = "Cтроительство недоступно";
                 lblBuilders.Show();
 
                 nextTop = GuiUtils.NextTop(lblBuilders);
@@ -494,5 +480,17 @@ namespace Fantasy_King_s_Battle
             e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
             e.Graphics.DrawImage(bmpBackground, e.ClipRectangle, e.ClipRectangle, GraphicsUnit.Pixel);
         }
+    }
+
+    internal sealed class TextRequirement
+    {
+        public TextRequirement(bool performed, string text)
+        {
+            Performed = performed;
+            Text = text;
+        }
+
+        internal bool Performed { get; }
+        internal string Text { get; }
     }
 }
