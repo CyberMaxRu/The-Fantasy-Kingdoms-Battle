@@ -108,16 +108,12 @@ namespace Fantasy_King_s_Battle
 
             if (Building.Level < Building.Building.MaxLevel)
             {
-                Program.formMain.formHint.Clear();
                 Program.formMain.formHint.AddStep1Header(Building.Building.Name, Building.Level == 0 ? "Уровень 1" : (Building.CanLevelUp() == true) ? "Улучшить строение" : "", Building.Level == 0 ? Building.Building.Description : "");
                 Program.formMain.formHint.AddStep2Income(Building.IncomeNextLevel());
                 Program.formMain.formHint.AddStep3Requirement(Building.GetTextRequirements());
                 Program.formMain.formHint.AddStep4Gold(Building.CostBuyOrUpgrade(), Building.Player.Gold >= Building.CostBuyOrUpgrade());
                 Program.formMain.formHint.AddStep5Builders(Building.Player.EnoughPointConstruction(Building));
-                Program.formMain.formHint.ShowHint(btnBuyOrUpgrade);
             }
-            else
-                Program.formMain.formHint.HideHint();
         }
 
         private void BtnHero_Click(object sender, EventArgs e)
