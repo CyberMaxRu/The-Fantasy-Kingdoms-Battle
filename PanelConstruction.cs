@@ -13,12 +13,13 @@ namespace Fantasy_King_s_Battle
     internal sealed class PanelConstruction : VisualControl
     {
         private PlayerBuilding building;
-        private VCImage imageConstruction;
+        private readonly VCImage imageConstruction;
         private readonly VCButton btnHeroes;
         private readonly VCButton btnBuyOrUpgrade;
         private readonly VCButton btnHireHero;
         private readonly VCLabel lblName;
-        private readonly Label lblIncome;
+        private readonly VCImage imgGold;
+        private readonly VCLabel lblIncome;
 
         public PanelConstruction(VisualControl parent, int shiftX, int shiftY, TypeConstruction typeConstruction) : base(parent, shiftX, shiftY)
         {
@@ -51,22 +52,16 @@ namespace Fantasy_King_s_Battle
             else
                 btnHeroes.Visible = false;
 
-            lblIncome = new Label()
+            if (TypeConstruction is TypeEconomicConstruction)
             {
-                AutoSize = false,
-                Width = btnBuyOrUpgrade.Width + FormMain.Config.GridSize,
-                Height = 20,
-                Font = new Font("Microsoft Sans Serif", 10, FontStyle.Bold),
-                BackColor = Color.Transparent,
-                ForeColor = Color.Green,
-                TextAlign = ContentAlignment.MiddleRight,
-                ImageAlign = ContentAlignment.MiddleLeft,
-                ImageIndex = FormMain.GUI_16_GOLD,
-                ImageList = Program.formMain.ilGui16
-            };
-            //AddControl(lblIncome, new Point(btnBuyOrUpgrade.Left, btnHeroes.Top));
+                imgGold = new VCImage(this, imageConstruction.NextLeft(), imageConstruction.NextTop(), Program.formMain.ilGui16, FormMain.GUI_16_GOLD);
 
-            Height = btnHeroes.NextTop();// lblIncome. Top + lblIncome.Height + (Config.GRID_SIZE * 2);
+                lblIncome = new VCLabel(this, imgGold.ShiftX, imgGold.ShiftY, FormMain.Config.FontToolbar, Color.Green, 16, "");
+                lblIncome.Width = btnBuyOrUpgrade.Width;
+                lblIncome.StringFormat.Alignment = StringAlignment.Far;
+            }
+
+            Height = btnHeroes.NextTop();
             Width = btnBuyOrUpgrade.NextLeft();
         }
 
@@ -174,20 +169,24 @@ namespace Fantasy_King_s_Battle
 
         internal void UpdateData()
         {
-            Debug.Assert(Building.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
 
-            lblIncome.ImageIndex = Building.DoIncome() == true ? FormMain.GUI_16_GOLD : -1;
-            lblIncome.Text = Building.DoIncome() == true ? "+" + Building.Income().ToString() : "";
-            lblIncome.ForeColor = Building.Level > 0 ? Color.Green : Color.Gray;
         }
 
         internal override void Draw(Graphics g)
         {
+            Debug.Assert(Building.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
+
             BorderColor = FormMain.Config.ColorBorder(Program.formMain.SelectedPanelBuilding == this);
             imageConstruction.ImageIndex = Building.Building.ImageIndex;
             imageConstruction.NormalImage = Building.Level > 0;
 
             lblName.Color = FormMain.Config.ColorMapObjectCaption(Building.Level > 0);
+
+            if (lblIncome != null)
+            {
+                lblIncome.Text = "+" + (Building.Level > 0 ? Building.Income() : Building.IncomeNextLevel()).ToString();
+                lblIncome.Color = Building.Level > 0 ? Color.Green : Color.Gray;
+            }
 
             if (Building.Level > 0)
             {
