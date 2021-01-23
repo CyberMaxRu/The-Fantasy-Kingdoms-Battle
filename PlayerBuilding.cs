@@ -98,10 +98,10 @@ namespace Fantasy_King_s_Battle
                 return false;
 
             // Проверяем наличие строителей
-            if (Building is TypeGuild)
-                return Player.PointConstructionGuild > 0;
-            if (Building is TypeEconomicConstruction)
-                return Player.PointConstructionEconomic > 0;
+            if ((Building is TypeGuild) && (Player.PointConstructionGuild == 0))
+                return false;
+            if ((Building is TypeEconomicConstruction) && (Player.PointConstructionEconomic == 0))
+                return false;
 
             // Проверяем требования к зданиям
             return Player.CheckRequirements(Building.Levels[Level + 1].Requirements);
