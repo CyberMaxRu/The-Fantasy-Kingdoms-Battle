@@ -37,7 +37,7 @@ namespace Fantasy_King_s_Battle
             labelLevel.StringFormat.LineAlignment = StringAlignment.Near;
             labelLevel.StringFormat.Alignment = StringAlignment.Far;
 
-            labelPopupQuantity = new VCLabel(this, Width - 10, -1, FormMain.Config.FontPopupQuantity, FormMain.Config.CommonPopupQuantity, 16, "");
+            labelPopupQuantity = new VCLabel(this, Width - 7, -3, FormMain.Config.FontPopupQuantity, FormMain.Config.CommonPopupQuantity, 16, "");
             labelPopupQuantity.Width = labelPopupQuantity.Height;
             labelPopupQuantity.Visible = false;
             labelPopupQuantity.StringFormat.LineAlignment = StringAlignment.Center;
@@ -89,7 +89,7 @@ namespace Fantasy_King_s_Battle
 
             if (PopupQuantity > 0)
             {
-                g.FillEllipse(brushPopupQuantity, Left + Width - 17, Top - 5, 21, 21);
+                g.FillEllipse(brushPopupQuantity, Left + Width - 13, Top - 5, 18, 18);
 
                 labelPopupQuantity.Text = PopupQuantity.ToString();
                 labelPopupQuantity.Draw(g);
