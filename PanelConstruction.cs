@@ -132,7 +132,7 @@ namespace Fantasy_King_s_Battle
                 }
 
                 Building.HireHero();
-                ShowHintBtnHireHero();
+                btnHireHero.DoShowHint();
                 Program.formMain.ShowFrame();
             }
         }
