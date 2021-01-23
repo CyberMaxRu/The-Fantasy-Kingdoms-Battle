@@ -12,7 +12,6 @@ namespace Fantasy_King_s_Battle
     // Класс панели здания
     internal sealed class PanelConstruction : VisualControl
     {
-        private PlayerBuilding building;
         private readonly VCImage imageConstruction;
         private readonly VCButton btnHeroes;
         private readonly VCButton btnBuyOrUpgrade;
@@ -88,7 +87,7 @@ namespace Fantasy_King_s_Battle
             SelectThisBuilding();
         }
 
-        internal PlayerBuilding Building { get { return building; } set { Debug.Assert(value != null); building = value; UpdateData(); } }
+        internal PlayerBuilding Building { get; set; }
 
         private void SelectThisBuilding()
         {
@@ -114,7 +113,7 @@ namespace Fantasy_King_s_Battle
                 Program.formMain.formHint.AddStep2Income(Building.IncomeNextLevel());
                 Program.formMain.formHint.AddStep3Requirement(Building.GetTextRequirements());
                 Program.formMain.formHint.AddStep4Gold(Building.CostBuyOrUpgrade(), Building.Player.Gold >= Building.CostBuyOrUpgrade());
-                Program.formMain.formHint.AddStep5Builders(Building.Player.EnoughPointConstruction(building));
+                Program.formMain.formHint.AddStep5Builders(Building.Player.EnoughPointConstruction(Building));
                 Program.formMain.formHint.ShowHint(btnBuyOrUpgrade);
             }
             else
@@ -138,7 +137,6 @@ namespace Fantasy_King_s_Battle
 
                 Building.HireHero();
                 ShowHintBtnHireHero();
-                UpdateData();
                 Program.formMain.ShowFrame();
             }
         }
@@ -157,19 +155,13 @@ namespace Fantasy_King_s_Battle
             }
         }
 
-        internal void ShowData(PlayerBuilding pb)
+        internal void LinkToPlayer(PlayerBuilding pb)
         {
             Debug.Assert(pb != null);
+            Debug.Assert(pb.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
+            Debug.Assert(pb.Building == TypeConstruction);
 
             Building = pb;
-            Debug.Assert(Building.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
-
-            UpdateData();// Это не надо по идее - Building = pb вызывает UpdateData
-        }
-
-        internal void UpdateData()
-        {
-
         }
 
         internal override void Draw(Graphics g)
@@ -220,9 +212,9 @@ namespace Fantasy_King_s_Battle
 
             imageConstruction.Level = Building.Level;
 
-            if ((Building.Building.TrainedHero != null) && (Building.Level > 0) && (building.Heroes.Count > 0))
+            if ((Building.Building.TrainedHero != null) && (Building.Level > 0) && (Building.Heroes.Count > 0))
             {
-                btnHeroes.Cost = building.Heroes.Count;
+                btnHeroes.Cost = Building.Heroes.Count;
                 btnHeroes.ImageIndex = GuiUtils.GetImageIndexWithGray(btnHeroes.ImageList, Building.Building.TrainedHero.ImageIndex, true);
             }
             else

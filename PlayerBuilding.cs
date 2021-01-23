@@ -46,13 +46,6 @@ namespace Fantasy_King_s_Battle
         internal List<Entity> Items { get; } = new List<Entity>();// Товары, доступные в строении
         internal List<PlayerItem> Warehouse { get; } = new List<PlayerItem>();// Склад здания
 
-        internal void UpdatePanel()
-        {
-            Debug.Assert(Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
-
-            Building.Panel.ShowData(this);
-        }
-
         internal void BuyOrUpgrade()
         {
             if ((Level < Building.MaxLevel) && (Player.Gold >= CostBuyOrUpgrade()) && (CheckRequirements() == true))

@@ -117,8 +117,8 @@ namespace Fantasy_King_s_Battle
                 Hero.Dismiss();
                 Hero = null;
 
-                Program.formMain.ShowAllBuildings(); // Так как количество героев уменьшилось, обновляем здания
                 Program.formMain.ShowPageHeroes();
+                Program.formMain.ShowFrame();
             }
         }
 

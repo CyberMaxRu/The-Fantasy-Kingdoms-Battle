@@ -957,9 +957,6 @@ namespace Fantasy_King_s_Battle
             }
             
             ShowLobby();
-            ShowGuilds();
-            ShowBuildings();
-            ShowTemples();
             ShowPageHeroes();
             ShowPageLairs();
         }
@@ -977,6 +974,11 @@ namespace Fantasy_King_s_Battle
             }
 
             panelPlayers.ArrangeControls();
+
+            foreach (PlayerBuilding pb in lobby.CurrentPlayer.Buildings)
+            {
+                pb.Building.Panel.LinkToPlayer(pb);
+            }
         }
 
         private void DrawPageConstructions()
@@ -1036,33 +1038,6 @@ namespace Fantasy_King_s_Battle
             }
         }
 
-        private void ShowGuilds()
-        {
-            foreach (PlayerBuilding pb in lobby.CurrentPlayer.Buildings)
-            {
-                if (pb.Building is TypeGuild)
-                    pb.UpdatePanel();
-            }
-        }
-
-        private void ShowBuildings()
-        {
-            foreach (PlayerBuilding pb in lobby.CurrentPlayer.Buildings)
-            {
-                if (pb.Building is TypeEconomicConstruction)
-                    pb.UpdatePanel();
-            }
-        }
-
-        private void ShowTemples()
-        {
-            foreach (PlayerBuilding pb in lobby.CurrentPlayer.Buildings)
-            {
-                if (pb.Building is TypeTemple)
-                    pb.UpdatePanel();
-            }
-        }
-
         private void DrawHeroes()
         {
             panelHeroes = new PanelWithPanelEntity(pageHeroes.Page, 0, 0, Config.HeroRows);
@@ -1109,15 +1084,6 @@ namespace Fantasy_King_s_Battle
                 FormBattle fb = new FormBattle();
                 fb.ShowBattle(b);
             }
-        }
-
-        internal void ShowAllBuildings()
-        {
-            ShowGuilds();
-            ShowBuildings();
-            ShowTemples();
-
-            UpdateMenu();
         }
 
         private void DrawWarehouse()
@@ -1475,6 +1441,9 @@ namespace Fantasy_King_s_Battle
                 if (vc.Visible)
                     vc.Draw(gfxFrame);
             }
+
+            // Обновляем меню
+            UpdateMenu();
         }
 
         internal VCButton CreateButton(ImageList imageList, int imageIndex, int left, int top, EventHandler click, EventHandler showHint)
