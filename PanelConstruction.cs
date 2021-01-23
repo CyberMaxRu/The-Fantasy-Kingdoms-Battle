@@ -129,7 +129,7 @@ namespace Fantasy_King_s_Battle
                 Program.formMain.formHint.AddStep2Income(Building.IncomeNextLevel());
                 Program.formMain.formHint.AddStep3Requirement(Building.GetTextRequirements());
                 Program.formMain.formHint.AddStep4Gold(Building.CostBuyOrUpgrade(), Building.Player.Gold >= Building.CostBuyOrUpgrade());
-                Program.formMain.formHint.AddStep5Builders(Building.Builders(), Building.Player.FreeBuilders >= Building.Builders());
+                Program.formMain.formHint.AddStep5Builders(Building.Player.EnoughPointConstruction(building));
                 Program.formMain.formHint.ShowHint(btnBuyOrUpgrade);
             }
             else

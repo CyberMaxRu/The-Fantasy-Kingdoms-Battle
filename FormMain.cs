@@ -1119,7 +1119,7 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(lobby.CurrentPlayer.TypePlayer == TypePlayer.Human);
 
             labelGold.Text = "     " + lobby.CurrentPlayer.Gold.ToString() + " (+" + lobby.CurrentPlayer.Income().ToString() + ")";
-            labelPeasants.Text = "     " + lobby.CurrentPlayer.FreeBuilders.ToString() + "/" + lobby.CurrentPlayer.TotalBuilders.ToString();
+            labelPeasants.Text = "     " + lobby.CurrentPlayer.TotalBuilders.ToString() + "/" + lobby.CurrentPlayer.TotalBuilders.ToString();
         }
 
         internal void ShowAllBuildings()
@@ -1469,6 +1469,11 @@ namespace Fantasy_King_s_Battle
             // Рисуем фон
             gfxFrame.CompositingMode = CompositingMode.SourceCopy; 
             gfxFrame.DrawImageUnscaled(bmpBackground, 0, 0);
+
+            //
+            pageGuilds.Level = lobby.CurrentPlayer.PointConstructionGuild;
+            pageBuildings.Level = lobby.CurrentPlayer.PointConstructionEconomic;
+            //pageHeroes.
 
             // Рисуем контролы
             gfxFrame.CompositingMode = CompositingMode.SourceOver;

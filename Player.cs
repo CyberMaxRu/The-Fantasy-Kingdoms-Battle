@@ -30,6 +30,8 @@ namespace Fantasy_King_s_Battle
 
             // Настраиваем игрока согласно настройкам лобби
             DurabilityCastle = Lobby.TypeLobby.DurabilityCastle;
+            PointConstructionGuild = lobby.TypeLobby.StartPointConstructionGuild;
+            PointConstructionEconomic = lobby.TypeLobby.StartPointConstructionEconomic;
 
             // Инициализация зданий
             foreach (TypeConstruction tck in FormMain.Config.TypeConstructionsOfKingdom)
@@ -60,7 +62,6 @@ namespace Fantasy_King_s_Battle
             AddItem(new PlayerItem(FormMain.Config.FindItem("ImpProtection"), 2, true));
 
             ValidateHeroes();
-            CalcBuilders();
         }
 
         internal void DoTurn()
@@ -108,7 +109,6 @@ namespace Fantasy_King_s_Battle
                 Gold += Income();
 
                 ValidateHeroes();
-                CalcBuilders();
 
                 QuantityHeroes = CombatHeroes.Count();
 
@@ -117,17 +117,10 @@ namespace Fantasy_King_s_Battle
                     IsLive = false;
                     DayOfDie = Lobby.Turn;
                 }
+
+                PointConstructionGuild = Lobby.TypeLobby.PointConstructionGuildPerDay;
+                PointConstructionEconomic = Lobby.TypeLobby.PointConstructionEconomicPerDay;
             }
-        }
-
-        private void CalcBuilders()
-        {
-            TotalBuilders = 0;
-            foreach (PlayerHero ph in AllHeroes)
-                if (ph.TypeHero.CanBuild == true)
-                    TotalBuilders++;
-
-            FreeBuilders = TotalBuilders;
         }
 
         private void ValidateHeroes()
@@ -151,10 +144,12 @@ namespace Fantasy_King_s_Battle
         internal TypePlayer TypePlayer { get; }
         internal int Gold { get => Castle.Gold; set { Castle.Gold = value; } }
         internal int TotalBuilders { get; private set; }
-        internal int FreeBuilders { get; set; }
         internal int[] Resources { get; }
         internal bool IsLive { get; private set; }
         internal int DayOfDie { get; private set; }
+
+        internal int PointConstructionGuild { get; private set; }
+        internal int PointConstructionEconomic { get; private set; }
 
         internal int QuantityHeroes { get; private set; }
 
@@ -245,6 +240,26 @@ namespace Fantasy_King_s_Battle
             {
                 RearrangeHeroes();
             }*/
+        }
+
+        internal bool EnoughPointConstruction(PlayerBuilding pb)
+        {
+            if (pb.Building is TypeGuild)
+                return PointConstructionGuild > 0;
+            if (pb.Building is TypeEconomicConstruction)
+                return PointConstructionEconomic > 0;
+
+            return true;
+        }
+
+        internal void Constructed(PlayerBuilding pb)
+        {
+            Debug.Assert(EnoughPointConstruction(pb));
+
+            if (pb.Building is TypeGuild)
+                PointConstructionGuild--;
+            else if (pb.Building is TypeEconomicConstruction)
+                PointConstructionEconomic--;
         }
 
         private void RearrangeHeroes()
