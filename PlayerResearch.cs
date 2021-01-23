@@ -58,7 +58,7 @@ namespace Fantasy_King_s_Battle
             Building.Researches.Remove(this);
             AddEntity(Research.Entity);
 
-            Program.formMain.ShowGold();
+            Program.formMain.ShowFrame();
         }
 
         internal void AddEntity(Entity entity)

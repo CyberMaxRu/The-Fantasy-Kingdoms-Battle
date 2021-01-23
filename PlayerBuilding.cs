@@ -143,12 +143,11 @@ namespace Fantasy_King_s_Battle
             Heroes.Add(h);
             Player.AddHero(h);
 
-            // Восстановить
             if (Building.TrainedHero.Cost > 0)
             {
                 Player.Gold -= Building.TrainedHero.Cost;
                 if (Player.TypePlayer == TypePlayer.Human)
-                    Program.formMain.ShowGold();
+                    Program.formMain.ShowFrame();
             }
 
             return h;

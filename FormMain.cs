@@ -957,14 +957,13 @@ namespace Fantasy_King_s_Battle
 
                 curAppliedPlayer = lobby.CurrentPlayer;
             }
-
+            
             ShowLobby();
             ShowGuilds();
             ShowBuildings();
             ShowTemples();
             ShowPageHeroes();
             ShowPageLairs();
-            ShowGold();
         }
 
         private void ShowLobby()
@@ -1113,14 +1112,6 @@ namespace Fantasy_King_s_Battle
                 FormBattle fb = new FormBattle();
                 fb.ShowBattle(b);
             }
-        }
-
-        internal void ShowGold()
-        {
-            Debug.Assert(lobby.CurrentPlayer.TypePlayer == TypePlayer.Human);
-
-            labelGold.Text = "     " + lobby.CurrentPlayer.Gold.ToString() + " (+" + lobby.CurrentPlayer.Income().ToString() + ")";
-            labelPeasants.Text = "     " + lobby.CurrentPlayer.TotalBuilders.ToString() + "/" + lobby.CurrentPlayer.TotalBuilders.ToString();
         }
 
         internal void ShowAllBuildings()
@@ -1472,6 +1463,9 @@ namespace Fantasy_King_s_Battle
             gfxFrame.DrawImageUnscaled(bmpBackground, 0, 0);
 
             //
+            labelGold.Text = "     " + lobby.CurrentPlayer.Gold.ToString() + " (+" + lobby.CurrentPlayer.Income().ToString() + ")";
+            labelPeasants.Text = "     " + lobby.CurrentPlayer.TotalBuilders.ToString() + "/" + lobby.CurrentPlayer.TotalBuilders.ToString();
+
             pageGuilds.PopupQuantity = lobby.CurrentPlayer.PointConstructionGuild;
             pageBuildings.PopupQuantity = lobby.CurrentPlayer.PointConstructionEconomic;
             pageHeroes.Cost = lobby.CurrentPlayer.CombatHeroes.Count;
