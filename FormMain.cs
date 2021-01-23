@@ -958,7 +958,6 @@ namespace Fantasy_King_s_Battle
             
             ShowLobby();
             ShowPageHeroes();
-            ShowPageLairs();
         }
 
         private void ShowLobby()
@@ -975,9 +974,16 @@ namespace Fantasy_King_s_Battle
 
             panelPlayers.ArrangeControls();
 
+            // Показываем сооружения
             foreach (PlayerBuilding pb in lobby.CurrentPlayer.Buildings)
             {
                 pb.Building.Panel.LinkToPlayer(pb);
+            }
+
+            // Показываем логова
+            foreach (PlayerLair pl in lobby.CurrentPlayer.Lairs)
+            {
+                pl.Lair.Panel.LinkToPlayer(pl);
             }
         }
 
@@ -1015,7 +1021,7 @@ namespace Fantasy_King_s_Battle
 
         private void DrawPageLair()
         {
-            int top = 0;
+            int top = 32;
             int left;
             int height = 0;
 
@@ -1027,7 +1033,7 @@ namespace Fantasy_King_s_Battle
                 {
                     if (l.Line == line)
                     {
-                        l.Panel = new PanelLair(pageLairs.Page, left, top);
+                        l.Panel = new PanelLair(pageLairs.Page, left, top, l);
 
                         left += l.Panel.Width + Config.GridSize;
                         height = l.Panel.Height;
@@ -1048,14 +1054,6 @@ namespace Fantasy_King_s_Battle
 
             panelHeroes.ApplyList(list);
             panelHeroes.Height = panelHeroes.MaxSize().Height;
-        }
-
-        private void ShowPageLairs()
-        {
-            foreach (PlayerLair pl in lobby.CurrentPlayer.Lairs)
-            {
-                pl.UpdatePanel();
-            }
         }
 
         internal void ShowPageHeroes()
@@ -1386,10 +1384,8 @@ namespace Fantasy_King_s_Battle
             {
                 PlayerLair plOld = lobby.CurrentPlayer.TargetLair;
                 lobby.CurrentPlayer.TargetLair = null;
-                plOld.UpdatePanel();
             }
             lobby.CurrentPlayer.TargetLair = newLair;
-            lobby.CurrentPlayer.TargetLair.UpdatePanel();
             btnTarget.ImageIndex = lobby.CurrentPlayer.TargetLair != null ? lobby.CurrentPlayer.TargetLair.Lair.ImageIndex : -1;
             SelectLair(newLair.Lair.Panel);
 

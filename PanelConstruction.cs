@@ -62,9 +62,12 @@ namespace Fantasy_King_s_Battle
 
             Height = btnHeroes.NextTop();
             Width = btnBuyOrUpgrade.NextLeft();
+            lblName.Width = Width - (lblName.ShiftX * 2);
         }
 
         internal TypeConstruction TypeConstruction { get; }
+        internal PlayerBuilding Building { get; private set; }
+
 
         private void BtnHireHero_ShowHint(object sender, EventArgs e)
         {
@@ -86,8 +89,6 @@ namespace Fantasy_King_s_Battle
         {
             SelectThisBuilding();
         }
-
-        internal PlayerBuilding Building { get; set; }
 
         private void SelectThisBuilding()
         {

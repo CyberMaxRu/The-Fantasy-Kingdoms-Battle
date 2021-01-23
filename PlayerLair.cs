@@ -41,12 +41,5 @@ namespace Fantasy_King_s_Battle
                 }
             }
         }
-
-        internal void UpdatePanel()
-        {
-            Debug.Assert(Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
-
-            Lair.Panel.ShowData(this);
-        }
     }
 }

@@ -10,119 +10,74 @@ using System.Diagnostics;
 namespace Fantasy_King_s_Battle
 {
     // Класс панели логова
-    internal sealed class PanelLair : BasePanel
+    internal sealed class PanelLair : VisualControl
     {
-        private PlayerLair lair;
-        private readonly Label lblName;
-        private readonly PictureBox pbLair;
-        private readonly Button btnSetAsTarget;
+        private readonly VCLabel lblName;
+        private readonly VCImage imgLair;
+        private readonly VCButton btnSetAsTarget;
 
-        public PanelLair(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
+        public PanelLair(VisualControl parent, int shiftX, int shiftY, TypeLair typeLair) : base(parent, shiftX, shiftY)
         {
-            lblName = new Label()
-            {
-                //Parent = this,
-                Left = FormMain.Config.GridSize,
-                Top = FormMain.Config.GridSize,
-                Height = FormMain.Config.GridSize * 2,
-                BackColor = Color.Transparent,
-                Font = FormMain.Config.FontBuildingCaption
-            };
+            ShowBorder = true;
+            TypeLair = typeLair;
 
-            pbLair = new PictureBox()
-            {
-                //Parent = this,
-                Width = Program.formMain.ilLairs.ImageSize.Width,
-                Height = Program.formMain.ilLairs.ImageSize.Height,
-                Left = FormMain.Config.GridSize,
-                Top = GuiUtils.NextTop(lblName),
-                BackColor = Color.Transparent
-            };
-            pbLair.MouseEnter += PbLair_MouseEnter;
-            pbLair.MouseLeave += PbLair_MouseLeave;
-            pbLair.MouseClick += PbLair_MouseClick;
+            lblName = new VCLabel(this, FormMain.Config.GridSize, FormMain.Config.GridSize, FormMain.Config.FontBuildingCaption, Color.Transparent, FormMain.Config.GridSize * 2, "");
+            lblName.StringFormat.Alignment = StringAlignment.Near;
+            lblName.Text = typeLair.Name;
 
-            btnSetAsTarget = new Button()
-            {
-                //Parent = this,
-                Left = GuiUtils.NextLeft(pbLair),
-                Top = pbLair.Top,
-                Size = GuiUtils.SizeButtonWithImage(Program.formMain.ilGui),
-                ImageList = Program.formMain.ilGui,
-                ImageIndex = FormMain.GUI_BATTLE,
-                TextAlign = ContentAlignment.BottomCenter,
-                FlatStyle = FlatStyle.Flat,
-                Font = FormMain.Config.FontCost,
-                BackgroundImage = Program.formMain.bmpBackgroundButton,
-                ForeColor = Color.White
-            };
-            btnSetAsTarget.FlatAppearance.BorderColor = FormMain.Config.CommonBorder;
+            imgLair = new VCImage(this, FormMain.Config.GridSize, lblName.NextTop(), Program.formMain.ilLairs, typeLair.ImageIndex);
+            imgLair.ShowBorder = false;
+            imgLair.Click += ImgLair_Click;
+            imgLair.ShowHint += ImgLair_ShowHint;
+
+            btnSetAsTarget = new VCButton(this, imgLair.NextLeft(), imgLair.ShiftY, Program.formMain.ilGui, FormMain.GUI_BATTLE);
             btnSetAsTarget.Click += BtnSetAsTarget_Click;
 
-            Height = GuiUtils.NextTop(pbLair);// lblIncome. Top + lblIncome.Height + (Config.GRID_SIZE * 2);
-            Width = btnSetAsTarget.Left + btnSetAsTarget.Width + FormMain.Config.GridSize;// btnBuyOrUpgrade.Left + btnBuyOrUpgrade.Width + FormMain.Config.GridSize;
+            Height = imgLair.NextTop();
+            Width = btnSetAsTarget.NextLeft();
 
-            lblName.Width = Width - (FormMain.Config.GridSize * 2) - 2;
-            //lblLevel.Left = Width - FormMain.Config.GridSize - lblLevel.Width;
+            lblName.Width = Width - (lblName.ShiftX * 2);            
+        }
 
-            //MouseClick += PanelLair_MouseClick;
+        internal TypeLair TypeLair { get; set; }
+        internal PlayerLair Lair { get; private set; }
+
+        internal void LinkToPlayer(PlayerLair pl)
+        {
+            Debug.Assert(pl != null);
+            Debug.Assert(pl.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
+            Debug.Assert(pl.Lair == TypeLair);
+
+            Lair = pl;
+        }
+
+        private void ImgLair_ShowHint(object sender, EventArgs e)
+        {
+            Program.formMain.formHint.AddStep1Header(Lair.Lair.Name, "", Lair.Lair.Description);
+        }
+
+        private void ImgLair_Click(object sender, EventArgs e)
+        {
+            SelectThisBuilding();
         }
 
         private void BtnSetAsTarget_Click(object sender, EventArgs e)
         {
-            Program.formMain.UpdateTarget(lair);
+            Program.formMain.UpdateTarget(Lair);
         }
 
-        private void PbLair_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-                SelectThisBuilding();
-        }
-
-        private void PbLair_MouseLeave(object sender, EventArgs e)
-        {
-            Program.formMain.formHint.HideHint();
-        }
-
-        private void PbLair_MouseEnter(object sender, EventArgs e)
-        {
-            //Program.formMain.formHint.Clear();
-            //Program.formMain.formHint.AddStep1Header(Lair.Lair.Name, "", Lair.Lair.Description);
-            //Program.formMain.formHint.ShowHint(this);
-        }
-
-        private void PanelLair_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-                SelectThisBuilding();
-        }
         private void SelectThisBuilding()
         {
             Program.formMain.SelectLair(this);
         }
 
-        internal PlayerLair Lair { get { return lair; } set { lair = value; UpdateData(); } }
-
-        internal void ShowData(PlayerLair pl)
-        {
-            Debug.Assert(pl != null);
-
-            Lair = pl;
-        }
-
-        private void UpdateData()
+        internal override void Draw(Graphics g)
         {
             Debug.Assert(Lair.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
 
-            lblName.Text = lair.Lair.Name;
-            lblName.ForeColor = lair.Player.TargetLair == lair ? Color.OrangeRed : Color.Green;
-            //btnSetAsTarget.FlatAppearance.BorderColor = lair.Player.TargetLair == lair ? Color.OrangeRed : Color.Black;
-            pbLair.Image = GuiUtils.GetImageFromImageList(Program.formMain.ilLairs, lair.Lair.ImageIndex, true);
-        }
+            lblName.Color = Lair.Player.TargetLair == Lair ? Color.OrangeRed : Color.Green;
 
-        protected override Color ColorBorder()
-        {
-            return FormMain.Config.ColorBorder(Program.formMain.SelectedPanelLair == this);
+            base.Draw(g);
         }
     }
 }
