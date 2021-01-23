@@ -1369,7 +1369,7 @@ namespace Fantasy_King_s_Battle
             {
                 Bitmap bmpDest = new Bitmap(48, 48);
                 Graphics gDest = Graphics.FromImage(bmpDest);
-                gDest.DrawImage(i, new Rectangle(0, 0, 48, 48), new Rectangle(0, 0, 128, 128), GraphicsUnit.Pixel);
+                gDest.DrawImage(i, new Rectangle(0, 0, 48, 48), new Rectangle(1, 1, 126, 126), GraphicsUnit.Pixel);
                 ilPlayerAvatars.Images.Add(bmpDest);
                 gDest.Dispose();
             }
