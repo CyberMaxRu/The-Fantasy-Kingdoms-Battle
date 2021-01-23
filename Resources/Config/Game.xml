@@ -15,6 +15,7 @@
       <SelectedBorder>Yellow</SelectedBorder>
       <CaptionPage>White</CaptionPage>
       <Level>Yellow</Level>
+      <ConstructionLevel>Black</ConstructionLevel>
       <Cost>White</Cost>
       <Quantity>Yellow</Quantity>
     </Common>
@@ -115,7 +116,7 @@
     <Building>
       <Level>
         <Name>Arial</Name>
-        <Size>14</Size>
+        <Size>12</Size>
         <Bold>true</Bold>
       </Level>
       <Caption>
@@ -136,8 +137,8 @@
     <MaxFramesPerSecond>50</MaxFramesPerSecond>
   </Battle>
   <Battlefield>
-    <HeroRows>7</HeroRows>
-    <HeroInRow>7</HeroInRow>
+    <HeroRows>14</HeroRows>
+    <HeroInRow>14</HeroInRow>
     <RowsBetweenSides>3</RowsBetweenSides>
     <WidthBorder>14</WidthBorder>
   </Battlefield>
