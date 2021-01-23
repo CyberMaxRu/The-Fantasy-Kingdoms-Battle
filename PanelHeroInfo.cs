@@ -117,7 +117,6 @@ namespace Fantasy_King_s_Battle
                 Hero.Dismiss();
                 Hero = null;
 
-                Program.formMain.ShowPageHeroes();
                 Program.formMain.ShowFrame();
             }
         }
