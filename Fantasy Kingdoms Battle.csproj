@@ -58,7 +58,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Ability.cs" />
-    <Compile Include="BasePanel.cs" />
     <Compile Include="Battle.cs" />
     <Compile Include="Battlefield.cs" />
     <Compile Include="BattlefieldTile.cs" />

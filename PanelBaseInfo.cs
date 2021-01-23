@@ -10,7 +10,7 @@ using System.Diagnostics;
 namespace Fantasy_King_s_Battle
 {
     // Базовый класс панели информации
-    internal abstract class PanelBaseInfo : BasePanel
+    internal abstract class PanelBaseInfo : VisualControl
     {
         protected enum Page { Products, Warehouse, Inhabitants, Statistics, Inventory, Abilities, Description };
 
