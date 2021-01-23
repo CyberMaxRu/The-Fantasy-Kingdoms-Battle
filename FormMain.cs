@@ -59,9 +59,8 @@ namespace Fantasy_King_s_Battle
 
         private readonly VisualControl panelPlayers;// Панель, на которой находятся панели игроков лобби
 
-        private readonly Label labelDay;
-        private readonly Label labelGold;
-        private readonly Label labelPeasants;
+        private readonly VCToolLabel labelDay;
+        private readonly VCToolLabel labelGold;
 
         private readonly VCButton btnPreferences;
         private readonly VCButton btnHelp;
@@ -364,13 +363,21 @@ namespace Fantasy_King_s_Battle
             //
             MainControl = new VisualControl();
 
-            // Кнопки в правом верхнем углу
-            btnPreferences = CreateButton(ilGui, GUI_INVENTORY, 0, Config.GridSize, BtnPreferences_Click, BtnPreferences_MouseHover);
-            btnHelp = CreateButton(ilGui, GUI_BOOK, 0, Config.GridSize, BtnHelp_Click, BtnHelp_MouseHover);
-            btnQuit = CreateButton(ilGui, GUI_EXIT, 0, Config.GridSize, BtnQuit_Click, BtnQuit_MouseHover);
+            // Метки с информацией о Королевстве
+            labelDay = new VCToolLabel(MainControl, Config.GridSize, Config.GridSize, "", GUI_16_DAY);
+            labelDay.ShowHint += LabelDay_ShowHint;
+            labelDay.Width = 48;
+            labelGold = new VCToolLabel(MainControl, labelDay.NextLeft(), Config.GridSize, "", GUI_16_GOLD);
+            labelGold.ShowHint += LabelGold_ShowHint;
+            labelGold.Width = 160;
 
-            btnTarget = CreateButton(ilLairsSmall, -1, 0, Config.GridSize, BtnTarget_Click, BtnTarget_MouseHover);
-            btnEndTurn = CreateButton(ilGui, GUI_BATTLE, 0, Config.GridSize, BtnEndTurn_Click, BtnEndTurn_MouseHover);
+            // Кнопки в правом верхнем углу
+            btnPreferences = CreateButton(ilGui, GUI_INVENTORY, 0, labelDay.NextTop(), BtnPreferences_Click, BtnPreferences_MouseHover);
+            btnHelp = CreateButton(ilGui, GUI_BOOK, 0, btnPreferences.ShiftY, BtnHelp_Click, BtnHelp_MouseHover);
+            btnQuit = CreateButton(ilGui, GUI_EXIT, 0, btnPreferences.ShiftY, BtnQuit_Click, BtnQuit_MouseHover);
+
+            btnTarget = CreateButton(ilLairsSmall, -1, 0, btnPreferences.ShiftY, BtnTarget_Click, BtnTarget_MouseHover);
+            btnEndTurn = CreateButton(ilGui, GUI_BATTLE, 0, btnPreferences.ShiftY, BtnEndTurn_Click, BtnEndTurn_MouseHover);
 
             // Создаем панели игроков в левой части окна
             panelPlayers = new VisualControl(MainControl, Config.GridSize, btnQuit.NextTop());
@@ -387,35 +394,6 @@ namespace Fantasy_King_s_Battle
             panelPlayers.ApplyMaxSize();
 
             leftForPages = lobby.Players[0].Panel.NextLeft() + panelPlayers.ShiftX;
-
-            // Текст с информацией о Королевстве
-            labelDay = GuiUtils.CreateLabel(this, Config.GridSize, Config.GridSize, 80, "День");
-            labelDay.Height = 20;
-            labelDay.ImageList = ilGui16;
-            labelDay.ImageIndex = GUI_16_DAY;
-            labelDay.Font = Config.FontToolbar;
-            labelDay.ImageAlign = ContentAlignment.MiddleLeft;
-            labelDay.ForeColor = Color.White;
-            labelDay.BackColor = Color.Transparent;
-            labelDay.MouseHover += LabelDay_MouseHover;
-            labelGold = GuiUtils.CreateLabel(this, Config.GridSize, labelDay.Top + labelDay.Height, 80, "");
-            labelGold.Height = 20;
-            labelGold.ImageList = ilGui16;
-            labelGold.ImageIndex = GUI_16_GOLD;
-            labelGold.Font = Config.FontToolbar;
-            labelGold.ForeColor = Color.White;
-            labelGold.BackColor = Color.Transparent;
-            labelGold.ImageAlign = ContentAlignment.MiddleLeft;
-            labelGold.MouseHover += LabelGold_MouseHover;
-            labelPeasants = GuiUtils.CreateLabel(this, Config.GridSize, labelGold.Top + labelGold.Height, 80, "");
-            labelPeasants.Height = 20;
-            labelPeasants.ImageList = ilGui16;
-            labelPeasants.ImageIndex = GUI_16_PEASANT;
-            labelPeasants.Font = Config.FontToolbar;
-            labelPeasants.ForeColor = Color.White;
-            labelPeasants.BackColor = Color.Transparent;
-            labelPeasants.ImageAlign = ContentAlignment.MiddleLeft;
-            labelPeasants.MouseHover += LabelPeasants_MouseHover;
 
             // Страницы игры
             pageGuilds = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_GUILDS, "Гильдии", BtnPage_Click);
@@ -505,7 +483,7 @@ namespace Fantasy_King_s_Battle
             //
             Width = (Width - ClientSize.Width) + calcedWidth + Config.GridSize;
             // Высота - это наибольшая высота бэндов лобби, зданий и информации с меню
-            calcedHeight = Math.Max(panelPlayers.Height, Math.Max(pageHeroes.Page.Top + pageHeroes.Page.MaxSize().Height, heightBandBuildings));
+            calcedHeight = labelDay.NextTop() + Math.Max(panelPlayers.Height, Math.Max(pageHeroes.Page.Top + pageHeroes.Page.MaxSize().Height, heightBandBuildings));
             Height = (Height - ClientSize.Height) + calcedHeight + Config.GridSize;
             minSizeForm = new Size(Width, Height);
 
@@ -556,6 +534,16 @@ namespace Fantasy_King_s_Battle
                 lblStage.Text = text + "...";
                 lblStage.Refresh();
             }
+        }
+
+        private void LabelGold_ShowHint(object sender, EventArgs e)
+        {
+            ShowHintForToolButton(labelGold, "Казна", "Количество золота в казне и постоянный доход в день");
+        }
+
+        private void LabelDay_ShowHint(object sender, EventArgs e)
+        {
+            ShowHintForToolButton(labelDay, "День игры", "День игры: " + lobby.Turn.ToString());
         }
 
         private void BtnTarget_Click(object sender, EventArgs e)
@@ -744,19 +732,8 @@ namespace Fantasy_King_s_Battle
             ShowHintForToolButton(btnEndTurn, "Конец хода", "Завершение хода");
         }
 
-        private void LabelPeasants_MouseHover(object sender, EventArgs e)
-        {
-            ShowHintForToolButton(labelPeasants, "Крестьяне", "Количество свободных строителей");
-        }
-
         private void LabelGold_MouseHover(object sender, EventArgs e)
         {
-            ShowHintForToolButton(labelGold, "Казна", "Количество золота в казне и постоянный доход в день");
-        }
-
-        private void LabelDay_MouseHover(object sender, EventArgs e)
-        {
-            ShowHintForToolButton(labelDay, "День игры", "День игры: " + lobby.Turn.ToString());
         }
 
         private void BtnPage_Click(object sender, EventArgs e)
@@ -816,7 +793,6 @@ namespace Fantasy_King_s_Battle
 
             labelDay.Left = shiftControls.X;
             labelGold.Left = shiftControls.X;
-            labelPeasants.Left = shiftControls.X;
 
             ShowLobby();
 
@@ -824,14 +800,14 @@ namespace Fantasy_King_s_Battle
             foreach (VCFormPage fp in pages)
             {
                 fp.ShiftX = leftForNextButtonPage;
-                fp.ShiftY = Config.GridSize;
+                fp.ShiftY = btnQuit.ShiftY;
                 fp.Page.Left = shiftControls.X + leftForPages - Config.GridSize;
                 fp.Page.Width = maxWidthPages;
 
                 leftForNextButtonPage = fp.NextLeft();
             }
 
-            panelPlayers.ShiftY = btnQuit.NextTop();
+            panelPlayers.ShiftY = labelDay.NextTop();
             MainControl.ArrangeControls();
 
             btnQuit.Left = shiftControls.X + minSizeForm.Width - btnQuit.Width - (Config.GridSize * 4);
@@ -946,7 +922,7 @@ namespace Fantasy_King_s_Battle
         {
             Debug.Assert(lobby.CurrentPlayer.TypePlayer == TypePlayer.Human);
 
-            labelDay.Text = "     " + lobby.Turn.ToString();
+            labelDay.Text = lobby.Turn.ToString();
 
             // Если этого игрока не отрисовывали, формируем заново вкладки
             if (curAppliedPlayer != lobby.CurrentPlayer)
@@ -1418,8 +1394,7 @@ namespace Fantasy_King_s_Battle
             gfxFrame.DrawImageUnscaled(bmpBackground, 0, 0);
 
             //
-            labelGold.Text = "     " + lobby.CurrentPlayer.Gold.ToString() + " (+" + lobby.CurrentPlayer.Income().ToString() + ")";
-            labelPeasants.Text = "     " + lobby.CurrentPlayer.TotalBuilders.ToString() + "/" + lobby.CurrentPlayer.TotalBuilders.ToString();
+            labelGold.Text = lobby.CurrentPlayer.Gold.ToString() + " (+" + lobby.CurrentPlayer.Income().ToString() + ")";
 
             pageGuilds.PopupQuantity = lobby.CurrentPlayer.PointConstructionGuild;
             pageBuildings.PopupQuantity = lobby.CurrentPlayer.PointConstructionEconomic;

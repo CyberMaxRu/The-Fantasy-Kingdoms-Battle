@@ -9,7 +9,7 @@ using System.Drawing;
 namespace Fantasy_King_s_Battle
 {
     // Класс метки
-    internal sealed class VCLabel : VisualControl
+    internal class VCLabel : VisualControl
     {
         private Brush brush;
         private Color color;
@@ -27,6 +27,9 @@ namespace Fantasy_King_s_Battle
                 Alignment = StringAlignment.Center,
                 LineAlignment = StringAlignment.Near
             };
+
+            LeftMargin = 0;
+            TopMargin = -2;
         }
 
         internal string Text { get; set; }
@@ -36,6 +39,10 @@ namespace Fantasy_King_s_Battle
             get => Color;
             set { if (color != value) { color = value; brush?.Dispose(); brush = new SolidBrush(color); } }
         }
+
+        protected int LeftMargin { get; set; }
+        protected int TopMargin { get; set; }
+
         internal StringFormat StringFormat { get; set; }
 
         internal override void ArrangeControls()
@@ -44,8 +51,9 @@ namespace Fantasy_King_s_Battle
 
             // Рисуем выше на два пиксела и увеличиваем высоту, так как у текст сверху пустота, а снизу происходит обрезка,
             // хотя по высоте все вмещается
-            rectText = new RectangleF(Left, Top - 2, Width, Height + 2);
+            rectText = new RectangleF(Left + LeftMargin, Top + TopMargin, Width, Height + 2);
         }
+
         internal override void Draw(Graphics g)
         {
             base.Draw(g);
