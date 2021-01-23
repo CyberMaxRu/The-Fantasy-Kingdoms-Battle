@@ -44,7 +44,7 @@ namespace Fantasy_King_s_Battle
             if (TypeConstruction.TrainedHero != null)
             {
                 btnHireHero = new VCButton(this, imageConstruction.NextLeft(), btnBuyOrUpgrade.NextTop(), Program.formMain.ilGuiHeroes, -1);
-                btnHireHero.Click += BtnHero_Click;
+                btnHireHero.Click += BtnHireHero_Click;
                 btnHireHero.ShowHint += BtnHireHero_ShowHint;
 
             }
@@ -116,7 +116,7 @@ namespace Fantasy_King_s_Battle
             }
         }
 
-        private void BtnHero_Click(object sender, EventArgs e)
+        private void BtnHireHero_Click(object sender, EventArgs e)
         {
             Debug.Assert(Building.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
             Debug.Assert(Building.Level <= Building.Building.MaxLevel);
