@@ -1478,6 +1478,12 @@ namespace Fantasy_King_s_Battle
                         timerHover.Stop();
                         formHint.HideHint();
                     }
+                    else
+                    {
+                        // Если над контролов водят мышкой, отсчет времени начинаем только после остановки
+                        timerHover.Stop();
+                        timerHover.Start();
+                    }
                 }
                 else
                 {
