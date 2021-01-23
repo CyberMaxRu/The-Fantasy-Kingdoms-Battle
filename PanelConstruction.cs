@@ -147,7 +147,7 @@ namespace Fantasy_King_s_Battle
             if (Building.Player.Gold >= Building.CostBuyOrUpgrade())
             {
                 Building.BuyOrUpgrade();
-                ShowHintBtnBuyOrUpgrade();
+                btnBuyOrUpgrade.DoShowHint();
                 Program.formMain.ShowFrame();
             }
         }
