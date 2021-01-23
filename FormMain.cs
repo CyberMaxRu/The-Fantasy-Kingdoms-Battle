@@ -997,13 +997,13 @@ namespace Fantasy_King_s_Battle
 
         private void DrawPageConstructions()
         {
-            DrawPage(pageGuilds.Page, Config.TypeGuilds.ToList<TypeConstruction>());
-            DrawPage(pageBuildings.Page, Config.TypeEconomicConstructions.ToList<TypeConstruction>());
-            DrawPage(pageTemples.Page, Config.TypeTemples.ToList<TypeConstruction>());
+            DrawPage(pageGuilds, Config.TypeGuilds.ToList<TypeConstruction>());
+            DrawPage(pageBuildings, Config.TypeEconomicConstructions.ToList<TypeConstruction>());
+            DrawPage(pageTemples, Config.TypeTemples.ToList<TypeConstruction>());
 
-            void DrawPage(VisualControl panel, List<TypeConstruction> list)
+            void DrawPage(VCFormPage panel, List<TypeConstruction> list)
             {
-                int top = 32;
+                int top = panel.TopForControls;
                 int left;
                 int height = 0;
 
@@ -1015,7 +1015,7 @@ namespace Fantasy_King_s_Battle
                     {
                         if (tck.Line == line)
                         {
-                            tck.Panel = new PanelConstruction(panel, left, top, tck);
+                            tck.Panel = new PanelConstruction(panel.Page, left, top, tck);
 
                             left += tck.Panel.Width + Config.GridSize;
                             height = tck.Panel.Height;
@@ -1029,7 +1029,7 @@ namespace Fantasy_King_s_Battle
 
         private void DrawPageLair()
         {
-            int top = 32;
+            int top = pageLairs.TopForControls;
             int left;
             int height = 0;
 

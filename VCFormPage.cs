@@ -20,11 +20,15 @@ namespace Fantasy_King_s_Battle
             list.Add(this);
 
             lblCaption = new VCLabel(Page, 0, 0, FormMain.Config.FontCaptionPage, FormMain.Config.CommonCaptionPage, FormMain.Config.GridSize * 3, caption);
+            //lblCaption.StringFormat.LineAlignment = StringAlignment.Center;
             ArrangeControls();
+
+            TopForControls = 24;
         }
 
         internal VisualControl Page { get; }
         internal string Caption { get; }
+        internal int TopForControls { get; }
         
         internal override void ArrangeControls()
         {
