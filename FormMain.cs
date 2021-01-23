@@ -149,7 +149,6 @@ namespace Fantasy_King_s_Battle
 
         private VCFormPage currentPage;
         private readonly int leftForPages;
-        private readonly int heightToolBar;
         private readonly int heightBandBuildings;
         private readonly int heightBandInfoAndMenu;
         private readonly Point pointMenu;
@@ -373,8 +372,6 @@ namespace Fantasy_King_s_Battle
             btnTarget = CreateButton(ilLairsSmall, -1, 0, Config.GridSize, BtnTarget_Click, BtnTarget_MouseHover);
             btnEndTurn = CreateButton(ilGui, GUI_BATTLE, 0, Config.GridSize, BtnEndTurn_Click, BtnEndTurn_MouseHover);
 
-            heightToolBar = btnQuit.Height + (Config.GridSize * 2);
-
             // Создаем панели игроков в левой части окна
             panelPlayers = new VisualControl(MainControl, Config.GridSize, btnQuit.NextTop());
 
@@ -494,6 +491,8 @@ namespace Fantasy_King_s_Battle
             pointMenu.X = pointMenu.X + ((widthRightPanel - panelMenu.Width) / 2);
             calcedWidth = leftForPages + maxWidthPages + widthRightPanel + Config.GridSize;
 
+            ArrangeControls();
+
             // Определяем высоту бэнда зданий
             heightBandBuildings = 0;
             foreach (TypeEconomicConstruction tec in Config.TypeEconomicConstructions)
@@ -506,7 +505,7 @@ namespace Fantasy_King_s_Battle
             //
             Width = (Width - ClientSize.Width) + calcedWidth + Config.GridSize;
             // Высота - это наибольшая высота бэндов лобби, зданий и информации с меню
-            calcedHeight = heightToolBar + Math.Max(panelPlayers.Height, Math.Max(pageHeroes.Page.Top + pageHeroes.Page.MaxSize().Height, heightBandBuildings));
+            calcedHeight = Math.Max(panelPlayers.Height, Math.Max(pageHeroes.Page.Top + pageHeroes.Page.MaxSize().Height, heightBandBuildings));
             Height = (Height - ClientSize.Height) + calcedHeight + Config.GridSize;
             minSizeForm = new Size(Width, Height);
 
@@ -530,7 +529,6 @@ namespace Fantasy_King_s_Battle
             //
 
             PrepareBackground();
-            ArrangeControls();
 
             ActivatePage(pageGuilds);
 
@@ -968,18 +966,17 @@ namespace Fantasy_King_s_Battle
 
         private void ShowLobby()
         {
-            int top = heightToolBar;
+            int top = 0;
             foreach (Player p in lobby.Players.OrderBy(p => p.PositionInLobby))
             {
                 Debug.Assert(p.PositionInLobby >= 1);
                 Debug.Assert(p.PositionInLobby <= lobby.TypeLobby.QuantityPlayers);
 
-                p.Panel.Left = shiftControls.X;
-                p.Panel.Top = top;
-                top = p.Panel.NextTop();
+                p.Panel.ShiftY = top;
+                top += p.Panel.Height + Config.GridSize;
             }
 
-            //Refresh();
+            panelPlayers.ArrangeControls();
         }
 
         private void DrawPageConstructions()
