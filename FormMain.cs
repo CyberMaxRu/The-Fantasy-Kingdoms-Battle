@@ -1472,8 +1472,8 @@ namespace Fantasy_King_s_Battle
             gfxFrame.DrawImageUnscaled(bmpBackground, 0, 0);
 
             //
-            pageGuilds.Level = lobby.CurrentPlayer.PointConstructionGuild;
-            pageBuildings.Level = lobby.CurrentPlayer.PointConstructionEconomic;
+            pageGuilds.PopupQuantity = lobby.CurrentPlayer.PointConstructionGuild;
+            pageBuildings.PopupQuantity = lobby.CurrentPlayer.PointConstructionEconomic;
             pageHeroes.Cost = lobby.CurrentPlayer.CombatHeroes.Count;
 
             // Рисуем контролы

@@ -239,6 +239,8 @@ namespace Fantasy_King_s_Battle
         internal Color CommonLevel { get; private set; }
         internal Color CommonCost { get; private set; }
         internal Color CommonQuantity { get; private set; }
+        internal Color CommonPopupQuantity { get; private set; }
+        internal Color CommonPopupQuantityBack { get; private set; }
 
         internal Color SelectedPlayerBorder { get; private set; }
         internal Color DamageToCastlePositive { get; private set; }
@@ -273,6 +275,7 @@ namespace Fantasy_King_s_Battle
         internal Font FontToolbar { get; private set; }
         internal Font FontLevel { get; private set; }
         internal Font FontQuantity { get; private set; }
+        internal Font FontPopupQuantity { get; private set; }
         internal Font FontCost { get; private set; }
         internal Font FontCaptionPage { get; private set; }
         internal Font FontNamePage { get; private set; }
@@ -540,6 +543,8 @@ namespace Fantasy_King_s_Battle
             CommonLevel = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Common/Level").InnerText);
             CommonCost = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Common/Cost").InnerText);
             CommonQuantity = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Common/Quantity").InnerText);
+            CommonPopupQuantity = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Common/PopupQuantity").InnerText);
+            CommonPopupQuantityBack = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Common/PopupQuantityBack").InnerText);
 
             SelectedPlayerBorder = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Player/SelectedBorder").InnerText);
             DamageToCastlePositive = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Player/DamageToCastlePositive").InnerText);
@@ -593,6 +598,7 @@ namespace Fantasy_King_s_Battle
             FontToolbar = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/Toolbar"));
             FontLevel = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/Level"));
             FontQuantity = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/Quantity"));
+            FontPopupQuantity = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/PopupQuantity"));
             FontCost = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/Cost"));
             FontCaptionPage = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/CaptionPage"));
             FontNamePage = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/NamePage"));

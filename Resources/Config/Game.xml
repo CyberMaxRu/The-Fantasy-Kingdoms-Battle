@@ -18,6 +18,8 @@
       <ConstructionLevel>Black</ConstructionLevel>
       <Cost>White</Cost>
       <Quantity>Yellow</Quantity>
+      <PopupQuantity>White</PopupQuantity>
+      <PopupQuantityBack>Orange</PopupQuantityBack>
     </Common>
     <Player>
       <SelectedBorder>SkyBlue</SelectedBorder>
@@ -64,6 +66,11 @@
       <Size>10</Size>
       <Bold>true</Bold>
     </Level>
+    <PopupQuantity>
+      <Name>Microsoft Sans Serif</Name>
+      <Size>10</Size>
+      <Bold>true</Bold>
+    </PopupQuantity>
     <Quantity>
       <Name>Arial</Name>
       <Size>13</Size>
@@ -137,8 +144,8 @@
     <MaxFramesPerSecond>50</MaxFramesPerSecond>
   </Battle>
   <Battlefield>
-    <HeroRows>14</HeroRows>
-    <HeroInRow>14</HeroInRow>
+    <HeroRows>7</HeroRows>
+    <HeroInRow>7</HeroInRow>
     <RowsBetweenSides>3</RowsBetweenSides>
     <WidthBorder>14</WidthBorder>
   </Battlefield>
