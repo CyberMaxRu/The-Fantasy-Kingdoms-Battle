@@ -212,6 +212,8 @@ namespace Fantasy_King_s_Battle
             Clear();
         }
 
+        internal bool ExistHint { get; set; }
+
         protected override void Dispose(bool disposing)
         {
             timerDelayShow.Dispose();
@@ -269,6 +271,7 @@ namespace Fantasy_King_s_Battle
         {
             Debug.Assert(header.Length > 0);
 
+            ExistHint = true;
             lblHeader.Text = header;
 
             if (action.Length > 0)
@@ -399,6 +402,9 @@ namespace Fantasy_King_s_Battle
         }
         internal void ShowHint(Control c)
         {
+            if (!ExistHint)
+                return;
+
             Debug.Assert(c.Width > 8);
             Debug.Assert(c.Height > 8);
             Debug.Assert(lblHeader.Text.Length > 0);
@@ -427,6 +433,9 @@ namespace Fantasy_King_s_Battle
 
         internal void ShowHint(VisualControl c)
         {
+            if (!ExistHint)
+                return;
+
             Debug.Assert(c.Width > 8);
             Debug.Assert(c.Height > 8);
             Debug.Assert(lblHeader.Text.Length > 0);
@@ -456,6 +465,7 @@ namespace Fantasy_King_s_Battle
         internal void HideHint()
         {
             timerDelayShow.Enabled = false;
+            ExistHint = false;
 
             if (Visible)
                 Hide();
