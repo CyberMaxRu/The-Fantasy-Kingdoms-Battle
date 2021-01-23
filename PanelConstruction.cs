@@ -14,7 +14,7 @@ namespace Fantasy_King_s_Battle
     {
         private PlayerBuilding building;
         private VCImage imageConstruction;
-        private readonly Button btnHeroes;
+        private readonly VCButton btnHeroes;
         private readonly VCButton btnBuyOrUpgrade;
         private readonly VCButton btnHireHero;
         private readonly VCLabel lblName;
@@ -28,33 +28,28 @@ namespace Fantasy_King_s_Battle
 
             lblName = new VCLabel(this, FormMain.Config.GridSize, FormMain.Config.GridSize, FormMain.Config.FontBuildingCaption, Color.Transparent, FormMain.Config.GridSize * 2, "");
             lblName.StringFormat.Alignment = StringAlignment.Near;
+            lblName.Text = typeConstruction.Name;
 
             imageConstruction = new VCImage(this, FormMain.Config.GridSize, lblName.NextTop(), Program.formMain.ilBuildings, -1);
             imageConstruction.ShowBorder = false;
             imageConstruction.Click += ImageConstruction_Click;
             imageConstruction.ShowHint += ImageConstruction_ShowHint;
 
-            btnHeroes = new Button()
-            {
-                ImageList = Program.formMain.ilGuiHeroes,
-                Size = GuiUtils.SizeButtonWithImage(Program.formMain.ilGuiHeroes),
-                //BackgroundImage = Program.formMain.bmpBackgroundButton,
-                Font = FormMain.Config.FontCost,
-                ForeColor = FormMain.Config.CommonCost,
-                TextAlign = ContentAlignment.BottomCenter
-            };
-            //AddControl(btnHeroes, new Point(FormMain.Config.GridSize, GuiUtils.NextTop(imageConstruction)));
-
             btnBuyOrUpgrade = new VCButton(this, imageConstruction.NextLeft(), imageConstruction.ShiftY, Program.formMain.ilGui, -1);
             btnBuyOrUpgrade.Click += BtnBuyOrUprgade_Click;
             btnBuyOrUpgrade.ShowHint += BtnBuyOrUpgrade_ShowHint;
+
+            btnHeroes = new VCButton(this, imageConstruction.ShiftX, imageConstruction.NextTop(), Program.formMain.ilGuiHeroes, -1);
 
             if (TypeConstruction.TrainedHero != null)
             {
                 btnHireHero = new VCButton(this, imageConstruction.NextLeft(), btnBuyOrUpgrade.NextTop(), Program.formMain.ilGuiHeroes, -1);
                 btnHireHero.Click += BtnHero_Click;
                 btnHireHero.ShowHint += BtnHireHero_ShowHint;
+
             }
+            else
+                btnHeroes.Visible = false;
 
             lblIncome = new Label()
             {
@@ -71,13 +66,8 @@ namespace Fantasy_King_s_Battle
             };
             //AddControl(lblIncome, new Point(btnBuyOrUpgrade.Left, btnHeroes.Top));
 
-            Height = GuiUtils.NextTop(btnHeroes);// lblIncome. Top + lblIncome.Height + (Config.GRID_SIZE * 2);
+            Height = btnHeroes.NextTop();// lblIncome. Top + lblIncome.Height + (Config.GRID_SIZE * 2);
             Width = btnBuyOrUpgrade.NextLeft();
-
-            Height = 192;
-
-            // Восстановить
-            //MouseClick += PanelBuilding_MouseClick;
         }
 
         internal TypeConstruction TypeConstruction { get; }
@@ -186,31 +176,9 @@ namespace Fantasy_King_s_Battle
         {
             Debug.Assert(Building.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
 
-            btnHeroes.Parent = null;
-
-            lblName. Text = Building.Building.Name;
             lblIncome.ImageIndex = Building.DoIncome() == true ? FormMain.GUI_16_GOLD : -1;
             lblIncome.Text = Building.DoIncome() == true ? "+" + Building.Income().ToString() : "";
             lblIncome.ForeColor = Building.Level > 0 ? Color.Green : Color.Gray;
-
-            // Восстановить
-            //btnHeroes.Visible = building.Building.TrainedHero != null;
-
-            // Восстановить
-            /*
-            if ((Building.Building.TrainedHero != null) && (Building.Level > 0))
-            {
-                btnHeroes.Text = Building.Heroes.Count.ToString();
-                btnHeroes.ImageIndex = GuiUtils.GetImageIndexWithGray(btnHeroes.ImageList, Building.Building.TrainedHero.ImageIndex, true);
-            }
-            else
-            {
-                btnHeroes.Text = "";
-                btnHeroes.ImageIndex = -1;
-            }
-            */
-
-            //Invalidate();
         }
 
         internal override void Draw(Graphics g)
@@ -252,6 +220,17 @@ namespace Fantasy_King_s_Battle
             }
 
             imageConstruction.Level = Building.Level;
+
+            if ((Building.Building.TrainedHero != null) && (Building.Level > 0) && (building.Heroes.Count > 0))
+            {
+                btnHeroes.Cost = building.Heroes.Count;
+                btnHeroes.ImageIndex = GuiUtils.GetImageIndexWithGray(btnHeroes.ImageList, Building.Building.TrainedHero.ImageIndex, true);
+            }
+            else
+            {
+                btnHeroes.Cost = 0;
+                btnHeroes.ImageIndex = -1;
+            }
 
             base.Draw(g);
         }
