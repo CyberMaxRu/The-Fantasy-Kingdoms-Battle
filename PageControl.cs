@@ -12,63 +12,59 @@ namespace Fantasy_King_s_Battle
     internal enum IconPages { Inventory, History, Inhabitants, Products, Parameters, Abilities }
 
     // Класс иконки страницы
-    internal sealed class PictureBoxPage : PictureBox
+    internal sealed class PictureBoxPage : VCImage
     {
         private int imageIndex;
         private ImageList imageList;
         private int mouseOver;
         private Pen penBorder = new Pen(FormMain.Config.CommonBorder);
 
-        public PictureBoxPage()
+        public PictureBoxPage(VisualControl parent, int shiftX, int shiftY, ImageList imageList, int imageIndex) : base(parent, shiftX, shiftY, imageList, imageIndex)
         {
-            Padding = new Padding(1, 1, 1, 1);            
         }
 
-        internal int ImageIndex { get { return imageIndex; } set { imageIndex = value; UpdateImage(); } }
-        internal ImageList ImageList
-        {
-            get { return imageList; }
-            set { imageList = value; Size = value.ImageSize; UpdateImage(); }
-        }
         internal string NamePage { get; set; }
         internal int IndexPage { get; set; }
         internal VisualControl ContextPage { get; set; }
 
-        private void UpdateImage()
+        internal override bool PrepareHint()
         {
-            Image = (ImageList != null) && (imageIndex != -1) ? imageList.Images[imageIndex * 2 + mouseOver] : null;
-            Invalidate();
+            Program.formMain.formHint.AddStep1Header(NamePage, "", "");
+            return true;
         }
 
-        protected override void OnMouseEnter(EventArgs e)
+        private void UpdateImage()
         {
-            base.OnMouseEnter(e);
+            //Image = (ImageList != null) && (imageIndex != -1) ? imageList.Images[imageIndex * 2 + mouseOver] : null;
+        }
+
+        protected void OnMouseEnter(EventArgs e)
+        {
+            //base.OnMouseEnter(e);
 
             mouseOver = 1;
             UpdateImage();
         }
 
-        protected override void OnMouseLeave(EventArgs e)
+        protected void OnMouseLeave(EventArgs e)
         {
-            base.OnMouseLeave(e);
+            //base.OnMouseLeave(e);
 
             mouseOver = 0;
             UpdateImage();
         }
 
-        protected override void OnMouseClick(MouseEventArgs e)
+        internal override void DoClick()
         {
-            base.OnMouseClick(e);
+            base.DoClick();
 
-            if (e.Button == MouseButtons.Left)
-            {
-                (Parent as PageControl).ActivatePage(IndexPage);
-            }
+            (Parent as PageControl).ActivatePage(IndexPage);
+            Program.formMain.ShowFrame();
         }
 
-        protected override void OnPaint(PaintEventArgs pe)
+        protected void OnPaint(PaintEventArgs pe)
         {
-            base.OnPaint(pe);
+            /*base.OnPaint(pe);
 
             if ((Parent as PageControl).ActivePage == IndexPage)
             {
@@ -76,53 +72,41 @@ namespace Fantasy_King_s_Battle
                 //pe.Graphics.DrawLine(penBorder, 0, 0, 0, Height - 1);
                 //pe.Graphics.DrawLine(penBorder, Width - 1, 0, Width - 1, Height - 1);
                 pe.Graphics.DrawLine(penBorder, 0, Height - 1, Width - 1, Height - 1);
-            }
+            }*/
         }
     }
 
     // Класс контрола со страницами
-    internal sealed class PageControl : Label
+    internal sealed class PageControl : VisualControl
     {
-        private ImageList imList;
         private List<PictureBoxPage> btnPages = new List<PictureBoxPage>();
         private int leftForNextPage = 0;
-        private Label lblCaptionPage;
+        private VCLabel lblCaptionPage;
         private PictureBoxPage activePage;
 
-        public PageControl(ImageList imageList)
+        public PageControl(VisualControl parent, int shiftX, int shiftY, ImageList imageList) : base(parent, shiftX, shiftY)
         {
-            Debug.Assert(imageList != null);
-
-            BackColor = Color.Transparent;
-
-            imList = imageList;
+            ImageList = imageList;
             ActivePage = -1;
 
-            lblCaptionPage = new Label()
-            {
-                Parent = this,
-                Left = 0,
-                Width = ClientSize.Width,
-                Top = imageList.ImageSize.Height + FormMain.Config.GridSize,
-                TextAlign = ContentAlignment.MiddleCenter,
-                Font = FormMain.Config.FontCaptionPage,
-                ForeColor = FormMain.Config.CommonCaptionPage,
-                BackColor = Color.Transparent,
-                Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right
-            };
+            lblCaptionPage = new VCLabel(this, 0, ImageList.ImageSize.Height + FormMain.Config.GridSize, FormMain.Config.FontCaptionPage, FormMain.Config.CommonCaptionPage, 16, "");
         }
 
+        internal ImageList ImageList { get; set; }
         internal int ActivePage { get; set; }
+
+        internal override void ArrangeControls()
+        {
+            base.ArrangeControls();
+
+            lblCaptionPage.Width = Width;                
+        }
 
         internal void AddPage(string namePage, int imageIndex, VisualControl controlForPage)
         {
-            PictureBoxPage page = new PictureBoxPage()
+
+            PictureBoxPage page = new PictureBoxPage(this, leftForNextPage, 0, ImageList, imageIndex)
             {
-                Parent = this,
-                Left = leftForNextPage,
-                Top = 0,
-                ImageList = imList,
-                ImageIndex = imageIndex,
                 NamePage = namePage,
                 IndexPage = btnPages.Count,
                 ContextPage = controlForPage
@@ -131,8 +115,9 @@ namespace Fantasy_King_s_Battle
 
             if (controlForPage != null)
             {
-                controlForPage.Left = 0;
-                controlForPage.Top = GuiUtils.NextTop(lblCaptionPage);
+                AddControl(controlForPage);
+                controlForPage.ShiftX = 0;
+                controlForPage.ShiftY = lblCaptionPage.NextTop();
                 //controlForPage.SetVisible(false);
                 //controlForPage.Parent = this;
             }
@@ -149,12 +134,13 @@ namespace Fantasy_King_s_Battle
             {
                 ActivePage = indexPage;
 
-                activePage?.Invalidate();
-                //activePage?.ContextPage?.SetVisible(false);
+                //activePage?.Invalidate();
+                if ((activePage != null) && (activePage.ContextPage != null))
+                    activePage.ContextPage.Visible = false;
                 activePage = btnPages[indexPage];
                 lblCaptionPage.Text = activePage.NamePage;
-                //activePage.ContextPage?.SetVisible(true);
-                activePage.Invalidate();
+                if ((activePage != null) && (activePage.ContextPage != null))
+                    activePage.ContextPage.Visible = true;
             }
         }
 
