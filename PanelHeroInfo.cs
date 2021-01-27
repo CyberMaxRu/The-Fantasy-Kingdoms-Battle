@@ -51,11 +51,10 @@ namespace Fantasy_King_s_Battle
             };
             btnDismiss.Click += BtnDismiss_Click;
 
-            panelWeapon = new PanelEntity(this, Left = pageControl.Left, pageControl.Top);
+            panelWeapon = new PanelEntity(this, pageControl.Left, TopForControls());
+            panelArmour = new PanelEntity(this, panelWeapon.NextLeft(), panelWeapon.ShiftY);
 
-            panelArmour = new PanelEntity(this, panelWeapon.NextLeft(), panelWeapon.Top);
-
-            pageControl.Top = panelWeapon.NextTop();
+            pageControl.ShiftY = panelWeapon.NextTop();
             pageControl.AddPage("Статистика", (int)IconPages.Parameters, null);
             pageControl.AddPage("Инвентарь", (int)IconPages.Inventory, panelInventory);
             pageControl.AddPage("Способности", (int)IconPages.Abilities, panelAbilities);
