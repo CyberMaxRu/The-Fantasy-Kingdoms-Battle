@@ -34,6 +34,7 @@ namespace Fantasy_King_s_Battle
             parent.AddControl(this);
         }
 
+        internal VisualControl Parent { get; private set; }
         internal int Left { get { return left; } set { left = value; ValidateRectangle(); ArrangeControls(); } }
         internal int Top { get { return top; } set { top = value; ValidateRectangle(); ArrangeControls(); } }
         internal int Width { get { return width; } set { width = value; ValidateRectangle(); } }
@@ -158,6 +159,8 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(vc != this);
 
             Controls.Add(vc);
+            if (vc.Parent == null)
+                vc.Parent = this;
         }
 
         internal virtual Size MaxSize()
