@@ -1066,7 +1066,7 @@ namespace Fantasy_King_s_Battle
         {
             panelWarehouse = new PanelWithPanelEntity(Config.WarehouseWidth);
             pageHeroes.Page.AddControl(panelWarehouse);
-            panelWarehouse.ShiftY = panelHeroes.Top + panelHeroes.Height + Config.GridSize;
+            panelWarehouse.ShiftY = panelHeroes.NextTop();
         }
 
         internal void ShowWarehouse()
