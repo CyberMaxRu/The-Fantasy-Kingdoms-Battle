@@ -16,7 +16,7 @@ namespace Fantasy_King_s_Battle
 
         public PanelLairInfo(VisualControl parent, int shiftX, int shiftY, int height) : base(parent, shiftX, shiftY, height)
         {
-            panelInhabitants = new PanelWithPanelEntity(this, 0, 0, 4);
+            panelInhabitants = new PanelWithPanelEntity(4);
 
             pageControl.Top = pageControl.Top;
             pageControl.AddPage("Существа", (int)IconPages.Inhabitants, panelInhabitants);
@@ -36,15 +36,16 @@ namespace Fantasy_King_s_Battle
             }
         }
 
-        internal override void ShowData()
+        internal  void ShowData()
         {
-            base.ShowData();
+            //base.ShowData();
 
             //lblIcon.Text = (lair.Lair.MaxLevel > 1) && (building.Level > 0) ? building.Level.ToString() : "";
 
             panelInhabitants.ApplyList(lair.Monsters);
 
             Visible = true;
+            Program.formMain.ShowFrame();
         }
 
         protected override ImageList GetImageList() => Program.formMain.ilLairs;
