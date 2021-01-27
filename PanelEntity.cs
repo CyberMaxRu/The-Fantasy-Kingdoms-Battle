@@ -87,9 +87,9 @@ namespace Fantasy_King_s_Battle
                 cell.Panel = null;
         }
 
-        protected void OnMouseClick(MouseEventArgs e)
+        internal override void DoClick()
         {
-            //base.OnMouseClick(e);
+            base.DoClick();
 
             if (cell != null)
             {
