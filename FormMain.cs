@@ -1032,8 +1032,9 @@ namespace Fantasy_King_s_Battle
         {
             panelHeroes = new PanelWithPanelEntity(Config.HeroRows);
             pageHeroes.Page.AddControl(panelHeroes);
+            panelHeroes.ShiftY = pageHeroes.TopForControls;
 
-            List<ICell> list = new List<ICell>();
+            List <ICell> list = new List<ICell>();
             for (int x = 0; x < Config.HeroRows * Config.HeroInRow; x++)
                 list.Add(null);
 
