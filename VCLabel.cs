@@ -29,6 +29,8 @@ namespace Fantasy_King_s_Battle
             };
 
             LeftMargin = 0;
+            // Рисуем выше на два пиксела и увеличиваем высоту, так как у текст сверху пустота, а снизу происходит обрезка,
+            // хотя по высоте все вмещается
             TopMargin = -2;
         }
 
@@ -40,6 +42,8 @@ namespace Fantasy_King_s_Battle
             set { if (color != value) { color = value; brush?.Dispose(); brush = new SolidBrush(color); } }
         }
 
+        internal ImageList ImageList { get; set; }
+        internal int ImageIndex { get; set; } = -1;
         protected int LeftMargin { get; set; }
         protected int TopMargin { get; set; }
 
@@ -49,13 +53,17 @@ namespace Fantasy_King_s_Battle
         {
             base.ArrangeControls();
 
-            // Рисуем выше на два пиксела и увеличиваем высоту, так как у текст сверху пустота, а снизу происходит обрезка,
-            // хотя по высоте все вмещается
+            if ((ImageList != null) && (ImageIndex > 0))
+                LeftMargin = ImageList.ImageSize.Width + FormMain.Config.GridSize;
+
             rectText = new RectangleF(Left + LeftMargin, Top + TopMargin, Width, Height + 2);
         }
 
         internal override void Draw(Graphics g)
         {
+            if ((ImageList != null) && (ImageIndex > 0))
+                g.DrawImageUnscaled(GuiUtils.GetImageFromImageList(ImageList, ImageIndex, true), Left, Top);
+
             base.Draw(g);
 
             g.DrawString(Text, Font, brush, rectText, StringFormat);

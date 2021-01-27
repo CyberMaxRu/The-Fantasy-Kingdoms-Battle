@@ -17,19 +17,10 @@ namespace Fantasy_King_s_Battle
             StringFormat.Alignment = StringAlignment.Near;
             StringFormat.LineAlignment = StringAlignment.Near;
 
+            ImageList = Program.formMain.ilGui16;
             ImageIndex = imageIndex;
             Width = 80;
-            LeftMargin = 20;
             TopMargin = 0;
-        }
-
-        internal int ImageIndex { get; }
-
-        internal override void Draw(Graphics g)
-        {
-            g.DrawImageUnscaled(GuiUtils.GetImageFromImageList(Program.formMain.ilGui16, ImageIndex, true), Left, Top);
-
-            base.Draw(g);
         }
     }
 }
