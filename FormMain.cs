@@ -437,19 +437,19 @@ namespace Fantasy_King_s_Battle
             panelMenu.Top = ClientSize.Height - panelMenu.Height - Config.GridSize;
 
             // Панель информации о здании
-            panelBuildingInfo = new PanelBuildingInfo(MainControl, 0, pageGuilds.NextTop(), panelMenu.Top - pageGuilds.NextTop() - Config.GridSize)
+            panelBuildingInfo = new PanelBuildingInfo(MainControl, 0, btnQuit.NextTop(), panelMenu.Top - pageGuilds.NextTop() - Config.GridSize)
             {
                 Visible = false
             };
 
             // Панель информации о логове
-            panelLairInfo = new PanelLairInfo(MainControl, 0, pageGuilds.NextTop(), panelMenu.Top - pageGuilds.NextTop() - Config.GridSize)
+            panelLairInfo = new PanelLairInfo(MainControl, 0, btnQuit.NextTop(), panelMenu.Top - pageGuilds.NextTop() - Config.GridSize)
             {
                 Visible = false
             };
 
             //
-            panelHeroInfo = new PanelHeroInfo(MainControl, 0, pageGuilds.NextTop(), panelBuildingInfo.Height)
+            panelHeroInfo = new PanelHeroInfo(MainControl, 0, btnQuit.NextTop(), panelBuildingInfo.Height)
             {
                 Visible = false
             };
@@ -1030,7 +1030,8 @@ namespace Fantasy_King_s_Battle
 
         private void DrawHeroes()
         {
-            panelHeroes = new PanelWithPanelEntity(pageHeroes.Page, 0, 0, Config.HeroRows);
+            panelHeroes = new PanelWithPanelEntity(Config.HeroRows);
+            pageHeroes.Page.AddControl(panelHeroes);
 
             List<ICell> list = new List<ICell>();
             for (int x = 0; x < Config.HeroRows * Config.HeroInRow; x++)
@@ -1058,7 +1059,9 @@ namespace Fantasy_King_s_Battle
 
         private void DrawWarehouse()
         {
-            panelWarehouse = new PanelWithPanelEntity(pageHeroes.Page, 0, panelHeroes.Top + panelHeroes.Height + Config.GridSize, Config.WarehouseWidth);
+            panelWarehouse = new PanelWithPanelEntity(Config.WarehouseWidth);
+            pageHeroes.Page.AddControl(panelWarehouse);
+            panelWarehouse.ShiftY = panelHeroes.Top + panelHeroes.Height + Config.GridSize;
         }
 
         internal void ShowWarehouse()
@@ -1159,7 +1162,7 @@ namespace Fantasy_King_s_Battle
                     panelLairInfo.Visible = true;
                 }
                 else
-                    panelBuildingInfo.Visible = false;
+                    panelLairInfo.Visible = false;
 
                 panelMenu.Invalidate(true);// Это точно надо?
             }
@@ -1251,9 +1254,8 @@ namespace Fantasy_King_s_Battle
         {
             Debug.Assert(panelBuildingInfo != null);
 
-            panelBuildingInfo.ShowData();
+            ShowFrame();
         }
-
 
         private void ShowHintForToolButton(Control c, string text, string hint)
         {

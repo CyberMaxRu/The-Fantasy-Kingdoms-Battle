@@ -14,65 +14,40 @@ namespace Fantasy_King_s_Battle
     {
         protected enum Page { Products, Warehouse, Inhabitants, Statistics, Inventory, Abilities, Description };
 
-        private readonly Label lblName;
-        protected readonly Label lblIcon;
+        private readonly VCLabel lblName;
+        protected readonly VCImage imgIcon;
         protected PageControl pageControl;
 
         public PanelBaseInfo(VisualControl parent, int shiftX, int shiftY, int height) : base(parent, shiftX, shiftY)
         {
+            ShowBorder = true;
             Height = height;
 
-            lblName = new Label()
-            {
-                //Parent = this,
-                AutoSize = false,
-                Height = FormMain.Config.GridSize * 3,
-                Location = new Point(FormMain.Config.GridSize, FormMain.Config.GridSize),
-                Font = FormMain.Config.FontNamePage,
-                TextAlign = ContentAlignment.TopCenter,
-                ForeColor = FormMain.Config.BattlefieldPlayerName,
-                BackColor = Color.Transparent
-            };
+            lblName = new VCLabel(this, FormMain.Config.GridSize, FormMain.Config.GridSize, FormMain.Config.FontNamePage, FormMain.Config.BattlefieldPlayerName, FormMain.Config.GridSize * 3, "");
+            lblName.StringFormat.LineAlignment = StringAlignment.Near;
 
-            lblIcon = new Label()
-            {
-                //Parent = this,
-                Left = FormMain.Config.GridSize,
-                Top = GuiUtils.NextTop(lblName),
-                Size = GetImageList().ImageSize,
-                TextAlign = ContentAlignment.BottomRight,
-                Padding = new Padding(0, 0, 0, 3),
-                Font = FormMain.Config.FontQuantity,
-                ForeColor = FormMain.Config.CommonQuantity,
-                BackColor = Color.Transparent
-            };
+            imgIcon = new VCImage(this, FormMain.Config.GridSize, lblName.NextTop(), GetImageList(), -1);
 
-            pageControl = new PageControl(Program.formMain.ilPages)
+            pageControl = new PageControl(this, FormMain.Config.GridSize, TopForControls(), Program.formMain.ilPages)
             {
                 //Parent = this,
-                Left = FormMain.Config.GridSize,
                 Width = Width - FormMain.Config.GridSize * 2,
-                Top = TopForControls(),
                 Height = Height - TopForControls() - FormMain.Config.GridSize
             };
         }
 
-        protected  void OnResize(EventArgs e)
+        internal override void ArrangeControls()
         {
-            //base.OnResize(e);
+            base.ArrangeControls();
 
-            if (lblName != null)
-            {
-                lblName.MaximumSize = new Size(Width - FormMain.Config.GridSize * 2, FormMain.Config.GridSize * 3);
-                lblName.Width = Width - FormMain.Config.GridSize * 2;
-            }
+            lblName.Width = Width - FormMain.Config.GridSize * 2;
         }
 
         // Используемые потомками методы
-        protected int TopForControls() => GuiUtils.NextTop(lblIcon);
-        protected int LeftForControls() => lblIcon.Left;
-        protected int TopForIcon() => lblIcon.Top;
-        protected int LeftAfterIcon() => GuiUtils.NextLeft(lblIcon);
+        protected int TopForControls() => imgIcon.NextTop();
+        protected int LeftForControls() => imgIcon.ShiftX;
+        protected int TopForIcon() => imgIcon.ShiftY;
+        protected int LeftAfterIcon() => imgIcon.NextLeft();
 
         //protected Point LeftTopPage() => pointPage;
 
@@ -82,10 +57,13 @@ namespace Fantasy_King_s_Battle
         protected abstract string GetCaption();
 
         // Общие для всех панелей методы
-        internal virtual void ShowData()
+
+        internal override void Draw(Graphics g)
         {
             lblName.Text = GetCaption();
-            lblIcon.Image = GetImageList().Images[GetImageIndex()];
+            imgIcon.ImageIndex = GetImageIndex();
+
+            base.Draw(g);
         }
     }
 }

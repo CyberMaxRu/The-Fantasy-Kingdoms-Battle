@@ -37,8 +37,8 @@ namespace Fantasy_King_s_Battle
 
         public PanelHeroInfo(VisualControl parent, int shiftX, int shiftY, int height) : base(parent, shiftX, shiftY, height)
         {
-            panelInventory = new PanelWithPanelEntity(this, 0, 0, 4);
-            panelAbilities = new PanelWithPanelEntity(this, 0, 0, 4);
+            panelInventory = new PanelWithPanelEntity(4);
+            panelAbilities = new PanelWithPanelEntity(4);
 
             btnDismiss = new Button()
             {
@@ -121,9 +121,9 @@ namespace Fantasy_King_s_Battle
             }
         }
 
-        internal override void ShowData()
+        internal void ShowData()
         {
-            base.ShowData();
+            //base.ShowData();
 
             panelWeapon.ShowCell(hero.RangeWeapon != null ? hero.RangeWeapon : hero.MeleeWeapon);
             panelArmour.ShowCell(hero.Armour);

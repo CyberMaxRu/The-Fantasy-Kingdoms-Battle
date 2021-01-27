@@ -11,35 +11,23 @@ namespace Fantasy_King_s_Battle
     // Класс подробной информации о строении
     internal sealed class PanelBuildingInfo : PanelBaseInfo
     {
-        private PlayerBuilding building;
-        private Label lblGold;
+        private VCLabel lblGold;
         private readonly PanelWithPanelEntity panelProducts;
         private readonly PanelWithPanelEntity panelInhabitants;
         private readonly PanelWithPanelEntity panelWarehouse;
 
         public PanelBuildingInfo(VisualControl parent, int shiftX, int shiftY, int height) : base(parent, shiftX, shiftY, height)
         {
-            panelProducts = new PanelWithPanelEntity(this, 0, 0, 4);
-            panelInhabitants = new PanelWithPanelEntity(this, 0, 0, 4);
-            panelWarehouse = new PanelWithPanelEntity(this, 0, 0, 4);
+            panelProducts = new PanelWithPanelEntity(4);
+            panelInhabitants = new PanelWithPanelEntity(4);
+            panelWarehouse = new PanelWithPanelEntity(4);
 
-            lblGold = new Label()
-            {
-                //Parent = this,
-                Top = pageControl.Top,
-                Left = pageControl.Left,
-                Width = 80,
-                Height = 16,
-                Font = FormMain.Config.FontCost,
-                ImageList = Program.formMain.ilGui16,
-                ImageIndex = FormMain.GUI_16_GOLD,
-                ImageAlign = ContentAlignment.MiddleLeft,
-                TextAlign = ContentAlignment.MiddleRight,
-                ForeColor = Color.White,
-                BackColor = Color.Transparent
-            };
+            lblGold = new VCLabel(this, FormMain.Config.GridSize, TopForControls(), FormMain.Config.FontCost, Color.White, 16, "");
+            lblGold.Width = 80;
+            lblGold.ImageList = Program.formMain.ilGui16;
+            lblGold.ImageIndex = FormMain.GUI_16_GOLD;
 
-            pageControl.Top = GuiUtils.NextTop(lblGold);
+            pageControl.ShiftY = lblGold.NextTop();
             pageControl.AddPage("Товары", (int)IconPages.Products, panelProducts);
             pageControl.AddPage("Склад", (int)IconPages.Inventory, panelWarehouse);
             pageControl.AddPage("Жители", (int)IconPages.Inhabitants, panelInhabitants);
@@ -49,44 +37,33 @@ namespace Fantasy_King_s_Battle
             Width = pageControl.Width + FormMain.Config.GridSize * 2;
         }
 
-        internal PlayerBuilding Building
+        internal PlayerBuilding Building { get; set; }
+
+        internal override void Draw(Graphics g)
         {
-            get { return building; }
-            set
+            imgIcon.Level = (Building.Building.MaxLevel > 1) && (Building.Level > 0) ? Building.Level : 0;
+
+            if (Building.Building.HasTreasury)
             {
-                building = value;
-                ShowData();
-            }
-        }
-
-        internal override void ShowData()
-        {
-            base.ShowData();
-
-            lblIcon.Text = (building.Building.MaxLevel > 1) && (building.Level > 0) ? building.Level.ToString() : "";
-
-            if (building.Building.HasTreasury)
-            {
-                lblGold.Show();
-                lblGold.Text = building.Gold.ToString();
+                lblGold.Visible = true;
+                lblGold.Text = Building.Gold.ToString();
             }
             else
             {
-                lblGold.Hide();
+                lblGold.Visible = false;
             }
 
             //pageControl.SetPageVisible(1, building.Building.TrainedHero != null);
             //pageControl.SetPageVisible(2, building.Building.TrainedHero != null);
 
-            panelProducts.ApplyList(building.Items);
-            panelWarehouse.ApplyList(building.Warehouse);
-            panelInhabitants.ApplyList(building.Heroes);
+            panelWarehouse.ApplyList(Building.Warehouse);
+            panelInhabitants.ApplyList(Building.Heroes);
 
-            Visible = true;
+            base.Draw(g); 
         }
 
         protected override ImageList GetImageList() => Program.formMain.ilBuildings;
         protected override int GetImageIndex() => GuiUtils.GetImageIndexWithGray(Program.formMain.ilBuildings, Building.Building.ImageIndex, Building.Level > 0);
-        protected override string GetCaption() => building.Building.Name;
+        protected override string GetCaption() => Building.Building.Name;
     }
 }
