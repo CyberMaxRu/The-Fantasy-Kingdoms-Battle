@@ -934,14 +934,18 @@ namespace Fantasy_King_s_Battle
             
             ShowLobby();
 
+            UpdateListHeroes();
+            ShowWarehouse();
+        }
+
+        internal void UpdateListHeroes()
+        {
             List<ICell> listHeroes = new List<ICell>();
             for (int y = 0; y < lobby.CurrentPlayer.CellHeroes.GetLength(0); y++)
                 for (int x = 0; x < lobby.CurrentPlayer.CellHeroes.GetLength(1); x++)
                     listHeroes.Add(lobby.CurrentPlayer.CellHeroes[y, x]);
 
             panelHeroes.ApplyList(listHeroes);
-
-            ShowWarehouse();
         }
 
         private void ShowLobby()

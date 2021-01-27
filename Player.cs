@@ -140,7 +140,7 @@ namespace Fantasy_King_s_Battle
         internal int LevelCastle => Castle.Level;
         internal List<PlayerHero> CombatHeroes { get; } = new List<PlayerHero>();
         internal List<PlayerHero> AllHeroes { get; } = new List<PlayerHero>();
-        internal PlayerHero[,] CellHeroes;
+        internal PlayerHero[,] CellHeroes { get; private set; }
         internal TypePlayer TypePlayer { get; }
         internal int Gold { get => Castle.Gold; set { Castle.Gold = value; } }
         internal int TotalBuilders { get; private set; }
@@ -236,10 +236,10 @@ namespace Fantasy_King_s_Battle
             CombatHeroes.Add(ph);
 
             // Восстановить
-            /*if (ph.Building.Building.CategoryBuilding != CategoryBuilding.Castle)
+            if (ph.Building.Building.TrainedHero != null)
             {
                 RearrangeHeroes();
-            }*/
+            }
         }
 
         internal bool EnoughPointConstruction(PlayerBuilding pb)

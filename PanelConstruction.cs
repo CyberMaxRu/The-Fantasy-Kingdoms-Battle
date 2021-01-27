@@ -134,6 +134,7 @@ namespace Fantasy_King_s_Battle
 
                 Building.HireHero();
                 btnHireHero.DoShowHint();
+                Program.formMain.UpdateListHeroes();
                 Program.formMain.ShowFrame();
             }
         }
