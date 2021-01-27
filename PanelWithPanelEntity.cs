@@ -15,7 +15,7 @@ namespace Fantasy_King_s_Battle
         private List<PanelEntity> panelEntities = new List<PanelEntity>();
         private int rows;// Сколько сейчас строк подготовлено
 
-        public PanelWithPanelEntity(VisualControl parent, int shiftX, int shiftY, int entityInRow) : base(parent, shiftX, shiftY)
+        public PanelWithPanelEntity(int entityInRow) : base()
         {
             //DoubleBuffered = true;
             //BackColor = Color.Transparent;
