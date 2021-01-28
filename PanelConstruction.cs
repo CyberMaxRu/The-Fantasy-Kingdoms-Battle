@@ -168,7 +168,7 @@ namespace Fantasy_King_s_Battle
 
             BorderColor = FormMain.Config.ColorBorder(Program.formMain.SelectedPanelBuilding == this);
             imageConstruction.ImageIndex = Building.Building.ImageIndex;
-            imageConstruction.NormalImage = Building.Level > 0;
+            imageConstruction.ImageState = Building.Level > 0 ? ImageState.Normal : ImageState.Disabled;
 
             lblName.Color = FormMain.Config.ColorMapObjectCaption(Building.Level > 0);
 
