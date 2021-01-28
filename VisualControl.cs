@@ -109,6 +109,14 @@ namespace Fantasy_King_s_Battle
             }
         }
 
+        internal virtual void MouseEnter()
+        {
+        }
+
+        internal virtual void MouseLeave()
+        {
+        }
+
         internal virtual void ArrangeControls()
         {
             foreach (VisualControl vc in Controls)
