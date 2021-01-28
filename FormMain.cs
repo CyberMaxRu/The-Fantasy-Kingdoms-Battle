@@ -146,6 +146,7 @@ namespace Fantasy_King_s_Battle
         private Point shiftControls;
         private int maxWidthPages;
 
+        private bool needRedrawFrame;
 
         private VCFormPage currentPage;
         private readonly int leftForPages;
@@ -307,9 +308,9 @@ namespace Fantasy_King_s_Battle
             ilStateHero = PrepareImageList("StateHero.png", 24, 24, false);
             ilMenuCellFilters = PrepareImageList("MenuCellFilters.png", 48, 48, true);
 
-            imageListContainer = new ImageListContainer(dirResources);
-            ilGui = PrepareImageList("Gui.png", 48, 48, true);
+            ilGui = PrepareImageList("Gui.png", 48, 48, true, true);
             ilPages = PrepareImageList("Pages.png", 48, 48, true);
+            imageListContainer = new ImageListContainer(dirResources);
             //MakeAlpha();
 
             bmpForBackground = new Bitmap(dirResources + "Icons\\Background.png");
@@ -901,7 +902,37 @@ namespace Fantasy_King_s_Battle
             return output;
         }
 
-        internal ImageList PrepareImageList(string filename, int width, int height, bool convertToGrey)
+        private Bitmap BrightBitmap(Bitmap bmp)
+        {
+            Bitmap output = new Bitmap(bmp.Width, bmp.Height);
+
+            // Перебираем в циклах все пиксели исходного изображения
+            for (int j = 0; j < bmp.Height; j++)
+                for (int i = 0; i < bmp.Width; i++)
+                {
+                    // получаем (i, j) пиксель
+                    uint pixel = (uint)(bmp.GetPixel(i, j).ToArgb());
+
+                    // получаем компоненты цветов пикселя
+                    float R = (pixel & 0x00FF0000) >> 16; // красный
+                    float G = (pixel & 0x0000FF00) >> 8; // зеленый
+                    float B = pixel & 0x000000FF; // синий
+                                                  // делаем цвет черно-белым (оттенки серого) - находим среднее арифметическое
+                    R = Math.Min(R * 1.2f, 255);
+                    G = Math.Min(G * 1.2f, 255);
+                    B = Math.Min(B * 1.2f, 255);
+
+                    // собираем новый пиксель по частям (по каналам)
+                    uint newPixel = ((uint)bmp.GetPixel(i, j).A << 24) | ((uint)R << 16) | ((uint)G << 8) | ((uint)B);
+
+                    // добавляем его в Bitmap нового изображения
+                    output.SetPixel(i, j, Color.FromArgb((int)newPixel));
+                }
+
+            return output;
+        }
+
+        internal ImageList PrepareImageList(string filename, int width, int height, bool convertToGrey, bool addOver = false)
         {
             ImageList il = new ImageList()
             {
@@ -915,9 +946,13 @@ namespace Fantasy_King_s_Battle
                 throw new Exception("Высота многострочной картинки не кратна высоте строки: " + filename);
 
             AddBitmapToImageList(il, bmp, height);
+            il.Tag = il.Images.Count;
 
             if (convertToGrey == true)
                 AddBitmapToImageList(il, GreyBitmap(bmp), height);
+
+            if (addOver == true)
+                AddBitmapToImageList(il, BrightBitmap(bmp), height);
 
             return il;
         }
@@ -1335,6 +1370,7 @@ namespace Fantasy_King_s_Battle
                 ilSmall.Images.Add(bmpDest);
                 gDest.Dispose();
             }
+            ilSmall.Tag = ilSmall.Images.Count;
 
             return ilSmall;
         }
@@ -1384,6 +1420,8 @@ namespace Fantasy_King_s_Battle
 
         internal void ShowFrame()
         {
+            needRedrawFrame = false;
+
             DrawFrame();// Готовим кадр
             if (controlWithHint != null)
             {
@@ -1453,9 +1491,7 @@ namespace Fantasy_King_s_Battle
                 if (curControl == null)
                 {
                     timerHover.Stop();
-                    formHint.HideHint();
-                    hintShowed = false;
-                    controlWithHint = null;
+                    ControlForHintLeave();
                 }
                 else if (curControl == controlWithHint)
                 {
@@ -1473,19 +1509,33 @@ namespace Fantasy_King_s_Battle
                 }
                 else
                 {
-                    hintShowed = false;
+                    ControlForHintLeave();
                     controlWithHint = curControl;
+                    controlWithHint.MouseEnter();
                     timerHover.Start();
                     ShowFrame();
                 }
+
+                if (needRedrawFrame)
+                    ShowFrame();
             }
+        }
+
+        private void ControlForHintLeave()
+        {
+            if (controlWithHint != null)
+                controlWithHint.MouseLeave();
+
+            controlWithHint = null;
+            hintShowed = false;
+            formHint.HideHint();
         }
 
         protected override void OnMouseLeave(EventArgs e)
         {
             base.OnMouseLeave(e);
 
-            controlWithHint = null;
+            ControlForHintLeave();
             formHint.HideHint();
         }
 
@@ -1507,6 +1557,19 @@ namespace Fantasy_King_s_Battle
                 controlWithHint.DoShowHint();
                 hintShowed = true;
             }
+        }
+
+        internal void NeedRedrawFrame()
+        {
+            needRedrawFrame = true;
+        }
+
+        protected override void OnDeactivate(EventArgs e)
+        {
+            base.OnDeactivate(e);
+
+            ControlForHintLeave();
+            ShowFrame();
         }
     }
 }
