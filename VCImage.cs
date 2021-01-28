@@ -48,7 +48,7 @@ namespace Fantasy_King_s_Battle
 
         internal ImageList ImageList { get; }
         internal int ImageIndex { get; set; }
-        internal bool NormalImage { get; set; } = true;
+        internal ImageState ImageState { get; set; } = ImageState.Normal;
         protected int ShiftImage { get => shiftImage; set { shiftImage = value; ValidateSize(); } }
         internal int Cost { get; set; }
         internal bool ShowCostZero { get; set; }
@@ -71,7 +71,7 @@ namespace Fantasy_King_s_Battle
             base.Draw(g);
 
             if (ImageIndex != -1)
-                g.DrawImageUnscaled(GuiUtils.GetImageFromImageList(ImageList, ImageIndex, NormalImage), Left + ShiftImage, Top + ShiftImage);
+                g.DrawImageUnscaled(ImageListContainer.GetImage(ImageList, ImageIndex, ImageState), Left + ShiftImage, Top + ShiftImage);
             //else
             //    g.DrawImage(Program.formMain.bmpEmptyEntity, new Rectangle(Left + 1, Top + 0, Program.formMain.bmpBorderForIcon.Width - 2, Program.formMain.bmpBorderForIcon.Height - 2));
 
