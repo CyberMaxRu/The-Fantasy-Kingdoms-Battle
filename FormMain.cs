@@ -23,6 +23,7 @@ namespace Fantasy_King_s_Battle
         internal readonly string dirResources;
 
         // ImageList'ы
+        private readonly ImageListContainer imageListContainer;
         internal readonly ImageList ilPlayerAvatars;
         internal ImageList ilPlayerAvatarsBig;
         internal readonly ImageList ilResultBattle;
@@ -296,7 +297,7 @@ namespace Fantasy_King_s_Battle
             ilHeroes = PrepareImageList("Heroes.png", 126, 126, false);
             ilMonsters = PrepareImageList("Monsters.png", 128, 128, false);
             ilMonstersSmall = BigIconToSmall(ilMonsters);
-            ilGui = PrepareImageList("Gui.png", 48, 48, true);
+
             ilGuiHeroes = PrepareImageList("GuiHeroes.png", 48, 48, true);
             ilGui16 = PrepareImageList("Gui16.png", 16, 16, false);
             ilGui24 = PrepareImageList("Gui24.png", 24, 24, false);
@@ -305,6 +306,9 @@ namespace Fantasy_King_s_Battle
             ilItems = PrepareImageList("Items.png", 48, 48, true);
             ilStateHero = PrepareImageList("StateHero.png", 24, 24, false);
             ilMenuCellFilters = PrepareImageList("MenuCellFilters.png", 48, 48, true);
+
+            imageListContainer = new ImageListContainer(dirResources);
+            ilGui = PrepareImageList("Gui.png", 48, 48, true);
             ilPages = PrepareImageList("Pages.png", 48, 48, true);
             //MakeAlpha();
 
@@ -908,7 +912,7 @@ namespace Fantasy_King_s_Battle
             Bitmap bmp = new Bitmap(dirResources + "Icons\\" + filename);
             // Если это многострочная картинка, нарезаем ее в однострочную картинку
             if (bmp.Height % height != 0)
-                throw new Exception("Высота многострочной картинки не кратна высоте строки.");
+                throw new Exception("Высота многострочной картинки не кратна высоте строки: " + filename);
 
             AddBitmapToImageList(il, bmp, height);
 

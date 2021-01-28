@@ -1,0 +1,99 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Drawing;  
+    
+namespace Fantasy_King_s_Battle
+{
+    // Контейнер, содержащий в себе все ImageList'ы
+    internal sealed class ImageListContainer
+    {
+        private string folderResources;
+        private ImageList imageListGui;
+
+        public ImageListContainer(string folderResources)
+        {
+            this.folderResources = folderResources;
+            imageListGui = PrepareImageList("Gui.png", 48, 48, true);
+        }
+
+        internal Image GetImageButton(int imageIndex, bool normal)
+        {
+            return imageListGui.Images[imageIndex + (normal ? 0 : imageListGui.Images.Count / 2)];
+        }
+
+        internal ImageList PrepareImageList(string filename, int width, int height, bool convertToGrey)
+        {
+            ImageList il = new ImageList()
+            {
+                ColorDepth = ColorDepth.Depth32Bit,
+                ImageSize = new Size(width, height)
+            };
+
+            Bitmap bmp = new Bitmap(folderResources + "Icons\\" + filename);
+            // Если это многострочная картинка, нарезаем ее в однострочную картинку
+            if (bmp.Height % height != 0)
+                throw new Exception("Высота многострочной картинки не кратна высоте строки: " + filename);
+
+            AddBitmapToImageList(il, bmp, height);
+
+            if (convertToGrey == true)
+                AddBitmapToImageList(il, GreyBitmap(bmp), height);
+
+            return il;
+        }
+
+        private void AddBitmapToImageList(ImageList il, Bitmap bitmap, int height)
+        {
+            int lines = bitmap.Height / height;
+            if (lines > 1)
+            {
+                for (int i = 0; i < lines; i++)
+                {
+                    Bitmap bmpSingleline = new Bitmap(bitmap.Width, height);
+                    Graphics g = Graphics.FromImage(bmpSingleline);
+                    g.DrawImage(bitmap, 0, 0, new Rectangle(0, i * height, bitmap.Width, height), GraphicsUnit.Pixel);
+                    _ = il.Images.AddStrip(bmpSingleline);
+                    g.Dispose();
+                }
+            }
+            else
+            {
+                _ = il.Images.AddStrip(bitmap);
+            }
+        }
+
+        private Bitmap GreyBitmap(Bitmap bmp)
+        {
+            Bitmap output = new Bitmap(bmp.Width, bmp.Height);
+
+            // Перебираем в циклах все пиксели исходного изображения
+            for (int j = 0; j < bmp.Height; j++)
+                for (int i = 0; i < bmp.Width; i++)
+                {
+                    // получаем (i, j) пиксель
+                    uint pixel = (uint)(bmp.GetPixel(i, j).ToArgb());
+
+                    // получаем компоненты цветов пикселя
+                    float R = (pixel & 0x00FF0000) >> 16; // красный
+                    float G = (pixel & 0x0000FF00) >> 8; // зеленый
+                    float B = pixel & 0x000000FF; // синий
+                                                  // делаем цвет черно-белым (оттенки серого) - находим среднее арифметическое
+                    R = G = B = (R + G + B) / 3.0f;
+
+                    // собираем новый пиксель по частям (по каналам)
+                    uint newPixel = ((uint)bmp.GetPixel(i, j).A << 24) | ((uint)R << 16) | ((uint)G << 8) | ((uint)B);
+
+                    // добавляем его в Bitmap нового изображения
+                    output.SetPixel(i, j, Color.FromArgb((int)newPixel));
+                }
+
+            return output;
+        }
+
+
+    }
+}
