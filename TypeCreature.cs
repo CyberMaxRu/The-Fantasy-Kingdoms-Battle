@@ -19,7 +19,7 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(MaxLevel <= 100);
             Debug.Assert(DefaultPositionPriority >= 0);
             Debug.Assert(DefaultPositionPriority <= 1000);
-            Debug.Assert(Reward > 0);
+            Debug.Assert(Reward >= 0);
             Debug.Assert(Reward <= 1000);
 
             // Загружаем основные параметры
