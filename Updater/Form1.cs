@@ -118,7 +118,7 @@ namespace Updater
                     CheckUpdate();
                     break;
                 case State.Update:
-                    Update();
+                    DoUpdate();
                     break;
                 case State.Run:
                     if (File.Exists(Environment.CurrentDirectory + "\\The Fantasy Kingdoms Battle.exe"))
@@ -236,7 +236,7 @@ namespace Updater
             Directory.SetAccessControl(dirName, dSecurity);
         }
 
-        private void Update()
+        private void DoUpdate()
         {
             bool b = false;
             //получаем имя компьютора и пользователя
