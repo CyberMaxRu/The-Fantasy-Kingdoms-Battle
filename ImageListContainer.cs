@@ -31,7 +31,7 @@ namespace Fantasy_King_s_Battle
         internal static Image GetImage(ImageList imageList, int imageIndex, ImageState state)
         {
             int index = imageIndex + (int)state * (int)imageList.Tag;
-            //Debug.Assert(index < imageList.Images.Count); Включить
+            Debug.Assert(index < imageList.Images.Count, "Попытка взять index=" + index.ToString() + " из " + imageList.Images.Count.ToString());
 
             return imageList.Images[index];
         }
