@@ -299,7 +299,7 @@ namespace Fantasy_King_s_Battle
             ilMonsters = PrepareImageList("Monsters.png", 128, 128, false);
             ilMonstersSmall = BigIconToSmall(ilMonsters);
 
-            ilGuiHeroes = PrepareImageList("GuiHeroes.png", 48, 48, true);
+            ilGuiHeroes = PrepareImageList("GuiHeroes.png", 48, 48, true, true);
             ilGui16 = PrepareImageList("Gui16.png", 16, 16, false);
             ilGui24 = PrepareImageList("Gui24.png", 24, 24, false);
             ilGui45 = PrepareImageList("Gui45.png", 45, 45, false);
