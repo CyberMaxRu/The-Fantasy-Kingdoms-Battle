@@ -51,7 +51,7 @@ namespace Fantasy_King_s_Battle
             };
             btnDismiss.Click += BtnDismiss_Click;
 
-            panelWeapon = new PanelEntity(this, pageControl.Left, TopForControls());
+            panelWeapon = new PanelEntity(this, FormMain.Config.GridSize, TopForControls());
             panelArmour = new PanelEntity(this, panelWeapon.NextLeft(), panelWeapon.ShiftY);
 
             pageControl.ShiftY = panelWeapon.NextTop();
