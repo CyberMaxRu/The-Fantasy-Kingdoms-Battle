@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using System.Drawing;
 
 namespace Fantasy_King_s_Battle
 {
-    // Класс метки
+    // Класс визуального контрола - текстовой метки
+
     internal class VCLabel : VisualControl
     {
         private Brush brush;
