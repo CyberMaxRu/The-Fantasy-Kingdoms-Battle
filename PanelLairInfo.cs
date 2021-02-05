@@ -18,7 +18,7 @@ namespace Fantasy_King_s_Battle
         {
             panelInhabitants = new PanelWithPanelEntity(4);
 
-            pageControl.Top = pageControl.Top;
+            pageControl.ShiftY = TopForControls();
             pageControl.AddPage("Существа", (int)IconPages.Inhabitants, panelInhabitants);
             pageControl.AddPage("История", (int)IconPages.History, null);
 

@@ -34,7 +34,9 @@ namespace Fantasy_King_s_Battle
         {
             base.ArrangeControls();
 
-            Page.Top = NextTop();
+            Page.ShiftY = Height + TopForControls;
+            ArrangeControl(Page);
+
             lblCaption.Width = Page.Width;
         }
 

@@ -36,7 +36,7 @@ namespace Fantasy_King_s_Battle
 
         internal VisualControl Parent { get; private set; }
         internal int Left { get { return left; } set { left = value; ValidateRectangle(); ArrangeControls(); } }
-        internal int Top { get { return top; } set { top = value; ValidateRectangle(); ArrangeControls(); } }
+        internal int Top { get { return top; } private set { top = value; ValidateRectangle(); ArrangeControls(); } }
         internal int Width { get { return width; } set { width = value; ValidateRectangle(); } }
         internal int Height { get { return height; } set { height = value; ValidateRectangle(); } }
         internal int ShiftX { get; set; }// Смещение контрола относительно левого края на родителе
@@ -153,7 +153,7 @@ namespace Fantasy_King_s_Battle
             return this;
         }
 
-        private void ArrangeControl(VisualControl vc)
+        protected void ArrangeControl(VisualControl vc)
         {
             vc.Left = Left + vc.ShiftX;
             vc.Top = Top + vc.ShiftY;
