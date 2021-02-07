@@ -28,7 +28,7 @@ namespace Fantasy_King_s_Battle
 
             imgIcon = new VCImage(this, FormMain.Config.GridSize, lblName.NextTop(), GetImageList(), -1);
 
-            pageControl = new VCPageControl(this, FormMain.Config.GridSize, TopForControls(), Program.formMain.ilPages)
+            pageControl = new VCPageControl(this, FormMain.Config.GridSize, TopForControls(), Program.formMain.ilGui)
             {
                 //Parent = this,
                 Width = Width - FormMain.Config.GridSize * 2,

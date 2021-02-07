@@ -9,8 +9,6 @@ using System.Drawing;
 
 namespace Fantasy_King_s_Battle
 {
-    internal enum IconPages { Inventory, History, Inhabitants, Products, Parameters, Abilities }
-
     // Класс иконки страницы
     internal sealed class VCPictureBoxPage : VCImage
     {

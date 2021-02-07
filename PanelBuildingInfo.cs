@@ -28,10 +28,10 @@ namespace Fantasy_King_s_Battle
             lblGold.ImageIndex = FormMain.GUI_16_GOLD;
 
             pageControl.ShiftY = lblGold.NextTop();
-            pageControl.AddPage("Товары", (int)IconPages.Products, panelProducts);
-            pageControl.AddPage("Склад", (int)IconPages.Inventory, panelWarehouse);
-            pageControl.AddPage("Жители", (int)IconPages.Inhabitants, panelInhabitants);
-            pageControl.AddPage("История", (int)IconPages.History, null);
+            pageControl.AddPage("Товары", FormMain.GUI_GOODS, panelProducts);
+            pageControl.AddPage("Склад", FormMain.GUI_INVENTORY, panelWarehouse);
+            pageControl.AddPage("Жители", FormMain.GUI_HOME, panelInhabitants);
+            pageControl.AddPage("История", FormMain.GUI_BOOK, null);
 
             pageControl.ApplyMinWidth();
             Width = pageControl.Width + FormMain.Config.GridSize * 2;
