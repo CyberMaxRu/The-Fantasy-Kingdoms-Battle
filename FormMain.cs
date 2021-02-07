@@ -404,10 +404,13 @@ namespace Fantasy_King_s_Battle
 
             // Страницы игры
             pageGuilds = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_GUILDS, "Гильдии", BtnPage_Click);
+            pageGuilds.ShowHint += PageGuilds_ShowHint;
             pageBuildings = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_ECONOMY, "Экономические строения", BtnPage_Click);
+            pageBuildings.ShowHint += PageBuildings_ShowHint;
             pageTemples = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_TEMPLE, "Храмы", BtnPage_Click);
             pageHeroes = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_HEROES, "Герои", BtnPage_Click);
             pageHeroes.ShowCostZero = true;
+            pageHeroes.ShowHint += PageHeroes_ShowHint;
             pageLairs = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_LAIR, "Логова", BtnPage_Click);
             pageTournament = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_TOURNAMENT, "Турнир", BtnPage_Click);
             pageTournament.ShowHint += PageTournament_ShowHint;
@@ -545,9 +548,24 @@ namespace Fantasy_King_s_Battle
             }
         }
 
+        private void PageHeroes_ShowHint(object sender, EventArgs e)
+        {
+            ShowHintForToolButton(pageHeroes, pageHeroes.Caption, "Нанято героев: " + lobby.CurrentPlayer.CombatHeroes.Count.ToString());
+        }
+
+        private void PageBuildings_ShowHint(object sender, EventArgs e)
+        {
+            ShowHintForToolButton(pageBuildings, pageBuildings.Caption, "Доступно построек/апгрейдов зданий: " + lobby.CurrentPlayer.PointConstructionEconomic.ToString());
+        }
+
+        private void PageGuilds_ShowHint(object sender, EventArgs e)
+        {
+            ShowHintForToolButton(pageGuilds, pageGuilds.Caption, "Доступно построек/апгрейдов гильдий: " + lobby.CurrentPlayer.PointConstructionGuild.ToString());
+        }
+
         private void PageTournament_ShowHint(object sender, EventArgs e)
         {
-            ShowHintForToolButton(pageTournament, "Турнир", "Турнир начнется через " + lobby.DaysForTournament().ToString() + " дн.");
+            ShowHintForToolButton(pageTournament, pageTournament.Caption, "Турнир начнется через " + lobby.DaysForTournament().ToString() + " дн.");
         }
 
         private void LabelGold_ShowHint(object sender, EventArgs e)
