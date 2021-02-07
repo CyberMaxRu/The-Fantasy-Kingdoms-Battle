@@ -45,7 +45,7 @@ namespace Fantasy_King_s_Battle
                 Left = FormMain.Config.GridSize,
                 Top = FormMain.Config.GridSize,
                 Width = ClientSize.Width,
-                Height = 18,
+                Height = 20,
                 ForeColor = FormMain.Config.HintHeader,
                 BackColor = Color.Transparent,
                 Font = FormMain.Config.FontHintMainText
