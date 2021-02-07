@@ -26,7 +26,7 @@ namespace Fantasy_King_s_Battle
 
             ValidateSize();
 
-            labelCost = new VCLabel(this, 0, Height - 16, FormMain.Config.FontCost, FormMain.Config.CommonCost, 16, "");
+            labelCost = new VCLabel(this, 0, Height - 12, FormMain.Config.FontCost, FormMain.Config.CommonCost, 16, "");
             labelCost.Width = Width;
             labelCost.StringFormat.LineAlignment = StringAlignment.Far;
             labelCost.Visible = false;// Текст перекрывается иконкой. Поэтому рисуем вручную
