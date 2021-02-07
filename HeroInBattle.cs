@@ -44,6 +44,7 @@ namespace Fantasy_King_s_Battle
             CurrentStamina = Parameters.Stamina;
 
             State = StateHeroInBattle.None;
+            QuantityArrows = ph.TypeHero.QuantityArrows;
 
             LastTarget = default;
 
@@ -68,6 +69,7 @@ namespace Fantasy_King_s_Battle
         internal int CurrentMana { get; set; }
         internal int CurrentStamina { get; set; }
         internal int ReceivedDamage { get; private set; }
+        internal int QuantityArrows { get; private set; }
 
         internal Bitmap BmpIcon
         {
@@ -123,7 +125,7 @@ namespace Fantasy_King_s_Battle
                         // Если сейчас ничего не выполняем, ищем, что можно сделать
                         // Сначала пробуем атаковать стрелковым оружием
 
-                        if ((PlayerHero.RangeWeapon != null) || (PlayerHero.TypeHero.ID == "Cleric") || (PlayerHero.TypeHero.ID == "Mage"))
+                        if (((PlayerHero.RangeWeapon != null) && (QuantityArrows > 0)) || (PlayerHero.TypeHero.ID == "Cleric") || (PlayerHero.TypeHero.ID == "Mage"))
                         {
                             bool underMeleeAttack = false;
                             // Если юнит не атакован врукопашную, можно атаковать стрелковой атакой
@@ -363,7 +365,11 @@ namespace Fantasy_King_s_Battle
 
                     // Создаем выстрел
                     if (PlayerHero.RangeWeapon != null)
+                    {
+                        Debug.Assert(QuantityArrows > 0);
                         Battle.Missiles.Add(new Arrow(this, Target.CurrentTile));
+                        QuantityArrows--;
+                    }
                     else
                         Battle.Missiles.Add(new MagicStrike(this, Target.CurrentTile));
 

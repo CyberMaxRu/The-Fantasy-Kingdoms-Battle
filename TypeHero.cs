@@ -19,6 +19,7 @@ namespace Fantasy_King_s_Battle
             Building.TrainedHero = this;
             CanBuild = Convert.ToBoolean(n.SelectSingleNode("CanBuild").InnerText);
             DamageToCastle = Convert.ToInt32(n.SelectSingleNode("DamageToCastle").InnerText);
+            QuantityArrows = XmlUtils.GetInteger(n.SelectSingleNode("QuantityArrows"));
 
             //Debug.Assert(Cost > 0);
             Debug.Assert(DamageToCastle >= 0);
@@ -55,6 +56,15 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(nameMeleeWeapon != "");
             Debug.Assert(nameArmour != "");
 
+            if (nameRangeWeapon.Length > 0)
+            {
+                Debug.Assert(QuantityArrows > 0);
+            }
+            else
+            {
+                Debug.Assert(QuantityArrows == 0);
+            }
+
             // Загружаем информацию о переносимых предметах
             XmlNode nc = n.SelectSingleNode("CarryItems");
             if (nc != null)
@@ -87,6 +97,7 @@ namespace Fantasy_King_s_Battle
         internal Weapon WeaponRange { get; private set; }// Стрелковое оружие
         internal Armour Armour { get; private set; }// Доспех по умолчанию
         internal Dictionary<Item, int> CarryItems { get; } = new Dictionary<Item, int>();
+        internal int QuantityArrows { get; }// Количество стрел
 
         internal int MaxQuantityItem(Item i)
         {
