@@ -63,7 +63,7 @@ namespace Fantasy_King_s_Battle
 
         internal override void Draw(Graphics g)
         {
-            Debug.Assert(Cost >= 0);
+            //Debug.Assert(Cost >= 0);
             Debug.Assert(Level >= 0);
             Debug.Assert(PopupQuantity >= 0);
             Debug.Assert(PopupQuantity <= 9);
@@ -75,7 +75,7 @@ namespace Fantasy_King_s_Battle
             //else
             //    g.DrawImage(Program.formMain.bmpEmptyEntity, new Rectangle(Left + 1, Top + 0, Program.formMain.bmpBorderForIcon.Width - 2, Program.formMain.bmpBorderForIcon.Height - 2));
 
-            if ((Cost > 0) || ShowCostZero)
+            if ((Cost != 0) || ShowCostZero)
             {
                 labelCost.Text = Cost.ToString();
                 labelCost.Draw(g);

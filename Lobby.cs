@@ -86,7 +86,7 @@ namespace Fantasy_King_s_Battle
         internal TypeLobby TypeLobby { get; }
         internal Player[] Players { get; }
         internal Player CurrentPlayer { get; private set; }
-        internal int Turn { get; private set; }
+        internal int Turn { get; private set; }        
         internal List<Battle> Battles { get; } = new List<Battle>();
         internal bool HumanIsWin { get; private set; }
 
@@ -328,6 +328,11 @@ namespace Fantasy_King_s_Battle
 
                 curPos++;
             }
+        }
+
+        internal int DaysForTournament()
+        {
+            return TypeLobby.DayStartTournament - Turn;
         }
     }
 }

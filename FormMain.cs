@@ -410,6 +410,7 @@ namespace Fantasy_King_s_Battle
             pageHeroes.ShowCostZero = true;
             pageLairs = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_LAIR, "Логова", BtnPage_Click);
             pageTournament = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_TOURNAMENT, "Турнир", BtnPage_Click);
+            pageTournament.ShowHint += PageTournament_ShowHint;
 
             DrawPageConstructions();
             DrawHeroes();
@@ -542,6 +543,11 @@ namespace Fantasy_King_s_Battle
                 lblStage.Text = text + "...";
                 lblStage.Refresh();
             }
+        }
+
+        private void PageTournament_ShowHint(object sender, EventArgs e)
+        {
+            ShowHintForToolButton(pageTournament, "Турнир", "Турнир начнется через " + lobby.DaysForTournament().ToString() + " дн.");
         }
 
         private void LabelGold_ShowHint(object sender, EventArgs e)
@@ -965,6 +971,7 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(lobby.CurrentPlayer.TypePlayer == TypePlayer.Human);
 
             labelDay.Text = lobby.Turn.ToString();
+            pageTournament.Cost = lobby.Turn - lobby.TypeLobby.DayStartTournament; 
 
             // Если этого игрока не отрисовывали, формируем заново вкладки
             if (curAppliedPlayer != lobby.CurrentPlayer)
