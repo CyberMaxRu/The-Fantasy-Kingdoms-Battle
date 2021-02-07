@@ -6,6 +6,7 @@
     <DurabilityCastle>10</DurabilityCastle>
     <Gold>20000</Gold>
     <MaxHeroes>49</MaxHeroes>
+    <DayStartTournament>10</DayStartTournament>
     <StartPointConstructionGuild>2</StartPointConstructionGuild>
     <StartPointConstructionEconomic>2</StartPointConstructionEconomic>
     <PointConstructionGuildPerDay>1</PointConstructionGuildPerDay>

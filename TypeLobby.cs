@@ -22,6 +22,7 @@ namespace Fantasy_King_s_Battle
             StartPointConstructionEconomic = XmlUtils.GetInteger(n.SelectSingleNode("StartPointConstructionEconomic"));
             PointConstructionGuildPerDay = XmlUtils.GetInteger(n.SelectSingleNode("PointConstructionGuildPerDay"));
             PointConstructionEconomicPerDay = XmlUtils.GetInteger(n.SelectSingleNode("PointConstructionEconomicPerDay"));
+            DayStartTournament = XmlUtils.GetInteger(n.SelectSingleNode("DayStartTournament"));
 
             Debug.Assert(Name.Length > 0);
             Debug.Assert(QuantityPlayers >= 2);
@@ -41,6 +42,8 @@ namespace Fantasy_King_s_Battle
             Debug.Assert(PointConstructionGuildPerDay <= 10);
             Debug.Assert(PointConstructionEconomicPerDay >= 1);
             Debug.Assert(PointConstructionEconomicPerDay <= 10);
+            Debug.Assert(DayStartTournament >= 2);
+            Debug.Assert(DayStartTournament <= 50);
 
             foreach (TypeLobby t in FormMain.Config.TypeLobbies)
             {
@@ -54,6 +57,7 @@ namespace Fantasy_King_s_Battle
         internal int DurabilityCastle { get; }
         internal int Gold { get; }
         internal int MaxHeroes { get; }
+        internal int DayStartTournament { get; }
         internal int StartPointConstructionGuild { get; }
         internal int StartPointConstructionEconomic { get; }
         internal int PointConstructionGuildPerDay { get; }
