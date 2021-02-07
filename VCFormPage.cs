@@ -8,6 +8,8 @@ namespace Fantasy_King_s_Battle
     internal sealed class VCFormPage : VCButton
     {
         private VCLabel lblCaption;
+        private List<VCFormPage> listPages;
+        private int indexInList;
         public VCFormPage(VisualControl parent, int shiftX, int shiftY, List<VCFormPage> list, ImageList imageList, int imageIndex, string caption, EventHandler onClick) : base(parent, shiftX, shiftY, imageList, imageIndex)
         {
             Caption = caption;
@@ -17,13 +19,16 @@ namespace Fantasy_King_s_Battle
             };
             Click += onClick;
 
-            list.Add(this);
+            listPages = list;
+            indexInList = listPages.Count;
+            listPages.Add(this);
+            
 
             lblCaption = new VCLabel(Page, 0, 0, FormMain.Config.FontCaptionPage, FormMain.Config.CommonCaptionPage, FormMain.Config.GridSize * 3, caption);
             //lblCaption.StringFormat.LineAlignment = StringAlignment.Center;
-            ArrangeControls();
 
             TopForControls = 24;
+            ArrangeControls();
         }
 
         internal VisualControl Page { get; }
@@ -34,7 +39,8 @@ namespace Fantasy_King_s_Battle
         {
             base.ArrangeControls();
 
-            Page.ShiftY = Height + TopForControls;
+            Page.ShiftX = listPages[0].ShiftX - listPages[indexInList].ShiftX;
+            Page.ShiftY = Height + FormMain.Config.GridSize;
             ArrangeControl(Page);
 
             lblCaption.Width = Page.Width;
