@@ -823,8 +823,8 @@ namespace Fantasy_King_s_Battle
                 shiftControls.Y = (ClientSize.Height - calcedHeight) / 2;
             }
 
-            labelDay.Left = shiftControls.X;
-            labelGold.Left = shiftControls.X;
+            labelDay.ShiftX = shiftControls.X;
+            labelGold.ShiftX = labelDay.NextLeft();
 
             ShowLobby();
 
@@ -839,6 +839,7 @@ namespace Fantasy_King_s_Battle
                 leftForNextButtonPage = fp.NextLeft();
             }
 
+            panelPlayers.ShiftX = shiftControls.X; 
             panelPlayers.ShiftY = labelDay.NextTop();
             MainControl.ArrangeControls();
 
