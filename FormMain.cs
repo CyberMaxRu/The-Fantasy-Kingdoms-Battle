@@ -471,10 +471,6 @@ namespace Fantasy_King_s_Battle
             int widthRightPanel = Math.Max(panelMenu.Width, panelHeroInfo.Width);
             //Debug.Assert(widthRightPanel > panelMenu.Width);
 
-            panelBuildingInfo.Left = leftForPages + maxWidthPages + Config.GridSize;
-            panelLairInfo.Left = panelBuildingInfo.Left;
-            panelHeroInfo.Left = panelBuildingInfo.Left;
-
             // Учитываем плиту под слоты
             pointMenu = new Point(leftForPages + maxWidthPages + Config.GridSize, ClientSize.Height - panelMenu.Height - Config.GridSize);
             pointMenu.X = pointMenu.X + ((widthRightPanel - panelMenu.Width) / 2);
@@ -832,7 +828,6 @@ namespace Fantasy_King_s_Battle
             {
                 fp.ShiftX = leftForNextButtonPage;
                 fp.ShiftY = btnQuit.ShiftY;
-                fp.Page.Left = shiftControls.X + leftForPages - Config.GridSize;
                 fp.Page.Width = maxWidthPages;
 
                 leftForNextButtonPage = fp.NextLeft();
@@ -840,18 +835,19 @@ namespace Fantasy_King_s_Battle
 
             panelPlayers.ShiftX = shiftControls.X; 
             panelPlayers.ShiftY = labelDay.NextTop();
+
+            btnQuit.ShiftX = shiftControls.X + minSizeForm.Width - btnQuit.Width - (Config.GridSize * 4);
+            btnHelp.ShiftX = btnQuit.ShiftX - btnQuit.Width - Config.GridSize;
+            btnPreferences.ShiftX = btnHelp.ShiftX - btnHelp.Width - Config.GridSize;
+
+            panelBuildingInfo.ShiftX = shiftControls.X + leftForPages + maxWidthPages;
+            panelLairInfo.ShiftX = panelBuildingInfo.ShiftX;
+            panelHeroInfo.ShiftX = panelBuildingInfo.ShiftX;
+
+            btnEndTurn.ShiftX = panelBuildingInfo.ShiftX - btnEndTurn.Width - Config.GridSize;
+            btnTarget.ShiftX = btnEndTurn.ShiftX - btnTarget.Width - Config.GridSize;
+
             MainControl.ArrangeControls();
-
-            btnQuit.Left = shiftControls.X + minSizeForm.Width - btnQuit.Width - (Config.GridSize * 4);
-            btnHelp.Left = btnQuit.Left - btnQuit.Width - Config.GridSize;
-            btnPreferences.Left = btnHelp.Left - btnHelp.Width - Config.GridSize;
-
-            panelBuildingInfo.Left = shiftControls.X + leftForPages + maxWidthPages;
-            panelLairInfo.Left = panelBuildingInfo.Left;
-            panelHeroInfo.Left = panelBuildingInfo.Left;
-
-            btnEndTurn.Left = panelBuildingInfo.Left - btnEndTurn.Width - Config.GridSize;
-            btnTarget.Left = btnEndTurn.Left - btnTarget.Width - Config.GridSize;
 
             panelMenu.Left = shiftControls.X + pointMenu.X - Config.GridSize;
         }
