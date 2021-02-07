@@ -76,6 +76,7 @@ namespace Fantasy_King_s_Battle
         private readonly VCFormPage pageTemples;
         private readonly VCFormPage pageHeroes;
         private readonly VCFormPage pageLairs;
+        private readonly VCFormPage pageTournament;
 
         private PanelWithPanelEntity panelWarehouse;
         private PanelWithPanelEntity panelHeroes;
@@ -99,6 +100,7 @@ namespace Fantasy_King_s_Battle
         internal const int GUI_BOOK = 16;
         internal const int GUI_EXIT = 17;
         internal const int GUI_LAIR = 18;
+        internal const int GUI_TOURNAMENT = 19;
 
         internal const int GUI_PARAMETER_STRENGTH = 6;
         internal const int GUI_PARAMETER_DEXTERITY = 7;
@@ -407,6 +409,7 @@ namespace Fantasy_King_s_Battle
             pageHeroes = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_HEROES, "Герои", BtnPage_Click);
             pageHeroes.ShowCostZero = true;
             pageLairs = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_LAIR, "Логова", BtnPage_Click);
+            pageTournament = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_TOURNAMENT, "Турнир", BtnPage_Click);
 
             DrawPageConstructions();
             DrawHeroes();
