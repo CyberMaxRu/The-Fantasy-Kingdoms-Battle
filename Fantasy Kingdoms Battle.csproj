@@ -119,9 +119,7 @@
     <Compile Include="HeroInBattle.cs" />
     <Compile Include="MainConfig.cs" />
     <Compile Include="Missile.cs" />
-    <Compile Include="PageControl.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="VCPageControl.cs" />
     <Compile Include="PanelBaseInfo.cs" />
     <Compile Include="PanelBuildingInfo.cs" />
     <Compile Include="PanelCellHero.cs">

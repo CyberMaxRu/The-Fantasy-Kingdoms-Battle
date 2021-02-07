@@ -12,14 +12,14 @@ namespace Fantasy_King_s_Battle
     internal enum IconPages { Inventory, History, Inhabitants, Products, Parameters, Abilities }
 
     // Класс иконки страницы
-    internal sealed class PictureBoxPage : VCImage
+    internal sealed class VCPictureBoxPage : VCImage
     {
         private int imageIndex;
         private ImageList imageList;
         private int mouseOver;
         private Pen penBorder = new Pen(FormMain.Config.CommonBorder);
 
-        public PictureBoxPage(VisualControl parent, int shiftX, int shiftY, ImageList imageList, int imageIndex) : base(parent, shiftX, shiftY, imageList, imageIndex)
+        public VCPictureBoxPage(VisualControl parent, int shiftX, int shiftY, ImageList imageList, int imageIndex) : base(parent, shiftX, shiftY, imageList, imageIndex)
         {
         }
 
@@ -58,7 +58,7 @@ namespace Fantasy_King_s_Battle
         {
             base.DoClick();
 
-            (Parent as PageControl).ActivatePage(IndexPage);
+            (Parent as VCPageControl).ActivatePage(IndexPage);
             Program.formMain.ShowFrame();
         }
 
@@ -77,14 +77,14 @@ namespace Fantasy_King_s_Battle
     }
 
     // Класс контрола со страницами
-    internal sealed class PageControl : VisualControl
+    internal sealed class VCPageControl : VisualControl
     {
-        private List<PictureBoxPage> btnPages = new List<PictureBoxPage>();
+        private List<VCPictureBoxPage> btnPages = new List<VCPictureBoxPage>();
         private int leftForNextPage = 0;
         private VCLabel lblCaptionPage;
-        private PictureBoxPage activePage;
+        private VCPictureBoxPage activePage;
 
-        public PageControl(VisualControl parent, int shiftX, int shiftY, ImageList imageList) : base(parent, shiftX, shiftY)
+        public VCPageControl(VisualControl parent, int shiftX, int shiftY, ImageList imageList) : base(parent, shiftX, shiftY)
         {
             ImageList = imageList;
             ActivePage = -1;
@@ -105,7 +105,7 @@ namespace Fantasy_King_s_Battle
         internal void AddPage(string namePage, int imageIndex, VisualControl controlForPage)
         {
 
-            PictureBoxPage page = new PictureBoxPage(this, leftForNextPage, 0, ImageList, imageIndex)
+            VCPictureBoxPage page = new VCPictureBoxPage(this, leftForNextPage, 0, ImageList, imageIndex)
             {
                 NamePage = namePage,
                 IndexPage = btnPages.Count,
@@ -148,7 +148,7 @@ namespace Fantasy_King_s_Battle
         {
             int minWidth = 0;
 
-            foreach (PictureBoxPage p in btnPages)
+            foreach (VCPictureBoxPage p in btnPages)
             {
                 if (p.ContextPage != null)
                 {

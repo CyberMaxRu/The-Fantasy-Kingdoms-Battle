@@ -16,7 +16,7 @@ namespace Fantasy_King_s_Battle
 
         private readonly VCLabel lblName;
         protected readonly VCImage imgIcon;
-        protected PageControl pageControl;
+        protected VCPageControl pageControl;
 
         public PanelBaseInfo(VisualControl parent, int shiftX, int shiftY, int height) : base(parent, shiftX, shiftY)
         {
@@ -28,7 +28,7 @@ namespace Fantasy_King_s_Battle
 
             imgIcon = new VCImage(this, FormMain.Config.GridSize, lblName.NextTop(), GetImageList(), -1);
 
-            pageControl = new PageControl(this, FormMain.Config.GridSize, TopForControls(), Program.formMain.ilPages)
+            pageControl = new VCPageControl(this, FormMain.Config.GridSize, TopForControls(), Program.formMain.ilPages)
             {
                 //Parent = this,
                 Width = Width - FormMain.Config.GridSize * 2,
