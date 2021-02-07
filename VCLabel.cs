@@ -49,7 +49,7 @@ namespace Fantasy_King_s_Battle
         {
             base.ArrangeControls();
 
-            if ((ImageList != null) && (ImageIndex > 0))
+            if ((ImageList != null) && (ImageIndex >= 0))
                 LeftMargin = ImageList.ImageSize.Width + FormMain.Config.GridSize;
 
             rectText = new RectangleF(Left + LeftMargin, Top + TopMargin, Width, Height + 2);
@@ -57,7 +57,7 @@ namespace Fantasy_King_s_Battle
 
         internal override void Draw(Graphics g)
         {
-            if ((ImageList != null) && (ImageIndex > 0))
+            if ((ImageList != null) && (ImageIndex >= 0))
                 g.DrawImageUnscaled(GuiUtils.GetImageFromImageList(ImageList, ImageIndex, true), Left, Top);
 
             base.Draw(g);
