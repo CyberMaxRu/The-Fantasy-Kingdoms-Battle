@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -265,7 +265,6 @@ namespace Fantasy_King_s_Battle
 
                                 /*TileForMove = PathToDestination.First();
                                 PathToDestination.RemoveAt(0);
-
                                 countAction = TimeMove();
                                 timeAction = countAction;*/
                             }
@@ -604,7 +603,7 @@ namespace Fantasy_King_s_Battle
 
             // Рисуем иконку героя
             g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
-                g.DrawImageUnscaled(Program.formMain.ilGuiHeroes.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilGuiHeroes, PlayerHero.TypeHero.ImageIndex, State != StateHeroInBattle.Tumbstone)], FormMain.Config.ShiftForBorder);
+            //g.DrawImageUnscaled(Program.formMain.ilGuiHeroes.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilGuiHeroes, PlayerHero.TypeHero.ImageIndex, State != StateHeroInBattle.Tumbstone)], FormMain.Config.ShiftForBorder);
 
             // Если юнит в могиле и исчезает, применяем исчезновение
             if (countAction <= FormMain.Config.UnitStepsTimeToDisappearance)
@@ -626,11 +625,11 @@ namespace Fantasy_King_s_Battle
             {
                 StateHeroInBattle s = State != StateHeroInBattle.None ? State : priorState;
 
-                g.DrawImageUnscaled(Program.formMain.ilStateHero.Images[(int)s], FormMain.Config.ShiftForBorder.X + 1, FormMain.Config.ShiftForBorder.Y + 1);
+                //g.DrawImageUnscaled(Program.formMain.ilStateHero.Images[(int)s], FormMain.Config.ShiftForBorder.X + 1, FormMain.Config.ShiftForBorder.Y + 1);
             }
 
             // Рисуем полоску жизни
-            GuiUtils.DrawBand(g, new Rectangle(FormMain.Config.ShiftForBorder.X + 2, FormMain.Config.ShiftForBorder.Y + Program.formMain.ilGuiHeroes.ImageSize.Height - 6, Program.formMain.ilGuiHeroes.ImageSize.Height - 4, 4), brushBandHealth, brushBandHealthNone, CurrentHealth, Parameters.Health);
+            //GuiUtils.DrawBand(g, new Rectangle(FormMain.Config.ShiftForBorder.X + 2, FormMain.Config.ShiftForBorder.Y + Program.formMain.ilGuiHeroes.ImageSize.Height - 6, Program.formMain.ilGuiHeroes.ImageSize.Height - 4, 4), brushBandHealth, brushBandHealthNone, CurrentHealth, Parameters.Health);
 
             // Применяем исчезновение
             if (inDisappearance)
