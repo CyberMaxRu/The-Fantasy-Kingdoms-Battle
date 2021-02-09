@@ -160,8 +160,7 @@ namespace Fantasy_King_s_Battle
                 FlatStyle = FlatStyle.Flat,
                 //ImageList = Program.formMain.ilGui,
                 ImageIndex = imageIndex,
-                BackColor = Color.Transparent,
-                BackgroundImage = Program.formMain.bmpBackgroundButton
+                BackColor = Color.Transparent
                 //Size = SizeButtonWithImage(Program.formMain.ilGui)
             };
             //b.FlatAppearance.BorderSize = 0;
