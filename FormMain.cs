@@ -128,7 +128,6 @@ namespace Fantasy_King_s_Battle
         internal Lobby CurrentLobby { get { return lobby; } }
 
         internal readonly Bitmap bmpForBackground;
-        internal readonly Bitmap bmpBackgroundButton;
         internal readonly Bitmap bmpBorderForIcon;
         internal readonly Bitmap bmpBorderForIconAlly;
         internal readonly Bitmap bmpBorderForIconEnemy;
@@ -301,7 +300,6 @@ namespace Fantasy_King_s_Battle
             //MakeAlpha();
 
             bmpForBackground = new Bitmap(dirResources + "Icons\\Background.png");
-            //bmpBackgroundButton = GuiUtils.MakeBackground(GuiUtils.SizeButtonWithImage(ilGui));
             bmpBorderForIcon = new Bitmap(dirResources + "Icons\\BorderIconEntity.png");
             bmpEmptyEntity = new Bitmap(dirResources + "Icons\\EmptyEntity.png");
             bmpBorderBattlefield = new Bitmap(dirResources + "Icons\\BorderBattlefield.png");
