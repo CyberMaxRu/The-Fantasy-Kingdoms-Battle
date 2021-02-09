@@ -131,7 +131,7 @@ namespace Fantasy_King_s_Battle
 
         internal Lobby Lobby { get; }
         internal string Name { get; set; }
-        internal int ImageIndexAvatar { get; set; }
+        internal int ImageIndexAvatar { get; set; } 
         internal int PlayerIndex { get; }
         internal int PositionInLobby { get; set; }
         internal int DurabilityCastle { get; set; }

@@ -1315,6 +1315,7 @@ namespace Fantasy_King_s_Battle
             {
                 ilPlayerAvatarsBig.Add(Settings.Avatar);
             }
+            AvatarCount = ilPlayerAvatarsBig.Count;
 
             ilPlayerAvatars = new BitmapList(ilPlayerAvatarsBig, 48);
 
