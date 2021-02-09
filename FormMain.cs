@@ -23,7 +23,6 @@ namespace Fantasy_King_s_Battle
         internal readonly string dirResources;
 
         // ImageList'ы
-        private readonly ImageListContainer imageListContainer;
         internal BitmapList ilPlayerAvatars;
         internal BitmapList ilPlayerAvatarsBig;
         internal readonly BitmapList ilResultBattle;
@@ -296,7 +295,6 @@ namespace Fantasy_King_s_Battle
             ilMenuCellFilters = new BitmapList(dirResources, "MenuCellFilters.png", 48, ImageState.Normal);
 
             ilGui = new BitmapList(dirResources, "Gui.png", 48, ImageState.Over);
-            imageListContainer = new ImageListContainer(dirResources);
             //MakeAlpha();
 
             bmpForBackground = new Bitmap(dirResources + "Icons\\Background.png");
