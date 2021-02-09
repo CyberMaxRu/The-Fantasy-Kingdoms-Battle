@@ -9,8 +9,6 @@ using System.Diagnostics;
     
 namespace Fantasy_King_s_Battle
 {
-    internal enum ImageState { Normal = 0, Disabled = 1, Over = 2 };
-
     // Контейнер, содержащий в себе все ImageList'ы
     internal sealed class ImageListContainer
     {
@@ -30,6 +28,7 @@ namespace Fantasy_King_s_Battle
 
         internal static Image GetImage(ImageList imageList, int imageIndex, ImageState state)
         {
+            Debug.Assert(imageIndex >= 0);                
             int index = imageIndex + (int)state * (int)imageList.Tag;
             Debug.Assert(index < imageList.Images.Count, "Попытка взять index=" + index.ToString() + " из " + imageList.Images.Count.ToString());
 
@@ -68,11 +67,15 @@ namespace Fantasy_King_s_Battle
             {
                 for (int i = 0; i < lines; i++)
                 {
-                    Bitmap bmpSingleline = new Bitmap(bitmap.Width, height);
-                    Graphics g = Graphics.FromImage(bmpSingleline);
-                    g.DrawImage(bitmap, 0, 0, new Rectangle(0, i * height, bitmap.Width, height), GraphicsUnit.Pixel);
-                    _ = il.Images.AddStrip(bmpSingleline);
-                    g.Dispose();
+                    int pics = bitmap.Width / il.ImageSize.Width;
+                    for (int j = 0; j < pics; j++)
+                    {
+                        Bitmap bmpSingleline = new Bitmap(il.ImageSize.Width, height);
+                        Graphics g = Graphics.FromImage(bmpSingleline);
+                        g.DrawImage(bitmap, 0, 0, new Rectangle(0, i * height, j * il.ImageSize.Width, height), GraphicsUnit.Pixel);
+                        il.Images.Add(bmpSingleline);
+                        g.Dispose();
+                    }
                 }
             }
             else

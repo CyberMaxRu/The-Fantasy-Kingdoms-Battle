@@ -45,9 +45,9 @@ namespace Fantasy_King_s_Battle
                 //Parent = this,
                 Left = LeftAfterIcon(),
                 Top = TopForIcon(),
-                ImageList = Program.formMain.ilGui,
-                ImageIndex = FormMain.GUI_DISMISS,
-                Size = GuiUtils.SizeButtonWithImage(Program.formMain.ilGui)
+                //ImageList = Program.formMain.ilGui,
+                ImageIndex = FormMain.GUI_DISMISS
+                //Size = GuiUtils.SizeButtonWithImage(Program.formMain.ilGui)
             };
             btnDismiss.Click += BtnDismiss_Click;
 
@@ -169,8 +169,9 @@ namespace Fantasy_King_s_Battle
             }
         }
 
-        protected override ImageList GetImageList() => Program.formMain.ilHeroes;
+        protected override BitmapList GetBitmapList() => Program.formMain.imListObjectsBig;
         protected override int GetImageIndex() => hero.TypeHero.ImageIndex;
+        protected override ImageState GetImageState() => ImageState.Normal;
         protected override string GetCaption() => hero.TypeHero.Name;
     }
 }

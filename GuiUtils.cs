@@ -34,7 +34,7 @@ namespace Fantasy_King_s_Battle
                 Top = top,
                 Width = 80,
                 TextAlign = ContentAlignment.MiddleRight,
-                ImageList = Program.formMain.ilParameters,
+                //ImageList = Program.formMain.ilParameters,
                 ImageIndex = imIndex,
                 ImageAlign = ContentAlignment.MiddleLeft
             };
@@ -158,11 +158,11 @@ namespace Fantasy_King_s_Battle
                 Left = left,
                 Top = top,
                 FlatStyle = FlatStyle.Flat,
-                ImageList = Program.formMain.ilGui,
+                //ImageList = Program.formMain.ilGui,
                 ImageIndex = imageIndex,
                 BackColor = Color.Transparent,
-                BackgroundImage = Program.formMain.bmpBackgroundButton,
-                Size = SizeButtonWithImage(Program.formMain.ilGui)
+                BackgroundImage = Program.formMain.bmpBackgroundButton
+                //Size = SizeButtonWithImage(Program.formMain.ilGui)
             };
             //b.FlatAppearance.BorderSize = 0;
             b.FlatAppearance.BorderColor = Color.Black;
@@ -180,7 +180,7 @@ namespace Fantasy_King_s_Battle
             try
             {
                 Bitmap bmpRaw = new Bitmap(filename);
-                Bitmap newAvatar = new Bitmap(Program.formMain.ilPlayerAvatarsBig.ImageSize.Width, Program.formMain.ilPlayerAvatarsBig.ImageSize.Height);
+                Bitmap newAvatar = new Bitmap(Program.formMain.ilPlayerAvatarsBig.Size, Program.formMain.ilPlayerAvatarsBig.Size);
 
                 Graphics gAvatar = Graphics.FromImage(newAvatar);
                 gAvatar.InterpolationMode = InterpolationMode.High;

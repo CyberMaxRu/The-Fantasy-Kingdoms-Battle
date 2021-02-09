@@ -30,20 +30,20 @@ namespace Fantasy_King_s_Battle
             lblName.StringFormat.Alignment = StringAlignment.Near;
             lblName.Text = typeConstruction.Name;
 
-            imageConstruction = new VCImage(this, FormMain.Config.GridSize, lblName.NextTop(), Program.formMain.ilBuildings, -1);
+            imageConstruction = new VCImage(this, FormMain.Config.GridSize, lblName.NextTop(), Program.formMain.imListObjectsBig, -1);
             imageConstruction.ShowBorder = false;
             imageConstruction.Click += ImageConstruction_Click;
             imageConstruction.ShowHint += ImageConstruction_ShowHint;
 
-            btnBuyOrUpgrade = new VCButton(this, imageConstruction.NextLeft(), imageConstruction.ShiftY, Program.formMain.ilGui, -1);
+            btnBuyOrUpgrade = new VCButton(this, imageConstruction.NextLeft(), imageConstruction.ShiftY, Program.formMain.ilGui, FormMain.GUI_BUY);
             btnBuyOrUpgrade.Click += BtnBuyOrUprgade_Click;
             btnBuyOrUpgrade.ShowHint += BtnBuyOrUpgrade_ShowHint;
 
-            btnHeroes = new VCButton(this, imageConstruction.ShiftX, imageConstruction.NextTop(), Program.formMain.ilGuiHeroes, -1);
+            btnHeroes = new VCButton(this, imageConstruction.ShiftX, imageConstruction.NextTop(), Program.formMain.imListObjectsCell, -1);
 
             if (TypeConstruction.TrainedHero != null)
             {
-                btnHireHero = new VCButton(this, imageConstruction.NextLeft(), btnBuyOrUpgrade.NextTop(), Program.formMain.ilGuiHeroes, -1);
+                btnHireHero = new VCButton(this, imageConstruction.NextLeft(), btnBuyOrUpgrade.NextTop(), Program.formMain.imListObjectsCell, -1);
                 btnHireHero.Click += BtnHireHero_Click;
                 btnHireHero.ShowHint += BtnHireHero_ShowHint;
 
@@ -199,14 +199,15 @@ namespace Fantasy_King_s_Battle
             else
             {
                 btnBuyOrUpgrade.Cost = Building.CostBuyOrUpgrade();
-                btnBuyOrUpgrade.ImageIndex = GuiUtils.GetImageIndexWithGray(btnBuyOrUpgrade.ImageList, FormMain.GUI_BUY, Building.CheckRequirements());
+                btnBuyOrUpgrade.ImageState = Building.CheckRequirements() ? ImageState.Normal : ImageState.Disabled;
             }
 
             if (btnHireHero != null)
             {
                 TypeConstructionWithHero c = (TypeConstructionWithHero)Building.Building;
                 //btnHireHero.ImageIndex = (Building.Level > 0) && ((Building.Heroes.Count == Building.MaxHeroes()) || (Building.MaxHeroesAtPlayer() == true))  ? -1 : GuiUtils.GetImageIndexWithGray(btnHireHero.ImageList, c.TrainedHero.ImageIndex, Building.CanTrainHero());
-                btnHireHero.ImageIndex = (Building.Level > 0) && ((Building.Heroes.Count == Building.MaxHeroes()) || (Building.MaxHeroesAtPlayer() == true))  ? -1 : GuiUtils.GetImageIndexWithGray(btnHireHero.ImageList, c.TrainedHero.ImageIndex, true);
+                btnHireHero.ImageIndex = (Building.Level > 0) && ((Building.Heroes.Count == Building.MaxHeroes()) || (Building.MaxHeroesAtPlayer() == true)) ? -1 : c.TrainedHero.ImageIndex;
+                btnHireHero.ImageState = ImageState.Normal;
                 btnHireHero.ImageState = Building.CanTrainHero() ? ImageState.Normal : ImageState.Disabled;
                 btnHireHero.Cost = (Building.Level == 0) || (Building.CanTrainHero() == true) ? c.TrainedHero.Cost : 0;
             }

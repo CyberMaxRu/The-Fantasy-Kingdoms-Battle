@@ -10,7 +10,7 @@ namespace Fantasy_King_s_Battle
         private VCLabel lblCaption;
         private List<VCFormPage> listPages;
         private int indexInList;
-        public VCFormPage(VisualControl parent, int shiftX, int shiftY, List<VCFormPage> list, ImageList imageList, int imageIndex, string caption, EventHandler onClick) : base(parent, shiftX, shiftY, imageList, imageIndex)
+        public VCFormPage(VisualControl parent, int shiftX, int shiftY, List<VCFormPage> list, BitmapList bitmapList, int imageIndex, string caption, EventHandler onClick) : base(parent, shiftX, shiftY, bitmapList, imageIndex)
         {
             Caption = caption;
             Page = new VisualControl()

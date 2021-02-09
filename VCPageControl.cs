@@ -17,7 +17,7 @@ namespace Fantasy_King_s_Battle
         private int mouseOver;
         private Pen penBorder = new Pen(FormMain.Config.CommonBorder);
 
-        public VCPictureBoxPage(VisualControl parent, int shiftX, int shiftY, ImageList imageList, int imageIndex) : base(parent, shiftX, shiftY, imageList, imageIndex)
+        public VCPictureBoxPage(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList, int imageIndex) : base(parent, shiftX, shiftY, bitmapList, imageIndex)
         {
         }
 
@@ -82,15 +82,15 @@ namespace Fantasy_King_s_Battle
         private VCLabel lblCaptionPage;
         private VCPictureBoxPage activePage;
 
-        public VCPageControl(VisualControl parent, int shiftX, int shiftY, ImageList imageList) : base(parent, shiftX, shiftY)
+        public VCPageControl(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList) : base(parent, shiftX, shiftY)
         {
-            ImageList = imageList;
+            BitmapList = bitmapList;
             ActivePage = -1;
 
-            lblCaptionPage = new VCLabel(this, 0, ImageList.ImageSize.Height + FormMain.Config.GridSize, FormMain.Config.FontCaptionPage, FormMain.Config.CommonCaptionPage, 16, "");
+            lblCaptionPage = new VCLabel(this, 0, BitmapList.Size + FormMain.Config.GridSize, FormMain.Config.FontCaptionPage, FormMain.Config.CommonCaptionPage, 16, "");
         }
 
-        internal ImageList ImageList { get; set; }
+        internal BitmapList BitmapList { get; set; }
         internal int ActivePage { get; set; }
 
         internal override void ArrangeControls()
@@ -103,7 +103,7 @@ namespace Fantasy_King_s_Battle
         internal void AddPage(string namePage, int imageIndex, VisualControl controlForPage)
         {
 
-            VCPictureBoxPage page = new VCPictureBoxPage(this, leftForNextPage, 0, ImageList, imageIndex)
+            VCPictureBoxPage page = new VCPictureBoxPage(this, leftForNextPage, 0, BitmapList, imageIndex)
             {
                 NamePage = namePage,
                 IndexPage = btnPages.Count,

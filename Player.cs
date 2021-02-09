@@ -559,7 +559,7 @@ namespace Fantasy_King_s_Battle
 
         // Реализация интерфейса
         PanelEntity ICell.Panel { get; set; }
-        ImageList ICell.ImageList() => Program.formMain.ilPlayerAvatars;
+        BitmapList ICell.BitmapList() => Program.formMain.ilPlayerAvatars;
         int ICell.ImageIndex() => ImageIndexAvatar;
         bool ICell.NormalImage() => IsLive;
         int ICell.Value() => Castle.Level;

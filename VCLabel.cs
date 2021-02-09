@@ -38,7 +38,7 @@ namespace Fantasy_King_s_Battle
             set { if (color != value) { color = value; brush?.Dispose(); brush = new SolidBrush(color); } }
         }
 
-        internal ImageList ImageList { get; set; }
+        internal BitmapList BitmapList { get; set; }
         internal int ImageIndex { get; set; } = -1;
         protected int LeftMargin { get; set; }
         protected int TopMargin { get; set; }
@@ -49,16 +49,16 @@ namespace Fantasy_King_s_Battle
         {
             base.ArrangeControls();
 
-            if ((ImageList != null) && (ImageIndex >= 0))
-                LeftMargin = ImageList.ImageSize.Width + FormMain.Config.GridSize;
+            if ((BitmapList != null) && (ImageIndex >= 0))
+                LeftMargin = BitmapList.Size + FormMain.Config.GridSize;
 
             rectText = new RectangleF(Left + LeftMargin, Top + TopMargin, Width, Height + 2);
         }
 
         internal override void Draw(Graphics g)
         {
-            if ((ImageList != null) && (ImageIndex >= 0))
-                g.DrawImageUnscaled(GuiUtils.GetImageFromImageList(ImageList, ImageIndex, true), Left, Top);
+            if ((BitmapList != null) && (ImageIndex >= 0))
+                g.DrawImageUnscaled(BitmapList.GetImage(ImageIndex, ImageState.Normal), Left, Top);
 
             base.Draw(g);
 

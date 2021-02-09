@@ -19,7 +19,7 @@ namespace Fantasy_King_s_Battle
         {
             Parent = parent;
             Location = location;
-            Size = Program.formMain.ilItems.ImageSize;
+            Size = new Size(Program.formMain.ilItems.Size, Program.formMain.ilItems.Size);
             BackColor = Color.Transparent;
             ForeColor = FormMain.Config.CommonCost;
             Font = FormMain.Config.FontCost;
@@ -88,17 +88,17 @@ namespace Fantasy_King_s_Battle
         protected override void OnPaint(PaintEventArgs pe)
         {
             // Рисуем иконку
-            pe.Graphics.DrawImageUnscaled(Program.formMain.ilItems.Images[research.Research.Entity.ImageIndex], 0, 0);
+            pe.Graphics.DrawImageUnscaled(Program.formMain.ilItems.GetImage(research.Research.Entity.ImageIndex, ImageState.Normal), 0, 0);
 
             // Накладываем фильтр
             if (!research.CheckRequirements())
-                pe.Graphics.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.Images[3], 0, 0);
+                pe.Graphics.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage(3, ImageState.Normal), 0, 0);
             else if (mouseClicked)
-                pe.Graphics.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.Images[2], 0, 0);
+                pe.Graphics.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage(2, ImageState.Normal), 0, 0);
             else if (mouseOver)
-                pe.Graphics.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.Images[1], 0, 0);
+                pe.Graphics.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage(1, ImageState.Normal), 0, 0);
             else
-                pe.Graphics.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.Images[0], 0, 0);
+                pe.Graphics.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage(0, ImageState.Normal), 0, 0);
 
             // Рисуем цену
             base.OnPaint(pe);

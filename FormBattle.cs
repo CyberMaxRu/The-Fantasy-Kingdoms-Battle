@@ -125,7 +125,7 @@ namespace Fantasy_King_s_Battle
                 ForeColor = FormMain.Config.BattlefieldPlayerName,
                 BackColor = Color.Transparent,
                 AutoSize = false,
-                Width = Program.formMain.ilPlayerAvatarsBig.ImageSize.Width,
+                Width = Program.formMain.ilPlayerAvatarsBig.Size,
                 Height = 24,
                 TextAlign = ContentAlignment.BottomCenter,
                 Font = FormMain.Config.FontBattlefieldPlayer
@@ -138,7 +138,7 @@ namespace Fantasy_King_s_Battle
                 ForeColor = FormMain.Config.BattlefieldPlayerName,
                 BackColor = Color.Transparent,
                 AutoSize = false,
-                Width = Program.formMain.ilPlayerAvatarsBig.ImageSize.Width,
+                Width = Program.formMain.ilPlayerAvatarsBig.Size,
                 Height = 24,
                 TextAlign = ContentAlignment.BottomCenter,
                 Font = FormMain.Config.FontBattlefieldPlayer
@@ -172,7 +172,7 @@ namespace Fantasy_King_s_Battle
                 ForeColor = FormMain.Config.BattlefieldPlayerName,
                 BackColor = Color.Transparent,
                 AutoSize = false,
-                ImageList = Program.formMain.ilGui24,
+                //ImageList = Program.formMain.ilGui24,
                 ImageIndex = FormMain.GUI_24_STAR,
                 Height = 24,
                 Width = 64,
@@ -187,7 +187,7 @@ namespace Fantasy_King_s_Battle
                 ForeColor = FormMain.Config.BattlefieldPlayerName,
                 BackColor = Color.Transparent,
                 AutoSize = false,
-                ImageList = Program.formMain.ilGui24,
+                //BitmapListImageList = Program.formMain.ilGui24,
                 ImageIndex = FormMain.GUI_24_STAR,
                 Height = 24,
                 Width = 64,
@@ -526,8 +526,8 @@ namespace Fantasy_King_s_Battle
             }
 
             // Рисуем аватарки игроков
-            g.DrawImageUnscaled(Program.formMain.ilPlayerAvatarsBig.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilPlayerAvatarsBig, battle.Player1.ImageIndexAvatar, (battle.BattleCalced == false) || (battle.Winner == battle.Player1))], pointAvatarPlayer1);
-            g.DrawImageUnscaled(Program.formMain.ilPlayerAvatarsBig.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilPlayerAvatarsBig, battle.Player2.ImageIndexAvatar, (battle.BattleCalced == false) || (battle.Winner == battle.Player2))], pointAvatarPlayer2);
+            //g.DrawImageUnscaled(Program.formMain.ilPlayerAvatarsBig.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilPlayerAvatarsBig, battle.Player1.ImageIndexAvatar, (battle.BattleCalced == false) || (battle.Winner == battle.Player1))], pointAvatarPlayer1);
+            //g.DrawImageUnscaled(Program.formMain.ilPlayerAvatarsBig.Images[GuiUtils.GetImageIndexWithGray(Program.formMain.ilPlayerAvatarsBig, battle.Player2.ImageIndexAvatar, (battle.BattleCalced == false) || (battle.Winner == battle.Player2))], pointAvatarPlayer2);
 
             g.Dispose();
         }
@@ -756,7 +756,7 @@ namespace Fantasy_King_s_Battle
             lblPlayer1.Left = FormMain.Config.GridSize;
             lblPlayer1.Text = battle.Player1.Name;
             pointAvatarPlayer1 = new Point(lblPlayer1.Left, lblPlayer1.Top + lblPlayer1.Height);
-            rectBandHealthPlayer1 = new Rectangle(pointAvatarPlayer1.X, pointAvatarPlayer1.Y + Program.formMain.ilPlayerAvatarsBig.ImageSize.Height + 2, Program.formMain.ilPlayerAvatarsBig.ImageSize.Width, 6);
+            rectBandHealthPlayer1 = new Rectangle(pointAvatarPlayer1.X, pointAvatarPlayer1.Y + Program.formMain.ilPlayerAvatarsBig.Size + 2, Program.formMain.ilPlayerAvatarsBig.Size, 6);
 
             // Считаем максимальное количество здоровья у героев игроков
             maxHealthPlayer1 = CalcHealthPlayer(b.Player1);
@@ -773,15 +773,15 @@ namespace Fantasy_King_s_Battle
                 + FormMain.Config.WidthBorderBattlefield + (Height - ClientSize.Height);
 
             // Положение аватарки второго игрока
-            pointAvatarPlayer2 = new Point(ClientSize.Width - Program.formMain.ilPlayerAvatarsBig.ImageSize.Width - FormMain.Config.GridSize, pointAvatarPlayer1.Y);
+            pointAvatarPlayer2 = new Point(ClientSize.Width - Program.formMain.ilPlayerAvatarsBig.Size - FormMain.Config.GridSize, pointAvatarPlayer1.Y);
             lblPlayer2.Left = pointAvatarPlayer2.X;
             lblPlayer2.Text = battle.Player2.Name;
-            rectBandHealthPlayer2 = new Rectangle(pointAvatarPlayer2.X, pointAvatarPlayer2.Y + Program.formMain.ilPlayerAvatarsBig.ImageSize.Height + 2, Program.formMain.ilPlayerAvatarsBig.ImageSize.Width, 6);
+            rectBandHealthPlayer2 = new Rectangle(pointAvatarPlayer2.X, pointAvatarPlayer2.Y + Program.formMain.ilPlayerAvatarsBig.Size + 2, Program.formMain.ilPlayerAvatarsBig.Size, 6);
 
             //
             lblStateBattle.Top = pointAvatarPlayer1.Y;
-            lblStateBattle.Width = pointAvatarPlayer2.X - pointAvatarPlayer1.X - Program.formMain.ilPlayerAvatarsBig.ImageSize.Width - FormMain.Config.GridSize * 2;
-            lblStateBattle.Left = pointAvatarPlayer1.X + Program.formMain.ilPlayerAvatarsBig.ImageSize.Width + FormMain.Config.GridSize;
+            lblStateBattle.Width = pointAvatarPlayer2.X - pointAvatarPlayer1.X - Program.formMain.ilPlayerAvatarsBig.Size - FormMain.Config.GridSize * 2;
+            lblStateBattle.Left = pointAvatarPlayer1.X + Program.formMain.ilPlayerAvatarsBig.Size + FormMain.Config.GridSize;
             lblStateBattle.Text = "Идет бой";
 
             lblTimer.Top = lblStateBattle.Top + lblStateBattle.Height;
@@ -791,7 +791,7 @@ namespace Fantasy_King_s_Battle
             btnEndBattle.Top = lblTimer.Top + lblTimer.Height;
             btnEndBattle.Width = 136;
             btnEndBattle.Height = 32;
-            btnEndBattle.Left = pointAvatarPlayer1.X + Program.formMain.ilPlayerAvatarsBig.ImageSize.Width + (((pointAvatarPlayer2.X - pointAvatarPlayer1.X - Program.formMain.ilPlayerAvatarsBig.ImageSize.Width) - btnEndBattle.Width) / 2);
+            btnEndBattle.Left = pointAvatarPlayer1.X + Program.formMain.ilPlayerAvatarsBig.Size + (((pointAvatarPlayer2.X - pointAvatarPlayer1.X - Program.formMain.ilPlayerAvatarsBig.Size) - btnEndBattle.Width) / 2);
 
             btnDecSpeed.Top = GuiUtils.NextTop(btnEndBattle);
             btnDecSpeed.Left = btnEndBattle.Left;
@@ -804,7 +804,7 @@ namespace Fantasy_King_s_Battle
 
             //
             lblDamagePlayer1.Top = btnEndBattle.Top;
-            lblDamagePlayer1.Left = pointAvatarPlayer1.X + Program.formMain.ilPlayerAvatarsBig.ImageSize.Width + FormMain.Config.GridSize;
+            lblDamagePlayer1.Left = pointAvatarPlayer1.X + Program.formMain.ilPlayerAvatarsBig.Size + FormMain.Config.GridSize;
             lblDamagePlayer1.Hide();
             lblDamagePlayer2.Top = btnEndBattle.Top;
             lblDamagePlayer2.Left = pointAvatarPlayer2.X - FormMain.Config.GridSize - 80;

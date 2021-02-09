@@ -24,7 +24,7 @@ namespace Fantasy_King_s_Battle
 
             lblGold = new VCLabel(this, FormMain.Config.GridSize, TopForControls(), FormMain.Config.FontCost, Color.White, 16, "");
             lblGold.Width = 80;
-            lblGold.ImageList = Program.formMain.ilGui16;
+            lblGold.BitmapList = Program.formMain.ilGui16;
             lblGold.ImageIndex = FormMain.GUI_16_GOLD;
 
             pageControl.ShiftY = lblGold.NextTop();
@@ -62,8 +62,9 @@ namespace Fantasy_King_s_Battle
             base.Draw(g); 
         }
 
-        protected override ImageList GetImageList() => Program.formMain.ilBuildings;
-        protected override int GetImageIndex() => GuiUtils.GetImageIndexWithGray(Program.formMain.ilBuildings, Building.Building.ImageIndex, Building.Level > 0);
+        protected override BitmapList GetBitmapList() => Program.formMain.imListObjectsBig;
+        protected override int GetImageIndex() => Building.Building.ImageIndex;
+        protected override ImageState GetImageState() => Building.Level > 0 ? ImageState.Normal : ImageState.Disabled;
         protected override string GetCaption() => Building.Building.Name;
     }
 }

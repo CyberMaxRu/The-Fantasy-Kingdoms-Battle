@@ -26,7 +26,7 @@ namespace Fantasy_King_s_Battle
             lblName = new VCLabel(this, FormMain.Config.GridSize, FormMain.Config.GridSize, FormMain.Config.FontNamePage, FormMain.Config.BattlefieldPlayerName, FormMain.Config.GridSize * 3, "");
             lblName.StringFormat.LineAlignment = StringAlignment.Near;
 
-            imgIcon = new VCImage(this, FormMain.Config.GridSize, lblName.NextTop(), GetImageList(), -1);
+            imgIcon = new VCImage(this, FormMain.Config.GridSize, lblName.NextTop(), GetBitmapList(), -1);
 
             pageControl = new VCPageControl(this, FormMain.Config.GridSize, TopForControls(), Program.formMain.ilGui)
             {
@@ -52,8 +52,9 @@ namespace Fantasy_King_s_Battle
         //protected Point LeftTopPage() => pointPage;
 
         // Переопределяемые потомками методы
-        protected abstract ImageList GetImageList();
+        protected abstract BitmapList GetBitmapList();
         protected abstract int GetImageIndex();
+        protected abstract ImageState GetImageState();
         protected abstract string GetCaption();
 
         // Общие для всех панелей методы
@@ -62,6 +63,7 @@ namespace Fantasy_King_s_Battle
         {
             lblName.Text = GetCaption();
             imgIcon.ImageIndex = GetImageIndex();
+            imgIcon.ImageState = GetImageState();
 
             base.Draw(g);
         }

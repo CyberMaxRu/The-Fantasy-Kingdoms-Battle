@@ -38,7 +38,7 @@ namespace Fantasy_King_s_Battle
                 panelEntity = value;
             }
         }
-        ImageList ICell.ImageList() => Program.formMain.ilMonstersSmall;
+        BitmapList ICell.BitmapList() => Program.formMain.imListObjectsCell;
         int ICell.ImageIndex() => Monster.ImageIndex;
         bool ICell.NormalImage() => true;
         int ICell.Value() => 1;

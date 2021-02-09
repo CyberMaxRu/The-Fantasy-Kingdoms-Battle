@@ -4,7 +4,7 @@
     <ID>GuildDarkPriest</ID>
     <Name>Храм Крипты</Name>
     <Description>- Позволяет нанимать сестер Крипты/- Здесь исследуют заклинание "Чума и разорение"/- Сестры Крипты не любят паладинов</Description>
-    <ImageIndex>16</ImageIndex>
+    <ImageIndex>39</ImageIndex>
     <Line>1</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
@@ -33,7 +33,7 @@
     <ID>GuildPriest</ID>
     <Name>Храм Агрелы</Name>
     <Description>- Позволяет нанимать жриц Агрелы/- Здесь исследуют заклинание "Возрождение"</Description>
-    <ImageIndex>17</ImageIndex>
+    <ImageIndex>46</ImageIndex>
     <Line>1</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
@@ -62,7 +62,7 @@
     <ID>GuildPaladin</ID>
     <Name>Храм Дауроса</Name>
     <Description>- Позволяет нанимать паладинов/- Здесь исследуют заклинание "Святой щит"/- Паладины не любят нежить, вызываемую сестрами Крипты</Description>
-    <ImageIndex>18</ImageIndex>
+    <ImageIndex>45</ImageIndex>
     <Line>1</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
@@ -91,7 +91,7 @@
     <ID>GuildBlademaster</ID>
     <Name>Храм Крольма</Name>
     <Description>- Позволяет нанимать мастеров меча/- Здесь исследуют заклинание "Гнев Крольма"</Description>
-    <ImageIndex>19</ImageIndex>
+    <ImageIndex>37</ImageIndex>
     <Line>2</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
@@ -120,7 +120,7 @@
     <ID>GuildBeastmaster</ID>
     <Name>Храм Фервуса</Name>
     <Description>- Позволяет нанимать звероловов/- Здесь исследуют заклинание "Щит Хаоса"</Description>
-    <ImageIndex>20</ImageIndex>
+    <ImageIndex>36</ImageIndex>
     <Line>2</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
@@ -149,7 +149,7 @@
     <ID>GuildMarksman</ID>
     <Name>Храм Хелии</Name>
     <Description>- Позволяет нанимать лучников Хелии/- Здесь исследуют заклинание "Удар Солнца"</Description>
-    <ImageIndex>21</ImageIndex>
+    <ImageIndex>44</ImageIndex>
     <Line>2</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
@@ -178,7 +178,7 @@
     <ID>GuildIceMage</ID>
     <Name>Храм Холода</Name>
     <Description>- Позволяет нанимать магов Холода</Description>
-    <ImageIndex>23</ImageIndex>
+    <ImageIndex>130</ImageIndex>
     <Line>3</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
@@ -207,7 +207,7 @@
     <ID>GuildDeathKnight</ID>
     <Name>Храм Лунорда</Name>
     <Description>- Позволяет нанимать ассасинов</Description>
-    <ImageIndex>24</ImageIndex>
+    <ImageIndex>132</ImageIndex>
     <Line>3</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
@@ -236,7 +236,7 @@
     <ID>GuildFireMage</ID>
     <Name>Храм Огня</Name>
     <Description>- Позволяет нанимать магов Огня</Description>
-    <ImageIndex>22</ImageIndex>
+    <ImageIndex>134</ImageIndex>
     <Line>3</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>

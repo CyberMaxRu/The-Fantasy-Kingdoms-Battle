@@ -14,7 +14,7 @@ namespace Fantasy_King_s_Battle
     internal interface ICell
     {
         PanelEntity Panel { get; set; }
-        ImageList ImageList();
+        BitmapList BitmapList();
         int ImageIndex();
         bool NormalImage();
         int Value();        
@@ -130,14 +130,11 @@ namespace Fantasy_King_s_Battle
             {
                 //Debug.Assert(cell.Panel == this);
 
-                g.DrawImageUnscaled(GuiUtils.GetImageFromImageList(cell.ImageList(), cell.ImageIndex(), cell.NormalImage()), FormMain.Config.ShiftForBorder);
+                g.DrawImageUnscaled(cell.BitmapList().GetImage(cell.ImageIndex(), cell.NormalImage() ? ImageState.Normal : ImageState.Disabled), FormMain.Config.ShiftForBorder);
 
                 if (Program.formMain.SelectedPanelEntity == this)
                 {
-                    g.DrawImage(Program.formMain.ilMenuCellFilters.Images[2], new Rectangle(0, 0, Width - 1, Height - 1));
-                    g.DrawImage(Program.formMain.ilMenuCellFilters.Images[2], new Rectangle(0, 0, Width - 1, Height - 1));
-                    g.DrawImage(Program.formMain.ilMenuCellFilters.Images[2], new Rectangle(0, 0, Width - 1, Height - 1));
-                    g.DrawImage(Program.formMain.ilMenuCellFilters.Images[2], new Rectangle(0, 0, Width - 1, Height - 1));
+                    g.DrawImage(Program.formMain.ilMenuCellFilters.GetImage(2, ImageState.Normal), new Rectangle(0, 0, Width - 1, Height - 1));
                 }
 
                 g.DrawImageUnscaled(Program.formMain.bmpBorderForIcon, 0, 0);

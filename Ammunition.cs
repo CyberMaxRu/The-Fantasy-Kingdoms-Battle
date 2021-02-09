@@ -56,7 +56,7 @@ namespace Fantasy_King_s_Battle
 
         // Реализация интерфейса
         PanelEntity ICell.Panel { get; set; }
-        ImageList ICell.ImageList() => Program.formMain.ilItems;
+        BitmapList ICell.BitmapList() => Program.formMain.ilItems;
         int ICell.ImageIndex() => GroupWeapon.ImageIndex;
         bool ICell.NormalImage() => true;
         int ICell.Value() => 0;
@@ -166,7 +166,7 @@ namespace Fantasy_King_s_Battle
 
         // Реализация интерфейса
         PanelEntity ICell.Panel { get; set; }
-        ImageList ICell.ImageList() => Program.formMain.ilItems;
+        BitmapList ICell.BitmapList() => Program.formMain.ilItems;
         int ICell.ImageIndex() => GroupArmour.ImageIndex;
         bool ICell.NormalImage() => true;
         int ICell.Value() => 0;

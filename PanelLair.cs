@@ -25,7 +25,7 @@ namespace Fantasy_King_s_Battle
             lblName.StringFormat.Alignment = StringAlignment.Near;
             lblName.Text = typeLair.Name;
 
-            imgLair = new VCImage(this, FormMain.Config.GridSize, lblName.NextTop(), Program.formMain.ilLairs, typeLair.ImageIndex);
+            imgLair = new VCImage(this, FormMain.Config.GridSize, lblName.NextTop(), Program.formMain.imListObjectsBig, typeLair.ImageIndex);
             imgLair.ShowBorder = false;
             imgLair.Click += ImgLair_Click;
             imgLair.ShowHint += ImgLair_ShowHint;

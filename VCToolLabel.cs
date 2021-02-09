@@ -17,7 +17,7 @@ namespace Fantasy_King_s_Battle
             StringFormat.Alignment = StringAlignment.Near;
             StringFormat.LineAlignment = StringAlignment.Near;
 
-            ImageList = Program.formMain.ilGui16;
+            BitmapList = Program.formMain.ilGui16;
             ImageIndex = imageIndex;
             Width = 80;
             TopMargin = 0;

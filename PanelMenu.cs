@@ -22,7 +22,7 @@ namespace Fantasy_King_s_Battle
 
             for (int y = 0; y < FormMain.PANEL_MENU_CELLS.Height; y++)
                 for (int x = 0; x < FormMain.PANEL_MENU_CELLS.Width; x++)
-                    CellsMenu[y, x] = new PanelCellMenu(this, new Point(DISTANCE_BETWEEN_CELLS + (x * (Program.formMain.ilItems.ImageSize.Width + DISTANCE_BETWEEN_CELLS)), DISTANCE_BETWEEN_CELLS + (y * (Program.formMain.ilItems.ImageSize.Height + DISTANCE_BETWEEN_CELLS))));
+                    CellsMenu[y, x] = new PanelCellMenu(this, new Point(DISTANCE_BETWEEN_CELLS + (x * (Program.formMain.ilItems.Size + DISTANCE_BETWEEN_CELLS)), DISTANCE_BETWEEN_CELLS + (y * (Program.formMain.ilItems.Size + DISTANCE_BETWEEN_CELLS))));
         }
 
         internal PanelCellMenu[,] CellsMenu { get; }

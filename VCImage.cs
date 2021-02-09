@@ -19,9 +19,9 @@ namespace Fantasy_King_s_Battle
         private VCLabel labelPopupQuantity;
         private SolidBrush brushPopupQuantity;
 
-        public VCImage(VisualControl parent, int shiftX, int shiftY, ImageList imageList, int imageIndex) : base(parent, shiftX, shiftY)
+        public VCImage(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList, int imageIndex) : base(parent, shiftX, shiftY)
         {
-            ImageList = imageList;
+            BitmapList = bitmapList;
             ImageIndex = imageIndex;
 
             ValidateSize();
@@ -46,7 +46,7 @@ namespace Fantasy_King_s_Battle
             brushPopupQuantity = new SolidBrush(FormMain.Config.CommonPopupQuantityBack);
         }
 
-        internal ImageList ImageList { get; }
+        internal BitmapList BitmapList { get; }
         internal int ImageIndex { get; set; }
         internal ImageState ImageState { get; set; } = ImageState.Normal;
         protected int ShiftImage { get => shiftImage; set { shiftImage = value; ValidateSize(); } }
@@ -57,8 +57,8 @@ namespace Fantasy_King_s_Battle
 
         private void ValidateSize()
         {
-            Width = ImageList.ImageSize.Width + (ShiftImage * 2);
-            Height = ImageList.ImageSize.Height + (ShiftImage * 2);
+            Width = BitmapList.Size + (ShiftImage * 2);
+            Height = BitmapList.Size + (ShiftImage * 2);
         }
 
         internal override void Draw(Graphics g)
@@ -71,7 +71,11 @@ namespace Fantasy_King_s_Battle
             base.Draw(g);
 
             if (ImageIndex != -1)
-                g.DrawImageUnscaled(ImageListContainer.GetImage(ImageList, ImageIndex, ImageState), Left + ShiftImage, Top + ShiftImage);
+            {
+                g.CompositingQuality = CompositingQuality.HighSpeed;
+                g.InterpolationMode = InterpolationMode.Low;
+                g.DrawImageUnscaled(BitmapList.GetImage(ImageIndex, ImageState), Left + ShiftImage, Top + ShiftImage);
+            }
             //else
             //    g.DrawImage(Program.formMain.bmpEmptyEntity, new Rectangle(Left + 1, Top + 0, Program.formMain.bmpBorderForIcon.Width - 2, Program.formMain.bmpBorderForIcon.Height - 2));
 

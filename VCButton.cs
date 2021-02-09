@@ -11,7 +11,7 @@ namespace Fantasy_King_s_Battle
     // Визуальный контрол - кнопка c иконкой
     internal class VCButton : VCImage
     {
-        public VCButton(VisualControl parent, int shiftX, int shiftY, ImageList imageList, int imageIndex) : base(parent, shiftX, shiftY, imageList, imageIndex)
+        public VCButton(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList, int imageIndex) : base(parent, shiftX, shiftY, bitmapList, imageIndex)
         {
             ShowBorder = true;
             ShiftImage = 2;

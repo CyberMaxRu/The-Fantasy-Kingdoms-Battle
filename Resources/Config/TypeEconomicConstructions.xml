@@ -4,7 +4,7 @@
     <ID>Castle</ID>
     <Name>Замок</Name>
     <Description>- Позволяет отдавать приказы строительства/- Содержит налоговую и охранную службы/- Здесь хранится казна королевства</Description>
-    <ImageIndex>7</ImageIndex>
+    <ImageIndex>20</ImageIndex>
     <Line>1</Line>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>3</MaxLevel>
@@ -54,7 +54,7 @@
     <ID>House</ID>
     <Name>Крестьянский дом</Name>
     <Description>- Приносит небольшой доход/- Жилище крестьян</Description>
-    <ImageIndex>8</ImageIndex>
+    <ImageIndex>108</ImageIndex>
     <Line>1</Line>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
@@ -72,7 +72,7 @@
     <ID>Mill</ID>
     <Name>Мельница</Name>
     <Description>- Приносит небольшой доход</Description>
-    <ImageIndex>9</ImageIndex>
+    <ImageIndex>107</ImageIndex>
     <Line>1</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
@@ -90,7 +90,7 @@
     <ID>Hostelry</ID>
     <Name>Постоялый двор</Name>
     <Description>- Приносит средний доход</Description>
-    <ImageIndex>27</ImageIndex>
+    <ImageIndex>94</ImageIndex>
     <Line>1</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
@@ -108,7 +108,7 @@
     <ID>Market</ID>
     <Name>Рынок</Name>
     <Description>- Приносит существенный доход/- Здесь исследуют и продают зелья/- Здесь исследуют и продают артефакты</Description>
-    <ImageIndex>10</ImageIndex>
+    <ImageIndex>82</ImageIndex>
     <Line>2</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
@@ -197,7 +197,7 @@
     <ID>Smithy</ID>
     <Name>Кузница</Name>
     <Description>- Приносит небольшой доход/- Здесь изобретают и продают новые виды оружия и брони</Description>
-    <ImageIndex>11</ImageIndex>
+    <ImageIndex>87</ImageIndex>
     <Line>2</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
@@ -515,7 +515,7 @@
     <ID>Tavern</ID>
     <Name>Таверна</Name>
     <Description>- Здесь героя могут отдыхать и лечиться/- Позволяет собирать партии героев</Description>
-    <ImageIndex>12</ImageIndex>
+    <ImageIndex>89</ImageIndex>
     <Line>3</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>2</MaxLevel>
@@ -543,7 +543,7 @@
     <ID>MagicBazaar</ID>
     <Name>Магический базар</Name>
     <Description>- Приносит небольшой доход/- Здесь изобретают и продают эликсиры</Description>
-    <ImageIndex>13</ImageIndex>
+    <ImageIndex>81</ImageIndex>
     <Line>2</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
@@ -636,7 +636,7 @@
     <ID>Bank</ID>
     <Name>Банк</Name>
     <Description>- Приносит небольшой доход/- Позволяет получать кредит/- Позволяет вкладываеть деньги под проценты</Description>
-    <ImageIndex>26</ImageIndex>
+    <ImageIndex>73</ImageIndex>
     <Line>2</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
@@ -654,7 +654,7 @@
     <ID>Library</ID>
     <Name>Библиотека</Name>
     <Description>- Позволяет изучить заклинания</Description>
-    <ImageIndex>15</ImageIndex>
+    <ImageIndex>129</ImageIndex>
     <Line>3</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>2</MaxLevel>
@@ -677,7 +677,7 @@
     <ID>Statue</ID>
     <Name>Статуя</Name>
     <Description>- Повышает энтузиазм героев</Description>
-    <ImageIndex>14</ImageIndex>
+    <ImageIndex>88</ImageIndex>
     <Line>3</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
@@ -694,7 +694,7 @@
     <ID>Academy</ID>
     <Name>Военная академия</Name>
     <Description>- Позволяет улучшать навыки героями</Description>
-    <ImageIndex>25</ImageIndex>
+    <ImageIndex>50</ImageIndex>
     <Line>3</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>

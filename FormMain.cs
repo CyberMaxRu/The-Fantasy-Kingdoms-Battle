@@ -24,24 +24,19 @@ namespace Fantasy_King_s_Battle
 
         // ImageList'ы
         private readonly ImageListContainer imageListContainer;
-        internal readonly ImageList ilPlayerAvatars;
-        internal ImageList ilPlayerAvatarsBig;
-        internal readonly ImageList ilResultBattle;
-        internal readonly ImageList ilBuildings;
-        internal readonly ImageList ilLairs;
-        internal readonly ImageList ilLairsSmall;
-        internal readonly ImageList ilHeroes;
-        internal readonly ImageList ilMonsters;
-        internal readonly ImageList ilMonstersSmall;
-        internal readonly ImageList ilGui;
-        internal readonly ImageList ilGui16;
-        internal readonly ImageList ilGui24;
-        internal readonly ImageList ilGui45;
-        internal readonly ImageList ilGuiHeroes;
-        internal readonly ImageList ilParameters;
-        internal readonly ImageList ilItems;
-        internal readonly ImageList ilStateHero;
-        internal readonly ImageList ilMenuCellFilters;
+        internal BitmapList ilPlayerAvatars;
+        internal BitmapList ilPlayerAvatarsBig;
+        internal readonly BitmapList ilResultBattle;
+        internal readonly BitmapList imListObjectsBig;
+        internal readonly BitmapList imListObjectsCell;
+        internal readonly BitmapList ilGui;
+        internal readonly BitmapList ilGui16;
+        internal readonly BitmapList ilGui24;
+        internal readonly BitmapList ilGui45;
+        internal readonly BitmapList ilParameters;
+        internal readonly BitmapList ilItems;
+        internal readonly BitmapList ilStateHero;
+        internal readonly BitmapList ilMenuCellFilters;
 
         internal Brush brushQuantity;
         internal Brush brushCost;
@@ -282,40 +277,31 @@ namespace Fantasy_King_s_Battle
 
             // Загружаем иконки
             SetStage("Рассматриваем картины");
-            ilPlayerAvatars = new ImageList()
-            {
-                ColorDepth = ColorDepth.Depth32Bit,
-                ImageSize = new Size(48, 48)
-            };
+            ilPlayerAvatars = new BitmapList(0, 128, ImageState.Normal);
 
             bmpMaskBig = new Bitmap(dirResources + @"Icons\MaskBig.png");
             ValidateAvatars();
 
             bmpMaskSmall = new Bitmap(dirResources + @"Icons\MaskSmall.png");
-            ilLairs = PrepareImageList("Lairs.png", 128, 128, true);
-            ilLairsSmall = BigIconToSmall(ilLairs);
 
-            ilResultBattle = PrepareImageList("ResultBattle.png", 24, 24, false);
-            ilBuildings = PrepareImageList("Buildings.png", 126, 126, true);
-            ilHeroes = PrepareImageList("Heroes.png", 126, 126, false);
-            ilMonsters = PrepareImageList("Monsters.png", 128, 128, false);
-            ilMonstersSmall = BigIconToSmall(ilMonsters);
+            ilResultBattle = new BitmapList(dirResources, "ResultBattle.png", 24, ImageState.Normal);
+            imListObjectsBig = new BitmapList(dirResources, "Objects.png", 128, ImageState.Disabled);
+            imListObjectsCell = new BitmapList(imListObjectsBig, 48);
 
-            ilGuiHeroes = PrepareImageList("GuiHeroes.png", 48, 48, true, true);
-            ilGui16 = PrepareImageList("Gui16.png", 16, 16, false);
-            ilGui24 = PrepareImageList("Gui24.png", 24, 24, false);
-            ilGui45 = PrepareImageList("Gui45.png", 45, 45, false);
-            ilParameters = PrepareImageList("Parameters.png", 24, 24, false);
-            ilItems = PrepareImageList("Items.png", 48, 48, true);
-            ilStateHero = PrepareImageList("StateHero.png", 24, 24, false);
-            ilMenuCellFilters = PrepareImageList("MenuCellFilters.png", 48, 48, true);
+            ilGui16 = new BitmapList(dirResources, "Gui16.png", 16, ImageState.Normal);
+            ilGui24 = new BitmapList(dirResources, "Gui24.png", 24, ImageState.Normal);
+            ilGui45 = new BitmapList(dirResources, "Gui45.png", 45, ImageState.Normal);
+            ilParameters = new BitmapList(dirResources, "Parameters.png", 24, ImageState.Normal);
+            ilItems = new BitmapList(dirResources, "Items.png", 48, ImageState.Disabled);
+            ilStateHero = new BitmapList(dirResources, "StateHero.png", 24, ImageState.Normal);
+            ilMenuCellFilters = new BitmapList(dirResources, "MenuCellFilters.png", 48, ImageState.Normal);
 
-            ilGui = PrepareImageList("Gui.png", 48, 48, true, true);
+            ilGui = new BitmapList(dirResources, "Gui.png", 48, ImageState.Over);
             imageListContainer = new ImageListContainer(dirResources);
             //MakeAlpha();
 
             bmpForBackground = new Bitmap(dirResources + "Icons\\Background.png");
-            bmpBackgroundButton = GuiUtils.MakeBackground(GuiUtils.SizeButtonWithImage(ilGui));
+            //bmpBackgroundButton = GuiUtils.MakeBackground(GuiUtils.SizeButtonWithImage(ilGui));
             bmpBorderForIcon = new Bitmap(dirResources + "Icons\\BorderIconEntity.png");
             bmpEmptyEntity = new Bitmap(dirResources + "Icons\\EmptyEntity.png");
             bmpBorderBattlefield = new Bitmap(dirResources + "Icons\\BorderBattlefield.png");
@@ -382,7 +368,7 @@ namespace Fantasy_King_s_Battle
             btnHelp = CreateButton(ilGui, GUI_BOOK, 0, btnPreferences.ShiftY, BtnHelp_Click, BtnHelp_MouseHover);
             btnQuit = CreateButton(ilGui, GUI_EXIT, 0, btnPreferences.ShiftY, BtnQuit_Click, BtnQuit_MouseHover);
 
-            btnTarget = CreateButton(ilLairsSmall, -1, 0, btnPreferences.ShiftY, BtnTarget_Click, BtnTarget_MouseHover);
+            btnTarget = CreateButton(imListObjectsCell, -1, 0, btnPreferences.ShiftY, BtnTarget_Click, BtnTarget_MouseHover);
             btnEndTurn = CreateButton(ilGui, GUI_BATTLE, 0, btnPreferences.ShiftY, BtnEndTurn_Click, BtnEndTurn_MouseHover);
 
             // Создаем панели игроков в левой части окна
@@ -517,7 +503,8 @@ namespace Fantasy_King_s_Battle
 
             ActivatePage(pageGuilds);
 
-            formHint = new FormHint(ilGui16, ilParameters);
+            formHint = new FormHint(null, null);
+            //formHint = new FormHint(ilGui16, ilParameters);
 
             ValidateAvatars();
 
@@ -880,20 +867,26 @@ namespace Fantasy_King_s_Battle
         private void AddBitmapToImageList(ImageList il, Bitmap bitmap, int height)
         {
             int lines = bitmap.Height / height;
+
             if (lines > 1)
             {
+                int pics = bitmap.Width / il.ImageSize.Width;
                 for (int i = 0; i < lines; i++)
                 {
-                    Bitmap bmpSingleline = new Bitmap(bitmap.Width, height);
-                    Graphics g = Graphics.FromImage(bmpSingleline);
-                    g.DrawImage(bitmap, 0, 0, new Rectangle(0, i * height, bitmap.Width, height), GraphicsUnit.Pixel);
-                    _ = il.Images.AddStrip(bmpSingleline);
-                    g.Dispose();
+                    for (int j = 0; j < pics; j++)
+                    {
+                        Bitmap bmpSingleline = new Bitmap(il.ImageSize.Width, height);
+                        Graphics g = Graphics.FromImage(bmpSingleline);
+                        g.DrawImage(bitmap, 0, 0, new Rectangle(j * il.ImageSize.Width, i * height, il.ImageSize.Width, il.ImageSize.Height), GraphicsUnit.Pixel);
+                        il.Images.Add(bmpSingleline);
+                        g.Dispose();
+                    }
                 }
             }
             else
             {
-                _ = il.Images.AddStrip(bitmap);
+                if (il.Images.AddStrip(bitmap) == -1) 
+                    throw new Exception("Не удалось добавить полосу изображения.");
             }
         }
 
@@ -953,31 +946,6 @@ namespace Fantasy_King_s_Battle
                 }
 
             return output;
-        }
-
-        internal ImageList PrepareImageList(string filename, int width, int height, bool convertToGrey, bool addOver = false)
-        {
-            ImageList il = new ImageList()
-            {
-                ColorDepth = ColorDepth.Depth32Bit,
-                ImageSize = new Size(width, height)
-            };
-
-            Bitmap bmp = new Bitmap(dirResources + "Icons\\" + filename);
-            // Если это многострочная картинка, нарезаем ее в однострочную картинку
-            if (bmp.Height % height != 0)
-                throw new Exception("Высота многострочной картинки не кратна высоте строки: " + filename);
-
-            AddBitmapToImageList(il, bmp, height);
-            il.Tag = il.Images.Count;
-
-            if (convertToGrey == true)
-                AddBitmapToImageList(il, GreyBitmap(bmp), height);
-
-            if (addOver == true)
-                AddBitmapToImageList(il, BrightBitmap(bmp), height);
-
-            return il;
         }
 
         internal void ShowDataPlayer()
@@ -1151,7 +1119,8 @@ namespace Fantasy_King_s_Battle
         {
             // При деактивации пересоздаем окно, иначе оно отображается под главной формой
             formHint.Dispose();
-            formHint = new FormHint(ilGui16, ilParameters);
+            //formHint = new FormHint(ilGui16, ilParameters);
+            formHint = new FormHint(null, null);
         }
 
         private void StartNewLobby()
@@ -1341,32 +1310,15 @@ namespace Fantasy_King_s_Battle
 
         internal void ValidateAvatars()
         {
-            ilPlayerAvatarsBig = PrepareImageList("PlayerAvatarsBig.png", 128, 128, false);
+            ilPlayerAvatarsBig = new BitmapList(dirResources, "PlayerAvatarsBig.png", 128, ImageState.Normal);
 
             Settings.LoadAvatar();
             if (Settings.Avatar != null)
             {
-                ilPlayerAvatarsBig.Images.Add(Settings.Avatar);
+                ilPlayerAvatarsBig.Add(Settings.Avatar);
             }
 
-            Bitmap bmp;
-            AvatarCount = ilPlayerAvatarsBig.Images.Count;
-            for (int i = 0; i < AvatarCount; i++)
-            {
-                bmp = new Bitmap(ilPlayerAvatarsBig.Images[i]);
-                ilPlayerAvatarsBig.Images.Add(GreyBitmap(bmp));
-            }
-
-            ilPlayerAvatars.Images.Clear();
-            ilPlayerAvatars.ImageSize = new Size(48, 48);
-            foreach (Image i in ilPlayerAvatarsBig.Images)
-            {
-                Bitmap bmpDest = new Bitmap(48, 48);
-                Graphics gDest = Graphics.FromImage(bmpDest);
-                gDest.DrawImage(i, new Rectangle(0, 0, 48, 48), new Rectangle(1, 1, 126, 126), GraphicsUnit.Pixel);
-                ilPlayerAvatars.Images.Add(bmpDest);
-                gDest.Dispose();
-            }
+            ilPlayerAvatars = new BitmapList(ilPlayerAvatarsBig, 48);
 
             if (lobby != null)
             {
@@ -1401,13 +1353,15 @@ namespace Fantasy_King_s_Battle
 
         private void MakeAlpha()
         {
-            /*            Bitmap b = new Bitmap(ilItems.Images[1]);
-                        for (int y = 0; y < b.Height; y++)
-                            for (int x = 0; x < b.Width; x++)
-                            {
-                                b.SetPixel(x, y, Color.FromArgb(b.GetPixel(x, y).A, 0, 0, 0));
-                            }
-                        b.Save(@"f:\Projects\C-Sharp\Fantasy King's Battle\Resources\Icons\1.png");*/
+            //Bitmap b = new Bitmap(ilItems.Images[1]);
+            /*Bitmap b = new Bitmap(dirResources + @"Icons\sklep.png");
+            Bitmap a = new Bitmap(dirResources + @"Icons\MaskBig.png");
+            for (int y = 0; y < b.Height; y++)
+                for (int x = 0; x < b.Width; x++)
+                {
+                    b.SetPixel(x, y, Color.FromArgb(a.GetPixel(x, y).A, b.GetPixel(x, y).R, b.GetPixel(x, y).G, b.GetPixel(x, y).B));
+                }
+            b.Save(@"f:\Projects\C-Sharp\Fantasy King's Battle\Resources\Icons\1.png");*/
 
             /*Bitmap b = new Bitmap(ilPlayerAvatarsBig.Images[0]);
             for (int y = 0; y < b.Height; y++)
@@ -1486,9 +1440,9 @@ namespace Fantasy_King_s_Battle
             UpdateMenu();
         }
 
-        internal VCButton CreateButton(ImageList imageList, int imageIndex, int left, int top, EventHandler click, EventHandler showHint)
+        internal VCButton CreateButton(BitmapList bitmapList, int imageIndex, int left, int top, EventHandler click, EventHandler showHint)
         {
-            VCButton b = new VCButton(MainControl, left, top, imageList, imageIndex);
+            VCButton b = new VCButton(MainControl, left, top, bitmapList, imageIndex);
             b.Click += click;
             b.ShowHint += showHint;
 

@@ -48,8 +48,9 @@ namespace Fantasy_King_s_Battle
             Program.formMain.ShowFrame();
         }
 
-        protected override ImageList GetImageList() => Program.formMain.ilLairs;
-        protected override int GetImageIndex() => GuiUtils.GetImageIndexWithGray(Program.formMain.ilLairs, lair.Lair.ImageIndex, true);
+        protected override BitmapList GetBitmapList() => Program.formMain.imListObjectsBig;
+        protected override int GetImageIndex() => lair.Lair.ImageIndex;
+        protected override ImageState GetImageState() => ImageState.Normal;
         protected override string GetCaption() => lair.Lair.Name;
     }
 }
