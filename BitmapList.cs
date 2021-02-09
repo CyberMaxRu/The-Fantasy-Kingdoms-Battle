@@ -200,8 +200,8 @@ namespace Fantasy_King_s_Battle
 
         internal Bitmap GetImage(int imageIndex, ImageState state)
         {
-            //Debug.Assert(imageIndex >= 0);
-            //Debug.Assert(imageIndex < Count);
+            Debug.Assert(imageIndex >= 0);
+            Debug.Assert(imageIndex < Count);
 
             Bitmap bmp;
 
