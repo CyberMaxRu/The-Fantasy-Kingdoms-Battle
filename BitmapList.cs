@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Diagnostics;
 using System.Drawing.Drawing2D;
+using System.Runtime.InteropServices;
+using System.Drawing.Imaging;
 
 namespace Fantasy_King_s_Battle
 {
@@ -141,28 +143,27 @@ namespace Fantasy_King_s_Battle
 
         internal static Bitmap GreyBitmap(Bitmap bmp)
         {
-            Bitmap output = new Bitmap(bmp.Width, bmp.Height);
+            Bitmap output = new Bitmap(bmp);
+            byte newColor;
 
-            // Перебираем в циклах все пиксели исходного изображения
-            for (int j = 0; j < bmp.Height; j++)
-                for (int i = 0; i < bmp.Width; i++)
-                {
-                    // получаем (i, j) пиксель
-                    uint pixel = (uint)(bmp.GetPixel(i, j).ToArgb());
+            Rectangle rect = new Rectangle(0, 0, output.Width, output.Height);
+            BitmapData bmpData = output.LockBits(rect, ImageLockMode.ReadWrite, output.PixelFormat);
+            IntPtr ptr = bmpData.Scan0;
+            int bytes = Math.Abs(bmpData.Stride) * output.Height;
+            byte[] rgbValues = new byte[bytes];
+            Marshal.Copy(ptr, rgbValues, 0, bytes);
 
-                    // получаем компоненты цветов пикселя
-                    float R = (pixel & 0x00FF0000) >> 16; // красный
-                    float G = (pixel & 0x0000FF00) >> 8; // зеленый
-                    float B = pixel & 0x000000FF; // синий
-                                                  // делаем цвет черно-белым (оттенки серого) - находим среднее арифметическое
-                    R = G = B = (R + G + B) / 3.0f;
+            // Byte 0: Blue, Byte 1: Green, Byte 2: Red, Byte 3: Alpha
+            for (int counter = 0; counter < rgbValues.Length; counter += 4)
+            {
+                newColor = Convert.ToByte((rgbValues[counter + 0] + rgbValues[counter + 1] + rgbValues[counter + 2]) / 3);
+                rgbValues[counter + 0] = newColor;
+                rgbValues[counter + 1] = newColor;
+                rgbValues[counter + 2] = newColor;
+            }
 
-                    // собираем новый пиксель по частям (по каналам)
-                    uint newPixel = ((uint)bmp.GetPixel(i, j).A << 24) | ((uint)R << 16) | ((uint)G << 8) | ((uint)B);
-
-                    // добавляем его в Bitmap нового изображения
-                    output.SetPixel(i, j, Color.FromArgb((int)newPixel));
-                }
+            Marshal.Copy(rgbValues, 0, ptr, bytes);
+            output.UnlockBits(bmpData);
 
             return output;
         }
@@ -200,8 +201,7 @@ namespace Fantasy_King_s_Battle
         internal Bitmap GetImage(int imageIndex, ImageState state)
         {
             //Debug.Assert(imageIndex >= 0);
-            if (imageIndex < 0)
-                imageIndex = 0;
+            //Debug.Assert(imageIndex < Count);
 
             Bitmap bmp;
 
