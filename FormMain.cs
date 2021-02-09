@@ -1103,12 +1103,15 @@ namespace Fantasy_King_s_Battle
 
         private void ActivatePage(VCFormPage pc)
         {
-            if (currentPage != null)
-                currentPage.Page.Visible = false;
-            currentPage = pc;
-            currentPage.Page.Visible = true;
+            if (pc != currentPage)
+            {
+                if (currentPage != null)
+                    currentPage.Page.Visible = false;
+                currentPage = pc;
+                currentPage.Page.Visible = true;
 
-            ShowFrame();
+                ShowFrame();
+            }
         }
 
         private void FormMain_Activated(object sender, EventArgs e)
