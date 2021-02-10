@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace Fantasy_Kingdoms_Battle.Source.VisualControls
+namespace Fantasy_Kingdoms_Battle
 {
     // Класс иконки страницы
     internal sealed class VCTabButton : VCImage
