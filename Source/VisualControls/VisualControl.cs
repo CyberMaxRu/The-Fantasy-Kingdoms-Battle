@@ -40,7 +40,6 @@ namespace Fantasy_Kingdoms_Battle
         internal Rectangle Rectangle { get; private set; }// Координаты и размер контрола
         internal bool Visible { get; set; } = true;// Видимость контрола
         internal bool ShowBorder { get; set; }// Надо ли показывать бордюр
-        internal Color ColorBorder { get; set; } = FormMain.Config.CommonBorder;// Цвет бордюра
 
         // Список контролов, расположенных на нём
         internal List<VisualControl> Controls = new List<VisualControl>();
@@ -56,12 +55,9 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(rectBorder.Width == Width - 1);
             Debug.Assert(rectBorder.Height == Height - 1);
 
-            // Рамка вокруг панели
+            // Рисуем бордюр
             if (ShowBorder)
-            {
-                penBorder.Color = ColorBorder;
                 g.DrawRectangle(penBorder, rectBorder);
-            }
 
             foreach (VisualControl vc in Controls)
             {
@@ -185,6 +181,11 @@ namespace Fantasy_Kingdoms_Battle
             Size s = MaxSize();
             Width = s.Width;
             Height = s.Height;
+        }
+
+        internal void SetColorBorder(Color color)
+        {
+            penBorder.Color = color;
         }
     }
 }
