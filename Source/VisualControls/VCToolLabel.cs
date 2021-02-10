@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    // Визуальный контрол - иконка 16 * 16 с текстом для тулбара игры
+    // Визуальный контрол - иконка 16 * 16 с текстом для тулбара
     internal sealed class VCToolLabel : VCLabel
     {
         public VCToolLabel(VisualControl parent, int shiftX, int shiftY, string text, int imageIndex)
