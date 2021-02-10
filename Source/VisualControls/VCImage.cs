@@ -18,8 +18,6 @@ namespace Fantasy_Kingdoms_Battle
             BitmapList = bitmapList;
             ImageIndex = imageIndex;
 
-            ValidateSize();
-
             labelCost = new VCLabel(this, 0, Height - 12, FormMain.Config.FontCost, FormMain.Config.CommonCost, 16, "");
             labelCost.StringFormat.LineAlignment = StringAlignment.Far;
             labelCost.Visible = false;// Текст перекрывается иконкой. Поэтому рисуем вручную
@@ -35,6 +33,8 @@ namespace Fantasy_Kingdoms_Battle
             labelPopupQuantity.Visible = false;
 
             brushPopupQuantity = new SolidBrush(FormMain.Config.CommonPopupQuantityBack);
+
+            ValidateSize();
         }
 
         internal BitmapList BitmapList { get; }
