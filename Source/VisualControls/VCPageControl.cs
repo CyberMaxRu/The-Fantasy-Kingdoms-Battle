@@ -13,6 +13,7 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class VCPictureBoxPage : VCImage
     {
         private Pen penBorder = new Pen(FormMain.Config.CommonBorder);
+        private int shiftX;
 
         public VCPictureBoxPage(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList, int imageIndex) : base(parent, shiftX, shiftY, bitmapList, imageIndex)
         {
@@ -37,17 +38,24 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.ShowFrame();
         }
 
-        protected void OnPaint(PaintEventArgs pe)
+        internal override void Draw(Graphics g)
         {
-            /*base.OnPaint(pe);
+            base.Draw(g);
 
-            if ((Parent as PageControl).ActivePage == IndexPage)
+            shiftX = IndexPage > 0 ? 4 : 0;
+
+            if ((Parent as VCPageControl).ActivePage == IndexPage)
             {
-                //pe.Graphics.DrawLine(penBorder, 0, 0, Width - 1, 0);
-                //pe.Graphics.DrawLine(penBorder, 0, 0, 0, Height - 1);
-                //pe.Graphics.DrawLine(penBorder, Width - 1, 0, Width - 1, Height - 1);
-                pe.Graphics.DrawLine(penBorder, 0, Height - 1, Width - 1, Height - 1);
-            }*/
+                g.DrawLine(penBorder, Left, Top, Left + Width, Top);// Верх
+                g.DrawLine(penBorder, Left, Top, Left, Top + Height - 1);// Левый край
+                g.DrawLine(penBorder, Left + Width, Top, Left + Width, Top + Height - 1);// Правый край
+                if (shiftX > 0)
+                    g.DrawLine(penBorder, Left - shiftX, Top + Height - 1, Left, Top + Height - 1);
+            }
+            else
+            {
+                g.DrawLine(penBorder, Left - shiftX, Top + Height - 1, Left + Width, Top + Height - 1);
+            }
         }
     }
 
@@ -116,6 +124,8 @@ namespace Fantasy_Kingdoms_Battle
                 lblCaptionPage.Text = activePage.NamePage;
                 if ((activePage != null) && (activePage.ContextPage != null))
                     activePage.ContextPage.Visible = true;
+
+                Program.formMain.NeedRedrawFrame();
             }
         }
 
