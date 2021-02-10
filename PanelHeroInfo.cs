@@ -12,6 +12,7 @@ namespace Fantasy_King_s_Battle
     internal sealed class PanelHeroInfo : PanelBaseInfo
     {
         private PlayerHero hero;
+        private readonly VCLabel lblKindHero;
         private readonly Label lblLevel;
         private readonly Label lblHealth;
         private readonly Label lblMana;
@@ -51,7 +52,10 @@ namespace Fantasy_King_s_Battle
             };
             btnDismiss.Click += BtnDismiss_Click;
 
-            panelWeapon = new PanelEntity(this, FormMain.Config.GridSize, TopForControls());
+            lblKindHero = new VCLabel(this, FormMain.Config.GridSize, TopForControls(), FormMain.Config.FontCaptionPage, FormMain.Config.CommonCaptionPage, 16, "");
+            lblKindHero.StringFormat.Alignment = StringAlignment.Near;
+
+            panelWeapon = new PanelEntity(this, FormMain.Config.GridSize, lblKindHero.NextTop());
             panelArmour = new PanelEntity(this, panelWeapon.NextLeft(), panelWeapon.ShiftY);
 
             pageControl.ShiftY = panelWeapon.NextTop();
@@ -62,6 +66,8 @@ namespace Fantasy_King_s_Battle
 
             pageControl.ApplyMinWidth();
             Width = pageControl.Width + FormMain.Config.GridSize * 2;
+
+            lblKindHero.Width = Width;
 
             return;
             /*lblLevel = GuiUtils.CreateLabel(this, Config.GRID_SIZE, TopForControls());
@@ -123,6 +129,8 @@ namespace Fantasy_King_s_Battle
         internal void ShowData()
         {
             //base.ShowData();
+
+            lblKindHero.Text = hero.TypeHero.KindCreature.Name;
 
             panelWeapon.ShowCell(hero.RangeWeapon != null ? hero.RangeWeapon : hero.MeleeWeapon);
             panelArmour.ShowCell(hero.Armour);
