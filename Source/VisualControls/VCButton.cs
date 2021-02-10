@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Drawing;
-
-namespace Fantasy_Kingdoms_Battle
+﻿namespace Fantasy_Kingdoms_Battle
 {
     // Визуальный контрол - кнопка c иконкой
     internal class VCButton : VCImage
