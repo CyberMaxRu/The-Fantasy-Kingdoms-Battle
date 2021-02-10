@@ -65,31 +65,6 @@ namespace Fantasy_Kingdoms_Battle
             return bmp;
         }
 
-        internal static PictureBox BorderSelected(Control parent, Size size)
-        {
-            PictureBox pbox = new PictureBox()
-            {
-                Width = size.Width + 3 + 3,
-                Height = size.Height + 2 + 5,
-                Parent = parent
-            };
-            
-            return pbox;
-        }
-
-        internal static Label CreateLabel(Control parent, int left, int top, int width, string text)
-        {
-            return new Label()
-            {
-                Parent = parent,
-                Left = left,
-                Top = top,
-                AutoSize = false,
-                Width = width,
-                Text = text
-            };
-        }
-
         internal static Button CreateButtonWithIcon(Control parent, int left, int top, int imageIndex)
         {
             Button b = new Button()
