@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Diagnostics;
+using System.Drawing;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -37,18 +37,18 @@ namespace Fantasy_Kingdoms_Battle
         internal int Height { get { return height; } set { height = value; ValidateRectangle(); } }
         internal int ShiftX { get; set; }// Смещение контрола относительно левого края на родителе
         internal int ShiftY { get; set; }// Смещение контрола относительно верхнего края на родителе
-        internal Rectangle Rectangle { get; private set; }
-        internal bool Visible { get; set; } = true;
-        internal bool ShowBorder { get; set; }
-        internal Color BorderColor { get; set; } = FormMain.Config.CommonBorder;
+        internal Rectangle Rectangle { get; private set; }// Координаты и размер контрола
+        internal bool Visible { get; set; } = true;// Видимость контрола
+        internal bool ShowBorder { get; set; }// Надо ли показывать бордюр
+        internal Color ColorBorder { get; set; } = FormMain.Config.CommonBorder;// Цвет бордюра
 
-        // Список контролов, расположенных на нём, со смещением относительно левого верхнего угла
+        // Список контролов, расположенных на нём
         internal List<VisualControl> Controls = new List<VisualControl>();
 
         internal event EventHandler Click;
         internal event EventHandler ShowHint;
 
-        // Метод для рисования. Передается Bitmap, подготовленный Graphics, смещение контрола относительно левого верхнего угла
+        // Метод для рисования. Передается подготовленный Graphics
         internal virtual void Draw(Graphics g)
         {
             Debug.Assert(rectBorder.Left == Left);
@@ -59,7 +59,7 @@ namespace Fantasy_Kingdoms_Battle
             // Рамка вокруг панели
             if (ShowBorder)
             {
-                penBorder.Color = BorderColor;
+                penBorder.Color = ColorBorder;
                 g.DrawRectangle(penBorder, rectBorder);
             }
 

@@ -29,7 +29,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
-            BorderColor = FormMain.Config.ColorBorderPlayer(player);
+            ColorBorder = FormMain.Config.ColorBorderPlayer(player);
 
             base.Draw(g);
         }

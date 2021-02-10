@@ -160,7 +160,7 @@
     <Compile Include="VCImage.cs" />
     <Compile Include="VCLabel.cs" />
     <Compile Include="VCToolLabel.cs" />
-    <Compile Include="VisualControl.cs" />
+    <Compile Include="Source\VisualControls\VisualControl.cs" />
     <Compile Include="WebUtils.cs" />
     <Compile Include="XmlUtils.cs" />
     <EmbeddedResource Include="FormAbout.resx">
@@ -243,8 +243,6 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Source\VisualControls\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

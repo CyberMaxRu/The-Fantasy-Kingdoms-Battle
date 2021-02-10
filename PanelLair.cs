@@ -75,7 +75,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(Lair.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
 
-            BorderColor = FormMain.Config.ColorBorder(Program.formMain.SelectedPanelLair == this);
+            ColorBorder = FormMain.Config.ColorBorder(Program.formMain.SelectedPanelLair == this);
             lblName.Color = Lair.Player.TargetLair == Lair ? Color.OrangeRed : Color.Green;
 
             base.Draw(g);
