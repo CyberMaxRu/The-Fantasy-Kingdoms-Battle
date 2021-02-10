@@ -123,9 +123,6 @@
     <Compile Include="Source\VisualControls\VCTabControl.cs" />
     <Compile Include="PanelBaseInfo.cs" />
     <Compile Include="PanelBuildingInfo.cs" />
-    <Compile Include="PanelMenu.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="PanelCellMenu.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -153,6 +150,7 @@
     <Compile Include="Skill.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="Source\VisualControls\VCButton.cs" />
+    <Compile Include="Source\VisualControls\VCBitmap.cs" />
     <Compile Include="VCCell.cs" />
     <Compile Include="Source\VisualControls\VCFormPage.cs" />
     <Compile Include="Source\VisualControls\VCImage.cs" />

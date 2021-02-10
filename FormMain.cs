@@ -62,6 +62,8 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCButton btnTarget;
         private readonly VCButton btnEndTurn;
 
+        private readonly VCBitmap bitmapMenu;
+
         // Главные страницы игры
         private readonly List<VCFormPage> pages = new List<VCFormPage>();
         private readonly VCFormPage pageGuilds;
@@ -120,6 +122,7 @@ namespace Fantasy_Kingdoms_Battle
         internal const int GUI_45_BORDER = 0;
 
         internal static Size PANEL_MENU_CELLS = new Size(4, 3);
+        private const int DISTANCE_BETWEEN_CELLS = 3;
 
         private Lobby lobby;
         private Player curAppliedPlayer;
@@ -147,8 +150,6 @@ namespace Fantasy_Kingdoms_Battle
         private readonly int leftForPages;
         private readonly int heightBandBuildings;
         private readonly int heightBandInfoAndMenu;
-        private readonly Point pointMenu;
-        private readonly PanelMenu panelMenu;
         private readonly PanelBuildingInfo panelBuildingInfo;
         private readonly PanelLairInfo panelLairInfo;
         private readonly PanelHeroInfo panelHeroInfo;
@@ -156,6 +157,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly List<PanelConstruction> listPanelBuildings = new List<PanelConstruction>();
 
         private List<PictureBox> SlotSkill = new List<PictureBox>();
+        internal PanelCellMenu[,] CellsMenu { get; }
 
         internal FormHint formHint;
         internal PanelConstruction SelectedPanelBuilding { get; private set; }
@@ -303,7 +305,7 @@ namespace Fantasy_Kingdoms_Battle
             bmpBorderBattlefield = new Bitmap(dirResources + "Icons\\BorderBattlefield.png");
             LengthSideBorderBattlefield = bmpBorderBattlefield.Width - (Config.WidthBorderBattlefield * 2);
             Debug.Assert(LengthSideBorderBattlefield > 0);
-            
+
             // Делаем рамки для союзников и врагов
             bmpBorderForIconAlly = new Bitmap(bmpBorderForIcon);
             bmpBorderForIconEnemy = new Bitmap(bmpBorderForIcon);
@@ -426,17 +428,22 @@ namespace Fantasy_Kingdoms_Battle
                         }*/
 
             // Создаем панель с меню
-            panelMenu = new PanelMenu(this, dirResources);
-            panelMenu.Top = ClientSize.Height - panelMenu.Height - Config.GridSize;
+            bitmapMenu = new VCBitmap(MainControl, 0, 0, new Bitmap(dirResources + @"Icons\Menu.png"));
+            bitmapMenu.ShiftY = ClientSize.Height - bitmapMenu.Height - Config.GridSize;
+
+            CellsMenu = new PanelCellMenu[PANEL_MENU_CELLS.Height, PANEL_MENU_CELLS.Width];
+            for (int y = 0; y < PANEL_MENU_CELLS.Height; y++)
+                for (int x = 0; x < PANEL_MENU_CELLS.Width; x++)
+                    CellsMenu[y, x] = new PanelCellMenu(this, new Point(DISTANCE_BETWEEN_CELLS + (x * (ilItems.Size + DISTANCE_BETWEEN_CELLS)), DISTANCE_BETWEEN_CELLS + (y * (ilItems.Size + DISTANCE_BETWEEN_CELLS))));
 
             // Панель информации о здании
-            panelBuildingInfo = new PanelBuildingInfo(MainControl, 0, btnQuit.NextTop(), panelMenu.Top - pageGuilds.NextTop() - Config.GridSize)
+            panelBuildingInfo = new PanelBuildingInfo(MainControl, 0, btnQuit.NextTop(), bitmapMenu.ShiftY - pageGuilds.NextTop() - Config.GridSize)
             {
                 Visible = false
             };
 
             // Панель информации о логове
-            panelLairInfo = new PanelLairInfo(MainControl, 0, btnQuit.NextTop(), panelMenu.Top - pageGuilds.NextTop() - Config.GridSize)
+            panelLairInfo = new PanelLairInfo(MainControl, 0, btnQuit.NextTop(), bitmapMenu.Top - pageGuilds.NextTop() - Config.GridSize)
             {
                 Visible = false
             };
@@ -450,12 +457,13 @@ namespace Fantasy_Kingdoms_Battle
             // Подбираем ширину правой части
             panelBuildingInfo.Width = panelHeroInfo.Width;
             panelLairInfo.Width = panelBuildingInfo.Width;
-            int widthRightPanel = Math.Max(panelMenu.Width, panelHeroInfo.Width);
+            int widthRightPanel = Math.Max(bitmapMenu.Width, panelHeroInfo.Width);
             //Debug.Assert(widthRightPanel > panelMenu.Width);
 
             // Учитываем плиту под слоты
-            pointMenu = new Point(leftForPages + maxWidthPages + Config.GridSize, ClientSize.Height - panelMenu.Height - Config.GridSize);
-            pointMenu.X = pointMenu.X + ((widthRightPanel - panelMenu.Width) / 2);
+            bitmapMenu.ShiftX = leftForPages + maxWidthPages + Config.GridSize;
+            bitmapMenu.ShiftY = ClientSize.Height - bitmapMenu.Height - Config.GridSize;
+            bitmapMenu.ShiftX += (widthRightPanel - bitmapMenu.Width) / 2;
             calcedWidth = leftForPages + maxWidthPages + widthRightPanel + Config.GridSize;
 
             ArrangeControls();
@@ -476,11 +484,9 @@ namespace Fantasy_Kingdoms_Battle
             Height = (Height - ClientSize.Height) + calcedHeight + Config.GridSize;
             minSizeForm = new Size(Width, Height);
 
-            pointMenu.Y = ClientSize.Height - panelMenu.Height - Config.GridSize;
+            bitmapMenu.ShiftY = ClientSize.Height - bitmapMenu.Height - Config.GridSize;
 
-            panelMenu.Location = pointMenu;
-
-            panelBuildingInfo.Height = ClientSize.Height - panelBuildingInfo.Top - panelMenu.Height - (Config.GridSize * 2);
+            panelBuildingInfo.Height = ClientSize.Height - panelBuildingInfo.Top - bitmapMenu.Height - (Config.GridSize * 2);
             panelLairInfo.Height = panelBuildingInfo.Height;
             panelHeroInfo.Height = panelBuildingInfo.Height;
 
@@ -831,8 +837,6 @@ namespace Fantasy_Kingdoms_Battle
             btnTarget.ShiftX = btnEndTurn.ShiftX - btnTarget.Width - Config.GridSize;
 
             MainControl.ArrangeControls();
-
-            panelMenu.Left = shiftControls.X + pointMenu.X - Config.GridSize;
         }
 
         private void FormMain_KeyDown(object sender, KeyEventArgs e)
@@ -1200,7 +1204,7 @@ namespace Fantasy_Kingdoms_Battle
                 else
                     panelLairInfo.Visible = false;
 
-                panelMenu.Invalidate(true);// Это точно надо?
+                ShowFrame();
             }
         }
 
@@ -1233,7 +1237,6 @@ namespace Fantasy_Kingdoms_Battle
                     panelHeroInfo.Visible = false;
 
                 ShowFrame();
-                panelMenu.Invalidate(true);// Это точно надо?
 
             }
         }
@@ -1266,10 +1269,10 @@ namespace Fantasy_Kingdoms_Battle
                 if (plb.Building.Researches != null)
                     foreach (PlayerResearch pr in plb.Researches)
                     {
-                        if (panelMenu.CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research == null)
-                            panelMenu.CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research = pr;
-                        else if (panelMenu.CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research.Research.Layer > pr.Research.Layer)
-                            panelMenu.CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research = pr;
+                        if (CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research == null)
+                            CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research = pr;
+                        else if (CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research.Research.Layer > pr.Research.Layer)
+                            CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research = pr;
                     }
             }
             else
@@ -1282,7 +1285,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 for (int y = 0; y < PANEL_MENU_CELLS.Height; y++)
                     for (int x = 0; x < PANEL_MENU_CELLS.Width; x++)
-                        panelMenu.CellsMenu[y, x].Research = null;
+                        CellsMenu[y, x].Research = null;
             }
         }
 
