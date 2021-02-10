@@ -12,9 +12,6 @@ namespace Fantasy_Kingdoms_Battle
     // Класс иконки страницы
     internal sealed class VCPictureBoxPage : VCImage
     {
-        private int imageIndex;
-        private ImageList imageList;
-        private int mouseOver;
         private Pen penBorder = new Pen(FormMain.Config.CommonBorder);
 
         public VCPictureBoxPage(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList, int imageIndex) : base(parent, shiftX, shiftY, bitmapList, imageIndex)
