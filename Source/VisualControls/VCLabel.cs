@@ -2,8 +2,7 @@
 
 namespace Fantasy_Kingdoms_Battle
 {
-    // Класс визуального контрола - текстовой метки
-
+    // Визуальный контрол - текстовая метка
     internal class VCLabel : VisualControl
     {
         private Brush brush;
@@ -39,10 +38,20 @@ namespace Fantasy_Kingdoms_Battle
 
         internal BitmapList BitmapList { get; set; }
         internal int ImageIndex { get; set; } = -1;
+        internal ImageState ImageState { get; set; } = ImageState.Normal;
         protected int LeftMargin { get; set; }
         protected int TopMargin { get; set; }
-
         internal StringFormat StringFormat { get; set; }
+
+        internal override void Draw(Graphics g)
+        {
+            if ((BitmapList != null) && (ImageIndex >= 0))
+                BitmapList.DrawImage(g, ImageIndex, ImageState, Left, Top);
+
+            base.Draw(g);
+
+            g.DrawString(Text, Font, brush, rectText, StringFormat);
+        }
 
         internal override void ArrangeControls()
         {
@@ -52,16 +61,6 @@ namespace Fantasy_Kingdoms_Battle
                 LeftMargin = BitmapList.Size + FormMain.Config.GridSize;
 
             rectText = new RectangleF(Left + LeftMargin, Top + TopMargin, Width, Height + 2);
-        }
-
-        internal override void Draw(Graphics g)
-        {
-            if ((BitmapList != null) && (ImageIndex >= 0))
-                g.DrawImageUnscaled(BitmapList.GetImage(ImageIndex, ImageState.Normal), Left, Top);
-
-            base.Draw(g);
-
-            g.DrawString(Text, Font, brush, rectText, StringFormat);
         }
     }
 }
