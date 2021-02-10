@@ -283,7 +283,7 @@ namespace Fantasy_Kingdoms_Battle
             bmpMaskSmall = new Bitmap(dirResources + @"Icons\MaskSmall.png");
 
             ilResultBattle = new BitmapList(dirResources, "ResultBattle.png", 24, ImageState.Normal);
-            imListObjectsBig = new BitmapList(dirResources, "Objects.png", 128, ImageState.Disabled);
+            imListObjectsBig = new BitmapList(dirResources, "Objects.png", 128, ImageState.Over);
             imListObjectsCell = new BitmapList(imListObjectsBig, 48);
 
             ilGui16 = new BitmapList(dirResources, "Gui16.png", 16, ImageState.Normal);
