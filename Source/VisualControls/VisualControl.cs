@@ -59,6 +59,7 @@ namespace Fantasy_Kingdoms_Battle
             if (ShowBorder)
                 g.DrawRectangle(penBorder, rectBorder);
 
+            // Рисуем контролы
             foreach (VisualControl vc in Controls)
             {
                 if (vc.Visible)
@@ -101,13 +102,8 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal virtual void MouseEnter()
-        {
-        }
-
-        internal virtual void MouseLeave()
-        {
-        }
+        internal virtual void MouseEnter() { }
+        internal virtual void MouseLeave() { }
 
         internal virtual void ArrangeControls()
         {
@@ -115,16 +111,6 @@ namespace Fantasy_Kingdoms_Battle
             {
                 ArrangeControl(vc);
             }
-        }
-
-        internal int NextLeft()
-        {
-            return ShiftX + Width + FormMain.Config.GridSize;
-        }
-
-        internal int NextTop()
-        {
-            return ShiftY + Height + FormMain.Config.GridSize;
         }
 
         internal virtual VisualControl GetControl(int x, int y)
@@ -151,6 +137,16 @@ namespace Fantasy_Kingdoms_Battle
             vc.Top = Top + vc.ShiftY;
 
             vc.ArrangeControls();
+        }
+
+        internal int NextLeft()
+        {
+            return ShiftX + Width + FormMain.Config.GridSize;
+        }
+
+        internal int NextTop()
+        {
+            return ShiftY + Height + FormMain.Config.GridSize;
         }
 
         internal void AddControl(VisualControl vc)
