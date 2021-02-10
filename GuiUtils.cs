@@ -12,36 +12,6 @@ namespace Fantasy_Kingdoms_Battle
 {
     public sealed class GuiUtils
     {
-
-        internal static Label CreateLabel(Control parent, int left, int top)
-        {
-            Label l = new Label()
-            {
-                Parent = parent,
-                Left = left,
-                Top = top
-            };
-
-            return l;
-        }
-
-        internal static Label CreateLabelParameter(Control parent, int left, int top, int imIndex)
-        {
-            Label l = new Label()
-            {
-                Parent = parent,
-                Left = left,
-                Top = top,
-                Width = 80,
-                TextAlign = ContentAlignment.MiddleRight,
-                //ImageList = Program.formMain.ilParameters,
-                ImageIndex = imIndex,
-                ImageAlign = ContentAlignment.MiddleLeft
-            };
-
-            return l;
-        }
-
         internal static Size SizeButtonWithImage(ImageList il)
         {
             return new Size(il.ImageSize.Width + 8, il.ImageSize.Height + 8);
