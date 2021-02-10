@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Drawing;
 using System.Diagnostics;
 using System.Drawing.Drawing2D;
@@ -12,6 +8,7 @@ using System.Drawing.Imaging;
 namespace Fantasy_Kingdoms_Battle
 {
     internal enum ImageState { Normal = 0, Disabled = 1, Over = 2 };
+    internal enum ImageModeConversion { Grey, Bright };
 
     // Класс - список картинок
     internal sealed class BitmapList
@@ -29,16 +26,14 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(bmp.Width % size == 0);
             Debug.Assert(bmp.Height % size == 0);
 
-            int icons = (bmp.Width / size) * (bmp.Height / size);
-
             // Создаем иконки
             bitmapsNormal = CreateArray(bmp, size);
 
             if (maxState >= ImageState.Disabled)
-                bitmapsDisabled = CreateArray(GreyBitmap(bmp), size);
+                bitmapsDisabled = CreateArray(ConversionBitmap(bmp, ImageModeConversion.Grey), size);
 
             if (maxState >= ImageState.Over)
-                bitmapsOver = CreateArray(BrightBitmap(bmp), size);
+                bitmapsOver = CreateArray(ConversionBitmap(bmp, ImageModeConversion.Bright), size);
 
             // Удаляем исходную картинку - она больше не нужна
             bmp.Dispose();
@@ -82,16 +77,17 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Bitmap bmpDest = new Bitmap(newSize, newSize);
                 Graphics gDest = Graphics.FromImage(bmpDest);
+
                 gDest.InterpolationMode = InterpolationMode.HighQualityBicubic;
                 gDest.SmoothingMode = SmoothingMode.HighQuality;
-                gDest.DrawImage(fromList.GetImage(x, ImageState.Normal), rectTarget, rectSource, GraphicsUnit.Pixel);
-                //gDest.DrawImageUnscaled(MaskSmall, 0, 0);
+                gDest.DrawImage(fromList.GetImage(x, ImageState.Normal), rectTarget, rectSource, GraphicsUnit.Pixel);                
+
                 bitmapsNormal[x] = bmpDest;
 
                 if (MaxState >= ImageState.Disabled)
-                    bitmapsDisabled[x] = GreyBitmap(bmpDest);
+                    bitmapsDisabled[x] = ConversionBitmap(bmpDest, ImageModeConversion.Grey);
                 if (MaxState >= ImageState.Over)
-                    bitmapsOver[x] = BrightBitmap(bmpDest);
+                    bitmapsOver[x] = ConversionBitmap(bmpDest, ImageModeConversion.Bright);
 
                 gDest.Dispose();
             }
@@ -109,13 +105,13 @@ namespace Fantasy_Kingdoms_Battle
             if (bitmapsDisabled != null)
             {
                 Array.Resize(ref bitmapsDisabled, bitmapsDisabled.Length + 1);
-                bitmapsDisabled[bitmapsDisabled.Length - 1] = GreyBitmap(bmp);
+                bitmapsDisabled[bitmapsDisabled.Length - 1] = ConversionBitmap(bmp, ImageModeConversion.Grey);
             }
 
             if (bitmapsOver != null)
             {
                 Array.Resize(ref bitmapsOver, bitmapsOver.Length + 1);
-                bitmapsOver[bitmapsOver.Length - 1] = BrightBitmap(bmp);
+                bitmapsOver[bitmapsOver.Length - 1] = ConversionBitmap(bmp, ImageModeConversion.Bright);
             }
         }
 
@@ -141,10 +137,10 @@ namespace Fantasy_Kingdoms_Battle
             return array;
         }
 
-        internal static Bitmap GreyBitmap(Bitmap bmp)
+        internal Bitmap ConversionBitmap(Bitmap bmp, ImageModeConversion mode)
         {
             Bitmap output = new Bitmap(bmp);
-            byte newColor;
+            byte newColor0, newColor1, newColor2;
 
             Rectangle rect = new Rectangle(0, 0, output.Width, output.Height);
             BitmapData bmpData = output.LockBits(rect, ImageLockMode.ReadWrite, output.PixelFormat);
@@ -156,10 +152,23 @@ namespace Fantasy_Kingdoms_Battle
             // Byte 0: Blue, Byte 1: Green, Byte 2: Red, Byte 3: Alpha
             for (int counter = 0; counter < rgbValues.Length; counter += 4)
             {
-                newColor = Convert.ToByte((rgbValues[counter + 0] + rgbValues[counter + 1] + rgbValues[counter + 2]) / 3);
-                rgbValues[counter + 0] = newColor;
-                rgbValues[counter + 1] = newColor;
-                rgbValues[counter + 2] = newColor;
+                switch (mode)
+                {
+                    case ImageModeConversion.Grey:
+                        newColor0 = newColor1 = newColor2 = Convert.ToByte((rgbValues[counter + 0] + rgbValues[counter + 1] + rgbValues[counter + 2]) / 3);
+                        break;
+                    case ImageModeConversion.Bright:
+                        newColor0 = Convert.ToByte(Math.Min(rgbValues[counter + 0] * 1.2f, 255));
+                        newColor1 = Convert.ToByte(Math.Min(rgbValues[counter + 1] * 1.2f, 255));
+                        newColor2 = Convert.ToByte(Math.Min(rgbValues[counter + 2] * 1.2f, 255));
+                        break;
+                    default:
+                        throw new Exception("Неизвестный режим: " + mode.ToString()); 
+                }
+
+                rgbValues[counter + 0] = newColor0;
+                rgbValues[counter + 1] = newColor1;
+                rgbValues[counter + 2] = newColor2;
             }
 
             Marshal.Copy(rgbValues, 0, ptr, bytes);
@@ -167,37 +176,6 @@ namespace Fantasy_Kingdoms_Battle
 
             return output;
         }
-
-        internal static Bitmap BrightBitmap(Bitmap bmp)
-        {
-            Bitmap output = new Bitmap(bmp.Width, bmp.Height);
-
-            // Перебираем в циклах все пиксели исходного изображения
-            for (int j = 0; j < bmp.Height; j++)
-                for (int i = 0; i < bmp.Width; i++)
-                {
-                    // получаем (i, j) пиксель
-                    uint pixel = (uint)(bmp.GetPixel(i, j).ToArgb());
-
-                    // получаем компоненты цветов пикселя
-                    float R = (pixel & 0x00FF0000) >> 16; // красный
-                    float G = (pixel & 0x0000FF00) >> 8; // зеленый
-                    float B = pixel & 0x000000FF; // синий
-                                                  // делаем цвет черно-белым (оттенки серого) - находим среднее арифметическое
-                    R = Math.Min(R * 1.2f, 255);
-                    G = Math.Min(G * 1.2f, 255);
-                    B = Math.Min(B * 1.2f, 255);
-
-                    // собираем новый пиксель по частям (по каналам)
-                    uint newPixel = ((uint)bmp.GetPixel(i, j).A << 24) | ((uint)R << 16) | ((uint)G << 8) | ((uint)B);
-
-                    // добавляем его в Bitmap нового изображения
-                    output.SetPixel(i, j, Color.FromArgb((int)newPixel));
-                }
-
-            return output;
-        }
-
         internal Bitmap GetImage(int imageIndex, ImageState state)
         {
             Debug.Assert(imageIndex >= 0);
