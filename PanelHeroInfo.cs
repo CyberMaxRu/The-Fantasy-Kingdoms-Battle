@@ -59,10 +59,10 @@ namespace Fantasy_Kingdoms_Battle
             panelArmour = new PanelEntity(this, panelWeapon.NextLeft(), panelWeapon.ShiftY);
 
             pageControl.ShiftY = panelWeapon.NextTop();
-            pageControl.AddPage("Статистика", FormMain.GUI_SCROLL, null);
-            pageControl.AddPage("Инвентарь", FormMain.GUI_INVENTORY, panelInventory);
-            pageControl.AddPage("Способности", FormMain.GUI_TARGET, panelAbilities);
-            pageControl.AddPage("История", FormMain.GUI_BOOK, null);
+            pageControl.AddTab("Статистика", FormMain.GUI_SCROLL, null);
+            pageControl.AddTab("Инвентарь", FormMain.GUI_INVENTORY, panelInventory);
+            pageControl.AddTab("Способности", FormMain.GUI_TARGET, panelAbilities);
+            pageControl.AddTab("История", FormMain.GUI_BOOK, null);
 
             pageControl.ApplyMinWidth();
             Width = pageControl.Width + FormMain.Config.GridSize * 2;

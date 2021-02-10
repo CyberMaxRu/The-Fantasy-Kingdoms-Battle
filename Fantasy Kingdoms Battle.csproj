@@ -120,7 +120,7 @@
     <Compile Include="HeroInBattle.cs" />
     <Compile Include="MainConfig.cs" />
     <Compile Include="Missile.cs" />
-    <Compile Include="Source\VisualControls\VCPageControl.cs" />
+    <Compile Include="Source\VisualControls\VCTabControl.cs" />
     <Compile Include="PanelBaseInfo.cs" />
     <Compile Include="PanelBuildingInfo.cs" />
     <Compile Include="PanelCellHero.cs">

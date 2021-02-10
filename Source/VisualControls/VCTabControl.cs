@@ -1,23 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
-using System.Drawing;
 
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс контрола со страницами
-    internal sealed class VCPageControl : VisualControl
+    internal sealed class VCTabControl : VisualControl
     {
-        private List<VCTabButton> btnPages = new List<VCTabButton>();
+        private List<VCTabButton> btnTabs = new List<VCTabButton>();
         private int leftForNextPage = 0;
         private VCLabel lblCaptionPage;
         private VCTabButton activePage;
 
-        public VCPageControl(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList) : base(parent, shiftX, shiftY)
+        public VCTabControl(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList) : base(parent, shiftX, shiftY)
         {
             BitmapList = bitmapList;
             ActivePage = -1;
@@ -32,30 +26,27 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.ArrangeControls();
 
-            lblCaptionPage.Width = Width;                
+            lblCaptionPage.Width = Width;
         }
 
-        internal void AddPage(string namePage, int imageIndex, VisualControl controlForPage)
+        internal void AddTab(string nameTab, int imageIndex, VisualControl controlForPage)
         {
-
-            VCTabButton page = new VCTabButton(this, leftForNextPage, 0, BitmapList, imageIndex)
+            VCTabButton btnTab = new VCTabButton(this, leftForNextPage, 0, BitmapList, imageIndex)
             {
-                NamePage = namePage,
-                IndexPage = btnPages.Count,
+                NameTab = nameTab,
+                IndexPage = btnTabs.Count,
                 ContextPage = controlForPage
             };
-            btnPages.Add(page);
+            btnTabs.Add(btnTab);
 
             if (controlForPage != null)
             {
                 AddControl(controlForPage);
                 controlForPage.ShiftX = 0;
                 controlForPage.ShiftY = lblCaptionPage.NextTop();
-                //controlForPage.SetVisible(false);
-                //controlForPage.Parent = this;
             }
 
-            leftForNextPage += page.Width + FormMain.Config.GridSizeHalf;
+            leftForNextPage += btnTab.Width + FormMain.Config.GridSizeHalf;
 
             if (ActivePage == -1)
                 ActivatePage(0);
@@ -67,11 +58,12 @@ namespace Fantasy_Kingdoms_Battle
             {
                 ActivePage = indexPage;
 
-                //activePage?.Invalidate();
                 if ((activePage != null) && (activePage.ContextPage != null))
                     activePage.ContextPage.Visible = false;
-                activePage = btnPages[indexPage];
-                lblCaptionPage.Text = activePage.NamePage;
+
+                activePage = btnTabs[indexPage];
+                lblCaptionPage.Text = activePage.NameTab;
+
                 if ((activePage != null) && (activePage.ContextPage != null))
                     activePage.ContextPage.Visible = true;
 
@@ -83,12 +75,10 @@ namespace Fantasy_Kingdoms_Battle
         {
             int minWidth = 0;
 
-            foreach (VCTabButton p in btnPages)
+            foreach (VCTabButton b in btnTabs)
             {
-                if (p.ContextPage != null)
-                {
-                    minWidth = p.ContextPage.MaxSize().Width;
-                }
+                if (b.ContextPage != null)
+                    minWidth = b.ContextPage.MaxSize().Width;
             }
 
             Width = minWidth;
@@ -96,7 +86,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void SetPageVisible(int page, bool visible)
         {
-            btnPages[page].Visible = visible;
+            btnTabs[page].Visible = visible;
 
             if (!visible)
             {

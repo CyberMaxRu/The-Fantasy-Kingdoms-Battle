@@ -13,13 +13,13 @@ namespace Fantasy_Kingdoms_Battle
             HighlightUnderMouse = true;
         }
 
-        internal string NamePage { get; set; }
+        internal string NameTab { get; set; }
         internal int IndexPage { get; set; }
         internal VisualControl ContextPage { get; set; }
 
         internal override bool PrepareHint()
         {
-            Program.formMain.formHint.AddStep1Header(NamePage, "", "");
+            Program.formMain.formHint.AddStep1Header(NameTab, "", "");
             return true;
         }
 
@@ -27,7 +27,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.DoClick();
 
-            (Parent as VCPageControl).ActivatePage(IndexPage);
+            (Parent as VCTabControl).ActivatePage(IndexPage);
             Program.formMain.ShowFrame();
         }
 
@@ -37,7 +37,7 @@ namespace Fantasy_Kingdoms_Battle
 
             shiftX = IndexPage > 0 ? 4 : 0;
 
-            if ((Parent as VCPageControl).ActivePage == IndexPage)
+            if ((Parent as VCTabControl).ActivePage == IndexPage)
             {
                 g.DrawLine(penBorder, Left, Top, Left + Width, Top);// Верх
                 g.DrawLine(penBorder, Left, Top, Left, Top + Height - 1);// Левый край

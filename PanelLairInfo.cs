@@ -19,8 +19,8 @@ namespace Fantasy_Kingdoms_Battle
             panelInhabitants = new PanelWithPanelEntity(4);
 
             pageControl.ShiftY = TopForControls();
-            pageControl.AddPage("Существа", FormMain.GUI_HOME, panelInhabitants);
-            pageControl.AddPage("История", FormMain.GUI_BOOK, null);
+            pageControl.AddTab("Существа", FormMain.GUI_HOME, panelInhabitants);
+            pageControl.AddTab("История", FormMain.GUI_BOOK, null);
 
             pageControl.ApplyMinWidth();
             Width = pageControl.Width + FormMain.Config.GridSize * 2;
