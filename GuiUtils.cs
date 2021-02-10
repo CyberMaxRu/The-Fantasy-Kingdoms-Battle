@@ -17,16 +17,6 @@ namespace Fantasy_Kingdoms_Battle
             return c.Top + c.Height + FormMain.Config.GridSize;
         }
 
-        internal static Image GetImageFromImageList(ImageList imageList, int imageIndex, bool normal)
-        {
-            return imageList.Images[imageIndex + (normal == true ? 0 : imageList.Images.Count / 2)];
-        }
-
-        internal static int GetImageIndexWithGray(ImageList imageList, int imageIndex, bool normal)
-        {
-            return imageIndex + (normal == true ? 0 : imageList.Images.Count / 2);
-        }
-
         internal static void DrawBand(Graphics g, Rectangle r, Brush brushFore, Brush brushBack, int currentValue, int MaxValue)
         {
             Debug.Assert(currentValue <= MaxValue);
