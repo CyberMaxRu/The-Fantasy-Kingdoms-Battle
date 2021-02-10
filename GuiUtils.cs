@@ -12,11 +12,6 @@ namespace Fantasy_Kingdoms_Battle
 {
     public sealed class GuiUtils
     {
-        internal static Size SizeButtonWithImage(ImageList il)
-        {
-            return new Size(il.ImageSize.Width + 8, il.ImageSize.Height + 8);
-        }
-
         internal static Size SizePictureBoxWithImage(ImageList il)
         {
             return new Size(il.ImageSize.Width + 2, il.ImageSize.Height + 2);
