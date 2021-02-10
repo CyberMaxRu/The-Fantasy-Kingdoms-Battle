@@ -365,7 +365,7 @@ namespace Fantasy_King_s_Battle
             btnQuit = CreateButton(ilGui, GUI_EXIT, 0, btnPreferences.ShiftY, BtnQuit_Click, BtnQuit_MouseHover);
 
             btnTarget = CreateButton(imListObjectsCell, -1, 0, btnPreferences.ShiftY, BtnTarget_Click, BtnTarget_MouseHover);
-            btnEndTurn = CreateButton(ilGui, GUI_BATTLE, 0, btnPreferences.ShiftY, BtnEndTurn_Click, BtnEndTurn_MouseHover);
+            btnEndTurn = CreateButton(ilGui, GUI_HOURGLASS, 0, btnPreferences.ShiftY, BtnEndTurn_Click, BtnEndTurn_MouseHover);
 
             // Создаем панели игроков в левой части окна
             panelPlayers = new VisualControl(MainControl, Config.GridSize, btnQuit.NextTop());
