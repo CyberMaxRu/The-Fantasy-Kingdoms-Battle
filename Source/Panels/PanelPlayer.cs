@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Diagnostics;
 
-namespace Fantasy_King_s_Battle
+namespace Fantasy_Kingdoms_Battle
 {
     // Класс панели игрока лобби
     internal sealed class PanelPlayer : VisualControl

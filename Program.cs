@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Fantasy_King_s_Battle
+namespace Fantasy_Kingdoms_Battle
 {
     static class Program
     {

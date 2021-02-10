@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.Diagnostics;
 
-namespace Fantasy_King_s_Battle
+namespace Fantasy_Kingdoms_Battle
 {
     // Класс панели здания
     internal sealed class PanelConstruction : VisualControl

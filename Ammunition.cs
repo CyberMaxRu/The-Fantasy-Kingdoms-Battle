@@ -7,7 +7,7 @@ using System.Xml;
 using System.Diagnostics;
 using System.Windows.Forms;
 
-namespace Fantasy_King_s_Battle
+namespace Fantasy_Kingdoms_Battle
 {
     // Класс оружия
     internal sealed class Weapon : ICell

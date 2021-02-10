@@ -9,7 +9,7 @@ using System.Drawing.Drawing2D;
 using System.Runtime.InteropServices;
 using System.Drawing.Imaging;
 
-namespace Fantasy_King_s_Battle
+namespace Fantasy_Kingdoms_Battle
 {
     internal enum ImageState { Normal = 0, Disabled = 1, Over = 2 };
 

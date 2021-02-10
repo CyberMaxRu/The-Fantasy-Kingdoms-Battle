@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Fantasy_King_s_Battle.Properties {
+namespace Fantasy_Kingdoms_Battle.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

@@ -7,7 +7,7 @@ using System.Xml;
 using System.Windows.Forms;
 using System.Diagnostics;
 
-namespace Fantasy_King_s_Battle
+namespace Fantasy_Kingdoms_Battle
 {
     // Класс вида горожанина - стражники, крестьяне
     internal sealed class TypeCitizen : TypeCreature

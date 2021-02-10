@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Diagnostics;
 
-namespace Fantasy_King_s_Battle
+namespace Fantasy_Kingdoms_Battle
 {
     // Базовый класс и класс-контейнер для всех визуальных контролов
     internal class VisualControl

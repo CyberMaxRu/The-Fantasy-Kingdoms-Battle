@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Windows.Forms;
 
-namespace Fantasy_King_s_Battle
+namespace Fantasy_Kingdoms_Battle
 {
     // Класс предмета у игрока (находящегося на герое или на складе)
     internal sealed class PlayerItem : ICell

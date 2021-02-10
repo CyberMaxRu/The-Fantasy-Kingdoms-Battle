@@ -7,7 +7,7 @@ using System.Diagnostics;
 using System.Xml;
 using System.Windows.Forms;
 
-namespace Fantasy_King_s_Battle
+namespace Fantasy_Kingdoms_Battle
 {
     // Класс способности
     internal enum TypeAbility { MeleeAttack, RangeAttack, Spell, Buff, Heal, Summon }

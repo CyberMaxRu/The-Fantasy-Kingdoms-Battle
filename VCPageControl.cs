@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.Drawing;
 
-namespace Fantasy_King_s_Battle
+namespace Fantasy_Kingdoms_Battle
 {
     // Класс иконки страницы
     internal sealed class VCPictureBoxPage : VCImage

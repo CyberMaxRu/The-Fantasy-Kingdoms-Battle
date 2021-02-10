@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Diagnostics;
 
-namespace Fantasy_King_s_Battle
+namespace Fantasy_Kingdoms_Battle
 {
     // Класс вспомогательных методов
     internal sealed class Utils

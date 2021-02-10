@@ -11,7 +11,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Drawing.Drawing2D;
 
-namespace Fantasy_King_s_Battle
+namespace Fantasy_Kingdoms_Battle
 {
     public partial class FormMain : Form
     {

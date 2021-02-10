@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Drawing;
 
-namespace Fantasy_King_s_Battle
+namespace Fantasy_Kingdoms_Battle
 {
     internal enum StateHeroInBattle { MeleeAttack, RangeAttack, Cast, Drink, Healing, Rest, Resurrection, Tumbstone, Dead, 
         PrepareMove, Move, None }// Состояние героя в бою

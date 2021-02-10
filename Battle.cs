@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace Fantasy_King_s_Battle
+namespace Fantasy_Kingdoms_Battle
 {
     internal enum ResultBattle { Win, Draw, Lose, None };
 

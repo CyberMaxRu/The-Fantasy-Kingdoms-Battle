@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Diagnostics;
 
-namespace Fantasy_King_s_Battle
+namespace Fantasy_Kingdoms_Battle
 {
     // Тип объекта карты - базовый класс для всех зданий, построек и логов
     internal abstract class TypeMapObject : TypeObject

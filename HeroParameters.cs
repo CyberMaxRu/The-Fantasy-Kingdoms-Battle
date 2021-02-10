@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Drawing;
 
-namespace Fantasy_King_s_Battle
+namespace Fantasy_Kingdoms_Battle
 {
     // Увеличение параметров при получении нового уровня
     internal sealed class ConfigNextLevelHero

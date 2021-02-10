@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{8E98F5D2-95C7-4AE4-A0E8-C9C08B86B5B8}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Fantasy_King_s_Battle</RootNamespace>
+    <RootNamespace>Fantasy_Kingdoms_Battle</RootNamespace>
     <AssemblyName>The Fantasy Kingdoms Battle</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

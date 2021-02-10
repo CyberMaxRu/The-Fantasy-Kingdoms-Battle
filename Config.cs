@@ -11,7 +11,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace Fantasy_King_s_Battle
+namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class Config
     {

@@ -8,7 +8,7 @@ using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using System.Diagnostics;
 
-namespace Fantasy_King_s_Battle
+namespace Fantasy_Kingdoms_Battle
 {
     // Визуальный контрол - иконка
     internal class VCImage : VisualControl

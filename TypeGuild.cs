@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Diagnostics;
 
-namespace Fantasy_King_s_Battle
+namespace Fantasy_Kingdoms_Battle
 {
     // Тип гильдии
     internal sealed class TypeGuild : TypeConstructionWithHero

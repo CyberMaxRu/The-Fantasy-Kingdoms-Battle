@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Windows.Forms;
 
-namespace Fantasy_King_s_Battle
+namespace Fantasy_Kingdoms_Battle
 {
     // Класс сущности. Общий для предметов, абилок, героев и т.д.
     internal abstract class Entity : ICell

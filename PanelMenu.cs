@@ -1,7 +1,7 @@
 ﻿using System.Windows.Forms;
 using System.Drawing;
 
-namespace Fantasy_King_s_Battle
+namespace Fantasy_Kingdoms_Battle
 {
     // Класс панели меню
     internal sealed class PanelMenu : Control

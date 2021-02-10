@@ -7,7 +7,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Fantasy_King_s_Battle
+namespace Fantasy_Kingdoms_Battle
 {
     internal enum TypePlayer { Human, Computer };
     // Класс игрока

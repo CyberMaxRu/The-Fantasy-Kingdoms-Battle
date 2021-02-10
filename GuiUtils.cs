@@ -8,7 +8,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Diagnostics;
 
-namespace Fantasy_King_s_Battle
+namespace Fantasy_Kingdoms_Battle
 {
     public sealed class GuiUtils
     {

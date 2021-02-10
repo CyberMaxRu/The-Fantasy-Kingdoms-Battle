@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Xml;
 
-namespace Fantasy_King_s_Battle
+namespace Fantasy_Kingdoms_Battle
 {
     // Виды существ
     internal sealed class KindCreature

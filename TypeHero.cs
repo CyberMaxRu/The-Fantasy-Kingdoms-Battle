@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Xml;
 using System.Diagnostics;
 
-namespace Fantasy_King_s_Battle
+namespace Fantasy_Kingdoms_Battle
 {
     // Тип героя гильдии
     internal sealed class TypeHero : TypeCreature

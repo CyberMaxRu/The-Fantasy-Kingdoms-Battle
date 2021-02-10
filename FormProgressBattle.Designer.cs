@@ -1,5 +1,5 @@
 ﻿
-namespace Fantasy_King_s_Battle
+namespace Fantasy_Kingdoms_Battle
 {
     partial class FormProgressBattle
     {

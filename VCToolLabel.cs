@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace Fantasy_King_s_Battle
+namespace Fantasy_Kingdoms_Battle
 {
     // Визуальный контрол - иконка 16 * 16 с текстом для тулбара игры
     internal sealed class VCToolLabel : VCLabel

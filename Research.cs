@@ -9,7 +9,7 @@ using System.Drawing;
 using System.Deployment.Internal;
 using System.Windows.Forms;
 
-namespace Fantasy_King_s_Battle
+namespace Fantasy_Kingdoms_Battle
 {
     // Класс исследования
     internal sealed class Research
