@@ -9,63 +9,13 @@ using System.Drawing;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    // Класс иконки страницы
-    internal sealed class VCPictureBoxPage : VCImage
-    {
-        private Pen penBorder = new Pen(FormMain.Config.CommonBorder);
-        private int shiftX;
-
-        public VCPictureBoxPage(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList, int imageIndex) : base(parent, shiftX, shiftY, bitmapList, imageIndex)
-        {
-            HighlightUnderMouse = true;
-        }
-
-        internal string NamePage { get; set; }
-        internal int IndexPage { get; set; }
-        internal VisualControl ContextPage { get; set; }
-
-        internal override bool PrepareHint()
-        {
-            Program.formMain.formHint.AddStep1Header(NamePage, "", "");
-            return true;
-        }
-
-        internal override void DoClick()
-        {
-            base.DoClick();
-
-            (Parent as VCPageControl).ActivatePage(IndexPage);
-            Program.formMain.ShowFrame();
-        }
-
-        internal override void Draw(Graphics g)
-        {
-            base.Draw(g);
-
-            shiftX = IndexPage > 0 ? 4 : 0;
-
-            if ((Parent as VCPageControl).ActivePage == IndexPage)
-            {
-                g.DrawLine(penBorder, Left, Top, Left + Width, Top);// Верх
-                g.DrawLine(penBorder, Left, Top, Left, Top + Height - 1);// Левый край
-                g.DrawLine(penBorder, Left + Width, Top, Left + Width, Top + Height - 1);// Правый край
-                if (shiftX > 0)
-                    g.DrawLine(penBorder, Left - shiftX, Top + Height - 1, Left, Top + Height - 1);
-            }
-            else
-            {
-                g.DrawLine(penBorder, Left - shiftX, Top + Height - 1, Left + Width, Top + Height - 1);
-            }
-        }
-    }
-
     // Класс контрола со страницами
     internal sealed class VCPageControl : VisualControl
     {
-        private List<VCPictureBoxPage> btnPages = new List<VCPictureBoxPage>();
+        private List<VCTabButton> btnPages = new List<VCTabButton>();
         private int leftForNextPage = 0;
         private VCLabel lblCaptionPage;
-        private VCPictureBoxPage activePage;
+        private VCTabButton activePage;
 
         public VCPageControl(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList) : base(parent, shiftX, shiftY)
         {
@@ -88,7 +38,7 @@ namespace Fantasy_Kingdoms_Battle
         internal void AddPage(string namePage, int imageIndex, VisualControl controlForPage)
         {
 
-            VCPictureBoxPage page = new VCPictureBoxPage(this, leftForNextPage, 0, BitmapList, imageIndex)
+            VCTabButton page = new VCTabButton(this, leftForNextPage, 0, BitmapList, imageIndex)
             {
                 NamePage = namePage,
                 IndexPage = btnPages.Count,
@@ -133,7 +83,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             int minWidth = 0;
 
-            foreach (VCPictureBoxPage p in btnPages)
+            foreach (VCTabButton p in btnPages)
             {
                 if (p.ContextPage != null)
                 {
