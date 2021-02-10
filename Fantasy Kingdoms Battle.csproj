@@ -158,7 +158,7 @@
     <Compile Include="VCCell.cs" />
     <Compile Include="VCFormPage.cs" />
     <Compile Include="Source\VisualControls\VCImage.cs" />
-    <Compile Include="VCLabel.cs" />
+    <Compile Include="Source\VisualControls\VCLabel.cs" />
     <Compile Include="VCToolLabel.cs" />
     <Compile Include="Source\VisualControls\VisualControl.cs" />
     <Compile Include="WebUtils.cs" />
