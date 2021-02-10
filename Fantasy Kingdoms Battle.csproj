@@ -123,9 +123,7 @@
     <Compile Include="Source\VisualControls\VCTabControl.cs" />
     <Compile Include="PanelBaseInfo.cs" />
     <Compile Include="PanelBuildingInfo.cs" />
-    <Compile Include="PanelCellMenu.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="VCMenuCell.cs" />
     <Compile Include="PanelWithPanelEntity.cs" />
     <Compile Include="PlayerItem.cs" />
     <Compile Include="PanelEntity.cs" />

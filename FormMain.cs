@@ -157,7 +157,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly List<PanelConstruction> listPanelBuildings = new List<PanelConstruction>();
 
         private List<PictureBox> SlotSkill = new List<PictureBox>();
-        internal PanelCellMenu[,] CellsMenu { get; }
+        internal VCMenuCell[,] CellsMenu { get; }
 
         internal FormHint formHint;
         internal PanelConstruction SelectedPanelBuilding { get; private set; }
@@ -431,10 +431,10 @@ namespace Fantasy_Kingdoms_Battle
             bitmapMenu = new VCBitmap(MainControl, 0, 0, new Bitmap(dirResources + @"Icons\Menu.png"));
             bitmapMenu.ShiftY = ClientSize.Height - bitmapMenu.Height - Config.GridSize;
 
-            CellsMenu = new PanelCellMenu[PANEL_MENU_CELLS.Height, PANEL_MENU_CELLS.Width];
+            CellsMenu = new VCMenuCell[PANEL_MENU_CELLS.Height, PANEL_MENU_CELLS.Width];
             for (int y = 0; y < PANEL_MENU_CELLS.Height; y++)
                 for (int x = 0; x < PANEL_MENU_CELLS.Width; x++)
-                    CellsMenu[y, x] = new PanelCellMenu(this, new Point(DISTANCE_BETWEEN_CELLS + (x * (ilItems.Size + DISTANCE_BETWEEN_CELLS)), DISTANCE_BETWEEN_CELLS + (y * (ilItems.Size + DISTANCE_BETWEEN_CELLS))));
+                    CellsMenu[y, x] = new VCMenuCell(bitmapMenu, DISTANCE_BETWEEN_CELLS + (x * (ilItems.Size + DISTANCE_BETWEEN_CELLS)), DISTANCE_BETWEEN_CELLS + (y * (ilItems.Size + DISTANCE_BETWEEN_CELLS)), ilItems);
 
             // Панель информации о здании
             panelBuildingInfo = new PanelBuildingInfo(MainControl, 0, btnQuit.NextTop(), bitmapMenu.ShiftY - pageGuilds.NextTop() - Config.GridSize)
@@ -1430,6 +1430,9 @@ namespace Fantasy_Kingdoms_Battle
             pageBuildings.PopupQuantity = lobby.CurrentPlayer.PointConstructionEconomic;
             pageHeroes.Cost = lobby.CurrentPlayer.CombatHeroes.Count;
 
+            // Обновляем меню
+            UpdateMenu();
+
             // Рисуем контролы
             gfxFrame.CompositingMode = CompositingMode.SourceOver;
 
@@ -1438,9 +1441,6 @@ namespace Fantasy_Kingdoms_Battle
                 if (vc.Visible)
                     vc.Draw(gfxFrame);
             }
-
-            // Обновляем меню
-            UpdateMenu();
         }
 
         internal VCButton CreateButton(BitmapList bitmapList, int imageIndex, int left, int top, EventHandler click, EventHandler showHint)
@@ -1518,6 +1518,26 @@ namespace Fantasy_Kingdoms_Battle
 
             ControlForHintLeave();
             formHint.HideHint();
+        }
+
+        protected override void OnMouseDown(MouseEventArgs e)
+        {
+            base.OnMouseDown(e);
+
+            if (e.Button == MouseButtons.Left)
+            {
+                controlWithHint?.MouseDown();
+            }
+        }
+
+        protected override void OnMouseUp(MouseEventArgs e)
+        {
+            base.OnMouseUp(e);
+
+            if (e.Button == MouseButtons.Left)
+            {
+                controlWithHint?.MouseUp();
+            }
         }
 
         protected override void OnMouseClick(MouseEventArgs e)
