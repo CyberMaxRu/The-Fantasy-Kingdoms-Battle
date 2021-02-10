@@ -21,21 +21,18 @@ namespace Fantasy_Kingdoms_Battle
             ValidateSize();
 
             labelCost = new VCLabel(this, 0, Height - 12, FormMain.Config.FontCost, FormMain.Config.CommonCost, 16, "");
-            labelCost.Width = Width;
             labelCost.StringFormat.LineAlignment = StringAlignment.Far;
             labelCost.Visible = false;// Текст перекрывается иконкой. Поэтому рисуем вручную
 
             labelLevel = new VCLabel(this, 0, FormMain.Config.GridSize, FormMain.Config.FontBuildingLevel, FormMain.Config.CommonLevel, 16, "");
-            labelLevel.Width = Width - FormMain.Config.GridSizeHalf;
-            labelLevel.Visible = false;
             labelLevel.StringFormat.LineAlignment = StringAlignment.Near;
             labelLevel.StringFormat.Alignment = StringAlignment.Far;
+            labelLevel.Visible = false;
 
             labelPopupQuantity = new VCLabel(this, Width - 7, -3, FormMain.Config.FontPopupQuantity, FormMain.Config.CommonPopupQuantity, 16, "");
-            labelPopupQuantity.Width = labelPopupQuantity.Height;
-            labelPopupQuantity.Visible = false;
             labelPopupQuantity.StringFormat.LineAlignment = StringAlignment.Center;
             labelPopupQuantity.StringFormat.Alignment = StringAlignment.Center;
+            labelPopupQuantity.Visible = false;
 
             brushPopupQuantity = new SolidBrush(FormMain.Config.CommonPopupQuantityBack);
         }
@@ -93,6 +90,9 @@ namespace Fantasy_Kingdoms_Battle
 
             if (labelCost != null)
                 labelCost.Width = Width;
+
+            labelLevel.Width = Width - FormMain.Config.GridSizeHalf;
+            labelPopupQuantity.Width = labelPopupQuantity.Height;
         }
     }
 }
