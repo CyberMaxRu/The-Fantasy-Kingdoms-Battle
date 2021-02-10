@@ -65,25 +65,6 @@ namespace Fantasy_Kingdoms_Battle
             return bmp;
         }
 
-        internal static Button CreateButtonWithIcon(Control parent, int left, int top, int imageIndex)
-        {
-            Button b = new Button()
-            {
-                Parent = parent,
-                Left = left,
-                Top = top,
-                FlatStyle = FlatStyle.Flat,
-                //ImageList = Program.formMain.ilGui,
-                ImageIndex = imageIndex,
-                BackColor = Color.Transparent
-                //Size = SizeButtonWithImage(Program.formMain.ilGui)
-            };
-            //b.FlatAppearance.BorderSize = 0;
-            b.FlatAppearance.BorderColor = Color.Black;
-
-            return b;
-        }
-
         public static void ShowError(string text)
         {
             MessageBox.Show(text, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
