@@ -224,5 +224,10 @@ namespace Fantasy_Kingdoms_Battle
 
             return bmp;
         }
+
+        internal void DrawImage(Graphics g, int imageIndex, ImageState state, int x, int y)
+        {
+            g.DrawImageUnscaled(GetImage(imageIndex, state), x, y);
+        }
     }
 }

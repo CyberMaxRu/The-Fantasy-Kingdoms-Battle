@@ -49,15 +49,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int Level { get; set; }
         internal int PopupQuantity { get; set; }
 
-        private void ValidateSize()
-        {
-            Width = BitmapList.Size + (ShiftImage * 2);
-            Height = BitmapList.Size + (ShiftImage * 2);
-
-            if (labelCost != null)
-                labelCost.Width = Width;
-        }
-
         internal override void Draw(Graphics g)
         {
             //Debug.Assert(Cost >= 0);
@@ -67,27 +58,25 @@ namespace Fantasy_Kingdoms_Battle
 
             base.Draw(g);
 
+            // Иконка
             if (ImageIndex != -1)
-            {
-                g.CompositingQuality = CompositingQuality.HighSpeed;
-                g.InterpolationMode = InterpolationMode.Low;
-                g.DrawImageUnscaled(BitmapList.GetImage(ImageIndex, ImageState), Left + ShiftImage, Top + ShiftImage);
-            }
-            //else
-            //    g.DrawImage(Program.formMain.bmpEmptyEntity, new Rectangle(Left + 1, Top + 0, Program.formMain.bmpBorderForIcon.Width - 2, Program.formMain.bmpBorderForIcon.Height - 2));
+                BitmapList.DrawImage(g, ImageIndex, ImageState, Left + ShiftImage, Top + ShiftImage);
 
+            // Цена
             if ((Cost != 0) || ShowCostZero)
             {
                 labelCost.Text = Cost.ToString();
                 labelCost.Draw(g);
             }
 
+            // Уровень
             if (Level > 0)
             {
                 labelLevel.Text = Level.ToString();
                 labelLevel.Draw(g);
             }
 
+            // Всплывающее количество 
             if (PopupQuantity > 0)
             {
                 g.FillEllipse(brushPopupQuantity, Left + Width - 13, Top - 5, 18, 18);
@@ -95,6 +84,15 @@ namespace Fantasy_Kingdoms_Battle
                 labelPopupQuantity.Text = PopupQuantity.ToString();
                 labelPopupQuantity.Draw(g);
             }
+        }
+
+        private void ValidateSize()
+        {
+            Width = BitmapList.Size + (ShiftImage * 2);
+            Height = BitmapList.Size + (ShiftImage * 2);
+
+            if (labelCost != null)
+                labelCost.Width = Width;
         }
     }
 }
