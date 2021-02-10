@@ -32,27 +32,6 @@ namespace Fantasy_Kingdoms_Battle
             return true;
         }
 
-        private void UpdateImage()
-        {
-            //Image = (ImageList != null) && (imageIndex != -1) ? imageList.Images[imageIndex * 2 + mouseOver] : null;
-        }
-
-        protected void OnMouseEnter(EventArgs e)
-        {
-            //base.OnMouseEnter(e);
-
-            mouseOver = 1;
-            UpdateImage();
-        }
-
-        protected void OnMouseLeave(EventArgs e)
-        {
-            //base.OnMouseLeave(e);
-
-            mouseOver = 0;
-            UpdateImage();
-        }
-
         internal override void DoClick()
         {
             base.DoClick();
