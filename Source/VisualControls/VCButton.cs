@@ -7,22 +7,7 @@
         {
             ShowBorder = true;
             ShiftImage = 2;
-        }
-
-        internal override void MouseEnter()
-        {
-            base.MouseEnter();
-
-            ImageState = ImageState.Over;
-            Program.formMain.NeedRedrawFrame();
-        }
-
-        internal override void MouseLeave()
-        {
-            base.MouseLeave();
-
-            ImageState = ImageState.Normal;
-            Program.formMain.NeedRedrawFrame();
+            HighlightUnderMouse = true;
         }
     }
 }

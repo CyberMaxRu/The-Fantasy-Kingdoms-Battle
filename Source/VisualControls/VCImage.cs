@@ -45,6 +45,7 @@ namespace Fantasy_Kingdoms_Battle
         internal bool ShowCostZero { get; set; }
         internal int Level { get; set; }
         internal int PopupQuantity { get; set; }
+        internal bool HighlightUnderMouse { get; set; } = false;
 
         internal override void Draw(Graphics g)
         {
@@ -93,6 +94,28 @@ namespace Fantasy_Kingdoms_Battle
 
             labelLevel.Width = Width - FormMain.Config.GridSizeHalf;
             labelPopupQuantity.Width = labelPopupQuantity.Height;
+        }
+
+        internal override void MouseEnter()
+        {
+            base.MouseEnter();
+
+            if (HighlightUnderMouse)
+            {
+                ImageState = ImageState.Over;
+                Program.formMain.NeedRedrawFrame();
+            }
+        }
+
+        internal override void MouseLeave()
+        {
+            base.MouseLeave();
+
+            if (HighlightUnderMouse)
+            {
+                ImageState = ImageState.Normal;
+                Program.formMain.NeedRedrawFrame();
+            }
         }
     }
 }

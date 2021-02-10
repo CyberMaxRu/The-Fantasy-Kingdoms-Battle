@@ -19,6 +19,7 @@ namespace Fantasy_Kingdoms_Battle
 
         public VCPictureBoxPage(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList, int imageIndex) : base(parent, shiftX, shiftY, bitmapList, imageIndex)
         {
+            HighlightUnderMouse = true;
         }
 
         internal string NamePage { get; set; }
