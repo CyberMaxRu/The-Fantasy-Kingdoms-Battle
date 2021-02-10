@@ -59,6 +59,9 @@ namespace Fantasy_King_s_Battle
         {
             Width = BitmapList.Size + (ShiftImage * 2);
             Height = BitmapList.Size + (ShiftImage * 2);
+
+            if (labelCost != null)
+                labelCost.Width = Width;
         }
 
         internal override void Draw(Graphics g)
