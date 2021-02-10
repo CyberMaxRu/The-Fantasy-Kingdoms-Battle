@@ -88,11 +88,12 @@ namespace Fantasy_Kingdoms_Battle
             Width = BitmapList.Size + (ShiftImage * 2);
             Height = BitmapList.Size + (ShiftImage * 2);
 
-            if (labelCost != null)
-                labelCost.Width = Width;
+            labelCost.Width = Width;
+            labelCost.ShiftY = Height - 16;
 
             labelLevel.Width = Width - FormMain.Config.GridSizeHalf;
             labelPopupQuantity.Width = labelPopupQuantity.Height;
+            labelPopupQuantity.ShiftX = Width - 11;
         }
 
         internal override void MouseEnter()
