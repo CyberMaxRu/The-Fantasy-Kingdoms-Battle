@@ -66,7 +66,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 ImageIndex = cell.ImageIndex();
                 //ImageState = cell.NormalImage() ? ImageState.Normal : ImageState.Disabled;
-                Level = cell.Value();
+                Quantity = cell.Value();
             }
             else
                 ImageIndex = -1;
