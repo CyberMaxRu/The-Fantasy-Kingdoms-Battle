@@ -31,6 +31,9 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void AddTab(string nameTab, int imageIndex, VisualControl controlForPage)
         {
+            if (controlForPage != null)
+                controlForPage.Visible = false;
+
             VCTabButton btnTab = new VCTabButton(this, leftForNextPage, 0, BitmapList, imageIndex)
             {
                 NameTab = nameTab,
