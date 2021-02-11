@@ -34,7 +34,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         // Реализация интерфейса
-        PanelEntity ICell.Panel { get; set; }
+        VCCell ICell.Panel { get; set; }
         BitmapList ICell.BitmapList() => Program.formMain.ilItems;
         int ICell.ImageIndex() => ImageIndex;
         bool ICell.NormalImage() => true;
@@ -45,7 +45,7 @@ namespace Fantasy_Kingdoms_Battle
             DoPrepareHint();
         }
 
-        void ICell.Click(PanelEntity pe)
+        void ICell.Click(VCCell pe)
         {
 
         }

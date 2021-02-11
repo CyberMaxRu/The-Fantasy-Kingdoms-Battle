@@ -10,7 +10,7 @@ namespace Fantasy_Kingdoms_Battle
     // Базовый класс существа
     internal abstract class Creature : ICell
     {
-        private PanelEntity panelEntity;
+        private VCCell panelEntity;
 
         public Creature(KindCreature tc)
         {
@@ -21,7 +21,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int Level { get; private set; }// Уровень
 
         // Реализация интерфейса
-        PanelEntity ICell.Panel
+        VCCell ICell.Panel
         {
             get => panelEntity;
             set
@@ -43,7 +43,7 @@ namespace Fantasy_Kingdoms_Battle
             //Program.formMain.formHint.AddStep1Header(ClassHero.Name, "", ClassHero.Description);
         }
 
-        void ICell.Click(PanelEntity pe)
+        void ICell.Click(VCCell pe)
         {
             //Program.formMain.SelectHero(this);
             Program.formMain.SelectPanelEntity(pe);

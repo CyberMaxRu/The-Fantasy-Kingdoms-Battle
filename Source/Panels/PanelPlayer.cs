@@ -7,11 +7,11 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class PanelPlayer : VisualControl
     {
         private Player player;
-        private readonly PanelEntity panelAvatar;
+        private readonly VCCell panelAvatar;
 
         public PanelPlayer(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
-            panelAvatar = new PanelEntity(this, FormMain.Config.GridSize, FormMain.Config.GridSize);
+            panelAvatar = new VCCell(this, FormMain.Config.GridSize, FormMain.Config.GridSize);
 
             Width = panelAvatar.Width + (FormMain.Config.GridSize * 2);
             Height = panelAvatar.Height + (FormMain.Config.GridSize * 2);

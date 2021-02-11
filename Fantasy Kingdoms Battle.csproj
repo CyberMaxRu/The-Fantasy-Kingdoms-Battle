@@ -126,7 +126,7 @@
     <Compile Include="Source\VisualControls\VCMenuCell.cs" />
     <Compile Include="PanelWithPanelEntity.cs" />
     <Compile Include="PlayerItem.cs" />
-    <Compile Include="PanelEntity.cs" />
+    <Compile Include="VCCell.cs" />
     <Compile Include="PlayerResearch.cs" />
     <Compile Include="Requirement.cs" />
     <Compile Include="Research.cs" />

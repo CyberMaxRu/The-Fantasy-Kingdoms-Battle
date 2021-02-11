@@ -153,7 +153,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly PanelBuildingInfo panelBuildingInfo;
         private readonly PanelLairInfo panelLairInfo;
         private readonly PanelHeroInfo panelHeroInfo;
-        internal PanelEntity SelectedPanelEntity;
+        internal VCCell SelectedPanelEntity;
         private readonly List<PanelConstruction> listPanelBuildings = new List<PanelConstruction>();
 
         private List<PictureBox> SlotSkill = new List<PictureBox>();
@@ -292,7 +292,7 @@ namespace Fantasy_Kingdoms_Battle
             ilGui24 = new BitmapList(dirResources, "Gui24.png", 24, ImageState.Normal);
             ilGui45 = new BitmapList(dirResources, "Gui45.png", 45, ImageState.Normal);
             ilParameters = new BitmapList(dirResources, "Parameters.png", 24, ImageState.Normal);
-            ilItems = new BitmapList(dirResources, "Items.png", 48, ImageState.Disabled);
+            ilItems = new BitmapList(dirResources, "Items.png", 48, ImageState.Over);
             ilStateHero = new BitmapList(dirResources, "StateHero.png", 24, ImageState.Normal);
             ilMenuCellFilters = new BitmapList(dirResources, "MenuCellFilters.png", 48, ImageState.Normal);
 
@@ -1241,11 +1241,11 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void SelectPanelEntity(PanelEntity pe)
+        internal void SelectPanelEntity(VCCell pe)
         {
             if (SelectedPanelEntity != pe)
             {
-                PanelEntity oldPe = SelectedPanelEntity;
+                VCCell oldPe = SelectedPanelEntity;
                 SelectedPanelEntity = pe;
 
                 ShowFrame();

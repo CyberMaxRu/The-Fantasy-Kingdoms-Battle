@@ -55,7 +55,7 @@ namespace Fantasy_Kingdoms_Battle
 
 
         // Реализация интерфейса
-        PanelEntity ICell.Panel { get; set; }
+        VCCell ICell.Panel { get; set; }
         BitmapList ICell.BitmapList() => Program.formMain.ilItems;
         int ICell.ImageIndex() => GroupWeapon.ImageIndex;
         bool ICell.NormalImage() => true;
@@ -67,7 +67,7 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep7Weapon(this);
         }
 
-        void ICell.Click(PanelEntity pe)
+        void ICell.Click(VCCell pe)
         {
 
         }
@@ -165,7 +165,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         // Реализация интерфейса
-        PanelEntity ICell.Panel { get; set; }
+        VCCell ICell.Panel { get; set; }
         BitmapList ICell.BitmapList() => Program.formMain.ilItems;
         int ICell.ImageIndex() => GroupArmour.ImageIndex;
         bool ICell.NormalImage() => true;
@@ -177,7 +177,7 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep8Armour(this);
         }
 
-        void ICell.Click(PanelEntity pe)
+        void ICell.Click(VCCell pe)
         {
 
         }

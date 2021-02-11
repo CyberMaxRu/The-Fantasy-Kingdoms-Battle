@@ -32,9 +32,9 @@ namespace Fantasy_Kingdoms_Battle
 
         private readonly PanelWithPanelEntity panelInventory;
         private readonly PanelWithPanelEntity panelAbilities;
-        private PanelEntity panelWeapon;
-        private PanelEntity panelArmour;
-        internal List<PanelEntity> slots { get; } = new List<PanelEntity>();
+        private VCCell panelWeapon;
+        private VCCell panelArmour;
+        internal List<VCCell> slots { get; } = new List<VCCell>();
 
         public PanelHeroInfo(VisualControl parent, int shiftX, int shiftY, int height) : base(parent, shiftX, shiftY, height)
         {
@@ -55,8 +55,8 @@ namespace Fantasy_Kingdoms_Battle
             lblKindHero = new VCLabel(this, FormMain.Config.GridSize, TopForControls(), FormMain.Config.FontCaptionPage, FormMain.Config.CommonCaptionPage, 16, "");
             lblKindHero.StringFormat.Alignment = StringAlignment.Near;
 
-            panelWeapon = new PanelEntity(this, FormMain.Config.GridSize, lblKindHero.NextTop());
-            panelArmour = new PanelEntity(this, panelWeapon.NextLeft(), panelWeapon.ShiftY);
+            panelWeapon = new VCCell(this, FormMain.Config.GridSize, lblKindHero.NextTop());
+            panelArmour = new VCCell(this, panelWeapon.NextLeft(), panelWeapon.ShiftY);
 
             pageControl.ShiftY = panelWeapon.NextTop();
             pageControl.AddTab("Статистика", FormMain.GUI_SCROLL, null);

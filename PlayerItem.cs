@@ -26,7 +26,7 @@ namespace Fantasy_Kingdoms_Battle
         internal bool OwnerIsPlayer { get; set; }
 
         // Реализация интерфейса
-        PanelEntity ICell.Panel { get; set; }
+        VCCell ICell.Panel { get; set; }
         BitmapList ICell.BitmapList() => Program.formMain.ilItems;
         bool ICell.NormalImage() => true;
         int ICell.ImageIndex() => Item.ImageIndex;
@@ -38,7 +38,7 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep6PlayerItem(this);
         }
 
-        void ICell.Click(PanelEntity pe)
+        void ICell.Click(VCCell pe)
         {
 
         }

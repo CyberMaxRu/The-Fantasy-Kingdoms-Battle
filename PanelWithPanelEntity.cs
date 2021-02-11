@@ -12,7 +12,7 @@ namespace Fantasy_Kingdoms_Battle
     // Класс панели с расположенными на ней панелями сущностей
     internal sealed class PanelWithPanelEntity : VisualControl
     {
-        private List<PanelEntity> panelEntities = new List<PanelEntity>();
+        private List<VCCell> panelEntities = new List<VCCell>();
         private int rows;// Сколько сейчас строк подготовлено
 
         public PanelWithPanelEntity(int entityInRow) : base()
@@ -59,12 +59,12 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(panelEntities.Count % EntityInRow == 0);
 
-            PanelEntity pe;
+            VCCell pe;
             Point defPoint = new Point(0, 0);
 
             for (int x = 0; x < EntityInRow; x++)
             {
-                pe = new PanelEntity(this, 0, 0);
+                pe = new VCCell(this, 0, 0);
                 pe.ShiftX = x * (pe.Width + 1);
                 pe.ShiftY = rows * (pe.Height + 1);
                 panelEntities.Add(pe);
@@ -78,7 +78,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(panelEntities.Count % EntityInRow == 0);
 
-            PanelEntity pe;
+            VCCell pe;
 
             for (int x = 0; x < EntityInRow; x++)
             {
