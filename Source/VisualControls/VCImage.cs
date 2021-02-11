@@ -9,6 +9,7 @@ namespace Fantasy_Kingdoms_Battle
         private int shiftImage;
         private VCLabel labelCost;
         private VCLabel labelLevel;
+        private VCLabel labelQuantity;
         private VCLabel labelPopupQuantity;
         private SolidBrush brushPopupQuantity;
 
@@ -25,6 +26,11 @@ namespace Fantasy_Kingdoms_Battle
             labelLevel.StringFormat.LineAlignment = StringAlignment.Near;
             labelLevel.StringFormat.Alignment = StringAlignment.Far;
             labelLevel.Visible = false;
+
+            labelQuantity = new VCLabel(this, 0, FormMain.Config.GridSize, FormMain.Config.FontQuantity, FormMain.Config.CommonQuantity, 16, "");
+            labelQuantity.StringFormat.LineAlignment = StringAlignment.Far;
+            labelQuantity.StringFormat.Alignment = StringAlignment.Far;
+            labelQuantity.Visible = false;
 
             labelPopupQuantity = new VCLabel(this, Width - 7, -3, FormMain.Config.FontPopupQuantity, FormMain.Config.CommonPopupQuantity, 16, "");
             labelPopupQuantity.StringFormat.LineAlignment = StringAlignment.Center;
@@ -43,6 +49,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int Cost { get; set; }
         internal bool ShowCostZero { get; set; }
         internal int Level { get; set; }
+        internal int Quantity { get; set; }
         internal int PopupQuantity { get; set; }
         internal bool HighlightUnderMouse { get; set; } = false;
 
@@ -50,6 +57,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             //Debug.Assert(Cost >= 0);
             Debug.Assert(Level >= 0);
+            Debug.Assert(Quantity >= 0);
             Debug.Assert(PopupQuantity >= 0);
             Debug.Assert(PopupQuantity <= 9);
 
@@ -74,6 +82,13 @@ namespace Fantasy_Kingdoms_Battle
                     labelLevel.Draw(g);
                 }
 
+                // Количество
+                if (Quantity > 0)
+                {
+                    labelQuantity.Text = Quantity.ToString();
+                    labelQuantity.Draw(g);
+                }
+
                 // Всплывающее количество 
                 if (PopupQuantity > 0)
                 {
@@ -94,6 +109,10 @@ namespace Fantasy_Kingdoms_Battle
             labelCost.ShiftY = Height - 16;
 
             labelLevel.Width = Width - FormMain.Config.GridSizeHalf;
+
+            labelQuantity.Width = Width - FormMain.Config.GridSizeHalf;
+            labelQuantity.ShiftY = Height - 16; 
+
             labelPopupQuantity.Width = labelPopupQuantity.Height;
             labelPopupQuantity.ShiftX = Width - 11;
         }
