@@ -151,8 +151,8 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Heroes.Count < MaxHeroes());
             Debug.Assert(Player.CombatHeroes.Count < Player.Lobby.TypeLobby.MaxHeroes);
 
-            Heroes.Add(h);
-            Player.AddHero(h);
+            Heroes.Add(ph);
+            Player.AddHero(ph);
         }
 
         internal bool CanTrainHero()
