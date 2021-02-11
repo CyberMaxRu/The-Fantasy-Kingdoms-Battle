@@ -12,12 +12,12 @@ namespace Fantasy_Kingdoms_Battle
     {
         private VCCell panelEntity;
 
-        public Creature(KindCreature tc)
+        public Creature(KindCreature kc)
         {
-            TypeCreature = tc;
+            KindCreature = kc;
         }
 
-        internal KindCreature TypeCreature { get; }
+        internal KindCreature KindCreature { get; }
         internal int Level { get; private set; }// Уровень
 
         // Реализация интерфейса
