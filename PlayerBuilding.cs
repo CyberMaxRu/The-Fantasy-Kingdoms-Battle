@@ -133,8 +133,6 @@ namespace Fantasy_Kingdoms_Battle
             //Debug.Assert(Player.Gold >= Building.TrainedHero.Cost);
 
             PlayerHero h = new PlayerHero(this);
-            Heroes.Add(h);
-            Player.AddHero(h);
 
             if (Building.TrainedHero.Cost > 0)
             {
@@ -143,7 +141,18 @@ namespace Fantasy_Kingdoms_Battle
                     Program.formMain.ShowFrame();
             }
 
+            AddHero(h);
+
             return h;
+        }
+
+        internal void AddHero(PlayerHero ph)
+        {
+            Debug.Assert(Heroes.Count < MaxHeroes());
+            Debug.Assert(Player.CombatHeroes.Count < Player.Lobby.TypeLobby.MaxHeroes);
+
+            Heroes.Add(h);
+            Player.AddHero(h);
         }
 
         internal bool CanTrainHero()
