@@ -42,7 +42,7 @@ namespace Fantasy_Kingdoms_Battle
             ValidateSize();
         }
 
-        internal BitmapList BitmapList { get; }
+        internal BitmapList BitmapList { get; set; }
         internal int ImageIndex { get; set; }
         internal ImageState ImageState { get; set; } = ImageState.Normal;
         protected int ShiftImage { get => shiftImage; set { shiftImage = value; ValidateSize(); } }

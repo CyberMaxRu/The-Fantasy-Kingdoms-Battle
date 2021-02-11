@@ -64,6 +64,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (cell != null)
             {
+                BitmapList = cell.BitmapList();
                 ImageIndex = cell.ImageIndex();
                 //ImageState = cell.NormalImage() ? ImageState.Normal : ImageState.Disabled;
                 Quantity = cell.Value();

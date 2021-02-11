@@ -277,7 +277,7 @@ namespace Fantasy_Kingdoms_Battle
 
             // Загружаем иконки
             SetStage("Рассматриваем картины");
-            ilPlayerAvatars = new BitmapList(0, 128, ImageState.Normal);
+            ilPlayerAvatars = new BitmapList(0, 128, ImageState.Over);
 
             bmpMaskBig = new Bitmap(dirResources + @"Icons\MaskBig.png");
             ValidateAvatars();
