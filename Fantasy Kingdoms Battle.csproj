@@ -149,7 +149,6 @@
     <Compile Include="Utils.cs" />
     <Compile Include="Source\VisualControls\VCButton.cs" />
     <Compile Include="Source\VisualControls\VCBitmap.cs" />
-    <Compile Include="VCCell.cs" />
     <Compile Include="Source\VisualControls\VCFormPage.cs" />
     <Compile Include="Source\VisualControls\VCImage.cs" />
     <Compile Include="Source\VisualControls\VCLabel.cs" />
