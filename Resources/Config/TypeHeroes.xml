@@ -4,7 +4,7 @@
     <ID>King</ID>
     <Name>Король</Name>
     <Description>Это Король, глава Королевства.</Description>
-    <ImageIndex>16</ImageIndex>
+    <ImageIndex>-100</ImageIndex>
     <KindCreature>Human</KindCreature>
     <Reward>0</Reward>
     <Cost>0</Cost>

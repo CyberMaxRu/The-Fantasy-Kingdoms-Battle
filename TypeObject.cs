@@ -17,7 +17,9 @@ namespace Fantasy_Kingdoms_Battle
             ID = XmlUtils.GetStringNotNull(n.SelectSingleNode("ID"));
             Name = XmlUtils.GetStringNotNull(n.SelectSingleNode("Name"));
             Description = XmlUtils.GetDescription(n.SelectSingleNode("Description"));
-            ImageIndex = XmlUtils.GetInteger(n.SelectSingleNode("ImageIndex")) - 1;
+            ImageIndex = XmlUtils.GetInteger(n.SelectSingleNode("ImageIndex"));
+            if (ImageIndex > 0)
+                ImageIndex--;
 
             Debug.Assert(ID.Length > 0);
             Debug.Assert(Name.Length > 0);

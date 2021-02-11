@@ -206,6 +206,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 //btnHireHero.ImageIndex = (Building.Level > 0) && ((Building.Heroes.Count == Building.MaxHeroes()) || (Building.MaxHeroesAtPlayer() == true))  ? -1 : GuiUtils.GetImageIndexWithGray(btnHireHero.ImageList, c.TrainedHero.ImageIndex, Building.CanTrainHero());
                 btnHireHero.ImageIndex = (Building.Level > 0) && ((Building.Heroes.Count == Building.MaxHeroes()) || (Building.MaxHeroesAtPlayer() == true)) ? -1 : TypeConstruction.TrainedHero.ImageIndex;
+                btnHireHero.ImageIndex = Building.Building.TrainedHero.ImageIndex != FormMain.IMAGE_INDEX_CURRENT_AVATAR ? Building.Building.TrainedHero.ImageIndex : Building.Player.ImageIndexAvatar;
                 btnHireHero.ImageState = ImageState.Normal;
                 btnHireHero.ImageState = Building.CanTrainHero() ? ImageState.Normal : ImageState.Disabled;
                 btnHireHero.Cost = (Building.Level == 0) || (Building.CanTrainHero() == true) ? TypeConstruction.TrainedHero.Cost : 0;
@@ -216,7 +217,7 @@ namespace Fantasy_Kingdoms_Battle
             if ((Building.Building.TrainedHero != null) && (Building.Level > 0) && (Building.Heroes.Count > 0))
             {
                 btnHeroes.Cost = Building.Heroes.Count;
-                btnHeroes.ImageIndex = Building.Building.TrainedHero.ImageIndex;                
+                btnHeroes.ImageIndex = Building.Building.TrainedHero.ImageIndex != FormMain.IMAGE_INDEX_CURRENT_AVATAR ? Building.Building.TrainedHero.ImageIndex : Building.Player.ImageIndexAvatar;
                 //btnHeroes.ImageIndex = GuiUtils.GetImageIndexWithGray(btnHeroes.ImageList, Building.Building.TrainedHero.ImageIndex, true);
             }
             else

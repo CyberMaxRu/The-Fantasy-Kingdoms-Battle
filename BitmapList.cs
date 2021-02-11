@@ -100,19 +100,25 @@ namespace Fantasy_Kingdoms_Battle
         internal void Add(Bitmap bmp)
         {
             Array.Resize(ref bitmapsNormal, bitmapsNormal.Length + 1);
-            bitmapsNormal[bitmapsNormal.Length - 1] = bmp;
 
             if (bitmapsDisabled != null)
-            {
                 Array.Resize(ref bitmapsDisabled, bitmapsDisabled.Length + 1);
-                bitmapsDisabled[bitmapsDisabled.Length - 1] = ConversionBitmap(bmp, ImageModeConversion.Grey);
-            }
 
             if (bitmapsOver != null)
-            {
                 Array.Resize(ref bitmapsOver, bitmapsOver.Length + 1);
-                bitmapsOver[bitmapsOver.Length - 1] = ConversionBitmap(bmp, ImageModeConversion.Bright);
-            }
+
+            ReplaceImage(bmp, bitmapsNormal.Length - 1);
+        }
+
+        internal void ReplaceImage(Bitmap bmp, int index)
+        {
+            bitmapsNormal[index] = bmp;
+
+            if (bitmapsDisabled != null)
+                bitmapsDisabled[index] = ConversionBitmap(bmp, ImageModeConversion.Grey);
+
+            if (bitmapsOver != null)
+                bitmapsOver[index] = ConversionBitmap(bmp, ImageModeConversion.Bright);
         }
 
         private Bitmap[] CreateArray(Bitmap bitmap, int size)

@@ -25,7 +25,7 @@ namespace Fantasy_Kingdoms_Battle
             Loses = 0;
             IsLive = true;
             PlayerIndex = index;
-            ImageIndexAvatar = typePlayer == TypePlayer.Computer ? PlayerIndex : Program.formMain.Settings.IndexAvatar();
+            ImageIndexAvatar = (typePlayer == TypePlayer.Computer ? PlayerIndex : Program.formMain.Settings.IndexInternalAvatar) + Program.formMain.ImageIndexFirstAvatar;
             ResultLastBattle = ResultBattle.None;
 
             // Настраиваем игрока согласно настройкам лобби
@@ -562,7 +562,7 @@ namespace Fantasy_Kingdoms_Battle
 
         // Реализация интерфейса
         VCCell ICell.Panel { get; set; }
-        BitmapList ICell.BitmapList() => Program.formMain.ilPlayerAvatars;
+        BitmapList ICell.BitmapList() => Program.formMain.imListObjectsCell;
         int ICell.ImageIndex() => ImageIndexAvatar;
         bool ICell.NormalImage() => IsLive;
         int ICell.Value() => Castle.Level;

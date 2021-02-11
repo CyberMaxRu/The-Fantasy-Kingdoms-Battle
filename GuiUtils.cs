@@ -75,7 +75,7 @@ namespace Fantasy_Kingdoms_Battle
             try
             {
                 Bitmap bmpRaw = new Bitmap(filename);
-                Bitmap newAvatar = new Bitmap(Program.formMain.ilPlayerAvatarsBig.Size, Program.formMain.ilPlayerAvatarsBig.Size);
+                Bitmap newAvatar = new Bitmap(Program.formMain.imListObjectsBig.Size, Program.formMain.imListObjectsBig.Size);
 
                 Graphics gAvatar = Graphics.FromImage(newAvatar);
                 gAvatar.InterpolationMode = InterpolationMode.High;

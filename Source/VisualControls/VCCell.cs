@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Diagnostics;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -68,6 +69,8 @@ namespace Fantasy_Kingdoms_Battle
                 ImageIndex = cell.ImageIndex();
                 //ImageState = cell.NormalImage() ? ImageState.Normal : ImageState.Disabled;
                 Quantity = cell.Value();
+
+                Debug.Assert(BitmapList.Size == 48);
             }
             else
                 ImageIndex = -1;

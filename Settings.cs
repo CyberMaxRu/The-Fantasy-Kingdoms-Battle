@@ -58,11 +58,16 @@ namespace Fantasy_Kingdoms_Battle
         {
             Avatar?.Dispose();
             if (FileNameAvatar.Length == 0)
+            {
                 Avatar = null;
+                Program.formMain.imListObjectsBig.ReplaceImage(Program.formMain.blPlayerAvatars.GetImage(0, ImageState.Normal), Program.formMain.ImageIndexFirstAvatar);
+            }
             else
             {
                 Avatar = GuiUtils.PrepareAvatar(FileNameAvatar);
-                if (Avatar == null)
+                if (Avatar != null)
+                    Program.formMain.imListObjectsBig.ReplaceImage(Avatar, Program.formMain.ImageIndexFirstAvatar);
+                else
                     FileNameAvatar = "";
             }
         }
@@ -97,11 +102,6 @@ namespace Fantasy_Kingdoms_Battle
             textWriter.WriteEndElement();
             textWriter.Close();
             textWriter.Dispose();
-        }
-
-        internal int IndexAvatar()
-        {
-            return FileNameAvatar.Length > 0 ? Program.formMain.AvatarCount - 1 : IndexInternalAvatar;
         }
     }
 }

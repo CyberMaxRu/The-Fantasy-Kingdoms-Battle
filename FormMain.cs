@@ -23,8 +23,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly string dirResources;
 
         // ImageList'ы
-        internal BitmapList ilPlayerAvatars;
-        internal BitmapList ilPlayerAvatarsBig;
+        internal BitmapList blPlayerAvatars;
         internal readonly BitmapList ilResultBattle;
         internal readonly BitmapList imListObjectsBig;
         internal readonly BitmapList imListObjectsCell;
@@ -165,6 +164,7 @@ namespace Fantasy_Kingdoms_Battle
         internal PanelConstruction SelectedPanelBuilding { get; private set; }
         internal PanelLair SelectedPanelLair { get; private set; }
         internal PlayerHero SelectedHero { get; private set; }
+        internal int ImageIndexFirstAvatar { get; }
 
         internal static Random Rnd = new Random();
 
@@ -279,15 +279,22 @@ namespace Fantasy_Kingdoms_Battle
 
             // Загружаем иконки
             SetStage("Рассматриваем картины");
-            ilPlayerAvatars = new BitmapList(0, 128, ImageState.Over);
 
             bmpMaskBig = new Bitmap(dirResources + @"Icons\MaskBig.png");
-            ValidateAvatars();
-
-            bmpMaskSmall = new Bitmap(dirResources + @"Icons\MaskSmall.png");
+            bmpMaskSmall = new Bitmap(dirResources + @"Icons\MaskSmall.png");// Нужна ли еще?
 
             ilResultBattle = new BitmapList(dirResources, "ResultBattle.png", 24, ImageState.Normal);
             imListObjectsBig = new BitmapList(dirResources, "Objects.png", 128, ImageState.Over);
+
+            // Добавляем в список иконок аватарки игроков
+            // Для этого создаем отдельный список оригинальных аватарок, из которого уже будем составлять итоговый
+            ImageIndexFirstAvatar = imListObjectsBig.Count;
+            blPlayerAvatars = new BitmapList(dirResources, "Avatars.png", 128, ImageState.Normal);
+            for (int i = 0; i < blPlayerAvatars.Count; i++)
+                imListObjectsBig.Add(blPlayerAvatars.GetImage(i, ImageState.Normal));
+
+            ValidateAvatars();
+
             imListObjectsCell = new BitmapList(imListObjectsBig, 48);
 
             ilGui16 = new BitmapList(dirResources, "Gui16.png", 16, ImageState.Normal);
@@ -770,11 +777,8 @@ namespace Fantasy_Kingdoms_Battle
                     lobby.CurrentPlayer.Name = Settings.NamePlayer;
                 }
 
-                if (Settings.IndexAvatar() != lobby.CurrentPlayer.ImageIndexAvatar)
-                {
-                    lobby.CurrentPlayer.ImageIndexAvatar = lobby.CurrentPlayer.ImageIndexAvatar;
-                    ShowFrame();
-                }
+                // Мог поменяться аватар
+                ShowFrame();
 
                 ApplyFullScreen(false);
             }
@@ -1314,22 +1318,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void ValidateAvatars()
         {
-            ilPlayerAvatarsBig = new BitmapList(dirResources, "PlayerAvatarsBig.png", 128, ImageState.Normal);
-
             Settings.LoadAvatar();
-            if (Settings.Avatar != null)
-            {
-                ilPlayerAvatarsBig.Add(Settings.Avatar);
-            }
-            AvatarCount = ilPlayerAvatarsBig.Count;
-
-            ilPlayerAvatars = new BitmapList(ilPlayerAvatarsBig, 48);
 
             if (lobby != null)
-            {
-                lobby.CurrentPlayer.ImageIndexAvatar = Settings.IndexAvatar();
                 ShowFrame();
-            }
         }
 
         internal ImageList BigIconToSmall(ImageList ilBig)
