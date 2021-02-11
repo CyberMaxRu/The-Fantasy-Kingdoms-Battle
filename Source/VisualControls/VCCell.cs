@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Diagnostics;
-using System.Drawing;
-using System.Drawing.Drawing2D;
+﻿using System.Drawing;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -17,7 +9,7 @@ namespace Fantasy_Kingdoms_Battle
         BitmapList BitmapList();
         int ImageIndex();
         bool NormalImage();
-        int Value();        
+        int Value();
         void PrepareHint();
         void Click(VCCell pe);
     }
