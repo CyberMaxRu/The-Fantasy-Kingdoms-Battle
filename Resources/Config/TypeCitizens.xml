@@ -1,19 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TypeCitizens>
   <TypeCitizen>
-    <ID>King</ID>
-    <Name>Король</Name>
-    <Description>Это король, глава Королевства.</Description>
-    <ImageIndex>0</ImageIndex>
-    <KindCreature>Human</KindCreature>
-    <Reward>0</Reward>
-    <Cost>0</Cost>
-    <Building>Castle</Building>
-    <MaxLevel>100</MaxLevel>
-    <CanBuild>False</CanBuild>
-    <DamageToCastle>0</DamageToCastle>
-  </TypeCitizen>
-  <TypeCitizen>
     <ID>Peasant</ID>
     <Name>Крестьянин</Name>
     <Description>Это просто крестьяние, Сир. Они обучены строить и чинить здания.</Description>

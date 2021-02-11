@@ -14,6 +14,7 @@ namespace Fantasy_Kingdoms_Battle
         public TypeConstruction(XmlNode n) : base(n)
         {
             HasTreasury = XmlUtils.GetBool(n.SelectSingleNode("HasTreasury"), false);
+            GoldByConstruction = XmlUtils.GetInteger(n.SelectSingleNode("GoldByConstruction"));
 
             // Загружаем информацию об уровнях
             Levels = new Level[MaxLevel + 1];// Для упрощения работы с уровнями, добавляем 1, чтобы уровень был равен индексу в массиве
@@ -75,6 +76,7 @@ namespace Fantasy_Kingdoms_Battle
         internal Research[,,] Researches;
         internal PanelConstruction Panel { get; set; }
         internal bool HasTreasury { get; }// Имеет собственную казну
+        internal int GoldByConstruction { get; }// Количество золота в казне при постройке
         internal TypeHero TrainedHero { get; set; }
 
         internal override void TuneDeferredLinks()

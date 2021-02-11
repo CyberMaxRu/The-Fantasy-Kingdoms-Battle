@@ -46,12 +46,15 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             Castle = GetPlayerBuilding(FormMain.Config.FindTypeEconomicConstruction(FormMain.Config.IDBuildingCastle));
+
             Gold = Lobby.TypeLobby.Gold;
             if (TypePlayer == TypePlayer.Computer)
                 Gold = 100_000;
 
             // Настройка ячеек героев
             CellHeroes = new PlayerHero[FormMain.Config.HeroRows, FormMain.Config.HeroInRow];
+
+            PlayerHero king = Castle.HireHero();
 
             //
             AddItem(new PlayerItem(FormMain.Config.FindItem("PotionOfHealth"), 10, true));

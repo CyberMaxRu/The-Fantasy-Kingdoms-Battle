@@ -8,6 +8,12 @@
     <Cost>10</Cost>
     <Weapons>
       <Weapon>
+        <ID>WeaponKing0</ID>
+        <Hero>King</Hero>
+        <TimeHit>50</TimeHit>
+        <DamageMelee>10</DamageMelee>
+      </Weapon>
+      <Weapon>
         <ID>WeaponWarrior0</ID>
         <Hero>Warrior</Hero>
         <TimeHit>50</TimeHit>

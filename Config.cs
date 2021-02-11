@@ -315,23 +315,6 @@ namespace Fantasy_Kingdoms_Battle
             throw new Exception("Сооружение Королевства " + ID + " не найдено.");
         }
 
-        internal TypeConstructionWithHero FindTypeConstructionWithHero(string ID)
-        {
-            foreach (TypeGuild tg in TypeGuilds)
-            {
-                if (tg.ID == ID)
-                    return tg;
-            }
-
-            foreach (TypeTemple tt in TypeTemples)
-            {
-                if (tt.ID == ID)
-                    return tt;
-            }
-
-            throw new Exception("Сооружение для найма героев " + ID + " не найдено.");
-        }
-
         internal TypeEconomicConstruction FindTypeEconomicConstruction(string ID)
         {
             foreach (TypeEconomicConstruction tec in TypeEconomicConstructions)

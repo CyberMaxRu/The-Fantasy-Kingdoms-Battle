@@ -17,7 +17,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Building = pb;
             DayOfHire = Player.Lobby.Turn;
-            TypeHero = (pb.Building as TypeConstructionWithHero).TrainedHero;
+            TypeHero = pb.Building.TrainedHero;
 
             // Применяем дефолтные способности
             Abilities.AddRange(TypeHero.Abilities);

@@ -124,6 +124,8 @@ namespace Fantasy_Kingdoms_Battle
         internal static Size PANEL_MENU_CELLS = new Size(4, 3);
         private const int DISTANCE_BETWEEN_CELLS = 3;
 
+        internal const int IMAGE_INDEX_CURRENT_AVATAR = -100;
+
         private Lobby lobby;
         private Player curAppliedPlayer;
 

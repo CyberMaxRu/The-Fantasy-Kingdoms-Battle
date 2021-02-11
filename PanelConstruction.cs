@@ -204,12 +204,11 @@ namespace Fantasy_Kingdoms_Battle
 
             if (btnHireHero != null)
             {
-                TypeConstructionWithHero c = (TypeConstructionWithHero)Building.Building;
                 //btnHireHero.ImageIndex = (Building.Level > 0) && ((Building.Heroes.Count == Building.MaxHeroes()) || (Building.MaxHeroesAtPlayer() == true))  ? -1 : GuiUtils.GetImageIndexWithGray(btnHireHero.ImageList, c.TrainedHero.ImageIndex, Building.CanTrainHero());
-                btnHireHero.ImageIndex = (Building.Level > 0) && ((Building.Heroes.Count == Building.MaxHeroes()) || (Building.MaxHeroesAtPlayer() == true)) ? -1 : c.TrainedHero.ImageIndex;
+                btnHireHero.ImageIndex = (Building.Level > 0) && ((Building.Heroes.Count == Building.MaxHeroes()) || (Building.MaxHeroesAtPlayer() == true)) ? -1 : TypeConstruction.TrainedHero.ImageIndex;
                 btnHireHero.ImageState = ImageState.Normal;
                 btnHireHero.ImageState = Building.CanTrainHero() ? ImageState.Normal : ImageState.Disabled;
-                btnHireHero.Cost = (Building.Level == 0) || (Building.CanTrainHero() == true) ? c.TrainedHero.Cost : 0;
+                btnHireHero.Cost = (Building.Level == 0) || (Building.CanTrainHero() == true) ? TypeConstruction.TrainedHero.Cost : 0;
             }
 
             imageConstruction.Level = Building.Level;
