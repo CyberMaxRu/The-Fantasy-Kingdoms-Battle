@@ -57,29 +57,31 @@ namespace Fantasy_Kingdoms_Battle
 
             // Иконка
             if (ImageIndex != -1)
+            {
                 BitmapList.DrawImage(g, ImageIndex, ImageState, Left + ShiftImage, Top + ShiftImage);
 
-            // Цена
-            if ((Cost != 0) || ShowCostZero)
-            {
-                labelCost.Text = Cost.ToString();
-                labelCost.Draw(g);
-            }
+                // Цена
+                if ((Cost != 0) || ShowCostZero)
+                {
+                    labelCost.Text = Cost.ToString();
+                    labelCost.Draw(g);
+                }
 
-            // Уровень
-            if (Level > 0)
-            {
-                labelLevel.Text = Level.ToString();
-                labelLevel.Draw(g);
-            }
+                // Уровень
+                if (Level > 0)
+                {
+                    labelLevel.Text = Level.ToString();
+                    labelLevel.Draw(g);
+                }
 
-            // Всплывающее количество 
-            if (PopupQuantity > 0)
-            {
-                g.FillEllipse(brushPopupQuantity, Left + Width - 13, Top - 5, 18, 18);
+                // Всплывающее количество 
+                if (PopupQuantity > 0)
+                {
+                    g.FillEllipse(brushPopupQuantity, Left + Width - 13, Top - 5, 18, 18);
 
-                labelPopupQuantity.Text = PopupQuantity.ToString();
-                labelPopupQuantity.Draw(g);
+                    labelPopupQuantity.Text = PopupQuantity.ToString();
+                    labelPopupQuantity.Draw(g);
+                }
             }
         }
 
