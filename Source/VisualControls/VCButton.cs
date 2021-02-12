@@ -6,7 +6,8 @@
         public VCButton(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList, int imageIndex) : base(parent, shiftX, shiftY, bitmapList, imageIndex)
         {
             ShowBorder = true;
-            ShiftImage = 2;
+            ShiftImageX = 2;
+            ShiftImageY = 2;
             HighlightUnderMouse = true;
         }
     }

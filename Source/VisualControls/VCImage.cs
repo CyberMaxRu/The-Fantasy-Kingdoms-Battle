@@ -6,7 +6,8 @@ namespace Fantasy_Kingdoms_Battle
     // Визуальный контрол - иконка
     internal class VCImage : VisualControl
     {
-        private int shiftImage;
+        private int shiftImageX;
+        private int shiftImageY;
         private VCLabel labelCost;
         private VCLabel labelLevel;
         private VCLabel labelQuantity;
@@ -45,7 +46,8 @@ namespace Fantasy_Kingdoms_Battle
         internal BitmapList BitmapList { get; set; }
         internal int ImageIndex { get; set; }
         internal ImageState ImageState { get; set; } = ImageState.Normal;
-        protected int ShiftImage { get => shiftImage; set { shiftImage = value; ValidateSize(); } }
+        protected int ShiftImageX { get => shiftImageX; set { shiftImageX = value; ValidateSize(); } }
+        protected int ShiftImageY { get => shiftImageY; set { shiftImageY = value; ValidateSize(); } }
         internal int Cost { get; set; }
         internal bool ShowCostZero { get; set; }
         internal int Level { get; set; }
@@ -66,7 +68,7 @@ namespace Fantasy_Kingdoms_Battle
             // Иконка
             if (ImageIndex != -1)
             {
-                BitmapList.DrawImage(g, ImageIndex, ImageState, Left + ShiftImage, Top + ShiftImage);
+                BitmapList.DrawImage(g, ImageIndex, ImageState, Left + ShiftImageX, Top + ShiftImageY);
 
                 // Цена
                 if ((Cost != 0) || ShowCostZero)
@@ -102,8 +104,8 @@ namespace Fantasy_Kingdoms_Battle
 
         private void ValidateSize()
         {
-            Width = BitmapList.Size + (ShiftImage * 2);
-            Height = BitmapList.Size + (ShiftImage * 2);
+            Width = BitmapList.Size + (ShiftImageX * 2);
+            Height = BitmapList.Size + (ShiftImageY * 2);
 
             labelCost.Width = Width;
             labelCost.ShiftY = Height - 16;

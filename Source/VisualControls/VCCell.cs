@@ -26,7 +26,8 @@ namespace Fantasy_Kingdoms_Battle
             Height = Program.formMain.bmpBorderForIcon.Height;
 
             HighlightUnderMouse = true;
-            ShiftImage = 3;
+            ShiftImageX = 3;
+            ShiftImageY = 2;
         }
 
         internal override bool PrepareHint()
