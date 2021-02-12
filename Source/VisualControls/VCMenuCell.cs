@@ -54,7 +54,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void MouseDown()
         {
-            base.MouseUp();
+            base.MouseDown();
 
             mouseClicked = true;
             Program.formMain.ShowFrame();
@@ -62,7 +62,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void MouseUp()
         {
-            base.MouseDown();
+            base.MouseUp();
 
             if (mouseClicked != false)
             {
