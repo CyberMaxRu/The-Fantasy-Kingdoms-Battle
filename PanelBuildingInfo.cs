@@ -39,6 +39,13 @@ namespace Fantasy_Kingdoms_Battle
 
         internal PlayerBuilding Building { get; set; }
 
+        internal override void ArrangeControls()
+        {
+            base.ArrangeControls();
+
+            pageControl.Height = Height - pageControl.ShiftY - FormMain.Config.GridSize;
+        }
+
         internal override void Draw(Graphics g)
         {
             imgIcon.Level = (Building.Building.MaxLevel > 1) && (Building.Level > 0) ? Building.Level : 0;

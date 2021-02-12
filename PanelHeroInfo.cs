@@ -126,6 +126,13 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        internal override void ArrangeControls()
+        {
+            base.ArrangeControls();
+
+            pageControl.Height = Height - pageControl.ShiftY - FormMain.Config.GridSize;
+        }
+
         internal void ShowData()
         {
             //base.ShowData();
