@@ -56,8 +56,14 @@ namespace Fantasy_Kingdoms_Battle
             MaxState = maxState;
         }
 
-        public BitmapList(BitmapList fromList, int newSize, int borderWidth)
+        public BitmapList(BitmapList fromList, int newSize, int borderWidth, Bitmap mask)
         {
+            if (mask != null)
+            {
+                Debug.Assert(mask.Width == newSize);
+                Debug.Assert(mask.Height == newSize);
+            }
+
             Debug.Assert(fromList.Size != newSize);
 
             Size = newSize;
@@ -73,21 +79,30 @@ namespace Fantasy_Kingdoms_Battle
             Rectangle rectSource = new Rectangle(0 + borderWidth, 0 + borderWidth, fromList.Size - (borderWidth * 2), fromList.Size - (borderWidth * 2));
             Rectangle rectTarget = new Rectangle(0, 0, newSize, newSize);
 
-            for (int x = 0; x < fromList.Count; x++)
+            for (int i = 0; i < fromList.Count; i++)
             {
                 Bitmap bmpDest = new Bitmap(newSize, newSize);
                 Graphics gDest = Graphics.FromImage(bmpDest);
 
                 gDest.InterpolationMode = InterpolationMode.HighQualityBicubic;
                 gDest.SmoothingMode = SmoothingMode.HighQuality;
-                gDest.DrawImage(fromList.GetImage(x, ImageState.Normal), rectTarget, rectSource, GraphicsUnit.Pixel);                
+                gDest.DrawImage(fromList.GetImage(i, ImageState.Normal), rectTarget, rectSource, GraphicsUnit.Pixel);                
 
-                bitmapsNormal[x] = bmpDest;
+                if (mask != null)
+                {
+                    for (int y = 0; y < bmpDest.Height; y++)
+                        for (int x = 0; x < bmpDest.Width; x++)
+                        {
+                            bmpDest.SetPixel(x, y, Color.FromArgb(bmpDest.GetPixel(x, y).A, bmpDest.GetPixel(x, y)));
+                        }
+                }
+
+                bitmapsNormal[i] = bmpDest;
 
                 if (MaxState >= ImageState.Disabled)
-                    bitmapsDisabled[x] = ConversionBitmap(bmpDest, ImageModeConversion.Grey);
+                    bitmapsDisabled[i] = ConversionBitmap(bmpDest, ImageModeConversion.Grey);
                 if (MaxState >= ImageState.Over)
-                    bitmapsOver[x] = ConversionBitmap(bmpDest, ImageModeConversion.Bright);
+                    bitmapsOver[i] = ConversionBitmap(bmpDest, ImageModeConversion.Bright);
 
                 gDest.Dispose();
             }
@@ -182,6 +197,7 @@ namespace Fantasy_Kingdoms_Battle
 
             return output;
         }
+
         internal Bitmap GetImage(int imageIndex, ImageState state)
         {
             Debug.Assert(imageIndex >= 0);
