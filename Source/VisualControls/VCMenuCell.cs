@@ -36,11 +36,13 @@ namespace Fantasy_Kingdoms_Battle
             return true;
         }
 
-        internal override void MouseEnter()
+        internal override void MouseEnter(bool leftButtonDown)
         {
-            base.MouseEnter();
+            base.MouseEnter(leftButtonDown);
 
             mouseOver = true;
+            if (!leftButtonDown)
+                mouseClicked = false;
             Program.formMain.ShowFrame();
         }
 
@@ -83,7 +85,7 @@ namespace Fantasy_Kingdoms_Battle
                 // Накладываем фильтр
                 if (!research.CheckRequirements())
                     g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage(3, ImageState.Normal), Left, Top);
-                else if (mouseClicked)
+                else if (mouseClicked && mouseOver)
                     g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage(2, ImageState.Normal), Left, Top);
                 else if (mouseOver)
                     g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage(1, ImageState.Normal), Left, Top);

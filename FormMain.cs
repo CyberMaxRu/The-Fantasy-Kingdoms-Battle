@@ -1486,7 +1486,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     ControlForHintLeave();
                     controlWithHint = curControl;
-                    controlWithHint.MouseEnter();
+                    controlWithHint.MouseEnter(e.Button == MouseButtons.Left);
                     timerHover.Start();
                     ShowFrame();
                 }

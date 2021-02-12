@@ -102,7 +102,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal virtual void MouseEnter() { }
+        internal virtual void MouseEnter(bool leftButtonDown) { }
         internal virtual void MouseLeave() { }
         internal virtual void MouseDown() { }
         internal virtual void MouseUp() { }

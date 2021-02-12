@@ -117,9 +117,9 @@ namespace Fantasy_Kingdoms_Battle
             labelPopupQuantity.ShiftX = Width - 11;
         }
 
-        internal override void MouseEnter()
+        internal override void MouseEnter(bool leftButtonDown)
         {
-            base.MouseEnter();
+            base.MouseEnter(leftButtonDown);
 
             if (HighlightUnderMouse)
             {
