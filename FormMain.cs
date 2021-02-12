@@ -1541,7 +1541,12 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (controlWithHint != null)
                 {
-                    controlWithHint.DoClick();
+                    // При клике происходит перерисовка кадра, и текущий элемент может стать уже невидимым
+                    // Но он будет все равно считаться активным, так как прописан в controlWithHint
+                    // Поэтому перед кликом убираем его
+                    VisualControl vc = controlWithHint;
+                    controlWithHint = null;
+                    vc.DoClick();
                     if (formHint.Visible)
                     {
                         ControlForHintLeave();
