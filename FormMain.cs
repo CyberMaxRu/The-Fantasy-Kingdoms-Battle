@@ -1444,6 +1444,11 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.OnMouseMove(e);
 
+            TreatMouseMove(e.Button == MouseButtons.Left);
+        }
+
+        private void TreatMouseMove(bool leftDown)
+        {
             Point newMousePos = PointToClient(Cursor.Position);
 
             if (!mousePos.Equals(newMousePos))
@@ -1480,7 +1485,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     ControlForHintLeave();
                     controlWithHint = curControl;
-                    controlWithHint.MouseEnter(e.Button == MouseButtons.Left);
+                    controlWithHint.MouseEnter(leftDown);
                     timerHover.Start();
                     ShowFrame();
                 }
@@ -1534,7 +1539,16 @@ namespace Fantasy_Kingdoms_Battle
 
             if (e.Button == MouseButtons.Left)
             {
-                controlWithHint?.DoClick();
+                if (controlWithHint != null)
+                {
+                    controlWithHint.DoClick();
+                    if (formHint.Visible)
+                    {
+                        ControlForHintLeave();
+                        mousePos = new Point(0, 0);
+                        TreatMouseMove(false);
+                    }
+                }
             }
         }
 
