@@ -93,7 +93,7 @@ namespace Fantasy_Kingdoms_Battle
                     for (int y = 0; y < bmpDest.Height; y++)
                         for (int x = 0; x < bmpDest.Width; x++)
                         {
-                            bmpDest.SetPixel(x, y, Color.FromArgb(bmpDest.GetPixel(x, y).A, bmpDest.GetPixel(x, y)));
+                            bmpDest.SetPixel(x, y, Color.FromArgb(mask.GetPixel(x, y).A, bmpDest.GetPixel(x, y)));
                         }
                 }
 
