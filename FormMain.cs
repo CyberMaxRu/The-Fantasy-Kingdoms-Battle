@@ -295,7 +295,7 @@ namespace Fantasy_Kingdoms_Battle
 
             ValidateAvatars();
 
-            imListObjectsCell = new BitmapList(imListObjectsBig, 48);
+            imListObjectsCell = new BitmapList(imListObjectsBig, 48, Config.BorderInBigIcons);
 
             ilGui16 = new BitmapList(dirResources, "Gui16.png", 16, ImageState.Normal);
             ilGui24 = new BitmapList(dirResources, "Gui24.png", 24, ImageState.Normal);

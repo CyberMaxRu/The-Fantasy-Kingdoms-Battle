@@ -56,7 +56,7 @@ namespace Fantasy_Kingdoms_Battle
             MaxState = maxState;
         }
 
-        public BitmapList(BitmapList fromList, int newSize)
+        public BitmapList(BitmapList fromList, int newSize, int borderWidth)
         {
             Debug.Assert(fromList.Size != newSize);
 
@@ -70,7 +70,7 @@ namespace Fantasy_Kingdoms_Battle
             if (MaxState >= ImageState.Over)
                 bitmapsOver = new Bitmap[fromList.Count];
 
-            Rectangle rectSource = new Rectangle(0, 0, fromList.Size, fromList.Size);
+            Rectangle rectSource = new Rectangle(0 + borderWidth, 0 + borderWidth, fromList.Size - (borderWidth * 2), fromList.Size - (borderWidth * 2));
             Rectangle rectTarget = new Rectangle(0, 0, newSize, newSize);
 
             for (int x = 0; x < fromList.Count; x++)
@@ -128,7 +128,7 @@ namespace Fantasy_Kingdoms_Battle
             Bitmap[] array = new Bitmap[lines * columns];
             Bitmap bmp;
             Graphics g;
-
+            
             for (int y = 0; y < lines; y++)
                 for (int x = 0; x < columns; x++)
                 {

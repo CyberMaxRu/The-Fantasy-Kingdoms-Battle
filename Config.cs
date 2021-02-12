@@ -209,6 +209,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int GridSize { get; private set; }// Размер ячейки сетки
         internal int GridSizeHalf { get; private set; }// Размер половины ячейки сетки
         internal Point ShiftForBorder { get; private set; }// Смещение иконки внутри рамки сущности
+        internal int BorderInBigIcons => 1;// Прозрачный бордюр у иконок 128 * 128
         internal int HeroInRow { get; private set; }// Героев в ряду
         internal int HeroRows { get; private set; }// Рядов героев
         internal int RowsBetweenSides { get; private set; }// Рядов между сторонами
