@@ -56,6 +56,7 @@ namespace Fantasy_Kingdoms_Battle
             //pageControl.SetPageVisible(1, building.Building.TrainedHero != null);
             //pageControl.SetPageVisible(2, building.Building.TrainedHero != null);
 
+            panelProducts.ApplyList(Building.Items);
             panelWarehouse.ApplyList(Building.Warehouse);
             panelInhabitants.ApplyList(Building.Heroes);
 
