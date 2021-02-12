@@ -134,7 +134,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal Lobby Lobby { get; }
         internal string Name { get; set; }
-        internal int ImageIndexAvatar { get; set; } 
+        internal int ImageIndexAvatar { get; private set; }
         internal int PlayerIndex { get; }
         internal int PositionInLobby { get; set; }
         internal int DurabilityCastle { get; set; }
@@ -167,7 +167,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int Loses { get; set; }
         internal int Draws { get; set; }
         internal int Streak { get; set; }
-        internal ResultBattle ResultLastBattle 
+        internal ResultBattle ResultLastBattle
         { get { return resultLastBattle; }
             set
             {
@@ -375,7 +375,7 @@ namespace Fantasy_Kingdoms_Battle
             int number = FindSlotWithItem(item);
             if (number != -1)
                 return number;
-            
+
             // Ищем первый свободный слот
             for (int i = 0; i < Warehouse.Length; i++)
             {
@@ -536,7 +536,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal void TextRequirements(List<Requirement> listReq, List<TextRequirement> listTextReq)
-        {           
+        {
             PlayerBuilding pb;
 
             foreach (Requirement r in listReq)
@@ -563,7 +563,12 @@ namespace Fantasy_Kingdoms_Battle
         // Реализация интерфейса
         VCCell ICell.Panel { get; set; }
         BitmapList ICell.BitmapList() => Program.formMain.imListObjectsCell;
-        int ICell.ImageIndex() => ImageIndexAvatar;
+        int ICell.ImageIndex()
+        {
+            Debug.Assert(ImageIndexAvatar >= Program.formMain.ImageIndexFirstAvatar);
+            Debug.Assert(ImageIndexAvatar < Program.formMain.ImageIndexFirstAvatar + Program.formMain.blPlayerAvatars.Count);
+            return ImageIndexAvatar;
+        }
         bool ICell.NormalImage() => IsLive;
         int ICell.Value() => Castle.Level;
         void ICell.PrepareHint()
