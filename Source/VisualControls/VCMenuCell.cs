@@ -22,8 +22,6 @@ namespace Fantasy_Kingdoms_Battle
             if (research.CheckRequirements())
             {
                 research.DoResearch();
-
-                Program.formMain.UpdateMenu();
             }
         }
 

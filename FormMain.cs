@@ -1165,8 +1165,6 @@ namespace Fantasy_Kingdoms_Battle
                 PanelConstruction oldSelected = SelectedPanelBuilding;
                 SelectedPanelBuilding = pb;
 
-                UpdateMenu();
-
                 //if (oldSelected != null)
                 //    oldSelected.Repaint();
                 if (SelectedPanelBuilding != null)
@@ -1197,8 +1195,6 @@ namespace Fantasy_Kingdoms_Battle
                 PanelLair oldSelected = SelectedPanelLair;
                 SelectedPanelLair = pl;
 
-                UpdateMenu();
-
                 //if (oldSelected != null)
                 //    oldSelected.Invalidate(true);
                 if (SelectedPanelLair != null)
@@ -1227,8 +1223,6 @@ namespace Fantasy_Kingdoms_Battle
                 SelectedHero = ph;
 
                 //SelectedPanelEntity = null;
-
-                UpdateMenu();
 
                 //if (oldSelected != null)
                 //    ((ICell)oldSelected).Panel.Invalidate(true);
