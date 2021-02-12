@@ -1566,5 +1566,10 @@ namespace Fantasy_Kingdoms_Battle
             ControlForHintLeave();
             ShowFrame();
         }
+
+        internal int TreatImageIndex(int imageIndex, Player p)
+        {
+            return imageIndex != IMAGE_INDEX_CURRENT_AVATAR ? imageIndex : p.ImageIndexAvatar;
+        }
     }
 }

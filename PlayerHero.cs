@@ -328,7 +328,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
         BitmapList ICell.BitmapList() => Program.formMain.imListObjectsCell;
-        int ICell.ImageIndex() => TypeHero.ImageIndex != FormMain.IMAGE_INDEX_CURRENT_AVATAR ? TypeHero.ImageIndex : Player.ImageIndexAvatar;
+        int ICell.ImageIndex() => Program.formMain.TreatImageIndex(TypeHero.ImageIndex, Player);
         bool ICell.NormalImage() => true;
         int ICell.Value() => Level;
         void ICell.PrepareHint()
