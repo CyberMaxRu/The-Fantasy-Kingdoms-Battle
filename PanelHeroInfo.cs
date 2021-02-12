@@ -131,6 +131,7 @@ namespace Fantasy_Kingdoms_Battle
             base.ArrangeControls();
 
             pageControl.Height = Height - pageControl.ShiftY - FormMain.Config.GridSize;
+            lblKindHero.Width = Width - (lblKindHero.ShiftX * 2);
         }
 
         internal void ShowData()
