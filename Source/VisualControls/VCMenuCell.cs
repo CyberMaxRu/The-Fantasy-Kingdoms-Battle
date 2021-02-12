@@ -75,13 +75,18 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
-            base.Draw(g);
-
-            // Рисуем иконку
             if (research != null)
             {
-                BitmapList.DrawImage(g, research.Research.Entity.ImageIndex, ImageState.Normal, Left, Top);
+                Cost = research.Cost();
+                ImageIndex = research.Research.Entity.ImageIndex;
+            }
+            else
+                ImageIndex = -1;
 
+            base.Draw(g);
+
+            if (research != null)
+            {
                 // Накладываем фильтр
                 if (!research.CheckRequirements())
                     g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage(3, ImageState.Normal), Left, Top);
