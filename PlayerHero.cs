@@ -10,10 +10,10 @@ using System.Windows.Forms;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс героя игрока
-    internal sealed class PlayerHero : ICell
+    internal sealed class PlayerHero : Creature
     {
         private VCCell panelEntity;
-        public PlayerHero(PlayerBuilding pb)
+        public PlayerHero(PlayerBuilding pb) : base(pb.Building.TrainedHero)
         {
             Building = pb;
             DayOfHire = Player.Lobby.Turn;
@@ -26,23 +26,6 @@ namespace Fantasy_Kingdoms_Battle
             MeleeWeapon = TypeHero.WeaponMelee;
             RangeWeapon = TypeHero.WeaponRange;
             Armour = TypeHero.Armour;
-
-            if (TypeHero.MaxLevel > 1)
-            {
-                Level = 0;
-
-                ParametersBase = new HeroParameters(TypeHero.ParametersByHire);
-
-                // Переходим на 1 уровень
-                LevelUp();
-                ParametersWithAmmunition = new HeroParameters(ParametersBase);
-
-                //
-                UpdateBaseParameters();
-            }
-            else
-                Level = 1;
-
         }
 
         internal PlayerBuilding Building { get; }// Здание, которому принадлежит герой
@@ -50,9 +33,6 @@ namespace Fantasy_Kingdoms_Battle
         internal TypeHero TypeHero { get; } // Класс героя
 
         // Основные параметры
-        internal int Level { get; private set; }// Уровень героя
-        internal HeroParameters ParametersBase { get; }// Свои параметры, без учета амуниции
-        internal HeroParameters ParametersWithAmmunition { get; }// Параметры с учетом амуниции
         internal Weapon MeleeWeapon { get; private set; }// Рукопашное оружие 
         internal Weapon RangeWeapon { get; private set; }// Стрелковое оружие 
         internal Armour Armour { get; private set; }// Доспех
@@ -216,77 +196,13 @@ namespace Fantasy_Kingdoms_Battle
 
             return pi;*/
         }
-
-        internal void ValidateCell(int number)
+        protected override void UpdateParamsWithAmmunition()
         {
-            //if ((ClassHero.Slots[number].DefaultItem != null) && (Slots[number] == null))
-            //{
-            //    Slots[number] = new PlayerItem(ClassHero.Slots[number].DefaultItem, 1, false);
-            //}
-        }
-
-        internal void MoveItem(int fromSlot, int toSlot)
-        {
-            /*Debug.Assert(Slots[fromSlot] != null);
-            Debug.Assert(fromSlot != toSlot);
-
-            if (Slots[fromSlot].Item.TypeItem == ClassHero.Slots[toSlot].TypeItem)
-            {
-                PlayerItem tmp = null;
-                if (Slots[toSlot] != null)
-                    tmp = Slots[toSlot];
-                Slots[toSlot] = Slots[fromSlot];
-                Slots[fromSlot] = tmp;
-            }*/
-        }
-
-        // Повышение уровня
-        private void LevelUp()
-        {
-            Debug.Assert(Level < TypeHero.MaxLevel);
-
-            // Прибавляем безусловные параметры
-            if (TypeHero.ConfigNextLevel != null)
-            {
-                ParametersBase.Health += TypeHero.ConfigNextLevel.Health;
-                ParametersBase.Mana += TypeHero.ConfigNextLevel.Mana;
-                ParametersBase.Stamina += TypeHero.ConfigNextLevel.Stamina;
-
-                // Прибавляем очки характеристик
-                int t;
-                for (int i = 0; i < TypeHero.ConfigNextLevel.StatPoints; i++)
-                {
-                    t = FormMain.Rnd.Next(100);
-
-                    if (t < TypeHero.ConfigNextLevel.WeightStrength)
-                        ParametersBase.Strength++;
-                    else if (t < TypeHero.ConfigNextLevel.WeightStrength + TypeHero.ConfigNextLevel.WeightDexterity)
-                        ParametersBase.Dexterity++;
-                    else if (t < TypeHero.ConfigNextLevel.WeightStrength + TypeHero.ConfigNextLevel.WeightDexterity + TypeHero.ConfigNextLevel.WeightMagic)
-                        ParametersBase.Magic++;
-                    else
-                        ParametersBase.Vitality++;
-                }
-            }
-
-            Level++;
-        }
-
-        internal void UpdateBaseParameters()
-        {
-            ParametersBase.Health = (ParametersBase.Vitality * ParametersBase.CoefHealth) + (Level * TypeHero.ConfigNextLevel.Health);
-            ParametersBase.Mana = (ParametersBase.Magic * ParametersBase.CoefMana) + (Level * TypeHero.ConfigNextLevel.Mana);
-            ParametersBase.Stamina = (ParametersBase.Vitality * ParametersBase.CoefStamina) + (Level * TypeHero.ConfigNextLevel.Stamina);
-
-            UpdateParamsWithAmmunition();
-        }
-
-        internal void UpdateParamsWithAmmunition()
-        {
-            // Копируем базовые параметры
-            ParametersWithAmmunition.GetFromParams(ParametersBase);
+            base.UpdateParamsWithAmmunition();
 
             // Применяем амуницию
+            if ((MeleeWeapon == null) || (Armour == null))
+                return;
             Debug.Assert(MeleeWeapon != null);
             Debug.Assert(Armour != null);
 
@@ -313,33 +229,42 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert((ParametersWithAmmunition.MaxMeleeDamage > 0) || (ParametersWithAmmunition.MaxArcherDamage > 0) || (ParametersWithAmmunition.MagicDamage > 0));
         }
 
-        // Реализация интерфейса
-        VCCell ICell.Panel
+        internal void ValidateCell(int number)
         {
-            get => panelEntity;
-            set
-            {
-                //if (value == null)
-                //    Debug.Assert(panelEntity != null);
-                //else
-                //    Debug.Assert(panelEntity == null);
-
-                panelEntity = value;
-            }
+            //if ((ClassHero.Slots[number].DefaultItem != null) && (Slots[number] == null))
+            //{
+            //    Slots[number] = new PlayerItem(ClassHero.Slots[number].DefaultItem, 1, false);
+            //}
         }
-        BitmapList ICell.BitmapList() => Program.formMain.imListObjectsCell;
-        int ICell.ImageIndex() => Program.formMain.TreatImageIndex(TypeHero.ImageIndex, Player);
-        bool ICell.NormalImage() => true;
-        int ICell.Value() => Level;
-        void ICell.PrepareHint()
+
+        internal void MoveItem(int fromSlot, int toSlot)
+        {
+            /*Debug.Assert(Slots[fromSlot] != null);
+            Debug.Assert(fromSlot != toSlot);
+
+            if (Slots[fromSlot].Item.TypeItem == ClassHero.Slots[toSlot].TypeItem)
+            {
+                PlayerItem tmp = null;
+                if (Slots[toSlot] != null)
+                    tmp = Slots[toSlot];
+                Slots[toSlot] = Slots[fromSlot];
+                Slots[fromSlot] = tmp;
+            }*/
+        }
+
+        protected override int GetImageIndex()
+        {
+            return Program.formMain.TreatImageIndex(TypeHero.ImageIndex, Player);
+        }
+
+        protected override void PrepareHint()
         {
             Program.formMain.formHint.AddStep1Header(TypeHero.Name, "", TypeHero.Description);
         }
 
-        void ICell.Click(VCCell pe)
+        protected override void DoClick()
         {
             Program.formMain.SelectHero(this);
-            Program.formMain.SelectPanelEntity(pe);
         }
 
         internal int Priority()

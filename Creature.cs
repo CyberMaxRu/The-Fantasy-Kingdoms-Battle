@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -12,13 +13,84 @@ namespace Fantasy_Kingdoms_Battle
     {
         private VCCell panelEntity;
 
-        public Creature(KindCreature kc)
+        public Creature(TypeCreature tc)
         {
-            KindCreature = kc;
+            TypeCreature = tc;
+
+            if (TypeCreature.MaxLevel > 1)
+            {
+                Level = 0;
+
+                ParametersBase = new HeroParameters(TypeCreature.ParametersByHire);
+
+                // Переходим на 1 уровень
+                LevelUp();
+                ParametersWithAmmunition = new HeroParameters(ParametersBase);
+
+                //
+                UpdateBaseParameters();
+            }
+            else
+                Level = 1;
         }
 
-        internal KindCreature KindCreature { get; }
-        internal int Level { get; private set; }// Уровень
+        internal TypeCreature TypeCreature { get; }
+        internal int Level { get; private set; }// Уровень существа
+        internal HeroParameters ParametersBase { get; }// Свои параметры, без учета амуниции
+        internal HeroParameters ParametersWithAmmunition { get; }// Параметры с учетом амуниции
+
+        protected abstract void PrepareHint();
+        protected abstract int GetImageIndex();
+        protected virtual void DoClick()
+        {
+        }
+
+        // Повышение уровня
+        private void LevelUp()
+        {
+            Debug.Assert(Level < TypeCreature.MaxLevel);
+
+            // Прибавляем безусловные параметры
+            if (TypeCreature.ConfigNextLevel != null)
+            {
+                ParametersBase.Health += TypeCreature.ConfigNextLevel.Health;
+                ParametersBase.Mana += TypeCreature.ConfigNextLevel.Mana;
+                ParametersBase.Stamina += TypeCreature.ConfigNextLevel.Stamina;
+
+                // Прибавляем очки характеристик
+                int t;
+                for (int i = 0; i < TypeCreature.ConfigNextLevel.StatPoints; i++)
+                {
+                    t = FormMain.Rnd.Next(100);
+
+                    if (t < TypeCreature.ConfigNextLevel.WeightStrength)
+                        ParametersBase.Strength++;
+                    else if (t < TypeCreature.ConfigNextLevel.WeightStrength + TypeCreature.ConfigNextLevel.WeightDexterity)
+                        ParametersBase.Dexterity++;
+                    else if (t < TypeCreature.ConfigNextLevel.WeightStrength + TypeCreature.ConfigNextLevel.WeightDexterity + TypeCreature.ConfigNextLevel.WeightMagic)
+                        ParametersBase.Magic++;
+                    else
+                        ParametersBase.Vitality++;
+                }
+            }
+
+            Level++;
+        }
+
+        internal void UpdateBaseParameters()
+        {
+            ParametersBase.Health = (ParametersBase.Vitality * ParametersBase.CoefHealth) + (Level * TypeCreature.ConfigNextLevel.Health);
+            ParametersBase.Mana = (ParametersBase.Magic * ParametersBase.CoefMana) + (Level * TypeCreature.ConfigNextLevel.Mana);
+            ParametersBase.Stamina = (ParametersBase.Vitality * ParametersBase.CoefStamina) + (Level * TypeCreature.ConfigNextLevel.Stamina);
+
+            UpdateParamsWithAmmunition();
+        }
+
+        protected virtual void UpdateParamsWithAmmunition()
+        {
+            // Копируем базовые параметры
+            ParametersWithAmmunition.GetFromParams(ParametersBase);
+        }
 
         // Реализация интерфейса
         VCCell ICell.Panel
@@ -35,18 +107,18 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
         BitmapList ICell.BitmapList() => Program.formMain.imListObjectsCell;
-        int ICell.ImageIndex() => -1;// ClassHero.ImageIndex;
+        int ICell.ImageIndex() => GetImageIndex();
         bool ICell.NormalImage() => true;
         int ICell.Value() => Level;
         void ICell.PrepareHint()
         {
-            //Program.formMain.formHint.AddStep1Header(ClassHero.Name, "", ClassHero.Description);
+            PrepareHint();
         }
 
         void ICell.Click(VCCell pe)
         {
-            //Program.formMain.SelectHero(this);
             Program.formMain.SelectPanelEntity(pe);
+            DoClick();
         }
     }
 }
