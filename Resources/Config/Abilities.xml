@@ -999,7 +999,7 @@
     <ID>SkeletBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
-    <ImageIndex>-1</ImageIndex>
+    <ImageIndex>35</ImageIndex>
     <TypeAbility>MeleeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -1015,7 +1015,7 @@
     <ID>SkeletArcherBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
-    <ImageIndex>-1</ImageIndex>
+    <ImageIndex>47</ImageIndex>
     <TypeAbility>RangeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>

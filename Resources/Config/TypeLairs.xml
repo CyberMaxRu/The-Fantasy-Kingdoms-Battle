@@ -32,6 +32,29 @@
     <Line>1</Line>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <Levels>
+      <Level>
+        <Monster>
+          <ID>Skelet</ID>
+          <StartQuantity>5</StartQuantity>
+          <MaxQuantity>10</MaxQuantity>
+          <Level>5</Level>
+          <DaysRespawn>2</DaysRespawn>
+          <QuantityRespawn>1</QuantityRespawn>
+        </Monster>
+        <Monster>
+          <ID>SkeletArcher</ID>
+          <StartQuantity>5</StartQuantity>
+          <MaxQuantity>10</MaxQuantity>
+          <Level>5</Level>
+          <DaysRespawn>2</DaysRespawn>
+          <QuantityRespawn>1</QuantityRespawn>
+        </Monster>
+        <Reward>
+          <Gold>500</Gold>
+        </Reward>
+      </Level>
+    </Levels>
   </TypeLair>
   <TypeLair>
     <ID>Crypt</ID>
