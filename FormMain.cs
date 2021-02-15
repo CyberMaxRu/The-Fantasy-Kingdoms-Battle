@@ -151,6 +151,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly int leftForPages;
         private readonly int heightBandBuildings;
         private readonly int heightBandInfoAndMenu;
+        private readonly VisualControl panelEmptyInfo;
         private readonly PanelBuildingInfo panelBuildingInfo;
         private readonly PanelLairInfo panelLairInfo;
         private readonly PanelHeroInfo panelHeroInfo;
@@ -445,6 +446,10 @@ namespace Fantasy_Kingdoms_Battle
                 for (int x = 0; x < PANEL_MENU_CELLS.Width; x++)
                     CellsMenu[y, x] = new VCMenuCell(bitmapMenu, DISTANCE_BETWEEN_CELLS + (x * (ilItems.Size + DISTANCE_BETWEEN_CELLS)), DISTANCE_BETWEEN_CELLS + (y * (ilItems.Size + DISTANCE_BETWEEN_CELLS)), ilItems);
 
+            // Пустая панель
+            panelEmptyInfo = new VisualControl(MainControl, 0, btnQuit.NextTop());
+            panelEmptyInfo.ShowBorder = true;
+
             // Панель информации о здании
             panelBuildingInfo = new PanelBuildingInfo(MainControl, 0, btnQuit.NextTop(), bitmapMenu.ShiftY - pageGuilds.NextTop() - Config.GridSize)
             {
@@ -465,7 +470,8 @@ namespace Fantasy_Kingdoms_Battle
 
             // Подбираем ширину правой части
             panelBuildingInfo.Width = panelHeroInfo.Width;
-            panelLairInfo.Width = panelBuildingInfo.Width;
+            panelLairInfo.Width = panelHeroInfo.Width;
+            panelEmptyInfo.Width = panelHeroInfo.Width;
             int widthRightPanel = Math.Max(bitmapMenu.Width, panelHeroInfo.Width);
             //Debug.Assert(widthRightPanel > panelMenu.Width);
 
@@ -498,6 +504,7 @@ namespace Fantasy_Kingdoms_Battle
             panelBuildingInfo.Height = ClientSize.Height - panelBuildingInfo.Top - bitmapMenu.Height - (Config.GridSize * 2);
             panelLairInfo.Height = panelBuildingInfo.Height;
             panelHeroInfo.Height = panelBuildingInfo.Height;
+            panelEmptyInfo.Height = panelBuildingInfo.Height;
 
             SetStage("Прибираем после строителей");
             // Перенести в класс
@@ -838,6 +845,7 @@ namespace Fantasy_Kingdoms_Battle
             panelBuildingInfo.ShiftX = shiftControls.X + leftForPages + maxWidthPages;
             panelLairInfo.ShiftX = panelBuildingInfo.ShiftX;
             panelHeroInfo.ShiftX = panelBuildingInfo.ShiftX;
+            panelEmptyInfo.ShiftX = panelBuildingInfo.ShiftX;
 
             btnEndTurn.ShiftX = panelBuildingInfo.ShiftX - btnEndTurn.Width - Config.GridSize;
             btnTarget.ShiftX = btnEndTurn.ShiftX - btnTarget.Width - Config.GridSize;
@@ -1155,6 +1163,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (SelectedPanelBuilding != pb)
             {
+                if (panelEmptyInfo.Visible)
+                    panelEmptyInfo.Visible = false;
                 if (SelectedHero != null)
                     SelectHero(null);
                 if (SelectedPanelLair != null)
@@ -1185,6 +1195,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (SelectedPanelLair != pl)
             {
+                if (panelEmptyInfo.Visible)
+                    panelEmptyInfo.Visible = false;
                 if (SelectedHero != null)
                     SelectHero(null);
                 if (SelectedPanelBuilding != null)
@@ -1214,6 +1226,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (SelectedHero != ph)
             {
+                if (panelEmptyInfo.Visible)
+                    panelEmptyInfo.Visible = false;
                 if (SelectedPanelBuilding != null)
                     SelectBuilding(null);
                 if (SelectedPanelLair != null)
