@@ -34,7 +34,7 @@ namespace Fantasy_Kingdoms_Battle
         protected override void DoClick()
         {
             Program.formMain.formHint.AddStep1Header(TypeMonster.Name, "", TypeMonster.Description);
-            //Program.formMain.Select Hero(this);
+            Program.formMain.SelectMonster(this);
         }
     }
 }

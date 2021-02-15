@@ -155,6 +155,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly PanelBuildingInfo panelBuildingInfo;
         private readonly PanelLairInfo panelLairInfo;
         private readonly PanelHeroInfo panelHeroInfo;
+        private readonly PanelMonsterInfo panelMonsterInfo;
         internal VCCell SelectedPanelEntity;
         private readonly List<PanelConstruction> listPanelBuildings = new List<PanelConstruction>();
 
@@ -165,6 +166,7 @@ namespace Fantasy_Kingdoms_Battle
         internal PanelConstruction SelectedPanelBuilding { get; private set; }
         internal PanelLair SelectedPanelLair { get; private set; }
         internal PlayerHero SelectedHero { get; private set; }
+        internal Monster SelectedMonster { get; private set; }
         internal int ImageIndexFirstAvatar { get; }
 
         internal static Random Rnd = new Random();
@@ -468,9 +470,15 @@ namespace Fantasy_Kingdoms_Battle
                 Visible = false
             };
 
+            panelMonsterInfo = new PanelMonsterInfo(MainControl, 0, btnQuit.NextTop(), panelBuildingInfo.Height)
+            {
+                Visible = false
+            };
+
             // Подбираем ширину правой части
             panelBuildingInfo.Width = panelHeroInfo.Width;
             panelLairInfo.Width = panelHeroInfo.Width;
+            panelMonsterInfo.Width = panelHeroInfo.Width;
             panelEmptyInfo.Width = panelHeroInfo.Width;
             int widthRightPanel = Math.Max(bitmapMenu.Width, panelHeroInfo.Width);
             //Debug.Assert(widthRightPanel > panelMenu.Width);
@@ -504,6 +512,7 @@ namespace Fantasy_Kingdoms_Battle
             panelBuildingInfo.Height = ClientSize.Height - panelBuildingInfo.Top - bitmapMenu.Height - (Config.GridSize * 2);
             panelLairInfo.Height = panelBuildingInfo.Height;
             panelHeroInfo.Height = panelBuildingInfo.Height;
+            panelMonsterInfo.Height = panelBuildingInfo.Height;
             panelEmptyInfo.Height = panelBuildingInfo.Height;
 
             SetStage("Прибираем после строителей");
@@ -845,6 +854,7 @@ namespace Fantasy_Kingdoms_Battle
             panelBuildingInfo.ShiftX = shiftControls.X + leftForPages + maxWidthPages;
             panelLairInfo.ShiftX = panelBuildingInfo.ShiftX;
             panelHeroInfo.ShiftX = panelBuildingInfo.ShiftX;
+            panelMonsterInfo.ShiftX = panelBuildingInfo.ShiftX;
             panelEmptyInfo.ShiftX = panelBuildingInfo.ShiftX;
 
             btnEndTurn.ShiftX = panelBuildingInfo.ShiftX - btnEndTurn.Width - Config.GridSize;
@@ -1167,6 +1177,8 @@ namespace Fantasy_Kingdoms_Battle
                     panelEmptyInfo.Visible = false;
                 if (SelectedHero != null)
                     SelectHero(null);
+                if (SelectedMonster != null)
+                    SelectMonster(null);
                 if (SelectedPanelLair != null)
                     SelectLair(null);
 
@@ -1199,6 +1211,8 @@ namespace Fantasy_Kingdoms_Battle
                     panelEmptyInfo.Visible = false;
                 if (SelectedHero != null)
                     SelectHero(null);
+                if (SelectedMonster != null)
+                    SelectMonster(null);
                 if (SelectedPanelBuilding != null)
                     SelectBuilding(null);
 
@@ -1222,12 +1236,49 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        internal void SelectMonster(Monster m)
+        {
+            if (SelectedMonster != m)
+            {
+                if (panelEmptyInfo.Visible)
+                    panelEmptyInfo.Visible = false;
+                if (SelectedHero != null)
+                    SelectHero(null);
+                if (SelectedPanelBuilding != null)
+                    SelectBuilding(null);
+                if (SelectedPanelLair != null)
+                    SelectLair(null);
+
+                Monster oldSelected = SelectedMonster;
+                SelectedMonster = m;
+
+                //SelectedPanelEntity = null;
+
+                //if (oldSelected != null)
+                //    ((ICell)oldSelected).Panel.Invalidate(true);
+                if (SelectedMonster != null)
+                {
+                    panelMonsterInfo.Monster = SelectedMonster;
+                    //SelectedPanelEntity = ((ICell)SelectedHero).Panel;
+                    //   ((ICell)SelectedHero).Panel.Invalidate(true);
+                    panelMonsterInfo.Visible = true;
+                }
+                else
+                    panelMonsterInfo.Visible = false;
+
+                ShowFrame();
+
+            }
+        }
+
         internal void SelectHero(PlayerHero ph)
         {
             if (SelectedHero != ph)
             {
                 if (panelEmptyInfo.Visible)
                     panelEmptyInfo.Visible = false;
+                if (SelectedMonster != null)
+                    SelectMonster(null);
                 if (SelectedPanelBuilding != null)
                     SelectBuilding(null);
                 if (SelectedPanelLair != null)
