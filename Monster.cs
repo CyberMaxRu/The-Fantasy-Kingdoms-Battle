@@ -9,20 +9,20 @@ using System.Diagnostics;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс монстра в логове
-    internal sealed class LairMonster : ICell
+    internal sealed class Monster : ICell
     {
         private VCCell panelEntity;
 
-        public LairMonster(TypeMonster m, int level)
+        public Monster(TypeMonster m, int level)
         {
             Debug.Assert(m != null);
             Debug.Assert(level > 0);
 
-            Monster = m;
+            TypeMonster = m;
 
         }
 
-        internal TypeMonster Monster { get; }
+        internal TypeMonster TypeMonster { get; }
 
         // Реализация интерфейса
         VCCell ICell.Panel
@@ -39,12 +39,12 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
         BitmapList ICell.BitmapList() => Program.formMain.imListObjectsCell;
-        int ICell.ImageIndex() => Monster.ImageIndex;
+        int ICell.ImageIndex() => TypeMonster.ImageIndex;
         bool ICell.NormalImage() => true;
         int ICell.Value() => 1;
         void ICell.PrepareHint()
         {
-            Program.formMain.formHint.AddStep1Header(Monster.Name, "", Monster.Description);
+            Program.formMain.formHint.AddStep1Header(TypeMonster.Name, "", TypeMonster.Description);
         }
 
         void ICell.Click(VCCell pe)
