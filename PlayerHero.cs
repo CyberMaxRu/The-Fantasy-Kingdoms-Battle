@@ -19,9 +19,6 @@ namespace Fantasy_Kingdoms_Battle
             DayOfHire = Player.Lobby.Turn;
             TypeHero = pb.Building.TrainedHero;
 
-            // Применяем дефолтные способности
-            Abilities.AddRange(TypeHero.Abilities);
-
             // Берем оружие и доспехи
             MeleeWeapon = TypeHero.WeaponMelee;
             RangeWeapon = TypeHero.WeaponRange;
@@ -36,9 +33,7 @@ namespace Fantasy_Kingdoms_Battle
         internal Weapon MeleeWeapon { get; private set; }// Рукопашное оружие 
         internal Weapon RangeWeapon { get; private set; }// Стрелковое оружие 
         internal Armour Armour { get; private set; }// Доспех
-        internal List<PlayerItem> Inventory { get; } = new List<PlayerItem>();
         internal Point CoordInPlayer { get; set; }// Координаты героя в слотах игрока
-        internal List<Ability> Abilities { get; } = new List<Ability>();// Cпособности
 
         // Статистика за лобби
         internal int DayOfHire { get; }// На каком дне нанят

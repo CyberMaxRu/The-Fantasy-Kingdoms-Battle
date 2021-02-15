@@ -5,13 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Diagnostics;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    // Класс подробной информации о герое
-    internal sealed class PanelHeroInfo : PanelCreatureInfo
+    internal class PanelCreatureInfo : PanelBaseInfo
     {
-        private PlayerHero hero;
+        private Creature creature;
         private readonly VCLabel lblKindHero;
         private readonly Label lblLevel;
         private readonly Label lblHealth;
@@ -30,20 +30,33 @@ namespace Fantasy_Kingdoms_Battle
         private readonly Label lblDefenseMagic;
         private readonly Button btnDismiss;
 
+        private readonly PanelWithPanelEntity panelInventory;
+        private readonly PanelWithPanelEntity panelAbilities;
+        private VCCell panelWeapon;
+        private VCCell panelArmour;
         internal List<VCCell> slots { get; } = new List<VCCell>();
 
-        public PanelHeroInfo(VisualControl parent, int shiftX, int shiftY, int height) : base(parent, shiftX, shiftY, height)
+        public PanelCreatureInfo(VisualControl parent, int shiftX, int shiftY, int height) : base(parent, shiftX, shiftY, height)
         {
-            btnDismiss = new Button()
-            {
-                //Parent = this,
-                Left = LeftAfterIcon(),
-                Top = TopForIcon(),
-                //ImageList = Program.formMain.ilGui,
-                ImageIndex = FormMain.GUI_DISMISS
-                //Size = GuiUtils.SizeButtonWithImage(Program.formMain.ilGui)
-            };
-            btnDismiss.Click += BtnDismiss_Click;
+            panelInventory = new PanelWithPanelEntity(4);
+            panelAbilities = new PanelWithPanelEntity(4);
+
+            lblKindHero = new VCLabel(this, FormMain.Config.GridSize, TopForControls(), FormMain.Config.FontCaptionPage, FormMain.Config.CommonCaptionPage, 16, "");
+            lblKindHero.StringFormat.Alignment = StringAlignment.Near;
+
+            panelWeapon = new VCCell(this, FormMain.Config.GridSize, lblKindHero.NextTop());
+            panelArmour = new VCCell(this, panelWeapon.NextLeft(), panelWeapon.ShiftY);
+
+            pageControl.ShiftY = panelWeapon.NextTop();
+            pageControl.AddTab("Статистика", FormMain.GUI_SCROLL, null);
+            pageControl.AddTab("Инвентарь", FormMain.GUI_INVENTORY, panelInventory);
+            pageControl.AddTab("Способности", FormMain.GUI_TARGET, panelAbilities);
+            pageControl.AddTab("История", FormMain.GUI_BOOK, null);
+
+            pageControl.ApplyMinWidth();
+            Width = pageControl.Width + FormMain.Config.GridSize * 2;
+
+            lblKindHero.Width = Width;
 
             return;
             /*lblLevel = GuiUtils.CreateLabel(this, Config.GRID_SIZE, TopForControls());
@@ -81,33 +94,38 @@ namespace Fantasy_Kingdoms_Battle
             }*/
         }
 
-        internal PlayerHero Hero
+        internal Creature Creature
         {
-            get { return hero; }
+            get { return creature; }
             set
             {
-                hero = value;
+                creature = value;
                 ShowData();
             }
         }
 
-        private void BtnDismiss_Click(object sender, EventArgs e)
+        internal override void ArrangeControls()
         {
-            if (MessageBox.Show("Уволить героя?", "FKB", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                Hero.Dismiss();
-                Hero = null;
+            base.ArrangeControls();
 
-                Program.formMain.ShowFrame();
-            }
+            pageControl.Height = Height - pageControl.ShiftY - FormMain.Config.GridSize;
+            lblKindHero.Width = Width - (lblKindHero.ShiftX * 2);
         }
 
         internal void ShowData()
         {
             //base.ShowData();
 
+            lblKindHero.Text = creature.TypeCreature.KindCreature.Name;
+
+            //panelWeapon.ShowCell(hero.RangeWeapon != null ? hero.RangeWeapon : hero.MeleeWeapon);
+            //panelArmour.ShowCell(hero.Armour);
+
+            panelInventory.ApplyList(creature.Inventory);
+            panelAbilities.ApplyList(creature.Abilities);
+
             return;
-            /*if (Hero != null)
+/*            if (creature != null)
             {
                 Visible = true;
 
@@ -145,9 +163,12 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        //sprotected image
+
         protected override BitmapList GetBitmapList() => Program.formMain.imListObjectsBig;
-        protected override int GetImageIndex() => Program.formMain.TreatImageIndex(hero.TypeHero.ImageIndex, hero.Player);
+        protected override int GetImageIndex() => creature.TypeCreature.ImageIndex;
+//        protected override int GetImageIndex() => Program.formMain.TreatImageIndex(creature.TypeCreature.ImageIndex, creature.TypeCreature.Player);
         protected override ImageState GetImageState() => ImageState.Normal;
-        protected override string GetCaption() => hero.TypeHero.Name;
+        protected override string GetCaption() => creature.TypeCreature.Name;
     }
 }

@@ -62,6 +62,7 @@
     <Compile Include="Battlefield.cs" />
     <Compile Include="BattlefieldTile.cs" />
     <Compile Include="BitmapList.cs" />
+    <Compile Include="PanelCreatureInfo.cs" />
     <Compile Include="Source\Panels\PanelPlayer.cs" />
     <Compile Include="Source\VisualControls\VCTabButton.cs" />
     <Compile Include="TypeEconomicConstruction.cs" />
