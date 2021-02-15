@@ -1392,7 +1392,7 @@ namespace Fantasy_Kingdoms_Battle
             needRedrawFrame = false;
 
             DrawFrame();// Готовим кадр
-            if (controlWithHint != null)
+            if ((controlWithHint != null) && (controlWithHint != MainControl))
             {
                 Pen p = new Pen(Color.Red);
                 gfxFrame.DrawRectangle(p, controlWithHint.Rectangle);
