@@ -135,6 +135,10 @@ namespace Fantasy_Kingdoms_Battle
 
         protected void ArrangeControl(VisualControl vc)
         {
+            // Надобности вроде особой неты
+            //Debug.Assert(Height > 0);
+            //Debug.Assert(Width > 0);
+
             vc.Left = Left + vc.ShiftX;
             vc.Top = Top + vc.ShiftY;
 
