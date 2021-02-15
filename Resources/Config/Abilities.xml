@@ -1015,7 +1015,7 @@
     <ID>SkeletArcherBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
-    <ImageIndex>47</ImageIndex>
+    <ImageIndex>48</ImageIndex>
     <TypeAbility>RangeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
