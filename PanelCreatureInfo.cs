@@ -100,7 +100,6 @@ namespace Fantasy_Kingdoms_Battle
             set
             {
                 creature = value;
-                ShowData();
             }
         }
 
@@ -112,10 +111,8 @@ namespace Fantasy_Kingdoms_Battle
             lblKindHero.Width = Width - (lblKindHero.ShiftX * 2);
         }
 
-        internal void ShowData()
+        internal override void Draw(Graphics g)
         {
-            //base.ShowData();
-
             lblKindHero.Text = creature.TypeCreature.KindCreature.Name;
 
             //panelWeapon.ShowCell(hero.RangeWeapon != null ? hero.RangeWeapon : hero.MeleeWeapon);
@@ -124,7 +121,8 @@ namespace Fantasy_Kingdoms_Battle
             panelInventory.ApplyList(creature.Inventory);
             panelAbilities.ApplyList(creature.Abilities);
 
-            return;
+            base.Draw(g);
+            
 /*            if (creature != null)
             {
                 Visible = true;

@@ -20,7 +20,6 @@ namespace Fantasy_Kingdoms_Battle
             {
                 monster = value;
                 Creature = monster;
-                ShowData();
             }
         }
     }
