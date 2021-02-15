@@ -981,9 +981,9 @@
   </Ability>
   <Ability>
     <ID>ZombieBasicAttack</ID>
-    <Name>Удар</Name>
+    <Name>Укус</Name>
     <Description>- Наносит малый урон</Description>
-    <ImageIndex>-1</ImageIndex>
+    <ImageIndex>96</ImageIndex>
     <TypeAbility>MeleeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
