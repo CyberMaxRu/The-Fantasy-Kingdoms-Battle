@@ -9,48 +9,32 @@ using System.Diagnostics;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс монстра в логове
-    internal sealed class Monster : ICell
+    internal sealed class Monster : Creature
     {
-        private VCCell panelEntity;
-
-        public Monster(TypeMonster m, int level)
+        public Monster(TypeMonster tm, int level) : base(tm)
         {
-            Debug.Assert(m != null);
+            Debug.Assert(tm != null);
             Debug.Assert(level > 0);
 
-            TypeMonster = m;
-
+            TypeMonster = tm;
         }
 
         internal TypeMonster TypeMonster { get; }
 
-        // Реализация интерфейса
-        VCCell ICell.Panel
+        protected override int GetImageIndex()
         {
-            get => panelEntity;
-            set
-            {
-                //if (value == null)
-                //    Debug.Assert(panelEntity != null);
-                //else
-                //    Debug.Assert(panelEntity == null);
-
-                panelEntity = value;
-            }
+            return TypeMonster.ImageIndex;
         }
-        BitmapList ICell.BitmapList() => Program.formMain.imListObjectsCell;
-        int ICell.ImageIndex() => TypeMonster.ImageIndex;
-        bool ICell.NormalImage() => true;
-        int ICell.Value() => 1;
-        void ICell.PrepareHint()
+
+        protected override void PrepareHint()
         {
             Program.formMain.formHint.AddStep1Header(TypeMonster.Name, "", TypeMonster.Description);
         }
 
-        void ICell.Click(VCCell pe)
+        protected override void DoClick()
         {
-            //Program.formMain.SelectHero(this);
-            //Program.formMain.SelectPanelEntity(pe);
+            Program.formMain.formHint.AddStep1Header(TypeMonster.Name, "", TypeMonster.Description);
+            //Program.formMain.Select Hero(this);
         }
     }
 }
