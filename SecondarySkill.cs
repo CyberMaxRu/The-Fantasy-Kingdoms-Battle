@@ -20,9 +20,9 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override void DoPrepareHint()
         {
-            Program.formMain.formHint.AddStep1Header(Name, "Вторичный навык", Description);
+            Program.formMain.formHint.AddStep1Header(Name, "Начальный уровень", Description);
         }
 
-        protected override int GetValue() => 0;
+        protected override int GetValue() => 1;
     }
 }
