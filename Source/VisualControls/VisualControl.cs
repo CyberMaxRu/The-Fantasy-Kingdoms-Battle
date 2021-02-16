@@ -133,8 +133,13 @@ namespace Fantasy_Kingdoms_Battle
             return this;
         }
 
-        protected void ArrangeControl(VisualControl vc)
+        internal void ArrangeControl(VisualControl vc, bool checkInList = true)
         {
+            if (checkInList)
+            {
+                Debug.Assert(Controls.IndexOf(vc) != -1);
+            }
+
             // Надобности вроде особой неты
             //Debug.Assert(Height > 0);
             //Debug.Assert(Width > 0);

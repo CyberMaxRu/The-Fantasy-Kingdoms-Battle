@@ -49,7 +49,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Page.ShiftX = listPages[0].ShiftX - listPages[indexInList].ShiftX;
             Page.ShiftY = Height + FormMain.Config.GridSize;
-            ArrangeControl(Page);
+            ArrangeControl(Page, false);
 
             lblCaption.Width = Page.Width;
         }
