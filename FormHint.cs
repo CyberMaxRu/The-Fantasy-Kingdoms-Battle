@@ -239,6 +239,11 @@ namespace Fantasy_Kingdoms_Battle
 
         private void TimerDelayShow_Tick(object sender, EventArgs e)
         {
+            TimerTick();
+        }
+
+        private void TimerTick()
+        {
             timerDelayShow.Enabled = false;
             Opacity = 0.8;
         }
@@ -303,6 +308,12 @@ namespace Fantasy_Kingdoms_Battle
 
                 nextTop = GuiUtils.NextTop(lblIncome);
             }
+        }
+        internal void AddStep3Requirement(string notEnoughrequirement)
+        {
+            List<TextRequirement> r = new List<TextRequirement>();
+            r.Add(new TextRequirement(false, notEnoughrequirement));
+            AddStep3Requirement(r);
         }
 
         internal void AddStep3Requirement(List<TextRequirement> requirement)
@@ -431,7 +442,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void ShowHint(VisualControl c)
+        internal void ShowHint(VisualControl c, bool delayShow = true)
         {
             if (!ExistHint)
                 return;
@@ -459,6 +470,9 @@ namespace Fantasy_Kingdoms_Battle
                 timerDelayShow.Enabled = true;
                 Opacity = 0;
                 Show();
+
+                if (!delayShow)
+                    TimerTick();
             }
         }
 

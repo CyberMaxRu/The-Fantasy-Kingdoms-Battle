@@ -771,7 +771,10 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnEndTurn_MouseHover(object sender, EventArgs e)
         {
-            ShowHintForToolButton(btnEndTurn, "Конец хода", "Завершение хода");
+            formHint.Clear();
+            formHint.AddStep1Header("Конец хода", "", "Завершение хода");
+            formHint.AddStep3Requirement("Не выбрано логово для атаки");
+            formHint.ShowHint(btnEndTurn);
         }
 
         private void LabelGold_MouseHover(object sender, EventArgs e)
