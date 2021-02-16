@@ -90,6 +90,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void TuneDeferredLinks()
         {
+            base.TuneDeferredLinks();
+
             // Загружаем дефолтное оружие и доспехи
             if (nameMeleeWeapon.Length > 0)
             {

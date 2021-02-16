@@ -80,6 +80,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void TuneDeferredLinks()
         {
+            base.TuneDeferredLinks();
             /*foreach (Ability a in Abilities)
                 if (a.ClassesHeroes.IndexOf(this) == -1)
                     throw new Exception("Класс героя " + ID + " отсутствует в списке доступных для способности " + a.ID);

@@ -166,8 +166,8 @@ namespace Fantasy_Kingdoms_Battle
             foreach (GroupArmour ga in GroupArmours)
                 ga.TuneDeferredLinks();
 
-            foreach (TypeHero h in TypeHeroes)
-                h.TuneDeferredLinks();
+            foreach (TypeCreature tc in TypeCreatures)
+                tc.TuneDeferredLinks();
 
             foreach (TypeMapObject tc in TypeConstructions)
                 tc.TuneDeferredLinks();
