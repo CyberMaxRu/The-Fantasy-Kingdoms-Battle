@@ -590,7 +590,8 @@ namespace Fantasy_Kingdoms_Battle
         private void BtnTarget_Click(object sender, EventArgs e)
         {
             ActivatePage(pageLairs);
-            SelectLair(lobby.CurrentPlayer.TargetLair.Lair.Panel);
+            if (lobby.CurrentPlayer.TargetLair != null)
+                SelectLair(lobby.CurrentPlayer.TargetLair.Lair.Panel);
         }
 
         private void BtnTarget_MouseHover(object sender, EventArgs e)
