@@ -87,6 +87,7 @@ namespace Fantasy_Kingdoms_Battle
             set
             {
                 hero = value;
+                Creature = hero;
                 ShowData();
             }
         }

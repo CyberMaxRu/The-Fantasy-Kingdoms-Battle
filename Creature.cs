@@ -19,6 +19,7 @@ namespace Fantasy_Kingdoms_Battle
 
             // Применяем дефолтные способности
             Abilities.AddRange(TypeCreature.Abilities);
+            Specialization = FormMain.Config.FindSpecialization("SpeedMove");
 
             if (TypeCreature.MaxLevel > 1)
             {
@@ -41,6 +42,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int Level { get; private set; }// Уровень существа
         internal HeroParameters ParametersBase { get; }// Свои параметры, без учета амуниции
         internal HeroParameters ParametersWithAmmunition { get; }// Параметры с учетом амуниции
+        internal Specialization Specialization { get; }// Специализация
         internal List<PlayerItem> Inventory { get; } = new List<PlayerItem>();
         internal List<Ability> Abilities { get; } = new List<Ability>();// Cпособности
 

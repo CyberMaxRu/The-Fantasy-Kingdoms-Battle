@@ -32,6 +32,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private readonly PanelWithPanelEntity panelInventory;
         private readonly PanelWithPanelEntity panelAbilities;
+        private VCCell panelSpecialization;
         private VCCell panelWeapon;
         private VCCell panelArmour;
         internal List<VCCell> slots { get; } = new List<VCCell>();
@@ -44,6 +45,7 @@ namespace Fantasy_Kingdoms_Battle
             lblKindHero = new VCLabel(this, FormMain.Config.GridSize, TopForControls(), FormMain.Config.FontCaptionPage, FormMain.Config.CommonCaptionPage, 16, "");
             lblKindHero.StringFormat.Alignment = StringAlignment.Near;
 
+            panelSpecialization = new VCCell(this, imgIcon.NextLeft(), imgIcon.ShiftY);
             panelWeapon = new VCCell(this, FormMain.Config.GridSize, lblKindHero.NextTop());
             panelArmour = new VCCell(this, panelWeapon.NextLeft(), panelWeapon.ShiftY);
 
@@ -114,6 +116,8 @@ namespace Fantasy_Kingdoms_Battle
         internal override void Draw(Graphics g)
         {
             lblKindHero.Text = creature.TypeCreature.KindCreature.Name;
+
+            panelSpecialization.ShowCell(Creature.Specialization);// ImageIndex = creature.Specialization != null ? creature.Specialization.ImageIndex : -1;
 
             //panelWeapon.ShowCell(hero.RangeWeapon != null ? hero.RangeWeapon : hero.MeleeWeapon);
             //panelArmour.ShowCell(hero.Armour);

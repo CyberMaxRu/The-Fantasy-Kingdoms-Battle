@@ -108,6 +108,14 @@ namespace Fantasy_Kingdoms_Battle
                 Abilities.Add(new Ability(n));
             }
 
+            // Загрузка конфигурации специализаций
+            xmlDoc = CreateXmlDocument(@"Config\Specializations.xml");
+
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Specializations/Specialization"))
+            {
+                Specializations.Add(new Specialization(n));
+            }
+
             // Загрузка конфигурации типов существ
             xmlDoc = CreateXmlDocument("Config\\KindCreatures.xml");
 
@@ -148,6 +156,9 @@ namespace Fantasy_Kingdoms_Battle
             // Настраиваем связи
             foreach (Ability a in Abilities)
                 a.TuneDeferredLinks();
+
+            foreach (Specialization s in Specializations)
+                s.TuneDeferredLinks();
 
             foreach (GroupWeapon gw in GroupWeapons)
                 gw.TuneDeferredLinks();
@@ -195,6 +206,7 @@ namespace Fantasy_Kingdoms_Battle
 
         //
         internal List<Ability> Abilities { get; } = new List<Ability>();
+        internal List<Specialization> Specializations { get; } = new List<Specialization>();
         internal List<KindCreature> KindCreatures { get; } = new List<KindCreature>();
         internal List<TypeCitizen> TypeCitizens { get; } = new List<TypeCitizen>();
         internal List<TypeHero> TypeHeroes { get; } = new List<TypeHero>();
@@ -380,6 +392,17 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             throw new Exception("Способность " + ID + " не найдена.");
+        }
+
+        internal Specialization FindSpecialization(string ID)
+        {
+            foreach (Specialization s in Specializations)
+            {
+                if (s.ID == ID)
+                    return s;
+            }
+
+            throw new Exception("Специализация " + ID + " не найдена.");
         }
 
         internal TypeCreature FindTypeCreature(string ID)

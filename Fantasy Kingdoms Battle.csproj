@@ -66,6 +66,7 @@
     <Compile Include="PanelMonsterInfo.cs" />
     <Compile Include="Source\Panels\PanelPlayer.cs" />
     <Compile Include="Source\VisualControls\VCTabButton.cs" />
+    <Compile Include="Specialization.cs" />
     <Compile Include="TypeEconomicConstruction.cs" />
     <Compile Include="TypeCitizen.cs" />
     <Compile Include="Creature.cs" />
@@ -198,6 +199,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Config\Specializations.xml" />
     <Content Include="Resources\Config\TypeCitizens.xml" />
     <Content Include="Resources\Config\TypeGuilds.xml" />
     <Content Include="Resources\Config\TypeLairs.xml" />
