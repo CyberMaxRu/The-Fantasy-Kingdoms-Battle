@@ -74,16 +74,16 @@ namespace Fantasy_Kingdoms_Battle
 
             // Здесь расчет хода для ИИ
             // Покупаем четыре гильдии и строим 16 героев. На этом пока всё
-            GetPlayerBuilding(FormMain.Config.FindTypeEconomicConstruction("GuildWarrior")).BuyOrUpgrade();
-            GetPlayerBuilding(FormMain.Config.FindTypeEconomicConstruction("GuildRogue")).BuyOrUpgrade();
-            GetPlayerBuilding(FormMain.Config.FindTypeEconomicConstruction("GuildHunter")).BuyOrUpgrade();
-            GetPlayerBuilding(FormMain.Config.FindTypeEconomicConstruction("GuildCleric")).BuyOrUpgrade();
-            GetPlayerBuilding(FormMain.Config.FindTypeEconomicConstruction("GuildMage")).BuyOrUpgrade();
+            GetPlayerBuilding(FormMain.Config.FindTypeGuild("GuildWarrior")).BuyOrUpgrade();
+            GetPlayerBuilding(FormMain.Config.FindTypeGuild("GuildRogue")).BuyOrUpgrade();
+            GetPlayerBuilding(FormMain.Config.FindTypeGuild("GuildHunter")).BuyOrUpgrade();
+            GetPlayerBuilding(FormMain.Config.FindTypeGuild("GuildCleric")).BuyOrUpgrade();
+            GetPlayerBuilding(FormMain.Config.FindTypeGuild("GuildMage")).BuyOrUpgrade();
 
-            HireAllHero(GetPlayerBuilding(FormMain.Config.FindTypeEconomicConstruction("GuildWarrior")));
-            HireAllHero(GetPlayerBuilding(FormMain.Config.FindTypeEconomicConstruction("GuildHunter")));
-            HireAllHero(GetPlayerBuilding(FormMain.Config.FindTypeEconomicConstruction("GuildCleric")));
-            HireAllHero(GetPlayerBuilding(FormMain.Config.FindTypeEconomicConstruction("GuildMage")));
+            HireAllHero(GetPlayerBuilding(FormMain.Config.FindTypeGuild("GuildWarrior")));
+            HireAllHero(GetPlayerBuilding(FormMain.Config.FindTypeGuild("GuildHunter")));
+            HireAllHero(GetPlayerBuilding(FormMain.Config.FindTypeGuild("GuildCleric")));
+            HireAllHero(GetPlayerBuilding(FormMain.Config.FindTypeGuild("GuildMage")));
 
             void HireAllHero(PlayerBuilding bp)
             {

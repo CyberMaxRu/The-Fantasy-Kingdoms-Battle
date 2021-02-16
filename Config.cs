@@ -339,6 +339,17 @@ namespace Fantasy_Kingdoms_Battle
             throw new Exception("Экономическое сооружение " + ID + " не найдено.");
         }
 
+        internal TypeGuild FindTypeGuild(string ID)
+        {
+            foreach (TypeGuild tg in TypeGuilds)
+            {
+                if (tg.ID == ID)
+                    return tg;
+            }
+
+            throw new Exception("Экономическое сооружение " + ID + " не найдено.");
+        }
+
         internal TypeHero FindTypeHero(string ID)
         {
             foreach (TypeHero th in TypeHeroes)
