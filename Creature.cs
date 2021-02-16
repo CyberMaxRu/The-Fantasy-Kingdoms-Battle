@@ -20,6 +20,7 @@ namespace Fantasy_Kingdoms_Battle
             // Применяем дефолтные способности
             Abilities.AddRange(TypeCreature.Abilities);
             Specialization = FormMain.Config.FindSpecialization("SpeedMove");
+            SecondarySkills.Add(FormMain.Config.FindSecondarySkill("Health"));
 
             // Берем оружие и доспехи
             MeleeWeapon = TypeCreature.WeaponMelee;
@@ -48,6 +49,7 @@ namespace Fantasy_Kingdoms_Battle
         internal HeroParameters ParametersBase { get; }// Свои параметры, без учета амуниции
         internal HeroParameters ParametersWithAmmunition { get; }// Параметры с учетом амуниции
         internal Specialization Specialization { get; }// Специализация
+        internal List<SecondarySkill> SecondarySkills { get; } = new List<SecondarySkill>();
         internal List<PlayerItem> Inventory { get; } = new List<PlayerItem>();
         internal List<Ability> Abilities { get; } = new List<Ability>();// Cпособности
         internal Weapon MeleeWeapon { get; private set; }// Рукопашное оружие 

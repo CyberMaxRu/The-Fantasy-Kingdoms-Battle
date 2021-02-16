@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SecondarySkills>
+  <SecondarySkill>
+    <ID>Health</ID>
+    <Name>Здоровье</Name>
+    <ImageIndex>98</ImageIndex>
+    <Description>Здоровье увеличено на 10%</Description>    
+  </SecondarySkill>
+</SecondarySkills>

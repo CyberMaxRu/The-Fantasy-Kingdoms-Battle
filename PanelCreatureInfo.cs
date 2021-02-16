@@ -30,8 +30,10 @@ namespace Fantasy_Kingdoms_Battle
         private readonly Label lblDefenseMagic;
         private readonly Button btnDismiss;
 
+        private readonly VisualControl panelAbilitiesAndSecSkills;
         private readonly PanelWithPanelEntity panelInventory;
         private readonly PanelWithPanelEntity panelAbilities;
+        private readonly PanelWithPanelEntity panelSecondarySkills;
         private VCCell panelSpecialization;
         private VCCell panelWeapon;
         private VCCell panelArmour;
@@ -39,8 +41,10 @@ namespace Fantasy_Kingdoms_Battle
 
         public PanelCreatureInfo(VisualControl parent, int shiftX, int shiftY, int height) : base(parent, shiftX, shiftY, height)
         {
+            panelAbilitiesAndSecSkills = new VisualControl();
             panelInventory = new PanelWithPanelEntity(4);
             panelAbilities = new PanelWithPanelEntity(4);
+            panelSecondarySkills = new PanelWithPanelEntity(4);
 
             lblKindHero = new VCLabel(this, FormMain.Config.GridSize, TopForControls(), FormMain.Config.FontCaptionPage, FormMain.Config.CommonCaptionPage, 16, "");
             lblKindHero.StringFormat.Alignment = StringAlignment.Near;
@@ -52,8 +56,11 @@ namespace Fantasy_Kingdoms_Battle
             pageControl.ShiftY = panelWeapon.NextTop();
             pageControl.AddTab("Статистика", FormMain.GUI_SCROLL, null);
             pageControl.AddTab("Инвентарь", FormMain.GUI_INVENTORY, panelInventory);
-            pageControl.AddTab("Способности", FormMain.GUI_TARGET, panelAbilities);
+            pageControl.AddTab("Способности и навыки", FormMain.GUI_TARGET, panelAbilitiesAndSecSkills);
             pageControl.AddTab("История", FormMain.GUI_BOOK, null);
+
+            panelAbilitiesAndSecSkills.AddControl(panelAbilities);
+            panelAbilitiesAndSecSkills.AddControl(panelSecondarySkills);
 
             pageControl.ApplyMinWidth();
             Width = pageControl.Width + FormMain.Config.GridSize * 2;
@@ -124,6 +131,10 @@ namespace Fantasy_Kingdoms_Battle
 
             panelInventory.ApplyList(creature.Inventory);
             panelAbilities.ApplyList(creature.Abilities);
+            panelSecondarySkills.ApplyList(creature.SecondarySkills);
+
+            panelSecondarySkills.ShiftY = panelAbilities.NextTop();
+            panelAbilitiesAndSecSkills.ArrangeControl(panelSecondarySkills);
 
             base.Draw(g);
             

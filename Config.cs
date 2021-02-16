@@ -116,6 +116,14 @@ namespace Fantasy_Kingdoms_Battle
                 Specializations.Add(new Specialization(n));
             }
 
+            // Загрузка конфигурации вторичных навыков
+            xmlDoc = CreateXmlDocument(@"Config\SecondarySkills.xml");
+
+            foreach (XmlNode n in xmlDoc.SelectNodes("/SecondarySkills/SecondarySkill"))
+            {
+                SecondarySkills.Add(new SecondarySkill(n));
+            }
+
             // Загрузка конфигурации типов существ
             xmlDoc = CreateXmlDocument("Config\\KindCreatures.xml");
 
@@ -159,6 +167,9 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (Specialization s in Specializations)
                 s.TuneDeferredLinks();
+
+            foreach (SecondarySkill ss in SecondarySkills)
+                ss.TuneDeferredLinks();
 
             foreach (GroupWeapon gw in GroupWeapons)
                 gw.TuneDeferredLinks();
@@ -207,6 +218,7 @@ namespace Fantasy_Kingdoms_Battle
         //
         internal List<Ability> Abilities { get; } = new List<Ability>();
         internal List<Specialization> Specializations { get; } = new List<Specialization>();
+        internal List<SecondarySkill> SecondarySkills { get; } = new List<SecondarySkill>();
         internal List<KindCreature> KindCreatures { get; } = new List<KindCreature>();
         internal List<TypeCitizen> TypeCitizens { get; } = new List<TypeCitizen>();
         internal List<TypeHero> TypeHeroes { get; } = new List<TypeHero>();
@@ -414,6 +426,17 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             throw new Exception("Специализация " + ID + " не найдена.");
+        }
+
+        internal SecondarySkill FindSecondarySkill(string ID)
+        {
+            foreach (SecondarySkill ss in SecondarySkills)
+            {
+                if (ss.ID == ID)
+                    return ss;
+            }
+
+            throw new Exception("Вторичный навык " + ID + " не найден.");
         }
 
         internal TypeCreature FindTypeCreature(string ID)
