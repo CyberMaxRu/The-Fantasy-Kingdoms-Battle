@@ -8,12 +8,17 @@ namespace Fantasy_Kingdoms_Battle
     // Базовый тип существа
     internal abstract class TypeCreature : TypeObject
     {
+        private string nameMeleeWeapon;
+        private string nameRangeWeapon;
+        private string nameArmour;
+
         public TypeCreature(XmlNode n) : base(n)
         {
             KindCreature = FormMain.Config.FindKindCreature(XmlUtils.GetStringNotNull(n.SelectSingleNode("KindCreature")));
             MaxLevel = XmlUtils.GetInteger(n.SelectSingleNode("MaxLevel"));
             DefaultPositionPriority = XmlUtils.GetInteger(n.SelectSingleNode("DefaultPositionPriority"));
             Reward = XmlUtils.GetInteger(n.SelectSingleNode("Reward"));
+            QuantityArrows = XmlUtils.GetInteger(n.SelectSingleNode("QuantityArrows"));
 
             Debug.Assert(MaxLevel >= 1);
             Debug.Assert(MaxLevel <= 100);
@@ -52,6 +57,23 @@ namespace Fantasy_Kingdoms_Battle
                     Abilities.Add(a);
                 }
             }
+
+            // Загружаем дефолтное оружие и доспехи
+            nameMeleeWeapon = XmlUtils.GetString(n.SelectSingleNode("MeleeWeapon"));
+            nameRangeWeapon = XmlUtils.GetString(n.SelectSingleNode("RangeWeapon"));
+            nameArmour = XmlUtils.GetString(n.SelectSingleNode("Armour"));
+
+            //Debug.Assert(nameMeleeWeapon != "");
+            //Debug.Assert(nameArmour != "");
+
+            if (nameRangeWeapon.Length > 0)
+            {
+                Debug.Assert(QuantityArrows > 0);
+            }
+            else
+            {
+                Debug.Assert(QuantityArrows == 0);
+            }
         }
 
         internal KindCreature KindCreature { get; }// Вид существа
@@ -61,5 +83,42 @@ namespace Fantasy_Kingdoms_Battle
         internal ConfigNextLevelHero ConfigNextLevel { get; }
         internal List<Ability> Abilities { get; } = new List<Ability>();// Способности существа
         internal int DefaultPositionPriority { get; private set; }// Приоритет расположения на поле боя по умолчанию
+        internal Weapon WeaponMelee { get; private set; }// Рукопашное оружие
+        internal Weapon WeaponRange { get; private set; }// Стрелковое оружие
+        internal Armour Armour { get; private set; }// Доспех по умолчанию
+        internal int QuantityArrows { get; }// Количество стрел
+
+        internal override void TuneDeferredLinks()
+        {
+            // Загружаем дефолтное оружие и доспехи
+            if (nameMeleeWeapon.Length > 0)
+            {
+                WeaponMelee = FormMain.Config.FindWeapon(nameMeleeWeapon);
+                nameMeleeWeapon = null;
+
+                Debug.Assert(WeaponMelee.ClassHero == this);
+            }
+
+            if (nameRangeWeapon.Length > 0)
+            {
+                WeaponRange = FormMain.Config.FindWeapon(nameRangeWeapon);
+                nameRangeWeapon = null;
+
+                Debug.Assert(WeaponMelee.ClassHero == this);
+            }
+
+            if (nameArmour.Length > 0)
+            {
+                Armour = FormMain.Config.FindArmour(nameArmour);
+                nameArmour = null;
+
+                Debug.Assert(Armour.ClassHero == this);
+            }
+
+            /*foreach (Ability a in Abilities)
+                if (a.ClassesHeroes.IndexOf(this) == -1)
+                    throw new Exception("Класс героя " + ID + " отсутствует в списке доступных для способности " + a.ID);
+            */
+        }
     }
 }

@@ -19,10 +19,6 @@ namespace Fantasy_Kingdoms_Battle
             DayOfHire = Player.Lobby.Turn;
             TypeHero = pb.Building.TrainedHero;
 
-            // Берем оружие и доспехи
-            MeleeWeapon = TypeHero.WeaponMelee;
-            RangeWeapon = TypeHero.WeaponRange;
-            Armour = TypeHero.Armour;
         }
 
         internal PlayerBuilding Building { get; }// Здание, которому принадлежит герой
@@ -30,9 +26,6 @@ namespace Fantasy_Kingdoms_Battle
         internal TypeHero TypeHero { get; } // Класс героя
 
         // Основные параметры
-        internal Weapon MeleeWeapon { get; private set; }// Рукопашное оружие 
-        internal Weapon RangeWeapon { get; private set; }// Стрелковое оружие 
-        internal Armour Armour { get; private set; }// Доспех
         internal Point CoordInPlayer { get; set; }// Координаты героя в слотах игрока
 
         // Статистика за лобби

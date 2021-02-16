@@ -21,6 +21,11 @@ namespace Fantasy_Kingdoms_Battle
             Abilities.AddRange(TypeCreature.Abilities);
             Specialization = FormMain.Config.FindSpecialization("SpeedMove");
 
+            // Берем оружие и доспехи
+            MeleeWeapon = TypeCreature.WeaponMelee;
+            RangeWeapon = TypeCreature.WeaponRange;
+            Armour = TypeCreature.Armour;
+
             if (TypeCreature.MaxLevel > 1)
             {
                 Level = 0;
@@ -45,6 +50,9 @@ namespace Fantasy_Kingdoms_Battle
         internal Specialization Specialization { get; }// Специализация
         internal List<PlayerItem> Inventory { get; } = new List<PlayerItem>();
         internal List<Ability> Abilities { get; } = new List<Ability>();// Cпособности
+        internal Weapon MeleeWeapon { get; private set; }// Рукопашное оружие 
+        internal Weapon RangeWeapon { get; private set; }// Стрелковое оружие 
+        internal Armour Armour { get; private set; }// Доспех
 
 
         protected abstract void PrepareHint();
