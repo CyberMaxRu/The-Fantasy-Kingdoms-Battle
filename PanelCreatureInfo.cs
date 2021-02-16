@@ -119,8 +119,8 @@ namespace Fantasy_Kingdoms_Battle
 
             panelSpecialization.ShowCell(Creature.Specialization);// ImageIndex = creature.Specialization != null ? creature.Specialization.ImageIndex : -1;
 
-            //panelWeapon.ShowCell(hero.RangeWeapon != null ? hero.RangeWeapon : hero.MeleeWeapon);
-            //panelArmour.ShowCell(hero.Armour);
+            panelWeapon.ShowCell(Creature.RangeWeapon != null ? Creature.RangeWeapon : Creature.MeleeWeapon);
+            panelArmour.ShowCell(Creature.Armour);
 
             panelInventory.ApplyList(creature.Inventory);
             panelAbilities.ApplyList(creature.Abilities);
