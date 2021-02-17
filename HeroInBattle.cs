@@ -26,7 +26,7 @@ namespace Fantasy_Kingdoms_Battle
         private bool needRedraw;
         private StateHeroInBattle priorState;
         
-        public HeroInBattle(Battle b, PlayerHero ph, Point coord, bool needImage)
+        public HeroInBattle(Battle b, Creature ph, Point coord, bool needImage)
         {
             Battle = b;
             CurrentTile = b.Battlefield.Tiles[coord.Y, coord.X];
@@ -44,7 +44,7 @@ namespace Fantasy_Kingdoms_Battle
             CurrentStamina = Parameters.Stamina;
 
             State = StateHeroInBattle.None;
-            QuantityArrows = ph.TypeHero.QuantityArrows;
+            QuantityArrows = ph.TypeCreature.QuantityArrows;
 
             LastTarget = default;
 
@@ -57,8 +57,8 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal PlayerHero PlayerHero { get; }
-        internal Player Player => PlayerHero.Player;
+        internal Creature PlayerHero { get; }
+        internal BattleParticipant Player => PlayerHero.BattleParticipant;
         internal HeroParameters Parameters { get; }
         internal Battle Battle { get; }
         internal bool IsLive { get; set; }
@@ -125,7 +125,7 @@ namespace Fantasy_Kingdoms_Battle
                         // Если сейчас ничего не выполняем, ищем, что можно сделать
                         // Сначала пробуем атаковать стрелковым оружием
 
-                        if (((PlayerHero.RangeWeapon != null) && (QuantityArrows > 0)) || (PlayerHero.TypeHero.ID == "Cleric") || (PlayerHero.TypeHero.ID == "Mage"))
+                        if (((PlayerHero.RangeWeapon != null) && (QuantityArrows > 0)) || (PlayerHero.TypeCreature.ID == "Cleric") || (PlayerHero.TypeCreature.ID == "Mage"))
                         {
                             bool underMeleeAttack = false;
                             // Если юнит не атакован врукопашную, можно атаковать стрелковой атакой
@@ -427,7 +427,8 @@ namespace Fantasy_Kingdoms_Battle
             switch (State)
             {
                 case StateHeroInBattle.MeleeAttack:
-                    timeAttack = (int)(PlayerHero.MeleeWeapon.TimeHit / 100.00 * FormMain.Config.StepsInSecond);
+                    int th = PlayerHero.MeleeWeapon != null ? PlayerHero.MeleeWeapon.TimeHit : 2;
+                    timeAttack = (int)(th / 100.00 * FormMain.Config.StepsInSecond);
                     break;
                 case StateHeroInBattle.RangeAttack:
                     // Костыль для магов
@@ -603,7 +604,7 @@ namespace Fantasy_Kingdoms_Battle
 
             // Рисуем иконку героя
             g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
-            Program.formMain.imListObjectsCell.DrawImage(g, Program.formMain.TreatImageIndex(PlayerHero.TypeHero.ImageIndex, PlayerHero.Player), State != StateHeroInBattle.Tumbstone ? ImageState.Normal : ImageState.Disabled, FormMain.Config.ShiftForBorder.X, FormMain.Config.ShiftForBorder.Y);
+            Program.formMain.imListObjectsCell.DrawImage(g, Program.formMain.TreatImageIndex(PlayerHero.TypeCreature.ImageIndex, PlayerHero.BattleParticipant), State != StateHeroInBattle.Tumbstone ? ImageState.Normal : ImageState.Disabled, FormMain.Config.ShiftForBorder.X, FormMain.Config.ShiftForBorder.Y);
 
             // Если юнит в могиле и исчезает, применяем исчезновение
             if (countAction <= FormMain.Config.UnitStepsTimeToDisappearance)
@@ -611,21 +612,21 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Если это противник, то обращаем его в противоположную сторону
-            if (PlayerHero.Player != Battle.Player1)
+            if (PlayerHero.BattleParticipant != Battle.Player1)
                 bmpIcon.RotateFlip(RotateFlipType.RotateNoneFlipX);
 
             // Рисуем бордюр
             g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
             g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            g.DrawImageUnscaled(PlayerHero.Player == Battle.Player1 ? Program.formMain.bmpBorderForIconAlly : Program.formMain.bmpBorderForIconEnemy, 0, 0);
+            g.DrawImageUnscaled(PlayerHero.BattleParticipant == Battle.Player1 ? Program.formMain.bmpBorderForIconAlly : Program.formMain.bmpBorderForIconEnemy, 0, 0);
 
             // Рисуем состояние
             if ((State != StateHeroInBattle.None) || (priorState != StateHeroInBattle.None))
             {
                 StateHeroInBattle s = State != StateHeroInBattle.None ? State : priorState;
 
-                Program.formMain.ilStateHero.DrawImage(g, (int)s, ImageState.Normal, FormMain.Config.ShiftForBorder.X + 1, FormMain.Config.ShiftForBorder.Y + 1);
+                //Program.formMain.ilStateHero.DrawImage(g, (int)s, ImageState.Normal, FormMain.Config.ShiftForBorder.X + 1, FormMain.Config.ShiftForBorder.Y + 1);
             }
 
             // Рисуем полоску жизни

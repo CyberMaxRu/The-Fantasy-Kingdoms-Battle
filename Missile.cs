@@ -66,7 +66,7 @@ namespace Fantasy_Kingdoms_Battle
 
         public Arrow(HeroInBattle hero, BattlefieldTile target) : base(hero, target)
         {
-            penArrow = new Pen(FormMain.Config.ColorEntity(Hero.PlayerHero.Player == Hero.Battle.Player1));
+            penArrow = new Pen(FormMain.Config.ColorEntity(Hero.PlayerHero.BattleParticipant == Hero.Battle.Player1));
             penArrow.Width = 2;
             penArrow.CustomEndCap = new System.Drawing.Drawing2D.AdjustableArrowCap(4.0F, 8.0F, true);
         }
@@ -100,7 +100,7 @@ namespace Fantasy_Kingdoms_Battle
 
         public MagicStrike(HeroInBattle hero, BattlefieldTile target) : base(hero, target)
         {
-            brush = new SolidBrush(FormMain.Config.ColorEntity(Hero.PlayerHero.Player == Hero.Battle.Player1));
+            brush = new SolidBrush(FormMain.Config.ColorEntity(Hero.PlayerHero.BattleParticipant == Hero.Battle.Player1));
         }
 
         internal override void Draw(Graphics g, Point p1, Point p2)

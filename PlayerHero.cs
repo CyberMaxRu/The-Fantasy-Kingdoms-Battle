@@ -13,7 +13,7 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class PlayerHero : Creature
     {
         private VCCell panelEntity;
-        public PlayerHero(PlayerBuilding pb) : base(pb.Building.TrainedHero)
+        public PlayerHero(PlayerBuilding pb, BattleParticipant bp) : base(pb.Building.TrainedHero, bp)
         {
             Building = pb;
             DayOfHire = Player.Lobby.Turn;
@@ -25,8 +25,6 @@ namespace Fantasy_Kingdoms_Battle
         internal Player Player => Building.Player;// Игрок, которому принадлежит герой
         internal TypeHero TypeHero { get; } // Класс героя
 
-        // Основные параметры
-        internal Point CoordInPlayer { get; set; }// Координаты героя в слотах игрока
 
         // Статистика за лобби
         internal int DayOfHire { get; }// На каком дне нанят
@@ -253,13 +251,6 @@ namespace Fantasy_Kingdoms_Battle
         protected override void DoClick()
         {
             Program.formMain.SelectHero(this);
-        }
-
-        internal int Priority()
-        {
-            int posInPlayer = Player.CombatHeroes.IndexOf(this);
-            Debug.Assert(posInPlayer != -1);
-            return TypeHero.DefaultPositionPriority * 1000 + posInPlayer;
         }
     }
 }

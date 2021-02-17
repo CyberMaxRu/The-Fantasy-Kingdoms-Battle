@@ -37,12 +37,12 @@ namespace Fantasy_Kingdoms_Battle
             Battlefield = new Battlefield(SizeBattlefield.Width, SizeBattlefield.Height);
 
             // Запоминаем героев в одном списке для упрощения расчетов
-            foreach (PlayerHero ph in player1.CombatHeroes)
+            foreach (Creature ph in player1.CombatHeroes)
             {
                 AddHero(new HeroInBattle(this, ph, ph.CoordInPlayer, showForPlayer));
             }
 
-            foreach (PlayerHero ph in player2.CombatHeroes)
+            foreach (Creature ph in player2.CombatHeroes)
             {
                 AddHero(new HeroInBattle(this, ph, new Point(FormMain.Config.HeroInRow + FormMain.Config.RowsBetweenSides + (FormMain.Config.HeroInRow - ph.CoordInPlayer.X) - 1, ph.CoordInPlayer.Y), showForPlayer));
             }
@@ -193,8 +193,8 @@ namespace Fantasy_Kingdoms_Battle
             // Определяем результат боя
             if (Step < FormMain.Config.MaxStepsInBattle)
             {
-                int heroesPlayer1 = ActiveHeroes.Where(h => (h.PlayerHero.Player == Player1) && (h.State != StateHeroInBattle.Tumbstone)).Count();
-                int heroesPlayer2 = ActiveHeroes.Where(h => (h.PlayerHero.Player == Player2) && (h.State != StateHeroInBattle.Tumbstone)).Count();
+                int heroesPlayer1 = ActiveHeroes.Where(h => (h.PlayerHero.BattleParticipant == Player1) && (h.State != StateHeroInBattle.Tumbstone)).Count();
+                int heroesPlayer2 = ActiveHeroes.Where(h => (h.PlayerHero.BattleParticipant == Player2) && (h.State != StateHeroInBattle.Tumbstone)).Count();
 
                 if ((heroesPlayer1 > 0) && (heroesPlayer2 == 0))
                     Winner = Player1;
@@ -240,9 +240,9 @@ namespace Fantasy_Kingdoms_Battle
             {
                 int damage = 0;
 
-                foreach (HeroInBattle h in ActiveHeroes.Where(h => h.PlayerHero.Player == Winner))
+                foreach (HeroInBattle h in ActiveHeroes.Where(h => h.PlayerHero.BattleParticipant == Winner))
                 {
-                    damage += h.PlayerHero.TypeHero.DamageToCastle;
+                    damage += h.PlayerHero.TypeCreature.DamageToCastle;
                 }
 
                 Debug.Assert(damage > 0);

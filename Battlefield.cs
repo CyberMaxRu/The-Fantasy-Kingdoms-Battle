@@ -39,7 +39,7 @@ namespace Fantasy_Kingdoms_Battle
         public List<BattlefieldTile> _path;
 
         // Поиск пути
-        public bool Pathfind(BattlefieldTile fromTile, BattlefieldTile toTile, Player throughPlayer)
+        public bool Pathfind(BattlefieldTile fromTile, BattlefieldTile toTile, BattleParticipant throughPlayer)
         {
             Debug.Assert(fromTile != null);
             Debug.Assert(toTile != null);
@@ -94,7 +94,7 @@ namespace Fantasy_Kingdoms_Battle
             return _path.Count() > 0;
         }
 
-        public void FindPath(BattlefieldTile sourceTile, BattlefieldTile destTile, Player throughPlayer)
+        public void FindPath(BattlefieldTile sourceTile, BattlefieldTile destTile, BattleParticipant throughPlayer)
         {
             Debug.Assert(sourceTile.Unit != null);
 

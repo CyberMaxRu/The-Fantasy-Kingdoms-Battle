@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Drawing;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -13,9 +14,10 @@ namespace Fantasy_Kingdoms_Battle
     {
         private VCCell panelEntity;
 
-        public Creature(TypeCreature tc)
+        public Creature(TypeCreature tc, BattleParticipant bp)
         {
             TypeCreature = tc;
+            BattleParticipant = bp;
 
             // Применяем дефолтные способности
             Abilities.AddRange(TypeCreature.Abilities);
@@ -45,6 +47,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal TypeCreature TypeCreature { get; }
+        internal BattleParticipant BattleParticipant { get; }
         internal int Level { get; private set; }// Уровень существа
         internal HeroParameters ParametersBase { get; }// Свои параметры, без учета амуниции
         internal HeroParameters ParametersWithAmmunition { get; }// Параметры с учетом амуниции
@@ -56,6 +59,7 @@ namespace Fantasy_Kingdoms_Battle
         internal Weapon RangeWeapon { get; private set; }// Стрелковое оружие 
         internal Armour Armour { get; private set; }// Доспех
 
+        internal Point CoordInPlayer { get; set; }// Координаты героя в слотах
 
         protected abstract void PrepareHint();
         protected abstract int GetImageIndex();
@@ -108,6 +112,13 @@ namespace Fantasy_Kingdoms_Battle
         {
             // Копируем базовые параметры
             ParametersWithAmmunition.GetFromParams(ParametersBase);
+        }
+
+        internal int Priority()
+        {
+            int posInPlayer = BattleParticipant.CombatHeroes.IndexOf(this);
+            Debug.Assert(posInPlayer != -1);
+            return TypeCreature.DefaultPositionPriority * 1000 + posInPlayer;
         }
 
         // Реализация интерфейса

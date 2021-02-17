@@ -14,10 +14,8 @@ namespace Fantasy_Kingdoms_Battle
             Building = FormMain.Config.FindTypeConstructionOfKingdom(n.SelectSingleNode("Building").InnerText);
             Building.TrainedHero = this;
             CanBuild = Convert.ToBoolean(n.SelectSingleNode("CanBuild").InnerText);
-            DamageToCastle = Convert.ToInt32(n.SelectSingleNode("DamageToCastle").InnerText);
 
             //Debug.Assert(Cost > 0);
-            Debug.Assert(DamageToCastle >= 0);
 
             // Проверяем, что таких же ID и наименования нет
             foreach (TypeHero h in FormMain.Config.TypeHeroes)
@@ -70,7 +68,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int Cost { get; }
         internal TypeConstruction Building { get; }
         internal bool CanBuild { get; }
-        internal int DamageToCastle { get; }
         internal Dictionary<Item, int> CarryItems { get; } = new Dictionary<Item, int>();
 
         internal int MaxQuantityItem(Item i)

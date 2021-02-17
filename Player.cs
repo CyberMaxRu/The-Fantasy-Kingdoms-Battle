@@ -49,9 +49,6 @@ namespace Fantasy_Kingdoms_Battle
             if (TypePlayer == TypePlayer.Computer)
                 Gold = 100_000;
 
-            // Настройка ячеек героев
-            CellHeroes = new PlayerHero[FormMain.Config.HeroRows, FormMain.Config.HeroInRow];
-
             PlayerHero king = Castle.HireHero();
 
             //
@@ -138,7 +135,6 @@ namespace Fantasy_Kingdoms_Battle
         internal List<PlayerBuilding> Buildings { get; } = new List<PlayerBuilding>();
         internal int LevelCastle => Castle.Level;
         internal List<PlayerHero> AllHeroes { get; } = new List<PlayerHero>();
-        internal PlayerHero[,] CellHeroes { get; private set; }
         internal int Gold { get => Castle.Gold; set { Castle.Gold = value; } }
         internal int TotalBuilders { get; private set; }
         internal int[] Resources { get; }
@@ -227,7 +223,8 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(AllHeroes.IndexOf(ph) == -1);
 
             AllHeroes.Add(ph);
-            CombatHeroes.Add(ph);
+            if (ph.TypeHero.ID != "King")
+                CombatHeroes.Add(ph);
 
             // Восстановить
             if (ph.Building.Building.TrainedHero != null)
@@ -254,86 +251,6 @@ namespace Fantasy_Kingdoms_Battle
                 PointConstructionGuild--;
             else if (pb.Building is TypeEconomicConstruction)
                 PointConstructionEconomic--;
-        }
-
-        private void RearrangeHeroes()
-        {
-            // Очищаем все координаты героев
-            foreach (PlayerHero ph in CellHeroes)
-            {
-                if (ph != null)
-                {
-                    CellHeroes[ph.CoordInPlayer.Y, ph.CoordInPlayer.X] = null;
-                    ph.CoordInPlayer = new Point(-1, -1);
-                }
-            }
-
-            // Проставляем координаты для героев
-            foreach (PlayerHero ph in CombatHeroes.OrderBy(ph => ph.Priority()))
-                SetPosForHero(ph);
-        }
-
-        private void SetPosForHero(PlayerHero ph)
-        {
-            // Ищем место в ячейках героев
-            int coordY = -1;
-            int coordX = 0;
-            List<int> positions = new List<int>();
-
-            // Сначала ищем ячейку согласно категории героя
-            // Для этого ищем линию со свободными ячейками для категории героя, начиная с первой
-            // Пытаемся разместить его в середине линии, а затем в стороны от середины
-            for (int x = CellHeroes.GetLength(1) - 1; x >= 0; x--)
-            {
-                coordX = x;
-                positions.Clear();
-
-                for (int y = 0; y < CellHeroes.GetLength(0); y++)
-                    if (CellHeroes[y, x] == null)
-                    {
-                        positions.Add(y);
-                    }
-
-                if (positions.Count > 0)
-                {
-                    int centre = (int)Math.Truncate(CellHeroes.GetLength(0) / 2.0 + 0.5) - 1;
-                    if (positions.IndexOf(centre) != -1)
-                    {
-                        coordY = centre;
-                    }
-                    else
-                    {
-                        int shift = 1;
-                        for (; ; shift++)
-                        {
-                            if (positions.IndexOf(centre - shift) != -1)
-                            {
-                                coordY = centre - shift;
-                                break;
-                            }
-
-                            if (positions.IndexOf(centre + shift) != -1)
-                            {
-                                coordY = centre + shift;
-                                break;
-                            }
-
-                            if (shift == centre)
-                                break;
-                        }
-                    }
-                }
-
-                if (coordY != -1)
-                    break;
-
-            }
-
-            Debug.Assert(coordY != -1);
-            Debug.Assert(CellHeroes[coordY, coordX] == null);
-
-            CellHeroes[coordY, coordX] = ph;
-            ph.CoordInPlayer = new Point(coordX, coordY);
         }
 
         internal int Income()
@@ -549,6 +466,11 @@ namespace Fantasy_Kingdoms_Battle
             IsLive = true;
             DayOfDie = 0;
             DurabilityCastle = 1;
+        }
+
+        internal override void PreparingForBattle()
+        {
+            base.PreparingForBattle();
         }
 
         // Реализация интерфейса

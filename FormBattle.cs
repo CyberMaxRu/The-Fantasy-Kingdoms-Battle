@@ -126,7 +126,7 @@ namespace Fantasy_Kingdoms_Battle
                 BackColor = Color.Transparent,
                 AutoSize = false,
                 Width = Program.formMain.imListObjectsBig.Size,
-                Height = 24,
+                Height = 40,
                 TextAlign = ContentAlignment.BottomCenter,
                 Font = FormMain.Config.FontBattlefieldPlayer
             };
@@ -139,8 +139,8 @@ namespace Fantasy_Kingdoms_Battle
                 BackColor = Color.Transparent,
                 AutoSize = false,
                 Width = Program.formMain.imListObjectsBig.Size,
-                Height = 24,
-                TextAlign = ContentAlignment.BottomCenter,
+                Height = 40,
+                TextAlign = ContentAlignment.BottomCenter,                
                 Font = FormMain.Config.FontBattlefieldPlayer
             };
 
@@ -637,7 +637,7 @@ namespace Fantasy_Kingdoms_Battle
                             // Рисуем путь юнита к цели
                             foreach (BattlefieldTile t in hero.PathToDestination)
                             {
-                                penArrow.Color = hero.PlayerHero.Player == battle.Player1 ? FormMain.Config.BattlefieldAllyColor : FormMain.Config.BattlefieldEnemyColor;
+                                penArrow.Color = hero.PlayerHero.BattleParticipant == battle.Player1 ? FormMain.Config.BattlefieldAllyColor : FormMain.Config.BattlefieldEnemyColor;
                                 pTarget = new Point(topLeftGrid.X + (t.Coord.X * sizeTile.Width) + (sizeTile.Width / 2), topLeftGrid.Y + (t.Coord.Y * sizeTile.Height) + (sizeTile.Height / 2) + WIDTH_LINE);
                                 gFrame.DrawLine(penArrow, pSource, pTarget);
 

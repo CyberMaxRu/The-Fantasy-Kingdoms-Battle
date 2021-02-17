@@ -39,10 +39,16 @@ namespace Fantasy_Kingdoms_Battle
             {
                 for (int i = 0; i < mll.StartQuantity; i++)
                 {
-                    lm = new Monster(mll.Monster, mll.Level);
+                    lm = new Monster(mll.Monster, mll.Level, this);
                     Monsters.Add(lm);
+                    CombatHeroes.Add(lm);
                 }
             }
+        }
+
+        internal override void PreparingForBattle()
+        {
+            base.PreparingForBattle();
         }
     }
 }

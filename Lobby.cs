@@ -199,22 +199,53 @@ namespace Fantasy_Kingdoms_Battle
 
         private void CalcBattles()
         {
+            Battle b;
+            FormBattle formBattle;
+            FormProgressBattle formProgressBattle = null;
+
+            foreach (Player p in Players)
+            {
+                p.BattleCalced = false;
+            }
+
             // Бои с монстрами
             foreach (Player p in Players)
             {
                 if (p.IsLive)
                 {
+                    p.PreparingForBattle();
+
+                    // Включить, когда ИИ может выбирать цель
                     //Debug.Assert(p.TargetLair != null);
+                    if (p.TargetLair != null)
+                    {
+                        p.TargetLair.PreparingForBattle();
 
+                        //Debug.Assert(p.TargetLair.CombatHeroes.Count > 0);
 
+                        bool showForPlayer = p.TypePlayer == TypePlayer.Human;
+                        b = new Battle(p, p.TargetLair, Turn, FormMain.Rnd, showForPlayer);
+
+                        if (showForPlayer)
+                        {
+                            formBattle = new FormBattle();
+                            formBattle.ShowBattle(b);
+                            formBattle.Dispose();
+                        }
+                        else
+                        {
+                            if (formProgressBattle == null)
+                                formProgressBattle = new FormProgressBattle();
+
+                            formProgressBattle.SetBattle(b, Players.Count(), p.PlayerIndex + 1);
+                        }
+
+                        Battles.Add(b);
+                    }
                 }
             }
 
-            //return;
-
-            Battle b;
-            FormBattle formBattle;
-            FormProgressBattle formProgressBattle = null;
+            return;
 
             int livePlayers = 0;
             foreach (Player p in Players)

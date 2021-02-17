@@ -132,7 +132,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Player.CombatHeroes.Count < Player.Lobby.TypeLobby.MaxHeroes);
             //Debug.Assert(Player.Gold >= Building.TrainedHero.Cost);
 
-            PlayerHero h = new PlayerHero(this);
+            PlayerHero h = new PlayerHero(this, Player);
 
             if (Building.TrainedHero.Cost > 0)
             {
