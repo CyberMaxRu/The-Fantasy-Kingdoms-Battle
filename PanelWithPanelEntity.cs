@@ -85,8 +85,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 pe = panelEntities[panelEntities.Count - 1];
                 panelEntities.Remove(pe);
-                //Controls.Remove(pe);
-                //pe.Dispose();
+                Controls.Remove(pe);
             }
 
             rows--;
