@@ -1384,6 +1384,14 @@ namespace Fantasy_Kingdoms_Battle
             Settings.LoadAvatar();
 
             if (lobby != null)
+            {
+                foreach (Player ph1 in lobby.Players)
+                    foreach (Player ph2 in lobby.Players)
+                        if (ph1 != ph2)
+                            Debug.Assert(ph1.ImageIndexAvatar != ph2.ImageIndexAvatar);
+            }
+
+            if (lobby != null)
                 ShowFrame();
         }
 
