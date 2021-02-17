@@ -15,6 +15,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCLabel lblName;
         private readonly VCImage imgLair;
         private readonly VCButton btnSetAsTarget;
+        private readonly VCButton btnInhabitants;
 
         public PanelLair(VisualControl parent, int shiftX, int shiftY, TypeLair typeLair) : base(parent, shiftX, shiftY)
         {
@@ -33,10 +34,19 @@ namespace Fantasy_Kingdoms_Battle
             btnSetAsTarget = new VCButton(this, imgLair.NextLeft(), imgLair.ShiftY, Program.formMain.ilGui, FormMain.GUI_BATTLE);
             btnSetAsTarget.Click += BtnSetAsTarget_Click;
 
+            btnInhabitants = new VCButton(this, btnSetAsTarget.ShiftX, btnSetAsTarget.NextTop(), Program.formMain.ilGui, FormMain.GUI_HOME);
+            btnInhabitants.Click += BtnInhabitants_Click;
+
             Height = imgLair.NextTop();
             Width = btnSetAsTarget.NextLeft();
 
             lblName.Width = Width - (lblName.ShiftX * 2);            
+        }
+
+        private void BtnInhabitants_Click(object sender, EventArgs e)
+        {
+            Program.formMain.SelectLair(this);
+            Program.formMain.panelLairInfo.SelectPageInhabitants();
         }
 
         internal TypeLair TypeLair { get; set; }
@@ -77,6 +87,7 @@ namespace Fantasy_Kingdoms_Battle
 
             SetColorBorder(FormMain.Config.ColorBorder(Program.formMain.SelectedPanelLair == this));
             lblName.Color = Lair.Player.TargetLair == Lair ? Color.OrangeRed : Color.Green;
+            btnInhabitants.Cost = Lair.CombatHeroes.Count;
 
             base.Draw(g);
         }

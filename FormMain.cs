@@ -153,7 +153,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly int heightBandInfoAndMenu;
         private readonly VisualControl panelEmptyInfo;
         private readonly PanelBuildingInfo panelBuildingInfo;
-        private readonly PanelLairInfo panelLairInfo;
+        internal readonly PanelLairInfo panelLairInfo;
         private readonly PanelHeroInfo panelHeroInfo;
         private readonly PanelMonsterInfo panelMonsterInfo;
         internal VCCell SelectedPanelEntity;

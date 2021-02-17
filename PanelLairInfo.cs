@@ -55,6 +55,11 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.ShowFrame();
         }
 
+        internal void SelectPageInhabitants()
+        {
+            pageControl.ActivatePage(0);
+        }
+
         protected override BitmapList GetBitmapList() => Program.formMain.imListObjectsBig;
         protected override int GetImageIndex() => lair.Lair.ImageIndex;
         protected override ImageState GetImageState() => ImageState.Normal;
