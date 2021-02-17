@@ -199,6 +199,19 @@ namespace Fantasy_Kingdoms_Battle
 
         private void CalcBattles()
         {
+            // Бои с монстрами
+            foreach (Player p in Players)
+            {
+                if (p.IsLive)
+                {
+                    Debug.Assert(p.TargetLair != null);
+
+
+                }
+            }
+
+            return;
+
             Battle b;
             FormBattle formBattle;
             FormProgressBattle formProgressBattle = null;
