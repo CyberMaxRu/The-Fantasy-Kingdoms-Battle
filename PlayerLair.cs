@@ -8,14 +8,17 @@ using System.Diagnostics;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс логова игрока
-    internal sealed class PlayerLair
+    internal sealed class PlayerLair : BattleParticipant
     {
-        public PlayerLair(Player p, TypeLair l)
+        public PlayerLair(Player p, TypeLair l) : base()
         {
             Player = p;
             Lair = l;
 
             Level = 1;
+            Name = l.Name;
+            ImageIndexAvatar = l.ImageIndex;
+            TypePlayer = TypePlayer.Lair;
 
             // Убрать эту проверку после настройки всех логов
             if (Lair.LevelLairs.Count > 0)

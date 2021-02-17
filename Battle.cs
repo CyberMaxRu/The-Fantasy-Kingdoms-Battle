@@ -15,7 +15,7 @@ namespace Fantasy_Kingdoms_Battle
         internal Battlefield Battlefield;
         private List<HeroInBattle> heroesForDelete = new List<HeroInBattle>();
 
-        internal Battle(Player player1, Player player2, int turn, Random r, bool showForPlayer)
+        internal Battle(BattleParticipant player1, BattleParticipant player2, int turn, Random r, bool showForPlayer)
         {
             Debug.Assert(player1 != null);
             Debug.Assert(player2 != null);
@@ -59,8 +59,8 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal Player Player1 { get; }// Игрок №1        
-        internal Player Player2 { get; }// Игрок №2
+        internal BattleParticipant Player1 { get; }// Сторона №1        
+        internal BattleParticipant Player2 { get; }// Сторона №2
         internal int Turn { get; }// Ход, на котором произошел бой
         internal Random Rnd { get; }
         internal Size SizeBattlefield { get; }
@@ -70,7 +70,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<HeroInBattle> ActiveHeroes = new List<HeroInBattle>();// Оставшиеся в живых участники боя
         internal List<Missile> Missiles = new List<Missile>();// Снаряды героев
         internal List<Missile> deleteMissiles = new List<Missile>();// Удаляемые снаряды героев
-        internal Player Winner { get; private set; }// Победитель
+        internal BattleParticipant Winner { get; private set; }// Победитель
         internal string LogBattle { get; private set; }
         internal int Player1Damage { get; private set; }
         internal int Player1Kill { get; private set; }
@@ -212,10 +212,11 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
             {
+                /* To restore
                 Player1.ResultLastBattle = ResultBattle.Draw;
                 Player1.LastBattleDamageToCastle = 0;
                 Player2.ResultLastBattle = ResultBattle.Draw;
-                Player2.LastBattleDamageToCastle = 0;
+                Player2.LastBattleDamageToCastle = 0;*/
             }
 
             Player1.HistoryBattles.Add(this);
@@ -224,14 +225,15 @@ namespace Fantasy_Kingdoms_Battle
             Player1.BattleCalced = true;
             Player2.BattleCalced = true;
 
-            void ApplyWinAndLose(Player winner, Player loser)
+            void ApplyWinAndLose(BattleParticipant winner, BattleParticipant loser)
             {
+                /* To restore
                 winner.ResultLastBattle = ResultBattle.Win;
                 loser.ResultLastBattle = ResultBattle.Lose;
 
                 winner.LastBattleDamageToCastle = DamageToCastle();
                 loser.LastBattleDamageToCastle = -DamageToCastle();
-                loser.DurabilityCastle -= DamageToCastle();
+                loser.DurabilityCastle -= DamageToCastle();*/
             }
 
             int DamageToCastle()

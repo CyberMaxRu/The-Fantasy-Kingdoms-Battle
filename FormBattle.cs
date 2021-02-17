@@ -681,12 +681,12 @@ namespace Fantasy_Kingdoms_Battle
             if (battle.Winner == battle.Player1)
             {
                 lblDamagePlayer1.Show();
-                lblDamagePlayer1.Text = battle.Player1.LastBattleDamageToCastle.ToString();
+                //lblDamagePlayer1.Text = battle.Player1.LastBattleDamageToCastle.ToString();
             }
             else if (battle.Winner == battle.Player2)
             {
                 lblDamagePlayer2.Show();
-                lblDamagePlayer2.Text = battle.Player2.LastBattleDamageToCastle.ToString();
+                //lblDamagePlayer2.Text = battle.Player2.LastBattleDamageToCastle.ToString();
             }
 
             // Показываем состояние
@@ -875,7 +875,7 @@ namespace Fantasy_Kingdoms_Battle
             needClose = e.Cancel;
         }
 
-        private int CalcHealthPlayer(Player p)
+        private int CalcHealthPlayer(BattleParticipant p)
         {
             int health = 0;
             foreach (HeroInBattle h in battle.ActiveHeroes)

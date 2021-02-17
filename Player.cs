@@ -9,21 +9,19 @@ using System.Windows.Forms;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal enum TypePlayer { Human, Computer };
     // Класс игрока
-    internal sealed class Player : ICell
+    internal sealed class Player : BattleParticipant, ICell
     {
         private ResultBattle resultLastBattle;
         private PlayerBuilding Castle;
 
-        public Player(Lobby lobby, int index, string name, TypePlayer typePlayer)
+        public Player(Lobby lobby, int index, string name, TypePlayer typePlayer) : base()
         {
             Lobby = lobby;
             Name = name;
             TypePlayer = typePlayer;
             Wins = 0;
             Loses = 0;
-            IsLive = true;
             PlayerIndex = index;
             ImageIndexAvatar = (typePlayer == TypePlayer.Computer ? PlayerIndex : Program.formMain.Settings.IndexInternalAvatar) + Program.formMain.ImageIndexFirstAvatar;
             ResultLastBattle = ResultBattle.None;
@@ -133,22 +131,17 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal Lobby Lobby { get; }
-        internal string Name { get; set; }
-        internal int ImageIndexAvatar { get; private set; }
         internal int PlayerIndex { get; }
         internal int PositionInLobby { get; set; }
         internal int DurabilityCastle { get; set; }
         internal int LastBattleDamageToCastle { get; set; }
         internal List<PlayerBuilding> Buildings { get; } = new List<PlayerBuilding>();
         internal int LevelCastle => Castle.Level;
-        internal List<PlayerHero> CombatHeroes { get; } = new List<PlayerHero>();
         internal List<PlayerHero> AllHeroes { get; } = new List<PlayerHero>();
         internal PlayerHero[,] CellHeroes { get; private set; }
-        internal TypePlayer TypePlayer { get; }
         internal int Gold { get => Castle.Gold; set { Castle.Gold = value; } }
         internal int TotalBuilders { get; private set; }
         internal int[] Resources { get; }
-        internal bool IsLive { get; private set; }
         internal int DayOfDie { get; private set; }
 
         internal int PointConstructionGuild { get; private set; }
@@ -214,8 +207,6 @@ namespace Fantasy_Kingdoms_Battle
         internal PanelPlayer Panel { get; set; }
         private Player opponent;// Убрать это
         internal Player Opponent { get { return opponent; } set { if (value != this) opponent = value; else new Exception("Нельзя указать оппонентов самого себя."); } }
-        internal bool BattleCalced { get; set; }
-        internal List<Battle> HistoryBattles { get; } = new List<Battle>();
 
         internal PlayerBuilding GetPlayerBuilding(TypeConstruction b)
         {

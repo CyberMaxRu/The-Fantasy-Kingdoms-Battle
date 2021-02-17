@@ -204,13 +204,13 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (p.IsLive)
                 {
-                    Debug.Assert(p.TargetLair != null);
+                    //Debug.Assert(p.TargetLair != null);
 
 
                 }
             }
 
-            return;
+            //return;
 
             Battle b;
             FormBattle formBattle;

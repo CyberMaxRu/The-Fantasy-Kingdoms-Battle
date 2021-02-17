@@ -61,6 +61,7 @@
     <Compile Include="Battle.cs" />
     <Compile Include="Battlefield.cs" />
     <Compile Include="BattlefieldTile.cs" />
+    <Compile Include="BattleParticipant.cs" />
     <Compile Include="BitmapList.cs" />
     <Compile Include="PanelCreatureInfo.cs" />
     <Compile Include="PanelMonsterInfo.cs" />
