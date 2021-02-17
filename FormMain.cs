@@ -138,6 +138,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly Bitmap bmpBorderBattlefield;
         internal readonly Bitmap bmpMaskBig;
         internal readonly Bitmap bmpMaskSmall;
+        internal readonly M2Font fontSmallContur;
         internal int LengthSideBorderBattlefield { get; private set; }
         private int calcedWidth;
         private int calcedHeight;
@@ -228,6 +229,8 @@ namespace Fantasy_Kingdoms_Battle
             {
                 CheckForNewVersion();
             }
+
+            fontSmallContur = new M2Font(dirResources);
 
             // Формируем и показываем сплэш-заставку
             Image splashBitmap = new Bitmap(dirResources + "\\Icons\\Splash.png");

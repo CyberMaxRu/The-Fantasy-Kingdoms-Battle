@@ -63,6 +63,7 @@
     <Compile Include="BattlefieldTile.cs" />
     <Compile Include="BattleParticipant.cs" />
     <Compile Include="BitmapList.cs" />
+    <Compile Include="M2Font.cs" />
     <Compile Include="PanelCreatureInfo.cs" />
     <Compile Include="PanelMonsterInfo.cs" />
     <Compile Include="SecondarySkill.cs" />
