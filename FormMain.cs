@@ -1535,12 +1535,18 @@ namespace Fantasy_Kingdoms_Battle
             if (!mousePos.Equals(newMousePos))
             {
                 mousePos = newMousePos;
-                VisualControl curControl = MainControl.GetControl(mousePos.X, mousePos.Y);
-                if (curControl == MainControl)
+                VisualControl curControl;
+
+                curControl = panelPlayers.GetControl(mousePos.X, mousePos.Y);
+                if (curControl == null)
                 {
-                    curControl = currentPage.Page.GetControl(mousePos.X, mousePos.Y);
-                    if (curControl == currentPage)
-                        curControl = null;
+                    curControl = MainControl.GetControl(mousePos.X, mousePos.Y);
+                    if (curControl == MainControl)
+                    {
+                        curControl = currentPage.Page.GetControl(mousePos.X, mousePos.Y);
+                        if (curControl == currentPage)
+                            curControl = null;
+                    }
                 }
 
                 if (curControl == null)
