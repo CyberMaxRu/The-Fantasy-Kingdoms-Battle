@@ -11,11 +11,10 @@ namespace Fantasy_Kingdoms_Battle
 
         public PanelPlayer(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
-            panelAvatar = new VCCell(this, FormMain.Config.GridSize, FormMain.Config.GridSize);
+            panelAvatar = new VCCell(this, 0, 0);
 
-            Width = panelAvatar.Width + (FormMain.Config.GridSize * 2);
-            Height = panelAvatar.Height + (FormMain.Config.GridSize * 2);
-            ShowBorder = true;
+            Width = panelAvatar.Width;
+            Height = panelAvatar.Height;
         }
 
         internal void LinkToLobby(Player p)
@@ -29,7 +28,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
-            SetColorBorder(FormMain.Config.ColorBorderPlayer(player));
+            panelAvatar.ImageFilter = Program.formMain.CurrentLobby.CurrentPlayer == player ? ImageFilter.Active : ImageFilter.Press;
 
             base.Draw(g);
         }
