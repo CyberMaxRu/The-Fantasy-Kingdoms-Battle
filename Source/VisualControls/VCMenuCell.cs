@@ -81,20 +81,22 @@ namespace Fantasy_Kingdoms_Battle
             else
                 ImageIndex = -1;
 
-            base.Draw(g);
-
             if (research != null)
             {
                 // Накладываем фильтр
                 if (!research.CheckRequirements())
-                    g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage(3, ImageState.Normal), Left, Top);
+                    ImageFilter = ImageFilter.Disabled;
                 else if (mouseClicked && mouseOver)
-                    g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage(2, ImageState.Normal), Left, Top);
+                    ImageFilter = ImageFilter.Press;
                 else if (mouseOver)
-                    g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage(1, ImageState.Normal), Left, Top);
+                    ImageFilter = ImageFilter.Select;
                 else
-                    g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage(0, ImageState.Normal), Left, Top);
+                    ImageFilter = ImageFilter.Active;
             }
+            else
+                ImageFilter = ImageFilter.None;
+
+            base.Draw(g);
         }
 
         internal PlayerResearch Research

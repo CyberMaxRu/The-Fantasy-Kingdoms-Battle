@@ -3,6 +3,8 @@ using System.Drawing;
 
 namespace Fantasy_Kingdoms_Battle
 {
+    internal enum ImageFilter { None, Active, Select, Press, Disabled };
+
     // Визуальный контрол - иконка
     internal class VCImage : VisualControl
     {
@@ -54,6 +56,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int Quantity { get; set; }
         internal int PopupQuantity { get; set; }
         internal bool HighlightUnderMouse { get; set; } = false;
+        internal ImageFilter ImageFilter { get; set; } = ImageFilter.None;
 
         internal override void Draw(Graphics g)
         {
@@ -98,6 +101,24 @@ namespace Fantasy_Kingdoms_Battle
 
                     labelPopupQuantity.Text = PopupQuantity.ToString();
                     labelPopupQuantity.Draw(g);
+                }
+
+                switch (ImageFilter)
+                {
+                    case ImageFilter.Active:
+                        g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage(0, ImageState.Normal), Left, Top);
+                        break;
+                    case ImageFilter.Select:
+                        g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage(1, ImageState.Normal), Left, Top);
+                        break;
+                    case ImageFilter.Press:
+                        g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage(2, ImageState.Normal), Left, Top);
+                        break;
+                    case ImageFilter.Disabled:
+                        g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage(3, ImageState.Normal), Left, Top);
+                        break;
+                    default:
+                        break;
                 }
             }
         }
