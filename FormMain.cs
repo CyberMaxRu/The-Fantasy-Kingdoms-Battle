@@ -517,6 +517,9 @@ namespace Fantasy_Kingdoms_Battle
             panelMonsterInfo.Height = panelBuildingInfo.Height;
             panelEmptyInfo.Height = panelBuildingInfo.Height;
 
+            MainControl.Width = calcedWidth;
+            MainControl.Height = calcedHeight;
+
             SetStage("Прибираем после строителей");
             // Перенести в класс
             for (int i = 0; i < panelHeroInfo.slots.Count; i++)
@@ -836,7 +839,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             panelPlayers.SetPos((ClientSize.Width - panelPlayers.Width) / 2, shiftControls.Y);
-            MainControl.SetPos(shiftControls.X, panelPlayers.NextTop());
+            MainControl.SetPos(shiftControls.X, panelPlayers.NextTop();
 
             labelDay.ShiftX = shiftControls.X;
             labelGold.ShiftX = labelDay.NextLeft();
