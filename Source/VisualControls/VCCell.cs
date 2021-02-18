@@ -22,12 +22,21 @@ namespace Fantasy_Kingdoms_Battle
 
         public VCCell(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY, Program.formMain.ilItems, -1)
         {
-            Width = Program.formMain.bmpBorderForIcon.Width;
-            Height = Program.formMain.bmpBorderForIcon.Height;
-
             HighlightUnderMouse = true;
             ShiftImageX = 3;
-            ShiftImageY = 2;
+            ShiftImageY = 1;
+
+            // Ставим размеры после изменения ShiftImageX и ShiftImageY, так так там меняется размер ячейки
+            Width = Program.formMain.bmpBorderForIcon.Width;
+            Height = Program.formMain.bmpBorderForIcon.Height;
+        }
+
+        internal override void ArrangeControls()
+        {
+            base.ArrangeControls();
+
+            Debug.Assert(Width == Program.formMain.bmpBorderForIcon.Width);
+            Debug.Assert(Height == Program.formMain.bmpBorderForIcon.Height);
         }
 
         internal override bool PrepareHint()
@@ -81,7 +90,7 @@ namespace Fantasy_Kingdoms_Battle
             if (cell != null)
             {
                 if (Program.formMain.SelectedPanelEntity == this)
-                    g.DrawRectangle(FormMain.Config.GetPenBorder(true), new Rectangle(Left - 1, Top - 1, Width + 2, Height + 2));
+                    g.DrawRectangle(FormMain.Config.GetPenBorder(true), new Rectangle(Left - 1, Top - 2, Width + 1, Height + 1));
 
                 g.DrawImageUnscaled(Program.formMain.bmpBorderForIcon, Left, Top);
             }
