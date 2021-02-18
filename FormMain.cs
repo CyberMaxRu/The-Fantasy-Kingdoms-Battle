@@ -30,7 +30,6 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly BitmapList ilGui;
         internal readonly BitmapList ilGui16;
         internal readonly BitmapList ilGui24;
-        internal readonly BitmapList ilGui45;
         internal readonly BitmapList ilParameters;
         internal readonly BitmapList ilItems;
         internal readonly BitmapList ilStateHero;
@@ -305,7 +304,6 @@ namespace Fantasy_Kingdoms_Battle
 
             ilGui16 = new BitmapList(dirResources, "Gui16.png", 16, ImageState.Normal);
             ilGui24 = new BitmapList(dirResources, "Gui24.png", 24, ImageState.Normal);
-            ilGui45 = new BitmapList(dirResources, "Gui45.png", 45, ImageState.Normal);
             ilParameters = new BitmapList(dirResources, "Parameters.png", 24, ImageState.Normal);
             ilItems = new BitmapList(dirResources, "Items.png", 48, ImageState.Over);
             ilStateHero = new BitmapList(dirResources, "StateHero.png", 24, ImageState.Normal);
