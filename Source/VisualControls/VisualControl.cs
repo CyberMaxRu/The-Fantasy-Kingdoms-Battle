@@ -129,7 +129,7 @@ namespace Fantasy_Kingdoms_Battle
                 if (vc.Visible)
                 {
                     VisualControl ivc = vc.GetControl(x, y);
-                    if (ivc != vc)
+                    if (ivc != null)
                         return ivc;
 
                     if (vc.Rectangle.Contains(x, y))
@@ -137,7 +137,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
-            return this;
+            return Rectangle.Contains(x, y) ? this : null;
         }
 
         internal void ArrangeControl(VisualControl vc, bool checkInList = true)
