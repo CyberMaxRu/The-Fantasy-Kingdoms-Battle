@@ -385,20 +385,20 @@ namespace Fantasy_Kingdoms_Battle
             btnEndTurn = CreateButton(ilGui, GUI_HOURGLASS, 0, btnPreferences.ShiftY, BtnEndTurn_Click, BtnEndTurn_MouseHover);
 
             // Создаем панели игроков в левой части окна
-            panelPlayers = new VisualControl(MainControl, Config.GridSize, btnQuit.NextTop());
+            panelPlayers = new VisualControl();
 
             PanelPlayer pp;
-            int nextTopPanelPlayer = 0;
+            int nextLeftPanelPlayer = 0;
             foreach (Player p in lobby.Players)
             {
-                pp = new PanelPlayer(panelPlayers, 0, nextTopPanelPlayer);
+                pp = new PanelPlayer(panelPlayers, nextLeftPanelPlayer, 0);
                 // !!! Эту привязку переместить в StartNewLobby()
                 pp.LinkToLobby(p);
-                nextTopPanelPlayer = pp.NextTop();
+                nextLeftPanelPlayer = pp.NextLeft();
             }
             panelPlayers.ApplyMaxSize();
 
-            leftForPages = lobby.Players[0].Panel.NextLeft() + panelPlayers.ShiftX;
+            leftForPages = Config.GridSize;// lobby.Players[0].Panel.NextLeft() + panelPlayers.ShiftX;
 
             // Страницы игры
             pageGuilds = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_GUILDS, "Гильдии", BtnPage_Click);
@@ -506,7 +506,7 @@ namespace Fantasy_Kingdoms_Battle
             //
             Width = (Width - ClientSize.Width) + calcedWidth + Config.GridSize;
             // Высота - это наибольшая высота бэндов лобби, зданий и информации с меню
-            calcedHeight = labelDay.NextTop() + Math.Max(panelPlayers.Height, Math.Max(pageHeroes.Page.Top + pageHeroes.Page.MaxSize().Height, heightBandBuildings));
+            calcedHeight = labelDay.NextTop() + Math.Max(pageHeroes.Page.Top + pageHeroes.Page.MaxSize().Height, heightBandBuildings);
             Height = (Height - ClientSize.Height) + calcedHeight + Config.GridSize;
             minSizeForm = new Size(Width, Height);
 
@@ -836,6 +836,9 @@ namespace Fantasy_Kingdoms_Battle
                 shiftControls.Y = (ClientSize.Height - calcedHeight) / 2;
             }
 
+            panelPlayers.SetPos((ClientSize.Width - panelPlayers.Width) / 2, shiftControls.Y);
+            MainControl.SetPos(shiftControls.X, panelPlayers.NextTop());
+
             labelDay.ShiftX = shiftControls.X;
             labelGold.ShiftX = labelDay.NextLeft();
 
@@ -850,9 +853,6 @@ namespace Fantasy_Kingdoms_Battle
 
                 leftForNextButtonPage = fp.NextLeft();
             }
-
-            panelPlayers.ShiftX = shiftControls.X; 
-            panelPlayers.ShiftY = labelDay.NextTop();
 
             btnQuit.ShiftX = shiftControls.X + minSizeForm.Width - btnQuit.Width - (Config.GridSize * 4);
             btnHelp.ShiftX = btnQuit.ShiftX - btnQuit.Width - Config.GridSize;
@@ -1012,7 +1012,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void ShowLobby()
         {
-            int top = 0;
+            /*int top = 0;
             foreach (Player p in lobby.Players.OrderBy(p => p.PositionInLobby))
             {
                 Debug.Assert(p.PositionInLobby >= 1);
@@ -1020,9 +1020,9 @@ namespace Fantasy_Kingdoms_Battle
 
                 p.Panel.ShiftY = top;
                 top += p.Panel.Height + Config.GridSize;
-            }
+            }*/
 
-            panelPlayers.ArrangeControls();
+            //panelPlayers.ArrangeControls();
 
             // Показываем сооружения
             foreach (PlayerBuilding pb in lobby.CurrentPlayer.Buildings)
@@ -1503,6 +1503,8 @@ namespace Fantasy_Kingdoms_Battle
 
             // Рисуем контролы
             gfxFrame.CompositingMode = CompositingMode.SourceOver;
+
+            panelPlayers.Draw(gfxFrame);
 
             foreach (VisualControl vc in MainControl.Controls)
             {
