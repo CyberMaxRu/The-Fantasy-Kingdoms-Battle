@@ -81,7 +81,7 @@ namespace Fantasy_Kingdoms_Battle
             if (cell != null)
             {
                 if (Program.formMain.SelectedPanelEntity == this)
-                    Program.formMain.ilMenuCellFilters.DrawImage(g, 2, ImageState.Normal, Left, Top);
+                    g.DrawRectangle(FormMain.Config.GetPenBorder(true), new Rectangle(Left - 1, Top - 1, Width + 2, Height + 2));
 
                 g.DrawImageUnscaled(Program.formMain.bmpBorderForIcon, Left, Top);
             }

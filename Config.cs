@@ -314,6 +314,8 @@ namespace Fantasy_Kingdoms_Battle
 
         //
         internal Brush brushControl { get; private set; } = new SolidBrush(Color.White);
+        internal Pen PenBorder { get; private set; }
+        internal Pen PenSelectedBorder { get; private set; }
 
         //
         internal Skill FindSkill(string ID)
@@ -651,6 +653,9 @@ namespace Fantasy_Kingdoms_Battle
             FontBuildingLevel = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/Building/Level"));
             FontBuildingCaption = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/Building/Caption"));
 
+            PenBorder = new Pen(CommonBorder);
+            PenSelectedBorder = new Pen(CommonSelectedBorder);
+
             Font CreateFont(XmlNode n)
             {
                 string name = n.SelectSingleNode("Name").InnerText;
@@ -690,6 +695,11 @@ namespace Fantasy_Kingdoms_Battle
         internal Color ColorMapObjectCaption(bool allowed)
         {
             return allowed ? Color.Green : Color.Gray;
+        }
+
+        internal Pen GetPenBorder(bool selected)
+        {
+            return selected ? PenSelectedBorder : PenBorder;
         }
     }
 }
