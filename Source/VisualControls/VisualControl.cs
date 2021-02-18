@@ -47,6 +47,13 @@ namespace Fantasy_Kingdoms_Battle
         internal event EventHandler Click;
         internal event EventHandler ShowHint;
 
+        internal void SetPos(int left, int top)
+        {
+            Debug.Assert(Parent == null);
+            Left = left;
+            Top = top;
+        }
+
         // Метод для рисования. Передается подготовленный Graphics
         internal virtual void Draw(Graphics g)
         {
@@ -135,6 +142,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void ArrangeControl(VisualControl vc, bool checkInList = true)
         {
+            Debug.Assert(vc != this);
+
             if (checkInList)
             {
                 Debug.Assert(Controls.IndexOf(vc) != -1);
