@@ -12,6 +12,7 @@ namespace Fantasy_Kingdoms_Battle
         public PanelPlayer(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
             panelAvatar = new VCCell(this, 0, 0);
+            panelAvatar.HighlightUnderMouse = true;
 
             Width = panelAvatar.Width;
             Height = panelAvatar.Height;
