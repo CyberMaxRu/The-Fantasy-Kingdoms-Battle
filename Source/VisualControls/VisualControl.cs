@@ -164,6 +164,11 @@ namespace Fantasy_Kingdoms_Battle
             return ShiftX + Width + FormMain.Config.GridSize;
         }
 
+        internal void PlaceBeforeControl(VisualControl vc)
+        {
+            ShiftX = vc.ShiftX - Width - FormMain.Config.GridSize;
+        }
+
         internal int NextTop()
         {
             return ShiftY + Height + FormMain.Config.GridSize;

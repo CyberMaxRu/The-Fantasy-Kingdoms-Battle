@@ -859,8 +859,8 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             btnQuit.ShiftX = MainControl.Width - btnQuit.Width;
-            btnHelp.ShiftX = btnQuit.ShiftX - btnQuit.Width - Config.GridSize;
-            btnPreferences.ShiftX = btnHelp.ShiftX - btnHelp.Width - Config.GridSize;
+            btnHelp.PlaceBeforeControl(btnQuit);
+            btnPreferences.PlaceBeforeControl(btnHelp);
 
             panelBuildingInfo.ShiftX = shiftControls.X + maxWidthPages;
             panelLairInfo.ShiftX = panelBuildingInfo.ShiftX;
