@@ -7,6 +7,7 @@ using System.Xml;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.IO;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -18,40 +19,43 @@ namespace Fantasy_Kingdoms_Battle
         {
             pathToResources = path;
 
-            XmlDocument doc = new XmlDocument();
-            doc.Load(path + "Settings.xml");
+            if (File.Exists(path + "Settings.xml"))
+            {
+                XmlDocument doc = new XmlDocument();
+                doc.Load(path + "Settings.xml");
 
-            ShowSplashVideo = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Game/ShowSplashVideo"), true);
-            FullScreenMode = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Game/FullScreenMode"), false);
-            CheckUpdateOnStartup = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Game/CheckUpdatesOnStartup"), true);
+                ShowSplashVideo = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Game/ShowSplashVideo"), true);
+                FullScreenMode = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Game/FullScreenMode"), false);
+                CheckUpdateOnStartup = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Game/CheckUpdatesOnStartup"), true);
 
-            BattlefieldShowPath = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Battlefield/ShowPath"), false);
-            BattlefieldShowGrid = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Battlefield/ShowGrid"), false);
+                BattlefieldShowPath = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Battlefield/ShowPath"), false);
+                BattlefieldShowGrid = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Battlefield/ShowGrid"), false);
 
-            NamePlayer = XmlUtils.GetString(doc.SelectSingleNode("Settings/Player/Name"));
-            if (NamePlayer.Length == 0)
-                NamePlayer = "Игрок №1";
-            if (NamePlayer.Length > 31)
-                throw new Exception("Длина имени игрока более 31 символа.");
+                NamePlayer = XmlUtils.GetString(doc.SelectSingleNode("Settings/Player/Name"));
+                if (NamePlayer.Length == 0)
+                    NamePlayer = "Игрок №1";
+                if (NamePlayer.Length > 31)
+                    throw new Exception("Длина имени игрока более 31 символа.");
 
-            IndexInternalAvatar = XmlUtils.GetInteger(doc.SelectSingleNode("Settings/Player/IndexAvatar"));
-            if (IndexInternalAvatar < -1)
-                IndexInternalAvatar = 0;
-            FileNameAvatar = XmlUtils.GetString(doc.SelectSingleNode("Settings/Player/FileNameAvatar"));
-            DirectoryAvatar = XmlUtils.GetString(doc.SelectSingleNode("Settings/Player/DirectoryAvatar"));
+                IndexInternalAvatar = XmlUtils.GetInteger(doc.SelectSingleNode("Settings/Player/IndexAvatar"));
+                if (IndexInternalAvatar < -1)
+                    IndexInternalAvatar = 0;
+                FileNameAvatar = XmlUtils.GetString(doc.SelectSingleNode("Settings/Player/FileNameAvatar"));
+                DirectoryAvatar = XmlUtils.GetString(doc.SelectSingleNode("Settings/Player/DirectoryAvatar"));
+            }
             //if (IndexAvatar >= Program.formMain.ilPlayerAvatars.Images.Count)
             //    IndexAvatar = Program.formMain.ilPlayerAvatars.Images.Count - 1;
         }
 
-        internal bool ShowSplashVideo { get; set; }
-        internal bool FullScreenMode { get; set; }
-        internal bool CheckUpdateOnStartup { get; set; }
-        internal bool BattlefieldShowPath { get; set; }
-        internal bool BattlefieldShowGrid { get; set; }
+        internal bool ShowSplashVideo { get; set; } = true;
+        internal bool FullScreenMode { get; set; } = false;
+        internal bool CheckUpdateOnStartup { get; set; } = true;
+        internal bool BattlefieldShowPath { get; set; } = false;
+        internal bool BattlefieldShowGrid { get; set; } = false;
         internal string NamePlayer { get; set; }
         internal int IndexInternalAvatar { get; set; }
-        internal string FileNameAvatar { get; set; }
-        internal string DirectoryAvatar { get; set; }
+        internal string FileNameAvatar { get; set; } = "";
+        internal string DirectoryAvatar { get; set; } = "";
         internal Bitmap Avatar { get; private set; }
 
         internal void LoadAvatar()
