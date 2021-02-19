@@ -149,7 +149,6 @@ namespace Fantasy_Kingdoms_Battle
         private bool needRedrawFrame;
 
         private VCFormPage currentPage;
-        private readonly int leftForPages;
         private readonly int heightBandBuildings;
         private readonly VisualControl panelEmptyInfo;
         private readonly PanelBuildingInfo panelBuildingInfo;
@@ -367,10 +366,10 @@ namespace Fantasy_Kingdoms_Battle
                 MainControl = new VisualControl();
 
                 // Метки с информацией о Королевстве
-                labelDay = new VCToolLabel(MainControl, Config.GridSize, Config.GridSize, "", GUI_16_DAY);
+                labelDay = new VCToolLabel(MainControl, 0, 0, "", GUI_16_DAY);
                 labelDay.ShowHint += LabelDay_ShowHint;
                 labelDay.Width = 48;
-                labelGold = new VCToolLabel(MainControl, labelDay.NextLeft(), Config.GridSize, "", GUI_16_GOLD);
+                labelGold = new VCToolLabel(MainControl, labelDay.NextLeft(), 0, "", GUI_16_GOLD);
                 labelGold.ShowHint += LabelGold_ShowHint;
                 labelGold.Width = 160;
 
@@ -395,8 +394,6 @@ namespace Fantasy_Kingdoms_Battle
                     nextLeftPanelPlayer = pp.NextLeft();
                 }
                 panelPlayers.ApplyMaxSize();
-
-                leftForPages = Config.GridSize;// lobby.Players[0].Panel.NextLeft() + panelPlayers.ShiftX;
 
                 // Страницы игры
                 pageGuilds = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_GUILDS, "Гильдии", BtnPage_Click);
@@ -485,10 +482,10 @@ namespace Fantasy_Kingdoms_Battle
                 //Debug.Assert(widthRightPanel > panelMenu.Width);
 
                 // Учитываем плиту под слоты
-                bitmapMenu.ShiftX = leftForPages + maxWidthPages + Config.GridSize;
+                bitmapMenu.ShiftX = maxWidthPages + Config.GridSize;
                 bitmapMenu.ShiftX += (widthRightPanel - bitmapMenu.Width) / 2;
                 bitmapMenu.ShiftY = panelEmptyInfo.NextTop();
-                calcedWidth = leftForPages + maxWidthPages + widthRightPanel + Config.GridSize;
+                calcedWidth = maxWidthPages + widthRightPanel + Config.GridSize;
 
                 ArrangeControls();
 
@@ -502,7 +499,10 @@ namespace Fantasy_Kingdoms_Battle
                 //heightBandInfoAndMenu = panelMenu.Height + Math.Max(panelBuildingInfo.Height, panelHeroInfo.Height);
 
                 //
-                Width = (Width - ClientSize.Width) + calcedWidth + Config.GridSize;
+                MainControl.Width = calcedWidth;
+                MainControl.Height = calcedHeight;
+
+                Width = (Width - ClientSize.Width) + calcedWidth + (Config.GridSize * 2);// С краев - по GRID_SIZE
                 // Высота - это наибольшая высота бэндов лобби, зданий и информации с меню
                 calcedHeight = labelDay.NextTop() + Math.Max(pageHeroes.Page.Top + pageHeroes.Page.MaxSize().Height, heightBandBuildings);
                 Height = (Height - ClientSize.Height) + calcedHeight + Config.GridSize;
@@ -515,9 +515,6 @@ namespace Fantasy_Kingdoms_Battle
                 panelEmptyInfo.Height = panelBuildingInfo.Height;
 
                 bitmapMenu.ShiftY = panelEmptyInfo.NextTop();
-
-                MainControl.Width = calcedWidth;
-                MainControl.Height = calcedHeight;
 
                 SetStage("Прибираем после строителей");
                 // Перенести в класс
@@ -851,7 +848,7 @@ namespace Fantasy_Kingdoms_Battle
 
             ShowLobby();
 
-            int leftForNextButtonPage = shiftControls.X + leftForPages - Config.GridSize;
+            int leftForNextButtonPage = shiftControls.X - Config.GridSize;
             foreach (VCFormPage fp in pages)
             {
                 fp.ShiftX = leftForNextButtonPage;
@@ -861,11 +858,11 @@ namespace Fantasy_Kingdoms_Battle
                 leftForNextButtonPage = fp.NextLeft();
             }
 
-            btnQuit.ShiftX = shiftControls.X + minSizeForm.Width - btnQuit.Width - (Config.GridSize * 4);
+            btnQuit.ShiftX = MainControl.Width - btnQuit.Width;
             btnHelp.ShiftX = btnQuit.ShiftX - btnQuit.Width - Config.GridSize;
             btnPreferences.ShiftX = btnHelp.ShiftX - btnHelp.Width - Config.GridSize;
 
-            panelBuildingInfo.ShiftX = shiftControls.X + leftForPages + maxWidthPages;
+            panelBuildingInfo.ShiftX = shiftControls.X + maxWidthPages;
             panelLairInfo.ShiftX = panelBuildingInfo.ShiftX;
             panelHeroInfo.ShiftX = panelBuildingInfo.ShiftX;
             panelMonsterInfo.ShiftX = panelBuildingInfo.ShiftX;
