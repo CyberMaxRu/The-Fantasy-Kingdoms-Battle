@@ -23,8 +23,8 @@ namespace Fantasy_Kingdoms_Battle
         public VCCell(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY, Program.formMain.ilItems, -1)
         {
             HighlightUnderMouse = true;
-            ShiftImageX = 3;
-            ShiftImageY = 1;
+            ShiftImageX = 2;
+            ShiftImageY = 0;
 
             // Ставим размеры после изменения ShiftImageX и ShiftImageY, так так там меняется размер ячейки
             Width = Program.formMain.bmpBorderForIcon.Width;
