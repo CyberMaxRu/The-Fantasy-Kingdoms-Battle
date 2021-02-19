@@ -16,6 +16,9 @@ namespace Fantasy_Kingdoms_Battle
         private VCLabel labelPopupQuantity;
         private SolidBrush brushPopupQuantity;
 
+        private bool mouseOver;
+        private bool mouseClicked;
+
         public VCImage(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList, int imageIndex) : base(parent, shiftX, shiftY)
         {
             BitmapList = bitmapList;
@@ -56,7 +59,57 @@ namespace Fantasy_Kingdoms_Battle
         internal int Quantity { get; set; }
         internal int PopupQuantity { get; set; }
         internal bool HighlightUnderMouse { get; set; } = false;
+        internal bool UseFilter { get; set; } = false;
         internal ImageFilter ImageFilter { get; set; } = ImageFilter.None;
+
+        internal override void MouseEnter(bool leftButtonDown)
+        {
+            base.MouseEnter(leftButtonDown);
+
+            if (HighlightUnderMouse)
+            {
+                ImageState = ImageState.Over;
+                Program.formMain.NeedRedrawFrame();
+            }
+
+            mouseOver = true;
+            if (!leftButtonDown)
+                mouseClicked = false;
+            Program.formMain.ShowFrame();
+        }
+
+        internal override void MouseLeave()
+        {
+            base.MouseLeave();
+
+            if (HighlightUnderMouse)
+            {
+                ImageState = ImageState.Normal;
+                Program.formMain.NeedRedrawFrame();
+            }
+
+            mouseOver = false;
+            Program.formMain.ShowFrame();
+        }
+
+        internal override void MouseDown()
+        {
+            base.MouseDown();
+
+            mouseClicked = true;
+            Program.formMain.ShowFrame();
+        }
+
+        internal override void MouseUp()
+        {
+            base.MouseUp();
+
+            if (mouseClicked != false)
+            {
+                mouseClicked = false;
+                Program.formMain.ShowFrame();
+            }
+        }
 
         internal override void Draw(Graphics g)
         {
@@ -65,6 +118,16 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Quantity >= 0);
             Debug.Assert(PopupQuantity >= 0);
             Debug.Assert(PopupQuantity <= 9);
+
+            if ((BitmapList.Size == Program.formMain.ilMenuCellFilters.Size) && UseFilter && (ImageState != ImageState.Disabled))
+            {
+                if (mouseClicked && mouseOver)
+                    ImageFilter = ImageFilter.Press;
+                else if (mouseOver)
+                    ImageFilter = ImageFilter.Select;
+                else
+                    ImageFilter = ImageFilter.Active;
+            }
 
             base.Draw(g);
 
@@ -94,6 +157,29 @@ namespace Fantasy_Kingdoms_Battle
                     labelQuantity.Draw(g);
                 }
 
+                if (ImageFilter != ImageFilter.None)
+                {
+                    Debug.Assert(BitmapList.Size == Program.formMain.ilMenuCellFilters.Size);
+                }
+
+                switch (ImageFilter)
+                {
+                    case ImageFilter.Active:
+                        g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage(0, ImageState.Normal), Left + ShiftImageX, Top + ShiftImageY);
+                        break;
+                    case ImageFilter.Select:
+                        g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage(1, ImageState.Normal), Left + ShiftImageX, Top + ShiftImageY);
+                        break;
+                    case ImageFilter.Press:
+                        g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage(2, ImageState.Normal), Left + ShiftImageX, Top + ShiftImageY);
+                        break;
+                    case ImageFilter.Disabled:
+                        g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage(3, ImageState.Normal), Left + ShiftImageX, Top + ShiftImageY);
+                        break;
+                    default:
+                        break;
+                }
+
                 // Всплывающее количество 
                 if (PopupQuantity > 0)
                 {
@@ -101,24 +187,6 @@ namespace Fantasy_Kingdoms_Battle
 
                     labelPopupQuantity.Text = PopupQuantity.ToString();
                     labelPopupQuantity.Draw(g);
-                }
-
-                switch (ImageFilter)
-                {
-                    case ImageFilter.Active:
-                        g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage(0, ImageState.Normal), Left, Top);
-                        break;
-                    case ImageFilter.Select:
-                        g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage(1, ImageState.Normal), Left, Top);
-                        break;
-                    case ImageFilter.Press:
-                        g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage(2, ImageState.Normal), Left, Top);
-                        break;
-                    case ImageFilter.Disabled:
-                        g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage(3, ImageState.Normal), Left, Top);
-                        break;
-                    default:
-                        break;
                 }
             }
         }
@@ -138,28 +206,6 @@ namespace Fantasy_Kingdoms_Battle
 
             labelPopupQuantity.Width = labelPopupQuantity.Height;
             labelPopupQuantity.ShiftX = Width - 11;
-        }
-
-        internal override void MouseEnter(bool leftButtonDown)
-        {
-            base.MouseEnter(leftButtonDown);
-
-            if (HighlightUnderMouse)
-            {
-                ImageState = ImageState.Over;
-                Program.formMain.NeedRedrawFrame();
-            }
-        }
-
-        internal override void MouseLeave()
-        {
-            base.MouseLeave();
-
-            if (HighlightUnderMouse)
-            {
-                ImageState = ImageState.Normal;
-                Program.formMain.NeedRedrawFrame();
-            }
         }
     }
 }

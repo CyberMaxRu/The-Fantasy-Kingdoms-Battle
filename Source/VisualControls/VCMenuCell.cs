@@ -8,11 +8,10 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class VCMenuCell : VCImage
     {
         private PlayerResearch research;
-        private bool mouseOver;
-        private bool mouseClicked;
 
         public VCMenuCell(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList) : base(parent, shiftX, shiftY, bitmapList, -1)
         {
+            UseFilter = true;
         }
 
         internal override void DoClick()
@@ -34,67 +33,23 @@ namespace Fantasy_Kingdoms_Battle
             return true;
         }
 
-        internal override void MouseEnter(bool leftButtonDown)
-        {
-            base.MouseEnter(leftButtonDown);
-
-            mouseOver = true;
-            if (!leftButtonDown)
-                mouseClicked = false;
-            Program.formMain.ShowFrame();
-        }
-
-        internal override void MouseLeave()
-        {
-            base.MouseLeave();
-
-            mouseOver = false;
-            Program.formMain.ShowFrame();
-        }
-
-        internal override void MouseDown()
-        {
-            base.MouseDown();
-
-            mouseClicked = true;
-            Program.formMain.ShowFrame();
-        }
-
-        internal override void MouseUp()
-        {
-            base.MouseUp();
-
-            if (mouseClicked != false)
-            {
-                mouseClicked = false;
-                Program.formMain.ShowFrame();
-            }
-        }
-
         internal override void Draw(Graphics g)
         {
             if (research != null)
             {
                 Cost = research.Cost();
                 ImageIndex = research.Research.Entity.ImageIndex;
-            }
-            else
-                ImageIndex = -1;
 
-            if (research != null)
-            {
                 // Накладываем фильтр
                 if (!research.CheckRequirements())
                     ImageFilter = ImageFilter.Disabled;
-                else if (mouseClicked && mouseOver)
-                    ImageFilter = ImageFilter.Press;
-                else if (mouseOver)
-                    ImageFilter = ImageFilter.Select;
-                else
-                    ImageFilter = ImageFilter.Active;
+
             }
             else
+            {
+                ImageIndex = -1;
                 ImageFilter = ImageFilter.None;
+            }
 
             base.Draw(g);
         }
