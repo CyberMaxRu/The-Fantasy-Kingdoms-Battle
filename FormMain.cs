@@ -220,345 +220,353 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Загружаем настройки
-            Settings = new Settings(dirResources);
-
-            MainConfig = new MainConfig(dirResources);
-
-            // Если включено автообновление, проверяем на их наличие
-            if (Settings.CheckUpdateOnStartup)
+            try
             {
-                CheckForNewVersion();
-            }
+                Settings = new Settings(dirResources);
 
-            fontSmallContur = new M2Font(dirResources);
+                MainConfig = new MainConfig(dirResources);
 
-            // Формируем и показываем сплэш-заставку
-            Image splashBitmap = new Bitmap(dirResources + "\\Icons\\Splash.png");
-
-            Form splashForm = new Form()
-            {
-                StartPosition = FormStartPosition.CenterScreen,
-                ShowInTaskbar = false,
-                FormBorderStyle = FormBorderStyle.None,
-                ClientSize = splashBitmap.Size,
-                BackgroundImage = splashBitmap,
-                TopMost = true
-            };
-
-            Label lblCaption = new Label()
-            {
-                Parent = splashForm,
-                AutoSize = false,
-                TextAlign = ContentAlignment.MiddleCenter,
-                Top = 8,
-                Left = 0,
-                Height = 32,
-                Width = splashForm.ClientSize.Width,
-                ForeColor = Color.SkyBlue,
-                BackColor = Color.Transparent,
-                Font = new Font("Times New Roman", 16, FontStyle.Bold),
-                Text = "The Fantasy Kingdoms Battle"
-            };
-
-            Label lblStage = new Label()
-            {
-                Parent = splashForm,
-                AutoSize = false,
-                TextAlign = ContentAlignment.MiddleCenter,
-                Top = splashForm.ClientSize.Height - 32,
-                Left = 0,
-                Width = splashForm.ClientSize.Width,
-                ForeColor = Color.LightBlue,
-                BackColor = Color.Transparent,
-                Font = new Font("Times New Roman", 13)
-            };
-
-            splashForm.Show();
-            splashForm.Refresh();
-
-            // Загружаем конфигурацию
-            SetStage("Открываем сундуки");
-            _ = new Config(dirResources, this);
-
-            brushQuantity = new SolidBrush(Config.CommonQuantity);
-            brushCost = new SolidBrush(Config.CommonCost);
-
-            // Загружаем иконки
-            SetStage("Рассматриваем картины");
-
-            bmpMaskBig = new Bitmap(dirResources + @"Icons\MaskBig.png");
-            bmpMaskSmall = new Bitmap(dirResources + @"Icons\MaskSmall.png");// Нужна ли еще?
-
-            ilResultBattle = new BitmapList(dirResources, "ResultBattle.png", 24, ImageState.Normal);
-            imListObjectsBig = new BitmapList(dirResources, "Objects.png", 128, ImageState.Over);
-
-            // Добавляем в список иконок аватарки игроков
-            // Для этого создаем отдельный список оригинальных аватарок, из которого уже будем составлять итоговый
-            ImageIndexFirstAvatar = imListObjectsBig.Count;
-            blPlayerAvatars = new BitmapList(dirResources, "Avatars.png", 128, ImageState.Normal);
-            for (int i = 0; i < blPlayerAvatars.Count; i++)
-                imListObjectsBig.Add(blPlayerAvatars.GetImage(i, ImageState.Normal));
-
-            ValidateAvatars();
-
-            imListObjectsCell = new BitmapList(imListObjectsBig, 48, Config.BorderInBigIcons, bmpMaskSmall);
-
-            ilGui16 = new BitmapList(dirResources, "Gui16.png", 16, ImageState.Normal);
-            ilGui24 = new BitmapList(dirResources, "Gui24.png", 24, ImageState.Normal);
-            ilParameters = new BitmapList(dirResources, "Parameters.png", 24, ImageState.Normal);
-            ilItems = new BitmapList(dirResources, "Items.png", 48, ImageState.Over);
-            ilStateHero = new BitmapList(dirResources, "StateHero.png", 24, ImageState.Normal);
-            ilMenuCellFilters = new BitmapList(dirResources, "MenuCellFilters.png", 48, ImageState.Normal);
-
-            ilGui = new BitmapList(dirResources, "Gui.png", 48, ImageState.Over);
-            //MakeAlpha();
-
-            bmpForBackground = new Bitmap(dirResources + "Icons\\Background.png");
-            bmpBorderForIcon = new Bitmap(dirResources + "Icons\\BorderIconEntity.png");
-            bmpEmptyEntity = new Bitmap(dirResources + "Icons\\EmptyEntity.png");
-            bmpBorderBattlefield = new Bitmap(dirResources + "Icons\\BorderBattlefield.png");
-            LengthSideBorderBattlefield = bmpBorderBattlefield.Width - (Config.WidthBorderBattlefield * 2);
-            Debug.Assert(LengthSideBorderBattlefield > 0);
-
-            // Делаем рамки для союзников и врагов
-            bmpBorderForIconAlly = new Bitmap(bmpBorderForIcon);
-            bmpBorderForIconEnemy = new Bitmap(bmpBorderForIcon);
-            Color orgColor;
-            for (int y = 0; y < bmpBorderForIcon.Height; y++)
-                for (int x = 0; x < bmpBorderForIcon.Width; x++)
+                // Если включено автообновление, проверяем на их наличие
+                if (Settings.CheckUpdateOnStartup)
                 {
-                    // получаем (i, j) пиксель
-                    uint pixel = (uint)(bmpBorderForIcon.GetPixel(x, y).ToArgb());
-
-                    // получаем компоненты цветов пикселя
-                    float R = (pixel & 0x00FF0000) >> 16; // красный
-                    float G = (pixel & 0x0000FF00) >> 8; // зеленый
-                    float B = pixel & 0x000000FF; // синий
-                                                  // делаем цвет черно-белым (оттенки серого) - находим среднее арифметическое
-                    R = G = B = (R + G + B) / 3.0f;
-
-                    // собираем новый пиксель по частям (по каналам)
-                    float G2 = G + 64.0f;
-                    if (G2 > 255)
-                        G2 = 255;
-                    uint newPixel = ((uint)bmpBorderForIcon.GetPixel(x, y).A << 24) | ((uint)G2 << 8);
-                    //                    uint newPixel = ((uint)bmpBorderForIcon.GetPixel(x, y).A << 24) | ((uint)R << 16) | ((uint)G << 8) | ((uint)B);
-
-                    // добавляем его в Bitmap нового изображения
-                    bmpBorderForIconAlly.SetPixel(x, y, Color.FromArgb((int)newPixel));
-
-                    float R2 = R + 64.0f;
-                    if (R2 > 255)
-                        R2 = 255;
-                    newPixel = ((uint)bmpBorderForIcon.GetPixel(x, y).A << 24) | ((uint)R2 << 16);
-                    bmpBorderForIconEnemy.SetPixel(x, y, Color.FromArgb((int)newPixel));
-
-                    //orgColor = bmpBorderForIcon.GetPixel(x, y);
-                    //bmpBorderForIconAlly.SetPixel(x, y, Color.FromArgb(orgColor.A, orgColor.R, 192, orgColor.B));
-                    //bmpBorderForIconEnemy.SetPixel(x, y, Color.FromArgb(orgColor.A, 192, orgColor.G, orgColor.B));
+                    CheckForNewVersion();
                 }
 
-            // Создаем лобби
-            // Переместить уже после создания всех контролов, чтобы обеспечить связь лобби-контролы
-            lobby = new Lobby(Config.TypeLobbies[0]);
+                fontSmallContur = new M2Font(dirResources);
 
-            SetStage("Строим замок");
+                // Формируем и показываем сплэш-заставку
+                Image splashBitmap = new Bitmap(dirResources + "\\Icons\\Splash.png");
 
-            //
-            MainControl = new VisualControl();
+                Form splashForm = new Form()
+                {
+                    StartPosition = FormStartPosition.CenterScreen,
+                    ShowInTaskbar = false,
+                    FormBorderStyle = FormBorderStyle.None,
+                    ClientSize = splashBitmap.Size,
+                    BackgroundImage = splashBitmap,
+                    TopMost = true
+                };
 
-            // Метки с информацией о Королевстве
-            labelDay = new VCToolLabel(MainControl, Config.GridSize, Config.GridSize, "", GUI_16_DAY);
-            labelDay.ShowHint += LabelDay_ShowHint;
-            labelDay.Width = 48;
-            labelGold = new VCToolLabel(MainControl, labelDay.NextLeft(), Config.GridSize, "", GUI_16_GOLD);
-            labelGold.ShowHint += LabelGold_ShowHint;
-            labelGold.Width = 160;
+                Label lblCaption = new Label()
+                {
+                    Parent = splashForm,
+                    AutoSize = false,
+                    TextAlign = ContentAlignment.MiddleCenter,
+                    Top = 8,
+                    Left = 0,
+                    Height = 32,
+                    Width = splashForm.ClientSize.Width,
+                    ForeColor = Color.SkyBlue,
+                    BackColor = Color.Transparent,
+                    Font = new Font("Times New Roman", 16, FontStyle.Bold),
+                    Text = "The Fantasy Kingdoms Battle"
+                };
 
-            // Кнопки в правом верхнем углу
-            btnPreferences = CreateButton(ilGui, GUI_INVENTORY, 0, labelDay.NextTop(), BtnPreferences_Click, BtnPreferences_MouseHover);
-            btnHelp = CreateButton(ilGui, GUI_BOOK, 0, btnPreferences.ShiftY, BtnHelp_Click, BtnHelp_MouseHover);
-            btnQuit = CreateButton(ilGui, GUI_EXIT, 0, btnPreferences.ShiftY, BtnQuit_Click, BtnQuit_MouseHover);
+                Label lblStage = new Label()
+                {
+                    Parent = splashForm,
+                    AutoSize = false,
+                    TextAlign = ContentAlignment.MiddleCenter,
+                    Top = splashForm.ClientSize.Height - 32,
+                    Left = 0,
+                    Width = splashForm.ClientSize.Width,
+                    ForeColor = Color.LightBlue,
+                    BackColor = Color.Transparent,
+                    Font = new Font("Times New Roman", 13)
+                };
 
-            btnTarget = CreateButton(imListObjectsCell, -1, 0, btnPreferences.ShiftY, BtnTarget_Click, BtnTarget_MouseHover);
-            btnEndTurn = CreateButton(ilGui, GUI_HOURGLASS, 0, btnPreferences.ShiftY, BtnEndTurn_Click, BtnEndTurn_MouseHover);
+                splashForm.Show();
+                splashForm.Refresh();
 
-            // Создаем панели игроков в левой части окна
-            panelPlayers = new VisualControl();
+                // Загружаем конфигурацию
+                SetStage("Открываем сундуки");
+                _ = new Config(dirResources, this);
 
-            PanelPlayer pp;
-            int nextLeftPanelPlayer = 0;
-            foreach (Player p in lobby.Players)
-            {
-                pp = new PanelPlayer(panelPlayers, nextLeftPanelPlayer, 0);
-                // !!! Эту привязку переместить в StartNewLobby()
-                pp.LinkToLobby(p);
-                nextLeftPanelPlayer = pp.NextLeft();
+                brushQuantity = new SolidBrush(Config.CommonQuantity);
+                brushCost = new SolidBrush(Config.CommonCost);
+
+                // Загружаем иконки
+                SetStage("Рассматриваем картины");
+
+                bmpMaskBig = new Bitmap(dirResources + @"Icons\MaskBig.png");
+                bmpMaskSmall = new Bitmap(dirResources + @"Icons\MaskSmall.png");// Нужна ли еще?
+
+                ilResultBattle = new BitmapList(dirResources, "ResultBattle.png", 24, ImageState.Normal);
+                imListObjectsBig = new BitmapList(dirResources, "Objects.png", 128, ImageState.Over);
+
+                // Добавляем в список иконок аватарки игроков
+                // Для этого создаем отдельный список оригинальных аватарок, из которого уже будем составлять итоговый
+                ImageIndexFirstAvatar = imListObjectsBig.Count;
+                blPlayerAvatars = new BitmapList(dirResources, "Avatars.png", 128, ImageState.Normal);
+                for (int i = 0; i < blPlayerAvatars.Count; i++)
+                    imListObjectsBig.Add(blPlayerAvatars.GetImage(i, ImageState.Normal));
+
+                ValidateAvatars();
+
+                imListObjectsCell = new BitmapList(imListObjectsBig, 48, Config.BorderInBigIcons, bmpMaskSmall);
+
+                ilGui16 = new BitmapList(dirResources, "Gui16.png", 16, ImageState.Normal);
+                ilGui24 = new BitmapList(dirResources, "Gui24.png", 24, ImageState.Normal);
+                ilParameters = new BitmapList(dirResources, "Parameters.png", 24, ImageState.Normal);
+                ilItems = new BitmapList(dirResources, "Items.png", 48, ImageState.Over);
+                ilStateHero = new BitmapList(dirResources, "StateHero.png", 24, ImageState.Normal);
+                ilMenuCellFilters = new BitmapList(dirResources, "MenuCellFilters.png", 48, ImageState.Normal);
+
+                ilGui = new BitmapList(dirResources, "Gui.png", 48, ImageState.Over);
+                //MakeAlpha();
+
+                bmpForBackground = new Bitmap(dirResources + "Icons\\Background.png");
+                bmpBorderForIcon = new Bitmap(dirResources + "Icons\\BorderIconEntity.png");
+                bmpEmptyEntity = new Bitmap(dirResources + "Icons\\EmptyEntity.png");
+                bmpBorderBattlefield = new Bitmap(dirResources + "Icons\\BorderBattlefield.png");
+                LengthSideBorderBattlefield = bmpBorderBattlefield.Width - (Config.WidthBorderBattlefield * 2);
+                Debug.Assert(LengthSideBorderBattlefield > 0);
+
+                // Делаем рамки для союзников и врагов
+                bmpBorderForIconAlly = new Bitmap(bmpBorderForIcon);
+                bmpBorderForIconEnemy = new Bitmap(bmpBorderForIcon);
+                Color orgColor;
+                for (int y = 0; y < bmpBorderForIcon.Height; y++)
+                    for (int x = 0; x < bmpBorderForIcon.Width; x++)
+                    {
+                        // получаем (i, j) пиксель
+                        uint pixel = (uint)(bmpBorderForIcon.GetPixel(x, y).ToArgb());
+
+                        // получаем компоненты цветов пикселя
+                        float R = (pixel & 0x00FF0000) >> 16; // красный
+                        float G = (pixel & 0x0000FF00) >> 8; // зеленый
+                        float B = pixel & 0x000000FF; // синий
+                                                      // делаем цвет черно-белым (оттенки серого) - находим среднее арифметическое
+                        R = G = B = (R + G + B) / 3.0f;
+
+                        // собираем новый пиксель по частям (по каналам)
+                        float G2 = G + 64.0f;
+                        if (G2 > 255)
+                            G2 = 255;
+                        uint newPixel = ((uint)bmpBorderForIcon.GetPixel(x, y).A << 24) | ((uint)G2 << 8);
+                        //                    uint newPixel = ((uint)bmpBorderForIcon.GetPixel(x, y).A << 24) | ((uint)R << 16) | ((uint)G << 8) | ((uint)B);
+
+                        // добавляем его в Bitmap нового изображения
+                        bmpBorderForIconAlly.SetPixel(x, y, Color.FromArgb((int)newPixel));
+
+                        float R2 = R + 64.0f;
+                        if (R2 > 255)
+                            R2 = 255;
+                        newPixel = ((uint)bmpBorderForIcon.GetPixel(x, y).A << 24) | ((uint)R2 << 16);
+                        bmpBorderForIconEnemy.SetPixel(x, y, Color.FromArgb((int)newPixel));
+
+                        //orgColor = bmpBorderForIcon.GetPixel(x, y);
+                        //bmpBorderForIconAlly.SetPixel(x, y, Color.FromArgb(orgColor.A, orgColor.R, 192, orgColor.B));
+                        //bmpBorderForIconEnemy.SetPixel(x, y, Color.FromArgb(orgColor.A, 192, orgColor.G, orgColor.B));
+                    }
+
+                // Создаем лобби
+                // Переместить уже после создания всех контролов, чтобы обеспечить связь лобби-контролы
+                lobby = new Lobby(Config.TypeLobbies[0]);
+
+                SetStage("Строим замок");
+
+                //
+                MainControl = new VisualControl();
+
+                // Метки с информацией о Королевстве
+                labelDay = new VCToolLabel(MainControl, Config.GridSize, Config.GridSize, "", GUI_16_DAY);
+                labelDay.ShowHint += LabelDay_ShowHint;
+                labelDay.Width = 48;
+                labelGold = new VCToolLabel(MainControl, labelDay.NextLeft(), Config.GridSize, "", GUI_16_GOLD);
+                labelGold.ShowHint += LabelGold_ShowHint;
+                labelGold.Width = 160;
+
+                // Кнопки в правом верхнем углу
+                btnPreferences = CreateButton(ilGui, GUI_INVENTORY, 0, labelDay.NextTop(), BtnPreferences_Click, BtnPreferences_MouseHover);
+                btnHelp = CreateButton(ilGui, GUI_BOOK, 0, btnPreferences.ShiftY, BtnHelp_Click, BtnHelp_MouseHover);
+                btnQuit = CreateButton(ilGui, GUI_EXIT, 0, btnPreferences.ShiftY, BtnQuit_Click, BtnQuit_MouseHover);
+
+                btnTarget = CreateButton(imListObjectsCell, -1, 0, btnPreferences.ShiftY, BtnTarget_Click, BtnTarget_MouseHover);
+                btnEndTurn = CreateButton(ilGui, GUI_HOURGLASS, 0, btnPreferences.ShiftY, BtnEndTurn_Click, BtnEndTurn_MouseHover);
+
+                // Создаем панели игроков в левой части окна
+                panelPlayers = new VisualControl();
+
+                PanelPlayer pp;
+                int nextLeftPanelPlayer = 0;
+                foreach (Player p in lobby.Players)
+                {
+                    pp = new PanelPlayer(panelPlayers, nextLeftPanelPlayer, 0);
+                    // !!! Эту привязку переместить в StartNewLobby()
+                    pp.LinkToLobby(p);
+                    nextLeftPanelPlayer = pp.NextLeft();
+                }
+                panelPlayers.ApplyMaxSize();
+
+                leftForPages = Config.GridSize;// lobby.Players[0].Panel.NextLeft() + panelPlayers.ShiftX;
+
+                // Страницы игры
+                pageGuilds = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_GUILDS, "Гильдии", BtnPage_Click);
+                pageGuilds.ShowHint += PageGuilds_ShowHint;
+                pageBuildings = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_ECONOMY, "Экономические строения", BtnPage_Click);
+                pageBuildings.ShowHint += PageBuildings_ShowHint;
+                pageTemples = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_TEMPLE, "Храмы", BtnPage_Click);
+                pageHeroes = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_HEROES, "Герои", BtnPage_Click);
+                pageHeroes.ShowCostZero = true;
+                pageHeroes.ShowHint += PageHeroes_ShowHint;
+                pageLairs = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_LAIR, "Логова", BtnPage_Click);
+                pageTournament = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_TOURNAMENT, "Турнир", BtnPage_Click);
+                pageTournament.ShowHint += PageTournament_ShowHint;
+
+                DrawPageConstructions();
+                DrawHeroes();
+                DrawWarehouse();
+                DrawPageLair();
+
+                ShowDataPlayer();
+
+                //foreach (ControlContainer cc in pages)
+                //{
+                //    cc.SetVisible(false);
+                //}
+
+                // Определяем максимальную ширину страниц
+                int maxHeightPages = 0;
+                Size maxSizePanelPage;
+
+                foreach (VCFormPage pc in pages)
+                {
+                    maxSizePanelPage = pc.Page.MaxSize();
+                    maxWidthPages = Math.Max(maxWidthPages, maxSizePanelPage.Width);
+                    maxHeightPages = Math.Max(maxHeightPages, maxSizePanelPage.Height);
+                }
+
+                /*            foreach (PanelPage pc in pages)
+                            {
+                                pc.Width = maxWidthPages;
+                                pc.Height = maxHeightPages;
+                            }*/
+
+                // Создаем панель с меню
+                bitmapMenu = new VCBitmap(MainControl, 0, 0, new Bitmap(dirResources + @"Icons\Menu.png"));
+                bitmapMenu.ShiftY = ClientSize.Height - bitmapMenu.Height - Config.GridSize;
+
+                CellsMenu = new VCMenuCell[PANEL_MENU_CELLS.Height, PANEL_MENU_CELLS.Width];
+                for (int y = 0; y < PANEL_MENU_CELLS.Height; y++)
+                    for (int x = 0; x < PANEL_MENU_CELLS.Width; x++)
+                        CellsMenu[y, x] = new VCMenuCell(bitmapMenu, DISTANCE_BETWEEN_CELLS + (x * (ilItems.Size + DISTANCE_BETWEEN_CELLS)), DISTANCE_BETWEEN_CELLS + (y * (ilItems.Size + DISTANCE_BETWEEN_CELLS)), ilItems);
+
+                // Пустая панель
+                panelEmptyInfo = new VisualControl(MainControl, 0, btnQuit.NextTop());
+                panelEmptyInfo.ShowBorder = true;
+
+                // Панель информации о здании
+                panelBuildingInfo = new PanelBuildingInfo(MainControl, 0, btnQuit.NextTop(), bitmapMenu.ShiftY - pageGuilds.NextTop() - Config.GridSize)
+                {
+                    Visible = false
+                };
+
+                // Панель информации о логове
+                panelLairInfo = new PanelLairInfo(MainControl, 0, btnQuit.NextTop(), bitmapMenu.Top - pageGuilds.NextTop() - Config.GridSize)
+                {
+                    Visible = false
+                };
+
+                //
+                panelHeroInfo = new PanelHeroInfo(MainControl, 0, btnQuit.NextTop(), panelBuildingInfo.Height)
+                {
+                    Visible = false
+                };
+
+                panelMonsterInfo = new PanelMonsterInfo(MainControl, 0, btnQuit.NextTop(), panelBuildingInfo.Height)
+                {
+                    Visible = false
+                };
+
+                // Подбираем ширину правой части
+                panelBuildingInfo.Width = panelHeroInfo.Width;
+                panelLairInfo.Width = panelHeroInfo.Width;
+                panelMonsterInfo.Width = panelHeroInfo.Width;
+                panelEmptyInfo.Width = panelHeroInfo.Width;
+                int widthRightPanel = Math.Max(bitmapMenu.Width, panelHeroInfo.Width);
+                //Debug.Assert(widthRightPanel > panelMenu.Width);
+
+                // Учитываем плиту под слоты
+                bitmapMenu.ShiftX = leftForPages + maxWidthPages + Config.GridSize;
+                bitmapMenu.ShiftX += (widthRightPanel - bitmapMenu.Width) / 2;
+                bitmapMenu.ShiftY = panelEmptyInfo.NextTop();
+                calcedWidth = leftForPages + maxWidthPages + widthRightPanel + Config.GridSize;
+
+                ArrangeControls();
+
+                // Определяем высоту бэнда зданий
+                heightBandBuildings = 0;
+                foreach (TypeEconomicConstruction tec in Config.TypeEconomicConstructions)
+                    if (tec.Panel != null)
+                        heightBandBuildings = Math.Max(heightBandBuildings, tec.Panel.Height + tec.Panel.Top);
+
+                // Определяем высоту бэнда информации
+                //heightBandInfoAndMenu = panelMenu.Height + Math.Max(panelBuildingInfo.Height, panelHeroInfo.Height);
+
+                //
+                Width = (Width - ClientSize.Width) + calcedWidth + Config.GridSize;
+                // Высота - это наибольшая высота бэндов лобби, зданий и информации с меню
+                calcedHeight = labelDay.NextTop() + Math.Max(pageHeroes.Page.Top + pageHeroes.Page.MaxSize().Height, heightBandBuildings);
+                Height = (Height - ClientSize.Height) + calcedHeight + Config.GridSize;
+                minSizeForm = new Size(Width, Height);
+
+                panelBuildingInfo.Height = ClientSize.Height - panelBuildingInfo.Top - bitmapMenu.Height - (Config.GridSize * 2);
+                panelLairInfo.Height = panelBuildingInfo.Height;
+                panelHeroInfo.Height = panelBuildingInfo.Height;
+                panelMonsterInfo.Height = panelBuildingInfo.Height;
+                panelEmptyInfo.Height = panelBuildingInfo.Height;
+
+                bitmapMenu.ShiftY = panelEmptyInfo.NextTop();
+
+                MainControl.Width = calcedWidth;
+                MainControl.Height = calcedHeight;
+
+                SetStage("Прибираем после строителей");
+                // Перенести в класс
+                for (int i = 0; i < panelHeroInfo.slots.Count; i++)
+                {
+                    //panelHeroInfo.slots[i].MouseDown += PanelCellHero_MouseDown;
+                    //panelHeroInfo.slots[i].MouseUp += PanelCellHero_MouseUp;
+                    //panelHeroInfo.slots[i].MouseMove += PanelCell_MouseMove;
+                }
+
+                //
+
+                PrepareBackground();
+
+                ActivatePage(pageGuilds);
+
+                formHint = new FormHint(null, null);
+                //formHint = new FormHint(ilGui16, ilParameters);
+
+                ValidateAvatars();
+
+                splashForm.Dispose();
+
+                //
+                timerHover = new Timer();
+                timerHover.Interval = SystemInformation.MouseHoverTime;
+                timerHover.Enabled = false;
+                timerHover.Tick += TimerHover_Tick;
+
+                //
+                Location = new Point((Screen.PrimaryScreen.WorkingArea.Width - Width) / 2, (Screen.PrimaryScreen.WorkingArea.Height - Height) / 2);
+                ApplyFullScreen(true);
+
+                ShowFrame();
+
+                // 
+                void SetStage(string text)
+                {
+                    lblStage.Text = text + "...";
+                    lblStage.Refresh();
+                }
             }
-            panelPlayers.ApplyMaxSize();
-
-            leftForPages = Config.GridSize;// lobby.Players[0].Panel.NextLeft() + panelPlayers.ShiftX;
-
-            // Страницы игры
-            pageGuilds = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_GUILDS, "Гильдии", BtnPage_Click);
-            pageGuilds.ShowHint += PageGuilds_ShowHint;
-            pageBuildings = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_ECONOMY, "Экономические строения", BtnPage_Click);
-            pageBuildings.ShowHint += PageBuildings_ShowHint;
-            pageTemples = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_TEMPLE, "Храмы", BtnPage_Click);
-            pageHeroes = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_HEROES, "Герои", BtnPage_Click);
-            pageHeroes.ShowCostZero = true;
-            pageHeroes.ShowHint += PageHeroes_ShowHint;
-            pageLairs = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_LAIR, "Логова", BtnPage_Click);
-            pageTournament = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_TOURNAMENT, "Турнир", BtnPage_Click);
-            pageTournament.ShowHint += PageTournament_ShowHint;
-
-            DrawPageConstructions();
-            DrawHeroes();
-            DrawWarehouse();
-            DrawPageLair();
-
-            ShowDataPlayer();
-
-            //foreach (ControlContainer cc in pages)
-            //{
-            //    cc.SetVisible(false);
-            //}
-
-            // Определяем максимальную ширину страниц
-            int maxHeightPages = 0;
-            Size maxSizePanelPage;
-
-            foreach (VCFormPage pc in pages)
+            catch (Exception exc)
             {
-                maxSizePanelPage = pc.Page.MaxSize();
-                maxWidthPages = Math.Max(maxWidthPages, maxSizePanelPage.Width);
-                maxHeightPages = Math.Max(maxHeightPages, maxSizePanelPage.Height);
-            }
-
-            /*            foreach (PanelPage pc in pages)
-                        {
-                            pc.Width = maxWidthPages;
-                            pc.Height = maxHeightPages;
-                        }*/
-
-            // Создаем панель с меню
-            bitmapMenu = new VCBitmap(MainControl, 0, 0, new Bitmap(dirResources + @"Icons\Menu.png"));
-            bitmapMenu.ShiftY = ClientSize.Height - bitmapMenu.Height - Config.GridSize;
-
-            CellsMenu = new VCMenuCell[PANEL_MENU_CELLS.Height, PANEL_MENU_CELLS.Width];
-            for (int y = 0; y < PANEL_MENU_CELLS.Height; y++)
-                for (int x = 0; x < PANEL_MENU_CELLS.Width; x++)
-                    CellsMenu[y, x] = new VCMenuCell(bitmapMenu, DISTANCE_BETWEEN_CELLS + (x * (ilItems.Size + DISTANCE_BETWEEN_CELLS)), DISTANCE_BETWEEN_CELLS + (y * (ilItems.Size + DISTANCE_BETWEEN_CELLS)), ilItems);
-
-            // Пустая панель
-            panelEmptyInfo = new VisualControl(MainControl, 0, btnQuit.NextTop());
-            panelEmptyInfo.ShowBorder = true;
-
-            // Панель информации о здании
-            panelBuildingInfo = new PanelBuildingInfo(MainControl, 0, btnQuit.NextTop(), bitmapMenu.ShiftY - pageGuilds.NextTop() - Config.GridSize)
-            {
-                Visible = false
-            };
-
-            // Панель информации о логове
-            panelLairInfo = new PanelLairInfo(MainControl, 0, btnQuit.NextTop(), bitmapMenu.Top - pageGuilds.NextTop() - Config.GridSize)
-            {
-                Visible = false
-            };
-
-            //
-            panelHeroInfo = new PanelHeroInfo(MainControl, 0, btnQuit.NextTop(), panelBuildingInfo.Height)
-            {
-                Visible = false
-            };
-
-            panelMonsterInfo = new PanelMonsterInfo(MainControl, 0, btnQuit.NextTop(), panelBuildingInfo.Height)
-            {
-                Visible = false
-            };
-
-            // Подбираем ширину правой части
-            panelBuildingInfo.Width = panelHeroInfo.Width;
-            panelLairInfo.Width = panelHeroInfo.Width;
-            panelMonsterInfo.Width = panelHeroInfo.Width;
-            panelEmptyInfo.Width = panelHeroInfo.Width;
-            int widthRightPanel = Math.Max(bitmapMenu.Width, panelHeroInfo.Width);
-            //Debug.Assert(widthRightPanel > panelMenu.Width);
-
-            // Учитываем плиту под слоты
-            bitmapMenu.ShiftX = leftForPages + maxWidthPages + Config.GridSize;
-            bitmapMenu.ShiftY = ClientSize.Height - bitmapMenu.Height - Config.GridSize;
-            bitmapMenu.ShiftX += (widthRightPanel - bitmapMenu.Width) / 2;
-            calcedWidth = leftForPages + maxWidthPages + widthRightPanel + Config.GridSize;
-
-            ArrangeControls();
-
-            // Определяем высоту бэнда зданий
-            heightBandBuildings = 0;
-            foreach (TypeEconomicConstruction tec in Config.TypeEconomicConstructions)
-                if (tec.Panel != null)
-                    heightBandBuildings = Math.Max(heightBandBuildings, tec.Panel.Height + tec.Panel.Top);
-
-            // Определяем высоту бэнда информации
-            //heightBandInfoAndMenu = panelMenu.Height + Math.Max(panelBuildingInfo.Height, panelHeroInfo.Height);
-
-            //
-            Width = (Width - ClientSize.Width) + calcedWidth + Config.GridSize;
-            // Высота - это наибольшая высота бэндов лобби, зданий и информации с меню
-            calcedHeight = labelDay.NextTop() + Math.Max(pageHeroes.Page.Top + pageHeroes.Page.MaxSize().Height, heightBandBuildings);
-            Height = (Height - ClientSize.Height) + calcedHeight + Config.GridSize;
-            minSizeForm = new Size(Width, Height);
-
-            bitmapMenu.ShiftY = ClientSize.Height - bitmapMenu.Height - Config.GridSize;
-
-            panelBuildingInfo.Height = ClientSize.Height - panelBuildingInfo.Top - bitmapMenu.Height - (Config.GridSize * 2);
-            panelLairInfo.Height = panelBuildingInfo.Height;
-            panelHeroInfo.Height = panelBuildingInfo.Height;
-            panelMonsterInfo.Height = panelBuildingInfo.Height;
-            panelEmptyInfo.Height = panelBuildingInfo.Height;
-
-            MainControl.Width = calcedWidth;
-            MainControl.Height = calcedHeight;
-
-            SetStage("Прибираем после строителей");
-            // Перенести в класс
-            for (int i = 0; i < panelHeroInfo.slots.Count; i++)
-            {
-                //panelHeroInfo.slots[i].MouseDown += PanelCellHero_MouseDown;
-                //panelHeroInfo.slots[i].MouseUp += PanelCellHero_MouseUp;
-                //panelHeroInfo.slots[i].MouseMove += PanelCell_MouseMove;
-            }
-
-            //
-
-            PrepareBackground();
-
-            ActivatePage(pageGuilds);
-
-            formHint = new FormHint(null, null);
-            //formHint = new FormHint(ilGui16, ilParameters);
-
-            ValidateAvatars();
-
-            splashForm.Dispose();
-
-            //
-            timerHover = new Timer();
-            timerHover.Interval = SystemInformation.MouseHoverTime;
-            timerHover.Enabled = false;
-            timerHover.Tick += TimerHover_Tick;
-
-            //
-            Location = new Point((Screen.PrimaryScreen.WorkingArea.Width - Width) / 2, (Screen.PrimaryScreen.WorkingArea.Height - Height) / 2);
-            ApplyFullScreen(true);
-
-            ShowFrame();
-
-            // 
-            void SetStage(string text)
-            {
-                lblStage.Text = text + "...";
-                lblStage.Refresh();
+                MessageBox.Show(exc.Message + Environment.NewLine + exc.StackTrace);
+                Environment.Exit(-1);
             }
         }
 
