@@ -151,16 +151,13 @@ namespace Fantasy_Kingdoms_Battle
         private VCFormPage currentPage;
         private readonly int leftForPages;
         private readonly int heightBandBuildings;
-        private readonly int heightBandInfoAndMenu;
         private readonly VisualControl panelEmptyInfo;
         private readonly PanelBuildingInfo panelBuildingInfo;
         internal readonly PanelLairInfo panelLairInfo;
         private readonly PanelHeroInfo panelHeroInfo;
         private readonly PanelMonsterInfo panelMonsterInfo;
         internal VCCell SelectedPanelEntity;
-        private readonly List<PanelConstruction> listPanelBuildings = new List<PanelConstruction>();
 
-        private List<PictureBox> SlotSkill = new List<PictureBox>();
         internal VCMenuCell[,] CellsMenu { get; }
 
         internal FormHint formHint;
