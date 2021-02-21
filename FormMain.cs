@@ -153,6 +153,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly PanelHeroInfo panelHeroInfo;
         private readonly PanelMonsterInfo panelMonsterInfo;
         internal VCCell SelectedPanelEntity;
+        private Rectangle rectBorderAroungGamespace;
 
         internal VCMenuCell[,] CellsMenu { get; }
 
@@ -809,6 +810,8 @@ namespace Fantasy_Kingdoms_Battle
             MainControl.SetPos(shiftControls.X, panelPlayers.Top + panelPlayers.Height + Config.GridSize);
 
             MainControl.ArrangeControls();
+
+            rectBorderAroungGamespace = new Rectangle(shiftControls.X - Config.GridSize - 1, shiftControls.Y - Config.GridSize - 1, minSizeForm.Width + 2, minSizeForm.Height + 2);
         }
 
         private void FormMain_KeyDown(object sender, KeyEventArgs e)
@@ -1454,6 +1457,10 @@ namespace Fantasy_Kingdoms_Battle
                 if (vc.Visible)
                     vc.Draw(gfxFrame);
             }
+
+            //
+            if (Settings.FullScreenMode)
+                gfxFrame.DrawRectangle(Config.GetPenBorder(false), rectBorderAroungGamespace);
 
             inDrawFrame = false;
         }
