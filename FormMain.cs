@@ -654,11 +654,13 @@ namespace Fantasy_Kingdoms_Battle
                     WindowState = FormWindowState.Normal;
                 }
 
-                ApplySize();
-                PrepareBackground();
-                ArrangeControls();
-
-                Refresh();
+                if (minSizeForm != default)
+                {
+                    if (WindowState != FormWindowState.Maximized)
+                    {
+                        Size = minSizeForm;
+                    }
+                }
             }
         }
 
@@ -695,17 +697,6 @@ namespace Fantasy_Kingdoms_Battle
 
                     gfxFrame?.Dispose();
                     gfxFrame = Graphics.FromImage(bmpFrame);
-                }
-            }
-        }
-
-        private void ApplySize()
-        {
-            if (minSizeForm != default)
-            {
-                if (WindowState != FormWindowState.Maximized)
-                {
-                    Size = minSizeForm;
                 }
             }
         }
