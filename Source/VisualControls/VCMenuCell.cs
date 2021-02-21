@@ -39,11 +39,11 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Cost = research.Cost();
                 ImageIndex = research.Research.Entity.ImageIndex;
+                ImageIsEnabled = research.CheckRequirements();
 
                 // Накладываем фильтр
-                if (!research.CheckRequirements())
-                    ImageFilter = ImageFilter.Disabled;
-
+                //if (!research.CheckRequirements())
+                //    ImageFilter = ImageFilter.Disabled;
             }
             else
             {
