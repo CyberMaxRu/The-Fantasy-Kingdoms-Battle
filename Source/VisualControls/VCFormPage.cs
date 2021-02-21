@@ -47,6 +47,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
+            ShowAsPressed = Page.Visible;
+
             base.Draw(g);
 
             if (Page.Visible)

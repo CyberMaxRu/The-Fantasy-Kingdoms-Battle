@@ -60,6 +60,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int Quantity { get; set; }
         internal int PopupQuantity { get; set; }
         internal bool HighlightUnderMouse { get; set; } = false;
+        internal bool ShowAsPressed { get; set; } = false;
         internal bool UseFilter { get; set; } = false;
         internal ImageFilter ImageFilter { get; set; } = ImageFilter.None;
 
@@ -122,7 +123,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if ((BitmapList.Size == Program.formMain.ilMenuCellFilters.Size) && UseFilter && ImageIsEnabled)
             {
-                if (mouseClicked && mouseOver)
+                if (ShowAsPressed || (mouseClicked && mouseOver))
                     ImageFilter = ImageFilter.Press;
                 else if (mouseOver)
                     ImageFilter = ImageFilter.Select;
