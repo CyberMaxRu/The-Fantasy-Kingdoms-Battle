@@ -513,9 +513,11 @@ namespace Fantasy_Kingdoms_Battle
                 splashForm.Dispose();
 
                 //
-                timerHover = new Timer();
-                timerHover.Interval = SystemInformation.MouseHoverTime;
-                timerHover.Enabled = false;
+                timerHover = new Timer()
+                {
+                    Interval = SystemInformation.MouseHoverTime,
+                    Enabled = false
+                };
                 timerHover.Tick += TimerHover_Tick;
 
                 //
