@@ -806,9 +806,6 @@ namespace Fantasy_Kingdoms_Battle
                     lobby.CurrentPlayer.Name = Settings.NamePlayer;
                 }
 
-                // Мог поменяться аватар
-                ShowFrame();
-
                 ApplyFullScreen(false);
             }
         }
@@ -1151,7 +1148,7 @@ namespace Fantasy_Kingdoms_Battle
                 currentPage = pc;
                 currentPage.Page.Visible = true;
 
-                ShowFrame();
+                SetNeedRedrawFrame();
             }
         }
 
@@ -1211,8 +1208,7 @@ namespace Fantasy_Kingdoms_Battle
                 else
                     panelBuildingInfo.Visible = false;
 
-                ShowFrame();
-                //panelMenu.Invalidate(true);// Это точно надо?
+                SetNeedRedrawFrame();
             }
         }
 
@@ -1245,7 +1241,7 @@ namespace Fantasy_Kingdoms_Battle
                 else
                     panelLairInfo.Visible = false;
 
-                ShowFrame();
+                SetNeedRedrawFrame();
             }
         }
 
@@ -1279,8 +1275,7 @@ namespace Fantasy_Kingdoms_Battle
                 else
                     panelMonsterInfo.Visible = false;
 
-                ShowFrame();
-
+                SetNeedRedrawFrame();
             }
         }
 
@@ -1403,7 +1398,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             if (lobby != null)
-                ShowFrame();
+                SetNeedRedrawFrame();
         }
 
         internal ImageList BigIconToSmall(ImageList ilBig)
@@ -1465,7 +1460,7 @@ namespace Fantasy_Kingdoms_Battle
             btnTarget.ImageIndex = lobby.CurrentPlayer.TargetLair != null ? lobby.CurrentPlayer.TargetLair.Lair.ImageIndex : -1;
             SelectLair(newLair.Lair.Panel);
 
-            ShowFrame();
+            SetNeedRedrawFrame();
         }
 
         protected override void OnPaint(PaintEventArgs e)
