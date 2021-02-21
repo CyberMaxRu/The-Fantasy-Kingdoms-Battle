@@ -7,7 +7,6 @@ using System.Drawing.Imaging;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal enum ImageState { Normal = 0, Disabled = 1, Over = 2 };
     internal enum ImageModeConversion { Grey, Bright };
 
     // Класс - список картинок
@@ -15,10 +14,15 @@ namespace Fantasy_Kingdoms_Battle
     {
         private Bitmap[] bitmapsNormal;
         private Bitmap[] bitmapsDisabled;
-        private Bitmap[] bitmapsOver;
+        private Bitmap[] bitmapsNormalOver;
+        private Bitmap[] bitmapsDisabledOver;
 
-        public BitmapList(string dirResources, string filename, int size, ImageState maxState)
+        public BitmapList(string dirResources, string filename, int size, bool withDisabled, bool withOver)
         {
+            Size = size;
+            WithDisabled = withDisabled;
+            WithOver = withOver;
+
             // Загружаем картинку
             Bitmap bmp = new Bitmap(dirResources + @"Icons\" + filename);
 
@@ -28,32 +32,30 @@ namespace Fantasy_Kingdoms_Battle
 
             // Создаем иконки
             bitmapsNormal = CreateArray(bmp, size);
+            if (withOver)
+                bitmapsNormalOver = CreateArray(ConversionBitmap(bmp, ImageModeConversion.Bright), size);
 
-            if (maxState >= ImageState.Disabled)
-                bitmapsDisabled = CreateArray(ConversionBitmap(bmp, ImageModeConversion.Grey), size);
+            if (WithDisabled)
+            {
+                Bitmap bmpDisabled = ConversionBitmap(bmp, ImageModeConversion.Grey);
+                bitmapsDisabled = CreateArray(bmpDisabled, size);
 
-            if (maxState >= ImageState.Over)
-                bitmapsOver = CreateArray(ConversionBitmap(bmp, ImageModeConversion.Bright), size);
+                if (withOver)
+                    bitmapsDisabledOver = CreateArray(ConversionBitmap(bmpDisabled, ImageModeConversion.Bright), size);
+
+                bmpDisabled.Dispose();
+            }
 
             // Удаляем исходную картинку - она больше не нужна
             bmp.Dispose();
-
-            Size = size;
-            MaxState = maxState;
         }
 
-        public BitmapList(int countIcons, int size, ImageState maxState)
+        public BitmapList(int countIcons, int size, bool withDisabled, bool withOver)
         {
-            bitmapsNormal = new Bitmap[countIcons];
-
-            if (maxState >= ImageState.Disabled)
-                bitmapsDisabled = new Bitmap[countIcons];
-
-            if (maxState >= ImageState.Over)
-                bitmapsOver = new Bitmap[countIcons];
-
             Size = size;
-            MaxState = maxState;
+            WithDisabled = withDisabled;
+            WithOver = withOver;
+            CreateArrays(countIcons);
         }
 
         public BitmapList(BitmapList fromList, int newSize, int borderWidth, Bitmap mask)
@@ -64,17 +66,12 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(mask.Height == newSize);
             }
 
-            Debug.Assert(fromList.Size != newSize);
+            Debug.Assert(newSize < fromList.Size);
 
             Size = newSize;
-            MaxState = fromList.MaxState;
-
-            bitmapsNormal = new Bitmap[fromList.Count];
-            if (MaxState >= ImageState.Disabled)
-                bitmapsDisabled = new Bitmap[fromList.Count];
-
-            if (MaxState >= ImageState.Over)
-                bitmapsOver = new Bitmap[fromList.Count];
+            WithDisabled = fromList.WithDisabled;
+            WithOver = fromList.WithOver;
+            CreateArrays(fromList.Count);
 
             Rectangle rectSource = new Rectangle(0 + borderWidth, 0 + borderWidth, fromList.Size - (borderWidth * 2), fromList.Size - (borderWidth * 2));
             Rectangle rectTarget = new Rectangle(0, 0, newSize, newSize);
@@ -86,7 +83,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 gDest.InterpolationMode = InterpolationMode.HighQualityBicubic;
                 gDest.SmoothingMode = SmoothingMode.HighQuality;
-                gDest.DrawImage(fromList.GetImage(i, ImageState.Normal), rectTarget, rectSource, GraphicsUnit.Pixel);                
+                gDest.DrawImage(fromList.GetImage(i, true, false), rectTarget, rectSource, GraphicsUnit.Pixel);                
 
                 if (mask != null)
                 {
@@ -98,29 +95,37 @@ namespace Fantasy_Kingdoms_Battle
                 }
 
                 bitmapsNormal[i] = bmpDest;
+                if (WithOver)
+                    bitmapsNormalOver[i] = ConversionBitmap(bmpDest, ImageModeConversion.Bright);
 
-                if (MaxState >= ImageState.Disabled)
+                if (WithDisabled)
+                {
                     bitmapsDisabled[i] = ConversionBitmap(bmpDest, ImageModeConversion.Grey);
-                if (MaxState >= ImageState.Over)
-                    bitmapsOver[i] = ConversionBitmap(bmpDest, ImageModeConversion.Bright);
+                    if (WithOver)
+                        bitmapsDisabledOver[i] = ConversionBitmap(bitmapsDisabled[i], ImageModeConversion.Bright);
+                }
 
                 gDest.Dispose();
             }
         }
 
         internal int Size { get; }
-        internal ImageState MaxState { get; }
+        internal bool WithDisabled { get; set; }
+        internal bool WithOver { get; set; }
         internal int Count { get => bitmapsNormal.Length; }
 
         internal void Add(Bitmap bmp)
         {
             Array.Resize(ref bitmapsNormal, bitmapsNormal.Length + 1);
 
+            if (bitmapsNormalOver != null)
+                Array.Resize(ref bitmapsNormalOver, bitmapsNormalOver.Length + 1);
+
             if (bitmapsDisabled != null)
                 Array.Resize(ref bitmapsDisabled, bitmapsDisabled.Length + 1);
 
-            if (bitmapsOver != null)
-                Array.Resize(ref bitmapsOver, bitmapsOver.Length + 1);
+            if (bitmapsDisabledOver != null)
+                Array.Resize(ref bitmapsDisabledOver, bitmapsDisabledOver.Length + 1);
 
             ReplaceImage(bmp, bitmapsNormal.Length - 1);
         }
@@ -129,11 +134,29 @@ namespace Fantasy_Kingdoms_Battle
         {
             bitmapsNormal[index] = bmp;
 
+            if (bitmapsNormalOver != null)
+                bitmapsNormalOver[index] = ConversionBitmap(bmp, ImageModeConversion.Bright);
+
             if (bitmapsDisabled != null)
                 bitmapsDisabled[index] = ConversionBitmap(bmp, ImageModeConversion.Grey);
 
-            if (bitmapsOver != null)
-                bitmapsOver[index] = ConversionBitmap(bmp, ImageModeConversion.Bright);
+            if (bitmapsDisabledOver != null)
+                bitmapsDisabledOver[index] = ConversionBitmap(bitmapsDisabled[index], ImageModeConversion.Bright);
+        }
+
+        private void CreateArrays(int countIcons)
+        {
+            bitmapsNormal = new Bitmap[countIcons];
+            if (WithOver)
+                bitmapsNormalOver = new Bitmap[countIcons];
+
+            if (WithDisabled)
+            {
+                bitmapsDisabled = new Bitmap[countIcons];
+
+                if (WithOver)
+                    bitmapsDisabledOver = new Bitmap[countIcons];
+            }
         }
 
         private Bitmap[] CreateArray(Bitmap bitmap, int size)
@@ -198,36 +221,24 @@ namespace Fantasy_Kingdoms_Battle
             return output;
         }
 
-        internal Bitmap GetImage(int imageIndex, ImageState state)
+        internal Bitmap GetImage(int imageIndex, bool enabled, bool over)
         {
             Debug.Assert(imageIndex >= 0);
             Debug.Assert(imageIndex < Count);
 
-            Bitmap bmp;
+            Bitmap[] array;
+            if (enabled)
+                array = over ? bitmapsNormalOver : bitmapsNormal;
+            else
+                array = over ? bitmapsDisabledOver : bitmapsDisabled;
 
-            switch (state)
-            {
-                case ImageState.Normal:
-                    bmp = bitmapsNormal[imageIndex];
-                    break;
-                case ImageState.Disabled:
-                    bmp = bitmapsDisabled[imageIndex];
-                    break;
-                case ImageState.Over:
-                    bmp = bitmapsOver[imageIndex];
-                    break;
-                default:
-                    throw new Exception("Неизвестное состояние: " + state.ToString());
-            }
-
-            Debug.Assert(bmp != null);
-
-            return bmp;
+            Debug.Assert(array[imageIndex] != null);
+            return array[imageIndex];
         }
 
-        internal void DrawImage(Graphics g, int imageIndex, ImageState state, int x, int y)
+        internal void DrawImage(Graphics g, int imageIndex, bool enabled, bool over, int x, int y)
         {
-            g.DrawImageUnscaled(GetImage(imageIndex, state), x, y);
+            g.DrawImageUnscaled(GetImage(imageIndex, enabled, over), x, y);
         }
     }
 }

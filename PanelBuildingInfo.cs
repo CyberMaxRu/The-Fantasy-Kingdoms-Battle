@@ -72,7 +72,7 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override BitmapList GetBitmapList() => Program.formMain.imListObjectsBig;
         protected override int GetImageIndex() => Building.Building.ImageIndex;
-        protected override ImageState GetImageState() => Building.Level > 0 ? ImageState.Normal : ImageState.Disabled;
+        protected override bool ImageIsEnabled() => Building.Level > 0;
         protected override string GetCaption() => Building.Building.Name;
     }
 }

@@ -148,7 +148,7 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override BitmapList GetBitmapList() => Program.formMain.imListObjectsBig;
         protected override int GetImageIndex() => Program.formMain.TreatImageIndex(hero.TypeHero.ImageIndex, hero.Player);
-        protected override ImageState GetImageState() => ImageState.Normal;
+        protected override bool ImageIsEnabled() => true;
         protected override string GetCaption() => hero.TypeHero.Name;
     }
 }

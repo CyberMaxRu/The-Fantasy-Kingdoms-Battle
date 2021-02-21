@@ -40,7 +40,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal BitmapList BitmapList { get; set; }
         internal int ImageIndex { get; set; } = -1;
-        internal ImageState ImageState { get; set; } = ImageState.Normal;
+        internal bool ImageIsEnabled { get; set; } = true;
+        internal bool ImageIsOver { get; set; } = false;
         protected int LeftMargin { get; set; }
         protected int TopMargin { get; set; }
         internal StringFormat StringFormat { get; set; }
@@ -48,7 +49,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override void Draw(Graphics g)
         {
             if ((BitmapList != null) && (ImageIndex >= 0))
-                BitmapList.DrawImage(g, ImageIndex, ImageState, Left, Top);
+                BitmapList.DrawImage(g, ImageIndex, ImageIsEnabled, ImageIsOver, Left, Top);
 
             base.Draw(g);
 

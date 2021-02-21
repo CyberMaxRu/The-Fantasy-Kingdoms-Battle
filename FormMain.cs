@@ -287,28 +287,28 @@ namespace Fantasy_Kingdoms_Battle
                 bmpMaskBig = new Bitmap(dirResources + @"Icons\MaskBig.png");
                 bmpMaskSmall = new Bitmap(dirResources + @"Icons\MaskSmall.png");// Нужна ли еще?
 
-                ilResultBattle = new BitmapList(dirResources, "ResultBattle.png", 24, ImageState.Normal);
-                imListObjectsBig = new BitmapList(dirResources, "Objects.png", 128, ImageState.Over);
+                ilResultBattle = new BitmapList(dirResources, "ResultBattle.png", 24, true, false);
+                imListObjectsBig = new BitmapList(dirResources, "Objects.png", 128, true, true);
 
                 // Добавляем в список иконок аватарки игроков
                 // Для этого создаем отдельный список оригинальных аватарок, из которого уже будем составлять итоговый
                 ImageIndexFirstAvatar = imListObjectsBig.Count;
-                blPlayerAvatars = new BitmapList(dirResources, "Avatars.png", 128, ImageState.Normal);
+                blPlayerAvatars = new BitmapList(dirResources, "Avatars.png", 128, true, true);
                 for (int i = 0; i < blPlayerAvatars.Count; i++)
-                    imListObjectsBig.Add(blPlayerAvatars.GetImage(i, ImageState.Normal));
+                    imListObjectsBig.Add(blPlayerAvatars.GetImage(i, true, false));
 
                 ValidateAvatars();
 
                 imListObjectsCell = new BitmapList(imListObjectsBig, 48, Config.BorderInBigIcons, bmpMaskSmall);
 
-                ilGui16 = new BitmapList(dirResources, "Gui16.png", 16, ImageState.Normal);
-                ilGui24 = new BitmapList(dirResources, "Gui24.png", 24, ImageState.Normal);
-                ilParameters = new BitmapList(dirResources, "Parameters.png", 24, ImageState.Normal);
-                ilItems = new BitmapList(dirResources, "Items.png", 48, ImageState.Over);
-                ilStateHero = new BitmapList(dirResources, "StateHero.png", 24, ImageState.Normal);
-                ilMenuCellFilters = new BitmapList(dirResources, "MenuCellFilters.png", 48, ImageState.Normal);
+                ilGui16 = new BitmapList(dirResources, "Gui16.png", 16, true, false);
+                ilGui24 = new BitmapList(dirResources, "Gui24.png", 24, true, false);
+                ilParameters = new BitmapList(dirResources, "Parameters.png", 24, true, false);
+                ilItems = new BitmapList(dirResources, "Items.png", 48, true, true);
+                ilStateHero = new BitmapList(dirResources, "StateHero.png", 24, true, false);
+                ilMenuCellFilters = new BitmapList(dirResources, "MenuCellFilters.png", 48, true, false);
 
-                ilGui = new BitmapList(dirResources, "Gui.png", 48, ImageState.Over);
+                ilGui = new BitmapList(dirResources, "Gui.png", 48, true, true);
                 //MakeAlpha();
 
                 bmpForBackground = new Bitmap(dirResources + "Icons\\Background.png");

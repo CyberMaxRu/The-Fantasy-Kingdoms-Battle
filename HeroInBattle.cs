@@ -604,7 +604,7 @@ namespace Fantasy_Kingdoms_Battle
 
             // Рисуем иконку героя
             g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
-            Program.formMain.imListObjectsCell.DrawImage(g, Program.formMain.TreatImageIndex(PlayerHero.TypeCreature.ImageIndex, PlayerHero.BattleParticipant), State != StateHeroInBattle.Tumbstone ? ImageState.Normal : ImageState.Disabled, FormMain.Config.ShiftForBorder.X, FormMain.Config.ShiftForBorder.Y);
+            Program.formMain.imListObjectsCell.DrawImage(g, Program.formMain.TreatImageIndex(PlayerHero.TypeCreature.ImageIndex, PlayerHero.BattleParticipant), State != StateHeroInBattle.Tumbstone, false, FormMain.Config.ShiftForBorder.X, FormMain.Config.ShiftForBorder.Y);
 
             // Если юнит в могиле и исчезает, применяем исчезновение
             if (countAction <= FormMain.Config.UnitStepsTimeToDisappearance)

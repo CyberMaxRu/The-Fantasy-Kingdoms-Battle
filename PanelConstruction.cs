@@ -24,7 +24,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             ShowBorder = true;
 
-            TypeConstruction = typeConstruction;
+            TypeConstruction = typeConstruction;            
 
             lblName = new VCLabel(this, FormMain.Config.GridSize, FormMain.Config.GridSize, FormMain.Config.FontBuildingCaption, Color.Transparent, FormMain.Config.GridSize * 2, "");
             lblName.StringFormat.Alignment = StringAlignment.Near;
@@ -32,6 +32,7 @@ namespace Fantasy_Kingdoms_Battle
 
             imageConstruction = new VCImage(this, FormMain.Config.GridSize, lblName.NextTop(), Program.formMain.imListObjectsBig, -1);
             imageConstruction.ShowBorder = false;
+            imageConstruction.HighlightUnderMouse = true;
             imageConstruction.Click += ImageConstruction_Click;
             imageConstruction.ShowHint += ImageConstruction_ShowHint;
 
@@ -168,7 +169,7 @@ namespace Fantasy_Kingdoms_Battle
 
             SetColorBorder(FormMain.Config.ColorBorder(Program.formMain.SelectedPanelBuilding == this));
             imageConstruction.ImageIndex = Building.Building.ImageIndex;
-            imageConstruction.ImageState = Building.Level > 0 ? ImageState.Normal : ImageState.Disabled;
+            imageConstruction.ImageIsEnabled = Building.Level > 0;
 
             lblName.Color = FormMain.Config.ColorMapObjectCaption(Building.Level > 0);
 
@@ -185,7 +186,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     btnBuyOrUpgrade.Cost = Building.CostBuyOrUpgrade();
                     btnBuyOrUpgrade.ImageIndex = FormMain.GUI_LEVELUP;
-                    btnBuyOrUpgrade.ImageState = Building.CheckRequirements() ? ImageState.Normal : ImageState.Disabled;
+                    btnBuyOrUpgrade.ImageIsEnabled = Building.CheckRequirements();
                 }
                 else
                 {
@@ -199,7 +200,7 @@ namespace Fantasy_Kingdoms_Battle
             else
             {
                 btnBuyOrUpgrade.Cost = Building.CostBuyOrUpgrade();
-                btnBuyOrUpgrade.ImageState = Building.CheckRequirements() ? ImageState.Normal : ImageState.Disabled;
+                btnBuyOrUpgrade.ImageIsEnabled = Building.CheckRequirements();
             }
 
             if (btnHireHero != null)
@@ -207,8 +208,7 @@ namespace Fantasy_Kingdoms_Battle
                 //btnHireHero.ImageIndex = (Building.Level > 0) && ((Building.Heroes.Count == Building.MaxHeroes()) || (Building.MaxHeroesAtPlayer() == true))  ? -1 : GuiUtils.GetImageIndexWithGray(btnHireHero.ImageList, c.TrainedHero.ImageIndex, Building.CanTrainHero());
                 btnHireHero.ImageIndex = (Building.Level > 0) && ((Building.Heroes.Count == Building.MaxHeroes()) || (Building.MaxHeroesAtPlayer() == true)) ? -1 : TypeConstruction.TrainedHero.ImageIndex;
                 btnHireHero.ImageIndex = Program.formMain.TreatImageIndex(Building.Building.TrainedHero.ImageIndex, Building.Player);
-                btnHireHero.ImageState = ImageState.Normal;
-                btnHireHero.ImageState = Building.CanTrainHero() ? ImageState.Normal : ImageState.Disabled;
+                btnHireHero.ImageIsEnabled = Building.CanTrainHero();
                 btnHireHero.Cost = (Building.Level == 0) || (Building.CanTrainHero() == true) ? TypeConstruction.TrainedHero.Cost : 0;
             }
 

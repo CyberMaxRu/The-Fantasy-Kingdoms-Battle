@@ -50,7 +50,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal BitmapList BitmapList { get; set; }
         internal int ImageIndex { get; set; }
-        internal ImageState ImageState { get; set; } = ImageState.Normal;
+        internal bool ImageIsEnabled { get; set; } = true;
+        internal bool ImageIsOver { get; set; } = false;
         protected int ShiftImageX { get => shiftImageX; set { shiftImageX = value; ValidateSize(); } }
         protected int ShiftImageY { get => shiftImageY; set { shiftImageY = value; ValidateSize(); } }
         internal int Cost { get; set; }
@@ -68,7 +69,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (HighlightUnderMouse)
             {
-                ImageState = ImageState.Over;
+                ImageIsOver = true;
                 Program.formMain.NeedRedrawFrame();
             }
 
@@ -84,7 +85,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (HighlightUnderMouse)
             {
-                ImageState = ImageState.Normal;
+                ImageIsOver = false;
                 Program.formMain.NeedRedrawFrame();
             }
 
@@ -119,7 +120,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(PopupQuantity >= 0);
             Debug.Assert(PopupQuantity <= 9);
 
-            if ((BitmapList.Size == Program.formMain.ilMenuCellFilters.Size) && UseFilter && (ImageState != ImageState.Disabled))
+            if ((BitmapList.Size == Program.formMain.ilMenuCellFilters.Size) && UseFilter && ImageIsEnabled)
             {
                 if (mouseClicked && mouseOver)
                     ImageFilter = ImageFilter.Press;
@@ -134,7 +135,7 @@ namespace Fantasy_Kingdoms_Battle
             // Иконка
             if (ImageIndex != -1)
             {
-                BitmapList.DrawImage(g, ImageIndex, ImageState, Left + ShiftImageX, Top + ShiftImageY);
+                BitmapList.DrawImage(g, ImageIndex, ImageIsEnabled, ImageIsOver, Left + ShiftImageX, Top + ShiftImageY);
 
                 // Цена
                 if ((Cost != 0) || ShowCostZero)
@@ -165,16 +166,16 @@ namespace Fantasy_Kingdoms_Battle
                 switch (ImageFilter)
                 {
                     case ImageFilter.Active:
-                        g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage(0, ImageState.Normal), Left + ShiftImageX, Top + ShiftImageY);
+                        g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage(0, true, false), Left + ShiftImageX, Top + ShiftImageY);
                         break;
                     case ImageFilter.Select:
-                        g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage(1, ImageState.Normal), Left + ShiftImageX, Top + ShiftImageY);
+                        g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage(1, true, false), Left + ShiftImageX, Top + ShiftImageY);
                         break;
                     case ImageFilter.Press:
-                        g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage(2, ImageState.Normal), Left + ShiftImageX, Top + ShiftImageY);
+                        g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage(2, true, false), Left + ShiftImageX, Top + ShiftImageY);
                         break;
                     case ImageFilter.Disabled:
-                        g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage(3, ImageState.Normal), Left + ShiftImageX, Top + ShiftImageY);
+                        g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage(3, true, false), Left + ShiftImageX, Top + ShiftImageY);
                         break;
                     default:
                         break;

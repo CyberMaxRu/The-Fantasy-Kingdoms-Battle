@@ -54,7 +54,7 @@ namespace Fantasy_Kingdoms_Battle
         // Переопределяемые потомками методы
         protected abstract BitmapList GetBitmapList();
         protected abstract int GetImageIndex();
-        protected abstract ImageState GetImageState();
+        protected abstract bool ImageIsEnabled();
         protected abstract string GetCaption();
 
         // Общие для всех панелей методы
@@ -63,7 +63,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             lblName.Text = GetCaption();
             imgIcon.ImageIndex = GetImageIndex();
-            imgIcon.ImageState = GetImageState();
+            imgIcon.ImageIsEnabled = ImageIsEnabled();
 
             base.Draw(g);
         }

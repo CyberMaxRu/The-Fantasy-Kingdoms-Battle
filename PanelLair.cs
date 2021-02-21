@@ -28,6 +28,7 @@ namespace Fantasy_Kingdoms_Battle
 
             imgLair = new VCImage(this, FormMain.Config.GridSize, lblName.NextTop(), Program.formMain.imListObjectsBig, typeLair.ImageIndex);
             imgLair.ShowBorder = false;
+            imgLair.HighlightUnderMouse = true;
             imgLair.Click += ImgLair_Click;
             imgLair.ShowHint += ImgLair_ShowHint;
 
