@@ -1624,15 +1624,9 @@ namespace Fantasy_Kingdoms_Battle
             if (e.Button == MouseButtons.Left)
             {
                 controlWithHint?.MouseUp();
-            }
-        }
 
-        protected override void OnMouseClick(MouseEventArgs e)
-        {
-            base.OnMouseClick(e);
-
-            if (e.Button == MouseButtons.Left)
-            {
+                // Обработка клика перемещена из MouseClick, так как если кликать часто, то системой
+                // это распознается как двойной клик и вызывает OnMouseDoubleClick вместо OnMouseClick
                 if (controlWithHint != null)
                 {
                     // При клике происходит перерисовка кадра, и текущий элемент может стать уже невидимым
