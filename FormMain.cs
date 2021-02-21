@@ -662,14 +662,6 @@ namespace Fantasy_Kingdoms_Battle
                     FormBorderStyle = FormBorderStyle.FixedSingle;
                     WindowState = FormWindowState.Normal;
                 }
-
-                if (minSizeForm != default)
-                {
-                    if (WindowState != FormWindowState.Maximized)
-                    {
-                        Size = minSizeForm;
-                    }
-                }
             }
         }
 
