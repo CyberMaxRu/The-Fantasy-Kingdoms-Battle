@@ -500,13 +500,13 @@ namespace Fantasy_Kingdoms_Battle
 
                 //
                 MainControl.Width = calcedWidth;
-                MainControl.Height = calcedHeight;
 
                 Width = (Width - ClientSize.Width) + calcedWidth + (Config.GridSize * 2);// С краев - по GRID_SIZE
                 // Высота - это наибольшая высота бэндов лобби, зданий и информации с меню
-                calcedHeight = labelDay.NextTop() + Math.Max(pageHeroes.Page.Top + pageHeroes.Page.MaxSize().Height, heightBandBuildings);
+                calcedHeight = Math.Max(pageHeroes.Page.NextTop(), heightBandBuildings);
                 Height = (Height - ClientSize.Height) + calcedHeight + Config.GridSize;
                 minSizeForm = new Size(Width, Height);
+                MainControl.Height = calcedHeight;
 
                 panelBuildingInfo.Height = ClientSize.Height - panelBuildingInfo.Top - bitmapMenu.Height - (Config.GridSize * 2);
                 panelLairInfo.Height = panelBuildingInfo.Height;
