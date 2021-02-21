@@ -139,6 +139,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly Bitmap bmpMaskSmall;
         internal readonly M2Font fontSmallContur;
         internal int LengthSideBorderBattlefield { get; private set; }
+        private Size sizeGamespace;
         private Size minSizeForm;
         private Point shiftControls;
 
@@ -462,8 +463,10 @@ namespace Fantasy_Kingdoms_Battle
                 MainControl.Width = panelHeroInfo.ShiftX + panelEmptyInfo.Width;
                 MainControl.Height = pageGuilds.NextTop() + maxHeightPages;
 
-                Width = Width - ClientSize.Width + Config.GridSize + MainControl.Width + Config.GridSize;
-                Height = Height - ClientSize.Height + panelPlayers.NextTop() + Config.GridSize + MainControl.NextTop() + Config.GridSize;
+                sizeGamespace = new Size(Config.GridSize + MainControl.Width + Config.GridSize, panelPlayers.NextTop() + Config.GridSize + MainControl.NextTop() + Config.GridSize);
+
+                Width = Width - ClientSize.Width + sizeGamespace.Width;
+                Height = Height - ClientSize.Height + sizeGamespace.Height;
                 minSizeForm = new Size(Width, Height);
 
                 bitmapMenu.ShiftY = MainControl.Height - bitmapMenu.Height;
@@ -815,7 +818,7 @@ namespace Fantasy_Kingdoms_Battle
 
             point1LineAfterPanelPlayers = new Point(MainControl.Left, panelPlayers.Top + panelPlayers.Height + Config.GridSize);
             point2LineAfterPanelPlayers = new Point(MainControl.Left + MainControl.Width, panelPlayers.Top + panelPlayers.Height + Config.GridSize);
-            rectBorderAroungGamespace = new Rectangle(shiftControls.X - Config.GridSize - 1, shiftControls.Y - Config.GridSize - 1, minSizeForm.Width + 2, minSizeForm.Height + 2);
+            rectBorderAroungGamespace = new Rectangle(shiftControls.X - Config.GridSize - 1, shiftControls.Y - Config.GridSize - 1, sizeGamespace.Width + 2, sizeGamespace.Height + 2);
         }
 
         private void FormMain_KeyDown(object sender, KeyEventArgs e)
