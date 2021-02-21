@@ -91,13 +91,5 @@ namespace Fantasy_Kingdoms_Battle
             rows--;
             Height = panelEntities[panelEntities.Count - 1].Top + panelEntities[panelEntities.Count - 1].Height;
         }
-
-        internal override void Draw(Graphics g)
-        {
-            foreach (VisualControl vc in Controls)
-            {
-                vc.Draw(g);
-            }
-        }
     }
 }
