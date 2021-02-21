@@ -524,8 +524,6 @@ namespace Fantasy_Kingdoms_Battle
                 Location = new Point((Screen.PrimaryScreen.WorkingArea.Width - Width) / 2, (Screen.PrimaryScreen.WorkingArea.Height - Height) / 2);
                 ApplyFullScreen(true);
 
-                ShowFrame();
-
                 // 
                 void SetStage(string text)
                 {
@@ -538,6 +536,15 @@ namespace Fantasy_Kingdoms_Battle
                 MessageBox.Show(exc.Message + Environment.NewLine + exc.StackTrace);
                 Environment.Exit(-1);
             }
+        }
+
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+
+            // При старте игры в полноэкранном режиме, если курсор находится на пустом пространстве, окно игры состоит из белого фона
+            // Показ кадра при старте отрисовывает окно
+            ShowFrame();
         }
 
         private void PageHeroes_ShowHint(object sender, EventArgs e)
