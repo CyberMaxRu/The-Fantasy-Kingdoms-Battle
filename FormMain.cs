@@ -1647,7 +1647,10 @@ namespace Fantasy_Kingdoms_Battle
                     controlWithHint = null;
                     frames = 0;
                     vc.DoClick();
+                    //if (needRedrawFrame)
+                    //    ShowFrame();
                     //labelDay.Text = frames.ToString();
+                    //ShowFrame();
 
                     if (formHint.Visible)
                     {
