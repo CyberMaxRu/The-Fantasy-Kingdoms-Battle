@@ -662,6 +662,9 @@ namespace Fantasy_Kingdoms_Battle
                     FormBorderStyle = FormBorderStyle.FixedSingle;
                     WindowState = FormWindowState.Normal;
                 }
+
+                PrepareBackground();
+                ArrangeControls();
             }
         }
 
@@ -673,8 +676,6 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if ((bmpBackground == null) || ((WindowState != FormWindowState.Minimized) && (!ClientSize.Equals(bmpBackground.Size))))
                 {
-                    PrepareBackground();
-                    ArrangeControls();
                 }
             }
 
