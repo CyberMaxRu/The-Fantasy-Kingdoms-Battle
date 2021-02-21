@@ -843,7 +843,7 @@ namespace Fantasy_Kingdoms_Battle
             panelPlayers.SetPos((ClientSize.Width - panelPlayers.Width) / 2, shiftControls.Y);
             MainControl.SetPos(shiftControls.X, panelPlayers.NextTop());
 
-            labelDay.ShiftX = shiftControls.X;
+            labelDay.ShiftX = 0;
             labelGold.ShiftX = labelDay.NextLeft();
 
             ShowLobby();
