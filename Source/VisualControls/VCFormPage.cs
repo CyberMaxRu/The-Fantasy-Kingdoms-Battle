@@ -35,6 +35,16 @@ namespace Fantasy_Kingdoms_Battle
         internal string Caption { get; }
         internal int TopForControls { get; }
 
+        internal override VisualControl GetControl(int x, int y)
+        {
+            VisualControl vc= base.GetControl(x, y);
+            if (vc != null)
+                return vc;
+
+            return Page.GetControl(x, y);
+        }
+
+
         internal override void Draw(Graphics g)
         {
             base.Draw(g);
