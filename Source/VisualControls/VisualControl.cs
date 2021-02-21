@@ -124,6 +124,9 @@ namespace Fantasy_Kingdoms_Battle
 
         internal virtual VisualControl GetControl(int x, int y)
         {
+            if (!Visible)
+                return null;
+
             foreach (VisualControl vc in Controls)
             {
                 if (vc.Visible)
