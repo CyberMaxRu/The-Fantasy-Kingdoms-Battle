@@ -146,6 +146,7 @@ namespace Fantasy_Kingdoms_Battle
         private Point shiftControls;
         private int maxWidthPages;
 
+        private bool inDrawFrame = false;
         private bool needRedrawFrame;
 
         private VCFormPage currentPage;
@@ -1490,7 +1491,9 @@ namespace Fantasy_Kingdoms_Battle
         private void DrawFrame()
         {
             Debug.Assert(bmpBackground.Size.Equals(ClientSize));
+            Debug.Assert(inDrawFrame == false);
 
+            inDrawFrame = true;
             // Рисуем фон
             gfxFrame.CompositingMode = CompositingMode.SourceCopy; 
             gfxFrame.DrawImageUnscaled(bmpBackground, 0, 0);
@@ -1515,6 +1518,8 @@ namespace Fantasy_Kingdoms_Battle
                 if (vc.Visible)
                     vc.Draw(gfxFrame);
             }
+
+            inDrawFrame = false;
         }
 
         internal VCButton CreateButton(BitmapList bitmapList, int imageIndex, int left, int top, EventHandler click, EventHandler showHint)
