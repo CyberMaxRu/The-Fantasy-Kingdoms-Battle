@@ -140,11 +140,8 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly Bitmap bmpMaskSmall;
         internal readonly M2Font fontSmallContur;
         internal int LengthSideBorderBattlefield { get; private set; }
-        private int calcedWidth;
-        private int calcedHeight;
         private Size minSizeForm;
         private Point shiftControls;
-        private int maxWidthPages;
 
         private bool inDrawFrame = false;
         private bool needRedrawFrame;
@@ -322,7 +319,6 @@ namespace Fantasy_Kingdoms_Battle
                 // Делаем рамки для союзников и врагов
                 bmpBorderForIconAlly = new Bitmap(bmpBorderForIcon);
                 bmpBorderForIconEnemy = new Bitmap(bmpBorderForIcon);
-                Color orgColor;
                 for (int y = 0; y < bmpBorderForIcon.Height; y++)
                     for (int x = 0; x < bmpBorderForIcon.Width; x++)
                     {
@@ -382,7 +378,7 @@ namespace Fantasy_Kingdoms_Battle
                 btnTarget = CreateButton(imListObjectsCell, -1, 0, btnPreferences.ShiftY, BtnTarget_Click, BtnTarget_MouseHover);
                 btnEndTurn = CreateButton(ilGui, GUI_HOURGLASS, 0, btnPreferences.ShiftY, BtnEndTurn_Click, BtnEndTurn_MouseHover);
 
-                // Создаем панели игроков в левой части окна
+                // Создаем панели игроков в верхней части окна
                 panelPlayers = new VisualControl();
 
                 PanelPlayer pp;
@@ -416,106 +412,79 @@ namespace Fantasy_Kingdoms_Battle
 
                 ShowDataPlayer();
 
-                //foreach (ControlContainer cc in pages)
-                //{
-                //    cc.SetVisible(false);
-                //}
-
-                // Определяем максимальную ширину страниц
+                // Вычисляем максимальный размер страниц
                 int maxHeightPages = 0;
-                Size maxSizePanelPage;
+                int maxWidthPages = 0;
 
                 foreach (VCFormPage pc in pages)
                 {
-                    maxSizePanelPage = pc.Page.MaxSize();
+                    Size maxSizePanelPage = pc.Page.MaxSize();
                     maxWidthPages = Math.Max(maxWidthPages, maxSizePanelPage.Width);
                     maxHeightPages = Math.Max(maxHeightPages, maxSizePanelPage.Height);
                 }
 
-                /*            foreach (PanelPage pc in pages)
-                            {
-                                pc.Width = maxWidthPages;
-                                pc.Height = maxHeightPages;
-                            }*/
+                // Располагаем страницы на главной форме
+                int leftForNextButtonPage = 0;
+                foreach (VCFormPage fp in pages)
+                {
+                    fp.ShiftX = leftForNextButtonPage;
+                    fp.ShiftY = btnQuit.ShiftY;
+                    fp.Page.Width = maxWidthPages;
 
-                // Создаем панель с меню
-                bitmapMenu = new VCBitmap(MainControl, 0, 0, new Bitmap(dirResources + @"Icons\Menu.png"));
-                bitmapMenu.ShiftY = ClientSize.Height - bitmapMenu.Height - Config.GridSize;
+                    leftForNextButtonPage = fp.NextLeft();
+                }
+
+                // Панели информации. Их располагаем после страниц
+                panelHeroInfo = new PanelHeroInfo(MainControl, maxWidthPages + Config.GridSize, btnQuit.NextTop());
+                panelBuildingInfo = new PanelBuildingInfo(panelHeroInfo, panelHeroInfo.ShiftX, panelHeroInfo.ShiftY);
+                panelLairInfo = new PanelLairInfo(MainControl, panelHeroInfo.ShiftX, panelHeroInfo.ShiftY);
+                panelMonsterInfo = new PanelMonsterInfo(MainControl, panelHeroInfo.ShiftX, panelHeroInfo.ShiftY);
+                panelEmptyInfo = new VisualControl(MainControl, panelHeroInfo.ShiftX, panelHeroInfo.ShiftY)
+                {
+                    Width = panelHeroInfo.Width,
+                    Height = panelHeroInfo.Height,
+                    ShowBorder = true
+                };
+
+                // Создаем меню
+                bitmapMenu = new VCBitmap(MainControl, 0, panelHeroInfo.NextTop(), new Bitmap(dirResources + @"Icons\Menu.png"));
+                Debug.Assert(panelHeroInfo.Width >= bitmapMenu.Width);
 
                 CellsMenu = new VCMenuCell[PANEL_MENU_CELLS.Height, PANEL_MENU_CELLS.Width];
                 for (int y = 0; y < PANEL_MENU_CELLS.Height; y++)
                     for (int x = 0; x < PANEL_MENU_CELLS.Width; x++)
                         CellsMenu[y, x] = new VCMenuCell(bitmapMenu, DISTANCE_BETWEEN_CELLS + (x * (ilItems.Size + DISTANCE_BETWEEN_CELLS)), DISTANCE_BETWEEN_CELLS + (y * (ilItems.Size + DISTANCE_BETWEEN_CELLS)), ilItems);
 
-                // Пустая панель
-                panelEmptyInfo = new VisualControl(MainControl, 0, btnQuit.NextTop());
-                panelEmptyInfo.ShowBorder = true;
+                bitmapMenu.ShiftX = panelHeroInfo.ShiftX + ((panelHeroInfo.Width - bitmapMenu.Width) / 2);
 
-                // Панель информации о здании
-                panelBuildingInfo = new PanelBuildingInfo(MainControl, 0, btnQuit.NextTop(), bitmapMenu.ShiftY - pageGuilds.NextTop() - Config.GridSize)
-                {
-                    Visible = false
-                };
+                // Все контролы созданы, устанавливаем размеры MainControl
+                MainControl.Width = panelHeroInfo.ShiftX + panelEmptyInfo.Width;
+                MainControl.Height = pageGuilds.NextTop() + maxHeightPages;
 
-                // Панель информации о логове
-                panelLairInfo = new PanelLairInfo(MainControl, 0, btnQuit.NextTop(), bitmapMenu.Top - pageGuilds.NextTop() - Config.GridSize)
-                {
-                    Visible = false
-                };
-
-                //
-                panelHeroInfo = new PanelHeroInfo(MainControl, 0, btnQuit.NextTop(), panelBuildingInfo.Height)
-                {
-                    Visible = false
-                };
-
-                panelMonsterInfo = new PanelMonsterInfo(MainControl, 0, btnQuit.NextTop(), panelBuildingInfo.Height)
-                {
-                    Visible = false
-                };
-
-                // Подбираем ширину правой части
-                panelBuildingInfo.Width = panelHeroInfo.Width;
-                panelLairInfo.Width = panelHeroInfo.Width;
-                panelMonsterInfo.Width = panelHeroInfo.Width;
-                panelEmptyInfo.Width = panelHeroInfo.Width;
-                int widthRightPanel = Math.Max(bitmapMenu.Width, panelHeroInfo.Width);
-                //Debug.Assert(widthRightPanel > panelMenu.Width);
-
-                // Учитываем плиту под слоты
-                bitmapMenu.ShiftX = maxWidthPages + Config.GridSize;
-                bitmapMenu.ShiftX += (widthRightPanel - bitmapMenu.Width) / 2;
-                bitmapMenu.ShiftY = panelEmptyInfo.NextTop();
-                calcedWidth = maxWidthPages + widthRightPanel + Config.GridSize;
-
-                ArrangeControls();
-
-                // Определяем высоту бэнда зданий
-                heightBandBuildings = 0;
-                foreach (TypeEconomicConstruction tec in Config.TypeEconomicConstructions)
-                    if (tec.Panel != null)
-                        heightBandBuildings = Math.Max(heightBandBuildings, tec.Panel.Height + tec.Panel.Top);
-
-                // Определяем высоту бэнда информации
-                //heightBandInfoAndMenu = panelMenu.Height + Math.Max(panelBuildingInfo.Height, panelHeroInfo.Height);
-
-                //
-                MainControl.Width = calcedWidth;
-
-                Width = (Width - ClientSize.Width) + calcedWidth + (Config.GridSize * 2);// С краев - по GRID_SIZE
-                // Высота - это наибольшая высота бэндов лобби, зданий и информации с меню
-                calcedHeight = Math.Max(pageHeroes.Page.NextTop(), heightBandBuildings);
-                Height = (Height - ClientSize.Height) + calcedHeight + Config.GridSize;
+                Width = Width - ClientSize.Width + Config.GridSize + MainControl.Width + Config.GridSize;
+                Height = Height - ClientSize.Height + panelPlayers.NextTop() + MainControl.NextTop() + Config.GridSize;
                 minSizeForm = new Size(Width, Height);
-                MainControl.Height = calcedHeight;
 
-                panelBuildingInfo.Height = ClientSize.Height - panelBuildingInfo.Top - bitmapMenu.Height - (Config.GridSize * 2);
+                bitmapMenu.ShiftY = MainControl.Height - bitmapMenu.Height;
+                panelBuildingInfo.Height = MainControl.Height - panelBuildingInfo.ShiftY - bitmapMenu.Height - Config.GridSize;
                 panelLairInfo.Height = panelBuildingInfo.Height;
                 panelHeroInfo.Height = panelBuildingInfo.Height;
                 panelMonsterInfo.Height = panelBuildingInfo.Height;
                 panelEmptyInfo.Height = panelBuildingInfo.Height;
 
-                bitmapMenu.ShiftY = panelEmptyInfo.NextTop();
+                btnQuit.ShiftX = MainControl.Width - btnQuit.Width;
+                btnHelp.PlaceBeforeControl(btnQuit);
+                btnPreferences.PlaceBeforeControl(btnHelp);
+                btnEndTurn.ShiftX = panelBuildingInfo.ShiftX - btnEndTurn.Width - Config.GridSize;
+                btnTarget.ShiftX = btnEndTurn.ShiftX - btnTarget.Width - Config.GridSize;
+
+                panelBuildingInfo.ShiftX = maxWidthPages + Config.GridSize;
+                panelLairInfo.ShiftX = panelBuildingInfo.ShiftX;
+                panelHeroInfo.ShiftX = panelBuildingInfo.ShiftX;
+                panelMonsterInfo.ShiftX = panelBuildingInfo.ShiftX;
+                panelEmptyInfo.ShiftX = panelBuildingInfo.ShiftX;
+
+                ArrangeControls();
 
                 SetStage("Прибираем после строителей");
                 // Перенести в класс
@@ -834,40 +803,12 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Settings.FullScreenMode)
             {
-                shiftControls.X = (ClientSize.Width - calcedWidth) / 2;
-                shiftControls.Y = (ClientSize.Height - calcedHeight) / 2;
+                shiftControls.X = (ClientSize.Width - minSizeForm.Width) / 2;
+                shiftControls.Y = (ClientSize.Height - minSizeForm.Height) / 2;
             }
 
             panelPlayers.SetPos((ClientSize.Width - panelPlayers.Width) / 2, shiftControls.Y);
-            MainControl.SetPos(shiftControls.X, panelPlayers.NextTop());
-
-            labelDay.ShiftX = 0;
-            labelGold.ShiftX = labelDay.NextLeft();
-
-            ShowLobby();
-
-            int leftForNextButtonPage = shiftControls.X - Config.GridSize;
-            foreach (VCFormPage fp in pages)
-            {
-                fp.ShiftX = leftForNextButtonPage;
-                fp.ShiftY = btnQuit.ShiftY;
-                fp.Page.Width = maxWidthPages;
-
-                leftForNextButtonPage = fp.NextLeft();
-            }
-
-            btnQuit.ShiftX = MainControl.Width - btnQuit.Width;
-            btnHelp.PlaceBeforeControl(btnQuit);
-            btnPreferences.PlaceBeforeControl(btnHelp);
-
-            panelBuildingInfo.ShiftX = shiftControls.X + maxWidthPages;
-            panelLairInfo.ShiftX = panelBuildingInfo.ShiftX;
-            panelHeroInfo.ShiftX = panelBuildingInfo.ShiftX;
-            panelMonsterInfo.ShiftX = panelBuildingInfo.ShiftX;
-            panelEmptyInfo.ShiftX = panelBuildingInfo.ShiftX;
-
-            btnEndTurn.ShiftX = panelBuildingInfo.ShiftX - btnEndTurn.Width - Config.GridSize;
-            btnTarget.ShiftX = btnEndTurn.ShiftX - btnTarget.Width - Config.GridSize;
+            MainControl.SetPos(shiftControls.X, panelPlayers.Top + panelPlayers.Height + Config.GridSize);
 
             MainControl.ArrangeControls();
         }

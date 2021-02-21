@@ -18,10 +18,10 @@ namespace Fantasy_Kingdoms_Battle
         protected readonly VCImage imgIcon;
         protected VCTabControl pageControl;
 
-        public PanelBaseInfo(VisualControl parent, int shiftX, int shiftY, int height) : base(parent, shiftX, shiftY)
+        public PanelBaseInfo(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
+            Visible = false;
             ShowBorder = true;
-            Height = height;
 
             lblName = new VCLabel(this, FormMain.Config.GridSize, FormMain.Config.GridSize, FormMain.Config.FontNamePage, FormMain.Config.BattlefieldPlayerName, FormMain.Config.GridSize * 3, "");
             lblName.StringFormat.LineAlignment = StringAlignment.Near;

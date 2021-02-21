@@ -32,7 +32,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal List<VCCell> slots { get; } = new List<VCCell>();
 
-        public PanelHeroInfo(VisualControl parent, int shiftX, int shiftY, int height) : base(parent, shiftX, shiftY, height)
+        public PanelHeroInfo(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
             btnDismiss = new Button()
             {

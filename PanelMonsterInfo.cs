@@ -9,7 +9,7 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class PanelMonsterInfo : PanelCreatureInfo
     {
         private Monster monster;
-        public PanelMonsterInfo(VisualControl parent, int shiftX, int shiftY, int height) : base(parent, shiftX, shiftY, height)
+        public PanelMonsterInfo(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
         }
 

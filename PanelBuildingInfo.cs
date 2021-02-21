@@ -16,7 +16,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly PanelWithPanelEntity panelInhabitants;
         private readonly PanelWithPanelEntity panelWarehouse;
 
-        public PanelBuildingInfo(VisualControl parent, int shiftX, int shiftY, int height) : base(parent, shiftX, shiftY, height)
+        public PanelBuildingInfo(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
             panelProducts = new PanelWithPanelEntity(4);
             panelInhabitants = new PanelWithPanelEntity(4);

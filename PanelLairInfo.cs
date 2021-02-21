@@ -14,7 +14,7 @@ namespace Fantasy_Kingdoms_Battle
         private PlayerLair lair;
         private readonly PanelWithPanelEntity panelInhabitants;
 
-        public PanelLairInfo(VisualControl parent, int shiftX, int shiftY, int height) : base(parent, shiftX, shiftY, height)
+        public PanelLairInfo(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
             panelInhabitants = new PanelWithPanelEntity(4);
 

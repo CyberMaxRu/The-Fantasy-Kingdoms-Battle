@@ -37,7 +37,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override VisualControl GetControl(int x, int y)
         {
-            VisualControl vc= base.GetControl(x, y);
+            VisualControl vc = base.GetControl(x, y);
             if (vc != null)
                 return vc;
 

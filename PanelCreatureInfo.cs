@@ -39,7 +39,7 @@ namespace Fantasy_Kingdoms_Battle
         private VCCell panelArmour;
         internal List<VCCell> slots { get; } = new List<VCCell>();
 
-        public PanelCreatureInfo(VisualControl parent, int shiftX, int shiftY, int height) : base(parent, shiftX, shiftY, height)
+        public PanelCreatureInfo(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
             panelAbilitiesAndSecSkills = new VisualControl();
             panelInventory = new PanelWithPanelEntity(4);
