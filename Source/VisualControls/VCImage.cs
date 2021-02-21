@@ -76,7 +76,7 @@ namespace Fantasy_Kingdoms_Battle
             mouseOver = true;
             if (!leftButtonDown)
                 mouseClicked = false;
-            Program.formMain.ShowFrame();
+            Program.formMain.SetNeedRedrawFrame();
         }
 
         internal override void MouseLeave()
@@ -90,7 +90,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             mouseOver = false;
-            Program.formMain.ShowFrame();
+            Program.formMain.SetNeedRedrawFrame();
         }
 
         internal override void MouseDown()
@@ -98,7 +98,7 @@ namespace Fantasy_Kingdoms_Battle
             base.MouseDown();
 
             mouseClicked = true;
-            Program.formMain.ShowFrame();
+            Program.formMain.SetNeedRedrawFrame();
         }
 
         internal override void MouseUp()
@@ -108,7 +108,7 @@ namespace Fantasy_Kingdoms_Battle
             if (mouseClicked != false)
             {
                 mouseClicked = false;
-                Program.formMain.ShowFrame();
+                Program.formMain.SetNeedRedrawFrame();
             }
         }
 

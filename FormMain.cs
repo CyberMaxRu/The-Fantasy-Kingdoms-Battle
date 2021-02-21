@@ -1318,7 +1318,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        private void SetNeedRedrawFrame()
+        internal void SetNeedRedrawFrame()
         {
             needRedrawFrame = true;
         }
@@ -1475,7 +1475,7 @@ namespace Fantasy_Kingdoms_Battle
             e.Graphics.DrawImage(bmpFrame, e.ClipRectangle, e.ClipRectangle, GraphicsUnit.Pixel);
         }
 
-        internal void ShowFrame()
+        private void ShowFrame()
         {
             needRedrawFrame = false;
 

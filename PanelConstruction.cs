@@ -136,7 +136,7 @@ namespace Fantasy_Kingdoms_Battle
                 Building.HireHero();
                 btnHireHero.DoShowHint();
                 Program.formMain.UpdateListHeroes();
-                Program.formMain.ShowFrame();
+                Program.formMain.SetNeedRedrawFrame();
             }
         }
 
@@ -150,7 +150,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Building.BuyOrUpgrade();
                 btnBuyOrUpgrade.DoShowHint();
-                Program.formMain.ShowFrame();
+                Program.formMain.SetNeedRedrawFrame();
             }
         }
 

@@ -138,7 +138,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Player.Gold -= Building.TrainedHero.Cost;
                 if (Player.TypePlayer == TypePlayer.Human)
-                    Program.formMain.ShowFrame();
+                    Program.formMain.SetNeedRedrawFrame();
             }
 
             AddHero(h);

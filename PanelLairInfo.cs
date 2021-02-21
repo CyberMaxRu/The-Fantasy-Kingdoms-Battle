@@ -32,7 +32,7 @@ namespace Fantasy_Kingdoms_Battle
             set
             {
                 lair = value;
-                ShowData();
+                panelInhabitants.ApplyList(lair.Monsters);
             }
         }
 
@@ -41,18 +41,6 @@ namespace Fantasy_Kingdoms_Battle
             base.ArrangeControls();
 
             pageControl.Height = Height - pageControl.ShiftY - FormMain.Config.GridSize;
-        }
-
-        internal  void ShowData()
-        {
-            //base.ShowData();
-
-            //lblIcon.Text = (lair.Lair.MaxLevel > 1) && (building.Level > 0) ? building.Level.ToString() : "";
-
-            panelInhabitants.ApplyList(lair.Monsters);
-
-            Visible = true;
-            Program.formMain.ShowFrame();
         }
 
         internal void SelectPageInhabitants()

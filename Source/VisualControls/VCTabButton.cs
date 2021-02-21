@@ -28,7 +28,7 @@ namespace Fantasy_Kingdoms_Battle
             base.DoClick();
 
             (Parent as VCTabControl).ActivatePage(IndexPage);
-            Program.formMain.ShowFrame();
+            Program.formMain.SetNeedRedrawFrame();
         }
 
         internal override void Draw(Graphics g)

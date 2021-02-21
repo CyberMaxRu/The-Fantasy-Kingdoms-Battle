@@ -58,7 +58,7 @@ namespace Fantasy_Kingdoms_Battle
             Building.Researches.Remove(this);
             AddEntity(Research.Entity);
 
-            Program.formMain.ShowFrame();
+            Program.formMain.SetNeedRedrawFrame();
         }
 
         internal void AddEntity(Entity entity)

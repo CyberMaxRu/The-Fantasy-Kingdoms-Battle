@@ -99,7 +99,7 @@ namespace Fantasy_Kingdoms_Battle
                 Hero.Dismiss();
                 Hero = null;
 
-                Program.formMain.ShowFrame();
+                Program.formMain.SetNeedRedrawFrame();
             }
         }
 
