@@ -148,6 +148,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private bool inDrawFrame = false;
         private bool needRedrawFrame;
+        private int frames = 0;
 
         private VCFormPage currentPage;
         private readonly int heightBandBuildings;
@@ -1494,6 +1495,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(inDrawFrame == false);
 
             inDrawFrame = true;
+            frames++;
             // Рисуем фон
             gfxFrame.CompositingMode = CompositingMode.SourceCopy; 
             gfxFrame.DrawImageUnscaled(bmpBackground, 0, 0);
@@ -1643,7 +1645,10 @@ namespace Fantasy_Kingdoms_Battle
                     // Поэтому перед кликом убираем его
                     VisualControl vc = controlWithHint;
                     controlWithHint = null;
+                    frames = 0;
                     vc.DoClick();
+                    //labelDay.Text = frames.ToString();
+
                     if (formHint.Visible)
                     {
                         ControlForHintLeave();
