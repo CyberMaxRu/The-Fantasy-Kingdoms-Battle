@@ -1669,7 +1669,8 @@ namespace Fantasy_Kingdoms_Battle
             base.OnDeactivate(e);
 
             ControlForHintLeave();
-            ShowFrame();
+            if (WindowState != FormWindowState.Minimized)
+                ShowFrame();
         }
 
         internal int TreatImageIndex(int imageIndex, BattleParticipant p)
