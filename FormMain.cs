@@ -154,6 +154,8 @@ namespace Fantasy_Kingdoms_Battle
         private readonly PanelMonsterInfo panelMonsterInfo;
         internal VCCell SelectedPanelEntity;
         private Rectangle rectBorderAroungGamespace;
+        private Point point1LineAfterPanelPlayers;
+        private Point point2LineAfterPanelPlayers;
 
         internal VCMenuCell[,] CellsMenu { get; }
 
@@ -461,7 +463,7 @@ namespace Fantasy_Kingdoms_Battle
                 MainControl.Height = pageGuilds.NextTop() + maxHeightPages;
 
                 Width = Width - ClientSize.Width + Config.GridSize + MainControl.Width + Config.GridSize;
-                Height = Height - ClientSize.Height + panelPlayers.NextTop() + MainControl.NextTop() + Config.GridSize;
+                Height = Height - ClientSize.Height + panelPlayers.NextTop() + Config.GridSize + MainControl.NextTop() + Config.GridSize;
                 minSizeForm = new Size(Width, Height);
 
                 bitmapMenu.ShiftY = MainControl.Height - bitmapMenu.Height;
@@ -807,10 +809,12 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             panelPlayers.SetPos((ClientSize.Width - panelPlayers.Width) / 2, shiftControls.Y);
-            MainControl.SetPos(shiftControls.X, panelPlayers.Top + panelPlayers.Height + Config.GridSize);
+            MainControl.SetPos(shiftControls.X, panelPlayers.Top + panelPlayers.Height + Config.GridSize + Config.GridSize);
 
             MainControl.ArrangeControls();
 
+            point1LineAfterPanelPlayers = new Point(MainControl.Left, panelPlayers.Top + panelPlayers.Height + Config.GridSize);
+            point2LineAfterPanelPlayers = new Point(MainControl.Left + MainControl.Width, panelPlayers.Top + panelPlayers.Height + Config.GridSize);
             rectBorderAroungGamespace = new Rectangle(shiftControls.X - Config.GridSize - 1, shiftControls.Y - Config.GridSize - 1, minSizeForm.Width + 2, minSizeForm.Height + 2);
         }
 
@@ -1459,9 +1463,12 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             //
+            gfxFrame.DrawLine(Config.GetPenBorder(false), point1LineAfterPanelPlayers, point2LineAfterPanelPlayers);
+
             if (Settings.FullScreenMode)
                 gfxFrame.DrawRectangle(Config.GetPenBorder(false), rectBorderAroungGamespace);
 
+            //
             inDrawFrame = false;
         }
 
