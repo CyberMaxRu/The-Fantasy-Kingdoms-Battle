@@ -24,7 +24,6 @@ namespace Fantasy_Kingdoms_Battle
 
         // ImageList'ы
         internal BitmapList blPlayerAvatars;
-        internal readonly BitmapList ilResultBattle;
         internal readonly BitmapList imListObjectsBig;
         internal readonly BitmapList imListObjectsCell;
         internal readonly BitmapList ilGui;
@@ -285,7 +284,6 @@ namespace Fantasy_Kingdoms_Battle
                 bmpMaskBig = new Bitmap(dirResources + @"Icons\MaskBig.png");
                 bmpMaskSmall = new Bitmap(dirResources + @"Icons\MaskSmall.png");// Нужна ли еще?
 
-                ilResultBattle = new BitmapList(dirResources, "ResultBattle.png", 24, true, false);
                 imListObjectsBig = new BitmapList(dirResources, "Objects.png", 128, true, true);
 
                 // Добавляем в список иконок аватарки игроков
