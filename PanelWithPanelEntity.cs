@@ -65,8 +65,8 @@ namespace Fantasy_Kingdoms_Battle
             for (int x = 0; x < EntityInRow; x++)
             {
                 pe = new VCCell(this, 0, 0);
-                pe.ShiftX = x * (pe.Width + 1);
-                pe.ShiftY = rows * (pe.Height + 1);
+                pe.ShiftX = x * (pe.Width + 2);
+                pe.ShiftY = rows * (pe.Height + 2);
                 ArrangeControl(pe);
                 panelEntities.Add(pe);
             }
