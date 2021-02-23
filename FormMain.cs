@@ -151,7 +151,6 @@ namespace Fantasy_Kingdoms_Battle
         private bool needRedrawFrame;
 
         private VCFormPage currentPage;
-        private readonly int heightBandBuildings;
         private readonly VisualControl panelEmptyInfo;
         private readonly PanelBuildingInfo panelBuildingInfo;
         internal readonly PanelLairInfo panelLairInfo;
@@ -162,7 +161,8 @@ namespace Fantasy_Kingdoms_Battle
             get => selectedPanelEntity;
             set
             {
-                if (selectedPanelEntity != null) selectedPanelEntity.Selected = false;
+                if (selectedPanelEntity != null)
+                    selectedPanelEntity.Selected = false;
                 selectedPanelEntity = value;
                 if (selectedPanelEntity != null)
                     selectedPanelEntity.Selected = true;
