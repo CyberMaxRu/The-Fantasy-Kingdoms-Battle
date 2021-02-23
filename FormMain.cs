@@ -63,6 +63,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCBitmap bitmapMenu;
 
         private bool allowResize = false;
+        private VCCell selectedPanelEntity;
 
         // Главные страницы игры
         private readonly List<VCFormPage> pages = new List<VCFormPage>();
@@ -156,7 +157,8 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly PanelLairInfo panelLairInfo;
         private readonly PanelHeroInfo panelHeroInfo;
         private readonly PanelMonsterInfo panelMonsterInfo;
-        internal VCCell SelectedPanelEntity;
+        internal VCCell SelectedPanelEntity { get => selectedPanelEntity; 
+            set { if (selectedPanelEntity != null) selectedPanelEntity.Selected = false; selectedPanelEntity = value; } }
         private Rectangle rectBorderAroungGamespace;
         private Point point1LineAfterPanelPlayers;
         private Point point2LineAfterPanelPlayers;

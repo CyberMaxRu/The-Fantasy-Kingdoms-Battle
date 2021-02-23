@@ -31,6 +31,8 @@ namespace Fantasy_Kingdoms_Battle
             Height = Program.formMain.bmpBorderForIcon.Height;
         }
 
+        internal bool Selected { get; set; }
+
         internal override void ArrangeControls()
         {
             base.ArrangeControls();
@@ -89,7 +91,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (cell != null)
             {
-                if (Program.formMain.SelectedPanelEntity == this)
+                if (Selected)
                     g.DrawRectangle(FormMain.Config.GetPenBorder(true), new Rectangle(Left - 1, Top - 2, Width + 1, Height + 1));
 
                 g.DrawImageUnscaled(Program.formMain.bmpBorderForIcon, Left, Top);
