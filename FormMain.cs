@@ -140,7 +140,8 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly Bitmap bmpBorderBattlefield;
         internal readonly Bitmap bmpMaskBig;
         internal readonly Bitmap bmpMaskSmall;
-        internal readonly M2Font fontSmallContur;
+        internal readonly M2Font fontCost;
+        internal readonly M2Font fontLevel;
         internal int LengthSideBorderBattlefield { get; private set; }
         private Size sizeGamespace;
         private Point shiftControls;
@@ -231,7 +232,8 @@ namespace Fantasy_Kingdoms_Battle
                     CheckForNewVersion();
                 }
 
-                fontSmallContur = new M2Font(dirResources);
+                fontCost = new M2Font(dirResources, "small_c");
+                fontLevel = new M2Font(dirResources, "med_caption_c");
 
                 // Формируем и показываем сплэш-заставку
                 Image splashBitmap = new Bitmap(dirResources + "\\Icons\\Splash.png");
