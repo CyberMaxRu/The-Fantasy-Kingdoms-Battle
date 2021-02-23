@@ -932,6 +932,22 @@ namespace Fantasy_Kingdoms_Battle
             return output;
         }
 
+        internal void ShowCurrentPlayerLobby()
+        {
+            if (lobby.CurrentPlayer.TypePlayer == TypePlayer.Human)
+            {
+                MainControl.Visible = true;
+                ShowDataPlayer();
+            }
+            else
+            {
+                MainControl.Visible = false;
+            }
+
+            ShowFrame();
+            Application.DoEvents();
+        }
+
         internal void ShowDataPlayer()
         {
             Debug.Assert(lobby.CurrentPlayer.TypePlayer == TypePlayer.Human);

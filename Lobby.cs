@@ -143,9 +143,13 @@ namespace Fantasy_Kingdoms_Battle
                 if ((Players[i].IsLive == true) || (Players[i].TypePlayer == TypePlayer.Human))
                 {
                     SetPlayerAsCurrent(i);
+                    Program.formMain.ShowCurrentPlayerLobby();
 
                     if (CurrentPlayer.TypePlayer == TypePlayer.Computer)
+                    {
                         CurrentPlayer.DoTurn();
+                        System.Threading.Thread.Sleep(250);
+                    }
                     else
                         return;
                 }
