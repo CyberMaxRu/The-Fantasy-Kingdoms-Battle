@@ -453,7 +453,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 // Панели информации. Их располагаем после страниц
                 panelHeroInfo = new PanelHeroInfo(MainControl, maxWidthPages + Config.GridSize, btnQuit.NextTop());
-                panelBuildingInfo = new PanelBuildingInfo(panelHeroInfo, panelHeroInfo.ShiftX, panelHeroInfo.ShiftY);
+                panelBuildingInfo = new PanelBuildingInfo(MainControl, panelHeroInfo.ShiftX, panelHeroInfo.ShiftY);
                 panelLairInfo = new PanelLairInfo(MainControl, panelHeroInfo.ShiftX, panelHeroInfo.ShiftY);
                 panelMonsterInfo = new PanelMonsterInfo(MainControl, panelHeroInfo.ShiftX, panelHeroInfo.ShiftY);
                 panelEmptyInfo = new VisualControl(MainControl, panelHeroInfo.ShiftX, panelHeroInfo.ShiftY)
