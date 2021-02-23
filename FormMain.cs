@@ -157,8 +157,17 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly PanelLairInfo panelLairInfo;
         private readonly PanelHeroInfo panelHeroInfo;
         private readonly PanelMonsterInfo panelMonsterInfo;
-        internal VCCell SelectedPanelEntity { get => selectedPanelEntity; 
-            set { if (selectedPanelEntity != null) selectedPanelEntity.Selected = false; selectedPanelEntity = value; } }
+        internal VCCell SelectedPanelEntity
+        {
+            get => selectedPanelEntity;
+            set
+            {
+                if (selectedPanelEntity != null) selectedPanelEntity.Selected = false;
+                selectedPanelEntity = value;
+                if (selectedPanelEntity != null)
+                    selectedPanelEntity.Selected = true;
+            }
+        }
         private Rectangle rectBorderAroungGamespace;
         private Point point1LineAfterPanelPlayers;
         private Point point2LineAfterPanelPlayers;
