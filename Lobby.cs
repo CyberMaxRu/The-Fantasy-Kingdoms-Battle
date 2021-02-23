@@ -152,7 +152,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
 
-            CalcBattles();
+            //CalcBattles();
 
             CalcEndTurn();
 
