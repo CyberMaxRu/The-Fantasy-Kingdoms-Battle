@@ -10,7 +10,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         private int shiftImageX;
         private int shiftImageY;
-        private VCLabel labelCost;
+        private VCLabelM2 labelCost;
         private VCLabel labelLevel;
         private VCLabel labelQuantity;
         private VCLabel labelPopupQuantity;
@@ -24,7 +24,7 @@ namespace Fantasy_Kingdoms_Battle
             BitmapList = bitmapList;
             ImageIndex = imageIndex;
 
-            labelCost = new VCLabel(this, 0, Height - 12, FormMain.Config.FontCost, FormMain.Config.CommonCost, 16, "");
+            labelCost = new VCLabelM2(this, 0, Height - 12, Program.formMain.fontCost, FormMain.Config.CommonCost, 16, "");
             labelCost.StringFormat.LineAlignment = StringAlignment.Far;
             labelCost.Visible = false;// Текст перекрывается иконкой. Поэтому рисуем вручную
 
