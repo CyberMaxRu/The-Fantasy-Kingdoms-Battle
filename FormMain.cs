@@ -46,6 +46,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private Point mousePos;
         private VisualControl controlWithHint;
+        private VisualControl controlClicked;
         private bool hintShowed = false;
 
         private readonly VisualControl panelPlayers;// Панель, на которой находятся панели игроков лобби
@@ -1563,6 +1564,12 @@ namespace Fantasy_Kingdoms_Battle
                 controlWithHint = null;
             }
 
+            if (controlClicked != null)
+            {
+                controlClicked.MouseLeave();
+                controlClicked = null;
+            }
+
             hintShowed = false;
             formHint.HideHint();
         }
@@ -1600,9 +1607,10 @@ namespace Fantasy_Kingdoms_Battle
                     // При клике происходит перерисовка кадра, и текущий элемент может стать уже невидимым
                     // Но он будет все равно считаться активным, так как прописан в controlWithHint
                     // Поэтому перед кликом убираем его
-                    VisualControl vc = controlWithHint;
+                    controlClicked = controlWithHint;
                     controlWithHint = null;
-                    vc.DoClick();
+                    controlClicked.DoClick();
+                    controlClicked = null;
 
                     if (needRedrawFrame)
                         ShowFrame();
