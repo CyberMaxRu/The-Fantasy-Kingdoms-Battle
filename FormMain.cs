@@ -1169,7 +1169,8 @@ namespace Fantasy_Kingdoms_Battle
                 if (SelectedPanelLair != null)
                     SelectLair(null);
 
-                SelectPanelEntity(null);
+                if (pb != null)
+                    SelectPanelEntity(null);
 
                 PanelConstruction oldSelected = SelectedPanelBuilding;
                 SelectedPanelBuilding = pb;
@@ -1202,7 +1203,8 @@ namespace Fantasy_Kingdoms_Battle
                 if (SelectedPanelBuilding != null)
                     SelectBuilding(null);
 
-                SelectPanelEntity(null);
+                if (pl != null)
+                    SelectPanelEntity(null);
 
                 PanelLair oldSelected = SelectedPanelLair;
                 SelectedPanelLair = pl;
