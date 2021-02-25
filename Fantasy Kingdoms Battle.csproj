@@ -66,6 +66,7 @@
     <Compile Include="M2Font.cs" />
     <Compile Include="PanelCreatureInfo.cs" />
     <Compile Include="PanelMonsterInfo.cs" />
+    <Compile Include="PlayerObject.cs" />
     <Compile Include="SecondarySkill.cs" />
     <Compile Include="Source\Panels\PanelPlayer.cs" />
     <Compile Include="Source\VisualControls\VCLabelM2.cs" />

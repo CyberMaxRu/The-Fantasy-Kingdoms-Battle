@@ -82,8 +82,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void ImageConstruction_ShowHint(object sender, EventArgs e)
         {
-            Program.formMain.formHint.AddStep1Header(Building.Building.Name, Building.Level > 0 ? "Уровень " + Building.Level.ToString() : "", Building.Building.Description + ((Building.Level > 0) && (Building.Building.TrainedHero != null) ? Environment.NewLine + Environment.NewLine + "Героев: " + Building.Heroes.Count.ToString() + "/" + Building.MaxHeroes().ToString() : ""));
-            Program.formMain.formHint.AddStep2Income(Building.Income());
+            Building.PrepareHint();
         }
 
         private void ImageConstruction_Click(object sender, EventArgs e)
