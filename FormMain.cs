@@ -1622,6 +1622,9 @@ namespace Fantasy_Kingdoms_Battle
             if (e.Button == MouseButtons.Left)
             {
                 controlWithHint?.MouseDown();
+
+                if (needRedrawFrame)
+                    ShowFrame();
             }
         }
 
