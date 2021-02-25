@@ -13,7 +13,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
-            ImageFilter = ImageFilter.Active;
+            //ImageFilter = ImageFilter.Active;
 
             base.Draw(g);
         }

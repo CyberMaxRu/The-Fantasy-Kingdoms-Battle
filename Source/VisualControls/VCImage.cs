@@ -121,14 +121,19 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(PopupQuantity >= 0);
             Debug.Assert(PopupQuantity <= 9);
 
-            if ((BitmapList.Size == Program.formMain.ilMenuCellFilters.Size) && UseFilter && ImageIsEnabled)
+            if ((BitmapList.Size == Program.formMain.ilMenuCellFilters.Size) && UseFilter)
             {
-                if (ShowAsPressed || (mouseClicked && mouseOver))
-                    ImageFilter = ImageFilter.Press;
-                else if (mouseOver)
-                    ImageFilter = ImageFilter.Select;
+                if (ImageIsEnabled)
+                {
+                    if (ShowAsPressed || (mouseClicked && mouseOver))
+                        ImageFilter = ImageFilter.Press;
+                    else if (mouseOver)
+                        ImageFilter = ImageFilter.Select;
+                    else
+                        ImageFilter = ImageFilter.Active;
+                }
                 else
-                    ImageFilter = ImageFilter.Active;
+                    ImageFilter = ImageFilter.Disabled;
             }
 
             base.Draw(g);
@@ -136,7 +141,7 @@ namespace Fantasy_Kingdoms_Battle
             // Иконка
             if (ImageIndex != -1)
             {
-                BitmapList.DrawImage(g, ImageIndex, ImageIsEnabled, ImageIsOver, Left + ShiftImageX, Top + ShiftImageY);
+                BitmapList.DrawImage(g, ImageIndex, UseFilter || ImageIsEnabled, ImageIsOver, Left + ShiftImageX, Top + ShiftImageY);
 
                 // Цена
                 if ((Cost != 0) || ShowCostZero)
