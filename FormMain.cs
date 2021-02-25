@@ -1538,6 +1538,24 @@ namespace Fantasy_Kingdoms_Battle
             TreatMouseMove(e.Button == MouseButtons.Left);
         }
 
+        private VisualControl ControlUnderMouse()
+        {
+            VisualControl curControl;
+            curControl = panelPlayers.GetControl(mousePos.X, mousePos.Y);
+            if (curControl == null)
+            {
+                curControl = MainControl.GetControl(mousePos.X, mousePos.Y);
+                if (curControl == MainControl)
+                {
+                    curControl = currentPage.Page.GetControl(mousePos.X, mousePos.Y);
+                    if (curControl == currentPage)
+                        curControl = null;
+                }
+            }
+
+            return curControl;
+        }
+
         private void TreatMouseMove(bool leftDown)
         {
             Point newMousePos = PointToClient(Cursor.Position);
@@ -1545,19 +1563,7 @@ namespace Fantasy_Kingdoms_Battle
             if (!mousePos.Equals(newMousePos))
             {
                 mousePos = newMousePos;
-                VisualControl curControl;
-
-                curControl = panelPlayers.GetControl(mousePos.X, mousePos.Y);
-                if (curControl == null)
-                {
-                    curControl = MainControl.GetControl(mousePos.X, mousePos.Y);
-                    if (curControl == MainControl)
-                    {
-                        curControl = currentPage.Page.GetControl(mousePos.X, mousePos.Y);
-                        if (curControl == currentPage)
-                            curControl = null;
-                    }
-                }
+                VisualControl curControl = ControlUnderMouse();
 
                 if (curControl == null)
                 {
@@ -1650,7 +1656,14 @@ namespace Fantasy_Kingdoms_Battle
                     controlClicked = controlWithHint;
                     controlWithHint = null;
                     controlClicked.DoClick();
+
+                    // Смотрим какой контрол под мышкой сейчас. Если тот же самый, восстанавливаем его
+                    VisualControl curControl = ControlUnderMouse();
+                    if ((curControl != null) && (curControl == controlClicked))
+                        controlWithHint = controlClicked;
+
                     controlClicked = null;
+
 
                     ShowFrame(false);
 
