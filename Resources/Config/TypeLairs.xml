@@ -336,7 +336,7 @@
     <MaxLevel>1</MaxLevel>
     <Levels>
       <Level>
-        <Cost>5000</Cost>
+        <Cost>10000</Cost>
         <Monster>
           <ID>Dragon</ID>
           <StartQuantity>1</StartQuantity>

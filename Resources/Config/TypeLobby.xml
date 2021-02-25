@@ -4,7 +4,7 @@
     <Name>8 игроков</Name>
     <QuantityPlayers>8</QuantityPlayers>
     <DurabilityCastle>10</DurabilityCastle>
-    <Gold>20000</Gold>
+    <Gold>8000</Gold>
     <MaxHeroes>49</MaxHeroes>
     <DayStartTournament>10</DayStartTournament>
     <StartPointConstructionGuild>2</StartPointConstructionGuild>
