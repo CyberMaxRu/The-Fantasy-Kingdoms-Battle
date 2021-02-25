@@ -1631,12 +1631,11 @@ namespace Fantasy_Kingdoms_Battle
 
             if (e.Button == MouseButtons.Left)
             {
-                controlWithHint?.MouseUp();
-
                 // Обработка клика перемещена из MouseClick, так как если кликать часто, то системой
                 // это распознается как двойной клик и вызывает OnMouseDoubleClick вместо OnMouseClick
                 if (controlWithHint != null)
                 {
+                    controlWithHint.MouseUp();
                     // При клике происходит перерисовка кадра, и текущий элемент может стать уже невидимым
                     // Но он будет все равно считаться активным, так как прописан в controlWithHint
                     // Поэтому перед кликом убираем его
