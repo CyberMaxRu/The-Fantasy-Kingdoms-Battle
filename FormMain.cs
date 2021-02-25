@@ -558,7 +558,7 @@ namespace Fantasy_Kingdoms_Battle
 
             // При старте игры в полноэкранном режиме, если курсор находится на пустом пространстве, окно игры состоит из белого фона
             // Показ кадра при старте отрисовывает окно
-            ShowFrame();
+            ShowFrame(true);
         }
 
         private void PageHeroes_ShowHint(object sender, EventArgs e)
@@ -682,7 +682,7 @@ namespace Fantasy_Kingdoms_Battle
                 //ShowFrame();
                 //panelPlayers.Visible = true;
                 //MainControl.Visible = true;
-                ShowFrame();
+                ShowFrame(true);
                 //Application.DoEvents();
             }
         }
@@ -957,7 +957,7 @@ namespace Fantasy_Kingdoms_Battle
                 MainControl.Visible = false;
             }
 
-            ShowFrame();
+            ShowFrame(true);
             Application.DoEvents();
         }
 
@@ -1451,19 +1451,22 @@ namespace Fantasy_Kingdoms_Battle
             e.Graphics.DrawImage(bmpFrame, e.ClipRectangle, e.ClipRectangle, GraphicsUnit.Pixel);
         }
 
-        private void ShowFrame()
+        private void ShowFrame(bool force)
         {
-            needRedrawFrame = false;
-
-            DrawFrame();// Готовим кадр
-            if ((controlWithHint != null) && (controlWithHint != MainControl))
+            if (force || needRedrawFrame)
             {
-                //Pen p = new Pen(Color.Red);
-                //gfxFrame.DrawRectangle(p, controlWithHint.Rectangle);
-                //p.Dispose();
-            }
+                needRedrawFrame = false;
 
-            Invalidate();// Рисуем кадр
+                DrawFrame();// Готовим кадр
+                if ((controlWithHint != null) && (controlWithHint != MainControl))
+                {
+                    //Pen p = new Pen(Color.Red);
+                    //gfxFrame.DrawRectangle(p, controlWithHint.Rectangle);
+                    //p.Dispose();
+                }
+
+                Invalidate();// Рисуем кадр
+            }
         }
 
         // Рисование кадра главной формы
@@ -1581,11 +1584,10 @@ namespace Fantasy_Kingdoms_Battle
                     controlWithHint = curControl;
                     controlWithHint.MouseEnter(leftDown);
                     timerHover.Start();
-                    ShowFrame();
+                    SetNeedRedrawFrame();
                 }
 
-                if (needRedrawFrame)
-                    ShowFrame();
+                ShowFrame(false);
             }
         }
 
@@ -1606,8 +1608,7 @@ namespace Fantasy_Kingdoms_Battle
             hintShowed = false;
             formHint.HideHint();
 
-            if (needRedrawFrame)
-                ShowFrame();
+            ShowFrame(false);
         }
 
         protected override void OnMouseLeave(EventArgs e)
@@ -1617,8 +1618,7 @@ namespace Fantasy_Kingdoms_Battle
             ControlForHintLeave();
             formHint.HideHint();
 
-            if (needRedrawFrame)
-                ShowFrame();
+            ShowFrame(false);
         }
 
         protected override void OnMouseDown(MouseEventArgs e)
@@ -1629,8 +1629,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 controlWithHint?.MouseDown();
 
-                if (needRedrawFrame)
-                    ShowFrame();
+                ShowFrame(false);
             }
         }
 
@@ -1653,8 +1652,7 @@ namespace Fantasy_Kingdoms_Battle
                     controlClicked.DoClick();
                     controlClicked = null;
 
-                    if (needRedrawFrame)
-                        ShowFrame();
+                    ShowFrame(false);
 
                     if (formHint.Visible)
                     {
@@ -1687,7 +1685,7 @@ namespace Fantasy_Kingdoms_Battle
 
             ControlForHintLeave();
             if (WindowState != FormWindowState.Minimized)
-                ShowFrame();
+                ShowFrame(true);
         }
 
         internal int TreatImageIndex(int imageIndex, BattleParticipant p)
