@@ -138,6 +138,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly Bitmap bmpBorderForIconAlly;
         internal readonly Bitmap bmpBorderForIconEnemy;
         internal readonly Bitmap bmpEmptyEntity;
+        internal readonly Bitmap bmpBackgroundEntity;
         internal readonly Bitmap bmpBorderBattlefield;
         internal readonly Bitmap bmpMaskBig;
         internal readonly Bitmap bmpMaskSmall;
@@ -329,6 +330,7 @@ namespace Fantasy_Kingdoms_Battle
                 bmpForBackground = new Bitmap(dirResources + "Icons\\Background.png");
                 bmpBorderForIcon = new Bitmap(dirResources + "Icons\\BorderIconEntity.png");
                 bmpEmptyEntity = new Bitmap(dirResources + "Icons\\EmptyEntity.png");
+                bmpBackgroundEntity = new Bitmap(dirResources + "Icons\\BackgroundEntity.png");
                 bmpBorderBattlefield = new Bitmap(dirResources + "Icons\\BorderBattlefield.png");
                 LengthSideBorderBattlefield = bmpBorderBattlefield.Width - (Config.WidthBorderBattlefield * 2);
                 Debug.Assert(LengthSideBorderBattlefield > 0);

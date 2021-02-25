@@ -14,6 +14,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override void Draw(Graphics g)
         {
             //ImageFilter = ImageFilter.Active;
+            g.DrawImageUnscaled(Program.formMain.bmpBackgroundEntity, Left - 1, Top - 1);
 
             base.Draw(g);
         }
