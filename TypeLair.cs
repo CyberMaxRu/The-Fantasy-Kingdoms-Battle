@@ -54,13 +54,18 @@ namespace Fantasy_Kingdoms_Battle
     {
         public RewardLevelLair(XmlNode n)
         {
-            Gold = XmlUtils.GetInteger(n.SelectSingleNode("Gold"));
+            MinGold = XmlUtils.GetInteger(n.SelectSingleNode("MinGold"));
+            MaxGold = XmlUtils.GetInteger(n.SelectSingleNode("MaxGold"));
 
-            Debug.Assert(Gold >= 0);
-            Debug.Assert(Gold <= 50_000);
+            Debug.Assert(MinGold >= 0);
+            Debug.Assert(MinGold <= 50_000);
+            Debug.Assert(MaxGold >= 0);
+            Debug.Assert(MaxGold <= 50_000);
+            Debug.Assert(MinGold <= MaxGold);
         }
 
-        internal int Gold { get; }
+        internal int MinGold { get; }
+        internal int MaxGold { get; }
     }
 
     // Класс уровня логова
@@ -76,12 +81,18 @@ namespace Fantasy_Kingdoms_Battle
                 mll = new MonsterLevelLair(l);
                 Monsters.Add(mll);
             }
+
+            Cost = XmlUtils.GetInteger(n.SelectSingleNode("Cost"));
             // Информация о награде
             if (n.SelectSingleNode("Reward") != null)
                 Reward = new RewardLevelLair(n.SelectSingleNode("Reward"));
+
+            Debug.Assert(Cost > 0);
+            Debug.Assert(Cost < 100_000);
         }
 
         internal List<MonsterLevelLair> Monsters { get; } = new List<MonsterLevelLair>();
+        internal int Cost { get; }
         internal RewardLevelLair Reward { get; }
 
         internal void TuneDeferredLinks()

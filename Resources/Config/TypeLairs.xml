@@ -10,6 +10,7 @@
     <MaxLevel>1</MaxLevel>
     <Levels>
       <Level>
+        <Cost>100</Cost>
         <Monster>
           <ID>Zombie</ID>
           <StartQuantity>5</StartQuantity>
@@ -19,7 +20,8 @@
           <QuantityRespawn>1</QuantityRespawn>
         </Monster>
         <Reward>
-          <Gold>500</Gold>
+          <MinGold>100</MinGold>
+          <MaxGold>200</MaxGold>
         </Reward>  
       </Level>
     </Levels>
@@ -34,6 +36,7 @@
     <MaxLevel>1</MaxLevel>
     <Levels>
       <Level>
+        <Cost>250</Cost>
         <Monster>
           <ID>Skelet</ID>
           <StartQuantity>5</StartQuantity>
@@ -51,7 +54,8 @@
           <QuantityRespawn>1</QuantityRespawn>
         </Monster>
         <Reward>
-          <Gold>500</Gold>
+          <MinGold>100</MinGold>
+          <MaxGold>500</MaxGold>
         </Reward>
       </Level>
     </Levels>
@@ -64,6 +68,31 @@
     <Line>1</Line>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <Levels>
+      <Level>
+        <Cost>500</Cost>
+        <Monster>
+          <ID>Ghost</ID>
+          <StartQuantity>5</StartQuantity>
+          <MaxQuantity>10</MaxQuantity>
+          <Level>5</Level>
+          <DaysRespawn>2</DaysRespawn>
+          <QuantityRespawn>1</QuantityRespawn>
+        </Monster>
+        <Monster>
+          <ID>Lich</ID>
+          <StartQuantity>1</StartQuantity>
+          <MaxQuantity>2</MaxQuantity>
+          <Level>5</Level>
+          <DaysRespawn>2</DaysRespawn>
+          <QuantityRespawn>1</QuantityRespawn>
+        </Monster>
+        <Reward>
+          <MinGold>300</MinGold>
+          <MaxGold>700</MaxGold>
+        </Reward>
+      </Level>
+    </Levels>
   </TypeLair>
   <TypeLair>
     <ID>AncientCrypt</ID>
@@ -73,6 +102,23 @@
     <Line>1</Line>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <Levels>
+      <Level>
+        <Cost>1000</Cost>
+        <Monster>
+          <ID>Vampire</ID>
+          <StartQuantity>1</StartQuantity>
+          <MaxQuantity>2</MaxQuantity>
+          <Level>5</Level>
+          <DaysRespawn>2</DaysRespawn>
+          <QuantityRespawn>1</QuantityRespawn>
+        </Monster>
+        <Reward>
+          <MinGold>500</MinGold>
+          <MaxGold>1000</MaxGold>
+        </Reward>
+      </Level>
+    </Levels>
   </TypeLair>
   <TypeLair>
     <ID>WolfsDen</ID>
@@ -82,6 +128,31 @@
     <Line>2</Line>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <Levels>
+      <Level>
+        <Cost>200</Cost>
+        <Monster>
+          <ID>Wolf</ID>
+          <StartQuantity>5</StartQuantity>
+          <MaxQuantity>10</MaxQuantity>
+          <Level>5</Level>
+          <DaysRespawn>2</DaysRespawn>
+          <QuantityRespawn>1</QuantityRespawn>
+        </Monster>
+        <Monster>
+          <ID>OldWolf</ID>
+          <StartQuantity>1</StartQuantity>
+          <MaxQuantity>1</MaxQuantity>
+          <Level>5</Level>
+          <DaysRespawn>2</DaysRespawn>
+          <QuantityRespawn>1</QuantityRespawn>
+        </Monster>
+        <Reward>
+          <MinGold>100</MinGold>
+          <MaxGold>200</MaxGold>
+        </Reward>
+      </Level>
+    </Levels>
   </TypeLair>
   <TypeLair>
     <ID>SerpentsNest</ID>
@@ -91,6 +162,23 @@
     <Line>2</Line>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <Levels>
+      <Level>
+        <Cost>400</Cost>
+        <Monster>
+          <ID>Serpent</ID>
+          <StartQuantity>5</StartQuantity>
+          <MaxQuantity>10</MaxQuantity>
+          <Level>5</Level>
+          <DaysRespawn>2</DaysRespawn>
+          <QuantityRespawn>1</QuantityRespawn>
+        </Monster>
+        <Reward>
+          <MinGold>100</MinGold>
+          <MaxGold>200</MaxGold>
+        </Reward>
+      </Level>
+    </Levels>
   </TypeLair>
   <TypeLair>
     <ID>BearsDen</ID>
@@ -100,6 +188,31 @@
     <Line>2</Line>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <Levels>
+      <Level>
+        <Cost>400</Cost>
+        <Monster>
+          <ID>Bear</ID>
+          <StartQuantity>2</StartQuantity>
+          <MaxQuantity>10</MaxQuantity>
+          <Level>5</Level>
+          <DaysRespawn>2</DaysRespawn>
+          <QuantityRespawn>1</QuantityRespawn>
+        </Monster>
+        <Monster>
+          <ID>GreatBear</ID>
+          <StartQuantity>1</StartQuantity>
+          <MaxQuantity>1</MaxQuantity>
+          <Level>5</Level>
+          <DaysRespawn>2</DaysRespawn>
+          <QuantityRespawn>1</QuantityRespawn>
+        </Monster>
+        <Reward>
+          <MinGold>500</MinGold>
+          <MaxGold>500</MaxGold>
+        </Reward>
+      </Level>
+    </Levels>
   </TypeLair>
   <TypeLair>
     <ID>BearmansDen</ID>
@@ -109,6 +222,23 @@
     <Line>2</Line>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <Levels>
+      <Level>
+        <Cost>800</Cost>
+        <Monster>
+          <ID>WerewolfBear</ID>
+          <StartQuantity>1</StartQuantity>
+          <MaxQuantity>1</MaxQuantity>
+          <Level>5</Level>
+          <DaysRespawn>2</DaysRespawn>
+          <QuantityRespawn>1</QuantityRespawn>
+        </Monster>
+        <Reward>
+          <MinGold>1000</MinGold>
+          <MaxGold>1000</MaxGold>
+        </Reward>
+      </Level>
+    </Levels>
   </TypeLair>
   <TypeLair>
     <ID>PyramideMinotaurs</ID>
@@ -118,6 +248,31 @@
     <Line>3</Line>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <Levels>
+      <Level>
+        <Cost>1000</Cost>
+        <Monster>
+          <ID>Minotaur</ID>
+          <StartQuantity>3</StartQuantity>
+          <MaxQuantity>5</MaxQuantity>
+          <Level>5</Level>
+          <DaysRespawn>2</DaysRespawn>
+          <QuantityRespawn>1</QuantityRespawn>
+        </Monster>
+        <Monster>
+          <ID>BlackMinotaur</ID>
+          <StartQuantity>1</StartQuantity>
+          <MaxQuantity>2</MaxQuantity>
+          <Level>5</Level>
+          <DaysRespawn>2</DaysRespawn>
+          <QuantityRespawn>1</QuantityRespawn>
+        </Monster>
+        <Reward>
+          <MinGold>1000</MinGold>
+          <MaxGold>1500</MaxGold>
+        </Reward>
+      </Level>
+    </Levels>
   </TypeLair>
   <TypeLair>
     <ID>OgreCave</ID>
@@ -127,6 +282,23 @@
     <Line>3</Line>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <Levels>
+      <Level>
+        <Cost>1500</Cost>
+        <Monster>
+          <ID>Ogre</ID>
+          <StartQuantity>2</StartQuantity>
+          <MaxQuantity>5</MaxQuantity>
+          <Level>5</Level>
+          <DaysRespawn>2</DaysRespawn>
+          <QuantityRespawn>1</QuantityRespawn>
+        </Monster>
+        <Reward>
+          <MinGold>1000</MinGold>
+          <MaxGold>2000</MaxGold>
+        </Reward>
+      </Level>
+    </Levels>
   </TypeLair>
   <TypeLair>
     <ID>HermitHouse</ID>
@@ -136,6 +308,23 @@
     <Line>3</Line>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <Levels>
+      <Level>
+        <Cost>2500</Cost>
+        <Monster>
+          <ID>Werewolf</ID>
+          <StartQuantity>1</StartQuantity>
+          <MaxQuantity>1</MaxQuantity>
+          <Level>5</Level>
+          <DaysRespawn>2</DaysRespawn>
+          <QuantityRespawn>1</QuantityRespawn>
+        </Monster>
+        <Reward>
+          <MinGold>2000</MinGold>
+          <MaxGold>3000</MaxGold>
+        </Reward>
+      </Level>
+    </Levels>
   </TypeLair>
   <TypeLair>
     <ID>DragonCave</ID>
@@ -145,5 +334,22 @@
     <Line>3</Line>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <Levels>
+      <Level>
+        <Cost>5000</Cost>
+        <Monster>
+          <ID>Dragon</ID>
+          <StartQuantity>1</StartQuantity>
+          <MaxQuantity>1</MaxQuantity>
+          <Level>5</Level>
+          <DaysRespawn>2</DaysRespawn>
+          <QuantityRespawn>1</QuantityRespawn>
+        </Monster>
+        <Reward>
+          <MinGold>10000</MinGold>
+          <MaxGold>15000</MaxGold>
+        </Reward>
+      </Level>
+    </Levels>
   </TypeLair>
 </TypeLairs>
