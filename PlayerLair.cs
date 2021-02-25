@@ -50,5 +50,12 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.PreparingForBattle();
         }
+
+        internal int CostAttack()
+        {
+            Debug.Assert(Level > 0);
+
+            return Lair.LevelLairs[Level - 1].Cost;
+        }
     }
 }
