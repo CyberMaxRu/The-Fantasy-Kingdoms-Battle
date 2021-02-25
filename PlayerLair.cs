@@ -57,5 +57,9 @@ namespace Fantasy_Kingdoms_Battle
 
             return Lair.LevelLairs[Level - 1].Cost;
         }
+        internal override void PrepareHint()
+        {
+            Program.formMain.formHint.AddStep1Header(Lair.Name, "", Lair.Description);
+        }
     }
 }

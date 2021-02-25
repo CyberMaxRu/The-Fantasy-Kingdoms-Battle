@@ -64,7 +64,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void ImgLair_ShowHint(object sender, EventArgs e)
         {
-            Program.formMain.formHint.AddStep1Header(Lair.Lair.Name, "", Lair.Lair.Description);
+            Lair.PrepareHint();
         }
 
         private void ImgLair_Click(object sender, EventArgs e)

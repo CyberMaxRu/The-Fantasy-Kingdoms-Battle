@@ -26,7 +26,7 @@ namespace Fantasy_Kingdoms_Battle
             return TypeMonster.ImageIndex;
         }
 
-        protected override void PrepareHint()
+        internal override void PrepareHint()
         {
             Program.formMain.formHint.AddStep1Header(TypeMonster.Name, "", TypeMonster.Description);
         }

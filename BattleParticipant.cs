@@ -11,7 +11,7 @@ namespace Fantasy_Kingdoms_Battle
     internal enum TypePlayer { Human, Computer, Lair };
 
     // Класс участника битвы
-    internal abstract class BattleParticipant
+    internal abstract class BattleParticipant : PlayerObject
     {
         public BattleParticipant()
         {

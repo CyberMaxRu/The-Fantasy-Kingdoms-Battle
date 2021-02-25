@@ -243,7 +243,7 @@ namespace Fantasy_Kingdoms_Battle
             return Program.formMain.TreatImageIndex(TypeHero.ImageIndex, Player);
         }
 
-        protected override void PrepareHint()
+        internal override void PrepareHint()
         {
             Program.formMain.formHint.AddStep1Header(TypeHero.Name, "", TypeHero.Description);
         }

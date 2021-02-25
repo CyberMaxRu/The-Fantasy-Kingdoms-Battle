@@ -10,7 +10,7 @@ using System.Drawing;
 namespace Fantasy_Kingdoms_Battle
 {
     // Базовый класс существа
-    internal abstract class Creature : ICell
+    internal abstract class Creature : PlayerObject, ICell
     {
         private VCCell panelEntity;
 
@@ -61,7 +61,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal Point CoordInPlayer { get; set; }// Координаты героя в слотах
 
-        protected abstract void PrepareHint();
         protected abstract int GetImageIndex();
         protected virtual void DoClick()
         {

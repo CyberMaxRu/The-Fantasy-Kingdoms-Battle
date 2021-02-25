@@ -473,6 +473,21 @@ namespace Fantasy_Kingdoms_Battle
             base.PreparingForBattle();
         }
 
+        internal override void PrepareHint()
+        {
+            Program.formMain.formHint.AddStep1Header(
+                Name,
+                "Место №" + PositionInLobby.ToString(),
+                "Уровень Замка: " + LevelCastle.ToString() + Environment.NewLine
+                    + "Прочность Замка " + DurabilityCastle.ToString() + "/" + Lobby.TypeLobby.DurabilityCastle.ToString() + Environment.NewLine
+                    + "Героев: " + QuantityHeroes.ToString() + Environment.NewLine
+                    + Environment.NewLine
+                    + "Побед: " + Wins.ToString() + Environment.NewLine
+                    + "Ничьих: " + Draws.ToString() + Environment.NewLine
+                    + "Поражений: " + Loses.ToString() + Environment.NewLine
+                    + (IsLive ? "" : Environment.NewLine + "Игрок покинул лобби на " + DayOfDie + " ходу"));
+        }
+
         // Реализация интерфейса
         VCCell ICell.Panel { get; set; }
         BitmapList ICell.BitmapList() => Program.formMain.imListObjectsCell;
@@ -486,17 +501,7 @@ namespace Fantasy_Kingdoms_Battle
         int ICell.Value() => Castle.Level;
         void ICell.PrepareHint()
         {
-            Program.formMain.formHint.AddStep1Header(
-                Name,
-                "Место №" + PositionInLobby.ToString(),
-                "Уровень Замка: " + LevelCastle.ToString() + Environment.NewLine
-                    + "Прочность Замка " + DurabilityCastle.ToString() + "/" + Lobby.TypeLobby.DurabilityCastle.ToString() + Environment.NewLine
-                    + "Героев: " + QuantityHeroes.ToString() + Environment.NewLine
-                    + Environment.NewLine
-                    + "Побед: " + Wins.ToString() + Environment.NewLine
-                    + "Ничьих: " + Draws.ToString() + Environment.NewLine
-                    + "Поражений: " + Loses.ToString() + Environment.NewLine
-                    + (IsLive ? "" : Environment.NewLine + "Игрок покинул лобби на " + DayOfDie + " ходу"));
+            PrepareHint();
         }
 
         void ICell.Click(VCCell pe)
