@@ -100,6 +100,12 @@ namespace Fantasy_Kingdoms_Battle
             foreach (MonsterLevelLair mll in Monsters)
             {
                 mll.TuneDeferredLinks();
+
+                // Проверяем, что тип монстра не повторяется
+                foreach (MonsterLevelLair mlev in Monsters)
+                    if ((mlev != mll) && (mlev.Monster != null))
+                        if (mlev.Monster == mll.Monster)
+                            throw new Exception("Тип монстра " + mll.Monster.ID + " повторяется.");
             }
         }
     }
