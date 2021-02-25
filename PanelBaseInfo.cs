@@ -27,6 +27,7 @@ namespace Fantasy_Kingdoms_Battle
             lblName.StringFormat.LineAlignment = StringAlignment.Near;
 
             imgIcon = new VCImage(this, FormMain.Config.GridSize, lblName.NextTop(), GetBitmapList(), -1);
+            imgIcon.ShowHint += ImgIcon_ShowHint;
 
             pageControl = new VCTabControl(this, FormMain.Config.GridSize, TopForControls(), Program.formMain.ilGui)
             {
@@ -34,6 +35,11 @@ namespace Fantasy_Kingdoms_Battle
                 Width = Width - FormMain.Config.GridSize * 2,
                 Height = Height - TopForControls() - FormMain.Config.GridSize
             };
+        }
+
+        private void ImgIcon_ShowHint(object sender, EventArgs e)
+        {
+            GetPlayerObject().PrepareHint();
         }
 
         internal override void ArrangeControls()
@@ -56,6 +62,7 @@ namespace Fantasy_Kingdoms_Battle
         protected abstract int GetImageIndex();
         protected abstract bool ImageIsEnabled();
         protected abstract string GetCaption();
+        protected abstract PlayerObject GetPlayerObject();
 
         // Общие для всех панелей методы
 

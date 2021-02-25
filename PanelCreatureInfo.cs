@@ -120,6 +120,11 @@ namespace Fantasy_Kingdoms_Battle
             lblKindHero.Width = Width - (lblKindHero.ShiftX * 2);
         }
 
+        protected override PlayerObject GetPlayerObject()
+        {
+            return Creature;
+        }
+
         internal override void Draw(Graphics g)
         {
             lblKindHero.Text = creature.TypeCreature.KindCreature.Name;
