@@ -29,8 +29,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
-            panelAvatar.Selected = Program.formMain.CurrentLobby.CurrentPlayer == player;
-            panelAvatar.ImageFilter = panelAvatar.Selected ? ImageFilter.Active : ImageFilter.Press;
+            //panelAvatar.Selected = Program.formMain.CurrentLobby.CurrentPlayer == player;
+            panelAvatar.ImageFilter = Program.formMain.CurrentLobby.CurrentPlayer == player ? ImageFilter.Active : ImageFilter.Press;
 
             base.Draw(g);
         }
