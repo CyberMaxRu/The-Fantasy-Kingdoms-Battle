@@ -1605,6 +1605,9 @@ namespace Fantasy_Kingdoms_Battle
 
             hintShowed = false;
             formHint.HideHint();
+
+            if (needRedrawFrame)
+                ShowFrame();
         }
 
         protected override void OnMouseLeave(EventArgs e)
@@ -1613,6 +1616,9 @@ namespace Fantasy_Kingdoms_Battle
 
             ControlForHintLeave();
             formHint.HideHint();
+
+            if (needRedrawFrame)
+                ShowFrame();
         }
 
         protected override void OnMouseDown(MouseEventArgs e)

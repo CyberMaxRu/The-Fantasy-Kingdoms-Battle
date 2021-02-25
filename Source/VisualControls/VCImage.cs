@@ -16,7 +16,6 @@ namespace Fantasy_Kingdoms_Battle
         private VCLabel labelPopupQuantity;
         private SolidBrush brushPopupQuantity;
 
-        private bool mouseOver;
         private bool mouseClicked;
 
         public VCImage(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList, int imageIndex) : base(parent, shiftX, shiftY)
@@ -68,15 +67,11 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.MouseEnter(leftButtonDown);
 
-            if (HighlightUnderMouse)
-            {
-                ImageIsOver = true;
-                Program.formMain.NeedRedrawFrame();
-            }
+            ImageIsOver = true;
 
-            mouseOver = true;
             if (!leftButtonDown)
                 mouseClicked = false;
+
             Program.formMain.SetNeedRedrawFrame();
         }
 
@@ -84,13 +79,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.MouseLeave();
 
-            if (HighlightUnderMouse)
-            {
-                ImageIsOver = false;
-                Program.formMain.NeedRedrawFrame();
-            }
-
-            mouseOver = false;
+            ImageIsOver = false;
             Program.formMain.SetNeedRedrawFrame();
         }
 
@@ -125,9 +114,9 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (ImageIsEnabled)
                 {
-                    if (ShowAsPressed || (mouseClicked && mouseOver))
+                    if (ShowAsPressed || (mouseClicked && ImageIsOver))
                         ImageFilter = ImageFilter.Press;
-                    else if (mouseOver)
+                    else if (ImageIsOver)
                         ImageFilter = ImageFilter.Select;
                     else
                         ImageFilter = ImageFilter.Active;
@@ -141,7 +130,7 @@ namespace Fantasy_Kingdoms_Battle
             // Иконка
             if (ImageIndex != -1)
             {
-                BitmapList.DrawImage(g, ImageIndex, UseFilter || ImageIsEnabled, ImageIsOver, Left + ShiftImageX, Top + ShiftImageY);
+                BitmapList.DrawImage(g, ImageIndex, UseFilter || ImageIsEnabled, HighlightUnderMouse && ImageIsOver, Left + ShiftImageX, Top + ShiftImageY);
 
                 // Цена
                 if ((Cost != 0) || ShowCostZero)
