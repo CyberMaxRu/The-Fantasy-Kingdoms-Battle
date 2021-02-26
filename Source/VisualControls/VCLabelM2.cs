@@ -37,7 +37,7 @@ namespace Fantasy_Kingdoms_Battle
         internal M2Font Font { get; set; }
         internal Color Color
         {
-            get => Color;
+            get => color;
             set { if (color != value) { color = value; brush?.Dispose(); brush = new SolidBrush(color); } }
         }
 
@@ -56,7 +56,7 @@ namespace Fantasy_Kingdoms_Battle
                 if (preparedText != Text)
                 {
                     bmpPreparedText?.Dispose();
-                    bmpPreparedText = Font.GetBitmap(Text);
+                    bmpPreparedText = Font.GetBitmap(Text, Color);
                 }
             }
 

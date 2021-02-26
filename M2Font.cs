@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.IO;
 using System.Diagnostics;
+using System.Drawing.Imaging;
+using System.Runtime.InteropServices;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -106,7 +108,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int MaxHeightSymbol { get => maxHeightSymbol; }
 
-        internal Bitmap GetBitmap(string text)
+        internal Bitmap GetBitmap(string text, Color color)
         {
             Debug.Assert(text.Length > 0);
 
@@ -136,6 +138,24 @@ namespace Fantasy_Kingdoms_Battle
             gResult.DrawImageUnscaled(bmpRaw, 0, 0);
             gResult.Dispose();
             bmpRaw.Dispose();
+
+            // Применяем указанный цвет
+            Rectangle rect = new Rectangle(0, 0, bmpResult.Width, bmpResult.Height);
+            BitmapData bmpData = bmpResult.LockBits(rect, ImageLockMode.ReadWrite, bmpResult.PixelFormat);
+            IntPtr ptr = bmpData.Scan0;
+            int bytes = Math.Abs(bmpData.Stride) * bmpResult.Height;
+            byte[] rgbValues = new byte[bytes];
+            Marshal.Copy(ptr, rgbValues, 0, bytes);
+
+            for (int counter = 0; counter < rgbValues.Length; counter += 4)
+            {
+                rgbValues[counter + 0] = Convert.ToByte(rgbValues[counter + 0] * color.B / 255);
+                rgbValues[counter + 1] = Convert.ToByte(rgbValues[counter + 1] * color.G / 255);
+                rgbValues[counter + 2] = Convert.ToByte(rgbValues[counter + 2] * color.R / 255);
+            }
+
+            Marshal.Copy(rgbValues, 0, ptr, bytes);
+            bmpResult.UnlockBits(bmpData);
 
             return bmpResult;
         }
