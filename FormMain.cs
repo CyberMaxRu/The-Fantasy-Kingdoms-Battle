@@ -99,6 +99,7 @@ namespace Fantasy_Kingdoms_Battle
         internal const int GUI_TOURNAMENT = 19;
         internal const int GUI_SCROLL = 20;
         internal const int GUI_SETTINGS = 21;
+        internal const int GUI_FLAG_SCOUT = 21;
 
         internal const int GUI_PARAMETER_STRENGTH = 6;
         internal const int GUI_PARAMETER_DEXTERITY = 7;
