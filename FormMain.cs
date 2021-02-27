@@ -423,7 +423,7 @@ namespace Fantasy_Kingdoms_Battle
                 pageHeroes = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_HEROES, "Герои", BtnPage_Click);
                 pageHeroes.ShowCostZero = true;
                 pageHeroes.ShowHint += PageHeroes_ShowHint;
-                pageLairs = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_FLAG_ATTACK, "Логова", BtnPage_Click);
+                pageLairs = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_BATTLE, "Логова", BtnPage_Click);
                 pageTournament = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_TOURNAMENT, "Турнир", BtnPage_Click);
                 pageTournament.ShowHint += PageTournament_ShowHint;
 
