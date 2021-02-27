@@ -33,6 +33,7 @@ namespace Fantasy_Kingdoms_Battle
 
             btnAction = new VCButton(this, imgLair.NextLeft(), imgLair.ShiftY, Program.formMain.ilGui, FormMain.GUI_BATTLE);
             btnAction.Click += BtnAction_Click;
+            btnAction.ShowHint += BtnAction_ShowHint;
 
             btnInhabitants = new VCButton(this, btnAction.ShiftX, btnAction.NextTop(), Program.formMain.ilGui, FormMain.GUI_HOME);
             btnInhabitants.Click += BtnInhabitants_Click;
@@ -41,6 +42,23 @@ namespace Fantasy_Kingdoms_Battle
             Width = btnAction.NextLeft();
 
             lblName.Width = Width - (lblName.ShiftX * 2);            
+        }
+
+        private void BtnAction_ShowHint(object sender, EventArgs e)
+        {
+            if (Lair.Hidden)
+            {
+                if (Lair.Priority == 0)
+                    Program.formMain.formHint.AddStep1Header("Разведка", "", "Установить флаг разведки для отправки героев к логову");
+                else
+                    Program.formMain.formHint.AddStep1Header("Разведка", "Приоритет " + Lair.Priority.ToString(), "Повысить приоритет разведки логова");
+
+                Program.formMain.formHint.AddStep4Gold(Lair.RequiredGold(), Lair.Player.Gold >= Lair.RequiredGold());
+            }
+            else
+            {
+
+            }
         }
 
         private void BtnInhabitants_Click(object sender, EventArgs e)
@@ -89,6 +107,7 @@ namespace Fantasy_Kingdoms_Battle
             imgLair.ImageIndex = Lair.ImageIndexLair();
             lblName.Text = Lair.NameLair();
             lblName.Color = Lair.Player.TargetLair == Lair ? Color.OrangeRed : Color.Green;
+            btnAction.ImageIsEnabled = Lair.CheckRequirements();
 
             if (Lair.Hidden)
             {

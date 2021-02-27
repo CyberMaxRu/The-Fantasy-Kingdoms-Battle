@@ -65,6 +65,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int CostAttack()
         {
+            Debug.Assert(!Hidden);
             Debug.Assert(Level > 0);
 
             return TypeLair.LevelLairs[Level - 1].Cost;
@@ -86,6 +87,16 @@ namespace Fantasy_Kingdoms_Battle
         internal int ImageIndexLair()
         {
             return Hidden ? FormMain.IMAGE_INDEX_NONE : TypeLair.ImageIndex;
+        }
+
+        internal int RequiredGold()
+        {
+            return Hidden ? CostScout() : CostAttack();
+        }
+
+        internal bool CheckRequirements()
+        {
+            return Player.Gold >= RequiredGold();
         }
 
         internal void IncPriority()
