@@ -91,7 +91,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnAction_Click(object sender, EventArgs e)
         {
-            Program.formMain.UpdateTarget(Lair);
+            Lair.IncPriority();
         }
 
         private void SelectThisBuilding()

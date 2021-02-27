@@ -101,7 +101,15 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void IncPriority()
         {
+            if (Hidden)
+            {
+                //Debug.Assert()
+            }
+            else
+            {
+            }
 
+            Program.formMain.UpdateTarget(this);
         }
     }
 }
