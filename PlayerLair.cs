@@ -32,6 +32,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int Layer { get; }// Слой, на котором находится логово
         internal bool Hidden { get; set; }// Логово не разведано
         internal List<Monster> Monsters { get; } = new List<Monster>();// Монстры текущего уровня
+        internal int Priority { get; set; }// Приоритет разведки/атаки
 
         private void CreateMonsters()
         {
@@ -68,9 +69,18 @@ namespace Fantasy_Kingdoms_Battle
 
             return TypeLair.LevelLairs[Level - 1].Cost;
         }
+
         internal override void PrepareHint()
         {
-            Program.formMain.formHint.AddStep1Header(TypeLair.Name, "", TypeLair.Description);
+            if (Hidden)
+                Program.formMain.formHint.AddStep1Header("Логово не разведано", "", "Установите флаг разведки для отправки героев к логову");
+            else
+                Program.formMain.formHint.AddStep1Header(TypeLair.Name, "", TypeLair.Description);
+        }
+
+        internal void IncPriority()
+        {
+
         }
     }
 }
