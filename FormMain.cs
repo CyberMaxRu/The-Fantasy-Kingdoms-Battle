@@ -426,6 +426,7 @@ namespace Fantasy_Kingdoms_Battle
                 pageLairs = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_BATTLE, "Логова", BtnPage_Click);
                 pageTournament = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_TOURNAMENT, "Турнир", BtnPage_Click);
                 pageTournament.ShowHint += PageTournament_ShowHint;
+                pageTournament.Visible = false;
 
                 DrawPageConstructions();
                 DrawHeroes();
@@ -969,7 +970,6 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(lobby.CurrentPlayer.TypePlayer == TypePlayer.Human);
 
             labelDay.Text = lobby.Turn.ToString();
-            pageTournament.Cost = lobby.Turn - lobby.TypeLobby.DayStartTournament;
 
             // Если этого игрока не отрисовывали, формируем заново вкладки
             if (curAppliedPlayer != lobby.CurrentPlayer)
