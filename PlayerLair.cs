@@ -73,7 +73,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override void PrepareHint()
         {
             if (Hidden)
-                Program.formMain.formHint.AddStep1Header("Логово не разведано", "", "Установите флаг разведки для отправки героев к логову");
+                Program.formMain.formHint.AddStep1Header("Неизвестное логово", "Логово не разведано", "Установите флаг разведки для отправки героев к логову");
             else
                 Program.formMain.formHint.AddStep1Header(TypeLair.Name, "", TypeLair.Description);
         }
