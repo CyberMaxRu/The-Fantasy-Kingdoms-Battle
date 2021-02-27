@@ -57,7 +57,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(pl != null);
             Debug.Assert(pl.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
-            Debug.Assert(pl.Lair == TypeLair);
+            Debug.Assert(pl.TypeLair == TypeLair);
 
             Lair = pl;
         }

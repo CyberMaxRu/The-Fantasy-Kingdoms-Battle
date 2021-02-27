@@ -54,8 +54,8 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         protected override BitmapList GetBitmapList() => Program.formMain.imListObjectsBig;
-        protected override int GetImageIndex() => lair.Lair.ImageIndex;
+        protected override int GetImageIndex() => lair.TypeLair.ImageIndex;
         protected override bool ImageIsEnabled() => true;
-        protected override string GetCaption() => lair.Lair.Name;
+        protected override string GetCaption() => lair.TypeLair.Name;
     }
 }

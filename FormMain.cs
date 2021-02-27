@@ -597,12 +597,12 @@ namespace Fantasy_Kingdoms_Battle
         {
             ActivatePage(pageLairs);
             if (lobby.CurrentPlayer.TargetLair != null)
-                SelectLair(lobby.CurrentPlayer.TargetLair.Lair.Panel);
+                SelectLair(lobby.CurrentPlayer.TargetLair.TypeLair.Panel);
         }
 
         private void BtnTarget_MouseHover(object sender, EventArgs e)
         {
-            ShowHintForToolButton(btnTarget, lobby.CurrentPlayer.TargetLair != null ? lobby.CurrentPlayer.TargetLair.Lair.Name : "Цель отсутствует", lobby.CurrentPlayer.TargetLair != null ? "Будет атаковано в этом ходу" : "");
+            ShowHintForToolButton(btnTarget, lobby.CurrentPlayer.TargetLair != null ? lobby.CurrentPlayer.TargetLair.TypeLair.Name : "Цель отсутствует", lobby.CurrentPlayer.TargetLair != null ? "Будет атаковано в этом ходу" : "");
         }
 
         private void BtnQuit_MouseHover(object sender, EventArgs e)
@@ -1017,7 +1017,7 @@ namespace Fantasy_Kingdoms_Battle
             // Показываем логова
             foreach (PlayerLair pl in lobby.CurrentPlayer.Lairs)
             {
-                pl.Lair.Panel.LinkToPlayer(pl);
+                pl.TypeLair.Panel.LinkToPlayer(pl);
             }
         }
 
@@ -1440,8 +1440,8 @@ namespace Fantasy_Kingdoms_Battle
                 lobby.CurrentPlayer.TargetLair = null;
             }
             lobby.CurrentPlayer.TargetLair = newLair;
-            btnTarget.ImageIndex = lobby.CurrentPlayer.TargetLair != null ? lobby.CurrentPlayer.TargetLair.Lair.ImageIndex : -1;
-            SelectLair(newLair.Lair.Panel);
+            btnTarget.ImageIndex = lobby.CurrentPlayer.TargetLair != null ? lobby.CurrentPlayer.TargetLair.TypeLair.ImageIndex : -1;
+            SelectLair(newLair.TypeLair.Panel);
 
             SetNeedRedrawFrame();
         }

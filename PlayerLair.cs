@@ -13,7 +13,7 @@ namespace Fantasy_Kingdoms_Battle
         public PlayerLair(Player p, TypeLair l) : base()
         {
             Player = p;
-            Lair = l;
+            TypeLair = l;
 
             Level = 1;
             Name = l.Name;
@@ -22,22 +22,22 @@ namespace Fantasy_Kingdoms_Battle
             Hidden = true;
 
             // Убрать эту проверку после настройки всех логов
-            if (Lair.LevelLairs.Count > 0)
+            if (TypeLair.LevelLairs.Count > 0)
                 CreateMonsters();            
         }
         internal Player Player { get; }
-        internal TypeLair Lair { get; }
+        internal TypeLair TypeLair { get; }
         internal int Level { get; private set; }// Текущий уровень логова
         internal bool Hidden { get; set; }// Логово не разведано
         internal List<Monster> Monsters { get; } = new List<Monster>();// Монстры текущего уровня
 
         private void CreateMonsters()
         {
-            Debug.Assert(Lair.LevelLairs.Count <= Level);
-            Debug.Assert(Lair.LevelLairs[Level - 1].Monsters.Count > 0);
+            Debug.Assert(TypeLair.LevelLairs.Count <= Level);
+            Debug.Assert(TypeLair.LevelLairs[Level - 1].Monsters.Count > 0);
 
             Monster lm;
-            foreach (MonsterLevelLair mll in Lair.LevelLairs[Level - 1].Monsters)
+            foreach (MonsterLevelLair mll in TypeLair.LevelLairs[Level - 1].Monsters)
             {
                 for (int i = 0; i < mll.StartQuantity; i++)
                 {
@@ -57,11 +57,11 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(Level > 0);
 
-            return Lair.LevelLairs[Level - 1].Cost;
+            return TypeLair.LevelLairs[Level - 1].Cost;
         }
         internal override void PrepareHint()
         {
-            Program.formMain.formHint.AddStep1Header(Lair.Name, "", Lair.Description);
+            Program.formMain.formHint.AddStep1Header(TypeLair.Name, "", TypeLair.Description);
         }
     }
 }
