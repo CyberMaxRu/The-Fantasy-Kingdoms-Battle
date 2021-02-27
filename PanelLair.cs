@@ -89,8 +89,16 @@ namespace Fantasy_Kingdoms_Battle
             SetColorBorder(FormMain.Config.ColorBorder(Program.formMain.SelectedPanelLair == this));
             lblName.Color = Lair.Player.TargetLair == Lair ? Color.OrangeRed : Color.Green;
             btnInhabitants.Cost = Lair.CombatHeroes.Count;
-            btnAction.ImageIndex = Lair.Hidden ? FormMain.GUI_FLAG_SCOUT : FormMain.GUI_FLAG_ATTACK;
-            btnAction.Cost = Lair.CostAttack();
+            if (Lair.Hidden)
+            {
+                btnAction.ImageIndex = FormMain.GUI_FLAG_SCOUT;
+                btnAction.Cost = Lair.CostScout();
+            }
+            else
+            {
+                btnAction.ImageIndex = FormMain.GUI_FLAG_ATTACK;
+                btnAction.Cost = Lair.CostAttack();
+            }
 
             base.Draw(g);
         }
