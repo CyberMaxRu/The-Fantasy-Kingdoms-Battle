@@ -23,7 +23,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(MaxLevel <= 5);
             Debug.Assert(DefaultLevel <= MaxLevel);
             Debug.Assert(Line >= 1);
-            Debug.Assert(Line <= 3);
+            Debug.Assert(Line <= 4);
         }
 
         internal int DefaultLevel { get; }

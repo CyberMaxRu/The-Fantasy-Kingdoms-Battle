@@ -1058,7 +1058,7 @@ namespace Fantasy_Kingdoms_Battle
             int left;
             int height = 0;
 
-            for (int line = 1; line <= Config.BuildingMaxLines; line++)
+            for (int line = 1; line <= 4; line++)
             {
                 left = 0;
 
