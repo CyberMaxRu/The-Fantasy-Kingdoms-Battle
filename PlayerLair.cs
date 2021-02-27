@@ -19,6 +19,7 @@ namespace Fantasy_Kingdoms_Battle
             Name = l.Name;
             ImageIndexAvatar = l.ImageIndex;
             TypePlayer = TypePlayer.Lair;
+            Hidden = true;
 
             // Убрать эту проверку после настройки всех логов
             if (Lair.LevelLairs.Count > 0)
@@ -27,6 +28,7 @@ namespace Fantasy_Kingdoms_Battle
         internal Player Player { get; }
         internal TypeLair Lair { get; }
         internal int Level { get; private set; }// Текущий уровень логова
+        internal bool Hidden { get; set; }// Логово не разведано
         internal List<Monster> Monsters { get; } = new List<Monster>();// Монстры текущего уровня
 
         private void CreateMonsters()

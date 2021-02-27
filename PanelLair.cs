@@ -14,7 +14,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         private readonly VCLabel lblName;
         private readonly VCImage imgLair;
-        private readonly VCButton btnSetAsTarget;
+        private readonly VCButton btnAction;
         private readonly VCButton btnInhabitants;
 
         public PanelLair(VisualControl parent, int shiftX, int shiftY, TypeLair typeLair) : base(parent, shiftX, shiftY)
@@ -32,14 +32,14 @@ namespace Fantasy_Kingdoms_Battle
             imgLair.Click += ImgLair_Click;
             imgLair.ShowHint += ImgLair_ShowHint;
 
-            btnSetAsTarget = new VCButton(this, imgLair.NextLeft(), imgLair.ShiftY, Program.formMain.ilGui, FormMain.GUI_BATTLE);
-            btnSetAsTarget.Click += BtnSetAsTarget_Click;
+            btnAction = new VCButton(this, imgLair.NextLeft(), imgLair.ShiftY, Program.formMain.ilGui, FormMain.GUI_BATTLE);
+            btnAction.Click += BtnAction_Click;
 
-            btnInhabitants = new VCButton(this, btnSetAsTarget.ShiftX, btnSetAsTarget.NextTop(), Program.formMain.ilGui, FormMain.GUI_HOME);
+            btnInhabitants = new VCButton(this, btnAction.ShiftX, btnAction.NextTop(), Program.formMain.ilGui, FormMain.GUI_HOME);
             btnInhabitants.Click += BtnInhabitants_Click;
 
             Height = imgLair.NextTop();
-            Width = btnSetAsTarget.NextLeft();
+            Width = btnAction.NextLeft();
 
             lblName.Width = Width - (lblName.ShiftX * 2);            
         }
@@ -72,7 +72,7 @@ namespace Fantasy_Kingdoms_Battle
             SelectThisBuilding();
         }
 
-        private void BtnSetAsTarget_Click(object sender, EventArgs e)
+        private void BtnAction_Click(object sender, EventArgs e)
         {
             Program.formMain.UpdateTarget(Lair);
         }
@@ -89,7 +89,8 @@ namespace Fantasy_Kingdoms_Battle
             SetColorBorder(FormMain.Config.ColorBorder(Program.formMain.SelectedPanelLair == this));
             lblName.Color = Lair.Player.TargetLair == Lair ? Color.OrangeRed : Color.Green;
             btnInhabitants.Cost = Lair.CombatHeroes.Count;
-            btnSetAsTarget.Cost = Lair.CostAttack();
+            btnAction.ImageIndex = Lair.Hidden ? FormMain.GUI_FLAG_SCOUT : FormMain.GUI_FLAG_ATTACK;
+            btnAction.Cost = Lair.CostAttack();
 
             base.Draw(g);
         }

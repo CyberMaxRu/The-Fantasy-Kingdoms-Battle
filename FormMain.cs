@@ -95,11 +95,11 @@ namespace Fantasy_Kingdoms_Battle
         internal const int GUI_TARGET = 15;
         internal const int GUI_BOOK = 16;
         internal const int GUI_EXIT = 17;
-        internal const int GUI_LAIR = 18;
+        internal const int GUI_FLAG_ATTACK = 18;
         internal const int GUI_TOURNAMENT = 19;
         internal const int GUI_SCROLL = 20;
         internal const int GUI_SETTINGS = 21;
-        internal const int GUI_FLAG_SCOUT = 21;
+        internal const int GUI_FLAG_SCOUT = 22;
 
         internal const int GUI_PARAMETER_STRENGTH = 6;
         internal const int GUI_PARAMETER_DEXTERITY = 7;
@@ -421,7 +421,7 @@ namespace Fantasy_Kingdoms_Battle
                 pageHeroes = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_HEROES, "Герои", BtnPage_Click);
                 pageHeroes.ShowCostZero = true;
                 pageHeroes.ShowHint += PageHeroes_ShowHint;
-                pageLairs = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_LAIR, "Логова", BtnPage_Click);
+                pageLairs = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_FLAG_ATTACK, "Логова", BtnPage_Click);
                 pageTournament = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_TOURNAMENT, "Турнир", BtnPage_Click);
                 pageTournament.ShowHint += PageTournament_ShowHint;
 
