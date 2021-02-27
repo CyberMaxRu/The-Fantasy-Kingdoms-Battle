@@ -40,7 +40,7 @@ namespace Fantasy_Kingdoms_Battle
             // Инициализация логов
             foreach (TypeLair l in FormMain.Config.TypeLairs)
             {
-                Lairs.Add(new PlayerLair(this, l, 1));
+                Lairs.Add(new PlayerLair(this, l, 0));
             }
 
             Castle = GetPlayerBuilding(FormMain.Config.FindTypeEconomicConstruction(FormMain.Config.IDBuildingCastle));
