@@ -78,6 +78,16 @@ namespace Fantasy_Kingdoms_Battle
                 Program.formMain.formHint.AddStep1Header(TypeLair.Name, "", TypeLair.Description);
         }
 
+        internal string NameLair()
+        {
+            return Hidden ? "Неизвестное логово" : TypeLair.Name;
+        }
+
+        internal int ImageIndexLair()
+        {
+            return Hidden ? FormMain.IMAGE_INDEX_NONE : TypeLair.ImageIndex;
+        }
+
         internal void IncPriority()
         {
 

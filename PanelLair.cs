@@ -24,7 +24,6 @@ namespace Fantasy_Kingdoms_Battle
 
             lblName = new VCLabel(this, FormMain.Config.GridSize, FormMain.Config.GridSize, FormMain.Config.FontBuildingCaption, Color.Transparent, FormMain.Config.GridSize * 2, "");
             lblName.StringFormat.Alignment = StringAlignment.Near;
-            lblName.Text = typeLair.Name;
 
             imgLair = new VCImage(this, FormMain.Config.GridSize, lblName.NextTop(), Program.formMain.imListObjectsBig, typeLair.ImageIndex);
             imgLair.ShowBorder = false;
@@ -87,17 +86,18 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Lair.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
 
             SetColorBorder(FormMain.Config.ColorBorder(Program.formMain.SelectedPanelLair == this));
+            imgLair.ImageIndex = Lair.ImageIndexLair();
+            lblName.Text = Lair.NameLair();
             lblName.Color = Lair.Player.TargetLair == Lair ? Color.OrangeRed : Color.Green;
+
             if (Lair.Hidden)
             {
-                imgLair.ImageIndex = FormMain.IMAGE_INDEX_NONE;
                 btnAction.ImageIndex = FormMain.GUI_FLAG_SCOUT;
                 btnAction.Cost = Lair.CostScout();
                 btnInhabitants.Visible = false;
             }
             else
             {
-                imgLair.ImageIndex = TypeLair.ImageIndex;
                 btnAction.ImageIndex = FormMain.GUI_FLAG_ATTACK;
                 btnAction.Cost = Lair.CostAttack();
                 btnInhabitants.Visible = true;
