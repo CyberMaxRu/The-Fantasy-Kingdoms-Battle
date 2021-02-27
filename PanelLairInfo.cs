@@ -32,7 +32,10 @@ namespace Fantasy_Kingdoms_Battle
             set
             {
                 lair = value;
-                panelInhabitants.ApplyList(lair.Monsters);
+                if (lair.Hidden)
+                    panelInhabitants.SetUnknownList();
+                else
+                    panelInhabitants.ApplyList(lair.Monsters);
             }
         }
 

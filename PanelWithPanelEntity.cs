@@ -43,6 +43,16 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        internal void SetUnknownList()
+        {
+            ValidateRows(0);
+
+            for (int i = 0; i < panelEntities.Count; i++)
+            {
+                panelEntities[i].ShowCell(null);
+            }
+        }
+
         private void ValidateRows(int count)
         {
             // Определяем необходимое количество строк. Лишние удаляем, необходимые создаем
