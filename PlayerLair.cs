@@ -10,10 +10,11 @@ namespace Fantasy_Kingdoms_Battle
     // Класс логова игрока
     internal sealed class PlayerLair : BattleParticipant
     {
-        public PlayerLair(Player p, TypeLair l) : base()
+        public PlayerLair(Player p, TypeLair l, int layer) : base()
         {
             Player = p;
             TypeLair = l;
+            Layer = layer;
 
             Level = 1;
             Name = l.Name;
@@ -28,6 +29,7 @@ namespace Fantasy_Kingdoms_Battle
         internal Player Player { get; }
         internal TypeLair TypeLair { get; }
         internal int Level { get; private set; }// Текущий уровень логова
+        internal int Layer { get; }// Слой, на котором находится логово
         internal bool Hidden { get; set; }// Логово не разведано
         internal List<Monster> Monsters { get; } = new List<Monster>();// Монстры текущего уровня
 
@@ -51,6 +53,13 @@ namespace Fantasy_Kingdoms_Battle
         internal override void PreparingForBattle()
         {
             base.PreparingForBattle();
+        }
+
+        internal int CostScout()
+        {
+            Debug.Assert(Hidden);
+
+            return Player.Lobby.TypeLobby.LairSettings[Layer].CostScout;
         }
 
         internal int CostAttack()
