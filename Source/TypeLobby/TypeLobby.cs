@@ -50,6 +50,32 @@ namespace Fantasy_Kingdoms_Battle
                 if (Name == t.Name)
                     throw new Exception("Лобби с наименованием [" + Name + "] уже существует.");
             }
+
+            // Загружаем настройки логов
+            XmlNode nodeLairSettings = n.SelectSingleNode("LairSettings");
+            Debug.Assert(nodeLairSettings != null);
+
+            int layers = Convert.ToInt32(nodeLairSettings.Attributes["Layers"].Value);
+            Debug.Assert(layers >= 1);
+            Debug.Assert(layers <= FormMain.MAX_LAIR_LAYERS);
+
+            LairSettings = new TypeLobbyLairSettings[layers];
+            TypeLobbyLairSettings ls;
+
+            foreach (XmlNode l in nodeLairSettings.SelectNodes("Layer"))
+            {
+                ls = new TypeLobbyLairSettings(l);
+
+                Debug.Assert(ls.Number >= 0);
+                Debug.Assert(ls.Number <= FormMain.MAX_LAIR_LAYERS - 1);
+                Debug.Assert(LairSettings[ls.Number] == null);
+
+                LairSettings[ls.Number] = ls;
+            }
+
+            // Проверяем, что указаны все слои
+            for (int i = 0; i < LairSettings.Length; i++)
+                Debug.Assert(LairSettings[i] != null);
         }
 
         internal string Name { get; }
@@ -62,5 +88,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int StartPointConstructionEconomic { get; }
         internal int PointConstructionGuildPerDay { get; }
         internal int PointConstructionEconomicPerDay { get; }
+        internal TypeLobbyLairSettings[] LairSettings { get; }
     }
 }

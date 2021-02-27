@@ -11,5 +11,19 @@
     <StartPointConstructionEconomic>2</StartPointConstructionEconomic>
     <PointConstructionGuildPerDay>1</PointConstructionGuildPerDay>
     <PointConstructionEconomicPerDay>1</PointConstructionEconomicPerDay>
+    <LairSettings Layers="3">
+      <Layer>
+        <Number>1</Number>
+        <CostScout>100</CostScout>
+      </Layer>
+      <Layer>
+        <Number>2</Number>
+        <CostScout>200</CostScout>
+      </Layer>
+      <Layer>
+        <Number>3</Number>
+        <CostScout>400</CostScout>
+      </Layer>
+    </LairSettings>
   </TypeLobby>
 </TypeLobbies>
