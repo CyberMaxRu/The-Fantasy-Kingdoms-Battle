@@ -140,7 +140,7 @@
     <Compile Include="Ammunition.cs" />
     <Compile Include="TypeLair.cs" />
     <Compile Include="Settings.cs" />
-    <Compile Include="TypeLobby.cs" />
+    <Compile Include="Source\TypeLobby\TypeLobby.cs" />
     <Compile Include="Level.cs" />
     <Compile Include="Lobby.cs" />
     <Compile Include="PanelConstruction.cs" />
