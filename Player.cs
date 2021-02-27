@@ -456,9 +456,18 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void SpendGold(int gold)
         {
-            Gold -= gold;
+            Debug.Assert(gold > 0);
+            Debug.Assert(Gold >= gold);
 
-            Debug.Assert(Gold >= 0);
+            Gold -= gold;
+        }
+
+        internal void ReturnGold(int gold)
+        {
+            Debug.Assert(Gold > 0);
+            Debug.Assert(gold >= 0);
+
+            Gold += gold;
         }
 
         internal void MakeAlive()

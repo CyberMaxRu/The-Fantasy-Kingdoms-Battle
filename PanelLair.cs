@@ -15,6 +15,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCLabel lblName;
         private readonly VCImage imgLair;
         private readonly VCButton btnAction;
+        private readonly VCButton btnCancel;
         private readonly VCButton btnInhabitants;
 
         public PanelLair(VisualControl parent, int shiftX, int shiftY, TypeLair typeLair) : base(parent, shiftX, shiftY)
@@ -35,23 +36,45 @@ namespace Fantasy_Kingdoms_Battle
             btnAction.Click += BtnAction_Click;
             btnAction.ShowHint += BtnAction_ShowHint;
 
-            btnInhabitants = new VCButton(this, btnAction.ShiftX, btnAction.NextTop(), Program.formMain.ilGui, FormMain.GUI_HOME);
+            btnCancel = new VCButton(this, btnAction.ShiftX, btnAction.NextTop(), Program.formMain.ilGui, FormMain.GUI_FLAG_CANCEL);
+            btnCancel.Click += BtnCancel_Click;
+            btnCancel.ShowHint += BtnCancel_ShowHint;
+
+            btnInhabitants = new VCButton(this, imgLair.ShiftX, imgLair.NextTop(), Program.formMain.ilGui, FormMain.GUI_HOME);
             btnInhabitants.Click += BtnInhabitants_Click;
 
-            Height = imgLair.NextTop();
+            Height = btnInhabitants.NextTop();
             Width = btnAction.NextLeft();
 
             lblName.Width = Width - (lblName.ShiftX * 2);            
+        }
+
+        private void BtnCancel_ShowHint(object sender, EventArgs e)
+        {
+            if (Lair.Hidden)
+            {
+                string textReturn = Lair.Cashback() > 0 ? "Возврат денег" : "";
+                Program.formMain.formHint.AddStep1Header("Отмена флага разведки", "", textReturn);
+                if (Lair.Cashback() > 0)
+                    Program.formMain.formHint.AddStep2Income(Lair.Cashback());
+            }
+            else
+                Program.formMain.formHint.AddStep1Header("Отмена флага атаки", "", "");
+        }
+
+        private void BtnCancel_Click(object sender, EventArgs e)
+        {
+            Lair.CancelFlag();
         }
 
         private void BtnAction_ShowHint(object sender, EventArgs e)
         {
             if (Lair.Hidden)
             {
-                if (Lair.Priority == 0)
+                if (Lair.PriorityFlag == 0)
                     Program.formMain.formHint.AddStep1Header("Разведка", "", "Установить флаг разведки для отправки героев к логову");
                 else
-                    Program.formMain.formHint.AddStep1Header("Разведка", "Приоритет " + Lair.Priority.ToString(), "Повысить приоритет разведки логова");
+                    Program.formMain.formHint.AddStep1Header("Разведка", "Приоритет " + Lair.PriorityFlag.ToString(), "Повысить приоритет разведки логова");
 
                 Program.formMain.formHint.AddStep4Gold(Lair.RequiredGold(), Lair.Player.Gold >= Lair.RequiredGold());
             }
@@ -108,6 +131,7 @@ namespace Fantasy_Kingdoms_Battle
             lblName.Text = Lair.NameLair();
             lblName.Color = Lair.Player.TargetLair == Lair ? Color.OrangeRed : Color.Green;
             btnAction.ImageIsEnabled = Lair.CheckRequirements();
+            btnCancel.Visible = Lair.PriorityFlag > 0;
 
             if (Lair.Hidden)
             {

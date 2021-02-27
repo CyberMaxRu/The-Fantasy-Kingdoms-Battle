@@ -32,7 +32,11 @@ namespace Fantasy_Kingdoms_Battle
         internal int Layer { get; }// Слой, на котором находится логово
         internal bool Hidden { get; set; }// Логово не разведано
         internal List<Monster> Monsters { get; } = new List<Monster>();// Монстры текущего уровня
-        internal int Priority { get; set; }// Приоритет разведки/атаки
+
+        // Поддержка флага
+        internal int DaySetFlag { get; private set; }// День установки флага
+        internal int SpendedGoldForSetFlag { get; private set; }// Сколько золота было потрачено на установку флага
+        internal int PriorityFlag { get; set; }// Приоритет разведки/атаки
 
         private void CreateMonsters()
         {
@@ -103,6 +107,15 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (Hidden)
             {
+                int gold = RequiredGold();// На всякий случай запоминаем точное значение. вдруг потом при трате что-нибудь поменяется
+                Player.SpendGold(gold);
+                SpendedGoldForSetFlag = gold;
+
+                if (DaySetFlag == 0)
+                    DaySetFlag = Player.Lobby.Turn;
+                PriorityFlag++;
+                
+
                 //Debug.Assert()
             }
             else
@@ -110,6 +123,28 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             Program.formMain.UpdateTarget(this);
+        }
+
+        internal int Cashback()
+        {
+            Debug.Assert(PriorityFlag > 0);
+            Debug.Assert(SpendedGoldForSetFlag > 0);
+            Debug.Assert(DaySetFlag > 0);
+
+            return DaySetFlag == Player.Lobby.Turn ? SpendedGoldForSetFlag : 0;
+        }
+
+        internal void CancelFlag()
+        {
+            Debug.Assert(PriorityFlag > 0);
+            Debug.Assert(SpendedGoldForSetFlag > 0);
+            Debug.Assert(DaySetFlag > 0);
+
+
+            Player.ReturnGold(Cashback());
+            SpendedGoldForSetFlag = 0;
+            DaySetFlag = 0;
+            PriorityFlag = 0;
         }
     }
 }
