@@ -352,4 +352,30 @@
       </Level>
     </Levels>
   </TypeLair>
+  <TypeLair>
+    <ID>RatKing</ID>
+    <Name>Крысиный король</Name>
+    <Description>Описание крысиного короля.</Description>
+    <ImageIndex>17</ImageIndex>
+    <Line>4</Line>
+    <DefaultLevel>1</DefaultLevel>
+    <MaxLevel>1</MaxLevel>
+    <Levels>
+      <Level>
+        <Cost>10000</Cost>
+        <Monster>
+          <ID>Dragon</ID>
+          <StartQuantity>1</StartQuantity>
+          <MaxQuantity>1</MaxQuantity>
+          <Level>5</Level>
+          <DaysRespawn>2</DaysRespawn>
+          <QuantityRespawn>1</QuantityRespawn>
+        </Monster>
+        <Reward>
+          <MinGold>10000</MinGold>
+          <MaxGold>15000</MaxGold>
+        </Reward>
+      </Level>
+    </Levels>
+  </TypeLair>
 </TypeLairs>
