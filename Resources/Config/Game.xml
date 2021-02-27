@@ -16,7 +16,7 @@
       <CaptionPage>White</CaptionPage>
       <Level>Yellow</Level>
       <ConstructionLevel>Black</ConstructionLevel>
-      <Cost>Goldenrod</Cost>
+      <Cost>PaleGoldenrod</Cost>
       <Quantity>Yellow</Quantity>
       <PopupQuantity>White</PopupQuantity>
       <PopupQuantityBack>Orange</PopupQuantityBack>
