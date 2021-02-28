@@ -135,6 +135,7 @@ namespace Fantasy_Kingdoms_Battle
             lblName.Text = Lair.NameLair();
             lblName.Color = Lair.Player.TargetLair == Lair ? Color.OrangeRed : Color.Green;
             btnAction.ImageIsEnabled = Lair.CheckRequirements();
+            btnAction.Level = (int)Lair.PriorityFlag + 1;
             btnCancel.Visible = Lair.PriorityFlag != PriorityExecution.None;
 
             if (Lair.Hidden)
