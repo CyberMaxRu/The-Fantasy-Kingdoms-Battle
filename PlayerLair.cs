@@ -38,7 +38,8 @@ namespace Fantasy_Kingdoms_Battle
         // Поддержка флага
         internal int DaySetFlag { get; private set; }// День установки флага
         internal int SpendedGoldForSetFlag { get; private set; }// Сколько золота было потрачено на установку флага
-        internal PriorityExecution PriorityFlag { get; set; } = PriorityExecution.None;// Приоритет разведки/атаки
+        internal PriorityExecution PriorityFlag { get; private set; } = PriorityExecution.None;// Приоритет разведки/атаки
+        internal List<PlayerHero> listAttackedHero { get; } = new List<PlayerHero>();// Список героев, откликнувшихся на флаг
 
         private void CreateMonsters()
         {
