@@ -181,7 +181,6 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        protected override BitmapList GetBitmapList() => Program.formMain.imListObjectsBig;
         protected override int GetImageIndex() => creature.TypeCreature.ImageIndex;
         protected override bool ImageIsEnabled() => true;
         protected override string GetCaption() => creature.TypeCreature.Name;

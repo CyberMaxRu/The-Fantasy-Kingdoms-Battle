@@ -26,7 +26,7 @@ namespace Fantasy_Kingdoms_Battle
             lblName = new VCLabel(this, FormMain.Config.GridSize, FormMain.Config.GridSize, FormMain.Config.FontNamePage, FormMain.Config.BattlefieldPlayerName, FormMain.Config.GridSize * 3, "");
             lblName.StringFormat.LineAlignment = StringAlignment.Near;
 
-            imgIcon = new VCImage(this, FormMain.Config.GridSize, lblName.NextTop(), GetBitmapList(), -1);
+            imgIcon = new VCImage(this, FormMain.Config.GridSize, lblName.NextTop(), Program.formMain.imListObjectsBig, -1);
             imgIcon.ShowHint += ImgIcon_ShowHint;
 
             pageControl = new VCTabControl(this, FormMain.Config.GridSize, TopForControls(), Program.formMain.ilGui)
@@ -58,7 +58,6 @@ namespace Fantasy_Kingdoms_Battle
         //protected Point LeftTopPage() => pointPage;
 
         // Переопределяемые потомками методы
-        protected abstract BitmapList GetBitmapList();
         protected abstract int GetImageIndex();
         protected abstract bool ImageIsEnabled();
         protected abstract string GetCaption();
