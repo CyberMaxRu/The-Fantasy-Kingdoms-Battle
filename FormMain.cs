@@ -1748,7 +1748,7 @@ namespace Fantasy_Kingdoms_Battle
             // Сортируем логова и переназначаем ссылки на них у кнопок
             int n = 0;
             int left = 0;
-            foreach (PlayerLair pl in lobby.CurrentPlayer.LairsWithFlag.OrderBy(l => l.PriorityFlag))
+            foreach (PlayerLair pl in lobby.CurrentPlayer.LairsWithFlag.OrderByDescending(l => l.PriorityFlag).OrderByDescending(l => l.listAttackedHero.Count))
             {
                 listBtnTargetLair[n].ShiftX = left;
                 listBtnTargetLair[n].Lair = pl;
