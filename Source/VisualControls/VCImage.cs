@@ -110,7 +110,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(PopupQuantity >= 0);
             Debug.Assert(PopupQuantity <= 9);
 
-            if ((BitmapList.Size == Program.formMain.ilMenuCellFilters.Size) && UseFilter)
+            if (Visible && (BitmapList.Size == Program.formMain.ilMenuCellFilters.Size) && UseFilter)
             {
                 if (ImageIsEnabled)
                 {
@@ -128,7 +128,7 @@ namespace Fantasy_Kingdoms_Battle
             base.Draw(g);
 
             // Иконка
-            if (ImageIndex != -1)
+            if (Visible && (ImageIndex != -1))
             {
                 BitmapList.DrawImage(g, ImageIndex, UseFilter || ImageIsEnabled, HighlightUnderMouse && ImageIsOver, Left + ShiftImageX, Top + ShiftImageY);
 
