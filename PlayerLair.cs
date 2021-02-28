@@ -38,7 +38,7 @@ namespace Fantasy_Kingdoms_Battle
         // Поддержка флага
         internal int DaySetFlag { get; private set; }// День установки флага
         internal int SpendedGoldForSetFlag { get; private set; }// Сколько золота было потрачено на установку флага
-        internal PriorityExecution PriorityFlag { get; set; }// Приоритет разведки/атаки
+        internal PriorityExecution PriorityFlag { get; set; } = PriorityExecution.None;// Приоритет разведки/атаки
 
         private void CreateMonsters()
         {
@@ -66,7 +66,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(Hidden);
 
-            return PriorityFlag < PriorityExecution.Exclusive ? Player.Lobby.TypeLobby.LairSettings[Layer].CostScout : 0;
+            return PriorityFlag < PriorityExecution.Exclusive ? 
+                Player.Lobby.TypeLobby.LairSettings[Layer].CostScout * Player.Lobby.TypeLobby.CoefFlagScout[(int)PriorityFlag + 1] / 100 : 0;
         }
 
         internal int CostAttack()
@@ -74,7 +75,8 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(!Hidden);
             Debug.Assert(Level > 0);
 
-            return PriorityFlag < PriorityExecution.Exclusive ? TypeLair.LevelLairs[Level - 1].Cost : 0;
+            return PriorityFlag < PriorityExecution.Exclusive ?
+                TypeLair.LevelLairs[Level - 1].Cost * Player.Lobby.TypeLobby.CoefFlagAttack[(int)PriorityFlag + 1] / 100 : 0;
         }
 
         internal override void PrepareHint()
