@@ -64,6 +64,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnCancel_Click(object sender, EventArgs e)
         {
+            SelectThisBuilding();
             btnCancel.Visible = false;
             Lair.CancelFlag();
         }
@@ -117,6 +118,8 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnAction_Click(object sender, EventArgs e)
         {
+            SelectThisBuilding();
+
             if (Lair.PriorityFlag < PriorityExecution.Exclusive)
                 Lair.IncPriority();
         }
