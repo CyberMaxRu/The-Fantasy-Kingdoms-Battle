@@ -76,6 +76,38 @@ namespace Fantasy_Kingdoms_Battle
             // Проверяем, что указаны все слои
             for (int i = 0; i < LairSettings.Length; i++)
                 Debug.Assert(LairSettings[i] != null);
+
+            // Загружаем настройку коэффициентов для флагов разведки и атаки
+            CoefFlagScout = LoadCoef(n.SelectSingleNode("CoefficientFlags/Scout"));
+            CoefFlagAttack = LoadCoef(n.SelectSingleNode("CoefficientFlags/Attack"));
+
+            int[] LoadCoef(XmlNode node)
+            {
+                Debug.Assert(node != null);
+
+                PriorityExecution pe;
+                int val;
+
+                int[] array = new int[(int)PriorityExecution.Exclusive + 1];
+
+                foreach (XmlNode np in node.SelectNodes("Priority"))
+                {
+                    pe = (PriorityExecution)Enum.Parse(typeof(PriorityExecution), XmlUtils.GetStringNotNull(np.SelectSingleNode("ID")));
+                    val = XmlUtils.GetInteger(np.SelectSingleNode("Value"));
+
+                    Debug.Assert(val > 0);
+                    Debug.Assert(val <= 1_000);
+                    Debug.Assert(array[(int)pe] == 0);
+
+                    array[(int)pe] = val;
+                }
+
+                // Проверяем, что указаны все коэффициенты
+                for (int i = 0; i < array.Length; i++)
+                    Debug.Assert(array[i] != 0);
+
+                return array;
+            }
         }
 
         internal string Name { get; }
@@ -89,5 +121,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int PointConstructionGuildPerDay { get; }
         internal int PointConstructionEconomicPerDay { get; }
         internal TypeLobbyLairSettings[] LairSettings { get; }
+        internal int[] CoefFlagScout { get; }
+        internal int[] CoefFlagAttack { get; }
     }
 }

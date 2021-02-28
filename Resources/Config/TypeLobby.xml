@@ -11,6 +11,44 @@
     <StartPointConstructionEconomic>2</StartPointConstructionEconomic>
     <PointConstructionGuildPerDay>1</PointConstructionGuildPerDay>
     <PointConstructionEconomicPerDay>1</PointConstructionEconomicPerDay>
+    <CoefficientFlags>
+      <Scout>
+        <Priority>
+          <ID>Normal</ID>
+          <Value>100</Value>
+        </Priority>
+        <Priority>
+          <ID>Warning</ID>
+          <Value>125</Value>
+        </Priority>
+        <Priority>
+          <ID>High</ID>
+          <Value>175</Value>
+        </Priority>
+        <Priority>
+          <ID>Exclusive</ID>
+          <Value>250</Value>
+        </Priority>
+      </Scout>
+      <Attack>
+        <Priority>
+          <ID>Normal</ID>
+          <Value>100</Value>
+        </Priority>
+        <Priority>
+          <ID>Warning</ID>
+          <Value>125</Value>
+        </Priority>
+        <Priority>
+          <ID>High</ID>
+          <Value>175</Value>
+        </Priority>
+        <Priority>
+          <ID>Exclusive</ID>
+          <Value>250</Value>
+        </Priority>
+      </Attack>
+    </CoefficientFlags>
     <LairSettings Layers="3">
       <Layer>
         <Number>1</Number>
