@@ -15,21 +15,23 @@ namespace Fantasy_Kingdoms_Battle
         private List<VCCell> listCells = new List<VCCell>();
         private int rows;// Сколько сейчас строк подготовлено
 
-        public PanelWithPanelEntity(int entityInRow, bool fixedMode = true) : base()
+        public PanelWithPanelEntity(int entityInRow, bool fixedMode = true, int distanceBetweenCells = 2) : base()
         {
             Debug.Assert(entityInRow > 1);
 
             FixedMode = fixedMode;
             EntityInRow = entityInRow;
+            DistanceBetweenCells = distanceBetweenCells;
 
             ValidateRows(FixedMode ? FormMain.Config.MinRowsEntities : 1);
 
-            Width = (listCells[0].Width + 1) * EntityInRow - 1;
-            Height = (listCells[0].Height + 1) * FormMain.Config.MinRowsEntities - 1;
+            Width = (listCells[0].Width + DistanceBetweenCells) * (EntityInRow - 1) + listCells[0].Width;
+            Height = (listCells[0].Height + DistanceBetweenCells) * (FormMain.Config.MinRowsEntities - 1) + listCells[0].Height;
         }
 
         private int EntityInRow { get; }
         internal bool FixedMode { get; }
+        internal int DistanceBetweenCells { get; }
 
         internal void ApplyList<T>(List<T> list) where T: ICell
         {
@@ -84,8 +86,8 @@ namespace Fantasy_Kingdoms_Battle
             for (int x = 0; x < EntityInRow; x++)
             {
                 pe = new VCCell(this, 0, 0);
-                pe.ShiftX = x * (pe.Width + 2);
-                pe.ShiftY = rows * (pe.Height + 2);
+                pe.ShiftX = x * (pe.Width + DistanceBetweenCells);
+                pe.ShiftY = rows * (pe.Height + DistanceBetweenCells);
                 pe.Visible = FixedMode;
                 ArrangeControl(pe);
                 listCells.Add(pe);
