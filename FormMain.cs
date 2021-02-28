@@ -127,6 +127,12 @@ namespace Fantasy_Kingdoms_Battle
         internal const int GUI_PARAMETER_DEFENSE_RANGE = 4;
         internal const int GUI_PARAMETER_DEFENSE_MAGIC = 5;
 
+        internal const int II_STATE_HERO_DO_ATTACK_FLAG = 11;
+        internal const int II_STATE_HERO_DO_SCOUT_FLAG = 12;
+        internal const int II_STATE_HERO_IN_HOME = 13;
+        internal const int II_STATE_HERO_NOTHING = 14;
+        internal const int II_STATE_HERO_THERAPY = 15;
+        
         internal const int GUI_16_DAY = 0;
         internal const int GUI_16_GOLD = 1;
         internal const int GUI_16_PEASANT = 2;

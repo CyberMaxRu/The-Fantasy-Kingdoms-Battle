@@ -536,6 +536,8 @@ namespace Fantasy_Kingdoms_Battle
         void ICell.Click(VCCell pe)
         {
 
+        
         }
+        void ICell.CustomDraw(Graphics g) { }
     }
 }

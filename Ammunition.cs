@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Diagnostics;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -71,6 +72,8 @@ namespace Fantasy_Kingdoms_Battle
         {
 
         }
+
+        void ICell.CustomDraw(Graphics g) { }
     }
 
     // Класс группы оружий
@@ -181,6 +184,7 @@ namespace Fantasy_Kingdoms_Battle
         {
 
         }
+        void ICell.CustomDraw(Graphics g) { }
     }
 
     // Класс группы доспехов

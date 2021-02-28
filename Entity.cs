@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -49,5 +50,7 @@ namespace Fantasy_Kingdoms_Battle
         {
 
         }
+
+        void ICell.CustomDraw(Graphics g) { }
     }
 }

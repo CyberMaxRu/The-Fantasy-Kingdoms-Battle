@@ -13,6 +13,7 @@ namespace Fantasy_Kingdoms_Battle
         int Value();
         void PrepareHint();
         void Click(VCCell pe);
+        void CustomDraw(Graphics g);
     }
 
     // Визуальный контрол - ячейка
@@ -100,6 +101,8 @@ namespace Fantasy_Kingdoms_Battle
                         g.DrawRectangle(FormMain.Config.GetPenBorder(true), new Rectangle(Left - 1, Top - 2, Width + 1, Height + 1));
 
                     g.DrawImageUnscaled(Program.formMain.bmpBorderForIcon, Left, Top);
+
+                    cell.CustomDraw(g);
                 }
                 else
                     g.DrawImageUnscaled(Program.formMain.bmpEmptyEntity, Left, Top);

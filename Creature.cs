@@ -148,5 +148,7 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.SelectPanelEntity(pe);
             DoClick();
         }
+
+        void ICell.CustomDraw(Graphics g) { }
     }
 }
