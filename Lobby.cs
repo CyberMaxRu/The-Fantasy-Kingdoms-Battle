@@ -155,6 +155,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
+            CalcFinalityTurn();
 
             //CalcBattles();
 
@@ -299,6 +300,13 @@ namespace Fantasy_Kingdoms_Battle
 
         private void CalcBattle(Player player1, Player player2, Random r)
         {
+        }
+
+        private void CalcFinalityTurn()
+        {
+            foreach (Player p in Players)
+                if (p.IsLive)
+                    p.CalcFinalityTurn();
         }
 
         private void CalcEndTurn()

@@ -15,6 +15,10 @@ namespace Fantasy_Kingdoms_Battle
         private ResultBattle resultLastBattle;
         private PlayerBuilding Castle;
 
+        internal const int MAX_FLAG_EXCLUSIVE = 1;// Максимальное число эксклюзивных флагов
+        internal const int MAX_FLAG_HIGH = 2;// Максимальное число флагов с высоким приоритетом
+        internal const int MAX_FLAG_COUNT = 5;// Максимальное число активных флагов
+
         public Player(Lobby lobby, int index, string name, TypePlayer typePlayer) : base()
         {
             Lobby = lobby;
@@ -100,6 +104,13 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        // Расчет после завершения хода игроком
+        internal void CalcFinalityTurn()
+        {
+            // Убеждаемся, что у нас не сломалось соответствие флагов
+
+        }
+
         internal void CalcResultTurn()
         {
             if (IsLive == true)
@@ -150,6 +161,7 @@ namespace Fantasy_Kingdoms_Battle
         // Логова
         internal List<PlayerLair> Lairs { get; } = new List<PlayerLair>();
         internal PlayerLair TargetLair { get; set; }// Логово для атаки
+        internal List<PlayerLair> LairsWithFlag { get; } = new List<PlayerLair>();
 
         // Статистика по боям
         internal int Wins { get; set; }
