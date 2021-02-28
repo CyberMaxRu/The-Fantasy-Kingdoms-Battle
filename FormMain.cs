@@ -37,6 +37,16 @@ namespace Fantasy_Kingdoms_Battle
         internal Brush brushQuantity;
         internal Brush brushCost;
 
+        // Поддержка режима отладки
+        private bool debugMode = false;
+        private Pen penDebugBorder = new Pen(Color.Red);
+        private VisualControl vcDebugInfo;
+        private VCLabel labelTimeDrawFrame;
+        private VCLabel labelTimePaintFrame;
+        private DateTime startDebugAction;
+        private TimeSpan durationDrawFrame;
+        private TimeSpan durationPaintFrame;
+
         // Контролы главного меню
         private Bitmap bmpFrame;// Готовый кадр
         private Graphics gfxFrame;// Graphics кадра, чтобы контролы работали сразу с ним
@@ -387,6 +397,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 // Метки с информацией о Королевстве
                 labelDay = new VCToolLabel(MainControl, 0, 0, "", GUI_16_DAY);
+                labelDay.Click += LabelDay_Click;
                 labelDay.ShowHint += LabelDay_ShowHint;
                 labelDay.Width = 48;
                 labelGold = new VCToolLabel(MainControl, labelDay.NextLeft(), 0, "", GUI_16_GOLD);
@@ -414,6 +425,15 @@ namespace Fantasy_Kingdoms_Battle
                     nextLeftPanelPlayer = pp.NextLeft();
                 }
                 panelPlayers.ApplyMaxSize();
+
+                // Отладочная информация
+                vcDebugInfo = new VisualControl();
+                labelTimeDrawFrame = new VCLabel(vcDebugInfo, Config.GridSize, Config.GridSize, Config.FontToolbar, Color.White, 16, "");
+                labelTimeDrawFrame.StringFormat.Alignment = StringAlignment.Near;
+                labelTimePaintFrame = new VCLabel(vcDebugInfo, labelTimeDrawFrame.ShiftX, labelTimeDrawFrame.NextTop(), Config.FontToolbar, Color.White, 16, "Paint frame: 00000");
+                labelTimePaintFrame.StringFormat.Alignment = StringAlignment.Near;
+                vcDebugInfo.ArrangeControls();
+                vcDebugInfo.ApplyMaxSize();
 
                 // Страницы игры
                 pageGuilds = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_GUILDS, "Гильдии", BtnPage_Click);
@@ -555,6 +575,12 @@ namespace Fantasy_Kingdoms_Battle
                 MessageBox.Show(exc.Message + Environment.NewLine + exc.StackTrace);
                 Environment.Exit(-1);
             }
+        }
+
+        private void LabelDay_Click(object sender, EventArgs e)
+        {
+            debugMode = !debugMode;
+            ShowFrame(true);
         }
 
         protected override void OnShown(EventArgs e)
@@ -1461,15 +1487,31 @@ namespace Fantasy_Kingdoms_Battle
             {
                 needRedrawFrame = false;
 
+                if (debugMode)
+                    startDebugAction = DateTime.Now;
+
                 DrawFrame();// Готовим кадр
-                if ((controlWithHint != null) && (controlWithHint != MainControl))
+                if (debugMode && (controlWithHint != null) && (controlWithHint != MainControl))
                 {
-                    //Pen p = new Pen(Color.Red);
-                    //gfxFrame.DrawRectangle(p, controlWithHint.Rectangle);
-                    //p.Dispose();
+                    gfxFrame.DrawRectangle(penDebugBorder, controlWithHint.Rectangle);
+                }
+
+                if (debugMode)
+                {
+                    durationDrawFrame = DateTime.Now - startDebugAction;
+                    labelTimeDrawFrame.Text = "Draw frame: " + durationDrawFrame.TotalMilliseconds.ToString();
+                    labelTimePaintFrame.Text = "Paint frame: " + durationPaintFrame.TotalMilliseconds.ToString();
+                    vcDebugInfo.Draw(gfxFrame);
+
+                    startDebugAction = DateTime.Now;
                 }
 
                 Invalidate();// Рисуем кадр
+
+                if (debugMode)
+                {
+                    durationPaintFrame = DateTime.Now - startDebugAction;
+                }
             }
         }
 
