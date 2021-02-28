@@ -72,10 +72,10 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (Lair.Hidden)
             {
-                if (Lair.PriorityFlag == 0)
+                if (Lair.PriorityFlag == PriorityExecution.None)
                     Program.formMain.formHint.AddStep1Header("Разведка", "", "Установить флаг разведки для отправки героев к логову");
                 else
-                    Program.formMain.formHint.AddStep1Header("Разведка", "Приоритет " + Lair.PriorityFlag.ToString(), "Повысить приоритет разведки логова");
+                    Program.formMain.formHint.AddStep1Header("Разведка", "Приоритет " + Lair.PriorityFlatToText(), "Повысить приоритет разведки логова");
 
                 Program.formMain.formHint.AddStep4Gold(Lair.RequiredGold(), Lair.Player.Gold >= Lair.RequiredGold());
             }
@@ -132,7 +132,7 @@ namespace Fantasy_Kingdoms_Battle
             lblName.Text = Lair.NameLair();
             lblName.Color = Lair.Player.TargetLair == Lair ? Color.OrangeRed : Color.Green;
             btnAction.ImageIsEnabled = Lair.CheckRequirements();
-            btnCancel.Visible = Lair.PriorityFlag > 0;
+            btnCancel.Visible = Lair.PriorityFlag != PriorityExecution.None;
 
             if (Lair.Hidden)
             {

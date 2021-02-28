@@ -7,6 +7,8 @@ using System.Diagnostics;
 
 namespace Fantasy_Kingdoms_Battle
 {
+    internal enum PriorityExecution { None, Normal, Warning, High, Exclusive };
+
     // Класс логова игрока
     internal sealed class PlayerLair : BattleParticipant
     {
@@ -36,7 +38,7 @@ namespace Fantasy_Kingdoms_Battle
         // Поддержка флага
         internal int DaySetFlag { get; private set; }// День установки флага
         internal int SpendedGoldForSetFlag { get; private set; }// Сколько золота было потрачено на установку флага
-        internal int PriorityFlag { get; set; }// Приоритет разведки/атаки
+        internal PriorityExecution PriorityFlag { get; set; }// Приоритет разведки/атаки
 
         private void CreateMonsters()
         {
@@ -105,6 +107,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void IncPriority()
         {
+            Debug.Assert(PriorityFlag < PriorityExecution.Exclusive);
+
             if (Hidden)
             {
                 int gold = RequiredGold();// На всякий случай запоминаем точное значение. вдруг потом при трате что-нибудь поменяется
@@ -127,7 +131,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int Cashback()
         {
-            Debug.Assert(PriorityFlag > 0);
+            Debug.Assert(PriorityFlag != PriorityExecution.None);
             Debug.Assert(SpendedGoldForSetFlag > 0);
             Debug.Assert(DaySetFlag > 0);
 
@@ -136,7 +140,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void CancelFlag()
         {
-            Debug.Assert(PriorityFlag > 0);
+            Debug.Assert(PriorityFlag != PriorityExecution.None);
             Debug.Assert(SpendedGoldForSetFlag > 0);
             Debug.Assert(DaySetFlag > 0);
 
@@ -144,7 +148,26 @@ namespace Fantasy_Kingdoms_Battle
             Player.ReturnGold(Cashback());
             SpendedGoldForSetFlag = 0;
             DaySetFlag = 0;
-            PriorityFlag = 0;
+            PriorityFlag = PriorityExecution.None;
+        }
+
+        internal string PriorityFlatToText()
+        {
+            switch (PriorityFlag)
+            {
+                case PriorityExecution.None:
+                    return "Отсутствует";
+                case PriorityExecution.Normal:
+                    return "Обычный";
+                case PriorityExecution.Warning:
+                    return "Повышенный";
+                case PriorityExecution.High:
+                    return "Высокий";
+                case PriorityExecution.Exclusive:
+                    return "Экслюзивный";
+                default:
+                    throw new Exception("Неизвестный приоритет: " + PriorityFlag.ToString());
+            }
         }
     }
 }
