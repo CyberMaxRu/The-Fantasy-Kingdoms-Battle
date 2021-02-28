@@ -43,6 +43,9 @@ namespace Fantasy_Kingdoms_Battle
                 BitmapList = Program.formMain.imListObjectsCell;
                 ImageIndex = Lair.ImageIndexLair();
             }
+            Level = (int)Lair.PriorityFlag + 1;
+            Cost = Lair.listAttackedHero.Count();
+            ShowCostZero = true;
 
             base.Draw(g);
         }
