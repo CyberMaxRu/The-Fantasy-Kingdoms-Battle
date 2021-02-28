@@ -104,7 +104,12 @@ namespace Fantasy_Kingdoms_Battle
 
                 // Проверяем, что указаны все коэффициенты
                 for (int i = 0; i < array.Length; i++)
+                {
                     Debug.Assert(array[i] != 0);
+
+                    if (i > 0)
+                        Debug.Assert(array[i] > array[i - 1]);
+                }
 
                 return array;
             }
