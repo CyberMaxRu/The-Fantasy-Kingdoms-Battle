@@ -1665,9 +1665,12 @@ namespace Fantasy_Kingdoms_Battle
                     VisualControl curControl = ControlUnderMouse();
                     if ((curControl != null) && (curControl == controlClicked))
                         controlWithHint = controlClicked;
-
+                    else
+                    {
+                        controlWithHint = controlClicked;
+                        ControlForHintLeave();// Контрол уже другой, отменяет подсказку
+                    }
                     controlClicked = null;
-
 
                     ShowFrame(false);
 
