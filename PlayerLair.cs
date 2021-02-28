@@ -66,7 +66,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(Hidden);
 
-            return Player.Lobby.TypeLobby.LairSettings[Layer].CostScout;
+            return PriorityFlag < PriorityExecution.Exclusive ? Player.Lobby.TypeLobby.LairSettings[Layer].CostScout : 0;
         }
 
         internal int CostAttack()
@@ -74,7 +74,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(!Hidden);
             Debug.Assert(Level > 0);
 
-            return TypeLair.LevelLairs[Level - 1].Cost;
+            return PriorityFlag < PriorityExecution.Exclusive ? TypeLair.LevelLairs[Level - 1].Cost : 0;
         }
 
         internal override void PrepareHint()

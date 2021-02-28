@@ -74,8 +74,10 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (Lair.PriorityFlag == PriorityExecution.None)
                     Program.formMain.formHint.AddStep1Header("Разведка", "", "Установить флаг разведки для отправки героев к логову");
-                else
-                    Program.formMain.formHint.AddStep1Header("Разведка", "Приоритет " + Lair.PriorityFlatToText(), "Повысить приоритет разведки логова");
+                else if (Lair.PriorityFlag < PriorityExecution.Exclusive)
+                    Program.formMain.formHint.AddStep1Header("Разведка", Lair.PriorityFlatToText() + " приоритет", "Повысить приоритет разведки логова");
+                else 
+                    Program.formMain.formHint.AddStep1Header("Разведка", Lair.PriorityFlatToText() + " приоритет", "Установлен максимальный приоритет флага");
 
                 Program.formMain.formHint.AddStep4Gold(Lair.RequiredGold(), Lair.Player.Gold >= Lair.RequiredGold());
             }
@@ -115,7 +117,8 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnAction_Click(object sender, EventArgs e)
         {
-            Lair.IncPriority();
+            if (Lair.PriorityFlag < PriorityExecution.Exclusive)
+                Lair.IncPriority();
         }
 
         private void SelectThisBuilding()
