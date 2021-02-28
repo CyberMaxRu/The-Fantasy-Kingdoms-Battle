@@ -13,11 +13,13 @@ namespace Fantasy_Kingdoms_Battle
     internal abstract class Creature : PlayerObject, ICell
     {
         private VCCell panelEntity;
+        private static int sequenceID = 0;// Генератор уникального кода героя
 
         public Creature(TypeCreature tc, BattleParticipant bp)
         {
             TypeCreature = tc;
             BattleParticipant = bp;
+            ID = ++sequenceID;
 
             // Применяем дефолтные способности
             Abilities.AddRange(TypeCreature.Abilities);
@@ -45,7 +47,7 @@ namespace Fantasy_Kingdoms_Battle
             else
                 Level = 1;
         }
-
+        internal int ID { get; }// Уникальный код существа
         internal TypeCreature TypeCreature { get; }
         internal BattleParticipant BattleParticipant { get; }
         internal int Level { get; private set; }// Уровень существа

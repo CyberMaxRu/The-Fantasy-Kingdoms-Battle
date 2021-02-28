@@ -13,6 +13,11 @@ namespace Fantasy_Kingdoms_Battle
     // Класс участника битвы
     internal abstract class BattleParticipant : PlayerObject
     {
+        private static int ComparePlaceCreature(Creature c1, Creature c2)
+        {
+            return c1.ID - c2.ID;
+        }
+
         public BattleParticipant()
         {
             // Настройка ячеек героев
@@ -38,6 +43,7 @@ namespace Fantasy_Kingdoms_Battle
         internal void AddCombatHero(Creature c)
         {
             CombatHeroes.Add(c);
+            CombatHeroes.Sort(ComparePlaceCreature);
         }
 
         protected void RearrangeHeroes()
