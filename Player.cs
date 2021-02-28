@@ -108,7 +108,13 @@ namespace Fantasy_Kingdoms_Battle
         internal void CalcFinalityTurn()
         {
             // Убеждаемся, что у нас не сломалось соответствие флагов
-
+            foreach (PlayerLair pl in Lairs)
+            {
+                if (pl.PriorityFlag != PriorityExecution.None)
+                    Debug.Assert(LairsWithFlag.IndexOf(pl) != -1);
+                else
+                    Debug.Assert(LairsWithFlag.IndexOf(pl) == -1);
+            }
         }
 
         internal void CalcResultTurn()
