@@ -15,14 +15,18 @@ namespace Fantasy_Kingdoms_Battle
     // Класс героя игрока
     internal sealed class PlayerHero : Creature
     {
+        private static int sequenceID = 0;// Генератор уникального кода героя
+
         public PlayerHero(PlayerBuilding pb, BattleParticipant bp) : base(pb.Building.TrainedHero, bp)
         {
             Building = pb;
             DayOfHire = Player.Lobby.Turn;
             TypeHero = pb.Building.TrainedHero;
             StateHero = StateHeroAtMap.Nothing;
+            ID = ++sequenceID;
         }
 
+        internal int ID { get; }// Уникальный код героя
         internal PlayerBuilding Building { get; }// Здание, которому принадлежит герой
         internal Player Player => Building.Player;// Игрок, которому принадлежит герой
         internal TypeHero TypeHero { get; } // Класс героя

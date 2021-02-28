@@ -242,7 +242,7 @@ namespace Fantasy_Kingdoms_Battle
 
             AllHeroes.Add(ph);
             if (ph.TypeHero.ID != "King")
-                CombatHeroes.Add(ph);
+                AddCombatHero(ph);
 
             // Восстановить
             if (ph.Building.Building.TrainedHero != null)

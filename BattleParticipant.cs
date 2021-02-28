@@ -35,6 +35,11 @@ namespace Fantasy_Kingdoms_Battle
             RearrangeHeroes();
         }
 
+        internal void AddCombatHero(Creature c)
+        {
+            CombatHeroes.Add(c);
+        }
+
         protected void RearrangeHeroes()
         {
             // Очищаем все координаты героев

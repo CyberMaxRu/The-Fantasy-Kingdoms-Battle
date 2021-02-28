@@ -53,7 +53,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     lm = new Monster(mll.Monster, mll.Level, this);
                     Monsters.Add(lm);
-                    CombatHeroes.Add(lm);
+                    AddCombatHero(lm);
                 }
             }
         }
