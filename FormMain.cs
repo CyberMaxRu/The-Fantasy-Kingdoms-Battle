@@ -88,6 +88,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private PanelWithPanelEntity panelWarehouse;
         private PanelWithPanelEntity panelHeroes;
+        private PanelWithPanelEntity panelCombatHeroes;
 
         internal const int GUI_HEROES = 0;
         internal const int GUI_GUILDS = 1;
@@ -437,6 +438,11 @@ namespace Fantasy_Kingdoms_Battle
                 vcDebugInfo.ArrangeControls();
                 vcDebugInfo.ApplyMaxSize();
 
+                // Панель со всеми героями
+                panelCombatHeroes = new PanelWithPanelEntity(3);
+                MainControl.AddControl(panelCombatHeroes);
+                panelCombatHeroes.ShiftY = btnQuit.NextTop();
+
                 // Страницы игры
                 pageGuilds = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_GUILDS, "Гильдии", BtnPage_Click);
                 pageGuilds.ShowHint += PageGuilds_ShowHint;
@@ -469,8 +475,10 @@ namespace Fantasy_Kingdoms_Battle
                     maxHeightPages = Math.Max(maxHeightPages, maxSizePanelPage.Height);
                 }
 
+                panelCombatHeroes.Height = maxHeightPages;
+
                 // Располагаем страницы на главной форме
-                int leftForNextButtonPage = 0;
+                int leftForNextButtonPage = panelCombatHeroes.NextLeft();
                 foreach (VCFormPage fp in pages)
                 {
                     fp.ShiftX = leftForNextButtonPage;
@@ -481,7 +489,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
 
                 // Панели информации. Их располагаем после страниц
-                panelHeroInfo = new PanelHeroInfo(MainControl, maxWidthPages + Config.GridSize, btnQuit.NextTop());
+                panelHeroInfo = new PanelHeroInfo(MainControl, pageGuilds.ShiftX + maxWidthPages + Config.GridSize, btnQuit.NextTop());
                 panelBuildingInfo = new PanelBuildingInfo(MainControl, panelHeroInfo.ShiftX, panelHeroInfo.ShiftY);
                 panelLairInfo = new PanelLairInfo(MainControl, panelHeroInfo.ShiftX, panelHeroInfo.ShiftY);
                 panelMonsterInfo = new PanelMonsterInfo(MainControl, panelHeroInfo.ShiftX, panelHeroInfo.ShiftY);
@@ -504,7 +512,7 @@ namespace Fantasy_Kingdoms_Battle
                 bitmapMenu.ShiftX = panelHeroInfo.ShiftX + ((panelHeroInfo.Width - bitmapMenu.Width) / 2);
 
                 // Все контролы созданы, устанавливаем размеры MainControl
-                MainControl.Width = panelHeroInfo.ShiftX + panelEmptyInfo.Width;
+                MainControl.Width = panelEmptyInfo.ShiftX + panelEmptyInfo.Width;
                 MainControl.Height = pageGuilds.NextTop() + maxHeightPages;
 
                 sizeGamespace = new Size(Config.GridSize + MainControl.Width + Config.GridSize, panelPlayers.NextTop() + Config.GridSize + MainControl.NextTop() + Config.GridSize);
@@ -523,7 +531,7 @@ namespace Fantasy_Kingdoms_Battle
                 btnPreferences.PlaceBeforeControl(btnHelp);
                 btnEndTurn.ShiftX = panelBuildingInfo.ShiftX - btnEndTurn.Width - Config.GridSize;
 
-                panelBuildingInfo.ShiftX = maxWidthPages + Config.GridSize;
+                panelBuildingInfo.ShiftX = pageGuilds.ShiftX + maxWidthPages + Config.GridSize;
                 panelLairInfo.ShiftX = panelBuildingInfo.ShiftX;
                 panelHeroInfo.ShiftX = panelBuildingInfo.ShiftX;
                 panelMonsterInfo.ShiftX = panelBuildingInfo.ShiftX;
@@ -1762,6 +1770,18 @@ namespace Fantasy_Kingdoms_Battle
             MainControl.ArrangeControl(panelLairWithFlags);
 
             SetNeedRedrawFrame();
+        }
+
+        internal void ListHeroesChanged()
+        {
+            if (lobby != null)
+            {
+                Debug.Assert(curAppliedPlayer == lobby.CurrentPlayer);
+
+                panelCombatHeroes.ApplyList(curAppliedPlayer.CombatHeroes);
+
+                SetNeedRedrawFrame();
+            }
         }
     }
 }

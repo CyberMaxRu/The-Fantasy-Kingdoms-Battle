@@ -249,6 +249,8 @@ namespace Fantasy_Kingdoms_Battle
             {
                 RearrangeHeroes();
             }
+
+            Program.formMain.ListHeroesChanged();
         }
 
         internal bool EnoughPointConstruction(PlayerBuilding pb)

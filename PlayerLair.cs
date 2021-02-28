@@ -112,6 +112,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(PriorityFlag < PriorityExecution.Exclusive);
 
+            // 
+
             if (Hidden)
             {
                 int gold = RequiredGold();// На всякий случай запоминаем точное значение. вдруг потом при трате что-нибудь поменяется
