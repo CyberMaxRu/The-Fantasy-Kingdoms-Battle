@@ -75,29 +75,35 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
-            if (cell != null)
+            if (Visible)
             {
-                BitmapList = cell.BitmapList();
-                ImageIndex = cell.ImageIndex();
-                //ImageState = cell.NormalImage() ? ImageState.Normal : ImageState.Disabled;
-                Quantity = cell.Value();
+                if (cell != null)
+                {
+                    BitmapList = cell.BitmapList();
+                    ImageIndex = cell.ImageIndex();
+                    //ImageState = cell.NormalImage() ? ImageState.Normal : ImageState.Disabled;
+                    Quantity = cell.Value();
 
-                Debug.Assert(BitmapList.Size == 48);
+                    Debug.Assert(BitmapList.Size == 48);
+                }
+                else
+                    ImageIndex = -1;
             }
-            else
-                ImageIndex = -1;
 
             base.Draw(g);
 
-            if (cell != null)
+            if (Visible)
             {
-                if (Selected)
-                    g.DrawRectangle(FormMain.Config.GetPenBorder(true), new Rectangle(Left - 1, Top - 2, Width + 1, Height + 1));
+                if (cell != null)
+                {
+                    if (Selected)
+                        g.DrawRectangle(FormMain.Config.GetPenBorder(true), new Rectangle(Left - 1, Top - 2, Width + 1, Height + 1));
 
-                g.DrawImageUnscaled(Program.formMain.bmpBorderForIcon, Left, Top);
+                    g.DrawImageUnscaled(Program.formMain.bmpBorderForIcon, Left, Top);
+                }
+                else
+                    g.DrawImageUnscaled(Program.formMain.bmpEmptyEntity, Left, Top);
             }
-            else
-                g.DrawImageUnscaled(Program.formMain.bmpEmptyEntity, Left, Top);
         }
     }
 }
