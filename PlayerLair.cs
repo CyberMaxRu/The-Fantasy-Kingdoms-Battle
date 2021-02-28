@@ -115,7 +115,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 int gold = RequiredGold();// На всякий случай запоминаем точное значение. вдруг потом при трате что-нибудь поменяется
                 Player.SpendGold(gold);
-                SpendedGoldForSetFlag = gold;
+                SpendedGoldForSetFlag += gold;
 
                 if (DaySetFlag == 0)
                     DaySetFlag = Player.Lobby.Turn;
