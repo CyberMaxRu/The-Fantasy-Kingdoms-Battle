@@ -132,6 +132,7 @@ namespace Fantasy_Kingdoms_Battle
 
             SetColorBorder(FormMain.Config.ColorBorder(Program.formMain.SelectedPanelLair == this));
             imgLair.ImageIndex = Lair.ImageIndexLair();
+            imgLair.Level = Lair.Layer + 1;
             lblName.Text = Lair.NameLair();
             lblName.Color = Lair.Player.TargetLair == Lair ? Color.OrangeRed : Color.Green;
             btnAction.ImageIsEnabled = Lair.CheckRequirements();
