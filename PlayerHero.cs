@@ -9,22 +9,26 @@ using System.Windows.Forms;
 
 namespace Fantasy_Kingdoms_Battle
 {
+    // Состояния героя на карте
+    internal enum StateHeroAtMap { Nothing, DoScoutFlat, DoAttackFlag, InHome, Therapy };
+
     // Класс героя игрока
     internal sealed class PlayerHero : Creature
     {
-        private VCCell panelEntity;
         public PlayerHero(PlayerBuilding pb, BattleParticipant bp) : base(pb.Building.TrainedHero, bp)
         {
             Building = pb;
             DayOfHire = Player.Lobby.Turn;
             TypeHero = pb.Building.TrainedHero;
-
+            StateHero = StateHeroAtMap.Nothing;
         }
 
         internal PlayerBuilding Building { get; }// Здание, которому принадлежит герой
         internal Player Player => Building.Player;// Игрок, которому принадлежит герой
         internal TypeHero TypeHero { get; } // Класс героя
 
+        // Состояние при нахождени в Королевстве
+        internal StateHeroAtMap StateHero { get; private set; }// Состояние героя
 
         // Статистика за лобби
         internal int DayOfHire { get; }// На каком дне нанят
@@ -251,6 +255,32 @@ namespace Fantasy_Kingdoms_Battle
         protected override void DoClick()
         {
             Program.formMain.SelectHero(this);
+        }
+
+        internal int ImageIndexState()
+        {
+            switch (StateHero)
+            {
+                case StateHeroAtMap.Nothing:
+                    return FormMain.II_STATE_HERO_NOTHING;
+                case StateHeroAtMap.DoScoutFlat:
+                    return FormMain.II_STATE_HERO_DO_SCOUT_FLAG;
+                case StateHeroAtMap.DoAttackFlag:
+                    return FormMain.II_STATE_HERO_DO_ATTACK_FLAG;
+                case StateHeroAtMap.InHome:
+                    return FormMain.II_STATE_HERO_IN_HOME;
+                case StateHeroAtMap.Therapy:
+                    return FormMain.II_STATE_HERO_THERAPY;
+                default:
+                    throw new Exception("Неизвестное состояние: " + StateHero.ToString());
+            }
+        }
+
+        protected override void DoCustomDraw(Graphics g, int x, int y)
+        {
+            base.DoCustomDraw(g, x, y);
+
+            Program.formMain.ilStateHero.DrawImage(g, ImageIndexState(), true, false, x - 7, y - 3);
         }
     }
 }
