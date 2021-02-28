@@ -166,7 +166,6 @@ namespace Fantasy_Kingdoms_Battle
 
         // Логова
         internal List<PlayerLair> Lairs { get; } = new List<PlayerLair>();
-        internal PlayerLair TargetLair { get; set; }// Логово для атаки
         internal List<PlayerLair> LairsWithFlag { get; } = new List<PlayerLair>();
 
         // Статистика по боям

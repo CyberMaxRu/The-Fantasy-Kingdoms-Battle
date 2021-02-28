@@ -134,7 +134,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             // Реальный игрок должен быть жив
             Debug.Assert(Players[0].IsLive);
-            Debug.Assert(Players[0].TargetLair != null);
 
             // Делаем ходы, перебирая всех игроков, пока все не совершат ход
             int cpi = CurrentPlayer != null ? CurrentPlayer.PlayerIndex : -1;
@@ -222,14 +221,14 @@ namespace Fantasy_Kingdoms_Battle
 
                     // Включить, когда ИИ может выбирать цель
                     //Debug.Assert(p.TargetLair != null);
-                    if (p.TargetLair != null)
+                    foreach (PlayerLair pl in p.LairsWithFlag)
                     {
-                        p.TargetLair.PreparingForBattle();
+                        pl.PreparingForBattle();
 
                         //Debug.Assert(p.TargetLair.CombatHeroes.Count > 0);
 
                         bool showForPlayer = p.TypePlayer == TypePlayer.Human;
-                        b = new Battle(p, p.TargetLair, Turn, FormMain.Rnd, showForPlayer);
+                        b = new Battle(p, pl, Turn, FormMain.Rnd, showForPlayer);
 
                         if (showForPlayer)
                         {

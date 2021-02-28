@@ -128,7 +128,10 @@ namespace Fantasy_Kingdoms_Battle
             {
             }
 
-            Program.formMain.UpdateTarget(this);
+            if (Player.LairsWithFlag.IndexOf(this) == -1)
+                Player.LairsWithFlag.Add(this);
+
+            Program.formMain.LairsWithFlagChanged();
         }
 
         internal int Cashback()
@@ -151,6 +154,10 @@ namespace Fantasy_Kingdoms_Battle
             SpendedGoldForSetFlag = 0;
             DaySetFlag = 0;
             PriorityFlag = PriorityExecution.None;
+
+            Debug.Assert(Player.LairsWithFlag.IndexOf(this) != -1);
+            Player.LairsWithFlag.Remove(this);
+            Program.formMain.LairsWithFlagChanged();
         }
 
         internal string PriorityFlatToText()

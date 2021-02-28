@@ -67,8 +67,10 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCButton btnPreferences;
         private readonly VCButton btnHelp;
         private readonly VCButton btnQuit;
-        private readonly VCButton btnTarget;
         private readonly VCButton btnEndTurn;
+
+        private readonly VisualControl panelLairWithFlags;
+        private readonly List<VCButtonTargetLair> listBtnTargetLair = new List<VCButtonTargetLair>();
 
         private readonly VCBitmap bitmapMenu;
 
@@ -409,8 +411,8 @@ namespace Fantasy_Kingdoms_Battle
                 btnHelp = CreateButton(ilGui, GUI_BOOK, 0, btnPreferences.ShiftY, BtnHelp_Click, BtnHelp_MouseHover);
                 btnQuit = CreateButton(ilGui, GUI_EXIT, 0, btnPreferences.ShiftY, BtnQuit_Click, BtnQuit_MouseHover);
 
-                btnTarget = CreateButton(imListObjectsCell, -1, 0, btnPreferences.ShiftY, BtnTarget_Click, BtnTarget_MouseHover);
                 btnEndTurn = CreateButton(ilGui, GUI_HOURGLASS, 0, btnPreferences.ShiftY, BtnEndTurn_Click, BtnEndTurn_MouseHover);
+                panelLairWithFlags = new VisualControl(MainControl, 0, btnEndTurn.ShiftY);
 
                 // Создаем панели игроков в верхней части окна
                 panelPlayers = new VisualControl();
@@ -520,7 +522,6 @@ namespace Fantasy_Kingdoms_Battle
                 btnHelp.PlaceBeforeControl(btnQuit);
                 btnPreferences.PlaceBeforeControl(btnHelp);
                 btnEndTurn.ShiftX = panelBuildingInfo.ShiftX - btnEndTurn.Width - Config.GridSize;
-                btnTarget.ShiftX = btnEndTurn.ShiftX - btnTarget.Width - Config.GridSize;
 
                 panelBuildingInfo.ShiftX = maxWidthPages + Config.GridSize;
                 panelLairInfo.ShiftX = panelBuildingInfo.ShiftX;
@@ -620,18 +621,6 @@ namespace Fantasy_Kingdoms_Battle
         private void LabelDay_ShowHint(object sender, EventArgs e)
         {
             ShowHintForToolButton(labelDay, "День игры", "День игры: " + lobby.Turn.ToString());
-        }
-
-        private void BtnTarget_Click(object sender, EventArgs e)
-        {
-            ActivatePage(pageLairs);
-            if (lobby.CurrentPlayer.TargetLair != null)
-                SelectLair(lobby.CurrentPlayer.TargetLair.TypeLair.Panel);
-        }
-
-        private void BtnTarget_MouseHover(object sender, EventArgs e)
-        {
-            ShowHintForToolButton(btnTarget, lobby.CurrentPlayer.TargetLair != null ? lobby.CurrentPlayer.TargetLair.TypeLair.Name : "Цель отсутствует", lobby.CurrentPlayer.TargetLair != null ? "Будет атаковано в этом ходу" : "");
         }
 
         private void BtnQuit_MouseHover(object sender, EventArgs e)
@@ -753,12 +742,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             formHint.HideHint();
 
-            if (lobby.CurrentPlayer.TargetLair == null)
-            {
-                ActivatePage(pageLairs);
-                return;
-            }
-
             lobby.DoEndTurn();
 
             if (lobby.CurrentPlayer == null)
@@ -859,8 +842,9 @@ namespace Fantasy_Kingdoms_Battle
 
             panelPlayers.SetPos((ClientSize.Width - panelPlayers.Width) / 2, shiftControls.Y);
             MainControl.SetPos(shiftControls.X, panelPlayers.Top + panelPlayers.Height + Config.GridSize + Config.GridSize);
-
             MainControl.ArrangeControls();
+
+            AdjustPanelLairsWithFlags();
 
             point1LineAfterPanelPlayers = new Point(MainControl.Left, panelPlayers.Top + panelPlayers.Height + Config.GridSize);
             point2LineAfterPanelPlayers = new Point(MainControl.Left + MainControl.Width, panelPlayers.Top + panelPlayers.Height + Config.GridSize);
@@ -1161,6 +1145,11 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        internal void ActivatePageLairs()
+        {
+            ActivatePage(pageLairs);
+        }
+
         private void FormMain_Activated(object sender, EventArgs e)
         {
             // При деактивации пересоздаем окно, иначе оно отображается под главной формой
@@ -1457,23 +1446,6 @@ namespace Fantasy_Kingdoms_Battle
             b.Save(@"f:\Projects\C-Sharp\Fantasy King's Battle\Resources\Icons\1.png");*/
         }
 
-        internal void UpdateTarget(PlayerLair newLair)
-        {
-            Debug.Assert(newLair != null);
-            Debug.Assert(lobby.CurrentPlayer == newLair.Player);
-
-            if (lobby.CurrentPlayer.TargetLair != null)
-            {
-                PlayerLair plOld = lobby.CurrentPlayer.TargetLair;
-                lobby.CurrentPlayer.TargetLair = null;
-            }
-            lobby.CurrentPlayer.TargetLair = newLair;
-            btnTarget.ImageIndex = lobby.CurrentPlayer.TargetLair != null ? lobby.CurrentPlayer.TargetLair.TypeLair.ImageIndex : -1;
-            SelectLair(newLair.TypeLair.Panel);
-
-            SetNeedRedrawFrame();
-        }
-
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
@@ -1753,6 +1725,43 @@ namespace Fantasy_Kingdoms_Battle
         internal int TreatImageIndex(int imageIndex, BattleParticipant p)
         {
             return imageIndex != IMAGE_INDEX_CURRENT_AVATAR ? imageIndex : p.ImageIndexAvatar;
+        }
+
+        internal void LairsWithFlagChanged()
+        {
+            AdjustPanelLairsWithFlags();
+        }
+
+        private void AdjustPanelLairsWithFlags()
+        {
+            Debug.Assert(curAppliedPlayer == lobby.CurrentPlayer);
+
+            // Приводим в соответствие количество кнопок и логов
+            // Для этого скрываем все кнопки, а потом делаем их видимыми.
+            // Это чтобы не создавать каждый раз заново кнопки при изменении их численности
+            if (listBtnTargetLair.Count < lobby.CurrentPlayer.LairsWithFlag.Count)
+                listBtnTargetLair.Add(new VCButtonTargetLair(panelLairWithFlags));
+
+            foreach (VCButtonTargetLair b in listBtnTargetLair)
+                b.Visible = false;                     
+
+            // Сортируем логова и переназначаем ссылки на них у кнопок
+            int n = 0;
+            int left = 0;
+            foreach (PlayerLair pl in lobby.CurrentPlayer.LairsWithFlag.OrderBy(l => l.PriorityFlag))
+            {
+                listBtnTargetLair[n].ShiftX = left;
+                listBtnTargetLair[n].Lair = pl;
+                listBtnTargetLair[n].Visible = true;
+
+                left = listBtnTargetLair[n].NextLeft();
+                n++;
+            }
+
+            panelLairWithFlags.ShiftX = btnEndTurn.ShiftX - left - Config.GridSize;
+            MainControl.ArrangeControl(panelLairWithFlags);
+
+            SetNeedRedrawFrame();
         }
     }
 }
