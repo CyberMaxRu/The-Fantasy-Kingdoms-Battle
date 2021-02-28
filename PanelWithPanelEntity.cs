@@ -12,34 +12,39 @@ namespace Fantasy_Kingdoms_Battle
     // Класс панели с расположенными на ней панелями сущностей
     internal sealed class PanelWithPanelEntity : VisualControl
     {
-        private List<VCCell> panelEntities = new List<VCCell>();
+        private List<VCCell> listCells = new List<VCCell>();
         private int rows;// Сколько сейчас строк подготовлено
 
-        public PanelWithPanelEntity(int entityInRow) : base()
+        public PanelWithPanelEntity(int entityInRow, bool fixedMode = true) : base()
         {
             //DoubleBuffered = true;
             //BackColor = Color.Transparent;
+            FixedMode = fixedMode;
             EntityInRow = entityInRow;
 
-            while (rows < FormMain.Config.MinRowsEntities)
-                AddRow();
+            ValidateRows(FixedMode ? FormMain.Config.MinRowsEntities : 1);
 
-            Width = (panelEntities[0].Width + 1) * EntityInRow - 1;
-            Height = (panelEntities[0].Height + 1) * FormMain.Config.MinRowsEntities - 1;
+            Width = (listCells[0].Width + 1) * EntityInRow - 1;
+            Height = (listCells[0].Height + 1) * FormMain.Config.MinRowsEntities - 1;
         }
 
         private int EntityInRow { get; }
+        internal bool FixedMode { get; }
 
         internal void ApplyList<T>(List<T> list) where T: ICell
         {
             ValidateRows(list.Count);
 
-            for (int i = 0; i < panelEntities.Count; i++)
+            for (int i = 0; i < listCells.Count; i++)
             {
+                listCells[i].Visible = true;
+
                 if (i < list.Count)
-                    panelEntities[i].ShowCell(list[i]);
+                    listCells[i].ShowCell(list[i]);
+                else if (FixedMode)
+                    listCells[i].ShowCell(null);
                 else
-                    panelEntities[i].ShowCell(null);
+                    listCells[i].Visible = false;
             }
         }
 
@@ -47,16 +52,20 @@ namespace Fantasy_Kingdoms_Battle
         {
             ValidateRows(0);
 
-            for (int i = 0; i < panelEntities.Count; i++)
+            for (int i = 0; i < listCells.Count; i++)
             {
-                panelEntities[i].ShowCell(null);
+                listCells[i].ShowCell(null);
             }
         }
 
         private void ValidateRows(int count)
         {
             // Определяем необходимое количество строк. Лишние удаляем, необходимые создаем
-            int needRows = Math.Max(count / EntityInRow + (count % EntityInRow == 0 ? 0 : 1), FormMain.Config.MinRowsEntities);
+            int needRows;
+            if (FixedMode)
+                needRows = Math.Max(count / EntityInRow + (count % EntityInRow == 0 ? 0 : 1), FormMain.Config.MinRowsEntities);
+            else
+                needRows = count / EntityInRow + (count % EntityInRow == 0 ? 0 : 1);
 
             while (rows > needRows)
                 RemoveRow();
@@ -67,7 +76,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void AddRow()
         {
-            Debug.Assert(panelEntities.Count % EntityInRow == 0);
+            Debug.Assert(listCells.Count % EntityInRow == 0);
 
             VCCell pe;
             Point defPoint = new Point(0, 0);
@@ -77,29 +86,30 @@ namespace Fantasy_Kingdoms_Battle
                 pe = new VCCell(this, 0, 0);
                 pe.ShiftX = x * (pe.Width + 2);
                 pe.ShiftY = rows * (pe.Height + 2);
+                pe.Visible = FixedMode;
                 ArrangeControl(pe);
-                panelEntities.Add(pe);
+                listCells.Add(pe);
             }
 
             rows++;
-            Height = panelEntities[panelEntities.Count - 1].Top + panelEntities[panelEntities.Count - 1].Height;
+            Height = listCells[listCells.Count - 1].Top + listCells[listCells.Count - 1].Height;
         }
 
         private void RemoveRow()
         {
-            Debug.Assert(panelEntities.Count % EntityInRow == 0);
+            Debug.Assert(listCells.Count % EntityInRow == 0);
 
             VCCell pe;
 
             for (int x = 0; x < EntityInRow; x++)
             {
-                pe = panelEntities[panelEntities.Count - 1];
-                panelEntities.Remove(pe);
+                pe = listCells[listCells.Count - 1];
+                listCells.Remove(pe);
                 Controls.Remove(pe);
             }
 
             rows--;
-            Height = panelEntities[panelEntities.Count - 1].Top + panelEntities[panelEntities.Count - 1].Height;
+            Height = listCells[listCells.Count - 1].Top + listCells[listCells.Count - 1].Height;
         }
     }
 }
