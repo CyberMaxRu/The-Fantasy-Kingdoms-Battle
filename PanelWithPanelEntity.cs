@@ -17,8 +17,8 @@ namespace Fantasy_Kingdoms_Battle
 
         public PanelWithPanelEntity(int entityInRow, bool fixedMode = true) : base()
         {
-            //DoubleBuffered = true;
-            //BackColor = Color.Transparent;
+            Debug.Assert(entityInRow > 1);
+
             FixedMode = fixedMode;
             EntityInRow = entityInRow;
 
