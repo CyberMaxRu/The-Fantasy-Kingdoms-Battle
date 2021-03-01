@@ -11,8 +11,8 @@ namespace Fantasy_Kingdoms_Battle
         private int shiftImageX;
         private int shiftImageY;
         private VCLabelM2 labelCost;
-        private VCLabel labelLevel;
-        private VCLabel labelQuantity;
+        private VCLabelM2 labelLevel;
+        private VCLabelM2 labelQuantity;
         private VCLabel labelPopupQuantity;
         private SolidBrush brushPopupQuantity;
 
@@ -27,12 +27,12 @@ namespace Fantasy_Kingdoms_Battle
             labelCost.StringFormat.LineAlignment = StringAlignment.Far;
             labelCost.Visible = false;// Текст перекрывается иконкой. Поэтому рисуем вручную
 
-            labelLevel = new VCLabel(this, 0, FormMain.Config.GridSize, FormMain.Config.FontBuildingLevel, FormMain.Config.CommonLevel, 16, "");
+            labelLevel = new VCLabelM2(this, 0, FormMain.Config.GridSize, Program.formMain.fontLevel, FormMain.Config.CommonLevel, 16, "");
             labelLevel.StringFormat.LineAlignment = StringAlignment.Near;
             labelLevel.StringFormat.Alignment = StringAlignment.Far;
             labelLevel.Visible = false;
 
-            labelQuantity = new VCLabel(this, 0, FormMain.Config.GridSize, FormMain.Config.FontQuantity, FormMain.Config.CommonQuantity, 16, "");
+            labelQuantity = new VCLabelM2(this, 0, FormMain.Config.GridSize, Program.formMain.fontLevel, FormMain.Config.CommonQuantity, 16, "");
             labelQuantity.StringFormat.LineAlignment = StringAlignment.Far;
             labelQuantity.StringFormat.Alignment = StringAlignment.Far;
             labelQuantity.Visible = false;
@@ -195,10 +195,16 @@ namespace Fantasy_Kingdoms_Battle
             labelCost.Width = Width;
             labelCost.ShiftY = Height - 16;
 
-            labelLevel.Width = Width - FormMain.Config.GridSizeHalf;
+            if (Width == 48)
+            {
+                labelLevel.Width = Width - FormMain.Config.GridSizeHalf;
+                labelLevel.ShiftY = FormMain.Config.GridSizeHalf;
+            }
+            else
+                labelLevel.Width = Width - FormMain.Config.GridSize;
 
             labelQuantity.Width = Width - FormMain.Config.GridSizeHalf;
-            labelQuantity.ShiftY = Height - 16; 
+            labelQuantity.ShiftY = Height - 12; 
 
             labelPopupQuantity.Width = labelPopupQuantity.Height;
             labelPopupQuantity.ShiftX = Width - 11;
