@@ -72,6 +72,9 @@ namespace Fantasy_Kingdoms_Battle
             imgIcon.ImageIsEnabled = ImageIsEnabled();
 
             base.Draw(g);
+
+            // Рисуем бордюр
+            g.DrawImageUnscaled(Program.formMain.bmpBorderBig, imgIcon.Left - 2, imgIcon.Top - 2);
         }
     }
 }
