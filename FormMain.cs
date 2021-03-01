@@ -163,6 +163,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly Bitmap bmpEmptyEntity;
         internal readonly Bitmap bmpBackgroundEntity;
         internal readonly Bitmap bmpBorderBattlefield;
+        internal readonly Bitmap bmpBorderBig;
         internal readonly Bitmap bmpMaskBig;
         internal readonly Bitmap bmpMaskSmall;
         internal readonly M2Font fontCost;
@@ -324,6 +325,7 @@ namespace Fantasy_Kingdoms_Battle
                 // Загружаем иконки
                 SetStage("Рассматриваем картины");
 
+                bmpBorderBig = new Bitmap(dirResources + @"Icons\BorderBig.png");
                 bmpMaskBig = new Bitmap(dirResources + @"Icons\MaskBig.png");
                 bmpMaskSmall = new Bitmap(dirResources + @"Icons\MaskSmall.png");// Нужна ли еще?
 

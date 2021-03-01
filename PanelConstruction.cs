@@ -226,6 +226,9 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             base.Draw(g);
+
+            // Рисуем бордюр
+            g.DrawImageUnscaled(Program.formMain.bmpBorderBig, imageConstruction.Left - 2, imageConstruction.Top - 2);
         }
     }
 }
