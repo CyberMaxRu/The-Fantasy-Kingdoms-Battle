@@ -35,7 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>FKS.ico</ApplicationIcon>
+    <ApplicationIcon>FKB.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -206,6 +206,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="FKB.ico" />
     <Content Include="Resources\Config\SecondarySkills.xml" />
     <Content Include="Resources\Config\Specializations.xml" />
     <Content Include="Resources\Config\TypeCitizens.xml" />
