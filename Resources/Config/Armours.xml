@@ -14,7 +14,14 @@
         <DefenseArcher>0</DefenseArcher>
         <DefenseMagic>0</DefenseMagic>
       </Armour>
-      <Armour>
+		<Armour>
+			<ID>ArmourAdvisor0</ID>
+			<Hero>Advisor</Hero>
+			<DefenseMelee>0</DefenseMelee>
+			<DefenseArcher>0</DefenseArcher>
+			<DefenseMagic>0</DefenseMagic>
+		</Armour>
+		<Armour>
         <ID>ArmourWarrior0</ID>
         <Hero>Warrior</Hero>
         <DefenseMelee>0</DefenseMelee>

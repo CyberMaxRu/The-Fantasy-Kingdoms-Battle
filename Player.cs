@@ -54,6 +54,7 @@ namespace Fantasy_Kingdoms_Battle
                 Gold = 100_000;
 
             PlayerHero king = Castle.HireHero();
+//            PlayerHero advisor = Castle.HireHero();
 
             //
             AddItem(new PlayerItem(FormMain.Config.FindItem("PotionOfHealth"), 10, true));

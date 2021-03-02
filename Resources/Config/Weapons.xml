@@ -13,7 +13,13 @@
         <TimeHit>50</TimeHit>
         <DamageMelee>10</DamageMelee>
       </Weapon>
-      <Weapon>
+		<Weapon>
+			<ID>WeaponAdvisor0</ID>
+			<Hero>Advisor</Hero>
+			<TimeHit>50</TimeHit>
+			<DamageMelee>10</DamageMelee>
+		</Weapon>
+		<Weapon>
         <ID>WeaponWarrior0</ID>
         <Hero>Warrior</Hero>
         <TimeHit>50</TimeHit>

@@ -3,7 +3,7 @@
   <TypeHero>
     <ID>King</ID>
     <Name>Король</Name>
-    <Description>Это Король, глава Королевства.</Description>
+    <Description>Это вы, Ваше Величество!</Description>
     <ImageIndex>-100</ImageIndex>
     <KindCreature>Human</KindCreature>
     <Reward>0</Reward>
@@ -37,6 +37,44 @@
       <Stamina>4</Stamina>
       <ResistMagic>0</ResistMagic>
     </NextLevel>
+  </TypeHero>
+  <TypeHero>
+	<ID>Advisor</ID>
+	<Name>Советник</Name>
+	<Description>Ваш личный советник, сэр.</Description>
+	<ImageIndex>137</ImageIndex>
+	<KindCreature>Human</KindCreature>
+	<Reward>0</Reward>
+	<Cost>0</Cost>
+	<Building>Castle</Building>
+	<MaxLevel>100</MaxLevel>
+	<CanBuild>False</CanBuild>
+	<DamageToCastle>0</DamageToCastle>
+	<MeleeWeapon>WeaponAdvisor0</MeleeWeapon>
+	<Armour>ArmourAdvisor0</Armour>
+	<DefaultPositionPriority>310</DefaultPositionPriority>
+	<BaseParameters>
+		<Strength>20</Strength>
+		<Dexterity>10</Dexterity>
+		<Magic>10</Magic>
+		<Vitality>50</Vitality>
+		<SecondsToMove>2.0</SecondsToMove>
+		<Inititative>5</Inititative>
+		<CoefHealth>3</CoefHealth>
+		<CoefMana>1</CoefMana>
+		<CoefStamina>3</CoefStamina>
+	</BaseParameters>
+	<NextLevel>
+		<StatPoints>5</StatPoints>
+		<WeightStrength>40</WeightStrength>
+		<WeightDexterity>10</WeightDexterity>
+		<WeightMagic>10</WeightMagic>
+		<WeightVitality>40</WeightVitality>
+		<Health>5</Health>
+		<Mana>2</Mana>
+		<Stamina>4</Stamina>
+		<ResistMagic>0</ResistMagic>
+	</NextLevel>
   </TypeHero>
   <TypeHero>
     <ID>Warrior</ID>
