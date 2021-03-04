@@ -62,6 +62,7 @@ namespace Fantasy_Kingdoms_Battle
         internal bool ShowAsPressed { get; set; } = false;
         internal bool UseFilter { get; set; } = false;
         internal ImageFilter ImageFilter { get; set; } = ImageFilter.None;
+        internal TypeObject TypeObject { get; set; }// Тип объекта, связанный с этим изображением
 
         internal override void MouseEnter(bool leftButtonDown)
         {
@@ -100,6 +101,14 @@ namespace Fantasy_Kingdoms_Battle
                 mouseClicked = false;
                 Program.formMain.SetNeedRedrawFrame();
             }
+        }
+
+        internal override void DoClick()
+        {
+            base.DoClick();
+
+            if ((TypeObject != null) && (TypeObject.SoundSelect.Length > 0))
+                Program.formMain.PlaySoundSelect(TypeObject.SoundSelect);
         }
 
         internal override void Draw(Graphics g)

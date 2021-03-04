@@ -20,6 +20,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCImage imgGold;
         private readonly VCLabel lblIncome;
 
+        
         public PanelConstruction(VisualControl parent, int shiftX, int shiftY, TypeConstruction typeConstruction) : base(parent, shiftX, shiftY)
         {
             ShowBorder = true;
@@ -35,6 +36,7 @@ namespace Fantasy_Kingdoms_Battle
             imageConstruction.HighlightUnderMouse = true;
             imageConstruction.Click += ImageConstruction_Click;
             imageConstruction.ShowHint += ImageConstruction_ShowHint;
+            imageConstruction.TypeObject = TypeConstruction;
 
             btnBuyOrUpgrade = new VCButton(this, imageConstruction.NextLeft(), imageConstruction.ShiftY, Program.formMain.ilGui, FormMain.GUI_BUY);
             btnBuyOrUpgrade.Click += BtnBuyOrUprgade_Click;

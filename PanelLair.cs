@@ -31,6 +31,7 @@ namespace Fantasy_Kingdoms_Battle
             imgLair.HighlightUnderMouse = true;
             imgLair.Click += ImgLair_Click;
             imgLair.ShowHint += ImgLair_ShowHint;
+            imgLair.TypeObject = TypeLair;
 
             btnAction = new VCButton(this, imgLair.NextLeft(), imgLair.ShiftY, Program.formMain.ilGui, FormMain.GUI_BATTLE);
             btnAction.Click += BtnAction_Click;

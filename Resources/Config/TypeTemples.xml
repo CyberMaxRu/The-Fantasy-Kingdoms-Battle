@@ -10,6 +10,7 @@
     <MaxLevel>1</MaxLevel>
     <HasTreasury>True</HasTreasury>
     <GoldByConstruction>0</GoldByConstruction>
+    <SoundSelect>guild_darkpriestess_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -39,6 +40,7 @@
     <MaxLevel>1</MaxLevel>
     <HasTreasury>True</HasTreasury>
     <GoldByConstruction>0</GoldByConstruction>
+    <SoundSelect>guild_priestess_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -68,6 +70,7 @@
     <MaxLevel>1</MaxLevel>
     <HasTreasury>True</HasTreasury>
     <GoldByConstruction>0</GoldByConstruction>
+    <SoundSelect>guild_paladin_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -97,6 +100,7 @@
     <MaxLevel>1</MaxLevel>
     <HasTreasury>True</HasTreasury>
     <GoldByConstruction>0</GoldByConstruction>
+    <SoundSelect>temple_blademaster_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -126,6 +130,7 @@
     <MaxLevel>1</MaxLevel>
     <HasTreasury>True</HasTreasury>
     <GoldByConstruction>0</GoldByConstruction>
+    <SoundSelect>guild_beastmaster_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -155,6 +160,7 @@
     <MaxLevel>1</MaxLevel>
     <HasTreasury>True</HasTreasury>
     <GoldByConstruction>0</GoldByConstruction>
+    <SoundSelect>guild_marksman_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -184,6 +190,7 @@
     <MaxLevel>1</MaxLevel>
     <HasTreasury>True</HasTreasury>
     <GoldByConstruction>0</GoldByConstruction>
+    <SoundSelect>guild_ice_mage_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -213,6 +220,7 @@
     <MaxLevel>1</MaxLevel>
     <HasTreasury>True</HasTreasury>
     <GoldByConstruction>0</GoldByConstruction>
+    <SoundSelect>guild_deathknight_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -242,6 +250,7 @@
     <MaxLevel>1</MaxLevel>
     <HasTreasury>True</HasTreasury>
     <GoldByConstruction>0</GoldByConstruction>
+    <SoundSelect>guild_fire_mage_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>

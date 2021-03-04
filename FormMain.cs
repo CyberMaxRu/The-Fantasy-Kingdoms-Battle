@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.IO;
 using System.Drawing.Drawing2D;
+using System.Media;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -18,6 +19,9 @@ namespace Fantasy_Kingdoms_Battle
         private const string VERSION_POSTFIX = "в разработке";
         internal readonly string dirCurrent;
         internal readonly string dirResources;
+
+        // Проигрывание звуков и музыки 
+        SoundPlayer spSoundSelect = new SoundPlayer();
 
         // ImageList'ы
         internal BitmapList blPlayerAvatars;
@@ -1787,6 +1791,13 @@ namespace Fantasy_Kingdoms_Battle
 
                 SetNeedRedrawFrame();
             }
+        }
+
+        internal void PlaySoundSelect(string filename)
+        {
+            spSoundSelect.SoundLocation = dirResources + @"Sound\Interface\ConstructionSelect\" + filename;
+            spSoundSelect.Load();
+            spSoundSelect.Play();
         }
     }
 }

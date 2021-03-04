@@ -20,6 +20,7 @@ namespace Fantasy_Kingdoms_Battle
             ImageIndex = XmlUtils.GetInteger(n.SelectSingleNode("ImageIndex"));
             if (ImageIndex > 0)
                 ImageIndex--;
+            SoundSelect = XmlUtils.GetString(n.SelectSingleNode("SoundSelect"));
 
             Debug.Assert(ID.Length > 0);
             Debug.Assert(Name.Length > 0);
@@ -31,6 +32,7 @@ namespace Fantasy_Kingdoms_Battle
         internal string Name { get; }// Наименование типа объекта
         internal string Description { get; }// Описание типа объекта
         internal int ImageIndex { get; }// Код иконки типа объекта
+        internal string SoundSelect { get; }// Звук при выборе объекта
 
         internal virtual void TuneDeferredLinks()
         {

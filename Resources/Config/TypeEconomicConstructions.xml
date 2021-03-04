@@ -9,6 +9,7 @@
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <HasTreasury>True</HasTreasury>
+    <SoundSelect>castle_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -59,6 +60,7 @@
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <HasTreasury>False</HasTreasury>
+    <SoundSelect>peasant_house_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -77,6 +79,7 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <HasTreasury>False</HasTreasury>
+    <SoundSelect></SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -95,6 +98,7 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <HasTreasury>False</HasTreasury>
+    <SoundSelect></SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -114,6 +118,7 @@
     <MaxLevel>3</MaxLevel>
     <LayersResearches>1</LayersResearches>
     <HasTreasury>False</HasTreasury>
+    <SoundSelect>marketplace_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -203,6 +208,7 @@
     <MaxLevel>3</MaxLevel>
     <HasTreasury>False</HasTreasury>
     <LayersResearches>4</LayersResearches>
+    <SoundSelect>smithy_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -520,6 +526,7 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>2</MaxLevel>
     <HasTreasury>False</HasTreasury>
+    <SoundSelect>tavern_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -549,6 +556,7 @@
     <MaxLevel>1</MaxLevel>
     <HasTreasury>False</HasTreasury>
     <LayersResearches>1</LayersResearches>
+    <SoundSelect>magic_bazaar_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -641,6 +649,7 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <HasTreasury>False</HasTreasury>
+    <SoundSelect></SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -660,6 +669,7 @@
     <MaxLevel>2</MaxLevel>
     <MaxHeroes>0</MaxHeroes>
     <HasTreasury>False</HasTreasury>
+    <SoundSelect>magic_bazaar_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -682,6 +692,7 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <HasTreasury>False</HasTreasury>
+    <SoundSelect>statue_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -699,6 +710,7 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <HasTreasury>False</HasTreasury>
+    <SoundSelect>hall_of_lords_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>

@@ -8,6 +8,7 @@
     <Line>1</Line>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <SoundSelect>graveyard_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Cost>100</Cost>
@@ -34,6 +35,7 @@
     <Line>1</Line>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <SoundSelect>logovo_skeleton_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Cost>250</Cost>
@@ -68,6 +70,7 @@
     <Line>1</Line>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <SoundSelect>logovo_vampire_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Cost>500</Cost>
@@ -102,6 +105,7 @@
     <Line>1</Line>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <SoundSelect>logovo_vampire_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Cost>1000</Cost>
@@ -128,6 +132,7 @@
     <Line>2</Line>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <SoundSelect>logovo_wolf_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Cost>200</Cost>
@@ -162,6 +167,7 @@
     <Line>2</Line>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <SoundSelect>logovo_serpent_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Cost>400</Cost>
@@ -188,6 +194,7 @@
     <Line>2</Line>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <SoundSelect>logovo_bear_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Cost>400</Cost>
@@ -222,6 +229,7 @@
     <Line>2</Line>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <SoundSelect>logovo_bearman_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Cost>800</Cost>
@@ -248,6 +256,7 @@
     <Line>3</Line>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <SoundSelect>logovo_minotaur_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Cost>1000</Cost>
@@ -282,6 +291,7 @@
     <Line>3</Line>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <SoundSelect>logovo_ogre_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Cost>1500</Cost>
@@ -308,6 +318,7 @@
     <Line>3</Line>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <SoundSelect>logovo_wolfman_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Cost>2500</Cost>
@@ -334,6 +345,7 @@
     <Line>3</Line>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <SoundSelect>logovo_boss_dragon_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Cost>10000</Cost>
@@ -360,6 +372,7 @@
     <Line>3</Line>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <SoundSelect>sewers_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Cost>10000</Cost>

@@ -11,6 +11,7 @@
     <HasTreasury>True</HasTreasury>
     <GoldByConstruction>500</GoldByConstruction>
     <LayersResearches>1</LayersResearches>
+    <SoundSelect>guild_warrior_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -84,6 +85,7 @@
     <HasTreasury>True</HasTreasury>
     <GoldByConstruction>0</GoldByConstruction>
     <LayersResearches>1</LayersResearches>
+    <SoundSelect>guild_hunter_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -157,6 +159,7 @@
     <HasTreasury>True</HasTreasury>
     <GoldByConstruction>0</GoldByConstruction>
     <LayersResearches>1</LayersResearches>
+    <SoundSelect>guild_cleric_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -230,6 +233,7 @@
     <HasTreasury>True</HasTreasury>
     <GoldByConstruction>0</GoldByConstruction>
     <LayersResearches>1</LayersResearches>
+    <SoundSelect>guild_magic_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -329,6 +333,7 @@
     <HasTreasury>True</HasTreasury>
     <GoldByConstruction>0</GoldByConstruction>
     <LayersResearches>1</LayersResearches>
+    <SoundSelect>guild_elves_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -416,6 +421,7 @@
     <HasTreasury>True</HasTreasury>
     <GoldByConstruction>0</GoldByConstruction>
     <LayersResearches>1</LayersResearches>
+    <SoundSelect>guild_dwarf_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -497,6 +503,7 @@
     <HasTreasury>True</HasTreasury>
     <GoldByConstruction>0</GoldByConstruction>
     <LayersResearches>1</LayersResearches>
+    <SoundSelect>guild_rogue_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>
