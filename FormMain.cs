@@ -63,6 +63,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VisualControl panelPlayers;// Панель, на которой находятся панели игроков лобби
 
         private readonly VCToolLabel labelDay;
+        private readonly VCToolLabel labelGreatness;
         private readonly VCToolLabel labelGold;
 
         private readonly VCButton btnPreferences;
@@ -137,6 +138,7 @@ namespace Fantasy_Kingdoms_Battle
         internal const int GUI_16_DAY = 0;
         internal const int GUI_16_GOLD = 1;
         internal const int GUI_16_PEASANT = 2;
+        internal const int GUI_16_GREATNESS = 3;
 
         internal const int GUI_24_FIRE = 0;
         internal const int GUI_24_HEROES = 1;
@@ -412,7 +414,10 @@ namespace Fantasy_Kingdoms_Battle
                 labelDay.Click += LabelDay_Click;
                 labelDay.ShowHint += LabelDay_ShowHint;
                 labelDay.Width = 48;
-                labelGold = new VCToolLabel(MainControl, labelDay.NextLeft(), 0, "", GUI_16_GOLD);
+                labelGreatness = new VCToolLabel(MainControl, labelDay.NextLeft(), 0, "", GUI_16_GREATNESS);
+                labelGreatness.ShowHint += LabelGreatness_ShowHint;
+                labelGreatness.Width = 104;
+                labelGold = new VCToolLabel(MainControl, labelGreatness.NextLeft(), 0, "", GUI_16_GOLD);
                 labelGold.ShowHint += LabelGold_ShowHint;
                 labelGold.Width = 160;
 
@@ -593,6 +598,11 @@ namespace Fantasy_Kingdoms_Battle
                 MessageBox.Show(exc.Message + Environment.NewLine + exc.StackTrace);
                 Environment.Exit(-1);
             }
+        }
+
+        private void LabelGreatness_ShowHint(object sender, EventArgs e)
+        {
+            ShowHintForToolButton(labelGreatness, "Величие", "Уровень величия и количество очков до следующего уровня");
         }
 
         private void LabelDay_Click(object sender, EventArgs e)
@@ -1011,6 +1021,10 @@ namespace Fantasy_Kingdoms_Battle
 
             UpdateListHeroes();
             ShowWarehouse();
+
+            labelGreatness.Text = curAppliedPlayer.LevelGreatness.ToString()
+                + " (" + curAppliedPlayer.PointGreatness.ToString() + "/"
+                + curAppliedPlayer.PointGreatnessForNextLevel.ToString() + ")";
         }
 
         internal void UpdateListHeroes()

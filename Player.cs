@@ -53,6 +53,9 @@ namespace Fantasy_Kingdoms_Battle
             if (TypePlayer == TypePlayer.Computer)
                 Gold = 100_000;
 
+            LevelGreatness = 1;
+            PointGreatnessForNextLevel = 100;
+
             PlayerHero king = Castle.HireHero();
 //            PlayerHero advisor = Castle.HireHero();
 
@@ -149,6 +152,9 @@ namespace Fantasy_Kingdoms_Battle
         internal int PlayerIndex { get; }
         internal int PositionInLobby { get; set; }
         internal int DurabilityCastle { get; set; }
+        internal int LevelGreatness { get; }// Величие
+        internal int PointGreatness { get; }// Очков величия
+        internal int PointGreatnessForNextLevel { get; }// Очков величия до следующего уровня
         internal int LastBattleDamageToCastle { get; set; }
         internal List<PlayerBuilding> Buildings { get; } = new List<PlayerBuilding>();
         internal int LevelCastle => Castle.Level;
