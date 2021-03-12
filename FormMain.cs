@@ -913,7 +913,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (e.newState != (int)WMPLib.WMPPlayState.wmppsPlaying)
             {
-                axWindowsMediaPlayer1.Dispose();
+                axWindowsMediaPlayer1.Parent = null;
                 axWindowsMediaPlayer1 = null;
                 KeyDown -= FormMain_KeyDown;
                 KeyPreview = false;
