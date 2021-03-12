@@ -13,12 +13,24 @@
         <TimeHit>50</TimeHit>
         <DamageMelee>10</DamageMelee>
       </Weapon>
-		<Weapon>
-			<ID>WeaponAdvisor0</ID>
-			<Hero>Advisor</Hero>
-			<TimeHit>50</TimeHit>
-			<DamageMelee>10</DamageMelee>
-		</Weapon>
+      <Weapon>
+		<ID>WeaponAdvisor0</ID>
+		<Hero>Advisor</Hero>
+		<TimeHit>50</TimeHit>
+		<DamageMelee>10</DamageMelee>
+	  </Weapon>
+	  <Weapon>
+		<ID>WeaponCaptain0</ID>
+		<Hero>Captain</Hero>
+		<TimeHit>50</TimeHit>
+		<DamageMelee>10</DamageMelee>
+	  </Weapon>
+	  <Weapon>
+		<ID>WeaponTreasurer0</ID>
+		<Hero>Treasurer</Hero>
+		<TimeHit>50</TimeHit>
+		<DamageMelee>10</DamageMelee>
+	  </Weapon>
 		<Weapon>
         <ID>WeaponWarrior0</ID>
         <Hero>Warrior</Hero>

@@ -15,13 +15,13 @@
         <Pos>1</Pos>
         <Cost>0</Cost>
         <Income>50</Income>
-        <MaxHeroes>2</MaxHeroes>        
+        <MaxHeroes>10</MaxHeroes>        
       </Level>
       <Level>
         <Pos>2</Pos>
         <Cost>2000</Cost>
         <Income>125</Income>
-        <MaxHeroes>4</MaxHeroes>
+        <MaxHeroes>10</MaxHeroes>
         <Requirements>
           <Requirement>
             <TypeConstruction>Market</TypeConstruction>
@@ -37,7 +37,7 @@
         <Pos>3</Pos>
         <Cost>4000</Cost>
         <Income>275</Income>
-        <MaxHeroes>6</MaxHeroes>
+        <MaxHeroes>10</MaxHeroes>
         <Requirements>
           <Requirement>
             <TypeConstruction>Market</TypeConstruction>
