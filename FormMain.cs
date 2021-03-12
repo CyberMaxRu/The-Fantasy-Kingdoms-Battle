@@ -1038,7 +1038,7 @@ namespace Fantasy_Kingdoms_Battle
                 for (int x = 0; x < lobby.CurrentPlayer.CellHeroes.GetLength(1); x++)
                     listHeroes.Add(lobby.CurrentPlayer.CellHeroes[y, x]);
 
-            panelHeroes.ApplyList(listHeroes);
+            //panelHeroes.ApplyList(listHeroes);
         }
 
         private void ShowLobby()
