@@ -44,6 +44,6 @@ namespace Fantasy_Kingdoms_Battle
 
         }
 
-        void ICell.CustomDraw(Graphics g, int x, int y) { }
+        void ICell.CustomDraw(Graphics g, int x, int y, bool drawState) { }
     }
 }

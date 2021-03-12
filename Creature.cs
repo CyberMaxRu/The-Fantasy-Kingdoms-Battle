@@ -122,7 +122,7 @@ namespace Fantasy_Kingdoms_Battle
             return TypeCreature.DefaultPositionPriority * 1000 + posInPlayer;
         }
 
-        protected virtual void DoCustomDraw(Graphics g, int x, int y)
+        protected virtual void DoCustomDraw(Graphics g, int x, int y, bool drawState)
         {
 
         }
@@ -155,9 +155,9 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.SelectPanelEntity(pe);
             DoClick();
         }
-        void ICell.CustomDraw(Graphics g, int x, int y)
+        void ICell.CustomDraw(Graphics g, int x, int y, bool drawState)
         {
-            DoCustomDraw(g, x, y);
+            DoCustomDraw(g, x, y, drawState);
         }
     }
 }

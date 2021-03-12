@@ -89,6 +89,7 @@ namespace Fantasy_Kingdoms_Battle
                 pe.ShiftX = x * (pe.Width + DistanceBetweenCells);
                 pe.ShiftY = rows * (pe.Height + DistanceBetweenCells);
                 pe.Visible = FixedMode;
+                pe.DrawState = !FixedMode;
                 ArrangeControl(pe);
                 listCells.Add(pe);
             }

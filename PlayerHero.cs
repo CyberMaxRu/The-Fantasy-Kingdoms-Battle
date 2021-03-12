@@ -298,11 +298,12 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        protected override void DoCustomDraw(Graphics g, int x, int y)
+        protected override void DoCustomDraw(Graphics g, int x, int y, bool drawState)
         {
-            base.DoCustomDraw(g, x, y);
+            base.DoCustomDraw(g, x, y, drawState);
 
-            Program.formMain.ilStateHero.DrawImage(g, ImageIndexState(), true, false, x - 7, y - 3);
+            if (drawState)
+                Program.formMain.ilStateHero.DrawImage(g, ImageIndexState(), true, false, x - 7, y - 3);
         }
     }
 }

@@ -13,7 +13,7 @@ namespace Fantasy_Kingdoms_Battle
         int Value();
         void PrepareHint();
         void Click(VCCell pe);
-        void CustomDraw(Graphics g, int x, int y);
+        void CustomDraw(Graphics g, int x, int y, bool drawState);
     }
 
     // Визуальный контрол - ячейка
@@ -30,9 +30,12 @@ namespace Fantasy_Kingdoms_Battle
             // Ставим размеры после изменения ShiftImageX и ShiftImageY, так так там меняется размер ячейки
             Width = Program.formMain.bmpBorderForIcon.Width;
             Height = Program.formMain.bmpBorderForIcon.Height;
+
+            DrawState = true;
         }
 
         internal bool Selected { get; set; }
+        internal bool DrawState { get; set; }
 
         internal override void ArrangeControls()
         {
@@ -102,7 +105,7 @@ namespace Fantasy_Kingdoms_Battle
 
                     g.DrawImageUnscaled(Program.formMain.bmpBorderForIcon, Left, Top);
 
-                    cell.CustomDraw(g, Left, Top);
+                    cell.CustomDraw(g, Left, Top, DrawState);
                 }
                 else
                     g.DrawImageUnscaled(Program.formMain.bmpEmptyEntity, Left, Top);
