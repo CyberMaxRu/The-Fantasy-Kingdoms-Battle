@@ -95,6 +95,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int ImageIndexLair()
         {
+            return TypeLair.ImageIndex;
             return Hidden ? FormMain.IMAGE_INDEX_NONE : TypeLair.ImageIndex;
         }
 
