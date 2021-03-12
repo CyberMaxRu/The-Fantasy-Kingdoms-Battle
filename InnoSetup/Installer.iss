@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "The Fantasy Kingdoms Battle"
-#define MyAppVersion "0.2"
+#define MyAppVersion "0.3"
 #define MyAppPublisher "Majesty 2: Project Rebirth"
 #define MyAppURL "https://vk.com/majesty_2_vozrozhdeniye"
 #define MyAppExeName "The Fantasy Kingdoms Battle.exe"
@@ -35,8 +35,8 @@ Name: "russian"; MessagesFile: "compiler:Languages\Russian.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "E:\upload\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "E:\upload\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "E:\FKB_current\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "E:\FKB_current\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
