@@ -259,7 +259,8 @@ namespace Fantasy_Kingdoms_Battle
                 RearrangeHeroes();
             }
 
-            Program.formMain.ListHeroesChanged();
+            if (TypePlayer == TypePlayer.Human)
+                Program.formMain.ListHeroesChanged();
         }
 
         internal bool EnoughPointConstruction(PlayerBuilding pb)
