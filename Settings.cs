@@ -25,7 +25,7 @@ namespace Fantasy_Kingdoms_Battle
                 doc.Load(path + "Settings.xml");
 
                 ShowSplashVideo = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Game/ShowSplashVideo"), true);
-                FullScreenMode = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Game/FullScreenMode"), false);
+                FullScreenMode = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Game/FullScreenMode"), true);
                 CheckUpdateOnStartup = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Game/CheckUpdatesOnStartup"), true);
 
                 BattlefieldShowPath = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Battlefield/ShowPath"), false);
