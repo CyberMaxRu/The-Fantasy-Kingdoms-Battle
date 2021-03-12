@@ -223,7 +223,7 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain = this;
 
             Text = NAME_PROJECT + " (сборка " + VERSION + ")";
-
+            
             // Настройка переменной с папкой ресурсов
             dirCurrent = Environment.CurrentDirectory;
 
@@ -1048,6 +1048,9 @@ namespace Fantasy_Kingdoms_Battle
             {
                 pl.TypeLair.Panel.LinkToPlayer(pl);
             }
+
+            // Показываем героев
+            ListHeroesChanged();
         }
 
         private void DrawPageConstructions()
