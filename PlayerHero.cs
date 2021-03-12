@@ -256,9 +256,14 @@ namespace Fantasy_Kingdoms_Battle
             return Program.formMain.TreatImageIndex(TypeHero.ImageIndex, Player);
         }
 
+        internal string GetNameHero()
+        {
+            return TypeHero.ImageIndex != FormMain.IMAGE_INDEX_CURRENT_AVATAR ? TypeHero.Name : Player.Name;
+        }
+
         internal override void PrepareHint()
         {
-            Program.formMain.formHint.AddStep1Header(TypeHero.Name, "", TypeHero.Description);
+            Program.formMain.formHint.AddStep1Header(GetNameHero(), "", TypeHero.Description);
         }
 
         protected override void DoClick()
