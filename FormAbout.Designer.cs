@@ -110,8 +110,8 @@ namespace Fantasy_Kingdoms_Battle
             this.label3.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label3.Size = new System.Drawing.Size(544, 80);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Разработчик: Кузьмин М.А.\r\nИсходный код написан на C# под .NET Framework 4.8.2 на" +
-    " GDI+, без использования сторонних библиотек.";
+            this.label3.Text = "Разработчик: Кузьмин М.А.\r\nИсходный код написан на C# под .NET Framework 4.8 на G" +
+    "DI+, без использования сторонних библиотек.";
             // 
             // label4
             // 
