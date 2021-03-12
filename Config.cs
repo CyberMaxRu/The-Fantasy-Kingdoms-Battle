@@ -15,8 +15,8 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class Config
     {
-        private PrivateFontCollection pfc = new PrivateFontCollection();
-        private FontFamily ffMajesty2;
+        //private PrivateFontCollection pfc = new PrivateFontCollection();
+        //private FontFamily ffMajesty2;
 
         public Config(string pathResources, FormMain fm)
         {
@@ -618,7 +618,7 @@ namespace Fantasy_Kingdoms_Battle
             UnitLowNormalParam = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Unit/LowNormalParam").InnerText);
             UnitHighNormalParam = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Unit/HighNormalParam").InnerText);
 
-            // Добавляем шрифт из ресурсов
+            /*// Добавляем шрифт из ресурсов
             FontFamily GetResourceFontFamily(byte[] fontbytes)
             {
                 // Шрифт Majesty2 не хочет работать из ресурсов. Другие шрифты работают.
@@ -632,11 +632,11 @@ namespace Fantasy_Kingdoms_Battle
                 Marshal.Copy(fontbytes, 0, fontMemPointer, fontbytes.Length);
                 pfc.AddMemoryFont(fontMemPointer, fontbytes.Length);
                 Marshal.FreeCoTaskMem(fontMemPointer);
-                return pfc.Families[0];*/
-            }
+                return pfc.Families[0];*//*
+            }*/
 
             // Шрифты            
-            ffMajesty2 = GetResourceFontFamily(Properties.Resources.Majesty2);
+            //ffMajesty2 = GetResourceFontFamily(Properties.Resources.Majesty2);
 
             FontToolbar = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/Toolbar"));
             FontLevel = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/Level"));
@@ -660,7 +660,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 string name = n.SelectSingleNode("Name").InnerText;
                 
-                if (name == "Majesty2")
+/*                if (name == "Majesty2")
                 {
                     if (XmlUtils.GetBool(n.SelectSingleNode("Bold"), false))
                         return new Font(ffMajesty2, Convert.ToInt32(n.SelectSingleNode("Size").InnerText), FontStyle.Bold);
@@ -668,12 +668,12 @@ namespace Fantasy_Kingdoms_Battle
                         return new Font(ffMajesty2, Convert.ToInt32(n.SelectSingleNode("Size").InnerText));
                 }
                 else
-                {
+                {*/
                     if (XmlUtils.GetBool(n.SelectSingleNode("Bold"), false))
                         return new Font(name, Convert.ToInt32(n.SelectSingleNode("Size").InnerText), FontStyle.Bold);
                     else
                         return new Font(name, Convert.ToInt32(n.SelectSingleNode("Size").InnerText));
-                }
+//                }
             }
         }
 
