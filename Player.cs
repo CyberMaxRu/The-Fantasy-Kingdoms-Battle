@@ -56,8 +56,10 @@ namespace Fantasy_Kingdoms_Battle
             LevelGreatness = 1;
             PointGreatnessForNextLevel = 100;
 
-            PlayerHero king = Castle.HireHero();
-//            PlayerHero advisor = Castle.HireHero();
+            PlayerHero king = Castle.HireHero(FormMain.Config.FindTypeHero("King"));
+            PlayerHero advisor = Castle.HireHero(FormMain.Config.FindTypeHero("Advisor"));
+            PlayerHero captain = Castle.HireHero(FormMain.Config.FindTypeHero("Captain"));
+            PlayerHero treasurer = Castle.HireHero(FormMain.Config.FindTypeHero("Treasurer"));
 
             //
             AddItem(new PlayerItem(FormMain.Config.FindItem("PotionOfHealth"), 10, true));
@@ -248,7 +250,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(AllHeroes.IndexOf(ph) == -1);
 
             AllHeroes.Add(ph);
-            if (ph.TypeHero.ID != "King")
+            //if (ph.TypeHero.ID != "King")
                 AddCombatHero(ph);
 
             // Восстановить

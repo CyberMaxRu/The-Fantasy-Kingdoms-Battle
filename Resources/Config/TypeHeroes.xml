@@ -15,7 +15,8 @@
     <MeleeWeapon>WeaponKing0</MeleeWeapon>
     <Armour>ArmourKing0</Armour>
     <DefaultPositionPriority>300</DefaultPositionPriority>
-    <BaseParameters>
+	<PersistentState>King</PersistentState>
+	<BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
       <Magic>10</Magic>
@@ -53,7 +54,8 @@
 	<MeleeWeapon>WeaponAdvisor0</MeleeWeapon>
 	<Armour>ArmourAdvisor0</Armour>
 	<DefaultPositionPriority>310</DefaultPositionPriority>
-	<BaseParameters>
+	<PersistentState>Advisor</PersistentState>
+	  <BaseParameters>
 		<Strength>20</Strength>
 		<Dexterity>10</Dexterity>
 		<Magic>10</Magic>
@@ -91,16 +93,17 @@
         <MeleeWeapon>WeaponCaptain0</MeleeWeapon>
         <Armour>ArmourCaptain0</Armour>
         <DefaultPositionPriority>320</DefaultPositionPriority>
-        <BaseParameters>
-		<Strength>20</Strength>
-		<Dexterity>10</Dexterity>
-		<Magic>10</Magic>
-		<Vitality>50</Vitality>
-		<SecondsToMove>2.0</SecondsToMove>
-		<Inititative>5</Inititative>
-		<CoefHealth>3</CoefHealth>
-		<CoefMana>1</CoefMana>
-		<CoefStamina>3</CoefStamina>
+		<PersistentState>Captain</PersistentState>
+		<BaseParameters>
+		    <Strength>20</Strength>
+		    <Dexterity>10</Dexterity>
+		    <Magic>10</Magic>
+		    <Vitality>50</Vitality>
+		    <SecondsToMove>2.0</SecondsToMove>
+		    <Inititative>5</Inititative>
+		    <CoefHealth>3</CoefHealth>
+		    <CoefMana>1</CoefMana>
+		    <CoefStamina>3</CoefStamina>
 		</BaseParameters>
 		<NextLevel>
 			<StatPoints>5</StatPoints>
@@ -129,6 +132,7 @@
 		<MeleeWeapon>WeaponTreasurer0</MeleeWeapon>
 		<Armour>ArmourTreasurer0</Armour>
 		<DefaultPositionPriority>330</DefaultPositionPriority>
+		<PersistentState>Treasurer</PersistentState>
 		<BaseParameters>
 			<Strength>20</Strength>
 			<Dexterity>10</Dexterity>

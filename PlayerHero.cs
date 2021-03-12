@@ -10,7 +10,7 @@ using System.Windows.Forms;
 namespace Fantasy_Kingdoms_Battle
 {
     // Состояния героя на карте
-    internal enum StateHeroAtMap { Nothing, DoScoutFlat, DoAttackFlag, InHome, Therapy };
+    internal enum StateHeroAtMap { Nothing, DoScoutFlat, DoAttackFlag, InHome, Therapy, King, Advisor, Captain, Treasurer };
 
     // Класс героя игрока
     internal sealed class PlayerHero : Creature
@@ -20,7 +20,16 @@ namespace Fantasy_Kingdoms_Battle
             Building = pb;
             DayOfHire = Player.Lobby.Turn;
             TypeHero = pb.Building.TrainedHero;
-            StateHero = StateHeroAtMap.Nothing;
+
+            StateHero = TypeHero.PersistentStateHeroAtMap;
+        }
+
+        public PlayerHero(PlayerBuilding pb, BattleParticipant bp, TypeHero th) : base(th, bp)
+        {
+            Building = pb;
+            DayOfHire = Player.Lobby.Turn;
+            TypeHero = th;
+            StateHero = TypeHero.PersistentStateHeroAtMap;
         }
 
         internal PlayerBuilding Building { get; }// Здание, которому принадлежит герой
@@ -271,6 +280,14 @@ namespace Fantasy_Kingdoms_Battle
                     return FormMain.II_STATE_HERO_IN_HOME;
                 case StateHeroAtMap.Therapy:
                     return FormMain.II_STATE_HERO_THERAPY;
+                case StateHeroAtMap.King:
+                    return FormMain.II_STATE_HERO_KING;
+                case StateHeroAtMap.Advisor:
+                    return FormMain.II_STATE_HERO_ADVISOR;
+                case StateHeroAtMap.Captain:
+                    return FormMain.II_STATE_HERO_CAPTAIN;
+                case StateHeroAtMap.Treasurer:
+                    return FormMain.II_STATE_HERO_TREASURER;
                 default:
                     throw new Exception("Неизвестное состояние: " + StateHero.ToString());
             }

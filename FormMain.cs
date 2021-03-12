@@ -134,7 +134,11 @@ namespace Fantasy_Kingdoms_Battle
         internal const int II_STATE_HERO_IN_HOME = 13;
         internal const int II_STATE_HERO_NOTHING = 14;
         internal const int II_STATE_HERO_THERAPY = 15;
-        
+        internal const int II_STATE_HERO_KING = 16;
+        internal const int II_STATE_HERO_ADVISOR = 17;
+        internal const int II_STATE_HERO_CAPTAIN = 18;
+        internal const int II_STATE_HERO_TREASURER = 19;
+
         internal const int GUI_16_DAY = 0;
         internal const int GUI_16_GOLD = 1;
         internal const int GUI_16_PEASANT = 2;

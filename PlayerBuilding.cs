@@ -146,6 +146,26 @@ namespace Fantasy_Kingdoms_Battle
             return h;
         }
 
+        internal PlayerHero HireHero(TypeHero th)
+        {
+            Debug.Assert(Heroes.Count < MaxHeroes());
+            Debug.Assert(Player.CombatHeroes.Count < Player.Lobby.TypeLobby.MaxHeroes);
+            //Debug.Assert(Player.Gold >= Building.TrainedHero.Cost);
+
+            PlayerHero h = new PlayerHero(this, Player, th);
+
+            if (Building.TrainedHero.Cost > 0)
+            {
+                Player.Gold -= Building.TrainedHero.Cost;
+                if (Player.TypePlayer == TypePlayer.Human)
+                    Program.formMain.SetNeedRedrawFrame();
+            }
+
+            AddHero(h);
+
+            return h;
+        }
+
         internal void AddHero(PlayerHero ph)
         {
             Debug.Assert(Heroes.Count < MaxHeroes());
