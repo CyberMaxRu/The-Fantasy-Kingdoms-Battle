@@ -44,7 +44,7 @@ namespace Fantasy_Kingdoms_Battle
 
             btnHeroes = new VCButton(this, imageConstruction.ShiftX, imageConstruction.NextTop(), Program.formMain.imListObjectsCell, -1);
 
-            if (TypeConstruction.TrainedHero != null)
+            if ((TypeConstruction.TrainedHero != null) && !(TypeConstruction is TypeEconomicConstruction))
             {
                 btnHireHero = new VCButton(this, imageConstruction.NextLeft(), btnBuyOrUpgrade.NextTop(), Program.formMain.imListObjectsCell, -1);
                 btnHireHero.Click += BtnHireHero_Click;
