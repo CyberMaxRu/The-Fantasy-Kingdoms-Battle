@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
+using System;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -74,16 +75,21 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void ApplyMinWidth()
+        internal void ApplyMinSize()
         {
             int minWidth = 0;
+            int minHeight = 0;
 
             foreach (VCTabButton b in btnTabs)
             {
                 if (b.ContextPage != null)
-                    minWidth = b.ContextPage.MaxSize().Width;
+                {
+                    minWidth = Math.Max(b.ContextPage.MaxSize().Width, minWidth);
+                    minHeight = Math.Max(b.ContextPage.MaxSize().Height, minHeight);
+                }
             }
 
+            Height = lblCaptionPage.NextTop() + minHeight;
             Width = minWidth;
         }
 

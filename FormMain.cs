@@ -508,9 +508,13 @@ namespace Fantasy_Kingdoms_Battle
 
                 // Панели информации. Их располагаем после страниц
                 panelHeroInfo = new PanelHeroInfo(MainControl, pageGuilds.ShiftX + maxWidthPages + Config.GridSize, btnQuit.NextTop());
+                panelHeroInfo.ApplyMaxSize();
                 panelBuildingInfo = new PanelBuildingInfo(MainControl, panelHeroInfo.ShiftX, panelHeroInfo.ShiftY);
+                panelBuildingInfo.ApplyMaxSize();
                 panelLairInfo = new PanelLairInfo(MainControl, panelHeroInfo.ShiftX, panelHeroInfo.ShiftY);
+                panelLairInfo.ApplyMaxSize();
                 panelMonsterInfo = new PanelMonsterInfo(MainControl, panelHeroInfo.ShiftX, panelHeroInfo.ShiftY);
+                panelMonsterInfo.ApplyMaxSize();
                 panelEmptyInfo = new VisualControl(MainControl, panelHeroInfo.ShiftX, panelHeroInfo.ShiftY)
                 {
                     Width = panelHeroInfo.Width,
@@ -529,9 +533,20 @@ namespace Fantasy_Kingdoms_Battle
 
                 bitmapMenu.ShiftX = panelHeroInfo.ShiftX + ((panelHeroInfo.Width - bitmapMenu.Width) / 2);
 
+                //
+                Debug.Assert(panelBuildingInfo.Height > 0);
+                Debug.Assert(panelLairInfo.Height > 0);
+                Debug.Assert(panelHeroInfo.Height > 0);
+                Debug.Assert(panelMonsterInfo.Height > 0);
+
+                int maxHeightPanelInfo = Math.Max(panelBuildingInfo.Height, panelLairInfo.Height);
+                maxHeightPanelInfo = Math.Max(panelHeroInfo.Height, maxHeightPanelInfo);
+                maxHeightPanelInfo = Math.Max(panelMonsterInfo.Height, maxHeightPanelInfo);
+                int maxHeightControls = Math.Max(maxHeightPages, maxHeightPanelInfo + Config.GridSize + bitmapMenu.Height);
+
                 // Все контролы созданы, устанавливаем размеры MainControl
                 MainControl.Width = panelEmptyInfo.ShiftX + panelEmptyInfo.Width;
-                MainControl.Height = pageGuilds.NextTop() + maxHeightPages;
+                MainControl.Height = pageGuilds.NextTop() + maxHeightControls;
 
                 sizeGamespace = new Size(Config.GridSize + MainControl.Width + Config.GridSize, panelPlayers.NextTop() + Config.GridSize + MainControl.NextTop() + Config.GridSize);
                 Width = Width - ClientSize.Width + sizeGamespace.Width;

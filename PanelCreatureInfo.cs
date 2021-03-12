@@ -61,9 +61,12 @@ namespace Fantasy_Kingdoms_Battle
 
             panelAbilitiesAndSecSkills.AddControl(panelAbilities);
             panelAbilitiesAndSecSkills.AddControl(panelSecondarySkills);
+            panelSecondarySkills.ShiftY = panelAbilities.NextTop();// Это для расчета минимальной высоты
+            panelAbilitiesAndSecSkills.ArrangeControl(panelSecondarySkills);
 
-            pageControl.ApplyMinWidth();
+            pageControl.ApplyMinSize();
             Width = pageControl.Width + FormMain.Config.GridSize * 2;
+            Height = pageControl.NextTop();
 
             lblKindHero.Width = Width;
 

@@ -22,7 +22,7 @@ namespace Fantasy_Kingdoms_Battle
             pageControl.AddTab("Существа", FormMain.GUI_HOME, panelInhabitants);
             pageControl.AddTab("История", FormMain.GUI_BOOK, null);
 
-            pageControl.ApplyMinWidth();
+            pageControl.ApplyMinSize();
             Width = pageControl.Width + FormMain.Config.GridSize * 2;
         }
 
