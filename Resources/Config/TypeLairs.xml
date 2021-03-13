@@ -365,10 +365,10 @@
     </Levels>
   </TypeLair>
   <TypeLair>
-    <ID>RatKing</ID>
-    <Name>Крысиный король</Name>
-    <Description>Описание крысиного короля.</Description>
-    <ImageIndex>17</ImageIndex>
+    <ID>KingsSewer</ID>
+    <Name>Королевская канализация</Name>
+    <Description>Сир, это не просто канализация! В таких обычно живут и передвигаются крысиные предводители, например Король Крыс Пятый.</Description>
+    <ImageIndex>117</ImageIndex>
     <Line>3</Line>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
