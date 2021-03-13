@@ -711,7 +711,7 @@ namespace Fantasy_Kingdoms_Battle
                 KeyDown += FormMain_KeyDown;
                 KeyPreview = true;
 
-                axWindowsMediaPlayer1.URL = dirResources + @"Video\Rebirth.ogg";
+                axWindowsMediaPlayer1.URL = dirResources + @"Video\Rebirth.avi";
                 axWindowsMediaPlayer1.uiMode = "none";
                 axWindowsMediaPlayer1.Location = new Point(0, 0);
                 axWindowsMediaPlayer1.enableContextMenu = false;
