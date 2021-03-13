@@ -42,7 +42,7 @@
   <TypeHero>
 	<ID>Advisor</ID>
 	<Name>Советник</Name>
-	<Description>Ваш личный советник, сэр.</Description>
+	<Description>Ваш личный советник, Сир.</Description>
 	<ImageIndex>137</ImageIndex>
 	<KindCreature>Human</KindCreature>
 	<Reward>0</Reward>
