@@ -169,6 +169,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly Bitmap bmpEmptyEntity;
         internal readonly Bitmap bmpBackgroundEntity;
         internal readonly Bitmap bmpBorderBattlefield;
+        internal readonly BitmapBorder bbObject;
         internal readonly Bitmap bmpBorderBig;
         internal readonly Bitmap bmpMaskBig;
         internal readonly Bitmap bmpMaskSmall;
@@ -364,6 +365,8 @@ namespace Fantasy_Kingdoms_Battle
                 bmpBackgroundEntity = new Bitmap(dirResources + "Icons\\BackgroundEntity.png");
                 bmpBorderBattlefield = new Bitmap(dirResources + "Icons\\BorderBattlefield.png");
                 LengthSideBorderBattlefield = bmpBorderBattlefield.Width - (Config.WidthBorderBattlefield * 2);
+//                bbObject = new BitmapBorder(dirResources + "Icons\\BorderBattlefield.png", 14, 14, 14, 14, 60, 14, 14, 60, 14, 14);
+                bbObject = new BitmapBorder(dirResources + "Icons\\BorderObject.png", 10, 10, 9, 12, 25, 2, 5, 24, 3, 3);
                 Debug.Assert(LengthSideBorderBattlefield > 0);
 
                 // Делаем рамки для союзников и врагов
