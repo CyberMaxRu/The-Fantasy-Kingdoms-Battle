@@ -22,12 +22,13 @@ namespace Fantasy_Kingdoms_Battle
             Name = l.Name;
             ImageIndexAvatar = l.ImageIndex;
             TypePlayer = TypePlayer.Lair;
-            Hidden = true;
+            Hidden = true;// Изначально логово скрыто
 
             // Убрать эту проверку после настройки всех логов
             if (TypeLair.LevelLairs.Count > 0)
                 CreateMonsters();
         }
+
         internal Player Player { get; }
         internal TypeLair TypeLair { get; }
         internal int Level { get; private set; }// Текущий уровень логова
