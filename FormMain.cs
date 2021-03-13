@@ -1501,6 +1501,8 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override void OnPaint(PaintEventArgs e)
         {
+            Debug.Assert(ClientSize.Equals(bmpFrame.Size));
+
             base.OnPaint(e);
 
             e.Graphics.DrawImage(bmpFrame, e.ClipRectangle, e.ClipRectangle, GraphicsUnit.Pixel);
