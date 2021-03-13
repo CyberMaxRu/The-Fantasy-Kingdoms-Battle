@@ -13,6 +13,7 @@ namespace Fantasy_Kingdoms_Battle
         private int width;
         private int height;
 
+        private Bitmap bmpBorder;
         private readonly Pen penBorder = new Pen(FormMain.Config.CommonBorder);
         private Rectangle rectBorder;
 
@@ -64,7 +65,11 @@ namespace Fantasy_Kingdoms_Battle
 
             // Рисуем бордюр
             if (ShowBorder)
-                g.DrawRectangle(penBorder, rectBorder);
+            {
+                PrepareBorder();
+                g.DrawImageUnscaled(bmpBorder, Left, Top);
+            }
+            //g.DrawRectangle(penBorder, rectBorder);
 
             // Рисуем контролы
             foreach (VisualControl vc in Controls)
@@ -77,6 +82,26 @@ namespace Fantasy_Kingdoms_Battle
         internal virtual void DoClick()
         {
             Click?.Invoke(this, new EventArgs());
+        }
+
+        private void PrepareBorder()
+        {
+            if (ShowBorder)
+            {
+                if ((bmpBorder == null) || (bmpBorder.Size.Width != Width) || (bmpBorder.Size.Height != Height))
+                {
+                    bmpBorder?.Dispose();
+                    bmpBorder = Program.formMain.bbObject.DrawBorder(Width, Height);
+                }
+            }
+            else
+            {
+                if (bmpBorder != null)
+                {
+                    bmpBorder?.Dispose();
+                    bmpBorder = null;
+                }
+            }
         }
 
         protected virtual void ValidateRectangle()
