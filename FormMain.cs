@@ -76,7 +76,6 @@ namespace Fantasy_Kingdoms_Battle
 
         private readonly VCBitmap bitmapMenu;
 
-        private bool allowResize = false;
         private VCCell selectedPanelEntity;
 
         // Главные страницы игры
@@ -601,9 +600,6 @@ namespace Fantasy_Kingdoms_Battle
 
                 //
                 Location = new Point((Screen.PrimaryScreen.WorkingArea.Width - Width) / 2, (Screen.PrimaryScreen.WorkingArea.Height - Height) / 2);
-                ApplyFullScreen(true);
-
-                allowResize = true;
 
                 // 
                 void SetStage(string text)
@@ -636,7 +632,8 @@ namespace Fantasy_Kingdoms_Battle
 
             // При старте игры в полноэкранном режиме, если курсор находится на пустом пространстве, окно игры состоит из белого фона
             // Показ кадра при старте отрисовывает окно
-            ShowFrame(true);
+            ValidateFrame();
+            //ShowFrame(true);
         }
 
         private void PageHeroes_ShowHint(object sender, EventArgs e)
@@ -724,44 +721,54 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
                 axWindowsMediaPlayer1.Dispose();
+
+            ApplyFullScreen(true);
+        }
+
+        private void ApplyFullScreenModeToWindow()
+        {
+            if (Settings.FullScreenMode)
+            {
+                MaximizeBox = true;
+                FormBorderStyle = FormBorderStyle.None;
+                WindowState = FormWindowState.Maximized;
+            }
+            else
+            {
+                MaximizeBox = false;
+                FormBorderStyle = FormBorderStyle.FixedSingle;
+                WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void ValidateFrame()
+        {
+            if (axWindowsMediaPlayer1 != null)
+                axWindowsMediaPlayer1.Size = ClientSize;
+
+            if ((bmpFrame == null) || !ClientSize.Equals(bmpFrame.Size))
+                ArrangeControls();
+
+            ShowFrame(true);
         }
 
         internal void ApplyFullScreen(bool force)
         {
             if (force || (MaximizeBox != Settings.FullScreenMode))
             {
-                if (Settings.FullScreenMode)
-                {
-                    MaximizeBox = true;
-                    FormBorderStyle = FormBorderStyle.None;
-                    WindowState = FormWindowState.Maximized;
-                }
-                else
-                {
-                    MaximizeBox = false;
-                    FormBorderStyle = FormBorderStyle.FixedSingle;
-                    WindowState = FormWindowState.Normal;
-                }
+                //Hide();
+                ApplyFullScreenModeToWindow();
+
 
                 //panelPlayers.Visible = false;
                 //MainControl.Visible = false;
                 //ShowFrame();
                 //panelPlayers.Visible = true;
                 //MainControl.Visible = true;
-                ShowFrame(true);
                 //Application.DoEvents();
+                ValidateFrame();
+                //Show();
             }
-        }
-
-        protected override void OnResize(EventArgs e)
-        {
-            base.OnResize(e);
-
-            if (allowResize)
-                ArrangeControls();
-
-            if (axWindowsMediaPlayer1 != null)
-                axWindowsMediaPlayer1.Size = ClientSize;
         }
 
         private void PrepareBackground()
@@ -900,8 +907,6 @@ namespace Fantasy_Kingdoms_Battle
         private void FormMain_KeyDown(object sender, KeyEventArgs e)
         {
             axWindowsMediaPlayer1.Ctlcontrols.stop();
-            KeyDown -= FormMain_KeyDown;
-            KeyPreview = false;
         }
 
         private void AxWindowsMediaPlayer1_MouseDownEvent(object sender, AxWMPLib._WMPOCXEvents_MouseDownEvent e)
@@ -914,6 +919,7 @@ namespace Fantasy_Kingdoms_Battle
             if (e.newState != (int)WMPLib.WMPPlayState.wmppsPlaying)
             {
                 axWindowsMediaPlayer1.Parent = null;
+                axWindowsMediaPlayer1.close();
                 axWindowsMediaPlayer1 = null;
                 KeyDown -= FormMain_KeyDown;
                 KeyPreview = false;
