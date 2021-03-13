@@ -1508,7 +1508,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void ShowFrame(bool force)
         {
-            if (force || needRedrawFrame)
+            if ((force || needRedrawFrame) && (WindowState != FormWindowState.Minimized))
             {
                 needRedrawFrame = false;
 
