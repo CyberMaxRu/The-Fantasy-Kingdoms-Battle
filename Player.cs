@@ -527,6 +527,11 @@ namespace Fantasy_Kingdoms_Battle
                     + (IsLive ? "" : Environment.NewLine + "Игрок покинул лобби на " + DayOfDie + " ходу"));
         }
 
+        internal void SetTaskForHeroes()
+        {
+
+        }
+
         // Реализация интерфейса
         VCCell ICell.Panel { get; set; }
         BitmapList ICell.BitmapList() => Program.formMain.imListObjectsCell;
