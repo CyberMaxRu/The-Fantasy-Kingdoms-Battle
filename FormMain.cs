@@ -578,7 +578,7 @@ namespace Fantasy_Kingdoms_Battle
                 panelPlayers.ShiftX = (TopControl.Width - panelPlayers.Width) / 2;
 
 
-                sizeGamespace = new Size(MainControl.Width, TopControl.NextTop() + MainControl.NextTop());
+                sizeGamespace = new Size(MainControl.Width, TopControl.Height + MainControl.NextTop());
                 Width = Width - ClientSize.Width + sizeGamespace.Width;
                 Height = Height - ClientSize.Height + sizeGamespace.Height;
 
@@ -926,7 +926,7 @@ namespace Fantasy_Kingdoms_Battle
 
             AdjustPanelLairsWithFlags();
 
-            rectBorderAroungGamespace = new Rectangle(shiftControls.X - Config.GridSize - 1, shiftControls.Y - Config.GridSize - 1, sizeGamespace.Width + 2, sizeGamespace.Height + 2);
+            rectBorderAroungGamespace = new Rectangle(shiftControls.X - 1, shiftControls.Y - 1, sizeGamespace.Width + 2, sizeGamespace.Height + 2);
         }
 
         private void FormMain_KeyDown(object sender, KeyEventArgs e)
