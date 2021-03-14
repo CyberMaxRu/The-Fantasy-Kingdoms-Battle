@@ -43,6 +43,21 @@ namespace Fantasy_Kingdoms_Battle
             e.Graphics.DrawImage(bmpBackground, e.ClipRectangle, e.ClipRectangle, GraphicsUnit.Pixel);
         }
 
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            base.OnClosing(e);
+
+            if (DialogResult == DialogResult.OK)
+            {
+                if (txtbNamePlayer.Text.Length == 0)
+                {
+                    e.Cancel = true;
+                    txtbNamePlayer.Focus();
+                    MessageBox.Show("Заполните имя игрока.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
