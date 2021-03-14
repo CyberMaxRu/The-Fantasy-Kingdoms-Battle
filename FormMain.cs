@@ -577,6 +577,7 @@ namespace Fantasy_Kingdoms_Battle
                 bmpPreparedToolbar.Bitmap = PrepareToolbar();
                 panelPlayers.ShiftX = (TopControl.Width - panelPlayers.Width) / 2;
 
+
                 sizeGamespace = new Size(MainControl.Width, TopControl.NextTop() + MainControl.NextTop());
                 Width = Width - ClientSize.Width + sizeGamespace.Width;
                 Height = Height - ClientSize.Height + sizeGamespace.Height;
@@ -1565,6 +1566,9 @@ namespace Fantasy_Kingdoms_Battle
                 }
 
                 Invalidate();// Рисуем кадр
+                // Обрабатываем события, иначе при, например, при быстрых кликах на кнопке покупке героев
+                // отрисовка происходит по пять новых героев за раз
+                Application.DoEvents();
 
                 if (debugMode)
                 {
