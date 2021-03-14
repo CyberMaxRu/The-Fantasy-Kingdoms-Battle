@@ -15,13 +15,14 @@ namespace Fantasy_Kingdoms_Battle
         private List<VCCell> listCells = new List<VCCell>();
         private int rows;// Сколько сейчас строк подготовлено
 
-        public PanelWithPanelEntity(int entityInRow, bool fixedMode = true, int distanceBetweenCells = 2) : base()
+        public PanelWithPanelEntity(int entityInRow, bool fixedMode = true, int distanceBetweenCells = 2, int distanceBetweenRows = 2) : base()
         {
             Debug.Assert(entityInRow > 1);
 
             FixedMode = fixedMode;
             EntityInRow = entityInRow;
             DistanceBetweenCells = distanceBetweenCells;
+            DistanceBetweenRows = distanceBetweenRows;
 
             ValidateRows(FixedMode ? FormMain.Config.MinRowsEntities : 1);
 
@@ -32,6 +33,7 @@ namespace Fantasy_Kingdoms_Battle
         private int EntityInRow { get; }
         internal bool FixedMode { get; }
         internal int DistanceBetweenCells { get; }
+        internal int DistanceBetweenRows { get; }
 
         internal void ApplyList<T>(List<T> list) where T: ICell
         {
@@ -87,7 +89,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 pe = new VCCell(this, 0, 0);
                 pe.ShiftX = x * (pe.Width + DistanceBetweenCells);
-                pe.ShiftY = rows * (pe.Height + DistanceBetweenCells);
+                pe.ShiftY = rows * (pe.Height + DistanceBetweenRows);
                 pe.Visible = FixedMode;
                 pe.DrawState = !FixedMode;
                 ArrangeControl(pe);

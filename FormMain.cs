@@ -467,7 +467,7 @@ namespace Fantasy_Kingdoms_Battle
                 vcDebugInfo.ApplyMaxSize();
 
                 // Панель со всеми героями
-                panelCombatHeroes = new PanelWithPanelEntity(3, false, 8);
+                panelCombatHeroes = new PanelWithPanelEntity(3, false, 8, 4);
                 panelCombatHeroes.ShiftY = btnQuit.NextTop();
                 MainControl.AddControl(panelCombatHeroes);
 
