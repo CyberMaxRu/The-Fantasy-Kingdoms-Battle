@@ -20,6 +20,8 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly string dirCurrent;
         internal readonly string dirResources;
 
+        internal bool gameStarted = false;
+
         // Проигрывание звуков и музыки 
         SoundPlayer spSoundSelect = new SoundPlayer();
 
@@ -750,6 +752,7 @@ namespace Fantasy_Kingdoms_Battle
                 axWindowsMediaPlayer1.Dispose();
 
             ApplyFullScreen(true);
+            gameStarted = true;
         }
 
         private void ApplyFullScreenModeToWindow()
@@ -1050,7 +1053,6 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             ShowFrame(true);
-            Application.DoEvents();
         }
 
         internal void ShowDataPlayer()
@@ -1568,7 +1570,8 @@ namespace Fantasy_Kingdoms_Battle
                 Invalidate();// Рисуем кадр
                 // Обрабатываем события, иначе при, например, при быстрых кликах на кнопке покупке героев
                 // отрисовка происходит по пять новых героев за раз
-                Application.DoEvents();
+                if (gameStarted)
+                    Application.DoEvents();
 
                 if (debugMode)
                 {
