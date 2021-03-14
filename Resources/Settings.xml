@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Settings>
   <Game>
-    <ShowSplashVideo>True</ShowSplashVideo>
+    <ShowSplashVideo>False</ShowSplashVideo>
     <FullScreenMode>False</FullScreenMode>
     <CheckUpdatesOnStartup>False</CheckUpdatesOnStartup>
   </Game>
