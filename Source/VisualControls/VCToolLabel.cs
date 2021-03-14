@@ -18,7 +18,7 @@ namespace Fantasy_Kingdoms_Battle
             Width = 80;
             TopMargin = 3;
 
-            ShiftImage = new Point(5, 4);
+            ShiftImage = new Point(6, 4);
         }
 
         protected override void ValidateRectangle()

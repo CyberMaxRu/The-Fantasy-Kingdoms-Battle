@@ -424,7 +424,7 @@ namespace Fantasy_Kingdoms_Battle
                 bmpPreparedToolbar = new VCBitmap(MainControl, 0, 0, null);
 
                 // Метки с информацией о Королевстве
-                labelDay = new VCToolLabel(MainControl, 0, 7, "", GUI_16_DAY);
+                labelDay = new VCToolLabel(MainControl, Config.GridSize, 7, "", GUI_16_DAY);
                 labelDay.Click += LabelDay_Click;
                 labelDay.ShowHint += LabelDay_ShowHint;
                 labelDay.Width = 64;
@@ -900,7 +900,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void ArrangeControls()
         {
-            shiftControls = new Point(0, 0);
+            shiftControls = new Point(0, Config.GridSize);
 
             if (Settings.FullScreenMode)
             {
@@ -1865,7 +1865,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private Bitmap PrepareToolbar()
         {
-            Bitmap bmp = new Bitmap(MainControl.Width + Config.GridSize * 2, bmpToolbar.Height);
+            Bitmap bmp = new Bitmap(MainControl.Width - Config.GridSize, bmpToolbar.Height);
 
             Graphics g = Graphics.FromImage(bmp);
 
