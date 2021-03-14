@@ -6,7 +6,6 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class VCFormPage : VCButton
     {
-        private VCLabel lblCaption;
         private List<VCFormPage> listPages;
         private int indexInList;
 
@@ -23,17 +22,11 @@ namespace Fantasy_Kingdoms_Battle
             indexInList = listPages.Count;
             listPages.Add(this);
 
-
-            lblCaption = new VCLabel(Page, 0, 0, FormMain.Config.FontCaptionPage, FormMain.Config.CommonCaptionPage, FormMain.Config.GridSize * 3, caption);
-            //lblCaption.StringFormat.LineAlignment = StringAlignment.Center;
-
-            TopForControls = FormMain.Config.GridSize * 3;
             ArrangeControls();
         }
 
         internal VisualControl Page { get; }
         internal string Caption { get; }
-        internal int TopForControls { get; }
 
         internal override VisualControl GetControl(int x, int y)
         {
@@ -62,8 +55,6 @@ namespace Fantasy_Kingdoms_Battle
             Page.ShiftX = listPages[0].ShiftX - listPages[indexInList].ShiftX;
             Page.ShiftY = Height + FormMain.Config.GridSize;
             ArrangeControl(Page, false);
-
-            lblCaption.Width = Page.Width;
         }
 
         internal override bool PrepareHint()

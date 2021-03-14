@@ -86,6 +86,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCFormPage pageHeroes;
         private readonly VCFormPage pageLairs;
         private readonly VCFormPage pageTournament;
+        private readonly VCLabel labelCaptionPage;
 
         private PanelWithPanelEntity panelWarehouse;
         private PanelWithPanelEntity panelHeroes;
@@ -477,6 +478,11 @@ namespace Fantasy_Kingdoms_Battle
                 pageTournament.ShowHint += PageTournament_ShowHint;
                 pageTournament.Visible = false;
 
+                labelCaptionPage = new VCLabel(MainControl, 0, 0, Config.FontCaptionPage, Config.CommonCaptionPage, pageGuilds.Height, "");
+                labelCaptionPage.Width = 240;
+                labelCaptionPage.StringFormat.Alignment = StringAlignment.Near;
+                labelCaptionPage.StringFormat.LineAlignment = StringAlignment.Center;
+
                 DrawPageConstructions();
                 DrawHeroes();
                 DrawWarehouse();
@@ -507,6 +513,9 @@ namespace Fantasy_Kingdoms_Battle
 
                     leftForNextButtonPage = fp.NextLeft();
                 }
+
+                labelCaptionPage.ShiftX = leftForNextButtonPage + Config.GridSize * 3;
+                labelCaptionPage.ShiftY = btnQuit.ShiftY;
 
                 // Панели информации. Их располагаем после страниц
                 panelHeroInfo = new PanelHeroInfo(MainControl, pageGuilds.ShiftX + maxWidthPages + Config.GridSize, btnQuit.NextTop());
@@ -1103,7 +1112,7 @@ namespace Fantasy_Kingdoms_Battle
 
             void DrawPage(VCFormPage panel, List<TypeConstruction> list)
             {
-                int top = panel.TopForControls;
+                int top = 0;
                 int left;
                 int height = 0;
 
@@ -1129,7 +1138,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void DrawPageLair()
         {
-            int top = pageLairs.TopForControls;
+            int top = 0;
             int left;
             int height = 0;
 
@@ -1156,7 +1165,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             panelHeroes = new PanelWithPanelEntity(Config.HeroRows);
             pageHeroes.Page.AddControl(panelHeroes);
-            panelHeroes.ShiftY = pageHeroes.TopForControls;
+            panelHeroes.ShiftY = 0;
 
             List<ICell> list = new List<ICell>();
             for (int x = 0; x < Config.HeroRows * Config.HeroInRow; x++)
@@ -1202,6 +1211,7 @@ namespace Fantasy_Kingdoms_Battle
                     currentPage.Page.Visible = false;
                 currentPage = pc;
                 currentPage.Page.Visible = true;
+                labelCaptionPage.Text = currentPage.Caption;
 
                 SetNeedRedrawFrame();
             }
