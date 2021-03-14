@@ -68,7 +68,7 @@ namespace Fantasy_Kingdoms_Battle
             Width = pageControl.Width + FormMain.Config.GridSize * 2;
             Height = pageControl.NextTop();
 
-            lblKindHero.Width = Width;
+            lblKindHero.Width = Width - lblKindHero.ShiftX - FormMain.Config.GridSize;
 
             return;
             /*lblLevel = GuiUtils.CreateLabel(this, Config.GRID_SIZE, TopForControls());
