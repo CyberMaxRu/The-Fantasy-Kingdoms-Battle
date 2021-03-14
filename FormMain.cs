@@ -450,14 +450,14 @@ namespace Fantasy_Kingdoms_Battle
                 bmpPreparedToolbar = new VCBitmap(MainControl, 0, 0, null);
 
                 // Метки с информацией о Королевстве
-                labelDay = new VCToolLabel(MainControl, Config.GridSize, 6, "", GUI_16_DAY);
+                labelDay = new VCToolLabel(bmpPreparedToolbar, Config.GridSize, 6, "", GUI_16_DAY);
                 labelDay.Click += LabelDay_Click;
                 labelDay.ShowHint += LabelDay_ShowHint;
                 labelDay.Width = 64;
-                labelGreatness = new VCToolLabel(MainControl, labelDay.NextLeft(), labelDay.ShiftY, "", GUI_16_GREATNESS);
+                labelGreatness = new VCToolLabel(bmpPreparedToolbar, labelDay.NextLeft(), labelDay.ShiftY, "", GUI_16_GREATNESS);
                 labelGreatness.ShowHint += LabelGreatness_ShowHint;
                 labelGreatness.Width = 112;
-                labelGold = new VCToolLabel(MainControl, labelGreatness.NextLeft(), labelDay.ShiftY, "", GUI_16_GOLD);
+                labelGold = new VCToolLabel(bmpPreparedToolbar, labelGreatness.NextLeft(), labelDay.ShiftY, "", GUI_16_GOLD);
                 labelGold.ShowHint += LabelGold_ShowHint;
                 labelGold.Width = 168;
 

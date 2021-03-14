@@ -38,6 +38,5 @@ namespace Fantasy_Kingdoms_Battle
 
             base.Draw(g);
         }
-
     }
 }
