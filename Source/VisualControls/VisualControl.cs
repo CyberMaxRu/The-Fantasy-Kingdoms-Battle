@@ -67,7 +67,7 @@ namespace Fantasy_Kingdoms_Battle
             if (ShowBorder)
             {
                 PrepareBorder();
-                g.DrawImageUnscaled(bmpBorder, Left, Top);
+                g.DrawImageUnscaled(bmpBorder, Left - 2, Top);
             }
             //g.DrawRectangle(penBorder, rectBorder);
 
@@ -88,10 +88,10 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (ShowBorder)
             {
-                if ((bmpBorder == null) || (bmpBorder.Size.Width != Width) || (bmpBorder.Size.Height != Height))
+                if ((bmpBorder == null) || (bmpBorder.Size.Width != Width + 4) || (bmpBorder.Size.Height != Height + 3))
                 {
                     bmpBorder?.Dispose();
-                    bmpBorder = Program.formMain.bbObject.DrawBorder(Width, Height);
+                    bmpBorder = Program.formMain.bbObject.DrawBorder(Width + 4, Height + 3);
                 }
             }
             else
