@@ -171,9 +171,13 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly Bitmap bmpBackgroundEntity;
         internal readonly Bitmap bmpBorderBattlefield;
         internal readonly BitmapBorder bbObject;
+        internal readonly BitmapBorder bbToolBarLabel;
         internal readonly Bitmap bmpBorderBig;
         internal readonly Bitmap bmpMaskBig;
         internal readonly Bitmap bmpMaskSmall;
+        internal readonly Bitmap bmpToolbar;
+        internal readonly Bitmap bmpToolbarBorder;
+        private VCBitmap bmpPreparedToolbar;
         internal readonly M2Font fontCost;
         internal readonly M2Font fontLevel;
         internal int LengthSideBorderBattlefield { get; private set; }
@@ -202,8 +206,6 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
         private Rectangle rectBorderAroungGamespace;
-        private Point point1LineAfterPanelPlayers;
-        private Point point2LineAfterPanelPlayers;
 
         internal VCMenuCell[,] CellsMenu { get; }
 
@@ -366,9 +368,11 @@ namespace Fantasy_Kingdoms_Battle
                 bmpBackgroundEntity = new Bitmap(dirResources + "Icons\\BackgroundEntity.png");
                 bmpBorderBattlefield = new Bitmap(dirResources + "Icons\\BorderBattlefield.png");
                 LengthSideBorderBattlefield = bmpBorderBattlefield.Width - (Config.WidthBorderBattlefield * 2);
-//                bbObject = new BitmapBorder(dirResources + "Icons\\BorderBattlefield.png", 14, 14, 14, 14, 60, 14, 14, 60, 14, 14);
-                bbObject = new BitmapBorder(dirResources + "Icons\\BorderObject.png", 10, 10, 9, 12, 25, 2, 5, 24, 3, 3);
+                bbObject = new BitmapBorder(dirResources + "Icons\\BorderObject.png", false, 10, 10, 9, 12, 25, 2, 5, 24, 3, 3);
+                bbToolBarLabel = new BitmapBorder(dirResources + @"Icons\ToolbarLabel.png", true, 10, 10, 9, 10, 25, 9, 12, 25, 10, 10);
                 Debug.Assert(LengthSideBorderBattlefield > 0);
+                bmpToolbar = new Bitmap(dirResources + @"Icons\Toolbar.png");
+                bmpToolbarBorder = new Bitmap(dirResources + @"Icons\ToolbarBorder.png");
 
                 // Делаем рамки для союзников и врагов
                 bmpBorderForIconAlly = new Bitmap(bmpBorderForIcon);
@@ -416,17 +420,20 @@ namespace Fantasy_Kingdoms_Battle
                 //
                 MainControl = new VisualControl();
 
+                // Тулбар
+                bmpPreparedToolbar = new VCBitmap(MainControl, 0, 0, null);
+
                 // Метки с информацией о Королевстве
-                labelDay = new VCToolLabel(MainControl, 0, 0, "", GUI_16_DAY);
+                labelDay = new VCToolLabel(MainControl, 0, 7, "", GUI_16_DAY);
                 labelDay.Click += LabelDay_Click;
                 labelDay.ShowHint += LabelDay_ShowHint;
-                labelDay.Width = 48;
-                labelGreatness = new VCToolLabel(MainControl, labelDay.NextLeft(), 0, "", GUI_16_GREATNESS);
+                labelDay.Width = 64;
+                labelGreatness = new VCToolLabel(MainControl, labelDay.NextLeft(), labelDay.ShiftY, "", GUI_16_GREATNESS);
                 labelGreatness.ShowHint += LabelGreatness_ShowHint;
-                labelGreatness.Width = 104;
-                labelGold = new VCToolLabel(MainControl, labelGreatness.NextLeft(), 0, "", GUI_16_GOLD);
+                labelGreatness.Width = 112;
+                labelGold = new VCToolLabel(MainControl, labelGreatness.NextLeft(), labelDay.ShiftY, "", GUI_16_GOLD);
                 labelGold.ShowHint += LabelGold_ShowHint;
-                labelGold.Width = 160;
+                labelGold.Width = 168;
 
                 // Кнопки в правом верхнем углу
                 btnPreferences = CreateButton(ilGui, GUI_INVENTORY, 0, labelDay.NextTop(), BtnPreferences_Click, BtnPreferences_MouseHover);
@@ -556,10 +563,13 @@ namespace Fantasy_Kingdoms_Battle
                 int maxHeightControls = Math.Max(maxHeightPages, maxHeightPanelInfo + Config.GridSize + bitmapMenu.Height);
 
                 // Все контролы созданы, устанавливаем размеры MainControl
-                MainControl.Width = panelEmptyInfo.ShiftX + panelEmptyInfo.Width;
-                MainControl.Height = pageGuilds.NextTop() + maxHeightControls;
+                MainControl.Width = Config.GridSize + panelEmptyInfo.ShiftX + panelEmptyInfo.Width + Config.GridSize;
+                MainControl.Height = pageGuilds.NextTop() + maxHeightControls + Config.GridSize;
 
-                sizeGamespace = new Size(Config.GridSize + MainControl.Width + Config.GridSize, panelPlayers.NextTop() + Config.GridSize + MainControl.NextTop() + Config.GridSize);
+                // Теперь когда известна ширина окна, можно создавать картинку тулбара
+                bmpPreparedToolbar.Bitmap = PrepareToolbar();
+
+                sizeGamespace = new Size(MainControl.Width, panelPlayers.NextTop() + MainControl.NextTop());
                 Width = Width - ClientSize.Width + sizeGamespace.Width;
                 Height = Height - ClientSize.Height + sizeGamespace.Height;
 
@@ -890,7 +900,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void ArrangeControls()
         {
-            shiftControls = new Point(Config.GridSize, Config.GridSize);
+            shiftControls = new Point(0, 0);
 
             if (Settings.FullScreenMode)
             {
@@ -906,13 +916,11 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             panelPlayers.SetPos((ClientSize.Width - panelPlayers.Width) / 2, shiftControls.Y);
-            MainControl.SetPos(shiftControls.X, panelPlayers.Top + panelPlayers.Height + Config.GridSize + Config.GridSize);
+            MainControl.SetPos(shiftControls.X, panelPlayers.Top + panelPlayers.Height + Config.GridSize);
             MainControl.ArrangeControls();
 
             AdjustPanelLairsWithFlags();
 
-            point1LineAfterPanelPlayers = new Point(MainControl.Left, panelPlayers.Top + panelPlayers.Height + Config.GridSize);
-            point2LineAfterPanelPlayers = new Point(MainControl.Left + MainControl.Width, panelPlayers.Top + panelPlayers.Height + Config.GridSize);
             rectBorderAroungGamespace = new Rectangle(shiftControls.X - Config.GridSize - 1, shiftControls.Y - Config.GridSize - 1, sizeGamespace.Width + 2, sizeGamespace.Height + 2);
         }
 
@@ -1604,8 +1612,6 @@ namespace Fantasy_Kingdoms_Battle
             //
             if (panelPlayers.Visible)
             {
-                gfxFrame.DrawLine(Config.GetPenBorder(false), point1LineAfterPanelPlayers, point2LineAfterPanelPlayers);
-
                 if (Settings.FullScreenMode)
                     gfxFrame.DrawRectangle(Config.GetPenBorder(false), rectBorderAroungGamespace);
             }
@@ -1855,6 +1861,33 @@ namespace Fantasy_Kingdoms_Battle
             spSoundSelect.SoundLocation = dirResources + @"Sound\Interface\ConstructionSelect\" + filename;
             spSoundSelect.Load();
             spSoundSelect.Play();
+        }
+
+        private Bitmap PrepareToolbar()
+        {
+            Bitmap bmp = new Bitmap(MainControl.Width + Config.GridSize * 2, bmpToolbar.Height);
+
+            Graphics g = Graphics.FromImage(bmp);
+
+            DrawBitmap(0, bmpToolbar);
+            DrawBitmap(0, bmpToolbarBorder);
+            DrawBitmap(bmp.Height - bmpToolbarBorder.Height, bmpToolbarBorder);
+
+            g.Dispose();
+            return bmp;
+
+            void DrawBitmap(int top, Bitmap b)
+            {
+                int repeats = bmp.Width / b.Width;
+                int restBorder = bmp.Width - (b.Width * repeats);
+
+                for (int i = 0; i < repeats; i++)
+                {
+                    g.DrawImageUnscaled(b, i * b.Width, top);
+                }
+
+                g.DrawImageUnscaledAndClipped(b, new Rectangle(repeats * b.Width, top, restBorder, b.Height));
+            }
         }
     }
 }

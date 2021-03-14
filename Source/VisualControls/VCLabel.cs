@@ -45,11 +45,12 @@ namespace Fantasy_Kingdoms_Battle
         protected int LeftMargin { get; set; }
         protected int TopMargin { get; set; }
         internal StringFormat StringFormat { get; set; }
+        internal Point ShiftImage { get; set; } = new Point(0, 0);
 
         internal override void Draw(Graphics g)
         {
             if ((BitmapList != null) && (ImageIndex >= 0))
-                BitmapList.DrawImage(g, ImageIndex, ImageIsEnabled, ImageIsOver, Left, Top);
+                BitmapList.DrawImage(g, ImageIndex, ImageIsEnabled, ImageIsOver, Left + ShiftImage.X, Top + ShiftImage.Y);
 
             base.Draw(g);
 

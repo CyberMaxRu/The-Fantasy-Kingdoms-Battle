@@ -16,7 +16,7 @@ namespace Fantasy_Kingdoms_Battle
         private int widthBorder;
         private int heightBorder;
 
-        public BitmapBorder(string filename, int widthLeftCorner, int widthRightCorner, int heightTopCorner, int heightBottomCorner, 
+        public BitmapBorder(string filename, bool useCentre, int widthLeftCorner, int widthRightCorner, int heightTopCorner, int heightBottomCorner, 
             int widthHorizBand, int heightTopBand, int heightBottomBand, int heightVertBand, int widthLeftBand, int widthRightBand)
         {
             arraySides = new Bitmap[3, 3];
@@ -32,6 +32,8 @@ namespace Fantasy_Kingdoms_Battle
             arraySides[0, 1] = GetImage(widthLeftCorner, 0, widthHorizBand, heightTopBand);
             arraySides[0, 2] = GetImage(widthLeftCorner + widthHorizBand, 0, widthRightCorner, heightTopCorner);
             arraySides[1, 0] = GetImage(0, heightTopCorner, widthLeftBand, heightVertBand);
+            if (useCentre) 
+                arraySides[1, 1] = GetImage(widthLeftCorner, heightTopCorner, widthHorizBand, heightVertBand);
             arraySides[1, 2] = GetImage(bmpOrigin.Width - widthRightBand, heightTopCorner, widthRightBand, heightVertBand);
             arraySides[2, 0] = GetImage(0, heightTopCorner + heightVertBand, widthLeftCorner, heightBottomCorner);
             arraySides[2, 1] = GetImage(widthLeftCorner, bmpOrigin.Height - heightBottomBand, widthHorizBand, heightBottomBand);
@@ -56,8 +58,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal Bitmap DrawBorder(int width, int height)
         {
-            Debug.Assert(width >= widthBorder);
-            Debug.Assert(height >= heightBorder);
+            //Debug.Assert(width >= widthBorder);
+            //Debug.Assert(height >= heightBorder);
 
             Bitmap bmp = new Bitmap(width, height);
             Graphics g = Graphics.FromImage(bmp);
@@ -113,6 +115,15 @@ namespace Fantasy_Kingdoms_Battle
 
             // Правый бордюр
             g.DrawImageUnscaledAndClipped(arraySides[1, 2], new Rectangle(bmp.Width - arraySides[1, 2].Width, arraySides[0, 2].Height + (repeats * arraySides[1, 2].Height), arraySides[1, 2].Width, restBorder));
+
+
+            // Середина. Пока просто заполняем черным
+            if (arraySides[1, 1] != null)
+            {
+                Brush b = new SolidBrush(Color.Black);
+                g.FillRectangle(b, new Rectangle(arraySides[0, 0].Width, arraySides[0, 0].Height, bmp.Width - arraySides[0, 0].Width - arraySides[0, 2].Width, bmp.Height - arraySides[0, 0].Height - arraySides[2, 0].Height));
+                b.Dispose();
+            }
 
             g.Dispose();
             return bmp;
