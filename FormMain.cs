@@ -1648,7 +1648,7 @@ namespace Fantasy_Kingdoms_Battle
         private VisualControl ControlUnderMouse()
         {
             VisualControl curControl;
-            curControl = panelPlayers.GetControl(mousePos.X, mousePos.Y);
+            curControl = TopControl.GetControl(mousePos.X, mousePos.Y);
             if (curControl == null)
             {
                 curControl = MainControl.GetControl(mousePos.X, mousePos.Y);
