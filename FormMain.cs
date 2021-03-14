@@ -53,6 +53,7 @@ namespace Fantasy_Kingdoms_Battle
         private Graphics gfxFrame;// Graphics кадра, чтобы контролы работали сразу с ним
         internal Bitmap bmpBackground;// Фон кадра
 
+        private readonly VisualControl TopControl;
         private readonly VisualControl MainControl;
 
         private Point mousePos;
@@ -69,6 +70,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCButton btnPreferences;
         private readonly VCButton btnHelp;
         private readonly VCButton btnQuit;
+
         private readonly VCButton btnEndTurn;
 
         private readonly VisualControl panelLairWithFlags;
@@ -417,7 +419,31 @@ namespace Fantasy_Kingdoms_Battle
 
                 SetStage("Строим замок");
 
-                //
+                // Верхняя панель
+                TopControl = new VisualControl();
+
+                // Создаем панели игроков в верхней панели
+                panelPlayers = new VisualControl(TopControl, 0, Config.GridSize);
+
+                PanelPlayer pp;
+                int nextLeftPanelPlayer = 0;
+                foreach (Player p in lobby.Players)
+                {
+                    pp = new PanelPlayer(panelPlayers, nextLeftPanelPlayer, 0);
+                    // !!! Эту привязку переместить в StartNewLobby()
+                    pp.LinkToLobby(p);
+                    nextLeftPanelPlayer = pp.NextLeft();
+                }
+                panelPlayers.ApplyMaxSize();
+
+                // Кнопки в правом верхнем углу
+                btnPreferences = CreateButton(TopControl, ilGui, GUI_INVENTORY, 0, Config.GridSize, BtnPreferences_Click, BtnPreferences_MouseHover);
+                btnHelp = CreateButton(TopControl, ilGui, GUI_BOOK, 0, btnPreferences.ShiftY, BtnHelp_Click, BtnHelp_MouseHover);
+                btnQuit = CreateButton(TopControl, ilGui, GUI_EXIT, 0, btnPreferences.ShiftY, BtnQuit_Click, BtnQuit_MouseHover);
+
+                TopControl.ApplyMaxSize();
+
+                // Главное игровое поле
                 MainControl = new VisualControl();
 
                 // Тулбар
@@ -435,27 +461,8 @@ namespace Fantasy_Kingdoms_Battle
                 labelGold.ShowHint += LabelGold_ShowHint;
                 labelGold.Width = 168;
 
-                // Кнопки в правом верхнем углу
-                btnPreferences = CreateButton(ilGui, GUI_INVENTORY, 0, labelDay.ShiftY + bmpToolbar.Height + Config.GridSize, BtnPreferences_Click, BtnPreferences_MouseHover);
-                btnHelp = CreateButton(ilGui, GUI_BOOK, 0, btnPreferences.ShiftY, BtnHelp_Click, BtnHelp_MouseHover);
-                btnQuit = CreateButton(ilGui, GUI_EXIT, 0, btnPreferences.ShiftY, BtnQuit_Click, BtnQuit_MouseHover);
-
-                btnEndTurn = CreateButton(ilGui, GUI_HOURGLASS, 0, btnPreferences.ShiftY, BtnEndTurn_Click, BtnEndTurn_MouseHover);
+                btnEndTurn = CreateButton(MainControl, ilGui, GUI_HOURGLASS, 0, bmpToolbar.Height + Config.GridSize, BtnEndTurn_Click, BtnEndTurn_MouseHover);
                 panelLairWithFlags = new VisualControl(MainControl, 0, btnEndTurn.ShiftY);
-
-                // Создаем панели игроков в верхней части окна
-                panelPlayers = new VisualControl();
-
-                PanelPlayer pp;
-                int nextLeftPanelPlayer = 0;
-                foreach (Player p in lobby.Players)
-                {
-                    pp = new PanelPlayer(panelPlayers, nextLeftPanelPlayer, 0);
-                    // !!! Эту привязку переместить в StartNewLobby()
-                    pp.LinkToLobby(p);
-                    nextLeftPanelPlayer = pp.NextLeft();
-                }
-                panelPlayers.ApplyMaxSize();
 
                 // Отладочная информация
                 vcDebugInfo = new VisualControl();
@@ -472,20 +479,20 @@ namespace Fantasy_Kingdoms_Battle
                 MainControl.AddControl(panelCombatHeroes);
 
                 // Страницы игры
-                pageGuilds = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_GUILDS, "Гильдии", BtnPage_Click);
+                pageGuilds = new VCFormPage(MainControl, 0, btnEndTurn.ShiftY, pages, ilGui, GUI_GUILDS, "Гильдии", BtnPage_Click);
                 pageGuilds.ShowHint += PageGuilds_ShowHint;
-                pageBuildings = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_ECONOMY, "Экономические строения", BtnPage_Click);
+                pageBuildings = new VCFormPage(MainControl, 0, pageGuilds.ShiftY, pages, ilGui, GUI_ECONOMY, "Экономические строения", BtnPage_Click);
                 pageBuildings.ShowHint += PageBuildings_ShowHint;
-                pageTemples = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_TEMPLE, "Храмы", BtnPage_Click);
-                pageHeroes = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_HEROES, "Герои", BtnPage_Click);
+                pageTemples = new VCFormPage(MainControl, 0, pageGuilds.ShiftY, pages, ilGui, GUI_TEMPLE, "Храмы", BtnPage_Click);
+                pageHeroes = new VCFormPage(MainControl, 0, pageGuilds.ShiftY, pages, ilGui, GUI_HEROES, "Герои", BtnPage_Click);
                 pageHeroes.ShowCostZero = true;
                 pageHeroes.ShowHint += PageHeroes_ShowHint;
-                pageLairs = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_BATTLE, "Логова", BtnPage_Click);
-                pageTournament = new VCFormPage(MainControl, 0, 0, pages, ilGui, GUI_TOURNAMENT, "Турнир", BtnPage_Click);
+                pageLairs = new VCFormPage(MainControl, 0, pageGuilds.ShiftY, pages, ilGui, GUI_BATTLE, "Логова", BtnPage_Click);
+                pageTournament = new VCFormPage(MainControl, 0, pageGuilds.ShiftY, pages, ilGui, GUI_TOURNAMENT, "Турнир", BtnPage_Click);
                 pageTournament.ShowHint += PageTournament_ShowHint;
                 pageTournament.Visible = false;
 
-                labelCaptionPage = new VCLabel(MainControl, 0, 0, Config.FontCaptionPage, Config.CommonCaptionPage, pageGuilds.Height, "");
+                labelCaptionPage = new VCLabel(MainControl, 0, pageGuilds.ShiftY, Config.FontCaptionPage, Config.CommonCaptionPage, pageGuilds.Height, "");
                 labelCaptionPage.Width = 240;
                 labelCaptionPage.StringFormat.Alignment = StringAlignment.Near;
                 labelCaptionPage.StringFormat.LineAlignment = StringAlignment.Center;
@@ -515,14 +522,13 @@ namespace Fantasy_Kingdoms_Battle
                 foreach (VCFormPage fp in pages)
                 {
                     fp.ShiftX = leftForNextButtonPage;
-                    fp.ShiftY = btnQuit.ShiftY;
+                    //fp.ShiftY = btnEndTurn.ShiftY;
                     fp.Page.Width = maxWidthPages;
 
                     leftForNextButtonPage = fp.NextLeft();
                 }
 
                 labelCaptionPage.ShiftX = leftForNextButtonPage + Config.GridSize * 3;
-                labelCaptionPage.ShiftY = btnQuit.ShiftY;
 
                 // Панели информации. Их располагаем после страниц
                 panelHeroInfo = new PanelHeroInfo(MainControl, pageGuilds.ShiftX + maxWidthPages + Config.GridSize, btnQuit.NextTop());
@@ -565,11 +571,14 @@ namespace Fantasy_Kingdoms_Battle
                 // Все контролы созданы, устанавливаем размеры MainControl
                 MainControl.Width = Config.GridSize + panelEmptyInfo.ShiftX + panelEmptyInfo.Width + Config.GridSize;
                 MainControl.Height = pageGuilds.NextTop() + maxHeightControls + Config.GridSize;
+                TopControl.Width = MainControl.Width;
 
                 // Теперь когда известна ширина окна, можно создавать картинку тулбара
                 bmpPreparedToolbar.Bitmap = PrepareToolbar();
 
-                sizeGamespace = new Size(MainControl.Width, panelPlayers.NextTop() + MainControl.NextTop());
+                panelPlayers.ShiftX = (TopControl.Width - panelPlayers.Width) / 2;
+
+                sizeGamespace = new Size(MainControl.Width, TopControl.NextTop() + MainControl.NextTop());
                 Width = Width - ClientSize.Width + sizeGamespace.Width;
                 Height = Height - ClientSize.Height + sizeGamespace.Height;
 
@@ -580,7 +589,7 @@ namespace Fantasy_Kingdoms_Battle
                 panelMonsterInfo.Height = panelBuildingInfo.Height;
                 panelEmptyInfo.Height = panelBuildingInfo.Height;
 
-                btnQuit.ShiftX = MainControl.Width - btnQuit.Width;
+                btnQuit.ShiftX = MainControl.Width - btnQuit.Width - Config.GridSize;
                 btnHelp.PlaceBeforeControl(btnQuit);
                 btnPreferences.PlaceBeforeControl(btnHelp);
                 btnEndTurn.ShiftX = panelBuildingInfo.ShiftX - btnEndTurn.Width - Config.GridSize;
@@ -915,8 +924,8 @@ namespace Fantasy_Kingdoms_Battle
                 Size = new Size(Width - ClientSize.Width + sizeGamespace.Width, Height - ClientSize.Height + sizeGamespace.Height);
             }
 
-            panelPlayers.SetPos((ClientSize.Width - panelPlayers.Width) / 2, shiftControls.Y);
-            MainControl.SetPos(shiftControls.X, panelPlayers.Top + panelPlayers.Height + Config.GridSize);
+            TopControl.SetPos((ClientSize.Width - TopControl.Width) / 2, shiftControls.Y);
+            MainControl.SetPos(shiftControls.X, TopControl.Top + TopControl.Height + Config.GridSize);
             MainControl.ArrangeControls();
 
             AdjustPanelLairsWithFlags();
@@ -1586,8 +1595,8 @@ namespace Fantasy_Kingdoms_Battle
             // Рисуем контролы
             gfxFrame.CompositingMode = CompositingMode.SourceOver;
 
-            if (panelPlayers.Visible)
-                panelPlayers.Draw(gfxFrame);
+            if (TopControl.Visible)
+                TopControl.Draw(gfxFrame);
 
             if (MainControl.Visible)
             {
@@ -1610,7 +1619,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             //
-            if (panelPlayers.Visible)
+            if (TopControl.Visible)
             {
                 if (Settings.FullScreenMode)
                     gfxFrame.DrawRectangle(Config.GetPenBorder(false), rectBorderAroungGamespace);
@@ -1620,9 +1629,9 @@ namespace Fantasy_Kingdoms_Battle
             inDrawFrame = false;
         }
 
-        internal VCButton CreateButton(BitmapList bitmapList, int imageIndex, int left, int top, EventHandler click, EventHandler showHint)
+        internal VCButton CreateButton(VisualControl parent, BitmapList bitmapList, int imageIndex, int left, int top, EventHandler click, EventHandler showHint)
         {
-            VCButton b = new VCButton(MainControl, left, top, bitmapList, imageIndex);
+            VCButton b = new VCButton(parent, left, top, bitmapList, imageIndex);
             b.Click += click;
             b.ShowHint += showHint;
 
