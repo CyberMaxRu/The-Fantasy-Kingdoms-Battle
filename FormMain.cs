@@ -210,7 +210,6 @@ namespace Fantasy_Kingdoms_Battle
                     selectedPanelEntity.Selected = true;
             }
         }
-        private Rectangle rectBorderAroungGamespace;
 
         internal VCMenuCell[,] CellsMenu { get; }
 
@@ -921,7 +920,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void ArrangeControls()
         {
-            shiftControls = new Point(0, Config.GridSize);
+            shiftControls = new Point(0, 0);
 
             if (Settings.FullScreenMode)
             {
@@ -941,8 +940,6 @@ namespace Fantasy_Kingdoms_Battle
             MainControl.ArrangeControls();
 
             AdjustPanelLairsWithFlags();
-
-            rectBorderAroungGamespace = new Rectangle(shiftControls.X - 1, shiftControls.Y - 1, sizeGamespace.Width + 2, sizeGamespace.Height + 2);
         }
 
         private void FormMain_KeyDown(object sender, KeyEventArgs e)
@@ -1631,13 +1628,6 @@ namespace Fantasy_Kingdoms_Battle
                     if (vc.Visible)
                         vc.Draw(gfxFrame);
                 }
-            }
-
-            //
-            if (TopControl.Visible)
-            {
-                //if (Settings.FullScreenMode)
-//                    gfxFrame.DrawRectangle(Config.GetPenBorder(false), rectBorderAroungGamespace);
             }
 
             //
