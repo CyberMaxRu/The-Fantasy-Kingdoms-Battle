@@ -176,6 +176,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly Bitmap bmpBorderBattlefield;
         internal readonly BitmapBorder bbObject;
         internal readonly BitmapBorder bbToolBarLabel;
+        internal readonly BitmapBorder bbGamespace;
         internal readonly Bitmap bmpBorderBig;
         internal readonly Bitmap bmpMaskBig;
         internal readonly Bitmap bmpMaskSmall;
@@ -374,6 +375,7 @@ namespace Fantasy_Kingdoms_Battle
                 LengthSideBorderBattlefield = bmpBorderBattlefield.Width - (Config.WidthBorderBattlefield * 2);
                 bbObject = new BitmapBorder(dirResources + "Icons\\BorderObject.png", false, 10, 10, 9, 12, 25, 2, 5, 24, 3, 3);
                 bbToolBarLabel = new BitmapBorder(dirResources + @"Icons\ToolbarLabel.png", true, 10, 10, 9, 10, 25, 9, 12, 25, 10, 10);
+                bbGamespace = new BitmapBorder(dirResources + @"Icons\BorderMain2.png", false, 12, 12, 12, 12, 26, 7, 7, 26, 7, 7);
                 Debug.Assert(LengthSideBorderBattlefield > 0);
                 bmpToolbar = new Bitmap(dirResources + @"Icons\Toolbar.png");
                 bmpToolbarBorder = new Bitmap(dirResources + @"Icons\ToolbarBorder.png");
@@ -779,7 +781,8 @@ namespace Fantasy_Kingdoms_Battle
             if ((bmpFrame == null) || !ClientSize.Equals(bmpFrame.Size))
                 ArrangeControls();
 
-            ShowFrame(true);
+            if (gameStarted)
+                ShowFrame(true);
         }
 
         internal void ApplyFullScreen(bool force)
@@ -808,6 +811,16 @@ namespace Fantasy_Kingdoms_Battle
                 // Переформировываем картинку фона
                 bmpBackground?.Dispose();
                 bmpBackground = GuiUtils.MakeBackground(ClientSize);
+
+                if (Settings.FullScreenMode)
+                {
+                    Bitmap border = bbGamespace.DrawBorder(sizeGamespace.Width + 14, sizeGamespace.Height + 14);
+                    Graphics gbg = Graphics.FromImage(bmpBackground);
+                    gbg.DrawImageUnscaled(border, TopControl.Left - 7, TopControl.Top - 7);
+
+                    border.Dispose();
+                    gbg.Dispose();
+                }
 
                 // Переформировываем картинку кадра
                 if ((bmpFrame == null) || (bmpFrame.Width != ClientSize.Width) || (bmpFrame.Height != ClientSize.Height))
@@ -1623,8 +1636,8 @@ namespace Fantasy_Kingdoms_Battle
             //
             if (TopControl.Visible)
             {
-                if (Settings.FullScreenMode)
-                    gfxFrame.DrawRectangle(Config.GetPenBorder(false), rectBorderAroungGamespace);
+                //if (Settings.FullScreenMode)
+//                    gfxFrame.DrawRectangle(Config.GetPenBorder(false), rectBorderAroungGamespace);
             }
 
             //
