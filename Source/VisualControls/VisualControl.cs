@@ -184,6 +184,9 @@ namespace Fantasy_Kingdoms_Battle
             vc.Left = Left + vc.ShiftX;
             vc.Top = Top + vc.ShiftY;
 
+            Debug.Assert(Left >= 0);
+            Debug.Assert(Top >= 0);
+
             vc.ArrangeControls();
         }
 
