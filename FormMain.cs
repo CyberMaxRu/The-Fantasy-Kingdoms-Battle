@@ -424,7 +424,7 @@ namespace Fantasy_Kingdoms_Battle
                 bmpPreparedToolbar = new VCBitmap(MainControl, 0, 0, null);
 
                 // Метки с информацией о Королевстве
-                labelDay = new VCToolLabel(MainControl, Config.GridSize, 7, "", GUI_16_DAY);
+                labelDay = new VCToolLabel(MainControl, Config.GridSize, 6, "", GUI_16_DAY);
                 labelDay.Click += LabelDay_Click;
                 labelDay.ShowHint += LabelDay_ShowHint;
                 labelDay.Width = 64;
@@ -436,7 +436,7 @@ namespace Fantasy_Kingdoms_Battle
                 labelGold.Width = 168;
 
                 // Кнопки в правом верхнем углу
-                btnPreferences = CreateButton(ilGui, GUI_INVENTORY, 0, labelDay.NextTop(), BtnPreferences_Click, BtnPreferences_MouseHover);
+                btnPreferences = CreateButton(ilGui, GUI_INVENTORY, 0, labelDay.ShiftY + bmpToolbar.Height + Config.GridSize, BtnPreferences_Click, BtnPreferences_MouseHover);
                 btnHelp = CreateButton(ilGui, GUI_BOOK, 0, btnPreferences.ShiftY, BtnHelp_Click, BtnHelp_MouseHover);
                 btnQuit = CreateButton(ilGui, GUI_EXIT, 0, btnPreferences.ShiftY, BtnQuit_Click, BtnQuit_MouseHover);
 
@@ -1865,7 +1865,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private Bitmap PrepareToolbar()
         {
-            Bitmap bmp = new Bitmap(MainControl.Width - Config.GridSize, bmpToolbar.Height);
+            Bitmap bmp = new Bitmap(MainControl.Width, bmpToolbar.Height);
 
             Graphics g = Graphics.FromImage(bmp);
 
