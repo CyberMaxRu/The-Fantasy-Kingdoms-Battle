@@ -26,7 +26,7 @@ namespace Fantasy_Kingdoms_Battle
             layer = Program.formMain.AddLayer(this);
         }
 
-        internal void AdjustSize()
+        internal virtual void AdjustSize()
         {
             if ((Width != 14 + ClientControl.Width + 14) || (Height != 13 + 24 + ClientControl.Height + 14))
             {
@@ -49,7 +49,6 @@ namespace Fantasy_Kingdoms_Battle
 
                 windowCaption.Width = 400;
                 windowCaption.ShiftX = (Width - windowCaption.Width) / 2;
-                ClientControl.Visible = false;
 
                 ArrangeControls();
             }
