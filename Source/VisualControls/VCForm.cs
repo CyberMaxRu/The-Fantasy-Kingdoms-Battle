@@ -12,7 +12,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         protected VisualControl ClientControl;
         private Bitmap bmpBackground;
-        private readonly VCWindowCaption windowCaption;
+        protected readonly VCWindowCaption windowCaption;
         private VisualLayer layer;
 
         public VCForm()

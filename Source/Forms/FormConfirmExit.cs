@@ -8,5 +8,9 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class FormConfirmExit : VCForm
     {
+        public FormConfirmExit() : base()
+        {
+            windowCaption.Caption = "Выход из программы";
+        }
     }
 }

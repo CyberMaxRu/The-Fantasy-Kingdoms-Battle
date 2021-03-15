@@ -188,6 +188,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly M2Font fontCost;
         internal readonly M2Font fontLevel;
         internal readonly M2Font fontMedCaption;
+        internal readonly M2Font fontBigCaption;
         internal readonly M2Font fontSmallBC;
 
         internal Size sizeGamespace { get; set; }
@@ -292,6 +293,7 @@ namespace Fantasy_Kingdoms_Battle
                 fontCost = new M2Font(dirResources, "small_c");
                 fontLevel = new M2Font(dirResources, "med_caption_c");
                 fontMedCaption = new M2Font(dirResources, "med_caption");
+                fontBigCaption = new M2Font(dirResources, "big_caption");
                 fontSmallBC = new M2Font(dirResources, "_small_b_c");
 
                 // Формируем и показываем сплэш-заставку
