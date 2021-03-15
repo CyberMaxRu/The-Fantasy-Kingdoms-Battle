@@ -12,7 +12,7 @@ namespace Fantasy_Kingdoms_Battle
     // Класс панели логова
     internal sealed class PanelLair : VisualControl
     {
-        private readonly VCLabel lblName;
+        private readonly VCLabelM2 lblName;
         private readonly VCImage imgLair;
         private readonly VCButton btnAction;
         private readonly VCButton btnCancel;
@@ -23,7 +23,7 @@ namespace Fantasy_Kingdoms_Battle
             ShowBorder = true;
             TypeLair = typeLair;
 
-            lblName = new VCLabel(this, FormMain.Config.GridSize, FormMain.Config.GridSize, FormMain.Config.FontBuildingCaption, Color.Transparent, FormMain.Config.GridSize * 2, "");
+            lblName = new VCLabelM2(this, FormMain.Config.GridSize, FormMain.Config.GridSize - 3, Program.formMain.fontMedCaption, Color.Transparent, FormMain.Config.GridSize * 2, "");
             lblName.StringFormat.Alignment = StringAlignment.Near;
 
             imgLair = new VCImage(this, FormMain.Config.GridSize, lblName.NextTop(), Program.formMain.imListObjectsBig, typeLair.ImageIndex);

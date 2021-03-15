@@ -12,14 +12,13 @@ namespace Fantasy_Kingdoms_Battle
     // Класс панели здания
     internal sealed class PanelConstruction : VisualControl
     {
+        private readonly VCLabelM2 lblName;
         private readonly VCImage imageConstruction;
         private readonly VCButton btnHeroes;
         private readonly VCButton btnBuyOrUpgrade;
         private readonly VCButton btnHireHero;
-        private readonly VCLabel lblName;
         private readonly VCImage imgGold;
         private readonly VCLabel lblIncome;
-
         
         public PanelConstruction(VisualControl parent, int shiftX, int shiftY, TypeConstruction typeConstruction) : base(parent, shiftX, shiftY)
         {
@@ -27,7 +26,7 @@ namespace Fantasy_Kingdoms_Battle
 
             TypeConstruction = typeConstruction;            
 
-            lblName = new VCLabel(this, FormMain.Config.GridSize, FormMain.Config.GridSize, FormMain.Config.FontBuildingCaption, Color.Transparent, FormMain.Config.GridSize * 2, "");
+            lblName = new VCLabelM2(this, FormMain.Config.GridSize, FormMain.Config.GridSize - 3, Program.formMain.fontMedCaption, Color.Transparent, FormMain.Config.GridSize * 2, "");
             lblName.StringFormat.Alignment = StringAlignment.Near;
             lblName.Text = typeConstruction.Name;
 
