@@ -8,7 +8,6 @@ namespace Fantasy_Kingdoms_Battle
 
     internal sealed class VCLabelM2 : VisualControl
     {
-        private Color color;
         private RectangleF rectText;
         private Bitmap bmpPreparedText;
         private string preparedText;
