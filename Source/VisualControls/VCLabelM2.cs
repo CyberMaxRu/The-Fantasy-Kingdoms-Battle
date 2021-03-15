@@ -12,6 +12,7 @@ namespace Fantasy_Kingdoms_Battle
         private RectangleF rectText;
         private Bitmap bmpPreparedText;
         private string preparedText;
+        private Color preparedColor;
 
         public VCLabelM2(VisualControl parent, int shiftX, int shiftY, M2Font font, Color foreColor, int height, string text) : base(parent, shiftX, shiftY)
         {
@@ -48,11 +49,12 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (Text.Length > 0)
             {
-                if (preparedText != Text)
+                if ((preparedText != Text) || (preparedColor != Color))
                 {
                     bmpPreparedText?.Dispose();
                     bmpPreparedText = Font.GetBitmap(Text, Color);
                     preparedText = Text;
+                    preparedColor = Color;
                 }
             }
 
