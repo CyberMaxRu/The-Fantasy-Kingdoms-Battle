@@ -72,6 +72,7 @@
     <Compile Include="Source\Forms\FormConfirmExit.cs" />
     <Compile Include="Source\Panels\PanelPlayer.cs" />
     <Compile Include="Source\TypeLobby\TypeLobbyLairSettings.cs" />
+    <Compile Include="Source\VisualControls\VCBitmapBand.cs" />
     <Compile Include="Source\VisualControls\VCButtonTargetLair.cs" />
     <Compile Include="Source\VisualControls\VCForm.cs" />
     <Compile Include="Source\VisualControls\VCIconButton.cs" />
