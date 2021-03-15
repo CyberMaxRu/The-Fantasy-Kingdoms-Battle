@@ -159,5 +159,18 @@ namespace Fantasy_Kingdoms_Battle
 
             return bmpResult;
         }
+
+        internal int WidthText(string text)
+        {
+            int width = 0;
+            byte[] text1251 = Encoding.Convert(Encoding.UTF8, Encoding.GetEncoding(1251), Encoding.UTF8.GetBytes(text));
+
+            foreach (byte b in text1251)
+            {
+                width += symbols[b - 32].Width - 1;
+            }
+
+            return width;
+        }
     }
 }
