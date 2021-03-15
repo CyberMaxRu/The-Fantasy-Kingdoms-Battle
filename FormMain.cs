@@ -90,7 +90,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCFormPage pageHeroes;
         private readonly VCFormPage pageLairs;
         private readonly VCFormPage pageTournament;
-        private readonly VCLabel labelCaptionPage;
+        private readonly VCLabelM2 labelCaptionPage;
 
         private PanelWithPanelEntity panelWarehouse;
         private PanelWithPanelEntity panelHeroes;
@@ -513,7 +513,7 @@ namespace Fantasy_Kingdoms_Battle
                 pageTournament.ShowHint += PageTournament_ShowHint;
                 pageTournament.Visible = false;
 
-                labelCaptionPage = new VCLabel(MainControl, 0, pageGuilds.ShiftY, Config.FontCaptionPage, Config.CommonCaptionPage, pageGuilds.Height, "");
+                labelCaptionPage = new VCLabelM2(MainControl, 0, pageGuilds.ShiftY, fontMedCaption, Config.CommonCaptionPage, pageGuilds.Height, "");
                 labelCaptionPage.Width = 240;
                 labelCaptionPage.StringFormat.Alignment = StringAlignment.Near;
                 labelCaptionPage.StringFormat.LineAlignment = StringAlignment.Center;
