@@ -497,8 +497,10 @@ namespace Fantasy_Kingdoms_Battle
                 vcDebugInfo = new VisualControl(layerGame);
                 labelTimeDrawFrame = new VCLabel(vcDebugInfo, Config.GridSize, Config.GridSize, Config.FontToolbar, Color.White, 16, "");
                 labelTimeDrawFrame.StringFormat.Alignment = StringAlignment.Near;
+                labelTimeDrawFrame.Visible = false;
                 labelTimePaintFrame = new VCLabel(vcDebugInfo, labelTimeDrawFrame.ShiftX, labelTimeDrawFrame.NextTop(), Config.FontToolbar, Color.White, 16, "Paint frame: 00000");
                 labelTimePaintFrame.StringFormat.Alignment = StringAlignment.Near;
+                labelTimePaintFrame.Visible = false;
                 vcDebugInfo.ArrangeControls();
                 vcDebugInfo.ApplyMaxSize();
 
@@ -679,6 +681,8 @@ namespace Fantasy_Kingdoms_Battle
         private void LabelDay_Click(object sender, EventArgs e)
         {
             debugMode = !debugMode;
+            labelTimeDrawFrame.Visible = debugMode;
+            labelTimePaintFrame.Visible = debugMode;
             ShowFrame(true);
         }
 
