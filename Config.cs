@@ -694,7 +694,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal Color ColorMapObjectCaption(bool allowed)
         {
-            return allowed ? Color.Green : Color.Gray;
+            return allowed ? Color.LimeGreen : Color.Gray;
         }
 
         internal Pen GetPenBorder(bool selected)
