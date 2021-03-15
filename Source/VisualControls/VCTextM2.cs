@@ -12,8 +12,10 @@ namespace Fantasy_Kingdoms_Battle
 
     internal class VCTextM2 : VisualControl
     {
-        private Bitmap bmpPreparedText;
         private string preparedText;
+        private List<string> linesText = new List<string>();
+        private List<Bitmap> listBitmapPreparedText = new List<Bitmap>();
+        private int heightBitmaps;
 
         public VCTextM2(VisualControl parent, int shiftX, int shiftY, M2Font font, Color foreColor, int width) : base(parent, shiftX, shiftY)
         {
@@ -39,8 +41,21 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (preparedText != Text)
                 {
-                    bmpPreparedText?.Dispose();
-                    bmpPreparedText = Font.GetBitmap(Text, Color);
+                    TextToLines(Text);
+
+                    foreach (Bitmap b in listBitmapPreparedText)
+                    {
+                        b.Dispose();
+                    }
+                    listBitmapPreparedText.Clear();
+
+                    heightBitmaps = 0;
+                    foreach (string s in linesText)
+                    {
+                        listBitmapPreparedText.Add(Font.GetBitmap(s, Color));
+                        heightBitmaps += listBitmapPreparedText[listBitmapPreparedText.Count - 1].Height;
+                    }
+
                     preparedText = Text;
                 }
             }
@@ -49,40 +64,88 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Text.Length > 0)
             {
-                int x;
                 int y;
-                switch (StringFormat.Alignment)
-                {
-                    case StringAlignment.Near:
-                        x = Left;
-                        break;
-                    case StringAlignment.Center:
-                        x = Left + ((Width - bmpPreparedText.Width) / 2);
-                        break;
-                    default:
-                        x = Left + Width - bmpPreparedText.Width;
-                        break;
-                }
-
-                Debug.Assert(x >= Left);
-
+                // Делаем расчет координаты по вертикали
                 switch (StringFormat.LineAlignment)
                 {
                     case StringAlignment.Near:
                         y = Top;
                         break;
                     case StringAlignment.Center:
-                        y = Top + ((Height - bmpPreparedText.Height) / 2);
+                        y = Top + ((Height - heightBitmaps) / 2);
                         break;
                     default:
-                        y = Top + Height - bmpPreparedText.Height;
+                        y = Top + Height - heightBitmaps;
                         break;
                 }
 
-                Debug.Assert(y >= Top);
+                foreach (Bitmap b in listBitmapPreparedText)
+                {
+                    int x;
+                    switch (StringFormat.Alignment)
+                    {
+                        case StringAlignment.Near:
+                            x = Left;
+                            break;
+                        case StringAlignment.Center:
+                            x = Left + ((Width - b.Width) / 2);
+                            break;
+                        default:
+                            x = Left + Width - b.Width;
+                            break;
+                    }
 
-                g.DrawImageUnscaled(bmpPreparedText, x, y);
+                    Debug.Assert(x >= Left);
+                    Debug.Assert(y >= Top);
+
+                    g.DrawImageUnscaled(b, x, y);
+
+                    y += b.Height;
+                }
             }
+        }
+
+        private void TextToLines(string text)
+        {
+            Debug.Assert(text.Length > 0);
+
+            linesText.Clear();
+
+            int posSpace;
+            int widthLine;
+            int priorPosSpace = -1;
+            string tmpStr;
+            // Разбиваем текст по строкам, учитывая ширину себя
+            // Для этого ходим по пробелам
+            for (; ; )
+            {
+                posSpace = text.IndexOf(' ', priorPosSpace + 1);
+                if (posSpace > -1)
+                {
+                    widthLine = Font.WidthText(text.Substring(0, posSpace));
+                    // Если превысили свою ширину, то текущая строка - готова
+                    if (widthLine > Width)
+                    {
+                        Debug.Assert(priorPosSpace >= 0);
+                        tmpStr = text.Substring(0, priorPosSpace);
+                        linesText.Add(tmpStr);
+                        text = text.Substring(priorPosSpace + 1);
+                        posSpace = -1;
+                    }
+                }
+                else
+                {
+                    // Текст закончился. Остаток - последнее слово
+                    widthLine = Font.WidthText(text);
+                    Debug.Assert(widthLine <= Width);
+                    linesText.Add(text);
+                    break;
+                }
+
+                priorPosSpace = posSpace;
+            }
+
+            Debug.Assert(linesText.Count > 0);
         }
     }
 }
