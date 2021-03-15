@@ -182,6 +182,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly Bitmap bmpMaskSmall;
         internal readonly Bitmap bmpToolbar;
         internal readonly Bitmap bmpToolbarBorder;
+        internal readonly Bitmap bmpSeparator;
         private VCBitmap bmpPreparedToolbar;
         internal readonly M2Font fontCost;
         internal readonly M2Font fontLevel;
@@ -383,6 +384,7 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(LengthSideBorderBattlefield > 0);
                 bmpToolbar = new Bitmap(dirResources + @"Icons\Toolbar.png");
                 bmpToolbarBorder = new Bitmap(dirResources + @"Icons\ToolbarBorder.png");
+                bmpSeparator = new Bitmap(dirResources + @"Icons\Separator.png");
 
                 // Делаем рамки для союзников и врагов
                 bmpBorderForIconAlly = new Bitmap(bmpBorderForIcon);
