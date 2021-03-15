@@ -6,7 +6,6 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class VCTabButton : VCImage
     {
         private Pen penBorder = new Pen(FormMain.Config.CommonBorder);
-        private int shiftX;
 
         public VCTabButton(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList, int imageIndex) : base(parent, shiftX, shiftY, bitmapList, imageIndex)
         {
@@ -33,22 +32,9 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
+            ImageFilter = (Parent as VCTabControl).ActivePage == IndexPage ? ImageFilter.Press : ImageFilter.None;
+
             base.Draw(g);
-
-            shiftX = IndexPage > 0 ? 4 : 0;
-
-            if ((Parent as VCTabControl).ActivePage == IndexPage)
-            {
-                g.DrawLine(penBorder, Left, Top, Left + Width, Top);// Верх
-                g.DrawLine(penBorder, Left, Top, Left, Top + Height - 1);// Левый край
-                g.DrawLine(penBorder, Left + Width, Top, Left + Width, Top + Height - 1);// Правый край
-                if (shiftX > 0)
-                    g.DrawLine(penBorder, Left - shiftX, Top + Height - 1, Left, Top + Height - 1);
-            }
-            else
-            {
-                g.DrawLine(penBorder, Left - shiftX, Top + Height - 1, Left + Width, Top + Height - 1);
-            }
         }
     }
 }
