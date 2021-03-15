@@ -434,6 +434,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Bitmap border = Program.formMain.bbBorderWindow.DrawBorder(rectBorderBattlefield.Width, rectBorderBattlefield.Height);
             g.DrawImageUnscaled(border, rectBorderBattlefield.X, rectBorderBattlefield.Y);
+            border.Dispose();
 
             // Рисуем сетку
             if (showGrid)
