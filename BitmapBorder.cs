@@ -91,11 +91,14 @@ namespace Fantasy_Kingdoms_Battle
                 g.DrawImageUnscaled(ArraySides[2, 1], ArraySides[2, 0].Width + (i * ArraySides[2, 1].Width), bmp.Height - ArraySides[2, 1].Height);
             }
 
-            // Верхний бордюр
-            g.DrawImageUnscaledAndClipped(ArraySides[0, 1], new Rectangle(ArraySides[0, 0].Width + (repeats * ArraySides[0, 1].Width), 0, restBorder, ArraySides[0, 1].Height));
+            if (restBorder > 0)
+            {
+                // Верхний бордюр
+                g.DrawImageUnscaledAndClipped(ArraySides[0, 1], new Rectangle(ArraySides[0, 0].Width + (repeats * ArraySides[0, 1].Width), 0, restBorder, ArraySides[0, 1].Height));
 
-            // Нижний бордюр
-            g.DrawImageUnscaledAndClipped(ArraySides[2, 1], new Rectangle(ArraySides[2, 0].Width + (repeats * ArraySides[2, 1].Width), bmp.Height - ArraySides[2, 1].Height, restBorder, ArraySides[2, 1].Height));
+                // Нижний бордюр
+                g.DrawImageUnscaledAndClipped(ArraySides[2, 1], new Rectangle(ArraySides[2, 0].Width + (repeats * ArraySides[2, 1].Width), bmp.Height - ArraySides[2, 1].Height, restBorder, ArraySides[2, 1].Height));
+            }
 
             // Вертикальные бордюры
             int heightForBand = bmp.Height - ArraySides[0, 0].Height - ArraySides[2, 0].Height;
@@ -111,12 +114,14 @@ namespace Fantasy_Kingdoms_Battle
                 g.DrawImageUnscaled(ArraySides[1, 2], bmp.Width - ArraySides[1, 2].Width, ArraySides[0, 2].Height + (i * ArraySides[1, 2].Height));
             }
 
-            // Левый бордюр
-            g.DrawImageUnscaledAndClipped(ArraySides[1, 0], new Rectangle(0, ArraySides[0, 0].Height + (repeats * ArraySides[1, 0].Height), ArraySides[1, 0].Width, restBorder));
+            if (restBorder > 0)
+            {
+                // Левый бордюр
+                g.DrawImageUnscaledAndClipped(ArraySides[1, 0], new Rectangle(0, ArraySides[0, 0].Height + (repeats * ArraySides[1, 0].Height), ArraySides[1, 0].Width, restBorder));
 
-            // Правый бордюр
-            g.DrawImageUnscaledAndClipped(ArraySides[1, 2], new Rectangle(bmp.Width - ArraySides[1, 2].Width, ArraySides[0, 2].Height + (repeats * ArraySides[1, 2].Height), ArraySides[1, 2].Width, restBorder));
-
+                // Правый бордюр
+                g.DrawImageUnscaledAndClipped(ArraySides[1, 2], new Rectangle(bmp.Width - ArraySides[1, 2].Width, ArraySides[0, 2].Height + (repeats * ArraySides[1, 2].Height), ArraySides[1, 2].Width, restBorder));
+            }
 
             // Середина. Пока просто заполняем черным
             if (ArraySides[1, 1] != null)

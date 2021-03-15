@@ -56,7 +56,9 @@ namespace Fantasy_Kingdoms_Battle
             {
                 gb.DrawImageUnscaled(bmpBody, widthCap + (widthBody * i), 0);
             }
-            gb.DrawImageUnscaledAndClipped(bmpBody, new Rectangle(widthCap + (widthBody * repeats), 0, restBorder, bmpBody.Height));
+
+            if (restBorder > 0)
+                gb.DrawImageUnscaledAndClipped(bmpBody, new Rectangle(widthCap + (widthBody * repeats), 0, restBorder, bmpBody.Height));
 
             gBody.Dispose();
             bmpBody.Dispose();
