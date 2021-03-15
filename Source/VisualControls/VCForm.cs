@@ -12,12 +12,15 @@ namespace Fantasy_Kingdoms_Battle
     {
         protected VisualControl ClientControl;
         private Bitmap bmpBackground;
+        private VisualLayer layer;
 
         public VCForm()
         {
             ClientControl = new VisualControl(this, 16, 32);
             ClientControl.Width = 200;
             ClientControl.Height = 200;
+
+            layer = Program.formMain.AddLayer(this);
         }
 
         internal void AdjustSize()
@@ -32,9 +35,30 @@ namespace Fantasy_Kingdoms_Battle
                 bmpBackground = new Bitmap(Width, Height);
                 Graphics g = Graphics.FromImage(bmpBackground);
 
+                // Рисуем границу
+                Bitmap border = Program.formMain.bbBorderWindow.DrawBorder(Width, Height - 16);
+                g.DrawImage(border, 0, 16);
+                border.Dispose();
+
+                // Рисуем фон
                 Bitmap back = GuiUtils.MakeBackground(new Size(Width - 14 - 14, Height - 14 - 14));
-                //g.DrawImage()
+                g.DrawImage(back, 14, 16 + 14);
+                back.Dispose();
             }
+        }
+
+        internal override void Draw(Graphics g)
+        {
+            AdjustSize();
+            g.DrawImage(bmpBackground, Left, Top + 16);
+
+            base.Draw(g);
+        }
+
+        internal void CloseForm()
+        {
+            Program.formMain.RemoveLayer(layer);
+
         }
     }
 }

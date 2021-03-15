@@ -911,14 +911,36 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        internal VisualLayer AddLayer(VisualControl vc)
+        {
+            VisualLayer vl = new VisualLayer();
+            Layers.Add(vl);
+            vl.Controls.Add(vc);
+
+            return vl;
+        }
+
+        internal void RemoveLayer(VisualLayer vl)
+        {
+            Debug.Assert(Layers.Count > 2);
+            Debug.Assert(Layers[Layers.Count - 1] == vl);
+
+            Layers.Remove(vl);
+        }
+
         private void BtnHelp_Click(object sender, EventArgs e)
         {
-/*            VisualLayer vl = new VisualLayer();
-            Layers.Add(vl);*/
+            VisualLayer vl = new VisualLayer();
+            Layers.Add(vl);
 
-            FormAbout f = new FormAbout();
+            FormConfirmExit f = new FormConfirmExit();
+            vl.Controls.Add(f);
+
+            ShowFrame(true);
+
+            /*FormAbout f = new FormAbout();
             f.ShowDialog();
-            f.Dispose();
+            f.Dispose();*/
         }
 
         private void BtnQuit_Click(object sender, EventArgs e)
