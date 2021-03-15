@@ -190,7 +190,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly M2Font fontMedCaption;
         internal readonly M2Font fontSmallBC;
 
-        private Size sizeGamespace;
+        internal Size sizeGamespace { get; set; }
         private Point shiftControls;
 
         private bool inDrawFrame = false;
@@ -936,6 +936,8 @@ namespace Fantasy_Kingdoms_Battle
             Layers.Add(vl);
 
             FormConfirmExit f = new FormConfirmExit();
+            f.AdjustSize();
+            f.ToCentre();
             vl.Controls.Add(f);
 
             ShowFrame(true);
