@@ -173,7 +173,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly Bitmap bmpBorderForIconEnemy;
         internal readonly Bitmap bmpEmptyEntity;
         internal readonly Bitmap bmpBackgroundEntity;
-        internal readonly Bitmap bmpBorderBattlefield;
+        internal readonly BitmapBorder bbBorderWindow;
         internal readonly BitmapBorder bbObject;
         internal readonly BitmapBorder bbToolBarLabel;
         internal readonly BitmapBorder bbGamespace;
@@ -189,7 +189,6 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly M2Font fontMedCaption;
         internal readonly M2Font fontSmallBC;
 
-        internal int LengthSideBorderBattlefield { get; private set; }
         private Size sizeGamespace;
         private Point shiftControls;
 
@@ -379,12 +378,10 @@ namespace Fantasy_Kingdoms_Battle
                 bmpBorderForIcon = new Bitmap(dirResources + "Icons\\BorderIconEntity.png");
                 bmpEmptyEntity = new Bitmap(dirResources + "Icons\\EmptyEntity.png");
                 bmpBackgroundEntity = new Bitmap(dirResources + "Icons\\BackgroundEntity.png");
-                bmpBorderBattlefield = new Bitmap(dirResources + "Icons\\BorderBattlefield.png");
-                LengthSideBorderBattlefield = bmpBorderBattlefield.Width - (Config.WidthBorderBattlefield * 2);
+                bbBorderWindow = new BitmapBorder(dirResources + @"Icons\BorderWindow.png", false, 14, 14, 14, 14, 60, 14, 14, 60, 14, 14);
                 bbObject = new BitmapBorder(dirResources + "Icons\\BorderObject.png", false, 10, 10, 9, 12, 25, 2, 5, 24, 3, 3);
                 bbToolBarLabel = new BitmapBorder(dirResources + @"Icons\ToolbarLabel.png", true, 10, 10, 9, 10, 25, 9, 12, 25, 10, 10);
                 bbGamespace = new BitmapBorder(dirResources + @"Icons\BorderMain2.png", false, 12, 12, 12, 12, 26, 7, 7, 26, 7, 7);
-                Debug.Assert(LengthSideBorderBattlefield > 0);
                 bmpToolbar = new Bitmap(dirResources + @"Icons\Toolbar.png");
                 bmpToolbarBorder = new Bitmap(dirResources + @"Icons\ToolbarBorder.png");
                 bmpSeparator = new Bitmap(dirResources + @"Icons\Separator.png");
@@ -916,6 +913,9 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnHelp_Click(object sender, EventArgs e)
         {
+/*            VisualLayer vl = new VisualLayer();
+            Layers.Add(vl);*/
+
             FormAbout f = new FormAbout();
             f.ShowDialog();
             f.Dispose();

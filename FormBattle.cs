@@ -30,12 +30,7 @@ namespace Fantasy_Kingdoms_Battle
         private CheckBox chkbShowGrid;
         private CheckBox chkbShowPath;
         private bool showGrid;
-        private int widthBorder;
-        private int lengthBandBorder;
         private Rectangle rectBorderBattlefield;
-        private Rectangle rectCornerBorder;
-        private Rectangle rectHorBandBorder;
-        private Rectangle rectVertBandBorder;
 
         // Время битвы
         private SpeedBattle currentSpeed = SpeedBattle.Normal;
@@ -436,83 +431,9 @@ namespace Fantasy_Kingdoms_Battle
 
             // Рисуем границу поля боя
             g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
-            // Левый верхний угол
-            g.DrawImage(Program.formMain.bmpBorderBattlefield,
-                    new Rectangle(rectBorderBattlefield.X, rectBorderBattlefield.Y, widthBorder, widthBorder),
-                    new Rectangle(0, 0, widthBorder, widthBorder), GraphicsUnit.Pixel);
 
-            // Правый верхний угол
-            g.DrawImage(Program.formMain.bmpBorderBattlefield,
-                    new Rectangle(rectBorderBattlefield.X + rectBorderBattlefield.Width - widthBorder, rectBorderBattlefield.Y, widthBorder, widthBorder),
-                    new Rectangle(widthBorder + lengthBandBorder, 0, widthBorder, widthBorder), GraphicsUnit.Pixel);
-
-            // Левый нижний угол
-            g.DrawImage(Program.formMain.bmpBorderBattlefield,
-                    new Rectangle(rectBorderBattlefield.X, rectBorderBattlefield.Y + rectBorderBattlefield.Height - widthBorder, widthBorder, widthBorder),
-                    new Rectangle(0, widthBorder + lengthBandBorder, widthBorder, widthBorder), GraphicsUnit.Pixel);
-
-            // Правый нижний угол
-            g.DrawImage(Program.formMain.bmpBorderBattlefield,
-                    new Rectangle(rectBorderBattlefield.X + rectBorderBattlefield.Width - widthBorder, rectBorderBattlefield.Y + rectBorderBattlefield.Height - widthBorder, widthBorder, widthBorder),
-                    new Rectangle(widthBorder + lengthBandBorder, widthBorder + lengthBandBorder, widthBorder, widthBorder), GraphicsUnit.Pixel);
-
-            // Горизонтальные бордюры
-            int repeats = (rectBorderBattlefield.Width - (widthBorder * 2)) / lengthBandBorder;
-            int restBorder = (rectBorderBattlefield.Width - (widthBorder * 2)) % lengthBandBorder;
-            Rectangle rectTopBorder = new Rectangle(widthBorder, 0, lengthBandBorder, widthBorder);
-            Rectangle rectBottomBorder = new Rectangle(widthBorder, widthBorder + lengthBandBorder, lengthBandBorder, widthBorder);
-
-            for (int i = 0; i < repeats; i++)
-            {
-                // Верхний бордюр
-                g.DrawImage(Program.formMain.bmpBorderBattlefield,
-                        new Rectangle(rectBorderBattlefield.X + widthBorder + (i * lengthBandBorder), rectBorderBattlefield.Y, lengthBandBorder, widthBorder),
-                        rectTopBorder, GraphicsUnit.Pixel);
-
-                // Нижний бордюр
-                g.DrawImage(Program.formMain.bmpBorderBattlefield,
-                        new Rectangle(rectBorderBattlefield.X + widthBorder + (i * lengthBandBorder), rectBorderBattlefield.Y + rectBorderBattlefield.Height - widthBorder, lengthBandBorder, widthBorder),
-                        rectBottomBorder, GraphicsUnit.Pixel);
-            }
-
-            // Верхний бордюр
-            g.DrawImage(Program.formMain.bmpBorderBattlefield,
-                    new Rectangle(rectBorderBattlefield.X + widthBorder + (repeats * lengthBandBorder), rectBorderBattlefield.Y, restBorder, widthBorder),
-                    rectTopBorder, GraphicsUnit.Pixel);
-
-            // Нижний бордюр
-            g.DrawImage(Program.formMain.bmpBorderBattlefield,
-                    new Rectangle(rectBorderBattlefield.X + widthBorder + (repeats * lengthBandBorder), rectBorderBattlefield.Y + rectBorderBattlefield.Height - widthBorder, restBorder, widthBorder),
-                    rectBottomBorder, GraphicsUnit.Pixel);
-
-            // Вертикальные бордюры
-            repeats = (rectBorderBattlefield.Height - (widthBorder * 2)) / lengthBandBorder;
-            restBorder = (rectBorderBattlefield.Height - (widthBorder * 2)) % lengthBandBorder;
-            Rectangle rectLeftBorder = new Rectangle(0, widthBorder, widthBorder, lengthBandBorder);
-            Rectangle rectRightBorder = new Rectangle(widthBorder + lengthBandBorder, widthBorder, widthBorder, lengthBandBorder);
-
-            for (int i = 0; i < repeats; i++)
-            {
-                // Левый бордюр
-                g.DrawImage(Program.formMain.bmpBorderBattlefield,
-                        new Rectangle(rectBorderBattlefield.X, rectBorderBattlefield.Y + widthBorder + (i * lengthBandBorder), widthBorder, lengthBandBorder),
-                        rectLeftBorder, GraphicsUnit.Pixel);
-
-                // Правый бордюр
-                g.DrawImage(Program.formMain.bmpBorderBattlefield,
-                        new Rectangle(rectBorderBattlefield.X + rectBorderBattlefield.Width - widthBorder, rectBorderBattlefield.Y + widthBorder + (i * lengthBandBorder), widthBorder, lengthBandBorder),
-                        rectRightBorder, GraphicsUnit.Pixel);
-            }
-
-            // Левый бордюр
-            g.DrawImage(Program.formMain.bmpBorderBattlefield,
-                    new Rectangle(rectBorderBattlefield.X, rectBorderBattlefield.Y + widthBorder + (repeats * lengthBandBorder), widthBorder, restBorder),
-                    rectLeftBorder, GraphicsUnit.Pixel);
-
-            // Правый бордюр
-            g.DrawImage(Program.formMain.bmpBorderBattlefield,
-                    new Rectangle(rectBorderBattlefield.X + rectBorderBattlefield.Width - widthBorder, rectBorderBattlefield.Y + widthBorder + (repeats * lengthBandBorder), widthBorder, restBorder),
-                    rectRightBorder, GraphicsUnit.Pixel);
+            Bitmap border = Program.formMain.bbBorderWindow.DrawBorder(rectBorderBattlefield.Width, rectBorderBattlefield.Height);
+            g.DrawImageUnscaled(border, rectBorderBattlefield.X, rectBorderBattlefield.Y);
 
             // Рисуем сетку
             if (showGrid)
@@ -824,15 +745,10 @@ namespace Fantasy_Kingdoms_Battle
             chkbShowPath.Checked = Program.formMain.Settings.BattlefieldShowPath;
 
             //
-            widthBorder = FormMain.Config.WidthBorderBattlefield;
-            lengthBandBorder = Program.formMain.LengthSideBorderBattlefield;
+            int widthBorder = Program.formMain.bbBorderWindow.ArraySides[0, 0].Width;
 
             rectBorderBattlefield = new Rectangle(topLeftGrid.X - widthBorder, topLeftGrid.Y - widthBorder,
                 ClientSize.Width - (FormMain.Config.GridSize * 2), ClientSize.Height - topLeftGrid.Y + widthBorder - FormMain.Config.GridSize);
-
-            rectCornerBorder = new Rectangle(0, 0, widthBorder, widthBorder);
-            rectHorBandBorder = new Rectangle(0, 0, lengthBandBorder, widthBorder);
-            rectVertBandBorder = new Rectangle(0, 0, widthBorder, lengthBandBorder);
 
             //
             bmpFrame = new Bitmap(bmpLayBackground);
