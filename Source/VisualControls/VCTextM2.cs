@@ -41,6 +41,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     bmpPreparedText?.Dispose();
                     bmpPreparedText = Font.GetBitmap(Text, Color);
+                    preparedText = Text;
                 }
             }
 
