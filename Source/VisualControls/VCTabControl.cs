@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System;
+using System.Drawing;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -9,7 +10,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         private List<VCTabButton> btnTabs = new List<VCTabButton>();
         private int leftForNextPage = 0;
-        private VCLabel lblCaptionPage;
+        private VCLabelM2 lblCaptionPage;
         private VCTabButton activePage;
 
         public VCTabControl(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList) : base(parent, shiftX, shiftY)
@@ -17,9 +18,10 @@ namespace Fantasy_Kingdoms_Battle
             BitmapList = bitmapList;
             ActivePage = -1;
 
-            lblCaptionPage = new VCLabel(this, 0, BitmapList.Size + FormMain.Config.GridSize, FormMain.Config.FontCaptionPage, FormMain.Config.CommonCaptionPage, 24, "");
+            lblCaptionPage = new VCLabelM2(this, 0, BitmapList.Size + FormMain.Config.GridSize, Program.formMain.fontSmallBC, FormMain.Config.CommonCaptionPage, 24, "");
             lblCaptionPage.StringFormat.LineAlignment = System.Drawing.StringAlignment.Center;
             lblCaptionPage.ShowBorder = true;
+            lblCaptionPage.Color = Color.LightGreen;
         }
 
         internal BitmapList BitmapList { get; set; }
