@@ -13,7 +13,7 @@ namespace Fantasy_Kingdoms_Battle
 
     internal abstract class VCBitmapBand : VisualControl
     {
-        private Bitmap bmp;
+        protected Bitmap bmpForDraw;
 
         public VCBitmapBand(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
@@ -22,27 +22,25 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
-            if ((bmp == null) || (bmp.Width != Width))
+            if ((bmpForDraw == null) || (bmpForDraw.Width != Width))
             {
                 AdjustSize();
             }
 
             base.Draw(g);
 
-            g.DrawImageUnscaled(bmp, Left, Top);
+            g.DrawImageUnscaled(bmpForDraw, Left, Top);
         }
 
-        protected virtual void AdjustSize()
+        protected Bitmap PrepareBand(Bitmap bmpBand)
         {
-            Bitmap bmpBand = GetBitmap();
             Debug.Assert(Width >= bmpBand.Width);
 
-            bmp?.Dispose();
             int widthCap = WidthCap();
             int widthBody = bmpBand.Width - widthCap - widthCap;
             Debug.Assert(widthBody > 0);
 
-            bmp = new Bitmap(Width, bmpBand.Height);
+            Bitmap bmp = new Bitmap(Width, bmpBand.Height);
             Graphics gb = Graphics.FromImage(bmp);
 
             gb.DrawImage(bmpBand, 0, 0, new Rectangle(0, 0, widthCap, bmpBand.Height), GraphicsUnit.Pixel);
@@ -63,6 +61,16 @@ namespace Fantasy_Kingdoms_Battle
             gBody.Dispose();
             bmpBody.Dispose();
             gb.Dispose();
+
+            return bmp;
+        }
+
+        protected virtual void AdjustSize()
+        {
+            Debug.Assert(Width >= GetBitmap().Width);
+
+            bmpForDraw?.Dispose();
+            bmpForDraw = PrepareBand(GetBitmap());
         }
 
         protected abstract int WidthCap();
