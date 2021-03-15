@@ -185,6 +185,7 @@ namespace Fantasy_Kingdoms_Battle
         private VCBitmap bmpPreparedToolbar;
         internal readonly M2Font fontCost;
         internal readonly M2Font fontLevel;
+        internal readonly M2Font fontMedCaption;
         internal int LengthSideBorderBattlefield { get; private set; }
         private Size sizeGamespace;
         private Point shiftControls;
@@ -284,6 +285,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 fontCost = new M2Font(dirResources, "small_c");
                 fontLevel = new M2Font(dirResources, "med_caption_c");
+                fontMedCaption = new M2Font(dirResources, "med_caption");
 
                 // Формируем и показываем сплэш-заставку
                 Image splashBitmap = new Bitmap(dirResources + "\\Icons\\Splash.png");
