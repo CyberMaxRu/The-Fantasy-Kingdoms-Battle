@@ -14,9 +14,9 @@ namespace Fantasy_Kingdoms_Battle
     {
         private readonly VCLabelM2 lblName;
         private readonly VCImage imgLair;
-        private readonly VCButton btnAction;
-        private readonly VCButton btnCancel;
-        private readonly VCButton btnInhabitants;
+        private readonly VCIconButton btnAction;
+        private readonly VCIconButton btnCancel;
+        private readonly VCIconButton btnInhabitants;
 
         public PanelLair(VisualControl parent, int shiftX, int shiftY, TypeLair typeLair) : base(parent, shiftX, shiftY)
         {
@@ -33,15 +33,15 @@ namespace Fantasy_Kingdoms_Battle
             imgLair.ShowHint += ImgLair_ShowHint;
             imgLair.TypeObject = TypeLair;
 
-            btnAction = new VCButton(this, imgLair.NextLeft(), imgLair.ShiftY, Program.formMain.ilGui, FormMain.GUI_BATTLE);
+            btnAction = new VCIconButton(this, imgLair.NextLeft(), imgLair.ShiftY, Program.formMain.ilGui, FormMain.GUI_BATTLE);
             btnAction.Click += BtnAction_Click;
             btnAction.ShowHint += BtnAction_ShowHint;
 
-            btnCancel = new VCButton(this, btnAction.ShiftX, btnAction.NextTop(), Program.formMain.ilGui, FormMain.GUI_FLAG_CANCEL);
+            btnCancel = new VCIconButton(this, btnAction.ShiftX, btnAction.NextTop(), Program.formMain.ilGui, FormMain.GUI_FLAG_CANCEL);
             btnCancel.Click += BtnCancel_Click;
             btnCancel.ShowHint += BtnCancel_ShowHint;
 
-            btnInhabitants = new VCButton(this, imgLair.ShiftX, imgLair.NextTop(), Program.formMain.ilGui, FormMain.GUI_HOME);
+            btnInhabitants = new VCIconButton(this, imgLair.ShiftX, imgLair.NextTop(), Program.formMain.ilGui, FormMain.GUI_HOME);
             btnInhabitants.Click += BtnInhabitants_Click;
 
             Height = btnInhabitants.NextTop();

@@ -4,7 +4,7 @@ using System.Drawing;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal sealed class VCFormPage : VCButton
+    internal sealed class VCFormPage : VCIconButton
     {
         private List<VCFormPage> listPages;
         private int indexInList;

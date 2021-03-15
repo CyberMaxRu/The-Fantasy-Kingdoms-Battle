@@ -14,9 +14,9 @@ namespace Fantasy_Kingdoms_Battle
     {
         private readonly VCLabelM2 lblName;
         private readonly VCImage imageConstruction;
-        private readonly VCButton btnHeroes;
-        private readonly VCButton btnBuyOrUpgrade;
-        private readonly VCButton btnHireHero;
+        private readonly VCIconButton btnHeroes;
+        private readonly VCIconButton btnBuyOrUpgrade;
+        private readonly VCIconButton btnHireHero;
         private readonly VCImage imgGold;
         private readonly VCLabel lblIncome;
         
@@ -37,15 +37,15 @@ namespace Fantasy_Kingdoms_Battle
             imageConstruction.ShowHint += ImageConstruction_ShowHint;
             imageConstruction.TypeObject = TypeConstruction;
 
-            btnBuyOrUpgrade = new VCButton(this, imageConstruction.NextLeft(), imageConstruction.ShiftY, Program.formMain.ilGui, FormMain.GUI_BUY);
+            btnBuyOrUpgrade = new VCIconButton(this, imageConstruction.NextLeft(), imageConstruction.ShiftY, Program.formMain.ilGui, FormMain.GUI_BUY);
             btnBuyOrUpgrade.Click += BtnBuyOrUprgade_Click;
             btnBuyOrUpgrade.ShowHint += BtnBuyOrUpgrade_ShowHint;
 
-            btnHeroes = new VCButton(this, imageConstruction.ShiftX, imageConstruction.NextTop(), Program.formMain.imListObjectsCell, -1);
+            btnHeroes = new VCIconButton(this, imageConstruction.ShiftX, imageConstruction.NextTop(), Program.formMain.imListObjectsCell, -1);
 
             if ((TypeConstruction.TrainedHero != null) && !(TypeConstruction is TypeEconomicConstruction))
             {
-                btnHireHero = new VCButton(this, imageConstruction.NextLeft(), btnBuyOrUpgrade.NextTop(), Program.formMain.imListObjectsCell, -1);
+                btnHireHero = new VCIconButton(this, imageConstruction.NextLeft(), btnBuyOrUpgrade.NextTop(), Program.formMain.imListObjectsCell, -1);
                 btnHireHero.Click += BtnHireHero_Click;
                 btnHireHero.ShowHint += BtnHireHero_ShowHint;
 

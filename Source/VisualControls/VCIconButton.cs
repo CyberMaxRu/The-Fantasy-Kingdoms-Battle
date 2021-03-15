@@ -3,9 +3,9 @@
 namespace Fantasy_Kingdoms_Battle
 {
     // Визуальный контрол - кнопка c иконкой
-    internal class VCButton : VCImage
+    internal class VCIconButton : VCImage
     {
-        public VCButton(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList, int imageIndex) : base(parent, shiftX, shiftY, bitmapList, imageIndex)
+        public VCIconButton(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList, int imageIndex) : base(parent, shiftX, shiftY, bitmapList, imageIndex)
         {
             UseFilter = true;
             //HighlightUnderMouse = true;

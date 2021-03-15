@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal sealed class VCButtonTargetLair : VCButton
+    internal sealed class VCButtonTargetLair : VCIconButton
     {
         public VCButtonTargetLair(VisualControl parent) : base(parent, 0, 0, Program.formMain.imListObjectsCell, -1)
         {

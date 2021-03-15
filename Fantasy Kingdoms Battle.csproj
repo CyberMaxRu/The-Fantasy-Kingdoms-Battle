@@ -74,6 +74,7 @@
     <Compile Include="Source\TypeLobby\TypeLobbyLairSettings.cs" />
     <Compile Include="Source\VisualControls\VCButtonTargetLair.cs" />
     <Compile Include="Source\VisualControls\VCForm.cs" />
+    <Compile Include="Source\VisualControls\VCIconButton.cs" />
     <Compile Include="Source\VisualControls\VCLabelM2.cs" />
     <Compile Include="Source\VisualControls\VCTabButton.cs" />
     <Compile Include="Source\VisualControls\VCSeparator.cs" />
@@ -161,7 +162,6 @@
     <Compile Include="Item.cs" />
     <Compile Include="Skill.cs" />
     <Compile Include="Utils.cs" />
-    <Compile Include="Source\VisualControls\VCButton.cs" />
     <Compile Include="Source\VisualControls\VCBitmap.cs" />
     <Compile Include="Source\VisualControls\VCFormPage.cs" />
     <Compile Include="Source\VisualControls\VCImage.cs" />
