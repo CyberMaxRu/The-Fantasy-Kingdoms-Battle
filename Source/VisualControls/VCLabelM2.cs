@@ -8,7 +8,6 @@ namespace Fantasy_Kingdoms_Battle
 
     internal sealed class VCLabelM2 : VisualControl
     {
-        private Brush brush;
         private Color color;
         private RectangleF rectText;
         private Bitmap bmpPreparedText;
@@ -35,11 +34,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal string Text { get; set; }
         internal M2Font Font { get; set; }
-        internal Color Color
-        {
-            get => color;
-            set { if (color != value) { color = value; brush?.Dispose(); brush = new SolidBrush(color); } }
-        }
+        internal Color Color { get; set; }
 
         internal BitmapList BitmapList { get; set; }
         internal int ImageIndex { get; set; } = -1;
