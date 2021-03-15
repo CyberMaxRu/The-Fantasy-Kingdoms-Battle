@@ -196,6 +196,9 @@ namespace Fantasy_Kingdoms_Battle
         private bool inDrawFrame = false;
         private bool needRedrawFrame;
 
+        private readonly List<VisualLayer> Layers;
+        private readonly VisualLayer layerGame;
+
         private VCFormPage currentPage;
         private readonly VisualControl panelEmptyInfo;
         private readonly PanelBuildingInfo panelBuildingInfo;
@@ -429,8 +432,13 @@ namespace Fantasy_Kingdoms_Battle
 
                 SetStage("Строим замок");
 
+                // Создаем слой игрового поля
+                Layers = new List<VisualLayer>();
+                layerGame = new VisualLayer();
+                Layers.Add(layerGame);
+
                 // Верхняя панель
-                TopControl = new VisualControl();
+                TopControl = new VisualControl(layerGame);
 
                 // Создаем панели игроков в верхней панели
                 panelPlayers = new VisualControl(TopControl, 0, Config.GridSize);
@@ -454,7 +462,7 @@ namespace Fantasy_Kingdoms_Battle
                 TopControl.ApplyMaxSize();
 
                 // Главное игровое поле
-                MainControl = new VisualControl();
+                MainControl = new VisualControl(layerGame);
 
                 // Тулбар
                 bmpPreparedToolbar = new VCBitmap(MainControl, 0, 0, null);
@@ -475,7 +483,7 @@ namespace Fantasy_Kingdoms_Battle
                 panelLairWithFlags = new VisualControl(MainControl, 0, btnEndTurn.ShiftY);
 
                 // Отладочная информация
-                vcDebugInfo = new VisualControl();
+                vcDebugInfo = new VisualControl(layerGame);
                 labelTimeDrawFrame = new VCLabel(vcDebugInfo, Config.GridSize, Config.GridSize, Config.FontToolbar, Color.White, 16, "");
                 labelTimeDrawFrame.StringFormat.Alignment = StringAlignment.Near;
                 labelTimePaintFrame = new VCLabel(vcDebugInfo, labelTimeDrawFrame.ShiftX, labelTimeDrawFrame.NextTop(), Config.FontToolbar, Color.White, 16, "Paint frame: 00000");
@@ -922,7 +930,10 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.OnFormClosing(e);
 
-            e.Cancel = MessageBox.Show("Выйти из игры?", NAME_PROJECT, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No;
+            FormConfirmExit f = new FormConfirmExit();
+
+
+            //e.Cancel = MessageBox.Show("Выйти из игры?", NAME_PROJECT, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No;
         }
 
         private void ArrangeControls()
@@ -1611,15 +1622,8 @@ namespace Fantasy_Kingdoms_Battle
             gfxFrame.CompositingMode = CompositingMode.SourceCopy;
             gfxFrame.DrawImageUnscaled(bmpBackground, 0, 0);
 
-            // Рисуем контролы
-            gfxFrame.CompositingMode = CompositingMode.SourceOver;
-
-            if (TopControl.Visible)
-                TopControl.Draw(gfxFrame);
-
             if (MainControl.Visible)
             {
-                //
                 labelGold.Text = lobby.CurrentPlayer.Gold.ToString() + " (+" + lobby.CurrentPlayer.Income().ToString() + ")";
 
                 pageGuilds.PopupQuantity = lobby.CurrentPlayer.PointConstructionGuild;
@@ -1628,13 +1632,14 @@ namespace Fantasy_Kingdoms_Battle
 
                 //
                 UpdateMenu();
+            }
 
-                //
-                foreach (VisualControl vc in MainControl.Controls)
-                {
-                    if (vc.Visible)
-                        vc.Draw(gfxFrame);
-                }
+            // Рисуем контролы
+            gfxFrame.CompositingMode = CompositingMode.SourceOver;
+
+            foreach (VisualLayer vl in Layers)
+            {
+                vl.Draw(gfxFrame); 
             }
 
             //

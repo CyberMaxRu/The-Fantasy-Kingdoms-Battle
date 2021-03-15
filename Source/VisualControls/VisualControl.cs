@@ -18,7 +18,12 @@ namespace Fantasy_Kingdoms_Battle
         private Rectangle rectBorder;
 
         public VisualControl()
+        {            
+        }
+
+        public VisualControl(VisualLayer vl)
         {
+            vl.Controls.Add(this);
         }
 
         public VisualControl(VisualControl parent, int shiftX, int shiftY)
