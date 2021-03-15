@@ -184,6 +184,9 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly Bitmap bmpToolbarBorder;
         internal readonly Bitmap bmpSeparator;
         internal readonly Bitmap bmpBandWindowCaption;
+        internal readonly Bitmap bmpBandButtonNormal;
+        internal readonly Bitmap bmpBandButtonHot;
+        internal readonly Bitmap bmpBandButtonDisabled;
         private VCBitmap bmpPreparedToolbar;
         internal readonly M2Font fontCost;
         internal readonly M2Font fontLevel;
@@ -199,6 +202,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private readonly List<VisualLayer> Layers;
         private readonly VisualLayer layerGame;
+        private VisualLayer currentLayer;
 
         private VCFormPage currentPage;
         private readonly VisualControl panelEmptyInfo;
@@ -389,6 +393,9 @@ namespace Fantasy_Kingdoms_Battle
                 bmpToolbarBorder = new Bitmap(dirResources + @"Icons\ToolbarBorder.png");
                 bmpSeparator = new Bitmap(dirResources + @"Icons\Separator.png");
                 bmpBandWindowCaption = new Bitmap(dirResources + @"Icons\WindowCaption.png");
+                bmpBandButtonNormal = new Bitmap(dirResources + @"Icons\ButtonNormal.png");
+                bmpBandButtonHot = new Bitmap(dirResources + @"Icons\ButtonHot.png");
+                bmpBandButtonDisabled = new Bitmap(dirResources + @"Icons\ButtonDisabled.png");
 
                 // Делаем рамки для союзников и врагов
                 bmpBorderForIconAlly = new Bitmap(bmpBorderForIcon);
@@ -437,6 +444,7 @@ namespace Fantasy_Kingdoms_Battle
                 Layers = new List<VisualLayer>();
                 layerGame = new VisualLayer();
                 Layers.Add(layerGame);
+                currentLayer = layerGame;
 
                 // Верхняя панель
                 TopControl = new VisualControl(layerGame);
@@ -920,6 +928,7 @@ namespace Fantasy_Kingdoms_Battle
             VisualLayer vl = new VisualLayer();
             Layers.Add(vl);
             vl.Controls.Add(vc);
+            currentLayer = vl;
 
             return vl;
         }
@@ -930,6 +939,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Layers[Layers.Count - 1] == vl);
 
             Layers.Remove(vl);
+            currentLayer = Layers[Layers.Count - 1];
         }
 
         private void BtnHelp_Click(object sender, EventArgs e)
@@ -1692,16 +1702,29 @@ namespace Fantasy_Kingdoms_Battle
 
         private VisualControl ControlUnderMouse()
         {
-            VisualControl curControl;
-            curControl = TopControl.GetControl(mousePos.X, mousePos.Y);
-            if (curControl == null)
+            VisualControl curControl = null;
+
+            if (currentLayer == layerGame)
             {
-                curControl = MainControl.GetControl(mousePos.X, mousePos.Y);
-                if (curControl == MainControl)
+                curControl = TopControl.GetControl(mousePos.X, mousePos.Y);
+                if (curControl == null)
                 {
-                    curControl = currentPage.Page.GetControl(mousePos.X, mousePos.Y);
-                    if (curControl == currentPage)
-                        curControl = null;
+                    curControl = MainControl.GetControl(mousePos.X, mousePos.Y);
+                    if (curControl == MainControl)
+                    {
+                        curControl = currentPage.Page.GetControl(mousePos.X, mousePos.Y);
+                        if (curControl == currentPage)
+                            curControl = null;
+                    }
+                }
+            }
+            else
+            {
+                foreach (VisualControl vc in currentLayer.Controls)
+                {
+                    curControl = vc.GetControl(mousePos.X, mousePos.Y);
+                    if (curControl != null)
+                        break;
                 }
             }
 
