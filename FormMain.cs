@@ -1651,6 +1651,8 @@ namespace Fantasy_Kingdoms_Battle
         // Рисование кадра главной формы
         private void DrawFrame()
         {
+//            if (inDrawFrame)
+//                return;
             Debug.Assert(inDrawFrame == false);
 
             inDrawFrame = true;
