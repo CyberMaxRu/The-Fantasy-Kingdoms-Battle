@@ -16,6 +16,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private readonly VCLabelM2 lblName;
         protected readonly VCImage imgIcon;
+        protected readonly VCSeparator separator;
         protected VCTabControl pageControl;
 
         public PanelBaseInfo(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
@@ -31,11 +32,13 @@ namespace Fantasy_Kingdoms_Battle
             imgIcon = new VCImage(this, FormMain.Config.GridSize, lblName.NextTop(), Program.formMain.imListObjectsBig, -1);
             imgIcon.ShowHint += ImgIcon_ShowHint;
 
-            pageControl = new VCTabControl(this, FormMain.Config.GridSize, TopForControls(), Program.formMain.ilGui)
+            separator = new VCSeparator(this, FormMain.Config.GridSize, TopForControls());
+
+            pageControl = new VCTabControl(this, FormMain.Config.GridSize, separator.NextTop(), Program.formMain.ilGui)
             {
                 //Parent = this,
                 Width = Width - FormMain.Config.GridSize * 2,
-                Height = Height - TopForControls() - FormMain.Config.GridSize
+                Height = Height - separator.NextTop() - FormMain.Config.GridSize
             };
         }
 
@@ -49,6 +52,7 @@ namespace Fantasy_Kingdoms_Battle
             base.ArrangeControls();
 
             lblName.Width = Width - FormMain.Config.GridSize * 2;
+            separator.Width = lblName.Width;
         }
 
         // Используемые потомками методы

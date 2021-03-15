@@ -53,7 +53,8 @@ namespace Fantasy_Kingdoms_Battle
             panelWeapon = new VCCell(this, FormMain.Config.GridSize, lblKindHero.NextTop());
             panelArmour = new VCCell(this, panelWeapon.NextLeft(), panelWeapon.ShiftY);
 
-            pageControl.ShiftY = panelWeapon.NextTop();
+            separator.ShiftY = panelWeapon.NextTop();
+            pageControl.ShiftY = separator.NextTop();
             pageControl.AddTab("Статистика", FormMain.GUI_SCROLL, null);
             pageControl.AddTab("Инвентарь", FormMain.GUI_INVENTORY, panelInventory);
             pageControl.AddTab("Способности и навыки", FormMain.GUI_TARGET, panelAbilitiesAndSecSkills);

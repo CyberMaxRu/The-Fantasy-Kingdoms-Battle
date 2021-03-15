@@ -27,7 +27,8 @@ namespace Fantasy_Kingdoms_Battle
             lblGold.BitmapList = Program.formMain.ilGui16;
             lblGold.ImageIndex = FormMain.GUI_16_GOLD;
 
-            pageControl.ShiftY = lblGold.NextTop();
+            separator.ShiftY = lblGold.NextTop();
+            pageControl.ShiftY = separator.NextTop();
             pageControl.AddTab("Товары", FormMain.GUI_GOODS, panelProducts);
             pageControl.AddTab("Склад", FormMain.GUI_INVENTORY, panelWarehouse);
             pageControl.AddTab("Жители", FormMain.GUI_HOME, panelInhabitants);
