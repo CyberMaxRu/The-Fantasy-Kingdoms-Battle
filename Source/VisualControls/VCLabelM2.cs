@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using System.Drawing;
+using System.Diagnostics;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -73,6 +74,8 @@ namespace Fantasy_Kingdoms_Battle
                         break;
                 }
 
+                Debug.Assert(x >= Left);
+
                 switch (StringFormat.LineAlignment)
                 {
                     case StringAlignment.Near:
@@ -85,6 +88,7 @@ namespace Fantasy_Kingdoms_Battle
                         y = Top + Height - bmpPreparedText.Height;
                         break;
                 }
+                //Debug.Assert(y >= Top);
 
                 g.DrawImageUnscaled(bmpPreparedText, x, y);
             }
