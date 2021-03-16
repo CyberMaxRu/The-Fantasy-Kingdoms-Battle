@@ -15,7 +15,7 @@ namespace Fantasy_Kingdoms_Battle
 
         public VCWindowCaption(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
-            labelCaption = new VCLabelM2(this, WidthCap(), -2, Program.formMain.fontBigCaption, Color.MediumAquamarine, GetBitmap().Height, "");
+            labelCaption = new VCLabelM2(this, WidthCap(), -1, Program.formMain.fontBigCaption, Color.MediumAquamarine, GetBitmap().Height, "");
             labelCaption.StringFormat.Alignment = StringAlignment.Center;
             labelCaption.StringFormat.LineAlignment = StringAlignment.Center;
             labelCaption.Visible = false;
