@@ -4,16 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Windows.Threading;
+using System.Windows.Forms;
 
 namespace Fantasy_Kingdoms_Battle
 {
     // Визуальный контрол - окно
-    internal class VCForm : VisualControl
+    internal abstract class VCForm : VisualControl
     {
+        private DispatcherFrame frame;
         protected VisualControl ClientControl;
         private Bitmap bmpBackground;
         protected readonly VCWindowCaption windowCaption;
         private VisualLayer layer;
+        private DialogResult dialogResult;
 
         public VCForm()
         {
@@ -25,7 +29,7 @@ namespace Fantasy_Kingdoms_Battle
 
             layer = Program.formMain.AddLayer(this);
         }
-
+       
         internal virtual void AdjustSize()
         {
             if ((Width != 14 + ClientControl.Width + 14) || (Height != 13 + 24 + ClientControl.Height + 14))
@@ -62,15 +66,29 @@ namespace Fantasy_Kingdoms_Battle
             base.Draw(g);
         }
 
-        internal void CloseForm()
+        internal void CloseForm(DialogResult dr)
         {
+            dialogResult = dr;
             Program.formMain.RemoveLayer(layer);
+            frame.Continue = false;
 
         }
         internal void ToCentre()
         {
             SetPos((Program.formMain.sizeGamespace.Width - Width) / 2, (Program.formMain.sizeGamespace.Height - Height) / 2);
             ArrangeControls();
+        }
+
+        internal DialogResult ShowModal()
+        {
+            AdjustSize();
+            ToCentre();
+            Program.formMain.LayerChanged();
+
+            frame = new DispatcherFrame();
+            Dispatcher.PushFrame(frame);
+
+            return dialogResult;
         }
     }
 }

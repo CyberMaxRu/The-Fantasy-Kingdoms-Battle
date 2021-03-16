@@ -21,6 +21,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly string dirResources;
 
         internal bool gameStarted = false;
+        internal bool inQuit = false;
 
         // Проигрывание звуков и музыки 
         SoundPlayer spSoundSelect = new SoundPlayer();
@@ -46,6 +47,7 @@ namespace Fantasy_Kingdoms_Battle
         private VisualControl vcDebugInfo;
         private VCLabel labelTimeDrawFrame;
         private VCLabel labelTimePaintFrame;
+        private VCLabel labelLayers;
         private DateTime startDebugAction;
         private TimeSpan durationDrawFrame;
         private TimeSpan durationPaintFrame;
@@ -501,6 +503,9 @@ namespace Fantasy_Kingdoms_Battle
                 labelTimePaintFrame = new VCLabel(vcDebugInfo, labelTimeDrawFrame.ShiftX, labelTimeDrawFrame.NextTop(), Config.FontToolbar, Color.White, 16, "Paint frame: 00000");
                 labelTimePaintFrame.StringFormat.Alignment = StringAlignment.Near;
                 labelTimePaintFrame.Visible = false;
+                labelLayers = new VCLabel(vcDebugInfo, labelTimeDrawFrame.ShiftX, labelTimePaintFrame.NextTop(), Config.FontToolbar, Color.White, 16, "Layers");
+                labelLayers.Visible = false;
+                labelLayers.StringFormat.Alignment = StringAlignment.Near;
                 vcDebugInfo.ArrangeControls();
                 vcDebugInfo.ApplyMaxSize();
 
@@ -683,6 +688,7 @@ namespace Fantasy_Kingdoms_Battle
             debugMode = !debugMode;
             labelTimeDrawFrame.Visible = debugMode;
             labelTimePaintFrame.Visible = debugMode;
+            labelLayers.Visible = debugMode;
             ShowFrame(true);
         }
 
@@ -931,9 +937,12 @@ namespace Fantasy_Kingdoms_Battle
 
         internal VisualLayer AddLayer(VisualControl vc)
         {
+            Debug.Assert(Layers.Count <= 5);
+            Debug.Assert(currentLayer.Controls.Count > 0);
+
             VisualLayer vl = new VisualLayer();
             Layers.Add(vl);
-            vl.Controls.Add(vc);
+            vl.AddControl(vc);
             currentLayer = vl;
 
             return vl;
@@ -941,7 +950,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void RemoveLayer(VisualLayer vl)
         {
-            Debug.Assert(Layers.Count > 2);
+            Debug.Assert(Layers.Count >= 2);
             Debug.Assert(Layers[Layers.Count - 1] == vl);
 
             Layers.Remove(vl);
@@ -950,19 +959,9 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnHelp_Click(object sender, EventArgs e)
         {
-            VisualLayer vl = new VisualLayer();
-            Layers.Add(vl);
-
-            FormConfirmExit f = new FormConfirmExit();
-            f.AdjustSize();
-            f.ToCentre();
-            vl.Controls.Add(f);
-
-            ShowFrame(true);
-
-            /*FormAbout f = new FormAbout();
+            FormAbout f = new FormAbout();
             f.ShowDialog();
-            f.Dispose();*/
+            f.Dispose();
         }
 
         private void BtnQuit_Click(object sender, EventArgs e)
@@ -974,10 +973,20 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.OnFormClosing(e);
 
-            FormConfirmExit f = new FormConfirmExit();
+            if (!inQuit)
+            {
+                inQuit = true;
+                FormConfirmExit f = new FormConfirmExit();
+                e.Cancel = f.ShowModal() == DialogResult.No;
+                inQuit = false;
+            }
+            else
+                e.Cancel = true;
+        }
 
-
-            //e.Cancel = MessageBox.Show("Выйти из игры?", NAME_PROJECT, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No;
+        internal void LayerChanged()
+        {
+            ShowFrame(true);
         }
 
         private void ArrangeControls()
@@ -1623,18 +1632,19 @@ namespace Fantasy_Kingdoms_Battle
                 if (debugMode)
                     startDebugAction = DateTime.Now;
 
-                DrawFrame();// Готовим кадр
                 if (debugMode && (controlWithHint != null) && (controlWithHint != MainControl))
                 {
                     gfxFrame.DrawRectangle(penDebugBorder, controlWithHint.Rectangle);
+                    labelLayers.Text = $"Layers: {Layers.Count}";
                 }
+
+                DrawFrame();// Готовим кадр
 
                 if (debugMode)
                 {
                     durationDrawFrame = DateTime.Now - startDebugAction;
                     labelTimeDrawFrame.Text = "Draw frame: " + durationDrawFrame.TotalMilliseconds.ToString();
                     labelTimePaintFrame.Text = "Paint frame: " + durationPaintFrame.TotalMilliseconds.ToString();
-                    vcDebugInfo.Draw(gfxFrame);
 
                     startDebugAction = DateTime.Now;
                 }

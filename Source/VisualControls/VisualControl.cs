@@ -23,7 +23,7 @@ namespace Fantasy_Kingdoms_Battle
 
         public VisualControl(VisualLayer vl)
         {
-            vl.Controls.Add(this);
+            vl.AddControl(this);
         }
 
         public VisualControl(VisualControl parent, int shiftX, int shiftY)

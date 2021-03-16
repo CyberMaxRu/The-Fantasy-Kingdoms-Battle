@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -22,8 +23,20 @@ namespace Fantasy_Kingdoms_Battle
 
             bntOk = new VCButton(ClientControl, 0, 100, "Да");
             bntOk.Width = 160;
+            bntOk.Click += BntOk_Click;
             bntCancel = new VCButton(ClientControl, 200, 100, "Нет");
             bntCancel.Width = 160;
+            bntCancel.Click += BntCancel_Click;
+        }
+
+        private void BntCancel_Click(object sender, EventArgs e)
+        {
+            CloseForm(DialogResult.No);
+        }
+
+        private void BntOk_Click(object sender, EventArgs e)
+        {
+            CloseForm(DialogResult.Yes);
         }
 
         internal override void AdjustSize()

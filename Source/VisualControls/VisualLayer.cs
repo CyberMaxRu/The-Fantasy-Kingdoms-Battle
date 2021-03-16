@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Diagnostics;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -19,6 +20,14 @@ namespace Fantasy_Kingdoms_Battle
                 if (vc.Visible)
                     vc.Draw(g);
             }
+        }
+
+        internal void AddControl(VisualControl vc)
+        {
+            Debug.Assert(vc != null);
+            Debug.Assert(Controls.IndexOf(vc) == -1);
+
+            Controls.Add(vc);
         }
     }
 }
