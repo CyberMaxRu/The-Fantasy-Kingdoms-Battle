@@ -75,7 +75,7 @@ namespace Fantasy_Kingdoms_Battle
         }
         internal void ToCentre()
         {
-            SetPos((Program.formMain.sizeGamespace.Width - Width) / 2, (Program.formMain.sizeGamespace.Height - Height) / 2);
+            SetPos(Program.formMain.ShiftControls.X + (Program.formMain.sizeGamespace.Width - Width) / 2, Program.formMain.ShiftControls.Y + (Program.formMain.sizeGamespace.Height - Height - 13) / 2);
             ArrangeControls();
         }
 

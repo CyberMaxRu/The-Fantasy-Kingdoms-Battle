@@ -198,7 +198,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly M2Font fontParagraph;
 
         internal Size sizeGamespace { get; set; }
-        private Point shiftControls;
+        internal Point ShiftControls { get; set; }
 
         private bool inDrawFrame = false;
         private bool needRedrawFrame;
@@ -991,23 +991,22 @@ namespace Fantasy_Kingdoms_Battle
 
         private void ArrangeControls()
         {
-            shiftControls = new Point(0, 0);
+            ShiftControls = new Point(0, 0);
 
             if (Settings.FullScreenMode)
             {
-                shiftControls.X = (ClientSize.Width - sizeGamespace.Width) / 2;
-                shiftControls.Y = (ClientSize.Height - sizeGamespace.Height) / 2;
+                ShiftControls = new Point((ClientSize.Width - sizeGamespace.Width) / 2, (ClientSize.Height - sizeGamespace.Height) / 2);
 
-                Debug.Assert(shiftControls.X >= 0);
-                Debug.Assert(shiftControls.Y >= 0);
+                Debug.Assert(ShiftControls.X >= 0);
+                Debug.Assert(ShiftControls.Y >= 0);
             }
             else
             {
                 Size = new Size(Width - ClientSize.Width + sizeGamespace.Width, Height - ClientSize.Height + sizeGamespace.Height);
             }
 
-            TopControl.SetPos((ClientSize.Width - TopControl.Width) / 2, shiftControls.Y);
-            MainControl.SetPos(shiftControls.X, TopControl.Top + TopControl.Height + Config.GridSize);
+            TopControl.SetPos((ClientSize.Width - TopControl.Width) / 2, ShiftControls.Y);
+            MainControl.SetPos(ShiftControls.X, TopControl.Top + TopControl.Height + Config.GridSize);
             MainControl.ArrangeControls();
 
             AdjustPanelLairsWithFlags();
@@ -1630,15 +1629,17 @@ namespace Fantasy_Kingdoms_Battle
                 needRedrawFrame = false;
 
                 if (debugMode)
-                    startDebugAction = DateTime.Now;
-
-                if (debugMode && (controlWithHint != null) && (controlWithHint != MainControl))
                 {
-                    gfxFrame.DrawRectangle(penDebugBorder, controlWithHint.Rectangle);
+                    startDebugAction = DateTime.Now;
                     labelLayers.Text = $"Layers: {Layers.Count}";
                 }
 
                 DrawFrame();// Готовим кадр
+
+                if (debugMode && (controlWithHint != null) && (controlWithHint != MainControl))
+                {
+                    gfxFrame.DrawRectangle(penDebugBorder, controlWithHint.Rectangle);
+                }
 
                 if (debugMode)
                 {
