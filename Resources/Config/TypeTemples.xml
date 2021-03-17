@@ -16,7 +16,7 @@
         <Pos>1</Pos>
         <Cost>3000</Cost>
         <Income>0</Income>
-        <MaxHeroes>14</MaxHeroes>
+        <MaxHeroes>2</MaxHeroes>
         <Requirements>
           <Requirement>
             <TypeConstruction>Castle</TypeConstruction>
@@ -46,7 +46,7 @@
         <Pos>1</Pos>
         <Cost>3000</Cost>
         <Income>0</Income>
-        <MaxHeroes>14</MaxHeroes>
+        <MaxHeroes>2</MaxHeroes>
         <Requirements>
           <Requirement>
             <TypeConstruction>Castle</TypeConstruction>
@@ -76,7 +76,7 @@
         <Pos>1</Pos>
         <Cost>3000</Cost>
         <Income>0</Income>
-        <MaxHeroes>14</MaxHeroes>
+        <MaxHeroes>2</MaxHeroes>
         <Requirements>
           <Requirement>
             <TypeConstruction>Castle</TypeConstruction>
@@ -106,7 +106,7 @@
         <Pos>1</Pos>
         <Cost>3000</Cost>
         <Income>0</Income>
-        <MaxHeroes>14</MaxHeroes>
+        <MaxHeroes>2</MaxHeroes>
         <Requirements>
           <Requirement>
             <TypeConstruction>Castle</TypeConstruction>
@@ -136,7 +136,7 @@
         <Pos>1</Pos>
         <Cost>3000</Cost>
         <Income>0</Income>
-        <MaxHeroes>14</MaxHeroes>
+        <MaxHeroes>2</MaxHeroes>
         <Requirements>
           <Requirement>
             <TypeConstruction>Castle</TypeConstruction>
@@ -166,7 +166,7 @@
         <Pos>1</Pos>
         <Cost>3000</Cost>
         <Income>0</Income>
-        <MaxHeroes>14</MaxHeroes>
+        <MaxHeroes>2</MaxHeroes>
         <Requirements>
           <Requirement>
             <TypeConstruction>Castle</TypeConstruction>
@@ -196,7 +196,7 @@
         <Pos>1</Pos>
         <Cost>3000</Cost>
         <Income>0</Income>
-        <MaxHeroes>14</MaxHeroes>
+        <MaxHeroes>2</MaxHeroes>
         <Requirements>
           <Requirement>
             <TypeConstruction>Castle</TypeConstruction>
@@ -226,7 +226,7 @@
         <Pos>1</Pos>
         <Cost>3000</Cost>
         <Income>0</Income>
-        <MaxHeroes>14</MaxHeroes>
+        <MaxHeroes>2</MaxHeroes>
         <Requirements>
           <Requirement>
             <TypeConstruction>Castle</TypeConstruction>
@@ -256,7 +256,7 @@
         <Pos>1</Pos>
         <Cost>3000</Cost>
         <Income>0</Income>
-        <MaxHeroes>14</MaxHeroes>
+        <MaxHeroes>2</MaxHeroes>
         <Requirements>
           <Requirement>
             <TypeConstruction>Castle</TypeConstruction>

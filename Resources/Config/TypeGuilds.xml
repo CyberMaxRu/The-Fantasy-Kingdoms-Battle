@@ -17,19 +17,19 @@
         <Pos>1</Pos>
         <Cost>550</Cost>
         <Income>0</Income>
-        <MaxHeroes>14</MaxHeroes>
+        <MaxHeroes>5</MaxHeroes>
       </Level>
       <Level>
         <Pos>2</Pos>
         <Cost>550</Cost>
         <Income>0</Income>
-        <MaxHeroes>14</MaxHeroes>
+        <MaxHeroes>5</MaxHeroes>
       </Level>
       <Level>
         <Pos>3</Pos>
         <Cost>550</Cost>
         <Income>0</Income>
-        <MaxHeroes>14</MaxHeroes>
+        <MaxHeroes>5</MaxHeroes>
       </Level>
     </Levels>
     <Researches>
@@ -91,19 +91,19 @@
         <Pos>1</Pos>
         <Cost>450</Cost>
         <Income>0</Income>
-        <MaxHeroes>14</MaxHeroes>
+        <MaxHeroes>5</MaxHeroes>
       </Level>
       <Level>
         <Pos>2</Pos>
         <Cost>450</Cost>
         <Income>0</Income>
-        <MaxHeroes>14</MaxHeroes>
+        <MaxHeroes>5</MaxHeroes>
       </Level>
       <Level>
         <Pos>3</Pos>
         <Cost>450</Cost>
         <Income>0</Income>
-        <MaxHeroes>14</MaxHeroes>
+        <MaxHeroes>5</MaxHeroes>
       </Level>
     </Levels>
     <Researches>
@@ -165,19 +165,19 @@
         <Pos>1</Pos>
         <Cost>700</Cost>
         <Income>0</Income>
-        <MaxHeroes>14</MaxHeroes>
+        <MaxHeroes>5</MaxHeroes>
       </Level>
       <Level>
         <Pos>2</Pos>
         <Cost>700</Cost>
         <Income>0</Income>
-        <MaxHeroes>14</MaxHeroes>
+        <MaxHeroes>5</MaxHeroes>
       </Level>
       <Level>
         <Pos>3</Pos>
         <Cost>700</Cost>
         <Income>0</Income>
-        <MaxHeroes>14</MaxHeroes>
+        <MaxHeroes>5</MaxHeroes>
       </Level>
     </Levels>
     <Researches>
@@ -239,13 +239,13 @@
         <Pos>1</Pos>
         <Cost>1000</Cost>
         <Income>0</Income>
-        <MaxHeroes>14</MaxHeroes>
+        <MaxHeroes>5</MaxHeroes>
       </Level>
       <Level>
         <Pos>2</Pos>
         <Cost>1000</Cost>
         <Income>0</Income>
-        <MaxHeroes>14</MaxHeroes>
+        <MaxHeroes>5</MaxHeroes>
         <Requirements>
           <Requirement>
             <TypeConstruction>Castle</TypeConstruction>
@@ -257,7 +257,7 @@
         <Pos>3</Pos>
         <Cost>1000</Cost>
         <Income>0</Income>
-        <MaxHeroes>14</MaxHeroes>
+        <MaxHeroes>5</MaxHeroes>
         <Requirements>
           <Requirement>
             <TypeConstruction>Castle</TypeConstruction>
@@ -339,13 +339,13 @@
         <Pos>1</Pos>
         <Cost>2500</Cost>
         <Income>0</Income>
-        <MaxHeroes>14</MaxHeroes>
+        <MaxHeroes>5</MaxHeroes>
       </Level>
       <Level>
         <Pos>2</Pos>
         <Cost>2500</Cost>
         <Income>0</Income>
-        <MaxHeroes>14</MaxHeroes>
+        <MaxHeroes>5</MaxHeroes>
         <Requirements>
           <Requirement>
             <TypeConstruction>Castle</TypeConstruction>
@@ -361,7 +361,7 @@
         <Pos>3</Pos>
         <Cost>2500</Cost>
         <Income>0</Income>
-        <MaxHeroes>14</MaxHeroes>
+        <MaxHeroes>5</MaxHeroes>
         <Requirements>
           <Requirement>
             <TypeConstruction>Castle</TypeConstruction>
@@ -427,13 +427,13 @@
         <Pos>1</Pos>
         <Cost>2000</Cost>
         <Income>0</Income>
-        <MaxHeroes>14</MaxHeroes>
+        <MaxHeroes>5</MaxHeroes>
       </Level>
       <Level>
         <Pos>2</Pos>
         <Cost>2000</Cost>
         <Income>0</Income>
-        <MaxHeroes>14</MaxHeroes>
+        <MaxHeroes>5</MaxHeroes>
         <Requirements>
           <Requirement>
             <TypeConstruction>Castle</TypeConstruction>
@@ -449,7 +449,7 @@
         <Pos>3</Pos>
         <Cost>2500</Cost>
         <Income>0</Income>
-        <MaxHeroes>14</MaxHeroes>
+        <MaxHeroes>5</MaxHeroes>
         <Requirements>
           <Requirement>
             <TypeConstruction>Castle</TypeConstruction>
@@ -509,19 +509,19 @@
         <Pos>1</Pos>
         <Cost>450</Cost>
         <Income>0</Income>
-        <MaxHeroes>14</MaxHeroes>
+        <MaxHeroes>5</MaxHeroes>
       </Level>
       <Level>
         <Pos>2</Pos>
         <Cost>450</Cost>
         <Income>0</Income>
-        <MaxHeroes>14</MaxHeroes>
+        <MaxHeroes>5</MaxHeroes>
       </Level>
       <Level>
         <Pos>3</Pos>
         <Cost>450</Cost>
         <Income>0</Income>
-        <MaxHeroes>14</MaxHeroes>
+        <MaxHeroes>5</MaxHeroes>
       </Level>
     </Levels>
     <Researches>
