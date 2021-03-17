@@ -28,8 +28,8 @@ namespace Fantasy_Kingdoms_Battle
                 FullScreenMode = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Game/FullScreenMode"), FullScreenMode);
                 CheckUpdateOnStartup = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Game/CheckUpdatesOnStartup"), CheckUpdateOnStartup);
 
-                BattlefieldShowPath = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Battlefield/ShowPath"), false);
-                BattlefieldShowGrid = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Battlefield/ShowGrid"), false);
+                BattlefieldShowPath = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Battlefield/ShowPath"), BattlefieldShowPath);
+                BattlefieldShowGrid = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Battlefield/ShowGrid"), BattlefieldShowGrid);
 
                 NamePlayer = XmlUtils.GetString(doc.SelectSingleNode("Settings/Player/Name"));
                 if (NamePlayer.Length == 0)
