@@ -186,14 +186,6 @@ namespace Fantasy_Kingdoms_Battle
             //foreach (TypeLair l in TypeLairs)
             //    l.TuneDeferredLinks();
 
-            // Загрузка навыков
-            xmlDoc = CreateXmlDocument("Config\\Skills.xml");
-
-            foreach (XmlNode n in xmlDoc.SelectNodes("/Skills/Skill"))
-            {
-                Skills.Add(new Skill(n));
-            }
-
             // Вспомогательные методы
             XmlDocument CreateXmlDocument(string pathToXml)
             {
@@ -225,7 +217,6 @@ namespace Fantasy_Kingdoms_Battle
         internal List<Item> Items { get; } = new List<Item>();
         internal List<GroupWeapon> GroupWeapons { get; } = new List<GroupWeapon>();
         internal List<GroupArmour> GroupArmours { get; } = new List<GroupArmour>();
-        internal List<Skill> Skills { get; } = new List<Skill>();
         internal int MaxLevelSkill { get; }
         internal List<TypeCreature> TypeCreatures { get; } = new List<TypeCreature>();
 
@@ -318,19 +309,6 @@ namespace Fantasy_Kingdoms_Battle
         internal Pen PenSelectedBorder { get; private set; }
 
         //
-        internal Skill FindSkill(string ID)
-        {
-            foreach (Skill s in Skills)
-            {
-                if (s.ID == ID)
-                {
-                    return s;
-                }
-            }
-
-            throw new Exception("Навык " + ID + " не найден.");
-        }
-
         internal TypeConstruction FindTypeConstructionOfKingdom(string ID)
         {
             foreach (TypeConstruction tck in TypeConstructionsOfKingdom)
