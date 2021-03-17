@@ -24,9 +24,9 @@ namespace Fantasy_Kingdoms_Battle
                 XmlDocument doc = new XmlDocument();
                 doc.Load(path + "Settings.xml");
 
-                ShowSplashVideo = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Game/ShowSplashVideo"), true);
-                FullScreenMode = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Game/FullScreenMode"), true);
-                CheckUpdateOnStartup = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Game/CheckUpdatesOnStartup"), true);
+                ShowSplashVideo = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Game/ShowSplashVideo"), ShowSplashVideo);
+                FullScreenMode = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Game/FullScreenMode"), FullScreenMode);
+                CheckUpdateOnStartup = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Game/CheckUpdatesOnStartup"), CheckUpdateOnStartup);
 
                 BattlefieldShowPath = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Battlefield/ShowPath"), false);
                 BattlefieldShowGrid = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Battlefield/ShowGrid"), false);
@@ -48,7 +48,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal bool ShowSplashVideo { get; set; } = true;
-        internal bool FullScreenMode { get; set; } = false;
+        internal bool FullScreenMode { get; set; } = true;
         internal bool CheckUpdateOnStartup { get; set; } = true;
         internal bool BattlefieldShowPath { get; set; } = false;
         internal bool BattlefieldShowGrid { get; set; } = false;
