@@ -384,6 +384,7 @@
       <Ability>MagicBasicAttack</Ability>
       <Ability>MageArcaneShield</Ability>
       <Ability>MageSummonSerpent</Ability>
+      <Ability>MageSummonDragon</Ability>
     </Abilities>
     <CarryItems>
       <Item MaxQuantity="5">PotionOfHealth</Item>

@@ -473,13 +473,32 @@
   </Ability>
   <Ability>
     <ID>MageSummonSerpent</ID>
-    <Name>Вызов змея</Name>
+    <Name>Вызов змея Мудрости</Name>
     <Description>- Вызывает змея-союзника/- Требует маны</Description>
     <ImageIndex>61</ImageIndex>
     <Cost>20</Cost>
     <TypeAbility>Buff</TypeAbility>
     <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>15</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>20</CoolDown>
+    <ManaCost>10</ManaCost>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Mage</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>MageSummonDragon</ID>
+    <Name>Вызов дракона Мудрости</Name>
+    <Description>- Вызывает дракона-союзника/- Требует маны</Description>
+    <ImageIndex>99</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Buff</TypeAbility>
+    <TypeTarget>Self</TypeTarget>
+    <MinUnitLevel>25</MinUnitLevel>
     <Ranged>False</Ranged>
     <AoeRadius>0</AoeRadius>
     <SkillModif>1,0</SkillModif>
