@@ -661,6 +661,10 @@ namespace Fantasy_Kingdoms_Battle
                 };
                 timerHover.Tick += TimerHover_Tick;
 
+                // Курсор
+                CustomCursor.CreateCursor(dirResources + @"Cursor\Cursor_simple.png");
+                Cursor = CustomCursor.GetCursor();
+
                 //
                 Location = new Point((Screen.PrimaryScreen.WorkingArea.Width - Width) / 2, (Screen.PrimaryScreen.WorkingArea.Height - Height) / 2);
 

@@ -65,6 +65,7 @@
     <Compile Include="BattleParticipant.cs" />
     <Compile Include="BitmapBorder.cs" />
     <Compile Include="BitmapList.cs" />
+    <Compile Include="CustomCursor.cs" />
     <Compile Include="M2Font.cs" />
     <Compile Include="PanelCreatureInfo.cs" />
     <Compile Include="PanelMonsterInfo.cs" />
@@ -265,7 +266,6 @@
     <Content Include="Resources\Config\Items.xml" />
     <Content Include="Resources\Config\TypeHeroes.xml" />
     <Content Include="Resources\Config\TypeEconomicConstructions.xml" />
-    <Content Include="Resources\Config\Skills.xml" />
     <Content Include="Resources\Config\Settings.xml" />
     <Content Include="Resources\Config\Weapons.xml" />
     <Content Include="Resources\Versions.xml" />
