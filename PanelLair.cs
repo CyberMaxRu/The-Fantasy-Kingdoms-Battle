@@ -26,6 +26,7 @@ namespace Fantasy_Kingdoms_Battle
             lblName = new VCLabelM2(this, FormMain.Config.GridSize, FormMain.Config.GridSize - 3, Program.formMain.fontMedCaptionC, Color.Transparent, FormMain.Config.GridSize * 3, "");
             lblName.StringFormat.Alignment = StringAlignment.Center;
             lblName.ShowBorder = true;
+            lblName.Click += ImgLair_Click;
 
             imgLair = new VCImage(this, FormMain.Config.GridSize, lblName.NextTop(), Program.formMain.imListObjectsBig, typeLair.ImageIndex);
             imgLair.ShowBorder = false;

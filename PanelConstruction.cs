@@ -30,6 +30,7 @@ namespace Fantasy_Kingdoms_Battle
             lblName.StringFormat.Alignment = StringAlignment.Center;
             lblName.Text = typeConstruction.Name;
             lblName.ShowBorder = true;
+            lblName.Click += ImageConstruction_Click;
 
             imageConstruction = new VCImage(this, FormMain.Config.GridSize, lblName.NextTop(), Program.formMain.imListObjectsBig, -1);
             imageConstruction.ShowBorder = false;
