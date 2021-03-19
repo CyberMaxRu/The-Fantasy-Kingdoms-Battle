@@ -31,7 +31,8 @@ namespace Fantasy_Kingdoms_Battle
         BitmapList ICell.BitmapList() => Program.formMain.ilItems;
         bool ICell.NormalImage() => true;
         int ICell.ImageIndex() => Item.ImageIndex;
-        int ICell.Value() => !OwnerIsPlayer ? 0 : Quantity;
+        int ICell.Level() => 0;
+        int ICell.Quantity() => !OwnerIsPlayer ? 0 : Quantity;
 
         void ICell.PrepareHint()
         {

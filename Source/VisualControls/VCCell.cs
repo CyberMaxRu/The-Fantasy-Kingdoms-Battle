@@ -10,7 +10,8 @@ namespace Fantasy_Kingdoms_Battle
         BitmapList BitmapList();
         int ImageIndex();
         bool NormalImage();
-        int Value();
+        int Level();
+        int Quantity();
         void PrepareHint();
         void Click(VCCell pe);
         void CustomDraw(Graphics g, int x, int y, bool drawState);
@@ -86,7 +87,8 @@ namespace Fantasy_Kingdoms_Battle
                     BitmapList = cell.BitmapList();
                     ImageIndex = cell.ImageIndex();
                     //ImageState = cell.NormalImage() ? ImageState.Normal : ImageState.Disabled;
-                    Quantity = cell.Value();
+                    Quantity = cell.Quantity();
+                    Level = cell.Level();
 
                     Debug.Assert(BitmapList.Size == 48);
                 }

@@ -22,6 +22,7 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep1Header(Name, "Специализация", Description);
         }
 
-        protected override int GetValue() => 0;
+        protected override int GetLevel() => 0;
+        protected override int GetQuantity() => 0;
     }
 }

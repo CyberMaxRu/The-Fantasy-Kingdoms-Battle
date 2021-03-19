@@ -60,7 +60,8 @@ namespace Fantasy_Kingdoms_Battle
         BitmapList ICell.BitmapList() => Program.formMain.ilItems;
         int ICell.ImageIndex() => GroupWeapon.ImageIndex;
         bool ICell.NormalImage() => true;
-        int ICell.Value() => 0;
+        int ICell.Level() => 0;
+        int ICell.Quantity() => 0;
 
         void ICell.PrepareHint()
         {
@@ -124,10 +125,8 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        protected override int GetValue()
-        {
-            return 0;
-        }
+        protected override int GetLevel() => 0;
+        protected override int GetQuantity() => 0;
     }
 
     // Класс доспехов
@@ -172,7 +171,8 @@ namespace Fantasy_Kingdoms_Battle
         BitmapList ICell.BitmapList() => Program.formMain.ilItems;
         int ICell.ImageIndex() => GroupArmour.ImageIndex;
         bool ICell.NormalImage() => true;
-        int ICell.Value() => 0;
+        int ICell.Level() => 0;
+        int ICell.Quantity() => 0;
 
         void ICell.PrepareHint()
         {
@@ -234,9 +234,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        protected override int GetValue()
-        {
-            return 0;
-        }
+        protected override int GetLevel() => 0;
+        protected override int GetQuantity() => 0;
     }
 }

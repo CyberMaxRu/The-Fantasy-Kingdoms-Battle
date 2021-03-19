@@ -74,7 +74,8 @@ namespace Fantasy_Kingdoms_Battle
         internal int DefenseArcher { get; }
         internal int DefenseMagic { get; }
 
-        protected override int GetValue() => 0;
+        protected override int GetLevel() => 0;
+        protected override int GetQuantity() => 0;
         protected override void DoPrepareHint()
         {
             base.DoPrepareHint();

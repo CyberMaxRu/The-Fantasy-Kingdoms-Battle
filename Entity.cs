@@ -28,7 +28,8 @@ namespace Fantasy_Kingdoms_Battle
         internal int Cost { get; }
 
         // Методы для потомков для возврата значений в интерфейс
-        protected abstract int GetValue();
+        protected abstract int GetLevel();
+        protected abstract int GetQuantity();
         protected virtual void DoPrepareHint()
         {
             Program.formMain.formHint.AddStep1Header(Name, "", Description);
@@ -39,7 +40,8 @@ namespace Fantasy_Kingdoms_Battle
         BitmapList ICell.BitmapList() => Program.formMain.ilItems;
         int ICell.ImageIndex() => ImageIndex;
         bool ICell.NormalImage() => true;
-        int ICell.Value() => GetValue();
+        int ICell.Level() => GetLevel();
+        int ICell.Quantity() => GetQuantity();
 
         void ICell.PrepareHint() 
         {
