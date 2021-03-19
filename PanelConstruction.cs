@@ -26,9 +26,10 @@ namespace Fantasy_Kingdoms_Battle
 
             TypeConstruction = typeConstruction;            
 
-            lblName = new VCLabelM2(this, FormMain.Config.GridSize, FormMain.Config.GridSize - 3, Program.formMain.fontMedCaption, Color.Transparent, FormMain.Config.GridSize * 2, "");
-            lblName.StringFormat.Alignment = StringAlignment.Near;
+            lblName = new VCLabelM2(this, FormMain.Config.GridSize, FormMain.Config.GridSize - 3, Program.formMain.fontMedCaptionC, Color.Transparent, FormMain.Config.GridSize * 3, "");
+            lblName.StringFormat.Alignment = StringAlignment.Center;
             lblName.Text = typeConstruction.Name;
+            lblName.ShowBorder = true;
 
             imageConstruction = new VCImage(this, FormMain.Config.GridSize, lblName.NextTop(), Program.formMain.imListObjectsBig, -1);
             imageConstruction.ShowBorder = false;
