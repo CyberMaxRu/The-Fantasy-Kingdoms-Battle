@@ -46,7 +46,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<Entity> Items { get; } = new List<Entity>();// Товары, доступные в строении
         internal List<PlayerItem> Warehouse { get; } = new List<PlayerItem>();// Склад здания
 
-        internal void BuyOrUpgrade()
+        internal bool BuyOrUpgrade()
         {
             if ((Level < Building.MaxLevel) && (Player.Gold >= CostBuyOrUpgrade()) && (CheckRequirements() == true))
             {
@@ -56,7 +56,10 @@ namespace Fantasy_Kingdoms_Battle
                 Player.Constructed(this);
                 Level++;
                 ValidateHeroes();
+                return true;
             }
+
+            return false;
         }
 
         internal void ValidateHeroes()

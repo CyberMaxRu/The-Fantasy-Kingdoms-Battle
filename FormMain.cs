@@ -25,7 +25,10 @@ namespace Fantasy_Kingdoms_Battle
         internal bool inTreatMouse = false;
 
         // Проигрывание звуков и музыки 
-        SoundPlayer spSoundSelect = new SoundPlayer();
+        private readonly SoundPlayer spSoundSelect = new SoundPlayer();
+        private readonly System.Windows.Media.MediaPlayer mpSelectButton;
+        private readonly System.Windows.Media.MediaPlayer mpPushButton;
+        private readonly System.Windows.Media.MediaPlayer mpConstructionComplete;
 
         // ImageList'ы
         internal BitmapList blPlayerAvatars;
@@ -649,6 +652,14 @@ namespace Fantasy_Kingdoms_Battle
 
                 //
                 ActivatePage(pageGuilds);
+
+                //
+                mpSelectButton = new System.Windows.Media.MediaPlayer();
+                mpSelectButton.Open(new Uri(dirResources + @"Sound\Interface\Button\SelectButton.wav"));
+                mpPushButton = new System.Windows.Media.MediaPlayer();
+                mpPushButton.Open(new Uri(dirResources + @"Sound\Interface\Button\PushButton.wav"));
+                mpConstructionComplete = new System.Windows.Media.MediaPlayer();
+                mpConstructionComplete.Open(new Uri(dirResources + @"Sound\Interface\Construction\ConstructionComplete.wav"));
 
                 formHint = new FormHint(null, null);
                 //formHint = new FormHint(ilGui16, ilParameters);
@@ -1972,6 +1983,24 @@ namespace Fantasy_Kingdoms_Battle
             spSoundSelect.SoundLocation = dirResources + @"Sound\Interface\ConstructionSelect\" + filename;
             spSoundSelect.Load();
             spSoundSelect.Play();
+        }
+
+        internal void PlaySelectButton()
+        {
+            mpSelectButton.Stop();
+            mpSelectButton.Play();
+        }
+
+        internal void PlayPushButton()
+        {
+            mpPushButton.Stop();
+            mpPushButton.Play();
+        }
+
+        internal void PlayConstructionComplete()
+        {
+            mpConstructionComplete.Stop();
+            mpConstructionComplete.Play();
         }
 
         private Bitmap PrepareToolbar()
