@@ -55,6 +55,7 @@ namespace Fantasy_Kingdoms_Battle
         private DateTime startDebugAction;
         private TimeSpan durationDrawFrame;
         private TimeSpan durationPaintFrame;
+        private int playsSelectButton;
 
         // Контролы главного меню
         private Bitmap bmpFrame;// Готовый кадр
@@ -1650,7 +1651,7 @@ namespace Fantasy_Kingdoms_Battle
                 if (debugMode)
                 {
                     startDebugAction = DateTime.Now;
-                    labelLayers.Text = $"Layers: {Layers.Count}";
+                    labelLayers.Text = $"Layers: {Layers.Count}; PlaySelectButton: {playsSelectButton}";
                 }
 
                 DrawFrame();// Готовим кадр
@@ -1987,6 +1988,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void PlaySelectButton()
         {
+            playsSelectButton++;
             mpSelectButton.Stop();
             mpSelectButton.Play();
         }
