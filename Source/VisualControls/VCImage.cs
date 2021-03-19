@@ -16,6 +16,7 @@ namespace Fantasy_Kingdoms_Battle
         private VCLabelM2 labelPopupQuantity;
         private SolidBrush brushPopupQuantity;
         private const int sizePopupBackground = 18;
+        int shiftlabelLevel;
 
         private bool mouseClicked;
 
@@ -28,7 +29,8 @@ namespace Fantasy_Kingdoms_Battle
             labelCost.StringFormat.LineAlignment = StringAlignment.Far;
             labelCost.Visible = false;// Текст перекрывается иконкой. Поэтому рисуем вручную
 
-            labelLevel = new VCLabelM2(this, 0, FormMain.Config.GridSize, Program.formMain.fontMedCaptionC, FormMain.Config.CommonLevel, 16, "");
+            shiftlabelLevel = bitmapList.Size >= 128 ? FormMain.Config.GridSize : 6;
+            labelLevel = new VCLabelM2(this, 0, shiftlabelLevel - 2, Program.formMain.fontMedCaptionC, FormMain.Config.CommonLevel, 16, "");
             labelLevel.StringFormat.LineAlignment = StringAlignment.Near;
             labelLevel.StringFormat.Alignment = StringAlignment.Far;
             labelLevel.Visible = false;
@@ -202,6 +204,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.ArrangeControls();
 
+            labelQuantity.ShiftY = Height - 12;
             labelCost.ShiftY = Height - 16;
 
             labelPopupQuantity.ShiftX = Width - 13;
@@ -213,18 +216,9 @@ namespace Fantasy_Kingdoms_Battle
             Width = BitmapList.Size + (ShiftImageX * 2);
             Height = BitmapList.Size + (ShiftImageY * 2);
 
-            labelCost.Width = Width;
-
-            if (Width == 48)
-            {
-                labelLevel.Width = Width - FormMain.Config.GridSizeHalf;
-                labelLevel.ShiftY = FormMain.Config.GridSizeHalf;
-            }
-            else
-                labelLevel.Width = Width - FormMain.Config.GridSize;
-
+            labelLevel.Width = Width - shiftlabelLevel;
             labelQuantity.Width = Width - FormMain.Config.GridSizeHalf;
-            labelQuantity.ShiftY = Height - 12;
+            labelCost.Width = Width;
         }
     }
 }
