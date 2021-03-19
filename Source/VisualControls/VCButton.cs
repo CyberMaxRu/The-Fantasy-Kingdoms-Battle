@@ -20,7 +20,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Caption = caption;
 
-            labelCaption = new VCLabelM2(this, WidthCap(), 1, Program.formMain.fontCost, Color.White, GetBitmap().Height, "");
+            labelCaption = new VCLabelM2(this, WidthCap(), 1, Program.formMain.fontSmallC, Color.White, GetBitmap().Height, "");
             labelCaption.StringFormat.Alignment = StringAlignment.Center;
             labelCaption.StringFormat.LineAlignment = StringAlignment.Center;
             labelCaption.Visible = false;

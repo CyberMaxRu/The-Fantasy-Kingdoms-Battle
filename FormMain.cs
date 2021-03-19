@@ -191,7 +191,8 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly Bitmap bmpBandButtonHot;
         internal readonly Bitmap bmpBandButtonDisabled;
         private VCBitmap bmpPreparedToolbar;
-        internal readonly M2Font fontCost;
+        internal readonly M2Font fontSmall;
+        internal readonly M2Font fontSmallC;
         internal readonly M2Font fontMedCaptionC;
         internal readonly M2Font fontMedCaption;
         internal readonly M2Font fontBigCaption;
@@ -298,7 +299,8 @@ namespace Fantasy_Kingdoms_Battle
                     CheckForNewVersion();
                 }
 
-                fontCost = new M2Font(dirResources, "small_c");
+                fontSmall = new M2Font(dirResources, "small");
+                fontSmallC = new M2Font(dirResources, "small_c");
                 fontMedCaptionC = new M2Font(dirResources, "med_caption_c");
                 fontMedCaption = new M2Font(dirResources, "med_caption");
                 fontBigCaption = new M2Font(dirResources, "big_caption");

@@ -13,8 +13,9 @@ namespace Fantasy_Kingdoms_Battle
         private VCLabelM2 labelCost;
         private VCLabelM2 labelLevel;
         private VCLabelM2 labelQuantity;
-        private VCLabel labelPopupQuantity;
+        private VCLabelM2 labelPopupQuantity;
         private SolidBrush brushPopupQuantity;
+        private const int sizePopupBackground = 18;
 
         private bool mouseClicked;
 
@@ -23,7 +24,7 @@ namespace Fantasy_Kingdoms_Battle
             BitmapList = bitmapList;
             ImageIndex = imageIndex;
 
-            labelCost = new VCLabelM2(this, 0, Height - 12, Program.formMain.fontCost, FormMain.Config.CommonCost, 16, "");
+            labelCost = new VCLabelM2(this, 0, Height - 12, Program.formMain.fontSmallC, FormMain.Config.CommonCost, 16, "");
             labelCost.StringFormat.LineAlignment = StringAlignment.Far;
             labelCost.Visible = false;// Текст перекрывается иконкой. Поэтому рисуем вручную
 
@@ -37,9 +38,10 @@ namespace Fantasy_Kingdoms_Battle
             labelQuantity.StringFormat.Alignment = StringAlignment.Far;
             labelQuantity.Visible = false;
 
-            labelPopupQuantity = new VCLabel(this, Width - 7, -3, FormMain.Config.FontPopupQuantity, FormMain.Config.CommonPopupQuantity, 16, "");
+            labelPopupQuantity = new VCLabelM2(this, 0, 0, Program.formMain.fontSmall, FormMain.Config.CommonPopupQuantity, sizePopupBackground, "");
             labelPopupQuantity.StringFormat.LineAlignment = StringAlignment.Center;
             labelPopupQuantity.StringFormat.Alignment = StringAlignment.Center;
+            labelPopupQuantity.Width = sizePopupBackground;
             labelPopupQuantity.Visible = false;
 
             brushPopupQuantity = new SolidBrush(FormMain.Config.CommonPopupQuantityBack);
@@ -188,12 +190,22 @@ namespace Fantasy_Kingdoms_Battle
                 // Всплывающее количество 
                 if (PopupQuantity > 0)
                 {
-                    g.FillEllipse(brushPopupQuantity, Left + Width - 13, Top - 5, 18, 18);
+                    g.FillEllipse(brushPopupQuantity, Left + Width - 13, Top - 5, sizePopupBackground, sizePopupBackground);
 
                     labelPopupQuantity.Text = PopupQuantity.ToString();
                     labelPopupQuantity.Draw(g);
                 }
             }
+        }
+
+        internal override void ArrangeControls()
+        {
+            base.ArrangeControls();
+
+            labelCost.ShiftY = Height - 16;
+
+            labelPopupQuantity.ShiftX = Width - 13;
+            labelPopupQuantity.ShiftY = -5;
         }
 
         private void ValidateSize()
@@ -202,7 +214,6 @@ namespace Fantasy_Kingdoms_Battle
             Height = BitmapList.Size + (ShiftImageY * 2);
 
             labelCost.Width = Width;
-            labelCost.ShiftY = Height - 16;
 
             if (Width == 48)
             {
@@ -213,10 +224,7 @@ namespace Fantasy_Kingdoms_Battle
                 labelLevel.Width = Width - FormMain.Config.GridSize;
 
             labelQuantity.Width = Width - FormMain.Config.GridSizeHalf;
-            labelQuantity.ShiftY = Height - 12; 
-
-            labelPopupQuantity.Width = labelPopupQuantity.Height;
-            labelPopupQuantity.ShiftX = Width - 11;
+            labelQuantity.ShiftY = Height - 12;
         }
     }
 }
