@@ -27,12 +27,12 @@ namespace Fantasy_Kingdoms_Battle
             labelCost.StringFormat.LineAlignment = StringAlignment.Far;
             labelCost.Visible = false;// Текст перекрывается иконкой. Поэтому рисуем вручную
 
-            labelLevel = new VCLabelM2(this, 0, FormMain.Config.GridSize, Program.formMain.fontLevel, FormMain.Config.CommonLevel, 16, "");
+            labelLevel = new VCLabelM2(this, 0, FormMain.Config.GridSize, Program.formMain.fontMedCaptionC, FormMain.Config.CommonLevel, 16, "");
             labelLevel.StringFormat.LineAlignment = StringAlignment.Near;
             labelLevel.StringFormat.Alignment = StringAlignment.Far;
             labelLevel.Visible = false;
 
-            labelQuantity = new VCLabelM2(this, 0, FormMain.Config.GridSize, Program.formMain.fontLevel, FormMain.Config.CommonQuantity, 16, "");
+            labelQuantity = new VCLabelM2(this, 0, FormMain.Config.GridSize, Program.formMain.fontMedCaptionC, FormMain.Config.CommonQuantity, 16, "");
             labelQuantity.StringFormat.LineAlignment = StringAlignment.Far;
             labelQuantity.StringFormat.Alignment = StringAlignment.Far;
             labelQuantity.Visible = false;

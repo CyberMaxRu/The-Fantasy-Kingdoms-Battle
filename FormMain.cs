@@ -22,6 +22,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal bool gameStarted = false;
         internal bool inQuit = false;
+        internal bool inTreatMouse = false;
 
         // Проигрывание звуков и музыки 
         SoundPlayer spSoundSelect = new SoundPlayer();
@@ -191,7 +192,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly Bitmap bmpBandButtonDisabled;
         private VCBitmap bmpPreparedToolbar;
         internal readonly M2Font fontCost;
-        internal readonly M2Font fontLevel;
+        internal readonly M2Font fontMedCaptionC;
         internal readonly M2Font fontMedCaption;
         internal readonly M2Font fontBigCaption;
         internal readonly M2Font fontSmallBC;
@@ -298,7 +299,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
 
                 fontCost = new M2Font(dirResources, "small_c");
-                fontLevel = new M2Font(dirResources, "med_caption_c");
+                fontMedCaptionC = new M2Font(dirResources, "med_caption_c");
                 fontMedCaption = new M2Font(dirResources, "med_caption");
                 fontBigCaption = new M2Font(dirResources, "big_caption");
                 fontSmallBC = new M2Font(dirResources, "_small_b_c");
@@ -526,7 +527,7 @@ namespace Fantasy_Kingdoms_Battle
                 };
 
                 // Панель со всеми героями
-                panelCombatHeroes = new PanelWithPanelEntity(3, false, 8, 4);
+                panelCombatHeroes = new PanelWithPanelEntity(5, false, 8, 4);
                 panelCombatHeroes.ShiftY = btnEndTurn.NextTop();
                 MainControl.AddControl(panelCombatHeroes);
 
@@ -544,7 +545,7 @@ namespace Fantasy_Kingdoms_Battle
                 pageTournament.ShowHint += PageTournament_ShowHint;
                 pageTournament.Visible = false;
 
-                labelCaptionPage = new VCLabelM2(MainControl, 0, pageGuilds.ShiftY, fontMedCaption, Config.CommonCaptionPage, pageGuilds.Height, "");
+                labelCaptionPage = new VCLabelM2(MainControl, 0, pageGuilds.ShiftY, fontMedCaptionC, Config.CommonCaptionPage, pageGuilds.Height, "");
                 labelCaptionPage.Width = 240;
                 labelCaptionPage.StringFormat.Alignment = StringAlignment.Near;
                 labelCaptionPage.StringFormat.LineAlignment = StringAlignment.Center;
@@ -584,14 +585,12 @@ namespace Fantasy_Kingdoms_Battle
 
                 // Создаем меню
                 bitmapMenu = new VCBitmap(MainControl, 0, panelCombatHeroes.NextTop(), new Bitmap(dirResources + @"Icons\Menu.png"));
-                Debug.Assert(panelHeroInfo.Width >= bitmapMenu.Width);
+                //Debug.Assert(panelHeroInfo.Width >= bitmapMenu.Width);
 
                 CellsMenu = new VCMenuCell[PANEL_MENU_CELLS.Height, PANEL_MENU_CELLS.Width];
                 for (int y = 0; y < PANEL_MENU_CELLS.Height; y++)
                     for (int x = 0; x < PANEL_MENU_CELLS.Width; x++)
-                        CellsMenu[y, x] = new VCMenuCell(bitmapMenu, DISTANCE_BETWEEN_CELLS + (x * (ilItems.Size + DISTANCE_BETWEEN_CELLS)), DISTANCE_BETWEEN_CELLS + (y * (ilItems.Size + DISTANCE_BETWEEN_CELLS)), ilItems);
-
-                bitmapMenu.ShiftX = panelCombatHeroes.ShiftX;
+                        CellsMenu[y, x] = new VCMenuCell(bitmapMenu, 77 + (x * (ilItems.Size + DISTANCE_BETWEEN_CELLS)), 95 + (y * (ilItems.Size + DISTANCE_BETWEEN_CELLS)), ilItems);
 
                 //
                 Debug.Assert(panelBuildingInfo.Height > 0);
@@ -605,7 +604,7 @@ namespace Fantasy_Kingdoms_Battle
                 int maxHeightControls = Math.Max(maxHeightPages, maxHeightPanelInfo);
 
                 // Все контролы созданы, устанавливаем размеры bitmapMenu
-                MainControl.Width = bitmapMenu.ShiftX + bitmapMenu.Width + Config.GridSize;
+                MainControl.Width = panelCombatHeroes.ShiftX + panelCombatHeroes.Width + Config.GridSize;
                 MainControl.Height = pageGuilds.NextTop() + maxHeightControls + Config.GridSize;
                 TopControl.Width = MainControl.Width;
 
@@ -613,12 +612,13 @@ namespace Fantasy_Kingdoms_Battle
                 bmpPreparedToolbar.Bitmap = PrepareToolbar();
                 panelPlayers.ShiftX = (TopControl.Width - panelPlayers.Width) / 2;
 
-
                 sizeGamespace = new Size(MainControl.Width, TopControl.Height + MainControl.NextTop());
                 Width = Width - ClientSize.Width + sizeGamespace.Width;
                 Height = Height - ClientSize.Height + sizeGamespace.Height;
 
-                bitmapMenu.ShiftY = MainControl.Height - bitmapMenu.Height - Config.GridSize;
+                bitmapMenu.ShiftX = MainControl.Width - bitmapMenu.Width;
+                bitmapMenu.ShiftY = MainControl.Height - bitmapMenu.Height;
+
                 panelBuildingInfo.Height = MainControl.Height - panelBuildingInfo.ShiftY - Config.GridSize;
                 panelLairInfo.Height = panelBuildingInfo.Height;
                 panelHeroInfo.Height = panelBuildingInfo.Height;
@@ -1640,7 +1640,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 DrawFrame();// Готовим кадр
 
-                if (debugMode && (controlWithHint != null) && (controlWithHint != MainControl))
+                if (debugMode && (controlWithHint != null))
                 {
                     gfxFrame.DrawRectangle(penDebugBorder, controlWithHint.Rectangle);
                 }
@@ -1736,8 +1736,10 @@ namespace Fantasy_Kingdoms_Battle
                     if (curControl == MainControl)
                     {
                         curControl = currentPage.Page.GetControl(mousePos.X, mousePos.Y);
-                        if (curControl == currentPage)
-                            curControl = null;
+                        if (curControl == null)
+                            curControl = MainControl;
+                        //if (curControl == currentPage)
+                        //    curControl = null;
                     }
                 }
             }
@@ -1756,6 +1758,9 @@ namespace Fantasy_Kingdoms_Battle
 
         private void TreatMouseMove(bool leftDown)
         {
+            //Debug.Assert(inTreatMouse = false);
+
+            inTreatMouse = true;
             Point newMousePos = PointToClient(Cursor.Position);
 
             if (!mousePos.Equals(newMousePos))
@@ -1793,6 +1798,8 @@ namespace Fantasy_Kingdoms_Battle
 
                 ShowFrame(false);
             }
+
+            inTreatMouse = false;
         }
 
         private void ControlForHintLeave()
