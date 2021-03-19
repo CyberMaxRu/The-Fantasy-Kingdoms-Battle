@@ -239,6 +239,10 @@
     <Content Include="Resources\Icons\BorderWindow.png" />
     <Content Include="Resources\Icons\border_new_bottom.png" />
     <Content Include="Resources\Icons\border_new_top.png" />
+    <Content Include="Resources\Icons\ButtonDisabled.png" />
+    <Content Include="Resources\Icons\ButtonHot.png" />
+    <Content Include="Resources\Icons\ButtonNormal.png" />
+    <Content Include="Resources\Icons\ButtonPressed.png" />
     <Content Include="Resources\Icons\EmptyEntity.png" />
     <Content Include="Resources\Icons\EmptyEntityOrg.png" />
     <Content Include="Resources\Icons\Gui.png" />

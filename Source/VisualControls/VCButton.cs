@@ -14,7 +14,9 @@ namespace Fantasy_Kingdoms_Battle
         private Bitmap bmpNormal;
         private Bitmap bmpHot;
         private Bitmap bmpDisabled;
+        private Bitmap bmpPressed;
         private bool mouseOver;
+        private bool mouseClicked;
 
         public VCButton(VisualControl parent, int shiftX, int shiftY, string caption) : base(parent, shiftX, shiftY)
         {
@@ -40,13 +42,15 @@ namespace Fantasy_Kingdoms_Battle
             bmpHot = PrepareBand(Program.formMain.bmpBandButtonHot);
             bmpDisabled?.Dispose();
             bmpDisabled = PrepareBand(Program.formMain.bmpBandButtonDisabled);
+            bmpPressed?.Dispose();
+            bmpPressed = PrepareBand(Program.formMain.bmpBandButtonPressed);
 
             labelCaption.Width = Width - WidthCap() - WidthCap();
         }
 
         internal override void Draw(Graphics g)
         {
-            bmpForDraw = mouseOver ? bmpHot : bmpNormal;
+            bmpForDraw = mouseOver && mouseClicked ? bmpPressed : mouseOver ? bmpHot : bmpNormal;
 
             base.Draw(g);
 
@@ -61,8 +65,8 @@ namespace Fantasy_Kingdoms_Battle
 
             mouseOver = true;
 
-            //if (!leftButtonDown)
-            //    mouseClicked = false;
+            if (!leftButtonDown)
+                mouseClicked = false;
 
             Program.formMain.SetNeedRedrawFrame();
         }
@@ -75,5 +79,23 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.SetNeedRedrawFrame();
         }
 
+        internal override void MouseDown()
+        {
+            base.MouseDown();
+
+            mouseClicked = true;
+            Program.formMain.SetNeedRedrawFrame();
+        }
+
+        internal override void MouseUp()
+        {
+            base.MouseUp();
+
+            if (mouseClicked != false)
+            {
+                mouseClicked = false;
+                Program.formMain.SetNeedRedrawFrame();
+            }
+        }
     }
 }
