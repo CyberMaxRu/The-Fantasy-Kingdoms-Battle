@@ -53,6 +53,7 @@ namespace Fantasy_Kingdoms_Battle
             lblKindHero.StringFormat.Alignment = StringAlignment.Near;
 
             bmpStateBackground = new VCBitmap(this, FormMain.Config.GridSize, lblKindHero.NextTop(), Program.formMain.bmpBandStateCreature);
+            bmpStateBackground.ShowHint += BmpState_ShowHint;
             bmpState = new VCBitmap(this, 14, bmpStateBackground.ShiftY + 5, null);
             labelNameState = new VCLabelM2(this, 44, bmpStateBackground.ShiftY + 8, Program.formMain.fontSmallC, Color.White, 16, "");
             labelNameState.StringFormat.Alignment = StringAlignment.Near;
@@ -114,6 +115,11 @@ namespace Fantasy_Kingdoms_Battle
                     slots[x + y * FormMain.SLOTS_IN_LINE] = pb;
                 }
             }*/
+        }
+
+        private void BmpState_ShowHint(object sender, EventArgs e)
+        {
+            Program.formMain.formHint.AddStep1Header(creature.StateCreature.Name, "", creature.StateCreature.Description);
         }
 
         internal Creature Creature
