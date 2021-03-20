@@ -14,8 +14,6 @@ namespace Fantasy_Kingdoms_Battle
         private int height;
 
         private Bitmap bmpBorder;
-        private readonly Pen penBorder = new Pen(FormMain.Config.CommonBorder);
-        private Rectangle rectBorder;
 
         public VisualControl()
         {            
@@ -65,11 +63,6 @@ namespace Fantasy_Kingdoms_Battle
         // Метод для рисования. Передается подготовленный Graphics
         internal virtual void Draw(Graphics g)
         {
-            Debug.Assert(rectBorder.Left == Left);
-            Debug.Assert(rectBorder.Top == Top);
-            Debug.Assert(rectBorder.Width == Width - 1);
-            Debug.Assert(rectBorder.Height == Height - 1);
-
             // Рисуем бордюр
             if (ShowBorder)
             {
@@ -116,7 +109,6 @@ namespace Fantasy_Kingdoms_Battle
             if ((Rectangle.Left != Left) || (Rectangle.Top != Top) || (Rectangle.Width != Width) || (Rectangle.Height != Height))
             {
                 Rectangle = new Rectangle(Left, Top, Width, Height);
-                rectBorder = new Rectangle(Left, Top, Width - 1, Height - 1);
             }
         }
 
@@ -252,11 +244,6 @@ namespace Fantasy_Kingdoms_Battle
             Size s = MaxSize();
             Width = s.Width;
             Height = s.Height;
-        }
-
-        internal void SetColorBorder(Color color)
-        {
-            penBorder.Color = color;
         }
     }
 }

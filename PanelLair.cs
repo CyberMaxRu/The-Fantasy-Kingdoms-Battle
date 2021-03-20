@@ -136,7 +136,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(Lair.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
 
-            SetColorBorder(FormMain.Config.ColorBorder(Program.formMain.SelectedPanelLair == this));
             imgLair.ImageIndex = Lair.ImageIndexLair();
             imgLair.Level = Lair.Layer + 1;
             lblName.Text = Lair.NameLair();

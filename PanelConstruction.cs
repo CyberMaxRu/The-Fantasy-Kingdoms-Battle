@@ -172,7 +172,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(Building.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
 
-            SetColorBorder(FormMain.Config.ColorBorder(Program.formMain.SelectedPanelBuilding == this));
             imageConstruction.ImageIndex = Building.Building.ImageIndex;
             imageConstruction.ImageIsEnabled = Building.Level > 0;
 
