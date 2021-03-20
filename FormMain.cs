@@ -50,11 +50,9 @@ namespace Fantasy_Kingdoms_Battle
         private Pen penDebugBorder = new Pen(Color.Red);
         private VisualControl vcDebugInfo;
         private VCLabel labelTimeDrawFrame;
-        private VCLabel labelTimePaintFrame;
         private VCLabel labelLayers;
         private DateTime startDebugAction;
         private TimeSpan durationDrawFrame;
-        private TimeSpan durationPaintFrame;
         private int playsSelectButton;
 
         // Контролы главного меню
@@ -505,15 +503,10 @@ namespace Fantasy_Kingdoms_Battle
                 panelLairWithFlags = new VisualControl(MainControl, 0, btnEndTurn.ShiftY);
 
                 // Отладочная информация
-                vcDebugInfo = new VisualControl(layerGame);
+                vcDebugInfo = new VisualControl();
                 labelTimeDrawFrame = new VCLabel(vcDebugInfo, Config.GridSize, Config.GridSize, Config.FontToolbar, Color.White, 16, "");
                 labelTimeDrawFrame.StringFormat.Alignment = StringAlignment.Near;
-                labelTimeDrawFrame.Visible = false;
-                labelTimePaintFrame = new VCLabel(vcDebugInfo, labelTimeDrawFrame.ShiftX, labelTimeDrawFrame.NextTop(), Config.FontToolbar, Color.White, 16, "Paint frame: 00000");
-                labelTimePaintFrame.StringFormat.Alignment = StringAlignment.Near;
-                labelTimePaintFrame.Visible = false;
-                labelLayers = new VCLabel(vcDebugInfo, labelTimeDrawFrame.ShiftX, labelTimePaintFrame.NextTop(), Config.FontToolbar, Color.White, 16, "Layers");
-                labelLayers.Visible = false;
+                labelLayers = new VCLabel(vcDebugInfo, labelTimeDrawFrame.ShiftX, labelTimeDrawFrame.NextTop(), Config.FontToolbar, Color.White, 16, "Layers");
                 labelLayers.StringFormat.Alignment = StringAlignment.Near;
                 vcDebugInfo.ArrangeControls();
                 vcDebugInfo.ApplyMaxSize();
@@ -684,6 +677,10 @@ namespace Fantasy_Kingdoms_Battle
                 //
                 Location = new Point((Screen.PrimaryScreen.WorkingArea.Width - Width) / 2, (Screen.PrimaryScreen.WorkingArea.Height - Height) / 2);
 
+                //MediaElement me = new MediaElement()
+                //me.Parent = this;
+                
+
                 // 
                 void SetStage(string text)
                 {
@@ -707,7 +704,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             debugMode = !debugMode;
             labelTimeDrawFrame.Visible = debugMode;
-            labelTimePaintFrame.Visible = debugMode;
             labelLayers.Visible = debugMode;
             ShowFrame(true);
         }
@@ -1656,18 +1652,14 @@ namespace Fantasy_Kingdoms_Battle
 
                 DrawFrame();// Готовим кадр
 
-                if (debugMode && (controlWithHint != null))
-                {
-                    gfxFrame.DrawRectangle(penDebugBorder, controlWithHint.Rectangle);
-                }
-
                 if (debugMode)
                 {
+                    if (controlWithHint != null)
+                        gfxFrame.DrawRectangle(penDebugBorder, controlWithHint.Rectangle);
+
                     durationDrawFrame = DateTime.Now - startDebugAction;
                     labelTimeDrawFrame.Text = "Draw frame: " + durationDrawFrame.TotalMilliseconds.ToString();
-                    labelTimePaintFrame.Text = "Paint frame: " + durationPaintFrame.TotalMilliseconds.ToString();
-
-                    startDebugAction = DateTime.Now;
+                    vcDebugInfo.Draw(gfxFrame);
                 }
 
                 Invalidate();// Рисуем кадр
@@ -1675,11 +1667,6 @@ namespace Fantasy_Kingdoms_Battle
                 // отрисовка происходит по пять новых героев за раз
                 if (gameStarted)
                     Application.DoEvents();
-
-                if (debugMode)
-                {
-                    durationPaintFrame = DateTime.Now - startDebugAction;
-                }
             }
         }
 
