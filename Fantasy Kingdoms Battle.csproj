@@ -39,6 +39,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.IO.Compression.FileSystem" />
@@ -87,6 +88,7 @@
     <Compile Include="Source\VisualControls\VCWindowCaption.cs" />
     <Compile Include="Source\VisualControls\VisualLayer.cs" />
     <Compile Include="Specialization.cs" />
+    <Compile Include="StateCreature.cs" />
     <Compile Include="TypeEconomicConstruction.cs" />
     <Compile Include="TypeCitizen.cs" />
     <Compile Include="Creature.cs" />
@@ -220,6 +222,7 @@
     <Content Include="FKB.ico" />
     <Content Include="Resources\Config\SecondarySkills.xml" />
     <Content Include="Resources\Config\Specializations.xml" />
+    <Content Include="Resources\Config\StateCreature.xml" />
     <Content Include="Resources\Config\TypeCitizens.xml" />
     <Content Include="Resources\Config\TypeGuilds.xml" />
     <Content Include="Resources\Config\TypeLairs.xml" />

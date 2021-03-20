@@ -22,9 +22,9 @@ namespace Fantasy_Kingdoms_Battle
             DamageToCastle = XmlUtils.GetInteger(n.SelectSingleNode("DamageToCastle"));
 
             if (n.SelectSingleNode("PersistentState") != null)
-                PersistentStateHeroAtMap = (StateHeroAtMap)Enum.Parse(typeof(StateHeroAtMap), n.SelectSingleNode("PersistentState").InnerText);
+                PersistentStateHeroAtMap = FormMain.Config.FindStateCreature(XmlUtils.GetStringNotNull(n.SelectSingleNode("PersistentState")));
             else
-                PersistentStateHeroAtMap = StateHeroAtMap.Nothing;
+                PersistentStateHeroAtMap = FormMain.Config.FindStateCreature(NameStateCreature.Nothing.ToString());
 
             Debug.Assert(MaxLevel >= 1);
             Debug.Assert(MaxLevel <= 100);
@@ -86,7 +86,7 @@ namespace Fantasy_Kingdoms_Battle
         internal KindCreature KindCreature { get; }// Вид существа
         internal int Reward { get; }// Награда за убийство существа
         internal int MaxLevel { get; }// Максимальный уровень существа
-        internal StateHeroAtMap PersistentStateHeroAtMap { get; set; }
+        internal StateCreature PersistentStateHeroAtMap { get; set; }
         internal HeroParameters ParametersByHire { get; }// Параметры при создании существа
         internal ConfigNextLevelHero ConfigNextLevel { get; }
         internal List<Ability> Abilities { get; } = new List<Ability>();// Способности существа

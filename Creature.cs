@@ -21,6 +21,8 @@ namespace Fantasy_Kingdoms_Battle
             BattleParticipant = bp;
             ID = ++sequenceID;
 
+            StateCreature = TypeCreature.PersistentStateHeroAtMap;
+
             // Применяем дефолтные способности
             Abilities.AddRange(TypeCreature.Abilities);
             Specialization = FormMain.Config.FindSpecialization("SpeedMove");
@@ -59,7 +61,8 @@ namespace Fantasy_Kingdoms_Battle
         internal List<Ability> Abilities { get; } = new List<Ability>();// Cпособности
         internal Weapon MeleeWeapon { get; private set; }// Рукопашное оружие 
         internal Weapon RangeWeapon { get; private set; }// Стрелковое оружие 
-        internal Armour Armour { get; private set; }// Доспех
+        internal Armour Armour { get; private set; }// Доспех        
+        internal StateCreature StateCreature { get; private set; }// Состояние (на карте)
 
         internal Point CoordInPlayer { get; set; }// Координаты героя в слотах
 
@@ -125,6 +128,11 @@ namespace Fantasy_Kingdoms_Battle
         protected virtual void DoCustomDraw(Graphics g, int x, int y, bool drawState)
         {
 
+        }
+
+        internal void SetState(NameStateCreature state)
+        {
+            StateCreature = FormMain.Config.FindStateCreature(state.ToString());
         }
 
         // Реализация интерфейса

@@ -30,6 +30,9 @@ namespace Fantasy_Kingdoms_Battle
         private readonly Label lblDefenseMagic;
         private readonly Button btnDismiss;
 
+        private readonly VCBitmap bmpStateBackground;
+        private readonly VCBitmap bmpState;
+        private readonly VCLabelM2 labelNameState;
         private readonly VisualControl panelAbilitiesAndSecSkills;
         private readonly PanelWithPanelEntity panelInventory;
         private readonly PanelWithPanelEntity panelAbilities;
@@ -49,8 +52,14 @@ namespace Fantasy_Kingdoms_Battle
             lblKindHero = new VCLabel(this, FormMain.Config.GridSize, TopForControls(), FormMain.Config.FontCaptionPage, FormMain.Config.CommonCaptionPage, 16, "");
             lblKindHero.StringFormat.Alignment = StringAlignment.Near;
 
+            bmpStateBackground = new VCBitmap(this, FormMain.Config.GridSize, lblKindHero.NextTop(), Program.formMain.bmpBandStateCreature);
+            bmpState = new VCBitmap(this, 14, bmpStateBackground.ShiftY + 5, null);
+            labelNameState = new VCLabelM2(this, 44, bmpStateBackground.ShiftY + 8, Program.formMain.fontSmallC, Color.White, 16, "");
+            labelNameState.StringFormat.Alignment = StringAlignment.Near;
+            labelNameState.StringFormat.LineAlignment = StringAlignment.Center;
+
             panelSpecialization = new VCCell(this, imgIcon.NextLeft(), imgIcon.ShiftY);
-            panelWeapon = new VCCell(this, FormMain.Config.GridSize, lblKindHero.NextTop());
+            panelWeapon = new VCCell(this, FormMain.Config.GridSize, bmpStateBackground.NextTop());
             panelArmour = new VCCell(this, panelWeapon.NextLeft(), panelWeapon.ShiftY);
 
             separator.ShiftY = panelWeapon.NextTop();
@@ -122,6 +131,7 @@ namespace Fantasy_Kingdoms_Battle
 
             pageControl.Height = Height - pageControl.ShiftY - FormMain.Config.GridSize;
             lblKindHero.Width = Width - (lblKindHero.ShiftX * 2);
+            labelNameState.Width = Width - labelNameState.ShiftX - -FormMain.Config.GridSize;
         }
 
         protected override PlayerObject GetPlayerObject()
@@ -132,6 +142,8 @@ namespace Fantasy_Kingdoms_Battle
         internal override void Draw(Graphics g)
         {
             lblKindHero.Text = creature.TypeCreature.KindCreature.Name;
+            bmpState.Bitmap = Program.formMain.ilStateHero.GetImage(creature.StateCreature.ImageIndex, true, false);
+            labelNameState.Text = creature.StateCreature.Name;
 
             panelSpecialization.ShowCell(Creature.Specialization);// ImageIndex = creature.Specialization != null ? creature.Specialization.ImageIndex : -1;
 

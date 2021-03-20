@@ -193,6 +193,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly Bitmap bmpBandButtonHot;
         internal readonly Bitmap bmpBandButtonDisabled;
         internal readonly Bitmap bmpBandButtonPressed;
+        internal readonly Bitmap bmpBandStateCreature;
         private VCBitmap bmpPreparedToolbar;
         internal readonly M2Font fontSmall;
         internal readonly M2Font fontSmallC;
@@ -385,7 +386,7 @@ namespace Fantasy_Kingdoms_Battle
                 ilGui24 = new BitmapList(dirResources, "Gui24.png", 24, true, false);
                 ilParameters = new BitmapList(dirResources, "Parameters.png", 24, true, false);
                 ilItems = new BitmapList(dirResources, "Items.png", 48, true, true);
-                ilStateHero = new BitmapList(dirResources, "StateHero.png", 24, true, false);
+                ilStateHero = new BitmapList(dirResources, "StateCreature.png", 24, true, false);
                 ilMenuCellFilters = new BitmapList(dirResources, "MenuCellFilters.png", 48, true, false);
 
                 ilGui = new BitmapList(dirResources, "Gui.png", 48, true, true);
@@ -407,6 +408,7 @@ namespace Fantasy_Kingdoms_Battle
                 bmpBandButtonHot = new Bitmap(dirResources + @"Icons\ButtonHot.png");
                 bmpBandButtonDisabled = new Bitmap(dirResources + @"Icons\ButtonDisabled.png");
                 bmpBandButtonPressed = new Bitmap(dirResources + @"Icons\ButtonPressed.png");
+                bmpBandStateCreature = new Bitmap(dirResources + @"Icons\BandStateCreature.png");
 
                 // Делаем рамки для союзников и врагов
                 bmpBorderForIconAlly = new Bitmap(bmpBorderForIcon);

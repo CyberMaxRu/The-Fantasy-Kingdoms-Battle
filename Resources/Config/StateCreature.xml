@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<StatesCreature>
+  <StateCreature>
+    <ID>DoAttackFlag</ID>
+    <Name>Атака</Name>
+    <Description>Выполняет задание атаки</Description>
+    <ImageIndex>11</ImageIndex>
+  </StateCreature>
+  <StateCreature>
+    <ID>DoScoutFlat</ID>
+    <Name>Разведки</Name>
+    <Description>Выполняет задание разведки</Description>
+    <ImageIndex>12</ImageIndex>
+  </StateCreature>
+  <StateCreature>
+    <ID>InHome</ID>
+    <Name>Отдыхает дома</Name>
+    <Description>Отдыхает дома, в своей гильдии</Description>
+    <ImageIndex>13</ImageIndex>
+  </StateCreature>
+  <StateCreature>
+    <ID>Nothing</ID>
+    <Name>Ищет занятие</Name>
+    <Description>Ищет, чем бы заняться</Description>
+    <ImageIndex>14</ImageIndex>
+  </StateCreature>
+  <StateCreature>
+    <ID>Therapy</ID>
+    <Name>Лечение</Name>
+    <Description>Восстанавливает здоровье</Description>
+    <ImageIndex>15</ImageIndex>
+  </StateCreature>
+  <StateCreature>
+    <ID>King</ID>
+    <Name>Правит королевством</Name>
+    <Description>Правление королевством требует постоянного внимания</Description>
+    <ImageIndex>16</ImageIndex>
+  </StateCreature>
+  <StateCreature>
+    <ID>Advisor</ID>
+    <Name>Решение проблем</Name>
+    <Description>Помогает Королю управлять королевством</Description>
+    <ImageIndex>17</ImageIndex>
+  </StateCreature>
+  <StateCreature>
+    <ID>Captain</ID>
+    <Name>Военное дело</Name>
+    <Description>Занимается всеми военными делами</Description>
+    <ImageIndex>18</ImageIndex>
+  </StateCreature>
+  <StateCreature>
+    <ID>Treasurer</ID>
+    <Name>Сбор золота</Name>
+    <Description>Сбор золота - непростая задача</Description>
+    <ImageIndex>19</ImageIndex>
+  </StateCreature>
+</StatesCreature>

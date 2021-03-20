@@ -124,6 +124,14 @@ namespace Fantasy_Kingdoms_Battle
                 SecondarySkills.Add(new SecondarySkill(n));
             }
 
+            // Загрузка конфигурации состояний существ
+            xmlDoc = CreateXmlDocument(@"Config\StateCreature.xml");
+
+            foreach (XmlNode n in xmlDoc.SelectNodes("/StatesCreature/StateCreature"))
+            {
+                StatesCreature.Add(new StateCreature(n));
+            }
+
             // Загрузка конфигурации типов существ
             xmlDoc = CreateXmlDocument("Config\\KindCreatures.xml");
 
@@ -211,6 +219,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<Ability> Abilities { get; } = new List<Ability>();
         internal List<Specialization> Specializations { get; } = new List<Specialization>();
         internal List<SecondarySkill> SecondarySkills { get; } = new List<SecondarySkill>();
+        internal List<StateCreature> StatesCreature { get; } = new List<StateCreature>();
         internal List<KindCreature> KindCreatures { get; } = new List<KindCreature>();
         internal List<TypeCitizen> TypeCitizens { get; } = new List<TypeCitizen>();
         internal List<TypeHero> TypeHeroes { get; } = new List<TypeHero>();
@@ -373,6 +382,17 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             throw new Exception("Предмет " + ID + " не найден.");
+        }
+
+        internal StateCreature FindStateCreature(string ID)
+        {
+            foreach (StateCreature sc in StatesCreature)
+            {
+                if (sc.ID == ID)
+                    return sc;
+            }
+
+            throw new Exception("Состояние существа " + ID + " не найдено.");
         }
 
         internal KindCreature FindKindCreature(string ID)

@@ -9,9 +9,6 @@ using System.Windows.Forms;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    // Состояния героя на карте
-    internal enum StateHeroAtMap { Nothing, DoScoutFlat, DoAttackFlag, InHome, Therapy, King, Advisor, Captain, Treasurer };
-
     // Класс героя игрока
     internal sealed class PlayerHero : Creature
     {
@@ -20,8 +17,6 @@ namespace Fantasy_Kingdoms_Battle
             Building = pb;
             DayOfHire = Player.Lobby.Turn;
             TypeHero = pb.Building.TrainedHero;
-
-            StateHero = TypeHero.PersistentStateHeroAtMap;
         }
 
         public PlayerHero(PlayerBuilding pb, BattleParticipant bp, TypeHero th) : base(th, bp)
@@ -29,15 +24,11 @@ namespace Fantasy_Kingdoms_Battle
             Building = pb;
             DayOfHire = Player.Lobby.Turn;
             TypeHero = th;
-            StateHero = TypeHero.PersistentStateHeroAtMap;
         }
 
         internal PlayerBuilding Building { get; }// Здание, которому принадлежит герой
         internal Player Player => Building.Player;// Игрок, которому принадлежит герой
         internal TypeHero TypeHero { get; } // Класс героя
-
-        // Состояние при нахождени в Королевстве
-        internal StateHeroAtMap StateHero { get; private set; }// Состояние героя
 
         // Статистика за лобби
         internal int DayOfHire { get; }// На каком дне нанят
@@ -271,39 +262,12 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.SelectHero(this);
         }
 
-        internal int ImageIndexState()
-        {
-            switch (StateHero)
-            {
-                case StateHeroAtMap.Nothing:
-                    return FormMain.II_STATE_HERO_NOTHING;
-                case StateHeroAtMap.DoScoutFlat:
-                    return FormMain.II_STATE_HERO_DO_SCOUT_FLAG;
-                case StateHeroAtMap.DoAttackFlag:
-                    return FormMain.II_STATE_HERO_DO_ATTACK_FLAG;
-                case StateHeroAtMap.InHome:
-                    return FormMain.II_STATE_HERO_IN_HOME;
-                case StateHeroAtMap.Therapy:
-                    return FormMain.II_STATE_HERO_THERAPY;
-                case StateHeroAtMap.King:
-                    return FormMain.II_STATE_HERO_KING;
-                case StateHeroAtMap.Advisor:
-                    return FormMain.II_STATE_HERO_ADVISOR;
-                case StateHeroAtMap.Captain:
-                    return FormMain.II_STATE_HERO_CAPTAIN;
-                case StateHeroAtMap.Treasurer:
-                    return FormMain.II_STATE_HERO_TREASURER;
-                default:
-                    throw new Exception("Неизвестное состояние: " + StateHero.ToString());
-            }
-        }
-
         protected override void DoCustomDraw(Graphics g, int x, int y, bool drawState)
         {
             base.DoCustomDraw(g, x, y, drawState);
 
             if (drawState && (TypeHero.Building.ID != "Castle"))
-                Program.formMain.ilStateHero.DrawImage(g, ImageIndexState(), true, false, x - 7, y - 3);
+                Program.formMain.ilStateHero.DrawImage(g, StateCreature.ImageIndex, true, false, x - 7, y - 3);
         }
     }
 }
