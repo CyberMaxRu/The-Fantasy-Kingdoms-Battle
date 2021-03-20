@@ -573,8 +573,6 @@ namespace Fantasy_Kingdoms_Battle
                     maxHeightPages = Math.Max(maxHeightPages, maxSizePanelPage.Height);
                 }
 
-                panelCombatHeroes.Height = maxHeightPages;
-
                 // Располагаем страницы на главной форме
                 int leftForNextButtonPage = panelEmptyInfo.NextLeft();
                 foreach (VCFormPage fp in pages)
@@ -589,7 +587,7 @@ namespace Fantasy_Kingdoms_Battle
                 panelCombatHeroes.ShiftX = pageGuilds.ShiftX + maxWidthPages + Config.GridSize;
 
                 // Создаем меню
-                bitmapMenu = new VCBitmap(MainControl, 0, panelCombatHeroes.NextTop(), new Bitmap(dirResources + @"Icons\Menu.png"));
+                bitmapMenu = new VCBitmap(MainControl, 0, 0, new Bitmap(dirResources + @"Icons\Menu.png"));
                 //Debug.Assert(panelHeroInfo.Width >= bitmapMenu.Width);
 
                 CellsMenu = new VCMenuCell[PANEL_MENU_CELLS.Height, PANEL_MENU_CELLS.Width];
@@ -616,6 +614,7 @@ namespace Fantasy_Kingdoms_Battle
                 // Теперь когда известна ширина окна, можно создавать картинку тулбара
                 bmpPreparedToolbar.Bitmap = PrepareToolbar();
                 panelPlayers.ShiftX = (TopControl.Width - panelPlayers.Width) / 2;
+                panelCombatHeroes.Height = maxHeightPages - bitmapMenu.Height - Config.GridSize;
 
                 sizeGamespace = new Size(MainControl.Width, TopControl.Height + MainControl.NextTop());
                 Width = Width - ClientSize.Width + sizeGamespace.Width;
