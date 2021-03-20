@@ -1865,7 +1865,7 @@ namespace Fantasy_Kingdoms_Battle
                     else
                     {
                         controlWithHint = controlClicked;
-                        ControlForHintLeave();// Контрол уже другой, отменяет подсказку
+                        ControlForHintLeave();// Контрол уже другой, отменяем подсказку
                     }
                     controlClicked = null;
 
