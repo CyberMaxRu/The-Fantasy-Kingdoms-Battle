@@ -22,7 +22,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal bool gameStarted = false;
         internal bool inQuit = false;
-        internal bool inTreatMouse = false;
 
         // Проигрывание звуков и музыки 
         private readonly SoundPlayer spSoundSelect = new SoundPlayer();
@@ -1664,11 +1663,7 @@ namespace Fantasy_Kingdoms_Battle
                     vcDebugInfo.Draw(gfxFrame);
                 }
 
-                Invalidate();// Рисуем кадр
-                // Обрабатываем события, иначе при, например, при быстрых кликах на кнопке покупке героев
-                // отрисовка происходит по пять новых героев за раз
-                if (gameStarted)
-                    Application.DoEvents();
+                Refresh();// Сразу же рисуем кадр
             }
         }
 
@@ -1763,9 +1758,6 @@ namespace Fantasy_Kingdoms_Battle
 
         private void TreatMouseMove(bool leftDown)
         {
-            //Debug.Assert(inTreatMouse = false);
-
-            inTreatMouse = true;
             Point newMousePos = PointToClient(Cursor.Position);
 
             if (!mousePos.Equals(newMousePos))
@@ -1803,8 +1795,6 @@ namespace Fantasy_Kingdoms_Battle
 
                 ShowFrame(false);
             }
-
-            inTreatMouse = false;
         }
 
         private void ControlForHintLeave()
