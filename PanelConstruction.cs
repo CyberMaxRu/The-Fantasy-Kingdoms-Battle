@@ -39,7 +39,7 @@ namespace Fantasy_Kingdoms_Battle
             imageConstruction.ShowHint += ImageConstruction_ShowHint;
             imageConstruction.TypeObject = TypeConstruction;
 
-            btnBuyOrUpgrade = new VCIconButton(this, imageConstruction.NextLeft(), imageConstruction.ShiftY, Program.formMain.ilGui, FormMain.GUI_BUY);
+            btnBuyOrUpgrade = new VCIconButton(this, imageConstruction.NextLeft(), imageConstruction.ShiftY, Program.formMain.ilGui, FormMain.GUI_BUILD);
             btnBuyOrUpgrade.Click += BtnBuyOrUprgade_Click;
             btnBuyOrUpgrade.ShowHint += BtnBuyOrUpgrade_ShowHint;
 
