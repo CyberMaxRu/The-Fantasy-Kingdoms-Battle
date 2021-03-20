@@ -35,7 +35,6 @@ namespace Fantasy_Kingdoms_Battle
             DrawState = true;
         }
 
-        internal bool Selected { get; set; }
         internal bool DrawState { get; set; }
 
         internal override void ArrangeControls()
@@ -102,9 +101,6 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (cell != null)
                 {
-                    if (Selected)
-                        g.DrawRectangle(FormMain.Config.GetPenBorder(true), new Rectangle(Left - 1, Top - 2, Width + 1, Height + 1));
-
                     g.DrawImageUnscaled(Program.formMain.bmpBorderForIcon, Left, Top);
 
                     cell.CustomDraw(g, Left, Top, DrawState);

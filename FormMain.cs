@@ -182,6 +182,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly BitmapBorder bbObject;
         internal readonly BitmapBorder bbToolBarLabel;
         internal readonly BitmapBorder bbGamespace;
+        internal readonly BitmapBorder bbSelect;
         internal readonly Bitmap bmpBorderBig;
         internal readonly Bitmap bmpMaskBig;
         internal readonly Bitmap bmpMaskSmall;
@@ -400,6 +401,7 @@ namespace Fantasy_Kingdoms_Battle
                 bbObject = new BitmapBorder(dirResources + "Icons\\BorderObject.png", false, 10, 10, 9, 12, 25, 2, 5, 24, 3, 3);
                 bbToolBarLabel = new BitmapBorder(dirResources + @"Icons\ToolbarLabel.png", true, 10, 10, 9, 10, 25, 9, 12, 25, 10, 10);
                 bbGamespace = new BitmapBorder(dirResources + @"Icons\BorderMain2.png", false, 12, 12, 12, 12, 26, 7, 7, 26, 7, 7);
+                bbSelect = new BitmapBorder(dirResources + @"Icons\BorderSelect.png", false, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
                 bmpToolbar = new Bitmap(dirResources + @"Icons\Toolbar.png");
                 bmpToolbarBorder = new Bitmap(dirResources + @"Icons\ToolbarBorder.png");
                 bmpSeparator = new Bitmap(dirResources + @"Icons\Separator.png");
@@ -1378,12 +1380,15 @@ namespace Fantasy_Kingdoms_Battle
                     SelectPanelEntity(null);
 
                 PanelConstruction oldSelected = SelectedPanelBuilding;
+                if (oldSelected != null)
+                    oldSelected.Selected = false;
                 SelectedPanelBuilding = pb;
 
                 //if (oldSelected != null)
                 //    oldSelected.Repaint();
                 if (SelectedPanelBuilding != null)
                 {
+                    SelectedPanelBuilding.Selected = true;
                     panelBuildingInfo.Building = SelectedPanelBuilding.Building;
                     //SelectedPanelBuilding.Repaint();
                     panelBuildingInfo.Visible = true;
@@ -1412,12 +1417,15 @@ namespace Fantasy_Kingdoms_Battle
                     SelectPanelEntity(null);
 
                 PanelLair oldSelected = SelectedPanelLair;
+                if (oldSelected != null)
+                    oldSelected.Selected = false;
                 SelectedPanelLair = pl;
 
                 //if (oldSelected != null)
                 //    oldSelected.Invalidate(true);
                 if (SelectedPanelLair != null)
                 {
+                    SelectedPanelLair.Selected = true;
                     panelLairInfo.Lair = SelectedPanelLair.Lair;
                     //SelectedPanelLair.Invalidate(true);
                     panelLairInfo.Visible = true;

@@ -14,6 +14,7 @@ namespace Fantasy_Kingdoms_Battle
         private int height;
 
         private Bitmap bmpBorder;
+        private Bitmap bmpBorderSelect;
 
         public VisualControl()
         {            
@@ -44,6 +45,7 @@ namespace Fantasy_Kingdoms_Battle
         internal Rectangle Rectangle { get; private set; }// Координаты и размер контрола
         internal bool Visible { get; set; } = true;// Видимость контрола
         internal bool ShowBorder { get; set; }// Надо ли показывать бордюр
+        internal bool Selected { get; set; }// Контрол выбран
 
         protected bool MouseEntered { get; set; }// Курсор мыши находится над контролом
 
@@ -69,6 +71,18 @@ namespace Fantasy_Kingdoms_Battle
                 PrepareBorder();
                 g.DrawImageUnscaled(bmpBorder, Left - 2, Top);
             }
+
+            if (Selected)
+            {
+                if ((bmpBorderSelect == null) || (bmpBorderSelect.Width != Width + 14) || (bmpBorderSelect.Height != Height + 14))
+                {
+                    bmpBorderSelect?.Dispose();
+                    bmpBorderSelect = Program.formMain.bbSelect.DrawBorder(Width + 14, Height + 14);
+                }
+
+                g.DrawImageUnscaled(bmpBorderSelect, Left - 7, Top - 7);
+            }
+
             //g.DrawRectangle(penBorder, rectBorder);
 
             // Рисуем контролы
