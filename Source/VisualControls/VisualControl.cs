@@ -47,6 +47,8 @@ namespace Fantasy_Kingdoms_Battle
         internal bool Visible { get; set; } = true;// Видимость контрола
         internal bool ShowBorder { get; set; }// Надо ли показывать бордюр
 
+        protected bool MouseEntered { get; set; }// Курсор мыши находится над контролом
+
         // Список контролов, расположенных на нём
         internal List<VisualControl> Controls = new List<VisualControl>();
 
@@ -139,8 +141,20 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal virtual void MouseEnter(bool leftButtonDown) { }
-        internal virtual void MouseLeave() { }
+        internal virtual void MouseEnter(bool leftButtonDown)
+        {
+            Debug.Assert(!MouseEntered);
+
+            MouseEntered = true;
+        }
+
+        internal virtual void MouseLeave()
+        {
+            Debug.Assert(MouseEntered);
+
+            MouseEntered = false;
+        }
+
         internal virtual void MouseDown() { }
         internal virtual void MouseUp() { }
 
