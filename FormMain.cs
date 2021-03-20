@@ -544,7 +544,7 @@ namespace Fantasy_Kingdoms_Battle
                 pageHeroes = new VCFormPage(MainControl, 0, pageGuilds.ShiftY, pages, ilGui, GUI_HEROES, "Герои", BtnPage_Click);
                 pageHeroes.ShowCostZero = true;
                 pageHeroes.ShowHint += PageHeroes_ShowHint;
-                pageLairs = new VCFormPage(MainControl, 0, pageGuilds.ShiftY, pages, ilGui, GUI_BATTLE, "Логова", BtnPage_Click);
+                pageLairs = new VCFormPage(MainControl, 0, pageGuilds.ShiftY, pages, ilGui, GUI_BATTLE, "Окрестности", BtnPage_Click);
                 pageTournament = new VCFormPage(MainControl, 0, pageGuilds.ShiftY, pages, ilGui, GUI_TOURNAMENT, "Турнир", BtnPage_Click);
                 pageTournament.ShowHint += PageTournament_ShowHint;
                 pageTournament.Visible = false;
@@ -926,7 +926,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             formHint.Clear();
             formHint.AddStep1Header("Конец хода", "", "Завершение хода");
-            formHint.AddStep3Requirement("Не выбрано логово для атаки");
             formHint.ShowHint(btnEndTurn);
         }
 

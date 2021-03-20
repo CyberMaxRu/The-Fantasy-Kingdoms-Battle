@@ -77,9 +77,9 @@ namespace Fantasy_Kingdoms_Battle
             if (Lair.Hidden)
             {
                 if (Lair.PriorityFlag == PriorityExecution.None)
-                    Program.formMain.formHint.AddStep1Header("Разведка", "", "Установить флаг разведки для отправки героев к логову");
+                    Program.formMain.formHint.AddStep1Header("Разведка", "", "Установить флаг разведки для отправки героев к месту");
                 else if (Lair.PriorityFlag < PriorityExecution.Exclusive)
-                    Program.formMain.formHint.AddStep1Header("Разведка", Lair.PriorityFlatToText() + " приоритет", "Повысить приоритет разведки логова");
+                    Program.formMain.formHint.AddStep1Header("Разведка", Lair.PriorityFlatToText() + " приоритет", "Повысить приоритет разведки места");
                 else 
                     Program.formMain.formHint.AddStep1Header("Разведка", Lair.PriorityFlatToText() + " приоритет", "Установлен максимальный приоритет флага");
 
