@@ -1834,7 +1834,8 @@ namespace Fantasy_Kingdoms_Battle
             ControlForHintLeave();
             formHint.HideHint();
 
-            ShowFrame(false);
+            // Если мышь покидает пределы окна, надо отрисовать его, т.к. теряется фокус у активного контрола
+            ShowFrame(true);
         }
 
         protected override void OnMouseDown(MouseEventArgs e)
