@@ -203,7 +203,7 @@ namespace Fantasy_Kingdoms_Battle
             // Иначе видно изменение текста невооруженным взглядом
             timerDelayShow = new Timer()
             {
-                Interval = 300,
+                Interval = 100,
                 Enabled = false
             };
             timerDelayShow.Tick += TimerDelayShow_Tick;
