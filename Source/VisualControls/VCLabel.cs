@@ -54,15 +54,6 @@ namespace Fantasy_Kingdoms_Battle
 
             base.Draw(g);
 
-            /*Bitmap bmpSymbol;
-            int left = Left;
-            byte[] text1251 = Encoding.Convert(Encoding.UTF8, Encoding.GetEncoding(1251), Encoding.UTF8.GetBytes(Text));
-            foreach(byte b in text1251)
-            {
-                bmpSymbol = Program.formMain.fontSmallContur.symbols[b - 32];
-                g.DrawImageUnscaled(bmpSymbol, left, Top);
-                left += bmpSymbol.Width + 0;
-            }*/
             g.DrawString(Text, Font, brush, rectText, StringFormat);
         }
 
