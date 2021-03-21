@@ -1806,6 +1806,9 @@ namespace Fantasy_Kingdoms_Battle
 
         private void ControlForHintLeave()
         {
+            if ((controlWithHint != null) && (controlWithHint == controlClicked))
+                controlClicked = null;
+
             if (controlWithHint != null)
             {
                 controlWithHint.MouseLeave();
