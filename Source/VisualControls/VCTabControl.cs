@@ -22,7 +22,6 @@ namespace Fantasy_Kingdoms_Battle
             lblCaptionPage.StringFormat.LineAlignment = StringAlignment.Center;
             lblCaptionPage.ShowBorder = true;
             lblCaptionPage.Color = Color.LightGreen;
-            lblCaptionPage.TopMargin = 0;
         }
 
         internal BitmapList BitmapList { get; set; }

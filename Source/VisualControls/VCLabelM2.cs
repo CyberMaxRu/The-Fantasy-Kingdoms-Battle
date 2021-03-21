@@ -30,7 +30,7 @@ namespace Fantasy_Kingdoms_Battle
             LeftMargin = 0;
             // Рисуем выше на два пиксела и увеличиваем высоту, так как у текст сверху пустота, а снизу происходит обрезка,
             // хотя по высоте все вмещается
-            TopMargin = -2;
+            TopMargin = 0;
         }
 
         internal string Text { get; set; }
