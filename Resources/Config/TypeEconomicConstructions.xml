@@ -79,7 +79,7 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <HasTreasury>False</HasTreasury>
-    <SoundSelect></SoundSelect>
+    <SoundSelect>peasant_house_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>
