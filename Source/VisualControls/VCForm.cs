@@ -94,6 +94,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal DialogResult ShowModal()
         {
+            Program.formMain.formHint.HideHint();
+
             AdjustSize();
             ToCentre();
             Program.formMain.LayerChanged();
