@@ -19,9 +19,10 @@ namespace Fantasy_Kingdoms_Battle
             ActivePage = -1;
 
             lblCaptionPage = new VCLabelM2(this, 0, BitmapList.Size + FormMain.Config.GridSize, Program.formMain.fontSmallBC, FormMain.Config.CommonCaptionPage, 24, "");
-            lblCaptionPage.StringFormat.LineAlignment = System.Drawing.StringAlignment.Center;
+            lblCaptionPage.StringFormat.LineAlignment = StringAlignment.Center;
             lblCaptionPage.ShowBorder = true;
             lblCaptionPage.Color = Color.LightGreen;
+            lblCaptionPage.TopMargin = 0;
         }
 
         internal BitmapList BitmapList { get; set; }

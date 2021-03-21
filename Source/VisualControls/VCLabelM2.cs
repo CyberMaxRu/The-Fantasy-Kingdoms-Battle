@@ -42,7 +42,7 @@ namespace Fantasy_Kingdoms_Battle
         internal bool ImageIsEnabled { get; set; } = true;
         internal bool ImageIsOver { get; set; } = false;
         protected int LeftMargin { get; set; }
-        protected int TopMargin { get; set; }
+        internal int TopMargin { get; set; }
         internal StringFormat StringFormat { get; set; }
         internal Point ShiftImage { get; set; } = new Point(0, 0);
 
