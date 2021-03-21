@@ -22,13 +22,14 @@ namespace Fantasy_Kingdoms_Battle
         {
             Caption = caption;
 
-            labelCaption = new VCLabelM2(this, WidthCap(), 1, Program.formMain.fontSmallC, Color.White, GetBitmap().Height, "");
+            labelCaption = new VCLabelM2(this, WidthCap(), 2, Program.formMain.fontSmallC, Color.White, GetBitmap().Height, "");
             labelCaption.StringFormat.Alignment = StringAlignment.Center;
             labelCaption.StringFormat.LineAlignment = StringAlignment.Center;
             labelCaption.Visible = false;
         }
 
         internal string Caption { get; set; }
+        internal bool Default { get; set; }
 
         protected override int WidthCap() => 31;
         protected override Bitmap GetBitmap() => Program.formMain.bmpBandButtonNormal;
@@ -55,7 +56,7 @@ namespace Fantasy_Kingdoms_Battle
             base.Draw(g);
 
             labelCaption.Text = Caption;
-            labelCaption.Color = mouseOver ? Color.Gold : Color.White;
+            labelCaption.Color = mouseOver || Default ? Color.Gold : Color.White;
             labelCaption.Draw(g);
         }
 
