@@ -7,7 +7,7 @@ namespace Fantasy_Kingdoms_Battle
 {
     // Визуальный контрол - текстовая метка, использующая оригинальный шрифт из Majesty 2
 
-    internal sealed class VCLabelM2 : VisualControl
+    internal class VCLabelM2 : VisualControl
     {
         private RectangleF rectText;
         private Bitmap bmpPreparedText;
@@ -44,9 +44,13 @@ namespace Fantasy_Kingdoms_Battle
         protected int LeftMargin { get; set; }
         protected int TopMargin { get; set; }
         internal StringFormat StringFormat { get; set; }
+        internal Point ShiftImage { get; set; } = new Point(0, 0);
 
         internal override void Draw(Graphics g)
         {
+            if ((BitmapList != null) && (ImageIndex >= 0))
+                BitmapList.DrawImage(g, ImageIndex, ImageIsEnabled, ImageIsOver, Left + ShiftImage.X, Top + ShiftImage.Y);
+
             if (Text.Length > 0)
             {
                 if ((preparedText != Text) || (preparedColor != Color))
@@ -93,7 +97,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
                 //Debug.Assert(y >= Top);
 
-                g.DrawImageUnscaled(bmpPreparedText, x, y);
+                g.DrawImageUnscaled(bmpPreparedText, x + LeftMargin, y + TopMargin);
             }
         }
 

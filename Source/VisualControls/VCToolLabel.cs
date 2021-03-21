@@ -3,12 +3,12 @@
 namespace Fantasy_Kingdoms_Battle
 {
     // Визуальный контрол - иконка 16 * 16 с текстом для тулбара
-    internal sealed class VCToolLabel : VCLabel
+    internal sealed class VCToolLabel : VCLabelM2
     {
         private Bitmap bmpBackround;
 
         public VCToolLabel(VisualControl parent, int shiftX, int shiftY, string text, int imageIndex)
-            : base(parent, shiftX, shiftY, FormMain.Config.FontToolbar, Color.White, 26, text)
+            : base(parent, shiftX, shiftY, Program.formMain.fontMedCaption, Color.White, 26, text)
         {
             StringFormat.Alignment = StringAlignment.Near;
             StringFormat.LineAlignment = StringAlignment.Near;
@@ -16,7 +16,7 @@ namespace Fantasy_Kingdoms_Battle
             BitmapList = Program.formMain.ilGui16;
             ImageIndex = imageIndex;
             Width = 80;
-            TopMargin = 3;
+            TopMargin = 1;
 
             ShiftImage = new Point(6, 4);
         }
