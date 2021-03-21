@@ -63,6 +63,28 @@ namespace Fantasy_Kingdoms_Battle
             Top = top;
         }
 
+        // Метод для рисования фона - то есть то, что будет перекрываться изображением через Draw
+        internal virtual void DrawBackground(Graphics g)
+        {
+            if (Selected)
+            {
+                if ((bmpBorderSelect == null) || (bmpBorderSelect.Width != Width + 16) || (bmpBorderSelect.Height != Height + 16))
+                {
+                    bmpBorderSelect?.Dispose();
+                    bmpBorderSelect = Program.formMain.bbSelect.DrawBorder(Width + 16, Height + 16);
+                }
+
+                g.DrawImageUnscaled(bmpBorderSelect, Left - 8, Top - 8);
+            }
+
+            // Рисуем контролы
+            foreach (VisualControl vc in Controls)
+            {
+                if (vc.Visible)
+                    vc.DrawBackground(g);
+            }
+        }
+
         // Метод для рисования. Передается подготовленный Graphics
         internal virtual void Draw(Graphics g)
         {
@@ -71,17 +93,6 @@ namespace Fantasy_Kingdoms_Battle
             {
                 PrepareBorder();
                 g.DrawImageUnscaled(bmpBorder, Left - 2, Top);
-            }
-
-            if (Selected)
-            {
-                if ((bmpBorderSelect == null) || (bmpBorderSelect.Width != Width + 14) || (bmpBorderSelect.Height != Height + 14))
-                {
-                    bmpBorderSelect?.Dispose();
-                    bmpBorderSelect = Program.formMain.bbSelect.DrawBorder(Width + 14, Height + 14);
-                }
-
-                g.DrawImageUnscaled(bmpBorderSelect, Left - 7, Top - 7);
             }
 
             //g.DrawRectangle(penBorder, rectBorder);

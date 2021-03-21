@@ -14,6 +14,15 @@ namespace Fantasy_Kingdoms_Battle
     {
         internal List<VisualControl> Controls { get; } = new List<VisualControl>();
 
+        internal void DrawBackground(Graphics g)
+        {
+            foreach (VisualControl vc in Controls)
+            {
+                if (vc.Visible)
+                    vc.DrawBackground(g);
+            }
+        }
+
         internal void Draw(Graphics g)
         {
             foreach (VisualControl vc in Controls)

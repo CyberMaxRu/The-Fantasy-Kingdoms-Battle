@@ -37,6 +37,13 @@ namespace Fantasy_Kingdoms_Battle
             return Page.GetControl(x, y);
         }
 
+        internal override void DrawBackground(Graphics g)
+        {
+            base.DrawBackground(g);
+
+            if (Page.Visible)
+                Page.DrawBackground(g);
+        }
 
         internal override void Draw(Graphics g)
         {

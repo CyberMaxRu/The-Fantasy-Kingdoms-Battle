@@ -12,6 +12,7 @@ namespace Fantasy_Kingdoms_Battle
     // Класс панели логова
     internal sealed class PanelLair : VisualControl
     {
+        private Bitmap bmpBackground;
         private readonly VCLabelM2 lblName;
         private readonly VCImage imgLair;
         private readonly VCIconButton btnAction;
@@ -130,6 +131,19 @@ namespace Fantasy_Kingdoms_Battle
         private void SelectThisBuilding()
         {
             Program.formMain.SelectLair(this);
+        }
+
+        internal override void DrawBackground(Graphics g)
+        {
+            base.DrawBackground(g);
+
+            if ((bmpBackground == null) || (bmpBackground.Width != Width) || (bmpBackground.Height != Height))
+            {
+                bmpBackground?.Dispose();
+                bmpBackground = GuiUtils.MakeBackground(new Size(Width, Height));
+            }
+
+            g.DrawImageUnscaled(bmpBackground, Left, Top);
         }
 
         internal override void Draw(Graphics g)

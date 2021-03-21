@@ -12,6 +12,7 @@ namespace Fantasy_Kingdoms_Battle
     // Класс панели здания
     internal sealed class PanelConstruction : VisualControl
     {
+        private Bitmap bmpBackground;
         private readonly VCLabelM2 lblName;
         private readonly VCImage imageConstruction;
         private readonly VCIconButton btnHeroes;
@@ -166,6 +167,19 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(pb.Building == TypeConstruction);
 
             Building = pb;
+        }
+
+        internal override void DrawBackground(Graphics g)
+        {
+            base.DrawBackground(g);
+
+            if ((bmpBackground == null) || (bmpBackground.Width != Width) || (bmpBackground.Height != Height))
+            {
+                bmpBackground?.Dispose();
+                bmpBackground = GuiUtils.MakeBackground(new Size(Width, Height));
+            }
+
+            g.DrawImageUnscaled(bmpBackground, Left, Top);
         }
 
         internal override void Draw(Graphics g)

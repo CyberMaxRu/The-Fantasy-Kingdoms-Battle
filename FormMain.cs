@@ -1708,6 +1708,11 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (VisualLayer vl in Layers)
             {
+                vl.DrawBackground(gfxFrame);
+            }
+
+            foreach (VisualLayer vl in Layers)
+            {
                 vl.Draw(gfxFrame); 
             }
 
