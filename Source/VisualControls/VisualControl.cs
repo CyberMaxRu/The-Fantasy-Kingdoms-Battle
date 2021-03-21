@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -163,6 +164,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal virtual void MouseDown() { }
         internal virtual void MouseUp() { }
+        internal virtual void KeyUp(KeyEventArgs e) { }
 
         internal virtual void ArrangeControls()
         {

@@ -997,6 +997,8 @@ namespace Fantasy_Kingdoms_Battle
                 FormConfirmExit f = new FormConfirmExit();
                 e.Cancel = f.ShowModal() == DialogResult.No;
                 inQuit = false;
+
+                ShowFrame(true);
             }
             else
                 e.Cancel = true;
@@ -1729,6 +1731,13 @@ namespace Fantasy_Kingdoms_Battle
 
             TreatMouseMove(e.Button == MouseButtons.Left);
         }
+
+        protected override void OnKeyUp(KeyEventArgs e)
+        {
+            base.OnKeyUp(e);
+
+            currentLayer.KeyUp(e);
+        }        
 
         private VisualControl ControlUnderMouse()
         {

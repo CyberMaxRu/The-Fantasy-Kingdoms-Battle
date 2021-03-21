@@ -30,6 +30,19 @@ namespace Fantasy_Kingdoms_Battle
             layer = Program.formMain.AddLayer(this);
         }
        
+        protected VCButton AcceptButton { get; set; }
+        protected VCButton CancelButton { get; set; }
+
+        internal override void KeyUp(KeyEventArgs e)
+        {
+            base.KeyUp(e);
+
+            if ((e.KeyCode == Keys.Enter) && (AcceptButton != null))
+                AcceptButton.DoClick();
+            if ((e.KeyCode == Keys.Escape) && (CancelButton != null))
+                CancelButton.DoClick();
+        }
+
         internal virtual void AdjustSize()
         {
             if ((Width != 14 + ClientControl.Width + 14) || (Height != 13 + 24 + ClientControl.Height + 14))
@@ -71,8 +84,8 @@ namespace Fantasy_Kingdoms_Battle
             dialogResult = dr;
             Program.formMain.RemoveLayer(layer);
             frame.Continue = false;
-
         }
+
         internal void ToCentre()
         {
             SetPos(Program.formMain.ShiftControls.X + (Program.formMain.sizeGamespace.Width - Width) / 2, Program.formMain.ShiftControls.Y + (Program.formMain.sizeGamespace.Height - Height - 13) / 2);

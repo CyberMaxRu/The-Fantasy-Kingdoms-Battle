@@ -24,9 +24,13 @@ namespace Fantasy_Kingdoms_Battle
             btnOk = new VCButton(ClientControl, 0, 100, "Да");
             btnOk.Width = 160;
             btnOk.Click += BtnOk_Click;
+            btnOk.Default = true;
             btnCancel = new VCButton(ClientControl, 200, 100, "Нет");
             btnCancel.Width = 160;
             btnCancel.Click += BtnCancel_Click;
+
+            AcceptButton = btnOk;
+            CancelButton = btnCancel;
         }
 
         private void BtnCancel_Click(object sender, EventArgs e)
