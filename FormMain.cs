@@ -548,7 +548,6 @@ namespace Fantasy_Kingdoms_Battle
                 pageLairs = new VCFormPage(MainControl, 0, pageGuilds.ShiftY, pages, ilGui, GUI_BATTLE, "Окрестности", BtnPage_Click);
                 pageTournament = new VCFormPage(MainControl, 0, pageGuilds.ShiftY, pages, ilGui, GUI_TOURNAMENT, "Турнир", BtnPage_Click);
                 pageTournament.ShowHint += PageTournament_ShowHint;
-                pageTournament.Visible = false;
 
                 labelCaptionPage = new VCLabelM2(MainControl, 0, pageGuilds.ShiftY, fontMedCaptionC, Config.CommonCaptionPage, pageGuilds.Height, "");
                 labelCaptionPage.Width = 240;
