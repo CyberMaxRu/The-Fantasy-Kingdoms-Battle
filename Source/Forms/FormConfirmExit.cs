@@ -10,8 +10,8 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class FormConfirmExit : VCForm
     {
-        private readonly VCButton bntOk;
-        private readonly VCButton bntCancel;
+        private readonly VCButton btnOk;
+        private readonly VCButton btnCancel;
         private readonly VCTextM2 textConfirm;
 
         public FormConfirmExit() : base()
@@ -21,20 +21,20 @@ namespace Fantasy_Kingdoms_Battle
             textConfirm = new VCTextM2(ClientControl, 0, 0, Program.formMain.fontParagraph, Color.White, ClientControl.Width);
             textConfirm.Text = "Выход приведет к потере текущей игры.\r\nПродолжить?";
 
-            bntOk = new VCButton(ClientControl, 0, 100, "Да");
-            bntOk.Width = 160;
-            bntOk.Click += BntOk_Click;
-            bntCancel = new VCButton(ClientControl, 200, 100, "Нет");
-            bntCancel.Width = 160;
-            bntCancel.Click += BntCancel_Click;
+            btnOk = new VCButton(ClientControl, 0, 100, "Да");
+            btnOk.Width = 160;
+            btnOk.Click += BtnOk_Click;
+            btnCancel = new VCButton(ClientControl, 200, 100, "Нет");
+            btnCancel.Width = 160;
+            btnCancel.Click += BtnCancel_Click;
         }
 
-        private void BntCancel_Click(object sender, EventArgs e)
+        private void BtnCancel_Click(object sender, EventArgs e)
         {
             CloseForm(DialogResult.No);
         }
 
-        private void BntOk_Click(object sender, EventArgs e)
+        private void BtnOk_Click(object sender, EventArgs e)
         {
             CloseForm(DialogResult.Yes);
         }
@@ -43,9 +43,9 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.AdjustSize();
 
-            bntOk.ShiftY = ClientControl.Height - bntOk.Height;
-            bntCancel.ShiftX = ClientControl.Width - bntCancel.Width;
-            bntCancel.ShiftY = bntOk.ShiftY;
+            btnOk.ShiftY = ClientControl.Height - btnOk.Height;
+            btnCancel.ShiftX = ClientControl.Width - btnCancel.Width;
+            btnCancel.ShiftY = btnOk.ShiftY;
         }
     }
 }
