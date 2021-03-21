@@ -12,7 +12,7 @@ namespace Fantasy_Kingdoms_Battle
     internal class PanelCreatureInfo : PanelBaseInfo
     {
         private Creature creature;
-        private readonly VCLabel lblKindHero;
+        private readonly VCLabelM2 lblKindHero;
         private readonly Label lblLevel;
         private readonly Label lblHealth;
         private readonly Label lblMana;
@@ -49,7 +49,7 @@ namespace Fantasy_Kingdoms_Battle
             panelAbilities = new PanelWithPanelEntity(4);
             panelSecondarySkills = new PanelWithPanelEntity(4);
 
-            lblKindHero = new VCLabel(this, FormMain.Config.GridSize, TopForControls(), FormMain.Config.FontCaptionPage, FormMain.Config.CommonCaptionPage, 16, "");
+            lblKindHero = new VCLabelM2(this, FormMain.Config.GridSize, TopForControls(), Program.formMain.fontMedCaptionC, FormMain.Config.CommonCaptionPage, 16, "");
             lblKindHero.StringFormat.Alignment = StringAlignment.Near;
 
             bmpStateBackground = new VCBitmap(this, FormMain.Config.GridSize, lblKindHero.NextTop(), Program.formMain.bmpBandStateCreature);

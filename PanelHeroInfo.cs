@@ -12,7 +12,6 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class PanelHeroInfo : PanelCreatureInfo
     {
         private PlayerHero hero;
-        private readonly VCLabel lblKindHero;
         private readonly Label lblLevel;
         private readonly Label lblHealth;
         private readonly Label lblMana;
