@@ -26,6 +26,7 @@ namespace Fantasy_Kingdoms_Battle
             labelCaption.StringFormat.Alignment = StringAlignment.Center;
             labelCaption.StringFormat.LineAlignment = StringAlignment.Center;
             labelCaption.Visible = false;
+            labelCaption.ManualDraw = true;
         }
 
         internal string Caption { get; set; }

@@ -45,6 +45,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int ShiftY { get; set; }// Смещение контрола относительно верхнего края на родителе
         internal Rectangle Rectangle { get; private set; }// Координаты и размер контрола
         internal bool Visible { get; set; } = true;// Видимость контрола
+        internal bool ManualDraw { get; set; } = false;// Ручное рисование контрола
         internal bool ShowBorder { get; set; }// Надо ли показывать бордюр
         internal bool Selected { get; set; }// Контрол выбран
 
@@ -149,13 +150,13 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Program.formMain.formHint.Clear();
                 ShowHint.Invoke(this, new EventArgs());
-                Program.formMain.formHint.ShowHint(this);
+                Program.formMain.formHint.DrawHint(this);
             }
             else
             {
                 Program.formMain.formHint.Clear();
                 if (PrepareHint())
-                    Program.formMain.formHint.ShowHint(this);
+                    Program.formMain.formHint.DrawHint(this);
             }
         }
 
