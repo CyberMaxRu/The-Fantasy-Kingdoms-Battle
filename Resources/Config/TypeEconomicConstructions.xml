@@ -90,15 +90,15 @@
     </Levels>
   </TypeConstructionEconomic>
   <TypeConstructionEconomic>
-    <ID>Hostelry</ID>
-    <Name>Постоялый двор</Name>
+    <ID>Tradepost</ID>
+    <Name>Торговый пост</Name>
     <Description>- Приносит средний доход</Description>
     <ImageIndex>94</ImageIndex>
     <Line>1</Line>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <HasTreasury>False</HasTreasury>
-    <SoundSelect></SoundSelect>
+    <SoundSelect>tradepost_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>
