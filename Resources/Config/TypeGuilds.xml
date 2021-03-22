@@ -80,8 +80,8 @@
     <Name>Гильдия рейнджеров</Name>
     <Description>- Позволяет нанимать рейнджеров/- В гильдии исследуют и продают особые способности рейнджеров/- Здесь исследуют заклинание "Взгляд орла"</Description>
     <ImageIndex>42</ImageIndex>
-    <Line>2</Line>
-    <Pos>1</Pos>
+    <Line>1</Line>
+    <Pos>2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <HasTreasury>True</HasTreasury>
@@ -155,8 +155,8 @@
     <Name>Гильдия послушниц</Name>
     <Description>- Позволяет нанимать послушниц/- В гильдии исследуют и продают особые способности послушниц/- Здесь исследуют заклинание "Святое лечение"</Description>
     <ImageIndex>38</ImageIndex>
-    <Line>3</Line>
-    <Pos>1</Pos>
+    <Line>1</Line>
+    <Pos>3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <HasTreasury>True</HasTreasury>
@@ -230,8 +230,8 @@
     <Name>Гильдия магов</Name>
     <Description>- Позволяет нанимать магов/- В гильдии исследуют и продают особые способности магов/- Здесь исследуют разнообразные заклинания</Description>
     <ImageIndex>43</ImageIndex>
-    <Line>3</Line>
-    <Pos>2</Pos>
+    <Line>2</Line>
+    <Pos>3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <HasTreasury>True</HasTreasury>
@@ -420,8 +420,8 @@
     <Name>Поселение гномов</Name>
     <Description>- Позволяет нанимать гномов/- В гильдии исследуют и продают особые способности гномов/- Здесь исследуют заклинание "Наговор камня"/- Гномы очень не любят эльфиек</Description>
     <ImageIndex>40</ImageIndex>
-    <Line>1</Line>
-    <Pos>2</Pos>
+    <Line>2</Line>
+    <Pos>1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <HasTreasury>True</HasTreasury>
@@ -504,7 +504,7 @@
     <Description>- Позволяет нанимать разбойниц/- В гильдии исследуют и продают особые способности разбойниц/- Здесь исследуют и продают яды для оружия/- Здесь исследуют способность "Вымогательство"</Description>
     <ImageIndex>47</ImageIndex>
     <Line>1</Line>
-    <Pos>3</Pos>
+    <Pos>4</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <HasTreasury>True</HasTreasury>
