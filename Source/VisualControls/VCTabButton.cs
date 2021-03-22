@@ -18,7 +18,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override bool PrepareHint()
         {
-            Program.formMain.formHint.AddStep1Header(NameTab, "", "");
+            Program.formMain.formHint.AddHeader(NameTab);
             return true;
         }
 
