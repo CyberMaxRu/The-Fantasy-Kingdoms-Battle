@@ -48,56 +48,64 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
-            if ((BitmapList != null) && (ImageIndex >= 0))
-                BitmapList.DrawImage(g, ImageIndex, ImageIsEnabled, ImageIsOver, Left + ShiftImage.X, Top + ShiftImage.Y);
-
-            if (Text.Length > 0)
+            if (Visible || ManualDraw)
             {
-                if ((preparedText != Text) || (preparedColor != Color))
+                if ((BitmapList != null) && (ImageIndex >= 0))
                 {
-                    bmpPreparedText?.Dispose();
-                    bmpPreparedText = Font.GetBitmap(Text, Color);
-                    preparedText = Text;
-                    preparedColor = Color;
+                    BitmapList.DrawImage(g, ImageIndex, ImageIsEnabled, ImageIsOver, Left + ShiftImage.X, Top + ShiftImage.Y);
+                }
+
+                if (Text.Length > 0)
+                {
+                    if ((preparedText != Text) || (preparedColor != Color))
+                    {
+                        bmpPreparedText?.Dispose();
+                        bmpPreparedText = Font.GetBitmap(Text, Color);
+                        preparedText = Text;
+                        preparedColor = Color;
+                    }
                 }
             }
 
             base.Draw(g);
 
-            if (Text.Length > 0)
+            if (Visible || ManualDraw)
             {
-                int x;
-                int y;
-                switch (StringFormat.Alignment)
+                if (Text.Length > 0)
                 {
-                    case StringAlignment.Near:
-                        x = Left;
-                        break;
-                    case StringAlignment.Center:
-                        x = Left + ((Width - bmpPreparedText.Width) / 2);
-                        break;
-                    default:
-                        x = Left + Width - bmpPreparedText.Width;
-                        break;
+                    int x;
+                    int y;
+                    switch (StringFormat.Alignment)
+                    {
+                        case StringAlignment.Near:
+                            x = Left;
+                            break;
+                        case StringAlignment.Center:
+                            x = Left + ((Width - bmpPreparedText.Width) / 2);
+                            break;
+                        default:
+                            x = Left + Width - bmpPreparedText.Width;
+                            break;
+                    }
+
+                    //Debug.Assert(x >= Left);
+
+                    switch (StringFormat.LineAlignment)
+                    {
+                        case StringAlignment.Near:
+                            y = Top;
+                            break;
+                        case StringAlignment.Center:
+                            y = Top + ((Height - bmpPreparedText.Height) / 2);
+                            break;
+                        default:
+                            y = Top + Height - bmpPreparedText.Height;
+                            break;
+                    }
+                    //Debug.Assert(y >= Top);
+
+                    g.DrawImageUnscaled(bmpPreparedText, x + LeftMargin, y + TopMargin);
                 }
-
-                Debug.Assert(x >= Left);
-
-                switch (StringFormat.LineAlignment)
-                {
-                    case StringAlignment.Near:
-                        y = Top;
-                        break;
-                    case StringAlignment.Center:
-                        y = Top + ((Height - bmpPreparedText.Height) / 2);
-                        break;
-                    default:
-                        y = Top + Height - bmpPreparedText.Height;
-                        break;
-                }
-                //Debug.Assert(y >= Top);
-
-                g.DrawImageUnscaled(bmpPreparedText, x + LeftMargin, y + TopMargin);
             }
         }
 
@@ -106,7 +114,7 @@ namespace Fantasy_Kingdoms_Battle
             base.ArrangeControls();
 
             if ((BitmapList != null) && (ImageIndex >= 0))
-                LeftMargin = BitmapList.Size + FormMain.Config.GridSize;
+                LeftMargin = FormMain.Config.GridSize + BitmapList.Size + FormMain.Config.GridSize;
 
             rectText = new RectangleF(Left + LeftMargin, Top + TopMargin, Width, Height + 2);
         }
