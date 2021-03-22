@@ -12,6 +12,7 @@ namespace Fantasy_Kingdoms_Battle
 
     internal class VCTextM2 : VisualControl
     {
+        private string text;
         private string preparedText;
         private List<string> linesText = new List<string>();
         private List<Bitmap> listBitmapPreparedText = new List<Bitmap>();
@@ -30,10 +31,41 @@ namespace Fantasy_Kingdoms_Battle
             };
         }
 
-        internal string Text { get; set; }
-        internal M2Font Font { get; set; }
+        internal string Text { get => text; set { text = value; TextToLines(text); DrawText(); } }
+        internal M2Font Font { get; }
         internal Color Color { get; set; }
         internal StringFormat StringFormat { get; set; }
+        internal int MinHeigth()
+        {
+            return Font.HeightSymbol * linesText.Count;
+        }
+
+        internal int MinWidth()
+        {
+            int w = 0;
+            foreach (Bitmap b in listBitmapPreparedText)
+                w = Math.Max(w, b.Width);
+
+            return w;
+        }
+
+        internal void DrawText()
+        {
+            foreach (Bitmap b in listBitmapPreparedText)
+            {
+                b.Dispose();
+            }
+            listBitmapPreparedText.Clear();
+
+            heightBitmaps = 0;
+            foreach (string s in linesText)
+            {
+                listBitmapPreparedText.Add(Font.GetBitmap(s, Color));
+                heightBitmaps += listBitmapPreparedText[listBitmapPreparedText.Count - 1].Height;
+            }
+
+            preparedText = Text;
+        }
 
         internal override void Draw(Graphics g)
         {
@@ -41,22 +73,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (preparedText != Text)
                 {
-                    TextToLines(Text);
-
-                    foreach (Bitmap b in listBitmapPreparedText)
-                    {
-                        b.Dispose();
-                    }
-                    listBitmapPreparedText.Clear();
-
-                    heightBitmaps = 0;
-                    foreach (string s in linesText)
-                    {
-                        listBitmapPreparedText.Add(Font.GetBitmap(s, Color));
-                        heightBitmaps += listBitmapPreparedText[listBitmapPreparedText.Count - 1].Height;
-                    }
-
-                    preparedText = Text;
+                    DrawText();
                 }
             }
 
@@ -142,9 +159,18 @@ namespace Fantasy_Kingdoms_Battle
                 }
                 else
                 {
-                    // Текст закончился. Остаток - последнее слово
+                    // Текст закончился. Если остаток влезает в ширину, берем его, иначе отрезаем по пробелу
                     widthLine = Font.WidthText(text);
+                    if (widthLine > Width)
+                    {
+                        tmpStr = text.Substring(0, priorPosSpace);
+                        linesText.Add(tmpStr);
+                        text = text.Substring(priorPosSpace + 1);
+                        widthLine = Font.WidthText(text);
+                    }
+
                     Debug.Assert(widthLine <= Width);
+                    Debug.Assert(text.Length > 0);
                     linesText.Add(text);
                     break;
                 }
