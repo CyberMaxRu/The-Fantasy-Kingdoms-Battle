@@ -74,6 +74,7 @@
     <Compile Include="PlayerObject.cs" />
     <Compile Include="SecondarySkill.cs" />
     <Compile Include="Source\Forms\FormConfirmExit.cs" />
+    <Compile Include="Source\Panels\PanelHint.cs" />
     <Compile Include="Source\Panels\PanelPlayer.cs" />
     <Compile Include="Source\TypeLobby\TypeLobbyLairSettings.cs" />
     <Compile Include="Source\VisualControls\VCBitmapBand.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="Source\VisualControls\VCForm.cs" />
     <Compile Include="Source\VisualControls\VCIconButton.cs" />
     <Compile Include="Source\VisualControls\VCLabelM2.cs" />
+    <Compile Include="Source\VisualControls\VCLabelValue.cs" />
     <Compile Include="Source\VisualControls\VCTabButton.cs" />
     <Compile Include="Source\VisualControls\VCSeparator.cs" />
     <Compile Include="Source\VisualControls\VCTextM2.cs" />

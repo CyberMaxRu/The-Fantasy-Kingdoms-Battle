@@ -22,6 +22,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal bool gameStarted = false;
         internal bool inQuit = false;
+        private bool needRepaintFrame = false;
 
         // Проигрывание звуков и музыки 
         private readonly SoundPlayer spSoundSelect = new SoundPlayer();
@@ -152,6 +153,7 @@ namespace Fantasy_Kingdoms_Battle
         internal const int GUI_16_GOLD = 1;
         internal const int GUI_16_PEASANT = 2;
         internal const int GUI_16_GREATNESS = 3;
+        internal const int GUI_16_INCOME = 4;
 
         internal const int GUI_24_FIRE = 0;
         internal const int GUI_24_HEROES = 1;
@@ -235,7 +237,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal VCMenuCell[,] CellsMenu { get; }
 
-        internal FormHint formHint;
+        internal PanelHint formHint;
         internal PanelConstruction SelectedPanelBuilding { get; private set; }
         internal PanelLair SelectedPanelLair { get; private set; }
         internal PlayerHero SelectedHero { get; private set; }
@@ -657,7 +659,7 @@ namespace Fantasy_Kingdoms_Battle
                 mpConstructionComplete = new System.Windows.Media.MediaPlayer();
                 mpConstructionComplete.Open(new Uri(dirResources + @"Sound\Interface\Construction\ConstructionComplete.wav"));
 
-                formHint = new FormHint(null, null);
+                formHint = new PanelHint();
                 //formHint = new FormHint(ilGui16, ilParameters);
 
                 ValidateAvatars();
@@ -925,7 +927,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             formHint.Clear();
             formHint.AddStep1Header("Конец хода", "", "Завершение хода");
-            formHint.ShowHint(btnEndTurn);
+            formHint.DrawHint(btnEndTurn);
         }
 
         private void LabelGold_MouseHover(object sender, EventArgs e)
@@ -1336,14 +1338,6 @@ namespace Fantasy_Kingdoms_Battle
             ActivatePage(pageLairs);
         }
 
-        private void FormMain_Activated(object sender, EventArgs e)
-        {
-            // При деактивации пересоздаем окно, иначе оно отображается под главной формой
-            formHint.Dispose();
-            //formHint = new FormHint(ilGui16, ilParameters);
-            formHint = new FormHint(null, null);
-        }
-
         private void StartNewLobby()
         {
             lobby = new Lobby(Config.TypeLobbies[0]);
@@ -1563,18 +1557,11 @@ namespace Fantasy_Kingdoms_Battle
             SetNeedRedrawFrame();
         }
 
-        private void ShowHintForToolButton(Control c, string text, string hint)
-        {
-            formHint.Clear();
-            formHint.AddStep1Header(text, "", hint);
-            formHint.ShowHint(c);
-        }
-
         private void ShowHintForToolButton(VisualControl c, string text, string hint)
         {
             formHint.Clear();
             formHint.AddStep1Header(text, "", hint);
-            formHint.ShowHint(c);
+            formHint.DrawHint(c);
         }
 
         internal void ValidateAvatars()
@@ -1644,6 +1631,12 @@ namespace Fantasy_Kingdoms_Battle
 
             base.OnPaint(e);
 
+            if (needRepaintFrame)
+            {
+                DrawFrame();
+                needRepaintFrame = false;
+            }
+
             e.Graphics.DrawImage(bmpFrame, e.ClipRectangle, e.ClipRectangle, GraphicsUnit.Pixel);
         }
 
@@ -1653,23 +1646,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 needRedrawFrame = false;
 
-                if (debugMode)
-                {
-                    startDebugAction = DateTime.Now;
-                    labelLayers.Text = $"Layers: {Layers.Count}; PlaySelectButton: {playsSelectButton}";
-                }
-
                 DrawFrame();// Готовим кадр
-
-                if (debugMode)
-                {
-                    if (controlWithHint != null)
-                        gfxFrame.DrawRectangle(penDebugBorder, controlWithHint.Rectangle);
-
-                    durationDrawFrame = DateTime.Now - startDebugAction;
-                    labelTimeDrawFrame.Text = "Draw frame: " + durationDrawFrame.TotalMilliseconds.ToString();
-                    vcDebugInfo.Draw(gfxFrame);
-                }
 
                 Refresh();// Сразу же рисуем кадр
             }
@@ -1683,6 +1660,12 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(inDrawFrame == false);
 
             inDrawFrame = true;
+
+            if (debugMode)
+            {
+                startDebugAction = DateTime.Now;
+                labelLayers.Text = $"Layers: {Layers.Count}; PlaySelectButton: {playsSelectButton}";
+            }
 
             // Рисуем фон
             if ((bmpBackground == null) || !bmpBackground.Size.Equals(ClientSize))
@@ -1714,6 +1697,20 @@ namespace Fantasy_Kingdoms_Battle
             foreach (VisualLayer vl in Layers)
             {
                 vl.Draw(gfxFrame); 
+            }
+
+            // Рисуем подсказку поверх всех окон
+            if (formHint.Visible)
+                formHint.Draw(gfxFrame);
+
+            if (debugMode)
+            {
+                if (controlWithHint != null)
+                    gfxFrame.DrawRectangle(penDebugBorder, controlWithHint.Rectangle);
+
+                durationDrawFrame = DateTime.Now - startDebugAction;
+                labelTimeDrawFrame.Text = "Draw frame: " + durationDrawFrame.TotalMilliseconds.ToString();
+                vcDebugInfo.Draw(gfxFrame);
             }
 
             //
@@ -1799,7 +1796,7 @@ namespace Fantasy_Kingdoms_Battle
                     }
                     else
                     {
-                        // Если над контролов водят мышкой, отсчет времени начинаем только после остановки
+                        // Если над контролом водят мышкой, отсчет времени начинаем только после остановки
                         timerHover.Stop();
                         timerHover.Start();
                     }
@@ -1911,6 +1908,9 @@ namespace Fantasy_Kingdoms_Battle
                 timerHover.Stop();
                 controlWithHint.DoShowHint();
                 hintShowed = true;
+                formHint.Visible = true;
+                needRepaintFrame = true;
+                Invalidate(true);
             }
         }
 
