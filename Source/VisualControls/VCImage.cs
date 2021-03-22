@@ -28,23 +28,27 @@ namespace Fantasy_Kingdoms_Battle
             labelCost = new VCLabelM2(this, 0, Height - 12, Program.formMain.fontSmallC, FormMain.Config.CommonCost, 16, "");
             labelCost.StringFormat.LineAlignment = StringAlignment.Far;
             labelCost.Visible = false;// Текст перекрывается иконкой. Поэтому рисуем вручную
+            labelCost.ManualDraw = true;
 
             shiftlabelLevel = bitmapList.Size >= 128 ? FormMain.Config.GridSize : 6;
             labelLevel = new VCLabelM2(this, 0, shiftlabelLevel - 2, Program.formMain.fontMedCaptionC, FormMain.Config.CommonLevel, 16, "");
             labelLevel.StringFormat.LineAlignment = StringAlignment.Near;
             labelLevel.StringFormat.Alignment = StringAlignment.Far;
             labelLevel.Visible = false;
+            labelLevel.ManualDraw = true;
 
             labelQuantity = new VCLabelM2(this, 0, FormMain.Config.GridSize, Program.formMain.fontMedCaptionC, FormMain.Config.CommonQuantity, 16, "");
             labelQuantity.StringFormat.LineAlignment = StringAlignment.Far;
             labelQuantity.StringFormat.Alignment = StringAlignment.Far;
             labelQuantity.Visible = false;
+            labelQuantity.ManualDraw = true;
 
             labelPopupQuantity = new VCLabelM2(this, 0, 0, Program.formMain.fontSmall, FormMain.Config.CommonPopupQuantity, sizePopupBackground, "");
             labelPopupQuantity.StringFormat.LineAlignment = StringAlignment.Center;
             labelPopupQuantity.StringFormat.Alignment = StringAlignment.Center;
             labelPopupQuantity.Width = sizePopupBackground;
             labelPopupQuantity.Visible = false;
+            labelPopupQuantity.ManualDraw = true;
 
             brushPopupQuantity = new SolidBrush(FormMain.Config.CommonPopupQuantityBack);
 
