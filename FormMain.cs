@@ -1236,14 +1236,19 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     left = 0;
 
-                    foreach (TypeConstruction tck in list)
+                    for (int pos = 1; pos <= Config.BuildingMaxPos; pos++)
                     {
-                        if (tck.Line == line)
+                        foreach (TypeConstruction tck in list)
                         {
-                            tck.Panel = new PanelConstruction(panel.Page, left, top, tck);
+                            if ((tck.Line == line) && (tck.Pos == pos))
+                            {
+                                Debug.Assert(tck.Panel == null);
 
-                            left += tck.Panel.Width + Config.GridSize;
-                            height = tck.Panel.Height;
+                                tck.Panel = new PanelConstruction(panel.Page, left, top, tck);
+
+                                left += tck.Panel.Width + Config.GridSize;
+                                height = tck.Panel.Height;
+                            }
                         }
                     }
 

@@ -6,6 +6,7 @@
     <PlateHeight>3</PlateHeight>
     <MinRowsEntityInPlate>2</MinRowsEntityInPlate>
     <BuildingMaxLines>3</BuildingMaxLines>
+    <BuildingMaxPos>5</BuildingMaxPos>
     <ShiftForBorderX>3</ShiftForBorderX>
     <ShiftForBorderY>2</ShiftForBorderY>
   </Interface>

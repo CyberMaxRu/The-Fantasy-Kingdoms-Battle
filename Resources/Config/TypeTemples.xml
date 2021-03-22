@@ -6,6 +6,7 @@
     <Description>- Позволяет нанимать сестер Крипты/- Здесь исследуют заклинание "Чума и разорение"/- Сестры Крипты не любят паладинов</Description>
     <ImageIndex>39</ImageIndex>
     <Line>1</Line>
+    <Pos>1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <HasTreasury>True</HasTreasury>
@@ -36,6 +37,7 @@
     <Description>- Позволяет нанимать жриц Агрелы/- Здесь исследуют заклинание "Возрождение"</Description>
     <ImageIndex>46</ImageIndex>
     <Line>1</Line>
+    <Pos>2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <HasTreasury>True</HasTreasury>
@@ -66,6 +68,7 @@
     <Description>- Позволяет нанимать паладинов/- Здесь исследуют заклинание "Святой щит"/- Паладины не любят нежить, вызываемую сестрами Крипты</Description>
     <ImageIndex>45</ImageIndex>
     <Line>1</Line>
+    <Pos>3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <HasTreasury>True</HasTreasury>
@@ -96,6 +99,7 @@
     <Description>- Позволяет нанимать мастеров меча/- Здесь исследуют заклинание "Гнев Крольма"</Description>
     <ImageIndex>37</ImageIndex>
     <Line>2</Line>
+    <Pos>1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <HasTreasury>True</HasTreasury>
@@ -126,6 +130,7 @@
     <Description>- Позволяет нанимать звероловов/- Здесь исследуют заклинание "Щит Хаоса"</Description>
     <ImageIndex>36</ImageIndex>
     <Line>2</Line>
+    <Pos>2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <HasTreasury>True</HasTreasury>
@@ -156,6 +161,7 @@
     <Description>- Позволяет нанимать лучников Хелии/- Здесь исследуют заклинание "Удар Солнца"</Description>
     <ImageIndex>44</ImageIndex>
     <Line>2</Line>
+    <Pos>3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <HasTreasury>True</HasTreasury>
@@ -186,6 +192,7 @@
     <Description>- Позволяет нанимать магов Холода</Description>
     <ImageIndex>130</ImageIndex>
     <Line>3</Line>
+    <Pos>1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <HasTreasury>True</HasTreasury>
@@ -216,6 +223,7 @@
     <Description>- Позволяет нанимать ассасинов</Description>
     <ImageIndex>132</ImageIndex>
     <Line>3</Line>
+    <Pos>2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <HasTreasury>True</HasTreasury>
@@ -246,6 +254,7 @@
     <Description>- Позволяет нанимать магов Огня</Description>
     <ImageIndex>134</ImageIndex>
     <Line>3</Line>
+    <Pos>3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <HasTreasury>True</HasTreasury>

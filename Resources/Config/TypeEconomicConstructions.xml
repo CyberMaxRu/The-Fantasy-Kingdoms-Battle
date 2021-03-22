@@ -6,6 +6,7 @@
     <Description>- Позволяет отдавать приказы строительства/- Содержит налоговую и охранную службы/- Здесь хранится казна королевства</Description>
     <ImageIndex>20</ImageIndex>
     <Line>1</Line>
+    <Pos>1</Pos>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <HasTreasury>True</HasTreasury>
@@ -57,6 +58,7 @@
     <Description>- Приносит небольшой доход/- Жилище крестьян</Description>
     <ImageIndex>108</ImageIndex>
     <Line>1</Line>
+    <Pos>3</Pos>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <HasTreasury>False</HasTreasury>
@@ -76,6 +78,7 @@
     <Description>- Приносит небольшой доход</Description>
     <ImageIndex>107</ImageIndex>
     <Line>1</Line>
+    <Pos>2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <HasTreasury>False</HasTreasury>
@@ -95,6 +98,7 @@
     <Description>- Приносит средний доход</Description>
     <ImageIndex>94</ImageIndex>
     <Line>1</Line>
+    <Pos>4</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <HasTreasury>False</HasTreasury>
@@ -114,6 +118,7 @@
     <Description>- Приносит существенный доход/- Здесь исследуют и продают зелья/- Здесь исследуют и продают артефакты</Description>
     <ImageIndex>82</ImageIndex>
     <Line>2</Line>
+    <Pos>1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <LayersResearches>1</LayersResearches>
@@ -204,6 +209,7 @@
     <Description>- Приносит небольшой доход/- Здесь изобретают и продают новые виды оружия и брони</Description>
     <ImageIndex>87</ImageIndex>
     <Line>2</Line>
+    <Pos>2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <HasTreasury>False</HasTreasury>
@@ -523,6 +529,7 @@
     <Description>- Здесь героя могут отдыхать и лечиться/- Позволяет собирать партии героев</Description>
     <ImageIndex>89</ImageIndex>
     <Line>3</Line>
+    <Pos>1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>2</MaxLevel>
     <HasTreasury>False</HasTreasury>
@@ -552,6 +559,7 @@
     <Description>- Приносит небольшой доход/- Здесь изобретают и продают эликсиры</Description>
     <ImageIndex>81</ImageIndex>
     <Line>2</Line>
+    <Pos>3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <HasTreasury>False</HasTreasury>
@@ -641,11 +649,12 @@
     </Researches>
   </TypeConstructionEconomic>
   <TypeConstructionEconomic>
-    <ID>Bank</ID>
-    <Name>Банк</Name>
-    <Description>- Приносит небольшой доход/- Позволяет получать кредит/- Позволяет вкладываеть деньги под проценты</Description>
-    <ImageIndex>73</ImageIndex>
+    <ID>AlchemistHouse</ID>
+    <Name>Дом алхимика</Name>
+    <Description>- Приносит небольшой доход/- Производит напитки</Description>
+    <ImageIndex>111</ImageIndex>
     <Line>2</Line>
+    <Pos>4</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <HasTreasury>False</HasTreasury>
@@ -665,6 +674,7 @@
     <Description>- Позволяет изучить заклинания</Description>
     <ImageIndex>129</ImageIndex>
     <Line>3</Line>
+    <Pos>2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>2</MaxLevel>
     <MaxHeroes>0</MaxHeroes>
@@ -689,6 +699,7 @@
     <Description>- Повышает энтузиазм героев</Description>
     <ImageIndex>88</ImageIndex>
     <Line>3</Line>
+    <Pos>3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <HasTreasury>False</HasTreasury>
@@ -707,6 +718,7 @@
     <Description>- Позволяет улучшать навыки героями</Description>
     <ImageIndex>50</ImageIndex>
     <Line>3</Line>
+    <Pos>4</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <HasTreasury>False</HasTreasury>

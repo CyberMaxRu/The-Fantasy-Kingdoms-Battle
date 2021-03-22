@@ -256,6 +256,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int WarehouseHeight { get; private set; }// Количество рядов ячеек склада
         internal int WarehouseMaxCells { get; private set; }// Количество ячеек в складе
         internal int BuildingMaxLines { get; private set; }// Максимальное количество линий зданий
+        internal int BuildingMaxPos { get; private set; }// Максимальное количество позиций в линии зданий
 
         // Цвета
         internal Color CommonBorder { get; private set; }
@@ -514,6 +515,10 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(MinRowsEntities <= 6);
 
             BuildingMaxLines = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/BuildingMaxLines").InnerText);
+            Debug.Assert(BuildingMaxLines >= 2);
+            Debug.Assert(BuildingMaxLines <= 5);
+
+            BuildingMaxPos = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/BuildingMaxPos").InnerText);
             Debug.Assert(BuildingMaxLines >= 2);
             Debug.Assert(BuildingMaxLines <= 5);
 

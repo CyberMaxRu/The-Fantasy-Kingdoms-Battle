@@ -13,6 +13,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         public TypeConstruction(XmlNode n) : base(n)
         {
+            Pos = XmlUtils.GetInteger(n.SelectSingleNode("Pos"));
             HasTreasury = XmlUtils.GetBool(n.SelectSingleNode("HasTreasury"), false);
             GoldByConstruction = XmlUtils.GetInteger(n.SelectSingleNode("GoldByConstruction"));
 
@@ -72,6 +73,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        internal int Pos { get; }// Позиция сооружения в линии
         internal Level[] Levels;
         internal Research[,,] Researches;
         internal PanelConstruction Panel { get; set; }
