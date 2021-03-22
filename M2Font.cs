@@ -91,6 +91,8 @@ namespace Fantasy_Kingdoms_Battle
 
             bmpFonts.Dispose();
 
+            HeightSymbol = symbols[0].Height;
+
             int GetValue()
             {
                 string v;
@@ -107,6 +109,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal int MaxHeightSymbol { get => maxHeightSymbol; }
+        internal int HeightSymbol { get; }
 
         internal Bitmap GetBitmap(string text, Color color)
         {
