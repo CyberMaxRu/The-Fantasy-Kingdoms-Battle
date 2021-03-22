@@ -85,7 +85,7 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <HasTreasury>False</HasTreasury>
-    <SoundSelect>peasant_house_select.wav</SoundSelect>
+    <SoundSelect>mill_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -572,7 +572,7 @@
     <MaxLevel>1</MaxLevel>
     <HasTreasury>False</HasTreasury>
     <LayersResearches>1</LayersResearches>
-    <SoundSelect>magic_bazaar_select.wav</SoundSelect>
+    <SoundSelect>magic_bazaar2_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -667,7 +667,7 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <HasTreasury>False</HasTreasury>
-    <SoundSelect></SoundSelect>
+    <SoundSelect>magic_bazaar_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -689,7 +689,7 @@
     <MaxLevel>2</MaxLevel>
     <MaxHeroes>0</MaxHeroes>
     <HasTreasury>False</HasTreasury>
-    <SoundSelect>magic_bazaar_select.wav</SoundSelect>
+    <SoundSelect>library_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -755,7 +755,7 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <HasTreasury>False</HasTreasury>
-    <SoundSelect></SoundSelect>
+    <SoundSelect>hospital_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -776,7 +776,7 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <HasTreasury>False</HasTreasury>
-    <SoundSelect></SoundSelect>
+    <SoundSelect>arena_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -797,7 +797,7 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <HasTreasury>False</HasTreasury>
-    <SoundSelect></SoundSelect>
+    <SoundSelect>garden_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>
