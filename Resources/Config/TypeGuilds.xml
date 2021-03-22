@@ -5,6 +5,7 @@
     <Name>Гильдия воинов</Name>
     <Description>- Позволяет нанимать воинов/- В гильдии исследуют и продают особые способности воинов/- Здесь исследуют способность "Призыв к оружию"</Description>
     <ImageIndex>49</ImageIndex>
+    <Page>Guild</Page>
     <Line>1</Line>
     <Pos>1</Pos>
     <DefaultLevel>0</DefaultLevel>
@@ -80,6 +81,7 @@
     <Name>Гильдия рейнджеров</Name>
     <Description>- Позволяет нанимать рейнджеров/- В гильдии исследуют и продают особые способности рейнджеров/- Здесь исследуют заклинание "Взгляд орла"</Description>
     <ImageIndex>42</ImageIndex>
+    <Page>Guild</Page>
     <Line>1</Line>
     <Pos>2</Pos>
     <DefaultLevel>0</DefaultLevel>
@@ -155,6 +157,7 @@
     <Name>Гильдия послушниц</Name>
     <Description>- Позволяет нанимать послушниц/- В гильдии исследуют и продают особые способности послушниц/- Здесь исследуют заклинание "Святое лечение"</Description>
     <ImageIndex>38</ImageIndex>
+    <Page>Guild</Page>
     <Line>1</Line>
     <Pos>3</Pos>
     <DefaultLevel>0</DefaultLevel>
@@ -230,6 +233,7 @@
     <Name>Гильдия магов</Name>
     <Description>- Позволяет нанимать магов/- В гильдии исследуют и продают особые способности магов/- Здесь исследуют разнообразные заклинания</Description>
     <ImageIndex>43</ImageIndex>
+    <Page>Guild</Page>
     <Line>2</Line>
     <Pos>3</Pos>
     <DefaultLevel>0</DefaultLevel>
@@ -331,6 +335,7 @@
     <Name>Бунгало эльфов</Name>
     <Description>- Позволяет нанимать эльфиек/- В гильдии исследуют и продают особые способности эльфиек/- Эльфийки очень не любят гномов</Description>
     <ImageIndex>41</ImageIndex>
+    <Page>Guild</Page>
     <Line>2</Line>
     <Pos>2</Pos>
     <DefaultLevel>0</DefaultLevel>
@@ -420,6 +425,7 @@
     <Name>Поселение гномов</Name>
     <Description>- Позволяет нанимать гномов/- В гильдии исследуют и продают особые способности гномов/- Здесь исследуют заклинание "Наговор камня"/- Гномы очень не любят эльфиек</Description>
     <ImageIndex>40</ImageIndex>
+    <Page>Guild</Page>
     <Line>2</Line>
     <Pos>1</Pos>
     <DefaultLevel>0</DefaultLevel>
@@ -503,6 +509,7 @@
     <Name>Гильдия разбойниц</Name>
     <Description>- Позволяет нанимать разбойниц/- В гильдии исследуют и продают особые способности разбойниц/- Здесь исследуют и продают яды для оружия/- Здесь исследуют способность "Вымогательство"</Description>
     <ImageIndex>47</ImageIndex>
+    <Page>Guild</Page>
     <Line>1</Line>
     <Pos>4</Pos>
     <DefaultLevel>0</DefaultLevel>

@@ -1222,11 +1222,11 @@ namespace Fantasy_Kingdoms_Battle
 
         private void DrawPageConstructions()
         {
-            DrawPage(pageGuilds, Config.TypeGuilds.ToList<TypeConstruction>());
-            DrawPage(pageBuildings, Config.TypeEconomicConstructions.ToList<TypeConstruction>());
-            DrawPage(pageTemples, Config.TypeTemples.ToList<TypeConstruction>());
+            DrawPage(pageGuilds, Page.Guild);
+            DrawPage(pageBuildings, Page.Economic);
+            DrawPage(pageTemples, Page.Temple);
 
-            void DrawPage(VCFormPage panel, List<TypeConstruction> list)
+            void DrawPage(VCFormPage panel, Page page)
             {
                 int top = 0;
                 int left;
@@ -1238,9 +1238,9 @@ namespace Fantasy_Kingdoms_Battle
 
                     for (int pos = 1; pos <= Config.BuildingMaxPos; pos++)
                     {
-                        foreach (TypeConstruction tck in list)
+                        foreach (TypeConstruction tck in Config.TypeConstructionsOfKingdom)
                         {
-                            if ((tck.Line == line) && (tck.Pos == pos))
+                            if ((tck.Page == page) && (tck.Line == line) && (tck.Pos == pos))
                             {
                                 Debug.Assert(tck.Panel == null);
 

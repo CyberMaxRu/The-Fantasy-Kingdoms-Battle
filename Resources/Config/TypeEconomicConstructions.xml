@@ -5,6 +5,7 @@
     <Name>Королевский замок</Name>
     <Description>- Позволяет отдавать приказы строительства/- Содержит налоговую и охранную службы/- Здесь хранится казна королевства</Description>
     <ImageIndex>20</ImageIndex>
+    <Page>Economic</Page>
     <Line>1</Line>
     <Pos>1</Pos>
     <DefaultLevel>1</DefaultLevel>
@@ -57,6 +58,7 @@
     <Name>Крестьянский дом</Name>
     <Description>- Приносит небольшой доход/- Жилище крестьян</Description>
     <ImageIndex>108</ImageIndex>
+    <Page>Economic</Page>
     <Line>1</Line>
     <Pos>2</Pos>
     <DefaultLevel>1</DefaultLevel>
@@ -77,6 +79,7 @@
     <Name>Мельница</Name>
     <Description>- Приносит небольшой доход</Description>
     <ImageIndex>107</ImageIndex>
+    <Page>Economic</Page>
     <Line>1</Line>
     <Pos>3</Pos>
     <DefaultLevel>0</DefaultLevel>
@@ -97,6 +100,7 @@
     <Name>Торговый пост</Name>
     <Description>- Приносит средний доход</Description>
     <ImageIndex>94</ImageIndex>
+    <Page>Economic</Page>
     <Line>1</Line>
     <Pos>4</Pos>
     <DefaultLevel>0</DefaultLevel>
@@ -117,6 +121,7 @@
     <Name>Рынок</Name>
     <Description>- Приносит существенный доход/- Здесь исследуют и продают зелья/- Здесь исследуют и продают артефакты</Description>
     <ImageIndex>82</ImageIndex>
+    <Page>Economic</Page>
     <Line>2</Line>
     <Pos>1</Pos>
     <DefaultLevel>0</DefaultLevel>
@@ -208,6 +213,7 @@
     <Name>Кузница</Name>
     <Description>- Приносит небольшой доход/- Здесь изобретают и продают новые виды оружия и брони</Description>
     <ImageIndex>87</ImageIndex>
+    <Page>Economic</Page>
     <Line>2</Line>
     <Pos>2</Pos>
     <DefaultLevel>0</DefaultLevel>
@@ -528,6 +534,7 @@
     <Name>Таверна</Name>
     <Description>- Здесь героя могут отдыхать и лечиться/- Позволяет собирать партии героев</Description>
     <ImageIndex>89</ImageIndex>
+    <Page>Economic</Page>
     <Line>3</Line>
     <Pos>1</Pos>
     <DefaultLevel>0</DefaultLevel>
@@ -558,6 +565,7 @@
     <Name>Магический базар</Name>
     <Description>- Приносит небольшой доход/- Здесь изобретают и продают эликсиры</Description>
     <ImageIndex>81</ImageIndex>
+    <Page>Economic</Page>
     <Line>2</Line>
     <Pos>3</Pos>
     <DefaultLevel>0</DefaultLevel>
@@ -653,6 +661,7 @@
     <Name>Дом алхимика</Name>
     <Description>- Приносит небольшой доход/- Производит напитки</Description>
     <ImageIndex>111</ImageIndex>
+    <Page>Economic</Page>
     <Line>2</Line>
     <Pos>4</Pos>
     <DefaultLevel>0</DefaultLevel>
@@ -673,6 +682,7 @@
     <Name>Библиотека</Name>
     <Description>- Позволяет изучить заклинания</Description>
     <ImageIndex>129</ImageIndex>
+    <Page>Economic</Page>
     <Line>3</Line>
     <Pos>2</Pos>
     <DefaultLevel>0</DefaultLevel>
@@ -698,6 +708,7 @@
     <Name>Статуя</Name>
     <Description>- Повышает энтузиазм героев</Description>
     <ImageIndex>88</ImageIndex>
+    <Page>Economic</Page>
     <Line>3</Line>
     <Pos>3</Pos>
     <DefaultLevel>0</DefaultLevel>
@@ -717,6 +728,7 @@
     <Name>Военная академия</Name>
     <Description>- Позволяет улучшать навыки героями</Description>
     <ImageIndex>50</ImageIndex>
+    <Page>Economic</Page>
     <Line>3</Line>
     <Pos>4</Pos>
     <DefaultLevel>0</DefaultLevel>

@@ -9,10 +9,13 @@ using System.Diagnostics;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс сооружения
+    internal enum Page { Guild, Economic, Temple };
+
     internal abstract class TypeConstruction : TypeMapObject
     {
         public TypeConstruction(XmlNode n) : base(n)
         {
+            Page = (Page)Enum.Parse(typeof(Page), n.SelectSingleNode("Page").InnerText);
             Pos = XmlUtils.GetInteger(n.SelectSingleNode("Pos"));
             HasTreasury = XmlUtils.GetBool(n.SelectSingleNode("HasTreasury"), false);
             GoldByConstruction = XmlUtils.GetInteger(n.SelectSingleNode("GoldByConstruction"));
@@ -73,6 +76,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        internal Page Page { get; }
         internal int Pos { get; }// Позиция сооружения в линии
         internal Level[] Levels;
         internal Research[,,] Researches;

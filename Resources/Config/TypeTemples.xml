@@ -5,6 +5,7 @@
     <Name>Храм Крипты</Name>
     <Description>- Позволяет нанимать сестер Крипты/- Здесь исследуют заклинание "Чума и разорение"/- Сестры Крипты не любят паладинов</Description>
     <ImageIndex>39</ImageIndex>
+    <Page>Temple</Page>
     <Line>1</Line>
     <Pos>1</Pos>
     <DefaultLevel>0</DefaultLevel>
@@ -36,6 +37,7 @@
     <Name>Храм Агрелы</Name>
     <Description>- Позволяет нанимать жриц Агрелы/- Здесь исследуют заклинание "Возрождение"</Description>
     <ImageIndex>46</ImageIndex>
+    <Page>Temple</Page>
     <Line>1</Line>
     <Pos>2</Pos>
     <DefaultLevel>0</DefaultLevel>
@@ -67,6 +69,7 @@
     <Name>Храм Дауроса</Name>
     <Description>- Позволяет нанимать паладинов/- Здесь исследуют заклинание "Святой щит"/- Паладины не любят нежить, вызываемую сестрами Крипты</Description>
     <ImageIndex>45</ImageIndex>
+    <Page>Temple</Page>
     <Line>1</Line>
     <Pos>3</Pos>
     <DefaultLevel>0</DefaultLevel>
@@ -98,6 +101,7 @@
     <Name>Храм Крольма</Name>
     <Description>- Позволяет нанимать мастеров меча/- Здесь исследуют заклинание "Гнев Крольма"</Description>
     <ImageIndex>37</ImageIndex>
+    <Page>Temple</Page>
     <Line>2</Line>
     <Pos>1</Pos>
     <DefaultLevel>0</DefaultLevel>
@@ -129,6 +133,7 @@
     <Name>Храм Фервуса</Name>
     <Description>- Позволяет нанимать звероловов/- Здесь исследуют заклинание "Щит Хаоса"</Description>
     <ImageIndex>36</ImageIndex>
+    <Page>Temple</Page>
     <Line>2</Line>
     <Pos>2</Pos>
     <DefaultLevel>0</DefaultLevel>
@@ -160,6 +165,7 @@
     <Name>Храм Хелии</Name>
     <Description>- Позволяет нанимать лучников Хелии/- Здесь исследуют заклинание "Удар Солнца"</Description>
     <ImageIndex>44</ImageIndex>
+    <Page>Temple</Page>
     <Line>2</Line>
     <Pos>3</Pos>
     <DefaultLevel>0</DefaultLevel>
@@ -191,6 +197,7 @@
     <Name>Храм Холода</Name>
     <Description>- Позволяет нанимать магов Холода</Description>
     <ImageIndex>130</ImageIndex>
+    <Page>Temple</Page>
     <Line>3</Line>
     <Pos>1</Pos>
     <DefaultLevel>0</DefaultLevel>
@@ -222,6 +229,7 @@
     <Name>Храм Лунорда</Name>
     <Description>- Позволяет нанимать ассасинов</Description>
     <ImageIndex>132</ImageIndex>
+    <Page>Temple</Page>
     <Line>3</Line>
     <Pos>2</Pos>
     <DefaultLevel>0</DefaultLevel>
@@ -253,6 +261,7 @@
     <Name>Храм Огня</Name>
     <Description>- Позволяет нанимать магов Огня</Description>
     <ImageIndex>134</ImageIndex>
+    <Page>Temple</Page>
     <Line>3</Line>
     <Pos>3</Pos>
     <DefaultLevel>0</DefaultLevel>
