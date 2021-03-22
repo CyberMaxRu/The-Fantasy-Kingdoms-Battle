@@ -508,7 +508,7 @@
     <ID>GuildRogue</ID>
     <Name>Гильдия разбойниц</Name>
     <Description>- Позволяет нанимать разбойниц/- В гильдии исследуют и продают особые способности разбойниц/- Здесь исследуют и продают яды для оружия/- Здесь исследуют способность "Вымогательство"</Description>
-    <ImageIndex>47</ImageIndex>
+    <ImageIndex>84</ImageIndex>
     <Page>Guild</Page>
     <Line>1</Line>
     <Pos>4</Pos>

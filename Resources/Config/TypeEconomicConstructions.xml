@@ -681,7 +681,7 @@
     <ID>Library</ID>
     <Name>Библиотека</Name>
     <Description>- Позволяет изучить заклинания</Description>
-    <ImageIndex>129</ImageIndex>
+    <ImageIndex>73</ImageIndex>
     <Page>Economic</Page>
     <Line>3</Line>
     <Pos>2</Pos>
@@ -728,13 +728,76 @@
     <Name>Военная академия</Name>
     <Description>- Позволяет улучшать навыки героями</Description>
     <ImageIndex>50</ImageIndex>
+    <Page>Guild</Page>
+    <Line>3</Line>
+    <Pos>1</Pos>
+    <DefaultLevel>0</DefaultLevel>
+    <MaxLevel>1</MaxLevel>
+    <HasTreasury>False</HasTreasury>
+    <SoundSelect>hall_of_lords_select.wav</SoundSelect>
+    <Levels>
+      <Level>
+        <Pos>1</Pos>
+        <Cost>0</Cost>
+        <Income>0</Income>
+        <MaxHeroes>0</MaxHeroes>
+      </Level>
+    </Levels>
+  </TypeConstructionEconomic>
+  <TypeConstructionEconomic>
+    <ID>Hospital</ID>
+    <Name>Госпиталь</Name>
+    <Description>- Лечение героев</Description>
+    <ImageIndex>47</ImageIndex>
+    <Page>Guild</Page>
+    <Line>3</Line>
+    <Pos>2</Pos>
+    <DefaultLevel>0</DefaultLevel>
+    <MaxLevel>1</MaxLevel>
+    <HasTreasury>False</HasTreasury>
+    <SoundSelect></SoundSelect>
+    <Levels>
+      <Level>
+        <Pos>1</Pos>
+        <Cost>0</Cost>
+        <Income>0</Income>
+        <MaxHeroes>0</MaxHeroes>
+      </Level>
+    </Levels>
+  </TypeConstructionEconomic>
+  <TypeConstructionEconomic>
+    <ID>Arena</ID>
+    <Name>Арена</Name>
+    <Description>- Позволяет улучшить навыки командной работы героями</Description>
+    <ImageIndex>129</ImageIndex>
+    <Page>Guild</Page>
+    <Line>3</Line>
+    <Pos>3</Pos>
+    <DefaultLevel>0</DefaultLevel>
+    <MaxLevel>1</MaxLevel>
+    <HasTreasury>False</HasTreasury>
+    <SoundSelect></SoundSelect>
+    <Levels>
+      <Level>
+        <Pos>1</Pos>
+        <Cost>0</Cost>
+        <Income>0</Income>
+        <MaxHeroes>0</MaxHeroes>
+      </Level>
+    </Levels>
+  </TypeConstructionEconomic>
+  <TypeConstructionEconomic>
+    <ID>Garden</ID>
+    <Name>Сад</Name>
+    <Description>- Улучшает настроение героев/- Место отдыха эльфов, людей</Description>
+    <ImageIndex>113</ImageIndex>
     <Page>Economic</Page>
     <Line>3</Line>
     <Pos>4</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <HasTreasury>False</HasTreasury>
-    <SoundSelect>hall_of_lords_select.wav</SoundSelect>
+    <SoundSelect></SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>
