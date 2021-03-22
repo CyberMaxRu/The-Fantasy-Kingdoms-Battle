@@ -1222,38 +1222,34 @@ namespace Fantasy_Kingdoms_Battle
 
         private void DrawPageConstructions()
         {
-            DrawPage(pageGuilds, Page.Guild);
-            DrawPage(pageBuildings, Page.Economic);
-            DrawPage(pageTemples, Page.Temple);
+            // Создаем массив из страниц, линий и позиций
+            PanelConstruction[,,] panels = new PanelConstruction[3, Config.BuildingMaxLines, Config.BuildingMaxPos];
 
-            void DrawPage(VCFormPage panel, Page page)
+            // Проходим по каждому зданию, создавая ему панель
+            VisualControl parent;
+            foreach (TypeConstruction tck in Config.TypeConstructionsOfKingdom)
             {
-                int top = 0;
-                int left;
-                int height = 0;
-
-                for (int line = 1; line <= Config.BuildingMaxLines; line++)
+                switch (tck.Page)
                 {
-                    left = 0;
-
-                    for (int pos = 1; pos <= Config.BuildingMaxPos; pos++)
-                    {
-                        foreach (TypeConstruction tck in Config.TypeConstructionsOfKingdom)
-                        {
-                            if ((tck.Page == page) && (tck.Line == line) && (tck.Pos == pos))
-                            {
-                                Debug.Assert(tck.Panel == null);
-
-                                tck.Panel = new PanelConstruction(panel.Page, left, top, tck);
-
-                                left += tck.Panel.Width + Config.GridSize;
-                                height = tck.Panel.Height;
-                            }
-                        }
-                    }
-
-                    top += height + Config.GridSize;
+                    case Page.Guild:
+                        parent = pageGuilds.Page;
+                        break;
+                    case Page.Economic:
+                        parent = pageBuildings.Page;
+                        break;
+                    case Page.Temple:
+                        parent = pageTemples.Page;
+                        break;
+                    default:
+                        throw new Exception("Неизвестная страница " + tck.Page.ToString());
                 }
+
+                Debug.Assert(panels[(int)tck.Page, tck.Line - 1, tck.Pos - 1] == null);
+
+                tck.Panel = new PanelConstruction(parent, 0, 0, tck);
+                tck.Panel.ShiftX = (tck.Panel.Width + Config.GridSize) * (tck.Pos - 1);
+                tck.Panel.ShiftY = (tck.Panel.Height + Config.GridSize) * (tck.Line - 1);
+                panels[(int)tck.Page, tck.Line - 1, tck.Pos - 1] = tck.Panel;
             }
         }
 
