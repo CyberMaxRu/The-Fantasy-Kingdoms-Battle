@@ -58,7 +58,7 @@
     <Description>- Приносит небольшой доход/- Жилище крестьян</Description>
     <ImageIndex>108</ImageIndex>
     <Line>1</Line>
-    <Pos>3</Pos>
+    <Pos>2</Pos>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <HasTreasury>False</HasTreasury>
@@ -78,7 +78,7 @@
     <Description>- Приносит небольшой доход</Description>
     <ImageIndex>107</ImageIndex>
     <Line>1</Line>
-    <Pos>2</Pos>
+    <Pos>3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <HasTreasury>False</HasTreasury>
