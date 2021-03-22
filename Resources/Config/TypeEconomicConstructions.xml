@@ -663,7 +663,7 @@
       <Level>
         <Pos>1</Pos>
         <Cost>0</Cost>
-        <Income>100</Income>
+        <Income>200</Income>
         <MaxHeroes>0</MaxHeroes>
       </Level>
     </Levels>
