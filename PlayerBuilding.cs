@@ -226,7 +226,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override void ShowInfo()
         {
             Program.formMain.panelBuildingInfo.Visible = true;
-            Program.formMain.panelBuildingInfo.Building = this;
+            Program.formMain.panelBuildingInfo.PlayerObject = this;
         }
     }
 }
