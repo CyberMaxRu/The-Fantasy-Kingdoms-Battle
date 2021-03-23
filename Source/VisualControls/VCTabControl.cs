@@ -29,9 +29,9 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void ArrangeControls()
         {
-            base.ArrangeControls();
-
             lblCaptionPage.Width = Width;
+
+            base.ArrangeControls();
         }
 
         internal void AddTab(string nameTab, int imageIndex, VisualControl controlForPage)
