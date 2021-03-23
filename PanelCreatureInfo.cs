@@ -54,8 +54,8 @@ namespace Fantasy_Kingdoms_Battle
 
             bmpStateBackground = new VCBitmap(this, FormMain.Config.GridSize, lblKindHero.NextTop(), Program.formMain.bmpBandStateCreature);
             bmpStateBackground.ShowHint += BmpState_ShowHint;
-            bmpState = new VCBitmap(bmpStateBackground, 14, 5, Program.formMain.ilStateHero.GetImage(0, true, false));
-            labelNameState = new VCLabelM2(bmpStateBackground, 44, 8, Program.formMain.fontSmallC, Color.White, 16, "");
+            bmpState = new VCBitmap(bmpStateBackground, 6, 5, Program.formMain.ilStateHero.GetImage(0, true, false));
+            labelNameState = new VCLabelM2(bmpStateBackground, 36, 8, Program.formMain.fontSmallC, Color.White, 16, "");
             labelNameState.StringFormat.Alignment = StringAlignment.Near;
             labelNameState.StringFormat.LineAlignment = StringAlignment.Center;
 
@@ -135,7 +135,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             pageControl.Height = Height - pageControl.ShiftY - FormMain.Config.GridSize;
             lblKindHero.Width = Width - (lblKindHero.ShiftX * 2);
-            labelNameState.Width = Width - labelNameState.ShiftX - -FormMain.Config.GridSize;
+            labelNameState.Width = bmpStateBackground.Width - labelNameState.ShiftX - FormMain.Config.GridSize;
 
             base.ArrangeControls();
         }
