@@ -9,10 +9,10 @@ namespace Fantasy_Kingdoms_Battle
     // Базовый класс и класс-контейнер для всех визуальных контролов
     internal class VisualControl
     {
-        private int left;
-        private int top;
-        private int width;
-        private int height;
+        private int left;// Координата Left на главном окне (абсолютная)
+        private int top;// Координата Top на главном окне (абсолютная)
+        private int width;// Ширина контрола
+        private int height;// Высота контрола
 
         private Bitmap bmpBorder;
         private Bitmap bmpBorderSelect;

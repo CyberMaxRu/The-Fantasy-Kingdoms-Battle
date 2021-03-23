@@ -36,9 +36,9 @@ namespace Fantasy_Kingdoms_Battle
         internal TypeMapObject TypeMapObject { get; }
         internal PlayerObject PlayerObject { get; set; }
 
-        internal override void ArrangeControls()
+        protected override void ValidateRectangle()
         {
-            base.ArrangeControls();
+            base.ValidateRectangle();
 
             lblNameMapObject.Width = Width - (lblNameMapObject.ShiftX * 2);
         }
