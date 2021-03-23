@@ -19,6 +19,7 @@ namespace Fantasy_Kingdoms_Battle
             windowCaption.Caption = "Выход из программы";
 
             textConfirm = new VCTextM2(ClientControl, 0, 0, Program.formMain.fontParagraph, Color.White, ClientControl.Width);
+            textConfirm.Height = ClientControl.Height;
             textConfirm.Text = "Выход приведет к потере текущей игры.\r\nПродолжить?";
 
             btnOk = new VCButton(ClientControl, 0, 100, "Да");
