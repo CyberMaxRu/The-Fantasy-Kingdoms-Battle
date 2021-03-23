@@ -170,8 +170,8 @@ namespace Fantasy_Kingdoms_Battle
             lblDescription.Visible = false;
             lblIncome.Visible = false;
 
-            //foreach (VCLabelM2 l in lblRequirement)
-            //    l.Dispose();
+            foreach (VCLabelM2 l in listRequirements)
+                l.Dispose();
             lblSeparateRequirement.Visible = false;
             lblRequirement.Visible = false;
             listRequirements.Clear();
