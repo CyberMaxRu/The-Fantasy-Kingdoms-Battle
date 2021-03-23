@@ -271,6 +271,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     lr = new VCLabelM2(this, FormMain.Config.GridSize, nextTop, Program.formMain.fontSmallC, ColorRequirements(tr.Performed), 16, tr.Text);
                     lr.StringFormat.Alignment = StringAlignment.Near;
+                    lr.Width = Width - FormMain.Config.GridSize - FormMain.Config.GridSize;
                     //lr.MaximumSize = new Size(Width - FormMain.Config.GridSize * 2, 0);
 
                     listRequirements.Add(lr);
