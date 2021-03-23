@@ -4,18 +4,13 @@ using System.Diagnostics;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс панели игрока лобби
-    internal sealed class PanelPlayer : VisualControl
+    internal sealed class PanelPlayer : VCCell
     {
         private Player player;
-        private readonly VCCell panelAvatar;
 
-        public PanelPlayer(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
+        public PanelPlayer(VisualControl parent, int shiftX) : base(parent, shiftX, 0)
         {
-            panelAvatar = new VCCell(this, 0, 0);
-            panelAvatar.HighlightUnderMouse = true;
-
-            Width = panelAvatar.Width;
-            Height = panelAvatar.Height;
+            HighlightUnderMouse = true;
         }
 
         internal void LinkToLobby(Player p)
@@ -24,16 +19,16 @@ namespace Fantasy_Kingdoms_Battle
 
             player = p;
             player.Panel = this;
-            panelAvatar.ShowCell(player);
+            ShowCell(player);
         }
 
         internal override void Draw(Graphics g)
         {
-            //panelAvatar.Selected = Program.formMain.CurrentLobby.CurrentPlayer == player;
-            //panelAvatar.Selected = Program.formMain.CurrentLobby.CurrentPlayer == player;
-            panelAvatar.ImageFilter = Program.formMain.CurrentLobby.CurrentPlayer == player ? ImageFilter.Active : ImageFilter.Press;
+            ImageFilter = Program.formMain.CurrentLobby.CurrentPlayer == player ? ImageFilter.Active : ImageFilter.Press;
 
             base.Draw(g);
         }
+
+        protected override bool Selected() => Program.formMain.CurrentLobby.CurrentPlayer == player;
     }
 }

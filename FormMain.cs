@@ -457,7 +457,7 @@ namespace Fantasy_Kingdoms_Battle
                 int nextLeftPanelPlayer = 0;
                 foreach (Player p in lobby.Players)
                 {
-                    pp = new PanelPlayer(panelPlayers, nextLeftPanelPlayer, 0);
+                    pp = new PanelPlayer(panelPlayers, nextLeftPanelPlayer);
                     // !!! Эту привязку переместить в StartNewLobby()
                     pp.LinkToLobby(p);
                     nextLeftPanelPlayer = pp.NextLeft();
