@@ -82,7 +82,7 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override bool Selected()
         {
-            return (PlayerObject != null) && Program.formMain.PlayerObjectIsSelected(cell.Panel.PlayerObject);
+            return (PlayerObject != null) && (cell != null) && (cell.Panel != null) && Program.formMain.PlayerObjectIsSelected(cell.Panel.PlayerObject);
         }
 
         internal override void Draw(Graphics g)
