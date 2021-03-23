@@ -226,10 +226,6 @@ namespace Fantasy_Kingdoms_Battle
         internal VCMenuCell[,] CellsMenu { get; }
 
         internal PanelHint formHint;
-        internal PanelConstruction SelectedPanelBuilding { get; private set; }
-        internal PanelLair SelectedPanelLair { get; private set; }
-        internal PlayerHero SelectedHero { get; private set; }
-        internal Monster SelectedMonster { get; private set; }
         internal int ImageIndexFirstAvatar { get; }
 
         internal static Random Rnd = new Random();
@@ -1353,17 +1349,14 @@ namespace Fantasy_Kingdoms_Battle
         internal void UpdateMenu()
         {
             // Рисуем содержимое ячеек
-            if (SelectedPanelBuilding != null)
+            if ((selectedPlayerObject != null) && (selectedPlayerObject is PlayerBuilding pb))
             {
-                Debug.Assert(SelectedPanelBuilding.Building != null);
-                panelBuildingInfo.Building = SelectedPanelBuilding.Building;
-
-                PlayerBuilding plb = SelectedPanelBuilding.Building;
+                Debug.Assert(pb.Building != null);
 
                 ClearMenu();
 
-                if (plb.Building.Researches != null)
-                    foreach (PlayerResearch pr in plb.Researches)
+                if (pb.Building.Researches != null)
+                    foreach (PlayerResearch pr in pb.Researches)
                     {
                         if (CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research == null)
                             CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research = pr;
@@ -1373,7 +1366,6 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
             {
-                panelBuildingInfo.Visible = false;
                 ClearMenu();
             }
 
