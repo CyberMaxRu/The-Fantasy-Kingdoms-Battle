@@ -50,6 +50,13 @@ namespace Fantasy_Kingdoms_Battle
             g.DrawImageUnscaled(bmpBackground, Left, Top);
         }
 
+        internal override void Draw(Graphics g)
+        {
+            base.Draw(g);
+
+            Debug.Assert(lblNameMapObject.Text.Length > 0);
+        }
+
         private void ImgLair_ShowHint(object sender, EventArgs e)
         {
             PlayerObject.PrepareHint();
