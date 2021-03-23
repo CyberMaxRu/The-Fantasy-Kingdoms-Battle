@@ -496,8 +496,10 @@ namespace Fantasy_Kingdoms_Battle
                 vcDebugInfo = new VisualControl();
                 labelTimeDrawFrame = new VCLabel(vcDebugInfo, Config.GridSize, Config.GridSize, Config.FontToolbar, Color.White, 16, "");
                 labelTimeDrawFrame.StringFormat.Alignment = StringAlignment.Near;
+                labelTimeDrawFrame.Width = 160;
                 labelLayers = new VCLabel(vcDebugInfo, labelTimeDrawFrame.ShiftX, labelTimeDrawFrame.NextTop(), Config.FontToolbar, Color.White, 16, "Layers");
                 labelLayers.StringFormat.Alignment = StringAlignment.Near;
+                labelLayers.Width = 160;
                 vcDebugInfo.ArrangeControls();
                 vcDebugInfo.ApplyMaxSize();
 
