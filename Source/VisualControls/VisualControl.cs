@@ -53,6 +53,7 @@ namespace Fantasy_Kingdoms_Battle
         internal bool ShowBorder { get; set; }// Надо ли показывать бордюр
         internal PlayerObject PlayerObject { get; set; }// Объект, ассоциированный с контролом
         protected bool MouseEntered { get; set; }// Курсор мыши находится над контролом
+        internal bool IsError { get; set; }
 
         // Список контролов, расположенных на нём
         internal List<VisualControl> Controls = new List<VisualControl>();
@@ -100,6 +101,9 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             //g.DrawRectangle(penBorder, rectBorder);
+
+            if (IsError)
+                g.FillRectangle(FormMain.Config.brushControl, Rectangle);
 
             // Рисуем контролы
             foreach (VisualControl vc in Controls)
@@ -202,7 +206,6 @@ namespace Fantasy_Kingdoms_Battle
                 ArrangeControl(vc);
             }
 
-            return;
             // Проверяем, что контролы не наложены друг на друга и не выходят за пределы родителя
             foreach (VisualControl vc in Controls)
             {
@@ -214,7 +217,14 @@ namespace Fantasy_Kingdoms_Battle
                     {
                         if (vc2.Visible && (vc != vc2))
                         {
-                            Debug.Assert(!vc.Rectangle.Contains(vc2.Rectangle));
+                            /*if (vc.Rectangle.Contains(vc2.Rectangle))
+                            {
+                                vc.IsError = true;
+                                vc.ShowBorder = true;
+                                vc2.IsError = true;
+                                vc2.ShowBorder = true;
+                            }*/
+                            Debug.Assert(!vc.Rectangle.Contains(vc2.Rectangle), vc.Rectangle.ToString() + " и " + vc2.Rectangle.ToString());
                         }
                     }
                 }
