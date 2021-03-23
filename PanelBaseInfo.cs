@@ -50,10 +50,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void ArrangeControls()
         {
-            base.ArrangeControls();
-
             lblName.Width = Width - FormMain.Config.GridSize * 2;
             separator.Width = lblName.Width;
+
+            base.ArrangeControls();
         }
 
         // Используемые потомками методы
