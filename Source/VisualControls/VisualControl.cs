@@ -20,7 +20,7 @@ namespace Fantasy_Kingdoms_Battle
         private bool _disposed = false;
 
         public VisualControl()
-        {            
+        {
         }
 
         public VisualControl(VisualLayer vl)
@@ -52,6 +52,7 @@ namespace Fantasy_Kingdoms_Battle
         internal bool ManualDraw { get; set; }// Ручное рисование контрола
         internal bool ShowBorder { get; set; }// Надо ли показывать бордюр
         internal bool Selected { get; set; }// Контрол выбран
+        internal PlayerObject PlayerObject { get; set; }// Объект, ассоциированный с контролом
 
         protected bool MouseEntered { get; set; }// Курсор мыши находится над контролом
 

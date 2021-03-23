@@ -29,9 +29,7 @@ namespace Fantasy_Kingdoms_Battle
             imgMapObject.Click += ImgLair_Click;
             imgMapObject.ShowHint += ImgLair_ShowHint;
         }
-
-        internal PlayerObject PlayerObject { get; set; }
-
+       
         protected override void ValidateRectangle()
         {
             base.ValidateRectangle();
