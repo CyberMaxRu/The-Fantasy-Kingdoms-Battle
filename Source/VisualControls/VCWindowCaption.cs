@@ -18,18 +18,19 @@ namespace Fantasy_Kingdoms_Battle
             labelCaption = new VCLabelM2(this, WidthCap(), -1, Program.formMain.fontBigCaption, Color.MediumAquamarine, GetBitmap().Height, "");
             labelCaption.StringFormat.Alignment = StringAlignment.Center;
             labelCaption.StringFormat.LineAlignment = StringAlignment.Center;
-            labelCaption.Visible = false;
+            labelCaption.ManualDraw = true;
         }
 
         internal string Caption { get; set; }
         protected override int WidthCap() => 12;
         protected override Bitmap GetBitmap() => Program.formMain.bmpBandWindowCaption;
 
-        protected override void AdjustSize()
-        {
-            base.AdjustSize();
 
+        internal override void ArrangeControls()
+        {
             labelCaption.Width = Width - WidthCap() - WidthCap();
+
+            base.ArrangeControls();
         }
 
         internal override void Draw(Graphics g)

@@ -20,13 +20,19 @@ namespace Fantasy_Kingdoms_Battle
             Height = GetBitmap().Height;
         }
 
-        internal override void Draw(Graphics g)
+        internal override void ArrangeControls()
         {
             if ((bmpForDraw == null) || (bmpForDraw.Width != Width))
             {
-                AdjustSize();
+                bmpForDraw?.Dispose();
+                bmpForDraw = PrepareBand(GetBitmap());
             }
 
+            base.ArrangeControls();
+        }
+
+        internal override void Draw(Graphics g)
+        {
             base.Draw(g);
 
             g.DrawImageUnscaled(bmpForDraw, Left, Top);
@@ -65,14 +71,6 @@ namespace Fantasy_Kingdoms_Battle
             gb.Dispose();
 
             return bmp;
-        }
-
-        protected virtual void AdjustSize()
-        {
-            Debug.Assert(Width >= GetBitmap().Width);
-
-            bmpForDraw?.Dispose();
-            bmpForDraw = PrepareBand(GetBitmap());
         }
 
         protected abstract int WidthCap();
