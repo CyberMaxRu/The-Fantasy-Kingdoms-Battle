@@ -502,8 +502,8 @@ namespace Fantasy_Kingdoms_Battle
                 labelLayers = new VCLabel(vcDebugInfo, labelTimeDrawFrame.ShiftX, labelTimeDrawFrame.NextTop(), Config.FontToolbar, Color.White, 16, "Layers");
                 labelLayers.StringFormat.Alignment = StringAlignment.Near;
                 labelLayers.Width = 160;
-                vcDebugInfo.ArrangeControls();
                 vcDebugInfo.ApplyMaxSize();
+                vcDebugInfo.ArrangeControls();
 
                 // Панели информации об объектахs
                 panelHeroInfo = new PanelHeroInfo(MainControl, Config.GridSize, btnEndTurn.NextTop());

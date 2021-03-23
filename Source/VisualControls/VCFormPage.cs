@@ -61,6 +61,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Page.ShiftX = listPages[0].ShiftX - listPages[indexInList].ShiftX;
             Page.ShiftY = Height + FormMain.Config.GridSize;
+            Page.ApplyMaxSize();
             ArrangeControl(Page, false);
         }
 
