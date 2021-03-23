@@ -15,7 +15,7 @@ namespace Fantasy_Kingdoms_Battle
         protected enum Page { Products, Warehouse, Inhabitants, Statistics, Inventory, Abilities, Description };
 
         private readonly VCLabelM2 lblName;
-        protected readonly VCImage imgIcon;
+        protected readonly VCImageBig imgIcon;
         protected readonly VCSeparator separator;
         protected VCTabControl pageControl;
 
@@ -29,7 +29,7 @@ namespace Fantasy_Kingdoms_Battle
             lblName.Color = Color.MediumAquamarine;
             lblName.ShowBorder = true;
 
-            imgIcon = new VCImage(this, FormMain.Config.GridSize, lblName.NextTop(), Program.formMain.imListObjectsBig, -1);
+            imgIcon = new VCImageBig(this, lblName.NextTop());
             imgIcon.ShowHint += ImgIcon_ShowHint;
 
             separator = new VCSeparator(this, FormMain.Config.GridSize, TopForControls());
