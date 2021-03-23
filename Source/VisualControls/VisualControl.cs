@@ -204,6 +204,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
 
                 ArrangeControl(vc);
+                vc.IsError = false;
             }
 
             // Проверяем, что контролы не наложены друг на друга и не выходят за пределы родителя
@@ -226,6 +227,16 @@ namespace Fantasy_Kingdoms_Battle
                             }*/
                             Debug.Assert(!vc.Rectangle.Contains(vc2.Rectangle), vc.Rectangle.ToString() + " и " + vc2.Rectangle.ToString());
                         }
+                    }
+
+                    // Проверяем, что дочерний контрол не выходит за пределы этого контрола
+                    //if (Visible && !Rectangle.Contains(vc.Rectangle))
+                    //{
+                    //    vc.IsError = true;
+                    //}
+                    if (Visible)
+                    {
+                        Debug.Assert(Rectangle.Contains(vc.Rectangle), Rectangle.ToString() + " и " + vc.Rectangle.ToString());
                     }
                 }
             }
