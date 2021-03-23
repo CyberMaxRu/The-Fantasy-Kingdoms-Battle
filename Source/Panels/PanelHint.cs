@@ -72,92 +72,94 @@ namespace Fantasy_Kingdoms_Battle
             lblRequirement.Width = lblSeparateRequirement.Width;
             lblGold = new VCLabelValue(this, FormMain.Config.GridSize, lblRequirement.NextTop(), FormMain.Config.HintIncome);
             lblGold.ImageIndex = FormMain.GUI_16_GOLD;
+            lblGold.Width = lblSeparateRequirement.Width; 
 
             lblBuilders = new VCLabelM2(this, FormMain.Config.GridSize, lblGold.NextTop(), Program.formMain.fontSmallC, FormMain.Config.HintDescription, 16, "");
+            lblBuilders.Width = lblSeparateRequirement.Width;
 
-/*            lblDamageMelee = new Label()
-            {
-                Parent = this,
-                Left = FormMain.Config.GridSize,
-                Top = FormMain.Config.GridSize,
-                Width = (ClientSize.Width - (FormMain.Config.GridSize * 2)) / 3,
-                ImageList = ilParameters,
-                ImageIndex = FormMain.GUI_PARAMETER_ATTACK_MELEE,
-                ImageAlign = ContentAlignment.MiddleLeft,
-                ForeColor = FormMain.Config.HintParameter,
-                BackColor = Color.Transparent,
-                Font = FormMain.Config.FontHintAdditionalText
-            };
+            /*            lblDamageMelee = new Label()
+                        {
+                            Parent = this,
+                            Left = FormMain.Config.GridSize,
+                            Top = FormMain.Config.GridSize,
+                            Width = (ClientSize.Width - (FormMain.Config.GridSize * 2)) / 3,
+                            ImageList = ilParameters,
+                            ImageIndex = FormMain.GUI_PARAMETER_ATTACK_MELEE,
+                            ImageAlign = ContentAlignment.MiddleLeft,
+                            ForeColor = FormMain.Config.HintParameter,
+                            BackColor = Color.Transparent,
+                            Font = FormMain.Config.FontHintAdditionalText
+                        };
 
-            lblDamageArcher = new Label()
-            {
-                Parent = this,
-                Left = lblDamageMelee.Left + lblDamageMelee.Width,
-                Top = FormMain.Config.GridSize,
-                Width = (ClientSize.Width - (FormMain.Config.GridSize * 2)) / 3,
-                ImageList = ilParameters,
-                ImageIndex = FormMain.GUI_PARAMETER_ATTACK_RANGE,
-                ImageAlign = ContentAlignment.MiddleLeft,
-                ForeColor = FormMain.Config.HintParameter,
-                BackColor = Color.Transparent,
-                Font = FormMain.Config.FontHintAdditionalText
-            };
+                        lblDamageArcher = new Label()
+                        {
+                            Parent = this,
+                            Left = lblDamageMelee.Left + lblDamageMelee.Width,
+                            Top = FormMain.Config.GridSize,
+                            Width = (ClientSize.Width - (FormMain.Config.GridSize * 2)) / 3,
+                            ImageList = ilParameters,
+                            ImageIndex = FormMain.GUI_PARAMETER_ATTACK_RANGE,
+                            ImageAlign = ContentAlignment.MiddleLeft,
+                            ForeColor = FormMain.Config.HintParameter,
+                            BackColor = Color.Transparent,
+                            Font = FormMain.Config.FontHintAdditionalText
+                        };
 
-            lblDamageMagic = new Label()
-            {
-                Parent = this,
-                Left = lblDamageArcher.Left + lblDamageArcher.Width,
-                Top = FormMain.Config.GridSize,
-                Width = (ClientSize.Width - (FormMain.Config.GridSize * 2)) / 3,
-                ImageList = ilParameters,
-                ImageIndex = FormMain.GUI_PARAMETER_ATTACK_MAGIC,
-                ImageAlign = ContentAlignment.MiddleLeft,
-                ForeColor = FormMain.Config.HintParameter,
-                BackColor = Color.Transparent,
-                Font = FormMain.Config.FontHintAdditionalText
-            };
+                        lblDamageMagic = new Label()
+                        {
+                            Parent = this,
+                            Left = lblDamageArcher.Left + lblDamageArcher.Width,
+                            Top = FormMain.Config.GridSize,
+                            Width = (ClientSize.Width - (FormMain.Config.GridSize * 2)) / 3,
+                            ImageList = ilParameters,
+                            ImageIndex = FormMain.GUI_PARAMETER_ATTACK_MAGIC,
+                            ImageAlign = ContentAlignment.MiddleLeft,
+                            ForeColor = FormMain.Config.HintParameter,
+                            BackColor = Color.Transparent,
+                            Font = FormMain.Config.FontHintAdditionalText
+                        };
 
-            lblDefenseMelee = new Label()
-            {
-                Parent = this,
-                Left = FormMain.Config.GridSize,
-                Top = FormMain.Config.GridSize,
-                Width = (ClientSize.Width - (FormMain.Config.GridSize * 2)) / 3,
-                ImageList = ilParameters,
-                ImageIndex = FormMain.GUI_PARAMETER_DEFENSE_MELEE,
-                ImageAlign = ContentAlignment.MiddleLeft,
-                ForeColor = FormMain.Config.HintParameter,
-                BackColor = Color.Transparent,
-                Font = FormMain.Config.FontHintAdditionalText
-            };
+                        lblDefenseMelee = new Label()
+                        {
+                            Parent = this,
+                            Left = FormMain.Config.GridSize,
+                            Top = FormMain.Config.GridSize,
+                            Width = (ClientSize.Width - (FormMain.Config.GridSize * 2)) / 3,
+                            ImageList = ilParameters,
+                            ImageIndex = FormMain.GUI_PARAMETER_DEFENSE_MELEE,
+                            ImageAlign = ContentAlignment.MiddleLeft,
+                            ForeColor = FormMain.Config.HintParameter,
+                            BackColor = Color.Transparent,
+                            Font = FormMain.Config.FontHintAdditionalText
+                        };
 
-            lblDefenseArcher = new Label()
-            {
-                Parent = this,
-                Left = lblDefenseMelee.Left + lblDefenseMelee.Width,
-                Top = FormMain.Config.GridSize,
-                Width = (ClientSize.Width - (FormMain.Config.GridSize * 2)) / 3,
-                ImageList = ilParameters,
-                ImageIndex = FormMain.GUI_PARAMETER_DEFENSE_RANGE,
-                ImageAlign = ContentAlignment.MiddleLeft,
-                ForeColor = FormMain.Config.HintParameter,
-                BackColor = Color.Transparent,
-                Font = FormMain.Config.FontHintAdditionalText
-            };
+                        lblDefenseArcher = new Label()
+                        {
+                            Parent = this,
+                            Left = lblDefenseMelee.Left + lblDefenseMelee.Width,
+                            Top = FormMain.Config.GridSize,
+                            Width = (ClientSize.Width - (FormMain.Config.GridSize * 2)) / 3,
+                            ImageList = ilParameters,
+                            ImageIndex = FormMain.GUI_PARAMETER_DEFENSE_RANGE,
+                            ImageAlign = ContentAlignment.MiddleLeft,
+                            ForeColor = FormMain.Config.HintParameter,
+                            BackColor = Color.Transparent,
+                            Font = FormMain.Config.FontHintAdditionalText
+                        };
 
-            lblDefenseMagic = new Label()
-            {
-                Parent = this,
-                Left = lblDefenseArcher.Left + lblDefenseArcher.Width,
-                Top = FormMain.Config.GridSize,
-                Width = (ClientSize.Width - (FormMain.Config.GridSize * 2)) / 3,
-                ImageList = ilParameters,
-                ImageIndex = FormMain.GUI_PARAMETER_DEFENSE_MAGIC,
-                ImageAlign = ContentAlignment.MiddleLeft,
-                ForeColor = FormMain.Config.HintParameter,
-                BackColor = Color.Transparent,
-                Font = FormMain.Config.FontHintAdditionalText
-            };*/
+                        lblDefenseMagic = new Label()
+                        {
+                            Parent = this,
+                            Left = lblDefenseArcher.Left + lblDefenseArcher.Width,
+                            Top = FormMain.Config.GridSize,
+                            Width = (ClientSize.Width - (FormMain.Config.GridSize * 2)) / 3,
+                            ImageList = ilParameters,
+                            ImageIndex = FormMain.GUI_PARAMETER_DEFENSE_MAGIC,
+                            ImageAlign = ContentAlignment.MiddleLeft,
+                            ForeColor = FormMain.Config.HintParameter,
+                            BackColor = Color.Transparent,
+                            Font = FormMain.Config.FontHintAdditionalText
+                        };*/
 
             Clear();
         }
