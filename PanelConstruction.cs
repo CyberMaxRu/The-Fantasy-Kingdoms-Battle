@@ -42,8 +42,8 @@ namespace Fantasy_Kingdoms_Battle
             {
                 imgGold = new VCImage(this, imgMapObject.NextLeft(), imgMapObject.NextTop(), Program.formMain.ilGui16, FormMain.GUI_16_GOLD);
 
-                lblIncome = new VCLabel(this, imgGold.ShiftX, imgGold.ShiftY, FormMain.Config.FontToolbar, Color.Green, 16, "");
-                lblIncome.Width = btnBuyOrUpgrade.Width;
+                lblIncome = new VCLabel(this, imgGold.NextLeft(), imgGold.ShiftY, FormMain.Config.FontToolbar, Color.Green, 16, "");
+                lblIncome.Width = btnBuyOrUpgrade.Width - imgGold.Width - FormMain.Config.GridSize;                    
                 lblIncome.StringFormat.Alignment = StringAlignment.Far;
             }
 
