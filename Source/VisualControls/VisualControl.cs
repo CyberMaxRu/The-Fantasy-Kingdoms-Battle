@@ -187,7 +187,37 @@ namespace Fantasy_Kingdoms_Battle
         {
             foreach (VisualControl vc in Controls)
             {
+                /*if (vc.Visible && ((vc.Width == 0) || (vc.Height == 0)))
+                {
+                    vc.ShowBorder = !vc.ShowBorder;
+                    vc.width = 1000;
+                    vc.height = 1000;
+                }*/
+                if (vc.Visible)
+                {
+                    Debug.Assert(vc.Width > 0);
+                    Debug.Assert(vc.Height > 0);
+                }
+
                 ArrangeControl(vc);
+            }
+
+            return;
+            // Проверяем, что контролы не наложены друг на друга и не выходят за пределы родителя
+            foreach (VisualControl vc in Controls)
+            {
+                // Страницы главного экрана и страницы TabControl наложены друг на друга, но по умолчанию скрыты.
+                // Поэтому невидимые контролы пропускаем
+                if (vc.Visible)
+                {
+                    foreach (VisualControl vc2 in Controls)
+                    {
+                        if (vc2.Visible && (vc != vc2))
+                        {
+                            Debug.Assert(!vc.Rectangle.Contains(vc2.Rectangle));
+                        }
+                    }
+                }
             }
         }
 
