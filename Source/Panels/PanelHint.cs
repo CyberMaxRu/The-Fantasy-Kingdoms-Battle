@@ -50,32 +50,35 @@ namespace Fantasy_Kingdoms_Battle
 
             colorBackground = Color.FromArgb(192, 0, 0, 0);
 
-            lblHeader = new VCTextM2(this, FormMain.Config.GridSize, 4, Program.formMain.fontMedCaptionC, Color.Yellow, Width - FormMain.Config.GridSize - FormMain.Config.GridSize);
+            int widthControl = Width - FormMain.Config.GridSize - FormMain.Config.GridSize;
+
+            lblHeader = new VCTextM2(this, FormMain.Config.GridSize, 4, Program.formMain.fontMedCaptionC, Color.Yellow, widthControl);
             lblHeader.StringFormat.Alignment = StringAlignment.Near;
             lblHeader.StringFormat.LineAlignment = StringAlignment.Near;
 
-            lblAction = new VCTextM2(this, FormMain.Config.GridSize, lblHeader.NextTop(), Program.formMain.fontMedCaptionC, FormMain.Config.HintAction, Width - FormMain.Config.GridSize - FormMain.Config.GridSize);
+            lblAction = new VCTextM2(this, FormMain.Config.GridSize, lblHeader.NextTop(), Program.formMain.fontMedCaptionC, FormMain.Config.HintAction, widthControl);
             lblAction.StringFormat.Alignment = StringAlignment.Near;
             lblAction.StringFormat.LineAlignment = StringAlignment.Near;
 
-            lblDescription = new VCTextM2(this, FormMain.Config.GridSize, lblAction.NextTop(), Program.formMain.fontSmallC, FormMain.Config.HintDescription, Width - FormMain.Config.GridSize - FormMain.Config.GridSize);
+            lblDescription = new VCTextM2(this, FormMain.Config.GridSize, lblAction.NextTop(), Program.formMain.fontSmallC, FormMain.Config.HintDescription, widthControl);
             lblDescription.StringFormat.Alignment = StringAlignment.Near;
             lblDescription.StringFormat.LineAlignment = StringAlignment.Near;
 
             lblIncome = new VCLabelValue(this, FormMain.Config.GridSize, lblDescription.NextTop(), FormMain.Config.HintIncome);
             lblIncome.ImageIndex = FormMain.GUI_16_INCOME;
+            lblIncome.Width = widthControl;
 
             lblSeparateRequirement = new VCSeparator(this, FormMain.Config.GridSize, lblIncome.NextTop());
-            lblSeparateRequirement.Width = Width - FormMain.Config.GridSize - FormMain.Config.GridSize;
+            lblSeparateRequirement.Width = widthControl;
             lblRequirement = new VCLabelValue(this, FormMain.Config.GridSize, lblSeparateRequirement.NextTop(), FormMain.Config.HintIncome);
             lblRequirement.StringFormat.Alignment = StringAlignment.Center;
-            lblRequirement.Width = lblSeparateRequirement.Width;
+            lblRequirement.Width = widthControl;
             lblGold = new VCLabelValue(this, FormMain.Config.GridSize, lblRequirement.NextTop(), FormMain.Config.HintIncome);
             lblGold.ImageIndex = FormMain.GUI_16_GOLD;
-            lblGold.Width = lblSeparateRequirement.Width; 
+            lblGold.Width = widthControl;
 
             lblBuilders = new VCLabelM2(this, FormMain.Config.GridSize, lblGold.NextTop(), Program.formMain.fontSmallC, FormMain.Config.HintDescription, 16, "");
-            lblBuilders.Width = lblSeparateRequirement.Width;
+            lblBuilders.Width = widthControl;
 
             /*            lblDamageMelee = new Label()
                         {
