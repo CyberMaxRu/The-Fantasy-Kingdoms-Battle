@@ -143,6 +143,7 @@ namespace Fantasy_Kingdoms_Battle
             imgMapObject.ImageIndex = Building.Building.ImageIndex;
             imgMapObject.ImageIsEnabled = Building.Level > 0;
 
+            lblNameMapObject.Text = Building.Building.Name;
             lblNameMapObject.Color = FormMain.Config.ColorMapObjectCaption(Building.Level > 0);
 
             if (lblIncome != null)
