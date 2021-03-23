@@ -13,7 +13,6 @@ namespace Fantasy_Kingdoms_Battle
     {
         public VCImageBig(VisualControl parent, int shiftY) : base(parent, FormMain.Config.GridSize, shiftY, Program.formMain.imListObjectsBig, -1)
         {
-            HighlightUnderMouse = true;
         }
 
         internal override void Draw(Graphics g)

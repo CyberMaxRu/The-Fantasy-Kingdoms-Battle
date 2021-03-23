@@ -25,6 +25,7 @@ namespace Fantasy_Kingdoms_Battle
             lblNameMapObject.Click += ImgLair_Click;
 
             imgMapObject = new VCImageBig(this, lblNameMapObject.NextTop());
+            imgMapObject.HighlightUnderMouse = true;
             imgMapObject.Click += ImgLair_Click;
             imgMapObject.ShowHint += ImgLair_ShowHint;
         }
