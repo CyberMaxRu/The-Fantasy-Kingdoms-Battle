@@ -85,7 +85,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private readonly VCBitmap bitmapMenu;
 
-        private VCCell selectedPanelEntity;
+        private PlayerObject selectedPlayerObject;
 
         // Главные страницы игры
         private readonly List<VCFormPage> pages = new List<VCFormPage>();
@@ -218,22 +218,10 @@ namespace Fantasy_Kingdoms_Battle
 
         private VCFormPage currentPage;
         private readonly VisualControl panelEmptyInfo;
-        private readonly PanelBuildingInfo panelBuildingInfo;
-        internal readonly PanelLairInfo panelLairInfo;
-        private readonly PanelHeroInfo panelHeroInfo;
-        private readonly PanelMonsterInfo panelMonsterInfo;
-        internal VCCell SelectedPanelEntity
-        {
-            get => selectedPanelEntity;
-            set
-            {
-                if (selectedPanelEntity != null)
-                    selectedPanelEntity.Selected = false;
-                selectedPanelEntity = value;
-                if (selectedPanelEntity != null)
-                    selectedPanelEntity.Selected = true;
-            }
-        }
+        internal PanelBuildingInfo panelBuildingInfo { get; private set; }
+        internal PanelLairInfo panelLairInfo { get; private set; }
+        internal PanelHeroInfo panelHeroInfo { get; private set; }
+        internal PanelMonsterInfo panelMonsterInfo { get; private set; }
 
         internal VCMenuCell[,] CellsMenu { get; }
 
@@ -1357,163 +1345,9 @@ namespace Fantasy_Kingdoms_Battle
 
             panelPlayers.ArrangeControls();
         }
-
-        internal void SelectBuilding(PanelConstruction pb)
-        {
-            if (SelectedPanelBuilding != pb)
-            {
-                if (panelEmptyInfo.Visible)
-                    panelEmptyInfo.Visible = false;
-                if (SelectedHero != null)
-                    SelectHero(null);
-                if (SelectedMonster != null)
-                    SelectMonster(null);
-                if (SelectedPanelLair != null)
-                    SelectLair(null);
-
-                if (pb != null)
-                    SelectPanelEntity(null);
-
-                PanelConstruction oldSelected = SelectedPanelBuilding;
-                if (oldSelected != null)
-                    oldSelected.Selected = false;
-                SelectedPanelBuilding = pb;
-
-                //if (oldSelected != null)
-                //    oldSelected.Repaint();
-                if (SelectedPanelBuilding != null)
-                {
-                    SelectedPanelBuilding.Selected = true;
-                    panelBuildingInfo.Building = SelectedPanelBuilding.Building;
-                    //SelectedPanelBuilding.Repaint();
-                    panelBuildingInfo.Visible = true;
-                }
-                else
-                    panelBuildingInfo.Visible = false;
-
-                SetNeedRedrawFrame();
-            }
-        }
-
-        internal void SelectLair(PanelLair pl)
-        {
-            if (SelectedPanelLair != pl)
-            {
-                if (panelEmptyInfo.Visible)
-                    panelEmptyInfo.Visible = false;
-                if (SelectedHero != null)
-                    SelectHero(null);
-                if (SelectedMonster != null)
-                    SelectMonster(null);
-                if (SelectedPanelBuilding != null)
-                    SelectBuilding(null);
-
-                if (pl != null)
-                    SelectPanelEntity(null);
-
-                PanelLair oldSelected = SelectedPanelLair;
-                if (oldSelected != null)
-                    oldSelected.Selected = false;
-                SelectedPanelLair = pl;
-
-                //if (oldSelected != null)
-                //    oldSelected.Invalidate(true);
-                if (SelectedPanelLair != null)
-                {
-                    SelectedPanelLair.Selected = true;
-                    panelLairInfo.Lair = SelectedPanelLair.Lair;
-                    //SelectedPanelLair.Invalidate(true);
-                    panelLairInfo.Visible = true;
-                }
-                else
-                    panelLairInfo.Visible = false;
-
-                SetNeedRedrawFrame();
-            }
-        }
-
-        internal void SelectMonster(Monster m)
-        {
-            if (SelectedMonster != m)
-            {
-                if (panelEmptyInfo.Visible)
-                    panelEmptyInfo.Visible = false;
-                if (SelectedHero != null)
-                    SelectHero(null);
-                if (SelectedPanelBuilding != null)
-                    SelectBuilding(null);
-                if (SelectedPanelLair != null)
-                    SelectLair(null);
-
-                Monster oldSelected = SelectedMonster;
-                SelectedMonster = m;
-
-                //SelectedPanelEntity = null;
-
-                //if (oldSelected != null)
-                //    ((ICell)oldSelected).Panel.Invalidate(true);
-                if (SelectedMonster != null)
-                {
-                    panelMonsterInfo.Monster = SelectedMonster;
-                    //SelectedPanelEntity = ((ICell)SelectedHero).Panel;
-                    //   ((ICell)SelectedHero).Panel.Invalidate(true);
-                    panelMonsterInfo.Visible = true;
-                }
-                else
-                    panelMonsterInfo.Visible = false;
-
-                SetNeedRedrawFrame();
-            }
-        }
-
-        internal void SelectHero(PlayerHero ph)
-        {
-            if (SelectedHero != ph)
-            {
-                if (panelEmptyInfo.Visible)
-                    panelEmptyInfo.Visible = false;
-                if (SelectedMonster != null)
-                    SelectMonster(null);
-                if (SelectedPanelBuilding != null)
-                    SelectBuilding(null);
-                if (SelectedPanelLair != null)
-                    SelectLair(null);
-
-                PlayerHero oldSelected = SelectedHero;
-                SelectedHero = ph;
-
-                //SelectedPanelEntity = null;
-
-                //if (oldSelected != null)
-                //    ((ICell)oldSelected).Panel.Invalidate(true);
-                if (SelectedHero != null)
-                {
-                    panelHeroInfo.Hero = SelectedHero;
-                    //SelectedPanelEntity = ((ICell)SelectedHero).Panel;
-                    //   ((ICell)SelectedHero).Panel.Invalidate(true);
-                    panelHeroInfo.Visible = true;
-                }
-                else
-                    panelHeroInfo.Visible = false;
-
-                SetNeedRedrawFrame();
-            }
-        }
-
         internal void SetNeedRedrawFrame()
         {
             needRedrawFrame = true;
-        }
-
-        internal void SelectPanelEntity(VCCell pe)
-        {
-            if (SelectedPanelEntity != pe)
-            {
-                VCCell oldPe = SelectedPanelEntity;
-                SelectedPanelEntity = pe;
-
-                SetNeedRedrawFrame();
-            }
         }
 
         internal void UpdateMenu()
@@ -1797,6 +1631,7 @@ namespace Fantasy_Kingdoms_Battle
                     }
                     else
                     {
+                        //if (controlWithHint.n
                         // Если над контролом водят мышкой, отсчет времени начинаем только после остановки
                         timerHover.Stop();
                         timerHover.Start();
@@ -2034,6 +1869,30 @@ namespace Fantasy_Kingdoms_Battle
 
                 g.DrawImageUnscaledAndClipped(b, new Rectangle(repeats * b.Width, top, restBorder, b.Height));
             }
+        }
+
+        internal void SelectPlayerObject(PlayerObject po)
+        {
+            if (selectedPlayerObject != po)
+            {
+                if (panelEmptyInfo.Visible)
+                    panelEmptyInfo.Visible = false;
+
+                if (selectedPlayerObject != null)
+                    selectedPlayerObject.HideInfo();
+
+                selectedPlayerObject = po;
+                selectedPlayerObject.ShowInfo();
+
+                SetNeedRedrawFrame();
+            }
+        }
+
+        internal bool PlayerObjectIsSelected(PlayerObject po)
+        {
+            Debug.Assert(po != null);
+
+            return po == selectedPlayerObject;
         }
     }
 }

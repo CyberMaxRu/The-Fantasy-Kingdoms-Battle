@@ -140,11 +140,6 @@ namespace Fantasy_Kingdoms_Battle
             labelNameState.Width = Width - labelNameState.ShiftX - -FormMain.Config.GridSize;
         }
 
-        protected override PlayerObject GetPlayerObject()
-        {
-            return Creature;
-        }
-
         internal override void Draw(Graphics g)
         {
             lblKindHero.Text = creature.TypeCreature.KindCreature.Name;

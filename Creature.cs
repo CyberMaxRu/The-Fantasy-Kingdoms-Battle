@@ -161,7 +161,7 @@ namespace Fantasy_Kingdoms_Battle
 
         void ICell.Click(VCCell pe)
         {
-            Program.formMain.SelectPanelEntity(pe);
+            Program.formMain.SelectPlayerObject(this);
             DoClick();
         }
         void ICell.CustomDraw(Graphics g, int x, int y, bool drawState)

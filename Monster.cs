@@ -31,10 +31,21 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep1Header(TypeMonster.Name, "", TypeMonster.Description);
         }
 
+        internal override void HideInfo()
+        {
+            Program.formMain.panelMonsterInfo.Visible = false;
+        }
+
+        internal override void ShowInfo()
+        {
+            Program.formMain.panelMonsterInfo.Visible = true;
+            Program.formMain.panelMonsterInfo.Monster = this;
+        }
+
         protected override void DoClick()
         {
             Program.formMain.formHint.AddStep1Header(TypeMonster.Name, "", TypeMonster.Description);
-            Program.formMain.SelectMonster(this);
+            Program.formMain.SelectPlayerObject(this);
         }
     }
 }

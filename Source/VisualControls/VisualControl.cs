@@ -51,9 +51,7 @@ namespace Fantasy_Kingdoms_Battle
         internal bool Visible { get; set; } = true;// Видимость контрола
         internal bool ManualDraw { get; set; }// Ручное рисование контрола
         internal bool ShowBorder { get; set; }// Надо ли показывать бордюр
-        internal bool Selected { get; set; }// Контрол выбран
         internal PlayerObject PlayerObject { get; set; }// Объект, ассоциированный с контролом
-
         protected bool MouseEntered { get; set; }// Курсор мыши находится над контролом
 
         // Список контролов, расположенных на нём
@@ -72,7 +70,7 @@ namespace Fantasy_Kingdoms_Battle
         // Метод для рисования фона - то есть то, что будет перекрываться изображением через Draw
         internal virtual void DrawBackground(Graphics g)
         {
-            if (Selected)
+            if (Selected())
             {
                 if ((bmpBorderSelect == null) || (bmpBorderSelect.Width != Width + 16) || (bmpBorderSelect.Height != Height + 16))
                 {
@@ -115,6 +113,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             Click?.Invoke(this, new EventArgs());
         }
+
+        protected virtual bool Selected() => false;
 
         private void PrepareBorder()
         {

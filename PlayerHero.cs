@@ -259,7 +259,7 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override void DoClick()
         {
-            Program.formMain.SelectHero(this);
+            Program.formMain.SelectPlayerObject(this);
         }
 
         protected override void DoCustomDraw(Graphics g, int x, int y, bool drawState)
@@ -268,6 +268,17 @@ namespace Fantasy_Kingdoms_Battle
 
             if (drawState && (TypeHero.Building.ID != "Castle"))
                 Program.formMain.ilStateHero.DrawImage(g, StateCreature.ImageIndex, true, false, x - 7, y - 3);
+        }
+
+        internal override void HideInfo()
+        {
+            Program.formMain.panelHeroInfo.Visible = false;
+        }
+
+        internal override void ShowInfo()
+        {
+            Program.formMain.panelHeroInfo.Visible = true;
+            Program.formMain.panelHeroInfo.Hero = this;
         }
     }
 }

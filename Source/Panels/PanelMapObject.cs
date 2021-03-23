@@ -62,10 +62,15 @@ namespace Fantasy_Kingdoms_Battle
 
         protected void SelectThisBuilding()
         {
-            if (this is PanelLair pl)
-                Program.formMain.SelectLair(pl);
-            if (this is PanelConstruction pc)
-                Program.formMain.SelectBuilding(pc);
+            Debug.Assert(PlayerObject != null);
+            Program.formMain.SelectPlayerObject(PlayerObject);
+        }
+
+        protected override bool Selected()
+        {
+            Debug.Assert(PlayerObject != null);
+
+            return Program.formMain.PlayerObjectIsSelected(PlayerObject);
         }
     }
 }

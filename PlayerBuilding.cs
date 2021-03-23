@@ -217,5 +217,16 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep1Header(Building.Name, Level > 0 ? "Уровень " + Level.ToString() : "", Building.Description + ((Level > 0) && (Building.TrainedHero != null) ? Environment.NewLine + Environment.NewLine + "Героев: " + Heroes.Count.ToString() + "/" + MaxHeroes().ToString() : ""));
             Program.formMain.formHint.AddStep2Income(Income());
         }
+
+        internal override void HideInfo()
+        {
+            Program.formMain.panelBuildingInfo.Visible = false;
+        }
+
+        internal override void ShowInfo()
+        {
+            Program.formMain.panelBuildingInfo.Visible = true;
+            Program.formMain.panelBuildingInfo.Building = this;
+        }
     }
 }

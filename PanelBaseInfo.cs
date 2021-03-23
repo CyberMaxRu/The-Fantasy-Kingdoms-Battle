@@ -44,7 +44,8 @@ namespace Fantasy_Kingdoms_Battle
 
         private void ImgIcon_ShowHint(object sender, EventArgs e)
         {
-            GetPlayerObject().PrepareHint();
+            Debug.Assert(PlayerObject != null);
+            PlayerObject.PrepareHint();
         }
 
         internal override void ArrangeControls()
@@ -67,7 +68,6 @@ namespace Fantasy_Kingdoms_Battle
         protected abstract int GetImageIndex();
         protected abstract bool ImageIsEnabled();
         protected abstract string GetCaption();
-        protected abstract PlayerObject GetPlayerObject();
 
         // Общие для всех панелей методы
 

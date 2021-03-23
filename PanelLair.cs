@@ -76,7 +76,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnInhabitants_Click(object sender, EventArgs e)
         {
-            Program.formMain.SelectLair(this);
+            Program.formMain.SelectPlayerObject(PlayerObject);
             Program.formMain.panelLairInfo.SelectPageInhabitants();
         }
 

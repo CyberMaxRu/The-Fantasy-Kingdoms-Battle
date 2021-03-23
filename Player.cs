@@ -532,6 +532,16 @@ namespace Fantasy_Kingdoms_Battle
 
         }
 
+        internal override void HideInfo()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal override void ShowInfo()
+        {
+            throw new NotImplementedException();
+        }
+
         // Реализация интерфейса
         VCCell ICell.Panel { get; set; }
         BitmapList ICell.BitmapList() => Program.formMain.imListObjectsCell;

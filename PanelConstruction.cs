@@ -20,7 +20,7 @@ namespace Fantasy_Kingdoms_Battle
         
         public PanelConstruction(VisualControl parent, int shiftX, int shiftY, TypeConstruction typeConstruction) : base(parent, shiftX, shiftY, typeConstruction)
         {
-            TypeConstruction = typeConstruction;            
+            TypeConstruction = typeConstruction;
 
             btnBuyOrUpgrade = new VCIconButton(this, imgMapObject.NextLeft(), imgMapObject.ShiftY, Program.formMain.ilGui, FormMain.GUI_BUILD);
             btnBuyOrUpgrade.Click += BtnBuyOrUprgade_Click;

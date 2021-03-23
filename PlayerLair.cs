@@ -183,5 +183,16 @@ namespace Fantasy_Kingdoms_Battle
                     throw new Exception("Неизвестный приоритет: " + PriorityFlag.ToString());
             }
         }
+
+        internal override void HideInfo()
+        {
+            Program.formMain.panelLairInfo.Visible = false;
+        }
+
+        internal override void ShowInfo()
+        {
+            Program.formMain.panelLairInfo.Visible = true;
+            Program.formMain.panelLairInfo.Lair = this;
+        }
     }
 }

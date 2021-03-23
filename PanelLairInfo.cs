@@ -47,11 +47,6 @@ namespace Fantasy_Kingdoms_Battle
             pageControl.Height = Height - pageControl.ShiftY - FormMain.Config.GridSize;
         }
 
-        protected override PlayerObject GetPlayerObject()
-        {
-            return Lair;
-        }
-
         internal void SelectPageInhabitants()
         {
             pageControl.ActivatePage(0);

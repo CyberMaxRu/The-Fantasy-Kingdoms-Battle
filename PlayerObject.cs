@@ -10,5 +10,7 @@ namespace Fantasy_Kingdoms_Battle
     internal abstract class PlayerObject
     {
         internal abstract void PrepareHint();
+        internal abstract void HideInfo();
+        internal abstract void ShowInfo();
     }
 }
