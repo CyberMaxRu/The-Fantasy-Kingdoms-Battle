@@ -7,7 +7,7 @@ using System.Windows.Forms;
 namespace Fantasy_Kingdoms_Battle
 {
     // Базовый класс и класс-контейнер для всех визуальных контролов
-    internal class VisualControl
+    internal class VisualControl : IDisposable
     {
         private int left;// Координата Left на главном окне (абсолютная)
         private int top;// Координата Top на главном окне (абсолютная)
@@ -16,6 +16,8 @@ namespace Fantasy_Kingdoms_Battle
 
         private Bitmap bmpBorder;
         private Bitmap bmpBorderSelect;
+
+        private bool _disposed = false;
 
         public VisualControl()
         {            
@@ -35,6 +37,8 @@ namespace Fantasy_Kingdoms_Battle
             ShiftY = shiftY;
             parent.AddControl(this);
         }
+
+        ~VisualControl() => Dispose(false);
 
         internal VisualControl Parent { get; private set; }
         internal int Left { get { return left; } private set { left = value; ValidateRectangle(); ArrangeControls(); } }
@@ -254,6 +258,15 @@ namespace Fantasy_Kingdoms_Battle
                 vc.Parent = this;
         }
 
+        internal void RemoveControl(VisualControl vc)
+        {
+            Debug.Assert(vc != null);
+            Debug.Assert(vc != this);
+            Debug.Assert(Controls.IndexOf(vc) != -1);
+
+            Controls.Remove(vc);
+        }
+
         internal virtual Size MaxSize()
         {
             Size maxSize = new Size(Width, Height);
@@ -272,6 +285,35 @@ namespace Fantasy_Kingdoms_Battle
             Size s = MaxSize();
             Width = s.Width;
             Height = s.Height;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_disposed)
+            { 
+                if (Parent != null)
+                {
+                    Parent.RemoveControl(this);
+                    Parent = null;
+                }
+
+                if (disposing)
+                {
+                    bmpBorder?.Dispose();
+                    bmpBorderSelect?.Dispose();
+                }
+
+                bmpBorder = null;
+                bmpBorderSelect = null;
+
+                _disposed = true;
+            }
         }
     }
 }
