@@ -1623,7 +1623,6 @@ namespace Fantasy_Kingdoms_Battle
                     }
                     else
                     {
-                        //if (controlWithHint.n
                         // Если над контролом водят мышкой, отсчет времени начинаем только после остановки
                         timerHover.Stop();
                         timerHover.Start();
@@ -1736,9 +1735,12 @@ namespace Fantasy_Kingdoms_Battle
                 timerHover.Stop();
                 controlWithHint.DoShowHint();
                 hintShowed = true;
-                formHint.Visible = true;
-                needRepaintFrame = true;
-                Invalidate(true);
+                if (formHint.ExistHint)
+                {
+                    formHint.Visible = true;
+                    needRepaintFrame = true;
+                    Invalidate(true);
+                }
             }
         }
 
