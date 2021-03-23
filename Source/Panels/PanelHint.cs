@@ -193,7 +193,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             ExistHint = true;
             lblHeader.Text = header;
-            nextTop = lblHeader.ShiftY + lblHeader.MinHeigth() + FormMain.Config.GridSize;
+            lblHeader.Height = lblHeader.MinHeigth();
+            nextTop = lblHeader.NextTop();
             Width = lblHeader.ShiftX + lblHeader.MinWidth() + FormMain.Config.GridSize;
         }
 
@@ -204,7 +205,8 @@ namespace Fantasy_Kingdoms_Battle
             Width = 256;
             ExistHint = true;
             lblHeader.Text = header;
-            nextTop = lblHeader.ShiftY + lblHeader.MinHeigth() + FormMain.Config.GridSize;
+            lblHeader.Height = lblHeader.MinHeigth();
+            nextTop = lblHeader.NextTop();
 
             if (action.Length > 0)
             { 
