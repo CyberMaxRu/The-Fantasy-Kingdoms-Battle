@@ -83,6 +83,7 @@
     <Compile Include="Source\VisualControls\VCButtonTargetLair.cs" />
     <Compile Include="Source\VisualControls\VCForm.cs" />
     <Compile Include="Source\VisualControls\VCIconButton.cs" />
+    <Compile Include="Source\VisualControls\VCImageBig.cs" />
     <Compile Include="Source\VisualControls\VCLabelM2.cs" />
     <Compile Include="Source\VisualControls\VCLabelValue.cs" />
     <Compile Include="Source\VisualControls\VCTabButton.cs" />
