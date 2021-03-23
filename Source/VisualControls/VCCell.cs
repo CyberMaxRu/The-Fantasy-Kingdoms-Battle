@@ -69,12 +69,20 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void ShowCell(ICell c)
         {
+            if (c is PlayerObject po)
+                PlayerObject = po;
+
             if (cell != null)
                 cell.Panel = null;
 
             cell = c;
             if (cell != null)
                 cell.Panel = this;
+        }
+
+        protected override bool Selected()
+        {
+            return (PlayerObject != null) && Program.formMain.PlayerObjectIsSelected(cell.Panel.PlayerObject);
         }
 
         internal override void Draw(Graphics g)
