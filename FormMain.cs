@@ -491,6 +491,8 @@ namespace Fantasy_Kingdoms_Battle
 
                 btnEndTurn = CreateButton(MainControl, ilGui, GUI_HOURGLASS, 0, bmpToolbar.Height + Config.GridSize, BtnEndTurn_Click, BtnEndTurn_MouseHover);
                 panelLairWithFlags = new VisualControl(MainControl, 0, btnEndTurn.ShiftY);
+                panelLairWithFlags.Height = btnEndTurn.Height;
+                panelLairWithFlags.Visible = false;
 
                 // Отладочная информация
                 vcDebugInfo = new VisualControl();
@@ -1796,8 +1798,13 @@ namespace Fantasy_Kingdoms_Battle
                 n++;
             }
 
-            panelLairWithFlags.ShiftX = btnEndTurn.ShiftX - left - Config.GridSize;
-            MainControl.ArrangeControl(panelLairWithFlags);
+            panelLairWithFlags.Visible = lobby.CurrentPlayer.LairsWithFlag.Count > 0;
+            if (panelLairWithFlags.Visible)
+            {
+                panelLairWithFlags.ShiftX = btnEndTurn.ShiftX - left - Config.GridSize;
+                panelLairWithFlags.Width = left;
+                MainControl.ArrangeControl(panelLairWithFlags);
+            }
 
             SetNeedRedrawFrame();
         }
