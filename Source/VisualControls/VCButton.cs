@@ -35,10 +35,8 @@ namespace Fantasy_Kingdoms_Battle
         protected override int WidthCap() => 31;
         protected override Bitmap GetBitmap() => Program.formMain.bmpBandButtonNormal;
 
-        protected override void AdjustSize()
+        internal override void ArrangeControls()
         {
-            base.AdjustSize();
-
             bmpNormal = bmpForDraw;
             bmpHot?.Dispose();
             bmpHot = PrepareBand(Program.formMain.bmpBandButtonHot);
@@ -48,6 +46,8 @@ namespace Fantasy_Kingdoms_Battle
             bmpPressed = PrepareBand(Program.formMain.bmpBandButtonPressed);
 
             labelCaption.Width = Width - WidthCap() - WidthCap();
+
+            base.ArrangeControls();
         }
 
         internal override void Draw(Graphics g)
