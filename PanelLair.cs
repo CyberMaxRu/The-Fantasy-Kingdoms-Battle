@@ -10,33 +10,17 @@ using System.Diagnostics;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс панели логова
-    internal sealed class PanelLair : VisualControl
+    internal sealed class PanelLair : PanelMapObject
     {
-        private Bitmap bmpBackground;
-        private readonly VCLabelM2 lblName;
-        private readonly VCImage imgLair;
         private readonly VCIconButton btnAction;
         private readonly VCIconButton btnCancel;
         private readonly VCIconButton btnInhabitants;
 
-        public PanelLair(VisualControl parent, int shiftX, int shiftY, TypeLair typeLair) : base(parent, shiftX, shiftY)
+        public PanelLair(VisualControl parent, int shiftX, int shiftY, TypeLair typeLair) : base(parent, shiftX, shiftY, typeLair)
         {
-            ShowBorder = true;
             TypeLair = typeLair;
 
-            lblName = new VCLabelM2(this, FormMain.Config.GridSize, FormMain.Config.GridSize - 3, Program.formMain.fontMedCaptionC, Color.Transparent, FormMain.Config.GridSize * 3, "");
-            lblName.StringFormat.Alignment = StringAlignment.Center;
-            lblName.ShowBorder = true;
-            lblName.Click += ImgLair_Click;
-
-            imgLair = new VCImage(this, FormMain.Config.GridSize, lblName.NextTop(), Program.formMain.imListObjectsBig, typeLair.ImageIndex);
-            imgLair.ShowBorder = false;
-            imgLair.HighlightUnderMouse = true;
-            imgLair.Click += ImgLair_Click;
-            imgLair.ShowHint += ImgLair_ShowHint;
-            imgLair.TypeObject = TypeLair;
-
-            btnAction = new VCIconButton(this, imgLair.NextLeft(), imgLair.ShiftY, Program.formMain.ilGui, FormMain.GUI_BATTLE);
+            btnAction = new VCIconButton(this, imgMapObject.NextLeft(), imgMapObject.ShiftY, Program.formMain.ilGui, FormMain.GUI_BATTLE);
             btnAction.Click += BtnAction_Click;
             btnAction.ShowHint += BtnAction_ShowHint;
 
@@ -44,13 +28,11 @@ namespace Fantasy_Kingdoms_Battle
             btnCancel.Click += BtnCancel_Click;
             btnCancel.ShowHint += BtnCancel_ShowHint;
 
-            btnInhabitants = new VCIconButton(this, imgLair.ShiftX, imgLair.NextTop(), Program.formMain.ilGui, FormMain.GUI_HOME);
+            btnInhabitants = new VCIconButton(this, imgMapObject.ShiftX, imgMapObject.NextTop(), Program.formMain.ilGui, FormMain.GUI_HOME);
             btnInhabitants.Click += BtnInhabitants_Click;
 
             Height = btnInhabitants.NextTop();
             Width = btnAction.NextLeft();
-
-            lblName.Width = Width - (lblName.ShiftX * 2);
         }
 
         private void BtnCancel_ShowHint(object sender, EventArgs e)
@@ -99,7 +81,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal TypeLair TypeLair { get; set; }
-        internal PlayerLair Lair { get; private set; }
+        internal PlayerLair Lair { get => PlayerObject as PlayerLair; }
 
         internal void LinkToPlayer(PlayerLair pl)
         {
@@ -107,17 +89,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(pl.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
             Debug.Assert(pl.TypeLair == TypeLair);
 
-            Lair = pl;
-        }
-
-        private void ImgLair_ShowHint(object sender, EventArgs e)
-        {
-            Lair.PrepareHint();
-        }
-
-        private void ImgLair_Click(object sender, EventArgs e)
-        {
-            SelectThisBuilding();
+            PlayerObject = pl;
         }
 
         private void BtnAction_Click(object sender, EventArgs e)
@@ -128,32 +100,11 @@ namespace Fantasy_Kingdoms_Battle
                 Lair.IncPriority();
         }
 
-        private void SelectThisBuilding()
-        {
-            Program.formMain.SelectLair(this);
-        }
-
-        internal override void DrawBackground(Graphics g)
-        {
-            base.DrawBackground(g);
-
-            if ((bmpBackground == null) || (bmpBackground.Width != Width) || (bmpBackground.Height != Height))
-            {
-                bmpBackground?.Dispose();
-                bmpBackground = GuiUtils.MakeBackground(new Size(Width, Height));
-            }
-
-            g.DrawImageUnscaled(bmpBackground, Left, Top);
-        }
 
         internal override void Draw(Graphics g)
         {
             Debug.Assert(Lair.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
 
-            imgLair.ImageIndex = Lair.ImageIndexLair();
-            imgLair.Level = Lair.Layer + 1;
-            lblName.Text = Lair.NameLair();
-            lblName.Color = Lair.PriorityFlag != PriorityExecution.None ? Color.OrangeRed : Color.LimeGreen;
             btnAction.ImageIsEnabled = Lair.CheckRequirements();
             btnAction.Level = (int)Lair.PriorityFlag + 1;
             btnCancel.Visible = Lair.PriorityFlag != PriorityExecution.None;
@@ -172,10 +123,12 @@ namespace Fantasy_Kingdoms_Battle
                 btnInhabitants.Cost = Lair.CombatHeroes.Count;
             }
 
-            base.Draw(g);
+            imgMapObject.ImageIndex = Lair.ImageIndexLair();
+            imgMapObject.Level = Lair.Layer + 1;
+            lblNameMapObject.Text = Lair.NameLair();
+            lblNameMapObject.Color = Lair.PriorityFlag != PriorityExecution.None ? Color.OrangeRed : Color.LimeGreen;
 
-            // Рисуем бордюр
-            g.DrawImageUnscaled(Program.formMain.bmpBorderBig, imgLair.Left - 2, imgLair.Top - 2);
+            base.Draw(g);
         }
     }
 }

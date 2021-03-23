@@ -10,45 +10,27 @@ using System.Diagnostics;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс панели здания
-    internal sealed class PanelConstruction : VisualControl
+    internal sealed class PanelConstruction : PanelMapObject
     {
-        private Bitmap bmpBackground;
-        private readonly VCLabelM2 lblName;
-        private readonly VCImage imageConstruction;
         private readonly VCIconButton btnHeroes;
         private readonly VCIconButton btnBuyOrUpgrade;
         private readonly VCIconButton btnHireHero;
         private readonly VCImage imgGold;
         private readonly VCLabel lblIncome;
         
-        public PanelConstruction(VisualControl parent, int shiftX, int shiftY, TypeConstruction typeConstruction) : base(parent, shiftX, shiftY)
+        public PanelConstruction(VisualControl parent, int shiftX, int shiftY, TypeConstruction typeConstruction) : base(parent, shiftX, shiftY, typeConstruction)
         {
-            ShowBorder = true;
-
             TypeConstruction = typeConstruction;            
 
-            lblName = new VCLabelM2(this, FormMain.Config.GridSize, FormMain.Config.GridSize - 3, Program.formMain.fontMedCaptionC, Color.Transparent, FormMain.Config.GridSize * 3, "");
-            lblName.StringFormat.Alignment = StringAlignment.Center;
-            lblName.Text = typeConstruction.Name;
-            lblName.ShowBorder = true;
-            lblName.Click += ImageConstruction_Click;
-
-            imageConstruction = new VCImage(this, FormMain.Config.GridSize, lblName.NextTop(), Program.formMain.imListObjectsBig, -1);
-            imageConstruction.ShowBorder = false;
-            imageConstruction.HighlightUnderMouse = true;
-            imageConstruction.Click += ImageConstruction_Click;
-            imageConstruction.ShowHint += ImageConstruction_ShowHint;
-            imageConstruction.TypeObject = TypeConstruction;
-
-            btnBuyOrUpgrade = new VCIconButton(this, imageConstruction.NextLeft(), imageConstruction.ShiftY, Program.formMain.ilGui, FormMain.GUI_BUILD);
+            btnBuyOrUpgrade = new VCIconButton(this, imgMapObject.NextLeft(), imgMapObject.ShiftY, Program.formMain.ilGui, FormMain.GUI_BUILD);
             btnBuyOrUpgrade.Click += BtnBuyOrUprgade_Click;
             btnBuyOrUpgrade.ShowHint += BtnBuyOrUpgrade_ShowHint;
 
-            btnHeroes = new VCIconButton(this, imageConstruction.ShiftX, imageConstruction.NextTop(), Program.formMain.imListObjectsCell, -1);
+            btnHeroes = new VCIconButton(this, imgMapObject.ShiftX, imgMapObject.NextTop(), Program.formMain.imListObjectsCell, -1);
 
             if ((TypeConstruction.TrainedHero != null) && !(TypeConstruction is TypeEconomicConstruction))
             {
-                btnHireHero = new VCIconButton(this, imageConstruction.NextLeft(), btnBuyOrUpgrade.NextTop(), Program.formMain.imListObjectsCell, -1);
+                btnHireHero = new VCIconButton(this, imgMapObject.NextLeft(), btnBuyOrUpgrade.NextTop(), Program.formMain.imListObjectsCell, -1);
                 btnHireHero.Click += BtnHireHero_Click;
                 btnHireHero.ShowHint += BtnHireHero_ShowHint;
 
@@ -58,7 +40,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (TypeConstruction is TypeEconomicConstruction)
             {
-                imgGold = new VCImage(this, imageConstruction.NextLeft(), imageConstruction.NextTop(), Program.formMain.ilGui16, FormMain.GUI_16_GOLD);
+                imgGold = new VCImage(this, imgMapObject.NextLeft(), imgMapObject.NextTop(), Program.formMain.ilGui16, FormMain.GUI_16_GOLD);
 
                 lblIncome = new VCLabel(this, imgGold.ShiftX, imgGold.ShiftY, FormMain.Config.FontToolbar, Color.Green, 16, "");
                 lblIncome.Width = btnBuyOrUpgrade.Width;
@@ -67,7 +49,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Height = btnHeroes.NextTop();
             Width = btnBuyOrUpgrade.NextLeft();
-            lblName.Width = Width - (lblName.ShiftX * 2);
+            lblNameMapObject.Width = Width - (lblNameMapObject.ShiftX * 2);
         }
 
         internal TypeConstruction TypeConstruction { get; }
@@ -82,21 +64,6 @@ namespace Fantasy_Kingdoms_Battle
         private void BtnBuyOrUpgrade_ShowHint(object sender, EventArgs e)
         {
             ShowHintBtnBuyOrUpgrade();
-        }
-
-        private void ImageConstruction_ShowHint(object sender, EventArgs e)
-        {
-            Building.PrepareHint();
-        }
-
-        private void ImageConstruction_Click(object sender, EventArgs e)
-        {
-            SelectThisBuilding();
-        }
-
-        private void SelectThisBuilding()
-        {
-            Program.formMain.SelectBuilding(this);
         }
 
         private void ShowHintBtnHireHero()
@@ -169,27 +136,14 @@ namespace Fantasy_Kingdoms_Battle
             Building = pb;
         }
 
-        internal override void DrawBackground(Graphics g)
-        {
-            base.DrawBackground(g);
-
-            if ((bmpBackground == null) || (bmpBackground.Width != Width) || (bmpBackground.Height != Height))
-            {
-                bmpBackground?.Dispose();
-                bmpBackground = GuiUtils.MakeBackground(new Size(Width, Height));
-            }
-
-            g.DrawImageUnscaled(bmpBackground, Left, Top);
-        }
-
         internal override void Draw(Graphics g)
         {
             Debug.Assert(Building.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
 
-            imageConstruction.ImageIndex = Building.Building.ImageIndex;
-            imageConstruction.ImageIsEnabled = Building.Level > 0;
+            imgMapObject.ImageIndex = Building.Building.ImageIndex;
+            imgMapObject.ImageIsEnabled = Building.Level > 0;
 
-            lblName.Color = FormMain.Config.ColorMapObjectCaption(Building.Level > 0);
+            lblNameMapObject.Color = FormMain.Config.ColorMapObjectCaption(Building.Level > 0);
 
             if (lblIncome != null)
             {
@@ -230,7 +184,7 @@ namespace Fantasy_Kingdoms_Battle
                 btnHireHero.Cost = (Building.Level == 0) || (Building.CanTrainHero() == true) ? TypeConstruction.TrainedHero.Cost : 0;
             }
 
-            imageConstruction.Level = Building.Level;
+            imgMapObject.Level = Building.Level;
 
             if ((Building.Building.TrainedHero != null) && (Building.Level > 0) && (Building.Heroes.Count > 0))
             {
@@ -245,9 +199,6 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             base.Draw(g);
-
-            // Рисуем бордюр
-            g.DrawImageUnscaled(Program.formMain.bmpBorderBig, imageConstruction.Left - 2, imageConstruction.Top - 2);
         }
     }
 }
