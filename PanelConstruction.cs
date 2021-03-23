@@ -53,7 +53,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal TypeConstruction TypeConstruction { get; }
-        internal PlayerBuilding Building { get; private set; }
+        internal PlayerBuilding Building { get => PlayerObject as PlayerBuilding; }
 
 
         private void BtnHireHero_ShowHint(object sender, EventArgs e)
@@ -133,7 +133,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(pb.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
             Debug.Assert(pb.Building == TypeConstruction);
 
-            Building = pb;
+            PlayerObject = pb;
         }
 
         internal override void Draw(Graphics g)
