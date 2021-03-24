@@ -289,6 +289,13 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (gold > 0)
             {
+                if (!lblSeparateRequirement.Visible)
+                {
+                    lblSeparateRequirement.Visible = true;
+                    lblSeparateRequirement.ShiftY = nextTop;
+                    nextTop = lblSeparateRequirement.NextTop();
+                }
+
                 lblGold.Color = ColorRequirements(goldEnough);
                 lblGold.Text = gold.ToString();
                 lblGold.ShiftY = nextTop;
