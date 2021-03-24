@@ -1621,7 +1621,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
                 else if (curControl == controlWithHint)
                 {
-                    if (hintShowed)
+                    /*if (hintShowed)
                     {
                         timerHover.Stop();
                         formHint.HideHint();
@@ -1631,7 +1631,7 @@ namespace Fantasy_Kingdoms_Battle
                         // Если над контролом водят мышкой, отсчет времени начинаем только после остановки
                         timerHover.Stop();
                         timerHover.Start();
-                    }
+                    }*/
                 }
                 else
                 {
