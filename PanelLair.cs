@@ -94,10 +94,13 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnAction_Click(object sender, EventArgs e)
         {
-            SelectThisBuilding();
+            if (btnAction.ImageIsEnabled)
+            {
+                SelectThisBuilding();
 
-            if (Lair.PriorityFlag < PriorityExecution.Exclusive)
-                Lair.IncPriority();
+                if (Lair.PriorityFlag < PriorityExecution.Exclusive)
+                    Lair.IncPriority();
+            }
         }
 
 
