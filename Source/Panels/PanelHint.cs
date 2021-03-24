@@ -199,6 +199,7 @@ namespace Fantasy_Kingdoms_Battle
         internal void AddHeader(string header)
         {
             ExistHint = true;
+            lblHeader.Width = widthControl;
             lblHeader.Text = header;
             lblHeader.Height = lblHeader.MinHeigth();
             nextTop = lblHeader.NextTop();
