@@ -28,7 +28,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly VCTextM2 lblDescription;
         internal readonly VCSeparator lblSeparateRequirement;
         internal readonly VCLabelM2 lblRequirement;
-        internal readonly List<VCLabelM2> listRequirements = new List<VCLabelM2>();
+        internal readonly List<VCTextM2> listRequirements = new List<VCTextM2>();
         internal readonly VCLabelValue lblIncome;
         internal readonly VCLabelValue lblGold;
         internal readonly VCLabelM2 lblBuilders;
@@ -177,7 +177,7 @@ namespace Fantasy_Kingdoms_Battle
             lblDescription.Visible = false;
             lblIncome.Visible = false;
 
-            foreach (VCLabelM2 l in listRequirements)
+            foreach (VCTextM2 l in listRequirements)
                 l.Dispose();
             lblSeparateRequirement.Visible = false;
             lblRequirement.Visible = false;
@@ -270,13 +270,14 @@ namespace Fantasy_Kingdoms_Battle
                 lblRequirement.ShiftY = nextTop;
                 nextTop = lblRequirement.NextTop();
 
-                VCLabelM2 lr;
+                VCTextM2 lr;
                 bool requirementPerformed = true;
                 foreach (TextRequirement tr in requirement)
                 {
-                    lr = new VCLabelM2(this, FormMain.Config.GridSize, nextTop, Program.formMain.fontSmallC, ColorRequirements(tr.Performed), 16, tr.Text);
+                    lr = new VCTextM2(this, FormMain.Config.GridSize, nextTop, Program.formMain.fontSmallC, ColorRequirements(tr.Performed), widthControl);
                     lr.StringFormat.Alignment = StringAlignment.Near;
-                    lr.Width = Width - FormMain.Config.GridSize - FormMain.Config.GridSize;
+                    lr.Text = tr.Text;
+                    lr.Height = lr.MinHeigth();
                     //lr.MaximumSize = new Size(Width - FormMain.Config.GridSize * 2, 0);
 
                     listRequirements.Add(lr);
