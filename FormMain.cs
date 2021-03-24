@@ -1718,12 +1718,12 @@ namespace Fantasy_Kingdoms_Battle
 
                     ShowFrame(false);
 
-                    if (formHint.Visible)
+                    /*if (formHint.Visible)
                     {
                         ControlForHintLeave();
                         mousePos = new Point(0, 0);
                         TreatMouseMove(false);
-                    }
+                    }*/
                 }
             }
         }
