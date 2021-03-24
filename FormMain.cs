@@ -25,7 +25,7 @@ namespace Fantasy_Kingdoms_Battle
         private bool needRepaintFrame = false;
 
         // Проигрывание звуков и музыки 
-        private readonly SoundPlayer spSoundSelect = new SoundPlayer();
+        private readonly System.Windows.Media.MediaPlayer mpSoundSelect;
         private readonly System.Windows.Media.MediaPlayer mpSelectButton;
         private readonly System.Windows.Media.MediaPlayer mpPushButton;
         private readonly System.Windows.Media.MediaPlayer mpConstructionComplete;
@@ -640,6 +640,7 @@ namespace Fantasy_Kingdoms_Battle
                 ActivatePage(pageGuilds);
 
                 //
+                mpSoundSelect = new System.Windows.Media.MediaPlayer();
                 mpSelectButton = new System.Windows.Media.MediaPlayer();
                 mpSelectButton.Open(new Uri(dirResources + @"Sound\Interface\Button\SelectButton.wav"));
                 mpPushButton = new System.Windows.Media.MediaPlayer();
@@ -1823,9 +1824,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void PlaySoundSelect(string filename)
         {
-            spSoundSelect.SoundLocation = dirResources + @"Sound\Interface\ConstructionSelect\" + filename;
-            spSoundSelect.Load();
-            spSoundSelect.Play();
+            mpSoundSelect.Open(new Uri(dirResources + @"Sound\Interface\ConstructionSelect\" + filename));
+            mpSoundSelect.Play();
         }
 
         internal void PlaySelectButton()
