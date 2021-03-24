@@ -26,7 +26,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override bool PrepareHint()
         {
-            Program.formMain.formHint.AddStep1Header(Lair.TypeLair.Name, "", "");
+            Program.formMain.formHint.AddHeader(Lair.TypeLair.Name);
 
             return true;
         }
