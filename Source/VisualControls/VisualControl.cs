@@ -233,6 +233,7 @@ namespace Fantasy_Kingdoms_Battle
                     //if (Visible && !Rectangle.Contains(vc.Rectangle))
                     //{
                     //    vc.IsError = true;
+                    //    vc.ShowBorder = true;
                     //}
                     if (Visible)
                     {
