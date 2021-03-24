@@ -67,7 +67,8 @@ namespace Fantasy_Kingdoms_Battle
 
         private void ImgLair_Click(object sender, EventArgs e)
         {
-            PlaySelect();
+            if (!Selected())
+                PlaySelect();
             SelectThisBuilding();
         }
 
