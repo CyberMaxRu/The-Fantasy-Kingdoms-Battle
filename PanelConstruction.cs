@@ -149,7 +149,7 @@ namespace Fantasy_Kingdoms_Battle
             if (lblIncome != null)
             {
                 lblIncome.Text = "+" + (Building.Level > 0 ? Building.Income() : Building.IncomeNextLevel()).ToString();
-                lblIncome.Color = Building.Level > 0 ? Color.Green : Color.Gray;
+                lblIncome.Color = Building.Level > 0 ? FormMain.Config.HintIncome : Color.Gray;
             }
 
             if (Building.Level > 0)
