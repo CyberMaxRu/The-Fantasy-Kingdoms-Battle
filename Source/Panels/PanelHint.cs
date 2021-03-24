@@ -171,6 +171,7 @@ namespace Fantasy_Kingdoms_Battle
         internal bool ExistHint { get; set; }
         internal void Clear()
         {
+            ExistHint = false;
             lblHeader.Text = "";
             lblAction.Visible = false;
             lblDescription.Visible = false;

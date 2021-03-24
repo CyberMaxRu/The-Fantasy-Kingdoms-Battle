@@ -175,6 +175,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal Lobby CurrentLobby { get { return lobby; } }
 
+        internal float DpiX { get; }
+        internal float DpiY { get; }
         internal readonly Bitmap bmpForBackground;
         internal readonly Bitmap bmpBorderForIcon;
         internal readonly Bitmap bmpBorderForIconAlly;
@@ -258,6 +260,10 @@ namespace Fantasy_Kingdoms_Battle
 
             // Ищем главную пользовательскую модификацию
             dirResources = Directory.Exists(dirCurrent + @"User_mods\Main") ? dirCurrent + @"User_mods\Main\" : dirCurrent + @"Resources\";
+
+            Bitmap bmpDpi = new Bitmap(1, 1);
+            DpiX = bmpDpi.HorizontalResolution;
+            DpiY = bmpDpi.VerticalResolution;
 
             // Обновляем обновлятор
             string newName;
@@ -1720,7 +1726,13 @@ namespace Fantasy_Kingdoms_Battle
                     controlClicked = null;
 
                     if (formHint.Visible)
+                    {
                         controlWithHint.DoShowHint();
+
+                        // После клика может оказаться, что подсказки нет (контрол скрыт, например)
+                        if (!formHint.ExistHint)
+                            formHint.HideHint();
+                    }
                     ShowFrame(false);
 
                     /*if (formHint.Visible)
