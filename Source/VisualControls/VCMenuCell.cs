@@ -20,6 +20,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (research.CheckRequirements())
             {
+                Program.formMain.PlayPushButton();
                 research.DoResearch();
             }
         }

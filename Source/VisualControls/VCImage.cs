@@ -100,8 +100,6 @@ namespace Fantasy_Kingdoms_Battle
 
             mouseClicked = true;
             Program.formMain.SetNeedRedrawFrame();
-            if (ImageIsEnabled)
-                Program.formMain.PlayPushButton();
         }
 
         internal override void MouseUp()

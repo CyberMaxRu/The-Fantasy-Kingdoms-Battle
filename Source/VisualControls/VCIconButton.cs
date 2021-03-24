@@ -19,5 +19,13 @@ namespace Fantasy_Kingdoms_Battle
 
             base.Draw(g);
         }
+
+        internal override void MouseDown()
+        {
+            base.MouseDown();
+
+            if (ImageIsEnabled)
+                Program.formMain.PlayPushButton();
+        }
     }
 }
