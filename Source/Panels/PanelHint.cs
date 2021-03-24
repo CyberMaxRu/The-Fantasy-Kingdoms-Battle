@@ -372,11 +372,11 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(c.Height > 8);
             Debug.Assert(lblHeader.Text.Length > 0);
 
-            Point l = new Point(c.Left, c.Top + c.Height + 2);
+            Point l = new Point(c.Left - Program.formMain.ShiftControls.X, c.Top + c.Height + 2 - Program.formMain.ShiftControls.Y);
             // Если подсказка уходит за пределы экрана игры, меняем ее положение
-            if (l.X + Width > Program.formMain.ShiftControls.X + Program.formMain.sizeGamespace.Width - FormMain.Config.GridSize)
-                l.X = Program.formMain.ShiftControls.X + Program.formMain.sizeGamespace.Width - Width - FormMain.Config.GridSize;
-            if (l.Y + nextTop > Program.formMain.ShiftControls.Y + Program.formMain.sizeGamespace.Height - FormMain.Config.GridSize)
+            if (l.X + Width > Program.formMain.sizeGamespace.Width - FormMain.Config.GridSize)
+                l.X = Program.formMain.sizeGamespace.Width - Width - FormMain.Config.GridSize;
+            if (l.Y + nextTop > Program.formMain.sizeGamespace.Height - FormMain.Config.GridSize)
                 l.Y = l.Y - nextTop - c.Height - 4;
 
             // Сначала меняем высоту, а потом меням координату, чтобы при ArrangeControls не срабатывал Assert
