@@ -15,6 +15,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             BitmapList = Program.formMain.ilGui16;
             StringFormat.Alignment = StringAlignment.Near;
+
+            TopMargin = -2;
         }
     }
 }

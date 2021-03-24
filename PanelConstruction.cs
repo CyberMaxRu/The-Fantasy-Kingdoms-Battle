@@ -15,8 +15,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCIconButton btnHeroes;
         private readonly VCIconButton btnBuyOrUpgrade;
         private readonly VCIconButton btnHireHero;
-        private readonly VCImage imgGold;
-        private readonly VCLabel lblIncome;
+        private readonly VCLabelValue lblIncome;
         
         public PanelConstruction(VisualControl parent, int shiftX, int shiftY, TypeConstruction typeConstruction) : base(parent, shiftX, shiftY, typeConstruction)
         {
@@ -40,11 +39,10 @@ namespace Fantasy_Kingdoms_Battle
 
             if (TypeConstruction is TypeEconomicConstruction)
             {
-                imgGold = new VCImage(this, imgMapObject.NextLeft(), imgMapObject.NextTop(), Program.formMain.ilGui16, FormMain.GUI_16_GOLD);
-
-                lblIncome = new VCLabel(this, imgGold.NextLeft(), imgGold.ShiftY, FormMain.Config.FontToolbar, Color.Green, 16, "");
-                lblIncome.Width = btnBuyOrUpgrade.Width - imgGold.Width - FormMain.Config.GridSize;                    
-                lblIncome.StringFormat.Alignment = StringAlignment.Far;
+                lblIncome = new VCLabelValue(this, imgMapObject.NextLeft() - FormMain.Config.GridSize - FormMain.Config.GridSize, imgMapObject.NextTop(), Color.Green);
+                lblIncome.ImageIndex = FormMain.GUI_16_INCOME;
+                lblIncome.Width = btnBuyOrUpgrade.Width - FormMain.Config.GridSize;
+                lblIncome.StringFormat.Alignment = StringAlignment.Near;
             }
 
             Height = btnHeroes.NextTop();
