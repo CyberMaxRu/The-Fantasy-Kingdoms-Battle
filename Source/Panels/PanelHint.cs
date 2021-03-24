@@ -77,7 +77,7 @@ namespace Fantasy_Kingdoms_Battle
             lblGold.ImageIndex = FormMain.GUI_16_GOLD;
             lblGold.Width = widthControl;
 
-            lblBuilders = new VCLabelM2(this, FormMain.Config.GridSize, lblGold.NextTop(), Program.formMain.fontSmallC, FormMain.Config.HintDescription, 16, "");
+            lblBuilders = new VCLabelM2(this, FormMain.Config.GridSize, lblGold.NextTop(), Program.formMain.fontSmallC, FormMain.Config.HintDescription, Program.formMain.fontSmallC.HeightSymbol, "");
             lblBuilders.Width = widthControl;
 
             /*            lblDamageMelee = new Label()
