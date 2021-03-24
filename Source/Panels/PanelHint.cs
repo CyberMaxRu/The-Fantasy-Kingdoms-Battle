@@ -378,10 +378,11 @@ namespace Fantasy_Kingdoms_Battle
             if (l.Y + nextTop > Program.formMain.ShiftControls.Y + Program.formMain.sizeGamespace.Height - FormMain.Config.GridSize)
                 l.Y = l.Y - nextTop - c.Height - 4;
 
+            // Сначала меняем высоту, а потом меням координату, чтобы при ArrangeControls не срабатывал Assert
+            Height = nextTop;
             SetPos(l.X + Program.formMain.ShiftControls.X, l.Y + Program.formMain.ShiftControls.Y);
 
             bool needReshow = (Visible == false) || (Height != nextTop);
-            Height = nextTop;
 
             bmpBackground?.Dispose();
             bmpBackground = new Bitmap(Width, Height);
