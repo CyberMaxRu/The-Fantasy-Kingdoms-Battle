@@ -18,11 +18,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int maxHeightSymbol;
         public M2Font(string dirResources, string filename)
         {
-            Bitmap bmpFonts = new Bitmap(dirResources + @"Fonts\" + filename + ".png");
-            Debug.Assert(bmpFonts.HorizontalResolution >= 95);
-            Debug.Assert(bmpFonts.HorizontalResolution <= 96);
-            Debug.Assert(bmpFonts.VerticalResolution >= 95);
-            Debug.Assert(bmpFonts.VerticalResolution <= 96);
+            Bitmap bmpFonts = Program.formMain.LoadBitmap(filename + ".png", "Fonts");
 
             // Загружаем tuv-файл
             string file = File.ReadAllText(dirResources + @"Fonts\" + filename + ".tuv", Encoding.GetEncoding(1251));

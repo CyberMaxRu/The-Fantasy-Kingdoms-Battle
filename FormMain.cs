@@ -175,8 +175,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal Lobby CurrentLobby { get { return lobby; } }
 
-        internal float DpiX { get; }
-        internal float DpiY { get; }
+        private readonly float dpiX;
+        private readonly float dpiY;
         internal readonly Bitmap bmpForBackground;
         internal readonly Bitmap bmpBorderForIcon;
         internal readonly Bitmap bmpBorderForIconAlly;
@@ -261,9 +261,11 @@ namespace Fantasy_Kingdoms_Battle
             // Ищем главную пользовательскую модификацию
             dirResources = Directory.Exists(dirCurrent + @"User_mods\Main") ? dirCurrent + @"User_mods\Main\" : dirCurrent + @"Resources\";
 
+            // Определяем DPI для корректировки картинок
             Bitmap bmpDpi = new Bitmap(1, 1);
-            DpiX = bmpDpi.HorizontalResolution;
-            DpiY = bmpDpi.VerticalResolution;
+            dpiX = bmpDpi.HorizontalResolution;
+            dpiY = bmpDpi.VerticalResolution;
+            bmpDpi.Dispose();
 
             // Обновляем обновлятор
             string newName;
@@ -306,7 +308,7 @@ namespace Fantasy_Kingdoms_Battle
                 fontParagraph = new M2Font(dirResources, "paragraph");
 
                 // Формируем и показываем сплэш-заставку
-                Image splashBitmap = new Bitmap(dirResources + "\\Icons\\Splash.png");
+                Image splashBitmap = LoadBitmap("Splash.png");
 
                 Form splashForm = new Form()
                 {
@@ -359,16 +361,16 @@ namespace Fantasy_Kingdoms_Battle
                 // Загружаем иконки
                 SetStage("Рассматриваем картины");
 
-                bmpBorderBig = new Bitmap(dirResources + @"Icons\BorderBig.png");
-                bmpMaskBig = new Bitmap(dirResources + @"Icons\MaskBig.png");
-                bmpMaskSmall = new Bitmap(dirResources + @"Icons\MaskSmall.png");// Нужна ли еще?
+                bmpBorderBig = LoadBitmap("BorderBig.png");
+                bmpMaskBig = LoadBitmap("MaskBig.png");
+                bmpMaskSmall = LoadBitmap("MaskSmall.png");// Нужна ли еще?
 
-                imListObjectsBig = new BitmapList(dirResources, "Objects.png", 128, true, true);
+                imListObjectsBig = new BitmapList(LoadBitmap("Objects.png"), 128, true, true);
 
                 // Добавляем в список иконок аватарки игроков
                 // Для этого создаем отдельный список оригинальных аватарок, из которого уже будем составлять итоговый
                 ImageIndexFirstAvatar = imListObjectsBig.Count;
-                blPlayerAvatars = new BitmapList(dirResources, "Avatars.png", 128, true, true);
+                blPlayerAvatars = new BitmapList(LoadBitmap("Avatars.png"), 128, true, true);
                 for (int i = 0; i < blPlayerAvatars.Count; i++)
                     imListObjectsBig.Add(blPlayerAvatars.GetImage(i, true, false));
 
@@ -376,34 +378,34 @@ namespace Fantasy_Kingdoms_Battle
 
                 imListObjectsCell = new BitmapList(imListObjectsBig, 48, Config.BorderInBigIcons, bmpMaskSmall);
 
-                ilGui16 = new BitmapList(dirResources, "Gui16.png", 16, true, false);
-                ilGui24 = new BitmapList(dirResources, "Gui24.png", 24, true, false);
-                ilParameters = new BitmapList(dirResources, "Parameters.png", 24, true, false);
-                ilItems = new BitmapList(dirResources, "Items.png", 48, true, true);
-                ilStateHero = new BitmapList(dirResources, "StateCreature.png", 24, true, false);
-                ilMenuCellFilters = new BitmapList(dirResources, "MenuCellFilters.png", 48, true, false);
+                ilGui16 = new BitmapList(LoadBitmap("Gui16.png"), 16, true, false);
+                ilGui24 = new BitmapList(LoadBitmap("Gui24.png"), 24, true, false);
+                ilParameters = new BitmapList(LoadBitmap("Parameters.png"), 24, true, false);
+                ilItems = new BitmapList(LoadBitmap("Items.png"), 48, true, true);
+                ilStateHero = new BitmapList(LoadBitmap("StateCreature.png"), 24, true, false);
+                ilMenuCellFilters = new BitmapList(LoadBitmap("MenuCellFilters.png"), 48, true, false);
 
-                ilGui = new BitmapList(dirResources, "Gui.png", 48, true, true);
+                ilGui = new BitmapList(LoadBitmap("Gui.png"), 48, true, true);
                 //MakeAlpha();
 
-                bmpForBackground = new Bitmap(dirResources + "Icons\\Background.png");
-                bmpBorderForIcon = new Bitmap(dirResources + "Icons\\BorderIconEntity.png");
-                bmpEmptyEntity = new Bitmap(dirResources + "Icons\\EmptyEntity.png");
-                bmpBackgroundEntity = new Bitmap(dirResources + "Icons\\BackgroundEntity.png");
-                bbBorderWindow = new BitmapBorder(dirResources + @"Icons\BorderWindow.png", false, 14, 14, 14, 14, 60, 14, 14, 60, 14, 14);
-                bbObject = new BitmapBorder(dirResources + "Icons\\BorderObject.png", false, 10, 10, 9, 12, 25, 2, 5, 24, 3, 3);
-                bbToolBarLabel = new BitmapBorder(dirResources + @"Icons\ToolbarLabel.png", true, 10, 10, 9, 10, 25, 9, 12, 25, 10, 10);
-                bbGamespace = new BitmapBorder(dirResources + @"Icons\BorderMain2.png", false, 12, 12, 12, 12, 26, 7, 7, 26, 7, 7);
-                bbSelect = new BitmapBorder(dirResources + @"Icons\BorderSelect.png", false, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
-                bmpToolbar = new Bitmap(dirResources + @"Icons\Toolbar.png");
-                bmpToolbarBorder = new Bitmap(dirResources + @"Icons\ToolbarBorder.png");
-                bmpSeparator = new Bitmap(dirResources + @"Icons\Separator.png");
-                bmpBandWindowCaption = new Bitmap(dirResources + @"Icons\WindowCaption.png");
-                bmpBandButtonNormal = new Bitmap(dirResources + @"Icons\ButtonNormal.png");
-                bmpBandButtonHot = new Bitmap(dirResources + @"Icons\ButtonHot.png");
-                bmpBandButtonDisabled = new Bitmap(dirResources + @"Icons\ButtonDisabled.png");
-                bmpBandButtonPressed = new Bitmap(dirResources + @"Icons\ButtonPressed.png");
-                bmpBandStateCreature = new Bitmap(dirResources + @"Icons\BandStateCreature.png");
+                bmpForBackground = LoadBitmap("Background.png");
+                bmpBorderForIcon = LoadBitmap("BorderIconEntity.png");
+                bmpEmptyEntity = LoadBitmap("EmptyEntity.png");
+                bmpBackgroundEntity = LoadBitmap("BackgroundEntity.png");
+                bbBorderWindow = new BitmapBorder(LoadBitmap("BorderWindow.png"), false, 14, 14, 14, 14, 60, 14, 14, 60, 14, 14);
+                bbObject = new BitmapBorder(LoadBitmap("BorderObject.png"), false, 10, 10, 9, 12, 25, 2, 5, 24, 3, 3);
+                bbToolBarLabel = new BitmapBorder(LoadBitmap("ToolbarLabel.png"), true, 10, 10, 9, 10, 25, 9, 12, 25, 10, 10);
+                bbGamespace = new BitmapBorder(LoadBitmap("BorderMain2.png"), false, 12, 12, 12, 12, 26, 7, 7, 26, 7, 7);
+                bbSelect = new BitmapBorder(LoadBitmap("BorderSelect.png"), false, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+                bmpToolbar = LoadBitmap("Toolbar.png");
+                bmpToolbarBorder = LoadBitmap("ToolbarBorder.png");
+                bmpSeparator = LoadBitmap("Separator.png");
+                bmpBandWindowCaption = LoadBitmap("WindowCaption.png");
+                bmpBandButtonNormal = LoadBitmap("ButtonNormal.png");
+                bmpBandButtonHot = LoadBitmap("ButtonHot.png");
+                bmpBandButtonDisabled = LoadBitmap("ButtonDisabled.png");
+                bmpBandButtonPressed = LoadBitmap("ButtonPressed.png");
+                bmpBandStateCreature = LoadBitmap("BandStateCreature.png");
 
                 // Делаем рамки для союзников и врагов
                 bmpBorderForIconAlly = new Bitmap(bmpBorderForIcon);
@@ -583,7 +585,7 @@ namespace Fantasy_Kingdoms_Battle
                 panelCombatHeroes.ShiftX = pageGuilds.ShiftX + maxWidthPages + Config.GridSize;
 
                 // Создаем меню
-                bitmapMenu = new VCBitmap(MainControl, 0, 0, new Bitmap(dirResources + @"Icons\Menu.png"));
+                bitmapMenu = new VCBitmap(MainControl, 0, 0, LoadBitmap("Menu.png"));
                 //Debug.Assert(panelHeroInfo.Width >= bitmapMenu.Width);
 
                 CellsMenu = new VCMenuCell[PANEL_MENU_CELLS.Height, PANEL_MENU_CELLS.Width];
@@ -1912,6 +1914,13 @@ namespace Fantasy_Kingdoms_Battle
 
         private void StartPlayMusic()
         {
+        }
+
+        internal Bitmap LoadBitmap(string filename, string folder = "Icons")
+        {
+            Bitmap bmp = new Bitmap(dirResources + $"{folder}\\" + filename);
+            bmp.SetResolution(dpiX, dpiY);
+            return bmp;
         }
     }
 }

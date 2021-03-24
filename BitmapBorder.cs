@@ -15,11 +15,10 @@ namespace Fantasy_Kingdoms_Battle
         private int widthBorder;
         private int heightBorder;
 
-        public BitmapBorder(string filename, bool useCentre, int widthLeftCorner, int widthRightCorner, int heightTopCorner, int heightBottomCorner, 
+        public BitmapBorder(Bitmap bmpOrigin, bool useCentre, int widthLeftCorner, int widthRightCorner, int heightTopCorner, int heightBottomCorner, 
             int widthHorizBand, int heightTopBand, int heightBottomBand, int heightVertBand, int widthLeftBand, int widthRightBand)
         {
             ArraySides = new Bitmap[3, 3];
-            Bitmap bmpOrigin = new Bitmap(filename);
             widthBorder = bmpOrigin.Width;
             heightBorder = bmpOrigin.Height;
 

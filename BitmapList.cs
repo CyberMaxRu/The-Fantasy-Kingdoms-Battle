@@ -17,14 +17,11 @@ namespace Fantasy_Kingdoms_Battle
         private Bitmap[] bitmapsNormalOver;
         private Bitmap[] bitmapsDisabledOver;
 
-        public BitmapList(string dirResources, string filename, int size, bool withDisabled, bool withOver)
+        public BitmapList(Bitmap bmp, int size, bool withDisabled, bool withOver)
         {
             Size = size;
             WithDisabled = withDisabled;
             WithOver = withOver;
-
-            // Загружаем картинку
-            Bitmap bmp = new Bitmap(dirResources + @"Icons\" + filename);
 
             // Определяем количество иконок
             Debug.Assert(bmp.Width % size == 0);
