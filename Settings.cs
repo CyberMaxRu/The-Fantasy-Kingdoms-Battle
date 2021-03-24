@@ -33,7 +33,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 NamePlayer = XmlUtils.GetString(doc.SelectSingleNode("Settings/Player/Name"));
                 if (NamePlayer.Length == 0)
-                    NamePlayer = "Игрок №1";
+                    NamePlayer = "Игрок";
                 if (NamePlayer.Length > 31)
                     throw new Exception("Длина имени игрока более 31 символа.");
 
@@ -43,6 +43,10 @@ namespace Fantasy_Kingdoms_Battle
                 FileNameAvatar = XmlUtils.GetString(doc.SelectSingleNode("Settings/Player/FileNameAvatar"));
                 DirectoryAvatar = XmlUtils.GetString(doc.SelectSingleNode("Settings/Player/DirectoryAvatar"));
             }
+            else
+            {
+                NamePlayer = "Игрок";
+            }    
             //if (IndexAvatar >= Program.formMain.ilPlayerAvatars.Images.Count)
             //    IndexAvatar = Program.formMain.ilPlayerAvatars.Images.Count - 1;
         }
