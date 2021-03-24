@@ -41,7 +41,8 @@ namespace Fantasy_Kingdoms_Battle
         private int nextTop;
         private readonly Color colorBackground;
         private Bitmap bmpBackground;
-        
+        private int widthControl;
+
         public PanelHint() : base()
         {
             ShowBorder = true;
@@ -50,7 +51,7 @@ namespace Fantasy_Kingdoms_Battle
 
             colorBackground = Color.FromArgb(192, 0, 0, 0);
 
-            int widthControl = Width - FormMain.Config.GridSize - FormMain.Config.GridSize;
+            widthControl = Width - FormMain.Config.GridSize - FormMain.Config.GridSize;
 
             lblHeader = new VCTextM2(this, FormMain.Config.GridSize, 4, Program.formMain.fontMedCaptionC, Color.Yellow, widthControl);
             lblHeader.StringFormat.Alignment = StringAlignment.Near;
@@ -210,6 +211,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Width = 256;
             ExistHint = true;
+            lblHeader.Width = widthControl;
             lblHeader.Text = header;
             lblHeader.Height = lblHeader.MinHeigth();
             nextTop = lblHeader.NextTop();
