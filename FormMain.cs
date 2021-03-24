@@ -262,10 +262,10 @@ namespace Fantasy_Kingdoms_Battle
             dirResources = Directory.Exists(dirCurrent + @"User_mods\Main") ? dirCurrent + @"User_mods\Main\" : dirCurrent + @"Resources\";
 
             // Определяем DPI для корректировки картинок
-            Bitmap bmpDpi = new Bitmap(1, 1);
-            dpiX = bmpDpi.HorizontalResolution;
-            dpiY = bmpDpi.VerticalResolution;
-            bmpDpi.Dispose();
+В            Graphics gDpi = Graphics.FromHwnd(IntPtr.Zero);
+            dpiX = gDpi.DpiX;
+            dpiY = gDpi.DpiY;
+            gDpi.Dispose();
 
             // Обновляем обновлятор
             string newName;
