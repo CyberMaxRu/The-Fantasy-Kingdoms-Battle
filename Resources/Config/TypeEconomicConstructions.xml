@@ -2,7 +2,7 @@
 <TypeConstructionEconomics>
   <TypeConstructionEconomic>
     <ID>Castle</ID>
-    <Name>Королевский замок</Name>
+    <Name>Замок</Name>
     <Description>- Позволяет отдавать приказы строительства/- Содержит налоговую и охранную службы/- Здесь хранится казна королевства</Description>
     <ImageIndex>20</ImageIndex>
     <Page>Economic</Page>
