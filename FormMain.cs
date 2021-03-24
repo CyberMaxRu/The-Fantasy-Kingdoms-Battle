@@ -499,10 +499,10 @@ namespace Fantasy_Kingdoms_Battle
                 vcDebugInfo = new VisualControl();
                 labelTimeDrawFrame = new VCLabel(vcDebugInfo, Config.GridSize, Config.GridSize, Config.FontToolbar, Color.White, 16, "");
                 labelTimeDrawFrame.StringFormat.Alignment = StringAlignment.Near;
-                labelTimeDrawFrame.Width = 160;
+                labelTimeDrawFrame.Width = 300;
                 labelLayers = new VCLabel(vcDebugInfo, labelTimeDrawFrame.ShiftX, labelTimeDrawFrame.NextTop(), Config.FontToolbar, Color.White, 16, "Layers");
                 labelLayers.StringFormat.Alignment = StringAlignment.Near;
-                labelLayers.Width = 160;
+                labelLayers.Width = 300;
                 vcDebugInfo.ApplyMaxSize();
                 vcDebugInfo.ArrangeControls();
 
@@ -1539,7 +1539,7 @@ namespace Fantasy_Kingdoms_Battle
                     gfxFrame.DrawRectangle(penDebugBorder, controlWithHint.Rectangle);
 
                 durationDrawFrame = DateTime.Now - startDebugAction;
-                labelTimeDrawFrame.Text = "Draw frame: " + durationDrawFrame.TotalMilliseconds.ToString();
+                labelTimeDrawFrame.Text = $"Draw frame: {durationDrawFrame.TotalMilliseconds}; dpiX: {gfxFrame.DpiX}, dpiY: {gfxFrame.DpiY}";
                 vcDebugInfo.Draw(gfxFrame);
             }
 
