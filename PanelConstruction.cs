@@ -102,7 +102,6 @@ namespace Fantasy_Kingdoms_Battle
                 }
 
                 Building.HireHero();
-                btnHireHero.DoShowHint();
                 Program.formMain.UpdateListHeroes();
                 Program.formMain.SetNeedRedrawFrame();
             }
@@ -118,7 +117,6 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (Building.BuyOrUpgrade())
                 {
-                    btnBuyOrUpgrade.DoShowHint();
                     Program.formMain.SetNeedRedrawFrame();
                     Program.formMain.PlayConstructionComplete();
                 }

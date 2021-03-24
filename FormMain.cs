@@ -1716,6 +1716,8 @@ namespace Fantasy_Kingdoms_Battle
                     }
                     controlClicked = null;
 
+                    if (formHint.Visible)
+                        controlWithHint.DoShowHint();
                     ShowFrame(false);
 
                     /*if (formHint.Visible)
