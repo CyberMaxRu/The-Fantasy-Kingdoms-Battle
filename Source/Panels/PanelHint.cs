@@ -200,6 +200,7 @@ namespace Fantasy_Kingdoms_Battle
             lblHeader.Text = header;
             lblHeader.Height = lblHeader.MinHeigth();
             nextTop = lblHeader.NextTop();
+            lblHeader.Width = lblHeader.MinWidth();
             Width = lblHeader.ShiftX + lblHeader.MinWidth() + FormMain.Config.GridSize;
         }
 
