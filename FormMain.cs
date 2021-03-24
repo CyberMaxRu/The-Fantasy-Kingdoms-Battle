@@ -485,7 +485,7 @@ namespace Fantasy_Kingdoms_Battle
                 labelGreatness = new VCToolLabel(bmpPreparedToolbar, labelDay.NextLeft(), labelDay.ShiftY, "", GUI_16_GREATNESS);
                 labelGreatness.ShowHint += LabelGreatness_ShowHint;
                 labelGreatness.Width = 112;
-                labelGold = new VCToolLabel(bmpPreparedToolbar, labelGreatness.NextLeft(), labelDay.ShiftY, "", GUI_16_GOLD);
+                labelGold = new VCToolLabel(bmpPreparedToolbar, labelGreatness.NextLeft(), labelDay.ShiftY, "", GUI_16_INCOME);
                 labelGold.ShowHint += LabelGold_ShowHint;
                 labelGold.Width = 168;
 
