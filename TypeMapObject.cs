@@ -11,11 +11,16 @@ namespace Fantasy_Kingdoms_Battle
     // Тип объекта карты - базовый класс для всех зданий, построек и логов
     internal abstract class TypeMapObject : TypeObject
     {
+        private Uri uriSoundSelect;// Звук при выборе объекта
+
         public TypeMapObject(XmlNode n) : base(n)
         {
             DefaultLevel = XmlUtils.GetInteger(n.SelectSingleNode("DefaultLevel"));
             MaxLevel = Convert.ToInt32(n.SelectSingleNode("MaxLevel").InnerText);
             Line = XmlUtils.GetInteger(n.SelectSingleNode("Line"));
+            string filenameSoundSelect = XmlUtils.GetString(n.SelectSingleNode("SoundSelect"));
+            if (filenameSoundSelect.Length > 0)
+                uriSoundSelect = new Uri(Program.formMain.dirResources + @"Sound\Interface\ConstructionSelect\" + filenameSoundSelect);
 
             Debug.Assert(DefaultLevel >= 0);
             Debug.Assert(DefaultLevel <= 5);
@@ -30,5 +35,9 @@ namespace Fantasy_Kingdoms_Battle
         internal int MaxLevel { get; }
         internal int Line { get; }
 
+        internal void PlaySoundSelect()
+        {
+            Program.formMain.PlaySoundSelect(uriSoundSelect);
+        }
     }
 }

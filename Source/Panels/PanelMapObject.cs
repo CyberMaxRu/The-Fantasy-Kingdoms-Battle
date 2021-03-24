@@ -29,7 +29,8 @@ namespace Fantasy_Kingdoms_Battle
             imgMapObject.Click += ImgLair_Click;
             imgMapObject.ShowHint += ImgLair_ShowHint;
         }
-       
+        protected abstract void PlaySelect();
+
         protected override void ValidateRectangle()
         {
             base.ValidateRectangle();
@@ -64,6 +65,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void ImgLair_Click(object sender, EventArgs e)
         {
+            PlaySelect();
             SelectThisBuilding();
         }
 

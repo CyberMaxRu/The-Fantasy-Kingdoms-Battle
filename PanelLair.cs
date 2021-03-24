@@ -130,5 +130,10 @@ namespace Fantasy_Kingdoms_Battle
 
             base.Draw(g);
         }
+
+        protected override void PlaySelect()
+        {
+            TypeLair.PlaySoundSelect();
+        }
     }
 }

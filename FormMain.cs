@@ -1822,9 +1822,9 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void PlaySoundSelect(string filename)
+        internal void PlaySoundSelect(Uri uri)
         {
-            mpSoundSelect.Open(new Uri(dirResources + @"Sound\Interface\ConstructionSelect\" + filename));
+            mpSoundSelect.Open(uri);
             mpSoundSelect.Play();
         }
 

@@ -115,14 +115,6 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal override void DoClick()
-        {
-            base.DoClick();
-
-            if ((TypeObject != null) && (TypeObject.SoundSelect.Length > 0))
-                Program.formMain.PlaySoundSelect(TypeObject.SoundSelect);
-        }
-
         internal override void Draw(Graphics g)
         {
             //Debug.Assert(Cost >= 0);
