@@ -27,6 +27,7 @@ namespace Updater
         private string URLDrive;
         private string UIDVersion;
         private string UIDArchive;
+        private string UIDArchive1;
         private State State = State.CheckUpdate;
         private bool autoUpdate = false;
 
@@ -71,6 +72,9 @@ namespace Updater
                 UIDArchive = xmlDoc.SelectSingleNode("Main/AutoUpdate/UIDArchive").InnerText;
                 if (UIDArchive.Length == 0)
                     throw new Exception("Не указан UID файла с обновлением.");
+                UIDArchive1 = xmlDoc.SelectSingleNode("Main/AutoUpdate/UIDArchive1").InnerText;
+                if (UIDArchive1.Length == 0)
+                    throw new Exception("Не указан UID второго файла с обновлением.");
             }
             catch (Exception exc)
             {
@@ -263,7 +267,8 @@ namespace Updater
             SetState("Скачиваем архив с обновлением...");
 
             string filenameZip = Environment.CurrentDirectory + @"\Update.zip";
-            if (DownloadFile(URLDrive, UIDArchive, filenameZip))
+            string filenameZip1 = Environment.CurrentDirectory + @"\Update1.zip";
+            if (DownloadFile(URLDrive, UIDArchive, filenameZip) && DownloadFile(URLDrive, UIDArchive1, filenameZip1))
             {
                 // Удаляем папку с обновлениями
                 if (System.IO.Directory.Exists(pathUpdate))
@@ -273,8 +278,9 @@ namespace Updater
                 }
 
                 // Распаковка архива
-                SetState("Распаковываем архив...");
+                SetState("Распаковываем архивы...");
                 ZipFile.ExtractToDirectory(filenameZip, pathUpdate);
+                ZipFile.ExtractToDirectory(filenameZip1, pathUpdate);
 
                 // Замена файлов
                 SetState("Заменяем файлы...");
@@ -308,6 +314,7 @@ namespace Updater
                 if (System.IO.Directory.Exists(pathUpdate))
                     System.IO.Directory.Delete(pathUpdate, true);
                 System.IO.File.Delete(filenameZip);
+                System.IO.File.Delete(filenameZip1);
 
                 // Обновление завершено
                 SetState("Обновление завершено...");
