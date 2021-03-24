@@ -28,6 +28,8 @@ namespace Fantasy_Kingdoms_Battle
             imgMapObject.HighlightUnderMouse = true;
             imgMapObject.Click += ImgLair_Click;
             imgMapObject.ShowHint += ImgLair_ShowHint;
+
+            Click += ImgLair_Click;
         }
         protected abstract void PlaySelect();
 
