@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Versions>
-  <ActualVersion>0.3.4</ActualVersion>
+  <ActualVersion>0.3.5</ActualVersion>
   <Version>
     <Number>0.2.0</Number>
     <DateBuild>07.12.2020</DateBuild>
@@ -233,6 +233,18 @@
       <Line>[F] В полноэкранном режиме вложенные окна неправильно центрировались.</Line>
       <Line>[F] Исправлена проблема с определением контрола под курсором при быстром движении мышью.</Line>
       <Line>[F] Исправлена высота панели героев, из-за которой не работал клик на ячейках меню.</Line>
+    </Description>
+  </Version>
+  <Version>
+    <Number>0.3.5</Number>
+    <DateBuild>24.03.2021</DateBuild>
+    <Description>
+      <Line>[*] "Королевский замок" переименован обратно в "Замок".</Line>
+      <Line>[+] Информация о DPI в отладочном режиме.</Line>
+      <Line>[+] Поддержка второго архива с обновлением, т.к. архив вышел за пределы 25 Мб.</Line>
+      <Line>[F] Сработка Assert при показе подсказки (большой после сокращенной).</Line>
+      <Line>[F] Имя игрока было пустым, если не было файла настроек.</Line>
+      <Line>[F] Исправлен режим подсказки для места-цели.</Line>
     </Description>
   </Version>
 </Versions>

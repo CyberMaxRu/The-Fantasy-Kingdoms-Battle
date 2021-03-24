@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Main>
-  <Version>0.3.4</Version>
+  <Version>0.3.5</Version>
   <AutoUpdate>
     <URLDrive>drive.google.com/uc?export=download</URLDrive>
     <UIDVersion>14wNW_sPWLUikIp_3TjzU_v8yoF_Cu-Bq</UIDVersion>
     <UIDArchive>1UTJeu5PvHdxBGeRL_wRBc-Y_Bfx4opja</UIDArchive>
+    <UIDArchive1>13ZahvvJgTl8yYNATmQFM2CMJQ-_o2-S9</UIDArchive1>
   </AutoUpdate>
 </Main>
