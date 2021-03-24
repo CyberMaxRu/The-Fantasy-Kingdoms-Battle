@@ -366,9 +366,9 @@ namespace Fantasy_Kingdoms_Battle
 
             Point l = new Point(c.Left, c.Top + c.Height + 2);
             // Если подсказка уходит за пределы экрана игры, меняем ее положение
-            if (l.X + Width > Program.formMain.Location.X + Program.formMain.ClientSize.Width)
-                l.X = Program.formMain.Location.X + Program.formMain.ClientSize.Width - Width;
-            if (l.Y + nextTop > Program.formMain.Location.Y + Program.formMain.ClientSize.Height)
+            if (l.X + Width > Program.formMain.ShiftControls.X + Program.formMain.sizeGamespace.Width - FormMain.Config.GridSize)
+                l.X = Program.formMain.ShiftControls.X + Program.formMain.sizeGamespace.Width - Width - FormMain.Config.GridSize;
+            if (l.Y + nextTop > Program.formMain.ShiftControls.Y + Program.formMain.sizeGamespace.Height - FormMain.Config.GridSize)
                 l.Y = l.Y - nextTop - c.Height - 4;
 
             SetPos(l.X + Program.formMain.ShiftControls.X, l.Y + Program.formMain.ShiftControls.Y);
