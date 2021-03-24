@@ -738,7 +738,7 @@
     <Levels>
       <Level>
         <Pos>1</Pos>
-        <Cost>0</Cost>
+        <Cost>1500</Cost>
         <Income>0</Income>
         <MaxHeroes>0</MaxHeroes>
       </Level>
@@ -759,7 +759,7 @@
     <Levels>
       <Level>
         <Pos>1</Pos>
-        <Cost>0</Cost>
+        <Cost>1500</Cost>
         <Income>0</Income>
         <MaxHeroes>0</MaxHeroes>
       </Level>
@@ -780,8 +780,8 @@
     <Levels>
       <Level>
         <Pos>1</Pos>
-        <Cost>0</Cost>
-        <Income>0</Income>
+        <Cost>2500</Cost>
+        <Income>50</Income>
         <MaxHeroes>0</MaxHeroes>
       </Level>
     </Levels>
@@ -801,8 +801,8 @@
     <Levels>
       <Level>
         <Pos>1</Pos>
-        <Cost>0</Cost>
-        <Income>0</Income>
+        <Cost>500</Cost>
+        <Income>50</Income>
         <MaxHeroes>0</MaxHeroes>
       </Level>
     </Levels>
