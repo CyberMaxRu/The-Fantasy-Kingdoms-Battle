@@ -1281,11 +1281,6 @@ namespace Fantasy_Kingdoms_Battle
             panelHeroes.Height = panelHeroes.MaxSize().Height;
         }
 
-        internal void ShowAboutHero(PlayerHero ph)
-        {
-            panelHeroInfo.Hero = ph;
-        }
-
         private void ShowBattle()
         {
             if (lobby.Turn > 1)

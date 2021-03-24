@@ -39,7 +39,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override void ShowInfo()
         {
             Program.formMain.panelMonsterInfo.Visible = true;
-            Program.formMain.panelMonsterInfo.Monster = this;
+            Program.formMain.panelMonsterInfo.PlayerObject = this;
         }
 
         protected override void DoClick()

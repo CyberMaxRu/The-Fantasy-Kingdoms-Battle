@@ -192,7 +192,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override void ShowInfo()
         {
             Program.formMain.panelLairInfo.Visible = true;
-            Program.formMain.panelLairInfo.Lair = this;
+            Program.formMain.panelLairInfo.PlayerObject = this;
         }
     }
 }

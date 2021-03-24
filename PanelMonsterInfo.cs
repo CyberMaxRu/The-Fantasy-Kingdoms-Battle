@@ -13,14 +13,6 @@ namespace Fantasy_Kingdoms_Battle
         {
         }
 
-        internal Monster Monster
-        {
-            get { return monster; }
-            set
-            {
-                monster = value;
-                Creature = monster;
-            }
-        }
+        internal Monster Monster { get => PlayerObject as Monster; }
     }
 }

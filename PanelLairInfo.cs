@@ -11,7 +11,6 @@ namespace Fantasy_Kingdoms_Battle
     // Класс подробной информации о логове
     internal sealed class PanelLairInfo : PanelBaseInfo
     {
-        private PlayerLair lair;
         private readonly PanelWithPanelEntity panelInhabitants;
 
         public PanelLairInfo(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
@@ -27,18 +26,7 @@ namespace Fantasy_Kingdoms_Battle
             Width = pageControl.Width + FormMain.Config.GridSize * 2;
         }
 
-        internal PlayerLair Lair
-        {
-            get { return lair ; }
-            set
-            {
-                lair = value;
-                if (lair.Hidden)
-                    panelInhabitants.SetUnknownList();
-                else
-                    panelInhabitants.ApplyList(lair.Monsters);
-            }
-        }
+        internal PlayerLair Lair { get => PlayerObject as PlayerLair; }
 
         internal override void ArrangeControls()
         {
@@ -52,8 +40,18 @@ namespace Fantasy_Kingdoms_Battle
             pageControl.ActivatePage(0);
         }
 
-        protected override int GetImageIndex() => lair.ImageIndexLair();
+        internal override void Draw(Graphics g)
+        {
+            if (Lair.Hidden)
+                panelInhabitants.SetUnknownList();
+            else
+                panelInhabitants.ApplyList(Lair.Monsters);
+
+            base.Draw(g);
+        }
+
+        protected override int GetImageIndex() => Lair.ImageIndexLair();
         protected override bool ImageIsEnabled() => true;
-        protected override string GetCaption() => lair.NameLair();
+        protected override string GetCaption() => Lair.NameLair();
     }
 }

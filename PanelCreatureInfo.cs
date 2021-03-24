@@ -11,7 +11,6 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal class PanelCreatureInfo : PanelBaseInfo
     {
-        private Creature creature;
         private readonly VCLabelM2 lblKindHero;
         private readonly Label lblLevel;
         private readonly Label lblHealth;
@@ -119,17 +118,10 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BmpState_ShowHint(object sender, EventArgs e)
         {
-            Program.formMain.formHint.AddStep1Header(creature.StateCreature.Name, "", creature.StateCreature.Description);
+            Program.formMain.formHint.AddStep1Header(Creature.StateCreature.Name, "", Creature.StateCreature.Description);
         }
 
-        internal Creature Creature
-        {
-            get { return creature; }
-            set
-            {
-                creature = value;
-            }
-        }
+        internal Creature Creature { get => PlayerObject as Creature; }
 
         internal override void ArrangeControls()
         {
@@ -142,18 +134,18 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
-            lblKindHero.Text = creature.TypeCreature.KindCreature.Name;
-            bmpState.Bitmap = Program.formMain.ilStateHero.GetImage(creature.StateCreature.ImageIndex, true, false);
-            labelNameState.Text = creature.StateCreature.Name;
+            lblKindHero.Text = Creature.TypeCreature.KindCreature.Name;
+            bmpState.Bitmap = Program.formMain.ilStateHero.GetImage(Creature.StateCreature.ImageIndex, true, false);
+            labelNameState.Text = Creature.StateCreature.Name;
 
             panelSpecialization.ShowCell(Creature.Specialization);// ImageIndex = creature.Specialization != null ? creature.Specialization.ImageIndex : -1;
 
             panelWeapon.ShowCell(Creature.RangeWeapon != null ? Creature.RangeWeapon : Creature.MeleeWeapon);
             panelArmour.ShowCell(Creature.Armour);
 
-            panelInventory.ApplyList(creature.Inventory);
-            panelAbilities.ApplyList(creature.Abilities);
-            panelSecondarySkills.ApplyList(creature.SecondarySkills);
+            panelInventory.ApplyList(Creature.Inventory);
+            panelAbilities.ApplyList(Creature.Abilities);
+            panelSecondarySkills.ApplyList(Creature.SecondarySkills);
 
             panelSecondarySkills.ShiftY = panelAbilities.NextTop();
             panelAbilitiesAndSecSkills.ArrangeControl(panelSecondarySkills);
@@ -198,8 +190,8 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        protected override int GetImageIndex() => creature.TypeCreature.ImageIndex;
+        protected override int GetImageIndex() => Creature.TypeCreature.ImageIndex;
         protected override bool ImageIsEnabled() => true;
-        protected override string GetCaption() => creature.TypeCreature.Name;
+        protected override string GetCaption() => Creature.TypeCreature.Name;
     }
 }

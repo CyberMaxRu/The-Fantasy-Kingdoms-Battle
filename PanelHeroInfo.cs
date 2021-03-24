@@ -11,7 +11,6 @@ namespace Fantasy_Kingdoms_Battle
     // Класс подробной информации о герое
     internal sealed class PanelHeroInfo : PanelCreatureInfo
     {
-        private PlayerHero hero;
         private readonly Label lblLevel;
         private readonly Label lblHealth;
         private readonly Label lblMana;
@@ -80,24 +79,15 @@ namespace Fantasy_Kingdoms_Battle
             }*/
         }
 
-        internal PlayerHero Hero
-        {
-            get { return hero; }
-            set
-            {
-                hero = value;
-                Creature = hero;
-                ShowData();
-            }
-        }
+        internal PlayerHero Hero { get => PlayerObject as PlayerHero; }
 
         private void BtnDismiss_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Уволить героя?", "FKB", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 Hero.Dismiss();
-                Hero = null;
-
+                PlayerObject = null;
+                Program.formMain.SelectPlayerObject(null);
                 Program.formMain.SetNeedRedrawFrame();
             }
         }
@@ -145,8 +135,8 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        protected override int GetImageIndex() => Program.formMain.TreatImageIndex(hero.TypeHero.ImageIndex, hero.Player);
+        protected override int GetImageIndex() => Program.formMain.TreatImageIndex(Hero.TypeHero.ImageIndex, Hero.Player);
         protected override bool ImageIsEnabled() => true;
-        protected override string GetCaption() => hero.GetNameHero();
+        protected override string GetCaption() => Hero.GetNameHero();
     }
 }

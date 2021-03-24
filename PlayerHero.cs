@@ -278,7 +278,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override void ShowInfo()
         {
             Program.formMain.panelHeroInfo.Visible = true;
-            Program.formMain.panelHeroInfo.Hero = this;
+            Program.formMain.panelHeroInfo.PlayerObject = this;
         }
     }
 }
