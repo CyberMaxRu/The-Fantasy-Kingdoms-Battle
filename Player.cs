@@ -658,7 +658,7 @@ namespace Fantasy_Kingdoms_Battle
             return ImageIndexAvatar;
         }
         bool ICell.NormalImage() => IsLive;
-        int ICell.Level() => Castle.Level;
+        int ICell.Level() => LevelGreatness;
         int ICell.Quantity() => 0;
         void ICell.PrepareHint()
         {
