@@ -27,7 +27,6 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly VCTextM2 lblAction;
         internal readonly VCTextM2 lblDescription;
         internal readonly VCSeparator lblSeparateRequirement;
-        internal readonly VCLabelM2 lblRequirement;
         internal readonly List<VCTextM2> listRequirements = new List<VCTextM2>();
         internal readonly VCLabelValue lblIncome;
         internal readonly VCLabelValue lblGold;
@@ -71,10 +70,7 @@ namespace Fantasy_Kingdoms_Battle
 
             lblSeparateRequirement = new VCSeparator(this, FormMain.Config.GridSize, lblIncome.NextTop());
             lblSeparateRequirement.Width = widthControl;
-            lblRequirement = new VCLabelValue(this, FormMain.Config.GridSize, lblSeparateRequirement.NextTop(), FormMain.Config.HintIncome);
-            lblRequirement.StringFormat.Alignment = StringAlignment.Center;
-            lblRequirement.Width = widthControl;
-            lblGold = new VCLabelValue(this, FormMain.Config.GridSize, lblRequirement.NextTop(), FormMain.Config.HintIncome);
+            lblGold = new VCLabelValue(this, FormMain.Config.GridSize, lblSeparateRequirement.NextTop(), FormMain.Config.HintIncome);
             lblGold.ImageIndex = FormMain.GUI_16_GOLD;
             lblGold.Width = widthControl;
 
@@ -180,7 +176,6 @@ namespace Fantasy_Kingdoms_Battle
             foreach (VCTextM2 l in listRequirements)
                 l.Dispose();
             lblSeparateRequirement.Visible = false;
-            lblRequirement.Visible = false;
             listRequirements.Clear();
 
             lblGold.Visible = false;
@@ -266,12 +261,8 @@ namespace Fantasy_Kingdoms_Battle
                 lblSeparateRequirement.Visible = true;
                 lblSeparateRequirement.ShiftY = nextTop;
                 nextTop = lblSeparateRequirement.NextTop();
-                lblRequirement.Visible = true;
-                lblRequirement.ShiftY = nextTop;
-                nextTop = lblRequirement.NextTop();
 
                 VCTextM2 lr;
-                bool requirementPerformed = true;
                 foreach (TextRequirement tr in requirement)
                 {
                     lr = new VCTextM2(this, FormMain.Config.GridSize, nextTop, Program.formMain.fontSmallC, ColorRequirements(tr.Performed), widthControl);
@@ -282,12 +273,7 @@ namespace Fantasy_Kingdoms_Battle
 
                     listRequirements.Add(lr);
                     nextTop = lr.NextTop();
-
-                    if (requirementPerformed && !tr.Performed)
-                        requirementPerformed = false;
                 }
-                lblRequirement.Text = requirementPerformed ? "Требования выполнены" : "Требования не выполнены  ";
-                lblRequirement.Color = ColorRequirements(requirementPerformed);
             }
         }
 
