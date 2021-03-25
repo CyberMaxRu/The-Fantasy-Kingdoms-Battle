@@ -26,26 +26,40 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override bool PrepareHint()
         {
-            Program.formMain.formHint.AddHeader(Lair.TypeLair.Name);
+            Program.formMain.formHint.AddHeader(Lair != null ? Lair.TypeLair.Name : "Флаг не назначен");
 
             return true;
         }
 
         internal override void Draw(Graphics g)
         {
-            if (Lair.Hidden)
+            if (Lair == null)
             {
-                BitmapList = Program.formMain.ilGui;
-                ImageIndex = FormMain.GUI_FLAG_SCOUT;
+                BitmapList = Program.formMain.imListObjectsCell;
+                ImageIndex = FormMain.IMAGE_INDEX_NONE;
+                ImageIsEnabled = false;
+                Level = 0;
+                Cost = 0;
+                ShowCostZero = false;
             }
             else
             {
-                BitmapList = Program.formMain.imListObjectsCell;
-                ImageIndex = Lair.ImageIndexLair();
+                ImageIsEnabled = true;
+
+                if (Lair.Hidden)
+                {
+                    BitmapList = Program.formMain.ilGui;
+                    ImageIndex = FormMain.GUI_FLAG_SCOUT;
+                }
+                else
+                {
+                    BitmapList = Program.formMain.imListObjectsCell;
+                    ImageIndex = Lair.ImageIndexLair();
+                }
+                Level = (int)Lair.PriorityFlag + 1;
+                Cost = Lair.listAttackedHero.Count();
+                ShowCostZero = true;
             }
-            Level = (int)Lair.PriorityFlag + 1;
-            Cost = Lair.listAttackedHero.Count();
-            ShowCostZero = true;
 
             base.Draw(g);
         }
