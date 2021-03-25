@@ -501,7 +501,6 @@ namespace Fantasy_Kingdoms_Battle
                 btnEndTurn = CreateButton(MainControl, ilGui, GUI_HOURGLASS, 0, bmpToolbar.Height + Config.GridSize, BtnEndTurn_Click, BtnEndTurn_MouseHover);
                 panelLairWithFlags = new VisualControl(MainControl, 0, btnEndTurn.ShiftY);
                 panelLairWithFlags.Height = btnEndTurn.Height;
-                panelLairWithFlags.Visible = false;
 
                 // Отладочная информация
                 vcDebugInfo = new VisualControl();
@@ -634,6 +633,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 //pageGuilds.ShiftX + maxWidthPages + Config.GridSize;
 
+                AdjustPanelLairsWithFlags();
                 ArrangeControls();
 
                 SetStage("Прибираем после строителей");
@@ -1029,7 +1029,6 @@ namespace Fantasy_Kingdoms_Battle
             TopControl.SetPos((ClientSize.Width - TopControl.Width) / 2, ShiftControls.Y);
             MainControl.SetPos(ShiftControls.X, TopControl.Top + TopControl.Height + Config.GridSize);
             MainControl.ArrangeControls();
-
             AdjustPanelLairsWithFlags();
         }
 
@@ -1725,7 +1724,7 @@ namespace Fantasy_Kingdoms_Battle
                         controlWithHint = controlClicked;
                         ControlForHintLeave();// Контрол уже другой, отменяем подсказку
                     }
-                    controlClicked = null;
+                    controlClicked = null;  
 
                     if (formHint.Visible)
                     {
@@ -1790,12 +1789,14 @@ namespace Fantasy_Kingdoms_Battle
         private void AdjustPanelLairsWithFlags()
         {
             Debug.Assert(curAppliedPlayer == lobby.CurrentPlayer);
-
+            Debug.Assert(lobby.CurrentPlayer.ListFlags.Count > 0);
             // Приводим в соответствие количество кнопок и логов
             // Для этого скрываем все кнопки, а потом делаем их видимыми.
             // Это чтобы не создавать каждый раз заново кнопки при изменении их численности
-            if (listBtnTargetLair.Count < lobby.CurrentPlayer.LairsWithFlag.Count)
+            while (listBtnTargetLair.Count < lobby.CurrentPlayer.ListFlags.Count)
+            {
                 listBtnTargetLair.Add(new VCButtonTargetLair(panelLairWithFlags));
+            }
 
             foreach (VCButtonTargetLair b in listBtnTargetLair)
                 b.Visible = false;                     
@@ -1803,7 +1804,7 @@ namespace Fantasy_Kingdoms_Battle
             // Сортируем логова и переназначаем ссылки на них у кнопок
             int n = 0;
             int left = 0;
-            foreach (PlayerLair pl in lobby.CurrentPlayer.LairsWithFlag.OrderByDescending(l => l.PriorityFlag).OrderByDescending(l => l.listAttackedHero.Count))
+            foreach (PlayerLair pl in lobby.CurrentPlayer.ListFlags)
             {
                 listBtnTargetLair[n].ShiftX = left;
                 listBtnTargetLair[n].Lair = pl;
@@ -1813,13 +1814,9 @@ namespace Fantasy_Kingdoms_Battle
                 n++;
             }
 
-            panelLairWithFlags.Visible = lobby.CurrentPlayer.LairsWithFlag.Count > 0;
-            if (panelLairWithFlags.Visible)
-            {
-                panelLairWithFlags.ShiftX = btnEndTurn.ShiftX - left - Config.GridSize;
-                panelLairWithFlags.Width = left;
-                MainControl.ArrangeControl(panelLairWithFlags);
-            }
+            panelLairWithFlags.ShiftX = btnEndTurn.ShiftX - left - Config.GridSize;
+            panelLairWithFlags.Width = left;
+            MainControl.ArrangeControl(panelLairWithFlags);
 
             SetNeedRedrawFrame();
         }
