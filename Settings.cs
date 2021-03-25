@@ -69,12 +69,16 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Avatar = null;
                 Program.formMain.imListObjectsBig.ReplaceImage(Program.formMain.blPlayerAvatars.GetImage(0, true, false), Program.formMain.ImageIndexFirstAvatar);
+                Program.formMain.imListObjectsCell?.ReplaceImageWithResize(Program.formMain.imListObjectsBig, Program.formMain.ImageIndexFirstAvatar, 1, Program.formMain.bmpMaskSmall);
             }
             else
             {
                 Avatar = GuiUtils.PrepareAvatar(FileNameAvatar);
                 if (Avatar != null)
+                {
                     Program.formMain.imListObjectsBig.ReplaceImage(Avatar, Program.formMain.ImageIndexFirstAvatar);
+                    Program.formMain.imListObjectsCell?.ReplaceImageWithResize(Program.formMain.imListObjectsBig, Program.formMain.ImageIndexFirstAvatar, 1, Program.formMain.bmpMaskSmall);
+                }
                 else
                     FileNameAvatar = "";
             }
