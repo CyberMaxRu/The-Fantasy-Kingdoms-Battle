@@ -975,6 +975,12 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Layers.Count <= 5);
             Debug.Assert(currentLayer.Controls.Count > 0);
 
+            // Так как переходим к новом слою, выходим мышью из контрола текущего слоя
+            // При клике есть только controlClicked, его и смотрим
+            // В некоторых случаях его может не быть - например, при выходе по Alt+F4 или крестик на окне
+            controlClicked?.MouseLeave();
+            controlClicked = null;
+
             VisualLayer vl = new VisualLayer();
             Layers.Add(vl);
             vl.AddControl(vc);
@@ -1754,8 +1760,10 @@ namespace Fantasy_Kingdoms_Battle
                         ControlForHintLeave();// Контрол уже другой, отменяем подсказку
 
                         // Если сейчас есть новый контрол, входим в него мышью и стартуем таймер подсказки
+                        // Когда закрывается слой (FormConfirmExit), в новый контрол происходит вход два раза
+                        // Поэтому проверяем - если уже вошли, то повторяться не надо
                         controlWithHint = curControl;
-                        if (controlWithHint != null)
+                        if ((controlWithHint != null) && !controlWithHint.MouseEntered)
                         {
                             controlWithHint.MouseEnter(false);
                             timerHover.Start();
