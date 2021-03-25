@@ -1627,13 +1627,18 @@ namespace Fantasy_Kingdoms_Battle
             return curControl;
         }
 
+        private void UpdateMousePos()
+        {
+            mousePos = PointToClient(Cursor.Position);
+        }
+
         private void TreatMouseMove(bool leftDown)
         {
-            Point newMousePos = PointToClient(Cursor.Position);
+            Point oldMousePos = mousePos;
+            UpdateMousePos();
 
-            if (!mousePos.Equals(newMousePos))
+            if (!mousePos.Equals(oldMousePos))
             {
-                mousePos = newMousePos;
                 VisualControl curControl = ControlUnderMouse();
 
                 if (curControl == null)
@@ -1738,6 +1743,8 @@ namespace Fantasy_Kingdoms_Battle
                         UpdateMenu();
 
                     // Смотрим какой контрол под мышкой сейчас. Если тот же самый, восстанавливаем его
+                    // Перед этим актуализируем позицию курсора. Она могла поменяться, если игрок вызывал другое окно
+                    UpdateMousePos();
                     VisualControl curControl = ControlUnderMouse();
                     if ((curControl != null) && (curControl == controlClicked))
                         controlWithHint = controlClicked;
@@ -1745,9 +1752,9 @@ namespace Fantasy_Kingdoms_Battle
                     {
                         controlWithHint = controlClicked;
                         ControlForHintLeave();// Контрол уже другой, отменяем подсказку
-                        controlWithHint = curControl;
 
                         // Если сейчас есть новый контрол, входим в него мышью и стартуем таймер подсказки
+                        controlWithHint = curControl;
                         if (controlWithHint != null)
                         {
                             controlWithHint.MouseEnter(false);
