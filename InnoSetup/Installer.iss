@@ -27,7 +27,8 @@ OutputBaseFilename=FKB_Setup
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
-
+UninstallDisplayIcon={app}\Uninstall.ico
+UninstallIconFile={app}\Uninstall.ico
 [Languages]
 Name: "russian"; MessagesFile: "compiler:Languages\Russian.isl"
 
