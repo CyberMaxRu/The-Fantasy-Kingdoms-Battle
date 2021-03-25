@@ -18,6 +18,8 @@ namespace Fantasy_Kingdoms_Battle
             DurabilityCastle = XmlUtils.GetInteger(n.SelectSingleNode("DurabilityCastle"));
             Gold = XmlUtils.GetInteger(n.SelectSingleNode("Gold"));
             MaxHeroes = XmlUtils.GetInteger(n.SelectSingleNode("MaxHeroes"));
+            StartQuantityFlags = XmlUtils.GetInteger(n.SelectSingleNode("StartQuantityFlags"));
+            MaxQuantityFlags = XmlUtils.GetInteger(n.SelectSingleNode("MaxQuantityFlags"));
             StartPointConstructionGuild = XmlUtils.GetInteger(n.SelectSingleNode("StartPointConstructionGuild"));
             StartPointConstructionEconomic = XmlUtils.GetInteger(n.SelectSingleNode("StartPointConstructionEconomic"));
             PointConstructionGuildPerDay = XmlUtils.GetInteger(n.SelectSingleNode("PointConstructionGuildPerDay"));
@@ -34,6 +36,11 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Gold <= 100000);
             Debug.Assert(MaxHeroes >= 1);
             Debug.Assert(MaxHeroes <= 100);// Здесь проверять через максим. число героев на поле боя
+            Debug.Assert(StartQuantityFlags >= 1);
+            Debug.Assert(StartQuantityFlags <= 10);
+            Debug.Assert(MaxQuantityFlags >= 1);
+            Debug.Assert(MaxQuantityFlags <= 10);
+            Debug.Assert(StartQuantityFlags <= MaxQuantityFlags);
             Debug.Assert(StartPointConstructionGuild >= 1);
             Debug.Assert(StartPointConstructionGuild <= 10);
             Debug.Assert(StartPointConstructionEconomic >= 1);
@@ -120,6 +127,8 @@ namespace Fantasy_Kingdoms_Battle
         internal int DurabilityCastle { get; }
         internal int Gold { get; }
         internal int MaxHeroes { get; }
+        internal int StartQuantityFlags { get; }
+        internal int MaxQuantityFlags { get; }
         internal int DayStartTournament { get; }
         internal int StartPointConstructionGuild { get; }
         internal int StartPointConstructionEconomic { get; }
