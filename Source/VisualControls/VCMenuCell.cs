@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Diagnostics;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -18,6 +19,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.DoClick();
 
+            Debug.Assert(research != null);
             if (research.CheckRequirements())
             {
                 Program.formMain.PlayPushButton();
