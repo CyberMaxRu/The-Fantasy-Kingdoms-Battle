@@ -63,9 +63,10 @@ namespace Fantasy_Kingdoms_Battle
                     Program.formMain.formHint.AddStep1Header("Разведка", "", "Установить флаг разведки для отправки героев к месту");
                 else if (Lair.PriorityFlag < PriorityExecution.Exclusive)
                     Program.formMain.formHint.AddStep1Header("Разведка", Lair.PriorityFlatToText() + " приоритет", "Повысить приоритет разведки места");
-                else 
+                else
                     Program.formMain.formHint.AddStep1Header("Разведка", Lair.PriorityFlatToText() + " приоритет", "Установлен максимальный приоритет флага");
 
+                Program.formMain.formHint.AddStep3Requirement(Lair.GetRequirements());
                 Program.formMain.formHint.AddStep4Gold(Lair.RequiredGold(), Lair.Player.Gold >= Lair.RequiredGold());
             }
             else
