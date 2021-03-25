@@ -30,5 +30,9 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(tec.ImageIndex != ImageIndex);
             }
         }
+
+        internal override string GetTextConstructionNotBuilded() => "Здание не построено";
+        internal override string GetTextConstructionIsFull() => throw new Exception("В экономическом здании не может быть героев для найма.");
+
     }
 }

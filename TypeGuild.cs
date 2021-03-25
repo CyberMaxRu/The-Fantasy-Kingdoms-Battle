@@ -15,5 +15,8 @@ namespace Fantasy_Kingdoms_Battle
         {
 
         }
+
+        internal override string GetTextConstructionNotBuilded() => "Гильдия не построена";
+        internal override string GetTextConstructionIsFull() => "Гильдия заполнена";
     }
 }

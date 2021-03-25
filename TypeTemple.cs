@@ -15,5 +15,8 @@ namespace Fantasy_Kingdoms_Battle
         {
 
         }
+
+        internal override string GetTextConstructionNotBuilded() => "Храм не построен";
+        internal override string GetTextConstructionIsFull() => "Храм заполнен";
     }
 }

@@ -101,7 +101,9 @@ namespace Fantasy_Kingdoms_Battle
                         for (int x = 0; x < Researches.GetLength(2); x++)
                             Researches[z, y, x]?.FindItem();
             }
-
         }
+
+        internal abstract string GetTextConstructionNotBuilded();
+        internal abstract string GetTextConstructionIsFull();
     }
 }
