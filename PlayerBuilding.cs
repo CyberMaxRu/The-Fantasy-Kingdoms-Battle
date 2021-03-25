@@ -99,6 +99,11 @@ namespace Fantasy_Kingdoms_Battle
             if ((Building is TypeEconomicConstruction) && (Player.PointConstructionEconomic == 0))
                 return false;
 
+            // Если это храм, то нужно свободное Святое место
+            if (Building is TypeTemple)
+                if (Player.PointConstructionTemple == 0)
+                    return false;
+
             // Проверяем требования к зданиям
             return Player.CheckRequirements(Building.Levels[Level + 1].Requirements);
         }
@@ -109,6 +114,9 @@ namespace Fantasy_Kingdoms_Battle
                 return null;
 
             List<TextRequirement> list = new List<TextRequirement>();
+            if (Building is TypeTemple)
+                if (Player.PointConstructionTemple == 0)
+                    list.Add(new TextRequirement(false, "Нет свободных Святых мест"));
             Player.TextRequirements(Building.Levels[Level + 1].Requirements, list);
 
             return list;
