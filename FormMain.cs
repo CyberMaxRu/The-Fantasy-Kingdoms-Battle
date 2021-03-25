@@ -664,8 +664,6 @@ namespace Fantasy_Kingdoms_Battle
                 formHint = new PanelHint();
                 //formHint = new FormHint(ilGui16, ilParameters);
 
-                ValidateAvatars();
-
                 splashForm.Dispose();
 
                 //
