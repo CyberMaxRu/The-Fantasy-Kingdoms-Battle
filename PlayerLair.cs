@@ -107,7 +107,53 @@ namespace Fantasy_Kingdoms_Battle
 
         internal bool CheckRequirements()
         {
-            return Player.Gold >= RequiredGold();
+            if (Player.Gold < RequiredGold())
+                return false;
+
+            switch (PriorityFlag)
+            {
+                case PriorityExecution.None:
+                    return Player.QuantityFlags[PriorityExecution.None] > 0;
+                case PriorityExecution.Normal:
+                    return true;
+                case PriorityExecution.Warning:
+                    return Player.QuantityFlags[PriorityExecution.High] <= 1;
+                case PriorityExecution.High:
+                    return Player.QuantityFlags[PriorityExecution.Exclusive] == 0;
+                case PriorityExecution.Exclusive:
+                    return false;
+                default:
+                    throw new Exception("Неизвестный приоритет.");
+            }
+        }
+
+        internal List<TextRequirement> GetRequirements()
+        {
+            List<TextRequirement> list = new List<TextRequirement>();
+
+            switch (PriorityFlag)
+            {
+                case PriorityExecution.None:
+                    if (!Player.ExistsFreeFlag())
+                        list.Add(new TextRequirement(false, "Нет свободных флагов"));
+                    break;
+                case PriorityExecution.Normal:
+                    break;
+                case PriorityExecution.Warning:
+                    if (Player.QuantityFlags[PriorityExecution.High] >= 2)
+                        list.Add(new TextRequirement(false, "Флагов с высоким приоритетом может быть не более двух"));
+                    break;
+                case PriorityExecution.High:
+                    if (Player.QuantityFlags[PriorityExecution.Exclusive] >= 1)
+                        list.Add(new TextRequirement(false, "Флагов с максимальным приоритетом может быть не более одного"));
+                    break;
+                case PriorityExecution.Exclusive:
+                    break;
+                default:
+                    throw new Exception("Неизвестный приоритет.");
+            }
+
+            return list;
         }
 
         internal void IncPriority()
@@ -126,17 +172,16 @@ namespace Fantasy_Kingdoms_Battle
                     DaySetFlag = Player.Lobby.Turn;
                 PriorityFlag++;
 
-
                 //Debug.Assert()
             }
             else
             {
             }
 
-            if (Player.LairsWithFlag.IndexOf(this) == -1)
-                Player.LairsWithFlag.Add(this);
-
-            Program.formMain.LairsWithFlagChanged();
+            if (PriorityFlag == PriorityExecution.Normal)
+                Player.AddFlag(this);
+            else
+                Player.UpPriorityFlag(this);
         }
 
         internal int Cashback()
@@ -156,13 +201,10 @@ namespace Fantasy_Kingdoms_Battle
 
 
             Player.ReturnGold(Cashback());
+            Player.RemoveFlag(this);
             SpendedGoldForSetFlag = 0;
             DaySetFlag = 0;
             PriorityFlag = PriorityExecution.None;
-
-            Debug.Assert(Player.LairsWithFlag.IndexOf(this) != -1);
-            Player.LairsWithFlag.Remove(this);
-            Program.formMain.LairsWithFlagChanged();
         }
 
         internal string PriorityFlatToText()
@@ -178,7 +220,7 @@ namespace Fantasy_Kingdoms_Battle
                 case PriorityExecution.High:
                     return "Высокий";
                 case PriorityExecution.Exclusive:
-                    return "Экслюзивный";
+                    return "Максимальный";
                 default:
                     throw new Exception("Неизвестный приоритет: " + PriorityFlag.ToString());
             }
