@@ -70,39 +70,9 @@ namespace Fantasy_Kingdoms_Battle
             WithOver = fromList.WithOver;
             CreateArrays(fromList.Count);
 
-            Rectangle rectSource = new Rectangle(0 + borderWidth, 0 + borderWidth, fromList.Size - (borderWidth * 2), fromList.Size - (borderWidth * 2));
-            Rectangle rectTarget = new Rectangle(0, 0, newSize, newSize);
-
             for (int i = 0; i < fromList.Count; i++)
             {
-                Bitmap bmpDest = new Bitmap(newSize, newSize);
-                Graphics gDest = Graphics.FromImage(bmpDest);
-
-                gDest.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                gDest.SmoothingMode = SmoothingMode.HighQuality;
-                gDest.DrawImage(fromList.GetImage(i, true, false), rectTarget, rectSource, GraphicsUnit.Pixel);                
-
-                if (mask != null)
-                {
-                    for (int y = 0; y < bmpDest.Height; y++)
-                        for (int x = 0; x < bmpDest.Width; x++)
-                        {
-                            bmpDest.SetPixel(x, y, Color.FromArgb(mask.GetPixel(x, y).A, bmpDest.GetPixel(x, y)));
-                        }
-                }
-
-                bitmapsNormal[i] = bmpDest;
-                if (WithOver)
-                    bitmapsNormalOver[i] = ConversionBitmap(bmpDest, ImageModeConversion.Bright);
-
-                if (WithDisabled)
-                {
-                    bitmapsDisabled[i] = ConversionBitmap(bmpDest, ImageModeConversion.Grey);
-                    if (WithOver)
-                        bitmapsDisabledOver[i] = ConversionBitmap(bitmapsDisabled[i], ImageModeConversion.Bright);
-                }
-
-                gDest.Dispose();
+                ReplaceImageWithResize(fromList, i, borderWidth, mask);
             }
         }
 
@@ -110,6 +80,52 @@ namespace Fantasy_Kingdoms_Battle
         internal bool WithDisabled { get; set; }
         internal bool WithOver { get; set; }
         internal int Count { get => bitmapsNormal.Length; }
+
+        internal void ReplaceImageWithResize(BitmapList fromList, int idx, int borderWidth, Bitmap mask)
+        {
+            if (mask != null)
+            {
+                Debug.Assert(mask.Width == Size);
+                Debug.Assert(mask.Height == Size);
+            }
+
+            bitmapsNormal?[idx]?.Dispose();
+            bitmapsNormalOver?[idx]?.Dispose();
+            bitmapsDisabled?[idx]?.Dispose();
+            bitmapsDisabledOver?[idx]?.Dispose();
+
+            Rectangle rectSource = new Rectangle(0 + borderWidth, 0 + borderWidth, fromList.Size - (borderWidth * 2), fromList.Size - (borderWidth * 2));
+            Rectangle rectTarget = new Rectangle(0, 0, Size, Size);
+
+            Bitmap bmpDest = new Bitmap(Size, Size);
+            Graphics gDest = Graphics.FromImage(bmpDest);
+
+            gDest.InterpolationMode = InterpolationMode.HighQualityBicubic;
+            gDest.SmoothingMode = SmoothingMode.HighQuality;
+            gDest.DrawImage(fromList.GetImage(idx, true, false), rectTarget, rectSource, GraphicsUnit.Pixel);
+
+            if (mask != null)
+            {
+                for (int y = 0; y < bmpDest.Height; y++)
+                    for (int x = 0; x < bmpDest.Width; x++)
+                    {
+                        bmpDest.SetPixel(x, y, Color.FromArgb(mask.GetPixel(x, y).A, bmpDest.GetPixel(x, y)));
+                    }
+            }
+
+            bitmapsNormal[idx] = bmpDest;
+            if (WithOver)
+                bitmapsNormalOver[idx] = ConversionBitmap(bmpDest, ImageModeConversion.Bright);
+
+            if (WithDisabled)
+            {
+                bitmapsDisabled[idx] = ConversionBitmap(bmpDest, ImageModeConversion.Grey);
+                if (WithOver)
+                    bitmapsDisabledOver[idx] = ConversionBitmap(bitmapsDisabled[idx], ImageModeConversion.Bright);
+            }
+
+            gDest.Dispose();
+        }
 
         internal void Add(Bitmap bmp)
         {
