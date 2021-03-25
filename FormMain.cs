@@ -540,6 +540,7 @@ namespace Fantasy_Kingdoms_Battle
                 pageBuildings = new VCFormPage(MainControl, 0, pageGuilds.ShiftY, pages, ilGui, GUI_ECONOMY, "Экономические строения", BtnPage_Click);
                 pageBuildings.ShowHint += PageBuildings_ShowHint;
                 pageTemples = new VCFormPage(MainControl, 0, pageGuilds.ShiftY, pages, ilGui, GUI_TEMPLE, "Храмы", BtnPage_Click);
+                pageTemples.ShowHint += PageTemples_ShowHint;
                 pageHeroes = new VCFormPage(MainControl, 0, pageGuilds.ShiftY, pages, ilGui, GUI_HEROES, "Герои", BtnPage_Click);
                 pageHeroes.ShowCostZero = true;
                 pageHeroes.ShowHint += PageHeroes_ShowHint;
@@ -697,6 +698,11 @@ namespace Fantasy_Kingdoms_Battle
                 MessageBox.Show(exc.Message + Environment.NewLine + exc.StackTrace);
                 Environment.Exit(-1);
             }
+        }
+
+        private void PageTemples_ShowHint(object sender, EventArgs e)
+        {
+            ShowHintForToolButton(pageTemples, pageTemples.Caption, "Доступно построек храмов: " + lobby.CurrentPlayer.PointConstructionTemple.ToString());
         }
 
         private void LabelGreatness_ShowHint(object sender, EventArgs e)
@@ -1517,6 +1523,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 pageGuilds.PopupQuantity = lobby.CurrentPlayer.PointConstructionGuild;
                 pageBuildings.PopupQuantity = lobby.CurrentPlayer.PointConstructionEconomic;
+                pageTemples.PopupQuantity = lobby.CurrentPlayer.PointConstructionTemple;
                 pageHeroes.Cost = lobby.CurrentPlayer.CombatHeroes.Count;
 
                 //

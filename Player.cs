@@ -40,6 +40,7 @@ namespace Fantasy_Kingdoms_Battle
             DurabilityCastle = Lobby.TypeLobby.DurabilityCastle;
             PointConstructionGuild = lobby.TypeLobby.StartPointConstructionGuild;
             PointConstructionEconomic = lobby.TypeLobby.StartPointConstructionEconomic;
+            PointConstructionTemple = 0;
             SetQuantityFlags(lobby.TypeLobby.StartQuantityFlags);
 
             // Инициализация зданий
@@ -175,6 +176,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int PointConstructionGuild { get; private set; }
         internal int PointConstructionEconomic { get; private set; }
+        internal int PointConstructionTemple { get; private set; }
 
         internal int QuantityHeroes { get; private set; }
 
