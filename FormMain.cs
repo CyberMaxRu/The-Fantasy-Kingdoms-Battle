@@ -1715,6 +1715,11 @@ namespace Fantasy_Kingdoms_Battle
                     controlWithHint = null;
                     controlClicked.DoClick();
 
+                    // Если был клик на ячейке меню, обновляем меню, так как меняется список исследований и как следствие подсказки
+                    // Так как ячейка может быть невидимой, обновляем меню перед проверкой, какой контрол сейчас под мышкой
+                    if (controlClicked is VCMenuCell)
+                        UpdateMenu();
+
                     // Смотрим какой контрол под мышкой сейчас. Если тот же самый, восстанавливаем его
                     VisualControl curControl = ControlUnderMouse();
                     if ((curControl != null) && (curControl == controlClicked))
@@ -1723,12 +1728,16 @@ namespace Fantasy_Kingdoms_Battle
                     {
                         controlWithHint = controlClicked;
                         ControlForHintLeave();// Контрол уже другой, отменяем подсказку
+                        controlWithHint = curControl;
+
+                        // Если сейчас есть новый контрол, входим в него мышью и стартуем таймер подсказки
+                        if (controlWithHint != null)
+                        {
+                            controlWithHint.MouseEnter(false);
+                            timerHover.Start();
+                        }
                     }
                     controlClicked = null;
-
-                    // Если был клик на ячейке меню, обновляем его, так как меняется список исследований и как следствие подсказки
-                    if (controlWithHint is VCMenuCell)
-                        UpdateMenu();
 
                     if (formHint.Visible)
                     {
