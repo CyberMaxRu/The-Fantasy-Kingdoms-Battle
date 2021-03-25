@@ -15,7 +15,7 @@ namespace Fantasy_Kingdoms_Battle
         private ResultBattle resultLastBattle;
         private PlayerBuilding Castle;
 
-        internal const int MAX_FLAG_EXCLUSIVE = 1;// Максимальное число эксклюзивных флагов
+        internal const int MAX_FLAG_EXCLUSIVE = 1;// Максимальное число флагов с максимальным
         internal const int MAX_FLAG_HIGH = 2;// Максимальное число флагов с высоким приоритетом
         internal const int MAX_FLAG_COUNT = 5;// Максимальное число активных флагов
 
@@ -30,10 +30,17 @@ namespace Fantasy_Kingdoms_Battle
             ImageIndexAvatar = (typePlayer == TypePlayer.Computer ? PlayerIndex : Program.formMain.Settings.IndexInternalAvatar) + Program.formMain.ImageIndexFirstAvatar;
             ResultLastBattle = ResultBattle.None;
 
+            // Создаем справочик количества приоритетов флагов
+            foreach (PriorityExecution pe in Enum.GetValues(typeof(PriorityExecution)))
+            {
+                QuantityFlags.Add(pe, 0);
+            }
+
             // Настраиваем игрока согласно настройкам лобби
             DurabilityCastle = Lobby.TypeLobby.DurabilityCastle;
             PointConstructionGuild = lobby.TypeLobby.StartPointConstructionGuild;
             PointConstructionEconomic = lobby.TypeLobby.StartPointConstructionEconomic;
+            SetQuantityFlags(lobby.TypeLobby.StartQuantityFlags);
 
             // Инициализация зданий
             foreach (TypeConstruction tck in FormMain.Config.TypeConstructionsOfKingdom)
@@ -117,9 +124,9 @@ namespace Fantasy_Kingdoms_Battle
             foreach (PlayerLair pl in Lairs)
             {
                 if (pl.PriorityFlag != PriorityExecution.None)
-                    Debug.Assert(LairsWithFlag.IndexOf(pl) != -1);
+                    Debug.Assert(ListFlags.IndexOf(pl) != -1);
                 else
-                    Debug.Assert(LairsWithFlag.IndexOf(pl) == -1);
+                    Debug.Assert(ListFlags.IndexOf(pl) == -1);
             }
         }
 
@@ -175,7 +182,8 @@ namespace Fantasy_Kingdoms_Battle
 
         // Логова
         internal List<PlayerLair> Lairs { get; } = new List<PlayerLair>();
-        internal List<PlayerLair> LairsWithFlag { get; } = new List<PlayerLair>();
+        internal List<PlayerLair> ListFlags { get; } = new List<PlayerLair>();
+        internal Dictionary<PriorityExecution, int> QuantityFlags = new Dictionary<PriorityExecution, int>();
 
         // Статистика по боям
         internal int Wins { get; set; }
@@ -540,6 +548,98 @@ namespace Fantasy_Kingdoms_Battle
         internal override void ShowInfo()
         {
             throw new NotImplementedException();
+        }
+
+        private void SetQuantityFlags(int quantity)
+        {
+            Debug.Assert(quantity >= ListFlags.Count);
+            Debug.Assert(quantity <= Lobby.TypeLobby.MaxQuantityFlags);
+
+            while (ListFlags.Count < quantity)
+            {
+                ListFlags.Add(null);
+            }
+
+            // Указываем количество свободных флагов
+            foreach (PlayerLair pl in ListFlags)
+            {
+                if (pl == null)
+                    QuantityFlags[PriorityExecution.None]++;
+                else
+                    QuantityFlags[pl.PriorityFlag]++;
+            }
+        }
+
+        internal void AddFlag(PlayerLair lair)
+        {
+            // Ищем свободный слот
+            for (int i = 0; i < ListFlags.Count; i++)
+            {
+                if (ListFlags[i] == null)
+                {
+                    ListFlags[i] = lair;
+                    QuantityFlags[PriorityExecution.None]--;
+                    QuantityFlags[lair.PriorityFlag]++;
+                    CheckFlags();
+                    Program.formMain.LairsWithFlagChanged();
+
+                    return;
+                }
+            }
+
+            Debug.Fail("Не найден слот для флага.");
+        }
+
+        internal void UpPriorityFlag(PlayerLair lair)
+        {
+            int idx = ListFlags.IndexOf(lair);
+            Debug.Assert(idx != -1);
+            QuantityFlags[lair.PriorityFlag - 1]--;
+            QuantityFlags[lair.PriorityFlag]++;
+
+            CheckFlags();
+            Program.formMain.LairsWithFlagChanged();
+        }
+
+
+        internal void RemoveFlag(PlayerLair lair)
+        {
+            int idx = ListFlags.IndexOf(lair);
+            Debug.Assert(idx != -1);
+            ListFlags[idx] = null;
+            
+            // Сжимаем флаги
+            for (int i = idx; i < ListFlags.Count - 1; i++)
+            {
+                ListFlags[i] = ListFlags[i + 1];
+            }
+            ListFlags[ListFlags.Count - 1] = null;
+            QuantityFlags[PriorityExecution.None]++;
+            QuantityFlags[lair.PriorityFlag]--;
+
+            CheckFlags();
+            Program.formMain.LairsWithFlagChanged();
+        }
+
+        private void CheckFlags()
+        {
+            // Проверяем, что количество флагов сходится с количеством слотов
+            // И что количество флагов с приоритетами Hight и Exclusive правильное
+            int q = 0;
+            foreach (PriorityExecution pe in Enum.GetValues(typeof(PriorityExecution)))
+            {
+                q += QuantityFlags[pe];
+            }
+
+            Debug.Assert(q == ListFlags.Count);
+            Debug.Assert(q <= Lobby.TypeLobby.MaxQuantityFlags);
+            Debug.Assert(QuantityFlags[PriorityExecution.High] <= 2);
+            Debug.Assert(QuantityFlags[PriorityExecution.Exclusive] <= 1);
+        }
+
+        internal bool ExistsFreeFlag()
+        {
+            return QuantityFlags[PriorityExecution.None] > 0;
         }
 
         // Реализация интерфейса
