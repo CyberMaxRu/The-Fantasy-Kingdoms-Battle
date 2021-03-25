@@ -1724,7 +1724,11 @@ namespace Fantasy_Kingdoms_Battle
                         controlWithHint = controlClicked;
                         ControlForHintLeave();// Контрол уже другой, отменяем подсказку
                     }
-                    controlClicked = null;  
+                    controlClicked = null;
+
+                    // Если был клик на ячейке меню, обновляем его, так как меняется список исследований и как следствие подсказки
+                    if (controlWithHint is VCMenuCell)
+                        UpdateMenu();
 
                     if (formHint.Visible)
                     {
@@ -1734,6 +1738,7 @@ namespace Fantasy_Kingdoms_Battle
                         if (!formHint.ExistHint)
                             formHint.HideHint();
                     }
+
                     ShowFrame(false);
 
                     /*if (formHint.Visible)
