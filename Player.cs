@@ -279,6 +279,8 @@ namespace Fantasy_Kingdoms_Battle
                 return PointConstructionGuild > 0;
             if (pb.Building is TypeEconomicConstruction)
                 return PointConstructionEconomic > 0;
+            if (pb.Building is TypeTemple)
+                return PointConstructionTemple > 0;
 
             return true;
         }
@@ -291,6 +293,8 @@ namespace Fantasy_Kingdoms_Battle
                 PointConstructionGuild--;
             else if (pb.Building is TypeEconomicConstruction)
                 PointConstructionEconomic--;
+            else if (pb.Building is TypeTemple)
+                PointConstructionTemple--;
         }
 
         internal int Income()
