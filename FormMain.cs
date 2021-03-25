@@ -102,6 +102,8 @@ namespace Fantasy_Kingdoms_Battle
         private PanelWithPanelEntity panelHeroes;
         private PanelWithPanelEntity panelCombatHeroes;
 
+        private const int DEFAULT_DPI = 96;
+
         internal const int GUI_HEROES = 0;
         internal const int GUI_GUILDS = 1;
         internal const int GUI_ECONOMY = 2;
@@ -1907,7 +1909,12 @@ namespace Fantasy_Kingdoms_Battle
         internal Bitmap LoadBitmap(string filename, string folder = "Icons")
         {
             Bitmap bmp = new Bitmap(dirResources + $"{folder}\\" + filename);
-            bmp.SetResolution(dpiX, dpiY);
+            Debug.Assert(Math.Round(bmp.HorizontalResolution) == DEFAULT_DPI);
+            Debug.Assert(Math.Round(bmp.VerticalResolution) == DEFAULT_DPI);
+
+            if ((dpiX != DEFAULT_DPI) || (dpiY != DEFAULT_DPI))
+                bmp.SetResolution(dpiX, dpiY);
+
             return bmp;
         }
     }
