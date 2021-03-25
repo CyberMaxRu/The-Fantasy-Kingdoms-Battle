@@ -115,6 +115,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal virtual void DoClick()
         {
+            Debug.Assert(Visible);
+
             Click?.Invoke(this, new EventArgs());
         }
 
@@ -183,8 +185,16 @@ namespace Fantasy_Kingdoms_Battle
             MouseEntered = false;
         }
 
-        internal virtual void MouseDown() { }
-        internal virtual void MouseUp() { }
+        internal virtual void MouseDown()
+        {
+            Debug.Assert(Visible);
+        }
+
+        internal virtual void MouseUp()
+        {
+            Debug.Assert(Visible);
+        }
+
         internal virtual void KeyUp(KeyEventArgs e) { }
 
         internal virtual void ArrangeControls()
