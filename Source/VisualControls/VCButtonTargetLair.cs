@@ -63,5 +63,10 @@ namespace Fantasy_Kingdoms_Battle
 
             base.Draw(g);
         }
+
+        protected override bool Selected()
+        {
+            return (Lair != null) && Program.formMain.PlayerObjectIsSelected(Lair);
+        }
     }
 }
