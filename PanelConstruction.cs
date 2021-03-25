@@ -153,14 +153,14 @@ namespace Fantasy_Kingdoms_Battle
 
                 if (Building.CanLevelUp())
                 {
+                    btnBuyOrUpgrade.Visible = true;
                     btnBuyOrUpgrade.Cost = Building.CostBuyOrUpgrade();
                     btnBuyOrUpgrade.ImageIndex = FormMain.GUI_LEVELUP;
                     btnBuyOrUpgrade.ImageIsEnabled = Building.CheckRequirements();
                 }
                 else
                 {
-                    btnBuyOrUpgrade.Cost = 0;
-                    btnBuyOrUpgrade.ImageIndex = -1;
+                    btnBuyOrUpgrade.Visible = false;
                 }
 
                 //if (btnLevelUp.Visible == true)
@@ -168,6 +168,7 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
             {
+                btnBuyOrUpgrade.Visible = true;
                 btnBuyOrUpgrade.Cost = Building.CostBuyOrUpgrade();
                 btnBuyOrUpgrade.ImageIsEnabled = Building.CheckRequirements();
             }
