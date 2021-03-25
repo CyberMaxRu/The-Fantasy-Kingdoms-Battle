@@ -21,7 +21,8 @@ namespace Fantasy_Kingdoms_Battle
             base.DoClick();
 
             Program.formMain.ActivatePageLairs();
-            Program.formMain.SelectPlayerObject(Lair);
+            if (Lair != null)
+                Program.formMain.SelectPlayerObject(Lair);
         }
 
         internal override bool PrepareHint()
