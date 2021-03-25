@@ -1104,64 +1104,6 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        private Bitmap GreyBitmap(Bitmap bmp)
-        {
-            Bitmap output = new Bitmap(bmp.Width, bmp.Height);
-
-            // Перебираем в циклах все пиксели исходного изображения
-            for (int j = 0; j < bmp.Height; j++)
-                for (int i = 0; i < bmp.Width; i++)
-                {
-                    // получаем (i, j) пиксель
-                    uint pixel = (uint)(bmp.GetPixel(i, j).ToArgb());
-
-                    // получаем компоненты цветов пикселя
-                    float R = (pixel & 0x00FF0000) >> 16; // красный
-                    float G = (pixel & 0x0000FF00) >> 8; // зеленый
-                    float B = pixel & 0x000000FF; // синий
-                                                  // делаем цвет черно-белым (оттенки серого) - находим среднее арифметическое
-                    R = G = B = (R + G + B) / 3.0f;
-
-                    // собираем новый пиксель по частям (по каналам)
-                    uint newPixel = ((uint)bmp.GetPixel(i, j).A << 24) | ((uint)R << 16) | ((uint)G << 8) | ((uint)B);
-
-                    // добавляем его в Bitmap нового изображения
-                    output.SetPixel(i, j, Color.FromArgb((int)newPixel));
-                }
-
-            return output;
-        }
-
-        private Bitmap BrightBitmap(Bitmap bmp)
-        {
-            Bitmap output = new Bitmap(bmp.Width, bmp.Height);
-
-            // Перебираем в циклах все пиксели исходного изображения
-            for (int j = 0; j < bmp.Height; j++)
-                for (int i = 0; i < bmp.Width; i++)
-                {
-                    // получаем (i, j) пиксель
-                    uint pixel = (uint)(bmp.GetPixel(i, j).ToArgb());
-
-                    // получаем компоненты цветов пикселя
-                    float R = (pixel & 0x00FF0000) >> 16; // красный
-                    float G = (pixel & 0x0000FF00) >> 8; // зеленый
-                    float B = pixel & 0x000000FF; // синий
-                                                  // делаем цвет черно-белым (оттенки серого) - находим среднее арифметическое
-                    R = Math.Min(R * 1.2f, 255);
-                    G = Math.Min(G * 1.2f, 255);
-                    B = Math.Min(B * 1.2f, 255);
-
-                    // собираем новый пиксель по частям (по каналам)
-                    uint newPixel = ((uint)bmp.GetPixel(i, j).A << 24) | ((uint)R << 16) | ((uint)G << 8) | ((uint)B);
-
-                    // добавляем его в Bitmap нового изображения
-                    output.SetPixel(i, j, Color.FromArgb((int)newPixel));
-                }
-
-            return output;
-        }
-
         internal void ShowCurrentPlayerLobby()
         {
             if (lobby.CurrentPlayer.TypePlayer == TypePlayer.Human)
