@@ -221,7 +221,7 @@ namespace Fantasy_Kingdoms_Battle
 
                     // Включить, когда ИИ может выбирать цель
                     //Debug.Assert(p.TargetLair != null);
-                    foreach (PlayerLair pl in p.LairsWithFlag)
+                    foreach (PlayerLair pl in p.ListFlags)
                     {
                         pl.PreparingForBattle();
 
