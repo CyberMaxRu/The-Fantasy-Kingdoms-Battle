@@ -16,6 +16,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Visible = false
             };
+            Page.Click += Page_Click;
             Click += onClick;
 
             listPages = list;
@@ -23,6 +24,11 @@ namespace Fantasy_Kingdoms_Battle
             listPages.Add(this);
 
             ArrangeControls();
+        }
+
+        private void Page_Click(object sender, EventArgs e)
+        {
+            Program.formMain.SelectPlayerObject(null);
         }
 
         internal VisualControl Page { get; }

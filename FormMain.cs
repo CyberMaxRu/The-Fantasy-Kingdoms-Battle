@@ -482,6 +482,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 // Главное игровое поле
                 MainControl = new VisualControl(layerGame);
+                MainControl.Click += MainControl_Click;
 
                 // Тулбар
                 bmpPreparedToolbar = new VCBitmap(MainControl, 0, 0, null);
@@ -532,6 +533,7 @@ namespace Fantasy_Kingdoms_Battle
                 // Панель со всеми героями
                 panelCombatHeroes = new PanelWithPanelEntity(5, false, 8, 4);
                 panelCombatHeroes.ShiftY = btnEndTurn.NextTop();
+                panelCombatHeroes.Click += PanelCombatHeroes_Click;
                 MainControl.AddControl(panelCombatHeroes);
 
                 // Страницы игры
@@ -698,6 +700,16 @@ namespace Fantasy_Kingdoms_Battle
                 MessageBox.Show(exc.Message + Environment.NewLine + exc.StackTrace);
                 Environment.Exit(-1);
             }
+        }
+
+        private void PanelCombatHeroes_Click(object sender, EventArgs e)
+        {
+            SelectPlayerObject(null);
+        }
+
+        private void MainControl_Click(object sender, EventArgs e)
+        {
+            SelectPlayerObject(null);
         }
 
         private void PageTemples_ShowHint(object sender, EventArgs e)
@@ -1917,7 +1929,10 @@ namespace Fantasy_Kingdoms_Battle
                     selectedPlayerObject.HideInfo();
 
                 selectedPlayerObject = po;
-                selectedPlayerObject.ShowInfo();
+                if (selectedPlayerObject != null)
+                    selectedPlayerObject.ShowInfo();
+                else
+                    panelEmptyInfo.Visible = true;
 
                 SetNeedRedrawFrame();
             }
