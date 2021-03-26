@@ -87,7 +87,7 @@ namespace Fantasy_Kingdoms_Battle
             if (n.SelectSingleNode("Reward") != null)
                 Reward = new RewardLevelLair(n.SelectSingleNode("Reward"));
 
-            Debug.Assert(Cost > 0);
+            Debug.Assert(Cost >= 0);
             Debug.Assert(Cost < 100_000);
         }
 
