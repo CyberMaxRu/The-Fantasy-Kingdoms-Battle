@@ -790,7 +790,7 @@
     <ID>Garden</ID>
     <Name>Сад</Name>
     <Description>- Улучшает настроение героев/- Место отдыха эльфов, людей</Description>
-    <ImageIndex>113</ImageIndex>
+    <ImageIndex>115</ImageIndex>
     <Page>Economic</Page>
     <Line>3</Line>
     <Pos>4</Pos>
