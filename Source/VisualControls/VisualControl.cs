@@ -360,16 +360,16 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (!_disposed)
             { 
-                if (Parent != null)
-                {
-                    Parent.RemoveControl(this);
-                    Parent = null;
-                }
-
                 if (disposing)
                 {
                     bmpBorder?.Dispose();
                     bmpBorderSelect?.Dispose();
+
+                    if (Parent != null)
+                    {
+                        Parent.RemoveControl(this);
+                        Parent = null;
+                    }
                 }
 
                 bmpBorder = null;
