@@ -15,7 +15,7 @@ namespace Fantasy_Kingdoms_Battle
         protected readonly VCLabelM2 lblNameMapObject;
         protected readonly VCImageBig imgMapObject;
 
-        public PanelMapObject(VisualControl parent, int shiftX, int shiftY, TypeMapObject typeMapObject) : base(parent, shiftX, shiftY)
+        public PanelMapObject(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
             ShowBorder = true;
 

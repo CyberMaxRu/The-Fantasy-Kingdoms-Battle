@@ -98,6 +98,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCFormPage pageTournament;
         private readonly VCLabelM2 labelCaptionPage;
 
+        private readonly PanelLair[,] panelLairs;
         private PanelWithPanelEntity panelWarehouse;
         private PanelWithPanelEntity panelHeroes;
         private PanelWithPanelEntity panelCombatHeroes;
@@ -560,6 +561,7 @@ namespace Fantasy_Kingdoms_Battle
                 DrawPageConstructions();
                 DrawHeroes();
                 DrawWarehouse();
+                panelLairs = new PanelLair[lobby.TypeLobby.LairsHeight, lobby.TypeLobby.LairsWidth];
                 DrawPageLair();
 
                 ShowDataPlayer();
@@ -1176,13 +1178,25 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Показываем логова
-            foreach (PlayerLair pl in lobby.CurrentPlayer.Lairs)
-            {
-                pl.TypeLair.Panel.LinkToPlayer(pl);
-            }
+            for (int y = 0; y < panelLairs.GetLength(0); y++)
+                for (int x = 0; x < panelLairs.GetLength(1); x++)
+                    ShowLair(x, y);
 
             // Показываем героев
             ListHeroesChanged();
+        }
+
+        private void ShowLair(int x, int y)
+        {
+            // Ищем активное логово у игрока
+            for (int i = 0; i < lobby.CurrentPlayer.Lairs.GetLength(0); i++)
+                if (lobby.CurrentPlayer.Lairs[i, y, x] != null)
+                {
+                    panelLairs[y, x].PlayerObject = lobby.CurrentPlayer.Lairs[i, y, x];
+                    return;
+                }
+
+            panelLairs[y, x].PlayerObject = null;
         }
 
         private void DrawPageConstructions()
@@ -1211,7 +1225,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 Debug.Assert(panels[(int)tck.Page, tck.Line - 1, tck.Pos - 1] == null);
 
-                tck.Panel = new PanelConstruction(parent, 0, 0, tck);
+                tck.Panel = new PanelConstruction(parent, 0, 0);
                 tck.Panel.ShiftX = (tck.Panel.Width + Config.GridSize) * (tck.Pos - 1);
                 tck.Panel.ShiftY = (tck.Panel.Height + Config.GridSize) * (tck.Line - 1);
                 panels[(int)tck.Page, tck.Line - 1, tck.Pos - 1] = tck.Panel;
@@ -1224,19 +1238,16 @@ namespace Fantasy_Kingdoms_Battle
             int left;
             int height = 0;
 
-            for (int line = 1; line <= 4; line++)
+            for (int y = 0; y < lobby.TypeLobby.LairsHeight; y++)
             {
                 left = 0;
-
-                foreach (TypeLair l in Config.TypeLairs)
+                for (int x = 0; x < lobby.TypeLobby.LairsWidth; x++)
                 {
-                    if (l.Line == line)
-                    {
-                        l.Panel = new PanelLair(pageLairs.Page, left, top, l);
+                    Debug.Assert(panelLairs[y, x] == null);
+                    panelLairs[y, x] = new PanelLair(pageLairs.Page, left, top);
 
-                        left += l.Panel.Width + Config.GridSize;
-                        height = l.Panel.Height;
-                    }
+                    left += panelLairs[y, x].Width + Config.GridSize;
+                    height = panelLairs[y, x].Height;
                 }
 
                 top += height + Config.GridSize;

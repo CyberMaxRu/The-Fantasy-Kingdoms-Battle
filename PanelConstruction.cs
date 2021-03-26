@@ -17,41 +17,38 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCIconButton btnHireHero;
         private readonly VCLabelValue lblIncome;
         
-        public PanelConstruction(VisualControl parent, int shiftX, int shiftY, TypeConstruction typeConstruction) : base(parent, shiftX, shiftY, typeConstruction)
+        public PanelConstruction(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
-            TypeConstruction = typeConstruction;
-
             btnBuyOrUpgrade = new VCIconButton(this, imgMapObject.NextLeft(), imgMapObject.ShiftY, Program.formMain.ilGui, FormMain.GUI_BUILD);
             btnBuyOrUpgrade.Click += BtnBuyOrUprgade_Click;
             btnBuyOrUpgrade.ShowHint += BtnBuyOrUpgrade_ShowHint;
 
             btnHeroes = new VCIconButton(this, imgMapObject.ShiftX, imgMapObject.NextTop(), Program.formMain.imListObjectsCell, -1);
 
-            if ((TypeConstruction.TrainedHero != null) && !(TypeConstruction is TypeEconomicConstruction))
-            {
+            //if ((TypeConstruction.TrainedHero != null) && !(TypeConstruction is TypeEconomicConstruction))
+            //{
                 btnHireHero = new VCIconButton(this, imgMapObject.NextLeft(), btnBuyOrUpgrade.NextTop(), Program.formMain.imListObjectsCell, -1);
                 btnHireHero.Click += BtnHireHero_Click;
                 btnHireHero.ShowHint += BtnHireHero_ShowHint;
+            //}
+            //else
+            //    btnHeroes.Visible = false;
 
-            }
-            else
-                btnHeroes.Visible = false;
-
-            if (TypeConstruction is TypeEconomicConstruction)
-            {
+            //if (TypeConstruction is TypeEconomicConstruction)
+            //{
                 lblIncome = new VCLabelValue(this, imgMapObject.NextLeft() - FormMain.Config.GridSize - FormMain.Config.GridSize, imgMapObject.NextTop(), Color.Green);
                 lblIncome.ImageIndex = FormMain.GUI_16_INCOME;
                 lblIncome.Width = btnBuyOrUpgrade.Width - FormMain.Config.GridSize;
                 lblIncome.StringFormat.Alignment = StringAlignment.Near;
-            }
+            //}
 
             Height = btnHeroes.NextTop();
             Width = btnBuyOrUpgrade.NextLeft();
             lblNameMapObject.Width = Width - (lblNameMapObject.ShiftX * 2);
         }
 
-        internal TypeConstruction TypeConstruction { get; }
         internal PlayerBuilding Building { get => PlayerObject as PlayerBuilding; }
+        internal TypeConstruction TypeConstruction { get => Building.Building; }
 
 
         private void BtnHireHero_ShowHint(object sender, EventArgs e)
@@ -127,7 +124,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(pb != null);
             Debug.Assert(pb.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
-            Debug.Assert(pb.Building == TypeConstruction);
 
             PlayerObject = pb;
         }
@@ -173,14 +169,17 @@ namespace Fantasy_Kingdoms_Battle
                 btnBuyOrUpgrade.ImageIsEnabled = Building.CheckRequirements();
             }
 
-            if (btnHireHero != null)
+            if (TypeConstruction.TrainedHero != null)
             {
                 //btnHireHero.ImageIndex = (Building.Level > 0) && ((Building.Heroes.Count == Building.MaxHeroes()) || (Building.MaxHeroesAtPlayer() == true))  ? -1 : GuiUtils.GetImageIndexWithGray(btnHireHero.ImageList, c.TrainedHero.ImageIndex, Building.CanTrainHero());
+                btnHireHero.Visible = true;
                 btnHireHero.ImageIndex = (Building.Level > 0) && ((Building.Heroes.Count == Building.MaxHeroes()) || (Building.MaxHeroesAtPlayer() == true)) ? -1 : TypeConstruction.TrainedHero.ImageIndex;
                 btnHireHero.ImageIndex = Program.formMain.TreatImageIndex(Building.Building.TrainedHero.ImageIndex, Building.Player);
                 btnHireHero.ImageIsEnabled = Building.CanTrainHero();
                 btnHireHero.Cost = (Building.Level == 0) || (Building.CanTrainHero() == true) ? TypeConstruction.TrainedHero.Cost : 0;
             }
+            else
+                btnHireHero.Visible = false;
 
             imgMapObject.Level = Building.Level;
 

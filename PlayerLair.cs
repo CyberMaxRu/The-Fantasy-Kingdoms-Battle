@@ -22,7 +22,6 @@ namespace Fantasy_Kingdoms_Battle
             Name = l.Name;
             ImageIndexAvatar = l.ImageIndex;
             TypePlayer = TypePlayer.Lair;
-            Hidden = true;// Изначально логово скрыто
 
             // Убрать эту проверку после настройки всех логов
             if (TypeLair.LevelLairs.Count > 0)
@@ -33,7 +32,7 @@ namespace Fantasy_Kingdoms_Battle
         internal TypeLair TypeLair { get; }
         internal int Level { get; private set; }// Текущий уровень логова
         internal int Layer { get; }// Слой, на котором находится логово
-        internal bool Hidden { get; set; }// Логово не разведано
+        internal bool Hidden { get; set; } = true;// Логово не разведано
         internal List<Monster> Monsters { get; } = new List<Monster>();// Монстры текущего уровня
 
         // Поддержка флага
@@ -69,7 +68,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Hidden);
 
             return PriorityFlag < PriorityExecution.Exclusive ? 
-                Player.Lobby.TypeLobby.LairSettings[Layer].CostScout * Player.Lobby.TypeLobby.CoefFlagScout[(int)PriorityFlag + 1] / 100 : 0;
+                Player.Lobby.TypeLobby.LayerSettings[Layer].CostScout * Player.Lobby.TypeLobby.CoefFlagScout[(int)PriorityFlag + 1] / 100 : 0;
         }
 
         internal int CostAttack()

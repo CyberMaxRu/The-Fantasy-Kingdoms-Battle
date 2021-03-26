@@ -75,7 +75,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(layers >= 1);
             Debug.Assert(layers <= FormMain.MAX_LAIR_LAYERS);
 
-            LairSettings = new TypeLobbyLayerSettings[layers];
+            LayerSettings = new TypeLobbyLayerSettings[layers];
             TypeLobbyLayerSettings ls;
 
             foreach (XmlNode l in nodeLairSettings.SelectNodes("Layer"))
@@ -84,14 +84,14 @@ namespace Fantasy_Kingdoms_Battle
 
                 Debug.Assert(ls.Number >= 0);
                 Debug.Assert(ls.Number <= FormMain.MAX_LAIR_LAYERS - 1);
-                Debug.Assert(LairSettings[ls.Number] == null);
+                Debug.Assert(LayerSettings[ls.Number] == null);
 
-                LairSettings[ls.Number] = ls;
+                LayerSettings[ls.Number] = ls;
             }
 
             // Проверяем, что указаны все слои
-            for (int i = 0; i < LairSettings.Length; i++)
-                Debug.Assert(LairSettings[i] != null);
+            for (int i = 0; i < LayerSettings.Length; i++)
+                Debug.Assert(LayerSettings[i] != null);
 
             // Проверяем, что количество у слоев указано корректно
 
@@ -148,13 +148,13 @@ namespace Fantasy_Kingdoms_Battle
         internal int LairsLayers{ get; }
         internal int LairsWidth { get; }
         internal int LairsHeight { get; }
-        internal TypeLobbyLayerSettings[] LairSettings { get; }
+        internal TypeLobbyLayerSettings[] LayerSettings { get; }
         internal int[] CoefFlagScout { get; }
         internal int[] CoefFlagAttack { get; }
 
         internal void TuneDeferredLinks()
         {
-            foreach (TypeLobbyLayerSettings ls in LairSettings)
+            foreach (TypeLobbyLayerSettings ls in LayerSettings)
             {
                 ls.TuneDeferredLinks();
             }

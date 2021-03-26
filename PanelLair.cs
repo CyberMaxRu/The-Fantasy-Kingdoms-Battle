@@ -16,10 +16,8 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCIconButton btnCancel;
         private readonly VCIconButton btnInhabitants;
 
-        public PanelLair(VisualControl parent, int shiftX, int shiftY, TypeLair typeLair) : base(parent, shiftX, shiftY, typeLair)
+        public PanelLair(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
-            TypeLair = typeLair;
-
             btnAction = new VCIconButton(this, imgMapObject.NextLeft(), imgMapObject.ShiftY, Program.formMain.ilGui, FormMain.GUI_BATTLE);
             btnAction.Click += BtnAction_Click;
             btnAction.ShowHint += BtnAction_ShowHint;
@@ -81,8 +79,8 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.panelLairInfo.SelectPageInhabitants();
         }
 
-        internal TypeLair TypeLair { get; set; }
         internal PlayerLair Lair { get => PlayerObject as PlayerLair; }
+        internal TypeLair TypeLair { get => Lair.TypeLair; }
 
         internal void LinkToPlayer(PlayerLair pl)
         {

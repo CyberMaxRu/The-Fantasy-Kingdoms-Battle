@@ -140,7 +140,6 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal List<LevelLair> LevelLairs { get; } = new List<LevelLair>();
-        internal PanelLair Panel { get; set; }
 
         internal override void TuneDeferredLinks()
         {
