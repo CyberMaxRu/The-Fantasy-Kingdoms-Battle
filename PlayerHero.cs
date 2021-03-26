@@ -31,7 +31,7 @@ namespace Fantasy_Kingdoms_Battle
         internal TypeHero TypeHero { get; } // Класс героя
 
         // Выполнение флагов
-        internal PlayerLair TargetByFlag { get; private set; }// Логово флага, который выполняется
+        internal PlayerLair TargetByFlag { get; set; }// Логово флага, который выполняется
 
         // Статистика за лобби
         internal int DayOfHire { get; }// На каком дне нанят
@@ -288,13 +288,10 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert((StateCreature.ID == NameStateCreature.DoAttackFlag.ToString())
                 || (StateCreature.ID == NameStateCreature.DoScoutFlat.ToString()));
+            Debug.Assert(TargetByFlag != null);
 
             // Убираем себя из флага на логове
-            if (TargetByFlag != null)
-            {
-                TargetByFlag.RemoveAttackingHero(this);
-            }
-
+            TargetByFlag.RemoveAttackingHero(this);
             SetState(NameStateCreature.Nothing);
         }
 

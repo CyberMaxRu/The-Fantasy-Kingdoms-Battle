@@ -213,6 +213,9 @@ namespace Fantasy_Kingdoms_Battle
             DaySetFlag = 0;
             TypeFlag = TypeFlag.None;
             PriorityFlag = PriorityExecution.None;
+
+            while (listAttackedHero.Count > 0)
+                RemoveAttackingHero(listAttackedHero[0]);
         }
 
         internal string PriorityFlatToText()
@@ -250,15 +253,19 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(ph != null);
             Debug.Assert(listAttackedHero.IndexOf(ph) == -1);
             Debug.Assert(ph.StateCreature.ID == NameStateCreature.Nothing.ToString());
+            Debug.Assert(ph.TargetByFlag == null);
 
             listAttackedHero.Add(ph);
+            ph.TargetByFlag = this;
             ph.SetState(ph.StateForFlag(TypeFlag));
         }
 
         internal void RemoveAttackingHero(PlayerHero ph)
         {
             Debug.Assert(listAttackedHero.IndexOf(ph) != -1);
+            Debug.Assert(ph.TargetByFlag == this);
 
+            ph.TargetByFlag = null;
             listAttackedHero.Remove(ph);
             ph.SetState(NameStateCreature.Nothing);
         }
