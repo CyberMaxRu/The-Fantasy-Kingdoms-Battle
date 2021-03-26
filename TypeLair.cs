@@ -82,12 +82,15 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Информация о монстрах
-            MonsterLevelLair mll;
-
-            foreach (XmlNode l in n.SelectNodes("Monster"))
+            XmlNode ne = n.SelectSingleNode("Monsters");
+            if (ne != null)
             {
-                mll = new MonsterLevelLair(l);
-                Monsters.Add(mll);
+                MonsterLevelLair mll;
+                foreach (XmlNode l in ne.SelectNodes("Monster"))
+                {
+                    mll = new MonsterLevelLair(l);
+                    Monsters.Add(mll);
+                }
             }
 
             MaxHeroes = XmlUtils.GetInteger(n.SelectSingleNode("MaxHeroes"));
@@ -96,6 +99,15 @@ namespace Fantasy_Kingdoms_Battle
             if (n.SelectSingleNode("Reward") != null)
                 Reward = new RewardLevelLair(n.SelectSingleNode("Reward"));
 
+            if (Monsters.Count > 0)
+            {
+                Debug.Assert(MaxHeroes > 0);
+                Debug.Assert(MaxHeroes < 50);
+            }
+            else
+            {
+                Debug.Assert(MaxHeroes == 0);
+            }
             Debug.Assert(Cost >= 0);
             Debug.Assert(Cost < 100_000);
 
