@@ -15,6 +15,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCIconButton btnAction;
         private readonly VCIconButton btnCancel;
         private readonly VCIconButton btnInhabitants;
+        private readonly VCIconButton btnHeroes;
 
         public PanelLair(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
@@ -29,8 +30,17 @@ namespace Fantasy_Kingdoms_Battle
             btnInhabitants = new VCIconButton(this, imgMapObject.ShiftX, imgMapObject.NextTop(), Program.formMain.ilGui, FormMain.GUI_HOME);
             btnInhabitants.Click += BtnInhabitants_Click;
 
+            btnHeroes = new VCIconButton(this, btnInhabitants.NextLeft(), btnInhabitants.ShiftY, Program.formMain.ilGui, FormMain.GUI_TARGET);
+            btnHeroes.Click += BtnHeroes_Click;
+
             Height = btnInhabitants.NextTop();
             Width = btnAction.NextLeft();
+        }
+
+        private void BtnHeroes_Click(object sender, EventArgs e)
+        {
+            Program.formMain.SelectPlayerObject(PlayerObject);
+            Program.formMain.panelLairInfo.SelectPageHeroes();
         }
 
         private void BtnCancel_ShowHint(object sender, EventArgs e)
@@ -124,6 +134,8 @@ namespace Fantasy_Kingdoms_Battle
                 btnInhabitants.Visible = true;
                 btnInhabitants.Cost = Lair.CombatHeroes.Count;
             }
+
+            btnHeroes.ImageIsEnabled = Lair.listAttackedHero.Count > 0;
 
             imgMapObject.ImageIndex = Lair.ImageIndexLair();
             imgMapObject.Level = Lair.Layer + 1;

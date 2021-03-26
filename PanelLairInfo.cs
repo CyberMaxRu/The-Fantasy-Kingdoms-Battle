@@ -12,14 +12,17 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class PanelLairInfo : PanelBaseInfo
     {
         private readonly PanelWithPanelEntity panelInhabitants;
+        private readonly PanelWithPanelEntity panelHeroes;
 
         public PanelLairInfo(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
             panelInhabitants = new PanelWithPanelEntity(4);
+            panelHeroes = new PanelWithPanelEntity(4);
 
             //..separator.ShiftY = TopForControls();
             //pageControl.ShiftY = TopForControls();
             pageControl.AddTab("Существа", FormMain.GUI_HOME, panelInhabitants);
+            pageControl.AddTab("Герои", FormMain.GUI_TARGET, panelHeroes);
             pageControl.AddTab("История", FormMain.GUI_BOOK, null);
 
             pageControl.ApplyMinSize();
@@ -38,6 +41,11 @@ namespace Fantasy_Kingdoms_Battle
         internal void SelectPageInhabitants()
         {
             pageControl.ActivatePage(0);
+        }
+
+        internal void SelectPageHeroes()
+        {
+            pageControl.ActivatePage(1);
         }
 
         internal override void Draw(Graphics g)
