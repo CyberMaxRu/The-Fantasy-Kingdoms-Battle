@@ -454,7 +454,7 @@
         <PosY>1</PosY>
         <Layer>4</Layer>
         <GroupArmour>ArmourMelee4</GroupArmour>
-        <Cost>5000</Cost>
+        <Cost>3500</Cost>
         <Requirements>
           <Requirement>
             <TypeConstruction>Smithy</TypeConstruction>
@@ -467,7 +467,7 @@
         <PosY>1</PosY>
         <Layer>4</Layer>
         <GroupArmour>ArmourArcher4</GroupArmour>
-        <Cost>5000</Cost>
+        <Cost>3500</Cost>
         <Requirements>
           <Requirement>
             <TypeConstruction>Smithy</TypeConstruction>
@@ -480,7 +480,7 @@
         <PosY>1</PosY>
         <Layer>4</Layer>
         <GroupArmour>ArmourMage4</GroupArmour>
-        <Cost>5000</Cost>
+        <Cost>3500</Cost>
         <Requirements>
           <Requirement>
             <TypeConstruction>Smithy</TypeConstruction>
@@ -493,7 +493,7 @@
         <PosY>2</PosY>
         <Layer>4</Layer>
         <GroupWeapon>WeaponMelee4</GroupWeapon>
-        <Cost>5000</Cost>
+        <Cost>3500</Cost>
         <Requirements>
           <Requirement>
             <TypeConstruction>Smithy</TypeConstruction>
@@ -506,7 +506,7 @@
         <PosY>2</PosY>
         <Layer>4</Layer>
         <GroupWeapon>WeaponArcher4</GroupWeapon>
-        <Cost>5000</Cost>
+        <Cost>3500</Cost>
         <Requirements>
           <Requirement>
             <TypeConstruction>Smithy</TypeConstruction>
@@ -519,7 +519,7 @@
         <PosY>2</PosY>
         <Layer>4</Layer>
         <GroupWeapon>WeaponMage4</GroupWeapon>
-        <Cost>5000</Cost>
+        <Cost>3500</Cost>
         <Requirements>
           <Requirement>
             <TypeConstruction>Smithy</TypeConstruction>
