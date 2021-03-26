@@ -54,6 +54,7 @@ namespace Fantasy_Kingdoms_Battle
                 panelInhabitants.SetUnknownList();
             else
                 panelInhabitants.ApplyList(Lair.Monsters);
+            panelHeroes.ApplyList(Lair.listAttackedHero);
 
             base.Draw(g);
         }
