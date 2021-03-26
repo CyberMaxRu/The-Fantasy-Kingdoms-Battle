@@ -16,6 +16,7 @@ namespace Fantasy_Kingdoms_Battle
         public TypeConstruction(XmlNode n) : base(n)
         {
             Page = (Page)Enum.Parse(typeof(Page), n.SelectSingleNode("Page").InnerText);
+            Line = XmlUtils.GetInteger(n.SelectSingleNode("Line"));
             Pos = XmlUtils.GetInteger(n.SelectSingleNode("Pos"));
             HasTreasury = XmlUtils.GetBool(n.SelectSingleNode("HasTreasury"), false);
             GoldByConstruction = XmlUtils.GetInteger(n.SelectSingleNode("GoldByConstruction"));
@@ -77,6 +78,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal Page Page { get; }
+        internal int Line { get; }// Линия сооружения 
         internal int Pos { get; }// Позиция сооружения в линии
         internal Level[] Levels;
         internal Research[,,] Researches;

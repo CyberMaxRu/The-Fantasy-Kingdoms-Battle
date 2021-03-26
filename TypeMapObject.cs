@@ -17,7 +17,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             DefaultLevel = XmlUtils.GetInteger(n.SelectSingleNode("DefaultLevel"));
             MaxLevel = Convert.ToInt32(n.SelectSingleNode("MaxLevel").InnerText);
-            Line = XmlUtils.GetInteger(n.SelectSingleNode("Line"));
             string filenameSoundSelect = XmlUtils.GetString(n.SelectSingleNode("SoundSelect"));
             if (filenameSoundSelect.Length > 0)
                 uriSoundSelect = new Uri(Program.formMain.dirResources + @"Sound\Interface\ConstructionSelect\" + filenameSoundSelect);
@@ -27,13 +26,10 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(MaxLevel > 0);
             Debug.Assert(MaxLevel <= 5);
             Debug.Assert(DefaultLevel <= MaxLevel);
-            Debug.Assert(Line >= 1);
-            Debug.Assert(Line <= 4);
         }
 
         internal int DefaultLevel { get; }
         internal int MaxLevel { get; }
-        internal int Line { get; }
 
         internal void PlaySoundSelect()
         {
