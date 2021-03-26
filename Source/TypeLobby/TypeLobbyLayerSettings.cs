@@ -15,9 +15,12 @@ namespace Fantasy_Kingdoms_Battle
         {
             Number = XmlUtils.GetInteger(n.SelectSingleNode("Number")) - 1;
             CostScout = XmlUtils.GetInteger(n.SelectSingleNode("CostScout"));
+            CostAttack = XmlUtils.GetInteger(n.SelectSingleNode("CostAttack"));
 
             Debug.Assert(CostScout > 0);
             Debug.Assert(CostScout <= 10_000);
+            Debug.Assert(CostAttack > 0);
+            Debug.Assert(CostAttack <= 10_000);
 
             // Загружаем конфигурацию логов
             XmlNode ne = n.SelectSingleNode("Lairs");
@@ -51,6 +54,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int Number { get; }// Номер слоя
         internal int CostScout { get; }// Стоимость разведки
+        internal int CostAttack { get; }// Стоимость атаки
         internal List<TypeLobbyLairSettings> LairsSettings { get; } = new List<TypeLobbyLairSettings>();// Настройки типов логов для слоя
 
         internal void TuneDeferredLinks()

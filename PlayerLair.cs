@@ -18,19 +18,17 @@ namespace Fantasy_Kingdoms_Battle
             TypeLair = l;
             Layer = layer;
 
-            Level = 1;
             Name = l.Name;
             ImageIndexAvatar = l.ImageIndex;
             TypePlayer = TypePlayer.Lair;
 
             // Убрать эту проверку после настройки всех логов
-            if (TypeLair.LevelLairs.Count > 0)
+            if (TypeLair.Monsters.Count > 0)
                 CreateMonsters();
         }
 
         internal Player Player { get; }
         internal TypeLair TypeLair { get; }
-        internal int Level { get; private set; }// Текущий уровень логова
         internal int Layer { get; }// Слой, на котором находится логово
         internal bool Hidden { get; set; } = true;// Логово не разведано
         internal List<Monster> Monsters { get; } = new List<Monster>();// Монстры текущего уровня
@@ -43,11 +41,10 @@ namespace Fantasy_Kingdoms_Battle
 
         private void CreateMonsters()
         {
-            Debug.Assert(TypeLair.LevelLairs.Count <= Level);
-            //Debug.Assert(TypeLair.LevelLairs[Level - 1].Monsters.Count > 0);
+            //Debug.Assert(TypeLair.Monsters.Count > 0);
 
             Monster lm;
-            foreach (MonsterLevelLair mll in TypeLair.LevelLairs[Level - 1].Monsters)
+            foreach (MonsterLevelLair mll in TypeLair.Monsters)
             {
                 for (int i = 0; i < mll.StartQuantity; i++)
                 {
@@ -74,10 +71,9 @@ namespace Fantasy_Kingdoms_Battle
         internal int CostAttack()
         {
             Debug.Assert(!Hidden);
-            Debug.Assert(Level > 0);
 
             return PriorityFlag < PriorityExecution.Exclusive ?
-                TypeLair.LevelLairs[Level - 1].Cost * Player.Lobby.TypeLobby.CoefFlagAttack[(int)PriorityFlag + 1] / 100 : 0;
+                Player.Lobby.TypeLobby.LayerSettings[Layer].CostAttack * Player.Lobby.TypeLobby.CoefFlagAttack[(int)PriorityFlag + 1] / 100 : 0;
         }
 
         internal override void PrepareHint()

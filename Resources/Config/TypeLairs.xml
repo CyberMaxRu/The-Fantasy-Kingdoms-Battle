@@ -9,23 +9,20 @@
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <SoundSelect>graveyard_select.wav</SoundSelect>
-    <Levels>
-      <Level>
-        <Cost>100</Cost>
-        <Monster>
-          <ID>Zombie</ID>
-          <StartQuantity>5</StartQuantity>
-          <MaxQuantity>10</MaxQuantity>
-          <Level>5</Level>
-          <DaysRespawn>2</DaysRespawn>
-          <QuantityRespawn>1</QuantityRespawn>
-        </Monster>
-        <Reward>
-          <MinGold>100</MinGold>
-          <MaxGold>200</MaxGold>
-        </Reward>  
-      </Level>
-    </Levels>
+    <Monsters>
+      <Monster>
+        <ID>Zombie</ID>
+        <StartQuantity>5</StartQuantity>
+        <MaxQuantity>10</MaxQuantity>
+        <Level>5</Level>
+        <DaysRespawn>2</DaysRespawn>
+        <QuantityRespawn>1</QuantityRespawn>
+      </Monster>
+    </Monsters>
+    <Reward>
+      <MinGold>100</MinGold>
+      <MaxGold>200</MaxGold>
+    </Reward>  
   </TypeLair>
   <TypeLair>
     <ID>GraveyardSkeletons</ID>
@@ -36,31 +33,28 @@
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <SoundSelect>logovo_skeleton_select.wav</SoundSelect>
-    <Levels>
-      <Level>
-        <Cost>250</Cost>
-        <Monster>
-          <ID>Skelet</ID>
-          <StartQuantity>5</StartQuantity>
-          <MaxQuantity>10</MaxQuantity>
-          <Level>5</Level>
-          <DaysRespawn>2</DaysRespawn>
-          <QuantityRespawn>1</QuantityRespawn>
-        </Monster>
-        <Monster>
-          <ID>SkeletArcher</ID>
-          <StartQuantity>5</StartQuantity>
-          <MaxQuantity>10</MaxQuantity>
-          <Level>5</Level>
-          <DaysRespawn>2</DaysRespawn>
-          <QuantityRespawn>1</QuantityRespawn>
-        </Monster>
-        <Reward>
-          <MinGold>100</MinGold>
-          <MaxGold>500</MaxGold>
-        </Reward>
-      </Level>
-    </Levels>
+    <Monsters>
+      <Monster>
+        <ID>Skelet</ID>
+        <StartQuantity>5</StartQuantity>
+        <MaxQuantity>10</MaxQuantity>
+        <Level>5</Level>
+        <DaysRespawn>2</DaysRespawn>
+        <QuantityRespawn>1</QuantityRespawn>
+      </Monster>
+      <Monster>
+        <ID>SkeletArcher</ID>
+        <StartQuantity>5</StartQuantity>
+        <MaxQuantity>10</MaxQuantity>
+        <Level>5</Level>
+        <DaysRespawn>2</DaysRespawn>
+        <QuantityRespawn>1</QuantityRespawn>
+      </Monster>
+    </Monsters>
+    <Reward>
+      <MinGold>100</MinGold>
+      <MaxGold>500</MaxGold>
+    </Reward>
   </TypeLair>
   <TypeLair>
     <ID>Crypt</ID>
@@ -71,31 +65,28 @@
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <SoundSelect>logovo_vampire_select.wav</SoundSelect>
-    <Levels>
-      <Level>
-        <Cost>500</Cost>
-        <Monster>
-          <ID>Ghost</ID>
-          <StartQuantity>5</StartQuantity>
-          <MaxQuantity>10</MaxQuantity>
-          <Level>5</Level>
-          <DaysRespawn>2</DaysRespawn>
-          <QuantityRespawn>1</QuantityRespawn>
-        </Monster>
-        <Monster>
-          <ID>Lich</ID>
-          <StartQuantity>1</StartQuantity>
-          <MaxQuantity>2</MaxQuantity>
-          <Level>5</Level>
-          <DaysRespawn>2</DaysRespawn>
-          <QuantityRespawn>1</QuantityRespawn>
-        </Monster>
-        <Reward>
-          <MinGold>300</MinGold>
-          <MaxGold>700</MaxGold>
-        </Reward>
-      </Level>
-    </Levels>
+    <Monsters>
+      <Monster>
+        <ID>Ghost</ID>
+        <StartQuantity>5</StartQuantity>
+        <MaxQuantity>10</MaxQuantity>
+        <Level>5</Level>
+        <DaysRespawn>2</DaysRespawn>
+        <QuantityRespawn>1</QuantityRespawn>
+      </Monster>
+      <Monster>
+        <ID>Lich</ID>
+        <StartQuantity>1</StartQuantity>
+        <MaxQuantity>2</MaxQuantity>
+        <Level>5</Level>
+        <DaysRespawn>2</DaysRespawn>
+        <QuantityRespawn>1</QuantityRespawn>
+      </Monster>
+    </Monsters>
+    <Reward>
+      <MinGold>300</MinGold>
+      <MaxGold>700</MaxGold>
+    </Reward>
   </TypeLair>
   <TypeLair>
     <ID>AncientCrypt</ID>
@@ -106,23 +97,20 @@
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <SoundSelect>logovo_vampire_select.wav</SoundSelect>
-    <Levels>
-      <Level>
-        <Cost>1000</Cost>
-        <Monster>
-          <ID>Vampire</ID>
-          <StartQuantity>1</StartQuantity>
-          <MaxQuantity>2</MaxQuantity>
-          <Level>5</Level>
-          <DaysRespawn>2</DaysRespawn>
-          <QuantityRespawn>1</QuantityRespawn>
-        </Monster>
-        <Reward>
-          <MinGold>500</MinGold>
-          <MaxGold>1000</MaxGold>
-        </Reward>
-      </Level>
-    </Levels>
+    <Monsters>
+      <Monster>
+        <ID>Vampire</ID>
+        <StartQuantity>1</StartQuantity>
+        <MaxQuantity>2</MaxQuantity>
+        <Level>5</Level>
+        <DaysRespawn>2</DaysRespawn>
+        <QuantityRespawn>1</QuantityRespawn>
+      </Monster>
+    </Monsters>
+    <Reward>
+      <MinGold>500</MinGold>
+      <MaxGold>1000</MaxGold>
+    </Reward>
   </TypeLair>
   <TypeLair>
     <ID>WolfsDen</ID>
@@ -133,31 +121,28 @@
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <SoundSelect>logovo_wolf_select.wav</SoundSelect>
-    <Levels>
-      <Level>
-        <Cost>200</Cost>
-        <Monster>
-          <ID>Wolf</ID>
-          <StartQuantity>5</StartQuantity>
-          <MaxQuantity>10</MaxQuantity>
-          <Level>5</Level>
-          <DaysRespawn>2</DaysRespawn>
-          <QuantityRespawn>1</QuantityRespawn>
-        </Monster>
-        <Monster>
-          <ID>OldWolf</ID>
-          <StartQuantity>1</StartQuantity>
-          <MaxQuantity>1</MaxQuantity>
-          <Level>5</Level>
-          <DaysRespawn>2</DaysRespawn>
-          <QuantityRespawn>1</QuantityRespawn>
-        </Monster>
-        <Reward>
-          <MinGold>100</MinGold>
-          <MaxGold>200</MaxGold>
-        </Reward>
-      </Level>
-    </Levels>
+    <Monsters>
+      <Monster>
+        <ID>Wolf</ID>
+        <StartQuantity>5</StartQuantity>
+        <MaxQuantity>10</MaxQuantity>
+        <Level>5</Level>
+        <DaysRespawn>2</DaysRespawn>
+        <QuantityRespawn>1</QuantityRespawn>
+      </Monster>
+      <Monster>
+        <ID>OldWolf</ID>
+        <StartQuantity>1</StartQuantity>
+        <MaxQuantity>1</MaxQuantity>
+        <Level>5</Level>
+        <DaysRespawn>2</DaysRespawn>
+        <QuantityRespawn>1</QuantityRespawn>
+      </Monster>
+    </Monsters>
+    <Reward>
+      <MinGold>100</MinGold>
+      <MaxGold>200</MaxGold>
+    </Reward>
   </TypeLair>
   <TypeLair>
     <ID>SerpentsNest</ID>
@@ -168,23 +153,20 @@
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <SoundSelect>logovo_serpent_select.wav</SoundSelect>
-    <Levels>
-      <Level>
-        <Cost>400</Cost>
-        <Monster>
-          <ID>Serpent</ID>
-          <StartQuantity>5</StartQuantity>
-          <MaxQuantity>10</MaxQuantity>
-          <Level>5</Level>
-          <DaysRespawn>2</DaysRespawn>
-          <QuantityRespawn>1</QuantityRespawn>
-        </Monster>
-        <Reward>
-          <MinGold>100</MinGold>
-          <MaxGold>200</MaxGold>
-        </Reward>
-      </Level>
-    </Levels>
+    <Monsters>
+      <Monster>
+        <ID>Serpent</ID>
+        <StartQuantity>5</StartQuantity>
+        <MaxQuantity>10</MaxQuantity>
+        <Level>5</Level>
+        <DaysRespawn>2</DaysRespawn>
+        <QuantityRespawn>1</QuantityRespawn>
+      </Monster>
+    </Monsters>
+    <Reward>
+      <MinGold>100</MinGold>
+      <MaxGold>200</MaxGold>
+    </Reward>
   </TypeLair>
   <TypeLair>
     <ID>BearsDen</ID>
@@ -195,31 +177,28 @@
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <SoundSelect>logovo_bear_select.wav</SoundSelect>
-    <Levels>
-      <Level>
-        <Cost>400</Cost>
-        <Monster>
-          <ID>Bear</ID>
-          <StartQuantity>2</StartQuantity>
-          <MaxQuantity>10</MaxQuantity>
-          <Level>5</Level>
-          <DaysRespawn>2</DaysRespawn>
-          <QuantityRespawn>1</QuantityRespawn>
-        </Monster>
-        <Monster>
-          <ID>GreatBear</ID>
-          <StartQuantity>1</StartQuantity>
-          <MaxQuantity>1</MaxQuantity>
-          <Level>5</Level>
-          <DaysRespawn>2</DaysRespawn>
-          <QuantityRespawn>1</QuantityRespawn>
-        </Monster>
-        <Reward>
-          <MinGold>500</MinGold>
-          <MaxGold>500</MaxGold>
-        </Reward>
-      </Level>
-    </Levels>
+    <Monsters>
+      <Monster>
+        <ID>Bear</ID>
+        <StartQuantity>2</StartQuantity>
+        <MaxQuantity>10</MaxQuantity>
+        <Level>5</Level>
+        <DaysRespawn>2</DaysRespawn>
+        <QuantityRespawn>1</QuantityRespawn>
+      </Monster>
+      <Monster>
+        <ID>GreatBear</ID>
+        <StartQuantity>1</StartQuantity>
+        <MaxQuantity>1</MaxQuantity>
+        <Level>5</Level>
+        <DaysRespawn>2</DaysRespawn>
+        <QuantityRespawn>1</QuantityRespawn>
+      </Monster>
+    </Monsters>
+    <Reward>
+      <MinGold>500</MinGold>
+      <MaxGold>500</MaxGold>
+    </Reward>
   </TypeLair>
   <TypeLair>
     <ID>BearmansDen</ID>
@@ -230,23 +209,20 @@
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <SoundSelect>logovo_bearman_select.wav</SoundSelect>
-    <Levels>
-      <Level>
-        <Cost>800</Cost>
-        <Monster>
-          <ID>WerewolfBear</ID>
-          <StartQuantity>1</StartQuantity>
-          <MaxQuantity>1</MaxQuantity>
-          <Level>5</Level>
-          <DaysRespawn>2</DaysRespawn>
-          <QuantityRespawn>1</QuantityRespawn>
-        </Monster>
-        <Reward>
-          <MinGold>1000</MinGold>
-          <MaxGold>1000</MaxGold>
-        </Reward>
-      </Level>
-    </Levels>
+    <Monsters>
+      <Monster>
+        <ID>WerewolfBear</ID>
+        <StartQuantity>1</StartQuantity>
+        <MaxQuantity>1</MaxQuantity>
+        <Level>5</Level>
+        <DaysRespawn>2</DaysRespawn>
+        <QuantityRespawn>1</QuantityRespawn>
+      </Monster>
+    </Monsters>
+    <Reward>
+      <MinGold>1000</MinGold>
+      <MaxGold>1000</MaxGold>
+    </Reward>
   </TypeLair>
   <TypeLair>
     <ID>PyramideMinotaurs</ID>
@@ -257,31 +233,28 @@
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <SoundSelect>logovo_minotaur_select.wav</SoundSelect>
-    <Levels>
-      <Level>
-        <Cost>1000</Cost>
-        <Monster>
-          <ID>Minotaur</ID>
-          <StartQuantity>3</StartQuantity>
-          <MaxQuantity>5</MaxQuantity>
-          <Level>5</Level>
-          <DaysRespawn>2</DaysRespawn>
-          <QuantityRespawn>1</QuantityRespawn>
-        </Monster>
-        <Monster>
-          <ID>BlackMinotaur</ID>
-          <StartQuantity>1</StartQuantity>
-          <MaxQuantity>2</MaxQuantity>
-          <Level>5</Level>
-          <DaysRespawn>2</DaysRespawn>
-          <QuantityRespawn>1</QuantityRespawn>
-        </Monster>
-        <Reward>
-          <MinGold>1000</MinGold>
-          <MaxGold>1500</MaxGold>
-        </Reward>
-      </Level>
-    </Levels>
+    <Monsters>
+      <Monster>
+        <ID>Minotaur</ID>
+        <StartQuantity>3</StartQuantity>
+        <MaxQuantity>5</MaxQuantity>
+        <Level>5</Level>
+        <DaysRespawn>2</DaysRespawn>
+        <QuantityRespawn>1</QuantityRespawn>
+      </Monster>
+      <Monster>
+        <ID>BlackMinotaur</ID>
+        <StartQuantity>1</StartQuantity>
+        <MaxQuantity>2</MaxQuantity>
+        <Level>5</Level>
+        <DaysRespawn>2</DaysRespawn>
+        <QuantityRespawn>1</QuantityRespawn>
+      </Monster>
+    </Monsters>
+    <Reward>
+      <MinGold>1000</MinGold>
+      <MaxGold>1500</MaxGold>
+    </Reward>
   </TypeLair>
   <TypeLair>
     <ID>OgreCave</ID>
@@ -292,23 +265,20 @@
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <SoundSelect>logovo_ogre_select.wav</SoundSelect>
-    <Levels>
-      <Level>
-        <Cost>1500</Cost>
-        <Monster>
-          <ID>Ogre</ID>
-          <StartQuantity>2</StartQuantity>
-          <MaxQuantity>5</MaxQuantity>
-          <Level>5</Level>
-          <DaysRespawn>2</DaysRespawn>
-          <QuantityRespawn>1</QuantityRespawn>
-        </Monster>
-        <Reward>
-          <MinGold>1000</MinGold>
-          <MaxGold>2000</MaxGold>
-        </Reward>
-      </Level>
-    </Levels>
+    <Monsters>
+      <Monster>
+        <ID>Ogre</ID>
+        <StartQuantity>2</StartQuantity>
+        <MaxQuantity>5</MaxQuantity>
+        <Level>5</Level>
+        <DaysRespawn>2</DaysRespawn>
+        <QuantityRespawn>1</QuantityRespawn>
+      </Monster>
+    </Monsters>
+    <Reward>
+      <MinGold>1000</MinGold>
+      <MaxGold>2000</MaxGold>
+    </Reward>
   </TypeLair>
   <TypeLair>
     <ID>HermitHouse</ID>
@@ -319,23 +289,20 @@
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <SoundSelect>logovo_wolfman_select.wav</SoundSelect>
-    <Levels>
-      <Level>
-        <Cost>2500</Cost>
-        <Monster>
-          <ID>Werewolf</ID>
-          <StartQuantity>1</StartQuantity>
-          <MaxQuantity>1</MaxQuantity>
-          <Level>5</Level>
-          <DaysRespawn>2</DaysRespawn>
-          <QuantityRespawn>1</QuantityRespawn>
-        </Monster>
-        <Reward>
-          <MinGold>2000</MinGold>
-          <MaxGold>3000</MaxGold>
-        </Reward>
-      </Level>
-    </Levels>
+    <Monsters>
+      <Monster>
+        <ID>Werewolf</ID>
+        <StartQuantity>1</StartQuantity>
+        <MaxQuantity>1</MaxQuantity>
+        <Level>5</Level>
+        <DaysRespawn>2</DaysRespawn>
+        <QuantityRespawn>1</QuantityRespawn>
+      </Monster>
+    </Monsters>
+    <Reward>
+      <MinGold>2000</MinGold>
+      <MaxGold>3000</MaxGold>
+    </Reward>
   </TypeLair>
   <TypeLair>
     <ID>DragonCave</ID>
@@ -346,23 +313,20 @@
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <SoundSelect>logovo_boss_dragon_select.wav</SoundSelect>
-    <Levels>
-      <Level>
-        <Cost>10000</Cost>
-        <Monster>
-          <ID>Dragon</ID>
-          <StartQuantity>1</StartQuantity>
-          <MaxQuantity>1</MaxQuantity>
-          <Level>5</Level>
-          <DaysRespawn>2</DaysRespawn>
-          <QuantityRespawn>1</QuantityRespawn>
-        </Monster>
-        <Reward>
-          <MinGold>10000</MinGold>
-          <MaxGold>15000</MaxGold>
-        </Reward>
-      </Level>
-    </Levels>
+    <Monsters>
+      <Monster>
+        <ID>Dragon</ID>
+        <StartQuantity>1</StartQuantity>
+        <MaxQuantity>1</MaxQuantity>
+        <Level>5</Level>
+        <DaysRespawn>2</DaysRespawn>
+        <QuantityRespawn>1</QuantityRespawn>
+      </Monster>
+    </Monsters>
+    <Reward>
+      <MinGold>10000</MinGold>
+      <MaxGold>15000</MaxGold>
+    </Reward>
   </TypeLair>
   <TypeLair>
     <ID>KingsSewer</ID>
@@ -373,23 +337,20 @@
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <SoundSelect>sewers_select.wav</SoundSelect>
-    <Levels>
-      <Level>
-        <Cost>10000</Cost>
-        <Monster>
-          <ID>Dragon</ID>
-          <StartQuantity>1</StartQuantity>
-          <MaxQuantity>1</MaxQuantity>
-          <Level>5</Level>
-          <DaysRespawn>2</DaysRespawn>
-          <QuantityRespawn>1</QuantityRespawn>
-        </Monster>
-        <Reward>
-          <MinGold>10000</MinGold>
-          <MaxGold>15000</MaxGold>
-        </Reward>
-      </Level>
-    </Levels>
+    <Monsters>
+      <Monster>
+        <ID>Dragon</ID>
+        <StartQuantity>1</StartQuantity>
+        <MaxQuantity>1</MaxQuantity>
+        <Level>5</Level>
+        <DaysRespawn>2</DaysRespawn>
+        <QuantityRespawn>1</QuantityRespawn>
+      </Monster>
+    </Monsters>
+    <Reward>
+      <MinGold>10000</MinGold>
+      <MaxGold>15000</MaxGold>
+    </Reward>
   </TypeLair>
   <TypeLair>
     <ID>TradePlace</ID>
@@ -400,14 +361,9 @@
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <SoundSelect>tradepost_place_select.wav</SoundSelect>
-    <Levels>
-      <Level>
-        <Cost>0</Cost>
-        <Reward>
-          <PointTradePost>1</PointTradePost>
-        </Reward>
-      </Level>
-    </Levels>
+    <Reward>
+      <PointTradePost>1</PointTradePost>
+    </Reward>
   </TypeLair>
   <TypeLair>
     <ID>Chest</ID>
@@ -418,15 +374,10 @@
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <SoundSelect>chest_select.wav</SoundSelect>
-    <Levels>
-      <Level>
-        <Cost>0</Cost>
-        <Reward>
-          <MinGold>1000</MinGold>
-          <MaxGold>2000</MaxGold>
-        </Reward>
-      </Level>
-    </Levels>
+    <Reward>
+      <MinGold>1000</MinGold>
+      <MaxGold>2000</MaxGold>
+    </Reward>
   </TypeLair>
   <TypeLair>
     <ID>ThroneLightning</ID>
@@ -437,23 +388,20 @@
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <SoundSelect>logovo_elemental_earth_select.wav</SoundSelect>
-    <Levels>
-      <Level>
-        <Cost>0</Cost>
-        <Monster>
-          <ID>ElementalEarth</ID>
-          <StartQuantity>2</StartQuantity>
-          <MaxQuantity>2</MaxQuantity>
-          <Level>15</Level>
-          <DaysRespawn>2</DaysRespawn>
-          <QuantityRespawn>1</QuantityRespawn>
-        </Monster>
-        <Reward>
-          <MinGold>1000</MinGold>
-          <MaxGold>2000</MaxGold>
-        </Reward>
-      </Level>
-    </Levels>
+    <Monsters>
+      <Monster>
+        <ID>ElementalEarth</ID>
+        <StartQuantity>2</StartQuantity>
+        <MaxQuantity>2</MaxQuantity>
+        <Level>15</Level>
+        <DaysRespawn>2</DaysRespawn>
+        <QuantityRespawn>1</QuantityRespawn>
+      </Monster>
+    </Monsters>
+    <Reward>
+      <MinGold>1000</MinGold>
+      <MaxGold>2000</MaxGold>
+    </Reward>
   </TypeLair>
   <TypeLair>
     <ID>ThroneFire</ID>
@@ -464,22 +412,19 @@
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <SoundSelect>logovo_elemental_fire_select.wav</SoundSelect>
-    <Levels>
-      <Level>
-        <Cost>0</Cost>
-        <Monster>
-          <ID>ElementalFire</ID>
-          <StartQuantity>2</StartQuantity>
-          <MaxQuantity>2</MaxQuantity>
-          <Level>15</Level>
-          <DaysRespawn>2</DaysRespawn>
-          <QuantityRespawn>1</QuantityRespawn>
-        </Monster>
-        <Reward>
-          <MinGold>1000</MinGold>
-          <MaxGold>2000</MaxGold>
-        </Reward>
-      </Level>
-    </Levels>
+    <Monsters>
+      <Monster>
+        <ID>ElementalFire</ID>
+        <StartQuantity>2</StartQuantity>
+        <MaxQuantity>2</MaxQuantity>
+        <Level>15</Level>
+        <DaysRespawn>2</DaysRespawn>
+        <QuantityRespawn>1</QuantityRespawn>
+      </Monster>
+    </Monsters>
+    <Reward>
+      <MinGold>1000</MinGold>
+      <MaxGold>2000</MaxGold>
+    </Reward>
   </TypeLair>
 </TypeLairs>

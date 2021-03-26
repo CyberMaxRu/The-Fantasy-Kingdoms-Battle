@@ -68,11 +68,19 @@ namespace Fantasy_Kingdoms_Battle
         internal int MaxGold { get; }
     }
 
-    // Класс уровня логова
-    internal sealed class LevelLair
+    // Класс типа логова монстров
+    internal sealed class TypeLair : TypeMapObject
     {
-        public LevelLair(XmlNode n)
+        public TypeLair(XmlNode n) : base(n)
         {
+            // Проверяем, что таких же ID и наименования нет
+            foreach (TypeLair tl in FormMain.Config.TypeLairs)
+            {
+                Debug.Assert(tl.ID != ID);
+                Debug.Assert(tl.Name != Name);
+                Debug.Assert(tl.ImageIndex != ImageIndex);
+            }
+
             // Информация о монстрах
             MonsterLevelLair mll;
 
@@ -89,13 +97,16 @@ namespace Fantasy_Kingdoms_Battle
 
             Debug.Assert(Cost >= 0);
             Debug.Assert(Cost < 100_000);
+
+            //else
+            //    throw new Exception("В конфигурации логова у " + ID + " нет информации об уровнях. ");
         }
 
         internal List<MonsterLevelLair> Monsters { get; } = new List<MonsterLevelLair>();
         internal int Cost { get; }
         internal RewardLevelLair Reward { get; }
 
-        internal void TuneDeferredLinks()
+        internal override void TuneDeferredLinks()
         {
             foreach (MonsterLevelLair mll in Monsters)
             {
@@ -106,46 +117,6 @@ namespace Fantasy_Kingdoms_Battle
                     if ((mlev != mll) && (mlev.Monster != null))
                         if (mlev.Monster == mll.Monster)
                             throw new Exception("Тип монстра " + mll.Monster.ID + " повторяется.");
-            }
-        }
-    }
-
-    // Класс логова монстров
-    internal sealed class TypeLair : TypeMapObject
-    {
-        public TypeLair(XmlNode n) : base(n)
-        {
-            // Проверяем, что таких же ID и наименования нет
-            foreach (TypeLair tl in FormMain.Config.TypeLairs)
-            {
-                Debug.Assert(tl.ID != ID);
-                Debug.Assert(tl.Name != Name);
-                Debug.Assert(tl.ImageIndex != ImageIndex);
-            }
-
-            // Загружаем информацию об уровнях
-            XmlNode nl = n.SelectSingleNode("Levels");
-            if (nl != null)
-            {
-                LevelLair level;
-
-                foreach (XmlNode l in nl.SelectNodes("Level"))
-                {
-                    level = new LevelLair(l);
-                    LevelLairs.Add(level);
-                }
-            }
-            //else
-            //    throw new Exception("В конфигурации логова у " + ID + " нет информации об уровнях. ");
-        }
-
-        internal List<LevelLair> LevelLairs { get; } = new List<LevelLair>();
-
-        internal override void TuneDeferredLinks()
-        {
-            foreach (LevelLair ll in LevelLairs)
-            {
-                ll.TuneDeferredLinks();
             }
         }
     }

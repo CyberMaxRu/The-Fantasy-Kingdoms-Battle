@@ -58,6 +58,7 @@
       <Layer>
         <Number>1</Number>
         <CostScout>100</CostScout>
+        <CostAttack>250</CostAttack>
         <Lairs>
           <Lair>
             <ID>TradePlace</ID>
@@ -79,6 +80,7 @@
       <Layer>
         <Number>2</Number>
         <CostScout>200</CostScout>
+        <CostAttack>500</CostAttack>
         <Lairs>
           <Lair>
             <ID>TradePlace</ID>
@@ -100,6 +102,7 @@
       <Layer>
         <Number>3</Number>
         <CostScout>400</CostScout>
+        <CostAttack>1000</CostAttack>
         <Lairs>
           <Lair>
             <ID>TradePlace</ID>
