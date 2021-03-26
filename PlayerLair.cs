@@ -8,6 +8,7 @@ using System.Diagnostics;
 namespace Fantasy_Kingdoms_Battle
 {
     internal enum PriorityExecution { None = -1, Normal = 0, Warning = 1, High = 2, Exclusive = 3};
+    internal enum TypeFlag { None, Scout, Attack };
 
     // Класс логова игрока
     internal sealed class PlayerLair : BattleParticipant
@@ -34,6 +35,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<Monster> Monsters { get; } = new List<Monster>();// Монстры текущего уровня
 
         // Поддержка флага
+        internal TypeFlag TypeFlag { get; private set; } = TypeFlag.None;// Тип установленного флага
         internal int DaySetFlag { get; private set; }// День установки флага
         internal int SpendedGoldForSetFlag { get; private set; }// Сколько золота было потрачено на установку флага
         internal PriorityExecution PriorityFlag { get; private set; } = PriorityExecution.None;// Приоритет разведки/атаки
@@ -164,13 +166,22 @@ namespace Fantasy_Kingdoms_Battle
                 SpendedGoldForSetFlag += gold;
 
                 if (DaySetFlag == 0)
+                {
+                    Debug.Assert(TypeFlag == TypeFlag.None);
+                    TypeFlag = TypeFlag.Scout;
                     DaySetFlag = Player.Lobby.Turn;
+                }
+                else
+                {
+                    Debug.Assert(TypeFlag == TypeFlag.Scout);
+                }
                 PriorityFlag++;
 
                 //Debug.Assert()
             }
             else
             {
+                Debug.Assert(TypeFlag == TypeFlag.Attack);
             }
 
             if (PriorityFlag == PriorityExecution.Normal)
@@ -184,6 +195,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(PriorityFlag != PriorityExecution.None);
             Debug.Assert(SpendedGoldForSetFlag > 0);
             Debug.Assert(DaySetFlag > 0);
+            Debug.Assert(TypeFlag != TypeFlag.None);
 
             return DaySetFlag == Player.Lobby.Turn ? SpendedGoldForSetFlag : 0;
         }
@@ -193,12 +205,13 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(PriorityFlag != PriorityExecution.None);
             Debug.Assert(SpendedGoldForSetFlag > 0);
             Debug.Assert(DaySetFlag > 0);
-
+            Debug.Assert(TypeFlag != TypeFlag.None);
 
             Player.ReturnGold(Cashback());
             Player.RemoveFlag(this);
             SpendedGoldForSetFlag = 0;
             DaySetFlag = 0;
+            TypeFlag = TypeFlag.None;
             PriorityFlag = PriorityExecution.None;
         }
 
@@ -236,8 +249,10 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(ph != null);
             Debug.Assert(listAttackedHero.IndexOf(ph) == -1);
+            Debug.Assert(ph.StateCreature.ID == NameStateCreature.Nothing.ToString());
 
             listAttackedHero.Add(ph);
+            ph.SetState(ph.StateForFlag(TypeFlag));
         }
 
         internal void RemoveAttackingHero(PlayerHero ph)
@@ -245,6 +260,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(listAttackedHero.IndexOf(ph) != -1);
 
             listAttackedHero.Remove(ph);
+            ph.SetState(NameStateCreature.Nothing);
         }
     }
 }
