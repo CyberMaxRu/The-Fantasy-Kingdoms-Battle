@@ -5,8 +5,6 @@
     <Name>Чумное кладбище</Name>
     <Description>Не рекомендуется гулять по чумным кладбищам. Вас могут принять за зомби, которых полным полно в таких местах.</Description>
     <ImageIndex>79</ImageIndex>
-    <DefaultLevel>1</DefaultLevel>
-    <MaxLevel>1</MaxLevel>
     <SoundSelect>graveyard_select.wav</SoundSelect>
     <Monsters>
       <Monster>
@@ -28,8 +26,6 @@
     <Name>Древнее кладбище</Name>
     <Description>Эти кладбища появились еще при правлении первого Великого короля. На них, согласно легендам, похоронены герои, павшие в войне за объединение Ардании. В любую погоду здесь можно встретить скелеты или призраков воинов тех времен.</Description>
     <ImageIndex>75</ImageIndex>
-    <DefaultLevel>1</DefaultLevel>
-    <MaxLevel>1</MaxLevel>
     <SoundSelect>logovo_skeleton_select.wav</SoundSelect>
     <Monsters>
       <Monster>
@@ -59,8 +55,6 @@
     <Name>Склеп</Name>
     <Description>Древние фамильные склепы - удобное пристанище для древней фамильной нежити.</Description>
     <ImageIndex>76</ImageIndex>
-    <DefaultLevel>1</DefaultLevel>
-    <MaxLevel>1</MaxLevel>
     <SoundSelect>logovo_vampire_select.wav</SoundSelect>
     <Monsters>
       <Monster>
@@ -90,8 +84,6 @@
     <Name>Древний склеп</Name>
     <Description>Местные жители предпочитают не заглядывать в такие старые склепы по своей воле. Вдруг в них живут вампиры?</Description>
     <ImageIndex>136</ImageIndex>
-    <DefaultLevel>1</DefaultLevel>
-    <MaxLevel>1</MaxLevel>
     <SoundSelect>logovo_vampire_select.wav</SoundSelect>
     <Monsters>
       <Monster>
@@ -113,8 +105,6 @@
     <Name>Логово волков</Name>
     <Description>В таких местах, удивительно точно называемых "логовами волков", как правило, живут волки</Description>
     <ImageIndex>77</ImageIndex>
-    <DefaultLevel>1</DefaultLevel>
-    <MaxLevel>1</MaxLevel>
     <SoundSelect>logovo_wolf_select.wav</SoundSelect>
     <Monsters>
       <Monster>
@@ -144,8 +134,6 @@
     <Name>Гнездо змей</Name>
     <Description>Летающие змеи с удовольствием селятся в гнездах, прорытых арданийскими ласточками для хранения кокосов.</Description>
     <ImageIndex>74</ImageIndex>
-    <DefaultLevel>1</DefaultLevel>
-    <MaxLevel>1</MaxLevel>
     <SoundSelect>logovo_serpent_select.wav</SoundSelect>
     <Monsters>
       <Monster>
@@ -167,8 +155,6 @@
     <Name>Берлога</Name>
     <Description>Как и всякие приличные медведи, медведи Ардании предпочитают жить в берлогах.</Description>
     <ImageIndex>65</ImageIndex>
-    <DefaultLevel>1</DefaultLevel>
-    <MaxLevel>1</MaxLevel>
     <SoundSelect>logovo_bear_select.wav</SoundSelect>
     <Monsters>
       <Monster>
@@ -198,8 +184,6 @@
     <Name>Берлога охотника</Name>
     <Description>Охотники, укушенные медведем-шатуном, по традиции делают себе такие берлоги.</Description>
     <ImageIndex>66</ImageIndex>
-    <DefaultLevel>1</DefaultLevel>
-    <MaxLevel>1</MaxLevel>
     <SoundSelect>logovo_bearman_select.wav</SoundSelect>
     <Monsters>
       <Monster>
@@ -221,8 +205,6 @@
     <Name>Пирамида минотавров</Name>
     <Description>Пирамиды - единственная архитектурная форма, которую сумели освоить минотавры.</Description>
     <ImageIndex>71</ImageIndex>
-    <DefaultLevel>1</DefaultLevel>
-    <MaxLevel>1</MaxLevel>
     <SoundSelect>logovo_minotaur_select.wav</SoundSelect>
     <Monsters>
       <Monster>
@@ -252,8 +234,6 @@
     <Name>Пещера огров</Name>
     <Description>Такие пещеры - основное место обитания огра арданийского обыкновенного.</Description>
     <ImageIndex>72</ImageIndex>
-    <DefaultLevel>1</DefaultLevel>
-    <MaxLevel>1</MaxLevel>
     <SoundSelect>logovo_ogre_select.wav</SoundSelect>
     <Monsters>
       <Monster>
@@ -275,8 +255,6 @@
     <Name>Дом отшельника</Name>
     <Description>Первое, на что обращают внимание путники, подходя к дому отшельника - на кости других путников, подходивших к этому дому ранее.</Description>
     <ImageIndex>78</ImageIndex>
-    <DefaultLevel>1</DefaultLevel>
-    <MaxLevel>1</MaxLevel>
     <SoundSelect>logovo_wolfman_select.wav</SoundSelect>
     <Monsters>
       <Monster>
@@ -298,8 +276,6 @@
     <Name>Пещера дракона</Name>
     <Description>Пещеры драконов всегда полны сокровищ и скелетов тех, кто искал эти сокровища.</Description>
     <ImageIndex>68</ImageIndex>
-    <DefaultLevel>1</DefaultLevel>
-    <MaxLevel>1</MaxLevel>
     <SoundSelect>logovo_boss_dragon_select.wav</SoundSelect>
     <Monsters>
       <Monster>
@@ -321,8 +297,6 @@
     <Name>Королевская канализация</Name>
     <Description>Сир, это не просто канализация! В таких обычно живут и передвигаются крысиные предводители, например Король Крыс Пятый.</Description>
     <ImageIndex>117</ImageIndex>
-    <DefaultLevel>1</DefaultLevel>
-    <MaxLevel>1</MaxLevel>
     <SoundSelect>sewers_select.wav</SoundSelect>
     <Monsters>
       <Monster>
@@ -344,8 +318,6 @@
     <Name>Удобное торговое место</Name>
     <Description>Это удобное место лучше всего подходит под строительство торгового поста.</Description>
     <ImageIndex>113</ImageIndex>
-    <DefaultLevel>1</DefaultLevel>
-    <MaxLevel>1</MaxLevel>
     <SoundSelect>tradepost_place_select.wav</SoundSelect>
     <Reward>
       <PointTradePost>1</PointTradePost>
@@ -356,8 +328,6 @@
     <Name>Сундук с сокровищами</Name>
     <Description>Сундуки с сокровищами встречаются в Ардании даже чаще, чем крысы В некоторых землях герои по два урожая сундуков в год!</Description>
     <ImageIndex>120</ImageIndex>
-    <DefaultLevel>1</DefaultLevel>
-    <MaxLevel>1</MaxLevel>
     <SoundSelect>chest_select.wav</SoundSelect>
     <Reward>
       <MinGold>1000</MinGold>
@@ -369,8 +339,6 @@
     <Name>Трон элементов Молнии</Name>
     <Description>Троны элементов вызывают живейший интерес ученых, постоянно собирающих экспедиции к подобным местам. Этот факт серьезно сдерживает развитие науки в Ардании.</Description>
     <ImageIndex>109</ImageIndex>
-    <DefaultLevel>1</DefaultLevel>
-    <MaxLevel>1</MaxLevel>
     <SoundSelect>logovo_elemental_earth_select.wav</SoundSelect>
     <Monsters>
       <Monster>
@@ -392,8 +360,6 @@
     <Name>Трон элементов Огня</Name>
     <Description>Троны элементов вызывают живейший интерес ученых, постоянно собирающих экспедиции к подобным местам. Этот факт серьезно сдерживает развитие науки в Ардании.</Description>
     <ImageIndex>69</ImageIndex>
-    <DefaultLevel>1</DefaultLevel>
-    <MaxLevel>1</MaxLevel>
     <SoundSelect>logovo_elemental_fire_select.wav</SoundSelect>
     <Monsters>
       <Monster>

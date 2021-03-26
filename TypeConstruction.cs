@@ -20,6 +20,14 @@ namespace Fantasy_Kingdoms_Battle
             Pos = XmlUtils.GetInteger(n.SelectSingleNode("Pos"));
             HasTreasury = XmlUtils.GetBool(n.SelectSingleNode("HasTreasury"), false);
             GoldByConstruction = XmlUtils.GetInteger(n.SelectSingleNode("GoldByConstruction"));
+            DefaultLevel = XmlUtils.GetInteger(n.SelectSingleNode("DefaultLevel"));
+            MaxLevel = Convert.ToInt32(n.SelectSingleNode("MaxLevel").InnerText);
+
+            Debug.Assert(DefaultLevel >= 0);
+            Debug.Assert(DefaultLevel <= 5);
+            Debug.Assert(MaxLevel > 0);
+            Debug.Assert(MaxLevel <= 5);
+            Debug.Assert(DefaultLevel <= MaxLevel);
 
             // Загружаем информацию об уровнях
             Levels = new Level[MaxLevel + 1];// Для упрощения работы с уровнями, добавляем 1, чтобы уровень был равен индексу в массиве
@@ -80,6 +88,9 @@ namespace Fantasy_Kingdoms_Battle
         internal Page Page { get; }
         internal int Line { get; }// Линия сооружения 
         internal int Pos { get; }// Позиция сооружения в линии
+        internal int DefaultLevel { get; }
+        internal int MaxLevel { get; }
+
         internal Level[] Levels;
         internal Research[,,] Researches;
         internal PanelConstruction Panel { get; set; }

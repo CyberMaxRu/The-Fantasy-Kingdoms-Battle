@@ -15,21 +15,10 @@ namespace Fantasy_Kingdoms_Battle
 
         public TypeMapObject(XmlNode n) : base(n)
         {
-            DefaultLevel = XmlUtils.GetInteger(n.SelectSingleNode("DefaultLevel"));
-            MaxLevel = Convert.ToInt32(n.SelectSingleNode("MaxLevel").InnerText);
             string filenameSoundSelect = XmlUtils.GetString(n.SelectSingleNode("SoundSelect"));
             if (filenameSoundSelect.Length > 0)
                 uriSoundSelect = new Uri(Program.formMain.dirResources + @"Sound\Interface\ConstructionSelect\" + filenameSoundSelect);
-
-            Debug.Assert(DefaultLevel >= 0);
-            Debug.Assert(DefaultLevel <= 5);
-            Debug.Assert(MaxLevel > 0);
-            Debug.Assert(MaxLevel <= 5);
-            Debug.Assert(DefaultLevel <= MaxLevel);
         }
-
-        internal int DefaultLevel { get; }
-        internal int MaxLevel { get; }
 
         internal void PlaySoundSelect()
         {
