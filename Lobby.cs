@@ -158,7 +158,7 @@ namespace Fantasy_Kingdoms_Battle
 
             //CalcBattles();
 
-            CalcEndTurn();
+            CalcResultTurn();
 
             SortPlayers();
 
@@ -308,7 +308,7 @@ namespace Fantasy_Kingdoms_Battle
                     p.CalcFinalityTurn();
         }
 
-        private void CalcEndTurn()
+        private void CalcResultTurn()
         {
             // Делаем расчет итогов дня
             int livePlayers = 0;
