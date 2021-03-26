@@ -94,7 +94,6 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             MaxHeroes = XmlUtils.GetInteger(n.SelectSingleNode("MaxHeroes"));
-            Cost = XmlUtils.GetInteger(n.SelectSingleNode("Cost"));
             // Информация о награде
             if (n.SelectSingleNode("Reward") != null)
                 Reward = new RewardLevelLair(n.SelectSingleNode("Reward"));
@@ -108,15 +107,12 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Debug.Assert(MaxHeroes == 0);
             }
-            Debug.Assert(Cost >= 0);
-            Debug.Assert(Cost < 100_000);
-
+            
             //else
             //    throw new Exception("В конфигурации логова у " + ID + " нет информации об уровнях. ");
         }
 
         internal List<MonsterLevelLair> Monsters { get; } = new List<MonsterLevelLair>();
-        internal int Cost { get; }
         internal int MaxHeroes { get; }// Максимальное количество героев, которое может атаковать логово
         internal RewardLevelLair Reward { get; }
 
