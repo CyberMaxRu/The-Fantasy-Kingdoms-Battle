@@ -191,6 +191,9 @@ namespace Fantasy_Kingdoms_Battle
             foreach (TypeMapObject tc in TypeConstructions)
                 tc.TuneDeferredLinks();
 
+            foreach (TypeLobby tl in TypeLobbies)
+                tl.TuneDeferredLinks();
+
             //foreach (TypeLair l in TypeLairs)
             //    l.TuneDeferredLinks();
 
@@ -405,6 +408,17 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             throw new Exception("Вид существа " + ID + " не найден.");
+        }
+
+        internal TypeLair FindTypeLair(string ID)
+        {
+            foreach (TypeLair tl in TypeLairs)
+            {
+                if (tl.ID == ID)
+                    return tl;
+            }
+
+            throw new Exception($"Тип логова {ID} не найден.");
         }
 
         internal Ability FindAbility(string ID)

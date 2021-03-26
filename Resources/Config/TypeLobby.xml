@@ -13,6 +13,9 @@
     <StartPointConstructionEconomic>2</StartPointConstructionEconomic>
     <PointConstructionGuildPerDay>1</PointConstructionGuildPerDay>
     <PointConstructionEconomicPerDay>1</PointConstructionEconomicPerDay>
+    <LairsLayers>3</LairsLayers>
+    <LairsWidth>4</LairsWidth>
+    <LairsHeight>3</LairsHeight>
     <CoefficientFlags>
       <Scout>
         <Priority>
@@ -55,14 +58,65 @@
       <Layer>
         <Number>1</Number>
         <CostScout>100</CostScout>
+        <Lairs>
+          <Lair>
+            <ID>TradePlace</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>3</MaxQuantity>
+          </Lair>
+          <Lair>
+            <ID>Chest</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>3</MaxQuantity>
+          </Lair>
+          <Lair>
+            <ID>GraveyardZombie</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>10</MaxQuantity>
+          </Lair>
+        </Lairs>
       </Layer>
       <Layer>
         <Number>2</Number>
         <CostScout>200</CostScout>
+        <Lairs>
+          <Lair>
+            <ID>TradePlace</ID>
+            <MinQuantity>5</MinQuantity>
+            <MaxQuantity>15</MaxQuantity>
+          </Lair>
+          <Lair>
+            <ID>Chest</ID>
+            <MinQuantity>5</MinQuantity>
+            <MaxQuantity>15</MaxQuantity>
+          </Lair>
+          <Lair>
+            <ID>GraveyardZombie</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>10</MaxQuantity>
+          </Lair>
+        </Lairs>
       </Layer>
       <Layer>
         <Number>3</Number>
         <CostScout>400</CostScout>
+        <Lairs>
+          <Lair>
+            <ID>TradePlace</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>3</MaxQuantity>
+          </Lair>
+          <Lair>
+            <ID>Chest</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>3</MaxQuantity>
+          </Lair>
+          <Lair>
+            <ID>GraveyardZombie</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>10</MaxQuantity>
+          </Lair>
+        </Lairs>
       </Layer>
     </LairSettings>
   </TypeLobby>

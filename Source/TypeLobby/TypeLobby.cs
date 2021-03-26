@@ -25,6 +25,9 @@ namespace Fantasy_Kingdoms_Battle
             PointConstructionGuildPerDay = XmlUtils.GetInteger(n.SelectSingleNode("PointConstructionGuildPerDay"));
             PointConstructionEconomicPerDay = XmlUtils.GetInteger(n.SelectSingleNode("PointConstructionEconomicPerDay"));
             DayStartTournament = XmlUtils.GetInteger(n.SelectSingleNode("DayStartTournament"));
+            LairsLayers = XmlUtils.GetInteger(n.SelectSingleNode("LairsLayers"));
+            LairsWidth = XmlUtils.GetInteger(n.SelectSingleNode("LairsWidth"));
+            LairsHeight = XmlUtils.GetInteger(n.SelectSingleNode("LairsHeight"));
 
             Debug.Assert(Name.Length > 0);
             Debug.Assert(QuantityPlayers >= 2);
@@ -49,6 +52,12 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(PointConstructionGuildPerDay <= 10);
             Debug.Assert(PointConstructionEconomicPerDay >= 1);
             Debug.Assert(PointConstructionEconomicPerDay <= 10);
+            Debug.Assert(LairsLayers >= 1);
+            Debug.Assert(LairsLayers <= 5);
+            Debug.Assert(LairsWidth >= 2);
+            Debug.Assert(LairsWidth <= 5);
+            Debug.Assert(LairsHeight >= 1);
+            Debug.Assert(LairsHeight <= 4);
             Debug.Assert(DayStartTournament >= 2);
             Debug.Assert(DayStartTournament <= 50);
 
@@ -66,12 +75,12 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(layers >= 1);
             Debug.Assert(layers <= FormMain.MAX_LAIR_LAYERS);
 
-            LairSettings = new TypeLobbyLairSettings[layers];
-            TypeLobbyLairSettings ls;
+            LairSettings = new TypeLobbyLayerSettings[layers];
+            TypeLobbyLayerSettings ls;
 
             foreach (XmlNode l in nodeLairSettings.SelectNodes("Layer"))
             {
-                ls = new TypeLobbyLairSettings(l);
+                ls = new TypeLobbyLayerSettings(l, LairsWidth * LairsHeight);
 
                 Debug.Assert(ls.Number >= 0);
                 Debug.Assert(ls.Number <= FormMain.MAX_LAIR_LAYERS - 1);
@@ -83,6 +92,8 @@ namespace Fantasy_Kingdoms_Battle
             // Проверяем, что указаны все слои
             for (int i = 0; i < LairSettings.Length; i++)
                 Debug.Assert(LairSettings[i] != null);
+
+            // Проверяем, что количество у слоев указано корректно
 
             // Загружаем настройку коэффициентов для флагов разведки и атаки
             CoefFlagScout = LoadCoef(n.SelectSingleNode("CoefficientFlags/Scout"));
@@ -134,8 +145,19 @@ namespace Fantasy_Kingdoms_Battle
         internal int StartPointConstructionEconomic { get; }
         internal int PointConstructionGuildPerDay { get; }
         internal int PointConstructionEconomicPerDay { get; }
-        internal TypeLobbyLairSettings[] LairSettings { get; }
+        internal int LairsLayers{ get; }
+        internal int LairsWidth { get; }
+        internal int LairsHeight { get; }
+        internal TypeLobbyLayerSettings[] LairSettings { get; }
         internal int[] CoefFlagScout { get; }
         internal int[] CoefFlagAttack { get; }
+
+        internal void TuneDeferredLinks()
+        {
+            foreach (TypeLobbyLayerSettings ls in LairSettings)
+            {
+                ls.TuneDeferredLinks();
+            }
+        }
     }
 }

@@ -45,7 +45,7 @@ namespace Fantasy_Kingdoms_Battle
         private void CreateMonsters()
         {
             Debug.Assert(TypeLair.LevelLairs.Count <= Level);
-            Debug.Assert(TypeLair.LevelLairs[Level - 1].Monsters.Count > 0);
+            //Debug.Assert(TypeLair.LevelLairs[Level - 1].Monsters.Count > 0);
 
             Monster lm;
             foreach (MonsterLevelLair mll in TypeLair.LevelLairs[Level - 1].Monsters)
