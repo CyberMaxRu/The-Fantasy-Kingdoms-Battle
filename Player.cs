@@ -184,7 +184,7 @@ namespace Fantasy_Kingdoms_Battle
         // Логова
         internal PlayerLair[,,] Lairs { get; }
         internal List<PlayerLair> ListFlags { get; } = new List<PlayerLair>();
-        internal Dictionary<PriorityExecution, int> QuantityFlags = new Dictionary<PriorityExecution, int>();
+        internal Dictionary<PriorityExecution, int> QuantityFlags { get; } = new Dictionary<PriorityExecution, int>();
 
         // Статистика по боям
         internal int Wins { get; set; }
@@ -267,6 +267,8 @@ namespace Fantasy_Kingdoms_Battle
             {
                 RearrangeHeroes();
             }
+
+            SetTaskForHeroes();
 
             if (TypePlayer == TypePlayer.Human)
                 Program.formMain.ListHeroesChanged();
@@ -543,6 +545,8 @@ namespace Fantasy_Kingdoms_Battle
         // Метод по распределению задач героев
         internal void SetTaskForHeroes()
         {
+            List<PlayerHero> freeHeroes = new List<PlayerHero>();// Список свободных героев
+
             // Сначала сбрасываем всем состояние
             foreach (PlayerHero ph in CombatHeroes)
             {
@@ -551,9 +555,61 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     ph.ClearState();
                 }
+
+                if (ph.StateCreature.ID == NameStateCreature.Nothing.ToString())
+                    freeHeroes.Add(ph);
             }
 
-            // Базовый алгоритм такой - смотрим приоритеты флагов
+            // Базовый алгоритм такой - идем по уменьшению приоритета, берем рандомных героев, ограничивая максимальным числом
+            // Но сейчас всех героев делим поровну между флагами, без привязки к приоритету
+            // Но учитываем максимальное число героев на логово
+            // Это если речь идет о флаге атаки. На разведку идет ровно один герой
+            if ((freeHeroes.Count > 0) && (CountActiveFlags() > 0))
+            {
+                foreach (PlayerLair pl in ListFlags.Where(pl => (pl != null) && (pl.TypeFlag == TypeFlag.Scout)))
+                {
+                    pl.AddAttackingHero(freeHeroes[0]);
+                    freeHeroes.RemoveAt(0);
+
+                    if (freeHeroes.Count == 0)
+                        break;
+                }
+
+                if (freeHeroes.Count > 0)
+                {
+                    int quantityFlagAttack = ListFlags.Where(pl => (pl != null) && (pl.TypeFlag == TypeFlag.Attack)).Count();
+                    if (quantityFlagAttack > 0)
+                    {
+                        int heroesToFlag;
+                        int heroesPerFlag = Math.Max(freeHeroes.Count / quantityFlagAttack, 1);
+
+                        foreach (PlayerLair pl in ListFlags)
+                            if (pl != null)
+                            {
+                                heroesToFlag = Math.Min(Math.Min(freeHeroes.Count, heroesPerFlag), pl.TypeLair.MaxHeroes);
+
+                                for (int i = 0; i < heroesToFlag; i++)
+                                {
+                                    pl.AddAttackingHero(freeHeroes[0]);
+                                    freeHeroes.RemoveAt(0);
+                                }
+
+                                if (freeHeroes.Count == 0)
+                                    break;
+                            }
+                    }
+                }
+            }
+        }
+
+        private int CountActiveFlags()
+        {
+            int count = 0;
+            foreach (PlayerLair pl in ListFlags)
+                if (pl != null)
+                    count++;
+
+            return count;
         }
 
         internal override void HideInfo()
@@ -597,7 +653,7 @@ namespace Fantasy_Kingdoms_Battle
                     QuantityFlags[PriorityExecution.None]--;
                     QuantityFlags[lair.PriorityFlag]++;
                     CheckFlags();
-                    Program.formMain.LairsWithFlagChanged();
+                    SetTaskForHeroes();
 
                     return;
                 }
@@ -614,7 +670,7 @@ namespace Fantasy_Kingdoms_Battle
             QuantityFlags[lair.PriorityFlag]++;
 
             CheckFlags();
-            Program.formMain.LairsWithFlagChanged();
+            SetTaskForHeroes();
         }
 
 
@@ -634,7 +690,7 @@ namespace Fantasy_Kingdoms_Battle
             QuantityFlags[lair.PriorityFlag]--;
 
             CheckFlags();
-            Program.formMain.LairsWithFlagChanged();
+            SetTaskForHeroes();
         }
 
         private void CheckFlags()
