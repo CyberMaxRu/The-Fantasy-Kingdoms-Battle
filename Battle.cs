@@ -20,8 +20,8 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(player1 != null);
             Debug.Assert(player2 != null);
             Debug.Assert(player1 != player2);
-            Debug.Assert(player1.BattleCalced == false);
-            Debug.Assert(player2.BattleCalced == false);
+            //Debug.Assert(player1.BattleCalced == false);
+            //Debug.Assert(player2.BattleCalced == false);
             Debug.Assert(player1.IsLive == true);
             Debug.Assert(player2.IsLive == true);
 
@@ -37,9 +37,17 @@ namespace Fantasy_Kingdoms_Battle
             Battlefield = new Battlefield(SizeBattlefield.Width, SizeBattlefield.Height);
 
             // Запоминаем героев в одном списке для упрощения расчетов
-            foreach (Creature ph in player1.CombatHeroes)
+            if (player2 is PlayerLair pl)
             {
-                AddHero(new HeroInBattle(this, ph, ph.CoordInPlayer, showForPlayer));
+                foreach (PlayerHero ph in pl.listAttackedHero)
+                    AddHero(new HeroInBattle(this, ph, ph.CoordInPlayer, showForPlayer));
+            }
+            else
+            {
+                foreach (Creature ph in player1.CombatHeroes)
+                {
+                    AddHero(new HeroInBattle(this, ph, ph.CoordInPlayer, showForPlayer));
+                }
             }
 
             foreach (Creature ph in player2.CombatHeroes)
