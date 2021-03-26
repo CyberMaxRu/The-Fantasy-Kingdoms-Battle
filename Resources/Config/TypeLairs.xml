@@ -391,4 +391,95 @@
       </Level>
     </Levels>
   </TypeLair>
+  <TypeLair>
+    <ID>TradePlace</ID>
+    <Name>Удобное торговое место</Name>
+    <Description>Это удобное место лучше всего подходит под строительство торгового поста.</Description>
+    <ImageIndex>113</ImageIndex>
+    <Line>1</Line>
+    <DefaultLevel>1</DefaultLevel>
+    <MaxLevel>1</MaxLevel>
+    <SoundSelect>tradepost_place_select.wav</SoundSelect>
+    <Levels>
+      <Level>
+        <Cost>0</Cost>
+        <Reward>
+          <PointTradePost>1</PointTradePost>
+        </Reward>
+      </Level>
+    </Levels>
+  </TypeLair>
+  <TypeLair>
+    <ID>Chest</ID>
+    <Name>Сундук с сокровищами</Name>
+    <Description>Сундуки с сокровищами встречаются в Ардании даже чаще, чем крысы В некоторых землях герои по два урожая сундуков в год!</Description>
+    <ImageIndex>120</ImageIndex>
+    <Line>1</Line>
+    <DefaultLevel>1</DefaultLevel>
+    <MaxLevel>1</MaxLevel>
+    <SoundSelect>chest_select.wav</SoundSelect>
+    <Levels>
+      <Level>
+        <Cost>0</Cost>
+        <Reward>
+          <MinGold>1000</MinGold>
+          <MaxGold>2000</MaxGold>
+        </Reward>
+      </Level>
+    </Levels>
+  </TypeLair>
+  <TypeLair>
+    <ID>ThroneLightning</ID>
+    <Name>Трон элементов Молнии</Name>
+    <Description>Троны элементов вызывают живейший интерес ученых, постоянно собирающих экспедиции к подобным местам. Этот факт серьезно сдерживает развитие науки в Ардании.</Description>
+    <ImageIndex>109</ImageIndex>
+    <Line>2</Line>
+    <DefaultLevel>1</DefaultLevel>
+    <MaxLevel>1</MaxLevel>
+    <SoundSelect>logovo_elemental_earth_select.wav</SoundSelect>
+    <Levels>
+      <Level>
+        <Cost>0</Cost>
+        <Monster>
+          <ID>ElementalEarth</ID>
+          <StartQuantity>2</StartQuantity>
+          <MaxQuantity>2</MaxQuantity>
+          <Level>15</Level>
+          <DaysRespawn>2</DaysRespawn>
+          <QuantityRespawn>1</QuantityRespawn>
+        </Monster>
+        <Reward>
+          <MinGold>1000</MinGold>
+          <MaxGold>2000</MaxGold>
+        </Reward>
+      </Level>
+    </Levels>
+  </TypeLair>
+  <TypeLair>
+    <ID>ThroneFire</ID>
+    <Name>Трон элементов Огня</Name>
+    <Description>Троны элементов вызывают живейший интерес ученых, постоянно собирающих экспедиции к подобным местам. Этот факт серьезно сдерживает развитие науки в Ардании.</Description>
+    <ImageIndex>69</ImageIndex>
+    <Line>2</Line>
+    <DefaultLevel>1</DefaultLevel>
+    <MaxLevel>1</MaxLevel>
+    <SoundSelect>logovo_elemental_fire_select.wav</SoundSelect>
+    <Levels>
+      <Level>
+        <Cost>0</Cost>
+        <Monster>
+          <ID>ElementalFire</ID>
+          <StartQuantity>2</StartQuantity>
+          <MaxQuantity>2</MaxQuantity>
+          <Level>15</Level>
+          <DaysRespawn>2</DaysRespawn>
+          <QuantityRespawn>1</QuantityRespawn>
+        </Monster>
+        <Reward>
+          <MinGold>1000</MinGold>
+          <MaxGold>2000</MaxGold>
+        </Reward>
+      </Level>
+    </Levels>
+  </TypeLair>
 </TypeLairs>

@@ -770,4 +770,74 @@
       <Ability>DragonBasicAttack</Ability>
     </Abilities>
   </TypeMonster>
+  <TypeMonster>
+    <ID>ElementalEarth</ID>
+    <Name>Элементаль молнии</Name>
+    <Description>При виде человека элементаль молнии начинает светиться характерным ярким светом. Некоторые исследователи полагают, что такое поведение элементалей - всего лишь радостное приветствие.</Description>
+    <ImageIndex>24</ImageIndex>
+    <KindCreature>MagicCreature</KindCreature>
+    <Reward>125</Reward>
+    <MaxLevel>15</MaxLevel>
+    <DefaultPositionPriority>11</DefaultPositionPriority>
+    <BaseParameters>
+      <Strength>20</Strength>
+      <Dexterity>10</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>50</Vitality>
+      <SecondsToMove>2.0</SecondsToMove>
+      <Inititative>5</Inititative>
+      <CoefHealth>3</CoefHealth>
+      <CoefMana>1</CoefMana>
+      <CoefStamina>3</CoefStamina>
+    </BaseParameters>
+    <NextLevel>
+      <StatPoints>5</StatPoints>
+      <WeightStrength>40</WeightStrength>
+      <WeightDexterity>10</WeightDexterity>
+      <WeightMagic>10</WeightMagic>
+      <WeightVitality>40</WeightVitality>
+      <Health>5</Health>
+      <Mana>2</Mana>
+      <Stamina>4</Stamina>
+      <ResistMagic>0</ResistMagic>
+    </NextLevel>
+    <Abilities>
+      <Ability>DragonBasicAttack</Ability>
+    </Abilities>
+  </TypeMonster>
+  <TypeMonster>
+    <ID>ElementalFire</ID>
+    <Name>Элементаль огня</Name>
+    <Description>Элементалей плана огня можно легко отличить от прочих элементалей по пламени, охватывающем одежду тех, кто приближается к ним слишком близко.</Description>
+    <ImageIndex>25</ImageIndex>
+    <KindCreature>MagicCreature</KindCreature>
+    <Reward>125</Reward>
+    <MaxLevel>15</MaxLevel>
+    <DefaultPositionPriority>12</DefaultPositionPriority>
+    <BaseParameters>
+      <Strength>20</Strength>
+      <Dexterity>10</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>50</Vitality>
+      <SecondsToMove>2.0</SecondsToMove>
+      <Inititative>5</Inititative>
+      <CoefHealth>3</CoefHealth>
+      <CoefMana>1</CoefMana>
+      <CoefStamina>3</CoefStamina>
+    </BaseParameters>
+    <NextLevel>
+      <StatPoints>5</StatPoints>
+      <WeightStrength>40</WeightStrength>
+      <WeightDexterity>10</WeightDexterity>
+      <WeightMagic>10</WeightMagic>
+      <WeightVitality>40</WeightVitality>
+      <Health>5</Health>
+      <Mana>2</Mana>
+      <Stamina>4</Stamina>
+      <ResistMagic>0</ResistMagic>
+    </NextLevel>
+    <Abilities>
+      <Ability>DragonBasicAttack</Ability>
+    </Abilities>
+  </TypeMonster>
 </TypeMonsters>
