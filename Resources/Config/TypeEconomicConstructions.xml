@@ -532,7 +532,7 @@
   <TypeConstructionEconomic>
     <ID>Tavern</ID>
     <Name>Таверна</Name>
-    <Description>- Здесь героя могут отдыхать и лечиться/- Позволяет собирать партии героев</Description>
+    <Description>- Здесь герои могут отдыхать и лечиться/- Позволяет собирать партии героев</Description>
     <ImageIndex>89</ImageIndex>
     <Page>Economic</Page>
     <Line>3</Line>
