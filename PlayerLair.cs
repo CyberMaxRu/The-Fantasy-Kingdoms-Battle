@@ -231,5 +231,20 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.panelLairInfo.Visible = true;
             Program.formMain.panelLairInfo.PlayerObject = this;
         }
+
+        internal void AddAttackingHero(PlayerHero ph)
+        {
+            Debug.Assert(ph != null);
+            Debug.Assert(listAttackedHero.IndexOf(ph) == -1);
+
+            listAttackedHero.Add(ph);
+        }
+
+        internal void RemoveAttackingHero(PlayerHero ph)
+        {
+            Debug.Assert(listAttackedHero.IndexOf(ph) != -1);
+
+            listAttackedHero.Remove(ph);
+        }
     }
 }
