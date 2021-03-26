@@ -540,9 +540,20 @@ namespace Fantasy_Kingdoms_Battle
                     + (IsLive ? "" : Environment.NewLine + "Игрок покинул лобби на " + DayOfDie + " ходу"));
         }
 
+        // Метод по распределению задач героев
         internal void SetTaskForHeroes()
         {
+            // Сначала сбрасываем всем состояние
+            foreach (PlayerHero ph in CombatHeroes)
+            {
+                if ((ph.StateCreature.ID == NameStateCreature.DoAttackFlag.ToString())
+                    || (ph.StateCreature.ID == NameStateCreature.DoScoutFlat.ToString()))                    
+                {
+                    ph.ClearState();
+                }
+            }
 
+            // Базовый алгоритм такой - смотрим приоритеты флагов
         }
 
         internal override void HideInfo()
@@ -663,17 +674,20 @@ namespace Fantasy_Kingdoms_Battle
 
                 foreach (TypeLobbyLairSettings l in ls.LairsSettings)
                 {
-                    Debug.Assert(cells.Count > 0);
+                    for (int j = 0; j < l.MinQuantity; j++)
+                    {
+                        Debug.Assert(cells.Count > 0);
 
-                    // Берем случайную ячейку
-                    idx = r.Next(cells.Count);
+                        // Берем случайную ячейку
+                        idx = r.Next(cells.Count);
 
-                    // Помещаем в нее логово
-                    Debug.Assert(Lairs[i, cells[idx].Y, cells[idx].X] == null);
-                    Lairs[i, cells[idx].Y, cells[idx].X] = new PlayerLair(this, l.TypeLair, i);
+                        // Помещаем в нее логово
+                        Debug.Assert(Lairs[i, cells[idx].Y, cells[idx].X] == null);
+                        Lairs[i, cells[idx].Y, cells[idx].X] = new PlayerLair(this, l.TypeLair, i);
 
-                    // Убираем ячейку из списка доступных
-                    cells.RemoveAt(idx);
+                        // Убираем ячейку из списка доступных
+                        cells.RemoveAt(idx);
+                    }
                 }
 
                 // Если остались свободные ячейки, генерируем по данным о максимальном количестве
