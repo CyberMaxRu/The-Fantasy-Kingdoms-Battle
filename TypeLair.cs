@@ -90,6 +90,7 @@ namespace Fantasy_Kingdoms_Battle
                 Monsters.Add(mll);
             }
 
+            MaxHeroes = XmlUtils.GetInteger(n.SelectSingleNode("MaxHeroes"));
             Cost = XmlUtils.GetInteger(n.SelectSingleNode("Cost"));
             // Информация о награде
             if (n.SelectSingleNode("Reward") != null)
@@ -104,6 +105,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal List<MonsterLevelLair> Monsters { get; } = new List<MonsterLevelLair>();
         internal int Cost { get; }
+        internal int MaxHeroes { get; }// Максимальное количество героев, которое может атаковать логово
         internal RewardLevelLair Reward { get; }
 
         internal override void TuneDeferredLinks()

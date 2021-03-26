@@ -4,8 +4,9 @@
     <ID>GraveyardZombie</ID>
     <Name>Чумное кладбище</Name>
     <Description>Не рекомендуется гулять по чумным кладбищам. Вас могут принять за зомби, которых полным полно в таких местах.</Description>
-    <ImageIndex>79</ImageIndex>
+    <ImageIndex>79</ImageIndex>    
     <SoundSelect>graveyard_select.wav</SoundSelect>
+    <MaxHeroes>4</MaxHeroes>
     <Monsters>
       <Monster>
         <ID>Zombie</ID>
@@ -27,6 +28,7 @@
     <Description>Эти кладбища появились еще при правлении первого Великого короля. На них, согласно легендам, похоронены герои, павшие в войне за объединение Ардании. В любую погоду здесь можно встретить скелеты или призраков воинов тех времен.</Description>
     <ImageIndex>75</ImageIndex>
     <SoundSelect>logovo_skeleton_select.wav</SoundSelect>
+    <MaxHeroes>4</MaxHeroes>
     <Monsters>
       <Monster>
         <ID>Skelet</ID>
@@ -56,6 +58,7 @@
     <Description>Древние фамильные склепы - удобное пристанище для древней фамильной нежити.</Description>
     <ImageIndex>76</ImageIndex>
     <SoundSelect>logovo_vampire_select.wav</SoundSelect>
+    <MaxHeroes>5</MaxHeroes>
     <Monsters>
       <Monster>
         <ID>Ghost</ID>
@@ -85,6 +88,7 @@
     <Description>Местные жители предпочитают не заглядывать в такие старые склепы по своей воле. Вдруг в них живут вампиры?</Description>
     <ImageIndex>136</ImageIndex>
     <SoundSelect>logovo_vampire_select.wav</SoundSelect>
+    <MaxHeroes>6</MaxHeroes>
     <Monsters>
       <Monster>
         <ID>Vampire</ID>
@@ -106,6 +110,7 @@
     <Description>В таких местах, удивительно точно называемых "логовами волков", как правило, живут волки</Description>
     <ImageIndex>77</ImageIndex>
     <SoundSelect>logovo_wolf_select.wav</SoundSelect>
+    <MaxHeroes>4</MaxHeroes>
     <Monsters>
       <Monster>
         <ID>Wolf</ID>
@@ -135,6 +140,7 @@
     <Description>Летающие змеи с удовольствием селятся в гнездах, прорытых арданийскими ласточками для хранения кокосов.</Description>
     <ImageIndex>74</ImageIndex>
     <SoundSelect>logovo_serpent_select.wav</SoundSelect>
+    <MaxHeroes>5</MaxHeroes>
     <Monsters>
       <Monster>
         <ID>Serpent</ID>
@@ -156,6 +162,7 @@
     <Description>Как и всякие приличные медведи, медведи Ардании предпочитают жить в берлогах.</Description>
     <ImageIndex>65</ImageIndex>
     <SoundSelect>logovo_bear_select.wav</SoundSelect>
+    <MaxHeroes>6</MaxHeroes>
     <Monsters>
       <Monster>
         <ID>Bear</ID>
@@ -185,6 +192,7 @@
     <Description>Охотники, укушенные медведем-шатуном, по традиции делают себе такие берлоги.</Description>
     <ImageIndex>66</ImageIndex>
     <SoundSelect>logovo_bearman_select.wav</SoundSelect>
+    <MaxHeroes>8</MaxHeroes>
     <Monsters>
       <Monster>
         <ID>WerewolfBear</ID>
@@ -206,6 +214,7 @@
     <Description>Пирамиды - единственная архитектурная форма, которую сумели освоить минотавры.</Description>
     <ImageIndex>71</ImageIndex>
     <SoundSelect>logovo_minotaur_select.wav</SoundSelect>
+    <MaxHeroes>8</MaxHeroes>
     <Monsters>
       <Monster>
         <ID>Minotaur</ID>
@@ -235,6 +244,7 @@
     <Description>Такие пещеры - основное место обитания огра арданийского обыкновенного.</Description>
     <ImageIndex>72</ImageIndex>
     <SoundSelect>logovo_ogre_select.wav</SoundSelect>
+    <MaxHeroes>10</MaxHeroes>
     <Monsters>
       <Monster>
         <ID>Ogre</ID>
@@ -256,6 +266,7 @@
     <Description>Первое, на что обращают внимание путники, подходя к дому отшельника - на кости других путников, подходивших к этому дому ранее.</Description>
     <ImageIndex>78</ImageIndex>
     <SoundSelect>logovo_wolfman_select.wav</SoundSelect>
+    <MaxHeroes>12</MaxHeroes>
     <Monsters>
       <Monster>
         <ID>Werewolf</ID>
@@ -277,6 +288,7 @@
     <Description>Пещеры драконов всегда полны сокровищ и скелетов тех, кто искал эти сокровища.</Description>
     <ImageIndex>68</ImageIndex>
     <SoundSelect>logovo_boss_dragon_select.wav</SoundSelect>
+    <MaxHeroes>15</MaxHeroes>
     <Monsters>
       <Monster>
         <ID>Dragon</ID>
@@ -298,6 +310,7 @@
     <Description>Сир, это не просто канализация! В таких обычно живут и передвигаются крысиные предводители, например Король Крыс Пятый.</Description>
     <ImageIndex>117</ImageIndex>
     <SoundSelect>sewers_select.wav</SoundSelect>
+    <MaxHeroes>10</MaxHeroes>
     <Monsters>
       <Monster>
         <ID>Dragon</ID>
@@ -340,6 +353,7 @@
     <Description>Троны элементов вызывают живейший интерес ученых, постоянно собирающих экспедиции к подобным местам. Этот факт серьезно сдерживает развитие науки в Ардании.</Description>
     <ImageIndex>109</ImageIndex>
     <SoundSelect>logovo_elemental_earth_select.wav</SoundSelect>
+    <MaxHeroes>10</MaxHeroes>
     <Monsters>
       <Monster>
         <ID>ElementalEarth</ID>
@@ -361,6 +375,7 @@
     <Description>Троны элементов вызывают живейший интерес ученых, постоянно собирающих экспедиции к подобным местам. Этот факт серьезно сдерживает развитие науки в Ардании.</Description>
     <ImageIndex>69</ImageIndex>
     <SoundSelect>logovo_elemental_fire_select.wav</SoundSelect>
+    <MaxHeroes>10</MaxHeroes>
     <Monsters>
       <Monster>
         <ID>ElementalFire</ID>
