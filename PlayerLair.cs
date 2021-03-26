@@ -188,6 +188,8 @@ namespace Fantasy_Kingdoms_Battle
                 Player.AddFlag(this);
             else
                 Player.UpPriorityFlag(this);
+
+            Program.formMain.LairsWithFlagChanged();
         }
 
         internal int Cashback()
@@ -216,6 +218,8 @@ namespace Fantasy_Kingdoms_Battle
 
             while (listAttackedHero.Count > 0)
                 RemoveAttackingHero(listAttackedHero[0]);
+
+            Program.formMain.LairsWithFlagChanged();
         }
 
         internal string PriorityFlatToText()
