@@ -297,5 +297,20 @@ namespace Fantasy_Kingdoms_Battle
 
             SetState(NameStateCreature.Nothing);
         }
+
+        internal NameStateCreature StateForFlag(TypeFlag typeFlag)
+        {
+            switch (typeFlag)
+            {
+                case TypeFlag.None:
+                    return NameStateCreature.Nothing;
+                case TypeFlag.Scout:
+                    return NameStateCreature.DoScoutFlat;
+                case TypeFlag.Attack:
+                    return NameStateCreature.DoAttackFlag;
+                default:
+                    throw new Exception($"Неизвестный тип флага: {typeFlag}");
+            }
+        }
     }
 }
