@@ -474,6 +474,9 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void GetDamage(int damageMelee, int damageArcher, int damageMagic)
         {
+            // Временный костыль, пока монстры не настроены
+            if ((damageMelee == 0) || (damageArcher == 0) || (damageMagic == 0))
+                damageMelee = 10;
             Debug.Assert((damageMelee > 0) || (damageArcher > 0) || (damageMagic > 0));
             if (State == StateHeroInBattle.Tumbstone)
                 return;
