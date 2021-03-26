@@ -128,6 +128,67 @@ namespace Fantasy_Kingdoms_Battle
                 else
                     Debug.Assert(ListFlags.IndexOf(pl) == -1);
             }
+
+            // Расчет флагов на логова
+            foreach (PlayerLair pl in ListFlags)
+            {
+                Battle b;
+                FormBattle formBattle;
+                FormProgressBattle formProgressBattle = null;
+
+                if ((pl != null) && (pl.listAttackedHero.Count > 0))
+                {
+                    PreparingForBattle();
+                    Debug.Assert((pl.TypeFlag == TypeFlag.Scout) || (pl.TypeFlag == TypeFlag.Attack));
+
+                    // Включить, когда ИИ может выбирать цель
+                    pl.PreparingForBattle();
+
+                    //Debug.Assert(p.TargetLair.CombatHeroes.Count > 0);
+
+                    bool winner = false;
+
+                    if (pl.Monsters.Count > 0)
+                    {
+                        bool showForPlayer = TypePlayer == TypePlayer.Human;
+                        b = new Battle(this, pl, Lobby.Turn, FormMain.Rnd, showForPlayer);
+
+                        if (showForPlayer)
+                        {
+                            formBattle = new FormBattle();
+                            formBattle.ShowBattle(b);
+                            formBattle.Dispose();
+                        }
+                        else
+                        {
+                            if (formProgressBattle == null)
+                                formProgressBattle = new FormProgressBattle();
+
+                            formProgressBattle.SetBattle(b, 1, 1);
+                        }
+
+                        winner = b.Winner == this;
+                    }
+                    else
+                        winner = true;
+
+                    if (pl.TypeFlag == TypeFlag.Scout)
+                    {
+                        Debug.Assert(pl.Hidden);
+
+                        pl.Hidden = false;
+
+                    }
+                    else if (winner)
+                    {
+                        // Победил текущий игрок
+                    }
+                    else
+                    {
+
+                    }
+                }
+            }
         }
 
         internal void CalcResultTurn()
@@ -259,7 +320,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(AllHeroes.IndexOf(ph) == -1);
 
             AllHeroes.Add(ph);
-            //if (ph.TypeHero.ID != "King")
+            if ((ph.TypeHero.ID != "King") && (ph.TypeHero.ID != "Advisor") && (ph.TypeHero.ID != "Captain") && (ph.TypeHero.ID != "Treasurer"))
                 AddCombatHero(ph);
 
             // Восстановить
