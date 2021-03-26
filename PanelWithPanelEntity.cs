@@ -114,7 +114,10 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             rows--;
-            Height = listCells[listCells.Count - 1].Top + listCells[listCells.Count - 1].Height;
+            if (listCells.Count > 0)
+                Height = listCells[listCells.Count - 1].Top + listCells[listCells.Count - 1].Height;
+            else
+                Height = FormMain.Config.GridSize;                    
         }
     }
 }
