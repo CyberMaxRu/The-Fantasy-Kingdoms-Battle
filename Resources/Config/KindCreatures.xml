@@ -32,4 +32,8 @@
     <ID>Dragon</ID>
     <Name>Дракон</Name>
   </KindCreature>
+  <KindCreature>
+    <ID>MagicCreature</ID>
+    <Name>Магическое существо</Name>
+  </KindCreature>
 </KindCreatures>
