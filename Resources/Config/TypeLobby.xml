@@ -75,6 +75,11 @@
             <MinQuantity>1</MinQuantity>
             <MaxQuantity>10</MaxQuantity>
           </Lair>
+          <Lair>
+            <ID>HolyLand</ID>
+            <MinQuantity>3</MinQuantity>
+            <MaxQuantity>3</MaxQuantity>
+          </Lair>
         </Lairs>
       </Layer>
       <Layer>

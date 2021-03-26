@@ -376,4 +376,15 @@
       <MaxGold>2000</MaxGold>
     </Reward>
   </TypeLair>
+  <TypeLair>
+    <ID>HolyLand</ID>
+    <Name>Святая земля</Name>
+    <Description>Только на святой земле можно построить храм. Такие места большая редкость, и жрецы постоянно спорят, чей храм будет построен на святой земле.</Description>
+    <ImageIndex>114</ImageIndex>
+    <SoundSelect>place_temple_select.wav</SoundSelect>
+    <Reward>
+      <MinGold>1000</MinGold>
+      <MaxGold>2000</MaxGold>
+    </Reward>
+  </TypeLair>
 </TypeLairs>
