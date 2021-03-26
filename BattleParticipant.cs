@@ -42,6 +42,9 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void AddCombatHero(Creature c)
         {
+            Debug.Assert(c != null);
+            Debug.Assert(CombatHeroes.IndexOf(c) == -1);
+
             CombatHeroes.Add(c);
             CombatHeroes.Sort(ComparePlaceCreature);
         }
