@@ -30,6 +30,9 @@ namespace Fantasy_Kingdoms_Battle
         internal Player Player => Building.Player;// Игрок, которому принадлежит герой
         internal TypeHero TypeHero { get; } // Класс героя
 
+        // Выполнение флагов
+        internal PlayerLair TargetByFlag { get; private set; }// Логово флага, который выполняется
+
         // Статистика за лобби
         internal int DayOfHire { get; }// На каком дне нанят
         internal int Battles { get; }// Участвовал в сражениях
@@ -279,6 +282,20 @@ namespace Fantasy_Kingdoms_Battle
         {
             Program.formMain.panelHeroInfo.Visible = true;
             Program.formMain.panelHeroInfo.PlayerObject = this;
+        }
+
+        internal void ClearState()
+        {
+            Debug.Assert((StateCreature.ID == NameStateCreature.DoAttackFlag.ToString())
+                || (StateCreature.ID == NameStateCreature.DoScoutFlat.ToString()));
+
+            // Убираем себя из флага на логове
+            if (TargetByFlag != null)
+            {
+                TargetByFlag.RemoveAttackingHero(this);
+            }
+
+            SetState(NameStateCreature.Nothing);
         }
     }
 }
