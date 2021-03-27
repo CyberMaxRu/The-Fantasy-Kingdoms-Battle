@@ -261,11 +261,6 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep1Header(GetNameHero(), "", TypeHero.Description);
         }
 
-        protected override void DoClick()
-        {
-            Program.formMain.SelectPlayerObject(this);
-        }
-
         protected override void DoCustomDraw(Graphics g, int x, int y, bool drawState)
         {
             base.DoCustomDraw(g, x, y, drawState);

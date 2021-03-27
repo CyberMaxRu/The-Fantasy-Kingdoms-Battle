@@ -41,10 +41,5 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.panelMonsterInfo.Visible = true;
             Program.formMain.panelMonsterInfo.PlayerObject = this;
         }
-
-        protected override void DoClick()
-        {
-            Program.formMain.SelectPlayerObject(this);
-        }
     }
 }

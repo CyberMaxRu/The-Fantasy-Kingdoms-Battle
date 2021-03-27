@@ -67,9 +67,6 @@ namespace Fantasy_Kingdoms_Battle
         internal Point CoordInPlayer { get; set; }// Координаты героя в слотах
 
         protected abstract int GetImageIndex();
-        protected virtual void DoClick()
-        {
-        }
 
         // Повышение уровня
         private void LevelUp()
@@ -159,11 +156,8 @@ namespace Fantasy_Kingdoms_Battle
             PrepareHint();
         }
 
-        void ICell.Click(VCCell pe)
-        {
-            Program.formMain.SelectPlayerObject(this);
-            DoClick();
-        }
+        void ICell.Click(VCCell pe) => Program.formMain.SelectPlayerObject(this);
+
         void ICell.CustomDraw(Graphics g, int x, int y, bool drawState)
         {
             DoCustomDraw(g, x, y, drawState);
