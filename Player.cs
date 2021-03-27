@@ -130,7 +130,9 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Расчет флагов на логова
-            foreach (PlayerLair pl in ListFlags)
+            List<PlayerLair> tempListLair = ListFlags.ToList();// Работаем с копией списка, так как текущий будет меняться по мере обработки флагов
+            
+            foreach (PlayerLair pl in tempListLair)
             {
                 Battle b;
                 FormBattle formBattle;
@@ -142,9 +144,7 @@ namespace Fantasy_Kingdoms_Battle
 
                     if (pl.TypeFlag == TypeFlag.Scout)
                     {
-                        Debug.Assert(pl.Hidden);
-
-                        pl.Hidden = false;
+                        pl.DoScout();
                     }
                     else
                     {
@@ -710,7 +710,6 @@ namespace Fantasy_Kingdoms_Battle
                     QuantityFlags[PriorityExecution.None]--;
                     QuantityFlags[lair.PriorityFlag]++;
                     CheckFlags();
-                    SetTaskForHeroes();
 
                     return;
                 }
@@ -727,7 +726,6 @@ namespace Fantasy_Kingdoms_Battle
             QuantityFlags[lair.PriorityFlag]++;
 
             CheckFlags();
-            SetTaskForHeroes();
         }
 
 
@@ -747,7 +745,6 @@ namespace Fantasy_Kingdoms_Battle
             QuantityFlags[lair.PriorityFlag]--;
 
             CheckFlags();
-            SetTaskForHeroes();
         }
 
         private void CheckFlags()
