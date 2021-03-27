@@ -53,12 +53,31 @@
           <Value>250</Value>
         </Priority>
       </Attack>
+      <Defense>
+        <Priority>
+          <ID>Normal</ID>
+          <Value>100</Value>
+        </Priority>
+        <Priority>
+          <ID>Warning</ID>
+          <Value>125</Value>
+        </Priority>
+        <Priority>
+          <ID>High</ID>
+          <Value>175</Value>
+        </Priority>
+        <Priority>
+          <ID>Exclusive</ID>
+          <Value>250</Value>
+        </Priority>
+      </Defense>
     </CoefficientFlags>
     <LairSettings Layers="3">
       <Layer>
         <Number>1</Number>
         <CostScout>100</CostScout>
         <CostAttack>250</CostAttack>
+        <CostDefense>200</CostDefense>
         <Lairs>
           <Lair>
             <ID>TradePlace</ID>
@@ -86,6 +105,7 @@
         <Number>2</Number>
         <CostScout>200</CostScout>
         <CostAttack>500</CostAttack>
+        <CostDefense>250</CostDefense>
         <Lairs>
           <Lair>
             <ID>TradePlace</ID>
@@ -108,6 +128,7 @@
         <Number>3</Number>
         <CostScout>400</CostScout>
         <CostAttack>1000</CostAttack>
+        <CostDefense>500</CostDefense>
         <Lairs>
           <Lair>
             <ID>TradePlace</ID>

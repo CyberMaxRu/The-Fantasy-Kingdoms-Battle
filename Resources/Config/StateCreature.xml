@@ -54,4 +54,10 @@
     <Description>Сбор золота - непростая задача</Description>
     <ImageIndex>19</ImageIndex>
   </StateCreature>
+  <StateCreature>
+    <ID>DoDefenseFlag</ID>
+    <Name>Защита</Name>
+    <Description>Выполняет задание защиты</Description>
+    <ImageIndex>20</ImageIndex>
+  </StateCreature>
 </StatesCreature>

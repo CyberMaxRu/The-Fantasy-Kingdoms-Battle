@@ -55,6 +55,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int Number { get; }// Номер слоя
         internal int CostScout { get; }// Стоимость разведки
         internal int CostAttack { get; }// Стоимость атаки
+        internal int CostDefense { get; }// Стоимость защиты
         internal List<TypeLobbyLairSettings> LairsSettings { get; } = new List<TypeLobbyLairSettings>();// Настройки типов логов для слоя
 
         internal void TuneDeferredLinks()

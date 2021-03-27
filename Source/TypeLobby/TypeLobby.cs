@@ -98,6 +98,7 @@ namespace Fantasy_Kingdoms_Battle
             // Загружаем настройку коэффициентов для флагов разведки и атаки
             CoefFlagScout = LoadCoef(n.SelectSingleNode("CoefficientFlags/Scout"));
             CoefFlagAttack = LoadCoef(n.SelectSingleNode("CoefficientFlags/Attack"));
+            CoefFlagDefense = LoadCoef(n.SelectSingleNode("CoefficientFlags/Defense"));
 
             int[] LoadCoef(XmlNode node)
             {
@@ -151,6 +152,7 @@ namespace Fantasy_Kingdoms_Battle
         internal TypeLobbyLayerSettings[] LayerSettings { get; }
         internal int[] CoefFlagScout { get; }
         internal int[] CoefFlagAttack { get; }
+        internal int[] CoefFlagDefense { get; }
 
         internal void TuneDeferredLinks()
         {

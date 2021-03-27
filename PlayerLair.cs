@@ -8,7 +8,7 @@ using System.Diagnostics;
 namespace Fantasy_Kingdoms_Battle
 {
     internal enum PriorityExecution { None = -1, Normal = 0, Warning = 1, High = 2, Exclusive = 3};
-    internal enum TypeFlag { None, Scout, Attack };
+    internal enum TypeFlag { None, Scout, Attack, Defense };
 
     // Класс логова игрока
     internal sealed class PlayerLair : BattleParticipant
