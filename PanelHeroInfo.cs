@@ -114,6 +114,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override void Draw(Graphics g)
         {
             btnTarget.ShowCell(Hero.TargetByFlag);
+            lvGold.Text = Hero.Gold.ToString();
 
             base.Draw(g);
         }

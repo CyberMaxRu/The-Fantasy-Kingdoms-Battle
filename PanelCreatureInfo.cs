@@ -39,6 +39,7 @@ namespace Fantasy_Kingdoms_Battle
         protected VCCell panelSpecialization;
         private VCCell panelWeapon;
         private VCCell panelArmour;
+        protected VCLabelValue lvGold;
         internal List<VCCell> slots { get; } = new List<VCCell>();
 
         public PanelCreatureInfo(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
@@ -64,7 +65,10 @@ namespace Fantasy_Kingdoms_Battle
             panelWeapon = new VCCell(this, FormMain.Config.GridSize, bmpStateBackground.NextTop());
             panelArmour = new VCCell(this, panelWeapon.NextLeft(), panelWeapon.ShiftY);
 
-            separator.ShiftY = panelWeapon.NextTop();
+            lvGold = new VCLabelValue(this, FormMain.Config.GridSize, panelWeapon.NextTop(), Color.White);
+            lvGold.ImageIndex = FormMain.GUI_16_GOLD;
+
+            separator.ShiftY = lvGold.NextTop();
             pageControl.ShiftY = separator.NextTop();
             pageControl.AddTab("Статистика", FormMain.GUI_SCROLL, null);
             pageControl.AddTab("Инвентарь", FormMain.GUI_INVENTORY, panelInventory);
@@ -130,6 +134,7 @@ namespace Fantasy_Kingdoms_Battle
             pageControl.Height = Height - pageControl.ShiftY - FormMain.Config.GridSize;
             lblKindHero.Width = Width - (lblKindHero.ShiftX * 2);
             labelNameState.Width = bmpStateBackground.Width - labelNameState.ShiftX - FormMain.Config.GridSize;
+            lvGold.Width = Width - (lblKindHero.ShiftX * 2);
 
             base.ArrangeControls();
         }
