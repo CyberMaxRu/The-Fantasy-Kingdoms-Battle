@@ -31,7 +31,7 @@ namespace Fantasy_Kingdoms_Battle
         internal Player Player { get; }
         internal TypeLair TypeLair { get; }
         internal int Layer { get; }// Слой, на котором находится логово
-        internal bool Hidden { get; set; } = true;// Логово не разведано
+        internal bool Hidden { get; private set; } = true;// Логово не разведано
         internal List<Monster> Monsters { get; } = new List<Monster>();// Монстры текущего уровня
 
         // Поддержка флага
@@ -211,15 +211,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Player.ReturnGold(Cashback());
             Player.RemoveFlag(this);
-            SpendedGoldForSetFlag = 0;
-            DaySetFlag = 0;
-            TypeFlag = TypeFlag.None;
-            PriorityFlag = PriorityExecution.None;
-
-            while (listAttackedHero.Count > 0)
-                RemoveAttackingHero(listAttackedHero[0]);
-
-            Program.formMain.LairsWithFlagChanged();
+            DropFlag();
         }
 
         internal string PriorityFlatToText()
@@ -272,6 +264,52 @@ namespace Fantasy_Kingdoms_Battle
             ph.TargetByFlag = null;
             listAttackedHero.Remove(ph);
             ph.SetState(NameStateCreature.Nothing);
+        }
+
+        private void DropFlag()
+        {
+            Debug.Assert(TypeFlag != TypeFlag.None);
+
+            TypeFlag = TypeFlag.None;
+            SpendedGoldForSetFlag = 0;
+            DaySetFlag = 0;
+            TypeFlag = TypeFlag.None;
+            PriorityFlag = PriorityExecution.None;
+
+            while (listAttackedHero.Count > 0)
+                RemoveAttackingHero(listAttackedHero[0]);
+
+            Player.RemoveFlag(this);
+            Program.formMain.LairsWithFlagChanged();
+        }
+
+        // Месте разведано
+        internal void DoScout()
+        {
+            Debug.Assert(Hidden);
+            Debug.Assert(TypeFlag == TypeFlag.Scout);
+
+            Hidden = false;
+
+            // Раздаем награду. Открыть место могли без участия героев (заклинаем)
+            if (listAttackedHero.Count > 0)
+            {
+                Debug.Assert(SpendedGoldForSetFlag > 0);
+
+                // Определяем, по сколько денег достается каждому герою
+                int goldPerHero = SpendedGoldForSetFlag / listAttackedHero.Count;
+                int delta = SpendedGoldForSetFlag - goldPerHero * listAttackedHero.Count;
+                Debug.Assert(goldPerHero * listAttackedHero.Count + delta == SpendedGoldForSetFlag);
+
+                foreach (PlayerHero h in listAttackedHero)
+                    h.AddGold(goldPerHero);
+
+                // Остаток отдаем первому герою
+                if (delta > 0)
+                    listAttackedHero[0].AddGold(delta);
+            }
+
+            DropFlag();
         }
     }
 }
