@@ -40,8 +40,7 @@ namespace Fantasy_Kingdoms_Battle
                 ImageIndex = FormMain.IMAGE_INDEX_NONE;
                 ImageIsEnabled = false;
                 Level = 0;
-                Cost = 0;
-                ShowCostZero = false;
+                Cost = null;
             }
             else
             {
@@ -58,8 +57,7 @@ namespace Fantasy_Kingdoms_Battle
                     ImageIndex = Lair.ImageIndexLair();
                 }
                 Level = (int)Lair.PriorityFlag + 1;
-                Cost = Lair.listAttackedHero.Count();
-                ShowCostZero = true;
+                Cost = Lair.listAttackedHero.Count().ToString();
             }
 
             base.Draw(g);

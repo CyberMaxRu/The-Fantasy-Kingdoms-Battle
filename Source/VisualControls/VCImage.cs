@@ -61,8 +61,7 @@ namespace Fantasy_Kingdoms_Battle
         internal bool ImageIsOver { get; set; } = false;
         protected int ShiftImageX { get => shiftImageX; set { shiftImageX = value; ValidateSize(); } }
         protected int ShiftImageY { get => shiftImageY; set { shiftImageY = value; ValidateSize(); } }
-        internal int Cost { get; set; }
-        internal bool ShowCostZero { get; set; }
+        internal string Cost { get; set; }
         internal int Level { get; set; }
         internal int Quantity { get; set; }
         internal int PopupQuantity { get; set; }
@@ -144,9 +143,11 @@ namespace Fantasy_Kingdoms_Battle
                 BitmapList.DrawImage(g, ImageIndex, UseFilter || ImageIsEnabled, HighlightUnderMouse && ImageIsOver, Left + ShiftImageX, Top + ShiftImageY);
 
                 // Цена
-                if ((Cost != 0) || ShowCostZero)
+                if (Cost != null)
                 {
-                    labelCost.Text = Cost.ToString();
+                    Debug.Assert(Cost.Length > 0);
+
+                    labelCost.Text = Cost;
                     labelCost.Draw(g);
                 }
 

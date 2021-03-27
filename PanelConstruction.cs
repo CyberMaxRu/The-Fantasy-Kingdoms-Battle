@@ -150,7 +150,7 @@ namespace Fantasy_Kingdoms_Battle
                 if (Building.CanLevelUp())
                 {
                     btnBuyOrUpgrade.Visible = true;
-                    btnBuyOrUpgrade.Cost = Building.CostBuyOrUpgrade();
+                    btnBuyOrUpgrade.Cost = Building.CostBuyOrUpgrade().ToString();
                     btnBuyOrUpgrade.ImageIndex = FormMain.GUI_LEVELUP;
                     btnBuyOrUpgrade.ImageIsEnabled = Building.CheckRequirements();
                 }
@@ -165,7 +165,7 @@ namespace Fantasy_Kingdoms_Battle
             else
             {
                 btnBuyOrUpgrade.Visible = true;
-                btnBuyOrUpgrade.Cost = Building.CostBuyOrUpgrade();
+                btnBuyOrUpgrade.Cost = Building.CostBuyOrUpgrade().ToString();
                 btnBuyOrUpgrade.ImageIsEnabled = Building.CheckRequirements();
             }
 
@@ -176,7 +176,7 @@ namespace Fantasy_Kingdoms_Battle
                 btnHireHero.ImageIndex = (Building.Level > 0) && ((Building.Heroes.Count == Building.MaxHeroes()) || (Building.MaxHeroesAtPlayer() == true)) ? -1 : TypeConstruction.TrainedHero.ImageIndex;
                 btnHireHero.ImageIndex = Program.formMain.TreatImageIndex(Building.Building.TrainedHero.ImageIndex, Building.Player);
                 btnHireHero.ImageIsEnabled = Building.CanTrainHero();
-                btnHireHero.Cost = (Building.Level == 0) || (Building.CanTrainHero() == true) ? TypeConstruction.TrainedHero.Cost : 0;
+                btnHireHero.Cost = (Building.Level == 0) || (Building.CanTrainHero() == true) ? TypeConstruction.TrainedHero.Cost.ToString() : null;
             }
             else
                 btnHireHero.Visible = false;
@@ -185,13 +185,13 @@ namespace Fantasy_Kingdoms_Battle
 
             if ((Building.Building.TrainedHero != null) && (Building.Level > 0) && (Building.Heroes.Count > 0))
             {
-                btnHeroes.Cost = Building.Heroes.Count;
+                btnHeroes.Cost = Building.Heroes.Count.ToString();
                 btnHeroes.ImageIndex = Program.formMain.TreatImageIndex(Building.Building.TrainedHero.ImageIndex, Building.Player);
                 //btnHeroes.ImageIndex = GuiUtils.GetImageIndexWithGray(btnHeroes.ImageList, Building.Building.TrainedHero.ImageIndex, true);
             }
             else
             {
-                btnHeroes.Cost = 0;
+                btnHeroes.Cost = null;
                 btnHeroes.ImageIndex = -1;
             }
 

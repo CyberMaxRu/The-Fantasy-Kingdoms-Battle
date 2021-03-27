@@ -47,7 +47,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (research != null)
             {
-                Cost = research.Cost();
+                Cost = research.Cost().ToString();
                 ImageIndex = research.Research.Entity.ImageIndex;
                 ImageIsEnabled = research.CheckRequirements();
 
@@ -72,7 +72,7 @@ namespace Fantasy_Kingdoms_Battle
                 research = value;
                 Visible = research != null;
                 if (Visible)
-                    Cost = research.Cost();
+                    Cost = research.Cost().ToString();
             }
         }
     }

@@ -138,7 +138,7 @@ namespace Fantasy_Kingdoms_Battle
 
             btnAction.ImageIsEnabled = Lair.CheckRequirements();
             btnAction.Level = (int)Lair.PriorityFlag + 1;
-            btnAction.Cost = Lair.RequiredGold();
+            btnAction.Cost = Lair.RequiredGold().ToString();
             btnCancel.Visible = Lair.PriorityFlag != PriorityExecution.None;
 
             switch (Lair.TypeAction())
@@ -150,19 +150,19 @@ namespace Fantasy_Kingdoms_Battle
                 case TypeFlag.Attack:
                     btnAction.ImageIndex = FormMain.GUI_FLAG_ATTACK;
                     btnInhabitants.Visible = true;
-                    btnInhabitants.Cost = Lair.CombatHeroes.Count;
+                    btnInhabitants.Cost = Lair.CombatHeroes.Count.ToString();
                     break;
                 case TypeFlag.Defense:
                     btnAction.ImageIndex = FormMain.GUI_FLAG_DEFENSE;
                     btnInhabitants.Visible = true;
-                    btnInhabitants.Cost = Lair.CombatHeroes.Count;
+                    btnInhabitants.Cost = Lair.CombatHeroes.Count.ToString();
                     break;
                 default:
                     throw new Exception($"Неизвестный тип действия: {Lair.TypeAction()}");
             }
 
             btnHeroes.ImageIsEnabled = Lair.listAttackedHero.Count > 0;
-            btnHeroes.Cost = Lair.listAttackedHero.Count;
+            btnHeroes.Cost = Lair.listAttackedHero.Count.ToString();
 
             imgMapObject.ImageIndex = Lair.ImageIndexLair();
             imgMapObject.Level = Lair.Layer + 1;
