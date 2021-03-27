@@ -328,7 +328,7 @@
   </TypeLair>
   <TypeLair>
     <ID>TradePlace</ID>
-    <Name>Удобное торговое место</Name>
+    <Name>Торговое место</Name>
     <Description>Это удобное место лучше всего подходит под строительство торгового поста.</Description>
     <ImageIndex>113</ImageIndex>
     <SoundSelect>tradepost_place_select.wav</SoundSelect>
@@ -338,7 +338,7 @@
   </TypeLair>
   <TypeLair>
     <ID>Chest</ID>
-    <Name>Сундук с сокровищами</Name>
+    <Name>Сокровище</Name>
     <Description>Сундуки с сокровищами встречаются в Ардании даже чаще, чем крысы В некоторых землях герои по два урожая сундуков в год!</Description>
     <ImageIndex>120</ImageIndex>
     <SoundSelect>chest_select.wav</SoundSelect>
