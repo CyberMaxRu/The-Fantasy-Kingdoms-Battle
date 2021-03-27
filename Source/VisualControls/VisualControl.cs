@@ -54,6 +54,7 @@ namespace Fantasy_Kingdoms_Battle
         internal PlayerObject PlayerObject { get; set; }// Объект, ассоциированный с контролом
         internal bool MouseEntered { get; private set; }// Курсор мыши находится над контролом
         internal bool IsError { get; set; }
+        internal bool ShowHintParent { get; set; }// Показывать подсказку родителя
 
         // Список контролов, расположенных на нём
         internal List<VisualControl> Controls = new List<VisualControl>();
@@ -152,12 +153,18 @@ namespace Fantasy_Kingdoms_Battle
 
         internal virtual bool PrepareHint()
         {
-            return false;
+            return ShowHintParent && Parent.PrepareHint();
         }
 
         internal virtual void DoShowHint()
         {
-            if (ShowHint != null)
+            if (ShowHintParent && Parent.ShowHint != null)
+            {
+                Program.formMain.formHint.Clear();
+                Parent.ShowHint.Invoke(this, new EventArgs());
+                Program.formMain.formHint.DrawHint(Parent);
+            }
+            else if (ShowHint != null)
             {
                 Program.formMain.formHint.Clear();
                 ShowHint.Invoke(this, new EventArgs());
