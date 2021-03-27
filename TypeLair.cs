@@ -94,6 +94,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             MaxHeroes = XmlUtils.GetInteger(n.SelectSingleNode("MaxHeroes"));
+            IsLair = XmlUtils.GetBoolNotNull(n.SelectSingleNode("IsLair"));
             // Информация о награде
             if (n.SelectSingleNode("Reward") != null)
                 Reward = new RewardLevelLair(n.SelectSingleNode("Reward"));
@@ -114,6 +115,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal List<MonsterLevelLair> Monsters { get; } = new List<MonsterLevelLair>();
         internal int MaxHeroes { get; }// Максимальное количество героев, которое может атаковать логово
+        internal bool IsLair { get; }// Признак - это логово
         internal RewardLevelLair Reward { get; }
 
         internal override void TuneDeferredLinks()

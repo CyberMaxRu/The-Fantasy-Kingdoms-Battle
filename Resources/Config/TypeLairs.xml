@@ -7,6 +7,7 @@
     <ImageIndex>79</ImageIndex>    
     <SoundSelect>graveyard_select.wav</SoundSelect>
     <MaxHeroes>4</MaxHeroes>
+    <IsLair>true</IsLair>
     <Monsters>
       <Monster>
         <ID>Zombie</ID>
@@ -29,6 +30,7 @@
     <ImageIndex>75</ImageIndex>
     <SoundSelect>logovo_skeleton_select.wav</SoundSelect>
     <MaxHeroes>4</MaxHeroes>
+    <IsLair>true</IsLair>
     <Monsters>
       <Monster>
         <ID>Skelet</ID>
@@ -59,6 +61,7 @@
     <ImageIndex>76</ImageIndex>
     <SoundSelect>logovo_vampire_select.wav</SoundSelect>
     <MaxHeroes>5</MaxHeroes>
+    <IsLair>true</IsLair>
     <Monsters>
       <Monster>
         <ID>Ghost</ID>
@@ -89,6 +92,7 @@
     <ImageIndex>136</ImageIndex>
     <SoundSelect>logovo_vampire_select.wav</SoundSelect>
     <MaxHeroes>6</MaxHeroes>
+    <IsLair>true</IsLair>
     <Monsters>
       <Monster>
         <ID>Vampire</ID>
@@ -111,6 +115,7 @@
     <ImageIndex>77</ImageIndex>
     <SoundSelect>logovo_wolf_select.wav</SoundSelect>
     <MaxHeroes>4</MaxHeroes>
+    <IsLair>true</IsLair>
     <Monsters>
       <Monster>
         <ID>Wolf</ID>
@@ -141,6 +146,7 @@
     <ImageIndex>74</ImageIndex>
     <SoundSelect>logovo_serpent_select.wav</SoundSelect>
     <MaxHeroes>5</MaxHeroes>
+    <IsLair>true</IsLair>
     <Monsters>
       <Monster>
         <ID>Serpent</ID>
@@ -163,6 +169,7 @@
     <ImageIndex>65</ImageIndex>
     <SoundSelect>logovo_bear_select.wav</SoundSelect>
     <MaxHeroes>6</MaxHeroes>
+    <IsLair>true</IsLair>
     <Monsters>
       <Monster>
         <ID>Bear</ID>
@@ -193,6 +200,7 @@
     <ImageIndex>66</ImageIndex>
     <SoundSelect>logovo_bearman_select.wav</SoundSelect>
     <MaxHeroes>8</MaxHeroes>
+    <IsLair>true</IsLair>
     <Monsters>
       <Monster>
         <ID>WerewolfBear</ID>
@@ -215,6 +223,7 @@
     <ImageIndex>71</ImageIndex>
     <SoundSelect>logovo_minotaur_select.wav</SoundSelect>
     <MaxHeroes>8</MaxHeroes>
+    <IsLair>true</IsLair>
     <Monsters>
       <Monster>
         <ID>Minotaur</ID>
@@ -245,6 +254,7 @@
     <ImageIndex>72</ImageIndex>
     <SoundSelect>logovo_ogre_select.wav</SoundSelect>
     <MaxHeroes>10</MaxHeroes>
+    <IsLair>true</IsLair>
     <Monsters>
       <Monster>
         <ID>Ogre</ID>
@@ -267,6 +277,7 @@
     <ImageIndex>78</ImageIndex>
     <SoundSelect>logovo_wolfman_select.wav</SoundSelect>
     <MaxHeroes>12</MaxHeroes>
+    <IsLair>true</IsLair>
     <Monsters>
       <Monster>
         <ID>Werewolf</ID>
@@ -289,6 +300,7 @@
     <ImageIndex>68</ImageIndex>
     <SoundSelect>logovo_boss_dragon_select.wav</SoundSelect>
     <MaxHeroes>15</MaxHeroes>
+    <IsLair>true</IsLair>
     <Monsters>
       <Monster>
         <ID>Dragon</ID>
@@ -311,6 +323,7 @@
     <ImageIndex>117</ImageIndex>
     <SoundSelect>sewers_select.wav</SoundSelect>
     <MaxHeroes>10</MaxHeroes>
+    <IsLair>true</IsLair>
     <Monsters>
       <Monster>
         <ID>Dragon</ID>
@@ -332,6 +345,7 @@
     <Description>Это удобное место лучше всего подходит под строительство торгового поста.</Description>
     <ImageIndex>113</ImageIndex>
     <SoundSelect>tradepost_place_select.wav</SoundSelect>
+    <IsLair>false</IsLair>
     <Reward>
       <PointTradePost>1</PointTradePost>
     </Reward>
@@ -342,6 +356,7 @@
     <Description>Сундуки с сокровищами встречаются в Ардании даже чаще, чем крысы В некоторых землях герои по два урожая сундуков в год!</Description>
     <ImageIndex>120</ImageIndex>
     <SoundSelect>chest_select.wav</SoundSelect>
+    <IsLair>false</IsLair>
     <Reward>
       <MinGold>1000</MinGold>
       <MaxGold>2000</MaxGold>
@@ -354,6 +369,7 @@
     <ImageIndex>109</ImageIndex>
     <SoundSelect>logovo_elemental_earth_select.wav</SoundSelect>
     <MaxHeroes>10</MaxHeroes>
+    <IsLair>true</IsLair>
     <Monsters>
       <Monster>
         <ID>ElementalEarth</ID>
@@ -376,6 +392,7 @@
     <ImageIndex>69</ImageIndex>
     <SoundSelect>logovo_elemental_fire_select.wav</SoundSelect>
     <MaxHeroes>10</MaxHeroes>
+    <IsLair>true</IsLair>
     <Monsters>
       <Monster>
         <ID>ElementalFire</ID>
@@ -397,6 +414,7 @@
     <Description>Только на святой земле можно построить храм. Такие места большая редкость, и жрецы постоянно спорят, чей храм будет построен на святой земле.</Description>
     <ImageIndex>114</ImageIndex>
     <SoundSelect>place_temple_select.wav</SoundSelect>
+    <IsLair>false</IsLair>
     <Reward>
       <MinGold>1000</MinGold>
       <MaxGold>2000</MaxGold>

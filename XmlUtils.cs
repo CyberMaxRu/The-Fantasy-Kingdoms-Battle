@@ -45,6 +45,11 @@ namespace Fantasy_Kingdoms_Battle
             return n != null ? Convert.ToBoolean(n.InnerText) : defValue;
         }
 
+        internal static bool GetBoolNotNull(XmlNode n)
+        {
+            return Convert.ToBoolean(n.InnerText);
+        }
+
         internal static double GetDouble(XmlNode n)
         {
             return n != null ? Convert.ToDouble(n.InnerText.Replace(".", ",")) : 0;
