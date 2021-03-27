@@ -88,7 +88,7 @@ namespace Fantasy_Kingdoms_Battle
                             break;
                     }
 
-                    //Debug.Assert(x >= Left);
+                    Debug.Assert(x >= Left);
 
                     switch (StringFormat.LineAlignment)
                     {
