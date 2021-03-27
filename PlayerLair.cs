@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Drawing;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -11,7 +12,7 @@ namespace Fantasy_Kingdoms_Battle
     internal enum TypeFlag { None, Scout, Attack, Defense };
 
     // Класс логова игрока
-    internal sealed class PlayerLair : BattleParticipant
+    internal sealed class PlayerLair : BattleParticipant, ICell
     {
         public PlayerLair(Player p, TypeLair l, int layer) : base()
         {
@@ -41,6 +42,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int SpendedGoldForSetFlag { get; private set; }// Сколько золота было потрачено на установку флага
         internal PriorityExecution PriorityFlag { get; private set; } = PriorityExecution.None;// Приоритет разведки/атаки
         internal List<PlayerHero> listAttackedHero { get; } = new List<PlayerHero>();// Список героев, откликнувшихся на флаг
+        VCCell ICell.Panel { get => null; set => _ = value; }
 
         private void CreateMonsters()
         {
@@ -412,5 +414,19 @@ namespace Fantasy_Kingdoms_Battle
                 return list;
             }
         }
+
+        BitmapList ICell.BitmapList() => Program.formMain.imListObjectsCell;
+        int ICell.ImageIndex() => ImageIndexLair();        
+        bool ICell.NormalImage() => true;
+        int ICell.Level() => Layer;
+        int ICell.Quantity() => 0;
+        void ICell.PrepareHint() => PrepareHint();
+        
+        void ICell.Click(VCCell pe)
+        {
+            Program.formMain.SelectPlayerObject(this);
+        }
+
+        void ICell.CustomDraw(Graphics g, int x, int y, bool drawState) { }
     }
 }
