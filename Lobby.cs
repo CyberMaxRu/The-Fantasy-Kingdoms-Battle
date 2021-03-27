@@ -9,6 +9,8 @@ using System.Drawing;
 
 namespace Fantasy_Kingdoms_Battle
 {
+    internal enum StateLobby { Start, TurnHuman, TurnComputer, CalcTurn };
+
     internal class ComparerPlayerForPosition : IComparer<Player>
     {
         public int Compare(Player p1, Player p2)
@@ -59,6 +61,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             ID = generation++;
             TypeLobby = tl;
+            StateLobby = StateLobby.Start;
 
             // Создание игроков
             Players = new Player[tl.QuantityPlayers];
@@ -89,6 +92,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int Turn { get; private set; }        
         internal List<Battle> Battles { get; } = new List<Battle>();
         internal bool HumanIsWin { get; private set; }
+        internal StateLobby StateLobby { get; private set; }
 
         private void MakeOpponents()
         {
@@ -146,14 +150,19 @@ namespace Fantasy_Kingdoms_Battle
 
                     if (CurrentPlayer.TypePlayer == TypePlayer.Computer)
                     {
+                        StateLobby = StateLobby.TurnComputer;
                         CurrentPlayer.DoTurn();
                         System.Threading.Thread.Sleep(250);
                     }
                     else
+                    {
+                        StateLobby = StateLobby.TurnHuman;
                         return;
+                    }
                 }
             }
 
+            StateLobby = StateLobby.CalcTurn;
             CalcFinalityTurn();
 
             //CalcBattles();

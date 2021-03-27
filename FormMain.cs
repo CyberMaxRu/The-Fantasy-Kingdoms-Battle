@@ -1789,7 +1789,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void LairsWithFlagChanged()
         {
-            AdjustPanelLairsWithFlags();
+            if (lobby.StateLobby == StateLobby.TurnHuman)
+                AdjustPanelLairsWithFlags();
         }
 
         private void AdjustPanelLairsWithFlags()
