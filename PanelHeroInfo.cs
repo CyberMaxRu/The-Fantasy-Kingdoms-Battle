@@ -27,11 +27,16 @@ namespace Fantasy_Kingdoms_Battle
         private readonly Label lblDefenseRange;
         private readonly Label lblDefenseMagic;
         private readonly Button btnDismiss;
+        private readonly VCCell btnTarget;
 
         internal List<VCCell> slots { get; } = new List<VCCell>();
 
         public PanelHeroInfo(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
+            btnTarget = new VCCell(this, panelSpecialization.ShiftX, panelSpecialization.NextTop());
+            btnTarget.ShowHint += BtnTarget_ShowHint;
+            btnTarget.Click += BtnTarget_Click;
+
             btnDismiss = new Button()
             {
                 //Parent = this,
@@ -79,6 +84,20 @@ namespace Fantasy_Kingdoms_Battle
             }*/
         }
 
+        private void BtnTarget_Click(object sender, EventArgs e)
+        {
+            if (Hero.TargetByFlag != null)
+                (Hero.TargetByFlag as ICell).Click(btnTarget);
+        }
+
+        private void BtnTarget_ShowHint(object sender, EventArgs e)
+        {
+            if (Hero.TargetByFlag != null)
+                Hero.TargetByFlag.PrepareHint();
+            else
+                Program.formMain.formHint.AddHeader("Герой не выполняет флагов");
+        }
+
         internal PlayerHero Hero { get => PlayerObject as PlayerHero; }
 
         private void BtnDismiss_Click(object sender, EventArgs e)
@@ -90,6 +109,13 @@ namespace Fantasy_Kingdoms_Battle
                 Program.formMain.SelectPlayerObject(null);
                 Program.formMain.SetNeedRedrawFrame();
             }
+        }
+
+        internal override void Draw(Graphics g)
+        {
+            btnTarget.ShowCell(Hero.TargetByFlag);
+
+            base.Draw(g);
         }
 
         internal void ShowData()

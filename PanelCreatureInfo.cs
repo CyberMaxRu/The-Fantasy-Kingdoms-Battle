@@ -36,7 +36,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly PanelWithPanelEntity panelInventory;
         private readonly PanelWithPanelEntity panelAbilities;
         private readonly PanelWithPanelEntity panelSecondarySkills;
-        private VCCell panelSpecialization;
+        protected VCCell panelSpecialization;
         private VCCell panelWeapon;
         private VCCell panelArmour;
         internal List<VCCell> slots { get; } = new List<VCCell>();
