@@ -644,13 +644,6 @@ namespace Fantasy_Kingdoms_Battle
                 ArrangeControls();
 
                 SetStage("Прибираем после строителей");
-                // Перенести в класс
-                for (int i = 0; i < panelHeroInfo.slots.Count; i++)
-                {
-                    //panelHeroInfo.slots[i].MouseDown += PanelCellHero_MouseDown;
-                    //panelHeroInfo.slots[i].MouseUp += PanelCellHero_MouseUp;
-                    //panelHeroInfo.slots[i].MouseMove += PanelCell_MouseMove;
-                }
 
                 //
                 ActivatePage(pageGuilds);
