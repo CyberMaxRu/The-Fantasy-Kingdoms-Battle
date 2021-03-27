@@ -2,13 +2,13 @@
 <StatesCreature>
   <StateCreature>
     <ID>DoAttackFlag</ID>
-    <Name>Атака</Name>
+    <Name>Атакаs</Name>
     <Description>Выполняет задание атаки</Description>
     <ImageIndex>11</ImageIndex>
   </StateCreature>
   <StateCreature>
     <ID>DoScoutFlat</ID>
-    <Name>Разведки</Name>
+    <Name>Разведка</Name>
     <Description>Выполняет задание разведки</Description>
     <ImageIndex>12</ImageIndex>
   </StateCreature>
