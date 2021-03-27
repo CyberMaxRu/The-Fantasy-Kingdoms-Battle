@@ -16,11 +16,14 @@ namespace Fantasy_Kingdoms_Battle
             Number = XmlUtils.GetInteger(n.SelectSingleNode("Number")) - 1;
             CostScout = XmlUtils.GetInteger(n.SelectSingleNode("CostScout"));
             CostAttack = XmlUtils.GetInteger(n.SelectSingleNode("CostAttack"));
+            CostDefense = XmlUtils.GetInteger(n.SelectSingleNode("CostDefense"));
 
             Debug.Assert(CostScout > 0);
             Debug.Assert(CostScout <= 10_000);
             Debug.Assert(CostAttack > 0);
             Debug.Assert(CostAttack <= 10_000);
+            Debug.Assert(CostDefense > 0);
+            Debug.Assert(CostDefense <= 10_000);
 
             // Загружаем конфигурацию логов
             XmlNode ne = n.SelectSingleNode("Lairs");
