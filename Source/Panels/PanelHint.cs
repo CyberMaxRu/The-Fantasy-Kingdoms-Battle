@@ -363,15 +363,24 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(c.Height > 8);
             Debug.Assert(lblHeader.Text.Length > 0);
 
+            Height = nextTop;
+
             Point l = new Point(c.Left - Program.formMain.ShiftControls.X, c.Top + c.Height + 4 - Program.formMain.ShiftControls.Y);
             // Если подсказка уходит за пределы экрана игры, меняем ее положение
             if (l.X + Width > Program.formMain.sizeGamespace.Width - FormMain.Config.GridSize)
                 l.X = Program.formMain.sizeGamespace.Width - Width - FormMain.Config.GridSize;
-            if (l.Y + nextTop > Program.formMain.sizeGamespace.Height - FormMain.Config.GridSize)
-                l.Y = l.Y - nextTop - c.Height - 7;
+            if (l.Y + Height > Program.formMain.sizeGamespace.Height - FormMain.Config.GridSize)
+                l.Y = l.Y - Height - c.Height - 7;
+
+            // Если подсказка не помещается ни снизу, ни сверху, показываем ее справа или слева
+            if (l.Y < 0)
+            {
+                l.Y = Program.formMain.sizeGamespace.Height - FormMain.Config.GridSize - Height;
+                // Здесь нужна проверка на то, где рисовать - слева или справа
+                l.X = c.Left + c.Width + 4;
+            }
 
             // Сначала меняем высоту, а потом меням координату, чтобы при ArrangeControls не срабатывал Assert
-            Height = nextTop;
             SetPos(l.X + Program.formMain.ShiftControls.X, l.Y + Program.formMain.ShiftControls.Y);
 
             bool needReshow = (Visible == false) || (Height != nextTop);
