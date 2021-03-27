@@ -59,11 +59,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.DoClick();
 
-            if (cell != null)
-            {
-                //Debug.Assert(cell.Panel == this);
-                cell?.Click(this);
-            }
+            cell?.Click(this);
         }
 
         internal void ShowCell(ICell c)
