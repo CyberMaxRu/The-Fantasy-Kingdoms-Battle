@@ -121,7 +121,17 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(!Destroyed);
 
-            return Hidden ? CostScout() : CostAttack();
+            switch (TypeAction())
+            {
+                case TypeFlag.Scout:
+                    return CostScout();
+                case TypeFlag.Attack:
+                    return CostAttack();
+                case TypeFlag.Defense:
+                    return CostDefense();
+                default:
+                    throw new Exception($"Неизвестный тип действия: {TypeAction()}");
+            }
         }
 
         internal bool CheckRequirements()
@@ -197,31 +207,22 @@ namespace Fantasy_Kingdoms_Battle
 
             // 
 
-            if (Hidden)
+            int gold = RequiredGold();// На всякий случай запоминаем точное значение. вдруг потом при трате что-нибудь поменяется
+            Player.SpendGold(gold);
+            SpendedGoldForSetFlag += gold;
+
+            if (DaySetFlag == 0)
             {
-                int gold = RequiredGold();// На всякий случай запоминаем точное значение. вдруг потом при трате что-нибудь поменяется
-                Player.SpendGold(gold);
-                SpendedGoldForSetFlag += gold;
-
-                if (DaySetFlag == 0)
-                {
-                    Debug.Assert(TypeFlag == TypeFlag.None);
-                    TypeFlag = TypeFlag.Scout;
-                    DaySetFlag = Player.Lobby.Turn;
-                }
-                else
-                {
-                    Debug.Assert(TypeFlag == TypeFlag.Scout);
-                }
-                PriorityFlag++;
-
-                //Debug.Assert()
+                Debug.Assert(TypeFlag == TypeFlag.None);
+                TypeFlag = TypeAction();
+                DaySetFlag = Player.Lobby.Turn;
             }
             else
             {
-                Debug.Assert(TypeFlag == TypeFlag.Attack);
+                Debug.Assert(TypeFlag == TypeAction());
             }
 
+            PriorityFlag++;
             if (PriorityFlag == PriorityExecution.Normal)
                 Player.AddFlag(this);
             else
