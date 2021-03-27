@@ -36,6 +36,8 @@ namespace Fantasy_Kingdoms_Battle
             Height = btnInhabitants.NextTop();
             Width = btnAction.NextLeft();
         }
+        internal PlayerLair Lair { get => PlayerObject as PlayerLair; }
+        internal TypeLair TypeLair { get => Lair.TypeLair; }
 
         private void BtnHeroes_Click(object sender, EventArgs e)
         {
@@ -66,22 +68,38 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnAction_ShowHint(object sender, EventArgs e)
         {
-            if (Lair.Hidden)
+            switch (Lair.TypeAction())
             {
-                if (Lair.PriorityFlag == PriorityExecution.None)
-                    Program.formMain.formHint.AddStep1Header("Разведка", "", "Установить флаг разведки для отправки героев к месту");
-                else if (Lair.PriorityFlag < PriorityExecution.Exclusive)
-                    Program.formMain.formHint.AddStep1Header("Разведка", Lair.PriorityFlatToText() + " приоритет", "Повысить приоритет разведки места");
-                else
-                    Program.formMain.formHint.AddStep1Header("Разведка", Lair.PriorityFlatToText() + " приоритет", "Установлен максимальный приоритет флага");
-
-                Program.formMain.formHint.AddStep3Requirement(Lair.GetRequirements());
-                Program.formMain.formHint.AddStep4Gold(Lair.RequiredGold(), Lair.Player.Gold >= Lair.RequiredGold());
+                case TypeFlag.Scout:
+                    if (Lair.PriorityFlag == PriorityExecution.None)
+                        Program.formMain.formHint.AddStep1Header("Разведка", "", "Установить флаг разведки для отправки героев к месту");
+                    else if (Lair.PriorityFlag < PriorityExecution.Exclusive)
+                        Program.formMain.formHint.AddStep1Header("Разведка", Lair.PriorityFlatToText() + " приоритет", "Повысить приоритет разведки места");
+                    else
+                        Program.formMain.formHint.AddStep1Header("Разведка", Lair.PriorityFlatToText() + " приоритет", "Установлен максимальный приоритет флага");
+                    break;
+                case TypeFlag.Attack:
+                    if (Lair.PriorityFlag == PriorityExecution.None)
+                        Program.formMain.formHint.AddStep1Header("Атака", "", "Установить флаг атаки для отправки героев к месту");
+                    else if (Lair.PriorityFlag < PriorityExecution.Exclusive)
+                        Program.formMain.formHint.AddStep1Header("Атака", Lair.PriorityFlatToText() + " приоритет", "Повысить приоритет атаки логова");
+                    else
+                        Program.formMain.formHint.AddStep1Header("Атака", Lair.PriorityFlatToText() + " приоритет", "Установлен максимальный приоритет флага");
+                    break;
+                case TypeFlag.Defense:
+                    if (Lair.PriorityFlag == PriorityExecution.None)
+                        Program.formMain.formHint.AddStep1Header("Защита", "", "Установить флаг защиты для отправки героев к месту");
+                    else if (Lair.PriorityFlag < PriorityExecution.Exclusive)
+                        Program.formMain.formHint.AddStep1Header("Защита", Lair.PriorityFlatToText() + " приоритет", "Повысить приоритет защиты места");
+                    else
+                        Program.formMain.formHint.AddStep1Header("Защита", Lair.PriorityFlatToText() + " приоритет", "Установлен максимальный приоритет флага");
+                    break;
+                default:
+                    throw new Exception($"Неизвестный тип действия: {Lair.TypeAction()}");
             }
-            else
-            {
 
-            }
+            Program.formMain.formHint.AddStep3Requirement(Lair.GetRequirements());
+            Program.formMain.formHint.AddStep4Gold(Lair.RequiredGold(), Lair.Player.Gold >= Lair.RequiredGold());
         }
 
         private void BtnInhabitants_Click(object sender, EventArgs e)
@@ -89,9 +107,6 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.SelectPlayerObject(PlayerObject);
             Program.formMain.panelLairInfo.SelectPageInhabitants();
         }
-
-        internal PlayerLair Lair { get => PlayerObject as PlayerLair; }
-        internal TypeLair TypeLair { get => Lair.TypeLair; }
 
         internal void LinkToPlayer(PlayerLair pl)
         {
