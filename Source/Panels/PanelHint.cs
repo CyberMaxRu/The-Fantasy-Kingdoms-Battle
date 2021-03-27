@@ -193,6 +193,9 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void AddHeader(string header)
         {
+            Debug.Assert(lblHeader.Text == "");
+            Debug.Assert(header.Length > 0);
+
             ExistHint = true;
             lblHeader.Width = widthControl;
             lblHeader.Text = header;
@@ -204,6 +207,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void AddStep1Header(string header, string action, string description)
         {
+            Debug.Assert(lblHeader.Text == "");
             Debug.Assert(header.Length > 0);
 
             Width = 256;
