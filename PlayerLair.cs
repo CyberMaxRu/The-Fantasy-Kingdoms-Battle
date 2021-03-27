@@ -210,7 +210,6 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(TypeFlag != TypeFlag.None);
 
             Player.ReturnGold(Cashback());
-            Player.RemoveFlag(this);
             DropFlag();
         }
 
@@ -270,6 +269,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(TypeFlag != TypeFlag.None);
 
+            Player.RemoveFlag(this);
+
             TypeFlag = TypeFlag.None;
             SpendedGoldForSetFlag = 0;
             DaySetFlag = 0;
@@ -279,7 +280,6 @@ namespace Fantasy_Kingdoms_Battle
             while (listAttackedHero.Count > 0)
                 RemoveAttackingHero(listAttackedHero[0]);
 
-            Player.RemoveFlag(this);
             Program.formMain.LairsWithFlagChanged();
         }
 

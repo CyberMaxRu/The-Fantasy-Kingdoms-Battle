@@ -731,6 +731,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void RemoveFlag(PlayerLair lair)
         {
+            Debug.Assert(lair.PriorityFlag > PriorityExecution.None);
+
             int idx = ListFlags.IndexOf(lair);
             Debug.Assert(idx != -1);
             ListFlags[idx] = null;
@@ -752,15 +754,20 @@ namespace Fantasy_Kingdoms_Battle
             // Проверяем, что количество флагов сходится с количеством слотов
             // И что количество флагов с приоритетами Hight и Exclusive правильное
             int q = 0;
+            int qNonNone = 0;
             foreach (PriorityExecution pe in Enum.GetValues(typeof(PriorityExecution)))
             {
                 q += QuantityFlags[pe];
+                if (pe > PriorityExecution.None)
+                    qNonNone += QuantityFlags[pe];
             }
 
             Debug.Assert(q == ListFlags.Count);
             Debug.Assert(q <= Lobby.TypeLobby.MaxQuantityFlags);
             Debug.Assert(QuantityFlags[PriorityExecution.High] <= 2);
             Debug.Assert(QuantityFlags[PriorityExecution.Exclusive] <= 1);
+
+            Debug.Assert(qNonNone == ListFlags.Where(l => l != null).Count());
         }
 
         internal bool ExistsFreeFlag()
