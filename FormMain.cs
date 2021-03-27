@@ -71,6 +71,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private readonly VisualControl panelPlayers;// Панель, на которой находятся панели игроков лобби
 
+        private readonly VCBitmap bmpPreparedToolbar;
         private readonly VCToolLabel labelDay;
         private readonly VCToolLabel labelGreatness;
         private readonly VCToolLabel labelGold;
@@ -204,7 +205,6 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly Bitmap bmpBandButtonDisabled;
         internal readonly Bitmap bmpBandButtonPressed;
         internal readonly Bitmap bmpBandStateCreature;
-        private VCBitmap bmpPreparedToolbar;
         internal readonly M2Font fontSmall;
         internal readonly M2Font fontSmallC;
         internal readonly M2Font fontMedCaptionC;
