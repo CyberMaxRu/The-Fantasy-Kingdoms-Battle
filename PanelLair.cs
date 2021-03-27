@@ -61,6 +61,7 @@ namespace Fantasy_Kingdoms_Battle
             SelectThisBuilding();
             btnCancel.Visible = false;
             Lair.CancelFlag();
+            Lair.Player.SetTaskForHeroes();
         }
 
         private void BtnAction_ShowHint(object sender, EventArgs e)
@@ -108,7 +109,10 @@ namespace Fantasy_Kingdoms_Battle
                 SelectThisBuilding();
 
                 if (Lair.PriorityFlag < PriorityExecution.Exclusive)
+                {
                     Lair.IncPriority();
+                    Lair.Player.SetTaskForHeroes();
+                }
             }
         }
 
