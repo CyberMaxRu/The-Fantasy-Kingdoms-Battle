@@ -29,13 +29,26 @@ namespace Fantasy_Kingdoms_Battle
 
             btnInhabitants = new VCIconButton(this, imgMapObject.ShiftX, imgMapObject.NextTop(), Program.formMain.ilGui, FormMain.GUI_HOME);
             btnInhabitants.Click += BtnInhabitants_Click;
+            btnInhabitants.ShowHint += BtnInhabitants_ShowHint;
 
             btnHeroes = new VCIconButton(this, btnInhabitants.NextLeft(), btnInhabitants.ShiftY, Program.formMain.ilGui, FormMain.GUI_TARGET);
             btnHeroes.Click += BtnHeroes_Click;
+            btnHeroes.ShowHint += BtnHeroes_ShowHint;
 
             Height = btnInhabitants.NextTop();
             Width = btnAction.NextLeft();
         }
+
+        private void BtnInhabitants_ShowHint(object sender, EventArgs e)
+        {
+            Program.formMain.formHint.AddStep1Header("Существа", "", Lair.ListMonstersForHint());
+        }
+
+        private void BtnHeroes_ShowHint(object sender, EventArgs e)
+        {
+            Program.formMain.formHint.AddStep1Header("Герои, выполняющие флаг", "", Lair.ListHeroesForHint());
+        }
+
         internal PlayerLair Lair { get => PlayerObject as PlayerLair; }
         internal TypeLair TypeLair { get => Lair.TypeLair; }
 

@@ -377,5 +377,40 @@ namespace Fantasy_Kingdoms_Battle
 
             DropFlag();
         }
+
+        internal string ListMonstersForHint()
+        {
+            if (Hidden)
+                return "Пока место не разведано, существа в нем неизвестны";
+            else
+            {
+                if (Monsters.Count == 0)
+                    return "Нет существ";
+
+                string list = "";
+                foreach (Monster m in Monsters)
+                {
+                    list += (list != "" ? Environment.NewLine : "") + $"{m.TypeCreature.Name}, {m.Level} ур.";
+                }
+
+                return list;
+            }
+        }
+
+        internal string ListHeroesForHint()
+        {
+            if (listAttackedHero.Count == 0)
+                return "Нет героев";
+            else
+            {
+                string list = "";
+                foreach (PlayerHero h in listAttackedHero)
+                {
+                    list += (list != "" ? Environment.NewLine : "") + $"{h.GetNameHero()}, {h.Level} ур.";
+                }
+
+                return list;
+            }
+        }
     }
 }
