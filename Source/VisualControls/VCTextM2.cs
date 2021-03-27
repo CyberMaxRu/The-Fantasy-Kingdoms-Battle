@@ -37,7 +37,7 @@ namespace Fantasy_Kingdoms_Battle
         internal StringFormat StringFormat { get; set; }
         internal int MinHeigth()
         {
-            return Font.HeightSymbol * linesText.Count;
+            return Font.MaxHeightSymbol * linesText.Count;
         }
 
         internal int MinWidth()

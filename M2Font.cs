@@ -15,7 +15,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         internal Bitmap[] symbols;
         internal int maxWidthSymbol;
-        internal int maxHeightSymbol;
+
         public M2Font(string dirResources, string filename)
         {
             Bitmap bmpFonts = Program.formMain.LoadBitmap(filename + ".png", "Fonts");
@@ -28,7 +28,7 @@ namespace Fantasy_Kingdoms_Battle
 
             symbols = new Bitmap[count];
             maxWidthSymbol = 0;
-            maxHeightSymbol = 0;
+            MaxHeightSymbol = 0;
 
             // Получаем конфигурацию расположения символов
             int left, leftAndWidth, top, topAndHeight, width, height;
@@ -65,7 +65,7 @@ namespace Fantasy_Kingdoms_Battle
                 height = topAndHeight - top + 1;
 
                 maxWidthSymbol = Math.Max(maxWidthSymbol, width);
-                maxHeightSymbol = Math.Max(maxHeightSymbol, height);
+                MaxHeightSymbol = Math.Max(MaxHeightSymbol, height);
 
                 // Создаем картинку буквы
                 sym = new Bitmap(width, height);
@@ -87,8 +87,6 @@ namespace Fantasy_Kingdoms_Battle
 
             bmpFonts.Dispose();
 
-            HeightSymbol = symbols[0].Height;
-
             int GetValue()
             {
                 string v;
@@ -104,15 +102,15 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal int MaxHeightSymbol { get => maxHeightSymbol; }
-        internal int HeightSymbol { get; }
+        internal int MaxHeightSymbol { get; }
 
         internal Bitmap GetBitmap(string text, Color color)
         {
             Debug.Assert(text.Length > 0);
+            Debug.Assert(MaxHeightSymbol > 0);
 
             // Сначала создаем картинку с максимальным размером, который может быть
-            Bitmap bmpRaw = new Bitmap(maxWidthSymbol * text.Length, maxHeightSymbol);
+            Bitmap bmpRaw = new Bitmap(maxWidthSymbol * text.Length, MaxHeightSymbol);
 
             // Рисуем текст на предварительной картинке
             Bitmap bmpSymbol;
@@ -132,7 +130,7 @@ namespace Fantasy_Kingdoms_Battle
             //    bmpRaw.Save(@"f:\symbols\_ico.png", System.Drawing.Imaging.ImageFormat.Png);
 
             // Зная фактический размер текста, переносим его на новую картинку с правильным размером
-            Bitmap bmpResult = new Bitmap(left, maxHeightSymbol);
+            Bitmap bmpResult = new Bitmap(left, MaxHeightSymbol);
             Graphics gResult = Graphics.FromImage(bmpResult);
             gResult.DrawImageUnscaled(bmpRaw, 0, 0);
             gResult.Dispose();
