@@ -484,22 +484,23 @@ namespace Fantasy_Kingdoms_Battle
 
                 TopControl.ApplyMaxSize();
 
+                // Тулбар. Его располагаем прямо на слое, чтобы MainControl рисовал поверх него
+                // Это позволяет полосе оставаться видимой при скрытии MainControl на время хода компьютерных игроков
+                bmpPreparedToolbar = new VCBitmap(layerGame);
+
                 // Главное игровое поле
                 MainControl = new VisualControl(layerGame);
                 MainControl.Click += MainControl_Click;
 
-                // Тулбар
-                bmpPreparedToolbar = new VCBitmap(MainControl, 0, 0, null);
-
                 // Метки с информацией о Королевстве
-                labelDay = new VCToolLabel(bmpPreparedToolbar, Config.GridSize, 6, "", GUI_16_DAY);
+                labelDay = new VCToolLabel(MainControl, Config.GridSize, 6, "", GUI_16_DAY);
                 labelDay.Click += LabelDay_Click;
                 labelDay.ShowHint += LabelDay_ShowHint;
                 labelDay.Width = 64;
-                labelGreatness = new VCToolLabel(bmpPreparedToolbar, labelDay.NextLeft(), labelDay.ShiftY, "", GUI_16_GREATNESS);
+                labelGreatness = new VCToolLabel(MainControl, labelDay.NextLeft(), labelDay.ShiftY, "", GUI_16_GREATNESS);
                 labelGreatness.ShowHint += LabelGreatness_ShowHint;
                 labelGreatness.Width = 112;
-                labelGold = new VCToolLabel(bmpPreparedToolbar, labelGreatness.NextLeft(), labelDay.ShiftY, "", GUI_16_INCOME);
+                labelGold = new VCToolLabel(MainControl, labelGreatness.NextLeft(), labelDay.ShiftY, "", GUI_16_INCOME);
                 labelGold.ShowHint += LabelGold_ShowHint;
                 labelGold.Width = 168;
 
@@ -1045,6 +1046,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             TopControl.SetPos((ClientSize.Width - TopControl.Width) / 2, ShiftControls.Y);
+            bmpPreparedToolbar.SetPos(ShiftControls.X, TopControl.Top + TopControl.Height + Config.GridSize);
             MainControl.SetPos(ShiftControls.X, TopControl.Top + TopControl.Height + Config.GridSize);
             MainControl.ArrangeControls();
         }

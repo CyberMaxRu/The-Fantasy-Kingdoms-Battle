@@ -13,6 +13,10 @@ namespace Fantasy_Kingdoms_Battle
             Bitmap = b;
         }
 
+        public VCBitmap(VisualLayer vl) : base(vl)
+        {
+        }
+
         internal Bitmap Bitmap
         {
             get => bmp;
