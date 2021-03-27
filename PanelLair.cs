@@ -162,6 +162,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             btnHeroes.ImageIsEnabled = Lair.listAttackedHero.Count > 0;
+            btnHeroes.Cost = Lair.listAttackedHero.Count;
 
             imgMapObject.ImageIndex = Lair.ImageIndexLair();
             imgMapObject.Level = Lair.Layer + 1;
