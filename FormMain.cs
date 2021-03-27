@@ -1616,10 +1616,22 @@ namespace Fantasy_Kingdoms_Battle
                 }
                 else
                 {
-                    ControlForHintLeave();
-                    controlWithHint = curControl;
-                    controlWithHint.MouseEnter(leftDown);
-                    timerHover.Start();
+                    // Если при переходе на новый контрол у него так же есть подсказка, просто перерисовываем текст, не скрываем её
+                    curControl.DoShowHint();
+                    if (formHint.ExistHint)
+                    { 
+                        controlWithHint.MouseLeave();
+                        controlWithHint = curControl;
+                        controlWithHint.MouseEnter(leftDown);
+                    }
+                    else
+                    {
+                        ControlForHintLeave();
+                        controlWithHint = curControl;
+                        controlWithHint.MouseEnter(leftDown);
+                        timerHover.Start();
+                    }
+
                     SetNeedRedrawFrame();
                 }
 
