@@ -554,7 +554,7 @@ namespace Fantasy_Kingdoms_Battle
                 pageTournament.ShowHint += PageTournament_ShowHint;
 
                 labelCaptionPage = new VCLabelM2(MainControl, 0, pageGuilds.ShiftY, fontMedCaptionC, Config.CommonCaptionPage, pageGuilds.Height, "");
-                labelCaptionPage.Width = 240;
+                labelCaptionPage.Width = 300;
                 labelCaptionPage.StringFormat.Alignment = StringAlignment.Near;
                 labelCaptionPage.StringFormat.LineAlignment = StringAlignment.Center;
 
