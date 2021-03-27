@@ -288,6 +288,7 @@ namespace Fantasy_Kingdoms_Battle
         internal void ClearState()
         {
             Debug.Assert((StateCreature.ID == NameStateCreature.DoAttackFlag.ToString())
+                || (StateCreature.ID == NameStateCreature.DoDefenseFlag.ToString())
                 || (StateCreature.ID == NameStateCreature.DoScoutFlag.ToString()));
             Debug.Assert(TargetByFlag != null);
 
@@ -306,6 +307,8 @@ namespace Fantasy_Kingdoms_Battle
                     return NameStateCreature.DoScoutFlag;
                 case TypeFlag.Attack:
                     return NameStateCreature.DoAttackFlag;
+                case TypeFlag.Defense:
+                    return NameStateCreature.DoDefenseFlag;
                 default:
                     throw new Exception($"Неизвестный тип флага: {typeFlag}");
             }

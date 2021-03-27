@@ -345,6 +345,7 @@
     <Description>Это удобное место лучше всего подходит под строительство торгового поста.</Description>
     <ImageIndex>113</ImageIndex>
     <SoundSelect>tradepost_place_select.wav</SoundSelect>
+    <MaxHeroes>5</MaxHeroes>
     <IsLair>false</IsLair>
     <Reward>
       <PointTradePost>1</PointTradePost>
@@ -356,6 +357,7 @@
     <Description>Сундуки с сокровищами встречаются в Ардании даже чаще, чем крысы В некоторых землях герои по два урожая сундуков в год!</Description>
     <ImageIndex>120</ImageIndex>
     <SoundSelect>chest_select.wav</SoundSelect>
+    <MaxHeroes>5</MaxHeroes>
     <IsLair>false</IsLair>
     <Reward>
       <MinGold>1000</MinGold>
@@ -414,6 +416,7 @@
     <Description>Только на святой земле можно построить храм. Такие места большая редкость, и жрецы постоянно спорят, чей храм будет построен на святой земле.</Description>
     <ImageIndex>114</ImageIndex>
     <SoundSelect>place_temple_select.wav</SoundSelect>
+    <MaxHeroes>10</MaxHeroes>
     <IsLair>false</IsLair>
     <Reward>
       <MinGold>1000</MinGold>

@@ -99,15 +99,8 @@ namespace Fantasy_Kingdoms_Battle
             if (n.SelectSingleNode("Reward") != null)
                 Reward = new RewardLevelLair(n.SelectSingleNode("Reward"));
 
-            if (Monsters.Count > 0)
-            {
-                Debug.Assert(MaxHeroes > 0);
-                Debug.Assert(MaxHeroes < 50);
-            }
-            else
-            {
-                Debug.Assert(MaxHeroes == 0);
-            }
+            Debug.Assert(MaxHeroes > 0);
+            Debug.Assert(MaxHeroes < 50);
             
             //else
             //    throw new Exception("В конфигурации логова у " + ID + " нет информации об уровнях. ");

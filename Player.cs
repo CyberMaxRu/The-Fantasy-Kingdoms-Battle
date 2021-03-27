@@ -608,7 +608,8 @@ namespace Fantasy_Kingdoms_Battle
             foreach (PlayerHero ph in CombatHeroes)
             {
                 if ((ph.StateCreature.ID == NameStateCreature.DoAttackFlag.ToString())
-                    || (ph.StateCreature.ID == NameStateCreature.DoScoutFlag.ToString()))                    
+                    || (ph.StateCreature.ID == NameStateCreature.DoScoutFlag.ToString())
+                    || (ph.StateCreature.ID == NameStateCreature.DoDefenseFlag.ToString()))                    
                 {
                     ph.ClearState();
                 }
@@ -634,7 +635,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 if (freeHeroes.Count > 0)
                 {
-                    int quantityFlagAttack = ListFlags.Where(pl => (pl != null) && (pl.TypeFlag == TypeFlag.Attack)).Count();
+                    int quantityFlagAttack = ListFlags.Where(pl => (pl != null) && ((pl.TypeFlag == TypeFlag.Attack) || (pl.TypeFlag == TypeFlag.Defense))).Count();
                     if (quantityFlagAttack > 0)
                     {
                         int heroesToFlag;

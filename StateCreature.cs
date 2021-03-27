@@ -9,7 +9,7 @@ using System.Diagnostics;
 namespace Fantasy_Kingdoms_Battle
 {
     // Состояния существа
-    internal enum NameStateCreature { Nothing, DoScoutFlag, DoAttackFlag, InHome, Therapy, King, Advisor, Captain, Treasurer };
+    internal enum NameStateCreature { Nothing, DoScoutFlag, DoAttackFlag, DoDefenseFlag, InHome, Therapy, King, Advisor, Captain, Treasurer };
 
     // Класс описания состояния существ
     internal sealed class StateCreature
