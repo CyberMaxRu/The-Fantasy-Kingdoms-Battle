@@ -95,7 +95,7 @@ namespace Fantasy_Kingdoms_Battle
             if (Hero.TargetByFlag != null)
                 Hero.TargetByFlag.PrepareHint();
             else
-                Program.formMain.formHint.AddHeader("Герой не выполняет флагов");
+                Program.formMain.formHint.AddHeader("Герой не выполняет флага");
         }
 
         internal PlayerHero Hero { get => PlayerObject as PlayerHero; }
