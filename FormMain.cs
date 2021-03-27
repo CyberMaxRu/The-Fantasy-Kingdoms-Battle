@@ -506,6 +506,7 @@ namespace Fantasy_Kingdoms_Battle
                 btnEndTurn = CreateButton(MainControl, ilGui, GUI_HOURGLASS, 0, bmpToolbar.Height + Config.GridSize, BtnEndTurn_Click, BtnEndTurn_MouseHover);
                 panelLairWithFlags = new VisualControl(MainControl, 0, btnEndTurn.ShiftY);
                 panelLairWithFlags.Height = btnEndTurn.Height;
+                panelLairWithFlags.Width = panelLairWithFlags.Height;
 
                 // Отладочная информация
                 vcDebugInfo = new VisualControl();
@@ -564,8 +565,6 @@ namespace Fantasy_Kingdoms_Battle
                 DrawWarehouse();
                 panelLairs = new PanelLair[lobby.TypeLobby.LairsHeight, lobby.TypeLobby.LairsWidth];
                 DrawPageLair();
-
-                ShowDataPlayer();
 
                 // Вычисляем максимальный размер страниц
                 int maxHeightPages = 0;
@@ -641,7 +640,6 @@ namespace Fantasy_Kingdoms_Battle
 
                 //pageGuilds.ShiftX + maxWidthPages + Config.GridSize;
 
-                AdjustPanelLairsWithFlags();
                 ArrangeControls();
 
                 SetStage("Прибираем после строителей");
@@ -683,6 +681,7 @@ namespace Fantasy_Kingdoms_Battle
                 //me.Parent = this;
 
                 StartPlayMusic();
+                ShowDataPlayer();
 
                 // 
                 void SetStage(string text)
@@ -1049,7 +1048,6 @@ namespace Fantasy_Kingdoms_Battle
             TopControl.SetPos((ClientSize.Width - TopControl.Width) / 2, ShiftControls.Y);
             MainControl.SetPos(ShiftControls.X, TopControl.Top + TopControl.Height + Config.GridSize);
             MainControl.ArrangeControls();
-            AdjustPanelLairsWithFlags();
         }
 
         private void FormMain_KeyDown(object sender, KeyEventArgs e)
@@ -1177,6 +1175,7 @@ namespace Fantasy_Kingdoms_Battle
                     ShowLair(x, y);
 
             // Показываем героев
+            AdjustPanelLairsWithFlags();
             ListHeroesChanged();
         }
 
