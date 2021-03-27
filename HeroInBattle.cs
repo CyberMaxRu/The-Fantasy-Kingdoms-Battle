@@ -427,7 +427,7 @@ namespace Fantasy_Kingdoms_Battle
             switch (State)
             {
                 case StateHeroInBattle.MeleeAttack:
-                    int th = PlayerHero.MeleeWeapon != null ? PlayerHero.MeleeWeapon.TimeHit : 2;
+                    int th = PlayerHero.MeleeWeapon != null ? PlayerHero.MeleeWeapon.TimeHit : 100;
                     timeAttack = (int)(th / 100.00 * FormMain.Config.StepsInSecond);
                     break;
                 case StateHeroInBattle.RangeAttack:
