@@ -608,7 +608,7 @@ namespace Fantasy_Kingdoms_Battle
             foreach (PlayerHero ph in CombatHeroes)
             {
                 if ((ph.StateCreature.ID == NameStateCreature.DoAttackFlag.ToString())
-                    || (ph.StateCreature.ID == NameStateCreature.DoScoutFlat.ToString()))                    
+                    || (ph.StateCreature.ID == NameStateCreature.DoScoutFlag.ToString()))                    
                 {
                     ph.ClearState();
                 }

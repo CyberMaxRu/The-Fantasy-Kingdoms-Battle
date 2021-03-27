@@ -7,7 +7,7 @@
     <ImageIndex>11</ImageIndex>
   </StateCreature>
   <StateCreature>
-    <ID>DoScoutFlat</ID>
+    <ID>DoScoutFlag</ID>
     <Name>Разведка</Name>
     <Description>Выполняет задание разведки</Description>
     <ImageIndex>12</ImageIndex>

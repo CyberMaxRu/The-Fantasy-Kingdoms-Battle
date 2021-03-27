@@ -288,7 +288,7 @@ namespace Fantasy_Kingdoms_Battle
         internal void ClearState()
         {
             Debug.Assert((StateCreature.ID == NameStateCreature.DoAttackFlag.ToString())
-                || (StateCreature.ID == NameStateCreature.DoScoutFlat.ToString()));
+                || (StateCreature.ID == NameStateCreature.DoScoutFlag.ToString()));
             Debug.Assert(TargetByFlag != null);
 
             // Убираем себя из флага на логове
@@ -303,7 +303,7 @@ namespace Fantasy_Kingdoms_Battle
                 case TypeFlag.None:
                     return NameStateCreature.Nothing;
                 case TypeFlag.Scout:
-                    return NameStateCreature.DoScoutFlat;
+                    return NameStateCreature.DoScoutFlag;
                 case TypeFlag.Attack:
                     return NameStateCreature.DoAttackFlag;
                 default:
