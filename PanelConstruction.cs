@@ -138,11 +138,13 @@ namespace Fantasy_Kingdoms_Battle
             lblNameMapObject.Text = Building.Building.Name;
             lblNameMapObject.Color = FormMain.Config.ColorMapObjectCaption(Building.Level > 0);
 
-            if (lblIncome != null)
+            if (Building.Building is TypeEconomicConstruction)
             {
                 lblIncome.Text = "+" + (Building.Level > 0 ? Building.Income() : Building.IncomeNextLevel()).ToString();
                 lblIncome.Color = Building.Level > 0 ? FormMain.Config.HintIncome : Color.Gray;
             }
+            else
+                lblIncome.Visible = false;
 
             if (Building.Level > 0)
             {
