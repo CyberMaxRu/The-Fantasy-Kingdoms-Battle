@@ -29,6 +29,7 @@ namespace Fantasy_Kingdoms_Battle
         internal PlayerBuilding Building { get; }// Здание, которому принадлежит герой
         internal Player Player => Building.Player;// Игрок, которому принадлежит герой
         internal TypeHero TypeHero { get; } // Класс героя
+        internal int Gold { get; private set; }// Количество золота у героя
 
         // Выполнение флагов
         internal PlayerLair TargetByFlag { get; set; }// Логово флага, который выполняется
@@ -309,5 +310,12 @@ namespace Fantasy_Kingdoms_Battle
                     throw new Exception($"Неизвестный тип флага: {typeFlag}");
             }
         }
+
+        internal void AddGold(int income)
+        {
+            Debug.Assert(income > 0);
+
+            Gold += income;
+        }        
     }
 }
