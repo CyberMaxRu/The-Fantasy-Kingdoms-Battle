@@ -718,5 +718,10 @@ namespace Fantasy_Kingdoms_Battle
         {
             return selected ? PenSelectedBorder : PenBorder;
         }
+
+        internal Color ColorIncome(bool existIncome)
+        {
+            return existIncome ? HintIncome : Color.Gray;
+        }
     }
 }
