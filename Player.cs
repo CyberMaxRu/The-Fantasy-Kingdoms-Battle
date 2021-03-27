@@ -138,18 +138,25 @@ namespace Fantasy_Kingdoms_Battle
 
                 if ((pl != null) && (pl.listAttackedHero.Count > 0))
                 {
-                    PreparingForBattle();
                     Debug.Assert((pl.TypeFlag == TypeFlag.Scout) || (pl.TypeFlag == TypeFlag.Attack));
 
-                    // Включить, когда ИИ может выбирать цель
-                    pl.PreparingForBattle();
-
-                    //Debug.Assert(p.TargetLair.CombatHeroes.Count > 0);
-
-                    bool winner = false;
-
-                    if (pl.Monsters.Count > 0)
+                    if (pl.TypeFlag == TypeFlag.Scout)
                     {
+                        Debug.Assert(pl.Hidden);
+
+                        pl.Hidden = false;
+                    }
+                    else
+                    {
+                        Debug.Assert(pl.Monsters.Count > 0);
+
+                        PreparingForBattle();
+
+                        // Включить, когда ИИ может выбирать цель
+                        pl.PreparingForBattle();
+
+                        //Debug.Assert(p.TargetLair.CombatHeroes.Count > 0);
+
                         bool showForPlayer = TypePlayer == TypePlayer.Human;
                         b = new Battle(this, pl, Lobby.Turn, FormMain.Rnd, showForPlayer);
 
@@ -167,25 +174,14 @@ namespace Fantasy_Kingdoms_Battle
                             formProgressBattle.SetBattle(b, 1, 1);
                         }
 
-                        winner = b.Winner == this;
-                    }
-                    else
-                        winner = true;
+                        if (b.Winner == this)
+                        {
+                            // Победил текущий игрок
+                        }
+                        else
+                        {
 
-                    if (pl.TypeFlag == TypeFlag.Scout)
-                    {
-                        Debug.Assert(pl.Hidden);
-
-                        pl.Hidden = false;
-
-                    }
-                    else if (winner)
-                    {
-                        // Победил текущий игрок
-                    }
-                    else
-                    {
-
+                        }
                     }
                 }
             }
