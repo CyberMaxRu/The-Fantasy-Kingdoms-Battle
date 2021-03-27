@@ -20,6 +20,7 @@ namespace Fantasy_Kingdoms_Battle
             MaxHeroes = XmlUtils.GetInteger(n.SelectSingleNode("MaxHeroes"));
             StartQuantityFlags = XmlUtils.GetInteger(n.SelectSingleNode("StartQuantityFlags"));
             MaxQuantityFlags = XmlUtils.GetInteger(n.SelectSingleNode("MaxQuantityFlags"));
+            MaxHeroesForScoutFlag = XmlUtils.GetInteger(n.SelectSingleNode("MaxHeroesForScoutFlag"));
             StartPointConstructionGuild = XmlUtils.GetInteger(n.SelectSingleNode("StartPointConstructionGuild"));
             StartPointConstructionEconomic = XmlUtils.GetInteger(n.SelectSingleNode("StartPointConstructionEconomic"));
             PointConstructionGuildPerDay = XmlUtils.GetInteger(n.SelectSingleNode("PointConstructionGuildPerDay"));
@@ -44,6 +45,8 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(MaxQuantityFlags >= 1);
             Debug.Assert(MaxQuantityFlags <= 10);
             Debug.Assert(StartQuantityFlags <= MaxQuantityFlags);
+            Debug.Assert(MaxHeroesForScoutFlag >= 1);
+            Debug.Assert(MaxHeroesForScoutFlag <= 25);
             Debug.Assert(StartPointConstructionGuild >= 1);
             Debug.Assert(StartPointConstructionGuild <= 10);
             Debug.Assert(StartPointConstructionEconomic >= 1);
@@ -141,6 +144,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int MaxHeroes { get; }
         internal int StartQuantityFlags { get; }
         internal int MaxQuantityFlags { get; }
+        internal int MaxHeroesForScoutFlag { get; }
         internal int DayStartTournament { get; }
         internal int StartPointConstructionGuild { get; }
         internal int StartPointConstructionEconomic { get; }

@@ -290,6 +290,20 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.panelLairInfo.PlayerObject = this;
         }
 
+        internal int MaxHeroesForFlag()
+        {
+            switch (TypeAction())
+            {
+                case TypeFlag.Scout:
+                    return Player.Lobby.TypeLobby.MaxHeroesForScoutFlag;
+                case TypeFlag.Attack:
+                case TypeFlag.Defense:
+                    return TypeLair.MaxHeroes;
+                default:
+                    throw new Exception($"Неизвестный тип действия: {TypeAction()}");
+            }
+        }
+
         internal void AddAttackingHero(PlayerHero ph)
         {
             Debug.Assert(ph != null);
@@ -297,6 +311,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(ph.StateCreature.ID == NameStateCreature.Nothing.ToString());
             Debug.Assert(ph.TargetByFlag == null);
             Debug.Assert(!Destroyed);
+            Debug.Assert(listAttackedHero.Count < MaxHeroesForFlag());
 
             listAttackedHero.Add(ph);
             ph.TargetByFlag = this;
