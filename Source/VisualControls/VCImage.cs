@@ -81,7 +81,7 @@ namespace Fantasy_Kingdoms_Battle
                 mouseClicked = false;
 
             Program.formMain.SetNeedRedrawFrame();
-            if (ImageIsEnabled)
+            if (PlaySelectSound())
                 Program.formMain.PlaySelectButton();
         }
 
@@ -218,6 +218,11 @@ namespace Fantasy_Kingdoms_Battle
             labelLevel.Width = Width - shiftlabelLevel;
             labelQuantity.Width = Width - FormMain.Config.GridSizeHalf;
             labelCost.Width = Width;
+        }
+
+        protected virtual bool PlaySelectSound()
+        {
+            return ImageIsEnabled;
         }
     }
 }

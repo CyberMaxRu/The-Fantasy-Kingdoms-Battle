@@ -85,6 +85,11 @@ namespace Fantasy_Kingdoms_Battle
             return (PlayerObject != null) && (cell != null) && (cell.Panel != null) && Program.formMain.PlayerObjectIsSelected(cell.Panel.PlayerObject);
         }
 
+        protected override bool PlaySelectSound()
+        {
+            return (cell != null) && base.PlaySelectSound();
+        }
+
         internal override void Draw(Graphics g)
         {
             if (Visible)
