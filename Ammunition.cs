@@ -56,7 +56,6 @@ namespace Fantasy_Kingdoms_Battle
 
 
         // Реализация интерфейса
-        VCCell ICell.Panel { get; set; }
         BitmapList ICell.BitmapList() => Program.formMain.ilItems;
         int ICell.ImageIndex() => GroupWeapon.ImageIndex;
         bool ICell.NormalImage() => true;
@@ -167,7 +166,6 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         // Реализация интерфейса
-        VCCell ICell.Panel { get; set; }
         BitmapList ICell.BitmapList() => Program.formMain.ilItems;
         int ICell.ImageIndex() => GroupArmour.ImageIndex;
         bool ICell.NormalImage() => true;

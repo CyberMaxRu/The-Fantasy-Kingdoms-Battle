@@ -847,7 +847,6 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         // Реализация интерфейса
-        VCCell ICell.Panel { get; set; }
         BitmapList ICell.BitmapList() => Program.formMain.imListObjectsCell;
         int ICell.ImageIndex()
         {

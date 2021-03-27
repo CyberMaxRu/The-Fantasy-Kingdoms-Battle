@@ -42,7 +42,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int SpendedGoldForSetFlag { get; private set; }// Сколько золота было потрачено на установку флага
         internal PriorityExecution PriorityFlag { get; private set; } = PriorityExecution.None;// Приоритет разведки/атаки
         internal List<PlayerHero> listAttackedHero { get; } = new List<PlayerHero>();// Список героев, откликнувшихся на флаг
-        VCCell ICell.Panel { get => null; set => _ = value; }
 
         private void CreateMonsters()
         {

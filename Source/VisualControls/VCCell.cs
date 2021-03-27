@@ -6,7 +6,6 @@ namespace Fantasy_Kingdoms_Battle
     // Интерфейс для работы с ячейкой
     internal interface ICell
     {
-        VCCell Panel { get; set; }
         BitmapList BitmapList();
         int ImageIndex();
         bool NormalImage();
@@ -72,17 +71,12 @@ namespace Fantasy_Kingdoms_Battle
             if (c is PlayerObject po)
                 PlayerObject = po;
 
-            if (cell != null)
-                cell.Panel = null;
-
             cell = c;
-            if (cell != null)
-                cell.Panel = this;
         }
 
         protected override bool Selected()
         {
-            return (PlayerObject != null) && (cell != null) && (cell.Panel != null) && Program.formMain.PlayerObjectIsSelected(cell.Panel.PlayerObject);
+            return (PlayerObject != null) && (cell != null) && Program.formMain.PlayerObjectIsSelected(PlayerObject);
         }
 
         protected override bool PlaySelectSound()

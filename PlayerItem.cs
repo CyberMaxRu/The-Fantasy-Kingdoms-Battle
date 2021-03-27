@@ -27,7 +27,6 @@ namespace Fantasy_Kingdoms_Battle
         internal bool OwnerIsPlayer { get; set; }
 
         // Реализация интерфейса
-        VCCell ICell.Panel { get; set; }
         BitmapList ICell.BitmapList() => Program.formMain.ilItems;
         bool ICell.NormalImage() => true;
         int ICell.ImageIndex() => Item.ImageIndex;

@@ -133,19 +133,6 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         // Реализация интерфейса
-        VCCell ICell.Panel
-        {
-            get => panelEntity;
-            set
-            {
-                //if (value == null)
-                //    Debug.Assert(panelEntity != null);
-                //else
-                //    Debug.Assert(panelEntity == null);
-
-                panelEntity = value;
-            }
-        }
         BitmapList ICell.BitmapList() => Program.formMain.imListObjectsCell;
         int ICell.ImageIndex() => GetImageIndex();
         bool ICell.NormalImage() => true;
