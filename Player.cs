@@ -641,7 +641,7 @@ namespace Fantasy_Kingdoms_Battle
                         int heroesToFlag;
                         int heroesPerFlag = Math.Max(freeHeroes.Count / quantityFlagAttack, 1);
 
-                        foreach (PlayerLair pl in ListFlags)
+                        foreach (PlayerLair pl in ListFlags.Where(pl => (pl != null) && ((pl.TypeFlag == TypeFlag.Attack) || (pl.TypeFlag == TypeFlag.Defense))))
                             if (pl != null)
                             {
                                 heroesToFlag = Math.Min(Math.Min(freeHeroes.Count, heroesPerFlag), pl.TypeLair.MaxHeroes);
