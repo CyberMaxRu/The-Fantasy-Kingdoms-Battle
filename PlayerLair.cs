@@ -33,6 +33,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int Layer { get; }// Слой, на котором находится логово
         internal bool Hidden { get; private set; } = true;// Логово не разведано
         internal List<Monster> Monsters { get; } = new List<Monster>();// Монстры текущего уровня
+        internal bool Destroyed { get; private set; } = false;// Логово уничтожено, работа с ним запрещена
 
         // Поддержка флага
         internal TypeFlag TypeFlag { get; private set; } = TypeFlag.None;// Тип установленного флага
@@ -43,6 +44,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void CreateMonsters()
         {
+            Debug.Assert(!Destroyed);
             //Debug.Assert(TypeLair.Monsters.Count > 0);
 
             Monster lm;
@@ -59,12 +61,15 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PreparingForBattle()
         {
+            Debug.Assert(!Destroyed);
+
             base.PreparingForBattle();
         }
 
         internal int CostScout()
         {
             Debug.Assert(Hidden);
+            Debug.Assert(!Destroyed);
 
             return PriorityFlag < PriorityExecution.Exclusive ? 
                 Player.Lobby.TypeLobby.LayerSettings[Layer].CostScout * Player.Lobby.TypeLobby.CoefFlagScout[(int)PriorityFlag + 1] / 100 : 0;
@@ -73,13 +78,25 @@ namespace Fantasy_Kingdoms_Battle
         internal int CostAttack()
         {
             Debug.Assert(!Hidden);
+            Debug.Assert(!Destroyed);
 
             return PriorityFlag < PriorityExecution.Exclusive ?
                 Player.Lobby.TypeLobby.LayerSettings[Layer].CostAttack * Player.Lobby.TypeLobby.CoefFlagAttack[(int)PriorityFlag + 1] / 100 : 0;
         }
 
+        internal int CostDefense()
+        {
+            Debug.Assert(!Hidden);
+            Debug.Assert(!Destroyed);
+
+            return PriorityFlag < PriorityExecution.Exclusive ?
+                Player.Lobby.TypeLobby.LayerSettings[Layer].CostDefense * Player.Lobby.TypeLobby.CoefFlagDefense[(int)PriorityFlag + 1] / 100 : 0;
+        }
+
         internal override void PrepareHint()
         {
+            Debug.Assert(!Destroyed);
+
             if (Hidden)
                 Program.formMain.formHint.AddStep1Header("Неизвестное место", "Место не разведано", "Установите флаг разведки для отправки героев к месту");
             else
@@ -88,22 +105,29 @@ namespace Fantasy_Kingdoms_Battle
 
         internal string NameLair()
         {
+            Debug.Assert(!Destroyed);
             return Hidden ? "Неизвестное место" : TypeLair.Name;
         }
 
         internal int ImageIndexLair()
         {
+            Debug.Assert(!Destroyed);
+
             return TypeLair.ImageIndex;
             return Hidden ? FormMain.IMAGE_INDEX_NONE : TypeLair.ImageIndex;
         }
 
         internal int RequiredGold()
         {
+            Debug.Assert(!Destroyed);
+
             return Hidden ? CostScout() : CostAttack();
         }
 
         internal bool CheckRequirements()
         {
+            Debug.Assert(!Destroyed);
+
             if (Player.Gold < RequiredGold())
                 return false;
 
@@ -126,6 +150,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal List<TextRequirement> GetRequirements()
         {
+            Debug.Assert(!Destroyed);
+
             List<TextRequirement> list = new List<TextRequirement>();
 
             switch (PriorityFlag)
@@ -153,9 +179,21 @@ namespace Fantasy_Kingdoms_Battle
             return list;
         }
 
+        internal TypeFlag TypeAction()
+        {
+            Debug.Assert(!Destroyed);
+
+            if (Hidden)
+                return TypeFlag.Scout;
+            if (TypeLair.IsLair)
+                return TypeFlag.Attack;
+            return TypeFlag.Defense;
+        }
+
         internal void IncPriority()
         {
             Debug.Assert(PriorityFlag < PriorityExecution.Exclusive);
+            Debug.Assert(!Destroyed);
 
             // 
 
@@ -198,6 +236,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(SpendedGoldForSetFlag > 0);
             Debug.Assert(DaySetFlag > 0);
             Debug.Assert(TypeFlag != TypeFlag.None);
+            Debug.Assert(!Destroyed);
 
             return DaySetFlag == Player.Lobby.Turn ? SpendedGoldForSetFlag : 0;
         }
@@ -208,6 +247,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(SpendedGoldForSetFlag > 0);
             Debug.Assert(DaySetFlag > 0);
             Debug.Assert(TypeFlag != TypeFlag.None);
+            Debug.Assert(!Destroyed);
 
             Player.ReturnGold(Cashback());
             DropFlag();
@@ -215,6 +255,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal string PriorityFlatToText()
         {
+            Debug.Assert(!Destroyed);
+
             switch (PriorityFlag)
             {
                 case PriorityExecution.None:
@@ -234,11 +276,15 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void HideInfo()
         {
+            Debug.Assert(!Destroyed);
+
             Program.formMain.panelLairInfo.Visible = false;
         }
 
         internal override void ShowInfo()
         {
+            Debug.Assert(!Destroyed);
+
             Program.formMain.panelLairInfo.Visible = true;
             Program.formMain.panelLairInfo.PlayerObject = this;
         }
@@ -249,6 +295,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(listAttackedHero.IndexOf(ph) == -1);
             Debug.Assert(ph.StateCreature.ID == NameStateCreature.Nothing.ToString());
             Debug.Assert(ph.TargetByFlag == null);
+            Debug.Assert(!Destroyed);
 
             listAttackedHero.Add(ph);
             ph.TargetByFlag = this;
@@ -259,6 +306,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(listAttackedHero.IndexOf(ph) != -1);
             Debug.Assert(ph.TargetByFlag == this);
+            Debug.Assert(!Destroyed);
 
             ph.TargetByFlag = null;
             listAttackedHero.Remove(ph);
@@ -268,6 +316,7 @@ namespace Fantasy_Kingdoms_Battle
         private void DropFlag()
         {
             Debug.Assert(TypeFlag != TypeFlag.None);
+            Debug.Assert(!Destroyed);
 
             Player.RemoveFlag(this);
 
@@ -288,6 +337,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(Hidden);
             Debug.Assert(TypeFlag == TypeFlag.Scout);
+            Debug.Assert(!Destroyed);
 
             Hidden = false;
 
