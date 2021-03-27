@@ -123,24 +123,22 @@ namespace Fantasy_Kingdoms_Battle
 
             btnAction.ImageIsEnabled = Lair.CheckRequirements();
             btnAction.Level = (int)Lair.PriorityFlag + 1;
+            btnAction.Cost = Lair.RequiredGold();
             btnCancel.Visible = Lair.PriorityFlag != PriorityExecution.None;
 
             switch (Lair.TypeAction())
             {
                 case TypeFlag.Scout:
                     btnAction.ImageIndex = FormMain.GUI_FLAG_SCOUT;
-                    btnAction.Cost = Lair.CostScout();
                     btnInhabitants.Visible = false;
                     break;
                 case TypeFlag.Attack:
                     btnAction.ImageIndex = FormMain.GUI_FLAG_ATTACK;
-                    btnAction.Cost = Lair.CostAttack();
                     btnInhabitants.Visible = true;
                     btnInhabitants.Cost = Lair.CombatHeroes.Count;
                     break;
                 case TypeFlag.Defense:
                     btnAction.ImageIndex = FormMain.GUI_FLAG_DEFENSE;
-                    btnAction.Cost = Lair.CostDefense();
                     btnInhabitants.Visible = true;
                     btnInhabitants.Cost = Lair.CombatHeroes.Count;
                     break;
@@ -153,9 +151,27 @@ namespace Fantasy_Kingdoms_Battle
             imgMapObject.ImageIndex = Lair.ImageIndexLair();
             imgMapObject.Level = Lair.Layer + 1;
             lblNameMapObject.Text = Lair.NameLair();
-            lblNameMapObject.Color = Lair.PriorityFlag != PriorityExecution.None ? Color.OrangeRed : Color.LimeGreen;
+            lblNameMapObject.Color = GetColorCaption();
 
             base.Draw(g);
+        }
+
+        private Color GetColorCaption()
+        {
+            if (Lair.PriorityFlag == PriorityExecution.None)
+                return Lair.Hidden ? FormMain.Config.ColorMapObjectCaption(false) : Color.MediumAquamarine;
+
+            switch (Lair.TypeAction())
+            {
+                case TypeFlag.Scout:
+                    return Color.LimeGreen;
+                case TypeFlag.Attack:
+                    return Color.OrangeRed;
+                case TypeFlag.Defense:
+                    return Color.DodgerBlue;
+                default:                    
+                    throw new Exception($"Неизвестный тип действия: {Lair.TypeAction()}");
+            }
         }
 
         protected override void PlaySelect()
