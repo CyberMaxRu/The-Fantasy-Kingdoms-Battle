@@ -104,6 +104,8 @@ namespace Fantasy_Kingdoms_Battle
                     }
                     //Debug.Assert(y >= Top);
 
+                    Debug.Assert(bmpPreparedText.Width <= Width, $"Текст {Text} занимает {bmpPreparedText.Width} пикселей, не вмещаясь {Width}.");
+
                     g.DrawImageUnscaled(bmpPreparedText, x + LeftMargin, y + TopMargin);
                 }
             }
