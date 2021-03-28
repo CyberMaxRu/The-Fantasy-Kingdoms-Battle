@@ -50,9 +50,9 @@ namespace Fantasy_Kingdoms_Battle
     }
 
     // Класс награды за зачистку уровень логова
-    internal sealed class RewardLevelLair
+    internal sealed class RewardForLair
     {
-        public RewardLevelLair(XmlNode n)
+        public RewardForLair(XmlNode n)
         {
             MinGold = XmlUtils.GetInteger(n.SelectSingleNode("MinGold"));
             MaxGold = XmlUtils.GetInteger(n.SelectSingleNode("MaxGold"));
@@ -105,7 +105,7 @@ namespace Fantasy_Kingdoms_Battle
             IsLair = XmlUtils.GetBoolNotNull(n.SelectSingleNode("IsLair"));
             // Информация о награде
             if (n.SelectSingleNode("Reward") != null)
-                Reward = new RewardLevelLair(n.SelectSingleNode("Reward"));
+                Reward = new RewardForLair(n.SelectSingleNode("Reward"));
 
             Debug.Assert(MaxHeroes > 0);
             Debug.Assert(MaxHeroes < 50);
@@ -117,7 +117,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<MonsterLevelLair> Monsters { get; } = new List<MonsterLevelLair>();
         internal int MaxHeroes { get; }// Максимальное количество героев, которое может атаковать логово
         internal bool IsLair { get; }// Признак - это логово
-        internal RewardLevelLair Reward { get; }
+        internal RewardForLair Reward { get; }
 
         internal override void TuneDeferredLinks()
         {
