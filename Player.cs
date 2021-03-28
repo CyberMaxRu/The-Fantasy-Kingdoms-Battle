@@ -863,9 +863,11 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void ApplyReward()
+        internal void ApplyReward(PlayerLair l)
         {
-
+            Gold += l.RewardGold;
+            PointConstructionTemple += l.RewardPointTemple;
+            PointConstructionTradePost += l.RewardPointTradePost;
         }
 
         // Реализация интерфейса

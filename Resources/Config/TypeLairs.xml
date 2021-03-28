@@ -348,7 +348,7 @@
     <MaxHeroes>5</MaxHeroes>
     <IsLair>false</IsLair>
     <Reward>
-      <PointTradePost>True</PointTradePost>
+      <PointTradePost>1</PointTradePost>
     </Reward>
   </TypeLair>
   <TypeLair>
@@ -419,7 +419,7 @@
     <MaxHeroes>10</MaxHeroes>
     <IsLair>false</IsLair>
     <Reward>
-      <PointTemple>True</PointTemple>
+      <PointTemple>1</PointTemple>
     </Reward>
   </TypeLair>
 </TypeLairs>
