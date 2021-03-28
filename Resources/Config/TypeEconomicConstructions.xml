@@ -121,47 +121,47 @@
       <Level>
         <Pos>2</Pos>
         <Cost>250</Cost>
-        <Income>150</Income>
+        <Income>300</Income>
       </Level>
       <Level>
         <Pos>3</Pos>
         <Cost>250</Cost>
-        <Income>150</Income>
+        <Income>450</Income>
       </Level>
       <Level>
         <Pos>4</Pos>
         <Cost>250</Cost>
-        <Income>150</Income>
+        <Income>600</Income>
       </Level>
       <Level>
         <Pos>5</Pos>
         <Cost>250</Cost>
-        <Income>150</Income>
+        <Income>750</Income>
       </Level>
       <Level>
         <Pos>6</Pos>
         <Cost>250</Cost>
-        <Income>150</Income>
+        <Income>900</Income>
       </Level>
       <Level>
         <Pos>7</Pos>
         <Cost>250</Cost>
-        <Income>150</Income>
+        <Income>1050</Income>
       </Level>
       <Level>
         <Pos>8</Pos>
         <Cost>250</Cost>
-        <Income>150</Income>
+        <Income>1200</Income>
       </Level>
       <Level>
         <Pos>9</Pos>
         <Cost>250</Cost>
-        <Income>150</Income>
+        <Income>1350</Income>
       </Level>
       <Level>
         <Pos>10</Pos>
         <Cost>250</Cost>
-        <Income>150</Income>
+        <Income>1500</Income>
       </Level>
     </Levels>
   </TypeConstructionEconomic>
