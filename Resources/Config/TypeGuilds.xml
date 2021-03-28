@@ -10,6 +10,7 @@
     <Pos>1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
+    <PointConstructionGuild>1</PointConstructionGuild>
     <HasTreasury>True</HasTreasury>
     <GoldByConstruction>500</GoldByConstruction>
     <LayersResearches>1</LayersResearches>
@@ -86,6 +87,7 @@
     <Pos>2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
+    <PointConstructionGuild>1</PointConstructionGuild>
     <HasTreasury>True</HasTreasury>
     <GoldByConstruction>0</GoldByConstruction>
     <LayersResearches>1</LayersResearches>
@@ -162,6 +164,7 @@
     <Pos>3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
+    <PointConstructionGuild>1</PointConstructionGuild>
     <HasTreasury>True</HasTreasury>
     <GoldByConstruction>0</GoldByConstruction>
     <LayersResearches>1</LayersResearches>
@@ -238,6 +241,7 @@
     <Pos>3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
+    <PointConstructionGuild>1</PointConstructionGuild>
     <HasTreasury>True</HasTreasury>
     <GoldByConstruction>0</GoldByConstruction>
     <LayersResearches>1</LayersResearches>
@@ -340,6 +344,7 @@
     <Pos>2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
+    <PointConstructionGuild>1</PointConstructionGuild>
     <HasTreasury>True</HasTreasury>
     <GoldByConstruction>0</GoldByConstruction>
     <LayersResearches>1</LayersResearches>
@@ -429,7 +434,9 @@
     <Line>2</Line>
     <Pos>1</Pos>
     <DefaultLevel>0</DefaultLevel>
+    <PointConstructionGuild>1</PointConstructionGuild>
     <MaxLevel>3</MaxLevel>
+    <PointConstructionGuild>1</PointConstructionGuild>
     <HasTreasury>True</HasTreasury>
     <GoldByConstruction>0</GoldByConstruction>
     <LayersResearches>1</LayersResearches>
@@ -514,6 +521,7 @@
     <Pos>4</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
+    <PointConstructionGuild>1</PointConstructionGuild>
     <HasTreasury>True</HasTreasury>
     <GoldByConstruction>0</GoldByConstruction>
     <LayersResearches>1</LayersResearches>

@@ -30,7 +30,6 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly List<VCTextM2> listRequirements = new List<VCTextM2>();
         internal readonly VCLabelValue lblIncome;
         internal readonly VCLabelValue lblGold;
-        internal readonly VCLabelM2 lblBuilders;
         internal readonly VCLabelM2 lblDamageMelee;
         internal readonly VCLabelM2 lblDamageArcher;
         internal readonly VCLabelM2 lblDamageMagic;
@@ -73,9 +72,6 @@ namespace Fantasy_Kingdoms_Battle
             lblGold = new VCLabelValue(this, FormMain.Config.GridSize, lblSeparateRequirement.NextTop(), FormMain.Config.HintIncome);
             lblGold.ImageIndex = FormMain.GUI_16_GOLD;
             lblGold.Width = widthControl;
-
-            lblBuilders = new VCLabelM2(this, FormMain.Config.GridSize, lblGold.NextTop(), Program.formMain.fontSmallC, FormMain.Config.HintDescription, Program.formMain.fontSmallC.MaxHeightSymbol, "");
-            lblBuilders.Width = widthControl;
 
             /*            lblDamageMelee = new Label()
                         {
@@ -179,7 +175,6 @@ namespace Fantasy_Kingdoms_Battle
             listRequirements.Clear();
 
             lblGold.Visible = false;
-            lblBuilders.Visible = false;
 
             /*lblDamageMelee.Hide();
             lblDamageArcher.Hide();
@@ -298,19 +293,6 @@ namespace Fantasy_Kingdoms_Battle
                 lblGold.Visible = true;
 
                 nextTop = lblGold.NextTop();
-            }
-        }
-
-        internal void AddStep5Builders(bool pointConstructionEnough)
-        {
-            if (!pointConstructionEnough)
-            {
-                lblBuilders.Color = ColorRequirements(pointConstructionEnough);
-                lblBuilders.Text = "Cтроительство недоступно";
-                lblBuilders.ShiftY = nextTop;
-                lblBuilders.Visible = true;
-
-                nextTop = lblBuilders.NextTop();
             }
         }
 

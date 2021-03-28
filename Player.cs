@@ -341,28 +341,19 @@ namespace Fantasy_Kingdoms_Battle
                 Program.formMain.ListHeroesChanged();
         }
 
-        internal bool EnoughPointConstruction(PlayerBuilding pb)
-        {
-            if (pb.Building is TypeGuild)
-                return PointConstructionGuild > 0;
-            if (pb.Building is TypeEconomicConstruction)
-                return PointConstructionEconomic > 0;
-            if (pb.Building is TypeTemple)
-                return PointConstructionTemple > 0;
-
-            return true;
-        }
-
         internal void Constructed(PlayerBuilding pb)
         {
-            Debug.Assert(EnoughPointConstruction(pb));
+            Debug.Assert(pb.CheckRequirements());
 
-            if (pb.Building is TypeGuild)
-                PointConstructionGuild--;
-            else if (pb.Building is TypeEconomicConstruction)
-                PointConstructionEconomic--;
-            else if (pb.Building is TypeTemple)
-                PointConstructionTemple--;
+            PointConstructionGuild -= pb.Building.PointConstructionGuild;
+            PointConstructionEconomic -= pb.Building.PointConstructionEconomic;
+            PointConstructionTemple -= pb.Building.PointConstructionTemple;
+            PointConstructionTradePost -= pb.Building.PointConstructionTradePost;
+
+            Debug.Assert(PointConstructionGuild >= 0);
+            Debug.Assert(PointConstructionEconomic >= 0);
+            Debug.Assert(PointConstructionTemple >= 0);
+            Debug.Assert(PointConstructionTradePost >= 0);
         }
 
         internal int Income()

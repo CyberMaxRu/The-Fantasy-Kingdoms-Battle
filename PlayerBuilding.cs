@@ -93,16 +93,12 @@ namespace Fantasy_Kingdoms_Battle
             if (Player.Gold < Building.Levels[Level + 1].Cost)
                 return false;
 
-            // Проверяем наличие строителей
-            if ((Building is TypeGuild) && (Player.PointConstructionGuild == 0))
+            // Проверяем наличие очков строительства
+            if ((Building.PointConstructionGuild > Player.PointConstructionGuild)
+                || (Building.PointConstructionEconomic > Player.PointConstructionEconomic)
+                || (Building.PointConstructionTemple > Player.PointConstructionTradePost)
+                || (Building.PointConstructionTradePost > Player.PointConstructionTradePost))
                 return false;
-            if ((Building is TypeEconomicConstruction) && (Player.PointConstructionEconomic == 0))
-                return false;
-
-            // Если это храм, то нужно свободное Святое место
-            if (Building is TypeTemple)
-                if (Player.PointConstructionTemple == 0)
-                    return false;
 
             // Проверяем требования к зданиям
             return Player.CheckRequirements(Building.Levels[Level + 1].Requirements);
@@ -114,9 +110,39 @@ namespace Fantasy_Kingdoms_Battle
                 return null;
 
             List<TextRequirement> list = new List<TextRequirement>();
-            if (Building is TypeTemple)
-                if (Player.PointConstructionTemple == 0)
-                    list.Add(new TextRequirement(false, "Нет свободных Святых мест"));
+
+            if (Building.PointConstructionGuild > 0)
+            {
+                if (Building.PointConstructionGuild <= Player.PointConstructionGuild)
+                    list.Add(new TextRequirement(true, "Есть Разрешение на строительство гильдий"));
+                else
+                    list.Add(new TextRequirement(false, "Нет Разрешений на строительство гильдий"));
+            }
+
+            if (Building.PointConstructionEconomic > 0)
+            {
+                if (Building.PointConstructionEconomic <= Player.PointConstructionEconomic)
+                    list.Add(new TextRequirement(true, "Есть Разрешение на строительство эконом. сооружений"));
+                else
+                    list.Add(new TextRequirement(false, "Нет Разрешений на строительство эконом. сооружений"));
+            }
+
+            if (Building.PointConstructionTemple > 0)
+            {
+                if (Building.PointConstructionTemple <= Player.PointConstructionTemple)
+                    list.Add(new TextRequirement(true, "Есть свободная Святая земля"));
+                else
+                    list.Add(new TextRequirement(false, "Нет свободных Святых земель"));
+            }
+
+            if (Building.PointConstructionTradePost > 0)
+            {
+                if (Building.PointConstructionTradePost <= Player.PointConstructionTradePost)
+                    list.Add(new TextRequirement(true, "Есть свободное торговое место"));
+                else
+                    list.Add(new TextRequirement(false, "Нет свободных торговых мест"));
+            }
+
             Player.TextRequirements(Building.Levels[Level + 1].Requirements, list);
 
             return list;

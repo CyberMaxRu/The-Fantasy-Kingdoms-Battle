@@ -21,13 +21,25 @@ namespace Fantasy_Kingdoms_Battle
             HasTreasury = XmlUtils.GetBool(n.SelectSingleNode("HasTreasury"), false);
             GoldByConstruction = XmlUtils.GetInteger(n.SelectSingleNode("GoldByConstruction"));
             DefaultLevel = XmlUtils.GetInteger(n.SelectSingleNode("DefaultLevel"));
-            MaxLevel = Convert.ToInt32(n.SelectSingleNode("MaxLevel").InnerText);
+            MaxLevel = XmlUtils.GetInteger(n.SelectSingleNode("MaxLevel"));
+            PointConstructionGuild = XmlUtils.GetInteger(n.SelectSingleNode("PointConstructionGuild"));
+            PointConstructionEconomic = XmlUtils.GetInteger(n.SelectSingleNode("PointConstructionEconomic"));
+            PointConstructionTemple = XmlUtils.GetInteger(n.SelectSingleNode("PointConstructionTemple"));
+            PointConstructionTradePost = XmlUtils.GetInteger(n.SelectSingleNode("PointConstructionTradePost"));
 
             Debug.Assert(DefaultLevel >= 0);
             Debug.Assert(DefaultLevel <= 5);
             Debug.Assert(MaxLevel > 0);
-            Debug.Assert(MaxLevel <= 5);
+            Debug.Assert(MaxLevel <= 10);
             Debug.Assert(DefaultLevel <= MaxLevel);
+            Debug.Assert(PointConstructionGuild >= 0);
+            Debug.Assert(PointConstructionGuild <= 1);
+            Debug.Assert(PointConstructionEconomic >= 0);
+            Debug.Assert(PointConstructionEconomic <= 1);
+            Debug.Assert(PointConstructionTemple >= 0);
+            Debug.Assert(PointConstructionTemple <= 1);
+            Debug.Assert(PointConstructionTradePost >= 0);
+            Debug.Assert(PointConstructionTradePost <= 1);
 
             // Загружаем информацию об уровнях
             Levels = new Level[MaxLevel + 1];// Для упрощения работы с уровнями, добавляем 1, чтобы уровень был равен индексу в массиве
@@ -97,6 +109,12 @@ namespace Fantasy_Kingdoms_Battle
         internal bool HasTreasury { get; }// Имеет собственную казну
         internal int GoldByConstruction { get; }// Количество золота в казне при постройке
         internal TypeHero TrainedHero { get; set; }
+
+        // Очки на постройку/апгрейд
+        internal int PointConstructionGuild { get; }
+        internal int PointConstructionEconomic { get; }
+        internal int PointConstructionTemple { get; }
+        internal int PointConstructionTradePost { get; }
 
         internal override void TuneDeferredLinks()
         {

@@ -79,7 +79,6 @@ namespace Fantasy_Kingdoms_Battle
                 Program.formMain.formHint.AddStep2Income(Building.IncomeNextLevel());
                 Program.formMain.formHint.AddStep3Requirement(Building.GetTextRequirements());
                 Program.formMain.formHint.AddStep4Gold(Building.CostBuyOrUpgrade(), Building.Player.Gold >= Building.CostBuyOrUpgrade());
-                Program.formMain.formHint.AddStep5Builders(Building.Player.EnoughPointConstruction(Building));
             }
         }
 
@@ -148,7 +147,6 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Building.Level > 0)
             {
-
                 if (Building.CanLevelUp())
                 {
                     btnBuyOrUpgrade.Visible = true;

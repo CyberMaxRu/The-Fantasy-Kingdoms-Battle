@@ -10,6 +10,7 @@
     <Pos>1</Pos>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>3</MaxLevel>
+    <PointConstructionEconomic>1</PointConstructionEconomic>
     <HasTreasury>True</HasTreasury>
     <SoundSelect>castle_select.wav</SoundSelect>
     <Levels>
@@ -104,15 +105,61 @@
     <Line>1</Line>
     <Pos>4</Pos>
     <DefaultLevel>0</DefaultLevel>
-    <MaxLevel>1</MaxLevel>
+    <MaxLevel>10</MaxLevel>
+    <PointTradePost>1</PointTradePost>
+    <LevelAsQuantity>True</LevelAsQuantity>
     <HasTreasury>False</HasTreasury>
     <SoundSelect>tradepost_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>
-        <Cost>0</Cost>
+        <Cost>250</Cost>
         <Income>150</Income>
-        <MaxHeroes>0</MaxHeroes>
+      </Level>
+      <Level>
+        <Pos>2</Pos>
+        <Cost>250</Cost>
+        <Income>150</Income>
+      </Level>
+      <Level>
+        <Pos>3</Pos>
+        <Cost>250</Cost>
+        <Income>150</Income>
+      </Level>
+      <Level>
+        <Pos>4</Pos>
+        <Cost>250</Cost>
+        <Income>150</Income>
+      </Level>
+      <Level>
+        <Pos>5</Pos>
+        <Cost>250</Cost>
+        <Income>150</Income>
+      </Level>
+      <Level>
+        <Pos>6</Pos>
+        <Cost>250</Cost>
+        <Income>150</Income>
+      </Level>
+      <Level>
+        <Pos>7</Pos>
+        <Cost>250</Cost>
+        <Income>150</Income>
+      </Level>
+      <Level>
+        <Pos>8</Pos>
+        <Cost>250</Cost>
+        <Income>150</Income>
+      </Level>
+      <Level>
+        <Pos>9</Pos>
+        <Cost>250</Cost>
+        <Income>150</Income>
+      </Level>
+      <Level>
+        <Pos>10</Pos>
+        <Cost>250</Cost>
+        <Income>150</Income>
       </Level>
     </Levels>
   </TypeConstructionEconomic>
@@ -126,6 +173,7 @@
     <Pos>1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
+    <PointConstructionEconomic>1</PointConstructionEconomic>
     <LayersResearches>1</LayersResearches>
     <HasTreasury>False</HasTreasury>
     <SoundSelect>marketplace_select.wav</SoundSelect>
@@ -218,6 +266,7 @@
     <Pos>2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
+    <PointConstructionEconomic>1</PointConstructionEconomic>
     <HasTreasury>False</HasTreasury>
     <LayersResearches>4</LayersResearches>
     <SoundSelect>smithy_select.wav</SoundSelect>
@@ -539,6 +588,7 @@
     <Pos>1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>2</MaxLevel>
+    <PointConstructionEconomic>1</PointConstructionEconomic>
     <HasTreasury>False</HasTreasury>
     <SoundSelect>tavern_select.wav</SoundSelect>
     <Levels>
@@ -570,6 +620,7 @@
     <Pos>3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <PointConstructionEconomic>1</PointConstructionEconomic>
     <HasTreasury>False</HasTreasury>
     <LayersResearches>1</LayersResearches>
     <SoundSelect>magic_bazaar2_select.wav</SoundSelect>
@@ -666,6 +717,7 @@
     <Pos>4</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <PointConstructionEconomic>1</PointConstructionEconomic>
     <HasTreasury>False</HasTreasury>
     <SoundSelect>magic_bazaar_select.wav</SoundSelect>
     <Levels>
@@ -687,7 +739,7 @@
     <Pos>2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>2</MaxLevel>
-    <MaxHeroes>0</MaxHeroes>
+    <PointConstructionEconomic>1</PointConstructionEconomic>
     <HasTreasury>False</HasTreasury>
     <SoundSelect>library_select.wav</SoundSelect>
     <Levels>
@@ -713,6 +765,7 @@
     <Pos>3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <PointConstructionEconomic>1</PointConstructionEconomic>
     <HasTreasury>False</HasTreasury>
     <SoundSelect>statue_select.wav</SoundSelect>
     <Levels>
@@ -733,6 +786,7 @@
     <Pos>1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <PointConstructionEconomic>1</PointConstructionEconomic>
     <HasTreasury>False</HasTreasury>
     <SoundSelect>hall_of_lords_select.wav</SoundSelect>
     <Levels>
@@ -754,6 +808,7 @@
     <Pos>2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <PointConstructionEconomic>1</PointConstructionEconomic>
     <HasTreasury>False</HasTreasury>
     <SoundSelect>hospital_select.wav</SoundSelect>
     <Levels>
@@ -775,6 +830,7 @@
     <Pos>3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <PointConstructionEconomic>1</PointConstructionEconomic>
     <HasTreasury>False</HasTreasury>
     <SoundSelect>arena_select.wav</SoundSelect>
     <Levels>
@@ -796,6 +852,7 @@
     <Pos>4</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <PointConstructionEconomic>1</PointConstructionEconomic>
     <HasTreasury>False</HasTreasury>
     <SoundSelect>garden_select.wav</SoundSelect>
     <Levels>
