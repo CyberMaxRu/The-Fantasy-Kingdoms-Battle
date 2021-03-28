@@ -176,6 +176,7 @@ namespace Fantasy_Kingdoms_Battle
                 if (ActiveHeroes.Remove(hb) == false)
                     throw new Exception("Герой не был удален из списка.");
 
+                Debug.Assert(DeadHeroes.IndexOf(hb) == -1);
                 DeadHeroes.Add(hb);
             }
             heroesForDelete.Clear();
