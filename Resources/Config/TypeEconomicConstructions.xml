@@ -187,7 +187,7 @@
       </Level>
       <Level>
         <Pos>2</Pos>
-        <Cost>1000</Cost>
+        <Cost>1500</Cost>
         <Income>300</Income>
         <Requirements>
           <Requirement>
@@ -198,7 +198,7 @@
       </Level>
       <Level>
         <Pos>3</Pos>
-        <Cost>1500</Cost>
+        <Cost>3000</Cost>
         <Income>525</Income>
         <Requirements>
           <Requirement>
