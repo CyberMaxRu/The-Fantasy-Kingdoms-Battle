@@ -52,7 +52,6 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Debug.Assert(Player.Gold >= CostBuyOrUpgrade());
 
-                Player.Gold -= CostBuyOrUpgrade();
                 Player.Constructed(this);
                 Level++;
                 ValidateHeroes();

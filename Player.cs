@@ -345,6 +345,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(pb.CheckRequirements());
 
+            Gold -= pb.CostBuyOrUpgrade();
             PointConstructionGuild -= pb.Building.PointConstructionGuild;
             PointConstructionEconomic -= pb.Building.PointConstructionEconomic;
             PointConstructionTemple -= pb.Building.PointConstructionTemple;
