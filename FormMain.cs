@@ -1132,6 +1132,7 @@ namespace Fantasy_Kingdoms_Battle
 
             ShowLobby();
 
+            LairsWithFlagChanged();
             UpdateListHeroes();
             ShowWarehouse();
 
@@ -1463,9 +1464,9 @@ namespace Fantasy_Kingdoms_Battle
         // Рисование кадра главной формы
         private void DrawFrame()
         {
-//            if (inDrawFrame)
-//                return;
-            Debug.Assert(inDrawFrame == false);
+            if (inDrawFrame)
+                return;
+            //Debug.Assert(inDrawFrame == false);
 
             inDrawFrame = true;
 
