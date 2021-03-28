@@ -44,6 +44,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(c != null);
             Debug.Assert(CombatHeroes.IndexOf(c) == -1);
+            Debug.Assert(c.IsLive);
 
             CombatHeroes.Add(c);
             CombatHeroes.Sort(ComparePlaceCreature);
@@ -56,6 +57,8 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (ph != null)
                 {
+                    Debug.Assert(ph.IsLive);
+
                     CellHeroes[ph.CoordInPlayer.Y, ph.CoordInPlayer.X] = null;
                     ph.CoordInPlayer = new Point(-1, -1);
                 }
@@ -68,6 +71,8 @@ namespace Fantasy_Kingdoms_Battle
 
         private void SetPosForHero(Creature ph)
         {
+            Debug.Assert(ph.IsLive);
+
             // Ищем место в ячейках героев
             int coordY = -1;
             int coordX = 0;

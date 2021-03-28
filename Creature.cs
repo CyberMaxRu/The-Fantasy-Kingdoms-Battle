@@ -65,12 +65,14 @@ namespace Fantasy_Kingdoms_Battle
         internal StateCreature StateCreature { get; private set; }// Состояние (на карте)
 
         internal Point CoordInPlayer { get; set; }// Координаты героя в слотах
+        internal bool IsLive { get; private set; } = true;// Существо живо
 
         protected abstract int GetImageIndex();
 
         // Повышение уровня
         private void LevelUp()
         {
+            Debug.Assert(IsLive);
             Debug.Assert(Level < TypeCreature.MaxLevel);
 
             // Прибавляем безусловные параметры
@@ -117,6 +119,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int Priority()
         {
+            Debug.Assert(IsLive);
+
             int posInPlayer = BattleParticipant.CombatHeroes.IndexOf(this);
             Debug.Assert(posInPlayer != -1);
             return TypeCreature.DefaultPositionPriority * 1000 + posInPlayer;
@@ -129,7 +133,16 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void SetState(NameStateCreature state)
         {
+            Debug.Assert(IsLive);
+
             StateCreature = FormMain.Config.FindStateCreature(state.ToString());
+        }
+
+        internal void SetIsDead()
+        {
+            Debug.Assert(IsLive);
+
+            IsLive = false;
         }
 
         // Реализация интерфейса

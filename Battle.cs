@@ -40,18 +40,23 @@ namespace Fantasy_Kingdoms_Battle
             if (player2 is PlayerLair pl)
             {
                 foreach (PlayerHero ph in pl.listAttackedHero)
+                {
+                    Debug.Assert(ph.IsLive);
                     AddHero(new HeroInBattle(this, ph, ph.CoordInPlayer, showForPlayer));
+                }
             }
             else
             {
                 foreach (Creature ph in player1.CombatHeroes)
                 {
+                    Debug.Assert(ph.IsLive);
                     AddHero(new HeroInBattle(this, ph, ph.CoordInPlayer, showForPlayer));
                 }
             }
 
             foreach (Creature ph in player2.CombatHeroes)
             {
+                Debug.Assert(ph.IsLive);
                 AddHero(new HeroInBattle(this, ph, new Point(FormMain.Config.HeroInRow + FormMain.Config.RowsBetweenSides + (FormMain.Config.HeroInRow - ph.CoordInPlayer.X) - 1, ph.CoordInPlayer.Y), showForPlayer));
             }
 
