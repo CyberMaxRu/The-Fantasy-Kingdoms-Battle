@@ -428,6 +428,9 @@ namespace Fantasy_Kingdoms_Battle
             m.SetIsDead();
             CombatHeroes.Remove(m);
             Monsters.Remove(m);
+
+            if (Program.formMain.PlayerObjectIsSelected(m))
+                Program.formMain.SelectPlayerObject(null);
         }
 
         // Раздаем деньги за флаг героям
