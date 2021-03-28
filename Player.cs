@@ -784,6 +784,9 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Lairs[l.Layer, l.Y, l.X] == l);
 
             Lairs[l.Layer, l.Y, l.X] = null;
+
+            if (Program.formMain.PlayerObjectIsSelected(l))
+                Program.formMain.SelectPlayerObject(null);
         }
 
         private void GenerateLairs()
