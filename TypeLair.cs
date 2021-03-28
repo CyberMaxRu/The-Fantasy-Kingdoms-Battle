@@ -56,7 +56,9 @@ namespace Fantasy_Kingdoms_Battle
         {
             MinGold = XmlUtils.GetInteger(n.SelectSingleNode("MinGold"));
             MaxGold = XmlUtils.GetInteger(n.SelectSingleNode("MaxGold"));
-
+            PointTradePost = XmlUtils.GetBool(n.SelectSingleNode("PointTradePost"), false);
+            PointTemple = XmlUtils.GetBool(n.SelectSingleNode("PointTemple"), false);
+            
             Debug.Assert(MinGold >= 0);
             Debug.Assert(MinGold <= 50_000);
             Debug.Assert(MaxGold >= 0);
@@ -66,6 +68,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int MinGold { get; }
         internal int MaxGold { get; }
+        internal bool PointTemple { get; }
+        internal bool PointTradePost { get; }
     }
 
     // Класс типа логова монстров

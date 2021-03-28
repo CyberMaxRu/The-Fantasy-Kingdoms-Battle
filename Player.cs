@@ -41,6 +41,7 @@ namespace Fantasy_Kingdoms_Battle
             PointConstructionGuild = lobby.TypeLobby.StartPointConstructionGuild;
             PointConstructionEconomic = lobby.TypeLobby.StartPointConstructionEconomic;
             PointConstructionTemple = 0;
+            PointConstructionTradePost = 0;
             SetQuantityFlags(lobby.TypeLobby.StartQuantityFlags);
 
             // Инициализация зданий
@@ -149,7 +150,7 @@ namespace Fantasy_Kingdoms_Battle
                     {
                         pl.DoScout();
                     }
-                    else
+                    else if (pl.TypeFlag == TypeFlag.Attack)
                     {
                         Debug.Assert(pl.Monsters.Count > 0);
 
@@ -186,6 +187,10 @@ namespace Fantasy_Kingdoms_Battle
                         {
 
                         }
+                    }
+                    else
+                    {
+                        pl.DoDefense();
                     }
                 }
             }
@@ -237,6 +242,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int PointConstructionGuild { get; private set; }
         internal int PointConstructionEconomic { get; private set; }
         internal int PointConstructionTemple { get; private set; }
+        internal int PointConstructionTradePost { get; private set; }
 
         internal int QuantityHeroes { get; private set; }
 
@@ -855,6 +861,11 @@ namespace Fantasy_Kingdoms_Battle
 
                 return l;
             }
+        }
+
+        internal void ApplyReward()
+        {
+
         }
 
         // Реализация интерфейса

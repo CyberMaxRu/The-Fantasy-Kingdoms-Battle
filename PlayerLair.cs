@@ -387,6 +387,25 @@ namespace Fantasy_Kingdoms_Battle
             Destroyed = true;
         }
 
+        internal void DoDefense()
+        {
+            Debug.Assert(!Hidden);
+            Debug.Assert(TypeFlag == TypeFlag.Defense);
+            Debug.Assert(!Destroyed);
+            Debug.Assert(listAttackedHero.Count > 0);
+
+            // Раздаем награду
+            HandOutGoldHeroes();
+
+            DropFlag();
+
+            // Убираем себя из списка логов игрока
+            Player.RemoveLair(this);
+            Player.ApplyReward();
+
+            Destroyed = true;
+        }
+
         // Раздаем деньги за флаг героям
         private void HandOutGoldHeroes()
         {
