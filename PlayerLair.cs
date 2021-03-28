@@ -422,8 +422,11 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(m != null);
             Debug.Assert(m.BattleParticipant == this);
             Debug.Assert(Monsters.IndexOf(m) != -1);
+            Debug.Assert(CellHeroes[m.CoordInPlayer.Y, m.CoordInPlayer.X] == m);
 
+            CellHeroes[m.CoordInPlayer.Y, m.CoordInPlayer.X] = null;
             m.SetIsDead();
+            CombatHeroes.Remove(m);
             Monsters.Remove(m);
         }
 
