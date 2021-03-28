@@ -11,7 +11,10 @@ namespace Fantasy_Kingdoms_Battle
 
         public VCFormPage(VisualControl parent, int shiftX, int shiftY, List<VCFormPage> list, BitmapList bitmapList, int imageIndex, string caption, EventHandler onClick) : base(parent, shiftX, shiftY, bitmapList, imageIndex)
         {
+            UseFilter = false;
+            HighlightUnderMouse = true;
             Caption = caption;
+
             Page = new VisualControl()
             {
                 Visible = false
@@ -53,7 +56,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
-            ShowAsPressed = Page.Visible;
+            ImageFilter = Page.Visible ? ImageFilter.Press : ImageFilter.None;
 
             base.Draw(g);
 
