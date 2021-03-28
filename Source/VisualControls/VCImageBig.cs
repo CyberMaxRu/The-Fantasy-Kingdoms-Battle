@@ -13,8 +13,15 @@ namespace Fantasy_Kingdoms_Battle
     {
         public VCImageBig(VisualControl parent, int shiftY) : base(parent, FormMain.Config.GridSize, shiftY, Program.formMain.imListObjectsBig, -1)
         {
+            labelQuantity.ShiftX -= FormMain.Config.GridSizeHalf;
         }
 
+        internal override void ArrangeControls()
+        {
+            base.ArrangeControls();
+
+            labelQuantity.ShiftY -= FormMain.Config.GridSizeHalf;
+        }
         internal override void Draw(Graphics g)
         {
             base.Draw(g);

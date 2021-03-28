@@ -12,7 +12,7 @@ namespace Fantasy_Kingdoms_Battle
         private int shiftImageY;
         private VCLabelM2 labelCost;
         private VCLabelM2 labelLevel;
-        private VCLabelM2 labelQuantity;
+        protected VCLabelM2 labelQuantity;
         private VCLabelM2 labelPopupQuantity;
         private SolidBrush brushPopupQuantity;
         private const int sizePopupBackground = 18;
