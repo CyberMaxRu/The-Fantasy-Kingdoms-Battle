@@ -735,7 +735,7 @@
     <ID>Library</ID>
     <Name>Библиотека</Name>
     <Description>- Позволяет изучить заклинания</Description>
-    <ImageIndex>73</ImageIndex>
+    <ImageIndex>129</ImageIndex>
     <Page>Economic</Page>
     <Line>3</Line>
     <Pos>2</Pos>
@@ -826,7 +826,7 @@
     <ID>Arena</ID>
     <Name>Арена</Name>
     <Description>- Позволяет улучшить навыки командной работы героями</Description>
-    <ImageIndex>129</ImageIndex>
+    <ImageIndex>138</ImageIndex>
     <Page>Guild</Page>
     <Line>3</Line>
     <Pos>3</Pos>
@@ -848,7 +848,7 @@
     <ID>Garden</ID>
     <Name>Сад</Name>
     <Description>- Улучшает настроение героев/- Место отдыха эльфов, людей</Description>
-    <ImageIndex>115</ImageIndex>
+    <ImageIndex>139</ImageIndex>
     <Page>Economic</Page>
     <Line>3</Line>
     <Pos>4</Pos>
