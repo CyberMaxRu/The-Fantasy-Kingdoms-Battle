@@ -123,10 +123,13 @@ namespace Fantasy_Kingdoms_Battle
             // Убеждаемся, что у нас не сломалось соответствие флагов
             foreach (PlayerLair pl in Lairs)
             {
-                if (pl.PriorityFlag != PriorityExecution.None)
-                    Debug.Assert(ListFlags.IndexOf(pl) != -1);
-                else
-                    Debug.Assert(ListFlags.IndexOf(pl) == -1);
+                if (pl != null)
+                {
+                    if (pl.PriorityFlag != PriorityExecution.None)
+                        Debug.Assert(ListFlags.IndexOf(pl) != -1);
+                    else
+                        Debug.Assert(ListFlags.IndexOf(pl) == -1);
+                }
             }
 
             // Расчет флагов на логова
