@@ -77,6 +77,7 @@ namespace Fantasy_Kingdoms_Battle
             SortPlayers();
 
             SetPlayerAsCurrent(0);
+            StateLobby = StateLobby.TurnHuman;
 
             //
             Turn = 1;
