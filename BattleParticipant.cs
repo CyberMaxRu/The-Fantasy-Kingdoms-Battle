@@ -52,7 +52,7 @@ namespace Fantasy_Kingdoms_Battle
         protected void RearrangeHeroes()
         {
             // Очищаем все координаты героев
-            foreach (PlayerHero ph in CellHeroes)
+            foreach (Creature ph in CellHeroes)
             {
                 if (ph != null)
                 {
