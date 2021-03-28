@@ -633,10 +633,6 @@
         <Income>150</Income>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Castle</TypeConstruction>
-            <Level>2</Level>
-          </Requirement>
-          <Requirement>
             <TypeConstruction>GuildMage</TypeConstruction>
             <Level>1</Level>
           </Requirement>
