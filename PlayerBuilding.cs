@@ -122,9 +122,9 @@ namespace Fantasy_Kingdoms_Battle
             if (Building.PointConstructionEconomic > 0)
             {
                 if (Building.PointConstructionEconomic <= Player.PointConstructionEconomic)
-                    list.Add(new TextRequirement(true, "Есть Разрешение на строительство эконом. сооружений"));
+                    list.Add(new TextRequirement(true, "Есть Разрешение на строительство экономического сооружения"));
                 else
-                    list.Add(new TextRequirement(false, "Нет Разрешений на строительство эконом. сооружений"));
+                    list.Add(new TextRequirement(false, "Нет Разрешения на строительство экономического сооружения"));
             }
 
             if (Building.PointConstructionTemple > 0)
