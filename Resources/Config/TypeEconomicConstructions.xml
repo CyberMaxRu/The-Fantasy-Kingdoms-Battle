@@ -671,7 +671,7 @@
     <Levels>
       <Level>
         <Pos>1</Pos>
-        <Cost>0</Cost>
+        <Cost>1500</Cost>
         <Income>200</Income>
         <MaxHeroes>0</MaxHeroes>
       </Level>
