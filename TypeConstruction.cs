@@ -22,6 +22,7 @@ namespace Fantasy_Kingdoms_Battle
             GoldByConstruction = XmlUtils.GetInteger(n.SelectSingleNode("GoldByConstruction"));
             DefaultLevel = XmlUtils.GetInteger(n.SelectSingleNode("DefaultLevel"));
             MaxLevel = XmlUtils.GetInteger(n.SelectSingleNode("MaxLevel"));
+            LevelAsQuantity = XmlUtils.GetBool(n.SelectSingleNode("LevelAsQuantity"), false);
             PointConstructionGuild = XmlUtils.GetInteger(n.SelectSingleNode("PointConstructionGuild"));
             PointConstructionEconomic = XmlUtils.GetInteger(n.SelectSingleNode("PointConstructionEconomic"));
             PointConstructionTemple = XmlUtils.GetInteger(n.SelectSingleNode("PointConstructionTemple"));
@@ -102,6 +103,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int Pos { get; }// Позиция сооружения в линии
         internal int DefaultLevel { get; }
         internal int MaxLevel { get; }
+        internal bool LevelAsQuantity { get; }// Показывать уровень как количество
 
         internal Level[] Levels;
         internal Research[,,] Researches;

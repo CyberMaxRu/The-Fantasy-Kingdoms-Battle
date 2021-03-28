@@ -181,7 +181,8 @@ namespace Fantasy_Kingdoms_Battle
             else
                 btnHireHero.Visible = false;
 
-            imgMapObject.Level = Building.Level;
+            imgMapObject.Level = Building.Building.LevelAsQuantity ? 0 : Building.Level;
+            imgMapObject.Quantity = Building.Building.LevelAsQuantity ? Building.Level : 0;
 
             if ((Building.Building.TrainedHero != null) && (Building.Level > 0) && (Building.Heroes.Count > 0))
             {

@@ -64,6 +64,7 @@
     <Pos>2</Pos>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <LevelAsQuantity>True</LevelAsQuantity>
     <HasTreasury>False</HasTreasury>
     <SoundSelect>peasant_house_select.wav</SoundSelect>
     <Levels>
@@ -85,6 +86,7 @@
     <Pos>3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <LevelAsQuantity>True</LevelAsQuantity>
     <HasTreasury>False</HasTreasury>
     <SoundSelect>mill_select.wav</SoundSelect>
     <Levels>
@@ -106,7 +108,7 @@
     <Pos>4</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>10</MaxLevel>
-    <PointTradePost>1</PointTradePost>
+    <PointConstructionTradePost>1</PointConstructionTradePost>
     <LevelAsQuantity>True</LevelAsQuantity>
     <HasTreasury>False</HasTreasury>
     <SoundSelect>tradepost_select.wav</SoundSelect>
