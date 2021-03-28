@@ -143,7 +143,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 if ((pl != null) && (pl.listAttackedHero.Count > 0))
                 {
-                    Debug.Assert((pl.TypeFlag == TypeFlag.Scout) || (pl.TypeFlag == TypeFlag.Attack));
+                    Debug.Assert((pl.TypeFlag == TypeFlag.Scout) || (pl.TypeFlag == TypeFlag.Attack) || (pl.TypeFlag == TypeFlag.Defense));
 
                     if (pl.TypeFlag == TypeFlag.Scout)
                     {
