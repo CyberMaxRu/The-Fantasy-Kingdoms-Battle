@@ -75,7 +75,11 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Building.Level < Building.Building.MaxLevel)
             {
-                Program.formMain.formHint.AddStep1Header(Building.Building.Name, Building.Level == 0 ? "Уровень 1" : (Building.CanLevelUp() == true) ? "Улучшить строение" : "", Building.Level == 0 ? Building.Building.Description : "");
+                if (Building.Building.LevelAsQuantity)
+                    Program.formMain.formHint.AddStep1Header(Building.Building.Name, "Построить сооружение", Building.Level == 0 ? Building.Building.Description : "");
+                else
+                    Program.formMain.formHint.AddStep1Header(Building.Building.Name, Building.Level == 0 ? "Уровень 1" : (Building.CanLevelUp() == true) ? "Улучшить строение" : "", Building.Level == 0 ? Building.Building.Description : "");
+
                 Program.formMain.formHint.AddStep2Income(Building.IncomeNextLevel());
                 Program.formMain.formHint.AddStep3Requirement(Building.GetTextRequirements());
                 Program.formMain.formHint.AddStep4Gold(Building.CostBuyOrUpgrade(), Building.Player.Gold >= Building.CostBuyOrUpgrade());
@@ -151,7 +155,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     btnBuyOrUpgrade.Visible = true;
                     btnBuyOrUpgrade.Cost = Building.CostBuyOrUpgrade().ToString();
-                    btnBuyOrUpgrade.ImageIndex = FormMain.GUI_LEVELUP;
+                    btnBuyOrUpgrade.ImageIndex = Building.Building.LevelAsQuantity ? FormMain.GUI_BUILD : FormMain.GUI_LEVELUP;
                     btnBuyOrUpgrade.ImageIsEnabled = Building.CheckRequirements();
                 }
                 else

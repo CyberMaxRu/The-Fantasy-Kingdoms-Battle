@@ -248,7 +248,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PrepareHint()
         {
-            Program.formMain.formHint.AddStep1Header(Building.Name, Level > 0 ? "Уровень " + Level.ToString() : "", Building.Description + ((Level > 0) && (Building.TrainedHero != null) ? Environment.NewLine + Environment.NewLine + "Героев: " + Heroes.Count.ToString() + "/" + MaxHeroes().ToString() : ""));
+            Program.formMain.formHint.AddStep1Header(Building.Name, Level > 0 ? (Building.LevelAsQuantity ? "Количество: " : "Уровень ") + Level.ToString() : "", Building.Description + ((Level > 0) && (Building.TrainedHero != null) ? Environment.NewLine + Environment.NewLine + "Героев: " + Heroes.Count.ToString() + "/" + MaxHeroes().ToString() : ""));
             Program.formMain.formHint.AddStep2Income(Income());
         }
 
