@@ -156,7 +156,12 @@ namespace Fantasy_Kingdoms_Battle
             PrepareHint();
         }
 
-        void ICell.Click(VCCell pe) => Program.formMain.SelectPlayerObject(this);
+        void ICell.Click(VCCell pe)
+        {
+            Debug.Assert(IsLive);
+
+            Program.formMain.SelectPlayerObject(this);
+        }
 
         void ICell.CustomDraw(Graphics g, int x, int y, bool drawState)
         {

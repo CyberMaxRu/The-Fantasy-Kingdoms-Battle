@@ -248,16 +248,22 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override int GetImageIndex()
         {
+            Debug.Assert(IsLive);
+
             return Program.formMain.TreatImageIndex(TypeHero.ImageIndex, Player);
         }
 
         internal string GetNameHero()
         {
+            Debug.Assert(IsLive);
+
             return TypeHero.ImageIndex != FormMain.IMAGE_INDEX_CURRENT_AVATAR ? TypeHero.Name : Player.Name;
         }
 
         internal override void PrepareHint()
         {
+            Debug.Assert(IsLive);
+
             Program.formMain.formHint.AddStep1Header(GetNameHero(), "", TypeHero.Description);
         }
 
@@ -276,12 +282,15 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void ShowInfo()
         {
+            Debug.Assert(IsLive);
+
             Program.formMain.panelHeroInfo.Visible = true;
             Program.formMain.panelHeroInfo.PlayerObject = this;
         }
 
         internal void ClearState()
         {
+            Debug.Assert(IsLive);
             Debug.Assert((StateCreature.ID == NameStateCreature.DoAttackFlag.ToString())
                 || (StateCreature.ID == NameStateCreature.DoDefenseFlag.ToString())
                 || (StateCreature.ID == NameStateCreature.DoScoutFlag.ToString()));
@@ -294,6 +303,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal NameStateCreature StateForFlag(TypeFlag typeFlag)
         {
+            Debug.Assert(IsLive);
+
             switch (typeFlag)
             {
                 case TypeFlag.None:
@@ -311,6 +322,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void AddGold(int income)
         {
+            Debug.Assert(IsLive);
             Debug.Assert(income > 0);
 
             Gold += income;

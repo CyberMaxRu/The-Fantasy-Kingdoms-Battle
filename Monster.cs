@@ -23,11 +23,15 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override int GetImageIndex()
         {
+            Debug.Assert(IsLive);
+
             return TypeMonster.ImageIndex;
         }
 
         internal override void PrepareHint()
         {
+            Debug.Assert(IsLive);
+
             Program.formMain.formHint.AddStep1Header(TypeMonster.Name, "", TypeMonster.Description);
         }
 
@@ -38,6 +42,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void ShowInfo()
         {
+            Debug.Assert(IsLive);
+
             Program.formMain.panelMonsterInfo.Visible = true;
             Program.formMain.panelMonsterInfo.PlayerObject = this;
         }
