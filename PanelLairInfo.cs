@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Diagnostics;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -50,10 +51,13 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
+            Debug.Assert(!Lair.Destroyed);
+
             if (Lair.Hidden)
                 panelInhabitants.SetUnknownList();
             else
                 panelInhabitants.ApplyList(Lair.Monsters);
+
             panelHeroes.ApplyList(Lair.listAttackedHero);
 
             base.Draw(g);

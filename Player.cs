@@ -779,6 +779,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void RemoveLair(PlayerLair l)
         {
+            Debug.Assert(l != null);
+            Debug.Assert(Lairs[l.Layer, l.Y, l.X] != null);
             Debug.Assert(Lairs[l.Layer, l.Y, l.X] == l);
 
             Lairs[l.Layer, l.Y, l.X] = null;
