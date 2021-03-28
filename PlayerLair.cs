@@ -417,6 +417,15 @@ namespace Fantasy_Kingdoms_Battle
             Destroyed = true;
         }
 
+        internal void MonsterIsDead(Monster m)
+        {
+            Debug.Assert(m != null);
+            Debug.Assert(m.BattleParticipant == this);
+            Debug.Assert(Monsters.IndexOf(m) != -1);
+
+            Monsters.Remove(m);
+        }
+
         // Раздаем деньги за флаг героям
         private void HandOutGoldHeroes()
         {

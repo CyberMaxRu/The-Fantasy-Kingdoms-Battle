@@ -76,6 +76,7 @@ namespace Fantasy_Kingdoms_Battle
         internal bool BattleCalced { get; private set; }
         internal List<HeroInBattle> AllHeroes = new List<HeroInBattle>();// Все участники боя
         internal List<HeroInBattle> ActiveHeroes = new List<HeroInBattle>();// Оставшиеся в живых участники боя
+        internal List<HeroInBattle> DeadHeroes = new List<HeroInBattle>();// Убитые участники боя
         internal List<Missile> Missiles = new List<Missile>();// Снаряды героев
         internal List<Missile> deleteMissiles = new List<Missile>();// Удаляемые снаряды героев
         internal BattleParticipant Winner { get; private set; }// Победитель
@@ -171,9 +172,12 @@ namespace Fantasy_Kingdoms_Battle
                     heroesForDelete.Add(hb);
 
             foreach (HeroInBattle hb in heroesForDelete)
+            {
                 if (ActiveHeroes.Remove(hb) == false)
                     throw new Exception("Герой не был удален из списка.");
 
+                DeadHeroes.Add(hb);
+            }
             heroesForDelete.Clear();
 
             return true;
@@ -232,6 +236,16 @@ namespace Fantasy_Kingdoms_Battle
 
             Player1.BattleCalced = true;
             Player2.BattleCalced = true;
+
+            // Если вторая сторона - логово, удаляем убитых монстров
+            if (Player2 is PlayerLair pl)
+            {
+                foreach (HeroInBattle hb in DeadHeroes)
+                {
+                    if (hb.Player == Player2)
+                        pl.MonsterIsDead(hb.PlayerHero as Monster);
+                }
+            }
 
             void ApplyWinAndLose(BattleParticipant winner, BattleParticipant loser)
             {
