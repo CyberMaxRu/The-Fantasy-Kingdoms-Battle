@@ -14,10 +14,12 @@ namespace Fantasy_Kingdoms_Battle
     // Класс логова игрока
     internal sealed class PlayerLair : BattleParticipant, ICell
     {
-        public PlayerLair(Player p, TypeLair l, int layer) : base()
+        public PlayerLair(Player p, TypeLair l, int x, int y, int layer) : base()
         {
             Player = p;
             TypeLair = l;
+            X = x;
+            Y = y;
             Layer = layer;
 
             Name = l.Name;
@@ -32,6 +34,8 @@ namespace Fantasy_Kingdoms_Battle
         internal Player Player { get; }
         internal TypeLair TypeLair { get; }
         internal int Layer { get; }// Слой, на котором находится логово
+        internal int X { get; }// Позиция по X в слое
+        internal int Y { get; }// Позиция по Y в слое
         internal bool Hidden { get; private set; } = true;// Логово не разведано
         internal List<Monster> Monsters { get; } = new List<Monster>();// Монстры текущего уровня
         internal bool Destroyed { get; private set; } = false;// Логово уничтожено, работа с ним запрещена
@@ -358,7 +362,35 @@ namespace Fantasy_Kingdoms_Battle
 
             Hidden = false;
 
-            // Раздаем награду. Открыть место могли без участия героев (заклинаем)
+            // Раздаем награду. Открыть место могли без участия героев (заклинанием)
+            HandOutGoldHeroes();
+
+            DropFlag();
+        }
+
+        // Логово захвачено
+        internal void DoCapture()
+        {
+            Debug.Assert(!Hidden);
+            Debug.Assert(TypeFlag == TypeFlag.Attack);
+            Debug.Assert(!Destroyed);
+            Debug.Assert(listAttackedHero.Count > 0);
+
+            // Раздаем награду. Открыть место могли без участия героев (заклинанием)
+            HandOutGoldHeroes();
+
+            DropFlag();
+
+            // Убираем себя из списка логов игрока
+            Player.RemoveLair(this);
+
+            Destroyed = true;
+        }
+
+        // Раздаем деньги за флаг героям
+        private void HandOutGoldHeroes()
+        {
+            // Раздаем награду. Открыть место могли без участия героев (заклинанием)
             if (listAttackedHero.Count > 0)
             {
                 Debug.Assert(SpendedGoldForSetFlag > 0);
@@ -375,8 +407,6 @@ namespace Fantasy_Kingdoms_Battle
                 if (delta > 0)
                     listAttackedHero[0].AddGold(delta);
             }
-
-            DropFlag();
         }
 
         internal string ListMonstersForHint()

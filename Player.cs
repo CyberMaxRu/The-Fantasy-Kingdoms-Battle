@@ -176,7 +176,8 @@ namespace Fantasy_Kingdoms_Battle
 
                         if (b.Winner == this)
                         {
-                            // Победил текущий игрок
+                            // Победил игрок
+                            pl.DoCapture();
                         }
                         else
                         {
@@ -776,6 +777,13 @@ namespace Fantasy_Kingdoms_Battle
             return QuantityFlags[PriorityExecution.None] > 0;
         }
 
+        internal void RemoveLair(PlayerLair l)
+        {
+            Debug.Assert(Lairs[l.Layer, l.Y, l.X] == l);
+
+            Lairs[l.Layer, l.Y, l.X] = null;
+        }
+
         private void GenerateLairs()
         {
             // Создание рандомных логов монстров согласно настроек типа лобби
@@ -801,7 +809,7 @@ namespace Fantasy_Kingdoms_Battle
 
                         // Помещаем в нее логово
                         Debug.Assert(Lairs[i, cells[idx].Y, cells[idx].X] == null);
-                        Lairs[i, cells[idx].Y, cells[idx].X] = new PlayerLair(this, l.TypeLair, i);
+                        Lairs[i, cells[idx].Y, cells[idx].X] = new PlayerLair(this, l.TypeLair, cells[idx].X, cells[idx].Y, i);
 
                         // Убираем ячейку из списка доступных
                         cells.RemoveAt(idx);
@@ -828,7 +836,7 @@ namespace Fantasy_Kingdoms_Battle
                         Debug.Assert(Lairs[i, cells[0].Y, cells[0].X] == null);
 
                         idx = r.Next(listTypeLairs.Count);
-                        Lairs[i, cells[0].Y, cells[0].X] = new PlayerLair(this, listTypeLairs[idx], i);
+                        Lairs[i, cells[0].Y, cells[0].X] = new PlayerLair(this, listTypeLairs[idx], cells[0].X, cells[0].Y, i);
                         listTypeLairs.RemoveAt(idx);
                         cells.RemoveAt(0);
                     }
