@@ -95,7 +95,7 @@ namespace Fantasy_Kingdoms_Battle
             // Проверяем наличие очков строительства
             if ((Building.PointConstructionGuild > Player.PointConstructionGuild)
                 || (Building.PointConstructionEconomic > Player.PointConstructionEconomic)
-                || (Building.PointConstructionTemple > Player.PointConstructionTradePost)
+                || (Building.PointConstructionTemple > Player.PointConstructionTemple)
                 || (Building.PointConstructionTradePost > Player.PointConstructionTradePost))
                 return false;
 
