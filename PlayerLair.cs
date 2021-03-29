@@ -129,7 +129,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(!Destroyed);
 
-            return Hidden ? FormMain.IMAGE_INDEX_NONE : TypeLair.ImageIndex;
+            return Hidden ? FormMain.IMAGE_INDEX_UNKNOWN : TypeLair.ImageIndex;
         }
 
         internal int RequiredGold()

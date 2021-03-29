@@ -171,6 +171,7 @@ namespace Fantasy_Kingdoms_Battle
         private const int DISTANCE_BETWEEN_CELLS = 3;
 
         internal const int IMAGE_INDEX_NONE = 127;
+        internal const int IMAGE_INDEX_UNKNOWN = 139;
         internal const int IMAGE_INDEX_CURRENT_AVATAR = -100;
         internal const int MAX_LAIR_LAYERS = 5;
 
