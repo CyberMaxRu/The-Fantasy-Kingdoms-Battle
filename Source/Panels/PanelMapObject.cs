@@ -80,9 +80,7 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override bool Selected()
         {
-            Debug.Assert(PlayerObject != null);
-
-            return Program.formMain.PlayerObjectIsSelected(PlayerObject);
+            return (PlayerObject != null) && Program.formMain.PlayerObjectIsSelected(PlayerObject);
         }
     }
 }

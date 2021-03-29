@@ -1192,6 +1192,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
 
             panelLairs[y, x].PlayerObject = null;
+            panelLairs[y, x].Visible = false;
         }
 
         private void DrawPageConstructions()
