@@ -131,6 +131,7 @@ namespace Fantasy_Kingdoms_Battle
         internal const int GUI_FLAG_CANCEL = 23;
         internal const int GUI_BUILD = 24;
         internal const int GUI_FLAG_DEFENSE = 25;
+        internal const int GUI_MAP = 26;
 
         internal const int GUI_PARAMETER_STRENGTH = 6;
         internal const int GUI_PARAMETER_DEXTERITY = 7;
@@ -551,7 +552,7 @@ namespace Fantasy_Kingdoms_Battle
                 pageTemples.ShowHint += PageTemples_ShowHint;
                 pageHeroes = new VCFormPage(MainControl, 0, pageGuilds.ShiftY, pages, ilGui, GUI_HEROES, "Герои", BtnPage_Click);
                 pageHeroes.ShowHint += PageHeroes_ShowHint;
-                pageLairs = new VCFormPage(MainControl, 0, pageGuilds.ShiftY, pages, ilGui, GUI_BATTLE, "Окрестности", BtnPage_Click);
+                pageLairs = new VCFormPage(MainControl, 0, pageGuilds.ShiftY, pages, ilGui, GUI_MAP, "Окрестности", BtnPage_Click);
                 pageTournament = new VCFormPage(MainControl, 0, pageGuilds.ShiftY, pages, ilGui, GUI_TOURNAMENT, "Турнир", BtnPage_Click);
                 pageTournament.ShowHint += PageTournament_ShowHint;
 
