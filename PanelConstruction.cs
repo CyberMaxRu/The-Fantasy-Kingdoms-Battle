@@ -36,9 +36,8 @@ namespace Fantasy_Kingdoms_Battle
 
             //if (TypeConstruction is TypeEconomicConstruction)
             //{
-                lblIncome = new VCLabelValue(this, imgMapObject.NextLeft() - FormMain.Config.GridSize - FormMain.Config.GridSize, imgMapObject.NextTop(), Color.Green);
+                lblIncome = new VCLabelValue(this, imgMapObject.NextLeft() - (FormMain.Config.GridSize * 4), imgMapObject.NextTop(), Color.Green);
                 lblIncome.ImageIndex = FormMain.GUI_16_INCOME;
-                lblIncome.Width = btnBuyOrUpgrade.Width - FormMain.Config.GridSize;
                 lblIncome.StringFormat.Alignment = StringAlignment.Near;
             //}
 
@@ -129,6 +128,13 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(pb.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
 
             PlayerObject = pb;
+        }
+
+        internal override void ArrangeControls()
+        {
+            lblIncome.Width = Width - lblIncome.ShiftX - FormMain.Config.GridSize;
+
+            base.ArrangeControls();
         }
 
         internal override void Draw(Graphics g)
