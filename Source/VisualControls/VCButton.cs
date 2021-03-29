@@ -30,8 +30,6 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal string Caption { get; set; }
-        internal bool Default { get; set; }
-
         protected override int WidthCap() => 31;
         protected override Bitmap GetBitmap() => Program.formMain.bmpBandButtonNormal;
 
@@ -57,7 +55,7 @@ namespace Fantasy_Kingdoms_Battle
             base.Draw(g);
 
             labelCaption.Text = Caption;
-            labelCaption.Color = mouseOver || Default ? Color.Gold : Color.White;
+            labelCaption.Color = mouseOver ? Color.Gold : Color.White;
             labelCaption.Draw(g);
         }
 
