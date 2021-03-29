@@ -97,7 +97,6 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCFormPage pageHeroes;
         private readonly VCFormPage pageLairs;
         private readonly VCFormPage pageTournament;
-        private readonly VCLabelM2 labelCaptionPage;
 
         private readonly PanelLair[,] panelLairs;
         private PanelWithPanelEntity panelWarehouse;
@@ -555,11 +554,6 @@ namespace Fantasy_Kingdoms_Battle
                 pageTournament = new VCFormPage(MainControl, 0, pageGuilds.ShiftY, pages, ilGui, GUI_TOURNAMENT, "Турнир", BtnPage_Click);
                 pageTournament.ShowHint += PageTournament_ShowHint;
 
-                labelCaptionPage = new VCLabelM2(MainControl, 0, pageGuilds.ShiftY, fontMedCaptionC, Config.CommonCaptionPage, pageGuilds.Height, "");
-                labelCaptionPage.Width = 300;
-                labelCaptionPage.StringFormat.Alignment = StringAlignment.Near;
-                labelCaptionPage.StringFormat.LineAlignment = StringAlignment.Center;
-
                 DrawPageConstructions();
                 DrawHeroes();
                 DrawWarehouse();
@@ -587,7 +581,6 @@ namespace Fantasy_Kingdoms_Battle
                     leftForNextButtonPage = fp.NextLeft();
                 }
 
-                labelCaptionPage.ShiftX = leftForNextButtonPage + Config.GridSize * 3;
                 panelCombatHeroes.ShiftX = pageGuilds.ShiftX + maxWidthPages + Config.GridSize;
 
                 // Создаем меню
@@ -1295,7 +1288,6 @@ namespace Fantasy_Kingdoms_Battle
                     currentPage.Page.Visible = false;
                 currentPage = pc;
                 currentPage.Page.Visible = true;
-                labelCaptionPage.Text = currentPage.Caption;
 
                 SetNeedRedrawFrame();
             }
