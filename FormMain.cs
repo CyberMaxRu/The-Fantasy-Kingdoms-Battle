@@ -1632,6 +1632,7 @@ namespace Fantasy_Kingdoms_Battle
                         controlWithHint.MouseLeave();
                         controlWithHint = curControl;
                         controlWithHint.MouseEnter(leftDown);
+                        formHint.Visible = true;
                     }
                     else
                     {
