@@ -899,6 +899,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnEndTurn_Click(object sender, EventArgs e)
         {
+            StopSoundSelect();
             formHint.HideHint();
 
             lobby.DoEndTurn();
@@ -1841,6 +1842,11 @@ namespace Fantasy_Kingdoms_Battle
         {
             mpSoundSelect.Open(uri);
             mpSoundSelect.Play();
+        }
+
+        internal void StopSoundSelect()
+        {
+            mpSoundSelect.Stop();
         }
 
         internal void PlaySelectButton()
