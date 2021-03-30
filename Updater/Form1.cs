@@ -35,7 +35,7 @@ namespace Updater
         {
             InitializeComponent();
 
-            Text += " v1.0";
+            Text += " v1.1";
         }
 
         protected override void OnLoad(EventArgs e)

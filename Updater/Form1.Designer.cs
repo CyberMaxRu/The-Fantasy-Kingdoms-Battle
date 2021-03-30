@@ -34,6 +34,7 @@ namespace Updater
             this.labelActualVersion = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.labelAction = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -66,12 +67,13 @@ namespace Updater
             // 
             // textBox1
             // 
-            this.textBox1.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox1.Font = new System.Drawing.Font("Courier New", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBox1.Location = new System.Drawing.Point(8, 80);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(0);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(488, 200);
+            this.textBox1.Size = new System.Drawing.Size(607, 246);
             this.textBox1.TabIndex = 3;
             // 
             // labelAction
@@ -83,11 +85,23 @@ namespace Updater
             this.labelAction.TabIndex = 4;
             this.labelAction.Text = "Действие";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(5, 334);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(595, 14);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Легенда: [!] важно; [+] доработка; [*] изменение; [-] убрано; [F] исправлена ошиб" +
+    "ка.";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(504, 281);
+            this.ClientSize = new System.Drawing.Size(624, 357);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.labelAction);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.labelActualVersion);
@@ -110,6 +124,7 @@ namespace Updater
         private System.Windows.Forms.Label labelActualVersion;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label labelAction;
+        private System.Windows.Forms.Label label1;
     }
 }
 
