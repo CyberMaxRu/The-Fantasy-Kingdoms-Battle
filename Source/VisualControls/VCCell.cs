@@ -81,6 +81,11 @@ namespace Fantasy_Kingdoms_Battle
             return (cell != null) && base.PlaySelectSound();
         }
 
+        protected virtual int GetLevel()
+        {
+            return cell.Level(); 
+        }
+
         internal override void Draw(Graphics g)
         {
             if (Visible)
@@ -91,7 +96,7 @@ namespace Fantasy_Kingdoms_Battle
                     ImageIndex = cell.ImageIndex();
                     //ImageState = cell.NormalImage() ? ImageState.Normal : ImageState.Disabled;
                     Quantity = cell.Quantity();
-                    Level = cell.Level();
+                    Level = GetLevel();
 
                     Debug.Assert(BitmapList.Size == 48);
                 }

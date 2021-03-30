@@ -32,6 +32,11 @@ namespace Fantasy_Kingdoms_Battle
             return true;
         }
 
+        protected override int GetLevel()
+        {
+            return Level = (int)Lair.PriorityFlag + 1;
+        }
+
         internal override void Draw(Graphics g)
         {
             if (Lair == null)
@@ -56,7 +61,7 @@ namespace Fantasy_Kingdoms_Battle
                     BitmapList = Program.formMain.imListObjectsCell;
                     ImageIndex = Lair.ImageIndexLair();
                 }
-                Level = (int)Lair.PriorityFlag + 1;
+                
                 Cost = Lair.listAttackedHero.Count().ToString();
             }
 
