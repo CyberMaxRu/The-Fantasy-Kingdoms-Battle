@@ -34,6 +34,7 @@ namespace Fantasy_Kingdoms_Battle
             DrawState = true;
         }
 
+        internal ICell Cell { get => cell; }
         internal bool DrawState { get; set; }
 
         internal override void ArrangeControls()

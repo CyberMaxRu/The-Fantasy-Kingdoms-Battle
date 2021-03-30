@@ -507,8 +507,8 @@ namespace Fantasy_Kingdoms_Battle
 
                 btnEndTurn = CreateButton(MainControl, ilGui, GUI_HOURGLASS, 0, bmpToolbar.Height + Config.GridSize, BtnEndTurn_Click, BtnEndTurn_MouseHover);
                 panelLairWithFlags = new VisualControl(MainControl, 0, btnEndTurn.ShiftY);
-                panelLairWithFlags.Height = btnEndTurn.Height;
-                panelLairWithFlags.Width = panelLairWithFlags.Height;
+                panelLairWithFlags.Width = Program.formMain.bmpBorderForIcon.Width;
+                panelLairWithFlags.Height = Program.formMain.bmpBorderForIcon.Height;
 
                 // Отладочная информация
                 vcDebugInfo = new VisualControl();
@@ -1811,7 +1811,7 @@ namespace Fantasy_Kingdoms_Battle
             foreach (PlayerLair pl in lobby.CurrentPlayer.ListFlags)
             {
                 listBtnTargetLair[n].ShiftX = left;
-                listBtnTargetLair[n].Lair = pl;
+                listBtnTargetLair[n].ShowCell(pl);
                 listBtnTargetLair[n].Visible = true;
 
                 left = listBtnTargetLair[n].NextLeft();

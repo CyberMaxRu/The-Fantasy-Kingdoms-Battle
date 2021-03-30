@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal sealed class VCButtonTargetLair : VCIconButton
+    internal sealed class VCButtonTargetLair : VCCell
     {
-        public VCButtonTargetLair(VisualControl parent) : base(parent, 0, 0, Program.formMain.imListObjectsCell, -1)
+        public VCButtonTargetLair(VisualControl parent) : base(parent, 0, 0)
         {
-
+            BitmapList = Program.formMain.imListObjectsCell;
         }
 
-        internal PlayerLair Lair { get; set; }
+        internal PlayerLair Lair { get => Cell as PlayerLair; }
 
         internal override void DoClick()
         {
@@ -49,7 +49,7 @@ namespace Fantasy_Kingdoms_Battle
                 if (Lair.Hidden)
                 {
                     BitmapList = Program.formMain.ilGui;
-                    ImageIndex = FormMain.GUI_FLAG_SCOUT;
+                    ImageIndex = FormMain.IMAGE_INDEX_UNKNOWN;
                 }
                 else
                 {
