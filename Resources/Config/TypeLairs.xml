@@ -343,7 +343,7 @@
     <ID>TradePlace</ID>
     <Name>Торговое место</Name>
     <Description>Это удобное место лучше всего подходит под строительство торгового поста.</Description>
-    <ImageIndex>113</ImageIndex>
+    <ImageIndex>141</ImageIndex>
     <SoundSelect>tradepost_place_select.wav</SoundSelect>
     <MaxHeroes>5</MaxHeroes>
     <IsLair>false</IsLair>
