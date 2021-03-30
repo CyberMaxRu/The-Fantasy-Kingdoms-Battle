@@ -75,6 +75,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCToolLabel labelDay;
         private readonly VCToolLabel labelGreatness;
         private readonly VCToolLabel labelGold;
+        private readonly VCLabelM2 labelNamePlayer;
 
         private readonly VCIconButton btnPreferences;
         private readonly VCIconButton btnHelp;
@@ -505,6 +506,10 @@ namespace Fantasy_Kingdoms_Battle
                 labelGold.ShowHint += LabelGold_ShowHint;
                 labelGold.Width = 168;
 
+                labelNamePlayer = new VCLabelM2(bmpPreparedToolbar, 0, 0, fontMedCaptionC, Color.White, fontMedCaptionC.MaxHeightSymbol, "");
+                labelNamePlayer.StringFormat.LineAlignment = StringAlignment.Center;
+                labelNamePlayer.Width = 16;
+
                 btnEndTurn = CreateButton(MainControl, ilGui, GUI_HOURGLASS, 0, bmpToolbar.Height + Config.GridSize, BtnEndTurn_Click, BtnEndTurn_MouseHover);
                 panelLairWithFlags = new VisualControl(MainControl, 0, btnEndTurn.ShiftY);
                 panelLairWithFlags.Width = Program.formMain.bmpBorderForIcon.Width;
@@ -612,6 +617,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 // Теперь когда известна ширина окна, можно создавать картинку тулбара
                 bmpPreparedToolbar.Bitmap = PrepareToolbar();
+                labelNamePlayer.Height = bmpPreparedToolbar.Height;
                 panelPlayers.ShiftX = (TopControl.Width - panelPlayers.Width) / 2;
                 panelCombatHeroes.Height = maxHeightPages - bitmapMenu.Height - Config.GridSize;
 
@@ -676,7 +682,7 @@ namespace Fantasy_Kingdoms_Battle
                 //me.Parent = this;
 
                 StartPlayMusic();
-                ShowDataPlayer();
+                ShowCurrentPlayerLobby();
 
                 // 
                 void SetStage(string text)
@@ -1108,6 +1114,11 @@ namespace Fantasy_Kingdoms_Battle
             {
                 MainControl.Visible = false;
             }
+
+            labelNamePlayer.Text = lobby.CurrentPlayer.Name;
+            labelNamePlayer.Width = labelNamePlayer.Font.WidthText(labelNamePlayer.Text);
+            labelNamePlayer.ShiftX = (bmpPreparedToolbar.Width - labelNamePlayer.Width) / 2;
+            bmpPreparedToolbar.ArrangeControl(labelNamePlayer);
 
             ShowFrame(true);
         }
