@@ -1712,6 +1712,10 @@ namespace Fantasy_Kingdoms_Battle
                     controlClicked = controlWithHint;
                     controlWithHint = null;
                     controlClicked.DoClick();
+                    
+                    // Во время нажатия кнопки мог произойти выход из программы
+                    if (IsDisposed)
+                        return;
 
                     // Если был клик на ячейке меню, обновляем меню, так как меняется список исследований и как следствие подсказки
                     // Так как ячейка может быть невидимой, обновляем меню перед проверкой, какой контрол сейчас под мышкой
