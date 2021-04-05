@@ -145,14 +145,21 @@ namespace Updater
         private void CheckUpdate()
         {
             // Скачиваем файл с версиями
+            //string filenameVersionZip = Environment.CurrentDirectory + @"\ActualVersion.zip";
             string filenameVersion = Environment.CurrentDirectory + @"\ActualVersion.xml";
             SetState("Скачиваем файл с версиями...");
 
             if (DownloadFile(URLDrive, UIDVersion, filenameVersion))
-            {
+            { 
                 // Смотрим, какая там последняя версия
                 try
                 {
+/*                    if (System.IO.File.Exists(Environment.CurrentDirectory + @"\Versions.xml"))
+                        System.IO.File.Delete(Environment.CurrentDirectory + @"\Versions.xml");
+                    ZipFile.ExtractToDirectory(filenameVersionZip, Environment.CurrentDirectory);
+                        File.Move(Environment.CurrentDirectory + @"\Versions.xml", Environment.CurrentDirectory + @"\ActualVersion.xml");
+                    string filenameVersion = Environment.CurrentDirectory + @"\ActualVersion.xml";
+*/
                     XmlDocument xmlDoc = new XmlDocument();
                     xmlDoc.Load(filenameVersion);
 
