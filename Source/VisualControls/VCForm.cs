@@ -62,7 +62,7 @@ namespace Fantasy_Kingdoms_Battle
                 g.DrawImage(back, 14, 14);
                 back.Dispose();
 
-                windowCaption.Width = 400;
+                windowCaption.Width = 410;// Такая ширина заголовка в Majesty 2
                 windowCaption.ShiftX = (Width - windowCaption.Width) / 2;
 
                 ArrangeControls();
