@@ -958,7 +958,7 @@ namespace Fantasy_Kingdoms_Battle
             ActivatePage((VCFormPage)sender);
         }
 
-        private void BtnPreferences_Click(object sender, EventArgs e)
+        internal void ShowWindowPreferences()
         {
             FormSettings f = new FormSettings();
             f.ApplySettings(Settings);
@@ -971,6 +971,11 @@ namespace Fantasy_Kingdoms_Battle
 
                 ApplyFullScreen(false);
             }
+        }
+
+        private void BtnPreferences_Click(object sender, EventArgs e)
+        {
+            ShowWindowPreferences();
         }
 
         internal VisualLayer AddLayer(VisualControl vc)

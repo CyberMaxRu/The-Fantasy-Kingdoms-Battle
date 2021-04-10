@@ -24,9 +24,19 @@ namespace Fantasy_Kingdoms_Battle
             btnBackToGame = new VCButton(bmpMenu, 80, 72, "Вернуться к игре");
             btnBackToGame.Width = Width - 80 - 80;
             btnBackToGame.Click += BtnBackToGame_Click;
+
             btnExitToWindows = new VCButton(bmpMenu, 80, bmpMenu.Height - 96, "Выход в Windows");
             btnExitToWindows.Width = Width - 80 - 80;
             btnExitToWindows.Click += BtnExitToWindows_Click;
+
+            btnSettings = new VCButton(bmpMenu, 80, btnExitToWindows.ShiftY - 48, "Настройки");
+            btnSettings.Width = Width - 80 - 80;
+            btnSettings.Click += BtnSettings_Click;
+        }
+
+        private void BtnSettings_Click(object sender, EventArgs e)
+        {
+            Program.formMain.ShowWindowPreferences();
         }
 
         private void BtnExitToWindows_Click(object sender, EventArgs e)
