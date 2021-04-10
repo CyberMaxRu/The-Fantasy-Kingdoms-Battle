@@ -46,11 +46,12 @@ namespace Fantasy_Kingdoms_Battle
                 //{}
 
                 // Если есть изображение слева или справа от меток, учитываем его
-                for (int j = top; j < topAndHeight; j++)
+                /*for (int j = top; j < topAndHeight; j++)
                 {
                     if (bmpFonts.GetPixel(left - 1, j).A > 0)
                     {
                         left--;
+                        leftAndWidth--;
                         break;
                     }
                 }
@@ -59,9 +60,9 @@ namespace Fantasy_Kingdoms_Battle
                     {
                         leftAndWidth++;
                         break;
-                    }
+                    }*/
 
-                width = leftAndWidth - left + 1;
+                width = leftAndWidth - left + 0;
                 height = topAndHeight - top + 1;
 
                 maxWidthSymbol = Math.Max(maxWidthSymbol, width);
@@ -122,7 +123,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 bmpSymbol = symbols[b - 32];
                 gRaw.DrawImageUnscaled(bmpSymbol, left, 0);
-                left += bmpSymbol.Width - 1;
+                left += bmpSymbol.Width;
             }
             Debug.Assert(left <= bmpRaw.Width);
             gRaw.Dispose();
@@ -146,9 +147,12 @@ namespace Fantasy_Kingdoms_Battle
 
             for (int counter = 0; counter < rgbValues.Length; counter += 4)
             {
-                rgbValues[counter + 0] = Convert.ToByte(rgbValues[counter + 0] * color.B / 255);
-                rgbValues[counter + 1] = Convert.ToByte(rgbValues[counter + 1] * color.G / 255);
-                rgbValues[counter + 2] = Convert.ToByte(rgbValues[counter + 2] * color.R / 255);
+                if (rgbValues[counter + 3] > 0)
+                { 
+                    rgbValues[counter + 0] = Convert.ToByte(rgbValues[counter + 0] * color.B / 255);
+                    rgbValues[counter + 1] = Convert.ToByte(rgbValues[counter + 1] * color.G / 255);
+                    rgbValues[counter + 2] = Convert.ToByte(rgbValues[counter + 2] * color.R / 255);
+                }
             }
 
             Marshal.Copy(rgbValues, 0, ptr, bytes);
@@ -164,7 +168,7 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (byte b in text1251)
             {
-                width += symbols[b - 32].Width - 1;
+                width += symbols[b - 32].Width;
             }
 
             return width;
