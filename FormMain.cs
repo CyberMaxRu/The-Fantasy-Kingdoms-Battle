@@ -11,6 +11,8 @@ using System.Media;
 
 namespace Fantasy_Kingdoms_Battle
 {
+    internal enum ProgramState { Started, ConfirmQuit, NeedQuit };
+
     public partial class FormMain : Form
     {
         private const string NAME_PROJECT = "The Fantasy Kingdoms Battle";
@@ -20,8 +22,8 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly string dirCurrent;
         internal readonly string dirResources;
 
+        private ProgramState ProgramState = ProgramState.Started;
         internal bool gameStarted = false;
-        internal bool inQuit = false;
         private bool needRepaintFrame = false;
 
         // Проигрывание звуков и музыки 
@@ -1015,12 +1017,15 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.OnFormClosing(e);
 
-            if (!inQuit)
+            if (ProgramState == ProgramState.NeedQuit)
+                return;
+
+            if (ProgramState == ProgramState.Started)
             {
-                inQuit = true;
+                ProgramState = ProgramState.ConfirmQuit;
                 FormConfirmExit f = new FormConfirmExit();
-                e.Cancel = f.ShowModal() == DialogResult.No;
-                inQuit = false;
+                ProgramState = f.ShowModal() == DialogResult.Yes ? ProgramState.NeedQuit : ProgramState.Started;
+                e.Cancel = ProgramState == ProgramState.Started;
 
                 ShowFrame(true);
             }
@@ -1559,7 +1564,15 @@ namespace Fantasy_Kingdoms_Battle
             if (e.KeyCode == Keys.Escape)
             {
                 WindowMenuInGame w = new WindowMenuInGame();
-                w.ShowModal();
+                DialogResult dr = w.ShowModal();
+                switch (dr)
+                {
+                    case DialogResult.Abort:
+                        Close();
+                        break;
+                    default:
+                        break;
+                }
             }
             else
                 currentLayer.KeyUp(e);
@@ -1960,6 +1973,11 @@ namespace Fantasy_Kingdoms_Battle
                 bmp.SetResolution(dpiX, dpiY);
 
             return bmp;
+        }
+
+        internal void SetProgrameState(ProgramState ps)
+        {
+            ProgramState = ps;
         }
     }
 }
