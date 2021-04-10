@@ -10,7 +10,7 @@ using System.Windows.Forms;
 namespace Fantasy_Kingdoms_Battle
 {
     // Визуальный контрол - окно
-    internal abstract class VCForm : VisualControl
+    internal abstract class VCForm : CustomWindow
     {
         private DispatcherFrame frame;
         protected VisualControl ClientControl;
@@ -26,8 +26,6 @@ namespace Fantasy_Kingdoms_Battle
             ClientControl.Height = 200;
 
             windowCaption = new VCWindowCaption(this, 0, 0);
-
-            layer = Program.formMain.AddLayer(this);
         }
        
         protected VCButton AcceptButton { get; set; }
@@ -77,33 +75,6 @@ namespace Fantasy_Kingdoms_Battle
             g.DrawImage(bmpBackground, Left, Top + 13);
 
             base.Draw(g);
-        }
-
-        internal void CloseForm(DialogResult dr)
-        {
-            dialogResult = dr;
-            Program.formMain.RemoveLayer(layer);
-            frame.Continue = false;
-        }
-
-        internal void ToCentre()
-        {
-            SetPos(Program.formMain.ShiftControls.X + (Program.formMain.sizeGamespace.Width - Width) / 2, Program.formMain.ShiftControls.Y + (Program.formMain.sizeGamespace.Height - Height - 13) / 2);
-            ArrangeControls();
-        }
-
-        internal DialogResult ShowModal()
-        {
-            Program.formMain.formHint.HideHint();
-
-            AdjustSize();
-            ToCentre();
-            Program.formMain.LayerChanged();
-
-            frame = new DispatcherFrame();
-            Dispatcher.PushFrame(frame);
-
-            return dialogResult;
         }
     }
 }

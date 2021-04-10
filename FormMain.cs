@@ -207,6 +207,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly Bitmap bmpBandButtonDisabled;
         internal readonly Bitmap bmpBandButtonPressed;
         internal readonly Bitmap bmpBandStateCreature;
+        internal readonly Bitmap bmpMenuInGame;
         internal readonly M2Font fontSmall;
         internal readonly M2Font fontSmallC;
         internal readonly M2Font fontMedCaptionC;
@@ -412,6 +413,7 @@ namespace Fantasy_Kingdoms_Battle
                 bmpBandButtonDisabled = LoadBitmap("ButtonDisabled.png");
                 bmpBandButtonPressed = LoadBitmap("ButtonPressed.png");
                 bmpBandStateCreature = LoadBitmap("BandStateCreature.png");
+                bmpMenuInGame = LoadBitmap("MenuInGame.png");
 
                 // Делаем рамки для союзников и врагов
                 bmpBorderForIconAlly = new Bitmap(bmpBorderForIcon);
@@ -1554,7 +1556,13 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.OnKeyUp(e);
 
-            currentLayer.KeyUp(e);
+            if (e.KeyCode == Keys.Escape)
+            {
+                WindowMenuInGame w = new WindowMenuInGame();
+                w.ShowModal();
+            }
+            else
+                currentLayer.KeyUp(e);
         }        
 
         private VisualControl ControlUnderMouse()

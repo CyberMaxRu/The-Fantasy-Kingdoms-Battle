@@ -73,7 +73,9 @@
     <Compile Include="PanelMonsterInfo.cs" />
     <Compile Include="PlayerObject.cs" />
     <Compile Include="SecondarySkill.cs" />
+    <Compile Include="Source\Forms\CustomWindow.cs" />
     <Compile Include="Source\Forms\FormConfirmExit.cs" />
+    <Compile Include="Source\Forms\WindowMenuInGame.cs" />
     <Compile Include="Source\Panels\PanelHint.cs" />
     <Compile Include="Source\Panels\PanelMapObject.cs" />
     <Compile Include="Source\Panels\PanelPlayer.cs" />
