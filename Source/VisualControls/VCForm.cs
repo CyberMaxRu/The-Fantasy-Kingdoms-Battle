@@ -41,7 +41,7 @@ namespace Fantasy_Kingdoms_Battle
                 CancelButton.DoClick();
         }
 
-        internal virtual void AdjustSize()
+        internal override void AdjustSize()
         {
             if ((Width != 14 + ClientControl.Width + 14) || (Height != 13 + 24 + ClientControl.Height + 14))
             {
