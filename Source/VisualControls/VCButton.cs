@@ -55,7 +55,7 @@ namespace Fantasy_Kingdoms_Battle
             base.Draw(g);
 
             labelCaption.Text = Caption;
-            labelCaption.Color = mouseOver ? Color.Gold : Color.White;
+            labelCaption.Color = mouseOver ? Color.Gold : Color.PaleTurquoise;
             labelCaption.Draw(g);
         }
 
