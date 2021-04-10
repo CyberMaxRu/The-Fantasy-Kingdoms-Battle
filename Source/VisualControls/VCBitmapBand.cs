@@ -33,6 +33,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
+            Debug.Assert(bmpForDraw != null);
+
             base.Draw(g);
 
             g.DrawImageUnscaled(bmpForDraw, Left, Top);
