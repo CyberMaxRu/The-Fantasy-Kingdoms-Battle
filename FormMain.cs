@@ -300,7 +300,7 @@ namespace Fantasy_Kingdoms_Battle
             // Загружаем настройки
             try
             {
-                Settings = new Settings(true);
+                Settings = new Settings();
 
                 MainConfig = new MainConfig(dirResources);
 

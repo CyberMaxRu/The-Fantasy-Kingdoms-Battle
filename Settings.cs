@@ -14,7 +14,7 @@ namespace Fantasy_Kingdoms_Battle
     // Класс настроек
     internal sealed class Settings
     {
-        public Settings(bool loadSettings)
+        public Settings()
         {
             SetDefault();
 
