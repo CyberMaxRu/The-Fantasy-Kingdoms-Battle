@@ -14,34 +14,42 @@ namespace Fantasy_Kingdoms_Battle
     // Класс настроек
     internal sealed class Settings
     {
-        private string pathToResources;
-        public Settings(string path)
+        public Settings(bool loadSettings)
         {
-            pathToResources = path;
+            SetDefault();
 
-            if (File.Exists(path + "Settings.xml"))
+            if (File.Exists(Program.formMain.dirResources + "Settings.xml"))
             {
                 XmlDocument doc = new XmlDocument();
-                doc.Load(path + "Settings.xml");
+                try
+                {
+                    doc.Load(Program.formMain.dirResources + "Settings.xml");
 
-                ShowSplashVideo = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Game/ShowSplashVideo"), ShowSplashVideo);
-                FullScreenMode = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Game/FullScreenMode"), FullScreenMode);
-                CheckUpdateOnStartup = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Game/CheckUpdatesOnStartup"), CheckUpdateOnStartup);
+                    ShowSplashVideo = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Game/ShowSplashVideo"), ShowSplashVideo);
+                    FullScreenMode = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Game/FullScreenMode"), FullScreenMode);
+                    CheckUpdateOnStartup = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Game/CheckUpdatesOnStartup"), CheckUpdateOnStartup);
 
-                BattlefieldShowPath = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Battlefield/ShowPath"), BattlefieldShowPath);
-                BattlefieldShowGrid = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Battlefield/ShowGrid"), BattlefieldShowGrid);
+                    BattlefieldShowPath = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Battlefield/ShowPath"), BattlefieldShowPath);
+                    BattlefieldShowGrid = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Battlefield/ShowGrid"), BattlefieldShowGrid);
 
-                NamePlayer = XmlUtils.GetString(doc.SelectSingleNode("Settings/Player/Name"));
-                if (NamePlayer.Length == 0)
-                    NamePlayer = "Игрок";
-                if (NamePlayer.Length > 31)
-                    throw new Exception("Длина имени игрока более 31 символа.");
+                    NamePlayer = XmlUtils.GetString(doc.SelectSingleNode("Settings/Player/Name"));
+                    if (NamePlayer.Length == 0)
+                        NamePlayer = "Игрок";
+                    if (NamePlayer.Length > 31)
+                        throw new Exception("Длина имени игрока более 31 символа.");
 
-                IndexInternalAvatar = XmlUtils.GetInteger(doc.SelectSingleNode("Settings/Player/IndexAvatar"));
-                if (IndexInternalAvatar < -1)
-                    IndexInternalAvatar = 0;
-                FileNameAvatar = XmlUtils.GetString(doc.SelectSingleNode("Settings/Player/FileNameAvatar"));
-                DirectoryAvatar = XmlUtils.GetString(doc.SelectSingleNode("Settings/Player/DirectoryAvatar"));
+                    IndexInternalAvatar = XmlUtils.GetInteger(doc.SelectSingleNode("Settings/Player/IndexAvatar"));
+                    if (IndexInternalAvatar < -1)
+                        IndexInternalAvatar = 0;
+                    FileNameAvatar = XmlUtils.GetString(doc.SelectSingleNode("Settings/Player/FileNameAvatar"));
+                    DirectoryAvatar = XmlUtils.GetString(doc.SelectSingleNode("Settings/Player/DirectoryAvatar"));
+                }
+                catch (Exception exc)
+                {
+                    GuiUtils.ShowError(exc.Message);
+
+                   SetDefault();
+                }
             }
             else
             {
@@ -51,16 +59,25 @@ namespace Fantasy_Kingdoms_Battle
             //    IndexAvatar = Program.formMain.ilPlayerAvatars.Images.Count - 1;
         }
 
-        internal bool ShowSplashVideo { get; set; } = true;
-        internal bool FullScreenMode { get; set; } = true;
-        internal bool CheckUpdateOnStartup { get; set; } = true;
-        internal bool BattlefieldShowPath { get; set; } = false;
-        internal bool BattlefieldShowGrid { get; set; } = false;
+        internal bool ShowSplashVideo { get; set; }
+        internal bool FullScreenMode { get; set; }
+        internal bool CheckUpdateOnStartup { get; set; }
+        internal bool BattlefieldShowPath { get; set; }
+        internal bool BattlefieldShowGrid { get; set; }
         internal string NamePlayer { get; set; }
         internal int IndexInternalAvatar { get; set; }
         internal string FileNameAvatar { get; set; } = "";
         internal string DirectoryAvatar { get; set; } = "";
         internal Bitmap Avatar { get; private set; }
+
+        internal void SetDefault()
+        {
+            ShowSplashVideo = true;
+            FullScreenMode = true;
+            CheckUpdateOnStartup = true;
+            BattlefieldShowPath = false;
+            BattlefieldShowGrid = false;
+        }
 
         internal void LoadAvatar()
         {
@@ -86,7 +103,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void SaveSettings()
         {
-            XmlTextWriter textWriter = new XmlTextWriter(pathToResources + "Settings.xml", Encoding.UTF8);
+            XmlTextWriter textWriter = new XmlTextWriter(Program.formMain.dirResources + "Settings.xml", Encoding.UTF8);
             textWriter.WriteStartDocument();
             textWriter.Formatting = Formatting.Indented;
 
