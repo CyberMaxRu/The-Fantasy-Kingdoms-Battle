@@ -966,7 +966,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             WindowPreferences w = new WindowPreferences();
             w.ApplySettings(Settings);
-            if (w.ShowModal() == DialogResult.OK)
+            if (w.ShowDialog() == DialogResult.OK)
             {
                 if (Settings.NamePlayer != lobby.CurrentPlayer.Name)
                 {
@@ -1033,7 +1033,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 ProgramState = ProgramState.ConfirmQuit;
                 FormConfirmExit f = new FormConfirmExit();
-                ProgramState = f.ShowModal() == DialogResult.Yes ? ProgramState.NeedQuit : ProgramState.Started;
+                ProgramState = f.ShowDialog() == DialogResult.Yes ? ProgramState.NeedQuit : ProgramState.Started;
                 e.Cancel = ProgramState == ProgramState.Started;
 
                 ShowFrame(true);
@@ -1573,7 +1573,7 @@ namespace Fantasy_Kingdoms_Battle
             if (e.KeyCode == Keys.Escape)
             {
                 WindowMenuInGame w = new WindowMenuInGame();
-                DialogResult dr = w.ShowModal();
+                DialogResult dr = w.ShowDialog();
                 switch (dr)
                 {
                     case DialogResult.Abort:

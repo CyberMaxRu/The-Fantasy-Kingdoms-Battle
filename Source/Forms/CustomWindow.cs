@@ -43,7 +43,7 @@ namespace Fantasy_Kingdoms_Battle
             ArrangeControls();
         }
 
-        internal DialogResult ShowModal()
+        internal DialogResult ShowDialog()
         {
             Program.formMain.formHint.HideHint();
 
