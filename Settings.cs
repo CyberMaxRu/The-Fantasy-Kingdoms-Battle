@@ -44,9 +44,9 @@ namespace Fantasy_Kingdoms_Battle
                     FileNameAvatar = XmlUtils.GetString(doc.SelectSingleNode("Settings/Player/FileNameAvatar"));
                     DirectoryAvatar = XmlUtils.GetString(doc.SelectSingleNode("Settings/Player/DirectoryAvatar"));
                 }
-                catch (Exception exc)
+                catch (Exception e)
                 {
-                    GuiUtils.ShowError(exc.Message);
+                    GuiUtils.ShowException(e);
 
                    SetDefault();
                 }

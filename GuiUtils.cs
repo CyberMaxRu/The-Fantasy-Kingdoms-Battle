@@ -70,6 +70,11 @@ namespace Fantasy_Kingdoms_Battle
             MessageBox.Show(text, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        public static void ShowException(Exception e)
+        {
+            MessageBox.Show(e.Message + Environment.NewLine + Environment.NewLine + e.StackTrace, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         internal static Bitmap PrepareAvatar(string filename)
         {
             try
