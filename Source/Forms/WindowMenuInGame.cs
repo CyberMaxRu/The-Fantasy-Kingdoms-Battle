@@ -32,6 +32,8 @@ namespace Fantasy_Kingdoms_Battle
             btnSettings = new VCButton(bmpMenu, 80, btnExitToWindows.ShiftY - 48, "Настройки");
             btnSettings.Width = Width - 80 - 80;
             btnSettings.Click += BtnSettings_Click;
+
+            CancelButton = btnBackToGame;
         }
 
         private void BtnSettings_Click(object sender, EventArgs e)
