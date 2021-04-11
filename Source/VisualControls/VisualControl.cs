@@ -53,6 +53,7 @@ namespace Fantasy_Kingdoms_Battle
         internal bool ShowBorder { get; set; }// Надо ли показывать бордюр
         internal PlayerObject PlayerObject { get; set; }// Объект, ассоциированный с контролом
         internal bool MouseEntered { get; private set; }// Курсор мыши находится над контролом
+        internal bool LeftButtonPressed { get; private set; }// ЛКМ нажата
         internal bool IsError { get; set; }
         internal bool ShowHintParent { get; set; }// Показывать подсказку родителя
 
@@ -183,6 +184,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(!MouseEntered);
 
             MouseEntered = true;
+            LeftButtonPressed = leftButtonDown;
         }
 
         internal virtual void MouseLeave()
@@ -190,16 +192,21 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(MouseEntered);
 
             MouseEntered = false;
+            LeftButtonPressed = false;
         }
 
         internal virtual void MouseDown()
         {
             Debug.Assert(Visible);
+
+            LeftButtonPressed = true;
         }
 
         internal virtual void MouseUp()
         {
             Debug.Assert(Visible);
+
+            LeftButtonPressed = false;
         }
 
         internal virtual void KeyUp(KeyEventArgs e) { }
