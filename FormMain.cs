@@ -1582,6 +1582,8 @@ namespace Fantasy_Kingdoms_Battle
                     default:
                         break;
                 }
+
+                ShowFrame(true);
             }
             else
                 currentLayer.KeyUp(e);
