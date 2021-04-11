@@ -48,6 +48,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
+            Debug.Assert(Width > 0);
+
             if (Visible || ManualDraw)
             {
                 if ((BitmapList != null) && (ImageIndex >= 0))
