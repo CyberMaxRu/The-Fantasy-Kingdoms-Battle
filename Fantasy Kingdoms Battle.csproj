@@ -76,6 +76,7 @@
     <Compile Include="Source\Forms\CustomWindow.cs" />
     <Compile Include="Source\Forms\FormConfirmExit.cs" />
     <Compile Include="Source\Forms\WindowMenuInGame.cs" />
+    <Compile Include="Source\Forms\WindowPreferences.cs" />
     <Compile Include="Source\Panels\PanelHint.cs" />
     <Compile Include="Source\Panels\PanelMapObject.cs" />
     <Compile Include="Source\Panels\PanelPlayer.cs" />
@@ -83,6 +84,7 @@
     <Compile Include="Source\VisualControls\VCBitmapBand.cs" />
     <Compile Include="Source\VisualControls\VCButton.cs" />
     <Compile Include="Source\VisualControls\VCButtonTargetLair.cs" />
+    <Compile Include="Source\VisualControls\VCCheckBox.cs" />
     <Compile Include="Source\VisualControls\VCForm.cs" />
     <Compile Include="Source\VisualControls\VCIconButton.cs" />
     <Compile Include="Source\VisualControls\VCImageBig.cs" />
