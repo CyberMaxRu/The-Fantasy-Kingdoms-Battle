@@ -44,6 +44,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly BitmapList ilItems;
         internal readonly BitmapList ilStateHero;
         internal readonly BitmapList ilMenuCellFilters;
+        internal readonly BitmapList blCheckBox;
 
         internal Brush brushQuantity;
         internal Brush brushCost;
@@ -299,7 +300,7 @@ namespace Fantasy_Kingdoms_Battle
             // Загружаем настройки
             try
             {
-                Settings = new Settings(dirResources);
+                Settings = new Settings(true);
 
                 MainConfig = new MainConfig(dirResources);
 
@@ -394,6 +395,7 @@ namespace Fantasy_Kingdoms_Battle
                 ilItems = new BitmapList(LoadBitmap("Items.png"), 48, true, true);
                 ilStateHero = new BitmapList(LoadBitmap("StateCreature.png"), 24, true, false);
                 ilMenuCellFilters = new BitmapList(LoadBitmap("MenuCellFilters.png"), 48, true, false);
+                blCheckBox = new BitmapList(LoadBitmap("CheckBox.png"), 24, false, false);
 
                 ilGui = new BitmapList(LoadBitmap("Gui.png"), 48, true, true);
                 //MakeAlpha();
@@ -962,9 +964,9 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void ShowWindowPreferences()
         {
-            FormSettings f = new FormSettings();
-            f.ApplySettings(Settings);
-            if (f.ShowDialog() == DialogResult.OK)
+            WindowPreferences w = new WindowPreferences();
+            w.ApplySettings(Settings);
+            if (w.ShowModal() == DialogResult.OK)
             {
                 if (Settings.NamePlayer != lobby.CurrentPlayer.Name)
                 {
