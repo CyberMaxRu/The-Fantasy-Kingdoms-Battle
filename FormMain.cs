@@ -1570,7 +1570,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.OnKeyUp(e);
 
-            if (e.KeyCode == Keys.Escape)
+            if ((e.KeyCode == Keys.Escape) && (Layers.Count == 1))
             {
                 WindowMenuInGame w = new WindowMenuInGame();
                 DialogResult dr = w.ShowDialog();
