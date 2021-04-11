@@ -210,6 +210,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly Bitmap bmpBandButtonPressed;
         internal readonly Bitmap bmpBandStateCreature;
         internal readonly Bitmap bmpMenuInGame;
+        internal readonly Bitmap bmpMainMenu;
         internal readonly M2Font fontSmall;
         internal readonly M2Font fontSmallC;
         internal readonly M2Font fontMedCaptionC;
@@ -416,6 +417,7 @@ namespace Fantasy_Kingdoms_Battle
                 bmpBandButtonPressed = LoadBitmap("ButtonPressed.png");
                 bmpBandStateCreature = LoadBitmap("BandStateCreature.png");
                 bmpMenuInGame = LoadBitmap("MenuInGame.png");
+                bmpMainMenu = LoadBitmap("MenuMain.png");
 
                 // Делаем рамки для союзников и врагов
                 bmpBorderForIconAlly = new Bitmap(bmpBorderForIcon);
