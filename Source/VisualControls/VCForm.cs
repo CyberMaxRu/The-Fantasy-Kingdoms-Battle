@@ -28,19 +28,6 @@ namespace Fantasy_Kingdoms_Battle
             windowCaption = new VCWindowCaption(this, 0, 0);
         }
        
-        protected VCButton AcceptButton { get; set; }
-        protected VCButton CancelButton { get; set; }
-
-        internal override void KeyUp(KeyEventArgs e)
-        {
-            base.KeyUp(e);
-
-            if ((e.KeyCode == Keys.Enter) && (AcceptButton != null))
-                AcceptButton.DoClick();
-            if ((e.KeyCode == Keys.Escape) && (CancelButton != null))
-                CancelButton.DoClick();
-        }
-
         internal override void AdjustSize()
         {
             if ((Width != 14 + ClientControl.Width + 14) || (Height != 13 + 24 + ClientControl.Height + 14))
