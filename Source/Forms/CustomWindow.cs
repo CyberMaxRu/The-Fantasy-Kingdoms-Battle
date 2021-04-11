@@ -47,7 +47,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             dialogResult = dr;
             Program.formMain.RemoveLayer(layer);
-            frame.Continue = false;
+            if (frame != null)
+                frame.Continue = false;
         }
 
         internal void ToCentre()
@@ -68,6 +69,15 @@ namespace Fantasy_Kingdoms_Battle
             Dispatcher.PushFrame(frame);
 
             return dialogResult;
+        }
+
+        internal void Show()
+        {
+            Program.formMain.formHint.HideHint();
+
+            AdjustSize();
+            ToCentre();
+            Program.formMain.LayerChanged();
         }
     }
 }

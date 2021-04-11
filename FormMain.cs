@@ -741,7 +741,7 @@ namespace Fantasy_Kingdoms_Battle
             // При старте игры в полноэкранном режиме, если курсор находится на пустом пространстве, окно игры состоит из белого фона
             // Показ кадра при старте отрисовывает окно
             ValidateFrame();
-            //ShowFrame(true);
+            //ShowFrame(true);s
         }
 
         private void PageHeroes_ShowHint(object sender, EventArgs e)
@@ -832,6 +832,10 @@ namespace Fantasy_Kingdoms_Battle
 
             ApplyFullScreen(true);
             gameStarted = true;
+
+            WindowMainMenu w = new WindowMainMenu();
+            w.Show();
+            ShowFrame(true);
         }
 
         private void ApplyFullScreenModeToWindow()
@@ -1011,6 +1015,11 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         private void BtnHelp_Click(object sender, EventArgs e)
+        {
+            ShowWindowHelp();
+        }
+
+        internal void ShowWindowHelp()
         {
             FormAbout f = new FormAbout();
             f.ShowDialog();
@@ -1746,6 +1755,8 @@ namespace Fantasy_Kingdoms_Battle
                     controlClicked.DoClick();
                     
                     // Во время нажатия кнопки мог произойти выход из программы
+                    if (ProgramState == ProgramState.NeedQuit)
+                        Close();
                     if (IsDisposed)
                         return;
 

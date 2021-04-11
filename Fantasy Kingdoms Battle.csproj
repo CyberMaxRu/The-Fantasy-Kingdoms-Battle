@@ -75,6 +75,7 @@
     <Compile Include="SecondarySkill.cs" />
     <Compile Include="Source\Forms\CustomWindow.cs" />
     <Compile Include="Source\Forms\FormConfirmExit.cs" />
+    <Compile Include="Source\Forms\WindowMainMenu.cs" />
     <Compile Include="Source\Forms\WindowMenuInGame.cs" />
     <Compile Include="Source\Forms\WindowPreferences.cs" />
     <Compile Include="Source\Panels\PanelHint.cs" />
