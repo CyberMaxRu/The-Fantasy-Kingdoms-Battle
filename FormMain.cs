@@ -81,8 +81,6 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCLabelM2 labelNamePlayer;
 
         private readonly VCIconButton btnPreferences;
-        private readonly VCIconButton btnHelp;
-        private readonly VCIconButton btnQuit;
 
         private readonly VCIconButton btnEndTurn;
 
@@ -489,8 +487,6 @@ namespace Fantasy_Kingdoms_Battle
 
                 // Кнопки в правом верхнем углу
                 btnPreferences = CreateButton(TopControl, ilGui, GUI_INVENTORY, 0, Config.GridSize, BtnPreferences_Click, BtnPreferences_MouseHover);
-                btnHelp = CreateButton(TopControl, ilGui, GUI_BOOK, 0, btnPreferences.ShiftY, BtnHelp_Click, BtnHelp_MouseHover);
-                btnQuit = CreateButton(TopControl, ilGui, GUI_EXIT, 0, btnPreferences.ShiftY, BtnQuit_Click, BtnQuit_MouseHover);
 
                 TopControl.ApplyMaxSize();
 
@@ -642,9 +638,7 @@ namespace Fantasy_Kingdoms_Battle
                 panelMonsterInfo.Height = panelBuildingInfo.Height;
                 panelEmptyInfo.Height = panelBuildingInfo.Height;
 
-                btnQuit.ShiftX = MainControl.Width - btnQuit.Width - Config.GridSize;
-                btnHelp.PlaceBeforeControl(btnQuit);
-                btnPreferences.PlaceBeforeControl(btnHelp);
+                btnPreferences.ShiftX = MainControl.Width - btnPreferences.Width - Config.GridSize;
                 btnEndTurn.ShiftX = MainControl.Width - btnEndTurn.Width - Config.GridSize;
 
                 //pageGuilds.ShiftX + maxWidthPages + Config.GridSize;
@@ -777,15 +771,6 @@ namespace Fantasy_Kingdoms_Battle
             ShowHintForToolButton(labelDay, "День игры", "День игры: " + lobby.Turn.ToString());
         }
 
-        private void BtnQuit_MouseHover(object sender, EventArgs e)
-        {
-            ShowHintForToolButton(btnQuit, "Выход", "Выход из игры");
-        }
-
-        private void BtnHelp_MouseHover(object sender, EventArgs e)
-        {
-            ShowHintForToolButton(btnHelp, "Справка", "Справка об игре");
-        }
 
         private void BtnPreferences_MouseHover(object sender, EventArgs e)
         {
@@ -1015,22 +1000,12 @@ namespace Fantasy_Kingdoms_Battle
             currentLayer = Layers[Layers.Count - 1];
         }
 
-        private void BtnHelp_Click(object sender, EventArgs e)
-        {
-            ShowWindowAboutProgram();
-        }
-
         internal void ShowWindowAboutProgram()
         {
             WindowAboutProgram w = new WindowAboutProgram();
             w.ShowDialog();
             w.Dispose();
             ShowFrame(true);
-        }
-
-        private void BtnQuit_Click(object sender, EventArgs e)
-        {
-            Close();
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
