@@ -17,6 +17,7 @@ namespace Fantasy_Kingdoms_Battle
         private Bitmap bmpPressed;
         private bool mouseOver;
         private bool mouseClicked;
+        private bool enabled = true;
 
         public VCButton(VisualControl parent, int shiftX, int shiftY, string caption) : base(parent, shiftX, shiftY)
         {
@@ -31,6 +32,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal string Caption { get; set; }
+        internal bool Enabled { get => enabled; set { enabled = value; Program.formMain.NeedRedrawFrame(); } }
         protected override int WidthCap() => 31;
         protected override Bitmap GetBitmap() => Program.formMain.bmpBandButtonNormal;
 
@@ -51,12 +53,12 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
-            bmpForDraw = mouseOver && mouseClicked ? bmpPressed : mouseOver ? bmpHot : bmpNormal;
+            bmpForDraw = !Enabled ? bmpDisabled : mouseOver && mouseClicked ? bmpPressed : mouseOver ? bmpHot : bmpNormal;
 
             base.Draw(g);
 
             labelCaption.Text = Caption;
-            labelCaption.Color = mouseOver ? Color.Gold : Color.PaleTurquoise;
+            labelCaption.Color = !enabled ? Color.DarkGray : mouseOver ? Color.Gold : Color.PaleTurquoise;
             labelCaption.Draw(g);
         }
 
@@ -64,30 +66,39 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.MouseEnter(leftButtonDown);
 
-            mouseOver = true;
+            if (Enabled)
+            {
+                mouseOver = true;
 
-            if (!leftButtonDown)
-                mouseClicked = false;
+                if (!leftButtonDown)
+                    mouseClicked = false;
 
-            Program.formMain.SetNeedRedrawFrame();
-            Program.formMain.PlaySelectButton();
+                Program.formMain.SetNeedRedrawFrame();
+                Program.formMain.PlaySelectButton();
+            }
         }
 
         internal override void MouseLeave()
         {
             base.MouseLeave();
 
-            mouseOver = false;
-            Program.formMain.SetNeedRedrawFrame();
+            if (Enabled)
+            {
+                mouseOver = false;
+                Program.formMain.SetNeedRedrawFrame();
+            }
         }
 
         internal override void MouseDown()
         {
             base.MouseDown();
 
-            mouseClicked = true;
-            Program.formMain.SetNeedRedrawFrame();
-            Program.formMain.PlayPushButton();
+            if (Enabled)
+            {
+                mouseClicked = true;
+                Program.formMain.SetNeedRedrawFrame();
+                Program.formMain.PlayPushButton();
+            }
         }
 
         internal override void MouseUp()
