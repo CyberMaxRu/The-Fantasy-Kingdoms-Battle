@@ -15,7 +15,7 @@ namespace Fantasy_Kingdoms_Battle
 
     public partial class FormMain : Form
     {
-        private const string NAME_PROJECT = "The Fantasy Kingdoms Battle";
+        internal const string NAME_PROJECT = "The Fantasy Kingdoms Battle";
         internal const string VERSION = "0.3.8";
         internal const string DATE_VERSION = "30.03.2021";
         private const string VERSION_POSTFIX = "в разработке";
@@ -1016,14 +1016,15 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnHelp_Click(object sender, EventArgs e)
         {
-            ShowWindowHelp();
+            ShowWindowAboutProgram();
         }
 
-        internal void ShowWindowHelp()
+        internal void ShowWindowAboutProgram()
         {
-            FormAbout f = new FormAbout();
-            f.ShowDialog();
-            f.Dispose();
+            WindowAboutProgram w = new WindowAboutProgram();
+            w.ShowDialog();
+            w.Dispose();
+            ShowFrame(true);
         }
 
         private void BtnQuit_Click(object sender, EventArgs e)

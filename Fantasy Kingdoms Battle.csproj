@@ -75,6 +75,7 @@
     <Compile Include="SecondarySkill.cs" />
     <Compile Include="Source\Forms\CustomWindow.cs" />
     <Compile Include="Source\Forms\FormConfirmExit.cs" />
+    <Compile Include="Source\Forms\WindowAboutProgram.cs" />
     <Compile Include="Source\Forms\WindowMainMenu.cs" />
     <Compile Include="Source\Forms\WindowMenuInGame.cs" />
     <Compile Include="Source\Forms\WindowPreferences.cs" />
@@ -91,6 +92,7 @@
     <Compile Include="Source\VisualControls\VCImageBig.cs" />
     <Compile Include="Source\VisualControls\VCLabelM2.cs" />
     <Compile Include="Source\VisualControls\VCLabelValue.cs" />
+    <Compile Include="Source\VisualControls\VCLink.cs" />
     <Compile Include="Source\VisualControls\VCTabButton.cs" />
     <Compile Include="Source\VisualControls\VCSeparator.cs" />
     <Compile Include="Source\VisualControls\VCTextM2.cs" />
