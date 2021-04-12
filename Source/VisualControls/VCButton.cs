@@ -21,6 +21,7 @@ namespace Fantasy_Kingdoms_Battle
         public VCButton(VisualControl parent, int shiftX, int shiftY, string caption) : base(parent, shiftX, shiftY)
         {
             Caption = caption;
+            Width = 160;
 
             labelCaption = new VCLabelM2(this, WidthCap(), 1, Program.formMain.fontSmallC, Color.White, GetBitmap().Height, "");
             labelCaption.StringFormat.Alignment = StringAlignment.Center;
