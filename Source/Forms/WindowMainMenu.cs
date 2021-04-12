@@ -12,7 +12,7 @@ namespace Fantasy_Kingdoms_Battle
         private VCBitmap bmpMenu;
         private VCButton btnTournament;
         private VCButton btnPreferences;
-        private VCButton btnHelp;
+        private VCButton btnABoutProgram;
         private VCButton btnExit;
 
         public WindowMainMenu()
@@ -29,11 +29,11 @@ namespace Fantasy_Kingdoms_Battle
             btnExit.Width = Width - 80 - 80;
             btnExit.Click += BtnExit_Click;
 
-            btnHelp = new VCButton(bmpMenu, 80, btnExit.ShiftY - 48, "Справка");
-            btnHelp.Width = Width - 80 - 80;
-            btnHelp.Click += BtnHelp_Click;
+            btnABoutProgram = new VCButton(bmpMenu, 80, btnExit.ShiftY - 48, "О программе");
+            btnABoutProgram.Width = Width - 80 - 80;
+            btnABoutProgram.Click += BtnAboutProgram_Click;
 
-            btnPreferences = new VCButton(bmpMenu, 80, btnHelp.ShiftY - 48, "Настройки");
+            btnPreferences = new VCButton(bmpMenu, 80, btnABoutProgram.ShiftY - 48, "Настройки");
             btnPreferences.Width = Width - 80 - 80;
             btnPreferences.Click += BtnPreferences_Click;
 
@@ -46,9 +46,9 @@ namespace Fantasy_Kingdoms_Battle
             CloseForm(DialogResult.Abort);
         }
 
-        private void BtnHelp_Click(object sender, EventArgs e)
+        private void BtnAboutProgram_Click(object sender, EventArgs e)
         {
-            Program.formMain.ShowWindowHelp();
+            Program.formMain.ShowWindowAboutProgram();
         }
 
         private void BtnPreferences_Click(object sender, EventArgs e)
