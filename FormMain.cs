@@ -741,6 +741,9 @@ namespace Fantasy_Kingdoms_Battle
             // При старте игры в полноэкранном режиме, если курсор находится на пустом пространстве, окно игры состоит из белого фона
             // Показ кадра при старте отрисовывает окно
             ValidateFrame();
+
+            WindowMainMenu w = new WindowMainMenu();
+            w.Show();
             //ShowFrame(true);s
         }
 
@@ -833,8 +836,6 @@ namespace Fantasy_Kingdoms_Battle
             ApplyFullScreen(true);
             gameStarted = true;
 
-            WindowMainMenu w = new WindowMainMenu();
-            w.Show();
             ShowFrame(true);
         }
 
