@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Diagnostics;
+using System.Windows.Forms;
+
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -13,7 +15,9 @@ namespace Fantasy_Kingdoms_Battle
     internal class VCTextM2 : VisualControl
     {
         private string text;
+        private Padding padding;
         private string preparedText;
+        private Padding preparedPadding;
         private List<string> linesText = new List<string>();
         private List<Bitmap> listBitmapPreparedText = new List<Bitmap>();
         private int heightBitmaps;
@@ -35,9 +39,10 @@ namespace Fantasy_Kingdoms_Battle
         internal M2Font Font { get; }
         internal Color Color { get; set; }
         internal StringFormat StringFormat { get; set; }
+        internal Padding Padding { get => padding; set { padding = value; TextToLines(text); DrawText(); } }
         internal int MinHeigth()
         {
-            return Font.MaxHeightSymbol * linesText.Count;
+            return Padding.Top + Font.MaxHeightSymbol * linesText.Count + Padding.Bottom;
         }
 
         internal int MinWidth()
@@ -46,7 +51,7 @@ namespace Fantasy_Kingdoms_Battle
             foreach (Bitmap b in listBitmapPreparedText)
                 w = Math.Max(w, b.Width);
 
-            return w;
+            return Padding.Left + w + Padding.Right;
         }
 
         internal void DrawText()
@@ -65,14 +70,16 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             preparedText = Text;
+            preparedPadding = Padding;
         }
 
         internal override void Draw(Graphics g)
         {
             if (Text.Length > 0)
             {
-                if (preparedText != Text)
+                if ((preparedText != Text) || !preparedPadding.Equals(Padding))
                 {
+                    TextToLines(Text);
                     DrawText();
                 }
             }
@@ -86,13 +93,13 @@ namespace Fantasy_Kingdoms_Battle
                 switch (StringFormat.LineAlignment)
                 {
                     case StringAlignment.Near:
-                        y = Top;
+                        y = Top + Padding.Top;
                         break;
                     case StringAlignment.Center:
-                        y = Top + ((Height - heightBitmaps) / 2);
+                        y = Top + Padding.Top + ((Height - Padding.Top - Padding.Bottom - heightBitmaps) / 2);
                         break;
                     default:
-                        y = Top + Height - heightBitmaps;
+                        y = Top + Height - heightBitmaps - Padding.Bottom;
                         break;
                 }
 
@@ -102,18 +109,19 @@ namespace Fantasy_Kingdoms_Battle
                     switch (StringFormat.Alignment)
                     {
                         case StringAlignment.Near:
-                            x = Left;
+                            x = Left + Padding.Left;
                             break;
                         case StringAlignment.Center:
-                            x = Left + ((Width - b.Width) / 2);
+                            x = Left + Padding.Left + ((Width - Padding.Left - Padding.Right - b.Width) / 2);
                             break;
                         default:
-                            x = Left + Width - b.Width;
+                            x = Left + Width - b.Width - Padding.Right;
                             break;
                     }
 
                     Debug.Assert(x >= Left);
                     Debug.Assert(y >= Top);
+                    Debug.Assert(b.Width <= Width - Padding.Left - Padding.Right);
 
                     g.DrawImageUnscaled(b, x, y);
 
@@ -139,6 +147,8 @@ namespace Fantasy_Kingdoms_Battle
             int widthLine;
             int priorPosSpace = -1;
             string tmpStr;
+            int actualWidth = Width - Padding.Left - Padding.Right;
+
             // Разбиваем текст по строкам, учитывая ширину себя
             // Для этого ходим по пробелам
             for (; ; )
@@ -148,7 +158,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     widthLine = Font.WidthText(text.Substring(0, posSpace));
                     // Если превысили свою ширину, то текущая строка - готова
-                    if (widthLine > Width)
+                    if (widthLine > actualWidth)
                     {
                         Debug.Assert(priorPosSpace >= 0);
                         tmpStr = text.Substring(0, priorPosSpace);
@@ -161,7 +171,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     // Текст закончился. Если остаток влезает в ширину, берем его, иначе отрезаем по пробелу
                     widthLine = Font.WidthText(text);
-                    if (widthLine > Width)
+                    if (widthLine > actualWidth)
                     {
                         tmpStr = text.Substring(0, priorPosSpace);
                         linesText.Add(tmpStr);
@@ -169,7 +179,7 @@ namespace Fantasy_Kingdoms_Battle
                         widthLine = Font.WidthText(text);
                     }
 
-                    Debug.Assert(widthLine <= Width);
+                    Debug.Assert(widthLine <= actualWidth);
                     Debug.Assert(text.Length > 0);
                     linesText.Add(text);
                     break;
