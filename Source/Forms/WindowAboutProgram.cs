@@ -29,7 +29,7 @@ namespace Fantasy_Kingdoms_Battle
 
             txtAboutProject = new VCTextM2(ClientControl, 0, 0, Program.formMain.fontParagraph, Color.White, ClientControl.Width);
             txtAboutProject.ShowBorder = true;
-            txtAboutProject.Text = "Автобаттлер на основе \"Majesty 2: The Fantasy Kingdom Sim.\"\n\rПроект разрабатывается для проверки концепции автобаттлера по вселенной Majesty и бесплатен для использования."
+            txtAboutProject.Text = "Автобаттлер на основе \"Majesty 2: The Fantasy Kingdom Sim.\"\n\rПроект разрабатывается для проверки концепции автобаттлера во вселенной Majesty и бесплатен для использования."
                 + "\n\rВ игре использованы графические и звуковые ресурсы из Majesty 2 (разработчик Ino-Co при участии Paradox Interactive)."
                 + $"\n\rСборка {FormMain.VERSION} от {FormMain.DATE_VERSION}.\n\r \n\r";
             txtAboutProject.Padding = new Padding(4);
@@ -51,11 +51,11 @@ namespace Fantasy_Kingdoms_Battle
             txtAddInfo = new VCTextM2(ClientControl, 0, txtAboutDeveloper.NextTop(), Program.formMain.fontParagraph, Color.White, ClientControl.Width);
             txtAddInfo.Text = "Игра создается при поддержке проекта \"Возрождение\":"
                 + "\n\r \n\r \n\rОтдельная благодарность: Владиславу Франёву, участникам Discord-сервера: Феркасс, Герцог Тьмы, Ice_Cube."
-                + "\n\rПомочь проекту автобаттлера можно своими предложениями (в Discord), участием в тестировании и распространении игры.";
+                + "\n\rПомочь проекту автобаттлера можно своими предложениями (в Discord), участием в тестировании и распространении информации об игре.";
             txtAddInfo.StringFormat.Alignment = StringAlignment.Near;
             txtAddInfo.Height = txtAddInfo.MinHeigth();
 
-            linkRebirdh = new VCLink(txtAddInfo, 0, 28, "Проект \"Возрождение\" во ВК", "https://vk.com/majesty_2_vozrozhdeniye");
+            linkRebirdh = new VCLink(txtAddInfo, 0, 28, "Проект \"Возрождение\" в ВК", "https://vk.com/majesty_2_vozrozhdeniye");
             linkDiscord = new VCLink(txtAddInfo, linkRebirdh.NextLeft() + FormMain.Config.GridSize, linkRebirdh.ShiftY, "Приглашение в Discord", "https://discord.com/invite/3R4PDsR");
 
             btnCheckUpdates = new VCButton(ClientControl, 0, txtAddInfo.NextTop(), "Проверить обновление");
