@@ -11,6 +11,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         private VCBitmap bmpMenu;
         private VCButton btnBackToGame;
+        private VCButton btnNewGame;
         private VCButton btnSettings;
         private VCButton btnExitToMainMenu;
         private VCButton btnExitToWindows;
@@ -25,6 +26,10 @@ namespace Fantasy_Kingdoms_Battle
             btnBackToGame.Width = Width - 80 - 80;
             btnBackToGame.Click += BtnBackToGame_Click;
 
+            btnNewGame = new VCButton(bmpMenu, 80, btnBackToGame.NextTop(), "Новая игра");
+            btnNewGame.Width = Width - 80 - 80;
+            btnNewGame.Click += BtnNewGame_Click;
+
             btnExitToWindows = new VCButton(bmpMenu, 80, bmpMenu.Height - 96, "Выход в Windows");
             btnExitToWindows.Width = Width - 80 - 80;
             btnExitToWindows.Click += BtnExitToWindows_Click;
@@ -34,6 +39,11 @@ namespace Fantasy_Kingdoms_Battle
             btnSettings.Click += BtnSettings_Click;
 
             CancelButton = btnBackToGame;
+        }
+
+        private void BtnNewGame_Click(object sender, EventArgs e)
+        {
+            
         }
 
         private void BtnSettings_Click(object sender, EventArgs e)
