@@ -208,6 +208,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly Bitmap bmpBandButtonDisabled;
         internal readonly Bitmap bmpBandButtonPressed;
         internal readonly Bitmap bmpBandStateCreature;
+        internal readonly Bitmap bmpBandQuest;
         internal readonly Bitmap bmpMenuInGame;
         internal readonly Bitmap bmpMainMenu;
         internal readonly M2Font fontSmall;
@@ -416,6 +417,7 @@ namespace Fantasy_Kingdoms_Battle
                 bmpBandButtonDisabled = LoadBitmap("ButtonDisabled.png");
                 bmpBandButtonPressed = LoadBitmap("ButtonPressed.png");
                 bmpBandStateCreature = LoadBitmap("BandStateCreature.png");
+                bmpBandQuest = LoadBitmap("BandQuest.png");
                 bmpMenuInGame = LoadBitmap("MenuInGame.png");
                 bmpMainMenu = LoadBitmap("MenuMain.png");
 
