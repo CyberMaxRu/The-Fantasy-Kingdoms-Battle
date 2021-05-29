@@ -196,7 +196,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if ((Building.Building.TrainedHero != null) && (Building.Level > 0) && (Building.Heroes.Count > 0))
             {
-                btnHeroes.Cost = Building.Heroes.Count.ToString();
+                btnHeroes.Cost = Building.Heroes.Count.ToString() +"/" + Building.MaxHeroes();
                 btnHeroes.ImageIndex = Program.formMain.TreatImageIndex(Building.Building.TrainedHero.ImageIndex, Building.Player);
                 //btnHeroes.ImageIndex = GuiUtils.GetImageIndexWithGray(btnHeroes.ImageList, Building.Building.TrainedHero.ImageIndex, true);
             }
