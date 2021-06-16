@@ -76,8 +76,8 @@ namespace Fantasy_Kingdoms_Battle
 
         private readonly VCBitmap bmpPreparedToolbar;
         private readonly VCToolLabel labelDay;
-        private readonly VCToolLabel labelGreatness;
         private readonly VCToolLabel labelGold;
+        private readonly VCToolLabel labelGreatness;
         private readonly VCLabelM2 labelNamePlayer;
 
         private readonly VCIconButton btnEndTurn;
@@ -501,12 +501,12 @@ namespace Fantasy_Kingdoms_Battle
                 labelDay.Click += LabelDay_Click;
                 labelDay.ShowHint += LabelDay_ShowHint;
                 labelDay.Width = 64;
-                labelGreatness = new VCToolLabel(MainControl, labelDay.NextLeft(), labelDay.ShiftY, "", GUI_16_GREATNESS);
-                labelGreatness.ShowHint += LabelGreatness_ShowHint;
-                labelGreatness.Width = 112;
-                labelGold = new VCToolLabel(MainControl, labelGreatness.NextLeft(), labelDay.ShiftY, "", GUI_16_INCOME);
+                labelGold = new VCToolLabel(MainControl, labelDay.NextLeft(), labelDay.ShiftY, "", GUI_16_INCOME);
                 labelGold.ShowHint += LabelGold_ShowHint;
                 labelGold.Width = 168;
+                labelGreatness = new VCToolLabel(MainControl, labelGold.NextLeft(), labelDay.ShiftY, "", GUI_16_GREATNESS);
+                labelGreatness.ShowHint += LabelGreatness_ShowHint;
+                labelGreatness.Width = 112;
 
                 labelNamePlayer = new VCLabelM2(bmpPreparedToolbar, 0, 0, fontMedCaptionC, Color.White, fontMedCaptionC.MaxHeightSymbol, "");
                 labelNamePlayer.StringFormat.LineAlignment = StringAlignment.Center;
