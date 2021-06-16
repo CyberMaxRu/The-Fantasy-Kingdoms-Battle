@@ -227,7 +227,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int PlayerIndex { get; }
         internal int PositionInLobby { get; set; }
         internal int DurabilityCastle { get; set; }
-        internal int LevelGreatness { get; }// Величие
+        internal int LevelGreatness { get; }// Уровень величия
         internal int PointGreatness { get; }// Очков величия
         internal int PointGreatnessForNextLevel { get; }// Очков величия до следующего уровня
         internal int LastBattleDamageToCastle { get; set; }
