@@ -159,6 +159,16 @@ namespace Fantasy_Kingdoms_Battle
             return Level < Building.MaxLevel ? Building.Levels[Level + 1].Income : 0;
         }
 
+        internal int GreatnessPerDay()
+        {
+            return Level > 0 ? Building.Levels[Level].GreatnessPerDay : 0;
+        }
+
+        internal int GreatnessPerDayNextLevel()
+        {
+            return Level < Building.MaxLevel ? Building.Levels[Level + 1].GreatnessPerDay : 0;
+        }
+
         internal PlayerHero HireHero()
         {
             Debug.Assert(Heroes.Count < MaxHeroes());

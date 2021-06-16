@@ -15,8 +15,10 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCIconButton btnHeroes;
         private readonly VCIconButton btnBuyOrUpgrade;
         private readonly VCIconButton btnHireHero;
+        private readonly VisualControl panelIncomeAndGreatness;
         private readonly VCLabelValue lblIncome;
-        
+        private readonly VCLabelValue lblGreatness;
+
         public PanelConstruction(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
             btnBuyOrUpgrade = new VCIconButton(this, imgMapObject.NextLeft(), imgMapObject.ShiftY, Program.formMain.ilGui, FormMain.GUI_BUILD);
@@ -36,9 +38,19 @@ namespace Fantasy_Kingdoms_Battle
 
             //if (TypeConstruction is TypeEconomicConstruction)
             //{
-                lblIncome = new VCLabelValue(this, imgMapObject.NextLeft() - (FormMain.Config.GridSize * 4), imgMapObject.NextTop(), Color.Green);
-                lblIncome.ImageIndex = FormMain.GUI_16_INCOME;
-                lblIncome.StringFormat.Alignment = StringAlignment.Near;
+            panelIncomeAndGreatness = new VisualControl(this, imgMapObject.NextLeft() - (FormMain.Config.GridSize * 4), imgMapObject.NextTop());
+            panelIncomeAndGreatness.ShowBorder = true;
+
+            lblIncome = new VCLabelValue(panelIncomeAndGreatness, FormMain.Config.GridSizeHalf, FormMain.Config.GridSize, Color.Green);
+            lblIncome.ImageIndex = FormMain.GUI_16_INCOME;
+            lblIncome.StringFormat.Alignment = StringAlignment.Near;
+
+            lblGreatness = new VCLabelValue(panelIncomeAndGreatness, lblIncome.ShiftX, lblIncome.NextTop() - FormMain.Config.GridSizeHalf, Color.Green);
+            lblGreatness.ImageIndex = FormMain.GUI_16_GREATNESS;
+            lblGreatness.StringFormat.Alignment = StringAlignment.Near;
+            lblGreatness.Color = FormMain.Config.HintIncome;
+
+            panelIncomeAndGreatness.Height = btnHeroes.Height;
             //}
 
             Height = btnHeroes.NextTop();
@@ -132,7 +144,9 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void ArrangeControls()
         {
-            lblIncome.Width = Width - lblIncome.ShiftX - FormMain.Config.GridSize;
+            panelIncomeAndGreatness.Width = Width - panelIncomeAndGreatness.ShiftX - FormMain.Config.GridSize;
+            lblIncome.Width = panelIncomeAndGreatness.Width - FormMain.Config.GridSize;
+            lblGreatness.Width = lblIncome.Width;
 
             base.ArrangeControls();
         }
@@ -154,6 +168,13 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
                 lblIncome.Visible = false;
+
+            int greatness = Building.Level > 0 ? Building.GreatnessPerDay() : Building.GreatnessPerDayNextLevel();
+            lblGreatness.Visible = greatness > 0;
+            if (lblGreatness.Visible)
+            {
+                lblGreatness.Text = $"+{greatness}";
+            }
 
             if (Building.Level > 0)
             {
@@ -196,7 +217,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if ((Building.Building.TrainedHero != null) && (Building.Level > 0) && (Building.Heroes.Count > 0))
             {
-                btnHeroes.Cost = Building.Heroes.Count.ToString() +"/" + Building.MaxHeroes();
+                btnHeroes.Cost = Building.Heroes.Count.ToString() + "/" + Building.MaxHeroes();
                 btnHeroes.ImageIndex = Program.formMain.TreatImageIndex(Building.Building.TrainedHero.ImageIndex, Building.Player);
                 //btnHeroes.ImageIndex = GuiUtils.GetImageIndexWithGray(btnHeroes.ImageList, Building.Building.TrainedHero.ImageIndex, true);
             }
