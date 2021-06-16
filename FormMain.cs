@@ -80,8 +80,6 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCToolLabel labelGold;
         private readonly VCLabelM2 labelNamePlayer;
 
-        private readonly VCIconButton btnPreferences;
-
         private readonly VCIconButton btnEndTurn;
 
         private readonly VisualControl panelLairWithFlags;
@@ -488,8 +486,6 @@ namespace Fantasy_Kingdoms_Battle
                 panelPlayers.ApplyMaxSize();
 
                 // Кнопки в правом верхнем углу
-                btnPreferences = CreateButton(TopControl, ilGui, GUI_INVENTORY, 0, Config.GridSize, BtnPreferences_Click, BtnPreferences_MouseHover);
-
                 TopControl.ApplyMaxSize();
 
                 // Тулбар. Его располагаем прямо на слое, чтобы MainControl рисовал поверх него
@@ -516,8 +512,8 @@ namespace Fantasy_Kingdoms_Battle
                 labelNamePlayer.StringFormat.LineAlignment = StringAlignment.Center;
                 labelNamePlayer.Width = 16;
 
-                btnEndTurn = CreateButton(MainControl, ilGui, GUI_HOURGLASS, 0, bmpToolbar.Height + Config.GridSize, BtnEndTurn_Click, BtnEndTurn_MouseHover);
-                panelLairWithFlags = new VisualControl(MainControl, 0, btnEndTurn.ShiftY);
+                btnEndTurn = CreateButton(TopControl, ilGui, GUI_HOURGLASS, 0, Config.GridSize, BtnEndTurn_Click, BtnEndTurn_MouseHover);
+                panelLairWithFlags = new VisualControl(MainControl, 0, bmpToolbar.Height + Config.GridSize);
                 panelLairWithFlags.Width = Program.formMain.bmpBorderForIcon.Width;
                 panelLairWithFlags.Height = Program.formMain.bmpBorderForIcon.Height;
 
@@ -533,7 +529,7 @@ namespace Fantasy_Kingdoms_Battle
                 vcDebugInfo.ArrangeControls();
 
                 // Панели информации об объектахs
-                panelHeroInfo = new PanelHeroInfo(MainControl, Config.GridSize, btnEndTurn.NextTop());
+                panelHeroInfo = new PanelHeroInfo(MainControl, Config.GridSize, panelLairWithFlags.NextTop());
                 panelHeroInfo.ApplyMaxSize();
                 panelBuildingInfo = new PanelBuildingInfo(MainControl, panelHeroInfo.ShiftX, panelHeroInfo.ShiftY);
                 panelBuildingInfo.ApplyMaxSize();
@@ -550,12 +546,12 @@ namespace Fantasy_Kingdoms_Battle
 
                 // Панель со всеми героями
                 panelCombatHeroes = new PanelWithPanelEntity(5, false, 8, 4);
-                panelCombatHeroes.ShiftY = btnEndTurn.NextTop();
+                panelCombatHeroes.ShiftY = panelLairWithFlags.NextTop();
                 panelCombatHeroes.Click += PanelCombatHeroes_Click;
                 MainControl.AddControl(panelCombatHeroes);
 
                 // Страницы игры
-                pageGuilds = new VCFormPage(MainControl, 0, btnEndTurn.ShiftY, pages, ilGui, GUI_GUILDS, "Гильдии и военные сооружения", BtnPage_Click);
+                pageGuilds = new VCFormPage(MainControl, 0, panelLairWithFlags.ShiftY, pages, ilGui, GUI_GUILDS, "Гильдии и военные сооружения", BtnPage_Click);
                 pageGuilds.ShowHint += PageGuilds_ShowHint;
                 pageBuildings = new VCFormPage(MainControl, 0, pageGuilds.ShiftY, pages, ilGui, GUI_ECONOMY, "Экономические строения", BtnPage_Click);
                 pageBuildings.ShowHint += PageBuildings_ShowHint;
@@ -640,8 +636,7 @@ namespace Fantasy_Kingdoms_Battle
                 panelMonsterInfo.Height = panelBuildingInfo.Height;
                 panelEmptyInfo.Height = panelBuildingInfo.Height;
 
-                btnPreferences.ShiftX = MainControl.Width - btnPreferences.Width - Config.GridSize;
-                btnEndTurn.ShiftX = MainControl.Width - btnEndTurn.Width - Config.GridSize;
+                btnEndTurn.ShiftX = btnEndTurn.Parent.Width - btnEndTurn.Width - Config.GridSize;
 
                 //pageGuilds.ShiftX + maxWidthPages + Config.GridSize;
 
@@ -772,13 +767,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             ShowHintForToolButton(labelDay, "День игры", "День игры: " + lobby.Turn.ToString());
         }
-
-
-        private void BtnPreferences_MouseHover(object sender, EventArgs e)
-        {
-            ShowHintForToolButton(btnPreferences, "Настройки", "Настройки игры");
-        }
-
+        
         internal bool CheckForNewVersion()
         {
             if (MainConfig.CheckForNewVersion())
@@ -967,11 +956,6 @@ namespace Fantasy_Kingdoms_Battle
 
                 ApplyFullScreen(false);
             }
-        }
-
-        private void BtnPreferences_Click(object sender, EventArgs e)
-        {
-            ShowWindowPreferences();
         }
 
         internal VisualLayer AddLayer(VisualControl vc)
@@ -1857,7 +1841,7 @@ namespace Fantasy_Kingdoms_Battle
                 n++;
             }
 
-            panelLairWithFlags.ShiftX = btnEndTurn.ShiftX - left - Config.GridSize;
+            panelLairWithFlags.ShiftX = MainControl.Width - left;
             panelLairWithFlags.Width = left;
             MainControl.ArrangeControl(panelLairWithFlags);
 
