@@ -18,12 +18,15 @@
         <Pos>1</Pos>
         <Cost>0</Cost>
         <Income>50</Income>
+        <GreatnessPerDay>5</GreatnessPerDay>
         <MaxHeroes>10</MaxHeroes>        
       </Level>
       <Level>
         <Pos>2</Pos>
         <Cost>2000</Cost>
         <Income>125</Income>
+        <GreatnessByConstruction>250</GreatnessByConstruction>
+        <GreatnessPerDay>10</GreatnessPerDay>
         <MaxHeroes>10</MaxHeroes>
         <Requirements>
           <Requirement>
@@ -40,6 +43,8 @@
         <Pos>3</Pos>
         <Cost>4000</Cost>
         <Income>275</Income>
+        <GreatnessByConstruction>500</GreatnessByConstruction>
+        <GreatnessPerDay>15</GreatnessPerDay>
         <MaxHeroes>10</MaxHeroes>
         <Requirements>
           <Requirement>
