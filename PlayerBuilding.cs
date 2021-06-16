@@ -29,9 +29,6 @@ namespace Fantasy_Kingdoms_Battle
                                 Researches.Add(new PlayerResearch(this, b.Researches[z, y, x]));
             }
 
-            if (Building is TypeGuild)
-                Warehouse.Add(new PlayerItem(FormMain.Config.FindItem("PotionOfHealth"), 3, true));
-
             // Восстановить
             //if (Building.HasTreasury)
             //    Gold = Building.GoldByConstruction;
