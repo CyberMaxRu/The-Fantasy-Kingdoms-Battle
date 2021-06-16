@@ -70,7 +70,6 @@ namespace Fantasy_Kingdoms_Battle
         private Point mousePos;
         private VisualControl controlWithHint;
         private VisualControl controlClicked;
-        private bool hintShowed = false;
 
         private readonly VisualControl panelPlayers;// Панель, на которой находятся панели игроков лобби
 
@@ -1670,7 +1669,6 @@ namespace Fantasy_Kingdoms_Battle
                 controlClicked = null;
             }
 
-            hintShowed = false;
             formHint.HideHint();
 
             ShowFrame(false);
@@ -1778,7 +1776,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 timerHover.Stop();
                 controlWithHint.DoShowHint();
-                hintShowed = true;
+                
                 if (formHint.ExistHint)
                 {
                     formHint.Visible = true;
