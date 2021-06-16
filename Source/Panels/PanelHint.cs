@@ -29,6 +29,8 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly VCSeparator lblSeparateRequirement;
         internal readonly List<VCTextM2> listRequirements = new List<VCTextM2>();
         internal readonly VCLabelValue lblIncome;
+        internal readonly VCLabelValue lblGreatnessAdd;
+        internal readonly VCLabelValue lblGreatnessPerDay;
         internal readonly VCLabelValue lblGold;
         internal readonly VCLabelM2 lblDamageMelee;
         internal readonly VCLabelM2 lblDamageArcher;
@@ -67,7 +69,15 @@ namespace Fantasy_Kingdoms_Battle
             lblIncome.ImageIndex = FormMain.GUI_16_INCOME;
             lblIncome.Width = widthControl;
 
-            lblSeparateRequirement = new VCSeparator(this, FormMain.Config.GridSize, lblIncome.NextTop());
+            lblGreatnessAdd = new VCLabelValue(this, FormMain.Config.GridSize, lblIncome.NextTop(), FormMain.Config.HintIncome);
+            lblGreatnessAdd.ImageIndex = FormMain.GUI_16_GREATNESS;
+            lblGreatnessAdd.Width = widthControl;
+
+            lblGreatnessPerDay = new VCLabelValue(this, FormMain.Config.GridSize, lblGreatnessAdd.NextTop(), FormMain.Config.HintIncome);
+            lblGreatnessPerDay.ImageIndex = FormMain.GUI_16_GREATNESS;
+            lblGreatnessPerDay.Width = widthControl;
+
+            lblSeparateRequirement = new VCSeparator(this, FormMain.Config.GridSize, lblGreatnessPerDay.NextTop());
             lblSeparateRequirement.Width = widthControl;
             lblGold = new VCLabelValue(this, FormMain.Config.GridSize, lblSeparateRequirement.NextTop(), FormMain.Config.HintIncome);
             lblGold.ImageIndex = FormMain.GUI_16_GOLD;
@@ -168,6 +178,8 @@ namespace Fantasy_Kingdoms_Battle
             lblAction.Visible = false;
             lblDescription.Visible = false;
             lblIncome.Visible = false;
+            lblGreatnessAdd.Visible = false;
+            lblGreatnessPerDay.Visible = false;
 
             foreach (VCTextM2 l in listRequirements)
                 l.Dispose();
@@ -242,6 +254,30 @@ namespace Fantasy_Kingdoms_Battle
                 lblIncome.Visible = true;
 
                 nextTop = lblIncome.NextTop();
+            }
+        }
+
+        internal void AddStep3Greatness(int addGreatness, int greatnessPerDay)
+        {
+            Debug.Assert(addGreatness >= 0);
+            Debug.Assert(greatnessPerDay >= 0);
+
+            if (addGreatness > 0)
+            {
+                lblGreatnessAdd.ShiftY = nextTop;
+                lblGreatnessAdd.Text = addGreatness.ToString();
+                lblGreatnessAdd.Visible = true;
+
+                nextTop = lblGreatnessAdd.NextTop();
+            }
+
+            if (greatnessPerDay > 0)
+            {
+                lblGreatnessPerDay.ShiftY = nextTop;
+                lblGreatnessPerDay.Text = $"+{greatnessPerDay}";
+                lblGreatnessPerDay.Visible = true;
+
+                nextTop = lblGreatnessPerDay.NextTop();
             }
         }
 

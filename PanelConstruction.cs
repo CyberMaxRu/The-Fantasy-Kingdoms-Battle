@@ -92,6 +92,7 @@ namespace Fantasy_Kingdoms_Battle
                     Program.formMain.formHint.AddStep1Header(Building.Building.Name, Building.Level == 0 ? "Уровень 1" : (Building.CanLevelUp() == true) ? "Улучшить строение" : "", Building.Level == 0 ? Building.Building.Description : "");
 
                 Program.formMain.formHint.AddStep2Income(Building.IncomeNextLevel());
+                Program.formMain.formHint.AddStep3Greatness(Building.GreatnessAddNextLevel(), Building.GreatnessPerDayNextLevel());
                 Program.formMain.formHint.AddStep3Requirement(Building.GetTextRequirements());
                 Program.formMain.formHint.AddStep4Gold(Building.CostBuyOrUpgrade(), Building.Player.Gold >= Building.CostBuyOrUpgrade());
             }
