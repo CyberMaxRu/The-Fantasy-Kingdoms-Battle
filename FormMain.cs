@@ -85,6 +85,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly List<VCButtonTargetLair> listBtnTargetLair = new List<VCButtonTargetLair>();
 
         private readonly VCBitmap bitmapMenu;
+        private readonly VCLabelM2 labelMenuNameObject;
 
         private PlayerObject selectedPlayerObject;
 
@@ -599,6 +600,12 @@ namespace Fantasy_Kingdoms_Battle
                 for (int y = 0; y < PANEL_MENU_CELLS.Height; y++)
                     for (int x = 0; x < PANEL_MENU_CELLS.Width; x++)
                         CellsMenu[y, x] = new VCMenuCell(bitmapMenu, 77 + (x * (ilItems.Size + DISTANCE_BETWEEN_CELLS)), 95 + (y * (ilItems.Size + DISTANCE_BETWEEN_CELLS)), ilItems);
+
+                labelMenuNameObject = new VCLabelM2(bitmapMenu, 144, 67, fontSmall, Color.White, 14, "");
+                labelMenuNameObject.Width = 131;
+                labelMenuNameObject.TruncLongText = true;
+                labelMenuNameObject.StringFormat.Alignment = StringAlignment.Near;
+                labelMenuNameObject.StringFormat.LineAlignment = StringAlignment.Near;
 
                 //
                 Debug.Assert(panelBuildingInfo.Height > 0);
@@ -1329,6 +1336,9 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Debug.Assert(pb.Building != null);
 
+                labelMenuNameObject.Visible = true;
+                labelMenuNameObject.Text = pb.Building.Name;
+
                 ClearMenu();
 
                 if (pb.Building.Researches != null)
@@ -1342,6 +1352,7 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
             {
+                labelMenuNameObject.Visible = false;
                 ClearMenu();
             }
 
