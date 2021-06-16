@@ -45,6 +45,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int TopMargin { get; set; }
         internal StringFormat StringFormat { get; set; }
         internal Point ShiftImage { get; set; } = new Point(0, 0);
+        internal bool TruncLongText { get; set; } = false;
 
         internal override void Draw(Graphics g)
         {
@@ -61,9 +62,29 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     if ((preparedText != Text) || (preparedColor != Color))
                     {
+                        if (TruncLongText && (Font.WidthText(Text) > Width))
+                        {
+                            int restSymbols = Text.Length - 1;
+                            string truncedText;
+                            while (restSymbols > 0)
+                            {
+                                truncedText = Text.Substring(0, restSymbols) + "...";
+                                if (Font.WidthText(truncedText) <= Width)
+                                {
+                                    preparedText = truncedText;
+                                    break;
+                                }
+
+                                restSymbols--;
+                            }
+
+                            Debug.Assert(restSymbols > 0);
+                        }
+                        else
+                            preparedText = Text;
+
                         bmpPreparedText?.Dispose();
-                        bmpPreparedText = Font.GetBitmap(Text, Color);
-                        preparedText = Text;
+                        bmpPreparedText = Font.GetBitmap(preparedText, Color);
                         preparedColor = Color;
                     }
                 }
@@ -106,7 +127,7 @@ namespace Fantasy_Kingdoms_Battle
                     }
                     //Debug.Assert(y >= Top);
 
-                    Debug.Assert(bmpPreparedText.Width + LeftMargin <= Width, $"Текст {Text} занимает {bmpPreparedText.Width} пикселей (LeftMargin {LeftMargin}), не вмещаясь в {Width}.");
+                    Debug.Assert(bmpPreparedText.Width + LeftMargin <= Width, $"Текст {preparedText} занимает {bmpPreparedText.Width} пикселей (LeftMargin {LeftMargin}), не вмещаясь в {Width}.");
 
                     g.DrawImageUnscaled(bmpPreparedText, x + LeftMargin, y + TopMargin);
                 }
