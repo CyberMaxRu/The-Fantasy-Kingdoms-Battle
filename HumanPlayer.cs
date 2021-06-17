@@ -8,16 +8,22 @@ using System.Diagnostics;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    // Класс игрока-компьютера
-    internal sealed class ComputerPlayer : Player
+    // Класс игрока-человека
+    internal sealed class HumanPlayer: Player
     {
-        public ComputerPlayer(XmlNode n) : base(n, TypePlayer.Computer)
+        public HumanPlayer(XmlNode n) : base(n, TypePlayer.Human)
         {
+            foreach (HumanPlayer hp in FormMain.Config.HumanPlayers)
+            {
+                Debug.Assert(ID != hp.ID);
+                Debug.Assert(Name != hp.Name);
+                Debug.Assert(ImageIndex != hp.ImageIndex);
+            }
+
             foreach (ComputerPlayer cp in FormMain.Config.ComputerPlayers)
             {
                 Debug.Assert(ID != cp.ID);
                 Debug.Assert(Name != cp.Name);
-                Debug.Assert(ImageIndex != cp.ImageIndex);
             }
         }
     }

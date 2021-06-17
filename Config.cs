@@ -40,6 +40,16 @@ namespace Fantasy_Kingdoms_Battle
                 ComputerPlayers.Add(new ComputerPlayer(n));
             }
 
+            // Загрузка игроков-людей
+            if (File.Exists(pathResources + "Players.xml"))
+            {
+                xmlDoc = CreateXmlDocument("Players.xml");
+                foreach (XmlNode n in xmlDoc.SelectNodes("/Players/Player"))
+                {
+                    HumanPlayers.Add(new HumanPlayer(n));
+                }
+            }
+
             // Загрузка конфигураций лобби
             xmlDoc = CreateXmlDocument("Config\\TypeLobby.xml");
             foreach (XmlNode n in xmlDoc.SelectNodes("/TypeLobbies/TypeLobby"))
@@ -216,6 +226,7 @@ namespace Fantasy_Kingdoms_Battle
         internal string PathResources { get; }
         internal List<TypeLobby> TypeLobbies { get; } = new List<TypeLobby>();
         internal List<ComputerPlayer> ComputerPlayers { get; } = new List<ComputerPlayer>();
+        internal List<HumanPlayer> HumanPlayers { get; } = new List<HumanPlayer>();
         internal List<TypeMonster> TypeMonsters { get; } = new List<TypeMonster>();
 
         // Сооружения, постройки, логова

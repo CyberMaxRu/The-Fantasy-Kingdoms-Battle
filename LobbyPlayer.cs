@@ -15,6 +15,7 @@ namespace Fantasy_Kingdoms_Battle
         private ResultBattle resultLastBattle;
         private PlayerBuilding Castle;
 
+        // TODO Вынести константы в конфигурацию игры
         internal const int MAX_FLAG_EXCLUSIVE = 1;// Максимальное число флагов с максимальным
         internal const int MAX_FLAG_HIGH = 2;// Максимальное число флагов с высоким приоритетом
         internal const int MAX_FLAG_COUNT = 5;// Максимальное число активных флагов
