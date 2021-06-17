@@ -68,6 +68,7 @@
     <Compile Include="BitmapBorder.cs" />
     <Compile Include="BitmapList.cs" />
     <Compile Include="CustomCursor.cs" />
+    <Compile Include="LobbyPlayer.cs" />
     <Compile Include="M2Font.cs" />
     <Compile Include="PanelCreatureInfo.cs" />
     <Compile Include="PanelMonsterInfo.cs" />
@@ -166,7 +167,6 @@
     <Compile Include="PanelConstruction.cs" />
     <Compile Include="PanelHeroInfo.cs" />
     <Compile Include="HeroParameters.cs" />
-    <Compile Include="Player.cs" />
     <Compile Include="PlayerBuilding.cs" />
     <Compile Include="PlayerHero.cs" />
     <Compile Include="Program.cs" />

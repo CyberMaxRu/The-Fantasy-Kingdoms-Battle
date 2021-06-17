@@ -9,8 +9,8 @@ using System.Windows.Forms;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    // Класс игрока
-    internal sealed class Player : BattleParticipant, ICell
+    // Класс игрока лобби
+    internal sealed class LobbyPlayer : BattleParticipant, ICell
     {
         private ResultBattle resultLastBattle;
         private PlayerBuilding Castle;
@@ -19,7 +19,7 @@ namespace Fantasy_Kingdoms_Battle
         internal const int MAX_FLAG_HIGH = 2;// Максимальное число флагов с высоким приоритетом
         internal const int MAX_FLAG_COUNT = 5;// Максимальное число активных флагов
 
-        public Player(Lobby lobby, int index, string name, TypePlayer typePlayer) : base()
+        public LobbyPlayer(Lobby lobby, int index, string name, TypePlayer typePlayer) : base()
         {
             Lobby = lobby;
             Name = name;
@@ -304,8 +304,8 @@ namespace Fantasy_Kingdoms_Battle
 
         // Визуальные контролы
         internal PanelPlayer Panel { get; set; }
-        private Player opponent;// Убрать это
-        internal Player Opponent { get { return opponent; } set { if (value != this) opponent = value; else new Exception("Нельзя указать оппонентов самого себя."); } }
+        private LobbyPlayer opponent;// Убрать это
+        internal LobbyPlayer Opponent { get { return opponent; } set { if (value != this) opponent = value; else new Exception("Нельзя указать оппонентов самого себя."); } }
 
         internal PlayerBuilding GetPlayerBuilding(TypeConstruction b)
         {

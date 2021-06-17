@@ -177,7 +177,7 @@ namespace Fantasy_Kingdoms_Battle
         internal const int MAX_LAIR_LAYERS = 5;
 
         private Lobby lobby;
-        private Player curAppliedPlayer;
+        private LobbyPlayer curAppliedPlayer;
 
         internal Lobby CurrentLobby { get { return lobby; } }
 
@@ -476,7 +476,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 PanelPlayer pp;
                 int nextLeftPanelPlayer = 0;
-                foreach (Player p in lobby.Players)
+                foreach (LobbyPlayer p in lobby.Players)
                 {
                     pp = new PanelPlayer(panelPlayers, nextLeftPanelPlayer);
                     // !!! Эту привязку переместить в StartNewLobby()
@@ -1317,7 +1317,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void DrawLobby()
         {
-            foreach (Player p in lobby.Players)
+            foreach (LobbyPlayer p in lobby.Players)
             {
                 p.Panel.ShiftY = (p.PositionInLobby - 1) * (p.Panel.Height + Config.GridSize);
             }
@@ -1384,8 +1384,8 @@ namespace Fantasy_Kingdoms_Battle
 
             if (lobby != null)
             {
-                foreach (Player ph1 in lobby.Players)
-                    foreach (Player ph2 in lobby.Players)
+                foreach (LobbyPlayer ph1 in lobby.Players)
+                    foreach (LobbyPlayer ph2 in lobby.Players)
                         if (ph1 != ph2)
                             Debug.Assert(ph1.ImageIndexAvatar != ph2.ImageIndexAvatar);
             }

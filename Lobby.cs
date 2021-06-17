@@ -11,9 +11,9 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal enum StateLobby { Start, TurnHuman, TurnComputer, CalcTurn };
 
-    internal class ComparerPlayerForPosition : IComparer<Player>
+    internal class ComparerPlayerForPosition : IComparer<LobbyPlayer>
     {
-        public int Compare(Player p1, Player p2)
+        public int Compare(LobbyPlayer p1, LobbyPlayer p2)
         {
             // Сначала сравниваем прочность Замка
             if (p1.DurabilityCastle > p2.DurabilityCastle)
@@ -64,14 +64,14 @@ namespace Fantasy_Kingdoms_Battle
             StateLobby = StateLobby.Start;
 
             // Создание игроков
-            Players = new Player[tl.QuantityPlayers];
+            Players = new LobbyPlayer[tl.QuantityPlayers];
             TypePlayer tp;
             string namePlayer;
             for (int i = 0; i < TypeLobby.QuantityPlayers; i++)
             {
                 tp = i == 0 ? TypePlayer.Human : TypePlayer.Computer;
                 namePlayer = tp == TypePlayer.Computer ? "Игрок №" + (i + 1).ToString() : Program.formMain.Settings.NamePlayer;
-                Players[i] = new Player(this, i, namePlayer, tp);
+                Players[i] = new LobbyPlayer(this, i, namePlayer, tp);
             }
 
             SortPlayers();
@@ -88,8 +88,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int ID { get; private set; }
         internal TypeLobby TypeLobby { get; }
-        internal Player[] Players { get; }
-        internal Player CurrentPlayer { get; private set; }
+        internal LobbyPlayer[] Players { get; }
+        internal LobbyPlayer CurrentPlayer { get; private set; }
         internal int Turn { get; private set; }        
         internal List<Battle> Battles { get; } = new List<Battle>();
         internal bool HumanIsWin { get; private set; }
@@ -99,16 +99,16 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(QuantityAlivePlayersIsEven());
 
-            foreach (Player pl in Players)
+            foreach (LobbyPlayer pl in Players)
                 pl.Opponent = null;
 
             // Алгоритм простой - случайным образом подбираем пару
-            List<Player> opponents = new List<Player>();
+            List<LobbyPlayer> opponents = new List<LobbyPlayer>();
             opponents.AddRange(Players.Where(pp => pp.IsLive));
             Debug.Assert(opponents.Count % 2 == 0);
             Random r = new Random();
-            Player p;
-            Player oppo;
+            LobbyPlayer p;
+            LobbyPlayer oppo;
             for (; ; )
             {
                 p = opponents[0];
@@ -184,7 +184,7 @@ namespace Fantasy_Kingdoms_Battle
             CurrentPlayer = null;
 
             int livePlayers = 0;
-            foreach (Player p in Players)
+            foreach (LobbyPlayer p in Players)
             {
                 if (p.IsLive)
                     livePlayers++;
@@ -194,7 +194,7 @@ namespace Fantasy_Kingdoms_Battle
                 MakeOpponents();
             else
             {
-                foreach (Player p in Players)
+                foreach (LobbyPlayer p in Players)
                 {
                     if (p.IsLive)
                     {
@@ -218,13 +218,13 @@ namespace Fantasy_Kingdoms_Battle
             FormBattle formBattle;
             FormProgressBattle formProgressBattle = null;
 
-            foreach (Player p in Players)
+            foreach (LobbyPlayer p in Players)
             {
                 p.BattleCalced = false;
             }
 
             // Бои с монстрами
-            foreach (Player p in Players)
+            foreach (LobbyPlayer p in Players)
             {
                 if (p.IsLive)
                 {
@@ -263,7 +263,7 @@ namespace Fantasy_Kingdoms_Battle
             return;
 
             int livePlayers = 0;
-            foreach (Player p in Players)
+            foreach (LobbyPlayer p in Players)
             {
                 if (p.IsLive)
                     livePlayers++;
@@ -272,10 +272,10 @@ namespace Fantasy_Kingdoms_Battle
             int pairs = (livePlayers / 2) - 1;
             int numberPair = 0;
 
-            foreach (Player p in Players)
+            foreach (LobbyPlayer p in Players)
                 p.BattleCalced = false;
 
-            foreach (Player p in Players)
+            foreach (LobbyPlayer p in Players)
             {
                 if (p.IsLive == true)
                 {
@@ -308,13 +308,13 @@ namespace Fantasy_Kingdoms_Battle
                 formProgressBattle.Dispose();
         }
 
-        private void CalcBattle(Player player1, Player player2, Random r)
+        private void CalcBattle(LobbyPlayer player1, LobbyPlayer player2, Random r)
         {
         }
 
         private void CalcFinalityTurn()
         {
-            foreach (Player p in Players)
+            foreach (LobbyPlayer p in Players)
                 if (p.IsLive)
                     p.CalcFinalityTurn();
         }
@@ -323,7 +323,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             // Делаем расчет итогов дня
             int livePlayers = 0;
-            foreach (Player p in Players)
+            foreach (LobbyPlayer p in Players)
             {
                 if (p.IsLive == true)
                 {
@@ -341,7 +341,7 @@ namespace Fantasy_Kingdoms_Battle
                 // Для этого ищем, кто находился на самом высоком месте и умер в текущий день 
                 if (!QuantityAlivePlayersIsEven())
                 {
-                    foreach (Player p in Players.OrderByDescending(p => p.PositionInLobby))
+                    foreach (LobbyPlayer p in Players.OrderByDescending(p => p.PositionInLobby))
                         if (p.DayOfDie == Turn)
                         {
                             p.MakeAlive();
@@ -356,14 +356,14 @@ namespace Fantasy_Kingdoms_Battle
         internal bool QuantityAlivePlayersIsEven()
         {
             bool evenPlayers = true;
-            foreach (Player p in Players)
+            foreach (LobbyPlayer p in Players)
                 if (p.IsLive)
                     evenPlayers = !evenPlayers;
 
             return evenPlayers;
         }
 
-        internal Battle GetBattle(Player p, int turn)
+        internal Battle GetBattle(LobbyPlayer p, int turn)
         {
             if (turn == 0)
                 return null;
@@ -380,14 +380,14 @@ namespace Fantasy_Kingdoms_Battle
         private void SortPlayers()
         {
             int pos = 1;
-            foreach (Player p in Players.Where(p => (p.IsLive == true) || (p.DayOfDie == Turn)).OrderByDescending(p => p, new ComparerPlayerForPosition()))
+            foreach (LobbyPlayer p in Players.Where(p => (p.IsLive == true) || (p.DayOfDie == Turn)).OrderByDescending(p => p, new ComparerPlayerForPosition()))
             {
                 p.PositionInLobby = pos++;
             }
 
             // Проверяем, что нет ошибки в позициях
             int curPos = 1;
-            foreach (Player p in Players.OrderBy(p => p.PositionInLobby))
+            foreach (LobbyPlayer p in Players.OrderBy(p => p.PositionInLobby))
             {
                 if (p.PositionInLobby != curPos)
                     throw new Exception("Позиция игрока должна быть " + curPos.ToString() + " вместо " + p.PositionInLobby.ToString());

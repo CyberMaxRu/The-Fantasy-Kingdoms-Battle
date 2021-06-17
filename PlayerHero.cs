@@ -27,7 +27,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal PlayerBuilding Building { get; }// Здание, которому принадлежит герой
-        internal Player Player => Building.Player;// Игрок, которому принадлежит герой
+        internal LobbyPlayer Player => Building.Player;// Игрок, которому принадлежит герой
         internal TypeHero TypeHero { get; } // Класс героя
         internal int Gold { get; private set; }// Количество золота у героя
 
