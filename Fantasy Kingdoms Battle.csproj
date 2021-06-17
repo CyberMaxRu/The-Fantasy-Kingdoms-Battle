@@ -72,6 +72,7 @@
     <Compile Include="PanelCreatureInfo.cs" />
     <Compile Include="PanelMonsterInfo.cs" />
     <Compile Include="PlayerObject.cs" />
+    <Compile Include="ComputerPlayer.cs" />
     <Compile Include="SecondarySkill.cs" />
     <Compile Include="Source\Forms\CustomWindow.cs" />
     <Compile Include="Source\Forms\FormConfirmExit.cs" />
@@ -219,6 +220,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FKB.ico" />
+    <Content Include="Resources\Config\ComputerPlayers.xml" />
     <Content Include="Resources\Config\SecondarySkills.xml" />
     <Content Include="Resources\Config\Specializations.xml" />
     <Content Include="Resources\Config\StateCreature.xml" />

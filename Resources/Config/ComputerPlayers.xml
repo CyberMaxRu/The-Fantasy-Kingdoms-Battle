@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ComputerPlayers>
+  <ComputerPlayer>
+    <ID>PlayerWarrior</ID>
+    <Name>Воин</Name>
+    <Description>-</Description>
+    <ImageIndex>1</ImageIndex>
+  </ComputerPlayer>
+  <ComputerPlayer>
+    <ID>PlayerHunter</ID>
+    <Name>Рейнджер</Name>
+    <Description>-</Description>
+    <ImageIndex>2</ImageIndex>
+  </ComputerPlayer>
+  <ComputerPlayer>
+    <ID>PlayerCleric</ID>
+    <Name>Послушница</Name>
+    <Description>-</Description>
+    <ImageIndex>3</ImageIndex>
+  </ComputerPlayer>
+  <ComputerPlayer>
+    <ID>PlayerDwarf</ID>
+    <Name>Гном</Name>
+    <Description>-</Description>
+    <ImageIndex>4</ImageIndex>
+  </ComputerPlayer>
+  <ComputerPlayer>
+    <ID>PlayerElf</ID>
+    <Name>Эльфийка</Name>
+    <Description>-</Description>
+    <ImageIndex>5</ImageIndex>
+  </ComputerPlayer>
+  <ComputerPlayer>
+    <ID>PlayerMage</ID>
+    <Name>Маг</Name>
+    <Description>-</Description>
+    <ImageIndex>6</ImageIndex>
+  </ComputerPlayer>
+  <ComputerPlayer>
+    <ID>PlayerRogue</ID>
+    <Name>Разбойница</Name>
+    <Description>-</Description>
+    <ImageIndex>7</ImageIndex>
+  </ComputerPlayer>
+  <ComputerPlayer>
+    <ID>PlayerDarkPriest</ID>
+    <Name>Жрица Крипты</Name>
+    <Description>-</Description>
+    <ImageIndex>8</ImageIndex>
+  </ComputerPlayer>
+  <ComputerPlayer>
+    <ID>PlayerPriest</ID>
+    <Name>Жрица Агрелы</Name>
+    <Description>-</Description>
+    <ImageIndex>9</ImageIndex>
+  </ComputerPlayer>
+  <ComputerPlayer>
+    <ID>PlayerPaladin</ID>
+    <Name>Паладин</Name>
+    <Description>-</Description>
+    <ImageIndex>10</ImageIndex>
+  </ComputerPlayer>
+  <ComputerPlayer>
+    <ID>PlayerBladeMaster</ID>
+    <Name>Мастер меча</Name>
+    <Description>-</Description>
+    <ImageIndex>11</ImageIndex>
+  </ComputerPlayer>
+  <ComputerPlayer>
+    <ID>PlayerBeastMaster</ID>
+    <Name>Зверолов</Name>
+    <Description>-</Description>
+    <ImageIndex>12</ImageIndex>
+  </ComputerPlayer>
+  <ComputerPlayer>
+    <ID>PlayerMarksman</ID>
+    <Name>Лучник Хелии</Name>
+    <Description>-</Description>
+    <ImageIndex>13</ImageIndex>
+  </ComputerPlayer>
+  <ComputerPlayer>
+    <ID>PlayerIceMage</ID>
+    <Name>Маг Холода</Name>
+    <Description>-</Description>
+    <ImageIndex>14</ImageIndex>
+  </ComputerPlayer>
+  <ComputerPlayer>
+    <ID>PlayerDeathKnight</ID>
+    <Name>Ассасин</Name>
+    <Description>-</Description>
+    <ImageIndex>15</ImageIndex>
+  </ComputerPlayer>
+  <ComputerPlayer>
+    <ID>PlayerFireMage</ID>
+    <Name>Маг Огня</Name>
+    <Description>-</Description>
+    <ImageIndex>16</ImageIndex>
+  </ComputerPlayer>
+</ComputerPlayers>

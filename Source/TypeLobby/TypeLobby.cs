@@ -33,6 +33,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Name.Length > 0);
             Debug.Assert(QuantityPlayers >= 2);
             Debug.Assert(QuantityPlayers >= 8);
+            Debug.Assert(QuantityPlayers <= FormMain.Config.ComputerPlayers.Count);
             Debug.Assert(QuantityPlayers % 2 == 0);
             Debug.Assert(DurabilityCastle > 0);
             Debug.Assert(DurabilityCastle <= 1000);
