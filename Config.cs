@@ -49,6 +49,10 @@ namespace Fantasy_Kingdoms_Battle
                     HumanPlayers.Add(new HumanPlayer(n));
                 }
             }
+            else
+            {
+                AddHumanPlayer("Игрок");
+            }
 
             // Загрузка конфигураций лобби
             xmlDoc = CreateXmlDocument("Config\\TypeLobby.xml");
@@ -741,6 +745,47 @@ namespace Fantasy_Kingdoms_Battle
         internal Color ColorIncome(bool existIncome)
         {
             return existIncome ? HintIncome : Color.Gray;
+        }
+
+        internal void AddHumanPlayer(string name)
+        {
+            string id;
+            bool exist;
+            for (int i = 1; ; i++)
+            {
+                exist = false;
+                id = $"HumanPlayer{i}";
+                foreach (HumanPlayer hp in HumanPlayers)
+                {
+                    if (hp.ID == id)
+                    {
+                        exist = true;
+                        break;
+                    }
+                }
+
+                if (!exist)
+                    break;
+            }
+
+            int imageIndex;
+            for (imageIndex = 0; ; imageIndex++)
+            {
+                exist = false;
+                foreach (HumanPlayer hp in HumanPlayers)
+                {
+                    if (hp.ImageIndex == imageIndex)
+                    {
+                        exist = true;
+                        break;
+                    }
+                }
+
+                if (!exist)
+                    break;
+            }
+
+            HumanPlayers.Add(new HumanPlayer(id, name, "", imageIndex));
         }
     }
 }

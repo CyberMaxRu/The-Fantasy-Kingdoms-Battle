@@ -27,6 +27,18 @@ namespace Fantasy_Kingdoms_Battle
             //Debug.Assert(ImageIndex >= 0);
         }
 
+        public TypeObject(string id, string name, string description, int imageIndex)
+        {
+            Debug.Assert(ID.Length > 0);
+            Debug.Assert(Name.Length > 0);
+            Debug.Assert(Description.Length > 0);
+
+            ID = id;
+            Name = name;
+            Description = description;
+            ImageIndex = imageIndex;
+        }
+
         internal string ID { get; }// Уникальный (в пределах списка) код типа объекта
         internal string Name { get; }// Наименование типа объекта
         internal string Description { get; }// Описание типа объекта

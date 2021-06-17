@@ -26,5 +26,10 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(Name != cp.Name);
             }
         }
+
+        public HumanPlayer(string id, string name, string description, int imageIndex) : base(id, name, description, imageIndex, TypePlayer.Human)
+        {
+
+        }
     }
 }

@@ -15,6 +15,11 @@ namespace Fantasy_Kingdoms_Battle
             TypePlayer = typePlayer;
         }
 
+        public Player(string id, string name, string description, int imageIndex, TypePlayer typePlayer) : base(id, name, description, imageIndex)
+        {
+            TypePlayer = typePlayer;
+        }
+
         internal TypePlayer TypePlayer { get; }
     }
 }
