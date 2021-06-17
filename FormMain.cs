@@ -245,6 +245,7 @@ namespace Fantasy_Kingdoms_Battle
         internal Settings Settings { get; private set; }
         internal MainConfig MainConfig { get; private set; }
         internal int AvatarCount { get; private set; }
+        internal HumanPlayer CurrentHumanPlayer { get; private set; }
 
         private Timer timerHover;
 
@@ -365,6 +366,8 @@ namespace Fantasy_Kingdoms_Battle
 
                 brushQuantity = new SolidBrush(Config.CommonQuantity);
                 brushCost = new SolidBrush(Config.CommonCost);
+
+                SelectHumanPlayer(Config.HumanPlayers[0]);
 
                 // Загружаем иконки
                 SetStage("Рассматриваем картины");
@@ -955,10 +958,10 @@ namespace Fantasy_Kingdoms_Battle
             w.ApplySettings(Settings);
             if (w.ShowDialog() == DialogResult.OK)
             {
-                if (Settings.NamePlayer != lobby.CurrentPlayer.Name)
+                /*if (Settings.NamePlayer != lobby.CurrentPlayer.Name)
                 {
                     lobby.CurrentPlayer.Name = Settings.NamePlayer;
-                }
+                }*/
 
                 ApplyFullScreen(false);
             }
@@ -1099,7 +1102,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void ShowCurrentPlayerLobby()
         {
-            if (lobby.CurrentPlayer.TypePlayer == TypePlayer.Human)
+            if (lobby.CurrentPlayer.GetTypePlayer() == TypePlayer.Human)
             {
                 MainControl.Visible = true;
                 ShowDataPlayer();
@@ -1109,7 +1112,7 @@ namespace Fantasy_Kingdoms_Battle
                 MainControl.Visible = false;
             }
 
-            labelNamePlayer.Text = lobby.CurrentPlayer.Name;
+            labelNamePlayer.Text = lobby.CurrentPlayer.Player.Name;
             labelNamePlayer.Width = labelNamePlayer.Font.WidthText(labelNamePlayer.Text);
             labelNamePlayer.ShiftX = (bmpPreparedToolbar.Width - labelNamePlayer.Width) / 2;
             bmpPreparedToolbar.ArrangeControl(labelNamePlayer);
@@ -1119,7 +1122,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void ShowDataPlayer()
         {
-            Debug.Assert(lobby.CurrentPlayer.TypePlayer == TypePlayer.Human);
+            Debug.Assert(lobby.CurrentPlayer.GetTypePlayer() == TypePlayer.Human);
 
             labelDay.Text = lobby.Turn.ToString();
 
@@ -1972,6 +1975,14 @@ namespace Fantasy_Kingdoms_Battle
         internal void SetProgrameState(ProgramState ps)
         {
             ProgramState = ps;
+        }
+
+        internal void SelectHumanPlayer(HumanPlayer hp)
+        {
+            Debug.Assert(hp != null);
+            Debug.Assert(Config.HumanPlayers.IndexOf(hp) != -1);
+
+            CurrentHumanPlayer = hp;
         }
     }
 }

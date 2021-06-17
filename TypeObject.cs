@@ -29,14 +29,14 @@ namespace Fantasy_Kingdoms_Battle
 
         public TypeObject(string id, string name, string description, int imageIndex)
         {
-            Debug.Assert(ID.Length > 0);
-            Debug.Assert(Name.Length > 0);
-            Debug.Assert(Description.Length > 0);
-
             ID = id;
             Name = name;
             Description = description;
             ImageIndex = imageIndex;
+
+            Debug.Assert(ID.Length > 0);
+            Debug.Assert(Name.Length > 0);
+            Debug.Assert(Description.Length > 0);
         }
 
         internal string ID { get; }// Уникальный (в пределах списка) код типа объекта

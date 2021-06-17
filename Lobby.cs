@@ -65,13 +65,19 @@ namespace Fantasy_Kingdoms_Battle
 
             // Создание игроков
             Players = new LobbyPlayer[tl.QuantityPlayers];
-            TypePlayer tp;
-            string namePlayer;
-            for (int i = 0; i < TypeLobby.QuantityPlayers; i++)
+            Players[0] = new LobbyPlayer(this, Program.formMain.CurrentHumanPlayer, 0);// Живой игрок всегда первый
+
+            // Подбираем компьютерных игроков из пула доступных
+            List<ComputerPlayer> listCompPlayers = new List<ComputerPlayer>();
+            listCompPlayers.AddRange(FormMain.Config.ComputerPlayers.Where(cp => cp.Active));
+            Debug.Assert(listCompPlayers.Count >= TypeLobby.QuantityPlayers - 1);
+
+            int idx;
+            for (int i = 1; i < TypeLobby.QuantityPlayers; i++)
             {
-                tp = i == 0 ? TypePlayer.Human : TypePlayer.Computer;
-                namePlayer = tp == TypePlayer.Computer ? "Игрок №" + (i + 1).ToString() : Program.formMain.Settings.NamePlayer;
-                Players[i] = new LobbyPlayer(this, i, namePlayer, tp);
+                idx = FormMain.Rnd.Next(listCompPlayers.Count);
+                Players[i] = new LobbyPlayer(this, listCompPlayers[idx], i);
+                listCompPlayers.RemoveAt(idx);
             }
 
             SortPlayers();
@@ -119,9 +125,9 @@ namespace Fantasy_Kingdoms_Battle
                 p.Opponent = oppo;
                 oppo.Opponent = p;
                 if (!opponents.Remove(p))
-                    throw new Exception("Не смог удалить элемент " + p.Name + " из списка оппонентов");
+                    throw new Exception("Не смог удалить элемент " + p.Player.Name + " из списка оппонентов");
                 if (!opponents.Remove(p.Opponent))
-                    throw new Exception("Не смог удалить элемент " + p.Opponent.Name + " из списка оппонентов");
+                    throw new Exception("Не смог удалить элемент " + p.Opponent.Player.Name + " из списка оппонентов");
 
                 if (opponents.Count == 0)
                     break;
@@ -144,11 +150,11 @@ namespace Fantasy_Kingdoms_Battle
             int cpi = CurrentPlayer != null ? CurrentPlayer.PlayerIndex : -1;
             for (int i = cpi + 1; i < Players.Count(); i++)
             {
-                if ((Players[i].IsLive == true) || (Players[i].TypePlayer == TypePlayer.Human))
+                if ((Players[i].IsLive == true) || (Players[i].GetTypePlayer() == TypePlayer.Human))
                 {
                     SetPlayerAsCurrent(i);
 
-                    if (CurrentPlayer.TypePlayer == TypePlayer.Computer)
+                    if (CurrentPlayer.GetTypePlayer() == TypePlayer.Computer)
                     {
                         StateLobby = StateLobby.TurnComputer;
                         Program.formMain.ShowCurrentPlayerLobby();
@@ -198,7 +204,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     if (p.IsLive)
                     {
-                        if (p.TypePlayer == TypePlayer.Human)
+                        if (p.GetTypePlayer() == TypePlayer.Human)
                         {
                             HumanIsWin = true;
                         }
@@ -238,7 +244,7 @@ namespace Fantasy_Kingdoms_Battle
 
                         //Debug.Assert(p.TargetLair.CombatHeroes.Count > 0);
 
-                        bool showForPlayer = p.TypePlayer == TypePlayer.Human;
+                        bool showForPlayer = p.GetTypePlayer() == TypePlayer.Human;
                         b = new Battle(p, pl, Turn, FormMain.Rnd, showForPlayer);
 
                         if (showForPlayer)
@@ -281,7 +287,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     if (p.BattleCalced == false)
                     {
-                        bool showForPlayer = (p.TypePlayer == TypePlayer.Human) || (p.Opponent.TypePlayer == TypePlayer.Human);
+                        bool showForPlayer = (p.GetTypePlayer() == TypePlayer.Human) || (p.Opponent.GetTypePlayer() == TypePlayer.Human);
                         b = new Battle(p, p.Opponent, Turn, FormMain.Rnd, showForPlayer);
 
                         if (showForPlayer)

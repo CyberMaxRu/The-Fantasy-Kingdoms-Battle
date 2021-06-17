@@ -185,7 +185,7 @@ namespace Fantasy_Kingdoms_Battle
             if (Building.TrainedHero.Cost > 0)
             {
                 Player.Gold -= Building.TrainedHero.Cost;
-                if (Player.TypePlayer == TypePlayer.Human)
+                if (Player.Player.TypePlayer == TypePlayer.Human)
                     Program.formMain.SetNeedRedrawFrame();
             }
 
@@ -205,7 +205,7 @@ namespace Fantasy_Kingdoms_Battle
             if (Building.TrainedHero.Cost > 0)
             {
                 Player.Gold -= Building.TrainedHero.Cost;
-                if (Player.TypePlayer == TypePlayer.Human)
+                if (Player.Player.TypePlayer == TypePlayer.Human)
                     Program.formMain.SetNeedRedrawFrame();
             }
 

@@ -612,7 +612,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Показываем состояние
-            if ((battle.Winner != null) && (battle.Winner.TypePlayer == TypePlayer.Human))
+            if ((battle.Winner != null) && (battle.Winner.GetTypePlayer() == TypePlayer.Human))
             {
                 lblStateBattle.Text = "Победа!";
                 lblStateBattle.ForeColor = FormMain.Config.BattlefieldTextWin;
@@ -666,7 +666,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void ShowBattle(Battle b)
         {
-            Text = "Бой. " + b.Player1.Name + " vs " + b.Player2.Name;
+            Text = "Бой. " + b.Player1.GetName() + " vs " + b.Player2.GetName();
 
             battle = b;
 
@@ -676,7 +676,7 @@ namespace Fantasy_Kingdoms_Battle
             Width = FormMain.Config.GridSize + (sizeCell.Width + FormMain.Config.GridSize) * FormMain.Config.HeroRows * 2 + FormMain.Config.GridSize + (Width - ClientSize.Width);
 
             lblPlayer1.Left = FormMain.Config.GridSize;
-            lblPlayer1.Text = battle.Player1.Name;
+            lblPlayer1.Text = battle.Player1.GetName();
             pointAvatarPlayer1 = new Point(lblPlayer1.Left, lblPlayer1.Top + lblPlayer1.Height);
             rectBandHealthPlayer1 = new Rectangle(pointAvatarPlayer1.X, pointAvatarPlayer1.Y + Program.formMain.imListObjectsBig.Size + 2, Program.formMain.imListObjectsBig.Size, 6);
 
@@ -697,7 +697,7 @@ namespace Fantasy_Kingdoms_Battle
             // Положение аватарки второго игрока
             pointAvatarPlayer2 = new Point(ClientSize.Width - Program.formMain.imListObjectsBig.Size - FormMain.Config.GridSize, pointAvatarPlayer1.Y);
             lblPlayer2.Left = pointAvatarPlayer2.X;
-            lblPlayer2.Text = battle.Player2.Name;
+            lblPlayer2.Text = battle.Player2.GetName();
             rectBandHealthPlayer2 = new Rectangle(pointAvatarPlayer2.X, pointAvatarPlayer2.Y + Program.formMain.imListObjectsBig.Size + 2, Program.formMain.imListObjectsBig.Size, 6);
 
             //

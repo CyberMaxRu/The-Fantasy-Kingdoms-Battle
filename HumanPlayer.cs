@@ -25,11 +25,25 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(ID != cp.ID);
                 Debug.Assert(Name != cp.Name);
             }
+
+            DisableComputerPlayerByAvatar();
         }
 
         public HumanPlayer(string id, string name, string description, int imageIndex) : base(id, name, description, imageIndex, TypePlayer.Human)
         {
+            DisableComputerPlayerByAvatar();
+        }
 
+        private void DisableComputerPlayerByAvatar()
+        {
+            foreach (ComputerPlayer cp in FormMain.Config.ComputerPlayers)
+            {
+                if (cp.ImageIndex == ImageIndex)
+                {
+                    cp.Active = false;
+                    break;
+                }
+            }
         }
     }
 }

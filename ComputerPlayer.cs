@@ -20,5 +20,7 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(ImageIndex != cp.ImageIndex);
             }
         }
+
+        internal bool Active { get; set; } = true;// Активность игрока. Он неактивен, если его аватарка используется
     }
 }

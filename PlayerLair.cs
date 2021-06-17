@@ -22,9 +22,7 @@ namespace Fantasy_Kingdoms_Battle
             Y = y;
             Layer = layer;
 
-            Name = l.Name;
             ImageIndexAvatar = l.ImageIndex;
-            TypePlayer = TypePlayer.Lair;
 
             // Убрать эту проверку после настройки всех логов
             if (TypeLair.Monsters.Count > 0)
@@ -488,6 +486,9 @@ namespace Fantasy_Kingdoms_Battle
                 return list;
             }
         }
+        internal override string GetName() => TypeLair.Name;
+        internal override LobbyPlayer GetPlayer() => Player;
+        internal override TypePlayer GetTypePlayer() => TypePlayer.Lair;
 
         BitmapList ICell.BitmapList() => Program.formMain.imListObjectsCell;
         int ICell.ImageIndex() => ImageIndexLair();        

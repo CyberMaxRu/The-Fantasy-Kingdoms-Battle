@@ -32,12 +32,6 @@ namespace Fantasy_Kingdoms_Battle
                     BattlefieldShowPath = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Battlefield/ShowPath"), BattlefieldShowPath);
                     BattlefieldShowGrid = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Battlefield/ShowGrid"), BattlefieldShowGrid);
 
-                    NamePlayer = XmlUtils.GetString(doc.SelectSingleNode("Settings/Player/Name"));
-                    if (NamePlayer.Length == 0)
-                        NamePlayer = "Игрок";
-                    if (NamePlayer.Length > 31)
-                        throw new Exception("Длина имени игрока более 31 символа.");
-
                     IndexInternalAvatar = XmlUtils.GetInteger(doc.SelectSingleNode("Settings/Player/IndexAvatar"));
                     if (IndexInternalAvatar < -1)
                         IndexInternalAvatar = 0;
@@ -51,10 +45,6 @@ namespace Fantasy_Kingdoms_Battle
                    SetDefault();
                 }
             }
-            else
-            {
-                NamePlayer = "Игрок";
-            }    
             //if (IndexAvatar >= Program.formMain.ilPlayerAvatars.Images.Count)
             //    IndexAvatar = Program.formMain.ilPlayerAvatars.Images.Count - 1;
         }
@@ -64,7 +54,6 @@ namespace Fantasy_Kingdoms_Battle
         internal bool CheckUpdateOnStartup { get; set; }
         internal bool BattlefieldShowPath { get; set; }
         internal bool BattlefieldShowGrid { get; set; }
-        internal string NamePlayer { get; set; }
         internal int IndexInternalAvatar { get; set; }
         internal string FileNameAvatar { get; set; } = "";
         internal string DirectoryAvatar { get; set; } = "";
@@ -122,7 +111,6 @@ namespace Fantasy_Kingdoms_Battle
             textWriter.WriteEndElement();
 
             textWriter.WriteStartElement("Player");
-            textWriter.WriteElementString("Name", NamePlayer);
             textWriter.WriteElementString("IndexAvatar", IndexInternalAvatar.ToString());
             textWriter.WriteElementString("FileNameAvatar", FileNameAvatar);
             textWriter.WriteElementString("DirectoryAvatar", DirectoryAvatar);

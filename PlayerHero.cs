@@ -257,7 +257,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(IsLive);
 
-            return TypeHero.ImageIndex != FormMain.IMAGE_INDEX_CURRENT_AVATAR ? TypeHero.Name : Player.Name;
+            return TypeHero.ImageIndex != FormMain.IMAGE_INDEX_CURRENT_AVATAR ? TypeHero.Name : Player.GetName();
         }
 
         internal override void PrepareHint()

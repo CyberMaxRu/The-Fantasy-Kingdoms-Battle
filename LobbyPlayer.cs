@@ -20,15 +20,14 @@ namespace Fantasy_Kingdoms_Battle
         internal const int MAX_FLAG_HIGH = 2;// Максимальное число флагов с высоким приоритетом
         internal const int MAX_FLAG_COUNT = 5;// Максимальное число активных флагов
 
-        public LobbyPlayer(Lobby lobby, int index, string name, TypePlayer typePlayer) : base()
+        public LobbyPlayer(Lobby lobby, Player player, int playerIndex) : base()
         {
+            Player = player;
             Lobby = lobby;
-            Name = name;
-            TypePlayer = typePlayer;
             Wins = 0;
             Loses = 0;
-            PlayerIndex = index;
-            ImageIndexAvatar = (typePlayer == TypePlayer.Computer ? PlayerIndex : Program.formMain.Settings.IndexInternalAvatar) + Program.formMain.ImageIndexFirstAvatar;
+            PlayerIndex = playerIndex;
+            ImageIndexAvatar = (Player.TypePlayer == TypePlayer.Computer ? PlayerIndex : Program.formMain.Settings.IndexInternalAvatar) + Program.formMain.ImageIndexFirstAvatar;
             ResultLastBattle = ResultBattle.None;
 
             // Создаем справочик количества приоритетов флагов
@@ -59,7 +58,7 @@ namespace Fantasy_Kingdoms_Battle
             Castle = GetPlayerBuilding(FormMain.Config.FindTypeEconomicConstruction(FormMain.Config.IDBuildingCastle));
 
             Gold = Lobby.TypeLobby.Gold;
-            if (TypePlayer == TypePlayer.Computer)
+            if (Player.TypePlayer == TypePlayer.Computer)
                 Gold = 100_000;
 
             LevelGreatness = 1;
@@ -83,7 +82,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void DoTurn()
         {
-            Debug.Assert(TypePlayer == TypePlayer.Computer);
+            Debug.Assert(Player.TypePlayer == TypePlayer.Computer);
             Debug.Assert(IsLive == true);
 
             // Здесь расчет хода для ИИ
@@ -162,7 +161,7 @@ namespace Fantasy_Kingdoms_Battle
 
                         //Debug.Assert(p.TargetLair.CombatHeroes.Count > 0);
 
-                        bool showForPlayer = TypePlayer == TypePlayer.Human;
+                        bool showForPlayer = Player.TypePlayer == TypePlayer.Human;
                         b = new Battle(this, pl, Lobby.Turn, FormMain.Rnd, showForPlayer);
 
                         if (showForPlayer)
@@ -225,6 +224,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal Lobby Lobby { get; }
+        internal Player Player { get; }
         internal int PlayerIndex { get; }
         internal int PositionInLobby { get; set; }
         internal int DurabilityCastle { get; set; }
@@ -338,7 +338,7 @@ namespace Fantasy_Kingdoms_Battle
 
             SetTaskForHeroes();
 
-            if (TypePlayer == TypePlayer.Human)
+            if (Player.TypePlayer == TypePlayer.Human)
                 Program.formMain.ListHeroesChanged();
         }
 
@@ -590,7 +590,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override void PrepareHint()
         {
             Program.formMain.formHint.AddStep1Header(
-                Name,
+                Player.Name,
                 "Место №" + PositionInLobby.ToString(),
                 "Уровень Замка: " + LevelCastle.ToString() + Environment.NewLine
                     + "Прочность Замка " + DurabilityCastle.ToString() + "/" + Lobby.TypeLobby.DurabilityCastle.ToString() + Environment.NewLine
@@ -867,6 +867,10 @@ namespace Fantasy_Kingdoms_Battle
             PointConstructionTemple += l.RewardPointTemple;
             PointConstructionTradePost += l.RewardPointTradePost;
         }
+
+        internal override string GetName() => Player.Name;
+        internal override LobbyPlayer GetPlayer() => this;
+        internal override TypePlayer GetTypePlayer() => Player.TypePlayer;
 
         // Реализация интерфейса
         BitmapList ICell.BitmapList() => Program.formMain.imListObjectsCell;

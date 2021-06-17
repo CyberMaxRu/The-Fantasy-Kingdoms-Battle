@@ -87,7 +87,7 @@ namespace Fantasy_Kingdoms_Battle
             chkbShowPath.Checked = settings.BattlefieldShowPath;
             chkbShowGrid.Checked = settings.BattlefieldShowGrid;
 
-/*            txtbNamePlayer.Text = settings.NamePlayer;
+/*            
             filenameAvatar = settings.FileNameAvatar;
             directoryAvatar = settings.DirectoryAvatar;
             ShowAvatar();*/
