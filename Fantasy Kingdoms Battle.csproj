@@ -82,6 +82,7 @@
     <Compile Include="Source\Forms\WindowAboutProgram.cs" />
     <Compile Include="Source\Forms\WindowMainMenu.cs" />
     <Compile Include="Source\Forms\WindowMenuInGame.cs" />
+    <Compile Include="Source\Forms\WindowPlayerPreferences.cs" />
     <Compile Include="Source\Forms\WindowPreferences.cs" />
     <Compile Include="Source\Panels\PanelHint.cs" />
     <Compile Include="Source\Panels\PanelMapObject.cs" />

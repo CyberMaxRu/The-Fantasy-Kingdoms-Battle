@@ -52,6 +52,11 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnPlayerPreferences_Click(object sender, EventArgs e)
         {
+            WindowPlayerPreferences w = new WindowPlayerPreferences();
+            if (w.ShowDialog() == DialogResult.OK)
+            {
+
+            }
         }
 
         private void BtnPlayers_Click(object sender, EventArgs e)

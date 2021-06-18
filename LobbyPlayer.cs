@@ -870,7 +870,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override string GetName() => Player.Name;
         internal override LobbyPlayer GetPlayer() => this;
         internal override TypePlayer GetTypePlayer() => Player.TypePlayer;
-        internal override int GetImageIndexAvatar() => (Player.TypePlayer == TypePlayer.Computer ? Player.ImageIndex : Program.formMain.Settings.IndexInternalAvatar) + Program.formMain.ImageIndexFirstAvatar; 
+        internal override int GetImageIndexAvatar() => Player.GetImageIndexAvatar();
 
         // Реализация интерфейса
         BitmapList ICell.BitmapList() => Program.formMain.imListObjectsCell;

@@ -164,6 +164,8 @@ namespace Fantasy_Kingdoms_Battle
         internal const int GUI_24_FIRE = 0;
         internal const int GUI_24_HEROES = 1;
         internal const int GUI_24_STAR = 2;
+        internal const int GUI_24_BUTTON_LEFT = 3;
+        internal const int GUI_24_BUTTON_RIGHT = 4;
 
         internal const int GUI_45_EMPTY = 0;
         internal const int GUI_45_BORDER = 0;
@@ -390,7 +392,7 @@ namespace Fantasy_Kingdoms_Battle
                 imListObjectsCell = new BitmapList(imListObjectsBig, 48, Config.BorderInBigIcons, bmpMaskSmall);
 
                 ilGui16 = new BitmapList(LoadBitmap("Gui16.png"), 16, true, false);
-                ilGui24 = new BitmapList(LoadBitmap("Gui24.png"), 24, true, false);
+                ilGui24 = new BitmapList(LoadBitmap("Gui24.png"), 24, true, true);
                 ilParameters = new BitmapList(LoadBitmap("Parameters.png"), 24, true, false);
                 ilItems = new BitmapList(LoadBitmap("Items.png"), 48, true, true);
                 ilStateHero = new BitmapList(LoadBitmap("StateCreature.png"), 24, true, false);

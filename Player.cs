@@ -21,5 +21,9 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal TypePlayer TypePlayer { get; }
+        internal int GetImageIndexAvatar()
+        {
+            return ImageIndex + Program.formMain.ImageIndexFirstAvatar;
+        }
     }
 }
