@@ -13,7 +13,7 @@ namespace Fantasy_Kingdoms_Battle
         private VCButton btnTournament;
         private VCButton btnPlayers;
         private VCButton btnPreferences;
-        private VCButton btnABoutProgram;
+        private VCButton btnAboutProgram;
         private VCButton btnExit;
 
         public WindowMainMenu()
@@ -30,11 +30,11 @@ namespace Fantasy_Kingdoms_Battle
             btnExit.Width = Width - 80 - 80;
             btnExit.Click += BtnExit_Click;
 
-            btnABoutProgram = new VCButton(bmpMenu, 80, btnExit.ShiftY - 48, "О программе");
-            btnABoutProgram.Width = Width - 80 - 80;
-            btnABoutProgram.Click += BtnAboutProgram_Click;
+            btnAboutProgram = new VCButton(bmpMenu, 80, btnExit.ShiftY - 48, "О программе");
+            btnAboutProgram.Width = Width - 80 - 80;
+            btnAboutProgram.Click += BtnAboutProgram_Click;
 
-            btnPreferences = new VCButton(bmpMenu, 80, btnABoutProgram.ShiftY - 48, "Настройки");
+            btnPreferences = new VCButton(bmpMenu, 80, btnAboutProgram.ShiftY - 48, "Настройки");
             btnPreferences.Width = Width - 80 - 80;
             btnPreferences.Click += BtnPreferences_Click;
 
@@ -52,7 +52,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnExit_Click(object sender, EventArgs e)
         {
-            Program.formMain.SetProgrameState(ProgramState.NeedQuit);
+            //Program.formMain.SetProgrameState(ProgramState.NeedQuit);
             CloseForm(DialogResult.Abort);
         }
 
