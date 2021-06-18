@@ -13,6 +13,8 @@ namespace Fantasy_Kingdoms_Battle
     {
         public HumanPlayer(XmlNode n) : base(n, TypePlayer.Human)
         {
+            Debug.Assert(Name.Length <= 31);
+
             foreach (HumanPlayer hp in FormMain.Config.HumanPlayers)
             {
                 Debug.Assert(ID != hp.ID);
@@ -31,6 +33,8 @@ namespace Fantasy_Kingdoms_Battle
 
         public HumanPlayer(string id, string name, string description, int imageIndex) : base(id, name, description, imageIndex, TypePlayer.Human)
         {
+            Debug.Assert(Name.Length <= 31);
+
             DisableComputerPlayerByAvatar();
         }
 
