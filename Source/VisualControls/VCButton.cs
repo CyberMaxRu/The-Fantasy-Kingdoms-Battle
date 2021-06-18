@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Diagnostics;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -53,6 +54,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
+            Debug.Assert(bmpNormal != null);
+            Debug.Assert(bmpDisabled != null);
+            Debug.Assert(bmpPressed != null);
+
             bmpForDraw = !Enabled ? bmpDisabled : mouseOver && mouseClicked ? bmpPressed : mouseOver ? bmpHot : bmpNormal;
 
             base.Draw(g);
