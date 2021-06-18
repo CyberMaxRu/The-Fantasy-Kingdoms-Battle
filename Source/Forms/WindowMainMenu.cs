@@ -12,6 +12,7 @@ namespace Fantasy_Kingdoms_Battle
         private VCBitmap bmpMenu;
         private VCButton btnTournament;
         private VCButton btnPlayers;
+        private VCButton btnPlayerPreferences;
         private VCButton btnGamePreferences;
         private VCButton btnAboutProgram;
         private VCButton btnExit;
@@ -30,19 +31,27 @@ namespace Fantasy_Kingdoms_Battle
             btnExit.Width = Width - 80 - 80;
             btnExit.Click += BtnExit_Click;
 
-            btnAboutProgram = new VCButton(bmpMenu, 80, btnExit.ShiftY - 48, "О программе");
+            btnAboutProgram = new VCButton(bmpMenu, 80, btnExit.ShiftY - 40, "О программе");
             btnAboutProgram.Width = Width - 80 - 80;
             btnAboutProgram.Click += BtnAboutProgram_Click;
 
-            btnGamePreferences = new VCButton(bmpMenu, 80, btnAboutProgram.ShiftY - 48, "Настройки игры");
+            btnGamePreferences = new VCButton(bmpMenu, 80, btnAboutProgram.ShiftY - 40, "Настройки игры");
             btnGamePreferences.Width = Width - 80 - 80;
             btnGamePreferences.Click += BtnPreferences_Click;
 
-            btnPlayers = new VCButton(bmpMenu, 80, btnGamePreferences.ShiftY - 48, "Игроки");
+            btnPlayerPreferences = new VCButton(bmpMenu, 80, btnGamePreferences.ShiftY - 40, "Настройки игрока");
+            btnPlayerPreferences.Width = Width - 80 - 80;
+            btnPlayerPreferences.Click += BtnPlayerPreferences_Click;
+
+            btnPlayers = new VCButton(bmpMenu, 80, btnPlayerPreferences.ShiftY - 40, "Игроки");
             btnPlayers.Width = Width - 80 - 80;
             btnPlayers.Click += BtnPlayers_Click;
 
             CancelButton = btnExit;
+        }
+
+        private void BtnPlayerPreferences_Click(object sender, EventArgs e)
+        {
         }
 
         private void BtnPlayers_Click(object sender, EventArgs e)
