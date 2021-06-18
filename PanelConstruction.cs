@@ -29,7 +29,7 @@ namespace Fantasy_Kingdoms_Battle
 
             //if ((TypeConstruction.TrainedHero != null) && !(TypeConstruction is TypeEconomicConstruction))
             //{
-                btnHireHero = new VCIconButton(this, imgMapObject.NextLeft(), btnBuyOrUpgrade.NextTop(), Program.formMain.imListObjectsCell, -1);
+                btnHireHero = new VCIconButton(this, imgMapObject.NextLeft(), btnBuyOrUpgrade.NextTop() + FormMain.Config.GridSize + FormMain.Config.GridSizeHalf, Program.formMain.imListObjectsCell, -1);
                 btnHireHero.Click += BtnHireHero_Click;
                 btnHireHero.ShowHint += BtnHireHero_ShowHint;
             //}
@@ -38,24 +38,29 @@ namespace Fantasy_Kingdoms_Battle
 
             //if (TypeConstruction is TypeEconomicConstruction)
             //{
-            panelIncomeAndGreatness = new VisualControl(this, imgMapObject.NextLeft() - (FormMain.Config.GridSize * 4), imgMapObject.NextTop());
-            panelIncomeAndGreatness.ShowBorder = true;
+            panelIncomeAndGreatness = new VisualControl(this, FormMain.Config.GridSize, imgMapObject.NextTop());
+            //panelIncomeAndGreatness.ShowBorder = true;
+            panelIncomeAndGreatness.Width = imgMapObject.Width;
+            panelIncomeAndGreatness.Height = btnHeroes.Height;
 
             lblIncome = new VCLabelValue(panelIncomeAndGreatness, FormMain.Config.GridSizeHalf, FormMain.Config.GridSize, Color.Green);
+            lblIncome.Width = panelIncomeAndGreatness.Width - FormMain.Config.GridSize;
             lblIncome.ImageIndex = FormMain.GUI_16_INCOME;
             lblIncome.StringFormat.Alignment = StringAlignment.Near;
 
             lblGreatness = new VCLabelValue(panelIncomeAndGreatness, lblIncome.ShiftX, lblIncome.NextTop() - FormMain.Config.GridSizeHalf, Color.Green);
+            lblGreatness.Width = lblIncome.Width;
             lblGreatness.ImageIndex = FormMain.GUI_16_GREATNESS;
             lblGreatness.StringFormat.Alignment = StringAlignment.Near;
             lblGreatness.Color = FormMain.Config.HintIncome;
 
-            panelIncomeAndGreatness.Height = btnHeroes.Height;
             //}
 
             Height = btnHeroes.NextTop();
             Width = btnBuyOrUpgrade.NextLeft();
             lblNameMapObject.Width = Width - (lblNameMapObject.ShiftX * 2);
+
+            btnHeroes.ShiftX = Width - btnHeroes.Width - FormMain.Config.GridSize;
         }
 
         internal PlayerBuilding Building { get => PlayerObject as PlayerBuilding; }
@@ -145,9 +150,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void ArrangeControls()
         {
-            panelIncomeAndGreatness.Width = Width - panelIncomeAndGreatness.ShiftX - FormMain.Config.GridSize;
-            lblIncome.Width = panelIncomeAndGreatness.Width - FormMain.Config.GridSize;
-            lblGreatness.Width = lblIncome.Width;
 
             base.ArrangeControls();
         }
