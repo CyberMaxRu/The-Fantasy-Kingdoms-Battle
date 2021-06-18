@@ -786,6 +786,27 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             HumanPlayers.Add(new HumanPlayer(id, name, "-", imageIndex));
+
+            SaveHumanPlayers();
+        }
+
+        private void SaveHumanPlayers()
+        {
+            XmlTextWriter textWriter = new XmlTextWriter(Program.formMain.dirResources + "Players.xml", Encoding.UTF8);
+            textWriter.WriteStartDocument();
+            textWriter.Formatting = Formatting.Indented;
+
+            textWriter.WriteStartElement("Players");
+
+            // Записываем информацию об игроках
+            foreach (HumanPlayer hp in HumanPlayers)
+            {
+                hp.SaveToXml(textWriter);
+            }
+
+            textWriter.WriteEndElement();
+            textWriter.Close();
+            textWriter.Dispose();
         }
     }
 }

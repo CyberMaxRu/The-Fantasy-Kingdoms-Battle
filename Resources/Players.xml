@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Players>
+  <Player>
+    <ID>HumanPlayer1</ID>
+    <Name>Игрок</Name>
+    <Description>-</Description>
+    <ImageIndex>0</ImageIndex>
+  </Player>
+</Players>

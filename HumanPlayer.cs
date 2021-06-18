@@ -49,5 +49,15 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
         }
+
+        internal void SaveToXml(XmlTextWriter writer)
+        {
+            writer.WriteStartElement("Player");
+            writer.WriteElementString("ID", ID);
+            writer.WriteElementString("Name", Name);
+            writer.WriteElementString("Description", Description);
+            writer.WriteElementString("ImageIndex", ImageIndex.ToString());
+            writer.WriteEndElement();
+        }
     }
 }
