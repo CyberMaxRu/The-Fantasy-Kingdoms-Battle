@@ -27,7 +27,6 @@ namespace Fantasy_Kingdoms_Battle
             Wins = 0;
             Loses = 0;
             PlayerIndex = playerIndex;
-            ImageIndexAvatar = (Player.TypePlayer == TypePlayer.Computer ? PlayerIndex : Program.formMain.Settings.IndexInternalAvatar) + Program.formMain.ImageIndexFirstAvatar;
             ResultLastBattle = ResultBattle.None;
 
             // Создаем справочик количества приоритетов флагов
@@ -871,14 +870,15 @@ namespace Fantasy_Kingdoms_Battle
         internal override string GetName() => Player.Name;
         internal override LobbyPlayer GetPlayer() => this;
         internal override TypePlayer GetTypePlayer() => Player.TypePlayer;
+        internal override int GetImageIndexAvatar() => (Player.TypePlayer == TypePlayer.Computer ? Player.ImageIndex : Program.formMain.Settings.IndexInternalAvatar) + Program.formMain.ImageIndexFirstAvatar; 
 
         // Реализация интерфейса
         BitmapList ICell.BitmapList() => Program.formMain.imListObjectsCell;
         int ICell.ImageIndex()
         {
-            Debug.Assert(ImageIndexAvatar >= Program.formMain.ImageIndexFirstAvatar);
-            Debug.Assert(ImageIndexAvatar < Program.formMain.ImageIndexFirstAvatar + Program.formMain.blPlayerAvatars.Count);
-            return ImageIndexAvatar;
+            Debug.Assert(GetImageIndexAvatar() >= Program.formMain.ImageIndexFirstAvatar);
+            Debug.Assert(GetImageIndexAvatar() < Program.formMain.ImageIndexFirstAvatar + Program.formMain.blPlayerAvatars.Count);
+            return GetImageIndexAvatar();
         }
         bool ICell.NormalImage() => IsLive;
         int ICell.Level() => LevelGreatness;

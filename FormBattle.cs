@@ -448,8 +448,8 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Рисуем аватарки игроков
-            Program.formMain.imListObjectsBig.DrawImage(g, battle.Player1.ImageIndexAvatar, (battle.BattleCalced == false) || (battle.Winner == battle.Player1), false, pointAvatarPlayer1.X, pointAvatarPlayer1.Y);
-            Program.formMain.imListObjectsBig.DrawImage(g, battle.Player2.ImageIndexAvatar, (battle.BattleCalced == false) || (battle.Winner == battle.Player2), false, pointAvatarPlayer2.X, pointAvatarPlayer2.Y);
+            Program.formMain.imListObjectsBig.DrawImage(g, battle.Player1.GetImageIndexAvatar(), (battle.BattleCalced == false) || (battle.Winner == battle.Player1), false, pointAvatarPlayer1.X, pointAvatarPlayer1.Y);
+            Program.formMain.imListObjectsBig.DrawImage(g, battle.Player2.GetImageIndexAvatar(), (battle.BattleCalced == false) || (battle.Winner == battle.Player2), false, pointAvatarPlayer2.X, pointAvatarPlayer2.Y);
 
             g.Dispose();
         }

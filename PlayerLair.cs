@@ -22,8 +22,6 @@ namespace Fantasy_Kingdoms_Battle
             Y = y;
             Layer = layer;
 
-            ImageIndexAvatar = l.ImageIndex;
-
             // Убрать эту проверку после настройки всех логов
             if (TypeLair.Monsters.Count > 0)
                 CreateMonsters();
@@ -489,6 +487,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override string GetName() => TypeLair.Name;
         internal override LobbyPlayer GetPlayer() => Player;
         internal override TypePlayer GetTypePlayer() => TypePlayer.Lair;
+        internal override int GetImageIndexAvatar() => TypeLair.ImageIndex;
 
         BitmapList ICell.BitmapList() => Program.formMain.imListObjectsCell;
         int ICell.ImageIndex() => ImageIndexLair();        

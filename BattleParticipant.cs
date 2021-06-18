@@ -24,7 +24,6 @@ namespace Fantasy_Kingdoms_Battle
             CellHeroes = new Creature[FormMain.Config.HeroRows, FormMain.Config.HeroInRow];
         }
 
-        internal int ImageIndexAvatar { get; set; }
         internal bool BattleCalced { get; set; } = false;
         internal bool IsLive { get; set; } = true;/*private set*/
         internal List<Battle> HistoryBattles { get; } = new List<Battle>();
@@ -135,5 +134,6 @@ namespace Fantasy_Kingdoms_Battle
         internal abstract string GetName();
         internal abstract TypePlayer GetTypePlayer();
         internal abstract LobbyPlayer GetPlayer();
+        internal abstract int GetImageIndexAvatar();
     }
 }

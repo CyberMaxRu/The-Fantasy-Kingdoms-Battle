@@ -1390,7 +1390,7 @@ namespace Fantasy_Kingdoms_Battle
                 foreach (LobbyPlayer ph1 in lobby.Players)
                     foreach (LobbyPlayer ph2 in lobby.Players)
                         if (ph1 != ph2)
-                            Debug.Assert(ph1.ImageIndexAvatar != ph2.ImageIndexAvatar);
+                            Debug.Assert(ph1.GetImageIndexAvatar() != ph2.GetImageIndexAvatar());
             }
 
             if (lobby != null)
@@ -1816,7 +1816,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int TreatImageIndex(int imageIndex, BattleParticipant p)
         {
-            return imageIndex != IMAGE_INDEX_CURRENT_AVATAR ? imageIndex : p.ImageIndexAvatar;
+            return imageIndex != IMAGE_INDEX_CURRENT_AVATAR ? imageIndex : p.GetImageIndexAvatar();
         }
 
         internal void LairsWithFlagChanged()
