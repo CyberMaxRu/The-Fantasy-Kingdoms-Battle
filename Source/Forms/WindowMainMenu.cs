@@ -12,7 +12,7 @@ namespace Fantasy_Kingdoms_Battle
         private VCBitmap bmpMenu;
         private VCButton btnTournament;
         private VCButton btnPlayers;
-        private VCButton btnPreferences;
+        private VCButton btnGamePreferences;
         private VCButton btnAboutProgram;
         private VCButton btnExit;
 
@@ -34,11 +34,11 @@ namespace Fantasy_Kingdoms_Battle
             btnAboutProgram.Width = Width - 80 - 80;
             btnAboutProgram.Click += BtnAboutProgram_Click;
 
-            btnPreferences = new VCButton(bmpMenu, 80, btnAboutProgram.ShiftY - 48, "Настройки");
-            btnPreferences.Width = Width - 80 - 80;
-            btnPreferences.Click += BtnPreferences_Click;
+            btnGamePreferences = new VCButton(bmpMenu, 80, btnAboutProgram.ShiftY - 48, "Настройки игры");
+            btnGamePreferences.Width = Width - 80 - 80;
+            btnGamePreferences.Click += BtnPreferences_Click;
 
-            btnPlayers = new VCButton(bmpMenu, 80, btnPreferences.ShiftY - 48, "Игроки");
+            btnPlayers = new VCButton(bmpMenu, 80, btnGamePreferences.ShiftY - 48, "Игроки");
             btnPlayers.Width = Width - 80 - 80;
             btnPlayers.Click += BtnPlayers_Click;
 
