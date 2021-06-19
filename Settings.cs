@@ -74,7 +74,7 @@ namespace Fantasy_Kingdoms_Battle
             if (FileNameAvatar.Length == 0)
             {
                 Avatar = null;
-                Program.formMain.imListObjectsBig.ReplaceImage(Program.formMain.blPlayerAvatars.GetImage(0, true, false), Program.formMain.ImageIndexFirstAvatar);
+                Program.formMain.imListObjectsBig.ReplaceImage(Program.formMain.blInternalAvatars.GetImage(0, true, false), Program.formMain.ImageIndexFirstAvatar);
                 Program.formMain.imListObjectsCell?.ReplaceImageWithResize(Program.formMain.imListObjectsBig, Program.formMain.ImageIndexFirstAvatar, 1, Program.formMain.bmpMaskSmall);
             }
             else

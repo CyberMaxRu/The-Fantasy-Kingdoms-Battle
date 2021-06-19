@@ -67,7 +67,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnNextAvatar_Click(object sender, EventArgs e)
         {
-            if (curImageIndexAvatar - Program.formMain.ImageIndexFirstAvatar < Program.formMain.blPlayerAvatars.Count - 1)
+            if (curImageIndexAvatar - Program.formMain.ImageIndexFirstAvatar < Program.formMain.blInternalAvatars.Count - 1)
                 curImageIndexAvatar++;
             else
                 curImageIndexAvatar = Program.formMain.ImageIndexFirstAvatar;
@@ -80,7 +80,7 @@ namespace Fantasy_Kingdoms_Battle
             if (curImageIndexAvatar - Program.formMain.ImageIndexFirstAvatar > 0)
                 curImageIndexAvatar--;
             else
-                curImageIndexAvatar = Program.formMain.ImageIndexFirstAvatar + Program.formMain.blPlayerAvatars.Count - 1;
+                curImageIndexAvatar = Program.formMain.ImageIndexFirstAvatar + Program.formMain.blInternalAvatars.Count - 1;
 
             UpdateNumberAvatar();
         }
@@ -114,7 +114,7 @@ namespace Fantasy_Kingdoms_Battle
         private void UpdateNumberAvatar()
         {
             imgAvatar.ImageIndex = curImageIndexAvatar;
-            imgAvatar.Cost = $"{curImageIndexAvatar - Program.formMain.ImageIndexFirstAvatar + 1}/{Program.formMain.blPlayerAvatars.Count}";
+            imgAvatar.Cost = $"{curImageIndexAvatar - Program.formMain.ImageIndexFirstAvatar + 1}/{Program.formMain.blInternalAvatars.Count}";
         }
 
         private void BtnCancel_Click(object sender, EventArgs e)

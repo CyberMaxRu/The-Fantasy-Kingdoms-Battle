@@ -34,7 +34,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly System.Windows.Media.MediaPlayer mpConstructionComplete;
 
         // ImageList'ы
-        internal BitmapList blPlayerAvatars;
+        internal BitmapList blInternalAvatars;
         internal readonly BitmapList imListObjectsBig;
         internal readonly BitmapList imListObjectsCell;
         internal readonly BitmapList ilGui;
@@ -383,9 +383,9 @@ namespace Fantasy_Kingdoms_Battle
                 // Добавляем в список иконок аватарки игроков
                 // Для этого создаем отдельный список оригинальных аватарок, из которого уже будем составлять итоговый
                 ImageIndexFirstAvatar = imListObjectsBig.Count;
-                blPlayerAvatars = new BitmapList(LoadBitmap("Avatars.png"), 128, true, true);
-                for (int i = 0; i < blPlayerAvatars.Count; i++)
-                    imListObjectsBig.Add(blPlayerAvatars.GetImage(i, true, false));
+                blInternalAvatars = new BitmapList(LoadBitmap("Avatars.png"), 128, true, true);
+                for (int i = 0; i < blInternalAvatars.Count; i++)
+                    imListObjectsBig.Add(blInternalAvatars.GetImage(i, true, false));
 
                 ValidateAvatars();
 
