@@ -39,7 +39,7 @@ namespace Fantasy_Kingdoms_Battle
             btnNextAvatar = new VCIconButton(ClientControl, imgAvatar.ShiftX + imgAvatar.Width, btnPriorAvatar.ShiftY, Program.formMain.ilGui24, FormMain.GUI_24_BUTTON_RIGHT);
             btnNextAvatar.Click += BtnNextAvatar_Click;                 
 
-            btnLoadAvatar = new VCButton(ClientControl, btnNextAvatar.NextLeft(), imgAvatar.ShiftY, "Добавить аватар");
+            btnLoadAvatar = new VCButton(ClientControl, btnNextAvatar.NextLeft(), imgAvatar.ShiftY, "Загрузить аватар");
             btnLoadAvatar.Width = 240;
             btnLoadAvatar.Click += BtnLoadAvatar_Click;
             btnDeleteAvatar = new VCButton(ClientControl, btnLoadAvatar.ShiftX, btnLoadAvatar.NextTop(), "Удалить аватар");
