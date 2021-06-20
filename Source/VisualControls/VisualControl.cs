@@ -211,7 +211,17 @@ namespace Fantasy_Kingdoms_Battle
             LeftButtonPressed = false;
         }
 
-        internal virtual void KeyUp(KeyEventArgs e) { }
+        internal virtual void KeyPress(KeyPressEventArgs e)
+        {
+            foreach (VisualControl vc in Controls)
+                vc.KeyPress(e);
+        }
+
+        internal virtual void KeyUp(KeyEventArgs e)
+        {
+            foreach (VisualControl vc in Controls)
+                vc.KeyUp(e);
+        }
 
         internal virtual void ArrangeControls()
         {

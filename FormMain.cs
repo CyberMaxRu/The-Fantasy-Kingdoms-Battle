@@ -109,6 +109,7 @@ namespace Fantasy_Kingdoms_Battle
         private const int DEFAULT_DPI = 96;
 
         internal const int MAX_AVATARS = 8;
+        internal const int MAX_LENGTH_USERNAME = 31;
 
         internal const int GUI_HEROES = 0;
         internal const int GUI_GUILDS = 1;
@@ -1576,6 +1577,14 @@ namespace Fantasy_Kingdoms_Battle
             ShowFrame(true);
         }
 
+        protected override void OnKeyPress(KeyPressEventArgs e)
+        {
+            base.OnKeyPress(e);
+
+            currentLayer.KeyPress(e);
+            ShowFrame(false);
+        }
+
         protected override void OnKeyUp(KeyEventArgs e)
         {
             base.OnKeyUp(e);
@@ -1585,7 +1594,10 @@ namespace Fantasy_Kingdoms_Battle
                 ShowInGameMenu();
             }
             else
+            {
                 currentLayer.KeyUp(e);
+                ShowFrame(false);
+            }
         }        
 
         private VisualControl ControlUnderMouse()

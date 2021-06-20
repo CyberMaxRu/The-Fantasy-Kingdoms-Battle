@@ -38,6 +38,12 @@ namespace Fantasy_Kingdoms_Battle
                 vc.KeyUp(e);
         }
 
+        internal virtual void KeyPress(KeyPressEventArgs e)
+        {
+            foreach (VisualControl vc in Controls)
+                vc.KeyPress(e);
+        }
+
         internal void AddControl(VisualControl vc)
         {
             Debug.Assert(vc != null);
