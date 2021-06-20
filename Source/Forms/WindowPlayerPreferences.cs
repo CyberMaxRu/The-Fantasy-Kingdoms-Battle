@@ -192,7 +192,10 @@ namespace Fantasy_Kingdoms_Battle
         private void BtnCancel_Click(object sender, EventArgs e)
         {
             if ((Program.formMain.CurrentLobby != null) && !Program.formMain.CurrentLobby.CheckUniqueAvatars())
+            {
+                WindowInfo.ShowInfo("Информация", "Выбранный аватар уже используется другим игроком.\n\rВыберите другой аватар.");
                 return;
+            }
 
                 CloseForm(DialogResult.Cancel);
         }
@@ -200,7 +203,10 @@ namespace Fantasy_Kingdoms_Battle
         private void BtnAccept_Click(object sender, EventArgs e)
         {
             if ((Program.formMain.CurrentLobby != null) && !Program.formMain.CurrentLobby.CheckUniqueAvatars())
+            {
+                WindowInfo.ShowInfo("Информация", "Выбранный аватар уже используется другим игроком.\n\rВыберите другой аватар.");
                 return;
+            }
 
             CloseForm(DialogResult.OK);
         }
