@@ -119,10 +119,12 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(Visible);
 
-            Click?.Invoke(this, new EventArgs());
+            if (AllowClick())
+                Click?.Invoke(this, new EventArgs());
         }
 
         protected virtual bool Selected() => false;
+        protected virtual bool AllowClick() => true;
 
         private void PrepareBorder()
         {

@@ -54,9 +54,9 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
-            Debug.Assert(bmpNormal != null);
-            Debug.Assert(bmpDisabled != null);
-            Debug.Assert(bmpPressed != null);
+            //Debug.Assert(bmpNormal != null);
+            //Debug.Assert(bmpDisabled != null);
+            //Debug.Assert(bmpPressed != null);
 
             bmpForDraw = !Enabled ? bmpDisabled : mouseOver && mouseClicked ? bmpPressed : mouseOver ? bmpHot : bmpNormal;
 
@@ -87,11 +87,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.MouseLeave();
 
-            if (Enabled)
-            {
-                mouseOver = false;
-                Program.formMain.SetNeedRedrawFrame();
-            }
+            mouseOver = false;
+            Program.formMain.SetNeedRedrawFrame();
         }
 
         internal override void MouseDown()
@@ -116,5 +113,6 @@ namespace Fantasy_Kingdoms_Battle
                 Program.formMain.SetNeedRedrawFrame();
             }
         }
+        protected override bool AllowClick() => Enabled;
     }
 }
