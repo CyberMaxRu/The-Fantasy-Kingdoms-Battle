@@ -13,6 +13,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         public VCSeparator(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
+            Width = GetBitmap().Width;
         }
 
         protected override int WidthCap() => 10;
