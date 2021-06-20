@@ -78,6 +78,14 @@ namespace Fantasy_Kingdoms_Battle
             AdjustSize();
             ToCentre();
             Program.formMain.LayerChanged();
+
+            if (FormMain.Config.AutoCreatedPlayer)
+            {
+                WindowPlayerPreferences wpf = new WindowPlayerPreferences();
+                wpf.ShowDialog();
+                wpf.Dispose();
+            }
+
         }
     }
 }

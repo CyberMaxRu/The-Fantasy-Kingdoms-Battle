@@ -709,7 +709,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 // 
                 void SetStage(string text)
-                {
+                { 
                     lblStage.Text = text + "...";
                     lblStage.Refresh();
                 }
@@ -759,6 +759,7 @@ namespace Fantasy_Kingdoms_Battle
 
             WindowMainMenu w = new WindowMainMenu();
             w.Show();
+
             //ShowFrame(true);s
         }
 

@@ -2,9 +2,9 @@
 <Players>
   <Player>
     <ID>HumanPlayer1</ID>
-    <Name>Игрок</Name>
+    <Name>CyberMax</Name>
     <Description>-</Description>
     <ImageIndex>18</ImageIndex>
-    <DirectoryAvatar>F:\Projects\C-Sharp\Fantasy King's Battle\bin\Debug\Avatars</DirectoryAvatar>
+    <DirectoryAvatar />
   </Player>
 </Players>

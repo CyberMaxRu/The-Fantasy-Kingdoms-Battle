@@ -59,10 +59,12 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     HumanPlayers.Add(new HumanPlayer(n));
                 }
+                AutoCreatedPlayer = false;
             }
             else
             {
                 AddHumanPlayer("Игрок");
+                AutoCreatedPlayer = true;
             }
 
             // Загрузка конфигураций лобби
@@ -242,6 +244,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<TypeLobby> TypeLobbies { get; } = new List<TypeLobby>();
         internal List<ComputerPlayer> ComputerPlayers { get; } = new List<ComputerPlayer>();
         internal List<HumanPlayer> HumanPlayers { get; } = new List<HumanPlayer>();
+        internal bool AutoCreatedPlayer { get; }
         internal List<TypeMonster> TypeMonsters { get; } = new List<TypeMonster>();
 
         // Сооружения, постройки, логова
