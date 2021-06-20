@@ -26,6 +26,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.DoClick();
 
+            Program.formMain.PlayPushButton();
             (Parent as VCTabControl).ActivatePage(IndexPage);
             Program.formMain.SetNeedRedrawFrame();
         }
