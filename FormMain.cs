@@ -393,7 +393,7 @@ namespace Fantasy_Kingdoms_Battle
                     imListObjectsBig.Add(blInternalAvatars.GetImage(i, true, false));
 
                 ImageIndexExternalAvatar = imListObjectsBig.Count;
-                blExternalAvatars = new BitmapList(0, 128, true, false);
+                blExternalAvatars = new BitmapList(128, true, false);
 
                 imListObjectsCell = new BitmapList(imListObjectsBig, 48, Config.BorderInBigIcons, bmpMaskSmall);
 

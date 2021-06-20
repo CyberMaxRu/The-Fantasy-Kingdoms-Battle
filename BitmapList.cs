@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Drawing.Drawing2D;
 using System.Runtime.InteropServices;
 using System.Drawing.Imaging;
+using System.Collections.Generic;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -12,10 +13,10 @@ namespace Fantasy_Kingdoms_Battle
     // Класс - список картинок
     internal sealed class BitmapList
     {
-        private Bitmap[] bitmapsNormal;
-        private Bitmap[] bitmapsDisabled;
-        private Bitmap[] bitmapsNormalOver;
-        private Bitmap[] bitmapsDisabledOver;
+        private List<Bitmap> bitmapsNormal;
+        private List<Bitmap> bitmapsDisabled;
+        private List<Bitmap> bitmapsNormalOver;
+        private List<Bitmap> bitmapsDisabledOver;
 
         public BitmapList(Bitmap bmp, int size, bool withDisabled, bool withOver)
         {
@@ -47,12 +48,12 @@ namespace Fantasy_Kingdoms_Battle
             bmp.Dispose();
         }
 
-        public BitmapList(int countIcons, int size, bool withDisabled, bool withOver)
+        public BitmapList(int size, bool withDisabled, bool withOver)
         {
             Size = size;
             WithDisabled = withDisabled;
             WithOver = withOver;
-            CreateArrays(countIcons);
+            CreateArrays();
         }
 
         public BitmapList(BitmapList fromList, int newSize, int borderWidth, Bitmap mask)
@@ -68,18 +69,18 @@ namespace Fantasy_Kingdoms_Battle
             Size = newSize;
             WithDisabled = fromList.WithDisabled;
             WithOver = fromList.WithOver;
-            CreateArrays(fromList.Count);
+            CreateArrays();
 
             for (int i = 0; i < fromList.Count; i++)
             {
-                ReplaceImageWithResize(fromList, i, borderWidth, mask);
+                AddWithResize(fromList, i, borderWidth, mask);
             }
         }
 
         internal int Size { get; }
         internal bool WithDisabled { get; set; }
         internal bool WithOver { get; set; }
-        internal int Count { get => bitmapsNormal.Length; }
+        internal int Count { get => bitmapsNormal.Count; }
 
         internal void AddWithResize(BitmapList fromList, int idx, int borderWidth, Bitmap mask)
         {
@@ -135,16 +136,10 @@ namespace Fantasy_Kingdoms_Battle
 
         private void IncCapacity()
         {
-            Array.Resize(ref bitmapsNormal, bitmapsNormal.Length + 1);
-
-            if (bitmapsNormalOver != null)
-                Array.Resize(ref bitmapsNormalOver, bitmapsNormalOver.Length + 1);
-
-            if (bitmapsDisabled != null)
-                Array.Resize(ref bitmapsDisabled, bitmapsDisabled.Length + 1);
-
-            if (bitmapsDisabledOver != null)
-                Array.Resize(ref bitmapsDisabledOver, bitmapsDisabledOver.Length + 1);
+            bitmapsNormal?.Add(null);
+            bitmapsNormalOver?.Add(null);
+            bitmapsDisabled?.Add(null);
+            bitmapsDisabledOver?.Add(null);
         }
 
         internal void Add(Bitmap bmp)
@@ -153,7 +148,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(bmp.Size.Height == Size);
 
             IncCapacity();
-            ReplaceImage(bmp, bitmapsNormal.Length - 1);
+            ReplaceImage(bmp, bitmapsNormal.Count - 1);
         }
 
         internal void ReplaceImage(Bitmap bmp, int index)
@@ -170,26 +165,26 @@ namespace Fantasy_Kingdoms_Battle
                 bitmapsDisabledOver[index] = ConversionBitmap(bitmapsDisabled[index], ImageModeConversion.Bright);
         }
 
-        private void CreateArrays(int countIcons)
+        private void CreateArrays()
         {
-            bitmapsNormal = new Bitmap[countIcons];
+            bitmapsNormal = new List<Bitmap>();
             if (WithOver)
-                bitmapsNormalOver = new Bitmap[countIcons];
+                bitmapsNormalOver = new List<Bitmap>();
 
             if (WithDisabled)
             {
-                bitmapsDisabled = new Bitmap[countIcons];
+                bitmapsDisabled = new List<Bitmap>();
 
                 if (WithOver)
-                    bitmapsDisabledOver = new Bitmap[countIcons];
+                    bitmapsDisabledOver = new List<Bitmap>();
             }
         }
 
-        private Bitmap[] CreateArray(Bitmap bitmap, int size)
+        private List<Bitmap> CreateArray(Bitmap bitmap, int size)
         {
             int columns = bitmap.Width / size;
             int lines = bitmap.Height / size;
-            Bitmap[] array = new Bitmap[lines * columns];
+            List<Bitmap> array = new List<Bitmap>();
             Bitmap bmp;
             Graphics g;
             
@@ -201,7 +196,7 @@ namespace Fantasy_Kingdoms_Battle
                     g.DrawImage(bitmap, 0, 0, new Rectangle(x * size, y * size, size, size), GraphicsUnit.Pixel);                    
                     g.Dispose();
 
-                    array[y * columns + x] = bmp;
+                    array.Add(bmp);
                 }
 
             return array;
@@ -252,7 +247,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(imageIndex >= 0);
             Debug.Assert(imageIndex < Count);
 
-            Bitmap[] array;
+            List<Bitmap> array;
             if (enabled)
                 array = over ? bitmapsNormalOver : bitmapsNormal;
             else
@@ -270,19 +265,19 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void ClearFromIndex(int fromIndex)
         {
-            ClearArray(ref bitmapsNormal);
-            ClearArray(ref bitmapsNormalOver);
-            ClearArray(ref bitmapsDisabled);
-            ClearArray(ref bitmapsDisabledOver);
+            ClearArray(bitmapsNormal);
+            ClearArray(bitmapsNormalOver);
+            ClearArray(bitmapsDisabled);
+            ClearArray(bitmapsDisabledOver);
 
-            void ClearArray(ref Bitmap[] arr)
+            void ClearArray(List<Bitmap> arr)
             {
                 if (arr != null)
                 {
-                    for (int i = fromIndex; i < arr.Length; i++)
+                    for (int i = fromIndex; i < arr.Count; i++)
                         arr[i].Dispose();
 
-                    Array.Resize(ref arr, fromIndex);
+                    arr.RemoveRange(fromIndex, arr.Count - fromIndex);
                 }
             }
         }
