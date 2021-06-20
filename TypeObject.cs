@@ -40,7 +40,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal string ID { get; }// Уникальный (в пределах списка) код типа объекта
-        internal string Name { get; }// Наименование типа объекта
+        internal string Name { get; private set; }// Наименование типа объекта
         internal string Description { get; }// Описание типа объекта
         internal int ImageIndex { get; private set; }// Код иконки типа объекта
 
@@ -52,6 +52,14 @@ namespace Fantasy_Kingdoms_Battle
         internal void ChangeImageIndex(int newImageIndex)
         {
             ImageIndex = newImageIndex;
+        }
+
+        internal void SetName(string name)
+        {
+            Debug.Assert(name.Length > 0);
+            Debug.Assert(name.Length <= FormMain.MAX_LENGTH_USERNAME);
+
+            Name = name;
         }
     }
 }
