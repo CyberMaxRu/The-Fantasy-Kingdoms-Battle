@@ -203,7 +203,7 @@ namespace Fantasy_Kingdoms_Battle
                 btnBuyOrUpgrade.ImageIsEnabled = Building.CheckRequirements();
             }
 
-            if (TypeConstruction.TrainedHero != null)
+            if ((TypeConstruction.TrainedHero != null) && !(TypeConstruction is TypeEconomicConstruction))
             {
                 //btnHireHero.ImageIndex = (Building.Level > 0) && ((Building.Heroes.Count == Building.MaxHeroes()) || (Building.MaxHeroesAtPlayer() == true))  ? -1 : GuiUtils.GetImageIndexWithGray(btnHireHero.ImageList, c.TrainedHero.ImageIndex, Building.CanTrainHero());
                 btnHireHero.Visible = true;
@@ -218,7 +218,7 @@ namespace Fantasy_Kingdoms_Battle
             imgMapObject.Level = Building.Building.LevelAsQuantity ? 0 : Building.Level;
             imgMapObject.Quantity = Building.Building.LevelAsQuantity ? Building.Level : 0;
 
-            if ((Building.Building.TrainedHero != null) && (Building.Level > 0) && (Building.Heroes.Count > 0))
+            if ((Building.Building.TrainedHero != null) && !(TypeConstruction is TypeEconomicConstruction) && (Building.Level > 0) && (Building.Heroes.Count > 0))
             {
                 btnHeroes.Cost = Building.Heroes.Count.ToString() + "/" + Building.MaxHeroes();
                 btnHeroes.ImageIndex = Program.formMain.TreatImageIndex(Building.Building.TrainedHero.ImageIndex, Building.Player);
