@@ -35,7 +35,11 @@ namespace Fantasy_Kingdoms_Battle
             btnExitToWindows.Width = Width - 80 - 80;
             btnExitToWindows.Click += BtnExitToWindows_Click;
 
-            btnGamePreferences = new VCButton(bmpMenu, 80, btnExitToWindows.ShiftY - 40, "Настройки");
+            btnExitToMainMenu = new VCButton(bmpMenu, 80, btnExitToWindows.ShiftY - 40, "Выход в главное меню");
+            btnExitToMainMenu.Width = Width - 80 - 80;
+            btnExitToMainMenu.Click += BtnExitToMainMenu_Click;
+
+            btnGamePreferences = new VCButton(bmpMenu, 80, btnExitToMainMenu.ShiftY - 40, "Настройки");
             btnGamePreferences.Width = Width - 80 - 80;
             btnGamePreferences.Click += BtnSettings_Click;
 
@@ -44,6 +48,11 @@ namespace Fantasy_Kingdoms_Battle
             btnPlayerPreferences.Click += BtnPlayerPreferences_Click;
 
             CancelButton = btnBackToGame;
+        }
+
+        private void BtnExitToMainMenu_Click(object sender, EventArgs e)
+        {
+            
         }
 
         private void BtnPlayerPreferences_Click(object sender, EventArgs e)
