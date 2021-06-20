@@ -81,6 +81,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCToolLabel labelGreatness;
         private readonly VCLabelM2 labelNamePlayer;
 
+        private readonly VCIconButton btnInGameMenu;
         private readonly VCIconButton btnEndTurn;
 
         private readonly VisualControl panelLairWithFlags;
@@ -525,6 +526,9 @@ namespace Fantasy_Kingdoms_Battle
                 labelNamePlayer.StringFormat.LineAlignment = StringAlignment.Center;
                 labelNamePlayer.Width = 16;
 
+                btnInGameMenu = CreateButton(TopControl, ilGui, GUI_SETTINGS, Config.GridSize, Config.GridSize, BtnInGameMenu_Click, BtnInGameMenu_MouseHover);
+                btnInGameMenu.UseFilter = false;
+                btnInGameMenu.HighlightUnderMouse = true;
                 btnEndTurn = CreateButton(TopControl, ilGui, GUI_HOURGLASS, 0, Config.GridSize, BtnEndTurn_Click, BtnEndTurn_MouseHover);
                 panelLairWithFlags = new VisualControl(MainControl, 0, bmpToolbar.Height + Config.GridSize);
                 panelLairWithFlags.Width = Program.formMain.bmpBorderForIcon.Width;
@@ -909,6 +913,17 @@ namespace Fantasy_Kingdoms_Battle
                     gfxFrame = Graphics.FromImage(bmpFrame);
                 }
             }
+        }
+        private void BtnInGameMenu_Click(object sender, EventArgs e)
+        {
+            ShowInGameMenu();
+        }
+
+        private void BtnInGameMenu_MouseHover(object sender, EventArgs e)
+        {
+            formHint.Clear();
+            formHint.AddStep1Header("Меню", "", "Показать внутриигровое меню");
+            formHint.DrawHint(btnInGameMenu);
         }
 
         private void BtnEndTurn_Click(object sender, EventArgs e)
@@ -1545,24 +1560,29 @@ namespace Fantasy_Kingdoms_Battle
             TreatMouseMove(e.Button == MouseButtons.Left);
         }
 
+        private void ShowInGameMenu()
+        {
+            WindowMenuInGame w = new WindowMenuInGame();
+            DialogResult dr = w.ShowDialog();
+            switch (dr)
+            {
+                case DialogResult.Abort:
+                    Close();
+                    break;
+                default:
+                    break;
+            }
+
+            ShowFrame(true);
+        }
+
         protected override void OnKeyUp(KeyEventArgs e)
         {
             base.OnKeyUp(e);
 
             if ((e.KeyCode == Keys.Escape) && (Layers.Count == 1))
             {
-                WindowMenuInGame w = new WindowMenuInGame();
-                DialogResult dr = w.ShowDialog();
-                switch (dr)
-                {
-                    case DialogResult.Abort:
-                        Close();
-                        break;
-                    default:
-                        break;
-                }
-
-                ShowFrame(true);
+                ShowInGameMenu();
             }
             else
                 currentLayer.KeyUp(e);
