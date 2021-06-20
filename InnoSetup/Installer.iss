@@ -27,6 +27,8 @@ OutputBaseFilename=FKB_Setup
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
+WizardSmallImageFile=f:\Projects\C-Sharp\Fantasy King's Battle\InnoSetup\Rebirth_small.bmp
+WizardImageAlphaFormat=defined
 UninstallDisplayIcon={app}\Uninstall.ico
 [Languages]
 Name: "russian"; MessagesFile: "compiler:Languages\Russian.isl"
