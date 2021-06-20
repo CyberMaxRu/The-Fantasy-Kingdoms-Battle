@@ -16,11 +16,15 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCButton btnAccept;
         private readonly VCButton btnCancel;
 
+        private readonly VCSeparator sprTop;
+        private readonly VCLabelM2 lblTextForAvatar;
         private readonly VCImageBig imgAvatar;
         private readonly VCIconButton btnPriorAvatar;
         private readonly VCIconButton btnNextAvatar;
-        private readonly VCButton btnLoadAvatar;
+        private readonly VCButton btnAddAvatar;
+        private readonly VCButton btnChangeAvatar;
         private readonly VCButton btnDeleteAvatar;
+        private readonly VCSeparator sprBottom;
 
         private VCButton btnRename;
 
@@ -30,27 +34,36 @@ namespace Fantasy_Kingdoms_Battle
 
             windowCaption.Caption = Program.formMain.CurrentHumanPlayer.Name;
 
-            imgAvatar = new VCImageBig(ClientControl, 0);
+            sprTop = new VCSeparator(ClientControl, 0, 0);
+            lblTextForAvatar = new VCLabelM2(ClientControl, 0, sprTop.NextTop() - FormMain.Config.GridSize, Program.formMain.fontParagraph, Color.White, 20, "Аватар:");
+            lblTextForAvatar.StringFormat.Alignment = StringAlignment.Near;
+            lblTextForAvatar.StringFormat.LineAlignment = StringAlignment.Near;
+            imgAvatar = new VCImageBig(ClientControl, lblTextForAvatar.NextTop());
 
             btnPriorAvatar = new VCIconButton(ClientControl, 0, 0, Program.formMain.ilGui24, FormMain.GUI_24_BUTTON_LEFT);
             btnPriorAvatar.ShiftY = imgAvatar.ShiftY + ((imgAvatar.Height - btnPriorAvatar.Height) / 2);
             btnPriorAvatar.Click += BtnPriorAvatar_Click;
             imgAvatar.ShiftX = btnPriorAvatar.Width;
             btnNextAvatar = new VCIconButton(ClientControl, imgAvatar.ShiftX + imgAvatar.Width, btnPriorAvatar.ShiftY, Program.formMain.ilGui24, FormMain.GUI_24_BUTTON_RIGHT);
-            btnNextAvatar.Click += BtnNextAvatar_Click;                 
+            btnNextAvatar.Click += BtnNextAvatar_Click;
 
-            btnLoadAvatar = new VCButton(ClientControl, btnNextAvatar.NextLeft(), imgAvatar.ShiftY, "Загрузить аватар");
-            btnLoadAvatar.Width = 240;
-            btnLoadAvatar.Click += BtnLoadAvatar_Click;
-            btnDeleteAvatar = new VCButton(ClientControl, btnLoadAvatar.ShiftX, btnLoadAvatar.NextTop(), "Удалить аватар");
+            btnAddAvatar = new VCButton(ClientControl, btnNextAvatar.NextLeft(), imgAvatar.ShiftY, "Добавить аватар");
+            btnAddAvatar.Width = 240;
+            btnAddAvatar.Click += BtnAddAvatar_Click;
+            btnChangeAvatar = new VCButton(ClientControl, btnAddAvatar.ShiftX, btnAddAvatar.NextTop(), "Изменить аватар");
+            btnChangeAvatar.Width = 240;
+            btnChangeAvatar.Click += BtnChangeAvatar_Click;
+            btnDeleteAvatar = new VCButton(ClientControl, btnAddAvatar.ShiftX, btnChangeAvatar.NextTop(), "Удалить аватар");
             btnDeleteAvatar.Width = 240;
             btnDeleteAvatar.Click += BtnDeleteAvatar_Click;
 
-            btnRename = new VCButton(ClientControl, 0, imgAvatar.NextTop() + FormMain.Config.GridSize, "Переименовать");
+            sprBottom = new VCSeparator(ClientControl, 0, imgAvatar.NextTop());
+
+            btnRename = new VCButton(ClientControl, 0, sprBottom.NextTop() + FormMain.Config.GridSize, "Переименовать");
             btnRename.Width = 200;
             btnRename.Click += BtnRename_Click;
 
-            btnAccept = new VCButton(ClientControl, 0, imgAvatar.NextTop() + (FormMain.Config.GridSize * 8), "Принять");
+            btnAccept = new VCButton(ClientControl, 0, btnRename.NextTop() + (FormMain.Config.GridSize * 8), "Принять");
             btnAccept.Click += BtnAccept_Click;
             btnCancel = new VCButton(ClientControl, 0, btnAccept.ShiftY, "Отмена");
             btnCancel.ShiftX = ClientControl.Width - btnCancel.Width;
@@ -65,9 +78,29 @@ namespace Fantasy_Kingdoms_Battle
             UpdateNumberAvatar();
         }
 
+        internal override void AdjustSize()
+        {
+            lblTextForAvatar.Width = ClientControl.Width;
+
+            base.AdjustSize();
+
+            sprTop.Width = ClientControl.Width;
+            sprBottom.Width = ClientControl.Width;
+        }
+
+        private void BtnChangeAvatar_Click(object sender, EventArgs e)
+        {
+            string filename = SelectFileAvatar();
+            if (filename.Length > 0)
+            {
+                if (Program.formMain.ChangeAvatar(curImageIndexAvatar, filename))
+                    UpdateNumberAvatar();
+            }
+        }
+
         private void BtnNextAvatar_Click(object sender, EventArgs e)
         {
-            if (curImageIndexAvatar - Program.formMain.ImageIndexFirstAvatar < Program.formMain.blInternalAvatars.Count - 1)
+            if (curImageIndexAvatar - Program.formMain.ImageIndexFirstAvatar < Program.formMain.AvatarsCount - 1)
                 curImageIndexAvatar++;
             else
                 curImageIndexAvatar = Program.formMain.ImageIndexFirstAvatar;
@@ -80,41 +113,65 @@ namespace Fantasy_Kingdoms_Battle
             if (curImageIndexAvatar - Program.formMain.ImageIndexFirstAvatar > 0)
                 curImageIndexAvatar--;
             else
-                curImageIndexAvatar = Program.formMain.ImageIndexFirstAvatar + Program.formMain.blInternalAvatars.Count - 1;
+                curImageIndexAvatar = Program.formMain.ImageIndexFirstAvatar + Program.formMain.AvatarsCount - 1;
 
             UpdateNumberAvatar();
         }
 
         private void BtnDeleteAvatar_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Program.formMain.DeleteAvatar(curImageIndexAvatar);
+
+            if (curImageIndexAvatar >= Program.formMain.ImageIndexFirstAvatar + Program.formMain.AvatarsCount)
+                curImageIndexAvatar--;
+
+            UpdateNumberAvatar();
         }
 
-        private void BtnLoadAvatar_Click(object sender, EventArgs e)
+        private void BtnAddAvatar_Click(object sender, EventArgs e)
         {
-            /*OpenFileDialog OPF = new OpenFileDialog();
-            OPF.InitialDirectory = lastDirAvatar?.Length > 0 ? lastDirAvatar : Environment.CurrentDirectory;
-            OPF.FileName = "";
-            OPF.CheckFileExists = true;
-            OPF.Multiselect = false;
-            OPF.Filter = "png files (*.png)|*.png|jpg files (*.jpg)|*.jpg";
-            if (OPF.ShowDialog() == DialogResult.OK)
+            string filename = SelectFileAvatar();
+            if (filename.Length > 0)
             {
-                filenameAvatar = OPF.FileName;
-                lastDirAvatar = Path.GetDirectoryName(filenameAvatar);
-                ShowAvatar();
-            }*/
+                Program.formMain.AddAvatar(filename);
+                curImageIndexAvatar = Program.formMain.ImageIndexFirstAvatar + Program.formMain.blInternalAvatars.Count
+                    + Program.formMain.blExternalAvatars.Count - 1;
+                UpdateNumberAvatar();
+            }
+        }
+
+        private string SelectFileAvatar()
+        {
+            OpenFileDialog OPF = new OpenFileDialog();
+            try
+            {
+                OPF.InitialDirectory = lastDirAvatar?.Length > 0 ? lastDirAvatar : Environment.CurrentDirectory;
+                OPF.FileName = "";
+                OPF.CheckFileExists = true;
+                OPF.Multiselect = false;
+                OPF.Filter = "Image files (*.png;*.jpg;*.jpeg;*.bmp)|*.png;*.jpg;*.jpeg;*.bmp";
+                return OPF.ShowDialog() == DialogResult.OK ? OPF.FileName : "";
+            }
+            finally
+            {
+                OPF.Dispose();
+            }
         }
 
         private void BtnRename_Click(object sender, EventArgs e)
         {
-            
         }
 
         private void UpdateNumberAvatar()
         {
             imgAvatar.ImageIndex = curImageIndexAvatar;
-            imgAvatar.Cost = $"{curImageIndexAvatar - Program.formMain.ImageIndexFirstAvatar + 1}/{Program.formMain.blInternalAvatars.Count}";
+            imgAvatar.Cost = $"{curImageIndexAvatar - Program.formMain.ImageIndexFirstAvatar + 1}/{Program.formMain.AvatarsCount}";
+
+            btnChangeAvatar.Enabled = curImageIndexAvatar >= Program.formMain.ImageIndexExternalAvatar;
+            btnDeleteAvatar.Enabled = btnChangeAvatar.Enabled;
+
+            Program.formMain.CurrentHumanPlayer.ChangeImageIndex(curImageIndexAvatar - Program.formMain.ImageIndexFirstAvatar);
+            FormMain.Config.SaveHumanPlayers();
         }
 
         private void BtnCancel_Click(object sender, EventArgs e)

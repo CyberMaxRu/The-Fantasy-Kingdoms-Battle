@@ -35,7 +35,6 @@ namespace Fantasy_Kingdoms_Battle
                     IndexInternalAvatar = XmlUtils.GetInteger(doc.SelectSingleNode("Settings/Player/IndexAvatar"));
                     if (IndexInternalAvatar < -1)
                         IndexInternalAvatar = 0;
-                    FileNameAvatar = XmlUtils.GetString(doc.SelectSingleNode("Settings/Player/FileNameAvatar"));
                     DirectoryAvatar = XmlUtils.GetString(doc.SelectSingleNode("Settings/Player/DirectoryAvatar"));
                 }
                 catch (Exception e)
@@ -55,7 +54,6 @@ namespace Fantasy_Kingdoms_Battle
         internal bool BattlefieldShowPath { get; set; }
         internal bool BattlefieldShowGrid { get; set; }
         internal int IndexInternalAvatar { get; set; }
-        internal string FileNameAvatar { get; set; } = "";
         internal string DirectoryAvatar { get; set; } = "";
         internal Bitmap Avatar { get; private set; }
 
@@ -70,7 +68,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void LoadAvatar()
         {
-            Avatar?.Dispose();
+/*            Avatar?.Dispose();
             if (FileNameAvatar.Length == 0)
             {
                 Avatar = null;
@@ -87,7 +85,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
                 else
                     FileNameAvatar = "";
-            }
+            }*/
         }
 
         internal void SaveSettings()
@@ -108,12 +106,6 @@ namespace Fantasy_Kingdoms_Battle
             textWriter.WriteStartElement("Battlefield");
             textWriter.WriteElementString("ShowPath", BattlefieldShowPath.ToString());
             textWriter.WriteElementString("ShowGrid", BattlefieldShowGrid.ToString());
-            textWriter.WriteEndElement();
-
-            textWriter.WriteStartElement("Player");
-            textWriter.WriteElementString("IndexAvatar", IndexInternalAvatar.ToString());
-            textWriter.WriteElementString("FileNameAvatar", FileNameAvatar);
-            textWriter.WriteElementString("DirectoryAvatar", DirectoryAvatar);
             textWriter.WriteEndElement();
 
             textWriter.WriteEndElement();

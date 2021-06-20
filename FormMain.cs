@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.IO;
 using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.Media;
 
 namespace Fantasy_Kingdoms_Battle
@@ -35,6 +36,7 @@ namespace Fantasy_Kingdoms_Battle
 
         // ImageList'ы
         internal BitmapList blInternalAvatars;
+        internal readonly BitmapList blExternalAvatars;
         internal readonly BitmapList imListObjectsBig;
         internal readonly BitmapList imListObjectsCell;
         internal readonly BitmapList ilGui;
@@ -240,13 +242,14 @@ namespace Fantasy_Kingdoms_Battle
 
         internal PanelHint formHint;
         internal int ImageIndexFirstAvatar { get; }
+        internal int ImageIndexExternalAvatar { get; }
 
         internal static Random Rnd = new Random();
 
         //
         internal Settings Settings { get; private set; }
         internal MainConfig MainConfig { get; private set; }
-        internal int AvatarCount { get; private set; }
+        internal int AvatarsCount { get; private set; }
         internal HumanPlayer CurrentHumanPlayer { get; private set; }
 
         private Timer timerHover;
@@ -387,9 +390,14 @@ namespace Fantasy_Kingdoms_Battle
                 for (int i = 0; i < blInternalAvatars.Count; i++)
                     imListObjectsBig.Add(blInternalAvatars.GetImage(i, true, false));
 
-                ValidateAvatars();
+                ImageIndexExternalAvatar = imListObjectsBig.Count;
+                blExternalAvatars = new BitmapList(0, 128, true, false);
 
                 imListObjectsCell = new BitmapList(imListObjectsBig, 48, Config.BorderInBigIcons, bmpMaskSmall);
+
+                LoadBitmapObjects();
+
+                ValidateAvatars();
 
                 ilGui16 = new BitmapList(LoadBitmap("Gui16.png"), 16, true, false);
                 ilGui24 = new BitmapList(LoadBitmap("Gui24.png"), 24, true, true);
@@ -1985,6 +1993,106 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Config.HumanPlayers.IndexOf(hp) != -1);
 
             CurrentHumanPlayer = hp;
+        }
+
+        internal bool AddAvatar(string filename)
+        {
+            Bitmap bmpAvatar = GuiUtils.PrepareAvatar(filename);
+            if (bmpAvatar != null)
+            {
+                // Подбираем имя файла
+                string newFilenameAvatar;
+                for (int i = 0; ; i++)
+                {
+                    newFilenameAvatar = $"Avatar{i}.png";
+                    if (!File.Exists(dirResources + @"ExternalAvatars\" + newFilenameAvatar))
+                        break;
+                }
+
+                // Записываем аватар в папку аватаров
+                if (!Directory.Exists(dirResources + @"ExternalAvatars\"))
+                    Directory.CreateDirectory(dirResources + @"ExternalAvatars\");
+                bmpAvatar.Save(dirResources + @"ExternalAvatars\" + newFilenameAvatar, ImageFormat.Png);
+                Config.ExternalAvatars.Add(newFilenameAvatar);
+                Config.SaveExternalAvatars();
+
+                bmpAvatar.Dispose();
+                // Загружаем заново иконки
+                LoadBitmapObjects();
+
+                return true;
+            }
+            else
+                return false;
+        }
+
+        internal void DeleteAvatar(int index)
+        {
+            Debug.Assert(index >= ImageIndexExternalAvatar);
+
+            // Удаляем из конфигурации
+            int idx = index - ImageIndexExternalAvatar;
+            string filename = Config.ExternalAvatars[idx];
+            Config.ExternalAvatars.RemoveAt(idx);
+            Config.SaveExternalAvatars();
+
+            // Удаляем файл
+            if (File.Exists(dirResources + @"ExternalAvatars\" + filename))
+                File.Delete(dirResources + @"ExternalAvatars\" + filename);
+
+            LoadBitmapObjects();
+        }
+
+        internal bool ChangeAvatar(int index, string filename)
+        {
+            Debug.Assert(index >= ImageIndexExternalAvatar);
+
+            Bitmap bmpAvatar = GuiUtils.PrepareAvatar(filename);
+            if (bmpAvatar != null)
+            {
+                int idx = index - ImageIndexExternalAvatar;
+                string localFilename = Config.ExternalAvatars[idx];
+
+                // Удаляем старый файл
+                if (File.Exists(dirResources + @"ExternalAvatars\" + localFilename))
+                    File.Delete(dirResources + @"ExternalAvatars\" + localFilename);
+
+                // Записываем аватар в папку аватаров
+                bmpAvatar.Save(dirResources + @"ExternalAvatars\" + localFilename, ImageFormat.Png);
+                bmpAvatar.Dispose();
+
+                // Загружаем заново иконки
+                LoadBitmapObjects();
+
+                return true;
+            }
+            else
+                return false;
+        }
+
+        internal void LoadBitmapObjects()
+        {
+            imListObjectsBig.ClearFromIndex(ImageIndexExternalAvatar);
+            imListObjectsCell.ClearFromIndex(ImageIndexExternalAvatar);
+
+            // Загружаем внешние аватары
+            blExternalAvatars.ClearFromIndex(0);
+
+            Bitmap bmpAvatar;
+            foreach (string ea in Config.ExternalAvatars)
+            {
+                bmpAvatar = GuiUtils.PrepareAvatar(dirResources + @"ExternalAvatars\" + ea);
+                blExternalAvatars.Add(bmpAvatar);
+            }
+
+            for (int i = 0; i < blExternalAvatars.Count; i++)
+            {
+                imListObjectsBig.Add(blExternalAvatars.GetImage(i, true, false));
+                imListObjectsCell.AddWithResize(imListObjectsBig, imListObjectsBig.Count - 1, 1, bmpMaskSmall);
+            }
+
+            //
+            AvatarsCount = blInternalAvatars.Count + blExternalAvatars.Count;
         }
     }
 }

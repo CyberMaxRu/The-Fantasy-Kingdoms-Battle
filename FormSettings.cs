@@ -70,8 +70,6 @@ namespace Fantasy_Kingdoms_Battle
                 settings.BattlefieldShowPath = chkbShowPath.Checked;
                 settings.BattlefieldShowGrid = chkbShowGrid.Checked;
 
-                settings.FileNameAvatar = filenameAvatar;
-                settings.DirectoryAvatar = directoryAvatar;
                 settings.SaveSettings();
 
                 Program.formMain.ValidateAvatars();
@@ -88,7 +86,6 @@ namespace Fantasy_Kingdoms_Battle
             chkbShowPath.Checked = settings.BattlefieldShowPath;
             chkbShowGrid.Checked = settings.BattlefieldShowGrid;
 
-            filenameAvatar = settings.FileNameAvatar;
             directoryAvatar = settings.DirectoryAvatar;
             ShowAvatar();
         }

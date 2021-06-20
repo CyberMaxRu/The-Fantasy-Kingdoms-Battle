@@ -4,6 +4,6 @@
     <ID>HumanPlayer1</ID>
     <Name>Игрок</Name>
     <Description>-</Description>
-    <ImageIndex>0</ImageIndex>
+    <ImageIndex>17</ImageIndex>
   </Player>
 </Players>

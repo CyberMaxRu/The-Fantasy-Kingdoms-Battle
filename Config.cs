@@ -33,6 +33,14 @@ namespace Fantasy_Kingdoms_Battle
             xmlDoc = CreateXmlDocument("Config\\Game.xml");
             LoadConfigGame(xmlDoc);
 
+            // Загружаем внешние аватары
+            if (File.Exists(pathResources + @"\ExternalAvatars.xml"))
+                xmlDoc = CreateXmlDocument(@"\ExternalAvatars.xml");
+            foreach (XmlNode n in xmlDoc.SelectNodes("/ExternalAvatars/ExternalAvatar"))
+            {
+                ExternalAvatars.Add(n.InnerText);
+            }
+
             // Загрузка компьютерных игроков
             xmlDoc = CreateXmlDocument("Config\\ComputerPlayers.xml");
             foreach (XmlNode n in xmlDoc.SelectNodes("/ComputerPlayers/ComputerPlayer"))
@@ -254,6 +262,9 @@ namespace Fantasy_Kingdoms_Battle
         internal List<GroupArmour> GroupArmours { get; } = new List<GroupArmour>();
         internal int MaxLevelSkill { get; }
         internal List<TypeCreature> TypeCreatures { get; } = new List<TypeCreature>();
+
+        //
+        internal List<string> ExternalAvatars { get; } = new List<string>();
 
         // Константы
         internal int GridSize { get; private set; }// Размер ячейки сетки
@@ -790,7 +801,7 @@ namespace Fantasy_Kingdoms_Battle
             SaveHumanPlayers();
         }
 
-        private void SaveHumanPlayers()
+        internal void SaveHumanPlayers()
         {
             XmlTextWriter textWriter = new XmlTextWriter(Program.formMain.dirResources + "Players.xml", Encoding.UTF8);
             textWriter.WriteStartDocument();
@@ -802,6 +813,23 @@ namespace Fantasy_Kingdoms_Battle
             foreach (HumanPlayer hp in HumanPlayers)
             {
                 hp.SaveToXml(textWriter);
+            }
+
+            textWriter.WriteEndElement();
+            textWriter.Close();
+            textWriter.Dispose();
+        }
+
+        internal void SaveExternalAvatars()
+        {
+            XmlTextWriter textWriter = new XmlTextWriter(Program.formMain.dirResources + "ExternalAvatars.xml", Encoding.UTF8);
+            textWriter.WriteStartDocument();
+            textWriter.Formatting = Formatting.Indented;
+            textWriter.WriteStartElement("ExternalAvatars");
+
+            foreach (string ea in ExternalAvatars)
+            {
+                textWriter.WriteElementString("ExternalAvatar", ea); 
             }
 
             textWriter.WriteEndElement();

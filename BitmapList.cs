@@ -81,6 +81,12 @@ namespace Fantasy_Kingdoms_Battle
         internal bool WithOver { get; set; }
         internal int Count { get => bitmapsNormal.Length; }
 
+        internal void AddWithResize(BitmapList fromList, int idx, int borderWidth, Bitmap mask)
+        {
+            IncCapacity();
+            ReplaceImageWithResize(fromList, idx, borderWidth, mask);
+        }
+
         internal void ReplaceImageWithResize(BitmapList fromList, int idx, int borderWidth, Bitmap mask)
         {
             if (mask != null)
@@ -127,7 +133,7 @@ namespace Fantasy_Kingdoms_Battle
             gDest.Dispose();
         }
 
-        internal void Add(Bitmap bmp)
+        private void IncCapacity()
         {
             Array.Resize(ref bitmapsNormal, bitmapsNormal.Length + 1);
 
@@ -139,7 +145,14 @@ namespace Fantasy_Kingdoms_Battle
 
             if (bitmapsDisabledOver != null)
                 Array.Resize(ref bitmapsDisabledOver, bitmapsDisabledOver.Length + 1);
+        }
 
+        internal void Add(Bitmap bmp)
+        {
+            Debug.Assert(bmp.Size.Width == Size);
+            Debug.Assert(bmp.Size.Height == Size);
+
+            IncCapacity();
             ReplaceImage(bmp, bitmapsNormal.Length - 1);
         }
 
@@ -252,6 +265,26 @@ namespace Fantasy_Kingdoms_Battle
         internal void DrawImage(Graphics g, int imageIndex, bool enabled, bool over, int x, int y)
         {
             g.DrawImageUnscaled(GetImage(imageIndex, enabled, over), x, y);
+        }
+
+
+        internal void ClearFromIndex(int fromIndex)
+        {
+            ClearArray(ref bitmapsNormal);
+            ClearArray(ref bitmapsNormalOver);
+            ClearArray(ref bitmapsDisabled);
+            ClearArray(ref bitmapsDisabledOver);
+
+            void ClearArray(ref Bitmap[] arr)
+            {
+                if (arr != null)
+                {
+                    for (int i = fromIndex; i < arr.Length; i++)
+                        arr[i].Dispose();
+
+                    Array.Resize(ref arr, fromIndex);
+                }
+            }
         }
     }
 }
