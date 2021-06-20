@@ -80,6 +80,9 @@ namespace Fantasy_Kingdoms_Battle
             try
             {
                 Bitmap bmpRaw = new Bitmap(filename);
+                if (bmpRaw.Width != bmpRaw.Height)
+                    throw new Exception($"Аватар должен быть квадратный (текущий размер {bmpRaw.Size}).");
+
                 Bitmap newAvatar = new Bitmap(Program.formMain.imListObjectsBig.Size, Program.formMain.imListObjectsBig.Size);
 
                 Graphics gAvatar = Graphics.FromImage(newAvatar);
@@ -95,13 +98,14 @@ namespace Fantasy_Kingdoms_Battle
                     }
 
                 //
+                bmpRaw.Dispose();
                 gAvatar.Dispose();
 
                 return newAvatar;
             }
             catch (Exception e)
             {
-                ShowError("Ошибка при загрузке пользовательского аватара: " + e.Message);
+                ShowError("Ошибка при загрузке пользовательского аватара: " + Environment.NewLine + e.Message);
                 return null;
             }
         }
