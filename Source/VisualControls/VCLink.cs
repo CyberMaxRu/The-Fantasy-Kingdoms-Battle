@@ -29,7 +29,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
-            Color = MouseEntered ? Color.HotPink : Color.LightSkyBlue;
+            Color = MouseEntered ? Color.RoyalBlue : Color.LightSkyBlue;
 
             base.Draw(g);
         }
