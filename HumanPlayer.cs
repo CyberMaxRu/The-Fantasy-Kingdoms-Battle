@@ -58,7 +58,7 @@ namespace Fantasy_Kingdoms_Battle
             writer.WriteElementString("ID", ID);
             writer.WriteElementString("Name", Name);
             writer.WriteElementString("Description", Description);
-            writer.WriteElementString("ImageIndex", ImageIndex.ToString());
+            writer.WriteElementString("ImageIndex", (ImageIndex + 1).ToString());
             writer.WriteEndElement();
         }
     }
