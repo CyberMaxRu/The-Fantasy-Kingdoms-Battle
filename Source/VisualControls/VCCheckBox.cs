@@ -56,6 +56,7 @@ namespace Fantasy_Kingdoms_Battle
             base.MouseUp();
 
             Checked = !Checked;
+            Program.formMain.PlayPushButton();
             Program.formMain.NeedRedrawFrame();
         }
 
@@ -63,6 +64,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.MouseEnter(leftButtonDown);
 
+            Program.formMain.PlaySelectButton();
             Program.formMain.NeedRedrawFrame();
         }
     }
