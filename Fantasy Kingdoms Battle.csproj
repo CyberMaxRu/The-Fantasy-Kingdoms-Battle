@@ -81,6 +81,7 @@
     <Compile Include="Source\Forms\WindowAboutProgram.cs" />
     <Compile Include="Source\Forms\WindowConfirm.cs" />
     <Compile Include="Source\Forms\WindowConfirmExit.cs" />
+    <Compile Include="Source\Forms\WindowInfo.cs" />
     <Compile Include="Source\Forms\WindowMainMenu.cs" />
     <Compile Include="Source\Forms\WindowMenuInGame.cs" />
     <Compile Include="Source\Forms\WindowPlayerPreferences.cs" />
