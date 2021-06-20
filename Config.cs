@@ -39,6 +39,9 @@ namespace Fantasy_Kingdoms_Battle
             foreach (XmlNode n in xmlDoc.SelectNodes("/ExternalAvatars/ExternalAvatar"))
             {
                 ExternalAvatars.Add(n.InnerText);
+
+                if (ExternalAvatars.Count == FormMain.MAX_AVATARS)
+                    break;
             }
 
             // Загрузка компьютерных игроков

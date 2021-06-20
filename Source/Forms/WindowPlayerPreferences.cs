@@ -130,6 +130,11 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnAddAvatar_Click(object sender, EventArgs e)
         {
+            if (FormMain.Config.ExternalAvatars.Count >= FormMain.MAX_AVATARS)
+            {
+                return;
+            }
+
             string filename = SelectFileAvatar();
             if (filename.Length > 0)
             {

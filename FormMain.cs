@@ -107,6 +107,8 @@ namespace Fantasy_Kingdoms_Battle
 
         private const int DEFAULT_DPI = 96;
 
+        internal const int MAX_AVATARS = 2;
+
         internal const int GUI_HEROES = 0;
         internal const int GUI_GUILDS = 1;
         internal const int GUI_ECONOMY = 2;
