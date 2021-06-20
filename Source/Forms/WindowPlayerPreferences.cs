@@ -16,6 +16,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCButton btnAccept;
         private readonly VCButton btnCancel;
 
+        private readonly VCEdit editName;
         private readonly VCSeparator sprTop;
         private readonly VCLabelM2 lblTextForAvatar;
         private readonly VCImageBig imgAvatar;
@@ -26,15 +27,17 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCButton btnDeleteAvatar;
         private readonly VCSeparator sprBottom;
 
-        private VCButton btnRename;
-
         public WindowPlayerPreferences() : base()
         {
             curImageIndexAvatar = Program.formMain.CurrentHumanPlayer.GetImageIndexAvatar();
 
             windowCaption.Caption = Program.formMain.CurrentHumanPlayer.Name;
 
-            sprTop = new VCSeparator(ClientControl, 0, 0);
+            editName = new VCEdit(ClientControl, 0, 0, "", FormMain.MAX_LENGTH_USERNAME);
+            editName.Width = 240;
+            editName.Text = Program.formMain.CurrentHumanPlayer.Name;
+
+            sprTop = new VCSeparator(ClientControl, 0, editName.NextTop());
             lblTextForAvatar = new VCLabelM2(ClientControl, 0, sprTop.NextTop() - FormMain.Config.GridSize, Program.formMain.fontParagraph, Color.White, 20, "Аватар:");
             lblTextForAvatar.StringFormat.Alignment = StringAlignment.Near;
             lblTextForAvatar.StringFormat.LineAlignment = StringAlignment.Near;
@@ -44,6 +47,7 @@ namespace Fantasy_Kingdoms_Battle
             btnPriorAvatar.ShiftY = imgAvatar.ShiftY + ((imgAvatar.Height - btnPriorAvatar.Height) / 2);
             btnPriorAvatar.Click += BtnPriorAvatar_Click;
             imgAvatar.ShiftX = btnPriorAvatar.Width;
+            lblTextForAvatar.ShiftX = imgAvatar.ShiftX;
             btnNextAvatar = new VCIconButton(ClientControl, imgAvatar.ShiftX + imgAvatar.Width, btnPriorAvatar.ShiftY, Program.formMain.ilGui24, FormMain.GUI_24_BUTTON_RIGHT);
             btnNextAvatar.Click += BtnNextAvatar_Click;
 
@@ -59,11 +63,7 @@ namespace Fantasy_Kingdoms_Battle
 
             sprBottom = new VCSeparator(ClientControl, 0, imgAvatar.NextTop());
 
-            btnRename = new VCButton(ClientControl, 0, sprBottom.NextTop() + FormMain.Config.GridSize, "Переименовать");
-            btnRename.Width = 200;
-            btnRename.Click += BtnRename_Click;
-
-            btnAccept = new VCButton(ClientControl, 0, btnRename.NextTop() + (FormMain.Config.GridSize * 8), "Принять");
+            btnAccept = new VCButton(ClientControl, 0, sprBottom.NextTop(), "Принять");
             btnAccept.Click += BtnAccept_Click;
             btnCancel = new VCButton(ClientControl, 0, btnAccept.ShiftY, "Отмена");
             btnCancel.ShiftX = ClientControl.Width - btnCancel.Width;
@@ -80,7 +80,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void AdjustSize()
         {
-            lblTextForAvatar.Width = ClientControl.Width;
+            lblTextForAvatar.Width = ClientControl.Width - lblTextForAvatar.ShiftX;
 
             base.AdjustSize();
 
@@ -174,10 +174,6 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        private void BtnRename_Click(object sender, EventArgs e)
-        {
-        }
-
         private void UpdateNumberAvatar()
         {
             imgAvatar.ImageIndex = curImageIndexAvatar;
@@ -198,7 +194,7 @@ namespace Fantasy_Kingdoms_Battle
                 return;
             }
 
-                CloseForm(DialogResult.Cancel);
+            CloseForm(DialogResult.Cancel);
         }
 
         private void BtnAccept_Click(object sender, EventArgs e)
@@ -207,6 +203,19 @@ namespace Fantasy_Kingdoms_Battle
             {
                 WindowInfo.ShowInfo("Информация", "Выбранный аватар уже используется другим игроком.\n\rВыберите другой аватар.");
                 return;
+            }
+
+            if (editName.Text.Length == 0)
+            {
+                WindowInfo.ShowInfo("Информация", "Введите имя игрока.");
+                return;
+            }
+
+            if (Program.formMain.CurrentHumanPlayer.Name != editName.Text)
+            {
+                Program.formMain.CurrentHumanPlayer.SetName(editName.Text);
+                FormMain.Config.SaveHumanPlayers();
+                Program.formMain.ShowCurrentPlayerLobby();
             }
 
             CloseForm(DialogResult.OK);
