@@ -42,11 +42,16 @@ namespace Fantasy_Kingdoms_Battle
         internal string ID { get; }// Уникальный (в пределах списка) код типа объекта
         internal string Name { get; }// Наименование типа объекта
         internal string Description { get; }// Описание типа объекта
-        internal int ImageIndex { get; }// Код иконки типа объекта
+        internal int ImageIndex { get; private set; }// Код иконки типа объекта
 
         internal virtual void TuneDeferredLinks()
         {
 
+        }
+
+        internal void ChangeImageIndex(int newImageIndex)
+        {
+            ImageIndex = newImageIndex;
         }
     }
 }
