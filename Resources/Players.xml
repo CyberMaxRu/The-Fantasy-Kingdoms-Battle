@@ -4,7 +4,7 @@
     <ID>HumanPlayer1</ID>
     <Name>Игрок</Name>
     <Description>-</Description>
-    <ImageIndex>1</ImageIndex>
-    <DirectoryAvatar />
+    <ImageIndex>17</ImageIndex>
+    <DirectoryAvatar>F:\Projects\C-Sharp\Fantasy King's Battle\bin\Debug\Avatars</DirectoryAvatar>
   </Player>
 </Players>

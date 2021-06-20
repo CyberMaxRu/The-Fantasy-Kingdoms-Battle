@@ -120,12 +120,15 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnDeleteAvatar_Click(object sender, EventArgs e)
         {
-            Program.formMain.DeleteAvatar(curImageIndexAvatar);
+            if (WindowConfirm.ShowConfirm("Подтверждение", "Удалить аватар?"))
+            {
+                Program.formMain.DeleteAvatar(curImageIndexAvatar);
 
-            if (curImageIndexAvatar >= Program.formMain.ImageIndexFirstAvatar + Program.formMain.AvatarsCount)
-                curImageIndexAvatar--;
+                if (curImageIndexAvatar >= Program.formMain.ImageIndexFirstAvatar + Program.formMain.AvatarsCount)
+                    curImageIndexAvatar--;
 
-            UpdateNumberAvatar();
+                UpdateNumberAvatar();
+            }
         }
 
         private void BtnAddAvatar_Click(object sender, EventArgs e)

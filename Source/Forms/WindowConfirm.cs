@@ -51,5 +51,14 @@ namespace Fantasy_Kingdoms_Battle
             btnCancel.ShiftX = ClientControl.Width - btnCancel.Width;
             btnCancel.ShiftY = btnOk.ShiftY;
         }
+
+        internal static bool ShowConfirm(string caption, string text)
+        {
+            WindowConfirm wc = new WindowConfirm(caption, text);
+            bool res = wc.ShowDialog() == DialogResult.Yes;
+            wc.Dispose();
+
+            return res;
+        }
     }
 }
