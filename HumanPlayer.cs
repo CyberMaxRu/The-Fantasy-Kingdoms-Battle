@@ -16,6 +16,8 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Name.Length <= 31);
             Debug.Assert(Description.Length <= 100);
 
+            DirectoryAvatar = XmlUtils.GetString(n.SelectSingleNode("DirectoryAvatar"));
+
             foreach (HumanPlayer hp in FormMain.Config.HumanPlayers)
             {
                 Debug.Assert(ID != hp.ID);
@@ -40,6 +42,8 @@ namespace Fantasy_Kingdoms_Battle
             DisableComputerPlayerByAvatar();
         }
 
+        internal string DirectoryAvatar { get; set; }
+
         private void DisableComputerPlayerByAvatar()
         {
             foreach (ComputerPlayer cp in FormMain.Config.ComputerPlayers)
@@ -59,6 +63,7 @@ namespace Fantasy_Kingdoms_Battle
             writer.WriteElementString("Name", Name);
             writer.WriteElementString("Description", Description);
             writer.WriteElementString("ImageIndex", (ImageIndex + 1).ToString());
+            writer.WriteElementString("DirectoryAvatar", DirectoryAvatar);
             writer.WriteEndElement();
         }
     }

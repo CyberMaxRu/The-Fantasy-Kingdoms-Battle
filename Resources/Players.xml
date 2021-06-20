@@ -4,6 +4,7 @@
     <ID>HumanPlayer1</ID>
     <Name>Игрок</Name>
     <Description>-</Description>
-    <ImageIndex>17</ImageIndex>
+    <ImageIndex>1</ImageIndex>
+    <DirectoryAvatar />
   </Player>
 </Players>

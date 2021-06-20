@@ -397,8 +397,6 @@ namespace Fantasy_Kingdoms_Battle
 
                 LoadBitmapObjects();
 
-                ValidateAvatars();
-
                 ilGui16 = new BitmapList(LoadBitmap("Gui16.png"), 16, true, false);
                 ilGui24 = new BitmapList(LoadBitmap("Gui24.png"), 24, true, true);
                 ilParameters = new BitmapList(LoadBitmap("Parameters.png"), 24, true, false);
@@ -1389,22 +1387,6 @@ namespace Fantasy_Kingdoms_Battle
             formHint.Clear();
             formHint.AddStep1Header(text, "", hint);
             formHint.DrawHint(c);
-        }
-
-        internal void ValidateAvatars()
-        {
-            Settings.LoadAvatar();
-
-            if (lobby != null)
-            {
-                foreach (LobbyPlayer ph1 in lobby.Players)
-                    foreach (LobbyPlayer ph2 in lobby.Players)
-                        if (ph1 != ph2)
-                            Debug.Assert(ph1.GetImageIndexAvatar() != ph2.GetImageIndexAvatar());
-            }
-
-            if (lobby != null)
-                SetNeedRedrawFrame();
         }
 
         internal ImageList BigIconToSmall(ImageList ilBig)

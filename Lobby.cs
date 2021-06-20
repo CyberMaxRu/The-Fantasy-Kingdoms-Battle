@@ -406,5 +406,18 @@ namespace Fantasy_Kingdoms_Battle
         {
             return TypeLobby.DayStartTournament - Turn;
         }
+
+        internal bool CheckUniqueAvatars()
+        {
+            foreach (LobbyPlayer ph1 in Players)
+                foreach (LobbyPlayer ph2 in Players)
+                    if (ph1 != ph2)
+                        if (ph1.GetImageIndexAvatar() == ph2.GetImageIndexAvatar())
+                        {
+                            return false;
+                        }
+
+            return true;
+        }
     }
 }

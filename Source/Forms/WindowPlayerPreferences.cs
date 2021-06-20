@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using System.IO;
 
 namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class WindowPlayerPreferences : VCForm
     {
-        private string lastDirAvatar;
         private int curImageIndexAvatar;
 
         private readonly VCButton btnAccept;
@@ -145,12 +145,19 @@ namespace Fantasy_Kingdoms_Battle
             OpenFileDialog OPF = new OpenFileDialog();
             try
             {
-                OPF.InitialDirectory = lastDirAvatar?.Length > 0 ? lastDirAvatar : Environment.CurrentDirectory;
+                OPF.InitialDirectory = Program.formMain.CurrentHumanPlayer.DirectoryAvatar?.Length > 0 ? Program.formMain.CurrentHumanPlayer.DirectoryAvatar : Environment.CurrentDirectory;
                 OPF.FileName = "";
                 OPF.CheckFileExists = true;
                 OPF.Multiselect = false;
                 OPF.Filter = "Image files (*.png;*.jpg;*.jpeg;*.bmp)|*.png;*.jpg;*.jpeg;*.bmp";
-                return OPF.ShowDialog() == DialogResult.OK ? OPF.FileName : "";
+
+                if (OPF.ShowDialog() == DialogResult.OK)
+                {
+                    Program.formMain.CurrentHumanPlayer.DirectoryAvatar = Path.GetDirectoryName(OPF.FileName);
+                    return OPF.FileName;
+                }
+                else
+                    return "";
             }
             finally
             {
@@ -176,11 +183,17 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnCancel_Click(object sender, EventArgs e)
         {
-            CloseForm(DialogResult.Cancel);
+            if ((Program.formMain.CurrentLobby != null) && !Program.formMain.CurrentLobby.CheckUniqueAvatars())
+                return;
+
+                CloseForm(DialogResult.Cancel);
         }
 
         private void BtnAccept_Click(object sender, EventArgs e)
         {
+            if ((Program.formMain.CurrentLobby != null) && !Program.formMain.CurrentLobby.CheckUniqueAvatars())
+                return;
+
             CloseForm(DialogResult.OK);
         }
     }

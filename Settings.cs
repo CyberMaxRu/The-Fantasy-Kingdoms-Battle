@@ -32,9 +32,6 @@ namespace Fantasy_Kingdoms_Battle
                     BattlefieldShowPath = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Battlefield/ShowPath"), BattlefieldShowPath);
                     BattlefieldShowGrid = XmlUtils.GetBool(doc.SelectSingleNode("Settings/Battlefield/ShowGrid"), BattlefieldShowGrid);
 
-                    IndexInternalAvatar = XmlUtils.GetInteger(doc.SelectSingleNode("Settings/Player/IndexAvatar"));
-                    if (IndexInternalAvatar < -1)
-                        IndexInternalAvatar = 0;
                     DirectoryAvatar = XmlUtils.GetString(doc.SelectSingleNode("Settings/Player/DirectoryAvatar"));
                 }
                 catch (Exception e)
@@ -44,8 +41,6 @@ namespace Fantasy_Kingdoms_Battle
                    SetDefault();
                 }
             }
-            //if (IndexAvatar >= Program.formMain.ilPlayerAvatars.Images.Count)
-            //    IndexAvatar = Program.formMain.ilPlayerAvatars.Images.Count - 1;
         }
 
         internal bool ShowSplashVideo { get; set; }
@@ -53,9 +48,7 @@ namespace Fantasy_Kingdoms_Battle
         internal bool CheckUpdateOnStartup { get; set; }
         internal bool BattlefieldShowPath { get; set; }
         internal bool BattlefieldShowGrid { get; set; }
-        internal int IndexInternalAvatar { get; set; }
         internal string DirectoryAvatar { get; set; } = "";
-        internal Bitmap Avatar { get; private set; }
 
         internal void SetDefault()
         {
@@ -64,28 +57,6 @@ namespace Fantasy_Kingdoms_Battle
             CheckUpdateOnStartup = true;
             BattlefieldShowPath = false;
             BattlefieldShowGrid = false;
-        }
-
-        internal void LoadAvatar()
-        {
-/*            Avatar?.Dispose();
-            if (FileNameAvatar.Length == 0)
-            {
-                Avatar = null;
-                Program.formMain.imListObjectsBig.ReplaceImage(Program.formMain.blInternalAvatars.GetImage(0, true, false), Program.formMain.ImageIndexFirstAvatar);
-                Program.formMain.imListObjectsCell?.ReplaceImageWithResize(Program.formMain.imListObjectsBig, Program.formMain.ImageIndexFirstAvatar, 1, Program.formMain.bmpMaskSmall);
-            }
-            else
-            {
-                Avatar = GuiUtils.PrepareAvatar(FileNameAvatar);
-                if (Avatar != null)
-                {
-                    Program.formMain.imListObjectsBig.ReplaceImage(Avatar, Program.formMain.ImageIndexFirstAvatar);
-                    Program.formMain.imListObjectsCell?.ReplaceImageWithResize(Program.formMain.imListObjectsBig, Program.formMain.ImageIndexFirstAvatar, 1, Program.formMain.bmpMaskSmall);
-                }
-                else
-                    FileNameAvatar = "";
-            }*/
         }
 
         internal void SaveSettings()
