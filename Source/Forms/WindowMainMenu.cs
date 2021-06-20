@@ -47,7 +47,7 @@ namespace Fantasy_Kingdoms_Battle
             //btnPlayers.Width = Width - 80 - 80;
             //btnPlayers.Click += BtnPlayers_Click;
 
-            CancelButton = btnExitToWindows;
+            //CancelButton = btnExitToWindows;
         }
 
         private void BtnPlayerPreferences_Click(object sender, EventArgs e)
