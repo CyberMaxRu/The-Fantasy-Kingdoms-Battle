@@ -877,7 +877,7 @@ namespace Fantasy_Kingdoms_Battle
         int ICell.ImageIndex()
         {
             Debug.Assert(GetImageIndexAvatar() >= Program.formMain.ImageIndexFirstAvatar);
-            Debug.Assert(GetImageIndexAvatar() < Program.formMain.ImageIndexFirstAvatar + Program.formMain.blInternalAvatars.Count);
+            Debug.Assert(GetImageIndexAvatar() < Program.formMain.ImageIndexFirstAvatar + Program.formMain.AvatarsCount);
             return GetImageIndexAvatar();
         }
         bool ICell.NormalImage() => IsLive;
