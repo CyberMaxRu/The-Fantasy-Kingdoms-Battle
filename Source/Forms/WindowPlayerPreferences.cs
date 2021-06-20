@@ -135,6 +135,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (FormMain.Config.ExternalAvatars.Count >= FormMain.MAX_AVATARS)
             {
+                WindowInfo.ShowInfo("Информация", $"Достигнуто максимальное количество внешних аватаров: {FormMain.MAX_AVATARS}.");
                 return;
             }
 
