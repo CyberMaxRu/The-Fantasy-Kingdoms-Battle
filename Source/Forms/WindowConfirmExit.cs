@@ -8,13 +8,13 @@ using System.Windows.Forms;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal sealed class FormConfirmExit : VCForm
+    internal sealed class WindowConfirmExit : VCForm
     {
         private readonly VCButton btnOk;
         private readonly VCButton btnCancel;
         private readonly VCTextM2 textConfirm;
 
-        public FormConfirmExit() : base()
+        public WindowConfirmExit() : base()
         {
             windowCaption.Caption = "Выход из программы";
 

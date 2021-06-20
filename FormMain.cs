@@ -1023,7 +1023,7 @@ namespace Fantasy_Kingdoms_Battle
             if (ProgramState == ProgramState.Started)
             {
                 ProgramState = ProgramState.ConfirmQuit;
-                FormConfirmExit f = new FormConfirmExit();
+                WindowConfirmExit f = new WindowConfirmExit();
                 ProgramState = f.ShowDialog() == DialogResult.Yes ? ProgramState.NeedQuit : ProgramState.Started;
                 e.Cancel = ProgramState == ProgramState.Started;
 
