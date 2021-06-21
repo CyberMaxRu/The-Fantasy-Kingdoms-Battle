@@ -36,7 +36,7 @@ namespace Fantasy_Kingdoms_Battle
                 if (LeftButtonPressed)
                     ImageIndex = Checked ? IMAGE_INDEX_CHECKED : IMAGE_INDEX_UNCHECKED;
                 else
-                    ImageIndex = Checked ? IMAGE_INDEX_HOT : IMAGE_INDEX_UNCHECKED;
+                    ImageIndex = IMAGE_INDEX_HOT;
             }
             else
                 ImageIndex = Checked ? IMAGE_INDEX_CHECKED : IMAGE_INDEX_UNCHECKED;
