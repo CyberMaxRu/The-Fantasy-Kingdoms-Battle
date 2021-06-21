@@ -12,15 +12,12 @@ namespace Fantasy_Kingdoms_Battle
     // Класс картинки с границами
     internal sealed class BitmapBorder
     {
-        private int widthBorder;
-        private int heightBorder;
-
         public BitmapBorder(Bitmap bmpOrigin, bool useCentre, int widthLeftCorner, int widthRightCorner, int heightTopCorner, int heightBottomCorner, 
             int widthHorizBand, int heightTopBand, int heightBottomBand, int heightVertBand, int widthLeftBand, int widthRightBand)
         {
             ArraySides = new Bitmap[3, 3];
-            widthBorder = bmpOrigin.Width;
-            heightBorder = bmpOrigin.Height;
+            Width = bmpOrigin.Width;
+            Height = bmpOrigin.Height;
 
             Debug.Assert(widthLeftCorner + widthHorizBand + widthRightCorner == bmpOrigin.Width);
             Debug.Assert(heightTopCorner + heightVertBand + heightBottomCorner == bmpOrigin.Height);
@@ -44,17 +41,24 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(left + width <= bmpOrigin.Width);
                 Debug.Assert(top + height <= bmpOrigin.Height);
 
-                Bitmap b = new Bitmap(width, height);
-                Graphics g = Graphics.FromImage(b);
-                g.CompositingMode = CompositingMode.SourceCopy;
-                g.DrawImage(bmpOrigin, new Rectangle(0, 0, width, height), new Rectangle(left, top, width, height), GraphicsUnit.Pixel);
-                g.Dispose();
+                if ((width > 0) && (height > 0))
+                {
+                    Bitmap b = new Bitmap(width, height);
+                    Graphics g = Graphics.FromImage(b);
+                    g.CompositingMode = CompositingMode.SourceCopy;
+                    g.DrawImage(bmpOrigin, new Rectangle(0, 0, width, height), new Rectangle(left, top, width, height), GraphicsUnit.Pixel);
+                    g.Dispose();
 
-                return b;
+                    return b;
+                }
+                else
+                    return null;
             }
         }
 
         internal Bitmap[,] ArraySides;
+        internal int Width { get; }
+        internal int Height { get; }
 
         internal Bitmap DrawBorder(int width, int height)
         {
@@ -100,26 +104,29 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Вертикальные бордюры
-            int heightForBand = bmp.Height - ArraySides[0, 0].Height - ArraySides[2, 0].Height;
-            repeats = heightForBand / ArraySides[1, 0].Height;
-            restBorder = heightForBand - (ArraySides[1, 0].Height * repeats);
-
-            for (int i = 0; i < repeats; i++)
+            if (ArraySides[1, 0] != null)
             {
-                // Левый бордюр
-                g.DrawImageUnscaled(ArraySides[1, 0], 0, ArraySides[0, 0].Height + (i * ArraySides[1, 0].Height));
+                int heightForBand = bmp.Height - ArraySides[0, 0].Height - ArraySides[2, 0].Height;
+                repeats = heightForBand / ArraySides[1, 0].Height;
+                restBorder = heightForBand - (ArraySides[1, 0].Height * repeats);
 
-                // Правый бордюр
-                g.DrawImageUnscaled(ArraySides[1, 2], bmp.Width - ArraySides[1, 2].Width, ArraySides[0, 2].Height + (i * ArraySides[1, 2].Height));
-            }
+                for (int i = 0; i < repeats; i++)
+                {
+                    // Левый бордюр
+                    g.DrawImageUnscaled(ArraySides[1, 0], 0, ArraySides[0, 0].Height + (i * ArraySides[1, 0].Height));
 
-            if (restBorder > 0)
-            {
-                // Левый бордюр
-                g.DrawImageUnscaledAndClipped(ArraySides[1, 0], new Rectangle(0, ArraySides[0, 0].Height + (repeats * ArraySides[1, 0].Height), ArraySides[1, 0].Width, restBorder));
+                    // Правый бордюр
+                    g.DrawImageUnscaled(ArraySides[1, 2], bmp.Width - ArraySides[1, 2].Width, ArraySides[0, 2].Height + (i * ArraySides[1, 2].Height));
+                }
 
-                // Правый бордюр
-                g.DrawImageUnscaledAndClipped(ArraySides[1, 2], new Rectangle(bmp.Width - ArraySides[1, 2].Width, ArraySides[0, 2].Height + (repeats * ArraySides[1, 2].Height), ArraySides[1, 2].Width, restBorder));
+                if (restBorder > 0)
+                {
+                    // Левый бордюр
+                    g.DrawImageUnscaledAndClipped(ArraySides[1, 0], new Rectangle(0, ArraySides[0, 0].Height + (repeats * ArraySides[1, 0].Height), ArraySides[1, 0].Width, restBorder));
+
+                    // Правый бордюр
+                    g.DrawImageUnscaledAndClipped(ArraySides[1, 2], new Rectangle(bmp.Width - ArraySides[1, 2].Width, ArraySides[0, 2].Height + (repeats * ArraySides[1, 2].Height), ArraySides[1, 2].Width, restBorder));
+                }
             }
 
             // Середина. Пока просто заполняем черным

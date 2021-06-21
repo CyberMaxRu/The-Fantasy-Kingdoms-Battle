@@ -201,6 +201,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly BitmapBorder bbToolBarLabel;
         internal readonly BitmapBorder bbGamespace;
         internal readonly BitmapBorder bbSelect;
+        internal readonly BitmapBorder bbIcon16;
         internal readonly Bitmap bmpBorderBig;
         internal readonly Bitmap bmpMaskBig;
         internal readonly Bitmap bmpMaskSmall;
@@ -420,6 +421,8 @@ namespace Fantasy_Kingdoms_Battle
                 bbToolBarLabel = new BitmapBorder(LoadBitmap("ToolbarLabel.png"), true, 10, 10, 9, 10, 25, 9, 12, 25, 10, 10);
                 bbGamespace = new BitmapBorder(LoadBitmap("BorderMain2.png"), false, 12, 12, 12, 12, 26, 7, 7, 26, 7, 7);
                 bbSelect = new BitmapBorder(LoadBitmap("BorderSelect.png"), false, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+                bbIcon16 = new BitmapBorder(LoadBitmap("BorderIcon16.png"), true, 12, 12, 12, 12, 115, 12, 12, 0, 12, 12);
+                //bbIcon16 = new BitmapBorder(LoadBitmap("BorderIcon16.png"), true, 10, 10, 10, 10, 28, 10, 10, 4, 10, 10);
                 bmpToolbar = LoadBitmap("Toolbar.png");
                 bmpToolbarBorder = LoadBitmap("ToolbarBorder.png");
                 bmpSeparator = LoadBitmap("Separator.png");

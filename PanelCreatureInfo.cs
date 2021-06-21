@@ -65,7 +65,7 @@ namespace Fantasy_Kingdoms_Battle
             panelWeapon = new VCCell(this, FormMain.Config.GridSize, bmpStateBackground.NextTop());
             panelArmour = new VCCell(this, panelWeapon.NextLeft(), panelWeapon.ShiftY);
 
-            lvGold = new VCLabelValue(this, FormMain.Config.GridSize, panelWeapon.NextTop(), Color.White);
+            lvGold = new VCLabelValue(this, FormMain.Config.GridSize, panelWeapon.NextTop(), Color.White, false);
             lvGold.ImageIndex = FormMain.GUI_16_GOLD;
 
             separator.ShiftY = lvGold.NextTop();

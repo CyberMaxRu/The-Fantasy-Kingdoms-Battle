@@ -65,21 +65,21 @@ namespace Fantasy_Kingdoms_Battle
             lblDescription.StringFormat.Alignment = StringAlignment.Near;
             lblDescription.StringFormat.LineAlignment = StringAlignment.Near;
 
-            lblIncome = new VCLabelValue(this, FormMain.Config.GridSize, lblDescription.NextTop(), FormMain.Config.HintIncome);
+            lblIncome = new VCLabelValue(this, FormMain.Config.GridSize, lblDescription.NextTop(), FormMain.Config.HintIncome, false);
             lblIncome.ImageIndex = FormMain.GUI_16_GOLD;
             lblIncome.Width = widthControl;
 
-            lblGreatnessAdd = new VCLabelValue(this, FormMain.Config.GridSize, lblIncome.NextTop(), FormMain.Config.HintIncome);
+            lblGreatnessAdd = new VCLabelValue(this, FormMain.Config.GridSize, lblIncome.NextTop(), FormMain.Config.HintIncome, false);
             lblGreatnessAdd.ImageIndex = FormMain.GUI_16_GREATNESS;
             lblGreatnessAdd.Width = widthControl;
 
-            lblGreatnessPerDay = new VCLabelValue(this, FormMain.Config.GridSize, lblGreatnessAdd.NextTop(), FormMain.Config.HintIncome);
+            lblGreatnessPerDay = new VCLabelValue(this, FormMain.Config.GridSize, lblGreatnessAdd.NextTop(), FormMain.Config.HintIncome, false);
             lblGreatnessPerDay.ImageIndex = FormMain.GUI_16_GREATNESS;
             lblGreatnessPerDay.Width = widthControl;
 
             lblSeparateRequirement = new VCSeparator(this, FormMain.Config.GridSize, lblGreatnessPerDay.NextTop());
             lblSeparateRequirement.Width = widthControl;
-            lblGold = new VCLabelValue(this, FormMain.Config.GridSize, lblSeparateRequirement.NextTop(), FormMain.Config.HintIncome);
+            lblGold = new VCLabelValue(this, FormMain.Config.GridSize, lblSeparateRequirement.NextTop(), FormMain.Config.HintIncome, false);
             lblGold.ImageIndex = FormMain.GUI_16_GOLD;
             lblGold.Width = widthControl;
 
