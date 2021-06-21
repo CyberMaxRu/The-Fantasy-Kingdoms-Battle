@@ -110,17 +110,17 @@ namespace Fantasy_Kingdoms_Battle
             if (Building.PointConstructionGuild > 0)
             {
                 if (Building.PointConstructionGuild <= Player.PointConstructionGuild)
-                    list.Add(new TextRequirement(true, $"Есть Разрешение на {(Level == 0 ? "cтроительство" : "улучшение")} гильдии"));
+                    list.Add(new TextRequirement(true, $"{(Level == 0 ? "Строительство" : "улучшение")} гильдии доступно"));
                 else
-                    list.Add(new TextRequirement(false, $"Нет Разрешений на {(Level == 0 ? "cтроительство" : "улучшение")} гильдии"));
+                    list.Add(new TextRequirement(false, $"{(Level == 0 ? "Cтроительство" : "улучшение")} гильдии недоступно"));
             }
 
             if (Building.PointConstructionEconomic > 0)
             {
                 if (Building.PointConstructionEconomic <= Player.PointConstructionEconomic)
-                    list.Add(new TextRequirement(true, $"Есть Разрешение на {(Level == 0 ? "cтроительство" : "улучшение")} экономического сооружения")) ;
+                    list.Add(new TextRequirement(true, $"{(Level == 0 ? "Строительство" : "улучшение")} экономического сооружения доступно")) ;
                 else
-                    list.Add(new TextRequirement(false, $"Нет Разрешения на {(Level == 0 ? "cтроительство" : "улучшение")} экономического сооружения"));
+                    list.Add(new TextRequirement(false, $"{(Level == 0 ? "Строительство" : "улучшение")} экономического сооружения недоступно"));
             }
 
             if (Building.PointConstructionTemple > 0)
