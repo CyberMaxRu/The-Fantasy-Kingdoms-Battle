@@ -2,7 +2,7 @@
 <StatesCreature>
   <StateCreature>
     <ID>DoAttackFlag</ID>
-    <Name>Атакаs</Name>
+    <Name>Атака</Name>
     <Description>Выполняет задание атаки</Description>
     <ImageIndex>11</ImageIndex>
   </StateCreature>
