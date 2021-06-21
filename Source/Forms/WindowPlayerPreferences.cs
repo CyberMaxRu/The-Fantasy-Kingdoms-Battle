@@ -36,6 +36,7 @@ namespace Fantasy_Kingdoms_Battle
             editName = new VCEdit(ClientControl, 0, 0, "", FormMain.MAX_LENGTH_USERNAME);
             editName.Width = 240;
             editName.Text = Program.formMain.CurrentHumanPlayer.Name;
+            editName.CursorToEnd();
 
             sprTop = new VCSeparator(ClientControl, 0, editName.NextTop());
             lblTextForAvatar = new VCLabelM2(ClientControl, 0, sprTop.NextTop() - FormMain.Config.GridSize, Program.formMain.fontParagraph, Color.White, 20, "Аватар:");

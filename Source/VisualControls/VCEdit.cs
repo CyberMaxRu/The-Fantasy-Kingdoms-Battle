@@ -13,6 +13,11 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class VCEdit : VCLabelM2
     {
         private Bitmap bmpBackround;
+        private Timer timerCursor;
+        private int posCursor;
+        private int shiftCursor;
+        private bool cursorShow;
+        private Pen penCursor = new Pen(Color.White);
 
         public VCEdit(VisualControl parent, int shiftX, int shiftY, string text, int maxLength)
             : base(parent, shiftX, shiftY, Program.formMain.fontMedCaption, Color.White, 26, text)
@@ -26,6 +31,28 @@ namespace Fantasy_Kingdoms_Battle
             Width = 80;
             TopMargin = 1;
             LeftMargin = 6;
+
+            timerCursor = new Timer();
+            timerCursor.Interval = 400;
+            timerCursor.Tick += TimerCursor_Tick;
+            timerCursor.Start();
+        }
+
+        private void TimerCursor_Tick(object sender, EventArgs e)
+        {
+            cursorShow = !cursorShow;
+
+            if (cursorShow)
+            {
+                CalcShiftCursor();
+            }
+
+            Program.formMain.ShowFrame(true);
+        }
+
+        private void CalcShiftCursor()
+        {
+            shiftCursor = LeftMargin + Font.WidthText(Text.Substring(0, posCursor));
         }
 
         internal int MaxLength { get; set; }
@@ -46,6 +73,11 @@ namespace Fantasy_Kingdoms_Battle
             g.DrawImageUnscaled(bmpBackround, Left, Top);
 
             base.Draw(g);
+
+            if (cursorShow)
+            {
+                g.DrawLine(penCursor, Left + shiftCursor, Top + 2, Left + shiftCursor, Top + Height - 6);
+            }
         }
 
         internal override void KeyPress(KeyPressEventArgs e)
@@ -53,11 +85,14 @@ namespace Fantasy_Kingdoms_Battle
             base.KeyPress(e);
 
             if (((e.KeyChar >= 'a') && (e.KeyChar <= 'z')) || ((e.KeyChar >= 'A') && (e.KeyChar <= 'Z'))
-                || ((e.KeyChar >= 'а') && (e.KeyChar <= 'я')) || ((e.KeyChar >= 'А') && (e.KeyChar <= 'Я')))
+                || ((e.KeyChar >= 'а') && (e.KeyChar <= 'я')) || ((e.KeyChar >= 'А') && (e.KeyChar <= 'Я'))
+                || ((e.KeyChar >= '0') && (e.KeyChar <= '9')))
             {
                 if (Text.Length < MaxLength)
                 {
                     Text += e.KeyChar;
+                    posCursor++;
+                    CalcShiftCursor();
                     Program.formMain.NeedRedrawFrame();
                 }
             }
@@ -69,12 +104,50 @@ namespace Fantasy_Kingdoms_Battle
 
             if (e.KeyData == Keys.Back)
             {
-                if (Text.Length > 0)
+                if (posCursor > 0)
                 {
-                    Text = Text.Substring(0, Text.Length - 1);
+                    Text = Text.Remove(posCursor - 1, 1);
+                    posCursor--;
+                    CalcShiftCursor();
                     Program.formMain.NeedRedrawFrame();
                 }
             }
+            else if (e.KeyData == Keys.Left)
+            {
+                if (posCursor > 0)
+                {
+                    posCursor--;
+                    CalcShiftCursor();
+                    Program.formMain.NeedRedrawFrame();
+                }
+            }
+            else if (e.KeyData == Keys.Right)
+            {
+                if (posCursor < Text.Length)
+                {
+                    posCursor++;
+                    CalcShiftCursor();
+                    Program.formMain.NeedRedrawFrame();
+                }
+            }
+            else if (e.KeyData == Keys.Home)
+            {
+                posCursor = 0;
+                CalcShiftCursor();
+                Program.formMain.NeedRedrawFrame();
+
+            }
+            else if (e.KeyData == Keys.End)
+            {
+                posCursor = Text.Length;
+                CalcShiftCursor();
+                Program.formMain.NeedRedrawFrame();
+            }
+        }
+
+        internal void CursorToEnd()
+        {
+            posCursor = Text.Length;
         }
     }
 }

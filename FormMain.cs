@@ -1470,7 +1470,7 @@ namespace Fantasy_Kingdoms_Battle
             e.Graphics.DrawImage(bmpFrame, e.ClipRectangle, e.ClipRectangle, GraphicsUnit.Pixel);
         }
 
-        private void ShowFrame(bool force)
+        internal void ShowFrame(bool force)
         {
             if ((force || needRedrawFrame) && (WindowState != FormWindowState.Minimized))
             {
