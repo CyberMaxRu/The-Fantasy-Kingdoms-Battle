@@ -26,6 +26,7 @@ OutputDir=F:\Projects\C-Sharp\Fantasy King's Battle\InnoSetup
 OutputBaseFilename=FKB_Setup
 Compression=lzma
 SolidCompression=yes
+SetupIconFile=F:\Projects\C-Sharp\Fantasy King's Battle\FKB.ico
 WizardStyle=modern
 WizardSmallImageFile=f:\Projects\C-Sharp\Fantasy King's Battle\InnoSetup\Rebirth_small.bmp
 WizardImageAlphaFormat=defined
