@@ -46,7 +46,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
-            g.DrawImageUnscaled(bmpBackround, Left, Top);
+            if (ShowBackground)
+                g.DrawImageUnscaled(bmpBackround, Left, Top);
 
             base.Draw(g);
         }
