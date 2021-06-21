@@ -165,7 +165,6 @@ namespace Fantasy_Kingdoms_Battle
         internal const int GUI_16_GOLD = 1;
         internal const int GUI_16_PEASANT = 2;
         internal const int GUI_16_GREATNESS = 3;
-        internal const int GUI_16_INCOME = 4;
 
         internal const int GUI_24_FIRE = 0;
         internal const int GUI_24_HEROES = 1;
@@ -516,7 +515,7 @@ namespace Fantasy_Kingdoms_Battle
                 labelDay.Click += LabelDay_Click;
                 labelDay.ShowHint += LabelDay_ShowHint;
                 labelDay.Width = 64;
-                labelGold = new VCToolLabel(MainControl, labelDay.NextLeft(), labelDay.ShiftY, "", GUI_16_INCOME);
+                labelGold = new VCToolLabel(MainControl, labelDay.NextLeft(), labelDay.ShiftY, "", GUI_16_GOLD);
                 labelGold.ShowHint += LabelGold_ShowHint;
                 labelGold.Width = 168;
                 labelGreatness = new VCToolLabel(MainControl, labelGold.NextLeft(), labelDay.ShiftY, "", GUI_16_GREATNESS);

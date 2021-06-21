@@ -45,7 +45,7 @@ namespace Fantasy_Kingdoms_Battle
 
             lblIncome = new VCLabelValue(panelIncomeAndGreatness, FormMain.Config.GridSizeHalf, FormMain.Config.GridSize, Color.Green);
             lblIncome.Width = panelIncomeAndGreatness.Width - FormMain.Config.GridSize;
-            lblIncome.ImageIndex = FormMain.GUI_16_INCOME;
+            lblIncome.ImageIndex = FormMain.GUI_16_GOLD;
             lblIncome.StringFormat.Alignment = StringAlignment.Near;
 
             lblGreatness = new VCLabelValue(panelIncomeAndGreatness, lblIncome.ShiftX, lblIncome.NextTop() - FormMain.Config.GridSizeHalf, Color.Green);
