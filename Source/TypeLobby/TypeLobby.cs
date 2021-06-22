@@ -15,7 +15,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             Name = XmlUtils.GetString(n.SelectSingleNode("Name"));
             QuantityPlayers = XmlUtils.GetInteger(n.SelectSingleNode("QuantityPlayers"));
-            DurabilityCastle = XmlUtils.GetInteger(n.SelectSingleNode("DurabilityCastle"));
             Gold = XmlUtils.GetInteger(n.SelectSingleNode("Gold"));
             MaxHeroes = XmlUtils.GetInteger(n.SelectSingleNode("MaxHeroes"));
             StartQuantityFlags = XmlUtils.GetInteger(n.SelectSingleNode("StartQuantityFlags"));
@@ -35,8 +34,6 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(QuantityPlayers >= 8);
             Debug.Assert(QuantityPlayers <= FormMain.Config.ComputerPlayers.Count);
             Debug.Assert(QuantityPlayers % 2 == 0);
-            Debug.Assert(DurabilityCastle > 0);
-            Debug.Assert(DurabilityCastle <= 1000);
             Debug.Assert(Gold >= 0);
             Debug.Assert(Gold <= 100000);
             Debug.Assert(MaxHeroes >= 1);
@@ -140,7 +137,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal string Name { get; }
         internal int QuantityPlayers { get; }
-        internal int DurabilityCastle { get; }
         internal int Gold { get; }
         internal int MaxHeroes { get; }
         internal int StartQuantityFlags { get; }

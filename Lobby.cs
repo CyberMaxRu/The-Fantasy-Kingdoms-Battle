@@ -11,49 +11,7 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal enum StateLobby { Start, TurnHuman, TurnComputer, CalcTurn };
 
-    internal class ComparerPlayerForPosition : IComparer<LobbyPlayer>
-    {
-        public int Compare(LobbyPlayer p1, LobbyPlayer p2)
-        {
-            // Сначала сравниваем прочность Замка
-            if (p1.DurabilityCastle > p2.DurabilityCastle)
-                return 1;
-
-            if (p1.DurabilityCastle < p2.DurabilityCastle)
-                return -1;
-
-            // Сравниваем результат последнего боя
-            if (p1.ResultLastBattle < p2.ResultLastBattle)
-                return 1;
-
-            if (p1.ResultLastBattle > p2.ResultLastBattle)
-                return -1;
-
-            // Сравниваем урон при победе/поражении последнего боя
-            if ((p1.ResultLastBattle == ResultBattle.Win) && (p2.ResultLastBattle == ResultBattle.Win))
-            { 
-                if (p1.LastBattleDamageToCastle > p2.LastBattleDamageToCastle)
-                    return 1;
-
-                if (p1.LastBattleDamageToCastle < p2.LastBattleDamageToCastle)
-                    return -1;
-            }
-
-            if ((p1.ResultLastBattle == ResultBattle.Lose) && (p2.ResultLastBattle == ResultBattle.Lose))
-            { 
-                if (p1.LastBattleDamageToCastle > p2.LastBattleDamageToCastle)
-                    return 1;
-
-                if (p1.LastBattleDamageToCastle < p2.LastBattleDamageToCastle)
-                    return -1;
-            }
-
-            // У игроков одинаковая позиция
-            return 0;
-        }
-    }
-
-    // Класс лобби (королевской битвы)
+    // Класс лобби
     internal sealed class Lobby
     {
         private static int generation = 0;
@@ -103,8 +61,6 @@ namespace Fantasy_Kingdoms_Battle
 
         private void MakeOpponents()
         {
-            Debug.Assert(QuantityAlivePlayersIsEven());
-
             foreach (LobbyPlayer pl in Players)
                 pl.Opponent = null;
 
@@ -136,7 +92,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void SetPlayerAsCurrent(int index)
         {
-            Debug.Assert(Players[index].IsLive || (Players[index].DayOfDie == Turn));
+            Debug.Assert(Players[index].IsLive);
 
             CurrentPlayer = Players[index];
         }
@@ -337,36 +293,6 @@ namespace Fantasy_Kingdoms_Battle
                     livePlayers++;
                 }
             }
-
-            // Смотрим, сколько игроков осталось живо
-            // Если их больше одного, то воскрешаем до четного количества
-            // Если меньше, то выявился победитель
-            if (livePlayers > 2)
-            {
-                // Если нечетное число, то одного воскрешаем
-                // Для этого ищем, кто находился на самом высоком месте и умер в текущий день 
-                if (!QuantityAlivePlayersIsEven())
-                {
-                    foreach (LobbyPlayer p in Players.OrderByDescending(p => p.PositionInLobby))
-                        if (p.DayOfDie == Turn)
-                        {
-                            p.MakeAlive();
-                            break;
-                        }
-                }
-
-                Debug.Assert(QuantityAlivePlayersIsEven());
-            }
-        }
-
-        internal bool QuantityAlivePlayersIsEven()
-        {
-            bool evenPlayers = true;
-            foreach (LobbyPlayer p in Players)
-                if (p.IsLive)
-                    evenPlayers = !evenPlayers;
-
-            return evenPlayers;
         }
 
         internal Battle GetBattle(LobbyPlayer p, int turn)
@@ -386,7 +312,7 @@ namespace Fantasy_Kingdoms_Battle
         private void SortPlayers()
         {
             int pos = 1;
-            foreach (LobbyPlayer p in Players.Where(p => (p.IsLive == true) || (p.DayOfDie == Turn)).OrderByDescending(p => p, new ComparerPlayerForPosition()))
+            foreach (LobbyPlayer p in Players)
             {
                 p.PositionInLobby = pos++;
             }

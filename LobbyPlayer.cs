@@ -12,7 +12,6 @@ namespace Fantasy_Kingdoms_Battle
     // Класс игрока лобби
     internal sealed class LobbyPlayer : BattleParticipant, ICell
     {
-        private ResultBattle resultLastBattle;
         private PlayerBuilding Castle;
 
         // TODO Вынести константы в конфигурацию игры
@@ -24,10 +23,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Player = player;
             Lobby = lobby;
-            Wins = 0;
-            Loses = 0;
             PlayerIndex = playerIndex;
-            ResultLastBattle = ResultBattle.None;
 
             // Создаем справочик количества приоритетов флагов
             foreach (PriorityExecution pe in Enum.GetValues(typeof(PriorityExecution)))
@@ -36,7 +32,6 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Настраиваем игрока согласно настройкам лобби
-            DurabilityCastle = Lobby.TypeLobby.DurabilityCastle;
             PointConstructionGuild = lobby.TypeLobby.StartPointConstructionGuild;
             PointConstructionEconomic = lobby.TypeLobby.StartPointConstructionEconomic;
             PointConstructionTemple = 0;
@@ -205,12 +200,6 @@ namespace Fantasy_Kingdoms_Battle
 
                 QuantityHeroes = CombatHeroes.Count();
 
-                if (DurabilityCastle <= 0)
-                {
-                    IsLive = false;
-                    DayOfDie = Lobby.Turn;
-                }
-
                 PointConstructionGuild = Lobby.TypeLobby.PointConstructionGuildPerDay;
                 PointConstructionEconomic = Lobby.TypeLobby.PointConstructionEconomicPerDay;
             }
@@ -226,18 +215,13 @@ namespace Fantasy_Kingdoms_Battle
         internal Player Player { get; }
         internal int PlayerIndex { get; }
         internal int PositionInLobby { get; set; }
-        internal int DurabilityCastle { get; set; }
         internal int LevelGreatness { get; }// Уровень величия
         internal int PointGreatness { get; }// Очков величия
         internal int PointGreatnessForNextLevel { get; }// Очков величия до следующего уровня
-        internal int LastBattleDamageToCastle { get; set; }
         internal List<PlayerBuilding> Buildings { get; } = new List<PlayerBuilding>();
         internal int LevelCastle => Castle.Level;
         internal List<PlayerHero> AllHeroes { get; } = new List<PlayerHero>();
         internal int Gold { get => Castle.Gold; set { Castle.Gold = value; } }
-        internal int TotalBuilders { get; private set; }
-        internal int[] Resources { get; }
-        internal int DayOfDie { get; private set; }
 
         internal int PointConstructionGuild { get; private set; }
         internal int PointConstructionEconomic { get; private set; }
@@ -252,55 +236,6 @@ namespace Fantasy_Kingdoms_Battle
         internal PlayerLair[,,] Lairs { get; }
         internal List<PlayerLair> ListFlags { get; } = new List<PlayerLair>();
         internal Dictionary<PriorityExecution, int> QuantityFlags { get; } = new Dictionary<PriorityExecution, int>();
-
-        // Статистика по боям
-        internal int Wins { get; set; }
-        internal int Loses { get; set; }
-        internal int Draws { get; set; }
-        internal int Streak { get; set; }
-        internal ResultBattle ResultLastBattle
-        {
-            get { return resultLastBattle; }
-            set
-            {
-                switch (value)
-                {
-                    case ResultBattle.Win:
-                        if (resultLastBattle == ResultBattle.Win)
-                            Streak++;
-                        else
-                            Streak = 1;
-
-                        Wins++;
-
-                        break;
-                    case ResultBattle.Lose:
-                        if (resultLastBattle == ResultBattle.Lose)
-                            Streak++;
-                        else
-                            Streak = 1;
-
-                        Loses++;
-
-                        break;
-                    case ResultBattle.Draw:
-                        if (resultLastBattle == ResultBattle.Draw)
-                            Streak++;
-                        else
-                            Streak = 1;
-
-                        Draws++;
-
-                        break;
-                    case ResultBattle.None:
-                        break;
-                    default:
-                        throw new Exception("Неизвестный результат боя.");
-                }
-
-                resultLastBattle = value;
-            }
-        }
 
         // Визуальные контролы
         internal PanelPlayer Panel { get; set; }
@@ -574,13 +509,6 @@ namespace Fantasy_Kingdoms_Battle
             Gold += gold;
         }
 
-        internal void MakeAlive()
-        {
-            IsLive = true;
-            DayOfDie = 0;
-            DurabilityCastle = 1;
-        }
-
         internal override void PreparingForBattle()
         {
             base.PreparingForBattle();
@@ -589,16 +517,9 @@ namespace Fantasy_Kingdoms_Battle
         internal override void PrepareHint()
         {
             Program.formMain.formHint.AddStep1Header(
-                Player.Name,
-                "Место №" + PositionInLobby.ToString(),
+                Player.Name, "",
                 "Уровень Замка: " + LevelCastle.ToString() + Environment.NewLine
-                    + "Прочность Замка " + DurabilityCastle.ToString() + "/" + Lobby.TypeLobby.DurabilityCastle.ToString() + Environment.NewLine
-                    + "Героев: " + QuantityHeroes.ToString() + Environment.NewLine
-                    + Environment.NewLine
-                    + "Побед: " + Wins.ToString() + Environment.NewLine
-                    + "Ничьих: " + Draws.ToString() + Environment.NewLine
-                    + "Поражений: " + Loses.ToString() + Environment.NewLine
-                    + (IsLive ? "" : Environment.NewLine + "Игрок покинул лобби на " + DayOfDie + " ходу"));
+                    + "Героев: " + QuantityHeroes.ToString());
         }
 
         // Метод по распределению задач героев
