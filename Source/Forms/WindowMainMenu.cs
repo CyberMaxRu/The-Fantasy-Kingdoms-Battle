@@ -66,8 +66,12 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnExitToWindows_Click(object sender, EventArgs e)
         {
-            Program.formMain.SetProgrameState(ProgramState.NeedQuit);
-            CloseForm(DialogResult.Abort);
+            WindowConfirmExit f = new WindowConfirmExit();
+            if (f.ShowDialog() == DialogResult.Yes)
+            {
+                Program.formMain.SetProgrameState(ProgramState.NeedQuit);
+                CloseForm(DialogResult.Abort);
+            }
         }
 
         private void BtnAboutProgram_Click(object sender, EventArgs e)
