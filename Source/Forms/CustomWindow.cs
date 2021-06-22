@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Threading;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -14,10 +15,12 @@ namespace Fantasy_Kingdoms_Battle
         private DispatcherFrame frame;
         private VisualLayer layer;
         private DialogResult dialogResult;
+        private Point shiftControls;
 
         public CustomWindow()
         {
             layer = Program.formMain.AddLayer(this);
+            shiftControls = Program.formMain.ShiftControls;
         }
 
         protected VCButton AcceptButton { get; set; }
@@ -39,6 +42,11 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
+            if (!shiftControls.Equals(Program.formMain.ShiftControls))
+            {
+                shiftControls = Program.formMain.ShiftControls;
+                ToCentre();
+            }
 
             base.Draw(g);
         }
