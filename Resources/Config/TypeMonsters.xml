@@ -738,11 +738,11 @@
   <TypeMonster>
     <ID>Rat</ID>
     <Name>Крыса</Name>
-    <Description>Гадалки Ардании говорят, что встретить дракона, знак крылатой смерти, - дурная примета. Сулит огромные потери. Тот, кто увидит дракона должен будет в ближайшем будущем принять решительные и активные действия, возможно, у него появится тяга к перемене мест или он станет глубоко верующим человеком.</Description>
+    <Description>Целебная проточная вода в канализациях Ардании способствует увеличению популяции крыс. Оттого-то они вырастают до таких огромных размеров.</Description>
     <ImageIndex>6</ImageIndex>
     <KindCreature>Beast</KindCreature>
     <Reward>100</Reward>
-    <MaxLevel>20</MaxLevel>
+    <MaxLevel>5</MaxLevel>
     <DefaultPositionPriority>10</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
@@ -767,7 +767,147 @@
       <ResistMagic>0</ResistMagic>
     </NextLevel>
     <Abilities>
-      <Ability>DragonBasicAttack</Ability>
+      <Ability>RatBasicAttack</Ability>
+    </Abilities>
+  </TypeMonster>
+  <TypeMonster>
+    <ID>OldRat</ID>
+    <Name>Матерая крыса</Name>
+    <Description>Некоторые крысы за свою жизнь съедают такое количество объедков, что становятся матерыми крысами.</Description>
+    <ImageIndex>4</ImageIndex>
+    <KindCreature>Beast</KindCreature>
+    <Reward>100</Reward>
+    <MaxLevel>5</MaxLevel>
+    <DefaultPositionPriority>10</DefaultPositionPriority>
+    <BaseParameters>
+      <Strength>20</Strength>
+      <Dexterity>10</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>50</Vitality>
+      <SecondsToMove>2.0</SecondsToMove>
+      <Inititative>5</Inititative>
+      <CoefHealth>3</CoefHealth>
+      <CoefMana>1</CoefMana>
+      <CoefStamina>3</CoefStamina>
+    </BaseParameters>
+    <NextLevel>
+      <StatPoints>5</StatPoints>
+      <WeightStrength>40</WeightStrength>
+      <WeightDexterity>10</WeightDexterity>
+      <WeightMagic>10</WeightMagic>
+      <WeightVitality>40</WeightVitality>
+      <Health>5</Health>
+      <Mana>2</Mana>
+      <Stamina>4</Stamina>
+      <ResistMagic>0</ResistMagic>
+    </NextLevel>
+    <Abilities>
+      <Ability>OldRatBasicAttack</Ability>
+    </Abilities>
+  </TypeMonster>
+  <TypeMonster>
+    <ID>KingRat</ID>
+    <Name>Король Крыс</Name>
+    <Description>Король Крыс Пятый, наследник славной династии крысиных королей, повелитель канализации всея Ардании. Он пуляет отравленную воду в своих врагов, из-за чего последние страдают от различных заболеваний. Даже поговаривают, что это он когда-то украл державу Сидриана!</Description>
+    <ImageIndex>17</ImageIndex>
+    <KindCreature>Beast</KindCreature>
+    <Reward>1000</Reward>
+    <MaxLevel>30</MaxLevel>
+    <DefaultPositionPriority>10</DefaultPositionPriority>
+    <BaseParameters>
+      <Strength>20</Strength>
+      <Dexterity>10</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>50</Vitality>
+      <SecondsToMove>2.0</SecondsToMove>
+      <Inititative>5</Inititative>
+      <CoefHealth>3</CoefHealth>
+      <CoefMana>1</CoefMana>
+      <CoefStamina>3</CoefStamina>
+    </BaseParameters>
+    <NextLevel>
+      <StatPoints>5</StatPoints>
+      <WeightStrength>40</WeightStrength>
+      <WeightDexterity>10</WeightDexterity>
+      <WeightMagic>10</WeightMagic>
+      <WeightVitality>40</WeightVitality>
+      <Health>5</Health>
+      <Mana>2</Mana>
+      <Stamina>4</Stamina>
+      <ResistMagic>0</ResistMagic>
+    </NextLevel>
+    <Abilities>
+      <Ability>KingRatBasicAttack</Ability>
+    </Abilities>
+  </TypeMonster>
+  <TypeMonster>
+    <ID>KingSkeleton</ID>
+    <Name>Король-скелет</Name>
+    <Description>Король-скелет вот уже несколько столетий является основной достопримечательностью Ардании. Правда, мало кто его видел - знают-то о нем все, но вот подойти к нему боятся даже редкие смельчаки.</Description>
+    <ImageIndex>18</ImageIndex>
+    <KindCreature>Undead</KindCreature>
+    <Reward>1000</Reward>
+    <MaxLevel>30</MaxLevel>
+    <DefaultPositionPriority>10</DefaultPositionPriority>
+    <BaseParameters>
+      <Strength>20</Strength>
+      <Dexterity>10</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>50</Vitality>
+      <SecondsToMove>2.0</SecondsToMove>
+      <Inititative>5</Inititative>
+      <CoefHealth>3</CoefHealth>
+      <CoefMana>1</CoefMana>
+      <CoefStamina>3</CoefStamina>
+    </BaseParameters>
+    <NextLevel>
+      <StatPoints>5</StatPoints>
+      <WeightStrength>40</WeightStrength>
+      <WeightDexterity>10</WeightDexterity>
+      <WeightMagic>10</WeightMagic>
+      <WeightVitality>40</WeightVitality>
+      <Health>5</Health>
+      <Mana>2</Mana>
+      <Stamina>4</Stamina>
+      <ResistMagic>0</ResistMagic>
+    </NextLevel>
+    <Abilities>
+      <Ability>KingSkeletonBasicAttack</Ability>
+    </Abilities>
+  </TypeMonster>
+  <TypeMonster>
+    <ID>Ratman</ID>
+    <Name>Крысолюд</Name>
+    <Description>Магические отходы, попадающие в сточные воды канализаций, дают непредсказуемые результаты. Говорят, крысолюды, или огромные человекоподобные прямоходящие крысы, - это результат мутации.</Description>
+    <ImageIndex>7</ImageIndex>
+    <KindCreature>Beast</KindCreature>
+    <Reward>1000</Reward>
+    <MaxLevel>30</MaxLevel>
+    <DefaultPositionPriority>10</DefaultPositionPriority>
+    <BaseParameters>
+      <Strength>20</Strength>
+      <Dexterity>10</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>50</Vitality>
+      <SecondsToMove>2.0</SecondsToMove>
+      <Inititative>5</Inititative>
+      <CoefHealth>3</CoefHealth>
+      <CoefMana>1</CoefMana>
+      <CoefStamina>3</CoefStamina>
+    </BaseParameters>
+    <NextLevel>
+      <StatPoints>5</StatPoints>
+      <WeightStrength>40</WeightStrength>
+      <WeightDexterity>10</WeightDexterity>
+      <WeightMagic>10</WeightMagic>
+      <WeightVitality>40</WeightVitality>
+      <Health>5</Health>
+      <Mana>2</Mana>
+      <Stamina>4</Stamina>
+      <ResistMagic>0</ResistMagic>
+    </NextLevel>
+    <Abilities>
+      <Ability>RatmanBasicAttack</Ability>
     </Abilities>
   </TypeMonster>
   <TypeMonster>

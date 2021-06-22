@@ -1242,4 +1242,84 @@
       <ClassHero>Dragon</ClassHero>
     </ClassesHeroes>
   </Ability>
+  <Ability>
+    <ID>KingRatBasicAttack</ID>
+    <Name>Удар</Name>
+    <Description>- Наносит малый урон</Description>
+    <ImageIndex>-1</ImageIndex>
+    <TypeAbility>MeleeAttack</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>KingRat</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>OldRatBasicAttack</ID>
+    <Name>Удар</Name>
+    <Description>- Наносит малый урон</Description>
+    <ImageIndex>-1</ImageIndex>
+    <TypeAbility>MeleeAttack</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>OldRat</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>KingSkeletonBasicAttack</ID>
+    <Name>Удар</Name>
+    <Description>- Наносит малый урон</Description>
+    <ImageIndex>-1</ImageIndex>
+    <TypeAbility>MeleeAttack</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>KingSkeleton</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>RatmanBasicAttack</ID>
+    <Name>Удар</Name>
+    <Description>- Наносит малый урон</Description>
+    <ImageIndex>-1</ImageIndex>
+    <TypeAbility>MeleeAttack</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Ratman</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>RatBasicAttack</ID>
+    <Name>Удар</Name>
+    <Description>- Наносит малый урон</Description>
+    <ImageIndex>-1</ImageIndex>
+    <TypeAbility>MeleeAttack</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Rat</ClassHero>
+    </ClassesHeroes>
+  </Ability>
 </Abilities>
