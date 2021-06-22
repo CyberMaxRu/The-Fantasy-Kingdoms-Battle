@@ -11,7 +11,7 @@ namespace Fantasy_Kingdoms_Battle
     // Класс подробной информации о строении
     internal sealed class PanelBuildingInfo : PanelBaseInfo
     {
-        private VCLabel lblGold;
+        private VCLabelValue lblGold;
         private readonly PanelWithPanelEntity panelProducts;
         private readonly PanelWithPanelEntity panelInhabitants;
         private readonly PanelWithPanelEntity panelWarehouse;
@@ -22,8 +22,9 @@ namespace Fantasy_Kingdoms_Battle
             panelInhabitants = new PanelWithPanelEntity(4);
             panelWarehouse = new PanelWithPanelEntity(4);
 
-            lblGold = new VCLabel(this, FormMain.Config.GridSize, TopForControls(), FormMain.Config.FontCost, Color.White, 16, "");
-            lblGold.Width = 80;
+            lblGold = new VCLabelValue(this, FormMain.Config.GridSize, TopForControls(), Color.White, true);
+            lblGold.Width = imgIcon.Width;
+            lblGold.StringFormat.Alignment = StringAlignment.Far;                 
             lblGold.BitmapList = Program.formMain.ilGui16;
             lblGold.ImageIndex = FormMain.GUI_16_GOLD;
 

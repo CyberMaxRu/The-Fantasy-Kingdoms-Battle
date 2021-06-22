@@ -65,7 +65,9 @@ namespace Fantasy_Kingdoms_Battle
             panelWeapon = new VCCell(this, FormMain.Config.GridSize, bmpStateBackground.NextTop());
             panelArmour = new VCCell(this, panelWeapon.NextLeft(), panelWeapon.ShiftY);
 
-            lvGold = new VCLabelValue(this, FormMain.Config.GridSize, panelWeapon.NextTop(), Color.White, false);
+            lvGold = new VCLabelValue(this, FormMain.Config.GridSize, panelWeapon.NextTop(), Color.White, true);
+            lvGold.Width = imgIcon.Width;
+            lvGold.StringFormat.Alignment = StringAlignment.Far;
             lvGold.ImageIndex = FormMain.GUI_16_GOLD;
 
             separator.ShiftY = lvGold.NextTop();
@@ -134,7 +136,6 @@ namespace Fantasy_Kingdoms_Battle
             pageControl.Height = Height - pageControl.ShiftY - FormMain.Config.GridSize;
             lblKindHero.Width = Width - (lblKindHero.ShiftX * 2);
             labelNameState.Width = bmpStateBackground.Width - labelNameState.ShiftX - FormMain.Config.GridSize;
-            lvGold.Width = Width - (lblKindHero.ShiftX * 2);
 
             base.ArrangeControls();
         }
