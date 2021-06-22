@@ -875,6 +875,9 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (force || (MaximizeBox != Settings.FullScreenMode))
             {
+                // Так как после перестройки экрана контрол оказывается в другом месте,
+                // То во избежание повторного входа в него выходим из него
+                ControlForHintLeave();
                 //Hide();
                 ApplyFullScreenModeToWindow();
 
