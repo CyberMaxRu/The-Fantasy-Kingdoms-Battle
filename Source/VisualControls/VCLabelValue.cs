@@ -28,6 +28,7 @@ namespace Fantasy_Kingdoms_Battle
                 ShiftImage = new Point(4, 4);
                 TopMargin = 2;
                 LeftMargin = 0;
+                RightMargin = 4;
             }
         }
 

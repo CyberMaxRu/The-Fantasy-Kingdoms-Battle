@@ -42,6 +42,7 @@ namespace Fantasy_Kingdoms_Battle
         internal bool ImageIsEnabled { get; set; } = true;
         internal bool ImageIsOver { get; set; } = false;
         protected int LeftMargin { get; set; }
+        protected int RightMargin { get; set; }
         internal int TopMargin { get; set; }
         internal StringFormat StringFormat { get; set; }
         internal Point ShiftImage { get; set; } = new Point(0, 0);
@@ -107,7 +108,7 @@ namespace Fantasy_Kingdoms_Battle
                             x = Left + ((Width - bmpPreparedText.Width) / 2);
                             break;
                         default:
-                            x = Left + Width - bmpPreparedText.Width;
+                            x = Left + Width - bmpPreparedText.Width - LeftMargin - RightMargin;
                             break;
                     }
 
@@ -127,7 +128,7 @@ namespace Fantasy_Kingdoms_Battle
                     }
                     //Debug.Assert(y >= Top);
 
-                    Debug.Assert(bmpPreparedText.Width + LeftMargin <= Width, $"Текст {preparedText} занимает {bmpPreparedText.Width} пикселей (LeftMargin {LeftMargin}), не вмещаясь в {Width}.");
+                    Debug.Assert(bmpPreparedText.Width + LeftMargin + RightMargin <= Width, $"Текст {preparedText} занимает {bmpPreparedText.Width} пикселей (LeftMargin {LeftMargin}, RightMargin {RightMargin}), не вмещаясь в {Width}.");
 
                     g.DrawImageUnscaled(bmpPreparedText, x + LeftMargin, y + TopMargin);
                 }
