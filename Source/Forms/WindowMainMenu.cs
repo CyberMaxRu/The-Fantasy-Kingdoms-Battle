@@ -82,6 +82,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnTournament_Click(object sender, EventArgs e)
         {
+            Program.formMain.StartNewLobby();
             CloseForm(DialogResult.OK);
         }
     }

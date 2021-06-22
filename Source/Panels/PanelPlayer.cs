@@ -29,6 +29,6 @@ namespace Fantasy_Kingdoms_Battle
             base.Draw(g);
         }
 
-        protected override bool Selected() => Program.formMain.CurrentLobby.CurrentPlayer == player;
+        protected override bool Selected() => Program.formMain.CurrentLobby?.CurrentPlayer == player;
     }
 }

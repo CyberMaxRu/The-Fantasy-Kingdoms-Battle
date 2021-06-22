@@ -473,10 +473,6 @@ namespace Fantasy_Kingdoms_Battle
                         //bmpBorderForIconEnemy.SetPixel(x, y, Color.FromArgb(orgColor.A, 192, orgColor.G, orgColor.B));
                     }
 
-                // Создаем лобби
-                // Переместить уже после создания всех контролов, чтобы обеспечить связь лобби-контролы
-                lobby = new Lobby(Config.TypeLobbies[0]);
-
                 SetStage("Строим замок");
 
                 // Создаем слой игрового поля
@@ -493,13 +489,12 @@ namespace Fantasy_Kingdoms_Battle
 
                 PanelPlayer pp;
                 int nextLeftPanelPlayer = 0;
-                foreach (LobbyPlayer p in lobby.Players)
+                for (int i = 0; i < Config.TypeLobbies[0].QuantityPlayers; i++)
                 {
                     pp = new PanelPlayer(panelPlayers, nextLeftPanelPlayer);
-                    // !!! Эту привязку переместить в StartNewLobby()
-                    pp.LinkToLobby(p);
                     nextLeftPanelPlayer = pp.NextLeft();
                 }
+
                 panelPlayers.ApplyMaxSize();
 
                 // Кнопки в правом верхнем углу
@@ -586,7 +581,7 @@ namespace Fantasy_Kingdoms_Battle
                 DrawPageConstructions();
                 DrawHeroes();
                 DrawWarehouse();
-                panelLairs = new PanelLair[lobby.TypeLobby.LairsHeight, lobby.TypeLobby.LairsWidth];
+                panelLairs = new PanelLair[Config.TypeLobbies[0].LairsHeight, Config.TypeLobbies[0].LairsWidth];
                 DrawPageLair();
 
                 // Вычисляем максимальный размер страниц
@@ -668,6 +663,8 @@ namespace Fantasy_Kingdoms_Battle
 
                 ArrangeControls();
 
+                EndLobby();
+                
                 SetStage("Прибираем после строителей");
 
                 //
@@ -707,7 +704,6 @@ namespace Fantasy_Kingdoms_Battle
                 //me.Parent = this;
 
                 StartPlayMusic();
-                ShowCurrentPlayerLobby();
 
                 // 
                 void SetStage(string text)
@@ -1267,10 +1263,10 @@ namespace Fantasy_Kingdoms_Battle
             int left;
             int height = 0;
 
-            for (int y = 0; y < lobby.TypeLobby.LairsHeight; y++)
+            for (int y = 0; y < Config.TypeLobbies[0].LairsHeight; y++)
             {
                 left = 0;
-                for (int x = 0; x < lobby.TypeLobby.LairsWidth; x++)
+                for (int x = 0; x < Config.TypeLobbies[0].LairsWidth; x++)
                 {
                     Debug.Assert(panelLairs[y, x] == null);
                     panelLairs[y, x] = new PanelLair(pageLairs.Page, left, top);
@@ -1338,24 +1334,37 @@ namespace Fantasy_Kingdoms_Battle
             ActivatePage(pageLairs);
         }
 
-        private void StartNewLobby()
+        internal void StartNewLobby()
         {
             lobby = new Lobby(Config.TypeLobbies[0]);
 
-            DrawLobby();
-
-            ShowDataPlayer();
-        }
-
-        private void DrawLobby()
-        {
-            foreach (LobbyPlayer p in lobby.Players)
+            for (int i = 0; i < panelPlayers.Controls.Count; i++)
             {
-                p.Panel.ShiftY = (p.PositionInLobby - 1) * (p.Panel.Height + Config.GridSize);
+                Debug.Assert(panelPlayers.Controls[i] is PanelPlayer);
+                ((PanelPlayer)panelPlayers.Controls[i]).LinkToLobby(lobby.Players[i]);
             }
 
-            panelPlayers.ArrangeControls();
+            ShowCurrentPlayerLobby();
+            ShowDataPlayer();
+
+            panelPlayers.Visible = true;
+            MainControl.Visible = true;
+            btnInGameMenu.Visible = true;
+            btnEndTurn.Visible = true;
         }
+
+        private void EndLobby()
+        {
+            panelPlayers.Visible = false;
+            MainControl.Visible = false;
+            btnInGameMenu.Visible = false;
+            btnEndTurn.Visible = false;
+
+            labelNamePlayer.Text = NAME_PROJECT;
+            labelNamePlayer.Width = labelNamePlayer.Font.WidthText(labelNamePlayer.Text);
+            labelNamePlayer.ShiftX = (bmpPreparedToolbar.Width - labelNamePlayer.Width) / 2;
+        }
+
         internal void SetNeedRedrawFrame()
         {
             needRedrawFrame = true;
