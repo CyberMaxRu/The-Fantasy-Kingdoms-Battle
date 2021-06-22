@@ -55,8 +55,8 @@ namespace Fantasy_Kingdoms_Battle
         private bool debugMode = false;
         private Pen penDebugBorder = new Pen(Color.Red);
         private VisualControl vcDebugInfo;
-        private VCLabelM2 labelTimeDrawFrame;
-        private VCLabelM2 labelLayers;
+        private VCLabel labelTimeDrawFrame;
+        private VCLabel labelLayers;
         private DateTime startDebugAction;
         private TimeSpan durationDrawFrame;
         private int playsSelectButton;
@@ -79,7 +79,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCToolLabel labelDay;
         private readonly VCToolLabel labelGold;
         private readonly VCToolLabel labelGreatness;
-        private readonly VCLabelM2 labelNamePlayer;
+        private readonly VCLabel labelNamePlayer;
 
         private readonly VCIconButton btnInGameMenu;
         private readonly VCIconButton btnEndTurn;
@@ -88,7 +88,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly List<VCButtonTargetLair> listBtnTargetLair = new List<VCButtonTargetLair>();
 
         private readonly VCBitmap bitmapMenu;
-        private readonly VCLabelM2 labelMenuNameObject;
+        private readonly VCLabel labelMenuNameObject;
 
         private PlayerObject selectedPlayerObject;
 
@@ -525,7 +525,7 @@ namespace Fantasy_Kingdoms_Battle
                 labelGreatness.ShowHint += LabelGreatness_ShowHint;
                 labelGreatness.Width = 112;
 
-                labelNamePlayer = new VCLabelM2(bmpPreparedToolbar, 0, 0, fontMedCaptionC, Color.White, fontMedCaptionC.MaxHeightSymbol, "");
+                labelNamePlayer = new VCLabel(bmpPreparedToolbar, 0, 0, fontMedCaptionC, Color.White, fontMedCaptionC.MaxHeightSymbol, "");
                 labelNamePlayer.StringFormat.LineAlignment = StringAlignment.Center;
                 labelNamePlayer.Width = 16;
 
@@ -539,10 +539,10 @@ namespace Fantasy_Kingdoms_Battle
 
                 // Отладочная информация
                 vcDebugInfo = new VisualControl();
-                labelTimeDrawFrame = new VCLabelM2(vcDebugInfo, Config.GridSize, Config.GridSize, fontParagraph, Color.White, 16, "");
+                labelTimeDrawFrame = new VCLabel(vcDebugInfo, Config.GridSize, Config.GridSize, fontParagraph, Color.White, 16, "");
                 labelTimeDrawFrame.StringFormat.Alignment = StringAlignment.Near;
                 labelTimeDrawFrame.Width = 300;
-                labelLayers = new VCLabelM2(vcDebugInfo, labelTimeDrawFrame.ShiftX, labelTimeDrawFrame.NextTop(), fontParagraph, Color.White, 16, "Layers");
+                labelLayers = new VCLabel(vcDebugInfo, labelTimeDrawFrame.ShiftX, labelTimeDrawFrame.NextTop(), fontParagraph, Color.White, 16, "Layers");
                 labelLayers.StringFormat.Alignment = StringAlignment.Near;
                 labelLayers.Width = 300;
                 vcDebugInfo.ApplyMaxSize();
@@ -621,7 +621,7 @@ namespace Fantasy_Kingdoms_Battle
                     for (int x = 0; x < PANEL_MENU_CELLS.Width; x++)
                         CellsMenu[y, x] = new VCMenuCell(bitmapMenu, 77 + (x * (ilItems.Size + DISTANCE_BETWEEN_CELLS)), 95 + (y * (ilItems.Size + DISTANCE_BETWEEN_CELLS)), ilItems);
 
-                labelMenuNameObject = new VCLabelM2(bitmapMenu, 144, 67, fontSmall, Color.White, 14, "");
+                labelMenuNameObject = new VCLabel(bitmapMenu, 144, 67, fontSmall, Color.White, 14, "");
                 labelMenuNameObject.Width = 131;
                 labelMenuNameObject.TruncLongText = true;
                 labelMenuNameObject.StringFormat.Alignment = StringAlignment.Near;

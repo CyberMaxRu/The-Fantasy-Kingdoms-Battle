@@ -7,14 +7,14 @@ namespace Fantasy_Kingdoms_Battle
 {
     // Визуальный контрол - текстовая метка, использующая оригинальный шрифт из Majesty 2
 
-    internal class VCLabelM2 : VisualControl
+    internal class VCLabel : VisualControl
     {
         private RectangleF rectText;
         private Bitmap bmpPreparedText;
         private string preparedText;
         private Color preparedColor;
 
-        public VCLabelM2(VisualControl parent, int shiftX, int shiftY, M2Font font, Color foreColor, int height, string text) : base(parent, shiftX, shiftY)
+        public VCLabel(VisualControl parent, int shiftX, int shiftY, M2Font font, Color foreColor, int height, string text) : base(parent, shiftX, shiftY)
         {
             Height = height;
             Text = text;

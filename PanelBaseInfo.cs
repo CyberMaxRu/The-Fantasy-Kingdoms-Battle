@@ -14,7 +14,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         protected enum Page { Products, Warehouse, Inhabitants, Statistics, Inventory, Abilities, Description };
 
-        private readonly VCLabelM2 lblName;
+        private readonly VCLabel lblName;
         protected readonly VCImageBig imgIcon;
         protected readonly VCSeparator separator;
         protected VCTabControl pageControl;
@@ -24,7 +24,7 @@ namespace Fantasy_Kingdoms_Battle
             Visible = false;
             ShowBorder = true;
 
-            lblName = new VCLabelM2(this, FormMain.Config.GridSize, FormMain.Config.GridSize - 3, Program.formMain.fontMedCaptionC, FormMain.Config.BattlefieldPlayerName, FormMain.Config.GridSize * 3, "");
+            lblName = new VCLabel(this, FormMain.Config.GridSize, FormMain.Config.GridSize - 3, Program.formMain.fontMedCaptionC, FormMain.Config.BattlefieldPlayerName, FormMain.Config.GridSize * 3, "");
             lblName.StringFormat.Alignment = StringAlignment.Center;
             lblName.Color = Color.MediumAquamarine;
             lblName.ShowBorder = true;

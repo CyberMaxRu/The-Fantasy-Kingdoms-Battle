@@ -8,7 +8,7 @@ using System.Drawing;
 namespace Fantasy_Kingdoms_Battle
 {
     // Визуальный контрол - чекбокс
-    internal sealed class VCCheckBox : VCLabelM2
+    internal sealed class VCCheckBox : VCLabel
     {
         private const int IMAGE_INDEX_CHECKED = 0;
         private const int IMAGE_INDEX_UNCHECKED = 1;

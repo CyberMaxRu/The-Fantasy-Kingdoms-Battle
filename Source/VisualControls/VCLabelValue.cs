@@ -8,7 +8,7 @@ using System.Drawing;
 namespace Fantasy_Kingdoms_Battle
 {
     // Визуальный контрол - метка с иконкой, для отображения значения
-    internal sealed class VCLabelValue : VCLabelM2
+    internal sealed class VCLabelValue : VCLabel
     {
         private Bitmap bmpBackround;
 

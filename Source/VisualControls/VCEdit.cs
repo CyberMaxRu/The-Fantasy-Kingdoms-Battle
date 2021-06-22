@@ -10,7 +10,7 @@ using System.Diagnostics;
 namespace Fantasy_Kingdoms_Battle
 {
     // Визуальный контрол - поле для ввода текста
-    internal sealed class VCEdit : VCLabelM2
+    internal sealed class VCEdit : VCLabel
     {
         private Bitmap bmpBackround;
         private Timer timerCursor;

@@ -11,7 +11,7 @@ namespace Fantasy_Kingdoms_Battle
     // Визуальный контрол - кнопка
     internal sealed class VCButton : VCBitmapBand
     {
-        private readonly VCLabelM2 labelCaption;
+        private readonly VCLabel labelCaption;
         private Bitmap bmpNormal;
         private Bitmap bmpHot;
         private Bitmap bmpDisabled;
@@ -25,7 +25,7 @@ namespace Fantasy_Kingdoms_Battle
             Caption = caption;
             Width = 160;
 
-            labelCaption = new VCLabelM2(this, WidthCap(), 1, Program.formMain.fontSmallC, Color.White, GetBitmap().Height, "");
+            labelCaption = new VCLabel(this, WidthCap(), 1, Program.formMain.fontSmallC, Color.White, GetBitmap().Height, "");
             labelCaption.StringFormat.Alignment = StringAlignment.Center;
             labelCaption.StringFormat.LineAlignment = StringAlignment.Center;
             labelCaption.Visible = false;

@@ -3,7 +3,7 @@
 namespace Fantasy_Kingdoms_Battle
 {
     // Визуальный контрол - иконка 16 * 16 с текстом для тулбара
-    internal sealed class VCToolLabel : VCLabelM2
+    internal sealed class VCToolLabel : VCLabel
     {
         private Bitmap bmpBackround;
 

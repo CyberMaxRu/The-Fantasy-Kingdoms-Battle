@@ -11,7 +11,7 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal class PanelCreatureInfo : PanelBaseInfo
     {
-        private readonly VCLabelM2 lblKindHero;
+        private readonly VCLabel lblKindHero;
         private readonly Label lblLevel;
         private readonly Label lblHealth;
         private readonly Label lblMana;
@@ -31,7 +31,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private readonly VCBitmap bmpStateBackground;
         private readonly VCBitmap bmpState;
-        private readonly VCLabelM2 labelNameState;
+        private readonly VCLabel labelNameState;
         private readonly VisualControl panelAbilitiesAndSecSkills;
         private readonly PanelWithPanelEntity panelInventory;
         private readonly PanelWithPanelEntity panelAbilities;
@@ -49,14 +49,14 @@ namespace Fantasy_Kingdoms_Battle
             panelAbilities = new PanelWithPanelEntity(4);
             panelSecondarySkills = new PanelWithPanelEntity(4);
 
-            lblKindHero = new VCLabelM2(this, FormMain.Config.GridSize, TopForControls(), Program.formMain.fontMedCaptionC, FormMain.Config.CommonCaptionPage, 16, "");
+            lblKindHero = new VCLabel(this, FormMain.Config.GridSize, TopForControls(), Program.formMain.fontMedCaptionC, FormMain.Config.CommonCaptionPage, 16, "");
             lblKindHero.StringFormat.Alignment = StringAlignment.Near;
 
             bmpStateBackground = new VCBitmap(this, FormMain.Config.GridSize, lblKindHero.NextTop(), Program.formMain.bmpBandStateCreature);
             bmpStateBackground.ShowHint += BmpState_ShowHint;
             bmpState = new VCBitmap(bmpStateBackground, 6, 5, Program.formMain.ilStateHero.GetImage(0, true, false));
             bmpState.ShowHintParent = true;
-            labelNameState = new VCLabelM2(bmpStateBackground, 36, 8, Program.formMain.fontSmallC, Color.White, 16, "");
+            labelNameState = new VCLabel(bmpStateBackground, 36, 8, Program.formMain.fontSmallC, Color.White, 16, "");
             labelNameState.StringFormat.Alignment = StringAlignment.Near;
             labelNameState.StringFormat.LineAlignment = StringAlignment.Center;
             labelNameState.ShowHintParent = true;

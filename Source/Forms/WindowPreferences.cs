@@ -16,13 +16,13 @@ namespace Fantasy_Kingdoms_Battle
         private VCButton btnCancel;
 
         private VisualControl vcPanelGame;
-        private VCLabelM2 lblCaptionPanelGame;
+        private VCLabel lblCaptionPanelGame;
         private VCCheckBox chkbShowSplashVideo;
         private VCCheckBox chkbWindowMode;
         private VCCheckBox chkbCheckUpdates;
 
         private VisualControl vcPanelBatttlefield;
-        private VCLabelM2 lblCaptionPanelBattlefield;
+        private VCLabel lblCaptionPanelBattlefield;
         private VCCheckBox chkbShowPath;
         private VCCheckBox chkbShowGrid;
 
@@ -34,7 +34,7 @@ namespace Fantasy_Kingdoms_Battle
 
             vcPanelGame = new VisualControl(ClientControl, 0, 0);
             vcPanelGame.ShowBorder = true;
-            lblCaptionPanelGame = new VCLabelM2(vcPanelGame, FormMain.Config.GridSize, 8, Program.formMain.fontMedCaption, Color.PaleTurquoise, 24, "Общие настройки:");
+            lblCaptionPanelGame = new VCLabel(vcPanelGame, FormMain.Config.GridSize, 8, Program.formMain.fontMedCaption, Color.PaleTurquoise, 24, "Общие настройки:");
             lblCaptionPanelGame.StringFormat.Alignment = StringAlignment.Near;
             chkbShowSplashVideo = new VCCheckBox(vcPanelGame, FormMain.Config.GridSize, lblCaptionPanelGame.NextTop(), "Показывать видео-заставку");
             chkbShowSplashVideo.Width = 320;
@@ -48,7 +48,7 @@ namespace Fantasy_Kingdoms_Battle
 
             vcPanelBatttlefield = new VisualControl(ClientControl, 0, vcPanelGame.NextTop());
             vcPanelBatttlefield.ShowBorder = true;
-            lblCaptionPanelBattlefield = new VCLabelM2(vcPanelBatttlefield, FormMain.Config.GridSize, 8, Program.formMain.fontMedCaption, Color.PaleTurquoise, 24, "Настройки битвы:");
+            lblCaptionPanelBattlefield = new VCLabel(vcPanelBatttlefield, FormMain.Config.GridSize, 8, Program.formMain.fontMedCaption, Color.PaleTurquoise, 24, "Настройки битвы:");
             lblCaptionPanelBattlefield.StringFormat.Alignment = StringAlignment.Near;
             chkbShowPath = new VCCheckBox(vcPanelBatttlefield, FormMain.Config.GridSize, lblCaptionPanelBattlefield.NextTop(), "Показывать путь юнитов");
             chkbShowPath.Width = 320;

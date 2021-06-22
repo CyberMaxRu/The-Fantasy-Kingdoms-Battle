@@ -32,12 +32,12 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly VCLabelValue lblGreatnessAdd;
         internal readonly VCLabelValue lblGreatnessPerDay;
         internal readonly VCLabelValue lblGold;
-        internal readonly VCLabelM2 lblDamageMelee;
-        internal readonly VCLabelM2 lblDamageArcher;
-        internal readonly VCLabelM2 lblDamageMagic;
-        internal readonly VCLabelM2 lblDefenseMelee;
-        internal readonly VCLabelM2 lblDefenseArcher;
-        internal readonly VCLabelM2 lblDefenseMagic;
+        internal readonly VCLabel lblDamageMelee;
+        internal readonly VCLabel lblDamageArcher;
+        internal readonly VCLabel lblDamageMagic;
+        internal readonly VCLabel lblDefenseMelee;
+        internal readonly VCLabel lblDefenseArcher;
+        internal readonly VCLabel lblDefenseMagic;
         private int nextTop;
         private readonly Color colorBackground;
         private Bitmap bmpBackground;

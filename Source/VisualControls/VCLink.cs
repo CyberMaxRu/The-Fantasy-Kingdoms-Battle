@@ -9,7 +9,7 @@ using System.Diagnostics;
 namespace Fantasy_Kingdoms_Battle
 {
     // Визуальный контрол - гиперссылка
-    internal sealed class VCLink : VCLabelM2
+    internal sealed class VCLink : VCLabel
     {
         public VCLink(VisualControl parent, int shiftX, int shiftY, string text, string link) : base(parent, shiftX, shiftY, Program.formMain.fontMedCaption, Color.HotPink, 16, text)
         {

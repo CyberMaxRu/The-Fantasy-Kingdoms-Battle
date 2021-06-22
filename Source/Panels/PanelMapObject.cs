@@ -12,14 +12,14 @@ namespace Fantasy_Kingdoms_Battle
     internal abstract class PanelMapObject : VisualControl
     {
         private Bitmap bmpBackground;
-        protected readonly VCLabelM2 lblNameMapObject;
+        protected readonly VCLabel lblNameMapObject;
         protected readonly VCImageBig imgMapObject;
 
         public PanelMapObject(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
             ShowBorder = true;
 
-            lblNameMapObject = new VCLabelM2(this, FormMain.Config.GridSize, FormMain.Config.GridSize - 3, Program.formMain.fontMedCaptionC, Color.Transparent, FormMain.Config.GridSize * 3, "");
+            lblNameMapObject = new VCLabel(this, FormMain.Config.GridSize, FormMain.Config.GridSize - 3, Program.formMain.fontMedCaptionC, Color.Transparent, FormMain.Config.GridSize * 3, "");
             lblNameMapObject.StringFormat.Alignment = StringAlignment.Center;
             lblNameMapObject.ShowBorder = true;
             lblNameMapObject.Click += ImgLair_Click;
