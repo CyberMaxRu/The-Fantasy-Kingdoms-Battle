@@ -65,7 +65,11 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnNewGame_Click(object sender, EventArgs e)
         {
-            
+            if (WindowConfirm.ShowConfirm("Подтверждение", "Будет начата новая игра.\n\rТекущая игра будет потеряна.\n\rПродолжить?"))
+            {
+                Program.formMain.StartNewLobby();
+                CloseForm(DialogResult.OK   );
+            }
         }
 
         private void BtnSettings_Click(object sender, EventArgs e)
