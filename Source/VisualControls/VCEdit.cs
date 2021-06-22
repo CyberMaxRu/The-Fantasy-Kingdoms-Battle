@@ -84,9 +84,11 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.KeyPress(e);
 
-            if (((e.KeyChar >= 'a') && (e.KeyChar <= 'z')) || ((e.KeyChar >= 'A') && (e.KeyChar <= 'Z'))
+            if (((e.KeyChar == 'a') && (e.KeyChar <= 'z')) || ((e.KeyChar >= 'A') && (e.KeyChar <= 'Z'))
                 || ((e.KeyChar >= 'а') && (e.KeyChar <= 'я')) || ((e.KeyChar >= 'А') && (e.KeyChar <= 'Я'))
-                || ((e.KeyChar >= '0') && (e.KeyChar <= '9')))
+                || ((e.KeyChar >= '0') && (e.KeyChar <= '9'))
+                || (e.KeyChar == '.') || (e.KeyChar == '_') || (e.KeyChar == '-')
+                || (e.KeyChar == ' '))
             {
                 if (Text.Length < MaxLength)
                 {
