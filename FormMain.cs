@@ -55,8 +55,8 @@ namespace Fantasy_Kingdoms_Battle
         private bool debugMode = false;
         private Pen penDebugBorder = new Pen(Color.Red);
         private VisualControl vcDebugInfo;
-        private VCLabel labelTimeDrawFrame;
-        private VCLabel labelLayers;
+        private VCLabelM2 labelTimeDrawFrame;
+        private VCLabelM2 labelLayers;
         private DateTime startDebugAction;
         private TimeSpan durationDrawFrame;
         private int playsSelectButton;
@@ -539,10 +539,10 @@ namespace Fantasy_Kingdoms_Battle
 
                 // Отладочная информация
                 vcDebugInfo = new VisualControl();
-                labelTimeDrawFrame = new VCLabel(vcDebugInfo, Config.GridSize, Config.GridSize, Config.FontToolbar, Color.White, 16, "");
+                labelTimeDrawFrame = new VCLabelM2(vcDebugInfo, Config.GridSize, Config.GridSize, fontParagraph, Color.White, 16, "");
                 labelTimeDrawFrame.StringFormat.Alignment = StringAlignment.Near;
                 labelTimeDrawFrame.Width = 300;
-                labelLayers = new VCLabel(vcDebugInfo, labelTimeDrawFrame.ShiftX, labelTimeDrawFrame.NextTop(), Config.FontToolbar, Color.White, 16, "Layers");
+                labelLayers = new VCLabelM2(vcDebugInfo, labelTimeDrawFrame.ShiftX, labelTimeDrawFrame.NextTop(), fontParagraph, Color.White, 16, "Layers");
                 labelLayers.StringFormat.Alignment = StringAlignment.Near;
                 labelLayers.Width = 300;
                 vcDebugInfo.ApplyMaxSize();
