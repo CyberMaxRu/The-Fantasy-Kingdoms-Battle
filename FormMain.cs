@@ -1107,32 +1107,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal static Config Config { get; set; }
 
-        private void AddBitmapToImageList(ImageList il, Bitmap bitmap, int height)
-        {
-            int lines = bitmap.Height / height;
-
-            if (lines > 1)
-            {
-                int pics = bitmap.Width / il.ImageSize.Width;
-                for (int i = 0; i < lines; i++)
-                {
-                    for (int j = 0; j < pics; j++)
-                    {
-                        Bitmap bmpSingleline = new Bitmap(il.ImageSize.Width, height);
-                        Graphics g = Graphics.FromImage(bmpSingleline);
-                        g.DrawImage(bitmap, 0, 0, new Rectangle(j * il.ImageSize.Width, i * height, il.ImageSize.Width, il.ImageSize.Height), GraphicsUnit.Pixel);
-                        il.Images.Add(bmpSingleline);
-                        g.Dispose();
-                    }
-                }
-            }
-            else
-            {
-                if (il.Images.AddStrip(bitmap) == -1)
-                    throw new Exception("Не удалось добавить полосу изображения.");
-            }
-        }
-
         internal void ShowCurrentPlayerLobby()
         {
             if (lobby.CurrentPlayer.GetTypePlayer() == TypePlayer.Human)
@@ -1425,30 +1399,6 @@ namespace Fantasy_Kingdoms_Battle
             formHint.Clear();
             formHint.AddStep1Header(text, "", hint);
             formHint.DrawHint(c);
-        }
-
-        internal ImageList BigIconToSmall(ImageList ilBig)
-        {
-            ImageList ilSmall = new ImageList()
-            {
-                ColorDepth = ColorDepth.Depth32Bit,
-                ImageSize = new Size(48, 48)
-            };
-
-            foreach (Image i in ilBig.Images)
-            {
-                Bitmap bmpDest = new Bitmap(48, 48);
-                Graphics gDest = Graphics.FromImage(bmpDest);
-                gDest.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                gDest.SmoothingMode = SmoothingMode.HighQuality;
-                gDest.DrawImage(i, new Rectangle(0, 0, 48, 48), new Rectangle(0, 0, 128, 128), GraphicsUnit.Pixel);
-                //gDest.DrawImageUnscaled(MaskSmall, 0, 0);
-                ilSmall.Images.Add(bmpDest);
-                gDest.Dispose();
-            }
-            ilSmall.Tag = ilSmall.Images.Count;
-
-            return ilSmall;
         }
 
         private void MakeAlpha()

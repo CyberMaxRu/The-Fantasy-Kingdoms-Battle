@@ -187,9 +187,6 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     btnBuyOrUpgrade.Visible = false;
                 }
-
-                //if (btnLevelUp.Visible == true)
-                //btnLevelUp.Image = Building.CheckRequirements() == true ? imageListGui.Images[FormMain.GUI_LEVELUP] : imageListGui.Images[FormMain.GUI_LEVELUP + imageListGui.Images.Count / 2];
             }
             else
             {
