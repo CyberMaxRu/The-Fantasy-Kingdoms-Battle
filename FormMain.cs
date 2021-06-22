@@ -256,7 +256,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int AvatarsCount { get; private set; }
         internal HumanPlayer CurrentHumanPlayer { get; private set; }
 
-        private Timer timerHover;
+        private readonly Timer timerHover;
 
         public FormMain()
         {
