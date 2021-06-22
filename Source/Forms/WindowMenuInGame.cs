@@ -52,7 +52,10 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnExitToMainMenu_Click(object sender, EventArgs e)
         {
-            
+            if (WindowConfirm.ShowConfirm("Подтверждение", "Текущая игра будет потеряна.\n\rПродолжить?"))
+            {
+                CloseForm(DialogResult.Cancel);
+            }
         }
 
         private void BtnPlayerPreferences_Click(object sender, EventArgs e)

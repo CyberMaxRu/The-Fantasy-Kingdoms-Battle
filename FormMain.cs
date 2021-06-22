@@ -755,10 +755,15 @@ namespace Fantasy_Kingdoms_Battle
             // Показ кадра при старте отрисовывает окно
             ValidateFrame();
 
+            ShowMainMenu();
+
+            //ShowFrame(true);
+        }
+
+        internal void ShowMainMenu()
+        {
             WindowMainMenu w = new WindowMainMenu();
             w.Show();
-
-            //ShowFrame(true);s
         }
 
         private void PageHeroes_ShowHint(object sender, EventArgs e)
@@ -1353,7 +1358,7 @@ namespace Fantasy_Kingdoms_Battle
             btnEndTurn.Visible = true;
         }
 
-        private void EndLobby()
+        internal void EndLobby()
         {
             panelPlayers.Visible = false;
             MainControl.Visible = false;
@@ -1581,6 +1586,10 @@ namespace Fantasy_Kingdoms_Battle
             {
                 case DialogResult.Abort:
                     Close();
+                    break;
+                case DialogResult.Cancel:
+                    EndLobby();
+                    ShowMainMenu();
                     break;
                 default:
                     break;
