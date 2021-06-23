@@ -51,8 +51,15 @@ namespace Fantasy_Kingdoms_Battle
             base.Draw(g);
         }
 
+        protected virtual void BeforeClose()
+        {
+
+        }
+
         internal void CloseForm(DialogResult dr)
         {
+            BeforeClose();
+
             dialogResult = dr;
             Program.formMain.RemoveLayer(layer);
             if (frame != null)
