@@ -93,9 +93,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 WindowPlayerPreferences wpf = new WindowPlayerPreferences();
                 wpf.ShowDialog();
-                wpf.Dispose();
             }
-
         }
     }
 }
