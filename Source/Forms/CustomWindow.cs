@@ -57,6 +57,8 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.RemoveLayer(layer);
             if (frame != null)
                 frame.Continue = false;
+
+            Dispose();
         }
 
         internal void ToCentre()
