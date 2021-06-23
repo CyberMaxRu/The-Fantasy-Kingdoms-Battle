@@ -11,26 +11,19 @@ using System.Diagnostics;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    public partial class FormBattle : Form
+    internal sealed class WindowBattle : VCForm
     {
         enum SpeedBattle { Minimal, VerySlow, Slow, Normal, Fast, VeryFast, Maximal };
 
         private Battle battle;
         private Pen penArrow;
-        private Bitmap bmpBackground;
-        private Bitmap bmpLayBackground;
-        private Bitmap bmpFrame;
-        private Graphics gFrame;
         private Pen penGrid = new Pen(FormMain.Config.BattlefieldGrid);
         private Size sizeTile;
         private Size sizeCell;
         private Point topLeftGrid;
         private Point topLeftCells;
         private const int WIDTH_LINE = 1;
-        private CheckBox chkbShowGrid;
-        private CheckBox chkbShowPath;
         private bool showGrid;
-        private Rectangle rectBorderBattlefield;
 
         // Время битвы
         private SpeedBattle currentSpeed = SpeedBattle.Normal;
@@ -47,33 +40,43 @@ namespace Fantasy_Kingdoms_Battle
 
         private bool needClose = false;
 
-        private readonly Label lblSystemInfo;
-        private readonly Label lblPlayer1;
-        private readonly Label lblPlayer2;
-        private Point pointAvatarPlayer1;
-        private Point pointAvatarPlayer2;
-        private Rectangle rectBandHealthPlayer1;
-        private Rectangle rectBandHealthPlayer2;
         private readonly SolidBrush brushHealth = new SolidBrush(FormMain.Config.BattlefieldPlayerHealth);
         private readonly SolidBrush brushNoneHealth = new SolidBrush(FormMain.Config.BattlefieldPlayerHealthNone);
-        private readonly Label lblStateBattle;
-        private readonly Label lblTimer;
-        private readonly Button btnEndBattle;
-        private readonly Button btnPlayPause;
-        private readonly Button btnDecSpeed;
-        private readonly Button btnIncSpeed;
-        private readonly Label lblDamagePlayer1;
-        private readonly Label lblDamagePlayer2;
 
         private int maxHealthPlayer1;
         private int maxHealthPlayer2;
 
-        public FormBattle()
+        private readonly VCImageBig imgAvatarParticipant1;
+        private readonly VCImageBig imgAvatarParticipant2;
+        private readonly VCTextM2 lblPlayer1;
+        private readonly VCTextM2 lblPlayer2;
+        private Rectangle rectBandHealthPlayer1;
+        private Rectangle rectBandHealthPlayer2;
+        private readonly VCLabel lblSystemInfo;
+        private readonly VCLabel lblStateBattle;
+        private readonly VCLabel lblTimer;
+        private readonly VCLabel lblDamagePlayer1;
+        private readonly VCLabel lblDamagePlayer2;
+        private readonly VCButton btnEndBattle;
+        private readonly VCButton btnPlayPause;
+        private readonly VCIconButton btnDecSpeed;
+        private readonly VCIconButton btnIncSpeed;
+        private readonly VCCheckBox chkbShowGrid;
+        private readonly VCCheckBox chkbShowPath;
+
+        public WindowBattle(Battle b)
         {
-            InitializeComponent();
+            battle = b;
+            windowCaption.Caption = b.Player1.GetName() + " vs " + b.Player2.GetName();
 
-            FormClosing += FormBattle_FormClosing;
+            // Расчет координат для отрисовки
+            sizeCell = Program.formMain.bmpBorderForIcon.Size;
 
+            sizeTile = new Size(sizeCell.Width + (FormMain.Config.GridSize * 2) + 1, sizeCell.Height + (FormMain.Config.GridSize * 2) + 1);
+
+            ClientControl.Width = FormMain.Config.GridSize + (b.SizeBattlefield.Width * sizeTile.Width) + WIDTH_LINE + FormMain.Config.GridSize;
+
+            //
             penArrow = new Pen(FormMain.Config.BattlefieldAllyColor)
             {
                 Width = 2,
@@ -81,147 +84,116 @@ namespace Fantasy_Kingdoms_Battle
             };
 
             // Создаем контролы
-            lblSystemInfo = new Label()
-            {
-                Parent = this,
-                Top = FormMain.Config.GridSize,
-                Width = 560,
-                ForeColor = FormMain.Config.BattlefieldSystemInfo,
-                BackColor = Color.Transparent,
-                Height = 24,
-                TextAlign = ContentAlignment.MiddleLeft,
-                Font = FormMain.Config.FontBattlefieldPlayer
-            };
+            lblSystemInfo = new VCLabel(ClientControl, 0, FormMain.Config.GridSize, Program.formMain.fontParagraph, FormMain.Config.BattlefieldSystemInfo, 24, "");
+            lblSystemInfo.Width = 560;
+            lblSystemInfo.StringFormat.Alignment = StringAlignment.Near;
+            lblSystemInfo.StringFormat.LineAlignment = StringAlignment.Center;
 
-            chkbShowGrid = new CheckBox()
-            {
-                Parent = this,
-                AutoSize = true,
-                Top = lblSystemInfo.Top,
-                Text = "Показать сетку",
-                ForeColor = FormMain.Config.BattlefieldSystemInfo,
-                BackColor = Color.Transparent
-            };
+            lblPlayer1 = new VCTextM2(ClientControl, FormMain.Config.GridSize, lblSystemInfo.NextTop(), Program.formMain.fontMedCaptionC, FormMain.Config.BattlefieldPlayerName, Program.formMain.imListObjectsBig.Size);
+            lblPlayer1.Height = 48;
+            lblPlayer1.StringFormat.Alignment = StringAlignment.Center;
+            lblPlayer1.StringFormat.LineAlignment = StringAlignment.Far;
+            lblPlayer1.Text = battle.Player1.GetName();
 
-            chkbShowPath = new CheckBox()
-            {
-                Parent = this,
-                AutoSize = true,
-                Top = lblSystemInfo.Top,
-                Text = "Показать путь",
-                ForeColor = FormMain.Config.BattlefieldSystemInfo,
-                BackColor = Color.Transparent
-            };
+            lblPlayer2 = new VCTextM2(ClientControl, ClientControl.Width - Program.formMain.imListObjectsBig.Size - FormMain.Config.GridSize, lblPlayer1.ShiftY, Program.formMain.fontMedCaptionC, FormMain.Config.BattlefieldPlayerName, Program.formMain.imListObjectsBig.Size);
+            lblPlayer2.Height = 48;
+            lblPlayer2.StringFormat.Alignment = StringAlignment.Center;
+            lblPlayer2.StringFormat.LineAlignment = StringAlignment.Far;
+            lblPlayer2.Text = battle.Player2.GetName();
 
-            lblPlayer1 = new Label()
-            {
-                Parent = this,
-                Top = GuiUtils.NextTop(lblSystemInfo),
-                ForeColor = FormMain.Config.BattlefieldPlayerName,
-                BackColor = Color.Transparent,
-                AutoSize = false,
-                Width = Program.formMain.imListObjectsBig.Size,
-                Height = 40,
-                TextAlign = ContentAlignment.BottomCenter,
-                Font = FormMain.Config.FontBattlefieldPlayer
-            };
+            imgAvatarParticipant1 = new VCImageBig(ClientControl, lblPlayer1.NextTop());
+            imgAvatarParticipant1.ShiftX = lblPlayer1.ShiftX;
+            imgAvatarParticipant1.ImageIndex = b.Player1.GetImageIndexAvatar();
+            imgAvatarParticipant2 = new VCImageBig(ClientControl, lblPlayer2.NextTop());
+            imgAvatarParticipant2.ShiftX = lblPlayer2.ShiftX;
+            imgAvatarParticipant2.ImageIndex = b.Player2.GetImageIndexAvatar();
 
-            lblPlayer2 = new Label()
-            {
-                Parent = this,
-                Top = lblPlayer1.Top,
-                ForeColor = FormMain.Config.BattlefieldPlayerName,
-                BackColor = Color.Transparent,
-                AutoSize = false,
-                Width = Program.formMain.imListObjectsBig.Size,
-                Height = 40,
-                TextAlign = ContentAlignment.BottomCenter,                
-                Font = FormMain.Config.FontBattlefieldPlayer
-            };
+            rectBandHealthPlayer1 = new Rectangle(imgAvatarParticipant1.ShiftX, imgAvatarParticipant2.ShiftY + Program.formMain.imListObjectsBig.Size + 2, Program.formMain.imListObjectsBig.Size, 6);
+            rectBandHealthPlayer2 = new Rectangle(imgAvatarParticipant2.ShiftX, imgAvatarParticipant1.ShiftY + Program.formMain.imListObjectsBig.Size + 2, Program.formMain.imListObjectsBig.Size, 6);
 
-            lblStateBattle = new Label()
-            {
-                Parent = this,
-                ForeColor = FormMain.Config.BattlefieldPlayerName,
-                BackColor = Color.Transparent,
-                AutoSize = false,
-                Height = 32,
-                TextAlign = ContentAlignment.MiddleCenter,
-                Font = FormMain.Config.FontBattlefieldTimer
-            };
+            topLeftGrid = new Point(FormMain.Config.GridSize, rectBandHealthPlayer1.Y + rectBandHealthPlayer1.Height + FormMain.Config.GridSize);
+            topLeftCells = new Point(topLeftGrid.X + FormMain.Config.GridSize + 1, topLeftGrid.Y + FormMain.Config.GridSize + 1);
+            ClientControl.Height = topLeftGrid.Y + (battle.SizeBattlefield.Height * sizeTile.Height + WIDTH_LINE) + FormMain.Config.GridSize;
 
-            lblTimer = new Label()
-            {
-                Parent = this,
-                ForeColor = FormMain.Config.BattlefieldPlayerName,
-                BackColor = Color.Transparent,
-                AutoSize = false,
-                Height = 32,
-                TextAlign = ContentAlignment.MiddleCenter,
-                Font = FormMain.Config.FontBattlefieldTimer
-            };
+            chkbShowGrid = new VCCheckBox(ClientControl, ClientControl.Width - 80 - FormMain.Config.GridSize, lblSystemInfo.ShiftY, "Сетка");
+            chkbShowGrid.Width = 80;
+            chkbShowGrid.Checked = Program.formMain.Settings.BattlefieldShowGrid;
+            showGrid = !chkbShowGrid.Checked;
 
-            lblDamagePlayer1 = new Label()
-            {
-                Parent = this,
-                ForeColor = FormMain.Config.BattlefieldPlayerName,
-                BackColor = Color.Transparent,
-                AutoSize = false,
-                //ImageList = Program.formMain.ilGui24,
-                ImageIndex = FormMain.GUI_24_STAR,
-                Height = 24,
-                Width = 64,
-                ImageAlign = ContentAlignment.MiddleLeft,
-                TextAlign = ContentAlignment.MiddleRight,
-                Font = FormMain.Config.FontBattlefieldDamage
-            };
+            chkbShowPath = new VCCheckBox(ClientControl, 0, chkbShowGrid.ShiftY, "Путь");
+            chkbShowPath.Width = 80;
+            chkbShowPath.ShiftX = chkbShowGrid.ShiftX - chkbShowPath.Width - FormMain.Config.GridSize;
+            chkbShowPath.Checked = Program.formMain.Settings.BattlefieldShowPath;
 
-            lblDamagePlayer2 = new Label()
-            {
-                Parent = this,
-                ForeColor = FormMain.Config.BattlefieldPlayerName,
-                BackColor = Color.Transparent,
-                AutoSize = false,
-                //BitmapListImageList = Program.formMain.ilGui24,
-                ImageIndex = FormMain.GUI_24_STAR,
-                Height = 24,
-                Width = 64,
-                ImageAlign = ContentAlignment.MiddleLeft,
-                TextAlign = ContentAlignment.MiddleRight,
-                Font = FormMain.Config.FontBattlefieldDamage
-            };
+            lblStateBattle = new VCLabel(ClientControl, 0, imgAvatarParticipant1.ShiftX,
+                Program.formMain.fontMedCaptionC, FormMain.Config.BattlefieldPlayerName, 32, "Идет бой");
+            lblStateBattle.Width = 160;
+            lblStateBattle.ShiftX = (ClientControl.Width - lblStateBattle.Width) / 2;
+            lblStateBattle.StringFormat.Alignment = StringAlignment.Center;
+            lblStateBattle.StringFormat.LineAlignment = StringAlignment.Center;
 
-            btnEndBattle = new Button()
-            {
-                Parent = this,
-                Text = "Завершить бой"
-            };
+            lblTimer = new VCLabel(ClientControl, lblStateBattle.ShiftX, lblStateBattle.NextTop(), Program.formMain.fontMedCaptionC, FormMain.Config.BattlefieldPlayerName, 32, "");
+            lblTimer.Width = lblStateBattle.Width;
+            lblTimer.StringFormat.Alignment = StringAlignment.Center;
+            lblTimer.StringFormat.LineAlignment = StringAlignment.Center;
+
+            lblDamagePlayer1 = new VCLabel(ClientControl, 0, 0, Program.formMain.fontParagraph, FormMain.Config.BattlefieldPlayerName, 24, "");
+            lblDamagePlayer1.BitmapList = Program.formMain.ilGui24;
+            lblDamagePlayer1.ImageIndex = FormMain.GUI_24_STAR;
+            lblDamagePlayer1.Width = 64;
+            lblDamagePlayer1.StringFormat.Alignment = StringAlignment.Far;
+            lblDamagePlayer1.StringFormat.LineAlignment = StringAlignment.Center;
+
+            lblDamagePlayer2 = new VCLabel(ClientControl, 0, 0, Program.formMain.fontParagraph, FormMain.Config.BattlefieldPlayerName, 24, "");
+            lblDamagePlayer2.BitmapList = Program.formMain.ilGui24;
+            lblDamagePlayer2.ImageIndex = FormMain.GUI_24_STAR;
+            lblDamagePlayer2.Width = 64;
+            lblDamagePlayer2.StringFormat.Alignment = StringAlignment.Far;
+            lblDamagePlayer2.StringFormat.LineAlignment = StringAlignment.Center;
+
+            btnEndBattle = new VCButton(ClientControl, 0, lblTimer.NextTop(), "Завершить бой");
+            btnEndBattle.Width = 192;
+            btnEndBattle.ShiftX = imgAvatarParticipant1.ShiftX + Program.formMain.imListObjectsBig.Size + (((imgAvatarParticipant2.ShiftX - imgAvatarParticipant1.ShiftX - Program.formMain.imListObjectsBig.Size) - btnEndBattle.Width) / 2);
             btnEndBattle.Click += BtnEndBattle_Click;
 
-            btnPlayPause = new Button()
-            {
-                Parent = this,
-                Text = "Скорость"
-            };
+            btnPlayPause = new VCButton(ClientControl, btnEndBattle.ShiftX, btnEndBattle.NextTop(), "Скорость");
+            btnPlayPause.Width = btnEndBattle.Width;
             btnPlayPause.Click += BtnPlayPause_Click;
+            //btnPlayPause.Width = btnIncSpeed.ShiftX - btnPlayPause.ShiftX;
+            Debug.Assert(btnPlayPause.Width > 0);
 
-            btnDecSpeed = new Button()
-            {
-                Parent = this,
-                Text = "<",
-                Width = FormMain.Config.GridSize * 3
-            };
+            btnDecSpeed = new VCIconButton(ClientControl, 0, 0, Program.formMain.ilGui24, FormMain.GUI_24_BUTTON_LEFT);
+            btnDecSpeed.ShiftX = btnPlayPause.ShiftX - btnDecSpeed.Width;
+            btnDecSpeed.ShiftY = btnPlayPause.ShiftY + (btnPlayPause.Height - btnDecSpeed.Height) / 2 + 1;
             btnDecSpeed.Click += BtnDecSpeed_Click;
 
-            btnIncSpeed = new Button()
-            {
-                Parent = this,
-                Text = ">",
-                Width = FormMain.Config.GridSize * 3
-            };
+            btnIncSpeed = new VCIconButton(ClientControl, btnPlayPause.ShiftX + btnPlayPause.Width, btnDecSpeed.ShiftY, Program.formMain.ilGui24, FormMain.GUI_24_BUTTON_RIGHT);
             btnIncSpeed.Click += BtnIncSpeed_Click;
 
             ApplySpeed();
+
+            // Считаем максимальное количество здоровья у героев игроков
+            maxHealthPlayer1 = CalcHealthPlayer(b.Player1);
+            maxHealthPlayer2 = CalcHealthPlayer(b.Player2);
+
+            //
+            lblDamagePlayer1.ShiftX = imgAvatarParticipant1.ShiftX + Program.formMain.imListObjectsBig.Size + FormMain.Config.GridSize;
+            lblDamagePlayer1.ShiftY = btnEndBattle.ShiftY;
+            lblDamagePlayer1.Visible = false;
+            lblDamagePlayer2.ShiftX = imgAvatarParticipant2.ShiftX - FormMain.Config.GridSize - 80;
+            lblDamagePlayer2.ShiftY = btnEndBattle.ShiftY;
+            lblDamagePlayer2.Visible = false;
+        }
+
+        internal override void ArrangeControls()
+        {
+            base.ArrangeControls();
+
+            rectBandHealthPlayer1 = new Rectangle(imgAvatarParticipant1.Left, imgAvatarParticipant1.Top + Program.formMain.imListObjectsBig.Size + 2, Program.formMain.imListObjectsBig.Size, 6);
+            rectBandHealthPlayer2 = new Rectangle(imgAvatarParticipant2.Left, imgAvatarParticipant2.Top + Program.formMain.imListObjectsBig.Size + 2, Program.formMain.imListObjectsBig.Size, 6);
+
+            topLeftGrid = new Point(FormMain.Config.GridSize, rectBandHealthPlayer1.Y + rectBandHealthPlayer1.Height + FormMain.Config.GridSize);
+            topLeftCells = new Point(topLeftGrid.X + FormMain.Config.GridSize + 1, topLeftGrid.Y + FormMain.Config.GridSize + 1);
         }
 
         // Фиксация прошедшего внутреннего времени битвы с текущей скоростью
@@ -326,11 +298,11 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (inPause)
             {
-                btnPlayPause.Text = "Пауза";
+                btnPlayPause.Caption = "Пауза";
             }
             else
             {
-                btnPlayPause.Text = "Скорость " + ValueSpeed().ToString() + "x";
+                btnPlayPause.Caption = "Скорость " + ValueSpeed().ToString() + "x";
             }
         }
 
@@ -359,11 +331,16 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnEndBattle_Click(object sender, EventArgs e)
         {
-            battle.CalcWholeBattle(null);
+            if (!battle.BattleCalced)
+            {
+                battle.CalcWholeBattle(null);
 
-            ApplyStep();
-            ShowResultBattle();
-            ShowTimerBattle();
+                ApplyStep();
+                ShowResultBattle();
+                ShowTimerBattle();
+            }
+            else
+                CloseForm(DialogResult.OK);
         }
 
         private void TimerStep_Tick(object sender, EventArgs e)
@@ -409,49 +386,13 @@ namespace Fantasy_Kingdoms_Battle
 
                 DrawFps();
                 Frames.Add(DateTime.Now);
-                
+
                 ApplyStep();
-                DrawFrame();
-                Invalidate();
-                Refresh();
+
+                Program.formMain.ShowFrame(true);
             }
             //else
             //    System.Threading.Thread.Sleep((FormMain.Config.MaxDurationFrame - (int)timeBetweenFrames.ElapsedMilliseconds));
-        }
-
-        private void DrawBackground()
-        {
-            Graphics g = Graphics.FromImage(bmpLayBackground);
-
-            g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
-            g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
-            g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-
-            g.DrawImageUnscaled(bmpBackground, 0, 0);
-
-            // Рисуем границу поля боя
-            g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
-
-            Bitmap border = Program.formMain.bbBorderWindow.DrawBorder(rectBorderBattlefield.Width, rectBorderBattlefield.Height);
-            g.DrawImageUnscaled(border, rectBorderBattlefield.X, rectBorderBattlefield.Y);
-            border.Dispose();
-
-            // Рисуем сетку
-            if (showGrid)
-            {
-                // Вертикальные линии
-                for (int x = 0; x <= battle.SizeBattlefield.Width; x++)
-                    g.DrawLine(penGrid, topLeftGrid.X + x * sizeTile.Width, topLeftGrid.Y, topLeftGrid.X + x * sizeTile.Width, topLeftGrid.Y + battle.SizeBattlefield.Height * sizeTile.Height);
-                // Горизонтальные линии
-                for (int y = 0; y <= battle.SizeBattlefield.Height; y++)
-                    g.DrawLine(penGrid, topLeftGrid.X, topLeftGrid.Y + y * sizeTile.Height, topLeftGrid.X + battle.SizeBattlefield.Width * sizeTile.Width, topLeftGrid.Y + y * sizeTile.Height);
-            }
-
-            // Рисуем аватарки игроков
-            Program.formMain.imListObjectsBig.DrawImage(g, battle.Player1.GetImageIndexAvatar(), (battle.BattleCalced == false) || (battle.Winner == battle.Player1), false, pointAvatarPlayer1.X, pointAvatarPlayer1.Y);
-            Program.formMain.imListObjectsBig.DrawImage(g, battle.Player2.GetImageIndexAvatar(), (battle.BattleCalced == false) || (battle.Winner == battle.Player2), false, pointAvatarPlayer2.X, pointAvatarPlayer2.Y);
-
-            g.Dispose();
         }
 
         private Point CellToClientCoord(BattlefieldTile t)
@@ -459,24 +400,33 @@ namespace Fantasy_Kingdoms_Battle
             return new Point(topLeftCells.X + (t.X * sizeTile.Width), topLeftCells.Y + (t.Y * sizeTile.Height));
         }
 
-        private void DrawFrame()
+        internal override void Draw(Graphics g)
         {
-            if (showGrid != chkbShowGrid.Checked)
+            // Обновляем аватарки игроков
+            imgAvatarParticipant1.ImageIsEnabled = (battle.BattleCalced == false) || (battle.Winner == battle.Player1);
+            imgAvatarParticipant2.ImageIsEnabled = (battle.BattleCalced == false) || (battle.Winner == battle.Player2);
+
+            base.Draw(g);
+
+            if (chkbShowGrid == null)
+                return;
+            showGrid = chkbShowGrid.Checked;
+
+            // Рисуем сетку
+            if (showGrid)
             {
-                showGrid = chkbShowGrid.Checked;
-                DrawBackground();
+                // Вертикальные линии
+                for (int x = 0; x <= battle.SizeBattlefield.Width; x++)
+                    g.DrawLine(penGrid,ClientControl.Left + topLeftGrid.X + x * sizeTile.Width, Program.formMain.ShiftControls.Y + topLeftGrid.Y, ClientControl.Left + topLeftGrid.X + x * sizeTile.Width, topLeftGrid.Y + battle.SizeBattlefield.Height * sizeTile.Height);
+                // Горизонтальные линии
+                for (int y = 0; y <= battle.SizeBattlefield.Height; y++)
+                    g.DrawLine(penGrid, ClientControl.Left + topLeftGrid.X, Program.formMain.ShiftControls.Y + topLeftGrid.Y + y * sizeTile.Height, ClientControl.Left + topLeftGrid.X + battle.SizeBattlefield.Width * sizeTile.Width, topLeftGrid.Y + y * sizeTile.Height);
             }
 
-            // Рисуем подложку
-            gFrame.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
-            gFrame.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
-            gFrame.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
-            gFrame.DrawImageUnscaled(bmpLayBackground, 0, 0);
-
             // Рисуем полоски жизней героев игроков
-            gFrame.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
-            GuiUtils.DrawBand(gFrame, rectBandHealthPlayer1, brushHealth, brushNoneHealth, CalcHealthPlayer(battle.Player1), maxHealthPlayer1);
-            GuiUtils.DrawBand(gFrame, rectBandHealthPlayer2, brushHealth, brushNoneHealth, CalcHealthPlayer(battle.Player2), maxHealthPlayer2);
+            g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
+            GuiUtils.DrawBand(g, rectBandHealthPlayer1, brushHealth, brushNoneHealth, CalcHealthPlayer(battle.Player1), maxHealthPlayer1);
+            GuiUtils.DrawBand(g, rectBandHealthPlayer2, brushHealth, brushNoneHealth, CalcHealthPlayer(battle.Player2), maxHealthPlayer2);
 
             // Рисуем героев
             foreach (HeroInBattle hero in battle.ActiveHeroes)
@@ -510,12 +460,13 @@ namespace Fantasy_Kingdoms_Battle
                     shift.Y += shiftY;
                 }
 
-                Debug.Assert(coordIconHero.X + shift.X < Width);
-                Debug.Assert(coordIconHero.Y + shift.Y >= topLeftCells.Y);
-                Debug.Assert(coordIconHero.Y + shift.Y < Height);
+                // Restore
+                //Debug.Assert(coordIconHero.X + shift.X < Width);
+                //Debug.Assert(coordIconHero.Y + shift.Y >= topLeftCells.Y);
+                //Debug.Assert(coordIconHero.Y + shift.Y < Height);
 
                 //cellHeroes[y, x].DrawToBitmap(bmpUnit, new Rectangle(0, 0, bmpUnit.Width, bmpUnit.Height));
-                gFrame.DrawImageUnscaled(hero.BmpIcon, coordIconHero.X + shift.X, coordIconHero.Y + shift.Y);
+                g.DrawImageUnscaled(hero.BmpIcon, Program.formMain.ShiftControls.X + coordIconHero.X + shift.X, Program.formMain.ShiftControls.Y + coordIconHero.Y + shift.Y);
 
                 // Рисуем стрелки атаки
                 if ((hero.Target != null) || (hero.LastTarget != default) || (hero.DestinationForMove != null))
@@ -561,7 +512,7 @@ namespace Fantasy_Kingdoms_Battle
                             {
                                 penArrow.Color = hero.PlayerHero.BattleParticipant == battle.Player1 ? FormMain.Config.BattlefieldAllyColor : FormMain.Config.BattlefieldEnemyColor;
                                 pTarget = new Point(topLeftGrid.X + (t.Coord.X * sizeTile.Width) + (sizeTile.Width / 2), topLeftGrid.Y + (t.Coord.Y * sizeTile.Height) + (sizeTile.Height / 2) + WIDTH_LINE);
-                                gFrame.DrawLine(penArrow, pSource, pTarget);
+                                g.DrawLine(penArrow, pSource, pTarget);
 
                                 pSource = pTarget;
                             }
@@ -579,7 +530,7 @@ namespace Fantasy_Kingdoms_Battle
                 Point ph2 = CellToClientCoord(m.DestTile);
                 Point p2 = new Point(ph2.X + sizeCell.Width / 2, ph2.Y + sizeCell.Height / 2);
 
-                m.Draw(gFrame, p1, p2);
+                m.Draw(g, p1, p2);
             }
 
             ShowTimerBattle();
@@ -602,12 +553,12 @@ namespace Fantasy_Kingdoms_Battle
             // Показываем урон по Замку
             if (battle.Winner == battle.Player1)
             {
-                lblDamagePlayer1.Show();
+                lblDamagePlayer1.Visible = true;
                 //lblDamagePlayer1.Text = battle.Player1.LastBattleDamageToCastle.ToString();
             }
             else if (battle.Winner == battle.Player2)
             {
-                lblDamagePlayer2.Show();
+                lblDamagePlayer2.Visible = true;
                 //lblDamagePlayer2.Text = battle.Player2.LastBattleDamageToCastle.ToString();
             }
 
@@ -615,36 +566,44 @@ namespace Fantasy_Kingdoms_Battle
             if ((battle.Winner != null) && (battle.Winner.GetTypePlayer() == TypePlayer.Human))
             {
                 lblStateBattle.Text = "Победа!";
-                lblStateBattle.ForeColor = FormMain.Config.BattlefieldTextWin;
+                lblStateBattle.Color = FormMain.Config.BattlefieldTextWin;
             }
             else if (battle.Winner == null)
             {
                 lblStateBattle.Text = "Ничья";
-                lblStateBattle.ForeColor = FormMain.Config.BattlefieldTextDraw;
+                lblStateBattle.Color = FormMain.Config.BattlefieldTextDraw;
             }
             else
             {
                 lblStateBattle.Text = "Поражение";
-                lblStateBattle.ForeColor = FormMain.Config.BattlefieldTextLose;
+                lblStateBattle.Color = FormMain.Config.BattlefieldTextLose;
             }
         }
 
-        private void FormBattle_FormClosing(object sender, FormClosingEventArgs e)
+        protected override void BeforeClose()
         {
+            base.BeforeClose();
+
+            Program.formMain.Settings.BattlefieldShowGrid = chkbShowGrid.Checked;
+            Program.formMain.Settings.BattlefieldShowPath = chkbShowPath.Checked;
+
             if (battle.BattleCalced == false)
-                battle.CalcWholeBattle(null); 
+                battle.CalcWholeBattle(null);
         }
 
-        protected override void OnPaintBackground(PaintEventArgs e)
+        internal override void DrawBackground(Graphics g)
         {
-            base.OnPaintBackground(e);
+            base.DrawBackground(g);
 
             BackPaints.Add(DateTime.Now);
 
-            e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;            
-            e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
-            e.Graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
-            e.Graphics.DrawImage(bmpFrame, e.ClipRectangle, e.ClipRectangle, GraphicsUnit.Pixel);
+            //restore
+            /*
+            g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
+            g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+            g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
+            g.DrawImageUnscaled(bmpFrame, Left, Top);
+            */
             //e.Graphics.DrawImage(bmpLayBackground, e.ClipRectangle, e.ClipRectangle, GraphicsUnit.Pixel);
             //e.Graphics.DrawImageUnscaled(bmpLay0, 0, 0);
         }
@@ -659,114 +618,25 @@ namespace Fantasy_Kingdoms_Battle
             Utils.TrimActions(BackPaints);
 
             TimeSpan realTime = currentDateTime - timeStart;
-            
+
             lblSystemInfo.Text = Frames.Count.ToString() + " fps; steps: " + Steps.Count.ToString()
-                  + "; backpaints: " + BackPaints.Count.ToString() + "; passed: " + realTime.ToString("mm':'ss"); 
+                  + "; backpaints: " + BackPaints.Count.ToString() + "; passed: " + realTime.ToString("mm':'ss");
         }
 
-        internal void ShowBattle(Battle b)
+        internal void ShowBattle()
         {
-            Text = "Бой. " + b.Player1.GetName() + " vs " + b.Player2.GetName();
-
-            battle = b;
-
-            // Расчет координат для отрисовки
-            sizeCell = Program.formMain.bmpBorderForIcon.Size;
-
-            Width = FormMain.Config.GridSize + (sizeCell.Width + FormMain.Config.GridSize) * FormMain.Config.HeroRows * 2 + FormMain.Config.GridSize + (Width - ClientSize.Width);
-
-            lblPlayer1.Left = FormMain.Config.GridSize;
-            lblPlayer1.Text = battle.Player1.GetName();
-            pointAvatarPlayer1 = new Point(lblPlayer1.Left, lblPlayer1.Top + lblPlayer1.Height);
-            rectBandHealthPlayer1 = new Rectangle(pointAvatarPlayer1.X, pointAvatarPlayer1.Y + Program.formMain.imListObjectsBig.Size + 2, Program.formMain.imListObjectsBig.Size, 6);
-
-            // Считаем максимальное количество здоровья у героев игроков
-            maxHealthPlayer1 = CalcHealthPlayer(b.Player1);
-            maxHealthPlayer2 = CalcHealthPlayer(b.Player2);
-
-            //
-            sizeTile = new Size(sizeCell.Width + (FormMain.Config.GridSize * 2) + 1, sizeCell.Height + (FormMain.Config.GridSize * 2) + 1);
-            topLeftGrid = new Point(FormMain.Config.GridSize + FormMain.Config.WidthBorderBattlefield, rectBandHealthPlayer1.Y + rectBandHealthPlayer1.Height + FormMain.Config.GridSize + FormMain.Config.WidthBorderBattlefield);
-            topLeftCells = new Point(topLeftGrid.X + FormMain.Config.GridSize + 1, topLeftGrid.Y + FormMain.Config.GridSize + 1);
-
-            Width = topLeftGrid.X + (b.SizeBattlefield.Width * sizeTile.Width) + WIDTH_LINE + FormMain.Config.GridSize
-                + FormMain.Config.WidthBorderBattlefield + (Width - ClientSize.Width);
-            Height = topLeftGrid.Y + (b.SizeBattlefield.Height * sizeTile.Height + WIDTH_LINE) + FormMain.Config.GridSize
-                + FormMain.Config.WidthBorderBattlefield + (Height - ClientSize.Height);
-
-            // Положение аватарки второго игрока
-            pointAvatarPlayer2 = new Point(ClientSize.Width - Program.formMain.imListObjectsBig.Size - FormMain.Config.GridSize, pointAvatarPlayer1.Y);
-            lblPlayer2.Left = pointAvatarPlayer2.X;
-            lblPlayer2.Text = battle.Player2.GetName();
-            rectBandHealthPlayer2 = new Rectangle(pointAvatarPlayer2.X, pointAvatarPlayer2.Y + Program.formMain.imListObjectsBig.Size + 2, Program.formMain.imListObjectsBig.Size, 6);
-
-            //
-            lblStateBattle.Top = pointAvatarPlayer1.Y;
-            lblStateBattle.Width = pointAvatarPlayer2.X - pointAvatarPlayer1.X - Program.formMain.imListObjectsBig.Size - FormMain.Config.GridSize * 2;
-            lblStateBattle.Left = pointAvatarPlayer1.X + Program.formMain.imListObjectsBig.Size + FormMain.Config.GridSize;
-            lblStateBattle.Text = "Идет бой";
-
-            lblTimer.Top = lblStateBattle.Top + lblStateBattle.Height;
-            lblTimer.Width = lblStateBattle.Width;
-            lblTimer.Left = lblStateBattle.Left;
-
-            btnEndBattle.Top = lblTimer.Top + lblTimer.Height;
-            btnEndBattle.Width = 136;
-            btnEndBattle.Height = 32;
-            btnEndBattle.Left = pointAvatarPlayer1.X + Program.formMain.imListObjectsBig.Size + (((pointAvatarPlayer2.X - pointAvatarPlayer1.X - Program.formMain.imListObjectsBig.Size) - btnEndBattle.Width) / 2);
-
-            btnDecSpeed.Top = GuiUtils.NextTop(btnEndBattle);
-            btnDecSpeed.Left = btnEndBattle.Left;
-            btnIncSpeed.Top = btnDecSpeed.Top;
-            btnIncSpeed.Left = btnEndBattle.Left + btnEndBattle.Width - btnIncSpeed.Width;
-            btnPlayPause.Top = btnDecSpeed.Top;
-            btnPlayPause.Left = btnDecSpeed.Left + btnDecSpeed.Width;
-            btnPlayPause.Width = btnIncSpeed.Left - btnPlayPause.Left;
-            Debug.Assert(btnPlayPause.Width > 0);
-
-            //
-            lblDamagePlayer1.Top = btnEndBattle.Top;
-            lblDamagePlayer1.Left = pointAvatarPlayer1.X + Program.formMain.imListObjectsBig.Size + FormMain.Config.GridSize;
-            lblDamagePlayer1.Hide();
-            lblDamagePlayer2.Top = btnEndBattle.Top;
-            lblDamagePlayer2.Left = pointAvatarPlayer2.X - FormMain.Config.GridSize - 80;
-            lblDamagePlayer2.Hide();
-
-            // Подготавливаем подложку
-            bmpBackground = GuiUtils.MakeBackground(ClientSize);
-
-            // Подготавливаем фоновый рисунок
-            bmpLayBackground = new Bitmap(bmpBackground);
-
-            //
-            chkbShowGrid.Left = ClientSize.Width - chkbShowGrid.Width - FormMain.Config.GridSize;
-            chkbShowGrid.Checked = Program.formMain.Settings.BattlefieldShowGrid;
-            showGrid = !chkbShowGrid.Checked;
-            chkbShowPath.Left = chkbShowGrid.Left - chkbShowPath.Width - FormMain.Config.GridSize;
-            chkbShowPath.Checked = Program.formMain.Settings.BattlefieldShowPath;
-
-            //
-            int widthBorder = Program.formMain.bbBorderWindow.ArraySides[0, 0].Width;
-
-            rectBorderBattlefield = new Rectangle(topLeftGrid.X - widthBorder, topLeftGrid.Y - widthBorder,
-                ClientSize.Width - (FormMain.Config.GridSize * 2), ClientSize.Height - topLeftGrid.Y + widthBorder - FormMain.Config.GridSize);
-
-            //
-            bmpFrame = new Bitmap(bmpLayBackground);
-            gFrame = Graphics.FromImage(bmpFrame);
-
             //
             ApplyStep();
 
-            ShowDialog();
-        }
+            //
+            Program.formMain.formHint.HideHint();
 
-        protected override void OnShown(EventArgs e)
-        {
-            base.OnShown(e);
+            AdjustSize();
+            ToCentre();
+            Program.formMain.LayerChanged();
 
             timeStart = DateTime.Now;
-            timeInternalFixed = timeStart; 
+            timeInternalFixed = timeStart;
             stepsCalcedByCurrentSpeed = 0;
             timePassedCurrentSpeed.Start();
             timeBetweenFrames.Start();
@@ -774,7 +644,7 @@ namespace Fantasy_Kingdoms_Battle
 
             for (; ; )
             {
-                TimerStep_Tick(this, e);
+                TimerStep_Tick(this, null);
                 Application.DoEvents();
 
                 if (needClose)
@@ -785,12 +655,12 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        protected override void OnClosing(CancelEventArgs e)
+/*        protected override void OnClosing(CancelEventArgs e)
         {
             base.OnClosing(e);
 
             needClose = e.Cancel;
-        }
+        }*/
 
         private int CalcHealthPlayer(BattleParticipant p)
         {
@@ -805,19 +675,12 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         private void ApplyStep()
-        {           
-            btnEndBattle.Enabled = !battle.BattleCalced;
-            btnDecSpeed.Enabled = btnEndBattle.Enabled;
-            btnIncSpeed.Enabled = btnEndBattle.Enabled;
-            btnPlayPause.Enabled = btnEndBattle.Enabled;
-        }
-
-        protected override void OnFormClosed(FormClosedEventArgs e)
         {
-            base.OnFormClosed(e);
-
-            Program.formMain.Settings.BattlefieldShowGrid = chkbShowGrid.Checked;
-            Program.formMain.Settings.BattlefieldShowPath = chkbShowPath.Checked;
+            //btnEndBattle.Enabled = !battle.BattleCalced;
+            btnEndBattle.Caption = battle.BattleCalced ? "Закрыть" : "Завершить бой";
+            btnDecSpeed.ImageIsEnabled = btnEndBattle.Enabled;
+            btnIncSpeed.ImageIsEnabled = btnEndBattle.Enabled;
+            btnPlayPause.Enabled = btnEndBattle.Enabled;
         }
     }
 }

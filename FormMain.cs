@@ -1797,7 +1797,7 @@ namespace Fantasy_Kingdoms_Battle
         protected override void OnDeactivate(EventArgs e)
         {
             base.OnDeactivate(e);
-
+            return;
             ControlForHintLeave();
             if (WindowState != FormWindowState.Minimized)
                 ShowFrame(true);

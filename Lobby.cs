@@ -177,7 +177,7 @@ namespace Fantasy_Kingdoms_Battle
         private void CalcBattles()
         {
             Battle b;
-            FormBattle formBattle;
+            WindowBattle formBattle;
             FormProgressBattle formProgressBattle = null;
 
             foreach (LobbyPlayer p in Players)
@@ -205,8 +205,8 @@ namespace Fantasy_Kingdoms_Battle
 
                         if (showForPlayer)
                         {
-                            formBattle = new FormBattle();
-                            formBattle.ShowBattle(b);
+                            formBattle = new WindowBattle(b);
+                            formBattle.ShowBattle();
                             formBattle.Dispose();
                         }
                         else
@@ -248,8 +248,8 @@ namespace Fantasy_Kingdoms_Battle
 
                         if (showForPlayer)
                         {
-                            formBattle = new FormBattle();
-                            formBattle.ShowBattle(b);
+                            formBattle = new WindowBattle(b);
+                            formBattle.ShowBattle();
                             formBattle.Dispose();
                         }
                         else

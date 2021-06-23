@@ -133,7 +133,7 @@ namespace Fantasy_Kingdoms_Battle
             foreach (PlayerLair pl in tempListLair)
             {
                 Battle b;
-                FormBattle formBattle;
+                WindowBattle formBattle;
                 FormProgressBattle formProgressBattle = null;
 
                 if ((pl != null) && (pl.listAttackedHero.Count > 0))
@@ -160,8 +160,8 @@ namespace Fantasy_Kingdoms_Battle
 
                         if (showForPlayer)
                         {
-                            formBattle = new FormBattle();
-                            formBattle.ShowBattle(b);
+                            formBattle = new WindowBattle(b);
+                            formBattle.ShowBattle();
                             formBattle.Dispose();
                         }
                         else

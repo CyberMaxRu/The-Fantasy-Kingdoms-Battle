@@ -280,7 +280,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int HeroInRow { get; private set; }// Героев в ряду
         internal int HeroRows { get; private set; }// Рядов героев
         internal int RowsBetweenSides { get; private set; }// Рядов между сторонами
-        internal int WidthBorderBattlefield { get; set; }// Ширина бордюра поля боя
         internal int StepsInSecond { get; private set; }// Шагов в секунду
         internal int StepInMSec {get; private set; }// Время шага в миллисекундах
         internal int MaxDurationBattle { get; private set; }// Максимальная длительность боя в секундах
@@ -585,10 +584,6 @@ namespace Fantasy_Kingdoms_Battle
             RowsBetweenSides = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battlefield/RowsBetweenSides").InnerText);
             Debug.Assert(RowsBetweenSides >= 0);
             Debug.Assert(RowsBetweenSides <= 4);
-
-            WidthBorderBattlefield = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battlefield/WidthBorder").InnerText);
-            Debug.Assert(HeroRows >= 1);
-            Debug.Assert(HeroRows <= 32);
 
             StepsInSecond = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battle/StepsInSecond").InnerText);
             Debug.Assert(StepsInSecond >= 5);
