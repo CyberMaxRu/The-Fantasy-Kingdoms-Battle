@@ -41,7 +41,7 @@ namespace Fantasy_Kingdoms_Battle
 
         protected Bitmap PrepareBand(Bitmap bmpBand)
         {
-            Debug.Assert(Width >= bmpBand.Width);
+            Debug.Assert(Width >= bmpBand.Width, $"Width={Width}, bmpBand.Width={bmpBand.Width}");
 
             int widthCap = WidthCap();
             int widthBody = bmpBand.Width - widthCap - widthCap;
