@@ -26,8 +26,9 @@ namespace Fantasy_Kingdoms_Battle
             ClientControl.Height = 200;
 
             windowCaption = new VCWindowCaption(this, 0, 0);
+            windowCaption.Width = 410;// Такая ширина заголовка в Majesty 2
         }
-       
+
         internal override void AdjustSize()
         {
             if ((Width != 14 + ClientControl.Width + 14) || (Height != 13 + 24 + ClientControl.Height + 14))
@@ -49,7 +50,6 @@ namespace Fantasy_Kingdoms_Battle
                 g.DrawImage(back, 14, 14);
                 back.Dispose();
 
-                windowCaption.Width = 410;// Такая ширина заголовка в Majesty 2
                 windowCaption.ShiftX = (Width - windowCaption.Width) / 2;
 
                 ArrangeControls();
