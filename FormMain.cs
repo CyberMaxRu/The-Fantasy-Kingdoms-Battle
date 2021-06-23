@@ -1275,17 +1275,6 @@ namespace Fantasy_Kingdoms_Battle
             panelHeroes.Height = panelHeroes.MaxSize().Height;
         }
 
-        private void ShowBattle()
-        {
-            if (lobby.Turn > 1)
-            {
-                Battle b = lobby.GetBattle(lobby.CurrentPlayer, lobby.Turn - 1);
-
-                FormBattle fb = new FormBattle();
-                fb.ShowBattle(b);
-            }
-        }
-
         private void DrawWarehouse()
         {
             panelWarehouse = new PanelWithPanelEntity(Config.WarehouseWidth);
