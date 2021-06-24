@@ -154,7 +154,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Building.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
 
             imgMapObject.ImageIndex = Building.Building.ImageIndex;
-            imgMapObject.ImageIsEnabled = Building.Level > 0;
+            imgMapObject.NormalImage = Building.Level > 0;
 
             lblNameMapObject.Text = Building.Building.Name;
             lblNameMapObject.Color = FormMain.Config.ColorMapObjectCaption(Building.Level > 0);
