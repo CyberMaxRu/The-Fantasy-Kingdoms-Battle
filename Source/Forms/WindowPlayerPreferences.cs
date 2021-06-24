@@ -221,7 +221,8 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Program.formMain.CurrentHumanPlayer.SetName(editName.Text);
                 FormMain.Config.SaveHumanPlayers();
-                Program.formMain.ShowCurrentPlayerLobby();
+                if (Program.formMain.CurrentLobby != null)
+                    Program.formMain.ShowCurrentPlayerLobby();
             }
 
             CloseForm(DialogResult.OK);
