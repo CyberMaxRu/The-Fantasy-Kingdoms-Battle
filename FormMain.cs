@@ -1475,7 +1475,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 pageGuilds.PopupQuantity = lobby.CurrentPlayer.PointConstructionGuild;
                 pageBuildings.PopupQuantity = lobby.CurrentPlayer.PointConstructionEconomic;
-                pageTemples.PopupQuantity = lobby.CurrentPlayer.PointConstructionTemple;
+                pageTemples.PopupQuantity = lobby.CurrentPlayer.CanBuildTemple() ? lobby.CurrentPlayer.PointConstructionTemple : 0;
                 pageHeroes.Cost = lobby.CurrentPlayer.CombatHeroes.Count.ToString();
 
                 //

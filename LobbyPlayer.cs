@@ -788,6 +788,20 @@ namespace Fantasy_Kingdoms_Battle
             PointConstructionTradePost += l.RewardPointTradePost;
         }
 
+        internal bool CanBuildTemple()
+        {
+            if (PointConstructionTemple == 0)
+                return false;
+
+            foreach (PlayerBuilding pb in Buildings.Where(p => p.Building is TypeTemple))
+            {
+                if ((pb.Level == 0) && pb.CheckRequirements())
+                    return true;
+            }
+
+            return false;
+        }
+
         internal override string GetName() => Player.Name;
         internal override LobbyPlayer GetPlayer() => this;
         internal override TypePlayer GetTypePlayer() => Player.TypePlayer;
