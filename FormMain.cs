@@ -1357,6 +1357,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void EndLobby()
         {
+            lobby = null;
             panelPlayers.Visible = false;
             MainControl.Visible = false;
             btnInGameMenu.Visible = false;
