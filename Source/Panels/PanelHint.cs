@@ -23,11 +23,11 @@ namespace Fantasy_Kingdoms_Battle
     // Панель подсказки
     internal sealed class PanelHint : VisualControl
     {
-        internal readonly VCTextM2 lblHeader;
-        internal readonly VCTextM2 lblAction;
-        internal readonly VCTextM2 lblDescription;
+        internal readonly VCText lblHeader;
+        internal readonly VCText lblAction;
+        internal readonly VCText lblDescription;
         internal readonly VCSeparator lblSeparateRequirement;
-        internal readonly List<VCTextM2> listRequirements = new List<VCTextM2>();
+        internal readonly List<VCText> listRequirements = new List<VCText>();
         internal readonly VCLabelValue lblIncome;
         internal readonly VCLabelValue lblGreatnessAdd;
         internal readonly VCLabelValue lblGreatnessPerDay;
@@ -53,15 +53,15 @@ namespace Fantasy_Kingdoms_Battle
 
             widthControl = Width - FormMain.Config.GridSize - FormMain.Config.GridSize;
 
-            lblHeader = new VCTextM2(this, FormMain.Config.GridSize, 4, Program.formMain.fontMedCaptionC, Color.Yellow, widthControl);
+            lblHeader = new VCText(this, FormMain.Config.GridSize, 4, Program.formMain.fontMedCaptionC, Color.Yellow, widthControl);
             lblHeader.StringFormat.Alignment = StringAlignment.Near;
             lblHeader.StringFormat.LineAlignment = StringAlignment.Near;
 
-            lblAction = new VCTextM2(this, FormMain.Config.GridSize, lblHeader.NextTop(), Program.formMain.fontMedCaptionC, FormMain.Config.HintAction, widthControl);
+            lblAction = new VCText(this, FormMain.Config.GridSize, lblHeader.NextTop(), Program.formMain.fontMedCaptionC, FormMain.Config.HintAction, widthControl);
             lblAction.StringFormat.Alignment = StringAlignment.Near;
             lblAction.StringFormat.LineAlignment = StringAlignment.Near;
 
-            lblDescription = new VCTextM2(this, FormMain.Config.GridSize, lblAction.NextTop(), Program.formMain.fontSmallC, FormMain.Config.HintDescription, widthControl);
+            lblDescription = new VCText(this, FormMain.Config.GridSize, lblAction.NextTop(), Program.formMain.fontSmallC, FormMain.Config.HintDescription, widthControl);
             lblDescription.StringFormat.Alignment = StringAlignment.Near;
             lblDescription.StringFormat.LineAlignment = StringAlignment.Near;
 
@@ -181,7 +181,7 @@ namespace Fantasy_Kingdoms_Battle
             lblGreatnessAdd.Visible = false;
             lblGreatnessPerDay.Visible = false;
 
-            foreach (VCTextM2 l in listRequirements)
+            foreach (VCText l in listRequirements)
                 l.Dispose();
             lblSeparateRequirement.Visible = false;
             listRequirements.Clear();
@@ -297,10 +297,10 @@ namespace Fantasy_Kingdoms_Battle
                 lblSeparateRequirement.ShiftY = nextTop;
                 nextTop = lblSeparateRequirement.NextTop();
 
-                VCTextM2 lr;
+                VCText lr;
                 foreach (TextRequirement tr in requirement)
                 {
-                    lr = new VCTextM2(this, FormMain.Config.GridSize, nextTop, Program.formMain.fontSmallC, ColorRequirements(tr.Performed), widthControl);
+                    lr = new VCText(this, FormMain.Config.GridSize, nextTop, Program.formMain.fontSmallC, ColorRequirements(tr.Performed), widthControl);
                     lr.StringFormat.Alignment = StringAlignment.Near;
                     lr.Text = tr.Text;
                     lr.Height = lr.MinHeigth();

@@ -104,7 +104,7 @@
     <Compile Include="Source\VisualControls\VCLink.cs" />
     <Compile Include="Source\VisualControls\VCTabButton.cs" />
     <Compile Include="Source\VisualControls\VCSeparator.cs" />
-    <Compile Include="Source\VisualControls\VCTextM2.cs" />
+    <Compile Include="Source\VisualControls\VCText.cs" />
     <Compile Include="Source\VisualControls\VCWindowCaption.cs" />
     <Compile Include="Source\VisualControls\VisualLayer.cs" />
     <Compile Include="Specialization.cs" />

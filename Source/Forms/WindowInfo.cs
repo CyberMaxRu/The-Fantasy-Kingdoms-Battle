@@ -11,13 +11,13 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class WindowInfo : VCForm
     {
         private readonly VCButton btnOk;
-        private readonly VCTextM2 lblText;
+        private readonly VCText lblText;
 
         public WindowInfo(string caption, string text) : base()
         {
             windowCaption.Caption = caption;
 
-            lblText = new VCTextM2(ClientControl, 0, 0, Program.formMain.fontParagraph, Color.White, ClientControl.Width);
+            lblText = new VCText(ClientControl, 0, 0, Program.formMain.fontParagraph, Color.White, ClientControl.Width);
             lblText.Text = text;
             lblText.Height = lblText.MinHeigth();
 

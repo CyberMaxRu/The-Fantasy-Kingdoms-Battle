@@ -10,9 +10,9 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class WindowAboutProgram : VCForm
     {
-        private VCTextM2 txtAboutProject;
-        private VCTextM2 txtAboutDeveloper;
-        private VCTextM2 txtAddInfo;
+        private VCText txtAboutProject;
+        private VCText txtAboutDeveloper;
+        private VCText txtAddInfo;
         private VCLink linkRoadmap;
         private VCLink linkDesignDoc;
         private VCLink linkGithub;
@@ -27,7 +27,7 @@ namespace Fantasy_Kingdoms_Battle
 
             ClientControl.Width = 560;
 
-            txtAboutProject = new VCTextM2(ClientControl, 0, 0, Program.formMain.fontParagraph, Color.White, ClientControl.Width);
+            txtAboutProject = new VCText(ClientControl, 0, 0, Program.formMain.fontParagraph, Color.White, ClientControl.Width);
             txtAboutProject.ShowBorder = true;
             txtAboutProject.Text = "Автобаттлер на основе \"Majesty 2: The Fantasy Kingdom Sim.\"\n\rПроект разрабатывается для проверки концепции автобаттлера во вселенной Majesty и бесплатен для использования."
                 + "\n\rВ игре использованы графические и звуковые ресурсы из Majesty 2 (разработчик Ino-Co при участии Paradox Interactive)."
@@ -40,7 +40,7 @@ namespace Fantasy_Kingdoms_Battle
             linkDesignDoc = new VCLink(txtAboutProject, linkRoadmap.NextLeft() + FormMain.Config.GridSize, linkRoadmap.ShiftY, "Дизайн-документ", "https://docs.google.com/document/d/12Jw_20kLgtPcKbpVl9Ry4NawdG9dybXgvNPReBHWH2Q/edit?usp=sharing");
             linkGithub = new VCLink(txtAboutProject, linkDesignDoc.NextLeft() + FormMain.Config.GridSize, linkRoadmap.ShiftY, "GitHub", "https://github.com/CyberMaxRu/The-Fantasy-Kingdoms-Battle");
 
-            txtAboutDeveloper = new VCTextM2(ClientControl, 0, txtAboutProject.NextTop(), Program.formMain.fontParagraph, Color.White, ClientControl.Width);
+            txtAboutDeveloper = new VCText(ClientControl, 0, txtAboutProject.NextTop(), Program.formMain.fontParagraph, Color.White, ClientControl.Width);
             txtAboutDeveloper.ShowBorder = true;
             txtAboutDeveloper.Text = "Разработчик: Кузьмин М.А.\n\rИсходный код написан на C# под .NET Framework 4.8 с рендерингом через GDI+. Использованы только стандартные компоненты, кроме работы c zip."
                 + "\n\rРазработка ведется как проекта с открытым исходным кодом.";
@@ -48,7 +48,7 @@ namespace Fantasy_Kingdoms_Battle
             txtAboutDeveloper.Padding = new Padding(4);
             txtAboutDeveloper.Height = txtAboutDeveloper.MinHeigth() + FormMain.Config.GridSize;
 
-            txtAddInfo = new VCTextM2(ClientControl, 0, txtAboutDeveloper.NextTop(), Program.formMain.fontParagraph, Color.White, ClientControl.Width);
+            txtAddInfo = new VCText(ClientControl, 0, txtAboutDeveloper.NextTop(), Program.formMain.fontParagraph, Color.White, ClientControl.Width);
             txtAddInfo.Text = "Игра создается при поддержке проекта \"Возрождение\":"
                 + "\n\r \n\r \n\rОтдельная благодарность: Владиславу Франёву, участникам Discord-сервера: Феркасс, Герцог Тьмы, Ice_Cube."
                 + "\n\rПомочь проекту автобаттлера можно своими предложениями (в Discord), участием в тестировании и распространении информации об игре.";

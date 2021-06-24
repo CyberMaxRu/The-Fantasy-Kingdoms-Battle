@@ -12,13 +12,13 @@ namespace Fantasy_Kingdoms_Battle
     {
         private readonly VCButton btnOk;
         private readonly VCButton btnCancel;
-        private readonly VCTextM2 textConfirm;
+        private readonly VCText textConfirm;
 
         public WindowConfirm(string caption, string text) : base()
         {
             windowCaption.Caption = caption;
 
-            textConfirm = new VCTextM2(ClientControl, 0, 0, Program.formMain.fontParagraph, Color.White, ClientControl.Width);
+            textConfirm = new VCText(ClientControl, 0, 0, Program.formMain.fontParagraph, Color.White, ClientControl.Width);
             textConfirm.Text = text;
             textConfirm.Height = textConfirm.MinHeigth();
 

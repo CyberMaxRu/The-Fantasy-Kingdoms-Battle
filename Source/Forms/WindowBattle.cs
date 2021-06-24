@@ -47,8 +47,8 @@ namespace Fantasy_Kingdoms_Battle
 
         private readonly VCImageBig imgAvatarParticipant1;
         private readonly VCImageBig imgAvatarParticipant2;
-        private readonly VCTextM2 lblPlayer1;
-        private readonly VCTextM2 lblPlayer2;
+        private readonly VCText lblPlayer1;
+        private readonly VCText lblPlayer2;
         private Rectangle rectBandHealthPlayer1;
         private Rectangle rectBandHealthPlayer2;
         private readonly VCLabel lblSystemInfo;
@@ -88,13 +88,13 @@ namespace Fantasy_Kingdoms_Battle
             lblSystemInfo.StringFormat.Alignment = StringAlignment.Near;
             lblSystemInfo.StringFormat.LineAlignment = StringAlignment.Center;
 
-            lblPlayer1 = new VCTextM2(ClientControl, FormMain.Config.GridSize, lblSystemInfo.NextTop(), Program.formMain.fontMedCaptionC, FormMain.Config.BattlefieldPlayerName, Program.formMain.imListObjectsBig.Size);
+            lblPlayer1 = new VCText(ClientControl, FormMain.Config.GridSize, lblSystemInfo.NextTop(), Program.formMain.fontMedCaptionC, FormMain.Config.BattlefieldPlayerName, Program.formMain.imListObjectsBig.Size);
             lblPlayer1.Height = 48;
             lblPlayer1.StringFormat.Alignment = StringAlignment.Center;
             lblPlayer1.StringFormat.LineAlignment = StringAlignment.Far;
             lblPlayer1.Text = battle.Player1.GetName();
 
-            lblPlayer2 = new VCTextM2(ClientControl, ClientControl.Width - Program.formMain.imListObjectsBig.Size - FormMain.Config.GridSize, lblPlayer1.ShiftY, Program.formMain.fontMedCaptionC, FormMain.Config.BattlefieldPlayerName, Program.formMain.imListObjectsBig.Size);
+            lblPlayer2 = new VCText(ClientControl, ClientControl.Width - Program.formMain.imListObjectsBig.Size - FormMain.Config.GridSize, lblPlayer1.ShiftY, Program.formMain.fontMedCaptionC, FormMain.Config.BattlefieldPlayerName, Program.formMain.imListObjectsBig.Size);
             lblPlayer2.Height = 48;
             lblPlayer2.StringFormat.Alignment = StringAlignment.Center;
             lblPlayer2.StringFormat.LineAlignment = StringAlignment.Far;

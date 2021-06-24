@@ -12,7 +12,7 @@ namespace Fantasy_Kingdoms_Battle
 {
     // Визуальный контрол - текст
 
-    internal class VCTextM2 : VisualControl
+    internal class VCText : VisualControl
     {
         private string text;
         private Padding padding;
@@ -22,7 +22,7 @@ namespace Fantasy_Kingdoms_Battle
         private List<Bitmap> listBitmapPreparedText = new List<Bitmap>();
         private int heightBitmaps;
 
-        public VCTextM2(VisualControl parent, int shiftX, int shiftY, M2Font font, Color foreColor, int width) : base(parent, shiftX, shiftY)
+        public VCText(VisualControl parent, int shiftX, int shiftY, M2Font font, Color foreColor, int width) : base(parent, shiftX, shiftY)
         {
             Width = width;
             Font = font;
