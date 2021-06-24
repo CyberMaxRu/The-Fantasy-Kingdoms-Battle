@@ -12,11 +12,6 @@ namespace Fantasy_Kingdoms_Battle
 {
     public sealed class GuiUtils
     {
-        internal static int NextTop(Control c)
-        {
-            return c.Top + c.Height + FormMain.Config.GridSize;
-        }
-
         internal static void DrawBand(Graphics g, Rectangle r, Brush brushFore, Brush brushBack, int currentValue, int MaxValue)
         {
             Debug.Assert(currentValue <= MaxValue);
