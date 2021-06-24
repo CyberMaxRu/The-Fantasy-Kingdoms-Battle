@@ -89,6 +89,8 @@ namespace Fantasy_Kingdoms_Battle
 
         private readonly VCBitmap bitmapMenu;
         private readonly VCLabel labelMenuNameObject;
+        private readonly VisualControl vcBackMainMenu;
+        private readonly VCLabel labelVersion;
 
         private PlayerObject selectedPlayerObject;
 
@@ -483,6 +485,14 @@ namespace Fantasy_Kingdoms_Battle
                 Layers.Add(layerGame);
                 currentLayer = layerGame;
 
+                vcBackMainMenu = new VisualControl(layerGame);
+                vcBackMainMenu.Visible = false;
+                labelVersion = new VCLabel(vcBackMainMenu, 0, 0, fontSmall, Color.White, fontSmall.MaxHeightSymbol,
+                    "Сборка " + VERSION + " от " + DATE_VERSION);
+                labelVersion.Width = labelVersion.Font.WidthText(labelVersion.Text);
+                vcBackMainMenu.Width = labelVersion.Width;
+                vcBackMainMenu.Height = labelVersion.Height;
+
                 // Верхняя панель
                 TopControl = new VisualControl(layerGame);
 
@@ -522,7 +532,7 @@ namespace Fantasy_Kingdoms_Battle
                 labelGreatness.ShowHint += LabelGreatness_ShowHint;
                 labelGreatness.Width = 112;
 
-                labelNamePlayer = new VCLabel(bmpPreparedToolbar, 0, 0, fontBigCaptionC, Color.White, fontBigCaptionC.MaxHeightSymbol, "");
+                labelNamePlayer = new VCLabel(bmpPreparedToolbar, 0, 0, fontMedCaptionC, Color.White, fontMedCaptionC.MaxHeightSymbol, "");
                 labelNamePlayer.StringFormat.LineAlignment = StringAlignment.Center;
                 labelNamePlayer.Width = 16;
 
@@ -1083,6 +1093,7 @@ namespace Fantasy_Kingdoms_Battle
             bmpPreparedToolbar.SetPos(ShiftControls.X, TopControl.Top + TopControl.Height + Config.GridSize);
             MainControl.SetPos(ShiftControls.X, TopControl.Top + TopControl.Height + Config.GridSize);
             MainControl.ArrangeControls();
+            vcBackMainMenu.SetPos(MainControl.Left + MainControl.Width - vcBackMainMenu.Width - Config.GridSize, MainControl.Top + MainControl.Height - vcBackMainMenu.Height - Config.GridSize);
         }
 
         private void FormMain_KeyDown(object sender, KeyEventArgs e)
@@ -1333,6 +1344,7 @@ namespace Fantasy_Kingdoms_Battle
             MainControl.Visible = true;
             btnInGameMenu.Visible = true;
             btnEndTurn.Visible = true;
+            vcBackMainMenu.Visible = false;
         }
 
         internal void EndLobby()
@@ -1341,6 +1353,7 @@ namespace Fantasy_Kingdoms_Battle
             MainControl.Visible = false;
             btnInGameMenu.Visible = false;
             btnEndTurn.Visible = false;
+            vcBackMainMenu.Visible = true;
 
             ShowNamePlayer(NAME_PROJECT);
         }
