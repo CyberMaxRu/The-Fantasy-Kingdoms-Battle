@@ -1122,21 +1122,29 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void ShowCurrentPlayerLobby()
         {
-            if (lobby.CurrentPlayer.GetTypePlayer() == TypePlayer.Human)
-            {
-                MainControl.Visible = true;
-                ShowDataPlayer();
-            }
-            else
+            if (lobby.CurrentPlayer == null)
             {
                 MainControl.Visible = false;
             }
+            else
+            {
+                if (lobby.CurrentPlayer.GetTypePlayer() == TypePlayer.Human)
+                {
+                    MainControl.Visible = true;
+                    ShowDataPlayer();
+                }
+                else
+                {
+                    MainControl.Visible = false;
+                }
 
-            ShowNamePlayer(lobby.CurrentPlayer.Player.Name);
+                ShowNamePlayer(lobby.CurrentPlayer.Player.Name);
+            }
+
             ShowFrame(true);
         }
 
-        private void ShowNamePlayer(string name)
+        internal void ShowNamePlayer(string name)
         {
             Debug.Assert(name.Length > 0);
 

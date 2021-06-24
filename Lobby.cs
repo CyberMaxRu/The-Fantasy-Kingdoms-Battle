@@ -92,9 +92,14 @@ namespace Fantasy_Kingdoms_Battle
 
         private void SetPlayerAsCurrent(int index)
         {
-            Debug.Assert(Players[index].IsLive);
+            if (index != -1)
+            {
+                Debug.Assert(Players[index].IsLive);
 
-            CurrentPlayer = Players[index];
+                CurrentPlayer = Players[index];
+            }
+            else
+                CurrentPlayer = null;
         }
 
         internal void DoEndTurn()
@@ -126,7 +131,10 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
+            SetPlayerAsCurrent(-1);
             StateLobby = StateLobby.CalcTurn;
+            Program.formMain.ShowCurrentPlayerLobby();
+            Program.formMain.ShowNamePlayer("Расчет дня");
             CalcFinalityTurn();
 
             //CalcBattles();
