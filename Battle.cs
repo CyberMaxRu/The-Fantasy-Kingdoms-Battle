@@ -189,7 +189,7 @@ namespace Fantasy_Kingdoms_Battle
             return true;
         }
 
-        internal void CalcWholeBattle(FormProgressBattle formProgress)
+        internal void CalcWholeBattle()
         {
             // Полный расчет боя
             for (; ; )
@@ -197,8 +197,8 @@ namespace Fantasy_Kingdoms_Battle
                 if (CalcStep() == false)
                     break;
 
-                if (formProgress != null)
-                    formProgress.ShowStep();
+             //   if (formProgress != null)
+             //       formProgress.ShowStep();
 
                 Application.DoEvents();
             }

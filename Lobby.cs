@@ -178,7 +178,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             Battle b;
             WindowBattle formBattle;
-            FormProgressBattle formProgressBattle = null;
 
             foreach (LobbyPlayer p in Players)
             {
@@ -211,10 +210,11 @@ namespace Fantasy_Kingdoms_Battle
                         }
                         else
                         {
-                            if (formProgressBattle == null)
-                                formProgressBattle = new FormProgressBattle();
+                            //if (formProgressBattle == null)
+                            //    formProgressBattle = new FormProgressBattle();
 
-                            formProgressBattle.SetBattle(b, Players.Count(), p.PlayerIndex + 1);
+                            //formProgressBattle.SetBattle(b, Players.Count(), p.PlayerIndex + 1);
+                            b.CalcWholeBattle();
                         }
 
                         Battles.Add(b);
@@ -255,19 +255,17 @@ namespace Fantasy_Kingdoms_Battle
                         else
                         {
                             numberPair++;
-                            if (formProgressBattle == null)
-                                formProgressBattle = new FormProgressBattle();
+                            //if (formProgressBattle == null)
+                            //    formProgressBattle = new FormProgressBattle();
 
-                            formProgressBattle.SetBattle(b, pairs, numberPair);
+                            //formProgressBattle.SetBattle(b, pairs, numberPair);
+                            b.CalcWholeBattle();
                         }
 
                         Battles.Add(b);
                     }
                 }
             }
-
-            if (formProgressBattle != null)
-                formProgressBattle.Dispose();
         }
 
         private void CalcBattle(LobbyPlayer player1, LobbyPlayer player2, Random r)

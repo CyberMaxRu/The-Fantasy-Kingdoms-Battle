@@ -339,7 +339,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (!battle.BattleCalced)
             {
-                battle.CalcWholeBattle(null);
+                battle.CalcWholeBattle();
 
                 ApplyStep();
                 ShowResultBattle();
@@ -599,7 +599,7 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.Settings.BattlefieldShowPath = chkbShowPath.Checked;
 
             if (battle.BattleCalced == false)
-                battle.CalcWholeBattle(null);
+                battle.CalcWholeBattle();
         }
 
         private void DrawFps()

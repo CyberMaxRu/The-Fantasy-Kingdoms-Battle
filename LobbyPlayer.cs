@@ -134,7 +134,6 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Battle b;
                 WindowBattle formBattle;
-                FormProgressBattle formProgressBattle = null;
 
                 if ((pl != null) && (pl.listAttackedHero.Count > 0))
                 {
@@ -166,10 +165,11 @@ namespace Fantasy_Kingdoms_Battle
                         }
                         else
                         {
-                            if (formProgressBattle == null)
-                                formProgressBattle = new FormProgressBattle();
+                            //if (formProgressBattle == null)
+                            //    formProgressBattle = new FormProgressBattle();
 
-                            formProgressBattle.SetBattle(b, 1, 1);
+                            //formProgressBattle.SetBattle(b, 1, 1);
+                            b.CalcWholeBattle();
                         }
 
                         if (b.Winner == this)
