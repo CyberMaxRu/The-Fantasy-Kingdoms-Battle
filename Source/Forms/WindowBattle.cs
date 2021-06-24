@@ -294,9 +294,6 @@ namespace Fantasy_Kingdoms_Battle
                 timePassedCurrentSpeed.Start();
             }
 
-            btnDecSpeed.ImageIsEnabled = !inPause;
-            btnIncSpeed.ImageIsEnabled = btnDecSpeed.ImageIsEnabled;
-
             ApplySpeed();
         }
 
@@ -310,6 +307,9 @@ namespace Fantasy_Kingdoms_Battle
             {
                 btnPlayPause.Caption = "Скорость " + ValueSpeed().ToString() + "x";
             }
+
+            btnDecSpeed.ImageIsEnabled = !inPause && !battle.BattleCalced && (currentSpeed != SpeedBattle.Minimal);
+            btnIncSpeed.ImageIsEnabled = !inPause && !battle.BattleCalced && (currentSpeed != SpeedBattle.Maximal);
         }
 
         private double ValueSpeed()
@@ -661,9 +661,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             //btnEndBattle.Enabled = !battle.BattleCalced;
             btnEndBattle.Caption = battle.BattleCalced ? "Закрыть" : "Завершить бой";
-            btnDecSpeed.ImageIsEnabled = btnEndBattle.Enabled;
-            btnIncSpeed.ImageIsEnabled = btnEndBattle.Enabled;
-            btnPlayPause.Enabled = btnEndBattle.Enabled;
+            btnPlayPause.Enabled = !battle.BattleCalced;
         }
     }
 }
