@@ -1347,6 +1347,7 @@ namespace Fantasy_Kingdoms_Battle
 
             ShowCurrentPlayerLobby();
             ShowDataPlayer();
+            ActivatePage(pageGuilds);
 
             panelPlayers.Visible = true;
             MainControl.Visible = true;
