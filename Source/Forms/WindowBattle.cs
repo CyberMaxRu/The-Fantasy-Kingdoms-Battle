@@ -290,6 +290,9 @@ namespace Fantasy_Kingdoms_Battle
                 timePassedCurrentSpeed.Start();
             }
 
+            btnDecSpeed.ImageIsEnabled = !inPause;
+            btnIncSpeed.ImageIsEnabled = btnDecSpeed.ImageIsEnabled;
+
             ApplySpeed();
         }
 
