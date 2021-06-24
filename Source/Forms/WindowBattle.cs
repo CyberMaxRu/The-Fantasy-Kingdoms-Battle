@@ -340,7 +340,9 @@ namespace Fantasy_Kingdoms_Battle
                 ShowTimerBattle();
             }
             else
-                CloseForm(DialogResult.OK);
+            {
+                needClose = true;
+            }
         }
 
         private void TimerStep_Tick(object sender, EventArgs e)
@@ -649,18 +651,8 @@ namespace Fantasy_Kingdoms_Battle
 
                 if (needClose)
                     break;
-
-                if (battle.BattleCalced)
-                    break;
             }
         }
-
-/*        protected override void OnClosing(CancelEventArgs e)
-        {
-            base.OnClosing(e);
-
-            needClose = e.Cancel;
-        }*/
 
         private int CalcHealthPlayer(BattleParticipant p)
         {
