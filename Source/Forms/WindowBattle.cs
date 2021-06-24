@@ -640,7 +640,7 @@ namespace Fantasy_Kingdoms_Battle
                 TimerStep_Tick(this, null);
                 Application.DoEvents();
 
-                if (needClose)
+                if (needClose || (Program.formMain.ProgramState == ProgramState.NeedQuit))
                     break;
             }
 

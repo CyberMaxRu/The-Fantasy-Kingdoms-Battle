@@ -23,7 +23,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly string dirCurrent;
         internal readonly string dirResources;
 
-        private ProgramState ProgramState = ProgramState.Started;
+        internal ProgramState ProgramState { get; private set; } = ProgramState.Started;
         internal bool gameStarted = false;
         private bool needRepaintFrame = false;
 
