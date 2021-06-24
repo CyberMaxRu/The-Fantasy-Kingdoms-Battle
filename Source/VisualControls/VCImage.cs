@@ -57,6 +57,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal BitmapList BitmapList { get; set; }
         internal int ImageIndex { get; set; }
+        internal bool NormalImage { get; set; } = true;
         internal bool ImageIsEnabled { get; set; } = true;
         internal bool ImageIsOver { get; set; } = false;
         protected int ShiftImageX { get => shiftImageX; set { shiftImageX = value; ValidateSize(); } }
@@ -145,7 +146,7 @@ namespace Fantasy_Kingdoms_Battle
             // Иконка
             if (Visible && (ImageIndex != -1))
             {
-                BitmapList.DrawImage(g, ImageIndex, UseFilter || ImageIsEnabled, HighlightUnderMouse && ImageIsOver, Left + ShiftImageX, Top + ShiftImageY);
+                BitmapList.DrawImage(g, ImageIndex, (UseFilter || ImageIsEnabled) && NormalImage, HighlightUnderMouse && ImageIsOver, Left + ShiftImageX, Top + ShiftImageY);
 
                 // Цена
                 if (Cost != null)
