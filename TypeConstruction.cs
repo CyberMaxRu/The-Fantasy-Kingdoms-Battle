@@ -55,6 +55,11 @@ namespace Fantasy_Kingdoms_Battle
                     level = new Level(l);
                     Debug.Assert(Levels[level.Pos] == null);
 
+                    if ((PointConstructionGuild > 0) || (PointConstructionGuild > 0) || (PointConstructionTemple > 0))
+                    {
+                        Debug.Assert(level.Cost > 0);
+                    }
+
                     /*switch (TypeIncome)
                     {
                         case TypeIncome.None:
