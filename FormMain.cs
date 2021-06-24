@@ -1531,7 +1531,7 @@ namespace Fantasy_Kingdoms_Battle
                 case DialogResult.Abort:
                     Close();
                     break;
-                case DialogResult.Cancel:
+                case DialogResult.No:
                     EndLobby();
                     ShowMainMenu();
                     break;

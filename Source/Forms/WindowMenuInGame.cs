@@ -54,7 +54,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (WindowConfirm.ShowConfirm("Подтверждение", "Текущая игра будет потеряна.\n\rПродолжить?"))
             {
-                CloseForm(DialogResult.Cancel);
+                CloseForm(DialogResult.No);
             }
         }
 
@@ -71,7 +71,7 @@ namespace Fantasy_Kingdoms_Battle
             if (WindowConfirm.ShowConfirm("Подтверждение", "Будет начата новая игра.\n\rТекущая игра будет потеряна.\n\rПродолжить?"))
             {
                 Program.formMain.StartNewLobby();
-                CloseForm(DialogResult.OK   );
+                CloseForm(DialogResult.OK);
             }
         }
 
