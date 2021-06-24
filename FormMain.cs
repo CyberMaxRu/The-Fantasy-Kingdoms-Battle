@@ -1121,12 +1121,21 @@ namespace Fantasy_Kingdoms_Battle
                 MainControl.Visible = false;
             }
 
-            labelNamePlayer.Text = lobby.CurrentPlayer.Player.Name;
-            labelNamePlayer.Width = labelNamePlayer.Font.WidthText(labelNamePlayer.Text);
-            labelNamePlayer.ShiftX = (bmpPreparedToolbar.Width - labelNamePlayer.Width) / 2;
-            bmpPreparedToolbar.ArrangeControl(labelNamePlayer);
-
+            ShowNamePlayer(lobby.CurrentPlayer.Player.Name);
             ShowFrame(true);
+        }
+
+        private void ShowNamePlayer(string name)
+        {
+            Debug.Assert(name.Length > 0);
+
+            if (labelNamePlayer.Text != name)
+            {
+                labelNamePlayer.Text = name;
+                labelNamePlayer.Width = labelNamePlayer.Font.WidthText(labelNamePlayer.Text);
+                labelNamePlayer.ShiftX = (bmpPreparedToolbar.Width - labelNamePlayer.Width) / 2;
+                bmpPreparedToolbar.ArrangeControl(labelNamePlayer);
+            }
         }
 
         internal void ShowDataPlayer()
@@ -1333,9 +1342,7 @@ namespace Fantasy_Kingdoms_Battle
             btnInGameMenu.Visible = false;
             btnEndTurn.Visible = false;
 
-            labelNamePlayer.Text = NAME_PROJECT;
-            labelNamePlayer.Width = labelNamePlayer.Font.WidthText(labelNamePlayer.Text);
-            labelNamePlayer.ShiftX = (bmpPreparedToolbar.Width - labelNamePlayer.Width) / 2;
+            ShowNamePlayer(NAME_PROJECT);
         }
 
         internal void SetNeedRedrawFrame()
