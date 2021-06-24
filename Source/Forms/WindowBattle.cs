@@ -643,6 +643,8 @@ namespace Fantasy_Kingdoms_Battle
                 if (needClose)
                     break;
             }
+
+            CloseForm(DialogResult.OK);
         }
 
         private int CalcHealthPlayer(BattleParticipant p)
