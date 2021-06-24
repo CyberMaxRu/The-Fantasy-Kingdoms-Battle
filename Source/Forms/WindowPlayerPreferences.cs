@@ -31,7 +31,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             curImageIndexAvatar = Program.formMain.CurrentHumanPlayer.GetImageIndexAvatar();
 
-            windowCaption.Caption = Program.formMain.CurrentHumanPlayer.Name;
+            windowCaption.Caption = "Настройки игрока";
 
             editName = new VCEdit(ClientControl, 0, 0, "", FormMain.MAX_LENGTH_USERNAME);
             editName.Width = 240;
