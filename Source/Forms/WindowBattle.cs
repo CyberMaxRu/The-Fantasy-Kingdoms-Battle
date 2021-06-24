@@ -25,6 +25,9 @@ namespace Fantasy_Kingdoms_Battle
         private const int WIDTH_LINE = 1;
         private bool showGrid;
 
+        private Timer timerStep;
+        private bool inStep = false;
+
         // Время битвы
         private SpeedBattle currentSpeed = SpeedBattle.Normal;
         private bool inPause = false;
@@ -347,15 +350,22 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
             {
-                needClose = true;
+                CloseForm(DialogResult.OK);
             }
         }
 
         private void TimerStep_Tick(object sender, EventArgs e)
         {
+            if (Program.formMain.ProgramState == ProgramState.ConfirmQuit)
+                return;
+
+            if (inStep)
+                return;
+
             if (inPause)
                 return;
 
+            inStep = true;
             if (battle.BattleCalced == false)
             {
                 // Примерное прошедшее время битвы
@@ -384,6 +394,8 @@ namespace Fantasy_Kingdoms_Battle
                     ShowFrame();
                 }
             }
+
+            inStep = false;
         }
 
         private void ShowFrame()
@@ -622,29 +634,18 @@ namespace Fantasy_Kingdoms_Battle
             ApplyStep();
 
             //
-            Program.formMain.formHint.HideHint();
-
-            AdjustSize();
-            ToCentre();
-            Program.formMain.LayerChanged();
-
             timeStart = DateTime.Now;
             timeInternalFixed = timeStart;
             stepsCalcedByCurrentSpeed = 0;
             timePassedCurrentSpeed.Start();
             timeBetweenFrames.Start();
-            Application.DoEvents();
 
-            for (; ; )
-            {
-                TimerStep_Tick(this, null);
-                Application.DoEvents();
+            timerStep = new Timer();
+            timerStep.Interval = 10;
+            timerStep.Tick += TimerStep_Tick;
+            timerStep.Start();
 
-                if (needClose || (Program.formMain.ProgramState == ProgramState.NeedQuit))
-                    break;
-            }
-
-            CloseForm(DialogResult.OK);
+            ShowDialog();
         }
 
         private int CalcHealthPlayer(BattleParticipant p)
