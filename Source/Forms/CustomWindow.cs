@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Threading;
 using System.Windows.Forms;
-using System.Drawing;
 
 namespace Fantasy_Kingdoms_Battle
 {

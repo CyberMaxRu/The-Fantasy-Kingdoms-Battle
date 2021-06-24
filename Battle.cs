@@ -263,20 +263,6 @@ namespace Fantasy_Kingdoms_Battle
                 loser.LastBattleDamageToCastle = -DamageToCastle();
                 loser.DurabilityCastle -= DamageToCastle();*/
             }
-
-            int DamageToCastle()
-            {
-                int damage = 0;
-
-                foreach (HeroInBattle h in ActiveHeroes.Where(h => h.PlayerHero.BattleParticipant == Winner))
-                {
-                    damage += h.PlayerHero.TypeCreature.DamageToCastle;
-                }
-
-                Debug.Assert(damage > 0);
-
-                return damage;
-            }
         }
     }
 }

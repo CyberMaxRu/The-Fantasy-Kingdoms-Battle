@@ -29,8 +29,6 @@ namespace Fantasy_Kingdoms_Battle
         private readonly Button btnDismiss;
         private readonly VCCell btnTarget;
 
-        internal List<VCCell> slots { get; } = new List<VCCell>();
-
         public PanelHeroInfo(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
             btnTarget = new VCCell(this, panelSpecialization.ShiftX, panelSpecialization.NextTop());
