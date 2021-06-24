@@ -11,7 +11,6 @@
     <Building>Castle</Building>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
-    <DamageToCastle>0</DamageToCastle>
     <MeleeWeapon>WeaponKing0</MeleeWeapon>
     <Armour>ArmourKing0</Armour>
     <DefaultPositionPriority>300</DefaultPositionPriority>
@@ -50,7 +49,6 @@
 	<Building>Castle</Building>
 	<MaxLevel>100</MaxLevel>
 	<CanBuild>False</CanBuild>
-	<DamageToCastle>0</DamageToCastle>
 	<MeleeWeapon>WeaponAdvisor0</MeleeWeapon>
 	<Armour>ArmourAdvisor0</Armour>
 	<DefaultPositionPriority>310</DefaultPositionPriority>
@@ -89,7 +87,6 @@
     <Building>Castle</Building>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
-    <DamageToCastle>0</DamageToCastle>
     <MeleeWeapon>WeaponCaptain0</MeleeWeapon>
     <Armour>ArmourCaptain0</Armour>
     <DefaultPositionPriority>320</DefaultPositionPriority>
@@ -128,7 +125,6 @@
 		<Building>Castle</Building>
 		<MaxLevel>100</MaxLevel>
 		<CanBuild>False</CanBuild>
-		<DamageToCastle>0</DamageToCastle>
 		<MeleeWeapon>WeaponTreasurer0</MeleeWeapon>
 		<Armour>ArmourTreasurer0</Armour>
 		<DefaultPositionPriority>330</DefaultPositionPriority>
@@ -167,7 +163,6 @@
     <Building>GuildWarrior</Building>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
-    <DamageToCastle>1</DamageToCastle>
     <MeleeWeapon>WeaponWarrior0</MeleeWeapon>
     <Armour>ArmourWarrior0</Armour>
     <DefaultPositionPriority>70</DefaultPositionPriority>
@@ -214,7 +209,6 @@
     <Building>GuildRogue</Building>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
-    <DamageToCastle>1</DamageToCastle>
     <MeleeWeapon>WeaponRogue0</MeleeWeapon>
     <Armour>ArmourRogue0</Armour>
     <DefaultPositionPriority>20</DefaultPositionPriority>
@@ -260,7 +254,6 @@
     <Building>GuildHunter</Building>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
-    <DamageToCastle>1</DamageToCastle>
     <MeleeWeapon>WeaponHunter0</MeleeWeapon>
     <RangeWeapon>BowHunter0</RangeWeapon>
     <Armour>ArmourHunter0</Armour>
@@ -309,7 +302,6 @@
     <Building>GuildCleric</Building>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
-    <DamageToCastle>1</DamageToCastle>
     <MeleeWeapon>WeaponCleric0</MeleeWeapon>
     <Armour>ArmourCleric0</Armour>
     <DefaultPositionPriority>200</DefaultPositionPriority>
@@ -355,7 +347,6 @@
     <Building>GuildMage</Building>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
-    <DamageToCastle>1</DamageToCastle>
     <MeleeWeapon>WeaponMage0</MeleeWeapon>
     <Armour>ArmourMage0</Armour>
     <DefaultPositionPriority>210</DefaultPositionPriority>
@@ -402,7 +393,6 @@
     <Building>GuildElf</Building>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
-    <DamageToCastle>1</DamageToCastle>
     <MeleeWeapon>WeaponElf0</MeleeWeapon>
     <RangeWeapon>BowElf0</RangeWeapon>
     <Armour>ArmourElf0</Armour>
@@ -449,7 +439,6 @@
     <Building>GuildDwarf</Building>
     <MaxLevel>100</MaxLevel>
     <CanBuild>True</CanBuild>
-    <DamageToCastle>2</DamageToCastle>
     <MeleeWeapon>WeaponDwarf0</MeleeWeapon>
     <Armour>ArmourDwarf0</Armour>
     <DefaultPositionPriority>50</DefaultPositionPriority>
@@ -494,7 +483,6 @@
     <Building>GuildDarkPriest</Building>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
-    <DamageToCastle>1</DamageToCastle>
     <MeleeWeapon>WeaponDarkPriest0</MeleeWeapon>
     <Armour>ArmourDarkPriest0</Armour>
     <DefaultPositionPriority>220</DefaultPositionPriority>
@@ -543,7 +531,6 @@
     <Building>GuildPriest</Building>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
-    <DamageToCastle>1</DamageToCastle>
     <MeleeWeapon>WeaponPriest0</MeleeWeapon>
     <Armour>ArmourPriest0</Armour>
     <DefaultPositionPriority>230</DefaultPositionPriority>
@@ -592,7 +579,6 @@
     <Building>GuildPaladin</Building>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
-    <DamageToCastle>1</DamageToCastle>
     <MeleeWeapon>WeaponPaladin0</MeleeWeapon>
     <Armour>ArmourPaladin0</Armour>
     <DefaultPositionPriority>30</DefaultPositionPriority>
@@ -641,7 +627,6 @@
     <Building>GuildBlademaster</Building>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
-    <DamageToCastle>1</DamageToCastle>
     <MeleeWeapon>WeaponBladeMaster0</MeleeWeapon>
     <Armour>ArmourBladeMaster0</Armour>
     <DefaultPositionPriority>10</DefaultPositionPriority>
@@ -690,7 +675,6 @@
     <Building>GuildBeastmaster</Building>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
-    <DamageToCastle>1</DamageToCastle>
     <MeleeWeapon>WeaponBeastMaster0</MeleeWeapon>
     <RangeWeapon>BowBeastMaster0</RangeWeapon>
     <Armour>ArmourBeastMaster0</Armour>
@@ -741,7 +725,6 @@
     <Building>GuildMarksman</Building>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
-    <DamageToCastle>1</DamageToCastle>
     <MeleeWeapon>WeaponMarksman0</MeleeWeapon>
     <RangeWeapon>BowMarksman0</RangeWeapon>
     <Armour>ArmourMarksman0</Armour>
@@ -792,7 +775,6 @@
     <Building>GuildFireMage</Building>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
-    <DamageToCastle>1</DamageToCastle>
     <MeleeWeapon>WeaponFireMage0</MeleeWeapon>
     <Armour>ArmourFireMage0</Armour>
     <DefaultPositionPriority>250</DefaultPositionPriority>
@@ -841,7 +823,6 @@
     <Building>GuildIceMage</Building>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
-    <DamageToCastle>1</DamageToCastle>
     <MeleeWeapon>WeaponIceMage0</MeleeWeapon>
     <Armour>ArmourIceMage0</Armour>
     <DefaultPositionPriority>260</DefaultPositionPriority>
@@ -890,7 +871,6 @@
     <Building>GuildDeathKnight</Building>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
-    <DamageToCastle>1</DamageToCastle>
     <MeleeWeapon>WeaponDeathKnight0</MeleeWeapon>
     <Armour>ArmourDeathKnight0</Armour>
     <DefaultPositionPriority>80</DefaultPositionPriority>

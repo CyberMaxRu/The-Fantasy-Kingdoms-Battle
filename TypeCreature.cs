@@ -19,7 +19,6 @@ namespace Fantasy_Kingdoms_Battle
             DefaultPositionPriority = XmlUtils.GetInteger(n.SelectSingleNode("DefaultPositionPriority"));
             Reward = XmlUtils.GetInteger(n.SelectSingleNode("Reward"));
             QuantityArrows = XmlUtils.GetInteger(n.SelectSingleNode("QuantityArrows"));
-            DamageToCastle = XmlUtils.GetInteger(n.SelectSingleNode("DamageToCastle"));
 
             if (n.SelectSingleNode("PersistentState") != null)
                 PersistentStateHeroAtMap = FormMain.Config.FindStateCreature(XmlUtils.GetStringNotNull(n.SelectSingleNode("PersistentState")));
@@ -32,7 +31,6 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(DefaultPositionPriority <= 1000);
             Debug.Assert(Reward >= 0);
             Debug.Assert(Reward <= 1000);
-            Debug.Assert(DamageToCastle >= 0);
 
             // Загружаем основные параметры
             if (n.SelectSingleNode("BaseParameters") != null)
@@ -95,7 +93,6 @@ namespace Fantasy_Kingdoms_Battle
         internal Weapon WeaponRange { get; private set; }// Стрелковое оружие
         internal Armour Armour { get; private set; }// Доспех по умолчанию
         internal int QuantityArrows { get; }// Количество стрел
-        internal int DamageToCastle { get; }
 
         internal override void TuneDeferredLinks()
         {

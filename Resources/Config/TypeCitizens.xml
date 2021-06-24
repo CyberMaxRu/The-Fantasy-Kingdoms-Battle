@@ -11,7 +11,6 @@
     <Building>House</Building>
     <MaxLevel>1</MaxLevel>
     <CanBuild>True</CanBuild>
-    <DamageToCastle>0</DamageToCastle>
   </TypeCitizen>
   <TypeCitizen>
     <ID>Guardian</ID>
@@ -24,7 +23,6 @@
     <Building>Castle</Building>
     <MaxLevel>1</MaxLevel>
     <CanBuild>False</CanBuild>
-    <DamageToCastle>1</DamageToCastle>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -48,6 +46,5 @@
     <MaxLevel>1</MaxLevel>
     <KindHero>NonCombatant</KindHero>
     <CanBuild>False</CanBuild>
-    <DamageToCastle>0</DamageToCastle>
   </TypeCitizen>
 </TypeCitizens>
