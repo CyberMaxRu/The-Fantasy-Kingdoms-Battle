@@ -578,6 +578,10 @@ namespace Fantasy_Kingdoms_Battle
                 lblStateBattle.Text = "Поражение";
                 lblStateBattle.Color = FormMain.Config.BattlefieldTextLose;
             }
+
+            btnPlayPause.Enabled = false;
+            btnDecSpeed.ImageIsEnabled = false;
+            btnIncSpeed.ImageIsEnabled = false;
         }
 
         protected override void BeforeClose()
