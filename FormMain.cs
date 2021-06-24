@@ -221,6 +221,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly M2Font fontSmallC;
         internal readonly M2Font fontMedCaptionC;
         internal readonly M2Font fontMedCaption;
+        internal readonly M2Font fontBigCaptionC;
         internal readonly M2Font fontBigCaption;
         internal readonly M2Font fontSmallBC;
         internal readonly M2Font fontParagraph;
@@ -321,6 +322,7 @@ namespace Fantasy_Kingdoms_Battle
                 fontSmallC = new M2Font(dirResources, "small_c");
                 fontMedCaptionC = new M2Font(dirResources, "med_caption_c");
                 fontMedCaption = new M2Font(dirResources, "med_caption");
+                fontBigCaptionC = new M2Font(dirResources, "big_caption_c");
                 fontBigCaption = new M2Font(dirResources, "big_caption");
                 fontSmallBC = new M2Font(dirResources, "_small_b_c");
                 fontParagraph = new M2Font(dirResources, "paragraph");
@@ -520,7 +522,7 @@ namespace Fantasy_Kingdoms_Battle
                 labelGreatness.ShowHint += LabelGreatness_ShowHint;
                 labelGreatness.Width = 112;
 
-                labelNamePlayer = new VCLabel(bmpPreparedToolbar, 0, 0, fontMedCaptionC, Color.White, fontMedCaptionC.MaxHeightSymbol, "");
+                labelNamePlayer = new VCLabel(bmpPreparedToolbar, 0, 0, fontBigCaptionC, Color.White, fontBigCaptionC.MaxHeightSymbol, "");
                 labelNamePlayer.StringFormat.LineAlignment = StringAlignment.Center;
                 labelNamePlayer.Width = 16;
 
