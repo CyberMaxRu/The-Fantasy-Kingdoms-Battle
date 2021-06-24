@@ -30,7 +30,6 @@ namespace Fantasy_Kingdoms_Battle
         private bool inPause = false;
         private readonly List<DateTime> Frames = new List<DateTime>();
         private readonly List<DateTime> Steps = new List<DateTime>();
-        private readonly List<DateTime> BackPaints = new List<DateTime>();
         private DateTime timeStart;// Время начала битвы
         private DateTime timeInternalFixed;// Внутреннее время битвы, с учетом изменения скорости
         private DateTime timeInternalApprox;// Ориентировочное время битвы
@@ -592,13 +591,6 @@ namespace Fantasy_Kingdoms_Battle
                 battle.CalcWholeBattle(null);
         }
 
-        internal override void DrawBackground(Graphics g)
-        {
-            base.DrawBackground(g);
-
-            BackPaints.Add(DateTime.Now);
-        }
-
         private void DrawFps()
         {
             // Считаем Frames per second
@@ -606,12 +598,11 @@ namespace Fantasy_Kingdoms_Battle
             DateTime currentDateTime = DateTime.Now;
             Utils.TrimActions(Frames);
             Utils.TrimActions(Steps);
-            Utils.TrimActions(BackPaints);
 
             TimeSpan realTime = currentDateTime - timeStart;
 
             lblSystemInfo.Text = Frames.Count.ToString() + " fps; steps: " + Steps.Count.ToString()
-                  + "; backpaints: " + BackPaints.Count.ToString() + "; passed: " + realTime.ToString("mm':'ss");
+                  + "; passed: " + realTime.ToString("mm':'ss");
         }
 
         internal void ShowBattle()
