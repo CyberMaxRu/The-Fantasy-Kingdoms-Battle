@@ -112,6 +112,11 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        protected override bool AllowClick()
+        {
+            return ImageIsEnabled && base.AllowClick();
+        }
+
         internal override void Draw(Graphics g)
         {
             //Debug.Assert(Cost >= 0);
