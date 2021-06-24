@@ -462,10 +462,9 @@ namespace Fantasy_Kingdoms_Battle
                     shift.Y += shiftY;
                 }
 
-                // Restore
-                //Debug.Assert(coordIconHero.X + shift.X < Width);
-                //Debug.Assert(coordIconHero.Y + shift.Y >= topLeftCells.Y);
-                //Debug.Assert(coordIconHero.Y + shift.Y < Height);
+                Debug.Assert(coordIconHero.X + shift.X < Width);
+                Debug.Assert(coordIconHero.Y + shift.Y >= topLeftCells.Y);
+                Debug.Assert(coordIconHero.Y + shift.Y < Height);
 
                 //cellHeroes[y, x].DrawToBitmap(bmpUnit, new Rectangle(0, 0, bmpUnit.Width, bmpUnit.Height));
                 g.DrawImageUnscaled(hero.BmpIcon, Program.formMain.ShiftControls.X + coordIconHero.X + shift.X, Program.formMain.ShiftControls.Y + coordIconHero.Y + shift.Y);
@@ -598,16 +597,6 @@ namespace Fantasy_Kingdoms_Battle
             base.DrawBackground(g);
 
             BackPaints.Add(DateTime.Now);
-
-            //restore
-            /*
-            g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
-            g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
-            g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
-            g.DrawImageUnscaled(bmpFrame, Left, Top);
-            */
-            //e.Graphics.DrawImage(bmpLayBackground, e.ClipRectangle, e.ClipRectangle, GraphicsUnit.Pixel);
-            //e.Graphics.DrawImageUnscaled(bmpLay0, 0, 0);
         }
 
         private void DrawFps()
