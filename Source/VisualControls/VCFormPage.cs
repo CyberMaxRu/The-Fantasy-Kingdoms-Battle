@@ -36,6 +36,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal VisualControl Page { get; }
         internal string Caption { get; }
+        protected override bool Selected()
+        {
+            return Page.Visible;
+        }
 
         internal override VisualControl GetControl(int x, int y)
         {
