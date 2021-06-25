@@ -28,6 +28,7 @@ namespace Fantasy_Kingdoms_Battle
             };
 
             LeftMargin = 0;
+            RightMargin = 0;
             // Рисуем выше на два пиксела и увеличиваем высоту, так как у текст сверху пустота, а снизу происходит обрезка,
             // хотя по высоте все вмещается
             TopMargin = 0;
@@ -41,8 +42,8 @@ namespace Fantasy_Kingdoms_Battle
         internal int ImageIndex { get; set; } = -1;
         internal bool ImageIsEnabled { get; set; } = true;
         internal bool ImageIsOver { get; set; } = false;
-        protected int LeftMargin { get; set; }
-        protected int RightMargin { get; set; }
+        internal int LeftMargin { get; set; }
+        internal int RightMargin { get; set; }
         internal int TopMargin { get; set; }
         internal StringFormat StringFormat { get; set; }
         internal Point ShiftImage { get; set; } = new Point(0, 0);
@@ -64,14 +65,15 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     if ((preparedText != Text) || (preparedColor != Color))
                     {
-                        if (TruncLongText && (Font.WidthText(Text) > Width))
+                        int needWidth = Width - LeftMargin - RightMargin;
+                        if (TruncLongText && (Font.WidthText(Text) > needWidth))
                         {
                             int restSymbols = Text.Length - 1;
                             string truncedText;
                             while (restSymbols > 0)
                             {
                                 truncedText = Text.Substring(0, restSymbols) + "...";
-                                if (Font.WidthText(truncedText) <= Width)
+                                if (Font.WidthText(truncedText) <= needWidth)
                                 {
                                     preparedText = truncedText;
                                     break;
@@ -103,10 +105,10 @@ namespace Fantasy_Kingdoms_Battle
                     switch (StringFormat.Alignment)
                     {
                         case StringAlignment.Near:
-                            x = Left;
+                            x = Left + LeftMargin;
                             break;
                         case StringAlignment.Center:
-                            x = Left + ((Width - bmpPreparedText.Width) / 2);
+                            x = Left + LeftMargin + ((Width - LeftMargin - RightMargin - bmpPreparedText.Width) / 2);
                             break;
                         default:
                             x = Left + Width - bmpPreparedText.Width - LeftMargin - RightMargin;
@@ -131,7 +133,7 @@ namespace Fantasy_Kingdoms_Battle
 
                     Debug.Assert(bmpPreparedText.Width + LeftMargin + RightMargin <= Width, $"Текст {preparedText} занимает {bmpPreparedText.Width} пикселей (LeftMargin {LeftMargin}, RightMargin {RightMargin}), не вмещаясь в {Width}.");
 
-                    g.DrawImageUnscaled(bmpPreparedText, x + LeftMargin, y + TopMargin);
+                    g.DrawImageUnscaled(bmpPreparedText, x, y + TopMargin);
                 }
             }
         }
