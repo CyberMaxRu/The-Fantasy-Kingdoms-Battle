@@ -73,7 +73,17 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
             else
-                Program.formMain.formHint.AddHeader("Отмена флага атаки");
+            {
+                if (Lair.Cashback() == 0)
+                {
+                    Program.formMain.formHint.AddHeader("Отмена флага атаки");
+                }
+                else
+                {
+                    Program.formMain.formHint.AddStep1Header("Отмена флага атаки", "", "Возврат денег");
+                    Program.formMain.formHint.AddStep2Income(Lair.Cashback());
+                }
+            }
         }
 
         private void BtnCancel_Click(object sender, EventArgs e)
