@@ -274,7 +274,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(IsLive);
 
-            Program.formMain.formHint.AddStep1Header(GetNameHero(), "", TypeHero.Description);
+            Program.formMain.formHint.AddStep1Header(GetNameHero(), $"Уровень {Level}", TypeHero.Description);
         }
 
         protected override void DoCustomDraw(Graphics g, int x, int y, bool drawState)
