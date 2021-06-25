@@ -8,12 +8,18 @@ namespace Fantasy_Kingdoms_Battle
     // Тип героя гильдии
     internal sealed class TypeHero : TypeCreature
     {
+        private string nameFromTypeHero;
+        private string surnameFromTypeHero;
+
         public TypeHero(XmlNode n) : base(n)
         {
             Cost = Convert.ToInt32(n.SelectSingleNode("Cost").InnerText);
             Building = FormMain.Config.FindTypeConstructionOfKingdom(n.SelectSingleNode("Building").InnerText);
             Building.TrainedHero = this;
             CanBuild = Convert.ToBoolean(n.SelectSingleNode("CanBuild").InnerText);
+            PrefixName = XmlUtils.GetString(n.SelectSingleNode("PrefixName"));
+            nameFromTypeHero = XmlUtils.GetString(n.SelectSingleNode("NameFromTypeHero"));
+            surnameFromTypeHero = XmlUtils.GetString(n.SelectSingleNode("SurnameFromTypeHero"));
 
             //Debug.Assert(Cost > 0);
 
@@ -63,12 +69,46 @@ namespace Fantasy_Kingdoms_Battle
                     CarryItems.Add(item, maxQuantity);
                 }
             }
+
+            // Загружаем имена и фамилии
+            LoadName("Names", "Name", Names);
+            LoadName("Surnames", "Surname", Surnames);
+
+            if (Cost > 0)
+            {
+                Debug.Assert(((Names.Count > 0) && (nameFromTypeHero.Length == 0)) || ((Names.Count == 0) && (nameFromTypeHero.Length > 0)));
+                Debug.Assert(((Surnames.Count > 0) && (surnameFromTypeHero.Length == 0)) || ((Surnames.Count == 0) && (surnameFromTypeHero.Length >= 0)));
+            }
+
+            void LoadName(string nodes, string node, List<string> list)
+            {
+                nc = n.SelectSingleNode(nodes);
+                string name;
+                if (nc != null)
+                {
+                    foreach (XmlNode l in nc.SelectNodes(node))
+                    {
+                        name = l.InnerText;
+
+                        Debug.Assert(name != null);
+                        Debug.Assert(name.Length > 1);
+                        Debug.Assert(list.IndexOf(name) == -1);
+
+                        list.Add(name);
+                    }
+                }
+            }
         }
 
         internal int Cost { get; }
         internal TypeConstruction Building { get; }
         internal bool CanBuild { get; }
         internal Dictionary<Item, int> CarryItems { get; } = new Dictionary<Item, int>();
+        internal string PrefixName { get; }
+        internal List<string> Names { get; } = new List<string>();
+        internal List<string> Surnames { get; } = new List<string>();
+        internal TypeHero NameFromTypeHero { get; private set; }
+        internal TypeHero SurnameFromTypeHero { get; private set; }
 
         internal int MaxQuantityItem(Item i)
         {
@@ -78,6 +118,15 @@ namespace Fantasy_Kingdoms_Battle
         internal override void TuneDeferredLinks()
         {
             base.TuneDeferredLinks();
+
+            if (nameFromTypeHero != "")
+                NameFromTypeHero = FormMain.Config.FindTypeHero(nameFromTypeHero);
+            if (surnameFromTypeHero != "")
+                SurnameFromTypeHero = FormMain.Config.FindTypeHero(surnameFromTypeHero);
+
+            nameFromTypeHero = null;
+            surnameFromTypeHero = null;
+
             /*foreach (Ability a in Abilities)
                 if (a.ClassesHeroes.IndexOf(this) == -1)
                     throw new Exception("Класс героя " + ID + " отсутствует в списке доступных для способности " + a.ID);

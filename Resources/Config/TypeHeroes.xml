@@ -53,7 +53,7 @@
 	<Armour>ArmourAdvisor0</Armour>
 	<DefaultPositionPriority>310</DefaultPositionPriority>
 	<PersistentState>Advisor</PersistentState>
-	  <BaseParameters>
+  <BaseParameters>
 		<Strength>20</Strength>
 		<Dexterity>10</Dexterity>
 		<Magic>10</Magic>
@@ -129,7 +129,7 @@
 		<Armour>ArmourTreasurer0</Armour>
 		<DefaultPositionPriority>330</DefaultPositionPriority>
 		<PersistentState>Treasurer</PersistentState>
-		<BaseParameters>
+    <BaseParameters>
 			<Strength>20</Strength>
 			<Dexterity>10</Dexterity>
 			<Magic>10</Magic>
@@ -166,6 +166,7 @@
     <MeleeWeapon>WeaponWarrior0</MeleeWeapon>
     <Armour>ArmourWarrior0</Armour>
     <DefaultPositionPriority>70</DefaultPositionPriority>
+    <PrefixName>Сэр</PrefixName>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -197,6 +198,126 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <Names>
+      <Name>Арагондер</Name>
+      <Name>Аргот</Name>
+      <Name>Барамар</Name>
+      <Name>Борегард</Name>
+      <Name>Биллиам</Name>
+      <Name>Брен</Name>
+      <Name>Калиндор</Name>
+      <Name>Дорик</Name>
+      <Name>Ээвор</Name>
+      <Name>Элдан</Name>
+      <Name>Финнелхан</Name>
+      <Name>Грейхарт</Name>
+      <Name>Лукас</Name>
+      <Name>Луматор</Name>
+      <Name>Митрон</Name>
+      <Name>Осиан</Name>
+      <Name>Паладор</Name>
+      <Name>Персис</Name>
+      <Name>Прометион</Name>
+      <Name>Рендел</Name>
+      <Name>Сарион</Name>
+      <Name>Штурм</Name>
+      <Name>Сильварион</Name>
+      <Name>Тремон</Name>
+      <Name>Валиан</Name>
+      <Name>Виллем</Name>
+      <Name>Дювейн</Name>
+      <Name>Нельтон</Name>
+      <Name>Дременон</Name>
+      <Name>Норвус</Name>
+      <Name>Билль</Name>
+      <Name>Талон</Name>
+      <Name>Гервин</Name>
+      <Name>Вортен</Name>
+      <Name>Сивин</Name>
+      <Name>Спальвин</Name>
+      <Name>Альгин</Name>
+      <Name>Дорандер</Name>
+      <Name>Крэй</Name>
+      <Name>Гурдайн</Name>
+      <Name>Теленар</Name>
+      <Name>Войт</Name>
+      <Name>Авин</Name>
+      <Name>Брадор</Name>
+      <Name>Дин</Name>
+      <Name>Тревиан</Name>
+      <Name>Венц</Name>
+      <Name>Кетон</Name>
+      <Name>Ксайтер</Name>
+      <Name>Груекс</Name>
+      <Name>Хедвенор</Name>
+      <Name>Аларин</Name>
+      <Name>Кониус</Name>
+      <Name>Лерт</Name>
+      <Name>Баргарс</Name>
+      <Name>Граннур</Name>
+      <Name>Блауд</Name>
+      <Name>Келиан</Name>
+      <Name>Арлон</Name>
+      <Name>Даган</Name>
+      <Name>Ирцент</Name>
+      <Name>Валлон</Name>
+      <Name>Кергбор</Name>
+      <Name>Арфлис</Name>
+      <Name>Артор</Name>
+      <Name>Голант</Name>
+      <Name>Керран</Name>
+      <Name>Лирдион</Name>
+      <Name>Анде</Name>
+      <Name>Манкус</Name>
+      <Name>Саранелл</Name>
+      <Name>Кадарис</Name>
+      <Name>Урван</Name>
+      <Name>Дралл</Name>
+      <Name>Медегор</Name>
+      <Name>Мерсон</Name>
+      <Name>Эгон</Name>
+      <Name>Лантиас</Name>
+      <Name>Теренас</Name>
+      <Name>Антрох</Name>
+      <Name>Дрекард</Name>
+      <Name>Ланселес</Name>
+      <Name>Галахид</Name>
+      <Name>Хампердинк</Name>
+      <Name>Рюген</Name>
+      <Name>Вистли</Name>
+      <Name>Кинан</Name>
+      <Name>Робин</Name>
+    </Names>
+    <Surnames>
+      <Surname>Широкий Щит</Surname>
+      <Surname>Защищенный</Surname>
+      <Surname>Стальная Голова</Surname>
+      <Surname>Рыцарский</Surname>
+      <Surname>, Сын Колара</Surname>
+      <Surname>Волевой</Surname>
+      <Surname>Мастер Битвы</Surname>
+      <Surname>Смелый</Surname>
+      <Surname>Преданный</Surname>
+      <Surname>Победитель</Surname>
+      <Surname>Достойный</Surname>
+      <Surname>из Долгой Гряды</Surname>
+      <Surname>Вейдерсон</Surname>
+      <Surname>Отражающий</Surname>
+      <Surname>Быстрый</Surname>
+      <Surname>с Ручья Кранала</Surname>
+      <Surname>из Глена</Surname>
+      <Surname>Мечник</Surname>
+      <Surname>Надежный</Surname>
+      <Surname>Дружелюбный</Surname>
+      <Surname>Защитник</Surname>
+      <Surname>Новичок</Surname>
+      <Surname>Киллкенни</Surname>
+      <Surname>Сын Брана</Surname>
+      <Surname>Храбрый</Surname>
+      <Surname>Не-Очень-Храбрый</Surname>
+      <Surname>Последний рыцарь</Surname>
+      <Surname>из Каербанога</Surname>
+    </Surnames>
   </TypeHero>
   <TypeHero>
     <ID>Rogue</ID>
@@ -242,6 +363,88 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <Names>
+      <Name>Весси</Name>
+      <Name>Халелифь</Name>
+      <Name>Рори</Name>
+      <Name>Адралима</Name>
+      <Name>Глама</Name>
+      <Name>Саедия</Name>
+      <Name>Хаевия</Name>
+      <Name>Эвона</Name>
+      <Name>Халефь</Name>
+      <Name>Оссенна</Name>
+      <Name>Трелль</Name>
+      <Name>Кладина</Name>
+      <Name>Инарэ</Name>
+      <Name>Гвадэ</Name>
+      <Name>Виленара</Name>
+      <Name>Гвер</Name>
+      <Name>Ферлирмора</Name>
+      <Name>Мелчия</Name>
+      <Name>Марелеле</Name>
+      <Name>Марчия</Name>
+      <Name>Гривона</Name>
+      <Name>Тилиана</Name>
+      <Name>Мена</Name>
+      <Name>Сесайна</Name>
+      <Name>Мадис</Name>
+      <Name>Метреза</Name>
+      <Name>Аглорена</Name>
+      <Name>Флианна</Name>
+      <Name>Пали</Name>
+      <Name>Линель</Name>
+      <Name>Недана</Name>
+      <Name>Синна</Name>
+      <Name>Нерра</Name>
+      <Name>Фасиеда</Name>
+      <Name>Рошель</Name>
+      <Name>Висса</Name>
+      <Name>Гарена</Name>
+      <Name>Иланта</Name>
+      <Name>Рони</Name>
+      <Name>Даффи</Name>
+      <Name>Роберта</Name>
+      <Name>Тамми</Name>
+      <Name>Биида</Name>
+      <Name>Рина</Name>
+      <Name>Денетра</Name>
+      <Name>Свена</Name>
+    </Names>
+    <Surnames>
+      <Surname>, Дочь Щипача</Surname>
+      <Surname>, Дочь Неда</Surname>
+      <Surname>Проныра</Surname>
+      <Surname>Отъявленная</Surname>
+      <Surname>Воришка</Surname>
+      <Surname>из Алеи</Surname>
+      <Surname>Жадная</Surname>
+      <Surname>Отравительница</Surname>
+      <Surname>Сборщица</Surname>
+      <Surname>Быстрохватка</Surname>
+      <Surname>Скользящая</Surname>
+      <Surname>Долгого Ограбления</Surname>
+      <Surname>Без Боли</Surname>
+      <Surname>Очаровательная</Surname>
+      <Surname>Улыбчивая</Surname>
+      <Surname>Ваш Кошель</Surname>
+      <Surname>Тихий Нож</Surname>
+      <Surname>Леди Улиц</Surname>
+      <Surname>Уличная Тень</Surname>
+      <Surname>Незаметная</Surname>
+      <Surname>Тень</Surname>
+      <Surname>Грабительница</Surname>
+      <Surname>Шанс</Surname>
+      <Surname>Неприметная</Surname>
+      <Surname>Приметная</Surname>
+      <Surname>Ядналезвии</Surname>
+      <Surname>Коварная</Surname>
+      <Surname>Кривой Нож</Surname>
+      <Surname>, Дочь Харрета</Surname>
+      <Surname>, Дочь Разбойника</Surname>
+      <Surname>Убийца Вампиров</Surname>
+      <Surname>Ограбь</Surname>
+    </Surnames>
   </TypeHero>
   <TypeHero>
     <ID>Hunter</ID>
@@ -290,6 +493,128 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <Names>
+      <Name>Аллеран</Name>
+      <Name>Анариен</Name>
+      <Name>Авалин</Name>
+      <Name>Белшоу</Name>
+      <Name>Кеннет</Name>
+      <Name>Калериан</Name>
+      <Name>Кармин</Name>
+      <Name>Денел</Name>
+      <Name>Деорн</Name>
+      <Name>Деррит</Name>
+      <Name>Диамет</Name>
+      <Name>Дранни</Name>
+      <Name>Элдор</Name>
+      <Name>Элебриан</Name>
+      <Name>Элрис</Name>
+      <Name>Этериан</Name>
+      <Name>Феддет</Name>
+      <Name>Гемеллион</Name>
+      <Name>Хендар</Name>
+      <Name>Хайралл</Name>
+      <Name>Косеф</Name>
+      <Name>Ларрил</Name>
+      <Name>Люциус</Name>
+      <Name>Мервус</Name>
+      <Name>Митриан</Name>
+      <Name>Нейнос</Name>
+      <Name>Нифлан</Name>
+      <Name>Онден</Name>
+      <Name>Прауль</Name>
+      <Name>Риттан</Name>
+      <Name>Рувонтино</Name>
+      <Name>Стерлинг</Name>
+      <Name>Стет</Name>
+      <Name>Силвес</Name>
+      <Name>Тиви</Name>
+      <Name>Тендан</Name>
+      <Name>Тириад</Name>
+      <Name>Велар</Name>
+      <Name>Венстар</Name>
+      <Name>Зугон</Name>
+      <Name>Виквард</Name>
+      <Name>Элорин</Name>
+      <Name>Мирон</Name>
+      <Name>Халлдор</Name>
+      <Name>Ричан</Name>
+      <Name>Адоран</Name>
+      <Name>Шален</Name>
+      <Name>Хоррин</Name>
+      <Name>Ололан</Name>
+      <Name>Крутин</Name>
+      <Name>Фалкор</Name>
+      <Name>Аговард</Name>
+      <Name>Валтимал</Name>
+      <Name>Белмор</Name>
+      <Name>Фальт</Name>
+      <Name>Цедвилл</Name>
+      <Name>Сейрфар</Name>
+      <Name>Тадиан</Name>
+      <Name>Саттор</Name>
+      <Name>Бриалус</Name>
+      <Name>Уллиан</Name>
+      <Name>Альбикан</Name>
+      <Name>Фрубор</Name>
+      <Name>Арциус</Name>
+      <Name>Далмор</Name>
+      <Name>Тиенир</Name>
+      <Name>Лирус</Name>
+      <Name>Ранио</Name>
+      <Name>Ильвиан</Name>
+      <Name>Вирмалер</Name>
+      <Name>Суриан</Name>
+      <Name>Дарт</Name>
+      <Name>Грим</Name>
+      <Name>Зигфрид</Name>
+      <Name>Рой</Name>
+      <Name>Аззи</Name>
+    </Names>
+    <Surnames>
+      <Surname>Буревесник</Surname>
+      <Surname>Широкоглаз</Surname>
+      <Surname>Древостой</Surname>
+      <Surname>Охотник</Surname>
+      <Surname>Длинный Шаг</Surname>
+      <Surname>Следопыт</Surname>
+      <Surname>Картограф</Surname>
+      <Surname>Исследователь</Surname>
+      <Surname>Первопроходец</Surname>
+      <Surname>из Дальних Земель</Surname>
+      <Surname>Сухопутный</Surname>
+      <Surname>Ищущий</Surname>
+      <Surname>Искатель</Surname>
+      <Surname>Следоход</Surname>
+      <Surname>из Леса</Surname>
+      <Surname>Дикий Лес</Surname>
+      <Surname>Холмовик</Surname>
+      <Surname>Озерный</Surname>
+      <Surname>Кустовик</Surname>
+      <Surname>Подлесок</Surname>
+      <Surname>Одинокий</Surname>
+      <Surname>Бродручей</Surname>
+      <Surname>Тихий</Surname>
+      <Surname>Дольмен</Surname>
+      <Surname>из Леса Трельдана</Surname>
+      <Surname>из Темного Леса</Surname>
+      <Surname>Смеющегося Ручья</Surname>
+      <Surname>Сильванского Бугра</Surname>
+      <Surname>Речной</Surname>
+      <Surname>Упорный</Surname>
+      <Surname>Нелюдимый</Surname>
+      <Surname>Пытливый</Surname>
+      <Surname>Долгоход</Surname>
+      <Surname>Переселенец</Surname>
+      <Surname>Путешественник</Surname>
+      <Surname>Диководный</Surname>
+      <Surname>Захолмом</Surname>
+      <Surname>Мозоленог</Surname>
+      <Surname>Тень</Surname>
+      <Surname>Крысодав</Surname>
+      <Surname>Узкие Штаны</Surname>
+      <Surname>Модные Штаны</Surname>
+    </Surnames>
   </TypeHero>
   <TypeHero>
     <ID>Cleric</ID>
@@ -335,6 +660,107 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <Names>
+      <Name>Арбера</Name>
+      <Name>Челла</Name>
+      <Name>Чалия</Name>
+      <Name>Дренти</Name>
+      <Name>Элин</Name>
+      <Name>Элузия</Name>
+      <Name>Эмера</Name>
+      <Name>Фиртила</Name>
+      <Name>Фандия</Name>
+      <Name>Люция</Name>
+      <Name>Недия</Name>
+      <Name>Селения</Name>
+      <Name>Стенфри</Name>
+      <Name>Валерия</Name>
+      <Name>Сару</Name>
+      <Name>Мерия</Name>
+      <Name>Черити</Name>
+      <Name>Эксанли</Name>
+      <Name>Хелин</Name>
+      <Name>Ферия</Name>
+      <Name>Карелла</Name>
+      <Name>Сутен</Name>
+      <Name>Каресс</Name>
+      <Name>Гестиела</Name>
+      <Name>Джессини</Name>
+      <Name>Шила</Name>
+      <Name>Сьювес</Name>
+      <Name>Ялисса</Name>
+      <Name>Дивелла</Name>
+      <Name>Сузия</Name>
+      <Name>Джентра</Name>
+      <Name>Бандри</Name>
+      <Name>Профия</Name>
+      <Name>Нейлин</Name>
+      <Name>Рилинда</Name>
+      <Name>Хиджара</Name>
+      <Name>Сима</Name>
+      <Name>Динора</Name>
+      <Name>Райя</Name>
+      <Name>Виенда</Name>
+      <Name>Плаения</Name>
+      <Name>Аттуния</Name>
+      <Name>Флаения</Name>
+      <Name>Тиллия</Name>
+      <Name>Цециния</Name>
+      <Name>Столисса</Name>
+      <Name>Эттана</Name>
+      <Name>Анитта</Name>
+      <Name>Таури</Name>
+      <Name>Саува</Name>
+      <Name>Хейли</Name>
+      <Name>Сейна</Name>
+      <Name>Хейра</Name>
+      <Name>Тарра</Name>
+      <Name>Гитилда</Name>
+      <Name>Иркара</Name>
+      <Name>Илвара</Name>
+      <Name>Баера</Name>
+      <Name>Оллия</Name>
+      <Name>Сания</Name>
+      <Name>Флаудия</Name>
+      <Name>Стумна</Name>
+      <Name>Габриния</Name>
+      <Name>Морея</Name>
+      <Name>Дездемония</Name>
+      <Name>Сабрина</Name>
+      <Name>Ксента</Name>
+      <Name>Фрейя</Name>
+      <Name>Визинни</Name>
+      <Name>Линор</Name>
+    </Names>
+    <Surnames>
+      <Surname>Изумленная</Surname>
+      <Surname>Спокойная</Surname>
+      <Surname>Собранная</Surname>
+      <Surname>Созерцающая</Surname>
+      <Surname>Преданная</Surname>
+      <Surname>Посвященная</Surname>
+      <Surname>Благочестивая</Surname>
+      <Surname>Достойная</Surname>
+      <Surname>Устремленная</Surname>
+      <Surname>Просвещенная</Surname>
+      <Surname>Сосредоточенная</Surname>
+      <Surname>Созерцательная</Surname>
+      <Surname>Терпеливая</Surname>
+      <Surname>Мирная</Surname>
+      <Surname>Размышляющая</Surname>
+      <Surname>Праведная</Surname>
+      <Surname>Безмятежная</Surname>
+      <Surname>Тихая</Surname>
+      <Surname>Отшельница</Surname>
+      <Surname>Благоговейная</Surname>
+      <Surname>Невозмутимая</Surname>
+      <Surname>Безмолвная</Surname>
+      <Surname>Уединенная</Surname>
+      <Surname>Замкнутая</Surname>
+      <Surname>Духовная</Surname>
+      <Surname>Прилежная</Surname>
+      <Surname>Задумчивая</Surname>
+    </Surnames>
   </TypeHero>
   <TypeHero>
     <ID>Mage</ID>
@@ -381,6 +807,106 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <Names>
+      <Name>Амелон</Name>
+      <Name>Борадор</Name>
+      <Name>Фандал</Name>
+      <Name>Гаремонд</Name>
+      <Name>Хорес</Name>
+      <Name>Кальдерон</Name>
+      <Name>Орлин</Name>
+      <Name>Фирлин</Name>
+      <Name>Равандел</Name>
+      <Name>Рулатал</Name>
+      <Name>Сарамен</Name>
+      <Name>Шелазар</Name>
+      <Name>Стремонд</Name>
+      <Name>Телокорус</Name>
+      <Name>Тротгар</Name>
+      <Name>Мерлан</Name>
+      <Name>Саурет</Name>
+      <Name>Вандар</Name>
+      <Name>Аргот</Name>
+      <Name>Амелорн</Name>
+      <Name>Торвин</Name>
+      <Name>Ритор</Name>
+      <Name>Венн</Name>
+      <Name>Байел</Name>
+      <Name>Фенн</Name>
+      <Name>Тилар</Name>
+      <Name>Риакс</Name>
+      <Name>Генни</Name>
+      <Name>Третен</Name>
+      <Name>Ксасс</Name>
+      <Name>Востер</Name>
+      <Name>Дремеус</Name>
+      <Name>Тироллиан</Name>
+      <Name>Рэнди</Name>
+      <Name>Шаллефекс</Name>
+      <Name>Хурантелл</Name>
+      <Name>Мозадус</Name>
+      <Name>Вискольдус</Name>
+      <Name>Пирин</Name>
+      <Name>Маскедор</Name>
+      <Name>Омариан</Name>
+      <Name>Регер</Name>
+      <Name>Грандальф</Name>
+    </Names>
+    <Surnames>
+      <Surname>Владыка Мудрости</Surname>
+      <Surname>Мистерий</Surname>
+      <Surname>из Башни</Surname>
+      <Surname>Престарелый</Surname>
+      <Surname>Алхимик</Surname>
+      <Surname>Восхитительный</Surname>
+      <Surname>Таинственный</Surname>
+      <Surname>Боевой Маг</Surname>
+      <Surname>Прозорливый</Surname>
+      <Surname>Знающий</Surname>
+      <Surname>Бормотун</Surname>
+      <Surname>Всезнающий</Surname>
+      <Surname>Глубокомысленный</Surname>
+      <Surname>Призывающий</Surname>
+      <Surname>Мудрый</Surname>
+      <Surname>Повелитель Тайного</Surname>
+      <Surname>Умелый</Surname>
+      <Surname>Способный</Surname>
+      <Surname>Пытливый</Surname>
+      <Surname>Глубокий</Surname>
+      <Surname>Колдун</Surname>
+      <Surname>из Холма Сквагина</Surname>
+      <Surname>из Ретилхолма</Surname>
+      <Surname>Уверенный</Surname>
+      <Surname>Неизведанный</Surname>
+      <Surname>Ученик Ниво</Surname>
+      <Surname>Рассудительный</Surname>
+      <Surname>Мастер Магики</Surname>
+      <Surname>Волшебник по Найму</Surname>
+      <Surname>из Тейлсдейла</Surname>
+      <Surname>Достойный Чар</Surname>
+      <Surname>Умный</Surname>
+      <Surname>Энергичный</Surname>
+      <Surname>Нерешительный</Surname>
+      <Surname>Сосредоточенный</Surname>
+      <Surname>Учитель Квидд</Surname>
+      <Surname>Чистой Энергии</Surname>
+      <Surname>Меньший</Surname>
+      <Surname>Несравненный</Surname>
+      <Surname>Слегка Уверенный</Surname>
+      <Surname>Шаркающий</Surname>
+      <Surname>Мистик</Surname>
+      <Surname>Толарианец</Surname>
+      <Surname>Тот, Кого Нельзя Звать</Surname>
+      <Surname>Зойдштайн</Surname>
+      <Surname>Франкенберг</Surname>
+      <Surname>Полониус</Surname>
+      <Surname>Даблдор</Surname>
+      <Surname>Волшебной Долины</Surname>
+      <Surname>Готтер</Surname>
+      <Surname>Серая борода</Surname>
+      <Surname>Косматый</Surname>
+      <Surname>Безопасный</Surname>
+    </Surnames>
   </TypeHero>
   <TypeHero>
     <ID>Elf</ID>
@@ -427,6 +953,90 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <Names>
+      <Name>Элькина</Name>
+      <Name>Филлиана</Name>
+      <Name>Перрилона</Name>
+      <Name>Толлерана</Name>
+      <Name>Виннера</Name>
+      <Name>Свениа</Name>
+      <Name>Вантилиа</Name>
+      <Name>Дериона</Name>
+      <Name>Квиллиона</Name>
+      <Name>Квеллида</Name>
+      <Name>Феликса</Name>
+      <Name>Индрона</Name>
+      <Name>Зирдель</Name>
+      <Name>Реллина</Name>
+      <Name>Арриа</Name>
+      <Name>Квеллина</Name>
+      <Name>Миллиан</Name>
+      <Name>Квеста</Name>
+      <Name>Квиннила</Name>
+      <Name>Истоа</Name>
+      <Name>Паллиа</Name>
+      <Name>Бирида</Name>
+      <Name>Джессава</Name>
+      <Name>Минтана</Name>
+      <Name>Веффенис</Name>
+      <Name>Элранда</Name>
+      <Name>Солекс</Name>
+      <Name>Нерриана</Name>
+      <Name>Глигана</Name>
+      <Name>Джуранда</Name>
+      <Name>Мейрвун</Name>
+      <Name>Бавиа</Name>
+      <Name>Релджина</Name>
+      <Name>Кванда</Name>
+      <Name>Валбирона</Name>
+      <Name>Квинна</Name>
+      <Name>Дементия</Name>
+      <Name>Эндимиэль</Name>
+      <Name>Инувиель</Name>
+    </Names>
+    <Surnames>
+      <Surname>Синеволосая</Surname>
+      <Surname>Златопевка</Surname>
+      <Surname>Добровина</Surname>
+      <Surname>Бьюсь-об-заклад</Surname>
+      <Surname>Легконогая</Surname>
+      <Surname>Дальнестрелла</Surname>
+      <Surname>Ловконогая</Surname>
+      <Surname>Сребробровая</Surname>
+      <Surname>Гладкорукая</Surname>
+      <Surname>Быстрострелая</Surname>
+      <Surname>Сладковинна</Surname>
+      <Surname>Нежноглазая</Surname>
+      <Surname>Буйная</Surname>
+      <Surname>Бархатогласая</Surname>
+      <Surname>Добрая Ночь</Surname>
+      <Surname>Неунывающая</Surname>
+      <Surname>Стремилукая</Surname>
+      <Surname>Шелкокожая</Surname>
+      <Surname>Удачливая</Surname>
+      <Surname>Смешливая</Surname>
+      <Surname>Щиплеструнья</Surname>
+      <Surname>Певунья</Surname>
+      <Surname>Держивор</Surname>
+      <Surname>Чаровница</Surname>
+      <Surname>Необыграешь</Surname>
+      <Surname>Провидица</Surname>
+      <Surname>Улыбчивая</Surname>
+      <Surname>Крепкорукая</Surname>
+      <Surname>Обходящая</Surname>
+      <Surname>Шелкоперая</Surname>
+      <Surname>Полный Колчан</Surname>
+      <Surname>Победительница</Surname>
+      <Surname>Счастливый Кошелек</Surname>
+      <Surname>Растратчица</Surname>
+      <Surname>Остроумная</Surname>
+      <Surname>Лунное Сияние</Surname>
+      <Surname>Зеленая Фея</Surname>
+      <Surname>Белая Ночь</Surname>
+      <Surname>Зеленый Лист</Surname>
+      <Surname>Сребрестрелая</Surname>
+      <Surname>Песнь Лесов</Surname>
+    </Surnames>
   </TypeHero>
   <TypeHero>
     <ID>Dwarf</ID>
@@ -471,6 +1081,87 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <Names>
+      <Name>Фильбо</Name>
+      <Name>Геджет</Name>
+      <Name>Гилбон</Name>
+      <Name>Грабор</Name>
+      <Name>Рандер</Name>
+      <Name>Скил</Name>
+      <Name>Торн</Name>
+      <Name>Тинкар</Name>
+      <Name>Венгор</Name>
+      <Name>Булдон</Name>
+      <Name>Дилвар</Name>
+      <Name>Карок</Name>
+      <Name>Филлик</Name>
+      <Name>Нерб</Name>
+      <Name>Рендик</Name>
+      <Name>Нисьон</Name>
+      <Name>Пиллур</Name>
+      <Name>Врам</Name>
+      <Name>Форвар</Name>
+      <Name>Земм</Name>
+      <Name>Гровин</Name>
+      <Name>Молвер</Name>
+      <Name>Тидж</Name>
+      <Name>Селтар</Name>
+      <Name>Оовенто</Name>
+      <Name>Гатар</Name>
+      <Name>Тендас</Name>
+      <Name>Таррек</Name>
+      <Name>Трибур</Name>
+      <Name>Блармин</Name>
+      <Name>Сковви</Name>
+      <Name>Биввар</Name>
+      <Name>Компи</Name>
+      <Name>Зевзим</Name>
+      <Name>Грибблер</Name>
+      <Name>Тубо</Name>
+      <Name>Сноррик</Name>
+      <Name>Дварнрок</Name>
+    </Names>
+    <Surnames>
+      <Surname>Многопот</Surname>
+      <Surname>Рельсогнув</Surname>
+      <Surname>Амбарострой</Surname>
+      <Surname>Широковил</Surname>
+      <Surname>Ровокоп</Surname>
+      <Surname>Металлотер</Surname>
+      <Surname>Молотодроб</Surname>
+      <Surname>Железорез</Surname>
+      <Surname>Краснодрев</Surname>
+      <Surname>Кругохолм</Surname>
+      <Surname>Камнерез</Surname>
+      <Surname>Сталеков</Surname>
+      <Surname>Прилежный</Surname>
+      <Surname>Согбенный</Surname>
+      <Surname>Подхолм</Surname>
+      <Surname>Мозолистый</Surname>
+      <Surname>Камнетес</Surname>
+      <Surname>Камнедроб</Surname>
+      <Surname>Крепкокостный</Surname>
+      <Surname>Бочоночник</Surname>
+      <Surname>Крепкотяг</Surname>
+      <Surname>Рычажник</Surname>
+      <Surname>Подниматель</Surname>
+      <Surname>Молотовик</Surname>
+      <Surname>Кующий</Surname>
+      <Surname>Громкотруб</Surname>
+      <Surname>Умный</Surname>
+      <Surname>Уверенный</Surname>
+      <Surname>Надежный</Surname>
+      <Surname>Изобретательный</Surname>
+      <Surname>Неистовый</Surname>
+      <Surname>Яркобород</Surname>
+      <Surname>Твердошлем</Surname>
+      <Surname>Наковал</Surname>
+      <Surname>Шестерник</Surname>
+      <Surname>Копатель</Surname>
+      <Surname>Хлопун</Surname>
+      <Surname>Тощебород</Surname>
+      <Surname>Колесовик</Surname>
+    </Surnames>
   </TypeHero>
   <TypeHero>
     <ID>DarkPriest</ID>
@@ -486,6 +1177,7 @@
     <MeleeWeapon>WeaponDarkPriest0</MeleeWeapon>
     <Armour>ArmourDarkPriest0</Armour>
     <DefaultPositionPriority>220</DefaultPositionPriority>
+    <NameFromTypeHero>Cleric</NameFromTypeHero>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -519,6 +1211,52 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <Surnames>
+      <Surname>Чернокровка</Surname>
+      <Surname>Даэдра</Surname>
+      <Surname>Темнодушная</Surname>
+      <Surname>Бич Жизни</Surname>
+      <Surname>Краснокровка</Surname>
+      <Surname>Тень Страха</Surname>
+      <Surname>Душеизымательница</Surname>
+      <Surname>Пустодушная</Surname>
+      <Surname>Ужасная</Surname>
+      <Surname>Смертожажда</Surname>
+      <Surname>Порожденье тьмы</Surname>
+      <Surname>Некрос</Surname>
+      <Surname>Темноночь</Surname>
+      <Surname>Ночная</Surname>
+      <Surname>Темновзорная</Surname>
+      <Surname>Темный Сон</Surname>
+      <Surname>Тихая Поступь</Surname>
+      <Surname>Тенистая</Surname>
+      <Surname>Темный Дух</Surname>
+      <Surname>Вечная Тьма</Surname>
+      <Surname>Последний Вздох</Surname>
+      <Surname>Холоднорукая</Surname>
+      <Surname>Беззвучная</Surname>
+      <Surname>Плачущая Смерть</Surname>
+      <Surname>Вечная Боль</Surname>
+      <Surname>Долгое Страдание</Surname>
+      <Surname>Ужас Жизни</Surname>
+      <Surname>Бледная</Surname>
+      <Surname>Последний Шаг</Surname>
+      <Surname>Закатная Тень</Surname>
+      <Surname>Ночная Охотница</Surname>
+      <Surname>Тяжкословная</Surname>
+      <Surname>Ночной Вой</Surname>
+      <Surname>Жертвоищущая</Surname>
+      <Surname>Душемучительница</Surname>
+      <Surname>Темная Ласка</Surname>
+      <Surname>Последнее Слово</Surname>
+      <Surname>Невеста Скелета</Surname>
+      <Surname>Кровавая</Surname>
+      <Surname>Повелительница Тьмы</Surname>
+      <Surname>Гриммуар</Surname>
+      <Surname>Упивающаяся</Surname>
+      <Surname>Смертелюбивая</Surname>
+      <Surname>Темная</Surname>
+    </Surnames>
   </TypeHero>
   <TypeHero>
     <ID>Priest</ID>
@@ -534,6 +1272,7 @@
     <MeleeWeapon>WeaponPriest0</MeleeWeapon>
     <Armour>ArmourPriest0</Armour>
     <DefaultPositionPriority>230</DefaultPositionPriority>
+    <NameFromTypeHero>Cleric</NameFromTypeHero>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -567,6 +1306,49 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <Surnames>
+      <Surname>, Дочь Любви</Surname>
+      <Surname>Тихая</Surname>
+      <Surname>Охладивода</Surname>
+      <Surname>Миротворная</Surname>
+      <Surname>Благоволящая</Surname>
+      <Surname>Заботливая</Surname>
+      <Surname>Сочувствующая</Surname>
+      <Surname>Человечная</Surname>
+      <Surname>Мягкая</Surname>
+      <Surname>Нежная</Surname>
+      <Surname>Мирная</Surname>
+      <Surname>Миловидная</Surname>
+      <Surname>Добрая</Surname>
+      <Surname>Теплосердечная</Surname>
+      <Surname>Рукоцелительница</Surname>
+      <Surname>Жизнетворная</Surname>
+      <Surname>Душевная</Surname>
+      <Surname>Покладистая</Surname>
+      <Surname>Добросердечная</Surname>
+      <Surname>Безмятежная</Surname>
+      <Surname>Добрые Руки</Surname>
+      <Surname>Небесная</Surname>
+      <Surname>Задушевная</Surname>
+      <Surname>Благополучная</Surname>
+      <Surname>Зеленого Замка</Surname>
+      <Surname>Успокаивающая</Surname>
+      <Surname>Лечащая</Surname>
+      <Surname>Любящая</Surname>
+      <Surname>Спасительница</Surname>
+      <Surname>Жизньдающая</Surname>
+      <Surname>Сердцедарующая</Surname>
+      <Surname>Подарок Воды</Surname>
+      <Surname>Руки Агреллы</Surname>
+      <Surname>Очищающая</Surname>
+      <Surname>Сестра Милосердия</Surname>
+      <Surname>, Дочь Неба</Surname>
+      <Surname>Чистая</Surname>
+      <Surname>Белая</Surname>
+      <Surname>Святая</Surname>
+      <Surname>Всеверующая</Surname>
+      <Surname>Священная</Surname>
+    </Surnames>
   </TypeHero>
   <TypeHero>
     <ID>Paladin</ID>
@@ -582,6 +1364,8 @@
     <MeleeWeapon>WeaponPaladin0</MeleeWeapon>
     <Armour>ArmourPaladin0</Armour>
     <DefaultPositionPriority>30</DefaultPositionPriority>
+    <PrefixName>Брат</PrefixName>
+    <NameFromTypeHero>Warrior</NameFromTypeHero>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -615,6 +1399,48 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <Surnames>
+      <Surname>Яркая Душа</Surname>
+      <Surname>Святой Клинок</Surname>
+      <Surname>Святое Сердце</Surname>
+      <Surname>Крестоносец</Surname>
+      <Surname>Святой</Surname>
+      <Surname>Праведный</Surname>
+      <Surname>Бдительный</Surname>
+      <Surname>Спаситель</Surname>
+      <Surname>Ясный Ум</Surname>
+      <Surname>Благочестивый</Surname>
+      <Surname>Божественной Силы</Surname>
+      <Surname>Вдохновленный</Surname>
+      <Surname>Рука Дауроса</Surname>
+      <Surname>Ясное Суждение</Surname>
+      <Surname>Святой Мститель</Surname>
+      <Surname>Очищающий</Surname>
+      <Surname>Освящающий</Surname>
+      <Surname>Немногословный</Surname>
+      <Surname>Избранный</Surname>
+      <Surname>Сосуд Святости</Surname>
+      <Surname>Кулак Дауроса</Surname>
+      <Surname>Святого Видения</Surname>
+      <Surname>Чистого Сердца</Surname>
+      <Surname>Наблюдающий</Surname>
+      <Surname>Чистой Веры</Surname>
+      <Surname>Целеустремленный</Surname>
+      <Surname>Бич Зла</Surname>
+      <Surname>Индриана</Surname>
+      <Surname>Яростный Дух</Surname>
+      <Surname>Посвященный</Surname>
+      <Surname>Проницательный</Surname>
+      <Surname>Исполняющий</Surname>
+      <Surname>Настойчивый</Surname>
+      <Surname>Неудержимый</Surname>
+      <Surname>Правосудный</Surname>
+      <Surname>Досточтимый</Surname>
+      <Surname>Львиное Сердце</Surname>
+      <Surname>Заступник</Surname>
+      <Surname>Преданный</Surname>
+      <Surname>Сердце Святости</Surname>
+    </Surnames>
   </TypeHero>
   <TypeHero>
     <ID>BladeMaster</ID>
@@ -630,6 +1456,8 @@
     <MeleeWeapon>WeaponBladeMaster0</MeleeWeapon>
     <Armour>ArmourBladeMaster0</Armour>
     <DefaultPositionPriority>10</DefaultPositionPriority>
+    <PrefixName>Ярл</PrefixName>
+    <NameFromTypeHero>Warrior</NameFromTypeHero>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -663,6 +1491,45 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <Surnames>
+      <Surname>Дуболом</Surname>
+      <Surname>Быстромеч</Surname>
+      <Surname>Крепкобров</Surname>
+      <Surname>Неукрощенный</Surname>
+      <Surname>Бешеный</Surname>
+      <Surname>Дикарь</Surname>
+      <Surname>Дробоглав</Surname>
+      <Surname>Крепкопалый</Surname>
+      <Surname>Рубитель</Surname>
+      <Surname>Грент</Surname>
+      <Surname>Потерянный</Surname>
+      <Surname>Широкий</Surname>
+      <Surname>Широчайший</Surname>
+      <Surname>Зубодроб</Surname>
+      <Surname>Шув</Surname>
+      <Surname>Завоеватель</Surname>
+      <Surname>Топтающий</Surname>
+      <Surname>Варвар</Surname>
+      <Surname>Разрубатель</Surname>
+      <Surname>Крепкорукий</Surname>
+      <Surname>Вбиватель</Surname>
+      <Surname>Колотун</Surname>
+      <Surname>Махотяж</Surname>
+      <Surname>Секирщик</Surname>
+      <Surname>Древоруб</Surname>
+      <Surname>Движущий Горы</Surname>
+      <Surname>Пойменник</Surname>
+      <Surname>Канавский</Surname>
+      <Surname>Ширококостый</Surname>
+      <Surname>Широколобый</Surname>
+      <Surname>из Ниоткуда</Surname>
+      <Surname>Червегрыз</Surname>
+      <Surname>Большой Клинок</Surname>
+      <Surname>Руки-лезвия</Surname>
+      <Surname>Косматый</Surname>
+      <Surname>Сорви-голова</Surname>
+      <Surname>Щит-в-щепки</Surname>
+    </Surnames>
   </TypeHero>
   <TypeHero>
     <ID>BeastMaster</ID>
@@ -680,6 +1547,7 @@
     <Armour>ArmourBeastMaster0</Armour>
     <QuantityArrows>25</QuantityArrows>
     <DefaultPositionPriority>140</DefaultPositionPriority>
+    <NameFromTypeHero>Hunter</NameFromTypeHero>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -713,6 +1581,47 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <Surnames>
+      <Surname>Глаз Ворона</Surname>
+      <Surname>Волк</Surname>
+      <Surname>Медведь</Surname>
+      <Surname>Бык</Surname>
+      <Surname>Орел</Surname>
+      <Surname>Лев</Surname>
+      <Surname>Коготь Дракона</Surname>
+      <Surname>Олений Мастер</Surname>
+      <Surname>Мастер Охоты</Surname>
+      <Surname>Змей</Surname>
+      <Surname>Волчий</Surname>
+      <Surname>Одинокий Тур</Surname>
+      <Surname>Воющий</Surname>
+      <Surname>Стайный</Surname>
+      <Surname>Хищник</Surname>
+      <Surname>Медвежий Глаз</Surname>
+      <Surname>Секач</Surname>
+      <Surname>Кабанья Смерть</Surname>
+      <Surname>Хозяин Зверей</Surname>
+      <Surname>Приручитель</Surname>
+      <Surname>Черный Коготь</Surname>
+      <Surname>Неутомимый</Surname>
+      <Surname>Лис</Surname>
+      <Surname>Избранный Фервуса</Surname>
+      <Surname>Звереподобный</Surname>
+      <Surname>Косолапый</Surname>
+      <Surname>Долгий Вой</Surname>
+      <Surname>Лисий Зуб</Surname>
+      <Surname>Лесной</Surname>
+      <Surname>Мягколапый</Surname>
+      <Surname>Кровавый Рог</Surname>
+      <Surname>Челюсть</Surname>
+      <Surname>Вороний Лорд</Surname>
+      <Surname>Хаггард</Surname>
+      <Surname>Красная Борода</Surname>
+      <Surname>Невермор</Surname>
+      <Surname>Глаз Ястреба</Surname>
+      <Surname>Холодный Вой</Surname>
+      <Surname>Коготь Льва</Surname>
+    </Surnames>
   </TypeHero>
   <TypeHero>
     <ID>Marksman</ID>
@@ -730,6 +1639,7 @@
     <Armour>ArmourMarksman0</Armour>
     <QuantityArrows>30</QuantityArrows>
     <DefaultPositionPriority>130</DefaultPositionPriority>
+    <NameFromTypeHero>Hunter</NameFromTypeHero>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -763,6 +1673,49 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <Surnames>
+      <Surname>Острострел</Surname>
+      <Surname>Снайпер</Surname>
+      <Surname>Смертоглаз</Surname>
+      <Surname>Длинный Лук</Surname>
+      <Surname>Меткий</Surname>
+      <Surname>Чуткострел</Surname>
+      <Surname>Пристрельщик</Surname>
+      <Surname>Лучник</Surname>
+      <Surname>Слепой Стрелок</Surname>
+      <Surname>Стрела Судьбы</Surname>
+      <Surname>Точный</Surname>
+      <Surname>Лукодел</Surname>
+      <Surname>Три Стрелы</Surname>
+      <Surname>Пронзающий</Surname>
+      <Surname>Долгоглаз</Surname>
+      <Surname>Быстрострел</Surname>
+      <Surname>Быстролук</Surname>
+      <Surname>Выцеливатель</Surname>
+      <Surname>Без Цели</Surname>
+      <Surname>Лучестрел</Surname>
+      <Surname>Глаза Хелии</Surname>
+      <Surname>Солнцеход</Surname>
+      <Surname>Смертолуч</Surname>
+      <Surname>Затеняющий</Surname>
+      <Surname>Пронзительный</Surname>
+      <Surname>Шелест Стрел</Surname>
+      <Surname>Серебрянострелый</Surname>
+      <Surname>Полноколчанный</Surname>
+      <Surname>Стрела</Surname>
+      <Surname>Застрельщик</Surname>
+      <Surname>Полет Стрелы</Surname>
+      <Surname>Чуткий</Surname>
+      <Surname>Белкострел</Surname>
+      <Surname>Стрелок</Surname>
+      <Surname>Легкий Колчан</Surname>
+      <Surname>В-Яблочко</Surname>
+      <Surname>Затмевающий</Surname>
+      <Surname>Солнценосный</Surname>
+      <Surname>Сияющий</Surname>
+      <Surname>Одинокий Звезда</Surname>
+      <Surname>Прожигающий</Surname>
+    </Surnames>
   </TypeHero>
   <TypeHero>
     <ID>FireMage</ID>
@@ -778,6 +1731,8 @@
     <MeleeWeapon>WeaponFireMage0</MeleeWeapon>
     <Armour>ArmourFireMage0</Armour>
     <DefaultPositionPriority>250</DefaultPositionPriority>
+    <NameFromTypeHero>Mage</NameFromTypeHero>
+    <SurnameFromTypeHero>Mage</SurnameFromTypeHero>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -826,6 +1781,8 @@
     <MeleeWeapon>WeaponIceMage0</MeleeWeapon>
     <Armour>ArmourIceMage0</Armour>
     <DefaultPositionPriority>260</DefaultPositionPriority>
+    <NameFromTypeHero>Mage</NameFromTypeHero>
+    <SurnameFromTypeHero>Mage</SurnameFromTypeHero>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -874,6 +1831,7 @@
     <MeleeWeapon>WeaponDeathKnight0</MeleeWeapon>
     <Armour>ArmourDeathKnight0</Armour>
     <DefaultPositionPriority>80</DefaultPositionPriority>
+    <NameFromTypeHero>Rogue</NameFromTypeHero>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -907,5 +1865,35 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <Surnames>
+      <Surname>Гибель Дня</Surname>
+      <Surname>Быстроногая</Surname>
+      <Surname>Греффен</Surname>
+      <Surname>Лунный Клинок</Surname>
+      <Surname>Лунноглазая</Surname>
+      <Surname>Ночной Шорох</Surname>
+      <Surname>Ветра</Surname>
+      <Surname>Бледнолунная</Surname>
+      <Surname>Смерть Солнца</Surname>
+      <Surname>Звездный След</Surname>
+      <Surname>Умелая</Surname>
+      <Surname>Избранная</Surname>
+      <Surname>Быстрая</Surname>
+      <Surname>из Хаттории</Surname>
+      <Surname>Ветроход</Surname>
+      <Surname>Быстротенная</Surname>
+      <Surname>Обманчивая</Surname>
+      <Surname>Закатная</Surname>
+      <Surname>Бегущая По Ночам</Surname>
+      <Surname>из Ранделла</Surname>
+      <Surname>Северогилская</Surname>
+      <Surname>Улыбка Тьмы</Surname>
+      <Surname>Дочь Брута</Surname>
+      <Surname>Темнолунная</Surname>
+      <Surname>Летящий Клинок</Surname>
+      <Surname>След Тени</Surname>
+      <Surname>Восходящая</Surname>
+      <Surname>Сумеречная</Surname>
+    </Surnames>
   </TypeHero>
 </TypeHeroes>
