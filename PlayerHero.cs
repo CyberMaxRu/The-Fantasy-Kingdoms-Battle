@@ -17,6 +17,15 @@ namespace Fantasy_Kingdoms_Battle
             Building = pb;
             DayOfHire = Player.Lobby.Turn;
             TypeHero = pb.Building.TrainedHero;
+
+            FullName = (pb.Building.TrainedHero.PrefixName.Length > 0 ? pb.Building.TrainedHero.PrefixName + " " : "")
+                + GetRandomName(pb.Building.TrainedHero.NameFromTypeHero == null ? pb.Building.TrainedHero.Names : pb.Building.TrainedHero.NameFromTypeHero.Names)
+                + " " + GetRandomName(pb.Building.TrainedHero.SurnameFromTypeHero == null ? pb.Building.TrainedHero.Surnames : pb.Building.TrainedHero.Surnames);
+
+            string GetRandomName(List<string> list)
+            {
+                return list.Count > 0 ? list[FormMain.Rnd.Next(list.Count)] : "";
+            }
         }
 
         public PlayerHero(PlayerBuilding pb, BattleParticipant bp, TypeHero th) : base(th, bp)
@@ -29,6 +38,7 @@ namespace Fantasy_Kingdoms_Battle
         internal PlayerBuilding Building { get; }// Здание, которому принадлежит герой
         internal LobbyPlayer Player => Building.Player;// Игрок, которому принадлежит герой
         internal TypeHero TypeHero { get; } // Класс героя
+        internal string FullName { get; }// Полное имя
         internal int Gold { get; private set; }// Количество золота у героя
 
         // Выполнение флагов
@@ -257,7 +267,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(IsLive);
 
-            return TypeHero.ImageIndex != FormMain.IMAGE_INDEX_CURRENT_AVATAR ? TypeHero.Name : Player.GetName();
+            return TypeHero.ImageIndex != FormMain.IMAGE_INDEX_CURRENT_AVATAR ? FullName : Player.GetName();
         }
 
         internal override void PrepareHint()
