@@ -62,13 +62,18 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (Lair.Hidden)
             {
-                string textReturn = Lair.Cashback() > 0 ? "Возврат денег" : "";
-                Program.formMain.formHint.AddStep1Header("Отмена флага разведки", "", textReturn);
-                if (Lair.Cashback() > 0)
+                if (Lair.Cashback() == 0)
+                {
+                    Program.formMain.formHint.AddHeader("Отмена флага разведки");
+                }
+                else
+                {
+                    Program.formMain.formHint.AddStep1Header("Отмена флага разведки", "", "Возврат денег");
                     Program.formMain.formHint.AddStep2Income(Lair.Cashback());
+                }
             }
             else
-                Program.formMain.formHint.AddStep1Header("Отмена флага атаки", "", "");
+                Program.formMain.formHint.AddHeader("Отмена флага атаки");
         }
 
         private void BtnCancel_Click(object sender, EventArgs e)
