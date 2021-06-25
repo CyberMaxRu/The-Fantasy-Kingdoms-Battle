@@ -2118,7 +2118,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             string[] rawNames = File.ReadAllLines(@"f:\Projects\C-Sharp\Fantasy King's Battle\text\locdata_dec.txt", Encoding.UTF8);
 
-            foreach (TypeHero th in Config.TypeHeroes)
+            /*foreach (TypeHero th in Config.TypeHeroes)
             {
                 TreatNames(th.ID.ToUpper());
                 TreatSurnames(th.ID.ToUpper());
@@ -2126,6 +2126,9 @@ namespace Fantasy_Kingdoms_Battle
 
             TreatNames("DEATH_KNIGHT");
             TreatSurnames("DEATH_KNIGHT");
+            */
+            TreatNames("ICE_MAGE");
+            TreatSurnames("ICE_MAGE");
 
             void TreatNames(string nameTypeHero)
             {

@@ -1782,7 +1782,6 @@
     <Armour>ArmourIceMage0</Armour>
     <DefaultPositionPriority>260</DefaultPositionPriority>
     <NameFromTypeHero>Mage</NameFromTypeHero>
-    <SurnameFromTypeHero>Mage</SurnameFromTypeHero>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -1816,6 +1815,29 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <Surnames>
+      <Surname>Колотун</Surname>
+      <Surname>Свиристень</Surname>
+      <Surname>Охлади Вода</Surname>
+      <Surname>Зимник</Surname>
+      <Surname>Морожий</Surname>
+      <Surname>Белый</Surname>
+      <Surname>Зимний Ветер</Surname>
+      <Surname>из Нифльхейма</Surname>
+      <Surname>Крепкий</Surname>
+      <Surname>Леденящий</Surname>
+      <Surname>Снежный</Surname>
+      <Surname>Закаленный</Surname>
+      <Surname>Моржевик</Surname>
+      <Surname>из Северного Фьорда</Surname>
+      <Surname>Ледовый</Surname>
+      <Surname>Студеный</Surname>
+      <Surname>Старый</Surname>
+      <Surname>Чудотворец</Surname>
+      <Surname>Лютый</Surname>
+      <Surname>Буранный</Surname>
+      <Surname>Ледяной Великан</Surname>
+    </Surnames>
   </TypeHero>
   <TypeHero>
     <ID>DeathKnight</ID>
