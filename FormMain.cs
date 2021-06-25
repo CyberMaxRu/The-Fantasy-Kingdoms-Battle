@@ -9,6 +9,7 @@ using System.IO;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Media;
+using System.Text;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -555,14 +556,34 @@ namespace Fantasy_Kingdoms_Battle
                 vcDebugInfo.ApplyMaxSize();
                 vcDebugInfo.ArrangeControls();
 
+                // Создаем меню
+                bitmapMenu = new VCBitmap(MainControl, 0, 0, LoadBitmap("Menu.png"));
+                //Debug.Assert(panelHeroInfo.Width >= bitmapMenu.Width);
+
+                CellsMenu = new VCMenuCell[PANEL_MENU_CELLS.Height, PANEL_MENU_CELLS.Width];
+                for (int y = 0; y < PANEL_MENU_CELLS.Height; y++)
+                    for (int x = 0; x < PANEL_MENU_CELLS.Width; x++)
+                        CellsMenu[y, x] = new VCMenuCell(bitmapMenu, 77 + (x * (ilItems.Size + DISTANCE_BETWEEN_CELLS)), 95 + (y * (ilItems.Size + DISTANCE_BETWEEN_CELLS)), ilItems);
+
+                labelMenuNameObject = new VCLabel(bitmapMenu, 144, 67, fontSmall, Color.White, 14, "");
+                labelMenuNameObject.Width = 131;
+                labelMenuNameObject.TruncLongText = true;
+                labelMenuNameObject.StringFormat.Alignment = StringAlignment.Near;
+                labelMenuNameObject.StringFormat.LineAlignment = StringAlignment.Near;
+
+
                 // Панели информации об объектахs
                 panelHeroInfo = new PanelHeroInfo(MainControl, Config.GridSize, panelLairWithFlags.NextTop());
+                //panelHeroInfo.Width = bitmapMenu.Width;
                 panelHeroInfo.ApplyMaxSize();
                 panelBuildingInfo = new PanelBuildingInfo(MainControl, panelHeroInfo.ShiftX, panelHeroInfo.ShiftY);
+                //panelBuildingInfo.Width = bitmapMenu.Width;
                 panelBuildingInfo.ApplyMaxSize();
                 panelLairInfo = new PanelLairInfo(MainControl, panelHeroInfo.ShiftX, panelHeroInfo.ShiftY);
+                //panelLairInfo.Width = bitmapMenu.Width;
                 panelLairInfo.ApplyMaxSize();
                 panelMonsterInfo = new PanelMonsterInfo(MainControl, panelHeroInfo.ShiftX, panelHeroInfo.ShiftY);
+                //panelMonsterInfo.Width = bitmapMenu.Width;
                 panelMonsterInfo.ApplyMaxSize();
                 panelEmptyInfo = new VisualControl(MainControl, panelHeroInfo.ShiftX, panelHeroInfo.ShiftY)
                 {
@@ -618,21 +639,6 @@ namespace Fantasy_Kingdoms_Battle
                 }
 
                 panelCombatHeroes.ShiftX = pageGuilds.ShiftX + maxWidthPages + Config.GridSize;
-
-                // Создаем меню
-                bitmapMenu = new VCBitmap(MainControl, 0, 0, LoadBitmap("Menu.png"));
-                //Debug.Assert(panelHeroInfo.Width >= bitmapMenu.Width);
-
-                CellsMenu = new VCMenuCell[PANEL_MENU_CELLS.Height, PANEL_MENU_CELLS.Width];
-                for (int y = 0; y < PANEL_MENU_CELLS.Height; y++)
-                    for (int x = 0; x < PANEL_MENU_CELLS.Width; x++)
-                        CellsMenu[y, x] = new VCMenuCell(bitmapMenu, 77 + (x * (ilItems.Size + DISTANCE_BETWEEN_CELLS)), 95 + (y * (ilItems.Size + DISTANCE_BETWEEN_CELLS)), ilItems);
-
-                labelMenuNameObject = new VCLabel(bitmapMenu, 144, 67, fontSmall, Color.White, 14, "");
-                labelMenuNameObject.Width = 131;
-                labelMenuNameObject.TruncLongText = true;
-                labelMenuNameObject.StringFormat.Alignment = StringAlignment.Near;
-                labelMenuNameObject.StringFormat.LineAlignment = StringAlignment.Near;
 
                 //
                 Debug.Assert(panelBuildingInfo.Height > 0);
@@ -716,6 +722,8 @@ namespace Fantasy_Kingdoms_Battle
                 //me.Parent = this;
 
                 StartPlayMusic();
+
+                //ImportNames();// Однократная операция
 
                 // 
                 void SetStage(string text)
@@ -2104,6 +2112,66 @@ namespace Fantasy_Kingdoms_Battle
 
             //
             AvatarsCount = blInternalAvatars.Count + blExternalAvatars.Count;
+        }
+
+        private void ImportNames()
+        {
+            string[] rawNames = File.ReadAllLines(@"f:\Projects\C-Sharp\Fantasy King's Battle\text\locdata_dec.txt", Encoding.UTF8);
+
+            foreach (TypeHero th in Config.TypeHeroes)
+            {
+                TreatNames(th.ID.ToUpper());
+                TreatSurnames(th.ID.ToUpper());
+            }
+
+            TreatNames("DEATH_KNIGHT");
+            TreatSurnames("DEATH_KNIGHT");
+
+            void TreatNames(string nameTypeHero)
+            {
+                string strBegin = $"#{nameTypeHero}N";
+                List<string> names = new List<string>();
+                string name;
+                names.Add("    <Names>");
+
+                foreach (string s in rawNames)
+                {
+                    if (s.StartsWith(strBegin))
+                    {
+                        name = s.Substring(s.IndexOf("hname") + 7);
+                        name = name.Substring(0, name.Length - 7);
+                        name = name.Replace("\n\r", "");
+
+                        names.Add("      <Name>" + name + "</Name>");
+                    }
+                }
+                names.Add("    </Names>");
+
+                File.WriteAllLines(@"f:\Projects\C-Sharp\Fantasy King's Battle\Resources\Config\" + nameTypeHero + "_Name.txt", names);
+            }
+
+            void TreatSurnames(string nameTypeHero)
+            {
+                string strBegin = $"#{nameTypeHero}S";
+                List<string> names = new List<string>();
+                string name;
+                names.Add("    <Surnames>");
+
+                foreach (string s in rawNames)
+                {
+                    if (s.StartsWith(strBegin))
+                    {
+                        name = s.Substring(s.IndexOf("hname") + 7);
+                        name = name.Substring(0, name.Length - 7);
+                        name = name.Replace("\n\r", "");
+
+                        names.Add("      <Surname>" + name + "</Surname>");
+                    }
+                }
+                names.Add("    </Surnames>");
+
+                File.WriteAllLines(@"f:\Projects\C-Sharp\Fantasy King's Battle\Resources\Config\" + nameTypeHero + "_Surname.txt", names);
+            }
         }
     }
 }
