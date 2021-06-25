@@ -28,6 +28,9 @@ namespace Fantasy_Kingdoms_Battle
             lblName.StringFormat.Alignment = StringAlignment.Center;
             lblName.Color = Color.MediumAquamarine;
             lblName.ShowBorder = true;
+            lblName.TruncLongText = true;
+            lblName.LeftMargin = 2;
+            lblName.RightMargin = 2;
 
             imgIcon = new VCImageBig(this, lblName.NextTop());
             imgIcon.ShowHint += ImgIcon_ShowHint;
