@@ -87,12 +87,13 @@ namespace Fantasy_Kingdoms_Battle
             return dialogResult;
         }
 
-        internal void Show()
+        internal void Show(bool toCentre = true)
         {
             Program.formMain.formHint.HideHint();
 
             AdjustSize();
-            ToCentre();
+            if (toCentre)
+                ToCentre();
             Program.formMain.LayerChanged();
 
             if (FormMain.Config.AutoCreatedPlayer)

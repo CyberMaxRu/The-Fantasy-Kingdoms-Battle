@@ -88,6 +88,8 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VisualControl panelLairWithFlags;
         private readonly List<VCButtonTargetLair> listBtnTargetLair = new List<VCButtonTargetLair>();
 
+        private readonly VCBitmap bitmapLogo;
+        private readonly VCBitmap bitmapNameGame;
         private readonly VCBitmap bitmapMenu;
         private readonly VCLabel labelMenuNameObject;
         private readonly VisualControl vcBackMainMenu;
@@ -236,6 +238,8 @@ namespace Fantasy_Kingdoms_Battle
         private bool needRedrawFrame;
 
         private readonly List<VisualLayer> Layers;
+        private readonly VisualLayer layerMainMenu;
+        private readonly VisualControl vcMainMenu;
         private readonly VisualLayer layerGame;
         private VisualLayer currentLayer;
 
@@ -482,6 +486,8 @@ namespace Fantasy_Kingdoms_Battle
 
                 // Создаем слой игрового поля
                 Layers = new List<VisualLayer>();
+                layerMainMenu = new VisualLayer();
+                Layers.Add(layerMainMenu);
                 layerGame = new VisualLayer();
                 Layers.Add(layerGame);
                 currentLayer = layerGame;
@@ -555,6 +561,12 @@ namespace Fantasy_Kingdoms_Battle
                 labelLayers.Width = 300;
                 vcDebugInfo.ApplyMaxSize();
                 vcDebugInfo.ArrangeControls();
+
+                // Лого
+                vcMainMenu = new VisualControl(layerMainMenu);
+                bitmapLogo = new VCBitmap(vcMainMenu, 0, 0, LoadBitmap("Logo.png"));
+
+                bitmapNameGame = new VCBitmap(vcMainMenu, 0, 0, LoadBitmap("NameGame.png"));
 
                 // Создаем меню
                 bitmapMenu = new VCBitmap(MainControl, 0, 0, LoadBitmap("Menu.png"));
@@ -681,6 +693,14 @@ namespace Fantasy_Kingdoms_Battle
 
                 ArrangeControls();
 
+                bitmapNameGame.ShiftY = bmpPreparedToolbar.Top + bmpPreparedToolbar.Height + Config.GridSize;
+                bitmapNameGame.ShiftX = (Width - bitmapNameGame.Width) / 2;
+                bitmapLogo.ShiftY = bitmapNameGame.NextTop() + (Config.GridSize * 3);
+                bitmapLogo.ShiftX = (Width - bitmapLogo.Width) / 2;
+                vcMainMenu.Width = Width;
+                vcMainMenu.Height = Height;
+                vcMainMenu.ArrangeControls();
+
                 EndLobby();
                 
                 SetStage("Прибираем после строителей");
@@ -783,7 +803,10 @@ namespace Fantasy_Kingdoms_Battle
         internal void ShowMainMenu()
         {
             WindowMainMenu w = new WindowMainMenu();
-            w.Show();
+            w.AdjustSize();
+            w.SetPos(Width - w.Width - (Config.GridSize * 4), (Height - w.Height) / 2);
+            w.ArrangeControls();
+            w.Show(false);
         }
 
         private void PageHeroes_ShowHint(object sender, EventArgs e)
@@ -1362,6 +1385,7 @@ namespace Fantasy_Kingdoms_Battle
             btnInGameMenu.Visible = true;
             btnEndTurn.Visible = true;
             vcBackMainMenu.Visible = false;
+            vcMainMenu.Visible = false;
         }
 
         internal void EndLobby()
@@ -1372,8 +1396,10 @@ namespace Fantasy_Kingdoms_Battle
             btnInGameMenu.Visible = false;
             btnEndTurn.Visible = false;
             vcBackMainMenu.Visible = true;
+            vcMainMenu.Visible = true;
 
-            ShowNamePlayer(NAME_PROJECT);
+            ShowNamePlayer(Program.formMain.CurrentHumanPlayer.Name);
+            //ShowNamePlayer(NAME_PROJECT);
         }
 
         internal void SetNeedRedrawFrame()
