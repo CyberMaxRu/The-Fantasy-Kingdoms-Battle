@@ -105,6 +105,7 @@ namespace Fantasy_Kingdoms_Battle
         internal void DoEndTurn()
         {
             // Реальный игрок должен быть жив
+            Debug.Assert(Players[0].GetTypePlayer() == TypePlayer.Human);
             Debug.Assert(Players[0].IsLive);
 
             // Делаем ходы, перебирая всех игроков, пока все не совершат ход
