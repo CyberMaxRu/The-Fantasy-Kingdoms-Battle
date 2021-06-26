@@ -30,7 +30,7 @@ namespace Fantasy_Kingdoms_Battle
 
         public WindowPreferences() : base()
         {
-            windowCaption.Caption = "Настройки";
+            windowCaption.Caption = "Настройки игры";
 
             vcPanelGame = new VisualControl(ClientControl, 0, 0);
             vcPanelGame.ShowBorder = true;
