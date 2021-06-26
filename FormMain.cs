@@ -1618,7 +1618,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.OnKeyUp(e);
 
-            if ((e.KeyCode == Keys.Escape) && (Layers.Count == 1))
+            if ((e.KeyCode == Keys.Escape) && (Layers.Count == 2))
             {
                 ShowInGameMenu();
             }
