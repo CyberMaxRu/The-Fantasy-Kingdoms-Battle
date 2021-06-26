@@ -207,7 +207,7 @@ namespace Fantasy_Kingdoms_Battle
             else
                 btnHireHero.Visible = false;
 
-            imgMapObject.Level = Building.Building.LevelAsQuantity ? 0 : Building.Level;
+            imgMapObject.Level = Building.Building.LevelAsQuantity ? 0 : Building.Level < Building.Building.MaxLevel ? Building.Level : 0;
             imgMapObject.Quantity = Building.Building.LevelAsQuantity ? Building.Level : 0;
 
             if ((Building.Building.TrainedHero != null) && !(TypeConstruction is TypeEconomicConstruction) && (Building.Level > 0) && (Building.Heroes.Count > 0))
