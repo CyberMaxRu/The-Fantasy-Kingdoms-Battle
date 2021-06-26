@@ -228,7 +228,7 @@ namespace Fantasy_Kingdoms_Battle
 
         protected virtual bool PlaySelectSound()
         {
-            return ImageIsEnabled && HighlightUnderMouse;
+            return ImageIsEnabled && ((UseFilter && ImageIsOver) || HighlightUnderMouse);
         }
     }
 }
