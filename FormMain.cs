@@ -494,7 +494,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 vcBackMainMenu = new VisualControl(layerGame);
                 vcBackMainMenu.Visible = false;
-                labelVersion = new VCLabel(vcBackMainMenu, 0, 0, fontSmall, Color.White, fontSmall.MaxHeightSymbol,
+                labelVersion = new VCLabel(vcBackMainMenu, 0, 0, fontSmallC, Color.White, fontSmall.MaxHeightSymbol,
                     "Сборка " + VERSION + " от " + DATE_VERSION);
                 labelVersion.Width = labelVersion.Font.WidthText(labelVersion.Text);
                 vcBackMainMenu.Width = labelVersion.Width;
