@@ -806,7 +806,7 @@ namespace Fantasy_Kingdoms_Battle
             w.AdjustSize();
             w.SetPos(Width - w.Width - (Config.GridSize * 4), (Height - w.Height) / 2);
             w.ArrangeControls();
-            w.Show(false);
+            w.ShowDialog(false);
         }
 
         private void PageHeroes_ShowHint(object sender, EventArgs e)
