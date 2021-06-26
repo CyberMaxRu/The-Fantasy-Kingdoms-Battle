@@ -22,6 +22,8 @@ namespace Fantasy_Kingdoms_Battle
             MaxHeroesForScoutFlag = XmlUtils.GetInteger(n.SelectSingleNode("MaxHeroesForScoutFlag"));
             StartPointConstructionGuild = XmlUtils.GetInteger(n.SelectSingleNode("StartPointConstructionGuild"));
             StartPointConstructionEconomic = XmlUtils.GetInteger(n.SelectSingleNode("StartPointConstructionEconomic"));
+            StartPointConstructionTemple = XmlUtils.GetInteger(n.SelectSingleNode("StartPointConstructionTemple"));
+            StartPointConstructionTradePost = XmlUtils.GetInteger(n.SelectSingleNode("StartPointConstructionTradePost"));
             PointConstructionGuildPerDay = XmlUtils.GetInteger(n.SelectSingleNode("PointConstructionGuildPerDay"));
             PointConstructionEconomicPerDay = XmlUtils.GetInteger(n.SelectSingleNode("PointConstructionEconomicPerDay"));
             DayStartTournament = XmlUtils.GetInteger(n.SelectSingleNode("DayStartTournament"));
@@ -49,6 +51,10 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(StartPointConstructionGuild <= 10);
             Debug.Assert(StartPointConstructionEconomic >= 1);
             Debug.Assert(StartPointConstructionEconomic <= 10);
+            Debug.Assert(StartPointConstructionTemple >= 0);
+            Debug.Assert(StartPointConstructionTemple <= 5);
+            Debug.Assert(StartPointConstructionTradePost>= 0);
+            Debug.Assert(StartPointConstructionTradePost <= 5);
             Debug.Assert(PointConstructionGuildPerDay >= 1);
             Debug.Assert(PointConstructionGuildPerDay <= 10);
             Debug.Assert(PointConstructionEconomicPerDay >= 1);
@@ -145,6 +151,8 @@ namespace Fantasy_Kingdoms_Battle
         internal int DayStartTournament { get; }
         internal int StartPointConstructionGuild { get; }
         internal int StartPointConstructionEconomic { get; }
+        internal int StartPointConstructionTemple { get; }
+        internal int StartPointConstructionTradePost { get; }
         internal int PointConstructionGuildPerDay { get; }
         internal int PointConstructionEconomicPerDay { get; }
         internal int LairsLayers{ get; }

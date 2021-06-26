@@ -11,6 +11,8 @@
     <DayStartTournament>10</DayStartTournament>
     <StartPointConstructionGuild>2</StartPointConstructionGuild>
     <StartPointConstructionEconomic>2</StartPointConstructionEconomic>
+    <StartPointConstructionTemple>0</StartPointConstructionTemple>
+    <StartPointConstructionTradePost>0</StartPointConstructionTradePost>
     <PointConstructionGuildPerDay>1</PointConstructionGuildPerDay>
     <PointConstructionEconomicPerDay>1</PointConstructionEconomicPerDay>
     <LairsLayers>3</LairsLayers>

@@ -34,8 +34,8 @@ namespace Fantasy_Kingdoms_Battle
             // Настраиваем игрока согласно настройкам лобби
             PointConstructionGuild = lobby.TypeLobby.StartPointConstructionGuild;
             PointConstructionEconomic = lobby.TypeLobby.StartPointConstructionEconomic;
-            PointConstructionTemple = 0;
-            PointConstructionTradePost = 0;
+            PointConstructionTemple = lobby.TypeLobby.StartPointConstructionTemple;
+            PointConstructionTradePost = lobby.TypeLobby.StartPointConstructionTradePost;
             SetQuantityFlags(lobby.TypeLobby.StartQuantityFlags);
 
             // Инициализация зданий
