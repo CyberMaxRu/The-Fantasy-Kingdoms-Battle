@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<StartBonuses>
+  <StartBonus>
+    <Gold>1000</Gold>
+    <Greatness>0</Greatness>
+    <PointConstructionGuild>0</PointConstructionGuild>
+    <Points>1</Points>
+  </StartBonus>
+</StartBonuses>

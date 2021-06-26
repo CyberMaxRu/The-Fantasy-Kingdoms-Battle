@@ -74,6 +74,13 @@ namespace Fantasy_Kingdoms_Battle
                 TypeLobbies.Add(new TypeLobby(n));
             }
 
+            // Загрузка стартовых бонусов
+            xmlDoc = CreateXmlDocument(@"Config\StartBonus.xml");
+            foreach (XmlNode n in xmlDoc.SelectNodes("/StartBonuses/StartBonus"))
+            {
+                StartBonuses.Add(new StartBonus(n));
+            }
+
             // Загрузка конфигурации гильдий
             xmlDoc = CreateXmlDocument(@"Config\TypeGuilds.xml");
             foreach (XmlNode n in xmlDoc.SelectNodes("/TypeGuilds/TypeGuild"))
@@ -242,6 +249,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal string PathResources { get; }
         internal List<TypeLobby> TypeLobbies { get; } = new List<TypeLobby>();
+        internal List<StartBonus> StartBonuses { get; } = new List<StartBonus>();
         internal List<ComputerPlayer> ComputerPlayers { get; } = new List<ComputerPlayer>();
         internal List<HumanPlayer> HumanPlayers { get; } = new List<HumanPlayer>();
         internal bool AutoCreatedPlayer { get; }
