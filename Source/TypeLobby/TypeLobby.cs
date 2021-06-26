@@ -27,6 +27,7 @@ namespace Fantasy_Kingdoms_Battle
             PointConstructionGuildPerDay = XmlUtils.GetInteger(n.SelectSingleNode("PointConstructionGuildPerDay"));
             PointConstructionEconomicPerDay = XmlUtils.GetInteger(n.SelectSingleNode("PointConstructionEconomicPerDay"));
             PointStartBonus = XmlUtils.GetInteger(n.SelectSingleNode("PointStartBonus"));
+            VariantStartBonus = XmlUtils.GetInteger(n.SelectSingleNode("VariantStartBonus"));
             DayStartTournament = XmlUtils.GetInteger(n.SelectSingleNode("DayStartTournament"));
             LairsLayers = XmlUtils.GetInteger(n.SelectSingleNode("LairsLayers"));
             LairsWidth = XmlUtils.GetInteger(n.SelectSingleNode("LairsWidth"));
@@ -62,6 +63,9 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(PointConstructionEconomicPerDay <= 10);
             Debug.Assert(PointStartBonus >= 0);
             Debug.Assert(PointStartBonus <= 20);
+            Debug.Assert(VariantStartBonus >= 0);
+            Debug.Assert(VariantStartBonus <= 3);
+            Debug.Assert(((PointStartBonus > 0) && (VariantStartBonus > 0)) || ((PointStartBonus == 0) && (VariantStartBonus == 0)));
             Debug.Assert(LairsLayers >= 1);
             Debug.Assert(LairsLayers <= 5);
             Debug.Assert(LairsWidth >= 2);
@@ -159,6 +163,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int PointConstructionGuildPerDay { get; }
         internal int PointConstructionEconomicPerDay { get; }
         internal int PointStartBonus { get; }
+        internal int VariantStartBonus { get; }
         internal int LairsLayers{ get; }
         internal int LairsWidth { get; }
         internal int LairsHeight { get; }

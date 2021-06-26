@@ -16,6 +16,7 @@
     <PointConstructionGuildPerDay>1</PointConstructionGuildPerDay>
     <PointConstructionEconomicPerDay>1</PointConstructionEconomicPerDay>
     <PointStartBonus>5</PointStartBonus>
+    <VariantStartBonus>3</VariantStartBonus>
     <LairsLayers>3</LairsLayers>
     <LairsWidth>4</LairsWidth>
     <LairsHeight>3</LairsHeight>
