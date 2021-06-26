@@ -486,9 +486,9 @@ namespace Fantasy_Kingdoms_Battle
 
                 // Создаем слой игрового поля
                 Layers = new List<VisualLayer>();
-                layerMainMenu = new VisualLayer();
+                layerMainMenu = new VisualLayer("MainMenu");
                 Layers.Add(layerMainMenu);
-                layerGame = new VisualLayer();
+                layerGame = new VisualLayer("Game");
                 Layers.Add(layerGame);
                 currentLayer = layerGame;
 
@@ -1043,7 +1043,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal VisualLayer AddLayer(VisualControl vc)
+        internal VisualLayer AddLayer(VisualControl vc, string name)
         {
             Debug.Assert(Layers.Count <= 5);
             Debug.Assert(currentLayer.Controls.Count > 0);
@@ -1054,7 +1054,7 @@ namespace Fantasy_Kingdoms_Battle
             controlClicked?.MouseLeave();
             controlClicked = null;
 
-            VisualLayer vl = new VisualLayer();
+            VisualLayer vl = new VisualLayer(name);
             Layers.Add(vl);
             vl.AddControl(vc);
             currentLayer = vl;
@@ -1843,9 +1843,15 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (controlWithHint != null)
             {
+                /*if (controlWithHint.VisualLayer != currentLayer)
+                {
+                    timerHover.Stop();
+                    MessageBox.Show($"{controlWithHint.VisualLayer.Name}, {currentLayer.Name}");
+                }*/
+
                 timerHover.Stop();
                 controlWithHint.DoShowHint();
-                
+
                 if (formHint.ExistHint)
                 {
                     formHint.Visible = true;
@@ -1853,6 +1859,11 @@ namespace Fantasy_Kingdoms_Battle
                     Invalidate(true);
                 }
             }
+        }
+
+        internal void StopShowHint()
+        {
+            timerHover.Stop();
         }
 
         internal void NeedRedrawFrame()

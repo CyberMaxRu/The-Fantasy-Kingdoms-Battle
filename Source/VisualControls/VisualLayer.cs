@@ -12,6 +12,12 @@ namespace Fantasy_Kingdoms_Battle
     // Визуальное окно
     internal class VisualLayer
     {
+        public VisualLayer(string name)
+        {
+            Name = name;
+        }
+
+        internal string Name { get; }
         internal List<VisualControl> Controls { get; } = new List<VisualControl>();
 
         internal void DrawBackground(Graphics g)
