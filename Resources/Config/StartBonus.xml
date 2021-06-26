@@ -6,4 +6,22 @@
     <PointConstructionGuild>0</PointConstructionGuild>
     <Points>1</Points>
   </StartBonus>
+  <StartBonus>
+    <Gold>0</Gold>
+    <Greatness>200</Greatness>
+    <PointConstructionGuild>0</PointConstructionGuild>
+    <Points>1</Points>
+  </StartBonus>
+  <StartBonus>
+    <Gold>0</Gold>
+    <Greatness>0</Greatness>
+    <PointConstructionGuild>1</PointConstructionGuild>
+    <Points>3</Points>
+  </StartBonus>
+  <StartBonus>
+    <Gold>500</Gold>
+    <Greatness>100</Greatness>
+    <PointConstructionGuild>0</PointConstructionGuild>
+    <Points>1</Points>
+  </StartBonus>
 </StartBonuses>

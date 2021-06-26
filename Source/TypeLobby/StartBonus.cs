@@ -11,6 +11,10 @@ namespace Fantasy_Kingdoms_Battle
     // Класс стартовых бонусов
     internal sealed class StartBonus
     {
+        public StartBonus()
+        {
+        }
+
         public StartBonus(XmlNode n)
         {
             Gold = XmlUtils.GetInteger(n.SelectSingleNode("Gold"));
@@ -28,9 +32,26 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Points <= 10);
         }
 
-        internal int Gold { get; }
-        internal int Greatness { get; }
-        internal int PointConstructionGuild { get; }
-        internal int Points { get; }
+        internal int Gold { get; private set; }
+        internal int Greatness { get; private set; }
+        internal int PointConstructionGuild { get; private set; }
+        internal int Points { get; private set; }
+
+        internal void AddBonus(StartBonus sb)
+        {
+            Gold += sb.Gold;
+            Greatness += sb.Greatness;
+            PointConstructionGuild += sb.PointConstructionGuild;
+            Points += sb.Points;
+        }
+
+        public override bool Equals(object obj)
+        {
+            StartBonus otherStartBonus = obj as StartBonus;
+
+            return (Gold == otherStartBonus.Gold) 
+                && (Greatness == otherStartBonus.Greatness) 
+                && (PointConstructionGuild == otherStartBonus.PointConstructionGuild);
+        }
     }
 }

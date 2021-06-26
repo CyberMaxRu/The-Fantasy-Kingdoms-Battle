@@ -38,6 +38,16 @@ namespace Fantasy_Kingdoms_Battle
             PointConstructionTradePost = lobby.TypeLobby.StartPointConstructionTradePost;
             SetQuantityFlags(lobby.TypeLobby.StartQuantityFlags);
 
+            // Настраиваем стартовые бонусы
+            if (lobby.TypeLobby.VariantStartBonus > 0)
+            {
+                VariantsStartBonuses = new List<StartBonus>();
+                for (int i = 0; i < lobby.TypeLobby.VariantStartBonus; i++)
+                {
+                    VariantsStartBonuses.Add(GenerateStartBonus());
+                }
+            }
+
             // Инициализация зданий
             foreach (TypeConstruction tck in FormMain.Config.TypeConstructionsOfKingdom)
             {
@@ -72,6 +82,48 @@ namespace Fantasy_Kingdoms_Battle
             AddItem(new PlayerItem(FormMain.Config.FindItem("ImpProtection"), 2, true));
 
             ValidateHeroes();
+
+            StartBonus GenerateStartBonus()
+            {
+                int restAttempts = 500;
+                bool needRegenerate = false;
+                while (restAttempts > 0)
+                {
+                    StartBonus newSb = GenerateNew(lobby.TypeLobby.PointStartBonus);
+
+                    // Ищем, есть ли такой же бонус
+                    foreach (StartBonus b in VariantsStartBonuses)
+                        if (b.Equals(newSb))
+                        {
+                            needRegenerate = true;
+                            break;
+                        }
+
+                    if (!needRegenerate)
+                        return newSb;
+
+                    restAttempts--;
+                }
+
+                throw new Exception("Не удалось подобрать уникальный бонус.");
+
+                StartBonus GenerateNew(int points)
+                {
+                    StartBonus sb = new StartBonus();
+                    List<StartBonus> listBonuses = new List<StartBonus>();
+
+                    while (sb.Points < points)
+                    {
+                        // Выбираем случайный бонус из списка доступных, чтобы хватило оставшихся очков
+                        listBonuses.Clear();
+                        listBonuses.AddRange(FormMain.Config.StartBonuses.Where(b => b.Points <= (points - sb.Points)));
+                        Debug.Assert(listBonuses.Count > 0);
+                        sb.AddBonus(listBonuses[FormMain.Rnd.Next(listBonuses.Count)]);
+                    }
+
+                    return sb;
+                }
+            }
         }
 
         internal void DoTurn()
@@ -129,7 +181,7 @@ namespace Fantasy_Kingdoms_Battle
 
             // Расчет флагов на логова
             List<PlayerLair> tempListLair = ListFlags.ToList();// Работаем с копией списка, так как текущий будет меняться по мере обработки флагов
-            
+
             foreach (PlayerLair pl in tempListLair)
             {
                 Battle b;
@@ -227,6 +279,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int PointConstructionEconomic { get; private set; }
         internal int PointConstructionTemple { get; private set; }
         internal int PointConstructionTradePost { get; private set; }
+        internal List<StartBonus> VariantsStartBonuses { get; }// Варианты стартовых бонусов
 
         internal int QuantityHeroes { get; private set; }
 
