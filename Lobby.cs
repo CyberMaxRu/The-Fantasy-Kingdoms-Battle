@@ -121,7 +121,7 @@ namespace Fantasy_Kingdoms_Battle
                         StateLobby = StateLobby.TurnComputer;
                         Program.formMain.ShowCurrentPlayerLobby();
                         CurrentPlayer.DoTurn();
-                        System.Threading.Thread.Sleep(250);
+                        System.Threading.Thread.Sleep(200);
                     }
                     else
                     {
