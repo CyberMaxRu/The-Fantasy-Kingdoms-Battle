@@ -25,6 +25,7 @@ namespace Fantasy_Kingdoms_Battle
 
         public VisualControl(VisualLayer vl)
         {
+            VisualLayer = vl;
             vl.AddControl(this);
         }
 
@@ -36,11 +37,14 @@ namespace Fantasy_Kingdoms_Battle
             ShiftX = shiftX;
             ShiftY = shiftY;
             parent.AddControl(this);
+            VisualLayer = parent.VisualLayer;
+            //Debug.Assert(VisualLayer != null);
         }
 
         ~VisualControl() => Dispose(false);
 
         internal VisualControl Parent { get; private set; }
+        internal VisualLayer VisualLayer { get; }
         internal int Left { get { return left; } private set { left = value; ValidateRectangle(); ArrangeControls(); } }
         internal int Top { get { return top; } private set { top = value; ValidateRectangle(); ArrangeControls(); } }
         internal int Width { get { return width; } set { width = value; ValidateRectangle(); } }
