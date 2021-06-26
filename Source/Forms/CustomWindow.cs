@@ -18,7 +18,7 @@ namespace Fantasy_Kingdoms_Battle
 
         public CustomWindow()
         {
-            layer = Program.formMain.AddLayer(this);
+            layer = Program.formMain.AddLayer(this, ToString());
             shiftControls = Program.formMain.ShiftControls;
         }
 
@@ -76,6 +76,7 @@ namespace Fantasy_Kingdoms_Battle
         internal DialogResult ShowDialog()
         {
             Program.formMain.formHint.HideHint();
+            Program.formMain.StopShowHint();
 
             AdjustSize();
             ToCentre();
@@ -90,6 +91,7 @@ namespace Fantasy_Kingdoms_Battle
         internal void Show(bool toCentre = true)
         {
             Program.formMain.formHint.HideHint();
+            Program.formMain.StopShowHint();
 
             AdjustSize();
             if (toCentre)
