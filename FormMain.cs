@@ -1563,7 +1563,7 @@ namespace Fantasy_Kingdoms_Battle
                     gfxFrame.DrawRectangle(penDebugBorder, controlWithHint.Rectangle);
 
                 durationDrawFrame = DateTime.Now - startDebugAction;
-                labelTimeDrawFrame.Text = $"Draw frame: {durationDrawFrame.TotalMilliseconds}; dpiX: {gfxFrame.DpiX}, dpiY: {gfxFrame.DpiY}";
+                labelTimeDrawFrame.Text = $"Draw frame: {durationDrawFrame.TotalMilliseconds}";
                 vcDebugInfo.Draw(gfxFrame);
             }
 
