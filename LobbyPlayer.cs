@@ -85,11 +85,12 @@ namespace Fantasy_Kingdoms_Battle
 
             StartBonus GenerateStartBonus()
             {
-                int restAttempts = 500;
-                bool needRegenerate = false;
+                int restAttempts = 100;
+                bool needRegenerate;
                 while (restAttempts > 0)
                 {
                     StartBonus newSb = GenerateNew(lobby.TypeLobby.PointStartBonus);
+                    needRegenerate = false;
 
                     // Ищем, есть ли такой же бонус
                     foreach (StartBonus b in VariantsStartBonuses)
