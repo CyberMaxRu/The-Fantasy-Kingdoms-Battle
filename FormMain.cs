@@ -806,7 +806,7 @@ namespace Fantasy_Kingdoms_Battle
             w.AdjustSize();
             w.SetPos(Width - w.Width - (Config.GridSize * 4), (Height - w.Height) / 2);
             w.ArrangeControls();
-            w.ShowDialog(false);
+            w.Show(false);
         }
 
         private void PageHeroes_ShowHint(object sender, EventArgs e)
@@ -965,6 +965,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
         }
+
         private void BtnInGameMenu_Click(object sender, EventArgs e)
         {
             ShowInGameMenu();
@@ -1386,6 +1387,8 @@ namespace Fantasy_Kingdoms_Battle
             btnEndTurn.Visible = true;
             vcBackMainMenu.Visible = false;
             vcMainMenu.Visible = false;
+
+            lobby.StartTurn();
         }
 
         internal void EndLobby()

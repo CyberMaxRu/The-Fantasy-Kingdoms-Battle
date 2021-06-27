@@ -102,6 +102,27 @@ namespace Fantasy_Kingdoms_Battle
                 CurrentPlayer = null;
         }
 
+        internal void StartTurn()
+        {
+            // Реальный игрок должен быть жив
+            Debug.Assert(Players[0].GetTypePlayer() == TypePlayer.Human);
+            Debug.Assert(Players[0].IsLive);
+
+            foreach (LobbyPlayer p in Players)                 
+            {
+                if (p.GetTypePlayer() == TypePlayer.Human)
+                {
+                    if (Turn == 1)
+                    {
+                        //WindowSelectStartBonus w = new WindowSelectStartBonus();
+                        //w.ShowDialog();
+                    }
+
+                    return;
+                }
+            }
+        }
+
         internal void DoEndTurn()
         {
             // Реальный игрок должен быть жив
