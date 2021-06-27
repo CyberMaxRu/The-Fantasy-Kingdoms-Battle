@@ -229,6 +229,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly Bitmap bmpBandStateCreature;
         internal readonly Bitmap bmpBandQuest;
         internal readonly Bitmap bmpMenuInGame;
+
         internal readonly M2Font fontSmall;
         internal readonly M2Font fontSmallC;
         internal readonly M2Font fontMedCaptionC;
