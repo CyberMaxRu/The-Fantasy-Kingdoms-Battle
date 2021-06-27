@@ -697,14 +697,14 @@ namespace Fantasy_Kingdoms_Battle
 
                 //pageGuilds.ShiftX + maxWidthPages + Config.GridSize;
 
-                bitmapNameGame.ShiftY = bmpPreparedToolbar.ShiftY + bmpPreparedToolbar.Height + Config.GridSize;
-                bitmapNameGame.ShiftX = (Width - bitmapNameGame.Width) / 2;
-                bitmapLogo.ShiftY = bitmapNameGame.NextTop() + (Config.GridSize * 3);
-                bitmapLogo.ShiftX = (Width - bitmapLogo.Width) / 2;
+                layerMainMenu.Width = sizeGamespace.Width;
+                layerMainMenu.Height = sizeGamespace.Height;
+                bitmapLogo.ShiftX = (layerMainMenu.Width - bitmapLogo.Width) / 2;
+                bitmapLogo.ShiftY = (layerMainMenu.Height - bitmapLogo.Height) / 2;
+                bitmapNameGame.ShiftX = (layerMainMenu.Width - bitmapNameGame.Width) / 2;
+                bitmapNameGame.ShiftY = (bitmapLogo.ShiftY - bitmapNameGame.Height) / 2;
                 labelVersion.ShiftX = sizeGamespace.Width - labelVersion.Width - Config.GridSize;
                 labelVersion.ShiftY = sizeGamespace.Height - labelVersion.Height - Config.GridSize;
-                layerMainMenu.Width = Width;
-                layerMainMenu.Height = Height;
 
                 ArrangeControls();
 
@@ -811,7 +811,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             WindowMainMenu w = new WindowMainMenu();
             w.AdjustSize();
-            w.SetPos(Width - w.Width - (Config.GridSize * 4), (Height - w.Height) / 2);
+            w.SetPos(Width - w.Width - (Config.GridSize * 3), (Height - w.Height) / 2 - (Config.GridSize * 4));
             w.ArrangeControls();
             w.Show(false);
         }
