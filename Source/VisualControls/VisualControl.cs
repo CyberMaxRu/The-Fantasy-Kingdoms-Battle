@@ -23,12 +23,6 @@ namespace Fantasy_Kingdoms_Battle
         {
         }
 
-        public VisualControl(VisualLayer vl)
-        {
-            VisualLayer = vl;
-            vl.AddControl(this);
-        }
-
         public VisualControl(VisualControl parent, int shiftX, int shiftY)
         {
             Debug.Assert(parent != null);
@@ -44,7 +38,7 @@ namespace Fantasy_Kingdoms_Battle
         ~VisualControl() => Dispose(false);
 
         internal VisualControl Parent { get; private set; }
-        internal VisualLayer VisualLayer { get; }
+        internal VisualControl VisualLayer { get; }
         internal int Left { get { return left; } private set { left = value; ValidateRectangle(); ArrangeControls(); } }
         internal int Top { get { return top; } private set { top = value; ValidateRectangle(); ArrangeControls(); } }
         internal int Width { get { return width; } set { width = value; ValidateRectangle(); } }
@@ -265,6 +259,8 @@ namespace Fantasy_Kingdoms_Battle
                                 vc2.IsError = true;
                                 vc2.ShowBorder = true;
                             }*/
+                            //if (vc.Rectangle.Contains(vc2.Rectangle))
+                            //    vc2.ShowBorder = true;
                             Debug.Assert(!vc.Rectangle.Contains(vc2.Rectangle), vc.Rectangle.ToString() + " и " + vc2.Rectangle.ToString());
                         }
                     }
@@ -277,9 +273,9 @@ namespace Fantasy_Kingdoms_Battle
                     //}
                     if (Visible)
                     {
-                        if (!Rectangle.Contains(vc.Rectangle))
-                            vc.ShowBorder = true;
-                        //Debug.Assert(Rectangle.Contains(vc.Rectangle), Rectangle.ToString() + " и " + vc.Rectangle.ToString());
+                        //if (!Rectangle.Contains(vc.Rectangle))
+                        //    vc.ShowBorder = true;
+                        Debug.Assert(Rectangle.Contains(vc.Rectangle), Rectangle.ToString() + " и " + vc.Rectangle.ToString());
                     }
                 }
             }
@@ -347,6 +343,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(vc != null);
             Debug.Assert(vc != this);
+            Debug.Assert(Controls.IndexOf(vc) == -1);
 
             Controls.Add(vc);
             if (vc.Parent == null)

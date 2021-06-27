@@ -108,7 +108,6 @@
     <Compile Include="Source\VisualControls\VCSeparator.cs" />
     <Compile Include="Source\VisualControls\VCText.cs" />
     <Compile Include="Source\VisualControls\VCWindowCaption.cs" />
-    <Compile Include="Source\VisualControls\VisualLayer.cs" />
     <Compile Include="Specialization.cs" />
     <Compile Include="StateCreature.cs" />
     <Compile Include="TypeEconomicConstruction.cs" />

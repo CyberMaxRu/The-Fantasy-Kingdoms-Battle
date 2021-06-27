@@ -12,13 +12,12 @@ namespace Fantasy_Kingdoms_Battle
     internal abstract class CustomWindow : VisualControl
     {
         private DispatcherFrame frame;
-        private VisualLayer layer;
         private DialogResult dialogResult;
         private Point shiftControls;
 
         public CustomWindow()
         {
-            layer = Program.formMain.AddLayer(this, ToString());
+            Program.formMain.AddLayer(this, ToString());
             shiftControls = Program.formMain.ShiftControls;
         }
 
@@ -60,7 +59,7 @@ namespace Fantasy_Kingdoms_Battle
             BeforeClose();
 
             dialogResult = dr;
-            Program.formMain.RemoveLayer(layer);
+            Program.formMain.RemoveLayer(this);
             if (frame != null)
                 frame.Continue = false;
 

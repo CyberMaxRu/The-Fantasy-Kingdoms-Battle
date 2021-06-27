@@ -89,14 +89,12 @@ namespace Fantasy_Kingdoms_Battle
         internal Bitmap bmpBackground;// Фон кадра
 
         // Первый слой (главное меню)
-        private readonly VisualLayer layerMainMenu;
-        private readonly VisualControl vcMainMenu;
+        private readonly VisualControl layerMainMenu;
         private readonly VCBitmap bmpPreparedToolbar;
         private readonly VCBitmap bitmapLogo;
         private readonly VCBitmap bitmapNameGame;
         private readonly VCBitmap bitmapMenu;
         private readonly VCLabel labelMenuNameObject;
-        private readonly VisualControl vcBackMainMenu;
         private readonly VCLabel labelVersion;
 
         private PlayerObject selectedPlayerObject;
@@ -241,9 +239,9 @@ namespace Fantasy_Kingdoms_Battle
         private bool inDrawFrame = false;
         private bool needRedrawFrame;
 
-        private readonly List<VisualLayer> Layers;
-        private readonly VisualLayer layerGame;
-        private VisualLayer currentLayer;
+        private readonly List<VisualControl> Layers;
+        private readonly VisualControl layerGame;
+        private VisualControl currentLayer;
 
         private VCFormPage currentPage;
         private readonly VisualControl panelEmptyInfo;
@@ -487,23 +485,25 @@ namespace Fantasy_Kingdoms_Battle
                 SetStage("Строим замок");
 
                 // Создаем слой игрового поля
-                Layers = new List<VisualLayer>();
-                layerMainMenu = new VisualLayer("MainMenu");
+                Layers = new List<VisualControl>();
+                layerMainMenu = new VisualControl();
                 Layers.Add(layerMainMenu);
-                layerGame = new VisualLayer("Game");
+
+                labelVersion = new VCLabel(layerMainMenu, 0, 0, fontSmallC, Color.White, fontSmall.MaxHeightSymbol,
+                    $"Сборка {VERSION} от {DATE_VERSION}");
+                labelVersion.Width = labelVersion.Font.WidthText(labelVersion.Text);
+
+                // Лого
+                bitmapNameGame = new VCBitmap(layerMainMenu, 0, 0, LoadBitmap("NameGame.png"));
+                bitmapLogo = new VCBitmap(layerMainMenu, 0, 0, LoadBitmap("Logo.png"));
+
+                // Слой игры
+                layerGame = new VisualControl();
                 Layers.Add(layerGame);
                 currentLayer = layerGame;
 
-                vcBackMainMenu = new VisualControl(layerGame);
-                vcBackMainMenu.Visible = false;
-                labelVersion = new VCLabel(vcBackMainMenu, 0, 0, fontSmallC, Color.White, fontSmall.MaxHeightSymbol,
-                    "Сборка " + VERSION + " от " + DATE_VERSION);
-                labelVersion.Width = labelVersion.Font.WidthText(labelVersion.Text);
-                vcBackMainMenu.Width = labelVersion.Width;
-                vcBackMainMenu.Height = labelVersion.Height;
-
                 // Верхняя панель
-                TopControl = new VisualControl(layerGame);
+                TopControl = new VisualControl(layerGame, 0, 0);
 
                 // Создаем панели игроков в верхней панели
                 panelPlayers = new VisualControl(TopControl, 0, Config.GridSize);
@@ -523,21 +523,21 @@ namespace Fantasy_Kingdoms_Battle
 
                 // Тулбар. Его располагаем прямо на слое, чтобы MainControl рисовал поверх него
                 // Это позволяет полосе оставаться видимой при скрытии MainControl на время хода компьютерных игроков
-                bmpPreparedToolbar = new VCBitmap(layerGame);
+                bmpPreparedToolbar = new VCBitmap(layerGame, 0, 0, null);
 
                 // Главное игровое поле
-                MainControl = new VisualControl(layerGame);
+                MainControl = new VisualControl(layerGame, 0, 0);
                 MainControl.Click += MainControl_Click;
 
                 // Метки с информацией о Королевстве
-                labelDay = new VCToolLabel(MainControl, Config.GridSize, 6, "", GUI_16_DAY);
+                labelDay = new VCToolLabel(bmpPreparedToolbar, Config.GridSize, 6, "", GUI_16_DAY);
                 labelDay.Click += LabelDay_Click;
                 labelDay.ShowHint += LabelDay_ShowHint;
                 labelDay.Width = 64;
-                labelGold = new VCToolLabel(MainControl, labelDay.NextLeft(), labelDay.ShiftY, "", GUI_16_GOLD);
+                labelGold = new VCToolLabel(bmpPreparedToolbar, labelDay.NextLeft(), labelDay.ShiftY, "", GUI_16_GOLD);
                 labelGold.ShowHint += LabelGold_ShowHint;
                 labelGold.Width = 168;
-                labelGreatness = new VCToolLabel(MainControl, labelGold.NextLeft(), labelDay.ShiftY, "", GUI_16_GREATNESS);
+                labelGreatness = new VCToolLabel(bmpPreparedToolbar, labelGold.NextLeft(), labelDay.ShiftY, "", GUI_16_GREATNESS);
                 labelGreatness.ShowHint += LabelGreatness_ShowHint;
                 labelGreatness.Width = 112;
 
@@ -549,7 +549,7 @@ namespace Fantasy_Kingdoms_Battle
                 btnInGameMenu.UseFilter = false;
                 btnInGameMenu.HighlightUnderMouse = true;
                 btnEndTurn = CreateButton(TopControl, ilGui, GUI_HOURGLASS, 0, Config.GridSize, BtnEndTurn_Click, BtnEndTurn_MouseHover);
-                panelLairWithFlags = new VisualControl(MainControl, 0, bmpToolbar.Height + Config.GridSize);
+                panelLairWithFlags = new VisualControl(MainControl, 0, 0);
                 panelLairWithFlags.Width = Program.formMain.bmpBorderForIcon.Width;
                 panelLairWithFlags.Height = Program.formMain.bmpBorderForIcon.Height;
 
@@ -563,12 +563,6 @@ namespace Fantasy_Kingdoms_Battle
                 labelLayers.Width = 300;
                 vcDebugInfo.ApplyMaxSize();
                 vcDebugInfo.ArrangeControls();
-
-                // Лого
-                vcMainMenu = new VisualControl(layerMainMenu);
-                bitmapLogo = new VCBitmap(vcMainMenu, 0, 0, LoadBitmap("Logo.png"));
-
-                bitmapNameGame = new VCBitmap(vcMainMenu, 0, 0, LoadBitmap("NameGame.png"));
 
                 // Создаем меню
                 bitmapMenu = new VCBitmap(MainControl, 0, 0, LoadBitmap("Menu.png"));
@@ -667,18 +661,24 @@ namespace Fantasy_Kingdoms_Battle
 
                 // Все контролы созданы, устанавливаем размеры bitmapMenu
                 MainControl.Width = panelCombatHeroes.ShiftX + panelCombatHeroes.Width + Config.GridSize;
+                TopControl.ShiftY = 0;
+                bmpPreparedToolbar.Bitmap = PrepareToolbar();
+                bmpPreparedToolbar.ShiftY = TopControl.NextTop();
+                MainControl.ShiftY = bmpPreparedToolbar.NextTop();
+
                 MainControl.Height = pageGuilds.NextTop() + maxHeightControls + Config.GridSize;
                 TopControl.Width = MainControl.Width;
 
                 // Теперь когда известна ширина окна, можно создавать картинку тулбара
-                bmpPreparedToolbar.Bitmap = PrepareToolbar();
                 labelNamePlayer.Height = bmpPreparedToolbar.Height;
                 panelPlayers.ShiftX = (TopControl.Width - panelPlayers.Width) / 2;
                 panelCombatHeroes.Height = maxHeightPages - bitmapMenu.Height - Config.GridSize;
 
-                sizeGamespace = new Size(MainControl.Width, TopControl.Height + MainControl.NextTop());
+                sizeGamespace = new Size(MainControl.Width, MainControl.ShiftY + MainControl.Height);
                 Width = Width - ClientSize.Width + sizeGamespace.Width;
                 Height = Height - ClientSize.Height + sizeGamespace.Height;
+                layerGame.Width = sizeGamespace.Width;
+                layerGame.Height = sizeGamespace.Height;
 
                 bitmapMenu.ShiftX = MainControl.Width - bitmapMenu.Width;
                 bitmapMenu.ShiftY = MainControl.Height - bitmapMenu.Height;
@@ -691,17 +691,22 @@ namespace Fantasy_Kingdoms_Battle
 
                 btnEndTurn.ShiftX = btnEndTurn.Parent.Width - btnEndTurn.Width - Config.GridSize;
 
+                TopControl.ShiftX = (ClientSize.Width - TopControl.Width) / 2;
+                bmpPreparedToolbar.ShiftX = 0;
+                MainControl.ShiftX = 0;
+
                 //pageGuilds.ShiftX + maxWidthPages + Config.GridSize;
 
-                ArrangeControls();
-
-                bitmapNameGame.ShiftY = bmpPreparedToolbar.Top + bmpPreparedToolbar.Height + Config.GridSize;
+                bitmapNameGame.ShiftY = bmpPreparedToolbar.ShiftY + bmpPreparedToolbar.Height + Config.GridSize;
                 bitmapNameGame.ShiftX = (Width - bitmapNameGame.Width) / 2;
                 bitmapLogo.ShiftY = bitmapNameGame.NextTop() + (Config.GridSize * 3);
                 bitmapLogo.ShiftX = (Width - bitmapLogo.Width) / 2;
-                vcMainMenu.Width = Width;
-                vcMainMenu.Height = Height;
-                vcMainMenu.ArrangeControls();
+                labelVersion.ShiftX = sizeGamespace.Width - labelVersion.Width - Config.GridSize;
+                labelVersion.ShiftY = sizeGamespace.Height - labelVersion.Height - Config.GridSize;
+                layerMainMenu.Width = Width;
+                layerMainMenu.Height = Height;
+
+                ArrangeControls();
 
                 EndLobby();
                 
@@ -922,7 +927,8 @@ namespace Fantasy_Kingdoms_Battle
             {
                 // Так как после перестройки экрана контрол оказывается в другом месте,
                 // То во избежание повторного входа в него выходим из него
-                ControlForHintLeave();
+                if (controlWithHint != null)
+                    ControlForHintLeave();
                 //Hide();
                 ApplyFullScreenModeToWindow();
 
@@ -1046,7 +1052,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal VisualLayer AddLayer(VisualControl vc, string name)
+        internal void AddLayer(VisualControl vc, string name)
         {
             Debug.Assert(Layers.Count <= 5);
             Debug.Assert(currentLayer.Controls.Count > 0);
@@ -1057,15 +1063,11 @@ namespace Fantasy_Kingdoms_Battle
             controlClicked?.MouseLeave();
             controlClicked = null;
 
-            VisualLayer vl = new VisualLayer(name);
-            Layers.Add(vl);
-            vl.AddControl(vc);
-            currentLayer = vl;
-
-            return vl;
+            Layers.Add(vc);
+            currentLayer = vc;
         }
 
-        internal void RemoveLayer(VisualLayer vl)
+        internal void RemoveLayer(VisualControl vl)
         {
             Debug.Assert(Layers.Count >= 2);
             Debug.Assert(Layers[Layers.Count - 1] == vl);
@@ -1123,11 +1125,10 @@ namespace Fantasy_Kingdoms_Battle
                 Size = new Size(Width - ClientSize.Width + sizeGamespace.Width, Height - ClientSize.Height + sizeGamespace.Height);
             }
 
-            TopControl.SetPos((ClientSize.Width - TopControl.Width) / 2, ShiftControls.Y);
-            bmpPreparedToolbar.SetPos(ShiftControls.X, TopControl.Top + TopControl.Height + Config.GridSize);
-            MainControl.SetPos(ShiftControls.X, TopControl.Top + TopControl.Height + Config.GridSize);
-            MainControl.ArrangeControls();
-            vcBackMainMenu.SetPos(MainControl.Left + MainControl.Width - vcBackMainMenu.Width - Config.GridSize, MainControl.Top + MainControl.Height - vcBackMainMenu.Height - Config.GridSize);
+            layerMainMenu.SetPos(ShiftControls.X, ShiftControls.Y);
+            layerGame.ArrangeControls();
+            layerMainMenu.SetPos(ShiftControls.X, ShiftControls.Y);
+            layerMainMenu.ArrangeControls();
         }
 
         private void FormMain_KeyDown(object sender, KeyEventArgs e)
@@ -1383,12 +1384,10 @@ namespace Fantasy_Kingdoms_Battle
             ShowDataPlayer();
             ActivatePage(pageGuilds);
 
-            panelPlayers.Visible = true;
-            MainControl.Visible = true;
+            layerMainMenu.Visible = false;
+            layerGame.Visible = true;
             btnInGameMenu.Visible = true;
             btnEndTurn.Visible = true;
-            vcBackMainMenu.Visible = false;
-            vcMainMenu.Visible = false;
 
             lobby.StartTurn();
         }
@@ -1396,12 +1395,11 @@ namespace Fantasy_Kingdoms_Battle
         internal void EndLobby()
         {
             lobby = null;
-            panelPlayers.Visible = false;
-            MainControl.Visible = false;
+
+            layerMainMenu.Visible = true;
+            layerGame.Visible = false;
             btnInGameMenu.Visible = false;
             btnEndTurn.Visible = false;
-            vcBackMainMenu.Visible = true;
-            vcMainMenu.Visible = true;
 
             ShowNamePlayer(Program.formMain.CurrentHumanPlayer.Name);
             //ShowNamePlayer(NAME_PROJECT);
@@ -1530,7 +1528,7 @@ namespace Fantasy_Kingdoms_Battle
             gfxFrame.CompositingMode = CompositingMode.SourceCopy;
             gfxFrame.DrawImageUnscaled(bmpBackground, 0, 0);
 
-            if (MainControl.Visible)
+            if (layerGame.Visible)
             {
                 labelGold.Text = lobby.CurrentPlayer.Gold.ToString() + " (+" + lobby.CurrentPlayer.Income().ToString() + ")";
 
@@ -1546,14 +1544,16 @@ namespace Fantasy_Kingdoms_Battle
             // Рисуем контролы
             gfxFrame.CompositingMode = CompositingMode.SourceOver;
 
-            foreach (VisualLayer vl in Layers)
+            foreach (VisualControl vc in Layers)
             {
-                vl.DrawBackground(gfxFrame);
+                if (vc.Visible)
+                    vc.DrawBackground(gfxFrame);
             }
 
-            foreach (VisualLayer vl in Layers)
+            foreach (VisualControl vc in Layers)
             {
-                vl.Draw(gfxFrame); 
+                if (vc.Visible)
+                    vc.Draw(gfxFrame); 
             }
 
             // Рисуем подсказку поверх всех окон
