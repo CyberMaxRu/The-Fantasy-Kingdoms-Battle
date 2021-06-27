@@ -60,7 +60,6 @@ namespace Fantasy_Kingdoms_Battle
         private VCLabel labelLayers;
         private DateTime startDebugAction;
         private TimeSpan durationDrawFrame;
-        private int playsSelectButton;
 
         // Контролы главного меню
         private Bitmap bmpFrame;// Готовый кадр
@@ -1519,7 +1518,6 @@ namespace Fantasy_Kingdoms_Battle
             if (debugMode)
             {
                 startDebugAction = DateTime.Now;
-                labelLayers.Text = $"Layers: {Layers.Count}; PlaySelectButton: {playsSelectButton}";
             }
 
             // Рисуем фон
@@ -1954,7 +1952,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void PlaySelectButton()
         {
-            playsSelectButton++;
             mpSelectButton.Stop();
             mpSelectButton.Play();
         }
