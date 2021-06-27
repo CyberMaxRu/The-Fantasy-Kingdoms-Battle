@@ -437,10 +437,10 @@ namespace Fantasy_Kingdoms_Battle
             {
                 // Вертикальные линии
                 for (int x = 0; x <= battle.SizeBattlefield.Width; x++)
-                    g.DrawLine(penGrid,ClientControl.Left + topLeftGrid.X + x * sizeTile.Width, Program.formMain.ShiftControls.Y + topLeftGrid.Y, ClientControl.Left + topLeftGrid.X + x * sizeTile.Width, topLeftGrid.Y + battle.SizeBattlefield.Height * sizeTile.Height);
+                    g.DrawLine(penGrid,ClientControl.Left + topLeftGrid.X + x * sizeTile.Width, topLeftGrid.Y, ClientControl.Left + topLeftGrid.X + x * sizeTile.Width, topLeftGrid.Y + battle.SizeBattlefield.Height * sizeTile.Height);
                 // Горизонтальные линии
                 for (int y = 0; y <= battle.SizeBattlefield.Height; y++)
-                    g.DrawLine(penGrid, ClientControl.Left + topLeftGrid.X, Program.formMain.ShiftControls.Y + topLeftGrid.Y + y * sizeTile.Height, ClientControl.Left + topLeftGrid.X + battle.SizeBattlefield.Width * sizeTile.Width, topLeftGrid.Y + y * sizeTile.Height);
+                    g.DrawLine(penGrid, ClientControl.Left + topLeftGrid.X, topLeftGrid.Y + y * sizeTile.Height, ClientControl.Left + topLeftGrid.X + battle.SizeBattlefield.Width * sizeTile.Width, topLeftGrid.Y + y * sizeTile.Height);
             }
 
             // Рисуем полоски жизней героев игроков
@@ -485,7 +485,7 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(coordIconHero.Y + shift.Y < Height);
 
                 //cellHeroes[y, x].DrawToBitmap(bmpUnit, new Rectangle(0, 0, bmpUnit.Width, bmpUnit.Height));
-                g.DrawImageUnscaled(hero.BmpIcon, Program.formMain.ShiftControls.X + coordIconHero.X + shift.X, Program.formMain.ShiftControls.Y + coordIconHero.Y + shift.Y);
+                g.DrawImageUnscaled(hero.BmpIcon, coordIconHero.X + shift.X, coordIconHero.Y + shift.Y);
 
                 // Рисуем стрелки атаки
                 if ((hero.Target != null) || (hero.LastTarget != default) || (hero.DestinationForMove != null))

@@ -13,12 +13,10 @@ namespace Fantasy_Kingdoms_Battle
     {
         private DispatcherFrame frame;
         private DialogResult dialogResult;
-        private Point shiftControls;
 
         public CustomWindow()
         {
             Program.formMain.AddLayer(this, ToString());
-            shiftControls = Program.formMain.ShiftControls;
         }
 
         protected VCButton AcceptButton { get; set; }
@@ -36,17 +34,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal virtual void AdjustSize()
         {
-        }
-
-        internal override void Draw(Graphics g)
-        {
-            if (!shiftControls.Equals(Program.formMain.ShiftControls))
-            {
-                shiftControls = Program.formMain.ShiftControls;
-                ToCentre();
-            }
-
-            base.Draw(g);
         }
 
         protected virtual void BeforeClose()
@@ -68,7 +55,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void ToCentre()
         {
-            SetPos(Program.formMain.ShiftControls.X + (Program.formMain.sizeGamespace.Width - Width) / 2, Program.formMain.ShiftControls.Y + (Program.formMain.sizeGamespace.Height - Height - 13) / 2);
+            SetPos((Program.formMain.sizeGamespace.Width - Width) / 2, (Program.formMain.sizeGamespace.Height - Height - 13) / 2);
             ArrangeControls();
         }
 

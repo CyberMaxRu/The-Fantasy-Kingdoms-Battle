@@ -62,9 +62,6 @@ namespace Fantasy_Kingdoms_Battle
         private TimeSpan durationDrawFrame;
 
         // Контролы главного меню
-        private Bitmap bmpFrame;// Готовый кадр
-        private Graphics gfxFrame;// Graphics кадра, чтобы контролы работали сразу с ним
-
         private readonly VisualControl TopControl;
         private readonly VisualControl MainControl;
 
@@ -85,8 +82,12 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VisualControl panelLairWithFlags;
         private readonly List<VCButtonTargetLair> listBtnTargetLair = new List<VCButtonTargetLair>();
 
-        // Фон
-        internal Bitmap bmpBackground;// Фон кадра
+        // Рендеринг
+        private Bitmap bmpRenderClientArea;// Фон клиентской области, на который налагается кадр
+        private Bitmap bmpRenderBackgroundFrame;// Фон рисунка, на котором рисуются контролы
+        private Bitmap bmpRenderFrame;// Рисунок, на котором рисуются контролы (без учета полноэкранного режима)
+        private Graphics gfxRenderFrame;// Graphics кадра
+        private Graphics gfxRenderClientArea;// Graphics клиентской области
 
         // Первый слой (главное меню)
         private readonly VisualControl layerMainMenu;
@@ -239,9 +240,8 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly M2Font fontSmallBC;
         internal readonly M2Font fontParagraph;
 
-        internal Size sizeGamespace { get; set; }
-        internal Point ShiftControls { get; set; }
-
+        internal Size sizeGamespace { get; }
+        private Point topLeftFrame;
         private bool inDrawFrame = false;
         private bool needRedrawFrame;
 
@@ -737,7 +737,8 @@ namespace Fantasy_Kingdoms_Battle
                 bmpMainMenu.ShiftX = sizeGamespace.Width - bmpMainMenu.Width - Config.GridSize;
                 bmpMainMenu.ShiftY = (sizeGamespace.Height - bmpMainMenu.Height) / 2 - (Config.GridSize * 1);
 
-                ArrangeControls();
+                layerMainMenu.ArrangeControls();
+                layerGame.ArrangeControls();
 
                 EndLobby();
                 
@@ -934,8 +935,21 @@ namespace Fantasy_Kingdoms_Battle
             if (axWindowsMediaPlayer1 != null)
                 axWindowsMediaPlayer1.Size = ClientSize;
 
-            if ((bmpFrame == null) || !ClientSize.Equals(bmpFrame.Size))
-                ArrangeControls();
+            if ((bmpRenderFrame == null) || !ClientSize.Equals(bmpRenderFrame.Size))
+            {
+                if (Settings.FullScreenMode)
+                {
+                    topLeftFrame = new Point((ClientSize.Width - sizeGamespace.Width) / 2, (ClientSize.Height - sizeGamespace.Height) / 2);
+
+                    Debug.Assert(topLeftFrame.X >= 0);
+                    Debug.Assert(topLeftFrame.Y >= 0);
+                }
+                else
+                {
+                    topLeftFrame = new Point(0, 0);
+                    Size = new Size(Width - ClientSize.Width + sizeGamespace.Width, Height - ClientSize.Height + sizeGamespace.Height);
+                }
+            }
 
             if (gameStarted)
                 ShowFrame(true);
@@ -961,36 +975,6 @@ namespace Fantasy_Kingdoms_Battle
                 //Application.DoEvents();
                 ValidateFrame();
                 //Show();
-            }
-        }
-
-        private void PrepareBackground()
-        {
-            if ((bmpBackground == null) || !bmpBackground.Size.Equals(ClientSize))
-            {
-                // Переформировываем картинку фона
-                bmpBackground?.Dispose();
-                bmpBackground = GuiUtils.MakeBackground(ClientSize);
-
-                if (Settings.FullScreenMode)
-                {
-                    Bitmap border = bbGamespace.DrawBorder(sizeGamespace.Width + 14, sizeGamespace.Height + 14);
-                    Graphics gbg = Graphics.FromImage(bmpBackground);
-                    gbg.DrawImageUnscaled(border, TopControl.Left - 7, TopControl.Top - 7);
-
-                    border.Dispose();
-                    gbg.Dispose();
-                }
-
-                // Переформировываем картинку кадра
-                if ((bmpFrame == null) || (bmpFrame.Width != ClientSize.Width) || (bmpFrame.Height != ClientSize.Height))
-                {
-                    bmpFrame?.Dispose();
-                    bmpFrame = new Bitmap(ClientSize.Width, ClientSize.Height);
-
-                    gfxFrame?.Dispose();
-                    gfxFrame = Graphics.FromImage(bmpFrame);
-                }
             }
         }
 
@@ -1127,28 +1111,6 @@ namespace Fantasy_Kingdoms_Battle
         internal void LayerChanged()
         {
             ShowFrame(true);
-        }
-
-        private void ArrangeControls()
-        {
-            ShiftControls = new Point(0, 0);
-
-            if (Settings.FullScreenMode)
-            {
-                ShiftControls = new Point((ClientSize.Width - sizeGamespace.Width) / 2, (ClientSize.Height - sizeGamespace.Height) / 2);
-
-                Debug.Assert(ShiftControls.X >= 0);
-                Debug.Assert(ShiftControls.Y >= 0);
-            }
-            else
-            {
-                Size = new Size(Width - ClientSize.Width + sizeGamespace.Width, Height - ClientSize.Height + sizeGamespace.Height);
-            }
-
-            layerMainMenu.SetPos(ShiftControls.X, ShiftControls.Y);
-            layerGame.ArrangeControls();
-            layerMainMenu.SetPos(ShiftControls.X, ShiftControls.Y);
-            layerMainMenu.ArrangeControls();
         }
 
         private void FormMain_KeyDown(object sender, KeyEventArgs e)
@@ -1408,8 +1370,9 @@ namespace Fantasy_Kingdoms_Battle
             layerGame.Visible = true;
             btnInGameMenu.Visible = true;
             btnEndTurn.Visible = true;
+            currentLayer = layerGame;
 
-            lobby.StartTurn();
+            //lobby.StartTurn();
         }
 
         internal void EndLobby()
@@ -1420,6 +1383,7 @@ namespace Fantasy_Kingdoms_Battle
             layerGame.Visible = false;
             btnInGameMenu.Visible = false;
             btnEndTurn.Visible = false;
+            currentLayer = layerMainMenu;
 
             ShowNamePlayer(Program.formMain.CurrentHumanPlayer.Name);
             //ShowNamePlayer(NAME_PROJECT);
@@ -1502,17 +1466,17 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            Debug.Assert(ClientSize.Equals(bmpFrame.Size));
+            Debug.Assert(ClientSize.Equals(bmpRenderClientArea.Size));
 
             base.OnPaint(e);
-
+            
             if (needRepaintFrame)
             {
                 DrawFrame();
                 needRepaintFrame = false;
             }
 
-            e.Graphics.DrawImage(bmpFrame, e.ClipRectangle, e.ClipRectangle, GraphicsUnit.Pixel);
+            e.Graphics.DrawImage(bmpRenderClientArea, e.ClipRectangle, e.ClipRectangle, GraphicsUnit.Pixel);
         }
 
         internal void ShowFrame(bool force)
@@ -1541,13 +1505,16 @@ namespace Fantasy_Kingdoms_Battle
                 startDebugAction = DateTime.Now;
             }
 
-            // Рисуем фон
-            if ((bmpBackground == null) || !bmpBackground.Size.Equals(ClientSize))
+            // Готовим фон, если его надо поменять
+            if ((bmpRenderClientArea == null) || (bmpRenderClientArea == null) || !bmpRenderFrame.Size.Equals(sizeGamespace) || !bmpRenderClientArea.Size.Equals(ClientSize))
                 PrepareBackground();
 
-            gfxFrame.CompositingMode = CompositingMode.SourceCopy;
-            gfxFrame.DrawImageUnscaled(bmpBackground, 0, 0);
+            // Рисуем фон
+            gfxRenderFrame.CompositingMode = CompositingMode.SourceCopy;
+            gfxRenderFrame.DrawImageUnscaled(bmpRenderBackgroundFrame, 0, 0);
+            gfxRenderFrame.CompositingMode = CompositingMode.SourceOver;
 
+            //
             if (layerGame.Visible)
             {
                 labelGold.Text = lobby.CurrentPlayer.Gold.ToString() + " (+" + lobby.CurrentPlayer.Income().ToString() + ")";
@@ -1562,36 +1529,75 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Рисуем контролы
-            gfxFrame.CompositingMode = CompositingMode.SourceOver;
+            gfxRenderFrame.CompositingMode = CompositingMode.SourceOver;
 
             foreach (VisualControl vc in Layers)
             {
                 if (vc.Visible)
-                    vc.DrawBackground(gfxFrame);
+                    vc.DrawBackground(gfxRenderFrame);
             }
 
             foreach (VisualControl vc in Layers)
             {
                 if (vc.Visible)
-                    vc.Draw(gfxFrame); 
+                    vc.Draw(gfxRenderFrame); 
             }
 
             // Рисуем подсказку поверх всех окон
             if (formHint.Visible)
-                formHint.Draw(gfxFrame);
+                formHint.Draw(gfxRenderFrame);
 
             if (debugMode)
             {
                 if (controlWithHint != null)
-                    gfxFrame.DrawRectangle(penDebugBorder, controlWithHint.Rectangle);
+                    gfxRenderFrame.DrawRectangle(penDebugBorder, controlWithHint.Rectangle);
 
                 durationDrawFrame = DateTime.Now - startDebugAction;
                 labelTimeDrawFrame.Text = $"Draw frame: {durationDrawFrame.TotalMilliseconds}";
-                vcDebugInfo.Draw(gfxFrame);
+                vcDebugInfo.Draw(gfxRenderFrame);
             }
+
+            gfxRenderClientArea.CompositingMode = CompositingMode.SourceCopy;
+            gfxRenderClientArea.DrawImage(bmpRenderFrame, topLeftFrame.X, topLeftFrame.Y, sizeGamespace.Width, sizeGamespace.Height);
 
             //
             inDrawFrame = false;
+
+            void PrepareBackground()
+            {
+                // Переформировываем картинку фона клиентской области
+                if ((bmpRenderClientArea == null) || !bmpRenderClientArea.Size.Equals(GuiUtils.MakeBackground(ClientSize)))
+                {
+                    bmpRenderClientArea?.Dispose();
+
+                    if (Settings.FullScreenMode)
+                    {
+                        bmpRenderClientArea = GuiUtils.MakeBackground(ClientSize);
+                        Bitmap border = bbGamespace.DrawBorder(sizeGamespace.Width + 14, sizeGamespace.Height + 14);
+                        Graphics g = Graphics.FromImage(bmpRenderClientArea);
+                        g.DrawImageUnscaled(border, topLeftFrame.X - 7, topLeftFrame.Y - 7);
+                        border.Dispose();
+                        g.Dispose();
+                    }
+                    else
+                        bmpRenderClientArea = GuiUtils.MakeBackground(sizeGamespace);
+
+                    gfxRenderClientArea?.Dispose();
+                    gfxRenderClientArea = Graphics.FromImage(bmpRenderClientArea);
+                }
+
+                // Переформировываем картинку кадра
+                if ((bmpRenderFrame == null) || !bmpRenderFrame.Equals(GuiUtils.MakeBackground(sizeGamespace)))
+                {
+                    bmpRenderFrame?.Dispose();
+                    bmpRenderFrame = new Bitmap(sizeGamespace.Width, sizeGamespace.Height);
+
+                    gfxRenderFrame?.Dispose();
+                    gfxRenderFrame = Graphics.FromImage(bmpRenderFrame);
+
+                    bmpRenderBackgroundFrame = GuiUtils.MakeBackground(sizeGamespace);
+                }
+            }
         }
 
         internal VCIconButton CreateButton(VisualControl parent, BitmapList bitmapList, int imageIndex, int left, int top, EventHandler click, EventHandler showHint)
@@ -1687,6 +1693,8 @@ namespace Fantasy_Kingdoms_Battle
         private void UpdateMousePos()
         {
             mousePos = PointToClient(Cursor.Position);
+            mousePos.X -= topLeftFrame.X;
+            mousePos.Y -= topLeftFrame.Y;
         }
 
         private void TreatMouseMove(bool leftDown)
