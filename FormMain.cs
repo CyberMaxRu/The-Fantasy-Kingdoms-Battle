@@ -64,7 +64,6 @@ namespace Fantasy_Kingdoms_Battle
         // Контролы главного меню
         private Bitmap bmpFrame;// Готовый кадр
         private Graphics gfxFrame;// Graphics кадра, чтобы контролы работали сразу с ним
-        internal Bitmap bmpBackground;// Фон кадра
 
         private readonly VisualControl TopControl;
         private readonly VisualControl MainControl;
@@ -87,6 +86,12 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VisualControl panelLairWithFlags;
         private readonly List<VCButtonTargetLair> listBtnTargetLair = new List<VCButtonTargetLair>();
 
+        // Фон
+        internal Bitmap bmpBackground;// Фон кадра
+
+        // Первый слой (главное меню)
+        private readonly VisualLayer layerMainMenu;
+        private readonly VisualControl vcMainMenu;
         private readonly VCBitmap bitmapLogo;
         private readonly VCBitmap bitmapNameGame;
         private readonly VCBitmap bitmapMenu;
@@ -237,8 +242,6 @@ namespace Fantasy_Kingdoms_Battle
         private bool needRedrawFrame;
 
         private readonly List<VisualLayer> Layers;
-        private readonly VisualLayer layerMainMenu;
-        private readonly VisualControl vcMainMenu;
         private readonly VisualLayer layerGame;
         private VisualLayer currentLayer;
 
