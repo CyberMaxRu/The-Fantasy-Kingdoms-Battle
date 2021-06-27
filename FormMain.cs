@@ -96,7 +96,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCBitmap bitmapMenu;
         private readonly VCLabel labelMenuNameObject;
         private readonly VCLabel labelVersion;
-        private readonly VCBitmap bmpMenu;
+        private readonly VCBitmap bmpMainMenu;
         private readonly VCButton btnTournament;
         private readonly VCButton btnPlayerPreferences;
         private readonly VCButton btnGamePreferences;
@@ -229,7 +229,6 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly Bitmap bmpBandStateCreature;
         internal readonly Bitmap bmpBandQuest;
         internal readonly Bitmap bmpMenuInGame;
-        internal readonly Bitmap bmpMainMenu;
         internal readonly M2Font fontSmall;
         internal readonly M2Font fontSmallC;
         internal readonly M2Font fontMedCaptionC;
@@ -449,7 +448,6 @@ namespace Fantasy_Kingdoms_Battle
                 bmpBandStateCreature = LoadBitmap("BandStateCreature.png");
                 bmpBandQuest = LoadBitmap("BandQuest.png");
                 bmpMenuInGame = LoadBitmap("MenuInGame.png");
-                bmpMainMenu = LoadBitmap("MenuMain.png");
 
                 // Делаем рамки для союзников и врагов
                 bmpBorderForIconAlly = new Bitmap(bmpBorderForIcon);
@@ -505,26 +503,26 @@ namespace Fantasy_Kingdoms_Battle
                 bitmapLogo = new VCBitmap(layerMainMenu, 0, 0, LoadBitmap("Logo.png"));
 
                 // Главное меню
-                bmpMenu = new VCBitmap(layerMainMenu, 0, 0, bmpMainMenu);
+                bmpMainMenu = new VCBitmap(layerMainMenu, 0, 0, LoadBitmap("MenuMain.png"));
 
-                btnTournament = new VCButton(bmpMenu, 80, 88, "Турнир");
-                btnTournament.Width = bmpMenu.Width - 80 - 80;
+                btnTournament = new VCButton(bmpMainMenu, 80, 88, "Турнир");
+                btnTournament.Width = bmpMainMenu.Width - 80 - 80;
                 btnTournament.Click += BtnTournament_Click;
 
-                btnExitToWindows = new VCButton(bmpMenu, 80, bmpMenu.Height - 96, "Выход в Windows");
-                btnExitToWindows.Width = bmpMenu.Width - 80 - 80;
+                btnExitToWindows = new VCButton(bmpMainMenu, 80, bmpMainMenu.Height - 96, "Выход в Windows");
+                btnExitToWindows.Width = bmpMainMenu.Width - 80 - 80;
                 btnExitToWindows.Click += BtnExitToWindows_Click;
 
-                btnAboutProgram = new VCButton(bmpMenu, 80, btnExitToWindows.ShiftY - 40, "О программе");
-                btnAboutProgram.Width = bmpMenu.Width - 80 - 80;
+                btnAboutProgram = new VCButton(bmpMainMenu, 80, btnExitToWindows.ShiftY - 40, "О программе");
+                btnAboutProgram.Width = bmpMainMenu.Width - 80 - 80;
                 btnAboutProgram.Click += BtnAboutProgram_Click;
 
-                btnGamePreferences = new VCButton(bmpMenu, 80, btnAboutProgram.ShiftY - 40, "Настройки игры");
-                btnGamePreferences.Width = bmpMenu.Width - 80 - 80;
+                btnGamePreferences = new VCButton(bmpMainMenu, 80, btnAboutProgram.ShiftY - 40, "Настройки игры");
+                btnGamePreferences.Width = bmpMainMenu.Width - 80 - 80;
                 btnGamePreferences.Click += BtnPreferences_Click;
 
-                btnPlayerPreferences = new VCButton(bmpMenu, 80, btnGamePreferences.ShiftY - 40, "Настройки игрока");
-                btnPlayerPreferences.Width = bmpMenu.Width - 80 - 80;
+                btnPlayerPreferences = new VCButton(bmpMainMenu, 80, btnGamePreferences.ShiftY - 40, "Настройки игрока");
+                btnPlayerPreferences.Width = bmpMainMenu.Width - 80 - 80;
                 btnPlayerPreferences.Click += BtnPlayerPreferences_Click;
 
 
@@ -735,8 +733,8 @@ namespace Fantasy_Kingdoms_Battle
                 bitmapNameGame.ShiftY = (bitmapLogo.ShiftY - bitmapNameGame.Height) / 2;
                 labelVersion.ShiftX = sizeGamespace.Width - labelVersion.Width - Config.GridSize;
                 labelVersion.ShiftY = sizeGamespace.Height - labelVersion.Height - Config.GridSize;
-                bmpMenu.ShiftX = sizeGamespace.Width - bmpMenu.Width - Config.GridSize;
-                bmpMenu.ShiftY = (sizeGamespace.Height - bmpMenu.Height) / 2 - (Config.GridSize * 1);
+                bmpMainMenu.ShiftX = sizeGamespace.Width - bmpMainMenu.Width - Config.GridSize;
+                bmpMainMenu.ShiftY = (sizeGamespace.Height - bmpMainMenu.Height) / 2 - (Config.GridSize * 1);
 
                 ArrangeControls();
 
