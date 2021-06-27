@@ -74,7 +74,6 @@ namespace Fantasy_Kingdoms_Battle
 
         private readonly VisualControl panelPlayers;// Панель, на которой находятся панели игроков лобби
 
-        private readonly VCBitmap bmpPreparedToolbar;
         private readonly VCToolLabel labelDay;
         private readonly VCToolLabel labelGold;
         private readonly VCToolLabel labelGreatness;
@@ -92,6 +91,7 @@ namespace Fantasy_Kingdoms_Battle
         // Первый слой (главное меню)
         private readonly VisualLayer layerMainMenu;
         private readonly VisualControl vcMainMenu;
+        private readonly VCBitmap bmpPreparedToolbar;
         private readonly VCBitmap bitmapLogo;
         private readonly VCBitmap bitmapNameGame;
         private readonly VCBitmap bitmapMenu;
