@@ -528,7 +528,6 @@ namespace Fantasy_Kingdoms_Battle
 
                 // Слой игры
                 layerGame = new VisualControl();
-                Layers.Add(layerGame);
 
                 // Создаем панели игроков
                 panelPlayers = new VisualControl(layerGame, 0, Config.GridSize);
@@ -729,8 +728,6 @@ namespace Fantasy_Kingdoms_Battle
                 layerMainMenu.ArrangeControls();
                 layerGame.ArrangeControls();
 
-                EndLobby();
-                
                 SetStage("Прибираем после строителей");
 
                 //
@@ -1060,9 +1057,18 @@ namespace Fantasy_Kingdoms_Battle
             currentLayer = vc;
         }
 
+        internal void ExchangeLayer(VisualControl oldLayer, VisualControl newLayer)
+        {
+            Debug.Assert(Layers.Count == 1);
+            Debug.Assert(Layers[0] == oldLayer);
+            Debug.Assert(currentLayer == oldLayer);
+            Layers[0] = newLayer;
+            currentLayer = newLayer;
+        }
+
         internal void RemoveLayer(VisualControl vl)
         {
-            Debug.Assert(Layers.Count >= 2);
+            Debug.Assert(Layers.Count > 1);
             Debug.Assert(Layers[Layers.Count - 1] == vl);
 
             Layers.Remove(vl);
@@ -1136,6 +1142,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (lobby.CurrentPlayer.GetTypePlayer() == TypePlayer.Human)
                 {
+                    btnEndTurn.Visible = true;
                     labelDay.Visible = true;
                     labelGold.Visible = true;
                     labelGreatness.Visible = true;
@@ -1350,6 +1357,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void StartNewLobby()
         {
+            Debug.Assert(lobby == null);
+
             lobby = new Lobby(Config.TypeLobbies[0]);
 
             for (int i = 0; i < panelPlayers.Controls.Count; i++)
@@ -1362,27 +1371,17 @@ namespace Fantasy_Kingdoms_Battle
             ShowDataPlayer();
             ActivatePage(pageGuilds);
 
-            layerMainMenu.Visible = false;
-            layerGame.Visible = true;
-            btnInGameMenu.Visible = true;
-            btnEndTurn.Visible = true;
-            currentLayer = layerGame;
+            ExchangeLayer(layerMainMenu, layerGame);
 
             //lobby.StartTurn();
         }
 
         internal void EndLobby()
         {
+            Debug.Assert(lobby != null);
             lobby = null;
 
-            layerMainMenu.Visible = true;
-            layerGame.Visible = false;
-            btnInGameMenu.Visible = false;
-            btnEndTurn.Visible = false;
-            currentLayer = layerMainMenu;
-
-            ShowNamePlayer(Program.formMain.CurrentHumanPlayer.Name);
-            //ShowNamePlayer(NAME_PROJECT);
+            ExchangeLayer(layerGame, layerMainMenu);
         }
 
         internal void SetNeedRedrawFrame()
@@ -1511,7 +1510,7 @@ namespace Fantasy_Kingdoms_Battle
             gfxRenderFrame.CompositingMode = CompositingMode.SourceOver;
 
             //
-            if (layerGame.Visible && lobby.CurrentPlayer != null)
+            if ((Layers[0] == layerGame) && (lobby.CurrentPlayer != null))
             {
                 labelGold.Text = lobby.CurrentPlayer.Gold.ToString() + " (+" + lobby.CurrentPlayer.Income().ToString() + ")";
 
@@ -1642,7 +1641,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.OnKeyUp(e);
 
-            if ((e.KeyCode == Keys.Escape) && (Layers.Count == 2))
+            if ((e.KeyCode == Keys.Escape) && (currentLayer == layerGame))
             {
                 ShowInGameMenu();
             }
