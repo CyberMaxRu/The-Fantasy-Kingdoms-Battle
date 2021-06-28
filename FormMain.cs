@@ -1136,11 +1136,18 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (lobby.CurrentPlayer.GetTypePlayer() == TypePlayer.Human)
                 {
+                    labelDay.Visible = true;
+                    labelGold.Visible = true;
+                    labelGreatness.Visible = true;
                     MainControl.Visible = true;
                     ShowDataPlayer();
                 }
                 else
                 {
+                    btnEndTurn.Visible = false;
+                    labelDay.Visible = false;
+                    labelGold.Visible = false;
+                    labelGreatness.Visible = false;
                     MainControl.Visible = false;
                 }
 
