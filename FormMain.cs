@@ -922,7 +922,7 @@ namespace Fantasy_Kingdoms_Battle
             if (axWindowsMediaPlayer1 != null)
                 axWindowsMediaPlayer1.Size = ClientSize;
 
-            if ((bmpRenderFrame == null) || !ClientSize.Equals(bmpRenderFrame.Size))
+            if ((bmpRenderClientArea == null) || !ClientSize.Equals(bmpRenderClientArea.Size))
             {
                 if (Settings.FullScreenMode)
                 {
