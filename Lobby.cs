@@ -114,8 +114,9 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     if (Turn == 1)
                     {
-                        //WindowSelectStartBonus w = new WindowSelectStartBonus();
-                        //w.ShowDialog();
+                        // Выбор стартового бонуса
+                        WindowSelectStartBonus w = new WindowSelectStartBonus();
+                        w.ShowDialog();
                     }
 
                     return;

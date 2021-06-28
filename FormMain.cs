@@ -1373,7 +1373,7 @@ namespace Fantasy_Kingdoms_Battle
             ActivatePage(pageGuilds);
             ShowCurrentPlayerLobby();
 
-            //lobby.StartTurn();
+            lobby.StartTurn();
         }
 
         internal void EndLobby()
