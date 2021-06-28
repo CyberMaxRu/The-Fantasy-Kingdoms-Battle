@@ -62,7 +62,6 @@ namespace Fantasy_Kingdoms_Battle
         private TimeSpan durationDrawFrame;
 
         // Контролы главного меню
-        private readonly VisualControl TopControl;
         private readonly VisualControl MainControl;
 
         private Point mousePos;
@@ -531,11 +530,8 @@ namespace Fantasy_Kingdoms_Battle
                 layerGame = new VisualControl();
                 Layers.Add(layerGame);
 
-                // Верхняя панель
-                TopControl = new VisualControl(layerGame, 0, 0);
-
-                // Создаем панели игроков в верхней панели
-                panelPlayers = new VisualControl(TopControl, 0, Config.GridSize);
+                // Создаем панели игроков
+                panelPlayers = new VisualControl(layerGame, 0, Config.GridSize);
 
                 PanelPlayer pp;
                 int nextLeftPanelPlayer = 0;
@@ -547,11 +543,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 panelPlayers.ApplyMaxSize();
 
-                // Кнопки в правом верхнем углу
-                TopControl.ApplyMaxSize();
-
-                // Тулбар. Его располагаем прямо на слое, чтобы MainControl рисовал поверх него
-                // Это позволяет полосе оставаться видимой при скрытии MainControl на время хода компьютерных игроков
+                // Полоса игрового тулбара
                 bmpPreparedToolbar = new VCBitmap(layerGame, 0, 0, null);
 
                 // Главное игровое поле
@@ -574,10 +566,10 @@ namespace Fantasy_Kingdoms_Battle
                 labelNamePlayer.StringFormat.LineAlignment = StringAlignment.Center;
                 labelNamePlayer.Width = 16;
 
-                btnInGameMenu = CreateButton(TopControl, ilGui, GUI_SETTINGS, Config.GridSize, Config.GridSize, BtnInGameMenu_Click, BtnInGameMenu_MouseHover);
+                btnInGameMenu = CreateButton(layerGame, ilGui, GUI_SETTINGS, Config.GridSize, Config.GridSize, BtnInGameMenu_Click, BtnInGameMenu_MouseHover);
                 btnInGameMenu.UseFilter = false;
                 btnInGameMenu.HighlightUnderMouse = true;
-                btnEndTurn = CreateButton(TopControl, ilGui, GUI_HOURGLASS, 0, Config.GridSize, BtnEndTurn_Click, BtnEndTurn_MouseHover);
+                btnEndTurn = CreateButton(layerGame, ilGui, GUI_HOURGLASS, 0, Config.GridSize, BtnEndTurn_Click, BtnEndTurn_MouseHover);
                 panelLairWithFlags = new VisualControl(MainControl, 0, 0);
                 panelLairWithFlags.Width = Program.formMain.bmpBorderForIcon.Width;
                 panelLairWithFlags.Height = Program.formMain.bmpBorderForIcon.Height;
@@ -690,17 +682,15 @@ namespace Fantasy_Kingdoms_Battle
 
                 // Все контролы созданы, устанавливаем размеры bitmapMenu
                 MainControl.Width = panelCombatHeroes.ShiftX + panelCombatHeroes.Width + Config.GridSize;
-                TopControl.ShiftY = 0;
                 bmpPreparedToolbar.Bitmap = PrepareToolbar();
-                bmpPreparedToolbar.ShiftY = TopControl.NextTop();
+                bmpPreparedToolbar.ShiftY = panelPlayers.NextTop();
                 MainControl.ShiftY = bmpPreparedToolbar.NextTop();
 
                 MainControl.Height = pageGuilds.NextTop() + maxHeightControls + Config.GridSize;
-                TopControl.Width = MainControl.Width;
 
                 // Теперь когда известна ширина окна, можно создавать картинку тулбара
                 labelNamePlayer.Height = bmpPreparedToolbar.Height;
-                panelPlayers.ShiftX = (TopControl.Width - panelPlayers.Width) / 2;
+                panelPlayers.ShiftX = (MainControl.Width - panelPlayers.Width) / 2;
                 panelCombatHeroes.Height = maxHeightPages - bitmapMenu.Height - Config.GridSize;
 
                 sizeGamespace = new Size(MainControl.Width, MainControl.ShiftY + MainControl.Height);
@@ -720,7 +710,6 @@ namespace Fantasy_Kingdoms_Battle
 
                 btnEndTurn.ShiftX = btnEndTurn.Parent.Width - btnEndTurn.Width - Config.GridSize;
 
-                TopControl.ShiftX = (ClientSize.Width - TopControl.Width) / 2;
                 bmpPreparedToolbar.ShiftX = 0;
                 MainControl.ShiftX = 0;
 
@@ -1663,18 +1652,15 @@ namespace Fantasy_Kingdoms_Battle
 
             if (currentLayer == layerGame)
             {
-                curControl = TopControl.GetControl(mousePos.X, mousePos.Y);
+                curControl = layerGame.GetControl(mousePos.X, mousePos.Y);
                 if (curControl == null)
+                if (curControl == MainControl)
                 {
-                    curControl = MainControl.GetControl(mousePos.X, mousePos.Y);
-                    if (curControl == MainControl)
-                    {
-                        curControl = currentPage.Page.GetControl(mousePos.X, mousePos.Y);
-                        if (curControl == null)
-                            curControl = MainControl;
-                        //if (curControl == currentPage)
-                        //    curControl = null;
-                    }
+                    curControl = currentPage.Page.GetControl(mousePos.X, mousePos.Y);
+                    if (curControl == null)
+                        curControl = MainControl;
+                    //if (curControl == currentPage)
+                    //    curControl = null;
                 }
             }
             else
