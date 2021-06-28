@@ -1511,7 +1511,7 @@ namespace Fantasy_Kingdoms_Battle
             gfxRenderFrame.CompositingMode = CompositingMode.SourceOver;
 
             //
-            if (layerGame.Visible)
+            if (layerGame.Visible && lobby.CurrentPlayer != null)
             {
                 labelGold.Text = lobby.CurrentPlayer.Gold.ToString() + " (+" + lobby.CurrentPlayer.Income().ToString() + ")";
 
