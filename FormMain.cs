@@ -1368,11 +1368,10 @@ namespace Fantasy_Kingdoms_Battle
                 ((PanelPlayer)panelPlayers.Controls[i]).LinkToLobby(lobby.Players[i]);
             }
 
-            ShowCurrentPlayerLobby();
-            ShowDataPlayer();
-            ActivatePage(pageGuilds);
-
             ExchangeLayer(layerMainMenu, layerGame);
+
+            ActivatePage(pageGuilds);
+            ShowCurrentPlayerLobby();
 
             //lobby.StartTurn();
         }
