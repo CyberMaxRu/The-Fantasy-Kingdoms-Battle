@@ -83,7 +83,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnClose_Click(object sender, EventArgs e)
         {
-            CloseForm(DialogResult.OK);
+            CloseForm(DialogAction.None);
         }
     }
 }

@@ -101,7 +101,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnCancel_Click(object sender, EventArgs e)
         {
-            CloseForm(DialogResult.Cancel);
+            CloseForm(DialogAction.None);
         }
 
         private void BtnAccept_Click(object sender, EventArgs e)
@@ -113,7 +113,7 @@ namespace Fantasy_Kingdoms_Battle
             settings.BattlefieldShowGrid = chkbShowGrid.Checked;
             settings.SaveSettings();
 
-            CloseForm(DialogResult.OK);
+            CloseForm(DialogAction.OK);
         }
     }
 }

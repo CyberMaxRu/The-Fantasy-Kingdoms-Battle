@@ -14,6 +14,7 @@ using System.Text;
 namespace Fantasy_Kingdoms_Battle
 {
     internal enum ProgramState { Started, ConfirmQuit, NeedQuit };
+    internal enum DialogAction { None, OK, MainMenu, RestartGame, Quit };
 
     public partial class FormMain : Form
     {
@@ -1031,7 +1032,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             WindowPreferences w = new WindowPreferences();
             w.ApplySettings(Settings);
-            if (w.ShowDialog() == DialogResult.OK)
+            if (w.ShowDialog() == DialogAction.OK)
             {
                 /*if (Settings.NamePlayer != lobby.CurrentPlayer.Name)
                 {
@@ -1094,7 +1095,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 ProgramState = ProgramState.ConfirmQuit;
                 WindowConfirmExit f = new WindowConfirmExit();
-                ProgramState = f.ShowDialog() == DialogResult.Yes ? ProgramState.NeedQuit : ProgramState.Started;
+                ProgramState = f.ShowDialog() == DialogAction.OK ? ProgramState.NeedQuit : ProgramState.Started;
                 e.Cancel = ProgramState == ProgramState.Started;
 
                 ShowFrame(true);
@@ -1614,16 +1615,24 @@ namespace Fantasy_Kingdoms_Battle
         private void ShowInGameMenu()
         {
             WindowMenuInGame w = new WindowMenuInGame();
-            DialogResult dr = w.ShowDialog();
+            DialogAction dr = w.ShowDialog();
             switch (dr)
             {
-                case DialogResult.Abort:
+                case DialogAction.None:
                     break;
-                case DialogResult.No:
+                case DialogAction.Quit:
+                    ProgramState = ProgramState.NeedQuit;
+                    Close();                        
+                    break;
+                case DialogAction.MainMenu:
                     EndLobby();
                     break;
-                default:
+                case DialogAction.RestartGame:
+                    Program.formMain.EndLobby();
+                    Program.formMain.StartNewLobby();
                     break;
+                default:
+                    throw new Exception($"Неизвестное действие: {dr}.");
             }
 
             ShowFrame(true);
@@ -1897,9 +1906,9 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.OnDeactivate(e);
             
-            ControlForHintLeave();
-            if (WindowState != FormWindowState.Minimized)
-                ShowFrame(true);
+            //ControlForHintLeave();
+            //if (WindowState != FormWindowState.Minimized)
+            //    ShowFrame(true);
         }
 
         internal int TreatImageIndex(int imageIndex, BattleParticipant p)
@@ -2238,16 +2247,13 @@ namespace Fantasy_Kingdoms_Battle
         private void BtnPlayerPreferences_Click(object sender, EventArgs e)
         {
             WindowPlayerPreferences w = new WindowPlayerPreferences();
-            if (w.ShowDialog() == DialogResult.OK)
-            {
-
-            }
+            w.ShowDialog();
         }
 
         private void BtnExitToWindows_Click(object sender, EventArgs e)
         {
             WindowConfirmExit f = new WindowConfirmExit();
-            if (f.ShowDialog() == DialogResult.Yes)
+            if (f.ShowDialog() == DialogAction.OK)
             {
                 SetProgrameState(ProgramState.NeedQuit);
                 Close();

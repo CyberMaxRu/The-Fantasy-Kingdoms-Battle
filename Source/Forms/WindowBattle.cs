@@ -350,7 +350,7 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
             {
-                CloseForm(DialogResult.OK);
+                CloseForm(DialogAction.None);
             }
         }
 

@@ -12,7 +12,7 @@ namespace Fantasy_Kingdoms_Battle
     internal abstract class CustomWindow : VisualControl
     {
         private DispatcherFrame frame;
-        private DialogResult dialogResult;
+        private DialogAction dialogResult;
 
         public CustomWindow()
         {
@@ -41,7 +41,7 @@ namespace Fantasy_Kingdoms_Battle
 
         }
 
-        internal void CloseForm(DialogResult dr)
+        internal void CloseForm(DialogAction dr)
         {
             BeforeClose();
 
@@ -59,7 +59,7 @@ namespace Fantasy_Kingdoms_Battle
             ArrangeControls();
         }
 
-        internal DialogResult ShowDialog()
+        internal DialogAction ShowDialog()
         {
             Program.formMain.formHint.HideHint();
             Program.formMain.StopShowHint();

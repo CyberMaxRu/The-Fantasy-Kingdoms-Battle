@@ -54,26 +54,20 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (WindowConfirm.ShowConfirm("Подтверждение", "Текущая игра будет потеряна.\n\rПродолжить?"))
             {
-                CloseForm(DialogResult.No);
+                CloseForm(DialogAction.MainMenu);
             }
         }
 
         private void BtnPlayerPreferences_Click(object sender, EventArgs e)
         {
             WindowPlayerPreferences w = new WindowPlayerPreferences();
-            if (w.ShowDialog() == DialogResult.OK)
-            {
-            }
+            w.ShowDialog();
         }
 
         private void BtnNewGame_Click(object sender, EventArgs e)
         {
             if (WindowConfirm.ShowConfirm("Подтверждение", "Будет начата новая игра.\n\rТекущая игра будет потеряна.\n\rПродолжить?"))
-            {
-                Program.formMain.EndLobby();
-                Program.formMain.StartNewLobby();
-                CloseForm(DialogResult.OK);
-            }
+                CloseForm(DialogAction.RestartGame);
         }
 
         private void BtnSettings_Click(object sender, EventArgs e)
@@ -84,16 +78,16 @@ namespace Fantasy_Kingdoms_Battle
         private void BtnExitToWindows_Click(object sender, EventArgs e)
         {
             WindowConfirmExit f = new WindowConfirmExit();
-            if (f.ShowDialog() == DialogResult.Yes)
+            if (f.ShowDialog() == DialogAction.OK)
             {
                 Program.formMain.SetProgrameState(ProgramState.NeedQuit);
-                CloseForm(DialogResult.Abort);
+                CloseForm(DialogAction.Quit);
             }
         }
 
         private void BtnBackToGame_Click(object sender, EventArgs e)
         {
-            CloseForm(DialogResult.Cancel);
+            CloseForm(DialogAction.None);
         }
 
         internal override void AdjustSize()

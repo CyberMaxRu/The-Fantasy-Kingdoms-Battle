@@ -200,7 +200,7 @@ namespace Fantasy_Kingdoms_Battle
                 return;
             }
 
-            CloseForm(DialogResult.Cancel);
+            CloseForm(DialogAction.None);
         }
 
         private void BtnAccept_Click(object sender, EventArgs e)
@@ -225,7 +225,7 @@ namespace Fantasy_Kingdoms_Battle
                     Program.formMain.ShowCurrentPlayerLobby();
             }
 
-            CloseForm(DialogResult.OK);
+            CloseForm(DialogAction.OK);
         }
     }
 }

@@ -31,7 +31,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnOk_Click(object sender, EventArgs e)
         {
-            CloseForm(DialogResult.Yes);
+            CloseForm(DialogAction.None);
         }
 
         internal override void AdjustSize()

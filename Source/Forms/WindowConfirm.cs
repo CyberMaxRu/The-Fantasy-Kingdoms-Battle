@@ -35,12 +35,12 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnCancel_Click(object sender, EventArgs e)
         {
-            CloseForm(DialogResult.No);
+            CloseForm(DialogAction.None);
         }
 
         private void BtnOk_Click(object sender, EventArgs e)
         {
-            CloseForm(DialogResult.Yes);
+            CloseForm(DialogAction.OK);
         }
 
         internal override void AdjustSize()
@@ -55,7 +55,7 @@ namespace Fantasy_Kingdoms_Battle
         internal static bool ShowConfirm(string caption, string text)
         {
             WindowConfirm wc = new WindowConfirm(caption, text);
-            bool res = wc.ShowDialog() == DialogResult.Yes;
+            bool res = wc.ShowDialog() == DialogAction.OK;
             wc.Dispose();
 
             return res;
