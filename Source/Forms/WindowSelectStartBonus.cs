@@ -9,7 +9,7 @@ namespace Fantasy_Kingdoms_Battle
     // Окно выбора стартового бонуса
     internal sealed class WindowSelectStartBonus :  CustomWindow
     {
-        public WindowSelectStartBonus()
+        public WindowSelectStartBonus() : base()
         {
 
         }
