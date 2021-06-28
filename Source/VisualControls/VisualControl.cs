@@ -93,15 +93,6 @@ namespace Fantasy_Kingdoms_Battle
         // Метод для рисования. Передается подготовленный Graphics
         internal virtual void Draw(Graphics g)
         {
-            // Рисуем бордюр
-            if (ShowBorder)
-            {
-                PrepareBorder();
-                g.DrawImageUnscaled(bmpBorder, Left - 2, Top);
-            }
-
-            //g.DrawRectangle(penBorder, rectBorder);
-
             if (IsError)
                 g.FillRectangle(FormMain.Config.brushControl, Rectangle);
 
@@ -110,6 +101,22 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (vc.Visible)
                     vc.Draw(g);
+            }
+        }
+
+        internal virtual void PaintForeground(Graphics g)
+        {
+            // Рисуем бордюр
+            if (ShowBorder)
+            {
+                PrepareBorder();
+                g.DrawImageUnscaled(bmpBorder, Left - 2, Top);
+            }
+
+            foreach (VisualControl vc in Controls)
+            {
+                //if (vc.Visible)
+                    vc.PaintForeground(g);
             }
         }
 
@@ -138,7 +145,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (bmpBorder != null)
                 {
-                    bmpBorder?.Dispose();
+                    bmpBorder.Dispose();
                     bmpBorder = null;
                 }
             }

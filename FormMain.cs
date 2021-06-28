@@ -1528,19 +1528,29 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (VisualControl vc in Layers)
             {
-                if (vc.Visible)
-                    vc.DrawBackground(gfxRenderFrame);
+                Debug.Assert(vc.Visible);                
+                vc.DrawBackground(gfxRenderFrame);
             }
 
             foreach (VisualControl vc in Layers)
             {
-                if (vc.Visible)
-                    vc.Draw(gfxRenderFrame); 
+                Debug.Assert(vc.Visible);
+                vc.Draw(gfxRenderFrame); 
+            }
+
+            foreach (VisualControl vc in Layers)
+            {
+                Debug.Assert(vc.Visible);
+                vc.PaintForeground(gfxRenderFrame);
             }
 
             // Рисуем подсказку поверх всех окон
             if (formHint.Visible)
+            {
+                formHint.DrawBackground(gfxRenderFrame);
                 formHint.Draw(gfxRenderFrame);
+                formHint.PaintForeground(gfxRenderFrame);
+            }
 
             if (debugMode)
             {
