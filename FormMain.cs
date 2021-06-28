@@ -566,10 +566,10 @@ namespace Fantasy_Kingdoms_Battle
                 labelNamePlayer.StringFormat.LineAlignment = StringAlignment.Center;
                 labelNamePlayer.Width = 16;
 
-                btnInGameMenu = CreateButton(layerGame, ilGui, GUI_SETTINGS, Config.GridSize, Config.GridSize, BtnInGameMenu_Click, BtnInGameMenu_MouseHover);
+                btnInGameMenu = CreateButton(layerGame, GUI_SETTINGS, Config.GridSize, Config.GridSize, BtnInGameMenu_Click, BtnInGameMenu_MouseHover);
                 btnInGameMenu.UseFilter = false;
                 btnInGameMenu.HighlightUnderMouse = true;
-                btnEndTurn = CreateButton(layerGame, ilGui, GUI_HOURGLASS, 0, Config.GridSize, BtnEndTurn_Click, BtnEndTurn_MouseHover);
+                btnEndTurn = CreateButton(layerGame, GUI_HOURGLASS, 0, Config.GridSize, BtnEndTurn_Click, BtnEndTurn_MouseHover);
                 panelLairWithFlags = new VisualControl(MainControl, 0, 0);
                 panelLairWithFlags.Width = Program.formMain.bmpBorderForIcon.Width;
                 panelLairWithFlags.Height = Program.formMain.bmpBorderForIcon.Height;
@@ -1589,9 +1589,9 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal VCIconButton CreateButton(VisualControl parent, BitmapList bitmapList, int imageIndex, int left, int top, EventHandler click, EventHandler showHint)
+        internal VCIconButton CreateButton(VisualControl parent, int imageIndex, int left, int top, EventHandler click, EventHandler showHint)
         {
-            VCIconButton b = new VCIconButton(parent, left, top, bitmapList, imageIndex);
+            VCIconButton b = new VCIconButton(parent, left, top, ilGui, imageIndex);
             b.Click += click;
             b.ShowHint += showHint;
 
