@@ -29,11 +29,5 @@ namespace Fantasy_Kingdoms_Battle
         {
             return Page.Visible;
         }
-
-        internal override bool PrepareHint()
-        {
-            Program.formMain.formHint.AddHeader(Caption);
-            return true;
-        }
     }
 }
