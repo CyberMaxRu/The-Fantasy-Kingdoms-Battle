@@ -108,12 +108,12 @@ namespace Fantasy_Kingdoms_Battle
 
         // Главные страницы игры
         private readonly VCPageControl pageControl;
-        private readonly VCFormPage pageGuilds;
-        private readonly VCFormPage pageBuildings;
-        private readonly VCFormPage pageTemples;
-        private readonly VCFormPage pageHeroes;
-        private readonly VCFormPage pageLairs;
-        private readonly VCFormPage pageTournament;
+        private readonly VCPageButton pageGuilds;
+        private readonly VCPageButton pageBuildings;
+        private readonly VCPageButton pageTemples;
+        private readonly VCPageButton pageHeroes;
+        private readonly VCPageButton pageLairs;
+        private readonly VCPageButton pageTournament;
 
         private readonly PanelLair[,] panelLairs;
         private PanelWithPanelEntity panelWarehouse;

@@ -8,9 +8,9 @@ using System.Diagnostics;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс кнопки для PageControl'а
-    internal sealed class VCFormPage : VCIconButton
+    internal sealed class VCPageButton : VCIconButton
     {
-        public VCFormPage(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList, int imageIndex) : base(parent, shiftX, shiftY, bitmapList, imageIndex)
+        public VCPageButton(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList, int imageIndex) : base(parent, shiftX, shiftY, bitmapList, imageIndex)
         {
             UseFilter = false;
             HighlightUnderMouse = true;
@@ -31,9 +31,9 @@ namespace Fantasy_Kingdoms_Battle
     // Класс кнопок со страницами
     internal sealed class VCPageControl : VisualControl
     {
-        private readonly List<VCFormPage> listFormPage = new List<VCFormPage>();
+        private readonly List<VCPageButton> listFormPage = new List<VCPageButton>();
         private int nextLeft;
-        private VCFormPage currentPage;
+        private VCPageButton currentPage;
 
         public VCPageControl(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList) : base(parent, shiftX, shiftY)
         {
@@ -42,11 +42,11 @@ namespace Fantasy_Kingdoms_Battle
 
         internal BitmapList BitmapList { get; }
 
-        internal VCFormPage AddPage(int imageIndex, EventHandler onShowHint)
+        internal VCPageButton AddPage(int imageIndex, EventHandler onShowHint)
         {
             Debug.Assert(onShowHint != null);
 
-            VCFormPage page = new VCFormPage(this, nextLeft, 0, BitmapList, imageIndex);
+            VCPageButton page = new VCPageButton(this, nextLeft, 0, BitmapList, imageIndex);
             page.Click += Page_Click;
             page.ShowHint += onShowHint;
             nextLeft = page.NextLeft();
@@ -57,12 +57,12 @@ namespace Fantasy_Kingdoms_Battle
 
         private void Page_Click(object sender, EventArgs e)
         {
-            ActivatePage((VCFormPage)sender);
+            ActivatePage((VCPageButton)sender);
         }
 
         internal override void ApplyMaxSize()
         {
-            foreach (VCFormPage p in listFormPage)
+            foreach (VCPageButton p in listFormPage)
             {
                 p.Page.ApplyMaxSize();
             }
@@ -70,7 +70,7 @@ namespace Fantasy_Kingdoms_Battle
             base.ApplyMaxSize();
         }
 
-        internal void ActivatePage(VCFormPage pc)
+        internal void ActivatePage(VCPageButton pc)
         {
             if (pc != currentPage)
             {
