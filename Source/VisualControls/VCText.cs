@@ -133,10 +133,13 @@ namespace Fantasy_Kingdoms_Battle
         private void TextToLines(string text)
         {
             linesText.Clear();
-            string[] lines = text.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
-            
-            for (int i = 0; i < lines.Length; i++)
-                TextLineToLines(lines[i]);
+            if (!string.IsNullOrEmpty(text))
+            {
+                string[] lines = text.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+
+                for (int i = 0; i < lines.Length; i++)
+                    TextLineToLines(lines[i]);
+            }
         }
 
         private void TextLineToLines(string text)
