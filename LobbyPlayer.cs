@@ -269,7 +269,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int PlayerIndex { get; }
         internal int PositionInLobby { get; set; }
         internal int LevelGreatness { get; }// Уровень величия
-        internal int PointGreatness { get; }// Очков величия
+        internal int PointGreatness { get; set; }// Очков величия
         internal int PointGreatnessForNextLevel { get; }// Очков величия до следующего уровня
         internal List<PlayerBuilding> Buildings { get; } = new List<PlayerBuilding>();
         internal int LevelCastle => Castle.Level;
@@ -854,6 +854,13 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             return false;
+        }
+
+        protected void ApplyStartBonus(StartBonus sb)
+        {
+            Gold += sb.Gold;
+            PointGreatness += sb.Greatness;
+            PointConstructionGuild += sb.PointConstructionGuild;
         }
 
         // Интерфейс

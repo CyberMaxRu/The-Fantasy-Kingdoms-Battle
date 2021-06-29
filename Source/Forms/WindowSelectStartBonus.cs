@@ -14,12 +14,14 @@ namespace Fantasy_Kingdoms_Battle
     {
         private readonly VCButton btnOk;
         private readonly List<VCText> listBoxes = new List<VCText>();
+        private List<StartBonus> list;
 
         public WindowSelectStartBonus(List<StartBonus> listStartBonuses) : base()
         {
             Debug.Assert(listStartBonuses.Count > 0);
 
             windowCaption.Caption = "Выбор стартового бонуса";
+            list = listStartBonuses;
 
             // Создаем ящики с выбором бонуса
             int nextLeft = FormMain.Config.GridSize;
@@ -62,13 +64,16 @@ namespace Fantasy_Kingdoms_Battle
             ClientControl.Height = btnOk.ShiftY + btnOk.Height;
         }
 
+        internal StartBonus SelectedBonus { get; private set; }
+
         private void Text_Click(object sender, EventArgs e)
         {
             btnOk.Enabled = true;
 
-            foreach (VCText t in listBoxes)
+            for (int i = 0; i < listBoxes.Count; i++)
             {
-                t.ManualSelected = t == sender;
+                listBoxes[i].ManualSelected = listBoxes[i] == sender;
+                SelectedBonus = list[i];
             }
 
             Program.formMain.NeedRedrawFrame();
