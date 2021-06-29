@@ -12,14 +12,16 @@ namespace Fantasy_Kingdoms_Battle
         private readonly List<VCFormPage> listFormPage = new List<VCFormPage>();
         private int nextLeft;
 
-        public VCPageControl(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
+        public VCPageControl(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList) : base(parent, shiftX, shiftY)
         {
-            
+            BitmapList = bitmapList;
         }
+
+        internal BitmapList BitmapList { get; }
 
         internal VCFormPage AddPage(int imageIndex, string caption, EventHandler onClick)
         {
-            VCFormPage page = new VCFormPage(this, nextLeft, 0, listFormPage, Program.formMain.ilGui, imageIndex, caption, onClick);
+            VCFormPage page = new VCFormPage(this, nextLeft, 0, listFormPage, BitmapList, imageIndex, caption, onClick);
             nextLeft = page.NextLeft();
 
             return page;

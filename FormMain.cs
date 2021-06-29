@@ -628,7 +628,7 @@ namespace Fantasy_Kingdoms_Battle
                 MainControl.AddControl(panelCombatHeroes);
 
                 // Страницы игры
-                pageControl = new VCPageControl(MainControl, 0, panelLairWithFlags.ShiftY);
+                pageControl = new VCPageControl(MainControl, 0, panelLairWithFlags.ShiftY, ilGui);
                 pageGuilds = pageControl.AddPage(GUI_GUILDS, "Гильдии и военные сооружения", BtnPage_Click);
                 pageGuilds.ShowHint += PageGuilds_ShowHint;
                 pageBuildings = pageControl.AddPage(GUI_ECONOMY, "Экономические строения", BtnPage_Click);
