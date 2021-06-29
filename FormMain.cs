@@ -249,7 +249,6 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VisualControl layerGame;
         private VisualControl currentLayer;
 
-        private VCFormPage currentPage;
         private readonly VisualControl panelEmptyInfo;
         internal PanelBuildingInfo panelBuildingInfo { get; private set; }
         internal PanelLairInfo panelLairInfo { get; private set; }
@@ -733,7 +732,7 @@ namespace Fantasy_Kingdoms_Battle
                 SetStage("Прибираем после строителей");
 
                 //
-                ActivatePage(pageGuilds);
+                pageControl.ActivatePage(pageGuilds);
 
                 //
                 mpMusic = new System.Windows.Media.MediaPlayer();
@@ -1031,7 +1030,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnPage_Click(object sender, EventArgs e)
         {
-            ActivatePage((VCFormPage)sender);
+            pageControl.ActivatePage((VCFormPage)sender);
         }
 
         internal void ShowWindowPreferences()
@@ -1344,22 +1343,10 @@ namespace Fantasy_Kingdoms_Battle
             panelWarehouse.ApplyList(lobby.CurrentPlayer.Warehouse.ToList<ICell>());
         }
 
-        private void ActivatePage(VCFormPage pc)
-        {
-            if (pc != currentPage)
-            {
-                if (currentPage != null)
-                    currentPage.Page.Visible = false;
-                currentPage = pc;
-                currentPage.Page.Visible = true;
-
-                SetNeedRedrawFrame();
-            }
-        }
 
         internal void ActivatePageLairs()
         {
-            ActivatePage(pageLairs);
+            pageControl.ActivatePage(pageLairs);
         }
 
         internal void StartNewLobby()
@@ -1376,7 +1363,7 @@ namespace Fantasy_Kingdoms_Battle
 
             ExchangeLayer(layerMainMenu, layerGame);
 
-            ActivatePage(pageGuilds);
+            pageControl.ActivatePage(pageGuilds);
             ShowCurrentPlayerLobby();
 
             lobby.StartTurn();
@@ -1668,16 +1655,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (currentLayer == layerGame)
             {
-                curControl = layerGame.GetControl(mousePos.X, mousePos.Y);
-                if (curControl == null)
-                if (curControl == MainControl)
-                {
-                    curControl = currentPage.Page.GetControl(mousePos.X, mousePos.Y);
-                    if (curControl == null)
-                        curControl = MainControl;
-                    //if (curControl == currentPage)
-                    //    curControl = null;
-                }
+                 curControl = layerGame.GetControl(mousePos.X, mousePos.Y);
             }
             else
             {

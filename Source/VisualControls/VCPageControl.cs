@@ -12,6 +12,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         private readonly List<VCFormPage> listFormPage = new List<VCFormPage>();
         private int nextLeft;
+        private VCFormPage currentPage;
 
         public VCPageControl(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList) : base(parent, shiftX, shiftY)
         {
@@ -46,6 +47,19 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.ArrangeControls();
 
+        }
+
+        internal void ActivatePage(VCFormPage pc)
+        {
+            if (pc != currentPage)
+            {
+                if (currentPage != null)
+                    currentPage.Page.Visible = false;
+                currentPage = pc;
+                currentPage.Page.Visible = true;
+
+                Program.formMain.SetNeedRedrawFrame();
+            }
         }
     }
 }
