@@ -1169,10 +1169,6 @@ namespace Fantasy_Kingdoms_Battle
             LairsWithFlagChanged();
             UpdateListHeroes();
             ShowWarehouse();
-
-            labelGreatness.Text = curAppliedPlayer.LevelGreatness.ToString()
-                + " (" + curAppliedPlayer.PointGreatness.ToString() + "/"
-                + curAppliedPlayer.PointGreatnessForNextLevel.ToString() + ")";
         }
 
         internal void UpdateListHeroes()
@@ -1473,6 +1469,9 @@ namespace Fantasy_Kingdoms_Battle
             if ((Layers[0] == layerGame) && (lobby.CurrentPlayer != null))
             {
                 labelGold.Text = lobby.CurrentPlayer.Gold.ToString() + " (+" + lobby.CurrentPlayer.Income().ToString() + ")";
+                labelGreatness.Text = curAppliedPlayer.LevelGreatness.ToString()
+                    + " (" + curAppliedPlayer.PointGreatness.ToString() + "/"
+                    + curAppliedPlayer.PointGreatnessForNextLevel.ToString() + ")";
 
                 pageGuilds.PopupQuantity = lobby.CurrentPlayer.PointConstructionGuild;
                 pageBuildings.PopupQuantity = lobby.CurrentPlayer.PointConstructionEconomic;
