@@ -166,7 +166,6 @@
     <Compile Include="Item.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="Source\VisualControls\VCBitmap.cs" />
-    <Compile Include="Source\VisualControls\VCFormPage.cs" />
     <Compile Include="Source\VisualControls\VCImage.cs" />
     <Compile Include="Source\VisualControls\VCToolLabel.cs" />
     <Compile Include="Source\VisualControls\VisualControl.cs" />

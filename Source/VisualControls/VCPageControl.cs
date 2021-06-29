@@ -7,6 +7,27 @@ using System.Diagnostics;
 
 namespace Fantasy_Kingdoms_Battle
 {
+    // Класс кнопки для PageControl'а
+    internal sealed class VCFormPage : VCIconButton
+    {
+        public VCFormPage(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList, int imageIndex) : base(parent, shiftX, shiftY, bitmapList, imageIndex)
+        {
+            UseFilter = false;
+            HighlightUnderMouse = true;
+
+            Page = new VisualControl(parent, 0, NextTop());
+            Page.Visible = false;
+            Page.Click += Page_Click;
+        }
+
+        private void Page_Click(object sender, EventArgs e)
+        {
+            Program.formMain.SelectPlayerObject(null);
+        }
+
+        internal VisualControl Page { get; }
+    }
+
     // Класс кнопок со страницами
     internal sealed class VCPageControl : VisualControl
     {
