@@ -105,6 +105,7 @@
     <Compile Include="Source\VisualControls\VCLabel.cs" />
     <Compile Include="Source\VisualControls\VCLabelValue.cs" />
     <Compile Include="Source\VisualControls\VCLink.cs" />
+    <Compile Include="Source\VisualControls\VCPageControl.cs" />
     <Compile Include="Source\VisualControls\VCTabButton.cs" />
     <Compile Include="Source\VisualControls\VCSeparator.cs" />
     <Compile Include="Source\VisualControls\VCText.cs" />

@@ -15,10 +15,8 @@ namespace Fantasy_Kingdoms_Battle
             HighlightUnderMouse = true;
             Caption = caption;
 
-            Page = new VisualControl()
-            {
-                Visible = false
-            };
+            Page = new VisualControl(parent, 0, NextTop());
+            Page.Visible = false;
             Page.Click += Page_Click;
             Click += onClick;
 
@@ -72,10 +70,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.ArrangeControls();
 
-            Page.ShiftX = listPages[0].ShiftX - listPages[indexInList].ShiftX;
-            Page.ShiftY = Height + FormMain.Config.GridSize;
-            Page.ApplyMaxSize();
-            ArrangeControl(Page, false);
         }
 
         internal override bool PrepareHint()
