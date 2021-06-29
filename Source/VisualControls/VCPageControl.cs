@@ -43,12 +43,6 @@ namespace Fantasy_Kingdoms_Battle
             base.ApplyMaxSize();
         }
 
-        internal override void ArrangeControls()
-        {
-            base.ArrangeControls();
-
-        }
-
         internal void ActivatePage(VCFormPage pc)
         {
             if (pc != currentPage)
