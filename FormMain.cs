@@ -664,7 +664,7 @@ namespace Fantasy_Kingdoms_Battle
                 bmpPreparedToolbar.ShiftY = panelPlayers.NextTop();
                 MainControl.ShiftY = bmpPreparedToolbar.NextTop();
 
-                MainControl.Height = pageGuilds.NextTop() + maxHeightControls + Config.GridSize;
+                MainControl.Height = pageGuilds.ShiftX + maxHeightControls + Config.GridSize;
 
                 // Теперь когда известна ширина окна, можно создавать картинку тулбара
                 labelNamePlayer.Height = bmpPreparedToolbar.Height;
