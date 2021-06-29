@@ -1024,10 +1024,6 @@ namespace Fantasy_Kingdoms_Battle
             formHint.DrawHint(btnEndTurn);
         }
 
-        private void LabelGold_MouseHover(object sender, EventArgs e)
-        {
-        }
-
         private void BtnPage_Click(object sender, EventArgs e)
         {
             pageControl.ActivatePage((VCFormPage)sender);
