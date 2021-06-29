@@ -70,6 +70,8 @@
     <Compile Include="CustomCursor.cs" />
     <Compile Include="HumanPlayer.cs" />
     <Compile Include="LobbyPlayer.cs" />
+    <Compile Include="LobbyPlayerComputer.cs" />
+    <Compile Include="LobbyPlayerHuman.cs" />
     <Compile Include="M2Font.cs" />
     <Compile Include="PanelCreatureInfo.cs" />
     <Compile Include="PanelMonsterInfo.cs" />

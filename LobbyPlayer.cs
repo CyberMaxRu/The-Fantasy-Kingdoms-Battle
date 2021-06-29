@@ -10,7 +10,7 @@ using System.Windows.Forms;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс игрока лобби
-    internal sealed class LobbyPlayer : BattleParticipant, ICell
+    internal abstract class LobbyPlayer : BattleParticipant, ICell
     {
         private PlayerBuilding Castle;
 
@@ -855,6 +855,11 @@ namespace Fantasy_Kingdoms_Battle
 
             return false;
         }
+
+        // Интерфейс
+        internal abstract void SelectStartBonus();
+
+        //
 
         internal override string GetName() => Player.Name;
         internal override LobbyPlayer GetPlayer() => this;
