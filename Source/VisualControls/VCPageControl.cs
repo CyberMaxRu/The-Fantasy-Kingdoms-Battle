@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -19,9 +20,13 @@ namespace Fantasy_Kingdoms_Battle
 
         internal BitmapList BitmapList { get; }
 
-        internal VCFormPage AddPage(int imageIndex, string caption, EventHandler onClick)
+        internal VCFormPage AddPage(int imageIndex, string caption, EventHandler onClick, EventHandler onShowHint)
         {
+            Debug.Assert(onClick != null);
+            Debug.Assert(onShowHint != null);
+
             VCFormPage page = new VCFormPage(this, nextLeft, 0, listFormPage, BitmapList, imageIndex, caption, onClick);
+            page.ShowHint += onShowHint;
             nextLeft = page.NextLeft();
 
             return page;

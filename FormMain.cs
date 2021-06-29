@@ -629,17 +629,12 @@ namespace Fantasy_Kingdoms_Battle
 
                 // Страницы игры
                 pageControl = new VCPageControl(MainControl, 0, panelLairWithFlags.ShiftY, ilGui);
-                pageGuilds = pageControl.AddPage(GUI_GUILDS, "Гильдии и военные сооружения", BtnPage_Click);
-                pageGuilds.ShowHint += PageGuilds_ShowHint;
-                pageBuildings = pageControl.AddPage(GUI_ECONOMY, "Экономические строения", BtnPage_Click);
-                pageBuildings.ShowHint += PageBuildings_ShowHint;
-                pageTemples = pageControl.AddPage(GUI_TEMPLE, "Храмы", BtnPage_Click);
-                pageTemples.ShowHint += PageTemples_ShowHint;
-                pageHeroes = pageControl.AddPage(GUI_HEROES, "Герои", BtnPage_Click);
-                pageHeroes.ShowHint += PageHeroes_ShowHint;
-                pageLairs = pageControl.AddPage(GUI_MAP, "Окрестности", BtnPage_Click);
-                pageTournament = pageControl.AddPage(GUI_TOURNAMENT, "Турнир", BtnPage_Click);
-                pageTournament.ShowHint += PageTournament_ShowHint;
+                pageGuilds = pageControl.AddPage(GUI_GUILDS, "Гильдии и военные сооружения", BtnPage_Click, PageGuilds_ShowHint);
+                pageBuildings = pageControl.AddPage(GUI_ECONOMY, "Экономические строения", BtnPage_Click, PageBuildings_ShowHint);
+                pageTemples = pageControl.AddPage(GUI_TEMPLE, "Храмы", BtnPage_Click, PageTemples_ShowHint);
+                pageHeroes = pageControl.AddPage(GUI_HEROES, "Герои", BtnPage_Click, PageHeroes_ShowHint);
+                pageLairs = pageControl.AddPage(GUI_MAP, "Окрестности", BtnPage_Click, PageLairs_ShowHint);
+                pageTournament = pageControl.AddPage(GUI_TOURNAMENT, "Турнир", BtnPage_Click, PageTournament_ShowHint);
 
                 DrawPageConstructions();
                 DrawHeroes();
@@ -843,6 +838,11 @@ namespace Fantasy_Kingdoms_Battle
         private void PageGuilds_ShowHint(object sender, EventArgs e)
         {
             ShowHintForToolButton(pageGuilds, pageGuilds.Caption, "Доступно построек/апгрейдов гильдий: " + lobby.CurrentPlayer.PointConstructionGuild.ToString());
+        }
+
+        private void PageLairs_ShowHint(object sender, EventArgs e)
+        {
+            ShowHintForToolButton(pageLairs, pageLairs.Caption, "");
         }
 
         private void PageTournament_ShowHint(object sender, EventArgs e)
