@@ -11,6 +11,7 @@ namespace Fantasy_Kingdoms_Battle
     // Панель объекта карты
     internal abstract class PanelMapObject : VisualControl
     {
+        private Bitmap bmpBackground;
         protected readonly VCLabel lblNameMapObject;
         protected readonly VCImageBig imgMapObject;
 
@@ -37,6 +38,19 @@ namespace Fantasy_Kingdoms_Battle
             base.ValidateRectangle();
 
             lblNameMapObject.Width = Width - (lblNameMapObject.ShiftX * 2);
+        }
+
+        internal override void DrawBackground(Graphics g)
+        {
+            base.DrawBackground(g);
+
+            if ((bmpBackground == null) || (bmpBackground.Width != Width) || (bmpBackground.Height != Height))
+            {
+                bmpBackground?.Dispose();
+                bmpBackground = GuiUtils.MakeBackground(new Size(Width, Height));
+            }
+
+            g.DrawImageUnscaled(bmpBackground, Left, Top);
         }
 
         internal override void Draw(Graphics g)
