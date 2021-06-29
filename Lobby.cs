@@ -112,7 +112,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (p.GetTypePlayer() == TypePlayer.Human)
                 {
-                    if (Turn == 1)
+                    if ((Turn == 1) && (p.VariantsStartBonuses.Count > 0))
                     {
                         p.SelectStartBonus();
                     }
