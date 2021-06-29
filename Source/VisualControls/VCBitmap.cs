@@ -42,9 +42,9 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(bmp != null);
 
-            g.DrawImageUnscaled(bmp, Left, Top);
-
             base.Draw(g);
+
+            g.DrawImageUnscaled(bmp, Left, Top);
         }
     }
 }
