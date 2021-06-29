@@ -39,39 +39,6 @@ namespace Fantasy_Kingdoms_Battle
             return Page.Visible;
         }
 
-        internal override VisualControl GetControl(int x, int y)
-        {
-            VisualControl vc = base.GetControl(x, y);
-            if (vc != null)
-                return vc;
-
-            return Page.GetControl(x, y);
-        }
-
-        internal override void DrawBackground(Graphics g)
-        {
-            base.DrawBackground(g);
-
-            if (Page.Visible)
-                Page.DrawBackground(g);
-        }
-
-        internal override void Draw(Graphics g)
-        {
-            ImageFilter = Page.Visible ? ImageFilter.Press : ImageFilter.None;
-
-            base.Draw(g);
-
-            if (Page.Visible)
-                Page.Draw(g);
-        }
-
-        internal override void ArrangeControls()
-        {
-            base.ArrangeControls();
-
-        }
-
         internal override bool PrepareHint()
         {
             Program.formMain.formHint.AddHeader(Caption);
