@@ -188,6 +188,10 @@ namespace Fantasy_Kingdoms_Battle
                 priorPosSpace = posSpace;
             }
 
+            // Если последней строкой перенос строки, убираем его
+            if (linesText[linesText.Count - 1] == Environment.NewLine)
+                linesText.RemoveAt(linesText.Count - 1);
+
             Debug.Assert(linesText.Count > 0);
         }
     }
