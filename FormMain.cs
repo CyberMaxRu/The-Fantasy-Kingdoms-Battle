@@ -628,12 +628,12 @@ namespace Fantasy_Kingdoms_Battle
 
                 // Страницы игры
                 pageControl = new VCPageControl(MainControl, 0, panelLairWithFlags.ShiftY, ilGui);
-                pageGuilds = pageControl.AddPage(GUI_GUILDS, "Гильдии и военные сооружения", BtnPage_Click, PageGuilds_ShowHint);
-                pageBuildings = pageControl.AddPage(GUI_ECONOMY, "Экономические строения", BtnPage_Click, PageBuildings_ShowHint);
-                pageTemples = pageControl.AddPage(GUI_TEMPLE, "Храмы", BtnPage_Click, PageTemples_ShowHint);
-                pageHeroes = pageControl.AddPage(GUI_HEROES, "Герои", BtnPage_Click, PageHeroes_ShowHint);
-                pageLairs = pageControl.AddPage(GUI_MAP, "Окрестности", BtnPage_Click, PageLairs_ShowHint);
-                pageTournament = pageControl.AddPage(GUI_TOURNAMENT, "Турнир", BtnPage_Click, PageTournament_ShowHint);
+                pageGuilds = pageControl.AddPage(GUI_GUILDS, "Гильдии и военные сооружения", PageGuilds_ShowHint);
+                pageBuildings = pageControl.AddPage(GUI_ECONOMY, "Экономические строения", PageBuildings_ShowHint);
+                pageTemples = pageControl.AddPage(GUI_TEMPLE, "Храмы", PageTemples_ShowHint);
+                pageHeroes = pageControl.AddPage(GUI_HEROES, "Герои", PageHeroes_ShowHint);
+                pageLairs = pageControl.AddPage(GUI_MAP, "Окрестности", PageLairs_ShowHint);
+                pageTournament = pageControl.AddPage(GUI_TOURNAMENT, "Турнир", PageTournament_ShowHint);
 
                 DrawPageConstructions();
                 DrawHeroes();
@@ -1022,11 +1022,6 @@ namespace Fantasy_Kingdoms_Battle
             formHint.Clear();
             formHint.AddStep1Header("Конец хода", "", "Завершение хода");
             formHint.DrawHint(btnEndTurn);
-        }
-
-        private void BtnPage_Click(object sender, EventArgs e)
-        {
-            pageControl.ActivatePage((VCFormPage)sender);
         }
 
         internal void ShowWindowPreferences()

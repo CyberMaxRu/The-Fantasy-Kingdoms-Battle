@@ -6,9 +6,6 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class VCFormPage : VCIconButton
     {
-        private List<VCFormPage> listPages;
-        private int indexInList;
-
         public VCFormPage(VisualControl parent, int shiftX, int shiftY, List<VCFormPage> list, BitmapList bitmapList, int imageIndex, string caption, EventHandler onClick) : base(parent, shiftX, shiftY, bitmapList, imageIndex)
         {
             UseFilter = false;
@@ -19,12 +16,6 @@ namespace Fantasy_Kingdoms_Battle
             Page.Visible = false;
             Page.Click += Page_Click;
             Click += onClick;
-
-            listPages = list;
-            indexInList = listPages.Count;
-            listPages.Add(this);
-
-            ArrangeControls();
         }
 
         private void Page_Click(object sender, EventArgs e)

@@ -21,16 +21,21 @@ namespace Fantasy_Kingdoms_Battle
 
         internal BitmapList BitmapList { get; }
 
-        internal VCFormPage AddPage(int imageIndex, string caption, EventHandler onClick, EventHandler onShowHint)
+        internal VCFormPage AddPage(int imageIndex, string caption, EventHandler onShowHint)
         {
-            Debug.Assert(onClick != null);
             Debug.Assert(onShowHint != null);
 
-            VCFormPage page = new VCFormPage(this, nextLeft, 0, listFormPage, BitmapList, imageIndex, caption, onClick);
+            VCFormPage page = new VCFormPage(this, nextLeft, 0, listFormPage, BitmapList, imageIndex, caption, Page_Click);
             page.ShowHint += onShowHint;
             nextLeft = page.NextLeft();
+            listFormPage.Add(page);
 
             return page;
+        }
+
+        private void Page_Click(object sender, EventArgs e)
+        {
+            ActivatePage((VCFormPage)sender);
         }
 
         internal override void ApplyMaxSize()
