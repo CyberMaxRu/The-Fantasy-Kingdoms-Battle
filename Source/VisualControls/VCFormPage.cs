@@ -6,7 +6,7 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class VCFormPage : VCIconButton
     {
-        public VCFormPage(VisualControl parent, int shiftX, int shiftY, List<VCFormPage> list, BitmapList bitmapList, int imageIndex) : base(parent, shiftX, shiftY, bitmapList, imageIndex)
+        public VCFormPage(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList, int imageIndex) : base(parent, shiftX, shiftY, bitmapList, imageIndex)
         {
             UseFilter = false;
             HighlightUnderMouse = true;
@@ -22,9 +22,5 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal VisualControl Page { get; }
-        protected override bool Selected()
-        {
-            return Page.Visible;
-        }
     }
 }

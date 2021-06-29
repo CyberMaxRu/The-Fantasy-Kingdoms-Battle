@@ -25,7 +25,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(onShowHint != null);
 
-            VCFormPage page = new VCFormPage(this, nextLeft, 0, listFormPage, BitmapList, imageIndex);
+            VCFormPage page = new VCFormPage(this, nextLeft, 0, BitmapList, imageIndex);
             page.Click += Page_Click;
             page.ShowHint += onShowHint;
             nextLeft = page.NextLeft();
@@ -54,8 +54,12 @@ namespace Fantasy_Kingdoms_Battle
             if (pc != currentPage)
             {
                 if (currentPage != null)
+                {
+                    currentPage.ManualSelected = false;
                     currentPage.Page.Visible = false;
+                }
                 currentPage = pc;
+                currentPage.ManualSelected = true;
                 currentPage.Page.Visible = true;
 
                 Program.formMain.SetNeedRedrawFrame();
