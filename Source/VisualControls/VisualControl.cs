@@ -54,6 +54,7 @@ namespace Fantasy_Kingdoms_Battle
         internal bool LeftButtonPressed { get; private set; }// ЛКМ нажата
         internal bool IsError { get; set; }
         internal bool ShowHintParent { get; set; }// Показывать подсказку родителя
+        internal bool ManualSelected { get; set; } = false;
 
         // Список контролов, расположенных на нём
         internal List<VisualControl> Controls = new List<VisualControl>();
@@ -66,6 +67,19 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Parent == null);
             Left = left;
             Top = top;
+        }
+
+        internal void Paint(Graphics g)
+        {
+            DrawBackground(g);
+            Draw(g);
+            PaintForeground(g);
+
+            foreach (VisualControl vc in Controls)
+            {
+                if (vc.Visible)
+                    vc.Paint(g);
+            }
         }
 
         // Метод для рисования фона - то есть то, что будет перекрываться изображением через Draw
@@ -81,13 +95,6 @@ namespace Fantasy_Kingdoms_Battle
 
                 g.DrawImageUnscaled(bmpBorderSelect, Left - 8, Top - 8);
             }
-
-            // Рисуем контролы
-            foreach (VisualControl vc in Controls)
-            {
-                if (vc.Visible)
-                    vc.DrawBackground(g);
-            }
         }
 
         // Метод для рисования. Передается подготовленный Graphics
@@ -95,29 +102,15 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (IsError)
                 g.FillRectangle(FormMain.Config.brushControl, Rectangle);
+         }
 
-            // Рисуем контролы
-            foreach (VisualControl vc in Controls)
-            {
-                if (vc.Visible)
-                    vc.Draw(g);
-            }
-
+        internal virtual void PaintForeground(Graphics g)
+        {
             // Рисуем бордюр
             if (ShowBorder)
             {
                 PrepareBorder();
                 g.DrawImageUnscaled(bmpBorder, Left - 2, Top);
-            }
-        }
-
-        internal virtual void PaintForeground(Graphics g)
-        {
-
-            foreach (VisualControl vc in Controls)
-            {
-                //if (vc.Visible)
-                    vc.PaintForeground(g);
             }
         }
 
@@ -129,7 +122,7 @@ namespace Fantasy_Kingdoms_Battle
                 Click?.Invoke(this, new EventArgs());
         }
 
-        protected virtual bool Selected() => false;
+        protected virtual bool Selected() => ManualSelected;
         protected virtual bool AllowClick() => true;
 
         private void PrepareBorder()

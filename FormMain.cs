@@ -107,7 +107,7 @@ namespace Fantasy_Kingdoms_Battle
         private PlayerObject selectedPlayerObject;
 
         // Главные страницы игры
-        private readonly List<VCFormPage> pages = new List<VCFormPage>();
+        private readonly VCPageControl pageControl;
         private readonly VCFormPage pageGuilds;
         private readonly VCFormPage pageBuildings;
         private readonly VCFormPage pageTemples;
@@ -628,16 +628,17 @@ namespace Fantasy_Kingdoms_Battle
                 MainControl.AddControl(panelCombatHeroes);
 
                 // Страницы игры
-                pageGuilds = new VCFormPage(MainControl, 0, panelLairWithFlags.ShiftY, pages, ilGui, GUI_GUILDS, "Гильдии и военные сооружения", BtnPage_Click);
+                pageControl = new VCPageControl(MainControl, 0, panelLairWithFlags.ShiftY);
+                pageGuilds = pageControl.AddPage(GUI_GUILDS, "Гильдии и военные сооружения", BtnPage_Click);
                 pageGuilds.ShowHint += PageGuilds_ShowHint;
-                pageBuildings = new VCFormPage(MainControl, 0, pageGuilds.ShiftY, pages, ilGui, GUI_ECONOMY, "Экономические строения", BtnPage_Click);
+                pageBuildings = pageControl.AddPage(GUI_ECONOMY, "Экономические строения", BtnPage_Click);
                 pageBuildings.ShowHint += PageBuildings_ShowHint;
-                pageTemples = new VCFormPage(MainControl, 0, pageGuilds.ShiftY, pages, ilGui, GUI_TEMPLE, "Храмы", BtnPage_Click);
+                pageTemples = pageControl.AddPage(GUI_TEMPLE, "Храмы", BtnPage_Click);
                 pageTemples.ShowHint += PageTemples_ShowHint;
-                pageHeroes = new VCFormPage(MainControl, 0, pageGuilds.ShiftY, pages, ilGui, GUI_HEROES, "Герои", BtnPage_Click);
+                pageHeroes = pageControl.AddPage(GUI_HEROES, "Герои", BtnPage_Click);
                 pageHeroes.ShowHint += PageHeroes_ShowHint;
-                pageLairs = new VCFormPage(MainControl, 0, pageGuilds.ShiftY, pages, ilGui, GUI_MAP, "Окрестности", BtnPage_Click);
-                pageTournament = new VCFormPage(MainControl, 0, pageGuilds.ShiftY, pages, ilGui, GUI_TOURNAMENT, "Турнир", BtnPage_Click);
+                pageLairs = pageControl.AddPage(GUI_MAP, "Окрестности", BtnPage_Click);
+                pageTournament = pageControl.AddPage(GUI_TOURNAMENT, "Турнир", BtnPage_Click);
                 pageTournament.ShowHint += PageTournament_ShowHint;
 
                 DrawPageConstructions();
@@ -650,24 +651,29 @@ namespace Fantasy_Kingdoms_Battle
                 int maxHeightPages = 0;
                 int maxWidthPages = 0;
 
-                foreach (VCFormPage pc in pages)
-                {
-                    Size maxSizePanelPage = pc.Page.MaxSize();
-                    maxWidthPages = Math.Max(maxWidthPages, maxSizePanelPage.Width);
-                    maxHeightPages = Math.Max(maxHeightPages, maxSizePanelPage.Height);
-                }
+                pageControl.ApplyMaxSize();
+                /*                foreach (VCFormPage pc in pages)
+                                {
+                                    Size maxSizePanelPage = pc.Page.MaxSize();
+                                    maxWidthPages = Math.Max(maxWidthPages, maxSizePanelPage.Width);
+                                    maxHeightPages = Math.Max(maxHeightPages, maxSizePanelPage.Height);
+                                }*/
 
+                maxWidthPages = pageControl.Width;
+                maxHeightPages = pageControl.Height;
                 // Располагаем страницы на главной форме
                 int leftForNextButtonPage = panelEmptyInfo.NextLeft();
-                foreach (VCFormPage fp in pages)
+                pageControl.ShiftX = panelEmptyInfo.NextLeft();
+                //pageControl.Width = maxWidthPages;
+                /*foreach (VCFormPage fp in pages)
                 {
                     fp.ShiftX = leftForNextButtonPage;
                     fp.Page.Width = maxWidthPages;
 
                     leftForNextButtonPage = fp.NextLeft();
-                }
+                }*/
 
-                panelCombatHeroes.ShiftX = pageGuilds.ShiftX + maxWidthPages + Config.GridSize;
+                panelCombatHeroes.ShiftX = pageControl.ShiftX + maxWidthPages + Config.GridSize;
 
                 //
                 Debug.Assert(panelBuildingInfo.Height > 0);
@@ -1529,27 +1535,13 @@ namespace Fantasy_Kingdoms_Battle
             foreach (VisualControl vc in Layers)
             {
                 Debug.Assert(vc.Visible);                
-                vc.DrawBackground(gfxRenderFrame);
-            }
-
-            foreach (VisualControl vc in Layers)
-            {
-                Debug.Assert(vc.Visible);
-                vc.Draw(gfxRenderFrame); 
-            }
-
-            foreach (VisualControl vc in Layers)
-            {
-                Debug.Assert(vc.Visible);
-                vc.PaintForeground(gfxRenderFrame);
+                vc.Paint(gfxRenderFrame);
             }
 
             // Рисуем подсказку поверх всех окон
             if (formHint.Visible)
             {
-                formHint.DrawBackground(gfxRenderFrame);
-                formHint.Draw(gfxRenderFrame);
-                formHint.PaintForeground(gfxRenderFrame);
+                formHint.Paint(gfxRenderFrame);
             }
 
             if (debugMode)
