@@ -628,12 +628,12 @@ namespace Fantasy_Kingdoms_Battle
 
                 // Страницы игры
                 pageControl = new VCPageControl(MainControl, 0, panelLairWithFlags.ShiftY, ilGui);
-                pageGuilds = pageControl.AddPage(GUI_GUILDS, "Гильдии и военные сооружения", PageGuilds_ShowHint);
-                pageBuildings = pageControl.AddPage(GUI_ECONOMY, "Экономические строения", PageBuildings_ShowHint);
-                pageTemples = pageControl.AddPage(GUI_TEMPLE, "Храмы", PageTemples_ShowHint);
-                pageHeroes = pageControl.AddPage(GUI_HEROES, "Герои", PageHeroes_ShowHint);
-                pageLairs = pageControl.AddPage(GUI_MAP, "Окрестности", PageLairs_ShowHint);
-                pageTournament = pageControl.AddPage(GUI_TOURNAMENT, "Турнир", PageTournament_ShowHint);
+                pageGuilds = pageControl.AddPage(GUI_GUILDS, PageGuilds_ShowHint);
+                pageBuildings = pageControl.AddPage(GUI_ECONOMY, PageBuildings_ShowHint);
+                pageTemples = pageControl.AddPage(GUI_TEMPLE, PageTemples_ShowHint);
+                pageHeroes = pageControl.AddPage(GUI_HEROES, PageHeroes_ShowHint);
+                pageLairs = pageControl.AddPage(GUI_MAP, PageLairs_ShowHint);
+                pageTournament = pageControl.AddPage(GUI_TOURNAMENT, PageTournament_ShowHint);
 
                 DrawPageConstructions();
                 DrawHeroes();
@@ -773,7 +773,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void PageTemples_ShowHint(object sender, EventArgs e)
         {
-            ShowHintForToolButton(pageTemples, pageTemples.Caption, "Доступно построек храмов: " + lobby.CurrentPlayer.PointConstructionTemple.ToString());
+            ShowHintForToolButton(pageTemples, "Храмы", "Доступно построек храмов: " + lobby.CurrentPlayer.PointConstructionTemple.ToString());
         }
 
         private void LabelGreatness_ShowHint(object sender, EventArgs e)
@@ -802,27 +802,27 @@ namespace Fantasy_Kingdoms_Battle
 
         private void PageHeroes_ShowHint(object sender, EventArgs e)
         {
-            ShowHintForToolButton(pageHeroes, pageHeroes.Caption, "Нанято героев: " + lobby.CurrentPlayer.CombatHeroes.Count.ToString());
+            ShowHintForToolButton(pageHeroes, "Герои", "Нанято героев: " + lobby.CurrentPlayer.CombatHeroes.Count.ToString());
         }
 
         private void PageBuildings_ShowHint(object sender, EventArgs e)
         {
-            ShowHintForToolButton(pageBuildings, pageBuildings.Caption, "Доступно построек/апгрейдов зданий: " + lobby.CurrentPlayer.PointConstructionEconomic.ToString());
+            ShowHintForToolButton(pageBuildings, "Экономические строения", "Доступно построек/апгрейдов зданий: " + lobby.CurrentPlayer.PointConstructionEconomic.ToString());
         }
 
         private void PageGuilds_ShowHint(object sender, EventArgs e)
         {
-            ShowHintForToolButton(pageGuilds, pageGuilds.Caption, "Доступно построек/апгрейдов гильдий: " + lobby.CurrentPlayer.PointConstructionGuild.ToString());
+            ShowHintForToolButton(pageGuilds, "Гильдии и военные сооружения", "Доступно построек/апгрейдов гильдий: " + lobby.CurrentPlayer.PointConstructionGuild.ToString());
         }
 
         private void PageLairs_ShowHint(object sender, EventArgs e)
         {
-            ShowHintForToolButton(pageLairs, pageLairs.Caption, "");
+            ShowHintForToolButton(pageLairs, "Окрестности", "");
         }
 
         private void PageTournament_ShowHint(object sender, EventArgs e)
         {
-            ShowHintForToolButton(pageTournament, pageTournament.Caption, "Турнир начнется через " + lobby.DaysForTournament().ToString() + " дн.");
+            ShowHintForToolButton(pageTournament, "Турнир", "Турнир начнется через " + lobby.DaysForTournament().ToString() + " дн.");
         }
 
         private void LabelGold_ShowHint(object sender, EventArgs e)
