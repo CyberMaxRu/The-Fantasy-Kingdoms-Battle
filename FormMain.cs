@@ -642,32 +642,10 @@ namespace Fantasy_Kingdoms_Battle
                 DrawPageLair();
 
                 // Вычисляем максимальный размер страниц
-                int maxHeightPages = 0;
-                int maxWidthPages = 0;
-
                 pageControl.ApplyMaxSize();
-                /*                foreach (VCFormPage pc in pages)
-                                {
-                                    Size maxSizePanelPage = pc.Page.MaxSize();
-                                    maxWidthPages = Math.Max(maxWidthPages, maxSizePanelPage.Width);
-                                    maxHeightPages = Math.Max(maxHeightPages, maxSizePanelPage.Height);
-                                }*/
-
-                maxWidthPages = pageControl.Width;
-                maxHeightPages = pageControl.Height;
-                // Располагаем страницы на главной форме
-                int leftForNextButtonPage = panelEmptyInfo.NextLeft();
                 pageControl.ShiftX = panelEmptyInfo.NextLeft();
-                //pageControl.Width = maxWidthPages;
-                /*foreach (VCFormPage fp in pages)
-                {
-                    fp.ShiftX = leftForNextButtonPage;
-                    fp.Page.Width = maxWidthPages;
 
-                    leftForNextButtonPage = fp.NextLeft();
-                }*/
-
-                panelCombatHeroes.ShiftX = pageControl.ShiftX + maxWidthPages + Config.GridSize;
+                panelCombatHeroes.ShiftX = pageControl.NextLeft();
 
                 //
                 Debug.Assert(panelBuildingInfo.Height > 0);
@@ -678,7 +656,7 @@ namespace Fantasy_Kingdoms_Battle
                 int maxHeightPanelInfo = Math.Max(panelBuildingInfo.Height, panelLairInfo.Height);
                 maxHeightPanelInfo = Math.Max(panelHeroInfo.Height, maxHeightPanelInfo);
                 maxHeightPanelInfo = Math.Max(panelMonsterInfo.Height, maxHeightPanelInfo);
-                int maxHeightControls = Math.Max(maxHeightPages, maxHeightPanelInfo);
+                int maxHeightControls = Math.Max(pageControl.Height, maxHeightPanelInfo);
 
                 // Все контролы созданы, устанавливаем размеры bitmapMenu
                 MainControl.Width = panelCombatHeroes.ShiftX + panelCombatHeroes.Width + Config.GridSize;
@@ -691,7 +669,7 @@ namespace Fantasy_Kingdoms_Battle
                 // Теперь когда известна ширина окна, можно создавать картинку тулбара
                 labelNamePlayer.Height = bmpPreparedToolbar.Height;
                 panelPlayers.ShiftX = (MainControl.Width - panelPlayers.Width) / 2;
-                panelCombatHeroes.Height = maxHeightPages - bitmapMenu.Height - Config.GridSize;
+                panelCombatHeroes.Height = pageControl.Height - bitmapMenu.Height - Config.GridSize;
 
                 sizeGamespace = new Size(MainControl.Width, MainControl.ShiftY + MainControl.Height);
                 Width = Width - ClientSize.Width + sizeGamespace.Width;
@@ -712,8 +690,6 @@ namespace Fantasy_Kingdoms_Battle
 
                 bmpPreparedToolbar.ShiftX = 0;
                 MainControl.ShiftX = 0;
-
-                //pageGuilds.ShiftX + maxWidthPages + Config.GridSize;
 
                 layerMainMenu.Width = sizeGamespace.Width;
                 layerMainMenu.Height = sizeGamespace.Height;
