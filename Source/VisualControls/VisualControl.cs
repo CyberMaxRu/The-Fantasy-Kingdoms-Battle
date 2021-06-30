@@ -107,7 +107,7 @@ namespace Fantasy_Kingdoms_Battle
         internal virtual void PaintForeground(Graphics g)
         {
             // Рисуем бордюр
-            if (ShowBorder)
+            if (ShowBorder && Visible)
             {
                 PrepareBorder();
                 g.DrawImageUnscaled(bmpBorder, Left - 2, Top);
