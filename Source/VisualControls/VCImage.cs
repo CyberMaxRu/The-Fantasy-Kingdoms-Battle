@@ -193,15 +193,20 @@ namespace Fantasy_Kingdoms_Battle
                     default:
                         break;
                 }
+            }
+        }
 
-                // Всплывающее количество 
-                if (PopupQuantity > 0)
-                {
-                    g.FillEllipse(brushPopupQuantity, Left + Width - 13, Top - 5, sizePopupBackground, sizePopupBackground);
+        internal override void PaintForeground(Graphics g)
+        {
+            base.PaintForeground(g);
 
-                    labelPopupQuantity.Text = PopupQuantity.ToString();
-                    labelPopupQuantity.Draw(g);
-                }
+            // Всплывающее количество 
+            if (PopupQuantity > 0)
+            {
+                g.FillEllipse(brushPopupQuantity, Left + Width - 13, Top - 5, sizePopupBackground, sizePopupBackground);
+
+                labelPopupQuantity.Text = PopupQuantity.ToString();
+                labelPopupQuantity.Draw(g);
             }
         }
 
