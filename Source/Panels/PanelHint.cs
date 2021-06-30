@@ -381,6 +381,7 @@ namespace Fantasy_Kingdoms_Battle
             if (!ExistHint)
                 return;
 
+            Debug.Assert(c.Visible);
             Debug.Assert(c.Width > 8);
             Debug.Assert(c.Height > 8);
             Debug.Assert(lblHeader.Text.Length > 0);
