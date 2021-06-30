@@ -376,7 +376,7 @@ namespace Fantasy_Kingdoms_Battle
             nextTop = GuiUtils.NextTop(lblDefenseMelee);*/
         }
 
-        internal void DrawHint(VisualControl c, bool delayShow = true)
+        internal void DrawHint(VisualControl c)
         {
             if (!ExistHint)
                 return;
