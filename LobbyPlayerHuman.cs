@@ -22,7 +22,9 @@ namespace Fantasy_Kingdoms_Battle
             // Выбор стартового бонуса
             WindowSelectStartBonus w = new WindowSelectStartBonus(VariantsStartBonuses);
             w.ShowDialog();
-            ApplyStartBonus(w.SelectedBonus);
+
+            if (Program.formMain.ProgramState != ProgramState.NeedQuit)
+                ApplyStartBonus(w.SelectedBonus);
         }
     }
 }
