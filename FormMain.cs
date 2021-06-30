@@ -568,6 +568,7 @@ namespace Fantasy_Kingdoms_Battle
                 btnInGameMenu = CreateButton(layerGame, GUI_SETTINGS, Config.GridSize, Config.GridSize, BtnInGameMenu_Click, BtnInGameMenu_MouseHover);
                 btnInGameMenu.UseFilter = false;
                 btnInGameMenu.HighlightUnderMouse = true;
+                btnInGameMenu.ShowBorder = false;
                 btnEndTurn = CreateButton(layerGame, GUI_HOURGLASS, 0, Config.GridSize, BtnEndTurn_Click, BtnEndTurn_MouseHover);
                 btnEndTurn.UseFilter = false;
                 btnEndTurn.HighlightUnderMouse = true;
