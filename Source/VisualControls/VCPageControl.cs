@@ -14,6 +14,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             UseFilter = false;
             HighlightUnderMouse = true;
+            ShowBorder = true;
 
             Page = new VisualControl(parent, 0, NextTop());
             Page.Visible = false;
