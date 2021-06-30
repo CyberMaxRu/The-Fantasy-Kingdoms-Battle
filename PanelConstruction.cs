@@ -214,12 +214,13 @@ namespace Fantasy_Kingdoms_Battle
             {
                 btnHeroes.Cost = Building.Heroes.Count.ToString() + "/" + Building.MaxHeroes();
                 btnHeroes.ImageIndex = Program.formMain.TreatImageIndex(Building.Building.TrainedHero.ImageIndex, Building.Player);
+                btnHeroes.Visible = true;
                 //btnHeroes.ImageIndex = GuiUtils.GetImageIndexWithGray(btnHeroes.ImageList, Building.Building.TrainedHero.ImageIndex, true);
             }
             else
             {
                 btnHeroes.Cost = null;
-                btnHeroes.ImageIndex = -1;
+                btnHeroes.Visible = false;
             }
 
             base.Draw(g);
