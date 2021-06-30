@@ -160,6 +160,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal virtual void DoShowHint()
         {
+            Debug.Assert(Visible);
+
             if (ShowHintParent && Parent.ShowHint != null)
             {
                 Program.formMain.formHint.Clear();
