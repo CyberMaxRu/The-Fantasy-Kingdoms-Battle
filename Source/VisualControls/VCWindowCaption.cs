@@ -15,7 +15,7 @@ namespace Fantasy_Kingdoms_Battle
 
         public VCWindowCaption(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
-            labelCaption = new VCLabel(this, WidthCap(), 3, Program.formMain.fontMedCaption, Color.MediumAquamarine, Program.formMain.fontMedCaption.MaxHeightSymbol, "");
+            labelCaption = new VCLabel(this, WidthCap(), 3, Program.formMain.fontMedCaptionC, Color.MediumAquamarine, Program.formMain.fontMedCaptionC.MaxHeightSymbol, "");
             labelCaption.StringFormat.Alignment = StringAlignment.Center;
             labelCaption.StringFormat.LineAlignment = StringAlignment.Near;
             labelCaption.ManualDraw = true;
