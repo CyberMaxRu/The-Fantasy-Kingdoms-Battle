@@ -845,5 +845,18 @@ namespace Fantasy_Kingdoms_Battle
             textWriter.Close();
             textWriter.Dispose();
         }
+
+        internal bool CheckNonExistsNamePlayer(string name)
+        {
+            foreach (ComputerPlayer cp in ComputerPlayers)
+                if (cp.Name == name)
+                    return false;
+
+            foreach (HumanPlayer hp in HumanPlayers)
+                if (hp.Name == name)
+                    return false;
+
+            return true;
+        }
     }
 }

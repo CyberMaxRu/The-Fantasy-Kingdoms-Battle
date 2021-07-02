@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 using System.IO;
+using System.Diagnostics;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -219,6 +220,17 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Program.formMain.CurrentHumanPlayer.Name != editName.Text)
             {
+                if (!FormMain.Config.CheckNonExistsNamePlayer(editName.Text))
+                    {
+                        WindowInfo.ShowInfo("Информация", "Выбранное имя уже используется другим игроком.\n\rВыберите другое имя.");
+                        return;
+                    }
+
+                if (Program.formMain.CurrentLobby != null)
+                {
+                    Debug.Assert(Program.formMain.CurrentLobby.CheckUniqueNamePlayers());
+                }
+
                 Program.formMain.CurrentHumanPlayer.SetName(editName.Text);
                 FormMain.Config.SaveHumanPlayers();
                 if (Program.formMain.CurrentLobby != null)

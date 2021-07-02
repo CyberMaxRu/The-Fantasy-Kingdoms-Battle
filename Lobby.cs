@@ -107,6 +107,7 @@ namespace Fantasy_Kingdoms_Battle
             // Реальный игрок должен быть жив
             Debug.Assert(Players[0].GetTypePlayer() == TypePlayer.Human);
             Debug.Assert(Players[0].IsLive);
+            Debug.Assert(CheckUniqueNamePlayers());
 
             foreach (LobbyPlayer p in Players)                 
             {
@@ -366,6 +367,19 @@ namespace Fantasy_Kingdoms_Battle
                 foreach (LobbyPlayer ph2 in Players)
                     if (ph1 != ph2)
                         if (ph1.GetImageIndexAvatar() == ph2.GetImageIndexAvatar())
+                        {
+                            return false;
+                        }
+
+            return true;
+        }
+
+        internal bool CheckUniqueNamePlayers()
+        {
+            foreach (LobbyPlayer ph1 in Players)
+                foreach (LobbyPlayer ph2 in Players)
+                    if (ph1 != ph2)
+                        if (ph1.Player.Name == ph2.Player.Name)
                         {
                             return false;
                         }
