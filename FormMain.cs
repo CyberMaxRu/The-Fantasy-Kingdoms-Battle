@@ -1835,6 +1835,8 @@ namespace Fantasy_Kingdoms_Battle
 
                 if (formHint.ExistHint)
                 {
+                    Debug.Assert(controlWithHint.Visible);
+
                     formHint.Visible = true;
                     needRepaintFrame = true;
                     Invalidate(true);
