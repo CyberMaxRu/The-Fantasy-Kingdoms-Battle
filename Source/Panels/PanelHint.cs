@@ -406,8 +406,6 @@ namespace Fantasy_Kingdoms_Battle
             // Сначала меняем высоту, а потом меням координату, чтобы при ArrangeControls не срабатывал Assert
             SetPos(l.X, l.Y);
 
-            bool needReshow = (Visible == false) || (Height != nextTop);
-
             bmpBackground?.Dispose();
             bmpBackground = new Bitmap(Width, Height);
             Graphics g = Graphics.FromImage(bmpBackground);
