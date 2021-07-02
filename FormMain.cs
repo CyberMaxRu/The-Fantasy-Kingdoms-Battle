@@ -1840,6 +1840,8 @@ namespace Fantasy_Kingdoms_Battle
                     formHint.Visible = true;
                     needRepaintFrame = true;
                     Invalidate(true);
+
+                    Debug.Assert(controlWithHint.Visible);
                 }
             }
         }
