@@ -1823,6 +1823,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (controlWithHint != null)
             {
+                Debug.Assert(controlWithHint.Visible);
                 /*if (controlWithHint.VisualLayer != currentLayer)
                 {
                     timerHover.Stop();
