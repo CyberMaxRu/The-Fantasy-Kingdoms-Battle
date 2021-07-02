@@ -33,6 +33,7 @@ namespace Fantasy_Kingdoms_Battle
             Construction = pb;
             DayOfHire = Player.Lobby.Turn;
             TypeHero = th;
+            FullName = TypeHero.Name;
         }
 
         internal PlayerConstruction Construction { get; }// Здание, которому принадлежит герой
@@ -266,6 +267,8 @@ namespace Fantasy_Kingdoms_Battle
         internal string GetNameHero()
         {
             Debug.Assert(IsLive);
+            Debug.Assert(FullName != null);
+            Debug.Assert(FullName.Length > 0);
 
             return TypeHero.ImageIndex != FormMain.IMAGE_INDEX_CURRENT_AVATAR ? FullName : Player.GetName();
         }
