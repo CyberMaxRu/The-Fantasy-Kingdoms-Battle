@@ -301,7 +301,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int PlateHeight { get; private set; }// Количество ячеек на панели справа по вертикали
         internal int MinRowsEntities { get; private set; }// Минимальное количество строк сущностей в панели справа
         internal string IDHeroPeasant { get; private set; }// ID типа героя - крестьянин
-        internal string IDBuildingCastle { get; private set; }// ID Замка
+        internal string IDConstructionCastle { get; private set; }// ID Замка
         internal int WarehouseWidth { get; private set; }// Количество ячеек в ряду склада
         internal int WarehouseHeight { get; private set; }// Количество рядов ячеек склада
         internal int WarehouseMaxCells { get; private set; }// Количество ячеек в складе
@@ -628,8 +628,8 @@ namespace Fantasy_Kingdoms_Battle
 
             IDHeroPeasant = xmlDoc.SelectSingleNode("Game/Links/HeroPeasant").InnerText;
             Debug.Assert(IDHeroPeasant.Length > 0);
-            IDBuildingCastle = xmlDoc.SelectSingleNode("Game/Links/BuildingCastle").InnerText;
-            Debug.Assert(IDBuildingCastle.Length > 0);
+            IDConstructionCastle = xmlDoc.SelectSingleNode("Game/Links/BuildingCastle").InnerText;
+            Debug.Assert(IDConstructionCastle.Length > 0);
 
             WarehouseWidth = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Warehouse/Width").InnerText);
             Debug.Assert(WarehouseWidth >= 5);

@@ -51,7 +51,7 @@ namespace Fantasy_Kingdoms_Battle
             // Инициализация зданий
             foreach (TypeConstruction tck in FormMain.Config.TypeConstructionsOfKingdom)
             {
-                Buildings.Add(new PlayerConstruction(this, tck));
+                Constructions.Add(new PlayerConstruction(this, tck));
             }
 
             // Инициализация логов
@@ -59,7 +59,7 @@ namespace Fantasy_Kingdoms_Battle
 
             GenerateLairs();
 
-            Castle = GetPlayerBuilding(FormMain.Config.FindTypeEconomicConstruction(FormMain.Config.IDBuildingCastle));
+            Castle = GetPlayerConstruction(FormMain.Config.FindTypeEconomicConstruction(FormMain.Config.IDConstructionCastle));
 
             Gold = Lobby.TypeLobby.Gold;
             if (Player.TypePlayer == TypePlayer.Computer)
@@ -134,16 +134,16 @@ namespace Fantasy_Kingdoms_Battle
 
             // Здесь расчет хода для ИИ
             // Покупаем четыре гильдии и строим 16 героев. На этом пока всё
-            GetPlayerBuilding(FormMain.Config.FindTypeGuild("GuildWarrior")).BuyOrUpgrade();
-            GetPlayerBuilding(FormMain.Config.FindTypeGuild("GuildRogue")).BuyOrUpgrade();
-            GetPlayerBuilding(FormMain.Config.FindTypeGuild("GuildHunter")).BuyOrUpgrade();
-            GetPlayerBuilding(FormMain.Config.FindTypeGuild("GuildCleric")).BuyOrUpgrade();
-            GetPlayerBuilding(FormMain.Config.FindTypeGuild("GuildMage")).BuyOrUpgrade();
+            GetPlayerConstruction(FormMain.Config.FindTypeGuild("GuildWarrior")).BuyOrUpgrade();
+            GetPlayerConstruction(FormMain.Config.FindTypeGuild("GuildRogue")).BuyOrUpgrade();
+            GetPlayerConstruction(FormMain.Config.FindTypeGuild("GuildHunter")).BuyOrUpgrade();
+            GetPlayerConstruction(FormMain.Config.FindTypeGuild("GuildCleric")).BuyOrUpgrade();
+            GetPlayerConstruction(FormMain.Config.FindTypeGuild("GuildMage")).BuyOrUpgrade();
 
-            HireAllHero(GetPlayerBuilding(FormMain.Config.FindTypeGuild("GuildWarrior")));
-            HireAllHero(GetPlayerBuilding(FormMain.Config.FindTypeGuild("GuildHunter")));
-            HireAllHero(GetPlayerBuilding(FormMain.Config.FindTypeGuild("GuildCleric")));
-            HireAllHero(GetPlayerBuilding(FormMain.Config.FindTypeGuild("GuildMage")));
+            HireAllHero(GetPlayerConstruction(FormMain.Config.FindTypeGuild("GuildWarrior")));
+            HireAllHero(GetPlayerConstruction(FormMain.Config.FindTypeGuild("GuildHunter")));
+            HireAllHero(GetPlayerConstruction(FormMain.Config.FindTypeGuild("GuildCleric")));
+            HireAllHero(GetPlayerConstruction(FormMain.Config.FindTypeGuild("GuildMage")));
 
             void HireAllHero(PlayerConstruction bp)
             {
@@ -260,7 +260,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void ValidateHeroes()
         {
-            foreach (PlayerConstruction pb in Buildings)
+            foreach (PlayerConstruction pb in Constructions)
                 pb.ValidateHeroes();
         }
 
@@ -271,7 +271,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int LevelGreatness { get; }// Уровень величия
         internal int PointGreatness { get; set; }// Очков величия
         internal int PointGreatnessForNextLevel { get; }// Очков величия до следующего уровня
-        internal List<PlayerConstruction> Buildings { get; } = new List<PlayerConstruction>();
+        internal List<PlayerConstruction> Constructions { get; } = new List<PlayerConstruction>();
         internal int LevelCastle => Castle.Level;
         internal List<PlayerHero> AllHeroes { get; } = new List<PlayerHero>();
         internal int Gold { get => Castle.Gold; set { Castle.Gold = value; } }
@@ -296,11 +296,11 @@ namespace Fantasy_Kingdoms_Battle
         private LobbyPlayer opponent;// Убрать это
         internal LobbyPlayer Opponent { get { return opponent; } set { if (value != this) opponent = value; else new Exception("Нельзя указать оппонентов самого себя."); } }
 
-        internal PlayerConstruction GetPlayerBuilding(TypeConstruction b)
+        internal PlayerConstruction GetPlayerConstruction(TypeConstruction b)
         {
             Debug.Assert(b != null);
 
-            foreach (PlayerConstruction pb in Buildings)
+            foreach (PlayerConstruction pb in Constructions)
             {
                 if (pb.TypeConstruction == b)
                     return pb;
@@ -318,8 +318,7 @@ namespace Fantasy_Kingdoms_Battle
             if ((ph.TypeHero.ID != "King") && (ph.TypeHero.ID != "Advisor") && (ph.TypeHero.ID != "Captain") && (ph.TypeHero.ID != "Treasurer"))
                 AddCombatHero(ph);
 
-            // Восстановить
-            if (ph.Building.TypeConstruction.TrainedHero != null)
+            if (ph.Construction.TypeConstruction.TrainedHero != null)
             {
                 RearrangeHeroes();
             }
@@ -350,7 +349,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             int income = 0;
 
-            foreach (PlayerConstruction pb in Buildings)
+            foreach (PlayerConstruction pb in Constructions)
             {
                 income += pb.Income();
             }
@@ -441,7 +440,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void GiveItemToHero(int fromSlot, PlayerHero ph, int quantity, int toSlot)
         {
-            Debug.Assert(ph.Building.Player == this);
+            Debug.Assert(ph.Construction.Player == this);
             Debug.Assert(Warehouse[fromSlot] != null);
             Debug.Assert(Warehouse[fromSlot].Quantity >= quantity);
 
@@ -452,7 +451,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void GiveItemToHero(int fromSlot, PlayerHero ph, int quantity)
         {
-            Debug.Assert(ph.Building.Player == this);
+            Debug.Assert(ph.Construction.Player == this);
             Debug.Assert(Warehouse[fromSlot] != null);
             Debug.Assert(Warehouse[fromSlot].Quantity >= quantity);
 
@@ -463,7 +462,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal bool GetItemFromHero(PlayerHero ph, int fromSlot)
         {
-            /*Debug.Assert(ph.Building.Player == this);
+            /*Debug.Assert(ph.Construction.Player == this);
             Debug.Assert(ph.Slots[fromSlot] != null);
             Debug.Assert(ph.Slots[fromSlot].Quantity > 0);
 
@@ -477,7 +476,7 @@ namespace Fantasy_Kingdoms_Battle
         }
         internal void GetItemFromHero(PlayerHero ph, int fromSlot, int toSlot)
         {
-            /*Debug.Assert(ph.Building.Player == this);
+            /*Debug.Assert(ph.Construction.Player == this);
             Debug.Assert(ph.Slots[fromSlot] != null);
             Debug.Assert(toSlot >= 0);
 
@@ -528,7 +527,7 @@ namespace Fantasy_Kingdoms_Battle
             PlayerConstruction pb;
             foreach (Requirement r in list)
             {
-                pb = GetPlayerBuilding(r.Building);
+                pb = GetPlayerConstruction(r.Construction);
                 if (r.Level > pb.Level)
                     return false;
             }
@@ -542,7 +541,7 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (Requirement r in listReq)
             {
-                pb = GetPlayerBuilding(r.Building);
+                pb = GetPlayerConstruction(r.Construction);
                 listTextReq.Add(new TextRequirement(r.Level <= pb.Level, pb.TypeConstruction.Name + (r.Level > 1 ? " " + r.Level + " уровня" : "")));
             }
         }
@@ -847,7 +846,7 @@ namespace Fantasy_Kingdoms_Battle
             if (PointConstructionTemple == 0)
                 return false;
 
-            foreach (PlayerConstruction pb in Buildings.Where(p => p.TypeConstruction is TypeTemple))
+            foreach (PlayerConstruction pb in Constructions.Where(p => p.TypeConstruction is TypeTemple))
             {
                 if ((pb.Level == 0) && pb.CheckRequirements())
                     return true;

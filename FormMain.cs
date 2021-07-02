@@ -1200,7 +1200,7 @@ namespace Fantasy_Kingdoms_Battle
             //panelPlayers.ArrangeControls();
 
             // Показываем сооружения
-            foreach (PlayerConstruction pb in lobby.CurrentPlayer.Buildings)
+            foreach (PlayerConstruction pb in lobby.CurrentPlayer.Constructions)
             {
                 pb.TypeConstruction.Panel.LinkToPlayer(pb);
             }

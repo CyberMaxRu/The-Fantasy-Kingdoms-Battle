@@ -14,7 +14,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         public PlayerHero(PlayerConstruction pb, BattleParticipant bp) : base(pb.TypeConstruction.TrainedHero, bp)
         {
-            Building = pb;
+            Construction = pb;
             DayOfHire = Player.Lobby.Turn;
             TypeHero = pb.TypeConstruction.TrainedHero;
 
@@ -30,13 +30,13 @@ namespace Fantasy_Kingdoms_Battle
 
         public PlayerHero(PlayerConstruction pb, BattleParticipant bp, TypeHero th) : base(th, bp)
         {
-            Building = pb;
+            Construction = pb;
             DayOfHire = Player.Lobby.Turn;
             TypeHero = th;
         }
 
-        internal PlayerConstruction Building { get; }// Здание, которому принадлежит герой
-        internal LobbyPlayer Player => Building.Player;// Игрок, которому принадлежит герой
+        internal PlayerConstruction Construction { get; }// Здание, которому принадлежит герой
+        internal LobbyPlayer Player => Construction.Player;// Игрок, которому принадлежит герой
         internal TypeHero TypeHero { get; } // Класс героя
         internal string FullName { get; }// Полное имя
         internal int Gold { get; private set; }// Количество золота у героя
@@ -61,14 +61,14 @@ namespace Fantasy_Kingdoms_Battle
         // Увольнение героя
         internal void Dismiss()
         {
-            Debug.Assert(Building.Heroes.IndexOf(this) != -1);
-            Debug.Assert(Building.Player.CombatHeroes.IndexOf(this) != -1);
+            Debug.Assert(Construction.Heroes.IndexOf(this) != -1);
+            Debug.Assert(Construction.Player.CombatHeroes.IndexOf(this) != -1);
 
-            Building.Heroes.Remove(this);
-            Building.Player.CombatHeroes.Remove(this);
+            Construction.Heroes.Remove(this);
+            Construction.Player.CombatHeroes.Remove(this);
 
-            Debug.Assert(Building.Heroes.IndexOf(this) == -1);
-            Debug.Assert(Building.Player.CombatHeroes.IndexOf(this) == -1);
+            Debug.Assert(Construction.Heroes.IndexOf(this) == -1);
+            Debug.Assert(Construction.Player.CombatHeroes.IndexOf(this) == -1);
         }
 
         internal int FindSlotWithItem(Item item)

@@ -21,15 +21,15 @@ namespace Fantasy_Kingdoms_Battle
             Level = l;
         }
 
-        internal TypeConstruction Building { get; private set; }
+        internal TypeConstruction Construction { get; private set; }
         internal int Level { get; }
 
         internal void FindBuilding()
         {
-            Building = FormMain.Config.FindTypeConstructionOfKingdom(nameBuilding);
+            Construction = FormMain.Config.FindTypeConstructionOfKingdom(nameBuilding);
             nameBuilding = null;
 
-            Debug.Assert(Level <= Building.MaxLevel);
+            Debug.Assert(Level <= Construction.MaxLevel);
         }
     }
 }
