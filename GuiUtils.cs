@@ -46,20 +46,6 @@ namespace Fantasy_Kingdoms_Battle
             return bmpBackground;
         }
 
-        internal static Bitmap MakeBackgroundWithBorder(Size size, Color borderColor)
-        {
-            Bitmap bmp = MakeBackground(size);
-
-            Graphics g = Graphics.FromImage(bmp);
-            Pen penBorder = new Pen(borderColor);
-            g.DrawRectangle(penBorder, 0, 0, bmp.Width - 1, bmp.Height - 1);
-
-            penBorder.Dispose();
-            g.Dispose();
-
-            return bmp;
-        }
-
         public static void ShowError(string text)
         {
             MessageBox.Show(text, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
