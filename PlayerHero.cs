@@ -12,15 +12,15 @@ namespace Fantasy_Kingdoms_Battle
     // Класс героя игрока
     internal sealed class PlayerHero : Creature
     {
-        public PlayerHero(PlayerBuilding pb, BattleParticipant bp) : base(pb.Building.TrainedHero, bp)
+        public PlayerHero(PlayerConstruction pb, BattleParticipant bp) : base(pb.TypeConstruction.TrainedHero, bp)
         {
             Building = pb;
             DayOfHire = Player.Lobby.Turn;
-            TypeHero = pb.Building.TrainedHero;
+            TypeHero = pb.TypeConstruction.TrainedHero;
 
-            FullName = (pb.Building.TrainedHero.PrefixName.Length > 0 ? pb.Building.TrainedHero.PrefixName + " " : "")
-                + GetRandomName(pb.Building.TrainedHero.NameFromTypeHero == null ? pb.Building.TrainedHero.Names : pb.Building.TrainedHero.NameFromTypeHero.Names)
-                + " " + GetRandomName(pb.Building.TrainedHero.SurnameFromTypeHero == null ? pb.Building.TrainedHero.Surnames : pb.Building.TrainedHero.Surnames);
+            FullName = (pb.TypeConstruction.TrainedHero.PrefixName.Length > 0 ? pb.TypeConstruction.TrainedHero.PrefixName + " " : "")
+                + GetRandomName(pb.TypeConstruction.TrainedHero.NameFromTypeHero == null ? pb.TypeConstruction.TrainedHero.Names : pb.TypeConstruction.TrainedHero.NameFromTypeHero.Names)
+                + " " + GetRandomName(pb.TypeConstruction.TrainedHero.SurnameFromTypeHero == null ? pb.TypeConstruction.TrainedHero.Surnames : pb.TypeConstruction.TrainedHero.Surnames);
 
             string GetRandomName(List<string> list)
             {
@@ -28,14 +28,14 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        public PlayerHero(PlayerBuilding pb, BattleParticipant bp, TypeHero th) : base(th, bp)
+        public PlayerHero(PlayerConstruction pb, BattleParticipant bp, TypeHero th) : base(th, bp)
         {
             Building = pb;
             DayOfHire = Player.Lobby.Turn;
             TypeHero = th;
         }
 
-        internal PlayerBuilding Building { get; }// Здание, которому принадлежит герой
+        internal PlayerConstruction Building { get; }// Здание, которому принадлежит герой
         internal LobbyPlayer Player => Building.Player;// Игрок, которому принадлежит герой
         internal TypeHero TypeHero { get; } // Класс героя
         internal string FullName { get; }// Полное имя

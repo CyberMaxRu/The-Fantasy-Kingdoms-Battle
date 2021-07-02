@@ -58,8 +58,8 @@ namespace Fantasy_Kingdoms_Battle
             btnHeroes.ShiftX = Width - btnHeroes.Width - FormMain.Config.GridSize;
         }
 
-        internal PlayerBuilding Building { get => PlayerObject as PlayerBuilding; }
-        internal TypeConstruction TypeConstruction { get => Building.Building; }
+        internal PlayerConstruction Construction { get => PlayerObject as PlayerConstruction; }
+        internal TypeConstruction TypeConstruction { get => Construction.TypeConstruction; }
 
 
         private void BtnHireHero_ShowHint(object sender, EventArgs e)
@@ -76,44 +76,44 @@ namespace Fantasy_Kingdoms_Battle
         {
             Program.formMain.formHint.AddStep1Header(TypeConstruction.TrainedHero.Name, "", TypeConstruction.TrainedHero.Description);
             if ((TypeConstruction.TrainedHero != null) && (TypeConstruction.TrainedHero.Cost > 0))
-                Program.formMain.formHint.AddStep3Requirement(Building.GetTextRequirementsHire());
-            Program.formMain.formHint.AddStep4Gold(TypeConstruction.TrainedHero.Cost, Building.Player.Gold >= TypeConstruction.TrainedHero.Cost);
+                Program.formMain.formHint.AddStep3Requirement(Construction.GetTextRequirementsHire());
+            Program.formMain.formHint.AddStep4Gold(TypeConstruction.TrainedHero.Cost, Construction.Player.Gold >= TypeConstruction.TrainedHero.Cost);
         }
 
         private void ShowHintBtnBuyOrUpgrade()
         {
             //Debug.Assert(Building.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
 
-            if (Building.Level < Building.Building.MaxLevel)
+            if (Construction.Level < Construction.TypeConstruction.MaxLevel)
             {
-                if (Building.Building.LevelAsQuantity)
-                    Program.formMain.formHint.AddStep1Header(Building.Building.Name, "Построить сооружение", Building.Level == 0 ? Building.Building.Description : "");
+                if (Construction.TypeConstruction.LevelAsQuantity)
+                    Program.formMain.formHint.AddStep1Header(Construction.TypeConstruction.Name, "Построить сооружение", Construction.Level == 0 ? Construction.TypeConstruction.Description : "");
                 else
-                    Program.formMain.formHint.AddStep1Header(Building.Building.Name, Building.Level == 0 ? "Уровень 1" : (Building.CanLevelUp() == true) ? "Улучшить строение" : "", Building.Level == 0 ? Building.Building.Description : "");
+                    Program.formMain.formHint.AddStep1Header(Construction.TypeConstruction.Name, Construction.Level == 0 ? "Уровень 1" : (Construction.CanLevelUp() == true) ? "Улучшить строение" : "", Construction.Level == 0 ? Construction.TypeConstruction.Description : "");
 
-                Program.formMain.formHint.AddStep2Income(Building.IncomeNextLevel());
-                Program.formMain.formHint.AddStep3Greatness(Building.GreatnessAddNextLevel(), Building.GreatnessPerDayNextLevel());
-                Program.formMain.formHint.AddStep3Requirement(Building.GetTextRequirements());
-                Program.formMain.formHint.AddStep4Gold(Building.CostBuyOrUpgrade(), Building.Player.Gold >= Building.CostBuyOrUpgrade());
+                Program.formMain.formHint.AddStep2Income(Construction.IncomeNextLevel());
+                Program.formMain.formHint.AddStep3Greatness(Construction.GreatnessAddNextLevel(), Construction.GreatnessPerDayNextLevel());
+                Program.formMain.formHint.AddStep3Requirement(Construction.GetTextRequirements());
+                Program.formMain.formHint.AddStep4Gold(Construction.CostBuyOrUpgrade(), Construction.Player.Gold >= Construction.CostBuyOrUpgrade());
             }
         }
 
         private void BtnHireHero_Click(object sender, EventArgs e)
         {
-            Debug.Assert(Building.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
-            Debug.Assert(Building.Level <= Building.Building.MaxLevel);
+            Debug.Assert(Construction.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
+            Debug.Assert(Construction.Level <= Construction.TypeConstruction.MaxLevel);
 
-            SelectThisBuilding();
+            SelectThisConstruction();
 
-            if ((Building.Level > 0) && (Building.CanTrainHero() == true))
+            if ((Construction.Level > 0) && (Construction.CanTrainHero() == true))
             {
-                if (Building.Building is TypeTemple)
+                if (Construction.TypeConstruction is TypeTemple)
                 {
                     MessageBox.Show("Найм храмовых героев в этой версии не реализован.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                Building.HireHero();
+                Construction.HireHero();
                 Program.formMain.UpdateListHeroes();
                 Program.formMain.SetNeedRedrawFrame();
             }
@@ -121,13 +121,13 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnBuyOrUprgade_Click(object sender, EventArgs e)
         {
-            Debug.Assert(Building.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
+            Debug.Assert(Construction.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
 
-            SelectThisBuilding();
+            SelectThisConstruction();
 
-            if (Building.Player.Gold >= Building.CostBuyOrUpgrade())
+            if (Construction.Player.Gold >= Construction.CostBuyOrUpgrade())
             {
-                if (Building.BuyOrUpgrade())
+                if (Construction.BuyOrUpgrade())
                 {
                     Program.formMain.SetNeedRedrawFrame();
                     Program.formMain.PlayConstructionComplete();
@@ -135,7 +135,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void LinkToPlayer(PlayerBuilding pb)
+        internal void LinkToPlayer(PlayerConstruction pb)
         {
             Debug.Assert(pb != null);
             Debug.Assert(pb.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
@@ -151,37 +151,37 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
-            Debug.Assert(Building.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
+            Debug.Assert(Construction.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
 
-            imgMapObject.ImageIndex = Building.Building.ImageIndex;
-            imgMapObject.NormalImage = Building.Level > 0;
+            imgMapObject.ImageIndex = Construction.TypeConstruction.ImageIndex;
+            imgMapObject.NormalImage = Construction.Level > 0;
 
-            lblNameMapObject.Text = Building.Building.Name;
-            lblNameMapObject.Color = FormMain.Config.ColorMapObjectCaption(Building.Level > 0);
+            lblNameMapObject.Text = Construction.TypeConstruction.Name;
+            lblNameMapObject.Color = FormMain.Config.ColorMapObjectCaption(Construction.Level > 0);
 
-            if (Building.Building is TypeEconomicConstruction)
+            if (Construction.TypeConstruction is TypeEconomicConstruction)
             {
-                lblIncome.Text = "+" + (Building.Level > 0 ? Building.Income() : Building.IncomeNextLevel()).ToString();
-                lblIncome.Color = FormMain.Config.ColorIncome(Building.Level > 0);
+                lblIncome.Text = "+" + (Construction.Level > 0 ? Construction.Income() : Construction.IncomeNextLevel()).ToString();
+                lblIncome.Color = FormMain.Config.ColorIncome(Construction.Level > 0);
             }
             else
                 lblIncome.Visible = false;
 
-            int greatness = Building.Level > 0 ? Building.GreatnessPerDay() : Building.GreatnessPerDayNextLevel();
+            int greatness = Construction.Level > 0 ? Construction.GreatnessPerDay() : Construction.GreatnessPerDayNextLevel();
             lblGreatness.Visible = greatness > 0;
             if (lblGreatness.Visible)
             {
                 lblGreatness.Text = $"+{greatness}";
             }
 
-            if (Building.Level > 0)
+            if (Construction.Level > 0)
             {
-                if (Building.CanLevelUp())
+                if (Construction.CanLevelUp())
                 {
                     btnBuyOrUpgrade.Visible = true;
-                    btnBuyOrUpgrade.Cost = Building.CostBuyOrUpgrade().ToString();
-                    btnBuyOrUpgrade.ImageIndex = Building.Building.LevelAsQuantity ? FormMain.GUI_BUILD : FormMain.GUI_LEVELUP;
-                    btnBuyOrUpgrade.ImageIsEnabled = Building.CheckRequirements();
+                    btnBuyOrUpgrade.Cost = Construction.CostBuyOrUpgrade().ToString();
+                    btnBuyOrUpgrade.ImageIndex = Construction.TypeConstruction.LevelAsQuantity ? FormMain.GUI_BUILD : FormMain.GUI_LEVELUP;
+                    btnBuyOrUpgrade.ImageIsEnabled = Construction.CheckRequirements();
                 }
                 else
                 {
@@ -191,21 +191,21 @@ namespace Fantasy_Kingdoms_Battle
             else
             {
                 btnBuyOrUpgrade.Visible = true;
-                btnBuyOrUpgrade.Cost = Building.CostBuyOrUpgrade().ToString();
-                btnBuyOrUpgrade.ImageIsEnabled = Building.CheckRequirements();
+                btnBuyOrUpgrade.Cost = Construction.CostBuyOrUpgrade().ToString();
+                btnBuyOrUpgrade.ImageIsEnabled = Construction.CheckRequirements();
             }
 
             if ((TypeConstruction.TrainedHero != null) && !(TypeConstruction is TypeEconomicConstruction))
             {
                 //btnHireHero.ImageIndex = (Building.Level > 0) && ((Building.Heroes.Count == Building.MaxHeroes()) || (Building.MaxHeroesAtPlayer() == true))  ? -1 : GuiUtils.GetImageIndexWithGray(btnHireHero.ImageList, c.TrainedHero.ImageIndex, Building.CanTrainHero());
-                if (Building.Heroes.Count < Building.MaxHeroes())
+                if (Construction.Heroes.Count < Construction.MaxHeroes())
                 {
 
                     btnHireHero.Visible = true;
-                    btnHireHero.ImageIndex = ((Building.Level > 0) && (Building.MaxHeroesAtPlayer() == true)) ? -1 : TypeConstruction.TrainedHero.ImageIndex;
-                    btnHireHero.ImageIndex = Program.formMain.TreatImageIndex(Building.Building.TrainedHero.ImageIndex, Building.Player);
-                    btnHireHero.ImageIsEnabled = Building.CanTrainHero();
-                    btnHireHero.Cost = (Building.Level == 0) || (Building.CanTrainHero() == true) ? TypeConstruction.TrainedHero.Cost.ToString() : null;
+                    btnHireHero.ImageIndex = ((Construction.Level > 0) && (Construction.MaxHeroesAtPlayer() == true)) ? -1 : TypeConstruction.TrainedHero.ImageIndex;
+                    btnHireHero.ImageIndex = Program.formMain.TreatImageIndex(Construction.TypeConstruction.TrainedHero.ImageIndex, Construction.Player);
+                    btnHireHero.ImageIsEnabled = Construction.CanTrainHero();
+                    btnHireHero.Cost = (Construction.Level == 0) || (Construction.CanTrainHero() == true) ? TypeConstruction.TrainedHero.Cost.ToString() : null;
                 }
                 else
                     btnHireHero.Visible = false;
@@ -213,15 +213,14 @@ namespace Fantasy_Kingdoms_Battle
             else
                 btnHireHero.Visible = false;
 
-            imgMapObject.Level = Building.Building.LevelAsQuantity ? 0 : Building.Level < Building.Building.MaxLevel ? Building.Level : 0;
-            imgMapObject.Quantity = Building.Building.LevelAsQuantity ? Building.Level : 0;
+            imgMapObject.Level = Construction.TypeConstruction.LevelAsQuantity ? 0 : Construction.Level < Construction.TypeConstruction.MaxLevel ? Construction.Level : 0;
+            imgMapObject.Quantity = Construction.TypeConstruction.LevelAsQuantity ? Construction.Level : 0;
 
-            if ((Building.Building.TrainedHero != null) && !(TypeConstruction is TypeEconomicConstruction) && (Building.Level > 0) && (Building.Heroes.Count > 0))
+            if ((Construction.TypeConstruction.TrainedHero != null) && !(TypeConstruction is TypeEconomicConstruction) && (Construction.Level > 0) && (Construction.Heroes.Count > 0))
             {
-                btnHeroes.Cost = Building.Heroes.Count.ToString() + "/" + Building.MaxHeroes();
-                btnHeroes.ImageIndex = Program.formMain.TreatImageIndex(Building.Building.TrainedHero.ImageIndex, Building.Player);
+                btnHeroes.Cost = Construction.Heroes.Count.ToString() + "/" + Construction.MaxHeroes();
+                btnHeroes.ImageIndex = Program.formMain.TreatImageIndex(Construction.TypeConstruction.TrainedHero.ImageIndex, Construction.Player);
                 btnHeroes.Visible = true;
-                //btnHeroes.ImageIndex = GuiUtils.GetImageIndexWithGray(btnHeroes.ImageList, Building.Building.TrainedHero.ImageIndex, true);
             }
             else
             {

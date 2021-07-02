@@ -69,10 +69,10 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (!Selected())
                 PlaySelect();
-            SelectThisBuilding();
+            SelectThisConstruction();
         }
 
-        protected void SelectThisBuilding()
+        protected void SelectThisConstruction()
         {
             Debug.Assert(PlayerObject != null);
             Program.formMain.SelectPlayerObject(PlayerObject);

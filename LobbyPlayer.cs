@@ -12,7 +12,7 @@ namespace Fantasy_Kingdoms_Battle
     // Класс игрока лобби
     internal abstract class LobbyPlayer : BattleParticipant, ICell
     {
-        private PlayerBuilding Castle;
+        private PlayerConstruction Castle;
 
         // TODO Вынести константы в конфигурацию игры
         internal const int MAX_FLAG_EXCLUSIVE = 1;// Максимальное число флагов с максимальным
@@ -51,7 +51,7 @@ namespace Fantasy_Kingdoms_Battle
             // Инициализация зданий
             foreach (TypeConstruction tck in FormMain.Config.TypeConstructionsOfKingdom)
             {
-                Buildings.Add(new PlayerBuilding(this, tck));
+                Buildings.Add(new PlayerConstruction(this, tck));
             }
 
             // Инициализация логов
@@ -145,7 +145,7 @@ namespace Fantasy_Kingdoms_Battle
             HireAllHero(GetPlayerBuilding(FormMain.Config.FindTypeGuild("GuildCleric")));
             HireAllHero(GetPlayerBuilding(FormMain.Config.FindTypeGuild("GuildMage")));
 
-            void HireAllHero(PlayerBuilding bp)
+            void HireAllHero(PlayerConstruction bp)
             {
                 if (bp.Heroes.Count < bp.MaxHeroes())
                 {
@@ -260,7 +260,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void ValidateHeroes()
         {
-            foreach (PlayerBuilding pb in Buildings)
+            foreach (PlayerConstruction pb in Buildings)
                 pb.ValidateHeroes();
         }
 
@@ -271,7 +271,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int LevelGreatness { get; }// Уровень величия
         internal int PointGreatness { get; set; }// Очков величия
         internal int PointGreatnessForNextLevel { get; }// Очков величия до следующего уровня
-        internal List<PlayerBuilding> Buildings { get; } = new List<PlayerBuilding>();
+        internal List<PlayerConstruction> Buildings { get; } = new List<PlayerConstruction>();
         internal int LevelCastle => Castle.Level;
         internal List<PlayerHero> AllHeroes { get; } = new List<PlayerHero>();
         internal int Gold { get => Castle.Gold; set { Castle.Gold = value; } }
@@ -296,13 +296,13 @@ namespace Fantasy_Kingdoms_Battle
         private LobbyPlayer opponent;// Убрать это
         internal LobbyPlayer Opponent { get { return opponent; } set { if (value != this) opponent = value; else new Exception("Нельзя указать оппонентов самого себя."); } }
 
-        internal PlayerBuilding GetPlayerBuilding(TypeConstruction b)
+        internal PlayerConstruction GetPlayerBuilding(TypeConstruction b)
         {
             Debug.Assert(b != null);
 
-            foreach (PlayerBuilding pb in Buildings)
+            foreach (PlayerConstruction pb in Buildings)
             {
-                if (pb.Building == b)
+                if (pb.TypeConstruction == b)
                     return pb;
             }
 
@@ -319,7 +319,7 @@ namespace Fantasy_Kingdoms_Battle
                 AddCombatHero(ph);
 
             // Восстановить
-            if (ph.Building.Building.TrainedHero != null)
+            if (ph.Building.TypeConstruction.TrainedHero != null)
             {
                 RearrangeHeroes();
             }
@@ -330,15 +330,15 @@ namespace Fantasy_Kingdoms_Battle
                 Program.formMain.ListHeroesChanged();
         }
 
-        internal void Constructed(PlayerBuilding pb)
+        internal void Constructed(PlayerConstruction pb)
         {
             Debug.Assert(pb.CheckRequirements());
 
             Gold -= pb.CostBuyOrUpgrade();
-            PointConstructionGuild -= pb.Building.PointConstructionGuild;
-            PointConstructionEconomic -= pb.Building.PointConstructionEconomic;
-            PointConstructionTemple -= pb.Building.PointConstructionTemple;
-            PointConstructionTradePost -= pb.Building.PointConstructionTradePost;
+            PointConstructionGuild -= pb.TypeConstruction.PointConstructionGuild;
+            PointConstructionEconomic -= pb.TypeConstruction.PointConstructionEconomic;
+            PointConstructionTemple -= pb.TypeConstruction.PointConstructionTemple;
+            PointConstructionTradePost -= pb.TypeConstruction.PointConstructionTradePost;
 
             Debug.Assert(PointConstructionGuild >= 0);
             Debug.Assert(PointConstructionEconomic >= 0);
@@ -350,7 +350,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             int income = 0;
 
-            foreach (PlayerBuilding pb in Buildings)
+            foreach (PlayerConstruction pb in Buildings)
             {
                 income += pb.Income();
             }
@@ -525,7 +525,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal bool CheckRequirements(List<Requirement> list)
         {
-            PlayerBuilding pb;
+            PlayerConstruction pb;
             foreach (Requirement r in list)
             {
                 pb = GetPlayerBuilding(r.Building);
@@ -538,12 +538,12 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void TextRequirements(List<Requirement> listReq, List<TextRequirement> listTextReq)
         {
-            PlayerBuilding pb;
+            PlayerConstruction pb;
 
             foreach (Requirement r in listReq)
             {
                 pb = GetPlayerBuilding(r.Building);
-                listTextReq.Add(new TextRequirement(r.Level <= pb.Level, pb.Building.Name + (r.Level > 1 ? " " + r.Level + " уровня" : "")));
+                listTextReq.Add(new TextRequirement(r.Level <= pb.Level, pb.TypeConstruction.Name + (r.Level > 1 ? " " + r.Level + " уровня" : "")));
             }
         }
 
@@ -847,7 +847,7 @@ namespace Fantasy_Kingdoms_Battle
             if (PointConstructionTemple == 0)
                 return false;
 
-            foreach (PlayerBuilding pb in Buildings.Where(p => p.Building is TypeTemple))
+            foreach (PlayerConstruction pb in Buildings.Where(p => p.TypeConstruction is TypeTemple))
             {
                 if ((pb.Level == 0) && pb.CheckRequirements())
                     return true;

@@ -10,13 +10,13 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class PlayerResearch
     {
-        public PlayerResearch(PlayerBuilding pb, Research r)
+        public PlayerResearch(PlayerConstruction pb, Research r)
         {
             Building = pb;
             Research = r;
         }
 
-        internal PlayerBuilding Building { get; }
+        internal PlayerConstruction Building { get; }
         internal Research Research { get; }
 
         internal int Cost()

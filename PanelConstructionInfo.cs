@@ -8,15 +8,15 @@ using System.Drawing;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    // Класс подробной информации о строении
-    internal sealed class PanelBuildingInfo : PanelBaseInfo
+    // Класс подробной информации о сооружении
+    internal sealed class PanelConstructionInfo : PanelBaseInfo
     {
         private VCLabelValue lblGold;
         private readonly PanelWithPanelEntity panelProducts;
         private readonly PanelWithPanelEntity panelInhabitants;
         private readonly PanelWithPanelEntity panelWarehouse;
 
-        public PanelBuildingInfo(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
+        public PanelConstructionInfo(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
             panelProducts = new PanelWithPanelEntity(4);
             panelInhabitants = new PanelWithPanelEntity(4);
@@ -39,7 +39,7 @@ namespace Fantasy_Kingdoms_Battle
             Width = pageControl.Width + FormMain.Config.GridSize * 2;
         }
 
-        internal PlayerBuilding Building { get => PlayerObject as PlayerBuilding; }
+        internal PlayerConstruction Construction { get => PlayerObject as PlayerConstruction; }
 
         internal override void ArrangeControls()
         {
@@ -50,30 +50,30 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
-            imgIcon.Level = (Building.Building.MaxLevel > 1) && (Building.Level > 0) ? Building.Level : 0;
+            imgIcon.Level = (Construction.TypeConstruction.MaxLevel > 1) && (Construction.Level > 0) ? Construction.Level : 0;
 
-            if (Building.Building.HasTreasury)
+            if (Construction.TypeConstruction.HasTreasury)
             {
                 lblGold.Visible = true;
-                lblGold.Text = Building.Gold.ToString();
+                lblGold.Text = Construction.Gold.ToString();
             }
             else
             {
                 lblGold.Visible = false;
             }
 
-            //pageControl.SetPageVisible(1, building.Building.TrainedHero != null);
-            //pageControl.SetPageVisible(2, building.Building.TrainedHero != null);
+            //pageControl.SetPageVisible(1, Construction.TypeConstruction.TrainedHero != null);
+            //pageControl.SetPageVisible(2, Construction.TypeConstruction.TrainedHero != null);
 
-            panelProducts.ApplyList(Building.Items);
-            panelWarehouse.ApplyList(Building.Warehouse);
-            panelInhabitants.ApplyList(Building.Heroes);
+            panelProducts.ApplyList(Construction.Items);
+            panelWarehouse.ApplyList(Construction.Warehouse);
+            panelInhabitants.ApplyList(Construction.Heroes);
 
             base.Draw(g); 
         }
 
-        protected override int GetImageIndex() => Building.Building.ImageIndex;
-        protected override bool ImageIsEnabled() => Building.Level > 0;
-        protected override string GetCaption() => Building.Building.Name;
+        protected override int GetImageIndex() => Construction.TypeConstruction.ImageIndex;
+        protected override bool ImageIsEnabled() => Construction.Level > 0;
+        protected override string GetCaption() => Construction.TypeConstruction.Name;
     }
 }

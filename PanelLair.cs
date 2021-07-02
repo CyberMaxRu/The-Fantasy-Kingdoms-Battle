@@ -88,7 +88,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnCancel_Click(object sender, EventArgs e)
         {
-            SelectThisBuilding();
+            SelectThisConstruction();
             btnCancel.Visible = false;
             Lair.CancelFlag();
             Lair.Player.SetTaskForHeroes();
@@ -149,7 +149,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (btnAction.ImageIsEnabled)
             {
-                SelectThisBuilding();
+                SelectThisConstruction();
 
                 if (Lair.PriorityFlag < PriorityExecution.Exclusive)
                 {

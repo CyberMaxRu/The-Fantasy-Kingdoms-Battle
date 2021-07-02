@@ -250,7 +250,7 @@ namespace Fantasy_Kingdoms_Battle
         private VisualControl currentLayer;
 
         private readonly VisualControl panelEmptyInfo;
-        internal PanelBuildingInfo panelBuildingInfo { get; private set; }
+        internal PanelConstructionInfo panelConstructionInfo { get; private set; }
         internal PanelLairInfo panelLairInfo { get; private set; }
         internal PanelHeroInfo panelHeroInfo { get; private set; }
         internal PanelMonsterInfo panelMonsterInfo { get; private set; }
@@ -608,9 +608,9 @@ namespace Fantasy_Kingdoms_Battle
                 panelHeroInfo = new PanelHeroInfo(MainControl, Config.GridSize, panelLairWithFlags.NextTop());
                 //panelHeroInfo.Width = bitmapMenu.Width;
                 panelHeroInfo.ApplyMaxSize();
-                panelBuildingInfo = new PanelBuildingInfo(MainControl, panelHeroInfo.ShiftX, panelHeroInfo.ShiftY);
+                panelConstructionInfo = new PanelConstructionInfo(MainControl, panelHeroInfo.ShiftX, panelHeroInfo.ShiftY);
                 //panelBuildingInfo.Width = bitmapMenu.Width;
-                panelBuildingInfo.ApplyMaxSize();
+                panelConstructionInfo.ApplyMaxSize();
                 panelLairInfo = new PanelLairInfo(MainControl, panelHeroInfo.ShiftX, panelHeroInfo.ShiftY);
                 //panelLairInfo.Width = bitmapMenu.Width;
                 panelLairInfo.ApplyMaxSize();
@@ -652,12 +652,12 @@ namespace Fantasy_Kingdoms_Battle
                 panelCombatHeroes.ShiftX = pageControl.NextLeft();
 
                 //
-                Debug.Assert(panelBuildingInfo.Height > 0);
+                Debug.Assert(panelConstructionInfo.Height > 0);
                 Debug.Assert(panelLairInfo.Height > 0);
                 Debug.Assert(panelHeroInfo.Height > 0);
                 Debug.Assert(panelMonsterInfo.Height > 0);
 
-                int maxHeightPanelInfo = Math.Max(panelBuildingInfo.Height, panelLairInfo.Height);
+                int maxHeightPanelInfo = Math.Max(panelConstructionInfo.Height, panelLairInfo.Height);
                 maxHeightPanelInfo = Math.Max(panelHeroInfo.Height, maxHeightPanelInfo);
                 maxHeightPanelInfo = Math.Max(panelMonsterInfo.Height, maxHeightPanelInfo);
                 int maxHeightControls = Math.Max(pageControl.Height, maxHeightPanelInfo);
@@ -684,11 +684,11 @@ namespace Fantasy_Kingdoms_Battle
                 bitmapMenu.ShiftX = MainControl.Width - bitmapMenu.Width;
                 bitmapMenu.ShiftY = MainControl.Height - bitmapMenu.Height;
 
-                panelBuildingInfo.Height = MainControl.Height - panelBuildingInfo.ShiftY - Config.GridSize;
-                panelLairInfo.Height = panelBuildingInfo.Height;
-                panelHeroInfo.Height = panelBuildingInfo.Height;
-                panelMonsterInfo.Height = panelBuildingInfo.Height;
-                panelEmptyInfo.Height = panelBuildingInfo.Height;
+                panelConstructionInfo.Height = MainControl.Height - panelConstructionInfo.ShiftY - Config.GridSize;
+                panelLairInfo.Height = panelConstructionInfo.Height;
+                panelHeroInfo.Height = panelConstructionInfo.Height;
+                panelMonsterInfo.Height = panelConstructionInfo.Height;
+                panelEmptyInfo.Height = panelConstructionInfo.Height;
 
                 btnEndTurn.ShiftX = btnEndTurn.Parent.Width - btnEndTurn.Width - Config.GridSize;
 
@@ -1200,9 +1200,9 @@ namespace Fantasy_Kingdoms_Battle
             //panelPlayers.ArrangeControls();
 
             // Показываем сооружения
-            foreach (PlayerBuilding pb in lobby.CurrentPlayer.Buildings)
+            foreach (PlayerConstruction pb in lobby.CurrentPlayer.Buildings)
             {
-                pb.Building.Panel.LinkToPlayer(pb);
+                pb.TypeConstruction.Panel.LinkToPlayer(pb);
             }
 
             // Показываем логова
@@ -1352,16 +1352,16 @@ namespace Fantasy_Kingdoms_Battle
         internal void UpdateMenu()
         {
             // Рисуем содержимое ячеек
-            if ((selectedPlayerObject != null) && (selectedPlayerObject is PlayerBuilding pb))
+            if ((selectedPlayerObject != null) && (selectedPlayerObject is PlayerConstruction pb))
             {
-                Debug.Assert(pb.Building != null);
+                Debug.Assert(pb.TypeConstruction != null);
 
                 labelMenuNameObject.Visible = true;
-                labelMenuNameObject.Text = pb.Building.Name;
+                labelMenuNameObject.Text = pb.TypeConstruction.Name;
 
                 ClearMenu();
 
-                if (pb.Building.Researches != null)
+                if (pb.TypeConstruction.Researches != null)
                     foreach (PlayerResearch pr in pb.Researches)
                     {
                         if (CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research == null)
@@ -1386,7 +1386,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void UpdateBuildingInfo()
         {
-            Debug.Assert(panelBuildingInfo != null);
+            Debug.Assert(panelConstructionInfo != null);
 
             SetNeedRedrawFrame();
         }
