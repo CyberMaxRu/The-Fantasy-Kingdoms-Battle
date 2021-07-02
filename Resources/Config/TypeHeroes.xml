@@ -8,7 +8,7 @@
     <KindCreature>Human</KindCreature>
     <Reward>0</Reward>
     <Cost>0</Cost>
-    <Building>Castle</Building>
+    <Construction>Castle</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
     <MeleeWeapon>WeaponKing0</MeleeWeapon>
@@ -46,7 +46,7 @@
 	<KindCreature>Human</KindCreature>
 	<Reward>0</Reward>
 	<Cost>0</Cost>
-	<Building>Castle</Building>
+	<Construction>Castle</Construction>
 	<MaxLevel>100</MaxLevel>
 	<CanBuild>False</CanBuild>
 	<MeleeWeapon>WeaponAdvisor0</MeleeWeapon>
@@ -84,7 +84,7 @@
     <KindCreature>Human</KindCreature>
     <Reward>0</Reward>
     <Cost>0</Cost>
-    <Building>Castle</Building>
+    <Construction>Castle</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
     <MeleeWeapon>WeaponCaptain0</MeleeWeapon>
@@ -122,7 +122,7 @@
 		<KindCreature>Human</KindCreature>
 		<Reward>0</Reward>
 		<Cost>0</Cost>
-		<Building>Castle</Building>
+		<Construction>Castle</Construction>
 		<MaxLevel>100</MaxLevel>
 		<CanBuild>False</CanBuild>
 		<MeleeWeapon>WeaponTreasurer0</MeleeWeapon>
@@ -160,7 +160,7 @@
     <KindCreature>Human</KindCreature>
     <Reward>100</Reward>
     <Cost>200</Cost>
-    <Building>GuildWarrior</Building>
+    <Construction>GuildWarrior</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
     <MeleeWeapon>WeaponWarrior0</MeleeWeapon>
@@ -327,7 +327,7 @@
     <KindCreature>Human</KindCreature>
     <Reward>50</Reward>
     <Cost>100</Cost>
-    <Building>GuildRogue</Building>
+    <Construction>GuildRogue</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
     <MeleeWeapon>WeaponRogue0</MeleeWeapon>
@@ -454,7 +454,7 @@
     <KindCreature>Human</KindCreature>
     <Reward>75</Reward>
     <Cost>150</Cost>
-    <Building>GuildHunter</Building>
+    <Construction>GuildHunter</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
     <MeleeWeapon>WeaponHunter0</MeleeWeapon>
@@ -624,7 +624,7 @@
     <KindCreature>Human</KindCreature>
     <Reward>125</Reward>
     <Cost>350</Cost>
-    <Building>GuildCleric</Building>
+    <Construction>GuildCleric</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
     <MeleeWeapon>WeaponCleric0</MeleeWeapon>
@@ -770,7 +770,7 @@
     <KindCreature>Human</KindCreature>
     <Reward>150</Reward>
     <Cost>500</Cost>
-    <Building>GuildMage</Building>
+    <Construction>GuildMage</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
     <MeleeWeapon>WeaponMage0</MeleeWeapon>
@@ -916,7 +916,7 @@
     <KindCreature>Elf</KindCreature>
     <Reward>200</Reward>
     <Cost>700</Cost>
-    <Building>GuildElf</Building>
+    <Construction>GuildElf</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
     <MeleeWeapon>WeaponElf0</MeleeWeapon>
@@ -1046,7 +1046,7 @@
     <KindCreature>Dwarf</KindCreature>
     <Reward>250</Reward>
     <Cost>700</Cost>
-    <Building>GuildDwarf</Building>
+    <Construction>GuildDwarf</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>True</CanBuild>
     <MeleeWeapon>WeaponDwarf0</MeleeWeapon>
@@ -1171,7 +1171,7 @@
     <KindCreature>Human</KindCreature>
     <Reward>500</Reward>
     <Cost>1000</Cost>
-    <Building>GuildDarkPriest</Building>
+    <Construction>GuildDarkPriest</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
     <MeleeWeapon>WeaponDarkPriest0</MeleeWeapon>
@@ -1266,7 +1266,7 @@
     <KindCreature>Human</KindCreature>
     <Reward>500</Reward>
     <Cost>1000</Cost>
-    <Building>GuildPriest</Building>
+    <Construction>GuildPriest</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
     <MeleeWeapon>WeaponPriest0</MeleeWeapon>
@@ -1358,7 +1358,7 @@
     <KindCreature>Human</KindCreature>
     <Reward>500</Reward>
     <Cost>1000</Cost>
-    <Building>GuildPaladin</Building>
+    <Construction>GuildPaladin</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
     <MeleeWeapon>WeaponPaladin0</MeleeWeapon>
@@ -1450,7 +1450,7 @@
     <KindCreature>Human</KindCreature>
     <Reward>500</Reward>
     <Cost>1000</Cost>
-    <Building>GuildBlademaster</Building>
+    <Construction>GuildBlademaster</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
     <MeleeWeapon>WeaponBladeMaster0</MeleeWeapon>
@@ -1539,7 +1539,7 @@
     <KindCreature>Human</KindCreature>
     <Reward>500</Reward>
     <Cost>1000</Cost>
-    <Building>GuildBeastmaster</Building>
+    <Construction>GuildBeastmaster</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
     <MeleeWeapon>WeaponBeastMaster0</MeleeWeapon>
@@ -1631,7 +1631,7 @@
     <KindCreature>Human</KindCreature>
     <Reward>500</Reward>
     <Cost>1000</Cost>
-    <Building>GuildMarksman</Building>
+    <Construction>GuildMarksman</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
     <MeleeWeapon>WeaponMarksman0</MeleeWeapon>
@@ -1725,7 +1725,7 @@
     <KindCreature>Human</KindCreature>
     <Reward>500</Reward>
     <Cost>1000</Cost>
-    <Building>GuildFireMage</Building>
+    <Construction>GuildFireMage</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
     <MeleeWeapon>WeaponFireMage0</MeleeWeapon>
@@ -1775,7 +1775,7 @@
     <KindCreature>Human</KindCreature>
     <Reward>500</Reward>
     <Cost>1000</Cost>
-    <Building>GuildIceMage</Building>
+    <Construction>GuildIceMage</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
     <MeleeWeapon>WeaponIceMage0</MeleeWeapon>
@@ -1847,7 +1847,7 @@
     <KindCreature>Human</KindCreature>
     <Reward>500</Reward>
     <Cost>1000</Cost>
-    <Building>GuildDeathKnight</Building>
+    <Construction>GuildDeathKnight</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
     <MeleeWeapon>WeaponDeathKnight0</MeleeWeapon>

@@ -10,24 +10,24 @@ namespace Fantasy_Kingdoms_Battle
     // Класс требования
     internal sealed class Requirement
     {
-        private string nameBuilding;
+        private string nameConstruction;
 
-        public Requirement(string nameRequiredBuilding, int l)
+        public Requirement(string nameRequiredConstruction, int l)
         {
-            Debug.Assert(nameRequiredBuilding.Length > 0);
+            Debug.Assert(nameRequiredConstruction.Length > 0);
             Debug.Assert(l >= 0);
 
-            nameBuilding = nameRequiredBuilding;
+            nameConstruction = nameRequiredConstruction;
             Level = l;
         }
 
         internal TypeConstruction Construction { get; private set; }
         internal int Level { get; }
 
-        internal void FindBuilding()
+        internal void FindConstruction()
         {
-            Construction = FormMain.Config.FindTypeConstructionOfKingdom(nameBuilding);
-            nameBuilding = null;
+            Construction = FormMain.Config.FindTypeConstructionOfKingdom(nameConstruction);
+            nameConstruction = null;
 
             Debug.Assert(Level <= Construction.MaxLevel);
         }

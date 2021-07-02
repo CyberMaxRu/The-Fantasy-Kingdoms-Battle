@@ -10,13 +10,13 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class PlayerResearch
     {
-        public PlayerResearch(PlayerConstruction pb, Research r)
+        public PlayerResearch(PlayerConstruction c, Research r)
         {
-            Building = pb;
+            Construction = c;
             Research = r;
         }
 
-        internal PlayerConstruction Building { get; }
+        internal PlayerConstruction Construction { get; }
         internal Research Research { get; }
 
         internal int Cost()
@@ -27,25 +27,25 @@ namespace Fantasy_Kingdoms_Battle
         internal bool CheckRequirements()
         {
             // Сначала проверяем, построено ли здание
-            if (Building.Level == 0)
+            if (Construction.Level == 0)
                 return false;
 
             // Потом проверяем наличие золота
-            if (Building.Player.Gold < Cost())
+            if (Construction.Player.Gold < Cost())
                 return false;
 
             // Проверяем требования к исследованию
-            return Building.Player.CheckRequirements(Research.Requirements);
+            return Construction.Player.CheckRequirements(Research.Requirements);
         }
 
         internal List<TextRequirement> GetTextRequirements()
         {
             List<TextRequirement> list = new List<TextRequirement>();
 
-            if (Building.Level == 0)
+            if (Construction.Level == 0)
                 list.Add(new TextRequirement(false, "Здание не построено"));
             else
-                Building.Player.TextRequirements(Research.Requirements, list);
+                Construction.Player.TextRequirements(Research.Requirements, list);
 
             return list;
         }
@@ -54,8 +54,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(CheckRequirements() == true);
 
-            Building.Player.SpendGold(Cost());
-            Building.Researches.Remove(this);
+            Construction.Player.SpendGold(Cost());
+            Construction.Researches.Remove(this);
             AddEntity(Research.Entity);
 
             Program.formMain.SetNeedRedrawFrame();
@@ -65,7 +65,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(entity != null);
 
-            Building.Items.Add(entity);
+            Construction.Items.Add(entity);
         }
     }
 }

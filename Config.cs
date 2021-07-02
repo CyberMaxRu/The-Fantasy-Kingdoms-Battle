@@ -305,8 +305,8 @@ namespace Fantasy_Kingdoms_Battle
         internal int WarehouseWidth { get; private set; }// Количество ячеек в ряду склада
         internal int WarehouseHeight { get; private set; }// Количество рядов ячеек склада
         internal int WarehouseMaxCells { get; private set; }// Количество ячеек в складе
-        internal int BuildingMaxLines { get; private set; }// Максимальное количество линий зданий
-        internal int BuildingMaxPos { get; private set; }// Максимальное количество позиций в линии зданий
+        internal int ConstructionMaxLines { get; private set; }// Максимальное количество линий сооружений
+        internal int ConstructionMaxPos { get; private set; }// Максимальное количество позиций в линии сооружений
 
         // Цвета
         internal Color CommonBorder { get; private set; }
@@ -360,8 +360,8 @@ namespace Fantasy_Kingdoms_Battle
         internal Font FontBattlefieldDamage { get; private set; }
         internal Font FontHintMainText { get; private set; }
         internal Font FontHintAdditionalText { get; private set; }
-        internal Font FontBuildingLevel { get; private set; }
-        internal Font FontBuildingCaption { get; private set; }
+        internal Font FontConstructionLevel { get; private set; }
+        internal Font FontConstructionCaption { get; private set; }
 
         //
         internal Brush brushControl { get; private set; } = new SolidBrush(Color.White);
@@ -575,13 +575,13 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(MinRowsEntities >= 2);
             Debug.Assert(MinRowsEntities <= 6);
 
-            BuildingMaxLines = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/BuildingMaxLines").InnerText);
-            Debug.Assert(BuildingMaxLines >= 2);
-            Debug.Assert(BuildingMaxLines <= 5);
+            ConstructionMaxLines = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/ConstructionMaxLines").InnerText);
+            Debug.Assert(ConstructionMaxLines >= 2);
+            Debug.Assert(ConstructionMaxLines <= 5);
 
-            BuildingMaxPos = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/BuildingMaxPos").InnerText);
-            Debug.Assert(BuildingMaxLines >= 2);
-            Debug.Assert(BuildingMaxLines <= 5);
+            ConstructionMaxPos = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/ConstructionMaxPos").InnerText);
+            Debug.Assert(ConstructionMaxLines >= 2);
+            Debug.Assert(ConstructionMaxLines <= 5);
 
             HeroInRow = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battlefield/HeroInRow").InnerText);
             Debug.Assert(HeroInRow >= 3);
@@ -628,7 +628,7 @@ namespace Fantasy_Kingdoms_Battle
 
             IDHeroPeasant = xmlDoc.SelectSingleNode("Game/Links/HeroPeasant").InnerText;
             Debug.Assert(IDHeroPeasant.Length > 0);
-            IDConstructionCastle = xmlDoc.SelectSingleNode("Game/Links/BuildingCastle").InnerText;
+            IDConstructionCastle = xmlDoc.SelectSingleNode("Game/Links/ConstructionCastle").InnerText;
             Debug.Assert(IDConstructionCastle.Length > 0);
 
             WarehouseWidth = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Warehouse/Width").InnerText);
@@ -710,8 +710,8 @@ namespace Fantasy_Kingdoms_Battle
             FontBattlefieldDamage = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/Battlefield/Damage"));
             FontHintMainText = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/Hint/MainText"));
             FontHintAdditionalText = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/Hint/AdditionalText"));
-            FontBuildingLevel = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/Building/Level"));
-            FontBuildingCaption = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/Building/Caption"));
+            FontConstructionLevel = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/Construction/Level"));
+            FontConstructionCaption = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/Construction/Caption"));
 
             PenBorder = new Pen(CommonBorder);
             PenSelectedBorder = new Pen(CommonSelectedBorder);

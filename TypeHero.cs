@@ -14,8 +14,8 @@ namespace Fantasy_Kingdoms_Battle
         public TypeHero(XmlNode n) : base(n)
         {
             Cost = Convert.ToInt32(n.SelectSingleNode("Cost").InnerText);
-            Building = FormMain.Config.FindTypeConstructionOfKingdom(n.SelectSingleNode("Building").InnerText);
-            Building.TrainedHero = this;
+            Construction = FormMain.Config.FindTypeConstructionOfKingdom(n.SelectSingleNode("Construction").InnerText);
+            Construction.TrainedHero = this;
             CanBuild = Convert.ToBoolean(n.SelectSingleNode("CanBuild").InnerText);
             PrefixName = XmlUtils.GetString(n.SelectSingleNode("PrefixName"));
             nameFromTypeHero = XmlUtils.GetString(n.SelectSingleNode("NameFromTypeHero"));
@@ -101,7 +101,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal int Cost { get; }
-        internal TypeConstruction Building { get; }
+        internal TypeConstruction Construction { get; }
         internal bool CanBuild { get; }
         internal Dictionary<Item, int> CarryItems { get; } = new Dictionary<Item, int>();
         internal string PrefixName { get; }

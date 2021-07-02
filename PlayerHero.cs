@@ -115,53 +115,53 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(pi.Quantity >= quantity);
 
             // Проверяем совместимость
-/*            if (pi.Item.TypeItem != ClassHero.Slots[toCell].TypeItem)
-                return;
-
-            if (Slots[toCell] != null)
-            {
-                if (ClassHero.Slots[toCell].DefaultItem != null)
-                {
-                    // Если это дефолтный предмет, удаляем его
-                    if (Slots[toCell].Item == ClassHero.Slots[toCell].DefaultItem)
-                        Slots[toCell] = null;
-                    else
-                    {
-                        // Иначе помещаем предмет на склад
-                        // Если не можем поместить вещь на склад, выходим
-                        if (Building.Player.GetItemFromHero(this, toCell) == true)
-                            Slots[toCell] = null;
-                        else
+            /*            if (pi.Item.TypeItem != ClassHero.Slots[toCell].TypeItem)
                             return;
-                    }
-                }
 
-                // Если разный тип предметов, то пытаемся поместить предмет на склад
-                if ((Slots[toCell] != null) && (Slots[toCell].Item != pi.Item))
-                {
-                    if (Building.Player.GetItemFromHero(this, toCell) == true)
-                        Slots[toCell] = null;
-                    else
-                        return;
-                }
-            }
+                        if (Slots[toCell] != null)
+                        {
+                            if (ClassHero.Slots[toCell].DefaultItem != null)
+                            {
+                                // Если это дефолтный предмет, удаляем его
+                                if (Slots[toCell].Item == ClassHero.Slots[toCell].DefaultItem)
+                                    Slots[toCell] = null;
+                                else
+                                {
+                                    // Иначе помещаем предмет на склад
+                                    // Если не можем поместить вещь на склад, выходим
+                                    if (Construction.Player.GetItemFromHero(this, toCell) == true)
+                                        Slots[toCell] = null;
+                                    else
+                                        return;
+                                }
+                            }
 
-            if (Slots[toCell] == null)
-            {
-                Slots[toCell] = new PlayerItem(pi.Item, Math.Min(ClassHero.MaxQuantityTypeItem(ClassHero.Slots[toCell].TypeItem), quantity), false);
-                pi.Quantity -= Slots[toCell].Quantity;
-            }
-            else
-            {
-                int add = Math.Min(ClassHero.MaxQuantityTypeItem(ClassHero.Slots[toCell].TypeItem) - Slots[toCell].Quantity, quantity);
-                if (add > 0)
-                {
-                    Slots[toCell] = new PlayerItem(pi.Item, add, false);
-                    pi.Quantity -= add;
-                }
-            }
+                            // Если разный тип предметов, то пытаемся поместить предмет на склад
+                            if ((Slots[toCell] != null) && (Slots[toCell].Item != pi.Item))
+                            {
+                                if (Construction.Player.GetItemFromHero(this, toCell) == true)
+                                    Slots[toCell] = null;
+                                else
+                                    return;
+                            }
+                        }
 
-            Debug.Assert(Slots[toCell] != null);*/
+                        if (Slots[toCell] == null)
+                        {
+                            Slots[toCell] = new PlayerItem(pi.Item, Math.Min(ClassHero.MaxQuantityTypeItem(ClassHero.Slots[toCell].TypeItem), quantity), false);
+                            pi.Quantity -= Slots[toCell].Quantity;
+                        }
+                        else
+                        {
+                            int add = Math.Min(ClassHero.MaxQuantityTypeItem(ClassHero.Slots[toCell].TypeItem) - Slots[toCell].Quantity, quantity);
+                            if (add > 0)
+                            {
+                                Slots[toCell] = new PlayerItem(pi.Item, add, false);
+                                pi.Quantity -= add;
+                            }
+                        }
+
+                        Debug.Assert(Slots[toCell] != null);*/
         }
 
         internal PlayerItem TakeItem(int fromCell, int quantity)
@@ -281,7 +281,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.DoCustomDraw(g, x, y, drawState);
 
-            if (drawState && (TypeHero.Building.ID != "Castle"))
+            if (drawState && (TypeHero.Construction.ID != "Castle"))
                 Program.formMain.ilStateHero.DrawImage(g, StateCreature.ImageIndex, true, false, x - 7, y - 3);
         }
 

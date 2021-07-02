@@ -109,7 +109,7 @@ namespace Fantasy_Kingdoms_Battle
         // Главные страницы игры
         private readonly VCPageControl pageControl;
         private readonly VCPageButton pageGuilds;
-        private readonly VCPageButton pageBuildings;
+        private readonly VCPageButton pageEconomicConstructions;
         private readonly VCPageButton pageTemples;
         private readonly VCPageButton pageHeroes;
         private readonly VCPageButton pageLairs;
@@ -609,7 +609,7 @@ namespace Fantasy_Kingdoms_Battle
                 //panelHeroInfo.Width = bitmapMenu.Width;
                 panelHeroInfo.ApplyMaxSize();
                 panelConstructionInfo = new PanelConstructionInfo(MainControl, panelHeroInfo.ShiftX, panelHeroInfo.ShiftY);
-                //panelBuildingInfo.Width = bitmapMenu.Width;
+                //panelContructionInfo.Width = bitmapMenu.Width;
                 panelConstructionInfo.ApplyMaxSize();
                 panelLairInfo = new PanelLairInfo(MainControl, panelHeroInfo.ShiftX, panelHeroInfo.ShiftY);
                 //panelLairInfo.Width = bitmapMenu.Width;
@@ -633,7 +633,7 @@ namespace Fantasy_Kingdoms_Battle
                 // Страницы игры
                 pageControl = new VCPageControl(MainControl, 0, panelLairWithFlags.ShiftY, ilGui);
                 pageGuilds = pageControl.AddPage(GUI_GUILDS, PageGuilds_ShowHint);
-                pageBuildings = pageControl.AddPage(GUI_ECONOMY, PageBuildings_ShowHint);
+                pageEconomicConstructions = pageControl.AddPage(GUI_ECONOMY, PageEconomicConstructions_ShowHint);
                 pageTemples = pageControl.AddPage(GUI_TEMPLE, PageTemples_ShowHint);
                 pageHeroes = pageControl.AddPage(GUI_HEROES, PageHeroes_ShowHint);
                 pageLairs = pageControl.AddPage(GUI_MAP, PageLairs_ShowHint);
@@ -809,9 +809,9 @@ namespace Fantasy_Kingdoms_Battle
             ShowHintForToolButton(pageHeroes, "Герои", "Нанято героев: " + lobby.CurrentPlayer.CombatHeroes.Count.ToString());
         }
 
-        private void PageBuildings_ShowHint(object sender, EventArgs e)
+        private void PageEconomicConstructions_ShowHint(object sender, EventArgs e)
         {
-            ShowHintForToolButton(pageBuildings, "Экономические строения", "Доступно построек/апгрейдов зданий: " + lobby.CurrentPlayer.PointConstructionEconomic.ToString());
+            ShowHintForToolButton(pageEconomicConstructions, "Экономические строения", "Доступно построек/апгрейдов зданий: " + lobby.CurrentPlayer.PointConstructionEconomic.ToString());
         }
 
         private void PageGuilds_ShowHint(object sender, EventArgs e)
@@ -1163,8 +1163,6 @@ namespace Fantasy_Kingdoms_Battle
             // Если этого игрока не отрисовывали, формируем заново вкладки
             if (curAppliedPlayer != lobby.CurrentPlayer)
             {
-                //DrawExternalBuilding();
-
                 curAppliedPlayer = lobby.CurrentPlayer;
             }
 
@@ -1232,7 +1230,7 @@ namespace Fantasy_Kingdoms_Battle
         private void DrawPageConstructions()
         {
             // Создаем массив из страниц, линий и позиций
-            PanelConstruction[,,] panels = new PanelConstruction[3, Config.BuildingMaxLines, Config.BuildingMaxPos];
+            PanelConstruction[,,] panels = new PanelConstruction[3, Config.ConstructionMaxLines, Config.ConstructionMaxPos];
 
             // Проходим по каждому зданию, создавая ему панель
             VisualControl parent;
@@ -1244,7 +1242,7 @@ namespace Fantasy_Kingdoms_Battle
                         parent = pageGuilds.Page;
                         break;
                     case Page.Economic:
-                        parent = pageBuildings.Page;
+                        parent = pageEconomicConstructions.Page;
                         break;
                     case Page.Temple:
                         parent = pageTemples.Page;
@@ -1384,13 +1382,6 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void UpdateBuildingInfo()
-        {
-            Debug.Assert(panelConstructionInfo != null);
-
-            SetNeedRedrawFrame();
-        }
-
         private void ShowHintForToolButton(VisualControl c, string text, string hint)
         {
             formHint.Clear();
@@ -1478,7 +1469,7 @@ namespace Fantasy_Kingdoms_Battle
                     + curAppliedPlayer.PointGreatnessForNextLevel.ToString() + ")";
 
                 pageGuilds.PopupQuantity = lobby.CurrentPlayer.PointConstructionGuild;
-                pageBuildings.PopupQuantity = lobby.CurrentPlayer.PointConstructionEconomic;
+                pageEconomicConstructions.PopupQuantity = lobby.CurrentPlayer.PointConstructionEconomic;
                 pageTemples.PopupQuantity = lobby.CurrentPlayer.CanBuildTemple() ? lobby.CurrentPlayer.PointConstructionTemple : 0;
                 pageHeroes.Cost = lobby.CurrentPlayer.CombatHeroes.Count.ToString();
 

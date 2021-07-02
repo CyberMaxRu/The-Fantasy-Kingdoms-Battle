@@ -50,7 +50,7 @@ namespace Fantasy_Kingdoms_Battle
                 nameItem = null;
 
                 foreach (Requirement r in Requirements)
-                    r.FindBuilding();
+                    r.FindConstruction();
             }
             else if (nameAbility != "")
             {
@@ -58,7 +58,7 @@ namespace Fantasy_Kingdoms_Battle
                 nameAbility = null;
 
                 foreach (Requirement r in Requirements)
-                    r.FindBuilding();
+                    r.FindConstruction();
             }
             else if (nameGroupWeapon != "")
             {
@@ -66,7 +66,7 @@ namespace Fantasy_Kingdoms_Battle
                 nameGroupWeapon = null;
 
                 foreach (Requirement r in Requirements)
-                    r.FindBuilding();
+                    r.FindConstruction();
             }
             else if (nameGroupArmour != "")
             {
@@ -74,7 +74,7 @@ namespace Fantasy_Kingdoms_Battle
                 nameGroupArmour = null;
 
                 foreach (Requirement r in Requirements)
-                    r.FindBuilding();
+                    r.FindConstruction();
             }
         }
     }

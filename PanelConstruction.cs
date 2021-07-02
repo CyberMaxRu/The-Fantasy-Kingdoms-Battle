@@ -82,7 +82,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void ShowHintBtnBuyOrUpgrade()
         {
-            //Debug.Assert(Building.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
+            //Debug.Assert(Construction.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
 
             if (Construction.Level < Construction.TypeConstruction.MaxLevel)
             {
@@ -197,10 +197,9 @@ namespace Fantasy_Kingdoms_Battle
 
             if ((TypeConstruction.TrainedHero != null) && !(TypeConstruction is TypeEconomicConstruction))
             {
-                //btnHireHero.ImageIndex = (Building.Level > 0) && ((Building.Heroes.Count == Building.MaxHeroes()) || (Building.MaxHeroesAtPlayer() == true))  ? -1 : GuiUtils.GetImageIndexWithGray(btnHireHero.ImageList, c.TrainedHero.ImageIndex, Building.CanTrainHero());
+                //btnHireHero.ImageIndex = (Construction.Level > 0) && ((Construction.Heroes.Count == Construction.MaxHeroes()) || (Construction.MaxHeroesAtPlayer() == true))  ? -1 : GuiUtils.GetImageIndexWithGray(btnHireHero.ImageList, c.TrainedHero.ImageIndex, Construction.CanTrainHero());
                 if (Construction.Heroes.Count < Construction.MaxHeroes())
                 {
-
                     btnHireHero.Visible = true;
                     btnHireHero.ImageIndex = ((Construction.Level > 0) && (Construction.MaxHeroesAtPlayer() == true)) ? -1 : TypeConstruction.TrainedHero.ImageIndex;
                     btnHireHero.ImageIndex = Program.formMain.TreatImageIndex(Construction.TypeConstruction.TrainedHero.ImageIndex, Construction.Player);

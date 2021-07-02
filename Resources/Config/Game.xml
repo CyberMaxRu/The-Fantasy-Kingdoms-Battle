@@ -5,8 +5,8 @@
     <PlateWidth>4</PlateWidth>
     <PlateHeight>3</PlateHeight>
     <MinRowsEntityInPlate>2</MinRowsEntityInPlate>
-    <BuildingMaxLines>3</BuildingMaxLines>
-    <BuildingMaxPos>5</BuildingMaxPos>
+    <ConstructionMaxLines>3</ConstructionMaxLines>
+    <ConstructionMaxPos>5</ConstructionMaxPos>
     <ShiftForBorderX>3</ShiftForBorderX>
     <ShiftForBorderY>2</ShiftForBorderY>
   </Interface>
@@ -121,7 +121,7 @@
         <Bold>true</Bold>
       </AdditionalText>
     </Hint>
-    <Building>
+    <Construction>
       <Level>
         <Name>Arial</Name>
         <Size>12</Size>
@@ -132,7 +132,7 @@
         <Size>11</Size>
         <Bold>true</Bold>
       </Caption>
-    </Building>
+    </Construction>
   </Fonts>
   <Heroes>
     <MaxStatPointPerLevel>20</MaxStatPointPerLevel>
@@ -152,7 +152,7 @@
   </Battlefield>
   <Links>
     <HeroPeasant>Peasant</HeroPeasant>
-    <BuildingCastle>Castle</BuildingCastle>
+    <ConstructionCastle>Castle</ConstructionCastle>
   </Links>
   <Warehouse>
     <Width>10</Width>
