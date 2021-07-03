@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -13,11 +14,11 @@ namespace Fantasy_Kingdoms_Battle
         private VCText txtAboutProject;
         private VCText txtAboutDeveloper;
         private VCText txtAddInfo;
-        private VCLink linkRoadmap;
-        private VCLink linkDesignDoc;
-        private VCLink linkGithub;
-        private VCLink linkRebirdh;
-        private VCLink linkDiscord;
+        private VCButton btnRoadmap;
+        private VCButton btnDesignDoc;
+        private VCButton btnGithub;
+        private VCButton btnRebirth;
+        private VCButton btnDiscord;
         private VCButton btnCheckUpdates;
         private VCButton btnClose;
 
@@ -33,20 +34,26 @@ namespace Fantasy_Kingdoms_Battle
                 + "\n\rВ игре использованы графические и звуковые ресурсы из Majesty 2 (разработчик Ino-Co при участии Paradox Interactive)."
                 + $"\n\rСборка {FormMain.VERSION} от {FormMain.DATE_VERSION}.\n\r \n\r";
             txtAboutProject.Padding = new Padding(4);
-            txtAboutProject.Height = txtAboutProject.MinHeigth() + FormMain.Config.GridSize;
+            txtAboutProject.Height = txtAboutProject.MinHeigth() + (FormMain.Config.GridSize * 2);
 
-            linkRoadmap = new VCLink(txtAboutProject, FormMain.Config.GridSize, 0, "Дорожная карта", "https://docs.google.com/document/d/1LCYOQM2Rxf-KXgc8VmsWx1K0W97vhTwsHMQiwZr4z8Q/edit?usp=sharing");
-            linkRoadmap.ShiftY = txtAboutProject.Height - linkRoadmap.Height - 8;
-            linkDesignDoc = new VCLink(txtAboutProject, linkRoadmap.NextLeft() + FormMain.Config.GridSize, linkRoadmap.ShiftY, "Дизайн-документ", "https://docs.google.com/document/d/12Jw_20kLgtPcKbpVl9Ry4NawdG9dybXgvNPReBHWH2Q/edit?usp=sharing");
-            linkGithub = new VCLink(txtAboutProject, linkDesignDoc.NextLeft() + FormMain.Config.GridSize, linkRoadmap.ShiftY, "GitHub", "https://github.com/CyberMaxRu/The-Fantasy-Kingdoms-Battle");
+            btnRoadmap = new VCButton(txtAboutProject, FormMain.Config.GridSize, txtAboutProject.Height - (FormMain.Config.GridSize * 5), "Дорожная карта");
+            btnRoadmap.Width = 200;
+            btnRoadmap.Click += BtnRoadmap_Click;
+            //btnRoadmap.ShiftY = txtAboutProject.Height - btnRoadmap.Height - 8;
+            btnDesignDoc = new VCButton(txtAboutProject, btnRoadmap.NextLeft(), btnRoadmap.ShiftY, "Дизайн-документ");
+            btnDesignDoc.Width = 200;
+            btnDesignDoc.Click += BtnDesignDoc_Click;
 
             txtAboutDeveloper = new VCText(ClientControl, 0, txtAboutProject.NextTop(), Program.formMain.fontParagraph, Color.White, ClientControl.Width);
             txtAboutDeveloper.ShowBorder = true;
             txtAboutDeveloper.Text = "Разработчик: Кузьмин М.А.\n\rИсходный код написан на C# под .NET Framework 4.8 с рендерингом через GDI+. Использованы только стандартные компоненты, кроме работы c zip."
-                + "\n\rРазработка ведется как проекта с открытым исходным кодом.";
+                + "\n\rРазработка ведется как проекта с открытым исходным кодом.\n\r \n\r";
             txtAboutDeveloper.StringFormat.Alignment = StringAlignment.Near;
             txtAboutDeveloper.Padding = new Padding(4);
-            txtAboutDeveloper.Height = txtAboutDeveloper.MinHeigth() + FormMain.Config.GridSize;
+            txtAboutDeveloper.Height = txtAboutDeveloper.MinHeigth() + (FormMain.Config.GridSize * 2);
+            btnGithub = new VCButton(txtAboutDeveloper, FormMain.Config.GridSize, txtAboutDeveloper.Height - (FormMain.Config.GridSize * 5), "GitHub");
+            btnGithub.Width = 200;
+            btnGithub.Click += BtnGithub_Click;
 
             txtAddInfo = new VCText(ClientControl, 0, txtAboutDeveloper.NextTop(), Program.formMain.fontParagraph, Color.White, ClientControl.Width);
             txtAddInfo.Text = "Игра создается при поддержке проекта \"Возрождение\":"
@@ -55,8 +62,12 @@ namespace Fantasy_Kingdoms_Battle
             txtAddInfo.StringFormat.Alignment = StringAlignment.Near;
             txtAddInfo.Height = txtAddInfo.MinHeigth();
 
-            linkRebirdh = new VCLink(txtAddInfo, 0, 28, "Проект \"Возрождение\" в ВК", "https://vk.com/majesty_2_vozrozhdeniye");
-            linkDiscord = new VCLink(txtAddInfo, linkRebirdh.NextLeft() + FormMain.Config.GridSize, linkRebirdh.ShiftY, "Приглашение в Discord", "https://discord.com/invite/3R4PDsR");
+            btnRebirth = new VCButton(txtAddInfo, 0, 28, "Проект \"Возрождение\" в ВК");
+            btnRebirth.Width = 276;
+            btnRebirth.Click += BtnRebirth_Click;
+            btnDiscord = new VCButton(txtAddInfo, btnRebirth.NextLeft(), btnRebirth.ShiftY, "Приглашение в Discord");
+            btnDiscord.Width = 276;
+            btnDiscord.Click += BtnDiscord_Click;
 
             btnCheckUpdates = new VCButton(ClientControl, 0, txtAddInfo.NextTop(), "Проверить обновление");
             btnCheckUpdates.Width = 256;
@@ -70,6 +81,38 @@ namespace Fantasy_Kingdoms_Battle
             CancelButton = btnClose;
 
             ClientControl.Height = btnClose.NextTop();
+        }
+
+        private void OpenLink(string link)
+        {
+            Debug.Assert(link.Length > 0);
+            Process.Start(link);
+
+        }
+
+        private void BtnDiscord_Click(object sender, EventArgs e)
+        {
+            OpenLink("https://discord.com/invite/3R4PDsR");
+        }
+
+        private void BtnRebirth_Click(object sender, EventArgs e)
+        {
+            OpenLink("https://vk.com/majesty_2_vozrozhdeniye");
+        }
+
+        private void BtnGithub_Click(object sender, EventArgs e)
+        {
+            OpenLink("https://github.com/CyberMaxRu/The-Fantasy-Kingdoms-Battle");
+        }
+
+        private void BtnDesignDoc_Click(object sender, EventArgs e)
+        {
+            OpenLink("https://docs.google.com/document/d/12Jw_20kLgtPcKbpVl9Ry4NawdG9dybXgvNPReBHWH2Q/edit?usp=sharing");
+        }
+
+        private void BtnRoadmap_Click(object sender, EventArgs e)
+        {
+            OpenLink("https://docs.google.com/document/d/1LCYOQM2Rxf-KXgc8VmsWx1K0W97vhTwsHMQiwZr4z8Q/edit?usp=sharing");
         }
 
         private void BtnCheckUpdates_Click(object sender, EventArgs e)
