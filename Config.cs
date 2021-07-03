@@ -15,9 +15,6 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class Config
     {
-        //private PrivateFontCollection pfc = new PrivateFontCollection();
-        //private FontFamily ffMajesty2;
-
         public Config(string pathResources, FormMain fm)
         {
             FormMain.Config = this;
@@ -347,22 +344,6 @@ namespace Fantasy_Kingdoms_Battle
         internal Color UnitLowNormalParam { get; private set; }
         internal Color UnitHighNormalParam { get; private set; }
 
-        // Шрифты
-        internal Font FontToolbar { get; private set; }
-        internal Font FontLevel { get; private set; }
-        internal Font FontQuantity { get; private set; }
-        internal Font FontPopupQuantity { get; private set; }
-        internal Font FontCost { get; private set; }
-        internal Font FontCaptionPage { get; private set; }
-        internal Font FontNamePage { get; private set; }
-        internal Font FontBattlefieldPlayer { get; private set; }
-        internal Font FontBattlefieldTimer { get; private set; }
-        internal Font FontBattlefieldDamage { get; private set; }
-        internal Font FontHintMainText { get; private set; }
-        internal Font FontHintAdditionalText { get; private set; }
-        internal Font FontConstructionLevel { get; private set; }
-        internal Font FontConstructionCaption { get; private set; }
-
         //
         internal Brush brushControl { get; private set; } = new SolidBrush(Color.White);
         internal Pen PenBorder { get; private set; }
@@ -677,41 +658,6 @@ namespace Fantasy_Kingdoms_Battle
             UnitNormalParam = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Unit/NormalParam").InnerText);
             UnitLowNormalParam = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Unit/LowNormalParam").InnerText);
             UnitHighNormalParam = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Unit/HighNormalParam").InnerText);
-
-            /*// Добавляем шрифт из ресурсов
-            FontFamily GetResourceFontFamily(byte[] fontbytes)
-            {
-                // Шрифт Majesty2 не хочет работать из ресурсов. Другие шрифты работают.
-                // Причину этого так и не выяснил. Поэтому шрифт выгружается в файл, загружается в шрифты и удаляется
-                string fileFont = Path.GetTempFileName();
-                File.WriteAllBytes(fileFont, fontbytes);
-                pfc.AddFontFile(fileFont);
-                return pfc.Families[0];
-
-                /*IntPtr fontMemPointer = Marshal.AllocCoTaskMem(fontbytes.Length);
-                Marshal.Copy(fontbytes, 0, fontMemPointer, fontbytes.Length);
-                pfc.AddMemoryFont(fontMemPointer, fontbytes.Length);
-                Marshal.FreeCoTaskMem(fontMemPointer);
-                return pfc.Families[0];*//*
-            }*/
-
-            // Шрифты            
-            //ffMajesty2 = GetResourceFontFamily(Properties.Resources.Majesty2);
-
-            FontToolbar = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/Toolbar"));
-            FontLevel = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/Level"));
-            FontQuantity = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/Quantity"));
-            FontPopupQuantity = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/PopupQuantity"));
-            FontCost = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/Cost"));
-            FontCaptionPage = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/CaptionPage"));
-            FontNamePage = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/NamePage"));
-            FontBattlefieldPlayer = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/Battlefield/Player"));
-            FontBattlefieldTimer = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/Battlefield/Timer"));
-            FontBattlefieldDamage = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/Battlefield/Damage"));
-            FontHintMainText = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/Hint/MainText"));
-            FontHintAdditionalText = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/Hint/AdditionalText"));
-            FontConstructionLevel = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/Construction/Level"));
-            FontConstructionCaption = CreateFont(xmlDoc.SelectSingleNode("Game/Fonts/Construction/Caption"));
 
             PenBorder = new Pen(CommonBorder);
             PenSelectedBorder = new Pen(CommonSelectedBorder);
