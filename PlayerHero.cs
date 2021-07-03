@@ -15,7 +15,7 @@ namespace Fantasy_Kingdoms_Battle
         public PlayerHero(PlayerConstruction pb, BattleParticipant bp) : base(pb.TypeConstruction.TrainedHero, bp)
         {
             Construction = pb;
-            DayOfHire = Player.Lobby.Turn;
+            DayOfHire = Player.Lobby.Day;
             TypeHero = pb.TypeConstruction.TrainedHero;
 
             FullName = (pb.TypeConstruction.TrainedHero.PrefixName.Length > 0 ? pb.TypeConstruction.TrainedHero.PrefixName + " " : "")
@@ -31,7 +31,7 @@ namespace Fantasy_Kingdoms_Battle
         public PlayerHero(PlayerConstruction pb, BattleParticipant bp, TypeHero th) : base(th, bp)
         {
             Construction = pb;
-            DayOfHire = Player.Lobby.Turn;
+            DayOfHire = Player.Lobby.Day;
             TypeHero = th;
             FullName = TypeHero.Name;
         }

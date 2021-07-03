@@ -834,7 +834,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void LabelDay_ShowHint(object sender, EventArgs e)
         {
-            ShowHintForToolButton(labelDay, "День игры", "День игры: " + lobby.Turn.ToString());
+            ShowHintForToolButton(labelDay, "День игры", "День игры: " + lobby.Day.ToString());
         }
         
         internal bool CheckForNewVersion()
@@ -1156,7 +1156,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(lobby.CurrentPlayer.GetTypePlayer() == TypePlayer.Human);
 
-            labelDay.Text = lobby.Turn.ToString();
+            labelDay.Text = lobby.Day.ToString();
 
             // Если этого игрока не отрисовывали, формируем заново вкладки
             if (curAppliedPlayer != lobby.CurrentPlayer)
@@ -1329,7 +1329,7 @@ namespace Fantasy_Kingdoms_Battle
             pageControl.ActivatePage(pageGuilds);
             ShowCurrentPlayerLobby();
 
-            lobby.StartTurn();
+            lobby.Start();
         }
 
         internal void EndLobby()

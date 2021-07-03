@@ -226,7 +226,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Debug.Assert(TypeFlag == TypeFlag.None);
                 TypeFlag = TypeAction();
-                DaySetFlag = Player.Lobby.Turn;
+                DaySetFlag = Player.Lobby.Day;
             }
             else
             {
@@ -250,7 +250,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(TypeFlag != TypeFlag.None);
             Debug.Assert(!Destroyed);
 
-            return DaySetFlag == Player.Lobby.Turn ? SpendedGoldForSetFlag : 0;
+            return DaySetFlag == Player.Lobby.Day ? SpendedGoldForSetFlag : 0;
         }
 
         internal void CancelFlag()

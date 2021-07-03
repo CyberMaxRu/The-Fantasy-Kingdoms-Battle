@@ -21,6 +21,7 @@ namespace Fantasy_Kingdoms_Battle
             ID = generation++;
             TypeLobby = tl;
             StateLobby = StateLobby.Start;
+            Day = 1;
 
             // Создаем конфигурацию логов
             Lairs = new List<TypeLair>[TypeLobby.LairsLayers];
@@ -36,12 +37,6 @@ namespace Fantasy_Kingdoms_Battle
 
             SetPlayerAsCurrent(0);
             StateLobby = StateLobby.TurnHuman;
-
-            //
-            Turn = 1;
-
-            // Определяем противников
-            MakeOpponents();
 
             void GenerateConfigLairs()
             {
@@ -123,7 +118,7 @@ namespace Fantasy_Kingdoms_Battle
         internal TypeLobby TypeLobby { get; }
         internal LobbyPlayer[] Players { get; }
         internal LobbyPlayer CurrentPlayer { get; private set; }
-        internal int Turn { get; private set; }        
+        internal int Day { get; private set; }        
         internal List<Battle> Battles { get; } = new List<Battle>();
         internal bool HumanIsWin { get; private set; }
         internal StateLobby StateLobby { get; private set; }
@@ -173,7 +168,7 @@ namespace Fantasy_Kingdoms_Battle
                 CurrentPlayer = null;
         }
 
-        internal void StartTurn()
+        internal void Start()
         {
             // Реальный игрок должен быть жив
             Debug.Assert(Players[0].GetTypePlayer() == TypePlayer.Human);
@@ -184,7 +179,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (p.GetTypePlayer() == TypePlayer.Human)
                 {
-                    if ((Turn == 1) && (p.VariantsStartBonuses.Count > 0))
+                    if ((Day == 1) && (p.VariantsStartBonuses.Count > 0))
                     {
                         p.SelectStartBonus();
                     }
@@ -243,7 +238,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Делаем начало хода
-            Turn++;
+            Day++;
             CurrentPlayer = null;
 
             int livePlayers = 0;
@@ -301,7 +296,7 @@ namespace Fantasy_Kingdoms_Battle
                         //Debug.Assert(p.TargetLair.CombatHeroes.Count > 0);
 
                         bool showForPlayer = p.GetTypePlayer() == TypePlayer.Human;
-                        b = new Battle(p, pl, Turn, Rnd, showForPlayer);
+                        b = new Battle(p, pl, Day, Rnd, showForPlayer);
 
                         if (showForPlayer)
                         {
@@ -345,7 +340,7 @@ namespace Fantasy_Kingdoms_Battle
                     if (p.BattleCalced == false)
                     {
                         bool showForPlayer = (p.GetTypePlayer() == TypePlayer.Human) || (p.Opponent.GetTypePlayer() == TypePlayer.Human);
-                        b = new Battle(p, p.Opponent, Turn, Rnd, showForPlayer);
+                        b = new Battle(p, p.Opponent, Day, Rnd, showForPlayer);
 
                         if (showForPlayer)
                         {
@@ -429,7 +424,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int DaysForTournament()
         {
-            return TypeLobby.DayStartTournament - Turn;
+            return TypeLobby.DayStartTournament - Day;
         }
 
         internal bool CheckUniqueAvatars()
