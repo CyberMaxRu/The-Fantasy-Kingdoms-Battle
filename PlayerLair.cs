@@ -14,7 +14,7 @@ namespace Fantasy_Kingdoms_Battle
     // Класс логова игрока
     internal sealed class PlayerLair : BattleParticipant, ICell
     {
-        public PlayerLair(LobbyPlayer p, TypeLair l, int x, int y, int layer) : base()
+        public PlayerLair(LobbyPlayer p, TypeLair l, int x, int y, int layer) : base(p.Lobby)
         {
             Player = p;
             TypeLair = l;
@@ -27,7 +27,7 @@ namespace Fantasy_Kingdoms_Battle
                 CreateMonsters();
 
             // Настройка награды
-            RewardGold = FormMain.Rnd.Next(l.Reward.MinGold, l.Reward.MaxGold);
+            RewardGold = Lobby.Rnd.Next(l.Reward.MinGold, l.Reward.MaxGold);
             RewardPointTemple = l.Reward.PointTemple;
             RewardPointTradePost = l.Reward.PointTradePost;
         }

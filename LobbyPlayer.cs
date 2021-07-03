@@ -19,10 +19,9 @@ namespace Fantasy_Kingdoms_Battle
         internal const int MAX_FLAG_HIGH = 2;// Максимальное число флагов с высоким приоритетом
         internal const int MAX_FLAG_COUNT = 5;// Максимальное число активных флагов
 
-        public LobbyPlayer(Lobby lobby, Player player, int playerIndex) : base()
+        public LobbyPlayer(Lobby lobby, Player player, int playerIndex) : base(lobby)
         {
             Player = player;
-            Lobby = lobby;
             PlayerIndex = playerIndex;
 
             // Создаем справочик количества приоритетов флагов
@@ -119,7 +118,7 @@ namespace Fantasy_Kingdoms_Battle
                         listBonuses.Clear();
                         listBonuses.AddRange(FormMain.Config.StartBonuses.Where(b => b.Points <= (points - sb.Points)));
                         Debug.Assert(listBonuses.Count > 0);
-                        sb.AddBonus(listBonuses[FormMain.Rnd.Next(listBonuses.Count)]);
+                        sb.AddBonus(listBonuses[lobby.Rnd.Next(listBonuses.Count)]);
                     }
 
                     return sb;
@@ -150,7 +149,7 @@ namespace Fantasy_Kingdoms_Battle
                 if (bp.Heroes.Count < bp.MaxHeroes())
                 {
                     //int needHire = 49;
-                    int needHire = FormMain.Rnd.Next(2) + 1;
+                    int needHire = Lobby.Rnd.Next(2) + 1;
 
                     for (int x = 0; x < needHire; x++)
                     //                for (; bp.Heroes.Count() < bp.MaxHeroes();)
@@ -208,7 +207,7 @@ namespace Fantasy_Kingdoms_Battle
                         //Debug.Assert(p.TargetLair.CombatHeroes.Count > 0);
 
                         bool showForPlayer = Player.TypePlayer == TypePlayer.Human;
-                        b = new Battle(this, pl, Lobby.Turn, FormMain.Rnd, showForPlayer);
+                        b = new Battle(this, pl, Lobby.Turn, Lobby.Rnd, showForPlayer);
 
                         if (showForPlayer)
                         {
@@ -264,7 +263,6 @@ namespace Fantasy_Kingdoms_Battle
                 pb.ValidateHeroes();
         }
 
-        internal Lobby Lobby { get; }
         internal Player Player { get; }
         internal int PlayerIndex { get; }
         internal int PositionInLobby { get; set; }

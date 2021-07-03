@@ -19,7 +19,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(VariantsStartBonuses.Count > 0);
 
-            ApplyStartBonus(VariantsStartBonuses[FormMain.Rnd.Next(VariantsStartBonuses.Count)]);
+            ApplyStartBonus(VariantsStartBonuses[Lobby.Rnd.Next(VariantsStartBonuses.Count)]);
         }
     }
 }

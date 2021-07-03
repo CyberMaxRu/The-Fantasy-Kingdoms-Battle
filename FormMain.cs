@@ -261,8 +261,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int ImageIndexFirstAvatar { get; }
         internal int ImageIndexExternalAvatar { get; }
 
-        internal static Random Rnd = new Random();
-
         //
         internal Settings Settings { get; private set; }
         internal MainConfig MainConfig { get; private set; }

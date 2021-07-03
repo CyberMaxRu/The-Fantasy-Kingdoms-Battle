@@ -24,7 +24,7 @@ namespace Fantasy_Kingdoms_Battle
 
             string GetRandomName(List<string> list)
             {
-                return list.Count > 0 ? list[FormMain.Rnd.Next(list.Count)] : "";
+                return list.Count > 0 ? list[Player.Lobby.Rnd.Next(list.Count)] : "";
             }
         }
 

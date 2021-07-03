@@ -86,7 +86,7 @@ namespace Fantasy_Kingdoms_Battle
                 int t;
                 for (int i = 0; i < TypeCreature.ConfigNextLevel.StatPoints; i++)
                 {
-                    t = FormMain.Rnd.Next(100);
+                    t = BattleParticipant.Lobby.Rnd.Next(100);
 
                     if (t < TypeCreature.ConfigNextLevel.WeightStrength)
                         ParametersBase.Strength++;

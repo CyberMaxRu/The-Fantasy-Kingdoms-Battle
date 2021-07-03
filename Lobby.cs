@@ -33,7 +33,7 @@ namespace Fantasy_Kingdoms_Battle
             int idx;
             for (int i = 1; i < TypeLobby.QuantityPlayers; i++)
             {
-                idx = FormMain.Rnd.Next(listCompPlayers.Count);
+                idx = Rnd.Next(listCompPlayers.Count);
                 Players[i] = new LobbyPlayerComputer(this, listCompPlayers[idx], i);
                 listCompPlayers.RemoveAt(idx);
             }
@@ -58,6 +58,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<Battle> Battles { get; } = new List<Battle>();
         internal bool HumanIsWin { get; private set; }
         internal StateLobby StateLobby { get; private set; }
+        internal Random Rnd { get; } = new Random();
 
         private void MakeOpponents()
         {
@@ -230,7 +231,7 @@ namespace Fantasy_Kingdoms_Battle
                         //Debug.Assert(p.TargetLair.CombatHeroes.Count > 0);
 
                         bool showForPlayer = p.GetTypePlayer() == TypePlayer.Human;
-                        b = new Battle(p, pl, Turn, FormMain.Rnd, showForPlayer);
+                        b = new Battle(p, pl, Turn, Rnd, showForPlayer);
 
                         if (showForPlayer)
                         {
@@ -274,7 +275,7 @@ namespace Fantasy_Kingdoms_Battle
                     if (p.BattleCalced == false)
                     {
                         bool showForPlayer = (p.GetTypePlayer() == TypePlayer.Human) || (p.Opponent.GetTypePlayer() == TypePlayer.Human);
-                        b = new Battle(p, p.Opponent, Turn, FormMain.Rnd, showForPlayer);
+                        b = new Battle(p, p.Opponent, Turn, Rnd, showForPlayer);
 
                         if (showForPlayer)
                         {

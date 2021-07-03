@@ -18,12 +18,15 @@ namespace Fantasy_Kingdoms_Battle
             return c1.ID - c2.ID;
         }
 
-        public BattleParticipant()
+        public BattleParticipant(Lobby lobby)
         {
+            Lobby = lobby;
+
             // Настройка ячеек героев
             CellHeroes = new Creature[FormMain.Config.HeroRows, FormMain.Config.HeroInRow];
         }
 
+        internal Lobby Lobby { get; }
         internal bool BattleCalced { get; set; } = false;
         internal bool IsLive { get; set; } = true;/*private set*/
         internal List<Battle> HistoryBattles { get; } = new List<Battle>();

@@ -449,7 +449,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int CalcDamageMelee(HeroInBattle target)
         {
             int delta = Parameters.MaxMeleeDamage - Parameters.MinMeleeDamage;
-            int value = FormMain.Rnd.Next(delta);
+            int value = Player.Lobby.Rnd.Next(delta);
 
             int d = Parameters.MaxMeleeDamage;// Parameters.MinMeleeDamage + value;
 
@@ -459,7 +459,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int CalcDamageShoot(HeroInBattle target)
         {
             int delta = Parameters.MaxArcherDamage - Parameters.MinArcherDamage;
-            int value = FormMain.Rnd.Next(delta);
+            int value = Player.Lobby.Rnd.Next(delta);
 
             int d = Parameters.MaxArcherDamage;// Parameters.MinArcherDamage + value;
 
