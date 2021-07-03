@@ -15,28 +15,22 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class Lobby
     {
         private static int generation = 0;
+
         public Lobby(TypeLobby tl)
         {
             ID = generation++;
             TypeLobby = tl;
             StateLobby = StateLobby.Start;
 
+            // Создаем конфигурацию логов
+            Lairs = new List<TypeLair>[TypeLobby.LairsLayers];
+            GenerateConfigLairs();
+
             // Создание игроков
             Players = new LobbyPlayer[tl.QuantityPlayers];
             Players[0] = new LobbyPlayerHuman(this, Program.formMain.CurrentHumanPlayer, 0);// Живой игрок всегда первый
-
             // Подбираем компьютерных игроков из пула доступных
-            List<ComputerPlayer> listCompPlayers = new List<ComputerPlayer>();
-            listCompPlayers.AddRange(FormMain.Config.ComputerPlayers.Where(cp => cp.Active));
-            Debug.Assert(listCompPlayers.Count >= TypeLobby.QuantityPlayers - 1);
-
-            int idx;
-            for (int i = 1; i < TypeLobby.QuantityPlayers; i++)
-            {
-                idx = Rnd.Next(listCompPlayers.Count);
-                Players[i] = new LobbyPlayerComputer(this, listCompPlayers[idx], i);
-                listCompPlayers.RemoveAt(idx);
-            }
+            GeneratePlayers();
 
             SortPlayers();
 
@@ -48,6 +42,81 @@ namespace Fantasy_Kingdoms_Battle
 
             // Определяем противников
             MakeOpponents();
+
+            void GenerateConfigLairs()
+            {
+                // Создание рандомных логов монстров согласно настроек типа лобби
+                // Для этого сначала создаем логова по минимальному списку,
+                // а оставшиеся ячейки - из оставшихся по максимуму
+
+                TypeLobbyLayerSettings ls;
+                int idx;
+                int restLairs;
+
+                for (int layer = 0; layer < TypeLobby.LairsLayers; layer++)
+                {
+                    Lairs[layer] = new List<TypeLair>();
+
+                    ls = TypeLobby.LayerSettings[layer];
+                    restLairs = TypeLobby.LairsHeight * TypeLobby.LairsWidth;
+
+                    // Сначала заполняем минимальными количествами
+                    foreach (TypeLobbyLairSettings l in ls.LairsSettings)
+                    {
+                        for (int i = 0; i < l.MinQuantity; i++)
+                        {
+                            Lairs[layer].Add(l.TypeLair);
+                            restLairs--;
+                        }
+
+                        Debug.Assert(restLairs >= 0);
+                    }
+                    
+                    // Если остались свободные ячейки, генерируем по данным о максимальном количестве
+                    if (restLairs > 0)
+                    {
+                        List<TypeLair> listTypeLairs = new List<TypeLair>();
+                        int q;
+                        
+                        // Составляем список из максимального числа доступных типов логов
+                        foreach (TypeLobbyLairSettings l in ls.LairsSettings)
+                        {
+                            q = l.MaxQuantity - l.MinQuantity;
+                            for (int j = 0; j < q; j++)
+                                listTypeLairs.Add(l.TypeLair);
+                        }
+
+                        Debug.Assert(restLairs <= listTypeLairs.Count);
+                        
+                        // Пока есть места, дергаем случайный тип логова
+                        while (restLairs > 0)
+                        {
+                            idx = Rnd.Next(listTypeLairs.Count);
+
+                            Lairs[layer].Add(listTypeLairs[idx]);
+
+                            listTypeLairs.RemoveAt(idx);
+                            restLairs--;
+                        }
+                    }
+                }
+            }
+
+            void GeneratePlayers()
+            {
+
+                List<ComputerPlayer> listCompPlayers = new List<ComputerPlayer>();
+                listCompPlayers.AddRange(FormMain.Config.ComputerPlayers.Where(cp => cp.Active));
+                Debug.Assert(listCompPlayers.Count >= TypeLobby.QuantityPlayers - 1);
+
+                int idx;
+                for (int i = 1; i < TypeLobby.QuantityPlayers; i++)
+                {
+                    idx = Rnd.Next(listCompPlayers.Count);
+                    Players[i] = new LobbyPlayerComputer(this, listCompPlayers[idx], i);
+                    listCompPlayers.RemoveAt(idx);
+                }
+            }
         }
 
         internal int ID { get; private set; }
@@ -59,6 +128,7 @@ namespace Fantasy_Kingdoms_Battle
         internal bool HumanIsWin { get; private set; }
         internal StateLobby StateLobby { get; private set; }
         internal Random Rnd { get; } = new Random();
+        internal List<TypeLair>[] Lairs { get; }
 
         private void MakeOpponents()
         {

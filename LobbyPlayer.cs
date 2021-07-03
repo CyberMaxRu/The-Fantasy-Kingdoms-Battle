@@ -767,57 +767,26 @@ namespace Fantasy_Kingdoms_Battle
             // Создание рандомных логов монстров согласно настроек типа лобби
             // Для этого сначала создаем логова по минимальному списку,
             // а оставшиеся ячейки - из оставшихся по максимуму
-            Random r = new Random();
-
-            TypeLobbyLayerSettings ls;
+            //List<TypeLair>
             int idx;
-            for (int i = 0; i < Lobby.TypeLobby.LairsLayers; i++)
+            for (int layer = 0; layer < Lobby.TypeLobby.LairsLayers; layer++)
             {
-                ls = Lobby.TypeLobby.LayerSettings[i];
+                List<TypeLair> lairs = new List<TypeLair>();
+                lairs.AddRange(Lobby.Lairs[layer]);
                 List<Point> cells = GetCells();
+                Debug.Assert(cells.Count <= lairs.Count);
 
-                foreach (TypeLobbyLairSettings l in ls.LairsSettings)
+                while (cells.Count > 0)
                 {
-                    for (int j = 0; j < l.MinQuantity; j++)
-                    {
-                        Debug.Assert(cells.Count > 0);
+                    // Берем случайную ячейку
+                    idx = Lobby.Rnd.Next(cells.Count);
 
-                        // Берем случайную ячейку
-                        idx = r.Next(cells.Count);
+                    // Помещаем в нее логово
+                    Debug.Assert(Lairs[layer, cells[idx].Y, cells[idx].X] == null);
+                    Lairs[layer, cells[idx].Y, cells[idx].X] = new PlayerLair(this, lairs[idx], cells[idx].X, cells[idx].Y, layer);
 
-                        // Помещаем в нее логово
-                        Debug.Assert(Lairs[i, cells[idx].Y, cells[idx].X] == null);
-                        Lairs[i, cells[idx].Y, cells[idx].X] = new PlayerLair(this, l.TypeLair, cells[idx].X, cells[idx].Y, i);
-
-                        // Убираем ячейку из списка доступных
-                        cells.RemoveAt(idx);
-                    }
-                }
-
-                // Если остались свободные ячейки, генерируем по данным о максимальном количестве
-                if (cells.Count > 0)
-                {
-                    List<TypeLair> listTypeLairs = new List<TypeLair>();
-                    int q;
-
-                    // Составляем список из максимального числа доступных типов логов
-                    foreach (TypeLobbyLairSettings l in ls.LairsSettings)
-                    {
-                        q = l.MaxQuantity - l.MinQuantity;
-                        for (int j = 0; j < q; j++)
-                            listTypeLairs.Add(l.TypeLair);
-                    }
-
-                    // Пока есть свободные ячейки, дергаем случайный тип логова
-                    while (cells.Count > 0)
-                    {
-                        Debug.Assert(Lairs[i, cells[0].Y, cells[0].X] == null);
-
-                        idx = r.Next(listTypeLairs.Count);
-                        Lairs[i, cells[0].Y, cells[0].X] = new PlayerLair(this, listTypeLairs[idx], cells[0].X, cells[0].Y, i);
-                        listTypeLairs.RemoveAt(idx);
-                        cells.RemoveAt(0);
-                    }
+                    // Убираем ячейку из списка доступных
+                    cells.RemoveAt(idx);
                 }
             }
 
