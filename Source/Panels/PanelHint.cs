@@ -23,6 +23,7 @@ namespace Fantasy_Kingdoms_Battle
     // Панель подсказки
     internal sealed class PanelHint : VisualControl
     {
+        internal readonly VCText lblName;
         internal readonly VCText lblHeader;
         internal readonly VCText lblAction;
         internal readonly VCText lblDescription;
@@ -52,6 +53,10 @@ namespace Fantasy_Kingdoms_Battle
             colorBackground = Color.FromArgb(192, 0, 0, 0);
 
             widthControl = Width - FormMain.Config.GridSize - FormMain.Config.GridSize;
+
+            lblName = new VCText(this, FormMain.Config.GridSize, 4, Program.formMain.fontMedCaptionC, Color.SteelBlue, widthControl);
+            lblName.StringFormat.Alignment = StringAlignment.Near;
+            lblName.StringFormat.LineAlignment = StringAlignment.Near;
 
             lblHeader = new VCText(this, FormMain.Config.GridSize, 4, Program.formMain.fontMedCaptionC, Color.Yellow, widthControl);
             lblHeader.StringFormat.Alignment = StringAlignment.Near;
@@ -174,6 +179,7 @@ namespace Fantasy_Kingdoms_Battle
         internal void Clear()
         {
             ExistHint = false;
+            lblName.Visible = false;
             lblHeader.Text = "";
             lblAction.Visible = false;
             lblDescription.Visible = false;
@@ -195,7 +201,7 @@ namespace Fantasy_Kingdoms_Battle
             lblDefenseArcher.Hide();
             lblDefenseMagic.Hide();*/
 
-            nextTop = lblHeader.NextTop();
+            nextTop = FormMain.Config.GridSize;
         }
 
         internal void AddHeader(string header)
@@ -205,12 +211,27 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(header.Length > 0);
 
             ExistHint = true;
+            lblHeader.ShiftY = nextTop;
             lblHeader.Width = widthControl;
             lblHeader.Text = header;
             lblHeader.Height = lblHeader.MinHeigth();
-            nextTop = lblHeader.NextTop() - 5;
+            nextTop = lblHeader.NextTop();
             lblHeader.Width = lblHeader.MinWidth();
             Width = lblHeader.ShiftX + lblHeader.MinWidth() + FormMain.Config.GridSize;
+        }
+
+        internal void AddStep0Name(string name)
+        {
+            Debug.Assert(!lblName.Visible);
+            Debug.Assert(name != null);
+            Debug.Assert(name.Length > 0);
+
+            lblName.ShiftY = nextTop;
+            lblName.Text = name;
+            lblName.Height = lblName.MinHeigth();
+            lblName.Visible = true;
+
+            nextTop = lblName.NextTop();
         }
 
         internal void AddStep1Header(string header, string action, string description)
@@ -221,6 +242,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Width = 256;
             ExistHint = true;
+            lblHeader.ShiftY = nextTop;
             lblHeader.Width = widthControl;
             lblHeader.Text = header;
             lblHeader.Height = lblHeader.MinHeigth();
