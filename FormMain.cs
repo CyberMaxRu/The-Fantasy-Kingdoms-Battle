@@ -1614,18 +1614,11 @@ namespace Fantasy_Kingdoms_Battle
         {
             VisualControl curControl = null;
 
-            if (currentLayer == layerGame)
+            foreach (VisualControl vc in currentLayer.Controls)
             {
-                 curControl = layerGame.GetControl(mousePos.X, mousePos.Y);
-            }
-            else
-            {
-                foreach (VisualControl vc in currentLayer.Controls)
-                {
-                    curControl = vc.GetControl(mousePos.X, mousePos.Y);
-                    if (curControl != null)
-                        break;
-                }
+                curControl = vc.GetControl(mousePos.X, mousePos.Y);
+                if (curControl != null)
+                    break;
             }
 
             return curControl;
