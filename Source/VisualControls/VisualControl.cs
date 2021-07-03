@@ -9,6 +9,8 @@ namespace Fantasy_Kingdoms_Battle
     // Базовый класс и класс-контейнер для всех визуальных контролов
     internal class VisualControl : IDisposable
     {
+        private static Dictionary<Size, Bitmap> poolBorders = new Dictionary<Size, Bitmap>();
+
         private int left;// Координата Left на главном окне (абсолютная)
         private int top;// Координата Top на главном окне (абсолютная)
         private int width;// Ширина контрола
@@ -16,6 +18,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private Bitmap bmpBorder;
         private Bitmap bmpBorderSelect;
+        private Size sizeBorder;
 
         private bool _disposed = false;
 
@@ -109,8 +112,10 @@ namespace Fantasy_Kingdoms_Battle
             // Рисуем бордюр
             if (ShowBorder && Visible)
             {
-                PrepareBorder();
-                g.DrawImageUnscaled(bmpBorder, Left - 2, Top);
+                if ((sizeBorder == null) || (sizeBorder.Width != Width + 4) || (sizeBorder.Height != Height + 3))
+                    sizeBorder = new Size(Width + 4, Height + 3);
+
+                g.DrawImageUnscaled(GetBorder(sizeBorder), Left - 2, Top);
             }
         }
 
@@ -124,26 +129,6 @@ namespace Fantasy_Kingdoms_Battle
 
         protected virtual bool Selected() => ManualSelected;
         protected virtual bool AllowClick() => true;
-
-        private void PrepareBorder()
-        {
-            if (ShowBorder)
-            {
-                if ((bmpBorder == null) || (bmpBorder.Size.Width != Width + 4) || (bmpBorder.Size.Height != Height + 3))
-                {
-                    bmpBorder?.Dispose();
-                    bmpBorder = Program.formMain.bbObject.DrawBorder(Width + 4, Height + 3);
-                }
-            }
-            else
-            {
-                if (bmpBorder != null)
-                {
-                    bmpBorder.Dispose();
-                    bmpBorder = null;
-                }
-            }
-        }
 
         protected virtual void ValidateRectangle()
         {
@@ -408,6 +393,19 @@ namespace Fantasy_Kingdoms_Battle
                 bmpBorderSelect = null;
 
                 _disposed = true;
+            }
+        }
+
+        private Bitmap GetBorder(Size size)
+        {
+            // Ищем бордюр такого размера в пуле
+            if (poolBorders.ContainsKey(size))
+                return poolBorders[size];
+            else
+            {
+                Bitmap bmpBorder = Program.formMain.bbObject.DrawBorder(size.Width, size.Height);
+                poolBorders.Add(size, bmpBorder);
+                return bmpBorder;
             }
         }
     }
