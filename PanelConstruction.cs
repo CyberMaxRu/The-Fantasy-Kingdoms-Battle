@@ -163,8 +163,15 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Construction.TypeConstruction is TypeEconomicConstruction)
             {
-                lblIncome.Text = "+" + (Construction.Level > 0 ? Construction.Income() : Construction.IncomeNextLevel()).ToString();
-                lblIncome.Color = FormMain.Config.ColorIncome(Construction.Level > 0);
+                int income = Construction.Level > 0 ? Construction.Income() : Construction.IncomeNextLevel();
+                if (income > 0)
+                {
+                    lblIncome.Text = $"+{income}";
+                    lblIncome.Color = FormMain.Config.ColorIncome(Construction.Level > 0);
+                    lblIncome.Visible = true;
+                }
+                else
+                    lblIncome.Visible = false;
             }
             else
                 lblIncome.Visible = false;
