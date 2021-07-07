@@ -86,6 +86,11 @@ namespace Fantasy_Kingdoms_Battle
             return cell.Level(); 
         }
 
+        protected virtual int GetQuantity()
+        {
+            return cell.Quantity();
+        }
+
         internal override void Draw(Graphics g)
         {
             if (Visible)
@@ -95,7 +100,7 @@ namespace Fantasy_Kingdoms_Battle
                     BitmapList = cell.BitmapList();
                     ImageIndex = cell.ImageIndex();
                     //ImageState = cell.NormalImage() ? ImageState.Normal : ImageState.Disabled;
-                    Quantity = cell.Quantity();
+                    Quantity = GetQuantity();
                     Level = GetLevel();
 
                     Debug.Assert(BitmapList.Size == 48);
