@@ -20,17 +20,19 @@ namespace Fantasy_Kingdoms_Battle
 
         public PanelConstruction(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
-            btnBuyOrUpgrade = new VCIconButton(this, imgMapObject.NextLeft(), imgMapObject.ShiftY, Program.formMain.ilGui, FormMain.GUI_BUILD);
+            btnHeroes = new VCIconButton(this, imgMapObject.ShiftX, imgMapObject.ShiftY, Program.formMain.ilGui, FormMain.GUI_HOME);
+
+            btnHireHero = new VCIconButton(this, imgMapObject.NextLeft(), btnHeroes.NextTop() + FormMain.Config.GridSize + FormMain.Config.GridSizeHalf, Program.formMain.imListObjectsCell, -1);
+            btnHireHero.Click += BtnHireHero_Click;
+            btnHireHero.ShowHint += BtnHireHero_ShowHint;
+
+            btnBuyOrUpgrade = new VCIconButton(this, imgMapObject.NextLeft(), imgMapObject.NextTop(), Program.formMain.ilGui, FormMain.GUI_BUILD);
             btnBuyOrUpgrade.Click += BtnBuyOrUprgade_Click;
             btnBuyOrUpgrade.ShowHint += BtnBuyOrUpgrade_ShowHint;
 
-            btnHeroes = new VCIconButton(this, imgMapObject.ShiftX, imgMapObject.NextTop(), Program.formMain.imListObjectsCell, -1);
 
             //if ((TypeConstruction.TrainedHero != null) && !(TypeConstruction is TypeEconomicConstruction))
             //{
-                btnHireHero = new VCIconButton(this, imgMapObject.NextLeft(), btnBuyOrUpgrade.NextTop() + FormMain.Config.GridSize + FormMain.Config.GridSizeHalf, Program.formMain.imListObjectsCell, -1);
-                btnHireHero.Click += BtnHireHero_Click;
-                btnHireHero.ShowHint += BtnHireHero_ShowHint;
             //}
             //else
             //    btnHeroes.Visible = false;
@@ -51,7 +53,7 @@ namespace Fantasy_Kingdoms_Battle
 
             //}
 
-            Height = btnHeroes.NextTop();
+            Height = btnBuyOrUpgrade.NextTop();
             Width = btnBuyOrUpgrade.NextLeft();
             lblNameMapObject.Width = Width - (lblNameMapObject.ShiftX * 2);
 
@@ -218,7 +220,7 @@ namespace Fantasy_Kingdoms_Battle
             if ((Construction.TypeConstruction.TrainedHero != null) && !(TypeConstruction is TypeEconomicConstruction) && (Construction.Level > 0) && (Construction.Heroes.Count > 0))
             {
                 btnHeroes.Cost = Construction.Heroes.Count.ToString() + "/" + Construction.MaxHeroes();
-                btnHeroes.ImageIndex = Program.formMain.TreatImageIndex(Construction.TypeConstruction.TrainedHero.ImageIndex, Construction.Player);
+                //btnHeroes.ImageIndex = Program.formMain.TreatImageIndex(Construction.TypeConstruction.TrainedHero.ImageIndex, Construction.Player);
                 btnHeroes.Visible = true;
             }
             else
