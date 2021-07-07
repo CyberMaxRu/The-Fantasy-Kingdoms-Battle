@@ -31,13 +31,13 @@ namespace Fantasy_Kingdoms_Battle
             labelCost.ManualDraw = true;
 
             shiftlabelLevel = bitmapList.Size >= 128 ? FormMain.Config.GridSize : 6;
-            labelLevel = new VCLabel(this, 0, shiftlabelLevel - 2, Program.formMain.fontMedCaptionC, FormMain.Config.CommonLevel, 16, "");
+            labelLevel = new VCLabel(this, 0, shiftlabelLevel - 4, Program.formMain.fontMedCaptionC, FormMain.Config.CommonLevel, 16, "");
             labelLevel.StringFormat.LineAlignment = StringAlignment.Near;
             labelLevel.StringFormat.Alignment = StringAlignment.Far;
             labelLevel.Visible = false;
             labelLevel.ManualDraw = true;
 
-            labelQuantity = new VCLabel(this, 0, FormMain.Config.GridSize, Program.formMain.fontMedCaptionC, FormMain.Config.CommonQuantity, 16, "");
+            labelQuantity = new VCLabel(this, 0, shiftlabelLevel - 2, Program.formMain.fontMedCaptionC, FormMain.Config.CommonQuantity, 16, "");
             labelQuantity.StringFormat.LineAlignment = StringAlignment.Far;
             labelQuantity.StringFormat.Alignment = StringAlignment.Far;
             labelQuantity.Visible = false;
@@ -214,7 +214,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.ArrangeControls();
 
-            labelQuantity.ShiftY = Height - 12;
+            labelQuantity.ShiftY = Height - 16;
             labelCost.ShiftY = Height - 16;
 
             labelPopupQuantity.ShiftX = Width - 13;
@@ -227,7 +227,7 @@ namespace Fantasy_Kingdoms_Battle
             Height = BitmapList.Size + (ShiftImageY * 2);
 
             labelLevel.Width = Width - shiftlabelLevel;
-            labelQuantity.Width = Width - FormMain.Config.GridSizeHalf;
+            labelQuantity.Width = Width - shiftlabelLevel;
             labelCost.Width = Width;
         }
 
