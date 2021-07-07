@@ -45,12 +45,12 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal override void Draw(Graphics g)
+        internal override void DrawBackground(Graphics g)
         {
+            base.DrawBackground(g);
+
             if (ShowBackground)
                 g.DrawImageUnscaled(bmpBackround, Left, Top);
-
-            base.Draw(g);
         }
     }
 }
