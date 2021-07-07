@@ -111,7 +111,7 @@ namespace Fantasy_Kingdoms_Battle
                             x = Left + LeftMargin + ((Width - LeftMargin - RightMargin - bmpPreparedText.Width) / 2);
                             break;
                         default:
-                            x = Left + Width - bmpPreparedText.Width - LeftMargin - RightMargin;
+                            x = Left + Width - bmpPreparedText.Width - RightMargin;
                             break;
                     }
 
