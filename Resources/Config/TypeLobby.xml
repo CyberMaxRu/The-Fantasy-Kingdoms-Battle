@@ -18,6 +18,7 @@
     <PointStartBonus>5</PointStartBonus>
     <StartScoutedLairs>2</StartScoutedLairs>
     <VariantStartBonus>3</VariantStartBonus>
+    <MaxLoses>3</MaxLoses>
     <LairsLayers>3</LairsLayers>
     <LairsWidth>4</LairsWidth>
     <LairsHeight>3</LairsHeight>

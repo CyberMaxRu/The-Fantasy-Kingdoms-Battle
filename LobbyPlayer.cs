@@ -9,6 +9,19 @@ using System.Windows.Forms;
 
 namespace Fantasy_Kingdoms_Battle
 {
+    // Класс информации о поражении
+    internal sealed class LoseInfo
+    {
+        public LoseInfo(int day, LobbyPlayer opponent)
+        {
+            Day = day;
+            Opponent = opponent;
+        }
+
+        internal int Day { get; }
+        internal LobbyPlayer Opponent { get; }
+    }
+
     // Класс игрока лобби
     internal abstract class LobbyPlayer : BattleParticipant, ICell
     {
@@ -36,6 +49,9 @@ namespace Fantasy_Kingdoms_Battle
             PointConstructionTemple = lobby.TypeLobby.StartPointConstructionTemple;
             PointConstructionTradePost = lobby.TypeLobby.StartPointConstructionTradePost;
             SetQuantityFlags(lobby.TypeLobby.StartQuantityFlags);
+
+            for (int i = 0; i < lobby.TypeLobby.MaxLoses; i++)
+                LoseInfo.Add(null);
 
             // Настраиваем стартовые бонусы
             if (lobby.TypeLobby.VariantStartBonus > 0)
@@ -261,6 +277,9 @@ namespace Fantasy_Kingdoms_Battle
         internal int LevelCastle => Castle.Level;
         internal List<PlayerHero> AllHeroes { get; } = new List<PlayerHero>();
         internal int Gold { get => Castle.Gold; set { Castle.Gold = value; } }
+
+        internal List<LoseInfo> LoseInfo { get; } = new List<LoseInfo>();
+        internal int CurrentLoses { get; }// Текущее количество поражений
 
         internal int PointConstructionGuild { get; private set; }
         internal int PointConstructionEconomic { get; private set; }

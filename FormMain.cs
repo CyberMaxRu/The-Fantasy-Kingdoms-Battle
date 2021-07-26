@@ -81,6 +81,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private readonly VisualControl panelLairWithFlags;
         private readonly List<VCButtonTargetLair> listBtnTargetLair = new List<VCButtonTargetLair>();
+        private readonly List<VCImageLose> listBtnLoses = new List<VCImageLose>();
 
         // Рендеринг
         private Bitmap bmpRenderClientArea;// Фон клиентской области, на который налагается кадр
@@ -185,6 +186,8 @@ namespace Fantasy_Kingdoms_Battle
         internal const int GUI_24_STAR = 2;
         internal const int GUI_24_BUTTON_LEFT = 3;
         internal const int GUI_24_BUTTON_RIGHT = 4;
+        internal const int GUI_24_NEUTRAL = 5;
+        internal const int GUI_24_LOSE = 6;
 
         internal const int GUI_45_EMPTY = 0;
         internal const int GUI_45_BORDER = 0;
@@ -1171,6 +1174,7 @@ namespace Fantasy_Kingdoms_Battle
             ShowLobby();
 
             LairsWithFlagChanged();
+            LosesChanged();
             UpdateListHeroes();
             ShowWarehouse();
         }
@@ -1211,6 +1215,7 @@ namespace Fantasy_Kingdoms_Battle
                     ShowLair(x, y);
 
             // Показываем героев
+            AdjustPanelLoses();
             AdjustPanelLairsWithFlags();
             ListHeroesChanged();
         }
@@ -1862,10 +1867,17 @@ namespace Fantasy_Kingdoms_Battle
                 AdjustPanelLairsWithFlags();
         }
 
+        internal void LosesChanged()
+        {
+            if (lobby.StateLobby == StateLobby.TurnHuman)
+                AdjustPanelLoses();
+        }
+
         private void AdjustPanelLairsWithFlags()
         {
             Debug.Assert(curAppliedPlayer == lobby.CurrentPlayer);
             Debug.Assert(lobby.CurrentPlayer.ListFlags.Count > 0);
+
             // Приводим в соответствие количество кнопок и логов
             // Для этого скрываем все кнопки, а потом делаем их видимыми.
             // Это чтобы не создавать каждый раз заново кнопки при изменении их численности
@@ -1894,6 +1906,38 @@ namespace Fantasy_Kingdoms_Battle
             panelLairWithFlags.Width = left;
             MainControl.ArrangeControl(panelLairWithFlags);
 
+            SetNeedRedrawFrame();
+        }
+
+        private void AdjustPanelLoses()
+        {
+            Debug.Assert(curAppliedPlayer == lobby.CurrentPlayer);
+
+            // Приводим в соответствие количество кнопок и логов
+            // Для этого скрываем все кнопки, а потом делаем их видимыми.
+            // Это чтобы не создавать каждый раз заново кнопки при изменении их численности
+            while (listBtnLoses.Count < lobby.CurrentPlayer.LoseInfo.Count)
+            {
+                listBtnLoses.Add(new VCImageLose(bmpPreparedToolbar, 0, 6));
+            }
+
+            foreach (VCImageLose b in listBtnLoses)
+                b.Visible = false;
+
+            // Сортируем логова и переназначаем ссылки на них у кнопок
+            int n = 0;
+            int left = bmpPreparedToolbar.Width - listBtnLoses[0].Width - Config.GridSize;
+            foreach (LoseInfo li in lobby.CurrentPlayer.LoseInfo)
+            {
+                listBtnLoses[n].ShiftX = left;
+                listBtnLoses[n].Info = li;
+                listBtnLoses[n].Visible = true;
+
+                left -= listBtnLoses[n].Width + Config.GridSize;
+                n++;
+            }
+
+            bmpPreparedToolbar.ArrangeControls();
             SetNeedRedrawFrame();
         }
 
