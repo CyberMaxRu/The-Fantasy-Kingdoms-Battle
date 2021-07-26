@@ -42,7 +42,9 @@ namespace Fantasy_Kingdoms_Battle
             HireAllHero(GetPlayerConstruction(FormMain.Config.FindTypeGuild("GuildCleric")));
             HireAllHero(GetPlayerConstruction(FormMain.Config.FindTypeGuild("GuildMage")));
 
+            System.Windows.Forms.Application.DoEvents();
             System.Threading.Thread.Sleep(200);
+            System.Windows.Forms.Application.DoEvents();
 
             void HireAllHero(PlayerConstruction bp)
             {
