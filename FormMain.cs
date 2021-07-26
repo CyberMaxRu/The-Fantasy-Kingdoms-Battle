@@ -558,7 +558,7 @@ namespace Fantasy_Kingdoms_Battle
                 labelDay.Width = 64;
                 labelBuilders = new VCToolLabel(bmpPreparedToolbar, labelDay.NextLeft(), labelDay.ShiftY, "", GUI_16_BUILDER);
                 labelBuilders.ShowHint += LabelBuilders_ShowHint;
-                labelBuilders.Width = 96;
+                labelBuilders.Width = 112;
                 labelGold = new VCToolLabel(bmpPreparedToolbar, labelBuilders.NextLeft(), labelDay.ShiftY, "", GUI_16_GOLD);
                 labelGold.ShowHint += LabelGold_ShowHint;
                 labelGold.Width = 168;
@@ -1476,10 +1476,10 @@ namespace Fantasy_Kingdoms_Battle
             gfxRenderFrame.CompositingMode = CompositingMode.SourceOver;
 
             //
-            if ((Layers[0] == layerGame) && (lobby.CurrentPlayer != null))
+            if ((Layers[0] == layerGame) && (lobby.CurrentPlayer != null) && (lobby.CurrentPlayer.GetTypePlayer() == TypePlayer.Human))
             {
-                labelBuilders.Text = $"{curAppliedPlayer.FreeBuilders}/{curAppliedPlayer.Builders} (+{curAppliedPlayer.BuildersAtNextDay})";
                 labelGold.Text = lobby.CurrentPlayer.Gold.ToString() + " (+" + lobby.CurrentPlayer.Income().ToString() + ")";
+                labelBuilders.Text = $"{curAppliedPlayer.FreeBuilders}/{curAppliedPlayer.Builders} (+{curAppliedPlayer.BuildersAtNextDay})";
                 labelGreatness.Text = curAppliedPlayer.LevelGreatness.ToString()
                     + " (" + curAppliedPlayer.PointGreatness.ToString() + "/"
                     + curAppliedPlayer.PointGreatnessForNextLevel.ToString() + ")";
