@@ -15,6 +15,7 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class Lobby
     {
         private static int generation = 0;
+        private bool stopLobby = false;
 
         public Lobby(TypeLobby tl)
         {
@@ -175,7 +176,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Players[0].IsLive);
             Debug.Assert(CheckUniqueNamePlayers());
 
-            while (Day < TypeLobby.DayStartTournament)
+            while (Day < TypeLobby.DayStartTournament || !stopLobby)
             {
                 foreach (LobbyPlayer p in Players)
                 {
@@ -186,6 +187,9 @@ namespace Fantasy_Kingdoms_Battle
                     }
 
                     p.DoTurn();
+
+                    if (stopLobby)
+                        return;
                 }
             }
         }
@@ -452,6 +456,12 @@ namespace Fantasy_Kingdoms_Battle
                         }
 
             return true;
+        }
+
+        internal void ExitFromLobby()
+        {
+            CurrentPlayer.EndTurn();
+            stopLobby = true;
         }
     }
 }

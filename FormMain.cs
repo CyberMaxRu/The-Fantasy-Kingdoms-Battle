@@ -1080,6 +1080,8 @@ namespace Fantasy_Kingdoms_Battle
                 ProgramState = ProgramState.ConfirmQuit;
                 WindowConfirmExit f = new WindowConfirmExit();
                 ProgramState = f.ShowDialog() == DialogAction.OK ? ProgramState.NeedQuit : ProgramState.Started;
+                if (!(lobby is null))
+                    EndLobby();
                 e.Cancel = ProgramState == ProgramState.Started;
 
                 ShowFrame(true);
@@ -1336,6 +1338,7 @@ namespace Fantasy_Kingdoms_Battle
         internal void EndLobby()
         {
             Debug.Assert(lobby != null);
+            lobby.ExitFromLobby();
             lobby = null;
 
             ExchangeLayer(layerGame, layerMainMenu);
@@ -1573,6 +1576,7 @@ namespace Fantasy_Kingdoms_Battle
                     break;
                 case DialogAction.Quit:
                     ProgramState = ProgramState.NeedQuit;
+                    Program.formMain.EndLobby();
                     Close();                        
                     break;
                 case DialogAction.MainMenu:
