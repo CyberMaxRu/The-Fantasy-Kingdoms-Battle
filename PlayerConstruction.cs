@@ -147,6 +147,11 @@ namespace Fantasy_Kingdoms_Battle
             return Level > 0 ? TypeConstruction.Levels[Level].GreatnessPerDay : 0;
         }
 
+        internal int BuildersPerDay()
+        {
+            return Level > 0 ? TypeConstruction.Levels[Level].BuildersPerDay : 0;
+        }
+
         internal int GreatnessAddNextLevel()
         {
             return Level < TypeConstruction.MaxLevel ? TypeConstruction.Levels[Level + 1].GreatnessByConstruction : 0;
@@ -155,6 +160,11 @@ namespace Fantasy_Kingdoms_Battle
         internal int GreatnessPerDayNextLevel()
         {
             return Level < TypeConstruction.MaxLevel ? TypeConstruction.Levels[Level + 1].GreatnessPerDay : 0;
+        }
+
+        internal int BuildersPerDayNextLevel()
+        {
+            return Level < TypeConstruction.MaxLevel ? TypeConstruction.Levels[Level + 1].BuildersPerDay : 0;
         }
 
         internal PlayerHero HireHero()
@@ -246,6 +256,7 @@ namespace Fantasy_Kingdoms_Battle
                 + (!(TypeConstruction is TypeEconomicConstruction) ? "Героев: " + Heroes.Count.ToString() + "/" + MaxHeroes().ToString() : "") : ""));
             Program.formMain.formHint.AddStep2Income(Income());
             Program.formMain.formHint.AddStep3Greatness(0, GreatnessPerDay());
+            Program.formMain.formHint.AddStep35PlusBuilders(BuildersPerDay());
         }
 
         internal override void HideInfo()

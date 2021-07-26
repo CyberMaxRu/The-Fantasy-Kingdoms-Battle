@@ -185,6 +185,8 @@ namespace Fantasy_Kingdoms_Battle
                         SetPlayerAsCurrent(i);
                         Program.formMain.ShowCurrentPlayerLobby();
 
+                        Players[i].PrepareTurn();
+
                         if (Day == 1)
                         {
                             if (Players[i].VariantsStartBonuses.Count > 0)

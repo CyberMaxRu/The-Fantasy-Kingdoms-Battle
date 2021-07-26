@@ -19,9 +19,10 @@ namespace Fantasy_Kingdoms_Battle
             PointConstructionTemple = XmlUtils.GetInteger(n.SelectSingleNode("PointConstructionTemple"));
             PointConstructionTradePost = XmlUtils.GetInteger(n.SelectSingleNode("PointConstructionTradePost"));
             Income = n.SelectSingleNode("Income").InnerText != null ? Convert.ToInt32(n.SelectSingleNode("Income").InnerText) : 0;
-            MaxHeroes = n.SelectSingleNode("MaxHeroes") != null ? Convert.ToInt32(n.SelectSingleNode("MaxHeroes").InnerText) : 0;
             GreatnessByConstruction = XmlUtils.GetInteger(n.SelectSingleNode("GreatnessByConstruction"));
             GreatnessPerDay = XmlUtils.GetInteger(n.SelectSingleNode("GreatnessPerDay"));
+            BuildersPerDay = XmlUtils.GetInteger(n.SelectSingleNode("BuildersPerDay"));
+            MaxHeroes = n.SelectSingleNode("MaxHeroes") != null ? Convert.ToInt32(n.SelectSingleNode("MaxHeroes").InnerText) : 0;
 
             Debug.Assert(Pos > 0);
             Debug.Assert(Cost >= 0);
@@ -34,6 +35,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Income >= 0);
             Debug.Assert(GreatnessByConstruction >= 0);
             Debug.Assert(GreatnessPerDay >= 0);
+            Debug.Assert(BuildersPerDay >= 0);
 
             if ((Builders > 0) || (PointConstructionTemple > 0))
             {
@@ -52,6 +54,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int Income { get; }
         internal int GreatnessByConstruction { get; }// Дает очков Величия при постройке
         internal int GreatnessPerDay { get; }// Дает очков Величия в день
+        internal int BuildersPerDay { get; }// Дает строителей в день
         internal int MinHeroes { get; }
         internal int MaxHeroes { get; }
 

@@ -19,6 +19,7 @@
         <Builders>0</Builders>
         <Income>50</Income>
         <GreatnessPerDay>5</GreatnessPerDay>
+        <BuildersPerDay>3</BuildersPerDay>
         <MaxHeroes>10</MaxHeroes>        
       </Level>
       <Level>
@@ -28,6 +29,7 @@
         <Income>125</Income>
         <GreatnessByConstruction>250</GreatnessByConstruction>
         <GreatnessPerDay>10</GreatnessPerDay>
+        <BuildersPerDay>4</BuildersPerDay>
         <MaxHeroes>10</MaxHeroes>
         <Requirements>
           <Requirement>
@@ -47,6 +49,7 @@
         <Income>275</Income>
         <GreatnessByConstruction>500</GreatnessByConstruction>
         <GreatnessPerDay>15</GreatnessPerDay>
+        <BuildersPerDay>4</BuildersPerDay>
         <MaxHeroes>10</MaxHeroes>
         <Requirements>
           <Requirement>

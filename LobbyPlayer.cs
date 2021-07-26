@@ -46,9 +46,6 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Настраиваем игрока согласно настройкам лобби
-            Builders = lobby.TypeLobby.StartBuilders;
-            FreeBuilders = Builders;
-            BuildersAtNextDay = lobby.TypeLobby.BuildersPerDay;
             PointConstructionTemple = lobby.TypeLobby.StartPointConstructionTemple;
             PointConstructionTradePost = lobby.TypeLobby.StartPointConstructionTradePost;
             SetQuantityFlags(lobby.TypeLobby.StartQuantityFlags);
@@ -150,8 +147,23 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        internal void PrepareTurn()
+        {
+            UpdateBuildersNextDay();
+
+            Builders = BuildersAtNextDay;
+            if (Lobby.Day == 1)
+                Builders += Lobby.TypeLobby.StartBuilders;
+            FreeBuilders = Builders;
+        }
+
         internal abstract void DoTurn();
         internal abstract void EndTurn();
+
+        private void UpdateBuildersNextDay()
+        {
+            BuildersAtNextDay = Castle.TypeConstruction.Levels[Castle.Level].BuildersPerDay;
+        }
 
         //
         protected void ScoutRandomLair(int scoutLaires)
@@ -263,9 +275,6 @@ namespace Fantasy_Kingdoms_Battle
                 ValidateHeroes();
 
                 QuantityHeroes = CombatHeroes.Count();
-
-                Builders = Lobby.TypeLobby.BuildersPerDay;
-                FreeBuilders = Builders;
             }
         }
 

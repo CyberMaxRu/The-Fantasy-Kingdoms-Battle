@@ -9,10 +9,9 @@
     <MaxQuantityFlags>7</MaxQuantityFlags>
     <MaxHeroesForScoutFlag>3</MaxHeroesForScoutFlag>
     <DayStartTournament>10</DayStartTournament>
-    <StartBuilders>3</StartBuilders>
+    <StartBuilders>0</StartBuilders>
     <StartPointConstructionTemple>0</StartPointConstructionTemple>
     <StartPointConstructionTradePost>0</StartPointConstructionTradePost>
-    <BuildersPerDay>3</BuildersPerDay>
     <PointStartBonus>5</PointStartBonus>
     <StartScoutedLairs>2</StartScoutedLairs>
     <VariantStartBonus>3</VariantStartBonus>

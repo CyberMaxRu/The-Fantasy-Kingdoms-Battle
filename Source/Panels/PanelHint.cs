@@ -32,6 +32,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly VCLabelValue lblIncome;
         internal readonly VCLabelValue lblGreatnessAdd;
         internal readonly VCLabelValue lblGreatnessPerDay;
+        internal readonly VCLabelValue lblBuildersPerDay;
         internal readonly VCLabelValue lblGold;
         internal readonly VCLabelValue lblBuilders;
         internal readonly VCLabel lblDamageMelee;
@@ -83,7 +84,11 @@ namespace Fantasy_Kingdoms_Battle
             lblGreatnessPerDay.ImageIndex = FormMain.GUI_16_GREATNESS;
             lblGreatnessPerDay.Width = widthControl;
 
-            lblSeparateRequirement = new VCSeparator(this, FormMain.Config.GridSize, lblGreatnessPerDay.NextTop());
+            lblBuildersPerDay = new VCLabelValue(this, FormMain.Config.GridSize, lblGreatnessPerDay.NextTop(), FormMain.Config.HintIncome, false);
+            lblBuildersPerDay.ImageIndex = FormMain.GUI_16_BUILDER;
+            lblBuildersPerDay.Width = widthControl;
+
+            lblSeparateRequirement = new VCSeparator(this, FormMain.Config.GridSize, lblBuildersPerDay.NextTop());
             lblSeparateRequirement.Width = widthControl;
             lblGold = new VCLabelValue(this, FormMain.Config.GridSize, lblSeparateRequirement.NextTop(), FormMain.Config.HintIncome, false);
             lblGold.ImageIndex = FormMain.GUI_16_GOLD;
@@ -190,6 +195,7 @@ namespace Fantasy_Kingdoms_Battle
             lblIncome.Visible = false;
             lblGreatnessAdd.Visible = false;
             lblGreatnessPerDay.Visible = false;
+            lblBuildersPerDay.Visible = false;
 
             foreach (VCText l in listRequirements)
                 l.Dispose();
@@ -307,6 +313,20 @@ namespace Fantasy_Kingdoms_Battle
                 lblGreatnessPerDay.Visible = true;
 
                 nextTop = lblGreatnessPerDay.NextTop();
+            }
+        }
+
+        internal void AddStep35PlusBuilders(int buildersPerDay)
+        {
+            Debug.Assert(buildersPerDay >= 0);
+
+            if (buildersPerDay > 0)
+            {
+                lblBuildersPerDay.ShiftY = nextTop;
+                lblBuildersPerDay.Text = $"+{buildersPerDay}";
+                lblBuildersPerDay.Visible = true;
+
+                nextTop = lblBuildersPerDay.NextTop();
             }
         }
 
