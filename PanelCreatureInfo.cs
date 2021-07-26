@@ -142,7 +142,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
-            lblKindHero.Text = Creature.TypeCreature.KindCreature.Name;
+            lblKindHero.Text = $"{Creature.TypeCreature.Name} ({Creature.TypeCreature.KindCreature.Name})";
             bmpState.Bitmap = Program.formMain.ilStateHero.GetImage(Creature.StateCreature.ImageIndex, true, false);
             labelNameState.Text = Creature.StateCreature.Name;
 
