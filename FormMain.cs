@@ -1476,7 +1476,7 @@ namespace Fantasy_Kingdoms_Battle
             gfxRenderFrame.CompositingMode = CompositingMode.SourceOver;
 
             //
-            if ((Layers[0] == layerGame) && (lobby.CurrentPlayer != null) && (lobby.CurrentPlayer.GetTypePlayer() == TypePlayer.Human))
+            if ((Layers[0] == layerGame) && (lobby.CurrentPlayer != null) && MainControl.Visible)
             {
                 labelGold.Text = lobby.CurrentPlayer.Gold.ToString() + " (+" + lobby.CurrentPlayer.Income().ToString() + ")";
                 labelBuilders.Text = $"{curAppliedPlayer.FreeBuilders}/{curAppliedPlayer.Builders} (+{curAppliedPlayer.BuildersAtNextDay})";
