@@ -156,7 +156,8 @@ namespace Fantasy_Kingdoms_Battle
                 List<PlayerLair> lairs = new List<PlayerLair>();
                 for (int y = 0; y < Lairs.GetLength(1); y++)
                     for (int x = 0; x < Lairs.GetLength(2); x++)
-                        lairs.Add(Lairs[0, y, x]);
+                        if (Lairs[0, y, x].Hidden)
+                            lairs.Add(Lairs[0, y, x]);
 
                 Debug.Assert(scoutLaires <= lairs.Count);
 
@@ -834,6 +835,7 @@ namespace Fantasy_Kingdoms_Battle
             Gold += sb.Gold;
             PointGreatness += sb.Greatness;
             PointConstructionGuild += sb.PointConstructionGuild;
+            ScoutRandomLair(sb.ScoutPlace);
         }
 
         // Интерфейс

@@ -4,24 +4,35 @@
     <Gold>1000</Gold>
     <Greatness>0</Greatness>
     <PointConstructionGuild>0</PointConstructionGuild>
+    <ScoutPlace>0</ScoutPlace>
     <Points>1</Points>
   </StartBonus>
   <StartBonus>
     <Gold>0</Gold>
     <Greatness>200</Greatness>
     <PointConstructionGuild>0</PointConstructionGuild>
+    <ScoutPlace>0</ScoutPlace>
     <Points>1</Points>
   </StartBonus>
   <StartBonus>
     <Gold>0</Gold>
     <Greatness>0</Greatness>
     <PointConstructionGuild>1</PointConstructionGuild>
+    <ScoutPlace>0</ScoutPlace>
     <Points>3</Points>
   </StartBonus>
   <StartBonus>
     <Gold>500</Gold>
     <Greatness>100</Greatness>
     <PointConstructionGuild>0</PointConstructionGuild>
+    <ScoutPlace>0</ScoutPlace>
+    <Points>1</Points>
+  </StartBonus>
+  <StartBonus>
+    <Gold>0</Gold>
+    <Greatness>0</Greatness>
+    <PointConstructionGuild>0</PointConstructionGuild>
+    <ScoutPlace>2</ScoutPlace>
     <Points>1</Points>
   </StartBonus>
 </StartBonuses>

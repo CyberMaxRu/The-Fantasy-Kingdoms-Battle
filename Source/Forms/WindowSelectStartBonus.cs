@@ -39,6 +39,8 @@ namespace Fantasy_Kingdoms_Battle
                     text.Text += $"+{sb.Greatness} очков величия{Environment.NewLine}";
                 if (sb.PointConstructionGuild > 0)
                     text.Text += $"+{sb.PointConstructionGuild} очко(-ов) строительства гильдий{Environment.NewLine}";
+                if (sb.ScoutPlace > 0)
+                    text.Text += $"+{sb.ScoutPlace} разведанных места{Environment.NewLine}";
 
                 text.Height = 200;// text.MinHeigth();
                 maxHeight = Math.Max(maxHeight, text.Height);
