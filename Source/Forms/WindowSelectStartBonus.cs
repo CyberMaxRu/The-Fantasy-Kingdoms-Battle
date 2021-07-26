@@ -77,7 +77,8 @@ namespace Fantasy_Kingdoms_Battle
             for (int i = 0; i < listBoxes.Count; i++)
             {
                 listBoxes[i].ManualSelected = listBoxes[i] == sender;
-                SelectedBonus = list[i];
+                if (listBoxes[i].ManualSelected)
+                    SelectedBonus = list[i];
             }
 
             Program.formMain.NeedRedrawFrame();
