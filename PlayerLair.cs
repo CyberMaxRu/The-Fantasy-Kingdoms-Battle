@@ -359,7 +359,17 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.LairsWithFlagChanged();
         }
 
-        // Месте разведано
+
+        internal void Unhide()
+        {
+            Debug.Assert(Hidden);
+            Debug.Assert(TypeFlag == TypeFlag.None);
+            Debug.Assert(!Destroyed);
+
+            Hidden = false;
+        }
+
+        // Место разведано
         internal void DoScout()
         {
             Debug.Assert(Hidden);

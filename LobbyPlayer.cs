@@ -57,6 +57,9 @@ namespace Fantasy_Kingdoms_Battle
             Lairs = new PlayerLair[lobby.TypeLobby.LairsLayers, lobby.TypeLobby.LairsHeight, lobby.TypeLobby.LairsWidth];
 
             GenerateLairs();
+            ScoutRandomLair(lobby.TypeLobby.StartScoutedLairs);
+
+            //
 
             Castle = GetPlayerConstruction(FormMain.Config.FindTypeEconomicConstruction(FormMain.Config.IDConstructionCastle));
 
@@ -128,6 +131,26 @@ namespace Fantasy_Kingdoms_Battle
 
         internal abstract void DoTurn();
         internal abstract void EndTurn();
+
+        //
+        protected void ScoutRandomLair(int scoutLaires)
+        {
+            if (scoutLaires > 0)
+            {
+                List<PlayerLair> lairs = new List<PlayerLair>();
+                for (int y = 0; y < Lairs.GetLength(1); y++)
+                    for (int x = 0; x < Lairs.GetLength(2); x++)
+                        lairs.Add(Lairs[0, y, x]);
+
+                Debug.Assert(scoutLaires <= lairs.Count);
+
+                for (int i = 0; i < scoutLaires; i++)
+                {
+                    lairs[i].Unhide();
+                    lairs.RemoveAt(i);
+                }
+            }
+        }
 
         // Расчет после завершения хода игроком
         internal void CalcFinalityTurn()
