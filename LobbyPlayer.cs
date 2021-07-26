@@ -835,6 +835,7 @@ namespace Fantasy_Kingdoms_Battle
             Gold += sb.Gold;
             PointGreatness += sb.Greatness;
             PointConstructionGuild += sb.PointConstructionGuild;
+            PointConstructionTemple += sb.PointConstructionTemple;
             ScoutRandomLair(sb.ScoutPlace);
         }
 

@@ -4,6 +4,7 @@
     <Gold>1000</Gold>
     <Greatness>0</Greatness>
     <PointConstructionGuild>0</PointConstructionGuild>
+    <PointConstructionTemple>0</PointConstructionTemple>
     <ScoutPlace>0</ScoutPlace>
     <Points>1</Points>
   </StartBonus>
@@ -11,6 +12,7 @@
     <Gold>0</Gold>
     <Greatness>200</Greatness>
     <PointConstructionGuild>0</PointConstructionGuild>
+    <PointConstructionTemple>0</PointConstructionTemple>
     <ScoutPlace>0</ScoutPlace>
     <Points>1</Points>
   </StartBonus>
@@ -18,13 +20,15 @@
     <Gold>0</Gold>
     <Greatness>0</Greatness>
     <PointConstructionGuild>1</PointConstructionGuild>
+    <PointConstructionTemple>0</PointConstructionTemple>
     <ScoutPlace>0</ScoutPlace>
-    <Points>3</Points>
+    <Points>2</Points>
   </StartBonus>
   <StartBonus>
     <Gold>500</Gold>
     <Greatness>100</Greatness>
     <PointConstructionGuild>0</PointConstructionGuild>
+    <PointConstructionTemple>0</PointConstructionTemple>
     <ScoutPlace>0</ScoutPlace>
     <Points>1</Points>
   </StartBonus>
@@ -32,7 +36,16 @@
     <Gold>0</Gold>
     <Greatness>0</Greatness>
     <PointConstructionGuild>0</PointConstructionGuild>
+    <PointConstructionTemple>0</PointConstructionTemple>
     <ScoutPlace>2</ScoutPlace>
     <Points>1</Points>
+  </StartBonus>
+  <StartBonus>
+    <Gold>0</Gold>
+    <Greatness>0</Greatness>
+    <PointConstructionGuild>0</PointConstructionGuild>
+    <PointConstructionTemple>1</PointConstructionTemple>
+    <ScoutPlace>0</ScoutPlace>
+    <Points>3</Points>
   </StartBonus>
 </StartBonuses>

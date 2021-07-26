@@ -21,6 +21,7 @@ namespace Fantasy_Kingdoms_Battle
             Greatness = XmlUtils.GetInteger(n.SelectSingleNode("Greatness"));
             PointConstructionGuild = XmlUtils.GetInteger(n.SelectSingleNode("PointConstructionGuild"));
             ScoutPlace = XmlUtils.GetInteger(n.SelectSingleNode("ScoutPlace"));
+            PointConstructionTemple = XmlUtils.GetInteger(n.SelectSingleNode("PointConstructionTemple"));
             Points = XmlUtils.GetInteger(n.SelectSingleNode("Points"));
 
             Debug.Assert(Gold >= 0);
@@ -31,6 +32,8 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(PointConstructionGuild <= 10);
             Debug.Assert(ScoutPlace >= 0);
             Debug.Assert(ScoutPlace <= 10);
+            Debug.Assert(PointConstructionTemple >= 0);
+            Debug.Assert(PointConstructionTemple <= 3);
             Debug.Assert(Points > 0);
             Debug.Assert(Points <= 10);
         }
@@ -39,6 +42,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int Greatness { get; private set; }
         internal int PointConstructionGuild { get; private set; }
         internal int ScoutPlace { get; private set; }
+        internal int PointConstructionTemple { get; private set; }
         internal int Points { get; private set; }
 
         internal void AddBonus(StartBonus sb)
@@ -47,6 +51,7 @@ namespace Fantasy_Kingdoms_Battle
             Greatness += sb.Greatness;
             PointConstructionGuild += sb.PointConstructionGuild;
             ScoutPlace += sb.ScoutPlace;
+            PointConstructionTemple += sb.PointConstructionTemple;
             Points += sb.Points;
         }
 
@@ -57,6 +62,7 @@ namespace Fantasy_Kingdoms_Battle
             return (Gold == otherStartBonus.Gold) 
                 && (Greatness == otherStartBonus.Greatness)
                 && (ScoutPlace == otherStartBonus.ScoutPlace)
+                && (PointConstructionTemple == otherStartBonus.PointConstructionTemple)
                 && (PointConstructionGuild == otherStartBonus.PointConstructionGuild);
         }
     }
