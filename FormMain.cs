@@ -1816,6 +1816,12 @@ namespace Fantasy_Kingdoms_Battle
 
                     ShowFrame(false);
 
+                    // Если после отрисовки кадра контрола стал невидимым, выходим из него
+                    if (!(controlWithHint is null) && !controlWithHint.Visible)
+                    {
+                        ControlForHintLeave();
+                    }
+
                     /*if (formHint.Visible)
                     {
                         ControlForHintLeave();
