@@ -21,5 +21,48 @@ namespace Fantasy_Kingdoms_Battle
 
             ApplyStartBonus(VariantsStartBonuses[Lobby.Rnd.Next(VariantsStartBonuses.Count)]);
         }
+
+        internal override void DoTurn()
+        {
+            Debug.Assert(Player.TypePlayer == TypePlayer.Computer);
+            Debug.Assert(IsLive == true);
+
+            // Здесь расчет хода для ИИ
+            // Покупаем четыре гильдии и строим 16 героев. На этом пока всё
+            GetPlayerConstruction(FormMain.Config.FindTypeGuild("GuildWarrior")).BuyOrUpgrade();
+            GetPlayerConstruction(FormMain.Config.FindTypeGuild("GuildRogue")).BuyOrUpgrade();
+            GetPlayerConstruction(FormMain.Config.FindTypeGuild("GuildHunter")).BuyOrUpgrade();
+            GetPlayerConstruction(FormMain.Config.FindTypeGuild("GuildCleric")).BuyOrUpgrade();
+            GetPlayerConstruction(FormMain.Config.FindTypeGuild("GuildMage")).BuyOrUpgrade();
+
+            HireAllHero(GetPlayerConstruction(FormMain.Config.FindTypeGuild("GuildWarrior")));
+            HireAllHero(GetPlayerConstruction(FormMain.Config.FindTypeGuild("GuildHunter")));
+            HireAllHero(GetPlayerConstruction(FormMain.Config.FindTypeGuild("GuildCleric")));
+            HireAllHero(GetPlayerConstruction(FormMain.Config.FindTypeGuild("GuildMage")));
+
+            void HireAllHero(PlayerConstruction bp)
+            {
+                if (bp.Heroes.Count < bp.MaxHeroes())
+                {
+                    //int needHire = 49;
+                    int needHire = Lobby.Rnd.Next(2) + 1;
+
+                    for (int x = 0; x < needHire; x++)
+                    //                for (; bp.Heroes.Count() < bp.MaxHeroes();)
+                    {
+                        if (bp.Heroes.Count == bp.MaxHeroes())
+                            break;
+                        if (CombatHeroes.Count == Lobby.TypeLobby.MaxHeroes)
+                            break;
+                        bp.HireHero();
+                    }
+                }
+            }
+        }
+
+        internal override void EndTurn()
+        {
+
+        }
     }
 }

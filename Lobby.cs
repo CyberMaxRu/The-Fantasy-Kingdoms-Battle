@@ -114,7 +114,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal int ID { get; private set; }
+        internal int ID { get; }
         internal TypeLobby TypeLobby { get; }
         internal LobbyPlayer[] Players { get; }
         internal LobbyPlayer CurrentPlayer { get; private set; }
@@ -175,16 +175,17 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Players[0].IsLive);
             Debug.Assert(CheckUniqueNamePlayers());
 
-            foreach (LobbyPlayer p in Players)                 
+            while (Day < TypeLobby.DayStartTournament)
             {
-                if (p.GetTypePlayer() == TypePlayer.Human)
+                foreach (LobbyPlayer p in Players)
                 {
-                    if ((Day == 1) && (p.VariantsStartBonuses.Count > 0))
+                    if (Day == 1)
                     {
-                        p.SelectStartBonus();
+                        if (p.VariantsStartBonuses.Count > 0)
+                            p.SelectStartBonus();
                     }
 
-                    return;
+                    p.DoTurn();
                 }
             }
         }
