@@ -71,9 +71,11 @@ namespace Fantasy_Kingdoms_Battle
 
             // Инициализация логов
             Lairs = new PlayerLair[lobby.TypeLobby.LairsLayers, lobby.TypeLobby.LairsHeight, lobby.TypeLobby.LairsWidth];
+            ViewedLairs = new PlayerLair[lobby.TypeLobby.LairsHeight, lobby.TypeLobby.LairsWidth];
 
             GenerateLairs();
             ScoutRandomLair(lobby.TypeLobby.StartScoutedLairs);
+            UpdateViewedLairs();
 
             //
 
@@ -294,13 +296,42 @@ namespace Fantasy_Kingdoms_Battle
 
         // Логова
         internal PlayerLair[,,] Lairs { get; }
+        internal PlayerLair[,] ViewedLairs { get; }// Доступные для просмотра места
         internal List<PlayerLair> ListFlags { get; } = new List<PlayerLair>();
         internal Dictionary<PriorityExecution, int> QuantityFlags { get; } = new Dictionary<PriorityExecution, int>();
+        internal int LairsScouted { get; private set;}
+        internal int LairsShowed { get; private set; }
 
         // Визуальные контролы
         internal PanelPlayer Panel { get; set; }
         private LobbyPlayer opponent;// Убрать это
         internal LobbyPlayer Opponent { get { return opponent; } set { if (value != this) opponent = value; else new Exception("Нельзя указать оппонентов самого себя."); } }
+
+        internal void UpdateViewedLairs()
+        {
+            LairsScouted = 0;
+            LairsShowed = 0;
+
+            for (int y = 0; y < Lairs.GetLength(1); y++)
+                for (int x = 0; x < Lairs.GetLength(2); x++)
+                {
+                    ViewedLairs[y, x] = null;
+
+                    for (int i = 0; i < Lairs.GetLength(0); i++)
+                    {
+                        if (!(Lairs[i, y, x] is null))
+                        {
+                            ViewedLairs[y, x] = Lairs[i, y, x];
+
+                            if (!ViewedLairs[y, x].Hidden)
+                                LairsScouted++;
+                            LairsShowed++;
+
+                            break;
+                        }
+                    }
+                }            
+        }
 
         internal PlayerConstruction GetPlayerConstruction(TypeConstruction b)
         {

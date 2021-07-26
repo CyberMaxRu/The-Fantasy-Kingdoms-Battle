@@ -822,7 +822,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void PageLairs_ShowHint(object sender, EventArgs e)
         {
-            ShowHintForToolButton(pageLairs, "Окрестности", "");
+            ShowHintForToolButton(pageLairs, "Окрестности", $"Разведано мест: {lobby.CurrentPlayer.LairsScouted}/{lobby.CurrentPlayer.LairsShowed}");
         }
 
         private void PageTournament_ShowHint(object sender, EventArgs e)
@@ -1212,26 +1212,15 @@ namespace Fantasy_Kingdoms_Battle
             // Показываем логова
             for (int y = 0; y < panelLairs.GetLength(0); y++)
                 for (int x = 0; x < panelLairs.GetLength(1); x++)
-                    ShowLair(x, y);
+                {
+                    panelLairs[y, x].PlayerObject = lobby.CurrentPlayer.ViewedLairs[y, x];
+                    panelLairs[y, x].Visible = !(panelLairs[y, x].PlayerObject is null);
+                }
 
             // Показываем героев
             AdjustPanelLoses();
             AdjustPanelLairsWithFlags();
             ListHeroesChanged();
-        }
-
-        private void ShowLair(int x, int y)
-        {
-            // Ищем активное логово у игрока
-            for (int i = 0; i < lobby.CurrentPlayer.Lairs.GetLength(0); i++)
-                if (lobby.CurrentPlayer.Lairs[i, y, x] != null)
-                {
-                    panelLairs[y, x].PlayerObject = lobby.CurrentPlayer.Lairs[i, y, x];
-                    return;
-                }
-
-            panelLairs[y, x].PlayerObject = null;
-            panelLairs[y, x].Visible = false;
         }
 
         private void DrawPageConstructions()

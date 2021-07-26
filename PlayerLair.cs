@@ -53,7 +53,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int RewardPointTemple { get; }
         internal int RewardPointTradePost { get; }
 
-
         private void CreateMonsters()
         {
             Debug.Assert(!Destroyed);
@@ -367,6 +366,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(!Destroyed);
 
             Hidden = false;
+            Player.UpdateViewedLairs();
         }
 
         // Место разведано
@@ -382,6 +382,7 @@ namespace Fantasy_Kingdoms_Battle
             HandOutGoldHeroes();
 
             DropFlag();
+            Player.UpdateViewedLairs();
         }
 
         // Логово захвачено
