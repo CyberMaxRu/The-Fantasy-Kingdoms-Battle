@@ -1483,7 +1483,10 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Рисуем подсказку поверх всех окон
-            if (formHint.Visible)
+            // Здесь исправляется баг - если после клика надо заново отрисовать подсказку, то во время рисования подсказки
+            // контрол может оставаться видимым, а после отрисовки кадра - невидимым, так как в некоторых классах
+            // настройка происходит в методе Draw
+            if (formHint.Visible && !(controlWithHint is null) && controlWithHint.Visible)
             {
                 formHint.Paint(gfxRenderFrame);
             }
