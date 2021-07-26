@@ -163,10 +163,12 @@ namespace Fantasy_Kingdoms_Battle
 
                 Debug.Assert(scoutLaires <= lairs.Count);
 
+                int index;
                 for (int i = 0; i < scoutLaires; i++)
                 {
-                    lairs[i].Unhide();
-                    lairs.RemoveAt(i);
+                    index = Lobby.Rnd.Next(lairs.Count);
+                    lairs[index].Unhide();
+                    lairs.RemoveAt(index);
                 }
             }
         }
