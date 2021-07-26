@@ -183,9 +183,8 @@ namespace Fantasy_Kingdoms_Battle
                     if (Players[i].IsLive)
                     {
                         SetPlayerAsCurrent(i);
-                        Program.formMain.ShowCurrentPlayerLobby();
-
                         Players[i].PrepareTurn();
+                        Program.formMain.ShowCurrentPlayerLobby();
 
                         if (Day == 1)
                         {
