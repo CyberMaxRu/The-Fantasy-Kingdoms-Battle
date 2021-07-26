@@ -97,6 +97,7 @@ namespace Fantasy_Kingdoms_Battle
                 Program.formMain.formHint.AddStep3Greatness(Construction.GreatnessAddNextLevel(), Construction.GreatnessPerDayNextLevel());
                 Program.formMain.formHint.AddStep3Requirement(Construction.GetTextRequirements());
                 Program.formMain.formHint.AddStep4Gold(Construction.CostBuyOrUpgrade(), Construction.Player.Gold >= Construction.CostBuyOrUpgrade());
+                Program.formMain.formHint.AddStep5Builders(Construction.TypeConstruction.Levels[Construction.Level + 1].Builders, Construction.Player.FreeBuilders >= Construction.TypeConstruction.Levels[Construction.Level + 1].Builders);
             }
         }
 

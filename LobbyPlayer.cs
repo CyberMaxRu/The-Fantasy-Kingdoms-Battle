@@ -46,8 +46,9 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Настраиваем игрока согласно настройкам лобби
-            PointConstructionGuild = lobby.TypeLobby.StartPointConstructionGuild;
-            PointConstructionEconomic = lobby.TypeLobby.StartPointConstructionEconomic;
+            Builders = lobby.TypeLobby.StartBuilders;
+            FreeBuilders = Builders;
+            BuildersAtNextDay = lobby.TypeLobby.BuildersPerDay;
             PointConstructionTemple = lobby.TypeLobby.StartPointConstructionTemple;
             PointConstructionTradePost = lobby.TypeLobby.StartPointConstructionTradePost;
             SetQuantityFlags(lobby.TypeLobby.StartQuantityFlags);
@@ -263,8 +264,8 @@ namespace Fantasy_Kingdoms_Battle
 
                 QuantityHeroes = CombatHeroes.Count();
 
-                PointConstructionGuild = Lobby.TypeLobby.PointConstructionGuildPerDay;
-                PointConstructionEconomic = Lobby.TypeLobby.PointConstructionEconomicPerDay;
+                Builders = Lobby.TypeLobby.BuildersPerDay;
+                FreeBuilders = Builders;
             }
         }
 
@@ -288,8 +289,9 @@ namespace Fantasy_Kingdoms_Battle
         internal List<LoseInfo> LoseInfo { get; } = new List<LoseInfo>();
         internal int CurrentLoses { get; }// Текущее количество поражений
 
-        internal int PointConstructionGuild { get; private set; }
-        internal int PointConstructionEconomic { get; private set; }
+        internal int Builders { get; private set; }
+        internal int FreeBuilders { get; private set; }
+        internal int BuildersAtNextDay { get; private set; }
         internal int PointConstructionTemple { get; private set; }
         internal int PointConstructionTradePost { get; private set; }
         internal List<StartBonus> VariantsStartBonuses { get; }// Варианты стартовых бонусов
@@ -375,13 +377,11 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(pb.CheckRequirements());
 
             Gold -= pb.CostBuyOrUpgrade();
-            PointConstructionGuild -= pb.TypeConstruction.PointConstructionGuild;
-            PointConstructionEconomic -= pb.TypeConstruction.PointConstructionEconomic;
-            PointConstructionTemple -= pb.TypeConstruction.PointConstructionTemple;
-            PointConstructionTradePost -= pb.TypeConstruction.PointConstructionTradePost;
+            FreeBuilders -= pb.TypeConstruction.Levels[pb.Level + 1].Builders;
+            PointConstructionTemple -= pb.TypeConstruction.Levels[pb.Level + 1].PointConstructionTemple;
+            PointConstructionTradePost -= pb.TypeConstruction.Levels[pb.Level + 1].PointConstructionTradePost;
 
-            Debug.Assert(PointConstructionGuild >= 0);
-            Debug.Assert(PointConstructionEconomic >= 0);
+            Debug.Assert(FreeBuilders >= 0);
             Debug.Assert(PointConstructionTemple >= 0);
             Debug.Assert(PointConstructionTradePost >= 0);
         }
@@ -869,7 +869,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             Gold += sb.Gold;
             PointGreatness += sb.Greatness;
-            PointConstructionGuild += sb.PointConstructionGuild;
+            Builders += sb.Builders;
+            FreeBuilders += sb.Builders;
             PointConstructionTemple += sb.PointConstructionTemple;
             ScoutRandomLair(sb.ScoutPlace);
 

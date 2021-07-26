@@ -72,6 +72,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VisualControl panelPlayers;// Панель, на которой находятся панели игроков лобби
 
         private readonly VCToolLabel labelDay;
+        private readonly VCToolLabel labelBuilders;
         private readonly VCToolLabel labelGold;
         private readonly VCToolLabel labelGreatness;
         private readonly VCLabel labelNamePlayer;
@@ -178,7 +179,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal const int GUI_16_DAY = 0;
         internal const int GUI_16_GOLD = 1;
-        internal const int GUI_16_PEASANT = 2;
+        internal const int GUI_16_BUILDER = 2;
         internal const int GUI_16_GREATNESS = 3;
 
         internal const int GUI_24_FIRE = 0;
@@ -555,7 +556,10 @@ namespace Fantasy_Kingdoms_Battle
                 labelDay.Click += LabelDay_Click;
                 labelDay.ShowHint += LabelDay_ShowHint;
                 labelDay.Width = 64;
-                labelGold = new VCToolLabel(bmpPreparedToolbar, labelDay.NextLeft(), labelDay.ShiftY, "", GUI_16_GOLD);
+                labelBuilders = new VCToolLabel(bmpPreparedToolbar, labelDay.NextLeft(), labelDay.ShiftY, "", GUI_16_BUILDER);
+                labelBuilders.ShowHint += LabelBuilders_ShowHint;
+                labelBuilders.Width = 96;
+                labelGold = new VCToolLabel(bmpPreparedToolbar, labelBuilders.NextLeft(), labelDay.ShiftY, "", GUI_16_GOLD);
                 labelGold.ShowHint += LabelGold_ShowHint;
                 labelGold.Width = 168;
                 labelGreatness = new VCToolLabel(bmpPreparedToolbar, labelGold.NextLeft(), labelDay.ShiftY, "", GUI_16_GREATNESS);
@@ -766,6 +770,13 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        private void LabelBuilders_ShowHint(object sender, EventArgs e)
+        {
+            ShowHintForToolButton(labelBuilders, "Строители", "Всего строителей: " + curAppliedPlayer.Builders.ToString()
+                + Environment.NewLine + "Свободно строителей: " + curAppliedPlayer.FreeBuilders.ToString()
+                + Environment.NewLine + "Строителей на следующем ходу: " + curAppliedPlayer.BuildersAtNextDay.ToString());
+        }
+
         private void PanelCombatHeroes_Click(object sender, EventArgs e)
         {
             SelectPlayerObject(null);
@@ -812,12 +823,12 @@ namespace Fantasy_Kingdoms_Battle
 
         private void PageEconomicConstructions_ShowHint(object sender, EventArgs e)
         {
-            ShowHintForToolButton(pageEconomicConstructions, "Экономические строения", "Доступно построек/апгрейдов зданий: " + lobby.CurrentPlayer.PointConstructionEconomic.ToString());
+            ShowHintForToolButton(pageEconomicConstructions, "Экономические строения", "");
         }
 
         private void PageGuilds_ShowHint(object sender, EventArgs e)
         {
-            ShowHintForToolButton(pageGuilds, "Гильдии и военные сооружения", "Доступно построек/апгрейдов гильдий: " + lobby.CurrentPlayer.PointConstructionGuild.ToString());
+            ShowHintForToolButton(pageGuilds, "Гильдии и военные сооружения", "");
         }
 
         private void PageLairs_ShowHint(object sender, EventArgs e)
@@ -1131,6 +1142,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     btnEndTurn.Visible = true;
                     labelDay.Visible = true;
+                    labelBuilders.Visible = true;
                     labelGold.Visible = true;
                     labelGreatness.Visible = true;
                     MainControl.Visible = true;
@@ -1140,6 +1152,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     btnEndTurn.Visible = false;
                     labelDay.Visible = false;
+                    labelBuilders.Visible = false;
                     labelGold.Visible = false;
                     labelGreatness.Visible = false;
                     MainControl.Visible = false;
@@ -1465,13 +1478,12 @@ namespace Fantasy_Kingdoms_Battle
             //
             if ((Layers[0] == layerGame) && (lobby.CurrentPlayer != null))
             {
+                labelBuilders.Text = $"{curAppliedPlayer.FreeBuilders}/{curAppliedPlayer.Builders} (+{curAppliedPlayer.BuildersAtNextDay})";
                 labelGold.Text = lobby.CurrentPlayer.Gold.ToString() + " (+" + lobby.CurrentPlayer.Income().ToString() + ")";
                 labelGreatness.Text = curAppliedPlayer.LevelGreatness.ToString()
                     + " (" + curAppliedPlayer.PointGreatness.ToString() + "/"
                     + curAppliedPlayer.PointGreatnessForNextLevel.ToString() + ")";
 
-                pageGuilds.PopupQuantity = lobby.CurrentPlayer.PointConstructionGuild;
-                pageEconomicConstructions.PopupQuantity = lobby.CurrentPlayer.PointConstructionEconomic;
                 pageTemples.PopupQuantity = lobby.CurrentPlayer.CanBuildTemple() ? lobby.CurrentPlayer.PointConstructionTemple : 0;
                 pageHeroes.Cost = lobby.CurrentPlayer.CombatHeroes.Count.ToString();
 

@@ -9,12 +9,10 @@
     <MaxQuantityFlags>7</MaxQuantityFlags>
     <MaxHeroesForScoutFlag>3</MaxHeroesForScoutFlag>
     <DayStartTournament>10</DayStartTournament>
-    <StartPointConstructionGuild>2</StartPointConstructionGuild>
-    <StartPointConstructionEconomic>2</StartPointConstructionEconomic>
+    <StartBuilders>3</StartBuilders>
     <StartPointConstructionTemple>0</StartPointConstructionTemple>
     <StartPointConstructionTradePost>0</StartPointConstructionTradePost>
-    <PointConstructionGuildPerDay>1</PointConstructionGuildPerDay>
-    <PointConstructionEconomicPerDay>1</PointConstructionEconomicPerDay>
+    <BuildersPerDay>3</BuildersPerDay>
     <PointStartBonus>5</PointStartBonus>
     <StartScoutedLairs>2</StartScoutedLairs>
     <VariantStartBonus>3</VariantStartBonus>
@@ -154,5 +152,6 @@
         </Lairs>
       </Layer>
     </LairSettings>
-  </TypeLobby>
+  
+</TypeLobby>
 </TypeLobbies>

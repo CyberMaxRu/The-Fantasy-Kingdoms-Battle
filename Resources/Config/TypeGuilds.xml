@@ -10,7 +10,6 @@
     <Pos>1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
-    <PointConstructionGuild>1</PointConstructionGuild>
     <HasTreasury>True</HasTreasury>
     <GoldByConstruction>500</GoldByConstruction>
     <LayersResearches>1</LayersResearches>
@@ -19,18 +18,21 @@
       <Level>
         <Pos>1</Pos>
         <Cost>550</Cost>
+        <Builders>1</Builders>
         <Income>0</Income>
         <MaxHeroes>5</MaxHeroes>
       </Level>
       <Level>
         <Pos>2</Pos>
         <Cost>550</Cost>
+        <Builders>1</Builders>
         <Income>0</Income>
         <MaxHeroes>5</MaxHeroes>
       </Level>
       <Level>
         <Pos>3</Pos>
         <Cost>550</Cost>
+        <Builders>1</Builders>
         <Income>0</Income>
         <MaxHeroes>5</MaxHeroes>
       </Level>
@@ -87,7 +89,6 @@
     <Pos>2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
-    <PointConstructionGuild>1</PointConstructionGuild>
     <HasTreasury>True</HasTreasury>
     <GoldByConstruction>0</GoldByConstruction>
     <LayersResearches>1</LayersResearches>
@@ -97,17 +98,20 @@
         <Pos>1</Pos>
         <Cost>450</Cost>
         <Income>0</Income>
+        <Builders>1</Builders>
         <MaxHeroes>5</MaxHeroes>
       </Level>
       <Level>
         <Pos>2</Pos>
         <Cost>450</Cost>
+        <Builders>1</Builders>
         <Income>0</Income>
         <MaxHeroes>5</MaxHeroes>
       </Level>
       <Level>
         <Pos>3</Pos>
         <Cost>450</Cost>
+        <Builders>1</Builders>
         <Income>0</Income>
         <MaxHeroes>5</MaxHeroes>
       </Level>
@@ -164,7 +168,6 @@
     <Pos>3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
-    <PointConstructionGuild>1</PointConstructionGuild>
     <HasTreasury>True</HasTreasury>
     <GoldByConstruction>0</GoldByConstruction>
     <LayersResearches>1</LayersResearches>
@@ -173,18 +176,21 @@
       <Level>
         <Pos>1</Pos>
         <Cost>700</Cost>
+        <Builders>1</Builders>
         <Income>0</Income>
         <MaxHeroes>5</MaxHeroes>
       </Level>
       <Level>
         <Pos>2</Pos>
         <Cost>700</Cost>
+        <Builders>1</Builders>
         <Income>0</Income>
         <MaxHeroes>5</MaxHeroes>
       </Level>
       <Level>
         <Pos>3</Pos>
         <Cost>700</Cost>
+        <Builders>1</Builders>
         <Income>0</Income>
         <MaxHeroes>5</MaxHeroes>
       </Level>
@@ -241,7 +247,6 @@
     <Pos>3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
-    <PointConstructionGuild>1</PointConstructionGuild>
     <HasTreasury>True</HasTreasury>
     <GoldByConstruction>0</GoldByConstruction>
     <LayersResearches>1</LayersResearches>
@@ -250,12 +255,14 @@
       <Level>
         <Pos>1</Pos>
         <Cost>1000</Cost>
+        <Builders>0</Builders>
         <Income>0</Income>
         <MaxHeroes>5</MaxHeroes>
       </Level>
       <Level>
         <Pos>2</Pos>
         <Cost>1000</Cost>
+        <Builders>0</Builders>
         <Income>0</Income>
         <MaxHeroes>5</MaxHeroes>
         <Requirements>
@@ -268,6 +275,7 @@
       <Level>
         <Pos>3</Pos>
         <Cost>1000</Cost>
+        <Builders>0</Builders>
         <Income>0</Income>
         <MaxHeroes>5</MaxHeroes>
         <Requirements>
@@ -344,7 +352,6 @@
     <Pos>2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
-    <PointConstructionGuild>1</PointConstructionGuild>
     <HasTreasury>True</HasTreasury>
     <GoldByConstruction>0</GoldByConstruction>
     <LayersResearches>1</LayersResearches>
@@ -353,12 +360,14 @@
       <Level>
         <Pos>1</Pos>
         <Cost>2500</Cost>
+        <Builders>1</Builders>
         <Income>0</Income>
         <MaxHeroes>5</MaxHeroes>
       </Level>
       <Level>
         <Pos>2</Pos>
         <Cost>2500</Cost>
+        <Builders>1</Builders>
         <Income>0</Income>
         <MaxHeroes>5</MaxHeroes>
         <Requirements>
@@ -375,6 +384,7 @@
       <Level>
         <Pos>3</Pos>
         <Cost>2500</Cost>
+        <Builders>1</Builders>
         <Income>0</Income>
         <MaxHeroes>5</MaxHeroes>
         <Requirements>
@@ -434,9 +444,7 @@
     <Line>2</Line>
     <Pos>1</Pos>
     <DefaultLevel>0</DefaultLevel>
-    <PointConstructionGuild>1</PointConstructionGuild>
     <MaxLevel>3</MaxLevel>
-    <PointConstructionGuild>1</PointConstructionGuild>
     <HasTreasury>True</HasTreasury>
     <GoldByConstruction>0</GoldByConstruction>
     <LayersResearches>1</LayersResearches>
@@ -445,12 +453,14 @@
       <Level>
         <Pos>1</Pos>
         <Cost>2000</Cost>
+        <Builders>1</Builders>
         <Income>0</Income>
         <MaxHeroes>5</MaxHeroes>
       </Level>
       <Level>
         <Pos>2</Pos>
         <Cost>2000</Cost>
+        <Builders>1</Builders>
         <Income>0</Income>
         <MaxHeroes>5</MaxHeroes>
         <Requirements>
@@ -467,6 +477,7 @@
       <Level>
         <Pos>3</Pos>
         <Cost>2500</Cost>
+        <Builders>1</Builders>
         <Income>0</Income>
         <MaxHeroes>5</MaxHeroes>
         <Requirements>
@@ -521,7 +532,6 @@
     <Pos>4</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
-    <PointConstructionGuild>1</PointConstructionGuild>
     <HasTreasury>True</HasTreasury>
     <GoldByConstruction>0</GoldByConstruction>
     <LayersResearches>1</LayersResearches>
@@ -530,18 +540,21 @@
       <Level>
         <Pos>1</Pos>
         <Cost>450</Cost>
+        <Builders>1</Builders>
         <Income>0</Income>
         <MaxHeroes>5</MaxHeroes>
       </Level>
       <Level>
         <Pos>2</Pos>
         <Cost>450</Cost>
+        <Builders>1</Builders>
         <Income>0</Income>
         <MaxHeroes>5</MaxHeroes>
       </Level>
       <Level>
         <Pos>3</Pos>
         <Cost>450</Cost>
+        <Builders>1</Builders>
         <Income>0</Income>
         <MaxHeroes>5</MaxHeroes>
       </Level>

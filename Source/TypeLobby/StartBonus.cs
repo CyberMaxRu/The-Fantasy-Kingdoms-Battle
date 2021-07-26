@@ -19,7 +19,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Gold = XmlUtils.GetInteger(n.SelectSingleNode("Gold"));
             Greatness = XmlUtils.GetInteger(n.SelectSingleNode("Greatness"));
-            PointConstructionGuild = XmlUtils.GetInteger(n.SelectSingleNode("PointConstructionGuild"));
+            Builders = XmlUtils.GetInteger(n.SelectSingleNode("Builders"));
             ScoutPlace = XmlUtils.GetInteger(n.SelectSingleNode("ScoutPlace"));
             PointConstructionTemple = XmlUtils.GetInteger(n.SelectSingleNode("PointConstructionTemple"));
             Points = XmlUtils.GetInteger(n.SelectSingleNode("Points"));
@@ -28,8 +28,8 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Gold <= 10000);
             Debug.Assert(Greatness >= 0);
             Debug.Assert(Greatness <= 10000);
-            Debug.Assert(PointConstructionGuild >= 0);
-            Debug.Assert(PointConstructionGuild <= 10);
+            Debug.Assert(Builders >= 0);
+            Debug.Assert(Builders <= 10);
             Debug.Assert(ScoutPlace >= 0);
             Debug.Assert(ScoutPlace <= 10);
             Debug.Assert(PointConstructionTemple >= 0);
@@ -40,7 +40,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int Gold { get; private set; }
         internal int Greatness { get; private set; }
-        internal int PointConstructionGuild { get; private set; }
+        internal int Builders { get; private set; }
         internal int ScoutPlace { get; private set; }
         internal int PointConstructionTemple { get; private set; }
         internal int Points { get; private set; }
@@ -49,7 +49,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Gold += sb.Gold;
             Greatness += sb.Greatness;
-            PointConstructionGuild += sb.PointConstructionGuild;
+            Builders += sb.Builders;
             ScoutPlace += sb.ScoutPlace;
             PointConstructionTemple += sb.PointConstructionTemple;
             Points += sb.Points;
@@ -63,7 +63,7 @@ namespace Fantasy_Kingdoms_Battle
                 && (Greatness == otherStartBonus.Greatness)
                 && (ScoutPlace == otherStartBonus.ScoutPlace)
                 && (PointConstructionTemple == otherStartBonus.PointConstructionTemple)
-                && (PointConstructionGuild == otherStartBonus.PointConstructionGuild);
+                && (Builders == otherStartBonus.Builders);
         }
     }
 }

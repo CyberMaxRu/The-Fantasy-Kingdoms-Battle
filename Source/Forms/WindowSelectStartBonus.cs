@@ -37,8 +37,8 @@ namespace Fantasy_Kingdoms_Battle
                     text.Text += $"+{sb.Gold} золота{Environment.NewLine}";
                 if (sb.Greatness > 0)
                     text.Text += $"+{sb.Greatness} очков величия{Environment.NewLine}";
-                if (sb.PointConstructionGuild > 0)
-                    text.Text += $"+{sb.PointConstructionGuild} очко(-ов) строительства гильдий{Environment.NewLine}";
+                if (sb.Builders > 0)
+                    text.Text += $"+{sb.Builders} строитель(-я){Environment.NewLine}";
                 if (sb.PointConstructionTemple > 0)
                     text.Text += $"+{sb.PointConstructionTemple} Святая земля{Environment.NewLine}";
                 if (sb.ScoutPlace > 0)

@@ -22,6 +22,11 @@ namespace Fantasy_Kingdoms_Battle
             return n != null ? Convert.ToInt32(n.InnerText) : 0;
         }
 
+        internal static int GetIntegerNotNull(XmlNode n)
+        {
+            return Convert.ToInt32(n.InnerText);
+        }
+
         internal static string GetString(XmlNode n)
         {
             return n != null ? n.InnerText : "";

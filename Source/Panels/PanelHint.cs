@@ -33,6 +33,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly VCLabelValue lblGreatnessAdd;
         internal readonly VCLabelValue lblGreatnessPerDay;
         internal readonly VCLabelValue lblGold;
+        internal readonly VCLabelValue lblBuilders;
         internal readonly VCLabel lblDamageMelee;
         internal readonly VCLabel lblDamageArcher;
         internal readonly VCLabel lblDamageMagic;
@@ -87,6 +88,9 @@ namespace Fantasy_Kingdoms_Battle
             lblGold = new VCLabelValue(this, FormMain.Config.GridSize, lblSeparateRequirement.NextTop(), FormMain.Config.HintIncome, false);
             lblGold.ImageIndex = FormMain.GUI_16_GOLD;
             lblGold.Width = widthControl;
+            lblBuilders = new VCLabelValue(this, FormMain.Config.GridSize, lblGold.NextTop(), FormMain.Config.HintIncome, false);
+            lblBuilders.ImageIndex = FormMain.GUI_16_BUILDER;
+            lblBuilders.Width = widthControl;
 
             /*            lblDamageMelee = new Label()
                         {
@@ -193,6 +197,7 @@ namespace Fantasy_Kingdoms_Battle
             listRequirements.Clear();
 
             lblGold.Visible = false;
+            lblBuilders.Visible = false;
 
             /*lblDamageMelee.Hide();
             lblDamageArcher.Hide();
@@ -353,6 +358,26 @@ namespace Fantasy_Kingdoms_Battle
                 lblGold.Visible = true;
 
                 nextTop = lblGold.NextTop();
+            }
+        }
+
+        internal void AddStep5Builders(int builders, bool buildersEnough)
+        {
+            if (builders > 0)
+            {
+                if (!lblSeparateRequirement.Visible)
+                {
+                    lblSeparateRequirement.Visible = true;
+                    lblSeparateRequirement.ShiftY = nextTop;
+                    nextTop = lblSeparateRequirement.NextTop();
+                }
+
+                lblBuilders.Color = ColorRequirements(buildersEnough);
+                lblBuilders.Text = builders.ToString();
+                lblBuilders.ShiftY = nextTop;
+                lblBuilders.Visible = true;
+
+                nextTop = lblBuilders.NextTop();
             }
         }
 

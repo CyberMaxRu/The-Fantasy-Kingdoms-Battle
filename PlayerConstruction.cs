@@ -90,10 +90,9 @@ namespace Fantasy_Kingdoms_Battle
                 return false;
 
             // Проверяем наличие очков строительства
-            if ((TypeConstruction.PointConstructionGuild > Player.PointConstructionGuild)
-                || (TypeConstruction.PointConstructionEconomic > Player.PointConstructionEconomic)
-                || (TypeConstruction.PointConstructionTemple > Player.PointConstructionTemple)
-                || (TypeConstruction.PointConstructionTradePost > Player.PointConstructionTradePost))
+            if ((TypeConstruction.Levels[Level + 1].Builders > Player.FreeBuilders)
+                || (TypeConstruction.Levels[Level + 1].PointConstructionTemple > Player.PointConstructionTemple)
+                || (TypeConstruction.Levels[Level + 1].PointConstructionTradePost > Player.PointConstructionTradePost))
                 return false;
 
             // Проверяем требования к зданиям
@@ -107,33 +106,17 @@ namespace Fantasy_Kingdoms_Battle
 
             List<TextRequirement> list = new List<TextRequirement>();
 
-            if (TypeConstruction.PointConstructionGuild > 0)
+            if (TypeConstruction.Levels[Level + 1].PointConstructionTemple > 0)
             {
-                if (TypeConstruction.PointConstructionGuild <= Player.PointConstructionGuild)
-                    list.Add(new TextRequirement(true, $"{(Level == 0 ? "Строительство" : "улучшение")} гильдии доступно"));
-                else
-                    list.Add(new TextRequirement(false, $"{(Level == 0 ? "Cтроительство" : "улучшение")} гильдии недоступно"));
-            }
-
-            if (TypeConstruction.PointConstructionEconomic > 0)
-            {
-                if (TypeConstruction.PointConstructionEconomic <= Player.PointConstructionEconomic)
-                    list.Add(new TextRequirement(true, $"{(Level == 0 ? "Строительство" : "улучшение")} экономического сооружения доступно")) ;
-                else
-                    list.Add(new TextRequirement(false, $"{(Level == 0 ? "Строительство" : "улучшение")} экономического сооружения недоступно"));
-            }
-
-            if (TypeConstruction.PointConstructionTemple > 0)
-            {
-                if (TypeConstruction.PointConstructionTemple <= Player.PointConstructionTemple)
+                if (TypeConstruction.Levels[Level + 1].PointConstructionTemple <= Player.PointConstructionTemple)
                     list.Add(new TextRequirement(true, "Есть свободная Святая земля"));
                 else
                     list.Add(new TextRequirement(false, "Нет свободных Святых земель"));
             }
 
-            if (TypeConstruction.PointConstructionTradePost > 0)
+            if (TypeConstruction.Levels[Level + 1].PointConstructionTradePost > 0)
             {
-                if (TypeConstruction.PointConstructionTradePost <= Player.PointConstructionTradePost)
+                if (TypeConstruction.Levels[Level + 1].PointConstructionTradePost <= Player.PointConstructionTradePost)
                     list.Add(new TextRequirement(true, "Есть свободное торговое место"));
                 else
                     list.Add(new TextRequirement(false, "Нет свободных торговых мест"));

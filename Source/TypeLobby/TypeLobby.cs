@@ -20,12 +20,10 @@ namespace Fantasy_Kingdoms_Battle
             StartQuantityFlags = XmlUtils.GetInteger(n.SelectSingleNode("StartQuantityFlags"));
             MaxQuantityFlags = XmlUtils.GetInteger(n.SelectSingleNode("MaxQuantityFlags"));
             MaxHeroesForScoutFlag = XmlUtils.GetInteger(n.SelectSingleNode("MaxHeroesForScoutFlag"));
-            StartPointConstructionGuild = XmlUtils.GetInteger(n.SelectSingleNode("StartPointConstructionGuild"));
-            StartPointConstructionEconomic = XmlUtils.GetInteger(n.SelectSingleNode("StartPointConstructionEconomic"));
+            StartBuilders = XmlUtils.GetInteger(n.SelectSingleNode("StartBuilders"));
             StartPointConstructionTemple = XmlUtils.GetInteger(n.SelectSingleNode("StartPointConstructionTemple"));
             StartPointConstructionTradePost = XmlUtils.GetInteger(n.SelectSingleNode("StartPointConstructionTradePost"));
-            PointConstructionGuildPerDay = XmlUtils.GetInteger(n.SelectSingleNode("PointConstructionGuildPerDay"));
-            PointConstructionEconomicPerDay = XmlUtils.GetInteger(n.SelectSingleNode("PointConstructionEconomicPerDay"));
+            BuildersPerDay = XmlUtils.GetInteger(n.SelectSingleNode("BuildersPerDay"));
             PointStartBonus = XmlUtils.GetInteger(n.SelectSingleNode("PointStartBonus"));
             VariantStartBonus = XmlUtils.GetInteger(n.SelectSingleNode("VariantStartBonus"));
             StartScoutedLairs = XmlUtils.GetInteger(n.SelectSingleNode("StartScoutedLairs"));
@@ -51,18 +49,14 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(StartQuantityFlags <= MaxQuantityFlags);
             Debug.Assert(MaxHeroesForScoutFlag >= 1);
             Debug.Assert(MaxHeroesForScoutFlag <= 25);
-            Debug.Assert(StartPointConstructionGuild >= 1);
-            Debug.Assert(StartPointConstructionGuild <= 10);
-            Debug.Assert(StartPointConstructionEconomic >= 1);
-            Debug.Assert(StartPointConstructionEconomic <= 10);
+            Debug.Assert(StartBuilders >= 1);
+            Debug.Assert(StartBuilders <= 10);
             Debug.Assert(StartPointConstructionTemple >= 0);
             Debug.Assert(StartPointConstructionTemple <= 5);
             Debug.Assert(StartPointConstructionTradePost>= 0);
             Debug.Assert(StartPointConstructionTradePost <= 5);
-            Debug.Assert(PointConstructionGuildPerDay >= 1);
-            Debug.Assert(PointConstructionGuildPerDay <= 10);
-            Debug.Assert(PointConstructionEconomicPerDay >= 1);
-            Debug.Assert(PointConstructionEconomicPerDay <= 10);
+            Debug.Assert(BuildersPerDay >= 1);
+            Debug.Assert(BuildersPerDay <= 10);
             Debug.Assert(PointStartBonus >= 0);
             Debug.Assert(PointStartBonus <= 20);
             Debug.Assert(VariantStartBonus >= 0);
@@ -162,12 +156,10 @@ namespace Fantasy_Kingdoms_Battle
         internal int MaxQuantityFlags { get; }
         internal int MaxHeroesForScoutFlag { get; }
         internal int DayStartTournament { get; }
-        internal int StartPointConstructionGuild { get; }
-        internal int StartPointConstructionEconomic { get; }
+        internal int StartBuilders { get; }
         internal int StartPointConstructionTemple { get; }
         internal int StartPointConstructionTradePost { get; }
-        internal int PointConstructionGuildPerDay { get; }
-        internal int PointConstructionEconomicPerDay { get; }
+        internal int BuildersPerDay { get; }
         internal int PointStartBonus { get; }
         internal int VariantStartBonus { get; }
         internal int StartScoutedLairs { get; }
