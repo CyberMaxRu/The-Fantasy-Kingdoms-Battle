@@ -122,7 +122,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int Day { get; private set; }        
         internal List<Battle> Battles { get; } = new List<Battle>();
         internal bool HumanIsWin { get; private set; }
-        internal StateLobby StateLobby { get; private set; }
+        internal StateLobby StateLobby { get; set; }
         internal Random Rnd { get; } = new Random();
         internal List<TypeLair>[] Lairs { get; }
 
@@ -178,19 +178,27 @@ namespace Fantasy_Kingdoms_Battle
 
             while (Day < TypeLobby.DayStartTournament || !stopLobby)
             {
-                foreach (LobbyPlayer p in Players)
+                for (int i = 0; i < Players.Count(); i++)
                 {
-                    if (Day == 1)
+                    if (Players[i].IsLive)
                     {
-                        if (p.VariantsStartBonuses.Count > 0)
-                            p.SelectStartBonus();
+                        SetPlayerAsCurrent(i);
+                        Program.formMain.ShowCurrentPlayerLobby();
+
+                        if (Day == 1)
+                        {
+                            if (Players[i].VariantsStartBonuses.Count > 0)
+                                Players[i].SelectStartBonus();
+                        }
+
+                        Players[i].DoTurn();
+
+                        if (stopLobby)
+                            return;
                     }
-
-                    p.DoTurn();
-
-                    if (stopLobby)
-                        return;
                 }
+
+                DoEndTurn();
             }
         }
 
@@ -200,14 +208,12 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Players[0].GetTypePlayer() == TypePlayer.Human);
             Debug.Assert(Players[0].IsLive);
 
-            // Делаем ходы, перебирая всех игроков, пока все не совершат ход
+/*            // Делаем ходы, перебирая всех игроков, пока все не совершат ход
             int cpi = CurrentPlayer != null ? CurrentPlayer.PlayerIndex : -1;
             for (int i = cpi + 1; i < Players.Count(); i++)
             {
                 if ((Players[i].IsLive == true) || (Players[i].GetTypePlayer() == TypePlayer.Human))
                 {
-                    SetPlayerAsCurrent(i);
-
                     if (CurrentPlayer.GetTypePlayer() == TypePlayer.Computer)
                     {
                         StateLobby = StateLobby.TurnComputer;
@@ -223,7 +229,7 @@ namespace Fantasy_Kingdoms_Battle
                     }
                 }
             }
-
+*/
             SetPlayerAsCurrent(-1);
             StateLobby = StateLobby.CalcTurn;
             Program.formMain.ShowCurrentPlayerLobby();
@@ -270,8 +276,6 @@ namespace Fantasy_Kingdoms_Battle
 
                 return;
             }
-
-            DoEndTurn();
         }
 
 

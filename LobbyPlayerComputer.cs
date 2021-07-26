@@ -27,6 +27,8 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Player.TypePlayer == TypePlayer.Computer);
             Debug.Assert(IsLive == true);
 
+            Lobby.StateLobby = StateLobby.TurnComputer;
+
             // Здесь расчет хода для ИИ
             // Покупаем четыре гильдии и строим 16 героев. На этом пока всё
             GetPlayerConstruction(FormMain.Config.FindTypeGuild("GuildWarrior")).BuyOrUpgrade();
@@ -39,6 +41,8 @@ namespace Fantasy_Kingdoms_Battle
             HireAllHero(GetPlayerConstruction(FormMain.Config.FindTypeGuild("GuildHunter")));
             HireAllHero(GetPlayerConstruction(FormMain.Config.FindTypeGuild("GuildCleric")));
             HireAllHero(GetPlayerConstruction(FormMain.Config.FindTypeGuild("GuildMage")));
+
+            System.Threading.Thread.Sleep(200);
 
             void HireAllHero(PlayerConstruction bp)
             {

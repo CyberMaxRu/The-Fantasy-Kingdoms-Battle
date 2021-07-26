@@ -36,6 +36,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void DoTurn()
         {
+            Debug.Assert(Player.TypePlayer == TypePlayer.Human);
+            Debug.Assert(IsLive);
+
+            Lobby.StateLobby = StateLobby.TurnHuman;
             frame.Continue = true;
             //Dispatcher.CurrentDispatcher.BeginInvoke(DispatcherPriority.Background, new DispatcherOperationCallback(ExitFrame), frame);
             Dispatcher.PushFrame(frame);
