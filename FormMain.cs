@@ -1070,7 +1070,10 @@ namespace Fantasy_Kingdoms_Battle
             base.OnFormClosing(e);
 
             if (ProgramState == ProgramState.NeedQuit)
+            {
+                Debug.Assert(lobby is null);
                 return;
+            }
 
             if (ProgramState == ProgramState.Started)
             {
