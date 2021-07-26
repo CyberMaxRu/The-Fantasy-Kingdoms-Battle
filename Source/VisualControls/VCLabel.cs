@@ -48,6 +48,7 @@ namespace Fantasy_Kingdoms_Battle
         internal StringFormat StringFormat { get; set; }
         internal Point ShiftImage { get; set; } = new Point(0, 0);
         internal bool TruncLongText { get; set; } = false;
+        internal bool TextTrunced { get; private set; } = false;
 
         internal override void Draw(Graphics g)
         {
@@ -56,6 +57,8 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Visible || ManualDraw)
             {
+                TextTrunced = false;
+
                 if ((BitmapList != null) && (ImageIndex >= 0))
                 {
                     BitmapList.DrawImage(g, ImageIndex, ImageIsEnabled, ImageIsOver, Left + ShiftImage.X, Top + ShiftImage.Y);
@@ -68,6 +71,8 @@ namespace Fantasy_Kingdoms_Battle
                         int needWidth = Width - LeftMargin - RightMargin;
                         if (TruncLongText && (Font.WidthText(Text) > needWidth))
                         {
+                            TextTrunced = true;
+
                             int restSymbols = Text.Length - 1;
                             string truncedText;
                             while (restSymbols > 0)
@@ -136,6 +141,14 @@ namespace Fantasy_Kingdoms_Battle
                     g.DrawImageUnscaled(bmpPreparedText, x, y + TopMargin);
                 }
             }
+        }
+
+        internal override bool PrepareHint()
+        {
+            if (TruncLongText && TextTrunced)
+                Program.formMain.formHint.AddHeader(Text);
+
+            return true;
         }
 
         internal override void ArrangeControls()
