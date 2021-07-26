@@ -27,6 +27,8 @@ namespace Fantasy_Kingdoms_Battle
     {
         private PlayerConstruction Castle;
 
+        private bool startBonusApplied = false;
+
         // TODO Вынести константы в конфигурацию игры
         internal const int MAX_FLAG_EXCLUSIVE = 1;// Максимальное число флагов с максимальным
         internal const int MAX_FLAG_HIGH = 2;// Максимальное число флагов с высоким приоритетом
@@ -870,10 +872,16 @@ namespace Fantasy_Kingdoms_Battle
             PointConstructionGuild += sb.PointConstructionGuild;
             PointConstructionTemple += sb.PointConstructionTemple;
             ScoutRandomLair(sb.ScoutPlace);
+
+            startBonusApplied = true;
         }
 
         // Интерфейс
-        internal abstract void SelectStartBonus();
+        internal virtual void SelectStartBonus()
+        {
+            Debug.Assert(!startBonusApplied);
+            Debug.Assert(VariantsStartBonuses.Count > 0);
+        }
 
         //
 

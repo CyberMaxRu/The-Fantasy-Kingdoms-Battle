@@ -17,8 +17,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void SelectStartBonus()
         {
-            Debug.Assert(VariantsStartBonuses.Count > 0);
-
+            base.SelectStartBonus();
+            
             ApplyStartBonus(VariantsStartBonuses[Lobby.Rnd.Next(VariantsStartBonuses.Count)]);
         }
 

@@ -22,7 +22,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void SelectStartBonus()
         {
-            Debug.Assert(VariantsStartBonuses.Count > 0);
+            base.SelectStartBonus();
 
             // Выбор стартового бонуса
             WindowSelectStartBonus w = new WindowSelectStartBonus(VariantsStartBonuses);
