@@ -965,6 +965,10 @@ namespace Fantasy_Kingdoms_Battle
             StopSoundSelect();
             formHint.HideHint();
 
+            lobby.CurrentPlayer.EndTurn();
+
+            return;
+
             lobby.DoEndTurn();
 
             if (lobby.CurrentPlayer == null)
