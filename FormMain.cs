@@ -1356,7 +1356,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Debug.Assert(pb.TypeConstruction != null);
 
-                labelMenuNameObject.Visible = true;
+                //labelMenuNameObject.Visible = true;
                 labelMenuNameObject.Text = pb.TypeConstruction.Name;
 
                 ClearMenu();
