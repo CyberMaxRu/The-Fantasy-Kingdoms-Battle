@@ -1576,7 +1576,8 @@ namespace Fantasy_Kingdoms_Battle
                     break;
                 case DialogAction.Quit:
                     ProgramState = ProgramState.NeedQuit;
-                    Program.formMain.EndLobby();
+                    if (!(lobby is null))                        
+                        Program.formMain.EndLobby();
                     Close();                        
                     break;
                 case DialogAction.MainMenu:
@@ -1753,10 +1754,14 @@ namespace Fantasy_Kingdoms_Battle
                     controlClicked = controlWithHint;
                     controlWithHint = null;
                     controlClicked.DoClick();
-                    
+
                     // Во время нажатия кнопки мог произойти выход из программы
                     if (ProgramState == ProgramState.NeedQuit)
+                    {
+                        if (!(lobby is null))
+                            EndLobby();
                         Close();
+                    }
                     if (IsDisposed)
                         return;
 
