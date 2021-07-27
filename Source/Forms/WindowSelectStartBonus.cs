@@ -13,7 +13,7 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class WindowSelectStartBonus : VCForm
     {
         private readonly VCButton btnOk;
-        private readonly List<VCText> listBoxes = new List<VCText>();
+        private readonly List<VisualControl> listBoxes = new List<VisualControl>();
         private List<StartBonus> list;
 
         public WindowSelectStartBonus(List<StartBonus> listStartBonuses) : base()
@@ -25,38 +25,32 @@ namespace Fantasy_Kingdoms_Battle
 
             // Создаем ящики с выбором бонуса
             int nextLeft = FormMain.Config.GridSize;
-            int maxHeight = 0;
+            int nextTop;
             foreach (StartBonus sb in listStartBonuses)
             {
-                VCText text = new VCText(ClientControl, nextLeft, FormMain.Config.GridSize, Program.formMain.fontParagraph, Color.White, 200);
-                text.StringFormat.Alignment = StringAlignment.Near;
-                text.Padding = new Padding(FormMain.Config.GridSize);
+                nextTop = FormMain.Config.GridSize;
+
+                VisualControl text = new VisualControl(ClientControl, nextLeft, FormMain.Config.GridSize);
                 text.ShowBorder = true;
                 text.Click += Text_Click;
                 if (sb.Gold > 0)
-                    text.Text += $"+{sb.Gold} золота{Environment.NewLine}";
+                    AddBonus(text, sb.Gold.ToString(), FormMain.GUI_16_GOLD);
                 if (sb.Greatness > 0)
-                    text.Text += $"+{sb.Greatness} очков величия{Environment.NewLine}";
+                    AddBonus(text, sb.Greatness.ToString(), FormMain.GUI_16_GREATNESS);
                 if (sb.Builders > 0)
-                    text.Text += $"+{sb.Builders} строитель(-я){Environment.NewLine}";
+                    AddBonus(text, sb.Builders.ToString(), FormMain.GUI_16_BUILDER);
                 if (sb.PointConstructionTemple > 0)
-                    text.Text += $"+{sb.PointConstructionTemple} Святая земля{Environment.NewLine}";
+                    AddBonus(text, sb.PointConstructionTemple.ToString(), FormMain.GUI_16_HOLYLAND);
                 if (sb.PointConstructionTradePost > 0)
-                    text.Text += $"+{sb.PointConstructionTradePost} Торговое место{Environment.NewLine}";
+                    AddBonus(text, sb.PointConstructionTradePost.ToString(), FormMain.GUI_16_TRADEPOST);
                 if (sb.ScoutPlace > 0)
-                    text.Text += $"+{sb.ScoutPlace} разведанных места{Environment.NewLine}";
+                    AddBonus(text, sb.ScoutPlace.ToString(), FormMain.GUI_16_SCOUT);
 
-                text.Height = 200;// text.MinHeigth();
-                maxHeight = Math.Max(maxHeight, text.Height);
+                text.Width = 160;
+                text.Height = 200;
                 nextLeft = text.NextLeft() + FormMain.Config.GridSize;
 
                 listBoxes.Add(text);
-            }
-
-            // Выравниваем боксы по высоте
-            foreach (VCText t in listBoxes)
-            {
-                t.Height = maxHeight;
             }
 
             btnOk = new VCButton(ClientControl, 0, listBoxes[0].NextTop() + (FormMain.Config.GridSize * 2), "ОК");
@@ -68,6 +62,18 @@ namespace Fantasy_Kingdoms_Battle
             //
             ClientControl.Width = nextLeft - FormMain.Config.GridSize;
             ClientControl.Height = btnOk.ShiftY + btnOk.Height;
+
+            void AddBonus(VisualControl parent, string text, int imageIndex)
+            {
+                Debug.Assert(text != null);
+
+                VCLabel label = new VCLabel(parent, FormMain.Config.GridSize, nextTop, Program.formMain.fontParagraph, Color.White, Program.formMain.fontParagraph.MaxHeightSymbol, $"+{text}");
+                label.StringFormat.Alignment = StringAlignment.Near;
+                label.BitmapList = Program.formMain.ilGui16;
+                label.ImageIndex = imageIndex;
+                label.Width = 120;
+                nextTop = label.ShiftY + label.Height;
+            }
         }
 
         internal StartBonus SelectedBonus { get; private set; }
