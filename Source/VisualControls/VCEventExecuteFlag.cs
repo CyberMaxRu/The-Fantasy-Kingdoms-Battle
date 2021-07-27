@@ -13,6 +13,8 @@ namespace Fantasy_Kingdoms_Battle
         private VCImage bmpTarget;
         private VCLabel textColon;
         private VCImage bmpWin;
+        private VCButton btnViewResult;
+        private VCButton btnWShowBattle;
 
         public VCEventExecuteFlag(TypeFlag typeFlag, TypeLair tl, PlayerLair pl, bool winner, Battle b) : base()
         {
@@ -41,10 +43,23 @@ namespace Fantasy_Kingdoms_Battle
             bmpWin = new VCImage(this, textColon.NextLeft(), bmpTypeFlag.ShiftY, Program.formMain.ilGui, winner ? FormMain.GUI_WIN : FormMain.GUI_LOSE);
             bmpWin.ShowBorder = true;
 
+            btnViewResult = new VCButton(this, bmpWin.NextLeft(), 16, "Итоги");
+            btnViewResult.Click += BtnViewResult_Click;
+            btnWShowBattle = new VCButton(this, btnViewResult.NextLeft(), 16, "Просмотр");
+            btnWShowBattle.Click += BtnWShowBattle_Click;
+
             ApplyMaxSize();
 
             Height += FormMain.Config.GridSize;
             Width += FormMain.Config.GridSize;
+        }
+
+        private void BtnWShowBattle_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void BtnViewResult_Click(object sender, EventArgs e)
+        {
         }
 
         private void BmpTarget_Click(object sender, EventArgs e)
