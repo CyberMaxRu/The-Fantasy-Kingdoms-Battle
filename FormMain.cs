@@ -1351,6 +1351,10 @@ namespace Fantasy_Kingdoms_Battle
             panelWarehouse.ApplyList(lobby.CurrentPlayer.Warehouse.ToList<ICell>());
         }
 
+        internal void ActivatePageResultTurn()
+        {
+            pageControl.ActivatePage(pageResultTurn);
+        }
 
         internal void ActivatePageLairs()
         {

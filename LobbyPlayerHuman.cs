@@ -36,6 +36,13 @@ namespace Fantasy_Kingdoms_Battle
             w.Dispose();
         }
 
+        internal override void PrepareTurn()
+        {
+            base.PrepareTurn();
+
+            Program.formMain.ActivatePageResultTurn();
+        }
+
         internal override void DoTurn()
         {
             Debug.Assert(Player.TypePlayer == TypePlayer.Human);

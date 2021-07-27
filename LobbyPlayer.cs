@@ -147,7 +147,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void PrepareTurn()
+        internal virtual void PrepareTurn()
         {
             UpdateBuildersNextDay();
 
