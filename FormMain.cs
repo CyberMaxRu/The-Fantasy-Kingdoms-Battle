@@ -110,6 +110,7 @@ namespace Fantasy_Kingdoms_Battle
 
         // Главные страницы игры
         private readonly VCPageControl pageControl;
+        private readonly VCPageButton pageResultTurn;
         private readonly VCPageButton pageGuilds;
         private readonly VCPageButton pageEconomicConstructions;
         private readonly VCPageButton pageTemples;
@@ -154,6 +155,8 @@ namespace Fantasy_Kingdoms_Battle
         internal const int GUI_BUILD = 24;
         internal const int GUI_FLAG_DEFENSE = 25;
         internal const int GUI_MAP = 26;
+        internal const int GUI_BACKGROUND = 27;
+        internal const int GUI_RESULT_TURN = 28;
 
         internal const int GUI_PARAMETER_STRENGTH = 6;
         internal const int GUI_PARAMETER_DEXTERITY = 7;
@@ -637,6 +640,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 // Страницы игры
                 pageControl = new VCPageControl(MainControl, 0, panelLairWithFlags.ShiftY, ilGui);
+                pageResultTurn = pageControl.AddPage(GUI_RESULT_TURN, PageResultTurn_ShowHint);
                 pageGuilds = pageControl.AddPage(GUI_GUILDS, PageGuilds_ShowHint);
                 pageEconomicConstructions = pageControl.AddPage(GUI_ECONOMY, PageEconomicConstructions_ShowHint);
                 pageTemples = pageControl.AddPage(GUI_TEMPLE, PageTemples_ShowHint);
@@ -673,7 +677,7 @@ namespace Fantasy_Kingdoms_Battle
                 bmpPreparedToolbar.ShiftY = panelPlayers.NextTop();
                 MainControl.ShiftY = bmpPreparedToolbar.NextTop();
 
-                MainControl.Height = pageGuilds.ShiftX + maxHeightControls + Config.GridSize;
+                MainControl.Height = pageResultTurn.ShiftX + maxHeightControls + Config.GridSize;
 
                 // Теперь когда известна ширина окна, можно создавать картинку тулбара
                 labelNamePlayer.Height = bmpPreparedToolbar.Height;
@@ -717,7 +721,7 @@ namespace Fantasy_Kingdoms_Battle
                 SetStage("Прибираем после строителей");
 
                 //
-                pageControl.ActivatePage(pageGuilds);
+                pageControl.ActivatePage(pageResultTurn);
 
                 //
                 mpMusic = new System.Windows.Media.MediaPlayer();
@@ -824,6 +828,11 @@ namespace Fantasy_Kingdoms_Battle
         private void PageEconomicConstructions_ShowHint(object sender, EventArgs e)
         {
             ShowHintForToolButton(pageEconomicConstructions, "Экономические строения", "");
+        }
+        
+        private void PageResultTurn_ShowHint(object sender, EventArgs e)
+        {
+            ShowHintForToolButton(pageResultTurn, "Итоги хода", "");
         }
 
         private void PageGuilds_ShowHint(object sender, EventArgs e)
@@ -1342,7 +1351,7 @@ namespace Fantasy_Kingdoms_Battle
 
             ExchangeLayer(layerMainMenu, layerGame);
 
-            pageControl.ActivatePage(pageGuilds);
+            pageControl.ActivatePage(pageResultTurn);
             ShowCurrentPlayerLobby();
 
             lobby.Start();
