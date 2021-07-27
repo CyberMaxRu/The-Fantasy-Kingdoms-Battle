@@ -72,6 +72,7 @@ namespace Fantasy_Kingdoms_Battle
                 label.BitmapList = Program.formMain.ilGui16;
                 label.ImageIndex = imageIndex;
                 label.Width = 120;
+                label.ClickOnParent = true;
                 nextTop = label.ShiftY + label.Height;
             }
         }

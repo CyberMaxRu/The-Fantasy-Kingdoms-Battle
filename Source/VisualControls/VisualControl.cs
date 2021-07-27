@@ -54,6 +54,7 @@ namespace Fantasy_Kingdoms_Battle
         internal bool LeftButtonPressed { get; private set; }// ЛКМ нажата
         internal bool IsError { get; set; }
         internal bool ShowHintParent { get; set; }// Показывать подсказку родителя
+        internal bool ClickOnParent { get; set; }// Вызывать клик у родителя
         internal bool ManualSelected { get; set; } = false;
 
         // Список контролов, расположенных на нём
@@ -121,7 +122,10 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Visible);
 
             if (AllowClick())
-                Click?.Invoke(this, new EventArgs());
+                if (!ClickOnParent)
+                    Click?.Invoke(this, new EventArgs());
+                else
+                    Parent.DoClick();
         }
 
         protected virtual bool Selected() => ManualSelected;
