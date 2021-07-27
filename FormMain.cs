@@ -157,6 +157,9 @@ namespace Fantasy_Kingdoms_Battle
         internal const int GUI_MAP = 26;
         internal const int GUI_BACKGROUND = 27;
         internal const int GUI_RESULT_TURN = 28;
+        internal const int GUI_WIN = 29;
+        internal const int GUI_СROSS = 30;
+        internal const int GUI_LOSE = 31;
 
         internal const int GUI_PARAMETER_STRENGTH = 6;
         internal const int GUI_PARAMETER_DEXTERITY = 7;

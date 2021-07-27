@@ -269,7 +269,7 @@ namespace Fantasy_Kingdoms_Battle
                     }
 
                     if (this is LobbyPlayerHuman h)
-                        h.AddEvent(new VCEventExecuteFlag(typeFlag, pl.TypeLair, pl, (b is null) || (b.Winner == this), b));
+                        h.AddEvent(new VCEventExecuteFlag(typeFlag, pl.TypeLair, pl.Destroyed ? null : pl, (b is null) || (b.Winner == this), b));
                 }
             }
         }
