@@ -63,9 +63,21 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void ApplyMaxSize()
         {
+            // Приводим страницы к единому максимальному размеру
+            int maxWidth = 0;
+            int maxHeight = 0;
             foreach (VCPageButton p in listFormPage)
             {
                 p.Page.ApplyMaxSize();
+
+                maxWidth = Math.Max(maxWidth, p.Page.Width);
+                maxHeight = Math.Max(maxHeight, p.Page.Height);
+            }
+
+            foreach (VCPageButton p in listFormPage)
+            {
+                p.Page.Width = maxWidth;
+                p.Page.Height = maxHeight;
             }
 
             base.ApplyMaxSize();
