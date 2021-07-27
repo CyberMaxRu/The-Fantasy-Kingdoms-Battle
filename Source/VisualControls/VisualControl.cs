@@ -28,20 +28,17 @@ namespace Fantasy_Kingdoms_Battle
 
         public VisualControl(VisualControl parent, int shiftX, int shiftY)
         {
-            Debug.Assert(parent != null);
-            Debug.Assert(parent != this);
-
             ShiftX = shiftX;
             ShiftY = shiftY;
-            parent.AddControl(this);
-            VisualLayer = parent.VisualLayer;
+
+            SetParent(parent);
             //Debug.Assert(VisualLayer != null);
         }
 
         ~VisualControl() => Dispose(false);
 
         internal VisualControl Parent { get; private set; }
-        internal VisualControl VisualLayer { get; }
+        internal VisualControl VisualLayer { get; private set; }
         internal int Left { get { return left; } private set { left = value; ValidateRectangle(); ArrangeControls(); } }
         internal int Top { get { return top; } private set { top = value; ValidateRectangle(); ArrangeControls(); } }
         internal int Width { get { return width; } set { width = value; ValidateRectangle(); } }
@@ -407,6 +404,18 @@ namespace Fantasy_Kingdoms_Battle
                 poolBorders.Add(size, bmpBorder);
                 return bmpBorder;
             }
+        }
+
+        internal void SetParent(VisualControl parent)
+        {
+            Debug.Assert(parent != null);
+            Debug.Assert(parent != this);
+
+            parent.AddControl(this);
+            VisualLayer = parent.VisualLayer;
+
+            foreach (VisualControl vc in Controls)
+                vc.VisualLayer = VisualLayer;
         }
     }
 }

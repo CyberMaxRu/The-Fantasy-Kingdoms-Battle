@@ -1245,9 +1245,29 @@ namespace Fantasy_Kingdoms_Battle
                 }
 
             // Показываем героев
+            ShowEvents();
             AdjustPanelLoses();
             AdjustPanelLairsWithFlags();
             ListHeroesChanged();
+        }
+
+        private void ShowEvents()
+        {
+            Debug.Assert(curAppliedPlayer is LobbyPlayerHuman);
+
+            LobbyPlayerHuman p = (LobbyPlayerHuman)curAppliedPlayer;
+            int top = 0;
+
+            foreach (VCEvent e in p.ListEvents)
+            {
+                e.SetParent(pageResultTurn.Page);
+                e.ShiftX = 0;
+                e.ShiftY = top;
+
+                top = e.NextTop();
+            }
+
+            pageResultTurn.Page.ArrangeControls();
         }
 
         private void DrawPageConstructions()

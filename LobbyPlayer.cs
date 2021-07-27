@@ -155,6 +155,8 @@ namespace Fantasy_Kingdoms_Battle
             if (Lobby.Day == 1)
                 Builders += Lobby.TypeLobby.StartBuilders;
             FreeBuilders = Builders;
+
+            UpdateViewedLairs();
         }
 
         internal abstract void DoTurn();
@@ -208,12 +210,15 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (PlayerLair pl in tempListLair)
             {
-                Battle b;
+                Battle b = null;
                 WindowBattle formBattle;
+                TypeFlag typeFlag;
 
                 if ((pl != null) && (pl.listAttackedHero.Count > 0))
                 {
                     Debug.Assert((pl.TypeFlag == TypeFlag.Scout) || (pl.TypeFlag == TypeFlag.Attack) || (pl.TypeFlag == TypeFlag.Defense));
+
+                    typeFlag = pl.TypeFlag;
 
                     if (pl.TypeFlag == TypeFlag.Scout)
                     {
@@ -262,6 +267,9 @@ namespace Fantasy_Kingdoms_Battle
                     {
                         pl.DoDefense();
                     }
+
+                    if (this is LobbyPlayerHuman h)
+                        h.AddEvent(new VCEventExecuteFlag(typeFlag, pl.TypeLair, pl, (b is null) || (b.Winner == this), b));
                 }
             }
         }
@@ -884,6 +892,21 @@ namespace Fantasy_Kingdoms_Battle
             ScoutRandomLair(sb.ScoutPlace);
 
             startBonusApplied = true;
+        }
+
+        internal static int TypeFlagToImageIndex(TypeFlag typeFlag)
+        {
+            switch (typeFlag)
+            {
+                case TypeFlag.Scout:
+                    return FormMain.GUI_FLAG_SCOUT;
+                case TypeFlag.Defense:
+                    return FormMain.GUI_FLAG_DEFENSE;
+                case TypeFlag.Attack:
+                    return FormMain.GUI_FLAG_ATTACK;
+                default:
+                    throw new Exception("Неизвестный тип флага: " + typeFlag.ToString() + ".");
+            }
         }
 
         // Интерфейс

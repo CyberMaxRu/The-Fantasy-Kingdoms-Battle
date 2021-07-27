@@ -20,6 +20,8 @@ namespace Fantasy_Kingdoms_Battle
             frame = new DispatcherFrame();
         }
 
+        internal List<VCEvent> ListEvents { get; } = new List<VCEvent>();
+
         internal override void SelectStartBonus()
         {
             base.SelectStartBonus();
@@ -55,6 +57,11 @@ namespace Fantasy_Kingdoms_Battle
         internal override void EndTurn()
         {
             frame.Continue = false;
+        }
+
+        internal void AddEvent(VCEvent e)
+        {
+            ListEvents.Add(e);
         }
     }
 }
