@@ -22,6 +22,7 @@ namespace Fantasy_Kingdoms_Battle
             Builders = XmlUtils.GetInteger(n.SelectSingleNode("Builders"));
             ScoutPlace = XmlUtils.GetInteger(n.SelectSingleNode("ScoutPlace"));
             PointConstructionTemple = XmlUtils.GetInteger(n.SelectSingleNode("PointConstructionTemple"));
+            PointConstructionTradePost = XmlUtils.GetInteger(n.SelectSingleNode("PointConstructionTradePost"));
             Points = XmlUtils.GetInteger(n.SelectSingleNode("Points"));
 
             Debug.Assert(Gold >= 0);
@@ -34,6 +35,8 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(ScoutPlace <= 10);
             Debug.Assert(PointConstructionTemple >= 0);
             Debug.Assert(PointConstructionTemple <= 3);
+            Debug.Assert(PointConstructionTradePost >= 0);
+            Debug.Assert(PointConstructionTradePost <= 3);
             Debug.Assert(Points > 0);
             Debug.Assert(Points <= 10);
         }
@@ -43,6 +46,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int Builders { get; private set; }
         internal int ScoutPlace { get; private set; }
         internal int PointConstructionTemple { get; private set; }
+        internal int PointConstructionTradePost { get; private set; }
         internal int Points { get; private set; }
 
         internal void AddBonus(StartBonus sb)
@@ -52,6 +56,7 @@ namespace Fantasy_Kingdoms_Battle
             Builders += sb.Builders;
             ScoutPlace += sb.ScoutPlace;
             PointConstructionTemple += sb.PointConstructionTemple;
+            PointConstructionTradePost += sb.PointConstructionTradePost;
             Points += sb.Points;
         }
 
@@ -63,6 +68,7 @@ namespace Fantasy_Kingdoms_Battle
                 && (Greatness == otherStartBonus.Greatness)
                 && (ScoutPlace == otherStartBonus.ScoutPlace)
                 && (PointConstructionTemple == otherStartBonus.PointConstructionTemple)
+                && (PointConstructionTradePost == otherStartBonus.PointConstructionTradePost)
                 && (Builders == otherStartBonus.Builders);
         }
     }
