@@ -187,6 +187,8 @@ namespace Fantasy_Kingdoms_Battle
         internal const int GUI_16_GOLD = 1;
         internal const int GUI_16_BUILDER = 2;
         internal const int GUI_16_GREATNESS = 3;
+        internal const int GUI_16_HOLYLAND = 4;
+        internal const int GUI_16_TRADEPOST = 5;
 
         internal const int GUI_24_FIRE = 0;
         internal const int GUI_24_HEROES = 1;
