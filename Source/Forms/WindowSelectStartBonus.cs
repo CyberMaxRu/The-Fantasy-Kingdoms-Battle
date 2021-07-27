@@ -41,6 +41,8 @@ namespace Fantasy_Kingdoms_Battle
                     text.Text += $"+{sb.Builders} строитель(-я){Environment.NewLine}";
                 if (sb.PointConstructionTemple > 0)
                     text.Text += $"+{sb.PointConstructionTemple} Святая земля{Environment.NewLine}";
+                if (sb.PointConstructionTradePost > 0)
+                    text.Text += $"+{sb.PointConstructionTradePost} Торговое место{Environment.NewLine}";
                 if (sb.ScoutPlace > 0)
                     text.Text += $"+{sb.ScoutPlace} разведанных места{Environment.NewLine}";
 

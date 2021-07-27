@@ -5,6 +5,7 @@
     <Greatness>0</Greatness>
     <Builders>0</Builders>
     <PointConstructionTemple>0</PointConstructionTemple>
+    <PointConstructionTradePost>0</PointConstructionTradePost>
     <ScoutPlace>0</ScoutPlace>
     <Points>1</Points>
   </StartBonus>
@@ -13,6 +14,7 @@
     <Greatness>200</Greatness>
     <Builders>0</Builders>
     <PointConstructionTemple>0</PointConstructionTemple>
+    <PointConstructionTradePost>0</PointConstructionTradePost>
     <ScoutPlace>0</ScoutPlace>
     <Points>1</Points>
   </StartBonus>
@@ -21,6 +23,7 @@
     <Greatness>0</Greatness>
     <Builders>1</Builders>
     <PointConstructionTemple>0</PointConstructionTemple>
+    <PointConstructionTradePost>0</PointConstructionTradePost>
     <ScoutPlace>0</ScoutPlace>
     <Points>2</Points>
   </StartBonus>
@@ -29,6 +32,7 @@
     <Greatness>100</Greatness>
     <Builders>0</Builders>
     <PointConstructionTemple>0</PointConstructionTemple>
+    <PointConstructionTradePost>0</PointConstructionTradePost>
     <ScoutPlace>0</ScoutPlace>
     <Points>1</Points>
   </StartBonus>
@@ -37,6 +41,7 @@
     <Greatness>0</Greatness>
     <Builders>0</Builders>
     <PointConstructionTemple>0</PointConstructionTemple>
+    <PointConstructionTradePost>0</PointConstructionTradePost>
     <ScoutPlace>2</ScoutPlace>
     <Points>1</Points>
   </StartBonus>
@@ -45,7 +50,17 @@
     <Greatness>0</Greatness>
     <Builders>0</Builders>
     <PointConstructionTemple>1</PointConstructionTemple>
+    <PointConstructionTradePost>0</PointConstructionTradePost>
     <ScoutPlace>0</ScoutPlace>
     <Points>3</Points>
+  </StartBonus>
+  <StartBonus>
+    <Gold>0</Gold>
+    <Greatness>0</Greatness>
+    <Builders>0</Builders>
+    <PointConstructionTemple>0</PointConstructionTemple>
+    <PointConstructionTradePost>1</PointConstructionTradePost>
+    <ScoutPlace>0</ScoutPlace>
+    <Points>2</Points>
   </StartBonus>
 </StartBonuses>
