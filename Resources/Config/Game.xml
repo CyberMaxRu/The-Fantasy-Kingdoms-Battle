@@ -67,7 +67,7 @@
     <MaxFramesPerSecond>50</MaxFramesPerSecond>
   </Battle>
   <Battlefield>
-    <HeroRows>7</HeroRows>
+    <HeroRows>5</HeroRows>
     <HeroInRow>7</HeroInRow>
     <RowsBetweenSides>3</RowsBetweenSides>
     <WidthBorder>14</WidthBorder>
