@@ -45,7 +45,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void ArrangeHeroes(List<HeroInBattle> list)
         {
-            HeroInBattle[,] cells = new HeroInBattle[FormMain.Config.HeroRows, FormMain.Config.HeroInRow];
+            HeroInBattle[,] cells = new HeroInBattle[FormMain.Config.HeroInRow, FormMain.Config.HeroRows];
 
             // Проставляем координаты для героев
             foreach (HeroInBattle ph in list.OrderBy(ph => ph.PlayerHero.Priority()))

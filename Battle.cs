@@ -72,7 +72,7 @@ namespace Fantasy_Kingdoms_Battle
                 hb.CurrentTile = Battlefield.Tiles[hb.StartCoord.Y, hb.StartCoord.X];
 
             foreach (HeroInBattle hb in heroesPlayer2)
-                hb.CurrentTile = Battlefield.Tiles[FormMain.Config.HeroRows + FormMain.Config.RowsBetweenSides + (FormMain.Config.HeroRows - hb.StartCoord.X) - 1, hb.StartCoord.Y];
+                hb.CurrentTile = Battlefield.Tiles[hb.StartCoord.Y, FormMain.Config.HeroRows + FormMain.Config.RowsBetweenSides + (FormMain.Config.HeroRows - hb.StartCoord.X) - 1];
         }
 
         internal BattleParticipant Player1 { get; }// Сторона №1        
