@@ -1082,6 +1082,8 @@ namespace Fantasy_Kingdoms_Battle
 
             Layers.Remove(vl);
             currentLayer = Layers[Layers.Count - 1];
+
+            SetNeedRedrawFrame();
         }
 
         internal void ShowWindowAboutProgram()
