@@ -85,12 +85,12 @@
           <Lair>
             <ID>TradePlace</ID>
             <MinQuantity>1</MinQuantity>
-            <MaxQuantity>3</MaxQuantity>
+            <MaxQuantity>1</MaxQuantity>
           </Lair>
           <Lair>
             <ID>Chest</ID>
             <MinQuantity>1</MinQuantity>
-            <MaxQuantity>3</MaxQuantity>
+            <MaxQuantity>1</MaxQuantity>
           </Lair>
           <Lair>
             <ID>GraveyardZombie</ID>
@@ -99,8 +99,8 @@
           </Lair>
           <Lair>
             <ID>HolyLand</ID>
-            <MinQuantity>3</MinQuantity>
-            <MaxQuantity>3</MaxQuantity>
+            <MinQuantity>0</MinQuantity>
+            <MaxQuantity>0</MaxQuantity>
           </Lair>
         </Lairs>
       </Layer>
