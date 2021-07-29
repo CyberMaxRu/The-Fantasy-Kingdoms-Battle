@@ -131,6 +131,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int DayNextBattleBetweenPlayers { get; private set; }// День следующей битвы между игроками
         internal int DaysLeftForBattle { get; private set; }// Осталось дней до следующей битвы между игроками
 
+        // Подбор оппонентов для битвы
         private void MakeOpponents()
         {
             foreach (LobbyPlayer pl in Players)
@@ -183,7 +184,8 @@ namespace Fantasy_Kingdoms_Battle
 
             while (!stopLobby)
             {
-                CalcDayNextBattleBetweenPlayers();
+                // Общая подготовка хода
+                DoPrepareTurn();
 
                 for (int i = 0; i < Players.Count(); i++)
                 {
@@ -208,6 +210,16 @@ namespace Fantasy_Kingdoms_Battle
 
                 DoEndTurn();
             }
+        }
+
+        internal void DoPrepareTurn()
+        {
+            // Считаем день следующей битвы между игроками
+            CalcDayNextBattleBetweenPlayers();
+
+            // Если сегодня - день битвы, составляем оппонентов заранее
+            if (IsDayForBattleBetweenPlayers())
+                MakeOpponents();
         }
 
         internal void DoEndTurn()
@@ -244,7 +256,8 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.ShowNamePlayer("Расчет дня");
             CalcFinalityTurn();
 
-            //CalcBattles();
+            if (IsDayForBattleBetweenPlayers())
+                CalcBattles();
 
             CalcResultTurn();
 
@@ -268,7 +281,9 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             if (livePlayers > 1)
-                MakeOpponents();
+            {
+
+            }
             else
             {
                 foreach (LobbyPlayer p in Players)
@@ -297,46 +312,6 @@ namespace Fantasy_Kingdoms_Battle
                 p.BattleCalced = false;
             }
 
-            // Бои с монстрами
-            foreach (LobbyPlayer p in Players)
-            {
-                if (p.IsLive)
-                {
-                    p.PreparingForBattle();
-
-                    // Включить, когда ИИ может выбирать цель
-                    //Debug.Assert(p.TargetLair != null);
-                    foreach (PlayerLair pl in p.ListFlags)
-                    {
-                        pl.PreparingForBattle();
-
-                        //Debug.Assert(p.TargetLair.CombatHeroes.Count > 0);
-
-                        bool showForPlayer = false;// p.GetTypePlayer() == TypePlayer.Human;
-                        b = new Battle(p, pl, Day, Rnd.Next(), showForPlayer);
-
-                        if (showForPlayer)
-                        {
-                            formBattle = new WindowBattle(b);
-                            formBattle.ShowBattle();
-                            formBattle.Dispose();
-                        }
-                        else
-                        {
-                            //if (formProgressBattle == null)
-                            //    formProgressBattle = new FormProgressBattle();
-
-                            //formProgressBattle.SetBattle(b, Players.Count(), p.PlayerIndex + 1);
-                            b.CalcWholeBattle();
-                        }
-
-                        Battles.Add(b);
-                    }
-                }
-            }
-
-            return;
-
             int livePlayers = 0;
             foreach (LobbyPlayer p in Players)
             {
@@ -356,7 +331,9 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     if (p.BattleCalced == false)
                     {
-                        bool showForPlayer = (p.GetTypePlayer() == TypePlayer.Human) || (p.Opponent.GetTypePlayer() == TypePlayer.Human);
+                        Debug.Assert(!(p.Opponent is null));
+
+                        bool showForPlayer = false;// (p.GetTypePlayer() == TypePlayer.Human) || (p.Opponent.GetTypePlayer() == TypePlayer.Human);
                         b = new Battle(p, p.Opponent, Day, Rnd.Next(), showForPlayer);
 
                         if (showForPlayer)
@@ -376,6 +353,11 @@ namespace Fantasy_Kingdoms_Battle
                         }
 
                         Battles.Add(b);
+
+                        if (p is LobbyPlayerHuman h)
+                            h.AddEvent(new VCEventBattle(b));
+                        if (p.Opponent is LobbyPlayerHuman h2)
+                            h2.AddEvent(new VCEventBattle(b));
                     }
                 }
             }

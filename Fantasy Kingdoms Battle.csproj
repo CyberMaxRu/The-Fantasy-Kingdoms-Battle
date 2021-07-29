@@ -102,6 +102,7 @@
     <Compile Include="Source\VisualControls\VCCheckBox.cs" />
     <Compile Include="Source\VisualControls\VCEdit.cs" />
     <Compile Include="Source\VisualControls\VCEvent.cs" />
+    <Compile Include="Source\VisualControls\VCEventBattle.cs" />
     <Compile Include="Source\VisualControls\VCEventExecuteFlag.cs" />
     <Compile Include="Source\VisualControls\VCForm.cs" />
     <Compile Include="Source\VisualControls\VCIconButton.cs" />

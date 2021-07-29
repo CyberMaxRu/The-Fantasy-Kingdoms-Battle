@@ -642,10 +642,13 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if ((ph.StateCreature.ID == NameStateCreature.DoAttackFlag.ToString())
                     || (ph.StateCreature.ID == NameStateCreature.DoScoutFlag.ToString())
-                    || (ph.StateCreature.ID == NameStateCreature.DoDefenseFlag.ToString()))                    
+                    || (ph.StateCreature.ID == NameStateCreature.DoDefenseFlag.ToString()))
                 {
                     ph.ClearState();
                 }
+
+                if (ph.StateCreature.ID == NameStateCreature.BattleWithPlayer.ToString())
+                    ph.SetState(NameStateCreature.Nothing);
 
                 if (ph.StateCreature.ID == NameStateCreature.Nothing.ToString())
                     freeHeroes.Add(ph);
@@ -663,7 +666,7 @@ namespace Fantasy_Kingdoms_Battle
                 for (int i = 0; i < takeHeroes; i++)
                 {
                     PlayerHero ph = CombatHeroes[i] as PlayerHero;
-                    freeHeroes.Add(ph);
+                    freeHeroes.Remove(ph);
                     ph.SetState(NameStateCreature.BattleWithPlayer);
                 }
             }
