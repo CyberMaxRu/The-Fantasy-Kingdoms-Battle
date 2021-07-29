@@ -663,7 +663,7 @@ namespace Fantasy_Kingdoms_Battle
 
         int ICell.Level()
         {
-            return 0;
+            return PlayerHero.Level;
         }
 
         int ICell.Quantity()
