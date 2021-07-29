@@ -14,8 +14,9 @@ namespace Fantasy_Kingdoms_Battle
     {
         internal Battlefield Battlefield;
         private List<HeroInBattle> heroesForDelete = new List<HeroInBattle>();
+        private Random rnd;
 
-        internal Battle(BattleParticipant player1, BattleParticipant player2, int turn, Random r, bool showForPlayer)
+        internal Battle(BattleParticipant player1, BattleParticipant player2, int turn, int randomSeed, bool showForPlayer)
         {
             Debug.Assert(player1 != null);
             Debug.Assert(player2 != null);
@@ -29,7 +30,8 @@ namespace Fantasy_Kingdoms_Battle
             Player1 = player1;
             Player2 = player2;
             Turn = turn;
-            Rnd = r;
+            RandomSeed = randomSeed;
+            rnd = new Random(RandomSeed);
 
             BattleCalced = false;
             Step = 0;
@@ -78,7 +80,6 @@ namespace Fantasy_Kingdoms_Battle
         internal BattleParticipant Player1 { get; }// Сторона №1        
         internal BattleParticipant Player2 { get; }// Сторона №2
         internal int Turn { get; }// Ход, на котором произошел бой
-        internal Random Rnd { get; }
         internal Size SizeBattlefield { get; }
         internal int Step { get; private set; }// Шаг боя
         internal bool BattleCalced { get; private set; }
@@ -97,6 +98,8 @@ namespace Fantasy_Kingdoms_Battle
         internal int Player2KillSquad { get; private set; }
         internal List<HeroInBattle> heroesPlayer1 { get; } = new List<HeroInBattle>();
         internal List<HeroInBattle> heroesPlayer2 { get; } = new List<HeroInBattle>();
+        internal int RandomSeed { get; }
+
 
         internal bool CalcStep()
         {

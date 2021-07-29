@@ -306,7 +306,7 @@ namespace Fantasy_Kingdoms_Battle
                         //Debug.Assert(p.TargetLair.CombatHeroes.Count > 0);
 
                         bool showForPlayer = false;// p.GetTypePlayer() == TypePlayer.Human;
-                        b = new Battle(p, pl, Day, Rnd, showForPlayer);
+                        b = new Battle(p, pl, Day, Rnd.Next(), showForPlayer);
 
                         if (showForPlayer)
                         {
@@ -350,7 +350,7 @@ namespace Fantasy_Kingdoms_Battle
                     if (p.BattleCalced == false)
                     {
                         bool showForPlayer = (p.GetTypePlayer() == TypePlayer.Human) || (p.Opponent.GetTypePlayer() == TypePlayer.Human);
-                        b = new Battle(p, p.Opponent, Day, Rnd, showForPlayer);
+                        b = new Battle(p, p.Opponent, Day, Rnd.Next(), showForPlayer);
 
                         if (showForPlayer)
                         {

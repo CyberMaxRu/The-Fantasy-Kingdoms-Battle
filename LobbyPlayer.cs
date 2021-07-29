@@ -236,7 +236,7 @@ namespace Fantasy_Kingdoms_Battle
                         //Debug.Assert(p.TargetLair.CombatHeroes.Count > 0);
 
                         bool showForPlayer = false;// Player.TypePlayer == TypePlayer.Human;
-                        b = new Battle(this, pl, Lobby.Day, Lobby.Rnd, showForPlayer);
+                        b = new Battle(this, pl, Lobby.Day, Lobby.Rnd.Next(), showForPlayer);
 
                         if (showForPlayer)
                         {
