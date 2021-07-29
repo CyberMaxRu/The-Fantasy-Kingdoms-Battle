@@ -36,31 +36,35 @@ namespace Fantasy_Kingdoms_Battle
             SizeBattlefield = new Size((FormMain.Config.HeroRows * 2) + FormMain.Config.RowsBetweenSides, FormMain.Config.HeroInRow);
             Battlefield = new Battlefield(SizeBattlefield.Width, SizeBattlefield.Height);
 
+            // Запоминаем стартовые места существ
+            СreaturesPlayer1 = new Creature[FormMain.Config.HeroInRow, FormMain.Config.HeroRows];
+            СreaturesPlayer2 = new Creature[FormMain.Config.HeroInRow, FormMain.Config.HeroRows];
+
             // Запоминаем героев в одном списке для упрощения расчетов
+            foreach (Creature ph in player1.CombatHeroes)
+            {
+                Debug.Assert(ph.IsLive);
+                AddHero(new HeroInBattle(this, ph, ph.CoordInPlayer, showForPlayer), СreaturesPlayer1);
+            }
+
             if (player2 is PlayerLair pl)
             {
                 foreach (PlayerHero ph in pl.listAttackedHero)
                 {
                     Debug.Assert(ph.IsLive);
-                    AddHero(new HeroInBattle(this, ph, ph.CoordInPlayer, showForPlayer));
+                    AddHero(new HeroInBattle(this, ph, new Point(FormMain.Config.HeroRows + FormMain.Config.RowsBetweenSides + (FormMain.Config.HeroRows - ph.CoordInPlayer.X) - 1, ph.CoordInPlayer.Y), showForPlayer), СreaturesPlayer2);
                 }
             }
             else
             {
-                foreach (Creature ph in player1.CombatHeroes)
+                foreach (Creature ph in player2.CombatHeroes)
                 {
                     Debug.Assert(ph.IsLive);
-                    AddHero(new HeroInBattle(this, ph, ph.CoordInPlayer, showForPlayer));
+                    AddHero(new HeroInBattle(this, ph, new Point(FormMain.Config.HeroRows + FormMain.Config.RowsBetweenSides + (FormMain.Config.HeroRows - ph.CoordInPlayer.X) - 1, ph.CoordInPlayer.Y), showForPlayer), СreaturesPlayer2);
                 }
             }
 
-            foreach (Creature ph in player2.CombatHeroes)
-            {
-                Debug.Assert(ph.IsLive);
-                AddHero(new HeroInBattle(this, ph, new Point(FormMain.Config.HeroInRow + FormMain.Config.RowsBetweenSides + (FormMain.Config.HeroInRow - ph.CoordInPlayer.X) - 1, ph.CoordInPlayer.Y), showForPlayer));
-            }
-
-            void AddHero(HeroInBattle hb)
+            void AddHero(HeroInBattle hb, Creature[,] array)
             {
                 Debug.Assert(hb.IsLive == true);
                 //Debug.Assert(ph.ParametersInBattle.CurrentHealth > 0);
@@ -68,6 +72,8 @@ namespace Fantasy_Kingdoms_Battle
 
                 ActiveHeroes.Add(hb);
                 AllHeroes.Add(hb);
+
+                array[hb.PlayerHero.CoordInPlayer.Y, hb.PlayerHero.CoordInPlayer.X] = hb.PlayerHero;
                 //Battlefield.Tiles[hb.Coord.Y, hb.Coord.X].Unit = hb;
             }
         }
@@ -92,6 +98,9 @@ namespace Fantasy_Kingdoms_Battle
         internal int Player2Damage { get; private set; }
         internal int Player2Kill { get; private set; }
         internal int Player2KillSquad { get; private set; }
+
+        internal Creature[,] СreaturesPlayer1 { get; }// Положение существ стороны 1 в начале битвы
+        internal Creature[,] СreaturesPlayer2 { get; }// Положение существ стороны 2 в начале битвы
 
         internal bool CalcStep()
         {
