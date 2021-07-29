@@ -123,6 +123,8 @@ namespace Fantasy_Kingdoms_Battle
         private PanelWithPanelEntity panelHeroes;
         private PanelWithPanelEntity panelCombatHeroes;
 
+        private readonly VCCell[] pageTournamentPlayers;
+
         private const int DEFAULT_DPI = 96;
 
         internal const int MAX_AVATARS = 8;
@@ -853,7 +855,8 @@ namespace Fantasy_Kingdoms_Battle
 
         private void PageTournament_ShowHint(object sender, EventArgs e)
         {
-            ShowHintForToolButton(pageTournament, "Турнир", "");
+            ShowHintForToolButton(pageTournament, "Турнир",
+                lobby.DaysLeftForBattle > 0 ? "Битва с другим игроком начнется через " + lobby.DaysLeftForBattle.ToString() + " дн." : "Битва с другим игроком сегодня");
         }
 
         private void LabelGold_ShowHint(object sender, EventArgs e)
@@ -1351,6 +1354,11 @@ namespace Fantasy_Kingdoms_Battle
             panelHeroes.Height = panelHeroes.MaxSize().Height;
         }
 
+        private void DrawPageTournament()
+        {
+
+        }
+
         private void DrawWarehouse()
         {
             panelWarehouse = new PanelWithPanelEntity(Config.WarehouseWidth);
@@ -1531,6 +1539,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 pageTemples.PopupQuantity = lobby.CurrentPlayer.CanBuildTemple() ? lobby.CurrentPlayer.PointConstructionTemple : 0;
                 pageHeroes.Cost = lobby.CurrentPlayer.CombatHeroes.Count.ToString();
+                pageTournament.Cost = lobby.DaysLeftForBattle > 0 ? lobby.DaysLeftForBattle.ToString() + " д." : "Битва";
 
                 //
                 UpdateMenu();

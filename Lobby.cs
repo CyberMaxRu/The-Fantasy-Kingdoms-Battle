@@ -35,9 +35,11 @@ namespace Fantasy_Kingdoms_Battle
             GeneratePlayers();
 
             SortPlayers();
+            CalcDayNextBattleBetweenPlayers();
 
             SetPlayerAsCurrent(0);
             StateLobby = StateLobby.TurnHuman;
+
 
             void GenerateConfigLairs()
             {
@@ -126,6 +128,9 @@ namespace Fantasy_Kingdoms_Battle
         internal Random Rnd { get; } = new Random();
         internal List<TypeLair>[] Lairs { get; }
 
+        internal int DayNextBattleBetweenPlayers { get; private set; }// День следующей битвы между игроками
+        internal int DaysLeftForBattle { get; private set; }// Осталось дней до следующей битвы между игроками
+
         private void MakeOpponents()
         {
             foreach (LobbyPlayer pl in Players)
@@ -178,6 +183,8 @@ namespace Fantasy_Kingdoms_Battle
 
             while (!stopLobby)
             {
+                CalcDayNextBattleBetweenPlayers();
+
                 for (int i = 0; i < Players.Count(); i++)
                 {
                     if (Players[i].IsLive)
@@ -462,6 +469,27 @@ namespace Fantasy_Kingdoms_Battle
         {
             CurrentPlayer.EndTurn();
             stopLobby = true;
+        }
+
+        internal void CalcDayNextBattleBetweenPlayers()
+        {
+            if (Day <= TypeLobby.DayStartBattleBetweenPlayers)
+                DayNextBattleBetweenPlayers = TypeLobby.DayStartBattleBetweenPlayers;
+            else if (TypeLobby.DaysBeforeNextBattleBetweenPlayers == 0)
+                DayNextBattleBetweenPlayers = Day;
+            else
+            {
+                int delta = Day - TypeLobby.DayStartBattleBetweenPlayers;
+                int rep = (int)Math.Truncate((double)delta / (TypeLobby.DaysBeforeNextBattleBetweenPlayers + 1));
+                int days = delta % (TypeLobby.DaysBeforeNextBattleBetweenPlayers + 1);
+                if (days > 0)
+                    rep++;
+                DayNextBattleBetweenPlayers = TypeLobby.DayStartBattleBetweenPlayers + (rep * (TypeLobby.DaysBeforeNextBattleBetweenPlayers + 1));
+            }
+
+            Debug.Assert(DayNextBattleBetweenPlayers >= Day);
+
+            DaysLeftForBattle = DayNextBattleBetweenPlayers - Day;
         }
     }
 }

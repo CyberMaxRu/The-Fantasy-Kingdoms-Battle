@@ -50,8 +50,8 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(MaxHeroesForScoutFlag >= 1);
             Debug.Assert(MaxHeroesForScoutFlag <= 25);
             Debug.Assert(DayStartBattleBetweenPlayers >= 1);
-            Debug.Assert(DayStartBattleBetweenPlayers <= 25);
-            Debug.Assert(DaysBeforeNextBattleBetweenPlayers >= 1);
+            Debug.Assert(DayStartBattleBetweenPlayers <= 50);
+            Debug.Assert(DaysBeforeNextBattleBetweenPlayers >= 0);
             Debug.Assert(DaysBeforeNextBattleBetweenPlayers <= 10);
             Debug.Assert(StartBuilders >= 0);
             Debug.Assert(StartBuilders <= 10);

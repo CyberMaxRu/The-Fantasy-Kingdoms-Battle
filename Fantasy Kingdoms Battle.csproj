@@ -90,6 +90,7 @@
     <Compile Include="Source\Forms\WindowPreferences.cs" />
     <Compile Include="Source\Forms\WindowResultBattle.cs" />
     <Compile Include="Source\Forms\WindowSelectStartBonus.cs" />
+    <Compile Include="Source\Lobby\BattlesPlayers.cs" />
     <Compile Include="Source\Panels\PanelHint.cs" />
     <Compile Include="Source\Panels\PanelMapObject.cs" />
     <Compile Include="Source\Panels\PanelPlayer.cs" />
