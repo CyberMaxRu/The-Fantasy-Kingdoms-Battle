@@ -1156,6 +1156,9 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (lobby.CurrentPlayer.GetTypePlayer() == TypePlayer.Human)
                 {
+                    while (pageResultTurn.Page.Controls.Count > 0)
+                        pageResultTurn.Page.RemoveControl(pageResultTurn.Page.Controls[0]);
+
                     btnEndTurn.Visible = true;
                     labelDay.Visible = true;
                     labelBuilders.Visible = true;

@@ -48,6 +48,8 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Player.TypePlayer == TypePlayer.Human);
             Debug.Assert(IsLive);
 
+            ListEvents.Clear();
+
             Lobby.StateLobby = StateLobby.TurnHuman;
             frame.Continue = true;
             //Dispatcher.CurrentDispatcher.BeginInvoke(DispatcherPriority.Background, new DispatcherOperationCallback(ExitFrame), frame);
