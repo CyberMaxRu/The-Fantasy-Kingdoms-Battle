@@ -844,9 +844,9 @@ namespace Fantasy_Kingdoms_Battle
                     // Помещаем в нее логово
                     Debug.Assert(Lairs[layer, cells[idx].Y, cells[idx].X] == null);
                     Lairs[layer, cells[idx].Y, cells[idx].X] = new PlayerLair(this, lairs[idx], cells[idx].X, cells[idx].Y, layer);
-
-                    // Убираем ячейку из списка доступных
-                    cells.RemoveAt(idx);
+                    
+                    cells.RemoveAt(idx);// Убираем ячейку из списка доступных
+                    lairs.RemoveAt(idx);// Убираем тип логова из списка доступных
                 }
             }
 
