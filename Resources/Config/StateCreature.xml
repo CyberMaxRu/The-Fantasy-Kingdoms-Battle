@@ -60,4 +60,10 @@
     <Description>Выполняет задание защиты</Description>
     <ImageIndex>20</ImageIndex>
   </StateCreature>
+  <StateCreature>
+    <ID>BattleWithPlayer</ID>
+    <Name>Битва</Name>
+    <Description>Битва с другим игроком</Description>
+    <ImageIndex>21</ImageIndex>
+  </StateCreature>
 </StatesCreature>

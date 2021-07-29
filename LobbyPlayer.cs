@@ -156,6 +156,7 @@ namespace Fantasy_Kingdoms_Battle
                 Builders += Lobby.TypeLobby.StartBuilders;
             FreeBuilders = Builders;
 
+            SetTaskForHeroes();
             UpdateViewedLairs();
         }
 
@@ -631,6 +632,9 @@ namespace Fantasy_Kingdoms_Battle
         // Метод по распределению задач героев
         internal void SetTaskForHeroes()
         {
+            if (CombatHeroes.Count == 0)
+                return;
+
             List<PlayerHero> freeHeroes = new List<PlayerHero>();// Список свободных героев
 
             // Сначала сбрасываем всем состояние
@@ -651,7 +655,23 @@ namespace Fantasy_Kingdoms_Battle
             // Но сейчас всех героев делим поровну между флагами, без привязки к приоритету
             // Но учитываем максимальное число героев на логово
             // Это если речь идет о флаге атаки. На разведку идет ровно один герой
-            if ((freeHeroes.Count > 0) && (CountActiveFlags() > 0))
+            // Но первым делом отбираем героев на битву с другим игроком
+
+            if (Lobby.IsDayForBattleBetweenPlayers())
+            {
+                int takeHeroes = Math.Min(Lobby.TypeLobby.MaxHeroesForBattle, freeHeroes.Count);                    
+                for (int i = 0; i < takeHeroes; i++)
+                {
+                    PlayerHero ph = CombatHeroes[i] as PlayerHero;
+                    freeHeroes.Add(ph);
+                    ph.SetState(NameStateCreature.BattleWithPlayer);
+                }
+            }
+
+            if (freeHeroes.Count == 0)
+                return;
+
+            if (CountActiveFlags() > 0)
             {
                 foreach (PlayerLair pl in ListFlags.Where(pl => (pl != null) && (pl.TypeFlag == TypeFlag.Scout)))
                 {

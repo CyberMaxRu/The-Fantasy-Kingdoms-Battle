@@ -491,5 +491,10 @@ namespace Fantasy_Kingdoms_Battle
 
             DaysLeftForBattle = DayNextBattleBetweenPlayers - Day;
         }
+
+        internal bool IsDayForBattleBetweenPlayers()
+        {
+            return Day == DayNextBattleBetweenPlayers;
+        }
     }
 }

@@ -8,6 +8,7 @@
     <StartQuantityFlags>3</StartQuantityFlags>
     <MaxQuantityFlags>7</MaxQuantityFlags>
     <MaxHeroesForScoutFlag>3</MaxHeroesForScoutFlag>
+    <MaxHeroesForBattle>15</MaxHeroesForBattle>
     <DayStartBattleBetweenPlayers>3</DayStartBattleBetweenPlayers>
     <DaysBeforeNextBattleBetweenPlayers>1</DaysBeforeNextBattleBetweenPlayers>
     <StartBuilders>0</StartBuilders>
