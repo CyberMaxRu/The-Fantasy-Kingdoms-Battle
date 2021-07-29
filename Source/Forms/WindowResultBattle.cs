@@ -47,6 +47,8 @@ namespace Fantasy_Kingdoms_Battle
                     cells[y, x] = cell;
 
                     leftCell = cell.NextLeft();
+                    if (x == FormMain.Config.HeroRows - 1)
+                        leftCell += FormMain.Config.GridSize * 2;
                 }
 
                 topCell = cell.NextTop();
@@ -74,6 +76,7 @@ namespace Fantasy_Kingdoms_Battle
             btnOk.Width = 160;
             btnOk.Click += BtnOk_Click;
             AcceptButton = btnOk;
+            CancelButton = btnOk;
 
             //
             ClientControl.Width = imgAvatarParticipant2.NextLeft() - FormMain.Config.GridSize;
