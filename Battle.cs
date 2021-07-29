@@ -263,6 +263,11 @@ namespace Fantasy_Kingdoms_Battle
 
             void ApplyWinAndLose(BattleParticipant winner, BattleParticipant loser)
             {
+                if ((winner is LobbyPlayer w) && (loser is LobbyPlayer l))
+                {
+                    l.AddLose();
+                }
+
                 /* To restore
                 winner.ResultLastBattle = ResultBattle.Win;
                 loser.ResultLastBattle = ResultBattle.Lose;

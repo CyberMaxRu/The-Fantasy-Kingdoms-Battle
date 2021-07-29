@@ -50,7 +50,9 @@ namespace Fantasy_Kingdoms_Battle
             PointConstructionTradePost = lobby.TypeLobby.StartPointConstructionTradePost;
             SetQuantityFlags(lobby.TypeLobby.StartQuantityFlags);
 
-            for (int i = 0; i < lobby.TypeLobby.MaxLoses; i++)
+            CurrentLoses = 0;
+            MaxLoses = lobby.TypeLobby.MaxLoses;
+            for (int i = 0; i < MaxLoses; i++)
                 LoseInfo.Add(null);
 
             // Настраиваем стартовые бонусы
@@ -304,8 +306,11 @@ namespace Fantasy_Kingdoms_Battle
         internal List<PlayerHero> AllHeroes { get; } = new List<PlayerHero>();
         internal int Gold { get => Castle.Gold; set { Castle.Gold = value; } }
 
+        // Информация о поражениях и вылете из лобби
         internal List<LoseInfo> LoseInfo { get; } = new List<LoseInfo>();
-        internal int CurrentLoses { get; }// Текущее количество поражений
+        internal int CurrentLoses { get; private set; }// Текущее количество поражений
+        internal int MaxLoses { get; private set; }// Максимальное количество поражений
+        internal int DayOfEndGame { get; private set; }// День вылета из лобби
 
         internal int Builders { get; private set; }
         internal int FreeBuilders { get; private set; }
@@ -913,6 +918,24 @@ namespace Fantasy_Kingdoms_Battle
             ScoutRandomLair(sb.ScoutPlace);
 
             startBonusApplied = true;
+        }
+
+        internal void AddLose()
+        {
+            Debug.Assert(CurrentLoses < MaxLoses);
+            Debug.Assert(LoseInfo[CurrentLoses] is null);
+            Debug.Assert(!(opponent is null));
+            Debug.Assert(IsLive);
+            Debug.Assert(DayOfEndGame == 0);
+
+            LoseInfo[CurrentLoses] = new LoseInfo(Lobby.Day, opponent);
+            CurrentLoses++;
+
+            if (CurrentLoses == MaxLoses)
+            {
+                IsLive = false;
+                DayOfEndGame = Lobby.Day;
+            }
         }
 
         internal static int TypeFlagToImageIndex(TypeFlag typeFlag)
