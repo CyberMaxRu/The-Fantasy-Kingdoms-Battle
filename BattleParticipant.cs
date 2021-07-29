@@ -21,9 +21,6 @@ namespace Fantasy_Kingdoms_Battle
         public BattleParticipant(Lobby lobby)
         {
             Lobby = lobby;
-
-            // Настройка ячеек героев
-            CellHeroes = new Creature[FormMain.Config.HeroRows, FormMain.Config.HeroInRow];
         }
 
         internal Lobby Lobby { get; }
@@ -32,12 +29,8 @@ namespace Fantasy_Kingdoms_Battle
         internal List<Battle> HistoryBattles { get; } = new List<Battle>();
         internal List<Creature> CombatHeroes { get; } = new List<Creature>();
 
-        // Основные параметры
-        internal Creature[,] CellHeroes { get; private set; }
-
         internal virtual void PreparingForBattle()
         {
-            RearrangeHeroes();
         }
 
         internal void AddCombatHero(Creature c)
@@ -50,26 +43,20 @@ namespace Fantasy_Kingdoms_Battle
             CombatHeroes.Sort(ComparePlaceCreature);
         }
 
-        protected void RearrangeHeroes()
+        internal void ArrangeHeroes(List<HeroInBattle> list)
         {
-            // Очищаем все координаты героев
-            foreach (Creature ph in CellHeroes)
-            {
-                if (ph != null)
-                {
-                    Debug.Assert(ph.IsLive);
-
-                    CellHeroes[ph.CoordInPlayer.Y, ph.CoordInPlayer.X] = null;
-                    ph.CoordInPlayer = new Point(-1, -1);
-                }
-            }
+            HeroInBattle[,] cells = new HeroInBattle[FormMain.Config.HeroRows, FormMain.Config.HeroInRow];
 
             // Проставляем координаты для героев
-            foreach (Creature ph in CombatHeroes.OrderBy(ph => ph.Priority()))
-                SetPosForHero(ph);
+            foreach (HeroInBattle ph in list.OrderBy(ph => ph.PlayerHero.Priority()))
+            {
+                Debug.Assert(ph.Player == this);
+
+                SetPosForHero(ph, cells);
+            }
         }
 
-        private void SetPosForHero(Creature ph)
+        private void SetPosForHero(HeroInBattle ph, HeroInBattle[,] cells)
         {
             Debug.Assert(ph.IsLive);
 
@@ -81,20 +68,20 @@ namespace Fantasy_Kingdoms_Battle
             // Сначала ищем ячейку согласно категории героя
             // Для этого ищем линию со свободными ячейками для категории героя, начиная с первой
             // Пытаемся разместить его в середине линии, а затем в стороны от середины
-            for (int x = CellHeroes.GetLength(1) - 1; x >= 0; x--)
+            for (int x = cells.GetLength(1) - 1; x >= 0; x--)
             {
                 coordX = x;
                 positions.Clear();
 
-                for (int y = 0; y < CellHeroes.GetLength(0); y++)
-                    if (CellHeroes[y, x] == null)
+                for (int y = 0; y < cells.GetLength(0); y++)
+                    if (cells[y, x] == null)
                     {
                         positions.Add(y);
                     }
 
                 if (positions.Count > 0)
                 {
-                    int centre = (int)Math.Truncate(CellHeroes.GetLength(0) / 2.0 + 0.5) - 1;
+                    int centre = (int)Math.Truncate(cells.GetLength(0) / 2.0 + 0.5) - 1;
                     if (positions.IndexOf(centre) != -1)
                     {
                         coordY = centre;
@@ -128,10 +115,10 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             Debug.Assert(coordY != -1);
-            Debug.Assert(CellHeroes[coordY, coordX] == null);
+            Debug.Assert(cells[coordY, coordX] == null);
 
-            CellHeroes[coordY, coordX] = ph;
-            ph.CoordInPlayer = new Point(coordX, coordY);
+            cells[coordY, coordX] = ph;
+            ph.StartCoord = new Point(coordX, coordY);
         }
 
         internal abstract string GetName();

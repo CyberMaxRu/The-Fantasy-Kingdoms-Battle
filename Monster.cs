@@ -23,14 +23,14 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override int GetImageIndex()
         {
-            Debug.Assert(IsLive);
+            //Debug.Assert(IsLive);
 
             return TypeMonster.ImageIndex;
         }
 
         internal override void PrepareHint()
         {
-            Debug.Assert(IsLive);
+            //Debug.Assert(IsLive);
 
             Program.formMain.formHint.AddStep1Header(TypeMonster.Name, "", TypeMonster.Description);
         }

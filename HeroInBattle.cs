@@ -26,12 +26,12 @@ namespace Fantasy_Kingdoms_Battle
         private bool needRedraw;
         private StateHeroInBattle priorState;
         
-        public HeroInBattle(Battle b, Creature ph, Point coord, bool needImage)
+        public HeroInBattle(Battle b, Creature ph, bool needImage)
         {
             Battle = b;
-            CurrentTile = b.Battlefield.Tiles[coord.Y, coord.X];
             PlayerHero = ph;
             IsLive = true;
+            StartCoord = new Point(-1, -1);
 
             Parameters = new HeroParameters(ph.ParametersWithAmmunition);
 
@@ -70,6 +70,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int CurrentStamina { get; set; }
         internal int ReceivedDamage { get; private set; }
         internal int QuantityArrows { get; private set; }
+        internal Point StartCoord { get; set; }
 
         internal Bitmap BmpIcon
         {

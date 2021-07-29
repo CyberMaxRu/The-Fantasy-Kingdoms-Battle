@@ -378,11 +378,6 @@ namespace Fantasy_Kingdoms_Battle
             if ((ph.TypeHero.ID != "King") && (ph.TypeHero.ID != "Advisor") && (ph.TypeHero.ID != "Captain") && (ph.TypeHero.ID != "Treasurer"))
                 AddCombatHero(ph);
 
-            if (ph.Construction.TypeConstruction.TrainedHero != null)
-            {
-                RearrangeHeroes();
-            }
-
             SetTaskForHeroes();
 
             if (Player.TypePlayer == TypePlayer.Human)

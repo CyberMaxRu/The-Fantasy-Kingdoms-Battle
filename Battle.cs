@@ -36,46 +36,43 @@ namespace Fantasy_Kingdoms_Battle
             SizeBattlefield = new Size((FormMain.Config.HeroRows * 2) + FormMain.Config.RowsBetweenSides, FormMain.Config.HeroInRow);
             Battlefield = new Battlefield(SizeBattlefield.Width, SizeBattlefield.Height);
 
-            // Запоминаем стартовые места существ
-            СreaturesPlayer1 = new Creature[FormMain.Config.HeroInRow, FormMain.Config.HeroRows];
-            СreaturesPlayer2 = new Creature[FormMain.Config.HeroInRow, FormMain.Config.HeroRows];
-
-            // Запоминаем героев в одном списке для упрощения расчетов
-            foreach (Creature ph in player1.CombatHeroes)
-            {
-                Debug.Assert(ph.IsLive);
-                AddHero(new HeroInBattle(this, ph, ph.CoordInPlayer, showForPlayer), СreaturesPlayer1);
-            }
-
+            // Составляем списки существ
             if (player2 is PlayerLair pl)
             {
                 foreach (PlayerHero ph in pl.listAttackedHero)
                 {
                     Debug.Assert(ph.IsLive);
-                    AddHero(new HeroInBattle(this, ph, new Point(FormMain.Config.HeroRows + FormMain.Config.RowsBetweenSides + (FormMain.Config.HeroRows - ph.CoordInPlayer.X) - 1, ph.CoordInPlayer.Y), showForPlayer), СreaturesPlayer2);
+                    heroesPlayer1.Add(new HeroInBattle(this, ph, showForPlayer));
                 }
             }
             else
             {
-                foreach (Creature ph in player2.CombatHeroes)
+                foreach (Creature ph in player1.CombatHeroes)
                 {
                     Debug.Assert(ph.IsLive);
-                    AddHero(new HeroInBattle(this, ph, new Point(FormMain.Config.HeroRows + FormMain.Config.RowsBetweenSides + (FormMain.Config.HeroRows - ph.CoordInPlayer.X) - 1, ph.CoordInPlayer.Y), showForPlayer), СreaturesPlayer2);
+                    heroesPlayer1.Add(new HeroInBattle(this, ph, showForPlayer));
                 }
             }
 
-            void AddHero(HeroInBattle hb, Creature[,] array)
+            foreach (Creature ph in player2.CombatHeroes)
             {
-                Debug.Assert(hb.IsLive == true);
-                //Debug.Assert(ph.ParametersInBattle.CurrentHealth > 0);
-                //Debug.Assert(Battlefield.Tiles[hb.Coord.Y, hb.Coord.X].Unit == null);
-
-                ActiveHeroes.Add(hb);
-                AllHeroes.Add(hb);
-
-                array[hb.PlayerHero.CoordInPlayer.Y, hb.PlayerHero.CoordInPlayer.X] = hb.PlayerHero;
-                //Battlefield.Tiles[hb.Coord.Y, hb.Coord.X].Unit = hb;
+                Debug.Assert(ph.IsLive);
+                heroesPlayer2.Add(new HeroInBattle(this, ph, showForPlayer));
             }
+
+            ActiveHeroes.AddRange(heroesPlayer1);
+            ActiveHeroes.AddRange(heroesPlayer2);
+            AllHeroes.AddRange(ActiveHeroes);
+
+            // Распределяем стартовые места существ
+            player1.ArrangeHeroes(heroesPlayer1);
+            player2.ArrangeHeroes(heroesPlayer2);
+
+            foreach (HeroInBattle hb in heroesPlayer1)
+                hb.CurrentTile = Battlefield.Tiles[hb.StartCoord.Y, hb.StartCoord.X];
+
+            foreach (HeroInBattle hb in heroesPlayer2)
+                hb.CurrentTile = Battlefield.Tiles[FormMain.Config.HeroRows + FormMain.Config.RowsBetweenSides + (FormMain.Config.HeroRows - hb.StartCoord.X) - 1, hb.StartCoord.Y];
         }
 
         internal BattleParticipant Player1 { get; }// Сторона №1        
@@ -98,9 +95,8 @@ namespace Fantasy_Kingdoms_Battle
         internal int Player2Damage { get; private set; }
         internal int Player2Kill { get; private set; }
         internal int Player2KillSquad { get; private set; }
-
-        internal Creature[,] СreaturesPlayer1 { get; }// Положение существ стороны 1 в начале битвы
-        internal Creature[,] СreaturesPlayer2 { get; }// Положение существ стороны 2 в начале битвы
+        internal List<HeroInBattle> heroesPlayer1 { get; } = new List<HeroInBattle>();
+        internal List<HeroInBattle> heroesPlayer2 { get; } = new List<HeroInBattle>();
 
         internal bool CalcStep()
         {

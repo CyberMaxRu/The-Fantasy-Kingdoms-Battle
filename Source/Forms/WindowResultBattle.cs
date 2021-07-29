@@ -12,6 +12,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         private readonly VCImageBig imgAvatarParticipant1;
         private readonly VCImageBig imgAvatarParticipant2;
+        private readonly VCCell[,] cells;
 
         private readonly VCButton btnOk;
 
@@ -30,43 +31,20 @@ namespace Fantasy_Kingdoms_Battle
             //imgAvatarParticipant2.Cost = b.Player2.GetName();
             imgAvatarParticipant2.ImageIndex = b.Player2.GetImageIndexAvatar();
 
+            // Создаем массив ячеек
+            cells = new VCCell[FormMain.Config.HeroInRow, FormMain.Config.HeroRows * 2];
             int leftCell = imgAvatarParticipant1.NextLeft();
             int topCell = imgAvatarParticipant1.ShiftY;
             VCCell cell = null;
 
-            for (int y = 0; y < b.СreaturesPlayer1.GetLength(0); y++)
+            for (int y = 0; y < FormMain.Config.HeroInRow; y++)
             {
                 leftCell = imgAvatarParticipant1.NextLeft();
 
-                for (int x = 0; x < b.СreaturesPlayer1.GetLength(1); x++)
+                for (int x = 0; x < FormMain.Config.HeroRows * 2; x++)
                 {
                     cell = new VCCell(ClientControl, leftCell, topCell);
-
-                    if (!(b.СreaturesPlayer1[y, x] is null))
-                    {
-                        cell.ShowCell(b.СreaturesPlayer1[y, x]);
-                    }
-
-                    leftCell = cell.NextLeft();
-                }
-
-                topCell = cell.NextTop();
-            }
-
-            int leftCellPrior = leftCell;
-            topCell = imgAvatarParticipant1.ShiftY;
-            for (int y = 0; y < b.СreaturesPlayer2.GetLength(0); y++)
-            {
-                leftCell = leftCellPrior;
-
-                for (int x = 0; x < b.СreaturesPlayer2.GetLength(1); x++)
-                {
-                    cell = new VCCell(ClientControl, leftCell, topCell);
-
-                    if (!(b.СreaturesPlayer2[y, b.СreaturesPlayer2.GetLength(1) - x - 1] is null))
-                    {
-                        cell.ShowCell(b.СreaturesPlayer1[y, b.СreaturesPlayer2.GetLength(1) - x - 1]);
-                    }
+                    cells[y, x] = cell;
 
                     leftCell = cell.NextLeft();
                 }
@@ -76,13 +54,29 @@ namespace Fantasy_Kingdoms_Battle
 
             imgAvatarParticipant2.ShiftX = leftCell;
 
+            // Указываем существ у ячеек
+            foreach (HeroInBattle hb in b.heroesPlayer1)
+            {
+                Debug.Assert(cells[hb.StartCoord.Y, hb.StartCoord.X].Cell is null);
+
+                cells[hb.StartCoord.Y, hb.StartCoord.X].ShowCell(hb.PlayerHero);
+            }
+
+            foreach (HeroInBattle hb in b.heroesPlayer2)
+            {
+                Debug.Assert(cells[hb.StartCoord.Y, FormMain.Config.HeroRows * 2 - hb.StartCoord.X - 1].Cell is null);
+
+                cells[hb.StartCoord.Y, FormMain.Config.HeroRows * 2 - hb.StartCoord.X - 1].ShowCell(hb.PlayerHero);
+            }
+
+            //
             btnOk = new VCButton(ClientControl, 0, topCell, "ОК");
             btnOk.Width = 160;
             btnOk.Click += BtnOk_Click;
             AcceptButton = btnOk;
 
             //
-            ClientControl.Width = imgAvatarParticipant2.NextLeft();
+            ClientControl.Width = imgAvatarParticipant2.NextLeft() - FormMain.Config.GridSize;
             ClientControl.Height = btnOk.ShiftY + btnOk.Height;
 
             btnOk.ShiftX = (ClientControl.Width - btnOk.Width) / 2;

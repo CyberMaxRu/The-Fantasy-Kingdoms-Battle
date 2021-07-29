@@ -63,8 +63,6 @@ namespace Fantasy_Kingdoms_Battle
         internal Weapon RangeWeapon { get; private set; }// Стрелковое оружие 
         internal Armour Armour { get; private set; }// Доспех        
         internal StateCreature StateCreature { get; private set; }// Состояние (на карте)
-
-        internal Point CoordInPlayer { get; set; }// Координаты героя в слотах
         internal bool IsLive { get; private set; } = true;// Существо живо
 
         protected abstract int GetImageIndex();
