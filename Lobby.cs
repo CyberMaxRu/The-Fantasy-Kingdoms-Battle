@@ -354,10 +354,10 @@ namespace Fantasy_Kingdoms_Battle
 
                         Battles.Add(b);
 
-                        if (p is LobbyPlayerHuman h)
-                            h.AddEvent(new VCEventBattle(b));
-                        if (p.Opponent is LobbyPlayerHuman h2)
-                            h2.AddEvent(new VCEventBattle(b));
+                        // Добавляем событие всем живым игрокам
+                        foreach (LobbyPlayer lp in Players.Where(lpp => lpp.IsLive || (lpp.DayOfEndGame == Day)))
+                            if (lp is LobbyPlayerHuman h)
+                                h.AddEvent(new VCEventBattle(b));
                     }
                 }
             }

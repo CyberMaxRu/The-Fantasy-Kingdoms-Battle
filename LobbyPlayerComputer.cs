@@ -37,21 +37,21 @@ namespace Fantasy_Kingdoms_Battle
             GetPlayerConstruction(FormMain.Config.FindTypeGuild("GuildCleric")).BuyOrUpgrade();
             GetPlayerConstruction(FormMain.Config.FindTypeGuild("GuildMage")).BuyOrUpgrade();
 
-            HireAllHero(GetPlayerConstruction(FormMain.Config.FindTypeGuild("GuildWarrior")));
-            HireAllHero(GetPlayerConstruction(FormMain.Config.FindTypeGuild("GuildHunter")));
-            HireAllHero(GetPlayerConstruction(FormMain.Config.FindTypeGuild("GuildCleric")));
-            HireAllHero(GetPlayerConstruction(FormMain.Config.FindTypeGuild("GuildMage")));
+            HireHeroes(GetPlayerConstruction(FormMain.Config.FindTypeGuild("GuildWarrior")), 4);
+            HireHeroes(GetPlayerConstruction(FormMain.Config.FindTypeGuild("GuildHunter")), 4);
+            HireHeroes(GetPlayerConstruction(FormMain.Config.FindTypeGuild("GuildCleric")), 4);
+            HireHeroes(GetPlayerConstruction(FormMain.Config.FindTypeGuild("GuildMage")), 4);
 
             System.Windows.Forms.Application.DoEvents();
             System.Threading.Thread.Sleep(200);
             System.Windows.Forms.Application.DoEvents();
 
-            void HireAllHero(PlayerConstruction bp)
+            void HireHeroes(PlayerConstruction bp, int quantity)
             {
                 if (bp.Heroes.Count < bp.MaxHeroes())
                 {
                     //int needHire = 49;
-                    int needHire = Lobby.Rnd.Next(2) + 1;
+                    int needHire = Lobby.Rnd.Next(quantity);
 
                     for (int x = 0; x < needHire; x++)
                     //                for (; bp.Heroes.Count() < bp.MaxHeroes();)
