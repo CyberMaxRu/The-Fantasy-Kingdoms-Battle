@@ -176,7 +176,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Players[0].IsLive);
             Debug.Assert(CheckUniqueNamePlayers());
 
-            while (Day < TypeLobby.DayStartTournament || !stopLobby)
+            while (!stopLobby)
             {
                 for (int i = 0; i < Players.Count(); i++)
                 {
@@ -430,11 +430,6 @@ namespace Fantasy_Kingdoms_Battle
 
                 curPos++;
             }
-        }
-
-        internal int DaysForTournament()
-        {
-            return TypeLobby.DayStartTournament - Day;
         }
 
         internal bool CheckUniqueAvatars()

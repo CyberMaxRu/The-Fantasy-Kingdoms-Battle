@@ -853,7 +853,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void PageTournament_ShowHint(object sender, EventArgs e)
         {
-            ShowHintForToolButton(pageTournament, "Турнир", "Турнир начнется через " + lobby.DaysForTournament().ToString() + " дн.");
+            ShowHintForToolButton(pageTournament, "Турнир", "");
         }
 
         private void LabelGold_ShowHint(object sender, EventArgs e)

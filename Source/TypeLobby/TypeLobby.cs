@@ -20,6 +20,8 @@ namespace Fantasy_Kingdoms_Battle
             StartQuantityFlags = XmlUtils.GetInteger(n.SelectSingleNode("StartQuantityFlags"));
             MaxQuantityFlags = XmlUtils.GetInteger(n.SelectSingleNode("MaxQuantityFlags"));
             MaxHeroesForScoutFlag = XmlUtils.GetInteger(n.SelectSingleNode("MaxHeroesForScoutFlag"));
+            DayStartBattleBetweenPlayers = XmlUtils.GetInteger(n.SelectSingleNode("DayStartBattleBetweenPlayers"));
+            DaysBeforeNextBattleBetweenPlayers = XmlUtils.GetInteger(n.SelectSingleNode("DaysBeforeNextBattleBetweenPlayers"));
             StartBuilders = XmlUtils.GetInteger(n.SelectSingleNode("StartBuilders"));
             StartPointConstructionTemple = XmlUtils.GetInteger(n.SelectSingleNode("StartPointConstructionTemple"));
             StartPointConstructionTradePost = XmlUtils.GetInteger(n.SelectSingleNode("StartPointConstructionTradePost"));
@@ -27,7 +29,6 @@ namespace Fantasy_Kingdoms_Battle
             VariantStartBonus = XmlUtils.GetInteger(n.SelectSingleNode("VariantStartBonus"));
             StartScoutedLairs = XmlUtils.GetInteger(n.SelectSingleNode("StartScoutedLairs"));
             MaxLoses = XmlUtils.GetInteger(n.SelectSingleNode("MaxLoses"));
-            DayStartTournament = XmlUtils.GetInteger(n.SelectSingleNode("DayStartTournament"));
             LairsLayers = XmlUtils.GetInteger(n.SelectSingleNode("LairsLayers"));
             LairsWidth = XmlUtils.GetInteger(n.SelectSingleNode("LairsWidth"));
             LairsHeight = XmlUtils.GetInteger(n.SelectSingleNode("LairsHeight"));
@@ -48,6 +49,10 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(StartQuantityFlags <= MaxQuantityFlags);
             Debug.Assert(MaxHeroesForScoutFlag >= 1);
             Debug.Assert(MaxHeroesForScoutFlag <= 25);
+            Debug.Assert(DayStartBattleBetweenPlayers >= 1);
+            Debug.Assert(DayStartBattleBetweenPlayers <= 25);
+            Debug.Assert(DaysBeforeNextBattleBetweenPlayers >= 1);
+            Debug.Assert(DaysBeforeNextBattleBetweenPlayers <= 10);
             Debug.Assert(StartBuilders >= 0);
             Debug.Assert(StartBuilders <= 10);
             Debug.Assert(StartPointConstructionTemple >= 0);
@@ -69,8 +74,6 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(LairsWidth <= 5);
             Debug.Assert(LairsHeight >= 1);
             Debug.Assert(LairsHeight <= 4);
-            Debug.Assert(DayStartTournament >= 2);
-            Debug.Assert(DayStartTournament <= 50);
 
             foreach (TypeLobby t in FormMain.Config.TypeLobbies)
             {
@@ -152,7 +155,8 @@ namespace Fantasy_Kingdoms_Battle
         internal int StartQuantityFlags { get; }
         internal int MaxQuantityFlags { get; }
         internal int MaxHeroesForScoutFlag { get; }
-        internal int DayStartTournament { get; }
+        internal int DayStartBattleBetweenPlayers { get; }
+        internal int DaysBeforeNextBattleBetweenPlayers { get; }
         internal int StartBuilders { get; }
         internal int StartPointConstructionTemple { get; }
         internal int StartPointConstructionTradePost { get; }
