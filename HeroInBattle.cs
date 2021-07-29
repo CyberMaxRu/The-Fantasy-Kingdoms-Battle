@@ -11,7 +11,7 @@ namespace Fantasy_Kingdoms_Battle
     internal enum StateHeroInBattle { MeleeAttack, RangeAttack, Cast, Drink, Healing, Rest, Resurrection, Tumbstone, Dead, 
         PrepareMove, Move, None }// Состояние героя в бою
 
-    internal sealed class HeroInBattle
+    internal sealed class HeroInBattle : ICell
     {
         private int countAction;// Счетчик действия
         private int timeAction;// Какое количество времени выполнения действие
@@ -644,6 +644,46 @@ namespace Fantasy_Kingdoms_Battle
 
             needRedraw = false;
             g.Dispose();
+        }
+
+        BitmapList ICell.BitmapList()
+        {
+            return Program.formMain.imListObjectsCell;
+        }
+
+        int ICell.ImageIndex()
+        {
+            return PlayerHero.TypeCreature.ImageIndex;
+        }
+
+        bool ICell.NormalImage()
+        {
+            return IsLive;
+        }
+
+        int ICell.Level()
+        {
+            return 0;
+        }
+
+        int ICell.Quantity()
+        {
+            return 0;
+        }
+
+        void ICell.PrepareHint()
+        {
+            
+        }
+
+        void ICell.Click(VCCell pe)
+        {
+            
+        }
+
+        void ICell.CustomDraw(Graphics g, int x, int y, bool drawState)
+        {
+            
         }
     }
 }
