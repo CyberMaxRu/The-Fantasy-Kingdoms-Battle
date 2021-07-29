@@ -78,7 +78,7 @@ namespace Fantasy_Kingdoms_Battle
             MinQuantity = XmlUtils.GetInteger(n.SelectSingleNode("MinQuantity"));
             MaxQuantity = XmlUtils.GetInteger(n.SelectSingleNode("MaxQuantity"));
 
-            Debug.Assert(MinQuantity > 0);
+            Debug.Assert(MinQuantity >= 0);
             Debug.Assert(MaxQuantity < 20);
             Debug.Assert(MinQuantity <= MaxQuantity);
         }
