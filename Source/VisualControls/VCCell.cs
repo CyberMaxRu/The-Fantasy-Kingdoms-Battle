@@ -73,7 +73,7 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override bool Selected()
         {
-            return (PlayerObject != null) && (cell != null) && Program.formMain.PlayerObjectIsSelected(PlayerObject);
+            return ManualSelected || ((PlayerObject != null) && (cell != null) && Program.formMain.PlayerObjectIsSelected(PlayerObject));
         }
 
         protected override bool PlaySelectSound()
