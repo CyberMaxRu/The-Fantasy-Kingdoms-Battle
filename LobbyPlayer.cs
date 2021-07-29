@@ -828,7 +828,8 @@ namespace Fantasy_Kingdoms_Battle
             // Для этого сначала создаем логова по минимальному списку,
             // а оставшиеся ячейки - из оставшихся по максимуму
             //List<TypeLair>
-            int idx;
+            int idxCell;
+            int idxTypeLair;
             for (int layer = 0; layer < Lobby.TypeLobby.LairsLayers; layer++)
             {
                 List<TypeLair> lairs = new List<TypeLair>();
@@ -839,14 +840,16 @@ namespace Fantasy_Kingdoms_Battle
                 while (cells.Count > 0)
                 {
                     // Берем случайную ячейку
-                    idx = Lobby.Rnd.Next(cells.Count);
+                    idxCell = Lobby.Rnd.Next(cells.Count);
+                    // Берем случайное логово
+                    idxTypeLair = Lobby.Rnd.Next(lairs.Count);
 
                     // Помещаем в нее логово
-                    Debug.Assert(Lairs[layer, cells[idx].Y, cells[idx].X] == null);
-                    Lairs[layer, cells[idx].Y, cells[idx].X] = new PlayerLair(this, lairs[idx], cells[idx].X, cells[idx].Y, layer);
+                    Debug.Assert(Lairs[layer, cells[idxCell].Y, cells[idxCell].X] == null);
+                    Lairs[layer, cells[idxCell].Y, cells[idxCell].X] = new PlayerLair(this, lairs[idxTypeLair], cells[idxCell].X, cells[idxCell].Y, layer);
                     
-                    cells.RemoveAt(idx);// Убираем ячейку из списка доступных
-                    lairs.RemoveAt(idx);// Убираем тип логова из списка доступных
+                    cells.RemoveAt(idxCell);// Убираем ячейку из списка доступных
+                    lairs.RemoveAt(idxTypeLair);// Убираем тип логова из списка доступных
                 }
             }
 
