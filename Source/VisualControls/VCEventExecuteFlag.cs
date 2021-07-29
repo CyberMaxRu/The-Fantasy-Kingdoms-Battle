@@ -44,8 +44,10 @@ namespace Fantasy_Kingdoms_Battle
             bmpWin.ShowBorder = true;
 
             btnViewResult = new VCButton(this, bmpWin.NextLeft(), 16, "Итоги");
+            btnViewResult.Enabled = !(b is null);
             btnViewResult.Click += BtnViewResult_Click;
             btnWShowBattle = new VCButton(this, btnViewResult.NextLeft(), 16, "Просмотр");
+            btnWShowBattle.Enabled = !(b is null);
             btnWShowBattle.Click += BtnWShowBattle_Click;
 
             ApplyMaxSize();
@@ -60,6 +62,9 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnViewResult_Click(object sender, EventArgs e)
         {
+            WindowResultBattle w = new WindowResultBattle(Battle);
+            w.ShowDialog();
+            w.Dispose();
         }
 
         private void BmpTarget_Click(object sender, EventArgs e)
