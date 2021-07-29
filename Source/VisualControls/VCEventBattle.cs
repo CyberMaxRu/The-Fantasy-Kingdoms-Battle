@@ -20,6 +20,7 @@ namespace Fantasy_Kingdoms_Battle
             //
             VCCell cellPlayer1 = new VCCell(this, FormMain.Config.GridSize, FormMain.Config.GridSize);
             cellPlayer1.ShowCell(b.Player1 as LobbyPlayer);
+            cellPlayer1.ManualSelected = b.Winner == b.Player1;
 
             VCLabel textVersus = new VCLabel(this, cellPlayer1.NextLeft(), cellPlayer1.ShiftY, Program.formMain.fontBigCaptionC, Color.White, cellPlayer1.Height, "vs");
             textVersus.StringFormat.Alignment = StringAlignment.Center;
@@ -28,6 +29,7 @@ namespace Fantasy_Kingdoms_Battle
 
             VCCell cellPlayer2 = new VCCell(this, textVersus.NextLeft(), cellPlayer1.ShiftY);
             cellPlayer2.ShowCell(b.Player2 as LobbyPlayer);
+            cellPlayer2.ManualSelected = b.Winner == b.Player2;
 
             btnViewResult = new VCButton(this, cellPlayer2.NextLeft(), 16, "Итоги");
             btnViewResult.Enabled = !(b is null);
