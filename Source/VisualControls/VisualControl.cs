@@ -50,12 +50,15 @@ namespace Fantasy_Kingdoms_Battle
         internal bool ManualDraw { get; set; }// Ручное рисование контрола
         internal bool ShowBorder { get; set; }// Надо ли показывать бордюр
         internal PlayerObject PlayerObject { get; set; }// Объект, ассоциированный с контролом
-        internal bool MouseEntered { get; private set; }// Курсор мыши находится над контролом
-        internal bool LeftButtonPressed { get; private set; }// ЛКМ нажата
+
         internal bool IsError { get; set; }
         internal bool ShowHintParent { get; set; }// Показывать подсказку родителя
         internal bool ClickOnParent { get; set; }// Вызывать клик у родителя
         internal bool ManualSelected { get; set; } = false;
+
+        // Защищенные свойства
+        internal bool MouseEntered { get; private set; }// Курсор мыши находится над контролом
+        protected bool LeftButtonPressed { get; private set; }// ЛКМ нажата
 
         // Список контролов, расположенных на нём
         internal List<VisualControl> Controls = new List<VisualControl>();
@@ -171,6 +174,7 @@ namespace Fantasy_Kingdoms_Battle
         internal virtual void MouseEnter(bool leftButtonDown)
         {
             Debug.Assert(!MouseEntered);
+            Debug.Assert(Visible);
 
             MouseEntered = true;
             LeftButtonPressed = leftButtonDown;
