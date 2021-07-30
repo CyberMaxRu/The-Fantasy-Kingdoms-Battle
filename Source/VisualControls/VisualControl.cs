@@ -281,11 +281,8 @@ namespace Fantasy_Kingdoms_Battle
                     if (vc.Visible)
                     {
                         VisualControl ivc = vc.GetControl(x, y);
-                        if (ivc != null)
+                        if (!(ivc is null))
                             return ivc;
-
-                        if (vc.Rectangle.Contains(x, y))
-                            return vc;
                     }
                 }
 
