@@ -596,7 +596,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 // Отладочная информация
                 vcDebugInfo = new VisualControl();
-                labelTimeDrawFrame = new VCLabel(vcDebugInfo, Config.GridSize, Config.GridSize, fontParagraph, Color.White, 16, "");
+                labelTimeDrawFrame = new VCLabel(vcDebugInfo, Config.GridSize * 8, Config.GridSize, fontParagraph, Color.White, 16, "");
                 labelTimeDrawFrame.StringFormat.Alignment = StringAlignment.Near;
                 labelTimeDrawFrame.Width = 300;
                 labelLayers = new VCLabel(vcDebugInfo, labelTimeDrawFrame.ShiftX, labelTimeDrawFrame.NextTop(), fontParagraph, Color.White, 16, "Layers");
@@ -1593,7 +1593,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 durationDrawFrame = DateTime.Now - startDebugAction;
                 labelTimeDrawFrame.Text = $"Draw frame: {durationDrawFrame.TotalMilliseconds}";
-                vcDebugInfo.Draw(gfxRenderFrame);
+                vcDebugInfo.Paint(gfxRenderFrame);
             }
 
             gfxRenderClientArea.CompositingMode = CompositingMode.SourceCopy;
