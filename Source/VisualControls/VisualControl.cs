@@ -274,20 +274,25 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(Visible);
 
-            foreach (VisualControl vc in Controls)
+            if (Rectangle.Contains(x, y))
             {
-                if (vc.Visible)
+                foreach (VisualControl vc in Controls)
                 {
-                    VisualControl ivc = vc.GetControl(x, y);
-                    if (ivc != null)
-                        return ivc;
+                    if (vc.Visible)
+                    {
+                        VisualControl ivc = vc.GetControl(x, y);
+                        if (ivc != null)
+                            return ivc;
 
-                    if (vc.Rectangle.Contains(x, y))
-                        return vc;
+                        if (vc.Rectangle.Contains(x, y))
+                            return vc;
+                    }
                 }
-            }
 
-            return Rectangle.Contains(x, y) ? this : null;
+                return this;
+            }
+            else
+                return null;
         }
 
         internal void ArrangeControl(VisualControl vc, bool checkInList = true)
