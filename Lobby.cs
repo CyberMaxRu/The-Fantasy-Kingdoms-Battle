@@ -237,6 +237,14 @@ namespace Fantasy_Kingdoms_Battle
                         Players[i].PrepareTurn();
                         Program.formMain.ShowCurrentPlayerLobby();
 
+                        if (HumanIsWin)
+                        {
+                            Debug.Assert(Players[i].GetTypePlayer() == TypePlayer.Human);
+
+                            Players[i].PlayerIsWin();
+                            return;
+                        }
+
                         if (Day == 1)
                         {
                             if (Players[i].VariantsStartBonuses.Count > 0)

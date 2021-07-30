@@ -963,6 +963,8 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        internal abstract void PlayerIsWin();
+
         // Интерфейс
         internal virtual void SelectStartBonus()
         {

@@ -82,5 +82,10 @@ namespace Fantasy_Kingdoms_Battle
         {
             ListEvents.Add(e);
         }
+
+        internal override void PlayerIsWin()
+        {
+            WindowInfo.ShowInfo("ПОБЕДА!", $"Поздравлям, вы победитель!");
+        }
     }
 }
