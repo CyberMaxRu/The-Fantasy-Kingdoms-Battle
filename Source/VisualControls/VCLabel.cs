@@ -41,7 +41,6 @@ namespace Fantasy_Kingdoms_Battle
         internal BitmapList BitmapList { get; set; }
         internal int ImageIndex { get; set; } = -1;
         internal bool ImageIsEnabled { get; set; } = true;
-        internal bool ImageIsOver { get; set; } = false;
         internal int LeftMargin { get; set; }
         internal int RightMargin { get; set; }
         internal int TopMargin { get; set; }
@@ -61,7 +60,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 if ((BitmapList != null) && (ImageIndex >= 0))
                 {
-                    BitmapList.DrawImage(g, ImageIndex, ImageIsEnabled, ImageIsOver, Left + ShiftImage.X, Top + ShiftImage.Y);
+                    BitmapList.DrawImage(g, ImageIndex, ImageIsEnabled, false, Left + ShiftImage.X, Top + ShiftImage.Y);
                 }
 
                 if (Text.Length > 0)
