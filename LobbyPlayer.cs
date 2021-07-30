@@ -640,7 +640,8 @@ namespace Fantasy_Kingdoms_Battle
                 "Уровень Замка: " + LevelCastle.ToString() + Environment.NewLine
                     + "Героев: " + QuantityHeroes.ToString() + Environment.NewLine
                     + Environment.NewLine
-                    + "Поражений: " + CurrentLoses.ToString());
+                    + "Поражений: " + CurrentLoses.ToString()
+                    + (DayOfEndGame > 0 ? Environment.NewLine + "Поражение в лобби: " + DayOfEndGame.ToString() + " день" : ""));
         }
 
         // Метод по распределению задач героев
