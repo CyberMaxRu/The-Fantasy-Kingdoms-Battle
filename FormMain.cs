@@ -1708,8 +1708,6 @@ namespace Fantasy_Kingdoms_Battle
 
         private VisualControl ControlUnderMouse()
         {
-            Debug.Assert(currentLayer.Visible);
-
             return currentLayer.GetControl(mousePos.X, mousePos.Y);
         }
 
