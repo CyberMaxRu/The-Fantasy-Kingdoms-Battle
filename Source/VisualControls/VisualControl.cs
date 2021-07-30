@@ -276,11 +276,13 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Rectangle.Contains(x, y))
             {
+                VisualControl ivc;
+
                 foreach (VisualControl vc in Controls)
                 {
                     if (vc.Visible)
                     {
-                        VisualControl ivc = vc.GetControl(x, y);
+                        ivc = vc.GetControl(x, y);
                         if (!(ivc is null))
                             return ivc;
                     }
@@ -288,8 +290,8 @@ namespace Fantasy_Kingdoms_Battle
 
                 return this;
             }
-            else
-                return null;
+            
+            return null;
         }
 
         internal void ArrangeControl(VisualControl vc, bool checkInList = true)
