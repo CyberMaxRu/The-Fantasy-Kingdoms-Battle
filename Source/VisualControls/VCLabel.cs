@@ -9,7 +9,6 @@ namespace Fantasy_Kingdoms_Battle
 
     internal class VCLabel : VisualControl
     {
-        private RectangleF rectText;
         private Bitmap bmpPreparedText;
         private string preparedText;
         private Color preparedColor;
@@ -156,8 +155,6 @@ namespace Fantasy_Kingdoms_Battle
 
             if ((BitmapList != null) && (ImageIndex >= 0))
                 LeftMargin = BitmapList.Size + FormMain.Config.GridSize;
-
-            rectText = new RectangleF(Left + LeftMargin, Top + TopMargin, Width, Height + 2);
         }
     }
 }
