@@ -1452,8 +1452,11 @@ namespace Fantasy_Kingdoms_Battle
                 if (pb.TypeConstruction.Researches != null)
                     foreach (PlayerResearch pr in pb.Researches)
                     {
-                        if (CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research == null)
+                        if (!CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Used)
+                        {
                             CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research = pr;
+                            CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Used = true;
+                        }
                         else if (CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research.Research.Layer > pr.Research.Layer)
                             CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research = pr;
                     }
@@ -1464,11 +1467,17 @@ namespace Fantasy_Kingdoms_Battle
                 ClearMenu();
             }
 
+            for (int y = 0; y < PANEL_MENU_CELLS.Height; y++)
+                for (int x = 0; x < PANEL_MENU_CELLS.Width; x++)
+                    if (!CellsMenu[y, x].Used)
+                        CellsMenu[y, x].Research = null;
+
+
             void ClearMenu()
             {
                 for (int y = 0; y < PANEL_MENU_CELLS.Height; y++)
                     for (int x = 0; x < PANEL_MENU_CELLS.Width; x++)
-                        CellsMenu[y, x].Research = null;
+                        CellsMenu[y, x].Used = false;
             }
         }
 

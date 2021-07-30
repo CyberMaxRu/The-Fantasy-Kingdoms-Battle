@@ -15,6 +15,8 @@ namespace Fantasy_Kingdoms_Battle
             UseFilter = true;
         }
 
+        internal bool Used { get; set; }
+
         internal override void DoClick()
         {
             base.DoClick();
