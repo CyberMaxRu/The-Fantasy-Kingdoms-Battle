@@ -2354,5 +2354,13 @@ namespace Fantasy_Kingdoms_Battle
             StartNewLobby();
             ReturnFromLobby();
         }
+
+        internal void ControlHided(VisualControl vc)
+        {
+            if (vc == controlWithHint)
+            {
+                ControlForHintLeave();
+            }
+        }
     }
 }

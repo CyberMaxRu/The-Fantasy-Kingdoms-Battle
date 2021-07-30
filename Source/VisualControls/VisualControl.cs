@@ -15,6 +15,7 @@ namespace Fantasy_Kingdoms_Battle
         private int top;// Координата Top на главном окне (абсолютная)
         private int width;// Ширина контрола
         private int height;// Высота контрола
+        private bool _visible;
 
         private Bitmap bmpBorder;
         private Bitmap bmpBorderSelect;
@@ -24,10 +25,13 @@ namespace Fantasy_Kingdoms_Battle
 
         public VisualControl()
         {
+            _visible = true;
         }
 
         public VisualControl(VisualControl parent, int shiftX, int shiftY)
         {
+            _visible = true;
+
             ShiftX = shiftX;
             ShiftY = shiftY;
 
@@ -46,7 +50,13 @@ namespace Fantasy_Kingdoms_Battle
         internal int ShiftX { get; set; }// Смещение контрола относительно левого края на родителе
         internal int ShiftY { get; set; }// Смещение контрола относительно верхнего края на родителе
         internal Rectangle Rectangle { get; private set; }// Координаты и размер контрола
-        internal bool Visible { get; set; } = true;// Видимость контрола
+        // Когда контрол скрывается во время различных изменений, в том числе во время рендеринга, 
+        // надо убрать его как активного
+        internal bool Visible
+        {
+            get => _visible;
+            set { _visible = value; if (!_visible) Program.formMain.ControlHided(this); }
+        }// Видимость контрола
         internal bool ManualDraw { get; set; }// Ручное рисование контрола
         internal bool ShowBorder { get; set; }// Надо ли показывать бордюр
         internal PlayerObject PlayerObject { get; set; }// Объект, ассоциированный с контролом
