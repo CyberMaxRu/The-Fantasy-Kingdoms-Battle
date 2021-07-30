@@ -1406,9 +1406,17 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(lobby != null);
             lobby.ExitFromLobby();
+
+            ReturnFromLobby();
+        }
+
+        internal void ReturnFromLobby()
+        {
+            Debug.Assert(lobby != null);
             lobby = null;
 
             ExchangeLayer(layerGame, layerMainMenu);
+            ShowFrame(true);
         }
 
         internal void SetNeedRedrawFrame()
@@ -2335,6 +2343,7 @@ namespace Fantasy_Kingdoms_Battle
         private void BtnTournament_Click(object sender, EventArgs e)
         {
             StartNewLobby();
+            ReturnFromLobby();
         }
     }
 }

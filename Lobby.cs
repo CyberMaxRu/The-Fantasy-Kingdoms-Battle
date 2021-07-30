@@ -208,7 +208,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (index != -1)
             {
-                Debug.Assert(Players[index].IsLive);
+                Debug.Assert(Players[index].IsLive || (Players[index].DayOfEndGame == Day - 1));
 
                 CurrentPlayer = Players[index];
             }
@@ -225,13 +225,13 @@ namespace Fantasy_Kingdoms_Battle
 
             while (!stopLobby)
             {
+                Debug.Assert(ExistsHumanPlayer());
+
                 // Общая подготовка хода
                 DoPrepareTurn();
 
                 for (int i = 0; i < Players.Count(); i++)
                 {
-                    Debug.Assert(ExistsHumanPlayer());
-
                     if (Players[i].IsLive || (Players[i].DayOfEndGame == Day - 1))
                     {
                         SetPlayerAsCurrent(i);
@@ -246,6 +246,11 @@ namespace Fantasy_Kingdoms_Battle
 
                         Players[i].DoTurn();
 
+                        // Если этот игрок вылетел и больше нет игроков-людей, выходим из лобби
+                        if (!Players[i].IsLive)
+                            if (!ExistsOtherHumanPlayer(i + 1))
+                                return;
+
                         if (stopLobby)
                             return;
                     }
@@ -258,6 +263,15 @@ namespace Fantasy_Kingdoms_Battle
             {
                 foreach (LobbyPlayer lp in Players)
                     if ((lp.IsLive || (lp.DayOfEndGame == Day - 1)) && (lp.GetTypePlayer() == TypePlayer.Human))
+                        return true;
+
+                return false;
+            }
+
+            bool ExistsOtherHumanPlayer(int fromIndex)
+            {
+                for (int i = fromIndex; i < Players.Length; i++)
+                    if ((Players[i].IsLive || (Players[i].DayOfEndGame == Day - 1)) && (Players[i].GetTypePlayer() == TypePlayer.Human))
                         return true;
 
                 return false;
@@ -315,11 +329,11 @@ namespace Fantasy_Kingdoms_Battle
 
             SortPlayers();
 
-            if (!Players[0].IsLive)
+            /*if (!Players[0].IsLive)
             {
                 CurrentPlayer = null;
                 return;
-            }
+            }*/
 
             // Делаем начало хода
             Day++;

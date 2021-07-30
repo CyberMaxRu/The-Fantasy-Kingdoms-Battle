@@ -46,11 +46,19 @@ namespace Fantasy_Kingdoms_Battle
         internal override void DoTurn()
         {
             Debug.Assert(Player.TypePlayer == TypePlayer.Human);
-            Debug.Assert(IsLive);
+            Debug.Assert(IsLive || (DayOfEndGame == Lobby.Day - 1));
 
             ListEvents.Clear();
 
             Lobby.StateLobby = StateLobby.TurnHuman;
+
+            // Если игрок вылете из лобби на предыдущем ходу, сообщаем его итоговое место и выходим
+            if (DayOfEndGame > 0)
+            {
+                WindowInfo.ShowInfo("ПОРАЖЕНИЕ", $"Вы заняли {PositionInLobby} место.");
+                return;
+            }
+
             frame.Continue = true;
             //Dispatcher.CurrentDispatcher.BeginInvoke(DispatcherPriority.Background, new DispatcherOperationCallback(ExitFrame), frame);
             Dispatcher.PushFrame(frame);
@@ -65,6 +73,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void EndTurn()
         {
+            Debug.Assert(frame.Continue);
+
             frame.Continue = false;
         }
 
