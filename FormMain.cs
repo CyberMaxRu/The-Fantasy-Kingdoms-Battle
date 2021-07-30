@@ -1084,9 +1084,10 @@ namespace Fantasy_Kingdoms_Battle
                 ProgramState = ProgramState.ConfirmQuit;
                 WindowConfirmExit f = new WindowConfirmExit();
                 ProgramState = f.ShowDialog() == DialogAction.OK ? ProgramState.NeedQuit : ProgramState.Started;
-                if (!(lobby is null))
-                    EndLobby();
                 e.Cancel = ProgramState == ProgramState.Started;
+                if (!e.Cancel)
+                    if (!(lobby is null))
+                        EndLobby();
 
                 ShowFrame(true);
             }
