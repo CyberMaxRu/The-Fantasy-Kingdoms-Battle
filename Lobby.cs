@@ -135,11 +135,52 @@ namespace Fantasy_Kingdoms_Battle
         private void MakeOpponents()
         {
             foreach (LobbyPlayer pl in Players)
+            {
                 pl.Opponent = null;
+                pl.SkipBattle = false;
+            }
 
             // Алгоритм простой - случайным образом подбираем пару
             List<LobbyPlayer> opponents = new List<LobbyPlayer>();
             opponents.AddRange(Players.Where(pp => pp.IsLive));
+
+            // Если оппонентов получается нечетное количество, убираем одно из них по алгоритму
+            if (opponents.Count % 2 != 0)
+            {
+                List<LobbyPlayer> candidate = new List<LobbyPlayer>();
+
+                // Сначала оставляем тех игроков, у кого наименьшее число пропусков битв
+                int minSkip = opponents.Min(o => o.SkippedBattles);
+                candidate.AddRange(opponents.Where(o => o.SkippedBattles == minSkip));
+                if (candidate.Count == 1)
+                {
+                    candidate[0].SkippedBattles++;
+                    candidate[0].SkipBattle = true;
+                    opponents.Remove(candidate[0]);
+                }
+                else
+                {
+                    // Затем оставляем тех игроков, у кого наибольшее число поражений
+                    int maxLoses = opponents.Max(o => o.CurrentLoses);
+                    List<LobbyPlayer> candidate2 = new List<LobbyPlayer>();
+                    candidate2.AddRange(candidate.Where(o => o.CurrentLoses == maxLoses));
+                    if (candidate2.Count == 1)
+                    {
+                        candidate2[0].SkippedBattles++;
+                        candidate2[0].SkipBattle = true;
+                        opponents.Remove(candidate2[0]);
+                    }
+                    else
+                    {
+                        // Выбираем случайного игрока
+                        int randomPlayer = Rnd.Next(candidate2.Count);
+                        candidate2[randomPlayer].SkippedBattles++;
+                        candidate2[0].SkipBattle = true;
+                        opponents.Remove(candidate2[randomPlayer]);
+                    }
+                }
+            }
+
             Debug.Assert(opponents.Count % 2 == 0);
             Random r = new Random();
             LobbyPlayer p;
@@ -189,7 +230,9 @@ namespace Fantasy_Kingdoms_Battle
 
                 for (int i = 0; i < Players.Count(); i++)
                 {
-                    if (Players[i].IsLive)
+                    Debug.Assert(ExistsHumanPlayer());
+
+                    if (Players[i].IsLive || (Players[i].DayOfEndGame == Day - 1))
                     {
                         SetPlayerAsCurrent(i);
                         Players[i].PrepareTurn();
@@ -209,6 +252,15 @@ namespace Fantasy_Kingdoms_Battle
                 }
 
                 DoEndTurn();
+            }
+
+            bool ExistsHumanPlayer()
+            {
+                foreach (LobbyPlayer lp in Players)
+                    if ((lp.IsLive || (lp.DayOfEndGame == Day - 1)) && (lp.GetTypePlayer() == TypePlayer.Human))
+                        return true;
+
+                return false;
             }
         }
 

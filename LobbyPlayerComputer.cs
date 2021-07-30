@@ -25,7 +25,11 @@ namespace Fantasy_Kingdoms_Battle
         internal override void DoTurn()
         {
             Debug.Assert(Player.TypePlayer == TypePlayer.Computer);
-            Debug.Assert(IsLive == true);
+            Debug.Assert(IsLive || (DayOfEndGame == Lobby.Day - 1));
+
+            // На прошлом ходу игрок потерпел последнее поражение. Выходим
+            if (DayOfEndGame > 0)
+                return;
 
             Lobby.StateLobby = StateLobby.TurnComputer;
 

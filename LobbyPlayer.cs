@@ -311,6 +311,8 @@ namespace Fantasy_Kingdoms_Battle
         internal int CurrentLoses { get; private set; }// Текущее количество поражений
         internal int MaxLoses { get; private set; }// Максимальное количество поражений
         internal int DayOfEndGame { get; private set; }// День вылета из лобби
+        internal int SkippedBattles { get; set; }// Сколько битв было пропущено (про причине нечетного количества игроков)
+        internal bool SkipBattle { get; set; }// Битва на этому ходу будет пропущена
 
         internal int Builders { get; private set; }
         internal int FreeBuilders { get; private set; }
@@ -665,7 +667,7 @@ namespace Fantasy_Kingdoms_Battle
             // Это если речь идет о флаге атаки. На разведку идет ровно один герой
             // Но первым делом отбираем героев на битву с другим игроком
 
-            if (Lobby.IsDayForBattleBetweenPlayers())
+            if (Lobby.IsDayForBattleBetweenPlayers() && !SkipBattle)
             {
                 int takeHeroes = Math.Min(Lobby.TypeLobby.MaxHeroesForBattle, freeHeroes.Count);                    
                 for (int i = 0; i < takeHeroes; i++)
