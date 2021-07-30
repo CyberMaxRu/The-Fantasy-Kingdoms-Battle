@@ -999,38 +999,7 @@ namespace Fantasy_Kingdoms_Battle
             formHint.HideHint();
             timerHover.Stop();
 
-            lobby.CurrentPlayer.EndTurn();
-
-            return;
-
-            lobby.DoEndTurn();
-
-            if (lobby.CurrentPlayer == null)
-            {
-                // Лобби для текущего игрока закончено
-                if (lobby.HumanIsWin)
-                {
-                    MessageBox.Show("Поздравляем, вы победитель!", "ПОБЕДА!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    StartNewLobby();
-                    return;
-                }
-                else// Если вылетели из лобби, то показываем итоговое место и начинаем новое лобби
-                {
-                    // Здесь заложено, что реальный игрок под номером 0. Это может быть не так
-                    MessageBox.Show("Поражение..." + Environment.NewLine + "Вы заняли " + lobby.Players[0].PositionInLobby.ToString() + " место.", "ПОРАЖЕНИЕ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    StartNewLobby();
-                    return;
-                }
-
-            }
-
-            Debug.Assert(lobby.CurrentPlayer.IsLive);
-            if (lobby.CurrentPlayer.IsLive)
-            {
-                ShowDataPlayer();
-            }
+            curAppliedPlayer.EndTurn();
         }
 
         private void BtnEndTurn_MouseHover(object sender, EventArgs e)
