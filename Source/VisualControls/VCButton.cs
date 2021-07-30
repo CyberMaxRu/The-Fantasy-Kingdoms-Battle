@@ -16,7 +16,6 @@ namespace Fantasy_Kingdoms_Battle
         private Bitmap bmpHot;
         private Bitmap bmpDisabled;
         private Bitmap bmpPressed;
-        private bool mouseClicked;
         private bool enabled = true;
 
         public VCButton(VisualControl parent, int shiftX, int shiftY, string caption) : base(parent, shiftX, shiftY)
@@ -57,7 +56,7 @@ namespace Fantasy_Kingdoms_Battle
             //Debug.Assert(bmpDisabled != null);
             //Debug.Assert(bmpPressed != null);
 
-            bmpForDraw = !Enabled ? bmpDisabled : MouseOver && mouseClicked ? bmpPressed : MouseOver ? bmpHot : bmpNormal;
+            bmpForDraw = !Enabled ? bmpDisabled : MouseOver && LeftButtonPressed ? bmpPressed : MouseOver ? bmpHot : bmpNormal;
 
             base.Draw(g);
 
@@ -72,9 +71,6 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Enabled)
             {
-                if (!leftButtonDown)
-                    mouseClicked = false;
-
                 Program.formMain.SetNeedRedrawFrame();
                 Program.formMain.PlaySelectButton();
             }
@@ -93,7 +89,6 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Enabled)
             {
-                mouseClicked = true;
                 Program.formMain.SetNeedRedrawFrame();
                 Program.formMain.PlayPushButton();
             }
@@ -103,9 +98,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.MouseUp();
 
-            if (mouseClicked)
+            if (LeftButtonPressed)
             {
-                mouseClicked = false;
                 Program.formMain.SetNeedRedrawFrame();
             }
         }
