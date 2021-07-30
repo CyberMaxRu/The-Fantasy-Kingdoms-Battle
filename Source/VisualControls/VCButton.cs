@@ -56,7 +56,7 @@ namespace Fantasy_Kingdoms_Battle
             //Debug.Assert(bmpDisabled != null);
             //Debug.Assert(bmpPressed != null);
 
-            bmpForDraw = !Enabled ? bmpDisabled : MouseOver && LeftButtonPressed ? bmpPressed : MouseOver ? bmpHot : bmpNormal;
+            bmpForDraw = !Enabled ? bmpDisabled : MouseOver && MouseClicked ? bmpPressed : MouseOver ? bmpHot : bmpNormal;
 
             base.Draw(g);
 
@@ -98,7 +98,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.MouseUp();
 
-            if (LeftButtonPressed)
+            if (MouseClicked)
             {
                 Program.formMain.SetNeedRedrawFrame();
             }

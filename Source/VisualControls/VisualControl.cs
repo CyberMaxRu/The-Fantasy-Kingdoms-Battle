@@ -58,7 +58,7 @@ namespace Fantasy_Kingdoms_Battle
 
         // Защищенные свойства
         internal bool MouseOver { get; private set; }// Курсор мыши находится над контролом
-        protected bool LeftButtonPressed { get; private set; }// ЛКМ нажата
+        protected bool MouseClicked { get; private set; }// ЛКМ нажата
 
         // Список контролов, расположенных на нём
         internal List<VisualControl> Controls = new List<VisualControl>();
@@ -177,7 +177,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Visible);
 
             MouseOver = true;
-            LeftButtonPressed = leftButtonDown;
+            MouseClicked = leftButtonDown;
         }
 
         internal virtual void MouseLeave()
@@ -185,21 +185,21 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(MouseOver);
 
             MouseOver = false;
-            LeftButtonPressed = false;
+            MouseClicked = false;
         }
 
         internal virtual void MouseDown()
         {
             Debug.Assert(Visible);
 
-            LeftButtonPressed = true;
+            MouseClicked = true;
         }
 
         internal virtual void MouseUp()
         {
             Debug.Assert(Visible);
 
-            LeftButtonPressed = false;
+            MouseClicked = false;
         }
 
         internal virtual void KeyPress(KeyPressEventArgs e)

@@ -33,7 +33,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (MouseOver)
             {
-                if (LeftButtonPressed)
+                if (MouseClicked)
                     ImageIndex = Checked ? IMAGE_INDEX_CHECKED : IMAGE_INDEX_UNCHECKED;
                 else
                     ImageIndex = IMAGE_INDEX_HOT;
