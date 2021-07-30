@@ -639,7 +639,7 @@ namespace Fantasy_Kingdoms_Battle
                 Player.Name, $"{PositionInLobby} место",
                 "Уровень Замка: " + LevelCastle.ToString() + Environment.NewLine
                     + "Героев: " + QuantityHeroes.ToString() + Environment.NewLine
-                    + Environment.NewLine
+                    + " " + Environment.NewLine
                     + "Поражений: " + CurrentLoses.ToString()
                     + (DayOfEndGame > 0 ? Environment.NewLine + "Поражение в лобби: " + DayOfEndGame.ToString() + " день" : ""));
         }
