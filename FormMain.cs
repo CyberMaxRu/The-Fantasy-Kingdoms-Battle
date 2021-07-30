@@ -2352,7 +2352,8 @@ namespace Fantasy_Kingdoms_Battle
         private void BtnTournament_Click(object sender, EventArgs e)
         {
             StartNewLobby();
-            ReturnFromLobby();
+            if (!(lobby is null))
+                ReturnFromLobby();
         }
 
         internal void ControlHided(VisualControl vc)
