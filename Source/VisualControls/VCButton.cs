@@ -16,7 +16,6 @@ namespace Fantasy_Kingdoms_Battle
         private Bitmap bmpHot;
         private Bitmap bmpDisabled;
         private Bitmap bmpPressed;
-        private bool mouseOver;
         private bool mouseClicked;
         private bool enabled = true;
 
@@ -58,12 +57,12 @@ namespace Fantasy_Kingdoms_Battle
             //Debug.Assert(bmpDisabled != null);
             //Debug.Assert(bmpPressed != null);
 
-            bmpForDraw = !Enabled ? bmpDisabled : mouseOver && mouseClicked ? bmpPressed : mouseOver ? bmpHot : bmpNormal;
+            bmpForDraw = !Enabled ? bmpDisabled : MouseEntered && mouseClicked ? bmpPressed : MouseEntered ? bmpHot : bmpNormal;
 
             base.Draw(g);
 
             labelCaption.Text = Caption;
-            labelCaption.Color = !enabled ? Color.DarkGray : mouseOver ? Color.Gold : Color.PaleTurquoise;
+            labelCaption.Color = !enabled ? Color.DarkGray : MouseEntered ? Color.Gold : Color.PaleTurquoise;
             labelCaption.Draw(g);
         }
 
@@ -73,8 +72,6 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Enabled)
             {
-                mouseOver = true;
-
                 if (!leftButtonDown)
                     mouseClicked = false;
 
@@ -87,7 +84,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.MouseLeave();
 
-            mouseOver = false;
             Program.formMain.SetNeedRedrawFrame();
         }
 
