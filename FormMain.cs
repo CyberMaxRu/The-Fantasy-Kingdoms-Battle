@@ -1708,6 +1708,8 @@ namespace Fantasy_Kingdoms_Battle
 
         private VisualControl ControlUnderMouse()
         {
+            Debug.Assert(currentLayer.Visible);
+
             VisualControl curControl = null;
 
             foreach (VisualControl vc in currentLayer.Controls)
