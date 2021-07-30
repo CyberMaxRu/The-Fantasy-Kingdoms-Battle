@@ -1710,19 +1710,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(currentLayer.Visible);
 
-            VisualControl curControl = null;
-
-            foreach (VisualControl vc in currentLayer.Controls)
-            {
-                if (vc.Visible)
-                {
-                    curControl = vc.GetControl(mousePos.X, mousePos.Y);
-                    if (curControl != null)
-                        break;
-                }
-            }
-
-            return curControl;
+            return currentLayer.GetControl(mousePos.X, mousePos.Y);
         }
 
         private void UpdateMousePos()

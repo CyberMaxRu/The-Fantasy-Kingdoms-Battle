@@ -272,8 +272,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal virtual VisualControl GetControl(int x, int y)
         {
-            if (!Visible)
-                return null;
+            Debug.Assert(Visible);
 
             foreach (VisualControl vc in Controls)
             {
