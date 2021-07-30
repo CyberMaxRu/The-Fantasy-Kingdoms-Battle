@@ -59,7 +59,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int ImageIndex { get; set; }
         internal bool NormalImage { get; set; } = true;
         internal bool ImageIsEnabled { get; set; } = true;
-        internal bool ImageIsOver { get; set; } = false;
         protected int ShiftImageX { get => shiftImageX; set { shiftImageX = value; ValidateSize(); } }
         protected int ShiftImageY { get => shiftImageY; set { shiftImageY = value; ValidateSize(); } }
         internal string Cost { get; set; }
@@ -76,8 +75,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.MouseEnter(leftButtonDown);
 
-            ImageIsOver = true;
-
             if (!leftButtonDown)
                 mouseClicked = false;
 
@@ -90,7 +87,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.MouseLeave();
 
-            ImageIsOver = false;
             Program.formMain.SetNeedRedrawFrame();
         }
 
@@ -130,9 +126,9 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (ImageIsEnabled)
                 {
-                    if (ShowAsPressed || (mouseClicked && ImageIsOver))
+                    if (ShowAsPressed || (mouseClicked && MouseOver))
                         ImageFilter = ImageFilter.Press;
-                    else if (ImageIsOver)
+                    else if (MouseOver)
                         ImageFilter = ImageFilter.Select;
                     else
                         ImageFilter = ImageFilter.Active;
@@ -146,7 +142,7 @@ namespace Fantasy_Kingdoms_Battle
             // Иконка
             if (Visible && (ImageIndex != -1))
             {
-                BitmapList.DrawImage(g, ImageIndex, (UseFilter || ImageIsEnabled) && NormalImage, HighlightUnderMouse && ImageIsOver, Left + ShiftImageX, Top + ShiftImageY);
+                BitmapList.DrawImage(g, ImageIndex, (UseFilter || ImageIsEnabled) && NormalImage, HighlightUnderMouse && MouseOver, Left + ShiftImageX, Top + ShiftImageY);
 
                 // Цена
                 if (Cost != null)
@@ -233,7 +229,7 @@ namespace Fantasy_Kingdoms_Battle
 
         protected virtual bool PlaySelectSound()
         {
-            return ImageIsEnabled && ((UseFilter && ImageIsOver) || HighlightUnderMouse);
+            return ImageIsEnabled && ((UseFilter && MouseOver) || HighlightUnderMouse);
         }
     }
 }
