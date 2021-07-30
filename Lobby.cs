@@ -34,7 +34,6 @@ namespace Fantasy_Kingdoms_Battle
             // Подбираем компьютерных игроков из пула доступных
             GeneratePlayers();
 
-            SortPlayers();
             CalcDayNextBattleBetweenPlayers();
 
             SetPlayerAsCurrent(0);
@@ -470,11 +469,16 @@ namespace Fantasy_Kingdoms_Battle
 
         private void SortPlayers()
         {
+            List<LobbyPlayer> sort = new List<LobbyPlayer>();
+
+            // Живых игроков сортируем по начальной позиции
             int pos = 1;
-            foreach (LobbyPlayer p in Players)
-            {
-                p.PositionInLobby = pos++;
-            }
+            foreach (LobbyPlayer lp in Players.Where(p => p.IsLive))
+                lp.PositionInLobby = pos++;
+
+            // Теперь сортируем игроков, вылетевших на прошлом ходу
+            foreach (LobbyPlayer lp in Players.Where(p => p.DayOfEndGame == Day).OrderBy(p => p.CurrentLoses).OrderByDescending(p => p.GreatnessCollected).OrderByDescending(p => p.GoldCollected))
+                lp.PositionInLobby = pos++;
 
             // Проверяем, что нет ошибки в позициях
             int curPos = 1;

@@ -283,6 +283,7 @@ namespace Fantasy_Kingdoms_Battle
             if (IsLive == true)
             {
                 Gold += Income();
+                GoldCollected += Income();
 
                 ValidateHeroes();
 
@@ -306,6 +307,9 @@ namespace Fantasy_Kingdoms_Battle
         internal int LevelCastle => Castle.Level;
         internal List<PlayerHero> AllHeroes { get; } = new List<PlayerHero>();
         internal int Gold { get => Castle.Gold; set { Castle.Gold = value; } }
+
+        internal int GoldCollected { get; private set; }// Собрано золота за игру
+        internal int GreatnessCollected { get; private set; }// Собрано величия за игру
 
         // Информация о поражениях и вылете из лобби
         internal List<LoseInfo> LoseInfo { get; } = new List<LoseInfo>();
