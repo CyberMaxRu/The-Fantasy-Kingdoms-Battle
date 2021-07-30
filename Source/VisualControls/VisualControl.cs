@@ -191,6 +191,8 @@ namespace Fantasy_Kingdoms_Battle
         internal virtual void MouseDown()
         {
             Debug.Assert(Visible);
+            Debug.Assert(!MouseClicked);
+            Debug.Assert(AllowClick());
 
             MouseClicked = true;
         }
@@ -198,6 +200,7 @@ namespace Fantasy_Kingdoms_Battle
         internal virtual void MouseUp()
         {
             Debug.Assert(Visible);
+            Debug.Assert(MouseClicked);
 
             MouseClicked = false;
         }
