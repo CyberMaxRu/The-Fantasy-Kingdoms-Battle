@@ -38,6 +38,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Player = player;
             PlayerIndex = playerIndex;
+            PositionInLobby = playerIndex + 1;
 
             // Создаем справочик количества приоритетов флагов
             foreach (PriorityExecution pe in Enum.GetValues(typeof(PriorityExecution)))
@@ -631,9 +632,11 @@ namespace Fantasy_Kingdoms_Battle
         internal override void PrepareHint()
         {
             Program.formMain.formHint.AddStep1Header(
-                Player.Name, "",
+                Player.Name, $"{PositionInLobby} место",
                 "Уровень Замка: " + LevelCastle.ToString() + Environment.NewLine
-                    + "Героев: " + QuantityHeroes.ToString());
+                    + "Героев: " + QuantityHeroes.ToString() + Environment.NewLine
+                    + Environment.NewLine
+                    + "Поражений: " + CurrentLoses.ToString());
         }
 
         // Метод по распределению задач героев
