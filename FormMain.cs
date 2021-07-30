@@ -1734,51 +1734,56 @@ namespace Fantasy_Kingdoms_Battle
 
             if (!mousePos.Equals(oldMousePos))
             {
-                VisualControl curControl = ControlUnderMouse();
+                UpdateCurrentControl(leftDown);
+            }
+        }
 
-                if (curControl == null)
+        private void UpdateCurrentControl(bool leftDown)
+        {
+            VisualControl curControl = ControlUnderMouse();
+
+            if (curControl == null)
+            {
+                timerHover.Stop();
+                ControlForHintLeave();
+            }
+            else if (curControl == controlWithHint)
+            {
+                /*if (hintShowed)
                 {
                     timerHover.Stop();
-                    ControlForHintLeave();
-                }
-                else if (curControl == controlWithHint)
-                {
-                    /*if (hintShowed)
-                    {
-                        timerHover.Stop();
-                        formHint.HideHint();
-                    }
-                    else
-                    {
-                        // Если над контролом водят мышкой, отсчет времени начинаем только после остановки
-                        timerHover.Stop();
-                        timerHover.Start();
-                    }*/
+                    formHint.HideHint();
                 }
                 else
                 {
-                    // Если при переходе на новый контрол у него так же есть подсказка, просто перерисовываем текст, не скрываем её
-                    curControl.DoShowHint();
-                    if ((controlWithHint != null) && formHint.ExistHint)
-                    { 
-                        controlWithHint.MouseLeave();
-                        controlWithHint = curControl;
-                        controlWithHint.MouseEnter(leftDown);
-                        formHint.Visible = true;
-                    }
-                    else
-                    {
-                        ControlForHintLeave();
-                        controlWithHint = curControl;
-                        controlWithHint.MouseEnter(leftDown);
-                        timerHover.Start();
-                    }
-
-                    SetNeedRedrawFrame();
+                    // Если над контролом водят мышкой, отсчет времени начинаем только после остановки
+                    timerHover.Stop();
+                    timerHover.Start();
+                }*/
+            }
+            else
+            {
+                // Если при переходе на новый контрол у него так же есть подсказка, просто перерисовываем текст, не скрываем её
+                curControl.DoShowHint();
+                if ((controlWithHint != null) && formHint.ExistHint)
+                {
+                    controlWithHint.MouseLeave();
+                    controlWithHint = curControl;
+                    controlWithHint.MouseEnter(leftDown);
+                    formHint.Visible = true;
+                }
+                else
+                {
+                    ControlForHintLeave();
+                    controlWithHint = curControl;
+                    controlWithHint.MouseEnter(leftDown);
+                    timerHover.Start();
                 }
 
-                ShowFrame(false);
+                SetNeedRedrawFrame();
             }
+
+            ShowFrame(false);
         }
 
         private void ControlForHintLeave()
@@ -2363,6 +2368,15 @@ namespace Fantasy_Kingdoms_Battle
             StartNewLobby();
             if (!(lobby is null))
                 ReturnFromLobby();
+        }
+
+        internal void ControlShowed(VisualControl vc)
+        {
+            VisualControl curControl = ControlUnderMouse();
+            if (curControl == vc)
+            {
+                UpdateCurrentControl(false);
+            }
         }
 
         internal void ControlHided(VisualControl vc)

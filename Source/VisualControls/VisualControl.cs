@@ -55,7 +55,7 @@ namespace Fantasy_Kingdoms_Battle
         internal bool Visible
         {
             get => _visible;
-            set { _visible = value; if (!_visible) Program.formMain.ControlHided(this); }
+            set { if (_visible != value) { _visible = value; if (_visible) Program.formMain.ControlShowed(this); else Program.formMain.ControlHided(this); } }
         }// Видимость контрола
         internal bool ManualDraw { get; set; }// Ручное рисование контрола
         internal bool ShowBorder { get; set; }// Надо ли показывать бордюр
@@ -265,7 +265,7 @@ namespace Fantasy_Kingdoms_Battle
                                 vc2.ShowBorder = true;
                             }*/
                             //if (vc.Rectangle.Contains(vc2.Rectangle))
-                            //    vc2.ShowBorder = true;
+                            //    vc2.IsError = true;
                             Debug.Assert(!vc.Rectangle.Contains(vc2.Rectangle), vc.Rectangle.ToString() + " и " + vc2.Rectangle.ToString());
                         }
                     }
