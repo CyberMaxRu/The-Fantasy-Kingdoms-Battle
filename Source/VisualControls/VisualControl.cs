@@ -270,7 +270,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal virtual VisualControl GetControl(int x, int y)
+        internal VisualControl GetControl(int x, int y)
         {
             Debug.Assert(Visible);
 
