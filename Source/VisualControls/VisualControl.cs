@@ -202,7 +202,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(Visible);
             Debug.Assert(!MouseClicked);
-            Debug.Assert(AllowClick());
 
             MouseClicked = true;
         }
