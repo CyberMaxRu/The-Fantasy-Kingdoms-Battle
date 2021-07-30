@@ -83,10 +83,9 @@ namespace Fantasy_Kingdoms_Battle
             //
 
             Castle = GetPlayerConstruction(FormMain.Config.FindTypeEconomicConstruction(FormMain.Config.IDConstructionCastle));
-
-            Gold = Lobby.TypeLobby.Gold;
+            Castle.Gold = Lobby.TypeLobby.Gold;
             if (Player.TypePlayer == TypePlayer.Computer)
-                Gold = 100_000;
+                Castle.Gold = 100_000;
 
             LevelGreatness = 1;
             PointGreatnessForNextLevel = 100;
@@ -282,8 +281,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (IsLive == true)
             {
-                Gold += Income();
-                GoldCollected += Income();
+                IncomeGold(Income());
 
                 ValidateHeroes();
 
@@ -301,12 +299,12 @@ namespace Fantasy_Kingdoms_Battle
         internal int PlayerIndex { get; }
         internal int PositionInLobby { get; set; }
         internal int LevelGreatness { get; }// Уровень величия
-        internal int PointGreatness { get; set; }// Очков величия
+        internal int PointGreatness { get; private set; }// Очков величия
         internal int PointGreatnessForNextLevel { get; }// Очков величия до следующего уровня
         internal List<PlayerConstruction> Constructions { get; } = new List<PlayerConstruction>();
         internal int LevelCastle => Castle.Level;
         internal List<PlayerHero> AllHeroes { get; } = new List<PlayerHero>();
-        internal int Gold { get => Castle.Gold; set { Castle.Gold = value; } }
+        internal int Gold { get => Castle.Gold; }
 
         internal int GoldCollected { get; private set; }// Собрано золота за игру
         internal int GreatnessCollected { get; private set; }// Собрано величия за игру
@@ -401,7 +399,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(pb.CheckRequirements());
 
-            Gold -= pb.CostBuyOrUpgrade();
+            SpendGold(pb.CostBuyOrUpgrade());
             FreeBuilders -= pb.TypeConstruction.Levels[pb.Level + 1].Builders;
             PointConstructionTemple -= pb.TypeConstruction.Levels[pb.Level + 1].PointConstructionTemple;
             PointConstructionTradePost -= pb.TypeConstruction.Levels[pb.Level + 1].PointConstructionTradePost;
@@ -610,22 +608,6 @@ namespace Fantasy_Kingdoms_Battle
                 pb = GetPlayerConstruction(r.Construction);
                 listTextReq.Add(new TextRequirement(r.Level <= pb.Level, pb.TypeConstruction.Name + (r.Level > 1 ? " " + r.Level + " уровня" : "")));
             }
-        }
-
-        internal void SpendGold(int gold)
-        {
-            Debug.Assert(gold > 0);
-            Debug.Assert(Gold >= gold);
-
-            Gold -= gold;
-        }
-
-        internal void ReturnGold(int gold)
-        {
-            Debug.Assert(Gold > 0);
-            Debug.Assert(gold >= 0);
-
-            Gold += gold;
         }
 
         internal override void PreparingForBattle()
@@ -899,7 +881,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void ApplyReward(PlayerLair l)
         {
-            Gold += l.RewardGold;
+            IncomeGold(l.RewardGold);
             PointConstructionTemple += l.RewardPointTemple;
             PointConstructionTradePost += l.RewardPointTradePost;
         }
@@ -920,7 +902,7 @@ namespace Fantasy_Kingdoms_Battle
 
         protected void ApplyStartBonus(StartBonus sb)
         {
-            Gold += sb.Gold;
+            IncomeGold(sb.Gold);
             PointGreatness += sb.Greatness;
             Builders += sb.Builders;
             FreeBuilders += sb.Builders;
@@ -960,6 +942,42 @@ namespace Fantasy_Kingdoms_Battle
                     return FormMain.GUI_FLAG_ATTACK;
                 default:
                     throw new Exception("Неизвестный тип флага: " + typeFlag.ToString() + ".");
+            }
+        }
+
+        internal void SpendGold(int gold)
+        {
+            Debug.Assert(gold > 0);
+            Debug.Assert(Gold >= gold);
+
+            Castle.Gold -= gold;
+        }
+
+        internal void ReturnGold(int gold)
+        {
+            Debug.Assert(Gold > 0);
+            Debug.Assert(gold >= 0);
+
+            Castle.Gold += gold;
+        }
+
+        internal void IncomeGold(int gold)
+        {
+            Debug.Assert(Gold > 0);
+            Debug.Assert(gold >= 0);
+
+            Castle.Gold += gold;
+            GoldCollected += gold;
+        }
+
+        internal void AddGreatness(int greatness)
+        {
+            Debug.Assert(greatness >= 0);
+
+            if (greatness > 0)
+            {
+                PointGreatness += greatness;
+                GreatnessCollected += greatness;
             }
         }
 
