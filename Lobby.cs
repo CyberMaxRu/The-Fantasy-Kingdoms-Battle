@@ -379,7 +379,7 @@ namespace Fantasy_Kingdoms_Battle
             int livePlayers = 0;
             foreach (LobbyPlayer p in Players)
             {
-                if (p.IsLive)
+                if (p.IsLive && !p.SkipBattle)
                     livePlayers++;
             }
             Debug.Assert(livePlayers % 2 == 0);
@@ -391,7 +391,7 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (LobbyPlayer p in Players)
             {
-                if (p.IsLive == true)
+                if (p.IsLive && !p.SkipBattle)
                 {
                     if (p.BattleCalced == false)
                     {
