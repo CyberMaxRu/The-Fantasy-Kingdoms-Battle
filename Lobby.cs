@@ -130,6 +130,8 @@ namespace Fantasy_Kingdoms_Battle
         internal int DayNextBattleBetweenPlayers { get; private set; }// День следующей битвы между игроками
         internal int DaysLeftForBattle { get; private set; }// Осталось дней до следующей битвы между игроками
 
+        internal List<BattlesPlayers> BattlesPlayers { get; } = new List<BattlesPlayers>();
+
         // Подбор оппонентов для битвы
         private void MakeOpponents()
         {
@@ -378,6 +380,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             Battle b;
             WindowBattle formBattle;
+            BattlesPlayers rb = new BattlesPlayers(Day);
+            BattlesPlayers.Add(rb);
 
             foreach (LobbyPlayer p in Players)
             {
@@ -425,6 +429,9 @@ namespace Fantasy_Kingdoms_Battle
                         }
 
                         Battles.Add(b);
+
+                        rb.Players.Add(b.Player1 as LobbyPlayer, b.Winner == b.Player1);
+                        rb.Players.Add(b.Player2 as LobbyPlayer, b.Winner == b.Player2);
 
                         // Добавляем событие всем живым игрокам
                         foreach (LobbyPlayer lp in Players.Where(lpp => lpp.IsLive || (lpp.DayOfEndGame == Day)))

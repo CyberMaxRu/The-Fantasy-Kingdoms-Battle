@@ -123,7 +123,8 @@ namespace Fantasy_Kingdoms_Battle
         private PanelWithPanelEntity panelHeroes;
         private PanelWithPanelEntity panelCombatHeroes;
 
-        private readonly VCCell[] pageTournamentPlayers;
+        private VCCell[] pageTournamentPlayers;
+        private readonly List<VCResultRound> listResultRound = new List<VCResultRound>();
 
         private const int DEFAULT_DPI = 96;
 
@@ -661,6 +662,7 @@ namespace Fantasy_Kingdoms_Battle
                 DrawWarehouse();
                 panelLairs = new PanelLair[Config.TypeLobbies[0].LairsHeight, Config.TypeLobbies[0].LairsWidth];
                 DrawPageLair();
+                DrawPageTournament();
 
                 // Вычисляем максимальный размер страниц
                 pageControl.ApplyMaxSize();
@@ -1189,6 +1191,7 @@ namespace Fantasy_Kingdoms_Battle
             LosesChanged();
             UpdateListHeroes();
             ShowWarehouse();
+            AdjustPageTournament();
         }
 
         internal void UpdateListHeroes()
@@ -1326,7 +1329,43 @@ namespace Fantasy_Kingdoms_Battle
 
         private void DrawPageTournament()
         {
+            //private readonly VCCell[] pageTournamentPlayers;
+            // Ячейки игроков
+        }
 
+        private void AdjustPageTournament()
+        {
+            if (pageTournamentPlayers is null)
+            {
+                int nextTop = 56;
+                pageTournamentPlayers = new VCCell[lobby.Players.Length];
+                for (int i = 0; i < pageTournamentPlayers.Length; i++)
+                {
+                    pageTournamentPlayers[i] = new VCCell(pageTournament.Page, 0, nextTop);
+                    nextTop += 56;
+                }
+
+                pageTournament.Page.ArrangeControls();
+            }
+
+            foreach (VCResultRound rr in listResultRound)
+                rr.Visible = false;
+
+            while (listResultRound.Count < lobby.BattlesPlayers.Count)
+            {
+                listResultRound.Add(new VCResultRound(pageTournament.Page, pageTournamentPlayers[0].NextLeft() + (listResultRound.Count * 56), 0, lobby.Players.Length));
+                pageTournament.Page.ArrangeControls();
+            }
+
+            foreach (LobbyPlayer lp in lobby.Players.OrderBy(lp => lp.PositionInLobby))
+            {
+                pageTournamentPlayers[lp.PositionInLobby - 1].ShowCell(lp);
+            }
+
+            for (int i = 0; i < lobby.BattlesPlayers.Count; i++)
+            {
+                listResultRound[i].ShowPlayers(lobby.Players, lobby.BattlesPlayers[i]);
+            }
         }
 
         private void DrawWarehouse()
