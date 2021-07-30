@@ -1138,7 +1138,7 @@ namespace Fantasy_Kingdoms_Battle
                     while (pageResultTurn.Page.Controls.Count > 0)
                         pageResultTurn.Page.RemoveControl(pageResultTurn.Page.Controls[0]);
 
-                    btnEndTurn.Visible = true;
+                    btnEndTurn.ImageIsEnabled = true;
                     labelDay.Visible = true;
                     labelBuilders.Visible = true;
                     labelGold.Visible = true;
@@ -1148,7 +1148,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
                 else
                 {
-                    btnEndTurn.Visible = false;
+                    btnEndTurn.ImageIsEnabled = false;
                     labelDay.Visible = false;
                     labelBuilders.Visible = false;
                     labelGold.Visible = false;
