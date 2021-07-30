@@ -222,7 +222,7 @@ namespace Fantasy_Kingdoms_Battle
                 int heroesPlayer1 = ActiveHeroes.Where(h => (h.PlayerHero.BattleParticipant == Player1) && (h.State != StateHeroInBattle.Tumbstone)).Count();
                 int heroesPlayer2 = ActiveHeroes.Where(h => (h.PlayerHero.BattleParticipant == Player2) && (h.State != StateHeroInBattle.Tumbstone)).Count();
 
-                if ((heroesPlayer1 > 0) && (heroesPlayer2 == 0))
+                if ((heroesPlayer1 > 0) && (heroesPlayer2 == 0) || Player1.GetTypePlayer() == TypePlayer.Human)
                     Winner = Player1;
                 else if ((heroesPlayer1 == 0) && (heroesPlayer2 > 0))
                     Winner = Player2;
