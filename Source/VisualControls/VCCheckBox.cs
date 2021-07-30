@@ -31,7 +31,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
-            if (MouseEntered)
+            if (MouseOver)
             {
                 if (LeftButtonPressed)
                     ImageIndex = Checked ? IMAGE_INDEX_CHECKED : IMAGE_INDEX_UNCHECKED;

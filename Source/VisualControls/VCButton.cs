@@ -57,12 +57,12 @@ namespace Fantasy_Kingdoms_Battle
             //Debug.Assert(bmpDisabled != null);
             //Debug.Assert(bmpPressed != null);
 
-            bmpForDraw = !Enabled ? bmpDisabled : MouseEntered && mouseClicked ? bmpPressed : MouseEntered ? bmpHot : bmpNormal;
+            bmpForDraw = !Enabled ? bmpDisabled : MouseOver && mouseClicked ? bmpPressed : MouseOver ? bmpHot : bmpNormal;
 
             base.Draw(g);
 
             labelCaption.Text = Caption;
-            labelCaption.Color = !enabled ? Color.DarkGray : MouseEntered ? Color.Gold : Color.PaleTurquoise;
+            labelCaption.Color = !enabled ? Color.DarkGray : MouseOver ? Color.Gold : Color.PaleTurquoise;
             labelCaption.Draw(g);
         }
 

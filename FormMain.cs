@@ -1870,7 +1870,7 @@ namespace Fantasy_Kingdoms_Battle
                         // Когда закрывается слой (FormConfirmExit), в новый контрол происходит вход два раза
                         // Поэтому проверяем - если уже вошли, то повторяться не надо
                         controlWithHint = curControl;
-                        if ((controlWithHint != null) && !controlWithHint.MouseEntered)
+                        if ((controlWithHint != null) && !controlWithHint.MouseOver)
                         {
                             controlWithHint.MouseEnter(false);
                             timerHover.Start();
