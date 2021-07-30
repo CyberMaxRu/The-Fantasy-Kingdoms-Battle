@@ -1712,9 +1712,12 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (VisualControl vc in currentLayer.Controls)
             {
-                curControl = vc.GetControl(mousePos.X, mousePos.Y);
-                if (curControl != null)
-                    break;
+                if (vc.Visible)
+                {
+                    curControl = vc.GetControl(mousePos.X, mousePos.Y);
+                    if (curControl != null)
+                        break;
+                }
             }
 
             return curControl;
@@ -1820,7 +1823,11 @@ namespace Fantasy_Kingdoms_Battle
 
             if (e.Button == MouseButtons.Left)
             {
-                controlWithHint?.MouseDown();
+                if (!(controlWithHint is null))
+                {
+                    Debug.Assert(controlWithHint.Visible);
+                    controlWithHint.MouseDown();
+                }
 
                 ShowFrame(false);
             }
@@ -1836,6 +1843,7 @@ namespace Fantasy_Kingdoms_Battle
                 // это распознается как двойной клик и вызывает OnMouseDoubleClick вместо OnMouseClick
                 if (controlWithHint != null)
                 {
+                    Debug.Assert(controlWithHint.Visible);
                     controlWithHint.MouseUp();
                     // При клике происходит перерисовка кадра, и текущий элемент может стать уже невидимым
                     // Но он будет все равно считаться активным, так как прописан в controlWithHint
