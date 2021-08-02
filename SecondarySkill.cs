@@ -4,14 +4,53 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Diagnostics;
 
 namespace Fantasy_Kingdoms_Battle
 {
+    internal enum LevelSecondSkill { Base, Advanced, Master, Expert };
+
+    // Класс параметра вторичного навыка
+    internal sealed class ParamSecondSkill
+    {
+        public ParamSecondSkill(XmlNode n)
+        {
+            Level = XmlUtils.GetInteger(n.SelectSingleNode("Number"));
+            Health = XmlUtils.GetInteger(n.SelectSingleNode("Health"));
+            Income = XmlUtils.GetInteger(n.SelectSingleNode("Income"));
+        }
+
+        internal int Level { get; }
+        internal int Health { get; }
+        internal int SpeedMove { get; }
+
+        internal int Income { get; }
+    }
+
+    // Класс вторичного навыка
     internal sealed class SecondarySkill : Entity
     {
         public SecondarySkill(XmlNode n) : base(n)
         {
+
+            // Загружаем параметры
+            XmlNode ne = n.SelectSingleNode("Levels");
+            ParamSecondSkill p;
+
+            foreach (XmlNode l in ne.SelectNodes("Level"))
+            {
+                p = new ParamSecondSkill(l);
+
+                Debug.Assert(Levels[p.Level] is null);
+                Levels[p.Level] = p;
+            }
+
+            for (int i = 0; i < Levels.Length; i++)
+                Debug.Assert(!(Levels[i] is null));
+
         }
+
+        internal ParamSecondSkill[] Levels { get; } = new ParamSecondSkill[(int)LevelSecondSkill.Expert + 1];
 
         internal void TuneDeferredLinks()
         {

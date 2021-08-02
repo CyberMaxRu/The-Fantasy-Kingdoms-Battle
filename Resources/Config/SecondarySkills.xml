@@ -4,6 +4,72 @@
     <ID>Health</ID>
     <Name>Здоровье</Name>
     <ImageIndex>98</ImageIndex>
-    <Description>Здоровье увеличено на 10%</Description>    
+    <Description>Увеличение здоровья</Description>
+    <Levels>
+      <Level>
+        <Number>0</Number>
+        <Health>5</Health>
+      </Level>
+      <Level>
+        <Number>1</Number>
+        <Health>10</Health>
+      </Level>
+      <Level>
+        <Number>2</Number>
+        <Health>15</Health>
+      </Level>
+      <Level>
+        <Number>3</Number>
+        <Health>20</Health>
+      </Level>
+    </Levels>
+  </SecondarySkill>
+  <SecondarySkill>
+    <ID>Income</ID>
+    <Name>Доход</Name>
+    <ImageIndex>98</ImageIndex>
+    <Description>Увеличивает доход от Замка</Description>
+    <Levels>
+      <Level>
+        <Number>0</Number>
+        <Income>5</Income>
+      </Level>
+      <Level>
+        <Number>1</Number>
+        <Income>10</Income>
+      </Level>
+      <Level>
+        <Number>2</Number>
+        <Income>15</Income>
+      </Level>
+      <Level>
+        <Number>3</Number>
+        <Income>20</Income>
+      </Level>
+    </Levels>
+  </SecondarySkill>
+  <SecondarySkill>
+    <ID>Drill</ID>
+    <Name>Муштра</Name>
+    <ImageIndex>98</ImageIndex>
+    <Description>Увеличивает скорость передвижения героев в бою</Description>
+    <Levels>
+      <Level>
+        <Number>0</Number>
+        <SpeedMove>5</SpeedMove>
+      </Level>
+      <Level>
+        <Number>1</Number>
+        <SpeedMove>10</SpeedMove>
+      </Level>
+      <Level>
+        <Number>2</Number>
+        <SpeedMove>15</SpeedMove>
+      </Level>
+      <Level>
+        <Number>3</Number>
+        <SpeedMove>20</SpeedMove>
+      </Level>
+    </Levels>
   </SecondarySkill>
 </SecondarySkills>
