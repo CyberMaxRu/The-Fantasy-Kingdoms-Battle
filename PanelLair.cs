@@ -172,7 +172,6 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-
         internal override void Draw(Graphics g)
         {
             Debug.Assert(Lair.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
@@ -190,13 +189,15 @@ namespace Fantasy_Kingdoms_Battle
                     break;
                 case TypeFlag.Attack:
                     btnAction.ImageIndex = FormMain.GUI_FLAG_ATTACK;
-                    btnInhabitants.Visible = true;
-                    btnInhabitants.Cost = Lair.CombatHeroes.Count.ToString();
+                    btnInhabitants.Visible = Lair.TypeLair.IsLair;
+                    if (btnInhabitants.Visible)
+                        btnInhabitants.Cost = Lair.CombatHeroes.Count.ToString();
                     break;
                 case TypeFlag.Defense:
                     btnAction.ImageIndex = FormMain.GUI_FLAG_DEFENSE;
-                    btnInhabitants.Visible = true;
-                    btnInhabitants.Cost = Lair.CombatHeroes.Count.ToString();
+                    btnInhabitants.Visible = Lair.TypeLair.IsLair;
+                    if (btnInhabitants.Visible)
+                        btnInhabitants.Cost = Lair.CombatHeroes.Count.ToString();
                     break;
                 default:
                     throw new Exception($"Неизвестный тип действия: {Lair.TypeAction()}");
