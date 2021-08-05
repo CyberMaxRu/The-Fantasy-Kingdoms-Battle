@@ -19,23 +19,23 @@ namespace Fantasy_Kingdoms_Battle
 
         public PanelLair(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
-            btnAction = new VCIconButton(this, imgMapObject.NextLeft(), imgMapObject.ShiftY, Program.formMain.ilGui, FormMain.GUI_BATTLE);
+            btnAction = new VCIconButton(this, imgMapObject.NextLeft(), imgMapObject.NextTop(), Program.formMain.ilGui, FormMain.GUI_BATTLE);
             btnAction.Click += BtnAction_Click;
             btnAction.ShowHint += BtnAction_ShowHint;
 
-            btnCancel = new VCIconButton(this, btnAction.ShiftX, btnAction.NextTop(), Program.formMain.ilGui, FormMain.GUI_FLAG_CANCEL);
+            btnCancel = new VCIconButton(this, btnAction.ShiftX - btnAction.Width - FormMain.Config.GridSize, btnAction.ShiftY, Program.formMain.ilGui, FormMain.GUI_FLAG_CANCEL);
             btnCancel.Click += BtnCancel_Click;
             btnCancel.ShowHint += BtnCancel_ShowHint;
 
-            btnInhabitants = new VCIconButton(this, imgMapObject.ShiftX, imgMapObject.NextTop(), Program.formMain.ilGui, FormMain.GUI_HOME);
+            btnInhabitants = new VCIconButton(this, imgMapObject.NextLeft(), imgMapObject.ShiftY, Program.formMain.ilGui, FormMain.GUI_HOME);
             btnInhabitants.Click += BtnInhabitants_Click;
             btnInhabitants.ShowHint += BtnInhabitants_ShowHint;
 
-            btnHeroes = new VCIconButton(this, btnInhabitants.NextLeft(), btnInhabitants.ShiftY, Program.formMain.ilGui, FormMain.GUI_TARGET);
+            btnHeroes = new VCIconButton(this, btnInhabitants.ShiftX, btnInhabitants.NextTop() + FormMain.Config.GridSize + FormMain.Config.GridSizeHalf, Program.formMain.ilGui, FormMain.GUI_TARGET);
             btnHeroes.Click += BtnHeroes_Click;
             btnHeroes.ShowHint += BtnHeroes_ShowHint;
 
-            Height = btnInhabitants.NextTop();
+            Height = btnAction.NextTop();
             Width = btnAction.NextLeft();
         }
 
@@ -166,7 +166,7 @@ namespace Fantasy_Kingdoms_Battle
 
             btnAction.ImageIsEnabled = Lair.CheckRequirements();
             btnAction.Level = (int)Lair.PriorityFlag + 1;
-            btnAction.Cost = Lair.RequiredGold().ToString();
+            btnAction.Cost = Lair.PriorityFlag < PriorityExecution.High ? Lair.RequiredGold().ToString() : "";
             btnCancel.Visible = Lair.PriorityFlag != PriorityExecution.None;
 
             switch (Lair.TypeAction())
@@ -189,7 +189,7 @@ namespace Fantasy_Kingdoms_Battle
                     throw new Exception($"Неизвестный тип действия: {Lair.TypeAction()}");
             }
 
-            btnHeroes.ImageIsEnabled = Lair.listAttackedHero.Count > 0;
+            btnHeroes.Visible = Lair.listAttackedHero.Count > 0;
             btnHeroes.Cost = $"{Lair.listAttackedHero.Count}/{Lair.MaxHeroesForFlag()}";
 
             imgMapObject.ImageIndex = Lair.ImageIndexLair();
