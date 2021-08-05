@@ -27,7 +27,7 @@ namespace Fantasy_Kingdoms_Battle
                 CreateMonsters();
 
             // Настройка награды
-            RewardGold = Lobby.Rnd.Next(l.Reward.MinGold, l.Reward.MaxGold);
+            RewardGold = l.Reward.Gold;
             RewardPointTemple = l.Reward.PointTemple;
             RewardPointTradePost = l.Reward.PointTradePost;
         }

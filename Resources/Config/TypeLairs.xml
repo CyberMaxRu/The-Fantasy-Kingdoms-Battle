@@ -19,8 +19,8 @@
       </Monster>
     </Monsters>
     <Reward>
-      <MinGold>100</MinGold>
-      <MaxGold>200</MaxGold>
+      <Gold>100</Gold>
+      <Greatness>25</Greatness>
     </Reward>  
   </TypeLair>
   <TypeLair>
@@ -50,8 +50,8 @@
       </Monster>
     </Monsters>
     <Reward>
-      <MinGold>100</MinGold>
-      <MaxGold>500</MaxGold>
+      <Gold>100</Gold>
+      <Greatness>25</Greatness>
     </Reward>
   </TypeLair>
   <TypeLair>
@@ -81,8 +81,8 @@
       </Monster>
     </Monsters>
     <Reward>
-      <MinGold>300</MinGold>
-      <MaxGold>700</MaxGold>
+      <Gold>300</Gold>
+      <Greatness>50</Greatness>
     </Reward>
   </TypeLair>
   <TypeLair>
@@ -104,8 +104,8 @@
       </Monster>
     </Monsters>
     <Reward>
-      <MinGold>500</MinGold>
-      <MaxGold>1000</MaxGold>
+      <Gold>500</Gold>
+      <Greatness>100</Greatness>
     </Reward>
   </TypeLair>
   <TypeLair>
@@ -135,8 +135,8 @@
       </Monster>
     </Monsters>
     <Reward>
-      <MinGold>100</MinGold>
-      <MaxGold>200</MaxGold>
+      <Gold>100</Gold>
+      <Greatness>25</Greatness>
     </Reward>
   </TypeLair>
   <TypeLair>
@@ -158,8 +158,8 @@
       </Monster>
     </Monsters>
     <Reward>
-      <MinGold>100</MinGold>
-      <MaxGold>200</MaxGold>
+      <Gold>200</Gold>
+      <Greatness>50</Greatness>
     </Reward>
   </TypeLair>
   <TypeLair>
@@ -189,8 +189,8 @@
       </Monster>
     </Monsters>
     <Reward>
-      <MinGold>500</MinGold>
-      <MaxGold>500</MaxGold>
+      <Gold>100</Gold>
+      <Greatness>50</Greatness>
     </Reward>
   </TypeLair>
   <TypeLair>
@@ -212,8 +212,8 @@
       </Monster>
     </Monsters>
     <Reward>
-      <MinGold>1000</MinGold>
-      <MaxGold>1000</MaxGold>
+      <Gold>100</Gold>
+      <Greatness>50</Greatness>
     </Reward>
   </TypeLair>
   <TypeLair>
@@ -243,8 +243,8 @@
       </Monster>
     </Monsters>
     <Reward>
-      <MinGold>1000</MinGold>
-      <MaxGold>1500</MaxGold>
+      <Gold>100</Gold>
+      <Greatness>50</Greatness>
     </Reward>
   </TypeLair>
   <TypeLair>
@@ -266,8 +266,8 @@
       </Monster>
     </Monsters>
     <Reward>
-      <MinGold>1000</MinGold>
-      <MaxGold>2000</MaxGold>
+      <Gold>100</Gold>
+      <Greatness>50</Greatness>
     </Reward>
   </TypeLair>
   <TypeLair>
@@ -289,8 +289,8 @@
       </Monster>
     </Monsters>
     <Reward>
-      <MinGold>2000</MinGold>
-      <MaxGold>3000</MaxGold>
+      <Gold>100</Gold>
+      <Greatness>50</Greatness>
     </Reward>
   </TypeLair>
   <TypeLair>
@@ -312,8 +312,8 @@
       </Monster>
     </Monsters>
     <Reward>
-      <MinGold>10000</MinGold>
-      <MaxGold>15000</MaxGold>
+      <Gold>100</Gold>
+      <Greatness>50</Greatness>
     </Reward>
   </TypeLair>
   <TypeLair>
@@ -335,8 +335,8 @@
       </Monster>
     </Monsters>
     <Reward>
-      <MinGold>10000</MinGold>
-      <MaxGold>15000</MaxGold>
+      <Gold>100</Gold>
+      <Greatness>50</Greatness>
     </Reward>
   </TypeLair>
   <TypeLair>
@@ -360,8 +360,8 @@
     <MaxHeroes>5</MaxHeroes>
     <IsLair>false</IsLair>
     <Reward>
-      <MinGold>1000</MinGold>
-      <MaxGold>2000</MaxGold>
+      <Gold>100</Gold>
+      <Greatness>50</Greatness>
     </Reward>
   </TypeLair>
   <TypeLair>
@@ -383,8 +383,8 @@
       </Monster>
     </Monsters>
     <Reward>
-      <MinGold>1000</MinGold>
-      <MaxGold>2000</MaxGold>
+      <Gold>100</Gold>
+      <Greatness>50</Greatness>
     </Reward>
   </TypeLair>
   <TypeLair>
@@ -406,8 +406,8 @@
       </Monster>
     </Monsters>
     <Reward>
-      <MinGold>1000</MinGold>
-      <MaxGold>2000</MaxGold>
+      <Gold>100</Gold>
+      <Greatness>50</Greatness>
     </Reward>
   </TypeLair>
   <TypeLair>

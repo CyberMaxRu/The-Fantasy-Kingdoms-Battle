@@ -54,24 +54,23 @@ namespace Fantasy_Kingdoms_Battle
     {
         public RewardForLair(XmlNode n)
         {
-            MinGold = XmlUtils.GetInteger(n.SelectSingleNode("MinGold"));
-            MaxGold = XmlUtils.GetInteger(n.SelectSingleNode("MaxGold"));
+            Gold = XmlUtils.GetInteger(n.SelectSingleNode("Gold"));
+            Greatness = XmlUtils.GetInteger(n.SelectSingleNode("Greatness"));
             PointTradePost = XmlUtils.GetInteger(n.SelectSingleNode("PointTradePost"));
             PointTemple = XmlUtils.GetInteger(n.SelectSingleNode("PointTemple"));
             
-            Debug.Assert(MinGold >= 0);
-            Debug.Assert(MinGold <= 50_000);
-            Debug.Assert(MaxGold >= 0);
-            Debug.Assert(MaxGold <= 50_000);
-            Debug.Assert(MinGold <= MaxGold);
+            Debug.Assert(Gold >= 0);
+            Debug.Assert(Gold <= 50_000);
+            Debug.Assert(Greatness >= 0);
+            Debug.Assert(Greatness <= 10_000);
             Debug.Assert(PointTradePost >= 0);
             Debug.Assert(PointTradePost <= 1);
             Debug.Assert(PointTemple >= 0);
             Debug.Assert(PointTemple <= 1);
         }
 
-        internal int MinGold { get; }
-        internal int MaxGold { get; }
+        internal int Gold { get; }
+        internal int Greatness { get; }
         internal int PointTemple { get; }
         internal int PointTradePost { get; }
     }
@@ -117,7 +116,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<MonsterLevelLair> Monsters { get; } = new List<MonsterLevelLair>();
         internal int MaxHeroes { get; }// Максимальное количество героев, которое может атаковать логово
         internal bool IsLair { get; }// Признак - это логово
-        internal RewardForLair Reward { get; }
+        internal RewardForLair Reward { get; }// Награда за зачистку логова
 
         internal override void TuneDeferredLinks()
         {
