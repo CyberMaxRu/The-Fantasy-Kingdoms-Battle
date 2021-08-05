@@ -32,10 +32,11 @@ namespace Fantasy_Kingdoms_Battle
             return true;
         }
 
-        protected override int GetLevel()
+        /*protected override int GetLevel()
         {
             return Level = (int)Lair.PriorityFlag + 1;
-        }
+        }*/
+
         protected override int GetQuantity()
         {
             return Lair != null ? Lair.listAttackedHero.Count() : 0;
