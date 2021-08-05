@@ -25,11 +25,6 @@ namespace Fantasy_Kingdoms_Battle
             // Убрать эту проверку после настройки всех логов
             if (TypeLair.Monsters.Count > 0)
                 CreateMonsters();
-
-            // Настройка награды
-            RewardGold = l.Reward.Gold;
-            RewardPointTemple = l.Reward.PointTemple;
-            RewardPointTradePost = l.Reward.PointTradePost;
         }
 
         internal LobbyPlayer Player { get; }
@@ -47,11 +42,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int SpendedGoldForSetFlag { get; private set; }// Сколько золота было потрачено на установку флага
         internal PriorityExecution PriorityFlag { get; private set; } = PriorityExecution.None;// Приоритет разведки/атаки
         internal List<PlayerHero> listAttackedHero { get; } = new List<PlayerHero>();// Список героев, откликнувшихся на флаг
-
-        // Награда
-        internal int RewardGold { get; }
-        internal int RewardPointTemple { get; }
-        internal int RewardPointTradePost { get; }
 
         private void CreateMonsters()
         {

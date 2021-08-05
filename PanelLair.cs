@@ -16,6 +16,8 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCIconButton btnCancel;
         private readonly VCIconButton btnInhabitants;
         private readonly VCIconButton btnHeroes;
+        private readonly VCLabelValue lblIncome;
+        private readonly VCLabelValue lblGreatness;
 
         public PanelLair(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
@@ -34,6 +36,17 @@ namespace Fantasy_Kingdoms_Battle
             btnHeroes = new VCIconButton(this, btnInhabitants.ShiftX, btnInhabitants.NextTop() + FormMain.Config.GridSize + FormMain.Config.GridSizeHalf, Program.formMain.ilGui, FormMain.GUI_TARGET);
             btnHeroes.Click += BtnHeroes_Click;
             btnHeroes.ShowHint += BtnHeroes_ShowHint;
+
+            lblIncome = new VCLabelValue(this, FormMain.Config.GridSize, imgMapObject.NextTop(), Color.Green, true);
+            lblIncome.Width = btnCancel.ShiftX - FormMain.Config.GridSize - lblIncome.ShiftX;
+            lblIncome.ImageIndex = FormMain.GUI_16_GOLD;
+            lblIncome.StringFormat.Alignment = StringAlignment.Near;
+
+            lblGreatness = new VCLabelValue(this, lblIncome.ShiftX, lblIncome.NextTop() - FormMain.Config.GridSizeHalf, Color.Green, true);
+            lblGreatness.Width = lblIncome.Width;
+            lblGreatness.ImageIndex = FormMain.GUI_16_GREATNESS;
+            lblGreatness.StringFormat.Alignment = StringAlignment.Near;
+            lblGreatness.Color = FormMain.Config.HintIncome;
 
             Height = btnAction.NextTop();
             Width = btnAction.NextLeft();
@@ -195,6 +208,18 @@ namespace Fantasy_Kingdoms_Battle
             imgMapObject.ImageIndex = Lair.ImageIndexLair();
             lblNameMapObject.Text = Lair.NameLair();
             lblNameMapObject.Color = GetColorCaption();
+
+            lblIncome.Visible = !Lair.Hidden && (Lair.TypeLair.Reward.Gold > 0);
+            if (lblIncome.Visible)
+            {
+                lblIncome.Text = Lair.TypeLair.Reward.Gold.ToString();
+            }
+
+            lblGreatness.Visible = !Lair.Hidden && (Lair.TypeLair.Reward.Greatness > 0);
+            if (lblGreatness.Visible)
+            {
+                lblGreatness.Text = Lair.TypeLair.Reward.Greatness.ToString();
+            }
 
             base.Draw(g);
         }
