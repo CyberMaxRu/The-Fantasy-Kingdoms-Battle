@@ -166,7 +166,7 @@ namespace Fantasy_Kingdoms_Battle
 
             btnAction.ImageIsEnabled = Lair.CheckRequirements();
             btnAction.Level = (int)Lair.PriorityFlag + 1;
-            btnAction.Cost = Lair.PriorityFlag < PriorityExecution.High ? Lair.RequiredGold().ToString() : "";
+            btnAction.Cost = Lair.PriorityFlag < PriorityExecution.High ? Lair.RequiredGold().ToString() : null;
             btnCancel.Visible = Lair.PriorityFlag != PriorityExecution.None;
 
             switch (Lair.TypeAction())
@@ -193,7 +193,6 @@ namespace Fantasy_Kingdoms_Battle
             btnHeroes.Cost = $"{Lair.listAttackedHero.Count}/{Lair.MaxHeroesForFlag()}";
 
             imgMapObject.ImageIndex = Lair.ImageIndexLair();
-            imgMapObject.Level = Lair.Layer + 1;
             lblNameMapObject.Text = Lair.NameLair();
             lblNameMapObject.Color = GetColorCaption();
 

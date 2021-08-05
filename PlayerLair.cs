@@ -501,7 +501,7 @@ namespace Fantasy_Kingdoms_Battle
         BitmapList ICell.BitmapList() => Program.formMain.imListObjectsCell;
         int ICell.ImageIndex() => ImageIndexLair();        
         bool ICell.NormalImage() => true;
-        int ICell.Level() => Layer;
+        int ICell.Level() => 0;
         int ICell.Quantity() => 0;
         void ICell.PrepareHint() => PrepareHint();
         
