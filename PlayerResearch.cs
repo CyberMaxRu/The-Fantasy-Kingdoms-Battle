@@ -49,10 +49,12 @@ namespace Fantasy_Kingdoms_Battle
             if (Construction.Level == 0)
                 list.Add(new TextRequirement(false, "Здание не построено"));
             else
+            {
                 Construction.Player.TextRequirements(Research.Requirements, list);
 
-            if (!Construction.CanResearch())
-                list.Add(new TextRequirement(false, "Больше нельзя выполнять исследований в этот день"));
+                if (!Construction.CanResearch())
+                    list.Add(new TextRequirement(false, "Больше нельзя выполнять исследований в этот день"));
+            }
 
             return list;
         }
