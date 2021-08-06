@@ -83,11 +83,19 @@ namespace Fantasy_Kingdoms_Battle
                 Program.formMain.PlaySelectButton();
         }
 
+        internal override void MouseLeave()
+        {
+            base.MouseLeave();
+
+            Program.formMain.SetNeedRedrawFrame();
+        }
+
         internal override void MouseDown()
         {
             base.MouseDown();
 
             mouseClicked = true;
+            Program.formMain.SetNeedRedrawFrame();
         }
 
         internal override void MouseUp()
