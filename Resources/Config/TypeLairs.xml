@@ -343,9 +343,9 @@
     <ID>TradePlace</ID>
     <Name>Торговое место</Name>
     <Description>Это удобное место лучше всего подходит под строительство торгового поста.</Description>
-    <ImageIndex>141</ImageIndex>
+    <ImageIndex>142</ImageIndex>
     <SoundSelect>tradepost_place_select.wav</SoundSelect>
-    <MaxHeroes>5</MaxHeroes>
+    <MaxHeroes>0</MaxHeroes>
     <IsLair>false</IsLair>
     <Reward>
       <PointTradePost>1</PointTradePost>
@@ -357,7 +357,7 @@
     <Description>Сундуки с сокровищами встречаются в Ардании даже чаще, чем крысы В некоторых землях герои по два урожая сундуков в год!</Description>
     <ImageIndex>120</ImageIndex>
     <SoundSelect>chest_select.wav</SoundSelect>
-    <MaxHeroes>5</MaxHeroes>
+    <MaxHeroes>0</MaxHeroes>
     <IsLair>false</IsLair>
     <Reward>
       <Gold>100</Gold>
@@ -416,10 +416,21 @@
     <Description>Только на святой земле можно построить храм. Такие места большая редкость, и жрецы постоянно спорят, чей храм будет построен на святой земле.</Description>
     <ImageIndex>114</ImageIndex>
     <SoundSelect>place_temple_select.wav</SoundSelect>
-    <MaxHeroes>10</MaxHeroes>
+    <MaxHeroes>0</MaxHeroes>
     <IsLair>false</IsLair>
     <Reward>
       <PointTemple>1</PointTemple>
+    </Reward>
+  </TypeLair>
+  <TypeLair>
+    <ID>EmptyPlace</ID>
+    <Name>Пустое место</Name>
+    <Description>Здесь ничего нет.</Description>
+    <ImageIndex>141</ImageIndex>
+    <SoundSelect></SoundSelect>
+    <MaxHeroes>0</MaxHeroes>
+    <IsLair>false</IsLair>
+    <Reward>
     </Reward>
   </TypeLair>
 </TypeLairs>

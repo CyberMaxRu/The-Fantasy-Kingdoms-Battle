@@ -104,6 +104,11 @@
             <MinQuantity>0</MinQuantity>
             <MaxQuantity>0</MaxQuantity>
           </Lair>
+          <Lair>
+            <ID>EmptyPlace</ID>
+            <MinQuantity>5</MinQuantity>
+            <MaxQuantity>6</MaxQuantity>
+          </Lair>
         </Lairs>
       </Layer>
       <Layer>
