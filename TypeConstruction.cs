@@ -71,22 +71,6 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
                 throw new Exception("В конфигурации зданий у " + ID + " нет информации об уровнях. ");
-
-            // Загружаем исследования
-            XmlNode nr = n.SelectSingleNode("Researches");
-            if (nr != null)
-            {
-                Researches = new Research[Convert.ToInt32(n.SelectSingleNode("LayersResearches").InnerText), FormMain.Config.PlateHeight, FormMain.Config.PlateWidth];
-
-                Research research;
-
-                foreach (XmlNode l in nr.SelectNodes("Research"))
-                {
-                    research = new Research(l);
-                    Debug.Assert(Researches[research.Layer, research.Coord.Y, research.Coord.X] == null);
-                    Researches[research.Layer, research.Coord.Y, research.Coord.X] = research;
-                }
-            }
         }
 
         internal Page Page { get; }
@@ -95,9 +79,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int DefaultLevel { get; }
         internal int MaxLevel { get; }
         internal bool LevelAsQuantity { get; }// Показывать уровень как количество
-
         internal Level[] Levels;
-        internal Research[,,] Researches;
         internal int ResearchesPerDay { get; }
         internal PanelConstruction Panel { get; set; }
         internal bool HasTreasury { get; }// Имеет собственную казну
