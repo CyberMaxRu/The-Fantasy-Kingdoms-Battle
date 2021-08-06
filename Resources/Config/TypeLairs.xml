@@ -354,7 +354,7 @@
   <TypeLair>
     <ID>Chest</ID>
     <Name>Сокровище</Name>
-    <Description>Сундуки с сокровищами встречаются в Ардании даже чаще, чем крысы В некоторых землях герои по два урожая сундуков в год!</Description>
+    <Description>Сундуки с сокровищами встречаются в Ардании даже чаще, чем крысы В некоторых землях герои собирают по два урожая сундуков в год!</Description>
     <ImageIndex>120</ImageIndex>
     <SoundSelect>chest_select.wav</SoundSelect>
     <MaxHeroes>0</MaxHeroes>
