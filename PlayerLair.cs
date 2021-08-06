@@ -392,8 +392,14 @@ namespace Fantasy_Kingdoms_Battle
 
             // Убираем себя из списка логов игрока
             Player.RemoveLair(this);
-
             Destroyed = true;
+
+            // Ставим тип места, который должен быть после зачистки
+            Debug.Assert(!(TypeLair.TypePlaceAfterClear is null));
+
+            PlayerLair pl = new PlayerLair(Player, TypeLair.TypePlaceAfterClear, X, Y, Layer);
+            pl.Hidden = false;
+            Player.Lairs[Layer, Y, X] = pl;
         }
 
         internal void DoDefense()

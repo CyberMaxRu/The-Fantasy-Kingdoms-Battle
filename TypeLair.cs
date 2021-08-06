@@ -81,6 +81,8 @@ namespace Fantasy_Kingdoms_Battle
     // Класс типа логова монстров
     internal sealed class TypeLair : TypeMapObject
     {
+        private string nameTypePlaceAfterClear;
+
         public TypeLair(XmlNode n) : base(n)
         {
             // Проверяем, что таких же ID и наименования нет
@@ -105,6 +107,9 @@ namespace Fantasy_Kingdoms_Battle
 
             MaxHeroes = XmlUtils.GetInteger(n.SelectSingleNode("MaxHeroes"));
             RelationPlace = (RelationPlace)Enum.Parse(typeof(RelationPlace), n.SelectSingleNode("RelationPlace").InnerText);
+            nameTypePlaceAfterClear = XmlUtils.GetString(n.SelectSingleNode("TypePlaceAfterClear"));
+            Debug.Assert(Name != nameTypePlaceAfterClear);
+
             // Информация о награде
             if (n.SelectSingleNode("Reward") != null)
                 Reward = new RewardForLair(n.SelectSingleNode("Reward"));
@@ -128,6 +133,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int MaxHeroes { get; }// Максимальное количество героев, которое может атаковать логово
         internal RelationPlace RelationPlace { get; }// Тип отношения к месту
         internal RewardForLair Reward { get; }// Награда за зачистку логова
+        internal TypeLair TypePlaceAfterClear { get; private set; }// Тип места после зачистки
 
         internal override void TuneDeferredLinks()
         {
@@ -141,6 +147,10 @@ namespace Fantasy_Kingdoms_Battle
                         if (mlev.Monster == mll.Monster)
                             throw new Exception("Тип монстра " + mll.Monster.ID + " повторяется.");
             }
+
+            if (nameTypePlaceAfterClear.Length > 0)
+                TypePlaceAfterClear = FormMain.Config.FindTypeLair(nameTypePlaceAfterClear);
+            nameTypePlaceAfterClear = null;
         }
     }
 }

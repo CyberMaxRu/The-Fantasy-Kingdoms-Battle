@@ -8,10 +8,11 @@
     <SoundSelect>graveyard_select.wav</SoundSelect>
     <MaxHeroes>4</MaxHeroes>
     <RelationPlace>Enemy</RelationPlace>
+    <TypePlaceAfterClear>EmptyPlace</TypePlaceAfterClear>
     <Monsters>
       <Monster>
         <ID>Zombie</ID>
-        <StartQuantity>5</StartQuantity>
+        <StartQuantity>1</StartQuantity>
         <MaxQuantity>10</MaxQuantity>
         <Level>5</Level>
         <DaysRespawn>2</DaysRespawn>
@@ -31,6 +32,7 @@
     <SoundSelect>logovo_skeleton_select.wav</SoundSelect>
     <MaxHeroes>4</MaxHeroes>
     <RelationPlace>Enemy</RelationPlace>
+    <TypePlaceAfterClear>EmptyPlace</TypePlaceAfterClear>
     <Monsters>
       <Monster>
         <ID>Skelet</ID>
@@ -62,6 +64,7 @@
     <SoundSelect>logovo_vampire_select.wav</SoundSelect>
     <MaxHeroes>5</MaxHeroes>
     <RelationPlace>Enemy</RelationPlace>
+    <TypePlaceAfterClear>EmptyPlace</TypePlaceAfterClear>
     <Monsters>
       <Monster>
         <ID>Ghost</ID>
@@ -93,6 +96,7 @@
     <SoundSelect>logovo_vampire_select.wav</SoundSelect>
     <MaxHeroes>6</MaxHeroes>
     <RelationPlace>Enemy</RelationPlace>
+    <TypePlaceAfterClear>EmptyPlace</TypePlaceAfterClear>
     <Monsters>
       <Monster>
         <ID>Vampire</ID>
@@ -116,6 +120,7 @@
     <SoundSelect>logovo_wolf_select.wav</SoundSelect>
     <MaxHeroes>4</MaxHeroes>
     <RelationPlace>Enemy</RelationPlace>
+    <TypePlaceAfterClear>EmptyPlace</TypePlaceAfterClear>
     <Monsters>
       <Monster>
         <ID>Wolf</ID>
@@ -147,6 +152,7 @@
     <SoundSelect>logovo_serpent_select.wav</SoundSelect>
     <MaxHeroes>5</MaxHeroes>
     <RelationPlace>Enemy</RelationPlace>
+    <TypePlaceAfterClear>EmptyPlace</TypePlaceAfterClear>
     <Monsters>
       <Monster>
         <ID>Serpent</ID>
@@ -170,6 +176,7 @@
     <SoundSelect>logovo_bear_select.wav</SoundSelect>
     <MaxHeroes>6</MaxHeroes>
     <RelationPlace>Enemy</RelationPlace>
+    <TypePlaceAfterClear>EmptyPlace</TypePlaceAfterClear>
     <Monsters>
       <Monster>
         <ID>Bear</ID>
@@ -201,6 +208,7 @@
     <SoundSelect>logovo_bearman_select.wav</SoundSelect>
     <MaxHeroes>8</MaxHeroes>
     <RelationPlace>Enemy</RelationPlace>
+    <TypePlaceAfterClear>EmptyPlace</TypePlaceAfterClear>
     <Monsters>
       <Monster>
         <ID>WerewolfBear</ID>
@@ -224,6 +232,7 @@
     <SoundSelect>logovo_minotaur_select.wav</SoundSelect>
     <MaxHeroes>8</MaxHeroes>
     <RelationPlace>Enemy</RelationPlace>
+    <TypePlaceAfterClear>EmptyPlace</TypePlaceAfterClear>
     <Monsters>
       <Monster>
         <ID>Minotaur</ID>
@@ -255,6 +264,7 @@
     <SoundSelect>logovo_ogre_select.wav</SoundSelect>
     <MaxHeroes>10</MaxHeroes>
     <RelationPlace>Enemy</RelationPlace>
+    <TypePlaceAfterClear>EmptyPlace</TypePlaceAfterClear>
     <Monsters>
       <Monster>
         <ID>Ogre</ID>
@@ -278,6 +288,7 @@
     <SoundSelect>logovo_wolfman_select.wav</SoundSelect>
     <MaxHeroes>12</MaxHeroes>
     <RelationPlace>Enemy</RelationPlace>
+    <TypePlaceAfterClear>EmptyPlace</TypePlaceAfterClear>
     <Monsters>
       <Monster>
         <ID>Werewolf</ID>
@@ -301,6 +312,7 @@
     <SoundSelect>logovo_boss_dragon_select.wav</SoundSelect>
     <MaxHeroes>15</MaxHeroes>
     <RelationPlace>Enemy</RelationPlace>
+    <TypePlaceAfterClear>EmptyPlace</TypePlaceAfterClear>
     <Monsters>
       <Monster>
         <ID>Dragon</ID>
@@ -324,6 +336,7 @@
     <SoundSelect>sewers_select.wav</SoundSelect>
     <MaxHeroes>10</MaxHeroes>
     <RelationPlace>Enemy</RelationPlace>
+    <TypePlaceAfterClear>EmptyPlace</TypePlaceAfterClear>
     <Monsters>
       <Monster>
         <ID>Dragon</ID>
@@ -347,6 +360,7 @@
     <SoundSelect>tradepost_place_select.wav</SoundSelect>
     <MaxHeroes>0</MaxHeroes>
     <RelationPlace>Ally</RelationPlace>
+    <TypePlaceAfterClear></TypePlaceAfterClear>
     <Reward>
       <PointTradePost>1</PointTradePost>
     </Reward>
@@ -359,6 +373,7 @@
     <SoundSelect>chest_select.wav</SoundSelect>
     <MaxHeroes>0</MaxHeroes>
     <RelationPlace>Neutral</RelationPlace>
+    <TypePlaceAfterClear>EmptyPlace</TypePlaceAfterClear>
     <Reward>
       <Gold>100</Gold>
       <Greatness>50</Greatness>
@@ -372,6 +387,7 @@
     <SoundSelect>logovo_elemental_earth_select.wav</SoundSelect>
     <MaxHeroes>10</MaxHeroes>
     <RelationPlace>Enemy</RelationPlace>
+    <TypePlaceAfterClear>HolyLand</TypePlaceAfterClear>
     <Monsters>
       <Monster>
         <ID>ElementalEarth</ID>
@@ -395,6 +411,7 @@
     <SoundSelect>logovo_elemental_fire_select.wav</SoundSelect>
     <MaxHeroes>10</MaxHeroes>
     <RelationPlace>Enemy</RelationPlace>
+    <TypePlaceAfterClear>HolyLand</TypePlaceAfterClear>
     <Monsters>
       <Monster>
         <ID>ElementalFire</ID>
@@ -418,6 +435,7 @@
     <SoundSelect>place_temple_select.wav</SoundSelect>
     <MaxHeroes>0</MaxHeroes>
     <RelationPlace>Neutral</RelationPlace>
+    <TypePlaceAfterClear></TypePlaceAfterClear>
     <Reward>
       <PointTemple>1</PointTemple>
     </Reward>
@@ -430,6 +448,7 @@
     <SoundSelect></SoundSelect>
     <MaxHeroes>0</MaxHeroes>
     <RelationPlace>Neutral</RelationPlace>
+    <TypePlaceAfterClear></TypePlaceAfterClear>
     <Reward>
     </Reward>
   </TypeLair>
