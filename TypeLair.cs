@@ -8,6 +8,9 @@ using System.Diagnostics;
 
 namespace Fantasy_Kingdoms_Battle
 {
+    // Отношение к месту - свое (союзное), нейтральное, враг
+    internal enum RelationPlace { Ally, Neutral, Enemy };
+
     // Класс монстров уровня логова
     internal sealed class MonsterLevelLair
     {
@@ -101,14 +104,14 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             MaxHeroes = XmlUtils.GetInteger(n.SelectSingleNode("MaxHeroes"));
-            IsLair = XmlUtils.GetBoolNotNull(n.SelectSingleNode("IsLair"));
+            RelationPlace = (RelationPlace)Enum.Parse(typeof(RelationPlace), n.SelectSingleNode("RelationPlace").InnerText);
             // Информация о награде
             if (n.SelectSingleNode("Reward") != null)
                 Reward = new RewardForLair(n.SelectSingleNode("Reward"));
 
             Debug.Assert(MaxHeroes < 50);
 
-            if (IsLair)
+            if (RelationPlace == RelationPlace.Enemy)
             {
                 Debug.Assert(MaxHeroes > 0);
             }
@@ -123,7 +126,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal List<MonsterLevelLair> Monsters { get; } = new List<MonsterLevelLair>();
         internal int MaxHeroes { get; }// Максимальное количество героев, которое может атаковать логово
-        internal bool IsLair { get; }// Признак - это логово
+        internal RelationPlace RelationPlace { get; }// Тип отношения к месту
         internal RewardForLair Reward { get; }// Награда за зачистку логова
 
         internal override void TuneDeferredLinks()

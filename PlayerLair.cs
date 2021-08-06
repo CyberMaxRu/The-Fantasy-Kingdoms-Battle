@@ -195,7 +195,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Hidden)
                 return TypeFlag.Scout;
-            if (TypeLair.IsLair)
+            if (TypeLair.Monsters.Count > 0)
                 return TypeFlag.Attack;
             return TypeFlag.Defense;
         }

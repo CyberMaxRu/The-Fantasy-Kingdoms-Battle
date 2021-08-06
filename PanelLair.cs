@@ -176,7 +176,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(Lair.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
 
-            btnAction.Visible = Lair.Hidden || (Lair.Monsters.Count > 0) || Lair.TypeLair.IsLair;
+            btnAction.Visible = Lair.Hidden || (Lair.Monsters.Count > 0);
             if (btnAction.Visible)
             {
                 btnAction.ImageIsEnabled = Lair.CheckRequirements();
@@ -187,29 +187,37 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(btnAction.Visible || (!btnAction.Visible && (Lair.PriorityFlag == PriorityExecution.None)));
             btnCancel.Visible = Lair.PriorityFlag != PriorityExecution.None;
 
-            switch (Lair.TypeAction())
+            if (btnAction.Visible)
             {
-                case TypeFlag.Scout:
-                    btnAction.ImageIndex = FormMain.GUI_FLAG_SCOUT;
-                    btnInhabitants.Visible = false;
-                    break;
-                case TypeFlag.Attack:
-                    btnAction.ImageIndex = FormMain.GUI_FLAG_ATTACK;
-                    btnInhabitants.Visible = Lair.TypeLair.IsLair;
-                    if (btnInhabitants.Visible)
-                        btnInhabitants.Cost = Lair.CombatHeroes.Count.ToString();
-                    break;
-                case TypeFlag.Defense:
-                    btnAction.ImageIndex = FormMain.GUI_FLAG_DEFENSE;
-                    btnInhabitants.Visible = Lair.TypeLair.IsLair;
-                    if (btnInhabitants.Visible)
-                        btnInhabitants.Cost = Lair.CombatHeroes.Count.ToString();
-                    break;
-                default:
-                    throw new Exception($"Неизвестный тип действия: {Lair.TypeAction()}");
+                switch (Lair.TypeAction())
+                {
+                    case TypeFlag.Scout:
+                        btnAction.ImageIndex = FormMain.GUI_FLAG_SCOUT;
+                        btnInhabitants.Visible = false;
+                        break;
+                    case TypeFlag.Attack:
+                        btnAction.ImageIndex = FormMain.GUI_FLAG_ATTACK;
+                        btnInhabitants.Visible = Lair.Monsters.Count > 0;
+                        if (btnInhabitants.Visible)
+                            btnInhabitants.Cost = Lair.Monsters.Count.ToString();
+                        break;
+                    case TypeFlag.Defense:
+                        btnAction.ImageIndex = FormMain.GUI_FLAG_DEFENSE;
+                        btnInhabitants.Visible = Lair.Monsters.Count > 0;
+                        if (btnInhabitants.Visible)
+                            btnInhabitants.Cost = Lair.Monsters.Count.ToString();
+                        break;
+                    default:
+                        throw new Exception($"Неизвестный тип действия: {Lair.TypeAction()}");
+                }
+            }
+            else
+            {
+                Debug.Assert(Lair.Monsters.Count == 0);
+                btnInhabitants.Visible = false;
             }
 
-            btnHeroes.Visible = Lair.listAttackedHero.Count > 0;
+                btnHeroes.Visible = Lair.listAttackedHero.Count > 0;
             btnHeroes.Cost = $"{Lair.listAttackedHero.Count}/{Lair.MaxHeroesForFlag()}";
 
             imgMapObject.ImageIndex = Lair.ImageIndexLair();
