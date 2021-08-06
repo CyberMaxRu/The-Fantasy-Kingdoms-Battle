@@ -145,4 +145,13 @@
     <Cost>50</Cost>
     <Perk></Perk>
   </Item>
+  <Item>
+    <ID>PotionOfCheerfulness</ID>
+    <Name>Напиток бодрости</Name>
+    <Description>Убирает усталость</Description>
+    <ImageIndex>100</ImageIndex>
+    <CategoryItem>Potion</CategoryItem>
+    <Cost>50</Cost>
+    <Perk></Perk>
+  </Item>
 </Items>

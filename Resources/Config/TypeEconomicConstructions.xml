@@ -796,6 +796,13 @@
         <Item>ElixirRegeneration</Item>
         <Cost>1000</Cost>
       </Research>
+      <Research>
+        <PosX>4</PosX>
+        <PosY>3</PosY>
+        <Layer>1</Layer>
+        <Item>PotionOfCheerfulness</Item>
+        <Cost>200</Cost>
+      </Research>
     </Researches>
   </TypeConstructionEconomic>
   <TypeConstructionEconomic>
