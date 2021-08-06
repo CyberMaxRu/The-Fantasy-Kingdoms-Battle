@@ -200,6 +200,13 @@
     </Levels>
     <Researches>
       <Research>
+        <PosX>2</PosX>
+        <PosY>1</PosY>
+        <Layer>1</Layer>
+        <Item>HolyWater</Item>
+        <Cost>250</Cost>
+      </Research>
+      <Research>
         <PosX>1</PosX>
         <PosY>3</PosY>
         <Layer>1</Layer>

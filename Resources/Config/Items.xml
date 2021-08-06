@@ -208,4 +208,13 @@
     <Cost>50</Cost>
     <Perk></Perk>
   </Item>
+  <Item>
+    <ID>HolyWater</ID>
+    <Name>Святая вода</Name>
+    <Description>Увеличивает урон против нежити</Description>
+    <ImageIndex>107</ImageIndex>
+    <CategoryItem>Enchant</CategoryItem>
+    <Cost>50</Cost>
+    <Perk></Perk>
+  </Item>
 </Items>
