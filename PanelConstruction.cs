@@ -183,6 +183,7 @@ namespace Fantasy_Kingdoms_Battle
             if (lblGreatness.Visible)
             {
                 lblGreatness.Text = $"+{greatness}";
+                lblGreatness.Color = FormMain.Config.ColorGreatness(Construction.Level > 0);
             }
 
             if (Construction.Level > 0)
