@@ -68,6 +68,9 @@ namespace Fantasy_Kingdoms_Battle
             if (c is PlayerObject po)
                 PlayerObject = po;
 
+            //if (!(cell is null) && (cell is PlayerHero ph) && (cell != c))
+            //    ph.Selected = false;
+
             cell = c;
         }
 
@@ -109,6 +112,9 @@ namespace Fantasy_Kingdoms_Battle
                     ImageIndex = -1;
             }
 
+            //if (!(cell is null) && (cell is PlayerHero ph))
+            //    ManualSelected = !MouseOver && ph.Selected;
+
             base.Draw(g);
 
             if (Visible)
@@ -123,5 +129,27 @@ namespace Fantasy_Kingdoms_Battle
                     g.DrawImageUnscaled(Program.formMain.bmpEmptyEntity, Left, Top);
             }
         }
+
+        /*
+        internal override void MouseEnter(bool leftButtonDown)
+        {
+            base.MouseEnter(leftButtonDown);
+
+            if (!(cell is null) && (cell is PlayerHero ph))
+            {
+                ph.Selected = true;
+            }
+        }
+
+        internal override void MouseLeave()
+        {
+            base.MouseLeave();
+
+            if (!(cell is null) && (cell is PlayerHero ph))
+            {
+                ph.Selected = false;
+            }
+        }
+        */
     }
 }

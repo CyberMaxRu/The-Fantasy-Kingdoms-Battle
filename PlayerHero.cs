@@ -59,6 +59,8 @@ namespace Fantasy_Kingdoms_Battle
         internal int DrawStreak { get; }// Ничьих подряд
         internal ResultBattle PriorResultBattle { get; set; }// Предыдущий результат битвы для расчета страйков
 
+        //internal bool Selected { get; set; }
+
         // Увольнение героя
         internal void Dismiss()
         {
