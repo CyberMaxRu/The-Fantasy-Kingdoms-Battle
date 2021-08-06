@@ -44,8 +44,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(IsLive);
 
-            Program.formMain.panelMonsterInfo.Visible = true;
             Program.formMain.panelMonsterInfo.PlayerObject = this;
+            Program.formMain.panelMonsterInfo.Visible = true;
         }
     }
 }
