@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -27,8 +28,16 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override bool PrepareHint()
         {
-            Program.formMain.formHint.AddHeader(Lair != null ? Lair.NameLair() : "Флаг не назначен");
-
+            if ((Lair is null) || (Lair.listAttackedHero.Count == 0))
+            { 
+                Program.formMain.formHint.AddHeader(Lair != null ? Lair.NameLair() : "Флаг не назначен");
+            }
+            else
+            {
+                Debug.Assert(!(Lair is null));
+                Program.formMain.formHint.AddStep1Header(Lair.NameLair(), "", Lair.ListHeroesForHint());
+            }
+            
             return true;
         }
 
