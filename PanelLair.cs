@@ -176,9 +176,15 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(Lair.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
 
-            btnAction.ImageIsEnabled = Lair.CheckRequirements();
-            btnAction.Level = (int)Lair.PriorityFlag + 1;
-            btnAction.Cost = Lair.PriorityFlag < PriorityExecution.High ? Lair.RequiredGold().ToString() : null;
+            btnAction.Visible = Lair.Hidden || (Lair.Monsters.Count > 0) || Lair.TypeLair.IsLair;
+            if (btnAction.Visible)
+            {
+                btnAction.ImageIsEnabled = Lair.CheckRequirements();
+                btnAction.Level = (int)Lair.PriorityFlag + 1;
+                btnAction.Cost = Lair.PriorityFlag < PriorityExecution.High ? Lair.RequiredGold().ToString() : null;
+            }
+
+            Debug.Assert(btnAction.Visible || (!btnAction.Visible && (Lair.PriorityFlag == PriorityExecution.None)));
             btnCancel.Visible = Lair.PriorityFlag != PriorityExecution.None;
 
             switch (Lair.TypeAction())
