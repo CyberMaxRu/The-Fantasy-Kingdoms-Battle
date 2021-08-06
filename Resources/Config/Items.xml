@@ -166,7 +166,7 @@
   <Item>
     <ID>SmallBag</ID>
     <Name>Маленькая сумка</Name>
-    <Description>Добавляет место под 4 напитка/эликсира</Description>
+    <Description>Добавляет место под 4 вещи</Description> 
     <ImageIndex>102</ImageIndex>
     <CategoryItem>Thing</CategoryItem>
     <Cost>50</Cost>
