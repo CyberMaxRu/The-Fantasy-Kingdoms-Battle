@@ -52,32 +52,6 @@ namespace Fantasy_Kingdoms_Battle
         }
     }
 
-    // Класс награды за зачистку уровень логова
-    internal sealed class RewardForLair
-    {
-        public RewardForLair(XmlNode n)
-        {
-            Gold = XmlUtils.GetInteger(n.SelectSingleNode("Gold"));
-            Greatness = XmlUtils.GetInteger(n.SelectSingleNode("Greatness"));
-            PointTradePost = XmlUtils.GetInteger(n.SelectSingleNode("PointTradePost"));
-            PointTemple = XmlUtils.GetInteger(n.SelectSingleNode("PointTemple"));
-            
-            Debug.Assert(Gold >= 0);
-            Debug.Assert(Gold <= 50_000);
-            Debug.Assert(Greatness >= 0);
-            Debug.Assert(Greatness <= 10_000);
-            Debug.Assert(PointTradePost >= 0);
-            Debug.Assert(PointTradePost <= 1);
-            Debug.Assert(PointTemple >= 0);
-            Debug.Assert(PointTemple <= 1);
-        }
-
-        internal int Gold { get; }
-        internal int Greatness { get; }
-        internal int PointTemple { get; }
-        internal int PointTradePost { get; }
-    }
-
     // Класс типа логова монстров
     internal sealed class TypeLair : TypeMapObject
     {
@@ -112,7 +86,7 @@ namespace Fantasy_Kingdoms_Battle
 
             // Информация о награде
             if (n.SelectSingleNode("Reward") != null)
-                Reward = new RewardForLair(n.SelectSingleNode("Reward"));
+                TypeReward = new TypeReward(n.SelectSingleNode("Reward"));
 
             Debug.Assert(MaxHeroes < 50);
 
@@ -132,7 +106,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<MonsterLevelLair> Monsters { get; } = new List<MonsterLevelLair>();
         internal int MaxHeroes { get; }// Максимальное количество героев, которое может атаковать логово
         internal RelationPlace RelationPlace { get; }// Тип отношения к месту
-        internal RewardForLair Reward { get; }// Награда за зачистку логова
+        internal TypeReward TypeReward { get; }// Награда за зачистку логова
         internal TypeLair TypePlaceAfterClear { get; private set; }// Тип места после зачистки
 
         internal override void TuneDeferredLinks()

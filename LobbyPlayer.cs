@@ -863,9 +863,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void ApplyReward(PlayerLair l)
         {
-            IncomeGold(l.TypeLair.Reward.Gold);
-            PointConstructionTemple += l.TypeLair.Reward.PointTemple;
-            PointConstructionTradePost += l.TypeLair.Reward.PointTradePost;
+            IncomeGold(l.TypeLair.TypeReward.Gold);
+            AddGreatness(l.TypeLair.TypeReward.Greatness);
         }
 
         internal bool CanBuildTemple()
