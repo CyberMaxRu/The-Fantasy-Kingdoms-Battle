@@ -8,13 +8,12 @@ using System.Diagnostics;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс здания игрока
-    internal sealed class PlayerConstruction : PlayerObject
+    internal sealed class PlayerConstruction : PlayerMapObject
     {
         private int gold;
 
-        public PlayerConstruction(LobbyPlayer p, TypeConstruction b)
+        public PlayerConstruction(LobbyPlayer p, TypeConstruction b) : base(p)
         {
-            Player = p;
             TypeConstruction = b;
 
             Level = b.DefaultLevel;
@@ -34,7 +33,6 @@ namespace Fantasy_Kingdoms_Battle
             //    Gold = Construction.GoldByConstruction;
         }
 
-        internal LobbyPlayer Player { get; }
         internal TypeConstruction TypeConstruction { get; }
         internal int Level { get; private set; }
         internal int Gold { get => gold; set { Debug.Assert(TypeConstruction.HasTreasury); gold = value; } }

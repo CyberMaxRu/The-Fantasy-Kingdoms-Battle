@@ -22,6 +22,8 @@ namespace Fantasy_Kingdoms_Battle
             Y = y;
             Layer = layer;
 
+            Participant = new LairBattleParticipant(this);
+
             // Убрать эту проверку после настройки всех логов
             if (TypeLair.Monsters.Count > 0)
                 CreateMonsters();
@@ -42,6 +44,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int SpendedGoldForSetFlag { get; private set; }// Сколько золота было потрачено на установку флага
         internal PriorityExecution PriorityFlag { get; private set; } = PriorityExecution.None;// Приоритет разведки/атаки
         internal List<PlayerHero> listAttackedHero { get; } = new List<PlayerHero>();// Список героев, откликнувшихся на флаг
+        internal LairBattleParticipant Participant { get; }
 
         private void CreateMonsters()
         {
@@ -491,6 +494,7 @@ namespace Fantasy_Kingdoms_Battle
                 return list;
             }
         }
+
         internal override string GetName() => TypeLair.Name;
         internal override LobbyPlayer GetPlayer() => Player;
         internal override TypePlayer GetTypePlayer() => TypePlayer.Lair;

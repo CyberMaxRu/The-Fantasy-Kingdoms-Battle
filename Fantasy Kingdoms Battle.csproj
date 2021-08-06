@@ -69,6 +69,7 @@
     <Compile Include="BitmapList.cs" />
     <Compile Include="CustomCursor.cs" />
     <Compile Include="HumanPlayer.cs" />
+    <Compile Include="LairBattleParticipant.cs" />
     <Compile Include="LobbyPlayer.cs" />
     <Compile Include="LobbyPlayerComputer.cs" />
     <Compile Include="LobbyPlayerHuman.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="PanelCreatureInfo.cs" />
     <Compile Include="PanelMonsterInfo.cs" />
     <Compile Include="Player.cs" />
+    <Compile Include="PlayerMapObject.cs" />
     <Compile Include="PlayerObject.cs" />
     <Compile Include="ComputerPlayer.cs" />
     <Compile Include="TypeReward.cs" />
