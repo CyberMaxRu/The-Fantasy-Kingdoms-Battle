@@ -8,6 +8,7 @@
     <PointConstructionTradePost>0</PointConstructionTradePost>
     <ScoutPlace>0</ScoutPlace>
     <Points>1</Points>
+    <MaxQuantity>-1</MaxQuantity>
   </StartBonus>
   <StartBonus>
     <Gold>0</Gold>
@@ -17,6 +18,7 @@
     <PointConstructionTradePost>0</PointConstructionTradePost>
     <ScoutPlace>0</ScoutPlace>
     <Points>1</Points>
+    <MaxQuantity>-1</MaxQuantity>
   </StartBonus>
   <StartBonus>
     <Gold>0</Gold>
@@ -26,6 +28,7 @@
     <PointConstructionTradePost>0</PointConstructionTradePost>
     <ScoutPlace>0</ScoutPlace>
     <Points>2</Points>
+    <MaxQuantity>3</MaxQuantity>
   </StartBonus>
   <StartBonus>
     <Gold>500</Gold>
@@ -35,6 +38,7 @@
     <PointConstructionTradePost>0</PointConstructionTradePost>
     <ScoutPlace>0</ScoutPlace>
     <Points>1</Points>
+    <MaxQuantity>-1</MaxQuantity>
   </StartBonus>
   <StartBonus>
     <Gold>0</Gold>
@@ -44,6 +48,7 @@
     <PointConstructionTradePost>0</PointConstructionTradePost>
     <ScoutPlace>2</ScoutPlace>
     <Points>1</Points>
+    <MaxQuantity>3</MaxQuantity>
   </StartBonus>
   <StartBonus>
     <Gold>0</Gold>
@@ -53,6 +58,7 @@
     <PointConstructionTradePost>0</PointConstructionTradePost>
     <ScoutPlace>0</ScoutPlace>
     <Points>3</Points>
+    <MaxQuantity>1</MaxQuantity>
   </StartBonus>
   <StartBonus>
     <Gold>0</Gold>
@@ -62,5 +68,6 @@
     <PointConstructionTradePost>1</PointConstructionTradePost>
     <ScoutPlace>0</ScoutPlace>
     <Points>2</Points>
+    <MaxQuantity>2</MaxQuantity>
   </StartBonus>
 </StartBonuses>

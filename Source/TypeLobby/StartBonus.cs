@@ -24,6 +24,8 @@ namespace Fantasy_Kingdoms_Battle
             PointConstructionTemple = XmlUtils.GetInteger(n.SelectSingleNode("PointConstructionTemple"));
             PointConstructionTradePost = XmlUtils.GetInteger(n.SelectSingleNode("PointConstructionTradePost"));
             Points = XmlUtils.GetInteger(n.SelectSingleNode("Points"));
+            MaxQuantity = XmlUtils.GetInteger(n.SelectSingleNode("MaxQuantity"));
+            CurrentQuantity = 0;
 
             Debug.Assert(Gold >= 0);
             Debug.Assert(Gold <= 10000);
@@ -39,6 +41,8 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(PointConstructionTradePost <= 3);
             Debug.Assert(Points > 0);
             Debug.Assert(Points <= 10);
+            Debug.Assert(MaxQuantity >= -1);
+            Debug.Assert(MaxQuantity <= 10);
         }
 
         internal int Gold { get; private set; }
@@ -48,6 +52,8 @@ namespace Fantasy_Kingdoms_Battle
         internal int PointConstructionTemple { get; private set; }
         internal int PointConstructionTradePost { get; private set; }
         internal int Points { get; private set; }
+        internal int MaxQuantity { get; private set; }
+        internal int CurrentQuantity { get; private set; }
 
         internal void AddBonus(StartBonus sb)
         {
@@ -58,6 +64,12 @@ namespace Fantasy_Kingdoms_Battle
             PointConstructionTemple += sb.PointConstructionTemple;
             PointConstructionTradePost += sb.PointConstructionTradePost;
             Points += sb.Points;
+            sb.CurrentQuantity++;
+        }
+
+        internal void ClearQuantity()
+        {
+            CurrentQuantity = 0;
         }
 
         public override bool Equals(object obj)
