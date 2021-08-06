@@ -810,7 +810,7 @@
     <Line>3</Line>
     <Pos>3</Pos>
     <DefaultLevel>0</DefaultLevel>
-    <MaxLevel>1</MaxLevel>
+    <MaxLevel>2</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>
     <HasTreasury>False</HasTreasury>
     <SoundSelect>statue_select.wav</SoundSelect>
@@ -822,6 +822,14 @@
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>5</GreatnessPerDay>
+      </Level>
+      <Level>
+        <Pos>2</Pos>
+        <Cost>500</Cost>
+        <Builders>1</Builders>
+        <Income>0</Income>
+        <GreatnessByConstruction>200</GreatnessByConstruction>
+        <GreatnessPerDay>10</GreatnessPerDay>
       </Level>
     </Levels>
   </TypeConstructionEconomic>
