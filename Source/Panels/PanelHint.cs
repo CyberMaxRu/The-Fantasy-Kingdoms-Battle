@@ -286,6 +286,22 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        internal void AddStep2Reward(int reward)
+        {
+            Debug.Assert(reward >= 0);
+
+            if (reward > 0)
+            {
+                Debug.Assert(!lblIncome.Visible);
+
+                lblIncome.ShiftY = nextTop;
+                lblIncome.Text = reward.ToString();
+                lblIncome.Visible = true;
+
+                nextTop = lblIncome.NextTop();
+            }
+        }
+
         internal void AddStep3Greatness(int addGreatness, int greatnessPerDay)
         {
             Debug.Assert(addGreatness >= 0);

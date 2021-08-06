@@ -103,7 +103,7 @@ namespace Fantasy_Kingdoms_Battle
             else
             {
                 Program.formMain.formHint.AddStep1Header(TypeLair.Name, "", TypeLair.Description);
-                Program.formMain.formHint.AddStep2Income(TypeLair.Reward.Gold);
+                Program.formMain.formHint.AddStep2Reward(TypeLair.Reward.Gold);
                 Program.formMain.formHint.AddStep3Greatness(TypeLair.Reward.Greatness, 0);
             }
         }
