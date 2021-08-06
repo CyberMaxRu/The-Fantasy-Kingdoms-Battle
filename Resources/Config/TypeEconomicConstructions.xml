@@ -19,6 +19,7 @@
         <Cost>0</Cost>
         <Builders>0</Builders>
         <Income>50</Income>
+        <GreatnessByConstruction>0</GreatnessByConstruction>
         <GreatnessPerDay>5</GreatnessPerDay>
         <BuildersPerDay>3</BuildersPerDay>
         <MaxHeroes>10</MaxHeroes>        
@@ -819,6 +820,8 @@
         <Cost>500</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
+        <GreatnessByConstruction>100</GreatnessByConstruction>
+        <GreatnessPerDay>5</GreatnessPerDay>
       </Level>
     </Levels>
   </TypeConstructionEconomic>
