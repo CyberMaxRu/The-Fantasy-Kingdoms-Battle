@@ -101,8 +101,8 @@
           </Lair>
           <Lair>
             <ID>HolyLand</ID>
-            <MinQuantity>0</MinQuantity>
-            <MaxQuantity>0</MaxQuantity>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
           </Lair>
           <Lair>
             <ID>EmptyPlace</ID>
