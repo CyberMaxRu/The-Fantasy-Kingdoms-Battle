@@ -290,7 +290,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Level > 0);
 
             if (TypeConstruction.Levels[Level].GreatnessPerDay > 0)
-                Player.AddGreatness(TypeConstruction.Levels[Level].GreatnessPerDay);
+                Player.AddGreatness(GreatnessPerDay());
         }
 
         internal bool CanResearch()

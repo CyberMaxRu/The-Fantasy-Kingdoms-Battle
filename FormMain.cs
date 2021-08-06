@@ -580,7 +580,7 @@ namespace Fantasy_Kingdoms_Battle
                 labelGold.Width = 168;
                 labelGreatness = new VCToolLabel(bmpPreparedToolbar, labelGold.NextLeft(), labelDay.ShiftY, "", GUI_16_GREATNESS);
                 labelGreatness.ShowHint += LabelGreatness_ShowHint;
-                labelGreatness.Width = 112;
+                labelGreatness.Width = 168;
 
                 labelNamePlayer = new VCLabel(bmpPreparedToolbar, 0, 0, fontMedCaptionC, Color.White, fontMedCaptionC.MaxHeightSymbol, "");
                 labelNamePlayer.StringFormat.LineAlignment = StringAlignment.Center;
@@ -1585,8 +1585,9 @@ namespace Fantasy_Kingdoms_Battle
                 labelGold.Text = lobby.CurrentPlayer.Gold.ToString() + " (+" + lobby.CurrentPlayer.Income().ToString() + ")";
                 labelBuilders.Text = $"{curAppliedPlayer.FreeBuilders}/{curAppliedPlayer.Builders} (+{curAppliedPlayer.BuildersAtNextDay})";
                 labelGreatness.Text = curAppliedPlayer.LevelGreatness.ToString()
-                    + " (" + curAppliedPlayer.PointGreatness.ToString() + "/"
-                    + curAppliedPlayer.PointGreatnessForNextLevel.ToString() + ")";
+                    + " (+" + curAppliedPlayer.PointGreatnessPerDay().ToString() + ")"
+                    + ": " + curAppliedPlayer.PointGreatness.ToString() + "/"
+                    + curAppliedPlayer.PointGreatnessForNextLevel.ToString();
 
                 pageTemples.PopupQuantity = lobby.CurrentPlayer.CanBuildTemple() ? lobby.CurrentPlayer.PointConstructionTemple : 0;
                 pageHeroes.Cost = lobby.CurrentPlayer.CombatHeroes.Count.ToString();

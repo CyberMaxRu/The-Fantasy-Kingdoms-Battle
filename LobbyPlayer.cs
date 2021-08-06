@@ -972,6 +972,17 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(VariantsStartBonuses.Count > 0);
         }
 
+        internal int PointGreatnessPerDay()
+        {
+            int g = 0;
+
+            foreach (PlayerConstruction pc in Constructions)
+                if (pc.Level > 0)
+                    g += pc.GreatnessPerDay();
+
+            return g;
+        }
+
         //
 
         internal override string GetName() => Player.Name;
