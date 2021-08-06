@@ -53,6 +53,8 @@ namespace Fantasy_Kingdoms_Battle
                 Player.Constructed(this);
                 Level++;
                 ValidateHeroes();
+                PrepareTurn();
+
                 return true;
             }
 
