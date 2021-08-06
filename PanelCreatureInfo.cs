@@ -84,6 +84,9 @@ namespace Fantasy_Kingdoms_Battle
             panelAbilitiesAndSecSkills.Height = panelSecondarySkills.NextTop();
 
             pageControl.ApplyMinSize();
+
+            CreateCustomControls();
+
             Width = pageControl.Width + FormMain.Config.GridSize * 2;
             Height = pageControl.NextTop();
 
@@ -125,6 +128,11 @@ namespace Fantasy_Kingdoms_Battle
                     slots[x + y * FormMain.SLOTS_IN_LINE] = pb;
                 }
             }*/
+        }
+
+        protected virtual void CreateCustomControls()
+        {
+
         }
 
         private void BmpState_ShowHint(object sender, EventArgs e)
