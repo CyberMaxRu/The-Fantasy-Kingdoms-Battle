@@ -154,10 +154,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal virtual void PrepareTurn()
         {
-            foreach (PlayerConstruction pc in Constructions)
-                if (pc.Level > 0)
-                    pc.PrepareTurn();
-
             UpdateBuildersNextDay();
 
             Builders = BuildersAtNextDay;
@@ -170,6 +166,12 @@ namespace Fantasy_Kingdoms_Battle
 
         internal abstract void DoTurn();
         internal abstract void EndTurn();
+        internal virtual void AfterEndTurn()
+        {
+            foreach (PlayerConstruction pc in Constructions)
+                if (pc.Level > 0)
+                    pc.AfterEndTurn();
+        }
 
         private void UpdateBuildersNextDay()
         {
@@ -382,6 +384,7 @@ namespace Fantasy_Kingdoms_Battle
             FreeBuilders -= pb.TypeConstruction.Levels[pb.Level + 1].Builders;
             PointConstructionTemple -= pb.TypeConstruction.Levels[pb.Level + 1].PointConstructionTemple;
             PointConstructionTradePost -= pb.TypeConstruction.Levels[pb.Level + 1].PointConstructionTradePost;
+            AddGreatness(pb.TypeConstruction.Levels[pb.Level + 1].GreatnessByConstruction);
 
             Debug.Assert(FreeBuilders >= 0);
             Debug.Assert(PointConstructionTemple >= 0);

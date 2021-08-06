@@ -280,7 +280,17 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void PrepareTurn()
         {
+            Debug.Assert(Level > 0);
+
             ResearchesAvailabled = TypeConstruction.ResearchesPerDay;
+        }
+
+        internal void AfterEndTurn()
+        {
+            Debug.Assert(Level > 0);
+
+            if (TypeConstruction.Levels[Level].GreatnessPerDay > 0)
+                Player.AddGreatness(TypeConstruction.Levels[Level].GreatnessPerDay);
         }
 
         internal bool CanResearch()

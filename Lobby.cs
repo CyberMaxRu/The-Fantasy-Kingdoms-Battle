@@ -231,7 +231,7 @@ namespace Fantasy_Kingdoms_Battle
                 // Общая подготовка хода
                 DoPrepareTurn();
 
-                for (int i = 0; i < Players.Count(); i++)
+                for (int i = 0; i < Players.Length; i++)
                 {
                     if (Players[i].IsLive || (Players[i].DayOfEndGame == Day - 1))
                     {
@@ -264,7 +264,15 @@ namespace Fantasy_Kingdoms_Battle
                     }
                 }
 
-                DoEndTurn();
+                for (int i = 0; i < Players.Length; i++)
+                {
+                    if (Players[i].IsLive || (Players[i].DayOfEndGame == Day - 1))
+                    {
+                        Players[i].AfterEndTurn();
+                    }
+                }
+
+                    DoEndTurn();
             }
 
             bool ExistsHumanPlayer()
