@@ -821,7 +821,12 @@ namespace Fantasy_Kingdoms_Battle
 
         private void LabelGreatness_ShowHint(object sender, EventArgs e)
         {
-            ShowHintForToolButton(labelGreatness, "Величие", "Уровень величия и количество очков до следующего уровня");
+            formHint.AddStep1Header("Уровень величия: " + curAppliedPlayer.LevelGreatness.ToString(), "",
+                $"Очков набрано: {curAppliedPlayer.PointGreatness} из {curAppliedPlayer.PointGreatnessForNextLevel}"
+                    + Environment.NewLine
+                    + "До следующего уровня: " + (curAppliedPlayer.PointGreatnessForNextLevel - curAppliedPlayer.PointGreatness).ToString()
+                    + Environment.NewLine
+                    + "Прибавление в день: " + curAppliedPlayer.PointGreatnessPerDay().ToString());
         }
 
         private void LabelDay_Click(object sender, EventArgs e)
