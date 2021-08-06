@@ -6,7 +6,6 @@
     <Description>Зомби - любимые игрушки некромантов. Зомби весьма сильны, но очень медлительны. Основной прием самозащиты от зомби - бег трусцой.</Description>
     <ImageIndex>103</ImageIndex>
     <KindCreature>Undead</KindCreature>
-    <Reward>50</Reward>
     <MaxLevel>10</MaxLevel>
     <DefaultPositionPriority>10</DefaultPositionPriority>
     <BaseParameters>
@@ -34,6 +33,10 @@
     <Abilities>
       <Ability>ZombieBasicAttack</Ability>
     </Abilities>
+    <Reward>
+      <Gold>25</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
   </TypeMonster>
   <TypeMonster>
     <ID>Skelet</ID>
@@ -41,7 +44,6 @@
     <Description>Эти ожившие кости движимы черной магией неизвестного происхождения.</Description>
     <ImageIndex>100</ImageIndex>
     <KindCreature>Undead</KindCreature>
-    <Reward>25</Reward>
     <MaxLevel>10</MaxLevel>
     <DefaultPositionPriority>10</DefaultPositionPriority>
     <BaseParameters>
@@ -69,6 +71,10 @@
     <Abilities>
       <Ability>SkeletBasicAttack</Ability>
     </Abilities>
+    <Reward>
+      <Gold>25</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
   </TypeMonster>
   <TypeMonster>
     <ID>SkeletArcher</ID>
@@ -76,7 +82,6 @@
     <Description>Скелет лучника - прекрасная анатомическая модель. Жаль, что подойти к ней не так-то просто, а убежать от неё еще труднее.</Description>
     <ImageIndex>95</ImageIndex>
     <KindCreature>Undead</KindCreature>
-    <Reward>25</Reward>
     <MaxLevel>10</MaxLevel>
     <DefaultPositionPriority>50</DefaultPositionPriority>
     <BaseParameters>
@@ -104,6 +109,10 @@
     <Abilities>
       <Ability>SkeletArcherBasicAttack</Ability>
     </Abilities>
+    <Reward>
+      <Gold>25</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
   </TypeMonster>
   <TypeMonster>
     <ID>SkeletVeteran</ID>
@@ -111,7 +120,6 @@
     <Description>Скелет ветеран не потерял ни капли своего боевого опыта потому гораздо опаснее обычного скелета.</Description>
     <ImageIndex>98</ImageIndex>
     <KindCreature>Undead</KindCreature>
-    <Reward>75</Reward>
     <MaxLevel>10</MaxLevel>
     <DefaultPositionPriority>50</DefaultPositionPriority>
     <BaseParameters>
@@ -139,6 +147,10 @@
     <Abilities>
       <Ability>SkeletVeteranBasicAttack</Ability>
     </Abilities>
+    <Reward>
+      <Gold>75</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
   </TypeMonster>
   <TypeMonster>
     <ID>SkeletSniper</ID>
@@ -146,7 +158,6 @@
     <Description>Этот стрелок-снайпер с веками нисколько не потерял, а скорее приобрез заметную "смертельность".</Description>
     <ImageIndex>101</ImageIndex>
     <KindCreature>Undead</KindCreature>
-    <Reward>50</Reward>
     <MaxLevel>15</MaxLevel>
     <DefaultPositionPriority>60</DefaultPositionPriority>
     <BaseParameters>
@@ -174,6 +185,10 @@
     <Abilities>
       <Ability>SkeletSniperBasicAttack</Ability>
     </Abilities>
+    <Reward>
+      <Gold>50</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
   </TypeMonster>
   <TypeMonster>
     <ID>Ghost</ID>
@@ -181,7 +196,6 @@
     <Description>Прозрачные, почти незаметные духи павших героев после смерти дают волю накопленным при жизни обидам и принимаются мстить живым.</Description>
     <ImageIndex>97</ImageIndex>
     <KindCreature>Undead</KindCreature>
-    <Reward>75</Reward>
     <MaxLevel>10</MaxLevel>
     <DefaultPositionPriority>30</DefaultPositionPriority>
     <BaseParameters>
@@ -209,6 +223,10 @@
     <Abilities>
       <Ability>GhostBasicAttack</Ability>
     </Abilities>
+    <Reward>
+      <Gold>75</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
   </TypeMonster>
   <TypeMonster>
     <ID>Lich</ID>
@@ -216,7 +234,6 @@
     <Description>Лич - это, как правило, могущественный маг, ставший еще более могущественным после смерти.</Description>
     <ImageIndex>99</ImageIndex>
     <KindCreature>Undead</KindCreature>
-    <Reward>75</Reward>
     <MaxLevel>15</MaxLevel>
     <DefaultPositionPriority>40</DefaultPositionPriority>
     <BaseParameters>
@@ -244,6 +261,10 @@
     <Abilities>
       <Ability>LichBasicAttack</Ability>
     </Abilities>
+    <Reward>
+      <Gold>75</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
   </TypeMonster>
   <TypeMonster>
     <ID>Vampire</ID>
@@ -251,7 +272,6 @@
     <Description>Вампиры - древний вид, вымирающий вот уже несколько тысяч лет. Носят черное, потому что цвета темнее ещё не придумали, из напитков предпочитают свежую человеческую кровь. С предубеждением относятся к чесноку, серебру, осиновым колам и яркому солнцу.</Description>
     <ImageIndex>102</ImageIndex>
     <KindCreature>Undead</KindCreature>
-    <Reward>200</Reward>
     <MaxLevel>20</MaxLevel>
     <DefaultPositionPriority>15</DefaultPositionPriority>
     <BaseParameters>
@@ -279,6 +299,10 @@
     <Abilities>
       <Ability>VampireAttack</Ability>
     </Abilities>
+    <Reward>
+      <Gold>200</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
   </TypeMonster>
   <TypeMonster>
     <ID>AncientLich</ID>
@@ -286,7 +310,6 @@
     <Description>Это один из темных магов, которыми так богата древняя история Ардании. Его особенность лишь в том, что этот сумел возродиться и, похоже, ничуть не потерял в своей силе, хотя и похудел изрядно.</Description>
     <ImageIndex>14</ImageIndex>
     <KindCreature>Undead</KindCreature>
-    <Reward>25</Reward>
     <MaxLevel>10</MaxLevel>
     <DefaultPositionPriority>40</DefaultPositionPriority>
     <BaseParameters>
@@ -314,6 +337,10 @@
     <Abilities>
       <Ability>LichBasicAttack</Ability>
     </Abilities>
+    <Reward>
+      <Gold>150</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
   </TypeMonster>
   <TypeMonster>
     <ID>Wolf</ID>
@@ -321,7 +348,6 @@
     <Description>Волки - такая же привычная часть пейзажа в лесах Ардании, как, скажем, деревья. Но деревья, в отличие от волков, не грызут героев и простой люд.</Description>
     <ImageIndex>8</ImageIndex>
     <KindCreature>Beast</KindCreature>
-    <Reward>25</Reward>
     <MaxLevel>5</MaxLevel>
     <DefaultPositionPriority>20</DefaultPositionPriority>
     <BaseParameters>
@@ -349,6 +375,10 @@
     <Abilities>
       <Ability>WolfBasicAttack</Ability>
     </Abilities>
+    <Reward>
+      <Gold>25</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
   </TypeMonster>
   <TypeMonster>
     <ID>OldWolf</ID>
@@ -356,7 +386,6 @@
     <Description>Старый волк сильнее, хитрее и опасней своих "зеленых" сородичей. С возрастом его зубы становятся крепче, а клыки - острее.</Description>
     <ImageIndex>5</ImageIndex>
     <KindCreature>Beast</KindCreature>
-    <Reward>25</Reward>
     <MaxLevel>10</MaxLevel>
     <DefaultPositionPriority>10</DefaultPositionPriority>
     <BaseParameters>
@@ -384,6 +413,10 @@
     <Abilities>
       <Ability>WolfBasicAttack</Ability>
     </Abilities>
+    <Reward>
+      <Gold>25</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
   </TypeMonster>
   <TypeMonster>
     <ID>Serpent</ID>
@@ -391,7 +424,6 @@
     <Description>Говорят, именно летающие змеи виновны в исчезновении героев, забредающих слишком далеко от своих гильдий.</Description>
     <ImageIndex>28</ImageIndex>
     <KindCreature>Beast</KindCreature>
-    <Reward>25</Reward>
     <MaxLevel>5</MaxLevel>
     <DefaultPositionPriority>10</DefaultPositionPriority>
     <BaseParameters>
@@ -419,6 +451,10 @@
     <Abilities>
       <Ability>SerpentBasicAttack</Ability>
     </Abilities>
+    <Reward>
+      <Gold>25</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
   </TypeMonster>
   <TypeMonster>
     <ID>Bear</ID>
@@ -426,7 +462,6 @@
     <Description>Медведи любят полакомиться заблудившимися героями, приблизившимися к берлоге.</Description>
     <ImageIndex>1</ImageIndex>
     <KindCreature>Beast</KindCreature>
-    <Reward>100</Reward>
     <MaxLevel>10</MaxLevel>
     <DefaultPositionPriority>10</DefaultPositionPriority>
     <BaseParameters>
@@ -454,6 +489,10 @@
     <Abilities>
       <Ability>BearBasicAttack</Ability>
     </Abilities>
+    <Reward>
+      <Gold>100</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
   </TypeMonster>
   <TypeMonster>
     <ID>GreatBear</ID>
@@ -461,7 +500,6 @@
     <Description>Это агрессивный и жестокий хищник. Великий медведь может разодрать в клочья даже героя, защищенного крепким доспехом!</Description>
     <ImageIndex>3</ImageIndex>
     <KindCreature>Beast</KindCreature>
-    <Reward>100</Reward>
     <MaxLevel>15</MaxLevel>
     <DefaultPositionPriority>10</DefaultPositionPriority>
     <BaseParameters>
@@ -489,6 +527,10 @@
     <Abilities>
       <Ability>BearBasicAttack</Ability>
     </Abilities>
+    <Reward>
+      <Gold>100</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
   </TypeMonster>
   <TypeMonster>
     <ID>WerewolfBear</ID>
@@ -496,7 +538,6 @@
     <Description>Огромный прямоходящий медведь - гроза всех четверолапых Ардании. Любит полакомиться героями, но не брезгует и простыми крестьянами.</Description>
     <ImageIndex>2</ImageIndex>
     <KindCreature>Beast</KindCreature>
-    <Reward>150</Reward>
     <MaxLevel>20</MaxLevel>
     <DefaultPositionPriority>10</DefaultPositionPriority>
     <BaseParameters>
@@ -524,6 +565,10 @@
     <Abilities>
       <Ability>WerewolfBearBasicAttack</Ability>
     </Abilities>
+    <Reward>
+      <Gold>150</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
   </TypeMonster>
   <TypeMonster>
     <ID>Minotaur</ID>
@@ -531,7 +576,6 @@
     <Description>Огромные полулюди-полубыки, обожающие сеять разрушение и смерть. В малом количестве они не очень опасны, но стадо минотавров способно сровнять с землей небольшое королевство.</Description>
     <ImageIndex>26</ImageIndex>
     <KindCreature>Minotaur</KindCreature>
-    <Reward>50</Reward>
     <MaxLevel>10</MaxLevel>
     <DefaultPositionPriority>10</DefaultPositionPriority>
     <BaseParameters>
@@ -559,6 +603,10 @@
     <Abilities>
       <Ability>MinotaurBasicAttack</Ability>
     </Abilities>
+    <Reward>
+      <Gold>50</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
   </TypeMonster>
   <TypeMonster>
     <ID>BlackMinotaur</ID>
@@ -566,7 +614,6 @@
     <Description>Черные минотавры еще свирепей и опасней своих менее загорелых собратьев.</Description>
     <ImageIndex>27</ImageIndex>
     <KindCreature>Minotaur</KindCreature>
-    <Reward>75</Reward>
     <MaxLevel>15</MaxLevel>
     <DefaultPositionPriority>10</DefaultPositionPriority>
     <BaseParameters>
@@ -594,6 +641,10 @@
     <Abilities>
       <Ability>MinotaurBasicAttack</Ability>
     </Abilities>
+    <Reward>
+      <Gold>75</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
   </TypeMonster>
   <TypeMonster>
     <ID>Ogre</ID>
@@ -601,7 +652,6 @@
     <Description>Огры-людоеды знамениты своими размерами, силой и привычкой ложиться спать в самых неожиданных местах.</Description>
     <ImageIndex>34</ImageIndex>
     <KindCreature>Ogre</KindCreature>
-    <Reward>100</Reward>
     <MaxLevel>15</MaxLevel>
     <DefaultPositionPriority>10</DefaultPositionPriority>
     <BaseParameters>
@@ -629,6 +679,10 @@
     <Abilities>
       <Ability>OgreBasicAttack</Ability>
     </Abilities>
+    <Reward>
+      <Gold>100</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
   </TypeMonster>
   <TypeMonster>
     <ID>GrendarOgre</ID>
@@ -636,7 +690,6 @@
     <Description>Грендар - самый большой, самый сильный и самый ленивый из огров. Больше всего любит с большим шумом разрушать здания, а то и целые деревни.</Description>
     <ImageIndex>15</ImageIndex>
     <KindCreature>Ogre</KindCreature>
-    <Reward>200</Reward>
     <MaxLevel>30</MaxLevel>
     <DefaultPositionPriority>10</DefaultPositionPriority>
     <BaseParameters>
@@ -664,6 +717,10 @@
     <Abilities>
       <Ability>OgreBasicAttack</Ability>
     </Abilities>
+    <Reward>
+      <Gold>200</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
   </TypeMonster>
   <TypeMonster>
     <ID>Werewolf</ID>
@@ -671,7 +728,6 @@
     <Description>Волколак - это человек, зараженный редким вирусом ликантропии. Всем известно, что излечить его измученное тело и спасти заблудшую душу можно, лишь убив его. Такое лечение опасно - немало "докторов" теперь сами воют на луну по ночам.</Description>
     <ImageIndex>9</ImageIndex>
     <KindCreature>Beast</KindCreature>
-    <Reward>150</Reward>
     <MaxLevel>10</MaxLevel>
     <DefaultPositionPriority>10</DefaultPositionPriority>
     <BaseParameters>
@@ -699,6 +755,10 @@
     <Abilities>
       <Ability>WerewolfBasicAttack</Ability>
     </Abilities>
+    <Reward>
+      <Gold>150</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
   </TypeMonster>
   <TypeMonster>
     <ID>Dragon</ID>
@@ -706,7 +766,6 @@
     <Description>Гадалки Ардании говорят, что встретить дракона, знак крылатой смерти, - дурная примета. Сулит огромные потери. Тот, кто увидит дракона должен будет в ближайшем будущем принять решительные и активные действия, возможно, у него появится тяга к перемене мест или он станет глубоко верующим человеком.</Description>
     <ImageIndex>23</ImageIndex>
     <KindCreature>Dragon</KindCreature>
-    <Reward>100</Reward>
     <MaxLevel>20</MaxLevel>
     <DefaultPositionPriority>10</DefaultPositionPriority>
     <BaseParameters>
@@ -734,6 +793,10 @@
     <Abilities>
       <Ability>DragonBasicAttack</Ability>
     </Abilities>
+    <Reward>
+      <Gold>100</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
   </TypeMonster>
   <TypeMonster>
     <ID>Rat</ID>
@@ -741,7 +804,6 @@
     <Description>Целебная проточная вода в канализациях Ардании способствует увеличению популяции крыс. Оттого-то они вырастают до таких огромных размеров.</Description>
     <ImageIndex>6</ImageIndex>
     <KindCreature>Beast</KindCreature>
-    <Reward>100</Reward>
     <MaxLevel>5</MaxLevel>
     <DefaultPositionPriority>10</DefaultPositionPriority>
     <BaseParameters>
@@ -769,6 +831,10 @@
     <Abilities>
       <Ability>RatBasicAttack</Ability>
     </Abilities>
+    <Reward>
+      <Gold>10</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
   </TypeMonster>
   <TypeMonster>
     <ID>OldRat</ID>
@@ -776,7 +842,6 @@
     <Description>Некоторые крысы за свою жизнь съедают такое количество объедков, что становятся матерыми крысами.</Description>
     <ImageIndex>4</ImageIndex>
     <KindCreature>Beast</KindCreature>
-    <Reward>100</Reward>
     <MaxLevel>5</MaxLevel>
     <DefaultPositionPriority>10</DefaultPositionPriority>
     <BaseParameters>
@@ -804,6 +869,10 @@
     <Abilities>
       <Ability>OldRatBasicAttack</Ability>
     </Abilities>
+    <Reward>
+      <Gold>20</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
   </TypeMonster>
   <TypeMonster>
     <ID>KingRat</ID>
@@ -811,7 +880,6 @@
     <Description>Король Крыс Пятый, наследник славной династии крысиных королей, повелитель канализации всея Ардании. Он пуляет отравленную воду в своих врагов, из-за чего последние страдают от различных заболеваний. Даже поговаривают, что это он когда-то украл державу Сидриана!</Description>
     <ImageIndex>17</ImageIndex>
     <KindCreature>Beast</KindCreature>
-    <Reward>1000</Reward>
     <MaxLevel>30</MaxLevel>
     <DefaultPositionPriority>10</DefaultPositionPriority>
     <BaseParameters>
@@ -839,6 +907,10 @@
     <Abilities>
       <Ability>KingRatBasicAttack</Ability>
     </Abilities>
+    <Reward>
+      <Gold>1000</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
   </TypeMonster>
   <TypeMonster>
     <ID>KingSkeleton</ID>
@@ -846,7 +918,6 @@
     <Description>Король-скелет вот уже несколько столетий является основной достопримечательностью Ардании. Правда, мало кто его видел - знают-то о нем все, но вот подойти к нему боятся даже редкие смельчаки.</Description>
     <ImageIndex>18</ImageIndex>
     <KindCreature>Undead</KindCreature>
-    <Reward>1000</Reward>
     <MaxLevel>30</MaxLevel>
     <DefaultPositionPriority>10</DefaultPositionPriority>
     <BaseParameters>
@@ -874,6 +945,10 @@
     <Abilities>
       <Ability>KingSkeletonBasicAttack</Ability>
     </Abilities>
+    <Reward>
+      <Gold>1000</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
   </TypeMonster>
   <TypeMonster>
     <ID>Ratman</ID>
@@ -881,7 +956,6 @@
     <Description>Магические отходы, попадающие в сточные воды канализаций, дают непредсказуемые результаты. Говорят, крысолюды, или огромные человекоподобные прямоходящие крысы, - это результат мутации.</Description>
     <ImageIndex>7</ImageIndex>
     <KindCreature>Beast</KindCreature>
-    <Reward>1000</Reward>
     <MaxLevel>30</MaxLevel>
     <DefaultPositionPriority>10</DefaultPositionPriority>
     <BaseParameters>
@@ -909,6 +983,10 @@
     <Abilities>
       <Ability>RatmanBasicAttack</Ability>
     </Abilities>
+    <Reward>
+      <Gold>100</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
   </TypeMonster>
   <TypeMonster>
     <ID>ElementalEarth</ID>
@@ -916,7 +994,6 @@
     <Description>При виде человека элементаль молнии начинает светиться характерным ярким светом. Некоторые исследователи полагают, что такое поведение элементалей - всего лишь радостное приветствие.</Description>
     <ImageIndex>24</ImageIndex>
     <KindCreature>MagicCreature</KindCreature>
-    <Reward>125</Reward>
     <MaxLevel>15</MaxLevel>
     <DefaultPositionPriority>11</DefaultPositionPriority>
     <BaseParameters>
@@ -944,6 +1021,10 @@
     <Abilities>
       <Ability>DragonBasicAttack</Ability>
     </Abilities>
+    <Reward>
+      <Gold>125</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
   </TypeMonster>
   <TypeMonster>
     <ID>ElementalFire</ID>
@@ -951,7 +1032,6 @@
     <Description>Элементалей плана огня можно легко отличить от прочих элементалей по пламени, охватывающем одежду тех, кто приближается к ним слишком близко.</Description>
     <ImageIndex>25</ImageIndex>
     <KindCreature>MagicCreature</KindCreature>
-    <Reward>125</Reward>
     <MaxLevel>15</MaxLevel>
     <DefaultPositionPriority>12</DefaultPositionPriority>
     <BaseParameters>
@@ -979,5 +1059,9 @@
     <Abilities>
       <Ability>DragonBasicAttack</Ability>
     </Abilities>
+    <Reward>
+      <Gold>125</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
   </TypeMonster>
 </TypeMonsters>

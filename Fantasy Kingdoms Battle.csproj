@@ -78,6 +78,7 @@
     <Compile Include="Player.cs" />
     <Compile Include="PlayerObject.cs" />
     <Compile Include="ComputerPlayer.cs" />
+    <Compile Include="TypeReward.cs" />
     <Compile Include="SecondarySkill.cs" />
     <Compile Include="Source\Forms\CustomWindow.cs" />
     <Compile Include="Source\Forms\WindowAboutProgram.cs" />

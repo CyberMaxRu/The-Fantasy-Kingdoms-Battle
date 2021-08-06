@@ -21,6 +21,11 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Debug.Assert(th.ID != ID);
             }
+
+            // Загружаем награду
+            TypeReward = new TypeReward(n.SelectSingleNode("Reward"));
         }
+
+        internal TypeReward TypeReward { get; }// Награда за убийство существа
     }
 }

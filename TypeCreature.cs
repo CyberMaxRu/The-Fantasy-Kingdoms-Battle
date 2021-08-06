@@ -17,7 +17,6 @@ namespace Fantasy_Kingdoms_Battle
             KindCreature = FormMain.Config.FindKindCreature(XmlUtils.GetStringNotNull(n.SelectSingleNode("KindCreature")));
             MaxLevel = XmlUtils.GetInteger(n.SelectSingleNode("MaxLevel"));
             DefaultPositionPriority = XmlUtils.GetInteger(n.SelectSingleNode("DefaultPositionPriority"));
-            Reward = XmlUtils.GetInteger(n.SelectSingleNode("Reward"));
             QuantityArrows = XmlUtils.GetInteger(n.SelectSingleNode("QuantityArrows"));
 
             if (n.SelectSingleNode("PersistentState") != null)
@@ -29,8 +28,6 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(MaxLevel <= 100);
             Debug.Assert(DefaultPositionPriority >= 0);
             Debug.Assert(DefaultPositionPriority <= 1000);
-            Debug.Assert(Reward >= 0);
-            Debug.Assert(Reward <= 1000);
 
             // Загружаем основные параметры
             if (n.SelectSingleNode("BaseParameters") != null)
@@ -82,7 +79,6 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal KindCreature KindCreature { get; }// Вид существа
-        internal int Reward { get; }// Награда за убийство существа
         internal int MaxLevel { get; }// Максимальный уровень существа
         internal StateCreature PersistentStateHeroAtMap { get; set; }
         internal HeroParameters ParametersByHire { get; }// Параметры при создании существа
