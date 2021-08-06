@@ -31,7 +31,6 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly List<VCText> listRequirements = new List<VCText>();
         internal readonly VCLabelValue lblIncome;
         internal readonly VCLabelValue lblGreatnessAdd;
-        internal readonly VCLabelValue lblGreatnessPerDay;
         internal readonly VCLabelValue lblBuildersPerDay;
         internal readonly VCLabelValue lblGold;
         internal readonly VCLabelValue lblBuilders;
@@ -80,11 +79,7 @@ namespace Fantasy_Kingdoms_Battle
             lblGreatnessAdd.ImageIndex = FormMain.GUI_16_GREATNESS;
             lblGreatnessAdd.Width = widthControl;
 
-            lblGreatnessPerDay = new VCLabelValue(this, FormMain.Config.GridSize, lblGreatnessAdd.NextTop(), FormMain.Config.HintIncome, false);
-            lblGreatnessPerDay.ImageIndex = FormMain.GUI_16_GREATNESS;
-            lblGreatnessPerDay.Width = widthControl;
-
-            lblBuildersPerDay = new VCLabelValue(this, FormMain.Config.GridSize, lblGreatnessPerDay.NextTop(), FormMain.Config.HintIncome, false);
+            lblBuildersPerDay = new VCLabelValue(this, FormMain.Config.GridSize, lblGreatnessAdd.NextTop(), FormMain.Config.HintIncome, false);
             lblBuildersPerDay.ImageIndex = FormMain.GUI_16_BUILDER;
             lblBuildersPerDay.Width = widthControl;
 
@@ -194,7 +189,6 @@ namespace Fantasy_Kingdoms_Battle
             lblDescription.Visible = false;
             lblIncome.Visible = false;
             lblGreatnessAdd.Visible = false;
-            lblGreatnessPerDay.Visible = false;
             lblBuildersPerDay.Visible = false;
 
             foreach (VCText l in listRequirements)
@@ -285,7 +279,7 @@ namespace Fantasy_Kingdoms_Battle
             if (income > 0)
             {
                 lblIncome.ShiftY = nextTop;
-                lblIncome.Text = "+" + income.ToString();
+                lblIncome.Text = $"+{income}/день";
                 lblIncome.Visible = true;
 
                 nextTop = lblIncome.NextTop();
@@ -297,22 +291,22 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(addGreatness >= 0);
             Debug.Assert(greatnessPerDay >= 0);
 
-            if (addGreatness > 0)
+            if ((addGreatness > 0) || (greatnessPerDay > 0))
             {
                 lblGreatnessAdd.ShiftY = nextTop;
-                lblGreatnessAdd.Text = addGreatness.ToString();
                 lblGreatnessAdd.Visible = true;
 
+                if (addGreatness > 0)
+                    lblGreatnessAdd.Text = addGreatness.ToString();
+
+                if (greatnessPerDay > 0)
+                {
+                    if (addGreatness > 0)
+                        lblGreatnessAdd.Text += ", ";
+                    lblGreatnessAdd.Text += $"+{greatnessPerDay}/день";
+                }
+
                 nextTop = lblGreatnessAdd.NextTop();
-            }
-
-            if (greatnessPerDay > 0)
-            {
-                lblGreatnessPerDay.ShiftY = nextTop;
-                lblGreatnessPerDay.Text = $"+{greatnessPerDay}";
-                lblGreatnessPerDay.Visible = true;
-
-                nextTop = lblGreatnessPerDay.NextTop();
             }
         }
 
