@@ -34,7 +34,6 @@ namespace Fantasy_Kingdoms_Battle
     {
         private readonly List<VCPageButton> listFormPage = new List<VCPageButton>();
         private int nextLeft;
-        private VCPageButton currentPage;
 
         public VCPageControl(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList) : base(parent, shiftX, shiftY)
         {
@@ -42,6 +41,8 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal BitmapList BitmapList { get; }
+        internal VCPageButton CurrentPage { get; private set; }
+        internal event EventHandler PageChanged;
 
         internal VCPageButton AddPage(int imageIndex, EventHandler onShowHint)
         {
@@ -85,18 +86,20 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void ActivatePage(VCPageButton pc)
         {
-            if (pc != currentPage)
+            if (pc != CurrentPage)
             {
-                if (currentPage != null)
+                if (CurrentPage != null)
                 {
-                    currentPage.ManualSelected = false;
-                    currentPage.Page.Visible = false;
+                    CurrentPage.ManualSelected = false;
+                    CurrentPage.Page.Visible = false;
                 }
-                currentPage = pc;
-                currentPage.ManualSelected = true;
-                currentPage.Page.Visible = true;
+                CurrentPage = pc;
+                CurrentPage.ManualSelected = true;
+                CurrentPage.Page.Visible = true;
 
                 Program.formMain.SetNeedRedrawFrame();
+
+                PageChanged.Invoke(this, new EventArgs());
             }
         }
     }

@@ -266,7 +266,7 @@ namespace Fantasy_Kingdoms_Battle
                             }*/
                             //if (vc.Rectangle.Contains(vc2.Rectangle))
                             //    vc2.IsError = true;
-                            Debug.Assert(!vc.Rectangle.Contains(vc2.Rectangle), vc.Rectangle.ToString() + " и " + vc2.Rectangle.ToString());
+                            //Debug.Assert(!vc.Rectangle.Contains(vc2.Rectangle), vc.Rectangle.ToString() + " и " + vc2.Rectangle.ToString());
                         }
                     }
 
