@@ -142,7 +142,7 @@ namespace Fantasy_Kingdoms_Battle
             // Иконка
             if (Visible && (ImageIndex != -1))
             {
-                BitmapList.DrawImage(g, ImageIndex, (UseFilter || ImageIsEnabled) && NormalImage, HighlightUnderMouse && MouseOver, Left + ShiftImageX, Top + ShiftImageY);
+                BitmapList.DrawImage(g, ImageIndex, (UseFilter || ImageIsEnabled) && NormalImage, HighlightUnderMouse && MouseOver && !MouseClicked, Left + ShiftImageX, Top + ShiftImageY);
 
                 // Цена
                 if (Cost != null)
