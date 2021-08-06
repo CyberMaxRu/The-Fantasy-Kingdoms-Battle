@@ -101,7 +101,11 @@ namespace Fantasy_Kingdoms_Battle
             if (Hidden)
                 Program.formMain.formHint.AddStep1Header("Неизвестное место", "Место не разведано", "Установите флаг разведки для отправки героев к месту");
             else
+            {
                 Program.formMain.formHint.AddStep1Header(TypeLair.Name, "", TypeLair.Description);
+                Program.formMain.formHint.AddStep2Income(TypeLair.Reward.Gold);
+                Program.formMain.formHint.AddStep3Greatness(TypeLair.Reward.Greatness, 0);
+            }
         }
 
         internal string NameLair()

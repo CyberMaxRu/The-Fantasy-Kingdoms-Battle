@@ -33,6 +33,8 @@ namespace Fantasy_Kingdoms_Battle
             //Debug.Assert(IsLive);
 
             Program.formMain.formHint.AddStep1Header(TypeMonster.Name, "", TypeMonster.Description);
+            Program.formMain.formHint.AddStep2Income(TypeMonster.TypeReward.Gold);
+            Program.formMain.formHint.AddStep3Greatness(TypeMonster.TypeReward.Greatness, 0);
         }
 
         internal override void HideInfo()
