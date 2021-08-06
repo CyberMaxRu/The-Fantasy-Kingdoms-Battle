@@ -40,6 +40,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int Gold { get => gold; set { Debug.Assert(TypeConstruction.HasTreasury); gold = value; } }
         internal List<PlayerHero> Heroes { get; } = new List<PlayerHero>();
         internal List<PlayerResearch> Researches { get; } = new List<PlayerResearch>();
+        internal int ResearchesAvailabled { get; private set; }// Сколько еще исследований доступно на этом ходу
         internal List<Entity> Items { get; } = new List<Entity>();// Товары, доступные в строении
         internal List<PlayerItem> Warehouse { get; } = new List<PlayerItem>();// Склад здания
 
@@ -268,6 +269,23 @@ namespace Fantasy_Kingdoms_Battle
         {
             Program.formMain.panelConstructionInfo.Visible = true;
             Program.formMain.panelConstructionInfo.PlayerObject = this;
+        }
+
+        internal void ResearchCompleted()
+        {
+            Debug.Assert(ResearchesAvailabled > 0);
+
+            ResearchesAvailabled--;
+        }
+
+        internal void PrepareTurn()
+        {
+            ResearchesAvailabled = TypeConstruction.ResearchesPerDay;
+        }
+
+        internal bool CanResearch()
+        {
+            return ResearchesAvailabled > 0;
         }
     }
 }

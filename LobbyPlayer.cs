@@ -154,6 +154,9 @@ namespace Fantasy_Kingdoms_Battle
 
         internal virtual void PrepareTurn()
         {
+            foreach (PlayerConstruction pc in Constructions)
+                pc.PrepareTurn();
+
             UpdateBuildersNextDay();
 
             Builders = BuildersAtNextDay;

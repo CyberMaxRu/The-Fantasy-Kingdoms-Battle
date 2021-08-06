@@ -23,12 +23,15 @@ namespace Fantasy_Kingdoms_Battle
             DefaultLevel = XmlUtils.GetInteger(n.SelectSingleNode("DefaultLevel"));
             MaxLevel = XmlUtils.GetInteger(n.SelectSingleNode("MaxLevel"));
             LevelAsQuantity = XmlUtils.GetBool(n.SelectSingleNode("LevelAsQuantity"), false);
+            ResearchesPerDay = XmlUtils.GetIntegerNotNull(n.SelectSingleNode("ResearchesPerDay"));
 
             Debug.Assert(DefaultLevel >= 0);
             Debug.Assert(DefaultLevel <= 5);
             Debug.Assert(MaxLevel > 0);
             Debug.Assert(MaxLevel <= 10);
             Debug.Assert(DefaultLevel <= MaxLevel);
+            Debug.Assert(ResearchesPerDay > 0);
+            Debug.Assert(ResearchesPerDay <= 10);
 
             // Загружаем информацию об уровнях
             Levels = new Level[MaxLevel + 1];// Для упрощения работы с уровнями, добавляем 1, чтобы уровень был равен индексу в массиве
@@ -95,6 +98,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal Level[] Levels;
         internal Research[,,] Researches;
+        internal int ResearchesPerDay { get; }
         internal PanelConstruction Panel { get; set; }
         internal bool HasTreasury { get; }// Имеет собственную казну
         internal int GoldByConstruction { get; }// Количество золота в казне при постройке

@@ -11,6 +11,7 @@
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <HasTreasury>True</HasTreasury>
+    <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>castle_select.wav</SoundSelect>
     <Levels>
       <Level>
@@ -76,6 +77,7 @@
     <MaxLevel>1</MaxLevel>
     <LevelAsQuantity>True</LevelAsQuantity>
     <HasTreasury>False</HasTreasury>
+    <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>peasant_house_select.wav</SoundSelect>
     <Levels>
       <Level>
@@ -99,6 +101,7 @@
     <MaxLevel>1</MaxLevel>
     <LevelAsQuantity>True</LevelAsQuantity>
     <HasTreasury>False</HasTreasury>
+    <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>mill_select.wav</SoundSelect>
     <Levels>
       <Level>
@@ -122,6 +125,7 @@
     <MaxLevel>10</MaxLevel>
     <LevelAsQuantity>True</LevelAsQuantity>
     <HasTreasury>False</HasTreasury>
+    <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>tradepost_select.wav</SoundSelect>
     <Levels>
       <Level>
@@ -207,6 +211,7 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <LayersResearches>1</LayersResearches>
+    <ResearchesPerDay>1</ResearchesPerDay>
     <HasTreasury>False</HasTreasury>
     <SoundSelect>marketplace_select.wav</SoundSelect>
     <Levels>
@@ -303,6 +308,7 @@
     <MaxLevel>3</MaxLevel>
     <HasTreasury>False</HasTreasury>
     <LayersResearches>4</LayersResearches>
+    <ResearchesPerDay>2</ResearchesPerDay>
     <SoundSelect>smithy_select.wav</SoundSelect>
     <Levels>
       <Level>
@@ -625,6 +631,7 @@
     <Pos>1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>2</MaxLevel>
+    <ResearchesPerDay>1</ResearchesPerDay>
     <HasTreasury>False</HasTreasury>
     <SoundSelect>tavern_select.wav</SoundSelect>
     <Levels>
@@ -660,6 +667,7 @@
     <MaxLevel>1</MaxLevel>
     <HasTreasury>False</HasTreasury>
     <LayersResearches>1</LayersResearches>
+    <ResearchesPerDay>2</ResearchesPerDay>
     <SoundSelect>magic_bazaar2_select.wav</SoundSelect>
     <Levels>
       <Level>
@@ -751,6 +759,7 @@
     <Pos>4</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <ResearchesPerDay>1</ResearchesPerDay>
     <HasTreasury>False</HasTreasury>
     <SoundSelect>magic_bazaar_select.wav</SoundSelect>
     <Levels>
@@ -773,6 +782,7 @@
     <Pos>2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>2</MaxLevel>
+    <ResearchesPerDay>1</ResearchesPerDay>
     <HasTreasury>False</HasTreasury>
     <SoundSelect>library_select.wav</SoundSelect>
     <Levels>
@@ -800,6 +810,7 @@
     <Pos>3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <ResearchesPerDay>1</ResearchesPerDay>
     <HasTreasury>False</HasTreasury>
     <SoundSelect>statue_select.wav</SoundSelect>
     <Levels>
@@ -821,6 +832,7 @@
     <Pos>1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <ResearchesPerDay>1</ResearchesPerDay>
     <HasTreasury>False</HasTreasury>
     <SoundSelect>hall_of_lords_select.wav</SoundSelect>
     <Levels>
@@ -843,6 +855,7 @@
     <Pos>2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <ResearchesPerDay>1</ResearchesPerDay>
     <HasTreasury>False</HasTreasury>
     <SoundSelect>hospital_select.wav</SoundSelect>
     <Levels>
@@ -865,6 +878,7 @@
     <Pos>3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <ResearchesPerDay>1</ResearchesPerDay>
     <HasTreasury>False</HasTreasury>
     <SoundSelect>arena_select.wav</SoundSelect>
     <Levels>
@@ -887,6 +901,7 @@
     <Pos>4</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
+    <ResearchesPerDay>1</ResearchesPerDay>
     <HasTreasury>False</HasTreasury>
     <SoundSelect>garden_select.wav</SoundSelect>
     <Levels>

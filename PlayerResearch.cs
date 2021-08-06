@@ -34,6 +34,10 @@ namespace Fantasy_Kingdoms_Battle
             if (Construction.Player.Gold < Cost())
                 return false;
 
+            // Проверяем, что еще можно делать исследования
+            if (!Construction.CanResearch())
+                return false;
+
             // Проверяем требования к исследованию
             return Construction.Player.CheckRequirements(Research.Requirements);
         }
@@ -47,6 +51,9 @@ namespace Fantasy_Kingdoms_Battle
             else
                 Construction.Player.TextRequirements(Research.Requirements, list);
 
+            if (!Construction.CanResearch())
+                list.Add(new TextRequirement(false, "Больше нельзя выполнять исследований в этот день"));
+
             return list;
         }
 
@@ -56,6 +63,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Construction.Player.SpendGold(Cost());
             Construction.Researches.Remove(this);
+            Construction.ResearchCompleted();
             AddEntity(Research.Entity);
 
             Program.formMain.SetNeedRedrawFrame();
