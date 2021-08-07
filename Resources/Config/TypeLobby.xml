@@ -75,7 +75,30 @@
         </Priority>
       </Defense>
     </CoefficientFlags>
-    <LairSettings Layers="3">
+    <LairSettings Layers="4">
+      <Layer>
+        <Number>0</Number>
+        <CostScout>100</CostScout>
+        <CostAttack>250</CostAttack>
+        <CostDefense>200</CostDefense>
+        <Lairs>
+          <Lair>
+            <ID>HolyLand</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
+          </Lair>
+          <Lair>
+            <ID>Chest</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
+          </Lair>
+          <Lair>
+            <ID>House</ID>
+            <MinQuantity>3</MinQuantity>
+            <MaxQuantity>3</MaxQuantity>
+          </Lair>
+        </Lairs>
+      </Layer>
       <Layer>
         <Number>1</Number>
         <CostScout>100</CostScout>

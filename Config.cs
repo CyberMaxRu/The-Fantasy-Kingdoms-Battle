@@ -261,6 +261,8 @@ namespace Fantasy_Kingdoms_Battle
         internal int MinRowsEntities { get; private set; }// Минимальное количество строк сущностей в панели справа
         internal string IDHeroPeasant { get; private set; }// ID типа героя - крестьянин
         internal string IDConstructionCastle { get; private set; }// ID Замка
+        internal string IDPeasantHouse { get; private set; }// ID крестьянского дома
+        internal string IDEmptyPlace { get; private set; }// ID пустого места
         internal string IDHolyPlace { get; private set; }// ID Святой земли
         internal string IDTradePlace { get; private set; }// ID торгового места
         internal int WarehouseWidth { get; private set; }// Количество ячеек в ряду склада
@@ -561,6 +563,10 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(IDHeroPeasant.Length > 0);
             IDConstructionCastle = xmlDoc.SelectSingleNode("Game/Links/ConstructionCastle").InnerText;
             Debug.Assert(IDConstructionCastle.Length > 0);
+            IDPeasantHouse = xmlDoc.SelectSingleNode("Game/Links/PeasantHouse").InnerText;
+            Debug.Assert(IDPeasantHouse.Length > 0);
+            IDEmptyPlace = xmlDoc.SelectSingleNode("Game/Links/EmptyPlace").InnerText;
+            Debug.Assert(IDEmptyPlace.Length > 0);
             IDHolyPlace = xmlDoc.SelectSingleNode("Game/Links/HolyPlace").InnerText;
             Debug.Assert(IDHolyPlace.Length > 0);
             IDTradePlace = xmlDoc.SelectSingleNode("Game/Links/TradePlace").InnerText;

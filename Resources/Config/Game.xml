@@ -76,8 +76,10 @@
   <Links>
     <HeroPeasant>Peasant</HeroPeasant>
     <ConstructionCastle>Castle</ConstructionCastle>
-    <HolyPlace>Castle</HolyPlace>
-    <TradePlace>Castle</TradePlace>
+    <PeasantHouse>House</PeasantHouse>
+    <EmptyPlace>EmptyPlace</EmptyPlace>
+    <HolyPlace>HolyLand</HolyPlace>
+    <TradePlace>TradePlace</TradePlace>
   </Links>
   <Warehouse>
     <Width>10</Width>

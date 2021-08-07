@@ -13,7 +13,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         public TypeLobbyLayerSettings(XmlNode n, int quantitySlotLairs)
         {
-            Number = XmlUtils.GetInteger(n.SelectSingleNode("Number")) - 1;
+            Number = XmlUtils.GetInteger(n.SelectSingleNode("Number"));
             CostScout = XmlUtils.GetInteger(n.SelectSingleNode("CostScout"));
             CostAttack = XmlUtils.GetInteger(n.SelectSingleNode("CostAttack"));
             CostDefense = XmlUtils.GetInteger(n.SelectSingleNode("CostDefense"));
@@ -51,6 +51,19 @@ namespace Fantasy_Kingdoms_Battle
                 maxQuantity += ls.MaxQuantity;
             }
 
+            // Если количество сооружений меньше количества слотов, добиваем их пустыми местами
+            if (maxQuantity < quantitySlotLairs)
+            {
+                // Если надо добавлять пустые места, то не должно быть в настройках пустого места. Если есть - значит, неправильно настроено количество
+                foreach (TypeLobbyLairSettings ls in LairsSettings)
+                    Debug.Assert(ls.NameTypeLair != FormMain.Config.IDEmptyPlace);
+
+                TypeLobbyLairSettings s = new TypeLobbyLairSettings(FormMain.Config.IDEmptyPlace, quantitySlotLairs - maxQuantity);
+                LairsSettings.Add(s);
+                minQuantity += s.MinQuantity;
+                maxQuantity += s.MaxQuantity;
+            }
+
             Debug.Assert(minQuantity <= quantitySlotLairs);
             Debug.Assert(maxQuantity >= quantitySlotLairs);
         }
@@ -77,6 +90,17 @@ namespace Fantasy_Kingdoms_Battle
             NameTypeLair = n.SelectSingleNode("ID").InnerText;
             MinQuantity = XmlUtils.GetInteger(n.SelectSingleNode("MinQuantity"));
             MaxQuantity = XmlUtils.GetInteger(n.SelectSingleNode("MaxQuantity"));
+
+            Debug.Assert(MinQuantity >= 0);
+            Debug.Assert(MaxQuantity < 20);
+            Debug.Assert(MinQuantity <= MaxQuantity);
+        }
+
+        public TypeLobbyLairSettings(string ID, int quantity)
+        {
+            NameTypeLair = ID;
+            MinQuantity = quantity;
+            MaxQuantity = quantity;
 
             Debug.Assert(MinQuantity >= 0);
             Debug.Assert(MaxQuantity < 20);
