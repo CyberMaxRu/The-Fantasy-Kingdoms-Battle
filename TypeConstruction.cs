@@ -8,7 +8,7 @@ using System.Diagnostics;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal enum CategoryConstruction { Guild, Economic, Military, Temple, Lair, Place };// Тип сооружения
+    internal enum CategoryConstruction { Guild, Economic, Military, Temple, External, Lair, Place, BasePlace };// Тип сооружения
     internal enum Page { Guild, Economic, Temple, None };// Страница для размещения здания
     // Отношение к месту - свое (союзное), нейтральное, враг
     internal enum RelationPlace { Our, Neutral, Enemy };
@@ -20,7 +20,7 @@ namespace Fantasy_Kingdoms_Battle
     internal class TypeConstruction : TypeObject
     {
         private Uri uriSoundSelect;// Звук при выборе объекта
-        private string nameTypePlaceAfterClear;
+        private string nameTypePlaceForConstruct;
 
         public TypeConstruction(XmlNode n) : base(n)
         {
@@ -38,25 +38,6 @@ namespace Fantasy_Kingdoms_Battle
             MaxLevel = XmlUtils.GetInteger(n.SelectSingleNode("MaxLevel"));
             LevelAsQuantity = XmlUtils.GetBool(n.SelectSingleNode("LevelAsQuantity"), false);
             ResearchesPerDay = XmlUtils.GetInteger(n.SelectSingleNode("ResearchesPerDay"));
-
-            if (IsInternalConstruction)
-            {
-                Debug.Assert(DefaultLevel >= 0);
-                Debug.Assert(DefaultLevel <= 5);
-                Debug.Assert(MaxLevel > 0);
-                Debug.Assert(MaxLevel <= 10);
-                Debug.Assert(DefaultLevel <= MaxLevel);
-                Debug.Assert(ResearchesPerDay > 0);
-                Debug.Assert(ResearchesPerDay <= 10);
-            }
-            else
-            {
-                Debug.Assert(DefaultLevel >= 0);
-                Debug.Assert(DefaultLevel <= 5);
-                //Debug.Assert(MaxLevel == 1);
-                Debug.Assert(DefaultLevel <= MaxLevel);
-                //Debug.Assert(ResearchesPerDay == 0);
-            }
 
             // Проверяем, что таких же ID и наименования нет
             foreach (TypeConstruction tec in FormMain.Config.TypeConstructions)
@@ -149,8 +130,9 @@ namespace Fantasy_Kingdoms_Battle
                 RelationPlace = (RelationPlace)Enum.Parse(typeof(RelationPlace), n.SelectSingleNode("RelationPlace").InnerText);
             else
                 RelationPlace = RelationPlace.Our;
-            nameTypePlaceAfterClear = XmlUtils.GetString(n.SelectSingleNode("TypePlaceAfterClear"));
-            Debug.Assert(Name != nameTypePlaceAfterClear);
+
+            nameTypePlaceForConstruct = XmlUtils.GetString(n.SelectSingleNode("TypePlaceForConstruct"));
+            Debug.Assert(Name != nameTypePlaceForConstruct);
 
             // Информация о награде
             if (n.SelectSingleNode("Reward") != null)
@@ -166,6 +148,49 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Debug.Assert(MaxHeroes == 0);
             }
+
+            if (IsInternalConstruction)
+            {
+                Debug.Assert(DefaultLevel >= 0);
+                Debug.Assert(DefaultLevel <= 5);
+                Debug.Assert(MaxLevel > 0);
+                Debug.Assert(MaxLevel <= 10);
+                Debug.Assert(DefaultLevel <= MaxLevel);
+                Debug.Assert(ResearchesPerDay > 0);
+                Debug.Assert(ResearchesPerDay <= 10);
+
+                if (Category != CategoryConstruction.Temple)
+                {
+                    Debug.Assert(nameTypePlaceForConstruct == "");
+                }
+                else
+                {
+                    Debug.Assert(nameTypePlaceForConstruct != "");
+                }
+            }
+            else
+            {
+                Debug.Assert(DefaultLevel >= 0);
+                Debug.Assert(DefaultLevel <= 5);
+                //Debug.Assert(MaxLevel == 1);
+                Debug.Assert(DefaultLevel <= MaxLevel);
+                //Debug.Assert(ResearchesPerDay == 0);
+
+                if (Category == CategoryConstruction.External)
+                {
+                    Debug.Assert(nameTypePlaceForConstruct != "");
+                }
+                if (Category == CategoryConstruction.Place)
+                {
+                    //Debug.Assert(nameTypePlaceForConstruct == "");
+                }
+                else
+                        {
+                    Debug.Assert(nameTypePlaceForConstruct != "");
+                }
+            }
+
+
 
             //else
             //    throw new Exception("В конфигурации логова у " + ID + " нет информации об уровнях. ");
@@ -191,7 +216,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int MaxHeroes { get; }// Максимальное количество героев, которое может атаковать логово
         internal RelationPlace RelationPlace { get; }// Тип отношения к месту
         internal TypeReward TypeReward { get; }// Награда за зачистку логова
-        internal TypeConstruction TypePlaceAfterClear { get; private set; }// Тип места после зачистки
+        internal TypeConstruction TypePlaceForConstruct { get; private set; }// Тип сооружения, на котором строится сооружение
 
         internal void PlaySoundSelect()
         {
@@ -231,10 +256,10 @@ namespace Fantasy_Kingdoms_Battle
                             throw new Exception("Тип монстра " + mll.Monster.ID + " повторяется.");
             }
 
-            if (nameTypePlaceAfterClear.Length > 0)
-                TypePlaceAfterClear = FormMain.Config.FindTypeConstruction(nameTypePlaceAfterClear);
+            if (nameTypePlaceForConstruct.Length > 0)
+                TypePlaceForConstruct = FormMain.Config.FindTypeConstruction(nameTypePlaceForConstruct);
 
-            nameTypePlaceAfterClear = null;
+            nameTypePlaceForConstruct = null;
 
         }
 

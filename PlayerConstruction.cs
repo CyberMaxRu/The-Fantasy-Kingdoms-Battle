@@ -783,9 +783,9 @@ namespace Fantasy_Kingdoms_Battle
             Destroyed = true;
 
             // Ставим тип места, который должен быть после зачистки
-            Debug.Assert(!(TypeConstruction.TypePlaceAfterClear is null));
+            Debug.Assert(!(TypeConstruction.TypePlaceForConstruct is null));
 
-            PlayerConstruction pl = new PlayerConstruction(Player, TypeConstruction.TypePlaceAfterClear, X, Y, Layer);
+            PlayerConstruction pl = new PlayerConstruction(Player, TypeConstruction.TypePlaceForConstruct, X, Y, Layer);
             pl.Hidden = false;
             Player.Lairs[Layer, Y, X] = pl;
         }
