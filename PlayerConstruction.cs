@@ -443,8 +443,12 @@ namespace Fantasy_Kingdoms_Battle
                     Player.TextRequirements(research.Research.Requirements, list);
 
                     if (research.Research.Entity != null)
-                        if (!CanResearch())
-                            list.Add(new TextRequirement(false, "Больше нельзя выполнять исследований в этот день"));
+                    {
+                        if (ResearchesAvailabled > 0)
+                            list.Add(new TextRequirement(true, $"Доступно к изучению: {ResearchesAvailabled}"));
+                        else
+                            list.Add(new TextRequirement(false, "Больше нельзя изучить в этот день"));
+                    }
                 }
             }
 
