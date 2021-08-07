@@ -18,10 +18,12 @@ namespace Fantasy_Kingdoms_Battle
             uriSoundSelect = new Uri(Program.formMain.dirResources + @"Sound\Interface\ConstructionSelect\" + XmlUtils.GetStringNotNull(n.SelectSingleNode("SoundSelect")));
 
             // Загружаем исследования
+            int layersResearches = XmlUtils.GetInteger(n.SelectSingleNode("LayersResearches"));
             XmlNode nr = n.SelectSingleNode("Researches");
             if (nr != null)
             {
-                Researches = new Research[Convert.ToInt32(n.SelectSingleNode("LayersResearches").InnerText), FormMain.Config.PlateHeight, FormMain.Config.PlateWidth];
+                Debug.Assert(layersResearches > 0);
+                Researches = new Research[layersResearches, FormMain.Config.PlateHeight, FormMain.Config.PlateWidth];
 
                 Research research;
 
@@ -31,6 +33,10 @@ namespace Fantasy_Kingdoms_Battle
                     Debug.Assert(Researches[research.Layer, research.Coord.Y, research.Coord.X] == null);
                     Researches[research.Layer, research.Coord.Y, research.Coord.X] = research;
                 }
+            }
+            else
+            {
+                Debug.Assert(layersResearches == 0);
             }
         }
 
