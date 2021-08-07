@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Xml;
 using static Fantasy_Kingdoms_Battle.XmlUtils;
-using System.Windows.Forms;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -22,11 +16,7 @@ namespace Fantasy_Kingdoms_Battle
             if (ImageIndex > 0)
                 ImageIndex--;
 
-            Debug.Assert(ID.Length > 0);
-            Debug.Assert(Name.Length > 0);
-            Debug.Assert(Name.Length <= FormMain.Config.MaxLengthObjectName);
-            Debug.Assert(Description.Length > 0);
-            //Debug.Assert(ImageIndex >= 0);
+            CheckData();
         }
 
         public TypeObject(string id, string name, string description, int imageIndex)
@@ -36,10 +26,7 @@ namespace Fantasy_Kingdoms_Battle
             Description = description;
             ImageIndex = imageIndex;
 
-            Debug.Assert(ID.Length > 0);
-            Debug.Assert(Name.Length > 0);
-            Debug.Assert(Name.Length <= FormMain.Config.MaxLengthObjectName);
-            Debug.Assert(Description.Length > 0);
+            CheckData();
         }
 
         internal string ID { get; }// Уникальный (в пределах списка) код типа объекта
@@ -54,14 +41,23 @@ namespace Fantasy_Kingdoms_Battle
         internal void ChangeImageIndex(int newImageIndex)
         {
             ImageIndex = newImageIndex;
+
+            CheckData();
         }
 
         internal void SetName(string name)
         {
-            Debug.Assert(name.Length > 0);
-            Debug.Assert(name.Length <= FormMain.Config.MaxLengthObjectName);
-
             Name = name;
+
+            CheckData();
+        }
+
+        private void CheckData()
+        {
+            Debug.Assert(ID.Length > 0);
+            Debug.Assert(Name.Length > 0);
+            Debug.Assert(Name.Length <= FormMain.Config.MaxLengthObjectName);
+            Debug.Assert(Description.Length > 0);
         }
     }
 }
