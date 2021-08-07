@@ -90,7 +90,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal string NameTypeLair { get; private set; }
-        internal TypeLair TypeLair { get; private set; }
+        internal TypePlace TypeLair { get; private set; }
         internal int MinQuantity { get; }
         internal int MaxQuantity { get; }
     }

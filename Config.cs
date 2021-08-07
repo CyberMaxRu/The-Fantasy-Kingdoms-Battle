@@ -104,7 +104,7 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (XmlNode n in xmlDoc.SelectNodes("/TypeLairs/TypeLair"))
             {
-                TypeLairs.Add(new TypeLair(n));
+                TypeLairs.Add(new TypePlace(n));
             }
 
             // Создаем единую конфигурацию сооружений
@@ -253,7 +253,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<TypeGuild> TypeGuilds { get; } = new List<TypeGuild>();
         internal List<TypeEconomicConstruction> TypeEconomicConstructions { get; } = new List<TypeEconomicConstruction>();
         internal List<TypeTemple> TypeTemples { get; } = new List<TypeTemple>();
-        internal List<TypeLair> TypeLairs { get; } = new List<TypeLair>();
+        internal List<TypePlace> TypeLairs { get; } = new List<TypePlace>();
         internal List<TypeConstruction> TypeConstructionsOfKingdom { get; } = new List<TypeConstruction>();
         internal List<TypeObjectOfMap> TypeObjectsOfMap { get; } = new List<TypeObjectOfMap>();
 
@@ -436,9 +436,9 @@ namespace Fantasy_Kingdoms_Battle
             throw new Exception("Вид существа " + ID + " не найден.");
         }
 
-        internal TypeLair FindTypeLair(string ID)
+        internal TypePlace FindTypeLair(string ID)
         {
-            foreach (TypeLair tl in TypeLairs)
+            foreach (TypePlace tl in TypeLairs)
             {
                 if (tl.ID == ID)
                     return tl;

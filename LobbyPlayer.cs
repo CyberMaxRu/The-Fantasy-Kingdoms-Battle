@@ -819,7 +819,7 @@ namespace Fantasy_Kingdoms_Battle
             int idxTypeLair;
             for (int layer = 0; layer < Lobby.TypeLobby.LairsLayers; layer++)
             {
-                List<TypeLair> lairs = new List<TypeLair>();
+                List<TypePlace> lairs = new List<TypePlace>();
                 lairs.AddRange(Lobby.Lairs[layer]);
                 List<Point> cells = GetCells();
                 Debug.Assert(cells.Count <= lairs.Count);

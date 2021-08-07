@@ -53,14 +53,14 @@ namespace Fantasy_Kingdoms_Battle
     }
 
     // Класс типа логова монстров
-    internal sealed class TypeLair : TypeObjectOfMap
+    internal sealed class TypePlace : TypeObjectOfMap
     {
         private string nameTypePlaceAfterClear;
 
-        public TypeLair(XmlNode n) : base(n)
+        public TypePlace(XmlNode n) : base(n)
         {
             // Проверяем, что таких же ID и наименования нет
-            foreach (TypeLair tl in FormMain.Config.TypeLairs)
+            foreach (TypePlace tl in FormMain.Config.TypeLairs)
             {
                 Debug.Assert(tl.ID != ID);
                 Debug.Assert(tl.Name != Name);
@@ -107,7 +107,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int MaxHeroes { get; }// Максимальное количество героев, которое может атаковать логово
         internal RelationPlace RelationPlace { get; }// Тип отношения к месту
         internal TypeReward TypeReward { get; }// Награда за зачистку логова
-        internal TypeLair TypePlaceAfterClear { get; private set; }// Тип места после зачистки
+        internal TypePlace TypePlaceAfterClear { get; private set; }// Тип места после зачистки
 
         internal override void TuneDeferredLinks()
         {

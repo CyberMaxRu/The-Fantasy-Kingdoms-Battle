@@ -63,7 +63,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal PlayerLair Lair { get => PlayerObject as PlayerLair; }
-        internal TypeLair TypeLair { get => Lair.TypeLair; }
+        internal TypePlace TypeLair { get => Lair.TypeLair; }
 
         private void BtnHeroes_Click(object sender, EventArgs e)
         {

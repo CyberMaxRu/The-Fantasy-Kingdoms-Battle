@@ -14,7 +14,7 @@ namespace Fantasy_Kingdoms_Battle
     // Класс логова игрока
     internal sealed class PlayerLair : PlayerMapObject, ICell
     {
-        public PlayerLair(LobbyPlayer p, TypeLair l, int x, int y, int layer) : base(p, l)
+        public PlayerLair(LobbyPlayer p, TypePlace l, int x, int y, int layer) : base(p, l)
         {
             Player = p;
             TypeLair = l;
@@ -30,7 +30,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal LobbyPlayer Player { get; }
-        internal TypeLair TypeLair { get; }
+        internal TypePlace TypeLair { get; }
         internal int Layer { get; }// Слой, на котором находится логово
         internal int X { get; }// Позиция по X в слое
         internal int Y { get; }// Позиция по Y в слое
