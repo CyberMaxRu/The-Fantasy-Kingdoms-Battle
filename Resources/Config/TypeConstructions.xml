@@ -2370,10 +2370,6 @@
     <MaxHeroes>0</MaxHeroes>
     <RelationPlace>Neutral</RelationPlace>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
-    <Reward>
-      <Gold>100</Gold>
-      <Greatness>50</Greatness>
-    </Reward>
   </TypeConstruction>
   <TypeConstruction>
     <ID>ThroneLightning</ID>
