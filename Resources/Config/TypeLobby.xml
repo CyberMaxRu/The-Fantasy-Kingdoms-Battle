@@ -88,7 +88,7 @@
             <MaxQuantity>1</MaxQuantity>
           </Lair>
           <Lair>
-            <ID>Chest</ID>
+            <ID>Treasure</ID>
             <MinQuantity>1</MinQuantity>
             <MaxQuantity>1</MaxQuantity>
           </Lair>
@@ -111,7 +111,7 @@
             <MaxQuantity>1</MaxQuantity>
           </Lair>
           <Lair>
-            <ID>Chest</ID>
+            <ID>Treasure</ID>
             <MinQuantity>1</MinQuantity>
             <MaxQuantity>1</MaxQuantity>
           </Lair>
@@ -144,7 +144,7 @@
             <MaxQuantity>15</MaxQuantity>
           </Lair>
           <Lair>
-            <ID>Chest</ID>
+            <ID>Treasure</ID>
             <MinQuantity>5</MinQuantity>
             <MaxQuantity>15</MaxQuantity>
           </Lair>
@@ -164,10 +164,10 @@
           <Lair>
             <ID>TradePlace</ID>
             <MinQuantity>1</MinQuantity>
-            <MaxQuantity>3</MaxQuantity>
+            <MaxQuantity>3</MaxQuantity>s
           </Lair>
           <Lair>
-            <ID>Chest</ID>
+            <ID>Treasure</ID>
             <MinQuantity>1</MinQuantity>
             <MaxQuantity>3</MaxQuantity>
           </Lair>
