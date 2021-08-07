@@ -1675,7 +1675,7 @@
     <GoldByConstruction>0</GoldByConstruction>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>guild_darkpriestess_select.wav</SoundSelect>
-    <TypePlaceForConstruct>HolyLand</TypePlaceForConstruct>
+    <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -1711,7 +1711,7 @@
     <GoldByConstruction>0</GoldByConstruction>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>guild_priestess_select.wav</SoundSelect>
-    <TypePlaceForConstruct>HolyLand</TypePlaceForConstruct>
+    <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -1747,7 +1747,7 @@
     <GoldByConstruction>0</GoldByConstruction>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>guild_paladin_select.wav</SoundSelect>
-    <TypePlaceForConstruct>HolyLand</TypePlaceForConstruct>
+    <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -1783,7 +1783,7 @@
     <GoldByConstruction>0</GoldByConstruction>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>temple_blademaster_select.wav</SoundSelect>
-    <TypePlaceForConstruct>HolyLand</TypePlaceForConstruct>
+    <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -1819,7 +1819,7 @@
     <GoldByConstruction>0</GoldByConstruction>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>guild_beastmaster_select.wav</SoundSelect>
-    <TypePlaceForConstruct>HolyLand</TypePlaceForConstruct>
+    <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -1855,7 +1855,7 @@
     <GoldByConstruction>0</GoldByConstruction>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>guild_marksman_select.wav</SoundSelect>
-    <TypePlaceForConstruct>HolyLand</TypePlaceForConstruct>
+    <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -1891,7 +1891,7 @@
     <GoldByConstruction>0</GoldByConstruction>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>guild_ice_mage_select.wav</SoundSelect>
-    <TypePlaceForConstruct>HolyLand</TypePlaceForConstruct>
+    <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -1927,7 +1927,7 @@
     <GoldByConstruction>0</GoldByConstruction>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>guild_deathknight_select.wav</SoundSelect>
-    <TypePlaceForConstruct>HolyLand</TypePlaceForConstruct>
+    <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -1963,7 +1963,7 @@
     <GoldByConstruction>0</GoldByConstruction>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>guild_fire_mage_select.wav</SoundSelect>
-    <TypePlaceForConstruct>HolyLand</TypePlaceForConstruct>
+    <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -2380,7 +2380,7 @@
     <SoundSelect>logovo_elemental_earth_select.wav</SoundSelect>
     <MaxHeroes>10</MaxHeroes>
     <RelationPlace>Enemy</RelationPlace>
-    <TypePlaceForConstruct>HolyLand</TypePlaceForConstruct>
+    <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
         <ID>ElementalEarth</ID>
@@ -2405,7 +2405,7 @@
     <SoundSelect>logovo_elemental_fire_select.wav</SoundSelect>
     <MaxHeroes>10</MaxHeroes>
     <RelationPlace>Enemy</RelationPlace>
-    <TypePlaceForConstruct>HolyLand</TypePlaceForConstruct>
+    <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
         <ID>ElementalFire</ID>
@@ -2422,7 +2422,7 @@
     </Reward>
   </TypeConstruction>
   <TypeConstruction>
-    <ID>HolyLand</ID>
+    <ID>HolyPlace</ID>
     <Name>Святая земля</Name>
     <Description>Только на святой земле можно построить храм. Такие места большая редкость, и жрецы постоянно спорят, чей храм будет построен на святой земле.</Description>
     <ImageIndex>114</ImageIndex>

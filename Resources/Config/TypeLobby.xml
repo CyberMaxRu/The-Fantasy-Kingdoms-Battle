@@ -83,7 +83,7 @@
         <CostDefense>200</CostDefense>
         <Lairs>
           <Lair>
-            <ID>HolyLand</ID>
+            <ID>HolyPlace</ID>
             <MinQuantity>1</MinQuantity>
             <MaxQuantity>1</MaxQuantity>
           </Lair>
@@ -121,7 +121,7 @@
             <MaxQuantity>10</MaxQuantity>
           </Lair>
           <Lair>
-            <ID>HolyLand</ID>
+            <ID>HolyPlace</ID>
             <MinQuantity>1</MinQuantity>
             <MaxQuantity>1</MaxQuantity>
           </Lair>

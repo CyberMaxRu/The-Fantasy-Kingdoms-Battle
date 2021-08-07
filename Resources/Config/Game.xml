@@ -78,7 +78,7 @@
     <ConstructionCastle>Castle</ConstructionCastle>
     <PeasantHouse>PeasantHouse</PeasantHouse>
     <EmptyPlace>EmptyPlace</EmptyPlace>
-    <HolyPlace>HolyLand</HolyPlace>
+    <HolyPlace>HolyPlace</HolyPlace>
     <TradePlace>TradePlace</TradePlace>
   </Links>
   <Warehouse>
