@@ -214,9 +214,33 @@ namespace Fantasy_Kingdoms_Battle
 
         private void CreateExternalConstructions(TypeConstruction typeConstruction, int layer, int quantity)
         {
+            Debug.Assert((typeConstruction.Category == CategoryConstruction.External) || (typeConstruction.Category == CategoryConstruction.Place));
+            //Debug.Assert(typeConstruction.TypePlaceForConstruct.ID == FormMain.Config.IDEmptyPlace);
+
             if (quantity > 0)
             {
+                // Собираем список пустых мест
+                List<PlayerConstruction> listEmptyPlaces = new List<PlayerConstruction>();
+                for (int y = 0; y < Lairs.GetLength(1); y++)
+                    for (int x = 0; x < Lairs.GetLength(2); x++)
+                        if (Lairs[layer, y, x].TypeConstruction.ID == FormMain.Config.IDEmptyPlace)
+                            listEmptyPlaces.Add(Lairs[layer, y, x]);
 
+                Debug.Assert(quantity <= listEmptyPlaces.Count);
+
+                // 
+                int index;
+                while (quantity > 0)
+                {
+                    index = Lobby.Rnd.Next(listEmptyPlaces.Count);
+                    PlayerConstruction empty = listEmptyPlaces[index];
+                    PlayerConstruction pc = new PlayerConstruction(this, typeConstruction, empty.X, empty.Y, empty.Layer);
+                    Lairs[pc.Layer, pc.Y, pc.X] = pc;
+                    listEmptyPlaces.RemoveAt(index);
+                    quantity--;
+                }
+
+                Program.formMain.UpdateNeighborhood();
             }
         }
 
