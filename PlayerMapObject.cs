@@ -22,19 +22,19 @@ namespace Fantasy_Kingdoms_Battle
                     for (int y = 0; y < typeMapObject.Researches.GetLength(1); y++)
                         for (int x = 0; x < typeMapObject.Researches.GetLength(2); x++)
                             if (typeMapObject.Researches[z, y, x] != null)
-                                Researches.Add(new PlayerResearch(this, typeMapObject.Researches[z, y, x]));
+                                Researches.Add(new PlayerCellMenu(this, typeMapObject.Researches[z, y, x]));
             }
         }
 
         internal LobbyPlayer Player { get; }
         internal TypeObjectOfMap TypeMapObject { get; }
-        internal List<PlayerResearch> Researches { get; } = new List<PlayerResearch>();
+        internal List<PlayerCellMenu> Researches { get; } = new List<PlayerCellMenu>();
 
-        internal abstract bool CheckRequirementsForResearch(PlayerResearch research);
-        internal abstract List<TextRequirement> GetTextRequirements(PlayerResearch research);
+        internal abstract bool CheckRequirementsForResearch(PlayerCellMenu research);
+        internal abstract List<TextRequirement> GetTextRequirements(PlayerCellMenu research);
         internal abstract bool ShowMenuForPlayer();
 
-        internal virtual void ResearchCompleted(PlayerResearch research)
+        internal virtual void ResearchCompleted(PlayerCellMenu research)
         {
             Debug.Assert(CheckRequirementsForResearch(research));
 

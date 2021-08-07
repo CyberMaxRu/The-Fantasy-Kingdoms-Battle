@@ -287,7 +287,7 @@ namespace Fantasy_Kingdoms_Battle
             return ResearchesAvailabled > 0;
         }
 
-        internal override bool CheckRequirementsForResearch(PlayerResearch research)
+        internal override bool CheckRequirementsForResearch(PlayerCellMenu research)
         {
             // Сначала проверяем, построено ли здание
             if (Level == 0)
@@ -305,7 +305,7 @@ namespace Fantasy_Kingdoms_Battle
             return Player.CheckRequirements(research.Research.Requirements);
         }
 
-        internal override List<TextRequirement> GetTextRequirements(PlayerResearch research)
+        internal override List<TextRequirement> GetTextRequirements(PlayerCellMenu research)
         {
             List<TextRequirement> list = new List<TextRequirement>();
 
@@ -322,7 +322,7 @@ namespace Fantasy_Kingdoms_Battle
             return list;
         }
 
-        internal override void ResearchCompleted(PlayerResearch research)
+        internal override void ResearchCompleted(PlayerCellMenu research)
         {
             base.ResearchCompleted(research);
 

@@ -1474,7 +1474,7 @@ namespace Fantasy_Kingdoms_Battle
                 ClearMenu();
 
                 if (pb.TypeMapObject.Researches != null)
-                    foreach (PlayerResearch pr in pb.Researches)
+                    foreach (PlayerCellMenu pr in pb.Researches)
                     {
                         if (!CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Used)
                         {

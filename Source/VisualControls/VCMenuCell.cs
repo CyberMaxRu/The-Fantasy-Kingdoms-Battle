@@ -8,7 +8,7 @@ namespace Fantasy_Kingdoms_Battle
     // Визуальный контрол - ячейка меню
     internal sealed class VCMenuCell : VCImage
     {
-        private PlayerResearch research;
+        private PlayerCellMenu research;
 
         public VCMenuCell(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList) : base(parent, shiftX, shiftY, bitmapList, -1)
         {
@@ -83,7 +83,7 @@ namespace Fantasy_Kingdoms_Battle
             base.Draw(g);
         }
 
-        internal PlayerResearch Research
+        internal PlayerCellMenu Research
         {
             get { return research; }
             set

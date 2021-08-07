@@ -488,7 +488,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal override bool CheckRequirementsForResearch(PlayerResearch research)
+        internal override bool CheckRequirementsForResearch(PlayerCellMenu research)
         {
             // Потом проверяем наличие золота
             if (Player.Gold < research.Cost())
@@ -498,14 +498,14 @@ namespace Fantasy_Kingdoms_Battle
             return Player.CheckRequirements(research.Research.Requirements);
         }
 
-        internal override List<TextRequirement> GetTextRequirements(PlayerResearch research)
+        internal override List<TextRequirement> GetTextRequirements(PlayerCellMenu research)
         {
             List<TextRequirement> list = new List<TextRequirement>();
 
             return list;
         }
 
-        internal override void ResearchCompleted(PlayerResearch research)
+        internal override void ResearchCompleted(PlayerCellMenu research)
         {
             base.ResearchCompleted(research);
         }

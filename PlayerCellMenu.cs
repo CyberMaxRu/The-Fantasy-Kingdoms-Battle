@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal sealed class PlayerResearch
+    internal sealed class PlayerCellMenu
     {
-        public PlayerResearch(PlayerMapObject c, TypeCellMenu r)
+        public PlayerCellMenu(PlayerMapObject c, TypeCellMenu r)
         {
             Construction = c;
             Research = r;
