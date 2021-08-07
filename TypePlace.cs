@@ -9,7 +9,7 @@ using System.Diagnostics;
 namespace Fantasy_Kingdoms_Battle
 {
     // Отношение к месту - свое (союзное), нейтральное, враг
-    internal enum RelationPlace { Ally, Neutral, Enemy };
+    internal enum RelationPlace { Our, Neutral, Enemy };
 
     // Класс монстров уровня логова
     internal sealed class MonsterLevelLair

@@ -359,7 +359,7 @@
     <ImageIndex>142</ImageIndex>
     <SoundSelect>tradepost_place_select.wav</SoundSelect>
     <MaxHeroes>0</MaxHeroes>
-    <RelationPlace>Ally</RelationPlace>
+    <RelationPlace>Our</RelationPlace>
     <TypePlaceAfterClear></TypePlaceAfterClear>
     <Reward>
       <PointTradePost>1</PointTradePost>
