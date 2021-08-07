@@ -459,6 +459,42 @@
         <Layer>1</Layer>
         <TypeConstruction>GuildPaladin</TypeConstruction>
       </Research>
+      <Research>
+        <PosX>1</PosX>
+        <PosY>2</PosY>
+        <Layer>1</Layer>
+        <TypeConstruction>GuildBlademaster</TypeConstruction>
+      </Research>
+      <Research>
+        <PosX>2</PosX>
+        <PosY>2</PosY>
+        <Layer>1</Layer>
+        <TypeConstruction>GuildBeastmaster</TypeConstruction>
+      </Research>
+      <Research>
+        <PosX>3</PosX>
+        <PosY>2</PosY>
+        <Layer>1</Layer>
+        <TypeConstruction>GuildMarksman</TypeConstruction>
+      </Research>
+      <Research>
+        <PosX>1</PosX>
+        <PosY>3</PosY>
+        <Layer>1</Layer>
+        <TypeConstruction>GuildIceMage</TypeConstruction>
+      </Research>
+      <Research>
+        <PosX>2</PosX>
+        <PosY>3</PosY>
+        <Layer>1</Layer>
+        <TypeConstruction>GuildDeathKnight</TypeConstruction>
+      </Research>
+      <Research>
+        <PosX>3</PosX>
+        <PosY>3</PosY>
+        <Layer>1</Layer>
+        <TypeConstruction>GuildFireMage</TypeConstruction>
+      </Research>
     </Researches>
   </TypeLair>
   <TypeLair>
