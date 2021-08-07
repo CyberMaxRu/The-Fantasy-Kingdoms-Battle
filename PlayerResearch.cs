@@ -10,14 +10,14 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class PlayerResearch
     {
-        public PlayerResearch(PlayerMapObject c, Research r)
+        public PlayerResearch(PlayerMapObject c, CellMenu r)
         {
             Construction = c;
             Research = r;
         }
 
         internal PlayerMapObject Construction { get; }
-        internal Research Research { get; }
+        internal CellMenu Research { get; }
 
         internal int Cost()
         {

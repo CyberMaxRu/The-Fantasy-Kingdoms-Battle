@@ -158,7 +158,7 @@
     <Compile Include="Source\VisualControls\VCCell.cs" />
     <Compile Include="PlayerResearch.cs" />
     <Compile Include="Requirement.cs" />
-    <Compile Include="Research.cs" />
+    <Compile Include="CellMenu.cs" />
     <Compile Include="Ammunition.cs" />
     <Compile Include="TypePlace.cs" />
     <Compile Include="Settings.cs" />

@@ -23,13 +23,13 @@ namespace Fantasy_Kingdoms_Battle
             if (nr != null)
             {
                 Debug.Assert(layersResearches > 0);
-                Researches = new Research[layersResearches, FormMain.Config.PlateHeight, FormMain.Config.PlateWidth];
+                Researches = new CellMenu[layersResearches, FormMain.Config.PlateHeight, FormMain.Config.PlateWidth];
 
-                Research research;
+                CellMenu research;
 
                 foreach (XmlNode l in nr.SelectNodes("Research"))
                 {
-                    research = new Research(l);
+                    research = new CellMenu(l);
                     Debug.Assert(Researches[research.Layer, research.Coord.Y, research.Coord.X] == null);
                     Researches[research.Layer, research.Coord.Y, research.Coord.X] = research;
                 }
@@ -40,7 +40,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal Research[,,] Researches;
+        internal CellMenu[,,] Researches;
 
         internal void PlaySoundSelect()
         {

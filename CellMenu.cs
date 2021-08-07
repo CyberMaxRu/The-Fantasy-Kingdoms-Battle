@@ -12,7 +12,7 @@ using System.Windows.Forms;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс исследования
-    internal sealed class Research
+    internal sealed class CellMenu
     {
         private string nameItem;
         private string nameAbility;
@@ -20,7 +20,7 @@ namespace Fantasy_Kingdoms_Battle
         private string nameGroupArmour;
         private string nameTypeConstruction;
 
-        public Research(XmlNode n)
+        public CellMenu(XmlNode n)
         {
             Coord = new Point(Convert.ToInt32(n.SelectSingleNode("PosX").InnerText) - 1, Convert.ToInt32(n.SelectSingleNode("PosY").InnerText) - 1);
             Layer = Convert.ToInt32(n.SelectSingleNode("Layer").InnerText) - 1;
