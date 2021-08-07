@@ -76,7 +76,7 @@
   <Links>
     <HeroPeasant>Peasant</HeroPeasant>
     <ConstructionCastle>Castle</ConstructionCastle>
-    <PeasantHouse>House</PeasantHouse>
+    <PeasantHouse>PeasantHouse</PeasantHouse>
     <EmptyPlace>EmptyPlace</EmptyPlace>
     <HolyPlace>HolyLand</HolyPlace>
     <TradePlace>TradePlace</TradePlace>

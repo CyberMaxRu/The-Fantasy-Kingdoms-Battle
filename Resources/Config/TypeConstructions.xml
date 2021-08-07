@@ -707,7 +707,7 @@
     </Levels>
   </TypeConstruction>
   <TypeConstruction>
-    <ID>House</ID>
+    <ID>PeasantHouse</ID>
     <Name>Крестьянский дом</Name>
     <Description>- Приносит небольшой доход//- Жилище крестьян</Description>
     <ImageIndex>108</ImageIndex>

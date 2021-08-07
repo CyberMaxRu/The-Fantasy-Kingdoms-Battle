@@ -93,7 +93,7 @@
             <MaxQuantity>1</MaxQuantity>
           </Lair>
           <Lair>
-            <ID>House</ID>
+            <ID>PeasantHouse</ID>
             <MinQuantity>3</MinQuantity>
             <MaxQuantity>3</MaxQuantity>
           </Lair>
