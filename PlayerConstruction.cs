@@ -176,9 +176,7 @@ namespace Fantasy_Kingdoms_Battle
                 return false;
 
             // Проверяем наличие очков строительства
-            if ((TypeConstruction.Levels[Level + 1].Builders > Player.FreeBuilders)
-                || (TypeConstruction.Levels[Level + 1].PointConstructionTemple > Player.PointConstructionTemple)
-                || (TypeConstruction.Levels[Level + 1].PointConstructionTradePost > Player.PointConstructionTradePost))
+            if (TypeConstruction.Levels[Level + 1].Builders > Player.FreeBuilders)
                 return false;
 
             // Проверяем требования к зданиям
@@ -191,22 +189,6 @@ namespace Fantasy_Kingdoms_Battle
                 return null;
 
             List<TextRequirement> list = new List<TextRequirement>();
-
-            if (TypeConstruction.Levels[Level + 1].PointConstructionTemple > 0)
-            {
-                if (TypeConstruction.Levels[Level + 1].PointConstructionTemple <= Player.PointConstructionTemple)
-                    list.Add(new TextRequirement(true, "Есть свободная Святая земля"));
-                else
-                    list.Add(new TextRequirement(false, "Нет свободных Святых земель"));
-            }
-
-            if (TypeConstruction.Levels[Level + 1].PointConstructionTradePost > 0)
-            {
-                if (TypeConstruction.Levels[Level + 1].PointConstructionTradePost <= Player.PointConstructionTradePost)
-                    list.Add(new TextRequirement(true, "Есть свободное торговое место"));
-                else
-                    list.Add(new TextRequirement(false, "Нет свободных торговых мест"));
-            }
 
             Player.TextRequirements(TypeConstruction.Levels[Level + 1].Requirements, list);
 

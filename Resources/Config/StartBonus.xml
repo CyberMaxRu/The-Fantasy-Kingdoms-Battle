@@ -4,8 +4,8 @@
     <Gold>1000</Gold>
     <Greatness>0</Greatness>
     <Builders>0</Builders>
-    <PointConstructionTemple>0</PointConstructionTemple>
-    <PointConstructionTradePost>0</PointConstructionTradePost>
+    <HolyPlace>0</HolyPlace>
+    <TradePlace>0</TradePlace>
     <ScoutPlace>0</ScoutPlace>
     <Points>1</Points>
     <MaxQuantity>-1</MaxQuantity>
@@ -14,8 +14,8 @@
     <Gold>0</Gold>
     <Greatness>200</Greatness>
     <Builders>0</Builders>
-    <PointConstructionTemple>0</PointConstructionTemple>
-    <PointConstructionTradePost>0</PointConstructionTradePost>
+    <HolyPlace>0</HolyPlace>
+    <TradePlace>0</TradePlace>
     <ScoutPlace>0</ScoutPlace>
     <Points>1</Points>
     <MaxQuantity>-1</MaxQuantity>
@@ -24,8 +24,8 @@
     <Gold>0</Gold>
     <Greatness>0</Greatness>
     <Builders>1</Builders>
-    <PointConstructionTemple>0</PointConstructionTemple>
-    <PointConstructionTradePost>0</PointConstructionTradePost>
+    <HolyPlace>0</HolyPlace>
+    <TradePlace>0</TradePlace>
     <ScoutPlace>0</ScoutPlace>
     <Points>2</Points>
     <MaxQuantity>3</MaxQuantity>
@@ -34,8 +34,8 @@
     <Gold>500</Gold>
     <Greatness>100</Greatness>
     <Builders>0</Builders>
-    <PointConstructionTemple>0</PointConstructionTemple>
-    <PointConstructionTradePost>0</PointConstructionTradePost>
+    <HolyPlace>0</HolyPlace>
+    <TradePlace>0</TradePlace>
     <ScoutPlace>0</ScoutPlace>
     <Points>1</Points>
     <MaxQuantity>-1</MaxQuantity>
@@ -44,8 +44,8 @@
     <Gold>0</Gold>
     <Greatness>0</Greatness>
     <Builders>0</Builders>
-    <PointConstructionTemple>0</PointConstructionTemple>
-    <PointConstructionTradePost>0</PointConstructionTradePost>
+    <HolyPlace>0</HolyPlace>
+    <TradePlace>0</TradePlace>
     <ScoutPlace>2</ScoutPlace>
     <Points>1</Points>
     <MaxQuantity>3</MaxQuantity>
@@ -54,8 +54,8 @@
     <Gold>0</Gold>
     <Greatness>0</Greatness>
     <Builders>0</Builders>
-    <PointConstructionTemple>1</PointConstructionTemple>
-    <PointConstructionTradePost>0</PointConstructionTradePost>
+    <HolyPlace>1</HolyPlace>
+    <TradePlace>0</TradePlace>
     <ScoutPlace>0</ScoutPlace>
     <Points>3</Points>
     <MaxQuantity>1</MaxQuantity>
@@ -64,8 +64,8 @@
     <Gold>0</Gold>
     <Greatness>0</Greatness>
     <Builders>0</Builders>
-    <PointConstructionTemple>0</PointConstructionTemple>
-    <PointConstructionTradePost>1</PointConstructionTradePost>
+    <HolyPlace>0</HolyPlace>
+    <TradePlace>1</TradePlace>
     <ScoutPlace>0</ScoutPlace>
     <Points>2</Points>
     <MaxQuantity>2</MaxQuantity>

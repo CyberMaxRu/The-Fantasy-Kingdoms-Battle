@@ -39,10 +39,10 @@ namespace Fantasy_Kingdoms_Battle
                     AddBonus(text, sb.Greatness.ToString(), FormMain.GUI_16_GREATNESS);
                 if (sb.Builders > 0)
                     AddBonus(text, sb.Builders.ToString(), FormMain.GUI_16_BUILDER);
-                if (sb.PointConstructionTemple > 0)
-                    AddBonus(text, sb.PointConstructionTemple.ToString(), FormMain.GUI_16_HOLYLAND);
-                if (sb.PointConstructionTradePost > 0)
-                    AddBonus(text, sb.PointConstructionTradePost.ToString(), FormMain.GUI_16_TRADEPOST);
+                if (sb.HolyPlace > 0)
+                    AddBonus(text, sb.HolyPlace.ToString(), FormMain.GUI_16_HOLYLAND);
+                if (sb.TradePlace > 0)
+                    AddBonus(text, sb.TradePlace.ToString(), FormMain.GUI_16_TRADEPOST);
                 if (sb.ScoutPlace > 0)
                     AddBonus(text, sb.ScoutPlace.ToString(), FormMain.GUI_16_SCOUT);
 

@@ -815,7 +815,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void PageTemples_ShowHint(object sender, EventArgs e)
         {
-            ShowHintForToolButton(pageTemples, "Храмы", "Доступно построек храмов: " + lobby.CurrentPlayer.PointConstructionTemple.ToString());
+            ShowHintForToolButton(pageTemples, "Храмы", "");
         }
 
         private void LabelGreatness_ShowHint(object sender, EventArgs e)

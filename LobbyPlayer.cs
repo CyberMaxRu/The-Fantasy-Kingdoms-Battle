@@ -47,8 +47,6 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Настраиваем игрока согласно настройкам лобби
-            PointConstructionTemple = lobby.TypeLobby.StartPointConstructionTemple;
-            PointConstructionTradePost = lobby.TypeLobby.StartPointConstructionTradePost;
             SetQuantityFlags(lobby.TypeLobby.StartQuantityFlags);
 
             CurrentLoses = 0;
@@ -202,6 +200,14 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        private void CreateExternalConstructions(TypeConstruction typeConstruction, int layer, int quantity)
+        {
+            if (quantity > 0)
+            {
+
+            }
+        }
+
         // Расчет после завершения хода игроком
         internal void CalcFinalityTurn()
         {
@@ -329,8 +335,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int Builders { get; private set; }
         internal int FreeBuilders { get; private set; }
         internal int BuildersAtNextDay { get; private set; }
-        internal int PointConstructionTemple { get; private set; }
-        internal int PointConstructionTradePost { get; private set; }
         internal List<StartBonus> VariantsStartBonuses { get; }// Варианты стартовых бонусов
 
         internal int QuantityHeroes { get; private set; }
@@ -383,13 +387,9 @@ namespace Fantasy_Kingdoms_Battle
 
             SpendGold(pb.CostBuyOrUpgrade());
             FreeBuilders -= pb.TypeConstruction.Levels[pb.Level + 1].Builders;
-            PointConstructionTemple -= pb.TypeConstruction.Levels[pb.Level + 1].PointConstructionTemple;
-            PointConstructionTradePost -= pb.TypeConstruction.Levels[pb.Level + 1].PointConstructionTradePost;
             AddGreatness(pb.TypeConstruction.Levels[pb.Level + 1].GreatnessByConstruction);
 
             Debug.Assert(FreeBuilders >= 0);
-            Debug.Assert(PointConstructionTemple >= 0);
-            Debug.Assert(PointConstructionTradePost >= 0);
         }
 
         internal int Income()
@@ -864,7 +864,8 @@ namespace Fantasy_Kingdoms_Battle
             PointGreatness += sb.Greatness;
             Builders += sb.Builders;
             FreeBuilders += sb.Builders;
-            PointConstructionTemple += sb.PointConstructionTemple;
+            CreateExternalConstructions(FormMain.Config.FindTypeConstruction(FormMain.Config.IDHolyPlace), 0, sb.HolyPlace);
+            CreateExternalConstructions(FormMain.Config.FindTypeConstruction(FormMain.Config.IDTradePlace), 0, sb.TradePlace);
             ScoutRandomLair(sb.ScoutPlace);
 
             startBonusApplied = true;

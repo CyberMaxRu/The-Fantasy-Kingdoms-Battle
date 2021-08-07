@@ -772,70 +772,60 @@
         <Pos>1</Pos>
         <Cost>250</Cost>
         <Builders>1</Builders>
-        <PointConstructionTradePost>1</PointConstructionTradePost>
         <Income>150</Income>
       </Level>
       <Level>
         <Pos>2</Pos>
         <Cost>250</Cost>
         <Builders>1</Builders>
-        <PointConstructionTradePost>1</PointConstructionTradePost>
         <Income>300</Income>
       </Level>
       <Level>
         <Pos>3</Pos>
         <Cost>250</Cost>
         <Builders>1</Builders>
-        <PointConstructionTradePost>1</PointConstructionTradePost>
         <Income>450</Income>
       </Level>
       <Level>
         <Pos>4</Pos>
         <Cost>250</Cost>
         <Builders>1</Builders>
-        <PointConstructionTradePost>1</PointConstructionTradePost>
         <Income>600</Income>
       </Level>
       <Level>
         <Pos>5</Pos>
         <Cost>250</Cost>
         <Builders>1</Builders>
-        <PointConstructionTradePost>1</PointConstructionTradePost>
         <Income>750</Income>
       </Level>
       <Level>
         <Pos>6</Pos>
         <Cost>250</Cost>
         <Builders>1</Builders>
-        <PointConstructionTradePost>1</PointConstructionTradePost>
         <Income>900</Income>
       </Level>
       <Level>
         <Pos>7</Pos>
         <Cost>250</Cost>
         <Builders>1</Builders>
-        <PointConstructionTradePost>1</PointConstructionTradePost>
         <Income>1050</Income>
       </Level>
       <Level>
         <Pos>8</Pos>
         <Cost>250</Cost>
         <Builders>1</Builders>
-        <PointConstructionTradePost>1</PointConstructionTradePost>
         <Income>1200</Income>
       </Level>
       <Level>
         <Pos>9</Pos>
         <Cost>250</Cost>
         <Builders>1</Builders>
-        <PointConstructionTradePost>1</PointConstructionTradePost>
         <Income>1350</Income>
       </Level>
       <Level>
         <Pos>10</Pos>
         <Cost>250</Cost>
         <Builders>1</Builders>
-        <PointConstructionTradePost>1</PointConstructionTradePost>
         <Income>1500</Income>
       </Level>
     </Levels>
@@ -1691,7 +1681,6 @@
         <Pos>1</Pos>
         <Cost>3000</Cost>
         <Builders>3</Builders>
-        <PointConstructionTemple>1</PointConstructionTemple>
         <Income>0</Income>
         <MaxHeroes>2</MaxHeroes>
         <Requirements>
@@ -1728,7 +1717,6 @@
         <Pos>1</Pos>
         <Cost>3000</Cost>
         <Builders>3</Builders>
-        <PointConstructionTemple>1</PointConstructionTemple>
         <Income>0</Income>
         <MaxHeroes>2</MaxHeroes>
         <Requirements>
@@ -1765,7 +1753,6 @@
         <Pos>1</Pos>
         <Cost>3000</Cost>
         <Builders>3</Builders>
-        <PointConstructionTemple>1</PointConstructionTemple>
         <Income>0</Income>
         <MaxHeroes>2</MaxHeroes>
         <Requirements>
@@ -1802,7 +1789,6 @@
         <Pos>1</Pos>
         <Cost>3000</Cost>
         <Builders>3</Builders>
-        <PointConstructionTemple>1</PointConstructionTemple>
         <Income>0</Income>
         <MaxHeroes>2</MaxHeroes>
         <Requirements>
@@ -1839,7 +1825,6 @@
         <Pos>1</Pos>
         <Cost>3000</Cost>
         <Builders>3</Builders>
-        <PointConstructionTemple>1</PointConstructionTemple>
         <Income>0</Income>
         <MaxHeroes>2</MaxHeroes>
         <Requirements>
@@ -1876,7 +1861,6 @@
         <Pos>1</Pos>
         <Cost>3000</Cost>
         <Builders>3</Builders>
-        <PointConstructionTemple>1</PointConstructionTemple>
         <Income>0</Income>
         <MaxHeroes>2</MaxHeroes>
         <Requirements>
@@ -1913,7 +1897,6 @@
         <Pos>1</Pos>
         <Cost>3000</Cost>
         <Builders>3</Builders>
-        <PointConstructionTemple>1</PointConstructionTemple>
         <Income>0</Income>
         <MaxHeroes>2</MaxHeroes>
         <Requirements>
@@ -1950,7 +1933,6 @@
         <Pos>1</Pos>
         <Cost>3000</Cost>
         <Builders>3</Builders>
-        <PointConstructionTemple>1</PointConstructionTemple>
         <Income>0</Income>
         <MaxHeroes>2</MaxHeroes>
         <Requirements>
@@ -1987,7 +1969,6 @@
         <Pos>1</Pos>
         <Cost>3000</Cost>
         <Builders>3</Builders>
-        <PointConstructionTemple>1</PointConstructionTemple>
         <Income>0</Income>
         <MaxHeroes>2</MaxHeroes>
         <Requirements>
@@ -2378,9 +2359,6 @@
     <MaxHeroes>0</MaxHeroes>
     <RelationPlace>Our</RelationPlace>
     <TypePlaceForConstruct></TypePlaceForConstruct>
-    <Reward>
-      <PointTradePost>1</PointTradePost>
-    </Reward>
   </TypeConstruction>
   <TypeConstruction>
     <ID>Chest</ID>
@@ -2458,9 +2436,6 @@
     <LayersCellMenu>1</LayersCellMenu>
     <RelationPlace>Neutral</RelationPlace>
     <TypePlaceForConstruct></TypePlaceForConstruct>
-    <Reward>
-      <PointTemple>1</PointTemple>
-    </Reward>
     <CellsMenu>
       <CellMenu>
         <PosX>1</PosX>

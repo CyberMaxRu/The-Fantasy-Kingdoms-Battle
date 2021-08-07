@@ -12,8 +12,6 @@
     <DayStartBattleBetweenPlayers>3</DayStartBattleBetweenPlayers>
     <DaysBeforeNextBattleBetweenPlayers>1</DaysBeforeNextBattleBetweenPlayers>
     <StartBuilders>0</StartBuilders>
-    <StartPointConstructionTemple>0</StartPointConstructionTemple>
-    <StartPointConstructionTradePost>0</StartPointConstructionTradePost>
     <PointStartBonus>5</PointStartBonus>
     <StartScoutedLairs>2</StartScoutedLairs>
     <VariantStartBonus>3</VariantStartBonus>
