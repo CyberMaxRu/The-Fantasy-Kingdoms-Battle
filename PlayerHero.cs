@@ -43,7 +43,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int Gold { get; private set; }// Количество золота у героя
 
         // Выполнение флагов
-        internal PlayerLair TargetByFlag { get; set; }// Логово флага, который выполняется
+        internal PlayerConstruction TargetByFlag { get; set; }// Логово флага, который выполняется
 
         // Статистика за лобби
         internal int DayOfHire { get; }// На каком дне нанят

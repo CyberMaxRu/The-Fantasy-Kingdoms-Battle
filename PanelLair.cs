@@ -62,8 +62,8 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep1Header("Герои, выполняющие флаг", "", Lair.ListHeroesForHint());
         }
 
-        internal PlayerLair Lair { get => PlayerObject as PlayerLair; }
-        internal TypePlace TypeLair { get => Lair.TypeLair; }
+        internal PlayerConstruction Lair { get => PlayerObject as PlayerConstruction; }
+        internal TypeConstruction TypeLair { get => Lair.TypeConstruction; }
 
         private void BtnHeroes_Click(object sender, EventArgs e)
         {
@@ -149,11 +149,11 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.panelLairInfo.SelectPageInhabitants();
         }
 
-        internal void LinkToPlayer(PlayerLair pl)
+        internal void LinkToPlayer(PlayerConstruction pl)
         {
             Debug.Assert(pl != null);
             Debug.Assert(pl.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
-            Debug.Assert(pl.TypeLair == TypeLair);
+            Debug.Assert(pl.TypeConstruction == TypeLair);
 
             PlayerObject = pl;
         }
@@ -179,7 +179,7 @@ namespace Fantasy_Kingdoms_Battle
             btnAction.Visible = Lair.Hidden || (Lair.Monsters.Count > 0);
             if (btnAction.Visible)
             {
-                btnAction.ImageIsEnabled = Lair.CheckRequirements();
+                btnAction.ImageIsEnabled = Lair.CheckFlagRequirements();
                 btnAction.Level = (int)Lair.PriorityFlag + 1;
                 btnAction.Cost = Lair.PriorityFlag < PriorityExecution.High ? Lair.RequiredGold().ToString() : null;
             }
@@ -224,16 +224,16 @@ namespace Fantasy_Kingdoms_Battle
             lblNameMapObject.Text = Lair.NameLair();
             lblNameMapObject.Color = GetColorCaption();
 
-            lblIncome.Visible = !Lair.Hidden && (Lair.TypeLair.TypeReward.Gold > 0);
+            lblIncome.Visible = !Lair.Hidden && (Lair.TypeConstruction.TypeReward.Gold > 0);
             if (lblIncome.Visible)
             {
-                lblIncome.Text = Lair.TypeLair.TypeReward.Gold.ToString();
+                lblIncome.Text = Lair.TypeConstruction.TypeReward.Gold.ToString();
             }
 
-            lblGreatness.Visible = !Lair.Hidden && (Lair.TypeLair.TypeReward.Greatness > 0);
+            lblGreatness.Visible = !Lair.Hidden && (Lair.TypeConstruction.TypeReward.Greatness > 0);
             if (lblGreatness.Visible)
             {
-                lblGreatness.Text = Lair.TypeLair.TypeReward.Greatness.ToString();
+                lblGreatness.Text = Lair.TypeConstruction.TypeReward.Greatness.ToString();
             }
 
             base.Draw(g);

@@ -4,7 +4,7 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    // Базовый тип для всех объектов - зданий, логов, существ
+    // Базовый тип для всех объектов - сооружений, логов, существ
     internal abstract class TypeObject
     {
         public TypeObject(XmlNode n)
@@ -34,9 +34,7 @@ namespace Fantasy_Kingdoms_Battle
         internal string Description { get; }// Описание типа объекта
         internal int ImageIndex { get; private set; }// Код иконки типа объекта
 
-        internal virtual void TuneDeferredLinks()
-        {
-        }
+        internal virtual void TuneDeferredLinks() { }
 
         internal void SetName(string name)
         {

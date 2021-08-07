@@ -26,7 +26,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void FindConstruction()
         {
-            Construction = FormMain.Config.FindTypeConstructionOfKingdom(nameConstruction);
+            Construction = FormMain.Config.FindTypeConstruction(nameConstruction);
             nameConstruction = null;
 
             Debug.Assert(Level <= Construction.MaxLevel);

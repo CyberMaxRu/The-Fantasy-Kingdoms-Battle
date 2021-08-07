@@ -35,16 +35,16 @@ namespace Fantasy_Kingdoms_Battle
 
             // Здесь расчет хода для ИИ
             // Покупаем четыре гильдии и строим 16 героев. На этом пока всё
-            GetPlayerConstruction(FormMain.Config.FindTypeGuild("GuildWarrior")).BuyOrUpgrade();
-            GetPlayerConstruction(FormMain.Config.FindTypeGuild("GuildRogue")).BuyOrUpgrade();
-            GetPlayerConstruction(FormMain.Config.FindTypeGuild("GuildHunter")).BuyOrUpgrade();
-            GetPlayerConstruction(FormMain.Config.FindTypeGuild("GuildCleric")).BuyOrUpgrade();
-            GetPlayerConstruction(FormMain.Config.FindTypeGuild("GuildMage")).BuyOrUpgrade();
+            GetPlayerConstruction(FormMain.Config.FindTypeConstruction("GuildWarrior")).BuyOrUpgrade();
+            GetPlayerConstruction(FormMain.Config.FindTypeConstruction("GuildRogue")).BuyOrUpgrade();
+            GetPlayerConstruction(FormMain.Config.FindTypeConstruction("GuildHunter")).BuyOrUpgrade();
+            GetPlayerConstruction(FormMain.Config.FindTypeConstruction("GuildCleric")).BuyOrUpgrade();
+            GetPlayerConstruction(FormMain.Config.FindTypeConstruction("GuildMage")).BuyOrUpgrade();
 
-            HireHeroes(GetPlayerConstruction(FormMain.Config.FindTypeGuild("GuildWarrior")), 4);
-            HireHeroes(GetPlayerConstruction(FormMain.Config.FindTypeGuild("GuildHunter")), 4);
-            HireHeroes(GetPlayerConstruction(FormMain.Config.FindTypeGuild("GuildCleric")), 4);
-            HireHeroes(GetPlayerConstruction(FormMain.Config.FindTypeGuild("GuildMage")), 4);
+            HireHeroes(GetPlayerConstruction(FormMain.Config.FindTypeConstruction("GuildWarrior")), 4);
+            HireHeroes(GetPlayerConstruction(FormMain.Config.FindTypeConstruction("GuildHunter")), 4);
+            HireHeroes(GetPlayerConstruction(FormMain.Config.FindTypeConstruction("GuildCleric")), 4);
+            HireHeroes(GetPlayerConstruction(FormMain.Config.FindTypeConstruction("GuildMage")), 4);
 
             System.Windows.Forms.Application.DoEvents();
             System.Threading.Thread.Sleep(200);

@@ -1289,29 +1289,32 @@ namespace Fantasy_Kingdoms_Battle
 
             // Проходим по каждому зданию, создавая ему панель
             VisualControl parent;
-            foreach (TypeConstruction tck in Config.TypeConstructionsOfKingdom)
+            foreach (TypeConstruction tck in Config.TypeConstructions)
             {
-                switch (tck.Page)
+                if (tck.IsInternalConstruction)
                 {
-                    case Page.Guild:
-                        parent = pageGuilds.Page;
-                        break;
-                    case Page.Economic:
-                        parent = pageEconomicConstructions.Page;
-                        break;
-                    case Page.Temple:
-                        parent = pageTemples.Page;
-                        break;
-                    default:
-                        throw new Exception("Неизвестная страница " + tck.Page.ToString());
+                    switch (tck.Page)
+                    {
+                        case Page.Guild:
+                            parent = pageGuilds.Page;
+                            break;
+                        case Page.Economic:
+                            parent = pageEconomicConstructions.Page;
+                            break;
+                        case Page.Temple:
+                            parent = pageTemples.Page;
+                            break;
+                        default:
+                            throw new Exception("Неизвестная страница " + tck.Page.ToString());
+                    }
+
+                    Debug.Assert(panels[(int)tck.Page, tck.Line - 1, tck.Pos - 1] == null);
+
+                    tck.Panel = new PanelConstruction(parent, 0, 0);
+                    tck.Panel.ShiftX = (tck.Panel.Width + Config.GridSize) * (tck.Pos - 1);
+                    tck.Panel.ShiftY = (tck.Panel.Height + Config.GridSize) * (tck.Line - 1);
+                    panels[(int)tck.Page, tck.Line - 1, tck.Pos - 1] = tck.Panel;
                 }
-
-                Debug.Assert(panels[(int)tck.Page, tck.Line - 1, tck.Pos - 1] == null);
-
-                tck.Panel = new PanelConstruction(parent, 0, 0);
-                tck.Panel.ShiftX = (tck.Panel.Width + Config.GridSize) * (tck.Pos - 1);
-                tck.Panel.ShiftY = (tck.Panel.Height + Config.GridSize) * (tck.Line - 1);
-                panels[(int)tck.Page, tck.Line - 1, tck.Pos - 1] = tck.Panel;
             }
         }
 
@@ -1464,16 +1467,16 @@ namespace Fantasy_Kingdoms_Battle
         internal void UpdateMenu()
         {
             // Рисуем содержимое ячеек
-            if ((selectedPlayerObject != null) && (selectedPlayerObject is PlayerMapObject pb) && pb.ShowMenuForPlayer())
+            if ((selectedPlayerObject != null) && (selectedPlayerObject is PlayerConstruction pb) && pb.ShowMenuForPlayer())
             {
-                Debug.Assert(pb.TypeMapObject != null);
+                Debug.Assert(pb.TypeConstruction != null);
 
                 //labelMenuNameObject.Visible = true;
-                labelMenuNameObject.Text = pb.TypeMapObject.Name;
+                labelMenuNameObject.Text = pb.TypeConstruction.Name;
 
                 ClearMenu();
 
-                if (pb.TypeMapObject.Researches != null)
+                if (pb.TypeConstruction.Researches != null)
                     foreach (PlayerCellMenu pr in pb.Researches)
                     {
                         if (!CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Used)
@@ -1593,7 +1596,6 @@ namespace Fantasy_Kingdoms_Battle
                     + ": " + curAppliedPlayer.PointGreatness.ToString() + "/"
                     + curAppliedPlayer.PointGreatnessForNextLevel.ToString();
 
-                pageTemples.PopupQuantity = lobby.CurrentPlayer.CanBuildTemple() ? lobby.CurrentPlayer.PointConstructionTemple : 0;
                 pageHeroes.Cost = lobby.CurrentPlayer.CombatHeroes.Count.ToString();
                 pageTournament.Cost = lobby.DaysLeftForBattle > 0 ? lobby.DaysLeftForBattle.ToString() + " д." : 
                         curAppliedPlayer.SkipBattle ? "Проп." : "Битва";
@@ -2026,7 +2028,7 @@ namespace Fantasy_Kingdoms_Battle
             // Сортируем логова и переназначаем ссылки на них у кнопок
             int n = 0;
             int left = 0;
-            foreach (PlayerLair pl in lobby.CurrentPlayer.ListFlags)
+            foreach (PlayerConstruction pl in lobby.CurrentPlayer.ListFlags)
             {
                 listBtnTargetLair[n].ShiftX = left;
                 listBtnTargetLair[n].ShowCell(pl);

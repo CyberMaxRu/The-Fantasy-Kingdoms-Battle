@@ -16,7 +16,7 @@ namespace Fantasy_Kingdoms_Battle
         private VCButton btnViewResult;
         private VCButton btnWShowBattle;
 
-        public VCEventExecuteFlag(TypeFlag typeFlag, TypePlace tl, PlayerLair pl, bool winner, Battle b) : base()
+        public VCEventExecuteFlag(TypeFlag typeFlag, TypeConstruction tl, PlayerConstruction pl, bool winner, Battle b) : base()
         {
             TypeFlag = typeFlag;
             TypeLair = tl;
@@ -76,8 +76,8 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal TypeFlag TypeFlag { get; }
-        internal TypePlace TypeLair { get; }
-        internal PlayerLair Target { get; }
+        internal TypeConstruction TypeLair { get; }
+        internal PlayerConstruction Target { get; }
         internal bool Winner { get; }
         internal Battle Battle { get; }
     }

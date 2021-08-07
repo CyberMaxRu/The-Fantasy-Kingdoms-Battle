@@ -10,17 +10,17 @@ namespace Fantasy_Kingdoms_Battle
     // Класс-обертка над логовом - участник боя
     internal sealed class LairBattleParticipant : BattleParticipant
     {
-        public LairBattleParticipant(PlayerLair pl) : base(pl.Player.Lobby)
+        public LairBattleParticipant(PlayerConstruction pl) : base(pl.Player.Lobby)
         {
             PlayerLair = pl;
         }
 
-        internal PlayerLair PlayerLair { get; }
+        internal PlayerConstruction PlayerLair { get; }
 
-        internal override string GetName() => PlayerLair.TypeLair.Name;
+        internal override string GetName() => PlayerLair.TypeConstruction.Name;
         internal override LobbyPlayer GetPlayer() => PlayerLair.Player;
         internal override TypePlayer GetTypePlayer() => TypePlayer.Lair;
-        internal override int GetImageIndexAvatar() => PlayerLair.TypeLair.ImageIndex;
+        internal override int GetImageIndexAvatar() => PlayerLair.TypeConstruction.ImageIndex;
 
         internal override void PreparingForBattle()
         {

@@ -8,14 +8,28 @@ using System.Diagnostics;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    // Класс сооружения
-    internal enum Page { Guild, Economic, Temple };
+    internal enum CategoryConstruction { Guild, Economic, Military, Temple, Lair, Place };// Тип сооружения
+    internal enum Page { Guild, Economic, Temple, None };// Страница для размещения здания
+    // Отношение к месту - свое (союзное), нейтральное, враг
+    internal enum RelationPlace { Our, Neutral, Enemy };
+    internal enum PriorityExecution { None = -1, Normal = 0, Warning = 1, High = 2, Exclusive = 3 };
+    internal enum TypeFlag { None, Scout, Attack, Defense };
 
-    internal abstract class TypeConstruction : TypeObjectOfMap
+
+    // Тип сооружения - базовый класс для всех зданий, построек и мест
+    internal class TypeConstruction : TypeObject
     {
+        private Uri uriSoundSelect;// Звук при выборе объекта
+        private string nameTypePlaceAfterClear;
+
         public TypeConstruction(XmlNode n) : base(n)
         {
-            Page = (Page)Enum.Parse(typeof(Page), n.SelectSingleNode("Page").InnerText);
+            Category = (CategoryConstruction)Enum.Parse(typeof(CategoryConstruction), n.SelectSingleNode("Category").InnerText);
+            IsInternalConstruction = (Category == CategoryConstruction.Guild) || (Category == CategoryConstruction.Economic) || (Category == CategoryConstruction.Temple) || (Category == CategoryConstruction.Military);
+            if (n.SelectSingleNode("Page") != null)
+                Page = (Page)Enum.Parse(typeof(Page), n.SelectSingleNode("Page").InnerText);
+            else
+                Page = Page.None;
             Line = XmlUtils.GetInteger(n.SelectSingleNode("Line"));
             Pos = XmlUtils.GetInteger(n.SelectSingleNode("Pos"));
             HasTreasury = XmlUtils.GetBool(n.SelectSingleNode("HasTreasury"), false);
@@ -23,56 +37,142 @@ namespace Fantasy_Kingdoms_Battle
             DefaultLevel = XmlUtils.GetInteger(n.SelectSingleNode("DefaultLevel"));
             MaxLevel = XmlUtils.GetInteger(n.SelectSingleNode("MaxLevel"));
             LevelAsQuantity = XmlUtils.GetBool(n.SelectSingleNode("LevelAsQuantity"), false);
-            ResearchesPerDay = XmlUtils.GetIntegerNotNull(n.SelectSingleNode("ResearchesPerDay"));
+            ResearchesPerDay = XmlUtils.GetInteger(n.SelectSingleNode("ResearchesPerDay"));
 
-            Debug.Assert(DefaultLevel >= 0);
-            Debug.Assert(DefaultLevel <= 5);
-            Debug.Assert(MaxLevel > 0);
-            Debug.Assert(MaxLevel <= 10);
-            Debug.Assert(DefaultLevel <= MaxLevel);
-            Debug.Assert(ResearchesPerDay > 0);
-            Debug.Assert(ResearchesPerDay <= 10);
+            if (IsInternalConstruction)
+            {
+                Debug.Assert(DefaultLevel >= 0);
+                Debug.Assert(DefaultLevel <= 5);
+                Debug.Assert(MaxLevel > 0);
+                Debug.Assert(MaxLevel <= 10);
+                Debug.Assert(DefaultLevel <= MaxLevel);
+                Debug.Assert(ResearchesPerDay > 0);
+                Debug.Assert(ResearchesPerDay <= 10);
+            }
+            else
+            {
+                Debug.Assert(DefaultLevel >= 0);
+                Debug.Assert(DefaultLevel <= 5);
+                //Debug.Assert(MaxLevel == 1);
+                Debug.Assert(DefaultLevel <= MaxLevel);
+                //Debug.Assert(ResearchesPerDay == 0);
+            }
+
+            // Проверяем, что таких же ID и наименования нет
+            foreach (TypeConstruction tec in FormMain.Config.TypeConstructions)
+            {
+                Debug.Assert(tec.ID != ID);
+                Debug.Assert(tec.Name != Name);
+                Debug.Assert(tec.ImageIndex != ImageIndex);
+            }
+
+            uriSoundSelect = new Uri(Program.formMain.dirResources + @"Sound\Interface\ConstructionSelect\" + XmlUtils.GetStringNotNull(n.SelectSingleNode("SoundSelect")));
 
             // Загружаем информацию об уровнях
-            Levels = new Level[MaxLevel + 1];// Для упрощения работы с уровнями, добавляем 1, чтобы уровень был равен индексу в массиве
-
-            XmlNode nl = n.SelectSingleNode("Levels");
-            if (nl != null)
+            if (IsInternalConstruction)
             {
-                Level level;
+                Levels = new Level[MaxLevel + 1];// Для упрощения работы с уровнями, добавляем 1, чтобы уровень был равен индексу в массиве
 
-                foreach (XmlNode l in nl.SelectNodes("Level"))
+                XmlNode nl = n.SelectSingleNode("Levels");
+                if (nl != null)
                 {
-                    level = new Level(l);
-                    Debug.Assert(Levels[level.Pos] == null);
+                    Level level;
 
-                    /*switch (TypeIncome)
+                    foreach (XmlNode l in nl.SelectNodes("Level"))
                     {
-                        case TypeIncome.None:
-                            Debug.Assert(level.Income == 0);
-                            break;
-                        case TypeIncome.PerHeroes:
-                            break;
-                        case TypeIncome.Persistent:
-                            Debug.Assert(level.Income > 0);
-                            break;
-                        default:
-                            throw new Exception("Неизвестный тип дохода.");
-                    }*/
+                        level = new Level(l);
+                        Debug.Assert(Levels[level.Pos] == null);
 
-                    Levels[level.Pos] = level;
+                        /*switch (TypeIncome)
+                        {
+                            case TypeIncome.None:
+                                Debug.Assert(level.Income == 0);
+                                break;
+                            case TypeIncome.PerHeroes:
+                                break;
+                            case TypeIncome.Persistent:
+                                Debug.Assert(level.Income > 0);
+                                break;
+                            default:
+                                throw new Exception("Неизвестный тип дохода.");
+                        }*/
+
+                        Levels[level.Pos] = level;
+                    }
+
+                    for (int i = 1; i < Levels.Length; i++)
+                    {
+                        if (Levels[i] == null)
+                            throw new Exception("В конфигурации зданий у " + ID + " нет информации об уровне " + i.ToString());
+                    }
                 }
+                else
+                    throw new Exception("В конфигурации зданий у " + ID + " нет информации об уровнях. ");
+            }
 
-                for (int i = 1; i < Levels.Length; i++)
+            // Загружаем исследования
+            int layersResearches = XmlUtils.GetInteger(n.SelectSingleNode("LayersCellMenu"));
+            XmlNode nr = n.SelectSingleNode("CellsMenu");
+            if (nr != null)
+            {
+                Debug.Assert(layersResearches > 0);
+                Researches = new TypeCellMenu[layersResearches, FormMain.Config.PlateHeight, FormMain.Config.PlateWidth];
+
+                TypeCellMenu research;
+
+                foreach (XmlNode l in nr.SelectNodes("CellMenu"))
                 {
-                    if (Levels[i] == null)
-                        throw new Exception("В конфигурации зданий у " + ID + " нет информации об уровне " + i.ToString());
+                    research = new TypeCellMenu(l);
+                    Debug.Assert(Researches[research.Layer, research.Coord.Y, research.Coord.X] == null);
+                    Researches[research.Layer, research.Coord.Y, research.Coord.X] = research;
                 }
             }
             else
-                throw new Exception("В конфигурации зданий у " + ID + " нет информации об уровнях. ");
+            {
+                Debug.Assert(layersResearches == 0);
+            }
+
+            // Информация о монстрах
+            XmlNode ne = n.SelectSingleNode("Monsters");
+            if (ne != null)
+            {
+                MonsterLevelLair mll;
+                foreach (XmlNode l in ne.SelectNodes("Monster"))
+                {
+                    mll = new MonsterLevelLair(l);
+                    Monsters.Add(mll);
+                }
+            }
+
+            MaxHeroes = XmlUtils.GetInteger(n.SelectSingleNode("MaxHeroes"));
+            if (n.SelectSingleNode("RelationPlace") != null)
+                RelationPlace = (RelationPlace)Enum.Parse(typeof(RelationPlace), n.SelectSingleNode("RelationPlace").InnerText);
+            else
+                RelationPlace = RelationPlace.Our;
+            nameTypePlaceAfterClear = XmlUtils.GetString(n.SelectSingleNode("TypePlaceAfterClear"));
+            Debug.Assert(Name != nameTypePlaceAfterClear);
+
+            // Информация о награде
+            if (n.SelectSingleNode("Reward") != null)
+                TypeReward = new TypeReward(n.SelectSingleNode("Reward"));
+
+            Debug.Assert(MaxHeroes < 50);
+
+            if (RelationPlace == RelationPlace.Enemy)
+            {
+                Debug.Assert(MaxHeroes > 0);
+            }
+            else
+            {
+                Debug.Assert(MaxHeroes == 0);
+            }
+
+            //else
+            //    throw new Exception("В конфигурации логова у " + ID + " нет информации об уровнях. ");
         }
 
+        internal CategoryConstruction Category { get; }
+        internal bool IsInternalConstruction { get; }// Это внутреннее сооружение
         internal Page Page { get; }
         internal int Line { get; }// Линия сооружения 
         internal int Pos { get; }// Позиция сооружения в линии
@@ -86,19 +186,127 @@ namespace Fantasy_Kingdoms_Battle
         internal int GoldByConstruction { get; }// Количество золота в казне при постройке
         internal TypeHero TrainedHero { get; set; }
 
+        internal TypeCellMenu[,,] Researches;
+        internal List<MonsterLevelLair> Monsters { get; } = new List<MonsterLevelLair>();
+        internal int MaxHeroes { get; }// Максимальное количество героев, которое может атаковать логово
+        internal RelationPlace RelationPlace { get; }// Тип отношения к месту
+        internal TypeReward TypeReward { get; }// Награда за зачистку логова
+        internal TypeConstruction TypePlaceAfterClear { get; private set; }// Тип места после зачистки
+
+        internal void PlaySoundSelect()
+        {
+            Program.formMain.PlaySoundSelect(uriSoundSelect);
+        }
+
         internal override void TuneDeferredLinks()
         {
             base.TuneDeferredLinks();
 
-            foreach (Level l in Levels)
+            if (Levels != null)
             {
-                if (l != null)
-                    foreach (Requirement r in l.Requirements)
-                        r.FindConstruction();
+                foreach (Level l in Levels)
+                {
+                    if (l != null)
+                        foreach (Requirement r in l.Requirements)
+                            r.FindConstruction();
+                }
+            }
+
+            if (Researches != null)
+            {
+                for (int z = 0; z < Researches.GetLength(0); z++)
+                    for (int y = 0; y < Researches.GetLength(1); y++)
+                        for (int x = 0; x < Researches.GetLength(2); x++)
+                            Researches[z, y, x]?.TuneDeferredLinks();
+            }
+
+            foreach (MonsterLevelLair mll in Monsters)
+            {
+                mll.TuneDeferredLinks();
+
+                // Проверяем, что тип монстра не повторяется
+                foreach (MonsterLevelLair mlev in Monsters)
+                    if ((mlev != mll) && (mlev.Monster != null))
+                        if (mlev.Monster == mll.Monster)
+                            throw new Exception("Тип монстра " + mll.Monster.ID + " повторяется.");
+            }
+
+            if (nameTypePlaceAfterClear.Length > 0)
+                TypePlaceAfterClear = FormMain.Config.FindTypeConstruction(nameTypePlaceAfterClear);
+
+            nameTypePlaceAfterClear = null;
+
+        }
+
+        internal string GetTextConstructionNotBuilded()
+        {
+            switch (Category)
+            {
+                case CategoryConstruction.Guild:
+                    return "Гильдия не построена";
+                case CategoryConstruction.Economic:
+                    return "Здание не построено";
+                case CategoryConstruction.Temple:
+                    return "Храм не построен";
+                default:
+                    throw new Exception("Нельзя строить категорию сооружения: " + Category.ToString());
             }
         }
 
-        internal abstract string GetTextConstructionNotBuilded();
-        internal abstract string GetTextConstructionIsFull();
+        internal string GetTextConstructionIsFull()
+        {
+            switch (Category)
+            {
+                case CategoryConstruction.Guild:
+                    return "Гильдия заполнена";
+                case CategoryConstruction.Economic:
+                    throw new Exception("В экономическом здании не может быть героев для найма.");
+                case CategoryConstruction.Temple:
+                    return "Храм заполнен";
+                default:
+                    throw new Exception("Нельзя строить категорию сооружения: " + Category.ToString());
+            }
+        }
+    }
+
+    // Класс монстров уровня логова
+    internal sealed class MonsterLevelLair
+    {
+        private string idMonster;
+
+        public MonsterLevelLair(XmlNode n)
+        {
+            idMonster = n.SelectSingleNode("ID").InnerText;
+            StartQuantity = XmlUtils.GetInteger(n.SelectSingleNode("StartQuantity"));
+            MaxQuantity = XmlUtils.GetInteger(n.SelectSingleNode("MaxQuantity"));
+            Level = XmlUtils.GetInteger(n.SelectSingleNode("Level"));
+            DaysRespawn = XmlUtils.GetInteger(n.SelectSingleNode("DaysRespawn"));
+            QuantityRespawn = XmlUtils.GetInteger(n.SelectSingleNode("QuantityRespawn"));
+
+            Debug.Assert(idMonster.Length > 0);
+            Debug.Assert(StartQuantity >= 0);
+            Debug.Assert(MaxQuantity > 0);
+            Debug.Assert(StartQuantity <= MaxQuantity);
+            Debug.Assert(Level > 0);
+            Debug.Assert(DaysRespawn >= 0);
+            Debug.Assert(DaysRespawn <= 25);
+            Debug.Assert(QuantityRespawn >= 0);
+            //Debug.Assert(QuantityRespawn <= 49);
+        }
+
+        internal TypeMonster Monster { get; private set; }
+        internal int StartQuantity { get; }
+        internal int MaxQuantity { get; }
+        internal int Level { get; }
+        internal int DaysRespawn { get; }
+        internal int QuantityRespawn { get; }
+        internal List<Monster> Monsters { get; } = new List<Monster>();
+
+        internal void TuneDeferredLinks()
+        {
+            Monster = FormMain.Config.FindTypeMonster(idMonster);
+            idMonster = null;
+            Debug.Assert(Level <= Monster.MaxLevel);
+        }
     }
 }

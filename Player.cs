@@ -7,7 +7,7 @@ using System.Xml;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    // Класс игрока
+    // Тип игрока
     internal abstract class Player : TypeObject
     {
         public Player(XmlNode n, TypePlayer typePlayer) : base(n)

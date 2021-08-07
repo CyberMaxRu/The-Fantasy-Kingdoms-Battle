@@ -14,7 +14,7 @@ namespace Fantasy_Kingdoms_Battle
         public TypeHero(XmlNode n) : base(n)
         {
             Cost = Convert.ToInt32(n.SelectSingleNode("Cost").InnerText);
-            Construction = FormMain.Config.FindTypeConstructionOfKingdom(n.SelectSingleNode("Construction").InnerText);
+            Construction = FormMain.Config.FindTypeConstruction(n.SelectSingleNode("Construction").InnerText);
             Construction.TrainedHero = this;
             CanBuild = Convert.ToBoolean(n.SelectSingleNode("CanBuild").InnerText);
             PrefixName = XmlUtils.GetString(n.SelectSingleNode("PrefixName"));

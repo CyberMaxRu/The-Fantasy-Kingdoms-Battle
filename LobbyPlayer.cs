@@ -67,20 +67,21 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Инициализация зданий
-            foreach (TypeConstruction tck in FormMain.Config.TypeConstructionsOfKingdom)
+            foreach (TypeConstruction tck in FormMain.Config.TypeConstructions)
             {
-                Constructions.Add(new PlayerConstruction(this, tck));
+                if (tck.IsInternalConstruction)
+                    Constructions.Add(new PlayerConstruction(this, tck));
             }
 
             // Инициализация логов
-            Lairs = new PlayerLair[lobby.TypeLobby.LairsLayers, lobby.TypeLobby.LairsHeight, lobby.TypeLobby.LairsWidth];
+            Lairs = new PlayerConstruction[lobby.TypeLobby.LairsLayers, lobby.TypeLobby.LairsHeight, lobby.TypeLobby.LairsWidth];
 
             GenerateLairs();
             ScoutRandomLair(lobby.TypeLobby.StartScoutedLairs);
 
             //
 
-            Castle = GetPlayerConstruction(FormMain.Config.FindTypeEconomicConstruction(FormMain.Config.IDConstructionCastle));
+            Castle = GetPlayerConstruction(FormMain.Config.FindTypeConstruction(FormMain.Config.IDConstructionCastle));
             Castle.Gold = Lobby.TypeLobby.Gold;
             if (Player.TypePlayer == TypePlayer.Computer)
                 Castle.Gold = 100_000;
@@ -183,7 +184,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (scoutLaires > 0)
             {
-                List<PlayerLair> lairs = new List<PlayerLair>();
+                List<PlayerConstruction> lairs = new List<PlayerConstruction>();
                 for (int y = 0; y < Lairs.GetLength(1); y++)
                     for (int x = 0; x < Lairs.GetLength(2); x++)
                         if (Lairs[0, y, x].Hidden)
@@ -205,7 +206,7 @@ namespace Fantasy_Kingdoms_Battle
         internal void CalcFinalityTurn()
         {
             // Убеждаемся, что у нас не сломалось соответствие флагов
-            foreach (PlayerLair pl in Lairs)
+            foreach (PlayerConstruction pl in Lairs)
             {
                 if (pl != null)
                 {
@@ -217,9 +218,9 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Расчет флагов на логова
-            List<PlayerLair> tempListLair = ListFlags.ToList();// Работаем с копией списка, так как текущий будет меняться по мере обработки флагов
+            List<PlayerConstruction> tempListLair = ListFlags.ToList();// Работаем с копией списка, так как текущий будет меняться по мере обработки флагов
 
-            foreach (PlayerLair pl in tempListLair)
+            foreach (PlayerConstruction pl in tempListLair)
             {
                 Battle b = null;
                 WindowBattle formBattle;
@@ -280,7 +281,7 @@ namespace Fantasy_Kingdoms_Battle
                     }
 
                     if (this is LobbyPlayerHuman h)
-                        h.AddEvent(new VCEventExecuteFlag(typeFlag, pl.TypeLair, pl.Destroyed ? null : pl, (b is null) || (b.Winner == this), b));
+                        h.AddEvent(new VCEventExecuteFlag(typeFlag, pl.TypeConstruction, pl.Destroyed ? null : pl, (b is null) || (b.Winner == this), b));
                 }
             }
         }
@@ -337,8 +338,8 @@ namespace Fantasy_Kingdoms_Battle
         internal PlayerItem[] Warehouse = new PlayerItem[FormMain.Config.WarehouseMaxCells];// Предметы на складе игрока
 
         // Логова
-        internal PlayerLair[,,] Lairs { get; }
-        internal List<PlayerLair> ListFlags { get; } = new List<PlayerLair>();
+        internal PlayerConstruction[,,] Lairs { get; }
+        internal List<PlayerConstruction> ListFlags { get; } = new List<PlayerConstruction>();
         internal Dictionary<PriorityExecution, int> QuantityFlags { get; } = new Dictionary<PriorityExecution, int>();
         internal int LairsScouted { get; private set;}
         internal int LairsShowed { get; private set; }
@@ -358,7 +359,7 @@ namespace Fantasy_Kingdoms_Battle
                     return pb;
             }
 
-            throw new Exception("У игрока здание " + b.ID + " не найдено.");
+            throw new Exception("У игрока " + GetName() + " сооружение " + b.ID + " не найдено.");
         }
 
         internal void AddHero(PlayerHero ph)
@@ -655,7 +656,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (CountActiveFlags() > 0)
             {
-                foreach (PlayerLair pl in ListFlags.Where(pl => (pl != null) && (pl.TypeFlag == TypeFlag.Scout)))
+                foreach (PlayerConstruction pl in ListFlags.Where(pl => (pl != null) && (pl.TypeFlag == TypeFlag.Scout)))
                 {
                     pl.AddAttackingHero(freeHeroes[0]);
                     freeHeroes.RemoveAt(0);
@@ -672,10 +673,10 @@ namespace Fantasy_Kingdoms_Battle
                         int heroesToFlag;
                         int heroesPerFlag = Math.Max(freeHeroes.Count / quantityFlagAttack, 1);
 
-                        foreach (PlayerLair pl in ListFlags.Where(pl => (pl != null) && ((pl.TypeFlag == TypeFlag.Attack) || (pl.TypeFlag == TypeFlag.Defense))))
+                        foreach (PlayerConstruction pl in ListFlags.Where(pl => (pl != null) && ((pl.TypeFlag == TypeFlag.Attack) || (pl.TypeFlag == TypeFlag.Defense))))
                             if (pl != null)
                             {
-                                heroesToFlag = Math.Min(Math.Min(freeHeroes.Count, heroesPerFlag), pl.TypeLair.MaxHeroes);
+                                heroesToFlag = Math.Min(Math.Min(freeHeroes.Count, heroesPerFlag), pl.TypeConstruction.MaxHeroes);
 
                                 for (int i = 0; i < heroesToFlag; i++)
                                 {
@@ -694,7 +695,7 @@ namespace Fantasy_Kingdoms_Battle
         private int CountActiveFlags()
         {
             int count = 0;
-            foreach (PlayerLair pl in ListFlags)
+            foreach (PlayerConstruction pl in ListFlags)
                 if (pl != null)
                     count++;
 
@@ -712,7 +713,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Указываем количество свободных флагов
-            foreach (PlayerLair pl in ListFlags)
+            foreach (PlayerConstruction pl in ListFlags)
             {
                 if (pl == null)
                     QuantityFlags[PriorityExecution.None]++;
@@ -721,7 +722,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddFlag(PlayerLair lair)
+        internal void AddFlag(PlayerConstruction lair)
         {
             // Ищем свободный слот
             for (int i = 0; i < ListFlags.Count; i++)
@@ -740,7 +741,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Fail("Не найден слот для флага.");
         }
 
-        internal void UpPriorityFlag(PlayerLair lair)
+        internal void UpPriorityFlag(PlayerConstruction lair)
         {
             int idx = ListFlags.IndexOf(lair);
             Debug.Assert(idx != -1);
@@ -751,7 +752,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
 
-        internal void RemoveFlag(PlayerLair lair)
+        internal void RemoveFlag(PlayerConstruction lair)
         {
             Debug.Assert(lair.PriorityFlag > PriorityExecution.None);
 
@@ -797,7 +798,7 @@ namespace Fantasy_Kingdoms_Battle
             return QuantityFlags[PriorityExecution.None] > 0;
         }
 
-        internal void RemoveLair(PlayerLair l)
+        internal void RemoveLair(PlayerConstruction l)
         {
             Debug.Assert(l != null);
             Debug.Assert(Lairs[l.Layer, l.Y, l.X] != null);
@@ -819,7 +820,7 @@ namespace Fantasy_Kingdoms_Battle
             int idxTypeLair;
             for (int layer = 0; layer < Lobby.TypeLobby.LairsLayers; layer++)
             {
-                List<TypePlace> lairs = new List<TypePlace>();
+                List<TypeConstruction> lairs = new List<TypeConstruction>();
                 lairs.AddRange(Lobby.Lairs[layer]);
                 List<Point> cells = GetCells();
                 Debug.Assert(cells.Count <= lairs.Count);
@@ -833,7 +834,7 @@ namespace Fantasy_Kingdoms_Battle
 
                     // Помещаем в нее логово
                     Debug.Assert(Lairs[layer, cells[idxCell].Y, cells[idxCell].X] == null);
-                    Lairs[layer, cells[idxCell].Y, cells[idxCell].X] = new PlayerLair(this, lairs[idxTypeLair], cells[idxCell].X, cells[idxCell].Y, layer);
+                    Lairs[layer, cells[idxCell].Y, cells[idxCell].X] = new PlayerConstruction(this, lairs[idxTypeLair], cells[idxCell].X, cells[idxCell].Y, layer);
                     
                     cells.RemoveAt(idxCell);// Убираем ячейку из списка доступных
                     lairs.RemoveAt(idxTypeLair);// Убираем тип логова из списка доступных
@@ -851,24 +852,10 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void ApplyReward(PlayerLair l)
+        internal void ApplyReward(PlayerConstruction l)
         {
-            IncomeGold(l.TypeLair.TypeReward.Gold);
-            AddGreatness(l.TypeLair.TypeReward.Greatness);
-        }
-
-        internal bool CanBuildTemple()
-        {
-            if (PointConstructionTemple == 0)
-                return false;
-
-            foreach (PlayerConstruction pb in Constructions.Where(p => p.TypeConstruction is TypeTemple))
-            {
-                if ((pb.Level == 0) && pb.CheckRequirements())
-                    return true;
-            }
-
-            return false;
+            IncomeGold(l.TypeConstruction.TypeReward.Gold);
+            AddGreatness(l.TypeConstruction.TypeReward.Greatness);
         }
 
         protected void ApplyStartBonus(StartBonus sb)

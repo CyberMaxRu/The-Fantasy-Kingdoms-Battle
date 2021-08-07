@@ -77,7 +77,6 @@
     <Compile Include="PanelCreatureInfo.cs" />
     <Compile Include="PanelMonsterInfo.cs" />
     <Compile Include="Player.cs" />
-    <Compile Include="PlayerMapObject.cs" />
     <Compile Include="PlayerObject.cs" />
     <Compile Include="ComputerPlayer.cs" />
     <Compile Include="TypeReward.cs" />
@@ -121,19 +120,14 @@
     <Compile Include="Source\VisualControls\VCWindowCaption.cs" />
     <Compile Include="Specialization.cs" />
     <Compile Include="StateCreature.cs" />
-    <Compile Include="TypeEconomicConstruction.cs" />
     <Compile Include="TypeCitizen.cs" />
     <Compile Include="Creature.cs" />
     <Compile Include="Monster.cs" />
-    <Compile Include="TypeObjectOfMap.cs" />
-    <Compile Include="TypeGuild.cs" />
-    <Compile Include="TypeTemple.cs" />
     <Compile Include="TypeConstruction.cs" />
     <Compile Include="TypeMonster.cs" />
     <Compile Include="TypeObject.cs" />
     <Compile Include="PanelLair.cs" />
     <Compile Include="PanelLairInfo.cs" />
-    <Compile Include="PlayerLair.cs" />
     <Compile Include="KindCreature.cs" />
     <Compile Include="TypeCreature.cs" />
     <Compile Include="Config.cs" />
@@ -160,7 +154,6 @@
     <Compile Include="Requirement.cs" />
     <Compile Include="TypeCellMenu.cs" />
     <Compile Include="Ammunition.cs" />
-    <Compile Include="TypePlace.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Source\TypeLobby\TypeLobby.cs" />
     <Compile Include="Level.cs" />
@@ -216,11 +209,9 @@
     <Content Include="Resources\Config\StartBonus.xml" />
     <Content Include="Resources\Config\StateCreature.xml" />
     <Content Include="Resources\Config\TypeCitizens.xml" />
-    <Content Include="Resources\Config\TypeGuilds.xml" />
-    <Content Include="Resources\Config\TypeLairs.xml" />
+    <Content Include="Resources\Config\TypeConstructions.xml" />
     <Content Include="Resources\Config\TypeMonsters.xml" />
     <Content Include="Resources\Config\KindCreatures.xml" />
-    <Content Include="Resources\Config\TypeTemples.xml" />
     <Content Include="Resources\Icons\Avatars.png" />
     <Content Include="Resources\Icons\Background.png" />
     <Content Include="Resources\Icons\BackgroundEntity.png" />
@@ -265,7 +256,6 @@
     <Content Include="Resources\Config\TypeLobby.xml" />
     <Content Include="Resources\Config\Items.xml" />
     <Content Include="Resources\Config\TypeHeroes.xml" />
-    <Content Include="Resources\Config\TypeEconomicConstructions.xml" />
     <Content Include="Resources\Config\Settings.xml" />
     <Content Include="Resources\Config\Weapons.xml" />
     <Content Include="Resources\Versions.xml" />

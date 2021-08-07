@@ -15,7 +15,7 @@ namespace Fantasy_Kingdoms_Battle
             BitmapList = Program.formMain.imListObjectsCell;
         }
 
-        internal PlayerLair Lair { get => Cell as PlayerLair; }
+        internal PlayerConstruction Lair { get => Cell as PlayerConstruction; }
 
         internal override void DoClick()
         {

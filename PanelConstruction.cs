@@ -111,7 +111,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if ((Construction.Level > 0) && (Construction.CanTrainHero() == true))
             {
-                if (Construction.TypeConstruction is TypeTemple)
+                if (Construction.TypeConstruction.Category == CategoryConstruction.Temple)
                 {
                     MessageBox.Show("Найм храмовых героев в этой версии не реализован.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -163,17 +163,12 @@ namespace Fantasy_Kingdoms_Battle
             lblNameMapObject.Text = Construction.TypeConstruction.Name;
             lblNameMapObject.Color = FormMain.Config.ColorMapObjectCaption(Construction.Level > 0);
 
-            if (Construction.TypeConstruction is TypeEconomicConstruction)
+            int income = Construction.Level > 0 ? Construction.Income() : Construction.IncomeNextLevel();
+            if (income > 0)
             {
-                int income = Construction.Level > 0 ? Construction.Income() : Construction.IncomeNextLevel();
-                if (income > 0)
-                {
-                    lblIncome.Text = $"+{income}";
-                    lblIncome.Color = FormMain.Config.ColorIncome(Construction.Level > 0);
-                    lblIncome.Visible = true;
-                }
-                else
-                    lblIncome.Visible = false;
+                lblIncome.Text = $"+{income}";
+                lblIncome.Color = FormMain.Config.ColorIncome(Construction.Level > 0);
+                lblIncome.Visible = true;
             }
             else
                 lblIncome.Visible = false;
@@ -207,7 +202,7 @@ namespace Fantasy_Kingdoms_Battle
                 btnBuyOrUpgrade.ImageIsEnabled = Construction.CheckRequirements();
             }
 
-            if ((TypeConstruction.TrainedHero != null) && !(TypeConstruction is TypeEconomicConstruction))
+            if ((TypeConstruction.TrainedHero != null) && (TypeConstruction.Category != CategoryConstruction.Economic))
             {
                 //btnHireHero.ImageIndex = (Construction.Level > 0) && ((Construction.Heroes.Count == Construction.MaxHeroes()) || (Construction.MaxHeroesAtPlayer() == true))  ? -1 : GuiUtils.GetImageIndexWithGray(btnHireHero.ImageList, c.TrainedHero.ImageIndex, Construction.CanTrainHero());
                 if (Construction.Heroes.Count < Construction.MaxHeroes())
@@ -227,7 +222,7 @@ namespace Fantasy_Kingdoms_Battle
             imgMapObject.Level = Construction.TypeConstruction.LevelAsQuantity ? 0 : Construction.Level < Construction.TypeConstruction.MaxLevel ? Construction.Level : 0;
             imgMapObject.Quantity = Construction.TypeConstruction.LevelAsQuantity ? Construction.Level : 0;
 
-            if ((Construction.TypeConstruction.TrainedHero != null) && !(TypeConstruction is TypeEconomicConstruction) && (Construction.Level > 0) && (Construction.Heroes.Count > 0))
+            if ((Construction.TypeConstruction.TrainedHero != null) && !(TypeConstruction.TrainedHero is null) && (Construction.Level > 0) && (Construction.Heroes.Count > 0))
             {
                 btnHeroes.Cost = Construction.Heroes.Count.ToString() + "/" + Construction.MaxHeroes();
                 //btnHeroes.ImageIndex = Program.formMain.TreatImageIndex(Construction.TypeConstruction.TrainedHero.ImageIndex, Construction.Player);
