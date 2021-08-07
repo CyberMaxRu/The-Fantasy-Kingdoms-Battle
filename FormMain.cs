@@ -1465,16 +1465,16 @@ namespace Fantasy_Kingdoms_Battle
         internal void UpdateMenu()
         {
             // Рисуем содержимое ячеек
-            if ((selectedPlayerObject != null) && (selectedPlayerObject is PlayerConstruction pb))
+            if ((selectedPlayerObject != null) && (selectedPlayerObject is PlayerMapObject pb) && pb.ShowMenuForPlayer())
             {
-                Debug.Assert(pb.TypeConstruction != null);
+                Debug.Assert(pb.TypeMapObject != null);
 
                 //labelMenuNameObject.Visible = true;
-                labelMenuNameObject.Text = pb.TypeConstruction.Name;
+                labelMenuNameObject.Text = pb.TypeMapObject.Name;
 
                 ClearMenu();
 
-                if (pb.TypeConstruction.Researches != null)
+                if (pb.TypeMapObject.Researches != null)
                     foreach (PlayerResearch pr in pb.Researches)
                     {
                         if (!CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Used)

@@ -32,6 +32,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal abstract bool CheckRequirementsForResearch(PlayerResearch research);
         internal abstract List<TextRequirement> GetTextRequirements(PlayerResearch research);
+        internal abstract bool ShowMenuForPlayer();
+
         internal virtual void ResearchCompleted(PlayerResearch research)
         {
             Debug.Assert(CheckRequirementsForResearch(research));

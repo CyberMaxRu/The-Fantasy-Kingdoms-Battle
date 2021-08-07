@@ -329,5 +329,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(research.Research.Entity != null);
             Items.Add(research.Research.Entity);
         }
+
+        internal override bool ShowMenuForPlayer() => true;
     }
 }

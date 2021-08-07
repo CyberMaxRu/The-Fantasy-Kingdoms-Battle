@@ -510,6 +510,7 @@ namespace Fantasy_Kingdoms_Battle
             base.ResearchCompleted(research);
         }
 
+        internal override bool ShowMenuForPlayer() => !Hidden;
 
         BitmapList ICell.BitmapList() => Program.formMain.imListObjectsCell;
         int ICell.ImageIndex() => ImageIndexLair();        
