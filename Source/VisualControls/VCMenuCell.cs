@@ -61,7 +61,7 @@ namespace Fantasy_Kingdoms_Battle
                 //if (!research.CheckRequirements())
                 //    ImageFilter = ImageFilter.Disabled;
             }
-            if ((research != null) && (research.Research.TypeConstruction != null))
+            else if ((research != null) && (research.Research.TypeConstruction != null))
             {
                 PlayerConstruction pc = research.Construction.Player.GetPlayerConstruction(research.Research.TypeConstruction);
                 Debug.Assert(!(pc is null));

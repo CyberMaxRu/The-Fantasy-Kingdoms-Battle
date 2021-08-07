@@ -211,7 +211,7 @@
     <Pos>1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
-    <LayersResearches>1</LayersResearches>
+    <LayersCellMenu>1</LayersCellMenu>
     <ResearchesPerDay>1</ResearchesPerDay>
     <HasTreasury>False</HasTreasury>
     <SoundSelect>marketplace_select.wav</SoundSelect>
@@ -247,19 +247,20 @@
         </Requirements>
       </Level>
     </Levels>
-    <Researches>
-      <Research>
+    <CellsMenu>
+      <CellMenu>
         <PosX>1</PosX>
         <PosY>1</PosY>
         <Layer>1</Layer>
-        <Item>Quiver</Item>
+        <Type>Research</Type>
+        <TypeObject>Quiver</TypeObject>
         <Cost>250</Cost>
-      </Research>
-      <Research>
+      </CellMenu>
+      <CellMenu>
         <PosX>2</PosX>
         <PosY>1</PosY>
         <Layer>1</Layer>
-        <Item>SmallBag</Item>
+        <TypeObject>SmallBag</TypeObject>
         <Cost>500</Cost>
         <Requirements>
           <Requirement>
@@ -267,19 +268,19 @@
             <Level>2</Level>
           </Requirement>
         </Requirements>
-      </Research>
-      <Research>
+      </CellMenu>
+      <CellMenu>
         <PosX>1</PosX>
         <PosY>2</PosY>
         <Layer>1</Layer>
-        <Item>GingerRoot</Item>
+        <TypeObject>GingerRoot</TypeObject>
         <Cost>250</Cost>
-      </Research>
-      <Research>
+      </CellMenu>
+      <CellMenu>
         <PosX>2</PosX>
         <PosY>2</PosY>
         <Layer>1</Layer>
-        <Item>Amanita</Item>
+        <TypeObject>Amanita</TypeObject>
         <Cost>500</Cost>
         <Requirements>
           <Requirement>
@@ -287,12 +288,12 @@
             <Level>2</Level>
           </Requirement>
         </Requirements>
-      </Research>
-      <Research>
+      </CellMenu>
+      <CellMenu>
         <PosX>3</PosX>
         <PosY>2</PosY>
         <Layer>1</Layer>
-        <Item>Beer</Item>
+        <TypeObject>Beer</TypeObject>
         <Cost>750</Cost>
         <Requirements>
           <Requirement>
@@ -300,15 +301,15 @@
             <Level>3</Level>
           </Requirement>
         </Requirements>
-      </Research>
-      <Research>
+      </CellMenu>
+      <CellMenu>
         <PosX>1</PosX>
         <PosY>3</PosY>
         <Layer>1</Layer>
-        <Item>Horseshoe</Item>
+        <TypeObject>Horseshoe</TypeObject>
         <Cost>250</Cost>
-      </Research>
-    </Researches>
+      </CellMenu>
+    </CellsMenu>
   </TypeConstructionEconomic>
   <TypeConstructionEconomic>
     <ID>Smithy</ID>
@@ -321,7 +322,7 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <HasTreasury>False</HasTreasury>
-    <LayersResearches>4</LayersResearches>
+    <LayersCellMenu>4</LayersCellMenu>
     <ResearchesPerDay>2</ResearchesPerDay>
     <SoundSelect>smithy_select.wav</SoundSelect>
     <Levels>
@@ -356,54 +357,54 @@
         </Requirements>
       </Level>
     </Levels>
-    <Researches>
-      <Research>
+    <CellsMenu>
+      <CellMenu>
         <PosX>1</PosX>
         <PosY>1</PosY>
         <Layer>1</Layer>
-        <GroupArmour>ArmourMelee1</GroupArmour>
+        <TypeObject>ArmourMelee1</TypeObject>
         <Cost>250</Cost>
-      </Research>
-      <Research>
+      </CellMenu>
+      <CellMenu>
         <PosX>1</PosX>
         <PosY>2</PosY>
         <Layer>1</Layer>
-        <GroupWeapon>WeaponMelee1</GroupWeapon>
+        <TypeObject>WeaponMelee1</TypeObject>
         <Cost>250</Cost>
-      </Research>
-      <Research>
+      </CellMenu>
+      <CellMenu>
         <PosX>2</PosX>
         <PosY>1</PosY>
         <Layer>1</Layer>
-        <GroupArmour>ArmourArcher1</GroupArmour>
+        <TypeObject>ArmourArcher1</TypeObject>
         <Cost>250</Cost>
-      </Research>
-      <Research>
+      </CellMenu>
+      <CellMenu>
         <PosX>2</PosX>
         <PosY>2</PosY>
         <Layer>1</Layer>
-        <GroupWeapon>WeaponArcher1</GroupWeapon>
+        <TypeObject>WeaponArcher1</TypeObject>
         <Cost>250</Cost>
-      </Research>
-      <Research>
+      </CellMenu>
+      <CellMenu>
         <PosX>3</PosX>
         <PosY>1</PosY>
         <Layer>1</Layer>
-        <GroupArmour>ArmourMage1</GroupArmour>
+        <TypeObject>ArmourMage1</TypeObject>
         <Cost>250</Cost>
-      </Research>
-      <Research>
+      </CellMenu>
+      <CellMenu>
         <PosX>3</PosX>
         <PosY>2</PosY>
         <Layer>1</Layer>
-        <GroupWeapon>WeaponMage1</GroupWeapon>
+        <TypeObject>WeaponMage1</TypeObject>
         <Cost>250</Cost>
-      </Research>
-      <Research>
+      </CellMenu>
+      <CellMenu>
         <PosX>1</PosX>
         <PosY>1</PosY>
         <Layer>2</Layer>
-        <GroupArmour>ArmourMelee2</GroupArmour>
+        <TypeObject>ArmourMelee2</TypeObject>
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
@@ -411,12 +412,12 @@
             <Level>2</Level>
           </Requirement>
         </Requirements>
-      </Research>
-      <Research>
+      </CellMenu>
+      <CellMenu>
         <PosX>2</PosX>
         <PosY>1</PosY>
         <Layer>2</Layer>
-        <GroupArmour>ArmourArcher2</GroupArmour>
+        <TypeObject>ArmourArcher2</TypeObject>
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
@@ -424,12 +425,12 @@
             <Level>2</Level>
           </Requirement>
         </Requirements>
-      </Research>
-      <Research>
+      </CellMenu>
+      <CellMenu>
         <PosX>3</PosX>
         <PosY>1</PosY>
         <Layer>2</Layer>
-        <GroupArmour>ArmourMage2</GroupArmour>
+        <TypeObject>ArmourMage2</TypeObject>
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
@@ -437,12 +438,12 @@
             <Level>2</Level>
           </Requirement>
         </Requirements>
-      </Research>
-      <Research>
+      </CellMenu>
+      <CellMenu>
         <PosX>1</PosX>
         <PosY>2</PosY>
         <Layer>2</Layer>
-        <GroupWeapon>WeaponMelee2</GroupWeapon>
+        <TypeObject>WeaponMelee2</TypeObject>
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
@@ -450,12 +451,12 @@
             <Level>2</Level>
           </Requirement>
         </Requirements>
-      </Research>
-      <Research>
+      </CellMenu>
+      <CellMenu>
         <PosX>2</PosX>
         <PosY>2</PosY>
         <Layer>2</Layer>
-        <GroupWeapon>WeaponArcher2</GroupWeapon>
+        <TypeObject>WeaponArcher2</TypeObject>
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
@@ -463,12 +464,12 @@
             <Level>2</Level>
           </Requirement>
         </Requirements>
-      </Research>
-      <Research>
+      </CellMenu>
+      <CellMenu>
         <PosX>3</PosX>
         <PosY>2</PosY>
         <Layer>2</Layer>
-        <GroupWeapon>WeaponMage2</GroupWeapon>
+        <TypeObject>WeaponMage2</TypeObject>
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
@@ -476,12 +477,12 @@
             <Level>2</Level>
           </Requirement>
         </Requirements>
-      </Research>
-      <Research>
+      </CellMenu>
+      <CellMenu>
         <PosX>1</PosX>
         <PosY>1</PosY>
         <Layer>3</Layer>
-        <GroupArmour>ArmourMelee3</GroupArmour>
+        <TypeObject>ArmourMelee3</TypeObject>
         <Cost>3000</Cost>
         <Requirements>
           <Requirement>
@@ -489,12 +490,12 @@
             <Level>3</Level>
           </Requirement>
         </Requirements>
-      </Research>
-      <Research>
+      </CellMenu>
+      <CellMenu>
         <PosX>2</PosX>
         <PosY>1</PosY>
         <Layer>3</Layer>
-        <GroupArmour>ArmourArcher3</GroupArmour>
+        <TypeObject>ArmourArcher3</TypeObject>
         <Cost>3000</Cost>
         <Requirements>
           <Requirement>
@@ -502,12 +503,12 @@
             <Level>3</Level>
           </Requirement>
         </Requirements>
-      </Research>
-      <Research>
+      </CellMenu>
+      <CellMenu>
         <PosX>3</PosX>
         <PosY>1</PosY>
         <Layer>3</Layer>
-        <GroupArmour>ArmourMage3</GroupArmour>
+        <TypeObject>ArmourMage3</TypeObject>
         <Cost>3000</Cost>
         <Requirements>
           <Requirement>
@@ -515,12 +516,12 @@
             <Level>3</Level>
           </Requirement>
         </Requirements>
-      </Research>
-      <Research>
+      </CellMenu>
+      <CellMenu>
         <PosX>1</PosX>
         <PosY>2</PosY>
         <Layer>3</Layer>
-        <GroupWeapon>WeaponMelee3</GroupWeapon>
+        <TypeObject>WeaponMelee3</TypeObject>
         <Cost>3000</Cost>
         <Requirements>
           <Requirement>
@@ -528,12 +529,12 @@
             <Level>3</Level>
           </Requirement>
         </Requirements>
-      </Research>
-      <Research>
+      </CellMenu>
+      <CellMenu>
         <PosX>2</PosX>
         <PosY>2</PosY>
         <Layer>3</Layer>
-        <GroupWeapon>WeaponArcher3</GroupWeapon>
+        <TypeObject>WeaponArcher3</TypeObject>
         <Cost>3000</Cost>
         <Requirements>
           <Requirement>
@@ -541,12 +542,12 @@
             <Level>3</Level>
           </Requirement>
         </Requirements>
-      </Research>
-      <Research>
+      </CellMenu>
+      <CellMenu>
         <PosX>3</PosX>
         <PosY>2</PosY>
         <Layer>3</Layer>
-        <GroupWeapon>WeaponMage3</GroupWeapon>
+        <TypeObject>WeaponMage3</TypeObject>
         <Cost>3000</Cost>
         <Requirements>
           <Requirement>
@@ -554,12 +555,12 @@
             <Level>3</Level>
           </Requirement>
         </Requirements>
-      </Research>
-      <Research>
+      </CellMenu>
+      <CellMenu>
         <PosX>1</PosX>
         <PosY>1</PosY>
         <Layer>4</Layer>
-        <GroupArmour>ArmourMelee4</GroupArmour>
+        <TypeObject>ArmourMelee4</TypeObject>
         <Cost>3500</Cost>
         <Requirements>
           <Requirement>
@@ -567,12 +568,12 @@
             <Level>3</Level>
           </Requirement>
         </Requirements>
-      </Research>
-      <Research>
+      </CellMenu>
+      <CellMenu>
         <PosX>2</PosX>
         <PosY>1</PosY>
         <Layer>4</Layer>
-        <GroupArmour>ArmourArcher4</GroupArmour>
+        <TypeObject>ArmourArcher4</TypeObject>
         <Cost>3500</Cost>
         <Requirements>
           <Requirement>
@@ -580,12 +581,12 @@
             <Level>3</Level>
           </Requirement>
         </Requirements>
-      </Research>
-      <Research>
+      </CellMenu>
+      <CellMenu>
         <PosX>3</PosX>
         <PosY>1</PosY>
         <Layer>4</Layer>
-        <GroupArmour>ArmourMage4</GroupArmour>
+        <TypeObject>ArmourMage4</TypeObject>
         <Cost>3500</Cost>
         <Requirements>
           <Requirement>
@@ -593,12 +594,12 @@
             <Level>3</Level>
           </Requirement>
         </Requirements>
-      </Research>
-      <Research>
+      </CellMenu>
+      <CellMenu>
         <PosX>1</PosX>
         <PosY>2</PosY>
         <Layer>4</Layer>
-        <GroupWeapon>WeaponMelee4</GroupWeapon>
+        <TypeObject>WeaponMelee4</TypeObject>
         <Cost>3500</Cost>
         <Requirements>
           <Requirement>
@@ -606,12 +607,12 @@
             <Level>3</Level>
           </Requirement>
         </Requirements>
-      </Research>
-      <Research>
+      </CellMenu>
+      <CellMenu>
         <PosX>2</PosX>
         <PosY>2</PosY>
         <Layer>4</Layer>
-        <GroupWeapon>WeaponArcher4</GroupWeapon>
+        <TypeObject>WeaponArcher4</TypeObject>
         <Cost>3500</Cost>
         <Requirements>
           <Requirement>
@@ -619,12 +620,12 @@
             <Level>2</Level>
           </Requirement>
         </Requirements>
-      </Research>
-      <Research>
+      </CellMenu>
+      <CellMenu>
         <PosX>3</PosX>
         <PosY>2</PosY>
         <Layer>4</Layer>
-        <GroupWeapon>WeaponMage4</GroupWeapon>
+        <TypeObject>WeaponMage4</TypeObject>
         <Cost>3500</Cost>
         <Requirements>
           <Requirement>
@@ -632,8 +633,8 @@
             <Level>3</Level>
           </Requirement>
         </Requirements>
-      </Research>
-    </Researches>
+      </CellMenu>
+    </CellsMenu>
   </TypeConstructionEconomic>
   <TypeConstructionEconomic>
     <ID>Tavern</ID>
@@ -680,7 +681,7 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <HasTreasury>False</HasTreasury>
-    <LayersResearches>1</LayersResearches>
+    <LayersCellMenu>1</LayersCellMenu>
     <ResearchesPerDay>2</ResearchesPerDay>
     <SoundSelect>magic_bazaar2_select.wav</SoundSelect>
     <Levels>
@@ -721,19 +722,19 @@
         </Requirements>
       </Level>
     </Levels>
-    <Researches>
-      <Research>
+    <CellsMenu>
+      <CellMenu>
         <PosX>1</PosX>
         <PosY>2</PosY>
         <Layer>1</Layer>
-        <Item>Regeneration</Item>
+        <TypeObject>Regeneration</TypeObject>
         <Cost>250</Cost>
-      </Research>
-      <Research>
+      </CellMenu>
+      <CellMenu>
         <PosX>2</PosX>
         <PosY>2</PosY>
         <Layer>1</Layer>
-        <Item>Protection</Item>
+        <TypeObject>Protection</TypeObject>
         <Cost>500</Cost>
         <Requirements>
           <Requirement>
@@ -741,12 +742,12 @@
             <Level>2</Level>
           </Requirement>
         </Requirements>
-      </Research>
-      <Research>
+      </CellMenu>
+      <CellMenu>
         <PosX>3</PosX>
         <PosY>2</PosY>
         <Layer>1</Layer>
-        <Item>ImpProtection</Item>
+        <TypeObject>ImpProtection</TypeObject>
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
@@ -754,8 +755,8 @@
             <Level>3</Level>
           </Requirement>
         </Requirements>
-      </Research>
-    </Researches>
+      </CellMenu>
+    </CellsMenu>
   </TypeConstructionEconomic>
   <TypeConstructionEconomic>
     <ID>AlchemistHouse</ID>
@@ -767,7 +768,7 @@
     <Pos>4</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
-    <LayersResearches>1</LayersResearches>
+    <LayersCellMenu>1</LayersCellMenu>
     <ResearchesPerDay>2</ResearchesPerDay>
     <HasTreasury>False</HasTreasury>
     <SoundSelect>magic_bazaar_select.wav</SoundSelect>
@@ -780,92 +781,92 @@
         <MaxHeroes>0</MaxHeroes>
       </Level>
     </Levels>
-    <Researches>
-      <Research>
+    <CellsMenu>
+      <CellMenu>
         <PosX>1</PosX>
         <PosY>1</PosY>
         <Layer>1</Layer>
-        <Item>ElixirMeleeProt</Item>
+        <TypeObject>ElixirMeleeProt</TypeObject>
         <Cost>1000</Cost>
-      </Research>
-      <Research>
+      </CellMenu>
+      <CellMenu>
         <PosX>2</PosX>
         <PosY>1</PosY>
         <Layer>1</Layer>
-        <Item>ElixirRangeProt</Item>
+        <TypeObject>ElixirRangeProt</TypeObject>
         <Cost>1000</Cost>
-      </Research>
-      <Research>
+      </CellMenu>
+      <CellMenu>
         <PosX>3</PosX>
         <PosY>1</PosY>
         <Layer>1</Layer>
-        <Item>ElixirMagicProt</Item>
+        <TypeObject>ElixirMagicProt</TypeObject>
         <Cost>1000</Cost>
-      </Research>
-      <Research>
+      </CellMenu>
+      <CellMenu>
         <PosX>4</PosX>
         <PosY>1</PosY>
         <Layer>1</Layer>
-        <Item>PotionOfHealth</Item>
+        <TypeObject>PotionOfHealth</TypeObject>
         <Cost>150</Cost>
-      </Research>
-      <Research>
+      </CellMenu>
+      <CellMenu>
         <PosX>1</PosX>
         <PosY>2</PosY>
         <Layer>1</Layer>
-        <Item>ElixirStrength</Item>
+        <TypeObject>ElixirStrength</TypeObject>
         <Cost>2000</Cost>
-      </Research>
-      <Research>
+      </CellMenu>
+      <CellMenu>
         <PosX>2</PosX>
         <PosY>2</PosY>
         <Layer>1</Layer>
-        <Item>ElixirAccuracy</Item>
+        <TypeObject>ElixirAccuracy</TypeObject>
         <Cost>2000</Cost>
-      </Research>
-      <Research>
+      </CellMenu>
+      <CellMenu>
         <PosX>3</PosX>
         <PosY>2</PosY>
         <Layer>1</Layer>
-        <Item>ElixirWisdom</Item>
+        <TypeObject>ElixirWisdom</TypeObject>
         <Cost>2000</Cost>
-      </Research>
-      <Research>
+      </CellMenu>
+      <CellMenu>
         <PosX>4</PosX>
         <PosY>2</PosY>
         <Layer>1</Layer>
-        <Item>PotionOfMana</Item>
+        <TypeObject>PotionOfMana</TypeObject>
         <Cost>300</Cost>
-      </Research>
-      <Research>
+      </CellMenu>
+      <CellMenu>
         <PosX>1</PosX>
         <PosY>3</PosY>
         <Layer>1</Layer>
-        <Item>ElixirSpeed</Item>
+        <TypeObject>ElixirSpeed</TypeObject>
         <Cost>1500</Cost>
-      </Research>
-      <Research>
+      </CellMenu>
+      <CellMenu>
         <PosX>2</PosX>
         <PosY>3</PosY>
         <Layer>1</Layer>
-        <Item>ElixirAntipoison</Item>
+        <TypeObject>ElixirAntipoison</TypeObject>
         <Cost>500</Cost>
-      </Research>
-      <Research>
+      </CellMenu>
+      <CellMenu>
         <PosX>3</PosX>
         <PosY>3</PosY>
         <Layer>1</Layer>
-        <Item>ElixirRegeneration</Item>
+        <TypeObject>ElixirRegeneration</TypeObject>
         <Cost>1000</Cost>
-      </Research>
-      <Research>
+      </CellMenu>
+      <CellMenu>
         <PosX>4</PosX>
         <PosY>3</PosY>
         <Layer>1</Layer>
-        <Item>PotionOfCheerfulness</Item>
+        <TypeObject>PotionOfCheerfulness</TypeObject>
         <Cost>200</Cost>
-      </Research>
-    </Researches>
+      </CellMenu>
+    </CellsMenu>
   </TypeConstructionEconomic>
   <TypeConstructionEconomic>
     <ID>Library</ID>

@@ -348,15 +348,17 @@ namespace Fantasy_Kingdoms_Battle
         internal Pen PenSelectedBorder { get; private set; }
 
         //
-        internal TypeConstruction FindTypeConstructionOfKingdom(string ID)
+        internal TypeConstruction FindTypeConstructionOfKingdom(string ID, bool mustBeExists = true)
         {
             foreach (TypeConstruction tck in TypeConstructionsOfKingdom)
             {
                 if (tck.ID == ID)
                     return tck;
             }
+            if (mustBeExists)
+                throw new Exception("Сооружение Королевства " + ID + " не найдено.");
 
-            throw new Exception("Сооружение Королевства " + ID + " не найдено.");
+            return null;
         }
 
         internal TypeEconomicConstruction FindTypeEconomicConstruction(string ID)
@@ -403,7 +405,7 @@ namespace Fantasy_Kingdoms_Battle
             throw new Exception("Тип монстра " + ID + " не найден.");
         }
 
-        internal Item FindItem(string ID)
+        internal Item FindItem(string ID, bool mustBeExists = true)
         {
             foreach (Item i in Items)
             {
@@ -411,8 +413,70 @@ namespace Fantasy_Kingdoms_Battle
                     return i;
             }
 
-            throw new Exception("Предмет " + ID + " не найден.");
+            if (mustBeExists)
+                throw new Exception("Предмет " + ID + " не найден.");
+
+            return null;
         }
+
+        internal Ability FindAbility(string ID, bool mustBeExists = true)
+        {
+            foreach (Ability a in Abilities)
+            {
+                if (a.ID == ID)
+                    return a;
+            }
+
+            if (mustBeExists)
+                throw new Exception("Способность " + ID + " не найдена.");
+
+            return null;
+        }
+
+        internal GroupWeapon FindGroupWeapon(string ID, bool mustBeExists = true)
+        {
+            foreach (GroupWeapon gw in GroupWeapons)
+                if (gw.ID == ID)
+                    return gw;
+
+            if (mustBeExists)
+                throw new Exception("Группа оружия " + ID + " не найдена.");
+
+            return null;
+        }
+
+        internal GroupArmour FindGroupArmour(string ID, bool mustBeExists = true)
+        {
+            foreach (GroupArmour ga in GroupArmours)
+                if (ga.ID == ID)
+                    return ga;
+
+            if (mustBeExists)
+                throw new Exception("Группа доспехов " + ID + " не найдена.");
+
+            return null;
+        }
+
+        internal Weapon FindWeapon(string ID)
+        {
+            foreach (GroupWeapon gw in GroupWeapons)
+                foreach (Weapon w in gw.Weapons)
+                    if (w.ID == ID)
+                        return w;
+
+            throw new Exception("Оружие " + ID + " не найдено.");
+        }
+
+        internal Armour FindArmour(string ID)
+        {
+            foreach (GroupArmour ga in GroupArmours)
+                foreach (Armour a in ga.Armours)
+                    if (a.ID == ID)
+                        return a;
+
+            throw new Exception("Доспех " + ID + " не найден.");
+        }
+
 
         internal StateCreature FindStateCreature(string ID)
         {
@@ -447,17 +511,6 @@ namespace Fantasy_Kingdoms_Battle
             throw new Exception($"Тип логова {ID} не найден.");
         }
 
-        internal Ability FindAbility(string ID)
-        {
-            foreach (Ability a in Abilities)
-            {
-                if (a.ID == ID)
-                    return a;
-            }
-
-            throw new Exception("Способность " + ID + " не найдена.");
-        }
-
         internal Specialization FindSpecialization(string ID)
         {
             foreach (Specialization s in Specializations)
@@ -489,44 +542,6 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             throw new Exception("Тип существ " + ID + " не найден.");
-        }
-
-        internal GroupWeapon FindGroupWeapon(string ID)
-        {
-            foreach (GroupWeapon gw in GroupWeapons)
-                if (gw.ID == ID)
-                    return gw;
-
-            throw new Exception("Группа оружия " + ID + " не найдена.");
-        }
-
-        internal GroupArmour FindGroupArmour(string ID)
-        {
-            foreach (GroupArmour ga in GroupArmours)
-                if (ga.ID == ID)
-                    return ga;
-
-            throw new Exception("Группа доспехов " + ID + " не найдена.");
-        }
-
-        internal Weapon FindWeapon(string ID)
-        {
-            foreach (GroupWeapon gw in GroupWeapons)
-                foreach (Weapon w in gw.Weapons)
-                    if (w.ID == ID)
-                        return w;
-
-            throw new Exception("Оружие " + ID + " не найдено.");
-        }
-
-        internal Armour FindArmour(string ID)
-        {
-            foreach (GroupArmour ga in GroupArmours)
-                foreach (Armour a in ga.Armours)
-                    if (a.ID == ID)
-                        return a;
-
-            throw new Exception("Доспех " + ID + " не найден.");
         }
 
         private void LoadConfigGame(XmlDocument xmlDoc)

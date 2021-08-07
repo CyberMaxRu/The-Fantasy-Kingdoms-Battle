@@ -18,18 +18,18 @@ namespace Fantasy_Kingdoms_Battle
             uriSoundSelect = new Uri(Program.formMain.dirResources + @"Sound\Interface\ConstructionSelect\" + XmlUtils.GetStringNotNull(n.SelectSingleNode("SoundSelect")));
 
             // Загружаем исследования
-            int layersResearches = XmlUtils.GetInteger(n.SelectSingleNode("LayersResearches"));
-            XmlNode nr = n.SelectSingleNode("Researches");
+            int layersResearches = XmlUtils.GetInteger(n.SelectSingleNode("LayersCellMenu"));
+            XmlNode nr = n.SelectSingleNode("CellsMenu");
             if (nr != null)
             {
                 Debug.Assert(layersResearches > 0);
-                Researches = new CellMenu[layersResearches, FormMain.Config.PlateHeight, FormMain.Config.PlateWidth];
+                Researches = new TypeCellMenu[layersResearches, FormMain.Config.PlateHeight, FormMain.Config.PlateWidth];
 
-                CellMenu research;
+                TypeCellMenu research;
 
-                foreach (XmlNode l in nr.SelectNodes("Research"))
+                foreach (XmlNode l in nr.SelectNodes("CellMenu"))
                 {
-                    research = new CellMenu(l);
+                    research = new TypeCellMenu(l);
                     Debug.Assert(Researches[research.Layer, research.Coord.Y, research.Coord.X] == null);
                     Researches[research.Layer, research.Coord.Y, research.Coord.X] = research;
                 }
@@ -40,7 +40,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal CellMenu[,,] Researches;
+        internal TypeCellMenu[,,] Researches;
 
         internal void PlaySoundSelect()
         {
