@@ -45,7 +45,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int Cost { get; }// Стоимость исследования
         internal List<Requirement> Requirements { get; } = new List<Requirement>();
 
-        internal void FindItem()
+        internal void TuneDeferredLinks()
         {
             if (nameItem != "")
             {

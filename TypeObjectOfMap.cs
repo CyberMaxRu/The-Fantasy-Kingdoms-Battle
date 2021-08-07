@@ -56,7 +56,7 @@ namespace Fantasy_Kingdoms_Battle
                 for (int z = 0; z < Researches.GetLength(0); z++)
                     for (int y = 0; y < Researches.GetLength(1); y++)
                         for (int x = 0; x < Researches.GetLength(2); x++)
-                            Researches[z, y, x]?.FindItem();
+                            Researches[z, y, x]?.TuneDeferredLinks();
             }
         }
     }
