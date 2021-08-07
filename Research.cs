@@ -18,6 +18,7 @@ namespace Fantasy_Kingdoms_Battle
         private string nameAbility;
         private string nameGroupWeapon;
         private string nameGroupArmour;
+        private string nameTypeConstruction;
 
         public Research(XmlNode n)
         {
@@ -27,18 +28,20 @@ namespace Fantasy_Kingdoms_Battle
             nameAbility = n.SelectSingleNode("Ability") != null ? n.SelectSingleNode("Ability").InnerText : "";
             nameGroupWeapon = XmlUtils.GetString(n.SelectSingleNode("GroupWeapon"));
             nameGroupArmour = XmlUtils.GetString(n.SelectSingleNode("GroupArmour"));
-            Cost = Convert.ToInt32(n.SelectSingleNode("Cost").InnerText);
+            nameTypeConstruction = n.SelectSingleNode("TypeConstruction") != null ? n.SelectSingleNode("TypeConstruction").InnerText : "";
+            Cost = XmlUtils.GetInteger(n.SelectSingleNode("Cost"));
 
             // Загружаем требования
             XmlUtils.LoadRequirements(Requirements, n);
 
-            Debug.Assert((nameItem != "") || (nameAbility != "") || (nameGroupWeapon != "") || (nameGroupArmour != ""));
-            Debug.Assert(!((nameItem != "") && (nameAbility != "") && (nameGroupWeapon != "") && (nameGroupArmour != "")));
+            Debug.Assert((nameItem != "") || (nameAbility != "") || (nameGroupWeapon != "") || (nameGroupArmour != "") || (nameTypeConstruction != ""));
+            Debug.Assert(!((nameItem != "") && (nameAbility != "") && (nameGroupWeapon != "") && (nameGroupArmour != "") && (nameTypeConstruction != "")));
         }
 
         internal Point Coord { get; }// Координаты исследования
         internal int Layer { get; }// Визуальный слой исследования
         internal Entity Entity { get; private set; }// Получаемая сущность
+        internal TypeConstruction TypeConstruction { get; private set; }// Строимое сооружение
         internal int Cost { get; }// Стоимость исследования
         internal List<Requirement> Requirements { get; } = new List<Requirement>();
 
@@ -75,6 +78,11 @@ namespace Fantasy_Kingdoms_Battle
 
                 foreach (Requirement r in Requirements)
                     r.FindConstruction();
+            }
+            else if (nameTypeConstruction != "")
+            {
+                TypeConstruction = FormMain.Config.FindTypeConstructionOfKingdom(nameTypeConstruction);
+                nameTypeConstruction = null;
             }
         }
     }

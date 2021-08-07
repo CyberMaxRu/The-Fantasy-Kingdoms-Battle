@@ -331,5 +331,15 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal override bool ShowMenuForPlayer() => true;
+
+        protected override int GetLevel()
+        {
+            return Level;
+        }
+
+        protected override int GetQuantity()
+        {
+            return 0;
+        }
     }
 }

@@ -512,6 +512,16 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override bool ShowMenuForPlayer() => !Hidden;
 
+        protected override int GetLevel()
+        {
+            return 0;
+        }
+
+        protected override int GetQuantity()
+        {
+            return 0;
+        }
+
         BitmapList ICell.BitmapList() => Program.formMain.imListObjectsCell;
         int ICell.ImageIndex() => ImageIndexLair();        
         bool ICell.NormalImage() => true;

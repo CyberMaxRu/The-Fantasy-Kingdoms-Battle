@@ -143,6 +143,16 @@ namespace Fantasy_Kingdoms_Battle
             IsLive = false;
         }
 
+        protected override int GetLevel()
+        {
+            return Level;
+        }
+
+        protected override int GetQuantity()
+        {
+            return 0;
+        }
+
         // Реализация интерфейса
         BitmapList ICell.BitmapList() => Program.formMain.imListObjectsCell;
         int ICell.ImageIndex() => GetImageIndex();

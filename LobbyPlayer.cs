@@ -597,7 +597,7 @@ namespace Fantasy_Kingdoms_Battle
             base.PreparingForBattle();
         }
 
-        internal override void PrepareHint()
+        internal void PrepareHint()
         {
             Program.formMain.formHint.AddStep1Header(
                 Player.Name, $"{PositionInLobby} место",
@@ -699,16 +699,6 @@ namespace Fantasy_Kingdoms_Battle
                     count++;
 
             return count;
-        }
-
-        internal override void HideInfo()
-        {
-            throw new NotImplementedException();
-        }
-
-        internal override void ShowInfo()
-        {
-            throw new NotImplementedException();
         }
 
         private void SetQuantityFlags(int quantity)

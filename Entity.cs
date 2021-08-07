@@ -9,7 +9,7 @@ using System.Drawing;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    // Класс сущности. Общий для предметов, абилок, героев и т.д.
+    // Класс сущности. Общий для игроков, зданий, предметов, абилок, существ, исследованийи т.д.
     internal abstract class Entity : ICell
     {
         public Entity(XmlNode n)
@@ -19,6 +19,10 @@ namespace Fantasy_Kingdoms_Battle
             Description = XmlUtils.GetDescription(n.SelectSingleNode("Description"));
             ImageIndex = XmlUtils.GetInteger(n.SelectSingleNode("ImageIndex"));
             Cost = XmlUtils.GetInteger(n.SelectSingleNode("Cost"));
+        }
+
+        public Entity()
+        {
         }
 
         internal string ID { get; }
