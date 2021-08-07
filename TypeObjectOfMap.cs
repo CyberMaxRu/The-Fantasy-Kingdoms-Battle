@@ -15,9 +15,7 @@ namespace Fantasy_Kingdoms_Battle
 
         public TypeObjectOfMap(XmlNode n) : base(n)
         {
-            string filenameSoundSelect = XmlUtils.GetString(n.SelectSingleNode("SoundSelect"));
-            if (filenameSoundSelect.Length > 0)
-                uriSoundSelect = new Uri(Program.formMain.dirResources + @"Sound\Interface\ConstructionSelect\" + filenameSoundSelect);
+            uriSoundSelect = new Uri(Program.formMain.dirResources + @"Sound\Interface\ConstructionSelect\" + XmlUtils.GetStringNotNull(n.SelectSingleNode("SoundSelect")));
 
             // Загружаем исследования
             XmlNode nr = n.SelectSingleNode("Researches");
