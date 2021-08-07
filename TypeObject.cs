@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Xml;
+using static Fantasy_Kingdoms_Battle.XmlUtils;
 using System.Windows.Forms;
 
 namespace Fantasy_Kingdoms_Battle
@@ -12,13 +13,12 @@ namespace Fantasy_Kingdoms_Battle
     // Базовый тип для всех объектов - зданий, логов, существ
     internal abstract class TypeObject
     {
-        private bool linked;
         public TypeObject(XmlNode n)
         {
-            ID = XmlUtils.GetStringNotNull(n.SelectSingleNode("ID"));
-            Name = XmlUtils.GetStringNotNull(n.SelectSingleNode("Name"));
-            Description = XmlUtils.GetDescription(n.SelectSingleNode("Description"));
-            ImageIndex = XmlUtils.GetInteger(n.SelectSingleNode("ImageIndex"));
+            ID = GetStringNotNull(n.SelectSingleNode("ID"));
+            Name = GetStringNotNull(n.SelectSingleNode("Name"));
+            Description = GetDescription(n.SelectSingleNode("Description"));
+            ImageIndex = GetInteger(n.SelectSingleNode("ImageIndex"));
             if (ImageIndex > 0)
                 ImageIndex--;
 
@@ -47,9 +47,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal virtual void TuneDeferredLinks()
         {
-            Debug.Assert(!linked);
-
-            linked = true;
         }
 
         internal void ChangeImageIndex(int newImageIndex)
