@@ -50,7 +50,7 @@ namespace Fantasy_Kingdoms_Battle
             X = x;
             Y = y;
             Layer = layer;
-            Hidden = true;
+            Hidden = l.Category != CategoryConstruction.External;
 
             // Настраиваем исследования 
             if (TypeConstruction.Researches != null)
@@ -338,8 +338,11 @@ namespace Fantasy_Kingdoms_Battle
                 else
                 {
                     Program.formMain.formHint.AddStep1Header(TypeConstruction.Name, "", TypeConstruction.Description);
-                    Program.formMain.formHint.AddStep2Reward(TypeConstruction.TypeReward.Gold);
-                    Program.formMain.formHint.AddStep3Greatness(TypeConstruction.TypeReward.Greatness, 0);
+                    if (TypeConstruction.TypeReward != null)
+                    {
+                        Program.formMain.formHint.AddStep2Reward(TypeConstruction.TypeReward.Gold);
+                        Program.formMain.formHint.AddStep3Greatness(TypeConstruction.TypeReward.Greatness, 0);
+                    }
                 }
             }
         }
