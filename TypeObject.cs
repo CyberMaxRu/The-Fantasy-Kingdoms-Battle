@@ -12,8 +12,8 @@ namespace Fantasy_Kingdoms_Battle
             ID = GetStringNotNull(n.SelectSingleNode("ID"));
             Name = GetStringNotNull(n.SelectSingleNode("Name"));
             Description = GetDescription(n.SelectSingleNode("Description"));
-            ImageIndex = GetInteger(n.SelectSingleNode("ImageIndex"));
-            if (ImageIndex > 0)
+            ImageIndex = GetIntegerNotNull(n.SelectSingleNode("ImageIndex"));
+            if (ImageIndex != FormMain.IMAGE_INDEX_CURRENT_AVATAR)
                 ImageIndex--;
 
             CheckData();
@@ -58,6 +58,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Name.Length > 0);
             Debug.Assert(Name.Length <= FormMain.Config.MaxLengthObjectName);
             Debug.Assert(Description.Length > 0);
+            Debug.Assert((ImageIndex >= -1) || (ImageIndex == FormMain.IMAGE_INDEX_CURRENT_AVATAR));
         }
     }
 }
