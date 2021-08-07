@@ -16,8 +16,8 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCIconButton btnCancel;
         private readonly VCIconButton btnInhabitants;
         private readonly VCIconButton btnHeroes;
-        private readonly VCLabelValue lblIncome;
-        private readonly VCLabelValue lblGreatness;
+        private readonly VCLabelValue lblRewardGold;
+        private readonly VCLabelValue lblRewardGreatness;
 
         public PanelLair(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
@@ -37,16 +37,16 @@ namespace Fantasy_Kingdoms_Battle
             btnHeroes.Click += BtnHeroes_Click;
             btnHeroes.ShowHint += BtnHeroes_ShowHint;
 
-            lblIncome = new VCLabelValue(this, FormMain.Config.GridSize, imgMapObject.NextTop(), Color.Green, true);
-            lblIncome.Width = btnCancel.ShiftX - FormMain.Config.GridSize - lblIncome.ShiftX;
-            lblIncome.ImageIndex = FormMain.GUI_16_GOLD;
-            lblIncome.StringFormat.Alignment = StringAlignment.Near;
+            lblRewardGold = new VCLabelValue(this, FormMain.Config.GridSize, imgMapObject.NextTop(), Color.Green, true);
+            lblRewardGold.Width = btnCancel.ShiftX - FormMain.Config.GridSize - lblRewardGold.ShiftX;
+            lblRewardGold.ImageIndex = FormMain.GUI_16_GOLD;
+            lblRewardGold.StringFormat.Alignment = StringAlignment.Near;
 
-            lblGreatness = new VCLabelValue(this, lblIncome.ShiftX, lblIncome.NextTop() - FormMain.Config.GridSizeHalf, Color.Green, true);
-            lblGreatness.Width = lblIncome.Width;
-            lblGreatness.ImageIndex = FormMain.GUI_16_GREATNESS;
-            lblGreatness.StringFormat.Alignment = StringAlignment.Near;
-            lblGreatness.Color = FormMain.Config.HintIncome;
+            lblRewardGreatness = new VCLabelValue(this, lblRewardGold.ShiftX, lblRewardGold.NextTop() - FormMain.Config.GridSizeHalf, Color.Green, true);
+            lblRewardGreatness.Width = lblRewardGold.Width;
+            lblRewardGreatness.ImageIndex = FormMain.GUI_16_GREATNESS;
+            lblRewardGreatness.StringFormat.Alignment = StringAlignment.Near;
+            lblRewardGreatness.Color = FormMain.Config.HintIncome;
 
             Height = btnAction.NextTop();
             Width = btnAction.NextLeft();
@@ -224,16 +224,16 @@ namespace Fantasy_Kingdoms_Battle
             lblNameMapObject.Text = Lair.NameLair();
             lblNameMapObject.Color = GetColorCaption();
 
-            lblIncome.Visible = !Lair.Hidden && (Lair.TypeConstruction.TypeReward != null) && (Lair.TypeConstruction.TypeReward.Gold > 0);
-            if (lblIncome.Visible)
+            lblRewardGold.Visible = !Lair.Hidden && (Lair.TypeConstruction.TypeReward != null) && (Lair.TypeConstruction.TypeReward.Gold > 0);
+            if (lblRewardGold.Visible)
             {
-                lblIncome.Text = Lair.TypeConstruction.TypeReward.Gold.ToString();
+                lblRewardGold.Text = Lair.TypeConstruction.TypeReward.Gold.ToString();
             }
 
-            lblGreatness.Visible = !Lair.Hidden && (Lair.TypeConstruction.TypeReward != null) && (Lair.TypeConstruction.TypeReward.Greatness > 0);
-            if (lblGreatness.Visible)
+            lblRewardGreatness.Visible = !Lair.Hidden && (Lair.TypeConstruction.TypeReward != null) && (Lair.TypeConstruction.TypeReward.Greatness > 0);
+            if (lblRewardGreatness.Visible)
             {
-                lblGreatness.Text = Lair.TypeConstruction.TypeReward.Greatness.ToString();
+                lblRewardGreatness.Text = Lair.TypeConstruction.TypeReward.Greatness.ToString();
             }
 
             base.Draw(g);
