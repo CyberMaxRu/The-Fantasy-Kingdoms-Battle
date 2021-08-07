@@ -38,9 +38,9 @@ namespace Fantasy_Kingdoms_Battle
         {
         }
 
-        internal void ChangeImageIndex(int newImageIndex)
+        internal void ChangeImageIndex(int imageIndex)
         {
-            ImageIndex = newImageIndex;
+            ImageIndex = imageIndex;
 
             CheckData();
         }
