@@ -12,11 +12,11 @@ namespace Fantasy_Kingdoms_Battle
     {
         public PlayerCellMenu(PlayerMapObject c, TypeCellMenu r)
         {
-            Construction = c;
+            ObjectOfMap = c;
             Research = r;
         }
 
-        internal PlayerMapObject Construction { get; }
+        internal PlayerMapObject ObjectOfMap { get; }
         internal TypeCellMenu Research { get; }
 
         internal int Cost()
@@ -26,17 +26,17 @@ namespace Fantasy_Kingdoms_Battle
 
         internal bool CheckRequirements()
         {
-            return Construction.CheckRequirementsForResearch(this);
+            return ObjectOfMap.CheckRequirementsForResearch(this);
         }
 
         internal List<TextRequirement> GetTextRequirements()
         {
-            return Construction.GetTextRequirements(this);
+            return ObjectOfMap.GetTextRequirements(this);
         }
 
         internal void DoResearch()
         {
-            Construction.ResearchCompleted(this);
+            ObjectOfMap.ResearchCompleted(this);
 
             Program.formMain.SetNeedRedrawFrame();
         }
