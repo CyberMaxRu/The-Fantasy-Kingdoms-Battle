@@ -58,7 +58,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Name.Length > 0);
             Debug.Assert(Name.Length <= FormMain.Config.MaxLengthObjectName);
             Debug.Assert(Description.Length > 0);
-            Debug.Assert((ImageIndex >= -1) || (ImageIndex == FormMain.IMAGE_INDEX_CURRENT_AVATAR));
+            Debug.Assert((ImageIndex >= 0) || (ImageIndex == FormMain.IMAGE_INDEX_CURRENT_AVATAR));
         }
     }
 }
