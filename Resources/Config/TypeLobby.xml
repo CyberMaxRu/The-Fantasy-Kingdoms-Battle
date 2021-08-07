@@ -16,7 +16,7 @@
     <StartScoutedLairs>2</StartScoutedLairs>
     <VariantStartBonus>3</VariantStartBonus>
     <MaxLoses>3</MaxLoses>
-    <LairsLayers>3</LairsLayers>
+    <LairsLayers>4</LairsLayers>
     <LairsWidth>4</LairsWidth>
     <LairsHeight>3</LairsHeight>
     <CoefficientFlags>
@@ -75,7 +75,7 @@
         </Priority>
       </Defense>
     </CoefficientFlags>
-    <LairSettings Layers="4">
+    <LairSettings>
       <Layer>
         <Number>0</Number>
         <CostScout>100</CostScout>

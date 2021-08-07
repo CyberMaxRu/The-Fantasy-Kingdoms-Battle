@@ -66,7 +66,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(MaxLoses >= 1);
             Debug.Assert(MaxLoses <= 5);
             Debug.Assert(LairsLayers >= 1);
-            Debug.Assert(LairsLayers <= 5);
+            Debug.Assert(LairsLayers <= FormMain.MAX_LAIR_LAYERS);
             Debug.Assert(LairsWidth >= 2);
             Debug.Assert(LairsWidth <= 5);
             Debug.Assert(LairsHeight >= 1);
@@ -82,11 +82,7 @@ namespace Fantasy_Kingdoms_Battle
             XmlNode nodeLairSettings = n.SelectSingleNode("LairSettings");
             Debug.Assert(nodeLairSettings != null);
 
-            int layers = Convert.ToInt32(nodeLairSettings.Attributes["Layers"].Value);
-            Debug.Assert(layers >= 1);
-            Debug.Assert(layers <= FormMain.MAX_LAIR_LAYERS);
-
-            LayerSettings = new TypeLobbyLayerSettings[layers];
+            LayerSettings = new TypeLobbyLayerSettings[LairsLayers];
             TypeLobbyLayerSettings ls;
 
             foreach (XmlNode l in nodeLairSettings.SelectNodes("Layer"))
