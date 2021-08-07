@@ -711,16 +711,14 @@
     <Name>Крестьянский дом</Name>
     <Description>- Приносит небольшой доход//- Жилище крестьян</Description>
     <ImageIndex>108</ImageIndex>
-    <Category>Economic</Category>
-    <Page>Economic</Page>
-    <Line>1</Line>
-    <Pos>2</Pos>
+    <Category>External</Category>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <LevelAsQuantity>True</LevelAsQuantity>
     <HasTreasury>False</HasTreasury>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>peasant_house_select.wav</SoundSelect>
+    <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -736,16 +734,14 @@
     <Name>Мельница</Name>
     <Description>- Приносит небольшой доход</Description>
     <ImageIndex>107</ImageIndex>
-    <Category>Economic</Category>
-    <Page>Economic</Page>
-    <Line>1</Line>
-    <Pos>3</Pos>
+    <Category>External</Category>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <LevelAsQuantity>True</LevelAsQuantity>
     <HasTreasury>False</HasTreasury>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>mill_select.wav</SoundSelect>
+    <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -761,8 +757,7 @@
     <Name>Торговый пост</Name>
     <Description>- Приносит средний доход</Description>
     <ImageIndex>94</ImageIndex>
-    <Category>Economic</Category>
-    <Page>Economic</Page>
+    <Category>External</Category>
     <Line>1</Line>
     <Pos>4</Pos>
     <DefaultLevel>0</DefaultLevel>
@@ -771,6 +766,7 @@
     <HasTreasury>False</HasTreasury>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>tradepost_select.wav</SoundSelect>
+    <TypePlaceForConstruct>TradePlace</TypePlaceForConstruct>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -1689,6 +1685,7 @@
     <GoldByConstruction>0</GoldByConstruction>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>guild_darkpriestess_select.wav</SoundSelect>
+    <TypePlaceForConstruct>HolyLand</TypePlaceForConstruct>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -1725,6 +1722,7 @@
     <GoldByConstruction>0</GoldByConstruction>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>guild_priestess_select.wav</SoundSelect>
+    <TypePlaceForConstruct>HolyLand</TypePlaceForConstruct>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -1761,6 +1759,7 @@
     <GoldByConstruction>0</GoldByConstruction>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>guild_paladin_select.wav</SoundSelect>
+    <TypePlaceForConstruct>HolyLand</TypePlaceForConstruct>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -1797,6 +1796,7 @@
     <GoldByConstruction>0</GoldByConstruction>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>temple_blademaster_select.wav</SoundSelect>
+    <TypePlaceForConstruct>HolyLand</TypePlaceForConstruct>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -1833,6 +1833,7 @@
     <GoldByConstruction>0</GoldByConstruction>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>guild_beastmaster_select.wav</SoundSelect>
+    <TypePlaceForConstruct>HolyLand</TypePlaceForConstruct>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -1869,6 +1870,7 @@
     <GoldByConstruction>0</GoldByConstruction>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>guild_marksman_select.wav</SoundSelect>
+    <TypePlaceForConstruct>HolyLand</TypePlaceForConstruct>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -1905,6 +1907,7 @@
     <GoldByConstruction>0</GoldByConstruction>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>guild_ice_mage_select.wav</SoundSelect>
+    <TypePlaceForConstruct>HolyLand</TypePlaceForConstruct>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -1941,6 +1944,7 @@
     <GoldByConstruction>0</GoldByConstruction>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>guild_deathknight_select.wav</SoundSelect>
+    <TypePlaceForConstruct>HolyLand</TypePlaceForConstruct>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -1977,6 +1981,7 @@
     <GoldByConstruction>0</GoldByConstruction>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>guild_fire_mage_select.wav</SoundSelect>
+    <TypePlaceForConstruct>HolyLand</TypePlaceForConstruct>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -2007,7 +2012,7 @@
     <SoundSelect>graveyard_select.wav</SoundSelect>
     <MaxHeroes>4</MaxHeroes>
     <RelationPlace>Enemy</RelationPlace>
-    <TypePlaceAfterClear>EmptyPlace</TypePlaceAfterClear>
+    <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
         <ID>Zombie</ID>
@@ -2032,7 +2037,7 @@
     <SoundSelect>logovo_skeleton_select.wav</SoundSelect>
     <MaxHeroes>4</MaxHeroes>
     <RelationPlace>Enemy</RelationPlace>
-    <TypePlaceAfterClear>EmptyPlace</TypePlaceAfterClear>
+    <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
         <ID>Skelet</ID>
@@ -2065,7 +2070,7 @@
     <SoundSelect>logovo_vampire_select.wav</SoundSelect>
     <MaxHeroes>5</MaxHeroes>
     <RelationPlace>Enemy</RelationPlace>
-    <TypePlaceAfterClear>EmptyPlace</TypePlaceAfterClear>
+    <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
         <ID>Ghost</ID>
@@ -2098,7 +2103,7 @@
     <SoundSelect>logovo_vampire_select.wav</SoundSelect>
     <MaxHeroes>6</MaxHeroes>
     <RelationPlace>Enemy</RelationPlace>
-    <TypePlaceAfterClear>EmptyPlace</TypePlaceAfterClear>
+    <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
         <ID>Vampire</ID>
@@ -2123,7 +2128,7 @@
     <SoundSelect>logovo_wolf_select.wav</SoundSelect>
     <MaxHeroes>4</MaxHeroes>
     <RelationPlace>Enemy</RelationPlace>
-    <TypePlaceAfterClear>EmptyPlace</TypePlaceAfterClear>
+    <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
         <ID>Wolf</ID>
@@ -2156,7 +2161,7 @@
     <SoundSelect>logovo_serpent_select.wav</SoundSelect>
     <MaxHeroes>5</MaxHeroes>
     <RelationPlace>Enemy</RelationPlace>
-    <TypePlaceAfterClear>EmptyPlace</TypePlaceAfterClear>
+    <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
         <ID>Serpent</ID>
@@ -2181,7 +2186,7 @@
     <SoundSelect>logovo_bear_select.wav</SoundSelect>
     <MaxHeroes>6</MaxHeroes>
     <RelationPlace>Enemy</RelationPlace>
-    <TypePlaceAfterClear>EmptyPlace</TypePlaceAfterClear>
+    <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
         <ID>Bear</ID>
@@ -2214,7 +2219,7 @@
     <SoundSelect>logovo_bearman_select.wav</SoundSelect>
     <MaxHeroes>8</MaxHeroes>
     <RelationPlace>Enemy</RelationPlace>
-    <TypePlaceAfterClear>EmptyPlace</TypePlaceAfterClear>
+    <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
         <ID>WerewolfBear</ID>
@@ -2239,7 +2244,7 @@
     <SoundSelect>logovo_minotaur_select.wav</SoundSelect>
     <MaxHeroes>8</MaxHeroes>
     <RelationPlace>Enemy</RelationPlace>
-    <TypePlaceAfterClear>EmptyPlace</TypePlaceAfterClear>
+    <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
         <ID>Minotaur</ID>
@@ -2272,7 +2277,7 @@
     <SoundSelect>logovo_ogre_select.wav</SoundSelect>
     <MaxHeroes>10</MaxHeroes>
     <RelationPlace>Enemy</RelationPlace>
-    <TypePlaceAfterClear>EmptyPlace</TypePlaceAfterClear>
+    <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
         <ID>Ogre</ID>
@@ -2297,7 +2302,7 @@
     <SoundSelect>logovo_wolfman_select.wav</SoundSelect>
     <MaxHeroes>12</MaxHeroes>
     <RelationPlace>Enemy</RelationPlace>
-    <TypePlaceAfterClear>EmptyPlace</TypePlaceAfterClear>
+    <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
         <ID>Werewolf</ID>
@@ -2322,7 +2327,7 @@
     <SoundSelect>logovo_boss_dragon_select.wav</SoundSelect>
     <MaxHeroes>15</MaxHeroes>
     <RelationPlace>Enemy</RelationPlace>
-    <TypePlaceAfterClear>EmptyPlace</TypePlaceAfterClear>
+    <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
         <ID>Dragon</ID>
@@ -2347,7 +2352,7 @@
     <SoundSelect>sewers_select.wav</SoundSelect>
     <MaxHeroes>10</MaxHeroes>
     <RelationPlace>Enemy</RelationPlace>
-    <TypePlaceAfterClear>EmptyPlace</TypePlaceAfterClear>
+    <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
         <ID>Dragon</ID>
@@ -2372,7 +2377,7 @@
     <SoundSelect>tradepost_place_select.wav</SoundSelect>
     <MaxHeroes>0</MaxHeroes>
     <RelationPlace>Our</RelationPlace>
-    <TypePlaceAfterClear></TypePlaceAfterClear>
+    <TypePlaceForConstruct></TypePlaceForConstruct>
     <Reward>
       <PointTradePost>1</PointTradePost>
     </Reward>
@@ -2386,7 +2391,7 @@
     <SoundSelect>chest_select.wav</SoundSelect>
     <MaxHeroes>0</MaxHeroes>
     <RelationPlace>Neutral</RelationPlace>
-    <TypePlaceAfterClear>EmptyPlace</TypePlaceAfterClear>
+    <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Reward>
       <Gold>100</Gold>
       <Greatness>50</Greatness>
@@ -2401,7 +2406,7 @@
     <SoundSelect>logovo_elemental_earth_select.wav</SoundSelect>
     <MaxHeroes>10</MaxHeroes>
     <RelationPlace>Enemy</RelationPlace>
-    <TypePlaceAfterClear>HolyLand</TypePlaceAfterClear>
+    <TypePlaceForConstruct>HolyLand</TypePlaceForConstruct>
     <Monsters>
       <Monster>
         <ID>ElementalEarth</ID>
@@ -2426,7 +2431,7 @@
     <SoundSelect>logovo_elemental_fire_select.wav</SoundSelect>
     <MaxHeroes>10</MaxHeroes>
     <RelationPlace>Enemy</RelationPlace>
-    <TypePlaceAfterClear>HolyLand</TypePlaceAfterClear>
+    <TypePlaceForConstruct>HolyLand</TypePlaceForConstruct>
     <Monsters>
       <Monster>
         <ID>ElementalFire</ID>
@@ -2452,7 +2457,7 @@
     <MaxHeroes>0</MaxHeroes>
     <LayersCellMenu>1</LayersCellMenu>
     <RelationPlace>Neutral</RelationPlace>
-    <TypePlaceAfterClear></TypePlaceAfterClear>
+    <TypePlaceForConstruct></TypePlaceForConstruct>
     <Reward>
       <PointTemple>1</PointTemple>
     </Reward>
@@ -2516,13 +2521,13 @@
   <TypeConstruction>
     <ID>EmptyPlace</ID>
     <Name>Пустое место</Name>
-    <Description>Здесь ничего нет.</Description>
+    <Description>Здесь крестьяне строят свои дома. Если место долго пустует, его могут облюбовать дикие звери.</Description>
     <ImageIndex>141</ImageIndex>
     <Category>Place</Category>
     <SoundSelect>empty_place.wav</SoundSelect>
     <MaxHeroes>0</MaxHeroes>
     <RelationPlace>Neutral</RelationPlace>
-    <TypePlaceAfterClear></TypePlaceAfterClear>
+    <TypePlaceForConstruct></TypePlaceForConstruct>
     <Reward>
     </Reward>
   </TypeConstruction>
