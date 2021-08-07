@@ -85,21 +85,7 @@ namespace Fantasy_Kingdoms_Battle
         private void ShowHintBtnBuyOrUpgrade()
         {
             //Debug.Assert(Construction.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
-
-            if (Construction.Level < Construction.TypeConstruction.MaxLevel)
-            {
-                if (Construction.TypeConstruction.LevelAsQuantity)
-                    Program.formMain.formHint.AddStep1Header(Construction.TypeConstruction.Name, "Построить сооружение", Construction.Level == 0 ? Construction.TypeConstruction.Description : "");
-                else
-                    Program.formMain.formHint.AddStep1Header(Construction.TypeConstruction.Name, Construction.Level == 0 ? "Уровень 1" : (Construction.CanLevelUp() == true) ? "Улучшить строение" : "", Construction.Level == 0 ? Construction.TypeConstruction.Description : "");
-
-                Program.formMain.formHint.AddStep2Income(Construction.IncomeNextLevel());
-                Program.formMain.formHint.AddStep3Greatness(Construction.GreatnessAddNextLevel(), Construction.GreatnessPerDayNextLevel());
-                Program.formMain.formHint.AddStep35PlusBuilders(Construction.BuildersPerDayNextLevel());
-                Program.formMain.formHint.AddStep3Requirement(Construction.GetTextRequirements());
-                Program.formMain.formHint.AddStep4Gold(Construction.CostBuyOrUpgrade(), Construction.Player.Gold >= Construction.CostBuyOrUpgrade());
-                Program.formMain.formHint.AddStep5Builders(Construction.TypeConstruction.Levels[Construction.Level + 1].Builders, Construction.Player.FreeBuilders >= Construction.TypeConstruction.Levels[Construction.Level + 1].Builders);
-            }
+            Construction.PrepareHintForBuyOrUpgrade();
         }
 
         private void BtnHireHero_Click(object sender, EventArgs e)

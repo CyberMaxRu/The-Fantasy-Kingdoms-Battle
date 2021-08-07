@@ -53,7 +53,9 @@ namespace Fantasy_Kingdoms_Battle
                 Entity = FormMain.Config.FindGroupArmour(nameTypeObject, false);
 
             if (Entity is null)
+            {
                 TypeConstruction = FormMain.Config.FindTypeConstruction(nameTypeObject, false);
+            }
 
             if ((Entity is null) && (TypeConstruction is null))
                 throw new Exception("Сущность " + nameTypeObject + " не найдена.");

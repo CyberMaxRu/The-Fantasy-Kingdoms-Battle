@@ -78,10 +78,13 @@ namespace Fantasy_Kingdoms_Battle
         internal List<PlayerItem> Warehouse { get; } = new List<PlayerItem>();// Склад здания
         internal LobbyPlayer Player { get; }
         internal List<PlayerCellMenu> Researches { get; } = new List<PlayerCellMenu>();
-        internal int Layer { get; }// Слой, на котором находится логово
-        internal int X { get; }// Позиция по X в слое
-        internal int Y { get; }// Позиция по Y в слое
+
+        // Свойства для внешних сооружений
+        internal int Layer { get; private set; }// Слой, на котором находится логово
+        internal int X { get; private set; }// Позиция по X в слое
+        internal int Y { get; private set; }// Позиция по Y в слое
         internal bool Hidden { get; private set; }// Логово не разведано
+
         internal List<Monster> Monsters { get; } = new List<Monster>();// Монстры текущего уровня
         internal bool Destroyed { get; private set; } = false;// Логово уничтожено, работа с ним запрещена
 
@@ -100,12 +103,28 @@ namespace Fantasy_Kingdoms_Battle
             Player.SpendGold(research.Cost());
             Researches.Remove(research);
 
-            Debug.Assert(ResearchesAvailabled > 0);
+            if (research.ConstructionForBuild is null)
+            {
+                Debug.Assert(ResearchesAvailabled > 0);
 
-            ResearchesAvailabled--;
+                ResearchesAvailabled--;
+                Debug.Assert(research.Research.Entity != null);
+                Items.Add(research.Research.Entity);
+            }
+            else
+            {
+                research.ConstructionForBuild.BuyOrUpgrade();
+                research.ConstructionForBuild.X = research.ObjectOfMap.X;
+                research.ConstructionForBuild.Y = research.ObjectOfMap.Y;
+                research.ConstructionForBuild.Layer = research.ObjectOfMap.Layer;
+                Player.Lairs[research.ConstructionForBuild.Layer, research.ConstructionForBuild.Y, research.ConstructionForBuild.X] = research.ConstructionForBuild;
 
-            Debug.Assert(research.Research.Entity != null);
-            Items.Add(research.Research.Entity);
+                if (Player.GetTypePlayer() == TypePlayer.Human)
+                    Program.formMain.UpdateNeighborhood();                        
+
+                Program.formMain.SetNeedRedrawFrame();
+                Program.formMain.PlayConstructionComplete();
+            }
         }
 
         internal bool BuyOrUpgrade()
@@ -391,33 +410,42 @@ namespace Fantasy_Kingdoms_Battle
         internal bool CheckRequirementsForResearch(PlayerCellMenu research)
         {
             // Сначала проверяем, построено ли здание
-            if (Level == 0)
-                return false;
+            if (TypeConstruction.IsInternalConstruction)
+                if (Level == 0)
+                    return false;
 
             // Потом проверяем наличие золота
             if (Player.Gold < research.Cost())
                 return false;
 
             // Проверяем, что еще можно делать исследования
-            if (!CanResearch())
-                return false;
+            if (research.Research.Entity != null)
+                if (!CanResearch())
+                    return false;
 
             // Проверяем требования к исследованию
-            return Player.CheckRequirements(research.Research.Requirements);
+            if (research.Research.TypeConstruction is null)
+                return Player.CheckRequirements(research.Research.Requirements);
+            else
+                return research.ConstructionForBuild.CheckRequirements();
         }
 
         internal List<TextRequirement> GetResearchTextRequirements(PlayerCellMenu research)
         {
             List<TextRequirement> list = new List<TextRequirement>();
 
-            if (Level == 0)
-                list.Add(new TextRequirement(false, "Здание не построено"));
-            else
+            if (TypeConstruction.IsInternalConstruction)
             {
-                Player.TextRequirements(research.Research.Requirements, list);
+                if (Level == 0)
+                    list.Add(new TextRequirement(false, "Здание не построено"));
+                else
+                {
+                    Player.TextRequirements(research.Research.Requirements, list);
 
-                if (!CanResearch())
-                    list.Add(new TextRequirement(false, "Больше нельзя выполнять исследований в этот день"));
+                    if (research.Research.Entity != null)
+                        if (!CanResearch())
+                            list.Add(new TextRequirement(false, "Больше нельзя выполнять исследований в этот день"));
+                }
             }
 
             return list;
@@ -847,7 +875,24 @@ namespace Fantasy_Kingdoms_Battle
                 return list;
             }
         }
-        
+
+        internal void PrepareHintForBuyOrUpgrade()
+        {
+            Debug.Assert(Level < TypeConstruction.MaxLevel);
+
+            if (TypeConstruction.LevelAsQuantity)
+                Program.formMain.formHint.AddStep1Header(TypeConstruction.Name, "Построить сооружение", Level == 0 ? TypeConstruction.Description : "");
+            else
+                Program.formMain.formHint.AddStep1Header(TypeConstruction.Name, Level == 0 ? "Уровень 1" : (CanLevelUp() == true) ? "Улучшить строение" : "", Level == 0 ? TypeConstruction.Description : "");
+
+            Program.formMain.formHint.AddStep2Income(IncomeNextLevel());
+            Program.formMain.formHint.AddStep3Greatness(GreatnessAddNextLevel(), GreatnessPerDayNextLevel());
+            Program.formMain.formHint.AddStep35PlusBuilders(BuildersPerDayNextLevel());
+            Program.formMain.formHint.AddStep3Requirement(GetTextRequirements());
+            Program.formMain.formHint.AddStep4Gold(CostBuyOrUpgrade(), Player.Gold >= CostBuyOrUpgrade());
+            Program.formMain.formHint.AddStep5Builders(TypeConstruction.Levels[Level + 1].Builders, Player.FreeBuilders >= TypeConstruction.Levels[Level + 1].Builders);
+        }
+
         BitmapList ICell.BitmapList() => Program.formMain.imListObjectsCell;
         int ICell.ImageIndex() => ImageIndexLair();
         bool ICell.NormalImage() => true;

@@ -224,13 +224,13 @@ namespace Fantasy_Kingdoms_Battle
             lblNameMapObject.Text = Lair.NameLair();
             lblNameMapObject.Color = GetColorCaption();
 
-            lblIncome.Visible = !Lair.Hidden && (Lair.TypeConstruction.TypeReward.Gold > 0);
+            lblIncome.Visible = !Lair.Hidden && (Lair.TypeConstruction.TypeReward != null) && (Lair.TypeConstruction.TypeReward.Gold > 0);
             if (lblIncome.Visible)
             {
                 lblIncome.Text = Lair.TypeConstruction.TypeReward.Gold.ToString();
             }
 
-            lblGreatness.Visible = !Lair.Hidden && (Lair.TypeConstruction.TypeReward.Greatness > 0);
+            lblGreatness.Visible = !Lair.Hidden && (Lair.TypeConstruction.TypeReward != null) && (Lair.TypeConstruction.TypeReward.Greatness > 0);
             if (lblGreatness.Visible)
             {
                 lblGreatness.Text = Lair.TypeConstruction.TypeReward.Greatness.ToString();

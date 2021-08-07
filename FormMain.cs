@@ -1253,7 +1253,7 @@ namespace Fantasy_Kingdoms_Battle
             ListHeroesChanged();
         }
 
-        private void UpdateNeighborhood()
+        internal void UpdateNeighborhood()
         {
             for (int y = 0; y < panelLairs.GetLength(0); y++)
                 for (int x = 0; x < panelLairs.GetLength(1); x++)
