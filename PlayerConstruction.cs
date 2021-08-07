@@ -50,7 +50,7 @@ namespace Fantasy_Kingdoms_Battle
             X = x;
             Y = y;
             Layer = layer;
-            Hidden = l.Category != CategoryConstruction.External;
+            Hidden = !((Layer == 0) || (l.Category == CategoryConstruction.External));
 
             // Настраиваем исследования 
             if (TypeConstruction.Researches != null)

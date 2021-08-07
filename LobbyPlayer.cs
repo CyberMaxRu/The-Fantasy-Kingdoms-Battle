@@ -182,21 +182,33 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (scoutLaires > 0)
             {
+                for (int i = 0; i < Lairs.GetLength(0); i++)
+                {
+                    scoutLaires = ScoutLayer(i, scoutLaires);
+                    if (scoutLaires == 0)
+                        break;
+                }
+            }
+
+            int ScoutLayer(int layer, int maxScout)
+            {
                 List<PlayerConstruction> lairs = new List<PlayerConstruction>();
                 for (int y = 0; y < Lairs.GetLength(1); y++)
                     for (int x = 0; x < Lairs.GetLength(2); x++)
-                        if (Lairs[0, y, x].Hidden)
-                            lairs.Add(Lairs[0, y, x]);
+                        if (Lairs[layer, y, x].Hidden)
+                            lairs.Add(Lairs[layer, y, x]);
 
-                Debug.Assert(scoutLaires <= lairs.Count);
-
+                int scouting = Math.Min(maxScout, lairs.Count);
+                int restScouting = maxScout - scouting;
                 int index;
-                for (int i = 0; i < scoutLaires; i++)
+                for (int i = 0; i < scouting; i++)
                 {
                     index = Lobby.Rnd.Next(lairs.Count);
                     lairs[index].Unhide();
                     lairs.RemoveAt(index);
                 }
+
+                return restScouting;
             }
         }
 
