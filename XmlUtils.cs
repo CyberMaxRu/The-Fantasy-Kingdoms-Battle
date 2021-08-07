@@ -42,7 +42,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal static string GetDescription(XmlNode n)
         {
-            return GetStringNotNull(n).Replace("/", Environment.NewLine);
+            return GetStringNotNull(n).Replace("//", Environment.NewLine);
         }
 
         internal static bool GetBool(XmlNode n, bool defValue)
