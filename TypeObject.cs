@@ -38,16 +38,16 @@ namespace Fantasy_Kingdoms_Battle
         {
         }
 
-        internal void ChangeImageIndex(int imageIndex)
+        internal void SetName(string name)
         {
-            ImageIndex = imageIndex;
+            Name = name;
 
             CheckData();
         }
 
-        internal void SetName(string name)
+        internal void SetImageIndex(int imageIndex)
         {
-            Name = name;
+            ImageIndex = imageIndex;
 
             CheckData();
         }

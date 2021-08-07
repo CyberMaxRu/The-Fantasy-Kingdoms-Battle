@@ -189,7 +189,7 @@ namespace Fantasy_Kingdoms_Battle
             btnChangeAvatar.Enabled = curImageIndexAvatar >= Program.formMain.ImageIndexExternalAvatar;
             btnDeleteAvatar.Enabled = btnChangeAvatar.Enabled;
 
-            Program.formMain.CurrentHumanPlayer.ChangeImageIndex(curImageIndexAvatar - Program.formMain.ImageIndexFirstAvatar);
+            Program.formMain.CurrentHumanPlayer.SetImageIndex(curImageIndexAvatar - Program.formMain.ImageIndexFirstAvatar);
             FormMain.Config.SaveHumanPlayers();
         }
 
