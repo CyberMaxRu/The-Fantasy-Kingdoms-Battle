@@ -12,21 +12,11 @@ namespace Fantasy_Kingdoms_Battle
     {
         private int gold;
 
-        public PlayerConstruction(LobbyPlayer p, TypeConstruction b) : base(p)
+        public PlayerConstruction(LobbyPlayer p, TypeConstruction b) : base(p, b)
         {
             TypeConstruction = b;
 
             Level = b.DefaultLevel;
-
-            // Настраиваем исследования 
-            if (b.Researches != null)
-            {
-                for (int z = 0; z < b.Researches.GetLength(0); z++)
-                    for (int y = 0; y < b.Researches.GetLength(1); y++)
-                        for (int x = 0; x < b.Researches.GetLength(2); x++)
-                            if (b.Researches[z, y, x] != null)
-                                Researches.Add(new PlayerResearch(this, b.Researches[z, y, x]));
-            }
 
             // Восстановить
             //if (Construction.HasTreasury)
@@ -37,7 +27,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int Level { get; private set; }
         internal int Gold { get => gold; set { Debug.Assert(TypeConstruction.HasTreasury); gold = value; } }
         internal List<PlayerHero> Heroes { get; } = new List<PlayerHero>();
-        internal List<PlayerResearch> Researches { get; } = new List<PlayerResearch>();
         internal int ResearchesAvailabled { get; private set; }// Сколько еще исследований доступно на этом ходу
         internal List<Entity> Items { get; } = new List<Entity>();// Товары, доступные в строении
         internal List<PlayerItem> Warehouse { get; } = new List<PlayerItem>();// Склад здания
@@ -296,6 +285,49 @@ namespace Fantasy_Kingdoms_Battle
         internal bool CanResearch()
         {
             return ResearchesAvailabled > 0;
+        }
+
+        internal override bool CheckRequirementsForResearch(PlayerResearch research)
+        {
+            // Сначала проверяем, построено ли здание
+            if (Level == 0)
+                return false;
+
+            // Потом проверяем наличие золота
+            if (Player.Gold < research.Cost())
+                return false;
+
+            // Проверяем, что еще можно делать исследования
+            if (!CanResearch())
+                return false;
+
+            // Проверяем требования к исследованию
+            return Player.CheckRequirements(research.Research.Requirements);
+        }
+
+        internal override List<TextRequirement> GetTextRequirements(PlayerResearch research)
+        {
+            List<TextRequirement> list = new List<TextRequirement>();
+
+            if (Level == 0)
+                list.Add(new TextRequirement(false, "Здание не построено"));
+            else
+            {
+                Player.TextRequirements(research.Research.Requirements, list);
+
+                if (!CanResearch())
+                    list.Add(new TextRequirement(false, "Больше нельзя выполнять исследований в этот день"));
+            }
+
+            return list;
+        }
+
+        internal override void ResearchCompleted(PlayerResearch research)
+        {
+            base.ResearchCompleted(research);
+
+            Debug.Assert(research.Research.Entity != null);
+            Items.Add(research.Research.Entity);
         }
     }
 }

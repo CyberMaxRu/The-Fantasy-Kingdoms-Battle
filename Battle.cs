@@ -39,9 +39,9 @@ namespace Fantasy_Kingdoms_Battle
             Battlefield = new Battlefield(SizeBattlefield.Width, SizeBattlefield.Height);
 
             // Составляем списки существ
-            if (player2 is PlayerLair pl)
+            if (player2 is LairBattleParticipant pl)
             {
-                foreach (PlayerHero ph in pl.listAttackedHero)
+                foreach (PlayerHero ph in pl.PlayerLair.listAttackedHero)
                 {
                     Debug.Assert(ph.IsLive);
                     heroesPlayer1.Add(new HeroInBattle(this, ph, showForPlayer));
@@ -252,12 +252,12 @@ namespace Fantasy_Kingdoms_Battle
             Player2.BattleCalced = true;
 
             // Если вторая сторона - логово, удаляем убитых монстров
-            if (Player2 is PlayerLair pl)
+            if (Player2 is LairBattleParticipant pl)
             {
                 foreach (HeroInBattle hb in DeadHeroes)
                 {
                     if (hb.Player == Player2)
-                        pl.MonsterIsDead(hb.PlayerHero as Monster);
+                        pl.PlayerLair.MonsterIsDead(hb.PlayerHero as Monster);
                 }
             }
 

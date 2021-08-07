@@ -12,9 +12,9 @@ namespace Fantasy_Kingdoms_Battle
     internal enum TypeFlag { None, Scout, Attack, Defense };
 
     // Класс логова игрока
-    internal sealed class PlayerLair : BattleParticipant, ICell
+    internal sealed class PlayerLair : PlayerMapObject, ICell
     {
-        public PlayerLair(LobbyPlayer p, TypeLair l, int x, int y, int layer) : base(p.Lobby)
+        public PlayerLair(LobbyPlayer p, TypeLair l, int x, int y, int layer) : base(p, l)
         {
             Player = p;
             TypeLair = l;
@@ -56,18 +56,11 @@ namespace Fantasy_Kingdoms_Battle
             {
                 for (int i = 0; i < mll.StartQuantity; i++)
                 {
-                    lm = new Monster(mll.Monster, mll.Level, this);
+                    lm = new Monster(mll.Monster, mll.Level, Participant);
                     Monsters.Add(lm);
-                    AddCombatHero(lm);
+                    Participant.AddCombatHero(lm);
                 }
             }
-        }
-
-        internal override void PreparingForBattle()
-        {
-            Debug.Assert(!Destroyed);
-
-            base.PreparingForBattle();
         }
 
         internal int CostScout()
@@ -427,11 +420,11 @@ namespace Fantasy_Kingdoms_Battle
         internal void MonsterIsDead(Monster m)
         {
             Debug.Assert(m != null);
-            Debug.Assert(m.BattleParticipant == this);
+            Debug.Assert(m.BattleParticipant == Participant);
             Debug.Assert(Monsters.IndexOf(m) != -1);
 
             m.SetIsDead();
-            CombatHeroes.Remove(m);
+            Participant.CombatHeroes.Remove(m);
             Monsters.Remove(m);
 
             if (Program.formMain.PlayerObjectIsSelected(m))
@@ -495,10 +488,28 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal override string GetName() => TypeLair.Name;
-        internal override LobbyPlayer GetPlayer() => Player;
-        internal override TypePlayer GetTypePlayer() => TypePlayer.Lair;
-        internal override int GetImageIndexAvatar() => TypeLair.ImageIndex;
+        internal override bool CheckRequirementsForResearch(PlayerResearch research)
+        {
+            // Потом проверяем наличие золота
+            if (Player.Gold < research.Cost())
+                return false;
+
+            // Проверяем требования к исследованию
+            return Player.CheckRequirements(research.Research.Requirements);
+        }
+
+        internal override List<TextRequirement> GetTextRequirements(PlayerResearch research)
+        {
+            List<TextRequirement> list = new List<TextRequirement>();
+
+            return list;
+        }
+
+        internal override void ResearchCompleted(PlayerResearch research)
+        {
+            base.ResearchCompleted(research);
+        }
+
 
         BitmapList ICell.BitmapList() => Program.formMain.imListObjectsCell;
         int ICell.ImageIndex() => ImageIndexLair();        

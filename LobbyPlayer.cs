@@ -242,12 +242,12 @@ namespace Fantasy_Kingdoms_Battle
                         PreparingForBattle();
 
                         // Включить, когда ИИ может выбирать цель
-                        pl.PreparingForBattle();
+                        pl.Participant.PreparingForBattle();
 
                         //Debug.Assert(p.TargetLair.CombatHeroes.Count > 0);
 
                         bool showForPlayer = false;// Player.TypePlayer == TypePlayer.Human;
-                        b = new Battle(this, pl, Lobby.Day, Lobby.Rnd.Next(), showForPlayer);
+                        b = new Battle(this, pl.Participant, Lobby.Day, Lobby.Rnd.Next(), showForPlayer);
 
                         if (showForPlayer)
                         {

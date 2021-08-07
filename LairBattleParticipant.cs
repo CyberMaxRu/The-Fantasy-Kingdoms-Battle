@@ -50,5 +50,13 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.panelLairInfo.Visible = true;
             Program.formMain.panelLairInfo.PlayerObject = PlayerLair;
         }
+
+        internal override void PreparingForBattle()
+        {
+            Debug.Assert(!PlayerLair.Destroyed);
+
+            base.PreparingForBattle();
+        }
+
     }
 }
