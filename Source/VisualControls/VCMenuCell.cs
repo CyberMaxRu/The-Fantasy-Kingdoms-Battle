@@ -35,7 +35,10 @@ namespace Fantasy_Kingdoms_Battle
             // Если на ячейке исследования больше нет, то сообщаем, что подсказки нет
             if (research != null)
             {
-                Program.formMain.formHint.AddStep1Header(research.Research.Entity.Name, "", research.Research.Entity.Description);
+                if (!(research.Research.Entity is null))
+                    Program.formMain.formHint.AddStep1Header(research.Research.Entity.Name, "", research.Research.Entity.Description);
+                else
+                    Program.formMain.formHint.AddStep1Header(research.Research.TypeConstruction.Name, "", research.Research.TypeConstruction.Description);
                 Program.formMain.formHint.AddStep3Requirement(research.GetTextRequirements());
                 Program.formMain.formHint.AddStep4Gold(research.Cost(), research.Cost() <= research.Construction.Player.Gold);
 
@@ -47,11 +50,25 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
-            if (research != null)
+            if ((research != null) && (research.Research.Entity != null))
             {
                 Cost = research.Cost().ToString();
                 ImageIndex = research.Research.Entity.ImageIndex;
                 ImageIsEnabled = research.CheckRequirements();
+                BitmapList = Program.formMain.ilItems;
+
+                // Накладываем фильтр
+                //if (!research.CheckRequirements())
+                //    ImageFilter = ImageFilter.Disabled;
+            }
+            if ((research != null) && (research.Research.TypeConstruction != null))
+            {
+                PlayerConstruction pc = research.Construction.Player.GetPlayerConstruction(research.Research.TypeConstruction);
+                Debug.Assert(!(pc is null));
+                Cost = pc.CostBuyOrUpgrade().ToString();
+                ImageIndex = pc.TypeConstruction.ImageIndex;
+                ImageIsEnabled = research.CheckRequirements();
+                BitmapList = Program.formMain.imListObjectsCell;
 
                 // Накладываем фильтр
                 //if (!research.CheckRequirements())

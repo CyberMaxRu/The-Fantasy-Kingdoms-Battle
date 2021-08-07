@@ -111,6 +111,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void TuneDeferredLinks()
         {
+            base.TuneDeferredLinks();
+
             foreach (MonsterLevelLair mll in Monsters)
             {
                 mll.TuneDeferredLinks();
@@ -124,6 +126,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (nameTypePlaceAfterClear.Length > 0)
                 TypePlaceAfterClear = FormMain.Config.FindTypeLair(nameTypePlaceAfterClear);
+
             nameTypePlaceAfterClear = null;
         }
     }

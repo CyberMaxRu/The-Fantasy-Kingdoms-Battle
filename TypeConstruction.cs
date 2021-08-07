@@ -88,19 +88,13 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void TuneDeferredLinks()
         {
+            base.TuneDeferredLinks();
+
             foreach (Level l in Levels)
             {
                 if (l != null)
                     foreach (Requirement r in l.Requirements)
                         r.FindConstruction();
-            }
-
-            if (Researches != null)
-            {
-                for (int z = 0; z < Researches.GetLength(0); z++)
-                    for (int y = 0; y < Researches.GetLength(1); y++)
-                        for (int x = 0; x < Researches.GetLength(2); x++)
-                            Researches[z, y, x]?.FindItem();
             }
         }
 

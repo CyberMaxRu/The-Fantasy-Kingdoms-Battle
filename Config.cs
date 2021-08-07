@@ -232,9 +232,6 @@ namespace Fantasy_Kingdoms_Battle
             foreach (TypeLobby tl in TypeLobbies)
                 tl.TuneDeferredLinks();
 
-            //foreach (TypeLair l in TypeLairs)
-            //    l.TuneDeferredLinks();
-
             // Вспомогательные методы
             XmlDocument CreateXmlDocument(string pathToXml)
             {

@@ -434,11 +434,32 @@
     <ImageIndex>114</ImageIndex>
     <SoundSelect>place_temple_select.wav</SoundSelect>
     <MaxHeroes>0</MaxHeroes>
+    <LayersResearches>1</LayersResearches>
     <RelationPlace>Neutral</RelationPlace>
     <TypePlaceAfterClear></TypePlaceAfterClear>
     <Reward>
       <PointTemple>1</PointTemple>
     </Reward>
+    <Researches>
+      <Research>
+        <PosX>1</PosX>
+        <PosY>1</PosY>
+        <Layer>1</Layer>
+        <TypeConstruction>GuildDarkPriest</TypeConstruction>
+      </Research>
+      <Research>
+        <PosX>2</PosX>
+        <PosY>1</PosY>
+        <Layer>1</Layer>
+        <TypeConstruction>GuildPriest</TypeConstruction>
+      </Research>
+      <Research>
+        <PosX>3</PosX>
+        <PosY>1</PosY>
+        <Layer>1</Layer>
+        <TypeConstruction>GuildPaladin</TypeConstruction>
+      </Research>
+    </Researches>
   </TypeLair>
   <TypeLair>
     <ID>EmptyPlace</ID>

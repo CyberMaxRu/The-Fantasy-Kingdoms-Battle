@@ -12,6 +12,7 @@ namespace Fantasy_Kingdoms_Battle
     // Базовый тип для всех объектов - зданий, логов, существ
     internal abstract class TypeObject
     {
+        private bool linked;
         public TypeObject(XmlNode n)
         {
             ID = XmlUtils.GetStringNotNull(n.SelectSingleNode("ID"));
@@ -46,7 +47,9 @@ namespace Fantasy_Kingdoms_Battle
 
         internal virtual void TuneDeferredLinks()
         {
+            Debug.Assert(!linked);
 
+            linked = true;
         }
 
         internal void ChangeImageIndex(int newImageIndex)

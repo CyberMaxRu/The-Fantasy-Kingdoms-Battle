@@ -24,11 +24,11 @@ namespace Fantasy_Kingdoms_Battle
         {
             Coord = new Point(Convert.ToInt32(n.SelectSingleNode("PosX").InnerText) - 1, Convert.ToInt32(n.SelectSingleNode("PosY").InnerText) - 1);
             Layer = Convert.ToInt32(n.SelectSingleNode("Layer").InnerText) - 1;
-            nameItem = n.SelectSingleNode("Item") != null ? n.SelectSingleNode("Item").InnerText : "";
-            nameAbility = n.SelectSingleNode("Ability") != null ? n.SelectSingleNode("Ability").InnerText : "";
+            nameItem = XmlUtils.GetString(n.SelectSingleNode("Item"));
+            nameAbility = XmlUtils.GetString(n.SelectSingleNode("Ability"));
             nameGroupWeapon = XmlUtils.GetString(n.SelectSingleNode("GroupWeapon"));
             nameGroupArmour = XmlUtils.GetString(n.SelectSingleNode("GroupArmour"));
-            nameTypeConstruction = n.SelectSingleNode("TypeConstruction") != null ? n.SelectSingleNode("TypeConstruction").InnerText : "";
+            nameTypeConstruction = XmlUtils.GetString(n.SelectSingleNode("TypeConstruction"));
             Cost = XmlUtils.GetInteger(n.SelectSingleNode("Cost"));
 
             // Загружаем требования
@@ -50,7 +50,6 @@ namespace Fantasy_Kingdoms_Battle
             if (nameItem != "")
             {
                 Entity = FormMain.Config.FindItem(nameItem);
-                nameItem = null;
 
                 foreach (Requirement r in Requirements)
                     r.FindConstruction();
@@ -58,7 +57,6 @@ namespace Fantasy_Kingdoms_Battle
             else if (nameAbility != "")
             {
                 Entity = FormMain.Config.FindAbility(nameAbility);
-                nameAbility = null;
 
                 foreach (Requirement r in Requirements)
                     r.FindConstruction();
@@ -66,7 +64,6 @@ namespace Fantasy_Kingdoms_Battle
             else if (nameGroupWeapon != "")
             {
                 Entity = FormMain.Config.FindGroupWeapon(nameGroupWeapon);
-                nameGroupWeapon = null;
 
                 foreach (Requirement r in Requirements)
                     r.FindConstruction();
@@ -74,7 +71,6 @@ namespace Fantasy_Kingdoms_Battle
             else if (nameGroupArmour != "")
             {
                 Entity = FormMain.Config.FindGroupArmour(nameGroupArmour);
-                nameGroupArmour = null;
 
                 foreach (Requirement r in Requirements)
                     r.FindConstruction();
@@ -82,8 +78,13 @@ namespace Fantasy_Kingdoms_Battle
             else if (nameTypeConstruction != "")
             {
                 TypeConstruction = FormMain.Config.FindTypeConstructionOfKingdom(nameTypeConstruction);
-                nameTypeConstruction = null;
             }
+
+            nameItem = null;
+            nameAbility = null;
+            nameGroupWeapon = null;
+            nameGroupArmour = null;
+            nameTypeConstruction = null;
         }
     }
 }
