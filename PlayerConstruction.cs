@@ -52,6 +52,9 @@ namespace Fantasy_Kingdoms_Battle
             Layer = layer;
             Hidden = !((Layer == 0) || (l.Category == CategoryConstruction.External));
 
+            Debug.Assert((TypeConstruction.Category == CategoryConstruction.Lair) || (TypeConstruction.Category == CategoryConstruction.External)
+                || (TypeConstruction.Category == CategoryConstruction.Place));
+
             // Настраиваем исследования 
             if (TypeConstruction.Researches != null)
             {
