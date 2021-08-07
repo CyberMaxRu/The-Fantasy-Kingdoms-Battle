@@ -8,12 +8,12 @@ using System.Diagnostics;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    // Тип объекта карты - базовый класс для всех зданий, построек и логов
-    internal abstract class TypeMapObject : TypeObject
+    // Тип объекта карты - базовый класс для всех зданий, построек и мест
+    internal abstract class TypeObjectOfMap : TypeObject
     {
         private Uri uriSoundSelect;// Звук при выборе объекта
 
-        public TypeMapObject(XmlNode n) : base(n)
+        public TypeObjectOfMap(XmlNode n) : base(n)
         {
             string filenameSoundSelect = XmlUtils.GetString(n.SelectSingleNode("SoundSelect"));
             if (filenameSoundSelect.Length > 0)

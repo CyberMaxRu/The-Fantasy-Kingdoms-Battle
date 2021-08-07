@@ -11,7 +11,7 @@ namespace Fantasy_Kingdoms_Battle
     // Класс сооружения
     internal enum Page { Guild, Economic, Temple };
 
-    internal abstract class TypeConstruction : TypeMapObject
+    internal abstract class TypeConstruction : TypeObjectOfMap
     {
         public TypeConstruction(XmlNode n) : base(n)
         {

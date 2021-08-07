@@ -226,7 +226,7 @@ namespace Fantasy_Kingdoms_Battle
             foreach (TypeCreature tc in TypeCreatures)
                 tc.TuneDeferredLinks();
 
-            foreach (TypeMapObject tc in TypeConstructions)
+            foreach (TypeObjectOfMap tc in TypeConstructions)
                 tc.TuneDeferredLinks();
 
             foreach (TypeLobby tl in TypeLobbies)
@@ -255,7 +255,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<TypeTemple> TypeTemples { get; } = new List<TypeTemple>();
         internal List<TypeLair> TypeLairs { get; } = new List<TypeLair>();
         internal List<TypeConstruction> TypeConstructionsOfKingdom { get; } = new List<TypeConstruction>();
-        internal List<TypeMapObject> TypeConstructions { get; } = new List<TypeMapObject>();
+        internal List<TypeObjectOfMap> TypeConstructions { get; } = new List<TypeObjectOfMap>();
 
         //
         internal List<Ability> Abilities { get; } = new List<Ability>();

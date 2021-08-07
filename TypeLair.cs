@@ -53,7 +53,7 @@ namespace Fantasy_Kingdoms_Battle
     }
 
     // Класс типа логова монстров
-    internal sealed class TypeLair : TypeMapObject
+    internal sealed class TypeLair : TypeObjectOfMap
     {
         private string nameTypePlaceAfterClear;
 

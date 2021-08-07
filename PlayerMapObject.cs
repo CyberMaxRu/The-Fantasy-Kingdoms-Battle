@@ -10,7 +10,7 @@ namespace Fantasy_Kingdoms_Battle
     // Класс объекта карты игрока
     internal abstract class PlayerMapObject : PlayerObject
     {
-        public PlayerMapObject(LobbyPlayer player, TypeMapObject typeMapObject)
+        public PlayerMapObject(LobbyPlayer player, TypeObjectOfMap typeMapObject)
         {
             Player = player;
             TypeMapObject = typeMapObject;
@@ -27,7 +27,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal LobbyPlayer Player { get; }
-        internal TypeMapObject TypeMapObject { get; }
+        internal TypeObjectOfMap TypeMapObject { get; }
         internal List<PlayerResearch> Researches { get; } = new List<PlayerResearch>();
 
         internal abstract bool CheckRequirementsForResearch(PlayerResearch research);
