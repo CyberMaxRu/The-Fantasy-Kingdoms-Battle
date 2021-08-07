@@ -502,7 +502,7 @@
     <Name>Пустое место</Name>
     <Description>Здесь ничего нет.</Description>
     <ImageIndex>141</ImageIndex>
-    <SoundSelect></SoundSelect>
+    <SoundSelect>empty_place.wav</SoundSelect>
     <MaxHeroes>0</MaxHeroes>
     <RelationPlace>Neutral</RelationPlace>
     <TypePlaceAfterClear></TypePlaceAfterClear>
