@@ -39,6 +39,8 @@ namespace Fantasy_Kingdoms_Battle
                     AddBonus(text, sb.Greatness.ToString(), FormMain.GUI_16_GREATNESS);
                 if (sb.Builders > 0)
                     AddBonus(text, sb.Builders.ToString(), FormMain.GUI_16_BUILDER);
+                if (sb.PeasantHouse > 0)
+                    AddBonus(text, sb.PeasantHouse.ToString(), FormMain.GUI_16_PEASANT_HOUSE);
                 if (sb.HolyPlace > 0)
                     AddBonus(text, sb.HolyPlace.ToString(), FormMain.GUI_16_HOLYLAND);
                 if (sb.TradePlace > 0)

@@ -21,6 +21,7 @@ namespace Fantasy_Kingdoms_Battle
             Greatness = XmlUtils.GetInteger(n.SelectSingleNode("Greatness"));
             Builders = XmlUtils.GetInteger(n.SelectSingleNode("Builders"));
             ScoutPlace = XmlUtils.GetInteger(n.SelectSingleNode("ScoutPlace"));
+            PeasantHouse = XmlUtils.GetInteger(n.SelectSingleNode("PeasantHouse"));
             HolyPlace = XmlUtils.GetInteger(n.SelectSingleNode("HolyPlace"));
             TradePlace = XmlUtils.GetInteger(n.SelectSingleNode("TradePlace"));
             Points = XmlUtils.GetInteger(n.SelectSingleNode("Points"));
@@ -35,6 +36,8 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Builders <= 10);
             Debug.Assert(ScoutPlace >= 0);
             Debug.Assert(ScoutPlace <= 10);
+            Debug.Assert(PeasantHouse >= 0);
+            Debug.Assert(PeasantHouse <= 5);
             Debug.Assert(HolyPlace >= 0);
             Debug.Assert(HolyPlace <= 2);
             Debug.Assert(TradePlace >= 0);
@@ -49,6 +52,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int Greatness { get; private set; }
         internal int Builders { get; private set; }
         internal int ScoutPlace { get; private set; }
+        internal int PeasantHouse { get; private set; }
         internal int HolyPlace { get; private set; }
         internal int TradePlace { get; private set; }
         internal int Points { get; private set; }
@@ -61,6 +65,7 @@ namespace Fantasy_Kingdoms_Battle
             Greatness += sb.Greatness;
             Builders += sb.Builders;
             ScoutPlace += sb.ScoutPlace;
+            PeasantHouse += sb.PeasantHouse;
             HolyPlace += sb.HolyPlace;
             TradePlace += sb.TradePlace;
             Points += sb.Points;
@@ -79,6 +84,7 @@ namespace Fantasy_Kingdoms_Battle
             return (Gold == otherStartBonus.Gold) 
                 && (Greatness == otherStartBonus.Greatness)
                 && (ScoutPlace == otherStartBonus.ScoutPlace)
+                && (PeasantHouse == otherStartBonus.PeasantHouse)
                 && (HolyPlace == otherStartBonus.HolyPlace)
                 && (TradePlace == otherStartBonus.TradePlace)
                 && (Builders == otherStartBonus.Builders);

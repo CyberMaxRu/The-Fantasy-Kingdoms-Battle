@@ -4,6 +4,7 @@
     <Gold>1000</Gold>
     <Greatness>0</Greatness>
     <Builders>0</Builders>
+    <PeasantHouse>0</PeasantHouse>
     <HolyPlace>0</HolyPlace>
     <TradePlace>0</TradePlace>
     <ScoutPlace>0</ScoutPlace>
@@ -14,6 +15,7 @@
     <Gold>0</Gold>
     <Greatness>200</Greatness>
     <Builders>0</Builders>
+    <PeasantHouse>0</PeasantHouse>
     <HolyPlace>0</HolyPlace>
     <TradePlace>0</TradePlace>
     <ScoutPlace>0</ScoutPlace>
@@ -24,6 +26,7 @@
     <Gold>0</Gold>
     <Greatness>0</Greatness>
     <Builders>1</Builders>
+    <PeasantHouse>0</PeasantHouse>
     <HolyPlace>0</HolyPlace>
     <TradePlace>0</TradePlace>
     <ScoutPlace>0</ScoutPlace>
@@ -34,6 +37,7 @@
     <Gold>500</Gold>
     <Greatness>100</Greatness>
     <Builders>0</Builders>
+    <PeasantHouse>0</PeasantHouse>
     <HolyPlace>0</HolyPlace>
     <TradePlace>0</TradePlace>
     <ScoutPlace>0</ScoutPlace>
@@ -44,6 +48,7 @@
     <Gold>0</Gold>
     <Greatness>0</Greatness>
     <Builders>0</Builders>
+    <PeasantHouse>0</PeasantHouse>
     <HolyPlace>0</HolyPlace>
     <TradePlace>0</TradePlace>
     <ScoutPlace>2</ScoutPlace>
@@ -54,6 +59,7 @@
     <Gold>0</Gold>
     <Greatness>0</Greatness>
     <Builders>0</Builders>
+    <PeasantHouse>0</PeasantHouse>
     <HolyPlace>1</HolyPlace>
     <TradePlace>0</TradePlace>
     <ScoutPlace>0</ScoutPlace>
@@ -64,8 +70,20 @@
     <Gold>0</Gold>
     <Greatness>0</Greatness>
     <Builders>0</Builders>
+    <PeasantHouse>0</PeasantHouse>
     <HolyPlace>0</HolyPlace>
     <TradePlace>1</TradePlace>
+    <ScoutPlace>0</ScoutPlace>
+    <Points>2</Points>
+    <MaxQuantity>2</MaxQuantity>
+  </StartBonus>
+  <StartBonus>
+    <Gold>0</Gold>
+    <Greatness>0</Greatness>
+    <Builders>0</Builders>
+    <PeasantHouse>1</PeasantHouse>
+    <HolyPlace>0</HolyPlace>
+    <TradePlace>0</TradePlace>
     <ScoutPlace>0</ScoutPlace>
     <Points>2</Points>
     <MaxQuantity>2</MaxQuantity>
