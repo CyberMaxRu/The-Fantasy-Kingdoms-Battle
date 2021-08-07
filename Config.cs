@@ -277,6 +277,7 @@ namespace Fantasy_Kingdoms_Battle
         // Константы
         internal int GridSize { get; private set; }// Размер ячейки сетки
         internal int GridSizeHalf { get; private set; }// Размер половины ячейки сетки
+        internal int MaxLengthObjectName { get; set; }// Максимальная длина имени объекта
         internal Point ShiftForBorder { get; private set; }// Смещение иконки внутри рамки сущности
         internal int BorderInBigIcons => 1;// Прозрачный бордюр у иконок 128 * 128
         internal int HeroInRow { get; private set; }// Героев в ряду
@@ -535,6 +536,10 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(GridSize <= 20);
             Debug.Assert(GridSize % 2 == 0);
             GridSizeHalf = GridSize / 2;
+
+            MaxLengthObjectName = XmlUtils.GetIntegerNotNull(xmlDoc.SelectSingleNode("Game/Interface/MaxLengthObjectName"));
+            Debug.Assert(MaxLengthObjectName > 20);
+            Debug.Assert(MaxLengthObjectName <= 63);
 
             ShiftForBorder = new Point(Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/ShiftForBorderX").InnerText),
                 Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/ShiftForBorderY").InnerText));

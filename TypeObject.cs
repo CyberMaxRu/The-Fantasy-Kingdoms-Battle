@@ -24,6 +24,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Debug.Assert(ID.Length > 0);
             Debug.Assert(Name.Length > 0);
+            Debug.Assert(Name.Length <= FormMain.Config.MaxLengthObjectName);
             Debug.Assert(Description.Length > 0);
             //Debug.Assert(ImageIndex >= 0);
         }
@@ -37,6 +38,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Debug.Assert(ID.Length > 0);
             Debug.Assert(Name.Length > 0);
+            Debug.Assert(Name.Length <= FormMain.Config.MaxLengthObjectName);
             Debug.Assert(Description.Length > 0);
         }
 
@@ -57,7 +59,7 @@ namespace Fantasy_Kingdoms_Battle
         internal void SetName(string name)
         {
             Debug.Assert(name.Length > 0);
-            Debug.Assert(name.Length <= FormMain.MAX_LENGTH_USERNAME);
+            Debug.Assert(name.Length <= FormMain.Config.MaxLengthObjectName);
 
             Name = name;
         }
