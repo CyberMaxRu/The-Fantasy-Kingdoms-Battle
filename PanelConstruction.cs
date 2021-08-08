@@ -28,7 +28,7 @@ namespace Fantasy_Kingdoms_Battle
             btnHireHero.ShowHint += BtnHireHero_ShowHint;
 
             btnBuildOrUpgrade = new VCIconButton(this, imgMapObject.NextLeft(), imgMapObject.NextTop(), Program.formMain.ilGui, FormMain.GUI_BUILD);
-            btnBuildOrUpgrade.Click += BtnBuildOrUprgade_Click;
+            btnBuildOrUpgrade.Click += BtnBuildOrUpgrade_Click;
             btnBuildOrUpgrade.ShowHint += BtnBuildOrUpgrade_ShowHint;
 
             lblIncome = new VCLabelValue(this, FormMain.Config.GridSize, imgMapObject.NextTop(), Color.Green, true);
@@ -87,7 +87,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        private void BtnBuildOrUprgade_Click(object sender, EventArgs e)
+        private void BtnBuildOrUpgrade_Click(object sender, EventArgs e)
         {
             Debug.Assert(Construction.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
 
