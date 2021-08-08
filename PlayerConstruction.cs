@@ -347,7 +347,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(!Destroyed);
 
-            if (TypeConstruction.IsInternalConstruction)
+            if (TypeConstruction.IsOurConstruction)
             {
                 Program.formMain.formHint.AddStep1Header(TypeConstruction.Name, Level > 0 ? "Уровень " + Level.ToString() : "", TypeConstruction.Description + ((Level > 0) && (TypeConstruction.TrainedHero != null) ? Environment.NewLine + Environment.NewLine
                     + (!(TypeConstruction.TrainedHero is null) ? "Героев: " + Heroes.Count.ToString() + "/" + MaxHeroes().ToString() : "") : ""));
