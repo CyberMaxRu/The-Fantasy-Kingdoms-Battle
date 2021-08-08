@@ -906,6 +906,16 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep5Builders(TypeConstruction.Levels[Level + 1].Builders, Player.FreeBuilders >= TypeConstruction.Levels[Level + 1].Builders);
         }
 
+        internal void PrepareHintForHireHero()
+        {
+            Debug.Assert(Heroes.Count < MaxHeroes());
+
+            Program.formMain.formHint.AddStep1Header(TypeConstruction.TrainedHero.Name, "", TypeConstruction.TrainedHero.Description);
+            if ((TypeConstruction.TrainedHero != null) && (TypeConstruction.TrainedHero.Cost > 0))
+                Program.formMain.formHint.AddStep3Requirement(GetTextRequirementsHire());
+            Program.formMain.formHint.AddStep4Gold(TypeConstruction.TrainedHero.Cost, Player.Gold >= TypeConstruction.TrainedHero.Cost);
+        }
+
         BitmapList ICell.BitmapList() => Program.formMain.imListObjectsCell;
         int ICell.ImageIndex() => ImageIndexLair();
         bool ICell.NormalImage() => true;

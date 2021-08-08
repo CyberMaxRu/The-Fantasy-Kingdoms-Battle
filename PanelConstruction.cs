@@ -54,10 +54,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnHireHero_ShowHint(object sender, EventArgs e)
         {
-            Program.formMain.formHint.AddStep1Header(TypeConstruction.TrainedHero.Name, "", TypeConstruction.TrainedHero.Description);
-            if ((TypeConstruction.TrainedHero != null) && (TypeConstruction.TrainedHero.Cost > 0))
-                Program.formMain.formHint.AddStep3Requirement(Construction.GetTextRequirementsHire());
-            Program.formMain.formHint.AddStep4Gold(TypeConstruction.TrainedHero.Cost, Construction.Player.Gold >= TypeConstruction.TrainedHero.Cost);
+            Construction.PrepareHintForHireHero();
         }
 
         private void BtnBuyOrUpgrade_ShowHint(object sender, EventArgs e)
