@@ -206,6 +206,9 @@ namespace Fantasy_Kingdoms_Battle
         internal const int GUI_24_BUTTON_RIGHT = 4;
         internal const int GUI_24_NEUTRAL = 5;
         internal const int GUI_24_LOSE = 6;
+        internal const int GUI_24_WIN = 7;
+        internal const int GUI_24_TRANSP_LOSE = 8;
+        internal const int GUI_24_TRANSP_WIN = 9;
 
         internal const int GUI_45_EMPTY = 0;
         internal const int GUI_45_BORDER = 0;
