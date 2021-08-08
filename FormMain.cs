@@ -2071,8 +2071,9 @@ namespace Fantasy_Kingdoms_Battle
             {
                 VCImage im = new VCImage(panelNeighborhood, nextLeft, 0, ilGui, GUI_MAP);
                 im.ShowBorder = true;
-                im.Cost = (i + 1).ToString();
+                im.Cost = i.ToString();
                 im.Click += Neighborhood_Click;
+                im.Hint = i == 0 ? "Окрестности возле Замка" : "Окрестности в радиусе " + i.ToString();
                 nextLeft = im.NextLeft();
                 listButtonsLayers.Add(im);
             }
@@ -2091,7 +2092,7 @@ namespace Fantasy_Kingdoms_Battle
                 i.ManualSelected = i == sender;
             }
 
-            currentNeighborhood = Convert.ToInt32(((VCImage)sender).Cost) - 1;
+            currentNeighborhood = Convert.ToInt32(((VCImage)sender).Cost);
             UpdateNeighborhood();
         }
 
