@@ -997,8 +997,41 @@ namespace Fantasy_Kingdoms_Battle
             return g;
         }
 
-        //
+        internal bool CanBuildTypeConstruction(TypeConstruction type)
+        {
+            // Сначала проверяем наличие золота
+            if (Gold < type.Levels[1].Cost)
+                return false;
 
+            // Проверяем наличие очков строительства
+            if (type.Levels[1].Builders > FreeBuilders)
+                return false;
+
+            // Проверяем требования к зданиям
+            return CheckRequirements(type.Levels[1].Requirements);
+        }
+
+        internal List<TextRequirement> GetTextRequirementsBuildTypeConstruction(TypeConstruction type)
+        {
+            List<TextRequirement> list = new List<TextRequirement>();
+
+            TextRequirements(type.Levels[1].Requirements, list);
+
+            return list;
+        }
+
+        internal void PrepareHintForBuildTypeConstruction(TypeConstruction type)
+        {
+            Program.formMain.formHint.AddStep1Header(type.Name, "Уровень 1", type.Description);
+            Program.formMain.formHint.AddStep2Income(type.Levels[1].Income);
+            Program.formMain.formHint.AddStep3Greatness(type.Levels[1].GreatnessByConstruction, type.Levels[1].GreatnessPerDay);
+            Program.formMain.formHint.AddStep35PlusBuilders(type.Levels[1].BuildersPerDay);
+            Program.formMain.formHint.AddStep3Requirement(GetTextRequirementsBuildTypeConstruction(type));
+            Program.formMain.formHint.AddStep4Gold(type.Levels[1].Cost, Gold >= type.Levels[1].Cost);
+            Program.formMain.formHint.AddStep5Builders(type.Levels[1].Builders, FreeBuilders >= type.Levels[1].Builders);
+        }
+
+        //
         internal override string GetName() => Player.Name;
         internal override LobbyPlayer GetPlayer() => this;
         internal override TypePlayer GetTypePlayer() => Player.TypePlayer;

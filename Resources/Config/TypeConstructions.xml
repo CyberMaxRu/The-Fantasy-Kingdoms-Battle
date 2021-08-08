@@ -718,6 +718,20 @@
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>peasant_house_select.wav</SoundSelect>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
+    <Levels>
+      <Level>
+        <Pos>1</Pos>
+        <Cost>0</Cost>
+        <Builders>0</Builders>
+        <Income>50</Income>
+        <Requirements>
+          <Requirement>
+            <TypeConstruction>Castle</TypeConstruction>
+            <Level>1</Level>
+          </Requirement>
+        </Requirements>
+      </Level>
+    </Levels>
   </TypeConstruction>
   <TypeConstruction>
     <ID>Mill</ID>
@@ -731,9 +745,23 @@
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>mill_select.wav</SoundSelect>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
+    <Levels>
+      <Level>
+        <Pos>1</Pos>
+        <Cost>0</Cost>
+        <Builders>1</Builders>
+        <Income>250</Income>
+        <Requirements>
+          <Requirement>
+            <TypeConstruction>Castle</TypeConstruction>
+            <Level>1</Level>
+          </Requirement>
+        </Requirements>
+      </Level>
+    </Levels>
   </TypeConstruction>
   <TypeConstruction>
-    <ID>Tradepost</ID>
+    <ID>TradePost</ID>
     <Name>Торговый пост</Name>
     <Description>- Приносит средний доход</Description>
     <ImageIndex>94</ImageIndex>
@@ -741,11 +769,25 @@
     <Line>1</Line>
     <Pos>4</Pos>
     <DefaultLevel>0</DefaultLevel>
-    <MaxLevel>10</MaxLevel>
+    <MaxLevel>1</MaxLevel>
     <HasTreasury>False</HasTreasury>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>tradepost_select.wav</SoundSelect>
     <TypePlaceForConstruct>TradePlace</TypePlaceForConstruct>
+    <Levels>
+      <Level>
+        <Pos>1</Pos>
+        <Cost>250</Cost>
+        <Builders>1</Builders>
+        <Income>100</Income>
+        <Requirements>
+          <Requirement>
+            <TypeConstruction>Market</TypeConstruction>
+            <Level>1</Level>
+          </Requirement>
+        </Requirements>
+      </Level>
+    </Levels>
   </TypeConstruction>
   <TypeConstruction>
     <ID>Market</ID>
@@ -2276,6 +2318,15 @@
     <MaxHeroes>0</MaxHeroes>
     <RelationPlace>Our</RelationPlace>
     <TypePlaceForConstruct></TypePlaceForConstruct>
+    <LayersCellMenu>1</LayersCellMenu>
+    <CellsMenu>
+      <CellMenu>
+        <PosX>1</PosX>
+        <PosY>1</PosY>
+        <Layer>1</Layer>
+        <TypeObject>TradePost</TypeObject>
+      </CellMenu>
+    </CellsMenu>
   </TypeConstruction>
   <TypeConstruction>
     <ID>Treasure</ID>

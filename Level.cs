@@ -33,7 +33,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Builders > 0)
             {
-                Debug.Assert(Cost > 0);
+                //Debug.Assert(Cost > 0);
             }
 
             // Загружаем требования

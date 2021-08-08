@@ -49,7 +49,7 @@ namespace Fantasy_Kingdoms_Battle
             uriSoundSelect = new Uri(Program.formMain.dirResources + @"Sound\Interface\ConstructionSelect\" + XmlUtils.GetStringNotNull(n.SelectSingleNode("SoundSelect")));
 
             // Загружаем информацию об уровнях
-            if (IsInternalConstruction)
+            if (IsInternalConstruction || (Category == CategoryConstruction.External))
             {
                 Levels = new Level[MaxLevel + 1];// Для упрощения работы с уровнями, добавляем 1, чтобы уровень был равен индексу в массиве
 

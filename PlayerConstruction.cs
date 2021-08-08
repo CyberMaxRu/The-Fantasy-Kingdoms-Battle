@@ -106,7 +106,7 @@ namespace Fantasy_Kingdoms_Battle
             Player.SpendGold(research.Cost());
             Researches.Remove(research);
 
-            if (research.ConstructionForBuild is null)
+            if (research.Research.TypeConstruction is null)
             {
                 Debug.Assert(ResearchesAvailabled > 0);
 
@@ -116,11 +116,19 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
             {
-                research.ConstructionForBuild.Build();
-                research.ConstructionForBuild.X = research.ObjectOfMap.X;
-                research.ConstructionForBuild.Y = research.ObjectOfMap.Y;
-                research.ConstructionForBuild.Layer = research.ObjectOfMap.Layer;
-                Player.Lairs[research.ConstructionForBuild.Layer, research.ConstructionForBuild.Y, research.ConstructionForBuild.X] = research.ConstructionForBuild;
+                if (research.ConstructionForBuild != null)
+                {
+                    research.ConstructionForBuild.Build();
+                    research.ConstructionForBuild.X = research.ObjectOfMap.X;
+                    research.ConstructionForBuild.Y = research.ObjectOfMap.Y;
+                    research.ConstructionForBuild.Layer = research.ObjectOfMap.Layer;
+                    Player.Lairs[research.ConstructionForBuild.Layer, research.ConstructionForBuild.Y, research.ConstructionForBuild.X] = research.ConstructionForBuild;
+                }
+                else
+                {
+                    PlayerConstruction pc = new PlayerConstruction(Player, research.Research.TypeConstruction, research.ObjectOfMap.X, research.ObjectOfMap.Y, research.ObjectOfMap.Layer);
+                    Player.Lairs[pc.Layer, pc.Y, pc.X] = pc;
+                }
 
                 if (Player.GetTypePlayer() == TypePlayer.Human)
                     Program.formMain.UpdateNeighborhood();                        
@@ -420,7 +428,12 @@ namespace Fantasy_Kingdoms_Battle
             if (research.Research.TypeConstruction is null)
                 return Player.CheckRequirements(research.Research.Requirements);
             else
-                return research.ConstructionForBuild.CheckRequirements();
+            {
+                if (research.ConstructionForBuild != null)
+                    return research.ConstructionForBuild.CheckRequirements();
+                else
+                    return research.Player.CanBuildTypeConstruction(research.Research.TypeConstruction);
+            }
         }
 
         internal List<TextRequirement> GetResearchTextRequirements(PlayerCellMenu research)

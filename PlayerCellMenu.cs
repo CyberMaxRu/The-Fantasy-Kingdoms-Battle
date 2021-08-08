@@ -12,25 +12,39 @@ namespace Fantasy_Kingdoms_Battle
     {
         public PlayerCellMenu(PlayerConstruction c, TypeCellMenu r)
         {
+            Player = c.Player;
             ObjectOfMap = c;
             Research = r;
 
             if (r.TypeConstruction != null)
             {
-                ConstructionForBuild = c.Player.GetPlayerConstruction(r.TypeConstruction);
+                if (r.TypeConstruction.Category == CategoryConstruction.Temple)
+                    ConstructionForBuild = c.Player.GetPlayerConstruction(r.TypeConstruction);
+                else if (r.TypeConstruction.Category == CategoryConstruction.External)
+                {
+
+                }
+                else
+                    throw new Exception("Неизвестная категория сооружения: " + r.TypeConstruction.Name);
             }
         }
 
+        internal LobbyPlayer Player { get; }
         internal PlayerConstruction ObjectOfMap { get; }
         internal TypeCellMenu Research { get; }
         internal PlayerConstruction ConstructionForBuild;
 
         internal int Cost()
         {
-            if (ConstructionForBuild is null)
+            if (Research.TypeConstruction is null)
                 return Research.Cost;
             else
-                return ConstructionForBuild.CostBuyOrUpgrade();
+            {
+                if (ConstructionForBuild != null)
+                    return ConstructionForBuild.CostBuyOrUpgrade();
+                else
+                    return Research.TypeConstruction.Levels[1].Cost;
+            }
         }
 
         internal bool CheckRequirements()
@@ -60,7 +74,10 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
             {
-                ConstructionForBuild.PrepareHintForBuyOrUpgrade();
+                if (ConstructionForBuild != null)
+                    ConstructionForBuild.PrepareHintForBuyOrUpgrade();
+                else
+                    Player.PrepareHintForBuildTypeConstruction(Research.TypeConstruction);
             }
         }
     }

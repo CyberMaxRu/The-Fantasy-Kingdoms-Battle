@@ -57,13 +57,23 @@ namespace Fantasy_Kingdoms_Battle
             }
             else if ((research != null) && (research.Research.TypeConstruction != null))
             {
-                PlayerConstruction pc = research.ObjectOfMap.Player.GetPlayerConstruction(research.Research.TypeConstruction);
-                Debug.Assert(!(pc is null));
-                Cost = pc.CostBuyOrUpgrade().ToString();
-                ImageIndex = pc.TypeConstruction.ImageIndex;
-                ImageIsEnabled = research.CheckRequirements();
-                BitmapList = Program.formMain.imListObjectsCell;
+                if (research.ConstructionForBuild != null)
+                {
+                    PlayerConstruction pc = research.ObjectOfMap.Player.GetPlayerConstruction(research.Research.TypeConstruction);
+                    Debug.Assert(!(pc is null));
+                    Cost = pc.CostBuyOrUpgrade().ToString();
+                    ImageIndex = pc.TypeConstruction.ImageIndex;
+                    ImageIsEnabled = research.CheckRequirements();
+                    BitmapList = Program.formMain.imListObjectsCell;
+                }
+                else
+                {
+                    Cost = research.Research.TypeConstruction.Levels[1].Cost.ToString();
+                    ImageIndex = research.Research.TypeConstruction.ImageIndex;
+                    ImageIsEnabled = research.Player.CanBuildTypeConstruction(research.Research.TypeConstruction);
+                    BitmapList = Program.formMain.imListObjectsCell;
 
+                }
                 // Накладываем фильтр
                 //if (!research.CheckRequirements())
                 //    ImageFilter = ImageFilter.Disabled;
