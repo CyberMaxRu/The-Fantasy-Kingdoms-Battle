@@ -63,6 +63,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal bool IsError { get; set; }
         internal bool ShowHintParent { get; set; }// Показывать подсказку родителя
+        internal string Hint { get; set; }// Подсказка к контролу
         internal bool ClickOnParent { get; set; }// Вызывать клик у родителя
         internal bool ManualSelected { get; set; } = false;
 
@@ -161,7 +162,13 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(Visible);
 
-            if (ShowHintParent && Parent.ShowHint != null)
+            if (Hint != null)
+            {
+                Program.formMain.formHint.Clear();
+                Program.formMain.formHint.AddHeader(Hint);
+                Program.formMain.formHint.DrawHint(this);
+            }
+            else if (ShowHintParent && Parent.ShowHint != null)
             {
                 Program.formMain.formHint.Clear();
                 Parent.ShowHint.Invoke(this, new EventArgs());
