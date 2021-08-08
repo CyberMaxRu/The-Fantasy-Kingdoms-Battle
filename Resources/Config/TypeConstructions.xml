@@ -776,6 +776,7 @@
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>tradepost_select.wav</SoundSelect>
     <TypePlaceForConstruct>TradePlace</TypePlaceForConstruct>
+    <PlayerCanBuild>false</PlayerCanBuild>
     <Levels>
       <Level>
         <Pos>1</Pos>
