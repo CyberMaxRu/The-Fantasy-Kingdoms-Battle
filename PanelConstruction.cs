@@ -49,7 +49,7 @@ namespace Fantasy_Kingdoms_Battle
             btnHeroes.ShiftX = Width - btnHeroes.Width - FormMain.Config.GridSize;
         }
 
-        internal PlayerConstruction Construction { get => PlayerObject as PlayerConstruction; }
+        internal PlayerConstruction Construction { get; private set; }
 
         private void BtnHeroes_ShowHint(object sender, EventArgs e)
         {
@@ -111,6 +111,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(pb.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
 
             PlayerObject = pb;
+            Construction = pb;
         }
 
         internal override void ArrangeControls()
