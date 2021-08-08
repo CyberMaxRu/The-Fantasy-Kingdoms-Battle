@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Drawing;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -16,6 +17,7 @@ namespace Fantasy_Kingdoms_Battle
             xmlDoc.Load(dirResources + "Main.xml");
 
             CurrentVersion = XmlUtils.GetVersionFromXml(xmlDoc.SelectSingleNode("Main"), "Version");
+            ScreenMinSize = new Size(XmlUtils.GetIntegerNotNull(xmlDoc.SelectSingleNode("Main/ScreenMinWidth")), XmlUtils.GetIntegerNotNull(xmlDoc.SelectSingleNode("Main/ScreenMinHeight")));
 
             URLDrive = xmlDoc.SelectSingleNode("Main/AutoUpdate/URLDrive").InnerText;
             if (URLDrive.Length == 0)
@@ -30,6 +32,7 @@ namespace Fantasy_Kingdoms_Battle
 
         public Version CurrentVersion { get; private set; }
         public Version ActualVersion { get; private set; }
+        internal Size ScreenMinSize { get; private set; }// Минимальное разрешение экрана для игры
         public string URLDrive { get; private set; }
         public string UIDVersion { get; private set; }
         public string UIDArchive { get; private set; }

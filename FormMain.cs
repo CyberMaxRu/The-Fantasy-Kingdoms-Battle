@@ -341,6 +341,14 @@ namespace Fantasy_Kingdoms_Battle
                 Settings = new Settings();
 
                 MainConfig = new MainConfig(dirResources);
+                // Проверяем требование по разрешению экрана
+                if ((Screen.PrimaryScreen.Bounds.Width < MainConfig.ScreenMinSize.Width) || (Screen.PrimaryScreen.Bounds.Height < MainConfig.ScreenMinSize.Height))
+                {
+                    MessageBox.Show($"Для игры необходимо разрешение экрана {MainConfig.ScreenMinSize.Width} * {MainConfig.ScreenMinSize.Height}."
+                        + Environment.NewLine + $"Текущее разрешение {Screen.PrimaryScreen.Bounds.Width} * {Screen.PrimaryScreen.Bounds.Height}.",
+                        NAME_PROJECT, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Environment.Exit(0);
+                }
 
                 // Если включено автообновление, проверяем на их наличие
                 if (Settings.CheckUpdateOnStartup)
