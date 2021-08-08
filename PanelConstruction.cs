@@ -9,7 +9,7 @@ using System.Diagnostics;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    // Класс панели здания
+    // Класс панели сооружения Королевства
     internal sealed class PanelConstruction : PanelMapObject
     {
         private readonly VCIconButton btnHeroes;
@@ -30,16 +30,6 @@ namespace Fantasy_Kingdoms_Battle
             btnBuyOrUpgrade.Click += BtnBuyOrUprgade_Click;
             btnBuyOrUpgrade.ShowHint += BtnBuyOrUpgrade_ShowHint;
 
-
-            //if ((TypeConstruction.TrainedHero != null) && !(TypeConstruction is TypeEconomicConstruction))
-            //{
-            //}
-            //else
-            //    btnHeroes.Visible = false;
-
-            //if (TypeConstruction is TypeEconomicConstruction)
-            //{
-
             lblIncome = new VCLabelValue(this, FormMain.Config.GridSize, imgMapObject.NextTop(), Color.Green, true);
             lblIncome.Width = imgMapObject.Width;
             lblIncome.ImageIndex = FormMain.GUI_16_GOLD;
@@ -50,8 +40,6 @@ namespace Fantasy_Kingdoms_Battle
             lblGreatness.ImageIndex = FormMain.GUI_16_GREATNESS;
             lblGreatness.StringFormat.Alignment = StringAlignment.Near;
             lblGreatness.Color = FormMain.Config.HintIncome;
-
-            //}
 
             Height = btnBuyOrUpgrade.NextTop();
             Width = btnBuyOrUpgrade.NextLeft();
@@ -66,25 +54,14 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnHireHero_ShowHint(object sender, EventArgs e)
         {
-            ShowHintBtnHireHero();
-        }
-
-        private void BtnBuyOrUpgrade_ShowHint(object sender, EventArgs e)
-        {
-            ShowHintBtnBuyOrUpgrade();
-        }
-
-        private void ShowHintBtnHireHero()
-        {
             Program.formMain.formHint.AddStep1Header(TypeConstruction.TrainedHero.Name, "", TypeConstruction.TrainedHero.Description);
             if ((TypeConstruction.TrainedHero != null) && (TypeConstruction.TrainedHero.Cost > 0))
                 Program.formMain.formHint.AddStep3Requirement(Construction.GetTextRequirementsHire());
             Program.formMain.formHint.AddStep4Gold(TypeConstruction.TrainedHero.Cost, Construction.Player.Gold >= TypeConstruction.TrainedHero.Cost);
         }
 
-        private void ShowHintBtnBuyOrUpgrade()
+        private void BtnBuyOrUpgrade_ShowHint(object sender, EventArgs e)
         {
-            //Debug.Assert(Construction.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
             Construction.PrepareHintForBuyOrUpgrade();
         }
 
