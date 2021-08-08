@@ -62,8 +62,7 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep1Header("Герои, выполняющие флаг", "", Lair.ListHeroesForHint());
         }
 
-        internal PlayerConstruction Lair { get => PlayerObject as PlayerConstruction; }
-        internal TypeConstruction TypeLair { get => Lair.TypeConstruction; }
+        internal PlayerConstruction Lair { get; private set; }
 
         private void BtnHeroes_Click(object sender, EventArgs e)
         {
@@ -153,9 +152,10 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(pl != null);
             Debug.Assert(pl.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
-            Debug.Assert(pl.TypeConstruction == TypeLair);
+            Debug.Assert(pl.TypeConstruction == Lair.TypeConstruction);
 
             PlayerObject = pl;
+            Lair = pl;
         }
 
         private void BtnAction_Click(object sender, EventArgs e)
@@ -263,7 +263,7 @@ namespace Fantasy_Kingdoms_Battle
             if (Lair.Hidden)
                 Program.formMain.PlayPushButton();
             else
-                TypeLair.PlaySoundSelect();
+                Lair.TypeConstruction.PlaySoundSelect();
         }
     }
 }
