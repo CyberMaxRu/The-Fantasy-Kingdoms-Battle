@@ -137,7 +137,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             foreach (LobbyPlayer pl in Players)
             {
-                pl.Opponent = null;
                 pl.SkipBattle = false;
             }
 
@@ -195,6 +194,7 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(oppo.Opponent == null);
                 p.Opponent = oppo;
                 oppo.Opponent = p;
+
                 if (!opponents.Remove(p))
                     throw new Exception("Не смог удалить элемент " + p.Player.Name + " из списка оппонентов");
                 if (!opponents.Remove(p.Opponent))
@@ -339,7 +339,15 @@ namespace Fantasy_Kingdoms_Battle
             CalcFinalityTurn();
 
             if (IsDayForBattleBetweenPlayers())
+            {
                 CalcBattles();
+
+                foreach (LobbyPlayer pl in Players)
+                {
+                    if (pl.Opponent != null)
+                        pl.Opponent = null;
+                }
+            }
 
             CalcResultTurn();
 

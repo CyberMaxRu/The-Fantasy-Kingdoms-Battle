@@ -309,7 +309,8 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(IsLive);
             Debug.Assert((StateCreature.ID == NameStateCreature.DoAttackFlag.ToString())
                 || (StateCreature.ID == NameStateCreature.DoDefenseFlag.ToString())
-                || (StateCreature.ID == NameStateCreature.DoScoutFlag.ToString()));
+                || (StateCreature.ID == NameStateCreature.DoScoutFlag.ToString())
+                || (StateCreature.ID == NameStateCreature.BattleWithPlayer.ToString()));
             Debug.Assert(TargetByFlag != null);
 
             // Убираем себя из флага на логове
@@ -331,6 +332,8 @@ namespace Fantasy_Kingdoms_Battle
                     return NameStateCreature.DoAttackFlag;
                 case TypeFlag.Defense:
                     return NameStateCreature.DoDefenseFlag;
+                case TypeFlag.Battle:
+                    return NameStateCreature.BattleWithPlayer;
                 default:
                     throw new Exception($"Неизвестный тип флага: {typeFlag}");
             }

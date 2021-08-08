@@ -11,7 +11,7 @@ namespace Fantasy_Kingdoms_Battle
     internal enum CategoryConstruction { Guild, Economic, Military, Temple, External, Lair, Place, BasePlace };// Тип сооружения
     internal enum Page { Guild, Economic, Temple, None };// Страница для размещения здания
     internal enum PriorityExecution { None = -1, Normal = 0, Warning = 1, High = 2, Exclusive = 3 };
-    internal enum TypeFlag { None, Scout, Attack, Defense };
+    internal enum TypeFlag { None, Scout, Attack, Defense, Battle };
 
 
     // Тип сооружения - базовый класс для всех зданий, построек и мест

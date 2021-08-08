@@ -13,6 +13,7 @@ namespace Fantasy_Kingdoms_Battle
         public VCButtonTargetLair(VisualControl parent) : base(parent, 0, 0)
         {
             BitmapList = Program.formMain.imListObjectsCell;
+            ManualDraw = true;
         }
 
         internal PlayerConstruction Lair { get => Cell as PlayerConstruction; }
@@ -21,9 +22,11 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.DoClick();
 
-            Program.formMain.ActivatePageLairs();
-            if (Lair != null)
+            if ((Lair != null) && (Lair.TypeFlag != TypeFlag.Battle))
+            {
+                Program.formMain.ActivatePageLairs();
                 Program.formMain.SelectPlayerObject(Lair);
+            }
         }
 
         internal override bool PrepareHint()
@@ -35,9 +38,12 @@ namespace Fantasy_Kingdoms_Battle
             else
             {
                 Debug.Assert(!(Lair is null));
-                Program.formMain.formHint.AddStep1Header(Lair.NameLair(), "", Lair.ListHeroesForHint());
+                if (Lair.TypeFlag != TypeFlag.Battle)
+                    Program.formMain.formHint.AddStep1Header(Lair.NameLair(), "", Lair.ListHeroesForHint());
+                else
+                    Program.formMain.formHint.AddStep1Header("Битва против игрока", "", Lair.ListHeroesForHint());
             }
-            
+
             return true;
         }
 
@@ -46,34 +52,39 @@ namespace Fantasy_Kingdoms_Battle
             return Level = (int)Lair.PriorityFlag + 1;
         }*/
 
-        protected override int GetQuantity()
-        {
-            return Lair != null ? Lair.listAttackedHero.Count() : 0;
-        }
-
         internal override void Draw(Graphics g)
         {
-            if (Lair == null)
+            if (Lair is null)
             {
                 BitmapList = Program.formMain.imListObjectsCell;
                 ImageIndex = FormMain.IMAGE_INDEX_NONE;
                 ImageIsEnabled = false;
                 Level = 0;
+                Quantity = 0;
                 Cost = null;
             }
             else
             {
                 ImageIsEnabled = true;
+                Quantity = Lair.listAttackedHero.Count();
 
-                if (Lair.Hidden)
+                if (Lair.TypeFlag != TypeFlag.Battle)
                 {
-                    BitmapList = Program.formMain.ilGui;
-                    ImageIndex = FormMain.IMAGE_INDEX_UNKNOWN;
+                    if (Lair.Hidden)
+                    {
+                        BitmapList = Program.formMain.ilGui;
+                        ImageIndex = FormMain.IMAGE_INDEX_UNKNOWN;
+                    }
+                    else
+                    {
+                        BitmapList = Program.formMain.imListObjectsCell;
+                        ImageIndex = Lair.ImageIndexLair();
+                    }
                 }
                 else
                 {
-                    BitmapList = Program.formMain.imListObjectsCell;
-                    ImageIndex = Lair.ImageIndexLair();
+                    BitmapList = Program.formMain.ilGui;
+                    ImageIndex = FormMain.GUI_BATTLE;
                 }
             }
 

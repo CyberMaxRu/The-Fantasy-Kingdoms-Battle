@@ -621,7 +621,16 @@ namespace Fantasy_Kingdoms_Battle
                 return TypeFlag.Attack;
             if (TypeConstruction.Category == CategoryConstruction.External)
                 return TypeFlag.Defense;
+            if (TypeConstruction.ID == FormMain.Config.IDConstructionCastle)
+                return TypeFlag.Battle;
             return TypeFlag.None;
+        }
+
+        internal void AttackToCastle()
+        {
+            Debug.Assert(TypeConstruction.ID == FormMain.Config.IDConstructionCastle);
+            TypeFlag = TypeFlag.Battle;
+            DaySetFlag = Player.Lobby.Day;
         }
 
         internal void IncPriority()
@@ -708,6 +717,8 @@ namespace Fantasy_Kingdoms_Battle
                 case TypeFlag.Attack:
                 case TypeFlag.Defense:
                     return TypeConstruction.MaxHeroes;
+                case TypeFlag.Battle:
+                    return Player.Lobby.TypeLobby.MaxHeroesForBattle;
                 default:
                     throw new Exception($"Неизвестный тип действия: {TypeAction()}");
             }

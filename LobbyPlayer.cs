@@ -270,7 +270,7 @@ namespace Fantasy_Kingdoms_Battle
                 WindowBattle formBattle;
                 TypeFlag typeFlag;
 
-                if ((pl != null) && (pl.listAttackedHero.Count > 0))
+                if ((pl != null) && (pl.listAttackedHero.Count > 0) && (pl.TypeFlag != TypeFlag.Battle))
                 {
                     Debug.Assert((pl.TypeFlag == TypeFlag.Scout) || (pl.TypeFlag == TypeFlag.Attack) || (pl.TypeFlag == TypeFlag.Defense));
 
@@ -320,10 +320,12 @@ namespace Fantasy_Kingdoms_Battle
 
                         }
                     }
-                    else
+                    else if (pl.TypeFlag == TypeFlag.Defense)
                     {
                         pl.DoDefense();
                     }
+                    else
+                        throw new Exception("Неизвестный флаг: " + pl.TypeFlag.ToString());
 
                     if (this is LobbyPlayerHuman h)
                         h.AddEvent(new VCEventExecuteFlag(typeFlag, pl.TypeConstruction, pl.Destroyed ? null : pl, (b is null) || (b.Winner == this), b));
@@ -389,7 +391,31 @@ namespace Fantasy_Kingdoms_Battle
         // Визуальные контролы
         internal PanelPlayer Panel { get; set; }
         private LobbyPlayer opponent;// Убрать это
-        internal LobbyPlayer Opponent { get { return opponent; } set { if (value != this) opponent = value; else new Exception("Нельзя указать оппонентов самого себя."); } }
+        internal LobbyPlayer Opponent { get { return opponent; } set { if (value != this) { if (opponent != value) { opponent = value; UpdateOpponent(); } } else new Exception("Нельзя указать оппонентов самого себя."); } }
+        internal PlayerConstruction FlagAttackToOpponent { get; private set; }
+
+        private void UpdateOpponent()
+        {
+            if (opponent is null)
+            {
+                Debug.Assert(FlagAttackToOpponent != null);
+                Debug.Assert(ListFlags.IndexOf(FlagAttackToOpponent) != -1);
+
+                ListFlags.Remove(FlagAttackToOpponent);
+                FlagAttackToOpponent = null;
+            }
+            else
+            {
+                Debug.Assert(FlagAttackToOpponent is null);
+                FlagAttackToOpponent = opponent.GetPlayerConstruction(FormMain.Config.FindTypeConstruction(FormMain.Config.IDConstructionCastle));
+                FlagAttackToOpponent.AttackToCastle();
+
+                Debug.Assert(ListFlags.IndexOf(FlagAttackToOpponent) == -1);
+                ListFlags.Insert(0, FlagAttackToOpponent);
+            }
+
+            Program.formMain.LairsWithFlagChanged();
+        }
 
         internal PlayerConstruction GetPlayerConstruction(TypeConstruction b)
         {
@@ -660,13 +686,11 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if ((ph.StateCreature.ID == NameStateCreature.DoAttackFlag.ToString())
                     || (ph.StateCreature.ID == NameStateCreature.DoScoutFlag.ToString())
-                    || (ph.StateCreature.ID == NameStateCreature.DoDefenseFlag.ToString()))
+                    || (ph.StateCreature.ID == NameStateCreature.DoDefenseFlag.ToString())
+                    || (ph.StateCreature.ID == NameStateCreature.BattleWithPlayer.ToString()))
                 {
                     ph.ClearState();
                 }
-
-                if (ph.StateCreature.ID == NameStateCreature.BattleWithPlayer.ToString())
-                    ph.SetState(NameStateCreature.Nothing);
 
                 if (ph.StateCreature.ID == NameStateCreature.Nothing.ToString())
                     freeHeroes.Add(ph);
@@ -680,11 +704,14 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Lobby.IsDayForBattleBetweenPlayers() && !SkipBattle)
             {
+                Debug.Assert(FlagAttackToOpponent != null);
+
                 int takeHeroes = Math.Min(Lobby.TypeLobby.MaxHeroesForBattle, freeHeroes.Count);                    
                 for (int i = 0; i < takeHeroes; i++)
                 {
                     PlayerHero ph = CombatHeroes[i] as PlayerHero;
                     freeHeroes.Remove(ph);
+                    FlagAttackToOpponent.AddAttackingHero(ph);
                     ph.SetState(NameStateCreature.BattleWithPlayer);
                 }
             }
@@ -821,6 +848,11 @@ namespace Fantasy_Kingdoms_Battle
                 q += QuantityFlags[pe];
                 if (pe > PriorityExecution.None)
                     qNonNone += QuantityFlags[pe];
+            }
+            if (FlagAttackToOpponent != null)
+            {
+                q++;
+                qNonNone++;
             }
 
             Debug.Assert(q == ListFlags.Count);

@@ -96,7 +96,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
-            if (Visible)
+            if (Visible && !ManualDraw)
             {
                 if (cell != null)
                 {
