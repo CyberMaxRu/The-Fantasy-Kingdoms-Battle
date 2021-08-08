@@ -10,8 +10,6 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal enum CategoryConstruction { Guild, Economic, Military, Temple, External, Lair, Place, BasePlace };// Тип сооружения
     internal enum Page { Guild, Economic, Temple, None };// Страница для размещения здания
-    // Отношение к месту - свое (союзное), нейтральное, враг
-    internal enum RelationPlace { Our, Neutral, Enemy };
     internal enum PriorityExecution { None = -1, Normal = 0, Warning = 1, High = 2, Exclusive = 3 };
     internal enum TypeFlag { None, Scout, Attack, Defense };
 
@@ -125,11 +123,6 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             MaxHeroes = XmlUtils.GetInteger(n.SelectSingleNode("MaxHeroes"));
-            if (n.SelectSingleNode("RelationPlace") != null)
-                RelationPlace = (RelationPlace)Enum.Parse(typeof(RelationPlace), n.SelectSingleNode("RelationPlace").InnerText);
-            else
-                RelationPlace = RelationPlace.Our;
-
             nameTypePlaceForConstruct = XmlUtils.GetString(n.SelectSingleNode("TypePlaceForConstruct"));
             Debug.Assert(Name != nameTypePlaceForConstruct);
 
@@ -141,13 +134,13 @@ namespace Fantasy_Kingdoms_Battle
 
             Debug.Assert(MaxHeroes < 50);
 
-            if (RelationPlace == RelationPlace.Enemy)
+            if (IsInternalConstruction || (Category == CategoryConstruction.External))
             {
-                Debug.Assert(MaxHeroes > 0);
+                //Debug.Assert(MaxHeroes == 0);
             }
             else
             {
-                Debug.Assert(MaxHeroes == 0);
+                //Debug.Assert(MaxHeroes > 0);
             }
 
             if (IsInternalConstruction)
@@ -218,7 +211,6 @@ namespace Fantasy_Kingdoms_Battle
         internal TypeCellMenu[,,] Researches;
         internal List<MonsterLevelLair> Monsters { get; } = new List<MonsterLevelLair>();
         internal int MaxHeroes { get; }// Максимальное количество героев, которое может атаковать логово
-        internal RelationPlace RelationPlace { get; }// Тип отношения к месту
         internal TypeReward TypeReward { get; }// Награда за зачистку логова
         internal TypeReward HiddenReward { get; }// Скрытая награда за зачистку логова
         internal TypeConstruction TypePlaceForConstruct { get; private set; }// Тип сооружения, на котором строится сооружение

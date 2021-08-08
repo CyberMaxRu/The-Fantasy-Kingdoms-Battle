@@ -1951,7 +1951,6 @@
     <Category>Lair</Category>
     <SoundSelect>graveyard_select.wav</SoundSelect>
     <MaxHeroes>4</MaxHeroes>
-    <RelationPlace>Enemy</RelationPlace>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
@@ -1976,7 +1975,6 @@
     <Category>Lair</Category>
     <SoundSelect>logovo_skeleton_select.wav</SoundSelect>
     <MaxHeroes>4</MaxHeroes>
-    <RelationPlace>Enemy</RelationPlace>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
@@ -2009,7 +2007,6 @@
     <Category>Lair</Category>
     <SoundSelect>logovo_vampire_select.wav</SoundSelect>
     <MaxHeroes>5</MaxHeroes>
-    <RelationPlace>Enemy</RelationPlace>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
@@ -2042,7 +2039,6 @@
     <Category>Lair</Category>
     <SoundSelect>logovo_vampire_select.wav</SoundSelect>
     <MaxHeroes>6</MaxHeroes>
-    <RelationPlace>Enemy</RelationPlace>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
@@ -2067,7 +2063,6 @@
     <Category>Lair</Category>
     <SoundSelect>logovo_wolf_select.wav</SoundSelect>
     <MaxHeroes>4</MaxHeroes>
-    <RelationPlace>Enemy</RelationPlace>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
@@ -2100,7 +2095,6 @@
     <Category>Lair</Category>
     <SoundSelect>logovo_serpent_select.wav</SoundSelect>
     <MaxHeroes>5</MaxHeroes>
-    <RelationPlace>Enemy</RelationPlace>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
@@ -2125,7 +2119,6 @@
     <Category>Lair</Category>
     <SoundSelect>logovo_bear_select.wav</SoundSelect>
     <MaxHeroes>6</MaxHeroes>
-    <RelationPlace>Enemy</RelationPlace>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
@@ -2158,7 +2151,6 @@
     <Category>Lair</Category>
     <SoundSelect>logovo_bearman_select.wav</SoundSelect>
     <MaxHeroes>8</MaxHeroes>
-    <RelationPlace>Enemy</RelationPlace>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
@@ -2183,7 +2175,6 @@
     <Category>Lair</Category>
     <SoundSelect>logovo_minotaur_select.wav</SoundSelect>
     <MaxHeroes>8</MaxHeroes>
-    <RelationPlace>Enemy</RelationPlace>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
@@ -2216,7 +2207,6 @@
     <Category>Lair</Category>
     <SoundSelect>logovo_ogre_select.wav</SoundSelect>
     <MaxHeroes>10</MaxHeroes>
-    <RelationPlace>Enemy</RelationPlace>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
@@ -2241,7 +2231,6 @@
     <Category>Lair</Category>
     <SoundSelect>logovo_wolfman_select.wav</SoundSelect>
     <MaxHeroes>12</MaxHeroes>
-    <RelationPlace>Enemy</RelationPlace>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
@@ -2266,7 +2255,6 @@
     <Category>Lair</Category>
     <SoundSelect>logovo_boss_dragon_select.wav</SoundSelect>
     <MaxHeroes>15</MaxHeroes>
-    <RelationPlace>Enemy</RelationPlace>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
@@ -2291,7 +2279,6 @@
     <Category>Lair</Category>
     <SoundSelect>sewers_select.wav</SoundSelect>
     <MaxHeroes>10</MaxHeroes>
-    <RelationPlace>Enemy</RelationPlace>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
@@ -2316,7 +2303,6 @@
     <Category>BasePlace</Category>
     <SoundSelect>tradepost_place_select.wav</SoundSelect>
     <MaxHeroes>0</MaxHeroes>
-    <RelationPlace>Our</RelationPlace>
     <TypePlaceForConstruct></TypePlaceForConstruct>
     <LayersCellMenu>1</LayersCellMenu>
     <CellsMenu>
@@ -2336,7 +2322,6 @@
     <Category>Lair</Category>
     <SoundSelect>chest_select.wav</SoundSelect>
     <MaxHeroes>4</MaxHeroes>
-    <RelationPlace>Enemy</RelationPlace>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <HiddenReward>
       <Gold>1000</Gold>
@@ -2350,7 +2335,6 @@
     <Category>Lair</Category>
     <SoundSelect>logovo_elemental_earth_select.wav</SoundSelect>
     <MaxHeroes>10</MaxHeroes>
-    <RelationPlace>Enemy</RelationPlace>
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
@@ -2375,7 +2359,6 @@
     <Category>Lair</Category>
     <SoundSelect>logovo_elemental_fire_select.wav</SoundSelect>
     <MaxHeroes>10</MaxHeroes>
-    <RelationPlace>Enemy</RelationPlace>
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
@@ -2401,7 +2384,6 @@
     <SoundSelect>place_temple_select.wav</SoundSelect>
     <MaxHeroes>0</MaxHeroes>
     <LayersCellMenu>1</LayersCellMenu>
-    <RelationPlace>Neutral</RelationPlace>
     <TypePlaceForConstruct></TypePlaceForConstruct>
     <CellsMenu>
       <CellMenu>
@@ -2468,7 +2450,6 @@
     <Category>BasePlace</Category>
     <SoundSelect>empty_place.wav</SoundSelect>
     <MaxHeroes>0</MaxHeroes>
-    <RelationPlace>Neutral</RelationPlace>
     <TypePlaceForConstruct></TypePlaceForConstruct>
     <Reward>
     </Reward>
