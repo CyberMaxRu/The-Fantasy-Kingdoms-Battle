@@ -179,6 +179,7 @@ namespace Fantasy_Kingdoms_Battle
                         if (btnBuildOrUpgrade.Visible)
                         {
                             btnBuildOrUpgrade.Cost = Construction.CostBuyOrUpgrade().ToString();
+                            btnBuildOrUpgrade.ImageIndex = FormMain.GUI_BUILD;
                             btnBuildOrUpgrade.ImageIsEnabled = Construction.CheckRequirements();
                         }
                     }
