@@ -2313,7 +2313,7 @@
     <Name>Торговое место</Name>
     <Description>Это удобное место лучше всего подходит под строительство торгового поста.</Description>
     <ImageIndex>142</ImageIndex>
-    <Category>Place</Category>
+    <Category>BasePlace</Category>
     <SoundSelect>tradepost_place_select.wav</SoundSelect>
     <MaxHeroes>0</MaxHeroes>
     <RelationPlace>Our</RelationPlace>
@@ -2394,7 +2394,7 @@
     <Name>Святая земля</Name>
     <Description>Только на святой земле можно построить храм. Такие места большая редкость, и жрецы постоянно спорят, чей храм будет построен на святой земле.</Description>
     <ImageIndex>114</ImageIndex>
-    <Category>Place</Category>
+    <Category>BasePlace</Category>
     <SoundSelect>place_temple_select.wav</SoundSelect>
     <MaxHeroes>0</MaxHeroes>
     <LayersCellMenu>1</LayersCellMenu>
@@ -2462,7 +2462,7 @@
     <Name>Пустое место</Name>
     <Description>Здесь крестьяне строят свои дома. Если место долго пустует, его могут облюбовать дикие звери.</Description>
     <ImageIndex>141</ImageIndex>
-    <Category>Place</Category>
+    <Category>BasePlace</Category>
     <SoundSelect>empty_place.wav</SoundSelect>
     <MaxHeroes>0</MaxHeroes>
     <RelationPlace>Neutral</RelationPlace>

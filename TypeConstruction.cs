@@ -181,10 +181,14 @@ namespace Fantasy_Kingdoms_Battle
                 }
                 if (Category == CategoryConstruction.Place)
                 {
-                    //Debug.Assert(nameTypePlaceForConstruct == "");
+                    Debug.Assert(nameTypePlaceForConstruct != "");
+                }
+                if (Category == CategoryConstruction.BasePlace)
+                {
+                    Debug.Assert(nameTypePlaceForConstruct == "");
                 }
                 else
-                        {
+                { 
                     Debug.Assert(nameTypePlaceForConstruct != "");
                 }
             }

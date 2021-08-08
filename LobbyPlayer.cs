@@ -214,7 +214,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void CreateExternalConstructions(TypeConstruction typeConstruction, int layer, int quantity)
         {
-            Debug.Assert((typeConstruction.Category == CategoryConstruction.External) || (typeConstruction.Category == CategoryConstruction.Place));
+            Debug.Assert((typeConstruction.Category == CategoryConstruction.External) || (typeConstruction.Category == CategoryConstruction.BasePlace) || (typeConstruction.Category == CategoryConstruction.Place));
             //Debug.Assert(typeConstruction.TypePlaceForConstruct.ID == FormMain.Config.IDEmptyPlace);
 
             if (quantity > 0)
