@@ -906,7 +906,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(Level < TypeConstruction.MaxLevel);
 
-            Program.formMain.formHint.AddStep1Header(TypeConstruction.Name, Level == 0 ? "Уровень 1" : (CanLevelUp() == true) ? "Улучшить строение" : "", Level == 0 ? TypeConstruction.Description : "");
+            Program.formMain.formHint.AddStep1Header(TypeConstruction.Name, Level == 0 ? "Уровень 1" : (CanLevelUp() == true) ? $"Улучшить строение ({Level + 1} ур.)" : "", Level == 0 ? TypeConstruction.Description : "");
             Program.formMain.formHint.AddStep2Income(IncomeNextLevel());
             Program.formMain.formHint.AddStep3Greatness(GreatnessAddNextLevel(), GreatnessPerDayNextLevel());
             Program.formMain.formHint.AddStep35PlusBuilders(BuildersPerDayNextLevel());
