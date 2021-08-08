@@ -31,7 +31,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override bool PrepareHint()
         {
-            if ((Lair is null) || (Lair.listAttackedHero.Count == 0))
+            if (Lair is null)
             { 
                 Program.formMain.formHint.AddHeader(Lair != null ? Lair.NameLair() : "Флаг не назначен");
             }
