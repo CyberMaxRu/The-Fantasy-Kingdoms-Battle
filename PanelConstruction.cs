@@ -185,9 +185,12 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
             {
-                btnBuyOrUpgrade.Visible = true;
-                btnBuyOrUpgrade.Cost = Construction.CostBuyOrUpgrade().ToString();
-                btnBuyOrUpgrade.ImageIsEnabled = Construction.CheckRequirements();
+                btnBuyOrUpgrade.Visible = Construction.TypeConstruction.Category != CategoryConstruction.Temple;
+                if (btnBuyOrUpgrade.Visible)
+                {
+                    btnBuyOrUpgrade.Cost = Construction.CostBuyOrUpgrade().ToString();
+                    btnBuyOrUpgrade.ImageIsEnabled = Construction.CheckRequirements();
+                }
             }
 
             if ((TypeConstruction.TrainedHero != null) && (TypeConstruction.Category != CategoryConstruction.Economic))
