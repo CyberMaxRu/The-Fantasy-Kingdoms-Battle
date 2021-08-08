@@ -891,8 +891,17 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void ApplyReward(PlayerConstruction l)
         {
-            IncomeGold(l.TypeConstruction.TypeReward.Gold);
-            AddGreatness(l.TypeConstruction.TypeReward.Greatness);
+            if (l.TypeConstruction.TypeReward != null)
+            {
+                IncomeGold(l.TypeConstruction.TypeReward.Gold);
+                AddGreatness(l.TypeConstruction.TypeReward.Greatness);
+            }
+
+            if (l.TypeConstruction.HiddenReward != null)
+            {
+                IncomeGold(l.TypeConstruction.HiddenReward.Gold);
+                AddGreatness(l.TypeConstruction.HiddenReward.Greatness);
+            }
         }
 
         protected void ApplyStartBonus(StartBonus sb)

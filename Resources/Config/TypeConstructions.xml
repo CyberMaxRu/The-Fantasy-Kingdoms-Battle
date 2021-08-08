@@ -2338,6 +2338,9 @@
     <MaxHeroes>4</MaxHeroes>
     <RelationPlace>Enemy</RelationPlace>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
+    <HiddenReward>
+      <Gold>1000</Gold>
+    </HiddenReward>
   </TypeConstruction>
   <TypeConstruction>
     <ID>ThroneLightning</ID>

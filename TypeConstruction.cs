@@ -136,6 +136,8 @@ namespace Fantasy_Kingdoms_Battle
             // Информация о награде
             if (n.SelectSingleNode("Reward") != null)
                 TypeReward = new TypeReward(n.SelectSingleNode("Reward"));
+            if (n.SelectSingleNode("HiddenReward") != null)
+                HiddenReward = new TypeReward(n.SelectSingleNode("HiddenReward"));
 
             Debug.Assert(MaxHeroes < 50);
 
@@ -218,6 +220,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int MaxHeroes { get; }// Максимальное количество героев, которое может атаковать логово
         internal RelationPlace RelationPlace { get; }// Тип отношения к месту
         internal TypeReward TypeReward { get; }// Награда за зачистку логова
+        internal TypeReward HiddenReward { get; }// Скрытая награда за зачистку логова
         internal TypeConstruction TypePlaceForConstruct { get; private set; }// Тип сооружения, на котором строится сооружение
 
         internal void PlaySoundSelect()

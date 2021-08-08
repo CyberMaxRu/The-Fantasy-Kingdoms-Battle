@@ -788,6 +788,7 @@ namespace Fantasy_Kingdoms_Battle
 
             // Убираем себя из списка логов игрока
             Player.RemoveLair(this);
+            Player.ApplyReward(this);
             Destroyed = true;
 
             // Ставим тип места, который должен быть после зачистки
@@ -812,8 +813,7 @@ namespace Fantasy_Kingdoms_Battle
 
             // Убираем себя из списка логов игрока
             Player.RemoveLair(this);
-            Player.ApplyReward(this);
-
+    
             Destroyed = true;
         }
 
