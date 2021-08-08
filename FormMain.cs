@@ -1182,6 +1182,8 @@ namespace Fantasy_Kingdoms_Battle
                     labelGold.Visible = false;
                     labelGreatness.Visible = false;
                     MainControl.Visible = false;
+                    foreach (VCImageLose il in listBtnLoses)
+                        il.Visible = false;
                 }
 
                 ShowNamePlayer(lobby.CurrentPlayer.Player.Name);
