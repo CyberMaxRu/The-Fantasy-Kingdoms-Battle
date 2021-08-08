@@ -375,7 +375,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(!Destroyed);
 
-            if (TypeConstruction.IsInternalConstruction)
+            if (TypeConstruction.IsOurConstruction)
             {
                 Program.formMain.panelConstructionInfo.Visible = true;
                 Program.formMain.panelConstructionInfo.PlayerObject = this;
