@@ -97,6 +97,11 @@
             <MinQuantity>3</MinQuantity>
             <MaxQuantity>3</MaxQuantity>
           </TypeConstruction>
+          <TypeConstruction>
+            <ID>TradePlace</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
+          </TypeConstruction>
         </TypeConstructions>
       </Layer>
       <Layer>
