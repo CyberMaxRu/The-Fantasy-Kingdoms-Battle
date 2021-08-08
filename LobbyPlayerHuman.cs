@@ -31,7 +31,10 @@ namespace Fantasy_Kingdoms_Battle
             w.ShowDialog();
 
             if (Program.formMain.ProgramState != ProgramState.NeedQuit)
+            {
                 ApplyStartBonus(w.SelectedBonus);
+                Program.formMain.ShowFrame(true);// Чтобы обновились данные в тулбаре (золото, величие)
+            }
 
             w.Dispose();
         }
