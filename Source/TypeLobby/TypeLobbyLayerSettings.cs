@@ -26,9 +26,9 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(CostDefense <= 10_000);
 
             // Загружаем конфигурацию логов
-            XmlNode ne = n.SelectSingleNode("Lairs");
-            TypeLobbyLairSettings tlls;
-            foreach (XmlNode l in ne.SelectNodes("Lair"))
+            XmlNode ne = n.SelectSingleNode("TypeConstructions");
+            TypeLobbyLairSettings tlls; 
+            foreach (XmlNode l in ne.SelectNodes("TypeConstruction"))
             {
                 tlls = new TypeLobbyLairSettings(l);
 

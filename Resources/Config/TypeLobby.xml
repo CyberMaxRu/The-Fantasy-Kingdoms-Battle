@@ -75,110 +75,109 @@
         </Priority>
       </Defense>
     </CoefficientFlags>
-    <LairSettings>
+    <NeighborhoodSettings>
       <Layer>
         <Number>0</Number>
         <CostScout>100</CostScout>
         <CostAttack>250</CostAttack>
         <CostDefense>200</CostDefense>
-        <Lairs>
-          <Lair>
+        <TypeConstructions>
+          <TypeConstruction>
             <ID>HolyPlace</ID>
             <MinQuantity>1</MinQuantity>
             <MaxQuantity>1</MaxQuantity>
-          </Lair>
-          <Lair>
+          </TypeConstruction>
+          <TypeConstruction>
             <ID>Treasure</ID>
             <MinQuantity>1</MinQuantity>
             <MaxQuantity>1</MaxQuantity>
-          </Lair>
-          <Lair>
+          </TypeConstruction>
+          <TypeConstruction>
             <ID>PeasantHouse</ID>
             <MinQuantity>3</MinQuantity>
             <MaxQuantity>3</MaxQuantity>
-          </Lair>
-        </Lairs>
+          </TypeConstruction>
+        </TypeConstructions>
       </Layer>
       <Layer>
         <Number>1</Number>
         <CostScout>100</CostScout>
         <CostAttack>250</CostAttack>
         <CostDefense>200</CostDefense>
-        <Lairs>
-          <Lair>
+        <TypeConstructions>
+          <TypeConstruction>
             <ID>TradePlace</ID>
             <MinQuantity>1</MinQuantity>
             <MaxQuantity>1</MaxQuantity>
-          </Lair>
-          <Lair>
+          </TypeConstruction>
+          <TypeConstruction>
             <ID>Treasure</ID>
             <MinQuantity>1</MinQuantity>
             <MaxQuantity>1</MaxQuantity>
-          </Lair>
-          <Lair>
+          </TypeConstruction>
+          <TypeConstruction>
             <ID>GraveyardZombie</ID>
             <MinQuantity>1</MinQuantity>
             <MaxQuantity>10</MaxQuantity>
-          </Lair>
-          <Lair>
+          </TypeConstruction>
+          <TypeConstruction>
             <ID>HolyPlace</ID>
             <MinQuantity>1</MinQuantity>
             <MaxQuantity>1</MaxQuantity>
-          </Lair>
-          <Lair>
+          </TypeConstruction>
+          <TypeConstruction>
             <ID>EmptyPlace</ID>
             <MinQuantity>5</MinQuantity>
             <MaxQuantity>6</MaxQuantity>
-          </Lair>
-        </Lairs>
+          </TypeConstruction>
+        </TypeConstructions>
       </Layer>
       <Layer>
         <Number>2</Number>
         <CostScout>200</CostScout>
         <CostAttack>500</CostAttack>
         <CostDefense>250</CostDefense>
-        <Lairs>
-          <Lair>
+        <TypeConstructions>
+          <TypeConstruction>
             <ID>TradePlace</ID>
             <MinQuantity>5</MinQuantity>
             <MaxQuantity>15</MaxQuantity>
-          </Lair>
-          <Lair>
+          </TypeConstruction>
+          <TypeConstruction>
             <ID>Treasure</ID>
             <MinQuantity>5</MinQuantity>
             <MaxQuantity>15</MaxQuantity>
-          </Lair>
-          <Lair>
+          </TypeConstruction>
+          <TypeConstruction>
             <ID>GraveyardZombie</ID>
             <MinQuantity>1</MinQuantity>
             <MaxQuantity>10</MaxQuantity>
-          </Lair>
-        </Lairs>
+          </TypeConstruction>
+        </TypeConstructions>
       </Layer>
       <Layer>
         <Number>3</Number>
         <CostScout>400</CostScout>
         <CostAttack>1000</CostAttack>
         <CostDefense>500</CostDefense>
-        <Lairs>
-          <Lair>
+        <TypeConstructions>
+          <TypeConstruction>
             <ID>TradePlace</ID>
             <MinQuantity>1</MinQuantity>
             <MaxQuantity>3</MaxQuantity>s
-          </Lair>
-          <Lair>
+          </TypeConstruction>
+          <TypeConstruction>
             <ID>Treasure</ID>
             <MinQuantity>1</MinQuantity>
             <MaxQuantity>3</MaxQuantity>
-          </Lair>
-          <Lair>
+          </TypeConstruction>
+          <TypeConstruction>
             <ID>GraveyardZombie</ID>
             <MinQuantity>1</MinQuantity>
             <MaxQuantity>10</MaxQuantity>
-          </Lair>
-        </Lairs>
+          </TypeConstruction>
+        </TypeConstructions>
       </Layer>
-    </LairSettings>
-  
-</TypeLobby>
+    </NeighborhoodSettings>
+  </TypeLobby>
 </TypeLobbies>

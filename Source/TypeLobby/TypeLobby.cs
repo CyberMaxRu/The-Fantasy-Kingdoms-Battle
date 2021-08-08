@@ -79,7 +79,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Загружаем настройки логов
-            XmlNode nodeLairSettings = n.SelectSingleNode("LairSettings");
+            XmlNode nodeLairSettings = n.SelectSingleNode("NeighborhoodSettings");
             Debug.Assert(nodeLairSettings != null);
 
             LayerSettings = new TypeLobbyLayerSettings[LairsLayers];
