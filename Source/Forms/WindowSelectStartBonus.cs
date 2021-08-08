@@ -34,19 +34,19 @@ namespace Fantasy_Kingdoms_Battle
                 text.ShowBorder = true;
                 text.Click += Text_Click;
                 if (sb.Gold > 0)
-                    AddBonus(text, sb.Gold.ToString(), FormMain.GUI_16_GOLD);
+                    AddBonus(text, sb.Gold.ToString(), $"+{sb.Gold} золота", FormMain.GUI_16_GOLD);
                 if (sb.Greatness > 0)
-                    AddBonus(text, sb.Greatness.ToString(), FormMain.GUI_16_GREATNESS);
+                    AddBonus(text, sb.Greatness.ToString(), $"+{sb.Greatness} очков величия", FormMain.GUI_16_GREATNESS);
                 if (sb.Builders > 0)
-                    AddBonus(text, sb.Builders.ToString(), FormMain.GUI_16_BUILDER);
+                    AddBonus(text, sb.Builders.ToString(), $"+{sb.Builders} строителей (на 1 ход)", FormMain.GUI_16_BUILDER);
                 if (sb.PeasantHouse > 0)
-                    AddBonus(text, sb.PeasantHouse.ToString(), FormMain.GUI_16_PEASANT_HOUSE);
+                    AddBonus(text, sb.PeasantHouse.ToString(), $"+{sb.PeasantHouse} крестьянских домов", FormMain.GUI_16_PEASANT_HOUSE);
                 if (sb.HolyPlace > 0)
-                    AddBonus(text, sb.HolyPlace.ToString(), FormMain.GUI_16_HOLYLAND);
+                    AddBonus(text, sb.HolyPlace.ToString(), $"+{sb.HolyPlace} Святых земель", FormMain.GUI_16_HOLYLAND);
                 if (sb.TradePlace > 0)
-                    AddBonus(text, sb.TradePlace.ToString(), FormMain.GUI_16_TRADEPOST);
+                    AddBonus(text, sb.TradePlace.ToString(), $"+{sb.TradePlace} торговых мест", FormMain.GUI_16_TRADEPOST);
                 if (sb.Scouting > 0)
-                    AddBonus(text, sb.Scouting.ToString(), FormMain.GUI_16_SCOUT);
+                    AddBonus(text, sb.Scouting.ToString(), $"+{sb.Scouting} разведанных мест", FormMain.GUI_16_SCOUT);
 
                 text.Width = 160;
                 text.Height = 200;
@@ -65,7 +65,7 @@ namespace Fantasy_Kingdoms_Battle
             ClientControl.Width = nextLeft - FormMain.Config.GridSize;
             ClientControl.Height = btnOk.ShiftY + btnOk.Height;
 
-            void AddBonus(VisualControl parent, string text, int imageIndex)
+            void AddBonus(VisualControl parent, string text, string hint, int imageIndex)
             {
                 Debug.Assert(text != null);
 
@@ -75,6 +75,7 @@ namespace Fantasy_Kingdoms_Battle
                 label.ImageIndex = imageIndex;
                 label.Width = 120;
                 label.ClickOnParent = true;
+                label.Hint = hint;
                 nextTop = label.ShiftY + label.Height;
             }
         }
