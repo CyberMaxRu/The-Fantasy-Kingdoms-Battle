@@ -1725,7 +1725,8 @@ namespace Fantasy_Kingdoms_Battle
                     throw new Exception($"Неизвестное действие: {dr}.");
             }
 
-            ShowFrame(true);
+            if (ProgramState != ProgramState.NeedQuit)
+                ShowFrame(true);
         }
 
         protected override void OnKeyPress(KeyPressEventArgs e)
