@@ -62,7 +62,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnBuyOrUpgrade_ShowHint(object sender, EventArgs e)
         {
-            Construction.PrepareHintForBuyOrUpgrade();
+            Construction.PrepareHintForBuildOrUpgrade();
         }
 
         private void BtnHireHero_Click(object sender, EventArgs e)

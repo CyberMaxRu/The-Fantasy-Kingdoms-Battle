@@ -893,7 +893,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void PrepareHintForBuyOrUpgrade()
+        internal void PrepareHintForBuildOrUpgrade()
         {
             Debug.Assert(Level < TypeConstruction.MaxLevel);
 

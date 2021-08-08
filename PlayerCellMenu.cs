@@ -75,7 +75,7 @@ namespace Fantasy_Kingdoms_Battle
             else
             {
                 if (ConstructionForBuild != null)
-                    ConstructionForBuild.PrepareHintForBuyOrUpgrade();
+                    ConstructionForBuild.PrepareHintForBuildOrUpgrade();
                 else
                     Player.PrepareHintForBuildTypeConstruction(Research.TypeConstruction);
             }
