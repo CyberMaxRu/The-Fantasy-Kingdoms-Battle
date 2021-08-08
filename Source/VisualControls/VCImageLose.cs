@@ -25,7 +25,11 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override bool PrepareHint()
         {
-            if (!(Info is null))
+            if (Info is null)
+            {
+                Program.formMain.formHint.AddHeader("Поражения нет");
+            }
+            else
             {
                 Program.formMain.formHint.AddStep1Header($"Поражение от: {Info.Opponent.GetName()}", "", $"День: {Info.Day}");
             }
