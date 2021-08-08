@@ -915,6 +915,18 @@ namespace Fantasy_Kingdoms_Battle
                 Program.formMain.formHint.AddStep3Requirement(GetTextRequirementsHire());
             Program.formMain.formHint.AddStep4Gold(TypeConstruction.TrainedHero.Cost, Player.Gold >= TypeConstruction.TrainedHero.Cost);
         }
+        internal void PrepareHintForInhabitantCreatures()
+        {
+            Debug.Assert(Heroes.Count > 0);
+
+            string list = "";
+            foreach (PlayerHero h in Heroes)
+            {
+                list += (list != "" ? Environment.NewLine : "") + $"{h.GetNameHero()}, {h.Level} ур.";
+            }
+
+            Program.formMain.formHint.AddStep1Header(TypeConstruction.IsOurConstruction ? "Жители" : "Существа", "", list);
+        }
 
         BitmapList ICell.BitmapList() => Program.formMain.imListObjectsCell;
         int ICell.ImageIndex() => ImageIndexLair();

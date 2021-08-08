@@ -21,6 +21,7 @@ namespace Fantasy_Kingdoms_Battle
         public PanelConstruction(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
             btnHeroes = new VCIconButton(this, imgMapObject.ShiftX, imgMapObject.ShiftY, Program.formMain.ilGui, FormMain.GUI_HOME);
+            btnHeroes.ShowHint += BtnHeroes_ShowHint;
 
             btnHireHero = new VCIconButton(this, imgMapObject.NextLeft(), btnHeroes.NextTop() + FormMain.Config.GridSize + FormMain.Config.GridSizeHalf, Program.formMain.imListObjectsCell, -1);
             btnHireHero.Click += BtnHireHero_Click;
@@ -51,6 +52,10 @@ namespace Fantasy_Kingdoms_Battle
         internal PlayerConstruction Construction { get => PlayerObject as PlayerConstruction; }
         internal TypeConstruction TypeConstruction { get => Construction.TypeConstruction; }
 
+        private void BtnHeroes_ShowHint(object sender, EventArgs e)
+        {
+            Construction.PrepareHintForInhabitantCreatures();
+        }
 
         private void BtnHireHero_ShowHint(object sender, EventArgs e)
         {

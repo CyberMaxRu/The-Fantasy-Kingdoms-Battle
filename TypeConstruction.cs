@@ -24,6 +24,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Category = (CategoryConstruction)Enum.Parse(typeof(CategoryConstruction), n.SelectSingleNode("Category").InnerText);
             IsInternalConstruction = (Category == CategoryConstruction.Guild) || (Category == CategoryConstruction.Economic) || (Category == CategoryConstruction.Temple) || (Category == CategoryConstruction.Military);
+            IsOurConstruction = IsInternalConstruction || (Category == CategoryConstruction.External);
             if (n.SelectSingleNode("Page") != null)
                 Page = (Page)Enum.Parse(typeof(Page), n.SelectSingleNode("Page").InnerText);
             else
@@ -196,6 +197,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal CategoryConstruction Category { get; }
         internal bool IsInternalConstruction { get; }// Это внутреннее сооружение
+        internal bool IsOurConstruction { get; }// Это сооружение, относящееся к Королевству
         internal Page Page { get; }
         internal int Line { get; }// Линия сооружения 
         internal int Pos { get; }// Позиция сооружения в линии
