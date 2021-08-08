@@ -118,7 +118,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCPageButton pageLairs;
         private readonly VCPageButton pageTournament;
 
-        private readonly PanelLair[,] panelLairs;
+        private readonly PanelConstruction[,] panelLairs;
         private PanelWithPanelEntity panelWarehouse;
         private PanelWithPanelEntity panelHeroes;
         private PanelWithPanelEntity panelCombatHeroes;
@@ -676,7 +676,7 @@ namespace Fantasy_Kingdoms_Battle
                 DrawPageConstructions();
                 DrawHeroes();
                 DrawWarehouse();
-                panelLairs = new PanelLair[Config.TypeLobbies[0].LairsHeight, Config.TypeLobbies[0].LairsWidth];
+                panelLairs = new PanelConstruction[Config.TypeLobbies[0].LairsHeight, Config.TypeLobbies[0].LairsWidth];
                 DrawPageLair();
                 DrawPageTournament();
 
@@ -1249,7 +1249,7 @@ namespace Fantasy_Kingdoms_Battle
             // Показываем сооружения
             foreach (PlayerConstruction pb in lobby.CurrentPlayer.Constructions)
             {
-                pb.TypeConstruction.Panel.LinkToPlayer(pb);
+                pb.TypeConstruction.Panel.PlayerObject = pb;
             }
 
             // Показываем логова
@@ -1339,7 +1339,7 @@ namespace Fantasy_Kingdoms_Battle
                 for (int x = 0; x < Config.TypeLobbies[0].LairsWidth; x++)
                 {
                     Debug.Assert(panelLairs[y, x] == null);
-                    panelLairs[y, x] = new PanelLair(pageLairs.Page, left, top);
+                    panelLairs[y, x] = new PanelConstruction(pageLairs.Page, left, top);
 
                     left += panelLairs[y, x].Width + Config.GridSize;
                     height = panelLairs[y, x].Height;

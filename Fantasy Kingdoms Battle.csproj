@@ -94,7 +94,7 @@
     <Compile Include="Source\Forms\WindowSelectStartBonus.cs" />
     <Compile Include="Source\Lobby\BattlesPlayers.cs" />
     <Compile Include="Source\Panels\PanelHint.cs" />
-    <Compile Include="Source\Panels\PanelMapObject.cs" />
+    <Compile Include="Source\Panels\PanelConstruction.cs" />
     <Compile Include="Source\Panels\PanelPlayer.cs" />
     <Compile Include="Source\TypeLobby\StartBonus.cs" />
     <Compile Include="Source\TypeLobby\TypeLobbyLayerSettings.cs" />
@@ -126,7 +126,6 @@
     <Compile Include="TypeConstruction.cs" />
     <Compile Include="TypeMonster.cs" />
     <Compile Include="TypeObject.cs" />
-    <Compile Include="PanelLair.cs" />
     <Compile Include="PanelLairInfo.cs" />
     <Compile Include="KindCreature.cs" />
     <Compile Include="TypeCreature.cs" />
@@ -158,7 +157,6 @@
     <Compile Include="Source\TypeLobby\TypeLobby.cs" />
     <Compile Include="Level.cs" />
     <Compile Include="Lobby.cs" />
-    <Compile Include="PanelConstruction.cs" />
     <Compile Include="PanelHeroInfo.cs" />
     <Compile Include="HeroParameters.cs" />
     <Compile Include="PlayerConstruction.cs" />
