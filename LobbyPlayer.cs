@@ -69,7 +69,7 @@ namespace Fantasy_Kingdoms_Battle
             foreach (TypeConstruction tck in FormMain.Config.TypeConstructions)
             {
                 if (tck.IsInternalConstruction)
-                    Constructions.Add(new PlayerConstruction(this, tck));
+                    new PlayerConstruction(this, tck);
             }
 
             // Инициализация логов

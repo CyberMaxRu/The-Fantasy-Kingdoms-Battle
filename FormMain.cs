@@ -1249,7 +1249,8 @@ namespace Fantasy_Kingdoms_Battle
             // Показываем сооружения
             foreach (PlayerConstruction pb in lobby.CurrentPlayer.Constructions)
             {
-                pb.TypeConstruction.Panel.PlayerObject = pb;
+                if (pb.TypeConstruction.IsInternalConstruction)
+                    pb.TypeConstruction.Panel.PlayerObject = pb;
             }
 
             // Показываем логова

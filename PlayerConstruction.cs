@@ -38,7 +38,8 @@ namespace Fantasy_Kingdoms_Battle
             if (TypeConstruction.Monsters.Count > 0)
                 CreateMonsters();
 
-            // Восстановить
+            p.Constructions.Add(this);
+                // Восстановить
             //if (Construction.HasTreasury)
             //    Gold = Construction.GoldByConstruction;
         }
@@ -75,6 +76,8 @@ namespace Fantasy_Kingdoms_Battle
             // Убрать эту проверку после настройки всех логов
             if (TypeConstruction.Monsters.Count > 0)
                 CreateMonsters();
+
+            p.Constructions.Add(this);
         }
 
         internal TypeConstruction TypeConstruction { get; }
