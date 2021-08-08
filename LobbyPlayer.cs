@@ -41,6 +41,8 @@ namespace Fantasy_Kingdoms_Battle
             PlayerIndex = playerIndex;
             PositionInLobby = playerIndex + 1;
 
+            Initialization = true;
+
             // Создаем справочик количества приоритетов флагов
             foreach (PriorityExecution pe in Enum.GetValues(typeof(PriorityExecution)))
             {
@@ -151,11 +153,17 @@ namespace Fantasy_Kingdoms_Battle
                     return sb;
                 }
             }
+
+            Initialization = false;
         }
 
         internal virtual void PrepareTurn()
         {
             UpdateBuildersNextDay();
+
+            foreach (PlayerConstruction pc in Constructions)
+                if (pc.Level > 0)
+                    pc.PrepareTurn();
 
             Builders = BuildersAtNextDay;
             if (Lobby.Day == 1)
@@ -354,6 +362,7 @@ namespace Fantasy_Kingdoms_Battle
         internal Player Player { get; }
         internal int PlayerIndex { get; }
         internal int PositionInLobby { get; set; }
+        internal bool Initialization { get; }
         internal int LevelGreatness { get; }// Уровень величия
         internal int PointGreatness { get; private set; }// Очков величия
         internal int PointGreatnessForNextLevel { get; }// Очков величия до следующего уровня

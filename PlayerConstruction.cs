@@ -39,7 +39,7 @@ namespace Fantasy_Kingdoms_Battle
                 CreateMonsters();
 
             p.Constructions.Add(this);
-                // Восстановить
+            // Восстановить
             //if (Construction.HasTreasury)
             //    Gold = Construction.GoldByConstruction;
         }
@@ -82,6 +82,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal TypeConstruction TypeConstruction { get; }
         internal int Level { get; private set; }
+        internal bool BuildedOrUpgraded { get; private set; }
         internal int Gold { get => gold; set { Debug.Assert(TypeConstruction.HasTreasury); gold = value; } }
         internal List<PlayerHero> Heroes { get; } = new List<PlayerHero>();
         internal int ResearchesAvailabled { get; private set; }// Сколько еще исследований доступно на этом ходу
@@ -152,11 +153,14 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Level == 0);
             Debug.Assert(CheckRequirements());
             Debug.Assert(Player.Gold >= CostBuyOrUpgrade());
+            Debug.Assert(!BuildedOrUpgraded);
 
             Player.Constructed(this);
             Level++;
             ValidateHeroes();
             PrepareTurn();
+            if (!Player.Initialization)
+                BuildedOrUpgraded = true;
         }
 
         internal void Upgrade()
@@ -164,9 +168,12 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Level < TypeConstruction.MaxLevel);
             Debug.Assert(CheckRequirements());
             Debug.Assert(Player.Gold >= CostBuyOrUpgrade());
+            Debug.Assert(!BuildedOrUpgraded);
 
             Player.Constructed(this);
             Level++;
+            if (!Player.Initialization)
+                BuildedOrUpgraded = true;
         }
 
         internal void ValidateHeroes()
@@ -204,6 +211,10 @@ namespace Fantasy_Kingdoms_Battle
             if (TypeConstruction.Levels[Level + 1].Builders > Player.FreeBuilders)
                 return false;
 
+            // Проверяем, что на этом ходу сооружение не строили/улучшали
+            if (BuildedOrUpgraded)
+                return false;
+
             // Проверяем требования к зданиям
             return Player.CheckRequirements(TypeConstruction.Levels[Level + 1].Requirements);
         }
@@ -216,6 +227,9 @@ namespace Fantasy_Kingdoms_Battle
             List<TextRequirement> list = new List<TextRequirement>();
 
             Player.TextRequirements(TypeConstruction.Levels[Level + 1].Requirements, list);
+
+            if (BuildedOrUpgraded)
+                list.Add(new TextRequirement(false, "Сооружение уже строили/улучшали в этот день"));
 
             return list;
         }
@@ -402,6 +416,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Level > 0);
 
             ResearchesAvailabled = TypeConstruction.ResearchesPerDay;
+            BuildedOrUpgraded = false;
         }
 
         internal void AfterEndTurn()
