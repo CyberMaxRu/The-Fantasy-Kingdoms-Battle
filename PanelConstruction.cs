@@ -13,7 +13,7 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class PanelConstruction : PanelMapObject
     {
         private readonly VCIconButton btnHeroes;
-        private readonly VCIconButton btnBuyOrUpgrade;
+        private readonly VCIconButton btnBuildOrUpgrade;
         private readonly VCIconButton btnHireHero;
         private readonly VCLabelValue lblIncome;
         private readonly VCLabelValue lblGreatness;
@@ -27,9 +27,9 @@ namespace Fantasy_Kingdoms_Battle
             btnHireHero.Click += BtnHireHero_Click;
             btnHireHero.ShowHint += BtnHireHero_ShowHint;
 
-            btnBuyOrUpgrade = new VCIconButton(this, imgMapObject.NextLeft(), imgMapObject.NextTop(), Program.formMain.ilGui, FormMain.GUI_BUILD);
-            btnBuyOrUpgrade.Click += BtnBuyOrUprgade_Click;
-            btnBuyOrUpgrade.ShowHint += BtnBuyOrUpgrade_ShowHint;
+            btnBuildOrUpgrade = new VCIconButton(this, imgMapObject.NextLeft(), imgMapObject.NextTop(), Program.formMain.ilGui, FormMain.GUI_BUILD);
+            btnBuildOrUpgrade.Click += BtnBuildOrUprgade_Click;
+            btnBuildOrUpgrade.ShowHint += BtnBuildOrUpgrade_ShowHint;
 
             lblIncome = new VCLabelValue(this, FormMain.Config.GridSize, imgMapObject.NextTop(), Color.Green, true);
             lblIncome.Width = imgMapObject.Width;
@@ -42,8 +42,8 @@ namespace Fantasy_Kingdoms_Battle
             lblGreatness.StringFormat.Alignment = StringAlignment.Near;
             lblGreatness.Color = FormMain.Config.HintIncome;
 
-            Height = btnBuyOrUpgrade.NextTop();
-            Width = btnBuyOrUpgrade.NextLeft();
+            Height = btnBuildOrUpgrade.NextTop();
+            Width = btnBuildOrUpgrade.NextLeft();
             lblNameMapObject.Width = Width - (lblNameMapObject.ShiftX * 2);
 
             btnHeroes.ShiftX = Width - btnHeroes.Width - FormMain.Config.GridSize;
@@ -61,7 +61,7 @@ namespace Fantasy_Kingdoms_Battle
             Construction.PrepareHintForHireHero();
         }
 
-        private void BtnBuyOrUpgrade_ShowHint(object sender, EventArgs e)
+        private void BtnBuildOrUpgrade_ShowHint(object sender, EventArgs e)
         {
             Construction.PrepareHintForBuildOrUpgrade();
         }
@@ -87,7 +87,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        private void BtnBuyOrUprgade_Click(object sender, EventArgs e)
+        private void BtnBuildOrUprgade_Click(object sender, EventArgs e)
         {
             Debug.Assert(Construction.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
 
@@ -152,23 +152,23 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (Construction.CanLevelUp())
                 {
-                    btnBuyOrUpgrade.Visible = true;
-                    btnBuyOrUpgrade.Cost = Construction.CostBuyOrUpgrade().ToString();
-                    btnBuyOrUpgrade.ImageIndex = FormMain.GUI_LEVELUP;
-                    btnBuyOrUpgrade.ImageIsEnabled = Construction.CheckRequirements();
+                    btnBuildOrUpgrade.Visible = true;
+                    btnBuildOrUpgrade.Cost = Construction.CostBuyOrUpgrade().ToString();
+                    btnBuildOrUpgrade.ImageIndex = FormMain.GUI_LEVELUP;
+                    btnBuildOrUpgrade.ImageIsEnabled = Construction.CheckRequirements();
                 }
                 else
                 {
-                    btnBuyOrUpgrade.Visible = false;
+                    btnBuildOrUpgrade.Visible = false;
                 }
             }
             else
             {
-                btnBuyOrUpgrade.Visible = Construction.TypeConstruction.Category != CategoryConstruction.Temple;
-                if (btnBuyOrUpgrade.Visible)
+                btnBuildOrUpgrade.Visible = Construction.TypeConstruction.Category != CategoryConstruction.Temple;
+                if (btnBuildOrUpgrade.Visible)
                 {
-                    btnBuyOrUpgrade.Cost = Construction.CostBuyOrUpgrade().ToString();
-                    btnBuyOrUpgrade.ImageIsEnabled = Construction.CheckRequirements();
+                    btnBuildOrUpgrade.Cost = Construction.CostBuyOrUpgrade().ToString();
+                    btnBuildOrUpgrade.ImageIsEnabled = Construction.CheckRequirements();
                 }
             }
 
