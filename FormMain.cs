@@ -885,7 +885,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             formHint.AddStep1Header("Турнир", "",
                 lobby.DaysLeftForBattle > 0 ? "Битва с другим игроком начнется через " + lobby.DaysLeftForBattle.ToString() + " дн." : 
-                    curAppliedPlayer.SkipBattle ? "Битва пропускается" : "Битва с другим игроком сегодня");
+                    curAppliedPlayer.SkipBattle ? "Битва пропускается" : "Сегодня битва с другим игроком");
         }
 
         private void LabelGold_ShowHint(object sender, EventArgs e)
