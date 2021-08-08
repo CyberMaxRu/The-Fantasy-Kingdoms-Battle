@@ -157,29 +157,34 @@ namespace Fantasy_Kingdoms_Battle
                     lblGreatness.Color = FormMain.Config.ColorGreatness(Construction.Level > 0);
                 }
 
-                if (Construction.Level > 0)
+                if (Construction.TypeConstruction.PlayerCanBuild)
                 {
-                    if (Construction.CanLevelUp())
+                    if (Construction.Level > 0)
                     {
-                        btnBuildOrUpgrade.Visible = true;
-                        btnBuildOrUpgrade.Cost = Construction.CostBuyOrUpgrade().ToString();
-                        btnBuildOrUpgrade.ImageIndex = FormMain.GUI_LEVELUP;
-                        btnBuildOrUpgrade.ImageIsEnabled = Construction.CheckRequirements();
+                        if (Construction.CanLevelUp())
+                        {
+                            btnBuildOrUpgrade.Visible = true;
+                            btnBuildOrUpgrade.Cost = Construction.CostBuyOrUpgrade().ToString();
+                            btnBuildOrUpgrade.ImageIndex = FormMain.GUI_LEVELUP;
+                            btnBuildOrUpgrade.ImageIsEnabled = Construction.CheckRequirements();
+                        }
+                        else
+                        {
+                            btnBuildOrUpgrade.Visible = false;
+                        }
                     }
                     else
                     {
-                        btnBuildOrUpgrade.Visible = false;
+                        btnBuildOrUpgrade.Visible = Construction.TypeConstruction.Category != CategoryConstruction.Temple;
+                        if (btnBuildOrUpgrade.Visible)
+                        {
+                            btnBuildOrUpgrade.Cost = Construction.CostBuyOrUpgrade().ToString();
+                            btnBuildOrUpgrade.ImageIsEnabled = Construction.CheckRequirements();
+                        }
                     }
                 }
                 else
-                {
-                    btnBuildOrUpgrade.Visible = Construction.TypeConstruction.Category != CategoryConstruction.Temple;
-                    if (btnBuildOrUpgrade.Visible)
-                    {
-                        btnBuildOrUpgrade.Cost = Construction.CostBuyOrUpgrade().ToString();
-                        btnBuildOrUpgrade.ImageIsEnabled = Construction.CheckRequirements();
-                    }
-                }
+                    btnBuildOrUpgrade.Visible = false;
 
                 if ((Construction.TypeConstruction.TrainedHero != null) && (Construction.TypeConstruction.Category != CategoryConstruction.Economic))
                 {

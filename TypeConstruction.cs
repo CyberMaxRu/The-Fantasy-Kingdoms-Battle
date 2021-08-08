@@ -36,6 +36,7 @@ namespace Fantasy_Kingdoms_Battle
             DefaultLevel = XmlUtils.GetInteger(n.SelectSingleNode("DefaultLevel"));
             MaxLevel = XmlUtils.GetInteger(n.SelectSingleNode("MaxLevel"));
             ResearchesPerDay = XmlUtils.GetInteger(n.SelectSingleNode("ResearchesPerDay"));
+            PlayerCanBuild = XmlUtils.GetBool(n.SelectSingleNode("PlayerCanBuild"), true);
 
             // Проверяем, что таких же ID и наименования нет
             foreach (TypeConstruction tec in FormMain.Config.TypeConstructions)
@@ -204,6 +205,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int DefaultLevel { get; }
         internal int MaxLevel { get; }
         internal Level[] Levels;
+        internal bool PlayerCanBuild { get; }
         internal int ResearchesPerDay { get; }
         internal PanelConstruction Panel { get; set; }
         internal bool HasTreasury { get; }// Имеет собственную казну
