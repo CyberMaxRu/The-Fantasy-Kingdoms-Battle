@@ -136,6 +136,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     PlayerConstruction pc = new PlayerConstruction(Player, research.Research.TypeConstruction, research.ObjectOfMap.X, research.ObjectOfMap.Y, research.ObjectOfMap.Layer);
                     Player.Lairs[pc.Layer, pc.Y, pc.X] = pc;
+                    Program.formMain.SelectPlayerObject(pc);
                 }
 
                 if (Player.GetTypePlayer() == TypePlayer.Human)
