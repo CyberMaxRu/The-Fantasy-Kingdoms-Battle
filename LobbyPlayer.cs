@@ -26,6 +26,7 @@ namespace Fantasy_Kingdoms_Battle
     internal abstract class LobbyPlayer : BattleParticipant, ICell
     {
         private PlayerConstruction Castle;
+        private int gold;
 
         private bool startBonusApplied = false;
 
@@ -78,11 +79,12 @@ namespace Fantasy_Kingdoms_Battle
             ScoutRandomLair(lobby.TypeLobby.StartScoutedLairs);
 
             //
+            Gold = Lobby.TypeLobby.Gold;
+            if (Player.TypePlayer == TypePlayer.Computer)
+                Gold = 100_000;
 
             Castle = GetPlayerConstruction(FormMain.Config.FindTypeConstruction(FormMain.Config.IDConstructionCastle));
-            Castle.Gold = Lobby.TypeLobby.Gold;
-            if (Player.TypePlayer == TypePlayer.Computer)
-                Castle.Gold = 100_000;
+            Castle.Gold = Gold;
 
             LevelGreatness = 1;
             PointGreatnessForNextLevel = 100;
@@ -356,8 +358,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<PlayerConstruction> Constructions { get; } = new List<PlayerConstruction>();
         internal int LevelCastle => Castle.Level;
         internal List<PlayerHero> AllHeroes { get; } = new List<PlayerHero>();
-        internal int Gold { get => Castle.Gold; }
-
+        internal int Gold { get => gold; private set { gold = value; if (Castle != null) Castle.Gold = gold; } }// Текущее количество золота
         internal int GoldCollected { get; private set; }// Собрано золота за игру
         internal int GreatnessCollected { get; private set; }// Собрано величия за игру
 
@@ -953,10 +954,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void SpendGold(int gold)
         {
-            Debug.Assert(gold > 0);
+            Debug.Assert(gold >= 0);
             Debug.Assert(Gold >= gold);
 
-            Castle.Gold -= gold;
+            Gold -= gold;
         }
 
         internal void ReturnGold(int gold)
@@ -964,7 +965,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Gold > 0);
             Debug.Assert(gold >= 0);
 
-            Castle.Gold += gold;
+            Gold += gold;
         }
 
         internal void IncomeGold(int gold)
@@ -972,7 +973,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Gold > 0);
             Debug.Assert(gold >= 0);
 
-            Castle.Gold += gold;
+            Gold += gold;
             GoldCollected += gold;
         }
 
