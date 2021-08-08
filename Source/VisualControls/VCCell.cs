@@ -60,7 +60,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.DoClick();
 
-            cell?.Click(this);
+            if (AllowClick())
+                cell?.Click(this);
         }
 
         internal void ShowCell(ICell c)

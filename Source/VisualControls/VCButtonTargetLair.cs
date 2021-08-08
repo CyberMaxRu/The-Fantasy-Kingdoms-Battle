@@ -29,6 +29,11 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        protected override bool AllowClick()
+        {
+            return base.AllowClick() && (Lair != null) && (Lair.TypeFlag != TypeFlag.Battle);
+        }
+
         internal override bool PrepareHint()
         {
             if (Lair is null)
