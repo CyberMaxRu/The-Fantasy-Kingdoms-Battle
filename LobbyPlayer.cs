@@ -903,7 +903,7 @@ namespace Fantasy_Kingdoms_Battle
             CreateExternalConstructions(FormMain.Config.FindTypeConstruction(FormMain.Config.IDPeasantHouse), 0, sb.PeasantHouse);
             CreateExternalConstructions(FormMain.Config.FindTypeConstruction(FormMain.Config.IDHolyPlace), 0, sb.HolyPlace);
             CreateExternalConstructions(FormMain.Config.FindTypeConstruction(FormMain.Config.IDTradePlace), 0, sb.TradePlace);
-            ScoutRandomLair(sb.ScoutPlace);
+            ScoutRandomLair(sb.Scouting);
 
             startBonusApplied = true;
         }

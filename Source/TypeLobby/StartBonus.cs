@@ -20,7 +20,7 @@ namespace Fantasy_Kingdoms_Battle
             Gold = XmlUtils.GetInteger(n.SelectSingleNode("Gold"));
             Greatness = XmlUtils.GetInteger(n.SelectSingleNode("Greatness"));
             Builders = XmlUtils.GetInteger(n.SelectSingleNode("Builders"));
-            ScoutPlace = XmlUtils.GetInteger(n.SelectSingleNode("ScoutPlace"));
+            Scouting = XmlUtils.GetInteger(n.SelectSingleNode("Scouting"));
             PeasantHouse = XmlUtils.GetInteger(n.SelectSingleNode("PeasantHouse"));
             HolyPlace = XmlUtils.GetInteger(n.SelectSingleNode("HolyPlace"));
             TradePlace = XmlUtils.GetInteger(n.SelectSingleNode("TradePlace"));
@@ -34,8 +34,8 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Greatness <= 10000);
             Debug.Assert(Builders >= 0);
             Debug.Assert(Builders <= 10);
-            Debug.Assert(ScoutPlace >= 0);
-            Debug.Assert(ScoutPlace <= 10);
+            Debug.Assert(Scouting >= 0);
+            Debug.Assert(Scouting <= 10);
             Debug.Assert(PeasantHouse >= 0);
             Debug.Assert(PeasantHouse <= 5);
             Debug.Assert(HolyPlace >= 0);
@@ -51,7 +51,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int Gold { get; private set; }
         internal int Greatness { get; private set; }
         internal int Builders { get; private set; }
-        internal int ScoutPlace { get; private set; }
+        internal int Scouting { get; private set; }
         internal int PeasantHouse { get; private set; }
         internal int HolyPlace { get; private set; }
         internal int TradePlace { get; private set; }
@@ -64,7 +64,7 @@ namespace Fantasy_Kingdoms_Battle
             Gold += sb.Gold;
             Greatness += sb.Greatness;
             Builders += sb.Builders;
-            ScoutPlace += sb.ScoutPlace;
+            Scouting += sb.Scouting;
             PeasantHouse += sb.PeasantHouse;
             HolyPlace += sb.HolyPlace;
             TradePlace += sb.TradePlace;
@@ -83,7 +83,7 @@ namespace Fantasy_Kingdoms_Battle
 
             return (Gold == otherStartBonus.Gold) 
                 && (Greatness == otherStartBonus.Greatness)
-                && (ScoutPlace == otherStartBonus.ScoutPlace)
+                && (Scouting == otherStartBonus.Scouting)
                 && (PeasantHouse == otherStartBonus.PeasantHouse)
                 && (HolyPlace == otherStartBonus.HolyPlace)
                 && (TradePlace == otherStartBonus.TradePlace)

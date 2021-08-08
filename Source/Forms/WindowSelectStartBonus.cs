@@ -45,8 +45,8 @@ namespace Fantasy_Kingdoms_Battle
                     AddBonus(text, sb.HolyPlace.ToString(), FormMain.GUI_16_HOLYLAND);
                 if (sb.TradePlace > 0)
                     AddBonus(text, sb.TradePlace.ToString(), FormMain.GUI_16_TRADEPOST);
-                if (sb.ScoutPlace > 0)
-                    AddBonus(text, sb.ScoutPlace.ToString(), FormMain.GUI_16_SCOUT);
+                if (sb.Scouting > 0)
+                    AddBonus(text, sb.Scouting.ToString(), FormMain.GUI_16_SCOUT);
 
                 text.Width = 160;
                 text.Height = 200;

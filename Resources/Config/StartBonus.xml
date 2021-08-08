@@ -7,7 +7,7 @@
     <PeasantHouse>0</PeasantHouse>
     <HolyPlace>0</HolyPlace>
     <TradePlace>0</TradePlace>
-    <ScoutPlace>0</ScoutPlace>
+    <Scouting>0</Scouting>
     <Points>1</Points>
     <MaxQuantity>-1</MaxQuantity>
   </StartBonus>
@@ -18,7 +18,7 @@
     <PeasantHouse>0</PeasantHouse>
     <HolyPlace>0</HolyPlace>
     <TradePlace>0</TradePlace>
-    <ScoutPlace>0</ScoutPlace>
+    <Scouting>0</Scouting>
     <Points>1</Points>
     <MaxQuantity>-1</MaxQuantity>
   </StartBonus>
@@ -29,7 +29,7 @@
     <PeasantHouse>0</PeasantHouse>
     <HolyPlace>0</HolyPlace>
     <TradePlace>0</TradePlace>
-    <ScoutPlace>0</ScoutPlace>
+    <Scouting>0</Scouting>
     <Points>2</Points>
     <MaxQuantity>3</MaxQuantity>
   </StartBonus>
@@ -40,7 +40,7 @@
     <PeasantHouse>0</PeasantHouse>
     <HolyPlace>0</HolyPlace>
     <TradePlace>0</TradePlace>
-    <ScoutPlace>0</ScoutPlace>
+    <Scouting>0</Scouting>
     <Points>1</Points>
     <MaxQuantity>-1</MaxQuantity>
   </StartBonus>
@@ -51,7 +51,7 @@
     <PeasantHouse>0</PeasantHouse>
     <HolyPlace>0</HolyPlace>
     <TradePlace>0</TradePlace>
-    <ScoutPlace>2</ScoutPlace>
+    <Scouting>2</Scouting>
     <Points>1</Points>
     <MaxQuantity>3</MaxQuantity>
   </StartBonus>
@@ -62,7 +62,7 @@
     <PeasantHouse>0</PeasantHouse>
     <HolyPlace>1</HolyPlace>
     <TradePlace>0</TradePlace>
-    <ScoutPlace>0</ScoutPlace>
+    <Scouting>0</Scouting>
     <Points>3</Points>
     <MaxQuantity>1</MaxQuantity>
   </StartBonus>
@@ -73,7 +73,7 @@
     <PeasantHouse>0</PeasantHouse>
     <HolyPlace>0</HolyPlace>
     <TradePlace>1</TradePlace>
-    <ScoutPlace>0</ScoutPlace>
+    <Scouting>0</Scouting>
     <Points>2</Points>
     <MaxQuantity>2</MaxQuantity>
   </StartBonus>
@@ -84,7 +84,7 @@
     <PeasantHouse>1</PeasantHouse>
     <HolyPlace>0</HolyPlace>
     <TradePlace>0</TradePlace>
-    <ScoutPlace>0</ScoutPlace>
+    <Scouting>0</Scouting>
     <Points>2</Points>
     <MaxQuantity>2</MaxQuantity>
   </StartBonus>
