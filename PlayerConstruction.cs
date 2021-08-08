@@ -328,7 +328,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (TypeConstruction.IsInternalConstruction)
             {
-                Program.formMain.formHint.AddStep1Header(TypeConstruction.Name, Level > 0 ? (TypeConstruction.LevelAsQuantity ? "Количество: " : "Уровень ") + Level.ToString() : "", TypeConstruction.Description + ((Level > 0) && (TypeConstruction.TrainedHero != null) ? Environment.NewLine + Environment.NewLine
+                Program.formMain.formHint.AddStep1Header(TypeConstruction.Name, Level > 0 ? "Уровень " + Level.ToString() : "", TypeConstruction.Description + ((Level > 0) && (TypeConstruction.TrainedHero != null) ? Environment.NewLine + Environment.NewLine
                     + (!(TypeConstruction.TrainedHero is null) ? "Героев: " + Heroes.Count.ToString() + "/" + MaxHeroes().ToString() : "") : ""));
                 Program.formMain.formHint.AddStep2Income(Income());
                 Program.formMain.formHint.AddStep3Greatness(0, GreatnessPerDay());
@@ -872,11 +872,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(Level < TypeConstruction.MaxLevel);
 
-            if (TypeConstruction.LevelAsQuantity)
-                Program.formMain.formHint.AddStep1Header(TypeConstruction.Name, "Построить сооружение", Level == 0 ? TypeConstruction.Description : "");
-            else
-                Program.formMain.formHint.AddStep1Header(TypeConstruction.Name, Level == 0 ? "Уровень 1" : (CanLevelUp() == true) ? "Улучшить строение" : "", Level == 0 ? TypeConstruction.Description : "");
-
+            Program.formMain.formHint.AddStep1Header(TypeConstruction.Name, Level == 0 ? "Уровень 1" : (CanLevelUp() == true) ? "Улучшить строение" : "", Level == 0 ? TypeConstruction.Description : "");
             Program.formMain.formHint.AddStep2Income(IncomeNextLevel());
             Program.formMain.formHint.AddStep3Greatness(GreatnessAddNextLevel(), GreatnessPerDayNextLevel());
             Program.formMain.formHint.AddStep35PlusBuilders(BuildersPerDayNextLevel());

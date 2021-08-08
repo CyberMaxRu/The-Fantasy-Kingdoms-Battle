@@ -36,7 +36,6 @@ namespace Fantasy_Kingdoms_Battle
             GoldByConstruction = XmlUtils.GetInteger(n.SelectSingleNode("GoldByConstruction"));
             DefaultLevel = XmlUtils.GetInteger(n.SelectSingleNode("DefaultLevel"));
             MaxLevel = XmlUtils.GetInteger(n.SelectSingleNode("MaxLevel"));
-            LevelAsQuantity = XmlUtils.GetBool(n.SelectSingleNode("LevelAsQuantity"), false);
             ResearchesPerDay = XmlUtils.GetInteger(n.SelectSingleNode("ResearchesPerDay"));
 
             // Проверяем, что таких же ID и наименования нет
@@ -203,7 +202,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int Pos { get; }// Позиция сооружения в линии
         internal int DefaultLevel { get; }
         internal int MaxLevel { get; }
-        internal bool LevelAsQuantity { get; }// Показывать уровень как количество
         internal Level[] Levels;
         internal int ResearchesPerDay { get; }
         internal PanelConstruction Panel { get; set; }

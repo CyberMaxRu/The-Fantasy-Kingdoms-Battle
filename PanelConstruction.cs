@@ -173,7 +173,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     btnBuyOrUpgrade.Visible = true;
                     btnBuyOrUpgrade.Cost = Construction.CostBuyOrUpgrade().ToString();
-                    btnBuyOrUpgrade.ImageIndex = Construction.TypeConstruction.LevelAsQuantity ? FormMain.GUI_BUILD : FormMain.GUI_LEVELUP;
+                    btnBuyOrUpgrade.ImageIndex = FormMain.GUI_LEVELUP;
                     btnBuyOrUpgrade.ImageIsEnabled = Construction.CheckRequirements();
                 }
                 else
@@ -205,8 +205,8 @@ namespace Fantasy_Kingdoms_Battle
             else
                 btnHireHero.Visible = false;
 
-            imgMapObject.Level = Construction.TypeConstruction.LevelAsQuantity ? 0 : Construction.Level < Construction.TypeConstruction.MaxLevel ? Construction.Level : 0;
-            imgMapObject.Quantity = Construction.TypeConstruction.LevelAsQuantity ? Construction.Level : 0;
+            imgMapObject.Level = Construction.Level < Construction.TypeConstruction.MaxLevel ? Construction.Level : 0;
+            imgMapObject.Quantity = 0;
 
             if ((Construction.TypeConstruction.TrainedHero != null) && !(TypeConstruction.TrainedHero is null) && (Construction.Level > 0) && (Construction.Heroes.Count > 0))
             {
