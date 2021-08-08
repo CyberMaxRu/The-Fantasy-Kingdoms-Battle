@@ -2333,10 +2333,10 @@
     <Name>Сокровище</Name>
     <Description>Сундуки с сокровищами встречаются в Ардании даже чаще, чем крысы В некоторых землях герои собирают по два урожая сундуков в год!</Description>
     <ImageIndex>120</ImageIndex>
-    <Category>Place</Category>
+    <Category>Lair</Category>
     <SoundSelect>chest_select.wav</SoundSelect>
-    <MaxHeroes>0</MaxHeroes>
-    <RelationPlace>Neutral</RelationPlace>
+    <MaxHeroes>4</MaxHeroes>
+    <RelationPlace>Enemy</RelationPlace>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
   </TypeConstruction>
   <TypeConstruction>

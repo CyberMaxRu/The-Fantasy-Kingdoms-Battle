@@ -176,7 +176,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(Lair.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
 
-            btnAction.Visible = Lair.Hidden || (Lair.Monsters.Count > 0);
+            btnAction.Visible = Lair.Hidden || (Lair.TypeConstruction.Category == CategoryConstruction.Lair);
             if (btnAction.Visible)
             {
                 btnAction.ImageIsEnabled = Lair.CheckFlagRequirements();
@@ -217,8 +217,9 @@ namespace Fantasy_Kingdoms_Battle
                 btnInhabitants.Visible = false;
             }
 
-                btnHeroes.Visible = Lair.listAttackedHero.Count > 0;
-            btnHeroes.Cost = $"{Lair.listAttackedHero.Count}/{Lair.MaxHeroesForFlag()}";
+            btnHeroes.Visible = Lair.listAttackedHero.Count > 0;
+            if (btnHeroes.Visible)
+                btnHeroes.Cost = $"{Lair.listAttackedHero.Count}/{Lair.MaxHeroesForFlag()}";
 
             imgMapObject.ImageIndex = Lair.ImageIndexLair();
             lblNameMapObject.Text = Lair.NameLair();

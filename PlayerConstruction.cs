@@ -608,9 +608,11 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Hidden)
                 return TypeFlag.Scout;
-            if (TypeConstruction.Monsters.Count > 0)
+            if (TypeConstruction.Category == CategoryConstruction.Lair)
                 return TypeFlag.Attack;
-            return TypeFlag.Defense;
+            if (TypeConstruction.Category == CategoryConstruction.External)
+                return TypeFlag.Defense;
+            return TypeFlag.None;
         }
 
         internal void IncPriority()

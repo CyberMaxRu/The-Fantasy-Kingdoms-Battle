@@ -280,7 +280,8 @@ namespace Fantasy_Kingdoms_Battle
                     }
                     else if (pl.TypeFlag == TypeFlag.Attack)
                     {
-                        Debug.Assert(pl.Monsters.Count > 0);
+                        // У Сокровища монстров может не быть. Но бой посчитать надо
+                        //Debug.Assert(pl.Monsters.Count > 0);
 
                         PreparingForBattle();
 
