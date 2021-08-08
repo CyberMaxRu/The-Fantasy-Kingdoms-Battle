@@ -55,6 +55,11 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert((TypeConstruction.Category == CategoryConstruction.Lair) || (TypeConstruction.Category == CategoryConstruction.External)
                 || (TypeConstruction.Category == CategoryConstruction.Place) || (TypeConstruction.Category == CategoryConstruction.BasePlace));
 
+            if (l.Category == CategoryConstruction.External)
+            {
+                Build();
+            }
+
             // Настраиваем исследования 
             if (TypeConstruction.Researches != null)
             {
