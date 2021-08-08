@@ -1083,6 +1083,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Layers.Remove(vl);
             currentLayer = Layers[Layers.Count - 1];
+            formHint.HideHint();// Если слой убирается, убираем подсказку, если она там была
 
             SetNeedRedrawFrame();
         }
