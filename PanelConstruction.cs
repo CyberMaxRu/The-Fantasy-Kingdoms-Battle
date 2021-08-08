@@ -114,10 +114,9 @@ namespace Fantasy_Kingdoms_Battle
             Construction = pb;
         }
 
-        internal override void ArrangeControls()
+        protected override void PlaySelect()
         {
-
-            base.ArrangeControls();
+            Construction.TypeConstruction.PlaySoundSelect();
         }
 
         internal override void Draw(Graphics g)
@@ -205,11 +204,6 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             base.Draw(g);
-        }
-
-        protected override void PlaySelect()
-        {
-            Construction.TypeConstruction.PlaySoundSelect();
         }
     }
 }
