@@ -26,6 +26,8 @@ namespace Fantasy_Kingdoms_Battle
             TradePlace = XmlUtils.GetInteger(n.SelectSingleNode("TradePlace"));
             Points = XmlUtils.GetInteger(n.SelectSingleNode("Points"));
             MaxQuantity = XmlUtils.GetInteger(n.SelectSingleNode("MaxQuantity"));
+            if (MaxQuantity == 0)
+                MaxQuantity = 10;
             CurrentQuantity = 0;
 
             Debug.Assert(Gold >= 0);
@@ -44,7 +46,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(TradePlace <= 3);
             Debug.Assert(Points > 0);
             Debug.Assert(Points <= 10);
-            Debug.Assert(MaxQuantity >= -1);
+            Debug.Assert(MaxQuantity >= 1);
             Debug.Assert(MaxQuantity <= 10);
         }
 

@@ -9,7 +9,7 @@
     <TradePlace>0</TradePlace>
     <Scouting>0</Scouting>
     <Points>1</Points>
-    <MaxQuantity>-1</MaxQuantity>
+    <MaxQuantity>0</MaxQuantity>
   </StartBonus>
   <StartBonus>
     <Gold>0</Gold>
@@ -20,7 +20,7 @@
     <TradePlace>0</TradePlace>
     <Scouting>0</Scouting>
     <Points>1</Points>
-    <MaxQuantity>-1</MaxQuantity>
+    <MaxQuantity>0</MaxQuantity>
   </StartBonus>
   <StartBonus>
     <Gold>0</Gold>
@@ -42,7 +42,7 @@
     <TradePlace>0</TradePlace>
     <Scouting>0</Scouting>
     <Points>1</Points>
-    <MaxQuantity>-1</MaxQuantity>
+    <MaxQuantity>0</MaxQuantity>
   </StartBonus>
   <StartBonus>
     <Gold>0</Gold>
