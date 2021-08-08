@@ -19,7 +19,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             TypeCreature = tc;
             BattleParticipant = bp;
-            ID = ++sequenceID;
+            IDCreature = ++sequenceID;
 
             StateCreature = TypeCreature.PersistentStateHeroAtMap;
 
@@ -49,7 +49,7 @@ namespace Fantasy_Kingdoms_Battle
             else
                 Level = 1;
         }
-        internal int ID { get; }// Уникальный код существа
+        internal int IDCreature { get; }// Уникальный код существа
         internal TypeCreature TypeCreature { get; }
         internal BattleParticipant BattleParticipant { get; }
         internal int Level { get; private set; }// Уровень существа

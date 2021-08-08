@@ -15,7 +15,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         private static int ComparePlaceCreature(Creature c1, Creature c2)
         {
-            return c1.ID - c2.ID;
+            return c1.IDCreature - c2.IDCreature;
         }
 
         public BattleParticipant(Lobby lobby)
