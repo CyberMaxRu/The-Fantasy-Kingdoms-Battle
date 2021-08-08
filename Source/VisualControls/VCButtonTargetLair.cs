@@ -84,7 +84,7 @@ namespace Fantasy_Kingdoms_Battle
                 else
                 {
                     BitmapList = Program.formMain.ilGui;
-                    ImageIndex = FormMain.GUI_BATTLE;
+                    ImageIndex = FormMain.GUI_BATTLE_2;
                 }
             }
 
