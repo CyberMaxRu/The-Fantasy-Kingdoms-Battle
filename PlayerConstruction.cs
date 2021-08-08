@@ -116,7 +116,7 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
             {
-                research.ConstructionForBuild.BuyOrUpgrade();
+                research.ConstructionForBuild.Build();
                 research.ConstructionForBuild.X = research.ObjectOfMap.X;
                 research.ConstructionForBuild.Y = research.ObjectOfMap.Y;
                 research.ConstructionForBuild.Layer = research.ObjectOfMap.Layer;
@@ -130,21 +130,26 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal bool BuyOrUpgrade()
+        internal void Build()
         {
-            if ((Level < TypeConstruction.MaxLevel) && (Player.Gold >= CostBuyOrUpgrade()) && (CheckRequirements() == true))
-            {
-                Debug.Assert(Player.Gold >= CostBuyOrUpgrade());
+            Debug.Assert(Level == 0);
+            Debug.Assert(CheckRequirements());
+            Debug.Assert(Player.Gold >= CostBuyOrUpgrade());
 
-                Player.Constructed(this);
-                Level++;
-                ValidateHeroes();
-                PrepareTurn();
+            Player.Constructed(this);
+            Level++;
+            ValidateHeroes();
+            PrepareTurn();
+        }
 
-                return true;
-            }
+        internal void Upgrade()
+        {
+            Debug.Assert(Level < TypeConstruction.MaxLevel);
+            Debug.Assert(CheckRequirements());
+            Debug.Assert(Player.Gold >= CostBuyOrUpgrade());
 
-            return false;
+            Player.Constructed(this);
+            Level++;
         }
 
         internal void ValidateHeroes()

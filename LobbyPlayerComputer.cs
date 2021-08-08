@@ -35,11 +35,11 @@ namespace Fantasy_Kingdoms_Battle
 
             // Здесь расчет хода для ИИ
             // Покупаем четыре гильдии и строим 16 героев. На этом пока всё
-            GetPlayerConstruction(FormMain.Config.FindTypeConstruction("GuildWarrior")).BuyOrUpgrade();
-            GetPlayerConstruction(FormMain.Config.FindTypeConstruction("GuildRogue")).BuyOrUpgrade();
-            GetPlayerConstruction(FormMain.Config.FindTypeConstruction("GuildHunter")).BuyOrUpgrade();
-            GetPlayerConstruction(FormMain.Config.FindTypeConstruction("GuildCleric")).BuyOrUpgrade();
-            GetPlayerConstruction(FormMain.Config.FindTypeConstruction("GuildMage")).BuyOrUpgrade();
+            GetPlayerConstruction(FormMain.Config.FindTypeConstruction("GuildWarrior")).Build();
+            GetPlayerConstruction(FormMain.Config.FindTypeConstruction("GuildRogue")).Build();
+            GetPlayerConstruction(FormMain.Config.FindTypeConstruction("GuildHunter")).Build();
+            GetPlayerConstruction(FormMain.Config.FindTypeConstruction("GuildCleric")).Build();
+            GetPlayerConstruction(FormMain.Config.FindTypeConstruction("GuildMage")).Build();
 
             HireHeroes(GetPlayerConstruction(FormMain.Config.FindTypeConstruction("GuildWarrior")), 4);
             HireHeroes(GetPlayerConstruction(FormMain.Config.FindTypeConstruction("GuildHunter")), 4);
