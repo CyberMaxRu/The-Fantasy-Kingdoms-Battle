@@ -751,6 +751,11 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void Unhide()
         {
+            Debug.Assert(TypeConstruction.Category != CategoryConstruction.Guild);
+            Debug.Assert(TypeConstruction.Category != CategoryConstruction.Economic);
+            Debug.Assert(TypeConstruction.Category != CategoryConstruction.Temple);
+            Debug.Assert(TypeConstruction.Category != CategoryConstruction.Military);
+            Debug.Assert(TypeConstruction.Category != CategoryConstruction.External);
             Debug.Assert(Hidden);
             Debug.Assert(TypeFlag == TypeFlag.None);
             Debug.Assert(!Destroyed);
