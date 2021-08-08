@@ -807,7 +807,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void LabelBuilders_ShowHint(object sender, EventArgs e)
         {
-            ShowHintForToolButton(labelBuilders, "Строители", "Всего строителей: " + curAppliedPlayer.Builders.ToString()
+            formHint.AddStep1Header("Строители", "", "Всего строителей: " + curAppliedPlayer.Builders.ToString()
                 + Environment.NewLine + "Свободно строителей: " + curAppliedPlayer.FreeBuilders.ToString()
                 + Environment.NewLine + "Строителей на следующем ходу: " + curAppliedPlayer.BuildersAtNextDay.ToString());
         }
@@ -824,7 +824,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void PageTemples_ShowHint(object sender, EventArgs e)
         {
-            ShowHintForToolButton(pageTemples, "Храмы", "");
+            formHint.AddHeader("Храмы");
         }
 
         private void LabelGreatness_ShowHint(object sender, EventArgs e)
@@ -858,44 +858,44 @@ namespace Fantasy_Kingdoms_Battle
 
         private void PageHeroes_ShowHint(object sender, EventArgs e)
         {
-            ShowHintForToolButton(pageHeroes, "Герои", "Нанято героев: " + lobby.CurrentPlayer.CombatHeroes.Count.ToString());
+            formHint.AddStep1Header("Герои", "", "Нанято героев: " + lobby.CurrentPlayer.CombatHeroes.Count.ToString());
         }
 
         private void PageEconomicConstructions_ShowHint(object sender, EventArgs e)
         {
-            ShowHintForToolButton(pageEconomicConstructions, "Экономические строения", "");
+            formHint.AddHeader("Экономические строения");
         }
         
         private void PageResultTurn_ShowHint(object sender, EventArgs e)
         {
-            ShowHintForToolButton(pageResultTurn, "Итоги хода", "");
+            formHint.AddHeader("Итоги хода");
         }
 
         private void PageGuilds_ShowHint(object sender, EventArgs e)
         {
-            ShowHintForToolButton(pageGuilds, "Гильдии и военные сооружения", "");
+            formHint.AddHeader("Гильдии и военные сооружения");
         }
 
         private void PageLairs_ShowHint(object sender, EventArgs e)
         {
-            ShowHintForToolButton(pageLairs, "Окрестности", $"Разведано мест: {lobby.CurrentPlayer.LairsScouted}/{lobby.CurrentPlayer.LairsShowed}");
+            formHint.AddStep1Header("Окрестности", "", $"Разведано мест: {lobby.CurrentPlayer.LairsScouted}/{lobby.CurrentPlayer.LairsShowed}");
         }
 
         private void PageTournament_ShowHint(object sender, EventArgs e)
         {
-            ShowHintForToolButton(pageTournament, "Турнир",
+            formHint.AddStep1Header("Турнир", "",
                 lobby.DaysLeftForBattle > 0 ? "Битва с другим игроком начнется через " + lobby.DaysLeftForBattle.ToString() + " дн." : 
                     curAppliedPlayer.SkipBattle ? "Битва пропускается" : "Битва с другим игроком сегодня");
         }
 
         private void LabelGold_ShowHint(object sender, EventArgs e)
         {
-            ShowHintForToolButton(labelGold, "Казна", "Количество золота в казне и постоянный доход в день");
+            formHint.AddStep1Header("Казна", "", "Количество золота в казне и постоянный доход в день");
         }
 
         private void LabelDay_ShowHint(object sender, EventArgs e)
         {
-            ShowHintForToolButton(labelDay, "День игры", "День игры: " + lobby.Day.ToString());
+            formHint.AddStep1Header("День игры", "", "День игры: " + lobby.Day.ToString());
         }
         
         internal bool CheckForNewVersion()
@@ -1516,13 +1516,6 @@ namespace Fantasy_Kingdoms_Battle
                     for (int x = 0; x < PANEL_MENU_CELLS.Width; x++)
                         CellsMenu[y, x].Used = false;
             }
-        }
-
-        private void ShowHintForToolButton(VisualControl c, string text, string hint)
-        {
-            formHint.Clear();
-            formHint.AddStep1Header(text, "", hint);
-            formHint.DrawHint(c);
         }
 
         private void MakeAlpha()
