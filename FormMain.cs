@@ -943,6 +943,11 @@ namespace Fantasy_Kingdoms_Battle
             else
                 axWindowsMediaPlayer1.Dispose();
 
+            Debug.Assert(ClientRectangle.Width == MainConfig.ScreenMinSize.Width);
+            Debug.Assert(ClientRectangle.Height == MainConfig.ScreenMinSize.Height);
+            Debug.Assert(bitmapLogo.Width == ClientRectangle.Width);
+            Debug.Assert(bitmapLogo.Height == ClientRectangle.Height);
+
             ApplyFullScreen(true);
             gameStarted = true;
 
