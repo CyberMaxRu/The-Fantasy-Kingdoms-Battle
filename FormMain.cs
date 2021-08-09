@@ -524,16 +524,16 @@ namespace Fantasy_Kingdoms_Battle
                 Layers.Add(layerMainMenu);
                 currentLayer = layerMainMenu;
 
-                labelVersion = new VCLabel(layerMainMenu, 0, 0, fontSmallC, Color.White, fontSmall.MaxHeightSymbol,
+                // Лого
+                bitmapLogo = new VCBitmap(layerMainMenu, 0, 0, LoadBitmap("Logo.png"));
+                bitmapNameGame = new VCBitmap(bitmapLogo, 0, 0, LoadBitmap("NameGame.png"));
+
+                labelVersion = new VCLabel(bitmapLogo, 0, 0, fontSmallC, Color.White, fontSmall.MaxHeightSymbol,
                     $"Сборка {VERSION} от {DATE_VERSION}");
                 labelVersion.Width = labelVersion.Font.WidthText(labelVersion.Text);
 
-                // Лого
-                bitmapNameGame = new VCBitmap(layerMainMenu, 0, 0, LoadBitmap("NameGame.png"));
-                bitmapLogo = new VCBitmap(layerMainMenu, 0, 0, LoadBitmap("Logo.png"));
-
                 // Главное меню
-                bmpMainMenu = new VCBitmap(layerMainMenu, 0, 0, LoadBitmap("MenuMain.png"));
+                bmpMainMenu = new VCBitmap(bitmapLogo, 0, 0, LoadBitmap("MenuMain.png"));
 
                 btnTournament = new VCButton(bmpMainMenu, 80, 88, "Турнир");
                 btnTournament.Width = bmpMainMenu.Width - 80 - 80;
@@ -739,7 +739,7 @@ namespace Fantasy_Kingdoms_Battle
                 bitmapLogo.ShiftX = (layerMainMenu.Width - bitmapLogo.Width) / 2;
                 bitmapLogo.ShiftY = (layerMainMenu.Height - bitmapLogo.Height) / 2;
                 bitmapNameGame.ShiftX = (layerMainMenu.Width - bitmapNameGame.Width) / 2;
-                bitmapNameGame.ShiftY = (bitmapLogo.ShiftY - bitmapNameGame.Height) / 2;
+                bitmapNameGame.ShiftY = 32;//(bitmapLogo.ShiftY - bitmapNameGame.Height) / 2;
                 labelVersion.ShiftX = sizeGamespace.Width - labelVersion.Width - Config.GridSize;
                 labelVersion.ShiftY = sizeGamespace.Height - labelVersion.Height - Config.GridSize;
                 bmpMainMenu.ShiftX = sizeGamespace.Width - bmpMainMenu.Width - Config.GridSize;
