@@ -256,6 +256,7 @@
     <Content Include="Resources\Config\TypeHeroes.xml" />
     <Content Include="Resources\Config\Settings.xml" />
     <Content Include="Resources\Config\Weapons.xml" />
+    <Content Include="Resources\Players.xml" />
     <Content Include="Resources\Versions.xml" />
   </ItemGroup>
   <ItemGroup>
