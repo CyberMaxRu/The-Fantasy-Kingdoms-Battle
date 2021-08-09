@@ -19,8 +19,8 @@ namespace Fantasy_Kingdoms_Battle
     public partial class FormMain : Form
     {
         internal const string NAME_PROJECT = "The Fantasy Kingdoms Battle";
-        internal const string VERSION = "0.3.12";
-        internal const string DATE_VERSION = "30.07.2021";
+        internal const string VERSION = "0.3.13";
+        internal const string DATE_VERSION = "09.08.2021";
         private const string VERSION_POSTFIX = "в разработке";
         internal readonly string dirCurrent;
         internal readonly string dirResources;
