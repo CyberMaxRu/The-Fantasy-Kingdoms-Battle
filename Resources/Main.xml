@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Main>
   <Version>0.3.12</Version>
-  <ScreenMinWidth>1380</ScreenMinWidth>
-  <ScreenMinHeight>900</ScreenMinHeight>
+  <ScreenMinWidth>1378</ScreenMinWidth>
+  <ScreenMinHeight>879</ScreenMinHeight>
   <AutoUpdate>
     <URLDrive>drive.google.com/uc?export=download</URLDrive>
     <UIDVersion>1dI_KVlesPq4yKWH1MlAJaIdA4eoC3CWq</UIDVersion>
