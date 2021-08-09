@@ -98,10 +98,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.MouseUp();
 
-            if (MouseClicked)
-            {
-                Program.formMain.SetNeedRedrawFrame();
-            }
+            Program.formMain.SetNeedRedrawFrame();
         }
         protected override bool AllowClick() => Enabled;
     }
