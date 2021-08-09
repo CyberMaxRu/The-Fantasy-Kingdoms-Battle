@@ -91,7 +91,12 @@ namespace Fantasy_Kingdoms_Battle
         private void BtnTarget_ShowHint(object sender, EventArgs e)
         {
             if (Hero.TargetByFlag != null)
-                Hero.TargetByFlag.PrepareHint();
+            {
+                if (Hero.TargetByFlag.TypeFlag != TypeFlag.Battle)
+                    Hero.TargetByFlag.PrepareHint();
+                else
+                    Program.formMain.formHint.AddStep1Header("Битва против игрока", "", Hero.TargetByFlag.ListHeroesForHint());
+            }
             else
                 Program.formMain.formHint.AddHeader("Герой не выполняет флага");
         }

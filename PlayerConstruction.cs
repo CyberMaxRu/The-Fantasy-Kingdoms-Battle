@@ -967,12 +967,29 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep1Header(TypeConstruction.IsOurConstruction ? "Жители" : "Существа", "", list);
         }
 
-        BitmapList ICell.BitmapList() => Program.formMain.imListObjectsCell;
-        int ICell.ImageIndex() => ImageIndexLair();
+        BitmapList ICell.BitmapList()
+        {
+            if (Player == Player.Lobby.CurrentPlayer)
+                return Program.formMain.imListObjectsCell;
+            else
+                return Program.formMain.ilGui;
+        }
+        int ICell.ImageIndex()
+        {
+            if (Player == Player.Lobby.CurrentPlayer)
+                return ImageIndexLair();
+            else
+                return FormMain.GUI_BATTLE;
+        }
+
         bool ICell.NormalImage() => true;
         int ICell.Level() => 0;
         int ICell.Quantity() => 0;
-        void ICell.PrepareHint() => PrepareHint();
+        void ICell.PrepareHint()
+        {
+            if (Player == Player.Lobby.CurrentPlayer)
+                PrepareHint();
+        }
 
         void ICell.Click(VCCell pe)
         {
