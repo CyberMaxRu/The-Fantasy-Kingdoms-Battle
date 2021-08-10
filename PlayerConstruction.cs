@@ -111,6 +111,7 @@ namespace Fantasy_Kingdoms_Battle
         internal void ResearchCompleted(PlayerCellMenu research)
         {
             Debug.Assert(CheckRequirementsForResearch(research));
+            Debug.Assert(Researches.IndexOf(research) != -1);
 
             Player.SpendGold(research.Cost());
             Researches.Remove(research);
@@ -485,7 +486,7 @@ namespace Fantasy_Kingdoms_Battle
             return list;
         }
 
-        internal bool ShowMenuForPlayer() => true;//!Hidden;
+        internal bool ShowMenuForPlayer() => !Hidden;
 
         protected override int GetLevel()
         {
