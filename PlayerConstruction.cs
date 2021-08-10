@@ -128,6 +128,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (research.ConstructionForBuild != null)
                 {
+                    Debug.Assert(research.ConstructionForBuild.Level == 0);
                     research.ConstructionForBuild.Build();
                     research.ConstructionForBuild.X = research.ObjectOfMap.X;
                     research.ConstructionForBuild.Y = research.ObjectOfMap.Y;
