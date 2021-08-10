@@ -1488,6 +1488,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void UpdateMenu()
         {
+            ClearMenu();
+
             // Рисуем содержимое ячеек
             if ((selectedPlayerObject != null) && (selectedPlayerObject is PlayerConstruction pb) && pb.ShowMenuForPlayer())
             {
@@ -1495,8 +1497,6 @@ namespace Fantasy_Kingdoms_Battle
 
                 //labelMenuNameObject.Visible = true;
                 labelMenuNameObject.Text = pb.TypeConstruction.Name;
-
-                ClearMenu();
 
                 if (pb.TypeConstruction.Researches != null)
                     foreach (PlayerCellMenu pr in pb.Researches)
@@ -1513,7 +1513,6 @@ namespace Fantasy_Kingdoms_Battle
             else
             {
                 labelMenuNameObject.Visible = false;
-                ClearMenu();
             }
 
             for (int y = 0; y < PANEL_MENU_CELLS.Height; y++)
