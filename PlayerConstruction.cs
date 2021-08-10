@@ -113,11 +113,12 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(CheckRequirementsForResearch(research));
             Debug.Assert(Researches.IndexOf(research) != -1);
 
-            Player.SpendGold(research.Cost());
             Researches.Remove(research);
 
             if (research.Research.TypeConstruction is null)
             {
+                Player.SpendGold(research.Cost());
+
                 Debug.Assert(ResearchesAvailabled > 0);
 
                 ResearchesAvailabled--;
