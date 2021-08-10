@@ -1499,6 +1499,9 @@ namespace Fantasy_Kingdoms_Battle
                 labelMenuNameObject.Text = pb.TypeConstruction.Name;
 
                 if (pb.TypeConstruction.Researches != null)
+                {
+                    pb.ValidateResearches();
+
                     foreach (PlayerCellMenu pr in pb.Researches)
                     {
                         if (!CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Used)
@@ -1507,8 +1510,10 @@ namespace Fantasy_Kingdoms_Battle
                             CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Used = true;
                         }
                         else if (CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research.Research.Layer > pr.Research.Layer)
+                            && (CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research.ObjectOfMap == pr.ObjectOfMap))
                             CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research = pr;
                     }
+                }
             }
             else
             {

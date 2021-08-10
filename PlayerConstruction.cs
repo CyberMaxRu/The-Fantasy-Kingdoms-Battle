@@ -192,6 +192,30 @@ namespace Fantasy_Kingdoms_Battle
             }*/
         }
 
+        internal void ValidateResearches()
+        {
+            Debug.Assert(Researches != null);
+
+            List<PlayerCellMenu> forRemove = new List<PlayerCellMenu>();
+
+            foreach (PlayerCellMenu mc in Researches)
+            {
+                if (mc.Research.TypeConstruction != null)
+                    if (mc.ConstructionForBuild != null)
+                    {
+                        if (mc.ConstructionForBuild.Level> 0)
+                        {
+                            forRemove.Add(mc);
+                        }
+                    }
+            }
+
+            foreach (PlayerCellMenu mc in forRemove)
+            {
+                Researches.Remove(mc);
+            }
+        }
+
         internal bool CanLevelUp()
         {
             return Level < TypeConstruction.MaxLevel;
