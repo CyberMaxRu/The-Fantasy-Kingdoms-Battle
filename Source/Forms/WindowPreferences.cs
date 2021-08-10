@@ -34,7 +34,7 @@ namespace Fantasy_Kingdoms_Battle
 
             vcPanelGame = new VisualControl(ClientControl, 0, 0);
             vcPanelGame.ShowBorder = true;
-            lblCaptionPanelGame = new VCLabel(vcPanelGame, FormMain.Config.GridSize, 8, Program.formMain.fontMedCaption, Color.PaleTurquoise, 24, "Общие настройки:");
+            lblCaptionPanelGame = new VCLabel(vcPanelGame, FormMain.Config.GridSize, 8, Program.formMain.fontMedCaption, Color.MediumTurquoise, 24, "Общие настройки:");
             lblCaptionPanelGame.StringFormat.Alignment = StringAlignment.Near;
             chkbShowSplashVideo = new VCCheckBox(vcPanelGame, FormMain.Config.GridSize, lblCaptionPanelGame.NextTop(), "Показывать видео-заставку");
             chkbShowSplashVideo.Width = 320;
@@ -48,7 +48,7 @@ namespace Fantasy_Kingdoms_Battle
 
             vcPanelBatttlefield = new VisualControl(ClientControl, 0, vcPanelGame.NextTop());
             vcPanelBatttlefield.ShowBorder = true;
-            lblCaptionPanelBattlefield = new VCLabel(vcPanelBatttlefield, FormMain.Config.GridSize, 8, Program.formMain.fontMedCaption, Color.PaleTurquoise, 24, "Настройки битвы:");
+            lblCaptionPanelBattlefield = new VCLabel(vcPanelBatttlefield, FormMain.Config.GridSize, 8, Program.formMain.fontMedCaption, Color.MediumTurquoise, 24, "Настройки битвы:");
             lblCaptionPanelBattlefield.StringFormat.Alignment = StringAlignment.Near;
             chkbShowPath = new VCCheckBox(vcPanelBatttlefield, FormMain.Config.GridSize, lblCaptionPanelBattlefield.NextTop(), "Показывать путь юнитов");
             chkbShowPath.Width = 320;
