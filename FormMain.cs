@@ -1509,7 +1509,7 @@ namespace Fantasy_Kingdoms_Battle
                             CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research = pr;
                             CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Used = true;
                         }
-                        else if (CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research.Research.Layer > pr.Research.Layer)
+                        else if ((CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research.Research.Layer > pr.Research.Layer)
                             && (CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research.ObjectOfMap == pr.ObjectOfMap))
                             CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research = pr;
                     }
