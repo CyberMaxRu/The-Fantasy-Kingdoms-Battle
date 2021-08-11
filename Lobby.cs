@@ -255,9 +255,10 @@ namespace Fantasy_Kingdoms_Battle
 
                         Players[i].DoTurn();
 
-                        // Если этот игрок вылетел и больше нет игроков-людей, выходим из лобби
-                        if (!ExistsOtherHumanPlayer(i + 1))
-                            return;
+                        // Если игрок-человек вылетел и больше нет игроков-людей, выходим из лобби
+                        if (Players[i].GetTypePlayer() == TypePlayer.Human)
+                            if (!ExistsOtherHumanPlayer(i + 1))
+                                return;
 
                         if (stopLobby)
                             return;
@@ -287,8 +288,9 @@ namespace Fantasy_Kingdoms_Battle
             bool ExistsOtherHumanPlayer(int fromIndex)
             {
                 for (int i = 0; i < Players.Length; i++)
-                    if (Players[i].IsLive || ((Players[i].DayOfEndGame == Day - 1) && (Players[i].GetTypePlayer() == TypePlayer.Human) && (i >= fromIndex)))
-                        return true;
+                    if (Players[i].GetTypePlayer() == TypePlayer.Human)
+                        if (Players[i].IsLive || ((Players[i].DayOfEndGame == Day - 1)  && (i >= fromIndex)))
+                            return true;
 
                 return false;
             }

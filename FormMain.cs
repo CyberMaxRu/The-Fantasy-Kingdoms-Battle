@@ -19,8 +19,8 @@ namespace Fantasy_Kingdoms_Battle
     public partial class FormMain : Form
     {
         internal const string NAME_PROJECT = "The Fantasy Kingdoms Battle";
-        internal const string VERSION = "0.3.12";
-        internal const string DATE_VERSION = "30.07.2021";
+        internal const string VERSION = "0.3.13";
+        internal const string DATE_VERSION = "09.08.2021";
         private const string VERSION_POSTFIX = "в разработке";
         internal readonly string dirCurrent;
         internal readonly string dirResources;
@@ -524,16 +524,16 @@ namespace Fantasy_Kingdoms_Battle
                 Layers.Add(layerMainMenu);
                 currentLayer = layerMainMenu;
 
-                labelVersion = new VCLabel(layerMainMenu, 0, 0, fontSmallC, Color.White, fontSmall.MaxHeightSymbol,
+                // Лого
+                bitmapLogo = new VCBitmap(layerMainMenu, 0, 0, LoadBitmap("Logo.png"));
+                bitmapNameGame = new VCBitmap(bitmapLogo, 0, 0, LoadBitmap("NameGame.png"));
+
+                labelVersion = new VCLabel(bitmapLogo, 0, 0, fontSmallC, Color.White, fontSmall.MaxHeightSymbol,
                     $"Сборка {VERSION} от {DATE_VERSION}");
                 labelVersion.Width = labelVersion.Font.WidthText(labelVersion.Text);
 
-                // Лого
-                bitmapNameGame = new VCBitmap(layerMainMenu, 0, 0, LoadBitmap("NameGame.png"));
-                bitmapLogo = new VCBitmap(layerMainMenu, 0, 0, LoadBitmap("Logo.png"));
-
                 // Главное меню
-                bmpMainMenu = new VCBitmap(layerMainMenu, 0, 0, LoadBitmap("MenuMain.png"));
+                bmpMainMenu = new VCBitmap(bitmapLogo, 0, 0, LoadBitmap("MenuMain.png"));
 
                 btnTournament = new VCButton(bmpMainMenu, 80, 88, "Турнир");
                 btnTournament.Width = bmpMainMenu.Width - 80 - 80;
@@ -739,7 +739,7 @@ namespace Fantasy_Kingdoms_Battle
                 bitmapLogo.ShiftX = (layerMainMenu.Width - bitmapLogo.Width) / 2;
                 bitmapLogo.ShiftY = (layerMainMenu.Height - bitmapLogo.Height) / 2;
                 bitmapNameGame.ShiftX = (layerMainMenu.Width - bitmapNameGame.Width) / 2;
-                bitmapNameGame.ShiftY = (bitmapLogo.ShiftY - bitmapNameGame.Height) / 2;
+                bitmapNameGame.ShiftY = 32;//(bitmapLogo.ShiftY - bitmapNameGame.Height) / 2;
                 labelVersion.ShiftX = sizeGamespace.Width - labelVersion.Width - Config.GridSize;
                 labelVersion.ShiftY = sizeGamespace.Height - labelVersion.Height - Config.GridSize;
                 bmpMainMenu.ShiftX = sizeGamespace.Width - bmpMainMenu.Width - Config.GridSize;
@@ -942,6 +942,11 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
                 axWindowsMediaPlayer1.Dispose();
+
+            Debug.Assert(ClientRectangle.Width == MainConfig.ScreenMinSize.Width);
+            Debug.Assert(ClientRectangle.Height == MainConfig.ScreenMinSize.Height);
+            Debug.Assert(bitmapLogo.Width == ClientRectangle.Width);
+            Debug.Assert(bitmapLogo.Height == ClientRectangle.Height);
 
             ApplyFullScreen(true);
             gameStarted = true;
@@ -1483,6 +1488,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void UpdateMenu()
         {
+            ClearMenu();
+
             // Рисуем содержимое ячеек
             if ((selectedPlayerObject != null) && (selectedPlayerObject is PlayerConstruction pb) && pb.ShowMenuForPlayer())
             {
@@ -1491,9 +1498,10 @@ namespace Fantasy_Kingdoms_Battle
                 //labelMenuNameObject.Visible = true;
                 labelMenuNameObject.Text = pb.TypeConstruction.Name;
 
-                ClearMenu();
-
                 if (pb.TypeConstruction.Researches != null)
+                {
+                    pb.ValidateResearches();
+
                     foreach (PlayerCellMenu pr in pb.Researches)
                     {
                         if (!CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Used)
@@ -1501,14 +1509,15 @@ namespace Fantasy_Kingdoms_Battle
                             CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research = pr;
                             CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Used = true;
                         }
-                        else if (CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research.Research.Layer > pr.Research.Layer)
+                        else if ((CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research.Research.Layer > pr.Research.Layer)
+                            && (CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research.ObjectOfMap == pr.ObjectOfMap))
                             CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research = pr;
                     }
+                }
             }
             else
             {
                 labelMenuNameObject.Visible = false;
-                ClearMenu();
             }
 
             for (int y = 0; y < PANEL_MENU_CELLS.Height; y++)

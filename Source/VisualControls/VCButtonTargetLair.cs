@@ -77,7 +77,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     if (Lair.Hidden)
                     {
-                        BitmapList = Program.formMain.ilGui;
+                        BitmapList = Program.formMain.imListObjectsCell;
                         ImageIndex = FormMain.IMAGE_INDEX_UNKNOWN;
                     }
                     else

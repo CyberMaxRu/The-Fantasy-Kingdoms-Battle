@@ -28,8 +28,13 @@ namespace Fantasy_Kingdoms_Battle
 
             for (int i = 0; i < players; i++)
             {
-                img = new VCImage(this, 0, nextTop, Program.formMain.ilGui, -1);
-                nextTop = img.NextTop();
+                VisualControl panel = new VisualControl(this, 0, nextTop);
+                panel.Width = Program.formMain.ilGui.Size;
+                panel.Height = Program.formMain.ilGui.Size;
+                img = new VCImage(panel, 0, 0, Program.formMain.ilGui24, -1);
+                img.ShiftX = (panel.Width - img.Width) / 2;
+                img.ShiftY = (panel.Height - img.Height) / 2;
+                nextTop = panel.NextTop();
                 listImages.Add(img);
             }
         }
@@ -44,13 +49,13 @@ namespace Fantasy_Kingdoms_Battle
                 // Находим результат боя игрока
                 if (battlesPlayers.Players.ContainsKey(lp))
                 {
-                    listImages[lp.PositionInLobby - 1].ImageIndex = battlesPlayers.Players[lp] ? FormMain.GUI_WIN : FormMain.GUI_LOSE;
-                    listImages[lp.PositionInLobby - 1].ShowBorder = true;
+                    listImages[lp.PositionInLobby - 1].ImageIndex = battlesPlayers.Players[lp] ? FormMain.GUI_24_TRANSP_WIN : FormMain.GUI_24_TRANSP_LOSE;
+                    //listImages[lp.PositionInLobby - 1].ShowBorder = true;
                 }
                 else
                 {
                     listImages[lp.PositionInLobby - 1].ImageIndex = -1;
-                    listImages[lp.PositionInLobby - 1].ShowBorder = false;
+                    //listImages[lp.PositionInLobby - 1].ShowBorder = false;
                 }
             }
         }
