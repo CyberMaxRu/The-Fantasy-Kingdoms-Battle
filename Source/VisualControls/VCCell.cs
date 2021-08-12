@@ -11,6 +11,7 @@ namespace Fantasy_Kingdoms_Battle
         bool NormalImage();
         int Level();
         int Quantity();
+        string Cost();
         void PrepareHint();
         void Click(VCCell pe);
         void CustomDraw(Graphics g, int x, int y, bool drawState);
@@ -106,6 +107,7 @@ namespace Fantasy_Kingdoms_Battle
                     ImageIsEnabled = cell.NormalImage();                        
                     Quantity = GetQuantity();
                     Level = GetLevel();
+                    Cost = cell.Cost();
 
                     Debug.Assert(BitmapList.Size == 48);
                 }

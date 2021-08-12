@@ -32,6 +32,7 @@ namespace Fantasy_Kingdoms_Battle
         int ICell.ImageIndex() => Item.ImageIndex;
         int ICell.Level() => 0;
         int ICell.Quantity() => !OwnerIsPlayer ? 0 : Quantity;
+        string ICell.Cost() => null;
 
         void ICell.PrepareHint()
         {

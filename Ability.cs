@@ -137,6 +137,27 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override int GetLevel() => 0;
         protected override int GetQuantity() => 0;
+        protected override string GetCost()
+        {
+            switch (TypeAbility)
+            {
+                case TypeAbility.MeleeAttack:
+                    return "удар";
+                case TypeAbility.RangeAttack:
+                    return "стрел.";
+                case TypeAbility.Buff:
+                    return "усил";
+                case TypeAbility.Spell:
+                    return "закл.";
+                case TypeAbility.Heal:
+                    return "леч.";
+                case TypeAbility.Summon:
+                    return "призыв";
+                default:
+                    throw new Exception("Неизвестная способность");
+            }
+        }
+
         protected override void DoPrepareHint()
         {
             base.DoPrepareHint();

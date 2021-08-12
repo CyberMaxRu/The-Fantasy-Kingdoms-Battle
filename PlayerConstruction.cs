@@ -1018,6 +1018,7 @@ namespace Fantasy_Kingdoms_Battle
             else
                 return FormMain.GUI_BATTLE;
         }
+        protected override string GetCost() => null;
 
         bool ICell.NormalImage() => true;
         int ICell.Level() => 0;

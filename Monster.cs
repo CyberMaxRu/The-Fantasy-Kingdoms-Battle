@@ -20,6 +20,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal TypeMonster TypeMonster { get; }
+        protected override string GetCost() => null;
 
         protected override int GetImageIndex()
         {

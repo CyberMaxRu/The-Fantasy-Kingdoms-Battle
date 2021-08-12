@@ -34,6 +34,7 @@ namespace Fantasy_Kingdoms_Battle
         // Методы для потомков для возврата значений в интерфейс
         protected abstract int GetLevel();
         protected abstract int GetQuantity();
+        protected abstract string GetCost();
         protected virtual void DoPrepareHint()
         {
             Program.formMain.formHint.AddStep1Header(Name, "", Description);
@@ -45,6 +46,7 @@ namespace Fantasy_Kingdoms_Battle
         bool ICell.NormalImage() => true;
         int ICell.Level() => GetLevel();
         int ICell.Quantity() => GetQuantity();
+        string ICell.Cost() => GetCost();
 
         void ICell.PrepareHint() 
         {

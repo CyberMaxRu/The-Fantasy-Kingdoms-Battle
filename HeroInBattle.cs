@@ -670,6 +670,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             return 0;
         }
+        string ICell.Cost() => null;
 
         void ICell.PrepareHint()
         {

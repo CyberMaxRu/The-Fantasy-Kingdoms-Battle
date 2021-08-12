@@ -61,6 +61,7 @@ namespace Fantasy_Kingdoms_Battle
         bool ICell.NormalImage() => true;
         int ICell.Level() => 0;
         int ICell.Quantity() => 0;
+        string ICell.Cost() => null;
 
         void ICell.PrepareHint()
         {
@@ -126,6 +127,10 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override int GetLevel() => 0;
         protected override int GetQuantity() => 0;
+        protected override string GetCost()
+        {
+            return "Оружие";
+        }
     }
 
     // Класс доспехов
@@ -171,7 +176,7 @@ namespace Fantasy_Kingdoms_Battle
         bool ICell.NormalImage() => true;
         int ICell.Level() => 0;
         int ICell.Quantity() => 0;
-
+        string ICell.Cost() => null;
         void ICell.PrepareHint()
         {
             Program.formMain.formHint.AddStep1Header(GroupArmour.Name, "", GroupArmour.Description);
@@ -234,5 +239,9 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override int GetLevel() => 0;
         protected override int GetQuantity() => 0;
+        protected override string GetCost()
+        {
+            return "Доспех";
+        }
     }
 }

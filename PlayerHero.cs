@@ -345,6 +345,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(income > 0);
 
             Gold += income;
-        }        
+        }
+        protected override string GetCost() => null;
     }
 }

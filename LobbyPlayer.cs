@@ -1100,6 +1100,7 @@ namespace Fantasy_Kingdoms_Battle
         bool ICell.NormalImage() => IsLive;
         int ICell.Level() => LevelGreatness;
         int ICell.Quantity() => 0;
+        string ICell.Cost() => null;
         void ICell.PrepareHint()
         {
             PrepareHint();

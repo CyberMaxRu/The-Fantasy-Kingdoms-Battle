@@ -64,5 +64,6 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override int GetLevel() => 1;
         protected override int GetQuantity() => 0;
+        protected override string GetCost() => null;
     }
 }

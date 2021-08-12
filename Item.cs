@@ -76,6 +76,8 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override int GetLevel() => 0;
         protected override int GetQuantity() => 0;
+        protected override string GetCost() => null;
+
         protected override void DoPrepareHint()
         {
             base.DoPrepareHint();
