@@ -477,7 +477,7 @@
     <Description>- Вызывает змея-союзника/- Требует маны</Description>
     <ImageIndex>61</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>Buff</TypeAbility>
+    <TypeAbility>Summon</TypeAbility>
     <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>15</MinUnitLevel>
     <Ranged>False</Ranged>
@@ -496,7 +496,7 @@
     <Description>- Вызывает дракона-союзника/- Требует маны</Description>
     <ImageIndex>99</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>Buff</TypeAbility>
+    <TypeAbility>Summon</TypeAbility>
     <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>25</MinUnitLevel>
     <Ranged>False</Ranged>
@@ -742,7 +742,7 @@
     <Description>- Вызывает скелета-союзника/- Требует маны</Description>
     <ImageIndex>84</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>Buff</TypeAbility>
+    <TypeAbility>Summon</TypeAbility>
     <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>False</Ranged>
