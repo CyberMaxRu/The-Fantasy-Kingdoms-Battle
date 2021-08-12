@@ -146,13 +146,13 @@ namespace Fantasy_Kingdoms_Battle
                 case TypeAbility.RangeAttack:
                     return "стрел.";
                 case TypeAbility.Buff:
-                    return "усил";
+                    return "усил.";
                 case TypeAbility.Spell:
                     return "закл.";
                 case TypeAbility.Heal:
                     return "леч.";
                 case TypeAbility.Summon:
-                    return "призыв";
+                    return "приз.";
                 default:
                     throw new Exception("Неизвестная способность");
             }
