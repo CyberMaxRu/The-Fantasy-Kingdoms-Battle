@@ -31,6 +31,7 @@ namespace Fantasy_Kingdoms_Battle
 
         // Проигрывание звуков и музыки 
         private readonly System.Windows.Media.MediaPlayer mpMusic;
+        private readonly System.Windows.Media.MediaPlayer mpMainTheme;
         private readonly System.Windows.Media.MediaPlayer mpSoundSelect;
         private readonly System.Windows.Media.MediaPlayer mpSelectButton;
         private readonly System.Windows.Media.MediaPlayer mpPushButton;
@@ -755,6 +756,8 @@ namespace Fantasy_Kingdoms_Battle
 
                 //
                 mpMusic = new System.Windows.Media.MediaPlayer();
+                mpMainTheme = new System.Windows.Media.MediaPlayer();
+                mpMainTheme.Open(new Uri(dirResources + @"Music\main_menu_music.mp3"));
                 mpSoundSelect = new System.Windows.Media.MediaPlayer();
                 mpSelectButton = new System.Windows.Media.MediaPlayer();
                 mpSelectButton.Open(new Uri(dirResources + @"Sound\Interface\Button\SelectButton.wav"));
@@ -786,7 +789,7 @@ namespace Fantasy_Kingdoms_Battle
                 //MediaElement me = new MediaElement()
                 //me.Parent = this;
 
-                StartPlayMusic();
+                PlayMainTheme();
 
                 //ImportNames();// Однократная операция
 
@@ -1451,6 +1454,7 @@ namespace Fantasy_Kingdoms_Battle
                 ((PanelPlayer)panelPlayers.Controls[i]).LinkToLobby(lobby.Players[i]);
             }
 
+            StopMainTheme();
             ExchangeLayer(layerMainMenu, layerGame);
             
             AdjustNeighborhood();
@@ -1478,7 +1482,18 @@ namespace Fantasy_Kingdoms_Battle
             {
                 ExchangeLayer(layerGame, layerMainMenu);
                 ShowFrame(true);
+                PlayMainTheme();
             }
+        }
+
+        private void PlayMainTheme()
+        {
+            mpMainTheme.Play();
+        }
+
+        private void StopMainTheme()
+        {
+            mpMainTheme.Stop();
         }
 
         internal void SetNeedRedrawFrame()
