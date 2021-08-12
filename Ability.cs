@@ -10,7 +10,7 @@ using System.Windows.Forms;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс способности
-    internal enum TypeAbility { MeleeAttack, RangeAttack, Spell, Buff, Heal, Summon }
+    internal enum TypeAbility { MeleeAttack, RangeAttack, Spell, Buff, Heal, Summon, Passive, Aura }
     internal enum TypeTarget { Self, EnemyUnit, EnemyBuilding, AllyUnit }// Тип цели для способности
     internal enum Effect { Taunt, Slow }// Эффекты
 
@@ -142,9 +142,9 @@ namespace Fantasy_Kingdoms_Battle
             switch (TypeAbility)
             {
                 case TypeAbility.MeleeAttack:
-                    return "удар";
+                    return "ближ.";
                 case TypeAbility.RangeAttack:
-                    return "стрел.";
+                    return "даль.";
                 case TypeAbility.Buff:
                     return "усил.";
                 case TypeAbility.Spell:
@@ -153,6 +153,10 @@ namespace Fantasy_Kingdoms_Battle
                     return "леч.";
                 case TypeAbility.Summon:
                     return "приз.";
+                case TypeAbility.Passive:
+                    return "пасс.";
+                case TypeAbility.Aura:
+                    return "аура";
                 default:
                     throw new Exception("Неизвестная способность");
             }

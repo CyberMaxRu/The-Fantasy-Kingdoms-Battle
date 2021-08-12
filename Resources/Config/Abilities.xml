@@ -1001,10 +1001,74 @@
   <Ability>
     <ID>ZombieBasicAttack</ID>
     <Name>Укус</Name>
-    <Description>- Наносит малый урон</Description>
+    <Description>Поскольку зомби, в отличии от скелетов, не способны держать в руках вооружение, их оружием являются зубы, ногти и споры.</Description>
     <ImageIndex>96</ImageIndex>
     <TypeAbility>MeleeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Zombie</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>WillOfDarkness</ID>
+    <Name>Воля Тьмы</Name>
+    <Description>Темная магия способна тысячами поднимать из могил тела усопших и заставлять их действовать по воли некроманта. Несмотря на то, что Великий король запретил кому попало использовать некромантию, нередко находятся те, кто пренебрегает этому указу. Поэтому в Ардании время от времени проводятся зачистки близ кладбищ и склепов. Невосприимчивость к усталости, чувствам и влиянию на разум.</Description>
+    <ImageIndex>110</ImageIndex>
+    <TypeAbility>Passive</TypeAbility>
+    <TypeTarget>Self</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Zombie</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>DeadFlesh</ID>
+    <Name>Мертвая плоть</Name>
+    <Description>В телах, поднятых с кладбищ отсутствуют какие-либо естественные свойства - циркуляция крови, заживление ран, работа внутренних органов. Благодаря этому на зомби не действует отравление ядом или кровотечение, однако они очень чувствительны к святым атакам.</Description>
+    <ImageIndex>109</ImageIndex>
+    <TypeAbility>Passive</TypeAbility>
+    <TypeTarget>Self</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Zombie</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>NeedFood</ID>
+    <Name>Потребность в пище</Name>
+    <Description>Зомби, в отличии от скелетов, иногда нуждаются в еде - из-за этого они вынуждены бродить по землям и искать того, кто станет их обедом.//Добавляет 10% урона.</Description>
+    <ImageIndex>111</ImageIndex>
+    <TypeAbility>Passive</TypeAbility>
+    <TypeTarget>Self</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Zombie</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>Ptomaine</ID>
+    <Name>Трупный яд</Name>
+    <Description>Поскольку мертвецы убивают и питаются свежими телами, их сгнившая плоть содержит многочисленные ядовитые споры, которые перекидываются на того, кто сильно близко приблизится к зомби. Заражение ядом (медленно понижает здоровье).</Description>
+    <ImageIndex>108</ImageIndex>
+    <TypeAbility>Aura</TypeAbility>
+    <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>False</Ranged>
     <SkillModif>1,0</SkillModif>

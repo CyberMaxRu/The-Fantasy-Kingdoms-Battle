@@ -32,6 +32,10 @@
     </NextLevel>
     <Abilities>
       <Ability>ZombieBasicAttack</Ability>
+      <Ability>WillOfDarkness</Ability>
+      <Ability>DeadFlesh</Ability>
+      <Ability>NeedFood</Ability>
+      <Ability>Ptomaine</Ability>
     </Abilities>
     <Reward>
       <Gold>25</Gold>
