@@ -16,7 +16,7 @@ namespace Fantasy_Kingdoms_Battle
         private List<HeroInBattle> heroesForDelete = new List<HeroInBattle>();
         private Random rnd;
 
-        internal Battle(BattleParticipant player1, BattleParticipant player2, int turn, int randomSeed, bool showForPlayer)
+        internal Battle(BattleParticipant player1, BattleParticipant player2, int turn, int randomSeed, int maxStepsInBattle, bool showForPlayer)
         {
             Debug.Assert(player1 != null);
             Debug.Assert(player2 != null);
@@ -32,6 +32,7 @@ namespace Fantasy_Kingdoms_Battle
             Turn = turn;
             RandomSeed = randomSeed;
             rnd = new Random(RandomSeed);
+            MaxStepsInBattle = maxStepsInBattle;
 
             BattleCalced = false;
             Step = 0;
@@ -82,6 +83,8 @@ namespace Fantasy_Kingdoms_Battle
         internal int Turn { get; }// Ход, на котором произошел бой
         internal Size SizeBattlefield { get; }
         internal int Step { get; private set; }// Шаг боя
+
+        internal int MaxStepsInBattle { get; }
         internal bool BattleCalced { get; private set; }
         internal List<HeroInBattle> AllHeroes = new List<HeroInBattle>();// Все участники боя
         internal List<HeroInBattle> ActiveHeroes = new List<HeroInBattle>();// Оставшиеся в живых участники боя
@@ -133,7 +136,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Если все живые, но время вышло, оканчиваем бой
-            if (Step == FormMain.Config.MaxStepsInBattle)
+            if (Step == MaxStepsInBattle)
             {
                 CalcEndBattle();
 
@@ -217,7 +220,7 @@ namespace Fantasy_Kingdoms_Battle
             BattleCalced = true;
 
             // Определяем результат боя
-            if (Step < FormMain.Config.MaxStepsInBattle)
+            if (Step < MaxStepsInBattle)
             {
                 int heroesPlayer1 = ActiveHeroes.Where(h => (h.PlayerHero.BattleParticipant == Player1) && (h.State != StateHeroInBattle.Tumbstone)).Count();
                 int heroesPlayer2 = ActiveHeroes.Where(h => (h.PlayerHero.BattleParticipant == Player2) && (h.State != StateHeroInBattle.Tumbstone)).Count();

@@ -64,7 +64,8 @@
   </Heroes>
   <Battle>
     <StepsInSecond>50</StepsInSecond>
-    <MaxDurationBattle>120</MaxDurationBattle>
+    <MaxDurationBattleWithMonster>60</MaxDurationBattleWithMonster>
+    <MaxDurationBattleWithPlayer>120</MaxDurationBattleWithPlayer>
     <MaxFramesPerSecond>50</MaxFramesPerSecond>
   </Battle>
   <Battlefield>

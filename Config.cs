@@ -249,8 +249,8 @@ namespace Fantasy_Kingdoms_Battle
         internal int RowsBetweenSides { get; private set; }// Рядов между сторонами
         internal int StepsInSecond { get; private set; }// Шагов в секунду
         internal int StepInMSec {get; private set; }// Время шага в миллисекундах
-        internal int MaxDurationBattle { get; private set; }// Максимальная длительность боя в секундах
-        internal int MaxStepsInBattle { get; private set; }// Максимальная длительность боя в тактах
+        internal int MaxDurationBattleWithMonster { get; private set; }// Максимальная длительность боя c монстрами в секундах
+        internal int MaxDurationBattleWithPlayer { get; private set; }// Максимальная длительность боя с другим игроком в секундах
         internal int MaxFramesPerSecond { get; private set; }// Максимальная частота перерисовки кадров
         internal int MaxDurationFrame { get; private set; }// Максимальная длительность кадра
         internal int MaxStatPointPerLevel { get; private set; }
@@ -532,11 +532,13 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(1000 % StepsInSecond == 0);
             StepInMSec = 1000 / StepsInSecond;
 
-            MaxDurationBattle = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battle/MaxDurationBattle").InnerText);
-            Debug.Assert(MaxDurationBattle >= 30);
-            Debug.Assert(MaxDurationBattle <= 3600);
+            MaxDurationBattleWithMonster = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battle/MaxDurationBattleWithMonster").InnerText);
+            Debug.Assert(MaxDurationBattleWithMonster >= 30);
+            Debug.Assert(MaxDurationBattleWithMonster <= 3600);
 
-            MaxStepsInBattle = MaxDurationBattle * StepsInSecond;
+            MaxDurationBattleWithPlayer = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battle/MaxDurationBattleWithMonster").InnerText);
+            Debug.Assert(MaxDurationBattleWithPlayer >= 30);
+            Debug.Assert(MaxDurationBattleWithPlayer <= 3600);
 
             MaxFramesPerSecond = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battle/MaxFramesPerSecond").InnerText);
             Debug.Assert(MaxFramesPerSecond >= 5);

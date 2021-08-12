@@ -415,6 +415,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(livePlayers % 2 == 0);
             int pairs = (livePlayers / 2) - 1;
             int numberPair = 0;
+            int maxSteps = FormMain.Config.MaxDurationBattleWithPlayer * FormMain.Config.StepsInSecond;
 
             foreach (LobbyPlayer p in Players)
                 p.BattleCalced = false;
@@ -428,7 +429,7 @@ namespace Fantasy_Kingdoms_Battle
                         Debug.Assert(!(p.Opponent is null));
 
                         bool showForPlayer = false;// (p.GetTypePlayer() == TypePlayer.Human) || (p.Opponent.GetTypePlayer() == TypePlayer.Human);
-                        b = new Battle(p, p.Opponent, Day, Rnd.Next(), showForPlayer);
+                        b = new Battle(p, p.Opponent, Day, Rnd.Next(), maxSteps, showForPlayer);
 
                         if (showForPlayer)
                         {

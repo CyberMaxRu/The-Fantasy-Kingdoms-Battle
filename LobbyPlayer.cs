@@ -271,6 +271,7 @@ namespace Fantasy_Kingdoms_Battle
 
             // Расчет флагов на логова
             List<PlayerConstruction> tempListLair = ListFlags.ToList();// Работаем с копией списка, так как текущий будет меняться по мере обработки флагов
+            int maxSteps = FormMain.Config.MaxDurationBattleWithMonster * FormMain.Config.StepsInSecond;
 
             foreach (PlayerConstruction pl in tempListLair)
             {
@@ -301,7 +302,7 @@ namespace Fantasy_Kingdoms_Battle
                         //Debug.Assert(p.TargetLair.CombatHeroes.Count > 0);
 
                         bool showForPlayer = false;// Player.TypePlayer == TypePlayer.Human;
-                        b = new Battle(this, pl.Participant, Lobby.Day, Lobby.Rnd.Next(), showForPlayer);
+                        b = new Battle(this, pl.Participant, Lobby.Day, Lobby.Rnd.Next(), maxSteps, showForPlayer);
 
                         if (showForPlayer)
                         {
