@@ -62,8 +62,8 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep1Header(Name, "Начальный уровень", Description);
         }
 
-        protected override int GetLevel() => 1;
+        protected override int GetLevel() => 0;
         protected override int GetQuantity() => 0;
-        protected override string GetCost() => null;
+        protected override string GetCost() => "баз.";
     }
 }
