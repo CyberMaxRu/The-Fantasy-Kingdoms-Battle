@@ -129,7 +129,7 @@ namespace Fantasy_Kingdoms_Battle
         protected override int GetQuantity() => 0;
         protected override string GetCost()
         {
-            return "Оружие";
+            return "оруж.";
         }
     }
 
@@ -241,7 +241,7 @@ namespace Fantasy_Kingdoms_Battle
         protected override int GetQuantity() => 0;
         protected override string GetCost()
         {
-            return "Доспех";
+            return "досп.";
         }
     }
 }
