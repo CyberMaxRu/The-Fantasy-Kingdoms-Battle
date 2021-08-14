@@ -59,13 +59,14 @@ namespace Fantasy_Kingdoms_Battle
             lblIncome.Width = imgMapObject.Width;
             lblIncome.ImageIndex = FormMain.GUI_16_GOLD;
             lblIncome.StringFormat.Alignment = StringAlignment.Near;
+            lblIncome.Hint = "Доход в день";
 
             lblGreatness = new VCLabelValue(this, lblIncome.ShiftX, lblIncome.NextTop() - FormMain.Config.GridSizeHalf, Color.Green, true);
             lblGreatness.Width = lblIncome.Width;
             lblGreatness.ImageIndex = FormMain.GUI_16_GREATNESS;
             lblGreatness.StringFormat.Alignment = StringAlignment.Near;
             lblGreatness.Color = FormMain.Config.HintIncome;
-
+            lblGreatness.Hint = "Прибавление величия в день";
 
             btnAction = new VCIconButton(this, imgMapObject.NextLeft(), imgMapObject.NextTop(), Program.formMain.ilGui, FormMain.GUI_BATTLE);
             btnAction.Click += BtnAction_Click;
@@ -87,12 +88,14 @@ namespace Fantasy_Kingdoms_Battle
             lblRewardGold.Width = btnCancel.ShiftX - FormMain.Config.GridSize - lblRewardGold.ShiftX;
             lblRewardGold.ImageIndex = FormMain.GUI_16_GOLD;
             lblRewardGold.StringFormat.Alignment = StringAlignment.Near;
+            lblRewardGold.Hint = "Награда золотом за уничтожение";
 
             lblRewardGreatness = new VCLabelValue(this, lblRewardGold.ShiftX, lblRewardGold.NextTop() - FormMain.Config.GridSizeHalf, Color.Green, true);
             lblRewardGreatness.Width = lblRewardGold.Width;
             lblRewardGreatness.ImageIndex = FormMain.GUI_16_GREATNESS;
             lblRewardGreatness.StringFormat.Alignment = StringAlignment.Near;
             lblRewardGreatness.Color = FormMain.Config.HintIncome;
+            lblRewardGreatness.Hint = "Награда величием за уничтожение";
 
             Height = btnAction.NextTop();
             Width = btnAction.NextLeft();
