@@ -65,8 +65,11 @@ namespace Fantasy_Kingdoms_Battle
 
             panelSpecialization = new VCCell(this, imgIcon.NextLeft(), imgIcon.ShiftY);
             panelMeleeWeapon = new VCCell(this, FormMain.Config.GridSize, bmpStateBackground.NextTop());
+            panelMeleeWeapon.HintForEmpty = "Нет оружия ближнего боя";
             panelRangeWeapon = new VCCell(this, panelMeleeWeapon.NextLeft(), panelMeleeWeapon.ShiftY);
+            panelRangeWeapon.HintForEmpty = "Нет оружия дальнего боя";
             panelArmour = new VCCell(this, panelRangeWeapon.NextLeft(), panelMeleeWeapon.ShiftY);
+            panelArmour.HintForEmpty = "Нет доспехов";
 
             lvGold = new VCLabelValue(this, FormMain.Config.GridSize, panelMeleeWeapon.NextTop(), Color.White, true);
             lvGold.Width = imgIcon.Width;
