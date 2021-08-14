@@ -37,7 +37,8 @@ namespace Fantasy_Kingdoms_Battle
         private readonly PanelWithPanelEntity panelAbilities;
         private readonly PanelWithPanelEntity panelSecondarySkills;
         protected VCCell panelSpecialization;
-        private VCCell panelWeapon;
+        private VCCell panelMeleeWeapon;
+        private VCCell panelRangeWeapon;
         private VCCell panelArmour;
         protected VCLabelValue lvGold;
         internal List<VCCell> slots { get; } = new List<VCCell>();
@@ -63,10 +64,11 @@ namespace Fantasy_Kingdoms_Battle
             labelNameState.ShowHintParent = true;
 
             panelSpecialization = new VCCell(this, imgIcon.NextLeft(), imgIcon.ShiftY);
-            panelWeapon = new VCCell(this, FormMain.Config.GridSize, bmpStateBackground.NextTop());
-            panelArmour = new VCCell(this, panelWeapon.NextLeft(), panelWeapon.ShiftY);
+            panelMeleeWeapon = new VCCell(this, FormMain.Config.GridSize, bmpStateBackground.NextTop());
+            panelRangeWeapon = new VCCell(this, panelMeleeWeapon.NextLeft(), panelMeleeWeapon.ShiftY);
+            panelArmour = new VCCell(this, panelRangeWeapon.NextLeft(), panelMeleeWeapon.ShiftY);
 
-            lvGold = new VCLabelValue(this, FormMain.Config.GridSize, panelWeapon.NextTop(), Color.White, true);
+            lvGold = new VCLabelValue(this, FormMain.Config.GridSize, panelMeleeWeapon.NextTop(), Color.White, true);
             lvGold.Width = imgIcon.Width;
             lvGold.StringFormat.Alignment = StringAlignment.Far;
             lvGold.ImageIndex = FormMain.GUI_16_GOLD;
@@ -160,7 +162,8 @@ namespace Fantasy_Kingdoms_Battle
 
             panelSpecialization.ShowCell(Creature.Specialization);// ImageIndex = creature.Specialization != null ? creature.Specialization.ImageIndex : -1;
 
-            panelWeapon.ShowCell(Creature.RangeWeapon != null ? Creature.RangeWeapon : Creature.MeleeWeapon);
+            panelMeleeWeapon.ShowCell(Creature.MeleeWeapon);
+            panelRangeWeapon.ShowCell(Creature.RangeWeapon);
             panelArmour.ShowCell(Creature.Armour);
 
             panelInventory.ApplyList(Creature.Inventory);
