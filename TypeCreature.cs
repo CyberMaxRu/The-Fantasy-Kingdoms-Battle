@@ -94,6 +94,11 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.TuneDeferredLinks();
 
+            foreach (Ability a in Abilities)
+            {
+                Debug.Assert(a.ClassesHeroes.IndexOf(this) != -1, $"Типу существа {ID} не доступна стартовая способность {a.ID}.");
+            }
+
             // Загружаем дефолтное оружие и доспехи
             if (nameMeleeWeapon.Length > 0)
             {
