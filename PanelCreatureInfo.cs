@@ -51,6 +51,7 @@ namespace Fantasy_Kingdoms_Battle
 
             lblKindHero = new VCLabel(this, FormMain.Config.GridSize, TopForControls(), Program.formMain.fontMedCaptionC, FormMain.Config.CommonCaptionPage, 16, "");
             lblKindHero.StringFormat.Alignment = StringAlignment.Near;
+            lblKindHero.TruncLongText = true;
 
             bmpStateBackground = new VCBitmap(this, FormMain.Config.GridSize, lblKindHero.NextTop(), Program.formMain.bmpBandStateCreature);
             bmpStateBackground.ShowHint += BmpState_ShowHint;
