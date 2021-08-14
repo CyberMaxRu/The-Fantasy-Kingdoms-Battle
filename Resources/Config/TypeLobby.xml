@@ -135,6 +135,11 @@
             <MinQuantity>5</MinQuantity>
             <MaxQuantity>6</MaxQuantity>
           </TypeConstruction>
+          <TypeConstruction>
+            <ID>ThroneLightning</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
+          </TypeConstruction>
         </TypeConstructions>
       </Layer>
       <Layer>
