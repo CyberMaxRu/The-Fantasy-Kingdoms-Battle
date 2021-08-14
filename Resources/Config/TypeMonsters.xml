@@ -1038,7 +1038,7 @@
       <ResistMagic>0</ResistMagic>
     </NextLevel>
     <Abilities>
-      <Ability>DragonBasicAttack</Ability>
+      <Ability>ElementalEarthBasicAttack</Ability>
     </Abilities>
     <Reward>
       <Gold>125</Gold>
@@ -1076,7 +1076,7 @@
       <ResistMagic>0</ResistMagic>
     </NextLevel>
     <Abilities>
-      <Ability>DragonBasicAttack</Ability>
+      <Ability>ElementalFireBasicAttack</Ability>
     </Abilities>
     <Reward>
       <Gold>125</Gold>

@@ -1683,6 +1683,7 @@
     <Effects/>
     <ClassesHeroes>
       <ClassHero>Wolf</ClassHero>
+      <ClassHero>OldWolf</ClassHero>
     </ClassesHeroes>
   </Ability>
   <Ability>
@@ -2221,6 +2222,38 @@
     <Effects/>
     <ClassesHeroes>
       <ClassHero>Rat</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>ElementalEarthBasicAttack</ID>
+    <Name>Удар</Name>
+    <Description>- Наносит малый урон</Description>
+    <ImageIndex>-1</ImageIndex>
+    <TypeAbility>MeleeAttack</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>ElementalEarth</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>ElementalFireBasicAttack</ID>
+    <Name>Удар</Name>
+    <Description>- Наносит малый урон</Description>
+    <ImageIndex>-1</ImageIndex>
+    <TypeAbility>MeleeAttack</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>ElementalFire</ClassHero>
     </ClassesHeroes>
   </Ability>
 </Abilities>
