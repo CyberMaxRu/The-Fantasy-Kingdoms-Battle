@@ -69,7 +69,7 @@ namespace Fantasy_Kingdoms_Battle
                     break;
                 case TypeAbility.RangeAttack:
                     Debug.Assert(TypeTarget != TypeTarget.Self);
-                    Debug.Assert(TypeTarget != TypeTarget.AllyUnit);
+                    //Debug.Assert(TypeTarget != TypeTarget.AllyUnit);
 
                     break;
                 case TypeAbility.Buff:
