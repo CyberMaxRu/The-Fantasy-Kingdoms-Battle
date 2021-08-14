@@ -1067,6 +1067,22 @@
     </ClassesHeroes>
   </Ability>
   <Ability>
+    <ID>WolfCommonBite</ID>
+    <Name>Общий укус</Name>
+    <Description>Вожаки стай за годы своей жизни обучились практически одновременно нападать на две цели. Наносит урон нескольким целям одновременно.</Description>
+    <ImageIndex>122</ImageIndex>
+    <TypeAbility>MeleeAttack</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>OldWolf</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
     <ID>ZombieBasicAttack</ID>
     <Name>Укус</Name>
     <Description>Поскольку зомби, в отличии от скелетов, не способны держать в руках вооружение, их оружием являются зубы, ногти и споры.</Description>
