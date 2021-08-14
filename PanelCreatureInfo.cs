@@ -35,6 +35,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VisualControl panelAbilitiesAndSecSkills;
         private readonly PanelWithPanelEntity panelInventory;
         private readonly PanelWithPanelEntity panelAbilities;
+        private readonly VCSeparator separSecSkills;
         private readonly PanelWithPanelEntity panelSecondarySkills;
         protected VCCell panelSpecialization;
         private VCCell panelMeleeWeapon;
@@ -88,6 +89,7 @@ namespace Fantasy_Kingdoms_Battle
             panelSecondarySkills.ShiftY = panelAbilities.NextTop();// Это для расчета минимальной высоты
             panelAbilitiesAndSecSkills.ArrangeControl(panelSecondarySkills);
             panelAbilitiesAndSecSkills.Height = panelSecondarySkills.NextTop();
+            separSecSkills = new VCSeparator(panelAbilitiesAndSecSkills, 0, 0);
 
             pageControl.ApplyMinSize();
 
@@ -153,6 +155,7 @@ namespace Fantasy_Kingdoms_Battle
             pageControl.Height = Height - pageControl.ShiftY - FormMain.Config.GridSize;
             lblKindHero.Width = Width - (lblKindHero.ShiftX * 2);
             labelNameState.Width = bmpStateBackground.Width - labelNameState.ShiftX - FormMain.Config.GridSize;
+            separSecSkills.Width = panelAbilities.Width;
 
             base.ArrangeControls();
         }
@@ -173,7 +176,9 @@ namespace Fantasy_Kingdoms_Battle
             panelAbilities.ApplyList(Creature.Abilities);
             panelSecondarySkills.ApplyList(Creature.SecondarySkills);
 
-            panelSecondarySkills.ShiftY = panelAbilities.NextTop();
+            separSecSkills.ShiftY = panelAbilities.NextTop();
+            panelAbilitiesAndSecSkills.ArrangeControl(separSecSkills);
+            panelSecondarySkills.ShiftY = separSecSkills.NextTop();
             panelAbilitiesAndSecSkills.ArrangeControl(panelSecondarySkills);
 
             base.Draw(g);
