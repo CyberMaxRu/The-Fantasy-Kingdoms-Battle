@@ -378,6 +378,9 @@
     </NextLevel>
     <Abilities>
       <Ability>WolfBasicAttack</Ability>
+      <Ability>ChildOfTheForest</Ability>
+      <Ability>Fangs</Ability>
+      <Ability>Predator</Ability>
     </Abilities>
     <Reward>
       <Gold>25</Gold>
@@ -416,6 +419,10 @@
     </NextLevel>
     <Abilities>
       <Ability>WolfBasicAttack</Ability>
+      <Ability>ChildOfTheForest</Ability>
+      <Ability>Fangs</Ability>
+      <Ability>Predator</Ability>
+      <Ability>LeaderOfThePack</Ability>
     </Abilities>
     <Reward>
       <Gold>25</Gold>

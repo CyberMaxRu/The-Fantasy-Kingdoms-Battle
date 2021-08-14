@@ -411,6 +411,7 @@
     <Effects/>
     <ClassesHeroes>
       <ClassHero>Cleric</ClassHero>
+      <ClassHero>Priest</ClassHero>
     </ClassesHeroes>
   </Ability>
   <Ability>
@@ -986,7 +987,7 @@
     <ID>WolfBasicAttack</ID>
     <Name>Укус</Name>
     <Description>- Наносит малый урон</Description>
-    <ImageIndex>-1</ImageIndex>
+    <ImageIndex>112</ImageIndex>
     <TypeAbility>MeleeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -996,7 +997,74 @@
     <Effects/>
     <ClassesHeroes>
       <ClassHero>Wolf</ClassHero>
-  </ClassesHeroes>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>ChildOfTheForest</ID>
+    <Name>Дитя леса</Name>
+    <Description>Леса Ардании полны всякой живности и волки в них не редкость. Волки Ардании - суровые хищники, охотящиеся стаей и доставляющие неприятности многих путникам и жителям деревень, однако звери уязвимы к стрелам охотникам. Вблизи волчьих логов добавляет 10% здоровья, уязвимость к охотничьим стрелам на 25%.</Description>
+    <ImageIndex>113</ImageIndex>
+    <TypeAbility>Passive</TypeAbility>
+    <TypeTarget>Self</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Wolf</ClassHero>
+      <ClassHero>OldWolf</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>Fangs</ID>
+    <Name>Клыки</Name>
+    <Description>Волки, как любые другие хищники, будут пытаться всеми силами догнать раненную жертву, чтобы ее загрызть. Преследует раненного героя, игнорируя других.</Description>
+    <ImageIndex>114</ImageIndex>
+    <TypeAbility>Passive</TypeAbility>
+    <TypeTarget>Self</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Wolf</ClassHero>
+      <ClassHero>OldWolf</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>Predator</ID>
+    <Name>Хищник</Name>
+    <Description>В отличии от других хищников волки собираются в стаи и нападают, тем самым многократно повышая эффективность охоты. Увеличивает скорость и урон на 10%. Требует наличия 3 и более волков.</Description>
+    <ImageIndex>115</ImageIndex>
+    <TypeAbility>Passive</TypeAbility>
+    <TypeTarget>Self</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Wolf</ClassHero>
+      <ClassHero>OldWolf</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>LeaderOfThePack</ID>
+    <Name>Вожак стаи</Name>
+    <Description>у любой стаи волков есть вожак, которому все другие подчиняются. Обычно им является уже опытный и матёрый волк. Во время битвы вожак не нападает, а смотрит на происходящим. Вступает в бой только когда появляется в этом острая нужда. Добавляет всем волкам храбрости на 20%.</Description>
+    <ImageIndex>116</ImageIndex>
+    <TypeAbility>Passive</TypeAbility>
+    <TypeTarget>Self</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>OldWolf</ClassHero>
+    </ClassesHeroes>
   </Ability>
   <Ability>
     <ID>ZombieBasicAttack</ID>
