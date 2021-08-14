@@ -37,6 +37,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal ICell Cell { get => cell; }
         internal bool DrawState { get; set; }
+        internal string HintForEmpty { get; set; }
 
         internal override void ArrangeControls()
         {
@@ -74,6 +75,9 @@ namespace Fantasy_Kingdoms_Battle
             //    ph.Selected = false;
 
             cell = c;
+
+            if (cell is null)
+                Hint = HintForEmpty;
         }
 
         protected override bool Selected()
