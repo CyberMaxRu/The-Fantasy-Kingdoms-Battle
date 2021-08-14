@@ -118,8 +118,6 @@ namespace Fantasy_Kingdoms_Battle
                             break;
                     }
 
-                    Debug.Assert(x >= Left);
-
                     switch (StringFormat.LineAlignment)
                     {
                         case StringAlignment.Near:
@@ -135,6 +133,7 @@ namespace Fantasy_Kingdoms_Battle
                     //Debug.Assert(y >= Top);
 
                     Debug.Assert(bmpPreparedText.Width + LeftMargin + RightMargin <= Width, $"Текст {preparedText} занимает {bmpPreparedText.Width} пикселей (LeftMargin {LeftMargin}, RightMargin {RightMargin}), не вмещаясь в {Width}.");
+                    Debug.Assert(x >= Left);
 
                     g.DrawImageUnscaled(bmpPreparedText, x, y + TopMargin);
                 }
