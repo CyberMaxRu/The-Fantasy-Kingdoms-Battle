@@ -378,7 +378,7 @@
     </NextLevel>
     <Abilities>
       <Ability>WolfBasicAttack</Ability>
-      <Ability>ChildOfTheForest</Ability>
+      <Ability>WolfChildOfTheForest</Ability>
       <Ability>Fangs</Ability>
       <Ability>Predator</Ability>
     </Abilities>
@@ -419,7 +419,7 @@
     </NextLevel>
     <Abilities>
       <Ability>WolfBasicAttack</Ability>
-      <Ability>ChildOfTheForest</Ability>
+      <Ability>WolfChildOfTheForest</Ability>
       <Ability>Fangs</Ability>
       <Ability>Predator</Ability>
       <Ability>LeaderOfThePack</Ability>
@@ -499,6 +499,9 @@
     </NextLevel>
     <Abilities>
       <Ability>BearBasicAttack</Ability>
+      <Ability>BearChildOfTheForest</Ability>
+      <Ability>BearPaw</Ability>
+      <Ability>BearBleeding</Ability>
     </Abilities>
     <Reward>
       <Gold>100</Gold>
@@ -537,6 +540,10 @@
     </NextLevel>
     <Abilities>
       <Ability>BearBasicAttack</Ability>
+      <Ability>BearChildOfTheForest</Ability>
+      <Ability>BearPaw</Ability>
+      <Ability>BearBleeding</Ability>
+      <Ability>BearStrongClaws</Ability>      
     </Abilities>
     <Reward>
       <Gold>100</Gold>

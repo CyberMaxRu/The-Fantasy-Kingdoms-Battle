@@ -144,7 +144,12 @@
             <ID>WolfsDen</ID>
             <MinQuantity>1</MinQuantity>
             <MaxQuantity>3</MaxQuantity>
-          </TypeConstruction>          
+          </TypeConstruction>
+          <TypeConstruction>
+            <ID>BearsDen</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>2</MaxQuantity>
+          </TypeConstruction>
         </TypeConstructions>
       </Layer>
       <Layer>

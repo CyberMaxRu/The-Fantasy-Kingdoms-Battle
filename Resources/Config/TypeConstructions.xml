@@ -2126,7 +2126,7 @@
     <Monsters>
       <Monster>
         <ID>Bear</ID>
-        <StartQuantity>2</StartQuantity>
+        <StartQuantity>3</StartQuantity>
         <MaxQuantity>10</MaxQuantity>
         <Level>5</Level>
         <DaysRespawn>2</DaysRespawn>

@@ -1000,7 +1000,7 @@
     </ClassesHeroes>
   </Ability>
   <Ability>
-    <ID>ChildOfTheForest</ID>
+    <ID>WolfChildOfTheForest</ID>
     <Name>Дитя леса</Name>
     <Description>Леса Ардании полны всякой живности и волки в них не редкость. Волки Ардании - суровые хищники, охотящиеся стаей и доставляющие неприятности многих путникам и жителям деревень, однако звери уязвимы к стрелам охотникам. Вблизи волчьих логов добавляет 10% здоровья, уязвимость к охотничьим стрелам на 25%.</Description>
     <ImageIndex>113</ImageIndex>
@@ -1277,9 +1277,9 @@
   </Ability>
   <Ability>
     <ID>BearBasicAttack</ID>
-    <Name>Укус</Name>
-    <Description>- Наносит малый урон</Description>
-    <ImageIndex>-1</ImageIndex>
+    <Name>Удар лапой</Name>
+    <Description>- Наносит средний урон</Description>
+    <ImageIndex>118</ImageIndex>
     <TypeAbility>MeleeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -1289,6 +1289,73 @@
     <Effects/>
     <ClassesHeroes>
       <ClassHero>Bear</ClassHero>
+      <ClassHero>GreatBear</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>BearChildOfTheForest</ID>
+    <Name>Дитя леса</Name>
+    <Description>Леса Ардании полны всякой живности и медведи в них не редкость. Медведи Ардании - очень опасные хищники, охотящиеся по одиночке и доставляющие неприятности многим гостям леса, однако звери уязвимы к стрелам охотникам. Вблизи медвежьих берлог добавляет 10% здоровья.уязвимость к охотничьим стрелам на 25%.</Description>
+    <ImageIndex>113</ImageIndex>
+    <TypeAbility>Passive</TypeAbility>
+    <TypeTarget>Self</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Bear</ClassHero>
+      <ClassHero>GreatBear</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>BearPaw</ID>
+    <Name>Медвежья лапа</Name>
+    <Description>Многие медведи когда спят предпочитают сосать свою лапу, тем самым делая свой сон более спокойным. Добавляет 15% к восстановлению здоровья во время отдыха.</Description>
+    <ImageIndex>119</ImageIndex>
+    <TypeAbility>Passive</TypeAbility>
+    <TypeTarget>Self</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Bear</ClassHero>
+      <ClassHero>GreatBear</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>BearBleeding</ID>
+    <Name>Кровотечение</Name>
+    <Description>Огромные медвежьи когти способны сильно калечить любых живых существ, что попадаются под лапу медведя. Вылечить такие раны можно только в гильдии, на поле боя их исцелить не могут даже лучшие лекари Ардании. При получении такого ранения героям рекомендуется как можно скорее возвращаться домой. Отнимает здоровье с течением времени.</Description>
+    <ImageIndex>120</ImageIndex>
+    <TypeAbility>Passive</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Bear</ClassHero>
+      <ClassHero>GreatBear</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>BearStrongClaws</ID>
+    <Name>Крепкие когти</Name>
+    <Description>Огромные медвежьи когти способны сильно калечить любых живых существ, что попадаются под лапу медведя. Вылечить такие раны можно только в гильдии, на поле боя их исцелить не могут даже лучшие лекари Ардании. При получении такого ранения героям рекомендуется как можно скорее возвращаться домой. Отнимает здоровье с течением времени.</Description>
+    <ImageIndex>121</ImageIndex>
+    <TypeAbility>Passive</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
       <ClassHero>GreatBear</ClassHero>
     </ClassesHeroes>
   </Ability>
