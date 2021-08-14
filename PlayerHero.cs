@@ -233,7 +233,7 @@ namespace Fantasy_Kingdoms_Battle
             ParametersWithAmmunition.DefenseArcher = Armour.DefenseArcher;
             ParametersWithAmmunition.DefenseMagic = Armour.DefenseMagic;
 
-            Debug.Assert((ParametersWithAmmunition.MaxMeleeDamage > 0) || (ParametersWithAmmunition.MaxArcherDamage > 0) || (ParametersWithAmmunition.MagicDamage > 0));
+            //Debug.Assert((ParametersWithAmmunition.MaxMeleeDamage > 0) || (ParametersWithAmmunition.MaxArcherDamage > 0) || (ParametersWithAmmunition.MagicDamage > 0));
         }
 
         internal void ValidateCell(int number)
