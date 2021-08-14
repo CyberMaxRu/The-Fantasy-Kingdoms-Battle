@@ -338,12 +338,6 @@ namespace Fantasy_Kingdoms_Battle
 
             if ((Construction.Level > 0) && (Construction.CanTrainHero() == true))
             {
-                if (Construction.TypeConstruction.Category == CategoryConstruction.Temple)
-                {
-                    MessageBox.Show("Найм храмовых героев в этой версии не реализован.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
                 Construction.HireHero();
                 Program.formMain.UpdateListHeroes();
                 Program.formMain.SetNeedRedrawFrame();
