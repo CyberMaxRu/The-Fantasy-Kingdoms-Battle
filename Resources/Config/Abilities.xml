@@ -16,6 +16,7 @@
     <Effects/>
     <ClassesHeroes>
       <ClassHero>Warrior</ClassHero>
+      <ClassHero>BladeMaster</ClassHero>
     </ClassesHeroes>
   </Ability>
   <Ability>
@@ -71,8 +72,9 @@
     <Effects/>
     <CoolDown>10</CoolDown>
       <ClassesHeroes>
-      <ClassHero>Warrior</ClassHero>
-    </ClassesHeroes>
+        <ClassHero>Warrior</ClassHero>
+        <ClassHero>BladeMaster</ClassHero>
+      </ClassesHeroes>
   </Ability>
   <Ability>
     <ID>WarriorMaimAttack</ID>
@@ -92,6 +94,7 @@
     </Effects>
       <ClassesHeroes>
       <ClassHero>Warrior</ClassHero>
+      <ClassHero>BladeMaster</ClassHero>
     </ClassesHeroes>
   </Ability>
   <Ability>
@@ -981,6 +984,689 @@
     <Effects/>
     <ClassesHeroes>
       <ClassHero>Paladin</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>BladeMasterTaunt</ID>
+    <Name>Вызов на бой</Name>
+    <Description>- Вынуждает врагов атаковать мастера меча</Description>
+    <ImageIndex>36</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Buff</TypeAbility>
+    <TypeTarget>Self</TypeTarget>
+    <MinUnitLevel>5</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <AoeRadius>5</AoeRadius>
+    <SkillModif>1,5</SkillModif>
+    <CoolDown>15</CoolDown>
+    <Effects>
+      <Effect>Taunt</Effect>
+    </Effects>
+    <ClassesHeroes>
+      <ClassHero>BladeMaster</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>BladeMasterWhirlwindAttack</ID>
+    <Name>Круговой удар</Name>
+    <Description>- Наносит средний удар всем целям в небольшом радиусе от мастера меча//- Рукопашная атака</Description>
+    <ImageIndex>123</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>MeleeAttack</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>5</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <AoeRadius>5</AoeRadius>
+    <SkillModif>2,0</SkillModif>
+    <CoolDown>10</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>BladeMaster</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>BladeMasterImpWhirlwindAttack</ID>
+    <Name>Ураган клинков</Name>
+    <Description>- Наносит большой урон всем целям в небольшом радиусе от мастера меча//- Рукопашная атака</Description>
+    <ImageIndex>124</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>MeleeAttack</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>10</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <AoeRadius>7</AoeRadius>
+    <SkillModif>3,0</SkillModif>
+    <CoolDown>30</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>BladeMaster</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>BeastMasterBasicAttack</ID>
+    <Name>Стрелковая атака</Name>
+    <Description>- Обычная атака стрелковым или метательным оружием/- Наносит урон одной цели</Description>
+    <ImageIndex>48</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>RangeAttack</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>True</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>2,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>BeastMaster</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>BeastMasterBeastSlayerAttack</ID>
+    <Name>Охотничий выстрел</Name>
+    <Description>- Наносит большой урон зверям/- Стрелковая атака</Description>
+    <ImageIndex>49</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>RangeAttack</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>True</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>4,0</SkillModif>
+    <CoolDown>10</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>BeastMaster</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>BeastMasterImpAttack</ID>
+    <Name>Меткий выстрел</Name>
+    <Description>- Наносит большой урон/- Стрелковая атака</Description>
+    <ImageIndex>51</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>RangeAttack</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>True</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>3,0</SkillModif>
+    <CoolDown>10</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>BeastMaster</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>BeastMasterSummonBeast</ID>
+    <Name>Вызов волка</Name>
+    <Description>- Вызывает волка-союзника</Description>
+    <ImageIndex>125</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Summon</TypeAbility>
+    <TypeTarget>Self</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>3,0</SkillModif>
+    <CoolDown>30</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>BeastMaster</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>BeastMasterEnrageBeast</ID>
+    <Name>Звериная ярость</Name>
+    <Description>- Накладывает на союзных зверей эффект, повышающий умение рукопашной атаки и скорость передвижения</Description>
+    <ImageIndex>126</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Buff</TypeAbility>
+    <TypeTarget>AllyUnit</TypeTarget>
+    <MinUnitLevel>5</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <AoeRadius>5</AoeRadius>
+    <SkillModif>3,0</SkillModif>
+    <CoolDown>20</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>BeastMaster</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>BeastMasterHealBeast</ID>
+    <Name>Лечение зверя</Name>
+    <Description>- Накладывает на союзных зверей эффект, восстанавливающий здоровье с течением времениы</Description>
+    <ImageIndex>127</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Buff</TypeAbility>
+    <TypeTarget>AllyUnit</TypeTarget>
+    <MinUnitLevel>5</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <AoeRadius>10</AoeRadius>
+    <SkillModif>3,0</SkillModif>
+    <CoolDown>50</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>BeastMaster</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>BeastMasterSummonBeast2</ID>
+    <Name>Вызов медведя</Name>
+    <Description>- Вызывает медведя-союзника</Description>
+    <ImageIndex>128</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Summon</TypeAbility>
+    <TypeTarget>Self</TypeTarget>
+    <MinUnitLevel>10</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>3,0</SkillModif>
+    <CoolDown>45</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>BeastMaster</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>BeastMasterAntiStunBuff</ID>
+    <Name>Каменная голова</Name>
+    <Description>- Накладывает эффект, дающий невосприимчивость к оглушению</Description>
+    <ImageIndex>129</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Buff</TypeAbility>
+    <TypeTarget>AllyUnit</TypeTarget>
+    <MinUnitLevel>5</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>20</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>BeastMaster</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>BeastMasterHoneyArrowAttack</ID>
+    <Name>Медовая стрела</Name>
+    <Description>- Наносит средний урон//- Накладывает эффект, наносящий небольшие повреждения с течением времени//- Стрелковая атака</Description>
+    <ImageIndex>130</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>RangeAttack</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>True</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>3,0</SkillModif>
+    <CoolDown>10</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>BeastMaster</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>MarksmanBasicAttack</ID>
+    <Name>Стрелковая атака</Name>
+    <Description>- Обычная атака стрелковым или метательным оружием/- Наносит урон одной цели</Description>
+    <ImageIndex>149</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>RangeAttack</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>True</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Marksman</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>MarksmanBeastSlayerAttack</ID>
+    <Name>Охотничий выстрел</Name>
+    <Description>- Наносит большой урон зверям/- Стрелковая атака</Description>
+    <ImageIndex>49</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>RangeAttack</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>True</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>4,0</SkillModif>
+    <CoolDown>10</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Marksman</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>MarksmanImpAttack</ID>
+    <Name>Меткий выстрел</Name>
+    <Description>- Наносит большой урон/- Стрелковая атака</Description>
+    <ImageIndex>150</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>RangeAttack</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>True</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>3,0</SkillModif>
+    <CoolDown>10</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Marksman</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>MarksmanHoodShotAttack</ID>
+    <Name>Смертельный выстрел</Name>
+    <Description>- Наносит огромный урон//- Стрелковая атака</Description>
+    <ImageIndex>53</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>RangeAttack</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>5</MinUnitLevel>
+    <Ranged>True</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>5,0</SkillModif>
+    <CoolDown>30</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Marksman</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>MarksmanStingShotAttack</ID>
+    <Name>Ошеломляющий выстрел</Name>
+    <Description>- Наносит средний урон/- Накладывает эффект, понижающий умения всех типов атак/- Стрелковая атака</Description>
+    <ImageIndex>52</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>RangeAttack</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>True</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>1,5</SkillModif>
+    <CoolDown>15</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Marksman</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>MarksmanSunburstAttack</ID>
+    <Name>Солнечная стрела</Name>
+    <Description>- Наносит большой урон всем целям в радиусе/- Стрелковая атака</Description>
+    <ImageIndex>131</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>RangeAttack</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>10</MinUnitLevel>
+    <Ranged>True</Ranged>
+    <AoeRadius>5</AoeRadius>
+    <SkillModif>2,0</SkillModif>
+    <CoolDown>30</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Marksman</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>MarksmanFriendlyTargetAttack</ID>
+    <Name>Огненный щит</Name>
+    <Description>- Накладывает эффект, дающий иммунитет к заморозке</Description>
+    <ImageIndex>132</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>RangeAttack</TypeAbility>
+    <TypeTarget>AllyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>True</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>50,0</SkillModif>
+    <CoolDown>15</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>Marksman</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>IceMageBasicAttack</ID>
+    <Name>Магическая атака</Name>
+    <Description>- Обычная атака магией или магическим оружием/- Наносит урон одной цели</Description>
+    <ImageIndex>55</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Spell</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>True</Ranged>
+    <MissileVelocity>10</MissileVelocity>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>2,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <ManaCost>0</ManaCost>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>IceMage</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>IceMageFrostBoltAttack</ID>
+    <Name>Ледяной шар</Name>
+    <Description>- Наносит большой урон всем целям в небольшом радиусе//- Накладывает эффект, замедляющий цель//- Требует маны//- Магическая атака</Description>
+    <ImageIndex>133</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Spell</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>True</Ranged>
+    <MissileVelocity>10</MissileVelocity>
+    <AoeRadius>3</AoeRadius>
+    <SkillModif>2,0</SkillModif>
+    <CoolDown>10</CoolDown>
+    <ManaCost>20</ManaCost>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>IceMage</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>IceMageIceBlock</ID>
+    <Name>Заморозка</Name>
+    <Description>- Наносит большой урон всем целям в радиусе заклинания//- Накладывает эффект, не позволяющий двигаться и атаковать//- Требует маны//- Магическая атака</Description>
+    <ImageIndex>134</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Spell</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>5</MinUnitLevel>
+    <Ranged>True</Ranged>
+    <MissileVelocity>15</MissileVelocity>
+    <AoeRadius>7</AoeRadius>
+    <SkillModif>3,2</SkillModif>
+    <CoolDown>20</CoolDown>
+    <ManaCost>50</ManaCost>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>IceMage</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>IceMageBlizzardAttack</ID>
+    <Name>Гнев Холода</Name>
+    <Description>- Наносит огромный урон всем целям в радиусе заклинания//- Накладывает эффект, замедляющий цель//- Требует маны//- Магическая атака</Description>
+    <ImageIndex>135</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Spell</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>10</MinUnitLevel>
+    <Ranged>True</Ranged>
+    <MissileVelocity>10</MissileVelocity>
+    <AoeRadius>7</AoeRadius>
+    <SkillModif>5,0</SkillModif>
+    <CoolDown>25</CoolDown>
+    <ManaCost>60</ManaCost>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>IceMage</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>IceMageGuardianWind</ID>
+    <Name>Леденящий ветер</Name>
+    <Description>- Наносит большой урон всем целям в радиусе от мага//- Отбрасывает противников//- Требует маны//- Магическая атака</Description>
+    <ImageIndex>136</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Spell</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>10</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <MissileVelocity>10</MissileVelocity>
+    <AoeRadius>7</AoeRadius>
+    <SkillModif>2,5</SkillModif>
+    <CoolDown>20</CoolDown>
+    <ManaCost>10</ManaCost>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>IceMage</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>IceMageShield</ID>
+    <Name>Магический щит</Name>
+    <Description>- Накладывает на мага эффект, повышающий защиту от рукопашных и магических атак//- Требует маны</Description>
+    <ImageIndex>137</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Spell</TypeAbility>
+    <TypeTarget>Self</TypeTarget>
+    <MinUnitLevel>5</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>2,5</SkillModif>
+    <CoolDown>60</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>IceMage</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>DeathKnightBasicAttack</ID>
+    <Name>Рукопашная атака</Name>
+    <Description>- Обычная атака рукопашным оружием//- Наносит урон одной цели</Description>
+    <ImageIndex>138</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>MeleeAttack</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>DeathKnight</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>DeathKnightPoisonAttack</ID>
+    <Name>Черный яд</Name>
+    <Description>- Наносит средний урон//- Накладывает эффект, наносящий небольшие повреждения с течением времени//- Рукопашная атака</Description>
+    <ImageIndex>139</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>MeleeAttack</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>10</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>2,0</SkillModif>
+    <CoolDown>40</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>DeathKnight</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>DeathKnightStunAttack</ID>
+    <Name>Умелое оглушение</Name>
+    <Description>- Наносит большой урон//- Накладывает эффект, не позволяющий двигаться и атаковать//- Рукопашная атака</Description>
+    <ImageIndex>140</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>MeleeAttack</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>5</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>3,0</SkillModif>
+    <CoolDown>40</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>DeathKnight</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>DeathKnightDebuff1Attack</ID>
+    <Name>Первый удар Ночи</Name>
+    <Description>- Наносит средний урон//- Накладывает эффект, незначительно понижающий защиту от магических атак//- Магическая атака</Description>
+    <ImageIndex>141</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>MeleeAttack</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>2,0</SkillModif>
+    <CoolDown>20</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>DeathKnight</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>DeathKnightDebuff2Attack</ID>
+    <Name>Второй удар Ночи</Name>
+    <Description>- Наносит средний урон//- Накладывает эффект, понижающий защиту от магических атак//- Магическая атака</Description>
+    <ImageIndex>142</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>MeleeAttack</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>2,0</SkillModif>
+    <CoolDown>20</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>DeathKnight</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>DeathKnightDebuff3Attack</ID>
+    <Name>Третий удар Ночи</Name>
+    <Description>- Наносит средний урон//- Накладывает эффект, значительно понижающий защиту от магических атак//- Магическая атака</Description>
+    <ImageIndex>143</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>MeleeAttack</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>2,0</SkillModif>
+    <CoolDown>20</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>DeathKnight</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>FireMageBasicAttack</ID>
+    <Name>Магическая атака</Name>
+    <Description>- Обычная атака магией или магическим оружием//- Наносит урон одной цели</Description>
+    <ImageIndex>144</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Spell</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>2,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>FireMage</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>FireMageFireWeapon</ID>
+    <Name>Огненное оружие</Name>
+    <Description>- Улучшает ближнюю и дистанционную атаки союзников//- Требует маны</Description>
+    <ImageIndex>145</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Buff</TypeAbility>
+    <TypeTarget>AllyUnit</TypeTarget>
+    <MinUnitLevel>3</MinUnitLevel>
+    <Ranged>True</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>2,0</SkillModif>
+    <CoolDown>35</CoolDown>
+    <ManaCost>10</ManaCost>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>FireMage</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>FireMageFireBallAttack</ID>
+    <Name>Огненный шар</Name>
+    <Description>- Наносит средний урон в малом радиусе//- Противник некоторое время продолжает гореть//- Требует маны//- Магическая атака</Description>
+    <ImageIndex>63</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Spell</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>3</MinUnitLevel>
+    <Ranged>True</Ranged>
+    <AoeRadius>3</AoeRadius>
+    <SkillModif>3,0</SkillModif>
+    <CoolDown>6</CoolDown>
+    <ManaCost>10</ManaCost>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>FireMage</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>FireMageFireWall</ID>
+    <Name>Огненный поток</Name>
+    <Description>- Наносит огромный урон противнику в среднем радиусе//- Противник некоторое время продолжает гореть//- Требует маны//- Магическая атака</Description>
+    <ImageIndex>146</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Spell</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>10</MinUnitLevel>
+    <Ranged>True</Ranged>
+    <AoeRadius>2</AoeRadius>
+    <SkillModif>5,5</SkillModif>
+    <CoolDown>30</CoolDown>
+    <ManaCost>15</ManaCost>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>FireMage</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>FireMageFireStorm</ID>
+    <Name>Огненный взрыв</Name>
+    <Description>- Наносит большой урон противнику//- Противник некоторое время продолжает гореть//- Требует маны//- Магическая атака</Description>
+    <ImageIndex>147</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Spell</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>10</MinUnitLevel>
+    <Ranged>True</Ranged>
+    <AoeRadius>5</AoeRadius>
+    <SkillModif>5,5</SkillModif>
+    <CoolDown>20</CoolDown>
+    <ManaCost>15</ManaCost>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>FireMage</ClassHero>
+    </ClassesHeroes>
+  </Ability>
+  <Ability>
+    <ID>FireMageFireShield</ID>
+    <Name>Огненный щит</Name>
+    <Description>- Снижает получаемый урон от всех видов атак//- Требует маны</Description>
+    <ImageIndex>148</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>Buff</TypeAbility>
+    <TypeTarget>Self</TypeTarget>
+    <MinUnitLevel>3</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>60</CoolDown>
+    <ManaCost>20</ManaCost>
+    <Effects/>
+    <ClassesHeroes>
+      <ClassHero>FireMage</ClassHero>
     </ClassesHeroes>
   </Ability>
   <Ability>

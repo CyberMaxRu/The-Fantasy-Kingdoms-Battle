@@ -1480,12 +1480,12 @@
       <ResistMagic>0</ResistMagic>
     </NextLevel>
     <Abilities>
-      <Ability>HammerBasicAttack</Ability>
-      <Ability>PaladinTaunt</Ability>
-      <Ability>PaladinImpAttack</Ability>
-      <Ability>PaladinResistanceBuff</Ability>
-      <Ability>PaladinHolyNovaAttack</Ability>
-      <Ability>PaladinChargeAttack</Ability>
+      <Ability>WarriorBasicAttack</Ability>
+      <Ability>WarriorImpAttack</Ability>
+      <Ability>BladeMasterTaunt</Ability>
+      <Ability>BladeMasterWhirlwindAttack</Ability>
+      <Ability>WarriorMaimAttack</Ability>
+      <Ability>BladeMasterImpWhirlwindAttack</Ability>
     </Abilities>
     <CarryItems>
       <Item MaxQuantity="5">PotionOfHealth</Item>
@@ -1570,12 +1570,15 @@
       <ResistMagic>0</ResistMagic>
     </NextLevel>
     <Abilities>
-      <Ability>HammerBasicAttack</Ability>
-      <Ability>PaladinTaunt</Ability>
-      <Ability>PaladinImpAttack</Ability>
-      <Ability>PaladinResistanceBuff</Ability>
-      <Ability>PaladinHolyNovaAttack</Ability>
-      <Ability>PaladinChargeAttack</Ability>
+      <Ability>BeastMasterBasicAttack</Ability>
+      <Ability>BeastMasterBeastSlayerAttack</Ability>
+      <Ability>BeastMasterImpAttack</Ability>
+      <Ability>BeastMasterSummonBeast</Ability>
+      <Ability>BeastMasterEnrageBeast</Ability>
+      <Ability>BeastMasterHealBeast</Ability>
+      <Ability>BeastMasterSummonBeast2</Ability>
+      <Ability>BeastMasterAntiStunBuff</Ability>
+      <Ability>BeastMasterHoneyArrowAttack</Ability>
     </Abilities>
     <CarryItems>
       <Item MaxQuantity="5">PotionOfHealth</Item>
@@ -1662,12 +1665,13 @@
       <ResistMagic>0</ResistMagic>
     </NextLevel>
     <Abilities>
-      <Ability>HammerBasicAttack</Ability>
-      <Ability>PaladinTaunt</Ability>
-      <Ability>PaladinImpAttack</Ability>
-      <Ability>PaladinResistanceBuff</Ability>
-      <Ability>PaladinHolyNovaAttack</Ability>
-      <Ability>PaladinChargeAttack</Ability>
+      <Ability>MarksmanBasicAttack</Ability>
+      <Ability>MarksmanBeastSlayerAttack</Ability>
+      <Ability>MarksmanImpAttack</Ability>
+      <Ability>MarksmanHoodShotAttack</Ability>
+      <Ability>MarksmanStingShotAttack</Ability>
+      <Ability>MarksmanSunburstAttack</Ability>
+      <Ability>MarksmanFriendlyTargetAttack</Ability>
     </Abilities>
     <CarryItems>
       <Item MaxQuantity="5">PotionOfHealth</Item>
@@ -1733,6 +1737,7 @@
     <DefaultPositionPriority>250</DefaultPositionPriority>
     <NameFromTypeHero>Mage</NameFromTypeHero>
     <SurnameFromTypeHero>Mage</SurnameFromTypeHero>
+    <PrefixName>Мастер</PrefixName>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -1755,12 +1760,12 @@
       <ResistMagic>0</ResistMagic>
     </NextLevel>
     <Abilities>
-      <Ability>HammerBasicAttack</Ability>
-      <Ability>PaladinTaunt</Ability>
-      <Ability>PaladinImpAttack</Ability>
-      <Ability>PaladinResistanceBuff</Ability>
-      <Ability>PaladinHolyNovaAttack</Ability>
-      <Ability>PaladinChargeAttack</Ability>
+      <Ability>FireMageBasicAttack</Ability>
+      <Ability>FireMageFireWeapon</Ability>
+      <Ability>FireMageFireBallAttack</Ability>
+      <Ability>FireMageFireWall</Ability>
+      <Ability>FireMageFireStorm</Ability>
+      <Ability>FireMageFireShield</Ability>
     </Abilities>
     <CarryItems>
       <Item MaxQuantity="5">PotionOfHealth</Item>
@@ -1804,12 +1809,12 @@
       <ResistMagic>0</ResistMagic>
     </NextLevel>
     <Abilities>
-      <Ability>HammerBasicAttack</Ability>
-      <Ability>PaladinTaunt</Ability>
-      <Ability>PaladinImpAttack</Ability>
-      <Ability>PaladinResistanceBuff</Ability>
-      <Ability>PaladinHolyNovaAttack</Ability>
-      <Ability>PaladinChargeAttack</Ability>
+      <Ability>IceMageBasicAttack</Ability>
+      <Ability>IceMageFrostBoltAttack</Ability>
+      <Ability>IceMageIceBlock</Ability>
+      <Ability>IceMageBlizzardAttack</Ability>
+      <Ability>IceMageGuardianWind</Ability>
+      <Ability>IceMageShield</Ability>
     </Abilities>
     <CarryItems>
       <Item MaxQuantity="5">PotionOfHealth</Item>
@@ -1876,12 +1881,12 @@
       <ResistMagic>0</ResistMagic>
     </NextLevel>
     <Abilities>
-      <Ability>HammerBasicAttack</Ability>
-      <Ability>PaladinTaunt</Ability>
-      <Ability>PaladinImpAttack</Ability>
-      <Ability>PaladinResistanceBuff</Ability>
-      <Ability>PaladinHolyNovaAttack</Ability>
-      <Ability>PaladinChargeAttack</Ability>
+      <Ability>DeathKnightBasicAttack</Ability>
+      <Ability>DeathKnightPoisonAttack</Ability>
+      <Ability>DeathKnightStunAttack</Ability>
+      <Ability>DeathKnightDebuff1Attack</Ability>
+      <Ability>DeathKnightDebuff2Attack</Ability>
+      <Ability>DeathKnightDebuff3Attack</Ability>
     </Abilities>
     <CarryItems>
       <Item MaxQuantity="5">PotionOfHealth</Item>
