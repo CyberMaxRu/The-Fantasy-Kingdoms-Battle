@@ -164,7 +164,7 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override void DoPrepareHint()
         {
-            base.DoPrepareHint();
+            Program.formMain.formHint.AddStep1Header(Name, $"Уровень: {MinUnitLevel}", Description);
         }
     }
 }
