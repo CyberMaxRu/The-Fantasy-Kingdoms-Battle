@@ -39,7 +39,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (Lair is null)
             { 
-                Program.formMain.formHint.AddHeader(Lair != null ? Lair.NameLair() : "Флаг не назначен");
+                Program.formMain.formHint.AddSimpleHint(Lair != null ? Lair.NameLair() : "Флаг не назначен");
             }
             else
             {

@@ -27,7 +27,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (Info is null)
             {
-                Program.formMain.formHint.AddHeader("Поражения нет");
+                Program.formMain.formHint.AddSimpleHint("Поражения нет");
             }
             else
             {

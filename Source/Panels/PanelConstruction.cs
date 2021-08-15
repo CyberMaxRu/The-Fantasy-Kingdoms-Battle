@@ -438,7 +438,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (Construction.Cashback() == 0)
                 {
-                    Program.formMain.formHint.AddHeader("Отмена флага разведки");
+                    Program.formMain.formHint.AddSimpleHint("Отмена флага разведки");
                 }
                 else
                 {
@@ -450,7 +450,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (Construction.Cashback() == 0)
                 {
-                    Program.formMain.formHint.AddHeader("Отмена флага атаки");
+                    Program.formMain.formHint.AddSimpleHint("Отмена флага атаки");
                 }
                 else
                 {

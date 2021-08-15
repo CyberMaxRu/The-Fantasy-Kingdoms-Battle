@@ -209,13 +209,14 @@ namespace Fantasy_Kingdoms_Battle
             nextTop = FormMain.Config.GridSize;
         }
 
-        internal void AddHeader(string header)
+        internal void AddSimpleHint(string header)
         {
             Debug.Assert(lblHeader.Text == "");
             Debug.Assert(header != null);
             Debug.Assert(header.Length > 0);
 
             ExistHint = true;
+            lblHeader.Color = Color.White;
             lblHeader.ShiftY = nextTop;
             lblHeader.Width = widthControl;
             lblHeader.Text = header;
@@ -247,6 +248,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Width = 256;
             ExistHint = true;
+            lblHeader.Color = Color.Yellow;
             lblHeader.ShiftY = nextTop;
             lblHeader.Width = widthControl;
             lblHeader.Text = header;

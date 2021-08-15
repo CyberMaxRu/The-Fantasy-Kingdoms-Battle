@@ -830,7 +830,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void PageTemples_ShowHint(object sender, EventArgs e)
         {
-            formHint.AddHeader("Храмы");
+            formHint.AddSimpleHint("Храмы");
         }
 
         private void LabelGreatness_ShowHint(object sender, EventArgs e)
@@ -869,17 +869,17 @@ namespace Fantasy_Kingdoms_Battle
 
         private void PageEconomicConstructions_ShowHint(object sender, EventArgs e)
         {
-            formHint.AddHeader("Экономические строения");
+            formHint.AddSimpleHint("Экономические строения");
         }
         
         private void PageResultTurn_ShowHint(object sender, EventArgs e)
         {
-            formHint.AddHeader("Итоги хода");
+            formHint.AddSimpleHint("Итоги хода");
         }
 
         private void PageGuilds_ShowHint(object sender, EventArgs e)
         {
-            formHint.AddHeader("Гильдии и военные сооружения");
+            formHint.AddSimpleHint("Гильдии и военные сооружения");
         }
 
         private void PageLairs_ShowHint(object sender, EventArgs e)

@@ -183,7 +183,7 @@ namespace Fantasy_Kingdoms_Battle
             if (Hint != null)
             {
                 Program.formMain.formHint.Clear();
-                Program.formMain.formHint.AddHeader(Hint);
+                Program.formMain.formHint.AddSimpleHint(Hint);
                 Program.formMain.formHint.DrawHint(this);
             }
             else if (ShowHintParent && Parent.ShowHint != null)
