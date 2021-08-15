@@ -1644,6 +1644,8 @@
         <Cost>3000</Cost>
         <Builders>3</Builders>
         <Income>0</Income>
+        <GreatnessByConstruction>100</GreatnessByConstruction>
+        <GreatnessPerDay>25</GreatnessPerDay>
         <MaxHeroes>2</MaxHeroes>
         <Requirements>
           <Requirement>
@@ -1680,6 +1682,8 @@
         <Cost>3000</Cost>
         <Builders>3</Builders>
         <Income>0</Income>
+        <GreatnessByConstruction>100</GreatnessByConstruction>
+        <GreatnessPerDay>25</GreatnessPerDay>
         <MaxHeroes>2</MaxHeroes>
         <Requirements>
           <Requirement>
@@ -1716,6 +1720,8 @@
         <Cost>3000</Cost>
         <Builders>3</Builders>
         <Income>0</Income>
+        <GreatnessByConstruction>100</GreatnessByConstruction>
+        <GreatnessPerDay>25</GreatnessPerDay>
         <MaxHeroes>2</MaxHeroes>
         <Requirements>
           <Requirement>
@@ -1752,6 +1758,8 @@
         <Cost>3000</Cost>
         <Builders>3</Builders>
         <Income>0</Income>
+        <GreatnessByConstruction>100</GreatnessByConstruction>
+        <GreatnessPerDay>25</GreatnessPerDay>
         <MaxHeroes>2</MaxHeroes>
         <Requirements>
           <Requirement>
@@ -1788,6 +1796,8 @@
         <Cost>3000</Cost>
         <Builders>3</Builders>
         <Income>0</Income>
+        <GreatnessByConstruction>100</GreatnessByConstruction>
+        <GreatnessPerDay>25</GreatnessPerDay>
         <MaxHeroes>2</MaxHeroes>
         <Requirements>
           <Requirement>
@@ -1824,6 +1834,8 @@
         <Cost>3000</Cost>
         <Builders>3</Builders>
         <Income>0</Income>
+        <GreatnessByConstruction>100</GreatnessByConstruction>
+        <GreatnessPerDay>25</GreatnessPerDay>
         <MaxHeroes>2</MaxHeroes>
         <Requirements>
           <Requirement>
@@ -1860,6 +1872,8 @@
         <Cost>3000</Cost>
         <Builders>3</Builders>
         <Income>0</Income>
+        <GreatnessByConstruction>100</GreatnessByConstruction>
+        <GreatnessPerDay>25</GreatnessPerDay>
         <MaxHeroes>2</MaxHeroes>
         <Requirements>
           <Requirement>
@@ -1896,6 +1910,8 @@
         <Cost>3000</Cost>
         <Builders>3</Builders>
         <Income>0</Income>
+        <GreatnessByConstruction>100</GreatnessByConstruction>
+        <GreatnessPerDay>25</GreatnessPerDay>
         <MaxHeroes>2</MaxHeroes>
         <Requirements>
           <Requirement>
@@ -1932,6 +1948,8 @@
         <Cost>3000</Cost>
         <Builders>3</Builders>
         <Income>0</Income>
+        <GreatnessByConstruction>100</GreatnessByConstruction>
+        <GreatnessPerDay>25</GreatnessPerDay>
         <MaxHeroes>2</MaxHeroes>
         <Requirements>
           <Requirement>
