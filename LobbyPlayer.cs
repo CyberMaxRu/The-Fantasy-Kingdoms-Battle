@@ -97,12 +97,12 @@ namespace Fantasy_Kingdoms_Battle
             PlayerHero treasurer = Castle.HireHero(FormMain.Config.FindTypeHero("Treasurer"));
 
             //
-            AddItem(new PlayerItem(FormMain.Config.FindItem("PotionOfHealth"), 10, true));
+            /*AddItem(new PlayerItem(FormMain.Config.FindItem("PotionOfHealth"), 10, true));
             AddItem(new PlayerItem(FormMain.Config.FindItem("PotionOfHealth"), 10, true));
             AddItem(new PlayerItem(FormMain.Config.FindItem("PotionOfMana"), 10, true));
             AddItem(new PlayerItem(FormMain.Config.FindItem("Regeneration"), 1, true));
             AddItem(new PlayerItem(FormMain.Config.FindItem("Protection"), 1, true));
-            AddItem(new PlayerItem(FormMain.Config.FindItem("ImpProtection"), 2, true));
+            AddItem(new PlayerItem(FormMain.Config.FindItem("ImpProtection"), 2, true));*/
 
             ValidateHeroes();
 
