@@ -29,9 +29,8 @@ namespace Fantasy_Kingdoms_Battle
         internal bool gameStarted = false;
         private bool needRepaintFrame = false;
 
-        // Проигрывание звуков и музыки 
-        private readonly System.Windows.Media.MediaPlayer mpMusic;
-        private readonly System.Windows.Media.MediaPlayer mpMainTheme;
+        // Проигрывание звуков и музыки
+        private readonly PlayerMusic playerMusic;
         private readonly System.Windows.Media.MediaPlayer mpSoundSelect;
         private readonly System.Windows.Media.MediaPlayer mpSelectButton;
         private readonly System.Windows.Media.MediaPlayer mpPushButton;
@@ -755,9 +754,7 @@ namespace Fantasy_Kingdoms_Battle
                 pageControl.ActivatePage(pageResultTurn);
 
                 //
-                mpMusic = new System.Windows.Media.MediaPlayer();
-                mpMainTheme = new System.Windows.Media.MediaPlayer();
-                mpMainTheme.Open(new Uri(dirResources + @"Music\main_menu_music.mp3"));
+                playerMusic = new PlayerMusic(dirResources);
                 mpSoundSelect = new System.Windows.Media.MediaPlayer();
                 mpSelectButton = new System.Windows.Media.MediaPlayer();
                 mpSelectButton.Open(new Uri(dirResources + @"Sound\Interface\Button\SelectButton.wav"));
@@ -789,7 +786,7 @@ namespace Fantasy_Kingdoms_Battle
                 //MediaElement me = new MediaElement()
                 //me.Parent = this;
 
-                PlayMainTheme();
+                playerMusic.PlayMainTheme();
 
                 //ImportNames();// Однократная операция
 
@@ -1454,9 +1451,10 @@ namespace Fantasy_Kingdoms_Battle
                 ((PanelPlayer)panelPlayers.Controls[i]).LinkToLobby(lobby.Players[i]);
             }
 
-            StopMainTheme();
+
+            playerMusic.PlayMusic();
             ExchangeLayer(layerMainMenu, layerGame);
-            
+
             AdjustNeighborhood();
             listButtonsLayers[0].DoClick();
             pageControl.ActivatePage(pageResultTurn);
@@ -1482,18 +1480,8 @@ namespace Fantasy_Kingdoms_Battle
             {
                 ExchangeLayer(layerGame, layerMainMenu);
                 ShowFrame(true);
-                PlayMainTheme();
+                playerMusic.PlayMainTheme();
             }
-        }
-
-        private void PlayMainTheme()
-        {
-            mpMainTheme.Play();
-        }
-
-        private void StopMainTheme()
-        {
-            mpMainTheme.Stop();
         }
 
         internal void SetNeedRedrawFrame()
