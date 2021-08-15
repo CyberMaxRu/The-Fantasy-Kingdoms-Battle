@@ -27,13 +27,14 @@ namespace Fantasy_Kingdoms_Battle
         private readonly Label lblDefenseRange;
         private readonly Label lblDefenseMagic;
         private readonly Button btnDismiss;
-        private readonly VCCell btnTarget;
+        private readonly VCButtonTargetLair btnTarget;
 
         public PanelHeroInfo(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
-            btnTarget = new VCCell(this, panelSpecialization.ShiftX, panelSpecialization.NextTop());
-            btnTarget.ShowHint += BtnTarget_ShowHint;
-            btnTarget.Click += BtnTarget_Click;
+            btnTarget = new VCButtonTargetLair(this);
+            btnTarget.ShiftX = panelSpecialization.ShiftX;
+            btnTarget.ShiftY = panelSpecialization.NextTop();
+            btnTarget.ShowFlag = false;
 
             btnDismiss = new Button()
             {
@@ -80,25 +81,6 @@ namespace Fantasy_Kingdoms_Battle
                     slots[x + y * FormMain.SLOTS_IN_LINE] = pb;
                 }
             }*/
-        }
-
-        private void BtnTarget_Click(object sender, EventArgs e)
-        {
-            if (Hero.TargetByFlag != null)
-                (Hero.TargetByFlag as ICell).Click(btnTarget);
-        }
-
-        private void BtnTarget_ShowHint(object sender, EventArgs e)
-        {
-            if (Hero.TargetByFlag != null)
-            {
-                if (Hero.TargetByFlag.TypeFlag != TypeFlag.Battle)
-                    Hero.TargetByFlag.PrepareHint();
-                else
-                    Program.formMain.formHint.AddStep1Header("Битва против игрока", "", Hero.TargetByFlag.ListHeroesForHint());
-            }
-            else
-                Program.formMain.formHint.AddHeader("Герой не выполняет флага");
         }
 
         internal PlayerHero Hero { get => PlayerObject as PlayerHero; }

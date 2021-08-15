@@ -17,6 +17,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal PlayerConstruction Lair { get => Cell as PlayerConstruction; }
+        internal bool ShowFlag { get; set; } = true;
 
         internal override void DoClick()
         {
@@ -100,7 +101,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.PaintForeground(g);
 
-            if (Lair != null)
+            if ((Lair != null) && ShowFlag)
             {
                 int imageIndex;
                 switch (Lair.TypeFlag)
