@@ -58,6 +58,7 @@ namespace Fantasy_Kingdoms_Battle
             // Если игрок вылете из лобби на предыдущем ходу, сообщаем его итоговое место и выходим
             if (DayOfEndGame > 0)
             {
+                Program.formMain.playerMusic.PlayLossLobbyTheme();
                 WindowInfo.ShowInfo("ПОРАЖЕНИЕ", $"Вы заняли {PositionInLobby} место.");
                 return;
             }
@@ -88,6 +89,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PlayerIsWin()
         {
+            Program.formMain.playerMusic.PlayWinLobbyTheme();
             WindowInfo.ShowInfo("ПОБЕДА!", $"Поздравлям, вы победитель!");
         }
     }

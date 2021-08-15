@@ -30,7 +30,7 @@ namespace Fantasy_Kingdoms_Battle
         private bool needRepaintFrame = false;
 
         // Проигрывание звуков и музыки
-        private readonly PlayerMusic playerMusic;
+        internal readonly PlayerMusic playerMusic;
         private readonly System.Windows.Media.MediaPlayer mpSoundSelect;
         private readonly System.Windows.Media.MediaPlayer mpSelectButton;
         private readonly System.Windows.Media.MediaPlayer mpPushButton;
