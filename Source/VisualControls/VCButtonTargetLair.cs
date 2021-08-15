@@ -47,7 +47,7 @@ namespace Fantasy_Kingdoms_Battle
                 if (Lair.TypeFlag != TypeFlag.Battle)
                     Program.formMain.formHint.AddStep1Header(Lair.NameLair(), "", Lair.ListHeroesForHint());
                 else
-                    Program.formMain.formHint.AddStep1Header("Битва против игрока", "", Lair.ListHeroesForHint());
+                    Program.formMain.formHint.AddStep1Header("Битва против игрока", "Игрок: неизвестен", Lair.ListHeroesForHint());
             }
 
             return true;
