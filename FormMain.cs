@@ -1451,9 +1451,11 @@ namespace Fantasy_Kingdoms_Battle
                 ((PanelPlayer)panelPlayers.Controls[i]).LinkToLobby(lobby.Players[i]);
             }
 
-
-            playerMusic.PlayMusic();
-            ExchangeLayer(layerMainMenu, layerGame);
+            if (currentLayer != layerGame)
+            {
+                playerMusic.PlayMusic();
+                ExchangeLayer(layerMainMenu, layerGame);
+            }
 
             AdjustNeighborhood();
             listButtonsLayers[0].DoClick();
@@ -1461,6 +1463,15 @@ namespace Fantasy_Kingdoms_Battle
             ShowCurrentPlayerLobby();
 
             lobby.Start();
+        }
+
+        internal void RestartLobby()
+        {
+            Debug.Assert(lobby != null);
+            lobby.ExitFromLobby();
+            lobby = null;
+
+            StartNewLobby();
         }
 
         internal void EndLobby()
@@ -1731,8 +1742,7 @@ namespace Fantasy_Kingdoms_Battle
                     EndLobby();
                     break;
                 case DialogAction.RestartGame:
-                    Program.formMain.EndLobby();
-                    Program.formMain.StartNewLobby();
+                    RestartLobby();
                     break;
                 default:
                     throw new Exception($"Неизвестное действие: {dr}.");
