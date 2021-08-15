@@ -96,6 +96,35 @@ namespace Fantasy_Kingdoms_Battle
             base.Draw(g);
         }
 
+        internal override void PaintForeground(Graphics g)
+        {
+            base.PaintForeground(g);
+
+            if (Lair != null)
+            {
+                int imageIndex;
+                switch (Lair.TypeFlag)
+                {
+                    case TypeFlag.Scout:
+                        imageIndex = FormMain.GUI_16_FLAG_SCOUT;
+                        break;
+                    case TypeFlag.Attack:
+                        imageIndex = FormMain.GUI_16_FLAG_ATTACK;
+                        break;
+                    case TypeFlag.Defense:
+                        imageIndex = FormMain.GUI_16_FLAG_DEFENSE;
+                        break;
+                    case TypeFlag.Battle:
+                        imageIndex = FormMain.GUI_16_FLAG_ATTACK;
+                        break;
+                    default:
+                        throw new Exception($"Неизвестный тип флага: {Lair.TypeFlag}.");
+                }
+
+                g.DrawImageUnscaled(Program.formMain.ilGui16.GetImage(imageIndex, true, false), Left - (Program.formMain.ilGui16.Size / 2) + 4, Top - (Program.formMain.ilGui16.Size / 2) + 4);
+            }
+        }
+
         protected override bool Selected()
         {
             return (Lair != null) && Program.formMain.PlayerObjectIsSelected(Lair);

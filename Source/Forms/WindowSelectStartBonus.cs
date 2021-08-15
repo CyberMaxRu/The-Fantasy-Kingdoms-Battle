@@ -46,7 +46,7 @@ namespace Fantasy_Kingdoms_Battle
                 if (sb.TradePlace > 0)
                     AddBonus(text, sb.TradePlace.ToString(), $"+{sb.TradePlace} торговых мест", FormMain.GUI_16_TRADEPOST);
                 if (sb.Scouting > 0)
-                    AddBonus(text, sb.Scouting.ToString(), $"+{sb.Scouting} разведанных мест", FormMain.GUI_16_SCOUT);
+                    AddBonus(text, sb.Scouting.ToString(), $"+{sb.Scouting} разведанных мест", FormMain.GUI_16_FLAG_SCOUT);
 
                 text.Width = 160;
                 text.Height = 200;
