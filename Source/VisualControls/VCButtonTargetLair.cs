@@ -71,7 +71,7 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
             {
-                ImageIsEnabled = true;
+                ImageIsEnabled = Lair.listAttackedHero.Count > 0;
                 Quantity = Lair.listAttackedHero.Count();
 
                 if (Lair.TypeFlag != TypeFlag.Battle)
