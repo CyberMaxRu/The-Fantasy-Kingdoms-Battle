@@ -27,6 +27,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal VisualControl Page { get; }
+        internal PlayerObject SelectedPlayerObject { get; set; }
     }
 
     // Класс кнопок со страницами
@@ -92,10 +93,12 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     CurrentPage.ManualSelected = false;
                     CurrentPage.Page.Visible = false;
+                    CurrentPage.SelectedPlayerObject = Program.formMain.selectedPlayerObject;
                 }
                 CurrentPage = pc;
                 CurrentPage.ManualSelected = true;
                 CurrentPage.Page.Visible = true;
+                Program.formMain.SelectPlayerObject(CurrentPage.SelectedPlayerObject);
 
                 Program.formMain.SetNeedRedrawFrame();
 

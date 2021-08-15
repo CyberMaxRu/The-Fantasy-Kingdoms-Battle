@@ -106,7 +106,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCButton btnAboutProgram;
         private readonly VCButton btnExitToWindows;
 
-        private PlayerObject selectedPlayerObject;
+        internal PlayerObject selectedPlayerObject;
 
         // Главные страницы игры
         private readonly VCPageControl pageControl;
@@ -2230,7 +2230,9 @@ namespace Fantasy_Kingdoms_Battle
                     panelEmptyInfo.Visible = false;
 
                 if (selectedPlayerObject != null)
+                {
                     selectedPlayerObject.HideInfo();
+                }
 
                 selectedPlayerObject = po;
                 if (selectedPlayerObject != null)
