@@ -33,5 +33,25 @@ namespace Fantasy_Kingdoms_Battle
         {
             return (left <= x) && (top <= y) && (left + width >= x) && (top + height >= y);
         }
+
+        internal static string FormatGreatness(int add, int perDay)
+        {
+            if ((add == 0) && (perDay == 0))
+                return null;
+
+            string text = "";
+
+            if (add > 0)
+                text = add.ToString();
+
+            if (perDay > 0)
+            {
+                if (add > 0)
+                    text += ", ";
+                text += $"+{perDay}/д.";
+            }
+
+            return text;
+        }
     }
 }

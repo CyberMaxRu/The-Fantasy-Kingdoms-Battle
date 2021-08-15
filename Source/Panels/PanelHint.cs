@@ -311,18 +311,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 lblGreatnessAdd.ShiftY = nextTop;
                 lblGreatnessAdd.Visible = true;
-                lblGreatnessAdd.Text = "";
-
-                if (addGreatness > 0)
-                    lblGreatnessAdd.Text = addGreatness.ToString();
-
-                if (greatnessPerDay > 0)
-                {
-                    if (addGreatness > 0)
-                        lblGreatnessAdd.Text += ", ";
-                    lblGreatnessAdd.Text += $"+{greatnessPerDay}/день";
-                }
-
+                lblGreatnessAdd.Text = Utils.FormatGreatness(addGreatness, greatnessPerDay);
                 nextTop = lblGreatnessAdd.NextTop();
             }
         }

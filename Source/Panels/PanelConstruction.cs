@@ -66,7 +66,7 @@ namespace Fantasy_Kingdoms_Battle
             lblGreatness.ImageIndex = FormMain.GUI_16_GREATNESS;
             lblGreatness.StringFormat.Alignment = StringAlignment.Near;
             lblGreatness.Color = FormMain.Config.HintIncome;
-            lblGreatness.Hint = "Прибавление величия в день";
+            lblGreatness.Hint = "Прибавление величия при строительстве и в день";
 
             btnAction = new VCIconButton(this, imgMapObject.NextLeft(), imgMapObject.NextTop(), Program.formMain.ilGui, FormMain.GUI_BATTLE);
             btnAction.Click += BtnAction_Click;
@@ -153,11 +153,17 @@ namespace Fantasy_Kingdoms_Battle
                 else
                     lblIncome.Visible = false;
 
-                int greatness = Construction.Level > 0 ? Construction.GreatnessPerDay() : Construction.GreatnessPerDayNextLevel();
-                lblGreatness.Visible = greatness > 0;
+                bool needShowGreatness = Construction.Level > 0
+                        ? Construction.GreatnessPerDay() > 0
+                        : (Construction.GreatnessPerDayNextLevel() > 0) || (Construction.GreatnessAddNextLevel() > 0);
+                lblGreatness.Visible = needShowGreatness;
                 if (lblGreatness.Visible)
                 {
-                    lblGreatness.Text = $"+{greatness}";
+                    if (Construction.Level == 0)
+                        lblGreatness.Text = Utils.FormatGreatness(Construction.GreatnessAddNextLevel(), Construction.GreatnessPerDayNextLevel());
+                    else
+                        lblGreatness.Text = Utils.FormatGreatness(0, Construction.GreatnessPerDay());
+
                     lblGreatness.Color = FormMain.Config.ColorGreatness(Construction.Level > 0);
                 }
 
