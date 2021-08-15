@@ -67,6 +67,8 @@ namespace Fantasy_Kingdoms_Battle
         internal string Hint { get; set; }// Подсказка к контролу
         internal bool ClickOnParent { get; set; }// Вызывать клик у родителя
         internal bool ManualSelected { get; set; } = false;
+        internal bool PlaySoundOnEnter { get; set; } = false;// Проигрывать звук при входе в контрол
+        internal bool PlaySoundOnClick { get; set; } = false;// Проигрывать звук при клике
 
         // Защищенные свойства
         internal bool MouseOver { get; private set; }// Курсор мыши находится над контролом
@@ -145,9 +147,17 @@ namespace Fantasy_Kingdoms_Battle
 
             if (AllowClick())
                 if (!ClickOnParent)
+                {
+                    if (PlaySoundOnClick)
+                        Program.formMain.PlayPushButton();
                     Click?.Invoke(this, new EventArgs());
+                }
                 else
+                {
+                    if (PlaySoundOnClick)
+                        Program.formMain.PlayPushButton();
                     Parent.DoClick();
+                }
         }
 
         protected virtual bool Selected() => ManualSelected;
@@ -203,6 +213,11 @@ namespace Fantasy_Kingdoms_Battle
 
             MouseOver = true;
             MouseClicked = leftButtonDown;
+
+            if (PlaySoundOnEnter)
+            {
+                Program.formMain.PlaySelectButton();
+            }
         }
 
         internal virtual void MouseLeave()
