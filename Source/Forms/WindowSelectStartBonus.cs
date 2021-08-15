@@ -31,6 +31,8 @@ namespace Fantasy_Kingdoms_Battle
                 nextTop = FormMain.Config.GridSize;
 
                 VisualControl text = new VisualControl(ClientControl, nextLeft, FormMain.Config.GridSize);
+                text.PlaySoundOnEnter = true;
+                text.PlaySoundOnClick = true;
                 text.ShowBorder = true;
                 text.Click += Text_Click;
                 if (sb.Gold > 0)
