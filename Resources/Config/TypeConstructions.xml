@@ -2393,21 +2393,13 @@
     <Name>Святая земля</Name>
     <Description>Только на святой земле можно построить храм. Такие места большая редкость, и жрецы постоянно спорят, чей храм будет построен на святой земле.</Description>
     <ImageIndex>114</ImageIndex>
-    <Category>BasePlace</Category>
+    <Category>External</Category>
     <SoundSelect>place_temple_select.wav</SoundSelect>
-    <DefaultLevel>1</DefaultLevel>
-    <MaxLevel>1</MaxLevel>
+    <DefaultLevel>0</DefaultLevel>
+    <MaxLevel>0</MaxLevel>
     <MaxHeroes>0</MaxHeroes>
     <LayersCellMenu>1</LayersCellMenu>
-    <Levels>
-      <Level>
-        <Pos>1</Pos>
-        <Cost>0</Cost>
-        <Builders>0</Builders>
-        <Income>0</Income>
-        <MaxHeroes>5</MaxHeroes>
-      </Level>
-    </Levels>
+    <TypePlaceForConstruct></TypePlaceForConstruct>
     <CellsMenu>
       <CellMenu>
         <PosX>1</PosX>

@@ -49,7 +49,7 @@ namespace Fantasy_Kingdoms_Battle
             uriSoundSelect = new Uri(Program.formMain.dirResources + @"Sound\Interface\ConstructionSelect\" + XmlUtils.GetStringNotNull(n.SelectSingleNode("SoundSelect")));
 
             // Загружаем информацию об уровнях
-            if (IsInternalConstruction || (Category == CategoryConstruction.External) || (n.SelectSingleNode("Levels") != null))
+            if ((IsInternalConstruction || (Category == CategoryConstruction.External) || (n.SelectSingleNode("Levels") != null)) && (MaxLevel > 0))
             {
                 Levels = new Level[MaxLevel + 1];// Для упрощения работы с уровнями, добавляем 1, чтобы уровень был равен индексу в массиве
 
@@ -174,13 +174,13 @@ namespace Fantasy_Kingdoms_Battle
 
                 if (Category == CategoryConstruction.External)
                 {
-                    Debug.Assert(nameTypePlaceForConstruct != "");
+                    //Debug.Assert(nameTypePlaceForConstruct != "");
                 }
-                if (Category == CategoryConstruction.Place)
+                else if (Category == CategoryConstruction.Place)
                 {
                     Debug.Assert(nameTypePlaceForConstruct != "");
                 }
-                if (Category == CategoryConstruction.BasePlace)
+                else if (Category == CategoryConstruction.BasePlace)
                 {
                     Debug.Assert(nameTypePlaceForConstruct == "");
                 }

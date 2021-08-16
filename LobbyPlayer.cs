@@ -225,6 +225,7 @@ namespace Fantasy_Kingdoms_Battle
         private void CreateExternalConstructions(TypeConstruction typeConstruction, int level, int layer, int quantity)
         {
             Debug.Assert((typeConstruction.Category == CategoryConstruction.External) || (typeConstruction.Category == CategoryConstruction.BasePlace) || (typeConstruction.Category == CategoryConstruction.Place));
+            Debug.Assert(level <= typeConstruction.MaxLevel);
             //Debug.Assert(typeConstruction.TypePlaceForConstruct.ID == FormMain.Config.IDEmptyPlace);
 
             if (quantity > 0)
@@ -954,8 +955,10 @@ namespace Fantasy_Kingdoms_Battle
             Builders += sb.Builders;
             FreeBuilders += sb.Builders;
             CreateExternalConstructions(FormMain.Config.FindTypeConstruction(FormMain.Config.IDPeasantHouse), 1, 0, sb.PeasantHouse);
-            CreateExternalConstructions(FormMain.Config.FindTypeConstruction(FormMain.Config.IDHolyPlace), 1, 0, sb.HolyPlace);
-            CreateExternalConstructions(FormMain.Config.FindTypeConstruction(FormMain.Config.IDTradePost), 0, 0, sb.TradePlace);
+            TypeConstruction holyPlace = FormMain.Config.FindTypeConstruction(FormMain.Config.IDHolyPlace);
+            CreateExternalConstructions(holyPlace, holyPlace.DefaultLevel, 0, sb.HolyPlace);
+            TypeConstruction tradePost = FormMain.Config.FindTypeConstruction(FormMain.Config.IDTradePost);
+            CreateExternalConstructions(tradePost, tradePost.DefaultLevel, 0, sb.TradePlace);
             ScoutRandomLair(sb.Scouting);
 
             startBonusApplied = true;
