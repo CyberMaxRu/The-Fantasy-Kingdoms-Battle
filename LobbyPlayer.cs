@@ -222,7 +222,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        private void CreateExternalConstructions(TypeConstruction typeConstruction, int layer, int quantity)
+        private void CreateExternalConstructions(TypeConstruction typeConstruction, int level, int layer, int quantity)
         {
             Debug.Assert((typeConstruction.Category == CategoryConstruction.External) || (typeConstruction.Category == CategoryConstruction.BasePlace) || (typeConstruction.Category == CategoryConstruction.Place));
             //Debug.Assert(typeConstruction.TypePlaceForConstruct.ID == FormMain.Config.IDEmptyPlace);
@@ -244,7 +244,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     index = Lobby.Rnd.Next(listEmptyPlaces.Count);
                     PlayerConstruction empty = listEmptyPlaces[index];
-                    PlayerConstruction pc = new PlayerConstruction(this, typeConstruction, empty.X, empty.Y, empty.Layer);
+                    PlayerConstruction pc = new PlayerConstruction(this, typeConstruction, level, empty.X, empty.Y, empty.Layer);
                     Lairs[pc.Layer, pc.Y, pc.X] = pc;
                     listEmptyPlaces.RemoveAt(index);
                     quantity--;
@@ -914,7 +914,7 @@ namespace Fantasy_Kingdoms_Battle
 
                     // Помещаем в нее логово
                     Debug.Assert(Lairs[layer, cells[idxCell].Y, cells[idxCell].X] == null);
-                    Lairs[layer, cells[idxCell].Y, cells[idxCell].X] = new PlayerConstruction(this, lairs[idxTypeLair], cells[idxCell].X, cells[idxCell].Y, layer);
+                    Lairs[layer, cells[idxCell].Y, cells[idxCell].X] = new PlayerConstruction(this, lairs[idxTypeLair], lairs[idxTypeLair].DefaultLevel, cells[idxCell].X, cells[idxCell].Y, layer);
                     
                     cells.RemoveAt(idxCell);// Убираем ячейку из списка доступных
                     lairs.RemoveAt(idxTypeLair);// Убираем тип логова из списка доступных
@@ -953,9 +953,9 @@ namespace Fantasy_Kingdoms_Battle
             PointGreatness += sb.Greatness;
             Builders += sb.Builders;
             FreeBuilders += sb.Builders;
-            CreateExternalConstructions(FormMain.Config.FindTypeConstruction(FormMain.Config.IDPeasantHouse), 0, sb.PeasantHouse);
-            CreateExternalConstructions(FormMain.Config.FindTypeConstruction(FormMain.Config.IDHolyPlace), 0, sb.HolyPlace);
-            CreateExternalConstructions(FormMain.Config.FindTypeConstruction(FormMain.Config.IDTradePlace), 0, sb.TradePlace);
+            CreateExternalConstructions(FormMain.Config.FindTypeConstruction(FormMain.Config.IDPeasantHouse), 1, 0, sb.PeasantHouse);
+            CreateExternalConstructions(FormMain.Config.FindTypeConstruction(FormMain.Config.IDHolyPlace), 1, 0, sb.HolyPlace);
+            CreateExternalConstructions(FormMain.Config.FindTypeConstruction(FormMain.Config.IDTradePost), 0, 0, sb.TradePlace);
             ScoutRandomLair(sb.Scouting);
 
             startBonusApplied = true;

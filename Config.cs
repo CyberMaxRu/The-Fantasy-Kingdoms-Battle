@@ -264,7 +264,7 @@ namespace Fantasy_Kingdoms_Battle
         internal string IDPeasantHouse { get; private set; }// ID крестьянского дома
         internal string IDEmptyPlace { get; private set; }// ID пустого места
         internal string IDHolyPlace { get; private set; }// ID Святой земли
-        internal string IDTradePlace { get; private set; }// ID торгового места
+        internal string IDTradePost { get; private set; }// ID торгового поста
         internal int WarehouseWidth { get; private set; }// Количество ячеек в ряду склада
         internal int WarehouseHeight { get; private set; }// Количество рядов ячеек склада
         internal int WarehouseMaxCells { get; private set; }// Количество ячеек в складе
@@ -571,8 +571,8 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(IDEmptyPlace.Length > 0);
             IDHolyPlace = xmlDoc.SelectSingleNode("Game/Links/HolyPlace").InnerText;
             Debug.Assert(IDHolyPlace.Length > 0);
-            IDTradePlace = xmlDoc.SelectSingleNode("Game/Links/TradePlace").InnerText;
-            Debug.Assert(IDTradePlace.Length > 0);
+            IDTradePost = xmlDoc.SelectSingleNode("Game/Links/TradePost").InnerText;
+            Debug.Assert(IDTradePost.Length > 0);
 
             WarehouseWidth = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Warehouse/Width").InnerText);
             Debug.Assert(WarehouseWidth >= 5);

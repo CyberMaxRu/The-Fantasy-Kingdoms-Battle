@@ -80,7 +80,7 @@
     <PeasantHouse>PeasantHouse</PeasantHouse>
     <EmptyPlace>EmptyPlace</EmptyPlace>
     <HolyPlace>HolyPlace</HolyPlace>
-    <TradePlace>TradePlace</TradePlace>
+    <TradePost>TradePost</TradePost>
   </Links>
   <Warehouse>
     <Width>10</Width>
