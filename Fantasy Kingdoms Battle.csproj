@@ -80,6 +80,7 @@
     <Compile Include="PlayerMusic.cs" />
     <Compile Include="PlayerObject.cs" />
     <Compile Include="ComputerPlayer.cs" />
+    <Compile Include="Source\TypeLobby\TypeLobbyLairSettings.cs" />
     <Compile Include="TypeReward.cs" />
     <Compile Include="SecondarySkill.cs" />
     <Compile Include="Source\Forms\CustomWindow.cs" />
