@@ -44,7 +44,7 @@ namespace Fantasy_Kingdoms_Battle
             //    Gold = Construction.GoldByConstruction;
         }
 
-        public PlayerConstruction(LobbyPlayer p, TypeConstruction l, int x, int y, int layer) : base()
+        public PlayerConstruction(LobbyPlayer p, TypeConstruction l, int level, int x, int y, int layer) : base()
         {
             Player = p;
             TypeConstruction = l;
@@ -56,7 +56,8 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert((TypeConstruction.Category == CategoryConstruction.Lair) || (TypeConstruction.Category == CategoryConstruction.External)
                 || (TypeConstruction.Category == CategoryConstruction.Place) || (TypeConstruction.Category == CategoryConstruction.BasePlace));
 
-            if (l.Category == CategoryConstruction.External)
+            Debug.Assert(level <= 1);
+            if (level == 1)
             {
                 Build();
             }
@@ -138,7 +139,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
                 else
                 {
-                    PlayerConstruction pc = new PlayerConstruction(Player, research.Research.TypeConstruction, research.ObjectOfMap.X, research.ObjectOfMap.Y, research.ObjectOfMap.Layer);
+                    PlayerConstruction pc = new PlayerConstruction(Player, research.Research.TypeConstruction, 1, research.ObjectOfMap.X, research.ObjectOfMap.Y, research.ObjectOfMap.Layer);
                     Player.Lairs[pc.Layer, pc.Y, pc.X] = pc;
                     Program.formMain.SelectPlayerObject(pc);
                 }
@@ -871,7 +872,7 @@ namespace Fantasy_Kingdoms_Battle
             // Ставим тип места, который должен быть после зачистки
             Debug.Assert(!(TypeConstruction.TypePlaceForConstruct is null));
 
-            PlayerConstruction pl = new PlayerConstruction(Player, TypeConstruction.TypePlaceForConstruct, X, Y, Layer);
+            PlayerConstruction pl = new PlayerConstruction(Player, TypeConstruction.TypePlaceForConstruct, 1, X, Y, Layer);
             pl.Hidden = false;
             Player.Lairs[Layer, Y, X] = pl;
         }

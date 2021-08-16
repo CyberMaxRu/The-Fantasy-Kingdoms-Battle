@@ -98,7 +98,7 @@
             <MaxQuantity>3</MaxQuantity>
           </TypeConstruction>
           <TypeConstruction>
-            <ID>TradePlace</ID>
+            <ID>TradePost</ID>
             <MinQuantity>1</MinQuantity>
             <MaxQuantity>1</MaxQuantity>
           </TypeConstruction>
@@ -111,7 +111,7 @@
         <CostDefense>200</CostDefense>
         <TypeConstructions>
           <TypeConstruction>
-            <ID>TradePlace</ID>
+            <ID>TradePost</ID>
             <MinQuantity>1</MinQuantity>
             <MaxQuantity>1</MaxQuantity>
           </TypeConstruction>
@@ -159,9 +159,9 @@
         <CostDefense>250</CostDefense>
         <TypeConstructions>
           <TypeConstruction>
-            <ID>TradePlace</ID>
-            <MinQuantity>5</MinQuantity>
-            <MaxQuantity>15</MaxQuantity>
+            <ID>TradePost</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>2</MaxQuantity>
           </TypeConstruction>
           <TypeConstruction>
             <ID>Treasure</ID>
@@ -182,7 +182,7 @@
         <CostDefense>500</CostDefense>
         <TypeConstructions>
           <TypeConstruction>
-            <ID>TradePlace</ID>
+            <ID>TradePost</ID>
             <MinQuantity>1</MinQuantity>
             <MaxQuantity>3</MaxQuantity>s
           </TypeConstruction>

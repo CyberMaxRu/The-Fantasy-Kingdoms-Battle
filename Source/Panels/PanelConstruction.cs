@@ -135,7 +135,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Debug.Assert(Construction.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
 
-            if (Construction.TypeConstruction.IsOurConstruction)
+            if (Construction.TypeConstruction.IsOurConstruction || Construction.TypeConstruction.Category == CategoryConstruction.BasePlace)
             {
                 imgMapObject.ImageIndex = Construction.TypeConstruction.ImageIndex;
                 imgMapObject.NormalImage = Construction.Level > 0;
@@ -185,13 +185,10 @@ namespace Fantasy_Kingdoms_Battle
                     }
                     else
                     {
-                        btnBuildOrUpgrade.Visible = Construction.TypeConstruction.Category != CategoryConstruction.Temple;
-                        if (btnBuildOrUpgrade.Visible)
-                        {
-                            btnBuildOrUpgrade.Cost = Construction.CostBuyOrUpgrade().ToString();
-                            btnBuildOrUpgrade.ImageIndex = FormMain.GUI_BUILD;
-                            btnBuildOrUpgrade.ImageIsEnabled = Construction.CheckRequirements();
-                        }
+                        btnBuildOrUpgrade.Visible = true;
+                        btnBuildOrUpgrade.Cost = Construction.CostBuyOrUpgrade().ToString();
+                        btnBuildOrUpgrade.ImageIndex = Construction.TypeConstruction.Category != CategoryConstruction.Temple ? FormMain.GUI_BUILD : FormMain.GUI_TEMPLE;
+                        btnBuildOrUpgrade.ImageIsEnabled = Construction.CheckRequirements();
                     }
                 }
                 else

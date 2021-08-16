@@ -775,8 +775,8 @@
     <HasTreasury>False</HasTreasury>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>tradepost_select.wav</SoundSelect>
-    <TypePlaceForConstruct>TradePlace</TypePlaceForConstruct>
-    <PlayerCanBuild>false</PlayerCanBuild>
+    <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
+    <PlayerCanBuild>true</PlayerCanBuild>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -2317,33 +2317,25 @@
     </Reward>
   </TypeConstruction>
   <TypeConstruction>
-    <ID>TradePlace</ID>
-    <Name>Торговое место</Name>
-    <Description>Это удобное место лучше всего подходит под строительство торгового поста.</Description>
-    <ImageIndex>142</ImageIndex>
-    <Category>BasePlace</Category>
-    <SoundSelect>tradepost_place_select.wav</SoundSelect>
-    <MaxHeroes>0</MaxHeroes>
-    <TypePlaceForConstruct></TypePlaceForConstruct>
-    <LayersCellMenu>1</LayersCellMenu>
-    <CellsMenu>
-      <CellMenu>
-        <PosX>1</PosX>
-        <PosY>1</PosY>
-        <Layer>1</Layer>
-        <TypeObject>TradePost</TypeObject>
-      </CellMenu>
-    </CellsMenu>
-  </TypeConstruction>
-  <TypeConstruction>
     <ID>Treasure</ID>
     <Name>Сокровище</Name>
     <Description>Сундуки с сокровищами встречаются в Ардании даже чаще, чем крысы В некоторых землях герои собирают по два урожая сундуков в год!</Description>
     <ImageIndex>120</ImageIndex>
     <Category>Lair</Category>
+    <DefaultLevel>1</DefaultLevel>
+    <MaxLevel>1</MaxLevel>
     <SoundSelect>chest_select.wav</SoundSelect>
     <MaxHeroes>4</MaxHeroes>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
+    <Levels>
+      <Level>
+        <Pos>1</Pos>
+        <Cost>0</Cost>
+        <Builders>0</Builders>
+        <Income>0</Income>
+        <MaxHeroes>5</MaxHeroes>
+      </Level>
+    </Levels>
     <HiddenReward>
       <Gold>1000</Gold>
     </HiddenReward>
@@ -2403,9 +2395,19 @@
     <ImageIndex>114</ImageIndex>
     <Category>BasePlace</Category>
     <SoundSelect>place_temple_select.wav</SoundSelect>
+    <DefaultLevel>1</DefaultLevel>
+    <MaxLevel>1</MaxLevel>
     <MaxHeroes>0</MaxHeroes>
     <LayersCellMenu>1</LayersCellMenu>
-    <TypePlaceForConstruct></TypePlaceForConstruct>
+    <Levels>
+      <Level>
+        <Pos>1</Pos>
+        <Cost>0</Cost>
+        <Builders>0</Builders>
+        <Income>0</Income>
+        <MaxHeroes>5</MaxHeroes>
+      </Level>
+    </Levels>
     <CellsMenu>
       <CellMenu>
         <PosX>1</PosX>
@@ -2469,9 +2471,20 @@
     <Description>Здесь крестьяне строят свои дома. Если место долго пустует, его могут облюбовать дикие звери.</Description>
     <ImageIndex>141</ImageIndex>
     <Category>BasePlace</Category>
+    <DefaultLevel>1</DefaultLevel>
+    <MaxLevel>1</MaxLevel>
     <SoundSelect>empty_place.wav</SoundSelect>
     <MaxHeroes>0</MaxHeroes>
     <TypePlaceForConstruct></TypePlaceForConstruct>
+    <Levels>
+      <Level>
+        <Pos>1</Pos>
+        <Cost>0</Cost>
+        <Builders>0</Builders>
+        <Income>0</Income>
+        <MaxHeroes>5</MaxHeroes>
+      </Level>
+    </Levels>
     <Reward>
     </Reward>
   </TypeConstruction>
