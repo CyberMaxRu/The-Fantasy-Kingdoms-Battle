@@ -124,7 +124,7 @@ namespace Fantasy_Kingdoms_Battle
         private PanelWithPanelEntity panelCombatHeroes;
 
         private readonly VisualControl panelNeighborhood;
-        private readonly List<VCImage> listButtonsLayers = new List<VCImage>();
+        private readonly List<VCNeighborhood> listButtonsLayers = new List<VCNeighborhood>();
         private int currentNeighborhood = 0;
 
         private WindowAdvice winAdvice;
@@ -2103,13 +2103,16 @@ namespace Fantasy_Kingdoms_Battle
             listButtonsLayers.Clear();
 
             int nextLeft = 0;
+            TypeLobbyLayerSettings ls;
             for (int i = 0; i < lobby.TypeLobby.LairsLayers; i++)
             {
-                VCImage im = new VCImage(panelNeighborhood, nextLeft, 0, ilGui, i == 0 ? GUI_NEIGHBOR_CASTLE : GUI_MAP);
+                ls = lobby.TypeLobby.LayerSettings[i];
+                VCNeighborhood im = new VCNeighborhood(panelNeighborhood, nextLeft, 0, ilGui, ls.ImageIndex);
                 im.ShowBorder = true;
-                im.Cost = i.ToString();
+                im.Layer = i;
+                im.Cost = ls.Name;
+                im.Hint = ls.Hint;
                 im.Click += Neighborhood_Click;
-                im.Hint = i == 0 ? "Окрестности возле Столицы" : "Окрестности в радиусе " + i.ToString();
                 nextLeft = im.NextLeft();
                 listButtonsLayers.Add(im);
             }
@@ -2123,12 +2126,12 @@ namespace Fantasy_Kingdoms_Battle
 
         private void Neighborhood_Click(object sender, EventArgs e)
         {
-            foreach (VCImage i in listButtonsLayers)
+            foreach (VCNeighborhood i in listButtonsLayers)
             {
                 i.ManualSelected = i == sender;
             }
 
-            currentNeighborhood = Convert.ToInt32(((VCImage)sender).Cost);
+            currentNeighborhood = ((VCNeighborhood)sender).Layer;
             UpdateNeighborhood();
         }
 

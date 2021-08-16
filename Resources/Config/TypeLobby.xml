@@ -78,6 +78,9 @@
     <NeighborhoodSettings>
       <Layer>
         <Number>0</Number>
+        <Name>стол.</Name>
+        <Hint>Окрестности Столицы</Hint>
+        <ImageIndex>33</ImageIndex>
         <CostScout>100</CostScout>
         <CostAttack>250</CostAttack>
         <CostDefense>200</CostDefense>
@@ -106,6 +109,9 @@
       </Layer>
       <Layer>
         <Number>1</Number>
+        <Name>лес</Name>
+        <Hint>Лес Ардании</Hint>
+        <ImageIndex>26</ImageIndex>
         <CostScout>100</CostScout>
         <CostAttack>250</CostAttack>
         <CostDefense>200</CostDefense>
@@ -154,6 +160,9 @@
       </Layer>
       <Layer>
         <Number>2</Number>
+        <Name>клад.</Name>
+        <Hint>Кладбища Ардании</Hint>
+        <ImageIndex>26</ImageIndex>
         <CostScout>200</CostScout>
         <CostAttack>500</CostAttack>
         <CostDefense>250</CostDefense>
@@ -177,6 +186,9 @@
       </Layer>
       <Layer>
         <Number>3</Number>
+        <Name>огры</Name>
+        <Hint>Пещеры огров</Hint>
+        <ImageIndex>26</ImageIndex>
         <CostScout>400</CostScout>
         <CostAttack>1000</CostAttack>
         <CostDefense>500</CostDefense>

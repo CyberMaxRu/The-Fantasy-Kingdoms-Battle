@@ -14,6 +14,9 @@ namespace Fantasy_Kingdoms_Battle
         public TypeLobbyLayerSettings(XmlNode n, int quantitySlotLairs)
         {
             Number = XmlUtils.GetInteger(n.SelectSingleNode("Number"));
+            Name = XmlUtils.GetStringNotNull(n.SelectSingleNode("Name"));
+            Hint = XmlUtils.GetStringNotNull(n.SelectSingleNode("Hint"));
+            ImageIndex = XmlUtils.GetIntegerNotNull(n.SelectSingleNode("ImageIndex"));
             CostScout = XmlUtils.GetInteger(n.SelectSingleNode("CostScout"));
             CostAttack = XmlUtils.GetInteger(n.SelectSingleNode("CostAttack"));
             CostDefense = XmlUtils.GetInteger(n.SelectSingleNode("CostDefense"));
@@ -69,6 +72,9 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal int Number { get; }// Номер слоя
+        internal string Name { get; }// Наименование слоя
+        internal string Hint { get; }// Подсказка к слою
+        internal int ImageIndex { get; }// Иконка
         internal int CostScout { get; }// Стоимость разведки
         internal int CostAttack { get; }// Стоимость атаки
         internal int CostDefense { get; }// Стоимость защиты
