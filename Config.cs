@@ -259,6 +259,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int PlateWidth { get; private set; }// Количество ячеек на панели справа по горизонтали
         internal int PlateHeight { get; private set; }// Количество ячеек на панели справа по вертикали
         internal int MinRowsEntities { get; private set; }// Минимальное количество строк сущностей в панели справа
+        internal string IDHeroAdvisor { get; private set; }// ID типа героя - Советник
         internal string IDHeroPeasant { get; private set; }// ID типа героя - крестьянин
         internal string IDConstructionCastle { get; private set; }// ID Замка
         internal string IDPeasantHouse { get; private set; }// ID крестьянского дома
@@ -561,6 +562,8 @@ namespace Fantasy_Kingdoms_Battle
             UnitStepsTimeToDisappearance = (int)(timeToDisappearance * StepsInSecond);
             Debug.Assert(StepsHeroInTumbstone >= UnitStepsTimeToDisappearance);
 
+            IDHeroAdvisor = xmlDoc.SelectSingleNode("Game/Links/HeroAdvisor").InnerText;
+            Debug.Assert(IDHeroAdvisor.Length > 0);
             IDHeroPeasant = xmlDoc.SelectSingleNode("Game/Links/HeroPeasant").InnerText;
             Debug.Assert(IDHeroPeasant.Length > 0);
             IDConstructionCastle = xmlDoc.SelectSingleNode("Game/Links/ConstructionCastle").InnerText;

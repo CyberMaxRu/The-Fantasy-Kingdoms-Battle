@@ -10,11 +10,12 @@ namespace Fantasy_Kingdoms_Battle
     // Класс кнопки для PageControl'а
     internal sealed class VCPageButton : VCIconButton
     {
-        public VCPageButton(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList, int imageIndex) : base(parent, shiftX, shiftY, bitmapList, imageIndex)
+        public VCPageButton(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList, int imageIndex, string advice) : base(parent, shiftX, shiftY, bitmapList, imageIndex)
         {
             UseFilter = false;
             HighlightUnderMouse = true;
             ShowBorder = true;
+            Advice = advice;
 
             Page = new VisualControl(parent, 0, NextTop());
             Page.Visible = false;
@@ -27,6 +28,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal VisualControl Page { get; }
+        internal string Advice { get; }
         internal PlayerObject SelectedPlayerObject { get; set; }
     }
 
@@ -45,11 +47,11 @@ namespace Fantasy_Kingdoms_Battle
         internal VCPageButton CurrentPage { get; private set; }
         internal event EventHandler PageChanged;
 
-        internal VCPageButton AddPage(int imageIndex, EventHandler onShowHint)
+        internal VCPageButton AddPage(int imageIndex, string advice, EventHandler onShowHint)
         {
             Debug.Assert(onShowHint != null);
 
-            VCPageButton page = new VCPageButton(this, nextLeft, 0, BitmapList, imageIndex);
+            VCPageButton page = new VCPageButton(this, nextLeft, 0, BitmapList, imageIndex, advice);
             page.Click += Page_Click;
             page.ShowHint += onShowHint;
             nextLeft = page.NextLeft();

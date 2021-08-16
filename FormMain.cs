@@ -127,6 +127,8 @@ namespace Fantasy_Kingdoms_Battle
         private readonly List<VCImage> listButtonsLayers = new List<VCImage>();
         private int currentNeighborhood = 0;
 
+        private WindowAdvice winAdvice;
+
         private VCCell[] pageTournamentPlayers;
         private readonly List<VCResultRound> listResultRound = new List<VCResultRound>();
 
@@ -638,19 +640,25 @@ namespace Fantasy_Kingdoms_Battle
                 labelMenuNameObject.StringFormat.Alignment = StringAlignment.Near;
                 labelMenuNameObject.StringFormat.LineAlignment = StringAlignment.Near;
 
+                // Панель со всеми героями
+                panelCombatHeroes = new PanelWithPanelEntity(4, false, 8, 4);
+                panelCombatHeroes.ShiftY = panelLairWithFlags.NextTop();
+                panelCombatHeroes.Click += PanelCombatHeroes_Click;
+                panelCombatHeroes.Width += Config.GridSize;
+                MainControl.AddControl(panelCombatHeroes);
 
                 // Панели информации об объектахs
                 panelHeroInfo = new PanelHeroInfo(MainControl, Config.GridSize, panelLairWithFlags.NextTop());
-                //panelHeroInfo.Width = bitmapMenu.Width;
+                panelHeroInfo.Width = panelCombatHeroes.Width;
                 panelHeroInfo.ApplyMaxSize();
                 panelConstructionInfo = new PanelConstructionInfo(MainControl, panelHeroInfo.ShiftX, panelHeroInfo.ShiftY);
-                //panelContructionInfo.Width = bitmapMenu.Width;
+                panelConstructionInfo.Width = panelCombatHeroes.Width;
                 panelConstructionInfo.ApplyMaxSize();
                 panelLairInfo = new PanelLairInfo(MainControl, panelHeroInfo.ShiftX, panelHeroInfo.ShiftY);
-                //panelLairInfo.Width = bitmapMenu.Width;
+                panelLairInfo.Width = panelCombatHeroes.Width;
                 panelLairInfo.ApplyMaxSize();
                 panelMonsterInfo = new PanelMonsterInfo(MainControl, panelHeroInfo.ShiftX, panelHeroInfo.ShiftY);
-                //panelMonsterInfo.Width = bitmapMenu.Width;
+                panelMonsterInfo.Width = panelCombatHeroes.Width;
                 panelMonsterInfo.ApplyMaxSize();
                 panelEmptyInfo = new VisualControl(MainControl, panelHeroInfo.ShiftX, panelHeroInfo.ShiftY)
                 {
@@ -659,22 +667,16 @@ namespace Fantasy_Kingdoms_Battle
                     ShowBorder = true
                 };
 
-                // Панель со всеми героями
-                panelCombatHeroes = new PanelWithPanelEntity(5, false, 8, 4);
-                panelCombatHeroes.ShiftY = panelLairWithFlags.NextTop();
-                panelCombatHeroes.Click += PanelCombatHeroes_Click;
-                MainControl.AddControl(panelCombatHeroes);
-
                 // Страницы игры
                 pageControl = new VCPageControl(MainControl, 0, panelLairWithFlags.ShiftY, ilGui);
                 pageControl.PageChanged += PageControl_PageChanged;
-                pageResultTurn = pageControl.AddPage(GUI_RESULT_TURN, PageResultTurn_ShowHint);
-                pageGuilds = pageControl.AddPage(GUI_GUILDS, PageGuilds_ShowHint);
-                pageEconomicConstructions = pageControl.AddPage(GUI_ECONOMY, PageEconomicConstructions_ShowHint);
-                pageTemples = pageControl.AddPage(GUI_TEMPLE, PageTemples_ShowHint);
-                pageHeroes = pageControl.AddPage(GUI_HEROES, PageHeroes_ShowHint);
-                pageLairs = pageControl.AddPage(GUI_MAP, PageLairs_ShowHint);
-                pageTournament = pageControl.AddPage(GUI_TOURNAMENT, PageTournament_ShowHint);
+                pageResultTurn = pageControl.AddPage(GUI_RESULT_TURN, "Сводка", PageResultTurn_ShowHint);
+                pageGuilds = pageControl.AddPage(GUI_GUILDS, "В гильдиях нанимаются герои", PageGuilds_ShowHint);
+                pageEconomicConstructions = pageControl.AddPage(GUI_ECONOMY, "Надежная экономика - залог победы", PageEconomicConstructions_ShowHint);
+                pageTemples = pageControl.AddPage(GUI_TEMPLE, "Храмы позволяют нанимать самых сильных героев", PageTemples_ShowHint);
+                pageHeroes = pageControl.AddPage(GUI_HEROES, "Здесь можно посмотреть своих героев", PageHeroes_ShowHint);
+                pageLairs = pageControl.AddPage(GUI_MAP, "В окрестностях замка водятся различные монстры", PageLairs_ShowHint);
+                pageTournament = pageControl.AddPage(GUI_TOURNAMENT, "Здесь можно увидеть положение всех игроков на турнире", PageTournament_ShowHint);
 
                 panelNeighborhood = new VisualControl(pageControl, 0, 0);
                 panelNeighborhood.Visible = false;
@@ -750,6 +752,15 @@ namespace Fantasy_Kingdoms_Battle
                 layerMainMenu.ArrangeControls();
                 layerGame.ArrangeControls();
 
+                formHint = new PanelHint();
+                //
+                timerHover = new Timer()
+                {
+                    Interval = SystemInformation.MouseHoverTime,
+                    Enabled = false
+                };
+                timerHover.Tick += TimerHover_Tick;
+
                 SetStage("Прибираем после строителей");
 
                 //
@@ -765,18 +776,9 @@ namespace Fantasy_Kingdoms_Battle
                 mpConstructionComplete = new System.Windows.Media.MediaPlayer();
                 mpConstructionComplete.Open(new Uri(dirResources + @"Sound\Interface\Construction\ConstructionComplete.wav"));
 
-                formHint = new PanelHint();
                 //formHint = new FormHint(ilGui16, ilParameters);
 
                 splashForm.Dispose();
-
-                //
-                timerHover = new Timer()
-                {
-                    Interval = SystemInformation.MouseHoverTime,
-                    Enabled = false
-                };
-                timerHover.Tick += TimerHover_Tick;
 
                 // Курсор
                 CustomCursor.CreateCursor(dirResources + @"Cursor\Cursor_simple.png");
@@ -809,6 +811,13 @@ namespace Fantasy_Kingdoms_Battle
         private void PageControl_PageChanged(object sender, EventArgs e)
         {
             panelNeighborhood.Visible = pageControl.CurrentPage == pageLairs;
+
+            if (currentLayer == layerGame)
+            {
+                //if (winAdvice is null)
+                //    winAdvice = new WindowAdvice();
+                //winAdvice.ShowAdvice(pageControl.CurrentPage.Advice);
+            }
         }
 
         private void LabelBuilders_ShowHint(object sender, EventArgs e)
@@ -945,10 +954,10 @@ namespace Fantasy_Kingdoms_Battle
             else
                 axWindowsMediaPlayer1.Dispose();
 
-            Debug.Assert(ClientRectangle.Width == MainConfig.ScreenMinSize.Width);
-            Debug.Assert(ClientRectangle.Height == MainConfig.ScreenMinSize.Height);
-            Debug.Assert(bitmapLogo.Width == ClientRectangle.Width);
-            Debug.Assert(bitmapLogo.Height == ClientRectangle.Height);
+            //Debug.Assert(ClientRectangle.Width == MainConfig.ScreenMinSize.Width);
+            //Debug.Assert(ClientRectangle.Height == MainConfig.ScreenMinSize.Height);
+            //Debug.Assert(bitmapLogo.Width == ClientRectangle.Width);
+            //Debug.Assert(bitmapLogo.Height == ClientRectangle.Height);
 
             ApplyFullScreen(true);
             gameStarted = true;

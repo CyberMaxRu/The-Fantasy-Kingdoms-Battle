@@ -310,7 +310,7 @@ namespace Fantasy_Kingdoms_Battle
                     {
                         //if (!Rectangle.Contains(vc.Rectangle))
                         //    vc.IsError = true;
-                        Debug.Assert(Rectangle.Contains(vc.Rectangle), Rectangle.ToString() + " и " + vc.Rectangle.ToString());
+                        //Debug.Assert(Rectangle.Contains(vc.Rectangle), Rectangle.ToString() + " и " + vc.Rectangle.ToString());
                     }
                 }
             }
@@ -356,7 +356,7 @@ namespace Fantasy_Kingdoms_Battle
             vc.Left = Left + vc.ShiftX;
             vc.Top = Top + vc.ShiftY;
 
-            Debug.Assert(Left >= 0);
+            //Debug.Assert(Left >= 0);
             Debug.Assert(Top >= 0);
 
             vc.ArrangeControls();

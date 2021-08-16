@@ -75,6 +75,7 @@
     <WidthBorder>14</WidthBorder>
   </Battlefield>
   <Links>
+    <HeroAdvisor>Advisor</HeroAdvisor>
     <HeroPeasant>Peasant</HeroPeasant>
     <ConstructionCastle>Castle</ConstructionCastle>
     <PeasantHouse>PeasantHouse</PeasantHouse>
