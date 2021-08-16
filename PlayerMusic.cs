@@ -25,15 +25,14 @@ namespace Fantasy_Kingdoms_Battle
 
         public PlayerMusic(string dirResources)
         {
-            mpMusic = new System.Windows.Media.MediaPlayer();
-            mpTheme = new System.Windows.Media.MediaPlayer();
+            mpMusic = new MediaPlayer();
+            mpTheme = new MediaPlayer();
 
             fileMainTheme = new Uri(dirResources + @"Music\Themes\main_menu_music.mp3");
             fileWinLobbyTheme = new Uri(dirResources + @"Music\Themes\won_music.mp3");
             fileLossLobbyTheme = new Uri(dirResources + @"Music\Themes\loose_music.mp3");
 
-            string[] files = Directory.GetFiles(dirResources + @"Music\Music");
-            playlistFull.AddRange(files);
+            playlistFull.AddRange(Directory.GetFiles(dirResources + @"Music\Music"));
 
             Debug.Assert(playlistFull.Count > 0);
         }
