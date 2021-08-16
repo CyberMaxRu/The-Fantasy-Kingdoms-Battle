@@ -169,6 +169,7 @@ namespace Fantasy_Kingdoms_Battle
         internal const int GUI_СROSS = 30;
         internal const int GUI_LOSE = 31;
         internal const int GUI_BATTLE_2 = 32;
+        internal const int GUI_NEIGHBOR_CASTLE = 33;
 
         internal const int GUI_PARAMETER_STRENGTH = 6;
         internal const int GUI_PARAMETER_DEXTERITY = 7;
@@ -2104,11 +2105,11 @@ namespace Fantasy_Kingdoms_Battle
             int nextLeft = 0;
             for (int i = 0; i < lobby.TypeLobby.LairsLayers; i++)
             {
-                VCImage im = new VCImage(panelNeighborhood, nextLeft, 0, ilGui, GUI_MAP);
+                VCImage im = new VCImage(panelNeighborhood, nextLeft, 0, ilGui, i == 0 ? GUI_NEIGHBOR_CASTLE : GUI_MAP);
                 im.ShowBorder = true;
                 im.Cost = i.ToString();
                 im.Click += Neighborhood_Click;
-                im.Hint = i == 0 ? "Окрестности возле Замка" : "Окрестности в радиусе " + i.ToString();
+                im.Hint = i == 0 ? "Окрестности возле Столицы" : "Окрестности в радиусе " + i.ToString();
                 nextLeft = im.NextLeft();
                 listButtonsLayers.Add(im);
             }
