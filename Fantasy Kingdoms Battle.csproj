@@ -82,6 +82,7 @@
     <Compile Include="ComputerPlayer.cs" />
     <Compile Include="Source\Forms\WindowAdvice.cs" />
     <Compile Include="Source\TypeLobby\TypeLobbyLairSettings.cs" />
+    <Compile Include="Source\VisualControls\VCMapArea.cs" />
     <Compile Include="Source\VisualControls\VCNeighborhood.cs" />
     <Compile Include="TypeReward.cs" />
     <Compile Include="SecondarySkill.cs" />
