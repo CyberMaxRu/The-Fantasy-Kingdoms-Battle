@@ -60,6 +60,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Source\Creature\CreatureAbility.cs" />
     <Compile Include="TypeAbility.cs" />
     <Compile Include="Battle.cs" />
     <Compile Include="Battlefield.cs" />
@@ -254,7 +255,7 @@
     <Content Include="Resources\Icons\WindowCaption.png" />
     <Content Include="Resources\Main.xml" />
     <Content Include="Resources\Config\Game.xml" />
-    <Content Include="Resources\Config\Abilities.xml" />
+    <Content Include="Resources\Config\TypeAbilities.xml" />
     <Content Include="Resources\Config\Armours.xml" />
     <Content Include="Resources\Config\TypeLobby.xml" />
     <Content Include="Resources\Config\Items.xml" />
