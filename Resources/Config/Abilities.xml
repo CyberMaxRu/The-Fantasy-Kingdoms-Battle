@@ -3,7 +3,7 @@
   <Ability>
     <ID>WarriorBasicAttack</ID>
     <Name>Рукопашная атака</Name>
-    <Description>- Обычная атака рукопашным оружием/- Наносит урон одной цели</Description>
+    <Description>- Обычная атака рукопашным оружием//- Наносит урон одной цели</Description>
     <ImageIndex>35</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>MeleeAttack</KindAbility>
@@ -60,7 +60,7 @@
   <Ability>
     <ID>WarriorImpAttack</ID>
     <Name>Сокрушительный удар</Name>
-    <Description>- Наносит большой урон/- Рукопашная атака</Description>
+    <Description>- Наносит большой урон//- Рукопашная атака</Description>
     <ImageIndex>38</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>MeleeAttack</KindAbility>
@@ -79,7 +79,7 @@
   <Ability>
     <ID>WarriorMaimAttack</ID>
     <Name>Калечащий удар</Name>
-    <Description>- Наносит огромный урон/- Накладывает эффект, замедляющий цель/- Рукопашная атака</Description>
+    <Description>- Наносит огромный урон//- Накладывает эффект, замедляющий цель//- Рукопашная атака</Description>
     <ImageIndex>39</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>MeleeAttack</KindAbility>
@@ -118,7 +118,7 @@
   <Ability>
     <ID>RogueBasicAttack</ID>
     <Name>Рукопашная атака</Name>
-    <Description>- Обычная атака рукопашным оружием/- Наносит урон одной цели</Description>
+    <Description>- Обычная атака рукопашным оружием//- Наносит урон одной цели</Description>
     <ImageIndex>41</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>MeleeAttack</KindAbility>
@@ -136,7 +136,7 @@
   <Ability>
     <ID>RogueWoundAttack</ID>
     <Name>Поворот клинка</Name>
-    <Description>- Наносит средний урон/- Накладывает эффект, наносящий повреждения с течением времени/- Рукопашная атака</Description>
+    <Description>- Наносит средний урон//- Накладывает эффект, наносящий повреждения с течением времени//- Рукопашная атака</Description>
     <ImageIndex>42</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>MeleeAttack</KindAbility>
@@ -154,7 +154,7 @@
   <Ability>
     <ID>RoguePoisonAttack</ID>
     <Name>Отравление</Name>
-    <Description>- Наносит небольшой урон/- Накладывает эффект, наносящий небольшие повреждения с течением времени/- Рукопашная атака</Description>
+    <Description>- Наносит небольшой урон//- Накладывает эффект, наносящий небольшие повреждения с течением времени//- Рукопашная атака</Description>
     <ImageIndex>43</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>MeleeAttack</KindAbility>
@@ -172,7 +172,7 @@
   <Ability>
     <ID>RogueImpAttack</ID>
     <Name>Коварный удар</Name>
-    <Description>- Наносит большой урон/- Рукопашная атака</Description>
+    <Description>- Наносит большой урон//- Рукопашная атака</Description>
     <ImageIndex>44</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>MeleeAttack</KindAbility>
@@ -190,7 +190,7 @@
   <Ability>
     <ID>RogueKickAttack</ID>
     <Name>Удар под дых</Name>
-    <Description>- Наносит небольшой урон/- Накладывает эффект, понижающий умение рукопашной атаки/- Рукопашная атака</Description>
+    <Description>- Наносит небольшой урон//- Накладывает эффект, понижающий умение рукопашной атаки//- Рукопашная атака</Description>
     <ImageIndex>45</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>MeleeAttack</KindAbility>
@@ -208,7 +208,7 @@
   <Ability>
     <ID>StunAttack</ID>
     <Name>Оглушение</Name>
-    <Description>- Наносит небольшой урон/- Накладывает эффект, не позволяющий двигаться и атаковать/- Рукопашная атака</Description>
+    <Description>- Наносит небольшой урон//- Накладывает эффект, не позволяющий двигаться и атаковать//- Рукопашная атака</Description>
     <ImageIndex>46</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>MeleeAttack</KindAbility>
@@ -227,7 +227,7 @@
   <Ability>
     <ID>ArcherBasicAttack</ID>
     <Name>Стрелковая атака</Name>
-    <Description>- Обычная атака стрелковым или метательным оружием/- Наносит урон одной цели</Description>
+    <Description>- Обычная атака стрелковым или метательным оружием//- Наносит урон одной цели</Description>
     <ImageIndex>48</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>RangeAttack</KindAbility>
@@ -246,7 +246,7 @@
   <Ability>
     <ID>HunterBeastSlayerAttack</ID>
     <Name>Охотничий выстрел</Name>
-    <Description>- Наносит большой урон зверям/- Стрелковая атака</Description>
+    <Description>- Наносит большой урон зверям//- Стрелковая атака</Description>
     <ImageIndex>49</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>RangeAttack</KindAbility>
@@ -264,7 +264,7 @@
   <Ability>
     <ID>HunterAoeAttack</ID>
     <Name>Дождь стрел</Name>
-    <Description>- Наносит большой урон всем целям в радиусе/- Стрелковая атака</Description>
+    <Description>- Наносит большой урон всем целям в радиусе//- Стрелковая атака</Description>
     <ImageIndex>50</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>RangeAttack</KindAbility>
@@ -282,7 +282,7 @@
   <Ability>
     <ID>HunterImpAttack</ID>
     <Name>Меткий выстрел</Name>
-    <Description>- Наносит большой урон/- Стрелковая атака</Description>
+    <Description>- Наносит большой урон//- Стрелковая атака</Description>
     <ImageIndex>51</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>RangeAttack</KindAbility>
@@ -300,7 +300,7 @@
   <Ability>
     <ID>HunterStingShotAttack</ID>
     <Name>Ослабляющий выстрел</Name>
-    <Description>- Наносит небольшой урон/- Накладывает эффект, понижающий умение рукопашной атаки/- Стрелковая атака</Description>
+    <Description>- Наносит небольшой урон//- Накладывает эффект, понижающий умение рукопашной атаки//- Стрелковая атака</Description>
     <ImageIndex>52</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>RangeAttack</KindAbility>
@@ -318,7 +318,7 @@
   <Ability>
     <ID>HunterManaburnAttack</ID>
     <Name>Боль духа</Name>
-    <Description>- Наносит большой урон/- Накладывает эффект, уменьшающий количество маны с течением времени/- Стрелковая атака</Description>
+    <Description>- Наносит большой урон//- Накладывает эффект, уменьшающий количество маны с течением времени//- Стрелковая атака</Description>
     <ImageIndex>53</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>RangeAttack</KindAbility>
@@ -336,7 +336,7 @@
   <Ability>
     <ID>HolyHeal</ID>
     <Name>Святое лечение</Name>
-    <Description>- Восстанавливает часть здоровья дружественной цели/- Требует маны</Description>
+    <Description>- Восстанавливает часть здоровья дружественной цели//- Требует маны</Description>
     <ImageIndex>54</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Heal</KindAbility>
@@ -357,7 +357,7 @@
   <Ability>
     <ID>MagicBasicAttack</ID>
     <Name>Магическая атака</Name>
-    <Description>- Обычная атака магией или магическим оружием/- Наносит урон одной цели</Description>
+    <Description>- Обычная атака магией или магическим оружием//- Наносит урон одной цели</Description>
     <ImageIndex>55</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Spell</KindAbility>
@@ -380,7 +380,7 @@
   <Ability>
     <ID>ClericWisdomBuff</ID>
     <Name>Начитанность</Name>
-    <Description>- Накладывает эффект, повышающий умение магической атаки и лечения/- Требует маны</Description>
+    <Description>- Накладывает эффект, повышающий умение магической атаки и лечения//- Требует маны</Description>
     <ImageIndex>56</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Buff</KindAbility>
@@ -399,7 +399,7 @@
   <Ability>
     <ID>HolyAttack</ID>
     <Name>Святая атака</Name>
-    <Description>- Наносит огромный урон нежити/- Требует маны/- Магическая атака</Description>
+    <Description>- Наносит огромный урон нежити//- Требует маны//- Магическая атака</Description>
     <ImageIndex>57</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Spell</KindAbility>
@@ -420,7 +420,7 @@
   <Ability>
     <ID>ClericManaRegenBuff</ID>
     <Name>Восстановление веры</Name>
-    <Description>- Накладывает эффект, восстанавливающий ману с течением времени/- Требует маны</Description>
+    <Description>- Накладывает эффект, восстанавливающий ману с течением времени//- Требует маны</Description>
     <ImageIndex>58</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Buff</KindAbility>
@@ -439,7 +439,7 @@
   <Ability>
     <ID>ClericKnockbackAttack</ID>
     <Name>Молот веры</Name>
-    <Description>- Наносит средний урон/- Отбрасывает противника/- Требует маны/- Магическая атака</Description>
+    <Description>- Наносит средний урон//- Отбрасывает противника//- Требует маны//- Магическая атака</Description>
     <ImageIndex>59</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Buff</KindAbility>
@@ -459,7 +459,7 @@
   <Ability>
     <ID>MageArcaneShield</ID>
     <Name>Магической щит</Name>
-    <Description>- Накладывает на мага эффект, повышающий защиту от рукопашных и магических атак/- Требует маны</Description>
+    <Description>- Накладывает на мага эффект, повышающий защиту от рукопашных и магических атак//- Требует маны</Description>
     <ImageIndex>60</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Buff</KindAbility>
@@ -478,7 +478,7 @@
   <Ability>
     <ID>MageSummonSerpent</ID>
     <Name>Вызов змея Мудрости</Name>
-    <Description>- Вызывает змея-союзника/- Требует маны</Description>
+    <Description>- Вызывает змея-союзника//- Требует маны</Description>
     <ImageIndex>61</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Summon</KindAbility>
@@ -497,7 +497,7 @@
   <Ability>
     <ID>MageSummonDragon</ID>
     <Name>Вызов дракона Мудрости</Name>
-    <Description>- Вызывает дракона-союзника/- Требует маны</Description>
+    <Description>- Вызывает дракона-союзника//- Требует маны</Description>
     <ImageIndex>99</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Summon</KindAbility>
@@ -516,7 +516,7 @@
   <Ability>
     <ID>MageFireballAttack</ID>
     <Name>Шар огня</Name>
-    <Description>- Наносит большой урон всем целям в радиусе./- Накладывает эффект, наносящий небольшие повреждения с течением времени/- Требует маны/- Магическая атака</Description>
+    <Description>- Наносит большой урон всем целям в радиусе.//- Накладывает эффект, наносящий небольшие повреждения с течением времени//- Требует маны//- Магическая атака</Description>
     <ImageIndex>63</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Spell</KindAbility>
@@ -535,7 +535,7 @@
   <Ability>
     <ID>MageFreezeAttack</ID>
     <Name>Ледяная стрела</Name>
-    <Description>- Наносит большой урон./- Накладывает эффект, не позволяющий двигаться и атаковать/- Требует маны/- Магическая атака</Description>
+    <Description>- Наносит большой урон.//- Накладывает эффект, не позволяющий двигаться и атаковать//- Требует маны//- Магическая атака</Description>
     <ImageIndex>64</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Spell</KindAbility>
@@ -555,7 +555,7 @@
   <Ability>
     <ID>MageGuardianWind</ID>
     <Name>Воздушная буря</Name>
-    <Description>- Наносит средний урон всем целям в небольшом радиусе от мага/- Отбрасывает противника/- Требует маны/- Магическая атака</Description>
+    <Description>- Наносит средний урон всем целям в небольшом радиусе от мага//- Отбрасывает противника//- Требует маны//- Магическая атака</Description>
     <ImageIndex>65</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Spell</KindAbility>
@@ -575,7 +575,7 @@
   <Ability>
     <ID>MageFirestormAttack</ID>
     <Name>Огненная буря</Name>
-    <Description>- Наносит огромный урон всем целям в радиусе/- Требует маны/- Магическая атака</Description>
+    <Description>- Наносит огромный урон всем целям в радиусе//- Требует маны//- Магическая атака</Description>
     <ImageIndex>66</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Spell</KindAbility>
@@ -595,7 +595,7 @@
   <Ability>
     <ID>ElfRoots</ID>
     <Name>Корни</Name>
-    <Description>- Наносит небольшой урон/- Накладывает эффект, не позволяющий двигаться/- Требует маны/- Стрелковая атака</Description>
+    <Description>- Наносит небольшой урон//- Накладывает эффект, не позволяющий двигаться//- Требует маны//- Стрелковая атака</Description>
     <ImageIndex>67</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>RangeAttack</KindAbility>
@@ -614,7 +614,7 @@
   <Ability>
     <ID>ElfImpAttack</ID>
     <Name>Искусный выстрел</Name>
-    <Description>- Наносит большой урон/- Стрелковая атака</Description>
+    <Description>- Наносит большой урон//- Стрелковая атака</Description>
     <ImageIndex>68</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>RangeAttack</KindAbility>
@@ -632,7 +632,7 @@
   <Ability>
     <ID>ElfBuff</ID>
     <Name>Эльфийское вдохновение</Name>
-    <Description>- Накладывает эффект, увеличивающий скорость передвижения/- Требует маны</Description>
+    <Description>- Накладывает эффект, увеличивающий скорость передвижения//- Требует маны</Description>
     <ImageIndex>69</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Buff</KindAbility>
@@ -651,7 +651,7 @@
   <Ability>
     <ID>ElfMagicArrow</ID>
     <Name>Магическая стрела</Name>
-    <Description>- Наносит огромный урон/- Требует маны/- Магическая атака</Description>
+    <Description>- Наносит огромный урон//- Требует маны//- Магическая атака</Description>
     <ImageIndex>70</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>RangeAttack</KindAbility>
@@ -670,7 +670,7 @@
   <Ability>
     <ID>HammerBasicAttack</ID>
     <Name>Рукопашная атака</Name>
-    <Description>- Обычная атака рукопашным оружием/- Наносит урон одной цели</Description>
+    <Description>- Обычная атака рукопашным оружием//- Наносит урон одной цели</Description>
     <ImageIndex>71</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>MeleeAttack</KindAbility>
@@ -689,7 +689,7 @@
   <Ability>
     <ID>DwarfAntiBuildingAttack</ID>
     <Name>Разрушение</Name>
-    <Description>- Наносит огромный урон по зданию/- Рукопашная атака</Description>
+    <Description>- Наносит огромный урон по зданию//- Рукопашная атака</Description>
     <ImageIndex>72</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>MeleeAttack</KindAbility>
@@ -707,7 +707,7 @@
   <Ability>
     <ID>DwarfImpAttack</ID>
     <Name>Разящий удар</Name>
-    <Description>- Наносит большой урон/- Рукопашная атака</Description>
+    <Description>- Наносит большой урон//- Рукопашная атака</Description>
     <ImageIndex>73</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>MeleeAttack</KindAbility>
@@ -743,7 +743,7 @@
   <Ability>
     <ID>DarkPriestSummonSeleton</ID>
     <Name>Вызов скелетов</Name>
-    <Description>- Вызывает скелета-союзника/- Требует маны</Description>
+    <Description>- Вызывает скелета-союзника//- Требует маны</Description>
     <ImageIndex>84</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Summon</KindAbility>
@@ -762,7 +762,7 @@
   <Ability>
     <ID>DarkPriestDrainLifeAttack</ID>
     <Name>Вытягивание жизни</Name>
-    <Description>- Наносит большой урон/- Восстанавливает часть здоровья сестры Крипты/- Требует маны/- Магическая атака</Description>
+    <Description>- Наносит большой урон//- Восстанавливает часть здоровья сестры Крипты//- Требует маны//- Магическая атака</Description>
     <ImageIndex>85</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Spell</KindAbility>
@@ -781,7 +781,7 @@
   <Ability>
     <ID>DarkPriestSummonLich</ID>
     <Name>Вызов лича</Name>
-    <Description>- Вызов лича-союзника/- Требует маны</Description>
+    <Description>- Вызов лича-союзника//- Требует маны</Description>
     <ImageIndex>86</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Summon</KindAbility>
@@ -800,7 +800,7 @@
   <Ability>
     <ID>DarkPriestPestilence</ID>
     <Name>Чума</Name>
-    <Description>- Наносит небольшой урон всем целям в небольшом радиусе от жрицы/- Накладывает эффект, наносящий небольшие повреждения с течением времени/- Требует маны/- Магическая атака</Description>
+    <Description>- Наносит небольшой урон всем целям в небольшом радиусе от жрицы//- Накладывает эффект, наносящий небольшие повреждения с течением времени//- Требует маны//- Магическая атака</Description>
     <ImageIndex>87</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Spell</KindAbility>
@@ -819,7 +819,7 @@
   <Ability>
     <ID>DarkPriestSummonVampire</ID>
     <Name>Вызов вампира</Name>
-    <Description>- Вызывает вампира-союзника/- Требует маны</Description>
+    <Description>- Вызывает вампира-союзника//- Требует маны</Description>
     <ImageIndex>88</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Summon</KindAbility>
@@ -857,7 +857,7 @@
   <Ability>
     <ID>PriestMassHeal</ID>
     <Name>Массовое лечение</Name>
-    <Description>- Восстанавливает часть здоровья всем союзникам в радиусе заклинания/- Требует маны</Description>
+    <Description>- Восстанавливает часть здоровья всем союзникам в радиусе заклинания//- Требует маны</Description>
     <ImageIndex>90</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Heal</KindAbility>
@@ -876,7 +876,7 @@
   <Ability>
     <ID>PriestHotHeal</ID>
     <Name>Дар Агрелы</Name>
-    <Description>- Восстанавливает часть здоровья дружестввенной цели/- Накладывает эффект, восстанавливающий здоровье с течением времени/- Требует маны</Description>
+    <Description>- Восстанавливает часть здоровья дружестввенной цели//- Накладывает эффект, восстанавливающий здоровье с течением времени//- Требует маны</Description>
     <ImageIndex>91</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Heal</KindAbility>
@@ -915,7 +915,7 @@
   <Ability>
     <ID>PaladinImpAttack</ID>
     <Name>Сокрушительный удар</Name>
-    <Description>- Наносит большой урон/- Рукопашная атака</Description>
+    <Description>- Наносит большой урон//- Рукопашная атака</Description>
     <ImageIndex>73</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>MeleeAttack</KindAbility>
@@ -953,7 +953,7 @@
   <Ability>
     <ID>PaladinHolyNovaAttack</ID>
     <Name>Аура святости</Name>
-    <Description>- Наносит огромный урон нежити в небольшом радиусе от паладина/- Рукопашная атака</Description>
+    <Description>- Наносит огромный урон нежити в небольшом радиусе от паладина//- Рукопашная атака</Description>
     <ImageIndex>92</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>MeleeAttack</KindAbility>
@@ -971,7 +971,7 @@
   <Ability>
     <ID>PaladinChargeAttack</ID>
     <Name>Священный удар</Name>
-    <Description>- Наносит огромный урон/- Накладывает эффект, не позволяющий атаковать/- Магическая атака</Description>
+    <Description>- Наносит огромный урон//- Накладывает эффект, не позволяющий атаковать//- Магическая атака</Description>
     <ImageIndex>93</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Spell</KindAbility>
@@ -1045,7 +1045,7 @@
   <Ability>
     <ID>BeastMasterBasicAttack</ID>
     <Name>Стрелковая атака</Name>
-    <Description>- Обычная атака стрелковым или метательным оружием/- Наносит урон одной цели</Description>
+    <Description>- Обычная атака стрелковым или метательным оружием//- Наносит урон одной цели</Description>
     <ImageIndex>48</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>RangeAttack</KindAbility>
@@ -1063,7 +1063,7 @@
   <Ability>
     <ID>BeastMasterBeastSlayerAttack</ID>
     <Name>Охотничий выстрел</Name>
-    <Description>- Наносит большой урон зверям/- Стрелковая атака</Description>
+    <Description>- Наносит большой урон зверям//- Стрелковая атака</Description>
     <ImageIndex>49</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>RangeAttack</KindAbility>
@@ -1081,7 +1081,7 @@
   <Ability>
     <ID>BeastMasterImpAttack</ID>
     <Name>Меткий выстрел</Name>
-    <Description>- Наносит большой урон/- Стрелковая атака</Description>
+    <Description>- Наносит большой урон//- Стрелковая атака</Description>
     <ImageIndex>51</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>RangeAttack</KindAbility>
@@ -1207,7 +1207,7 @@
   <Ability>
     <ID>MarksmanBasicAttack</ID>
     <Name>Стрелковая атака</Name>
-    <Description>- Обычная атака стрелковым или метательным оружием/- Наносит урон одной цели</Description>
+    <Description>- Обычная атака стрелковым или метательным оружием//- Наносит урон одной цели</Description>
     <ImageIndex>149</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>RangeAttack</KindAbility>
@@ -1225,7 +1225,7 @@
   <Ability>
     <ID>MarksmanBeastSlayerAttack</ID>
     <Name>Охотничий выстрел</Name>
-    <Description>- Наносит большой урон зверям/- Стрелковая атака</Description>
+    <Description>- Наносит большой урон зверям//- Стрелковая атака</Description>
     <ImageIndex>49</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>RangeAttack</KindAbility>
@@ -1243,7 +1243,7 @@
   <Ability>
     <ID>MarksmanImpAttack</ID>
     <Name>Меткий выстрел</Name>
-    <Description>- Наносит большой урон/- Стрелковая атака</Description>
+    <Description>- Наносит большой урон//- Стрелковая атака</Description>
     <ImageIndex>150</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>RangeAttack</KindAbility>
@@ -1279,7 +1279,7 @@
   <Ability>
     <ID>MarksmanStingShotAttack</ID>
     <Name>Ошеломляющий выстрел</Name>
-    <Description>- Наносит средний урон/- Накладывает эффект, понижающий умения всех типов атак/- Стрелковая атака</Description>
+    <Description>- Наносит средний урон//- Накладывает эффект, понижающий умения всех типов атак//- Стрелковая атака</Description>
     <ImageIndex>52</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>RangeAttack</KindAbility>
@@ -1297,7 +1297,7 @@
   <Ability>
     <ID>MarksmanSunburstAttack</ID>
     <Name>Солнечная стрела</Name>
-    <Description>- Наносит большой урон всем целям в радиусе/- Стрелковая атака</Description>
+    <Description>- Наносит большой урон всем целям в радиусе//- Стрелковая атака</Description>
     <ImageIndex>131</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>RangeAttack</KindAbility>
@@ -1333,7 +1333,7 @@
   <Ability>
     <ID>IceMageBasicAttack</ID>
     <Name>Магическая атака</Name>
-    <Description>- Обычная атака магией или магическим оружием/- Наносит урон одной цели</Description>
+    <Description>- Обычная атака магией или магическим оружием//- Наносит урон одной цели</Description>
     <ImageIndex>55</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Spell</KindAbility>
