@@ -14,10 +14,10 @@ namespace Fantasy_Kingdoms_Battle
     internal enum TypeTarget { Self, EnemyUnit, EnemyBuilding, AllyUnit }// Тип цели для способности
     internal enum Effect { Taunt, Slow }// Эффекты
 
-    internal sealed class Ability : Entity
+    internal sealed class TypeAbility : Entity
     {
         private List<string> classesHeroesString = new List<string>();
-        public Ability(XmlNode n) : base(n)
+        public TypeAbility(XmlNode n) : base(n)
         {
             KindAbility = (KindAbility)Enum.Parse(typeof(KindAbility), n.SelectSingleNode("KindAbility").InnerText);
             TypeTarget = (TypeTarget)Enum.Parse(typeof(TypeTarget), n.SelectSingleNode("TypeTarget").InnerText);
@@ -30,7 +30,7 @@ namespace Fantasy_Kingdoms_Battle
             ManaCost = n.SelectSingleNode("ManaCost") != null ? Convert.ToInt32(n.SelectSingleNode("ManaCost").InnerText) : 0;
 
             // Проверяем, что таких же ID и наименования нет
-            foreach (Ability a in FormMain.Config.Abilities)
+            foreach (TypeAbility a in FormMain.Config.Abilities)
             {
                 if (a.ID == ID)
                     throw new Exception("В конфигурации способностей повторяется ID = " + ID);

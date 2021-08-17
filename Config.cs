@@ -114,7 +114,7 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (XmlNode n in xmlDoc.SelectNodes("/Abilities/Ability"))
             {
-                Abilities.Add(new Ability(n));
+                Abilities.Add(new TypeAbility(n));
             }
 
             // Загрузка конфигурации специализаций
@@ -179,7 +179,7 @@ namespace Fantasy_Kingdoms_Battle
             TypeCreatures.AddRange(TypeMonsters);
 
             // Настраиваем связи
-            foreach (Ability a in Abilities)
+            foreach (TypeAbility a in Abilities)
                 a.TuneDeferredLinks();
 
             foreach (Specialization s in Specializations)
@@ -222,7 +222,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<TypeConstruction> TypeConstructions { get; } = new List<TypeConstruction>();
 
         //
-        internal List<Ability> Abilities { get; } = new List<Ability>();
+        internal List<TypeAbility> Abilities { get; } = new List<TypeAbility>();
         internal List<Specialization> Specializations { get; } = new List<Specialization>();
         internal List<SecondarySkill> SecondarySkills { get; } = new List<SecondarySkill>();
         internal List<StateCreature> StatesCreature { get; } = new List<StateCreature>();
@@ -366,9 +366,9 @@ namespace Fantasy_Kingdoms_Battle
             return null;
         }
 
-        internal Ability FindAbility(string ID, bool mustBeExists = true)
+        internal TypeAbility FindAbility(string ID, bool mustBeExists = true)
         {
-            foreach (Ability a in Abilities)
+            foreach (TypeAbility a in Abilities)
             {
                 if (a.ID == ID)
                     return a;

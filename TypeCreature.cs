@@ -43,14 +43,14 @@ namespace Fantasy_Kingdoms_Battle
             XmlNode na = n.SelectSingleNode("Abilities");
             if (na != null)
             {
-                Ability a;
+                TypeAbility a;
 
                 foreach (XmlNode l in na.SelectNodes("Ability"))
                 {
                     a = FormMain.Config.FindAbility(l.InnerText);
 
                     // Проверяем, что такая способность не повторяется
-                    foreach (Ability a2 in Abilities)
+                    foreach (TypeAbility a2 in Abilities)
                     {
                         if (a.ID == a2.ID)
                             throw new Exception("Способность " + a.ID + " повторяется в списке способностей героя.");
@@ -83,7 +83,7 @@ namespace Fantasy_Kingdoms_Battle
         internal StateCreature PersistentStateHeroAtMap { get; set; }
         internal HeroParameters ParametersByHire { get; }// Параметры при создании существа
         internal ConfigNextLevelHero ConfigNextLevel { get; }
-        internal List<Ability> Abilities { get; } = new List<Ability>();// Способности существа
+        internal List<TypeAbility> Abilities { get; } = new List<TypeAbility>();// Способности существа
         internal int DefaultPositionPriority { get; private set; }// Приоритет расположения на поле боя по умолчанию
         internal Weapon WeaponMelee { get; private set; }// Рукопашное оружие
         internal Weapon WeaponRange { get; private set; }// Стрелковое оружие
@@ -94,7 +94,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.TuneDeferredLinks();
 
-            foreach (Ability a in Abilities)
+            foreach (TypeAbility a in Abilities)
             {
                 Debug.Assert(a.ClassesHeroes.IndexOf(this) != -1, $"Типу существа {ID} не доступна стартовая способность {a.ID}.");
             }
