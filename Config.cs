@@ -110,9 +110,9 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Загрузка конфигурации способностей
-            xmlDoc = CreateXmlDocument("Config\\Abilities.xml");
+            xmlDoc = CreateXmlDocument("Config\\TypeAbilities.xml");
 
-            foreach (XmlNode n in xmlDoc.SelectNodes("/Abilities/Ability"))
+            foreach (XmlNode n in xmlDoc.SelectNodes("/TypeAbilities/TypeAbility"))
             {
                 Abilities.Add(new TypeAbility(n));
             }
