@@ -10,7 +10,7 @@ using System.Windows.Forms;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс способности
-    internal enum TypeAbility { MeleeAttack, RangeAttack, Spell, Buff, Heal, Summon, Passive, Aura }
+    internal enum KindAbility { MeleeAttack, RangeAttack, Spell, Buff, Heal, Summon, Passive, Aura }
     internal enum TypeTarget { Self, EnemyUnit, EnemyBuilding, AllyUnit }// Тип цели для способности
     internal enum Effect { Taunt, Slow }// Эффекты
 
@@ -19,7 +19,7 @@ namespace Fantasy_Kingdoms_Battle
         private List<string> classesHeroesString = new List<string>();
         public Ability(XmlNode n) : base(n)
         {
-            TypeAbility = (TypeAbility)Enum.Parse(typeof(TypeAbility), n.SelectSingleNode("TypeAbility").InnerText);
+            KindAbility = (KindAbility)Enum.Parse(typeof(KindAbility), n.SelectSingleNode("KindAbility").InnerText);
             TypeTarget = (TypeTarget)Enum.Parse(typeof(TypeTarget), n.SelectSingleNode("TypeTarget").InnerText);
             MinUnitLevel = Convert.ToInt32(n.SelectSingleNode("MinUnitLevel").InnerText);
             Ranged = Convert.ToBoolean(n.SelectSingleNode("Ranged").InnerText);
@@ -60,27 +60,27 @@ namespace Fantasy_Kingdoms_Battle
                 Effects.Add(e);
             }
 
-            switch (TypeAbility)
+            switch (KindAbility)
             {
-                case TypeAbility.MeleeAttack:
+                case KindAbility.MeleeAttack:
                     Debug.Assert(TypeTarget != TypeTarget.Self);
                     Debug.Assert(TypeTarget != TypeTarget.AllyUnit);
 
                     break;
-                case TypeAbility.RangeAttack:
+                case KindAbility.RangeAttack:
                     Debug.Assert(TypeTarget != TypeTarget.Self);
                     //Debug.Assert(TypeTarget != TypeTarget.AllyUnit);
 
                     break;
-                case TypeAbility.Buff:
+                case KindAbility.Buff:
                     Debug.Assert(TypeTarget != TypeTarget.EnemyUnit);
                     Debug.Assert(TypeTarget != TypeTarget.EnemyBuilding);
 
                     //Debug.Assert(Effects.Count > 0);
                     break;
-                case TypeAbility.Spell:
+                case KindAbility.Spell:
                     break;
-                case TypeAbility.Heal:
+                case KindAbility.Heal:
                     Debug.Assert(TypeTarget != TypeTarget.EnemyUnit);
                     Debug.Assert(TypeTarget != TypeTarget.EnemyBuilding);
 
@@ -108,7 +108,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(classesHeroesString.Count > 0);
         }
 
-        internal TypeAbility TypeAbility { get; }
+        internal KindAbility KindAbility { get; }
         internal TypeTarget TypeTarget { get; }
         internal int MinUnitLevel { get; }
         internal bool Ranged { get; }
@@ -139,23 +139,23 @@ namespace Fantasy_Kingdoms_Battle
         protected override int GetQuantity() => 0;
         protected override string GetCost()
         {
-            switch (TypeAbility)
+            switch (KindAbility)
             {
-                case TypeAbility.MeleeAttack:
+                case KindAbility.MeleeAttack:
                     return "ближ.";
-                case TypeAbility.RangeAttack:
+                case KindAbility.RangeAttack:
                     return "даль.";
-                case TypeAbility.Buff:
+                case KindAbility.Buff:
                     return "усил.";
-                case TypeAbility.Spell:
+                case KindAbility.Spell:
                     return "закл.";
-                case TypeAbility.Heal:
+                case KindAbility.Heal:
                     return "леч.";
-                case TypeAbility.Summon:
+                case KindAbility.Summon:
                     return "приз.";
-                case TypeAbility.Passive:
+                case KindAbility.Passive:
                     return "пасс.";
-                case TypeAbility.Aura:
+                case KindAbility.Aura:
                     return "аура";
                 default:
                     throw new Exception("Неизвестная способность");
