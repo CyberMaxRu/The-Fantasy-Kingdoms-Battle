@@ -5,8 +5,6 @@ namespace Fantasy_Kingdoms_Battle
     // Класс иконки страницы
     internal sealed class VCTabButton : VCImage
     {
-        private Pen penBorder = new Pen(FormMain.Config.CommonBorder);
-
         public VCTabButton(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList, int imageIndex) : base(parent, shiftX, shiftY, bitmapList, imageIndex)
         {
             HighlightUnderMouse = true;
