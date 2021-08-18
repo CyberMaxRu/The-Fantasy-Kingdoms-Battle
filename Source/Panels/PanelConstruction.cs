@@ -33,9 +33,9 @@ namespace Fantasy_Kingdoms_Battle
             ShowBorder = true;
             Visible = false;
 
-            lblNameMapObject = new VCLabel(this, FormMain.Config.GridSize, FormMain.Config.GridSize - 3, Program.formMain.fontMedCaptionC, Color.Transparent, FormMain.Config.GridSize * 3, "");
+            lblNameMapObject = new VCLabel(this, FormMain.Config.GridSize, FormMain.Config.GridSize - 3, Program.formMain.fontMedCaptionC, Color.Transparent, 24, "");
             lblNameMapObject.StringFormat.Alignment = StringAlignment.Center;
-            lblNameMapObject.ShowBorder = true;
+            //lblNameMapObject.ShowBorder = true;
             lblNameMapObject.TruncLongText = true;
             lblNameMapObject.Click += ImgLair_Click;
 

@@ -27,7 +27,7 @@ namespace Fantasy_Kingdoms_Battle
             lblName = new VCLabel(this, FormMain.Config.GridSize, FormMain.Config.GridSize - 3, Program.formMain.fontMedCaptionC, FormMain.Config.BattlefieldPlayerName, FormMain.Config.GridSize * 3, "");
             lblName.StringFormat.Alignment = StringAlignment.Center;
             lblName.Color = Color.MediumAquamarine;
-            lblName.ShowBorder = true;
+            //lblName.ShowBorder = true;
             lblName.TruncLongText = true;
             lblName.LeftMargin = 2;
             lblName.RightMargin = 2;
