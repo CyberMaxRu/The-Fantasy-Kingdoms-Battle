@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Source\Creature\CreatureAbility.cs" />
+    <Compile Include="Source\VisualControls\VCImage48.cs" />
     <Compile Include="TypeAbility.cs" />
     <Compile Include="Battle.cs" />
     <Compile Include="Battlefield.cs" />
