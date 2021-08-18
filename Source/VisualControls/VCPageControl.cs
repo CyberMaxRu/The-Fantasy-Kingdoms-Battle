@@ -12,7 +12,6 @@ namespace Fantasy_Kingdoms_Battle
     {
         public VCPageButton(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList, int imageIndex, string advice) : base(parent, shiftX, shiftY, bitmapList, imageIndex)
         {
-            UseFilter = false;
             HighlightUnderMouse = true;
             ShowBorder = true;
             Advice = advice;

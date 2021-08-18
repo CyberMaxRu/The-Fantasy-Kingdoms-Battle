@@ -165,14 +165,12 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(btnPlayPause.Width > 0);
 
             btnDecSpeed = new VCIconButton(ClientControl, 0, 0, Program.formMain.ilGui24, FormMain.GUI_24_BUTTON_LEFT);
-            btnDecSpeed.UseFilter = false;
             btnDecSpeed.HighlightUnderMouse = true;
             btnDecSpeed.ShiftX = btnPlayPause.ShiftX - btnDecSpeed.Width;
             btnDecSpeed.ShiftY = btnPlayPause.ShiftY + (btnPlayPause.Height - btnDecSpeed.Height) / 2 + 1;
             btnDecSpeed.Click += BtnDecSpeed_Click;
 
             btnIncSpeed = new VCIconButton(ClientControl, btnPlayPause.ShiftX + btnPlayPause.Width, btnDecSpeed.ShiftY, Program.formMain.ilGui24, FormMain.GUI_24_BUTTON_RIGHT);
-            btnIncSpeed.UseFilter = false;
             btnIncSpeed.HighlightUnderMouse = true;
             btnIncSpeed.Click += BtnIncSpeed_Click;
 

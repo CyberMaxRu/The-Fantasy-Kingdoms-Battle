@@ -3,7 +3,6 @@ using System.Drawing;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal enum ImageFilter { None, Active, Select, Press, Disabled };
 
     // Визуальный контрол - иконка
     internal class VCImage : VisualControl
@@ -53,8 +52,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int Quantity { get; set; }
         internal bool HighlightUnderMouse { get; set; } = false;
         internal bool ShowAsPressed { get; set; } = false;
-        internal bool UseFilter { get; set; } = false;
-        internal ImageFilter ImageFilter { get; set; } = ImageFilter.None;
         internal TypeObject TypeObject { get; set; }// Тип объекта, связанный с этим изображением
 
         internal override void MouseEnter(bool leftButtonDown)
@@ -84,27 +81,13 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Level >= 0);
             Debug.Assert(Quantity >= 0);
 
-            if (Visible && (BitmapList.Size == Program.formMain.ilMenuCellFilters.Size) && UseFilter)
-            {
-                if (ImageIsEnabled)
-                {
-                    if (ShowAsPressed || (MouseClicked && MouseOver))
-                        ImageFilter = ImageFilter.Press;
-                    else if (MouseOver)
-                        ImageFilter = ImageFilter.Select;
-                    else
-                        ImageFilter = ImageFilter.Active;
-                }
-                else
-                    ImageFilter = ImageFilter.Disabled;
-            }
 
             base.Draw(g);
 
             // Иконка
             if (Visible && (ImageIndex != -1))
             {
-                BitmapList.DrawImage(g, ImageIndex, (UseFilter || ImageIsEnabled) && NormalImage, HighlightUnderMouse && MouseOver && !MouseClicked, Left + ShiftImageX, Top + ShiftImageY);
+                BitmapList.DrawImage(g, ImageIndex, (true/*UseFilter*/ || ImageIsEnabled) && NormalImage, HighlightUnderMouse && MouseOver && !MouseClicked, Left + ShiftImageX, Top + ShiftImageY);
 
                 // Цена
                 if (Cost != null)
@@ -127,29 +110,6 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     labelQuantity.Text = Quantity.ToString();
                     labelQuantity.Draw(g);
-                }
-
-                if (ImageFilter != ImageFilter.None)
-                {
-                    Debug.Assert(BitmapList.Size == Program.formMain.ilMenuCellFilters.Size);
-                }
-
-                switch (ImageFilter)
-                {
-                    case ImageFilter.Active:
-                        g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage(0, true, false), Left + ShiftImageX, Top + ShiftImageY);
-                        break;
-                    case ImageFilter.Select:
-                        g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage(1, true, false), Left + ShiftImageX, Top + ShiftImageY);
-                        break;
-                    case ImageFilter.Press:
-                        g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage(2, true, false), Left + ShiftImageX, Top + ShiftImageY);
-                        break;
-                    case ImageFilter.Disabled:
-                        g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage(3, true, false), Left + ShiftImageX, Top + ShiftImageY);
-                        break;
-                    default:
-                        break;
                 }
             }
         }
@@ -174,7 +134,7 @@ namespace Fantasy_Kingdoms_Battle
 
         protected virtual bool PlaySelectSound()
         {
-            return ImageIsEnabled && ((UseFilter && MouseOver) || HighlightUnderMouse);
+            return true;// ImageIsEnabled && ((UseFilter && MouseOver) || HighlightUnderMouse);
         }
     }
 }

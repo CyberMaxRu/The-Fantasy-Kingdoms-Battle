@@ -604,11 +604,9 @@ namespace Fantasy_Kingdoms_Battle
                 labelNamePlayer.Width = 16;
 
                 btnInGameMenu = CreateButton(layerGame, GUI_SETTINGS, Config.GridSize, Config.GridSize, BtnInGameMenu_Click, BtnInGameMenu_MouseHover);
-                btnInGameMenu.UseFilter = false;
                 btnInGameMenu.HighlightUnderMouse = true;
                 btnInGameMenu.ShowBorder = false;
                 btnEndTurn = CreateButton(layerGame, GUI_HOURGLASS, 0, Config.GridSize, BtnEndTurn_Click, BtnEndTurn_MouseHover);
-                btnEndTurn.UseFilter = false;
                 btnEndTurn.HighlightUnderMouse = true;
                 btnEndTurn.ShowBorder = true;
                 panelLairWithFlags = new VisualControl(MainControl, 0, 0);
