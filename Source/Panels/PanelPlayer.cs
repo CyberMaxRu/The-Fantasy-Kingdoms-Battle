@@ -22,13 +22,6 @@ namespace Fantasy_Kingdoms_Battle
             ShowCell(player);
         }
 
-        internal override void Draw(Graphics g)
-        {
-            ImageFilter = Program.formMain.CurrentLobby.CurrentPlayer == player ? ImageFilter.Active : ImageFilter.Press;
-
-            base.Draw(g);
-        }
-
         protected override bool Selected() => Program.formMain.CurrentLobby?.CurrentPlayer == player;
     }
 }
