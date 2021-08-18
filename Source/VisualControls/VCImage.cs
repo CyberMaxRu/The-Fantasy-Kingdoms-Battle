@@ -18,8 +18,6 @@ namespace Fantasy_Kingdoms_Battle
         private const int sizePopupBackground = 18;
         int shiftlabelLevel;
 
-        private bool mouseClicked;
-
         public VCImage(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList, int imageIndex) : base(parent, shiftX, shiftY)
         {
             BitmapList = bitmapList;
@@ -75,9 +73,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.MouseEnter(leftButtonDown);
 
-            if (!leftButtonDown)
-                mouseClicked = false;
-
             Program.formMain.SetNeedRedrawFrame();
             if (PlaySelectSound())
                 Program.formMain.PlaySelectButton();
@@ -88,25 +83,6 @@ namespace Fantasy_Kingdoms_Battle
             base.MouseLeave();
 
             Program.formMain.SetNeedRedrawFrame();
-        }
-
-        internal override void MouseDown()
-        {
-            base.MouseDown();
-
-            mouseClicked = true;
-            Program.formMain.SetNeedRedrawFrame();
-        }
-
-        internal override void MouseUp()
-        {
-            base.MouseUp();
-
-            if (mouseClicked != false)
-            {
-                mouseClicked = false;
-                Program.formMain.SetNeedRedrawFrame();
-            }
         }
 
         protected override bool AllowClick()
@@ -126,7 +102,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (ImageIsEnabled)
                 {
-                    if (ShowAsPressed || (mouseClicked && MouseOver))
+                    if (ShowAsPressed || (MouseClicked && MouseOver))
                         ImageFilter = ImageFilter.Press;
                     else if (MouseOver)
                         ImageFilter = ImageFilter.Select;

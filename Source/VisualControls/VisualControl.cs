@@ -9,7 +9,7 @@ namespace Fantasy_Kingdoms_Battle
     // Базовый класс и класс-контейнер для всех визуальных контролов
     internal class VisualControl : IDisposable
     {
-        private static Dictionary<Size, Bitmap> poolBorders = new Dictionary<Size, Bitmap>();
+        private static Dictionary<Size, Bitmap> poolBorders = new Dictionary<Size, Bitmap>();// Список готовых картинок с бордюрами, каждого размера
 
         private int left;// Координата Left на главном окне (абсолютная)
         private int top;// Координата Top на главном окне (абсолютная)
@@ -234,6 +234,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(!MouseClicked);
 
             MouseClicked = true;
+            Program.formMain.SetNeedRedrawFrame();
         }
 
         internal virtual void MouseUp()
@@ -242,6 +243,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(MouseClicked);
 
             MouseClicked = false;
+            Program.formMain.SetNeedRedrawFrame();
         }
 
         internal virtual void KeyPress(KeyPressEventArgs e)
