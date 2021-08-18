@@ -10,15 +10,8 @@ namespace Fantasy_Kingdoms_Battle
             HighlightUnderMouse = true;
         }
 
-        internal string NameTab { get; set; }
         internal int IndexPage { get; set; }
         internal VisualControl ContextPage { get; set; }
-
-        internal override bool PrepareHint()
-        {
-            Program.formMain.formHint.AddSimpleHint(NameTab);
-            return true;
-        }
 
         internal override void DoClick()
         {
