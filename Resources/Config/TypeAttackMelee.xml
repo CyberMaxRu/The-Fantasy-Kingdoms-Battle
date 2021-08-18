@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TypesAttackMelee>
+  <TypeAttackMelee>
+    <ID>Sword</ID>
+    <Name>Меч</Name>    
+  </TypeAttackMelee>
+  <TypeAttackMelee>
+    <ID>Knife</ID>
+    <Name>Нож</Name>
+  </TypeAttackMelee>
+  <TypeAttackMelee>
+    <ID>Hammer</ID>
+    <Name>Молот</Name>
+  </TypeAttackMelee>
+  <TypeAttackMelee>
+    <ID>Staff</ID>
+    <Name>Молот</Name>
+  </TypeAttackMelee>
+  <TypeAttackMelee>
+    <ID>Hands</ID>
+    <Name>Руки</Name>
+  </TypeAttackMelee>
+  <TypeAttackMelee>
+    <ID>Paw</ID>
+    <Name>Лапа</Name>
+  </TypeAttackMelee>
+  <TypeAttackMelee>
+    <ID>Bite</ID>
+    <Name>Укус</Name>
+  </TypeAttackMelee>
+  <TypeAttackMelee>
+    <ID>Axe</ID>
+    <Name>Топор</Name>
+  </TypeAttackMelee>
+</TypesAttackMelee>

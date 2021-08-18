@@ -3,13 +3,14 @@
   <TypeCitizen>
     <ID>Peasant</ID>
     <Name>Крестьянин</Name>
-    <Description>Это просто крестьяние, Сир. Они обучены строить и чинить здания.</Description>
+    <Description>Это просто крестьяне, Сир. Они обучены строить и чинить здания.</Description>
     <ImageIndex>7</ImageIndex>
     <KindCreature>Human</KindCreature>
     <Reward>1</Reward>
     <Cost>0</Cost>
     <Building>House</Building>
     <MaxLevel>1</MaxLevel>
+    <TypeAttackMelee>Hands</TypeAttackMelee>
     <CanBuild>True</CanBuild>
   </TypeCitizen>
   <TypeCitizen>
@@ -22,6 +23,7 @@
     <Cost>0</Cost>
     <Building>Castle</Building>
     <MaxLevel>1</MaxLevel>
+    <TypeAttackMelee>Sword</TypeAttackMelee>
     <CanBuild>False</CanBuild>
     <BaseParameters>
       <Strength>20</Strength>
@@ -44,6 +46,7 @@
     <Cost>0</Cost>
     <Building>Mill</Building>
     <MaxLevel>1</MaxLevel>
+    <TypeAttackMelee>Hands</TypeAttackMelee>
     <KindHero>NonCombatant</KindHero>
     <CanBuild>False</CanBuild>
   </TypeCitizen>

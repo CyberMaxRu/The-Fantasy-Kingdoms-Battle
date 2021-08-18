@@ -7,6 +7,7 @@
     <ImageIndex>103</ImageIndex>
     <KindCreature>Undead</KindCreature>
     <MaxLevel>10</MaxLevel>
+    <TypeAttackMelee>Hands</TypeAttackMelee>
     <DefaultPositionPriority>10</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
@@ -49,6 +50,7 @@
     <ImageIndex>100</ImageIndex>
     <KindCreature>Undead</KindCreature>
     <MaxLevel>10</MaxLevel>
+    <TypeAttackMelee>Hands</TypeAttackMelee>
     <DefaultPositionPriority>10</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
@@ -87,6 +89,7 @@
     <ImageIndex>95</ImageIndex>
     <KindCreature>Undead</KindCreature>
     <MaxLevel>10</MaxLevel>
+    <TypeAttackMelee>Hands</TypeAttackMelee>
     <DefaultPositionPriority>50</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
@@ -125,6 +128,7 @@
     <ImageIndex>98</ImageIndex>
     <KindCreature>Undead</KindCreature>
     <MaxLevel>10</MaxLevel>
+    <TypeAttackMelee>Hands</TypeAttackMelee>
     <DefaultPositionPriority>50</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
@@ -163,6 +167,7 @@
     <ImageIndex>101</ImageIndex>
     <KindCreature>Undead</KindCreature>
     <MaxLevel>15</MaxLevel>
+    <TypeAttackMelee>Hands</TypeAttackMelee>
     <DefaultPositionPriority>60</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
@@ -201,6 +206,7 @@
     <ImageIndex>97</ImageIndex>
     <KindCreature>Undead</KindCreature>
     <MaxLevel>10</MaxLevel>
+    <TypeAttackMelee>Hands</TypeAttackMelee>
     <DefaultPositionPriority>30</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
@@ -239,6 +245,7 @@
     <ImageIndex>99</ImageIndex>
     <KindCreature>Undead</KindCreature>
     <MaxLevel>15</MaxLevel>
+    <TypeAttackMelee>Hands</TypeAttackMelee>
     <DefaultPositionPriority>40</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
@@ -277,6 +284,7 @@
     <ImageIndex>102</ImageIndex>
     <KindCreature>Undead</KindCreature>
     <MaxLevel>20</MaxLevel>
+    <TypeAttackMelee>Hands</TypeAttackMelee>
     <DefaultPositionPriority>15</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
@@ -315,6 +323,7 @@
     <ImageIndex>14</ImageIndex>
     <KindCreature>Undead</KindCreature>
     <MaxLevel>10</MaxLevel>
+    <TypeAttackMelee>Hands</TypeAttackMelee>
     <DefaultPositionPriority>40</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
@@ -353,6 +362,7 @@
     <ImageIndex>8</ImageIndex>
     <KindCreature>Beast</KindCreature>
     <MaxLevel>5</MaxLevel>
+    <TypeAttackMelee>Bite</TypeAttackMelee>
     <DefaultPositionPriority>20</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
@@ -394,6 +404,7 @@
     <ImageIndex>5</ImageIndex>
     <KindCreature>Beast</KindCreature>
     <MaxLevel>10</MaxLevel>
+    <TypeAttackMelee>Bite</TypeAttackMelee>
     <DefaultPositionPriority>10</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
@@ -437,6 +448,7 @@
     <ImageIndex>28</ImageIndex>
     <KindCreature>Beast</KindCreature>
     <MaxLevel>5</MaxLevel>
+    <TypeAttackMelee>Bite</TypeAttackMelee>
     <DefaultPositionPriority>10</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
@@ -475,6 +487,7 @@
     <ImageIndex>1</ImageIndex>
     <KindCreature>Beast</KindCreature>
     <MaxLevel>10</MaxLevel>
+    <TypeAttackMelee>Bite</TypeAttackMelee>
     <DefaultPositionPriority>10</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
@@ -516,6 +529,7 @@
     <ImageIndex>3</ImageIndex>
     <KindCreature>Beast</KindCreature>
     <MaxLevel>15</MaxLevel>
+    <TypeAttackMelee>Bite</TypeAttackMelee>
     <DefaultPositionPriority>10</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
@@ -558,6 +572,7 @@
     <ImageIndex>2</ImageIndex>
     <KindCreature>Beast</KindCreature>
     <MaxLevel>20</MaxLevel>
+    <TypeAttackMelee>Bite</TypeAttackMelee>
     <DefaultPositionPriority>10</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
@@ -596,6 +611,7 @@
     <ImageIndex>26</ImageIndex>
     <KindCreature>Minotaur</KindCreature>
     <MaxLevel>10</MaxLevel>
+    <TypeAttackMelee>Hands</TypeAttackMelee>
     <DefaultPositionPriority>10</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
@@ -634,6 +650,7 @@
     <ImageIndex>27</ImageIndex>
     <KindCreature>Minotaur</KindCreature>
     <MaxLevel>15</MaxLevel>
+    <TypeAttackMelee>Hands</TypeAttackMelee>
     <DefaultPositionPriority>10</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
@@ -672,6 +689,7 @@
     <ImageIndex>34</ImageIndex>
     <KindCreature>Ogre</KindCreature>
     <MaxLevel>15</MaxLevel>
+    <TypeAttackMelee>Hands</TypeAttackMelee>
     <DefaultPositionPriority>10</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
@@ -710,6 +728,7 @@
     <ImageIndex>15</ImageIndex>
     <KindCreature>Ogre</KindCreature>
     <MaxLevel>30</MaxLevel>
+    <TypeAttackMelee>Hands</TypeAttackMelee>
     <DefaultPositionPriority>10</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
@@ -748,6 +767,7 @@
     <ImageIndex>9</ImageIndex>
     <KindCreature>Beast</KindCreature>
     <MaxLevel>10</MaxLevel>
+    <TypeAttackMelee>Bite</TypeAttackMelee>
     <DefaultPositionPriority>10</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
@@ -786,6 +806,7 @@
     <ImageIndex>23</ImageIndex>
     <KindCreature>Dragon</KindCreature>
     <MaxLevel>20</MaxLevel>
+    <TypeAttackMelee>Bite</TypeAttackMelee>
     <DefaultPositionPriority>10</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
@@ -824,6 +845,7 @@
     <ImageIndex>6</ImageIndex>
     <KindCreature>Beast</KindCreature>
     <MaxLevel>5</MaxLevel>
+    <TypeAttackMelee>Bite</TypeAttackMelee>
     <DefaultPositionPriority>10</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
@@ -862,6 +884,7 @@
     <ImageIndex>4</ImageIndex>
     <KindCreature>Beast</KindCreature>
     <MaxLevel>5</MaxLevel>
+    <TypeAttackMelee>Bite</TypeAttackMelee>
     <DefaultPositionPriority>10</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
@@ -900,6 +923,7 @@
     <ImageIndex>17</ImageIndex>
     <KindCreature>Beast</KindCreature>
     <MaxLevel>30</MaxLevel>
+    <TypeAttackMelee>Bite</TypeAttackMelee>
     <DefaultPositionPriority>10</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
@@ -938,6 +962,7 @@
     <ImageIndex>18</ImageIndex>
     <KindCreature>Undead</KindCreature>
     <MaxLevel>30</MaxLevel>
+    <TypeAttackMelee>Hands</TypeAttackMelee>
     <DefaultPositionPriority>10</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
@@ -976,6 +1001,7 @@
     <ImageIndex>7</ImageIndex>
     <KindCreature>Beast</KindCreature>
     <MaxLevel>30</MaxLevel>
+    <TypeAttackMelee>Bite</TypeAttackMelee>
     <DefaultPositionPriority>10</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
@@ -1014,6 +1040,7 @@
     <ImageIndex>24</ImageIndex>
     <KindCreature>MagicCreature</KindCreature>
     <MaxLevel>15</MaxLevel>
+    <TypeAttackMelee>Paw</TypeAttackMelee>
     <DefaultPositionPriority>11</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
@@ -1052,6 +1079,7 @@
     <ImageIndex>25</ImageIndex>
     <KindCreature>MagicCreature</KindCreature>
     <MaxLevel>15</MaxLevel>
+    <TypeAttackMelee>Paw</TypeAttackMelee>
     <DefaultPositionPriority>12</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>

@@ -109,6 +109,14 @@ namespace Fantasy_Kingdoms_Battle
                 GroupArmours.Add(new GroupArmour(n));
             }
 
+            // Загрузка конфигурации типов рукопашной атаки
+            xmlDoc = CreateXmlDocument("Config\\TypeAttackMelee.xml");
+
+            foreach (XmlNode n in xmlDoc.SelectNodes("/TypesAttackMelee/TypeAttackMelee"))
+            {
+                TypesAttackMelee.Add(new TypeAttackMelee(n));
+            }
+
             // Загрузка конфигурации способностей
             xmlDoc = CreateXmlDocument("Config\\TypeAbilities.xml");
 
@@ -222,6 +230,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<TypeConstruction> TypeConstructions { get; } = new List<TypeConstruction>();
 
         //
+        internal List<TypeAttackMelee> TypesAttackMelee { get; } = new List<TypeAttackMelee>();
         internal List<TypeAbility> Abilities { get; } = new List<TypeAbility>();
         internal List<Specialization> Specializations { get; } = new List<Specialization>();
         internal List<SecondarySkill> SecondarySkills { get; } = new List<SecondarySkill>();
@@ -364,6 +373,18 @@ namespace Fantasy_Kingdoms_Battle
                 throw new Exception("Предмет " + ID + " не найден.");
 
             return null;
+        }
+        internal TypeAttackMelee FindTypeAttackMelee(string ID)
+        {
+            Debug.Assert(ID.Length > 0);
+
+            foreach (TypeAttackMelee tam in TypesAttackMelee)
+            {
+                if (tam.ID == ID)
+                    return tam;
+            }
+
+            throw new Exception("Тип рукопашной атаки " + ID + " не найден.");
         }
 
         internal TypeAbility FindAbility(string ID, bool mustBeExists = true)
