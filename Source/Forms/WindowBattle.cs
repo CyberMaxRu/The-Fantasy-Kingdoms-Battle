@@ -103,10 +103,10 @@ namespace Fantasy_Kingdoms_Battle
             lblPlayer2.StringFormat.LineAlignment = StringAlignment.Far;
             lblPlayer2.Text = battle.Player2.GetName();
 
-            imgAvatarParticipant1 = new VCImage128(ClientControl, lblPlayer1.NextTop());
+            imgAvatarParticipant1 = new VCImage128(ClientControl, FormMain.Config.GridSize, lblPlayer1.NextTop());
             imgAvatarParticipant1.ShiftX = lblPlayer1.ShiftX;
             imgAvatarParticipant1.ImageIndex = b.Player1.GetImageIndexAvatar();
-            imgAvatarParticipant2 = new VCImage128(ClientControl, lblPlayer2.NextTop());
+            imgAvatarParticipant2 = new VCImage128(ClientControl, FormMain.Config.GridSize, lblPlayer2.NextTop());
             imgAvatarParticipant2.ShiftX = lblPlayer2.ShiftX;
             imgAvatarParticipant2.ImageIndex = b.Player2.GetImageIndexAvatar();
 

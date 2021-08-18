@@ -32,7 +32,7 @@ namespace Fantasy_Kingdoms_Battle
             lblName.LeftMargin = 2;
             lblName.RightMargin = 2;
 
-            imgIcon = new VCImage128(this, lblName.NextTop());
+            imgIcon = new VCImage128(this, FormMain.Config.GridSize, lblName.NextTop());
             imgIcon.ShowHint += ImgIcon_ShowHint;
 
             separator = new VCSeparator(this, FormMain.Config.GridSize, TopForControls());

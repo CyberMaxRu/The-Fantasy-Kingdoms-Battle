@@ -23,11 +23,11 @@ namespace Fantasy_Kingdoms_Battle
             windowCaption.Caption = b.Player1.GetName() + " vs " + b.Player2.GetName();
 
             // Игроки
-            imgAvatarParticipant1 = new VCImage128(ClientControl, 0);
+            imgAvatarParticipant1 = new VCImage128(ClientControl, 0, 0);
             imgAvatarParticipant1.ShiftX = 0;
             //imgAvatarParticipant1.Cost = b.Player1.GetName();
             imgAvatarParticipant1.ImageIndex = b.Player1.GetImageIndexAvatar();
-            imgAvatarParticipant2 = new VCImage128(ClientControl, imgAvatarParticipant1.ShiftY);
+            imgAvatarParticipant2 = new VCImage128(ClientControl, 0, imgAvatarParticipant1.ShiftY);
             //imgAvatarParticipant2.Cost = b.Player2.GetName();
             imgAvatarParticipant2.ImageIndex = b.Player2.GetImageIndexAvatar();
 

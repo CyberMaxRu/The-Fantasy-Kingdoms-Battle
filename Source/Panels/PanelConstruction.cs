@@ -39,7 +39,7 @@ namespace Fantasy_Kingdoms_Battle
             lblNameMapObject.TruncLongText = true;
             lblNameMapObject.Click += ImgLair_Click;
 
-            imgMapObject = new VCImage128(this, lblNameMapObject.NextTop());
+            imgMapObject = new VCImage128(this, FormMain.Config.GridSize, lblNameMapObject.NextTop());
             imgMapObject.HighlightUnderMouse = true;
             imgMapObject.Click += ImgLair_Click;
             imgMapObject.ShowHint += ImgLair_ShowHint;
