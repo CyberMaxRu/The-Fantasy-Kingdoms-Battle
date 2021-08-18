@@ -68,7 +68,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (!(Research.Entity is null))
             {
-                Program.formMain.formHint.AddStep1Header(Research.Entity.Name, "", Research.Entity.Description);
+                string level = Research.Entity is TypeAbility ta ? "Требуемый уровень: " + ta.MinUnitLevel.ToString() : "";
+                Program.formMain.formHint.AddStep1Header(Research.Entity.Name, level, Research.Entity.Description);
                 Program.formMain.formHint.AddStep3Requirement(GetTextRequirements());
                 Program.formMain.formHint.AddStep4Gold(Cost(), Cost() <= ObjectOfMap.Player.Gold);
             }
