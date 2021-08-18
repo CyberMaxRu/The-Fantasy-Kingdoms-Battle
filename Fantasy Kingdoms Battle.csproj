@@ -114,7 +114,7 @@
     <Compile Include="Source\VisualControls\VCEventExecuteFlag.cs" />
     <Compile Include="Source\VisualControls\VCForm.cs" />
     <Compile Include="Source\VisualControls\VCIconButton.cs" />
-    <Compile Include="Source\VisualControls\VCImageBig.cs" />
+    <Compile Include="Source\VisualControls\VCImage128.cs" />
     <Compile Include="Source\VisualControls\VCLabel.cs" />
     <Compile Include="Source\VisualControls\VCLabelValue.cs" />
     <Compile Include="Source\VisualControls\VCImageLose.cs" />

@@ -10,14 +10,14 @@ namespace Fantasy_Kingdoms_Battle
     // Окно с советом от Советника
     internal sealed class WindowAdvice : VCForm
     {
-        private readonly VCImageBig imgAdvisor;
+        private readonly VCImage128 imgAdvisor;
         private readonly VCText textAdvice;
 
         public WindowAdvice() : base()
         {
             windowCaption.Caption = "Королевский советник";
 
-            imgAdvisor = new VCImageBig(ClientControl, 0);
+            imgAdvisor = new VCImage128(ClientControl, 0);
             imgAdvisor.ImageIndex = FormMain.Config.FindTypeHero(FormMain.Config.IDHeroAdvisor).ImageIndex;
 
             textAdvice = new VCText(ClientControl, imgAdvisor.NextLeft(), imgAdvisor.ShiftY, Program.formMain.fontParagraph, Color.White, 200);

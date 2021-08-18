@@ -8,10 +8,10 @@ using System.Diagnostics;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    // Визуальный контрол - картинка большого объекта, с рамкой
-    internal sealed class VCImageBig : VCImage
+    // Визуальный контрол - картинка большого объекта (128 * 128)
+    internal sealed class VCImage128 : VCImage
     {
-        public VCImageBig(VisualControl parent, int shiftY) : base(parent, FormMain.Config.GridSize, shiftY, Program.formMain.imListObjectsBig, -1)
+        public VCImage128(VisualControl parent, int shiftY) : base(parent, FormMain.Config.GridSize, shiftY, Program.formMain.imListObjectsBig, -1)
         {
             labelQuantity.ShiftX -= FormMain.Config.GridSizeHalf;
         }

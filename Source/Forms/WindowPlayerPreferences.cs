@@ -20,7 +20,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCEdit editName;
         private readonly VCSeparator sprTop;
         private readonly VCLabel lblTextForAvatar;
-        private readonly VCImageBig imgAvatar;
+        private readonly VCImage128 imgAvatar;
         private readonly VCIconButton btnPriorAvatar;
         private readonly VCIconButton btnNextAvatar;
         private readonly VCButton btnAddAvatar;
@@ -43,7 +43,7 @@ namespace Fantasy_Kingdoms_Battle
             lblTextForAvatar = new VCLabel(ClientControl, 0, sprTop.NextTop() - FormMain.Config.GridSize, Program.formMain.fontParagraph, Color.White, 20, "Аватар:");
             lblTextForAvatar.StringFormat.Alignment = StringAlignment.Near;
             lblTextForAvatar.StringFormat.LineAlignment = StringAlignment.Near;
-            imgAvatar = new VCImageBig(ClientControl, lblTextForAvatar.NextTop());
+            imgAvatar = new VCImage128(ClientControl, lblTextForAvatar.NextTop());
             imgAvatar.HighlightUnderMouse = false;
 
             btnPriorAvatar = new VCIconButton(ClientControl, 0, 0, Program.formMain.ilGui24, FormMain.GUI_24_BUTTON_LEFT);

@@ -14,7 +14,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         private Bitmap bmpBackground;
         private readonly VCLabel lblNameMapObject;
-        private readonly VCImageBig imgMapObject;
+        private readonly VCImage128 imgMapObject;
         private readonly VCIconButton btnHeroes;
         private readonly VCIconButton btnBuildOrUpgrade;
         private readonly VCIconButton btnHireHero;
@@ -39,7 +39,7 @@ namespace Fantasy_Kingdoms_Battle
             lblNameMapObject.TruncLongText = true;
             lblNameMapObject.Click += ImgLair_Click;
 
-            imgMapObject = new VCImageBig(this, lblNameMapObject.NextTop());
+            imgMapObject = new VCImage128(this, lblNameMapObject.NextTop());
             imgMapObject.HighlightUnderMouse = true;
             imgMapObject.Click += ImgLair_Click;
             imgMapObject.ShowHint += ImgLair_ShowHint;

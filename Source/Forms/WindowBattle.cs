@@ -48,8 +48,8 @@ namespace Fantasy_Kingdoms_Battle
         private int maxHealthPlayer1;
         private int maxHealthPlayer2;
 
-        private readonly VCImageBig imgAvatarParticipant1;
-        private readonly VCImageBig imgAvatarParticipant2;
+        private readonly VCImage128 imgAvatarParticipant1;
+        private readonly VCImage128 imgAvatarParticipant2;
         private readonly VCText lblPlayer1;
         private readonly VCText lblPlayer2;
         private Rectangle rectBandHealthPlayer1;
@@ -103,10 +103,10 @@ namespace Fantasy_Kingdoms_Battle
             lblPlayer2.StringFormat.LineAlignment = StringAlignment.Far;
             lblPlayer2.Text = battle.Player2.GetName();
 
-            imgAvatarParticipant1 = new VCImageBig(ClientControl, lblPlayer1.NextTop());
+            imgAvatarParticipant1 = new VCImage128(ClientControl, lblPlayer1.NextTop());
             imgAvatarParticipant1.ShiftX = lblPlayer1.ShiftX;
             imgAvatarParticipant1.ImageIndex = b.Player1.GetImageIndexAvatar();
-            imgAvatarParticipant2 = new VCImageBig(ClientControl, lblPlayer2.NextTop());
+            imgAvatarParticipant2 = new VCImage128(ClientControl, lblPlayer2.NextTop());
             imgAvatarParticipant2.ShiftX = lblPlayer2.ShiftX;
             imgAvatarParticipant2.ImageIndex = b.Player2.GetImageIndexAvatar();
 
