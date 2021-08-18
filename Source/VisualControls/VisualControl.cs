@@ -129,16 +129,19 @@ namespace Fantasy_Kingdoms_Battle
                 g.FillRectangle(FormMain.Config.brushControl, Rectangle);
          }
 
+        internal virtual void PaintBorder(Graphics g)
+        {
+            if ((sizeBorder == null) || (sizeBorder.Width != Width + 4) || (sizeBorder.Height != Height + 3))
+                sizeBorder = new Size(Width + 4, Height + 3);
+
+            g.DrawImageUnscaled(GetBorder(sizeBorder), Left - 2, Top);
+        }
+
         internal virtual void PaintForeground(Graphics g)
         {
             // Рисуем бордюр
             if (ShowBorder && Visible)
-            {
-                if ((sizeBorder == null) || (sizeBorder.Width != Width + 4) || (sizeBorder.Height != Height + 3))
-                    sizeBorder = new Size(Width + 4, Height + 3);
-
-                g.DrawImageUnscaled(GetBorder(sizeBorder), Left - 2, Top);
-            }
+                PaintBorder(g);
         }
 
         internal virtual void DoClick()

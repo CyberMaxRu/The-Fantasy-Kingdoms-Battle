@@ -13,6 +13,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         public VCImage128(VisualControl parent, int shiftY) : base(parent, FormMain.Config.GridSize, shiftY, Program.formMain.imListObjectsBig, -1)
         {
+            ShowBorder = true;
             labelQuantity.ShiftX -= FormMain.Config.GridSizeHalf;
         }
 
@@ -22,11 +23,9 @@ namespace Fantasy_Kingdoms_Battle
 
             labelQuantity.ShiftY -= FormMain.Config.GridSizeHalf;
         }
-        internal override void Draw(Graphics g)
-        {
-            base.Draw(g);
 
-            // Рисуем бордюр вокруг иконки
+        internal override void PaintBorder(Graphics g)
+        {
             g.DrawImageUnscaled(Program.formMain.bmpBorderBig, Left - 2, Top - 2);
         }
     }
