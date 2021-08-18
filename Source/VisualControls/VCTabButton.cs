@@ -33,9 +33,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
-            ImageFilter = (Parent as VCTabControl).ActivePage == IndexPage ? ImageFilter.Press : ImageFilter.None;
-
             base.Draw(g);
+
+            if ((Parent as VCTabControl).ActivePage == IndexPage)
+                g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage((int)ImageFilter.Press, true, false), Left + ShiftImageX, Top + ShiftImageY);
         }
     }
 }
