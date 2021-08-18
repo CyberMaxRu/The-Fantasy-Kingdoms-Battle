@@ -6,7 +6,7 @@ using System.Diagnostics;
 namespace Fantasy_Kingdoms_Battle
 {
     // Визуальный контрол - ячейка меню
-    internal sealed class VCMenuCell : VCImage
+    internal sealed class VCMenuCell : VCImage48
     {
         private PlayerCellMenu research;
 

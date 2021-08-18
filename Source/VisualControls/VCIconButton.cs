@@ -3,7 +3,7 @@
 namespace Fantasy_Kingdoms_Battle
 {
     // Визуальный контрол - кнопка c иконкой
-    internal class VCIconButton : VCImage
+    internal class VCIconButton : VCImage48
     {
         public VCIconButton(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList, int imageIndex) : base(parent, shiftX, shiftY, bitmapList, imageIndex)
         {

@@ -18,7 +18,7 @@ namespace Fantasy_Kingdoms_Battle
     }
 
     // Визуальный контрол - ячейка
-    internal class VCCell : VCImage
+    internal class VCCell : VCImage48
     {
         private ICell cell;
 
