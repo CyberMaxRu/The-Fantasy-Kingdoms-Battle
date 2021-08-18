@@ -39,11 +39,10 @@ namespace Fantasy_Kingdoms_Battle
             if (controlForPage != null)
                 controlForPage.Visible = false;
 
-            VCTabButton btnTab = new VCTabButton(this, leftForNextPage, 0, BitmapList, imageIndex)
+            VCTabButton btnTab = new VCTabButton(this, leftForNextPage, 0, BitmapList, imageIndex, controlForPage)
             {
                 Hint = nameTab,
-                IndexPage = btnTabs.Count,
-                ContextPage = controlForPage
+                IndexPage = btnTabs.Count
             };
             btnTabs.Add(btnTab);
 

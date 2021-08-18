@@ -5,13 +5,15 @@ namespace Fantasy_Kingdoms_Battle
     // Класс иконки страницы
     internal sealed class VCTabButton : VCImage
     {
-        public VCTabButton(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList, int imageIndex) : base(parent, shiftX, shiftY, bitmapList, imageIndex)
+        public VCTabButton(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList, int imageIndex, VisualControl contextPage) : base(parent, shiftX, shiftY, bitmapList, imageIndex)
         {
             HighlightUnderMouse = true;
+
+            ContextPage = contextPage;
         }
 
         internal int IndexPage { get; set; }
-        internal VisualControl ContextPage { get; set; }
+        internal VisualControl ContextPage { get; }
 
         internal override void DoClick()
         {
