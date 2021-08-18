@@ -13,8 +13,6 @@ namespace Fantasy_Kingdoms_Battle
         private VCLabel labelCost;
         private VCLabel labelLevel;
         protected VCLabel labelQuantity;
-        private VCLabel labelPopupQuantity;
-        private SolidBrush brushPopupQuantity;
         private const int sizePopupBackground = 18;
         int shiftlabelLevel;
 
@@ -41,15 +39,6 @@ namespace Fantasy_Kingdoms_Battle
             labelQuantity.Visible = false;
             labelQuantity.ManualDraw = true;
 
-            labelPopupQuantity = new VCLabel(this, 0, 0, Program.formMain.fontSmall, FormMain.Config.CommonPopupQuantity, sizePopupBackground, "");
-            labelPopupQuantity.StringFormat.LineAlignment = StringAlignment.Center;
-            labelPopupQuantity.StringFormat.Alignment = StringAlignment.Center;
-            labelPopupQuantity.Width = sizePopupBackground;
-            labelPopupQuantity.Visible = false;
-            labelPopupQuantity.ManualDraw = true;
-
-            brushPopupQuantity = new SolidBrush(FormMain.Config.CommonPopupQuantityBack);
-
             ValidateSize();
         }
 
@@ -62,7 +51,6 @@ namespace Fantasy_Kingdoms_Battle
         internal string Cost { get; set; }
         internal int Level { get; set; }
         internal int Quantity { get; set; }
-        internal int PopupQuantity { get; set; }
         internal bool HighlightUnderMouse { get; set; } = false;
         internal bool ShowAsPressed { get; set; } = false;
         internal bool UseFilter { get; set; } = false;
@@ -95,8 +83,6 @@ namespace Fantasy_Kingdoms_Battle
             //Debug.Assert(Cost >= 0);
             Debug.Assert(Level >= 0);
             Debug.Assert(Quantity >= 0);
-            Debug.Assert(PopupQuantity >= 0);
-            Debug.Assert(PopupQuantity <= 9);
 
             if (Visible && (BitmapList.Size == Program.formMain.ilMenuCellFilters.Size) && UseFilter)
             {
@@ -168,29 +154,12 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal override void PaintForeground(Graphics g)
-        {
-            base.PaintForeground(g);
-
-            // Всплывающее количество 
-            if (PopupQuantity > 0)
-            {
-                g.FillEllipse(brushPopupQuantity, Left + Width - 13, Top - 5, sizePopupBackground, sizePopupBackground);
-
-                labelPopupQuantity.Text = PopupQuantity.ToString();
-                labelPopupQuantity.Draw(g);
-            }
-        }
-
         internal override void ArrangeControls()
         {
             base.ArrangeControls();
 
             labelQuantity.ShiftY = Height - 16;
             labelCost.ShiftY = Height - 16;
-
-            labelPopupQuantity.ShiftX = Width - 13;
-            labelPopupQuantity.ShiftY = -5;
         }
 
         private void ValidateSize()
