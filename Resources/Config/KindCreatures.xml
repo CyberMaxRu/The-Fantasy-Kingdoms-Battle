@@ -3,6 +3,11 @@
   <KindCreature>
     <ID>Human</ID>
     <Name>Человек</Name>
+    <MinMorale></MinMorale>
+    <MaxMorale></MaxMorale>
+    <Perks>
+      <Perk></Perk>
+    </Perks>
   </KindCreature>
   <KindCreature>
     <ID>Beast</ID>

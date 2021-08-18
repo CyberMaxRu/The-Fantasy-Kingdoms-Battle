@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TypePerks>
+  <TypePerk>
+    <ID>Live</ID>
+    <Name>Живой</Name>
+    <Description></Description>
+    <ImageIndex></ImageIndex>
+  </TypePerk>
+</TypePerks>
