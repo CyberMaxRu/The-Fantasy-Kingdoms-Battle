@@ -52,6 +52,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             ClassHero = FormMain.Config.FindTypeCreature(nameClassHero);
             nameClassHero = null;
+
+            Debug.Assert(ClassHero.CategoryCreature != CategoryCreature.Citizen);
         }
 
 
@@ -168,6 +170,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             ClassHero = FormMain.Config.FindTypeCreature(nameClassHero);
             nameClassHero = null;
+
+            Debug.Assert(ClassHero.CategoryCreature != CategoryCreature.Citizen);
         }
 
         // Реализация интерфейса
