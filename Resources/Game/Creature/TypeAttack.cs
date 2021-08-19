@@ -25,6 +25,12 @@ namespace Fantasy_Kingdoms_Battle
         public TypeAttackMelee(XmlNode n) : base(n)
         {
             IsWeapon = XmlUtils.GetBoolNotNull(n.SelectSingleNode("IsWeapon"));
+
+            foreach (TypeAttackMelee ta in FormMain.Config.TypesAttackMelee)
+            {
+                Debug.Assert(ta.ID != ID);
+                Debug.Assert(ta.Name != Name);
+            }    
         }
 
         internal bool IsWeapon { get; }
@@ -34,7 +40,11 @@ namespace Fantasy_Kingdoms_Battle
     {
         public TypeAttackRange(XmlNode n) : base(n)
         {
-
+            foreach (TypeAttackRange ta in FormMain.Config.TypesAttackRange)
+            {
+                Debug.Assert(ta.ID != ID);
+                Debug.Assert(ta.Name != Name);
+            }
         }
     }
 
@@ -42,7 +52,11 @@ namespace Fantasy_Kingdoms_Battle
     {
         public TypeAttackMagic(XmlNode n) : base(n)
         {
-
+            foreach (TypeAttackMagic ta in FormMain.Config.TypesAttackMagic)
+            {
+                Debug.Assert(ta.ID != ID);
+                Debug.Assert(ta.Name != Name);
+            }
         }
     }
 }
