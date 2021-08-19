@@ -1934,6 +1934,13 @@
       <CoefHealth>3</CoefHealth>
       <CoefMana>1</CoefMana>
       <CoefStamina>3</CoefStamina>
+      <TypeAttackResist>
+        <TypeAttack Value="-50">HolyMagic</TypeAttack>
+        <TypeAttack Value="+50">DarkMagic</TypeAttack>
+        <TypeAttack Value="-25">FireMagic</TypeAttack>
+        <TypeAttack Value="-25">IceMagic</TypeAttack>
+        <TypeAttack Value="+100">LightningMagic</TypeAttack>
+      </TypeAttackResist>
     </BaseParameters>
     <NextLevel>
       <StatPoints>5</StatPoints>
