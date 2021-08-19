@@ -122,6 +122,11 @@ namespace Fantasy_Kingdoms_Battle
                 TypesAttackRange.Add(new TypeAttackRange(n));
             }
 
+            foreach (XmlNode n in xmlDoc.SelectNodes("/TypesAttack/TypeAttackMagic"))
+            {
+                TypesAttackMagic.Add(new TypeAttackMagic(n));
+            }
+
             // Загрузка конфигурации способностей
             xmlDoc = CreateXmlDocument("Config\\TypeAbilities.xml");
 
@@ -237,6 +242,7 @@ namespace Fantasy_Kingdoms_Battle
         //
         internal List<TypeAttackMelee> TypesAttackMelee { get; } = new List<TypeAttackMelee>();
         internal List<TypeAttackRange> TypesAttackRange { get; } = new List<TypeAttackRange>();
+        internal List<TypeAttackMagic> TypesAttackMagic { get; } = new List<TypeAttackMagic>();
         internal List<TypeAbility> Abilities { get; } = new List<TypeAbility>();
         internal List<Specialization> Specializations { get; } = new List<Specialization>();
         internal List<SecondarySkill> SecondarySkills { get; } = new List<SecondarySkill>();
@@ -405,6 +411,19 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             throw new Exception("Тип дистанционной атаки " + ID + " не найден.");
+        }
+
+        internal TypeAttackMagic FindTypeAttackMagic(string ID)
+        {
+            Debug.Assert(ID.Length > 0);
+
+            foreach (TypeAttackMagic tam in TypesAttackMagic)
+            {
+                if (tam.ID == ID)
+                    return tam;
+            }
+
+            throw new Exception("Тип магической атаки " + ID + " не найден.");
         }
 
         internal TypeAbility FindAbility(string ID, bool mustBeExists = true)

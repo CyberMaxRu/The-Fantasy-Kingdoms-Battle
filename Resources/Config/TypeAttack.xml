@@ -40,4 +40,28 @@
     <ID>Bolt</ID>
     <Name>Болт</Name>
   </TypeAttackRange>
+  <TypeAttackMagic>
+    <ID>Simple</ID>
+    <Name>Обычная</Name>
+  </TypeAttackMagic>
+  <TypeAttackMagic>
+    <ID>Dark</ID>
+    <Name>Темная магия</Name>
+  </TypeAttackMagic>
+  <TypeAttackMagic>
+    <ID>Holy</ID>
+    <Name>Святая магия</Name>
+  </TypeAttackMagic>
+  <TypeAttackMagic>
+    <ID>Fire</ID>
+    <Name>Магия огня</Name>
+  </TypeAttackMagic>
+  <TypeAttackMagic>
+    <ID>Ice</ID>
+    <Name>Магия холода</Name>
+  </TypeAttackMagic>
+  <TypeAttackMagic>
+    <ID>Lightning</ID>
+    <Name>Магия молний</Name>
+  </TypeAttackMagic>
 </TypesAttack>

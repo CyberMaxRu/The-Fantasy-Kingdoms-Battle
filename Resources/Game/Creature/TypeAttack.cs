@@ -35,4 +35,12 @@ namespace Fantasy_Kingdoms_Battle
 
         }
     }
+
+    internal sealed class TypeAttackMagic : TypeAttack
+    {
+        public TypeAttackMagic(XmlNode n) : base(n)
+        {
+
+        }
+    }
 }
