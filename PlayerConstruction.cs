@@ -339,7 +339,7 @@ namespace Fantasy_Kingdoms_Battle
             return h;
         }
 
-        internal PlayerHero HireHero(TypeHero th)
+        internal PlayerHero HireHero(TypeCreature th)
         {
             Debug.Assert(Heroes.Count < MaxHeroes());
             Debug.Assert(Player.CombatHeroes.Count < Player.Lobby.TypeLobby.MaxHeroes);
@@ -347,11 +347,14 @@ namespace Fantasy_Kingdoms_Battle
 
             PlayerHero h = new PlayerHero(this, Player, th);
 
-            if (TypeConstruction.TrainedHero.Cost > 0)
+            if (th.CategoryCreature != CategoryCreature.Citizen)
             {
-                Player.SpendGold(TypeConstruction.TrainedHero.Cost);
-                if (Player.Player.TypePlayer == TypePlayer.Human)
-                    Program.formMain.SetNeedRedrawFrame();
+                if (TypeConstruction.TrainedHero.Cost > 0)
+                {
+                    Player.SpendGold(TypeConstruction.TrainedHero.Cost);
+                    if (Player.Player.TypePlayer == TypePlayer.Human)
+                        Program.formMain.SetNeedRedrawFrame();
+                }
             }
 
             AddHero(h);

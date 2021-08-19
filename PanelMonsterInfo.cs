@@ -32,8 +32,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
-            lvGold.Text = Monster.TypeMonster.TypeReward.Gold.ToString();
-            lvGreatness.Text = Monster.TypeMonster.TypeReward.Greatness.ToString();
+            lvGold.Text = Monster.TypeCreature.TypeReward.Gold.ToString();
+            lvGreatness.Text = Monster.TypeCreature.TypeReward.Greatness.ToString();
 
             base.Draw(g);
         }

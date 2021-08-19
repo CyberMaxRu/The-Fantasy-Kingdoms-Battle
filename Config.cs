@@ -149,7 +149,7 @@ namespace Fantasy_Kingdoms_Battle
                 StatesCreature.Add(new StateCreature(n));
             }
 
-            // Загрузка конфигурации типов существ
+            // Загрузка конфигурации видов существ
             xmlDoc = CreateXmlDocument("Config\\KindCreatures.xml");
 
             foreach (XmlNode n in xmlDoc.SelectNodes("/KindCreatures/KindCreature"))
@@ -157,34 +157,13 @@ namespace Fantasy_Kingdoms_Battle
                 KindCreatures.Add(new KindCreature(n));
             }
 
-            // Загрузка конфигурации горожан
-            xmlDoc = CreateXmlDocument("Config\\TypeCitizens.xml");
+            // Загрузка конфигурации типов существ
+            xmlDoc = CreateXmlDocument("Config\\TypeCreatures.xml");
 
-            foreach (XmlNode n in xmlDoc.SelectNodes("/TypeCitizens/TypeCitizen"))
+            foreach (XmlNode n in xmlDoc.SelectNodes("/TypeCreatures/TypeCreature"))
             {
-                TypeCitizens.Add(new TypeCitizen(n));
+                TypeCreatures.Add(new TypeCreature(n));
             }
-
-            // Загрузка конфигурации героев
-            xmlDoc = CreateXmlDocument("Config\\TypeHeroes.xml");
-
-            foreach (XmlNode n in xmlDoc.SelectNodes("/TypeHeroes/TypeHero"))
-            {
-                TypeHeroes.Add(new TypeHero(n));
-            }
-
-            // Загрузка монстров
-            xmlDoc = CreateXmlDocument("Config\\TypeMonsters.xml");
-
-            foreach (XmlNode n in xmlDoc.SelectNodes("/TypeMonsters/TypeMonster"))
-            {
-                TypeMonsters.Add(new TypeMonster(n));
-            }
-
-            // Составляем общий пул существ
-            TypeCreatures.AddRange(TypeHeroes);
-            TypeCreatures.AddRange(TypeCitizens);
-            TypeCreatures.AddRange(TypeMonsters);
 
             // Настраиваем связи
             foreach (TypeAbility a in Abilities)
@@ -226,7 +205,6 @@ namespace Fantasy_Kingdoms_Battle
         internal List<ComputerPlayer> ComputerPlayers { get; } = new List<ComputerPlayer>();
         internal List<HumanPlayer> HumanPlayers { get; } = new List<HumanPlayer>();
         internal bool AutoCreatedPlayer { get; }
-        internal List<TypeMonster> TypeMonsters { get; } = new List<TypeMonster>();
         internal List<TypeConstruction> TypeConstructions { get; } = new List<TypeConstruction>();
 
         //
@@ -236,8 +214,6 @@ namespace Fantasy_Kingdoms_Battle
         internal List<SecondarySkill> SecondarySkills { get; } = new List<SecondarySkill>();
         internal List<StateCreature> StatesCreature { get; } = new List<StateCreature>();
         internal List<KindCreature> KindCreatures { get; } = new List<KindCreature>();
-        internal List<TypeCitizen> TypeCitizens { get; } = new List<TypeCitizen>();
-        internal List<TypeHero> TypeHeroes { get; } = new List<TypeHero>();
         internal List<Item> Items { get; } = new List<Item>();
         internal List<GroupWeapon> GroupWeapons { get; } = new List<GroupWeapon>();
         internal List<GroupArmour> GroupArmours { get; } = new List<GroupArmour>();
@@ -337,28 +313,6 @@ namespace Fantasy_Kingdoms_Battle
                 throw new Exception("Сооружение " + ID + " не найдено.");
 
             return null;
-        }
-
-        internal TypeHero FindTypeHero(string ID)
-        {
-            foreach (TypeHero th in TypeHeroes)
-            {
-                if (th.ID == ID)
-                    return th;
-            }
-
-            throw new Exception("Герой " + ID + " не найден.");
-        }
-
-        internal TypeMonster FindTypeMonster(string ID)
-        {
-            foreach (TypeMonster tm in TypeMonsters)
-            {
-                if (tm.ID == ID)
-                    return tm;
-            }
-
-            throw new Exception("Тип монстра " + ID + " не найден.");
         }
 
         internal Item FindItem(string ID, bool mustBeExists = true)

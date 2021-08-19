@@ -11,31 +11,21 @@ namespace Fantasy_Kingdoms_Battle
     // Класс монстра в логове
     internal sealed class Monster : Creature
     {
-        public Monster(TypeMonster tm, int level, BattleParticipant bp) : base(tm, bp)
+        public Monster(TypeCreature tm, int level, BattleParticipant bp) : base(tm, bp)
         {
             Debug.Assert(tm != null);
             Debug.Assert(level > 0);
-
-            TypeMonster = tm;
         }
 
-        internal TypeMonster TypeMonster { get; }
         protected override string GetCost() => null;
-
-        protected override int GetImageIndex()
-        {
-            //Debug.Assert(IsLive);
-
-            return TypeMonster.ImageIndex;
-        }
 
         internal override void PrepareHint()
         {
             //Debug.Assert(IsLive);
 
-            Program.formMain.formHint.AddStep1Header(TypeMonster.Name, "", TypeMonster.Description);
-            Program.formMain.formHint.AddStep2Reward(TypeMonster.TypeReward.Gold);
-            Program.formMain.formHint.AddStep3Greatness(TypeMonster.TypeReward.Greatness, 0);
+            Program.formMain.formHint.AddStep1Header(TypeCreature.Name, "", TypeCreature.Description);
+            Program.formMain.formHint.AddStep2Reward(TypeCreature.TypeReward.Gold);
+            Program.formMain.formHint.AddStep3Greatness(TypeCreature.TypeReward.Greatness, 0);
         }
 
         internal override void HideInfo()

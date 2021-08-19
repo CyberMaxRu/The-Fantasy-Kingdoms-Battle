@@ -28,7 +28,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        public PlayerHero(PlayerConstruction pb, BattleParticipant bp, TypeHero th) : base(th, bp)
+        public PlayerHero(PlayerConstruction pb, BattleParticipant bp, TypeCreature th) : base(th, bp)
         {
             Construction = pb;
             DayOfHire = Player.Lobby.Day;
@@ -38,7 +38,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal PlayerConstruction Construction { get; }// Здание, которому принадлежит герой
         internal LobbyPlayer Player => Construction.Player;// Игрок, которому принадлежит герой
-        internal TypeHero TypeHero { get; } // Класс героя
+        internal TypeCreature TypeHero { get; } // Класс героя
         internal string FullName { get; }// Полное имя
         internal int Gold { get; private set; }// Количество золота у героя
 
@@ -263,7 +263,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(IsLive);
 
-            return Program.formMain.TreatImageIndex(TypeHero.ImageIndex, Player);
+            return Program.formMain.TreatImageIndex(TypeCreature.ImageIndex, Player);
         }
 
         internal string GetNameHero()

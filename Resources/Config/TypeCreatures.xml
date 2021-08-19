@@ -1,169 +1,118 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<TypeHeroes>
-  <TypeHero>
+<TypeCreatures>
+  <TypeCreature>
     <ID>King</ID>
     <Name>Король</Name>
     <Description>Это вы, Ваше Величество!</Description>
     <ImageIndex>-100</ImageIndex>
+    <CategoryCreature>Citizen</CategoryCreature>
     <KindCreature>Human</KindCreature>
     <Reward>0</Reward>
     <Cost>0</Cost>
     <Construction>Castle</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
-    <TypeAttackMelee>Sword</TypeAttackMelee>
-    <MeleeWeapon>WeaponKing0</MeleeWeapon>
-    <Armour>ArmourKing0</Armour>
-    <DefaultPositionPriority>300</DefaultPositionPriority>    
-	<PersistentState>King</PersistentState>
-	<BaseParameters>
-    <Strength>20</Strength>
-    <Dexterity>10</Dexterity>
-    <Magic>10</Magic>
-    <Vitality>50</Vitality>
-    <SecondsToMove>2.0</SecondsToMove>
-    <Inititative>5</Inititative>
-    <CoefHealth>3</CoefHealth>
-    <CoefMana>1</CoefMana>
-    <CoefStamina>3</CoefStamina>
-    <TypeAttackResist>
-      <TypeAttack Value="50">Sword</TypeAttack>
-    </TypeAttackResist>
-    </BaseParameters>
-    <NextLevel>
-      <StatPoints>5</StatPoints>
-      <WeightStrength>40</WeightStrength>
-      <WeightDexterity>10</WeightDexterity>
-      <WeightMagic>10</WeightMagic>
-      <WeightVitality>40</WeightVitality>
-      <Health>5</Health>
-      <Mana>2</Mana>
-      <Stamina>4</Stamina>
-      <ResistMagic>0</ResistMagic>
-    </NextLevel>
-  </TypeHero>
-  <TypeHero>
+  	<PersistentState>King</PersistentState>
+  </TypeCreature>
+  <TypeCreature>
 	<ID>Advisor</ID>
-	<Name>Советник</Name>
-	<Description>Ваш личный советник, Сир.</Description>
-	<ImageIndex>137</ImageIndex>
-	<KindCreature>Human</KindCreature>
-	<Reward>0</Reward>
-	<Cost>0</Cost>
-	<Construction>Castle</Construction>
-	<MaxLevel>100</MaxLevel>
-	<CanBuild>False</CanBuild>
-  <TypeAttackMelee>Sword</TypeAttackMelee>
-  <MeleeWeapon>WeaponAdvisor0</MeleeWeapon>
-	<Armour>ArmourAdvisor0</Armour>
-	<DefaultPositionPriority>310</DefaultPositionPriority>
-	<PersistentState>Advisor</PersistentState>
-  <BaseParameters>
-		<Strength>20</Strength>
-		<Dexterity>10</Dexterity>
-		<Magic>10</Magic>
-		<Vitality>50</Vitality>
-		<SecondsToMove>2.0</SecondsToMove>
-		<Inititative>5</Inititative>
-		<CoefHealth>3</CoefHealth>
-		<CoefMana>1</CoefMana>
-		<CoefStamina>3</CoefStamina>
-	</BaseParameters>
-	<NextLevel>
-		<StatPoints>5</StatPoints>
-		<WeightStrength>40</WeightStrength>
-		<WeightDexterity>10</WeightDexterity>
-		<WeightMagic>10</WeightMagic>
-		<WeightVitality>40</WeightVitality>
-		<Health>5</Health>
-		<Mana>2</Mana>
-		<Stamina>4</Stamina>
-		<ResistMagic>0</ResistMagic>
-	</NextLevel>
-  </TypeHero>
-  <TypeHero>
+	  <Name>Советник</Name>
+	  <Description>Ваш личный советник, Сир.</Description>
+	  <ImageIndex>137</ImageIndex>
+    <CategoryCreature>Citizen</CategoryCreature>
+    <KindCreature>Human</KindCreature>
+	  <Reward>0</Reward>
+	  <Cost>0</Cost>
+	  <Construction>Castle</Construction>
+	  <MaxLevel>100</MaxLevel>
+	  <CanBuild>False</CanBuild>
+	  <PersistentState>Advisor</PersistentState>
+  </TypeCreature>
+  <TypeCreature>
     <ID>Captain</ID>
     <Name>Капитан</Name>
     <Description>Занимается обороной Королевства и тренировками героев. В общем всем, что связано с военной службой.</Description>
     <ImageIndex>104</ImageIndex>
+    <CategoryCreature>Citizen</CategoryCreature>
     <KindCreature>Human</KindCreature>
     <Reward>0</Reward>
     <Cost>0</Cost>
     <Construction>Castle</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
-    <TypeAttackMelee>Sword</TypeAttackMelee>
-    <MeleeWeapon>WeaponCaptain0</MeleeWeapon>
-    <Armour>ArmourCaptain0</Armour>
-    <DefaultPositionPriority>320</DefaultPositionPriority>
     <PersistentState>Captain</PersistentState>
-    <BaseParameters>
-      <Strength>20</Strength>
-      <Dexterity>10</Dexterity>
-      <Magic>10</Magic>
-      <Vitality>50</Vitality>
-      <SecondsToMove>2.0</SecondsToMove>
-      <Inititative>5</Inititative>
-      <CoefHealth>3</CoefHealth>
-      <CoefMana>1</CoefMana>
-      <CoefStamina>3</CoefStamina>
-    </BaseParameters>
-    <NextLevel>
-      <StatPoints>5</StatPoints>
-      <WeightStrength>40</WeightStrength>
-      <WeightDexterity>10</WeightDexterity>
-      <WeightMagic>10</WeightMagic>
-      <WeightVitality>40</WeightVitality>
-      <Health>5</Health>
-      <Mana>2</Mana>
-      <Stamina>4</Stamina>
-      <ResistMagic>0</ResistMagic>
-    </NextLevel>
-  </TypeHero>
-	<TypeHero>
+  </TypeCreature>
+	<TypeCreature>
 		<ID>Treasurer</ID>
 		<Name>Казначей</Name>
 		<Description>Собирает налоги, заведует казной и эффективностью трат из неё.</Description>
 		<ImageIndex>90</ImageIndex>
-		<KindCreature>Human</KindCreature>
+    <CategoryCreature>Citizen</CategoryCreature>
+    <KindCreature>Human</KindCreature>
 		<Reward>0</Reward>
 		<Cost>0</Cost>
 		<Construction>Castle</Construction>
 		<MaxLevel>100</MaxLevel>
 		<CanBuild>False</CanBuild>
-    <TypeAttackMelee>Sword</TypeAttackMelee>
-    <MeleeWeapon>WeaponTreasurer0</MeleeWeapon>
-		<Armour>ArmourTreasurer0</Armour>
-		<DefaultPositionPriority>330</DefaultPositionPriority>
 		<PersistentState>Treasurer</PersistentState>
+	</TypeCreature>
+  <TypeCreature>
+    <ID>Peasant</ID>
+    <Name>Крестьянин</Name>
+    <Description>Это просто крестьяне, Сир. Они обучены строить и чинить здания.</Description>
+    <ImageIndex>85</ImageIndex>
+    <CategoryCreature>Citizen</CategoryCreature>
+    <KindCreature>Human</KindCreature>
+    <Reward>1</Reward>
+    <Cost>0</Cost>
+    <Building>House</Building>
+    <MaxLevel>1</MaxLevel>
+  </TypeCreature>
+  <TypeCreature>
+    <ID>Guardian</ID>
+    <Name>Королевский гвардеец</Name>
+    <Description>Королевские гвардейцы в меру своих сил охраняют покой короля.</Description>
+    <ImageIndex>35</ImageIndex>
+    <CategoryCreature>Citizen</CategoryCreature>
+    <KindCreature>Human</KindCreature>
+    <Reward>25</Reward>
+    <Cost>0</Cost>
+    <Building>Castle</Building>
+    <MaxLevel>1</MaxLevel>
+    <TypeAttackMelee>Sword</TypeAttackMelee>
+    <CanBuild>False</CanBuild>
     <BaseParameters>
-			<Strength>20</Strength>
-			<Dexterity>10</Dexterity>
-			<Magic>10</Magic>
-			<Vitality>50</Vitality>
-			<SecondsToMove>2.0</SecondsToMove>
-			<Inititative>5</Inititative>
-			<CoefHealth>3</CoefHealth>
-			<CoefMana>1</CoefMana>
-			<CoefStamina>3</CoefStamina>
-		</BaseParameters>
-		<NextLevel>
-			<StatPoints>5</StatPoints>
-			<WeightStrength>40</WeightStrength>
-			<WeightDexterity>10</WeightDexterity>
-			<WeightMagic>10</WeightMagic>
-			<WeightVitality>40</WeightVitality>
-			<Health>5</Health>
-			<Mana>2</Mana>
-			<Stamina>4</Stamina>
-			<ResistMagic>0</ResistMagic>
-		</NextLevel>
-	</TypeHero>
-	<TypeHero>
+      <Strength>20</Strength>
+      <Dexterity>10</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>100</Vitality>
+      <SecondsToMove>2.0</SecondsToMove>
+      <CoefHealth>4</CoefHealth>
+      <CoefMana>1</CoefMana>
+      <CoefStamina>4</CoefStamina>
+    </BaseParameters>
+  </TypeCreature>
+  <TypeCreature>
+    <ID>Miller</ID>
+    <Name>Мельник</Name>
+    <Description>Мельник работает на мельнице.</Description>
+    <ImageIndex>127</ImageIndex>
+    <CategoryCreature>Citizen</CategoryCreature>
+    <KindCreature>Human</KindCreature>
+    <Reward>1</Reward>
+    <Cost>0</Cost>
+    <Building>Mill</Building>
+    <MaxLevel>1</MaxLevel>
+    <TypeAttackMelee>Hands</TypeAttackMelee>
+    <KindHero>NonCombatant</KindHero>
+    <CanBuild>False</CanBuild>
+  </TypeCreature>
+  <TypeCreature>
     <ID>Warrior</ID>
     <Name>Воин</Name>
     <Description>- Весьма вынослив//- В первую очередь выполняет задания атаки и защиты//- На 5-ом уровне учится отвлекать врагов на себя</Description>
     <ImageIndex>63</ImageIndex>
+    <CategoryCreature>Hero</CategoryCreature>
     <KindCreature>Human</KindCreature>
     <Reward>100</Reward>
     <Cost>200</Cost>
@@ -326,12 +275,13 @@
       <Surname>Последний рыцарь</Surname>
       <Surname>из Каербанога</Surname>
     </Surnames>
-  </TypeHero>
-  <TypeHero>
+  </TypeCreature>
+  <TypeCreature>
     <ID>Rogue</ID>
     <Name>Разбойница</Name>
     <Description>- Любит деньги, охотно выполняет любые задания//- Умеет воровать//- Избегает серьезных боев</Description>
     <ImageIndex>62</ImageIndex>
+    <CategoryCreature>Hero</CategoryCreature>
     <KindCreature>Human</KindCreature>
     <Reward>50</Reward>
     <Cost>100</Cost>
@@ -454,12 +404,13 @@
       <Surname>Убийца Вампиров</Surname>
       <Surname>Ограбь</Surname>
     </Surnames>
-  </TypeHero>
-  <TypeHero>
+  </TypeCreature>
+  <TypeCreature>
     <ID>Hunter</ID>
     <Name>Рейнджер</Name>
     <Description>- Любит выполнять задания исследования//- Лучше всего воюет против зверей</Description>
     <ImageIndex>57</ImageIndex>
+    <CategoryCreature>Hero</CategoryCreature>
     <KindCreature>Human</KindCreature>
     <Reward>75</Reward>
     <Cost>150</Cost>
@@ -626,12 +577,13 @@
       <Surname>Узкие Штаны</Surname>
       <Surname>Модные Штаны</Surname>
     </Surnames>
-  </TypeHero>
-  <TypeHero>
+  </TypeCreature>
+  <TypeCreature>
     <ID>Cleric</ID>
     <Name>Послушница</Name>
     <Description>- Умеет лечить//- Лучше всего воюет против нежити</Description>
     <ImageIndex>53</ImageIndex>
+    <CategoryCreature>Hero</CategoryCreature>
     <KindCreature>Human</KindCreature>
     <Reward>125</Reward>
     <Cost>350</Cost>
@@ -773,12 +725,13 @@
       <Surname>Прилежная</Surname>
       <Surname>Задумчивая</Surname>
     </Surnames>
-  </TypeHero>
-  <TypeHero>
+  </TypeCreature>
+  <TypeCreature>
     <ID>Mage</ID>
     <Name>Маг</Name>
     <Description>- Способен выучить множество разрушительных заклинаний//- Почти не защищен//- На 5-ом уровне изучает "Магический щит"</Description>
     <ImageIndex>58</ImageIndex>
+    <CategoryCreature>Hero</CategoryCreature>
     <KindCreature>Human</KindCreature>
     <Reward>150</Reward>
     <Cost>500</Cost>
@@ -920,12 +873,13 @@
       <Surname>Косматый</Surname>
       <Surname>Безопасный</Surname>
     </Surnames>
-  </TypeHero>
-  <TypeHero>
+  </TypeCreature>
+  <TypeCreature>
     <ID>Elf</ID>
     <Name>Эльфийка</Name>
     <Description>- Прекрасно стреляет из лука//- Самая быстрая из героев//- Не любит гномов</Description>
     <ImageIndex>56</ImageIndex>
+    <CategoryCreature>Hero</CategoryCreature>
     <KindCreature>Elf</KindCreature>
     <Reward>200</Reward>
     <Cost>700</Cost>
@@ -1052,12 +1006,13 @@
       <Surname>Сребрестрелая</Surname>
       <Surname>Песнь Лесов</Surname>
     </Surnames>
-  </TypeHero>
-  <TypeHero>
+  </TypeCreature>
+  <TypeCreature>
     <ID>Dwarf</ID>
     <Name>Гном</Name>
     <Description>- Обладает высоким сопротивлением магии//- В первую очередь выполняет задания атаки//- Умело рушит здания//- Не любит эльфов</Description>
     <ImageIndex>55</ImageIndex>
+    <CategoryCreature>Hero</CategoryCreature>
     <KindCreature>Dwarf</KindCreature>
     <Reward>250</Reward>
     <Cost>700</Cost>
@@ -1178,12 +1133,13 @@
       <Surname>Тощебород</Surname>
       <Surname>Колесовик</Surname>
     </Surnames>
-  </TypeHero>
-  <TypeHero>
+  </TypeCreature>
+  <TypeCreature>
     <ID>DarkPriest</ID>
     <Name>Сестра Крипты</Name>
     <Description>- Вызывает себе на помощь скелетов//- Любит выполнять задания атаки//- На 5-ом уровне изучает заклинание "Чума"//- С 10-го уровня призывает себе на помощь темных личей//- Не любит паладинов Дауроса</Description>
     <ImageIndex>54</ImageIndex>
+    <CategoryCreature>Hero</CategoryCreature>
     <KindCreature>Human</KindCreature>
     <Reward>500</Reward>
     <Cost>1000</Cost>
@@ -1274,12 +1230,13 @@
       <Surname>Смертелюбивая</Surname>
       <Surname>Темная</Surname>
     </Surnames>
-  </TypeHero>
-  <TypeHero>
+  </TypeCreature>
+  <TypeCreature>
     <ID>Priest</ID>
     <Name>Жрица Агрелы</Name>
     <Description>- Умеет лечить//- Лучше всего воюет против нежити//- На 10-ом уровне изучает "Массовое лечение"</Description>
     <ImageIndex>61</ImageIndex>
+    <CategoryCreature>Hero</CategoryCreature>
     <KindCreature>Human</KindCreature>
     <Reward>500</Reward>
     <Cost>1000</Cost>
@@ -1367,12 +1324,13 @@
       <Surname>Всеверующая</Surname>
       <Surname>Священная</Surname>
     </Surnames>
-  </TypeHero>
-  <TypeHero>
+  </TypeCreature>
+  <TypeCreature>
     <ID>Paladin</ID>
     <Name>Паладин</Name>
     <Description>- Самый выносливый из героев//- Не знает страха//- На 5-ом уровне изучает заклинание "Святая защита"//- На 10-ом уровне изучает "Священный удар"//- Умеет отвлекать врагов на себя//- Не любит нежить, вызванную сестрами Крипты</Description>
     <ImageIndex>60</ImageIndex>
+    <CategoryCreature>Hero</CategoryCreature>
     <KindCreature>Human</KindCreature>
     <Reward>500</Reward>
     <Cost>1000</Cost>
@@ -1460,12 +1418,13 @@
       <Surname>Преданный</Surname>
       <Surname>Сердце Святости</Surname>
     </Surnames>
-  </TypeHero>
-  <TypeHero>
+  </TypeCreature>
+  <TypeCreature>
     <ID>BladeMaster</ID>
     <Name>Мастер меча</Name>
     <Description>- Обладает самым сильным ударом//- Любит выполнять задания атаки//- На 5-ом уровне изучает "Калечащий удар"//- На 10-ом уровне изучает "Ураган клинков"//- Умеет отвлекать врагов на себя</Description>
     <ImageIndex>52</ImageIndex>
+    <CategoryCreature>Hero</CategoryCreature>
     <KindCreature>Human</KindCreature>
     <Reward>500</Reward>
     <Cost>1000</Cost>
@@ -1550,12 +1509,13 @@
       <Surname>Сорви-голова</Surname>
       <Surname>Щит-в-щепки</Surname>
     </Surnames>
-  </TypeHero>
-  <TypeHero>
+  </TypeCreature>
+  <TypeCreature>
     <ID>BeastMaster</ID>
     <Name>Зверолов</Name>
     <Description>- Вызывает себе на помощь волков Фервуса//- Любит выполнять задания исследования//- На 5-ом уровне изучает способность "Звериная ярость"//- С 10-го уровня призывает себе на помощь медведей Хаоса</Description>
     <ImageIndex>51</ImageIndex>
+    <CategoryCreature>Hero</CategoryCreature>
     <KindCreature>Human</KindCreature>
     <Reward>500</Reward>
     <Cost>1000</Cost>
@@ -1647,12 +1607,13 @@
       <Surname>Холодный Вой</Surname>
       <Surname>Коготь Льва</Surname>
     </Surnames>
-  </TypeHero>
-  <TypeHero>
+  </TypeCreature>
+  <TypeCreature>
     <ID>Marksman</ID>
     <Name>Лучник Хелии</Name>
     <Description>- Лучший из стрелков//- Любит выполнять задания исследования//- На 5-ом уровне изучает "Смертельный выстрел"//- На 10-ом уровне изучает заклинание "Солнечная стрела"</Description>
     <ImageIndex>59</ImageIndex>
+    <CategoryCreature>Hero</CategoryCreature>
     <KindCreature>Human</KindCreature>
     <Reward>500</Reward>
     <Cost>1000</Cost>
@@ -1744,12 +1705,13 @@
       <Surname>Одинокий Звезда</Surname>
       <Surname>Прожигающий</Surname>
     </Surnames>
-  </TypeHero>
-  <TypeHero>
+  </TypeCreature>
+  <TypeCreature>
     <ID>FireMage</ID>
     <Name>Маг Огня</Name>
     <Description>- Способен выучить множество заклинаний//- Почти не защищен//- На 5-ом уровне изучает "Магический щит"</Description>
     <ImageIndex>135</ImageIndex>
+    <CategoryCreature>Hero</CategoryCreature>
     <KindCreature>Human</KindCreature>
     <Reward>500</Reward>
     <Cost>1000</Cost>
@@ -1796,12 +1758,13 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-  </TypeHero>
-  <TypeHero>
+  </TypeCreature>
+  <TypeCreature>
     <ID>IceMage</ID>
     <Name>Маг Холода</Name>
     <Description>- Любит выполнять задания атаки//- Знает множество разрушительных заклинаний//- На 5-ом уровне изучает заклинания "Заморозка" и "Щит Холода"//- На 10-ом уровне изучает заклинание "Гнев Холода"</Description>
     <ImageIndex>131</ImageIndex>
+    <CategoryCreature>Hero</CategoryCreature>
     <KindCreature>Human</KindCreature>
     <Reward>500</Reward>
     <Cost>1000</Cost>
@@ -1869,12 +1832,13 @@
       <Surname>Буранный</Surname>
       <Surname>Ледяной Великан</Surname>
     </Surnames>
-  </TypeHero>
-  <TypeHero>
+  </TypeCreature>
+  <TypeCreature>
     <ID>DeathKnight</ID>
     <Name>Ассасин</Name>
     <Description>- Любит деньги, охотно выполняет любые задания//- Умеет воровать//- На 5-ом уровне изучает "Умелое оглушение"//- На 10-ом уровне изучает "Черный яд"</Description>
     <ImageIndex>133</ImageIndex>
+    <CategoryCreature>Hero</CategoryCreature>
     <KindCreature>Human</KindCreature>
     <Reward>500</Reward>
     <Cost>1000</Cost>
@@ -1949,5 +1913,1146 @@
       <Surname>Восходящая</Surname>
       <Surname>Сумеречная</Surname>
     </Surnames>
-  </TypeHero>
-</TypeHeroes>
+  </TypeCreature>
+  <TypeCreature>
+    <ID>Zombie</ID>
+    <Name>Зомби</Name>
+    <Description>Зомби - любимые игрушки некромантов. Зомби весьма сильны, но очень медлительны. Основной прием самозащиты от зомби - бег трусцой.</Description>
+    <ImageIndex>103</ImageIndex>
+    <CategoryCreature>Monster</CategoryCreature>
+    <KindCreature>Undead</KindCreature>
+    <MaxLevel>10</MaxLevel>
+    <TypeAttackMelee>Hands</TypeAttackMelee>
+    <DefaultPositionPriority>10</DefaultPositionPriority>
+    <BaseParameters>
+      <Strength>20</Strength>
+      <Dexterity>10</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>50</Vitality>
+      <SecondsToMove>2.0</SecondsToMove>
+      <Inititative>5</Inititative>
+      <CoefHealth>3</CoefHealth>
+      <CoefMana>1</CoefMana>
+      <CoefStamina>3</CoefStamina>
+    </BaseParameters>
+    <NextLevel>
+      <StatPoints>5</StatPoints>
+      <WeightStrength>40</WeightStrength>
+      <WeightDexterity>10</WeightDexterity>
+      <WeightMagic>10</WeightMagic>
+      <WeightVitality>40</WeightVitality>
+      <Health>5</Health>
+      <Mana>2</Mana>
+      <Stamina>4</Stamina>
+      <ResistMagic>0</ResistMagic>
+    </NextLevel>
+    <Abilities>
+      <Ability>ZombieBasicAttack</Ability>
+      <Ability>WillOfDarkness</Ability>
+      <Ability>DeadFlesh</Ability>
+      <Ability>NeedFood</Ability>
+      <Ability>Ptomaine</Ability>
+    </Abilities>
+    <Reward>
+      <Gold>25</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
+  </TypeCreature>
+  <TypeCreature>
+    <ID>Skelet</ID>
+    <Name>Скелет</Name>
+    <Description>Эти ожившие кости движимы черной магией неизвестного происхождения.</Description>
+    <ImageIndex>100</ImageIndex>
+    <CategoryCreature>Monster</CategoryCreature>
+    <KindCreature>Undead</KindCreature>
+    <MaxLevel>10</MaxLevel>
+    <TypeAttackMelee>Hands</TypeAttackMelee>
+    <DefaultPositionPriority>10</DefaultPositionPriority>
+    <BaseParameters>
+      <Strength>20</Strength>
+      <Dexterity>10</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>50</Vitality>
+      <SecondsToMove>2.0</SecondsToMove>
+      <Inititative>5</Inititative>
+      <CoefHealth>3</CoefHealth>
+      <CoefMana>1</CoefMana>
+      <CoefStamina>3</CoefStamina>
+    </BaseParameters>
+    <NextLevel>
+      <StatPoints>5</StatPoints>
+      <WeightStrength>40</WeightStrength>
+      <WeightDexterity>10</WeightDexterity>
+      <WeightMagic>10</WeightMagic>
+      <WeightVitality>40</WeightVitality>
+      <Health>5</Health>
+      <Mana>2</Mana>
+      <Stamina>4</Stamina>
+      <ResistMagic>0</ResistMagic>
+    </NextLevel>
+    <Abilities>
+      <Ability>SkeletBasicAttack</Ability>
+    </Abilities>
+    <Reward>
+      <Gold>25</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
+  </TypeCreature>
+  <TypeCreature>
+    <ID>SkeletArcher</ID>
+    <Name>Скелет-лучник</Name>
+    <Description>Скелет лучника - прекрасная анатомическая модель. Жаль, что подойти к ней не так-то просто, а убежать от неё еще труднее.</Description>
+    <ImageIndex>95</ImageIndex>
+    <CategoryCreature>Monster</CategoryCreature>
+    <KindCreature>Undead</KindCreature>
+    <MaxLevel>10</MaxLevel>
+    <TypeAttackMelee>Hands</TypeAttackMelee>
+    <TypeAttackRange>Arrow</TypeAttackRange>
+    <DefaultPositionPriority>50</DefaultPositionPriority>
+    <BaseParameters>
+      <Strength>20</Strength>
+      <Dexterity>10</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>50</Vitality>
+      <SecondsToMove>2.0</SecondsToMove>
+      <Inititative>5</Inititative>
+      <CoefHealth>3</CoefHealth>
+      <CoefMana>1</CoefMana>
+      <CoefStamina>3</CoefStamina>
+    </BaseParameters>
+    <NextLevel>
+      <StatPoints>5</StatPoints>
+      <WeightStrength>40</WeightStrength>
+      <WeightDexterity>10</WeightDexterity>
+      <WeightMagic>10</WeightMagic>
+      <WeightVitality>40</WeightVitality>
+      <Health>5</Health>
+      <Mana>2</Mana>
+      <Stamina>4</Stamina>
+      <ResistMagic>0</ResistMagic>
+    </NextLevel>
+    <Abilities>
+      <Ability>SkeletArcherBasicAttack</Ability>
+    </Abilities>
+    <Reward>
+      <Gold>25</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
+  </TypeCreature>
+  <TypeCreature>
+    <ID>SkeletVeteran</ID>
+    <Name>Скелет ветерана</Name>
+    <Description>Скелет ветеран не потерял ни капли своего боевого опыта потому гораздо опаснее обычного скелета.</Description>
+    <ImageIndex>98</ImageIndex>
+    <CategoryCreature>Monster</CategoryCreature>
+    <KindCreature>Undead</KindCreature>
+    <MaxLevel>10</MaxLevel>
+    <TypeAttackMelee>Hands</TypeAttackMelee>
+    <DefaultPositionPriority>50</DefaultPositionPriority>
+    <BaseParameters>
+      <Strength>20</Strength>
+      <Dexterity>10</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>50</Vitality>
+      <SecondsToMove>2.0</SecondsToMove>
+      <Inititative>5</Inititative>
+      <CoefHealth>3</CoefHealth>
+      <CoefMana>1</CoefMana>
+      <CoefStamina>3</CoefStamina>
+    </BaseParameters>
+    <NextLevel>
+      <StatPoints>5</StatPoints>
+      <WeightStrength>40</WeightStrength>
+      <WeightDexterity>10</WeightDexterity>
+      <WeightMagic>10</WeightMagic>
+      <WeightVitality>40</WeightVitality>
+      <Health>5</Health>
+      <Mana>2</Mana>
+      <Stamina>4</Stamina>
+      <ResistMagic>0</ResistMagic>
+    </NextLevel>
+    <Abilities>
+      <Ability>SkeletVeteranBasicAttack</Ability>
+    </Abilities>
+    <Reward>
+      <Gold>75</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
+  </TypeCreature>
+  <TypeCreature>
+    <ID>SkeletSniper</ID>
+    <Name>Скелет-снайпер</Name>
+    <Description>Этот стрелок-снайпер с веками нисколько не потерял, а скорее приобрез заметную "смертельность".</Description>
+    <ImageIndex>101</ImageIndex>
+    <CategoryCreature>Monster</CategoryCreature>
+    <KindCreature>Undead</KindCreature>
+    <MaxLevel>15</MaxLevel>
+    <TypeAttackMelee>Hands</TypeAttackMelee>
+    <TypeAttackRange>Arrow</TypeAttackRange>
+    <DefaultPositionPriority>60</DefaultPositionPriority>
+    <BaseParameters>
+      <Strength>20</Strength>
+      <Dexterity>10</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>50</Vitality>
+      <SecondsToMove>2.0</SecondsToMove>
+      <Inititative>5</Inititative>
+      <CoefHealth>3</CoefHealth>
+      <CoefMana>1</CoefMana>
+      <CoefStamina>3</CoefStamina>
+    </BaseParameters>
+    <NextLevel>
+      <StatPoints>5</StatPoints>
+      <WeightStrength>40</WeightStrength>
+      <WeightDexterity>10</WeightDexterity>
+      <WeightMagic>10</WeightMagic>
+      <WeightVitality>40</WeightVitality>
+      <Health>5</Health>
+      <Mana>2</Mana>
+      <Stamina>4</Stamina>
+      <ResistMagic>0</ResistMagic>
+    </NextLevel>
+    <Abilities>
+      <Ability>SkeletSniperBasicAttack</Ability>
+    </Abilities>
+    <Reward>
+      <Gold>50</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
+  </TypeCreature>
+  <TypeCreature>
+    <ID>Ghost</ID>
+    <Name>Призрак</Name>
+    <Description>Прозрачные, почти незаметные духи павших героев после смерти дают волю накопленным при жизни обидам и принимаются мстить живым.</Description>
+    <ImageIndex>97</ImageIndex>
+    <CategoryCreature>Monster</CategoryCreature>
+    <KindCreature>Undead</KindCreature>
+    <MaxLevel>10</MaxLevel>
+    <TypeAttackMelee>Hands</TypeAttackMelee>
+    <DefaultPositionPriority>30</DefaultPositionPriority>
+    <BaseParameters>
+      <Strength>20</Strength>
+      <Dexterity>10</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>50</Vitality>
+      <SecondsToMove>2.0</SecondsToMove>
+      <Inititative>5</Inititative>
+      <CoefHealth>3</CoefHealth>
+      <CoefMana>1</CoefMana>
+      <CoefStamina>3</CoefStamina>
+    </BaseParameters>
+    <NextLevel>
+      <StatPoints>5</StatPoints>
+      <WeightStrength>40</WeightStrength>
+      <WeightDexterity>10</WeightDexterity>
+      <WeightMagic>10</WeightMagic>
+      <WeightVitality>40</WeightVitality>
+      <Health>5</Health>
+      <Mana>2</Mana>
+      <Stamina>4</Stamina>
+      <ResistMagic>0</ResistMagic>
+    </NextLevel>
+    <Abilities>
+      <Ability>GhostBasicAttack</Ability>
+    </Abilities>
+    <Reward>
+      <Gold>75</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
+  </TypeCreature>
+  <TypeCreature>
+    <ID>Lich</ID>
+    <Name>Лич</Name>
+    <Description>Лич - это, как правило, могущественный маг, ставший еще более могущественным после смерти.</Description>
+    <ImageIndex>99</ImageIndex>
+    <CategoryCreature>Monster</CategoryCreature>
+    <KindCreature>Undead</KindCreature>
+    <MaxLevel>15</MaxLevel>
+    <TypeAttackMelee>Hands</TypeAttackMelee>
+    <DefaultPositionPriority>40</DefaultPositionPriority>
+    <BaseParameters>
+      <Strength>20</Strength>
+      <Dexterity>10</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>50</Vitality>
+      <SecondsToMove>2.0</SecondsToMove>
+      <Inititative>5</Inititative>
+      <CoefHealth>3</CoefHealth>
+      <CoefMana>1</CoefMana>
+      <CoefStamina>3</CoefStamina>
+    </BaseParameters>
+    <NextLevel>
+      <StatPoints>5</StatPoints>
+      <WeightStrength>40</WeightStrength>
+      <WeightDexterity>10</WeightDexterity>
+      <WeightMagic>10</WeightMagic>
+      <WeightVitality>40</WeightVitality>
+      <Health>5</Health>
+      <Mana>2</Mana>
+      <Stamina>4</Stamina>
+      <ResistMagic>0</ResistMagic>
+    </NextLevel>
+    <Abilities>
+      <Ability>LichBasicAttack</Ability>
+    </Abilities>
+    <Reward>
+      <Gold>75</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
+  </TypeCreature>
+  <TypeCreature>
+    <ID>Vampire</ID>
+    <Name>Вампир</Name>
+    <Description>Вампиры - древний вид, вымирающий вот уже несколько тысяч лет. Носят черное, потому что цвета темнее ещё не придумали, из напитков предпочитают свежую человеческую кровь. С предубеждением относятся к чесноку, серебру, осиновым колам и яркому солнцу.</Description>
+    <ImageIndex>102</ImageIndex>
+    <CategoryCreature>Monster</CategoryCreature>
+    <KindCreature>Undead</KindCreature>
+    <MaxLevel>20</MaxLevel>
+    <TypeAttackMelee>Hands</TypeAttackMelee>
+    <DefaultPositionPriority>15</DefaultPositionPriority>
+    <BaseParameters>
+      <Strength>20</Strength>
+      <Dexterity>10</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>50</Vitality>
+      <SecondsToMove>2.0</SecondsToMove>
+      <Inititative>5</Inititative>
+      <CoefHealth>3</CoefHealth>
+      <CoefMana>1</CoefMana>
+      <CoefStamina>3</CoefStamina>
+    </BaseParameters>
+    <NextLevel>
+      <StatPoints>5</StatPoints>
+      <WeightStrength>40</WeightStrength>
+      <WeightDexterity>10</WeightDexterity>
+      <WeightMagic>10</WeightMagic>
+      <WeightVitality>40</WeightVitality>
+      <Health>5</Health>
+      <Mana>2</Mana>
+      <Stamina>4</Stamina>
+      <ResistMagic>0</ResistMagic>
+    </NextLevel>
+    <Abilities>
+      <Ability>VampireAttack</Ability>
+    </Abilities>
+    <Reward>
+      <Gold>200</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
+  </TypeCreature>
+  <TypeCreature>
+    <ID>AncientLich</ID>
+    <Name>Древний лич</Name>
+    <Description>Это один из темных магов, которыми так богата древняя история Ардании. Его особенность лишь в том, что этот сумел возродиться и, похоже, ничуть не потерял в своей силе, хотя и похудел изрядно.</Description>
+    <ImageIndex>14</ImageIndex>
+    <CategoryCreature>Monster</CategoryCreature>
+    <KindCreature>Undead</KindCreature>
+    <MaxLevel>10</MaxLevel>
+    <TypeAttackMelee>Hands</TypeAttackMelee>
+    <DefaultPositionPriority>40</DefaultPositionPriority>
+    <BaseParameters>
+      <Strength>20</Strength>
+      <Dexterity>10</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>50</Vitality>
+      <SecondsToMove>2.0</SecondsToMove>
+      <Inititative>5</Inititative>
+      <CoefHealth>3</CoefHealth>
+      <CoefMana>1</CoefMana>
+      <CoefStamina>3</CoefStamina>
+    </BaseParameters>
+    <NextLevel>
+      <StatPoints>5</StatPoints>
+      <WeightStrength>40</WeightStrength>
+      <WeightDexterity>10</WeightDexterity>
+      <WeightMagic>10</WeightMagic>
+      <WeightVitality>40</WeightVitality>
+      <Health>5</Health>
+      <Mana>2</Mana>
+      <Stamina>4</Stamina>
+      <ResistMagic>0</ResistMagic>
+    </NextLevel>
+    <Abilities>
+      <Ability>LichBasicAttack</Ability>
+    </Abilities>
+    <Reward>
+      <Gold>150</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
+  </TypeCreature>
+  <TypeCreature>
+    <ID>Wolf</ID>
+    <Name>Волк</Name>
+    <Description>Волки - такая же привычная часть пейзажа в лесах Ардании, как, скажем, деревья. Но деревья, в отличие от волков, не грызут героев и простой люд.</Description>
+    <ImageIndex>8</ImageIndex>
+    <CategoryCreature>Monster</CategoryCreature>
+    <KindCreature>Beast</KindCreature>
+    <MaxLevel>5</MaxLevel>
+    <TypeAttackMelee>Bite</TypeAttackMelee>
+    <DefaultPositionPriority>20</DefaultPositionPriority>
+    <BaseParameters>
+      <Strength>20</Strength>
+      <Dexterity>10</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>50</Vitality>
+      <SecondsToMove>2.0</SecondsToMove>
+      <Inititative>5</Inititative>
+      <CoefHealth>3</CoefHealth>
+      <CoefMana>1</CoefMana>
+      <CoefStamina>3</CoefStamina>
+    </BaseParameters>
+    <NextLevel>
+      <StatPoints>5</StatPoints>
+      <WeightStrength>40</WeightStrength>
+      <WeightDexterity>10</WeightDexterity>
+      <WeightMagic>10</WeightMagic>
+      <WeightVitality>40</WeightVitality>
+      <Health>5</Health>
+      <Mana>2</Mana>
+      <Stamina>4</Stamina>
+      <ResistMagic>0</ResistMagic>
+    </NextLevel>
+    <Abilities>
+      <Ability>WolfBasicAttack</Ability>
+      <Ability>WolfChildOfTheForest</Ability>
+      <Ability>Fangs</Ability>
+      <Ability>Predator</Ability>
+    </Abilities>
+    <Reward>
+      <Gold>25</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
+  </TypeCreature>
+  <TypeCreature>
+    <ID>OldWolf</ID>
+    <Name>Старый волк</Name>
+    <Description>Старый волк сильнее, хитрее и опасней своих "зеленых" сородичей. С возрастом его зубы становятся крепче, а клыки - острее.</Description>
+    <ImageIndex>5</ImageIndex>
+    <CategoryCreature>Monster</CategoryCreature>
+    <KindCreature>Beast</KindCreature>
+    <MaxLevel>10</MaxLevel>
+    <TypeAttackMelee>Bite</TypeAttackMelee>
+    <DefaultPositionPriority>10</DefaultPositionPriority>
+    <BaseParameters>
+      <Strength>20</Strength>
+      <Dexterity>10</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>50</Vitality>
+      <SecondsToMove>2.0</SecondsToMove>
+      <Inititative>5</Inititative>
+      <CoefHealth>3</CoefHealth>
+      <CoefMana>1</CoefMana>
+      <CoefStamina>3</CoefStamina>
+    </BaseParameters>
+    <NextLevel>
+      <StatPoints>5</StatPoints>
+      <WeightStrength>40</WeightStrength>
+      <WeightDexterity>10</WeightDexterity>
+      <WeightMagic>10</WeightMagic>
+      <WeightVitality>40</WeightVitality>
+      <Health>5</Health>
+      <Mana>2</Mana>
+      <Stamina>4</Stamina>
+      <ResistMagic>0</ResistMagic>
+    </NextLevel>
+    <Abilities>
+      <Ability>WolfBasicAttack</Ability>
+      <Ability>WolfChildOfTheForest</Ability>
+      <Ability>Fangs</Ability>
+      <Ability>Predator</Ability>
+      <Ability>LeaderOfThePack</Ability>
+      <Ability>WolfCommonBite</Ability>
+    </Abilities>
+    <Reward>
+      <Gold>25</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
+  </TypeCreature>
+  <TypeCreature>
+    <ID>Serpent</ID>
+    <Name>Змей</Name>
+    <Description>Говорят, именно летающие змеи виновны в исчезновении героев, забредающих слишком далеко от своих гильдий.</Description>
+    <ImageIndex>28</ImageIndex>
+    <CategoryCreature>Monster</CategoryCreature>
+    <KindCreature>Beast</KindCreature>
+    <MaxLevel>5</MaxLevel>
+    <TypeAttackMelee>Bite</TypeAttackMelee>
+    <DefaultPositionPriority>10</DefaultPositionPriority>
+    <BaseParameters>
+      <Strength>20</Strength>
+      <Dexterity>10</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>50</Vitality>
+      <SecondsToMove>2.0</SecondsToMove>
+      <Inititative>5</Inititative>
+      <CoefHealth>3</CoefHealth>
+      <CoefMana>1</CoefMana>
+      <CoefStamina>3</CoefStamina>
+    </BaseParameters>
+    <NextLevel>
+      <StatPoints>5</StatPoints>
+      <WeightStrength>40</WeightStrength>
+      <WeightDexterity>10</WeightDexterity>
+      <WeightMagic>10</WeightMagic>
+      <WeightVitality>40</WeightVitality>
+      <Health>5</Health>
+      <Mana>2</Mana>
+      <Stamina>4</Stamina>
+      <ResistMagic>0</ResistMagic>
+    </NextLevel>
+    <Abilities>
+      <Ability>SerpentBasicAttack</Ability>
+    </Abilities>
+    <Reward>
+      <Gold>25</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
+  </TypeCreature>
+  <TypeCreature>
+    <ID>Bear</ID>
+    <Name>Медведь</Name>
+    <Description>Медведи любят полакомиться заблудившимися героями, приблизившимися к берлоге.</Description>
+    <ImageIndex>1</ImageIndex>
+    <CategoryCreature>Monster</CategoryCreature>
+    <KindCreature>Beast</KindCreature>
+    <MaxLevel>10</MaxLevel>
+    <TypeAttackMelee>Bite</TypeAttackMelee>
+    <DefaultPositionPriority>10</DefaultPositionPriority>
+    <BaseParameters>
+      <Strength>20</Strength>
+      <Dexterity>10</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>50</Vitality>
+      <SecondsToMove>2.0</SecondsToMove>
+      <Inititative>5</Inititative>
+      <CoefHealth>3</CoefHealth>
+      <CoefMana>1</CoefMana>
+      <CoefStamina>3</CoefStamina>
+    </BaseParameters>
+    <NextLevel>
+      <StatPoints>5</StatPoints>
+      <WeightStrength>40</WeightStrength>
+      <WeightDexterity>10</WeightDexterity>
+      <WeightMagic>10</WeightMagic>
+      <WeightVitality>40</WeightVitality>
+      <Health>5</Health>
+      <Mana>2</Mana>
+      <Stamina>4</Stamina>
+      <ResistMagic>0</ResistMagic>
+    </NextLevel>
+    <Abilities>
+      <Ability>BearBasicAttack</Ability>
+      <Ability>BearChildOfTheForest</Ability>
+      <Ability>BearPaw</Ability>
+      <Ability>BearBleeding</Ability>
+    </Abilities>
+    <Reward>
+      <Gold>100</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
+  </TypeCreature>
+  <TypeCreature>
+    <ID>GreatBear</ID>
+    <Name>Великий медведь</Name>
+    <Description>Это агрессивный и жестокий хищник. Великий медведь может разодрать в клочья даже героя, защищенного крепким доспехом!</Description>
+    <ImageIndex>3</ImageIndex>
+    <CategoryCreature>Monster</CategoryCreature>
+    <KindCreature>Beast</KindCreature>
+    <MaxLevel>15</MaxLevel>
+    <TypeAttackMelee>Bite</TypeAttackMelee>
+    <DefaultPositionPriority>10</DefaultPositionPriority>
+    <BaseParameters>
+      <Strength>20</Strength>
+      <Dexterity>10</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>50</Vitality>
+      <SecondsToMove>2.0</SecondsToMove>
+      <Inititative>5</Inititative>
+      <CoefHealth>3</CoefHealth>
+      <CoefMana>1</CoefMana>
+      <CoefStamina>3</CoefStamina>
+    </BaseParameters>
+    <NextLevel>
+      <StatPoints>5</StatPoints>
+      <WeightStrength>40</WeightStrength>
+      <WeightDexterity>10</WeightDexterity>
+      <WeightMagic>10</WeightMagic>
+      <WeightVitality>40</WeightVitality>
+      <Health>5</Health>
+      <Mana>2</Mana>
+      <Stamina>4</Stamina>
+      <ResistMagic>0</ResistMagic>
+    </NextLevel>
+    <Abilities>
+      <Ability>BearBasicAttack</Ability>
+      <Ability>BearChildOfTheForest</Ability>
+      <Ability>BearPaw</Ability>
+      <Ability>BearBleeding</Ability>
+      <Ability>BearStrongClaws</Ability>
+    </Abilities>
+    <Reward>
+      <Gold>100</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
+  </TypeCreature>
+  <TypeCreature>
+    <ID>WerewolfBear</ID>
+    <Name>Медведь-оборотень</Name>
+    <Description>Огромный прямоходящий медведь - гроза всех четверолапых Ардании. Любит полакомиться героями, но не брезгует и простыми крестьянами.</Description>
+    <ImageIndex>2</ImageIndex>
+    <CategoryCreature>Monster</CategoryCreature>
+    <KindCreature>Beast</KindCreature>
+    <MaxLevel>20</MaxLevel>
+    <TypeAttackMelee>Bite</TypeAttackMelee>
+    <DefaultPositionPriority>10</DefaultPositionPriority>
+    <BaseParameters>
+      <Strength>20</Strength>
+      <Dexterity>10</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>50</Vitality>
+      <SecondsToMove>2.0</SecondsToMove>
+      <Inititative>5</Inititative>
+      <CoefHealth>3</CoefHealth>
+      <CoefMana>1</CoefMana>
+      <CoefStamina>3</CoefStamina>
+    </BaseParameters>
+    <NextLevel>
+      <StatPoints>5</StatPoints>
+      <WeightStrength>40</WeightStrength>
+      <WeightDexterity>10</WeightDexterity>
+      <WeightMagic>10</WeightMagic>
+      <WeightVitality>40</WeightVitality>
+      <Health>5</Health>
+      <Mana>2</Mana>
+      <Stamina>4</Stamina>
+      <ResistMagic>0</ResistMagic>
+    </NextLevel>
+    <Abilities>
+      <Ability>WerewolfBearBasicAttack</Ability>
+    </Abilities>
+    <Reward>
+      <Gold>150</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
+  </TypeCreature>
+  <TypeCreature>
+    <ID>Minotaur</ID>
+    <Name>Минотавр</Name>
+    <Description>Огромные полулюди-полубыки, обожающие сеять разрушение и смерть. В малом количестве они не очень опасны, но стадо минотавров способно сровнять с землей небольшое королевство.</Description>
+    <ImageIndex>26</ImageIndex>
+    <CategoryCreature>Monster</CategoryCreature>
+    <KindCreature>Minotaur</KindCreature>
+    <MaxLevel>10</MaxLevel>
+    <TypeAttackMelee>Hands</TypeAttackMelee>
+    <DefaultPositionPriority>10</DefaultPositionPriority>
+    <BaseParameters>
+      <Strength>20</Strength>
+      <Dexterity>10</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>50</Vitality>
+      <SecondsToMove>2.0</SecondsToMove>
+      <Inititative>5</Inititative>
+      <CoefHealth>3</CoefHealth>
+      <CoefMana>1</CoefMana>
+      <CoefStamina>3</CoefStamina>
+    </BaseParameters>
+    <NextLevel>
+      <StatPoints>5</StatPoints>
+      <WeightStrength>40</WeightStrength>
+      <WeightDexterity>10</WeightDexterity>
+      <WeightMagic>10</WeightMagic>
+      <WeightVitality>40</WeightVitality>
+      <Health>5</Health>
+      <Mana>2</Mana>
+      <Stamina>4</Stamina>
+      <ResistMagic>0</ResistMagic>
+    </NextLevel>
+    <Abilities>
+      <Ability>MinotaurBasicAttack</Ability>
+    </Abilities>
+    <Reward>
+      <Gold>50</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
+  </TypeCreature>
+  <TypeCreature>
+    <ID>BlackMinotaur</ID>
+    <Name>Черный минотавр</Name>
+    <Description>Черные минотавры еще свирепей и опасней своих менее загорелых собратьев.</Description>
+    <ImageIndex>27</ImageIndex>
+    <CategoryCreature>Monster</CategoryCreature>
+    <KindCreature>Minotaur</KindCreature>
+    <MaxLevel>15</MaxLevel>
+    <TypeAttackMelee>Hands</TypeAttackMelee>
+    <DefaultPositionPriority>10</DefaultPositionPriority>
+    <BaseParameters>
+      <Strength>20</Strength>
+      <Dexterity>10</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>50</Vitality>
+      <SecondsToMove>2.0</SecondsToMove>
+      <Inititative>5</Inititative>
+      <CoefHealth>3</CoefHealth>
+      <CoefMana>1</CoefMana>
+      <CoefStamina>3</CoefStamina>
+    </BaseParameters>
+    <NextLevel>
+      <StatPoints>5</StatPoints>
+      <WeightStrength>40</WeightStrength>
+      <WeightDexterity>10</WeightDexterity>
+      <WeightMagic>10</WeightMagic>
+      <WeightVitality>40</WeightVitality>
+      <Health>5</Health>
+      <Mana>2</Mana>
+      <Stamina>4</Stamina>
+      <ResistMagic>0</ResistMagic>
+    </NextLevel>
+    <Abilities>
+      <Ability>MinotaurBasicAttack</Ability>
+    </Abilities>
+    <Reward>
+      <Gold>75</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
+  </TypeCreature>
+  <TypeCreature>
+    <ID>Ogre</ID>
+    <Name>Огр</Name>
+    <Description>Огры-людоеды знамениты своими размерами, силой и привычкой ложиться спать в самых неожиданных местах.</Description>
+    <ImageIndex>34</ImageIndex>
+    <CategoryCreature>Monster</CategoryCreature>
+    <KindCreature>Ogre</KindCreature>
+    <MaxLevel>15</MaxLevel>
+    <TypeAttackMelee>Hands</TypeAttackMelee>
+    <DefaultPositionPriority>10</DefaultPositionPriority>
+    <BaseParameters>
+      <Strength>20</Strength>
+      <Dexterity>10</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>50</Vitality>
+      <SecondsToMove>2.0</SecondsToMove>
+      <Inititative>5</Inititative>
+      <CoefHealth>3</CoefHealth>
+      <CoefMana>1</CoefMana>
+      <CoefStamina>3</CoefStamina>
+    </BaseParameters>
+    <NextLevel>
+      <StatPoints>5</StatPoints>
+      <WeightStrength>40</WeightStrength>
+      <WeightDexterity>10</WeightDexterity>
+      <WeightMagic>10</WeightMagic>
+      <WeightVitality>40</WeightVitality>
+      <Health>5</Health>
+      <Mana>2</Mana>
+      <Stamina>4</Stamina>
+      <ResistMagic>0</ResistMagic>
+    </NextLevel>
+    <Abilities>
+      <Ability>OgreBasicAttack</Ability>
+    </Abilities>
+    <Reward>
+      <Gold>100</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
+  </TypeCreature>
+  <TypeCreature>
+    <ID>GrendarOgre</ID>
+    <Name>Грендар Огр</Name>
+    <Description>Грендар - самый большой, самый сильный и самый ленивый из огров. Больше всего любит с большим шумом разрушать здания, а то и целые деревни.</Description>
+    <ImageIndex>15</ImageIndex>
+    <CategoryCreature>Monster</CategoryCreature>
+    <KindCreature>Ogre</KindCreature>
+    <MaxLevel>30</MaxLevel>
+    <TypeAttackMelee>Hands</TypeAttackMelee>
+    <DefaultPositionPriority>10</DefaultPositionPriority>
+    <BaseParameters>
+      <Strength>20</Strength>
+      <Dexterity>10</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>50</Vitality>
+      <SecondsToMove>2.0</SecondsToMove>
+      <Inititative>5</Inititative>
+      <CoefHealth>3</CoefHealth>
+      <CoefMana>1</CoefMana>
+      <CoefStamina>3</CoefStamina>
+    </BaseParameters>
+    <NextLevel>
+      <StatPoints>5</StatPoints>
+      <WeightStrength>40</WeightStrength>
+      <WeightDexterity>10</WeightDexterity>
+      <WeightMagic>10</WeightMagic>
+      <WeightVitality>40</WeightVitality>
+      <Health>5</Health>
+      <Mana>2</Mana>
+      <Stamina>4</Stamina>
+      <ResistMagic>0</ResistMagic>
+    </NextLevel>
+    <Abilities>
+      <Ability>OgreBasicAttack</Ability>
+    </Abilities>
+    <Reward>
+      <Gold>200</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
+  </TypeCreature>
+  <TypeCreature>
+    <ID>Werewolf</ID>
+    <Name>Волколак</Name>
+    <Description>Волколак - это человек, зараженный редким вирусом ликантропии. Всем известно, что излечить его измученное тело и спасти заблудшую душу можно, лишь убив его. Такое лечение опасно - немало "докторов" теперь сами воют на луну по ночам.</Description>
+    <ImageIndex>9</ImageIndex>
+    <CategoryCreature>Monster</CategoryCreature>
+    <KindCreature>Beast</KindCreature>
+    <MaxLevel>10</MaxLevel>
+    <TypeAttackMelee>Bite</TypeAttackMelee>
+    <DefaultPositionPriority>10</DefaultPositionPriority>
+    <BaseParameters>
+      <Strength>20</Strength>
+      <Dexterity>10</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>50</Vitality>
+      <SecondsToMove>2.0</SecondsToMove>
+      <Inititative>5</Inititative>
+      <CoefHealth>3</CoefHealth>
+      <CoefMana>1</CoefMana>
+      <CoefStamina>3</CoefStamina>
+    </BaseParameters>
+    <NextLevel>
+      <StatPoints>5</StatPoints>
+      <WeightStrength>40</WeightStrength>
+      <WeightDexterity>10</WeightDexterity>
+      <WeightMagic>10</WeightMagic>
+      <WeightVitality>40</WeightVitality>
+      <Health>5</Health>
+      <Mana>2</Mana>
+      <Stamina>4</Stamina>
+      <ResistMagic>0</ResistMagic>
+    </NextLevel>
+    <Abilities>
+      <Ability>WerewolfBasicAttack</Ability>
+    </Abilities>
+    <Reward>
+      <Gold>150</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
+  </TypeCreature>
+  <TypeCreature>
+    <ID>Dragon</ID>
+    <Name>Дракон</Name>
+    <Description>Гадалки Ардании говорят, что встретить дракона, знак крылатой смерти, - дурная примета. Сулит огромные потери. Тот, кто увидит дракона должен будет в ближайшем будущем принять решительные и активные действия, возможно, у него появится тяга к перемене мест или он станет глубоко верующим человеком.</Description>
+    <ImageIndex>23</ImageIndex>
+    <CategoryCreature>Monster</CategoryCreature>
+    <KindCreature>Dragon</KindCreature>
+    <MaxLevel>20</MaxLevel>
+    <TypeAttackMelee>Bite</TypeAttackMelee>
+    <DefaultPositionPriority>10</DefaultPositionPriority>
+    <BaseParameters>
+      <Strength>20</Strength>
+      <Dexterity>10</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>50</Vitality>
+      <SecondsToMove>2.0</SecondsToMove>
+      <Inititative>5</Inititative>
+      <CoefHealth>3</CoefHealth>
+      <CoefMana>1</CoefMana>
+      <CoefStamina>3</CoefStamina>
+    </BaseParameters>
+    <NextLevel>
+      <StatPoints>5</StatPoints>
+      <WeightStrength>40</WeightStrength>
+      <WeightDexterity>10</WeightDexterity>
+      <WeightMagic>10</WeightMagic>
+      <WeightVitality>40</WeightVitality>
+      <Health>5</Health>
+      <Mana>2</Mana>
+      <Stamina>4</Stamina>
+      <ResistMagic>0</ResistMagic>
+    </NextLevel>
+    <Abilities>
+      <Ability>DragonBasicAttack</Ability>
+    </Abilities>
+    <Reward>
+      <Gold>100</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
+  </TypeCreature>
+  <TypeCreature>
+    <ID>Rat</ID>
+    <Name>Крыса</Name>
+    <Description>Целебная проточная вода в канализациях Ардании способствует увеличению популяции крыс. Оттого-то они вырастают до таких огромных размеров.</Description>
+    <ImageIndex>6</ImageIndex>
+    <CategoryCreature>Monster</CategoryCreature>
+    <KindCreature>Beast</KindCreature>
+    <MaxLevel>5</MaxLevel>
+    <TypeAttackMelee>Bite</TypeAttackMelee>
+    <DefaultPositionPriority>10</DefaultPositionPriority>
+    <BaseParameters>
+      <Strength>20</Strength>
+      <Dexterity>10</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>50</Vitality>
+      <SecondsToMove>2.0</SecondsToMove>
+      <Inititative>5</Inititative>
+      <CoefHealth>3</CoefHealth>
+      <CoefMana>1</CoefMana>
+      <CoefStamina>3</CoefStamina>
+    </BaseParameters>
+    <NextLevel>
+      <StatPoints>5</StatPoints>
+      <WeightStrength>40</WeightStrength>
+      <WeightDexterity>10</WeightDexterity>
+      <WeightMagic>10</WeightMagic>
+      <WeightVitality>40</WeightVitality>
+      <Health>5</Health>
+      <Mana>2</Mana>
+      <Stamina>4</Stamina>
+      <ResistMagic>0</ResistMagic>
+    </NextLevel>
+    <Abilities>
+      <Ability>RatBasicAttack</Ability>
+    </Abilities>
+    <Reward>
+      <Gold>10</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
+  </TypeCreature>
+  <TypeCreature>
+    <ID>OldRat</ID>
+    <Name>Матерая крыса</Name>
+    <Description>Некоторые крысы за свою жизнь съедают такое количество объедков, что становятся матерыми крысами.</Description>
+    <ImageIndex>4</ImageIndex>
+    <CategoryCreature>Monster</CategoryCreature>
+    <KindCreature>Beast</KindCreature>
+    <MaxLevel>5</MaxLevel>
+    <TypeAttackMelee>Bite</TypeAttackMelee>
+    <DefaultPositionPriority>10</DefaultPositionPriority>
+    <BaseParameters>
+      <Strength>20</Strength>
+      <Dexterity>10</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>50</Vitality>
+      <SecondsToMove>2.0</SecondsToMove>
+      <Inititative>5</Inititative>
+      <CoefHealth>3</CoefHealth>
+      <CoefMana>1</CoefMana>
+      <CoefStamina>3</CoefStamina>
+    </BaseParameters>
+    <NextLevel>
+      <StatPoints>5</StatPoints>
+      <WeightStrength>40</WeightStrength>
+      <WeightDexterity>10</WeightDexterity>
+      <WeightMagic>10</WeightMagic>
+      <WeightVitality>40</WeightVitality>
+      <Health>5</Health>
+      <Mana>2</Mana>
+      <Stamina>4</Stamina>
+      <ResistMagic>0</ResistMagic>
+    </NextLevel>
+    <Abilities>
+      <Ability>OldRatBasicAttack</Ability>
+    </Abilities>
+    <Reward>
+      <Gold>20</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
+  </TypeCreature>
+  <TypeCreature>
+    <ID>KingRat</ID>
+    <Name>Король Крыс</Name>
+    <Description>Король Крыс Пятый, наследник славной династии крысиных королей, повелитель канализации всея Ардании. Он пуляет отравленную воду в своих врагов, из-за чего последние страдают от различных заболеваний. Даже поговаривают, что это он когда-то украл державу Сидриана!</Description>
+    <ImageIndex>17</ImageIndex>
+    <CategoryCreature>Monster</CategoryCreature>
+    <KindCreature>Beast</KindCreature>
+    <MaxLevel>30</MaxLevel>
+    <TypeAttackMelee>Bite</TypeAttackMelee>
+    <DefaultPositionPriority>10</DefaultPositionPriority>
+    <BaseParameters>
+      <Strength>20</Strength>
+      <Dexterity>10</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>50</Vitality>
+      <SecondsToMove>2.0</SecondsToMove>
+      <Inititative>5</Inititative>
+      <CoefHealth>3</CoefHealth>
+      <CoefMana>1</CoefMana>
+      <CoefStamina>3</CoefStamina>
+    </BaseParameters>
+    <NextLevel>
+      <StatPoints>5</StatPoints>
+      <WeightStrength>40</WeightStrength>
+      <WeightDexterity>10</WeightDexterity>
+      <WeightMagic>10</WeightMagic>
+      <WeightVitality>40</WeightVitality>
+      <Health>5</Health>
+      <Mana>2</Mana>
+      <Stamina>4</Stamina>
+      <ResistMagic>0</ResistMagic>
+    </NextLevel>
+    <Abilities>
+      <Ability>KingRatBasicAttack</Ability>
+    </Abilities>
+    <Reward>
+      <Gold>1000</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
+  </TypeCreature>
+  <TypeCreature>
+    <ID>KingSkeleton</ID>
+    <Name>Король-скелет</Name>
+    <Description>Король-скелет вот уже несколько столетий является основной достопримечательностью Ардании. Правда, мало кто его видел - знают-то о нем все, но вот подойти к нему боятся даже редкие смельчаки.</Description>
+    <ImageIndex>18</ImageIndex>
+    <CategoryCreature>Monster</CategoryCreature>
+    <KindCreature>Undead</KindCreature>
+    <MaxLevel>30</MaxLevel>
+    <TypeAttackMelee>Hands</TypeAttackMelee>
+    <DefaultPositionPriority>10</DefaultPositionPriority>
+    <BaseParameters>
+      <Strength>20</Strength>
+      <Dexterity>10</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>50</Vitality>
+      <SecondsToMove>2.0</SecondsToMove>
+      <Inititative>5</Inititative>
+      <CoefHealth>3</CoefHealth>
+      <CoefMana>1</CoefMana>
+      <CoefStamina>3</CoefStamina>
+    </BaseParameters>
+    <NextLevel>
+      <StatPoints>5</StatPoints>
+      <WeightStrength>40</WeightStrength>
+      <WeightDexterity>10</WeightDexterity>
+      <WeightMagic>10</WeightMagic>
+      <WeightVitality>40</WeightVitality>
+      <Health>5</Health>
+      <Mana>2</Mana>
+      <Stamina>4</Stamina>
+      <ResistMagic>0</ResistMagic>
+    </NextLevel>
+    <Abilities>
+      <Ability>KingSkeletonBasicAttack</Ability>
+    </Abilities>
+    <Reward>
+      <Gold>1000</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
+  </TypeCreature>
+  <TypeCreature>
+    <ID>Ratman</ID>
+    <Name>Крысолюд</Name>
+    <Description>Магические отходы, попадающие в сточные воды канализаций, дают непредсказуемые результаты. Говорят, крысолюды, или огромные человекоподобные прямоходящие крысы, - это результат мутации.</Description>
+    <ImageIndex>7</ImageIndex>
+    <CategoryCreature>Monster</CategoryCreature>
+    <KindCreature>Beast</KindCreature>
+    <MaxLevel>30</MaxLevel>
+    <TypeAttackMelee>Bite</TypeAttackMelee>
+    <DefaultPositionPriority>10</DefaultPositionPriority>
+    <BaseParameters>
+      <Strength>20</Strength>
+      <Dexterity>10</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>50</Vitality>
+      <SecondsToMove>2.0</SecondsToMove>
+      <Inititative>5</Inititative>
+      <CoefHealth>3</CoefHealth>
+      <CoefMana>1</CoefMana>
+      <CoefStamina>3</CoefStamina>
+    </BaseParameters>
+    <NextLevel>
+      <StatPoints>5</StatPoints>
+      <WeightStrength>40</WeightStrength>
+      <WeightDexterity>10</WeightDexterity>
+      <WeightMagic>10</WeightMagic>
+      <WeightVitality>40</WeightVitality>
+      <Health>5</Health>
+      <Mana>2</Mana>
+      <Stamina>4</Stamina>
+      <ResistMagic>0</ResistMagic>
+    </NextLevel>
+    <Abilities>
+      <Ability>RatmanBasicAttack</Ability>
+    </Abilities>
+    <Reward>
+      <Gold>100</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
+  </TypeCreature>
+  <TypeCreature>
+    <ID>ElementalEarth</ID>
+    <Name>Элементаль молнии</Name>
+    <Description>При виде человека элементаль молнии начинает светиться характерным ярким светом. Некоторые исследователи полагают, что такое поведение элементалей - всего лишь радостное приветствие.</Description>
+    <ImageIndex>24</ImageIndex>
+    <CategoryCreature>Monster</CategoryCreature>
+    <KindCreature>MagicCreature</KindCreature>
+    <MaxLevel>15</MaxLevel>
+    <TypeAttackMelee>Paw</TypeAttackMelee>
+    <DefaultPositionPriority>11</DefaultPositionPriority>
+    <BaseParameters>
+      <Strength>20</Strength>
+      <Dexterity>10</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>50</Vitality>
+      <SecondsToMove>2.0</SecondsToMove>
+      <Inititative>5</Inititative>
+      <CoefHealth>3</CoefHealth>
+      <CoefMana>1</CoefMana>
+      <CoefStamina>3</CoefStamina>
+    </BaseParameters>
+    <NextLevel>
+      <StatPoints>5</StatPoints>
+      <WeightStrength>40</WeightStrength>
+      <WeightDexterity>10</WeightDexterity>
+      <WeightMagic>10</WeightMagic>
+      <WeightVitality>40</WeightVitality>
+      <Health>5</Health>
+      <Mana>2</Mana>
+      <Stamina>4</Stamina>
+      <ResistMagic>0</ResistMagic>
+    </NextLevel>
+    <Abilities>
+      <Ability>ElementalEarthBasicAttack</Ability>
+    </Abilities>
+    <Reward>
+      <Gold>125</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
+  </TypeCreature>
+  <TypeCreature>
+    <ID>ElementalFire</ID>
+    <Name>Элементаль огня</Name>
+    <Description>Элементалей плана огня можно легко отличить от прочих элементалей по пламени, охватывающем одежду тех, кто приближается к ним слишком близко.</Description>
+    <ImageIndex>25</ImageIndex>
+    <CategoryCreature>Monster</CategoryCreature>
+    <KindCreature>MagicCreature</KindCreature>
+    <MaxLevel>15</MaxLevel>
+    <TypeAttackMelee>Paw</TypeAttackMelee>
+    <DefaultPositionPriority>12</DefaultPositionPriority>
+    <BaseParameters>
+      <Strength>20</Strength>
+      <Dexterity>10</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>50</Vitality>
+      <SecondsToMove>2.0</SecondsToMove>
+      <Inititative>5</Inititative>
+      <CoefHealth>3</CoefHealth>
+      <CoefMana>1</CoefMana>
+      <CoefStamina>3</CoefStamina>
+    </BaseParameters>
+    <NextLevel>
+      <StatPoints>5</StatPoints>
+      <WeightStrength>40</WeightStrength>
+      <WeightDexterity>10</WeightDexterity>
+      <WeightMagic>10</WeightMagic>
+      <WeightVitality>40</WeightVitality>
+      <Health>5</Health>
+      <Mana>2</Mana>
+      <Stamina>4</Stamina>
+      <ResistMagic>0</ResistMagic>
+    </NextLevel>
+    <Abilities>
+      <Ability>ElementalFireBasicAttack</Ability>
+    </Abilities>
+    <Reward>
+      <Gold>125</Gold>
+      <Greatness>1</Greatness>
+    </Reward>
+  </TypeCreature>
+</TypeCreatures>

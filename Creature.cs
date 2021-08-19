@@ -34,7 +34,7 @@ namespace Fantasy_Kingdoms_Battle
             RangeWeapon = TypeCreature.WeaponRange;
             Armour = TypeCreature.Armour;
 
-            if (TypeCreature.MaxLevel > 1)
+            if (TypeCreature.CategoryCreature != CategoryCreature.Citizen)
             {
                 Level = 0;
 
@@ -65,8 +65,6 @@ namespace Fantasy_Kingdoms_Battle
         internal Armour Armour { get; private set; }// Доспех        
         internal StateCreature StateCreature { get; private set; }// Состояние (на карте)
         internal bool IsLive { get; private set; } = true;// Существо живо
-
-        protected abstract int GetImageIndex();
 
         // Повышение уровня
         private void LevelUp()
@@ -152,6 +150,11 @@ namespace Fantasy_Kingdoms_Battle
         protected override int GetQuantity()
         {
             return 0;
+        }
+
+        protected virtual int GetImageIndex()
+        {
+            return TypeCreature.ImageIndex;
         }
 
         // Реализация интерфейса

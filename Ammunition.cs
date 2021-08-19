@@ -41,7 +41,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal string ID { get; }
         internal GroupWeapon GroupWeapon { get; }
-        internal TypeHero ClassHero { get; private set; }
+        internal TypeCreature ClassHero { get; private set; }
         internal int TimeHit { get; }
         internal double VelocityMissile { get; }
         internal int DamageMelee { get; }
@@ -50,7 +50,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void TuneDeferredLinks()
         {
-            ClassHero = FormMain.Config.FindTypeHero(nameClassHero);
+            ClassHero = FormMain.Config.FindTypeCreature(nameClassHero);
             nameClassHero = null;
         }
 
@@ -159,14 +159,14 @@ namespace Fantasy_Kingdoms_Battle
 
         internal string ID { get; }
         internal GroupArmour GroupArmour { get; }
-        internal TypeHero ClassHero { get; private set; }
+        internal TypeCreature ClassHero { get; private set; }
         internal int DefenseMelee { get; }
         internal int DefenseArcher { get; }
         internal int DefenseMagic { get; }
 
         internal void TuneDeferredLinks()
         {
-            ClassHero = FormMain.Config.FindTypeHero(nameClassHero);
+            ClassHero = FormMain.Config.FindTypeCreature(nameClassHero);
             nameClassHero = null;
         }
 

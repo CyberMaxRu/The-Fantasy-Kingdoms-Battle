@@ -91,10 +91,10 @@ namespace Fantasy_Kingdoms_Battle
             LevelGreatness = 1;
             PointGreatnessForNextLevel = 100;
 
-            PlayerHero king = Castle.HireHero(FormMain.Config.FindTypeHero("King"));
-            PlayerHero advisor = Castle.HireHero(FormMain.Config.FindTypeHero("Advisor"));
-            PlayerHero captain = Castle.HireHero(FormMain.Config.FindTypeHero("Captain"));
-            PlayerHero treasurer = Castle.HireHero(FormMain.Config.FindTypeHero("Treasurer"));
+            PlayerHero king = Castle.HireHero(FormMain.Config.FindTypeCreature("King"));
+            PlayerHero advisor = Castle.HireHero(FormMain.Config.FindTypeCreature("Advisor"));
+            PlayerHero captain = Castle.HireHero(FormMain.Config.FindTypeCreature("Captain"));
+            PlayerHero treasurer = Castle.HireHero(FormMain.Config.FindTypeCreature("Treasurer"));
 
             //
             /*AddItem(new PlayerItem(FormMain.Config.FindItem("PotionOfHealth"), 10, true));
@@ -447,7 +447,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(AllHeroes.IndexOf(ph) == -1);
 
             AllHeroes.Add(ph);
-            if ((ph.TypeHero.ID != "King") && (ph.TypeHero.ID != "Advisor") && (ph.TypeHero.ID != "Captain") && (ph.TypeHero.ID != "Treasurer"))
+            if ((ph.TypeCreature.ID != "King") && (ph.TypeCreature.ID != "Advisor") && (ph.TypeCreature.ID != "Captain") && (ph.TypeCreature.ID != "Treasurer"))
                 AddCombatHero(ph);
 
             SetTaskForHeroes();

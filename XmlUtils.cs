@@ -32,6 +32,11 @@ namespace Fantasy_Kingdoms_Battle
             return n != null ? n.InnerText : "";
         }
 
+        internal static string GetStringWithNull(XmlNode n)
+        {
+            return n?.InnerText;
+        }
+
         internal static string GetStringNotNull(XmlNode n)
         {
             if (n == null)

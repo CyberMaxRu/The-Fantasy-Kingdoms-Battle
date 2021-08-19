@@ -130,11 +130,9 @@
     <Compile Include="Source\VisualControls\VCWindowCaption.cs" />
     <Compile Include="Specialization.cs" />
     <Compile Include="StateCreature.cs" />
-    <Compile Include="TypeCitizen.cs" />
     <Compile Include="Creature.cs" />
     <Compile Include="Monster.cs" />
     <Compile Include="TypeConstruction.cs" />
-    <Compile Include="TypeMonster.cs" />
     <Compile Include="TypeObject.cs" />
     <Compile Include="PanelLairInfo.cs" />
     <Compile Include="KindCreature.cs" />
@@ -148,7 +146,6 @@
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
     <Compile Include="GuiUtils.cs" />
-    <Compile Include="TypeHero.cs" />
     <Compile Include="HeroInBattle.cs" />
     <Compile Include="MainConfig.cs" />
     <Compile Include="Missile.cs" />
@@ -217,9 +214,7 @@
     <Content Include="Resources\Config\StartBonus.xml" />
     <Content Include="Resources\Config\StateCreature.xml" />
     <Content Include="Resources\Config\TypeAttack.xml" />
-    <Content Include="Resources\Config\TypeCitizens.xml" />
     <Content Include="Resources\Config\TypeConstructions.xml" />
-    <Content Include="Resources\Config\TypeMonsters.xml" />
     <Content Include="Resources\Config\KindCreatures.xml" />
     <Content Include="Resources\Config\TypePerks.xml" />
     <Content Include="Resources\Icons\Avatars.png" />
@@ -265,7 +260,7 @@
     <Content Include="Resources\Config\Armours.xml" />
     <Content Include="Resources\Config\TypeLobby.xml" />
     <Content Include="Resources\Config\Items.xml" />
-    <Content Include="Resources\Config\TypeHeroes.xml" />
+    <Content Include="Resources\Config\TypeCreatures.xml" />
     <Content Include="Resources\Config\Settings.xml" />
     <Content Include="Resources\Config\Weapons.xml" />
     <Content Include="Resources\Players.xml" />

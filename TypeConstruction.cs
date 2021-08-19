@@ -210,7 +210,7 @@ namespace Fantasy_Kingdoms_Battle
         internal PanelConstruction Panel { get; set; }
         internal bool HasTreasury { get; }// Имеет собственную казну
         internal int GoldByConstruction { get; }// Количество золота в казне при постройке
-        internal TypeHero TrainedHero { get; set; }
+        internal TypeCreature TrainedHero { get; set; }
 
         internal TypeCellMenu[,,] Researches;
         internal List<MonsterLevelLair> Monsters { get; } = new List<MonsterLevelLair>();
@@ -320,7 +320,7 @@ namespace Fantasy_Kingdoms_Battle
             //Debug.Assert(QuantityRespawn <= 49);
         }
 
-        internal TypeMonster Monster { get; private set; }
+        internal TypeCreature Monster { get; private set; }
         internal int StartQuantity { get; }
         internal int MaxQuantity { get; }
         internal int Level { get; }
@@ -330,7 +330,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void TuneDeferredLinks()
         {
-            Monster = FormMain.Config.FindTypeMonster(idMonster);
+            Monster = FormMain.Config.FindTypeCreature(idMonster);
             idMonster = null;
             Debug.Assert(Level <= Monster.MaxLevel);
         }
