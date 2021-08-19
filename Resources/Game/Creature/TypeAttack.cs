@@ -27,4 +27,12 @@ namespace Fantasy_Kingdoms_Battle
 
         }
     }
+
+    internal sealed class TypeAttackRange : TypeAttack
+    {
+        public TypeAttackRange(XmlNode n) : base(n)
+        {
+
+        }
+    }
 }

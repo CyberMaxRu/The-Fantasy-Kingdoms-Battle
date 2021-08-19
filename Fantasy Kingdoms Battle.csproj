@@ -216,7 +216,7 @@
     <Content Include="Resources\Config\Specializations.xml" />
     <Content Include="Resources\Config\StartBonus.xml" />
     <Content Include="Resources\Config\StateCreature.xml" />
-    <Content Include="Resources\Config\TypeAttackMelee.xml" />
+    <Content Include="Resources\Config\TypeAttack.xml" />
     <Content Include="Resources\Config\TypeCitizens.xml" />
     <Content Include="Resources\Config\TypeConstructions.xml" />
     <Content Include="Resources\Config\TypeMonsters.xml" />

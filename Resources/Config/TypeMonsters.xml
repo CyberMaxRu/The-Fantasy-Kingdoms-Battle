@@ -90,6 +90,7 @@
     <KindCreature>Undead</KindCreature>
     <MaxLevel>10</MaxLevel>
     <TypeAttackMelee>Hands</TypeAttackMelee>
+    <TypeAttackRange>Arrow</TypeAttackRange>
     <DefaultPositionPriority>50</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
@@ -168,6 +169,7 @@
     <KindCreature>Undead</KindCreature>
     <MaxLevel>15</MaxLevel>
     <TypeAttackMelee>Hands</TypeAttackMelee>
+    <TypeAttackRange>Arrow</TypeAttackRange>
     <DefaultPositionPriority>60</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>

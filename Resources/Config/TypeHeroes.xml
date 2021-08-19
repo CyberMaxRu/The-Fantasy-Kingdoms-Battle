@@ -464,6 +464,7 @@
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
     <TypeAttackMelee>Knife</TypeAttackMelee>
+    <TypeAttackRange>Arrow</TypeAttackRange>
     <MeleeWeapon>WeaponHunter0</MeleeWeapon>
     <RangeWeapon>BowHunter0</RangeWeapon>
     <Armour>ArmourHunter0</Armour>
@@ -929,6 +930,7 @@
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
     <TypeAttackMelee>Knife</TypeAttackMelee>
+    <TypeAttackRange>Arrow</TypeAttackRange>
     <MeleeWeapon>WeaponElf0</MeleeWeapon>
     <RangeWeapon>BowElf0</RangeWeapon>
     <Armour>ArmourElf0</Armour>
@@ -1558,6 +1560,7 @@
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
     <TypeAttackMelee>Knife</TypeAttackMelee>
+    <TypeAttackRange>Bolt</TypeAttackRange>
     <MeleeWeapon>WeaponBeastMaster0</MeleeWeapon>
     <RangeWeapon>BowBeastMaster0</RangeWeapon>
     <Armour>ArmourBeastMaster0</Armour>
@@ -1654,6 +1657,7 @@
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
     <TypeAttackMelee>Knife</TypeAttackMelee>
+    <TypeAttackRange>Arrow</TypeAttackRange>
     <MeleeWeapon>WeaponMarksman0</MeleeWeapon>
     <RangeWeapon>BowMarksman0</RangeWeapon>
     <Armour>ArmourMarksman0</Armour>

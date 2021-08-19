@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<TypesAttackMelee>
+<TypesAttack>
   <TypeAttackMelee>
     <ID>Sword</ID>
     <Name>Меч</Name>    
@@ -32,4 +32,12 @@
     <ID>Axe</ID>
     <Name>Топор</Name>
   </TypeAttackMelee>
-</TypesAttackMelee>
+  <TypeAttackRange>
+    <ID>Arrow</ID>
+    <Name>Стрела</Name>
+  </TypeAttackRange>
+  <TypeAttackRange>
+    <ID>Bolt</ID>
+    <Name>Болт</Name>
+  </TypeAttackRange>
+</TypesAttack>

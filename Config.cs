@@ -110,11 +110,16 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Загрузка конфигурации типов рукопашной атаки
-            xmlDoc = CreateXmlDocument("Config\\TypeAttackMelee.xml");
+            xmlDoc = CreateXmlDocument("Config\\TypeAttack.xml");
 
-            foreach (XmlNode n in xmlDoc.SelectNodes("/TypesAttackMelee/TypeAttackMelee"))
+            foreach (XmlNode n in xmlDoc.SelectNodes("/TypesAttack/TypeAttackMelee"))
             {
                 TypesAttackMelee.Add(new TypeAttackMelee(n));
+            }
+
+            foreach (XmlNode n in xmlDoc.SelectNodes("/TypesAttack/TypeAttackRange"))
+            {
+                TypesAttackRange.Add(new TypeAttackRange(n));
             }
 
             // Загрузка конфигурации способностей
@@ -231,6 +236,7 @@ namespace Fantasy_Kingdoms_Battle
 
         //
         internal List<TypeAttackMelee> TypesAttackMelee { get; } = new List<TypeAttackMelee>();
+        internal List<TypeAttackRange> TypesAttackRange { get; } = new List<TypeAttackRange>();
         internal List<TypeAbility> Abilities { get; } = new List<TypeAbility>();
         internal List<Specialization> Specializations { get; } = new List<Specialization>();
         internal List<SecondarySkill> SecondarySkills { get; } = new List<SecondarySkill>();
@@ -374,6 +380,7 @@ namespace Fantasy_Kingdoms_Battle
 
             return null;
         }
+
         internal TypeAttackMelee FindTypeAttackMelee(string ID)
         {
             Debug.Assert(ID.Length > 0);
@@ -385,6 +392,19 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             throw new Exception("Тип рукопашной атаки " + ID + " не найден.");
+        }
+
+        internal TypeAttackRange FindTypeAttackRange(string ID)
+        {
+            Debug.Assert(ID.Length > 0);
+
+            foreach (TypeAttackRange tar in TypesAttackRange)
+            {
+                if (tar.ID == ID)
+                    return tar;
+            }
+
+            throw new Exception("Тип дистанционной атаки " + ID + " не найден.");
         }
 
         internal TypeAbility FindAbility(string ID, bool mustBeExists = true)
