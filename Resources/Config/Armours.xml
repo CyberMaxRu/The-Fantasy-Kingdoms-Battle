@@ -8,34 +8,6 @@
     <Cost>10</Cost>
     <Armours>
       <Armour>
-        <ID>ArmourKing0</ID>
-        <Hero>King</Hero>
-        <DefenseMelee>0</DefenseMelee>
-        <DefenseArcher>0</DefenseArcher>
-        <DefenseMagic>0</DefenseMagic>
-      </Armour>
-	  <Armour>
-		<ID>ArmourAdvisor0</ID>
-		<Hero>Advisor</Hero>
-		<DefenseMelee>0</DefenseMelee>
-		<DefenseArcher>0</DefenseArcher>
-		<DefenseMagic>0</DefenseMagic>
-	  </Armour>
-      <Armour>
-        <ID>ArmourCaptain0</ID>
-        <Hero>Captain</Hero>
-        <DefenseMelee>0</DefenseMelee>
-        <DefenseArcher>0</DefenseArcher>
-        <DefenseMagic>0</DefenseMagic>
-      </Armour>
-      <Armour>
-        <ID>ArmourTreasurer0</ID>
-        <Hero>Treasurer</Hero>
-        <DefenseMelee>0</DefenseMelee>
-        <DefenseArcher>0</DefenseArcher>
-        <DefenseMagic>0</DefenseMagic>
-      </Armour>
-      <Armour>
         <ID>ArmourWarrior0</ID>
         <Hero>Warrior</Hero>
         <DefenseMelee>0</DefenseMelee>
