@@ -65,17 +65,21 @@ namespace Fantasy_Kingdoms_Battle
             Mana = Magic * CoefMana;
             Stamina = Vitality * CoefStamina;
 
-            /*ResistAttack = new Dictionary<TypeAttack, int>(FormMain.Config.TypeAttacks.Count);
+            ResistAttack = new Dictionary<TypeAttack, int>(FormMain.Config.TypeAttacks.Count);
             XmlNode nra = n.SelectSingleNode("TypeAttackResist");
-            string nameTypeAttack;
-            int val;
-            foreach (XmlNode l in nra.SelectNodes("TypeAttack"))
+            if (nra != null)
             {
-                nameTypeAttack = nra.InnerText;
-                val = Convert.ToInt32(nra.Attributes["Value"]);
-                ResistAttack.Add(FormMain.Config.FindTypeAttack(nameTypeAttack), val);
+                string nameTypeAttack;
+                int val;
+                foreach (XmlNode l in nra.SelectNodes("TypeAttack"))
+                {
+                    nameTypeAttack = l.InnerText;
+                    val = Convert.ToInt32(l.Attributes["Value"].Value);
+                    ResistAttack.Add(FormMain.Config.FindTypeAttack(nameTypeAttack), val);
+                }
             }
-            Debug.Assert(ResistAttack.Count == FormMain.Config.TypeAttacks.Count);*/
+
+            //Debug.Assert(ResistAttack.Count == FormMain.Config.TypeAttacks.Count);
         }
 
         public HeroParameters(HeroParameters mp)
