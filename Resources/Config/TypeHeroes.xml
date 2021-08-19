@@ -18,16 +18,16 @@
 	<PersistentState>King</PersistentState>
 	<BaseParameters>
     <Strength>20</Strength>
-      <Dexterity>10</Dexterity>
-      <Magic>10</Magic>
-      <Vitality>50</Vitality>
-      <SecondsToMove>2.0</SecondsToMove>
-      <Inititative>5</Inititative>
-      <CoefHealth>3</CoefHealth>
-      <CoefMana>1</CoefMana>
-      <CoefStamina>3</CoefStamina>
+    <Dexterity>10</Dexterity>
+    <Magic>10</Magic>
+    <Vitality>50</Vitality>
+    <SecondsToMove>2.0</SecondsToMove>
+    <Inititative>5</Inititative>
+    <CoefHealth>3</CoefHealth>
+    <CoefMana>1</CoefMana>
+    <CoefStamina>3</CoefStamina>
     <TypeAttackResist>
-      <TypeAttack>Sword</TypeAttack>
+      <TypeAttack Value="50">Sword</TypeAttack>
     </TypeAttackResist>
     </BaseParameters>
     <NextLevel>
