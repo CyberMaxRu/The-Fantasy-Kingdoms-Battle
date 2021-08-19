@@ -1,75 +1,99 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TypesAttack>
-  <TypeAttackMelee>
+  <TypeAttack>
     <ID>Sword</ID>
     <Name>Меч</Name>
+    <KindAttack>Melee</KindAttack>
     <IsWeapon>true</IsWeapon>
-  </TypeAttackMelee>
-  <TypeAttackMelee>
+  </TypeAttack>
+  <TypeAttack>
     <ID>Knife</ID>
     <Name>Нож</Name>
+    <KindAttack>Melee</KindAttack>
     <IsWeapon>true</IsWeapon>
-  </TypeAttackMelee>
-  <TypeAttackMelee>
+  </TypeAttack>
+  <TypeAttack>
     <ID>Hammer</ID>
     <Name>Молот</Name>
+    <KindAttack>Melee</KindAttack>
     <IsWeapon>true</IsWeapon>
-  </TypeAttackMelee>
-  <TypeAttackMelee>
+  </TypeAttack>
+  <TypeAttack>
     <ID>Staff</ID>
-    <Name>Молот</Name>
+    <Name>Посох</Name>
+    <KindAttack>Melee</KindAttack>
     <IsWeapon>true</IsWeapon>
-  </TypeAttackMelee>
-  <TypeAttackMelee>
+  </TypeAttack>
+  <TypeAttack>
     <ID>Hands</ID>
     <Name>Руки</Name>
+    <KindAttack>Melee</KindAttack>
     <IsWeapon>false</IsWeapon>
-  </TypeAttackMelee>
-  <TypeAttackMelee>
+  </TypeAttack>
+  <TypeAttack>
     <ID>Paw</ID>
     <Name>Лапа</Name>
+    <KindAttack>Melee</KindAttack>
     <IsWeapon>false</IsWeapon>
-  </TypeAttackMelee>
-  <TypeAttackMelee>
+  </TypeAttack>
+  <TypeAttack>
     <ID>Bite</ID>
     <Name>Укус</Name>
+    <KindAttack>Melee</KindAttack>
     <IsWeapon>false</IsWeapon>
-  </TypeAttackMelee>
-  <TypeAttackMelee>
+  </TypeAttack>
+  <TypeAttack>
     <ID>Axe</ID>
     <Name>Топор</Name>
+    <KindAttack>Melee</KindAttack>
     <IsWeapon>true</IsWeapon>
-  </TypeAttackMelee>
-  <TypeAttackRange>
+  </TypeAttack>
+  <TypeAttack>
     <ID>Arrow</ID>
     <Name>Стрела</Name>
-  </TypeAttackRange>
-  <TypeAttackRange>
+    <KindAttack>Range</KindAttack>
+    <IsWeapon>true</IsWeapon>
+  </TypeAttack>
+  <TypeAttack>
     <ID>Bolt</ID>
     <Name>Болт</Name>
-  </TypeAttackRange>
-  <TypeAttackMagic>
+    <KindAttack>Range</KindAttack>
+    <IsWeapon>true</IsWeapon>
+  </TypeAttack>
+  <TypeAttack>
     <ID>Simple</ID>
     <Name>Обычная</Name>
-  </TypeAttackMagic>
-  <TypeAttackMagic>
+    <KindAttack>Magic</KindAttack>
+    <IsWeapon>true</IsWeapon>
+  </TypeAttack>
+  <TypeAttack>
     <ID>Dark</ID>
     <Name>Темная магия</Name>
-  </TypeAttackMagic>
-  <TypeAttackMagic>
+    <KindAttack>Magic</KindAttack>
+    <IsWeapon>false</IsWeapon>
+  </TypeAttack>
+  <TypeAttack>
     <ID>Holy</ID>
     <Name>Святая магия</Name>
-  </TypeAttackMagic>
-  <TypeAttackMagic>
+    <KindAttack>Magic</KindAttack>
+    <IsWeapon>false</IsWeapon>
+  </TypeAttack>
+  <TypeAttack>
     <ID>Fire</ID>
     <Name>Магия огня</Name>
-  </TypeAttackMagic>
-  <TypeAttackMagic>
+    <KindAttack>Magic</KindAttack>
+    <IsWeapon>false</IsWeapon>
+  </TypeAttack>
+  <TypeAttack>
     <ID>Ice</ID>
     <Name>Магия холода</Name>
-  </TypeAttackMagic>
-  <TypeAttackMagic>
+    <KindAttack>Magic</KindAttack>
+    <IsWeapon>false</IsWeapon>
+  </TypeAttack>
+  <TypeAttack>
     <ID>Lightning</ID>
     <Name>Магия молний</Name>
-  </TypeAttackMagic>
+    <KindAttack>Magic</KindAttack>
+    <IsWeapon>false</IsWeapon>
+  </TypeAttack>
 </TypesAttack>

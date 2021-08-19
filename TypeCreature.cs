@@ -18,10 +18,14 @@ namespace Fantasy_Kingdoms_Battle
             MaxLevel = XmlUtils.GetInteger(n.SelectSingleNode("MaxLevel"));
             DefaultPositionPriority = XmlUtils.GetInteger(n.SelectSingleNode("DefaultPositionPriority"));
             QuantityArrows = XmlUtils.GetInteger(n.SelectSingleNode("QuantityArrows"));
-            TypeAttackMelee = FormMain.Config.FindTypeAttackMelee(XmlUtils.GetString(n.SelectSingleNode("TypeAttackMelee")));
+            TypeAttackMelee = FormMain.Config.FindTypeAttack(XmlUtils.GetString(n.SelectSingleNode("TypeAttackMelee")));
+            Debug.Assert(TypeAttackMelee.KindAttack == KindAttack.Melee);
             string typeAttackRange = XmlUtils.GetString(n.SelectSingleNode("TypeAttackRange"));
             if (typeAttackRange.Length > 0)
-                TypeAttackRange = FormMain.Config.FindTypeAttackRange(typeAttackRange); 
+            {
+                TypeAttackRange = FormMain.Config.FindTypeAttack(typeAttackRange);
+                Debug.Assert(TypeAttackRange.KindAttack == KindAttack.Range);
+            }
             if (n.SelectSingleNode("PersistentState") != null)
                 PersistentStateHeroAtMap = FormMain.Config.FindStateCreature(XmlUtils.GetStringNotNull(n.SelectSingleNode("PersistentState")));
             else
@@ -88,8 +92,8 @@ namespace Fantasy_Kingdoms_Battle
         internal ConfigNextLevelHero ConfigNextLevel { get; }
         internal List<TypeAbility> Abilities { get; } = new List<TypeAbility>();// Способности существа
         internal int DefaultPositionPriority { get; private set; }// Приоритет расположения на поле боя по умолчанию
-        internal TypeAttackMelee TypeAttackMelee { get;}// Тип рукопашной атаки
-        internal TypeAttackRange TypeAttackRange { get; }// Тип дистанционной атаки
+        internal TypeAttack TypeAttackMelee { get;}// Тип рукопашной атаки
+        internal TypeAttack TypeAttackRange { get; }// Тип дистанционной атаки
         internal Weapon WeaponMelee { get; private set; }// Рукопашное оружие
         internal Weapon WeaponRange { get; private set; }// Стрелковое оружие
         internal Armour Armour { get; private set; }// Доспех по умолчанию
