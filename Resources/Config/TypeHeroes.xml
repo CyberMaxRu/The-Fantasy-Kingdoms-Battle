@@ -26,6 +26,9 @@
       <CoefHealth>3</CoefHealth>
       <CoefMana>1</CoefMana>
       <CoefStamina>3</CoefStamina>
+    <TypeAttackResist>
+      <TypeAttack>Sword</TypeAttack>
+    </TypeAttackResist>
     </BaseParameters>
     <NextLevel>
       <StatPoints>5</StatPoints>

@@ -64,6 +64,13 @@ namespace Fantasy_Kingdoms_Battle
             Health = Vitality * CoefHealth;
             Mana = Magic * CoefMana;
             Stamina = Vitality * CoefStamina;
+
+            ResistAttack = new Dictionary<TypeAttack, int>(FormMain.Config.TypeAttacks.Count);
+
+            foreach (TypeAttack ta in FormMain.Config.TypeAttacks)
+            {
+                //ResistAttack[tam]
+            }
         }
 
         public HeroParameters(HeroParameters mp)
@@ -85,6 +92,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int Health { get; set; }
         internal int Mana { get; set; }
         internal int Stamina { get; set; }
+        internal Dictionary<TypeAttack, int> ResistAttack { get; }// Сопротивления/предрасположенность к атакам
 
         internal int MinMeleeDamage { get; set; }
         internal int MaxMeleeDamage { get; set; }
