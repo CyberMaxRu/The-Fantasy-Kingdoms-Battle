@@ -24,8 +24,10 @@ namespace Fantasy_Kingdoms_Battle
     {
         public TypeAttackMelee(XmlNode n) : base(n)
         {
-
+            IsWeapon = XmlUtils.GetBoolNotNull(n.SelectSingleNode("IsWeapon"));
         }
+
+        internal bool IsWeapon { get; }
     }
 
     internal sealed class TypeAttackRange : TypeAttack

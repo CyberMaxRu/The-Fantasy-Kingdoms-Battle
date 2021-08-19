@@ -2,35 +2,43 @@
 <TypesAttack>
   <TypeAttackMelee>
     <ID>Sword</ID>
-    <Name>Меч</Name>    
+    <Name>Меч</Name>
+    <IsWeapon>true</IsWeapon>
   </TypeAttackMelee>
   <TypeAttackMelee>
     <ID>Knife</ID>
     <Name>Нож</Name>
+    <IsWeapon>true</IsWeapon>
   </TypeAttackMelee>
   <TypeAttackMelee>
     <ID>Hammer</ID>
     <Name>Молот</Name>
+    <IsWeapon>true</IsWeapon>
   </TypeAttackMelee>
   <TypeAttackMelee>
     <ID>Staff</ID>
     <Name>Молот</Name>
+    <IsWeapon>true</IsWeapon>
   </TypeAttackMelee>
   <TypeAttackMelee>
     <ID>Hands</ID>
     <Name>Руки</Name>
+    <IsWeapon>false</IsWeapon>
   </TypeAttackMelee>
   <TypeAttackMelee>
     <ID>Paw</ID>
     <Name>Лапа</Name>
+    <IsWeapon>false</IsWeapon>
   </TypeAttackMelee>
   <TypeAttackMelee>
     <ID>Bite</ID>
     <Name>Укус</Name>
+    <IsWeapon>false</IsWeapon>
   </TypeAttackMelee>
   <TypeAttackMelee>
     <ID>Axe</ID>
     <Name>Топор</Name>
+    <IsWeapon>true</IsWeapon>
   </TypeAttackMelee>
   <TypeAttackRange>
     <ID>Arrow</ID>
