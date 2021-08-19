@@ -61,37 +61,37 @@
     <IsWeapon>true</IsWeapon>
   </TypeAttack>
   <TypeAttack>
-    <ID>Simple</ID>
+    <ID>SimpleMagic</ID>
     <Name>Обычная</Name>
     <KindAttack>Magic</KindAttack>
     <IsWeapon>true</IsWeapon>
   </TypeAttack>
   <TypeAttack>
-    <ID>Dark</ID>
+    <ID>DarkMagic</ID>
     <Name>Темная магия</Name>
     <KindAttack>Magic</KindAttack>
     <IsWeapon>false</IsWeapon>
   </TypeAttack>
   <TypeAttack>
-    <ID>Holy</ID>
+    <ID>HolyMagic</ID>
     <Name>Святая магия</Name>
     <KindAttack>Magic</KindAttack>
     <IsWeapon>false</IsWeapon>
   </TypeAttack>
   <TypeAttack>
-    <ID>Fire</ID>
+    <ID>FireMagic</ID>
     <Name>Магия огня</Name>
     <KindAttack>Magic</KindAttack>
     <IsWeapon>false</IsWeapon>
   </TypeAttack>
   <TypeAttack>
-    <ID>Ice</ID>
+    <ID>IceMagic</ID>
     <Name>Магия холода</Name>
     <KindAttack>Magic</KindAttack>
     <IsWeapon>false</IsWeapon>
   </TypeAttack>
   <TypeAttack>
-    <ID>Lightning</ID>
+    <ID>LightningMagic</ID>
     <Name>Магия молний</Name>
     <KindAttack>Magic</KindAttack>
     <IsWeapon>false</IsWeapon>
