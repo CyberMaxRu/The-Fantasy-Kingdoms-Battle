@@ -2247,10 +2247,6 @@ namespace Fantasy_Kingdoms_Battle
             return po == selectedPlayerObject;
         }
 
-        private void StartPlayMusic()
-        {
-        }
-
         internal Bitmap LoadBitmap(string filename, string folder = "Icons")
         {
             Bitmap bmp = new Bitmap(dirResources + $"{folder}\\" + filename);
