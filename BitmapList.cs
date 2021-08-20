@@ -28,18 +28,18 @@ namespace Fantasy_Kingdoms_Battle
             WithOver = withOver;
 
             // Создаем иконки
-            listBitmapNormal = CreateArray(bmp, size);
+            listBitmapNormal = CreateArray(bmp);
             if (withOver)
-                listBitmapNormalOver = CreateArray(ConversionBitmap(bmp, ImageModeConversion.Bright), size);
+                listBitmapNormalOver = CreateArray(ConversionBitmap(bmp, ImageModeConversion.Bright));
 
             if (WithDisabled)
             {
                 using (Bitmap bmpDisabled = ConversionBitmap(bmp, ImageModeConversion.Grey))
                 {
-                    listBitmapDisabled = CreateArray(bmpDisabled, size);
+                    listBitmapDisabled = CreateArray(bmpDisabled);
 
                     if (withOver)
-                        listBitmapDisabledOver = CreateArray(ConversionBitmap(bmpDisabled, ImageModeConversion.Bright), size);
+                        listBitmapDisabledOver = CreateArray(ConversionBitmap(bmpDisabled, ImageModeConversion.Bright));
                 }
             }
 
@@ -152,6 +152,11 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        internal void AddBitmap(Bitmap bmp)
+        {
+            //AddEmptySlots(bmp);
+        }
+
         internal void ReplaceImage(Bitmap bmp, int index)
         {
             listBitmapNormal[index] = bmp;
@@ -166,10 +171,10 @@ namespace Fantasy_Kingdoms_Battle
                 listBitmapDisabledOver[index] = ConversionBitmap(listBitmapDisabled[index], ImageModeConversion.Bright);
         }
 
-        private List<Bitmap> CreateArray(Bitmap bitmap, int size)
+        private List<Bitmap> CreateArray(Bitmap bitmap)
         {
-            int columns = bitmap.Width / size;
-            int lines = bitmap.Height / size;
+            int columns = bitmap.Width / Size;
+            int lines = bitmap.Height / Size;
             List<Bitmap> array = new List<Bitmap>(columns * lines);
             Bitmap bmp;
             Graphics g;
@@ -177,10 +182,10 @@ namespace Fantasy_Kingdoms_Battle
             for (int y = 0; y < lines; y++)
                 for (int x = 0; x < columns; x++)
                 {
-                    bmp = new Bitmap(size, size);
+                    bmp = new Bitmap(Size, Size);
                     using (g = Graphics.FromImage(bmp))
                     {
-                        g.DrawImage(bitmap, 0, 0, new Rectangle(x * size, y * size, size, size), GraphicsUnit.Pixel);
+                        g.DrawImage(bitmap, 0, 0, new Rectangle(x * Size, y * Size, Size, Size), GraphicsUnit.Pixel);
                     }
 
                     array.Add(bmp);
