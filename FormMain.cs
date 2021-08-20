@@ -430,8 +430,7 @@ namespace Fantasy_Kingdoms_Battle
                 // Иконки игровых объектов. Также включает встроенные аватары игроков и пул пустых иконок под внешние аватары
                 imListObjects128 = new BitmapList(LoadBitmap("Objects.png"), 128, true, true);
                 // Добавляем места под внешние аватары
-                for (int i = 0; i < Config.MaxQuantityExternalAvatars; i++)
-                    imListObjects128.Add(new Bitmap(128, 128));
+                imListObjects128.AddEmptySlots(Config.MaxQuantityExternalAvatars);
 
                 imListObjects48 = new BitmapList(imListObjects128, 48, Config.BorderInBigIcons, bmpMaskSmall);
                 LoadBitmapObjects();

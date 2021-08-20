@@ -8,85 +8,77 @@ using System.Collections.Generic;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal enum ImageModeConversion { Grey, Bright };
-
-    // Класс - список картинок
+    // Список картинок
     internal sealed class BitmapList
     {
-        private List<Bitmap> bitmapsNormal;
-        private List<Bitmap> bitmapsDisabled;
-        private List<Bitmap> bitmapsNormalOver;
-        private List<Bitmap> bitmapsDisabledOver;
+        private enum ImageModeConversion { Grey, Bright };
+
+        private readonly List<Bitmap> listBitmapNormal;
+        private readonly List<Bitmap> listBitmapDisabled;
+        private readonly List<Bitmap> listBitmapNormalOver;
+        private readonly List<Bitmap> listBitmapDisabledOver;
 
         public BitmapList(Bitmap bmp, int size, bool withDisabled, bool withOver)
         {
+            Debug.Assert(bmp.Width % size == 0);
+            Debug.Assert(bmp.Height % size == 0);
+
             Size = size;
             WithDisabled = withDisabled;
             WithOver = withOver;
 
-            // Определяем количество иконок
-            Debug.Assert(bmp.Width % size == 0);
-            Debug.Assert(bmp.Height % size == 0);
-
             // Создаем иконки
-            bitmapsNormal = CreateArray(bmp, size);
+            listBitmapNormal = CreateArray(bmp, size);
             if (withOver)
-                bitmapsNormalOver = CreateArray(ConversionBitmap(bmp, ImageModeConversion.Bright), size);
+                listBitmapNormalOver = CreateArray(ConversionBitmap(bmp, ImageModeConversion.Bright), size);
 
             if (WithDisabled)
             {
-                Bitmap bmpDisabled = ConversionBitmap(bmp, ImageModeConversion.Grey);
-                bitmapsDisabled = CreateArray(bmpDisabled, size);
+                using (Bitmap bmpDisabled = ConversionBitmap(bmp, ImageModeConversion.Grey))
+                {
+                    listBitmapDisabled = CreateArray(bmpDisabled, size);
 
-                if (withOver)
-                    bitmapsDisabledOver = CreateArray(ConversionBitmap(bmpDisabled, ImageModeConversion.Bright), size);
-
-                bmpDisabled.Dispose();
+                    if (withOver)
+                        listBitmapDisabledOver = CreateArray(ConversionBitmap(bmpDisabled, ImageModeConversion.Bright), size);
+                }
             }
 
             // Удаляем исходную картинку - она больше не нужна
             bmp.Dispose();
         }
 
-        public BitmapList(int size, bool withDisabled, bool withOver)
-        {
-            Size = size;
-            WithDisabled = withDisabled;
-            WithOver = withOver;
-            CreateArrays();
-        }
-
         public BitmapList(BitmapList fromList, int newSize, int borderWidth, Bitmap mask)
         {
-            if (mask != null)
-            {
-                Debug.Assert(mask.Width == newSize);
-                Debug.Assert(mask.Height == newSize);
-            }
-
+            Debug.Assert(mask.Width == newSize);
+            Debug.Assert(mask.Height == newSize);
             Debug.Assert(newSize < fromList.Size);
 
             Size = newSize;
             WithDisabled = fromList.WithDisabled;
             WithOver = fromList.WithOver;
-            CreateArrays();
+            listBitmapNormal = new List<Bitmap>(fromList.Count);
+            if (WithOver)
+                listBitmapNormalOver = new List<Bitmap>(fromList.Count);
+
+            if (WithDisabled)
+            {
+                listBitmapDisabled = new List<Bitmap>(fromList.Count);
+
+                if (WithOver)
+                    listBitmapDisabledOver = new List<Bitmap>(fromList.Count);
+            }
 
             for (int i = 0; i < fromList.Count; i++)
             {
-                AddWithResize(fromList, i, borderWidth, mask);
+                AddNullImage();
+                ReplaceImageWithResize(fromList, i, borderWidth, mask);
             }
         }
 
         internal int Size { get; }
         internal bool WithDisabled { get; set; }
         internal bool WithOver { get; set; }
-        internal int Count { get => bitmapsNormal.Count; }
-
-        internal void AddWithResize(BitmapList fromList, int idx, int borderWidth, Bitmap mask)
-        {
-            IncCapacity();
-            ReplaceImageWithResize(fromList, idx, borderWidth, mask);
-        }
+        internal int Count { get => listBitmapNormal.Count; }
 
         internal void ReplaceImageWithResize(BitmapList fromList, int idx, int borderWidth, Bitmap mask)
         {
@@ -96,10 +88,10 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(mask.Height == Size);
             }
 
-            bitmapsNormal?[idx]?.Dispose();
-            bitmapsNormalOver?[idx]?.Dispose();
-            bitmapsDisabled?[idx]?.Dispose();
-            bitmapsDisabledOver?[idx]?.Dispose();
+            listBitmapNormal?[idx]?.Dispose();
+            listBitmapNormalOver?[idx]?.Dispose();
+            listBitmapDisabled?[idx]?.Dispose();
+            listBitmapDisabledOver?[idx]?.Dispose();
 
             Rectangle rectSource = new Rectangle(0 + borderWidth, 0 + borderWidth, fromList.Size - (borderWidth * 2), fromList.Size - (borderWidth * 2));
             Rectangle rectTarget = new Rectangle(0, 0, Size, Size);
@@ -109,75 +101,69 @@ namespace Fantasy_Kingdoms_Battle
 
             gDest.InterpolationMode = InterpolationMode.HighQualityBicubic;
             gDest.SmoothingMode = SmoothingMode.HighQuality;
-            gDest.DrawImage(fromList.GetImage(idx, true, false), rectTarget, rectSource, GraphicsUnit.Pixel);
-
-            if (mask != null)
+            Bitmap b = fromList.GetImage(idx, true, false);
+            if (b != null)
             {
-                for (int y = 0; y < bmpDest.Height; y++)
-                    for (int x = 0; x < bmpDest.Width; x++)
-                    {
-                        bmpDest.SetPixel(x, y, Color.FromArgb(mask.GetPixel(x, y).A, bmpDest.GetPixel(x, y)));
-                    }
-            }
+                gDest.DrawImage(b, rectTarget, rectSource, GraphicsUnit.Pixel);
 
-            bitmapsNormal[idx] = bmpDest;
-            if (WithOver)
-                bitmapsNormalOver[idx] = ConversionBitmap(bmpDest, ImageModeConversion.Bright);
+                if (mask != null)
+                {
+                    for (int y = 0; y < bmpDest.Height; y++)
+                        for (int x = 0; x < bmpDest.Width; x++)
+                        {
+                            bmpDest.SetPixel(x, y, Color.FromArgb(mask.GetPixel(x, y).A, bmpDest.GetPixel(x, y)));
+                        }
+                }
 
-            if (WithDisabled)
-            {
-                bitmapsDisabled[idx] = ConversionBitmap(bmpDest, ImageModeConversion.Grey);
+                listBitmapNormal[idx] = bmpDest;
                 if (WithOver)
-                    bitmapsDisabledOver[idx] = ConversionBitmap(bitmapsDisabled[idx], ImageModeConversion.Bright);
+                    listBitmapNormalOver[idx] = ConversionBitmap(bmpDest, ImageModeConversion.Bright);
+
+                if (WithDisabled)
+                {
+                    listBitmapDisabled[idx] = ConversionBitmap(bmpDest, ImageModeConversion.Grey);
+                    if (WithOver)
+                        listBitmapDisabledOver[idx] = ConversionBitmap(listBitmapDisabled[idx], ImageModeConversion.Bright);
+                }
             }
 
             gDest.Dispose();
         }
 
-        private void IncCapacity()
+        private void AddNullImage()
         {
-            bitmapsNormal?.Add(null);
-            bitmapsNormalOver?.Add(null);
-            bitmapsDisabled?.Add(null);
-            bitmapsDisabledOver?.Add(null);
+            listBitmapNormal?.Add(null);
+            listBitmapNormalOver?.Add(null);
+            listBitmapDisabled?.Add(null);
+            listBitmapDisabledOver?.Add(null);
         }
 
-        internal void Add(Bitmap bmp)
+        internal void AddEmptySlots(int count)
         {
-            Debug.Assert(bmp.Size.Width == Size);
-            Debug.Assert(bmp.Size.Height == Size);
+            listBitmapNormal.Capacity = listBitmapNormal.Count + count;
+            listBitmapNormalOver.Capacity = listBitmapNormalOver.Count + count;
+            listBitmapDisabled.Capacity = listBitmapDisabled.Count + count;
+            listBitmapDisabledOver.Capacity = listBitmapDisabledOver.Count + count;
 
-            IncCapacity();
-            ReplaceImage(bmp, bitmapsNormal.Count - 1);
+            for (int i = 0; i < count; i++)
+            {
+                AddNullImage();
+                //ReplaceImage(new Bitmap(Size, Size), listBitmapNormal.Count - 1);
+            }
         }
 
         internal void ReplaceImage(Bitmap bmp, int index)
         {
-            bitmapsNormal[index] = bmp;
+            listBitmapNormal[index] = bmp;
 
-            if (bitmapsNormalOver != null)
-                bitmapsNormalOver[index] = ConversionBitmap(bmp, ImageModeConversion.Bright);
+            if (listBitmapNormalOver != null)
+                listBitmapNormalOver[index] = ConversionBitmap(bmp, ImageModeConversion.Bright);
 
-            if (bitmapsDisabled != null)
-                bitmapsDisabled[index] = ConversionBitmap(bmp, ImageModeConversion.Grey);
+            if (listBitmapDisabled != null)
+                listBitmapDisabled[index] = ConversionBitmap(bmp, ImageModeConversion.Grey);
 
-            if (bitmapsDisabledOver != null)
-                bitmapsDisabledOver[index] = ConversionBitmap(bitmapsDisabled[index], ImageModeConversion.Bright);
-        }
-
-        private void CreateArrays()
-        {
-            bitmapsNormal = new List<Bitmap>();
-            if (WithOver)
-                bitmapsNormalOver = new List<Bitmap>();
-
-            if (WithDisabled)
-            {
-                bitmapsDisabled = new List<Bitmap>();
-
-                if (WithOver)
-                    bitmapsDisabledOver = new List<Bitmap>();
-            }
+            if (listBitmapDisabledOver != null)
+                listBitmapDisabledOver[index] = ConversionBitmap(listBitmapDisabled[index], ImageModeConversion.Bright);
         }
 
         private List<Bitmap> CreateArray(Bitmap bitmap, int size)
@@ -192,9 +178,10 @@ namespace Fantasy_Kingdoms_Battle
                 for (int x = 0; x < columns; x++)
                 {
                     bmp = new Bitmap(size, size);
-                    g = Graphics.FromImage(bmp);
-                    g.DrawImage(bitmap, 0, 0, new Rectangle(x * size, y * size, size, size), GraphicsUnit.Pixel);                    
-                    g.Dispose();
+                    using (g = Graphics.FromImage(bmp))
+                    {
+                        g.DrawImage(bitmap, 0, 0, new Rectangle(x * size, y * size, size, size), GraphicsUnit.Pixel);
+                    }
 
                     array.Add(bmp);
                 }
@@ -202,7 +189,7 @@ namespace Fantasy_Kingdoms_Battle
             return array;
         }
 
-        internal Bitmap ConversionBitmap(Bitmap bmp, ImageModeConversion mode)
+        private Bitmap ConversionBitmap(Bitmap bmp, ImageModeConversion mode)
         {
             Bitmap output = new Bitmap(bmp);
             byte newColor0, newColor1, newColor2;
@@ -249,11 +236,10 @@ namespace Fantasy_Kingdoms_Battle
 
             List<Bitmap> array;
             if (enabled)
-                array = over ? bitmapsNormalOver : bitmapsNormal;
+                array = over ? listBitmapNormalOver : listBitmapNormal;
             else
-                array = over ? bitmapsDisabledOver : bitmapsDisabled;
+                array = over ? listBitmapDisabledOver : listBitmapDisabled;
 
-            Debug.Assert(array[imageIndex] != null);
             return array[imageIndex];
         }
 
@@ -264,10 +250,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void NullFromIndex(int fromIndex, int count)
         {
-            ClearArray(bitmapsNormal);
-            ClearArray(bitmapsNormalOver);
-            ClearArray(bitmapsDisabled);
-            ClearArray(bitmapsDisabledOver);
+            ClearArray(listBitmapNormal);
+            ClearArray(listBitmapNormalOver);
+            ClearArray(listBitmapDisabled);
+            ClearArray(listBitmapDisabledOver);
 
             void ClearArray(List<Bitmap> arr)
             {
@@ -275,8 +261,11 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     for (int i = fromIndex; i < fromIndex + count; i++)
                     {
-                        arr[i].Dispose();
-                        arr[i] = null;
+                        if (arr[i] != null)
+                        {
+                            arr[i].Dispose();
+                            arr[i] = null;
+                        }
                     }
                 }
             }
