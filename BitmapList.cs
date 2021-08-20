@@ -28,23 +28,19 @@ namespace Fantasy_Kingdoms_Battle
             WithOver = withOver;
 
             // Создаем иконки
-            listBitmapNormal = CreateArray(bmp);
-            if (withOver)
-                listBitmapNormalOver = CreateArray(ConversionBitmap(bmp, ImageModeConversion.Bright));
+            listBitmapNormal = new List<Bitmap>();
+
+            if (WithOver)
+                listBitmapNormalOver = new List<Bitmap>();
 
             if (WithDisabled)
-            {
-                using (Bitmap bmpDisabled = ConversionBitmap(bmp, ImageModeConversion.Grey))
-                {
-                    listBitmapDisabled = CreateArray(bmpDisabled);
+                listBitmapDisabled = new List<Bitmap>();
 
-                    if (withOver)
-                        listBitmapDisabledOver = CreateArray(ConversionBitmap(bmpDisabled, ImageModeConversion.Bright));
-                }
-            }
+            if (WithDisabled && WithOver)
+                listBitmapDisabledOver = new List<Bitmap>();
 
-            // Удаляем исходную картинку - она больше не нужна
-            bmp.Dispose();
+            //
+            AddBitmap(bmp);
         }
 
         public BitmapList(BitmapList fromList, int newSize, int borderWidth, Bitmap mask)
@@ -56,17 +52,17 @@ namespace Fantasy_Kingdoms_Battle
             Size = newSize;
             WithDisabled = fromList.WithDisabled;
             WithOver = fromList.WithOver;
+
             listBitmapNormal = new List<Bitmap>(fromList.Count);
+
             if (WithOver)
                 listBitmapNormalOver = new List<Bitmap>(fromList.Count);
 
             if (WithDisabled)
-            {
                 listBitmapDisabled = new List<Bitmap>(fromList.Count);
 
-                if (WithOver)
-                    listBitmapDisabledOver = new List<Bitmap>(fromList.Count);
-            }
+            if (WithDisabled && WithOver)
+                listBitmapDisabledOver = new List<Bitmap>(fromList.Count);
 
             for (int i = 0; i < fromList.Count; i++)
             {
@@ -154,7 +150,24 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void AddBitmap(Bitmap bmp)
         {
-            //AddEmptySlots(bmp);
+            CreateArray(listBitmapNormal, bmp);
+
+            if (WithOver)
+                CreateArray(listBitmapNormalOver, ConversionBitmap(bmp, ImageModeConversion.Bright));
+
+            if (WithDisabled)
+            {
+                using (Bitmap bmpDisabled = ConversionBitmap(bmp, ImageModeConversion.Grey))
+                {
+                    CreateArray(listBitmapDisabled, bmpDisabled);
+
+                    if (WithOver)
+                        CreateArray(listBitmapDisabledOver, ConversionBitmap(bmpDisabled, ImageModeConversion.Bright));
+                }
+            }
+
+            // Удаляем исходную картинку - она больше не нужна
+            bmp.Dispose();
         }
 
         internal void ReplaceImage(Bitmap bmp, int index)
@@ -171,11 +184,11 @@ namespace Fantasy_Kingdoms_Battle
                 listBitmapDisabledOver[index] = ConversionBitmap(listBitmapDisabled[index], ImageModeConversion.Bright);
         }
 
-        private List<Bitmap> CreateArray(Bitmap bitmap)
+        private void CreateArray(List<Bitmap> list, Bitmap bitmap)
         {
             int columns = bitmap.Width / Size;
             int lines = bitmap.Height / Size;
-            List<Bitmap> array = new List<Bitmap>(columns * lines);
+            list.Capacity = list.Capacity + columns * lines;
             Bitmap bmp;
             Graphics g;
             
@@ -188,10 +201,8 @@ namespace Fantasy_Kingdoms_Battle
                         g.DrawImage(bitmap, 0, 0, new Rectangle(x * Size, y * Size, Size, Size), GraphicsUnit.Pixel);
                     }
 
-                    array.Add(bmp);
+                    list.Add(bmp);
                 }
-
-            return array;
         }
 
         private Bitmap ConversionBitmap(Bitmap bmp, ImageModeConversion mode)

@@ -58,7 +58,7 @@ namespace Fantasy_Kingdoms_Battle
 
 
         // Реализация интерфейса
-        BitmapList ICell.BitmapList() => Program.formMain.ilItems;
+        BitmapList ICell.BitmapList() => Program.formMain.imListObjects48;
         int ICell.ImageIndex() => GroupWeapon.ImageIndex;
         bool ICell.NormalImage() => true;
         int ICell.Level() => 0;
@@ -175,7 +175,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         // Реализация интерфейса
-        BitmapList ICell.BitmapList() => Program.formMain.ilItems;
+        BitmapList ICell.BitmapList() => Program.formMain.imListObjects48;
         int ICell.ImageIndex() => GroupArmour.ImageIndex;
         bool ICell.NormalImage() => true;
         int ICell.Level() => 0;

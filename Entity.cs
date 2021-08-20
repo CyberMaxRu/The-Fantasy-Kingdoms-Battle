@@ -17,7 +17,7 @@ namespace Fantasy_Kingdoms_Battle
             ID = n.SelectSingleNode("ID").InnerText;
             Name = n.SelectSingleNode("Name").InnerText;
             Description = XmlUtils.GetDescription(n.SelectSingleNode("Description"));
-            ImageIndex = XmlUtils.GetInteger(n.SelectSingleNode("ImageIndex"));
+            ImageIndex = XmlUtils.GetInteger(n.SelectSingleNode("ImageIndex")) + FormMain.Config.ImageIndexFirstItems;
             Cost = XmlUtils.GetInteger(n.SelectSingleNode("Cost"));
         }
 
@@ -41,7 +41,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         // Реализация интерфейса
-        BitmapList ICell.BitmapList() => Program.formMain.ilItems;
+        BitmapList ICell.BitmapList() => Program.formMain.imListObjects48;
         int ICell.ImageIndex() => ImageIndex;
         bool ICell.NormalImage() => true;
         int ICell.Level() => GetLevel();

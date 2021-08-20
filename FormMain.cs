@@ -43,7 +43,6 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly BitmapList ilGui16;
         internal readonly BitmapList ilGui24;
         internal readonly BitmapList ilParameters;
-        internal readonly BitmapList ilItems;
         internal readonly BitmapList ilStateHero;
         internal readonly BitmapList ilMenuCellFilters;
         internal readonly BitmapList blCheckBox;
@@ -431,10 +430,10 @@ namespace Fantasy_Kingdoms_Battle
                 imListObjects128 = new BitmapList(LoadBitmap("Objects.png"), 128, true, true);
                 // Добавляем места под внешние аватары
                 imListObjects128.AddEmptySlots(Config.MaxQuantityExternalAvatars);
-
                 imListObjects48 = new BitmapList(imListObjects128, 48, Config.BorderInBigIcons, bmpMaskSmall);
                 LoadBitmapObjects();
-                ilItems = new BitmapList(LoadBitmap("Items.png"), 48, true, true);
+
+                imListObjects48.AddBitmap(LoadBitmap("Items.png"));
 
                 ilGui16 = new BitmapList(LoadBitmap("Gui16.png"), 16, true, false);
                 ilGui24 = new BitmapList(LoadBitmap("Gui24.png"), 24, true, true);
@@ -616,7 +615,7 @@ namespace Fantasy_Kingdoms_Battle
                 CellsMenu = new VCMenuCell[PANEL_MENU_CELLS.Height, PANEL_MENU_CELLS.Width];
                 for (int y = 0; y < PANEL_MENU_CELLS.Height; y++)
                     for (int x = 0; x < PANEL_MENU_CELLS.Width; x++)
-                        CellsMenu[y, x] = new VCMenuCell(bitmapMenu, 25 + (x * (ilItems.Size + DISTANCE_BETWEEN_CELLS)), 95 + (y * (ilItems.Size + DISTANCE_BETWEEN_CELLS)), ilItems);
+                        CellsMenu[y, x] = new VCMenuCell(bitmapMenu, 25 + (x * (imListObjects48.Size + DISTANCE_BETWEEN_CELLS)), 95 + (y * (imListObjects48.Size + DISTANCE_BETWEEN_CELLS)), imListObjects48);
 
                 labelMenuNameObject = new VCLabel(bitmapMenu, 144, 67, fontSmall, Color.White, 14, "");
                 labelMenuNameObject.Width = 131;

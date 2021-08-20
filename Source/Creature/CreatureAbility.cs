@@ -21,7 +21,7 @@ namespace Fantasy_Kingdoms_Battle
 
         public BitmapList BitmapList()
         {
-            return Program.formMain.ilItems;
+            return Program.formMain.imListObjects48;
         }
 
         public void Click(VCCell pe)

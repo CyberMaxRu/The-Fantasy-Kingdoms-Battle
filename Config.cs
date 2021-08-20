@@ -491,6 +491,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(QuantityInternalAvatars < 64);
             Debug.Assert(MaxQuantityExternalAvatars > 1);
             Debug.Assert(MaxQuantityExternalAvatars < 64);
+            ImageIndexFirstItems = ImageIndexFirstAvatar + QuantityInternalAvatars + MaxQuantityExternalAvatars;
 
             PlateWidth = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/PlateWidth").InnerText);
             Debug.Assert(PlateWidth >= 2);

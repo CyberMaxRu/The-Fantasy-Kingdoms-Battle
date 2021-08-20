@@ -79,7 +79,7 @@ namespace Fantasy_Kingdoms_Battle
                 Cost = research.Cost().ToString();
                 ImageIndex = research.Research.Entity.ImageIndex;
                 ImageIsEnabled = research.CheckRequirements();
-                BitmapList = Program.formMain.ilItems;
+                BitmapList = Program.formMain.imListObjects48;
 
                 // Накладываем фильтр
                 //if (!research.CheckRequirements())
