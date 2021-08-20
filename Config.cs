@@ -36,8 +36,7 @@ namespace Fantasy_Kingdoms_Battle
             foreach (XmlNode n in xmlDoc.SelectNodes("/ExternalAvatars/ExternalAvatar"))
             {
                 ExternalAvatars.Add(n.InnerText);
-
-                if (ExternalAvatars.Count == FormMain.MAX_AVATARS)
+                if (ExternalAvatars.Count == MaxQuantityExternalAvatars)
                     break;
             }
 
@@ -228,6 +227,13 @@ namespace Fantasy_Kingdoms_Battle
         internal int GridSizeHalf { get; private set; }// Размер половины ячейки сетки
         internal int MaxLengthObjectName { get; set; }// Максимальная длина имени объекта
         internal Point ShiftForBorder { get; private set; }// Смещение иконки внутри рамки сущности
+        internal int ImageIndexFirstAvatar { get; private set; }// ImageIndex первого аватара игроков
+        internal int QuantityInternalAvatars { get; private set; }// Количество внутренних аватаров игроков
+        internal int ImageIndexExternalAvatar { get; private set; }// ImageIndex первого аватара игроков
+        internal int MaxQuantityExternalAvatars { get; private set; }// Количество внешних аватаров игроков
+        internal int ImageIndexLastAvatar { get; private set; }// ImageIndex последнего аватара (включая внешний)
+        internal int QuantityAllAvatars { get; private set; }// Общее количество аватаров
+        internal int ImageIndexFirstItems { get; private set; }// ImageIndex первого аватара игроков
         internal int BorderInBigIcons => 1;// Прозрачный бордюр у иконок 128 * 128
         internal int HeroInRow { get; private set; }// Героев в ряду
         internal int HeroRows { get; private set; }// Рядов героев
@@ -474,6 +480,17 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(ShiftForBorder.X <= 10);
             Debug.Assert(ShiftForBorder.Y >= 0);
             Debug.Assert(ShiftForBorder.Y <= 10);
+
+            ImageIndexFirstAvatar = XmlUtils.GetIntegerNotNull(xmlDoc.SelectSingleNode("Game/Interface/ImageIndexFirstAvatar"));
+            QuantityInternalAvatars = XmlUtils.GetIntegerNotNull(xmlDoc.SelectSingleNode("Game/Interface/QuantityInternalAvatars"));
+            ImageIndexExternalAvatar = ImageIndexFirstAvatar + QuantityInternalAvatars;
+            MaxQuantityExternalAvatars = XmlUtils.GetIntegerNotNull(xmlDoc.SelectSingleNode("Game/Interface/MaxQuantityExternalAvatars"));
+            Debug.Assert(ImageIndexFirstAvatar > 0);
+            Debug.Assert(ImageIndexFirstAvatar < 200);
+            Debug.Assert(QuantityInternalAvatars > 1);
+            Debug.Assert(QuantityInternalAvatars < 64);
+            Debug.Assert(MaxQuantityExternalAvatars > 1);
+            Debug.Assert(MaxQuantityExternalAvatars < 64);
 
             PlateWidth = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/PlateWidth").InnerText);
             Debug.Assert(PlateWidth >= 2);
@@ -749,6 +766,12 @@ namespace Fantasy_Kingdoms_Battle
                     return false;
 
             return true;
+        }
+
+        internal void UpdateDataAboutAvatar()
+        {
+            QuantityAllAvatars = QuantityInternalAvatars + ExternalAvatars.Count;
+            ImageIndexLastAvatar = ImageIndexFirstAvatar + QuantityAllAvatars - 1;
         }
     }
 }

@@ -263,7 +263,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
 
-        internal void ClearFromIndex(int fromIndex)
+        internal void NullFromIndex(int fromIndex, int count)
         {
             ClearArray(bitmapsNormal);
             ClearArray(bitmapsNormalOver);
@@ -274,10 +274,8 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (arr != null)
                 {
-                    for (int i = fromIndex; i < arr.Count; i++)
+                    for (int i = fromIndex; i < fromIndex + count; i++)
                         arr[i].Dispose();
-
-                    arr.RemoveRange(fromIndex, arr.Count - fromIndex);
                 }
             }
         }

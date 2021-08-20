@@ -30,7 +30,7 @@ namespace Fantasy_Kingdoms_Battle
 
         public WindowPlayerPreferences() : base()
         {
-            curImageIndexAvatar = Program.formMain.CurrentHumanPlayer.GetImageIndexAvatar();
+            curImageIndexAvatar = Program.formMain.CurrentHumanPlayer.ImageIndex;
 
             windowCaption.Caption = "Настройки игрока";
 
@@ -103,22 +103,22 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        private void BtnNextAvatar_Click(object sender, EventArgs e)
+        private void BtnPriorAvatar_Click(object sender, EventArgs e)
         {
-            if (curImageIndexAvatar - Program.formMain.ImageIndexFirstAvatar < Program.formMain.AvatarsCount - 1)
-                curImageIndexAvatar++;
+            if (curImageIndexAvatar > FormMain.Config.ImageIndexFirstAvatar)
+                curImageIndexAvatar--;
             else
-                curImageIndexAvatar = Program.formMain.ImageIndexFirstAvatar;
+                curImageIndexAvatar = FormMain.Config.ImageIndexLastAvatar;
 
             UpdateNumberAvatar();
         }
 
-        private void BtnPriorAvatar_Click(object sender, EventArgs e)
+        private void BtnNextAvatar_Click(object sender, EventArgs e)
         {
-            if (curImageIndexAvatar - Program.formMain.ImageIndexFirstAvatar > 0)
-                curImageIndexAvatar--;
+            if (curImageIndexAvatar < FormMain.Config.ImageIndexLastAvatar)
+                curImageIndexAvatar++;
             else
-                curImageIndexAvatar = Program.formMain.ImageIndexFirstAvatar + Program.formMain.AvatarsCount - 1;
+                curImageIndexAvatar = FormMain.Config.ImageIndexFirstAvatar;
 
             UpdateNumberAvatar();
         }
@@ -129,7 +129,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Program.formMain.DeleteAvatar(curImageIndexAvatar);
 
-                if (curImageIndexAvatar >= Program.formMain.ImageIndexFirstAvatar + Program.formMain.AvatarsCount)
+                if (curImageIndexAvatar > FormMain.Config.ImageIndexLastAvatar)
                     curImageIndexAvatar--;
 
                 UpdateNumberAvatar();
@@ -138,9 +138,9 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnAddAvatar_Click(object sender, EventArgs e)
         {
-            if (FormMain.Config.ExternalAvatars.Count >= FormMain.MAX_AVATARS)
+            if (FormMain.Config.ExternalAvatars.Count >= FormMain.Config.MaxQuantityExternalAvatars)
             {
-                WindowInfo.ShowInfo("Информация", $"Достигнуто максимальное количество внешних аватаров: {FormMain.MAX_AVATARS}.");
+                WindowInfo.ShowInfo("Информация", $"Достигнуто максимальное количество внешних аватаров: {FormMain.Config.MaxQuantityExternalAvatars}.");
                 return;
             }
 
@@ -148,8 +148,7 @@ namespace Fantasy_Kingdoms_Battle
             if (filename.Length > 0)
             {
                 Program.formMain.AddAvatar(filename);
-                curImageIndexAvatar = Program.formMain.ImageIndexFirstAvatar + Program.formMain.blInternalAvatars.Count
-                    + Program.formMain.blExternalAvatars.Count - 1;
+                curImageIndexAvatar = FormMain.Config.ImageIndexLastAvatar;
                 UpdateNumberAvatar();
             }
         }
@@ -182,12 +181,12 @@ namespace Fantasy_Kingdoms_Battle
         private void UpdateNumberAvatar()
         {
             imgAvatar.ImageIndex = curImageIndexAvatar;
-            imgAvatar.Cost = $"{curImageIndexAvatar - Program.formMain.ImageIndexFirstAvatar + 1}/{Program.formMain.AvatarsCount}";
+            imgAvatar.Cost = $"{curImageIndexAvatar - FormMain.Config.ImageIndexFirstAvatar + 1}/{FormMain.Config.QuantityAllAvatars}";
 
-            btnChangeAvatar.Enabled = curImageIndexAvatar >= Program.formMain.ImageIndexExternalAvatar;
+            btnChangeAvatar.Enabled = curImageIndexAvatar >= FormMain.Config.ImageIndexExternalAvatar;
             btnDeleteAvatar.Enabled = btnChangeAvatar.Enabled;
 
-            Program.formMain.CurrentHumanPlayer.SetImageIndex(curImageIndexAvatar - Program.formMain.ImageIndexFirstAvatar);
+            Program.formMain.CurrentHumanPlayer.SetImageIndex(curImageIndexAvatar);
             FormMain.Config.SaveHumanPlayers();
         }
 

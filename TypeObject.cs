@@ -15,6 +15,7 @@ namespace Fantasy_Kingdoms_Battle
             ImageIndex = GetIntegerNotNull(n.SelectSingleNode("ImageIndex"));
             if (ImageIndex != FormMain.IMAGE_INDEX_CURRENT_AVATAR)
                 ImageIndex--;
+            ImageIndex += ShiftImageIndex();
 
             CheckData();
         }
@@ -50,7 +51,9 @@ namespace Fantasy_Kingdoms_Battle
             CheckData();
         }
 
-        private void CheckData()
+        protected virtual int ShiftImageIndex() => 0;
+
+        protected virtual void CheckData()
         {
             Debug.Assert(ID.Length > 0);
             Debug.Assert(Name.Length > 0);

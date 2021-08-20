@@ -1091,14 +1091,12 @@ namespace Fantasy_Kingdoms_Battle
         internal override string GetName() => Player.Name;
         internal override LobbyPlayer GetPlayer() => this;
         internal override TypePlayer GetTypePlayer() => Player.TypePlayer;
-        internal override int GetImageIndexAvatar() => Player.GetImageIndexAvatar();
+        internal override int GetImageIndexAvatar() => Player.ImageIndex;
 
         // Реализация интерфейса
         BitmapList ICell.BitmapList() => Program.formMain.imListObjectsCell;
         int ICell.ImageIndex()
         {
-            Debug.Assert(GetImageIndexAvatar() >= Program.formMain.ImageIndexFirstAvatar);
-            Debug.Assert(GetImageIndexAvatar() < Program.formMain.ImageIndexFirstAvatar + Program.formMain.AvatarsCount);
             return GetImageIndexAvatar();
         }
         bool ICell.NormalImage() => IsLive;

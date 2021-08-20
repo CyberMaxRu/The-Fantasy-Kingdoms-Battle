@@ -44,6 +44,14 @@ namespace Fantasy_Kingdoms_Battle
 
         internal string DirectoryAvatar { get; set; }
 
+        protected override void CheckData()
+        {
+            base.CheckData();
+
+            Debug.Assert(ImageIndex >= FormMain.Config.ImageIndexFirstAvatar);
+            Debug.Assert(ImageIndex < FormMain.Config.ImageIndexFirstAvatar + FormMain.Config.QuantityInternalAvatars + FormMain.Config.ExternalAvatars.Count);
+        }
+
         private void DisableComputerPlayerByAvatar()
         {
             foreach (ComputerPlayer cp in FormMain.Config.ComputerPlayers)
@@ -62,7 +70,7 @@ namespace Fantasy_Kingdoms_Battle
             writer.WriteElementString("ID", ID);
             writer.WriteElementString("Name", Name);
             writer.WriteElementString("Description", Description);
-            writer.WriteElementString("ImageIndex", (ImageIndex + 1).ToString());
+            writer.WriteElementString("ImageIndex", (ImageIndex - FormMain.Config.ImageIndexFirstAvatar + 1).ToString());
             writer.WriteElementString("DirectoryAvatar", DirectoryAvatar);
             writer.WriteEndElement();
         }

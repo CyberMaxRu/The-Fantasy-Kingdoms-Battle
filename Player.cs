@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Diagnostics;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -21,9 +22,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal TypePlayer TypePlayer { get; }
-        internal int GetImageIndexAvatar()
-        {
-            return ImageIndex + Program.formMain.ImageIndexFirstAvatar;
-        }
+
+        protected override int ShiftImageIndex() => FormMain.Config.ImageIndexFirstAvatar;
     }
 }

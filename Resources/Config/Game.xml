@@ -10,6 +10,9 @@
     <ConstructionMaxPos>5</ConstructionMaxPos>
     <ShiftForBorderX>3</ShiftForBorderX>
     <ShiftForBorderY>2</ShiftForBorderY>
+    <ImageIndexFirstAvatar>144</ImageIndexFirstAvatar>
+    <QuantityInternalAvatars>16</QuantityInternalAvatars>
+    <MaxQuantityExternalAvatars>8</MaxQuantityExternalAvatars>
   </Interface>
   <Colors>
     <Common>

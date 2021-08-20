@@ -37,8 +37,6 @@ namespace Fantasy_Kingdoms_Battle
         private readonly System.Windows.Media.MediaPlayer mpConstructionComplete;
 
         // ImageList'ы
-        internal BitmapList blInternalAvatars;
-        internal readonly BitmapList blExternalAvatars;
         internal readonly BitmapList imListObjectsBig;
         internal readonly BitmapList imListObjectsCell;
         internal readonly BitmapList ilGui;
@@ -133,8 +131,6 @@ namespace Fantasy_Kingdoms_Battle
         private readonly List<VCResultRound> listResultRound = new List<VCResultRound>();
 
         private const int DEFAULT_DPI = 96;
-
-        internal const int MAX_AVATARS = 8;
 
         internal const int GUI_HEROES = 0;
         internal const int GUI_GUILDS = 1;
@@ -287,13 +283,10 @@ namespace Fantasy_Kingdoms_Battle
         internal VCMenuCell[,] CellsMenu { get; }
 
         internal PanelHint formHint;
-        internal int ImageIndexFirstAvatar { get; }
-        internal int ImageIndexExternalAvatar { get; }
 
         //
         internal Settings Settings { get; private set; }
         internal MainConfig MainConfig { get; private set; }
-        internal int AvatarsCount { get; private set; }
         internal HumanPlayer CurrentHumanPlayer { get; private set; }
 
         private readonly Timer timerHover;
@@ -345,8 +338,8 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Загружаем настройки
-            try
-            {
+            //try
+            //{
                 Settings = new Settings();
 
                 MainConfig = new MainConfig(dirResources);
@@ -434,20 +427,14 @@ namespace Fantasy_Kingdoms_Battle
                 bmpMaskBig = LoadBitmap("MaskBig.png");
                 bmpMaskSmall = LoadBitmap("MaskSmall.png");// Нужна ли еще?
 
+                // Иконки игровых объектов. Также включает встроенные аватары игроков и пул пустых иконок под внешние аватары
                 imListObjectsBig = new BitmapList(LoadBitmap("Objects.png"), 128, true, true);
-
-                // Добавляем в список иконок аватарки игроков
-                // Для этого создаем отдельный список оригинальных аватарок, из которого уже будем составлять итоговый
-                ImageIndexFirstAvatar = imListObjectsBig.Count;
-                blInternalAvatars = new BitmapList(LoadBitmap("Avatars.png"), 128, true, true);
-                for (int i = 0; i < blInternalAvatars.Count; i++)
-                    imListObjectsBig.Add(blInternalAvatars.GetImage(i, true, false));
-
-                ImageIndexExternalAvatar = imListObjectsBig.Count;
-                blExternalAvatars = new BitmapList(128, true, false);
+                for (int i = 0; i < Config.MaxQuantityExternalAvatars; i++)
+                {
+                    imListObjectsBig.Add(new Bitmap(128, 128));
+                }
 
                 imListObjectsCell = new BitmapList(imListObjectsBig, 48, Config.BorderInBigIcons, bmpMaskSmall);
-
                 LoadBitmapObjects();
 
                 ilGui16 = new BitmapList(LoadBitmap("Gui16.png"), 16, true, false);
@@ -799,12 +786,12 @@ namespace Fantasy_Kingdoms_Battle
                     lblStage.Text = text + "...";
                     lblStage.Refresh();
                 }
-            }
+            /*}
             catch (Exception exc)
             {
                 MessageBox.Show(exc.Message + Environment.NewLine + exc.StackTrace);
                 Environment.Exit(-1);
-            }
+            }*/
         }
 
         private void PageControl_PageChanged(object sender, EventArgs e)
@@ -2324,10 +2311,11 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void DeleteAvatar(int index)
         {
-            Debug.Assert(index >= ImageIndexExternalAvatar);
+            Debug.Assert(index >= Config.ImageIndexExternalAvatar);
+            Debug.Assert(index <= Config.ImageIndexLastAvatar);
 
             // Удаляем из конфигурации
-            int idx = index - ImageIndexExternalAvatar;
+            int idx = index - Config.ImageIndexExternalAvatar;
             string filename = Config.ExternalAvatars[idx];
             Config.ExternalAvatars.RemoveAt(idx);
             Config.SaveExternalAvatars();
@@ -2341,12 +2329,13 @@ namespace Fantasy_Kingdoms_Battle
 
         internal bool ChangeAvatar(int index, string filename)
         {
-            Debug.Assert(index >= ImageIndexExternalAvatar);
+            Debug.Assert(index >= Config.ImageIndexExternalAvatar);
+            Debug.Assert(index <= Config.ImageIndexLastAvatar);
 
             Bitmap bmpAvatar = GuiUtils.PrepareAvatar(filename);
             if (bmpAvatar != null)
             {
-                int idx = index - ImageIndexExternalAvatar;
+                int idx = index - Config.ImageIndexExternalAvatar;
                 string localFilename = Config.ExternalAvatars[idx];
 
                 // Удаляем старый файл
@@ -2368,27 +2357,19 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void LoadBitmapObjects()
         {
-            imListObjectsBig.ClearFromIndex(ImageIndexExternalAvatar);
-            imListObjectsCell.ClearFromIndex(ImageIndexExternalAvatar);
+            imListObjectsBig.NullFromIndex(Config.ImageIndexExternalAvatar, Config.MaxQuantityExternalAvatars);
+            imListObjectsCell.NullFromIndex(Config.ImageIndexExternalAvatar, Config.MaxQuantityExternalAvatars);
 
             // Загружаем внешние аватары
-            blExternalAvatars.ClearFromIndex(0);
-
             Bitmap bmpAvatar;
-            foreach (string ea in Config.ExternalAvatars)
+            for (int i = 0; i < Config.ExternalAvatars.Count; i++)
             {
-                bmpAvatar = GuiUtils.PrepareAvatar(dirResources + @"ExternalAvatars\" + ea);
-                blExternalAvatars.Add(bmpAvatar);
+                bmpAvatar = GuiUtils.PrepareAvatar(dirResources + @"ExternalAvatars\" + Config.ExternalAvatars[i]);
+                imListObjectsBig.ReplaceImage(bmpAvatar, Config.ImageIndexExternalAvatar + i);
+                imListObjectsCell.ReplaceImageWithResize(imListObjectsBig, Config.ImageIndexExternalAvatar + i, 1, bmpMaskSmall);
             }
 
-            for (int i = 0; i < blExternalAvatars.Count; i++)
-            {
-                imListObjectsBig.Add(blExternalAvatars.GetImage(i, true, false));
-                imListObjectsCell.AddWithResize(imListObjectsBig, imListObjectsBig.Count - 1, 1, bmpMaskSmall);
-            }
-
-            //
-            AvatarsCount = blInternalAvatars.Count + blExternalAvatars.Count;
+            Config.UpdateDataAboutAvatar();
         }
 
         private void ImportNames()
