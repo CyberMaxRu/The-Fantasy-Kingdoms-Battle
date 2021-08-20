@@ -262,7 +262,6 @@ namespace Fantasy_Kingdoms_Battle
             g.DrawImageUnscaled(GetImage(imageIndex, enabled, over), x, y);
         }
 
-
         internal void NullFromIndex(int fromIndex, int count)
         {
             ClearArray(bitmapsNormal);
@@ -275,7 +274,10 @@ namespace Fantasy_Kingdoms_Battle
                 if (arr != null)
                 {
                     for (int i = fromIndex; i < fromIndex + count; i++)
+                    {
                         arr[i].Dispose();
+                        arr[i] = null;
+                    }
                 }
             }
         }
