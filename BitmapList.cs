@@ -184,7 +184,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             int columns = bitmap.Width / size;
             int lines = bitmap.Height / size;
-            List<Bitmap> array = new List<Bitmap>();
+            List<Bitmap> array = new List<Bitmap>(columns * lines);
             Bitmap bmp;
             Graphics g;
             
