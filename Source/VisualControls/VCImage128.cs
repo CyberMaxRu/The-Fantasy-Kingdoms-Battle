@@ -11,7 +11,7 @@ namespace Fantasy_Kingdoms_Battle
     // Визуальный контрол - картинка большого объекта (128 * 128)
     internal sealed class VCImage128 : VCImage
     {
-        public VCImage128(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY, Program.formMain.imListObjectsBig, -1)
+        public VCImage128(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY, Program.formMain.imListObjects128, -1)
         {
             ShowBorder = true;
             labelQuantity.ShiftX -= FormMain.Config.GridSizeHalf;

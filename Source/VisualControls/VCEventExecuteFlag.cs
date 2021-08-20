@@ -26,7 +26,7 @@ namespace Fantasy_Kingdoms_Battle
 
             bmpTypeFlag = new VCImage(this, FormMain.Config.GridSize, FormMain.Config.GridSize, Program.formMain.ilGui, LobbyPlayer.TypeFlagToImageIndex(typeFlag));
             bmpTypeFlag.ShowBorder = true;
-            bmpTarget = new VCImage(this, bmpTypeFlag.NextLeft(), bmpTypeFlag.ShiftY, Program.formMain.imListObjectsCell, tl.ImageIndex);
+            bmpTarget = new VCImage(this, bmpTypeFlag.NextLeft(), bmpTypeFlag.ShiftY, Program.formMain.imListObjects48, tl.ImageIndex);
             bmpTarget.ShowBorder = true;
             if (Target is null)
             {

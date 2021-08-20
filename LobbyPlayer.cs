@@ -1094,7 +1094,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override int GetImageIndexAvatar() => Player.ImageIndex;
 
         // Реализация интерфейса
-        BitmapList ICell.BitmapList() => Program.formMain.imListObjectsCell;
+        BitmapList ICell.BitmapList() => Program.formMain.imListObjects48;
         int ICell.ImageIndex()
         {
             return GetImageIndexAvatar();

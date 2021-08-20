@@ -1011,7 +1011,7 @@ namespace Fantasy_Kingdoms_Battle
         BitmapList ICell.BitmapList()
         {
             if (Player == Player.Lobby.CurrentPlayer)
-                return Program.formMain.imListObjectsCell;
+                return Program.formMain.imListObjects48;
             else
                 return Program.formMain.ilGui;
         }

@@ -37,8 +37,8 @@ namespace Fantasy_Kingdoms_Battle
         private readonly System.Windows.Media.MediaPlayer mpConstructionComplete;
 
         // ImageList'ы
-        internal readonly BitmapList imListObjectsBig;
-        internal readonly BitmapList imListObjectsCell;
+        internal readonly BitmapList imListObjects128;
+        internal readonly BitmapList imListObjects48;
         internal readonly BitmapList ilGui;
         internal readonly BitmapList ilGui16;
         internal readonly BitmapList ilGui24;
@@ -428,19 +428,18 @@ namespace Fantasy_Kingdoms_Battle
                 bmpMaskSmall = LoadBitmap("MaskSmall.png");// Нужна ли еще?
 
                 // Иконки игровых объектов. Также включает встроенные аватары игроков и пул пустых иконок под внешние аватары
-                imListObjectsBig = new BitmapList(LoadBitmap("Objects.png"), 128, true, true);
+                imListObjects128 = new BitmapList(LoadBitmap("Objects.png"), 128, true, true);
+                // Добавляем места под внешние аватары
                 for (int i = 0; i < Config.MaxQuantityExternalAvatars; i++)
-                {
-                    imListObjectsBig.Add(new Bitmap(128, 128));
-                }
+                    imListObjects128.Add(new Bitmap(128, 128));
 
-                imListObjectsCell = new BitmapList(imListObjectsBig, 48, Config.BorderInBigIcons, bmpMaskSmall);
+                imListObjects48 = new BitmapList(imListObjects128, 48, Config.BorderInBigIcons, bmpMaskSmall);
                 LoadBitmapObjects();
+                ilItems = new BitmapList(LoadBitmap("Items.png"), 48, true, true);
 
                 ilGui16 = new BitmapList(LoadBitmap("Gui16.png"), 16, true, false);
                 ilGui24 = new BitmapList(LoadBitmap("Gui24.png"), 24, true, true);
                 ilParameters = new BitmapList(LoadBitmap("Parameters.png"), 24, true, false);
-                ilItems = new BitmapList(LoadBitmap("Items.png"), 48, true, true);
                 ilStateHero = new BitmapList(LoadBitmap("StateCreature.png"), 24, true, false);
                 ilMenuCellFilters = new BitmapList(LoadBitmap("MenuCellFilters.png"), 48, true, false);
                 blCheckBox = new BitmapList(LoadBitmap("CheckBox.png"), 24, false, false);
@@ -2357,16 +2356,16 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void LoadBitmapObjects()
         {
-            imListObjectsBig.NullFromIndex(Config.ImageIndexExternalAvatar, Config.MaxQuantityExternalAvatars);
-            imListObjectsCell.NullFromIndex(Config.ImageIndexExternalAvatar, Config.MaxQuantityExternalAvatars);
+            imListObjects128.NullFromIndex(Config.ImageIndexExternalAvatar, Config.MaxQuantityExternalAvatars);
+            imListObjects48.NullFromIndex(Config.ImageIndexExternalAvatar, Config.MaxQuantityExternalAvatars);
 
             // Загружаем внешние аватары
             Bitmap bmpAvatar;
             for (int i = 0; i < Config.ExternalAvatars.Count; i++)
             {
                 bmpAvatar = GuiUtils.PrepareAvatar(dirResources + @"ExternalAvatars\" + Config.ExternalAvatars[i]);
-                imListObjectsBig.ReplaceImage(bmpAvatar, Config.ImageIndexExternalAvatar + i);
-                imListObjectsCell.ReplaceImageWithResize(imListObjectsBig, Config.ImageIndexExternalAvatar + i, 1, bmpMaskSmall);
+                imListObjects128.ReplaceImage(bmpAvatar, Config.ImageIndexExternalAvatar + i);
+                imListObjects48.ReplaceImageWithResize(imListObjects128, Config.ImageIndexExternalAvatar + i, 1, bmpMaskSmall);
             }
 
             Config.UpdateDataAboutAvatar();

@@ -608,7 +608,7 @@ namespace Fantasy_Kingdoms_Battle
 
             // Рисуем иконку героя
             g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
-            Program.formMain.imListObjectsCell.DrawImage(g, Program.formMain.TreatImageIndex(PlayerHero.TypeCreature.ImageIndex, PlayerHero.BattleParticipant), State != StateHeroInBattle.Tumbstone, false, FormMain.Config.ShiftForBorder.X, FormMain.Config.ShiftForBorder.Y);
+            Program.formMain.imListObjects48.DrawImage(g, Program.formMain.TreatImageIndex(PlayerHero.TypeCreature.ImageIndex, PlayerHero.BattleParticipant), State != StateHeroInBattle.Tumbstone, false, FormMain.Config.ShiftForBorder.X, FormMain.Config.ShiftForBorder.Y);
 
             // Если юнит в могиле и исчезает, применяем исчезновение
             if (countAction <= FormMain.Config.UnitStepsTimeToDisappearance)
@@ -634,7 +634,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Рисуем полоску жизни
-            GuiUtils.DrawBand(g, new Rectangle(FormMain.Config.ShiftForBorder.X + 2, FormMain.Config.ShiftForBorder.Y + Program.formMain.imListObjectsCell.Size - 6, Program.formMain.imListObjectsCell.Size - 4, 4), brushBandHealth, brushBandHealthNone, CurrentHealth, Parameters.Health);
+            GuiUtils.DrawBand(g, new Rectangle(FormMain.Config.ShiftForBorder.X + 2, FormMain.Config.ShiftForBorder.Y + Program.formMain.imListObjects48.Size - 6, Program.formMain.imListObjects48.Size - 4, 4), brushBandHealth, brushBandHealthNone, CurrentHealth, Parameters.Health);
 
             // Применяем исчезновение
             if (inDisappearance)
@@ -648,7 +648,7 @@ namespace Fantasy_Kingdoms_Battle
 
         BitmapList ICell.BitmapList()
         {
-            return Program.formMain.imListObjectsCell;
+            return Program.formMain.imListObjects48;
         }
 
         int ICell.ImageIndex()

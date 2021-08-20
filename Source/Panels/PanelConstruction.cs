@@ -47,7 +47,7 @@ namespace Fantasy_Kingdoms_Battle
             btnHeroes = new VCIconButton(this, imgMapObject.ShiftX, imgMapObject.ShiftY, Program.formMain.ilGui, FormMain.GUI_HOME);
             btnHeroes.ShowHint += BtnHeroes_ShowHint;
 
-            btnHireHero = new VCIconButton(this, imgMapObject.NextLeft(), btnHeroes.NextTop() + FormMain.Config.GridSize + FormMain.Config.GridSizeHalf, Program.formMain.imListObjectsCell, -1);
+            btnHireHero = new VCIconButton(this, imgMapObject.NextLeft(), btnHeroes.NextTop() + FormMain.Config.GridSize + FormMain.Config.GridSizeHalf, Program.formMain.imListObjects48, -1);
             btnHireHero.Click += BtnHireHero_Click;
             btnHireHero.ShowHint += BtnHireHero_ShowHint;
 

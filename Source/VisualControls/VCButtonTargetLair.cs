@@ -12,7 +12,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         public VCButtonTargetLair(VisualControl parent) : base(parent, 0, 0)
         {
-            BitmapList = Program.formMain.imListObjectsCell;
+            BitmapList = Program.formMain.imListObjects48;
             ManualDraw = true;
         }
 
@@ -62,7 +62,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (Lair is null)
             {
-                BitmapList = Program.formMain.imListObjectsCell;
+                BitmapList = Program.formMain.imListObjects48;
                 ImageIndex = FormMain.IMAGE_INDEX_NONE;
                 ImageIsEnabled = false;
                 Level = 0;
@@ -78,12 +78,12 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     if (Lair.Hidden)
                     {
-                        BitmapList = Program.formMain.imListObjectsCell;
+                        BitmapList = Program.formMain.imListObjects48;
                         ImageIndex = FormMain.IMAGE_INDEX_UNKNOWN;
                     }
                     else
                     {
-                        BitmapList = Program.formMain.imListObjectsCell;
+                        BitmapList = Program.formMain.imListObjects48;
                         ImageIndex = Lair.ImageIndexLair();
                     }
                 }
