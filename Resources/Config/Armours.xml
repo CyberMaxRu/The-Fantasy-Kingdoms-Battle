@@ -4,7 +4,7 @@
     <ID>ArmourMelee0</ID>
     <Name>Простая стальная броня</Name>
     <Description>Грубо выкованная кольчуга</Description>
-    <ImageIndex>20</ImageIndex>
+    <ImageIndex>21</ImageIndex>
     <Cost>10</Cost>
     <Armours>
       <Armour>
@@ -48,7 +48,7 @@
     <ID>ArmourMelee1</ID>
     <Name>Улучшенная стальная броня</Name>
     <Description></Description>
-    <ImageIndex>21</ImageIndex>
+    <ImageIndex>22</ImageIndex>
     <Cost>10</Cost>
     <Armours>
       <Armour>
@@ -92,7 +92,7 @@
     <ID>ArmourMelee2</ID>
     <Name>Мастерская стальная броня</Name>
     <Description></Description>
-    <ImageIndex>22</ImageIndex>
+    <ImageIndex>23</ImageIndex>
     <Cost>10</Cost>
     <Armours>
       <Armour>
@@ -136,7 +136,7 @@
     <ID>ArmourMelee3</ID>
     <Name>Экспертная стальная броня</Name>
     <Description></Description>
-    <ImageIndex>23</ImageIndex>
+    <ImageIndex>24</ImageIndex>
     <Cost>10</Cost>
     <Armours>
       <Armour>
@@ -180,7 +180,7 @@
     <ID>ArmourMelee4</ID>
     <Name>Доспех из неврила</Name>
     <Description></Description>
-    <ImageIndex>24</ImageIndex>
+    <ImageIndex>25</ImageIndex>
     <Cost>10</Cost>
     <Armours>
       <Armour>
@@ -224,7 +224,7 @@
     <ID>ArmourArcher0</ID>
     <Name>Простая кожаная броня</Name>
     <Description>Броня из грубо выделанной кожи</Description>
-    <ImageIndex>25</ImageIndex>
+    <ImageIndex>26</ImageIndex>
     <Cost>10</Cost>
     <Armours>
       <Armour>
@@ -268,7 +268,7 @@
     <ID>ArmourArcher1</ID>
     <Name>Улучшенная кожаная броня</Name>
     <Description></Description>
-    <ImageIndex>26</ImageIndex>
+    <ImageIndex>27</ImageIndex>
     <Cost>10</Cost>
     <Armours>
       <Armour>
@@ -312,7 +312,7 @@
     <ID>ArmourArcher2</ID>
     <Name>Мастерская кожаная броня</Name>
     <Description></Description>
-    <ImageIndex>27</ImageIndex>
+    <ImageIndex>28</ImageIndex>
     <Cost>10</Cost>
     <Armours>
       <Armour>
@@ -356,7 +356,7 @@
     <ID>ArmourArcher3</ID>
     <Name>Экспертная кожаная броня</Name>
     <Description></Description>
-    <ImageIndex>28</ImageIndex>
+    <ImageIndex>29</ImageIndex>
     <Cost>10</Cost>
     <Armours>
       <Armour>
@@ -400,7 +400,7 @@
     <ID>ArmourArcher4</ID>
     <Name>Доспех из кожи дракона</Name>
     <Description></Description>
-    <ImageIndex>29</ImageIndex>
+    <ImageIndex>30</ImageIndex>
     <Cost>10</Cost>
     <Armours>
       <Armour>
@@ -444,7 +444,7 @@
     <ID>ArmourMage0</ID>
     <Name>Простая роба</Name>
     <Description>Обычная льняная роба</Description>
-    <ImageIndex>30</ImageIndex>
+    <ImageIndex>31</ImageIndex>
     <Cost>10</Cost>
     <Armours>
       <Armour>
@@ -495,7 +495,7 @@
     <ID>ArmourMage1</ID>
     <Name>Улучшенная магическая роба</Name>
     <Description></Description>
-    <ImageIndex>31</ImageIndex>
+    <ImageIndex>32</ImageIndex>
     <Cost>10</Cost>
     <Armours>
       <Armour>
@@ -546,7 +546,7 @@
     <ID>ArmourMage2</ID>
     <Name>Мастерская магическая роба</Name>
     <Description></Description>
-    <ImageIndex>32</ImageIndex>
+    <ImageIndex>33</ImageIndex>
     <Cost>10</Cost>
     <Armours>
       <Armour>
@@ -597,7 +597,7 @@
     <ID>ArmourMage3</ID>
     <Name>Экспертная магическая роба</Name>
     <Description></Description>
-    <ImageIndex>33</ImageIndex>
+    <ImageIndex>34</ImageIndex>
     <Cost>10</Cost>
     <Armours>
       <Armour>
@@ -648,7 +648,7 @@
     <ID>ArmourMage4</ID>
     <Name>Роба из зачарованной ткани</Name>
     <Description></Description>
-    <ImageIndex>34</ImageIndex>
+    <ImageIndex>35</ImageIndex>
     <Cost>10</Cost>
     <Armours>
       <Armour>

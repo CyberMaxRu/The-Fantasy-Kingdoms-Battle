@@ -4,7 +4,7 @@
     <ID>PotionOfHealth</ID>
     <Name>Напиток здоровья</Name>
     <Description>Восстанавливает часть здоровья</Description>
-    <ImageIndex>0</ImageIndex>
+    <ImageIndex>1</ImageIndex>
     <CategoryItem>Potion</CategoryItem>
     <Cost>50</Cost>
     <Perk></Perk>
@@ -12,7 +12,7 @@
   <Item>
     <ID>PotionOfMana</ID>
     <Name>Напиток маны</Name>
-    <ImageIndex>1</ImageIndex>
+    <ImageIndex>2</ImageIndex>
     <Description>Восстанавливает часть маны</Description>
     <CategoryItem>Potion</CategoryItem>
     <CostExamine>300</CostExamine>
@@ -23,7 +23,7 @@
     <ID>Regeneration</ID>
     <Name>Амулет регенерации</Name>
     <Description>Восстанавливает здоровье с течением времени</Description>
-    <ImageIndex>2</ImageIndex>
+    <ImageIndex>3</ImageIndex>
     <CategoryItem>Artifact</CategoryItem>
     <Cost>50</Cost>
     <Perk></Perk>
@@ -32,7 +32,7 @@
     <ID>Protection</ID>
     <Name>Кольцо защиты</Name>
     <Description>Повышает защиту от атак всех типов</Description>
-    <ImageIndex>3</ImageIndex>
+    <ImageIndex>4</ImageIndex>
     <CategoryItem>Artifact</CategoryItem>
     <Cost>50</Cost>
     <Perk></Perk>
@@ -41,7 +41,7 @@
     <ID>ImpProtection</ID>
     <Name>Мастерский амулет защиты</Name>
     <Description>Сильно повышает защиту от атак всех типов</Description>
-    <ImageIndex>4</ImageIndex>
+    <ImageIndex>5</ImageIndex>
     <CategoryItem>Artifact</CategoryItem>
     <Cost>50</Cost>
     <Perk></Perk>
@@ -50,7 +50,7 @@
     <ID>EnchantWeaponPoison</ID>
     <Name>Яды для оружия</Name>
     <Description>Гильдия разбойниц продает всем героям яды для оружия./Обработанное такие ядом оружие при ударе накладывает на противника "Жгучий яд".</Description>
-    <ImageIndex>47</ImageIndex>
+    <ImageIndex>48</ImageIndex>
     <CategoryItem>Enchant</CategoryItem>
     <Cost>100</Cost>
     <Perk></Perk>
@@ -59,7 +59,7 @@
     <ID>EnchantWeaponAttack</ID>
     <Name>Зачарование оружия</Name>
     <Description>Гильдия магов продает всем героям чары на оружие./Зачарованное оружие повышает умение всех атак.</Description>
-    <ImageIndex>62</ImageIndex>
+    <ImageIndex>63</ImageIndex>
     <CategoryItem>Enchant</CategoryItem>
     <Cost>100</Cost>
     <Perk></Perk>
@@ -68,7 +68,7 @@
     <ID>ElixirMeleeProt</ID>
     <Name>Каменная кожа</Name>
     <Description>Повышает защиту от рукопашных атак</Description>
-    <ImageIndex>75</ImageIndex>
+    <ImageIndex>76</ImageIndex>
     <CategoryItem>Elixir</CategoryItem>
     <Cost>50</Cost>
     <Perk></Perk>
@@ -77,7 +77,7 @@
     <ID>ElixirRangeProt</ID>
     <Name>Настойка на черепашьем панцире</Name>
     <Description>Повышает защиту от стрелковых атак</Description>
-    <ImageIndex>76</ImageIndex>
+    <ImageIndex>77</ImageIndex>
     <CategoryItem>Elixir</CategoryItem>
     <Cost>50</Cost>
     <Perk></Perk>
@@ -86,7 +86,7 @@
     <ID>ElixirMagicProt</ID>
     <Name>Антимагический настой</Name>
     <Description>Повышает защиту от магических атак</Description>
-    <ImageIndex>77</ImageIndex>
+    <ImageIndex>78</ImageIndex>
     <CategoryItem>Elixir</CategoryItem>
     <Cost>50</Cost>
     <Perk></Perk>
@@ -95,7 +95,7 @@
     <ID>ElixirStrength</ID>
     <Name>Сила огра</Name>
     <Description>Увеличивает умение рукопашной атаки</Description>
-    <ImageIndex>78</ImageIndex>
+    <ImageIndex>79</ImageIndex>
     <CategoryItem>Elixir</CategoryItem>
     <Cost>50</Cost>
     <Perk></Perk>
@@ -104,7 +104,7 @@
     <ID>ElixirAccuracy</ID>
     <Name>Глоток точного рома</Name>
     <Description>Увеличивает умение стрелковой атаки</Description>
-    <ImageIndex>79</ImageIndex>
+    <ImageIndex>80</ImageIndex>
     <CategoryItem>Elixir</CategoryItem>
     <Cost>50</Cost>
     <Perk></Perk>
@@ -113,7 +113,7 @@
     <ID>ElixirWisdom</ID>
     <Name>Мудрость змеи</Name>
     <Description>Увеличивает умение магической атаки</Description>
-    <ImageIndex>80</ImageIndex>
+    <ImageIndex>81</ImageIndex>
     <CategoryItem>Elixir</CategoryItem>
     <Cost>50</Cost>
     <Perk></Perk>
@@ -122,7 +122,7 @@
     <ID>ElixirSpeed</ID>
     <Name>Скорость зайца</Name>
     <Description>Увеличивает скорость передвижения</Description>
-    <ImageIndex>81</ImageIndex>
+    <ImageIndex>82</ImageIndex>
     <CategoryItem>Elixir</CategoryItem>
     <Cost>50</Cost>
     <Perk></Perk>
@@ -131,7 +131,7 @@
     <ID>ElixirAntipoison</ID>
     <Name>Защитный противоядный эликсир</Name>
     <Description>В течении некоторого времени защищает от яда гоблинов</Description>
-    <ImageIndex>82</ImageIndex>
+    <ImageIndex>83</ImageIndex>
     <CategoryItem>Elixir</CategoryItem>
     <Cost>50</Cost>
     <Perk></Perk>
@@ -140,7 +140,7 @@
     <ID>ElixirRegeneration</ID>
     <Name>Кровь тролля</Name>
     <Description>Восстанавливает здоровье с течением времени</Description>
-    <ImageIndex>83</ImageIndex>
+    <ImageIndex>84</ImageIndex>
     <CategoryItem>Elixir</CategoryItem>
     <Cost>50</Cost>
     <Perk></Perk>
@@ -149,7 +149,7 @@
     <ID>PotionOfCheerfulness</ID>
     <Name>Напиток бодрости</Name>
     <Description>Убирает усталость</Description>
-    <ImageIndex>100</ImageIndex>
+    <ImageIndex>101</ImageIndex>
     <CategoryItem>Potion</CategoryItem>
     <Cost>50</Cost>
     <Perk></Perk>
@@ -158,7 +158,7 @@
     <ID>Quiver</ID>
     <Name>Дополнительный колчан</Name>
     <Description>Увеличивает количество стрел в два раза</Description>
-    <ImageIndex>101</ImageIndex>
+    <ImageIndex>102</ImageIndex>
     <CategoryItem>Thing</CategoryItem>
     <Cost>50</Cost>
     <Perk></Perk>
@@ -167,7 +167,7 @@
     <ID>SmallBag</ID>
     <Name>Маленькая сумка</Name>
     <Description>Добавляет место под 4 вещи</Description> 
-    <ImageIndex>102</ImageIndex>
+    <ImageIndex>103</ImageIndex>
     <CategoryItem>Thing</CategoryItem>
     <Cost>50</Cost>
     <Perk></Perk>
@@ -176,7 +176,7 @@
     <ID>GingerRoot</ID>
     <Name>Корень имбиря</Name>
     <Description>Уменьшает наступление усталости</Description>
-    <ImageIndex>103</ImageIndex>
+    <ImageIndex>104</ImageIndex>
     <CategoryItem>Thing</CategoryItem>
     <Cost>50</Cost>
     <Perk></Perk>
@@ -185,7 +185,7 @@
     <ID>Amanita</ID>
     <Name>Мухомор</Name>
     <Description>Уменьшает страх</Description>
-    <ImageIndex>104</ImageIndex>
+    <ImageIndex>105</ImageIndex>
     <CategoryItem>Thing</CategoryItem>
     <Cost>50</Cost>
     <Perk></Perk>
@@ -194,7 +194,7 @@
     <ID>Beer</ID>
     <Name>Пиво</Name>
     <Description>Увеличивает мораль</Description>
-    <ImageIndex>105</ImageIndex>
+    <ImageIndex>106</ImageIndex>
     <CategoryItem>Thing</CategoryItem>
     <Cost>50</Cost>
     <Perk></Perk>
@@ -203,7 +203,7 @@
     <ID>Horseshoe</ID>
     <Name>Подкова</Name>
     <Description>Увеличивает удачу</Description>
-    <ImageIndex>106</ImageIndex>
+    <ImageIndex>107</ImageIndex>
     <CategoryItem>Thing</CategoryItem>
     <Cost>50</Cost>
     <Perk></Perk>
@@ -212,7 +212,7 @@
     <ID>HolyWater</ID>
     <Name>Святая вода</Name>
     <Description>Увеличивает урон против нежити</Description>
-    <ImageIndex>107</ImageIndex>
+    <ImageIndex>108</ImageIndex>
     <CategoryItem>Enchant</CategoryItem>
     <Cost>50</Cost>
     <Perk></Perk>

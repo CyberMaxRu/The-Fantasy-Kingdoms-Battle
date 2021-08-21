@@ -3,7 +3,7 @@
   <SecondarySkill>
     <ID>Health</ID>
     <Name>Здоровье</Name>
-    <ImageIndex>98</ImageIndex>
+    <ImageIndex>99</ImageIndex>
     <Description>Увеличение здоровья</Description>
     <Levels>
       <Level>
@@ -27,7 +27,7 @@
   <SecondarySkill>
     <ID>Income</ID>
     <Name>Доход</Name>
-    <ImageIndex>98</ImageIndex>
+    <ImageIndex>99</ImageIndex>
     <Description>Увеличивает доход от Замка</Description>
     <Levels>
       <Level>
@@ -51,7 +51,7 @@
   <SecondarySkill>
     <ID>Drill</ID>
     <Name>Муштра</Name>
-    <ImageIndex>98</ImageIndex>
+    <ImageIndex>99</ImageIndex>
     <Description>Увеличивает скорость передвижения героев в бою</Description>
     <Levels>
       <Level>

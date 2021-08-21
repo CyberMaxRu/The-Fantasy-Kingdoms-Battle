@@ -17,7 +17,7 @@ namespace Fantasy_Kingdoms_Battle
             ID = n.SelectSingleNode("ID").InnerText;
             Name = n.SelectSingleNode("Name").InnerText;
             Description = XmlUtils.GetDescription(n.SelectSingleNode("Description"));
-            ImageIndex = XmlUtils.GetInteger(n.SelectSingleNode("ImageIndex")) + FormMain.Config.ImageIndexFirstItems;
+            ImageIndex = XmlUtils.GetInteger(n.SelectSingleNode("ImageIndex")) + FormMain.Config.ImageIndexFirstItems - 1;
             Cost = XmlUtils.GetInteger(n.SelectSingleNode("Cost"));
         }
 

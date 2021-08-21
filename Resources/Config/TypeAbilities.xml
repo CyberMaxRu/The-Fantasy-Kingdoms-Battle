@@ -4,7 +4,7 @@
     <ID>WarriorBasicAttack</ID>
     <Name>Рукопашная атака</Name>
     <Description>- Обычная атака рукопашным оружием//- Наносит урон одной цели</Description>
-    <ImageIndex>35</ImageIndex>
+    <ImageIndex>36</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -23,7 +23,7 @@
     <ID>WarriorTaunt</ID>
     <Name>Вызов на бой</Name>
     <Description>Вынуждает врагов атаковать воина</Description>
-    <ImageIndex>36</ImageIndex>
+    <ImageIndex>37</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Buff</KindAbility>
     <TypeTarget>Self</TypeTarget>
@@ -43,7 +43,7 @@
     <ID>WarriorAntiknockbackBuff</ID>
     <Name>Устойчивость</Name>
     <Description>- Накладывает эффект, дающий иммунитет к отбрасыванию</Description>
-    <ImageIndex>37</ImageIndex>
+    <ImageIndex>38</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Buff</KindAbility>
     <TypeTarget>Self</TypeTarget>
@@ -61,7 +61,7 @@
     <ID>WarriorImpAttack</ID>
     <Name>Сокрушительный удар</Name>
     <Description>- Наносит большой урон//- Рукопашная атака</Description>
-    <ImageIndex>38</ImageIndex>
+    <ImageIndex>39</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -80,7 +80,7 @@
     <ID>WarriorMaimAttack</ID>
     <Name>Калечащий удар</Name>
     <Description>- Наносит огромный урон//- Накладывает эффект, замедляющий цель//- Рукопашная атака</Description>
-    <ImageIndex>39</ImageIndex>
+    <ImageIndex>40</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -101,7 +101,7 @@
     <ID>WarriorResistanceBuff</ID>
     <Name>Сопротивление боли</Name>
     <Description>- Накладывает на воина эффект, повышающий защиту от всех атак</Description>
-    <ImageIndex>40</ImageIndex>
+    <ImageIndex>41</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Buff</KindAbility>
     <TypeTarget>Self</TypeTarget>
@@ -119,7 +119,7 @@
     <ID>RogueBasicAttack</ID>
     <Name>Рукопашная атака</Name>
     <Description>- Обычная атака рукопашным оружием//- Наносит урон одной цели</Description>
-    <ImageIndex>41</ImageIndex>
+    <ImageIndex>42</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -137,7 +137,7 @@
     <ID>RogueWoundAttack</ID>
     <Name>Поворот клинка</Name>
     <Description>- Наносит средний урон//- Накладывает эффект, наносящий повреждения с течением времени//- Рукопашная атака</Description>
-    <ImageIndex>42</ImageIndex>
+    <ImageIndex>43</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -155,7 +155,7 @@
     <ID>RoguePoisonAttack</ID>
     <Name>Отравление</Name>
     <Description>- Наносит небольшой урон//- Накладывает эффект, наносящий небольшие повреждения с течением времени//- Рукопашная атака</Description>
-    <ImageIndex>43</ImageIndex>
+    <ImageIndex>44</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -173,7 +173,7 @@
     <ID>RogueImpAttack</ID>
     <Name>Коварный удар</Name>
     <Description>- Наносит большой урон//- Рукопашная атака</Description>
-    <ImageIndex>44</ImageIndex>
+    <ImageIndex>45</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -191,7 +191,7 @@
     <ID>RogueKickAttack</ID>
     <Name>Удар под дых</Name>
     <Description>- Наносит небольшой урон//- Накладывает эффект, понижающий умение рукопашной атаки//- Рукопашная атака</Description>
-    <ImageIndex>45</ImageIndex>
+    <ImageIndex>46</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -209,7 +209,7 @@
     <ID>StunAttack</ID>
     <Name>Оглушение</Name>
     <Description>- Наносит небольшой урон//- Накладывает эффект, не позволяющий двигаться и атаковать//- Рукопашная атака</Description>
-    <ImageIndex>46</ImageIndex>
+    <ImageIndex>47</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -228,7 +228,7 @@
     <ID>ArcherBasicAttack</ID>
     <Name>Стрелковая атака</Name>
     <Description>- Обычная атака стрелковым или метательным оружием//- Наносит урон одной цели</Description>
-    <ImageIndex>48</ImageIndex>
+    <ImageIndex>49</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>RangeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -247,7 +247,7 @@
     <ID>HunterBeastSlayerAttack</ID>
     <Name>Охотничий выстрел</Name>
     <Description>- Наносит большой урон зверям//- Стрелковая атака</Description>
-    <ImageIndex>49</ImageIndex>
+    <ImageIndex>50</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>RangeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -265,7 +265,7 @@
     <ID>HunterAoeAttack</ID>
     <Name>Дождь стрел</Name>
     <Description>- Наносит большой урон всем целям в радиусе//- Стрелковая атака</Description>
-    <ImageIndex>50</ImageIndex>
+    <ImageIndex>51</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>RangeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -283,7 +283,7 @@
     <ID>HunterImpAttack</ID>
     <Name>Меткий выстрел</Name>
     <Description>- Наносит большой урон//- Стрелковая атака</Description>
-    <ImageIndex>51</ImageIndex>
+    <ImageIndex>52</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>RangeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -301,7 +301,7 @@
     <ID>HunterStingShotAttack</ID>
     <Name>Ослабляющий выстрел</Name>
     <Description>- Наносит небольшой урон//- Накладывает эффект, понижающий умение рукопашной атаки//- Стрелковая атака</Description>
-    <ImageIndex>52</ImageIndex>
+    <ImageIndex>53</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>RangeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -319,7 +319,7 @@
     <ID>HunterManaburnAttack</ID>
     <Name>Боль духа</Name>
     <Description>- Наносит большой урон//- Накладывает эффект, уменьшающий количество маны с течением времени//- Стрелковая атака</Description>
-    <ImageIndex>53</ImageIndex>
+    <ImageIndex>54</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>RangeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -337,7 +337,7 @@
     <ID>HolyHeal</ID>
     <Name>Святое лечение</Name>
     <Description>- Восстанавливает часть здоровья дружественной цели//- Требует маны</Description>
-    <ImageIndex>54</ImageIndex>
+    <ImageIndex>55</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Heal</KindAbility>
     <TypeTarget>AllyUnit</TypeTarget>
@@ -358,7 +358,7 @@
     <ID>MagicBasicAttack</ID>
     <Name>Магическая атака</Name>
     <Description>- Обычная атака магией или магическим оружием//- Наносит урон одной цели</Description>
-    <ImageIndex>55</ImageIndex>
+    <ImageIndex>56</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Spell</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -381,7 +381,7 @@
     <ID>ClericWisdomBuff</ID>
     <Name>Начитанность</Name>
     <Description>- Накладывает эффект, повышающий умение магической атаки и лечения//- Требует маны</Description>
-    <ImageIndex>56</ImageIndex>
+    <ImageIndex>57</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Buff</KindAbility>
     <TypeTarget>AllyUnit</TypeTarget>
@@ -400,7 +400,7 @@
     <ID>HolyAttack</ID>
     <Name>Святая атака</Name>
     <Description>- Наносит огромный урон нежити//- Требует маны//- Магическая атака</Description>
-    <ImageIndex>57</ImageIndex>
+    <ImageIndex>58</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Spell</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -421,7 +421,7 @@
     <ID>ClericManaRegenBuff</ID>
     <Name>Восстановление веры</Name>
     <Description>- Накладывает эффект, восстанавливающий ману с течением времени//- Требует маны</Description>
-    <ImageIndex>58</ImageIndex>
+    <ImageIndex>59</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Buff</KindAbility>
     <TypeTarget>AllyUnit</TypeTarget>
@@ -440,7 +440,7 @@
     <ID>ClericKnockbackAttack</ID>
     <Name>Молот веры</Name>
     <Description>- Наносит средний урон//- Отбрасывает противника//- Требует маны//- Магическая атака</Description>
-    <ImageIndex>59</ImageIndex>
+    <ImageIndex>60</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Buff</KindAbility>
     <TypeTarget>AllyUnit</TypeTarget>
@@ -460,7 +460,7 @@
     <ID>MageArcaneShield</ID>
     <Name>Магической щит</Name>
     <Description>- Накладывает на мага эффект, повышающий защиту от рукопашных и магических атак//- Требует маны</Description>
-    <ImageIndex>60</ImageIndex>
+    <ImageIndex>61</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Buff</KindAbility>
     <TypeTarget>Self</TypeTarget>
@@ -479,7 +479,7 @@
     <ID>MageSummonSerpent</ID>
     <Name>Вызов змея Мудрости</Name>
     <Description>- Вызывает змея-союзника//- Требует маны</Description>
-    <ImageIndex>61</ImageIndex>
+    <ImageIndex>62</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Summon</KindAbility>
     <TypeTarget>Self</TypeTarget>
@@ -498,7 +498,7 @@
     <ID>MageSummonDragon</ID>
     <Name>Вызов дракона Мудрости</Name>
     <Description>- Вызывает дракона-союзника//- Требует маны</Description>
-    <ImageIndex>99</ImageIndex>
+    <ImageIndex>100</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Summon</KindAbility>
     <TypeTarget>Self</TypeTarget>
@@ -517,7 +517,7 @@
     <ID>MageFireballAttack</ID>
     <Name>Шар огня</Name>
     <Description>- Наносит большой урон всем целям в радиусе.//- Накладывает эффект, наносящий небольшие повреждения с течением времени//- Требует маны//- Магическая атака</Description>
-    <ImageIndex>63</ImageIndex>
+    <ImageIndex>64</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Spell</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -536,7 +536,7 @@
     <ID>MageFreezeAttack</ID>
     <Name>Ледяная стрела</Name>
     <Description>- Наносит большой урон.//- Накладывает эффект, не позволяющий двигаться и атаковать//- Требует маны//- Магическая атака</Description>
-    <ImageIndex>64</ImageIndex>
+    <ImageIndex>65</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Spell</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -556,7 +556,7 @@
     <ID>MageGuardianWind</ID>
     <Name>Воздушная буря</Name>
     <Description>- Наносит средний урон всем целям в небольшом радиусе от мага//- Отбрасывает противника//- Требует маны//- Магическая атака</Description>
-    <ImageIndex>65</ImageIndex>
+    <ImageIndex>66</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Spell</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -576,7 +576,7 @@
     <ID>MageFirestormAttack</ID>
     <Name>Огненная буря</Name>
     <Description>- Наносит огромный урон всем целям в радиусе//- Требует маны//- Магическая атака</Description>
-    <ImageIndex>66</ImageIndex>
+    <ImageIndex>67</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Spell</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -596,7 +596,7 @@
     <ID>ElfRoots</ID>
     <Name>Корни</Name>
     <Description>- Наносит небольшой урон//- Накладывает эффект, не позволяющий двигаться//- Требует маны//- Стрелковая атака</Description>
-    <ImageIndex>67</ImageIndex>
+    <ImageIndex>68</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>RangeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -615,7 +615,7 @@
     <ID>ElfImpAttack</ID>
     <Name>Искусный выстрел</Name>
     <Description>- Наносит большой урон//- Стрелковая атака</Description>
-    <ImageIndex>68</ImageIndex>
+    <ImageIndex>69</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>RangeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -633,7 +633,7 @@
     <ID>ElfBuff</ID>
     <Name>Эльфийское вдохновение</Name>
     <Description>- Накладывает эффект, увеличивающий скорость передвижения//- Требует маны</Description>
-    <ImageIndex>69</ImageIndex>
+    <ImageIndex>70</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Buff</KindAbility>
     <TypeTarget>AllyUnit</TypeTarget>
@@ -652,7 +652,7 @@
     <ID>ElfMagicArrow</ID>
     <Name>Магическая стрела</Name>
     <Description>- Наносит огромный урон//- Требует маны//- Магическая атака</Description>
-    <ImageIndex>70</ImageIndex>
+    <ImageIndex>71</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>RangeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -671,7 +671,7 @@
     <ID>HammerBasicAttack</ID>
     <Name>Рукопашная атака</Name>
     <Description>- Обычная атака рукопашным оружием//- Наносит урон одной цели</Description>
-    <ImageIndex>71</ImageIndex>
+    <ImageIndex>72</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -690,7 +690,7 @@
     <ID>DwarfAntiBuildingAttack</ID>
     <Name>Разрушение</Name>
     <Description>- Наносит огромный урон по зданию//- Рукопашная атака</Description>
-    <ImageIndex>72</ImageIndex>
+    <ImageIndex>73</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyBuilding</TypeTarget>
@@ -708,7 +708,7 @@
     <ID>DwarfImpAttack</ID>
     <Name>Разящий удар</Name>
     <Description>- Наносит большой урон//- Рукопашная атака</Description>
-    <ImageIndex>73</ImageIndex>
+    <ImageIndex>74</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -726,7 +726,7 @@
     <ID>DwarfBerserkBuff</ID>
     <Name>Кровь камня</Name>
     <Description>- Накладывает на гнома эффект, повышающий защиту от магических атак</Description>
-    <ImageIndex>74</ImageIndex>
+    <ImageIndex>75</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Buff</KindAbility>
     <TypeTarget>Self</TypeTarget>
@@ -744,7 +744,7 @@
     <ID>DarkPriestSummonSeleton</ID>
     <Name>Вызов скелетов</Name>
     <Description>- Вызывает скелета-союзника//- Требует маны</Description>
-    <ImageIndex>84</ImageIndex>
+    <ImageIndex>85</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Summon</KindAbility>
     <TypeTarget>Self</TypeTarget>
@@ -763,7 +763,7 @@
     <ID>DarkPriestDrainLifeAttack</ID>
     <Name>Вытягивание жизни</Name>
     <Description>- Наносит большой урон//- Восстанавливает часть здоровья сестры Крипты//- Требует маны//- Магическая атака</Description>
-    <ImageIndex>85</ImageIndex>
+    <ImageIndex>86</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Spell</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -782,7 +782,7 @@
     <ID>DarkPriestSummonLich</ID>
     <Name>Вызов лича</Name>
     <Description>- Вызов лича-союзника//- Требует маны</Description>
-    <ImageIndex>86</ImageIndex>
+    <ImageIndex>87</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Summon</KindAbility>
     <TypeTarget>Self</TypeTarget>
@@ -801,7 +801,7 @@
     <ID>DarkPriestPestilence</ID>
     <Name>Чума</Name>
     <Description>- Наносит небольшой урон всем целям в небольшом радиусе от жрицы//- Накладывает эффект, наносящий небольшие повреждения с течением времени//- Требует маны//- Магическая атака</Description>
-    <ImageIndex>87</ImageIndex>
+    <ImageIndex>88</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Spell</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -820,7 +820,7 @@
     <ID>DarkPriestSummonVampire</ID>
     <Name>Вызов вампира</Name>
     <Description>- Вызывает вампира-союзника//- Требует маны</Description>
-    <ImageIndex>88</ImageIndex>
+    <ImageIndex>89</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Summon</KindAbility>
     <TypeTarget>Self</TypeTarget>
@@ -839,7 +839,7 @@
     <ID>PriestMightBuff</ID>
     <Name>Святая мощь</Name>
     <Description>- Накладывает эффект, повышающий мощь рукопашной атаки</Description>
-    <ImageIndex>89</ImageIndex>
+    <ImageIndex>90</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Buff</KindAbility>
     <TypeTarget>AllyUnit</TypeTarget>
@@ -858,7 +858,7 @@
     <ID>PriestMassHeal</ID>
     <Name>Массовое лечение</Name>
     <Description>- Восстанавливает часть здоровья всем союзникам в радиусе заклинания//- Требует маны</Description>
-    <ImageIndex>90</ImageIndex>
+    <ImageIndex>91</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Heal</KindAbility>
     <TypeTarget>AllyUnit</TypeTarget>
@@ -877,7 +877,7 @@
     <ID>PriestHotHeal</ID>
     <Name>Дар Агрелы</Name>
     <Description>- Восстанавливает часть здоровья дружестввенной цели//- Накладывает эффект, восстанавливающий здоровье с течением времени//- Требует маны</Description>
-    <ImageIndex>91</ImageIndex>
+    <ImageIndex>92</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Heal</KindAbility>
     <TypeTarget>AllyUnit</TypeTarget>
@@ -896,7 +896,7 @@
     <ID>PaladinTaunt</ID>
     <Name>Вызов на бой</Name>
     <Description>- Вынуждает врагов атаковать паладина</Description>
-    <ImageIndex>36</ImageIndex>
+    <ImageIndex>37</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Buff</KindAbility>
     <TypeTarget>Self</TypeTarget>
@@ -916,7 +916,7 @@
     <ID>PaladinImpAttack</ID>
     <Name>Сокрушительный удар</Name>
     <Description>- Наносит большой урон//- Рукопашная атака</Description>
-    <ImageIndex>73</ImageIndex>
+    <ImageIndex>74</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -936,7 +936,7 @@
     <ID>PaladinResistanceBuff</ID>
     <Name>Святая защита</Name>
     <Description>- Накладывает эффект, повышающий защиту от всех атак</Description>
-    <ImageIndex>40</ImageIndex>
+    <ImageIndex>41</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Buff</KindAbility>
     <TypeTarget>AllyUnit</TypeTarget>
@@ -954,7 +954,7 @@
     <ID>PaladinHolyNovaAttack</ID>
     <Name>Аура святости</Name>
     <Description>- Наносит огромный урон нежити в небольшом радиусе от паладина//- Рукопашная атака</Description>
-    <ImageIndex>92</ImageIndex>
+    <ImageIndex>93</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -972,7 +972,7 @@
     <ID>PaladinChargeAttack</ID>
     <Name>Священный удар</Name>
     <Description>- Наносит огромный урон//- Накладывает эффект, не позволяющий атаковать//- Магическая атака</Description>
-    <ImageIndex>93</ImageIndex>
+    <ImageIndex>94</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Spell</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -990,7 +990,7 @@
     <ID>BladeMasterTaunt</ID>
     <Name>Вызов на бой</Name>
     <Description>- Вынуждает врагов атаковать мастера меча</Description>
-    <ImageIndex>36</ImageIndex>
+    <ImageIndex>37</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Buff</KindAbility>
     <TypeTarget>Self</TypeTarget>
@@ -1010,7 +1010,7 @@
     <ID>BladeMasterWhirlwindAttack</ID>
     <Name>Круговой удар</Name>
     <Description>- Наносит средний удар всем целям в небольшом радиусе от мастера меча//- Рукопашная атака</Description>
-    <ImageIndex>123</ImageIndex>
+    <ImageIndex>124</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -1028,7 +1028,7 @@
     <ID>BladeMasterImpWhirlwindAttack</ID>
     <Name>Ураган клинков</Name>
     <Description>- Наносит большой урон всем целям в небольшом радиусе от мастера меча//- Рукопашная атака</Description>
-    <ImageIndex>124</ImageIndex>
+    <ImageIndex>125</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -1046,7 +1046,7 @@
     <ID>BeastMasterBasicAttack</ID>
     <Name>Стрелковая атака</Name>
     <Description>- Обычная атака стрелковым или метательным оружием//- Наносит урон одной цели</Description>
-    <ImageIndex>48</ImageIndex>
+    <ImageIndex>49</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>RangeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -1064,7 +1064,7 @@
     <ID>BeastMasterBeastSlayerAttack</ID>
     <Name>Охотничий выстрел</Name>
     <Description>- Наносит большой урон зверям//- Стрелковая атака</Description>
-    <ImageIndex>49</ImageIndex>
+    <ImageIndex>50</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>RangeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -1082,7 +1082,7 @@
     <ID>BeastMasterImpAttack</ID>
     <Name>Меткий выстрел</Name>
     <Description>- Наносит большой урон//- Стрелковая атака</Description>
-    <ImageIndex>51</ImageIndex>
+    <ImageIndex>52</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>RangeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -1100,7 +1100,7 @@
     <ID>BeastMasterSummonBeast</ID>
     <Name>Вызов волка</Name>
     <Description>- Вызывает волка-союзника</Description>
-    <ImageIndex>125</ImageIndex>
+    <ImageIndex>126</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Summon</KindAbility>
     <TypeTarget>Self</TypeTarget>
@@ -1118,7 +1118,7 @@
     <ID>BeastMasterEnrageBeast</ID>
     <Name>Звериная ярость</Name>
     <Description>- Накладывает на союзных зверей эффект, повышающий умение рукопашной атаки и скорость передвижения</Description>
-    <ImageIndex>126</ImageIndex>
+    <ImageIndex>127</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Buff</KindAbility>
     <TypeTarget>AllyUnit</TypeTarget>
@@ -1136,7 +1136,7 @@
     <ID>BeastMasterHealBeast</ID>
     <Name>Лечение зверя</Name>
     <Description>- Накладывает на союзных зверей эффект, восстанавливающий здоровье с течением времениы</Description>
-    <ImageIndex>127</ImageIndex>
+    <ImageIndex>128</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Buff</KindAbility>
     <TypeTarget>AllyUnit</TypeTarget>
@@ -1154,7 +1154,7 @@
     <ID>BeastMasterSummonBeast2</ID>
     <Name>Вызов медведя</Name>
     <Description>- Вызывает медведя-союзника</Description>
-    <ImageIndex>128</ImageIndex>
+    <ImageIndex>129</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Summon</KindAbility>
     <TypeTarget>Self</TypeTarget>
@@ -1172,7 +1172,7 @@
     <ID>BeastMasterAntiStunBuff</ID>
     <Name>Каменная голова</Name>
     <Description>- Накладывает эффект, дающий невосприимчивость к оглушению</Description>
-    <ImageIndex>129</ImageIndex>
+    <ImageIndex>130</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Buff</KindAbility>
     <TypeTarget>AllyUnit</TypeTarget>
@@ -1190,7 +1190,7 @@
     <ID>BeastMasterHoneyArrowAttack</ID>
     <Name>Медовая стрела</Name>
     <Description>- Наносит средний урон//- Накладывает эффект, наносящий небольшие повреждения с течением времени//- Стрелковая атака</Description>
-    <ImageIndex>130</ImageIndex>
+    <ImageIndex>131</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>RangeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -1208,7 +1208,7 @@
     <ID>MarksmanBasicAttack</ID>
     <Name>Стрелковая атака</Name>
     <Description>- Обычная атака стрелковым или метательным оружием//- Наносит урон одной цели</Description>
-    <ImageIndex>149</ImageIndex>
+    <ImageIndex>150</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>RangeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -1226,7 +1226,7 @@
     <ID>MarksmanBeastSlayerAttack</ID>
     <Name>Охотничий выстрел</Name>
     <Description>- Наносит большой урон зверям//- Стрелковая атака</Description>
-    <ImageIndex>49</ImageIndex>
+    <ImageIndex>50</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>RangeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -1244,7 +1244,7 @@
     <ID>MarksmanImpAttack</ID>
     <Name>Меткий выстрел</Name>
     <Description>- Наносит большой урон//- Стрелковая атака</Description>
-    <ImageIndex>150</ImageIndex>
+    <ImageIndex>151</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>RangeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -1262,7 +1262,7 @@
     <ID>MarksmanHoodShotAttack</ID>
     <Name>Смертельный выстрел</Name>
     <Description>- Наносит огромный урон//- Стрелковая атака</Description>
-    <ImageIndex>53</ImageIndex>
+    <ImageIndex>54</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>RangeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -1280,7 +1280,7 @@
     <ID>MarksmanStingShotAttack</ID>
     <Name>Ошеломляющий выстрел</Name>
     <Description>- Наносит средний урон//- Накладывает эффект, понижающий умения всех типов атак//- Стрелковая атака</Description>
-    <ImageIndex>52</ImageIndex>
+    <ImageIndex>53</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>RangeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -1298,7 +1298,7 @@
     <ID>MarksmanSunburstAttack</ID>
     <Name>Солнечная стрела</Name>
     <Description>- Наносит большой урон всем целям в радиусе//- Стрелковая атака</Description>
-    <ImageIndex>131</ImageIndex>
+    <ImageIndex>132</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>RangeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -1316,7 +1316,7 @@
     <ID>MarksmanFriendlyTargetAttack</ID>
     <Name>Огненный щит</Name>
     <Description>- Накладывает эффект, дающий иммунитет к заморозке</Description>
-    <ImageIndex>132</ImageIndex>
+    <ImageIndex>133</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>RangeAttack</KindAbility>
     <TypeTarget>AllyUnit</TypeTarget>
@@ -1334,7 +1334,7 @@
     <ID>IceMageBasicAttack</ID>
     <Name>Магическая атака</Name>
     <Description>- Обычная атака магией или магическим оружием//- Наносит урон одной цели</Description>
-    <ImageIndex>55</ImageIndex>
+    <ImageIndex>56</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Spell</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -1354,7 +1354,7 @@
     <ID>IceMageFrostBoltAttack</ID>
     <Name>Ледяной шар</Name>
     <Description>- Наносит большой урон всем целям в небольшом радиусе//- Накладывает эффект, замедляющий цель//- Требует маны//- Магическая атака</Description>
-    <ImageIndex>133</ImageIndex>
+    <ImageIndex>134</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Spell</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -1374,7 +1374,7 @@
     <ID>IceMageIceBlock</ID>
     <Name>Заморозка</Name>
     <Description>- Наносит большой урон всем целям в радиусе заклинания//- Накладывает эффект, не позволяющий двигаться и атаковать//- Требует маны//- Магическая атака</Description>
-    <ImageIndex>134</ImageIndex>
+    <ImageIndex>135</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Spell</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -1394,7 +1394,7 @@
     <ID>IceMageBlizzardAttack</ID>
     <Name>Гнев Холода</Name>
     <Description>- Наносит огромный урон всем целям в радиусе заклинания//- Накладывает эффект, замедляющий цель//- Требует маны//- Магическая атака</Description>
-    <ImageIndex>135</ImageIndex>
+    <ImageIndex>136</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Spell</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -1414,7 +1414,7 @@
     <ID>IceMageGuardianWind</ID>
     <Name>Леденящий ветер</Name>
     <Description>- Наносит большой урон всем целям в радиусе от мага//- Отбрасывает противников//- Требует маны//- Магическая атака</Description>
-    <ImageIndex>136</ImageIndex>
+    <ImageIndex>137</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Spell</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -1434,7 +1434,7 @@
     <ID>IceMageShield</ID>
     <Name>Магический щит</Name>
     <Description>- Накладывает на мага эффект, повышающий защиту от рукопашных и магических атак//- Требует маны</Description>
-    <ImageIndex>137</ImageIndex>
+    <ImageIndex>138</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Spell</KindAbility>
     <TypeTarget>Self</TypeTarget>
@@ -1452,7 +1452,7 @@
     <ID>DeathKnightBasicAttack</ID>
     <Name>Рукопашная атака</Name>
     <Description>- Обычная атака рукопашным оружием//- Наносит урон одной цели</Description>
-    <ImageIndex>138</ImageIndex>
+    <ImageIndex>139</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -1470,7 +1470,7 @@
     <ID>DeathKnightPoisonAttack</ID>
     <Name>Черный яд</Name>
     <Description>- Наносит средний урон//- Накладывает эффект, наносящий небольшие повреждения с течением времени//- Рукопашная атака</Description>
-    <ImageIndex>139</ImageIndex>
+    <ImageIndex>140</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -1488,7 +1488,7 @@
     <ID>DeathKnightStunAttack</ID>
     <Name>Умелое оглушение</Name>
     <Description>- Наносит большой урон//- Накладывает эффект, не позволяющий двигаться и атаковать//- Рукопашная атака</Description>
-    <ImageIndex>140</ImageIndex>
+    <ImageIndex>141</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -1506,7 +1506,7 @@
     <ID>DeathKnightDebuff1Attack</ID>
     <Name>Первый удар Ночи</Name>
     <Description>- Наносит средний урон//- Накладывает эффект, незначительно понижающий защиту от магических атак//- Магическая атака</Description>
-    <ImageIndex>141</ImageIndex>
+    <ImageIndex>142</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -1524,7 +1524,7 @@
     <ID>DeathKnightDebuff2Attack</ID>
     <Name>Второй удар Ночи</Name>
     <Description>- Наносит средний урон//- Накладывает эффект, понижающий защиту от магических атак//- Магическая атака</Description>
-    <ImageIndex>142</ImageIndex>
+    <ImageIndex>143</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -1542,7 +1542,7 @@
     <ID>DeathKnightDebuff3Attack</ID>
     <Name>Третий удар Ночи</Name>
     <Description>- Наносит средний урон//- Накладывает эффект, значительно понижающий защиту от магических атак//- Магическая атака</Description>
-    <ImageIndex>143</ImageIndex>
+    <ImageIndex>144</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -1560,7 +1560,7 @@
     <ID>FireMageBasicAttack</ID>
     <Name>Магическая атака</Name>
     <Description>- Обычная атака магией или магическим оружием//- Наносит урон одной цели</Description>
-    <ImageIndex>144</ImageIndex>
+    <ImageIndex>145</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Spell</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -1578,7 +1578,7 @@
     <ID>FireMageFireWeapon</ID>
     <Name>Огненное оружие</Name>
     <Description>- Улучшает ближнюю и дистанционную атаки союзников//- Требует маны</Description>
-    <ImageIndex>145</ImageIndex>
+    <ImageIndex>146</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Buff</KindAbility>
     <TypeTarget>AllyUnit</TypeTarget>
@@ -1597,7 +1597,7 @@
     <ID>FireMageFireBallAttack</ID>
     <Name>Огненный шар</Name>
     <Description>- Наносит средний урон в малом радиусе//- Противник некоторое время продолжает гореть//- Требует маны//- Магическая атака</Description>
-    <ImageIndex>63</ImageIndex>
+    <ImageIndex>64</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Spell</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -1616,7 +1616,7 @@
     <ID>FireMageFireWall</ID>
     <Name>Огненный поток</Name>
     <Description>- Наносит огромный урон противнику в среднем радиусе//- Противник некоторое время продолжает гореть//- Требует маны//- Магическая атака</Description>
-    <ImageIndex>146</ImageIndex>
+    <ImageIndex>147</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Spell</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -1635,7 +1635,7 @@
     <ID>FireMageFireStorm</ID>
     <Name>Огненный взрыв</Name>
     <Description>- Наносит большой урон противнику//- Противник некоторое время продолжает гореть//- Требует маны//- Магическая атака</Description>
-    <ImageIndex>147</ImageIndex>
+    <ImageIndex>148</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Spell</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -1654,7 +1654,7 @@
     <ID>FireMageFireShield</ID>
     <Name>Огненный щит</Name>
     <Description>- Снижает получаемый урон от всех видов атак//- Требует маны</Description>
-    <ImageIndex>148</ImageIndex>
+    <ImageIndex>149</ImageIndex>
     <Cost>20</Cost>
     <KindAbility>Buff</KindAbility>
     <TypeTarget>Self</TypeTarget>
@@ -1673,7 +1673,7 @@
     <ID>WolfBasicAttack</ID>
     <Name>Укус</Name>
     <Description>- Наносит малый урон</Description>
-    <ImageIndex>112</ImageIndex>
+    <ImageIndex>113</ImageIndex>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -1690,7 +1690,7 @@
     <ID>WolfChildOfTheForest</ID>
     <Name>Дитя леса</Name>
     <Description>Леса Ардании полны всякой живности и волки в них не редкость. Волки Ардании - суровые хищники, охотящиеся стаей и доставляющие неприятности многих путникам и жителям деревень, однако звери уязвимы к стрелам охотникам. Вблизи волчьих логов добавляет 10% здоровья, уязвимость к охотничьим стрелам на 25%.</Description>
-    <ImageIndex>113</ImageIndex>
+    <ImageIndex>114</ImageIndex>
     <KindAbility>Passive</KindAbility>
     <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -1707,7 +1707,7 @@
     <ID>Fangs</ID>
     <Name>Клыки</Name>
     <Description>Волки, как любые другие хищники, будут пытаться всеми силами догнать раненную жертву, чтобы ее загрызть. Преследует раненного героя, игнорируя других.</Description>
-    <ImageIndex>114</ImageIndex>
+    <ImageIndex>115</ImageIndex>
     <KindAbility>Passive</KindAbility>
     <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -1724,7 +1724,7 @@
     <ID>Predator</ID>
     <Name>Хищник</Name>
     <Description>В отличии от других хищников волки собираются в стаи и нападают, тем самым многократно повышая эффективность охоты. Увеличивает скорость и урон на 10%. Требует наличия 3 и более волков.</Description>
-    <ImageIndex>115</ImageIndex>
+    <ImageIndex>116</ImageIndex>
     <KindAbility>Passive</KindAbility>
     <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -1741,7 +1741,7 @@
     <ID>LeaderOfThePack</ID>
     <Name>Вожак стаи</Name>
     <Description>у любой стаи волков есть вожак, которому все другие подчиняются. Обычно им является уже опытный и матёрый волк. Во время битвы вожак не нападает, а смотрит на происходящим. Вступает в бой только когда появляется в этом острая нужда. Добавляет всем волкам храбрости на 20%.</Description>
-    <ImageIndex>116</ImageIndex>
+    <ImageIndex>117</ImageIndex>
     <KindAbility>Passive</KindAbility>
     <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -1757,7 +1757,7 @@
     <ID>WolfCommonBite</ID>
     <Name>Общий укус</Name>
     <Description>Вожаки стай за годы своей жизни обучились практически одновременно нападать на две цели. Наносит урон нескольким целям одновременно.</Description>
-    <ImageIndex>122</ImageIndex>
+    <ImageIndex>123</ImageIndex>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -1773,7 +1773,7 @@
     <ID>ZombieBasicAttack</ID>
     <Name>Укус</Name>
     <Description>Поскольку зомби, в отличии от скелетов, не способны держать в руках вооружение, их оружием являются зубы, ногти и споры.</Description>
-    <ImageIndex>96</ImageIndex>
+    <ImageIndex>97</ImageIndex>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -1789,7 +1789,7 @@
     <ID>WillOfDarkness</ID>
     <Name>Воля Тьмы</Name>
     <Description>Темная магия способна тысячами поднимать из могил тела усопших и заставлять их действовать по воли некроманта. Несмотря на то, что Великий король запретил кому попало использовать некромантию, нередко находятся те, кто пренебрегает этому указу. Поэтому в Ардании время от времени проводятся зачистки близ кладбищ и склепов. Невосприимчивость к усталости, чувствам и влиянию на разум.</Description>
-    <ImageIndex>110</ImageIndex>
+    <ImageIndex>111</ImageIndex>
     <KindAbility>Passive</KindAbility>
     <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -1805,7 +1805,7 @@
     <ID>DeadFlesh</ID>
     <Name>Мертвая плоть</Name>
     <Description>В телах, поднятых с кладбищ отсутствуют какие-либо естественные свойства - циркуляция крови, заживление ран, работа внутренних органов. Благодаря этому на зомби не действует отравление ядом или кровотечение, однако они очень чувствительны к святым атакам.</Description>
-    <ImageIndex>109</ImageIndex>
+    <ImageIndex>110</ImageIndex>
     <KindAbility>Passive</KindAbility>
     <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -1821,7 +1821,7 @@
     <ID>NeedFood</ID>
     <Name>Потребность в пище</Name>
     <Description>Зомби, в отличии от скелетов, иногда нуждаются в еде - из-за этого они вынуждены бродить по землям и искать того, кто станет их обедом.//Добавляет 10% урона.</Description>
-    <ImageIndex>111</ImageIndex>
+    <ImageIndex>112</ImageIndex>
     <KindAbility>Passive</KindAbility>
     <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -1837,7 +1837,7 @@
     <ID>Ptomaine</ID>
     <Name>Трупный яд</Name>
     <Description>Поскольку мертвецы убивают и питаются свежими телами, их сгнившая плоть содержит многочисленные ядовитые споры, которые перекидываются на того, кто сильно близко приблизится к зомби. Заражение ядом (медленно понижает здоровье).</Description>
-    <ImageIndex>108</ImageIndex>
+    <ImageIndex>109</ImageIndex>
     <KindAbility>Aura</KindAbility>
     <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -1853,7 +1853,7 @@
     <ID>SkeletBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
-    <ImageIndex>35</ImageIndex>
+    <ImageIndex>36</ImageIndex>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -1869,7 +1869,7 @@
     <ID>SkeletArcherBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
-    <ImageIndex>48</ImageIndex>
+    <ImageIndex>49</ImageIndex>
     <KindAbility>RangeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -1982,7 +1982,7 @@
     <ID>BearBasicAttack</ID>
     <Name>Удар лапой</Name>
     <Description>- Наносит средний урон</Description>
-    <ImageIndex>118</ImageIndex>
+    <ImageIndex>119</ImageIndex>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -1999,7 +1999,7 @@
     <ID>BearChildOfTheForest</ID>
     <Name>Дитя леса</Name>
     <Description>Леса Ардании полны всякой живности и медведи в них не редкость. Медведи Ардании - очень опасные хищники, охотящиеся по одиночке и доставляющие неприятности многим гостям леса, однако звери уязвимы к стрелам охотникам. Вблизи медвежьих берлог добавляет 10% здоровья.уязвимость к охотничьим стрелам на 25%.</Description>
-    <ImageIndex>113</ImageIndex>
+    <ImageIndex>114</ImageIndex>
     <KindAbility>Passive</KindAbility>
     <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -2016,7 +2016,7 @@
     <ID>BearPaw</ID>
     <Name>Медвежья лапа</Name>
     <Description>Многие медведи когда спят предпочитают сосать свою лапу, тем самым делая свой сон более спокойным. Добавляет 15% к восстановлению здоровья во время отдыха.</Description>
-    <ImageIndex>119</ImageIndex>
+    <ImageIndex>120</ImageIndex>
     <KindAbility>Passive</KindAbility>
     <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -2033,7 +2033,7 @@
     <ID>BearBleeding</ID>
     <Name>Кровотечение</Name>
     <Description>Огромные медвежьи когти способны сильно калечить любых живых существ, что попадаются под лапу медведя. Вылечить такие раны можно только в гильдии, на поле боя их исцелить не могут даже лучшие лекари Ардании. При получении такого ранения героям рекомендуется как можно скорее возвращаться домой. Отнимает здоровье с течением времени.</Description>
-    <ImageIndex>120</ImageIndex>
+    <ImageIndex>121</ImageIndex>
     <KindAbility>Passive</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -2050,7 +2050,7 @@
     <ID>BearStrongClaws</ID>
     <Name>Крепкие когти</Name>
     <Description>Огромные медвежьи когти способны сильно калечить любых живых существ, что попадаются под лапу медведя. Вылечить такие раны можно только в гильдии, на поле боя их исцелить не могут даже лучшие лекари Ардании. При получении такого ранения героям рекомендуется как можно скорее возвращаться домой. Отнимает здоровье с течением времени.</Description>
-    <ImageIndex>121</ImageIndex>
+    <ImageIndex>122</ImageIndex>
     <KindAbility>Passive</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
