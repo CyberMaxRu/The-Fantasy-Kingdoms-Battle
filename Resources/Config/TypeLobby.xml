@@ -4,6 +4,7 @@
     <Name>8 игроков</Name>
     <QuantityPlayers>8</QuantityPlayers>
     <Gold>8000</Gold>
+    <MaxGold>100000</MaxGold>
     <MaxHeroes>25</MaxHeroes>
     <StartQuantityFlags>3</StartQuantityFlags>
     <MaxQuantityFlags>7</MaxQuantityFlags>

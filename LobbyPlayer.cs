@@ -1008,18 +1008,26 @@ namespace Fantasy_Kingdoms_Battle
         internal void ReturnGold(int gold)
         {
             Debug.Assert(Gold >= 0);
+            Debug.Assert(Gold <= Lobby.TypeLobby.MaxGold);
             Debug.Assert(gold >= 0);
 
-            Gold += gold;
+            Gold += AllowAddGold(gold);
         }
 
         internal void IncomeGold(int gold)
         {
             Debug.Assert(Gold >= 0);
+            Debug.Assert(Gold <= Lobby.TypeLobby.MaxGold);
             Debug.Assert(gold >= 0, $"Доход: {gold}");
 
-            Gold += gold;
-            GoldCollected += gold;
+            int addGold = AllowAddGold(gold);
+            Gold += addGold;
+            GoldCollected += addGold;
+        }
+
+        private int AllowAddGold(int gold)
+        {
+            return Gold + gold <= Lobby.TypeLobby.MaxGold ? gold : Lobby.TypeLobby.MaxGold - Gold;
         }
 
         internal void AddGreatness(int greatness)

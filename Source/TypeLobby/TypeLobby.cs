@@ -16,6 +16,7 @@ namespace Fantasy_Kingdoms_Battle
             Name = XmlUtils.GetString(n.SelectSingleNode("Name"));
             QuantityPlayers = XmlUtils.GetInteger(n.SelectSingleNode("QuantityPlayers"));
             Gold = XmlUtils.GetInteger(n.SelectSingleNode("Gold"));
+            MaxGold = XmlUtils.GetInteger(n.SelectSingleNode("MaxGold"));
             MaxHeroes = XmlUtils.GetInteger(n.SelectSingleNode("MaxHeroes"));
             StartQuantityFlags = XmlUtils.GetInteger(n.SelectSingleNode("StartQuantityFlags"));
             MaxQuantityFlags = XmlUtils.GetInteger(n.SelectSingleNode("MaxQuantityFlags"));
@@ -39,6 +40,9 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(QuantityPlayers % 2 == 0);
             Debug.Assert(Gold >= 0);
             Debug.Assert(Gold <= 100000);
+            Debug.Assert(MaxGold >= 100_00);
+            Debug.Assert(MaxGold <= 1_000_000);
+            Debug.Assert(Gold <= MaxGold);
             Debug.Assert(MaxHeroes >= 1);
             Debug.Assert(MaxHeroes <= 100);// Здесь проверять через максим. число героев на поле боя
             Debug.Assert(StartQuantityFlags >= 1);
@@ -144,6 +148,7 @@ namespace Fantasy_Kingdoms_Battle
         internal string Name { get; }
         internal int QuantityPlayers { get; }
         internal int Gold { get; }
+        internal int MaxGold { get; }
         internal int MaxHeroes { get; }
         internal int StartQuantityFlags { get; }
         internal int MaxQuantityFlags { get; }
