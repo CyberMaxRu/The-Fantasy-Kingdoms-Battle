@@ -70,6 +70,12 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.SetNeedRedrawFrame();
         }
 
+        internal override void MouseDown()
+        {
+            base.MouseDown();
+
+        }
+
         protected override bool AllowClick()
         {
             return ImageIsEnabled && base.AllowClick();
