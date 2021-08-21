@@ -15,16 +15,16 @@ namespace Fantasy_Kingdoms_Battle
         private Bitmap bmpBackground;
         private readonly VCLabel lblNameMapObject;
         private readonly VCImage128 imgMapObject;
-        private readonly VCIconButton btnHeroes;
-        private readonly VCIconButton btnBuildOrUpgrade;
-        private readonly VCIconButton btnHireHero;
+        private readonly VCIconButton48 btnHeroes;
+        private readonly VCIconButton48 btnBuildOrUpgrade;
+        private readonly VCIconButton48 btnHireHero;
         private readonly VCLabelValue lblIncome;
         private readonly VCLabelValue lblGreatness;
 
-        private readonly VCIconButton btnAction;
-        private readonly VCIconButton btnCancel;
-        private readonly VCIconButton btnInhabitants;
-        private readonly VCIconButton btnAttackHeroes;
+        private readonly VCIconButton48 btnAction;
+        private readonly VCIconButton48 btnCancel;
+        private readonly VCIconButton48 btnInhabitants;
+        private readonly VCIconButton48 btnAttackHeroes;
         private readonly VCLabelValue lblRewardGold;
         private readonly VCLabelValue lblRewardGreatness;
 
@@ -44,14 +44,14 @@ namespace Fantasy_Kingdoms_Battle
             imgMapObject.Click += ImgLair_Click;
             imgMapObject.ShowHint += ImgLair_ShowHint;
 
-            btnHeroes = new VCIconButton(this, imgMapObject.ShiftX, imgMapObject.ShiftY, Program.formMain.ilGui, FormMain.GUI_HOME);
+            btnHeroes = new VCIconButton48(this, imgMapObject.ShiftX, imgMapObject.ShiftY, Program.formMain.ilGui, FormMain.GUI_HOME);
             btnHeroes.ShowHint += BtnHeroes_ShowHint;
 
-            btnHireHero = new VCIconButton(this, imgMapObject.NextLeft(), btnHeroes.NextTop() + FormMain.Config.GridSize + FormMain.Config.GridSizeHalf, Program.formMain.imListObjects48, -1);
+            btnHireHero = new VCIconButton48(this, imgMapObject.NextLeft(), btnHeroes.NextTop() + FormMain.Config.GridSize + FormMain.Config.GridSizeHalf, Program.formMain.imListObjects48, -1);
             btnHireHero.Click += BtnHireHero_Click;
             btnHireHero.ShowHint += BtnHireHero_ShowHint;
 
-            btnBuildOrUpgrade = new VCIconButton(this, imgMapObject.NextLeft(), imgMapObject.NextTop(), Program.formMain.ilGui, FormMain.GUI_BUILD);
+            btnBuildOrUpgrade = new VCIconButton48(this, imgMapObject.NextLeft(), imgMapObject.NextTop(), Program.formMain.ilGui, FormMain.GUI_BUILD);
             btnBuildOrUpgrade.Click += BtnBuildOrUpgrade_Click;
             btnBuildOrUpgrade.ShowHint += BtnBuildOrUpgrade_ShowHint;
 
@@ -68,19 +68,19 @@ namespace Fantasy_Kingdoms_Battle
             lblGreatness.Color = FormMain.Config.HintIncome;
             lblGreatness.Hint = "Прибавление величия при строительстве и в день";
 
-            btnAction = new VCIconButton(this, imgMapObject.NextLeft(), imgMapObject.NextTop(), Program.formMain.ilGui, FormMain.GUI_BATTLE);
+            btnAction = new VCIconButton48(this, imgMapObject.NextLeft(), imgMapObject.NextTop(), Program.formMain.ilGui, FormMain.GUI_BATTLE);
             btnAction.Click += BtnAction_Click;
             btnAction.ShowHint += BtnAction_ShowHint;
 
-            btnCancel = new VCIconButton(this, btnAction.ShiftX - btnAction.Width - FormMain.Config.GridSize, btnAction.ShiftY, Program.formMain.ilGui, FormMain.GUI_FLAG_CANCEL);
+            btnCancel = new VCIconButton48(this, btnAction.ShiftX - btnAction.Width - FormMain.Config.GridSize, btnAction.ShiftY, Program.formMain.ilGui, FormMain.GUI_FLAG_CANCEL);
             btnCancel.Click += BtnCancel_Click;
             btnCancel.ShowHint += BtnCancel_ShowHint;
 
-            btnInhabitants = new VCIconButton(this, imgMapObject.NextLeft(), imgMapObject.ShiftY, Program.formMain.ilGui, FormMain.GUI_HOME);
+            btnInhabitants = new VCIconButton48(this, imgMapObject.NextLeft(), imgMapObject.ShiftY, Program.formMain.ilGui, FormMain.GUI_HOME);
             btnInhabitants.Click += BtnInhabitants_Click;
             btnInhabitants.ShowHint += BtnInhabitants_ShowHint;
 
-            btnAttackHeroes = new VCIconButton(this, btnInhabitants.ShiftX, btnInhabitants.NextTop() + FormMain.Config.GridSize + FormMain.Config.GridSizeHalf, Program.formMain.ilGui, FormMain.GUI_TARGET);
+            btnAttackHeroes = new VCIconButton48(this, btnInhabitants.ShiftX, btnInhabitants.NextTop() + FormMain.Config.GridSize + FormMain.Config.GridSizeHalf, Program.formMain.ilGui, FormMain.GUI_TARGET);
             btnAttackHeroes.Click += BtnAttackHeroes_Click;
             btnAttackHeroes.ShowHint += BtnAttackHeroes_ShowHint;
 

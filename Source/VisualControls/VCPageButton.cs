@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс кнопки для PageControl'а
-    internal sealed class VCPageButton : VCIconButton
+    internal sealed class VCPageButton : VCIconButton48
     {
         public VCPageButton(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList, int imageIndex, string advice) : base(parent, shiftX, shiftY, bitmapList, imageIndex)
         {

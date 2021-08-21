@@ -61,8 +61,8 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCLabel lblDamagePlayer2;
         private readonly VCButton btnEndBattle;
         private readonly VCButton btnPlayPause;
-        private readonly VCIconButton btnDecSpeed;
-        private readonly VCIconButton btnIncSpeed;
+        private readonly VCIconButton48 btnDecSpeed;
+        private readonly VCIconButton48 btnIncSpeed;
         private readonly VCCheckBox chkbShowGrid;
         private readonly VCCheckBox chkbShowPath;
 
@@ -164,13 +164,13 @@ namespace Fantasy_Kingdoms_Battle
             //btnPlayPause.Width = btnIncSpeed.ShiftX - btnPlayPause.ShiftX;
             Debug.Assert(btnPlayPause.Width > 0);
 
-            btnDecSpeed = new VCIconButton(ClientControl, 0, 0, Program.formMain.ilGui24, FormMain.GUI_24_BUTTON_LEFT);
+            btnDecSpeed = new VCIconButton48(ClientControl, 0, 0, Program.formMain.ilGui24, FormMain.GUI_24_BUTTON_LEFT);
             btnDecSpeed.HighlightUnderMouse = true;
             btnDecSpeed.ShiftX = btnPlayPause.ShiftX - btnDecSpeed.Width;
             btnDecSpeed.ShiftY = btnPlayPause.ShiftY + (btnPlayPause.Height - btnDecSpeed.Height) / 2 + 1;
             btnDecSpeed.Click += BtnDecSpeed_Click;
 
-            btnIncSpeed = new VCIconButton(ClientControl, btnPlayPause.ShiftX + btnPlayPause.Width, btnDecSpeed.ShiftY, Program.formMain.ilGui24, FormMain.GUI_24_BUTTON_RIGHT);
+            btnIncSpeed = new VCIconButton48(ClientControl, btnPlayPause.ShiftX + btnPlayPause.Width, btnDecSpeed.ShiftY, Program.formMain.ilGui24, FormMain.GUI_24_BUTTON_RIGHT);
             btnIncSpeed.HighlightUnderMouse = true;
             btnIncSpeed.Click += BtnIncSpeed_Click;
 

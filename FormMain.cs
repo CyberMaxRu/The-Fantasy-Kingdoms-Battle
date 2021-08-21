@@ -74,8 +74,8 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCToolLabel labelGreatness;
         private readonly VCLabel labelNamePlayer;
 
-        private readonly VCIconButton btnInGameMenu;
-        private readonly VCIconButton btnEndTurn;
+        private readonly VCIconButton48 btnInGameMenu;
+        private readonly VCIconButton48 btnEndTurn;
 
         private readonly VisualControl panelLairWithFlags;
         private readonly List<VCButtonTargetLair> listBtnTargetLair = new List<VCButtonTargetLair>();
@@ -1702,9 +1702,9 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal VCIconButton CreateButton(VisualControl parent, int imageIndex, int left, int top, EventHandler click, EventHandler showHint)
+        internal VCIconButton48 CreateButton(VisualControl parent, int imageIndex, int left, int top, EventHandler click, EventHandler showHint)
         {
-            VCIconButton b = new VCIconButton(parent, left, top, ilGui, imageIndex);
+            VCIconButton48 b = new VCIconButton48(parent, left, top, ilGui, imageIndex);
             b.Click += click;
             b.ShowHint += showHint;
 

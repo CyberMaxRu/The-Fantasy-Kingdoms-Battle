@@ -21,8 +21,8 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCSeparator sprTop;
         private readonly VCLabel lblTextForAvatar;
         private readonly VCImage128 imgAvatar;
-        private readonly VCIconButton btnPriorAvatar;
-        private readonly VCIconButton btnNextAvatar;
+        private readonly VCIconButton48 btnPriorAvatar;
+        private readonly VCIconButton48 btnNextAvatar;
         private readonly VCButton btnAddAvatar;
         private readonly VCButton btnChangeAvatar;
         private readonly VCButton btnDeleteAvatar;
@@ -46,13 +46,13 @@ namespace Fantasy_Kingdoms_Battle
             imgAvatar = new VCImage128(ClientControl, FormMain.Config.GridSize, lblTextForAvatar.NextTop());
             imgAvatar.HighlightUnderMouse = false;
 
-            btnPriorAvatar = new VCIconButton(ClientControl, 0, 0, Program.formMain.ilGui24, FormMain.GUI_24_BUTTON_LEFT);
+            btnPriorAvatar = new VCIconButton48(ClientControl, 0, 0, Program.formMain.ilGui24, FormMain.GUI_24_BUTTON_LEFT);
             btnPriorAvatar.ShiftY = imgAvatar.ShiftY + ((imgAvatar.Height - btnPriorAvatar.Height) / 2);
             btnPriorAvatar.HighlightUnderMouse = true;
             btnPriorAvatar.Click += BtnPriorAvatar_Click;
             imgAvatar.ShiftX = btnPriorAvatar.Width;
             lblTextForAvatar.ShiftX = imgAvatar.ShiftX;
-            btnNextAvatar = new VCIconButton(ClientControl, imgAvatar.ShiftX + imgAvatar.Width, btnPriorAvatar.ShiftY, Program.formMain.ilGui24, FormMain.GUI_24_BUTTON_RIGHT);
+            btnNextAvatar = new VCIconButton48(ClientControl, imgAvatar.ShiftX + imgAvatar.Width, btnPriorAvatar.ShiftY, Program.formMain.ilGui24, FormMain.GUI_24_BUTTON_RIGHT);
             btnNextAvatar.HighlightUnderMouse = true;
             btnNextAvatar.Click += BtnNextAvatar_Click;
 
