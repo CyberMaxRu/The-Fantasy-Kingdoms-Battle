@@ -72,6 +72,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCToolLabel labelBuilders;
         private readonly VCToolLabel labelGold;
         private readonly VCToolLabel labelGreatness;
+        private readonly VCToolLabel labelHeroes;
         private readonly VCLabel labelNamePlayer;
 
         private readonly VCIconButton48 btnInGameMenu;
@@ -198,6 +199,7 @@ namespace Fantasy_Kingdoms_Battle
         internal const int GUI_16_PEASANT_HOUSE = 7;
         internal const int GUI_16_FLAG_ATTACK = 8;
         internal const int GUI_16_FLAG_DEFENSE = 9;
+        internal const int GUI_16_HEROES = 10;
 
         internal const int GUI_24_FIRE = 0;
         internal const int GUI_24_HEROES = 1;
@@ -582,6 +584,9 @@ namespace Fantasy_Kingdoms_Battle
                 labelGreatness = new VCToolLabel(bmpPreparedToolbar, labelGold.NextLeft(), labelDay.ShiftY, "", GUI_16_GREATNESS);
                 labelGreatness.ShowHint += LabelGreatness_ShowHint;
                 labelGreatness.Width = 168;
+                labelHeroes = new VCToolLabel(bmpPreparedToolbar, labelGreatness.NextLeft() + 240, labelDay.ShiftY, "", GUI_16_HEROES);
+                labelHeroes.ShowHint += LabelHeroes_ShowHint;
+                labelHeroes.Width = 96;
 
                 labelNamePlayer = new VCLabel(bmpPreparedToolbar, 0, 0, fontMedCaptionC, Color.White, fontMedCaptionC.MaxHeightSymbol, "");
                 labelNamePlayer.StringFormat.LineAlignment = StringAlignment.Center;
@@ -789,6 +794,13 @@ namespace Fantasy_Kingdoms_Battle
                 MessageBox.Show(exc.Message + Environment.NewLine + exc.StackTrace);
                 Environment.Exit(-1);
             }
+        }
+
+        private void LabelHeroes_ShowHint(object sender, EventArgs e)
+        {
+            formHint.AddStep1Header("Герои", "",
+                $"Нанято героев: {curAppliedPlayer.CombatHeroes.Count}" + Environment.NewLine
+                + $"Максимум героев: {curAppliedPlayer.Lobby.TypeLobby.MaxHeroes}");
         }
 
         private void PageControl_PageChanged(object sender, EventArgs e)
@@ -1173,6 +1185,7 @@ namespace Fantasy_Kingdoms_Battle
                     labelBuilders.Visible = true;
                     labelGold.Visible = true;
                     labelGreatness.Visible = true;
+                    labelHeroes.Visible = true;
                     MainControl.Visible = true;
                     ShowDataPlayer();
                 }
@@ -1183,6 +1196,7 @@ namespace Fantasy_Kingdoms_Battle
                     labelBuilders.Visible = false;
                     labelGold.Visible = false;
                     labelGreatness.Visible = false;
+                    labelHeroes.Visible = false;
                     MainControl.Visible = false;
                     foreach (VCImageLose il in listBtnLoses)
                         il.Visible = false;
@@ -1622,8 +1636,8 @@ namespace Fantasy_Kingdoms_Battle
                     + " (+" + curAppliedPlayer.PointGreatnessPerDay().ToString() + ")"
                     + ": " + curAppliedPlayer.PointGreatness.ToString() + "/"
                     + curAppliedPlayer.PointGreatnessForNextLevel.ToString();
+                labelHeroes.Text = curAppliedPlayer.CombatHeroes.Count.ToString() + "/" + curAppliedPlayer.Lobby.TypeLobby.MaxHeroes.ToString();
 
-                pageHeroes.Cost = lobby.CurrentPlayer.CombatHeroes.Count.ToString();
                 pageTournament.Cost = lobby.DaysLeftForBattle > 0 ? lobby.DaysLeftForBattle.ToString() + " д." : 
                         curAppliedPlayer.SkipBattle ? "Проп." : "Битва";
 
