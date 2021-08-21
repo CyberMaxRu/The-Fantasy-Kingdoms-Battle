@@ -337,8 +337,8 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Загружаем настройки
-            //try
-            //{
+            try
+            {
                 Settings = new Settings();
 
                 MainConfig = new MainConfig(dirResources);
@@ -783,12 +783,12 @@ namespace Fantasy_Kingdoms_Battle
                     lblStage.Text = text + "...";
                     lblStage.Refresh();
                 }
-            /*}
+            }
             catch (Exception exc)
             {
                 MessageBox.Show(exc.Message + Environment.NewLine + exc.StackTrace);
                 Environment.Exit(-1);
-            }*/
+            }
         }
 
         private void PageControl_PageChanged(object sender, EventArgs e)
