@@ -60,9 +60,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Resources\Types\Creature\TypeAttack.cs" />
-    <Compile Include="Resources\Types\Creature\TypePerk.cs" />
-    <Compile Include="Source\Creature\CreatureAbility.cs" />
+    <Compile Include="Source\Types\Creature\TypeAttack.cs" />
+    <Compile Include="Source\Types\Creature\TypePerk.cs" />
+    <Compile Include="Source\Types\Creature\CreatureAbility.cs" />
     <Compile Include="Source\VisualControls\VCImage48.cs" />
     <Compile Include="Source\VisualControls\VCPageButton.cs" />
     <Compile Include="TypeAbility.cs" />
