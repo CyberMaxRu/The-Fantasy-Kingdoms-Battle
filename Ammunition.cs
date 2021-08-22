@@ -296,8 +296,8 @@ namespace Fantasy_Kingdoms_Battle
         string ICell.Cost() => null;
         void ICell.PrepareHint()
         {
-            Program.formMain.formHint.AddStep1Header(GroupQuiver.Name, "", GroupQuiver.Description);
-            //Program.formMain.formHint.AddStep8Armour(this);
+            Program.formMain.formHint.AddStep1Header(GroupQuiver.Name, "", GroupQuiver.Description
+                + Environment.NewLine + Environment.NewLine + "Боезапас: " + QuantityShots.ToString());
         }
 
         void ICell.Click(VCCell pe)
