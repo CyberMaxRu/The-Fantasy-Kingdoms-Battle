@@ -108,6 +108,14 @@ namespace Fantasy_Kingdoms_Battle
                 GroupArmours.Add(new GroupArmour(n));
             }
 
+            // Загрузка колчанов
+            xmlDoc = CreateXmlDocument("Config\\Quivers.xml");
+
+            foreach (XmlNode n in xmlDoc.SelectNodes("/GroupQuivers/GroupQuiver"))
+            {
+                GroupQuivers.Add(new GroupQuiver(n));
+            }
+
             // Загрузка конфигурации типов рукопашной атаки
             xmlDoc = CreateXmlDocument("Config\\TypeAttack.xml");
 
@@ -180,6 +188,9 @@ namespace Fantasy_Kingdoms_Battle
             foreach (GroupArmour ga in GroupArmours)
                 ga.TuneDeferredLinks();
 
+            foreach (GroupQuiver gq in GroupQuivers)
+                gq.TuneDeferredLinks();
+
             foreach (TypeCreature tc in TypeCreatures)
                 tc.TuneDeferredLinks();
 
@@ -216,6 +227,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<Item> Items { get; } = new List<Item>();
         internal List<GroupWeapon> GroupWeapons { get; } = new List<GroupWeapon>();
         internal List<GroupArmour> GroupArmours { get; } = new List<GroupArmour>();
+        internal List<GroupQuiver> GroupQuivers { get; } = new List<GroupQuiver>();
         internal int MaxLevelSkill { get; }
         internal List<TypeCreature> TypeCreatures { get; } = new List<TypeCreature>();
 
@@ -382,6 +394,18 @@ namespace Fantasy_Kingdoms_Battle
 
             if (mustBeExists)
                 throw new Exception("Группа доспехов " + ID + " не найдена.");
+
+            return null;
+        }
+
+        internal GroupQuiver FindGroupQuiver(string ID, bool mustBeExists = true)
+        {
+            foreach (GroupQuiver gq in GroupQuivers)
+                if (gq.ID == ID)
+                    return gq;
+
+            if (mustBeExists)
+                throw new Exception("Группа колчанов " + ID + " не найдена.");
 
             return null;
         }

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<GroupQuivers>
+  <GroupQuiver>
+    <ID>QuiverSimple</ID>
+    <Name>Обычный колчан</Name>
+    <Description>Колчан на минимальное количество стрел</Description>
+    <ImageIndex>152</ImageIndex>
+    <Cost>0</Cost>
+    <Quivers>
+      <Quiver>
+        <ID>QuiverHunter0</ID>
+        <Hero>Hunter</Hero>
+        <QuantityShots>15</QuantityShots>
+      </Quiver>
+      <Quiver>
+        <ID>QuiverElf0</ID>
+        <Hero>Elf</Hero>
+        <QuantityShots>15</QuantityShots>
+      </Quiver>
+      <Quiver>
+        <ID>QuiverBeastMaster0</ID>
+        <Hero>BeastMaster</Hero>
+        <QuantityShots>15</QuantityShots>
+      </Quiver>
+      <Quiver>
+        <ID>QuiverMarksman0</ID>
+        <Hero>Marksman</Hero>
+        <QuantityShots>15</QuantityShots>
+      </Quiver>
+    </Quivers>
+  </GroupQuiver>
+</GroupQuivers>

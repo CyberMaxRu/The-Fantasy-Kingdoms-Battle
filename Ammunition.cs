@@ -248,4 +248,117 @@ namespace Fantasy_Kingdoms_Battle
             return "досп.";
         }
     }
+
+    // Класс колчана
+    internal sealed class Quiver : ICell
+    {
+        private string nameClassHero;
+        public Quiver(GroupQuiver ga, XmlNode n)
+        {
+            GroupQuiver = ga;
+
+            ID = n.SelectSingleNode("ID").InnerText;
+            nameClassHero = n.SelectSingleNode("Hero").InnerText;
+            QuantityShots = XmlUtils.GetIntegerNotNull(n.SelectSingleNode("QuantityShots"));
+
+            Debug.Assert(ID.Length > 0);
+            Debug.Assert(nameClassHero.Length > 0);
+            Debug.Assert(QuantityShots > 0);
+            Debug.Assert(QuantityShots <= 100);
+
+            // Проверяем, что такого же колчана нет
+            foreach (GroupQuiver g in FormMain.Config.GroupQuivers)
+                foreach (Quiver q in g.Quivers)
+                    if (q.ID == ID)
+                        throw new Exception("Колчан ID = " + ID + " уже существует.");
+        }
+
+        internal string ID { get; }
+        internal GroupQuiver GroupQuiver { get; }
+        internal TypeCreature ClassHero { get; private set; }
+        internal int QuantityShots { get; }
+
+        internal void TuneDeferredLinks()
+        {
+            ClassHero = FormMain.Config.FindTypeCreature(nameClassHero);
+            nameClassHero = null;
+
+            Debug.Assert(ClassHero.CategoryCreature != CategoryCreature.Citizen);
+            //Debug.Assert(ClassHero.WeaponRange != null);
+        }
+
+        // Реализация интерфейса
+        BitmapList ICell.BitmapList() => Program.formMain.imListObjects48;
+        int ICell.ImageIndex() => GroupQuiver.ImageIndex;
+        bool ICell.NormalImage() => true;
+        int ICell.Level() => 0;
+        int ICell.Quantity() => 0;
+        string ICell.Cost() => null;
+        void ICell.PrepareHint()
+        {
+            Program.formMain.formHint.AddStep1Header(GroupQuiver.Name, "", GroupQuiver.Description);
+            //Program.formMain.formHint.AddStep8Armour(this);
+        }
+
+        void ICell.Click(VCCell pe)
+        {
+
+        }
+        void ICell.CustomDraw(Graphics g, int x, int y, bool drawState) { }
+    }
+
+    // Класс группы колчанов
+    internal sealed class GroupQuiver : Entity
+    {
+        public GroupQuiver(XmlNode n) : base(n)
+        {
+            // Проверяем, что таких ID, Name и ImageIndex нет
+            foreach (GroupQuiver gq in FormMain.Config.GroupQuivers)
+            {
+                if (gq.ID == ID)
+                    throw new Exception("Группа колчанов с ID = " + gq.ID + " уже существует.");
+
+                if (gq.Name == Name)
+                    throw new Exception("Группа колчанов с Name = " + gq.Name + " уже существует.");
+
+                if (gq.ImageIndex == ImageIndex)
+                    throw new Exception("Группа колчанов с ImageIndex = " + gq.ImageIndex.ToString() + " уже существует.");
+            }
+
+            XmlNode nl = n.SelectSingleNode("Quivers");
+            if (nl != null)
+            {
+                Quiver q;
+
+                foreach (XmlNode l in nl.SelectNodes("Quiver"))
+                {
+                    q = new Quiver(this, l);
+
+                    Quivers.Add(q);
+                }
+            }
+        }
+
+        internal List<Quiver> Quivers { get; } = new List<Quiver>();
+
+        internal void TuneDeferredLinks()
+        {
+            foreach (Quiver q in Quivers)
+                q.TuneDeferredLinks();
+
+            Description += (Description.Length > 0 ? Environment.NewLine : "") + "Используется:";
+
+            foreach (Quiver q in Quivers)
+            {
+                Description += Environment.NewLine + "  - " + q.ClassHero.Name;
+            }
+        }
+
+        protected override int GetLevel() => 0;
+        protected override int GetQuantity() => 0;
+        protected override string GetCost()
+        {
+            return "колч.";
+        }
+    }
 }

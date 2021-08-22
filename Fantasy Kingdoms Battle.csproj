@@ -210,6 +210,7 @@
   <ItemGroup>
     <Content Include="FKB.ico" />
     <Content Include="Resources\Config\ComputerPlayers.xml" />
+    <Content Include="Resources\Config\Quivers.xml" />
     <Content Include="Resources\Config\SecondarySkills.xml" />
     <Content Include="Resources\Config\Specializations.xml" />
     <Content Include="Resources\Config\StartBonus.xml" />
