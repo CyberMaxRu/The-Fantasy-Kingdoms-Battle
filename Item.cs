@@ -25,6 +25,8 @@ namespace Fantasy_Kingdoms_Battle
             DefenseArcher = n.SelectSingleNode("DefenseArcher") != null ? Convert.ToInt32(n.SelectSingleNode("DefenseArcher").InnerText) : 0;
             DefenseMagic = n.SelectSingleNode("DefenseMagic") != null ? Convert.ToInt32(n.SelectSingleNode("DefenseMagic").InnerText) : 0;
 
+
+            UsedByTypeCreature = new List<TypeCreature>();
             /*switch (TypeAttack)
             {
                 case TypeAttack.None:
@@ -65,6 +67,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal CategoryItem CategoryItem { get; }
+        internal List<TypeCreature> UsedByTypeCreature { get; }
         internal int TimeHit { get; }
         internal int Position { get; }
         internal int DamageMelee { get; }

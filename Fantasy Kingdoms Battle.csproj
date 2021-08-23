@@ -63,6 +63,7 @@
     <Compile Include="Source\Types\Creature\TypeAttack.cs" />
     <Compile Include="Source\Types\Creature\TypePerk.cs" />
     <Compile Include="Source\Types\Creature\CreatureAbility.cs" />
+    <Compile Include="Source\Types\Item\GroupItem.cs" />
     <Compile Include="Source\VisualControls\VCIconButton24.cs" />
     <Compile Include="Source\VisualControls\VCImage48.cs" />
     <Compile Include="Source\VisualControls\VCPageButton.cs" />
