@@ -2188,4 +2188,48 @@
     <DefenseArcher>0</DefenseArcher>
     <DefenseMagic>0</DefenseMagic>
   </Item>
+  <Item>
+    <ID>QuiverHunter0</ID>
+    <Name>Стандартный колчан</Name>
+    <Description></Description>
+    <ImageIndex>152</ImageIndex>
+    <CategoryItem>Quiver</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupQuiver0</GroupItems>
+    <Hero>Hunter</Hero>
+    <QuantityShots>15</QuantityShots>
+  </Item>
+  <Item>
+    <ID>QuiverElf0</ID>
+    <Name>Стандартный колчан</Name>
+    <Description></Description>
+    <ImageIndex>152</ImageIndex>
+    <CategoryItem>Quiver</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupQuiver0</GroupItems>
+    <Hero>Elf</Hero>
+    <QuantityShots>15</QuantityShots>
+  </Item>
+  <Item>
+    <ID>QuiverBeastMaster0</ID>
+    <Name>Стандартный колчан</Name>
+    <Description></Description>
+    <ImageIndex>152</ImageIndex>
+    <CategoryItem>Quiver</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupQuiver0</GroupItems>
+    <Hero>BeastMaster</Hero>
+    <QuantityShots>15</QuantityShots>
+  </Item>
+  <Item>
+    <ID>QuiverMarksman0</ID>
+    <Name>Стандартный колчан</Name>
+    <Description></Description>
+    <ImageIndex>152</ImageIndex>
+    <CategoryItem>Quiver</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupQuiver0</GroupItems>
+    <Hero>Marksman</Hero>
+    <QuantityShots>15</QuantityShots>
+  </Item>
 </Items>

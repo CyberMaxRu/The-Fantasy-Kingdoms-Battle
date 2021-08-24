@@ -210,4 +210,11 @@
     <ImageIndex>35</ImageIndex>
     <ShortName>Досп.</ShortName>
   </GroupItem>
+  <GroupItem>
+    <ID>GroupQuiver0</ID>
+    <Name>Обычный колчан</Name>
+    <Description>Колчан на минимальное количество стрел</Description>
+    <ImageIndex>152</ImageIndex>
+    <ShortName>Колч.</ShortName>
+  </GroupItem>
 </GroupItems>
