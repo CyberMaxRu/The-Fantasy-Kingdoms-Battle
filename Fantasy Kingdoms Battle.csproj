@@ -261,7 +261,6 @@
     <Content Include="Resources\Main.xml" />
     <Content Include="Resources\Config\Game.xml" />
     <Content Include="Resources\Config\TypeAbilities.xml" />
-    <Content Include="Resources\Config\Armours.xml" />
     <Content Include="Resources\Config\TypeLobby.xml" />
     <Content Include="Resources\Config\Items.xml" />
     <Content Include="Resources\Config\TypeCreatures.xml" />
