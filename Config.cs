@@ -224,6 +224,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<SecondarySkill> SecondarySkills { get; } = new List<SecondarySkill>();
         internal List<StateCreature> StatesCreature { get; } = new List<StateCreature>();
         internal List<KindCreature> KindCreatures { get; } = new List<KindCreature>();
+        internal List<GroupItems> GroupItems { get; } = new List<GroupItems>();
         internal List<Item> Items { get; } = new List<Item>();
         internal List<GroupWeapon> GroupWeapons { get; } = new List<GroupWeapon>();
         internal List<GroupArmour> GroupArmours { get; } = new List<GroupArmour>();

@@ -217,4 +217,118 @@
     <Cost>50</Cost>
     <Perk></Perk>
   </Item>
+  <Item>
+    <ID>WeaponWarrior0</ID>
+    <Hero>Warrior</Hero>
+    <Description>Обычный меч</Description>
+    <ImageIndex>6</ImageIndex>
+    <CategoryItem>Weapon</CategoryItem>
+    <Cost>10</Cost>
+    <GroupItems>GroupWeaponMelee0</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>10</DamageMelee>
+  </Item>
+  <Weapon>
+    <ID>WeaponRogue0</ID>
+    <Hero>Rogue</Hero>
+    <Description>Обычный нож</Description>
+    <ImageIndex>6</ImageIndex>
+    <CategoryItem>Weapon</CategoryItem>
+    <Cost>10</Cost>
+    <GroupItems>GroupWeaponMelee0</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>5</DamageMelee>
+  </Weapon>
+  <Weapon>
+    <ID>WeaponDwarf0</ID>
+    <Hero>Dwarf</Hero>
+    <Description>Обычный молот</Description>
+    <ImageIndex>6</ImageIndex>
+    <CategoryItem>Weapon</CategoryItem>
+    <Cost>10</Cost>
+    <GroupItems>GroupWeaponMelee0</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>20</DamageMelee>
+  </Weapon>
+  <Weapon>
+    <ID>WeaponPaladin0</ID>
+    <Hero>Paladin</Hero>
+    <Description>Обычный меч</Description>
+    <ImageIndex>6</ImageIndex>
+    <CategoryItem>Weapon</CategoryItem>
+    <Cost>10</Cost>
+    <GroupItems>GroupWeaponMelee0</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Weapon>
+  <Weapon>
+    <ID>WeaponBladeMaster0</ID>
+    <Hero>BladeMaster</Hero>
+    <Description>Обычный меч</Description>
+    <ImageIndex>6</ImageIndex>
+    <CategoryItem>Weapon</CategoryItem>
+    <Cost>10</Cost>
+    <GroupItems>GroupWeaponMelee0</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Weapon>
+  <Weapon>
+    <ID>WeaponDeathKnight0</ID>
+    <Hero>DeathKnight</Hero>
+    <Description>Обычный меч</Description>
+    <ImageIndex>6</ImageIndex>
+    <CategoryItem>Weapon</CategoryItem>
+    <Cost>10</Cost>
+    <GroupItems>GroupWeaponMelee0</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Weapon>
+  <Weapon>
+    <ID>WeaponHunter0</ID>
+    <Hero>Hunter</Hero>
+    <Description>Обычный меч</Description>
+    <ImageIndex>6</ImageIndex>
+    <CategoryItem>Weapon</CategoryItem>
+    <Cost>10</Cost>
+    <GroupItems>GroupWeaponMelee0</GroupItems>
+    <TimeHit>50</TimeHit>
+    <VelocityMissile>5</VelocityMissile>
+    <DamageArcher>5</DamageArcher>
+  </Weapon>
+  <Weapon>
+    <ID>WeaponElf0</ID>
+    <Hero>Elf</Hero>
+    <Description>Обычный меч</Description>
+    <ImageIndex>6</ImageIndex>
+    <CategoryItem>Weapon</CategoryItem>
+    <Cost>10</Cost>
+    <GroupItems>GroupWeaponMelee0</GroupItems>
+    <TimeHit>50</TimeHit>
+    <VelocityMissile>1</VelocityMissile>
+    <DamageArcher>0</DamageArcher>
+  </Weapon>
+  <Weapon>
+    <ID>WeaponBeastMaster0</ID>
+    <Hero>BeastMaster</Hero>
+    <Description>Обычный меч</Description>
+    <ImageIndex>6</ImageIndex>
+    <CategoryItem>Weapon</CategoryItem>
+    <Cost>10</Cost>
+    <GroupItems>GroupWeaponMelee0</GroupItems>
+    <TimeHit>50</TimeHit>
+    <VelocityMissile>1</VelocityMissile>
+    <DamageArcher>0</DamageArcher>
+  </Weapon>
+  <Weapon>
+    <ID>WeaponMarksman0</ID>
+    <Hero>Marksman</Hero>
+    <TimeHit>50</TimeHit>
+    <Description>Обычный меч</Description>
+    <ImageIndex>6</ImageIndex>
+    <CategoryItem>Weapon</CategoryItem>
+    <Cost>10</Cost>
+    <GroupItems>GroupWeaponMelee0</GroupItems>
+    <VelocityMissile>1</VelocityMissile>
+    <DamageArcher>0</DamageArcher>
+  </Weapon>
 </Items>
