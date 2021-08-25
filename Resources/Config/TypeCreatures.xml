@@ -451,6 +451,12 @@
       <Ability>HunterBeastSlayerAttack</Ability>
       <Ability>HunterAoeAttack</Ability>
     </Abilities>
+    <Inventory>
+      <Item>
+        <ID>QuiverHunter0</ID>
+        <Quantity>1</Quantity>
+      </Item>
+    </Inventory>
     <CarryItems>
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>

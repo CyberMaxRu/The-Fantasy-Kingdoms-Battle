@@ -88,6 +88,27 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
+            // Загружаем дефолтный инвентарь
+            XmlNode ni = n.SelectSingleNode("Inventory");
+            if (ni != null)
+            {
+                Item a;
+
+                foreach (XmlNode l in na.SelectNodes("Ability"))
+                {
+                    a = FormMain.Config.FindAbility(l.InnerText);
+
+                    // Проверяем, что такая способность не повторяется
+                    foreach (TypeAbility a2 in Abilities)
+                    {
+                        if (a.ID == a2.ID)
+                            throw new Exception("Способность " + a.ID + " повторяется в списке способностей героя.");
+                    }
+
+                    Abilities.Add(a);
+                }
+            }
+
             // Проверяем, что таких же ID и наименования нет
             foreach (TypeCreature h in FormMain.Config.TypeCreatures)
             {
@@ -211,6 +232,7 @@ namespace Fantasy_Kingdoms_Battle
         internal TypeConstruction Construction { get; }
         internal bool CanBuild { get; }
         internal Dictionary<Item, int> CarryItems { get; } = new Dictionary<Item, int>();
+        internal Dictionary<Item, int> Inventory { get; } = new Dictionary<Item, int>();// Инвентарь
         internal string PrefixName { get; }
         internal List<string> Names { get; } = new List<string>();
         internal List<string> Surnames { get; } = new List<string>();
