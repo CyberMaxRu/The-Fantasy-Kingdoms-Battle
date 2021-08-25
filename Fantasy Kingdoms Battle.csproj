@@ -172,13 +172,13 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Item.cs" />
-    <Compile Include="Utils.cs" />
+    <Compile Include="Source\Utils\Utils.cs" />
     <Compile Include="Source\VisualControls\VCBitmap.cs" />
     <Compile Include="Source\VisualControls\VCImage.cs" />
     <Compile Include="Source\VisualControls\VCToolLabel.cs" />
     <Compile Include="Source\VisualControls\VisualControl.cs" />
-    <Compile Include="WebUtils.cs" />
-    <Compile Include="XmlUtils.cs" />
+    <Compile Include="Source\Utils\WebUtils.cs" />
+    <Compile Include="Source\Utils\XmlUtils.cs" />
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
