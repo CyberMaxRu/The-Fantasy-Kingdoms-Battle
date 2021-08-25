@@ -29,6 +29,12 @@ namespace Fantasy_Kingdoms_Battle
             Specialization = FormMain.Config.FindSpecialization("SpeedMove");
             SecondarySkills.Add(FormMain.Config.FindSecondarySkill("Health"));
 
+            // Загружаем дефолтный инвентарь
+            foreach (PlayerItem i in TypeCreature.Inventory)
+            {
+                Inventory.Add(new PlayerItem(i.Item, i.Quantity, true));
+            }
+
             // Берем оружие и доспехи
             MeleeWeapon = TypeCreature.WeaponMelee;
             RangeWeapon = TypeCreature.WeaponRange;
