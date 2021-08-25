@@ -219,28 +219,31 @@
   </Item>
   <Item>
     <ID>WeaponWarrior0</ID>
-    <Hero>Warrior</Hero>
+    <Name>Обычный меч</Name>
     <Description>Обычный меч</Description>
     <ImageIndex>6</ImageIndex>
     <CategoryItem>MeleeWeapon</CategoryItem>
     <Cost>10</Cost>
     <GroupItems>GroupWeaponMelee0</GroupItems>
+    <Hero>Warrior</Hero>
     <TimeHit>50</TimeHit>
     <DamageMelee>10</DamageMelee>
   </Item>
   <Item>
     <ID>WeaponRogue0</ID>
-    <Hero>Rogue</Hero>
+    <Name>Обычный меч</Name>
     <Description>Обычный нож</Description>
     <ImageIndex>6</ImageIndex>
     <CategoryItem>MeleeWeapon</CategoryItem>
     <Cost>10</Cost>
     <GroupItems>GroupWeaponMelee0</GroupItems>
+    <Hero>Rogue</Hero>
     <TimeHit>50</TimeHit>
     <DamageMelee>5</DamageMelee>
   </Item>
   <Item>
     <ID>WeaponDwarf0</ID>
+    <Name>Обычный меч</Name>
     <Hero>Dwarf</Hero>
     <Description>Обычный молот</Description>
     <ImageIndex>6</ImageIndex>
@@ -252,6 +255,7 @@
   </Item>
   <Item>
     <ID>WeaponPaladin0</ID>
+    <Name>Обычный меч</Name>
     <Hero>Paladin</Hero>
     <Description>Обычный меч</Description>
     <ImageIndex>6</ImageIndex>
@@ -263,6 +267,7 @@
   </Item>
   <Item>
     <ID>WeaponBladeMaster0</ID>
+    <Name>Обычный меч</Name>
     <Hero>BladeMaster</Hero>
     <Description>Обычный меч</Description>
     <ImageIndex>6</ImageIndex>
@@ -274,6 +279,7 @@
   </Item>
   <Item>
     <ID>WeaponDeathKnight0</ID>
+    <Name>Обычный меч</Name>
     <Hero>DeathKnight</Hero>
     <Description>Обычный меч</Description>
     <ImageIndex>6</ImageIndex>
@@ -285,6 +291,7 @@
   </Item>
   <Item>
     <ID>WeaponHunter0</ID>
+    <Name>Обычный меч</Name>
     <Hero>Hunter</Hero>
     <Description>Обычный меч</Description>
     <ImageIndex>6</ImageIndex>
@@ -297,6 +304,7 @@
   </Item>
   <Item>
     <ID>WeaponElf0</ID>
+    <Name>Обычный меч</Name>
     <Hero>Elf</Hero>
     <Description>Обычный меч</Description>
     <ImageIndex>6</ImageIndex>
@@ -309,6 +317,7 @@
   </Item>
   <Item>
     <ID>WeaponBeastMaster0</ID>
+    <Name>Обычный меч</Name>
     <Hero>BeastMaster</Hero>
     <Description>Обычный меч</Description>
     <ImageIndex>6</ImageIndex>
@@ -321,6 +330,7 @@
   </Item>
   <Item>
     <ID>WeaponMarksman0</ID>
+    <Name>Обычный меч</Name>
     <Hero>Marksman</Hero>
     <TimeHit>50</TimeHit>
     <Description>Обычный меч</Description>
@@ -333,6 +343,7 @@
   </Item>
   <Item>
     <ID>WeaponWarrior1</ID>
+    <Name>Обычный меч</Name>
     <Hero>Warrior</Hero>
     <Description>Улучшенный меч</Description>
     <ImageIndex>7</ImageIndex>
@@ -344,6 +355,7 @@
   </Item>
   <Item>
     <ID>WeaponRogue1</ID>
+    <Name>Обычный меч</Name>
     <Hero>Rogue</Hero>
     <Description>Улучшенный меч</Description>
     <ImageIndex>7</ImageIndex>
@@ -355,6 +367,7 @@
   </Item>
   <Item>
     <ID>WeaponDwarf1</ID>
+    <Name>Обычный меч</Name>
     <Hero>Dwarf</Hero>
     <Description>Улучшенный меч</Description>
     <ImageIndex>7</ImageIndex>
@@ -366,6 +379,7 @@
   </Item>
   <Item>
     <ID>WeaponPaladin1</ID>
+    <Name>Обычный меч</Name>
     <Hero>Paladin</Hero>
     <Description>Улучшенный меч</Description>
     <ImageIndex>7</ImageIndex>
@@ -377,6 +391,7 @@
   </Item>
   <Item>
     <ID>WeaponBladeMaster1</ID>
+    <Name>Обычный меч</Name>
     <Hero>BladeMaster</Hero>
     <Description>Улучшенный меч</Description>
     <ImageIndex>7</ImageIndex>
@@ -388,6 +403,7 @@
   </Item>
   <Item>
     <ID>WeaponDeathKnight1</ID>
+    <Name>Обычный меч</Name>
     <Hero>DeathKnight</Hero>
     <Description>Улучшенный меч</Description>
     <ImageIndex>7</ImageIndex>
@@ -399,6 +415,7 @@
   </Item>
   <Item>
     <ID>WeaponWarrior2</ID>
+    <Name>Обычный меч</Name>
     <Hero>Warrior</Hero>
     <Description>Мастерский меч</Description>
     <ImageIndex>8</ImageIndex>
@@ -410,6 +427,7 @@
   </Item>
   <Item>
     <ID>WeaponRogue2</ID>
+    <Name>Обычный меч</Name>
     <Hero>Rogue</Hero>
     <Description>Мастерский меч</Description>
     <ImageIndex>8</ImageIndex>
@@ -421,6 +439,7 @@
   </Item>
   <Item>
     <ID>WeaponDwarf2</ID>
+    <Name>Обычный меч</Name>
     <Hero>Dwarf</Hero>
     <Description>Мастерский меч</Description>
     <ImageIndex>8</ImageIndex>
@@ -432,12 +451,19 @@
   </Item>
   <Item>
     <ID>WeaponPaladin2</ID>
+    <Name>Обычный меч</Name>
+    <Description>Мастерский меч</Description>
+    <ImageIndex>8</ImageIndex>
+    <CategoryItem>MeleeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMelee2</GroupItems>
     <Hero>Paladin</Hero>
     <TimeHit>50</TimeHit>
     <DamageMelee>0</DamageMelee>
   </Item>
   <Item>
     <ID>WeaponBladeMaster2</ID>
+    <Name>Обычный меч</Name>
     <Hero>BladeMaster</Hero>
     <Description>Мастерский меч</Description>
     <ImageIndex>8</ImageIndex>
@@ -449,6 +475,7 @@
   </Item>
   <Item>
     <ID>WeaponDeathKnight2</ID>
+    <Name>Обычный меч</Name>
     <Hero>DeathKnight</Hero>
     <Description>Мастерский меч</Description>
     <ImageIndex>8</ImageIndex>
@@ -460,6 +487,7 @@
   </Item>
   <Item>
     <ID>WeaponWarrior3</ID>
+    <Name>Обычный меч</Name>
     <Hero>Warrior</Hero>
     <Description>Экспертный меч</Description>
     <ImageIndex>9</ImageIndex>
@@ -471,6 +499,7 @@
   </Item>
     <Item>
     <ID>WeaponRogue3</ID>
+    <Name>Обычный меч</Name>
     <Hero>Rogue</Hero>
     <Description>Экспертный меч</Description>
     <ImageIndex>9</ImageIndex>
@@ -482,6 +511,7 @@
   </Item>
   <Item>
     <ID>WeaponDwarf3</ID>
+    <Name>Обычный меч</Name>
     <Hero>Dwarf</Hero>
     <Description>Экспертный меч</Description>
     <ImageIndex>9</ImageIndex>
@@ -493,6 +523,7 @@
   </Item>
   <Item>
     <ID>WeaponPaladin3</ID>
+    <Name>Обычный меч</Name>
     <Hero>Paladin</Hero>
     <Description>Экспертный меч</Description>
     <ImageIndex>9</ImageIndex>
@@ -504,6 +535,7 @@
   </Item>
   <Item>
     <ID>WeaponBladeMaster3</ID>
+    <Name>Обычный меч</Name>
     <Hero>BladeMaster</Hero>
     <Description>Экспертный меч</Description>
     <ImageIndex>9</ImageIndex>
@@ -515,6 +547,7 @@
   </Item>
   <Item>
     <ID>WeaponDeathKnight3</ID>
+    <Name>Обычный меч</Name>
     <Hero>DeathKnight</Hero>
     <Description>Экспертный меч</Description>
     <ImageIndex>9</ImageIndex>
@@ -526,6 +559,7 @@
   </Item>
   <Item>
     <ID>WeaponWarrior4</ID>
+    <Name>Обычный меч</Name>
     <Hero>Warrior</Hero>
     <Description>Рунический меч</Description>
     <ImageIndex>10</ImageIndex>
@@ -537,6 +571,7 @@
   </Item>
   <Item>
     <ID>WeaponRogue4</ID>
+    <Name>Обычный меч</Name>
     <Hero>Rogue</Hero>
     <Description>Рунический меч</Description>
     <ImageIndex>10</ImageIndex>
@@ -548,6 +583,7 @@
   </Item>
   <Item>
     <ID>WeaponDwarf4</ID>
+    <Name>Обычный меч</Name>
     <Hero>Dwarf</Hero>
     <Description>Рунический меч</Description>
     <ImageIndex>10</ImageIndex>
@@ -559,6 +595,7 @@
   </Item>
   <Item>
     <ID>WeaponPaladin4</ID>
+    <Name>Обычный меч</Name>
     <Hero>Paladin</Hero>
     <Description>Рунический меч</Description>
     <ImageIndex>10</ImageIndex>
@@ -570,6 +607,7 @@
   </Item>
   <Item>
     <ID>WeaponBladeMaster4</ID>
+    <Name>Обычный меч</Name>
     <Hero>BladeMaster</Hero>
     <Description>Рунический меч</Description>
     <ImageIndex>10</ImageIndex>
@@ -581,6 +619,7 @@
   </Item>
   <Item>
     <ID>WeaponDeathKnight4</ID>
+    <Name>Обычный меч</Name>
     <Hero>DeathKnight</Hero>
     <Description>Рунический меч</Description>
     <ImageIndex>10</ImageIndex>
@@ -592,6 +631,7 @@
   </Item>
   <Item>
     <ID>BowHunter0</ID>
+    <Name>Обычный лук</Name>
     <Hero>Hunter</Hero>
     <Description>Обычный лук</Description>
     <ImageIndex>11</ImageIndex>
@@ -604,6 +644,7 @@
   </Item>
   <Item>
     <ID>BowElf0</ID>
+    <Name>Обычный лук</Name>
     <Hero>Elf</Hero>
     <Description>Обычный лук</Description>
     <ImageIndex>11</ImageIndex>
@@ -616,6 +657,7 @@
   </Item>
   <Item>
     <ID>BowBeastMaster0</ID>
+    <Name>Обычный лук</Name>
     <Hero>BeastMaster</Hero>
     <Description>Обычный лук</Description>
     <ImageIndex>11</ImageIndex>
@@ -628,6 +670,7 @@
   </Item>
   <Item>
     <ID>BowMarksman0</ID>
+    <Name>Обычный лук</Name>
     <Hero>Marksman</Hero>
     <Description>Обычный лук</Description>
     <ImageIndex>11</ImageIndex>
@@ -640,6 +683,7 @@
   </Item>
   <Item>
     <ID>WeaponHunter1</ID>
+    <Name>Обычный лук</Name>
     <Hero>Hunter</Hero>
     <Description>Улучшенный лук</Description>
     <ImageIndex>12</ImageIndex>
@@ -651,6 +695,7 @@
   </Item>
   <Item>
     <ID>WeaponElf1</ID>
+    <Name>Обычный лук</Name>
     <Hero>Elf</Hero>
     <Description>Улучшенный лук</Description>
     <ImageIndex>12</ImageIndex>
@@ -662,6 +707,7 @@
   </Item>
   <Item>
     <ID>WeaponBeastMaster1</ID>
+    <Name>Обычный лук</Name>
     <Hero>BeastMaster</Hero>
     <Description>Улучшенный лук</Description>
     <ImageIndex>12</ImageIndex>
@@ -673,6 +719,7 @@
   </Item>
   <Item>
     <ID>WeaponMarksman1</ID>
+    <Name>Обычный лук</Name>
     <Hero>Marksman</Hero>
     <Description>Улучшенный лук</Description>
     <ImageIndex>12</ImageIndex>
@@ -684,6 +731,7 @@
   </Item>
   <Item>
     <ID>WeaponHunter2</ID>
+    <Name>Обычный лук</Name>
     <Hero>Hunter</Hero>
     <Description>Мастерский лук</Description>
     <ImageIndex>13</ImageIndex>
@@ -695,6 +743,7 @@
   </Item>
   <Item>
     <ID>WeaponElf2</ID>
+    <Name>Обычный лук</Name>
     <Hero>Elf</Hero>
     <Description>Мастерский лук</Description>
     <ImageIndex>13</ImageIndex>
@@ -706,6 +755,7 @@
   </Item>
   <Item>
     <ID>WeaponBeastMaster2</ID>
+    <Name>Обычный лук</Name>
     <Hero>BeastMaster</Hero>
     <Description>Мастерский лук</Description>
     <ImageIndex>13</ImageIndex>
@@ -717,6 +767,7 @@
   </Item>
   <Item>
     <ID>WeaponMarksman2</ID>
+    <Name>Обычный лук</Name>
     <Hero>Marksman</Hero>
     <Description>Мастерский лук</Description>
     <ImageIndex>13</ImageIndex>
@@ -728,6 +779,7 @@
   </Item>
   <Item>
     <ID>WeaponHunter3</ID>
+    <Name>Обычный лук</Name>
     <Hero>Hunter</Hero>
     <Description>Экспертный лук</Description>
     <ImageIndex>14</ImageIndex>
@@ -739,6 +791,7 @@
   </Item>
   <Item>
     <ID>WeaponElf3</ID>
+    <Name>Обычный лук</Name>
     <Hero>Elf</Hero>
     <Description>Экспертный лук</Description>
     <ImageIndex>14</ImageIndex>
@@ -750,6 +803,7 @@
   </Item>
   <Item>
     <ID>WeaponBeastMaster3</ID>
+    <Name>Обычный лук</Name>
     <Hero>BeastMaster</Hero>
     <Description>Экспертный лук</Description>
     <ImageIndex>14</ImageIndex>
@@ -761,6 +815,7 @@
   </Item>
   <Item>
     <ID>WeaponMarksman3</ID>
+    <Name>Обычный лук</Name>
     <Hero>Marksman</Hero>
     <Description>Экспертный лук</Description>
     <ImageIndex>14</ImageIndex>
@@ -772,6 +827,7 @@
   </Item>
   <Item>
     <ID>WeaponHunter4</ID>
+    <Name>Обычный лук</Name>
     <Hero>Hunter</Hero>
     <Description>Демонический лук</Description>
     <ImageIndex>15</ImageIndex>
@@ -783,6 +839,7 @@
   </Item>
   <Item>
     <ID>WeaponElf4</ID>
+    <Name>Обычный лук</Name>
     <Hero>Elf</Hero>
     <Description>Демонический лук</Description>
     <ImageIndex>15</ImageIndex>
@@ -794,6 +851,7 @@
   </Item>
   <Item>
     <ID>WeaponBeastMaster4</ID>
+    <Name>Обычный лук</Name>
     <Hero>BeastMaster</Hero>
     <Description>Демонический лук</Description>
     <ImageIndex>15</ImageIndex>
@@ -805,6 +863,7 @@
   </Item>
   <Item>
     <ID>WeaponMarksman4</ID>
+    <Name>Обычный лук</Name>
     <Hero>Marksman</Hero>
     <Description>Демонический лук</Description>
     <ImageIndex>15</ImageIndex>
@@ -816,6 +875,7 @@
   </Item>
   <Item>
     <ID>WeaponCleric0</ID>
+    <Name>Обычный лук</Name>
     <Hero>Cleric</Hero>
     <Description>Обычный посох</Description>
     <ImageIndex>16</ImageIndex>
@@ -827,6 +887,7 @@
   </Item>
   <Item>
     <ID>WeaponMage0</ID>
+    <Name>Обычный лук</Name>
     <Hero>Mage</Hero>
     <Description>Обычный посох</Description>
     <ImageIndex>16</ImageIndex>
@@ -838,6 +899,7 @@
   </Item>
   <Item>
     <ID>WeaponDarkPriest0</ID>
+    <Name>Обычный лук</Name>
     <Description>Обычный посох</Description>
     <Hero>DarkPriest</Hero>
     <ImageIndex>16</ImageIndex>
@@ -849,6 +911,7 @@
   </Item>
   <Item>
     <ID>WeaponPriest0</ID>
+    <Name>Обычный лук</Name>
     <Hero>Priest</Hero>
     <Description>Обычный посох</Description>
     <ImageIndex>16</ImageIndex>
@@ -860,6 +923,7 @@
   </Item>
   <Item>
     <ID>WeaponFireMage0</ID>
+    <Name>Обычный лук</Name>
     <Hero>FireMage</Hero>
     <Description>Обычный посох</Description>
     <ImageIndex>16</ImageIndex>
@@ -871,6 +935,7 @@
   </Item>
   <Item>
     <ID>WeaponIceMage0</ID>
+    <Name>Обычный лук</Name>
     <Hero>IceMage</Hero>
     <Description>Обычный посох</Description>
     <ImageIndex>16</ImageIndex>
@@ -882,6 +947,7 @@
   </Item>
   <Item>
     <ID>WeaponCleric1</ID>
+    <Name>Обычный лук</Name>
     <Hero>Cleric</Hero>
     <Description>Улучшенный посох</Description>
     <ImageIndex>17</ImageIndex>
@@ -893,6 +959,7 @@
   </Item>
   <Item>
     <ID>WeaponMage1</ID>
+    <Name>Обычный лук</Name>
     <Hero>Mage</Hero>
     <Description>Улучшенный посох</Description>
     <ImageIndex>17</ImageIndex>
@@ -904,6 +971,7 @@
   </Item>
   <Item>
     <ID>WeaponDarkPriest1</ID>
+    <Name>Обычный лук</Name>
     <Hero>DarkPriest</Hero>
     <Description>Улучшенный посох</Description>
     <ImageIndex>17</ImageIndex>
@@ -915,6 +983,7 @@
   </Item>
   <Item>
     <ID>WeaponPriest1</ID>
+    <Name>Обычный лук</Name>
     <Hero>Priest</Hero>
     <Description>Улучшенный посох</Description>
     <ImageIndex>17</ImageIndex>
@@ -926,6 +995,7 @@
   </Item>
   <Item>
     <ID>WeaponFireMage1</ID>
+    <Name>Обычный лук</Name>
     <Hero>FireMage</Hero>
     <Description>Улучшенный посох</Description>
     <ImageIndex>17</ImageIndex>
@@ -937,6 +1007,7 @@
   </Item>
   <Item>
     <ID>WeaponIceMage1</ID>
+    <Name>Обычный лук</Name>
     <Hero>IceMage</Hero>
     <Description>Улучшенный посох</Description>
     <ImageIndex>17</ImageIndex>
@@ -948,6 +1019,7 @@
   </Item>
   <Item>
     <ID>WeaponCleric2</ID>
+    <Name>Обычный лук</Name>
     <Hero>Cleric</Hero>
     <Description>Мастерский посох</Description>
     <ImageIndex>18</ImageIndex>
@@ -959,6 +1031,7 @@
   </Item>
   <Item>
     <ID>WeaponMage2</ID>
+    <Name>Обычный лук</Name>
     <Hero>Mage</Hero>
     <Description>Мастерский посох</Description>
     <ImageIndex>18</ImageIndex>
@@ -970,6 +1043,7 @@
   </Item>
   <Item>
     <ID>WeaponDarkPriest2</ID>
+    <Name>Обычный лук</Name>
     <Hero>DarkPriest</Hero>
     <Description>Мастерский посох</Description>
     <ImageIndex>18</ImageIndex>
@@ -981,6 +1055,7 @@
   </Item>
   <Item>
     <ID>WeaponPriest2</ID>
+    <Name>Обычный лук</Name>
     <Hero>Priest</Hero>
     <Description>Мастерский посох</Description>
     <ImageIndex>18</ImageIndex>
@@ -992,6 +1067,7 @@
   </Item>
   <Item>
     <ID>WeaponFireMage2</ID>
+    <Name>Обычный лук</Name>
     <Hero>FireMage</Hero>
     <Description>Мастерский посох</Description>
     <ImageIndex>18</ImageIndex>
@@ -1003,6 +1079,7 @@
   </Item>
   <Item>
     <ID>WeaponIceMage2</ID>
+    <Name>Обычный лук</Name>
     <Hero>IceMage</Hero>
     <Description>Мастерский посох</Description>
     <ImageIndex>18</ImageIndex>
@@ -1014,6 +1091,7 @@
   </Item>
   <Item>
     <ID>WeaponCleric3</ID>
+    <Name>Обычный лук</Name>
     <Hero>Cleric</Hero>
     <Description>Экспертный посох</Description>
     <ImageIndex>19</ImageIndex>
@@ -1025,6 +1103,7 @@
   </Item>
   <Item>
     <ID>WeaponMage3</ID>
+    <Name>Обычный лук</Name>
     <Hero>Mage</Hero>
     <Description>Экспертный посох</Description>
     <ImageIndex>19</ImageIndex>
@@ -1036,6 +1115,7 @@
   </Item>
   <Item>
     <ID>WeaponDarkPriest3</ID>
+    <Name>Обычный лук</Name>
     <Hero>DarkPriest</Hero>
     <Description>Экспертный посох</Description>
     <ImageIndex>19</ImageIndex>
@@ -1047,6 +1127,7 @@
   </Item>
   <Item>
     <ID>WeaponPriest3</ID>
+    <Name>Обычный лук</Name>
     <Hero>Priest</Hero>
     <Description>Экспертный посох</Description>
     <ImageIndex>19</ImageIndex>
@@ -1058,6 +1139,7 @@
   </Item>
   <Item>
     <ID>WeaponFireMage3</ID>
+    <Name>Обычный лук</Name>
     <Hero>FireMage</Hero>
     <Description>Экспертный посох</Description>
     <ImageIndex>19</ImageIndex>
@@ -1069,6 +1151,7 @@
   </Item>
   <Item>
     <ID>WeaponIceMage3</ID>
+    <Name>Обычный лук</Name>
     <Hero>IceMage</Hero>
     <Description>Экспертный посох</Description>
     <ImageIndex>19</ImageIndex>
@@ -1080,6 +1163,7 @@
   </Item>
   <Item>
     <ID>WeaponCleric4</ID>
+    <Name>Обычный лук</Name>
     <Hero>Cleric</Hero>
     <Description>Посох из кости дракона</Description>
     <ImageIndex>20</ImageIndex>
@@ -1091,6 +1175,7 @@
   </Item>
   <Item>
     <ID>WeaponMage4</ID>
+    <Name>Обычный лук</Name>
     <Hero>Mage</Hero>
     <Description>Посох из кости дракона</Description>
     <ImageIndex>20</ImageIndex>
@@ -1102,6 +1187,7 @@
   </Item>
   <Item>
     <ID>WeaponDarkPriest4</ID>
+    <Name>Обычный лук</Name>
     <Hero>DarkPriest</Hero>
     <Description>Посох из кости дракона</Description>
     <ImageIndex>20</ImageIndex>
@@ -1113,6 +1199,7 @@
   </Item>
   <Item>
     <ID>WeaponPriest4</ID>
+    <Name>Обычный лук</Name>
     <Hero>Priest</Hero>
     <Description>Посох из кости дракона</Description>
     <ImageIndex>20</ImageIndex>
@@ -1124,6 +1211,7 @@
   </Item>
   <Item>
     <ID>WeaponFireMage4</ID>
+    <Name>Обычный лук</Name>
     <Hero>FireMage</Hero>
     <Description>Посох из кости дракона</Description>
     <ImageIndex>20</ImageIndex>
@@ -1135,6 +1223,7 @@
   </Item>
   <Item>
     <ID>WeaponIceMage4</ID>
+    <Name>Обычный лук</Name>
     <Hero>IceMage</Hero>
     <Description>Посох из кости дракона</Description>
     <ImageIndex>20</ImageIndex>

@@ -84,6 +84,14 @@ namespace Fantasy_Kingdoms_Battle
                 TypeConstructions.Add(new TypeConstruction(n));
             }
 
+            // Загрузка групп предметов
+            xmlDoc = CreateXmlDocument("Config\\GroupItems.xml");
+
+            foreach (XmlNode n in xmlDoc.SelectNodes("/GroupItems/GroupItems"))
+            {
+                GroupItems.Add(new GroupItems(n));
+            }
+
             // Загрузка предметов
             xmlDoc = CreateXmlDocument("Config\\Items.xml");
 

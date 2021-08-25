@@ -8,7 +8,7 @@ using System.Xml;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal enum CategoryItem { Potion, Enchant, Artifact, Elixir, Thing, MeleeWeapon, RangeWeapon, MageWeapon, Armour }
+    internal enum CategoryItem { Potion, Enchant, Artifact, Elixir, Thing, MeleeWeapon, RangeWeapon, MageWeapon, MeleeArmour, RangeArmour, MageArmour, Quiver }
 
     // Класс предмета
     internal sealed class Item : Entity
@@ -31,11 +31,17 @@ namespace Fantasy_Kingdoms_Battle
             DefenseMelee = n.SelectSingleNode("DefenseMelee") != null ? Convert.ToInt32(n.SelectSingleNode("DefenseMelee").InnerText) : 0;
             DefenseArcher = n.SelectSingleNode("DefenseArcher") != null ? Convert.ToInt32(n.SelectSingleNode("DefenseArcher").InnerText) : 0;
             DefenseMagic = n.SelectSingleNode("DefenseMagic") != null ? Convert.ToInt32(n.SelectSingleNode("DefenseMagic").InnerText) : 0;
-            QuantityShots = XmlUtils.GetIntegerNotNull(n.SelectSingleNode("QuantityShots"));
+            QuantityShots = XmlUtils.GetInteger(n.SelectSingleNode("QuantityShots"));
 
-            Debug.Assert(QuantityShots > 0);
-            Debug.Assert(QuantityShots <= 100);
-
+            if (CategoryItem == CategoryItem.Quiver)
+            {
+                Debug.Assert(QuantityShots > 0);
+                Debug.Assert(QuantityShots <= 100);
+            }
+            else
+            {
+                Debug.Assert(QuantityShots == 0);
+            }
 
             UsedByTypeCreature = new List<TypeCreature>();
             /*switch (TypeAttack)
@@ -69,8 +75,8 @@ namespace Fantasy_Kingdoms_Battle
                 if (i.ID == ID)
                     throw new Exception("В конфигурации предметов повторяется ID = " + ID);
 
-                if (i.Name == Name)
-                    throw new Exception("В конфигурации предметов повторяется Name = " + Name);
+                //if (i.Name == Name)
+                //    throw new Exception("В конфигурации предметов повторяется Name = " + Name);
 
                 //if (i.ImageIndex == ImageIndex)
                 //    throw new Exception("В конфигурации предметов повторяется ImageIndex = " + ImageIndex.ToString());
