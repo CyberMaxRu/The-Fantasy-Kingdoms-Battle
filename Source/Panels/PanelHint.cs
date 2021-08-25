@@ -409,7 +409,7 @@ namespace Fantasy_Kingdoms_Battle
 
         }
 
-        internal void AddStep7Weapon(Weapon w)
+        internal void AddStep7Weapon(Item w)
         {
             Debug.Assert(w != null);
 
@@ -428,7 +428,7 @@ namespace Fantasy_Kingdoms_Battle
             nextTop = GuiUtils.NextTop(lblDamageMelee);*/
         }
 
-        internal void AddStep8Armour(Armour a)
+        internal void AddStep8Armour(Item a)
         {
             Debug.Assert(a != null);
 

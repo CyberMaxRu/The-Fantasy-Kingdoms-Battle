@@ -217,4 +217,2108 @@
     <Cost>50</Cost>
     <Perk></Perk>
   </Item>
+  <Item>
+    <ID>WeaponWarrior0</ID>
+    <Name>Обычный меч</Name>
+    <Description>Обычный меч</Description>
+    <ImageIndex>6</ImageIndex>
+    <CategoryItem>MeleeWeapon</CategoryItem>
+    <Cost>10</Cost>
+    <GroupItems>GroupWeaponMelee0</GroupItems>
+    <Hero>Warrior</Hero>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>10</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponRogue0</ID>
+    <Name>Обычный меч</Name>
+    <Description>Обычный нож</Description>
+    <ImageIndex>6</ImageIndex>
+    <CategoryItem>MeleeWeapon</CategoryItem>
+    <Cost>10</Cost>
+    <GroupItems>GroupWeaponMelee0</GroupItems>
+    <Hero>Rogue</Hero>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>5</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponDwarf0</ID>
+    <Name>Обычный меч</Name>
+    <Hero>Dwarf</Hero>
+    <Description>Обычный молот</Description>
+    <ImageIndex>6</ImageIndex>
+    <CategoryItem>MeleeWeapon</CategoryItem>
+    <Cost>10</Cost>
+    <GroupItems>GroupWeaponMelee0</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>20</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponPaladin0</ID>
+    <Name>Обычный меч</Name>
+    <Hero>Paladin</Hero>
+    <Description>Обычный меч</Description>
+    <ImageIndex>6</ImageIndex>
+    <CategoryItem>MeleeWeapon</CategoryItem>
+    <Cost>10</Cost>
+    <GroupItems>GroupWeaponMelee0</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponBladeMaster0</ID>
+    <Name>Обычный меч</Name>
+    <Hero>BladeMaster</Hero>
+    <Description>Обычный меч</Description>
+    <ImageIndex>6</ImageIndex>
+    <CategoryItem>MeleeWeapon</CategoryItem>
+    <Cost>10</Cost>
+    <GroupItems>GroupWeaponMelee0</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponDeathKnight0</ID>
+    <Name>Обычный меч</Name>
+    <Hero>DeathKnight</Hero>
+    <Description>Обычный меч</Description>
+    <ImageIndex>6</ImageIndex>
+    <CategoryItem>MeleeWeapon</CategoryItem>
+    <Cost>10</Cost>
+    <GroupItems>GroupWeaponMelee0</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponHunter0</ID>
+    <Name>Обычный меч</Name>
+    <Hero>Hunter</Hero>
+    <Description>Обычный меч</Description>
+    <ImageIndex>6</ImageIndex>
+    <CategoryItem>MeleeWeapon</CategoryItem>
+    <Cost>10</Cost>
+    <GroupItems>GroupWeaponMelee0</GroupItems>
+    <TimeHit>50</TimeHit>
+    <VelocityMissile>5</VelocityMissile>
+    <DamageArcher>5</DamageArcher>
+  </Item>
+  <Item>
+    <ID>WeaponElf0</ID>
+    <Name>Обычный меч</Name>
+    <Hero>Elf</Hero>
+    <Description>Обычный меч</Description>
+    <ImageIndex>6</ImageIndex>
+    <CategoryItem>MeleeWeapon</CategoryItem>
+    <Cost>10</Cost>
+    <GroupItems>GroupWeaponMelee0</GroupItems>
+    <TimeHit>50</TimeHit>
+    <VelocityMissile>1</VelocityMissile>
+    <DamageArcher>0</DamageArcher>
+  </Item>
+  <Item>
+    <ID>WeaponBeastMaster0</ID>
+    <Name>Обычный меч</Name>
+    <Hero>BeastMaster</Hero>
+    <Description>Обычный меч</Description>
+    <ImageIndex>6</ImageIndex>
+    <CategoryItem>MeleeWeapon</CategoryItem>
+    <Cost>10</Cost>
+    <GroupItems>GroupWeaponMelee0</GroupItems>
+    <TimeHit>50</TimeHit>
+    <VelocityMissile>1</VelocityMissile>
+    <DamageArcher>0</DamageArcher>
+  </Item>
+  <Item>
+    <ID>WeaponMarksman0</ID>
+    <Name>Обычный меч</Name>
+    <Hero>Marksman</Hero>
+    <TimeHit>50</TimeHit>
+    <Description>Обычный меч</Description>
+    <ImageIndex>6</ImageIndex>
+    <CategoryItem>MeleeWeapon</CategoryItem>
+    <Cost>10</Cost>
+    <GroupItems>GroupWeaponMelee0</GroupItems>
+    <VelocityMissile>1</VelocityMissile>
+    <DamageArcher>0</DamageArcher>
+  </Item>
+  <Item>
+    <ID>WeaponWarrior1</ID>
+    <Name>Обычный меч</Name>
+    <Hero>Warrior</Hero>
+    <Description>Улучшенный меч</Description>
+    <ImageIndex>7</ImageIndex>
+    <CategoryItem>MeleeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMelee1</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponRogue1</ID>
+    <Name>Обычный меч</Name>
+    <Hero>Rogue</Hero>
+    <Description>Улучшенный меч</Description>
+    <ImageIndex>7</ImageIndex>
+    <CategoryItem>MeleeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMelee1</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponDwarf1</ID>
+    <Name>Обычный меч</Name>
+    <Hero>Dwarf</Hero>
+    <Description>Улучшенный меч</Description>
+    <ImageIndex>7</ImageIndex>
+    <CategoryItem>MeleeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMelee1</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponPaladin1</ID>
+    <Name>Обычный меч</Name>
+    <Hero>Paladin</Hero>
+    <Description>Улучшенный меч</Description>
+    <ImageIndex>7</ImageIndex>
+    <CategoryItem>MeleeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMelee1</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponBladeMaster1</ID>
+    <Name>Обычный меч</Name>
+    <Hero>BladeMaster</Hero>
+    <Description>Улучшенный меч</Description>
+    <ImageIndex>7</ImageIndex>
+    <CategoryItem>MeleeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMelee1</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponDeathKnight1</ID>
+    <Name>Обычный меч</Name>
+    <Hero>DeathKnight</Hero>
+    <Description>Улучшенный меч</Description>
+    <ImageIndex>7</ImageIndex>
+    <CategoryItem>MeleeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMelee1</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponWarrior2</ID>
+    <Name>Обычный меч</Name>
+    <Hero>Warrior</Hero>
+    <Description>Мастерский меч</Description>
+    <ImageIndex>8</ImageIndex>
+    <CategoryItem>MeleeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMelee2</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponRogue2</ID>
+    <Name>Обычный меч</Name>
+    <Hero>Rogue</Hero>
+    <Description>Мастерский меч</Description>
+    <ImageIndex>8</ImageIndex>
+    <CategoryItem>MeleeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMelee2</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponDwarf2</ID>
+    <Name>Обычный меч</Name>
+    <Hero>Dwarf</Hero>
+    <Description>Мастерский меч</Description>
+    <ImageIndex>8</ImageIndex>
+    <CategoryItem>MeleeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMelee2</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponPaladin2</ID>
+    <Name>Обычный меч</Name>
+    <Description>Мастерский меч</Description>
+    <ImageIndex>8</ImageIndex>
+    <CategoryItem>MeleeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMelee2</GroupItems>
+    <Hero>Paladin</Hero>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponBladeMaster2</ID>
+    <Name>Обычный меч</Name>
+    <Hero>BladeMaster</Hero>
+    <Description>Мастерский меч</Description>
+    <ImageIndex>8</ImageIndex>
+    <CategoryItem>MeleeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMelee2</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponDeathKnight2</ID>
+    <Name>Обычный меч</Name>
+    <Hero>DeathKnight</Hero>
+    <Description>Мастерский меч</Description>
+    <ImageIndex>8</ImageIndex>
+    <CategoryItem>MeleeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMelee2</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponWarrior3</ID>
+    <Name>Обычный меч</Name>
+    <Hero>Warrior</Hero>
+    <Description>Экспертный меч</Description>
+    <ImageIndex>9</ImageIndex>
+    <CategoryItem>MeleeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMelee3</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+    <Item>
+    <ID>WeaponRogue3</ID>
+    <Name>Обычный меч</Name>
+    <Hero>Rogue</Hero>
+    <Description>Экспертный меч</Description>
+    <ImageIndex>9</ImageIndex>
+    <CategoryItem>MeleeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMelee3</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponDwarf3</ID>
+    <Name>Обычный меч</Name>
+    <Hero>Dwarf</Hero>
+    <Description>Экспертный меч</Description>
+    <ImageIndex>9</ImageIndex>
+    <CategoryItem>MeleeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMelee3</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponPaladin3</ID>
+    <Name>Обычный меч</Name>
+    <Hero>Paladin</Hero>
+    <Description>Экспертный меч</Description>
+    <ImageIndex>9</ImageIndex>
+    <CategoryItem>MeleeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMelee3</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponBladeMaster3</ID>
+    <Name>Обычный меч</Name>
+    <Hero>BladeMaster</Hero>
+    <Description>Экспертный меч</Description>
+    <ImageIndex>9</ImageIndex>
+    <CategoryItem>MeleeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMelee3</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponDeathKnight3</ID>
+    <Name>Обычный меч</Name>
+    <Hero>DeathKnight</Hero>
+    <Description>Экспертный меч</Description>
+    <ImageIndex>9</ImageIndex>
+    <CategoryItem>MeleeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMelee3</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponWarrior4</ID>
+    <Name>Обычный меч</Name>
+    <Hero>Warrior</Hero>
+    <Description>Рунический меч</Description>
+    <ImageIndex>10</ImageIndex>
+    <CategoryItem>MeleeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMelee4</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponRogue4</ID>
+    <Name>Обычный меч</Name>
+    <Hero>Rogue</Hero>
+    <Description>Рунический меч</Description>
+    <ImageIndex>10</ImageIndex>
+    <CategoryItem>MeleeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMelee4</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponDwarf4</ID>
+    <Name>Обычный меч</Name>
+    <Hero>Dwarf</Hero>
+    <Description>Рунический меч</Description>
+    <ImageIndex>10</ImageIndex>
+    <CategoryItem>MeleeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMelee4</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponPaladin4</ID>
+    <Name>Обычный меч</Name>
+    <Hero>Paladin</Hero>
+    <Description>Рунический меч</Description>
+    <ImageIndex>10</ImageIndex>
+    <CategoryItem>MeleeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMelee4</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponBladeMaster4</ID>
+    <Name>Обычный меч</Name>
+    <Hero>BladeMaster</Hero>
+    <Description>Рунический меч</Description>
+    <ImageIndex>10</ImageIndex>
+    <CategoryItem>MeleeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMelee4</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponDeathKnight4</ID>
+    <Name>Обычный меч</Name>
+    <Hero>DeathKnight</Hero>
+    <Description>Рунический меч</Description>
+    <ImageIndex>10</ImageIndex>
+    <CategoryItem>MeleeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMelee4</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>BowHunter0</ID>
+    <Name>Обычный лук</Name>
+    <Hero>Hunter</Hero>
+    <Description>Обычный лук</Description>
+    <ImageIndex>11</ImageIndex>
+    <CategoryItem>RangeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponRange0</GroupItems>
+    <TimeHit>50</TimeHit>
+    <VelocityMissile>5</VelocityMissile>
+    <DamageArcher>5</DamageArcher>
+  </Item>
+  <Item>
+    <ID>BowElf0</ID>
+    <Name>Обычный лук</Name>
+    <Hero>Elf</Hero>
+    <Description>Обычный лук</Description>
+    <ImageIndex>11</ImageIndex>
+    <CategoryItem>RangeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponRange0</GroupItems>
+    <TimeHit>50</TimeHit>
+    <VelocityMissile>5</VelocityMissile>
+    <DamageArcher>25</DamageArcher>
+  </Item>
+  <Item>
+    <ID>BowBeastMaster0</ID>
+    <Name>Обычный лук</Name>
+    <Hero>BeastMaster</Hero>
+    <Description>Обычный лук</Description>
+    <ImageIndex>11</ImageIndex>
+    <CategoryItem>RangeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponRange0</GroupItems>
+    <TimeHit>50</TimeHit>
+    <VelocityMissile>1</VelocityMissile>
+    <DamageArcher>0</DamageArcher>
+  </Item>
+  <Item>
+    <ID>BowMarksman0</ID>
+    <Name>Обычный лук</Name>
+    <Hero>Marksman</Hero>
+    <Description>Обычный лук</Description>
+    <ImageIndex>11</ImageIndex>
+    <CategoryItem>RangeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponRange0</GroupItems>
+    <TimeHit>50</TimeHit>
+    <VelocityMissile>1</VelocityMissile>
+    <DamageArcher>0</DamageArcher>
+  </Item>
+  <Item>
+    <ID>WeaponHunter1</ID>
+    <Name>Обычный лук</Name>
+    <Hero>Hunter</Hero>
+    <Description>Улучшенный лук</Description>
+    <ImageIndex>12</ImageIndex>
+    <CategoryItem>RangeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponRange1</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageArcher>0</DamageArcher>
+  </Item>
+  <Item>
+    <ID>WeaponElf1</ID>
+    <Name>Обычный лук</Name>
+    <Hero>Elf</Hero>
+    <Description>Улучшенный лук</Description>
+    <ImageIndex>12</ImageIndex>
+    <CategoryItem>RangeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponRange1</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageArcher>0</DamageArcher>
+  </Item>
+  <Item>
+    <ID>WeaponBeastMaster1</ID>
+    <Name>Обычный лук</Name>
+    <Hero>BeastMaster</Hero>
+    <Description>Улучшенный лук</Description>
+    <ImageIndex>12</ImageIndex>
+    <CategoryItem>RangeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponRange1</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageArcher>0</DamageArcher>
+  </Item>
+  <Item>
+    <ID>WeaponMarksman1</ID>
+    <Name>Обычный лук</Name>
+    <Hero>Marksman</Hero>
+    <Description>Улучшенный лук</Description>
+    <ImageIndex>12</ImageIndex>
+    <CategoryItem>RangeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponRange1</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageArcher>0</DamageArcher>
+  </Item>
+  <Item>
+    <ID>WeaponHunter2</ID>
+    <Name>Обычный лук</Name>
+    <Hero>Hunter</Hero>
+    <Description>Мастерский лук</Description>
+    <ImageIndex>13</ImageIndex>
+    <CategoryItem>RangeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponRange2</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageArcher>0</DamageArcher>
+  </Item>
+  <Item>
+    <ID>WeaponElf2</ID>
+    <Name>Обычный лук</Name>
+    <Hero>Elf</Hero>
+    <Description>Мастерский лук</Description>
+    <ImageIndex>13</ImageIndex>
+    <CategoryItem>RangeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponRange2</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageArcher>0</DamageArcher>
+  </Item>
+  <Item>
+    <ID>WeaponBeastMaster2</ID>
+    <Name>Обычный лук</Name>
+    <Hero>BeastMaster</Hero>
+    <Description>Мастерский лук</Description>
+    <ImageIndex>13</ImageIndex>
+    <CategoryItem>RangeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponRange2</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageArcher>0</DamageArcher>
+  </Item>
+  <Item>
+    <ID>WeaponMarksman2</ID>
+    <Name>Обычный лук</Name>
+    <Hero>Marksman</Hero>
+    <Description>Мастерский лук</Description>
+    <ImageIndex>13</ImageIndex>
+    <CategoryItem>RangeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponRange2</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageArcher>0</DamageArcher>
+  </Item>
+  <Item>
+    <ID>WeaponHunter3</ID>
+    <Name>Обычный лук</Name>
+    <Hero>Hunter</Hero>
+    <Description>Экспертный лук</Description>
+    <ImageIndex>14</ImageIndex>
+    <CategoryItem>RangeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponRange3</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageArcher>0</DamageArcher>
+  </Item>
+  <Item>
+    <ID>WeaponElf3</ID>
+    <Name>Обычный лук</Name>
+    <Hero>Elf</Hero>
+    <Description>Экспертный лук</Description>
+    <ImageIndex>14</ImageIndex>
+    <CategoryItem>RangeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponRange3</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageArcher>0</DamageArcher>
+  </Item>
+  <Item>
+    <ID>WeaponBeastMaster3</ID>
+    <Name>Обычный лук</Name>
+    <Hero>BeastMaster</Hero>
+    <Description>Экспертный лук</Description>
+    <ImageIndex>14</ImageIndex>
+    <CategoryItem>RangeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponRange3</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageArcher>0</DamageArcher>
+  </Item>
+  <Item>
+    <ID>WeaponMarksman3</ID>
+    <Name>Обычный лук</Name>
+    <Hero>Marksman</Hero>
+    <Description>Экспертный лук</Description>
+    <ImageIndex>14</ImageIndex>
+    <CategoryItem>RangeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponRange3</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageArcher>0</DamageArcher>
+  </Item>
+  <Item>
+    <ID>WeaponHunter4</ID>
+    <Name>Обычный лук</Name>
+    <Hero>Hunter</Hero>
+    <Description>Демонический лук</Description>
+    <ImageIndex>15</ImageIndex>
+    <CategoryItem>RangeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponRange4</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageArcher>0</DamageArcher>
+  </Item>
+  <Item>
+    <ID>WeaponElf4</ID>
+    <Name>Обычный лук</Name>
+    <Hero>Elf</Hero>
+    <Description>Демонический лук</Description>
+    <ImageIndex>15</ImageIndex>
+    <CategoryItem>RangeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponRange4</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageArcher>0</DamageArcher>
+  </Item>
+  <Item>
+    <ID>WeaponBeastMaster4</ID>
+    <Name>Обычный лук</Name>
+    <Hero>BeastMaster</Hero>
+    <Description>Демонический лук</Description>
+    <ImageIndex>15</ImageIndex>
+    <CategoryItem>RangeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponRange4</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageArcher>0</DamageArcher>
+  </Item>
+  <Item>
+    <ID>WeaponMarksman4</ID>
+    <Name>Обычный лук</Name>
+    <Hero>Marksman</Hero>
+    <Description>Демонический лук</Description>
+    <ImageIndex>15</ImageIndex>
+    <CategoryItem>RangeWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponRange4</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageArcher>0</DamageArcher>
+  </Item>
+  <Item>
+    <ID>WeaponCleric0</ID>
+    <Name>Обычный лук</Name>
+    <Hero>Cleric</Hero>
+    <Description>Обычный посох</Description>
+    <ImageIndex>16</ImageIndex>
+    <CategoryItem>MageWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMage0</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>10</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponMage0</ID>
+    <Name>Обычный лук</Name>
+    <Hero>Mage</Hero>
+    <Description>Обычный посох</Description>
+    <ImageIndex>16</ImageIndex>
+    <CategoryItem>MageWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMage0</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>10</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponDarkPriest0</ID>
+    <Name>Обычный лук</Name>
+    <Description>Обычный посох</Description>
+    <Hero>DarkPriest</Hero>
+    <ImageIndex>16</ImageIndex>
+    <CategoryItem>MageWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMage0</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponPriest0</ID>
+    <Name>Обычный лук</Name>
+    <Hero>Priest</Hero>
+    <Description>Обычный посох</Description>
+    <ImageIndex>16</ImageIndex>
+    <CategoryItem>MageWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMage0</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponFireMage0</ID>
+    <Name>Обычный лук</Name>
+    <Hero>FireMage</Hero>
+    <Description>Обычный посох</Description>
+    <ImageIndex>16</ImageIndex>
+    <CategoryItem>MageWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMage0</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponIceMage0</ID>
+    <Name>Обычный лук</Name>
+    <Hero>IceMage</Hero>
+    <Description>Обычный посох</Description>
+    <ImageIndex>16</ImageIndex>
+    <CategoryItem>MageWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMage0</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponCleric1</ID>
+    <Name>Обычный лук</Name>
+    <Hero>Cleric</Hero>
+    <Description>Улучшенный посох</Description>
+    <ImageIndex>17</ImageIndex>
+    <CategoryItem>MageWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMage1</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponMage1</ID>
+    <Name>Обычный лук</Name>
+    <Hero>Mage</Hero>
+    <Description>Улучшенный посох</Description>
+    <ImageIndex>17</ImageIndex>
+    <CategoryItem>MageWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMage1</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponDarkPriest1</ID>
+    <Name>Обычный лук</Name>
+    <Hero>DarkPriest</Hero>
+    <Description>Улучшенный посох</Description>
+    <ImageIndex>17</ImageIndex>
+    <CategoryItem>MageWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMage1</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponPriest1</ID>
+    <Name>Обычный лук</Name>
+    <Hero>Priest</Hero>
+    <Description>Улучшенный посох</Description>
+    <ImageIndex>17</ImageIndex>
+    <CategoryItem>MageWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMage1</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponFireMage1</ID>
+    <Name>Обычный лук</Name>
+    <Hero>FireMage</Hero>
+    <Description>Улучшенный посох</Description>
+    <ImageIndex>17</ImageIndex>
+    <CategoryItem>MageWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMage1</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponIceMage1</ID>
+    <Name>Обычный лук</Name>
+    <Hero>IceMage</Hero>
+    <Description>Улучшенный посох</Description>
+    <ImageIndex>17</ImageIndex>
+    <CategoryItem>MageWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMage1</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponCleric2</ID>
+    <Name>Обычный лук</Name>
+    <Hero>Cleric</Hero>
+    <Description>Мастерский посох</Description>
+    <ImageIndex>18</ImageIndex>
+    <CategoryItem>MageWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMage2</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponMage2</ID>
+    <Name>Обычный лук</Name>
+    <Hero>Mage</Hero>
+    <Description>Мастерский посох</Description>
+    <ImageIndex>18</ImageIndex>
+    <CategoryItem>MageWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMage2</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponDarkPriest2</ID>
+    <Name>Обычный лук</Name>
+    <Hero>DarkPriest</Hero>
+    <Description>Мастерский посох</Description>
+    <ImageIndex>18</ImageIndex>
+    <CategoryItem>MageWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMage2</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponPriest2</ID>
+    <Name>Обычный лук</Name>
+    <Hero>Priest</Hero>
+    <Description>Мастерский посох</Description>
+    <ImageIndex>18</ImageIndex>
+    <CategoryItem>MageWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMage2</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponFireMage2</ID>
+    <Name>Обычный лук</Name>
+    <Hero>FireMage</Hero>
+    <Description>Мастерский посох</Description>
+    <ImageIndex>18</ImageIndex>
+    <CategoryItem>MageWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMage2</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponIceMage2</ID>
+    <Name>Обычный лук</Name>
+    <Hero>IceMage</Hero>
+    <Description>Мастерский посох</Description>
+    <ImageIndex>18</ImageIndex>
+    <CategoryItem>MageWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMage2</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponCleric3</ID>
+    <Name>Обычный лук</Name>
+    <Hero>Cleric</Hero>
+    <Description>Экспертный посох</Description>
+    <ImageIndex>19</ImageIndex>
+    <CategoryItem>MageWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMage3</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponMage3</ID>
+    <Name>Обычный лук</Name>
+    <Hero>Mage</Hero>
+    <Description>Экспертный посох</Description>
+    <ImageIndex>19</ImageIndex>
+    <CategoryItem>MageWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMage3</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponDarkPriest3</ID>
+    <Name>Обычный лук</Name>
+    <Hero>DarkPriest</Hero>
+    <Description>Экспертный посох</Description>
+    <ImageIndex>19</ImageIndex>
+    <CategoryItem>MageWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMage3</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponPriest3</ID>
+    <Name>Обычный лук</Name>
+    <Hero>Priest</Hero>
+    <Description>Экспертный посох</Description>
+    <ImageIndex>19</ImageIndex>
+    <CategoryItem>MageWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMage3</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponFireMage3</ID>
+    <Name>Обычный лук</Name>
+    <Hero>FireMage</Hero>
+    <Description>Экспертный посох</Description>
+    <ImageIndex>19</ImageIndex>
+    <CategoryItem>MageWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMage3</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponIceMage3</ID>
+    <Name>Обычный лук</Name>
+    <Hero>IceMage</Hero>
+    <Description>Экспертный посох</Description>
+    <ImageIndex>19</ImageIndex>
+    <CategoryItem>MageWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMage3</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponCleric4</ID>
+    <Name>Обычный лук</Name>
+    <Hero>Cleric</Hero>
+    <Description>Посох из кости дракона</Description>
+    <ImageIndex>20</ImageIndex>
+    <CategoryItem>MageWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMage4</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponMage4</ID>
+    <Name>Обычный лук</Name>
+    <Hero>Mage</Hero>
+    <Description>Посох из кости дракона</Description>
+    <ImageIndex>20</ImageIndex>
+    <CategoryItem>MageWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMage4</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponDarkPriest4</ID>
+    <Name>Обычный лук</Name>
+    <Hero>DarkPriest</Hero>
+    <Description>Посох из кости дракона</Description>
+    <ImageIndex>20</ImageIndex>
+    <CategoryItem>MageWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMage4</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponPriest4</ID>
+    <Name>Обычный лук</Name>
+    <Hero>Priest</Hero>
+    <Description>Посох из кости дракона</Description>
+    <ImageIndex>20</ImageIndex>
+    <CategoryItem>MageWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMage4</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponFireMage4</ID>
+    <Name>Обычный лук</Name>
+    <Hero>FireMage</Hero>
+    <Description>Посох из кости дракона</Description>
+    <ImageIndex>20</ImageIndex>
+    <CategoryItem>MageWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMage4</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponIceMage4</ID>
+    <Name>Обычный лук</Name>
+    <Hero>IceMage</Hero>
+    <Description>Посох из кости дракона</Description>
+    <ImageIndex>20</ImageIndex>
+    <CategoryItem>MageWeapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupWeaponMage4</GroupItems>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>ArmourWarrior0</ID>
+    <Name>Простая стальная броня</Name>
+    <Description>Грубо выкованная кольчуга</Description>
+    <ImageIndex>21</ImageIndex>
+    <CategoryItem>MeleeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMelee0</GroupItems>
+    <Hero>Warrior</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourDwarf0</ID>
+    <Name>Простая стальная броня</Name>
+    <Description>Грубо выкованная кольчуга</Description>
+    <ImageIndex>21</ImageIndex>
+    <CategoryItem>MeleeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMelee0</GroupItems>
+    <Hero>Dwarf</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourPaladin0</ID>
+    <Name>Простая стальная броня</Name>
+    <Description>Грубо выкованная кольчуга</Description>
+    <ImageIndex>21</ImageIndex>
+    <CategoryItem>MeleeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMelee0</GroupItems>
+    <Hero>Paladin</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourBladeMaster0</ID>
+    <Name>Простая стальная броня</Name>
+    <Description>Грубо выкованная кольчуга</Description>
+    <ImageIndex>21</ImageIndex>
+    <CategoryItem>MeleeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMelee0</GroupItems>
+    <Hero>BladeMaster</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourDeathKnight0</ID>
+    <Name>Простая стальная броня</Name>
+    <Description>Грубо выкованная кольчуга</Description>
+    <ImageIndex>21</ImageIndex>
+    <CategoryItem>MeleeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMelee0</GroupItems>
+    <Hero>DeathKnight</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourWarrior1</ID>
+    <Hero>Warrior</Hero>
+    <Name>Простая стальная броня</Name>
+    <Description>Грубо выкованная кольчуга</Description>
+    <ImageIndex>22</ImageIndex>
+    <CategoryItem>MeleeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMelee1</GroupItems>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourDwarf1</ID>
+    <Hero>Warrior</Hero>
+    <Name>Простая стальная броня</Name>
+    <Description>Грубо выкованная кольчуга</Description>
+    <ImageIndex>22</ImageIndex>
+    <CategoryItem>MeleeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMelee1</GroupItems>
+    <Hero>Dwarf</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourPaladin1</ID>
+    <Hero>Warrior</Hero>
+    <Name>Простая стальная броня</Name>
+    <Description>Грубо выкованная кольчуга</Description>
+    <ImageIndex>22</ImageIndex>
+    <CategoryItem>MeleeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMelee1</GroupItems>
+    <Hero>Paladin</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourBladeMaster1</ID>
+    <Hero>Warrior</Hero>
+    <Name>Простая стальная броня</Name>
+    <Description>Грубо выкованная кольчуга</Description>
+    <ImageIndex>22</ImageIndex>
+    <CategoryItem>MeleeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMelee1</GroupItems>
+    <Hero>BladeMaster</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourDeathKnight1</ID>
+    <Hero>Warrior</Hero>
+    <Name>Простая стальная броня</Name>
+    <Description>Грубо выкованная кольчуга</Description>
+    <ImageIndex>22</ImageIndex>
+    <CategoryItem>MeleeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMelee1</GroupItems>
+    <Hero>DeathKnight</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourWarrior2</ID>
+    <Name>Простая стальная броня</Name>
+    <Description>Грубо выкованная кольчуга</Description>
+    <ImageIndex>23</ImageIndex>
+    <CategoryItem>MeleeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMelee2</GroupItems>
+    <Hero>Warrior</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourDwarf2</ID>
+    <Name>Простая стальная броня</Name>
+    <Description>Грубо выкованная кольчуга</Description>
+    <ImageIndex>23</ImageIndex>
+    <CategoryItem>MeleeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMelee2</GroupItems>
+    <Hero>Dwarf</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourPaladin2</ID>
+    <Name>Простая стальная броня</Name>
+    <Description>Грубо выкованная кольчуга</Description>
+    <ImageIndex>23</ImageIndex>
+    <CategoryItem>MeleeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMelee2</GroupItems>
+    <Hero>Paladin</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourBladeMaster2</ID>
+    <Name>Простая стальная броня</Name>
+    <Description>Грубо выкованная кольчуга</Description>
+    <ImageIndex>23</ImageIndex>
+    <CategoryItem>MeleeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMelee2</GroupItems>
+    <Hero>BladeMaster</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourDeathKnight2</ID>
+    <Name>Простая стальная броня</Name>
+    <Description>Грубо выкованная кольчуга</Description>
+    <ImageIndex>23</ImageIndex>
+    <CategoryItem>MeleeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMelee2</GroupItems>
+    <Hero>DeathKnight</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourWarrior3</ID>
+    <Name>Простая стальная броня</Name>
+    <Description>Грубо выкованная кольчуга</Description>
+    <ImageIndex>24</ImageIndex>
+    <CategoryItem>MeleeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMelee3</GroupItems>
+    <Hero>Warrior</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourDwarf3</ID>
+    <Name>Простая стальная броня</Name>
+    <Description>Грубо выкованная кольчуга</Description>
+    <ImageIndex>24</ImageIndex>
+    <CategoryItem>MeleeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMelee3</GroupItems>
+    <Hero>Dwarf</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourPaladin3</ID>
+    <Name>Простая стальная броня</Name>
+    <Description>Грубо выкованная кольчуга</Description>
+    <ImageIndex>24</ImageIndex>
+    <CategoryItem>MeleeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMelee3</GroupItems>
+    <Hero>Paladin</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourBladeMaster3</ID>
+    <Name>Простая стальная броня</Name>
+    <Description>Грубо выкованная кольчуга</Description>
+    <ImageIndex>24</ImageIndex>
+    <CategoryItem>MeleeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMelee3</GroupItems>
+    <Hero>BladeMaster</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourDeathKnight3</ID>
+    <Name>Простая стальная броня</Name>
+    <Description>Грубо выкованная кольчуга</Description>
+    <ImageIndex>24</ImageIndex>
+    <CategoryItem>MeleeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMelee3</GroupItems>
+    <Hero>DeathKnight</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourWarrior4</ID>
+    <Name>Доспех из неврила</Name>
+    <Description>Грубо выкованная кольчуга</Description>
+    <ImageIndex>25</ImageIndex>
+    <CategoryItem>MeleeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMelee4</GroupItems>
+    <Hero>Warrior</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourDwarf4</ID>
+    <Name>Доспех из неврила</Name>
+    <Description>Грубо выкованная кольчуга</Description>
+    <ImageIndex>25</ImageIndex>
+    <CategoryItem>MeleeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMelee4</GroupItems>
+    <Hero>Dwarf</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourPaladin4</ID>
+    <Name>Доспех из неврила</Name>
+    <Description>Грубо выкованная кольчуга</Description>
+    <ImageIndex>25</ImageIndex>
+    <CategoryItem>MeleeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMelee4</GroupItems>
+    <Hero>Paladin</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourBladeMaster4</ID>
+    <Name>Доспех из неврила</Name>
+    <Description>Грубо выкованная кольчуга</Description>
+    <ImageIndex>25</ImageIndex>
+    <CategoryItem>MeleeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMelee4</GroupItems>
+    <Hero>BladeMaster</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourDeathKnight4</ID>
+    <Name>Доспех из неврила</Name>
+    <Description>Грубо выкованная кольчуга</Description>
+    <ImageIndex>25</ImageIndex>
+    <CategoryItem>MeleeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMelee4</GroupItems>
+    <Hero>DeathKnight</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourRogue0</ID>
+    <Name>Простая кожаная броня</Name>
+    <Description>Броня из грубо выделанной кожи</Description>
+    <ImageIndex>26</ImageIndex>
+    <CategoryItem>RangeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourRange0</GroupItems>
+    <Hero>Rogue</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourHunter0</ID>
+    <Hero>Hunter</Hero>
+    <Name>Простая кожаная броня</Name>
+    <Description>Броня из грубо выделанной кожи</Description>
+    <ImageIndex>26</ImageIndex>
+    <CategoryItem>RangeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourRange0</GroupItems>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourElf0</ID>
+    <Hero>Elf</Hero>
+    <Name>Простая кожаная броня</Name>
+    <Description>Броня из грубо выделанной кожи</Description>
+    <ImageIndex>26</ImageIndex>
+    <CategoryItem>RangeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourRange0</GroupItems>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourBeastMaster0</ID>
+    <Name>Простая кожаная броня</Name>
+    <Description>Броня из грубо выделанной кожи</Description>
+    <ImageIndex>26</ImageIndex>
+    <CategoryItem>RangeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourRange0</GroupItems>
+    <Hero>BeastMaster</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourMarksman0</ID>
+    <Name>Простая кожаная броня</Name>
+    <Description>Броня из грубо выделанной кожи</Description>
+    <ImageIndex>26</ImageIndex>
+    <CategoryItem>RangeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourRange0</GroupItems>
+    <Hero>Marksman</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourRogue1</ID>
+    <Name>Улучшенная кожаная броня</Name>
+    <Description>Броня из грубо выделанной кожи</Description>
+    <ImageIndex>27</ImageIndex>
+    <CategoryItem>RangeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourRange1</GroupItems>
+    <Hero>Rogue</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourHunter1</ID>
+    <Name>Улучшенная кожаная броня</Name>
+    <Description>Броня из грубо выделанной кожи</Description>
+    <ImageIndex>27</ImageIndex>
+    <CategoryItem>RangeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourRange1</GroupItems>
+    <Hero>Hunter</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourElf1</ID>
+    <Name>Улучшенная кожаная броня</Name>
+    <Description>Броня из грубо выделанной кожи</Description>
+    <ImageIndex>27</ImageIndex>
+    <CategoryItem>RangeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourRange1</GroupItems>
+    <Hero>Elf</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourBeastMaster1</ID>
+    <Name>Улучшенная кожаная броня</Name>
+    <Description>Броня из грубо выделанной кожи</Description>
+    <ImageIndex>27</ImageIndex>
+    <CategoryItem>RangeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourRange1</GroupItems>
+    <Hero>BeastMaster</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourMarksman1</ID>
+    <Name>Улучшенная кожаная броня</Name>
+    <Description>Броня из грубо выделанной кожи</Description>
+    <ImageIndex>27</ImageIndex>
+    <CategoryItem>RangeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourRange1</GroupItems>
+    <Hero>Marksman</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourRogue2</ID>
+    <Name>Мастерская кожаная броня</Name>
+    <Description>Броня из грубо выделанной кожи</Description>
+    <ImageIndex>28</ImageIndex>
+    <CategoryItem>RangeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourRange2</GroupItems>
+    <Hero>Rogue</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourHunter2</ID>
+    <Name>Мастерская кожаная броня</Name>
+    <Description>Броня из грубо выделанной кожи</Description>
+    <ImageIndex>28</ImageIndex>
+    <CategoryItem>RangeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourRange2</GroupItems>
+    <Hero>Hunter</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourElf2</ID>
+    <Name>Мастерская кожаная броня</Name>
+    <Description>Броня из грубо выделанной кожи</Description>
+    <ImageIndex>28</ImageIndex>
+    <CategoryItem>RangeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourRange2</GroupItems>
+    <Hero>Elf</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourBeastMaster2</ID>
+    <Name>Мастерская кожаная броня</Name>
+    <Description>Броня из грубо выделанной кожи</Description>
+    <ImageIndex>28</ImageIndex>
+    <CategoryItem>RangeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourRange2</GroupItems>
+    <Hero>BeastMaster</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourMarksman2</ID>
+    <Name>Мастерская кожаная броня</Name>
+    <Description>Броня из грубо выделанной кожи</Description>
+    <ImageIndex>28</ImageIndex>
+    <CategoryItem>RangeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourRange2</GroupItems>
+    <Hero>Marksman</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourRogue3</ID>
+    <Name>Экспертная кожаная броня</Name>
+    <Description>Броня из грубо выделанной кожи</Description>
+    <ImageIndex>29</ImageIndex>
+    <CategoryItem>RangeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourRange3</GroupItems>
+    <Hero>Rogue</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourHunter3</ID>
+    <Name>Экспертная кожаная броня</Name>
+    <Description>Броня из грубо выделанной кожи</Description>
+    <ImageIndex>29</ImageIndex>
+    <CategoryItem>RangeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourRange3</GroupItems>
+    <Hero>Hunter</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourElf3</ID>
+    <Name>Экспертная кожаная броня</Name>
+    <Description>Броня из грубо выделанной кожи</Description>
+    <ImageIndex>29</ImageIndex>
+    <CategoryItem>RangeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourRange3</GroupItems>
+    <Hero>Elf</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourBeastMaster3</ID>
+    <Name>Экспертная кожаная броня</Name>
+    <Description>Броня из грубо выделанной кожи</Description>
+    <ImageIndex>29</ImageIndex>
+    <CategoryItem>RangeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourRange3</GroupItems>
+    <Hero>BeastMaster</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourMarksman3</ID>
+    <Name>Экспертная кожаная броня</Name>
+    <Description>Броня из грубо выделанной кожи</Description>
+    <ImageIndex>29</ImageIndex>
+    <CategoryItem>RangeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourRange3</GroupItems>
+    <Hero>Marksman</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourRogue4</ID>
+    <Name>Доспех из кожи дракона</Name>
+    <Description>Броня из грубо выделанной кожи</Description>
+    <ImageIndex>30</ImageIndex>
+    <CategoryItem>RangeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourRange4</GroupItems>
+    <Hero>Rogue</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourHunter4</ID>
+    <Name>Доспех из кожи дракона</Name>
+    <Description>Броня из грубо выделанной кожи</Description>
+    <ImageIndex>30</ImageIndex>
+    <CategoryItem>RangeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourRange4</GroupItems>
+    <Hero>Hunter</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourElf4</ID>
+    <Name>Доспех из кожи дракона</Name>
+    <Description>Броня из грубо выделанной кожи</Description>
+    <ImageIndex>30</ImageIndex>
+    <CategoryItem>RangeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourRange4</GroupItems>
+    <Hero>Elf</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourBeastMaster4</ID>
+    <Name>Доспех из кожи дракона</Name>
+    <Description>Броня из грубо выделанной кожи</Description>
+    <ImageIndex>30</ImageIndex>
+    <CategoryItem>RangeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourRange4</GroupItems>
+    <Hero>BeastMaster</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourMarksman4</ID>
+    <Name>Доспех из кожи дракона</Name>
+    <Description>Броня из грубо выделанной кожи</Description>
+    <ImageIndex>30</ImageIndex>
+    <CategoryItem>RangeArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourRange4</GroupItems>
+    <Hero>Marksman</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourCleric0</ID>
+    <Name>Простая роба</Name>
+    <Description></Description>
+    <ImageIndex>31</ImageIndex>
+    <CategoryItem>MageArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMage0</GroupItems>
+    <Hero>Cleric</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourMage0</ID>
+    <Name>Простая роба</Name>
+    <Description></Description>
+    <ImageIndex>31</ImageIndex>
+    <CategoryItem>MageArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMage0</GroupItems>
+    <Hero>Mage</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourDarkPriest0</ID>
+    <Name>Простая роба</Name>
+    <Description></Description>
+    <ImageIndex>31</ImageIndex>
+    <CategoryItem>MageArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMage0</GroupItems>
+    <Hero>DarkPriest</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourPriest0</ID>
+    <Name>Простая роба</Name>
+    <Description></Description>
+    <ImageIndex>31</ImageIndex>
+    <CategoryItem>MageArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMage0</GroupItems>
+    <Hero>Priest</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourFireMage0</ID>
+    <Name>Простая роба</Name>
+    <Description></Description>
+    <ImageIndex>31</ImageIndex>
+    <CategoryItem>MageArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMage0</GroupItems>
+    <Hero>FireMage</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourIceMage0</ID>
+    <Name>Простая роба</Name>
+    <Description></Description>
+    <ImageIndex>31</ImageIndex>
+    <CategoryItem>MageArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMage0</GroupItems>
+    <Hero>IceMage</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourCleric1</ID>
+    <Name>Улучшенная магическая роба</Name>
+    <Description></Description>
+    <ImageIndex>32</ImageIndex>
+    <CategoryItem>MageArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMage1</GroupItems>
+    <Hero>Cleric</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourMage1</ID>
+    <Name>Улучшенная магическая роба</Name>
+    <Description></Description>
+    <ImageIndex>32</ImageIndex>
+    <CategoryItem>MageArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMage1</GroupItems>
+    <Hero>Mage</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourDarkPriest1</ID>
+    <Name>Улучшенная магическая роба</Name>
+    <Description></Description>
+    <ImageIndex>32</ImageIndex>
+    <CategoryItem>MageArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMage1</GroupItems>
+    <Hero>DarkPriest</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourPriest1</ID>
+    <Name>Улучшенная магическая роба</Name>
+    <Description></Description>
+    <ImageIndex>32</ImageIndex>
+    <CategoryItem>MageArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMage1</GroupItems>
+    <Hero>Priest</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourFireMage1</ID>
+    <Name>Улучшенная магическая роба</Name>
+    <Description></Description>
+    <ImageIndex>32</ImageIndex>
+    <CategoryItem>MageArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMage1</GroupItems>
+    <Hero>FireMage</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourIceMage1</ID>
+    <Name>Улучшенная магическая роба</Name>
+    <Description></Description>
+    <ImageIndex>32</ImageIndex>
+    <CategoryItem>MageArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMage1</GroupItems>
+    <Hero>IceMage</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourCleric2</ID>
+    <Name>Мастерская магическая роба</Name>
+    <Description></Description>
+    <ImageIndex>33</ImageIndex>
+    <CategoryItem>MageArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMage2</GroupItems>
+    <Hero>Cleric</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourMage2</ID>
+    <Name>Мастерская магическая роба</Name>
+    <Description></Description>
+    <ImageIndex>33</ImageIndex>
+    <CategoryItem>MageArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMage2</GroupItems>
+    <Hero>Mage</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourDarkPriest2</ID>
+    <Name>Мастерская магическая роба</Name>
+    <Description></Description>
+    <ImageIndex>33</ImageIndex>
+    <CategoryItem>MageArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMage2</GroupItems>
+    <Hero>DarkPriest</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourPriest2</ID>
+    <Name>Мастерская магическая роба</Name>
+    <Description></Description>
+    <ImageIndex>33</ImageIndex>
+    <CategoryItem>MageArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMage2</GroupItems>
+    <Hero>Priest</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourFireMage2</ID>
+    <Name>Мастерская магическая роба</Name>
+    <Description></Description>
+    <ImageIndex>33</ImageIndex>
+    <CategoryItem>MageArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMage2</GroupItems>
+    <Hero>FireMage</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourIceMage2</ID>
+    <Name>Мастерская магическая роба</Name>
+    <Description></Description>
+    <ImageIndex>33</ImageIndex>
+    <CategoryItem>MageArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMage2</GroupItems>
+    <Hero>IceMage</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourCleric3</ID>
+    <Name>Экспертная магическая роба</Name>
+    <Description></Description>
+    <ImageIndex>34</ImageIndex>
+    <CategoryItem>MageArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMage3</GroupItems>
+    <Hero>Cleric</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourMage3</ID>
+    <Name>Экспертная магическая роба</Name>
+    <Description></Description>
+    <ImageIndex>34</ImageIndex>
+    <CategoryItem>MageArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMage3</GroupItems>
+    <Hero>Mage</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourDarkPriest3</ID>
+    <Name>Экспертная магическая роба</Name>
+    <Description></Description>
+    <ImageIndex>34</ImageIndex>
+    <CategoryItem>MageArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMage3</GroupItems>
+    <Hero>DarkPriest</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourPriest3</ID>
+    <Name>Экспертная магическая роба</Name>
+    <Description></Description>
+    <ImageIndex>34</ImageIndex>
+    <CategoryItem>MageArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMage3</GroupItems>
+    <Hero>Priest</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourFireMage3</ID>
+    <Name>Экспертная магическая роба</Name>
+    <Description></Description>
+    <ImageIndex>34</ImageIndex>
+    <CategoryItem>MageArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMage3</GroupItems>
+    <Hero>FireMage</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourIceMage3</ID>
+    <Name>Экспертная магическая роба</Name>
+    <Description></Description>
+    <ImageIndex>34</ImageIndex>
+    <CategoryItem>MageArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMage3</GroupItems>
+    <Hero>IceMage</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourCleric4</ID>
+    <Name>Роба из зачарованной ткани</Name>
+    <Description></Description>
+    <ImageIndex>35</ImageIndex>
+    <CategoryItem>MageArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMage4</GroupItems>
+    <Hero>Cleric</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourMage4</ID>
+    <Name>Роба из зачарованной ткани</Name>
+    <Description></Description>
+    <ImageIndex>35</ImageIndex>
+    <CategoryItem>MageArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMage4</GroupItems>
+    <Hero>Mage</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourDarkPriest4</ID>
+    <Name>Роба из зачарованной ткани</Name>
+    <Description></Description>
+    <ImageIndex>35</ImageIndex>
+    <CategoryItem>MageArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMage4</GroupItems>
+    <Hero>DarkPriest</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourPriest4</ID>
+    <Name>Роба из зачарованной ткани</Name>
+    <Description></Description>
+    <ImageIndex>35</ImageIndex>
+    <CategoryItem>MageArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMage4</GroupItems>
+    <Hero>Priest</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourFireMage4</ID>
+    <Name>Роба из зачарованной ткани</Name>
+    <Description></Description>
+    <ImageIndex>35</ImageIndex>
+    <CategoryItem>MageArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMage4</GroupItems>
+    <Hero>FireMage</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourIceMage4</ID>
+    <Name>Роба из зачарованной ткани</Name>
+    <Description></Description>
+    <ImageIndex>35</ImageIndex>
+    <CategoryItem>MageArmour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupArmourMage4</GroupItems>
+    <Hero>IceMage</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseArcher>0</DefenseArcher>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>QuiverHunter0</ID>
+    <Name>Стандартный колчан</Name>
+    <Description></Description>
+    <ImageIndex>152</ImageIndex>
+    <CategoryItem>Quiver</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupQuiver0</GroupItems>
+    <Hero>Hunter</Hero>
+    <QuantityShots>15</QuantityShots>
+  </Item>
+  <Item>
+    <ID>QuiverElf0</ID>
+    <Name>Стандартный колчан</Name>
+    <Description></Description>
+    <ImageIndex>152</ImageIndex>
+    <CategoryItem>Quiver</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupQuiver0</GroupItems>
+    <Hero>Elf</Hero>
+    <QuantityShots>15</QuantityShots>
+  </Item>
+  <Item>
+    <ID>QuiverBeastMaster0</ID>
+    <Name>Стандартный колчан</Name>
+    <Description></Description>
+    <ImageIndex>152</ImageIndex>
+    <CategoryItem>Quiver</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupQuiver0</GroupItems>
+    <Hero>BeastMaster</Hero>
+    <QuantityShots>15</QuantityShots>
+  </Item>
+  <Item>
+    <ID>QuiverMarksman0</ID>
+    <Name>Стандартный колчан</Name>
+    <Description></Description>
+    <ImageIndex>152</ImageIndex>
+    <CategoryItem>Quiver</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItems>GroupQuiver0</GroupItems>
+    <Hero>Marksman</Hero>
+    <QuantityShots>15</QuantityShots>
+  </Item>
 </Items>

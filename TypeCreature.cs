@@ -223,9 +223,9 @@ namespace Fantasy_Kingdoms_Battle
         internal int DefaultPositionPriority { get; private set; }// Приоритет расположения на поле боя по умолчанию
         internal TypeAttack TypeAttackMelee { get;}// Тип рукопашной атаки
         internal TypeAttack TypeAttackRange { get; }// Тип дистанционной атаки
-        internal Weapon WeaponMelee { get; private set; }// Рукопашное оружие
-        internal Weapon WeaponRange { get; private set; }// Стрелковое оружие
-        internal Armour Armour { get; private set; }// Доспех по умолчанию
+        internal Item WeaponMelee { get; private set; }// Рукопашное оружие
+        internal Item WeaponRange { get; private set; }// Стрелковое оружие
+        internal Item Armour { get; private set; }// Доспех по умолчанию
         internal int QuantityArrows { get; }// Количество стрел
         internal TypeReward TypeReward { get; }// Награда за убийство существа
         internal int Cost { get; }
@@ -269,26 +269,26 @@ namespace Fantasy_Kingdoms_Battle
             // Загружаем дефолтное оружие и доспехи
             if (nameMeleeWeapon != null)
             {
-                WeaponMelee = FormMain.Config.FindWeapon(nameMeleeWeapon);
+                WeaponMelee = FormMain.Config.FindItem(nameMeleeWeapon);
                 nameMeleeWeapon = null;
 
-                Debug.Assert(WeaponMelee.ClassHero == this);
+                //Debug.Assert(WeaponMelee.ClassHero == this);
             }
 
             if (nameRangeWeapon != null)
             {
-                WeaponRange = FormMain.Config.FindWeapon(nameRangeWeapon);
+                WeaponRange = FormMain.Config.FindItem(nameRangeWeapon);
                 nameRangeWeapon = null;
 
-                Debug.Assert(WeaponMelee.ClassHero == this);
+                //Debug.Assert(WeaponMelee.ClassHero == this);
             }
 
             if (nameArmour != null)
             {
-                Armour = FormMain.Config.FindArmour(nameArmour);
+                Armour = FormMain.Config.FindItem(nameArmour);
                 nameArmour = null;
 
-                Debug.Assert(Armour.ClassHero == this);
+                //Debug.Assert(Armour.ClassHero == this);
             }
 
             /*foreach (Ability a in Abilities)

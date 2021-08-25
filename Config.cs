@@ -84,36 +84,20 @@ namespace Fantasy_Kingdoms_Battle
                 TypeConstructions.Add(new TypeConstruction(n));
             }
 
+            // Загрузка групп предметов
+            xmlDoc = CreateXmlDocument("Config\\GroupItems.xml");
+
+            foreach (XmlNode n in xmlDoc.SelectNodes("/GroupItems/GroupItems"))
+            {
+                GroupItems.Add(new GroupItems(n));
+            }
+
             // Загрузка предметов
             xmlDoc = CreateXmlDocument("Config\\Items.xml");
 
             foreach (XmlNode n in xmlDoc.SelectNodes("/Items/Item"))
             {
                 Items.Add(new Item(n));
-            }
-
-            // Загрузка оружия
-            xmlDoc = CreateXmlDocument("Config\\Weapons.xml");
-
-            foreach (XmlNode n in xmlDoc.SelectNodes("/GroupWeapons/GroupWeapon"))
-            {
-                GroupWeapons.Add(new GroupWeapon(n));
-            }
-
-            // Загрузка доспехов
-            xmlDoc = CreateXmlDocument("Config\\Armours.xml");
-
-            foreach (XmlNode n in xmlDoc.SelectNodes("/GroupArmours/GroupArmour"))
-            {
-                GroupArmours.Add(new GroupArmour(n));
-            }
-
-            // Загрузка колчанов
-            xmlDoc = CreateXmlDocument("Config\\Quivers.xml");
-
-            foreach (XmlNode n in xmlDoc.SelectNodes("/GroupQuivers/GroupQuiver"))
-            {
-                GroupQuivers.Add(new GroupQuiver(n));
             }
 
             // Загрузка конфигурации типов рукопашной атаки
@@ -182,14 +166,8 @@ namespace Fantasy_Kingdoms_Battle
             foreach (SecondarySkill ss in SecondarySkills)
                 ss.TuneDeferredLinks();
 
-            foreach (GroupWeapon gw in GroupWeapons)
-                gw.TuneDeferredLinks();
-
-            foreach (GroupArmour ga in GroupArmours)
-                ga.TuneDeferredLinks();
-
-            foreach (GroupQuiver gq in GroupQuivers)
-                gq.TuneDeferredLinks();
+            foreach (Item i in Items)
+                i.TuneDeferredLinks();
 
             foreach (TypeCreature tc in TypeCreatures)
                 tc.TuneDeferredLinks();
@@ -224,10 +202,8 @@ namespace Fantasy_Kingdoms_Battle
         internal List<SecondarySkill> SecondarySkills { get; } = new List<SecondarySkill>();
         internal List<StateCreature> StatesCreature { get; } = new List<StateCreature>();
         internal List<KindCreature> KindCreatures { get; } = new List<KindCreature>();
+        internal List<GroupItems> GroupItems { get; } = new List<GroupItems>();
         internal List<Item> Items { get; } = new List<Item>();
-        internal List<GroupWeapon> GroupWeapons { get; } = new List<GroupWeapon>();
-        internal List<GroupArmour> GroupArmours { get; } = new List<GroupArmour>();
-        internal List<GroupQuiver> GroupQuivers { get; } = new List<GroupQuiver>();
         internal int MaxLevelSkill { get; }
         internal List<TypeCreature> TypeCreatures { get; } = new List<TypeCreature>();
 
@@ -374,62 +350,17 @@ namespace Fantasy_Kingdoms_Battle
             return null;
         }
 
-        internal GroupWeapon FindGroupWeapon(string ID, bool mustBeExists = true)
+        internal GroupItems FindGroupItems(string ID, bool mustBeExists = true)
         {
-            foreach (GroupWeapon gw in GroupWeapons)
-                if (gw.ID == ID)
-                    return gw;
+            foreach (GroupItems gi in GroupItems)
+                if (gi.ID == ID)
+                    return gi;
 
             if (mustBeExists)
-                throw new Exception("Группа оружия " + ID + " не найдена.");
+                throw new Exception("Группа предметов " + ID + " не найдена.");
 
             return null;
         }
-
-        internal GroupArmour FindGroupArmour(string ID, bool mustBeExists = true)
-        {
-            foreach (GroupArmour ga in GroupArmours)
-                if (ga.ID == ID)
-                    return ga;
-
-            if (mustBeExists)
-                throw new Exception("Группа доспехов " + ID + " не найдена.");
-
-            return null;
-        }
-
-        internal GroupQuiver FindGroupQuiver(string ID, bool mustBeExists = true)
-        {
-            foreach (GroupQuiver gq in GroupQuivers)
-                if (gq.ID == ID)
-                    return gq;
-
-            if (mustBeExists)
-                throw new Exception("Группа колчанов " + ID + " не найдена.");
-
-            return null;
-        }
-
-        internal Weapon FindWeapon(string ID)
-        {
-            foreach (GroupWeapon gw in GroupWeapons)
-                foreach (Weapon w in gw.Weapons)
-                    if (w.ID == ID)
-                        return w;
-
-            throw new Exception("Оружие " + ID + " не найдено.");
-        }
-
-        internal Armour FindArmour(string ID)
-        {
-            foreach (GroupArmour ga in GroupArmours)
-                foreach (Armour a in ga.Armours)
-                    if (a.ID == ID)
-                        return a;
-
-            throw new Exception("Доспех " + ID + " не найден.");
-        }
-
 
         internal StateCreature FindStateCreature(string ID)
         {

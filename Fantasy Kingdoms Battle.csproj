@@ -63,6 +63,7 @@
     <Compile Include="Source\Types\Creature\TypeAttack.cs" />
     <Compile Include="Source\Types\Creature\TypePerk.cs" />
     <Compile Include="Source\Types\Creature\CreatureAbility.cs" />
+    <Compile Include="Source\Types\Item\GroupItems.cs" />
     <Compile Include="Source\VisualControls\VCIconButton24.cs" />
     <Compile Include="Source\VisualControls\VCImage48.cs" />
     <Compile Include="Source\VisualControls\VCPageButton.cs" />
@@ -160,7 +161,6 @@
     <Compile Include="PlayerCellMenu.cs" />
     <Compile Include="Requirement.cs" />
     <Compile Include="TypeCellMenu.cs" />
-    <Compile Include="Ammunition.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Source\TypeLobby\TypeLobby.cs" />
     <Compile Include="Level.cs" />
@@ -210,7 +210,7 @@
   <ItemGroup>
     <Content Include="FKB.ico" />
     <Content Include="Resources\Config\ComputerPlayers.xml" />
-    <Content Include="Resources\Config\Quivers.xml" />
+    <Content Include="Resources\Config\GroupItems.xml" />
     <Content Include="Resources\Config\SecondarySkills.xml" />
     <Content Include="Resources\Config\Specializations.xml" />
     <Content Include="Resources\Config\StartBonus.xml" />
@@ -259,12 +259,10 @@
     <Content Include="Resources\Main.xml" />
     <Content Include="Resources\Config\Game.xml" />
     <Content Include="Resources\Config\TypeAbilities.xml" />
-    <Content Include="Resources\Config\Armours.xml" />
     <Content Include="Resources\Config\TypeLobby.xml" />
     <Content Include="Resources\Config\Items.xml" />
     <Content Include="Resources\Config\TypeCreatures.xml" />
     <Content Include="Resources\Config\Settings.xml" />
-    <Content Include="Resources\Config\Weapons.xml" />
     <Content Include="Resources\Players.xml" />
     <Content Include="Resources\Versions.xml" />
   </ItemGroup>
