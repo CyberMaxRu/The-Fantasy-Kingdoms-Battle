@@ -60,9 +60,9 @@ namespace Fantasy_Kingdoms_Battle
         internal List<SecondarySkill> SecondarySkills { get; } = new List<SecondarySkill>();
         internal List<PlayerItem> Inventory { get; } = new List<PlayerItem>();
         internal List<CreatureAbility> Abilities { get; } = new List<CreatureAbility>();// Cпособности
-        internal Weapon MeleeWeapon { get; private set; }// Рукопашное оружие (ближнего боя)
-        internal Weapon RangeWeapon { get; private set; }// Стрелковое оружие (дальнего боя)
-        internal Armour Armour { get; private set; }// Доспех        
+        internal Item MeleeWeapon { get; private set; }// Рукопашное оружие (ближнего боя)
+        internal Item RangeWeapon { get; private set; }// Стрелковое оружие (дальнего боя)
+        internal Item Armour { get; private set; }// Доспех        
         internal StateCreature StateCreature { get; private set; }// Состояние (на карте)
         internal bool IsLive { get; private set; } = true;// Существо живо
 

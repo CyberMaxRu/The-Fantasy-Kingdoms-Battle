@@ -31,6 +31,10 @@ namespace Fantasy_Kingdoms_Battle
             DefenseMelee = n.SelectSingleNode("DefenseMelee") != null ? Convert.ToInt32(n.SelectSingleNode("DefenseMelee").InnerText) : 0;
             DefenseArcher = n.SelectSingleNode("DefenseArcher") != null ? Convert.ToInt32(n.SelectSingleNode("DefenseArcher").InnerText) : 0;
             DefenseMagic = n.SelectSingleNode("DefenseMagic") != null ? Convert.ToInt32(n.SelectSingleNode("DefenseMagic").InnerText) : 0;
+            QuantityShots = XmlUtils.GetIntegerNotNull(n.SelectSingleNode("QuantityShots"));
+
+            Debug.Assert(QuantityShots > 0);
+            Debug.Assert(QuantityShots <= 100);
 
 
             UsedByTypeCreature = new List<TypeCreature>();
@@ -85,6 +89,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int DefenseMelee { get; }
         internal int DefenseArcher { get; }
         internal int DefenseMagic { get; }
+        internal int QuantityShots { get; }
 
         protected override int GetLevel() => 0;
         protected override int GetQuantity() => 0;
@@ -93,6 +98,12 @@ namespace Fantasy_Kingdoms_Battle
         protected override void DoPrepareHint()
         {
             base.DoPrepareHint();
+
+            //Program.formMain.formHint.AddStep7Weapon(this);
+            //Program.formMain.formHint.AddStep8Armour(this);
+            //Program.formMain.formHint.AddStep1Header(GroupQuiver.Name, "", GroupQuiver.Description
+            //    + Environment.NewLine + Environment.NewLine + "Боезапас: " + QuantityShots.ToString());
+
         }
 
         internal void TuneDeferredLinks()
@@ -102,6 +113,16 @@ namespace Fantasy_Kingdoms_Battle
                 GroupItems = FormMain.Config.FindGroupItems(nameGroupItems);
                 nameGroupItems = null;
             }
+
+            /*Description += (Description.Length > 0 ? Environment.NewLine : "") + "- Используется:";
+
+            foreach (Weapon w in Weapons)
+            {
+                Description += Environment.NewLine + "  - " + w.ClassHero.Name;
+            }*/
+
+            //Debug.Assert(ClassHero.CategoryCreature != CategoryCreature.Citizen);//Weapon
+
         }
     }
 }

@@ -161,7 +161,6 @@
     <Compile Include="PlayerCellMenu.cs" />
     <Compile Include="Requirement.cs" />
     <Compile Include="TypeCellMenu.cs" />
-    <Compile Include="Ammunition.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Source\TypeLobby\TypeLobby.cs" />
     <Compile Include="Level.cs" />

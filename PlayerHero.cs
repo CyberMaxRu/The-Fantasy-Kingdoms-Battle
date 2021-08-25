@@ -217,7 +217,7 @@ namespace Fantasy_Kingdoms_Battle
             ParametersWithAmmunition.MinMeleeDamage = ParametersWithAmmunition.MaxMeleeDamage / 2;
             if (RangeWeapon != null)
             {
-                ParametersWithAmmunition.MaxArcherDamage = RangeWeapon.DamageRange + (RangeWeapon.DamageRange * ParametersWithAmmunition.Strength / 100);
+                ParametersWithAmmunition.MaxArcherDamage = RangeWeapon.DamageArcher + (RangeWeapon.DamageArcher * ParametersWithAmmunition.Strength / 100);
                 ParametersWithAmmunition.MinArcherDamage = ParametersWithAmmunition.MaxArcherDamage / 2;
             }
             else

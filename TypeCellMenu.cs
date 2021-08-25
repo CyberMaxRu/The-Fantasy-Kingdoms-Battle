@@ -35,6 +35,7 @@ namespace Fantasy_Kingdoms_Battle
         internal Point Coord { get; }// Координаты ячейки
         internal int Layer { get; }// Визуальный слой ячейки
         internal Entity Entity { get; set; }// Получаемая сущность
+        internal GroupItems GroupItems { get; }// Исследуемая группа предметов
         internal int Cost { get; set; }// Стоимость
         internal TypeConstruction TypeConstruction { get; set; }// Строимое сооружение
         internal List<Requirement> Requirements { get; } = new List<Requirement>();
@@ -44,13 +45,10 @@ namespace Fantasy_Kingdoms_Battle
             Entity = FormMain.Config.FindItem(nameTypeObject, false);
 
             if (Entity is null)
+                Entity = FormMain.Config.FindGroupItems(nameTypeObject, false);
+
+            if (Entity is null)
                 Entity = FormMain.Config.FindAbility(nameTypeObject, false);
-
-            if (Entity is null)
-                Entity = FormMain.Config.FindGroupWeapon(nameTypeObject, false);
-
-            if (Entity is null)
-                Entity = FormMain.Config.FindGroupArmour(nameTypeObject, false);
 
             if (Entity is null)
             {
