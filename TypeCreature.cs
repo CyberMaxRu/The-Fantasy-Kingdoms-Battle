@@ -94,9 +94,9 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Item a;
 
-                foreach (XmlNode l in na.SelectNodes("Ability"))
+                foreach (XmlNode l in na.SelectNodes("Item"))
                 {
-                    a = FormMain.Config.FindAbility(l.InnerText);
+                    a = FormMain.Config.FindItem(XmlUtils.GetStringNotNull(l.SelectSingleNode("ID")));
 
                     // Проверяем, что такая способность не повторяется
                     foreach (TypeAbility a2 in Abilities)
@@ -105,7 +105,7 @@ namespace Fantasy_Kingdoms_Battle
                             throw new Exception("Способность " + a.ID + " повторяется в списке способностей героя.");
                     }
 
-                    Abilities.Add(a);
+                    Inventory.Add(a, XmlUtils.GetIntegerNotNull(l.SelectSingleNode("Quantity")));
                 }
             }
 
