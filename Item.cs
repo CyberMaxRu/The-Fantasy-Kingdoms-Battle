@@ -13,12 +13,12 @@ namespace Fantasy_Kingdoms_Battle
     // Класс предмета
     internal sealed class Item : Entity
     {
-        private string nameGroupItems;
+        private string nameGroupItem;
 
         public Item(XmlNode n) : base(n)
         {
             CategoryItem = (CategoryItem)Enum.Parse(typeof(CategoryItem), n.SelectSingleNode("CategoryItem").InnerText);
-            nameGroupItems = XmlUtils.GetStringWithNull(n.SelectSingleNode("GroupItems"));
+            nameGroupItem = XmlUtils.GetStringWithNull(n.SelectSingleNode("GroupItem"));
 
 
             TimeHit = n.SelectSingleNode("TimeHit") == null ? 0 : Convert.ToInt32(n.SelectSingleNode("TimeHit").InnerText);
@@ -84,7 +84,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal CategoryItem CategoryItem { get; }
-        internal GroupItems GroupItems { get; private set; }
+        internal GroupItem GroupItem { get; private set; }
         internal List<TypeCreature> UsedByTypeCreature { get; }
         internal int Position { get; }
         internal int TimeHit { get; }
@@ -114,10 +114,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void TuneDeferredLinks()
         {
-            if (nameGroupItems != null)
+            if (nameGroupItem != null)
             {
-                GroupItems = FormMain.Config.FindGroupItems(nameGroupItems);
-                nameGroupItems = null;
+                GroupItem = FormMain.Config.FindGroupItem(nameGroupItem);
+                nameGroupItem = null;
             }
 
             /*Description += (Description.Length > 0 ? Environment.NewLine : "") + "- Используется:";
