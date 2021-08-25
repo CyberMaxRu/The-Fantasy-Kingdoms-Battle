@@ -31,7 +31,7 @@ namespace Fantasy_Kingdoms_Battle
         bool ICell.NormalImage() => true;
         int ICell.ImageIndex() => Item.ImageIndex;
         int ICell.Level() => 0;
-        int ICell.Quantity() => !OwnerIsPlayer ? 0 : Quantity;
+        int ICell.Quantity() => !OwnerIsPlayer ? 0 : Quantity == 1 ? 0 : Quantity;
         string ICell.Cost() => null;
 
         void ICell.PrepareHint()
