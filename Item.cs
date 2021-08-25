@@ -13,10 +13,17 @@ namespace Fantasy_Kingdoms_Battle
     // Класс предмета
     internal sealed class Item : Entity
     {
+        private string nameGroupItems;
+
         public Item(XmlNode n) : base(n)
         {
             CategoryItem = (CategoryItem)Enum.Parse(typeof(CategoryItem), n.SelectSingleNode("CategoryItem").InnerText);
+            nameGroupItems = XmlUtils.GetStringWithNull(n.SelectSingleNode("GroupItems"));
+
+
             TimeHit = n.SelectSingleNode("TimeHit") == null ? 0 : Convert.ToInt32(n.SelectSingleNode("TimeHit").InnerText);
+            if (n.SelectSingleNode("VelocityMissile") != null)
+                VelocityMissile = Convert.ToDouble(n.SelectSingleNode("VelocityMissile").InnerText.Replace(".", ","));
 
             DamageMelee = n.SelectSingleNode("DamageMelee") != null ? Convert.ToInt32(n.SelectSingleNode("DamageMelee").InnerText) : 0;
             DamageArcher = n.SelectSingleNode("DamageArcher") != null ? Convert.ToInt32(n.SelectSingleNode("DamageArcher").InnerText) : 0;
@@ -61,15 +68,17 @@ namespace Fantasy_Kingdoms_Battle
                 if (i.Name == Name)
                     throw new Exception("В конфигурации предметов повторяется Name = " + Name);
 
-                if (i.ImageIndex == ImageIndex)
-                    throw new Exception("В конфигурации предметов повторяется ImageIndex = " + ImageIndex.ToString());
+                //if (i.ImageIndex == ImageIndex)
+                //    throw new Exception("В конфигурации предметов повторяется ImageIndex = " + ImageIndex.ToString());
             }
         }
 
         internal CategoryItem CategoryItem { get; }
+        internal GroupItems GroupItems { get; private set; }
         internal List<TypeCreature> UsedByTypeCreature { get; }
-        internal int TimeHit { get; }
         internal int Position { get; }
+        internal int TimeHit { get; }
+        internal double VelocityMissile { get; }
         internal int DamageMelee { get; }
         internal int DamageArcher { get; }
         internal int DamageMagic { get; }
@@ -84,6 +93,15 @@ namespace Fantasy_Kingdoms_Battle
         protected override void DoPrepareHint()
         {
             base.DoPrepareHint();
+        }
+
+        internal void TuneDeferredLinks()
+        {
+            if (nameGroupItems != null)
+            {
+                GroupItems = FormMain.Config.FindGroupItems(nameGroupItems);
+                nameGroupItems = null;
+            }
         }
     }
 }

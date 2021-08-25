@@ -191,6 +191,9 @@ namespace Fantasy_Kingdoms_Battle
             foreach (GroupQuiver gq in GroupQuivers)
                 gq.TuneDeferredLinks();
 
+            foreach (Item i in Items)
+                i.TuneDeferredLinks();
+
             foreach (TypeCreature tc in TypeCreatures)
                 tc.TuneDeferredLinks();
 
@@ -371,6 +374,18 @@ namespace Fantasy_Kingdoms_Battle
 
             if (mustBeExists)
                 throw new Exception("Способность " + ID + " не найдена.");
+
+            return null;
+        }
+
+        internal GroupItems FindGroupItems(string ID, bool mustBeExists = true)
+        {
+            foreach (GroupItems gi in GroupItems)
+                if (gi.ID == ID)
+                    return gi;
+
+            if (mustBeExists)
+                throw new Exception("Группа предметов " + ID + " не найдена.");
 
             return null;
         }
