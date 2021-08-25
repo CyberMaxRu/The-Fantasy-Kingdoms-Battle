@@ -16,10 +16,10 @@ namespace Fantasy_Kingdoms_Battle
     {
         public StateCreature(XmlNode n)
         {
-            ID = XmlUtils.GetStringNotNull(n.SelectSingleNode("ID"));
-            Name = XmlUtils.GetStringNotNull(n.SelectSingleNode("Name"));
-            Description = XmlUtils.GetDescription(n.SelectSingleNode("Description"));
-            ImageIndex = XmlUtils.GetInteger(n.SelectSingleNode("ImageIndex"));
+            ID = XmlUtils.GetStringNotNull(n, "ID");
+            Name = XmlUtils.GetStringNotNull(n, "Name");
+            Description = XmlUtils.GetDescription(n, "Description");
+            ImageIndex = XmlUtils.GetInteger(n, "ImageIndex");
 
             Debug.Assert(ID.Length > 0);
             Debug.Assert(Name.Length > 0);

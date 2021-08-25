@@ -13,7 +13,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         public GroupItem(XmlNode n) : base(n)
         {
-            ShortName = XmlUtils.GetStringNotNull(n.SelectSingleNode("ShortName"));
+            ShortName = XmlUtils.GetStringNotNull(n, "ShortName");
 
             // Проверяем, что таких ID, Name и ImageIndex нет
             foreach (GroupItem gi in FormMain.Config.GroupItem)

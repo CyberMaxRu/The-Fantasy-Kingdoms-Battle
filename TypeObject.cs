@@ -9,10 +9,10 @@ namespace Fantasy_Kingdoms_Battle
     {
         public TypeObject(XmlNode n)
         {
-            ID = GetStringNotNull(n.SelectSingleNode("ID"));
-            Name = GetStringNotNull(n.SelectSingleNode("Name"));
-            Description = GetDescription(n.SelectSingleNode("Description"));
-            ImageIndex = GetIntegerNotNull(n.SelectSingleNode("ImageIndex"));
+            ID = GetStringNotNull(n, "ID");
+            Name = GetStringNotNull(n, "Name");
+            Description = GetDescription(n, "Description");
+            ImageIndex = GetIntegerNotNull(n, "ImageIndex");
             if (ImageIndex != FormMain.IMAGE_INDEX_CURRENT_AVATAR)
                 ImageIndex--;
             ImageIndex += ShiftImageIndex();

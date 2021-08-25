@@ -8,8 +8,8 @@ namespace Fantasy_Kingdoms_Battle
     {
         public KindCreature(XmlNode n)
         {
-            ID = XmlUtils.GetStringNotNull(n.SelectSingleNode("ID"));
-            Name = XmlUtils.GetStringNotNull(n.SelectSingleNode("Name"));
+            ID = XmlUtils.GetStringNotNull(n, "ID");
+            Name = XmlUtils.GetStringNotNull(n, "Name");
 
             // Проверяем, что таких же ID и наименования нет
             foreach (KindCreature kc in FormMain.Config.KindCreatures)

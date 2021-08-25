@@ -425,7 +425,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(GridSize % 2 == 0);
             GridSizeHalf = GridSize / 2;
 
-            MaxLengthObjectName = XmlUtils.GetIntegerNotNull(xmlDoc.SelectSingleNode("Game/Interface/MaxLengthObjectName"));
+            MaxLengthObjectName = XmlUtils.GetIntegerNotNull(xmlDoc, "Game/Interface/MaxLengthObjectName");
             Debug.Assert(MaxLengthObjectName > 20);
             Debug.Assert(MaxLengthObjectName <= 63);
 
@@ -436,10 +436,10 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(ShiftForBorder.Y >= 0);
             Debug.Assert(ShiftForBorder.Y <= 10);
 
-            ImageIndexFirstAvatar = XmlUtils.GetIntegerNotNull(xmlDoc.SelectSingleNode("Game/Interface/ImageIndexFirstAvatar"));
-            QuantityInternalAvatars = XmlUtils.GetIntegerNotNull(xmlDoc.SelectSingleNode("Game/Interface/QuantityInternalAvatars"));
+            ImageIndexFirstAvatar = XmlUtils.GetIntegerNotNull(xmlDoc, "Game/Interface/ImageIndexFirstAvatar");
+            QuantityInternalAvatars = XmlUtils.GetIntegerNotNull(xmlDoc, "Game/Interface/QuantityInternalAvatars");
             ImageIndexExternalAvatar = ImageIndexFirstAvatar + QuantityInternalAvatars;
-            MaxQuantityExternalAvatars = XmlUtils.GetIntegerNotNull(xmlDoc.SelectSingleNode("Game/Interface/MaxQuantityExternalAvatars"));
+            MaxQuantityExternalAvatars = XmlUtils.GetIntegerNotNull(xmlDoc, "Game/Interface/MaxQuantityExternalAvatars");
             Debug.Assert(ImageIndexFirstAvatar > 0);
             Debug.Assert(ImageIndexFirstAvatar < 200);
             Debug.Assert(QuantityInternalAvatars > 1);
@@ -499,13 +499,13 @@ namespace Fantasy_Kingdoms_Battle
             MaxStatPointPerLevel = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Heroes/MaxStatPointPerLevel").InnerText);
             Debug.Assert(MaxStatPointPerLevel >= 5);
             Debug.Assert(MaxStatPointPerLevel <= 100);
-            double timeInTumbstone = XmlUtils.GetDouble(xmlDoc.SelectSingleNode("Game/Heroes/TimeInTumbstone"));
+            double timeInTumbstone = XmlUtils.GetDouble(xmlDoc, "Game/Heroes/TimeInTumbstone");
             Debug.Assert(timeInTumbstone >= 0);
             Debug.Assert(timeInTumbstone <= 10);
             StepsHeroInTumbstone = (int)(timeInTumbstone * StepsInSecond);
             Debug.Assert(StepsHeroInTumbstone >= 10);
             Debug.Assert(StepsHeroInTumbstone <= 1000);
-            double timeToDisappearance = XmlUtils.GetDouble(xmlDoc.SelectSingleNode("Game/Heroes/TimeToDisappearance"));
+            double timeToDisappearance = XmlUtils.GetDouble(xmlDoc, "Game/Heroes/TimeToDisappearance");
             Debug.Assert(timeToDisappearance >= 0);
             Debug.Assert(timeToDisappearance <= 10);
             UnitStepsTimeToDisappearance = (int)(timeToDisappearance * StepsInSecond);
@@ -589,7 +589,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
                 else
                 {*/
-                    if (XmlUtils.GetBool(n.SelectSingleNode("Bold"), false))
+                    if (XmlUtils.GetBool(n, "Bold", false))
                         return new Font(name, Convert.ToInt32(n.SelectSingleNode("Size").InnerText), FontStyle.Bold);
                     else
                         return new Font(name, Convert.ToInt32(n.SelectSingleNode("Size").InnerText));

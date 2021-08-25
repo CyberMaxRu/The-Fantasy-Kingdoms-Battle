@@ -13,8 +13,8 @@ namespace Fantasy_Kingdoms_Battle
     {
         public TypeReward(XmlNode n)
         {
-            Gold = XmlUtils.GetInteger(n.SelectSingleNode("Gold"));
-            Greatness = XmlUtils.GetInteger(n.SelectSingleNode("Greatness"));
+            Gold = XmlUtils.GetInteger(n, "Gold");
+            Greatness = XmlUtils.GetInteger(n, "Greatness");
 
             Debug.Assert(Gold >= 0);
             Debug.Assert(Gold <= 50_000);

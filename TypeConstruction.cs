@@ -29,14 +29,14 @@ namespace Fantasy_Kingdoms_Battle
                 Page = (Page)Enum.Parse(typeof(Page), n.SelectSingleNode("Page").InnerText);
             else
                 Page = Page.None;
-            Line = XmlUtils.GetInteger(n.SelectSingleNode("Line"));
-            Pos = XmlUtils.GetInteger(n.SelectSingleNode("Pos"));
-            HasTreasury = XmlUtils.GetBool(n.SelectSingleNode("HasTreasury"), false);
-            GoldByConstruction = XmlUtils.GetInteger(n.SelectSingleNode("GoldByConstruction"));
-            DefaultLevel = XmlUtils.GetInteger(n.SelectSingleNode("DefaultLevel"));
-            MaxLevel = XmlUtils.GetInteger(n.SelectSingleNode("MaxLevel"));
-            ResearchesPerDay = XmlUtils.GetInteger(n.SelectSingleNode("ResearchesPerDay"));
-            PlayerCanBuild = XmlUtils.GetBool(n.SelectSingleNode("PlayerCanBuild"), true);
+            Line = XmlUtils.GetInteger(n, "Line");
+            Pos = XmlUtils.GetInteger(n, "Pos");
+            HasTreasury = XmlUtils.GetBool(n, "HasTreasury", false);
+            GoldByConstruction = XmlUtils.GetInteger(n, "GoldByConstruction");
+            DefaultLevel = XmlUtils.GetInteger(n, "DefaultLevel");
+            MaxLevel = XmlUtils.GetInteger(n, "MaxLevel");
+            ResearchesPerDay = XmlUtils.GetInteger(n, "ResearchesPerDay");
+            PlayerCanBuild = XmlUtils.GetBool(n, "PlayerCanBuild", true);
 
             // Проверяем, что таких же ID и наименования нет
             foreach (TypeConstruction tec in FormMain.Config.TypeConstructions)
@@ -46,7 +46,7 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(tec.ImageIndex != ImageIndex);
             }
 
-            uriSoundSelect = new Uri(Program.formMain.dirResources + @"Sound\Interface\ConstructionSelect\" + XmlUtils.GetStringNotNull(n.SelectSingleNode("SoundSelect")));
+            uriSoundSelect = new Uri(Program.formMain.dirResources + @"Sound\Interface\ConstructionSelect\" + XmlUtils.GetStringNotNull(n, "SoundSelect"));
 
             // Загружаем информацию об уровнях
             if ((IsInternalConstruction || (Category == CategoryConstruction.External) || (n.SelectSingleNode("Levels") != null)) && (MaxLevel > 0))
@@ -91,7 +91,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Загружаем исследования
-            int layersResearches = XmlUtils.GetInteger(n.SelectSingleNode("LayersCellMenu"));
+            int layersResearches = XmlUtils.GetInteger(n, "LayersCellMenu");
             XmlNode nr = n.SelectSingleNode("CellsMenu");
             if (nr != null)
             {
@@ -124,8 +124,8 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
-            MaxHeroes = XmlUtils.GetInteger(n.SelectSingleNode("MaxHeroes"));
-            nameTypePlaceForConstruct = XmlUtils.GetString(n.SelectSingleNode("TypePlaceForConstruct"));
+            MaxHeroes = XmlUtils.GetInteger(n, "MaxHeroes");
+            nameTypePlaceForConstruct = XmlUtils.GetString(n, "TypePlaceForConstruct");
             Debug.Assert(Name != nameTypePlaceForConstruct);
 
             // Информация о награде
@@ -157,11 +157,11 @@ namespace Fantasy_Kingdoms_Battle
 
                 if (Category != CategoryConstruction.Temple)
                 {
-                    Debug.Assert(nameTypePlaceForConstruct == "");
+                    Debug.Assert(nameTypePlaceForConstruct.Length == 0);
                 }
                 else
                 {
-                    Debug.Assert(nameTypePlaceForConstruct != "");
+                    Debug.Assert(nameTypePlaceForConstruct.Length > 0);
                 }
             }
             else
@@ -178,15 +178,15 @@ namespace Fantasy_Kingdoms_Battle
                 }
                 else if (Category == CategoryConstruction.Place)
                 {
-                    Debug.Assert(nameTypePlaceForConstruct != "");
+                    Debug.Assert(nameTypePlaceForConstruct.Length > 0);
                 }
                 else if (Category == CategoryConstruction.BasePlace)
                 {
-                    Debug.Assert(nameTypePlaceForConstruct == "");
+                    Debug.Assert(nameTypePlaceForConstruct.Length == 0);
                 }
                 else
                 { 
-                    Debug.Assert(nameTypePlaceForConstruct != "");
+                    Debug.Assert(nameTypePlaceForConstruct.Length > 0);
                 }
             }
 
@@ -303,11 +303,11 @@ namespace Fantasy_Kingdoms_Battle
         public MonsterLevelLair(XmlNode n)
         {
             idMonster = n.SelectSingleNode("ID").InnerText;
-            StartQuantity = XmlUtils.GetInteger(n.SelectSingleNode("StartQuantity"));
-            MaxQuantity = XmlUtils.GetInteger(n.SelectSingleNode("MaxQuantity"));
-            Level = XmlUtils.GetInteger(n.SelectSingleNode("Level"));
-            DaysRespawn = XmlUtils.GetInteger(n.SelectSingleNode("DaysRespawn"));
-            QuantityRespawn = XmlUtils.GetInteger(n.SelectSingleNode("QuantityRespawn"));
+            StartQuantity = XmlUtils.GetInteger(n, "StartQuantity");
+            MaxQuantity = XmlUtils.GetInteger(n, "MaxQuantity");
+            Level = XmlUtils.GetInteger(n, "Level");
+            DaysRespawn = XmlUtils.GetInteger(n, "DaysRespawn");
+            QuantityRespawn = XmlUtils.GetInteger(n, "QuantityRespawn");
 
             Debug.Assert(idMonster.Length > 0);
             Debug.Assert(StartQuantity >= 0);

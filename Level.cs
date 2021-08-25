@@ -15,11 +15,11 @@ namespace Fantasy_Kingdoms_Battle
         {
             Pos = Convert.ToInt32(n.SelectSingleNode("Pos").InnerText);
             Cost = Convert.ToInt32(n.SelectSingleNode("Cost").InnerText);
-            Builders = XmlUtils.GetIntegerNotNull(n.SelectSingleNode("Builders"));
-            Income = n.SelectSingleNode("Income").InnerText != null ? Convert.ToInt32(n.SelectSingleNode("Income").InnerText) : 0;
-            GreatnessByConstruction = XmlUtils.GetInteger(n.SelectSingleNode("GreatnessByConstruction"));
-            GreatnessPerDay = XmlUtils.GetInteger(n.SelectSingleNode("GreatnessPerDay"));
-            BuildersPerDay = XmlUtils.GetInteger(n.SelectSingleNode("BuildersPerDay"));
+            Builders = XmlUtils.GetIntegerNotNull(n, "Builders");
+            Income = XmlUtils.GetInteger(n, "Income");
+            GreatnessByConstruction = XmlUtils.GetInteger(n, "GreatnessByConstruction");
+            GreatnessPerDay = XmlUtils.GetInteger(n, "GreatnessPerDay");
+            BuildersPerDay = XmlUtils.GetInteger(n, "BuildersPerDay");
             MaxHeroes = n.SelectSingleNode("MaxHeroes") != null ? Convert.ToInt32(n.SelectSingleNode("MaxHeroes").InnerText) : 0;
 
             Debug.Assert(Pos > 0);

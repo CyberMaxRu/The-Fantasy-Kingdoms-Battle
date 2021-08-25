@@ -13,21 +13,21 @@ namespace Fantasy_Kingdoms_Battle
         private string nameMeleeWeapon;
         private string nameRangeWeapon;
         private string nameArmour;
-        private string nameFromTypeHero;
-        private string surnameFromTypeHero;
+        private string nameFromTypeHero = "";
+        private string surnameFromTypeHero = "";
 
         public TypeCreature(XmlNode n) : base(n)
         {
             CategoryCreature = (CategoryCreature)Enum.Parse(typeof(CategoryCreature), n.SelectSingleNode("CategoryCreature").InnerText);
-            KindCreature = FormMain.Config.FindKindCreature(XmlUtils.GetStringNotNull(n.SelectSingleNode("KindCreature")));
-            MaxLevel = XmlUtils.GetInteger(n.SelectSingleNode("MaxLevel"));
-            DefaultPositionPriority = XmlUtils.GetInteger(n.SelectSingleNode("DefaultPositionPriority"));
-            QuantityArrows = XmlUtils.GetInteger(n.SelectSingleNode("QuantityArrows"));
+            KindCreature = FormMain.Config.FindKindCreature(XmlUtils.GetStringNotNull(n, "KindCreature"));
+            MaxLevel = XmlUtils.GetInteger(n, "MaxLevel");
+            DefaultPositionPriority = XmlUtils.GetInteger(n, "DefaultPositionPriority");
+            QuantityArrows = XmlUtils.GetInteger(n, "QuantityArrows");
             if (CategoryCreature != CategoryCreature.Citizen)
             {
-                TypeAttackMelee = FormMain.Config.FindTypeAttack(XmlUtils.GetString(n.SelectSingleNode("TypeAttackMelee")));
+                TypeAttackMelee = FormMain.Config.FindTypeAttack(XmlUtils.GetString(n, "TypeAttackMelee"));
                 Debug.Assert(TypeAttackMelee.KindAttack == KindAttack.Melee);
-                string typeAttackRange = XmlUtils.GetString(n.SelectSingleNode("TypeAttackRange"));
+                string typeAttackRange = XmlUtils.GetString(n, "TypeAttackRange");
                 if (typeAttackRange.Length > 0)
                 {
                     TypeAttackRange = FormMain.Config.FindTypeAttack(typeAttackRange);
@@ -35,7 +35,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
             if (n.SelectSingleNode("PersistentState") != null)
-                PersistentStateHeroAtMap = FormMain.Config.FindStateCreature(XmlUtils.GetStringNotNull(n.SelectSingleNode("PersistentState")));
+                PersistentStateHeroAtMap = FormMain.Config.FindStateCreature(XmlUtils.GetStringNotNull(n, "PersistentState"));
             else
                 PersistentStateHeroAtMap = FormMain.Config.FindStateCreature(NameStateCreature.Nothing.ToString());
             if (CategoryCreature == CategoryCreature.Hero)
@@ -44,9 +44,9 @@ namespace Fantasy_Kingdoms_Battle
                 Construction = FormMain.Config.FindTypeConstruction(n.SelectSingleNode("Construction").InnerText);
                 Construction.TrainedHero = this;
                 CanBuild = Convert.ToBoolean(n.SelectSingleNode("CanBuild").InnerText);
-                PrefixName = XmlUtils.GetString(n.SelectSingleNode("PrefixName"));
-                nameFromTypeHero = XmlUtils.GetStringWithNull(n.SelectSingleNode("NameFromTypeHero"));
-                surnameFromTypeHero = XmlUtils.GetStringWithNull(n.SelectSingleNode("SurnameFromTypeHero"));
+                PrefixName = XmlUtils.GetString(n, "PrefixName");
+                nameFromTypeHero = XmlUtils.GetString(n, "NameFromTypeHero");
+                surnameFromTypeHero = XmlUtils.GetString(n, "SurnameFromTypeHero");
             }
 
             //Debug.Assert(Cost > 0);
@@ -96,7 +96,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 foreach (XmlNode l in ni.SelectNodes("Item"))
                 {
-                    a = FormMain.Config.FindItem(XmlUtils.GetStringNotNull(l.SelectSingleNode("ID")));
+                    a = FormMain.Config.FindItem(XmlUtils.GetStringNotNull(l, "ID"));
 
                     // Проверяем, что такая способность не повторяется
                     foreach (TypeAbility a2 in Abilities)
@@ -105,7 +105,7 @@ namespace Fantasy_Kingdoms_Battle
                             throw new Exception("Способность " + a.ID + " повторяется в списке способностей героя.");
                     }
 
-                    Inventory.Add(new PlayerItem(a, XmlUtils.GetIntegerNotNull(l.SelectSingleNode("Quantity")), true));
+                    Inventory.Add(new PlayerItem(a, XmlUtils.GetIntegerNotNull(l, "Quantity"), true));
                 }
             }
 
@@ -167,26 +167,26 @@ namespace Fantasy_Kingdoms_Battle
 
                 if (Cost > 0)
                 {
-                    Debug.Assert(((Names.Count > 0) && (nameFromTypeHero == null)) || ((Names.Count == 0) && (nameFromTypeHero != null)));
-                    Debug.Assert(((Surnames.Count > 0) && (surnameFromTypeHero == null)) || ((Surnames.Count == 0) && (surnameFromTypeHero != null)));
+                    Debug.Assert(((Names.Count > 0) && (nameFromTypeHero.Length == 0)) || ((Names.Count == 0) && (nameFromTypeHero.Length > 0)));
+                    Debug.Assert(((Surnames.Count > 0) && (surnameFromTypeHero.Length == 0)) || ((Surnames.Count == 0) && (surnameFromTypeHero.Length > 0)));
                 }
             }
 
             // Загружаем дефолтное оружие и доспехи
-            nameMeleeWeapon = XmlUtils.GetStringWithNull(n.SelectSingleNode("MeleeWeapon"));
-            nameRangeWeapon = XmlUtils.GetStringWithNull(n.SelectSingleNode("RangeWeapon"));
-            nameArmour = XmlUtils.GetStringWithNull(n.SelectSingleNode("Armour"));
+            nameMeleeWeapon = XmlUtils.GetString(n, "MeleeWeapon");
+            nameRangeWeapon = XmlUtils.GetString(n, "RangeWeapon");
+            nameArmour = XmlUtils.GetString(n, "Armour");
 
             //Debug.Assert(nameMeleeWeapon != "");
             //Debug.Assert(nameArmour != "");
 
             if (nameRangeWeapon != null)
             {
-                Debug.Assert(QuantityArrows > 0);
+                //Debug.Assert(QuantityArrows > 0);
             }
             else
             {
-                Debug.Assert(QuantityArrows == 0);
+                //Debug.Assert(QuantityArrows == 0);
             }
 
 
@@ -248,13 +248,13 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.TuneDeferredLinks();
 
-            if (nameFromTypeHero != null)
+            if (nameFromTypeHero.Length > 0)
                 NameFromTypeHero = FormMain.Config.FindTypeCreature(nameFromTypeHero);
-            if (surnameFromTypeHero != null)
+            if (surnameFromTypeHero.Length > 0)
                 SurnameFromTypeHero = FormMain.Config.FindTypeCreature(surnameFromTypeHero);
 
-            nameFromTypeHero = null;
-            surnameFromTypeHero = null;
+            nameFromTypeHero = "";
+            surnameFromTypeHero = "";
 
             /*foreach (Ability a in Abilities)
                 if (a.ClassesHeroes.IndexOf(this) == -1)
@@ -267,26 +267,26 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Загружаем дефолтное оружие и доспехи
-            if (nameMeleeWeapon != null)
+            if (nameMeleeWeapon.Length > 0)
             {
                 WeaponMelee = FormMain.Config.FindItem(nameMeleeWeapon);
-                nameMeleeWeapon = null;
+                nameMeleeWeapon = "";
 
                 //Debug.Assert(WeaponMelee.ClassHero == this);
             }
 
-            if (nameRangeWeapon != null)
+            if (nameRangeWeapon.Length > 0)
             {
                 WeaponRange = FormMain.Config.FindItem(nameRangeWeapon);
-                nameRangeWeapon = null;
+                nameRangeWeapon = "";
 
                 //Debug.Assert(WeaponMelee.ClassHero == this);
             }
 
-            if (nameArmour != null)
+            if (nameArmour.Length > 0)
             {
                 Armour = FormMain.Config.FindItem(nameArmour);
-                nameArmour = null;
+                nameArmour = "";
 
                 //Debug.Assert(Armour.ClassHero == this);
             }

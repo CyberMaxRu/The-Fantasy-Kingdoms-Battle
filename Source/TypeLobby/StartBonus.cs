@@ -17,15 +17,15 @@ namespace Fantasy_Kingdoms_Battle
 
         public StartBonus(XmlNode n)
         {
-            Gold = XmlUtils.GetInteger(n.SelectSingleNode("Gold"));
-            Greatness = XmlUtils.GetInteger(n.SelectSingleNode("Greatness"));
-            Builders = XmlUtils.GetInteger(n.SelectSingleNode("Builders"));
-            Scouting = XmlUtils.GetInteger(n.SelectSingleNode("Scouting"));
-            PeasantHouse = XmlUtils.GetInteger(n.SelectSingleNode("PeasantHouse"));
-            HolyPlace = XmlUtils.GetInteger(n.SelectSingleNode("HolyPlace"));
-            TradePlace = XmlUtils.GetInteger(n.SelectSingleNode("TradePlace"));
-            Points = XmlUtils.GetInteger(n.SelectSingleNode("Points"));
-            MaxQuantity = XmlUtils.GetInteger(n.SelectSingleNode("MaxQuantity"));
+            Gold = XmlUtils.GetInteger(n, "Gold");
+            Greatness = XmlUtils.GetInteger(n, "Greatness");
+            Builders = XmlUtils.GetInteger(n, "Builders");
+            Scouting = XmlUtils.GetInteger(n, "Scouting");
+            PeasantHouse = XmlUtils.GetInteger(n, "PeasantHouse");
+            HolyPlace = XmlUtils.GetInteger(n, "HolyPlace");
+            TradePlace = XmlUtils.GetInteger(n, "TradePlace");
+            Points = XmlUtils.GetInteger(n, "Points");
+            MaxQuantity = XmlUtils.GetInteger(n, "MaxQuantity");
             if (MaxQuantity == 0)
                 MaxQuantity = 10;
             CurrentQuantity = 0;

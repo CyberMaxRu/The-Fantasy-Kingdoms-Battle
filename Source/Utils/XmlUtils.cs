@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Xml;
+using System.Diagnostics;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -13,56 +14,72 @@ namespace Fantasy_Kingdoms_Battle
             if (nr != null)
             {
                 foreach (XmlNode r in nr.SelectNodes("Requirement"))
-                    list.Add(new Requirement(r.SelectSingleNode("TypeConstruction").InnerText, GetInteger(r.SelectSingleNode("Level"))));
+                    list.Add(new Requirement(r.SelectSingleNode("TypeConstruction").InnerText, GetInteger(r, "Level")));
             }
         }
 
-        internal static int GetInteger(XmlNode n)
+        internal static int GetInteger(XmlNode n, string name)
         {
-            return n != null ? Convert.ToInt32(n.InnerText) : 0;
+            XmlNode nn = n.SelectSingleNode(name);
+            //Debug.Assert(nn != null, $"Узел {name} отсутствует.");
+
+            return nn is null ? 0 : string.IsNullOrEmpty(nn.InnerText) ? 0 : Convert.ToInt32(nn.InnerText);
         }
 
-        internal static int GetIntegerNotNull(XmlNode n)
+        internal static int GetIntegerNotNull(XmlNode n, string name)
         {
-            return Convert.ToInt32(n.InnerText);
+            XmlNode nn = n.SelectSingleNode(name);
+            Debug.Assert(nn != null, $"Узел {name} отсутствует.");
+            Debug.Assert(nn.InnerText != null, $"У узла {name} нет значения.");
+
+            return Convert.ToInt32(nn.InnerText);
         }
 
-        internal static string GetString(XmlNode n)
+        internal static string GetString(XmlNode n, string name)
         {
-            return n != null ? n.InnerText : "";
+            string s = n.SelectSingleNode(name)?.InnerText;
+            return s is null ? "" : s;
         }
 
-        internal static string GetStringWithNull(XmlNode n)
+        internal static string GetStringNotNull(XmlNode n, string name)
         {
-            return n?.InnerText;
+            XmlNode nn = n.SelectSingleNode(name);
+            Debug.Assert(nn != null, $"Узел {name} отсутствует.");
+            Debug.Assert(nn.InnerText.Length > 0, $"Узел {name} пуст.");
+
+            return nn.InnerText;
         }
 
-        internal static string GetStringNotNull(XmlNode n)
+        internal static string GetDescription(XmlNode n, string name)
         {
-            if (n == null)
-                throw new Exception("Параметр пуст");
-
-            return n.InnerText;
+            return GetString(n, name).Replace("//", Environment.NewLine);
+            //return GetStringNotNull(n, name).Replace("//", Environment.NewLine);
         }
 
-        internal static string GetDescription(XmlNode n)
+        internal static bool GetBool(XmlNode n, string name, bool defValue)
         {
-            return GetStringNotNull(n).Replace("//", Environment.NewLine);
+            XmlNode nn = n.SelectSingleNode(name);
+            //Debug.Assert(nn != null, $"Узел {name} отсутствует.");
+
+            return nn is null ? defValue : Convert.ToBoolean(nn.InnerText);
+
         }
 
-        internal static bool GetBool(XmlNode n, bool defValue)
+        internal static bool GetBoolNotNull(XmlNode n, string name)
         {
-            return n != null ? Convert.ToBoolean(n.InnerText) : defValue;
+            XmlNode nn = n.SelectSingleNode(name);
+            Debug.Assert(nn != null, $"Узел {name} отсутствует.");
+            Debug.Assert(nn.InnerText != null, $"У узла {name} нет значения.");
+
+            return Convert.ToBoolean(nn.InnerText);
         }
 
-        internal static bool GetBoolNotNull(XmlNode n)
+        internal static double GetDouble(XmlNode n, string name)
         {
-            return Convert.ToBoolean(n.InnerText);
-        }
+            XmlNode nn = n.SelectSingleNode(name);
+            Debug.Assert(nn != null, $"Узел {name} отсутствует.");
 
-        internal static double GetDouble(XmlNode n)
-        {
-            return n != null ? Convert.ToDouble(n.InnerText.Replace(".", ",")) : 0;
+            return n is null ? 0 : Convert.ToDouble(nn.InnerText.Replace(".", ","));
         }
 
         public static Version GetVersionFromXml(XmlNode n, string name)

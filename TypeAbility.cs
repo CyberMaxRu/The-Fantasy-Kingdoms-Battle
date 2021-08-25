@@ -24,7 +24,7 @@ namespace Fantasy_Kingdoms_Battle
             MinUnitLevel = Convert.ToInt32(n.SelectSingleNode("MinUnitLevel").InnerText);
             Ranged = Convert.ToBoolean(n.SelectSingleNode("Ranged").InnerText);
             MissileVelocity = n.SelectSingleNode("MissileVelocity") != null ? Convert.ToInt32(n.SelectSingleNode("MissileVelocity").InnerText) : 0;
-            AoeRadius = XmlUtils.GetInteger(n.SelectSingleNode("AoeRadius"));
+            AoeRadius = XmlUtils.GetInteger(n, "AoeRadius");
             SkillModificator = Convert.ToDouble(n.SelectSingleNode("SkillModif").InnerText);
             CoolDown = Convert.ToInt32(n.SelectSingleNode("CoolDown").InnerText);
             ManaCost = n.SelectSingleNode("ManaCost") != null ? Convert.ToInt32(n.SelectSingleNode("ManaCost").InnerText) : 0;

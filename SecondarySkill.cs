@@ -15,9 +15,9 @@ namespace Fantasy_Kingdoms_Battle
     {
         public ParamSecondSkill(XmlNode n)
         {
-            Level = XmlUtils.GetInteger(n.SelectSingleNode("Number"));
-            Health = XmlUtils.GetInteger(n.SelectSingleNode("Health"));
-            Income = XmlUtils.GetInteger(n.SelectSingleNode("Income"));
+            Level = XmlUtils.GetInteger(n, "Number");
+            Health = XmlUtils.GetInteger(n, "Health");
+            Income = XmlUtils.GetInteger(n, "Income");
         }
 
         internal int Level { get; }

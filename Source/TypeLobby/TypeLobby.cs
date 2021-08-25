@@ -13,25 +13,25 @@ namespace Fantasy_Kingdoms_Battle
     {
         public TypeLobby(XmlNode n)
         {
-            Name = XmlUtils.GetString(n.SelectSingleNode("Name"));
-            QuantityPlayers = XmlUtils.GetInteger(n.SelectSingleNode("QuantityPlayers"));
-            Gold = XmlUtils.GetInteger(n.SelectSingleNode("Gold"));
-            MaxGold = XmlUtils.GetInteger(n.SelectSingleNode("MaxGold"));
-            MaxHeroes = XmlUtils.GetInteger(n.SelectSingleNode("MaxHeroes"));
-            StartQuantityFlags = XmlUtils.GetInteger(n.SelectSingleNode("StartQuantityFlags"));
-            MaxQuantityFlags = XmlUtils.GetInteger(n.SelectSingleNode("MaxQuantityFlags"));
-            MaxHeroesForScoutFlag = XmlUtils.GetInteger(n.SelectSingleNode("MaxHeroesForScoutFlag"));
-            MaxHeroesForBattle = XmlUtils.GetInteger(n.SelectSingleNode("MaxHeroesForBattle"));
-            DayStartBattleBetweenPlayers = XmlUtils.GetInteger(n.SelectSingleNode("DayStartBattleBetweenPlayers"));
-            DaysBeforeNextBattleBetweenPlayers = XmlUtils.GetInteger(n.SelectSingleNode("DaysBeforeNextBattleBetweenPlayers"));
-            StartBuilders = XmlUtils.GetInteger(n.SelectSingleNode("StartBuilders"));
-            PointStartBonus = XmlUtils.GetInteger(n.SelectSingleNode("PointStartBonus"));
-            VariantStartBonus = XmlUtils.GetInteger(n.SelectSingleNode("VariantStartBonus"));
-            StartScoutedLairs = XmlUtils.GetInteger(n.SelectSingleNode("StartScoutedLairs"));
-            MaxLoses = XmlUtils.GetInteger(n.SelectSingleNode("MaxLoses"));
-            LairsLayers = XmlUtils.GetInteger(n.SelectSingleNode("LairsLayers"));
-            LairsWidth = XmlUtils.GetInteger(n.SelectSingleNode("LairsWidth"));
-            LairsHeight = XmlUtils.GetInteger(n.SelectSingleNode("LairsHeight"));
+            Name = XmlUtils.GetString(n, "Name");
+            QuantityPlayers = XmlUtils.GetInteger(n, "QuantityPlayers");
+            Gold = XmlUtils.GetInteger(n, "Gold");
+            MaxGold = XmlUtils.GetInteger(n, "MaxGold");
+            MaxHeroes = XmlUtils.GetInteger(n, "MaxHeroes");
+            StartQuantityFlags = XmlUtils.GetInteger(n, "StartQuantityFlags");
+            MaxQuantityFlags = XmlUtils.GetInteger(n, "MaxQuantityFlags");
+            MaxHeroesForScoutFlag = XmlUtils.GetInteger(n, "MaxHeroesForScoutFlag");
+            MaxHeroesForBattle = XmlUtils.GetInteger(n, "MaxHeroesForBattle");
+            DayStartBattleBetweenPlayers = XmlUtils.GetInteger(n, "DayStartBattleBetweenPlayers");
+            DaysBeforeNextBattleBetweenPlayers = XmlUtils.GetInteger(n, "DaysBeforeNextBattleBetweenPlayers");
+            StartBuilders = XmlUtils.GetInteger(n, "StartBuilders");
+            PointStartBonus = XmlUtils.GetInteger(n, "PointStartBonus");
+            VariantStartBonus = XmlUtils.GetInteger(n, "VariantStartBonus");
+            StartScoutedLairs = XmlUtils.GetInteger(n, "StartScoutedLairs");
+            MaxLoses = XmlUtils.GetInteger(n, "MaxLoses");
+            LairsLayers = XmlUtils.GetInteger(n, "LairsLayers");
+            LairsWidth = XmlUtils.GetInteger(n, "LairsWidth");
+            LairsHeight = XmlUtils.GetInteger(n, "LairsHeight");
 
             Debug.Assert(Name.Length > 0);
             Debug.Assert(QuantityPlayers >= 2);
@@ -122,8 +122,8 @@ namespace Fantasy_Kingdoms_Battle
 
                 foreach (XmlNode np in node.SelectNodes("Priority"))
                 {
-                    pe = (PriorityExecution)Enum.Parse(typeof(PriorityExecution), XmlUtils.GetStringNotNull(np.SelectSingleNode("ID")));
-                    val = XmlUtils.GetInteger(np.SelectSingleNode("Value"));
+                    pe = (PriorityExecution)Enum.Parse(typeof(PriorityExecution), XmlUtils.GetStringNotNull(np, "ID"));
+                    val = XmlUtils.GetInteger(np, "Value");
 
                     Debug.Assert(val > 0);
                     Debug.Assert(val <= 1_000);

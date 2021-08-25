@@ -17,7 +17,7 @@ namespace Fantasy_Kingdoms_Battle
             xmlDoc.Load(dirResources + "Main.xml");
 
             CurrentVersion = XmlUtils.GetVersionFromXml(xmlDoc.SelectSingleNode("Main"), "Version");
-            ScreenMinSize = new Size(XmlUtils.GetIntegerNotNull(xmlDoc.SelectSingleNode("Main/ScreenMinWidth")), XmlUtils.GetIntegerNotNull(xmlDoc.SelectSingleNode("Main/ScreenMinHeight")));
+            ScreenMinSize = new Size(XmlUtils.GetIntegerNotNull(xmlDoc, "Main/ScreenMinWidth"), XmlUtils.GetIntegerNotNull(xmlDoc, "Main/ScreenMinHeight"));
 
             URLDrive = xmlDoc.SelectSingleNode("Main/AutoUpdate/URLDrive").InnerText;
             if (URLDrive.Length == 0)

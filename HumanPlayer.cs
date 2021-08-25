@@ -16,7 +16,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Name.Length <= 31);
             Debug.Assert(Description.Length <= 100);
 
-            DirectoryAvatar = XmlUtils.GetString(n.SelectSingleNode("DirectoryAvatar"));
+            DirectoryAvatar = XmlUtils.GetString(n, "DirectoryAvatar");
 
             foreach (HumanPlayer hp in FormMain.Config.HumanPlayers)
             {

@@ -13,10 +13,10 @@ namespace Fantasy_Kingdoms_Battle
     {
         public TypeAttack(XmlNode n)
         {
-            ID = XmlUtils.GetStringNotNull(n.SelectSingleNode("ID"));
-            Name = XmlUtils.GetStringNotNull(n.SelectSingleNode("Name"));
-            KindAttack = (KindAttack)Enum.Parse(typeof(KindAttack), n.SelectSingleNode("KindAttack").InnerText);
-            IsWeapon = XmlUtils.GetBoolNotNull(n.SelectSingleNode("IsWeapon"));
+            ID = XmlUtils.GetStringNotNull(n, "ID");
+            Name = XmlUtils.GetStringNotNull(n, "Name");
+            KindAttack = (KindAttack)Enum.Parse(typeof(KindAttack), XmlUtils.GetStringNotNull(n, "KindAttack"));
+            IsWeapon = XmlUtils.GetBoolNotNull(n, "IsWeapon");
 
             foreach (TypeAttack ta in FormMain.Config.TypeAttacks)
             {

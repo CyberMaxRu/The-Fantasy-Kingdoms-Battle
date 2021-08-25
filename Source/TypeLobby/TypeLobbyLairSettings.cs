@@ -13,8 +13,8 @@ namespace Fantasy_Kingdoms_Battle
         public TypeLobbyLairSettings(XmlNode n)
         {
             NameTypeLair = n.SelectSingleNode("ID").InnerText;
-            MinQuantity = XmlUtils.GetInteger(n.SelectSingleNode("MinQuantity"));
-            MaxQuantity = XmlUtils.GetInteger(n.SelectSingleNode("MaxQuantity"));
+            MinQuantity = XmlUtils.GetInteger(n, "MinQuantity");
+            MaxQuantity = XmlUtils.GetInteger(n, "MaxQuantity");
 
             Debug.Assert(MinQuantity >= 0);
             Debug.Assert(MaxQuantity < 20);

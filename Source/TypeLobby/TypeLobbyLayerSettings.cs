@@ -13,13 +13,13 @@ namespace Fantasy_Kingdoms_Battle
     {
         public TypeLobbyLayerSettings(XmlNode n, int quantitySlotLairs)
         {
-            Number = XmlUtils.GetInteger(n.SelectSingleNode("Number"));
-            Name = XmlUtils.GetStringNotNull(n.SelectSingleNode("Name"));
-            Hint = XmlUtils.GetStringNotNull(n.SelectSingleNode("Hint"));
-            ImageIndex = XmlUtils.GetIntegerNotNull(n.SelectSingleNode("ImageIndex"));
-            CostScout = XmlUtils.GetInteger(n.SelectSingleNode("CostScout"));
-            CostAttack = XmlUtils.GetInteger(n.SelectSingleNode("CostAttack"));
-            CostDefense = XmlUtils.GetInteger(n.SelectSingleNode("CostDefense"));
+            Number = XmlUtils.GetInteger(n, "Number");
+            Name = XmlUtils.GetStringNotNull(n, "Name");
+            Hint = XmlUtils.GetStringNotNull(n, "Hint");
+            ImageIndex = XmlUtils.GetIntegerNotNull(n, "ImageIndex");
+            CostScout = XmlUtils.GetInteger(n, "CostScout");
+            CostAttack = XmlUtils.GetInteger(n, "CostAttack");
+            CostDefense = XmlUtils.GetInteger(n, "CostDefense");
 
             Debug.Assert(CostScout > 0);
             Debug.Assert(CostScout <= 10_000);

@@ -17,10 +17,10 @@ namespace Fantasy_Kingdoms_Battle
         private string nameTypeObject;
         public TypeCellMenu(XmlNode n)
         {
-            Coord = new Point(XmlUtils.GetIntegerNotNull(n.SelectSingleNode("PosX")) - 1, XmlUtils.GetIntegerNotNull(n.SelectSingleNode("PosY")) - 1);
-            Layer = XmlUtils.GetIntegerNotNull(n.SelectSingleNode("Layer")) - 1;
-            nameTypeObject = XmlUtils.GetString(n.SelectSingleNode("TypeObject"));
-            Cost = XmlUtils.GetInteger(n.SelectSingleNode("Cost"));
+            Coord = new Point(XmlUtils.GetIntegerNotNull(n, "PosX") - 1, XmlUtils.GetIntegerNotNull(n, "PosY") - 1);
+            Layer = XmlUtils.GetIntegerNotNull(n, "Layer") - 1;
+            nameTypeObject = XmlUtils.GetString(n, "TypeObject");
+            Cost = XmlUtils.GetInteger(n, "Cost");
             XmlUtils.LoadRequirements(Requirements, n);
 
             Debug.Assert(Coord.X >= 0);

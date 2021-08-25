@@ -18,7 +18,7 @@ namespace Fantasy_Kingdoms_Battle
         public Item(XmlNode n) : base(n)
         {
             CategoryItem = (CategoryItem)Enum.Parse(typeof(CategoryItem), n.SelectSingleNode("CategoryItem").InnerText);
-            nameGroupItem = XmlUtils.GetStringWithNull(n.SelectSingleNode("GroupItem"));
+            nameGroupItem = XmlUtils.GetString(n, "GroupItem");
 
 
             TimeHit = n.SelectSingleNode("TimeHit") == null ? 0 : Convert.ToInt32(n.SelectSingleNode("TimeHit").InnerText);
@@ -31,7 +31,7 @@ namespace Fantasy_Kingdoms_Battle
             DefenseMelee = n.SelectSingleNode("DefenseMelee") != null ? Convert.ToInt32(n.SelectSingleNode("DefenseMelee").InnerText) : 0;
             DefenseRange = n.SelectSingleNode("DefenseRange") != null ? Convert.ToInt32(n.SelectSingleNode("DefenseRange").InnerText) : 0;
             DefenseMagic = n.SelectSingleNode("DefenseMagic") != null ? Convert.ToInt32(n.SelectSingleNode("DefenseMagic").InnerText) : 0;
-            QuantityShots = XmlUtils.GetInteger(n.SelectSingleNode("QuantityShots"));
+            QuantityShots = XmlUtils.GetInteger(n, "QuantityShots");
 
             if (CategoryItem == CategoryItem.Quiver)
             {
@@ -114,10 +114,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void TuneDeferredLinks()
         {
-            if (nameGroupItem != null)
+            if (nameGroupItem.Length > 0)
             {
                 GroupItem = FormMain.Config.FindGroupItem(nameGroupItem);
-                nameGroupItem = null;
+                nameGroupItem = "";
             }
 
             /*Description += (Description.Length > 0 ? Environment.NewLine : "") + "- Используется:";
