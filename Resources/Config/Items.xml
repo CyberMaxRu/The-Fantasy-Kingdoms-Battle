@@ -300,7 +300,7 @@
     <GroupItems>GroupWeaponMelee0</GroupItems>
     <TimeHit>50</TimeHit>
     <VelocityMissile>5</VelocityMissile>
-    <DamageArcher>5</DamageArcher>
+    <DamageRange>5</DamageRange>
   </Item>
   <Item>
     <ID>WeaponElf0</ID>
@@ -313,7 +313,7 @@
     <GroupItems>GroupWeaponMelee0</GroupItems>
     <TimeHit>50</TimeHit>
     <VelocityMissile>1</VelocityMissile>
-    <DamageArcher>0</DamageArcher>
+    <DamageRange>0</DamageRange>
   </Item>
   <Item>
     <ID>WeaponBeastMaster0</ID>
@@ -326,7 +326,7 @@
     <GroupItems>GroupWeaponMelee0</GroupItems>
     <TimeHit>50</TimeHit>
     <VelocityMissile>1</VelocityMissile>
-    <DamageArcher>0</DamageArcher>
+    <DamageRange>0</DamageRange>
   </Item>
   <Item>
     <ID>WeaponMarksman0</ID>
@@ -339,7 +339,7 @@
     <Cost>10</Cost>
     <GroupItems>GroupWeaponMelee0</GroupItems>
     <VelocityMissile>1</VelocityMissile>
-    <DamageArcher>0</DamageArcher>
+    <DamageRange>0</DamageRange>
   </Item>
   <Item>
     <ID>WeaponWarrior1</ID>
@@ -640,7 +640,7 @@
     <GroupItems>GroupWeaponRange0</GroupItems>
     <TimeHit>50</TimeHit>
     <VelocityMissile>5</VelocityMissile>
-    <DamageArcher>5</DamageArcher>
+    <DamageRange>5</DamageRange>
   </Item>
   <Item>
     <ID>BowElf0</ID>
@@ -653,7 +653,7 @@
     <GroupItems>GroupWeaponRange0</GroupItems>
     <TimeHit>50</TimeHit>
     <VelocityMissile>5</VelocityMissile>
-    <DamageArcher>25</DamageArcher>
+    <DamageRange>25</DamageRange>
   </Item>
   <Item>
     <ID>BowBeastMaster0</ID>
@@ -666,7 +666,7 @@
     <GroupItems>GroupWeaponRange0</GroupItems>
     <TimeHit>50</TimeHit>
     <VelocityMissile>1</VelocityMissile>
-    <DamageArcher>0</DamageArcher>
+    <DamageRange>0</DamageRange>
   </Item>
   <Item>
     <ID>BowMarksman0</ID>
@@ -679,7 +679,7 @@
     <GroupItems>GroupWeaponRange0</GroupItems>
     <TimeHit>50</TimeHit>
     <VelocityMissile>1</VelocityMissile>
-    <DamageArcher>0</DamageArcher>
+    <DamageRange>0</DamageRange>
   </Item>
   <Item>
     <ID>WeaponHunter1</ID>
@@ -691,7 +691,7 @@
     <Cost>20</Cost>
     <GroupItems>GroupWeaponRange1</GroupItems>
     <TimeHit>50</TimeHit>
-    <DamageArcher>0</DamageArcher>
+    <DamageRange>0</DamageRange>
   </Item>
   <Item>
     <ID>WeaponElf1</ID>
@@ -703,7 +703,7 @@
     <Cost>20</Cost>
     <GroupItems>GroupWeaponRange1</GroupItems>
     <TimeHit>50</TimeHit>
-    <DamageArcher>0</DamageArcher>
+    <DamageRange>0</DamageRange>
   </Item>
   <Item>
     <ID>WeaponBeastMaster1</ID>
@@ -715,7 +715,7 @@
     <Cost>20</Cost>
     <GroupItems>GroupWeaponRange1</GroupItems>
     <TimeHit>50</TimeHit>
-    <DamageArcher>0</DamageArcher>
+    <DamageRange>0</DamageRange>
   </Item>
   <Item>
     <ID>WeaponMarksman1</ID>
@@ -727,7 +727,7 @@
     <Cost>20</Cost>
     <GroupItems>GroupWeaponRange1</GroupItems>
     <TimeHit>50</TimeHit>
-    <DamageArcher>0</DamageArcher>
+    <DamageRange>0</DamageRange>
   </Item>
   <Item>
     <ID>WeaponHunter2</ID>
@@ -739,7 +739,7 @@
     <Cost>20</Cost>
     <GroupItems>GroupWeaponRange2</GroupItems>
     <TimeHit>50</TimeHit>
-    <DamageArcher>0</DamageArcher>
+    <DamageRange>0</DamageRange>
   </Item>
   <Item>
     <ID>WeaponElf2</ID>
@@ -751,7 +751,7 @@
     <Cost>20</Cost>
     <GroupItems>GroupWeaponRange2</GroupItems>
     <TimeHit>50</TimeHit>
-    <DamageArcher>0</DamageArcher>
+    <DamageRange>0</DamageRange>
   </Item>
   <Item>
     <ID>WeaponBeastMaster2</ID>
@@ -763,7 +763,7 @@
     <Cost>20</Cost>
     <GroupItems>GroupWeaponRange2</GroupItems>
     <TimeHit>50</TimeHit>
-    <DamageArcher>0</DamageArcher>
+    <DamageRange>0</DamageRange>
   </Item>
   <Item>
     <ID>WeaponMarksman2</ID>
@@ -775,7 +775,7 @@
     <Cost>20</Cost>
     <GroupItems>GroupWeaponRange2</GroupItems>
     <TimeHit>50</TimeHit>
-    <DamageArcher>0</DamageArcher>
+    <DamageRange>0</DamageRange>
   </Item>
   <Item>
     <ID>WeaponHunter3</ID>
@@ -787,7 +787,7 @@
     <Cost>20</Cost>
     <GroupItems>GroupWeaponRange3</GroupItems>
     <TimeHit>50</TimeHit>
-    <DamageArcher>0</DamageArcher>
+    <DamageRange>0</DamageRange>
   </Item>
   <Item>
     <ID>WeaponElf3</ID>
@@ -799,7 +799,7 @@
     <Cost>20</Cost>
     <GroupItems>GroupWeaponRange3</GroupItems>
     <TimeHit>50</TimeHit>
-    <DamageArcher>0</DamageArcher>
+    <DamageRange>0</DamageRange>
   </Item>
   <Item>
     <ID>WeaponBeastMaster3</ID>
@@ -811,7 +811,7 @@
     <Cost>20</Cost>
     <GroupItems>GroupWeaponRange3</GroupItems>
     <TimeHit>50</TimeHit>
-    <DamageArcher>0</DamageArcher>
+    <DamageRange>0</DamageRange>
   </Item>
   <Item>
     <ID>WeaponMarksman3</ID>
@@ -823,7 +823,7 @@
     <Cost>20</Cost>
     <GroupItems>GroupWeaponRange3</GroupItems>
     <TimeHit>50</TimeHit>
-    <DamageArcher>0</DamageArcher>
+    <DamageRange>0</DamageRange>
   </Item>
   <Item>
     <ID>WeaponHunter4</ID>
@@ -835,7 +835,7 @@
     <Cost>20</Cost>
     <GroupItems>GroupWeaponRange4</GroupItems>
     <TimeHit>50</TimeHit>
-    <DamageArcher>0</DamageArcher>
+    <DamageRange>0</DamageRange>
   </Item>
   <Item>
     <ID>WeaponElf4</ID>
@@ -847,7 +847,7 @@
     <Cost>20</Cost>
     <GroupItems>GroupWeaponRange4</GroupItems>
     <TimeHit>50</TimeHit>
-    <DamageArcher>0</DamageArcher>
+    <DamageRange>0</DamageRange>
   </Item>
   <Item>
     <ID>WeaponBeastMaster4</ID>
@@ -859,7 +859,7 @@
     <Cost>20</Cost>
     <GroupItems>GroupWeaponRange4</GroupItems>
     <TimeHit>50</TimeHit>
-    <DamageArcher>0</DamageArcher>
+    <DamageRange>0</DamageRange>
   </Item>
   <Item>
     <ID>WeaponMarksman4</ID>
@@ -871,7 +871,7 @@
     <Cost>20</Cost>
     <GroupItems>GroupWeaponRange4</GroupItems>
     <TimeHit>50</TimeHit>
-    <DamageArcher>0</DamageArcher>
+    <DamageRange>0</DamageRange>
   </Item>
   <Item>
     <ID>WeaponCleric0</ID>
@@ -1243,7 +1243,7 @@
     <GroupItems>GroupArmourMelee0</GroupItems>
     <Hero>Warrior</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1256,7 +1256,7 @@
     <GroupItems>GroupArmourMelee0</GroupItems>
     <Hero>Dwarf</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1269,7 +1269,7 @@
     <GroupItems>GroupArmourMelee0</GroupItems>
     <Hero>Paladin</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1282,7 +1282,7 @@
     <GroupItems>GroupArmourMelee0</GroupItems>
     <Hero>BladeMaster</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1295,7 +1295,7 @@
     <GroupItems>GroupArmourMelee0</GroupItems>
     <Hero>DeathKnight</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1308,7 +1308,7 @@
     <Cost>20</Cost>
     <GroupItems>GroupArmourMelee1</GroupItems>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1322,7 +1322,7 @@
     <GroupItems>GroupArmourMelee1</GroupItems>
     <Hero>Dwarf</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1336,7 +1336,7 @@
     <GroupItems>GroupArmourMelee1</GroupItems>
     <Hero>Paladin</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1350,7 +1350,7 @@
     <GroupItems>GroupArmourMelee1</GroupItems>
     <Hero>BladeMaster</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1364,7 +1364,7 @@
     <GroupItems>GroupArmourMelee1</GroupItems>
     <Hero>DeathKnight</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1377,7 +1377,7 @@
     <GroupItems>GroupArmourMelee2</GroupItems>
     <Hero>Warrior</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1390,7 +1390,7 @@
     <GroupItems>GroupArmourMelee2</GroupItems>
     <Hero>Dwarf</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1403,7 +1403,7 @@
     <GroupItems>GroupArmourMelee2</GroupItems>
     <Hero>Paladin</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1416,7 +1416,7 @@
     <GroupItems>GroupArmourMelee2</GroupItems>
     <Hero>BladeMaster</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1429,7 +1429,7 @@
     <GroupItems>GroupArmourMelee2</GroupItems>
     <Hero>DeathKnight</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1442,7 +1442,7 @@
     <GroupItems>GroupArmourMelee3</GroupItems>
     <Hero>Warrior</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1455,7 +1455,7 @@
     <GroupItems>GroupArmourMelee3</GroupItems>
     <Hero>Dwarf</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1468,7 +1468,7 @@
     <GroupItems>GroupArmourMelee3</GroupItems>
     <Hero>Paladin</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1481,7 +1481,7 @@
     <GroupItems>GroupArmourMelee3</GroupItems>
     <Hero>BladeMaster</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1494,7 +1494,7 @@
     <GroupItems>GroupArmourMelee3</GroupItems>
     <Hero>DeathKnight</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1507,7 +1507,7 @@
     <GroupItems>GroupArmourMelee4</GroupItems>
     <Hero>Warrior</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1520,7 +1520,7 @@
     <GroupItems>GroupArmourMelee4</GroupItems>
     <Hero>Dwarf</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1533,7 +1533,7 @@
     <GroupItems>GroupArmourMelee4</GroupItems>
     <Hero>Paladin</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1546,7 +1546,7 @@
     <GroupItems>GroupArmourMelee4</GroupItems>
     <Hero>BladeMaster</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1559,7 +1559,7 @@
     <GroupItems>GroupArmourMelee4</GroupItems>
     <Hero>DeathKnight</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1572,7 +1572,7 @@
     <GroupItems>GroupArmourRange0</GroupItems>
     <Hero>Rogue</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1585,7 +1585,7 @@
     <Cost>20</Cost>
     <GroupItems>GroupArmourRange0</GroupItems>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1598,7 +1598,7 @@
     <Cost>20</Cost>
     <GroupItems>GroupArmourRange0</GroupItems>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1611,7 +1611,7 @@
     <GroupItems>GroupArmourRange0</GroupItems>
     <Hero>BeastMaster</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1624,7 +1624,7 @@
     <GroupItems>GroupArmourRange0</GroupItems>
     <Hero>Marksman</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1637,7 +1637,7 @@
     <GroupItems>GroupArmourRange1</GroupItems>
     <Hero>Rogue</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1650,7 +1650,7 @@
     <GroupItems>GroupArmourRange1</GroupItems>
     <Hero>Hunter</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1663,7 +1663,7 @@
     <GroupItems>GroupArmourRange1</GroupItems>
     <Hero>Elf</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1676,7 +1676,7 @@
     <GroupItems>GroupArmourRange1</GroupItems>
     <Hero>BeastMaster</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1689,7 +1689,7 @@
     <GroupItems>GroupArmourRange1</GroupItems>
     <Hero>Marksman</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1702,7 +1702,7 @@
     <GroupItems>GroupArmourRange2</GroupItems>
     <Hero>Rogue</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1715,7 +1715,7 @@
     <GroupItems>GroupArmourRange2</GroupItems>
     <Hero>Hunter</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1728,7 +1728,7 @@
     <GroupItems>GroupArmourRange2</GroupItems>
     <Hero>Elf</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1741,7 +1741,7 @@
     <GroupItems>GroupArmourRange2</GroupItems>
     <Hero>BeastMaster</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1754,7 +1754,7 @@
     <GroupItems>GroupArmourRange2</GroupItems>
     <Hero>Marksman</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1767,7 +1767,7 @@
     <GroupItems>GroupArmourRange3</GroupItems>
     <Hero>Rogue</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1780,7 +1780,7 @@
     <GroupItems>GroupArmourRange3</GroupItems>
     <Hero>Hunter</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1793,7 +1793,7 @@
     <GroupItems>GroupArmourRange3</GroupItems>
     <Hero>Elf</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1806,7 +1806,7 @@
     <GroupItems>GroupArmourRange3</GroupItems>
     <Hero>BeastMaster</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1819,7 +1819,7 @@
     <GroupItems>GroupArmourRange3</GroupItems>
     <Hero>Marksman</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1832,7 +1832,7 @@
     <GroupItems>GroupArmourRange4</GroupItems>
     <Hero>Rogue</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1845,7 +1845,7 @@
     <GroupItems>GroupArmourRange4</GroupItems>
     <Hero>Hunter</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1858,7 +1858,7 @@
     <GroupItems>GroupArmourRange4</GroupItems>
     <Hero>Elf</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1871,7 +1871,7 @@
     <GroupItems>GroupArmourRange4</GroupItems>
     <Hero>BeastMaster</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1884,7 +1884,7 @@
     <GroupItems>GroupArmourRange4</GroupItems>
     <Hero>Marksman</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1897,7 +1897,7 @@
     <GroupItems>GroupArmourMage0</GroupItems>
     <Hero>Cleric</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1910,7 +1910,7 @@
     <GroupItems>GroupArmourMage0</GroupItems>
     <Hero>Mage</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1923,7 +1923,7 @@
     <GroupItems>GroupArmourMage0</GroupItems>
     <Hero>DarkPriest</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1936,7 +1936,7 @@
     <GroupItems>GroupArmourMage0</GroupItems>
     <Hero>Priest</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1949,7 +1949,7 @@
     <GroupItems>GroupArmourMage0</GroupItems>
     <Hero>FireMage</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1962,7 +1962,7 @@
     <GroupItems>GroupArmourMage0</GroupItems>
     <Hero>IceMage</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1975,7 +1975,7 @@
     <GroupItems>GroupArmourMage1</GroupItems>
     <Hero>Cleric</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -1988,7 +1988,7 @@
     <GroupItems>GroupArmourMage1</GroupItems>
     <Hero>Mage</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -2001,7 +2001,7 @@
     <GroupItems>GroupArmourMage1</GroupItems>
     <Hero>DarkPriest</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -2014,7 +2014,7 @@
     <GroupItems>GroupArmourMage1</GroupItems>
     <Hero>Priest</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -2027,7 +2027,7 @@
     <GroupItems>GroupArmourMage1</GroupItems>
     <Hero>FireMage</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -2040,7 +2040,7 @@
     <GroupItems>GroupArmourMage1</GroupItems>
     <Hero>IceMage</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -2053,7 +2053,7 @@
     <GroupItems>GroupArmourMage2</GroupItems>
     <Hero>Cleric</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -2066,7 +2066,7 @@
     <GroupItems>GroupArmourMage2</GroupItems>
     <Hero>Mage</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -2079,7 +2079,7 @@
     <GroupItems>GroupArmourMage2</GroupItems>
     <Hero>DarkPriest</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -2092,7 +2092,7 @@
     <GroupItems>GroupArmourMage2</GroupItems>
     <Hero>Priest</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -2105,7 +2105,7 @@
     <GroupItems>GroupArmourMage2</GroupItems>
     <Hero>FireMage</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -2118,7 +2118,7 @@
     <GroupItems>GroupArmourMage2</GroupItems>
     <Hero>IceMage</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -2131,7 +2131,7 @@
     <GroupItems>GroupArmourMage3</GroupItems>
     <Hero>Cleric</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -2144,7 +2144,7 @@
     <GroupItems>GroupArmourMage3</GroupItems>
     <Hero>Mage</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -2157,7 +2157,7 @@
     <GroupItems>GroupArmourMage3</GroupItems>
     <Hero>DarkPriest</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -2170,7 +2170,7 @@
     <GroupItems>GroupArmourMage3</GroupItems>
     <Hero>Priest</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -2183,7 +2183,7 @@
     <GroupItems>GroupArmourMage3</GroupItems>
     <Hero>FireMage</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -2196,7 +2196,7 @@
     <GroupItems>GroupArmourMage3</GroupItems>
     <Hero>IceMage</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -2209,7 +2209,7 @@
     <GroupItems>GroupArmourMage4</GroupItems>
     <Hero>Cleric</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -2222,7 +2222,7 @@
     <GroupItems>GroupArmourMage4</GroupItems>
     <Hero>Mage</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -2235,7 +2235,7 @@
     <GroupItems>GroupArmourMage4</GroupItems>
     <Hero>DarkPriest</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -2248,7 +2248,7 @@
     <GroupItems>GroupArmourMage4</GroupItems>
     <Hero>Priest</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -2261,7 +2261,7 @@
     <GroupItems>GroupArmourMage4</GroupItems>
     <Hero>FireMage</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
@@ -2274,7 +2274,7 @@
     <GroupItems>GroupArmourMage4</GroupItems>
     <Hero>IceMage</Hero>
     <DefenseMelee>0</DefenseMelee>
-    <DefenseArcher>0</DefenseArcher>
+    <DefenseRange>0</DefenseRange>
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>

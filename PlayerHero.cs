@@ -217,7 +217,7 @@ namespace Fantasy_Kingdoms_Battle
             ParametersWithAmmunition.MinMeleeDamage = ParametersWithAmmunition.MaxMeleeDamage / 2;
             if (RangeWeapon != null)
             {
-                ParametersWithAmmunition.MaxArcherDamage = RangeWeapon.DamageArcher + (RangeWeapon.DamageArcher * ParametersWithAmmunition.Strength / 100);
+                ParametersWithAmmunition.MaxArcherDamage = RangeWeapon.DamageRange + (RangeWeapon.DamageRange * ParametersWithAmmunition.Strength / 100);
                 ParametersWithAmmunition.MinArcherDamage = ParametersWithAmmunition.MaxArcherDamage / 2;
             }
             else
@@ -230,7 +230,7 @@ namespace Fantasy_Kingdoms_Battle
                         else
                             ParametersWithAmmunition.MagicDamage = 0;*/
             ParametersWithAmmunition.DefenseMelee = Armour.DefenseMelee;
-            ParametersWithAmmunition.DefenseArcher = Armour.DefenseArcher;
+            ParametersWithAmmunition.DefenseArcher = Armour.DefenseRange;
             ParametersWithAmmunition.DefenseMagic = Armour.DefenseMagic;
 
             //Debug.Assert((ParametersWithAmmunition.MaxMeleeDamage > 0) || (ParametersWithAmmunition.MaxArcherDamage > 0) || (ParametersWithAmmunition.MagicDamage > 0));

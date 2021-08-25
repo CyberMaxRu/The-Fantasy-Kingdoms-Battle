@@ -26,10 +26,10 @@ namespace Fantasy_Kingdoms_Battle
                 VelocityMissile = Convert.ToDouble(n.SelectSingleNode("VelocityMissile").InnerText.Replace(".", ","));
 
             DamageMelee = n.SelectSingleNode("DamageMelee") != null ? Convert.ToInt32(n.SelectSingleNode("DamageMelee").InnerText) : 0;
-            DamageArcher = n.SelectSingleNode("DamageArcher") != null ? Convert.ToInt32(n.SelectSingleNode("DamageArcher").InnerText) : 0;
+            DamageRange = n.SelectSingleNode("DamageRange") != null ? Convert.ToInt32(n.SelectSingleNode("DamageRange").InnerText) : 0;
             DamageMagic = n.SelectSingleNode("DamageMagic") != null ? Convert.ToInt32(n.SelectSingleNode("DamageMagic").InnerText) : 0;
             DefenseMelee = n.SelectSingleNode("DefenseMelee") != null ? Convert.ToInt32(n.SelectSingleNode("DefenseMelee").InnerText) : 0;
-            DefenseArcher = n.SelectSingleNode("DefenseArcher") != null ? Convert.ToInt32(n.SelectSingleNode("DefenseArcher").InnerText) : 0;
+            DefenseRange = n.SelectSingleNode("DefenseRange") != null ? Convert.ToInt32(n.SelectSingleNode("DefenseRange").InnerText) : 0;
             DefenseMagic = n.SelectSingleNode("DefenseMagic") != null ? Convert.ToInt32(n.SelectSingleNode("DefenseMagic").InnerText) : 0;
             QuantityShots = XmlUtils.GetInteger(n.SelectSingleNode("QuantityShots"));
 
@@ -90,10 +90,10 @@ namespace Fantasy_Kingdoms_Battle
         internal int TimeHit { get; }
         internal double VelocityMissile { get; }
         internal int DamageMelee { get; }
-        internal int DamageArcher { get; }
+        internal int DamageRange { get; }
         internal int DamageMagic { get; }
         internal int DefenseMelee { get; }
-        internal int DefenseArcher { get; }
+        internal int DefenseRange { get; }
         internal int DefenseMagic { get; }
         internal int QuantityShots { get; }
 
