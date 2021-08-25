@@ -94,7 +94,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Item a;
 
-                foreach (XmlNode l in na.SelectNodes("Item"))
+                foreach (XmlNode l in ni.SelectNodes("Item"))
                 {
                     a = FormMain.Config.FindItem(XmlUtils.GetStringNotNull(l.SelectSingleNode("ID")));
 
