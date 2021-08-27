@@ -715,7 +715,6 @@
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <HasTreasury>False</HasTreasury>
-    <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>peasant_house_select.wav</SoundSelect>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <PlayerCanBuild>false</PlayerCanBuild>
@@ -743,7 +742,6 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <HasTreasury>False</HasTreasury>
-    <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>mill_select.wav</SoundSelect>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <PlayerCanBuild>false</PlayerCanBuild>
@@ -771,7 +769,6 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <HasTreasury>False</HasTreasury>
-    <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>tradepost_select.wav</SoundSelect>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <PlayerCanBuild>true</PlayerCanBuild>
