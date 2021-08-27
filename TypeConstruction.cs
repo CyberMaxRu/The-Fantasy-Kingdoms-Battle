@@ -34,6 +34,9 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
             {
+                XmlFieldNotExist(n, "Page");
+                XmlFieldNotExist(n, "Line");
+                XmlFieldNotExist(n, "Pos");
                 Page = Page.None;
             }
 
