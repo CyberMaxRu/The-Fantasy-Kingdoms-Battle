@@ -16,7 +16,7 @@ namespace Fantasy_Kingdoms_Battle
             ID = XmlUtils.GetStringNotNull(n, "ID");
             Name = XmlUtils.GetStringNotNull(n, "Name");
             KindAttack = (KindAttack)Enum.Parse(typeof(KindAttack), XmlUtils.GetStringNotNull(n, "KindAttack"));
-            IsWeapon = XmlUtils.GetBoolNotNull(n, "IsWeapon");
+            IsWeapon = XmlUtils.GetBooleanNotNull(n, "IsWeapon");
 
             foreach (TypeAttack ta in FormMain.Config.TypeAttacks)
             {

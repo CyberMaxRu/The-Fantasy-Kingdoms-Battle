@@ -666,7 +666,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
                 else
                 {*/
-                    if (XmlUtils.GetBool(n, "Bold", false))
+                    if (XmlUtils.GetBoolean(n, "Bold", false))
                         return new Font(name, Convert.ToInt32(n.SelectSingleNode("Size").InnerText), FontStyle.Bold);
                     else
                         return new Font(name, Convert.ToInt32(n.SelectSingleNode("Size").InnerText));

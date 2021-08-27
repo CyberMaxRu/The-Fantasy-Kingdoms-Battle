@@ -25,12 +25,12 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     doc.Load(Program.formMain.dirResources + "Settings.xml");
 
-                    ShowSplashVideo = XmlUtils.GetBool(doc, "Settings/Game/ShowSplashVideo", ShowSplashVideo);
-                    FullScreenMode = XmlUtils.GetBool(doc, "Settings/Game/FullScreenMode", FullScreenMode);
-                    CheckUpdateOnStartup = XmlUtils.GetBool(doc, "Settings/Game/CheckUpdatesOnStartup", CheckUpdateOnStartup);
+                    ShowSplashVideo = XmlUtils.GetBoolean(doc, "Settings/Game/ShowSplashVideo", ShowSplashVideo);
+                    FullScreenMode = XmlUtils.GetBoolean(doc, "Settings/Game/FullScreenMode", FullScreenMode);
+                    CheckUpdateOnStartup = XmlUtils.GetBoolean(doc, "Settings/Game/CheckUpdatesOnStartup", CheckUpdateOnStartup);
 
-                    BattlefieldShowPath = XmlUtils.GetBool(doc, "Settings/Battlefield/ShowPath", BattlefieldShowPath);
-                    BattlefieldShowGrid = XmlUtils.GetBool(doc, "Settings/Battlefield/ShowGrid", BattlefieldShowGrid);
+                    BattlefieldShowPath = XmlUtils.GetBoolean(doc, "Settings/Battlefield/ShowPath", BattlefieldShowPath);
+                    BattlefieldShowGrid = XmlUtils.GetBoolean(doc, "Settings/Battlefield/ShowGrid", BattlefieldShowGrid);
 
                     DirectoryAvatar = XmlUtils.GetString(doc, "Settings/Player/DirectoryAvatar");
                 }

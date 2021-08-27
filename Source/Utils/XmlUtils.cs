@@ -56,7 +56,7 @@ namespace Fantasy_Kingdoms_Battle
             //return GetStringNotNull(n, name).Replace("//", Environment.NewLine);
         }
 
-        internal static bool GetBool(XmlNode n, string name, bool defValue)
+        internal static bool GetBoolean(XmlNode n, string name, bool defValue)
         {
             XmlNode nn = n.SelectSingleNode(name);
             //Debug.Assert(nn != null, $"Узел {name} отсутствует.");
@@ -65,7 +65,7 @@ namespace Fantasy_Kingdoms_Battle
 
         }
 
-        internal static bool GetBoolNotNull(XmlNode n, string name)
+        internal static bool GetBooleanNotNull(XmlNode n, string name)
         {
             XmlNode nn = n.SelectSingleNode(name);
             Debug.Assert(nn != null, $"Узел {name} отсутствует.");

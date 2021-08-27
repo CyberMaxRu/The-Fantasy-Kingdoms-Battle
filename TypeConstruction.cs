@@ -35,12 +35,12 @@ namespace Fantasy_Kingdoms_Battle
             else
                 Page = Page.None;
 
-            HasTreasury = GetBool(n, "HasTreasury", false);
+            HasTreasury = GetBoolean(n, "HasTreasury", false);
             GoldByConstruction = GetInteger(n, "GoldByConstruction");
             DefaultLevel = GetInteger(n, "DefaultLevel");
             MaxLevel = GetInteger(n, "MaxLevel");
             ResearchesPerDay = GetInteger(n, "ResearchesPerDay");
-            PlayerCanBuild = GetBool(n, "PlayerCanBuild", true);
+            PlayerCanBuild = GetBoolean(n, "PlayerCanBuild", true);
 
             // Проверяем, что таких же ID и наименования нет
             foreach (TypeConstruction tec in FormMain.Config.TypeConstructions)
