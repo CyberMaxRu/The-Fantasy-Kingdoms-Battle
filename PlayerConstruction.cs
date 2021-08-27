@@ -1013,14 +1013,14 @@ namespace Fantasy_Kingdoms_Battle
             if (Player == Player.Lobby.CurrentPlayer)
                 return Program.formMain.imListObjects48;
             else
-                return Program.formMain.ilGui;
+                return Program.formMain.imListObjects48;
         }
         int ICell.ImageIndex()
         {
             if (Player == Player.Lobby.CurrentPlayer)
                 return ImageIndexLair();
             else
-                return FormMain.GUI_BATTLE;
+                return FormMain.Config.Gui48_Battle;
         }
         protected override string GetCost() => null;
 

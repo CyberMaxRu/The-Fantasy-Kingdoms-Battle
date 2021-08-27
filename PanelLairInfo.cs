@@ -22,9 +22,9 @@ namespace Fantasy_Kingdoms_Battle
 
             //..separator.ShiftY = TopForControls();
             //pageControl.ShiftY = TopForControls();
-            pageControl.AddTab("Существа", FormMain.GUI_HOME, panelInhabitants);
-            pageControl.AddTab("Герои", FormMain.GUI_TARGET, panelHeroes);
-            pageControl.AddTab("История", FormMain.GUI_BOOK, null);
+            pageControl.AddTab("Существа", FormMain.Config.Gui48_Home, panelInhabitants);
+            pageControl.AddTab("Герои", FormMain.Config.Gui48_Target, panelHeroes);
+            pageControl.AddTab("История", FormMain.Config.Gui48_Book, null);
 
             pageControl.ApplyMinSize();
             Width = pageControl.Width + FormMain.Config.GridSize * 2;

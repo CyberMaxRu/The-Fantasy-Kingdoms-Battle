@@ -39,7 +39,6 @@ namespace Fantasy_Kingdoms_Battle
         // ImageList'ы
         internal readonly BitmapList imListObjects128;
         internal readonly BitmapList imListObjects48;
-        internal readonly BitmapList ilGui;
         internal readonly BitmapList ilGui16;
         internal readonly BitmapList ilGui24;
         internal readonly BitmapList ilParameters;
@@ -131,41 +130,6 @@ namespace Fantasy_Kingdoms_Battle
         private readonly List<VCResultRound> listResultRound = new List<VCResultRound>();
 
         private const int DEFAULT_DPI = 96;
-
-        internal const int GUI_HEROES = 0;
-        internal const int GUI_GUILDS = 1;
-        internal const int GUI_ECONOMY = 2;
-        internal const int GUI_DEFENSE = 3;
-        internal const int GUI_TEMPLE = 4;
-        internal const int GUI_LEVELUP = 5;
-        internal const int GUI_BUY = 6;
-        internal const int GUI_LOBBY = 7;
-        internal const int GUI_DISMISS = 8;
-        internal const int GUI_BATTLE = 9;
-        internal const int GUI_PEASANT = 10;
-        internal const int GUI_HOURGLASS = 11;
-        internal const int GUI_GOODS = 12;
-        internal const int GUI_HOME = 13;
-        internal const int GUI_INVENTORY = 14;
-        internal const int GUI_TARGET = 15;
-        internal const int GUI_BOOK = 16;
-        internal const int GUI_EXIT = 17;
-        internal const int GUI_FLAG_ATTACK = 18;
-        internal const int GUI_TOURNAMENT = 19;
-        internal const int GUI_SCROLL = 20;
-        internal const int GUI_SETTINGS = 21;
-        internal const int GUI_FLAG_SCOUT = 22;
-        internal const int GUI_FLAG_CANCEL = 23;
-        internal const int GUI_BUILD = 24;
-        internal const int GUI_FLAG_DEFENSE = 25;
-        internal const int GUI_MAP = 26;
-        internal const int GUI_BACKGROUND = 27;
-        internal const int GUI_RESULT_TURN = 28;
-        internal const int GUI_WIN = 29;
-        internal const int GUI_СROSS = 30;
-        internal const int GUI_LOSE = 31;
-        internal const int GUI_BATTLE_2 = 32;
-        internal const int GUI_NEIGHBOR_CASTLE = 33;
 
         internal const int GUI_PARAMETER_STRENGTH = 6;
         internal const int GUI_PARAMETER_DEXTERITY = 7;
@@ -435,7 +399,7 @@ namespace Fantasy_Kingdoms_Battle
                 imListObjects48 = new BitmapList(imListObjects128, 48, Config.BorderInBigIcons, bmpMaskSmall);
                 LoadBitmapObjects();
 
-                imListObjects48.AddBitmap(LoadBitmap("Items.png"));
+                imListObjects48.AddBitmap(LoadBitmap("Gui48.png"));
 
                 ilGui16 = new BitmapList(LoadBitmap("Gui16.png"), 16, true, false);
                 ilGui24 = new BitmapList(LoadBitmap("Gui24.png"), 24, true, true);
@@ -444,7 +408,6 @@ namespace Fantasy_Kingdoms_Battle
                 ilMenuCellFilters = new BitmapList(LoadBitmap("MenuCellFilters.png"), 48, true, false);
                 blCheckBox = new BitmapList(LoadBitmap("CheckBox.png"), 24, false, false);
 
-                ilGui = new BitmapList(LoadBitmap("Gui.png"), 48, true, true);
                 //MakeAlpha();
 
                 bmpForBackground = LoadBitmap("Background.png");
@@ -592,10 +555,10 @@ namespace Fantasy_Kingdoms_Battle
                 labelNamePlayer.StringFormat.LineAlignment = StringAlignment.Center;
                 labelNamePlayer.Width = 16;
 
-                btnInGameMenu = CreateButton(layerGame, GUI_SETTINGS, Config.GridSize, Config.GridSize, BtnInGameMenu_Click, BtnInGameMenu_MouseHover);
+                btnInGameMenu = CreateButton(layerGame, Config.Gui48_Settings, Config.GridSize, Config.GridSize, BtnInGameMenu_Click, BtnInGameMenu_MouseHover);
                 btnInGameMenu.HighlightUnderMouse = true;
                 btnInGameMenu.ShowBorder = false;
-                btnEndTurn = CreateButton(layerGame, GUI_HOURGLASS, 0, Config.GridSize, BtnEndTurn_Click, BtnEndTurn_MouseHover);
+                btnEndTurn = CreateButton(layerGame, Config.Gui48_Hourglass, 0, Config.GridSize, BtnEndTurn_Click, BtnEndTurn_MouseHover);
                 btnEndTurn.HighlightUnderMouse = true;
                 btnEndTurn.ShowBorder = true;
                 panelLairWithFlags = new VisualControl(MainControl, 0, 0);
@@ -656,15 +619,15 @@ namespace Fantasy_Kingdoms_Battle
                 };
 
                 // Страницы игры
-                pageControl = new VCPageControl(MainControl, 0, panelLairWithFlags.ShiftY, ilGui);
+                pageControl = new VCPageControl(MainControl, 0, panelLairWithFlags.ShiftY, imListObjects48);
                 pageControl.PageChanged += PageControl_PageChanged;
-                pageResultTurn = pageControl.AddPage(GUI_RESULT_TURN, "Сводка", PageResultTurn_ShowHint);
-                pageGuilds = pageControl.AddPage(GUI_GUILDS, "В гильдиях нанимаются герои", PageGuilds_ShowHint);
-                pageEconomicConstructions = pageControl.AddPage(GUI_ECONOMY, "Надежная экономика - залог победы", PageEconomicConstructions_ShowHint);
-                pageTemples = pageControl.AddPage(GUI_TEMPLE, "Храмы позволяют нанимать самых сильных героев", PageTemples_ShowHint);
-                pageHeroes = pageControl.AddPage(GUI_HEROES, "Здесь можно посмотреть своих героев", PageHeroes_ShowHint);
-                pageLairs = pageControl.AddPage(GUI_MAP, "В окрестностях замка водятся различные монстры", PageLairs_ShowHint);
-                pageTournament = pageControl.AddPage(GUI_TOURNAMENT, "Здесь можно увидеть положение всех игроков на турнире", PageTournament_ShowHint);
+                pageResultTurn = pageControl.AddPage(Config.Gui48_ResultDay, "Сводка", PageResultTurn_ShowHint);
+                pageGuilds = pageControl.AddPage(Config.Gui48_Guilds, "В гильдиях нанимаются герои", PageGuilds_ShowHint);
+                pageEconomicConstructions = pageControl.AddPage(Config.Gui48_Economy, "Надежная экономика - залог победы", PageEconomicConstructions_ShowHint);
+                pageTemples = pageControl.AddPage(Config.Gui48_Temple, "Храмы позволяют нанимать самых сильных героев", PageTemples_ShowHint);
+                pageHeroes = pageControl.AddPage(Config.Gui48_Heroes, "Здесь можно посмотреть своих героев", PageHeroes_ShowHint);
+                pageLairs = pageControl.AddPage(Config.Gui48_Map, "В окрестностях замка водятся различные монстры", PageLairs_ShowHint);
+                pageTournament = pageControl.AddPage(Config.Gui48_Tournament, "Здесь можно увидеть положение всех игроков на турнире", PageTournament_ShowHint);
 
                 panelNeighborhood = new VisualControl(pageControl, 0, 0);
                 panelNeighborhood.Visible = false;
@@ -1718,7 +1681,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal VCIconButton48 CreateButton(VisualControl parent, int imageIndex, int left, int top, EventHandler click, EventHandler showHint)
         {
-            VCIconButton48 b = new VCIconButton48(parent, left, top, ilGui, imageIndex);
+            VCIconButton48 b = new VCIconButton48(parent, left, top, imListObjects48, imageIndex);
             b.Click += click;
             b.ShowHint += showHint;
 
@@ -2103,7 +2066,7 @@ namespace Fantasy_Kingdoms_Battle
             for (int i = 0; i < lobby.TypeLobby.LairsLayers; i++)
             {
                 ls = lobby.TypeLobby.LayerSettings[i];
-                VCNeighborhood im = new VCNeighborhood(panelNeighborhood, nextLeft, 0, ilGui, ls.ImageIndex);
+                VCNeighborhood im = new VCNeighborhood(panelNeighborhood, nextLeft, 0, imListObjects48, ls.ImageIndex);
                 im.ShowBorder = true;
                 im.Layer = i;
                 im.Cost = ls.Name;

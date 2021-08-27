@@ -42,7 +42,7 @@ namespace Fantasy_Kingdoms_Battle
                 Left = LeftAfterIcon(),
                 Top = TopForIcon(),
                 //ImageList = Program.formMain.ilGui,
-                ImageIndex = FormMain.GUI_DISMISS
+                ImageIndex = FormMain.Config.Gui48_Dismiss
                 //Size = GuiUtils.SizeButtonWithImage(Program.formMain.ilGui)
             };
             btnDismiss.Click += BtnDismiss_Click;

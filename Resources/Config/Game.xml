@@ -90,4 +90,40 @@
     <Width>10</Width>
     <Height>3</Height>
   </Warehouse>
+  <Gui48>
+    <Heroes>183</Heroes>;
+    <Guilds>184</Guilds>
+    <Economy>185</Economy>
+    <Defense>186</Defense>
+    <Temple>187</Temple>
+    <LevelUp>188</LevelUp>
+    <Buy>189</Buy>
+    <Lobby>190</Lobby>
+    <Dismiss>191</Dismiss>
+    <Battle>192</Battle>
+    <Peasant>193</Peasant>
+    <Hourglass>194</Hourglass>
+    <Goods>195</Goods>
+    <Home>196</Home>
+    <Inventory>197</Inventory>
+    <Target>198</Target>
+    <Book>199</Book>
+    <Exit>200</Exit>
+    <FlagAttack>201 </FlagAttack>
+    <Tournament>202</Tournament>
+    <Scroll>203</Scroll>
+    <Settings>204</Settings>
+    <FlagScout>205</FlagScout>
+    <FlagCancel>206</FlagCancel>
+    <Build>207</Build>
+    <FlagDefense>208</FlagDefense>
+    <Map>209</Map>
+    <Background>210</Background>
+    <ResultDay>211</ResultDay>
+    <Win>212</Win>
+    <Draw>213</Draw>
+    <Defeat>214</Defeat>
+    <Battle2>215</Battle2>
+    <NeighborCastle>216</NeighborCastle>
+  </Gui48>
 </Game>

@@ -30,10 +30,10 @@ namespace Fantasy_Kingdoms_Battle
 
             separator.ShiftY = lblGold.NextTop();
             pageControl.ShiftY = separator.NextTop();
-            pageControl.AddTab("Товары", FormMain.GUI_GOODS, panelProducts);
-            pageControl.AddTab("Склад", FormMain.GUI_INVENTORY, panelWarehouse);
-            pageControl.AddTab("Жители", FormMain.GUI_HOME, panelInhabitants);
-            pageControl.AddTab("История", FormMain.GUI_BOOK, null);
+            pageControl.AddTab("Товары", FormMain.Config.Gui48_Goods, panelProducts);
+            pageControl.AddTab("Склад", FormMain.Config.Gui48_Inventory, panelWarehouse);
+            pageControl.AddTab("Жители", FormMain.Config.Gui48_Home, panelInhabitants);
+            pageControl.AddTab("История", FormMain.Config.Gui48_Book, null);
 
             pageControl.ApplyMinSize();
             Width = pageControl.Width + FormMain.Config.GridSize * 2;

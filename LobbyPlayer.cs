@@ -987,11 +987,11 @@ namespace Fantasy_Kingdoms_Battle
             switch (typeFlag)
             {
                 case TypeFlag.Scout:
-                    return FormMain.GUI_FLAG_SCOUT;
+                    return FormMain.Config.Gui48_FlagScout;
                 case TypeFlag.Defense:
-                    return FormMain.GUI_FLAG_DEFENSE;
+                    return FormMain.Config.Gui48_FlagDefense;
                 case TypeFlag.Attack:
-                    return FormMain.GUI_FLAG_ATTACK;
+                    return FormMain.Config.Gui48_FlagAttack;
                 default:
                     throw new Exception("Неизвестный тип флага: " + typeFlag.ToString() + ".");
             }

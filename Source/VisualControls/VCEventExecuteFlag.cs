@@ -24,7 +24,7 @@ namespace Fantasy_Kingdoms_Battle
             Winner = winner;
             Battle = b;
 
-            bmpTypeFlag = new VCImage(this, FormMain.Config.GridSize, FormMain.Config.GridSize, Program.formMain.ilGui, LobbyPlayer.TypeFlagToImageIndex(typeFlag));
+            bmpTypeFlag = new VCImage(this, FormMain.Config.GridSize, FormMain.Config.GridSize, Program.formMain.imListObjects48, LobbyPlayer.TypeFlagToImageIndex(typeFlag));
             bmpTypeFlag.ShowBorder = true;
             bmpTarget = new VCImage(this, bmpTypeFlag.NextLeft(), bmpTypeFlag.ShiftY, Program.formMain.imListObjects48, tl.ImageIndex);
             bmpTarget.ShowBorder = true;
@@ -40,7 +40,7 @@ namespace Fantasy_Kingdoms_Battle
             textColon.StringFormat.Alignment = StringAlignment.Center;
             textColon.StringFormat.LineAlignment = StringAlignment.Center;
             textColon.Width = textColon.Font.WidthText(textColon.Text);
-            bmpWin = new VCImage(this, textColon.NextLeft(), bmpTypeFlag.ShiftY, Program.formMain.ilGui, winner ? FormMain.GUI_WIN : FormMain.GUI_LOSE);
+            bmpWin = new VCImage(this, textColon.NextLeft(), bmpTypeFlag.ShiftY, Program.formMain.imListObjects48, winner ? FormMain.Config.Gui48_Win : FormMain.Config.Gui48_Defeat);
             bmpWin.ShowBorder = true;
 
             btnViewResult = new VCButton(this, bmpWin.NextLeft(), 16, "Итоги");

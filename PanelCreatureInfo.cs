@@ -79,10 +79,10 @@ namespace Fantasy_Kingdoms_Battle
 
             separator.ShiftY = lvGold.NextTop();
             pageControl.ShiftY = separator.NextTop();
-            pageControl.AddTab("Статистика", FormMain.GUI_SCROLL, null);
-            pageControl.AddTab("Инвентарь", FormMain.GUI_INVENTORY, panelInventory);
-            pageControl.AddTab("Способности и навыки", FormMain.GUI_TARGET, panelAbilitiesAndSecSkills);
-            pageControl.AddTab("История", FormMain.GUI_BOOK, null);
+            pageControl.AddTab("Статистика", FormMain.Config.Gui48_Scroll, null);
+            pageControl.AddTab("Инвентарь", FormMain.Config.Gui48_Inventory, panelInventory);
+            pageControl.AddTab("Способности и навыки", FormMain.Config.Gui48_Target, panelAbilitiesAndSecSkills);
+            pageControl.AddTab("История", FormMain.Config.Gui48_Book, null);
 
             panelAbilitiesAndSecSkills.AddControl(panelAbilities);
             panelAbilitiesAndSecSkills.AddControl(panelSecondarySkills);

@@ -29,8 +29,8 @@ namespace Fantasy_Kingdoms_Battle
             for (int i = 0; i < players; i++)
             {
                 VisualControl panel = new VisualControl(this, 0, nextTop);
-                panel.Width = Program.formMain.ilGui.Size;
-                panel.Height = Program.formMain.ilGui.Size;
+                panel.Width = Program.formMain.imListObjects48.Size;
+                panel.Height = Program.formMain.imListObjects48.Size;
                 img = new VCImage(panel, 0, 0, Program.formMain.ilGui24, -1);
                 img.ShiftX = (panel.Width - img.Width) / 2;
                 img.ShiftY = (panel.Height - img.Height) / 2;

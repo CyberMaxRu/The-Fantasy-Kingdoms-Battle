@@ -44,14 +44,14 @@ namespace Fantasy_Kingdoms_Battle
             imgMapObject.Click += ImgLair_Click;
             imgMapObject.ShowHint += ImgLair_ShowHint;
 
-            btnHeroes = new VCIconButton48(this, imgMapObject.ShiftX, imgMapObject.ShiftY, Program.formMain.ilGui, FormMain.GUI_HOME);
+            btnHeroes = new VCIconButton48(this, imgMapObject.ShiftX, imgMapObject.ShiftY, Program.formMain.imListObjects48, FormMain.Config.Gui48_Home);
             btnHeroes.ShowHint += BtnHeroes_ShowHint;
 
             btnHireHero = new VCIconButton48(this, imgMapObject.NextLeft(), btnHeroes.NextTop() + FormMain.Config.GridSize + FormMain.Config.GridSizeHalf, Program.formMain.imListObjects48, -1);
             btnHireHero.Click += BtnHireHero_Click;
             btnHireHero.ShowHint += BtnHireHero_ShowHint;
 
-            btnBuildOrUpgrade = new VCIconButton48(this, imgMapObject.NextLeft(), imgMapObject.NextTop(), Program.formMain.ilGui, FormMain.GUI_BUILD);
+            btnBuildOrUpgrade = new VCIconButton48(this, imgMapObject.NextLeft(), imgMapObject.NextTop(), Program.formMain.imListObjects48, FormMain.Config.Gui48_Build);
             btnBuildOrUpgrade.Click += BtnBuildOrUpgrade_Click;
             btnBuildOrUpgrade.ShowHint += BtnBuildOrUpgrade_ShowHint;
 
@@ -68,19 +68,19 @@ namespace Fantasy_Kingdoms_Battle
             lblGreatness.Color = FormMain.Config.HintIncome;
             lblGreatness.Hint = "Прибавление величия при строительстве и в день";
 
-            btnAction = new VCIconButton48(this, imgMapObject.NextLeft(), imgMapObject.NextTop(), Program.formMain.ilGui, FormMain.GUI_BATTLE);
+            btnAction = new VCIconButton48(this, imgMapObject.NextLeft(), imgMapObject.NextTop(), Program.formMain.imListObjects48, FormMain.Config.Gui48_Battle);
             btnAction.Click += BtnAction_Click;
             btnAction.ShowHint += BtnAction_ShowHint;
 
-            btnCancel = new VCIconButton48(this, btnAction.ShiftX - btnAction.Width - FormMain.Config.GridSize, btnAction.ShiftY, Program.formMain.ilGui, FormMain.GUI_FLAG_CANCEL);
+            btnCancel = new VCIconButton48(this, btnAction.ShiftX - btnAction.Width - FormMain.Config.GridSize, btnAction.ShiftY, Program.formMain.imListObjects48, FormMain.Config.Gui48_FlagCancel);
             btnCancel.Click += BtnCancel_Click;
             btnCancel.ShowHint += BtnCancel_ShowHint;
 
-            btnInhabitants = new VCIconButton48(this, imgMapObject.NextLeft(), imgMapObject.ShiftY, Program.formMain.ilGui, FormMain.GUI_HOME);
+            btnInhabitants = new VCIconButton48(this, imgMapObject.NextLeft(), imgMapObject.ShiftY, Program.formMain.imListObjects48, FormMain.Config.Gui48_Home);
             btnInhabitants.Click += BtnInhabitants_Click;
             btnInhabitants.ShowHint += BtnInhabitants_ShowHint;
 
-            btnAttackHeroes = new VCIconButton48(this, btnInhabitants.ShiftX, btnInhabitants.NextTop() + FormMain.Config.GridSize + FormMain.Config.GridSizeHalf, Program.formMain.ilGui, FormMain.GUI_TARGET);
+            btnAttackHeroes = new VCIconButton48(this, btnInhabitants.ShiftX, btnInhabitants.NextTop() + FormMain.Config.GridSize + FormMain.Config.GridSizeHalf, Program.formMain.imListObjects48, FormMain.Config.Gui48_Target);
             btnAttackHeroes.Click += BtnAttackHeroes_Click;
             btnAttackHeroes.ShowHint += BtnAttackHeroes_ShowHint;
 
@@ -175,7 +175,7 @@ namespace Fantasy_Kingdoms_Battle
                         {
                             btnBuildOrUpgrade.Visible = true;
                             btnBuildOrUpgrade.Cost = Construction.CostBuyOrUpgrade().ToString();
-                            btnBuildOrUpgrade.ImageIndex = FormMain.GUI_LEVELUP;
+                            btnBuildOrUpgrade.ImageIndex = FormMain.Config.Gui48_LevelUp;
                             btnBuildOrUpgrade.ImageIsEnabled = Construction.CheckRequirements();
                         }
                         else
@@ -187,7 +187,7 @@ namespace Fantasy_Kingdoms_Battle
                     {
                         btnBuildOrUpgrade.Visible = true;
                         btnBuildOrUpgrade.Cost = Construction.CostBuyOrUpgrade().ToString();
-                        btnBuildOrUpgrade.ImageIndex = Construction.TypeConstruction.ID != FormMain.Config.IDHolyPlace ? FormMain.GUI_BUILD : FormMain.GUI_TEMPLE;
+                        btnBuildOrUpgrade.ImageIndex = Construction.TypeConstruction.ID != FormMain.Config.IDHolyPlace ? FormMain.Config.Gui48_Build : FormMain.Config.Gui48_Temple;
                         btnBuildOrUpgrade.ImageIsEnabled = (Construction.TypeConstruction.MaxLevel > 0) ? Construction.CheckRequirements() : true;
                     }
                 }
@@ -244,17 +244,17 @@ namespace Fantasy_Kingdoms_Battle
                     switch (Construction.TypeAction())
                     {
                         case TypeFlag.Scout:
-                            btnAction.ImageIndex = FormMain.GUI_FLAG_SCOUT;
+                            btnAction.ImageIndex = FormMain.Config.Gui48_FlagScout;
                             btnInhabitants.Visible = false;
                             break;
                         case TypeFlag.Attack:
-                            btnAction.ImageIndex = FormMain.GUI_FLAG_ATTACK;
+                            btnAction.ImageIndex = FormMain.Config.Gui48_FlagAttack;
                             btnInhabitants.Visible = Construction.Monsters.Count > 0;
                             if (btnInhabitants.Visible)
                                 btnInhabitants.Cost = Construction.Monsters.Count.ToString();
                             break;
                         case TypeFlag.Defense:
-                            btnAction.ImageIndex = FormMain.GUI_FLAG_DEFENSE;
+                            btnAction.ImageIndex = FormMain.Config.Gui48_FlagDefense;
                             btnInhabitants.Visible = Construction.Monsters.Count > 0;
                             if (btnInhabitants.Visible)
                                 btnInhabitants.Cost = Construction.Monsters.Count.ToString();

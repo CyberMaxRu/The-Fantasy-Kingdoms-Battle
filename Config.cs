@@ -30,6 +30,47 @@ namespace Fantasy_Kingdoms_Battle
             xmlDoc = CreateXmlDocument("Config\\Game.xml");
             LoadConfigGame(xmlDoc);
 
+            XmlNode xmlGui = xmlDoc.SelectSingleNode("Game/Gui48");
+            Gui48_Heroes = GetGui48ImageIndex("Heroes");
+            Gui48_Guilds = GetGui48ImageIndex("Guilds");
+            Gui48_Economy = GetGui48ImageIndex("Economy");
+            Gui48_Defense = GetGui48ImageIndex("Defense");
+            Gui48_Temple = GetGui48ImageIndex("Temple");
+            Gui48_LevelUp = GetGui48ImageIndex("LevelUp");
+            Gui48_Buy = GetGui48ImageIndex("Buy");
+            Gui48_Lobby = GetGui48ImageIndex("Lobby");
+            Gui48_Dismiss = GetGui48ImageIndex("Dismiss");
+            Gui48_Battle = GetGui48ImageIndex("Battle");
+            Gui48_Peasant = GetGui48ImageIndex("Peasant");
+            Gui48_Hourglass = GetGui48ImageIndex("Hourglass");
+            Gui48_Goods = GetGui48ImageIndex("Goods");
+            Gui48_Home = GetGui48ImageIndex("Home");
+            Gui48_Inventory = GetGui48ImageIndex("Inventory");
+            Gui48_Target = GetGui48ImageIndex("Target");
+            Gui48_Book = GetGui48ImageIndex("Book");
+            Gui48_Exit = GetGui48ImageIndex("Exit");
+            Gui48_FlagAttack = GetGui48ImageIndex("FlagAttack");
+            Gui48_Tournament = GetGui48ImageIndex("Tournament");
+            Gui48_Scroll = GetGui48ImageIndex("Scroll");
+            Gui48_Settings = GetGui48ImageIndex("Settings");
+            Gui48_FlagScout = GetGui48ImageIndex("FlagScout");
+            Gui48_FlagCancel = GetGui48ImageIndex("FlagCancel");
+            Gui48_Build = GetGui48ImageIndex("Build");
+            Gui48_FlagDefense = GetGui48ImageIndex("FlagDefense");
+            Gui48_Map = GetGui48ImageIndex("Map");
+            Gui48_Background = GetGui48ImageIndex("Background");
+            Gui48_ResultDay = GetGui48ImageIndex("ResultDay");
+            Gui48_Win = GetGui48ImageIndex("Win");
+            Gui48_Draw = GetGui48ImageIndex("Draw");
+            Gui48_Defeat = GetGui48ImageIndex("Defeat");
+            Gui48_Battle2 = GetGui48ImageIndex("Battle2");
+            Gui48_NeighborCastle = GetGui48ImageIndex("NeighborCastle");
+
+            int GetGui48ImageIndex(string name)
+            {
+                return XmlUtils.GetIntegerNotNull(xmlGui, name) + ImageIndexFirstItems - 1;
+            }
+
             // Загружаем внешние аватары
             if (File.Exists(pathResources + @"\ExternalAvatars.xml"))
                 xmlDoc = CreateXmlDocument(@"\ExternalAvatars.xml");
@@ -289,6 +330,42 @@ namespace Fantasy_Kingdoms_Battle
         internal Color UnitNormalParam { get; private set; }
         internal Color UnitLowNormalParam { get; private set; }
         internal Color UnitHighNormalParam { get; private set; }
+
+        // Иконки GUI-48
+        internal int Gui48_Heroes { get; }
+        internal int Gui48_Guilds { get; }
+        internal int Gui48_Economy { get; }
+        internal int Gui48_Defense { get; }
+        internal int Gui48_Temple { get; }
+        internal int Gui48_LevelUp { get; }
+        internal int Gui48_Buy { get; }
+        internal int Gui48_Lobby { get; }
+        internal int Gui48_Dismiss { get; }
+        internal int Gui48_Battle { get; }
+        internal int Gui48_Peasant { get; }
+        internal int Gui48_Hourglass { get; }
+        internal int Gui48_Goods { get; }
+        internal int Gui48_Home { get; }
+        internal int Gui48_Inventory { get; }
+        internal int Gui48_Target { get; }
+        internal int Gui48_Book { get; }
+        internal int Gui48_Exit { get; }
+        internal int Gui48_FlagAttack { get; }
+        internal int Gui48_Tournament { get; }
+        internal int Gui48_Scroll { get; }
+        internal int Gui48_Settings { get; }
+        internal int Gui48_FlagScout { get; }
+        internal int Gui48_FlagCancel { get; }
+        internal int Gui48_Build { get; }
+        internal int Gui48_FlagDefense { get; }
+        internal int Gui48_Map { get; }
+        internal int Gui48_Background { get; }
+        internal int Gui48_ResultDay { get; }
+        internal int Gui48_Win { get; }
+        internal int Gui48_Draw { get; }
+        internal int Gui48_Defeat { get; }
+        internal int Gui48_Battle2 { get; }
+        internal int Gui48_NeighborCastle { get; }
 
         //
         internal Brush brushControl { get; private set; } = new SolidBrush(Color.White);
