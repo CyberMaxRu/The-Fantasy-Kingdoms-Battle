@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Diagnostics;
+using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -28,14 +29,14 @@ namespace Fantasy_Kingdoms_Battle
                 Page = (Page)Enum.Parse(typeof(Page), n.SelectSingleNode("Page").InnerText);
             else
                 Page = Page.None;
-            Line = XmlUtils.GetInteger(n, "Line");
-            Pos = XmlUtils.GetInteger(n, "Pos");
-            HasTreasury = XmlUtils.GetBool(n, "HasTreasury", false);
-            GoldByConstruction = XmlUtils.GetInteger(n, "GoldByConstruction");
-            DefaultLevel = XmlUtils.GetInteger(n, "DefaultLevel");
-            MaxLevel = XmlUtils.GetInteger(n, "MaxLevel");
-            ResearchesPerDay = XmlUtils.GetInteger(n, "ResearchesPerDay");
-            PlayerCanBuild = XmlUtils.GetBool(n, "PlayerCanBuild", true);
+            Line = GetInteger(n, "Line");
+            Pos = GetInteger(n, "Pos");
+            HasTreasury = GetBool(n, "HasTreasury", false);
+            GoldByConstruction = GetInteger(n, "GoldByConstruction");
+            DefaultLevel = GetInteger(n, "DefaultLevel");
+            MaxLevel = GetInteger(n, "MaxLevel");
+            ResearchesPerDay = GetInteger(n, "ResearchesPerDay");
+            PlayerCanBuild = GetBool(n, "PlayerCanBuild", true);
 
             // Проверяем, что таких же ID и наименования нет
             foreach (TypeConstruction tec in FormMain.Config.TypeConstructions)
@@ -45,7 +46,7 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(tec.ImageIndex != ImageIndex);
             }
 
-            uriSoundSelect = new Uri(Program.formMain.dirResources + @"Sound\Interface\ConstructionSelect\" + XmlUtils.GetStringNotNull(n, "SoundSelect"));
+            uriSoundSelect = new Uri(Program.formMain.dirResources + @"Sound\Interface\ConstructionSelect\" + GetStringNotNull(n, "SoundSelect"));
 
             // Загружаем информацию об уровнях
             if ((IsInternalConstruction || (Category == CategoryConstruction.External) || (n.SelectSingleNode("Levels") != null)) && (MaxLevel > 0))
@@ -90,7 +91,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Загружаем исследования
-            int layersResearches = XmlUtils.GetInteger(n, "LayersCellMenu");
+            int layersResearches = GetInteger(n, "LayersCellMenu");
             XmlNode nr = n.SelectSingleNode("CellsMenu");
             if (nr != null)
             {
@@ -123,8 +124,8 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
-            MaxHeroes = XmlUtils.GetInteger(n, "MaxHeroes");
-            nameTypePlaceForConstruct = XmlUtils.GetString(n, "TypePlaceForConstruct");
+            MaxHeroes = GetInteger(n, "MaxHeroes");
+            nameTypePlaceForConstruct = GetString(n, "TypePlaceForConstruct");
             Debug.Assert(Name != nameTypePlaceForConstruct);
 
             // Информация о награде
@@ -302,11 +303,11 @@ namespace Fantasy_Kingdoms_Battle
         public MonsterLevelLair(XmlNode n)
         {
             idMonster = n.SelectSingleNode("ID").InnerText;
-            StartQuantity = XmlUtils.GetInteger(n, "StartQuantity");
-            MaxQuantity = XmlUtils.GetInteger(n, "MaxQuantity");
-            Level = XmlUtils.GetInteger(n, "Level");
-            DaysRespawn = XmlUtils.GetInteger(n, "DaysRespawn");
-            QuantityRespawn = XmlUtils.GetInteger(n, "QuantityRespawn");
+            StartQuantity = GetInteger(n, "StartQuantity");
+            MaxQuantity = GetInteger(n, "MaxQuantity");
+            Level = GetInteger(n, "Level");
+            DaysRespawn = GetInteger(n, "DaysRespawn");
+            QuantityRespawn = GetInteger(n, "QuantityRespawn");
 
             Debug.Assert(idMonster.Length > 0);
             Debug.Assert(StartQuantity >= 0);
