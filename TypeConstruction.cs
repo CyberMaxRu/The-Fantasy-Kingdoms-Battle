@@ -27,7 +27,6 @@ namespace Fantasy_Kingdoms_Battle
             IsInternalConstruction = (Category == CategoryConstruction.Guild) || (Category == CategoryConstruction.Economic) || (Category == CategoryConstruction.Temple) || (Category == CategoryConstruction.Military);
             IsOurConstruction = IsInternalConstruction || (Category == CategoryConstruction.External);
             HasTreasury = (Category == CategoryConstruction.Guild) || (Category == CategoryConstruction.Temple) || (Name == Config.IDConstructionCastle);
-            GoldByConstruction = GetInteger(n, "GoldByConstruction");
             uriSoundSelect = new Uri(Program.formMain.dirResources + @"Sound\Interface\ConstructionSelect\" + GetStringNotNull(n, "SoundSelect"));
             MaxHeroes = GetInteger(n, "MaxHeroes");
             nameTypePlaceForConstruct = GetString(n, "TypePlaceForConstruct");
@@ -71,6 +70,15 @@ namespace Fantasy_Kingdoms_Battle
                 XmlFieldNotExist(n, "ResearchesPerDay");
                 XmlFieldNotExist(n, "PlayerCanBuild");
                 XmlFieldNotExist(n, "LayersCellMenu");                
+            }
+
+            if (HasTreasury)
+            {
+                GoldByConstruction = GetIntegerNotNull(n, "GoldByConstruction");
+            }
+            else
+            {
+                XmlFieldNotExist(n, "GoldByConstruction");
             }
 
             // Проверяем, что таких же ID и наименования нет
