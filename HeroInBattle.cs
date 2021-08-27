@@ -44,7 +44,7 @@ namespace Fantasy_Kingdoms_Battle
             CurrentStamina = Parameters.Stamina;
 
             State = StateHeroInBattle.None;
-            QuantityArrows = ph.TypeCreature.QuantityArrows;
+            QuantityArrows = ph.GetQuantityArrows();
 
             LastTarget = default;
 

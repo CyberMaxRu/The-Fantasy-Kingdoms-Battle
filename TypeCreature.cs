@@ -22,7 +22,6 @@ namespace Fantasy_Kingdoms_Battle
             KindCreature = FormMain.Config.FindKindCreature(XmlUtils.GetStringNotNull(n, "KindCreature"));
             MaxLevel = XmlUtils.GetInteger(n, "MaxLevel");
             DefaultPositionPriority = XmlUtils.GetInteger(n, "DefaultPositionPriority");
-            QuantityArrows = XmlUtils.GetInteger(n, "QuantityArrows");
             if (CategoryCreature != CategoryCreature.Citizen)
             {
                 TypeAttackMelee = FormMain.Config.FindTypeAttack(XmlUtils.GetString(n, "TypeAttackMelee"));
@@ -226,7 +225,6 @@ namespace Fantasy_Kingdoms_Battle
         internal Item WeaponMelee { get; private set; }// Рукопашное оружие
         internal Item WeaponRange { get; private set; }// Стрелковое оружие
         internal Item Armour { get; private set; }// Доспех по умолчанию
-        internal int QuantityArrows { get; }// Количество стрел
         internal TypeReward TypeReward { get; }// Награда за убийство существа
         internal int Cost { get; }
         internal TypeConstruction Construction { get; }

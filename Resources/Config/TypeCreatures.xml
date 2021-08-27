@@ -422,7 +422,6 @@
     <MeleeWeapon>WeaponHunter0</MeleeWeapon>
     <RangeWeapon>BowHunter0</RangeWeapon>
     <Armour>ArmourHunter0</Armour>
-    <QuantityArrows>20</QuantityArrows>
     <DefaultPositionPriority>100</DefaultPositionPriority>
     <BaseParameters>
       <Strength>15</Strength>
@@ -897,7 +896,6 @@
     <MeleeWeapon>WeaponElf0</MeleeWeapon>
     <RangeWeapon>BowElf0</RangeWeapon>
     <Armour>ArmourElf0</Armour>
-    <QuantityArrows>30</QuantityArrows>
     <DefaultPositionPriority>110</DefaultPositionPriority>
     <BaseParameters>
       <Strength>20</Strength>
@@ -1533,7 +1531,6 @@
     <MeleeWeapon>WeaponBeastMaster0</MeleeWeapon>
     <RangeWeapon>BowBeastMaster0</RangeWeapon>
     <Armour>ArmourBeastMaster0</Armour>
-    <QuantityArrows>25</QuantityArrows>
     <DefaultPositionPriority>140</DefaultPositionPriority>
     <NameFromTypeHero>Hunter</NameFromTypeHero>
     <BaseParameters>
@@ -1631,7 +1628,6 @@
     <MeleeWeapon>WeaponMarksman0</MeleeWeapon>
     <RangeWeapon>BowMarksman0</RangeWeapon>
     <Armour>ArmourMarksman0</Armour>
-    <QuantityArrows>30</QuantityArrows>
     <DefaultPositionPriority>130</DefaultPositionPriority>
     <NameFromTypeHero>Hunter</NameFromTypeHero>
     <BaseParameters>

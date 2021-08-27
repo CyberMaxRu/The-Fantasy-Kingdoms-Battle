@@ -39,7 +39,8 @@ namespace Fantasy_Kingdoms_Battle
             MeleeWeapon = TypeCreature.WeaponMelee;
             RangeWeapon = TypeCreature.WeaponRange;
             Armour = TypeCreature.Armour;
-
+            FindQuiver();
+            
             if (TypeCreature.CategoryCreature != CategoryCreature.Citizen)
             {
                 Level = 0;
@@ -69,6 +70,7 @@ namespace Fantasy_Kingdoms_Battle
         internal Item MeleeWeapon { get; private set; }// Рукопашное оружие (ближнего боя)
         internal Item RangeWeapon { get; private set; }// Стрелковое оружие (дальнего боя)
         internal Item Armour { get; private set; }// Доспех        
+        internal PlayerItem Quiver { get; private set; }// Колчан
         internal StateCreature StateCreature { get; private set; }// Состояние (на карте)
         internal bool IsLive { get; private set; } = true;// Существо живо
 
@@ -141,6 +143,11 @@ namespace Fantasy_Kingdoms_Battle
             StateCreature = FormMain.Config.FindStateCreature(state.ToString());
         }
 
+        internal int GetQuantityArrows()
+        {
+            return Quiver is null ? 0 : Quiver.Item.QuantityShots;
+        }
+
         internal void SetIsDead()
         {
             Debug.Assert(IsLive);
@@ -161,6 +168,22 @@ namespace Fantasy_Kingdoms_Battle
         protected virtual int GetImageIndex()
         {
             return TypeCreature.ImageIndex;
+        }
+
+        private void FindQuiver()
+        {
+            Quiver = null;
+
+            foreach (PlayerItem i in Inventory)
+            {
+                if (i.Item.CategoryItem == CategoryItem.Quiver)
+                {
+                    Debug.Assert(Quiver == null);// Не может быть 2 колчана
+                    Quiver = i;
+                }
+            }
+
+            Debug.Assert(((RangeWeapon != null) && (Quiver != null)) || ((RangeWeapon is null) && (Quiver is null)));
         }
 
         // Реализация интерфейса
