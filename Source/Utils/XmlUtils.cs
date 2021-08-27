@@ -29,8 +29,8 @@ namespace Fantasy_Kingdoms_Battle
         internal static int GetIntegerNotNull(XmlNode n, string name)
         {
             XmlNode nn = n.SelectSingleNode(name);
-            Debug.Assert(nn != null, $"Узел {name} отсутствует.");
-            Debug.Assert(nn.InnerText != null, $"У узла {name} нет значения.");
+            Debug.Assert(nn != null, $"Поле {name} отсутствует.");
+            Debug.Assert(nn.InnerText != null, $"У поля {name} нет значения.");
 
             return Convert.ToInt32(nn.InnerText);
         }
@@ -44,8 +44,8 @@ namespace Fantasy_Kingdoms_Battle
         internal static string GetStringNotNull(XmlNode n, string name)
         {
             XmlNode nn = n.SelectSingleNode(name);
-            Debug.Assert(nn != null, $"Узел {name} отсутствует.");
-            Debug.Assert(nn.InnerText.Length > 0, $"Узел {name} пуст.");
+            Debug.Assert(nn != null, $"Поле {name} отсутствует.");
+            Debug.Assert(nn.InnerText.Length > 0, $"Поле {name} пусто.");
 
             return nn.InnerText;
         }
@@ -59,7 +59,7 @@ namespace Fantasy_Kingdoms_Battle
         internal static bool GetBoolean(XmlNode n, string name, bool defValue)
         {
             XmlNode nn = n.SelectSingleNode(name);
-            //Debug.Assert(nn != null, $"Узел {name} отсутствует.");
+            //Debug.Assert(nn != null, $"Поле {name} отсутствует.");
 
             return nn is null ? defValue : Convert.ToBoolean(nn.InnerText);
 
@@ -68,8 +68,8 @@ namespace Fantasy_Kingdoms_Battle
         internal static bool GetBooleanNotNull(XmlNode n, string name)
         {
             XmlNode nn = n.SelectSingleNode(name);
-            Debug.Assert(nn != null, $"Узел {name} отсутствует.");
-            Debug.Assert(nn.InnerText != null, $"У узла {name} нет значения.");
+            Debug.Assert(nn != null, $"Поле {name} отсутствует.");
+            Debug.Assert(nn.InnerText != null, $"У поля {name} нет значения.");
 
             return Convert.ToBoolean(nn.InnerText);
         }
@@ -77,9 +77,14 @@ namespace Fantasy_Kingdoms_Battle
         internal static double GetDouble(XmlNode n, string name)
         {
             XmlNode nn = n.SelectSingleNode(name);
-            Debug.Assert(nn != null, $"Узел {name} отсутствует.");
+            Debug.Assert(nn != null, $"Поле {name} отсутствует.");
 
             return n is null ? 0 : Convert.ToDouble(nn.InnerText.Replace(".", ","));
+        }
+
+        internal static void XmlFieldNotExist(XmlNode n, string name)
+        {
+            Debug.Assert(n.SelectSingleNode(name) is null, $"Поле {name} должно отсутствовать.");
         }
 
         public static Version GetVersionFromXml(XmlNode n, string name)
