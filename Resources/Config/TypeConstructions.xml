@@ -643,6 +643,7 @@
     <Pos>1</Pos>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>3</MaxLevel>
+    <GoldByConstruction>0</GoldByConstruction>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>castle_select.wav</SoundSelect>
     <Levels>
