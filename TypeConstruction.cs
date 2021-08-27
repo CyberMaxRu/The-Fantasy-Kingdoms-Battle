@@ -321,45 +321,4 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
     }
-
-    // Класс монстров уровня логова
-    internal sealed class MonsterLevelLair
-    {
-        private string idMonster;
-
-        public MonsterLevelLair(XmlNode n)
-        {
-            idMonster = n.SelectSingleNode("ID").InnerText;
-            StartQuantity = GetInteger(n, "StartQuantity");
-            MaxQuantity = GetInteger(n, "MaxQuantity");
-            Level = GetInteger(n, "Level");
-            DaysRespawn = GetInteger(n, "DaysRespawn");
-            QuantityRespawn = GetInteger(n, "QuantityRespawn");
-
-            Debug.Assert(idMonster.Length > 0);
-            Debug.Assert(StartQuantity >= 0);
-            Debug.Assert(MaxQuantity > 0);
-            Debug.Assert(StartQuantity <= MaxQuantity);
-            Debug.Assert(Level > 0);
-            Debug.Assert(DaysRespawn >= 0);
-            Debug.Assert(DaysRespawn <= 25);
-            Debug.Assert(QuantityRespawn >= 0);
-            //Debug.Assert(QuantityRespawn <= 49);
-        }
-
-        internal TypeCreature Monster { get; private set; }
-        internal int StartQuantity { get; }
-        internal int MaxQuantity { get; }
-        internal int Level { get; }
-        internal int DaysRespawn { get; }
-        internal int QuantityRespawn { get; }
-        internal List<Monster> Monsters { get; } = new List<Monster>();
-
-        internal void TuneDeferredLinks()
-        {
-            Monster = FormMain.Config.FindTypeCreature(idMonster);
-            idMonster = null;
-            Debug.Assert(Level <= Monster.MaxLevel);
-        }
-    }
 }
