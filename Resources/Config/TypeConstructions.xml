@@ -768,8 +768,6 @@
     <Description>- Приносит средний доход</Description>
     <ImageIndex>94</ImageIndex>
     <Category>External</Category>
-    <Line>1</Line>
-    <Pos>4</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <HasTreasury>False</HasTreasury>
