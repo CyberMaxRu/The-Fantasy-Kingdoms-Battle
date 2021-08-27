@@ -26,11 +26,19 @@ namespace Fantasy_Kingdoms_Battle
             Category = (CategoryConstruction)Enum.Parse(typeof(CategoryConstruction), GetStringNotNull(n, "Category"));
             IsInternalConstruction = (Category == CategoryConstruction.Guild) || (Category == CategoryConstruction.Economic) || (Category == CategoryConstruction.Temple) || (Category == CategoryConstruction.Military);
             IsOurConstruction = IsInternalConstruction || (Category == CategoryConstruction.External);
+            HasTreasury = GetBoolean(n, "HasTreasury", false);
+            GoldByConstruction = GetInteger(n, "GoldByConstruction");
+            uriSoundSelect = new Uri(Program.formMain.dirResources + @"Sound\Interface\ConstructionSelect\" + GetStringNotNull(n, "SoundSelect"));
+            MaxHeroes = GetInteger(n, "MaxHeroes");
+            nameTypePlaceForConstruct = GetString(n, "TypePlaceForConstruct");
+            Debug.Assert(Name != nameTypePlaceForConstruct);
+
+            int layersResearches = 0;
 
             if (IsInternalConstruction)
             {
                 Page = (Page)Enum.Parse(typeof(Page), GetStringNotNull(n, "Page"));
-                CoordInPage = new Point(GetInteger(n, "Pos") - 1, GetInteger(n, "Line") - 1);
+                CoordInPage = new Point(GetIntegerNotNull(n, "Pos") - 1, GetIntegerNotNull(n, "Line") - 1);
             }
             else
             {
@@ -40,13 +48,12 @@ namespace Fantasy_Kingdoms_Battle
                 Page = Page.None;
             }
 
-            HasTreasury = GetBoolean(n, "HasTreasury", false);
-            GoldByConstruction = GetInteger(n, "GoldByConstruction");
-
             if (IsOurConstruction)
             {
                 DefaultLevel = GetIntegerNotNull(n, "DefaultLevel");
                 MaxLevel = GetIntegerNotNull(n, "MaxLevel");
+                PlayerCanBuild = GetBoolean(n, "PlayerCanBuild", true);
+                layersResearches = GetInteger(n, "LayersCellMenu");
 
                 if (IsInternalConstruction)
                 {
@@ -62,9 +69,9 @@ namespace Fantasy_Kingdoms_Battle
                 XmlFieldNotExist(n, "DefaultLevel");
                 XmlFieldNotExist(n, "MaxLevel");
                 XmlFieldNotExist(n, "ResearchesPerDay");
+                XmlFieldNotExist(n, "PlayerCanBuild");
+                XmlFieldNotExist(n, "LayersCellMenu");                
             }
-
-            PlayerCanBuild = GetBoolean(n, "PlayerCanBuild", true);
 
             // Проверяем, что таких же ID и наименования нет
             foreach (TypeConstruction tec in FormMain.Config.TypeConstructions)
@@ -74,10 +81,8 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(tec.ImageIndex != ImageIndex);
             }
 
-            uriSoundSelect = new Uri(Program.formMain.dirResources + @"Sound\Interface\ConstructionSelect\" + GetStringNotNull(n, "SoundSelect"));
-
             // Загружаем информацию об уровнях
-            if ((IsInternalConstruction || (Category == CategoryConstruction.External) || (n.SelectSingleNode("Levels") != null)) && (MaxLevel > 0))
+            if ((IsOurConstruction || (n.SelectSingleNode("Levels") != null)) && (MaxLevel > 0))
             {
                 Levels = new Level[MaxLevel + 1];// Для упрощения работы с уровнями, добавляем 1, чтобы уровень был равен индексу в массиве
 
@@ -119,25 +124,23 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Загружаем исследования
-            int layersResearches = GetInteger(n, "LayersCellMenu");
-            XmlNode nr = n.SelectSingleNode("CellsMenu");
-            if (nr != null)
+            if (IsOurConstruction)
             {
-                Debug.Assert(layersResearches > 0);
-                Researches = new TypeCellMenu[layersResearches, FormMain.Config.PlateHeight, FormMain.Config.PlateWidth];
-
-                TypeCellMenu research;
-
-                foreach (XmlNode l in nr.SelectNodes("CellMenu"))
+                XmlNode nr = n.SelectSingleNode("CellsMenu");
+                if (nr != null)
                 {
-                    research = new TypeCellMenu(l);
-                    Debug.Assert(Researches[research.Layer, research.Coord.Y, research.Coord.X] == null);
-                    Researches[research.Layer, research.Coord.Y, research.Coord.X] = research;
+                    Debug.Assert(layersResearches > 0);
+                    Researches = new TypeCellMenu[layersResearches, FormMain.Config.PlateHeight, FormMain.Config.PlateWidth];
+
+                    TypeCellMenu research;
+
+                    foreach (XmlNode l in nr.SelectNodes("CellMenu"))
+                    {
+                        research = new TypeCellMenu(l);
+                        Debug.Assert(Researches[research.Layer, research.Coord.Y, research.Coord.X] == null);
+                        Researches[research.Layer, research.Coord.Y, research.Coord.X] = research;
+                    }
                 }
-            }
-            else
-            {
-                Debug.Assert(layersResearches == 0);
             }
 
             // Информация о монстрах
@@ -151,10 +154,6 @@ namespace Fantasy_Kingdoms_Battle
                     Monsters.Add(mll);
                 }
             }
-
-            MaxHeroes = GetInteger(n, "MaxHeroes");
-            nameTypePlaceForConstruct = GetString(n, "TypePlaceForConstruct");
-            Debug.Assert(Name != nameTypePlaceForConstruct);
 
             // Информация о награде
             if (n.SelectSingleNode("Reward") != null)
