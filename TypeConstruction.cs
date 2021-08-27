@@ -26,7 +26,7 @@ namespace Fantasy_Kingdoms_Battle
             Category = (CategoryConstruction)Enum.Parse(typeof(CategoryConstruction), GetStringNotNull(n, "Category"));
             IsInternalConstruction = (Category == CategoryConstruction.Guild) || (Category == CategoryConstruction.Economic) || (Category == CategoryConstruction.Temple) || (Category == CategoryConstruction.Military);
             IsOurConstruction = IsInternalConstruction || (Category == CategoryConstruction.External);
-            HasTreasury = GetBoolean(n, "HasTreasury", false);
+            HasTreasury = (Category == CategoryConstruction.Guild) || (Category == CategoryConstruction.Temple) || (Name == Config.IDConstructionCastle);
             GoldByConstruction = GetInteger(n, "GoldByConstruction");
             uriSoundSelect = new Uri(Program.formMain.dirResources + @"Sound\Interface\ConstructionSelect\" + GetStringNotNull(n, "SoundSelect"));
             MaxHeroes = GetInteger(n, "MaxHeroes");
@@ -226,19 +226,25 @@ namespace Fantasy_Kingdoms_Battle
         internal CategoryConstruction Category { get; }// Категория сооружения
         internal bool IsInternalConstruction { get; }// Это внутреннее сооружение
         internal bool IsOurConstruction { get; }// Это сооружение, относящееся к Королевству
+
+        // Свойства, относящиеся только к зданиям Королевства
         internal Page Page { get; }// Страница игрового интерфейса
         internal Point CoordInPage { get; }// Позиция на странице игрового интерфейса
         internal int DefaultLevel { get; }// Уровень сооружения по умолчанию
         internal int MaxLevel { get; }// Максимальный уровень сооружения
-        internal Level[] Levels;
         internal bool PlayerCanBuild { get; }// Игрок может строить сооружение
         internal int ResearchesPerDay { get; }// Количество исследований в сооружении в день
-        internal PanelConstruction Panel { get; set; }
-        internal bool HasTreasury { get; }// Имеет собственную казну
+        internal bool HasTreasury { get; }// Имеет собственную казну (Замок, гильдии, храмы)
         internal int GoldByConstruction { get; }// Количество золота в казне при постройке
+        internal TypeCellMenu[,,] Researches;
+
+        //
+        internal Level[] Levels;
+
+        internal PanelConstruction Panel { get; set; }
         internal TypeCreature TrainedHero { get; set; }
 
-        internal TypeCellMenu[,,] Researches;
+        // Свойства, относящиеся к логовам монстров
         internal List<MonsterLevelLair> Monsters { get; } = new List<MonsterLevelLair>();
         internal int MaxHeroes { get; }// Максимальное количество героев, которое может атаковать логово
         internal TypeReward TypeReward { get; }// Награда за зачистку логова
