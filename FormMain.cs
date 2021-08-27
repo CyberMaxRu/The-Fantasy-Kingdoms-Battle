@@ -1301,12 +1301,12 @@ namespace Fantasy_Kingdoms_Battle
                             throw new Exception("Неизвестная страница " + tck.Page.ToString());
                     }
 
-                    Debug.Assert(panels[(int)tck.Page, tck.Line - 1, tck.Pos - 1] == null);
+                    Debug.Assert(panels[(int)tck.Page, tck.CoordInPage.Y, tck.CoordInPage.X] == null);
 
                     tck.Panel = new PanelConstruction(parent, 0, 0);
-                    tck.Panel.ShiftX = (tck.Panel.Width + Config.GridSize) * (tck.Pos - 1);
-                    tck.Panel.ShiftY = (tck.Panel.Height + Config.GridSize) * (tck.Line - 1);
-                    panels[(int)tck.Page, tck.Line - 1, tck.Pos - 1] = tck.Panel;
+                    tck.Panel.ShiftX = (tck.Panel.Width + Config.GridSize) * (tck.CoordInPage.X);
+                    tck.Panel.ShiftY = (tck.Panel.Height + Config.GridSize) * (tck.CoordInPage.Y);
+                    panels[(int)tck.Page, tck.CoordInPage.Y, tck.CoordInPage.X] = tck.Panel;
                 }
             }
         }

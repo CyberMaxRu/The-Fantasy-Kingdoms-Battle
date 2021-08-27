@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Diagnostics;
+using System.Drawing;
 using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
@@ -25,12 +26,15 @@ namespace Fantasy_Kingdoms_Battle
             Category = (CategoryConstruction)Enum.Parse(typeof(CategoryConstruction), n.SelectSingleNode("Category").InnerText);
             IsInternalConstruction = (Category == CategoryConstruction.Guild) || (Category == CategoryConstruction.Economic) || (Category == CategoryConstruction.Temple) || (Category == CategoryConstruction.Military);
             IsOurConstruction = IsInternalConstruction || (Category == CategoryConstruction.External);
+
             if (n.SelectSingleNode("Page") != null)
+            {
                 Page = (Page)Enum.Parse(typeof(Page), n.SelectSingleNode("Page").InnerText);
+                CoordInPage = new Point(GetInteger(n, "Line") - 1, GetInteger(n, "Pos") - 1);
+            }
             else
                 Page = Page.None;
-            Line = GetInteger(n, "Line");
-            Pos = GetInteger(n, "Pos");
+
             HasTreasury = GetBool(n, "HasTreasury", false);
             GoldByConstruction = GetInteger(n, "GoldByConstruction");
             DefaultLevel = GetInteger(n, "DefaultLevel");
@@ -200,8 +204,7 @@ namespace Fantasy_Kingdoms_Battle
         internal bool IsInternalConstruction { get; }// Это внутреннее сооружение
         internal bool IsOurConstruction { get; }// Это сооружение, относящееся к Королевству
         internal Page Page { get; }// Страница игрового интерфейса
-        internal int Line { get; }// Линия на странице игрового интерфейса
-        internal int Pos { get; }// Позиция сооружения в линии
+        internal Point CoordInPage { get; }// Позиция на странице игрового интерфейса
         internal int DefaultLevel { get; }// Уровень сооружения по умолчанию
         internal int MaxLevel { get; }// Максимальный уровень сооружения
         internal Level[] Levels;
