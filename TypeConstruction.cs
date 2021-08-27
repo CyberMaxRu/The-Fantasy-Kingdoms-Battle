@@ -16,7 +16,7 @@ namespace Fantasy_Kingdoms_Battle
     internal enum TypeFlag { None, Scout, Attack, Defense, Battle };// Тип флага
 
     // Тип сооружения - базовый класс для всех зданий, построек и мест
-    internal class TypeConstruction : TypeObject
+    internal sealed class TypeConstruction : TypeObject
     {
         private Uri uriSoundSelect;// Звук при выборе объекта
         private string nameTypePlaceForConstruct;
@@ -74,7 +74,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Проверяем, что таких же ID и наименования нет
-            foreach (TypeConstruction tec in FormMain.Config.TypeConstructions)
+            foreach (TypeConstruction tec in Config.TypeConstructions)
             {
                 Debug.Assert(tec.ID != ID);
                 Debug.Assert(tec.Name != Name);
@@ -130,7 +130,7 @@ namespace Fantasy_Kingdoms_Battle
                 if (nr != null)
                 {
                     Debug.Assert(layersResearches > 0);
-                    Researches = new TypeCellMenu[layersResearches, FormMain.Config.PlateHeight, FormMain.Config.PlateWidth];
+                    Researches = new TypeCellMenu[layersResearches, Config.PlateHeight, Config.PlateWidth];
 
                     TypeCellMenu research;
 
@@ -284,7 +284,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             if (nameTypePlaceForConstruct.Length > 0)
-                TypePlaceForConstruct = FormMain.Config.FindTypeConstruction(nameTypePlaceForConstruct);
+                TypePlaceForConstruct = Config.FindTypeConstruction(nameTypePlaceForConstruct);
 
             nameTypePlaceForConstruct = null;
 

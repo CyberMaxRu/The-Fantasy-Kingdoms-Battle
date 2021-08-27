@@ -12,6 +12,8 @@ namespace Fantasy_Kingdoms_Battle
 
         public TypeObject(XmlNode n)
         {
+            Config = FormMain.Config;
+
             ID = GetStringNotNull(n, "ID");
             name = GetStringNotNull(n, "Name");
             Description = GetDescription(n, "Description");
@@ -24,6 +26,8 @@ namespace Fantasy_Kingdoms_Battle
 
         public TypeObject(string id, string name, string description, int imageIndex)
         {
+            Config = FormMain.Config;
+
             ID = id;
             this.name = name;
             Description = description;
@@ -36,6 +40,7 @@ namespace Fantasy_Kingdoms_Battle
         internal string Name { get => name; set { name = value; CheckData(); } }// Наименование типа объекта
         internal string Description { get; }// Описание типа объекта
         internal int ImageIndex { get => imageIndex; set { imageIndex = value; CheckData(); } }// Код иконки типа объекта
+        protected Config Config { get; }
 
         internal virtual void TuneDeferredLinks() { }
         
@@ -45,7 +50,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(ID.Length > 0);
             Debug.Assert(Name.Length > 0);
-            Debug.Assert(Name.Length <= FormMain.Config.MaxLengthObjectName);
+            Debug.Assert(Name.Length <= Config.MaxLengthObjectName);
             Debug.Assert(Description.Length > 0);
             Debug.Assert((ImageIndex >= 0) || (ImageIndex == FormMain.IMAGE_INDEX_CURRENT_AVATAR));
         }
