@@ -6,7 +6,6 @@ namespace Fantasy_Kingdoms_Battle
     // Интерфейс для работы с ячейкой
     internal interface ICell
     {
-        BitmapList BitmapList();
         int ImageIndex();
         bool NormalImage();
         int Level();
@@ -106,7 +105,6 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (cell != null)
                 {
-                    BitmapList = cell.BitmapList();
                     ImageIndex = cell.ImageIndex();
                     ImageIsEnabled = cell.NormalImage();                        
                     Quantity = GetQuantity();

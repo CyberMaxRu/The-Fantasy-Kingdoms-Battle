@@ -187,7 +187,6 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         // Реализация интерфейса
-        BitmapList ICell.BitmapList() => Program.formMain.imListObjects48;
         int ICell.ImageIndex() => GetImageIndex();
         bool ICell.NormalImage() => true;
         int ICell.Level() => Level;

@@ -646,11 +646,6 @@ namespace Fantasy_Kingdoms_Battle
             g.Dispose();
         }
 
-        BitmapList ICell.BitmapList()
-        {
-            return Program.formMain.imListObjects48;
-        }
-
         int ICell.ImageIndex()
         {
             return PlayerHero.TypeCreature.ImageIndex;

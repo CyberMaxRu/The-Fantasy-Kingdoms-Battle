@@ -1008,13 +1008,6 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep1Header(TypeConstruction.IsOurConstruction ? "Жители" : "Существа", "", list);
         }
 
-        BitmapList ICell.BitmapList()
-        {
-            if (Player == Player.Lobby.CurrentPlayer)
-                return Program.formMain.imListObjects48;
-            else
-                return Program.formMain.imListObjects48;
-        }
         int ICell.ImageIndex()
         {
             if (Player == Player.Lobby.CurrentPlayer)
