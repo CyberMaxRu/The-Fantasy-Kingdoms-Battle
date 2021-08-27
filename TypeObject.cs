@@ -4,9 +4,12 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    // Базовый тип для всех объектов - сооружений, логов, существ
+    // Базовый тип для всех объектов - сооружений, существ
     internal abstract class TypeObject
     {
+        private string name;
+        private int imageIndex;
+
         public TypeObject(XmlNode n)
         {
             ID = GetStringNotNull(n, "ID");
@@ -31,26 +34,12 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal string ID { get; }// Уникальный (в пределах списка) код типа объекта
-        internal string Name { get; private set; }// Наименование типа объекта
+        internal string Name { get => name; set { name = value; CheckData(); } }// Наименование типа объекта
         internal string Description { get; }// Описание типа объекта
-        internal int ImageIndex { get; private set; }// Код иконки типа объекта
+        internal int ImageIndex { get => imageIndex; set { imageIndex = value; CheckData(); } }// Код иконки типа объекта
 
         internal virtual void TuneDeferredLinks() { }
-
-        internal void SetName(string name)
-        {
-            Name = name;
-
-            CheckData();
-        }
-
-        internal void SetImageIndex(int imageIndex)
-        {
-            ImageIndex = imageIndex;
-
-            CheckData();
-        }
-
+        
         protected virtual int ShiftImageIndex() => 0;
 
         protected virtual void CheckData()

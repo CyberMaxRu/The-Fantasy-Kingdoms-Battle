@@ -182,7 +182,7 @@ namespace Fantasy_Kingdoms_Battle
             btnChangeAvatar.Enabled = curImageIndexAvatar >= FormMain.Config.ImageIndexExternalAvatar;
             btnDeleteAvatar.Enabled = btnChangeAvatar.Enabled;
 
-            Program.formMain.CurrentHumanPlayer.SetImageIndex(curImageIndexAvatar);
+            Program.formMain.CurrentHumanPlayer.ImageIndex = curImageIndexAvatar;
             FormMain.Config.SaveHumanPlayers();
         }
 
@@ -224,7 +224,7 @@ namespace Fantasy_Kingdoms_Battle
                     Debug.Assert(Program.formMain.CurrentLobby.CheckUniqueNamePlayers());
                 }
 
-                Program.formMain.CurrentHumanPlayer.SetName(editName.Text);
+                Program.formMain.CurrentHumanPlayer.Name = editName.Text;
                 FormMain.Config.SaveHumanPlayers();
                 if (Program.formMain.CurrentLobby != null)
                     Program.formMain.ShowCurrentPlayerLobby();
