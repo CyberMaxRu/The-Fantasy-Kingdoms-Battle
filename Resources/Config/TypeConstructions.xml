@@ -21,21 +21,21 @@
         <Cost>550</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
-        <MaxHeroes>5</MaxHeroes>
+        <MaxHeroes>10</MaxHeroes>
       </Level>
       <Level>
         <Pos>2</Pos>
         <Cost>550</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
-        <MaxHeroes>5</MaxHeroes>
+        <MaxHeroes>20</MaxHeroes>
       </Level>
       <Level>
         <Pos>3</Pos>
         <Cost>550</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
-        <MaxHeroes>5</MaxHeroes>
+        <MaxHeroes>30</MaxHeroes>
       </Level>
     </Levels>
     <CellsMenu>
@@ -101,21 +101,21 @@
         <Cost>450</Cost>
         <Income>0</Income>
         <Builders>1</Builders>
-        <MaxHeroes>5</MaxHeroes>
+        <MaxHeroes>10</MaxHeroes>
       </Level>
       <Level>
         <Pos>2</Pos>
         <Cost>450</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
-        <MaxHeroes>5</MaxHeroes>
+        <MaxHeroes>20</MaxHeroes>
       </Level>
       <Level>
         <Pos>3</Pos>
         <Cost>450</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
-        <MaxHeroes>5</MaxHeroes>
+        <MaxHeroes>30</MaxHeroes>
       </Level>
     </Levels>
     <CellsMenu>
@@ -181,21 +181,21 @@
         <Cost>700</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
-        <MaxHeroes>5</MaxHeroes>
+        <MaxHeroes>10</MaxHeroes>
       </Level>
       <Level>
         <Pos>2</Pos>
         <Cost>700</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
-        <MaxHeroes>5</MaxHeroes>
+        <MaxHeroes>20</MaxHeroes>
       </Level>
       <Level>
         <Pos>3</Pos>
         <Cost>700</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
-        <MaxHeroes>5</MaxHeroes>
+        <MaxHeroes>30</MaxHeroes>
       </Level>
     </Levels>
     <CellsMenu>
@@ -268,14 +268,14 @@
         <Cost>1000</Cost>
         <Builders>0</Builders>
         <Income>0</Income>
-        <MaxHeroes>5</MaxHeroes>
+        <MaxHeroes>10</MaxHeroes>
       </Level>
       <Level>
         <Pos>2</Pos>
         <Cost>1000</Cost>
         <Builders>0</Builders>
         <Income>0</Income>
-        <MaxHeroes>5</MaxHeroes>
+        <MaxHeroes>20</MaxHeroes>
         <Requirements>
           <Requirement>
             <TypeConstruction>Castle</TypeConstruction>
@@ -288,7 +288,7 @@
         <Cost>1000</Cost>
         <Builders>0</Builders>
         <Income>0</Income>
-        <MaxHeroes>5</MaxHeroes>
+        <MaxHeroes>30</MaxHeroes>
         <Requirements>
           <Requirement>
             <TypeConstruction>Castle</TypeConstruction>
@@ -374,14 +374,14 @@
         <Cost>2500</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
-        <MaxHeroes>5</MaxHeroes>
+        <MaxHeroes>10</MaxHeroes>
       </Level>
       <Level>
         <Pos>2</Pos>
         <Cost>2500</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
-        <MaxHeroes>5</MaxHeroes>
+        <MaxHeroes>20</MaxHeroes>
         <Requirements>
           <Requirement>
             <TypeConstruction>Castle</TypeConstruction>
@@ -398,7 +398,7 @@
         <Cost>2500</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
-        <MaxHeroes>5</MaxHeroes>
+        <MaxHeroes>30</MaxHeroes>
         <Requirements>
           <Requirement>
             <TypeConstruction>Castle</TypeConstruction>
@@ -469,7 +469,7 @@
         <Builders>1</Builders>
         <Income>0</Income>
         <BuildersPerDay>1</BuildersPerDay>
-        <MaxHeroes>5</MaxHeroes>
+        <MaxHeroes>10</MaxHeroes>
       </Level>
       <Level>
         <Pos>2</Pos>
@@ -477,7 +477,7 @@
         <Builders>1</Builders>
         <Income>0</Income>
         <BuildersPerDay>1</BuildersPerDay>
-        <MaxHeroes>5</MaxHeroes>
+        <MaxHeroes>20</MaxHeroes>
         <Requirements>
           <Requirement>
             <TypeConstruction>Castle</TypeConstruction>
@@ -495,7 +495,7 @@
         <Builders>1</Builders>
         <Income>0</Income>
         <BuildersPerDay>1</BuildersPerDay>
-        <MaxHeroes>5</MaxHeroes>
+        <MaxHeroes>30</MaxHeroes>
         <Requirements>
           <Requirement>
             <TypeConstruction>Castle</TypeConstruction>
@@ -559,21 +559,21 @@
         <Cost>450</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
-        <MaxHeroes>5</MaxHeroes>
+        <MaxHeroes>10</MaxHeroes>
       </Level>
       <Level>
         <Pos>2</Pos>
         <Cost>450</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
-        <MaxHeroes>5</MaxHeroes>
+        <MaxHeroes>20</MaxHeroes>
       </Level>
       <Level>
         <Pos>3</Pos>
         <Cost>450</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
-        <MaxHeroes>5</MaxHeroes>
+        <MaxHeroes>30</MaxHeroes>
       </Level>
     </Levels>
     <CellsMenu>
@@ -654,7 +654,7 @@
         <GreatnessByConstruction>0</GreatnessByConstruction>
         <GreatnessPerDay>5</GreatnessPerDay>
         <BuildersPerDay>3</BuildersPerDay>
-        <MaxHeroes>10</MaxHeroes>        
+        <MaxHeroes>15</MaxHeroes>        
       </Level>
       <Level>
         <Pos>2</Pos>
@@ -664,7 +664,7 @@
         <GreatnessByConstruction>250</GreatnessByConstruction>
         <GreatnessPerDay>10</GreatnessPerDay>
         <BuildersPerDay>4</BuildersPerDay>
-        <MaxHeroes>10</MaxHeroes>
+        <MaxHeroes>25</MaxHeroes>
         <Requirements>
           <Requirement>
             <TypeConstruction>Market</TypeConstruction>
@@ -684,7 +684,7 @@
         <GreatnessByConstruction>500</GreatnessByConstruction>
         <GreatnessPerDay>15</GreatnessPerDay>
         <BuildersPerDay>4</BuildersPerDay>
-        <MaxHeroes>10</MaxHeroes>
+        <MaxHeroes>30</MaxHeroes>
         <Requirements>
           <Requirement>
             <TypeConstruction>Market</TypeConstruction>
@@ -1353,7 +1353,6 @@
         <Cost>1500</Cost>
         <Builders>1</Builders>
         <Income>200</Income>
-        <MaxHeroes>0</MaxHeroes>
       </Level>
     </Levels>
     <CellsMenu>
@@ -1522,7 +1521,6 @@
         <Cost>1500</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
-        <MaxHeroes>0</MaxHeroes>
       </Level>
     </Levels>
   </TypeConstruction>
@@ -1545,7 +1543,6 @@
         <Cost>1500</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
-        <MaxHeroes>0</MaxHeroes>
       </Level>
     </Levels>
   </TypeConstruction>
@@ -1568,7 +1565,6 @@
         <Cost>2500</Cost>
         <Builders>1</Builders>
         <Income>50</Income>
-        <MaxHeroes>0</MaxHeroes>
       </Level>
     </Levels>
   </TypeConstruction>
@@ -1591,7 +1587,6 @@
         <Cost>500</Cost>
         <Builders>1</Builders>
         <Income>50</Income>
-        <MaxHeroes>0</MaxHeroes>
       </Level>
     </Levels>
   </TypeConstruction>
@@ -1618,7 +1613,7 @@
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
-        <MaxHeroes>2</MaxHeroes>
+        <MaxHeroes>5</MaxHeroes>
         <Requirements>
           <Requirement>
             <TypeConstruction>Castle</TypeConstruction>
@@ -1655,7 +1650,7 @@
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
-        <MaxHeroes>2</MaxHeroes>
+        <MaxHeroes>5</MaxHeroes>
         <Requirements>
           <Requirement>
             <TypeConstruction>Castle</TypeConstruction>
@@ -1692,7 +1687,7 @@
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
-        <MaxHeroes>2</MaxHeroes>
+        <MaxHeroes>5</MaxHeroes>
         <Requirements>
           <Requirement>
             <TypeConstruction>Castle</TypeConstruction>
@@ -1729,7 +1724,7 @@
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
-        <MaxHeroes>2</MaxHeroes>
+        <MaxHeroes>5</MaxHeroes>
         <Requirements>
           <Requirement>
             <TypeConstruction>Castle</TypeConstruction>
@@ -1766,7 +1761,7 @@
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
-        <MaxHeroes>2</MaxHeroes>
+        <MaxHeroes>5</MaxHeroes>
         <Requirements>
           <Requirement>
             <TypeConstruction>Castle</TypeConstruction>
@@ -1803,7 +1798,7 @@
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
-        <MaxHeroes>2</MaxHeroes>
+        <MaxHeroes>5</MaxHeroes>
         <Requirements>
           <Requirement>
             <TypeConstruction>Castle</TypeConstruction>
@@ -1840,7 +1835,7 @@
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
-        <MaxHeroes>2</MaxHeroes>
+        <MaxHeroes>5</MaxHeroes>
         <Requirements>
           <Requirement>
             <TypeConstruction>Castle</TypeConstruction>
@@ -1877,7 +1872,7 @@
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
-        <MaxHeroes>2</MaxHeroes>
+        <MaxHeroes>5</MaxHeroes>
         <Requirements>
           <Requirement>
             <TypeConstruction>Castle</TypeConstruction>
@@ -1914,7 +1909,7 @@
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
-        <MaxHeroes>2</MaxHeroes>
+        <MaxHeroes>5</MaxHeroes>
         <Requirements>
           <Requirement>
             <TypeConstruction>Castle</TypeConstruction>
@@ -1935,7 +1930,6 @@
     <ImageIndex>79</ImageIndex>
     <Category>Lair</Category>
     <SoundSelect>graveyard_select.wav</SoundSelect>
-    <MaxHeroes>4</MaxHeroes>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
@@ -1959,7 +1953,6 @@
     <ImageIndex>75</ImageIndex>
     <Category>Lair</Category>
     <SoundSelect>logovo_skeleton_select.wav</SoundSelect>
-    <MaxHeroes>4</MaxHeroes>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
@@ -1991,7 +1984,6 @@
     <ImageIndex>76</ImageIndex>
     <Category>Lair</Category>
     <SoundSelect>logovo_vampire_select.wav</SoundSelect>
-    <MaxHeroes>5</MaxHeroes>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
@@ -2023,7 +2015,6 @@
     <ImageIndex>136</ImageIndex>
     <Category>Lair</Category>
     <SoundSelect>logovo_vampire_select.wav</SoundSelect>
-    <MaxHeroes>6</MaxHeroes>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
@@ -2047,7 +2038,6 @@
     <ImageIndex>77</ImageIndex>
     <Category>Lair</Category>
     <SoundSelect>logovo_wolf_select.wav</SoundSelect>
-    <MaxHeroes>4</MaxHeroes>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
@@ -2079,7 +2069,6 @@
     <ImageIndex>74</ImageIndex>
     <Category>Lair</Category>
     <SoundSelect>logovo_serpent_select.wav</SoundSelect>
-    <MaxHeroes>5</MaxHeroes>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
@@ -2103,7 +2092,6 @@
     <ImageIndex>65</ImageIndex>
     <Category>Lair</Category>
     <SoundSelect>logovo_bear_select.wav</SoundSelect>
-    <MaxHeroes>6</MaxHeroes>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
@@ -2135,7 +2123,6 @@
     <ImageIndex>66</ImageIndex>
     <Category>Lair</Category>
     <SoundSelect>logovo_bearman_select.wav</SoundSelect>
-    <MaxHeroes>8</MaxHeroes>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
@@ -2159,7 +2146,6 @@
     <ImageIndex>71</ImageIndex>
     <Category>Lair</Category>
     <SoundSelect>logovo_minotaur_select.wav</SoundSelect>
-    <MaxHeroes>8</MaxHeroes>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
@@ -2191,7 +2177,6 @@
     <ImageIndex>72</ImageIndex>
     <Category>Lair</Category>
     <SoundSelect>logovo_ogre_select.wav</SoundSelect>
-    <MaxHeroes>10</MaxHeroes>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
@@ -2215,7 +2200,6 @@
     <ImageIndex>78</ImageIndex>
     <Category>Lair</Category>
     <SoundSelect>logovo_wolfman_select.wav</SoundSelect>
-    <MaxHeroes>12</MaxHeroes>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
@@ -2239,7 +2223,6 @@
     <ImageIndex>68</ImageIndex>
     <Category>Lair</Category>
     <SoundSelect>logovo_boss_dragon_select.wav</SoundSelect>
-    <MaxHeroes>15</MaxHeroes>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
@@ -2263,7 +2246,6 @@
     <ImageIndex>117</ImageIndex>
     <Category>Lair</Category>
     <SoundSelect>sewers_select.wav</SoundSelect>
-    <MaxHeroes>10</MaxHeroes>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
@@ -2287,7 +2269,6 @@
     <ImageIndex>120</ImageIndex>
     <Category>Lair</Category>
     <SoundSelect>chest_select.wav</SoundSelect>
-    <MaxHeroes>4</MaxHeroes>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
     <HiddenReward>
       <Gold>1000</Gold>
@@ -2300,7 +2281,6 @@
     <ImageIndex>109</ImageIndex>
     <Category>Lair</Category>
     <SoundSelect>logovo_elemental_earth_select.wav</SoundSelect>
-    <MaxHeroes>10</MaxHeroes>
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
@@ -2324,7 +2304,6 @@
     <ImageIndex>69</ImageIndex>
     <Category>Lair</Category>
     <SoundSelect>logovo_elemental_fire_select.wav</SoundSelect>
-    <MaxHeroes>10</MaxHeroes>
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Monsters>
       <Monster>
@@ -2350,7 +2329,6 @@
     <SoundSelect>place_temple_select.wav</SoundSelect>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>0</MaxLevel>
-    <MaxHeroes>0</MaxHeroes>
     <LayersCellMenu>1</LayersCellMenu>
     <TypePlaceForConstruct></TypePlaceForConstruct>
     <CellsMenu>
@@ -2417,7 +2395,6 @@
     <ImageIndex>141</ImageIndex>
     <Category>BasePlace</Category>
     <SoundSelect>empty_place.wav</SoundSelect>
-    <MaxHeroes>0</MaxHeroes>
     <TypePlaceForConstruct></TypePlaceForConstruct>
     <Reward>
     </Reward>

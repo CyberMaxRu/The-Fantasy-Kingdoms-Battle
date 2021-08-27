@@ -752,7 +752,7 @@ namespace Fantasy_Kingdoms_Battle
                         foreach (PlayerConstruction pl in ListFlags.Where(pl => (pl != null) && ((pl.TypeFlag == TypeFlag.Attack) || (pl.TypeFlag == TypeFlag.Defense))))
                             if (pl != null)
                             {
-                                heroesToFlag = Math.Min(Math.Min(freeHeroes.Count, heroesPerFlag), pl.TypeConstruction.MaxHeroes);
+                                heroesToFlag = Math.Min(freeHeroes.Count, heroesPerFlag);
 
                                 for (int i = 0; i < heroesToFlag; i++)
                                 {

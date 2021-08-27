@@ -28,7 +28,6 @@ namespace Fantasy_Kingdoms_Battle
             IsOurConstruction = IsInternalConstruction || (Category == CategoryConstruction.External);
             HasTreasury = (Category == CategoryConstruction.Guild) || (Category == CategoryConstruction.Temple) || (Name == Config.IDConstructionCastle);
             uriSoundSelect = new Uri(Program.formMain.dirResources + @"Sound\Interface\ConstructionSelect\" + GetStringNotNull(n, "SoundSelect"));
-            MaxHeroes = GetInteger(n, "MaxHeroes");
             nameTypePlaceForConstruct = GetString(n, "TypePlaceForConstruct");
             Debug.Assert(Name != nameTypePlaceForConstruct);
 
@@ -169,17 +168,6 @@ namespace Fantasy_Kingdoms_Battle
             if (n.SelectSingleNode("HiddenReward") != null)
                 HiddenReward = new TypeReward(n.SelectSingleNode("HiddenReward"));
 
-            Debug.Assert(MaxHeroes < 50);
-
-            if (IsInternalConstruction || (Category == CategoryConstruction.External))
-            {
-                //Debug.Assert(MaxHeroes == 0);
-            }
-            else
-            {
-                //Debug.Assert(MaxHeroes > 0);
-            }
-
             if (IsInternalConstruction)
             {
                 Debug.Assert(DefaultLevel >= 0);
@@ -254,7 +242,6 @@ namespace Fantasy_Kingdoms_Battle
 
         // Свойства, относящиеся к логовам монстров
         internal List<MonsterLevelLair> Monsters { get; } = new List<MonsterLevelLair>();
-        internal int MaxHeroes { get; }// Максимальное количество героев, которое может атаковать логово
         internal TypeReward TypeReward { get; }// Награда за зачистку логова
         internal TypeReward HiddenReward { get; }// Скрытая награда за зачистку логова
         internal TypeConstruction TypePlaceForConstruct { get; private set; }// Тип сооружения, на котором строится сооружение

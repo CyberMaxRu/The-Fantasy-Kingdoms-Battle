@@ -772,7 +772,6 @@ namespace Fantasy_Kingdoms_Battle
                     return Player.Lobby.TypeLobby.MaxHeroesForScoutFlag;
                 case TypeFlag.Attack:
                 case TypeFlag.Defense:
-                    return TypeConstruction.MaxHeroes;
                 case TypeFlag.Battle:
                     return Player.Lobby.TypeLobby.MaxHeroesForBattle;
                 default:
