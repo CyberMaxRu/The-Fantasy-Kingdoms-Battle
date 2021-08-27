@@ -91,16 +91,16 @@ namespace Fantasy_Kingdoms_Battle
             // Загружаем информацию об уровнях
             if ((IsOurConstruction || (n.SelectSingleNode("Levels") != null)) && (MaxLevel > 0))
             {
-                Levels = new Level[MaxLevel + 1];// Для упрощения работы с уровнями, добавляем 1, чтобы уровень был равен индексу в массиве
+                Levels = new LevelConstruction[MaxLevel + 1];// Для упрощения работы с уровнями, добавляем 1, чтобы уровень был равен индексу в массиве
 
                 XmlNode nl = n.SelectSingleNode("Levels");
                 if (nl != null)
                 {
-                    Level level;
+                    LevelConstruction level;
 
                     foreach (XmlNode l in nl.SelectNodes("Level"))
                     {
-                        level = new Level(l);
+                        level = new LevelConstruction(l);
                         Debug.Assert(Levels[level.Pos] == null);
 
                         /*switch (TypeIncome)
@@ -235,7 +235,7 @@ namespace Fantasy_Kingdoms_Battle
         internal TypeCellMenu[,,] Researches;
 
         //
-        internal Level[] Levels;
+        internal LevelConstruction[] Levels;
 
         internal PanelConstruction Panel { get; set; }
         internal TypeCreature TrainedHero { get; set; }
@@ -257,7 +257,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Levels != null)
             {
-                foreach (Level l in Levels)
+                foreach (LevelConstruction l in Levels)
                 {
                     if (l != null)
                         foreach (Requirement r in l.Requirements)

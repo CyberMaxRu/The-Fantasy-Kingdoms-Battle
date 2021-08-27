@@ -164,7 +164,7 @@
     <Compile Include="TypeCellMenu.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Source\TypeLobby\TypeLobby.cs" />
-    <Compile Include="Level.cs" />
+    <Compile Include="Source\Types\Construction\LevelConstruction.cs" />
     <Compile Include="Lobby.cs" />
     <Compile Include="PanelHeroInfo.cs" />
     <Compile Include="HeroParameters.cs" />

@@ -9,9 +9,9 @@ using System.Diagnostics;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс информации об уровне здания
-    internal sealed class Level
+    internal sealed class LevelConstruction
     {
-        public Level(XmlNode n)
+        public LevelConstruction(XmlNode n)
         {
             Pos = Convert.ToInt32(n.SelectSingleNode("Pos").InnerText);
             Cost = Convert.ToInt32(n.SelectSingleNode("Cost").InnerText);
