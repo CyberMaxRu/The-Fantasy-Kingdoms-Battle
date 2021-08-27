@@ -13,7 +13,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private PlayerCellMenu research;
 
-        public VCMenuCell(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList) : base(parent, shiftX, shiftY, bitmapList, -1)
+        public VCMenuCell(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY, -1)
         {
         }
 

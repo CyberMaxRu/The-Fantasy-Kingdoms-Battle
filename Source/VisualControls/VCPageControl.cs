@@ -13,12 +13,11 @@ namespace Fantasy_Kingdoms_Battle
         private readonly List<VCPageButton> listFormPage = new List<VCPageButton>();
         private int nextLeft;
 
-        public VCPageControl(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList) : base(parent, shiftX, shiftY)
+        public VCPageControl(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
-            BitmapList = bitmapList;
+            
         }
 
-        internal BitmapList BitmapList { get; }
         internal VCPageButton CurrentPage { get; private set; }
         internal event EventHandler PageChanged;
 
@@ -26,7 +25,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(onShowHint != null);
 
-            VCPageButton page = new VCPageButton(this, nextLeft, 0, BitmapList, imageIndex, advice);
+            VCPageButton page = new VCPageButton(this, nextLeft, 0, imageIndex, advice);
             page.Click += Page_Click;
             page.ShowHint += onShowHint;
             nextLeft = page.NextLeft();

@@ -44,14 +44,14 @@ namespace Fantasy_Kingdoms_Battle
             imgMapObject.Click += ImgLair_Click;
             imgMapObject.ShowHint += ImgLair_ShowHint;
 
-            btnHeroes = new VCIconButton48(this, imgMapObject.ShiftX, imgMapObject.ShiftY, Program.formMain.imListObjects48, FormMain.Config.Gui48_Home);
+            btnHeroes = new VCIconButton48(this, imgMapObject.ShiftX, imgMapObject.ShiftY, FormMain.Config.Gui48_Home);
             btnHeroes.ShowHint += BtnHeroes_ShowHint;
 
-            btnHireHero = new VCIconButton48(this, imgMapObject.NextLeft(), btnHeroes.NextTop() + FormMain.Config.GridSize + FormMain.Config.GridSizeHalf, Program.formMain.imListObjects48, -1);
+            btnHireHero = new VCIconButton48(this, imgMapObject.NextLeft(), btnHeroes.NextTop() + FormMain.Config.GridSize + FormMain.Config.GridSizeHalf, -1);
             btnHireHero.Click += BtnHireHero_Click;
             btnHireHero.ShowHint += BtnHireHero_ShowHint;
 
-            btnBuildOrUpgrade = new VCIconButton48(this, imgMapObject.NextLeft(), imgMapObject.NextTop(), Program.formMain.imListObjects48, FormMain.Config.Gui48_Build);
+            btnBuildOrUpgrade = new VCIconButton48(this, imgMapObject.NextLeft(), imgMapObject.NextTop(), FormMain.Config.Gui48_Build);
             btnBuildOrUpgrade.Click += BtnBuildOrUpgrade_Click;
             btnBuildOrUpgrade.ShowHint += BtnBuildOrUpgrade_ShowHint;
 
@@ -68,19 +68,19 @@ namespace Fantasy_Kingdoms_Battle
             lblGreatness.Color = FormMain.Config.HintIncome;
             lblGreatness.Hint = "Прибавление величия при строительстве и в день";
 
-            btnAction = new VCIconButton48(this, imgMapObject.NextLeft(), imgMapObject.NextTop(), Program.formMain.imListObjects48, FormMain.Config.Gui48_Battle);
+            btnAction = new VCIconButton48(this, imgMapObject.NextLeft(), imgMapObject.NextTop(), FormMain.Config.Gui48_Battle);
             btnAction.Click += BtnAction_Click;
             btnAction.ShowHint += BtnAction_ShowHint;
 
-            btnCancel = new VCIconButton48(this, btnAction.ShiftX - btnAction.Width - FormMain.Config.GridSize, btnAction.ShiftY, Program.formMain.imListObjects48, FormMain.Config.Gui48_FlagCancel);
+            btnCancel = new VCIconButton48(this, btnAction.ShiftX - btnAction.Width - FormMain.Config.GridSize, btnAction.ShiftY, FormMain.Config.Gui48_FlagCancel);
             btnCancel.Click += BtnCancel_Click;
             btnCancel.ShowHint += BtnCancel_ShowHint;
 
-            btnInhabitants = new VCIconButton48(this, imgMapObject.NextLeft(), imgMapObject.ShiftY, Program.formMain.imListObjects48, FormMain.Config.Gui48_Home);
+            btnInhabitants = new VCIconButton48(this, imgMapObject.NextLeft(), imgMapObject.ShiftY, FormMain.Config.Gui48_Home);
             btnInhabitants.Click += BtnInhabitants_Click;
             btnInhabitants.ShowHint += BtnInhabitants_ShowHint;
 
-            btnAttackHeroes = new VCIconButton48(this, btnInhabitants.ShiftX, btnInhabitants.NextTop() + FormMain.Config.GridSize + FormMain.Config.GridSizeHalf, Program.formMain.imListObjects48, FormMain.Config.Gui48_Target);
+            btnAttackHeroes = new VCIconButton48(this, btnInhabitants.ShiftX, btnInhabitants.NextTop() + FormMain.Config.GridSize + FormMain.Config.GridSizeHalf, FormMain.Config.Gui48_Target);
             btnAttackHeroes.Click += BtnAttackHeroes_Click;
             btnAttackHeroes.ShowHint += BtnAttackHeroes_ShowHint;
 

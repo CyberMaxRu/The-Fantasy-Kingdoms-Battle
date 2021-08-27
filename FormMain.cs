@@ -583,7 +583,7 @@ namespace Fantasy_Kingdoms_Battle
                 CellsMenu = new VCMenuCell[PANEL_MENU_CELLS.Height, PANEL_MENU_CELLS.Width];
                 for (int y = 0; y < PANEL_MENU_CELLS.Height; y++)
                     for (int x = 0; x < PANEL_MENU_CELLS.Width; x++)
-                        CellsMenu[y, x] = new VCMenuCell(bitmapMenu, 25 + (x * (imListObjects48.Size + DISTANCE_BETWEEN_CELLS)), 95 + (y * (imListObjects48.Size + DISTANCE_BETWEEN_CELLS)), imListObjects48);
+                        CellsMenu[y, x] = new VCMenuCell(bitmapMenu, 25 + (x * (imListObjects48.Size + DISTANCE_BETWEEN_CELLS)), 95 + (y * (imListObjects48.Size + DISTANCE_BETWEEN_CELLS)));
 
                 labelMenuNameObject = new VCLabel(bitmapMenu, 144, 67, fontSmall, Color.White, 14, "");
                 labelMenuNameObject.Width = 131;
@@ -619,7 +619,7 @@ namespace Fantasy_Kingdoms_Battle
                 };
 
                 // Страницы игры
-                pageControl = new VCPageControl(MainControl, 0, panelLairWithFlags.ShiftY, imListObjects48);
+                pageControl = new VCPageControl(MainControl, 0, panelLairWithFlags.ShiftY);
                 pageControl.PageChanged += PageControl_PageChanged;
                 pageResultTurn = pageControl.AddPage(Config.Gui48_ResultDay, "Сводка", PageResultTurn_ShowHint);
                 pageGuilds = pageControl.AddPage(Config.Gui48_Guilds, "В гильдиях нанимаются герои", PageGuilds_ShowHint);
@@ -1681,7 +1681,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal VCIconButton48 CreateButton(VisualControl parent, int imageIndex, int left, int top, EventHandler click, EventHandler showHint)
         {
-            VCIconButton48 b = new VCIconButton48(parent, left, top, imListObjects48, imageIndex);
+            VCIconButton48 b = new VCIconButton48(parent, left, top, imageIndex);
             b.Click += click;
             b.ShowHint += showHint;
 

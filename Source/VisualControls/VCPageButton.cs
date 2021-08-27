@@ -9,7 +9,7 @@ namespace Fantasy_Kingdoms_Battle
     // Класс кнопки для PageControl'а
     internal sealed class VCPageButton : VCIconButton48
     {
-        public VCPageButton(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList, int imageIndex, string advice) : base(parent, shiftX, shiftY, bitmapList, imageIndex)
+        public VCPageButton(VisualControl parent, int shiftX, int shiftY, int imageIndex, string advice) : base(parent, shiftX, shiftY, imageIndex)
         {
             HighlightUnderMouse = true;
             ShowBorder = true;

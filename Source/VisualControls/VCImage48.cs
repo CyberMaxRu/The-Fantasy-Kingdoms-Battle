@@ -9,7 +9,7 @@ namespace Fantasy_Kingdoms_Battle
     // Класс для иконок 48 * 48
     internal class VCImage48 : VCImage
     {
-        public VCImage48(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList, int imageIndex) : base(parent, shiftX, shiftY, bitmapList, imageIndex)
+        public VCImage48(VisualControl parent, int shiftX, int shiftY, int imageIndex) : base(parent, shiftX, shiftY, Program.formMain.imListObjects48, imageIndex)
         {
 
         }

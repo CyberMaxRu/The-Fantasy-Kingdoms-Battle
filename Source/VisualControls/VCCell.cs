@@ -22,7 +22,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         private ICell cell;
 
-        public VCCell(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY, Program.formMain.imListObjects48, -1)
+        public VCCell(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY, -1)
         {
             HighlightUnderMouse = true;
             ShiftImageX = 2;
