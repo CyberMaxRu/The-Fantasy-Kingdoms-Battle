@@ -47,14 +47,23 @@ namespace Fantasy_Kingdoms_Battle
             {
                 DefaultLevel = GetIntegerNotNull(n, "DefaultLevel");
                 MaxLevel = GetIntegerNotNull(n, "MaxLevel");
+
+                if (IsInternalConstruction)
+                {
+                    ResearchesPerDay = GetIntegerNotNull(n, "ResearchesPerDay");
+                }
+                else
+                {
+                    XmlFieldNotExist(n, "ResearchesPerDay");
+                }
             }
             else
             {
                 XmlFieldNotExist(n, "DefaultLevel");
                 XmlFieldNotExist(n, "MaxLevel");
+                XmlFieldNotExist(n, "ResearchesPerDay");
             }
 
-            ResearchesPerDay = GetInteger(n, "ResearchesPerDay");
             PlayerCanBuild = GetBoolean(n, "PlayerCanBuild", true);
 
             // Проверяем, что таких же ID и наименования нет
