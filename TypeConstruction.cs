@@ -196,17 +196,17 @@ namespace Fantasy_Kingdoms_Battle
             //    throw new Exception("В конфигурации логова у " + ID + " нет информации об уровнях. ");
         }
 
-        internal CategoryConstruction Category { get; }
+        internal CategoryConstruction Category { get; }// Категория сооружения
         internal bool IsInternalConstruction { get; }// Это внутреннее сооружение
         internal bool IsOurConstruction { get; }// Это сооружение, относящееся к Королевству
-        internal Page Page { get; }
-        internal int Line { get; }// Линия сооружения 
+        internal Page Page { get; }// Страница игрового интерфейса
+        internal int Line { get; }// Линия на странице игрового интерфейса
         internal int Pos { get; }// Позиция сооружения в линии
-        internal int DefaultLevel { get; }
-        internal int MaxLevel { get; }
+        internal int DefaultLevel { get; }// Уровень сооружения по умолчанию
+        internal int MaxLevel { get; }// Максимальный уровень сооружения
         internal Level[] Levels;
-        internal bool PlayerCanBuild { get; }
-        internal int ResearchesPerDay { get; }
+        internal bool PlayerCanBuild { get; }// Игрок может строить сооружение
+        internal int ResearchesPerDay { get; }// Количество исследований в сооружении в день
         internal PanelConstruction Panel { get; set; }
         internal bool HasTreasury { get; }// Имеет собственную казну
         internal int GoldByConstruction { get; }// Количество золота в казне при постройке
