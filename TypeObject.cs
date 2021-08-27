@@ -13,12 +13,11 @@ namespace Fantasy_Kingdoms_Battle
         public TypeObject(XmlNode n)
         {
             ID = GetStringNotNull(n, "ID");
-            Name = GetStringNotNull(n, "Name");
+            name = GetStringNotNull(n, "Name");
             Description = GetDescription(n, "Description");
-            ImageIndex = GetIntegerNotNull(n, "ImageIndex");
-            if (ImageIndex != FormMain.IMAGE_INDEX_CURRENT_AVATAR)
-                ImageIndex--;// Для удобства людей, нумерация иконов в конфигурации идет с 1, а не с 0.
-            ImageIndex += ShiftImageIndex();// Так как нумерация иконок в Gui48 идет с 0, добавляем сдвиг номера при добавлении после объектов128
+            // Для удобства людей, нумерация иконов в конфигурации идет с 1, а не с 0.
+            // Так как нумерация иконок в Gui48 идет с 0, добавляем сдвиг номера при добавлении после объектов128
+            imageIndex = GetIntegerNotNull(n, "ImageIndex") + (GetIntegerNotNull(n, "ImageIndex") != FormMain.IMAGE_INDEX_CURRENT_AVATAR ? -1 : 0) + ShiftImageIndex();
 
             CheckData();
         }
@@ -26,9 +25,9 @@ namespace Fantasy_Kingdoms_Battle
         public TypeObject(string id, string name, string description, int imageIndex)
         {
             ID = id;
-            Name = name;
+            this.name = name;
             Description = description;
-            ImageIndex = imageIndex;
+            this.imageIndex = imageIndex;
 
             CheckData();
         }

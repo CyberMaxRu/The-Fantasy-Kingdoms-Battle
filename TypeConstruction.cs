@@ -30,7 +30,7 @@ namespace Fantasy_Kingdoms_Battle
             if (n.SelectSingleNode("Page") != null)
             {
                 Page = (Page)Enum.Parse(typeof(Page), n.SelectSingleNode("Page").InnerText);
-                CoordInPage = new Point(GetInteger(n, "Line") - 1, GetInteger(n, "Pos") - 1);
+                CoordInPage = new Point(GetInteger(n, "Pos") - 1, GetInteger(n, "Line") - 1);
             }
             else
                 Page = Page.None;
