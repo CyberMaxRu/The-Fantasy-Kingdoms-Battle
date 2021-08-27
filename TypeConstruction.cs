@@ -23,17 +23,19 @@ namespace Fantasy_Kingdoms_Battle
 
         public TypeConstruction(XmlNode n) : base(n)
         {
-            Category = (CategoryConstruction)Enum.Parse(typeof(CategoryConstruction), n.SelectSingleNode("Category").InnerText);
+            Category = (CategoryConstruction)Enum.Parse(typeof(CategoryConstruction), GetStringNotNull(n, "Category"));
             IsInternalConstruction = (Category == CategoryConstruction.Guild) || (Category == CategoryConstruction.Economic) || (Category == CategoryConstruction.Temple) || (Category == CategoryConstruction.Military);
             IsOurConstruction = IsInternalConstruction || (Category == CategoryConstruction.External);
 
-            if (n.SelectSingleNode("Page") != null)
+            if (IsInternalConstruction)
             {
-                Page = (Page)Enum.Parse(typeof(Page), n.SelectSingleNode("Page").InnerText);
+                Page = (Page)Enum.Parse(typeof(Page), GetStringNotNull(n, "Page"));
                 CoordInPage = new Point(GetInteger(n, "Pos") - 1, GetInteger(n, "Line") - 1);
             }
             else
+            {
                 Page = Page.None;
+            }
 
             HasTreasury = GetBoolean(n, "HasTreasury", false);
             GoldByConstruction = GetInteger(n, "GoldByConstruction");
