@@ -2320,20 +2320,9 @@
     <Description>Сундуки с сокровищами встречаются в Ардании даже чаще, чем крысы В некоторых землях герои собирают по два урожая сундуков в год!</Description>
     <ImageIndex>120</ImageIndex>
     <Category>Lair</Category>
-    <DefaultLevel>1</DefaultLevel>
-    <MaxLevel>1</MaxLevel>
     <SoundSelect>chest_select.wav</SoundSelect>
     <MaxHeroes>4</MaxHeroes>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
-    <Levels>
-      <Level>
-        <Pos>1</Pos>
-        <Cost>0</Cost>
-        <Builders>0</Builders>
-        <Income>0</Income>
-        <MaxHeroes>5</MaxHeroes>
-      </Level>
-    </Levels>
     <HiddenReward>
       <Gold>1000</Gold>
     </HiddenReward>
@@ -2461,20 +2450,9 @@
     <Description>Здесь крестьяне строят свои дома. Если место долго пустует, его могут облюбовать дикие звери.</Description>
     <ImageIndex>141</ImageIndex>
     <Category>BasePlace</Category>
-    <DefaultLevel>1</DefaultLevel>
-    <MaxLevel>1</MaxLevel>
     <SoundSelect>empty_place.wav</SoundSelect>
     <MaxHeroes>0</MaxHeroes>
     <TypePlaceForConstruct></TypePlaceForConstruct>
-    <Levels>
-      <Level>
-        <Pos>1</Pos>
-        <Cost>0</Cost>
-        <Builders>0</Builders>
-        <Income>0</Income>
-        <MaxHeroes>5</MaxHeroes>
-      </Level>
-    </Levels>
     <Reward>
     </Reward>
   </TypeConstruction>

@@ -42,8 +42,18 @@ namespace Fantasy_Kingdoms_Battle
 
             HasTreasury = GetBoolean(n, "HasTreasury", false);
             GoldByConstruction = GetInteger(n, "GoldByConstruction");
-            DefaultLevel = GetInteger(n, "DefaultLevel");
-            MaxLevel = GetInteger(n, "MaxLevel");
+
+            if (IsOurConstruction)
+            {
+                DefaultLevel = GetIntegerNotNull(n, "DefaultLevel");
+                MaxLevel = GetIntegerNotNull(n, "MaxLevel");
+            }
+            else
+            {
+                XmlFieldNotExist(n, "DefaultLevel");
+                XmlFieldNotExist(n, "MaxLevel");
+            }
+
             ResearchesPerDay = GetInteger(n, "ResearchesPerDay");
             PlayerCanBuild = GetBoolean(n, "PlayerCanBuild", true);
 
