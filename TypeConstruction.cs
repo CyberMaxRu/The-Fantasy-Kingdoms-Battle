@@ -18,7 +18,7 @@ namespace Fantasy_Kingdoms_Battle
     // Тип сооружения - базовый класс для всех зданий, построек и мест
     internal sealed class TypeConstruction : TypeObject
     {
-        private Uri uriSoundSelect;// Звук при выборе объекта
+        private readonly Uri uriSoundSelect;// Звук при выборе объекта
         private string nameTypePlaceForConstruct;
 
         public TypeConstruction(XmlNode n) : base(n)
