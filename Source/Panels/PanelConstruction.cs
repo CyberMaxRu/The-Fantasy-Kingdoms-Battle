@@ -310,7 +310,7 @@ namespace Fantasy_Kingdoms_Battle
         private void SelectThisConstruction()
         {
             Debug.Assert(PlayerObject != null);
-            Program.formMain.SelectPlayerObject(PlayerObject);
+            Program.formMain.SelectPlayerObject(PlayerObject as BigEntity);
         }
 
         protected override bool Selected()
@@ -365,7 +365,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        protected override void SetPlayerObject(PlayerObject po)
+        protected override void SetPlayerObject(Entity po)
         {
             base.SetPlayerObject(po);
 
@@ -425,7 +425,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnAttackHeroes_Click(object sender, EventArgs e)
         {
-            Program.formMain.SelectPlayerObject(PlayerObject);
+            Program.formMain.SelectPlayerObject(PlayerObject as BigEntity);
             Program.formMain.panelLairInfo.SelectPageHeroes();
         }
 
@@ -503,7 +503,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnInhabitants_Click(object sender, EventArgs e)
         {
-            Program.formMain.SelectPlayerObject(PlayerObject);
+            Program.formMain.SelectPlayerObject(PlayerObject as BigEntity);
             Program.formMain.panelLairInfo.SelectPageInhabitants();
         }
 

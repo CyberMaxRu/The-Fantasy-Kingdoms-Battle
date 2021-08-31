@@ -9,7 +9,7 @@ using System.Xml;
 namespace Fantasy_Kingdoms_Battle
 {
     // Группа предметов
-    internal sealed class GroupItem : Entity
+    internal sealed class GroupItem : TypeEntity
     {
         public GroupItem(XmlNode n) : base(n)
         {
@@ -26,10 +26,10 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal string ShortName { get; }//
-        internal List<Item> Items { get; } = new List<Item>();
+        internal List<TypeItem> Items { get; } = new List<TypeItem>();
         internal List<TypeCreature> UsedByTypeCreature { get; } = new List<TypeCreature>();
 
-        internal void TuneDeferredLinks()
+        internal override void TuneDeferredLinks()
         {
             Description += (Description.Length > 0 ? Environment.NewLine : "") + "- Используется:";
 
@@ -39,8 +39,8 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        protected override int GetLevel() => 0;
+        /*protected override int GetLevel() => 0;
         protected override int GetQuantity() => 0;
-        protected override string GetCost() => ShortName;
+        protected override string GetCost() => ShortName;*/
     }
 }

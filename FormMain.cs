@@ -103,7 +103,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCButton btnAboutProgram;
         private readonly VCButton btnExitToWindows;
 
-        internal PlayerObject selectedPlayerObject;
+        internal BigEntity selectedPlayerObject;
 
         // Главные страницы игры
         private readonly VCPageControl pageControl;
@@ -303,8 +303,8 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Загружаем настройки
-            try
-            {
+            //try
+            //{
                 Settings = new Settings();
 
                 MainConfig = new MainConfig(dirResources);
@@ -751,12 +751,12 @@ namespace Fantasy_Kingdoms_Battle
                     lblStage.Text = text + "...";
                     lblStage.Refresh();
                 }
-            }
+            /*}
             catch (Exception exc)
             {
                 MessageBox.Show(exc.Message + Environment.NewLine + exc.StackTrace);
                 Environment.Exit(-1);
-            }
+            }*/
         }
 
         private void LabelHeroes_ShowHint(object sender, EventArgs e)
@@ -1339,7 +1339,7 @@ namespace Fantasy_Kingdoms_Battle
             pageHeroes.Page.AddControl(panelHeroes);
             panelHeroes.ShiftY = 0;
 
-            List<ICell> list = new List<ICell>();
+            List<Entity> list = new List<Entity>();
             for (int x = 0; x < Config.HeroRows * Config.HeroInRow; x++)
                 list.Add(null);
 
@@ -1397,7 +1397,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void ShowWarehouse()
         {
-            panelWarehouse.ApplyList(lobby.CurrentPlayer.Warehouse.ToList<ICell>());
+            panelWarehouse.ApplyList(lobby.CurrentPlayer.Warehouse.ToList<Entity>());
         }
 
         internal void ActivatePageResultTurn()
@@ -2194,7 +2194,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void SelectPlayerObject(PlayerObject po)
+        internal void SelectPlayerObject(BigEntity po)
         {
             if (selectedPlayerObject != po)
             {
@@ -2216,7 +2216,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal bool PlayerObjectIsSelected(PlayerObject po)
+        internal bool PlayerObjectIsSelected(Entity po)
         {
             Debug.Assert(po != null);
 

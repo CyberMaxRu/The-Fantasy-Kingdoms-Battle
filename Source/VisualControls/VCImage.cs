@@ -52,7 +52,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int Quantity { get; set; }
         internal bool HighlightUnderMouse { get; set; } = false;
         internal bool ShowAsPressed { get; set; } = false;
-        internal TypeObject TypeObject { get; set; }// Тип объекта, связанный с этим изображением
+        internal TypeEntity TypeObject { get; set; }// Тип объекта, связанный с этим изображением
 
         internal override void MouseEnter(bool leftButtonDown)
         {

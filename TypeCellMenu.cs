@@ -35,6 +35,7 @@ namespace Fantasy_Kingdoms_Battle
         internal Point Coord { get; }// Координаты ячейки
         internal int Layer { get; }// Визуальный слой ячейки
         internal Entity Entity { get; set; }// Получаемая сущность
+        internal TypeEntity TypeEntity { get; set; }// Тип получаемой сущности
         internal GroupItem GroupItems { get; }// Исследуемая группа предметов
         internal int Cost { get; set; }// Стоимость
         internal TypeConstruction TypeConstruction { get; set; }// Строимое сооружение
@@ -42,20 +43,20 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void TuneDeferredLinks()
         {
-            Entity = FormMain.Config.FindItem(nameTypeObject, false);
+            TypeEntity = FormMain.Config.FindItem(nameTypeObject, false);
 
-            if (Entity is null)
-                Entity = FormMain.Config.FindGroupItem(nameTypeObject, false);
+            if (TypeEntity is null)
+                TypeEntity = FormMain.Config.FindGroupItem(nameTypeObject, false);
 
-            if (Entity is null)
-                Entity = FormMain.Config.FindAbility(nameTypeObject, false);
+            if (TypeEntity is null)
+                TypeEntity = FormMain.Config.FindAbility(nameTypeObject, false);
 
-            if (Entity is null)
+            if (TypeEntity is null)
             {
                 TypeConstruction = FormMain.Config.FindTypeConstruction(nameTypeObject, false);
             }
 
-            if ((Entity is null) && (TypeConstruction is null))
+            if ((TypeEntity is null) && (TypeConstruction is null))
                 throw new Exception("Сущность " + nameTypeObject + " не найдена.");
 
             foreach (Requirement r in Requirements)

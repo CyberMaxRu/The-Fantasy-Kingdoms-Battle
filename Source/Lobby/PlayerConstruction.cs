@@ -9,11 +9,11 @@ using System.Drawing;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс сооружения у игрока
-    internal sealed class PlayerConstruction : PlayerObject, ICell
+    internal sealed class PlayerConstruction : BattleParticipant
     {
         private int gold;
 
-        public PlayerConstruction(LobbyPlayer p, TypeConstruction b) : base()
+        public PlayerConstruction(LobbyPlayer p, TypeConstruction b) : base(p.Lobby)
         {
             Player = p;
             TypeConstruction = b;
@@ -32,8 +32,6 @@ namespace Fantasy_Kingdoms_Battle
 
             Level = b.DefaultLevel;
 
-            Participant = new LairBattleParticipant(this);
-
             // Убрать эту проверку после настройки всех логов
             if (TypeConstruction.Monsters.Count > 0)
                 CreateMonsters();
@@ -44,7 +42,7 @@ namespace Fantasy_Kingdoms_Battle
             //    Gold = Construction.GoldByConstruction;
         }
 
-        public PlayerConstruction(LobbyPlayer p, TypeConstruction l, int level, int x, int y, int layer) : base()
+        public PlayerConstruction(LobbyPlayer p, TypeConstruction l, int level, int x, int y, int layer) : base(p.Lobby)
         {
             Player = p;
             TypeConstruction = l;
@@ -71,8 +69,6 @@ namespace Fantasy_Kingdoms_Battle
                             if (TypeConstruction.Researches[z, y1, x1] != null)
                                 Researches.Add(new PlayerCellMenu(this, TypeConstruction.Researches[z, y1, x1]));
             }
-
-            Participant = new LairBattleParticipant(this);
 
             // Убрать эту проверку после настройки всех логов
             if (TypeConstruction.Monsters.Count > 0)
@@ -107,7 +103,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int SpendedGoldForSetFlag { get; private set; }// Сколько золота было потрачено на установку флага
         internal PriorityExecution PriorityFlag { get; private set; } = PriorityExecution.None;// Приоритет разведки/атаки
         internal List<PlayerHero> listAttackedHero { get; } = new List<PlayerHero>();// Список героев, откликнувшихся на флаг
-        internal LairBattleParticipant Participant { get; }
 
         internal void ResearchCompleted(PlayerCellMenu research)
         {
@@ -393,25 +388,29 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(!Destroyed);
 
-            if (TypeConstruction.IsOurConstruction)
+            if (Player == Player.Lobby.CurrentPlayer)
             {
-                Program.formMain.formHint.AddStep1Header(TypeConstruction.Name, Level > 0 ? "Уровень " + Level.ToString() : "", TypeConstruction.Description + ((Level > 0) && (TypeConstruction.TrainedHero != null) ? Environment.NewLine + Environment.NewLine
-                    + (!(TypeConstruction.TrainedHero is null) ? "Героев: " + Heroes.Count.ToString() + "/" + MaxHeroes().ToString() : "") : ""));
-                Program.formMain.formHint.AddStep2Income(Income());
-                Program.formMain.formHint.AddStep3Greatness(0, GreatnessPerDay());
-                Program.formMain.formHint.AddStep35PlusBuilders(BuildersPerDay());
-            }
-            else
-            {
-                if (Hidden)
-                    Program.formMain.formHint.AddStep1Header("Неизвестное место", "Место не разведано", "Установите флаг разведки для отправки героев к месту");
+
+                if (TypeConstruction.IsOurConstruction)
+                {
+                    Program.formMain.formHint.AddStep1Header(TypeConstruction.Name, Level > 0 ? "Уровень " + Level.ToString() : "", TypeConstruction.Description + ((Level > 0) && (TypeConstruction.TrainedHero != null) ? Environment.NewLine + Environment.NewLine
+                        + (!(TypeConstruction.TrainedHero is null) ? "Героев: " + Heroes.Count.ToString() + "/" + MaxHeroes().ToString() : "") : ""));
+                    Program.formMain.formHint.AddStep2Income(Income());
+                    Program.formMain.formHint.AddStep3Greatness(0, GreatnessPerDay());
+                    Program.formMain.formHint.AddStep35PlusBuilders(BuildersPerDay());
+                }
                 else
                 {
-                    Program.formMain.formHint.AddStep1Header(TypeConstruction.Name, "", TypeConstruction.Description);
-                    if (TypeConstruction.TypeReward != null)
+                    if (Hidden)
+                        Program.formMain.formHint.AddStep1Header("Неизвестное место", "Место не разведано", "Установите флаг разведки для отправки героев к месту");
+                    else
                     {
-                        Program.formMain.formHint.AddStep2Reward(TypeConstruction.TypeReward.Gold);
-                        Program.formMain.formHint.AddStep3Greatness(TypeConstruction.TypeReward.Greatness, 0);
+                        Program.formMain.formHint.AddStep1Header(TypeConstruction.Name, "", TypeConstruction.Description);
+                        if (TypeConstruction.TypeReward != null)
+                        {
+                            Program.formMain.formHint.AddStep2Reward(TypeConstruction.TypeReward.Gold);
+                            Program.formMain.formHint.AddStep3Greatness(TypeConstruction.TypeReward.Greatness, 0);
+                        }
                     }
                 }
             }
@@ -518,12 +517,12 @@ namespace Fantasy_Kingdoms_Battle
 
         internal bool ShowMenuForPlayer() => !Hidden;
 
-        protected override int GetLevel()
+        internal override int GetLevel()
         {
             return Level;
         }
 
-        protected override int GetQuantity()
+        internal override int GetQuantity()
         {
             return 0;
         }
@@ -538,9 +537,9 @@ namespace Fantasy_Kingdoms_Battle
             {
                 for (int i = 0; i < mll.StartQuantity; i++)
                 {
-                    lm = new Monster(mll.Monster, mll.Level, Participant);
+                    lm = new Monster(mll.Monster, mll.Level, this);
                     Monsters.Add(lm);
-                    Participant.AddCombatHero(lm);
+                    AddCombatHero(lm);
                 }
             }
         }
@@ -900,11 +899,11 @@ namespace Fantasy_Kingdoms_Battle
         internal void MonsterIsDead(Monster m)
         {
             Debug.Assert(m != null);
-            Debug.Assert(m.BattleParticipant == Participant);
+            Debug.Assert(m.BattleParticipant == this);
             Debug.Assert(Monsters.IndexOf(m) != -1);
 
             m.SetIsDead();
-            Participant.CombatHeroes.Remove(m);
+            CombatHeroes.Remove(m);
             Monsters.Remove(m);
 
             if (Program.formMain.PlayerObjectIsSelected(m))
@@ -1007,29 +1006,44 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep1Header(TypeConstruction.IsOurConstruction ? "Жители" : "Существа", "", list);
         }
 
-        int ICell.ImageIndex()
+        internal override int GetImageIndex()
         {
             if (Player == Player.Lobby.CurrentPlayer)
                 return ImageIndexLair();
             else
                 return FormMain.Config.Gui48_Battle;
         }
-        protected override string GetCost() => null;
+        internal override string GetCost() => null;
 
-        bool ICell.NormalImage() => true;
-        int ICell.Level() => 0;
-        int ICell.Quantity() => 0;
-        void ICell.PrepareHint()
+        internal override bool GetNormalImage()
         {
-            if (Player == Player.Lobby.CurrentPlayer)
-                PrepareHint();
+            return true;
         }
 
-        void ICell.Click(VCCell pe)
+        internal override void Click(VCCell pe)
         {
+            base.Click(pe);
             Program.formMain.SelectPlayerObject(this);
         }
 
-        void ICell.CustomDraw(Graphics g, int x, int y, bool drawState) { }
+        internal override string GetName()
+        {
+            return TypeConstruction.Name;
+        }
+
+        internal override TypePlayer GetTypePlayer()
+        {
+            return TypePlayer.Lair;
+        }
+
+        internal override LobbyPlayer GetPlayer()
+        {
+            return Player;
+        }
+
+        internal override int GetImageIndexAvatar()
+        {
+            return TypeConstruction.ImageIndex;
+        }
     }
 }

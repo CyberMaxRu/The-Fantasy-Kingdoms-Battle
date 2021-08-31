@@ -23,7 +23,7 @@ namespace Fantasy_Kingdoms_Battle
     }
 
     // Класс игрока лобби
-    internal abstract class LobbyPlayer : BattleParticipant, ICell
+    internal abstract class LobbyPlayer : BattleParticipant
     {
         private PlayerConstruction Castle;
         private int gold;
@@ -298,12 +298,12 @@ namespace Fantasy_Kingdoms_Battle
                         PreparingForBattle();
 
                         // Включить, когда ИИ может выбирать цель
-                        pl.Participant.PreparingForBattle();
+                        pl.PreparingForBattle();
 
                         //Debug.Assert(p.TargetLair.CombatHeroes.Count > 0);
 
                         bool showForPlayer = false;// Player.TypePlayer == TypePlayer.Human;
-                        b = new Battle(this, pl.Participant, Lobby.Day, Lobby.Rnd.Next(), maxSteps, showForPlayer);
+                        b = new Battle(this, pl, Lobby.Day, Lobby.Rnd.Next(), maxSteps, showForPlayer);
 
                         if (showForPlayer)
                         {
@@ -396,7 +396,7 @@ namespace Fantasy_Kingdoms_Battle
         internal PlayerConstruction[,,] Lairs { get; }
         internal List<PlayerConstruction> ListFlags { get; } = new List<PlayerConstruction>();
         internal Dictionary<PriorityExecution, int> QuantityFlags { get; } = new Dictionary<PriorityExecution, int>();
-        internal int LairsScouted { get; private set;}
+        internal int LairsScouted { get; private set; }
         internal int LairsShowed { get; private set; }
 
         // Визуальные контролы
@@ -480,7 +480,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         // Поиск слота для предмета
-        internal int FindSlotWithItem(Item item)
+        internal int FindSlotWithItem(TypeItem item)
         {
             for (int i = 0; i < Warehouse.Length; i++)
             {
@@ -491,7 +491,7 @@ namespace Fantasy_Kingdoms_Battle
             return -1;
         }
 
-        private int FindSlotForItem(Item item)
+        private int FindSlotForItem(TypeItem item)
         {
             // Сначала ищем, есть ли такой предмет в слоте
             int number = FindSlotWithItem(item);
@@ -673,7 +673,7 @@ namespace Fantasy_Kingdoms_Battle
             base.PreparingForBattle();
         }
 
-        internal void PrepareHint()
+        internal override void PrepareHint()
         {
             Program.formMain.formHint.AddStep1Header(
                 Player.Name, $"{PositionInLobby} место",
@@ -717,7 +717,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Debug.Assert(FlagAttackToOpponent != null);
 
-                int takeHeroes = Math.Min(Lobby.TypeLobby.MaxHeroesForBattle, freeHeroes.Count);                    
+                int takeHeroes = Math.Min(Lobby.TypeLobby.MaxHeroesForBattle, freeHeroes.Count);
                 for (int i = 0; i < takeHeroes; i++)
                 {
                     PlayerHero ph = CombatHeroes[i] as PlayerHero;
@@ -835,7 +835,7 @@ namespace Fantasy_Kingdoms_Battle
             int idx = ListFlags.IndexOf(lair);
             Debug.Assert(idx != -1);
             ListFlags[idx] = null;
-            
+
             // Сжимаем флаги
             for (int i = idx; i < ListFlags.Count - 1; i++)
             {
@@ -916,7 +916,7 @@ namespace Fantasy_Kingdoms_Battle
                     // Помещаем в нее логово
                     Debug.Assert(Lairs[layer, cells[idxCell].Y, cells[idxCell].X] == null);
                     Lairs[layer, cells[idxCell].Y, cells[idxCell].X] = new PlayerConstruction(this, lairs[idxTypeLair], lairs[idxTypeLair].DefaultLevel, cells[idxCell].X, cells[idxCell].Y, layer);
-                    
+
                     cells.RemoveAt(idxCell);// Убираем ячейку из списка доступных
                     lairs.RemoveAt(idxTypeLair);// Убираем тип логова из списка доступных
                 }
@@ -1102,25 +1102,38 @@ namespace Fantasy_Kingdoms_Battle
         internal override int GetImageIndexAvatar() => Player.ImageIndex;
 
         // Реализация интерфейса
-        int ICell.ImageIndex()
+        internal override int GetImageIndex()
         {
             return GetImageIndexAvatar();
         }
-        bool ICell.NormalImage() => IsLive;
-        int ICell.Level() => LevelGreatness;
-        int ICell.Quantity() => 0;
-        string ICell.Cost() => null;
-        void ICell.PrepareHint()
+        internal override bool GetNormalImage()
         {
-            PrepareHint();
+            return IsLive;
         }
 
-        void ICell.Click(VCCell pe)
+        internal override int GetLevel()
         {
-
-        
+            return LevelGreatness;
         }
 
-        void ICell.CustomDraw(Graphics g, int x, int y, bool drawState) { }
+        internal override int GetQuantity()
+        {
+            return 0;
+        }
+
+        internal override string GetCost()
+        {
+            return null;
+        }
+
+        internal override void ShowInfo()
+        {
+            
+        }
+
+        internal override void HideInfo()
+        {
+            
+        }
     }
 }

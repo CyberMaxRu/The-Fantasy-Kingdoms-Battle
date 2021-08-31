@@ -3,23 +3,10 @@ using System.Diagnostics;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    // Интерфейс для работы с ячейкой
-    internal interface ICell
-    {
-        int ImageIndex();
-        bool NormalImage();
-        int Level();
-        int Quantity();
-        string Cost();
-        void PrepareHint();
-        void Click(VCCell pe);
-        void CustomDraw(Graphics g, int x, int y, bool drawState);
-    }
-
     // Визуальный контрол - ячейка
     internal class VCCell : VCImage48
     {
-        private ICell cell;
+        private Entity cell;
 
         public VCCell(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY, -1)
         {
@@ -34,7 +21,7 @@ namespace Fantasy_Kingdoms_Battle
             DrawState = true;
         }
 
-        internal ICell Cell { get => cell; }
+        internal Entity Cell { get => cell; }
         internal bool DrawState { get; set; }
         internal string HintForEmpty { get; set; }
 
@@ -65,10 +52,9 @@ namespace Fantasy_Kingdoms_Battle
                 cell?.Click(this);
         }
 
-        internal void ShowCell(ICell c)
+        internal void ShowCell(Entity c)
         {
-            if (c is PlayerObject po)
-                PlayerObject = po;
+            PlayerObject = c;
 
             //if (!(cell is null) && (cell is PlayerHero ph) && (cell != c))
             //    ph.Selected = false;
@@ -91,12 +77,12 @@ namespace Fantasy_Kingdoms_Battle
 
         protected virtual int GetLevel()
         {
-            return cell.Level(); 
+            return cell.GetLevel(); 
         }
 
         protected virtual int GetQuantity()
         {
-            return cell.Quantity();
+            return cell.GetQuantity();
         }
 
         internal override void Draw(Graphics g)
@@ -105,11 +91,11 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (cell != null)
                 {
-                    ImageIndex = cell.ImageIndex();
-                    ImageIsEnabled = cell.NormalImage();                        
+                    ImageIndex = cell.GetImageIndex();
+                    ImageIsEnabled = cell.GetNormalImage();                        
                     Quantity = GetQuantity();
                     Level = GetLevel();
-                    Cost = cell.Cost();
+                    Cost = cell.GetCost();
 
                     Debug.Assert(BitmapList.Size == 48);
                 }

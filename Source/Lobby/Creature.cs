@@ -10,7 +10,7 @@ using System.Drawing;
 namespace Fantasy_Kingdoms_Battle
 {
     // Базовый класс существа
-    internal abstract class Creature : PlayerObject, ICell
+    internal abstract class Creature : BigEntity
     {
         private VCCell panelEntity;
         private static int sequenceID = 0;// Генератор уникального кода героя
@@ -26,8 +26,8 @@ namespace Fantasy_Kingdoms_Battle
             // Применяем дефолтные способности
             foreach (TypeAbility ta in TypeCreature.Abilities)
                 Abilities.Add(new CreatureAbility(this, ta));
-            Specialization = FormMain.Config.FindSpecialization("SpeedMove");
-            SecondarySkills.Add(FormMain.Config.FindSecondarySkill("Health"));
+            Specialization = new Specialization(this, FormMain.Config.FindSpecialization("SpeedMove"));
+            SecondarySkills.Add(new SecondarySkill(this, FormMain.Config.FindSecondarySkill("Health")));
 
             // Загружаем дефолтный инвентарь
             foreach (PlayerItem i in TypeCreature.Inventory)
@@ -36,9 +36,12 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Берем оружие и доспехи
-            MeleeWeapon = TypeCreature.WeaponMelee;
-            RangeWeapon = TypeCreature.WeaponRange;
-            Armour = TypeCreature.Armour;
+            if (TypeCreature.WeaponMelee != null)
+                MeleeWeapon = new PlayerItem(TypeCreature.WeaponMelee, 1, true);
+            if (TypeCreature.WeaponRange != null)
+                RangeWeapon = new PlayerItem(TypeCreature.WeaponRange, 1, true);
+            if (TypeCreature.Armour != null)
+                Armour = new PlayerItem(TypeCreature.Armour, 1, true);
             FindQuiver();
             
             if (TypeCreature.CategoryCreature != CategoryCreature.Citizen)
@@ -67,9 +70,9 @@ namespace Fantasy_Kingdoms_Battle
         internal List<SecondarySkill> SecondarySkills { get; } = new List<SecondarySkill>();
         internal List<PlayerItem> Inventory { get; } = new List<PlayerItem>();
         internal List<CreatureAbility> Abilities { get; } = new List<CreatureAbility>();// Cпособности
-        internal Item MeleeWeapon { get; private set; }// Рукопашное оружие (ближнего боя)
-        internal Item RangeWeapon { get; private set; }// Стрелковое оружие (дальнего боя)
-        internal Item Armour { get; private set; }// Доспех        
+        internal PlayerItem MeleeWeapon { get; private set; }// Рукопашное оружие (ближнего боя)
+        internal PlayerItem RangeWeapon { get; private set; }// Стрелковое оружие (дальнего боя)
+        internal PlayerItem Armour { get; private set; }// Доспех        
         internal PlayerItem Quiver { get; private set; }// Колчан
         internal StateCreature StateCreature { get; private set; }// Состояние (на карте)
         internal bool IsLive { get; private set; } = true;// Существо живо
@@ -155,17 +158,17 @@ namespace Fantasy_Kingdoms_Battle
             IsLive = false;
         }
 
-        protected override int GetLevel()
+        internal override int GetLevel()
         {
             return Level;
         }
 
-        protected override int GetQuantity()
+        internal override int GetQuantity()
         {
             return 0;
         }
 
-        protected virtual int GetImageIndex()
+        internal override int GetImageIndex()
         {
             return TypeCreature.ImageIndex;
         }
@@ -187,23 +190,19 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         // Реализация интерфейса
-        int ICell.ImageIndex() => GetImageIndex();
-        bool ICell.NormalImage() => true;
-        int ICell.Level() => Level;
-        int ICell.Quantity() => 0;
-        void ICell.PrepareHint()
+        internal override bool GetNormalImage()
         {
-            PrepareHint();
+            return true;
         }
 
-        void ICell.Click(VCCell pe)
+        internal override void Click(VCCell pe)
         {
             Debug.Assert(IsLive);
 
             Program.formMain.SelectPlayerObject(this);
         }
 
-        void ICell.CustomDraw(Graphics g, int x, int y, bool drawState)
+        internal override void CustomDraw(Graphics g, int x, int y, bool drawState)
         {
             DoCustomDraw(g, x, y, drawState);
         }

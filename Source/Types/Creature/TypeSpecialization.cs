@@ -7,23 +7,23 @@ using System.Xml;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal sealed class Specialization : Entity
+    internal sealed class TypeSpecialization : TypeEntity
     {
-        public Specialization(XmlNode n) : base(n)
+        public TypeSpecialization(XmlNode n) : base(n)
         {
         }
 
-        internal void TuneDeferredLinks()
+        internal override void TuneDeferredLinks()
         {
 
         }
-        protected override void DoPrepareHint()
+        /*protected override void DoPrepareHint()
         {
             Program.formMain.formHint.AddStep1Header(Name, "Специализация", Description);
-        }
+        }*/
 
-        protected override int GetLevel() => 0;
+        /*protected override int GetLevel() => 0;
         protected override int GetQuantity() => 0;
-        protected override string GetCost() => null;
+        protected override string GetCost() => null;*/
     }
 }

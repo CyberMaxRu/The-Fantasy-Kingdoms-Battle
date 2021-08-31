@@ -14,7 +14,7 @@ namespace Fantasy_Kingdoms_Battle
     internal enum TypeTarget { Self, EnemyUnit, EnemyBuilding, AllyUnit }// Тип цели для способности
     internal enum Effect { Taunt, Slow }// Эффекты
 
-    internal sealed class TypeAbility : Entity
+    internal sealed class TypeAbility : TypeEntity
     {
         private List<string> classesHeroesString = new List<string>();
         public TypeAbility(XmlNode n) : base(n)
@@ -135,9 +135,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        protected override int GetLevel() => 0;
-        protected override int GetQuantity() => 0;
-        protected override string GetCost()
+        /*protected override string GetCost()
         {
             switch (KindAbility)
             {
@@ -165,6 +163,6 @@ namespace Fantasy_Kingdoms_Battle
         protected override void DoPrepareHint()
         {
             Program.formMain.formHint.AddStep1Header(Name, $"Уровень: {MinUnitLevel}", Description);
-        }
+        }*/
     }
 }

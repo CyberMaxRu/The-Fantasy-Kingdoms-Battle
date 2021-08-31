@@ -27,7 +27,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal VisualControl Page { get; }
         internal string Advice { get; }
-        internal PlayerObject SelectedPlayerObject { get; set; }
+        internal BigEntity SelectedPlayerObject { get; set; }
     }
 
 }

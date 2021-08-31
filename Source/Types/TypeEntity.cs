@@ -4,13 +4,13 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    // Базовый тип для всех объектов - сооружений, существ
-    internal abstract class TypeObject
+    // Базовый тип для всех сущностей - сооружений, существ, умений, предметов и т.д.
+    internal abstract class TypeEntity
     {
         private string name;
         private int imageIndex;
 
-        public TypeObject(XmlNode n)
+        public TypeEntity(XmlNode n)
         {
             Config = FormMain.Config;
 
@@ -24,7 +24,7 @@ namespace Fantasy_Kingdoms_Battle
             CheckData();
         }
 
-        public TypeObject(string id, string name, string description, int imageIndex)
+        public TypeEntity(string id, string name, string description, int imageIndex)
         {
             Config = FormMain.Config;
 
@@ -38,7 +38,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal string ID { get; }// Уникальный (в пределах списка) код типа объекта
         internal string Name { get => name; set { name = value; CheckData(); } }// Наименование типа объекта
-        internal string Description { get; }// Описание типа объекта
+        internal string Description { get; set; }// Описание типа объекта
         internal int ImageIndex { get => imageIndex; set { imageIndex = value; CheckData(); } }// Код иконки типа объекта
         protected Config Config { get; }
 
@@ -50,8 +50,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(ID.Length > 0);
             Debug.Assert(Name.Length > 0);
-            Debug.Assert(Name.Length <= Config.MaxLengthObjectName);
-            Debug.Assert(Description.Length > 0);
+            //Debug.Assert(Name.Length <= Config.MaxLengthObjectName);
+            //Debug.Assert(Description.Length > 0);
             Debug.Assert((ImageIndex >= 0) || (ImageIndex == FormMain.IMAGE_INDEX_CURRENT_AVATAR));
         }
     }

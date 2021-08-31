@@ -28,9 +28,9 @@ namespace Fantasy_Kingdoms_Battle
     }
 
     // Класс вторичного навыка
-    internal sealed class SecondarySkill : Entity
+    internal sealed class TypeSecondarySkill : TypeEntity
     {
-        public SecondarySkill(XmlNode n) : base(n)
+        public TypeSecondarySkill(XmlNode n) : base(n)
         {
 
             // Загружаем параметры
@@ -52,18 +52,19 @@ namespace Fantasy_Kingdoms_Battle
 
         internal ParamSecondSkill[] Levels { get; } = new ParamSecondSkill[(int)LevelSecondSkill.Expert + 1];
 
-        internal void TuneDeferredLinks()
+        internal override void TuneDeferredLinks()
         {
 
         }
 
-        protected override void DoPrepareHint()
+        /*protected override void DoPrepareHint()
         {
             Program.formMain.formHint.AddStep1Header(Name, "Начальный уровень", Description);
-        }
+        }*/
 
-        protected override int GetLevel() => 0;
+        /*protected override int GetLevel() => 0;
         protected override int GetQuantity() => 0;
         protected override string GetCost() => "баз.";
+        */
     }
 }

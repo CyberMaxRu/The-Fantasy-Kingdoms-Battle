@@ -8,7 +8,7 @@ namespace Fantasy_Kingdoms_Battle
     internal enum CategoryCreature { Citizen, Hero, Monster };
 
     // Базовый тип существа
-    internal sealed class TypeCreature : TypeObject
+    internal sealed class TypeCreature : TypeEntity
     {
         private string nameMeleeWeapon;
         private string nameRangeWeapon;
@@ -91,7 +91,7 @@ namespace Fantasy_Kingdoms_Battle
             XmlNode ni = n.SelectSingleNode("Inventory");
             if (ni != null)
             {
-                Item a;
+                TypeItem a;
 
                 foreach (XmlNode l in ni.SelectNodes("Item"))
                 {
@@ -139,7 +139,7 @@ namespace Fantasy_Kingdoms_Battle
             XmlNode nc = n.SelectSingleNode("CarryItems");
             if (nc != null)
             {
-                Item item;
+                TypeItem item;
                 int maxQuantity;
 
                 foreach (XmlNode l in nc.SelectNodes("CarryItem"))
@@ -222,14 +222,14 @@ namespace Fantasy_Kingdoms_Battle
         internal int DefaultPositionPriority { get; private set; }// Приоритет расположения на поле боя по умолчанию
         internal TypeAttack TypeAttackMelee { get;}// Тип рукопашной атаки
         internal TypeAttack TypeAttackRange { get; }// Тип дистанционной атаки
-        internal Item WeaponMelee { get; private set; }// Рукопашное оружие
-        internal Item WeaponRange { get; private set; }// Стрелковое оружие
-        internal Item Armour { get; private set; }// Доспех по умолчанию
+        internal TypeItem WeaponMelee { get; private set; }// Рукопашное оружие
+        internal TypeItem WeaponRange { get; private set; }// Стрелковое оружие
+        internal TypeItem Armour { get; private set; }// Доспех по умолчанию
         internal TypeReward TypeReward { get; }// Награда за убийство существа
         internal int Cost { get; }
         internal TypeConstruction Construction { get; }
         internal bool CanBuild { get; }
-        internal Dictionary<Item, int> CarryItems { get; } = new Dictionary<Item, int>();
+        internal Dictionary<TypeItem, int> CarryItems { get; } = new Dictionary<TypeItem, int>();
         internal List<PlayerItem> Inventory { get; } = new List<PlayerItem>();// Инвентарь
         internal string PrefixName { get; }
         internal List<string> Names { get; } = new List<string>();
@@ -237,7 +237,7 @@ namespace Fantasy_Kingdoms_Battle
         internal TypeCreature NameFromTypeHero { get; private set; }
         internal TypeCreature SurnameFromTypeHero { get; private set; }
 
-        internal int MaxQuantityItem(Item i)
+        internal int MaxQuantityItem(TypeItem i)
         {
             return CarryItems.ContainsKey(i) ? CarryItems[i] : 0;
         }

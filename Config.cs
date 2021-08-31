@@ -138,7 +138,7 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (XmlNode n in xmlDoc.SelectNodes("/Items/Item"))
             {
-                Items.Add(new Item(n));
+                Items.Add(new TypeItem(n));
             }
 
             // Загрузка конфигурации типов рукопашной атаки
@@ -162,7 +162,7 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (XmlNode n in xmlDoc.SelectNodes("/Specializations/Specialization"))
             {
-                Specializations.Add(new Specialization(n));
+                Specializations.Add(new TypeSpecialization(n));
             }
 
             // Загрузка конфигурации вторичных навыков
@@ -170,7 +170,7 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (XmlNode n in xmlDoc.SelectNodes("/SecondarySkills/SecondarySkill"))
             {
-                SecondarySkills.Add(new SecondarySkill(n));
+                SecondarySkills.Add(new TypeSecondarySkill(n));
             }
 
             // Загрузка конфигурации состояний существ
@@ -201,13 +201,13 @@ namespace Fantasy_Kingdoms_Battle
             foreach (TypeAbility a in Abilities)
                 a.TuneDeferredLinks();
 
-            foreach (Specialization s in Specializations)
+            foreach (TypeSpecialization s in Specializations)
                 s.TuneDeferredLinks();
 
-            foreach (SecondarySkill ss in SecondarySkills)
+            foreach (TypeSecondarySkill ss in SecondarySkills)
                 ss.TuneDeferredLinks();
 
-            foreach (Item i in Items)
+            foreach (TypeItem i in Items)
                 i.TuneDeferredLinks();
 
             foreach (TypeCreature tc in TypeCreatures)
@@ -239,12 +239,12 @@ namespace Fantasy_Kingdoms_Battle
         //
         internal List<TypeAttack> TypeAttacks { get; } = new List<TypeAttack>();
         internal List<TypeAbility> Abilities { get; } = new List<TypeAbility>();
-        internal List<Specialization> Specializations { get; } = new List<Specialization>();
-        internal List<SecondarySkill> SecondarySkills { get; } = new List<SecondarySkill>();
+        internal List<TypeSpecialization> Specializations { get; } = new List<TypeSpecialization>();
+        internal List<TypeSecondarySkill> SecondarySkills { get; } = new List<TypeSecondarySkill>();
         internal List<StateCreature> StatesCreature { get; } = new List<StateCreature>();
         internal List<KindCreature> KindCreatures { get; } = new List<KindCreature>();
         internal List<GroupItem> GroupItem { get; } = new List<GroupItem>();
-        internal List<Item> Items { get; } = new List<Item>();
+        internal List<TypeItem> Items { get; } = new List<TypeItem>();
         internal int MaxLevelSkill { get; }
         internal List<TypeCreature> TypeCreatures { get; } = new List<TypeCreature>();
 
@@ -386,9 +386,9 @@ namespace Fantasy_Kingdoms_Battle
             return null;
         }
 
-        internal Item FindItem(string ID, bool mustBeExists = true)
+        internal TypeItem FindItem(string ID, bool mustBeExists = true)
         {
-            foreach (Item i in Items)
+            foreach (TypeItem i in Items)
             {
                 if (i.ID == ID)
                     return i;
@@ -461,9 +461,9 @@ namespace Fantasy_Kingdoms_Battle
             throw new Exception("Вид существа " + ID + " не найден.");
         }
 
-        internal Specialization FindSpecialization(string ID)
+        internal TypeSpecialization FindSpecialization(string ID)
         {
-            foreach (Specialization s in Specializations)
+            foreach (TypeSpecialization s in Specializations)
             {
                 if (s.ID == ID)
                     return s;
@@ -472,9 +472,9 @@ namespace Fantasy_Kingdoms_Battle
             throw new Exception("Специализация " + ID + " не найдена.");
         }
 
-        internal SecondarySkill FindSecondarySkill(string ID)
+        internal TypeSecondarySkill FindSecondarySkill(string ID)
         {
-            foreach (SecondarySkill ss in SecondarySkills)
+            foreach (TypeSecondarySkill ss in SecondarySkills)
             {
                 if (ss.ID == ID)
                     return ss;

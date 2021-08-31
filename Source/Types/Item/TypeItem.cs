@@ -11,11 +11,11 @@ namespace Fantasy_Kingdoms_Battle
     internal enum CategoryItem { Potion, Enchant, Artifact, Elixir, Thing, MeleeWeapon, RangeWeapon, MageWeapon, MeleeArmour, RangeArmour, MageArmour, Quiver }
 
     // Класс предмета
-    internal sealed class Item : Entity
+    internal sealed class TypeItem : TypeEntity
     {
         private string nameGroupItem;
 
-        public Item(XmlNode n) : base(n)
+        public TypeItem(XmlNode n) : base(n)
         {
             CategoryItem = (CategoryItem)Enum.Parse(typeof(CategoryItem), n.SelectSingleNode("CategoryItem").InnerText);
             nameGroupItem = XmlUtils.GetString(n, "GroupItem");
@@ -70,7 +70,7 @@ namespace Fantasy_Kingdoms_Battle
             Position = FormMain.Config.Items.Count;
 
             // Проверяем, что таких же ID и наименования нет
-            foreach (Item i in FormMain.Config.Items)
+            foreach (TypeItem i in FormMain.Config.Items)
             {
                 if (i.ID == ID)
                     throw new Exception("В конфигурации предметов повторяется ID = " + ID);
@@ -97,11 +97,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int DefenseMagic { get; }
         internal int QuantityShots { get; }
 
-        protected override int GetLevel() => 0;
-        protected override int GetQuantity() => 0;
-        protected override string GetCost() => null;
-
-        protected override void DoPrepareHint()
+        /*protected override void DoPrepareHint()
         {
             base.DoPrepareHint();
 
@@ -110,9 +106,9 @@ namespace Fantasy_Kingdoms_Battle
             //Program.formMain.formHint.AddStep1Header(GroupQuiver.Name, "", GroupQuiver.Description
             //    + Environment.NewLine + Environment.NewLine + "Боезапас: " + QuantityShots.ToString());
 
-        }
+        }*/
 
-        internal void TuneDeferredLinks()
+        internal override void TuneDeferredLinks()
         {
             if (nameGroupItem.Length > 0)
             {

@@ -16,7 +16,7 @@ namespace Fantasy_Kingdoms_Battle
     internal enum TypeFlag { None, Scout, Attack, Defense, Battle };// Тип флага
 
     // Тип сооружения - базовый класс для всех зданий, построек и мест
-    internal sealed class TypeConstruction : TypeObject
+    internal sealed class TypeConstruction : TypeEntity
     {
         private readonly Uri uriSoundSelect;// Звук при выборе объекта
         private string nameTypePlaceForConstruct;

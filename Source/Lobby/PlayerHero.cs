@@ -74,7 +74,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Construction.Player.CombatHeroes.IndexOf(this) == -1);
         }
 
-        internal int FindSlotWithItem(Item item)
+        internal int FindSlotWithItem(TypeItem item)
         {
             // Сначала ищем слот, заполненный таким же предметом
             for (int i = 0; i < Inventory.Count; i++)
@@ -84,7 +84,7 @@ namespace Fantasy_Kingdoms_Battle
             return -1;
         }
 
-        internal int FindCellForItem(Item item)
+        internal int FindCellForItem(TypeItem item)
         {
             int number = FindSlotWithItem(item);
             if (number != -1)
@@ -213,11 +213,11 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(MeleeWeapon != null);
             Debug.Assert(Armour != null);
 
-            ParametersWithAmmunition.MaxMeleeDamage = MeleeWeapon.DamageMelee + (MeleeWeapon.DamageMelee * ParametersWithAmmunition.Strength / 100);
+            ParametersWithAmmunition.MaxMeleeDamage = MeleeWeapon.Item.DamageMelee + (MeleeWeapon.Item.DamageMelee * ParametersWithAmmunition.Strength / 100);
             ParametersWithAmmunition.MinMeleeDamage = ParametersWithAmmunition.MaxMeleeDamage / 2;
             if (RangeWeapon != null)
             {
-                ParametersWithAmmunition.MaxArcherDamage = RangeWeapon.DamageRange + (RangeWeapon.DamageRange * ParametersWithAmmunition.Strength / 100);
+                ParametersWithAmmunition.MaxArcherDamage = RangeWeapon.Item.DamageRange + (RangeWeapon.Item.DamageRange * ParametersWithAmmunition.Strength / 100);
                 ParametersWithAmmunition.MinArcherDamage = ParametersWithAmmunition.MaxArcherDamage / 2;
             }
             else
@@ -229,9 +229,9 @@ namespace Fantasy_Kingdoms_Battle
                             ParametersWithAmmunition.MagicDamage = (ParametersWithAmmunition.Magic / 5) * Weapon.DamageMagic + Level;
                         else
                             ParametersWithAmmunition.MagicDamage = 0;*/
-            ParametersWithAmmunition.DefenseMelee = Armour.DefenseMelee;
-            ParametersWithAmmunition.DefenseArcher = Armour.DefenseRange;
-            ParametersWithAmmunition.DefenseMagic = Armour.DefenseMagic;
+            ParametersWithAmmunition.DefenseMelee = Armour.Item.DefenseMelee;
+            ParametersWithAmmunition.DefenseArcher = Armour.Item.DefenseRange;
+            ParametersWithAmmunition.DefenseMagic = Armour.Item.DefenseMagic;
 
             //Debug.Assert((ParametersWithAmmunition.MaxMeleeDamage > 0) || (ParametersWithAmmunition.MaxArcherDamage > 0) || (ParametersWithAmmunition.MagicDamage > 0));
         }
@@ -259,7 +259,7 @@ namespace Fantasy_Kingdoms_Battle
             }*/
         }
 
-        protected override int GetImageIndex()
+        internal override int GetImageIndex()
         {
             Debug.Assert(IsLive);
 
@@ -346,6 +346,6 @@ namespace Fantasy_Kingdoms_Battle
 
             Gold += income;
         }
-        protected override string GetCost() => null;
+        internal override string GetCost() => null;
     }
 }

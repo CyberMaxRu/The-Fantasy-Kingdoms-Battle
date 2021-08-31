@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Fantasy_Kingdoms_Battle
 {
     // Cпособность у существа
-    internal sealed class CreatureAbility : ICell
+    internal sealed class CreatureAbility : SmallEntity
     {
         public CreatureAbility(Creature creature, TypeAbility typeAbility)
         {
@@ -24,47 +24,47 @@ namespace Fantasy_Kingdoms_Battle
             return Program.formMain.imListObjects48;
         }
 
-        public void Click(VCCell pe)
+        internal override void Click(VCCell pe)
         {
             
         }
 
-        public string Cost()
+        internal override string GetCost()
         {
-            return null;
+            return "";
         }
 
-        public void CustomDraw(Graphics g, int x, int y, bool drawState)
+        internal override void CustomDraw(Graphics g, int x, int y, bool drawState)
         {
             
         }
 
-        public int ImageIndex()
+        internal override int GetImageIndex()
         {
             return TypeAbility.ImageIndex;
         }
 
-        public int Level()
+        internal override int GetLevel()
         {
             return TypeAbility.MinUnitLevel;
         }
 
-        public bool NormalImage()
+        internal override int GetQuantity()
+        {
+            return 0;
+        }
+
+        internal override bool GetNormalImage()
         {
             return Creature.Level >= TypeAbility.MinUnitLevel;
         }
 
-        public void PrepareHint()
+        internal override void PrepareHint()
         {
             Program.formMain.formHint.AddStep1Header(TypeAbility.Name, "", TypeAbility.Description);
             // Здесь добавить требование к уровню
             //$"Уровень: {TypeAbility.MinUnitLevel}"
             //Program.formMain.formHint.
-        }
-
-        public int Quantity()
-        {
-            return 0;
         }
     }
 }

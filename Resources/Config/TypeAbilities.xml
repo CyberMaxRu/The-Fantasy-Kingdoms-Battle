@@ -1885,7 +1885,7 @@
     <ID>SkeletVeteranBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит средний урон</Description>
-    <ImageIndex>-1</ImageIndex>
+    <ImageIndex>1</ImageIndex>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -1901,7 +1901,7 @@
     <ID>SkeletSniperBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
-    <ImageIndex>-1</ImageIndex>
+    <ImageIndex>1</ImageIndex>
     <KindAbility>RangeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -1917,7 +1917,7 @@
     <ID>GhostBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
-    <ImageIndex>-1</ImageIndex>
+    <ImageIndex>1</ImageIndex>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -1933,7 +1933,7 @@
     <ID>LichBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
-    <ImageIndex>-1</ImageIndex>
+    <ImageIndex>1</ImageIndex>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -1950,7 +1950,7 @@
     <ID>VampireAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
-    <ImageIndex>-1</ImageIndex>
+    <ImageIndex>1</ImageIndex>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -1966,7 +1966,7 @@
     <ID>SerpentBasicAttack</ID>
     <Name>Укус</Name>
     <Description>- Наносит малый урон</Description>
-    <ImageIndex>-1</ImageIndex>
+    <ImageIndex>1</ImageIndex>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -2066,7 +2066,7 @@
     <ID>WerewolfBearBasicAttack</ID>
     <Name>Укус</Name>
     <Description>- Наносит малый урон</Description>
-    <ImageIndex>-1</ImageIndex>
+    <ImageIndex>1</ImageIndex>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -2082,7 +2082,7 @@
     <ID>MinotaurBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
-    <ImageIndex>-1</ImageIndex>
+    <ImageIndex>1</ImageIndex>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -2099,7 +2099,7 @@
     <ID>OgreBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
-    <ImageIndex>-1</ImageIndex>
+    <ImageIndex>1</ImageIndex>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -2116,7 +2116,7 @@
     <ID>WerewolfBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
-    <ImageIndex>-1</ImageIndex>
+    <ImageIndex>1</ImageIndex>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -2132,7 +2132,7 @@
     <ID>DragonBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
-    <ImageIndex>-1</ImageIndex>
+    <ImageIndex>1</ImageIndex>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -2148,7 +2148,7 @@
     <ID>KingRatBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
-    <ImageIndex>-1</ImageIndex>
+    <ImageIndex>1</ImageIndex>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -2164,7 +2164,7 @@
     <ID>OldRatBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
-    <ImageIndex>-1</ImageIndex>
+    <ImageIndex>1</ImageIndex>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -2180,7 +2180,7 @@
     <ID>KingSkeletonBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
-    <ImageIndex>-1</ImageIndex>
+    <ImageIndex>1</ImageIndex>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -2196,7 +2196,7 @@
     <ID>RatmanBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
-    <ImageIndex>-1</ImageIndex>
+    <ImageIndex>1</ImageIndex>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -2212,7 +2212,7 @@
     <ID>RatBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
-    <ImageIndex>-1</ImageIndex>
+    <ImageIndex>1</ImageIndex>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -2228,7 +2228,7 @@
     <ID>ElementalEarthBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
-    <ImageIndex>-1</ImageIndex>
+    <ImageIndex>1</ImageIndex>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -2244,7 +2244,7 @@
     <ID>ElementalFireBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
-    <ImageIndex>-1</ImageIndex>
+    <ImageIndex>1</ImageIndex>
     <KindAbility>MeleeAttack</KindAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>

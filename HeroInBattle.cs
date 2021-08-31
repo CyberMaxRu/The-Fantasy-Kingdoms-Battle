@@ -11,7 +11,7 @@ namespace Fantasy_Kingdoms_Battle
     internal enum StateHeroInBattle { MeleeAttack, RangeAttack, Cast, Drink, Healing, Rest, Resurrection, Tumbstone, Dead, 
         PrepareMove, Move, None }// Состояние героя в бою
 
-    internal sealed class HeroInBattle : ICell
+    internal sealed class HeroInBattle : Entity
     {
         private int countAction;// Счетчик действия
         private int timeAction;// Какое количество времени выполнения действие
@@ -428,15 +428,15 @@ namespace Fantasy_Kingdoms_Battle
             switch (State)
             {
                 case StateHeroInBattle.MeleeAttack:
-                    int th = PlayerHero.MeleeWeapon != null ? PlayerHero.MeleeWeapon.TimeHit : 50;
+                    int th = PlayerHero.MeleeWeapon != null ? PlayerHero.MeleeWeapon.Item.TimeHit : 50;
                     timeAttack = (int)(th / 100.00 * FormMain.Config.StepsInSecond);
                     break;
                 case StateHeroInBattle.RangeAttack:
                     // Костыль для магов
                     if (PlayerHero.RangeWeapon != null)
-                        timeAttack = (int)(PlayerHero.RangeWeapon.TimeHit / 100.00 * FormMain.Config.StepsInSecond);
+                        timeAttack = (int)(PlayerHero.RangeWeapon.Item.TimeHit / 100.00 * FormMain.Config.StepsInSecond);
                     else
-                        timeAttack = (int)(PlayerHero.MeleeWeapon.TimeHit / 100.00 * FormMain.Config.StepsInSecond);
+                        timeAttack = (int)(PlayerHero.MeleeWeapon.Item.TimeHit / 100.00 * FormMain.Config.StepsInSecond);
                     break;
                 default:
                     throw new Exception("Неизвестное состояние.");
@@ -646,40 +646,44 @@ namespace Fantasy_Kingdoms_Battle
             g.Dispose();
         }
 
-        int ICell.ImageIndex()
+        internal override int GetImageIndex()
         {
             return PlayerHero.TypeCreature.ImageIndex;
         }
 
-        bool ICell.NormalImage()
+        internal override bool GetNormalImage()
         {
             return IsLive;
         }
 
-        int ICell.Level()
+        internal override int GetLevel()
         {
             return PlayerHero.Level;
         }
 
-        int ICell.Quantity()
+        internal override int GetQuantity()
         {
             return 0;
         }
-        string ICell.Cost() => null;
 
-        void ICell.PrepareHint()
+        internal override string GetCost()
+        {
+            return null;
+        }
+
+        internal override void PrepareHint()
         {
             
         }
 
-        void ICell.Click(VCCell pe)
+        internal override void Click(VCCell pe)
         {
-            
+            base.Click(pe);
         }
 
-        void ICell.CustomDraw(Graphics g, int x, int y, bool drawState)
+        internal override void CustomDraw(Graphics g, int x, int y, bool drawState)
         {
-            
+            base.CustomDraw(g, x, y, drawState);           
         }
     }
 }

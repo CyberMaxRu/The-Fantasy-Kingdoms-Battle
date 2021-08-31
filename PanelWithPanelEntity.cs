@@ -35,7 +35,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int DistanceBetweenCells { get; }
         internal int DistanceBetweenRows { get; }
 
-        internal void ApplyList<T>(List<T> list) where T: ICell
+        internal void ApplyList<T>(List<T> list) where T: Entity
         {
             ValidateRows(list.Count);
 
