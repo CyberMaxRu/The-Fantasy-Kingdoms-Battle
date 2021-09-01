@@ -96,7 +96,7 @@ namespace Fantasy_Kingdoms_Battle
                 BitmapList.DrawImage(g, ImageIndex, (true/*UseFilter*/ || ImageIsEnabled) && NormalImage, HighlightUnderMouse && MouseOver && !MouseClicked, Left + ShiftImageX, Top + ShiftImageY);
 
                 // Цена
-                if (Cost != null)
+                if ((Cost != null) && (Cost != ""))
                 {
                     Debug.Assert(Cost.Length > 0);
 
