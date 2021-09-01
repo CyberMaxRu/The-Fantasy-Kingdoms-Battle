@@ -11,7 +11,7 @@ namespace Fantasy_Kingdoms_Battle
     internal enum CategoryItem { Potion, Enchant, Artifact, Elixir, Thing, MeleeWeapon, RangeWeapon, MageWeapon, MeleeArmour, RangeArmour, MageArmour, Quiver }
 
     // Класс предмета
-    internal sealed class TypeItem : TypeEntity
+    internal sealed class TypeItem : TypeSmallEntity
     {
         private string nameGroupItem;
 

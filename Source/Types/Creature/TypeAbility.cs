@@ -14,7 +14,7 @@ namespace Fantasy_Kingdoms_Battle
     internal enum TypeTarget { Self, EnemyUnit, EnemyBuilding, AllyUnit }// Тип цели для способности
     internal enum Effect { Taunt, Slow }// Эффекты
 
-    internal sealed class TypeAbility : TypeEntity
+    internal sealed class TypeAbility : TypeSmallEntity
     {
         private List<string> classesHeroesString = new List<string>();
         public TypeAbility(XmlNode n) : base(n)

@@ -28,7 +28,7 @@ namespace Fantasy_Kingdoms_Battle
     }
 
     // Класс вторичного навыка
-    internal sealed class TypeSecondarySkill : TypeEntity
+    internal sealed class TypeSecondarySkill : TypeSmallEntity
     {
         public TypeSecondarySkill(XmlNode n) : base(n)
         {
