@@ -1288,13 +1288,13 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     switch (tck.Page)
                     {
-                        case Page.Guild:
+                        case ConstructionPage.Guild:
                             parent = pageGuilds.Page;
                             break;
-                        case Page.Economic:
+                        case ConstructionPage.Economic:
                             parent = pageEconomicConstructions.Page;
                             break;
-                        case Page.Temple:
+                        case ConstructionPage.Temple:
                             parent = pageTemples.Page;
                             break;
                         default:
