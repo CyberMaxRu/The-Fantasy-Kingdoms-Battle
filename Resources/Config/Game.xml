@@ -109,7 +109,7 @@
     <Target>198</Target>
     <Book>199</Book>
     <Exit>200</Exit>
-    <FlagAttack>201 </FlagAttack>
+    <FlagAttack>201</FlagAttack>
     <Tournament>202</Tournament>
     <Scroll>203</Scroll>
     <Settings>204</Settings>
