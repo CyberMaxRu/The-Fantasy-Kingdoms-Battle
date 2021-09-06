@@ -74,10 +74,10 @@
     <Compile Include="Source\VisualControls\VCImage48.cs" />
     <Compile Include="Source\VisualControls\VCPageButton.cs" />
     <Compile Include="Source\Descriptors\Creature\DescriptorAbility.cs" />
-    <Compile Include="Battle.cs" />
-    <Compile Include="Battlefield.cs" />
-    <Compile Include="BattlefieldTile.cs" />
-    <Compile Include="BattleParticipant.cs" />
+    <Compile Include="Source\Lobby\Battle\Battle.cs" />
+    <Compile Include="Source\Lobby\Battle\Battlefield.cs" />
+    <Compile Include="Source\Lobby\Battle\BattlefieldTile.cs" />
+    <Compile Include="Source\Lobby\BattleParticipant.cs" />
     <Compile Include="BitmapBorder.cs" />
     <Compile Include="BitmapList.cs" />
     <Compile Include="CustomCursor.cs" />
@@ -86,8 +86,8 @@
     <Compile Include="Source\Lobby\LobbyPlayerComputer.cs" />
     <Compile Include="Source\Lobby\LobbyPlayerHuman.cs" />
     <Compile Include="M2Font.cs" />
-    <Compile Include="PanelCreatureInfo.cs" />
-    <Compile Include="PanelMonsterInfo.cs" />
+    <Compile Include="Source\Panels\PanelCreatureInfo.cs" />
+    <Compile Include="Source\Panels\PanelMonsterInfo.cs" />
     <Compile Include="Source\Lobby\Player.cs" />
     <Compile Include="PlayerMusic.cs" />
     <Compile Include="Source\Lobby\ComputerPlayer.cs" />
@@ -140,7 +140,7 @@
     <Compile Include="Source\Lobby\Monster.cs" />
     <Compile Include="Source\Descriptors\Construction\DescriptorConstruction.cs" />
     <Compile Include="Source\Descriptors\DescriptorEntity.cs" />
-    <Compile Include="PanelLairInfo.cs" />
+    <Compile Include="Source\Panels\PanelLairInfo.cs" />
     <Compile Include="Source\Descriptors\Creature\KindCreature.cs" />
     <Compile Include="Source\Descriptors\Creature\DescriptorCreature.cs" />
     <Compile Include="Config.cs" />
@@ -151,15 +151,15 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="GuiUtils.cs" />
-    <Compile Include="HeroInBattle.cs" />
+    <Compile Include="Source\Utils\GuiUtils.cs" />
+    <Compile Include="Source\Lobby\Battle\HeroInBattle.cs" />
     <Compile Include="MainConfig.cs" />
-    <Compile Include="Missile.cs" />
+    <Compile Include="Source\Lobby\Battle\Missile.cs" />
     <Compile Include="Source\VisualControls\VCTabControl.cs" />
-    <Compile Include="PanelBaseInfo.cs" />
-    <Compile Include="PanelConstructionInfo.cs" />
+    <Compile Include="Source\Panels\PanelBaseInfo.cs" />
+    <Compile Include="Source\Panels\PanelConstructionInfo.cs" />
     <Compile Include="Source\VisualControls\VCMenuCell.cs" />
-    <Compile Include="PanelWithPanelEntity.cs" />
+    <Compile Include="Source\Panels\PanelWithPanelEntity.cs" />
     <Compile Include="Source\Lobby\PlayerItem.cs" />
     <Compile Include="Source\VisualControls\VCCell.cs" />
     <Compile Include="PlayerCellMenu.cs" />
@@ -169,8 +169,8 @@
     <Compile Include="Source\TypeLobby\TypeLobby.cs" />
     <Compile Include="Source\Descriptors\Construction\LevelConstruction.cs" />
     <Compile Include="Source\Lobby\Lobby.cs" />
-    <Compile Include="PanelHeroInfo.cs" />
-    <Compile Include="HeroParameters.cs" />
+    <Compile Include="Source\Panels\PanelHeroInfo.cs" />
+    <Compile Include="Source\Lobby\HeroParameters.cs" />
     <Compile Include="Source\Lobby\PlayerConstruction.cs" />
     <Compile Include="Source\Lobby\PlayerHero.cs" />
     <Compile Include="Program.cs" />
