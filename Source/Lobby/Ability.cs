@@ -19,11 +19,6 @@ namespace Fantasy_Kingdoms_Battle
         internal Creature Creature { get; }
         internal DescriptorAbility TypeAbility { get; }
 
-        public BitmapList BitmapList()
-        {
-            return Program.formMain.imListObjects48;
-        }
-
         internal override void Click(VCCell pe)
         {
             
