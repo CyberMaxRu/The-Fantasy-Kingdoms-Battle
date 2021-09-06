@@ -81,7 +81,7 @@
     <Compile Include="BitmapBorder.cs" />
     <Compile Include="BitmapList.cs" />
     <Compile Include="CustomCursor.cs" />
-    <Compile Include="HumanPlayer.cs" />
+    <Compile Include="Source\Lobby\HumanPlayer.cs" />
     <Compile Include="Source\Lobby\LobbyPlayer.cs" />
     <Compile Include="Source\Lobby\LobbyPlayerComputer.cs" />
     <Compile Include="Source\Lobby\LobbyPlayerHuman.cs" />
@@ -90,7 +90,7 @@
     <Compile Include="PanelMonsterInfo.cs" />
     <Compile Include="Source\Lobby\Player.cs" />
     <Compile Include="PlayerMusic.cs" />
-    <Compile Include="ComputerPlayer.cs" />
+    <Compile Include="Source\Lobby\ComputerPlayer.cs" />
     <Compile Include="Source\Forms\WindowAdvice.cs" />
     <Compile Include="Source\TypeLobby\TypeLobbyLairSettings.cs" />
     <Compile Include="Source\VisualControls\VCMapArea.cs" />
@@ -137,7 +137,7 @@
     <Compile Include="Source\Descriptors\Creature\DescriptorSpecialization.cs" />
     <Compile Include="Source\Descriptors\Creature\StateCreature.cs" />
     <Compile Include="Source\Lobby\Creature.cs" />
-    <Compile Include="Monster.cs" />
+    <Compile Include="Source\Lobby\Monster.cs" />
     <Compile Include="Source\Descriptors\Construction\DescriptorConstruction.cs" />
     <Compile Include="Source\Descriptors\DescriptorEntity.cs" />
     <Compile Include="PanelLairInfo.cs" />
@@ -163,7 +163,7 @@
     <Compile Include="Source\Lobby\PlayerItem.cs" />
     <Compile Include="Source\VisualControls\VCCell.cs" />
     <Compile Include="PlayerCellMenu.cs" />
-    <Compile Include="Requirement.cs" />
+    <Compile Include="Source\Lobby\Requirement.cs" />
     <Compile Include="TypeCellMenu.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Source\TypeLobby\TypeLobby.cs" />
