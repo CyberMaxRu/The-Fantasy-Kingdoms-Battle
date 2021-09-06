@@ -158,7 +158,7 @@
     <ID>Quiver</ID>
     <Name>Дополнительный колчан</Name>
     <Description>Увеличивает количество стрел в два раза</Description>
-    <ImageIndex>102</ImageIndex>
+    <ImageIndex>112</ImageIndex>
     <CategoryItem>Thing</CategoryItem>
     <Cost>50</Cost>
     <Perk></Perk>
@@ -167,7 +167,7 @@
     <ID>SmallBag</ID>
     <Name>Маленькая сумка</Name>
     <Description>Добавляет место под 4 вещи</Description> 
-    <ImageIndex>103</ImageIndex>
+    <ImageIndex>113</ImageIndex>
     <CategoryItem>Thing</CategoryItem>
     <Cost>50</Cost>
     <Perk></Perk>
@@ -176,7 +176,7 @@
     <ID>GingerRoot</ID>
     <Name>Корень имбиря</Name>
     <Description>Уменьшает наступление усталости</Description>
-    <ImageIndex>104</ImageIndex>
+    <ImageIndex>114</ImageIndex>
     <CategoryItem>Thing</CategoryItem>
     <Cost>50</Cost>
     <Perk></Perk>
@@ -185,7 +185,7 @@
     <ID>Amanita</ID>
     <Name>Мухомор</Name>
     <Description>Уменьшает страх</Description>
-    <ImageIndex>105</ImageIndex>
+    <ImageIndex>115</ImageIndex>
     <CategoryItem>Thing</CategoryItem>
     <Cost>50</Cost>
     <Perk></Perk>
@@ -194,7 +194,7 @@
     <ID>Beer</ID>
     <Name>Пиво</Name>
     <Description>Увеличивает мораль</Description>
-    <ImageIndex>106</ImageIndex>
+    <ImageIndex>116</ImageIndex>
     <CategoryItem>Thing</CategoryItem>
     <Cost>50</Cost>
     <Perk></Perk>
@@ -203,7 +203,7 @@
     <ID>Horseshoe</ID>
     <Name>Подкова</Name>
     <Description>Увеличивает удачу</Description>
-    <ImageIndex>107</ImageIndex>
+    <ImageIndex>117</ImageIndex>
     <CategoryItem>Thing</CategoryItem>
     <Cost>50</Cost>
     <Perk></Perk>
@@ -212,7 +212,7 @@
     <ID>HolyWater</ID>
     <Name>Святая вода</Name>
     <Description>Увеличивает урон против нежити</Description>
-    <ImageIndex>108</ImageIndex>
+    <ImageIndex>118</ImageIndex>
     <CategoryItem>Enchant</CategoryItem>
     <Cost>50</Cost>
     <Perk></Perk>
