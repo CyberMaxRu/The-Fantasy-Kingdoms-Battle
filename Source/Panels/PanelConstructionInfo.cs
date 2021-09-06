@@ -39,7 +39,7 @@ namespace Fantasy_Kingdoms_Battle
             Width = pageControl.Width + FormMain.Config.GridSize * 2;
         }
 
-        internal PlayerConstruction Construction { get => PlayerObject as PlayerConstruction; }
+        internal PlayerConstruction Construction { get => Entity as PlayerConstruction; }
 
         internal override void ArrangeControls()
         {

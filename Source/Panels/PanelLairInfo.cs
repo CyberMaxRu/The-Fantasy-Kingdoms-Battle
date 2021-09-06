@@ -30,7 +30,7 @@ namespace Fantasy_Kingdoms_Battle
             Width = pageControl.Width + FormMain.Config.GridSize * 2;
         }
 
-        internal PlayerConstruction Lair { get => PlayerObject as PlayerConstruction; }
+        internal PlayerConstruction Lair { get => Entity as PlayerConstruction; }
 
         internal override void ArrangeControls()
         {

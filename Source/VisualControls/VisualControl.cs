@@ -21,7 +21,7 @@ namespace Fantasy_Kingdoms_Battle
         private Bitmap bmpBorderSelect;
         private Size sizeBorder;
 
-        private Entity playerObject;
+        private Entity entity;
         private bool _disposed = false;
 
         public VisualControl()
@@ -60,7 +60,7 @@ namespace Fantasy_Kingdoms_Battle
         }// Видимость контрола
         internal bool ManualDraw { get; set; }// Ручное рисование контрола
         internal bool ShowBorder { get; set; }// Надо ли показывать бордюр
-        internal Entity PlayerObject { get => playerObject; set { SetPlayerObject(value); } }// Объект, ассоциированный с контролом
+        internal Entity Entity { get => entity; set { SetEntity(value); } }// Объект, ассоциированный с контролом
 
         internal bool IsError { get; set; }
         internal bool ShowHintParent { get; set; }// Показывать подсказку родителя
@@ -80,11 +80,11 @@ namespace Fantasy_Kingdoms_Battle
         internal event EventHandler Click;
         internal event EventHandler ShowHint;
 
-        protected virtual void SetPlayerObject(Entity po)
+        protected virtual void SetEntity(Entity po)
         {
             //Debug.Assert(po != null);
 
-            playerObject = po;
+            entity = po;
         }
 
         internal void SetPos(int left, int top)

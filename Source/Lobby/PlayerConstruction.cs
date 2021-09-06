@@ -431,12 +431,12 @@ namespace Fantasy_Kingdoms_Battle
             if (TypeConstruction.IsOurConstruction)
             {
                 Program.formMain.panelConstructionInfo.Visible = true;
-                Program.formMain.panelConstructionInfo.PlayerObject = this;
+                Program.formMain.panelConstructionInfo.Entity = this;
             }
             else
             {
                 Program.formMain.panelLairInfo.Visible = true;
-                Program.formMain.panelLairInfo.PlayerObject = this;
+                Program.formMain.panelLairInfo.Entity = this;
             }
 
         }

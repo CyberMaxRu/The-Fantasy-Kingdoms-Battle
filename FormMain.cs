@@ -1233,7 +1233,7 @@ namespace Fantasy_Kingdoms_Battle
             foreach (PlayerConstruction pb in lobby.CurrentPlayer.Constructions)
             {
                 if (pb.TypeConstruction.IsInternalConstruction)
-                    pb.TypeConstruction.Panel.PlayerObject = pb;
+                    pb.TypeConstruction.Panel.Entity = pb;
             }
 
             // Показываем логова
@@ -1251,8 +1251,8 @@ namespace Fantasy_Kingdoms_Battle
             for (int y = 0; y < panelLairs.GetLength(0); y++)
                 for (int x = 0; x < panelLairs.GetLength(1); x++)
                 {
-                    panelLairs[y, x].PlayerObject = lobby.CurrentPlayer.Lairs[currentNeighborhood, y, x];
-                    panelLairs[y, x].Visible = !(panelLairs[y, x].PlayerObject is null);
+                    panelLairs[y, x].Entity = lobby.CurrentPlayer.Lairs[currentNeighborhood, y, x];
+                    panelLairs[y, x].Visible = !(panelLairs[y, x].Entity is null);
                 }
         }
 

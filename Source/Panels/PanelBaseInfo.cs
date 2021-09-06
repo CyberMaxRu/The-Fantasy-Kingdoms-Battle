@@ -47,8 +47,8 @@ namespace Fantasy_Kingdoms_Battle
 
         private void ImgIcon_ShowHint(object sender, EventArgs e)
         {
-            Debug.Assert(PlayerObject != null);
-            PlayerObject.PrepareHint();
+            Debug.Assert(Entity != null);
+            Entity.PrepareHint();
         }
 
         internal override void ArrangeControls()

@@ -83,14 +83,14 @@ namespace Fantasy_Kingdoms_Battle
             }*/
         }
 
-        internal PlayerHero Hero { get => PlayerObject as PlayerHero; }
+        internal PlayerHero Hero { get => Entity as PlayerHero; }
 
         private void BtnDismiss_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Уволить героя?", "FKB", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 Hero.Dismiss();
-                PlayerObject = null;
+                Entity = null;
                 Program.formMain.SelectPlayerObject(null);
                 Program.formMain.SetNeedRedrawFrame();
             }

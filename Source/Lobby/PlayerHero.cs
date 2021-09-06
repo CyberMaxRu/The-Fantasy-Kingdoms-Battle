@@ -301,7 +301,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(IsLive);
 
             Program.formMain.panelHeroInfo.Visible = true;
-            Program.formMain.panelHeroInfo.PlayerObject = this;
+            Program.formMain.panelHeroInfo.Entity = this;
         }
 
         internal void ClearState()

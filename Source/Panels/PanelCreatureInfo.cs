@@ -148,7 +148,7 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep1Header(Creature.StateCreature.Name, "", Creature.StateCreature.Description);
         }
 
-        internal Creature Creature { get => PlayerObject as Creature; }
+        internal Creature Creature { get => Entity as Creature; }
 
         internal override void ArrangeControls()
         {

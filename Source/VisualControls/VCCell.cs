@@ -54,7 +54,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void ShowCell(Entity c)
         {
-            PlayerObject = c;
+            Entity = c;
 
             //if (!(cell is null) && (cell is PlayerHero ph) && (cell != c))
             //    ph.Selected = false;
@@ -67,7 +67,7 @@ namespace Fantasy_Kingdoms_Battle
 
         protected override bool Selected()
         {
-            return ManualSelected || ((PlayerObject != null) && (cell != null) && Program.formMain.PlayerObjectIsSelected(PlayerObject));
+            return ManualSelected || ((Entity != null) && (cell != null) && Program.formMain.PlayerObjectIsSelected(Entity));
         }
 
         protected override bool PlaySelectSound()

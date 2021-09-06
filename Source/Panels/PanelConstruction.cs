@@ -297,7 +297,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void ImgLair_ShowHint(object sender, EventArgs e)
         {
-            PlayerObject.PrepareHint();
+            Entity.PrepareHint();
         }
 
         private void ImgLair_Click(object sender, EventArgs e)
@@ -309,13 +309,13 @@ namespace Fantasy_Kingdoms_Battle
 
         private void SelectThisConstruction()
         {
-            Debug.Assert(PlayerObject != null);
-            Program.formMain.SelectPlayerObject(PlayerObject as BigEntity);
+            Debug.Assert(Entity != null);
+            Program.formMain.SelectPlayerObject(Entity as BigEntity);
         }
 
         protected override bool Selected()
         {
-            return (PlayerObject != null) && Program.formMain.PlayerObjectIsSelected(PlayerObject);
+            return (Entity != null) && Program.formMain.PlayerObjectIsSelected(Entity);
         }
         private void BtnHeroes_ShowHint(object sender, EventArgs e)
         {
@@ -365,9 +365,9 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        protected override void SetPlayerObject(Entity po)
+        protected override void SetEntity(Entity po)
         {
-            base.SetPlayerObject(po);
+            base.SetEntity(po);
 
             Construction = po as PlayerConstruction;
             SwitchStyle();
@@ -425,7 +425,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnAttackHeroes_Click(object sender, EventArgs e)
         {
-            Program.formMain.SelectPlayerObject(PlayerObject as BigEntity);
+            Program.formMain.SelectPlayerObject(Entity as BigEntity);
             Program.formMain.panelLairInfo.SelectPageHeroes();
         }
 
@@ -503,7 +503,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnInhabitants_Click(object sender, EventArgs e)
         {
-            Program.formMain.SelectPlayerObject(PlayerObject as BigEntity);
+            Program.formMain.SelectPlayerObject(Entity as BigEntity);
             Program.formMain.panelLairInfo.SelectPageInhabitants();
         }
 
