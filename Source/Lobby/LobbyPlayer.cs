@@ -400,7 +400,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int LairsShowed { get; private set; }
 
         // Визуальные контролы
-        internal PanelPlayer Panel { get; set; }
         private LobbyPlayer opponent;// Убрать это
         internal LobbyPlayer Opponent { get { return opponent; } set { if (value != this) { if (opponent != value) { opponent = value; UpdateOpponent(); } } else new Exception("Нельзя указать оппонентов самого себя."); } }
         internal PlayerConstruction FlagAttackToOpponent { get; private set; }

@@ -18,7 +18,6 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(p != null);
 
             player = p;
-            player.Panel = this;
             Entity = player;
         }
 
