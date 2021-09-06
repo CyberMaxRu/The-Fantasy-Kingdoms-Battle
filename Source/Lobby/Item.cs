@@ -12,19 +12,17 @@ namespace Fantasy_Kingdoms_Battle
     // Класс предмета у игрока (находящегося на герое или на складе)
     internal sealed class Item : SmallEntity
     {
-        public Item(DescriptorItem i, int quantity, bool ownerIsPlayer)
+        public Item(DescriptorItem i, int quantity)
         {
             Debug.Assert(i != null);
             Debug.Assert(quantity > 0);
 
             Descriptor = i;
             Quantity = quantity;
-            OwnerIsPlayer = ownerIsPlayer;
         }
 
         internal DescriptorItem Descriptor { get; }
         internal int Quantity { get; set; }// Количество предметов
-        internal bool OwnerIsPlayer { get; set; }
 
         internal override int GetImageIndex()
         {
@@ -43,7 +41,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override int GetQuantity()
         {
-            return !OwnerIsPlayer ? 0 : Quantity == 1 ? 0 : Quantity; 
+            return Quantity == 1 ? 0 : Quantity; 
         }
 
         internal override string GetCost()

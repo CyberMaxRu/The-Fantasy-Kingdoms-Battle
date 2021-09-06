@@ -530,7 +530,7 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
             {
-                Warehouse[numberCell] = new Item(pi.Descriptor, pi.Quantity, true);
+                Warehouse[numberCell] = new Item(pi.Descriptor, pi.Quantity);
                 pi.Quantity = 0;
             }
         }
@@ -636,7 +636,7 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
             {
-                pi = new Item(Warehouse[fromCell].Descriptor, quantity, true);
+                pi = new Item(Warehouse[fromCell].Descriptor, quantity);
                 Warehouse[fromCell].Quantity -= quantity;
             }
 

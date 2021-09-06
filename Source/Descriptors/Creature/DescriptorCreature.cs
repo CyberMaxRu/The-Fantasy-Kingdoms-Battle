@@ -104,7 +104,7 @@ namespace Fantasy_Kingdoms_Battle
                             throw new Exception("Способность " + a.ID + " повторяется в списке способностей героя.");
                     }
 
-                    Inventory.Add(new Item(a, XmlUtils.GetIntegerNotNull(l, "Quantity"), true));
+                    Inventory.Add(new Item(a, XmlUtils.GetIntegerNotNull(l, "Quantity")));
                 }
             }
 

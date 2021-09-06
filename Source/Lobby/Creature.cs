@@ -32,16 +32,16 @@ namespace Fantasy_Kingdoms_Battle
             // Загружаем дефолтный инвентарь
             foreach (Item i in TypeCreature.Inventory)
             {
-                Inventory.Add(new Item(i.Descriptor, i.Quantity, true));
+                Inventory.Add(new Item(i.Descriptor, i.Quantity));
             }
 
             // Берем оружие и доспехи
             if (TypeCreature.WeaponMelee != null)
-                MeleeWeapon = new Item(TypeCreature.WeaponMelee, 1, true);
+                MeleeWeapon = new Item(TypeCreature.WeaponMelee, 1);
             if (TypeCreature.WeaponRange != null)
-                RangeWeapon = new Item(TypeCreature.WeaponRange, 1, true);
+                RangeWeapon = new Item(TypeCreature.WeaponRange, 1);
             if (TypeCreature.Armour != null)
-                Armour = new Item(TypeCreature.Armour, 1, true);
+                Armour = new Item(TypeCreature.Armour, 1);
             FindQuiver();
             
             if (TypeCreature.CategoryCreature != CategoryCreature.Citizen)
