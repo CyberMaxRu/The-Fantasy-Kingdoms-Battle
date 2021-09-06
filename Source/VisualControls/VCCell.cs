@@ -71,16 +71,6 @@ namespace Fantasy_Kingdoms_Battle
             return (Entity != null) && base.PlaySelectSound();
         }
 
-        protected virtual int GetLevel()
-        {
-            return Entity.GetLevel(); 
-        }
-
-        protected virtual int GetQuantity()
-        {
-            return Entity.GetQuantity();
-        }
-
         internal override void Draw(Graphics g)
         {
             if (Visible && !ManualDraw)
@@ -89,8 +79,8 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     ImageIndex = Entity.GetImageIndex();
                     ImageIsEnabled = Entity.GetNormalImage();                        
-                    Quantity = GetQuantity();
-                    Level = GetLevel();
+                    Quantity = Entity.GetQuantity();
+                    Level = Entity.GetLevel();
                     Cost = Entity.GetCost();
 
                     Debug.Assert(BitmapList.Size == 48);
