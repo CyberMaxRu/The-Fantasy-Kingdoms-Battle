@@ -61,6 +61,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Source\Lobby\BigEntity.cs" />
+    <Compile Include="Source\Lobby\ConstructionProduct.cs" />
+    <Compile Include="Source\Lobby\GroupItem.cs" />
     <Compile Include="Source\Lobby\SecondarySkill.cs" />
     <Compile Include="Source\Lobby\SmallEntity.cs" />
     <Compile Include="Source\Lobby\Specialization.cs" />
@@ -69,7 +71,7 @@
     <Compile Include="Source\Descriptors\Creature\DescriptorPerk.cs" />
     <Compile Include="Source\Lobby\Ability.cs" />
     <Compile Include="Source\Descriptors\Creature\DescriptorSmallEntity.cs" />
-    <Compile Include="Source\Descriptors\Item\GroupItem.cs" />
+    <Compile Include="Source\Descriptors\Item\DescriptorGroupItem.cs" />
     <Compile Include="Source\VisualControls\VCIconButton24.cs" />
     <Compile Include="Source\VisualControls\VCImage48.cs" />
     <Compile Include="Source\VisualControls\VCPageButton.cs" />

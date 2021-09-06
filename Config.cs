@@ -130,7 +130,7 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (XmlNode n in xmlDoc.SelectNodes("/GroupItems/GroupItem"))
             {
-                GroupItem.Add(new GroupItem(n));
+                GroupItem.Add(new DescriptorGroupItem(n));
             }
 
             // Загрузка предметов
@@ -243,7 +243,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<DescriptorSecondarySkill> SecondarySkills { get; } = new List<DescriptorSecondarySkill>();
         internal List<StateCreature> StatesCreature { get; } = new List<StateCreature>();
         internal List<KindCreature> KindCreatures { get; } = new List<KindCreature>();
-        internal List<GroupItem> GroupItem { get; } = new List<GroupItem>();
+        internal List<DescriptorGroupItem> GroupItem { get; } = new List<DescriptorGroupItem>();
         internal List<DescriptorItem> Items { get; } = new List<DescriptorItem>();
         internal int MaxLevelSkill { get; }
         internal List<DescriptorCreature> TypeCreatures { get; } = new List<DescriptorCreature>();
@@ -427,9 +427,9 @@ namespace Fantasy_Kingdoms_Battle
             return null;
         }
 
-        internal GroupItem FindGroupItem(string ID, bool mustBeExists = true)
+        internal DescriptorGroupItem FindGroupItem(string ID, bool mustBeExists = true)
         {
-            foreach (GroupItem gi in GroupItem)
+            foreach (DescriptorGroupItem gi in GroupItem)
                 if (gi.ID == ID)
                     return gi;
 

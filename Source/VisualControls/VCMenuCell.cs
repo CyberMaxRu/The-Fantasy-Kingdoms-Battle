@@ -74,10 +74,10 @@ namespace Fantasy_Kingdoms_Battle
             }
 
 
-            if ((research != null) && (research.Research.Entity != null))
+            if ((research != null) && (research.Research.TypeEntity != null))
             {
                 Cost = research.Cost().ToString();
-                ImageIndex = research.Research.Entity.ImageIndex;
+                ImageIndex = research.Research.TypeEntity.ImageIndex;
                 ImageIsEnabled = research.CheckRequirements();
                 BitmapList = Program.formMain.imListObjects48;
 

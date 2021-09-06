@@ -66,10 +66,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void PrepareHint()
         {
-            if (!(Research.Entity is null))
+            if (!(Research.TypeEntity is null))
             {
-                string level = Research.Entity is Ability ta ? "Требуемый уровень: " + ta.TypeAbility.MinUnitLevel.ToString() : "";
-                Program.formMain.formHint.AddStep1Header(Research.Entity.Name, level, Research.Entity.Description);
+                string level = Research.TypeEntity is DescriptorAbility ta ? "Требуемый уровень: " + ta.MinUnitLevel.ToString() : "";
+                Program.formMain.formHint.AddStep1Header(Research.TypeEntity.Name, level, Research.TypeEntity.Description);
                 Program.formMain.formHint.AddStep3Requirement(GetTextRequirements());
                 Program.formMain.formHint.AddStep4Gold(Cost(), Cost() <= ObjectOfMap.Player.Gold);
             }

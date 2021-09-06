@@ -83,7 +83,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int Gold { get => gold; set { Debug.Assert(TypeConstruction.HasTreasury); gold = value; } }
         internal List<Hero> Heroes { get; } = new List<Hero>();
         internal int ResearchesAvailabled { get; private set; }// Сколько еще исследований доступно на этом ходу
-        internal List<Entity> Items { get; } = new List<Entity>();// Товары, доступные в строении
+        internal List<ConstructionProduct> Items { get; } = new List<ConstructionProduct>();// Товары, доступные в строении
         internal List<Item> Warehouse { get; } = new List<Item>();// Склад здания
         internal Player Player { get; }
         internal List<PlayerCellMenu> Researches { get; } = new List<PlayerCellMenu>();
@@ -118,8 +118,22 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(ResearchesAvailabled > 0);
 
                 ResearchesAvailabled--;
-                Debug.Assert(research.Research.Entity != null);
-                Items.Add(research.Research.Entity);
+
+                if (research.Research.TypeEntity != null)
+                {
+                    if (research.Research.TypeEntity is DescriptorItem di)
+                        Items.Add(new ConstructionProduct(di));
+                    else if (research.Research.TypeEntity is DescriptorAbility da)
+                        Items.Add(new ConstructionProduct(da));
+                    else if (research.Research.TypeEntity is DescriptorGroupItem dgi)
+                        Items.Add(new ConstructionProduct(dgi));
+                    else
+                        throw new Exception("неизвестный тип");
+                }
+                else
+                {
+                    Debug.Assert(research.Research.GroupItems != null);
+                }
             }
             else
             {
@@ -474,7 +488,7 @@ namespace Fantasy_Kingdoms_Battle
                 return false;
 
             // Проверяем, что еще можно делать исследования
-            if (research.Research.Entity != null)
+            if (research.Research.TypeEntity != null)
                 if (!CanResearch())
                     return false;
 
@@ -502,7 +516,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     Player.TextRequirements(research.Research.Requirements, list);
 
-                    if (research.Research.Entity != null)
+                    if (research.Research.TypeEntity != null)
                     {
                         if (ResearchesAvailabled > 0)
                             list.Add(new TextRequirement(true, $"Доступно к изучению: {ResearchesAvailabled}"));
