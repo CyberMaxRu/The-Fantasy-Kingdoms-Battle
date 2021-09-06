@@ -38,7 +38,7 @@ namespace Fantasy_Kingdoms_Battle
 
         // ImageList'ы
         internal readonly BitmapList imListObjects128;
-        internal readonly BitmapList imListObjects48;
+        internal BitmapList imListObjects48 { get; }
         internal readonly BitmapList ilGui16;
         internal readonly BitmapList ilGui24;
         internal readonly BitmapList ilParameters;
