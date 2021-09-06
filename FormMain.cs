@@ -516,11 +516,11 @@ namespace Fantasy_Kingdoms_Battle
                 // Создаем панели игроков
                 panelPlayers = new VisualControl(layerGame, 0, Config.GridSize);
 
-                PanelPlayer pp;
+                CellPlayer pp;
                 int nextLeftPanelPlayer = 0;
                 for (int i = 0; i < Config.TypeLobbies[0].QuantityPlayers; i++)
                 {
-                    pp = new PanelPlayer(panelPlayers, nextLeftPanelPlayer);
+                    pp = new CellPlayer(panelPlayers, nextLeftPanelPlayer);
                     nextLeftPanelPlayer = pp.NextLeft();
                 }
 
@@ -1418,8 +1418,8 @@ namespace Fantasy_Kingdoms_Battle
 
             for (int i = 0; i < panelPlayers.Controls.Count; i++)
             {
-                Debug.Assert(panelPlayers.Controls[i] is PanelPlayer);
-                ((PanelPlayer)panelPlayers.Controls[i]).Entity = lobby.Players[i];
+                Debug.Assert(panelPlayers.Controls[i] is CellPlayer);
+                ((CellPlayer)panelPlayers.Controls[i]).Entity = lobby.Players[i];
             }
 
             if (currentLayer != layerGame)
