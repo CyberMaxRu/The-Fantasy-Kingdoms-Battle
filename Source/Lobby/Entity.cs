@@ -19,10 +19,10 @@ namespace Fantasy_Kingdoms_Battle
 
         // Методы для потомков для поддержки работы с ячейкой
         internal abstract int GetImageIndex();
-        internal abstract bool GetNormalImage();
-        internal abstract int GetLevel();
-        internal abstract int GetQuantity();
-        internal abstract string GetCost();
+        internal virtual bool GetNormalImage() => true;
+        internal virtual int GetLevel() => 0;
+        internal virtual int GetQuantity() => 0;
+        internal virtual string GetCost() => "";
         internal abstract void PrepareHint();
 
         internal virtual void Click(VCCell pe)
