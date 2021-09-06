@@ -33,7 +33,7 @@ namespace Fantasy_Kingdoms_Battle
 			set
 			{
 				Debug.Assert(((entity == null) && (value != null)) || ((entity != null) && (value == null)),
-					"Попытка поставить " + value?.ID + " на " + entity?.ID);
+					"Попытка поставить одно существо на другое.");
 				entity = value;
 			}
 		}

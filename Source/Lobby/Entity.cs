@@ -17,12 +17,6 @@ namespace Fantasy_Kingdoms_Battle
         {
         }
 
-        internal string ID { get; }
-        internal string Name { get; }
-        internal string Description { get; set; }
-        internal int ImageIndex { get; }
-        internal int Cost { get; }
-
         // Методы для потомков для поддержки работы с ячейкой
         internal abstract int GetImageIndex();
         internal abstract bool GetNormalImage();
