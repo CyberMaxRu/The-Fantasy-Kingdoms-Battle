@@ -19,32 +19,13 @@ namespace Fantasy_Kingdoms_Battle
         internal Creature Creature { get; }
         internal DescriptorAbility TypeAbility { get; }
 
-        internal override void Click(VCCell pe)
-        {
-            
-        }
-
-        internal override int GetImageIndex()
-        {
-            return TypeAbility.ImageIndex;
-        }
-
-        internal override int GetLevel()
-        {
-            return TypeAbility.MinUnitLevel;
-        }
-
-        internal override bool GetNormalImage()
-        {
-            return Creature.Level >= TypeAbility.MinUnitLevel;
-        }
+        internal override int GetImageIndex() => TypeAbility.ImageIndex;
+        internal override int GetLevel() => TypeAbility.MinUnitLevel;
+        internal override bool GetNormalImage() => Creature.Level >= TypeAbility.MinUnitLevel;
 
         internal override void PrepareHint()
         {
             Program.formMain.formHint.AddStep1Header(TypeAbility.Name, "", TypeAbility.Description);
-            // Здесь добавить требование к уровню
-            //$"Уровень: {TypeAbility.MinUnitLevel}"
-            //Program.formMain.formHint.
         }
     }
 }
