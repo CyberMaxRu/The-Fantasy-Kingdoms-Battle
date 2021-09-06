@@ -57,6 +57,8 @@ namespace Fantasy_Kingdoms_Battle
             separator.Width = lblName.Width;
 
             base.ArrangeControls();
+
+            pageControl.Width = Width - (pageControl.ShiftX * 2);
         }
 
         // Используемые потомками методы
