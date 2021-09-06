@@ -88,7 +88,7 @@
     <Compile Include="M2Font.cs" />
     <Compile Include="Source\Panels\PanelCreatureInfo.cs" />
     <Compile Include="Source\Panels\PanelMonsterInfo.cs" />
-    <Compile Include="Source\Lobby\DescriptorPlayer.cs" />
+    <Compile Include="Source\Descriptors\DescriptorPlayer.cs" />
     <Compile Include="PlayerMusic.cs" />
     <Compile Include="Source\Lobby\ComputerPlayer.cs" />
     <Compile Include="Source\Forms\WindowAdvice.cs" />
