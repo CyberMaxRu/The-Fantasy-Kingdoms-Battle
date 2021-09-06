@@ -108,7 +108,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Click += ImgLair_Click;
         }
-        internal PlayerConstruction Construction { get; private set; }
+        internal Construction Construction { get; private set; }
 
         protected override void ValidateRectangle()
         {
@@ -369,7 +369,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.SetEntity(po);
 
-            Construction = po as PlayerConstruction;
+            Construction = po as Construction;
             SwitchStyle();
 
             Debug.Assert(Construction.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);

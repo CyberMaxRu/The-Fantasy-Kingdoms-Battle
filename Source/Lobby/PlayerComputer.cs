@@ -66,7 +66,7 @@ namespace Fantasy_Kingdoms_Battle
             System.Threading.Thread.Sleep(200);
             System.Windows.Forms.Application.DoEvents();
 
-            void HireHeroes(PlayerConstruction bp, int quantity)
+            void HireHeroes(Construction bp, int quantity)
             {
                 if (bp.Heroes.Count < bp.MaxHeroes())
                 {

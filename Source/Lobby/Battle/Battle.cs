@@ -40,7 +40,7 @@ namespace Fantasy_Kingdoms_Battle
             Battlefield = new Battlefield(SizeBattlefield.Width, SizeBattlefield.Height);
 
             // Составляем списки существ
-            if (player2 is PlayerConstruction pl)
+            if (player2 is Construction pl)
             {
                 foreach (Hero ph in pl.listAttackedHero)
                 {
@@ -255,7 +255,7 @@ namespace Fantasy_Kingdoms_Battle
             Player2.BattleCalced = true;
 
             // Если вторая сторона - логово, удаляем убитых монстров
-            if (Player2 is PlayerConstruction pl)
+            if (Player2 is Construction pl)
             {
                 foreach (HeroInBattle hb in DeadHeroes)
                 {

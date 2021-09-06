@@ -16,7 +16,7 @@ namespace Fantasy_Kingdoms_Battle
             ManualDraw = true;
         }
 
-        internal PlayerConstruction Lair { get => Entity as PlayerConstruction; }
+        internal Construction Lair { get => Entity as Construction; }
         internal bool ShowFlag { get; set; } = true;
 
         internal override void DoClick()

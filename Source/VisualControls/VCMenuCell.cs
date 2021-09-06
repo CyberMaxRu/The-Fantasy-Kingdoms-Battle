@@ -89,7 +89,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (research.ConstructionForBuild != null)
                 {
-                    PlayerConstruction pc = research.ObjectOfMap.Player.GetPlayerConstruction(research.Research.TypeConstruction);
+                    Construction pc = research.ObjectOfMap.Player.GetPlayerConstruction(research.Research.TypeConstruction);
                     Debug.Assert(!(pc is null));
                     Cost = pc.CostBuyOrUpgrade().ToString();
                     ImageIndex = pc.TypeConstruction.ImageIndex;

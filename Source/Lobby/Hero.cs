@@ -12,7 +12,7 @@ namespace Fantasy_Kingdoms_Battle
     // Класс героя игрока
     internal sealed class Hero : Creature
     {
-        public Hero(PlayerConstruction pb, BattleParticipant bp) : base(pb.TypeConstruction.TrainedHero, bp)
+        public Hero(Construction pb, BattleParticipant bp) : base(pb.TypeConstruction.TrainedHero, bp)
         {
             Construction = pb;
             DayOfHire = Player.Lobby.Day;
@@ -28,7 +28,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        public Hero(PlayerConstruction pb, BattleParticipant bp, DescriptorCreature th) : base(th, bp)
+        public Hero(Construction pb, BattleParticipant bp, DescriptorCreature th) : base(th, bp)
         {
             Construction = pb;
             DayOfHire = Player.Lobby.Day;
@@ -36,14 +36,14 @@ namespace Fantasy_Kingdoms_Battle
             FullName = TypeHero.Name;
         }
 
-        internal PlayerConstruction Construction { get; }// Здание, которому принадлежит герой
+        internal Construction Construction { get; }// Здание, которому принадлежит герой
         internal Player Player => Construction.Player;// Игрок, которому принадлежит герой
         internal DescriptorCreature TypeHero { get; } // Класс героя
         internal string FullName { get; }// Полное имя
         internal int Gold { get; private set; }// Количество золота у героя
 
         // Выполнение флагов
-        internal PlayerConstruction TargetByFlag { get; set; }// Логово флага, который выполняется
+        internal Construction TargetByFlag { get; set; }// Логово флага, который выполняется
 
         // Статистика за лобби
         internal int DayOfHire { get; }// На каком дне нанят

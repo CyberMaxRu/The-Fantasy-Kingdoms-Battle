@@ -1230,7 +1230,7 @@ namespace Fantasy_Kingdoms_Battle
             //panelPlayers.ArrangeControls();
 
             // Показываем сооружения
-            foreach (PlayerConstruction pb in lobby.CurrentPlayer.Constructions)
+            foreach (Construction pb in lobby.CurrentPlayer.Constructions)
             {
                 if (pb.TypeConstruction.IsInternalConstruction)
                     pb.TypeConstruction.Panel.Entity = pb;
@@ -1476,7 +1476,7 @@ namespace Fantasy_Kingdoms_Battle
             ClearMenu();
 
             // Рисуем содержимое ячеек
-            if ((selectedPlayerObject != null) && (selectedPlayerObject is PlayerConstruction pb) && pb.ShowMenuForPlayer())
+            if ((selectedPlayerObject != null) && (selectedPlayerObject is Construction pb) && pb.ShowMenuForPlayer())
             {
                 Debug.Assert(pb.TypeConstruction != null);
 
@@ -2032,7 +2032,7 @@ namespace Fantasy_Kingdoms_Battle
             // Сортируем логова и переназначаем ссылки на них у кнопок
             int n = 0;
             int left = 0;
-            foreach (PlayerConstruction pl in lobby.CurrentPlayer.ListFlags)
+            foreach (Construction pl in lobby.CurrentPlayer.ListFlags)
             {
                 listBtnTargetLair[n].ShiftX = left;
                 listBtnTargetLair[n].Entity = pl;
