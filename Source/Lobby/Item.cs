@@ -17,18 +17,18 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(i != null);
             Debug.Assert(quantity > 0);
 
-            Item = i;
+            Descriptor = i;
             Quantity = quantity;
             OwnerIsPlayer = ownerIsPlayer;
         }
 
-        internal DescriptorItem Item { get; }
+        internal DescriptorItem Descriptor { get; }
         internal int Quantity { get; set; }// Количество предметов
         internal bool OwnerIsPlayer { get; set; }
 
         internal override int GetImageIndex()
         {
-            return Item.ImageIndex; 
+            return Descriptor.ImageIndex; 
         }
 
         internal override bool GetNormalImage()
@@ -53,7 +53,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PrepareHint()
         {
-            Program.formMain.formHint.AddStep1Header(Item.Name, "", Item.Description);
+            Program.formMain.formHint.AddStep1Header(Descriptor.Name, "", Descriptor.Description);
             Program.formMain.formHint.AddStep6PlayerItem(this);
         }
     }

@@ -428,15 +428,15 @@ namespace Fantasy_Kingdoms_Battle
             switch (State)
             {
                 case StateHeroInBattle.MeleeAttack:
-                    int th = PlayerHero.MeleeWeapon != null ? PlayerHero.MeleeWeapon.Item.TimeHit : 50;
+                    int th = PlayerHero.MeleeWeapon != null ? PlayerHero.MeleeWeapon.Descriptor.TimeHit : 50;
                     timeAttack = (int)(th / 100.00 * FormMain.Config.StepsInSecond);
                     break;
                 case StateHeroInBattle.RangeAttack:
                     // Костыль для магов
                     if (PlayerHero.RangeWeapon != null)
-                        timeAttack = (int)(PlayerHero.RangeWeapon.Item.TimeHit / 100.00 * FormMain.Config.StepsInSecond);
+                        timeAttack = (int)(PlayerHero.RangeWeapon.Descriptor.TimeHit / 100.00 * FormMain.Config.StepsInSecond);
                     else
-                        timeAttack = (int)(PlayerHero.MeleeWeapon.Item.TimeHit / 100.00 * FormMain.Config.StepsInSecond);
+                        timeAttack = (int)(PlayerHero.MeleeWeapon.Descriptor.TimeHit / 100.00 * FormMain.Config.StepsInSecond);
                     break;
                 default:
                     throw new Exception("Неизвестное состояние.");

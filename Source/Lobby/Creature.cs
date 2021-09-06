@@ -32,7 +32,7 @@ namespace Fantasy_Kingdoms_Battle
             // Загружаем дефолтный инвентарь
             foreach (Item i in TypeCreature.Inventory)
             {
-                Inventory.Add(new Item(i.Item, i.Quantity, true));
+                Inventory.Add(new Item(i.Descriptor, i.Quantity, true));
             }
 
             // Берем оружие и доспехи
@@ -148,7 +148,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int GetQuantityArrows()
         {
-            return Quiver is null ? 0 : Quiver.Item.QuantityShots;
+            return Quiver is null ? 0 : Quiver.Descriptor.QuantityShots;
         }
 
         internal void SetIsDead()
@@ -179,7 +179,7 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (Item i in Inventory)
             {
-                if (i.Item.CategoryItem == CategoryItem.Quiver)
+                if (i.Descriptor.CategoryItem == CategoryItem.Quiver)
                 {
                     Debug.Assert(Quiver == null);// Не может быть 2 колчана
                     Quiver = i;

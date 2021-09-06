@@ -78,7 +78,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             // Сначала ищем слот, заполненный таким же предметом
             for (int i = 0; i < Inventory.Count; i++)
-                if (Inventory[i].Item == item)
+                if (Inventory[i].Descriptor == item)
                     return i;
 
             return -1;
@@ -104,7 +104,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(quantity > 0);
             Debug.Assert(pi.Quantity >= quantity);
 
-            int toCell = FindCellForItem(pi.Item);
+            int toCell = FindCellForItem(pi.Descriptor);
             if (toCell == -1)
                 return;
 
@@ -213,11 +213,11 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(MeleeWeapon != null);
             Debug.Assert(Armour != null);
 
-            ParametersWithAmmunition.MaxMeleeDamage = MeleeWeapon.Item.DamageMelee + (MeleeWeapon.Item.DamageMelee * ParametersWithAmmunition.Strength / 100);
+            ParametersWithAmmunition.MaxMeleeDamage = MeleeWeapon.Descriptor.DamageMelee + (MeleeWeapon.Descriptor.DamageMelee * ParametersWithAmmunition.Strength / 100);
             ParametersWithAmmunition.MinMeleeDamage = ParametersWithAmmunition.MaxMeleeDamage / 2;
             if (RangeWeapon != null)
             {
-                ParametersWithAmmunition.MaxArcherDamage = RangeWeapon.Item.DamageRange + (RangeWeapon.Item.DamageRange * ParametersWithAmmunition.Strength / 100);
+                ParametersWithAmmunition.MaxArcherDamage = RangeWeapon.Descriptor.DamageRange + (RangeWeapon.Descriptor.DamageRange * ParametersWithAmmunition.Strength / 100);
                 ParametersWithAmmunition.MinArcherDamage = ParametersWithAmmunition.MaxArcherDamage / 2;
             }
             else
@@ -229,9 +229,9 @@ namespace Fantasy_Kingdoms_Battle
                             ParametersWithAmmunition.MagicDamage = (ParametersWithAmmunition.Magic / 5) * Weapon.DamageMagic + Level;
                         else
                             ParametersWithAmmunition.MagicDamage = 0;*/
-            ParametersWithAmmunition.DefenseMelee = Armour.Item.DefenseMelee;
-            ParametersWithAmmunition.DefenseArcher = Armour.Item.DefenseRange;
-            ParametersWithAmmunition.DefenseMagic = Armour.Item.DefenseMagic;
+            ParametersWithAmmunition.DefenseMelee = Armour.Descriptor.DefenseMelee;
+            ParametersWithAmmunition.DefenseArcher = Armour.Descriptor.DefenseRange;
+            ParametersWithAmmunition.DefenseMagic = Armour.Descriptor.DefenseMagic;
 
             //Debug.Assert((ParametersWithAmmunition.MaxMeleeDamage > 0) || (ParametersWithAmmunition.MaxArcherDamage > 0) || (ParametersWithAmmunition.MagicDamage > 0));
         }

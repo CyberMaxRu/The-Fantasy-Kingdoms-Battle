@@ -37,7 +37,7 @@ namespace Fantasy_Kingdoms_Battle
 
         public Player(Lobby lobby, DescriptorPlayer player, int playerIndex) : base(lobby)
         {
-            Player = player;
+            Descriptor = player;
             PlayerIndex = playerIndex;
             PositionInLobby = playerIndex + 1;
 
@@ -82,7 +82,7 @@ namespace Fantasy_Kingdoms_Battle
 
             //
             Gold = Lobby.TypeLobby.Gold;
-            if (Player.TypePlayer == TypePlayer.Computer)
+            if (Descriptor.TypePlayer == TypePlayer.Computer)
                 Gold = 100_000;
 
             Castle = GetPlayerConstruction(FormMain.Config.FindTypeConstruction(FormMain.Config.IDConstructionCastle));
@@ -361,7 +361,7 @@ namespace Fantasy_Kingdoms_Battle
                 pb.ValidateHeroes();
         }
 
-        internal DescriptorPlayer Player { get; }
+        internal DescriptorPlayer Descriptor { get; }
         internal int PlayerIndex { get; }
         internal int PositionInLobby { get; set; }
         internal bool Initialization { get; }
@@ -451,7 +451,7 @@ namespace Fantasy_Kingdoms_Battle
 
             SetTaskForHeroes();
 
-            if (Player.TypePlayer == TypePlayer.Human)
+            if (Descriptor.TypePlayer == TypePlayer.Human)
                 Program.formMain.ListHeroesChanged();
         }
 
@@ -483,7 +483,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             for (int i = 0; i < Warehouse.Length; i++)
             {
-                if ((Warehouse[i] != null) && (Warehouse[i].Item == item))
+                if ((Warehouse[i] != null) && (Warehouse[i].Descriptor == item))
                     return i;
             }
 
@@ -511,7 +511,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(pi.Quantity > 0);
 
-            int numberCell = FindSlotForItem(pi.Item);
+            int numberCell = FindSlotForItem(pi.Descriptor);
             if (numberCell >= 0)
                 AddItem(pi, numberCell);
         }
@@ -522,7 +522,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Debug.Assert(Warehouse[numberCell].Quantity > 0);
 
-                if (Warehouse[numberCell].Item == pi.Item)
+                if (Warehouse[numberCell].Descriptor == pi.Descriptor)
                 {
                     Warehouse[numberCell].Quantity += pi.Quantity;
                     pi.Quantity = 0;
@@ -530,7 +530,7 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
             {
-                Warehouse[numberCell] = new Item(pi.Item, pi.Quantity, true);
+                Warehouse[numberCell] = new Item(pi.Descriptor, pi.Quantity, true);
                 pi.Quantity = 0;
             }
         }
@@ -636,7 +636,7 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
             {
-                pi = new Item(Warehouse[fromCell].Item, quantity, true);
+                pi = new Item(Warehouse[fromCell].Descriptor, quantity, true);
                 Warehouse[fromCell].Quantity -= quantity;
             }
 
@@ -675,7 +675,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override void PrepareHint()
         {
             Program.formMain.formHint.AddStep1Header(
-                Player.Name, $"{PositionInLobby} место",
+                Descriptor.Name, $"{PositionInLobby} место",
                 "Уровень Замка: " + LevelCastle.ToString() + Environment.NewLine
                     + "Героев: " + QuantityHeroes.ToString() + Environment.NewLine
                     + " " + Environment.NewLine
@@ -1095,10 +1095,10 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         //
-        internal override string GetName() => Player.Name;
+        internal override string GetName() => Descriptor.Name;
         internal override Player GetPlayer() => this;
-        internal override TypePlayer GetTypePlayer() => Player.TypePlayer;
-        internal override int GetImageIndexAvatar() => Player.ImageIndex;
+        internal override TypePlayer GetTypePlayer() => Descriptor.TypePlayer;
+        internal override int GetImageIndexAvatar() => Descriptor.ImageIndex;
 
         // Реализация интерфейса
         internal override int GetImageIndex()

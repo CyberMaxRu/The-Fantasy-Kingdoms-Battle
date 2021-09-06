@@ -27,7 +27,7 @@ namespace Fantasy_Kingdoms_Battle
             double distance = Utils.DistanceBetweenPoints(SourceTile.Coord, DestTile.Coord);
             // Костыль для магов
             if (hero.PlayerHero.RangeWeapon != null)
-                StepsToTarget = (int)(distance / hero.PlayerHero.RangeWeapon.Item.VelocityMissile * FormMain.Config.StepsInSecond);
+                StepsToTarget = (int)(distance / hero.PlayerHero.RangeWeapon.Descriptor.VelocityMissile * FormMain.Config.StepsInSecond);
             else
                 StepsToTarget = (int)(distance / 5 * FormMain.Config.StepsInSecond);
 

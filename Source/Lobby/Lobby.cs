@@ -196,9 +196,9 @@ namespace Fantasy_Kingdoms_Battle
                 oppo.Opponent = p;
 
                 if (!opponents.Remove(p))
-                    throw new Exception("Не смог удалить элемент " + p.Player.Name + " из списка оппонентов");
+                    throw new Exception("Не смог удалить элемент " + p.Descriptor.Name + " из списка оппонентов");
                 if (!opponents.Remove(p.Opponent))
-                    throw new Exception("Не смог удалить элемент " + p.Opponent.Player.Name + " из списка оппонентов");
+                    throw new Exception("Не смог удалить элемент " + p.Opponent.Descriptor.Name + " из списка оппонентов");
 
                 if (opponents.Count == 0)
                     break;
@@ -542,7 +542,7 @@ namespace Fantasy_Kingdoms_Battle
             foreach (Player ph1 in Players)
                 foreach (Player ph2 in Players)
                     if (ph1 != ph2)
-                        if (ph1.Player.Name == ph2.Player.Name)
+                        if (ph1.Descriptor.Name == ph2.Descriptor.Name)
                         {
                             return false;
                         }

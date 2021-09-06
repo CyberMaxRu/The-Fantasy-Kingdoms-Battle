@@ -1165,7 +1165,7 @@ namespace Fantasy_Kingdoms_Battle
                         il.Visible = false;
                 }
 
-                ShowNamePlayer(lobby.CurrentPlayer.Player.Name);
+                ShowNamePlayer(lobby.CurrentPlayer.Descriptor.Name);
             }
 
             ShowFrame(true);
