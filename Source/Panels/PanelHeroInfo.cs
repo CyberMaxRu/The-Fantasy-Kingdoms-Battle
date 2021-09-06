@@ -83,7 +83,7 @@ namespace Fantasy_Kingdoms_Battle
             }*/
         }
 
-        internal PlayerHero Hero { get => Entity as PlayerHero; }
+        internal Hero Hero { get => Entity as Hero; }
 
         private void BtnDismiss_Click(object sender, EventArgs e)
         {

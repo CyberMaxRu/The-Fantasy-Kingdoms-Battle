@@ -172,7 +172,7 @@
     <Compile Include="Source\Panels\PanelHeroInfo.cs" />
     <Compile Include="Source\Lobby\HeroParameters.cs" />
     <Compile Include="Source\Lobby\PlayerConstruction.cs" />
-    <Compile Include="Source\Lobby\PlayerHero.cs" />
+    <Compile Include="Source\Lobby\Hero.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Source\Descriptors\Item\DescriptorItem.cs" />

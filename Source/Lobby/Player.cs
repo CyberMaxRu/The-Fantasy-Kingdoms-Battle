@@ -91,10 +91,10 @@ namespace Fantasy_Kingdoms_Battle
             LevelGreatness = 1;
             PointGreatnessForNextLevel = 100;
 
-            PlayerHero king = Castle.HireHero(FormMain.Config.FindTypeCreature("King"));
-            PlayerHero advisor = Castle.HireHero(FormMain.Config.FindTypeCreature("Advisor"));
-            PlayerHero captain = Castle.HireHero(FormMain.Config.FindTypeCreature("Captain"));
-            PlayerHero treasurer = Castle.HireHero(FormMain.Config.FindTypeCreature("Treasurer"));
+            Hero king = Castle.HireHero(FormMain.Config.FindTypeCreature("King"));
+            Hero advisor = Castle.HireHero(FormMain.Config.FindTypeCreature("Advisor"));
+            Hero captain = Castle.HireHero(FormMain.Config.FindTypeCreature("Captain"));
+            Hero treasurer = Castle.HireHero(FormMain.Config.FindTypeCreature("Treasurer"));
 
             //
             /*AddItem(new PlayerItem(FormMain.Config.FindItem("PotionOfHealth"), 10, true));
@@ -370,7 +370,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int PointGreatnessForNextLevel { get; }// Очков величия до следующего уровня
         internal List<PlayerConstruction> Constructions { get; } = new List<PlayerConstruction>();
         internal int LevelCastle => Castle.Level;
-        internal List<PlayerHero> AllHeroes { get; } = new List<PlayerHero>();
+        internal List<Hero> AllHeroes { get; } = new List<Hero>();
         internal int Gold { get => gold; private set { gold = value; if (Castle != null) Castle.Gold = gold; } }// Текущее количество золота
         internal int GoldCollected { get; private set; }// Собрано золота за игру
         internal int GreatnessCollected { get; private set; }// Собрано величия за игру
@@ -440,7 +440,7 @@ namespace Fantasy_Kingdoms_Battle
             throw new Exception("У игрока " + GetName() + " сооружение " + b.ID + " не найдено.");
         }
 
-        internal void AddHero(PlayerHero ph)
+        internal void AddHero(Hero ph)
         {
             Debug.Assert(CombatHeroes.IndexOf(ph) == -1);
             Debug.Assert(AllHeroes.IndexOf(ph) == -1);
@@ -559,7 +559,7 @@ namespace Fantasy_Kingdoms_Battle
 
         }
 
-        internal void GiveItemToHero(int fromSlot, PlayerHero ph, int quantity, int toSlot)
+        internal void GiveItemToHero(int fromSlot, Hero ph, int quantity, int toSlot)
         {
             Debug.Assert(ph.Construction.Player == this);
             Debug.Assert(Warehouse[fromSlot] != null);
@@ -570,7 +570,7 @@ namespace Fantasy_Kingdoms_Battle
                 Warehouse[fromSlot] = null;
         }
 
-        internal void GiveItemToHero(int fromSlot, PlayerHero ph, int quantity)
+        internal void GiveItemToHero(int fromSlot, Hero ph, int quantity)
         {
             Debug.Assert(ph.Construction.Player == this);
             Debug.Assert(Warehouse[fromSlot] != null);
@@ -581,7 +581,7 @@ namespace Fantasy_Kingdoms_Battle
                 Warehouse[fromSlot] = null;
         }
 
-        internal bool GetItemFromHero(PlayerHero ph, int fromSlot)
+        internal bool GetItemFromHero(Hero ph, int fromSlot)
         {
             /*Debug.Assert(ph.Construction.Player == this);
             Debug.Assert(ph.Slots[fromSlot] != null);
@@ -595,7 +595,7 @@ namespace Fantasy_Kingdoms_Battle
             GetItemFromHero(ph, fromSlot, toSlot);*/
             return true;
         }
-        internal void GetItemFromHero(PlayerHero ph, int fromSlot, int toSlot)
+        internal void GetItemFromHero(Hero ph, int fromSlot, int toSlot)
         {
             /*Debug.Assert(ph.Construction.Player == this);
             Debug.Assert(ph.Slots[fromSlot] != null);
@@ -689,10 +689,10 @@ namespace Fantasy_Kingdoms_Battle
             if (CombatHeroes.Count == 0)
                 return;
 
-            List<PlayerHero> freeHeroes = new List<PlayerHero>();// Список свободных героев
+            List<Hero> freeHeroes = new List<Hero>();// Список свободных героев
 
             // Сначала сбрасываем всем состояние
-            foreach (PlayerHero ph in CombatHeroes)
+            foreach (Hero ph in CombatHeroes)
             {
                 if ((ph.StateCreature.ID == NameStateCreature.DoAttackFlag.ToString())
                     || (ph.StateCreature.ID == NameStateCreature.DoScoutFlag.ToString())
@@ -719,7 +719,7 @@ namespace Fantasy_Kingdoms_Battle
                 int takeHeroes = Math.Min(Lobby.TypeLobby.MaxHeroesForBattle, freeHeroes.Count);
                 for (int i = 0; i < takeHeroes; i++)
                 {
-                    PlayerHero ph = CombatHeroes[i] as PlayerHero;
+                    Hero ph = CombatHeroes[i] as Hero;
                     freeHeroes.Remove(ph);
                     FlagAttackToOpponent.AddAttackingHero(ph);
                     ph.SetState(NameStateCreature.BattleWithPlayer);

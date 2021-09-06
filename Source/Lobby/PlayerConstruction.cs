@@ -81,7 +81,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int Level { get; private set; }
         internal bool BuildedOrUpgraded { get; private set; }
         internal int Gold { get => gold; set { Debug.Assert(TypeConstruction.HasTreasury); gold = value; } }
-        internal List<PlayerHero> Heroes { get; } = new List<PlayerHero>();
+        internal List<Hero> Heroes { get; } = new List<Hero>();
         internal int ResearchesAvailabled { get; private set; }// Сколько еще исследований доступно на этом ходу
         internal List<Entity> Items { get; } = new List<Entity>();// Товары, доступные в строении
         internal List<PlayerItem> Warehouse { get; } = new List<PlayerItem>();// Склад здания
@@ -102,7 +102,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int DaySetFlag { get; private set; }// День установки флага
         internal int SpendedGoldForSetFlag { get; private set; }// Сколько золота было потрачено на установку флага
         internal PriorityExecution PriorityFlag { get; private set; } = PriorityExecution.None;// Приоритет разведки/атаки
-        internal List<PlayerHero> listAttackedHero { get; } = new List<PlayerHero>();// Список героев, откликнувшихся на флаг
+        internal List<Hero> listAttackedHero { get; } = new List<Hero>();// Список героев, откликнувшихся на флаг
 
         internal void ResearchCompleted(PlayerCellMenu research)
         {
@@ -314,13 +314,13 @@ namespace Fantasy_Kingdoms_Battle
         }
 
 
-        internal PlayerHero HireHero()
+        internal Hero HireHero()
         {
             Debug.Assert(Heroes.Count < MaxHeroes());
             Debug.Assert(Player.CombatHeroes.Count < Player.Lobby.TypeLobby.MaxHeroes);
             //Debug.Assert(Player.Gold >= Construction.TrainedHero.Cost);
 
-            PlayerHero h = new PlayerHero(this, Player);
+            Hero h = new Hero(this, Player);
 
             if (TypeConstruction.TrainedHero.Cost > 0)
             {
@@ -334,13 +334,13 @@ namespace Fantasy_Kingdoms_Battle
             return h;
         }
 
-        internal PlayerHero HireHero(DescriptorCreature th)
+        internal Hero HireHero(DescriptorCreature th)
         {
             Debug.Assert(Heroes.Count < MaxHeroes());
             Debug.Assert(Player.CombatHeroes.Count < Player.Lobby.TypeLobby.MaxHeroes);
             //Debug.Assert(Player.Gold >= TypeConstruction.TrainedHero.Cost);
 
-            PlayerHero h = new PlayerHero(this, Player, th);
+            Hero h = new Hero(this, Player, th);
 
             if (th.CategoryCreature != CategoryCreature.Citizen)
             {
@@ -357,7 +357,7 @@ namespace Fantasy_Kingdoms_Battle
             return h;
         }
 
-        internal void AddHero(PlayerHero ph)
+        internal void AddHero(Hero ph)
         {
             Debug.Assert(Heroes.Count < MaxHeroes());
             Debug.Assert(Player.CombatHeroes.Count < Player.Lobby.TypeLobby.MaxHeroes);
@@ -778,7 +778,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddAttackingHero(PlayerHero ph)
+        internal void AddAttackingHero(Hero ph)
         {
             Debug.Assert(ph != null);
             Debug.Assert(listAttackedHero.IndexOf(ph) == -1);
@@ -792,7 +792,7 @@ namespace Fantasy_Kingdoms_Battle
             ph.SetState(ph.StateForFlag(TypeFlag));
         }
 
-        internal void RemoveAttackingHero(PlayerHero ph)
+        internal void RemoveAttackingHero(Hero ph)
         {
             Debug.Assert(listAttackedHero.IndexOf(ph) != -1);
             Debug.Assert(ph.TargetByFlag == this);
@@ -923,7 +923,7 @@ namespace Fantasy_Kingdoms_Battle
                 int delta = SpendedGoldForSetFlag - goldPerHero * listAttackedHero.Count;
                 Debug.Assert(goldPerHero * listAttackedHero.Count + delta == SpendedGoldForSetFlag);
 
-                foreach (PlayerHero h in listAttackedHero)
+                foreach (Hero h in listAttackedHero)
                     h.AddGold(goldPerHero);
 
                 // Остаток отдаем первому герою
@@ -958,7 +958,7 @@ namespace Fantasy_Kingdoms_Battle
             else
             {
                 string list = "";
-                foreach (PlayerHero h in listAttackedHero)
+                foreach (Hero h in listAttackedHero)
                 {
                     list += (list != "" ? Environment.NewLine : "") + $"{h.GetNameHero()}, {h.Level} ур.";
                 }
@@ -998,7 +998,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Heroes.Count > 0);
 
             string list = "";
-            foreach (PlayerHero h in Heroes)
+            foreach (Hero h in Heroes)
             {
                 list += (list != "" ? Environment.NewLine : "") + $"{h.GetNameHero()}, {h.Level} ур.";
             }

@@ -42,7 +42,7 @@ namespace Fantasy_Kingdoms_Battle
             // Составляем списки существ
             if (player2 is PlayerConstruction pl)
             {
-                foreach (PlayerHero ph in pl.listAttackedHero)
+                foreach (Hero ph in pl.listAttackedHero)
                 {
                     Debug.Assert(ph.IsLive);
                     heroesPlayer1.Add(new HeroInBattle(this, ph, showForPlayer));

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс героя игрока
-    internal sealed class PlayerHero : Creature
+    internal sealed class Hero : Creature
     {
-        public PlayerHero(PlayerConstruction pb, BattleParticipant bp) : base(pb.TypeConstruction.TrainedHero, bp)
+        public Hero(PlayerConstruction pb, BattleParticipant bp) : base(pb.TypeConstruction.TrainedHero, bp)
         {
             Construction = pb;
             DayOfHire = Player.Lobby.Day;
@@ -28,7 +28,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        public PlayerHero(PlayerConstruction pb, BattleParticipant bp, DescriptorCreature th) : base(th, bp)
+        public Hero(PlayerConstruction pb, BattleParticipant bp, DescriptorCreature th) : base(th, bp)
         {
             Construction = pb;
             DayOfHire = Player.Lobby.Day;
