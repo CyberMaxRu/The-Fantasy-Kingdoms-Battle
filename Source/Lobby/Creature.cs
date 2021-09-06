@@ -30,18 +30,18 @@ namespace Fantasy_Kingdoms_Battle
             SecondarySkills.Add(new SecondarySkill(this, FormMain.Config.FindSecondarySkill("Health")));
 
             // Загружаем дефолтный инвентарь
-            foreach (PlayerItem i in TypeCreature.Inventory)
+            foreach (Item i in TypeCreature.Inventory)
             {
-                Inventory.Add(new PlayerItem(i.Item, i.Quantity, true));
+                Inventory.Add(new Item(i.Item, i.Quantity, true));
             }
 
             // Берем оружие и доспехи
             if (TypeCreature.WeaponMelee != null)
-                MeleeWeapon = new PlayerItem(TypeCreature.WeaponMelee, 1, true);
+                MeleeWeapon = new Item(TypeCreature.WeaponMelee, 1, true);
             if (TypeCreature.WeaponRange != null)
-                RangeWeapon = new PlayerItem(TypeCreature.WeaponRange, 1, true);
+                RangeWeapon = new Item(TypeCreature.WeaponRange, 1, true);
             if (TypeCreature.Armour != null)
-                Armour = new PlayerItem(TypeCreature.Armour, 1, true);
+                Armour = new Item(TypeCreature.Armour, 1, true);
             FindQuiver();
             
             if (TypeCreature.CategoryCreature != CategoryCreature.Citizen)
@@ -68,12 +68,12 @@ namespace Fantasy_Kingdoms_Battle
         internal HeroParameters ParametersWithAmmunition { get; }// Параметры с учетом амуниции
         internal Specialization Specialization { get; }// Специализация
         internal List<SecondarySkill> SecondarySkills { get; } = new List<SecondarySkill>();
-        internal List<PlayerItem> Inventory { get; } = new List<PlayerItem>();
+        internal List<Item> Inventory { get; } = new List<Item>();
         internal List<Ability> Abilities { get; } = new List<Ability>();// Cпособности
-        internal PlayerItem MeleeWeapon { get; private set; }// Рукопашное оружие (ближнего боя)
-        internal PlayerItem RangeWeapon { get; private set; }// Стрелковое оружие (дальнего боя)
-        internal PlayerItem Armour { get; private set; }// Доспех        
-        internal PlayerItem Quiver { get; private set; }// Колчан
+        internal Item MeleeWeapon { get; private set; }// Рукопашное оружие (ближнего боя)
+        internal Item RangeWeapon { get; private set; }// Стрелковое оружие (дальнего боя)
+        internal Item Armour { get; private set; }// Доспех        
+        internal Item Quiver { get; private set; }// Колчан
         internal StateCreature StateCreature { get; private set; }// Состояние (на карте)
         internal bool IsLive { get; private set; } = true;// Существо живо
 
@@ -177,7 +177,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Quiver = null;
 
-            foreach (PlayerItem i in Inventory)
+            foreach (Item i in Inventory)
             {
                 if (i.Item.CategoryItem == CategoryItem.Quiver)
                 {

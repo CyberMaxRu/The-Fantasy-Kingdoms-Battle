@@ -98,7 +98,7 @@ namespace Fantasy_Kingdoms_Battle
             return -1;
         }
 
-        internal void AcceptItem(PlayerItem pi, int quantity)
+        internal void AcceptItem(Item pi, int quantity)
         {
             Debug.Assert(pi.Quantity > 0);
             Debug.Assert(quantity > 0);
@@ -111,7 +111,7 @@ namespace Fantasy_Kingdoms_Battle
             AcceptItem(pi, quantity, toCell);
         }
 
-        internal void AcceptItem(PlayerItem pi, int quantity, int toCell)
+        internal void AcceptItem(Item pi, int quantity, int toCell)
         {
             Debug.Assert(pi.Quantity > 0);
             Debug.Assert(quantity > 0);
@@ -167,7 +167,7 @@ namespace Fantasy_Kingdoms_Battle
                         Debug.Assert(Slots[toCell] != null);*/
         }
 
-        internal PlayerItem TakeItem(int fromCell, int quantity)
+        internal Item TakeItem(int fromCell, int quantity)
         {
             return null;
             /*Debug.Assert(quantity > 0);

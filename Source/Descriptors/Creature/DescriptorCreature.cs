@@ -104,7 +104,7 @@ namespace Fantasy_Kingdoms_Battle
                             throw new Exception("Способность " + a.ID + " повторяется в списке способностей героя.");
                     }
 
-                    Inventory.Add(new PlayerItem(a, XmlUtils.GetIntegerNotNull(l, "Quantity"), true));
+                    Inventory.Add(new Item(a, XmlUtils.GetIntegerNotNull(l, "Quantity"), true));
                 }
             }
 
@@ -230,7 +230,7 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorConstruction Construction { get; }
         internal bool CanBuild { get; }
         internal Dictionary<DescriptorItem, int> CarryItems { get; } = new Dictionary<DescriptorItem, int>();
-        internal List<PlayerItem> Inventory { get; } = new List<PlayerItem>();// Инвентарь
+        internal List<Item> Inventory { get; } = new List<Item>();// Инвентарь
         internal string PrefixName { get; }
         internal List<string> Names { get; } = new List<string>();
         internal List<string> Surnames { get; } = new List<string>();

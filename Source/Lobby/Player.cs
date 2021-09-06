@@ -390,7 +390,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int QuantityHeroes { get; private set; }
 
-        internal PlayerItem[] Warehouse = new PlayerItem[FormMain.Config.WarehouseMaxCells];// Предметы на складе игрока
+        internal Item[] Warehouse = new Item[FormMain.Config.WarehouseMaxCells];// Предметы на складе игрока
 
         // Логова
         internal PlayerConstruction[,,] Lairs { get; }
@@ -507,7 +507,7 @@ namespace Fantasy_Kingdoms_Battle
             return -1;
         }
 
-        internal void AddItem(PlayerItem pi)
+        internal void AddItem(Item pi)
         {
             Debug.Assert(pi.Quantity > 0);
 
@@ -516,7 +516,7 @@ namespace Fantasy_Kingdoms_Battle
                 AddItem(pi, numberCell);
         }
 
-        internal void AddItem(PlayerItem pi, int numberCell)
+        internal void AddItem(Item pi, int numberCell)
         {
             if (Warehouse[numberCell] != null)
             {
@@ -530,7 +530,7 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
             {
-                Warehouse[numberCell] = new PlayerItem(pi.Item, pi.Quantity, true);
+                Warehouse[numberCell] = new Item(pi.Item, pi.Quantity, true);
                 pi.Quantity = 0;
             }
         }
@@ -540,7 +540,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Warehouse[fromSlot] != null);
             Debug.Assert(fromSlot != toSlot);
 
-            PlayerItem tmp = null;
+            Item tmp = null;
             if (Warehouse[toSlot] != null)
                 tmp = Warehouse[toSlot];
             Warehouse[toSlot] = Warehouse[fromSlot];
@@ -554,7 +554,7 @@ namespace Fantasy_Kingdoms_Battle
             Warehouse[slot] = null;
         }
 
-        internal void SellItem(PlayerItem pi)
+        internal void SellItem(Item pi)
         {
 
         }
@@ -619,14 +619,14 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         // Забираем указанное количество предметов из ячейки
-        internal PlayerItem TakeItemFromWarehouse(int fromCell, int quantity)
+        internal Item TakeItemFromWarehouse(int fromCell, int quantity)
         {
             Debug.Assert(quantity > 0);
             Debug.Assert(Warehouse[fromCell] != null);
             Debug.Assert(Warehouse[fromCell].Quantity > 0);
             Debug.Assert(Warehouse[fromCell].Quantity >= quantity);
 
-            PlayerItem pi;
+            Item pi;
 
             // Если забирают всё, то возвращаем ссылку на этот предмет и убираем его у себя, иначе делим предмет
             if (Warehouse[fromCell].Quantity == quantity)
@@ -636,7 +636,7 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
             {
-                pi = new PlayerItem(Warehouse[fromCell].Item, quantity, true);
+                pi = new Item(Warehouse[fromCell].Item, quantity, true);
                 Warehouse[fromCell].Quantity -= quantity;
             }
 

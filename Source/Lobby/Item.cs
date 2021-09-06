@@ -10,9 +10,9 @@ using System.Drawing;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс предмета у игрока (находящегося на герое или на складе)
-    internal sealed class PlayerItem : SmallEntity
+    internal sealed class Item : SmallEntity
     {
-        public PlayerItem(DescriptorItem i, int quantity, bool ownerIsPlayer)
+        public Item(DescriptorItem i, int quantity, bool ownerIsPlayer)
         {
             Debug.Assert(i != null);
             Debug.Assert(quantity > 0);

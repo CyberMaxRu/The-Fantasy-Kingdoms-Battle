@@ -160,7 +160,7 @@
     <Compile Include="Source\Panels\PanelConstructionInfo.cs" />
     <Compile Include="Source\VisualControls\VCMenuCell.cs" />
     <Compile Include="Source\Panels\PanelWithPanelEntity.cs" />
-    <Compile Include="Source\Lobby\PlayerItem.cs" />
+    <Compile Include="Source\Lobby\Item.cs" />
     <Compile Include="Source\VisualControls\VCCell.cs" />
     <Compile Include="PlayerCellMenu.cs" />
     <Compile Include="Source\Lobby\Requirement.cs" />

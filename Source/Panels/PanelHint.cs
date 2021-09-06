@@ -403,7 +403,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddStep6PlayerItem(PlayerItem pi)
+        internal void AddStep6PlayerItem(Item pi)
         {
             Debug.Assert(pi != null);
 
