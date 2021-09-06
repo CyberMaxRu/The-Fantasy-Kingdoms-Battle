@@ -59,14 +59,14 @@ namespace Fantasy_Kingdoms_Battle
             // Указываем существ у ячеек
             foreach (HeroInBattle hb in b.heroesPlayer1)
             {
-                Debug.Assert(cells[hb.StartCoord.Y, hb.StartCoord.X].Cell is null);
+                Debug.Assert(cells[hb.StartCoord.Y, hb.StartCoord.X].Entity is null);
 
                 cells[hb.StartCoord.Y, hb.StartCoord.X].ShowCell(hb);
             }
 
             foreach (HeroInBattle hb in b.heroesPlayer2)
             {
-                Debug.Assert(cells[hb.StartCoord.Y, FormMain.Config.HeroRows * 2 - hb.StartCoord.X - 1].Cell is null);
+                Debug.Assert(cells[hb.StartCoord.Y, FormMain.Config.HeroRows * 2 - hb.StartCoord.X - 1].Entity is null);
 
                 cells[hb.StartCoord.Y, FormMain.Config.HeroRows * 2 - hb.StartCoord.X - 1].ShowCell(hb);
             }

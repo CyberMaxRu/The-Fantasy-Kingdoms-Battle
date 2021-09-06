@@ -6,8 +6,6 @@ namespace Fantasy_Kingdoms_Battle
     // Визуальный контрол - ячейка
     internal class VCCell : VCImage48
     {
-        private Entity cell;
-
         public VCCell(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY, -1)
         {
             HighlightUnderMouse = true;
@@ -21,7 +19,6 @@ namespace Fantasy_Kingdoms_Battle
             DrawState = true;
         }
 
-        internal Entity Cell { get => cell; }
         internal bool DrawState { get; set; }
         internal string HintForEmpty { get; set; }
 
@@ -35,9 +32,9 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override bool PrepareHint()
         {
-            if (cell != null)
+            if (Entity != null)
             {
-                cell.PrepareHint();
+                Entity.PrepareHint();
                 return true;
             }
 
@@ -49,53 +46,52 @@ namespace Fantasy_Kingdoms_Battle
             base.DoClick();
 
             if (AllowClick())
-                cell?.Click(this);
+                Entity?.Click(this);
         }
 
         internal void ShowCell(Entity c)
         {
-            Entity = c;
 
             //if (!(cell is null) && (cell is PlayerHero ph) && (cell != c))
             //    ph.Selected = false;
 
-            cell = c;
+            Entity = c;
 
-            if (cell is null)
+            if (Entity is null)
                 Hint = HintForEmpty;
         }
 
         protected override bool Selected()
         {
-            return ManualSelected || ((Entity != null) && (cell != null) && Program.formMain.PlayerObjectIsSelected(Entity));
+            return ManualSelected || ((Entity != null) && (Entity != null) && Program.formMain.PlayerObjectIsSelected(Entity));
         }
 
         protected override bool PlaySelectSound()
         {
-            return (cell != null) && base.PlaySelectSound();
+            return (Entity != null) && base.PlaySelectSound();
         }
 
         protected virtual int GetLevel()
         {
-            return cell.GetLevel(); 
+            return Entity.GetLevel(); 
         }
 
         protected virtual int GetQuantity()
         {
-            return cell.GetQuantity();
+            return Entity.GetQuantity();
         }
 
         internal override void Draw(Graphics g)
         {
             if (Visible && !ManualDraw)
             {
-                if (cell != null)
+                if (Entity != null)
                 {
-                    ImageIndex = cell.GetImageIndex();
-                    ImageIsEnabled = cell.GetNormalImage();                        
+                    ImageIndex = Entity.GetImageIndex();
+                    ImageIsEnabled = Entity.GetNormalImage();                        
                     Quantity = GetQuantity();
                     Level = GetLevel();
-                    Cost = cell.GetCost();
+                    Cost = Entity.GetCost();
 
                     Debug.Assert(BitmapList.Size == 48);
                 }
@@ -110,11 +106,11 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Visible)
             {
-                if (cell != null)
+                if (Entity != null)
                 {
                     g.DrawImageUnscaled(Program.formMain.bmpBorderForIcon, Left, Top);
 
-                    cell.CustomDraw(g, Left, Top, DrawState);
+                    Entity.CustomDraw(g, Left, Top, DrawState);
                 }
                 else
                     g.DrawImageUnscaled(Program.formMain.bmpEmptyEntity, Left, Top);
