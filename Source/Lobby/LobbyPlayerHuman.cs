@@ -9,7 +9,7 @@ using System.Windows.Threading;
 namespace Fantasy_Kingdoms_Battle
 {
     // Игрок-человек
-    internal sealed class LobbyPlayerHuman : LobbyPlayer
+    internal sealed class LobbyPlayerHuman : Player
     {
         private DispatcherFrame frame;
 

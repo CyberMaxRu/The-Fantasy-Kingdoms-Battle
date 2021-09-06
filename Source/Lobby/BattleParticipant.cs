@@ -123,7 +123,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal abstract string GetName();
         internal abstract TypePlayer GetTypePlayer();
-        internal abstract LobbyPlayer GetPlayer();
+        internal abstract Player GetPlayer();
         internal abstract int GetImageIndexAvatar();
     }
 }

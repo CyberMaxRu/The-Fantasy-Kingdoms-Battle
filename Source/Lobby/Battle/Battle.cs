@@ -266,7 +266,7 @@ namespace Fantasy_Kingdoms_Battle
 
             void ApplyWinAndLose(BattleParticipant winner, BattleParticipant loser)
             {
-                if ((winner is LobbyPlayer w) && (loser is LobbyPlayer l))
+                if ((winner is Player w) && (loser is Player l))
                 {
                     l.AddLose();
                 }

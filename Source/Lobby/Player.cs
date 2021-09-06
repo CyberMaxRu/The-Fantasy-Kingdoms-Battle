@@ -12,18 +12,18 @@ namespace Fantasy_Kingdoms_Battle
     // Класс информации о поражении
     internal sealed class LoseInfo
     {
-        public LoseInfo(int day, LobbyPlayer opponent)
+        public LoseInfo(int day, Player opponent)
         {
             Day = day;
             Opponent = opponent;
         }
 
         internal int Day { get; }
-        internal LobbyPlayer Opponent { get; }
+        internal Player Opponent { get; }
     }
 
     // Класс игрока лобби
-    internal abstract class LobbyPlayer : BattleParticipant
+    internal abstract class Player : BattleParticipant
     {
         private PlayerConstruction Castle;
         private int gold;
@@ -35,7 +35,7 @@ namespace Fantasy_Kingdoms_Battle
         internal const int MAX_FLAG_HIGH = 2;// Максимальное число флагов с высоким приоритетом
         internal const int MAX_FLAG_COUNT = 5;// Максимальное число активных флагов
 
-        public LobbyPlayer(Lobby lobby, DescriptorPlayer player, int playerIndex) : base(lobby)
+        public Player(Lobby lobby, DescriptorPlayer player, int playerIndex) : base(lobby)
         {
             Player = player;
             PlayerIndex = playerIndex;
@@ -400,8 +400,8 @@ namespace Fantasy_Kingdoms_Battle
         internal int LairsShowed { get; private set; }
 
         // Визуальные контролы
-        private LobbyPlayer opponent;// Убрать это
-        internal LobbyPlayer Opponent { get { return opponent; } set { if (value != this) { if (opponent != value) { opponent = value; UpdateOpponent(); } } else new Exception("Нельзя указать оппонентов самого себя."); } }
+        private Player opponent;// Убрать это
+        internal Player Opponent { get { return opponent; } set { if (value != this) { if (opponent != value) { opponent = value; UpdateOpponent(); } } else new Exception("Нельзя указать оппонентов самого себя."); } }
         internal PlayerConstruction FlagAttackToOpponent { get; private set; }
 
         private void UpdateOpponent()
@@ -1096,7 +1096,7 @@ namespace Fantasy_Kingdoms_Battle
 
         //
         internal override string GetName() => Player.Name;
-        internal override LobbyPlayer GetPlayer() => this;
+        internal override Player GetPlayer() => this;
         internal override TypePlayer GetTypePlayer() => Player.TypePlayer;
         internal override int GetImageIndexAvatar() => Player.ImageIndex;
 

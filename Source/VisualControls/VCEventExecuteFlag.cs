@@ -24,7 +24,7 @@ namespace Fantasy_Kingdoms_Battle
             Winner = winner;
             Battle = b;
 
-            bmpTypeFlag = new VCImage(this, FormMain.Config.GridSize, FormMain.Config.GridSize, Program.formMain.imListObjects48, LobbyPlayer.TypeFlagToImageIndex(typeFlag));
+            bmpTypeFlag = new VCImage(this, FormMain.Config.GridSize, FormMain.Config.GridSize, Program.formMain.imListObjects48, Player.TypeFlagToImageIndex(typeFlag));
             bmpTypeFlag.ShowBorder = true;
             bmpTarget = new VCImage(this, bmpTypeFlag.NextLeft(), bmpTypeFlag.ShiftY, Program.formMain.imListObjects48, tl.ImageIndex);
             bmpTarget.ShowBorder = true;

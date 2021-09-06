@@ -13,7 +13,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         private int gold;
 
-        public PlayerConstruction(LobbyPlayer p, DescriptorConstruction b) : base(p.Lobby)
+        public PlayerConstruction(Player p, DescriptorConstruction b) : base(p.Lobby)
         {
             Player = p;
             TypeConstruction = b;
@@ -42,7 +42,7 @@ namespace Fantasy_Kingdoms_Battle
             //    Gold = Construction.GoldByConstruction;
         }
 
-        public PlayerConstruction(LobbyPlayer p, DescriptorConstruction l, int level, int x, int y, int layer) : base(p.Lobby)
+        public PlayerConstruction(Player p, DescriptorConstruction l, int level, int x, int y, int layer) : base(p.Lobby)
         {
             Player = p;
             TypeConstruction = l;
@@ -85,7 +85,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int ResearchesAvailabled { get; private set; }// Сколько еще исследований доступно на этом ходу
         internal List<Entity> Items { get; } = new List<Entity>();// Товары, доступные в строении
         internal List<PlayerItem> Warehouse { get; } = new List<PlayerItem>();// Склад здания
-        internal LobbyPlayer Player { get; }
+        internal Player Player { get; }
         internal List<PlayerCellMenu> Researches { get; } = new List<PlayerCellMenu>();
 
         // Свойства для внешних сооружений
@@ -1036,7 +1036,7 @@ namespace Fantasy_Kingdoms_Battle
             return TypePlayer.Lair;
         }
 
-        internal override LobbyPlayer GetPlayer()
+        internal override Player GetPlayer()
         {
             return Player;
         }

@@ -82,7 +82,7 @@
     <Compile Include="BitmapList.cs" />
     <Compile Include="CustomCursor.cs" />
     <Compile Include="Source\Lobby\HumanPlayer.cs" />
-    <Compile Include="Source\Lobby\LobbyPlayer.cs" />
+    <Compile Include="Source\Lobby\Player.cs" />
     <Compile Include="Source\Lobby\LobbyPlayerComputer.cs" />
     <Compile Include="Source\Lobby\LobbyPlayerHuman.cs" />
     <Compile Include="M2Font.cs" />

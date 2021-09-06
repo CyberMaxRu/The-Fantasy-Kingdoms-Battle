@@ -6,14 +6,14 @@ namespace Fantasy_Kingdoms_Battle
     // Класс панели игрока лобби
     internal sealed class PanelPlayer : VCCell
     {
-        private LobbyPlayer player;
+        private Player player;
 
         public PanelPlayer(VisualControl parent, int shiftX) : base(parent, shiftX, 0)
         {
             
         }
 
-        internal void LinkToLobby(LobbyPlayer p)
+        internal void LinkToLobby(Player p)
         {
             Debug.Assert(p != null);
 

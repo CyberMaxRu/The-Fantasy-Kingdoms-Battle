@@ -188,7 +188,7 @@ namespace Fantasy_Kingdoms_Battle
         internal const int MAX_LAIR_LAYERS = 5;
 
         private Lobby lobby;
-        private LobbyPlayer curAppliedPlayer;
+        private Player curAppliedPlayer;
 
         internal Lobby CurrentLobby { get { return lobby; } }
 
@@ -1377,7 +1377,7 @@ namespace Fantasy_Kingdoms_Battle
                 pageTournament.Page.ArrangeControls();
             }
 
-            foreach (LobbyPlayer lp in lobby.Players.OrderBy(lp => lp.PositionInLobby))
+            foreach (Player lp in lobby.Players.OrderBy(lp => lp.PositionInLobby))
             {
                 pageTournamentPlayers[lp.PositionInLobby - 1].Entity =  lp;
             }

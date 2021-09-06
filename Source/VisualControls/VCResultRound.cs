@@ -39,12 +39,12 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void ShowPlayers(LobbyPlayer[] players, BattlesPlayers battlesPlayers)
+        internal void ShowPlayers(Player[] players, BattlesPlayers battlesPlayers)
         {
             Visible = true;
             lblDay.Text = battlesPlayers.Day.ToString() + Environment.NewLine + "день";
 
-            foreach (LobbyPlayer lp in players.OrderBy(lp => lp.PositionInLobby))
+            foreach (Player lp in players.OrderBy(lp => lp.PositionInLobby))
             {
                 // Находим результат боя игрока
                 if (battlesPlayers.Players.ContainsKey(lp))

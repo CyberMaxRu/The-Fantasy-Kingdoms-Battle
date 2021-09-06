@@ -16,6 +16,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int Day { get; }
 
-        internal Dictionary<LobbyPlayer, bool> Players { get; } = new Dictionary<LobbyPlayer, bool>();
+        internal Dictionary<Player, bool> Players { get; } = new Dictionary<Player, bool>();
     }
 }

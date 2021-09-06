@@ -29,7 +29,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal LobbyPlayer Player { get; }
+        internal Player Player { get; }
         internal PlayerConstruction ObjectOfMap { get; }
         internal TypeCellMenu Research { get; }
         internal PlayerConstruction ConstructionForBuild;

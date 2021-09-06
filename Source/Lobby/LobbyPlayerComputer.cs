@@ -8,7 +8,7 @@ using System.Diagnostics;
 namespace Fantasy_Kingdoms_Battle
 {
     // Игрок-компьютер
-    internal sealed class LobbyPlayerComputer : LobbyPlayer
+    internal sealed class LobbyPlayerComputer : Player
     {
         public LobbyPlayerComputer(Lobby lobby, DescriptorPlayer player, int playerIndex) : base(lobby, player, playerIndex)
         {
