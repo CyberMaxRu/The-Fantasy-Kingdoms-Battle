@@ -148,6 +148,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     lblIncome.Text = $"+{income}";
                     lblIncome.Color = FormMain.Config.ColorIncome(Construction.Level > 0);
+                    lblIncome.ImageIsEnabled = Construction.Level > 0;
                     lblIncome.Visible = true;
                 }
                 else
@@ -165,6 +166,7 @@ namespace Fantasy_Kingdoms_Battle
                         lblGreatness.Text = Utils.FormatGreatness(0, Construction.GreatnessPerDay());
 
                     lblGreatness.Color = FormMain.Config.ColorGreatness(Construction.Level > 0);
+                    lblGreatness.ImageIsEnabled = Construction.Level > 0;
                 }
 
                 if (Construction.TypeConstruction.PlayerCanBuild)
