@@ -337,7 +337,7 @@ namespace Fantasy_Kingdoms_Battle
                     else
                         throw new Exception("Неизвестный флаг: " + pl.TypeFlag.ToString());
 
-                    if (this is LobbyPlayerHuman h)
+                    if (this is PlayerHuman h)
                         h.AddEvent(new VCEventExecuteFlag(typeFlag, pl.TypeConstruction, pl.Destroyed ? null : pl, (b is null) || (b.Winner == this), b));
                 }
             }

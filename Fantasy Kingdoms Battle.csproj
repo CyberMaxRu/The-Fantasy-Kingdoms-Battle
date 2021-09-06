@@ -83,8 +83,8 @@
     <Compile Include="CustomCursor.cs" />
     <Compile Include="Source\Lobby\HumanPlayer.cs" />
     <Compile Include="Source\Lobby\Player.cs" />
-    <Compile Include="Source\Lobby\LobbyPlayerComputer.cs" />
-    <Compile Include="Source\Lobby\LobbyPlayerHuman.cs" />
+    <Compile Include="Source\Lobby\PlayerComputer.cs" />
+    <Compile Include="Source\Lobby\PlayerHuman.cs" />
     <Compile Include="M2Font.cs" />
     <Compile Include="Source\Panels\PanelCreatureInfo.cs" />
     <Compile Include="Source\Panels\PanelMonsterInfo.cs" />

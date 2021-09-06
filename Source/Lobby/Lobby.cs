@@ -30,7 +30,7 @@ namespace Fantasy_Kingdoms_Battle
 
             // Создание игроков
             Players = new Player[tl.QuantityPlayers];
-            Players[0] = new LobbyPlayerHuman(this, Program.formMain.CurrentHumanPlayer, 0);// Живой игрок всегда первый
+            Players[0] = new PlayerHuman(this, Program.formMain.CurrentHumanPlayer, 0);// Живой игрок всегда первый
             // Подбираем компьютерных игроков из пула доступных
             GeneratePlayers();
 
@@ -110,7 +110,7 @@ namespace Fantasy_Kingdoms_Battle
                 for (int i = 1; i < TypeLobby.QuantityPlayers; i++)
                 {
                     idx = Rnd.Next(listCompPlayers.Count);
-                    Players[i] = new LobbyPlayerComputer(this, listCompPlayers[idx], i);
+                    Players[i] = new PlayerComputer(this, listCompPlayers[idx], i);
                     listCompPlayers.RemoveAt(idx);
                 }
             }
@@ -454,7 +454,7 @@ namespace Fantasy_Kingdoms_Battle
 
                         // Добавляем событие всем живым игрокам
                         foreach (Player lp in Players.Where(lpp => lpp.IsLive || (lpp.DayOfEndGame == Day)))
-                            if (lp is LobbyPlayerHuman h)
+                            if (lp is PlayerHuman h)
                                 h.AddEvent(new VCEventBattle(b));
                     }
                 }

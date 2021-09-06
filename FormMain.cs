@@ -1258,9 +1258,9 @@ namespace Fantasy_Kingdoms_Battle
 
         private void ShowEvents()
         {
-            Debug.Assert(curAppliedPlayer is LobbyPlayerHuman);
+            Debug.Assert(curAppliedPlayer is PlayerHuman);
 
-            LobbyPlayerHuman p = (LobbyPlayerHuman)curAppliedPlayer;
+            PlayerHuman p = (PlayerHuman)curAppliedPlayer;
             int top = 0;
 
             foreach (VCEvent e in p.ListEvents)

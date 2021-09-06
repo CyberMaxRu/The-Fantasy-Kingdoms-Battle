@@ -9,11 +9,11 @@ using System.Windows.Threading;
 namespace Fantasy_Kingdoms_Battle
 {
     // Игрок-человек
-    internal sealed class LobbyPlayerHuman : Player
+    internal sealed class PlayerHuman : Player
     {
         private DispatcherFrame frame;
 
-        public LobbyPlayerHuman(Lobby lobby, DescriptorPlayer player, int playerIndex) : base(lobby, player, playerIndex)
+        public PlayerHuman(Lobby lobby, DescriptorPlayer player, int playerIndex) : base(lobby, player, playerIndex)
         {
             Debug.Assert(player.TypePlayer == TypePlayer.Human);
 
