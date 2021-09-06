@@ -1419,7 +1419,7 @@ namespace Fantasy_Kingdoms_Battle
             for (int i = 0; i < panelPlayers.Controls.Count; i++)
             {
                 Debug.Assert(panelPlayers.Controls[i] is PanelPlayer);
-                ((PanelPlayer)panelPlayers.Controls[i]).LinkToLobby(lobby.Players[i]);
+                ((PanelPlayer)panelPlayers.Controls[i]).Entity = lobby.Players[i];
             }
 
             if (currentLayer != layerGame)
