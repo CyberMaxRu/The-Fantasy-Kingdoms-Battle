@@ -32,6 +32,12 @@ namespace Fantasy_Kingdoms_Battle
             lblCaptionPage.Width = Width;
 
             base.ArrangeControls();
+
+            foreach (VCTabButton tb in btnTabs)
+            {
+                if (tb.ContextPage != null)
+                    tb.ContextPage.ShiftX = (Width - tb.ContextPage.Width) / 2;
+            }
         }
 
         internal void AddTab(string nameTab, int imageIndex, VisualControl controlForPage)
