@@ -61,14 +61,14 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Debug.Assert(cells[hb.StartCoord.Y, hb.StartCoord.X].Entity is null);
 
-                cells[hb.StartCoord.Y, hb.StartCoord.X].ShowCell(hb);
+                cells[hb.StartCoord.Y, hb.StartCoord.X].Entity = hb;
             }
 
             foreach (HeroInBattle hb in b.heroesPlayer2)
             {
                 Debug.Assert(cells[hb.StartCoord.Y, FormMain.Config.HeroRows * 2 - hb.StartCoord.X - 1].Entity is null);
 
-                cells[hb.StartCoord.Y, FormMain.Config.HeroRows * 2 - hb.StartCoord.X - 1].ShowCell(hb);
+                cells[hb.StartCoord.Y, FormMain.Config.HeroRows * 2 - hb.StartCoord.X - 1].Entity = hb;
             }
 
             //

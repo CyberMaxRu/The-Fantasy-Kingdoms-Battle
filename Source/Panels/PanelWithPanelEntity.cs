@@ -44,9 +44,9 @@ namespace Fantasy_Kingdoms_Battle
                 listCells[i].Visible = true;
 
                 if (i < list.Count)
-                    listCells[i].ShowCell(list[i]);
+                    listCells[i].Entity = list[i];
                 else if (FixedMode)
-                    listCells[i].ShowCell(null);
+                    listCells[i].Entity = null;
                 else
                     listCells[i].Visible = false;
             }
@@ -58,7 +58,7 @@ namespace Fantasy_Kingdoms_Battle
 
             for (int i = 0; i < listCells.Count; i++)
             {
-                listCells[i].ShowCell(null);
+                listCells[i].Entity = null;
             }
         }
 

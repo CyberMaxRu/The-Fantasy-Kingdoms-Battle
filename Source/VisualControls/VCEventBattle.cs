@@ -19,7 +19,7 @@ namespace Fantasy_Kingdoms_Battle
 
             //
             VCCell cellPlayer1 = new VCCell(this, FormMain.Config.GridSize, FormMain.Config.GridSize);
-            cellPlayer1.ShowCell(b.Player1 as LobbyPlayer);
+            cellPlayer1.Entity = b.Player1;
 
             VCImage im1 = new VCImage(this, cellPlayer1.NextLeft(), cellPlayer1.ShiftY, Program.formMain.ilGui24,
                 b.Winner == b.Player1 ? FormMain.GUI_24_TRANSP_WIN : FormMain.GUI_24_TRANSP_LOSE);
@@ -36,7 +36,7 @@ namespace Fantasy_Kingdoms_Battle
             im2.Hint = b.Winner == b.Player2 ? "Победитель" : "Проигравший";
 
             VCCell cellPlayer2 = new VCCell(this, im2.NextLeft(), cellPlayer1.ShiftY);
-            cellPlayer2.ShowCell(b.Player2 as LobbyPlayer);
+            cellPlayer2.Entity = b.Player2;
 
             btnViewResult = new VCButton(this, cellPlayer2.NextLeft(), 16, "Итоги");
             btnViewResult.Enabled = !(b is null);

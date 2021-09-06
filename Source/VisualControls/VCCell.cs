@@ -49,13 +49,12 @@ namespace Fantasy_Kingdoms_Battle
                 Entity?.Click(this);
         }
 
-        internal void ShowCell(Entity c)
+        protected override void SetEntity(Entity po)
         {
+            base.SetEntity(po);
 
             //if (!(cell is null) && (cell is PlayerHero ph) && (cell != c))
             //    ph.Selected = false;
-
-            Entity = c;
 
             if (Entity is null)
                 Hint = HintForEmpty;

@@ -19,7 +19,7 @@ namespace Fantasy_Kingdoms_Battle
 
             player = p;
             player.Panel = this;
-            ShowCell(player);
+            Entity = player;
         }
 
         protected override bool Selected() => Program.formMain.CurrentLobby?.CurrentPlayer == player;

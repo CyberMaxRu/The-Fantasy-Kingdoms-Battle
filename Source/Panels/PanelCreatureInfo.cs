@@ -166,11 +166,11 @@ namespace Fantasy_Kingdoms_Battle
             bmpState.Bitmap = Program.formMain.ilStateHero.GetImage(Creature.StateCreature.ImageIndex, true, false);
             labelNameState.Text = Creature.StateCreature.Name;
 
-            panelSpecialization.ShowCell(Creature.Specialization);// ImageIndex = creature.Specialization != null ? creature.Specialization.ImageIndex : -1;
+            panelSpecialization.Entity = Creature.Specialization;// ImageIndex = creature.Specialization != null ? creature.Specialization.ImageIndex : -1;
 
-            panelMeleeWeapon.ShowCell(Creature.MeleeWeapon);
-            panelRangeWeapon.ShowCell(Creature.RangeWeapon);
-            panelArmour.ShowCell(Creature.Armour);
+            panelMeleeWeapon.Entity = Creature.MeleeWeapon;
+            panelRangeWeapon.Entity =  Creature.RangeWeapon;
+            panelArmour.Entity = Creature.Armour;
 
             panelInventory.ApplyList(Creature.Inventory);
             panelAbilities.ApplyList(Creature.Abilities);

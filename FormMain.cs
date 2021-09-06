@@ -1379,7 +1379,7 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (LobbyPlayer lp in lobby.Players.OrderBy(lp => lp.PositionInLobby))
             {
-                pageTournamentPlayers[lp.PositionInLobby - 1].ShowCell(lp);
+                pageTournamentPlayers[lp.PositionInLobby - 1].Entity =  lp;
             }
 
             for (int i = 0; i < lobby.BattlesPlayers.Count; i++)
@@ -2035,7 +2035,7 @@ namespace Fantasy_Kingdoms_Battle
             foreach (PlayerConstruction pl in lobby.CurrentPlayer.ListFlags)
             {
                 listBtnTargetLair[n].ShiftX = left;
-                listBtnTargetLair[n].ShowCell(pl);
+                listBtnTargetLair[n].Entity = pl;
                 listBtnTargetLair[n].Visible = true;
 
                 left = listBtnTargetLair[n].NextLeft();
