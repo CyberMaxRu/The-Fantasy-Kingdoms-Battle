@@ -276,6 +276,8 @@ namespace Fantasy_Kingdoms_Battle
         internal int MaxStatPointPerLevel { get; private set; }
         internal int StepsHeroInTumbstone { get; private set; }// Сколько шагов герой в могиле перед исчезновением
         internal int UnitStepsTimeToDisappearance { get; private set; }// Сколько шагов могила юнита исчезает
+        internal int MaxCreatureAbilities { get; private set; }// Максимальное количество умений у существа
+        internal int MaxCreatureSecondarySkills { get; private set; }//Максимальное количество вторичных навыков у существа
         internal int PlateWidth { get; private set; }// Количество ячеек на панели справа по горизонтали
         internal int PlateHeight { get; private set; }// Количество ячеек на панели справа по вертикали
         internal int MinRowsEntities { get; private set; }// Минимальное количество строк сущностей в панели справа
@@ -587,6 +589,12 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(timeToDisappearance <= 10);
             UnitStepsTimeToDisappearance = (int)(timeToDisappearance * StepsInSecond);
             Debug.Assert(StepsHeroInTumbstone >= UnitStepsTimeToDisappearance);
+            MaxCreatureAbilities = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Heroes/MaxAbilities").InnerText);
+            Debug.Assert(MaxCreatureAbilities >= 4);
+            Debug.Assert(MaxCreatureAbilities <= 16);
+            MaxCreatureSecondarySkills = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Heroes/MaxSecondarySkills").InnerText);
+            Debug.Assert(MaxCreatureSecondarySkills >= 4);
+            Debug.Assert(MaxCreatureSecondarySkills <= 16);
 
             IDHeroAdvisor = xmlDoc.SelectSingleNode("Game/Links/HeroAdvisor").InnerText;
             Debug.Assert(IDHeroAdvisor.Length > 0);

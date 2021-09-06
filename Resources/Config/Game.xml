@@ -64,6 +64,8 @@
     <MaxStatPointPerLevel>20</MaxStatPointPerLevel>
     <TimeInTumbstone>2.0</TimeInTumbstone>
     <TimeToDisappearance>0.8</TimeToDisappearance>
+    <MaxAbilities>8</MaxAbilities>
+    <MaxSecondarySkills>8</MaxSecondarySkills>
   </Heroes>
   <Battle>
     <StepsInSecond>50</StepsInSecond>

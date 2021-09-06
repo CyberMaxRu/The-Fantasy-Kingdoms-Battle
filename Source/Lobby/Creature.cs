@@ -25,9 +25,9 @@ namespace Fantasy_Kingdoms_Battle
 
             // Применяем дефолтные способности
             foreach (DescriptorAbility ta in TypeCreature.Abilities)
-                Abilities.Add(new Ability(this, ta));
+                AddAbility(ta);
             Specialization = new Specialization(this, FormMain.Config.FindSpecialization("SpeedMove"));
-            SecondarySkills.Add(new SecondarySkill(this, FormMain.Config.FindSecondarySkill("Health")));
+            AddSecondarySkill(FormMain.Config.FindSecondarySkill("Health"));
 
             // Загружаем дефолтный инвентарь
             foreach (Item i in TypeCreature.Inventory)
@@ -205,6 +205,20 @@ namespace Fantasy_Kingdoms_Battle
         internal override void CustomDraw(Graphics g, int x, int y, bool drawState)
         {
             DoCustomDraw(g, x, y, drawState);
+        }
+
+        private void AddAbility(DescriptorAbility descriptor)
+        {
+            Debug.Assert(Abilities.Count < FormMain.Config.MaxCreatureAbilities);
+
+            Abilities.Add(new Ability(this, descriptor));
+        }
+
+        private void AddSecondarySkill(DescriptorSecondarySkill descriptor)
+        {
+            Debug.Assert(SecondarySkills.Count < FormMain.Config.MaxCreatureSecondarySkills);
+
+            SecondarySkills.Add(new SecondarySkill(this, descriptor));
         }
     }
 }
