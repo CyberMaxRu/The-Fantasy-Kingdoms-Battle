@@ -13,19 +13,19 @@ namespace Fantasy_Kingdoms_Battle
         public Ability(Creature creature, DescriptorAbility typeAbility) : base()
         {
             Creature = creature;
-            TypeAbility = typeAbility;
+            Descriptor = typeAbility;
         }
 
         internal Creature Creature { get; }
-        internal DescriptorAbility TypeAbility { get; }
+        internal DescriptorAbility Descriptor { get; }
 
-        internal override int GetImageIndex() => TypeAbility.ImageIndex;
-        internal override int GetLevel() => TypeAbility.MinUnitLevel;
-        internal override bool GetNormalImage() => Creature.Level >= TypeAbility.MinUnitLevel;
+        internal override int GetImageIndex() => Descriptor.ImageIndex;
+        internal override int GetLevel() => Descriptor.MinUnitLevel;
+        internal override bool GetNormalImage() => Creature.Level >= Descriptor.MinUnitLevel;
 
         internal override void PrepareHint()
         {
-            Program.formMain.formHint.AddStep1Header(TypeAbility.Name, "", TypeAbility.Description);
+            Program.formMain.formHint.AddStep1Header(Descriptor.Name, "", Descriptor.Description);
         }
     }
 }
