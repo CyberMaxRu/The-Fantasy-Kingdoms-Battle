@@ -35,7 +35,7 @@ namespace Fantasy_Kingdoms_Battle
         internal const int MAX_FLAG_HIGH = 2;// Максимальное число флагов с высоким приоритетом
         internal const int MAX_FLAG_COUNT = 5;// Максимальное число активных флагов
 
-        public LobbyPlayer(Lobby lobby, Player player, int playerIndex) : base(lobby)
+        public LobbyPlayer(Lobby lobby, DescriptorPlayer player, int playerIndex) : base(lobby)
         {
             Player = player;
             PlayerIndex = playerIndex;
@@ -361,7 +361,7 @@ namespace Fantasy_Kingdoms_Battle
                 pb.ValidateHeroes();
         }
 
-        internal Player Player { get; }
+        internal DescriptorPlayer Player { get; }
         internal int PlayerIndex { get; }
         internal int PositionInLobby { get; set; }
         internal bool Initialization { get; }

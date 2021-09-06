@@ -10,7 +10,7 @@ namespace Fantasy_Kingdoms_Battle
     // Игрок-компьютер
     internal sealed class LobbyPlayerComputer : LobbyPlayer
     {
-        public LobbyPlayerComputer(Lobby lobby, Player player, int playerIndex) : base(lobby, player, playerIndex)
+        public LobbyPlayerComputer(Lobby lobby, DescriptorPlayer player, int playerIndex) : base(lobby, player, playerIndex)
         {
             Debug.Assert(player.TypePlayer == TypePlayer.Computer);
         }

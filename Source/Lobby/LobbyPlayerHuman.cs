@@ -13,7 +13,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         private DispatcherFrame frame;
 
-        public LobbyPlayerHuman(Lobby lobby, Player player, int playerIndex) : base(lobby, player, playerIndex)
+        public LobbyPlayerHuman(Lobby lobby, DescriptorPlayer player, int playerIndex) : base(lobby, player, playerIndex)
         {
             Debug.Assert(player.TypePlayer == TypePlayer.Human);
 

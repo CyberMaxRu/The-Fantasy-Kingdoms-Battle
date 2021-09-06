@@ -9,7 +9,7 @@ using System.Diagnostics;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс игрока-человека
-    internal sealed class HumanPlayer: Player
+    internal sealed class HumanPlayer: DescriptorPlayer
     {
         public HumanPlayer(XmlNode n) : base(n, TypePlayer.Human)
         {

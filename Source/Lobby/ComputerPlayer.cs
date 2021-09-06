@@ -9,7 +9,7 @@ using System.Diagnostics;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс игрока-компьютера
-    internal sealed class ComputerPlayer : Player
+    internal sealed class ComputerPlayer : DescriptorPlayer
     {
         public ComputerPlayer(XmlNode n) : base(n, TypePlayer.Computer)
         {

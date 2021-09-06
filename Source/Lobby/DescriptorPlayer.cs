@@ -8,15 +8,15 @@ using System.Diagnostics;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    // Тип игрока
-    internal abstract class Player : DescriptorEntity
+    // Описатель игрока
+    internal abstract class DescriptorPlayer : DescriptorEntity
     {
-        public Player(XmlNode n, TypePlayer typePlayer) : base(n)
+        public DescriptorPlayer(XmlNode n, TypePlayer typePlayer) : base(n)
         {
             TypePlayer = typePlayer;
         }
 
-        public Player(string id, string name, string description, int imageIndex, TypePlayer typePlayer) : base(id, name, description, imageIndex)
+        public DescriptorPlayer(string id, string name, string description, int imageIndex, TypePlayer typePlayer) : base(id, name, description, imageIndex)
         {
             TypePlayer = typePlayer;
         }
