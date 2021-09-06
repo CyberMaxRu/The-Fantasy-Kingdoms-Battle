@@ -25,7 +25,7 @@ namespace Fantasy_Kingdoms_Battle
 
             // Применяем дефолтные способности
             foreach (DescriptorAbility ta in TypeCreature.Abilities)
-                Abilities.Add(new CreatureAbility(this, ta));
+                Abilities.Add(new Ability(this, ta));
             Specialization = new Specialization(this, FormMain.Config.FindSpecialization("SpeedMove"));
             SecondarySkills.Add(new SecondarySkill(this, FormMain.Config.FindSecondarySkill("Health")));
 
@@ -69,7 +69,7 @@ namespace Fantasy_Kingdoms_Battle
         internal Specialization Specialization { get; }// Специализация
         internal List<SecondarySkill> SecondarySkills { get; } = new List<SecondarySkill>();
         internal List<PlayerItem> Inventory { get; } = new List<PlayerItem>();
-        internal List<CreatureAbility> Abilities { get; } = new List<CreatureAbility>();// Cпособности
+        internal List<Ability> Abilities { get; } = new List<Ability>();// Cпособности
         internal PlayerItem MeleeWeapon { get; private set; }// Рукопашное оружие (ближнего боя)
         internal PlayerItem RangeWeapon { get; private set; }// Стрелковое оружие (дальнего боя)
         internal PlayerItem Armour { get; private set; }// Доспех        

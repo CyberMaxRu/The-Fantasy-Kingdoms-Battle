@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 namespace Fantasy_Kingdoms_Battle
 {
     // Cпособность у существа
-    internal sealed class CreatureAbility : SmallEntity
+    internal sealed class Ability : SmallEntity
     {
-        public CreatureAbility(Creature creature, DescriptorAbility typeAbility)
+        public Ability(Creature creature, DescriptorAbility typeAbility)
         {
             Creature = creature;
             TypeAbility = typeAbility;

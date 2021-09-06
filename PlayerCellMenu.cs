@@ -68,7 +68,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (!(Research.Entity is null))
             {
-                string level = Research.Entity is CreatureAbility ta ? "Требуемый уровень: " + ta.TypeAbility.MinUnitLevel.ToString() : "";
+                string level = Research.Entity is Ability ta ? "Требуемый уровень: " + ta.TypeAbility.MinUnitLevel.ToString() : "";
                 Program.formMain.formHint.AddStep1Header(Research.Entity.Name, level, Research.Entity.Description);
                 Program.formMain.formHint.AddStep3Requirement(GetTextRequirements());
                 Program.formMain.formHint.AddStep4Gold(Cost(), Cost() <= ObjectOfMap.Player.Gold);
