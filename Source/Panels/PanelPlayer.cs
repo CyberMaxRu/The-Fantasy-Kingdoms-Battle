@@ -10,7 +10,7 @@ namespace Fantasy_Kingdoms_Battle
 
         public PanelPlayer(VisualControl parent, int shiftX) : base(parent, shiftX, 0)
         {
-            HighlightUnderMouse = true;
+            
         }
 
         internal void LinkToLobby(LobbyPlayer p)
