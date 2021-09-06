@@ -120,7 +120,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<Effect> Effects { get; } = new List<Effect>();
         internal List<DescriptorCreature> ClassesHeroes { get; } = new List<DescriptorCreature>();
 
-        internal void TuneDeferredLinks()
+        internal override void TuneDeferredLinks()
         {
             foreach (string nameHero in classesHeroesString)
                 ClassesHeroes.Add(FormMain.Config.FindTypeCreature(nameHero));
