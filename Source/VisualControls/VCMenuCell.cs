@@ -79,7 +79,6 @@ namespace Fantasy_Kingdoms_Battle
                 Cost = research.Cost().ToString();
                 ImageIndex = research.Research.TypeEntity.ImageIndex;
                 ImageIsEnabled = research.CheckRequirements();
-                BitmapList = Program.formMain.imListObjects48;
 
                 // Накладываем фильтр
                 //if (!research.CheckRequirements())
@@ -94,15 +93,12 @@ namespace Fantasy_Kingdoms_Battle
                     Cost = pc.CostBuyOrUpgrade().ToString();
                     ImageIndex = pc.TypeConstruction.ImageIndex;
                     ImageIsEnabled = research.CheckRequirements();
-                    BitmapList = Program.formMain.imListObjects48;
                 }
                 else
                 {
                     Cost = research.Research.TypeConstruction.Levels[1].Cost.ToString();
                     ImageIndex = research.Research.TypeConstruction.ImageIndex;
                     ImageIsEnabled = research.Player.CanBuildTypeConstruction(research.Research.TypeConstruction);
-                    BitmapList = Program.formMain.imListObjects48;
-
                 }
                 // Накладываем фильтр
                 //if (!research.CheckRequirements())

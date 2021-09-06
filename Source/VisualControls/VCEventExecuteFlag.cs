@@ -9,10 +9,10 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class VCEventExecuteFlag : VCEvent
     {
-        private VCImage bmpTypeFlag;
-        private VCImage bmpTarget;
+        private VCImage48 bmpTypeFlag;
+        private VCImage48 bmpTarget;
         private VCLabel textColon;
-        private VCImage bmpWin;
+        private VCImage48 bmpWin;
         private VCButton btnViewResult;
         private VCButton btnWShowBattle;
 
@@ -24,9 +24,9 @@ namespace Fantasy_Kingdoms_Battle
             Winner = winner;
             Battle = b;
 
-            bmpTypeFlag = new VCImage(this, FormMain.Config.GridSize, FormMain.Config.GridSize, Program.formMain.imListObjects48, Player.TypeFlagToImageIndex(typeFlag));
+            bmpTypeFlag = new VCImage48(this, FormMain.Config.GridSize, FormMain.Config.GridSize, Player.TypeFlagToImageIndex(typeFlag));
             bmpTypeFlag.ShowBorder = true;
-            bmpTarget = new VCImage(this, bmpTypeFlag.NextLeft(), bmpTypeFlag.ShiftY, Program.formMain.imListObjects48, tl.ImageIndex);
+            bmpTarget = new VCImage48(this, bmpTypeFlag.NextLeft(), bmpTypeFlag.ShiftY, tl.ImageIndex);
             bmpTarget.ShowBorder = true;
             if (Target is null)
             {
@@ -40,7 +40,7 @@ namespace Fantasy_Kingdoms_Battle
             textColon.StringFormat.Alignment = StringAlignment.Center;
             textColon.StringFormat.LineAlignment = StringAlignment.Center;
             textColon.Width = textColon.Font.WidthText(textColon.Text);
-            bmpWin = new VCImage(this, textColon.NextLeft(), bmpTypeFlag.ShiftY, Program.formMain.imListObjects48, winner ? FormMain.Config.Gui48_Win : FormMain.Config.Gui48_Defeat);
+            bmpWin = new VCImage48(this, textColon.NextLeft(), bmpTypeFlag.ShiftY, winner ? FormMain.Config.Gui48_Win : FormMain.Config.Gui48_Defeat);
             bmpWin.ShowBorder = true;
 
             btnViewResult = new VCButton(this, bmpWin.NextLeft(), 16, "Итоги");
