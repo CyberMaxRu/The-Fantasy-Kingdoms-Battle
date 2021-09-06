@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
-using System.Windows.Forms;
-using System.Drawing;
+﻿using System.Drawing;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -17,7 +10,7 @@ namespace Fantasy_Kingdoms_Battle
         {
         }
 
-        // Методы для потомков для поддержки работы с ячейкой
+        // Методы для поддержки работы с ячейкой
         internal abstract int GetImageIndex();
         internal virtual bool GetNormalImage() => true;
         internal virtual int GetLevel() => 0;
