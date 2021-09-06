@@ -7,9 +7,9 @@ using System.Xml;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal abstract class TypeSmallEntity : TypeEntity
+    internal abstract class DescriptorSmallEntity : DescriptorEntity
     {
-        public TypeSmallEntity(XmlNode n) : base(n)
+        public DescriptorSmallEntity(XmlNode n) : base(n)
         {
 
         }

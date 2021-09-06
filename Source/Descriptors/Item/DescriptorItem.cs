@@ -11,11 +11,11 @@ namespace Fantasy_Kingdoms_Battle
     internal enum CategoryItem { Potion, Enchant, Artifact, Elixir, Thing, MeleeWeapon, RangeWeapon, MageWeapon, MeleeArmour, RangeArmour, MageArmour, Quiver }
 
     // Класс предмета
-    internal sealed class TypeItem : TypeSmallEntity
+    internal sealed class DescriptorItem : DescriptorSmallEntity
     {
         private string nameGroupItem;
 
-        public TypeItem(XmlNode n) : base(n)
+        public DescriptorItem(XmlNode n) : base(n)
         {
             CategoryItem = (CategoryItem)Enum.Parse(typeof(CategoryItem), n.SelectSingleNode("CategoryItem").InnerText);
             nameGroupItem = XmlUtils.GetString(n, "GroupItem");
@@ -43,7 +43,7 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(QuantityShots == 0);
             }
 
-            UsedByTypeCreature = new List<TypeCreature>();
+            UsedByTypeCreature = new List<DescriptorCreature>();
             /*switch (TypeAttack)
             {
                 case TypeAttack.None:
@@ -70,7 +70,7 @@ namespace Fantasy_Kingdoms_Battle
             Position = FormMain.Config.Items.Count;
 
             // Проверяем, что таких же ID и наименования нет
-            foreach (TypeItem i in FormMain.Config.Items)
+            foreach (DescriptorItem i in FormMain.Config.Items)
             {
                 if (i.ID == ID)
                     throw new Exception("В конфигурации предметов повторяется ID = " + ID);
@@ -85,7 +85,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal CategoryItem CategoryItem { get; }
         internal GroupItem GroupItem { get; private set; }
-        internal List<TypeCreature> UsedByTypeCreature { get; }
+        internal List<DescriptorCreature> UsedByTypeCreature { get; }
         internal int Position { get; }
         internal int TimeHit { get; }
         internal double VelocityMissile { get; }

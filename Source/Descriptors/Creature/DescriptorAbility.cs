@@ -14,10 +14,10 @@ namespace Fantasy_Kingdoms_Battle
     internal enum TypeTarget { Self, EnemyUnit, EnemyBuilding, AllyUnit }// Тип цели для способности
     internal enum Effect { Taunt, Slow }// Эффекты
 
-    internal sealed class TypeAbility : TypeSmallEntity
+    internal sealed class DescriptorAbility : DescriptorSmallEntity
     {
         private List<string> classesHeroesString = new List<string>();
-        public TypeAbility(XmlNode n) : base(n)
+        public DescriptorAbility(XmlNode n) : base(n)
         {
             KindAbility = (KindAbility)Enum.Parse(typeof(KindAbility), n.SelectSingleNode("KindAbility").InnerText);
             TypeTarget = (TypeTarget)Enum.Parse(typeof(TypeTarget), n.SelectSingleNode("TypeTarget").InnerText);
@@ -30,7 +30,7 @@ namespace Fantasy_Kingdoms_Battle
             ManaCost = n.SelectSingleNode("ManaCost") != null ? Convert.ToInt32(n.SelectSingleNode("ManaCost").InnerText) : 0;
 
             // Проверяем, что таких же ID и наименования нет
-            foreach (TypeAbility a in FormMain.Config.Abilities)
+            foreach (DescriptorAbility a in FormMain.Config.Abilities)
             {
                 if (a.ID == ID)
                     throw new Exception("В конфигурации способностей повторяется ID = " + ID);
@@ -118,7 +118,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int ManaCost { get; }
         internal int CoolDown { get; }
         internal List<Effect> Effects { get; } = new List<Effect>();
-        internal List<TypeCreature> ClassesHeroes { get; } = new List<TypeCreature>();
+        internal List<DescriptorCreature> ClassesHeroes { get; } = new List<DescriptorCreature>();
 
         internal void TuneDeferredLinks()
         {
@@ -129,7 +129,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Description += (Description.Length > 0 ? Environment.NewLine : "") + "- Доступно:";
 
-            foreach (TypeCreature u in ClassesHeroes)
+            foreach (DescriptorCreature u in ClassesHeroes)
             {
                 Description += Environment.NewLine + "  - " + u.Name;
             }

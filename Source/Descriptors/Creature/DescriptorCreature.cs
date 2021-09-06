@@ -8,7 +8,7 @@ namespace Fantasy_Kingdoms_Battle
     internal enum CategoryCreature { Citizen, Hero, Monster };
 
     // Базовый тип существа
-    internal sealed class TypeCreature : TypeEntity
+    internal sealed class DescriptorCreature : DescriptorEntity
     {
         private string nameMeleeWeapon;
         private string nameRangeWeapon;
@@ -16,7 +16,7 @@ namespace Fantasy_Kingdoms_Battle
         private string nameFromTypeHero = "";
         private string surnameFromTypeHero = "";
 
-        public TypeCreature(XmlNode n) : base(n)
+        public DescriptorCreature(XmlNode n) : base(n)
         {
             CategoryCreature = (CategoryCreature)Enum.Parse(typeof(CategoryCreature), n.SelectSingleNode("CategoryCreature").InnerText);
             KindCreature = FormMain.Config.FindKindCreature(XmlUtils.GetStringNotNull(n, "KindCreature"));
@@ -70,14 +70,14 @@ namespace Fantasy_Kingdoms_Battle
             XmlNode na = n.SelectSingleNode("Abilities");
             if (na != null)
             {
-                TypeAbility a;
+                DescriptorAbility a;
 
                 foreach (XmlNode l in na.SelectNodes("Ability"))
                 {
                     a = FormMain.Config.FindAbility(l.InnerText);
 
                     // Проверяем, что такая способность не повторяется
-                    foreach (TypeAbility a2 in Abilities)
+                    foreach (DescriptorAbility a2 in Abilities)
                     {
                         if (a.ID == a2.ID)
                             throw new Exception("Способность " + a.ID + " повторяется в списке способностей героя.");
@@ -91,14 +91,14 @@ namespace Fantasy_Kingdoms_Battle
             XmlNode ni = n.SelectSingleNode("Inventory");
             if (ni != null)
             {
-                TypeItem a;
+                DescriptorItem a;
 
                 foreach (XmlNode l in ni.SelectNodes("Item"))
                 {
                     a = FormMain.Config.FindItem(XmlUtils.GetStringNotNull(l, "ID"));
 
                     // Проверяем, что такая способность не повторяется
-                    foreach (TypeAbility a2 in Abilities)
+                    foreach (DescriptorAbility a2 in Abilities)
                     {
                         if (a.ID == a2.ID)
                             throw new Exception("Способность " + a.ID + " повторяется в списке способностей героя.");
@@ -109,7 +109,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Проверяем, что таких же ID и наименования нет
-            foreach (TypeCreature h in FormMain.Config.TypeCreatures)
+            foreach (DescriptorCreature h in FormMain.Config.TypeCreatures)
             {
                 if (h.ID == ID)
                 {
@@ -139,7 +139,7 @@ namespace Fantasy_Kingdoms_Battle
             XmlNode nc = n.SelectSingleNode("CarryItems");
             if (nc != null)
             {
-                TypeItem item;
+                DescriptorItem item;
                 int maxQuantity;
 
                 foreach (XmlNode l in nc.SelectNodes("CarryItem"))
@@ -190,7 +190,7 @@ namespace Fantasy_Kingdoms_Battle
 
 
             // Загружаем награду
-            TypeReward = new TypeReward(n.SelectSingleNode("Reward"));
+            TypeReward = new DescriptorReward(n.SelectSingleNode("Reward"));
 
             void LoadName(string nodes, string node, List<string> list)
             {
@@ -218,26 +218,26 @@ namespace Fantasy_Kingdoms_Battle
         internal StateCreature PersistentStateHeroAtMap { get; set; }
         internal HeroParameters ParametersByHire { get; }// Параметры при создании существа
         internal ConfigNextLevelHero ConfigNextLevel { get; }
-        internal List<TypeAbility> Abilities { get; } = new List<TypeAbility>();// Способности существа
+        internal List<DescriptorAbility> Abilities { get; } = new List<DescriptorAbility>();// Способности существа
         internal int DefaultPositionPriority { get; private set; }// Приоритет расположения на поле боя по умолчанию
-        internal TypeAttack TypeAttackMelee { get;}// Тип рукопашной атаки
-        internal TypeAttack TypeAttackRange { get; }// Тип дистанционной атаки
-        internal TypeItem WeaponMelee { get; private set; }// Рукопашное оружие
-        internal TypeItem WeaponRange { get; private set; }// Стрелковое оружие
-        internal TypeItem Armour { get; private set; }// Доспех по умолчанию
-        internal TypeReward TypeReward { get; }// Награда за убийство существа
+        internal DescriptorAttack TypeAttackMelee { get;}// Тип рукопашной атаки
+        internal DescriptorAttack TypeAttackRange { get; }// Тип дистанционной атаки
+        internal DescriptorItem WeaponMelee { get; private set; }// Рукопашное оружие
+        internal DescriptorItem WeaponRange { get; private set; }// Стрелковое оружие
+        internal DescriptorItem Armour { get; private set; }// Доспех по умолчанию
+        internal DescriptorReward TypeReward { get; }// Награда за убийство существа
         internal int Cost { get; }
-        internal TypeConstruction Construction { get; }
+        internal DescriptorConstruction Construction { get; }
         internal bool CanBuild { get; }
-        internal Dictionary<TypeItem, int> CarryItems { get; } = new Dictionary<TypeItem, int>();
+        internal Dictionary<DescriptorItem, int> CarryItems { get; } = new Dictionary<DescriptorItem, int>();
         internal List<PlayerItem> Inventory { get; } = new List<PlayerItem>();// Инвентарь
         internal string PrefixName { get; }
         internal List<string> Names { get; } = new List<string>();
         internal List<string> Surnames { get; } = new List<string>();
-        internal TypeCreature NameFromTypeHero { get; private set; }
-        internal TypeCreature SurnameFromTypeHero { get; private set; }
+        internal DescriptorCreature NameFromTypeHero { get; private set; }
+        internal DescriptorCreature SurnameFromTypeHero { get; private set; }
 
-        internal int MaxQuantityItem(TypeItem i)
+        internal int MaxQuantityItem(DescriptorItem i)
         {
             return CarryItems.ContainsKey(i) ? CarryItems[i] : 0;
         }
@@ -259,7 +259,7 @@ namespace Fantasy_Kingdoms_Battle
                     throw new Exception("Класс героя " + ID + " отсутствует в списке доступных для способности " + a.ID);
             */
 
-            foreach (TypeAbility a in Abilities)
+            foreach (DescriptorAbility a in Abilities)
             {
                 Debug.Assert(a.ClassesHeroes.IndexOf(this) != -1, $"Типу существа {ID} не доступна стартовая способность {a.ID}.");
             }

@@ -4,13 +4,13 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    // Базовый тип для всех сущностей - сооружений, существ, умений, предметов и т.д.
-    internal abstract class TypeEntity
+    // Базовый описатель для всех сущностей - сооружений, существ, умений, предметов и т.д.
+    internal abstract class DescriptorEntity
     {
         private string name;
         private int imageIndex;
 
-        public TypeEntity(XmlNode n)
+        public DescriptorEntity(XmlNode n)
         {
             Config = FormMain.Config;
 
@@ -26,7 +26,7 @@ namespace Fantasy_Kingdoms_Battle
             CheckData();
         }
 
-        public TypeEntity(string id, string name, string description, int imageIndex)
+        public DescriptorEntity(string id, string name, string description, int imageIndex)
         {
             Config = FormMain.Config;
 

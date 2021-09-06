@@ -9,9 +9,9 @@ using System.Xml;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс типы награды
-    internal sealed class TypeReward
+    internal sealed class DescriptorReward
     {
-        public TypeReward(XmlNode n)
+        public DescriptorReward(XmlNode n)
         {
             Gold = XmlUtils.GetInteger(n, "Gold");
             Greatness = XmlUtils.GetInteger(n, "Greatness");

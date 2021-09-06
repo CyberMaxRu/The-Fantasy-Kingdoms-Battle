@@ -122,7 +122,7 @@ namespace Fantasy_Kingdoms_Battle
             xmlDoc = CreateXmlDocument(@"Config\TypeConstructions.xml");
             foreach (XmlNode n in xmlDoc.SelectNodes("/TypeConstructions/TypeConstruction"))
             {
-                TypeConstructions.Add(new TypeConstruction(n));
+                TypeConstructions.Add(new DescriptorConstruction(n));
             }
 
             // Загрузка групп предметов
@@ -138,7 +138,7 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (XmlNode n in xmlDoc.SelectNodes("/Items/Item"))
             {
-                Items.Add(new TypeItem(n));
+                Items.Add(new DescriptorItem(n));
             }
 
             // Загрузка конфигурации типов рукопашной атаки
@@ -146,7 +146,7 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (XmlNode n in xmlDoc.SelectNodes("/TypesAttack/TypeAttack"))
             {
-                TypeAttacks.Add(new TypeAttack(n));
+                TypeAttacks.Add(new DescriptorAttack(n));
             }
 
             // Загрузка конфигурации способностей
@@ -154,7 +154,7 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (XmlNode n in xmlDoc.SelectNodes("/TypeAbilities/TypeAbility"))
             {
-                Abilities.Add(new TypeAbility(n));
+                Abilities.Add(new DescriptorAbility(n));
             }
 
             // Загрузка конфигурации специализаций
@@ -162,7 +162,7 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (XmlNode n in xmlDoc.SelectNodes("/Specializations/Specialization"))
             {
-                Specializations.Add(new TypeSpecialization(n));
+                Specializations.Add(new DescriptorSpecialization(n));
             }
 
             // Загрузка конфигурации вторичных навыков
@@ -170,7 +170,7 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (XmlNode n in xmlDoc.SelectNodes("/SecondarySkills/SecondarySkill"))
             {
-                SecondarySkills.Add(new TypeSecondarySkill(n));
+                SecondarySkills.Add(new DescriptorSecondarySkill(n));
             }
 
             // Загрузка конфигурации состояний существ
@@ -194,26 +194,26 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (XmlNode n in xmlDoc.SelectNodes("/TypeCreatures/TypeCreature"))
             {
-                TypeCreatures.Add(new TypeCreature(n));
+                TypeCreatures.Add(new DescriptorCreature(n));
             }
 
             // Настраиваем связи
-            foreach (TypeAbility a in Abilities)
+            foreach (DescriptorAbility a in Abilities)
                 a.TuneDeferredLinks();
 
-            foreach (TypeSpecialization s in Specializations)
+            foreach (DescriptorSpecialization s in Specializations)
                 s.TuneDeferredLinks();
 
-            foreach (TypeSecondarySkill ss in SecondarySkills)
+            foreach (DescriptorSecondarySkill ss in SecondarySkills)
                 ss.TuneDeferredLinks();
 
-            foreach (TypeItem i in Items)
+            foreach (DescriptorItem i in Items)
                 i.TuneDeferredLinks();
 
-            foreach (TypeCreature tc in TypeCreatures)
+            foreach (DescriptorCreature tc in TypeCreatures)
                 tc.TuneDeferredLinks();
 
-            foreach (TypeConstruction tc in TypeConstructions)
+            foreach (DescriptorConstruction tc in TypeConstructions)
                 tc.TuneDeferredLinks();
 
             foreach (TypeLobby tl in TypeLobbies)
@@ -234,19 +234,19 @@ namespace Fantasy_Kingdoms_Battle
         internal List<ComputerPlayer> ComputerPlayers { get; } = new List<ComputerPlayer>();
         internal List<HumanPlayer> HumanPlayers { get; } = new List<HumanPlayer>();
         internal bool AutoCreatedPlayer { get; }
-        internal List<TypeConstruction> TypeConstructions { get; } = new List<TypeConstruction>();
+        internal List<DescriptorConstruction> TypeConstructions { get; } = new List<DescriptorConstruction>();
 
         //
-        internal List<TypeAttack> TypeAttacks { get; } = new List<TypeAttack>();
-        internal List<TypeAbility> Abilities { get; } = new List<TypeAbility>();
-        internal List<TypeSpecialization> Specializations { get; } = new List<TypeSpecialization>();
-        internal List<TypeSecondarySkill> SecondarySkills { get; } = new List<TypeSecondarySkill>();
+        internal List<DescriptorAttack> TypeAttacks { get; } = new List<DescriptorAttack>();
+        internal List<DescriptorAbility> Abilities { get; } = new List<DescriptorAbility>();
+        internal List<DescriptorSpecialization> Specializations { get; } = new List<DescriptorSpecialization>();
+        internal List<DescriptorSecondarySkill> SecondarySkills { get; } = new List<DescriptorSecondarySkill>();
         internal List<StateCreature> StatesCreature { get; } = new List<StateCreature>();
         internal List<KindCreature> KindCreatures { get; } = new List<KindCreature>();
         internal List<GroupItem> GroupItem { get; } = new List<GroupItem>();
-        internal List<TypeItem> Items { get; } = new List<TypeItem>();
+        internal List<DescriptorItem> Items { get; } = new List<DescriptorItem>();
         internal int MaxLevelSkill { get; }
-        internal List<TypeCreature> TypeCreatures { get; } = new List<TypeCreature>();
+        internal List<DescriptorCreature> TypeCreatures { get; } = new List<DescriptorCreature>();
 
         //
         internal List<string> ExternalAvatars { get; } = new List<string>();
@@ -373,9 +373,9 @@ namespace Fantasy_Kingdoms_Battle
         internal Pen PenSelectedBorder { get; private set; }
 
         //
-        internal TypeConstruction FindTypeConstruction(string ID, bool mustBeExists = true)
+        internal DescriptorConstruction FindTypeConstruction(string ID, bool mustBeExists = true)
         {
-            foreach (TypeConstruction tck in TypeConstructions)
+            foreach (DescriptorConstruction tck in TypeConstructions)
             {
                 if (tck.ID == ID)
                     return tck;
@@ -386,9 +386,9 @@ namespace Fantasy_Kingdoms_Battle
             return null;
         }
 
-        internal TypeItem FindItem(string ID, bool mustBeExists = true)
+        internal DescriptorItem FindItem(string ID, bool mustBeExists = true)
         {
-            foreach (TypeItem i in Items)
+            foreach (DescriptorItem i in Items)
             {
                 if (i.ID == ID)
                     return i;
@@ -400,11 +400,11 @@ namespace Fantasy_Kingdoms_Battle
             return null;
         }
 
-        internal TypeAttack FindTypeAttack(string ID)
+        internal DescriptorAttack FindTypeAttack(string ID)
         {
             Debug.Assert(ID.Length > 0);
 
-            foreach (TypeAttack ta in TypeAttacks)
+            foreach (DescriptorAttack ta in TypeAttacks)
             {
                 if (ta.ID == ID)
                     return ta;
@@ -413,9 +413,9 @@ namespace Fantasy_Kingdoms_Battle
             throw new Exception("Тип атаки " + ID + " не найден.");
         }
 
-        internal TypeAbility FindAbility(string ID, bool mustBeExists = true)
+        internal DescriptorAbility FindAbility(string ID, bool mustBeExists = true)
         {
-            foreach (TypeAbility a in Abilities)
+            foreach (DescriptorAbility a in Abilities)
             {
                 if (a.ID == ID)
                     return a;
@@ -461,9 +461,9 @@ namespace Fantasy_Kingdoms_Battle
             throw new Exception("Вид существа " + ID + " не найден.");
         }
 
-        internal TypeSpecialization FindSpecialization(string ID)
+        internal DescriptorSpecialization FindSpecialization(string ID)
         {
-            foreach (TypeSpecialization s in Specializations)
+            foreach (DescriptorSpecialization s in Specializations)
             {
                 if (s.ID == ID)
                     return s;
@@ -472,9 +472,9 @@ namespace Fantasy_Kingdoms_Battle
             throw new Exception("Специализация " + ID + " не найдена.");
         }
 
-        internal TypeSecondarySkill FindSecondarySkill(string ID)
+        internal DescriptorSecondarySkill FindSecondarySkill(string ID)
         {
-            foreach (TypeSecondarySkill ss in SecondarySkills)
+            foreach (DescriptorSecondarySkill ss in SecondarySkills)
             {
                 if (ss.ID == ID)
                     return ss;
@@ -483,9 +483,9 @@ namespace Fantasy_Kingdoms_Battle
             throw new Exception("Вторичный навык " + ID + " не найден.");
         }
 
-        internal TypeCreature FindTypeCreature(string ID)
+        internal DescriptorCreature FindTypeCreature(string ID)
         {
-            foreach (TypeCreature tc in TypeCreatures)
+            foreach (DescriptorCreature tc in TypeCreatures)
             {
                 if (tc.ID == ID)
                     return tc;

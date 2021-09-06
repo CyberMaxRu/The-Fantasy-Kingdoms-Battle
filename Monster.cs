@@ -11,7 +11,7 @@ namespace Fantasy_Kingdoms_Battle
     // Класс монстра в логове
     internal sealed class Monster : Creature
     {
-        public Monster(TypeCreature tm, int level, BattleParticipant bp) : base(tm, bp)
+        public Monster(DescriptorCreature tm, int level, BattleParticipant bp) : base(tm, bp)
         {
             Debug.Assert(tm != null);
             Debug.Assert(level > 0);

@@ -15,7 +15,7 @@ namespace Fantasy_Kingdoms_Battle
         private VCCell panelEntity;
         private static int sequenceID = 0;// Генератор уникального кода героя
 
-        public Creature(TypeCreature tc, BattleParticipant bp)
+        public Creature(DescriptorCreature tc, BattleParticipant bp)
         {
             TypeCreature = tc;
             BattleParticipant = bp;
@@ -24,7 +24,7 @@ namespace Fantasy_Kingdoms_Battle
             StateCreature = TypeCreature.PersistentStateHeroAtMap;
 
             // Применяем дефолтные способности
-            foreach (TypeAbility ta in TypeCreature.Abilities)
+            foreach (DescriptorAbility ta in TypeCreature.Abilities)
                 Abilities.Add(new CreatureAbility(this, ta));
             Specialization = new Specialization(this, FormMain.Config.FindSpecialization("SpeedMove"));
             SecondarySkills.Add(new SecondarySkill(this, FormMain.Config.FindSecondarySkill("Health")));
@@ -61,7 +61,7 @@ namespace Fantasy_Kingdoms_Battle
                 Level = 1;
         }
         internal int IDCreature { get; }// Уникальный код существа
-        internal TypeCreature TypeCreature { get; }
+        internal DescriptorCreature TypeCreature { get; }
         internal BattleParticipant BattleParticipant { get; }
         internal int Level { get; private set; }// Уровень существа
         internal HeroParameters ParametersBase { get; }// Свои параметры, без учета амуниции

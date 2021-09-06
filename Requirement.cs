@@ -21,7 +21,7 @@ namespace Fantasy_Kingdoms_Battle
             Level = l;
         }
 
-        internal TypeConstruction Construction { get; private set; }
+        internal DescriptorConstruction Construction { get; private set; }
         internal int Level { get; }
 
         internal void FindConstruction()

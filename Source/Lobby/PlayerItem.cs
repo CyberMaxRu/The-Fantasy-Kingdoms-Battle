@@ -12,7 +12,7 @@ namespace Fantasy_Kingdoms_Battle
     // Класс предмета у игрока (находящегося на герое или на складе)
     internal sealed class PlayerItem : SmallEntity
     {
-        public PlayerItem(TypeItem i, int quantity, bool ownerIsPlayer)
+        public PlayerItem(DescriptorItem i, int quantity, bool ownerIsPlayer)
         {
             Debug.Assert(i != null);
             Debug.Assert(quantity > 0);
@@ -22,7 +22,7 @@ namespace Fantasy_Kingdoms_Battle
             OwnerIsPlayer = ownerIsPlayer;
         }
 
-        internal TypeItem Item { get; }
+        internal DescriptorItem Item { get; }
         internal int Quantity { get; set; }// Количество предметов
         internal bool OwnerIsPlayer { get; set; }
 

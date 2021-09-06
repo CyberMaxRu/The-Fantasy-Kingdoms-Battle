@@ -34,7 +34,7 @@ namespace Fantasy_Kingdoms_Battle
             //Debug.Assert(QuantityRespawn <= 49);
         }
 
-        internal TypeCreature Monster { get; private set; }
+        internal DescriptorCreature Monster { get; private set; }
         internal int StartQuantity { get; }
         internal int MaxQuantity { get; }
         internal int Level { get; }

@@ -68,7 +68,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Инициализация зданий
-            foreach (TypeConstruction tck in FormMain.Config.TypeConstructions)
+            foreach (DescriptorConstruction tck in FormMain.Config.TypeConstructions)
             {
                 if (tck.IsInternalConstruction)
                     new PlayerConstruction(this, tck);
@@ -222,7 +222,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        private void CreateExternalConstructions(TypeConstruction typeConstruction, int level, int layer, int quantity)
+        private void CreateExternalConstructions(DescriptorConstruction typeConstruction, int level, int layer, int quantity)
         {
             Debug.Assert((typeConstruction.Category == CategoryConstruction.External) || (typeConstruction.Category == CategoryConstruction.BasePlace) || (typeConstruction.Category == CategoryConstruction.Place));
             Debug.Assert(level <= typeConstruction.MaxLevel);
@@ -428,7 +428,7 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.LairsWithFlagChanged();
         }
 
-        internal PlayerConstruction GetPlayerConstruction(TypeConstruction b)
+        internal PlayerConstruction GetPlayerConstruction(DescriptorConstruction b)
         {
             Debug.Assert(b != null);
 
@@ -480,7 +480,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         // Поиск слота для предмета
-        internal int FindSlotWithItem(TypeItem item)
+        internal int FindSlotWithItem(DescriptorItem item)
         {
             for (int i = 0; i < Warehouse.Length; i++)
             {
@@ -491,7 +491,7 @@ namespace Fantasy_Kingdoms_Battle
             return -1;
         }
 
-        private int FindSlotForItem(TypeItem item)
+        private int FindSlotForItem(DescriptorItem item)
         {
             // Сначала ищем, есть ли такой предмет в слоте
             int number = FindSlotWithItem(item);
@@ -901,7 +901,7 @@ namespace Fantasy_Kingdoms_Battle
             int idxTypeLair;
             for (int layer = 0; layer < Lobby.TypeLobby.LairsLayers; layer++)
             {
-                List<TypeConstruction> lairs = new List<TypeConstruction>();
+                List<DescriptorConstruction> lairs = new List<DescriptorConstruction>();
                 lairs.AddRange(Lobby.Lairs[layer]);
                 List<Point> cells = GetCells();
                 Debug.Assert(cells.Count <= lairs.Count);
@@ -955,9 +955,9 @@ namespace Fantasy_Kingdoms_Battle
             Builders += sb.Builders;
             FreeBuilders += sb.Builders;
             CreateExternalConstructions(FormMain.Config.FindTypeConstruction(FormMain.Config.IDPeasantHouse), 1, 0, sb.PeasantHouse);
-            TypeConstruction holyPlace = FormMain.Config.FindTypeConstruction(FormMain.Config.IDHolyPlace);
+            DescriptorConstruction holyPlace = FormMain.Config.FindTypeConstruction(FormMain.Config.IDHolyPlace);
             CreateExternalConstructions(holyPlace, holyPlace.DefaultLevel, 0, sb.HolyPlace);
-            TypeConstruction tradePost = FormMain.Config.FindTypeConstruction(FormMain.Config.IDTradePost);
+            DescriptorConstruction tradePost = FormMain.Config.FindTypeConstruction(FormMain.Config.IDTradePost);
             CreateExternalConstructions(tradePost, tradePost.DefaultLevel, 0, sb.TradePlace);
             ScoutRandomLair(sb.Scouting);
 
@@ -1061,7 +1061,7 @@ namespace Fantasy_Kingdoms_Battle
             return g;
         }
 
-        internal bool CanBuildTypeConstruction(TypeConstruction type)
+        internal bool CanBuildTypeConstruction(DescriptorConstruction type)
         {
             // Сначала проверяем наличие золота
             if (Gold < type.Levels[1].Cost)
@@ -1075,7 +1075,7 @@ namespace Fantasy_Kingdoms_Battle
             return CheckRequirements(type.Levels[1].Requirements);
         }
 
-        internal List<TextRequirement> GetTextRequirementsBuildTypeConstruction(TypeConstruction type)
+        internal List<TextRequirement> GetTextRequirementsBuildTypeConstruction(DescriptorConstruction type)
         {
             List<TextRequirement> list = new List<TextRequirement>();
 
@@ -1084,7 +1084,7 @@ namespace Fantasy_Kingdoms_Battle
             return list;
         }
 
-        internal void PrepareHintForBuildTypeConstruction(TypeConstruction type)
+        internal void PrepareHintForBuildTypeConstruction(DescriptorConstruction type)
         {
             Program.formMain.formHint.AddStep1Header(type.Name, "Уровень 1", type.Description);
             Program.formMain.formHint.AddStep2Income(type.Levels[1].Income);

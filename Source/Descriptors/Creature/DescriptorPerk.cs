@@ -9,9 +9,9 @@ using System.Xml;
 namespace Fantasy_Kingdoms_Battle
 {
     // Типы перков существ
-    internal sealed class TypePerk : TypeEntity
+    internal sealed class DescriptorPerk : DescriptorEntity
     {
-        public TypePerk(XmlNode n) : base(n)
+        public DescriptorPerk(XmlNode n) : base(n)
         {
 
         }

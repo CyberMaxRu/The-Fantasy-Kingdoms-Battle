@@ -8,14 +8,14 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class Specialization : SmallEntity
     {
-        public Specialization(Creature c, TypeSpecialization type) : base()
+        public Specialization(Creature c, DescriptorSpecialization type) : base()
         {
             Creature = c;
             TypeSpecialization = type;
         }
 
         internal Creature Creature { get; }
-        internal TypeSpecialization TypeSpecialization { get; }
+        internal DescriptorSpecialization TypeSpecialization { get; }
 
         internal override string GetCost()
         {

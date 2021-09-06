@@ -9,16 +9,16 @@ using System.Diagnostics;
 namespace Fantasy_Kingdoms_Battle
 {
     internal enum KindAttack { Melee, Range, Magic };
-    internal class TypeAttack
+    internal class DescriptorAttack
     {
-        public TypeAttack(XmlNode n)
+        public DescriptorAttack(XmlNode n)
         {
             ID = XmlUtils.GetStringNotNull(n, "ID");
             Name = XmlUtils.GetStringNotNull(n, "Name");
             KindAttack = (KindAttack)Enum.Parse(typeof(KindAttack), XmlUtils.GetStringNotNull(n, "KindAttack"));
             IsWeapon = XmlUtils.GetBooleanNotNull(n, "IsWeapon");
 
-            foreach (TypeAttack ta in FormMain.Config.TypeAttacks)
+            foreach (DescriptorAttack ta in FormMain.Config.TypeAttacks)
             {
                 Debug.Assert(ta.ID != ID);
                 Debug.Assert(ta.Name != Name);

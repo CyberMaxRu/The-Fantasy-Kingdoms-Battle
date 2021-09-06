@@ -9,7 +9,7 @@ using System.Diagnostics;
 namespace Fantasy_Kingdoms_Battle
 {
     // Тип игрока
-    internal abstract class Player : TypeEntity
+    internal abstract class Player : DescriptorEntity
     {
         public Player(XmlNode n, TypePlayer typePlayer) : base(n)
         {

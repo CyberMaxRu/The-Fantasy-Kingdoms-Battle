@@ -7,9 +7,9 @@ using System.Xml;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal sealed class TypeSpecialization : TypeEntity
+    internal sealed class DescriptorSpecialization : DescriptorSmallEntity
     {
-        public TypeSpecialization(XmlNode n) : base(n)
+        public DescriptorSpecialization(XmlNode n) : base(n)
         {
         }
 

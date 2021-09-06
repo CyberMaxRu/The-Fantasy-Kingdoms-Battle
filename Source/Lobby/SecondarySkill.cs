@@ -8,14 +8,14 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class SecondarySkill : Entity
     {
-        public SecondarySkill(Creature c, TypeSecondarySkill type) : base()
+        public SecondarySkill(Creature c, DescriptorSecondarySkill type) : base()
         {
             Creature = c;
             TypeSecondarySkill = type;
         }
 
         internal Creature Creature { get; }
-        internal TypeSecondarySkill TypeSecondarySkill { get; }
+        internal DescriptorSecondarySkill TypeSecondarySkill { get; }
 
         internal override string GetCost()
         {

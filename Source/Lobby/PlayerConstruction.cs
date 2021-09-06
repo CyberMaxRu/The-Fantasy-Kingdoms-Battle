@@ -13,7 +13,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         private int gold;
 
-        public PlayerConstruction(LobbyPlayer p, TypeConstruction b) : base(p.Lobby)
+        public PlayerConstruction(LobbyPlayer p, DescriptorConstruction b) : base(p.Lobby)
         {
             Player = p;
             TypeConstruction = b;
@@ -42,7 +42,7 @@ namespace Fantasy_Kingdoms_Battle
             //    Gold = Construction.GoldByConstruction;
         }
 
-        public PlayerConstruction(LobbyPlayer p, TypeConstruction l, int level, int x, int y, int layer) : base(p.Lobby)
+        public PlayerConstruction(LobbyPlayer p, DescriptorConstruction l, int level, int x, int y, int layer) : base(p.Lobby)
         {
             Player = p;
             TypeConstruction = l;
@@ -77,7 +77,7 @@ namespace Fantasy_Kingdoms_Battle
             p.Constructions.Add(this);
         }
 
-        internal TypeConstruction TypeConstruction { get; }
+        internal DescriptorConstruction TypeConstruction { get; }
         internal int Level { get; private set; }
         internal bool BuildedOrUpgraded { get; private set; }
         internal int Gold { get => gold; set { Debug.Assert(TypeConstruction.HasTreasury); gold = value; } }
@@ -334,7 +334,7 @@ namespace Fantasy_Kingdoms_Battle
             return h;
         }
 
-        internal PlayerHero HireHero(TypeCreature th)
+        internal PlayerHero HireHero(DescriptorCreature th)
         {
             Debug.Assert(Heroes.Count < MaxHeroes());
             Debug.Assert(Player.CombatHeroes.Count < Player.Lobby.TypeLobby.MaxHeroes);

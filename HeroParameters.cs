@@ -65,7 +65,7 @@ namespace Fantasy_Kingdoms_Battle
             Mana = Magic * CoefMana;
             Stamina = Vitality * CoefStamina;
 
-            ResistAttack = new Dictionary<TypeAttack, int>(FormMain.Config.TypeAttacks.Count);
+            ResistAttack = new Dictionary<DescriptorAttack, int>(FormMain.Config.TypeAttacks.Count);
             XmlNode nra = n.SelectSingleNode("TypeAttackResist");
             if (nra != null)
             {
@@ -101,7 +101,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int Health { get; set; }
         internal int Mana { get; set; }
         internal int Stamina { get; set; }
-        internal Dictionary<TypeAttack, int> ResistAttack { get; }// Сопротивления/предрасположенность к атакам
+        internal Dictionary<DescriptorAttack, int> ResistAttack { get; }// Сопротивления/предрасположенность к атакам
 
         internal int MinMeleeDamage { get; set; }
         internal int MaxMeleeDamage { get; set; }

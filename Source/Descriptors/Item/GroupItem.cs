@@ -9,7 +9,7 @@ using System.Xml;
 namespace Fantasy_Kingdoms_Battle
 {
     // Группа предметов
-    internal sealed class GroupItem : TypeEntity
+    internal sealed class GroupItem : DescriptorEntity
     {
         public GroupItem(XmlNode n) : base(n)
         {
@@ -26,14 +26,14 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal string ShortName { get; }//
-        internal List<TypeItem> Items { get; } = new List<TypeItem>();
-        internal List<TypeCreature> UsedByTypeCreature { get; } = new List<TypeCreature>();
+        internal List<DescriptorItem> Items { get; } = new List<DescriptorItem>();
+        internal List<DescriptorCreature> UsedByTypeCreature { get; } = new List<DescriptorCreature>();
 
         internal override void TuneDeferredLinks()
         {
             Description += (Description.Length > 0 ? Environment.NewLine : "") + "- Используется:";
 
-            foreach (TypeCreature tc in UsedByTypeCreature)
+            foreach (DescriptorCreature tc in UsedByTypeCreature)
             {
                 Description += Environment.NewLine + "  - " + tc.Name;
             }

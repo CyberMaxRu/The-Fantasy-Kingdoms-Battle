@@ -28,7 +28,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        public PlayerHero(PlayerConstruction pb, BattleParticipant bp, TypeCreature th) : base(th, bp)
+        public PlayerHero(PlayerConstruction pb, BattleParticipant bp, DescriptorCreature th) : base(th, bp)
         {
             Construction = pb;
             DayOfHire = Player.Lobby.Day;
@@ -38,7 +38,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal PlayerConstruction Construction { get; }// Здание, которому принадлежит герой
         internal LobbyPlayer Player => Construction.Player;// Игрок, которому принадлежит герой
-        internal TypeCreature TypeHero { get; } // Класс героя
+        internal DescriptorCreature TypeHero { get; } // Класс героя
         internal string FullName { get; }// Полное имя
         internal int Gold { get; private set; }// Количество золота у героя
 
@@ -74,7 +74,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Construction.Player.CombatHeroes.IndexOf(this) == -1);
         }
 
-        internal int FindSlotWithItem(TypeItem item)
+        internal int FindSlotWithItem(DescriptorItem item)
         {
             // Сначала ищем слот, заполненный таким же предметом
             for (int i = 0; i < Inventory.Count; i++)
@@ -84,7 +84,7 @@ namespace Fantasy_Kingdoms_Battle
             return -1;
         }
 
-        internal int FindCellForItem(TypeItem item)
+        internal int FindCellForItem(DescriptorItem item)
         {
             int number = FindSlotWithItem(item);
             if (number != -1)

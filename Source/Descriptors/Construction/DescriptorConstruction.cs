@@ -16,12 +16,12 @@ namespace Fantasy_Kingdoms_Battle
     internal enum TypeFlag { None, Scout, Attack, Defense, Battle };// Тип флага
 
     // Тип сооружения - базовый класс для всех зданий, построек и мест
-    internal sealed class TypeConstruction : TypeEntity
+    internal sealed class DescriptorConstruction : DescriptorEntity
     {
         private readonly Uri uriSoundSelect;// Звук при выборе объекта
         private string nameTypePlaceForConstruct;
 
-        public TypeConstruction(XmlNode n) : base(n)
+        public DescriptorConstruction(XmlNode n) : base(n)
         {
             Category = (CategoryConstruction)Enum.Parse(typeof(CategoryConstruction), GetStringNotNull(n, "Category"));
             IsInternalConstruction = (Category == CategoryConstruction.Guild) || (Category == CategoryConstruction.Economic) || (Category == CategoryConstruction.Temple) || (Category == CategoryConstruction.Military);
@@ -81,7 +81,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Проверяем, что таких же ID и наименования нет
-            foreach (TypeConstruction tec in Config.TypeConstructions)
+            foreach (DescriptorConstruction tec in Config.TypeConstructions)
             {
                 Debug.Assert(tec.ID != ID);
                 Debug.Assert(tec.Name != Name);
@@ -164,9 +164,9 @@ namespace Fantasy_Kingdoms_Battle
 
             // Информация о награде
             if (n.SelectSingleNode("Reward") != null)
-                TypeReward = new TypeReward(n.SelectSingleNode("Reward"));
+                TypeReward = new DescriptorReward(n.SelectSingleNode("Reward"));
             if (n.SelectSingleNode("HiddenReward") != null)
-                HiddenReward = new TypeReward(n.SelectSingleNode("HiddenReward"));
+                HiddenReward = new DescriptorReward(n.SelectSingleNode("HiddenReward"));
 
             if (IsInternalConstruction)
             {
@@ -238,13 +238,13 @@ namespace Fantasy_Kingdoms_Battle
         internal LevelConstruction[] Levels;
 
         internal PanelConstruction Panel { get; set; }
-        internal TypeCreature TrainedHero { get; set; }
+        internal DescriptorCreature TrainedHero { get; set; }
 
         // Свойства, относящиеся к логовам монстров
         internal List<MonsterLevelLair> Monsters { get; } = new List<MonsterLevelLair>();
-        internal TypeReward TypeReward { get; }// Награда за зачистку логова
-        internal TypeReward HiddenReward { get; }// Скрытая награда за зачистку логова
-        internal TypeConstruction TypePlaceForConstruct { get; private set; }// Тип сооружения, на котором строится сооружение
+        internal DescriptorReward TypeReward { get; }// Награда за зачистку логова
+        internal DescriptorReward HiddenReward { get; }// Скрытая награда за зачистку логова
+        internal DescriptorConstruction TypePlaceForConstruct { get; private set; }// Тип сооружения, на котором строится сооружение
 
         internal void PlaySoundSelect()
         {

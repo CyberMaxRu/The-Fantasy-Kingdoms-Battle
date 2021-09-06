@@ -10,14 +10,14 @@ namespace Fantasy_Kingdoms_Battle
     // Cпособность у существа
     internal sealed class CreatureAbility : SmallEntity
     {
-        public CreatureAbility(Creature creature, TypeAbility typeAbility)
+        public CreatureAbility(Creature creature, DescriptorAbility typeAbility)
         {
             Creature = creature;
             TypeAbility = typeAbility;
         }
 
         internal Creature Creature { get; }
-        internal TypeAbility TypeAbility { get; }
+        internal DescriptorAbility TypeAbility { get; }
 
         public BitmapList BitmapList()
         {
