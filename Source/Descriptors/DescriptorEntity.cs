@@ -19,9 +19,9 @@ namespace Fantasy_Kingdoms_Battle
             Description = GetDescription(n, "Description");
             // Для удобства людей, нумерация иконов в конфигурации идет с 1, а не с 0.
             // Так как нумерация иконок в Gui48 идет с 0, добавляем сдвиг номера при добавлении после объектов128
-            imageIndex = GetIntegerNotNull(n, "ImageIndex")
-                + (GetIntegerNotNull(n, "ImageIndex") != FormMain.IMAGE_INDEX_CURRENT_AVATAR ? -1 : 0)
-                + ShiftImageIndex();
+            imageIndex = GetIntegerNotNull(n, "ImageIndex");
+            if (imageIndex > 0)
+                imageIndex += ShiftImageIndex() - 1;
 
             CheckData();
         }
@@ -45,7 +45,7 @@ namespace Fantasy_Kingdoms_Battle
         protected Config Config { get; }
 
         internal virtual void TuneDeferredLinks() { }
-        
+
         protected virtual int ShiftImageIndex() => 0;
 
         protected virtual void CheckData()
