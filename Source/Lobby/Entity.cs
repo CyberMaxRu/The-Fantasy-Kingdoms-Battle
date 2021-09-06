@@ -12,14 +12,6 @@ namespace Fantasy_Kingdoms_Battle
     // Класс сущности для конкретного лобби. Общий для игроков, зданий, предметов, абилок, существ, исследованийи т.д.
     internal abstract class Entity
     {
-        public Entity(XmlNode n)
-        {
-            ID = n.SelectSingleNode("ID").InnerText;
-            Name = n.SelectSingleNode("Name").InnerText;
-            Description = XmlUtils.GetDescription(n, "Description");
-            ImageIndex = XmlUtils.GetInteger(n, "ImageIndex") + FormMain.Config.ImageIndexFirstItems - 1;
-            Cost = XmlUtils.GetInteger(n, "Cost");
-        }
 
         public Entity()
         {
