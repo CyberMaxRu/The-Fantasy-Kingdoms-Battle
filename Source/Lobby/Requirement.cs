@@ -12,13 +12,13 @@ namespace Fantasy_Kingdoms_Battle
     {
         private string nameConstruction;
 
-        public Requirement(string nameRequiredConstruction, int l)
+        public Requirement(string nameRequiredConstruction, int level)
         {
             Debug.Assert(nameRequiredConstruction.Length > 0);
-            Debug.Assert(l >= 0);
+            Debug.Assert(level >= 0);
 
             nameConstruction = nameRequiredConstruction;
-            Level = l;
+            Level = level;
         }
 
         internal DescriptorConstruction Construction { get; private set; }
