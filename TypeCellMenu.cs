@@ -19,7 +19,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Coord = new Point(XmlUtils.GetIntegerNotNull(n, "PosX") - 1, XmlUtils.GetIntegerNotNull(n, "PosY") - 1);
             Layer = XmlUtils.GetIntegerNotNull(n, "Layer") - 1;
-            nameTypeObject = XmlUtils.GetString(n, "TypeObject");
+            nameTypeObject = XmlUtils.GetStringNotNull(n, "TypeObject");
             Cost = XmlUtils.GetInteger(n, "Cost");
             XmlUtils.LoadRequirements(Requirements, n);
 
@@ -38,7 +38,7 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorGroupItem GroupItems { get; }// Исследуемая группа предметов
         internal DescriptorConstruction TypeConstruction { get; set; }// Строимое сооружение
         internal List<Requirement> Requirements { get; } = new List<Requirement>();
-        internal int Cost { get; set; }// Стоимость
+        internal int Cost { get; }// Стоимость
 
         internal void TuneDeferredLinks()
         {
