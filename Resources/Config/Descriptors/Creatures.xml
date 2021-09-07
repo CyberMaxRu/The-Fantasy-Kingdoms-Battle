@@ -288,7 +288,7 @@
     <Construction>GuildRogue</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
-    <TypeAttackMelee>Knife</TypeAttackMelee>
+    <TypeAttackMelee>Dagger</TypeAttackMelee>
     <MeleeWeapon>WeaponRogue0</MeleeWeapon>
     <Armour>ArmourRogue0</Armour>
     <DefaultPositionPriority>20</DefaultPositionPriority>
@@ -417,7 +417,7 @@
     <Construction>GuildHunter</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
-    <TypeAttackMelee>Knife</TypeAttackMelee>
+    <TypeAttackMelee>Dagger</TypeAttackMelee>
     <TypeAttackRange>Arrow</TypeAttackRange>
     <MeleeWeapon>WeaponHunter0</MeleeWeapon>
     <RangeWeapon>BowHunter0</RangeWeapon>
@@ -891,7 +891,7 @@
     <Construction>GuildElf</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
-    <TypeAttackMelee>Knife</TypeAttackMelee>
+    <TypeAttackMelee>Dagger</TypeAttackMelee>
     <TypeAttackRange>Arrow</TypeAttackRange>
     <MeleeWeapon>WeaponElf0</MeleeWeapon>
     <RangeWeapon>BowElf0</RangeWeapon>
@@ -1526,7 +1526,7 @@
     <Construction>GuildBeastmaster</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
-    <TypeAttackMelee>Knife</TypeAttackMelee>
+    <TypeAttackMelee>Dagger</TypeAttackMelee>
     <TypeAttackRange>Bolt</TypeAttackRange>
     <MeleeWeapon>WeaponBeastMaster0</MeleeWeapon>
     <RangeWeapon>BowBeastMaster0</RangeWeapon>
@@ -1623,7 +1623,7 @@
     <Construction>GuildMarksman</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
-    <TypeAttackMelee>Knife</TypeAttackMelee>
+    <TypeAttackMelee>Dagger</TypeAttackMelee>
     <TypeAttackRange>Arrow</TypeAttackRange>
     <MeleeWeapon>WeaponMarksman0</MeleeWeapon>
     <RangeWeapon>BowMarksman0</RangeWeapon>
@@ -1847,7 +1847,7 @@
     <Construction>GuildDeathKnight</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
-    <TypeAttackMelee>Knife</TypeAttackMelee>
+    <TypeAttackMelee>Dagger</TypeAttackMelee>
     <MeleeWeapon>WeaponDeathKnight0</MeleeWeapon>
     <Armour>ArmourDeathKnight0</Armour>
     <DefaultPositionPriority>80</DefaultPositionPriority>

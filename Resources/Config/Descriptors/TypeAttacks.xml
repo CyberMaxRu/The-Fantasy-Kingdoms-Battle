@@ -7,8 +7,8 @@
     <IsWeapon>true</IsWeapon>
   </TypeAttack>
   <TypeAttack>
-    <ID>Knife</ID>
-    <Name>Нож</Name>
+    <ID>Dagger</ID>
+    <Name>Кинжал</Name>
     <KindAttack>Melee</KindAttack>
     <IsWeapon>true</IsWeapon>
   </TypeAttack>
