@@ -12,7 +12,6 @@ namespace Fantasy_Kingdoms_Battle
         private VCLabel labelCost;
         private VCLabel labelLevel;
         protected VCLabel labelQuantity;
-        private const int sizePopupBackground = 18;
         int shiftlabelLevel;
 
         public VCImage(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList, int imageIndex) : base(parent, shiftX, shiftY)
