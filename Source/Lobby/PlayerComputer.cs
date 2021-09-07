@@ -37,28 +37,28 @@ namespace Fantasy_Kingdoms_Battle
             // Покупаем гильдии и нанимаем героев. На этом пока всё
             if (Lobby.Day == 1)
             {
-                GetPlayerConstruction(FormMain.Config.FindTypeConstruction("GuildWarrior")).Build();
-                HireHeroes(GetPlayerConstruction(FormMain.Config.FindTypeConstruction("GuildWarrior")), 4);
+                GetPlayerConstruction(FormMain.Config.FindConstruction("GuildWarrior")).Build();
+                HireHeroes(GetPlayerConstruction(FormMain.Config.FindConstruction("GuildWarrior")), 4);
             }
             else if (Lobby.Day == 2)
             {
-                GetPlayerConstruction(FormMain.Config.FindTypeConstruction("GuildRogue")).Build();
-                HireHeroes(GetPlayerConstruction(FormMain.Config.FindTypeConstruction("GuildRogue")), 4);
+                GetPlayerConstruction(FormMain.Config.FindConstruction("GuildRogue")).Build();
+                HireHeroes(GetPlayerConstruction(FormMain.Config.FindConstruction("GuildRogue")), 4);
             }
             else if (Lobby.Day == 3)
             {
-                GetPlayerConstruction(FormMain.Config.FindTypeConstruction("GuildHunter")).Build();
-                HireHeroes(GetPlayerConstruction(FormMain.Config.FindTypeConstruction("GuildHunter")), 4);
+                GetPlayerConstruction(FormMain.Config.FindConstruction("GuildHunter")).Build();
+                HireHeroes(GetPlayerConstruction(FormMain.Config.FindConstruction("GuildHunter")), 4);
             }
             else if (Lobby.Day == 4)
             {
-                GetPlayerConstruction(FormMain.Config.FindTypeConstruction("GuildCleric")).Build();
-                HireHeroes(GetPlayerConstruction(FormMain.Config.FindTypeConstruction("GuildCleric")), 4);
+                GetPlayerConstruction(FormMain.Config.FindConstruction("GuildCleric")).Build();
+                HireHeroes(GetPlayerConstruction(FormMain.Config.FindConstruction("GuildCleric")), 4);
             }
             else if (Lobby.Day == 4)
             {
-                GetPlayerConstruction(FormMain.Config.FindTypeConstruction("GuildMage")).Build();
-                HireHeroes(GetPlayerConstruction(FormMain.Config.FindTypeConstruction("GuildMage")), 4);
+                GetPlayerConstruction(FormMain.Config.FindConstruction("GuildMage")).Build();
+                HireHeroes(GetPlayerConstruction(FormMain.Config.FindConstruction("GuildMage")), 4);
             }
 
 

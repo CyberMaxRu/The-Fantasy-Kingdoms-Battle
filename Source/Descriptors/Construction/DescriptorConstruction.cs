@@ -285,7 +285,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             if (nameTypePlaceForConstruct.Length > 0)
-                TypePlaceForConstruct = Config.FindTypeConstruction(nameTypePlaceForConstruct);
+                TypePlaceForConstruct = Config.FindConstruction(nameTypePlaceForConstruct);
 
             nameTypePlaceForConstruct = null;
 

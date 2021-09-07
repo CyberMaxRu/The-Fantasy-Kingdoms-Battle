@@ -34,7 +34,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void TuneDeferredLinks()
         {
-            TypeLair = FormMain.Config.FindTypeConstruction(NameTypeLair);
+            TypeLair = FormMain.Config.FindConstruction(NameTypeLair);
             NameTypeLair = null;
         }
 

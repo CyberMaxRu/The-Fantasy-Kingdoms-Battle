@@ -85,7 +85,7 @@ namespace Fantasy_Kingdoms_Battle
             if (Descriptor.TypePlayer == TypePlayer.Computer)
                 Gold = 100_000;
 
-            Castle = GetPlayerConstruction(FormMain.Config.FindTypeConstruction(FormMain.Config.IDConstructionCastle));
+            Castle = GetPlayerConstruction(FormMain.Config.FindConstruction(FormMain.Config.IDConstructionCastle));
             Castle.Gold = Gold;
 
             LevelGreatness = 1;
@@ -417,7 +417,7 @@ namespace Fantasy_Kingdoms_Battle
             else
             {
                 Debug.Assert(FlagAttackToOpponent is null);
-                FlagAttackToOpponent = opponent.GetPlayerConstruction(FormMain.Config.FindTypeConstruction(FormMain.Config.IDConstructionCastle));
+                FlagAttackToOpponent = opponent.GetPlayerConstruction(FormMain.Config.FindConstruction(FormMain.Config.IDConstructionCastle));
                 FlagAttackToOpponent.AttackToCastle();
 
                 Debug.Assert(ListFlags.IndexOf(FlagAttackToOpponent) == -1);
@@ -953,10 +953,10 @@ namespace Fantasy_Kingdoms_Battle
             PointGreatness += sb.Greatness;
             Builders += sb.Builders;
             FreeBuilders += sb.Builders;
-            CreateExternalConstructions(FormMain.Config.FindTypeConstruction(FormMain.Config.IDPeasantHouse), 1, 0, sb.PeasantHouse);
-            DescriptorConstruction holyPlace = FormMain.Config.FindTypeConstruction(FormMain.Config.IDHolyPlace);
+            CreateExternalConstructions(FormMain.Config.FindConstruction(FormMain.Config.IDPeasantHouse), 1, 0, sb.PeasantHouse);
+            DescriptorConstruction holyPlace = FormMain.Config.FindConstruction(FormMain.Config.IDHolyPlace);
             CreateExternalConstructions(holyPlace, holyPlace.DefaultLevel, 0, sb.HolyPlace);
-            DescriptorConstruction tradePost = FormMain.Config.FindTypeConstruction(FormMain.Config.IDTradePost);
+            DescriptorConstruction tradePost = FormMain.Config.FindConstruction(FormMain.Config.IDTradePost);
             CreateExternalConstructions(tradePost, tradePost.DefaultLevel, 0, sb.TradePlace);
             ScoutRandomLair(sb.Scouting);
 

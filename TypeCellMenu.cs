@@ -54,7 +54,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (TypeEntity is null)
             {
-                TypeConstruction = Config.FindTypeConstruction(nameTypeObject, false);
+                TypeConstruction = Config.FindConstruction(nameTypeObject, false);
             }
 
             if ((TypeEntity is null) && (TypeConstruction is null))

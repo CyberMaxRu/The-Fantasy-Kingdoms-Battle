@@ -245,9 +245,9 @@ namespace Fantasy_Kingdoms_Battle
         internal List<DescriptorSecondarySkill> SecondarySkills { get; } = new List<DescriptorSecondarySkill>();
         internal List<StateCreature> StatesCreature { get; } = new List<StateCreature>();
         internal List<TypeCreature> TypeCreatures { get; } = new List<TypeCreature>();
+        internal List<DescriptorCreature> Creatures { get; } = new List<DescriptorCreature>();
         internal List<DescriptorGroupItems> GroupItems { get; } = new List<DescriptorGroupItems>();
         internal List<DescriptorItem> Items { get; } = new List<DescriptorItem>();
-        internal List<DescriptorCreature> Creatures { get; } = new List<DescriptorCreature>();
         internal int MaxLevelSkill { get; }
 
         //
@@ -377,12 +377,12 @@ namespace Fantasy_Kingdoms_Battle
         internal Pen PenSelectedBorder { get; private set; }
 
         //
-        internal DescriptorConstruction FindTypeConstruction(string ID, bool mustBeExists = true)
+        internal DescriptorConstruction FindConstruction(string ID, bool mustBeExists = true)
         {
-            foreach (DescriptorConstruction tck in Constructions)
+            foreach (DescriptorConstruction dc in Constructions)
             {
-                if (tck.ID == ID)
-                    return tck;
+                if (dc.ID == ID)
+                    return dc;
             }
             if (mustBeExists)
                 throw new Exception("Сооружение " + ID + " не найдено.");
