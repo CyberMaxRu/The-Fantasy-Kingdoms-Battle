@@ -125,7 +125,7 @@ namespace Fantasy_Kingdoms_Battle
                         Items.Add(new ConstructionProduct(di));
                     else if (research.Research.TypeEntity is DescriptorAbility da)
                         Items.Add(new ConstructionProduct(da));
-                    else if (research.Research.TypeEntity is DescriptorGroupItem dgi)
+                    else if (research.Research.TypeEntity is DescriptorGroupItems dgi)
                         Items.Add(new ConstructionProduct(dgi));
                     else
                         throw new Exception("неизвестный тип");

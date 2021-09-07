@@ -9,14 +9,14 @@ using System.Xml;
 namespace Fantasy_Kingdoms_Battle
 {
     // Группа предметов
-    internal sealed class DescriptorGroupItem : DescriptorSmallEntity
+    internal sealed class DescriptorGroupItems : DescriptorSmallEntity
     {
-        public DescriptorGroupItem(XmlNode n) : base(n)
+        public DescriptorGroupItems(XmlNode n) : base(n)
         {
             ShortName = XmlUtils.GetStringNotNull(n, "ShortName");
 
             // Проверяем, что таких ID, Name и ImageIndex нет
-            foreach (DescriptorGroupItem gi in Config.GroupItem)
+            foreach (DescriptorGroupItems gi in Config.GroupItems)
             {
                 Debug.Assert(gi.ID != ID);
                 Debug.Assert(gi.Name != Name);

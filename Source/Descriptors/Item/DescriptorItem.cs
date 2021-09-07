@@ -84,7 +84,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal CategoryItem CategoryItem { get; }
-        internal DescriptorGroupItem GroupItem { get; private set; }
+        internal DescriptorGroupItems GroupItem { get; private set; }
         internal List<DescriptorCreature> UsedByTypeCreature { get; }
         internal int Position { get; }
         internal int TimeHit { get; }

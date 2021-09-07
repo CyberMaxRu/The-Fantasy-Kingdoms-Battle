@@ -8,14 +8,14 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class GroupItem : SmallEntity
     {
-        public GroupItem(Entity owner, DescriptorGroupItem descriptor) : base()
+        public GroupItem(Entity owner, DescriptorGroupItems descriptor) : base()
         {
             Owner = owner;
             Descriptor = descriptor;
         }
 
         internal Entity Owner { get; }
-        internal DescriptorGroupItem Descriptor { get; }
+        internal DescriptorGroupItems Descriptor { get; }
 
         internal override string GetCost()
         {

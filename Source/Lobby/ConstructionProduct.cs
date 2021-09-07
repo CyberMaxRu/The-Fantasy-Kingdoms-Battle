@@ -10,7 +10,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         private DescriptorAbility descriptorAbility;
         private DescriptorItem descriptorItem;
-        private DescriptorGroupItem descriptorGroupItem;
+        private DescriptorGroupItems descriptorGroupItem;
 
         public ConstructionProduct(DescriptorAbility descriptor) : base()
         {
@@ -24,7 +24,7 @@ namespace Fantasy_Kingdoms_Battle
             Descriptor = descriptor;
         }
 
-        public ConstructionProduct(DescriptorGroupItem descriptor) : base()
+        public ConstructionProduct(DescriptorGroupItems descriptor) : base()
         {
             descriptorGroupItem = descriptor;
             Descriptor = descriptor;

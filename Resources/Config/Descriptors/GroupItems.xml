@@ -1,220 +1,220 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<GroupItems>
-  <GroupItem>
+<Descriptors>
+  <GroupItems>
     <ID>GroupWeaponMelee0</ID>
     <Name>Простое рукопашное оружие</Name>
     <Description>- Безыскусное, но функциональное рукопашное оружие// Включает в себя мечи, ножи, топоры, молоты</Description>
     <ImageIndex>6</ImageIndex>
     <ShortName>Ближ.</ShortName>
-  </GroupItem>
-  <GroupItem>
+  </GroupItems>
+  <GroupItems>
     <ID>GroupWeaponMelee1</ID>
     <Name>Улучшенное рукопашное оружие</Name>
     <Description>- Повышает умение рукопашной атаки// Включает в себя мечи, ножи, топоры, молоты</Description>
     <ImageIndex>7</ImageIndex>
     <ShortName>Ближ.</ShortName>
-  </GroupItem>
-  <GroupItem>
+  </GroupItems>
+  <GroupItems>
     <ID>GroupWeaponMelee2</ID>
     <Name>Мастерское рукопашное оружие</Name>
     <Description>- Повышает умение рукопашной атаки// Включает в себя мечи, ножи, топоры, молоты</Description>
     <ImageIndex>8</ImageIndex>
     <ShortName>Ближ.</ShortName>
-  </GroupItem>
-  <GroupItem>
+  </GroupItems>
+  <GroupItems>
     <ID>GroupWeaponMelee3</ID>
     <Name>Экспертное рукопашное оружие</Name>
     <Description>- Повышает умение рукопашной атаки// Включает в себя мечи, ножи, топоры, молоты</Description>
     <ImageIndex>9</ImageIndex>
     <ShortName>Ближ.</ShortName>
-  </GroupItem>
-  <GroupItem>
+  </GroupItems>
+  <GroupItems>
     <ID>GroupWeaponMelee4</ID>
     <Name>Руническое рукопашное оружие</Name>
     <Description>- Руническое рукопашное оружие// Включает в себя мечи, ножи, топоры, молоты</Description>
     <ImageIndex>10</ImageIndex>
     <ShortName>Ближ.</ShortName>
-  </GroupItem>
-  <GroupItem>
+  </GroupItems>
+  <GroupItems>
     <ID>GroupWeaponRange0</ID>
     <Name>Простое стрелковое оружие</Name>
     <Description>- Обычное добротное стрелковое оружие// Включает в себя луки, арбалеты</Description>
     <ImageIndex>11</ImageIndex>
     <ShortName>Даль.</ShortName>
-  </GroupItem>
-  <GroupItem>
+  </GroupItems>
+  <GroupItems>
     <ID>GroupWeaponRange1</ID>
     <Name>Улучшенное стрелковое оружие</Name>
     <Description>- Обычное добротное стрелковое оружие// Включает в себя луки, арбалеты</Description>
     <ImageIndex>12</ImageIndex>
     <ShortName>Даль.</ShortName>
-  </GroupItem>
-  <GroupItem>
+  </GroupItems>
+  <GroupItems>
     <ID>GroupWeaponRange2</ID>
     <Name>Мастерское стрелковое оружие</Name>
     <Description>- Обычное добротное стрелковое оружие// Включает в себя луки, арбалеты</Description>
     <ImageIndex>13</ImageIndex>
     <ShortName>Даль.</ShortName>
-  </GroupItem>
-  <GroupItem>
+  </GroupItems>
+  <GroupItems>
     <ID>GroupWeaponRange3</ID>
     <Name>Экспертное стрелковое оружие</Name>
     <Description>- Обычное добротное стрелковое оружие// Включает в себя луки, арбалеты</Description>
     <ImageIndex>14</ImageIndex>
     <ShortName>Даль.</ShortName>
-  </GroupItem>
-  <GroupItem>
+  </GroupItems>
+  <GroupItems>
     <ID>GroupWeaponRange4</ID>
     <Name>Стрелковое оружие из демонического дерева</Name>
     <Description>- Обычное добротное стрелковое оружие// Включает в себя луки, арбалеты</Description>
     <ImageIndex>15</ImageIndex>
     <ShortName>Даль.</ShortName>
-  </GroupItem>
-  <GroupItem>
+  </GroupItems>
+  <GroupItems>
     <ID>GroupWeaponMage0</ID>
     <Name>Простое магическое оружие</Name>
     <Description>Обыкновенная тисовая палка// Включает в себя посохи</Description>
     <ImageIndex>16</ImageIndex>
     <ShortName>Даль.</ShortName>
-  </GroupItem>
-  <GroupItem>
+  </GroupItems>
+  <GroupItems>
     <ID>GroupWeaponMage1</ID>
     <Name>Улучшенное магическое оружие</Name>
     <Description>- Обычное добротное стрелковое оружие// Включает в себя посохи</Description>
     <ImageIndex>17</ImageIndex>
     <ShortName>Даль.</ShortName>
-  </GroupItem>
-  <GroupItem>
+  </GroupItems>
+  <GroupItems>
     <ID>GroupWeaponMage2</ID>
     <Name>Мастерское магическое оружие</Name>
     <Description>- Обычное добротное стрелковое оружие// Включает в себя посохи</Description>
     <ImageIndex>18</ImageIndex>
     <ShortName>Даль.</ShortName>
-  </GroupItem>
-  <GroupItem>
+  </GroupItems>
+  <GroupItems>
     <ID>GroupWeaponMage3</ID>
     <Name>Экспертное магическое оружие</Name>
     <Description>- Обычное добротное стрелковое оружие// Включает в себя посохи</Description>
     <ImageIndex>19</ImageIndex>
     <ShortName>Даль.</ShortName>
-  </GroupItem>
-  <GroupItem>
+  </GroupItems>
+  <GroupItems>
     <ID>GroupWeaponMage4</ID>
     <Name>Магическое оружие из кости дракона</Name>
     <Description>- Обычное добротное стрелковое оружие// Включает в себя посохи</Description>
     <ImageIndex>20</ImageIndex>
     <ShortName>Даль.</ShortName>
-  </GroupItem>
-  <GroupItem>
+  </GroupItems>
+  <GroupItems>
     <ID>GroupArmourMelee0</ID>
     <Name>Простая стальная броня</Name>
     <Description>Грубо выкованная кольчуга</Description>
     <ImageIndex>21</ImageIndex>
     <ShortName>Досп.</ShortName>
-  </GroupItem>
-  <GroupItem>
+  </GroupItems>
+  <GroupItems>
     <ID>GroupArmourMelee1</ID>
     <Name>Улучшенная стальная броня</Name>
     <Description></Description>
     <ImageIndex>22</ImageIndex>
     <ShortName>Досп.</ShortName>
-  </GroupItem>
-  <GroupItem>
+  </GroupItems>
+  <GroupItems>
     <ID>GroupArmourMelee2</ID>
     <Name>Мастерская стальная броня</Name>
     <Description></Description>
     <ImageIndex>23</ImageIndex>
     <ShortName>Досп.</ShortName>
-    </GroupItem>
-  <GroupItem>
+    </GroupItems>
+  <GroupItems>
     <ID>GroupArmourMelee3</ID>
     <Name>Экспертная стальная броня</Name>
     <Description></Description>
     <ImageIndex>24</ImageIndex>
     <ShortName>Досп.</ShortName>
-  </GroupItem>
-  <GroupItem>
+  </GroupItems>
+  <GroupItems>
     <ID>GroupArmourMelee4</ID>
     <Name>Доспех из неврила</Name>
     <Description></Description>
     <ImageIndex>25</ImageIndex>
     <ShortName>Досп.</ShortName>
-  </GroupItem>
-  <GroupItem>
+  </GroupItems>
+  <GroupItems>
     <ID>GroupArmourRange0</ID>
     <Name>Простая кожаная броня</Name>
     <Description>Броня из грубо выделанной кожи</Description>
     <ImageIndex>26</ImageIndex>
     <ShortName>Досп.</ShortName>
-  </GroupItem>
-  <GroupItem>
+  </GroupItems>
+  <GroupItems>
     <ID>GroupArmourRange1</ID>
     <Name>Улучшенная кожаная броня</Name>
     <Description></Description>
     <ImageIndex>27</ImageIndex>
     <ShortName>Досп.</ShortName>
-  </GroupItem>
-  <GroupItem>
+  </GroupItems>
+  <GroupItems>
     <ID>GroupArmourRange2</ID>
     <Name>Мастерская кожаная броня</Name>
     <Description></Description>
     <ImageIndex>28</ImageIndex>
     <ShortName>Досп.</ShortName>
-  </GroupItem>
-  <GroupItem>
+  </GroupItems>
+  <GroupItems>
     <ID>GroupArmourRange3</ID>
     <Name>Экспертная кожаная броня</Name>
     <Description></Description>
     <ImageIndex>29</ImageIndex>
     <ShortName>Досп.</ShortName>
-  </GroupItem>
-  <GroupItem>
+  </GroupItems>
+  <GroupItems>
     <ID>GroupArmourRange4</ID>
     <Name>Доспех из кожи дракона</Name>
     <Description></Description>
     <ImageIndex>30</ImageIndex>
     <ShortName>Досп.</ShortName>
-  </GroupItem>
-  <GroupItem>
+  </GroupItems>
+  <GroupItems>
     <ID>GroupArmourMage0</ID>
     <Name>Простая роба</Name>
     <Description>Обычная льняная роба</Description>
     <ImageIndex>31</ImageIndex>
     <ShortName>Досп.</ShortName>
-  </GroupItem>
-  <GroupItem>
+  </GroupItems>
+  <GroupItems>
     <ID>GroupArmourMage1</ID>
     <Name>Улучшенная магическая роба</Name>
     <Description></Description>
     <ImageIndex>32</ImageIndex>
     <ShortName>Досп.</ShortName>
-  </GroupItem>
-  <GroupItem>
+  </GroupItems>
+  <GroupItems>
     <ID>GroupArmourMage2</ID>
     <Name>Мастерская магическая роба</Name>
     <Description></Description>
     <ImageIndex>33</ImageIndex>
     <ShortName>Досп.</ShortName>
-  </GroupItem>
-  <GroupItem>
+  </GroupItems>
+  <GroupItems>
     <ID>GroupArmourMage3</ID>
     <Name>Экспертная магическая роба</Name>
     <Description></Description>
     <ImageIndex>34</ImageIndex>
     <ShortName>Досп.</ShortName>
-  </GroupItem>
-  <GroupItem>
+  </GroupItems>
+  <GroupItems>
     <ID>GroupArmourMage4</ID>
     <Name>Роба из зачарованной ткани</Name>
     <Description></Description>
     <ImageIndex>35</ImageIndex>
     <ShortName>Досп.</ShortName>
-  </GroupItem>
-  <GroupItem>
+  </GroupItems>
+  <GroupItems>
     <ID>GroupQuiver0</ID>
     <Name>Обычный колчан</Name>
     <Description>Колчан на минимальное количество стрел</Description>
     <ImageIndex>152</ImageIndex>
     <ShortName>Колч.</ShortName>
-  </GroupItem>
-</GroupItems>
+  </GroupItems>
+</Descriptors>

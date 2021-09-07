@@ -72,7 +72,7 @@
     <Compile Include="Source\Descriptors\Creature\DescriptorPerk.cs" />
     <Compile Include="Source\Lobby\Ability.cs" />
     <Compile Include="Source\Descriptors\Creature\DescriptorSmallEntity.cs" />
-    <Compile Include="Source\Descriptors\Item\DescriptorGroupItem.cs" />
+    <Compile Include="Source\Descriptors\Item\DescriptorGroupItems.cs" />
     <Compile Include="Source\VisualControls\VCIconButton24.cs" />
     <Compile Include="Source\VisualControls\VCImage48.cs" />
     <Compile Include="Source\VisualControls\VCPageButton.cs" />
@@ -217,7 +217,7 @@
   <ItemGroup>
     <Content Include="FKB.ico" />
     <Content Include="Resources\Config\ComputerPlayers.xml" />
-    <Content Include="Resources\Config\GroupItem.xml" />
+    <Content Include="Resources\Config\Descriptors\GroupItems.xml" />
     <Content Include="Resources\Config\SecondarySkills.xml" />
     <Content Include="Resources\Config\Specializations.xml" />
     <Content Include="Resources\Config\StartBonus.xml" />
