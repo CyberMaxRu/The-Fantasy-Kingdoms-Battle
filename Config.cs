@@ -168,9 +168,9 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Загрузка конфигурации вторичных навыков
-            xmlDoc = CreateXmlDocument(@"Config\SecondarySkills.xml");
+            xmlDoc = CreateXmlDocument(@"Config\Descriptors\SecondarySkills.xml");
 
-            foreach (XmlNode n in xmlDoc.SelectNodes("/SecondarySkills/SecondarySkill"))
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/SecondarySkill"))
             {
                 SecondarySkills.Add(new DescriptorSecondarySkill(n));
             }
