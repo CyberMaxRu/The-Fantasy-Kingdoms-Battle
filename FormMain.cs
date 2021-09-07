@@ -2072,7 +2072,7 @@ namespace Fantasy_Kingdoms_Battle
             for (int i = 0; i < lobby.TypeLobby.LairsLayers; i++)
             {
                 ls = lobby.TypeLobby.LayerSettings[i];
-                VCNeighborhood im = new VCNeighborhood(panelNeighborhood, nextLeft, 0, imListObjects48, ls.ImageIndex);
+                VCNeighborhood im = new VCNeighborhood(panelNeighborhood, nextLeft, 0, ls.ImageIndex);
                 im.ShowBorder = true;
                 im.Layer = i;
                 im.Cost = ls.Name;

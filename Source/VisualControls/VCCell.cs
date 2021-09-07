@@ -93,11 +93,17 @@ namespace Fantasy_Kingdoms_Battle
 
             base.Draw(g);
 
+        }
+
+        internal override void PaintForeground(Graphics g)
+        {
+            base.PaintForeground(g);
+
             if (Visible)
             {
                 if (Entity != null)
                 {
-                    g.DrawImageUnscaled(Program.formMain.bmpBorderForIcon, Left, Top);
+                    g.DrawImageUnscaled(Program.formMain.bmpBorderForIcon, Left - 2, Top - 1);
 
                     Entity.CustomDraw(g, Left, Top, DrawState);
                 }

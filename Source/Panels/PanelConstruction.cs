@@ -214,7 +214,6 @@ namespace Fantasy_Kingdoms_Battle
                     btnHireHero.Visible = false;
 
                 imgMapObject.Level = Construction.Level < Construction.TypeConstruction.MaxLevel ? Construction.Level : 0;
-                imgMapObject.Quantity = 0;
 
                 if ((Construction.TypeConstruction.TrainedHero != null) && !(Construction.TypeConstruction.TrainedHero is null) && (Construction.Level > 0) && (Construction.Heroes.Count > 0))
                 {

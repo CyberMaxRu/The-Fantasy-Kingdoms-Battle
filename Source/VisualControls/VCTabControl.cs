@@ -13,18 +13,16 @@ namespace Fantasy_Kingdoms_Battle
         private VCLabel lblCaptionPage;
         private VCTabButton activePage;
 
-        public VCTabControl(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList) : base(parent, shiftX, shiftY)
+        public VCTabControl(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
-            BitmapList = bitmapList;
             ActivePage = -1;
 
-            lblCaptionPage = new VCLabel(this, 0, BitmapList.Size + FormMain.Config.GridSize, Program.formMain.fontSmallBC, FormMain.Config.CommonCaptionPage, 24, "");
+            lblCaptionPage = new VCLabel(this, 0, Program.formMain.imListObjects48.Size + FormMain.Config.GridSize, Program.formMain.fontSmallBC, FormMain.Config.CommonCaptionPage, 24, "");
             lblCaptionPage.StringFormat.LineAlignment = StringAlignment.Center;
             lblCaptionPage.ShowBorder = true;
             lblCaptionPage.Color = Color.LightGreen;
         }
 
-        internal BitmapList BitmapList { get; set; }
         internal int ActivePage { get; set; }
 
         internal override void ArrangeControls()
@@ -45,7 +43,7 @@ namespace Fantasy_Kingdoms_Battle
             if (controlForPage != null)
                 controlForPage.Visible = false;
 
-            VCTabButton btnTab = new VCTabButton(this, leftForNextPage, 0, BitmapList, imageIndex, controlForPage)
+            VCTabButton btnTab = new VCTabButton(this, leftForNextPage, 0, imageIndex, controlForPage)
             {
                 Hint = nameTab,
                 IndexPage = btnTabs.Count

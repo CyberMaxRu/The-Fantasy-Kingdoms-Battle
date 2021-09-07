@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal class VCNeighborhood : VCImage
+    internal class VCNeighborhood : VCImage48
     {
-        public VCNeighborhood(VisualControl parent, int shiftX, int shiftY, BitmapList bitmapList, int imageIndex) : base(parent, shiftX, shiftY, bitmapList, imageIndex)
+        public VCNeighborhood(VisualControl parent, int shiftX, int shiftY, int imageIndex) : base(parent, shiftX, shiftY, imageIndex)
         {
 
         }

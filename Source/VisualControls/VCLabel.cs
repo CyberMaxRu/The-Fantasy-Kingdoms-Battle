@@ -51,6 +51,8 @@ namespace Fantasy_Kingdoms_Battle
         internal override void Draw(Graphics g)
         {
             Debug.Assert(Text != null);
+            if (Width <= 0)
+                return;
             Debug.Assert(Width > 0);
 
             if (Visible || ManualDraw)

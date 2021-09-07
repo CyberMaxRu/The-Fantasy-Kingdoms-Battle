@@ -37,7 +37,7 @@ namespace Fantasy_Kingdoms_Battle
 
             separator = new VCSeparator(this, FormMain.Config.GridSize, TopForControls());
 
-            pageControl = new VCTabControl(this, FormMain.Config.GridSize, separator.NextTop(), Program.formMain.imListObjects48)
+            pageControl = new VCTabControl(this, FormMain.Config.GridSize, separator.NextTop())
             {
                 //Parent = this,
                 Width = Width - FormMain.Config.GridSize * 2,
