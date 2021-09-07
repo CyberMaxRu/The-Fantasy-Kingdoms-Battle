@@ -143,10 +143,10 @@ namespace Fantasy_Kingdoms_Battle
                 Items.Add(new DescriptorItem(n));
             }
 
-            // Загрузка конфигурации типов рукопашной атаки
-            xmlDoc = CreateXmlDocument("Config\\TypeAttack.xml");
+            // Загрузка конфигурации типов атаки
+            xmlDoc = CreateXmlDocument(@"Config\Descriptors\TypeAttacks.xml");
 
-            foreach (XmlNode n in xmlDoc.SelectNodes("/TypesAttack/TypeAttack"))
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/TypeAttack"))
             {
                 TypeAttacks.Add(new DescriptorAttack(n));
             }

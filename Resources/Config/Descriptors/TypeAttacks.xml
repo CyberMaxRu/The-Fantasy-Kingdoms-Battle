@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<TypesAttack>
+<Descriptors>
   <TypeAttack>
     <ID>Sword</ID>
     <Name>Меч</Name>
@@ -96,4 +96,4 @@
     <KindAttack>Magic</KindAttack>
     <IsWeapon>false</IsWeapon>
   </TypeAttack>
-</TypesAttack>
+</Descriptors>
