@@ -12,10 +12,10 @@ using System.Windows.Forms;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс исследования
-    internal sealed class TypeCellMenu
+    internal sealed class TypeCellMenu : Descriptor
     {
         private string nameTypeObject;
-        public TypeCellMenu(XmlNode n)
+        public TypeCellMenu(XmlNode n) : base()
         {
             Coord = new Point(XmlUtils.GetIntegerNotNull(n, "PosX") - 1, XmlUtils.GetIntegerNotNull(n, "PosY") - 1);
             Layer = XmlUtils.GetIntegerNotNull(n, "Layer") - 1;
@@ -40,8 +40,10 @@ namespace Fantasy_Kingdoms_Battle
         internal List<Requirement> Requirements { get; } = new List<Requirement>();
         internal int Cost { get; }// Стоимость
 
-        internal void TuneDeferredLinks()
+        internal override void TuneDeferredLinks()
         {
+            base.TuneDeferredLinks();
+
             TypeEntity = FormMain.Config.FindItem(nameTypeObject, false);
 
             if (TypeEntity is null)
