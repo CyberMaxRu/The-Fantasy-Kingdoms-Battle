@@ -225,7 +225,7 @@
     <Content Include="Resources\Config\TypeAttack.xml" />
     <Content Include="Resources\Config\Descriptors\Constructions.xml" />
     <Content Include="Resources\Config\Descriptors\TypeCreatures.xml" />
-    <Content Include="Resources\Config\TypePerks.xml" />
+    <Content Include="Resources\Config\Descriptors\Perks.xml" />
     <Content Include="Resources\Icons\Avatars.png" />
     <Content Include="Resources\Icons\Background.png" />
     <Content Include="Resources\Icons\BackgroundEntity.png" />
