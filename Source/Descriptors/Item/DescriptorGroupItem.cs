@@ -16,7 +16,7 @@ namespace Fantasy_Kingdoms_Battle
             ShortName = XmlUtils.GetStringNotNull(n, "ShortName");
 
             // Проверяем, что таких ID, Name и ImageIndex нет
-            foreach (DescriptorGroupItem gi in FormMain.Config.GroupItem)
+            foreach (DescriptorGroupItem gi in Config.GroupItem)
             {
                 Debug.Assert(gi.ID != ID);
                 Debug.Assert(gi.Name != Name);

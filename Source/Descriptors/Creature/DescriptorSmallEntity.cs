@@ -14,6 +14,6 @@ namespace Fantasy_Kingdoms_Battle
 
         }
 
-        protected override int ShiftImageIndex() => FormMain.Config.ImageIndexFirstItems;
+        protected override int ShiftImageIndex() => Config.ImageIndexFirstItems;
     }
 }

@@ -30,7 +30,7 @@ namespace Fantasy_Kingdoms_Battle
             ManaCost = n.SelectSingleNode("ManaCost") != null ? Convert.ToInt32(n.SelectSingleNode("ManaCost").InnerText) : 0;
 
             // Проверяем, что таких же ID и наименования нет
-            foreach (DescriptorAbility a in FormMain.Config.Abilities)
+            foreach (DescriptorAbility a in Config.Abilities)
             {
                 if (a.ID == ID)
                     throw new Exception("В конфигурации способностей повторяется ID = " + ID);
@@ -123,7 +123,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override void TuneDeferredLinks()
         {
             foreach (string nameHero in classesHeroesString)
-                ClassesHeroes.Add(FormMain.Config.FindTypeCreature(nameHero));
+                ClassesHeroes.Add(Config.FindTypeCreature(nameHero));
 
             classesHeroesString = null;
 

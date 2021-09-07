@@ -28,7 +28,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.TuneDeferredLinks();
 
-            Construction = FormMain.Config.FindTypeConstruction(nameConstruction);
+            Construction = Config.FindTypeConstruction(nameConstruction);
             nameConstruction = "";
 
             Debug.Assert(Level <= Construction.MaxLevel);

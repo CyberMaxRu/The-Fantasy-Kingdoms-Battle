@@ -67,10 +67,10 @@ namespace Fantasy_Kingdoms_Battle
                     throw new Exception("Неизвестный тип атаки.");
             }*/
 
-            Position = FormMain.Config.Items.Count;
+            Position = Config.Items.Count;
 
             // Проверяем, что таких же ID и наименования нет
-            foreach (DescriptorItem i in FormMain.Config.Items)
+            foreach (DescriptorItem i in Config.Items)
             {
                 if (i.ID == ID)
                     throw new Exception("В конфигурации предметов повторяется ID = " + ID);
@@ -112,7 +112,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (nameGroupItem.Length > 0)
             {
-                GroupItem = FormMain.Config.FindGroupItem(nameGroupItem);
+                GroupItem = Config.FindGroupItem(nameGroupItem);
                 nameGroupItem = "";
             }
 

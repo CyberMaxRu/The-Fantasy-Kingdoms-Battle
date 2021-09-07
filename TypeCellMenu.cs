@@ -24,9 +24,9 @@ namespace Fantasy_Kingdoms_Battle
             XmlUtils.LoadRequirements(Requirements, n);
 
             Debug.Assert(Coord.X >= 0);
-            Debug.Assert(Coord.X <= FormMain.Config.PlateWidth - 1);
+            Debug.Assert(Coord.X <= Config.PlateWidth - 1);
             Debug.Assert(Coord.Y >= 0);
-            Debug.Assert(Coord.Y <= FormMain.Config.PlateHeight - 1);
+            Debug.Assert(Coord.Y <= Config.PlateHeight - 1);
             Debug.Assert(Layer >= 0);
             Debug.Assert(Layer <= 4);
             Debug.Assert(nameTypeObject.Length > 0);
@@ -44,17 +44,17 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.TuneDeferredLinks();
 
-            TypeEntity = FormMain.Config.FindItem(nameTypeObject, false);
+            TypeEntity = Config.FindItem(nameTypeObject, false);
 
             if (TypeEntity is null)
-                TypeEntity = FormMain.Config.FindGroupItem(nameTypeObject, false);
+                TypeEntity = Config.FindGroupItem(nameTypeObject, false);
 
             if (TypeEntity is null)
-                TypeEntity = FormMain.Config.FindAbility(nameTypeObject, false);
+                TypeEntity = Config.FindAbility(nameTypeObject, false);
 
             if (TypeEntity is null)
             {
-                TypeConstruction = FormMain.Config.FindTypeConstruction(nameTypeObject, false);
+                TypeConstruction = Config.FindTypeConstruction(nameTypeObject, false);
             }
 
             if ((TypeEntity is null) && (TypeConstruction is null))
