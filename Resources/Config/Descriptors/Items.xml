@@ -300,7 +300,7 @@
     <GroupItem>GroupWeaponMelee0</GroupItem>
     <TimeHit>50</TimeHit>
     <VelocityMissile>5</VelocityMissile>
-    <DamageRange>5</DamageRange>
+    <DamageMelee>5</DamageMelee>
   </Item>
   <Item>
     <ID>WeaponElf0</ID>
