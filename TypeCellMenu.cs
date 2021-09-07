@@ -59,7 +59,7 @@ namespace Fantasy_Kingdoms_Battle
                 throw new Exception("Сущность " + nameTypeObject + " не найдена.");
 
             foreach (Requirement r in Requirements)
-                r.FindConstruction();
+                r.TuneDeferredLinks();
 
             nameTypeObject = null;
 

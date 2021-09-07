@@ -261,7 +261,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     if (l != null)
                         foreach (Requirement r in l.Requirements)
-                            r.FindConstruction();
+                            r.TuneDeferredLinks();
                 }
             }
 

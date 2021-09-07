@@ -8,7 +8,7 @@ using System.Diagnostics;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс требования
-    internal sealed class Requirement
+    internal sealed class Requirement : Descriptor
     {
         private string nameConstruction;
 
@@ -24,8 +24,10 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorConstruction Construction { get; private set; }
         internal int Level { get; }
 
-        internal void FindConstruction()
+        internal override void TuneDeferredLinks()
         {
+            base.TuneDeferredLinks();
+
             Construction = FormMain.Config.FindTypeConstruction(nameConstruction);
             nameConstruction = "";
 

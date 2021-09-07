@@ -5,12 +5,12 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 namespace Fantasy_Kingdoms_Battle
 {
     // Базовый описатель для всех сущностей - сооружений, существ, умений, предметов и т.д.
-    internal abstract class DescriptorEntity
+    internal abstract class DescriptorEntity : Descriptor
     {
         private string name;
         private int imageIndex;
 
-        public DescriptorEntity(XmlNode n)
+        public DescriptorEntity(XmlNode n) : base()
         {
             Config = FormMain.Config;
 
@@ -43,8 +43,6 @@ namespace Fantasy_Kingdoms_Battle
         internal string Description { get; set; }// Описание типа объекта
         internal int ImageIndex { get => imageIndex; set { imageIndex = value; CheckData(); } }// Код иконки типа объекта
         protected Config Config { get; }
-
-        internal virtual void TuneDeferredLinks() { }
 
         protected virtual int ShiftImageIndex() => 0;
 
