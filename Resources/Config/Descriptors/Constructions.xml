@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?> 
-<TypeConstructions>
-  <TypeConstruction>
+<Descriptors>
+  <Construction>
     <ID>GuildWarrior</ID>
     <Name>Гильдия воинов</Name>
     <Description>- Позволяет нанимать воинов//- В гильдии исследуют и продают особые способности воинов//- Здесь исследуют способность "Призыв к оружию"</Description>
@@ -47,7 +47,7 @@
         <Cost>200</Cost>
         <Requirements>
           <Requirement>
-            <TypeConstruction>GuildWarrior</TypeConstruction>
+            <Construction>GuildWarrior</Construction>
             <Level>2</Level>
           </Requirement>
         </Requirements>
@@ -60,7 +60,7 @@
         <Cost>500</Cost>
         <Requirements>
           <Requirement>
-            <TypeConstruction>GuildWarrior</TypeConstruction>
+            <Construction>GuildWarrior</Construction>
             <Level>3</Level>
           </Requirement>
         </Requirements>
@@ -73,14 +73,14 @@
         <Cost>500</Cost>
         <Requirements>
           <Requirement>
-            <TypeConstruction>GuildWarrior</TypeConstruction>
+            <Construction>GuildWarrior</Construction>
             <Level>3</Level>
           </Requirement>
         </Requirements>
       </CellMenu>
     </CellsMenu>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>GuildHunter</ID>
     <Name>Гильдия рейнджеров</Name>
     <Description>- Позволяет нанимать рейнджеров//- В гильдии исследуют и продают особые способности рейнджеров//- Здесь исследуют заклинание "Взгляд орла"</Description>
@@ -127,7 +127,7 @@
         <Cost>200</Cost>
         <Requirements>
           <Requirement>
-            <TypeConstruction>GuildHunter</TypeConstruction>
+            <Construction>GuildHunter</Construction>
             <Level>2</Level>
           </Requirement>
         </Requirements>
@@ -140,7 +140,7 @@
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
-            <TypeConstruction>GuildHunter</TypeConstruction>
+            <Construction>GuildHunter</Construction>
             <Level>3</Level>
           </Requirement>
         </Requirements>
@@ -153,14 +153,14 @@
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
-            <TypeConstruction>GuildHunter</TypeConstruction>
+            <Construction>GuildHunter</Construction>
             <Level>3</Level>
           </Requirement>
         </Requirements>
       </CellMenu>
     </CellsMenu>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>GuildCleric</ID>
     <Name>Гильдия послушниц</Name>
     <Description>- Позволяет нанимать послушниц//- В гильдии исследуют и продают особые способности послушниц//- Здесь исследуют заклинание "Святое лечение"</Description>
@@ -214,7 +214,7 @@
         <Cost>200</Cost>
         <Requirements>
           <Requirement>
-            <TypeConstruction>GuildCleric</TypeConstruction>
+            <Construction>GuildCleric</Construction>
             <Level>2</Level>
           </Requirement>
         </Requirements>
@@ -227,7 +227,7 @@
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
-            <TypeConstruction>GuildCleric</TypeConstruction>
+            <Construction>GuildCleric</Construction>
             <Level>3</Level>
           </Requirement>
         </Requirements>
@@ -240,14 +240,14 @@
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
-            <TypeConstruction>GuildCleric</TypeConstruction>
+            <Construction>GuildCleric</Construction>
             <Level>3</Level>
           </Requirement>
         </Requirements>
       </CellMenu>
     </CellsMenu>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>GuildMage</ID>
     <Name>Гильдия магов</Name>
     <Description>- Позволяет нанимать магов//- В гильдии исследуют и продают особые способности магов//- Здесь исследуют разнообразные заклинания</Description>
@@ -278,7 +278,7 @@
         <MaxHeroes>20</MaxHeroes>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Castle</TypeConstruction>
+            <Construction>Castle</Construction>
             <Level>2</Level>
           </Requirement>
         </Requirements>
@@ -291,7 +291,7 @@
         <MaxHeroes>30</MaxHeroes>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Castle</TypeConstruction>
+            <Construction>Castle</Construction>
             <Level>2</Level>
           </Requirement>
         </Requirements>
@@ -320,7 +320,7 @@
         <Cost>500</Cost>
         <Requirements>
           <Requirement>
-            <TypeConstruction>GuildMage</TypeConstruction>
+            <Construction>GuildMage</Construction>
             <Level>2</Level>
           </Requirement>
         </Requirements>
@@ -333,7 +333,7 @@
         <Cost>750</Cost>
         <Requirements>
           <Requirement>
-            <TypeConstruction>GuildMage</TypeConstruction>
+            <Construction>GuildMage</Construction>
             <Level>2</Level>
           </Requirement>
         </Requirements>
@@ -346,14 +346,14 @@
         <Cost>2000</Cost>
         <Requirements>
           <Requirement>
-            <TypeConstruction>GuildMage</TypeConstruction>
+            <Construction>GuildMage</Construction>
             <Level>3</Level>
           </Requirement>
         </Requirements>
       </CellMenu>
     </CellsMenu>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>GuildElf</ID>
     <Name>Бунгало эльфов</Name>
     <Description>- Позволяет нанимать эльфиек//- В гильдии исследуют и продают особые способности эльфиек//- Эльфийки очень не любят гномов</Description>
@@ -384,11 +384,11 @@
         <MaxHeroes>20</MaxHeroes>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Castle</TypeConstruction>
+            <Construction>Castle</Construction>
             <Level>2</Level>
           </Requirement>
           <Requirement>
-            <TypeConstruction>Market</TypeConstruction>
+            <Construction>Market</Construction>
             <Level>2</Level>
           </Requirement>
         </Requirements>
@@ -401,11 +401,11 @@
         <MaxHeroes>30</MaxHeroes>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Castle</TypeConstruction>
+            <Construction>Castle</Construction>
             <Level>2</Level>
           </Requirement>
           <Requirement>
-            <TypeConstruction>Market</TypeConstruction>
+            <Construction>Market</Construction>
             <Level>2</Level>
           </Requirement>
         </Requirements>
@@ -427,7 +427,7 @@
         <Cost>200</Cost>
         <Requirements>
           <Requirement>
-            <TypeConstruction>GuildElf</TypeConstruction>
+            <Construction>GuildElf</Construction>
             <Level>2</Level>
           </Requirement>
         </Requirements>
@@ -440,14 +440,14 @@
         <Cost>300</Cost>
         <Requirements>
           <Requirement>
-            <TypeConstruction>GuildElf</TypeConstruction>
+            <Construction>GuildElf</Construction>
             <Level>2</Level>
           </Requirement>
         </Requirements>
       </CellMenu>
     </CellsMenu>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>GuildDwarf</ID>
     <Name>Поселение гномов</Name>
     <Description>- Позволяет нанимать гномов//- В гильдии исследуют и продают особые способности гномов//- Здесь исследуют заклинание "Наговор камня"//- Гномы очень не любят эльфиек</Description>
@@ -480,11 +480,11 @@
         <MaxHeroes>20</MaxHeroes>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Castle</TypeConstruction>
+            <Construction>Castle</Construction>
             <Level>2</Level>
           </Requirement>
           <Requirement>
-            <TypeConstruction>Smithy</TypeConstruction>
+            <Construction>Smithy</Construction>
             <Level>2</Level>
           </Requirement>
         </Requirements>
@@ -498,11 +498,11 @@
         <MaxHeroes>30</MaxHeroes>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Castle</TypeConstruction>
+            <Construction>Castle</Construction>
             <Level>2</Level>
           </Requirement>
           <Requirement>
-            <TypeConstruction>Smithy</TypeConstruction>
+            <Construction>Smithy</Construction>
             <Level>2</Level>
           </Requirement>
         </Requirements>
@@ -531,14 +531,14 @@
         <Cost>750</Cost>
         <Requirements>
           <Requirement>
-            <TypeConstruction>GuildDwarf</TypeConstruction>
+            <Construction>GuildDwarf</Construction>
             <Level>2</Level>
           </Requirement>
         </Requirements>
       </CellMenu>
     </CellsMenu>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>GuildRogue</ID>
     <Name>Гильдия разбойниц</Name>
     <Description>- Позволяет нанимать разбойниц//- В гильдии исследуют и продают особые способности разбойниц//- Здесь исследуют и продают яды для оружия//- Здесь исследуют способность "Вымогательство"</Description>
@@ -599,7 +599,7 @@
         <Cost>500</Cost>
         <Requirements>
           <Requirement>
-            <TypeConstruction>GuildRogue</TypeConstruction>
+            <Construction>GuildRogue</Construction>
             <Level>2</Level>
           </Requirement>
         </Requirements>
@@ -612,7 +612,7 @@
         <Cost>500</Cost>
         <Requirements>
           <Requirement>
-            <TypeConstruction>GuildRogue</TypeConstruction>
+            <Construction>GuildRogue</Construction>
             <Level>2</Level>
           </Requirement>
         </Requirements>
@@ -625,14 +625,14 @@
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
-            <TypeConstruction>GuildRogue</TypeConstruction>
+            <Construction>GuildRogue</Construction>
             <Level>3</Level>
           </Requirement>
         </Requirements>
       </CellMenu>
     </CellsMenu>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>Castle</ID>
     <Name>Замок</Name>
     <Description>- Позволяет отдавать приказы строительства//- Содержит налоговую и охранную службы//- Здесь хранится казна королевства</Description>
@@ -668,11 +668,11 @@
         <MaxHeroes>25</MaxHeroes>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Market</TypeConstruction>
+            <Construction>Market</Construction>
             <Level>1</Level>
           </Requirement>
           <Requirement>
-            <TypeConstruction>Smithy</TypeConstruction>
+            <Construction>Smithy</Construction>
             <Level>1</Level>
           </Requirement>
         </Requirements>
@@ -688,18 +688,18 @@
         <MaxHeroes>30</MaxHeroes>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Market</TypeConstruction>
+            <Construction>Market</Construction>
             <Level>2</Level>
           </Requirement>
           <Requirement>
-            <TypeConstruction>Smithy</TypeConstruction>
+            <Construction>Smithy</Construction>
             <Level>2</Level>
           </Requirement>
         </Requirements>
       </Level>
     </Levels>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>PeasantHouse</ID>
     <Name>Крестьянский дом</Name>
     <Description>- Приносит небольшой доход//- Жилище крестьян</Description>
@@ -718,14 +718,14 @@
         <Income>50</Income>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Castle</TypeConstruction>
+            <Construction>Castle</Construction>
             <Level>1</Level>
           </Requirement>
         </Requirements>
       </Level>
     </Levels>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>Mill</ID>
     <Name>Мельница</Name>
     <Description>- Приносит небольшой доход</Description>
@@ -744,14 +744,14 @@
         <Income>250</Income>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Castle</TypeConstruction>
+            <Construction>Castle</Construction>
             <Level>1</Level>
           </Requirement>
         </Requirements>
       </Level>
     </Levels>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>TradePost</ID>
     <Name>Торговый пост</Name>
     <Description>- Приносит средний доход</Description>
@@ -770,14 +770,14 @@
         <Income>100</Income>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Market</TypeConstruction>
+            <Construction>Market</Construction>
             <Level>1</Level>
           </Requirement>
         </Requirements>
       </Level>
     </Levels>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>Market</ID>
     <Name>Рынок</Name>
     <Description>- Приносит существенный доход//- Здесь исследуют и продают амуницию//- Здесь исследуют и продают продукты//- Здесь исследуют и продают разные предметы</Description>
@@ -805,7 +805,7 @@
         <Income>300</Income>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Castle</TypeConstruction>
+            <Construction>Castle</Construction>
             <Level>2</Level>
           </Requirement>
         </Requirements>
@@ -817,7 +817,7 @@
         <Income>525</Income>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Castle</TypeConstruction>
+            <Construction>Castle</Construction>
             <Level>3</Level>
           </Requirement>
         </Requirements>
@@ -840,7 +840,7 @@
         <Cost>500</Cost>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Market</TypeConstruction>
+            <Construction>Market</Construction>
             <Level>2</Level>
           </Requirement>
         </Requirements>
@@ -860,7 +860,7 @@
         <Cost>500</Cost>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Market</TypeConstruction>
+            <Construction>Market</Construction>
             <Level>2</Level>
           </Requirement>
         </Requirements>
@@ -873,7 +873,7 @@
         <Cost>750</Cost>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Market</TypeConstruction>
+            <Construction>Market</Construction>
             <Level>3</Level>
           </Requirement>
         </Requirements>
@@ -886,8 +886,8 @@
         <Cost>250</Cost>
       </CellMenu>
     </CellsMenu>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>Smithy</ID>
     <Name>Кузница</Name>
     <Description>- Приносит небольшой доход//- Здесь изобретают и продают новые виды оружия и брони</Description>
@@ -915,7 +915,7 @@
         <Income>50</Income>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Castle</TypeConstruction>
+            <Construction>Castle</Construction>
             <Level>2</Level>
           </Requirement>
         </Requirements>
@@ -927,7 +927,7 @@
         <Builders>1</Builders>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Castle</TypeConstruction>
+            <Construction>Castle</Construction>
             <Level>3</Level>
           </Requirement>
         </Requirements>
@@ -984,7 +984,7 @@
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Smithy</TypeConstruction>
+            <Construction>Smithy</Construction>
             <Level>2</Level>
           </Requirement>
         </Requirements>
@@ -997,7 +997,7 @@
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Smithy</TypeConstruction>
+            <Construction>Smithy</Construction>
             <Level>2</Level>
           </Requirement>
         </Requirements>
@@ -1010,7 +1010,7 @@
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Smithy</TypeConstruction>
+            <Construction>Smithy</Construction>
             <Level>2</Level>
           </Requirement>
         </Requirements>
@@ -1023,7 +1023,7 @@
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Smithy</TypeConstruction>
+            <Construction>Smithy</Construction>
             <Level>2</Level>
           </Requirement>
         </Requirements>
@@ -1036,7 +1036,7 @@
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Smithy</TypeConstruction>
+            <Construction>Smithy</Construction>
             <Level>2</Level>
           </Requirement>
         </Requirements>
@@ -1049,7 +1049,7 @@
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Smithy</TypeConstruction>
+            <Construction>Smithy</Construction>
             <Level>2</Level>
           </Requirement>
         </Requirements>
@@ -1062,7 +1062,7 @@
         <Cost>3000</Cost>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Smithy</TypeConstruction>
+            <Construction>Smithy</Construction>
             <Level>3</Level>
           </Requirement>
         </Requirements>
@@ -1075,7 +1075,7 @@
         <Cost>3000</Cost>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Smithy</TypeConstruction>
+            <Construction>Smithy</Construction>
             <Level>3</Level>
           </Requirement>
         </Requirements>
@@ -1088,7 +1088,7 @@
         <Cost>3000</Cost>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Smithy</TypeConstruction>
+            <Construction>Smithy</Construction>
             <Level>3</Level>
           </Requirement>
         </Requirements>
@@ -1101,7 +1101,7 @@
         <Cost>3000</Cost>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Smithy</TypeConstruction>
+            <Construction>Smithy</Construction>
             <Level>3</Level>
           </Requirement>
         </Requirements>
@@ -1114,7 +1114,7 @@
         <Cost>3000</Cost>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Smithy</TypeConstruction>
+            <Construction>Smithy</Construction>
             <Level>3</Level>
           </Requirement>
         </Requirements>
@@ -1127,7 +1127,7 @@
         <Cost>3000</Cost>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Smithy</TypeConstruction>
+            <Construction>Smithy</Construction>
             <Level>3</Level>
           </Requirement>
         </Requirements>
@@ -1140,7 +1140,7 @@
         <Cost>3500</Cost>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Smithy</TypeConstruction>
+            <Construction>Smithy</Construction>
             <Level>3</Level>
           </Requirement>
         </Requirements>
@@ -1153,7 +1153,7 @@
         <Cost>3500</Cost>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Smithy</TypeConstruction>
+            <Construction>Smithy</Construction>
             <Level>3</Level>
           </Requirement>
         </Requirements>
@@ -1166,7 +1166,7 @@
         <Cost>3500</Cost>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Smithy</TypeConstruction>
+            <Construction>Smithy</Construction>
             <Level>3</Level>
           </Requirement>
         </Requirements>
@@ -1179,7 +1179,7 @@
         <Cost>3500</Cost>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Smithy</TypeConstruction>
+            <Construction>Smithy</Construction>
             <Level>3</Level>
           </Requirement>
         </Requirements>
@@ -1192,7 +1192,7 @@
         <Cost>3500</Cost>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Smithy</TypeConstruction>
+            <Construction>Smithy</Construction>
             <Level>2</Level>
           </Requirement>
         </Requirements>
@@ -1205,14 +1205,14 @@
         <Cost>3500</Cost>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Smithy</TypeConstruction>
+            <Construction>Smithy</Construction>
             <Level>3</Level>
           </Requirement>
         </Requirements>
       </CellMenu>
     </CellsMenu>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>Tavern</ID>
     <Name>Таверна</Name>
     <Description>- Здесь герои могут отдыхать и лечиться//- Позволяет собирать партии героев</Description>
@@ -1239,14 +1239,14 @@
         <Income>0</Income>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Castle</TypeConstruction>
+            <Construction>Castle</Construction>
             <Level>2</Level>
           </Requirement>
         </Requirements>
       </Level>
     </Levels>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>MagicBazaar</ID>
     <Name>Магический базар</Name>
     <Description>- Приносит небольшой доход//- Здесь изобретают и продают артефакты и магические предметы</Description>
@@ -1268,7 +1268,7 @@
         <Income>150</Income>
         <Requirements>
           <Requirement>
-            <TypeConstruction>GuildMage</TypeConstruction>
+            <Construction>GuildMage</Construction>
             <Level>1</Level>
           </Requirement>
         </Requirements>
@@ -1280,7 +1280,7 @@
         <Income>250</Income>
         <Requirements>
           <Requirement>
-            <TypeConstruction>MagicBazaar</TypeConstruction>
+            <Construction>MagicBazaar</Construction>
             <Level>1</Level>
           </Requirement>
         </Requirements>
@@ -1292,7 +1292,7 @@
         <Income>350</Income>
         <Requirements>
           <Requirement>
-            <TypeConstruction>MagicBazaar</TypeConstruction>
+            <Construction>MagicBazaar</Construction>
             <Level>2</Level>
           </Requirement>
         </Requirements>
@@ -1314,7 +1314,7 @@
         <Cost>500</Cost>
         <Requirements>
           <Requirement>
-            <TypeConstruction>MagicBazaar</TypeConstruction>
+            <Construction>MagicBazaar</Construction>
             <Level>2</Level>
           </Requirement>
         </Requirements>
@@ -1327,14 +1327,14 @@
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
-            <TypeConstruction>MagicBazaar</TypeConstruction>
+            <Construction>MagicBazaar</Construction>
             <Level>3</Level>
           </Requirement>
         </Requirements>
       </CellMenu>
     </CellsMenu>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>AlchemistHouse</ID>
     <Name>Дом алхимика</Name>
     <Description>- Приносит небольшой доход//- Здесь изобретают и продают эликсиры/напитки</Description>
@@ -1442,8 +1442,8 @@
         <Cost>200</Cost>
       </CellMenu>
     </CellsMenu>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>Library</ID>
     <Name>Библиотека</Name>
     <Description>- Позволяет изучить заклинания</Description>
@@ -1470,8 +1470,8 @@
         <Income>0</Income>
       </Level>
     </Levels>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>Statue</ID>
     <Name>Статуя</Name>
     <Description>- Повышает энтузиазм героев</Description>
@@ -1502,8 +1502,8 @@
         <GreatnessPerDay>10</GreatnessPerDay>
       </Level>
     </Levels>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>Academy</ID>
     <Name>Военная академия</Name>
     <Description>- Позволяет улучшать навыки героями</Description>
@@ -1524,8 +1524,8 @@
         <Income>0</Income>
       </Level>
     </Levels>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>Hospital</ID>
     <Name>Госпиталь</Name>
     <Description>- Лечение героев</Description>
@@ -1546,8 +1546,8 @@
         <Income>0</Income>
       </Level>
     </Levels>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>Arena</ID>
     <Name>Арена</Name>
     <Description>- Позволяет улучшить навыки командной работы героями</Description>
@@ -1568,8 +1568,8 @@
         <Income>50</Income>
       </Level>
     </Levels>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>Garden</ID>
     <Name>Сад</Name>
     <Description>- Улучшает настроение героев//- Место отдыха эльфов, людей</Description>
@@ -1590,8 +1590,8 @@
         <Income>50</Income>
       </Level>
     </Levels>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>GuildDarkPriest</ID>
     <Name>Храм Крипты</Name>
     <Description>- Позволяет нанимать сестер Крипты//- Здесь исследуют заклинание "Чума и разорение"//- Сестры Крипты не любят паладинов</Description>
@@ -1617,18 +1617,18 @@
         <MaxHeroes>5</MaxHeroes>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Castle</TypeConstruction>
+            <Construction>Castle</Construction>
             <Level>3</Level>
           </Requirement>
           <Requirement>
-            <TypeConstruction>GuildCleric</TypeConstruction>
+            <Construction>GuildCleric</Construction>
             <Level>1</Level>
           </Requirement>
         </Requirements>
       </Level>
     </Levels>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>GuildPriest</ID>
     <Name>Храм Агрелы</Name>
     <Description>- Позволяет нанимать жриц Агрелы//- Здесь исследуют заклинание "Возрождение"</Description>
@@ -1654,18 +1654,18 @@
         <MaxHeroes>5</MaxHeroes>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Castle</TypeConstruction>
+            <Construction>Castle</Construction>
             <Level>3</Level>
           </Requirement>
           <Requirement>
-            <TypeConstruction>GuildCleric</TypeConstruction>
+            <Construction>GuildCleric</Construction>
             <Level>1</Level>
           </Requirement>
         </Requirements>
       </Level>
     </Levels>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>GuildPaladin</ID>
     <Name>Храм Дауроса</Name>
     <Description>- Позволяет нанимать паладинов//- Здесь исследуют заклинание "Святой щит"//- Паладины не любят нежить, вызываемую сестрами Крипты</Description>
@@ -1691,18 +1691,18 @@
         <MaxHeroes>5</MaxHeroes>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Castle</TypeConstruction>
+            <Construction>Castle</Construction>
             <Level>3</Level>
           </Requirement>
           <Requirement>
-            <TypeConstruction>GuildWarrior</TypeConstruction>
+            <Construction>GuildWarrior</Construction>
             <Level>1</Level>
           </Requirement>
         </Requirements>
       </Level>
     </Levels>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>GuildBlademaster</ID>
     <Name>Храм Крольма</Name>
     <Description>- Позволяет нанимать мастеров меча//- Здесь исследуют заклинание "Гнев Крольма"</Description>
@@ -1728,18 +1728,18 @@
         <MaxHeroes>5</MaxHeroes>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Castle</TypeConstruction>
+            <Construction>Castle</Construction>
             <Level>3</Level>
           </Requirement>
           <Requirement>
-            <TypeConstruction>GuildWarrior</TypeConstruction>
+            <Construction>GuildWarrior</Construction>
             <Level>1</Level>
           </Requirement>
         </Requirements>
       </Level>
     </Levels>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>GuildBeastmaster</ID>
     <Name>Храм Фервуса</Name>
     <Description>- Позволяет нанимать звероловов//- Здесь исследуют заклинание "Щит Хаоса"</Description>
@@ -1765,18 +1765,18 @@
         <MaxHeroes>5</MaxHeroes>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Castle</TypeConstruction>
+            <Construction>Castle</Construction>
             <Level>3</Level>
           </Requirement>
           <Requirement>
-            <TypeConstruction>GuildHunter</TypeConstruction>
+            <Construction>GuildHunter</Construction>
             <Level>1</Level>
           </Requirement>
         </Requirements>
       </Level>
     </Levels>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>GuildMarksman</ID>
     <Name>Храм Хелии</Name>
     <Description>- Позволяет нанимать лучников Хелии//- Здесь исследуют заклинание "Удар Солнца"</Description>
@@ -1802,18 +1802,18 @@
         <MaxHeroes>5</MaxHeroes>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Castle</TypeConstruction>
+            <Construction>Castle</Construction>
             <Level>3</Level>
           </Requirement>
           <Requirement>
-            <TypeConstruction>GuildHunter</TypeConstruction>
+            <Construction>GuildHunter</Construction>
             <Level>1</Level>
           </Requirement>
         </Requirements>
       </Level>
     </Levels>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>GuildIceMage</ID>
     <Name>Храм Холода</Name>
     <Description>- Позволяет нанимать магов Холода</Description>
@@ -1839,18 +1839,18 @@
         <MaxHeroes>5</MaxHeroes>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Castle</TypeConstruction>
+            <Construction>Castle</Construction>
             <Level>3</Level>
           </Requirement>
           <Requirement>
-            <TypeConstruction>GuildMage</TypeConstruction>
+            <Construction>GuildMage</Construction>
             <Level>1</Level>
           </Requirement>
         </Requirements>
       </Level>
     </Levels>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>GuildDeathKnight</ID>
     <Name>Храм Лунорда</Name>
     <Description>- Позволяет нанимать ассасинов</Description>
@@ -1876,18 +1876,18 @@
         <MaxHeroes>5</MaxHeroes>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Castle</TypeConstruction>
+            <Construction>Castle</Construction>
             <Level>3</Level>
           </Requirement>
           <Requirement>
-            <TypeConstruction>GuildRogue</TypeConstruction>
+            <Construction>GuildRogue</Construction>
             <Level>1</Level>
           </Requirement>
         </Requirements>
       </Level>
     </Levels>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>GuildFireMage</ID>
     <Name>Храм Огня</Name>
     <Description>- Позволяет нанимать магов Огня</Description>
@@ -1913,18 +1913,18 @@
         <MaxHeroes>5</MaxHeroes>
         <Requirements>
           <Requirement>
-            <TypeConstruction>Castle</TypeConstruction>
+            <Construction>Castle</Construction>
             <Level>3</Level>
           </Requirement>
           <Requirement>
-            <TypeConstruction>GuildMage</TypeConstruction>
+            <Construction>GuildMage</Construction>
             <Level>1</Level>
           </Requirement>
         </Requirements>
       </Level>
     </Levels>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>GraveyardZombie</ID>
     <Name>Чумное кладбище</Name>
     <Description>Не рекомендуется гулять по чумным кладбищам. Вас могут принять за зомби, которых полным полно в таких местах.</Description>
@@ -1946,8 +1946,8 @@
       <Gold>100</Gold>
       <Greatness>25</Greatness>
     </Reward>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>GraveyardSkeletons</ID>
     <Name>Древнее кладбище</Name>
     <Description>Эти кладбища появились еще при правлении первого Великого короля. На них, согласно легендам, похоронены герои, павшие в войне за объединение Ардании. В любую погоду здесь можно встретить скелеты или призраков воинов тех времен.</Description>
@@ -1977,8 +1977,8 @@
       <Gold>100</Gold>
       <Greatness>25</Greatness>
     </Reward>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>Crypt</ID>
     <Name>Склеп</Name>
     <Description>Древние фамильные склепы - удобное пристанище для древней фамильной нежити.</Description>
@@ -2008,8 +2008,8 @@
       <Gold>300</Gold>
       <Greatness>50</Greatness>
     </Reward>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>AncientCrypt</ID>
     <Name>Древний склеп</Name>
     <Description>Местные жители предпочитают не заглядывать в такие старые склепы по своей воле. Вдруг в них живут вампиры?</Description>
@@ -2031,8 +2031,8 @@
       <Gold>500</Gold>
       <Greatness>100</Greatness>
     </Reward>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>WolfsDen</ID>
     <Name>Логово волков</Name>
     <Description>В таких местах, удивительно точно называемых "логовами волков", как правило, живут волки</Description>
@@ -2062,8 +2062,8 @@
       <Gold>100</Gold>
       <Greatness>25</Greatness>
     </Reward>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>SerpentsNest</ID>
     <Name>Гнездо змей</Name>
     <Description>Летающие змеи с удовольствием селятся в гнездах, прорытых арданийскими ласточками для хранения кокосов.</Description>
@@ -2085,8 +2085,8 @@
       <Gold>200</Gold>
       <Greatness>50</Greatness>
     </Reward>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>BearsDen</ID>
     <Name>Берлога</Name>
     <Description>Как и всякие приличные медведи, медведи Ардании предпочитают жить в берлогах.</Description>
@@ -2116,8 +2116,8 @@
       <Gold>100</Gold>
       <Greatness>50</Greatness>
     </Reward>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>BearmansDen</ID>
     <Name>Берлога охотника</Name>
     <Description>Охотники, укушенные медведем-шатуном, по традиции делают себе такие берлоги.</Description>
@@ -2139,8 +2139,8 @@
       <Gold>100</Gold>
       <Greatness>50</Greatness>
     </Reward>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>PyramideMinotaurs</ID>
     <Name>Пирамида минотавров</Name>
     <Description>Пирамиды - единственная архитектурная форма, которую сумели освоить минотавры.</Description>
@@ -2170,8 +2170,8 @@
       <Gold>100</Gold>
       <Greatness>50</Greatness>
     </Reward>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>OgreCave</ID>
     <Name>Пещера огров</Name>
     <Description>Такие пещеры - основное место обитания огра арданийского обыкновенного.</Description>
@@ -2193,8 +2193,8 @@
       <Gold>100</Gold>
       <Greatness>50</Greatness>
     </Reward>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>HermitHouse</ID>
     <Name>Дом отшельника</Name>
     <Description>Первое, на что обращают внимание путники, подходя к дому отшельника - на кости других путников, подходивших к этому дому ранее.</Description>
@@ -2216,8 +2216,8 @@
       <Gold>100</Gold>
       <Greatness>50</Greatness>
     </Reward>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>DragonCave</ID>
     <Name>Пещера дракона</Name>
     <Description>Пещеры драконов всегда полны сокровищ и скелетов тех, кто искал эти сокровища.</Description>
@@ -2239,8 +2239,8 @@
       <Gold>100</Gold>
       <Greatness>50</Greatness>
     </Reward>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>KingsSewer</ID>
     <Name>Королевская канализация</Name>
     <Description>Сир, это не просто канализация! В таких обычно живут и передвигаются крысиные предводители, например Король Крыс Пятый.</Description>
@@ -2262,8 +2262,8 @@
       <Gold>100</Gold>
       <Greatness>50</Greatness>
     </Reward>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>Treasure</ID>
     <Name>Сокровище</Name>
     <Description>Сундуки с сокровищами встречаются в Ардании даже чаще, чем крысы В некоторых землях герои собирают по два урожая сундуков в год!</Description>
@@ -2274,8 +2274,8 @@
     <HiddenReward>
       <Gold>1000</Gold>
     </HiddenReward>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>ThroneLightning</ID>
     <Name>Трон элементов Молнии</Name>
     <Description>Троны элементов вызывают живейший интерес ученых, постоянно собирающих экспедиции к подобным местам. Этот факт серьезно сдерживает развитие науки в Ардании.</Description>
@@ -2297,8 +2297,8 @@
       <Gold>100</Gold>
       <Greatness>50</Greatness>
     </Reward>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>ThroneFire</ID>
     <Name>Трон элементов Огня</Name>
     <Description>Троны элементов вызывают живейший интерес ученых, постоянно собирающих экспедиции к подобным местам. Этот факт серьезно сдерживает развитие науки в Ардании.</Description>
@@ -2320,8 +2320,8 @@
       <Gold>100</Gold>
       <Greatness>50</Greatness>
     </Reward>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>HolyPlace</ID>
     <Name>Святая земля</Name>
     <Description>Только на святой земле можно построить храм. Такие места большая редкость, и жрецы постоянно спорят, чей храм будет построен на святой земле.</Description>
@@ -2388,8 +2388,8 @@
         <TypeObject>GuildFireMage</TypeObject>
       </CellMenu>
     </CellsMenu>
-  </TypeConstruction>
-  <TypeConstruction>
+  </Construction>
+  <Construction>
     <ID>EmptyPlace</ID>
     <Name>Пустое место</Name>
     <Description>Здесь крестьяне строят свои дома. Если место долго пустует, его могут облюбовать дикие звери.</Description>
@@ -2399,5 +2399,5 @@
     <TypePlaceForConstruct></TypePlaceForConstruct>
     <Reward>
     </Reward>
-  </TypeConstruction>
-</TypeConstructions>
+  </Construction>
+</Descriptors>

@@ -223,7 +223,7 @@
     <Content Include="Resources\Config\StartBonus.xml" />
     <Content Include="Resources\Config\StateCreature.xml" />
     <Content Include="Resources\Config\TypeAttack.xml" />
-    <Content Include="Resources\Config\TypeConstructions.xml" />
+    <Content Include="Resources\Config\Descriptors\Constructions.xml" />
     <Content Include="Resources\Config\Descriptors\TypeCreatures.xml" />
     <Content Include="Resources\Config\TypePerks.xml" />
     <Content Include="Resources\Icons\Avatars.png" />

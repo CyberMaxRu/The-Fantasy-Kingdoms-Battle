@@ -121,8 +121,8 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Загрузка конфигурации сооружений
-            xmlDoc = CreateXmlDocument(@"Config\TypeConstructions.xml");
-            foreach (XmlNode n in xmlDoc.SelectNodes("/TypeConstructions/TypeConstruction"))
+            xmlDoc = CreateXmlDocument(@"Config\Descriptors\Constructions.xml");
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/Construction"))
             {
                 TypeConstructions.Add(new DescriptorConstruction(n));
             }
