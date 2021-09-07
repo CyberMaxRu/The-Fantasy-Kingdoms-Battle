@@ -10,11 +10,11 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс монстров уровня логова
-    internal sealed class MonsterLevelLair
+    internal sealed class MonsterLevelLair : Descriptor
     {
         private string idMonster;
 
-        public MonsterLevelLair(XmlNode n)
+        public MonsterLevelLair(XmlNode n) : base()
         {
             idMonster = n.SelectSingleNode("ID").InnerText;
             StartQuantity = GetInteger(n, "StartQuantity");
@@ -42,10 +42,14 @@ namespace Fantasy_Kingdoms_Battle
         internal int QuantityRespawn { get; }
         internal List<Monster> Monsters { get; } = new List<Monster>();
 
-        internal void TuneDeferredLinks()
+        internal override void TuneDeferredLinks()
         {
-            Monster = FormMain.Config.FindTypeCreature(idMonster);
-            idMonster = null;
+            base.TuneDeferredLinks();
+
+            Monster = Config.FindTypeCreature(idMonster);
+            idMonster = "";
+
+            Debug.Assert(Monster.CategoryCreature == CategoryCreature.Monster);
             Debug.Assert(Level <= Monster.MaxLevel);
         }
     }
