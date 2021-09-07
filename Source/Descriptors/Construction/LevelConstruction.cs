@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Diagnostics;
+using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -13,14 +14,14 @@ namespace Fantasy_Kingdoms_Battle
     {
         public LevelConstruction(XmlNode n)
         {
-            Pos = Convert.ToInt32(n.SelectSingleNode("Pos").InnerText);
-            Cost = Convert.ToInt32(n.SelectSingleNode("Cost").InnerText);
-            Builders = XmlUtils.GetIntegerNotNull(n, "Builders");
-            Income = XmlUtils.GetInteger(n, "Income");
-            GreatnessByConstruction = XmlUtils.GetInteger(n, "GreatnessByConstruction");
-            GreatnessPerDay = XmlUtils.GetInteger(n, "GreatnessPerDay");
-            BuildersPerDay = XmlUtils.GetInteger(n, "BuildersPerDay");
-            MaxHeroes = n.SelectSingleNode("MaxHeroes") != null ? Convert.ToInt32(n.SelectSingleNode("MaxHeroes").InnerText) : 0;
+            Pos = GetIntegerNotNull(n, "Pos");
+            Cost = GetIntegerNotNull(n, "Cost");
+            Builders = GetIntegerNotNull(n, "Builders");
+            Income = GetInteger(n, "Income");
+            GreatnessByConstruction = GetInteger(n, "GreatnessByConstruction");
+            GreatnessPerDay = GetInteger(n, "GreatnessPerDay");
+            BuildersPerDay = GetInteger(n, "BuildersPerDay");
+            MaxHeroes = GetInteger(n, "MaxHeroes");
 
             Debug.Assert(Pos > 0);
             Debug.Assert(Cost >= 0);
@@ -37,7 +38,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Загружаем требования
-            XmlUtils.LoadRequirements(Requirements, n);
+            LoadRequirements(Requirements, n);
         }
 
         internal int Pos { get; }
