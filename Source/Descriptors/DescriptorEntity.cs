@@ -12,8 +12,6 @@ namespace Fantasy_Kingdoms_Battle
 
         public DescriptorEntity(XmlNode n) : base()
         {
-            Config = FormMain.Config;
-
             ID = GetStringNotNull(n, "ID");
             name = GetStringNotNull(n, "Name");
             Description = GetDescription(n, "Description");
@@ -28,8 +26,6 @@ namespace Fantasy_Kingdoms_Battle
 
         public DescriptorEntity(string id, string name, string description, int imageIndex)
         {
-            Config = FormMain.Config;
-
             ID = id;
             this.name = name;
             Description = description;
@@ -42,7 +38,6 @@ namespace Fantasy_Kingdoms_Battle
         internal string Name { get => name; set { name = value; CheckData(); } }// Наименование типа объекта
         internal string Description { get; set; }// Описание типа объекта
         internal int ImageIndex { get => imageIndex; set { imageIndex = value; CheckData(); } }// Код иконки типа объекта
-        protected Config Config { get; }
 
         protected virtual int ShiftImageIndex() => 0;
 

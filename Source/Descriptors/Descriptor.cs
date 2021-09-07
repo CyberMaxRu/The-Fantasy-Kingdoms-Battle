@@ -11,5 +11,7 @@ namespace Fantasy_Kingdoms_Battle
         internal virtual void TuneDeferredLinks()
         { 
         }
+
+        internal static Config Config { get; set; }
     }
 }
