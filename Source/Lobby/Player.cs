@@ -934,10 +934,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void ApplyReward(Construction l)
         {
-            if (l.TypeConstruction.TypeReward != null)
+            if (l.TypeConstruction.Reward != null)
             {
-                IncomeGold(l.TypeConstruction.TypeReward.Gold);
-                AddGreatness(l.TypeConstruction.TypeReward.Greatness);
+                IncomeGold(l.TypeConstruction.Reward.Gold);
+                AddGreatness(l.TypeConstruction.Reward.Greatness);
             }
 
             if (l.TypeConstruction.HiddenReward != null)

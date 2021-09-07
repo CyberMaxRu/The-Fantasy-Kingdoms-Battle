@@ -420,10 +420,10 @@ namespace Fantasy_Kingdoms_Battle
                     else
                     {
                         Program.formMain.formHint.AddStep1Header(TypeConstruction.Name, "", TypeConstruction.Description);
-                        if (TypeConstruction.TypeReward != null)
+                        if (TypeConstruction.Reward != null)
                         {
-                            Program.formMain.formHint.AddStep2Reward(TypeConstruction.TypeReward.Gold);
-                            Program.formMain.formHint.AddStep3Greatness(TypeConstruction.TypeReward.Greatness, 0);
+                            Program.formMain.formHint.AddStep2Reward(TypeConstruction.Reward.Gold);
+                            Program.formMain.formHint.AddStep3Greatness(TypeConstruction.Reward.Greatness, 0);
                         }
                     }
                 }

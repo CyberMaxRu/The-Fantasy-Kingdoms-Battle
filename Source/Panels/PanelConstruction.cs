@@ -279,16 +279,16 @@ namespace Fantasy_Kingdoms_Battle
                 lblNameMapObject.Text = Construction.NameLair();
                 lblNameMapObject.Color = GetColorCaption();
 
-                lblRewardGold.Visible = !Construction.Hidden && (Construction.TypeConstruction.TypeReward != null) && (Construction.TypeConstruction.TypeReward.Gold > 0);
+                lblRewardGold.Visible = !Construction.Hidden && (Construction.TypeConstruction.Reward != null) && (Construction.TypeConstruction.Reward.Gold > 0);
                 if (lblRewardGold.Visible)
                 {
-                    lblRewardGold.Text = Construction.TypeConstruction.TypeReward.Gold.ToString();
+                    lblRewardGold.Text = Construction.TypeConstruction.Reward.Gold.ToString();
                 }
 
-                lblRewardGreatness.Visible = !Construction.Hidden && (Construction.TypeConstruction.TypeReward != null) && (Construction.TypeConstruction.TypeReward.Greatness > 0);
+                lblRewardGreatness.Visible = !Construction.Hidden && (Construction.TypeConstruction.Reward != null) && (Construction.TypeConstruction.Reward.Greatness > 0);
                 if (lblRewardGreatness.Visible)
                 {
-                    lblRewardGreatness.Text = Construction.TypeConstruction.TypeReward.Greatness.ToString();
+                    lblRewardGreatness.Text = Construction.TypeConstruction.Reward.Greatness.ToString();
                 }
             }
 

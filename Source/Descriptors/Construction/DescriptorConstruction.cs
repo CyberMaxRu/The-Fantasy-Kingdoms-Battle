@@ -164,7 +164,7 @@ namespace Fantasy_Kingdoms_Battle
 
             // Информация о награде
             if (n.SelectSingleNode("Reward") != null)
-                TypeReward = new DescriptorReward(n.SelectSingleNode("Reward"));
+                Reward = new DescriptorReward(n.SelectSingleNode("Reward"));
             if (n.SelectSingleNode("HiddenReward") != null)
                 HiddenReward = new DescriptorReward(n.SelectSingleNode("HiddenReward"));
 
@@ -242,7 +242,7 @@ namespace Fantasy_Kingdoms_Battle
 
         // Свойства, относящиеся к логовам монстров
         internal List<MonsterLevelLair> Monsters { get; } = new List<MonsterLevelLair>();
-        internal DescriptorReward TypeReward { get; }// Награда за зачистку логова
+        internal DescriptorReward Reward { get; }// Награда за зачистку логова
         internal DescriptorReward HiddenReward { get; }// Скрытая награда за зачистку логова
         internal DescriptorConstruction TypePlaceForConstruct { get; private set; }// Тип сооружения, на котором строится сооружение
 
