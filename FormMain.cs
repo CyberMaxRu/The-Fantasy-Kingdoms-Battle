@@ -1282,7 +1282,7 @@ namespace Fantasy_Kingdoms_Battle
 
             // Проходим по каждому зданию, создавая ему панель
             VisualControl parent;
-            foreach (DescriptorConstruction tck in Config.TypeConstructions)
+            foreach (DescriptorConstruction tck in Config.Constructions)
             {
                 if (tck.IsInternalConstruction)
                 {

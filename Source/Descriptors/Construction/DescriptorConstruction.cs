@@ -81,7 +81,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Проверяем, что таких же ID и наименования нет
-            foreach (DescriptorConstruction tec in Config.TypeConstructions)
+            foreach (DescriptorConstruction tec in Config.Constructions)
             {
                 Debug.Assert(tec.ID != ID);
                 Debug.Assert(tec.Name != Name);

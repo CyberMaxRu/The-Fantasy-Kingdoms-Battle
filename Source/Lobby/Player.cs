@@ -68,7 +68,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Инициализация зданий
-            foreach (DescriptorConstruction tck in FormMain.Config.TypeConstructions)
+            foreach (DescriptorConstruction tck in FormMain.Config.Constructions)
             {
                 if (tck.IsInternalConstruction)
                     new Construction(this, tck);

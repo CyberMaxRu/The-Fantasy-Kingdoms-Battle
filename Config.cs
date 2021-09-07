@@ -124,7 +124,7 @@ namespace Fantasy_Kingdoms_Battle
             xmlDoc = CreateXmlDocument(@"Config\Descriptors\Constructions.xml");
             foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/Construction"))
             {
-                TypeConstructions.Add(new DescriptorConstruction(n));
+                Constructions.Add(new DescriptorConstruction(n));
             }
 
             // Загрузка групп предметов
@@ -215,7 +215,7 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorCreature tc in Creatures)
                 tc.TuneDeferredLinks();
 
-            foreach (DescriptorConstruction tc in TypeConstructions)
+            foreach (DescriptorConstruction tc in Constructions)
                 tc.TuneDeferredLinks();
 
             foreach (TypeLobby tl in TypeLobbies)
@@ -236,9 +236,9 @@ namespace Fantasy_Kingdoms_Battle
         internal List<ComputerPlayer> ComputerPlayers { get; } = new List<ComputerPlayer>();
         internal List<HumanPlayer> HumanPlayers { get; } = new List<HumanPlayer>();
         internal bool AutoCreatedPlayer { get; }
-        internal List<DescriptorConstruction> TypeConstructions { get; } = new List<DescriptorConstruction>();
 
-        //
+        // Списки описателей
+        internal List<DescriptorConstruction> Constructions { get; } = new List<DescriptorConstruction>();
         internal List<DescriptorAttack> TypeAttacks { get; } = new List<DescriptorAttack>();
         internal List<DescriptorAbility> Abilities { get; } = new List<DescriptorAbility>();
         internal List<DescriptorSpecialization> Specializations { get; } = new List<DescriptorSpecialization>();
@@ -247,8 +247,8 @@ namespace Fantasy_Kingdoms_Battle
         internal List<TypeCreature> TypeCreatures { get; } = new List<TypeCreature>();
         internal List<DescriptorGroupItems> GroupItems { get; } = new List<DescriptorGroupItems>();
         internal List<DescriptorItem> Items { get; } = new List<DescriptorItem>();
-        internal int MaxLevelSkill { get; }
         internal List<DescriptorCreature> Creatures { get; } = new List<DescriptorCreature>();
+        internal int MaxLevelSkill { get; }
 
         //
         internal List<string> ExternalAvatars { get; } = new List<string>();
@@ -379,7 +379,7 @@ namespace Fantasy_Kingdoms_Battle
         //
         internal DescriptorConstruction FindTypeConstruction(string ID, bool mustBeExists = true)
         {
-            foreach (DescriptorConstruction tck in TypeConstructions)
+            foreach (DescriptorConstruction tck in Constructions)
             {
                 if (tck.ID == ID)
                     return tck;
