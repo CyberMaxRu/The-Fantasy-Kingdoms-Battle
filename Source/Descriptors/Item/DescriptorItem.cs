@@ -43,6 +43,16 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(QuantityShots == 0);
             }
 
+            if (CategoryItem == CategoryItem.MeleeWeapon)
+            {
+                Debug.Assert(DamageRange == 0);
+            }
+
+            if (CategoryItem == CategoryItem.RangeWeapon)
+            {
+                Debug.Assert(DamageMelee == 0);
+            }
+
             UsedByTypeCreature = new List<DescriptorCreature>();
             /*switch (TypeAttack)
             {
