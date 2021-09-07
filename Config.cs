@@ -176,9 +176,9 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Загрузка конфигурации состояний существ
-            xmlDoc = CreateXmlDocument(@"Config\StateCreature.xml");
+            xmlDoc = CreateXmlDocument(@"Config\Descriptors\StatesCreature.xml");
 
-            foreach (XmlNode n in xmlDoc.SelectNodes("/StatesCreature/StateCreature"))
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/StateCreature"))
             {
                 StatesCreature.Add(new StateCreature(n));
             }

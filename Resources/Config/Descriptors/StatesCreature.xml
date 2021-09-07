@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<StatesCreature>
+<Descriptors>
   <StateCreature>
     <ID>DoAttackFlag</ID>
     <Name>Атака</Name>
@@ -66,4 +66,4 @@
     <Description>Битва с другим игроком</Description>
     <ImageIndex>21</ImageIndex>
   </StateCreature>
-</StatesCreature>
+</Descriptors>

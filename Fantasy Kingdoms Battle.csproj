@@ -221,7 +221,7 @@
     <Content Include="Resources\Config\Descriptors\SecondarySkills.xml" />
     <Content Include="Resources\Config\Descriptors\Specializations.xml" />
     <Content Include="Resources\Config\StartBonus.xml" />
-    <Content Include="Resources\Config\StateCreature.xml" />
+    <Content Include="Resources\Config\Descriptors\StatesCreature.xml" />
     <Content Include="Resources\Config\Descriptors\TypeAttacks.xml" />
     <Content Include="Resources\Config\Descriptors\Constructions.xml" />
     <Content Include="Resources\Config\Descriptors\TypeCreatures.xml" />
