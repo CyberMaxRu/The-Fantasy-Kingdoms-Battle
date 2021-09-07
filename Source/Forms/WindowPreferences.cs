@@ -26,7 +26,15 @@ namespace Fantasy_Kingdoms_Battle
         private VCCheckBox chkbShowPath;
         private VCCheckBox chkbShowGrid;
 
+        private VisualControl vcPanelSound;
+        private VCLabel lblCaptionPanelSound;
+        private VCCheckBox chkbPlaySound;
+        private VCCheckBox chkbPlayMusic;
+
         private Settings settings;
+
+        private bool playSound;
+        private bool playMusic;
 
         public WindowPreferences() : base()
         {
@@ -58,7 +66,21 @@ namespace Fantasy_Kingdoms_Battle
             vcPanelBatttlefield.Height += 8;
             lblCaptionPanelBattlefield.Width = vcPanelBatttlefield.Width - (FormMain.Config.GridSize * 2);
 
-            btnAccept = new VCButton(ClientControl, 0, vcPanelBatttlefield.NextTop() + (FormMain.Config.GridSize * 2), "Принять");
+            vcPanelSound = new VisualControl(ClientControl, 0, vcPanelBatttlefield.NextTop());
+            vcPanelSound.ShowBorder = true;
+            lblCaptionPanelSound = new VCLabel(vcPanelSound, FormMain.Config.GridSize, 8, Program.formMain.fontMedCaption, Color.MediumTurquoise, 24, "Настройки звука:");
+            lblCaptionPanelSound.StringFormat.Alignment = StringAlignment.Near;
+            chkbPlaySound = new VCCheckBox(vcPanelSound, FormMain.Config.GridSize, lblCaptionPanelSound.NextTop(), "Звуки");
+            chkbPlaySound.Width = 320;
+            chkbPlaySound.Click += ChkbPlaySound_Click;
+            chkbPlayMusic = new VCCheckBox(vcPanelSound, FormMain.Config.GridSize, chkbPlaySound.NextTop(), "Музыка");
+            chkbPlayMusic.Width = 320;
+            chkbPlayMusic.Click += ChkbPlayMusic_Click;
+            vcPanelSound.ApplyMaxSize();
+            vcPanelSound.Height += 8;
+            lblCaptionPanelSound.Width = vcPanelSound.Width - (FormMain.Config.GridSize * 2);
+
+            btnAccept = new VCButton(ClientControl, 0, vcPanelSound.NextTop() + (FormMain.Config.GridSize * 2), "Принять");
             btnAccept.Width = 160;
             btnAccept.Click += BtnAccept_Click;
             btnDefault = new VCButton(ClientControl, btnAccept.NextLeft(), btnAccept.ShiftY, "Базовые");
@@ -75,6 +97,17 @@ namespace Fantasy_Kingdoms_Battle
             ClientControl.Height = btnCancel.NextTop();
             vcPanelGame.Width = ClientControl.Width - (vcPanelGame.ShiftX * 2);
             vcPanelBatttlefield.Width = ClientControl.Width - (vcPanelBatttlefield.ShiftX * 2);
+            vcPanelSound.Width = ClientControl.Width - (vcPanelSound.ShiftX * 2);
+        }
+
+        private void ChkbPlayMusic_Click(object sender, EventArgs e)
+        {
+            settings.PlayMusic = chkbPlayMusic.Checked;
+        }
+
+        private void ChkbPlaySound_Click(object sender, EventArgs e)
+        {
+            settings.PlaySound = chkbPlaySound.Checked;
         }
 
         internal void ApplySettings(Settings s)
@@ -86,11 +119,16 @@ namespace Fantasy_Kingdoms_Battle
             chkbCheckUpdates.Checked = settings.CheckUpdateOnStartup;
             chkbShowPath.Checked = settings.BattlefieldShowPath;
             chkbShowGrid.Checked = settings.BattlefieldShowGrid;
+            chkbPlaySound.Checked = settings.PlaySound;
+            chkbPlayMusic.Checked = settings.PlayMusic;
 
-/*            
-            filenameAvatar = settings.FileNameAvatar;
-            directoryAvatar = settings.DirectoryAvatar;
-            ShowAvatar();*/
+            playSound = settings.PlaySound;
+            playMusic = settings.PlayMusic;
+
+            /*            
+                        filenameAvatar = settings.FileNameAvatar;
+                        directoryAvatar = settings.DirectoryAvatar;
+                        ShowAvatar();*/
         }
 
         private void BtnDefault_Click(object sender, EventArgs e)
@@ -101,6 +139,9 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnCancel_Click(object sender, EventArgs e)
         {
+            settings.PlaySound = playSound;
+            settings.PlayMusic = playMusic;
+
             CloseForm(DialogAction.None);
         }
 
@@ -111,6 +152,8 @@ namespace Fantasy_Kingdoms_Battle
             settings.CheckUpdateOnStartup = chkbCheckUpdates.Checked;
             settings.BattlefieldShowPath = chkbShowPath.Checked;
             settings.BattlefieldShowGrid = chkbShowGrid.Checked;
+            settings.PlaySound = chkbPlaySound.Checked;
+            settings.PlayMusic = chkbPlayMusic.Checked;
             settings.SaveSettings();
 
             CloseForm(DialogAction.OK);

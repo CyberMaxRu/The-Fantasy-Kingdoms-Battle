@@ -14,6 +14,8 @@ namespace Fantasy_Kingdoms_Battle
     // Класс настроек
     internal sealed class Settings
     {
+        private bool playMusic;
+
         public Settings()
         {
             SetDefault();
@@ -32,6 +34,9 @@ namespace Fantasy_Kingdoms_Battle
                     BattlefieldShowPath = XmlUtils.GetBoolean(doc, "Settings/Battlefield/ShowPath", BattlefieldShowPath);
                     BattlefieldShowGrid = XmlUtils.GetBoolean(doc, "Settings/Battlefield/ShowGrid", BattlefieldShowGrid);
 
+                    PlaySound = XmlUtils.GetBoolean(doc, "Settings/Sound/PlaySound", PlaySound);
+                    PlayMusic = XmlUtils.GetBoolean(doc, "Settings/Sound/PlayMusic", PlayMusic);
+
                     DirectoryAvatar = XmlUtils.GetString(doc, "Settings/Player/DirectoryAvatar");
                 }
                 catch (Exception e)
@@ -49,6 +54,21 @@ namespace Fantasy_Kingdoms_Battle
         internal bool BattlefieldShowPath { get; set; }
         internal bool BattlefieldShowGrid { get; set; }
         internal string DirectoryAvatar { get; set; } = "";
+        internal bool PlaySound { get; set; }
+        internal bool PlayMusic
+        {
+            get => playMusic;
+            set
+            {
+                if (playMusic != value)
+                {
+                    playMusic = value;
+                    PlayMusicChanged?.Invoke(this, new EventArgs());
+                }
+            }
+        }
+
+        internal event EventHandler PlayMusicChanged;
 
         internal void SetDefault()
         {
@@ -57,6 +77,8 @@ namespace Fantasy_Kingdoms_Battle
             CheckUpdateOnStartup = true;
             BattlefieldShowPath = false;
             BattlefieldShowGrid = false;
+            PlaySound = true;
+            PlayMusic = true;
         }
 
         internal void SaveSettings()
@@ -77,6 +99,11 @@ namespace Fantasy_Kingdoms_Battle
             textWriter.WriteStartElement("Battlefield");
             textWriter.WriteElementString("ShowPath", BattlefieldShowPath.ToString());
             textWriter.WriteElementString("ShowGrid", BattlefieldShowGrid.ToString());
+            textWriter.WriteEndElement();
+
+            textWriter.WriteStartElement("Sound");
+            textWriter.WriteElementString("PlaySound", PlaySound.ToString());
+            textWriter.WriteElementString("PlayMusic", PlayMusic.ToString());
             textWriter.WriteEndElement();
 
             textWriter.WriteEndElement();

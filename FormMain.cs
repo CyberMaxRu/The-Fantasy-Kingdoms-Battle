@@ -306,6 +306,7 @@ namespace Fantasy_Kingdoms_Battle
             //try
             //{
                 Settings = new Settings();
+            Settings.PlayMusicChanged += Settings_PlayMusicChanged;
 
                 MainConfig = new MainConfig(dirResources);
                 // Проверяем требование по разрешению экрана
@@ -718,7 +719,7 @@ namespace Fantasy_Kingdoms_Battle
                 pageControl.ActivatePage(pageResultTurn);
 
                 //
-                playerMusic = new PlayerMusic(dirResources);
+                playerMusic = new PlayerMusic(dirResources, Settings);
                 mpSoundSelect = new System.Windows.Media.MediaPlayer();
                 mpSelectButton = new System.Windows.Media.MediaPlayer();
                 mpSelectButton.Open(new Uri(dirResources + @"Sound\Interface\Button\SelectButton.wav"));
@@ -757,6 +758,11 @@ namespace Fantasy_Kingdoms_Battle
                 MessageBox.Show(exc.Message + Environment.NewLine + exc.StackTrace);
                 Environment.Exit(-1);
             }*/
+        }
+
+        private void Settings_PlayMusicChanged(object sender, EventArgs e)
+        {
+            playerMusic.TogglePlayMusic();
         }
 
         private void LabelHeroes_ShowHint(object sender, EventArgs e)
@@ -2140,8 +2146,11 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void PlaySoundSelect(Uri uri)
         {
-            mpSoundSelect.Open(uri);
-            mpSoundSelect.Play();
+            if (Settings.PlaySound)
+            {
+                mpSoundSelect.Open(uri);
+                mpSoundSelect.Play();
+            }
         }
 
         internal void StopSoundSelect()
@@ -2152,19 +2161,28 @@ namespace Fantasy_Kingdoms_Battle
         internal void PlaySelectButton()
         {
             mpSelectButton.Stop();
-            mpSelectButton.Play();
+            if (Settings.PlaySound)
+            {
+                mpSelectButton.Play();
+            }
         }
 
         internal void PlayPushButton()
         {
             mpPushButton.Stop();
-            mpPushButton.Play();
+            if (Settings.PlaySound)
+            {
+                mpPushButton.Play();
+            }
         }
 
         internal void PlayConstructionComplete()
         {
-            mpConstructionComplete.Stop();
-            mpConstructionComplete.Play();
+            if (Settings.PlaySound)
+            {
+                mpConstructionComplete.Stop();
+                mpConstructionComplete.Play();
+            }
         }
 
         private Bitmap PrepareToolbar()

@@ -9,4 +9,8 @@
     <ShowPath>False</ShowPath>
     <ShowGrid>False</ShowGrid>
   </Battlefield>
+  <Sound>
+    <PlaySound>True</PlaySound>
+    <PlayMusic>True</PlayMusic>
+  </Sound>
 </Settings>

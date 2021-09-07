@@ -10,7 +10,7 @@ using System.Diagnostics;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс проигрывателя музыки
-    internal enum PlayMusicMode { None, MainTheme, InGameMusic, EndLobby };
+    internal enum PlayMusicMode { None, MainTheme, InGameMusic, WinLobby, LossLobby };
 
     internal sealed class PlayerMusic
     {
@@ -23,8 +23,10 @@ namespace Fantasy_Kingdoms_Battle
         private readonly Uri fileWinLobbyTheme;
         private readonly Uri fileLossLobbyTheme;
 
-        public PlayerMusic(string dirResources)
+        public PlayerMusic(string dirResources, Settings settings)
         {
+            Settings = settings;
+
             mpMusic = new MediaPlayer();
             mpTheme = new MediaPlayer();
 
@@ -37,15 +39,15 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(playlistFull.Count > 0);
         }
 
-        internal bool EnableMusic { get; set; } = true;
+        internal Settings Settings { get; }
         internal PlayMusicMode Mode { get; private set; } = PlayMusicMode.None;
 
         internal void PlayMainTheme()
         {
-            Debug.Assert((Mode == PlayMusicMode.InGameMusic) || (Mode == PlayMusicMode.EndLobby) || (Mode == PlayMusicMode.None));
+            //Debug.Assert((Mode == PlayMusicMode.InGameMusic) || (Mode == PlayMusicMode.WinLobby) || (Mode == PlayMusicMode.LossLobby) || (Mode == PlayMusicMode.None));
 
             Mode = PlayMusicMode.MainTheme;
-            if (EnableMusic)
+            if (Settings.PlayMusic)
             {
                 mpMusic.Stop();
                 mpTheme.Open(fileMainTheme);
@@ -58,7 +60,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Mode == PlayMusicMode.MainTheme);
 
             Mode = PlayMusicMode.InGameMusic;
-            if (EnableMusic)
+            if (Settings.PlayMusic)
             {
                 mpTheme.Stop();
                 PlayNextMusic();
@@ -67,9 +69,9 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void PlayWinLobbyTheme()
         {
-            Mode = PlayMusicMode.EndLobby;
+            Mode = PlayMusicMode.WinLobby;
 
-            if (EnableMusic)
+            if (Settings.PlayMusic)
             {
                 mpMusic.Stop();
                 mpTheme.Open(fileWinLobbyTheme);
@@ -79,9 +81,9 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void PlayLossLobbyTheme()
         {
-            Mode = PlayMusicMode.EndLobby;
+            Mode = PlayMusicMode.LossLobby;
 
-            if (EnableMusic)
+            if (Settings.PlayMusic)
             {
                 mpMusic.Stop();
                 mpTheme.Open(fileLossLobbyTheme);
@@ -92,6 +94,7 @@ namespace Fantasy_Kingdoms_Battle
         internal void StopPlay()
         {
             mpTheme.Stop();
+            mpMusic.Stop();
         }
 
         internal void RefreshPlaylist()
@@ -110,6 +113,34 @@ namespace Fantasy_Kingdoms_Battle
             mpMusic.Open(new Uri(playlistCurrent[i]));
             mpMusic.Play();
             playlistCurrent.RemoveAt(i);
+        }
+
+        internal void TogglePlayMusic()
+        {
+            if (Settings.PlayMusic)
+            {
+                switch (Mode)
+                {
+                    case PlayMusicMode.MainTheme:
+                        PlayMainTheme();
+                        break;
+                    case PlayMusicMode.WinLobby:
+                        PlayWinLobbyTheme();
+                        break;
+                    case PlayMusicMode.LossLobby:
+                        PlayLossLobbyTheme();
+                        break;
+                    case PlayMusicMode.InGameMusic:
+                        PlayNextMusic();
+                        break;
+                    default:
+                        throw new Exception($"Неизвестный режим: {Mode}.");
+                }
+            }
+            else
+            {
+                StopPlay();
+            }
         }
     }
 }
