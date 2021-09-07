@@ -219,7 +219,7 @@
     <Content Include="Resources\Config\ComputerPlayers.xml" />
     <Content Include="Resources\Config\Descriptors\GroupItems.xml" />
     <Content Include="Resources\Config\SecondarySkills.xml" />
-    <Content Include="Resources\Config\Specializations.xml" />
+    <Content Include="Resources\Config\Descriptors\Specializations.xml" />
     <Content Include="Resources\Config\StartBonus.xml" />
     <Content Include="Resources\Config\StateCreature.xml" />
     <Content Include="Resources\Config\TypeAttack.xml" />

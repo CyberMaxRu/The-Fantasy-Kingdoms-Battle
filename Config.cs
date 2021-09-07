@@ -160,9 +160,9 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Загрузка конфигурации специализаций
-            xmlDoc = CreateXmlDocument(@"Config\Specializations.xml");
+            xmlDoc = CreateXmlDocument(@"Config\Descriptors\Specializations.xml");
 
-            foreach (XmlNode n in xmlDoc.SelectNodes("/Specializations/Specialization"))
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/Specialization"))
             {
                 Specializations.Add(new DescriptorSpecialization(n));
             }
