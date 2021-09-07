@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Items>
+<Descriptors>
   <Item>
     <ID>PotionOfHealth</ID>
     <Name>Напиток здоровья</Name>
@@ -2321,4 +2321,4 @@
     <Hero>Marksman</Hero>
     <QuantityShots>15</QuantityShots>
   </Item>
-</Items>
+</Descriptors>

@@ -136,9 +136,9 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Загрузка предметов
-            xmlDoc = CreateXmlDocument("Config\\Items.xml");
+            xmlDoc = CreateXmlDocument(@"Config\Descriptors\Items.xml");
 
-            foreach (XmlNode n in xmlDoc.SelectNodes("/Items/Item"))
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/Item"))
             {
                 Items.Add(new DescriptorItem(n));
             }
