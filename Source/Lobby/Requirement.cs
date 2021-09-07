@@ -12,7 +12,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         private string nameConstruction;
 
-        public Requirement(string nameRequiredConstruction, int level)
+        public Requirement(string nameRequiredConstruction, int level) : base()
         {
             Debug.Assert(nameRequiredConstruction.Length > 0);
             Debug.Assert(level >= 0);
