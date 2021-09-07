@@ -223,11 +223,13 @@
     <Description>Обычный меч</Description>
     <ImageIndex>6</ImageIndex>
     <CategoryItem>MeleeWeapon</CategoryItem>
-    <Cost>10</Cost>
+    <Cost>0</Cost>
     <GroupItem>GroupWeaponMelee0</GroupItem>
     <Hero>Warrior</Hero>
     <TimeHit>50</TimeHit>
-    <DamageMelee>10</DamageMelee>
+    <DamageMin>5</DamageMin>
+    <DamageMin>10</DamageMin>
+    <Distance>10</Distance>
   </Item>
   <Item>
     <ID>WeaponRogue0</ID>

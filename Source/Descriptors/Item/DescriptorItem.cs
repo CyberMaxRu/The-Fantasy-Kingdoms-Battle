@@ -106,6 +106,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int DefenseRange { get; }
         internal int DefenseMagic { get; }
         internal int QuantityShots { get; }
+        internal int Distance { get; }
 
         /*protected override void DoPrepareHint()
         {
