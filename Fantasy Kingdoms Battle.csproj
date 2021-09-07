@@ -265,7 +265,7 @@
     <Content Include="Resources\Icons\WindowCaption.png" />
     <Content Include="Resources\Main.xml" />
     <Content Include="Resources\Config\Game.xml" />
-    <Content Include="Resources\Config\TypeAbilities.xml" />
+    <Content Include="Resources\Config\Descriptors\Abilities.xml" />
     <Content Include="Resources\Config\TypeLobby.xml" />
     <Content Include="Resources\Config\Items.xml" />
     <Content Include="Resources\Config\Descriptors\Creatures.xml" />

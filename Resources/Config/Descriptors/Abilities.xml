@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<TypeAbilities>
-  <TypeAbility>
+<Descriptors>
+  <Ability>
     <ID>WarriorBasicAttack</ID>
     <Name>Рукопашная атака</Name>
     <Description>- Обычная атака рукопашным оружием//- Наносит урон одной цели</Description>
@@ -18,8 +18,8 @@
       <ClassHero>Warrior</ClassHero>
       <ClassHero>BladeMaster</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>WarriorTaunt</ID>
     <Name>Вызов на бой</Name>
     <Description>Вынуждает врагов атаковать воина</Description>
@@ -38,8 +38,8 @@
     <ClassesHeroes>
       <ClassHero>Warrior</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>WarriorAntiknockbackBuff</ID>
     <Name>Устойчивость</Name>
     <Description>- Накладывает эффект, дающий иммунитет к отбрасыванию</Description>
@@ -56,8 +56,8 @@
     <ClassesHeroes>
       <ClassHero>Warrior</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>WarriorImpAttack</ID>
     <Name>Сокрушительный удар</Name>
     <Description>- Наносит большой урон//- Рукопашная атака</Description>
@@ -75,8 +75,8 @@
         <ClassHero>Warrior</ClassHero>
         <ClassHero>BladeMaster</ClassHero>
       </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>WarriorMaimAttack</ID>
     <Name>Калечащий удар</Name>
     <Description>- Наносит огромный урон//- Накладывает эффект, замедляющий цель//- Рукопашная атака</Description>
@@ -96,8 +96,8 @@
       <ClassHero>Warrior</ClassHero>
       <ClassHero>BladeMaster</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>WarriorResistanceBuff</ID>
     <Name>Сопротивление боли</Name>
     <Description>- Накладывает на воина эффект, повышающий защиту от всех атак</Description>
@@ -114,8 +114,8 @@
       <ClassesHeroes>
       <ClassHero>Warrior</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>RogueBasicAttack</ID>
     <Name>Рукопашная атака</Name>
     <Description>- Обычная атака рукопашным оружием//- Наносит урон одной цели</Description>
@@ -132,8 +132,8 @@
     <ClassesHeroes>
       <ClassHero>Rogue</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>RogueWoundAttack</ID>
     <Name>Поворот клинка</Name>
     <Description>- Наносит средний урон//- Накладывает эффект, наносящий повреждения с течением времени//- Рукопашная атака</Description>
@@ -150,8 +150,8 @@
     <ClassesHeroes>
       <ClassHero>Rogue</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>RoguePoisonAttack</ID>
     <Name>Отравление</Name>
     <Description>- Наносит небольшой урон//- Накладывает эффект, наносящий небольшие повреждения с течением времени//- Рукопашная атака</Description>
@@ -168,8 +168,8 @@
     <ClassesHeroes>
       <ClassHero>Rogue</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>RogueImpAttack</ID>
     <Name>Коварный удар</Name>
     <Description>- Наносит большой урон//- Рукопашная атака</Description>
@@ -186,8 +186,8 @@
     <ClassesHeroes>
       <ClassHero>Rogue</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>RogueKickAttack</ID>
     <Name>Удар под дых</Name>
     <Description>- Наносит небольшой урон//- Накладывает эффект, понижающий умение рукопашной атаки//- Рукопашная атака</Description>
@@ -204,8 +204,8 @@
     <ClassesHeroes>
       <ClassHero>Rogue</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>StunAttack</ID>
     <Name>Оглушение</Name>
     <Description>- Наносит небольшой урон//- Накладывает эффект, не позволяющий двигаться и атаковать//- Рукопашная атака</Description>
@@ -223,8 +223,8 @@
       <ClassHero>Rogue</ClassHero>
       <ClassHero>Dwarf</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>ArcherBasicAttack</ID>
     <Name>Стрелковая атака</Name>
     <Description>- Обычная атака стрелковым или метательным оружием//- Наносит урон одной цели</Description>
@@ -242,8 +242,8 @@
       <ClassHero>Hunter</ClassHero>
       <ClassHero>Elf</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>HunterBeastSlayerAttack</ID>
     <Name>Охотничий выстрел</Name>
     <Description>- Наносит большой урон зверям//- Стрелковая атака</Description>
@@ -260,8 +260,8 @@
     <ClassesHeroes>
       <ClassHero>Hunter</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>HunterAoeAttack</ID>
     <Name>Дождь стрел</Name>
     <Description>- Наносит большой урон всем целям в радиусе//- Стрелковая атака</Description>
@@ -278,8 +278,8 @@
     <ClassesHeroes>
       <ClassHero>Hunter</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>HunterImpAttack</ID>
     <Name>Меткий выстрел</Name>
     <Description>- Наносит большой урон//- Стрелковая атака</Description>
@@ -296,8 +296,8 @@
     <ClassesHeroes>
       <ClassHero>Hunter</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>HunterStingShotAttack</ID>
     <Name>Ослабляющий выстрел</Name>
     <Description>- Наносит небольшой урон//- Накладывает эффект, понижающий умение рукопашной атаки//- Стрелковая атака</Description>
@@ -314,8 +314,8 @@
     <ClassesHeroes>
       <ClassHero>Hunter</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>HunterManaburnAttack</ID>
     <Name>Боль духа</Name>
     <Description>- Наносит большой урон//- Накладывает эффект, уменьшающий количество маны с течением времени//- Стрелковая атака</Description>
@@ -332,8 +332,8 @@
     <ClassesHeroes>
       <ClassHero>Hunter</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>HolyHeal</ID>
     <Name>Святое лечение</Name>
     <Description>- Восстанавливает часть здоровья дружественной цели//- Требует маны</Description>
@@ -353,8 +353,8 @@
       <ClassHero>Cleric</ClassHero>
       <ClassHero>Priest</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>MagicBasicAttack</ID>
     <Name>Магическая атака</Name>
     <Description>- Обычная атака магией или магическим оружием//- Наносит урон одной цели</Description>
@@ -376,8 +376,8 @@
       <ClassHero>DarkPriest</ClassHero>
       <ClassHero>Priest</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>ClericWisdomBuff</ID>
     <Name>Начитанность</Name>
     <Description>- Накладывает эффект, повышающий умение магической атаки и лечения//- Требует маны</Description>
@@ -395,8 +395,8 @@
     <ClassesHeroes>
       <ClassHero>Cleric</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>HolyAttack</ID>
     <Name>Святая атака</Name>
     <Description>- Наносит огромный урон нежити//- Требует маны//- Магическая атака</Description>
@@ -416,8 +416,8 @@
       <ClassHero>Cleric</ClassHero>
       <ClassHero>Priest</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>ClericManaRegenBuff</ID>
     <Name>Восстановление веры</Name>
     <Description>- Накладывает эффект, восстанавливающий ману с течением времени//- Требует маны</Description>
@@ -435,8 +435,8 @@
     <ClassesHeroes>
       <ClassHero>Cleric</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>ClericKnockbackAttack</ID>
     <Name>Молот веры</Name>
     <Description>- Наносит средний урон//- Отбрасывает противника//- Требует маны//- Магическая атака</Description>
@@ -455,8 +455,8 @@
     <ClassesHeroes>
       <ClassHero>Cleric</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>MageArcaneShield</ID>
     <Name>Магической щит</Name>
     <Description>- Накладывает на мага эффект, повышающий защиту от рукопашных и магических атак//- Требует маны</Description>
@@ -474,8 +474,8 @@
     <ClassesHeroes>
       <ClassHero>Mage</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>MageSummonSerpent</ID>
     <Name>Вызов змея Мудрости</Name>
     <Description>- Вызывает змея-союзника//- Требует маны</Description>
@@ -493,8 +493,8 @@
     <ClassesHeroes>
       <ClassHero>Mage</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>MageSummonDragon</ID>
     <Name>Вызов дракона Мудрости</Name>
     <Description>- Вызывает дракона-союзника//- Требует маны</Description>
@@ -512,8 +512,8 @@
     <ClassesHeroes>
       <ClassHero>Mage</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>MageFireballAttack</ID>
     <Name>Шар огня</Name>
     <Description>- Наносит большой урон всем целям в радиусе.//- Накладывает эффект, наносящий небольшие повреждения с течением времени//- Требует маны//- Магическая атака</Description>
@@ -531,8 +531,8 @@
     <ClassesHeroes>
       <ClassHero>Mage</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>MageFreezeAttack</ID>
     <Name>Ледяная стрела</Name>
     <Description>- Наносит большой урон.//- Накладывает эффект, не позволяющий двигаться и атаковать//- Требует маны//- Магическая атака</Description>
@@ -551,8 +551,8 @@
     <ClassesHeroes>
       <ClassHero>Mage</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>MageGuardianWind</ID>
     <Name>Воздушная буря</Name>
     <Description>- Наносит средний урон всем целям в небольшом радиусе от мага//- Отбрасывает противника//- Требует маны//- Магическая атака</Description>
@@ -571,8 +571,8 @@
     <ClassesHeroes>
       <ClassHero>Mage</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>MageFirestormAttack</ID>
     <Name>Огненная буря</Name>
     <Description>- Наносит огромный урон всем целям в радиусе//- Требует маны//- Магическая атака</Description>
@@ -591,8 +591,8 @@
     <ClassesHeroes>
       <ClassHero>Mage</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>ElfRoots</ID>
     <Name>Корни</Name>
     <Description>- Наносит небольшой урон//- Накладывает эффект, не позволяющий двигаться//- Требует маны//- Стрелковая атака</Description>
@@ -610,8 +610,8 @@
     <ClassesHeroes>
       <ClassHero>Elf</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>ElfImpAttack</ID>
     <Name>Искусный выстрел</Name>
     <Description>- Наносит большой урон//- Стрелковая атака</Description>
@@ -628,8 +628,8 @@
     <ClassesHeroes>
       <ClassHero>Elf</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>ElfBuff</ID>
     <Name>Эльфийское вдохновение</Name>
     <Description>- Накладывает эффект, увеличивающий скорость передвижения//- Требует маны</Description>
@@ -647,8 +647,8 @@
     <ClassesHeroes>
       <ClassHero>Elf</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>ElfMagicArrow</ID>
     <Name>Магическая стрела</Name>
     <Description>- Наносит огромный урон//- Требует маны//- Магическая атака</Description>
@@ -666,8 +666,8 @@
     <ClassesHeroes>
       <ClassHero>Elf</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>HammerBasicAttack</ID>
     <Name>Рукопашная атака</Name>
     <Description>- Обычная атака рукопашным оружием//- Наносит урон одной цели</Description>
@@ -685,8 +685,8 @@
       <ClassHero>Dwarf</ClassHero>
       <ClassHero>Paladin</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>DwarfAntiBuildingAttack</ID>
     <Name>Разрушение</Name>
     <Description>- Наносит огромный урон по зданию//- Рукопашная атака</Description>
@@ -703,8 +703,8 @@
     <ClassesHeroes>
       <ClassHero>Dwarf</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>DwarfImpAttack</ID>
     <Name>Разящий удар</Name>
     <Description>- Наносит большой урон//- Рукопашная атака</Description>
@@ -721,8 +721,8 @@
     <ClassesHeroes>
       <ClassHero>Dwarf</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>DwarfBerserkBuff</ID>
     <Name>Кровь камня</Name>
     <Description>- Накладывает на гнома эффект, повышающий защиту от магических атак</Description>
@@ -739,8 +739,8 @@
     <ClassesHeroes>
       <ClassHero>Dwarf</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>DarkPriestSummonSeleton</ID>
     <Name>Вызов скелетов</Name>
     <Description>- Вызывает скелета-союзника//- Требует маны</Description>
@@ -758,8 +758,8 @@
     <ClassesHeroes>
       <ClassHero>DarkPriest</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>DarkPriestDrainLifeAttack</ID>
     <Name>Вытягивание жизни</Name>
     <Description>- Наносит большой урон//- Восстанавливает часть здоровья сестры Крипты//- Требует маны//- Магическая атака</Description>
@@ -777,8 +777,8 @@
     <ClassesHeroes>
       <ClassHero>DarkPriest</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>DarkPriestSummonLich</ID>
     <Name>Вызов лича</Name>
     <Description>- Вызов лича-союзника//- Требует маны</Description>
@@ -796,8 +796,8 @@
     <ClassesHeroes>
       <ClassHero>DarkPriest</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>DarkPriestPestilence</ID>
     <Name>Чума</Name>
     <Description>- Наносит небольшой урон всем целям в небольшом радиусе от жрицы//- Накладывает эффект, наносящий небольшие повреждения с течением времени//- Требует маны//- Магическая атака</Description>
@@ -815,8 +815,8 @@
     <ClassesHeroes>
       <ClassHero>DarkPriest</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>DarkPriestSummonVampire</ID>
     <Name>Вызов вампира</Name>
     <Description>- Вызывает вампира-союзника//- Требует маны</Description>
@@ -834,8 +834,8 @@
     <ClassesHeroes>
       <ClassHero>DarkPriest</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>PriestMightBuff</ID>
     <Name>Святая мощь</Name>
     <Description>- Накладывает эффект, повышающий мощь рукопашной атаки</Description>
@@ -853,8 +853,8 @@
     <ClassesHeroes>
       <ClassHero>Priest</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>PriestMassHeal</ID>
     <Name>Массовое лечение</Name>
     <Description>- Восстанавливает часть здоровья всем союзникам в радиусе заклинания//- Требует маны</Description>
@@ -872,8 +872,8 @@
     <ClassesHeroes>
       <ClassHero>Priest</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>PriestHotHeal</ID>
     <Name>Дар Агрелы</Name>
     <Description>- Восстанавливает часть здоровья дружестввенной цели//- Накладывает эффект, восстанавливающий здоровье с течением времени//- Требует маны</Description>
@@ -891,8 +891,8 @@
     <ClassesHeroes>
       <ClassHero>Priest</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>PaladinTaunt</ID>
     <Name>Вызов на бой</Name>
     <Description>- Вынуждает врагов атаковать паладина</Description>
@@ -911,8 +911,8 @@
     <ClassesHeroes>
       <ClassHero>Paladin</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>PaladinImpAttack</ID>
     <Name>Сокрушительный удар</Name>
     <Description>- Наносит большой урон//- Рукопашная атака</Description>
@@ -931,8 +931,8 @@
     <ClassesHeroes>
       <ClassHero>Paladin</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>PaladinResistanceBuff</ID>
     <Name>Святая защита</Name>
     <Description>- Накладывает эффект, повышающий защиту от всех атак</Description>
@@ -949,8 +949,8 @@
     <ClassesHeroes>
       <ClassHero>Paladin</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>PaladinHolyNovaAttack</ID>
     <Name>Аура святости</Name>
     <Description>- Наносит огромный урон нежити в небольшом радиусе от паладина//- Рукопашная атака</Description>
@@ -967,8 +967,8 @@
     <ClassesHeroes>
       <ClassHero>Paladin</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>PaladinChargeAttack</ID>
     <Name>Священный удар</Name>
     <Description>- Наносит огромный урон//- Накладывает эффект, не позволяющий атаковать//- Магическая атака</Description>
@@ -985,8 +985,8 @@
     <ClassesHeroes>
       <ClassHero>Paladin</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>BladeMasterTaunt</ID>
     <Name>Вызов на бой</Name>
     <Description>- Вынуждает врагов атаковать мастера меча</Description>
@@ -1005,8 +1005,8 @@
     <ClassesHeroes>
       <ClassHero>BladeMaster</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>BladeMasterWhirlwindAttack</ID>
     <Name>Круговой удар</Name>
     <Description>- Наносит средний удар всем целям в небольшом радиусе от мастера меча//- Рукопашная атака</Description>
@@ -1023,8 +1023,8 @@
     <ClassesHeroes>
       <ClassHero>BladeMaster</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>BladeMasterImpWhirlwindAttack</ID>
     <Name>Ураган клинков</Name>
     <Description>- Наносит большой урон всем целям в небольшом радиусе от мастера меча//- Рукопашная атака</Description>
@@ -1041,8 +1041,8 @@
     <ClassesHeroes>
       <ClassHero>BladeMaster</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>BeastMasterBasicAttack</ID>
     <Name>Стрелковая атака</Name>
     <Description>- Обычная атака стрелковым или метательным оружием//- Наносит урон одной цели</Description>
@@ -1059,8 +1059,8 @@
     <ClassesHeroes>
       <ClassHero>BeastMaster</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>BeastMasterBeastSlayerAttack</ID>
     <Name>Охотничий выстрел</Name>
     <Description>- Наносит большой урон зверям//- Стрелковая атака</Description>
@@ -1077,8 +1077,8 @@
     <ClassesHeroes>
       <ClassHero>BeastMaster</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>BeastMasterImpAttack</ID>
     <Name>Меткий выстрел</Name>
     <Description>- Наносит большой урон//- Стрелковая атака</Description>
@@ -1095,8 +1095,8 @@
     <ClassesHeroes>
       <ClassHero>BeastMaster</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>BeastMasterSummonBeast</ID>
     <Name>Вызов волка</Name>
     <Description>- Вызывает волка-союзника</Description>
@@ -1113,8 +1113,8 @@
     <ClassesHeroes>
       <ClassHero>BeastMaster</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>BeastMasterEnrageBeast</ID>
     <Name>Звериная ярость</Name>
     <Description>- Накладывает на союзных зверей эффект, повышающий умение рукопашной атаки и скорость передвижения</Description>
@@ -1131,8 +1131,8 @@
     <ClassesHeroes>
       <ClassHero>BeastMaster</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>BeastMasterHealBeast</ID>
     <Name>Лечение зверя</Name>
     <Description>- Накладывает на союзных зверей эффект, восстанавливающий здоровье с течением времениы</Description>
@@ -1149,8 +1149,8 @@
     <ClassesHeroes>
       <ClassHero>BeastMaster</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>BeastMasterSummonBeast2</ID>
     <Name>Вызов медведя</Name>
     <Description>- Вызывает медведя-союзника</Description>
@@ -1167,8 +1167,8 @@
     <ClassesHeroes>
       <ClassHero>BeastMaster</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>BeastMasterAntiStunBuff</ID>
     <Name>Каменная голова</Name>
     <Description>- Накладывает эффект, дающий невосприимчивость к оглушению</Description>
@@ -1185,8 +1185,8 @@
     <ClassesHeroes>
       <ClassHero>BeastMaster</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>BeastMasterHoneyArrowAttack</ID>
     <Name>Медовая стрела</Name>
     <Description>- Наносит средний урон//- Накладывает эффект, наносящий небольшие повреждения с течением времени//- Стрелковая атака</Description>
@@ -1203,8 +1203,8 @@
     <ClassesHeroes>
       <ClassHero>BeastMaster</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>MarksmanBasicAttack</ID>
     <Name>Стрелковая атака</Name>
     <Description>- Обычная атака стрелковым или метательным оружием//- Наносит урон одной цели</Description>
@@ -1221,8 +1221,8 @@
     <ClassesHeroes>
       <ClassHero>Marksman</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>MarksmanBeastSlayerAttack</ID>
     <Name>Охотничий выстрел</Name>
     <Description>- Наносит большой урон зверям//- Стрелковая атака</Description>
@@ -1239,8 +1239,8 @@
     <ClassesHeroes>
       <ClassHero>Marksman</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>MarksmanImpAttack</ID>
     <Name>Меткий выстрел</Name>
     <Description>- Наносит большой урон//- Стрелковая атака</Description>
@@ -1257,8 +1257,8 @@
     <ClassesHeroes>
       <ClassHero>Marksman</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>MarksmanHoodShotAttack</ID>
     <Name>Смертельный выстрел</Name>
     <Description>- Наносит огромный урон//- Стрелковая атака</Description>
@@ -1275,8 +1275,8 @@
     <ClassesHeroes>
       <ClassHero>Marksman</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>MarksmanStingShotAttack</ID>
     <Name>Ошеломляющий выстрел</Name>
     <Description>- Наносит средний урон//- Накладывает эффект, понижающий умения всех типов атак//- Стрелковая атака</Description>
@@ -1293,8 +1293,8 @@
     <ClassesHeroes>
       <ClassHero>Marksman</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>MarksmanSunburstAttack</ID>
     <Name>Солнечная стрела</Name>
     <Description>- Наносит большой урон всем целям в радиусе//- Стрелковая атака</Description>
@@ -1311,8 +1311,8 @@
     <ClassesHeroes>
       <ClassHero>Marksman</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>MarksmanFriendlyTargetAttack</ID>
     <Name>Огненный щит</Name>
     <Description>- Накладывает эффект, дающий иммунитет к заморозке</Description>
@@ -1329,8 +1329,8 @@
     <ClassesHeroes>
       <ClassHero>Marksman</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>IceMageBasicAttack</ID>
     <Name>Магическая атака</Name>
     <Description>- Обычная атака магией или магическим оружием//- Наносит урон одной цели</Description>
@@ -1349,8 +1349,8 @@
     <ClassesHeroes>
       <ClassHero>IceMage</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>IceMageFrostBoltAttack</ID>
     <Name>Ледяной шар</Name>
     <Description>- Наносит большой урон всем целям в небольшом радиусе//- Накладывает эффект, замедляющий цель//- Требует маны//- Магическая атака</Description>
@@ -1369,8 +1369,8 @@
     <ClassesHeroes>
       <ClassHero>IceMage</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>IceMageIceBlock</ID>
     <Name>Заморозка</Name>
     <Description>- Наносит большой урон всем целям в радиусе заклинания//- Накладывает эффект, не позволяющий двигаться и атаковать//- Требует маны//- Магическая атака</Description>
@@ -1389,8 +1389,8 @@
     <ClassesHeroes>
       <ClassHero>IceMage</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>IceMageBlizzardAttack</ID>
     <Name>Гнев Холода</Name>
     <Description>- Наносит огромный урон всем целям в радиусе заклинания//- Накладывает эффект, замедляющий цель//- Требует маны//- Магическая атака</Description>
@@ -1409,8 +1409,8 @@
     <ClassesHeroes>
       <ClassHero>IceMage</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>IceMageGuardianWind</ID>
     <Name>Леденящий ветер</Name>
     <Description>- Наносит большой урон всем целям в радиусе от мага//- Отбрасывает противников//- Требует маны//- Магическая атака</Description>
@@ -1429,8 +1429,8 @@
     <ClassesHeroes>
       <ClassHero>IceMage</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>IceMageShield</ID>
     <Name>Магический щит</Name>
     <Description>- Накладывает на мага эффект, повышающий защиту от рукопашных и магических атак//- Требует маны</Description>
@@ -1447,8 +1447,8 @@
     <ClassesHeroes>
       <ClassHero>IceMage</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>DeathKnightBasicAttack</ID>
     <Name>Рукопашная атака</Name>
     <Description>- Обычная атака рукопашным оружием//- Наносит урон одной цели</Description>
@@ -1465,8 +1465,8 @@
     <ClassesHeroes>
       <ClassHero>DeathKnight</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>DeathKnightPoisonAttack</ID>
     <Name>Черный яд</Name>
     <Description>- Наносит средний урон//- Накладывает эффект, наносящий небольшие повреждения с течением времени//- Рукопашная атака</Description>
@@ -1483,8 +1483,8 @@
     <ClassesHeroes>
       <ClassHero>DeathKnight</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>DeathKnightStunAttack</ID>
     <Name>Умелое оглушение</Name>
     <Description>- Наносит большой урон//- Накладывает эффект, не позволяющий двигаться и атаковать//- Рукопашная атака</Description>
@@ -1501,8 +1501,8 @@
     <ClassesHeroes>
       <ClassHero>DeathKnight</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>DeathKnightDebuff1Attack</ID>
     <Name>Первый удар Ночи</Name>
     <Description>- Наносит средний урон//- Накладывает эффект, незначительно понижающий защиту от магических атак//- Магическая атака</Description>
@@ -1519,8 +1519,8 @@
     <ClassesHeroes>
       <ClassHero>DeathKnight</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>DeathKnightDebuff2Attack</ID>
     <Name>Второй удар Ночи</Name>
     <Description>- Наносит средний урон//- Накладывает эффект, понижающий защиту от магических атак//- Магическая атака</Description>
@@ -1537,8 +1537,8 @@
     <ClassesHeroes>
       <ClassHero>DeathKnight</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>DeathKnightDebuff3Attack</ID>
     <Name>Третий удар Ночи</Name>
     <Description>- Наносит средний урон//- Накладывает эффект, значительно понижающий защиту от магических атак//- Магическая атака</Description>
@@ -1555,8 +1555,8 @@
     <ClassesHeroes>
       <ClassHero>DeathKnight</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>FireMageBasicAttack</ID>
     <Name>Магическая атака</Name>
     <Description>- Обычная атака магией или магическим оружием//- Наносит урон одной цели</Description>
@@ -1573,8 +1573,8 @@
     <ClassesHeroes>
       <ClassHero>FireMage</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>FireMageFireWeapon</ID>
     <Name>Огненное оружие</Name>
     <Description>- Улучшает ближнюю и дистанционную атаки союзников//- Требует маны</Description>
@@ -1592,8 +1592,8 @@
     <ClassesHeroes>
       <ClassHero>FireMage</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>FireMageFireBallAttack</ID>
     <Name>Огненный шар</Name>
     <Description>- Наносит средний урон в малом радиусе//- Противник некоторое время продолжает гореть//- Требует маны//- Магическая атака</Description>
@@ -1611,8 +1611,8 @@
     <ClassesHeroes>
       <ClassHero>FireMage</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>FireMageFireWall</ID>
     <Name>Огненный поток</Name>
     <Description>- Наносит огромный урон противнику в среднем радиусе//- Противник некоторое время продолжает гореть//- Требует маны//- Магическая атака</Description>
@@ -1630,8 +1630,8 @@
     <ClassesHeroes>
       <ClassHero>FireMage</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>FireMageFireStorm</ID>
     <Name>Огненный взрыв</Name>
     <Description>- Наносит большой урон противнику//- Противник некоторое время продолжает гореть//- Требует маны//- Магическая атака</Description>
@@ -1649,8 +1649,8 @@
     <ClassesHeroes>
       <ClassHero>FireMage</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>FireMageFireShield</ID>
     <Name>Огненный щит</Name>
     <Description>- Снижает получаемый урон от всех видов атак//- Требует маны</Description>
@@ -1668,8 +1668,8 @@
     <ClassesHeroes>
       <ClassHero>FireMage</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>WolfBasicAttack</ID>
     <Name>Укус</Name>
     <Description>- Наносит малый урон</Description>
@@ -1685,8 +1685,8 @@
       <ClassHero>Wolf</ClassHero>
       <ClassHero>OldWolf</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>WolfChildOfTheForest</ID>
     <Name>Дитя леса</Name>
     <Description>Леса Ардании полны всякой живности и волки в них не редкость. Волки Ардании - суровые хищники, охотящиеся стаей и доставляющие неприятности многих путникам и жителям деревень, однако звери уязвимы к стрелам охотникам. Вблизи волчьих логов добавляет 10% здоровья, уязвимость к охотничьим стрелам на 25%.</Description>
@@ -1702,8 +1702,8 @@
       <ClassHero>Wolf</ClassHero>
       <ClassHero>OldWolf</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>Fangs</ID>
     <Name>Клыки</Name>
     <Description>Волки, как любые другие хищники, будут пытаться всеми силами догнать раненную жертву, чтобы ее загрызть. Преследует раненного героя, игнорируя других.</Description>
@@ -1719,8 +1719,8 @@
       <ClassHero>Wolf</ClassHero>
       <ClassHero>OldWolf</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>Predator</ID>
     <Name>Хищник</Name>
     <Description>В отличии от других хищников волки собираются в стаи и нападают, тем самым многократно повышая эффективность охоты. Увеличивает скорость и урон на 10%. Требует наличия 3 и более волков.</Description>
@@ -1736,8 +1736,8 @@
       <ClassHero>Wolf</ClassHero>
       <ClassHero>OldWolf</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>LeaderOfThePack</ID>
     <Name>Вожак стаи</Name>
     <Description>у любой стаи волков есть вожак, которому все другие подчиняются. Обычно им является уже опытный и матёрый волк. Во время битвы вожак не нападает, а смотрит на происходящим. Вступает в бой только когда появляется в этом острая нужда. Добавляет всем волкам храбрости на 20%.</Description>
@@ -1752,8 +1752,8 @@
     <ClassesHeroes>
       <ClassHero>OldWolf</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>WolfCommonBite</ID>
     <Name>Общий укус</Name>
     <Description>Вожаки стай за годы своей жизни обучились практически одновременно нападать на две цели. Наносит урон нескольким целям одновременно.</Description>
@@ -1768,8 +1768,8 @@
     <ClassesHeroes>
       <ClassHero>OldWolf</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>ZombieBasicAttack</ID>
     <Name>Укус</Name>
     <Description>Поскольку зомби, в отличии от скелетов, не способны держать в руках вооружение, их оружием являются зубы, ногти и споры.</Description>
@@ -1784,8 +1784,8 @@
     <ClassesHeroes>
       <ClassHero>Zombie</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>WillOfDarkness</ID>
     <Name>Воля Тьмы</Name>
     <Description>Темная магия способна тысячами поднимать из могил тела усопших и заставлять их действовать по воли некроманта. Несмотря на то, что Великий король запретил кому попало использовать некромантию, нередко находятся те, кто пренебрегает этому указу. Поэтому в Ардании время от времени проводятся зачистки близ кладбищ и склепов. Невосприимчивость к усталости, чувствам и влиянию на разум.</Description>
@@ -1800,8 +1800,8 @@
     <ClassesHeroes>
       <ClassHero>Zombie</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>DeadFlesh</ID>
     <Name>Мертвая плоть</Name>
     <Description>В телах, поднятых с кладбищ отсутствуют какие-либо естественные свойства - циркуляция крови, заживление ран, работа внутренних органов. Благодаря этому на зомби не действует отравление ядом или кровотечение, однако они очень чувствительны к святым атакам.</Description>
@@ -1816,8 +1816,8 @@
     <ClassesHeroes>
       <ClassHero>Zombie</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>NeedFood</ID>
     <Name>Потребность в пище</Name>
     <Description>Зомби, в отличии от скелетов, иногда нуждаются в еде - из-за этого они вынуждены бродить по землям и искать того, кто станет их обедом.//Добавляет 10% урона.</Description>
@@ -1832,8 +1832,8 @@
     <ClassesHeroes>
       <ClassHero>Zombie</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>Ptomaine</ID>
     <Name>Трупный яд</Name>
     <Description>Поскольку мертвецы убивают и питаются свежими телами, их сгнившая плоть содержит многочисленные ядовитые споры, которые перекидываются на того, кто сильно близко приблизится к зомби. Заражение ядом (медленно понижает здоровье).</Description>
@@ -1848,8 +1848,8 @@
     <ClassesHeroes>
       <ClassHero>Zombie</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>SkeletBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
@@ -1864,8 +1864,8 @@
     <ClassesHeroes>
       <ClassHero>Skelet</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>SkeletArcherBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
@@ -1880,8 +1880,8 @@
     <ClassesHeroes>
       <ClassHero>SkeletArcher</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>SkeletVeteranBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит средний урон</Description>
@@ -1896,8 +1896,8 @@
     <ClassesHeroes>
       <ClassHero>SkeletVeteran</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>SkeletSniperBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
@@ -1912,8 +1912,8 @@
     <ClassesHeroes>
       <ClassHero>SkeletSniper</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>GhostBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
@@ -1928,8 +1928,8 @@
     <ClassesHeroes>
       <ClassHero>Ghost</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>LichBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
@@ -1945,8 +1945,8 @@
       <ClassHero>Lich</ClassHero>
       <ClassHero>AncientLich</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>VampireAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
@@ -1961,8 +1961,8 @@
     <ClassesHeroes>
       <ClassHero>Vampire</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>SerpentBasicAttack</ID>
     <Name>Укус</Name>
     <Description>- Наносит малый урон</Description>
@@ -1977,8 +1977,8 @@
     <ClassesHeroes>
       <ClassHero>Serpent</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>BearBasicAttack</ID>
     <Name>Удар лапой</Name>
     <Description>- Наносит средний урон</Description>
@@ -1994,8 +1994,8 @@
       <ClassHero>Bear</ClassHero>
       <ClassHero>GreatBear</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>BearChildOfTheForest</ID>
     <Name>Дитя леса</Name>
     <Description>Леса Ардании полны всякой живности и медведи в них не редкость. Медведи Ардании - очень опасные хищники, охотящиеся по одиночке и доставляющие неприятности многим гостям леса, однако звери уязвимы к стрелам охотникам. Вблизи медвежьих берлог добавляет 10% здоровья.уязвимость к охотничьим стрелам на 25%.</Description>
@@ -2011,8 +2011,8 @@
       <ClassHero>Bear</ClassHero>
       <ClassHero>GreatBear</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>BearPaw</ID>
     <Name>Медвежья лапа</Name>
     <Description>Многие медведи когда спят предпочитают сосать свою лапу, тем самым делая свой сон более спокойным. Добавляет 15% к восстановлению здоровья во время отдыха.</Description>
@@ -2028,8 +2028,8 @@
       <ClassHero>Bear</ClassHero>
       <ClassHero>GreatBear</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>BearBleeding</ID>
     <Name>Кровотечение</Name>
     <Description>Огромные медвежьи когти способны сильно калечить любых живых существ, что попадаются под лапу медведя. Вылечить такие раны можно только в гильдии, на поле боя их исцелить не могут даже лучшие лекари Ардании. При получении такого ранения героям рекомендуется как можно скорее возвращаться домой. Отнимает здоровье с течением времени.</Description>
@@ -2045,8 +2045,8 @@
       <ClassHero>Bear</ClassHero>
       <ClassHero>GreatBear</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>BearStrongClaws</ID>
     <Name>Крепкие когти</Name>
     <Description>Огромные медвежьи когти способны сильно калечить любых живых существ, что попадаются под лапу медведя. Вылечить такие раны можно только в гильдии, на поле боя их исцелить не могут даже лучшие лекари Ардании. При получении такого ранения героям рекомендуется как можно скорее возвращаться домой. Отнимает здоровье с течением времени.</Description>
@@ -2061,8 +2061,8 @@
     <ClassesHeroes>
       <ClassHero>GreatBear</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>WerewolfBearBasicAttack</ID>
     <Name>Укус</Name>
     <Description>- Наносит малый урон</Description>
@@ -2077,8 +2077,8 @@
     <ClassesHeroes>
       <ClassHero>WerewolfBear</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>MinotaurBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
@@ -2094,8 +2094,8 @@
       <ClassHero>Minotaur</ClassHero>
       <ClassHero>BlackMinotaur</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>OgreBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
@@ -2111,8 +2111,8 @@
       <ClassHero>Ogre</ClassHero>
       <ClassHero>GrendarOgre</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>WerewolfBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
@@ -2127,8 +2127,8 @@
     <ClassesHeroes>
       <ClassHero>Werewolf</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>DragonBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
@@ -2143,8 +2143,8 @@
     <ClassesHeroes>
       <ClassHero>Dragon</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>KingRatBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
@@ -2159,8 +2159,8 @@
     <ClassesHeroes>
       <ClassHero>KingRat</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>OldRatBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
@@ -2175,8 +2175,8 @@
     <ClassesHeroes>
       <ClassHero>OldRat</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>KingSkeletonBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
@@ -2191,8 +2191,8 @@
     <ClassesHeroes>
       <ClassHero>KingSkeleton</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>RatmanBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
@@ -2207,8 +2207,8 @@
     <ClassesHeroes>
       <ClassHero>Ratman</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>RatBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
@@ -2223,8 +2223,8 @@
     <ClassesHeroes>
       <ClassHero>Rat</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>ElementalEarthBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
@@ -2239,8 +2239,8 @@
     <ClassesHeroes>
       <ClassHero>ElementalEarth</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-  <TypeAbility>
+  </Ability>
+  <Ability>
     <ID>ElementalFireBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
@@ -2255,5 +2255,5 @@
     <ClassesHeroes>
       <ClassHero>ElementalFire</ClassHero>
     </ClassesHeroes>
-  </TypeAbility>
-</TypeAbilities>
+  </Ability>
+</Descriptors>

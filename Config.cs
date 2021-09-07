@@ -152,9 +152,9 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Загрузка конфигурации способностей
-            xmlDoc = CreateXmlDocument("Config\\TypeAbilities.xml");
+            xmlDoc = CreateXmlDocument(@"Config\Descriptors\Abilities.xml");
 
-            foreach (XmlNode n in xmlDoc.SelectNodes("/TypeAbilities/TypeAbility"))
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/Ability"))
             {
                 Abilities.Add(new DescriptorAbility(n));
             }
