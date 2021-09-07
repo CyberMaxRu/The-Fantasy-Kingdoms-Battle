@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<TypeCreatures>
+<Descriptors>
   <TypeCreature>
     <ID>Human</ID>
     <Name>Человек</Name>
@@ -41,4 +41,4 @@
     <ID>MagicCreature</ID>
     <Name>Магическое существо</Name>
   </TypeCreature>
-</TypeCreatures>
+</Descriptors>

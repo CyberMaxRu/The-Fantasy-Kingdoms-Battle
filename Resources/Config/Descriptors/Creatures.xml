@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<TypeCreatures>
-  <TypeCreature>
+<Descriptors>
+  <Creature>
     <ID>King</ID>
     <Name>Король</Name>
     <Description>Это вы, Ваше Величество!</Description>
@@ -13,9 +13,9 @@
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
   	<PersistentState>King</PersistentState>
-  </TypeCreature>
-  <TypeCreature>
-	<ID>Advisor</ID>
+  </Creature>
+  <Creature>
+	  <ID>Advisor</ID>
 	  <Name>Советник</Name>
 	  <Description>Ваш личный советник, Сир.</Description>
 	  <ImageIndex>137</ImageIndex>
@@ -27,8 +27,8 @@
 	  <MaxLevel>100</MaxLevel>
 	  <CanBuild>False</CanBuild>
 	  <PersistentState>Advisor</PersistentState>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>Captain</ID>
     <Name>Капитан</Name>
     <Description>Занимается обороной Королевства и тренировками героев. В общем всем, что связано с военной службой.</Description>
@@ -41,8 +41,8 @@
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
     <PersistentState>Captain</PersistentState>
-  </TypeCreature>
-	<TypeCreature>
+  </Creature>
+	<Creature>
 		<ID>Treasurer</ID>
 		<Name>Казначей</Name>
 		<Description>Собирает налоги, заведует казной и эффективностью трат из неё.</Description>
@@ -55,8 +55,8 @@
 		<MaxLevel>100</MaxLevel>
 		<CanBuild>False</CanBuild>
 		<PersistentState>Treasurer</PersistentState>
-	</TypeCreature>
-  <TypeCreature>
+	</Creature>
+  <Creature>
     <ID>Peasant</ID>
     <Name>Крестьянин</Name>
     <Description>Это просто крестьяне, Сир. Они обучены строить и чинить здания.</Description>
@@ -67,8 +67,8 @@
     <Cost>0</Cost>
     <Building>House</Building>
     <MaxLevel>1</MaxLevel>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>Guardian</ID>
     <Name>Королевский гвардеец</Name>
     <Description>Королевские гвардейцы в меру своих сил охраняют покой короля.</Description>
@@ -91,8 +91,8 @@
       <CoefMana>1</CoefMana>
       <CoefStamina>4</CoefStamina>
     </BaseParameters>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>Miller</ID>
     <Name>Мельник</Name>
     <Description>Мельник работает на мельнице.</Description>
@@ -106,8 +106,8 @@
     <TypeAttackMelee>Hands</TypeAttackMelee>
     <KindHero>NonCombatant</KindHero>
     <CanBuild>False</CanBuild>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>Warrior</ID>
     <Name>Воин</Name>
     <Description>- Весьма вынослив//- В первую очередь выполняет задания атаки и защиты//- На 5-ом уровне учится отвлекать врагов на себя</Description>
@@ -275,8 +275,8 @@
       <Surname>Последний рыцарь</Surname>
       <Surname>из Каербанога</Surname>
     </Surnames>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>Rogue</ID>
     <Name>Разбойница</Name>
     <Description>- Любит деньги, охотно выполняет любые задания//- Умеет воровать//- Избегает серьезных боев</Description>
@@ -404,8 +404,8 @@
       <Surname>Убийца Вампиров</Surname>
       <Surname>Ограбь</Surname>
     </Surnames>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>Hunter</ID>
     <Name>Рейнджер</Name>
     <Description>- Любит выполнять задания исследования//- Лучше всего воюет против зверей</Description>
@@ -582,8 +582,8 @@
       <Surname>Узкие Штаны</Surname>
       <Surname>Модные Штаны</Surname>
     </Surnames>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>Cleric</ID>
     <Name>Послушница</Name>
     <Description>- Умеет лечить//- Лучше всего воюет против нежити</Description>
@@ -730,8 +730,8 @@
       <Surname>Прилежная</Surname>
       <Surname>Задумчивая</Surname>
     </Surnames>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>Mage</ID>
     <Name>Маг</Name>
     <Description>- Способен выучить множество разрушительных заклинаний//- Почти не защищен//- На 5-ом уровне изучает "Магический щит"</Description>
@@ -878,8 +878,8 @@
       <Surname>Косматый</Surname>
       <Surname>Безопасный</Surname>
     </Surnames>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>Elf</ID>
     <Name>Эльфийка</Name>
     <Description>- Прекрасно стреляет из лука//- Самая быстрая из героев//- Не любит гномов</Description>
@@ -1010,8 +1010,8 @@
       <Surname>Сребрестрелая</Surname>
       <Surname>Песнь Лесов</Surname>
     </Surnames>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>Dwarf</ID>
     <Name>Гном</Name>
     <Description>- Обладает высоким сопротивлением магии//- В первую очередь выполняет задания атаки//- Умело рушит здания//- Не любит эльфов</Description>
@@ -1137,8 +1137,8 @@
       <Surname>Тощебород</Surname>
       <Surname>Колесовик</Surname>
     </Surnames>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>DarkPriest</ID>
     <Name>Сестра Крипты</Name>
     <Description>- Вызывает себе на помощь скелетов//- Любит выполнять задания атаки//- На 5-ом уровне изучает заклинание "Чума"//- С 10-го уровня призывает себе на помощь темных личей//- Не любит паладинов Дауроса</Description>
@@ -1234,8 +1234,8 @@
       <Surname>Смертелюбивая</Surname>
       <Surname>Темная</Surname>
     </Surnames>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>Priest</ID>
     <Name>Жрица Агрелы</Name>
     <Description>- Умеет лечить//- Лучше всего воюет против нежити//- На 10-ом уровне изучает "Массовое лечение"</Description>
@@ -1328,8 +1328,8 @@
       <Surname>Всеверующая</Surname>
       <Surname>Священная</Surname>
     </Surnames>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>Paladin</ID>
     <Name>Паладин</Name>
     <Description>- Самый выносливый из героев//- Не знает страха//- На 5-ом уровне изучает заклинание "Святая защита"//- На 10-ом уровне изучает "Священный удар"//- Умеет отвлекать врагов на себя//- Не любит нежить, вызванную сестрами Крипты</Description>
@@ -1422,8 +1422,8 @@
       <Surname>Преданный</Surname>
       <Surname>Сердце Святости</Surname>
     </Surnames>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>BladeMaster</ID>
     <Name>Мастер меча</Name>
     <Description>- Обладает самым сильным ударом//- Любит выполнять задания атаки//- На 5-ом уровне изучает "Калечащий удар"//- На 10-ом уровне изучает "Ураган клинков"//- Умеет отвлекать врагов на себя</Description>
@@ -1513,8 +1513,8 @@
       <Surname>Сорви-голова</Surname>
       <Surname>Щит-в-щепки</Surname>
     </Surnames>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>BeastMaster</ID>
     <Name>Зверолов</Name>
     <Description>- Вызывает себе на помощь волков Фервуса//- Любит выполнять задания исследования//- На 5-ом уровне изучает способность "Звериная ярость"//- С 10-го уровня призывает себе на помощь медведей Хаоса</Description>
@@ -1610,8 +1610,8 @@
       <Surname>Холодный Вой</Surname>
       <Surname>Коготь Льва</Surname>
     </Surnames>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>Marksman</ID>
     <Name>Лучник Хелии</Name>
     <Description>- Лучший из стрелков//- Любит выполнять задания исследования//- На 5-ом уровне изучает "Смертельный выстрел"//- На 10-ом уровне изучает заклинание "Солнечная стрела"</Description>
@@ -1707,8 +1707,8 @@
       <Surname>Одинокий Звезда</Surname>
       <Surname>Прожигающий</Surname>
     </Surnames>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>FireMage</ID>
     <Name>Маг Огня</Name>
     <Description>- Способен выучить множество заклинаний//- Почти не защищен//- На 5-ом уровне изучает "Магический щит"</Description>
@@ -1760,8 +1760,8 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>IceMage</ID>
     <Name>Маг Холода</Name>
     <Description>- Любит выполнять задания атаки//- Знает множество разрушительных заклинаний//- На 5-ом уровне изучает заклинания "Заморозка" и "Щит Холода"//- На 10-ом уровне изучает заклинание "Гнев Холода"</Description>
@@ -1834,8 +1834,8 @@
       <Surname>Буранный</Surname>
       <Surname>Ледяной Великан</Surname>
     </Surnames>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>DeathKnight</ID>
     <Name>Ассасин</Name>
     <Description>- Любит деньги, охотно выполняет любые задания//- Умеет воровать//- На 5-ом уровне изучает "Умелое оглушение"//- На 10-ом уровне изучает "Черный яд"</Description>
@@ -1915,8 +1915,8 @@
       <Surname>Восходящая</Surname>
       <Surname>Сумеречная</Surname>
     </Surnames>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>Zombie</ID>
     <Name>Зомби</Name>
     <Description>Зомби - любимые игрушки некромантов. Зомби весьма сильны, но очень медлительны. Основной прием самозащиты от зомби - бег трусцой.</Description>
@@ -1966,8 +1966,8 @@
       <Gold>25</Gold>
       <Greatness>1</Greatness>
     </Reward>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>Skelet</ID>
     <Name>Скелет</Name>
     <Description>Эти ожившие кости движимы черной магией неизвестного происхождения.</Description>
@@ -2006,8 +2006,8 @@
       <Gold>25</Gold>
       <Greatness>1</Greatness>
     </Reward>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>SkeletArcher</ID>
     <Name>Скелет-лучник</Name>
     <Description>Скелет лучника - прекрасная анатомическая модель. Жаль, что подойти к ней не так-то просто, а убежать от неё еще труднее.</Description>
@@ -2047,8 +2047,8 @@
       <Gold>25</Gold>
       <Greatness>1</Greatness>
     </Reward>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>SkeletVeteran</ID>
     <Name>Скелет ветерана</Name>
     <Description>Скелет ветеран не потерял ни капли своего боевого опыта потому гораздо опаснее обычного скелета.</Description>
@@ -2087,8 +2087,8 @@
       <Gold>75</Gold>
       <Greatness>1</Greatness>
     </Reward>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>SkeletSniper</ID>
     <Name>Скелет-снайпер</Name>
     <Description>Этот стрелок-снайпер с веками нисколько не потерял, а скорее приобрез заметную "смертельность".</Description>
@@ -2128,8 +2128,8 @@
       <Gold>50</Gold>
       <Greatness>1</Greatness>
     </Reward>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>Ghost</ID>
     <Name>Призрак</Name>
     <Description>Прозрачные, почти незаметные духи павших героев после смерти дают волю накопленным при жизни обидам и принимаются мстить живым.</Description>
@@ -2168,8 +2168,8 @@
       <Gold>75</Gold>
       <Greatness>1</Greatness>
     </Reward>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>Lich</ID>
     <Name>Лич</Name>
     <Description>Лич - это, как правило, могущественный маг, ставший еще более могущественным после смерти.</Description>
@@ -2208,8 +2208,8 @@
       <Gold>75</Gold>
       <Greatness>1</Greatness>
     </Reward>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>Vampire</ID>
     <Name>Вампир</Name>
     <Description>Вампиры - древний вид, вымирающий вот уже несколько тысяч лет. Носят черное, потому что цвета темнее ещё не придумали, из напитков предпочитают свежую человеческую кровь. С предубеждением относятся к чесноку, серебру, осиновым колам и яркому солнцу.</Description>
@@ -2248,8 +2248,8 @@
       <Gold>200</Gold>
       <Greatness>1</Greatness>
     </Reward>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>AncientLich</ID>
     <Name>Древний лич</Name>
     <Description>Это один из темных магов, которыми так богата древняя история Ардании. Его особенность лишь в том, что этот сумел возродиться и, похоже, ничуть не потерял в своей силе, хотя и похудел изрядно.</Description>
@@ -2288,8 +2288,8 @@
       <Gold>150</Gold>
       <Greatness>1</Greatness>
     </Reward>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>Wolf</ID>
     <Name>Волк</Name>
     <Description>Волки - такая же привычная часть пейзажа в лесах Ардании, как, скажем, деревья. Но деревья, в отличие от волков, не грызут героев и простой люд.</Description>
@@ -2331,8 +2331,8 @@
       <Gold>25</Gold>
       <Greatness>1</Greatness>
     </Reward>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>OldWolf</ID>
     <Name>Старый волк</Name>
     <Description>Старый волк сильнее, хитрее и опасней своих "зеленых" сородичей. С возрастом его зубы становятся крепче, а клыки - острее.</Description>
@@ -2376,8 +2376,8 @@
       <Gold>25</Gold>
       <Greatness>1</Greatness>
     </Reward>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>Serpent</ID>
     <Name>Змей</Name>
     <Description>Говорят, именно летающие змеи виновны в исчезновении героев, забредающих слишком далеко от своих гильдий.</Description>
@@ -2416,8 +2416,8 @@
       <Gold>25</Gold>
       <Greatness>1</Greatness>
     </Reward>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>Bear</ID>
     <Name>Медведь</Name>
     <Description>Медведи любят полакомиться заблудившимися героями, приблизившимися к берлоге.</Description>
@@ -2459,8 +2459,8 @@
       <Gold>100</Gold>
       <Greatness>1</Greatness>
     </Reward>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>GreatBear</ID>
     <Name>Великий медведь</Name>
     <Description>Это агрессивный и жестокий хищник. Великий медведь может разодрать в клочья даже героя, защищенного крепким доспехом!</Description>
@@ -2503,8 +2503,8 @@
       <Gold>100</Gold>
       <Greatness>1</Greatness>
     </Reward>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>WerewolfBear</ID>
     <Name>Медведь-оборотень</Name>
     <Description>Огромный прямоходящий медведь - гроза всех четверолапых Ардании. Любит полакомиться героями, но не брезгует и простыми крестьянами.</Description>
@@ -2543,8 +2543,8 @@
       <Gold>150</Gold>
       <Greatness>1</Greatness>
     </Reward>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>Minotaur</ID>
     <Name>Минотавр</Name>
     <Description>Огромные полулюди-полубыки, обожающие сеять разрушение и смерть. В малом количестве они не очень опасны, но стадо минотавров способно сровнять с землей небольшое королевство.</Description>
@@ -2583,8 +2583,8 @@
       <Gold>50</Gold>
       <Greatness>1</Greatness>
     </Reward>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>BlackMinotaur</ID>
     <Name>Черный минотавр</Name>
     <Description>Черные минотавры еще свирепей и опасней своих менее загорелых собратьев.</Description>
@@ -2623,8 +2623,8 @@
       <Gold>75</Gold>
       <Greatness>1</Greatness>
     </Reward>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>Ogre</ID>
     <Name>Огр</Name>
     <Description>Огры-людоеды знамениты своими размерами, силой и привычкой ложиться спать в самых неожиданных местах.</Description>
@@ -2663,8 +2663,8 @@
       <Gold>100</Gold>
       <Greatness>1</Greatness>
     </Reward>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>GrendarOgre</ID>
     <Name>Грендар Огр</Name>
     <Description>Грендар - самый большой, самый сильный и самый ленивый из огров. Больше всего любит с большим шумом разрушать здания, а то и целые деревни.</Description>
@@ -2703,8 +2703,8 @@
       <Gold>200</Gold>
       <Greatness>1</Greatness>
     </Reward>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>Werewolf</ID>
     <Name>Волколак</Name>
     <Description>Волколак - это человек, зараженный редким вирусом ликантропии. Всем известно, что излечить его измученное тело и спасти заблудшую душу можно, лишь убив его. Такое лечение опасно - немало "докторов" теперь сами воют на луну по ночам.</Description>
@@ -2743,8 +2743,8 @@
       <Gold>150</Gold>
       <Greatness>1</Greatness>
     </Reward>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>Dragon</ID>
     <Name>Дракон</Name>
     <Description>Гадалки Ардании говорят, что встретить дракона, знак крылатой смерти, - дурная примета. Сулит огромные потери. Тот, кто увидит дракона должен будет в ближайшем будущем принять решительные и активные действия, возможно, у него появится тяга к перемене мест или он станет глубоко верующим человеком.</Description>
@@ -2783,8 +2783,8 @@
       <Gold>100</Gold>
       <Greatness>1</Greatness>
     </Reward>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>Rat</ID>
     <Name>Крыса</Name>
     <Description>Целебная проточная вода в канализациях Ардании способствует увеличению популяции крыс. Оттого-то они вырастают до таких огромных размеров.</Description>
@@ -2823,8 +2823,8 @@
       <Gold>10</Gold>
       <Greatness>1</Greatness>
     </Reward>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>OldRat</ID>
     <Name>Матерая крыса</Name>
     <Description>Некоторые крысы за свою жизнь съедают такое количество объедков, что становятся матерыми крысами.</Description>
@@ -2863,8 +2863,8 @@
       <Gold>20</Gold>
       <Greatness>1</Greatness>
     </Reward>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>KingRat</ID>
     <Name>Король Крыс</Name>
     <Description>Король Крыс Пятый, наследник славной династии крысиных королей, повелитель канализации всея Ардании. Он пуляет отравленную воду в своих врагов, из-за чего последние страдают от различных заболеваний. Даже поговаривают, что это он когда-то украл державу Сидриана!</Description>
@@ -2903,8 +2903,8 @@
       <Gold>1000</Gold>
       <Greatness>1</Greatness>
     </Reward>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>KingSkeleton</ID>
     <Name>Король-скелет</Name>
     <Description>Король-скелет вот уже несколько столетий является основной достопримечательностью Ардании. Правда, мало кто его видел - знают-то о нем все, но вот подойти к нему боятся даже редкие смельчаки.</Description>
@@ -2943,8 +2943,8 @@
       <Gold>1000</Gold>
       <Greatness>1</Greatness>
     </Reward>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>Ratman</ID>
     <Name>Крысолюд</Name>
     <Description>Магические отходы, попадающие в сточные воды канализаций, дают непредсказуемые результаты. Говорят, крысолюды, или огромные человекоподобные прямоходящие крысы, - это результат мутации.</Description>
@@ -2983,8 +2983,8 @@
       <Gold>100</Gold>
       <Greatness>1</Greatness>
     </Reward>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>ElementalEarth</ID>
     <Name>Элементаль молнии</Name>
     <Description>При виде человека элементаль молнии начинает светиться характерным ярким светом. Некоторые исследователи полагают, что такое поведение элементалей - всего лишь радостное приветствие.</Description>
@@ -3023,8 +3023,8 @@
       <Gold>125</Gold>
       <Greatness>1</Greatness>
     </Reward>
-  </TypeCreature>
-  <TypeCreature>
+  </Creature>
+  <Creature>
     <ID>ElementalFire</ID>
     <Name>Элементаль огня</Name>
     <Description>Элементалей плана огня можно легко отличить от прочих элементалей по пламени, охватывающем одежду тех, кто приближается к ним слишком близко.</Description>
@@ -3063,5 +3063,5 @@
       <Gold>125</Gold>
       <Greatness>1</Greatness>
     </Reward>
-  </TypeCreature>
-</TypeCreatures>
+  </Creature>
+</Descriptors>

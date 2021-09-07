@@ -224,7 +224,7 @@
     <Content Include="Resources\Config\StateCreature.xml" />
     <Content Include="Resources\Config\TypeAttack.xml" />
     <Content Include="Resources\Config\TypeConstructions.xml" />
-    <Content Include="Resources\Config\KindCreatures.xml" />
+    <Content Include="Resources\Config\Descriptors\TypeCreatures.xml" />
     <Content Include="Resources\Config\TypePerks.xml" />
     <Content Include="Resources\Icons\Avatars.png" />
     <Content Include="Resources\Icons\Background.png" />
@@ -268,7 +268,7 @@
     <Content Include="Resources\Config\TypeAbilities.xml" />
     <Content Include="Resources\Config\TypeLobby.xml" />
     <Content Include="Resources\Config\Items.xml" />
-    <Content Include="Resources\Config\TypeCreatures.xml" />
+    <Content Include="Resources\Config\Descriptors\Creatures.xml" />
     <Content Include="Resources\Config\Settings.xml" />
     <Content Include="Resources\Players.xml" />
     <Content Include="Resources\Versions.xml" />

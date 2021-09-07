@@ -13,7 +13,7 @@ namespace Fantasy_Kingdoms_Battle
             Name = GetStringNotNull(n, "Name");
 
             // Проверяем, что таких же ID и наименования нет
-            foreach (TypeCreature kc in Config.KindCreatures)
+            foreach (TypeCreature kc in Config.TypeCreatures)
             {
                 Debug.Assert(kc.ID != ID);
                 Debug.Assert(kc.Name != Name);

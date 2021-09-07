@@ -183,20 +183,20 @@ namespace Fantasy_Kingdoms_Battle
                 StatesCreature.Add(new StateCreature(n));
             }
 
-            // Загрузка конфигурации видов существ
-            xmlDoc = CreateXmlDocument("Config\\KindCreatures.xml");
+            // Загрузка конфигурации типов существ
+            xmlDoc = CreateXmlDocument(@"Config\Descriptors\TypeCreatures.xml");
 
-            foreach (XmlNode n in xmlDoc.SelectNodes("/TypeCreatures/TypeCreature"))
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/TypeCreature"))
             {
-                KindCreatures.Add(new TypeCreature(n));
+                TypeCreatures.Add(new TypeCreature(n));
             }
 
-            // Загрузка конфигурации типов существ
-            xmlDoc = CreateXmlDocument("Config\\TypeCreatures.xml");
+            // Загрузка конфигурации существ
+            xmlDoc = CreateXmlDocument(@"Config\Descriptors\Creatures.xml");
 
-            foreach (XmlNode n in xmlDoc.SelectNodes("/TypeCreatures/TypeCreature"))
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/Creature"))
             {
-                TypeCreatures.Add(new DescriptorCreature(n));
+                Creatures.Add(new DescriptorCreature(n));
             }
 
             // Настраиваем связи
@@ -212,7 +212,7 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorItem i in Items)
                 i.TuneDeferredLinks();
 
-            foreach (DescriptorCreature tc in TypeCreatures)
+            foreach (DescriptorCreature tc in Creatures)
                 tc.TuneDeferredLinks();
 
             foreach (DescriptorConstruction tc in TypeConstructions)
@@ -244,11 +244,11 @@ namespace Fantasy_Kingdoms_Battle
         internal List<DescriptorSpecialization> Specializations { get; } = new List<DescriptorSpecialization>();
         internal List<DescriptorSecondarySkill> SecondarySkills { get; } = new List<DescriptorSecondarySkill>();
         internal List<StateCreature> StatesCreature { get; } = new List<StateCreature>();
-        internal List<TypeCreature> KindCreatures { get; } = new List<TypeCreature>();
+        internal List<TypeCreature> TypeCreatures { get; } = new List<TypeCreature>();
         internal List<DescriptorGroupItem> GroupItem { get; } = new List<DescriptorGroupItem>();
         internal List<DescriptorItem> Items { get; } = new List<DescriptorItem>();
         internal int MaxLevelSkill { get; }
-        internal List<DescriptorCreature> TypeCreatures { get; } = new List<DescriptorCreature>();
+        internal List<DescriptorCreature> Creatures { get; } = new List<DescriptorCreature>();
 
         //
         internal List<string> ExternalAvatars { get; } = new List<string>();
@@ -456,7 +456,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal TypeCreature FindKindCreature(string ID)
         {
-            foreach (TypeCreature tu in KindCreatures)
+            foreach (TypeCreature tu in TypeCreatures)
             {
                 if (tu.ID == ID)
                     return tu;
@@ -489,7 +489,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal DescriptorCreature FindTypeCreature(string ID)
         {
-            foreach (DescriptorCreature tc in TypeCreatures)
+            foreach (DescriptorCreature tc in Creatures)
             {
                 if (tc.ID == ID)
                     return tc;

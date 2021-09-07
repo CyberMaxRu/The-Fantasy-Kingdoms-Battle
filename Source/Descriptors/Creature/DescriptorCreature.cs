@@ -109,7 +109,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Проверяем, что таких же ID и наименования нет
-            foreach (DescriptorCreature h in FormMain.Config.TypeCreatures)
+            foreach (DescriptorCreature h in FormMain.Config.Creatures)
             {
                 if (h.ID == ID)
                 {
