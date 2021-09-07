@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<KindCreatures>
-  <KindCreature>
+<TypeCreatures>
+  <TypeCreature>
     <ID>Human</ID>
     <Name>Человек</Name>
     <MinMorale></MinMorale>
@@ -8,37 +8,37 @@
     <Perks>
       <Perk></Perk>
     </Perks>
-  </KindCreature>
-  <KindCreature>
+  </TypeCreature>
+  <TypeCreature>
     <ID>Beast</ID>
     <Name>Зверь</Name>
-  </KindCreature>
-  <KindCreature>
+  </TypeCreature>
+  <TypeCreature>
     <ID>Undead</ID>
     <Name>Нежить</Name>
-  </KindCreature>
-  <KindCreature>
+  </TypeCreature>
+  <TypeCreature>
     <ID>Dwarf</ID>
     <Name>Гном</Name>
-  </KindCreature>
-  <KindCreature>
+  </TypeCreature>
+  <TypeCreature>
     <ID>Elf</ID>
     <Name>Эльф</Name>
-  </KindCreature>
-  <KindCreature>
+  </TypeCreature>
+  <TypeCreature>
     <ID>Minotaur</ID>
     <Name>Минотавр</Name>
-  </KindCreature>
-  <KindCreature>
+  </TypeCreature>
+  <TypeCreature>
     <ID>Ogre</ID>
     <Name>Огр</Name>
-  </KindCreature>
-  <KindCreature>
+  </TypeCreature>
+  <TypeCreature>
     <ID>Dragon</ID>
     <Name>Дракон</Name>
-  </KindCreature>
-  <KindCreature>
+  </TypeCreature>
+  <TypeCreature>
     <ID>MagicCreature</ID>
     <Name>Магическое существо</Name>
-  </KindCreature>
-</KindCreatures>
+  </TypeCreature>
+</TypeCreatures>

@@ -186,9 +186,9 @@ namespace Fantasy_Kingdoms_Battle
             // Загрузка конфигурации видов существ
             xmlDoc = CreateXmlDocument("Config\\KindCreatures.xml");
 
-            foreach (XmlNode n in xmlDoc.SelectNodes("/KindCreatures/KindCreature"))
+            foreach (XmlNode n in xmlDoc.SelectNodes("/TypeCreatures/TypeCreature"))
             {
-                KindCreatures.Add(new KindCreature(n));
+                KindCreatures.Add(new TypeCreature(n));
             }
 
             // Загрузка конфигурации типов существ
@@ -244,7 +244,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<DescriptorSpecialization> Specializations { get; } = new List<DescriptorSpecialization>();
         internal List<DescriptorSecondarySkill> SecondarySkills { get; } = new List<DescriptorSecondarySkill>();
         internal List<StateCreature> StatesCreature { get; } = new List<StateCreature>();
-        internal List<KindCreature> KindCreatures { get; } = new List<KindCreature>();
+        internal List<TypeCreature> KindCreatures { get; } = new List<TypeCreature>();
         internal List<DescriptorGroupItem> GroupItem { get; } = new List<DescriptorGroupItem>();
         internal List<DescriptorItem> Items { get; } = new List<DescriptorItem>();
         internal int MaxLevelSkill { get; }
@@ -454,9 +454,9 @@ namespace Fantasy_Kingdoms_Battle
             throw new Exception("Состояние существа " + ID + " не найдено.");
         }
 
-        internal KindCreature FindKindCreature(string ID)
+        internal TypeCreature FindKindCreature(string ID)
         {
-            foreach (KindCreature tu in KindCreatures)
+            foreach (TypeCreature tu in KindCreatures)
             {
                 if (tu.ID == ID)
                     return tu;

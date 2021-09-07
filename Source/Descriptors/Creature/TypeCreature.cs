@@ -1,18 +1,19 @@
 ﻿using System.Diagnostics;
 using System.Xml;
+using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    // Виды существ
-    internal sealed class KindCreature
+    // Типы существ
+    internal sealed class TypeCreature : Descriptor
     {
-        public KindCreature(XmlNode n)
+        public TypeCreature(XmlNode n)
         {
-            ID = XmlUtils.GetStringNotNull(n, "ID");
-            Name = XmlUtils.GetStringNotNull(n, "Name");
+            ID = GetStringNotNull(n, "ID");
+            Name = GetStringNotNull(n, "Name");
 
             // Проверяем, что таких же ID и наименования нет
-            foreach (KindCreature kc in FormMain.Config.KindCreatures)
+            foreach (TypeCreature kc in Config.KindCreatures)
             {
                 Debug.Assert(kc.ID != ID);
                 Debug.Assert(kc.Name != Name);
