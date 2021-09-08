@@ -25,6 +25,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         internal readonly VCText lblName;
         internal readonly VCText lblHeader;
+        internal readonly VCImage128 img128;
         internal readonly VCText lblAction;
         internal readonly VCText lblDescription;
         internal readonly VCSeparator lblSeparateRequirement;
@@ -62,6 +63,8 @@ namespace Fantasy_Kingdoms_Battle
             lblHeader = new VCText(this, FormMain.Config.GridSize, 4, Program.formMain.fontMedCaptionC, Color.Yellow, widthControl);
             lblHeader.StringFormat.Alignment = StringAlignment.Near;
             lblHeader.StringFormat.LineAlignment = StringAlignment.Near;
+
+            img128 = new VCImage128(this, FormMain.Config.GridSize, lblHeader.NextTop());
 
             lblAction = new VCText(this, FormMain.Config.GridSize, lblHeader.NextTop(), Program.formMain.fontMedCaptionC, FormMain.Config.HintAction, widthControl);
             lblAction.StringFormat.Alignment = StringAlignment.Near;
@@ -185,6 +188,7 @@ namespace Fantasy_Kingdoms_Battle
             ExistHint = false;
             lblName.Visible = false;
             lblHeader.Text = "";
+            img128.Visible = false;
             lblAction.Visible = false;
             lblDescription.Visible = false;
             lblIncome.Visible = false;
@@ -240,7 +244,7 @@ namespace Fantasy_Kingdoms_Battle
             nextTop = lblName.NextTop();
         }
 
-        internal void AddStep1Header(string header, string action, string description)
+        internal void AddStep1Header(string header, string action, string description, int imageIndex = -1)
         {
             Debug.Assert(lblHeader.Text == "");
             Debug.Assert(header != null);
@@ -254,6 +258,14 @@ namespace Fantasy_Kingdoms_Battle
             lblHeader.Text = header;
             lblHeader.Height = lblHeader.MinHeigth();
             nextTop = lblHeader.NextTop();
+
+            if (imageIndex != -1)
+            {
+                img128.ShiftY = nextTop;
+                img128.ImageIndex = imageIndex;
+                img128.Visible = true;
+                nextTop = img128.NextTop();
+            }
 
             if (action.Length > 0)
             { 
