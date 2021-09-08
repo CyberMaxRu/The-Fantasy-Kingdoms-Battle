@@ -605,16 +605,16 @@ namespace Fantasy_Kingdoms_Battle
 
                 // Панели информации об объектахs
                 panelHeroInfo = new PanelHeroInfo(MainControl, Config.GridSize, panelLairWithFlags.NextTop());
-                panelHeroInfo.Width = panelCombatHeroes.Width;
+                panelHeroInfo.Width = vcRightPanel.Width - Config.GridSize;
                 panelHeroInfo.ApplyMaxSize();
                 panelConstructionInfo = new PanelConstructionInfo(MainControl, panelHeroInfo.ShiftX, panelHeroInfo.ShiftY);
-                panelConstructionInfo.Width = panelCombatHeroes.Width;
+                panelConstructionInfo.Width = panelHeroInfo.Width;
                 panelConstructionInfo.ApplyMaxSize();
                 panelLairInfo = new PanelLairInfo(MainControl, panelHeroInfo.ShiftX, panelHeroInfo.ShiftY);
-                panelLairInfo.Width = panelCombatHeroes.Width;
+                panelLairInfo.Width = panelHeroInfo.Width;
                 panelLairInfo.ApplyMaxSize();
                 panelMonsterInfo = new PanelMonsterInfo(MainControl, panelHeroInfo.ShiftX, panelHeroInfo.ShiftY);
-                panelMonsterInfo.Width = panelCombatHeroes.Width;
+                panelMonsterInfo.Width = panelHeroInfo.Width;
                 panelMonsterInfo.ApplyMaxSize();
                 panelEmptyInfo = new VisualControl(MainControl, panelHeroInfo.ShiftX, panelHeroInfo.ShiftY)
                 {
