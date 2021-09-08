@@ -22,7 +22,7 @@ namespace Fantasy_Kingdoms_Battle
             labelText.Visible = false;// Текст перекрывается иконкой. Поэтому рисуем вручную
             labelText.ManualDraw = true;
 
-            labelLevel = new VCLabel(this, 0, 2, Program.formMain.fontSmallC, FormMain.Config.CommonLevel, 16, "");
+            labelLevel = new VCLabel(this, 0, 1, Program.formMain.fontSmallC, FormMain.Config.CommonLevel, 16, "");
             labelLevel.StringFormat.LineAlignment = StringAlignment.Near;
             labelLevel.StringFormat.Alignment = StringAlignment.Far;
             labelLevel.Visible = false;
