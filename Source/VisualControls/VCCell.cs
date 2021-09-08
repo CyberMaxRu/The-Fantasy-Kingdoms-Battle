@@ -9,7 +9,6 @@ namespace Fantasy_Kingdoms_Battle
         public VCCell(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY, -1)
         {
             HighlightUnderMouse = true;
-            ShowBorder = true;
 
             // Ставим размеры после изменения ShiftImageX и ShiftImageY, так так там меняется размер ячейки
             Width = Program.formMain.bmpBorderForIcon.Width;
@@ -71,6 +70,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
+            ShowBorder = Entity != null;
+
             if (Visible && !ManualDraw)
             {
                 if (Entity != null)
