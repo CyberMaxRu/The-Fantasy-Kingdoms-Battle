@@ -225,7 +225,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 if ((Construction.TypeConstruction.TrainedHero != null) && !(Construction.TypeConstruction.TrainedHero is null) && (Construction.Level > 0) && (Construction.Heroes.Count > 0))
                 {
-                    btnHeroes.Text = Construction.Heroes.Count.ToString() + "/" + Construction.MaxHeroes();
+                    btnHeroes.Text = Construction.Heroes.Count.ToString() + (Construction.Heroes.Count != Construction.MaxHeroes() ? "/" + Construction.MaxHeroes() : "");
                     //btnHeroes.ImageIndex = Program.formMain.TreatImageIndex(Construction.TypeConstruction.TrainedHero.ImageIndex, Construction.Player);
                     btnHeroes.Visible = true;
                 }
