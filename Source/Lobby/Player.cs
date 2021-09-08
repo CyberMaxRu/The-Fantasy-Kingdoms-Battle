@@ -680,7 +680,7 @@ namespace Fantasy_Kingdoms_Battle
                     + "Героев: " + QuantityHeroes.ToString() + Environment.NewLine
                     + " " + Environment.NewLine
                     + "Поражений: " + CurrentLoses.ToString()
-                    + (DayOfEndGame > 0 ? Environment.NewLine + "Поражение в лобби: " + DayOfEndGame.ToString() + " день" : ""));
+                    + (DayOfEndGame > 0 ? Environment.NewLine + "Поражение в лобби: " + DayOfEndGame.ToString() + " день" : ""), GetImageIndex());
         }
 
         // Метод по распределению задач героев
