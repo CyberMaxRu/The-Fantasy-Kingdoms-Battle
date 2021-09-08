@@ -16,7 +16,7 @@ namespace Fantasy_Kingdoms_Battle
             Number = XmlUtils.GetInteger(n, "Number");
             Name = XmlUtils.GetStringNotNull(n, "Name");
             Hint = XmlUtils.GetStringNotNull(n, "Hint");
-            ImageIndex = XmlUtils.GetIntegerNotNull(n, "ImageIndex");
+            ImageIndex = XmlUtils.GetIntegerNotNull(n, "ImageIndex") + FormMain.Config.ImageIndexFirstItems - 1;
             CostScout = XmlUtils.GetInteger(n, "CostScout");
             CostAttack = XmlUtils.GetInteger(n, "CostAttack");
             CostDefense = XmlUtils.GetInteger(n, "CostDefense");
