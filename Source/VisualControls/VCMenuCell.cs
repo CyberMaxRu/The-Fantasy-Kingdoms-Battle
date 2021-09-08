@@ -58,22 +58,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
-            if (Visible)
-            {
-                if (ImageIsEnabled)
-                {
-                    if (MouseClicked && MouseOver)
-                        ImageFilter = ImageFilter.Press;
-                    else if (MouseOver)
-                        ImageFilter = ImageFilter.Select;
-                    else
-                        ImageFilter = ImageFilter.Active;
-                }
-                else
-                    ImageFilter = ImageFilter.Disabled;
-            }
-
-
             if ((research != null) && (research.Research.TypeEntity != null))
             {
                 Cost = research.Cost().ToString();
@@ -113,23 +97,17 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Visible && (ImageIndex != -1))
             {
-                switch (ImageFilter)
+                if (ImageIsEnabled)
                 {
-                    case ImageFilter.Active:
-                        g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage(0, true, false), Left, Top);
-                        break;
-                    case ImageFilter.Select:
-                        g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage(1, true, false), Left, Top);
-                        break;
-                    case ImageFilter.Press:
-                        g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage(2, true, false), Left, Top);
-                        break;
-                    case ImageFilter.Disabled:
-                        g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage(3, true, false), Left, Top);
-                        break;
-                    default:
-                        break;
+                    if (MouseClicked && MouseOver)
+                        g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage((int)ImageFilter.Press, true, false), Left, Top);
+                    else if (MouseOver)
+                        g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage((int)ImageFilter.Select, true, false), Left, Top);
+                    else
+                        g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage((int)ImageFilter.Active, true, false), Left, Top);
                 }
+                else
+                    g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage((int)ImageFilter.Disabled, true, false), Left, Top);
             }
         }
     }
