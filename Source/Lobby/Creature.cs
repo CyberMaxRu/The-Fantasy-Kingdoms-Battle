@@ -37,7 +37,11 @@ namespace Fantasy_Kingdoms_Battle
 
             // Берем оружие и доспехи
             if (TypeCreature.WeaponMelee != null)
+            {
                 MeleeWeapon = new Item(TypeCreature.WeaponMelee, 1);
+                //MeleeWeapon.AddModificator(FormMain.Config.FindItem("EnchantWeaponAttack"));
+                //MeleeWeapon.AddModificator(FormMain.Config.FindItem("EnchantWeaponPoison"));
+            }
             if (TypeCreature.WeaponRange != null)
                 RangeWeapon = new Item(TypeCreature.WeaponRange, 1);
             if (TypeCreature.Armour != null)
