@@ -362,7 +362,7 @@ namespace Fantasy_Kingdoms_Battle
             vc.Top = Top + vc.ShiftY;
 
             //Debug.Assert(Left >= 0);
-            Debug.Assert(Top >= 0);
+            //Debug.Assert(Top >= 0);
 
             vc.ArrangeControls();
         }
