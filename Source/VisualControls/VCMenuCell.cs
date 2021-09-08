@@ -58,7 +58,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
-            if (Visible && (BitmapList.Size == Program.formMain.ilMenuCellFilters.Size))
+            if (Visible)
             {
                 if (ImageIsEnabled)
                 {
@@ -107,7 +107,6 @@ namespace Fantasy_Kingdoms_Battle
             else
             {
                 ImageIndex = -1;
-                ImageFilter = ImageFilter.None;
             }
 
             base.Draw(g);
