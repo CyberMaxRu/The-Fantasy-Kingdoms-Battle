@@ -9,6 +9,7 @@ namespace Fantasy_Kingdoms_Battle
         public VCCell(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY, -1)
         {
             HighlightUnderMouse = true;
+            ShowBorder = true;
             ShiftImageX = 2;
             ShiftImageY = 0;
 
@@ -95,6 +96,13 @@ namespace Fantasy_Kingdoms_Battle
 
         }
 
+        internal override void PaintBorder(Graphics g)
+        {
+            g.DrawImageUnscaled(Program.formMain.bmpBorderForIcon, Left - 2, Top - 1);
+
+            Entity?.CustomDraw(g, Left, Top, DrawState);
+        }
+
         internal override void PaintForeground(Graphics g)
         {
             base.PaintForeground(g);
@@ -103,9 +111,6 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (Entity != null)
                 {
-                    g.DrawImageUnscaled(Program.formMain.bmpBorderForIcon, Left - 2, Top - 1);
-
-                    Entity.CustomDraw(g, Left, Top, DrawState);
                 }
                 else
                     g.DrawImageUnscaled(Program.formMain.bmpEmptyEntity, Left, Top);
