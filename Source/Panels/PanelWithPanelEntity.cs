@@ -97,7 +97,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             rows++;
-            Height = listCells[listCells.Count - 1].Top + listCells[listCells.Count - 1].Height;
+            Height = listCells[listCells.Count - 1].ShiftY + listCells[listCells.Count - 1].Height;
         }
 
         private void RemoveRow()
