@@ -956,9 +956,11 @@ namespace Fantasy_Kingdoms_Battle
                     return "Нет существ";
 
                 string list = "";
+                int pos = 1;
                 foreach (Monster m in Monsters)
                 {
-                    list += (list != "" ? Environment.NewLine : "") + $"{m.TypeCreature.Name}, {m.Level} ур.";
+                    list += (list != "" ? Environment.NewLine : "") + $"{pos}. {m.TypeCreature.Name} ({m.Level})";
+                    pos++;
                 }
 
                 return list;
@@ -972,9 +974,11 @@ namespace Fantasy_Kingdoms_Battle
             else
             {
                 string list = "";
+                int pos = 1;
                 foreach (Hero h in listAttackedHero)
                 {
-                    list += (list != "" ? Environment.NewLine : "") + $"{h.GetNameHero()}, {h.Level} ур.";
+                    list += (list != "" ? Environment.NewLine : "") + $"{pos}. {h.GetNameHero()} ({h.Level})";
+                    pos++;
                 }
 
                 return list;
@@ -1012,9 +1016,11 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Heroes.Count > 0);
 
             string list = "";
+            int pos = 1;
             foreach (Hero h in Heroes)
             {
-                list += (list != "" ? Environment.NewLine : "") + $"{h.GetNameHero()}, {h.Level} ур.";
+                list += (list != "" ? Environment.NewLine : "") + $"{pos}. {h.GetNameHero()} ({h.Level})";
+                pos++;
             }
 
             Program.formMain.formHint.AddStep1Header(TypeConstruction.IsOurConstruction ? "Жители" : "Существа", "", list);
