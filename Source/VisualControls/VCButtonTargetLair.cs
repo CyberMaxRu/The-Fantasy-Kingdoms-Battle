@@ -65,7 +65,7 @@ namespace Fantasy_Kingdoms_Battle
                 ImageIsEnabled = false;
                 Level = 0;
                 Quantity = 0;
-                Cost = null;
+                Text = null;
             }
             else
             {

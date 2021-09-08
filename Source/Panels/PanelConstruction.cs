@@ -176,7 +176,7 @@ namespace Fantasy_Kingdoms_Battle
                         if (Construction.CanLevelUp())
                         {
                             btnBuildOrUpgrade.Visible = true;
-                            btnBuildOrUpgrade.Cost = Construction.CostBuyOrUpgrade().ToString();
+                            btnBuildOrUpgrade.Text = Construction.CostBuyOrUpgrade().ToString();
                             btnBuildOrUpgrade.ImageIndex = FormMain.Config.Gui48_LevelUp;
                             btnBuildOrUpgrade.ImageIsEnabled = Construction.CheckRequirements();
                         }
@@ -188,7 +188,7 @@ namespace Fantasy_Kingdoms_Battle
                     else
                     {
                         btnBuildOrUpgrade.Visible = true;
-                        btnBuildOrUpgrade.Cost = Construction.CostBuyOrUpgrade().ToString();
+                        btnBuildOrUpgrade.Text = Construction.CostBuyOrUpgrade().ToString();
                         btnBuildOrUpgrade.ImageIndex = Construction.TypeConstruction.ID != FormMain.Config.IDHolyPlace ? FormMain.Config.Gui48_Build : FormMain.Config.Gui48_Temple;
                         btnBuildOrUpgrade.ImageIsEnabled = (Construction.TypeConstruction.MaxLevel > 0) ? Construction.CheckRequirements() : true;
                     }
@@ -205,7 +205,7 @@ namespace Fantasy_Kingdoms_Battle
                         btnHireHero.ImageIndex = ((Construction.Level > 0) && (Construction.MaxHeroesAtPlayer() == true)) ? -1 : Construction.TypeConstruction.TrainedHero.ImageIndex;
                         btnHireHero.ImageIndex = Program.formMain.TreatImageIndex(Construction.TypeConstruction.TrainedHero.ImageIndex, Construction.Player);
                         btnHireHero.ImageIsEnabled = Construction.CanTrainHero();
-                        btnHireHero.Cost = (Construction.Level == 0) || (Construction.CanTrainHero() == true) ? Construction.TypeConstruction.TrainedHero.Cost.ToString() : null;
+                        btnHireHero.Text = (Construction.Level == 0) || (Construction.CanTrainHero() == true) ? Construction.TypeConstruction.TrainedHero.Cost.ToString() : null;
                     }
                     else
                         btnHireHero.Visible = false;
@@ -217,13 +217,13 @@ namespace Fantasy_Kingdoms_Battle
 
                 if ((Construction.TypeConstruction.TrainedHero != null) && !(Construction.TypeConstruction.TrainedHero is null) && (Construction.Level > 0) && (Construction.Heroes.Count > 0))
                 {
-                    btnHeroes.Cost = Construction.Heroes.Count.ToString() + "/" + Construction.MaxHeroes();
+                    btnHeroes.Text = Construction.Heroes.Count.ToString() + "/" + Construction.MaxHeroes();
                     //btnHeroes.ImageIndex = Program.formMain.TreatImageIndex(Construction.TypeConstruction.TrainedHero.ImageIndex, Construction.Player);
                     btnHeroes.Visible = true;
                 }
                 else
                 {
-                    btnHeroes.Cost = null;
+                    btnHeroes.Text = null;
                     btnHeroes.Visible = false;
                 }
             }
@@ -234,7 +234,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     btnAction.ImageIsEnabled = Construction.CheckFlagRequirements();
                     btnAction.Level = (int)Construction.PriorityFlag + 1;
-                    btnAction.Cost = Construction.PriorityFlag < PriorityExecution.High ? Construction.RequiredGold().ToString() : null;
+                    btnAction.Text = Construction.PriorityFlag < PriorityExecution.High ? Construction.RequiredGold().ToString() : null;
                 }
 
                 Debug.Assert(btnAction.Visible || (!btnAction.Visible && (Construction.PriorityFlag == PriorityExecution.None)));
@@ -252,13 +252,13 @@ namespace Fantasy_Kingdoms_Battle
                             btnAction.ImageIndex = FormMain.Config.Gui48_FlagAttack;
                             btnInhabitants.Visible = Construction.Monsters.Count > 0;
                             if (btnInhabitants.Visible)
-                                btnInhabitants.Cost = Construction.Monsters.Count.ToString();
+                                btnInhabitants.Text = Construction.Monsters.Count.ToString();
                             break;
                         case TypeFlag.Defense:
                             btnAction.ImageIndex = FormMain.Config.Gui48_FlagDefense;
                             btnInhabitants.Visible = Construction.Monsters.Count > 0;
                             if (btnInhabitants.Visible)
-                                btnInhabitants.Cost = Construction.Monsters.Count.ToString();
+                                btnInhabitants.Text = Construction.Monsters.Count.ToString();
                             break;
                         default:
                             throw new Exception($"Неизвестный тип действия: {Construction.TypeAction()}");
@@ -272,7 +272,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 btnAttackHeroes.Visible = Construction.listAttackedHero.Count > 0;
                 if (btnAttackHeroes.Visible)
-                    btnAttackHeroes.Cost = $"{Construction.listAttackedHero.Count}/{Construction.MaxHeroesForFlag()}";
+                    btnAttackHeroes.Text = $"{Construction.listAttackedHero.Count}/{Construction.MaxHeroesForFlag()}";
 
                 imgMapObject.ImageIndex = Construction.ImageIndexLair();
                 lblNameMapObject.Text = Construction.NameLair();

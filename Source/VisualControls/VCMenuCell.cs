@@ -27,7 +27,7 @@ namespace Fantasy_Kingdoms_Battle
                 research = value;
                 Visible = research != null;
                 if (Visible)
-                    Cost = research.Cost().ToString();
+                    Text = research.Cost().ToString();
             }
         }
 
@@ -60,7 +60,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             if ((research != null) && (research.Research.TypeEntity != null))
             {
-                Cost = research.Cost().ToString();
+                Text = research.Cost().ToString();
                 ImageIndex = research.Research.TypeEntity.ImageIndex;
                 ImageIsEnabled = research.CheckRequirements();
 
@@ -74,13 +74,13 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     Construction pc = research.ObjectOfMap.Player.GetPlayerConstruction(research.Research.TypeConstruction);
                     Debug.Assert(!(pc is null));
-                    Cost = pc.CostBuyOrUpgrade().ToString();
+                    Text = pc.CostBuyOrUpgrade().ToString();
                     ImageIndex = pc.TypeConstruction.ImageIndex;
                     ImageIsEnabled = research.CheckRequirements();
                 }
                 else
                 {
-                    Cost = research.Research.TypeConstruction.Levels[1].Cost.ToString();
+                    Text = research.Research.TypeConstruction.Levels[1].Cost.ToString();
                     ImageIndex = research.Research.TypeConstruction.ImageIndex;
                     ImageIsEnabled = research.Player.CanBuildTypeConstruction(research.Research.TypeConstruction);
                 }

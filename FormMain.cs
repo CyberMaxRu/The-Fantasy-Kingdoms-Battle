@@ -1613,7 +1613,7 @@ namespace Fantasy_Kingdoms_Battle
                     + curAppliedPlayer.PointGreatnessForNextLevel.ToString();
                 labelHeroes.Text = curAppliedPlayer.CombatHeroes.Count.ToString() + "/" + curAppliedPlayer.Lobby.TypeLobby.MaxHeroes.ToString();
 
-                pageTournament.Cost = lobby.DaysLeftForBattle > 0 ? lobby.DaysLeftForBattle.ToString() + " д." : 
+                pageTournament.Text = lobby.DaysLeftForBattle > 0 ? lobby.DaysLeftForBattle.ToString() + " д." : 
                         curAppliedPlayer.SkipBattle ? "Проп." : "Битва";
 
                 //
@@ -2081,7 +2081,7 @@ namespace Fantasy_Kingdoms_Battle
                 VCNeighborhood im = new VCNeighborhood(panelNeighborhood, nextLeft, 0, ls.ImageIndex);
                 im.ShowBorder = true;
                 im.Layer = i;
-                im.Cost = ls.Name;
+                im.Text = ls.Name;
                 im.Hint = ls.Hint;
                 im.Click += Neighborhood_Click;
                 nextLeft = im.NextLeft();

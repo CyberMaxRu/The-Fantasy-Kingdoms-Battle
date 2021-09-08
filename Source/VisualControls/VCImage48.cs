@@ -12,16 +12,16 @@ namespace Fantasy_Kingdoms_Battle
     internal class VCImage48 : VCImage
     {
         private VCLabel labelLevel;
-        private VCLabel labelCost;
+        private VCLabel labelText;
         protected VCLabel labelQuantity;
         int shiftlabelLevel;
 
         public VCImage48(VisualControl parent, int shiftX, int shiftY, int imageIndex) : base(parent, shiftX, shiftY, Program.formMain.imListObjects48, imageIndex)
         {
-            labelCost = new VCLabel(this, 0, Height - 12, Program.formMain.fontSmallC, FormMain.Config.CommonCost, 16, "");
-            labelCost.StringFormat.LineAlignment = StringAlignment.Far;
-            labelCost.Visible = false;// Текст перекрывается иконкой. Поэтому рисуем вручную
-            labelCost.ManualDraw = true;
+            labelText = new VCLabel(this, 0, Height - 12, Program.formMain.fontSmallC, FormMain.Config.CommonCost, 16, "");
+            labelText.StringFormat.LineAlignment = StringAlignment.Far;
+            labelText.Visible = false;// Текст перекрывается иконкой. Поэтому рисуем вручную
+            labelText.ManualDraw = true;
 
             shiftlabelLevel = BitmapList.Size >= 128 ? FormMain.Config.GridSize : 6;
             labelLevel = new VCLabel(this, 0, shiftlabelLevel - 4, Program.formMain.fontMedCaptionC, FormMain.Config.CommonLevel, 16, "");
@@ -38,15 +38,15 @@ namespace Fantasy_Kingdoms_Battle
 
             labelLevel.Width = Width - shiftlabelLevel;
             labelQuantity.Width = Width - shiftlabelLevel;
-            labelCost.Width = Width;
+            labelText.Width = Width;
 
             labelLevel.Width = Width - shiftlabelLevel;
             labelQuantity.Width = Width - shiftlabelLevel;
-            labelCost.Width = Width;
+            labelText.Width = Width;
         }
 
 
-        internal string Cost { get; set; }
+        internal string Text { get; set; }
         internal int Level { get; set; }
         internal int Quantity { get; set; }
         internal override void Draw(Graphics g)
@@ -61,12 +61,12 @@ namespace Fantasy_Kingdoms_Battle
             if (Visible && (ImageIndex != -1))
             {
                 // Цена
-                if ((Cost != null) && (Cost != ""))
+                if ((Text != null) && (Text != ""))
                 {
-                    Debug.Assert(Cost.Length > 0);
+                    Debug.Assert(Text.Length > 0);
 
-                    labelCost.Text = Cost;
-                    labelCost.Draw(g);
+                    labelText.Text = Text;
+                    labelText.Draw(g);
                 }
 
                 // Уровень
@@ -95,7 +95,7 @@ namespace Fantasy_Kingdoms_Battle
             base.ArrangeControls();
 
             labelQuantity.ShiftY = Height - 16;
-            labelCost.ShiftY = Height - 16;
+            labelText.ShiftY = Height - 16;
         }
     }
 }
