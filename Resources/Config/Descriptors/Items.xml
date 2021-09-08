@@ -2283,7 +2283,7 @@
     <ID>QuiverHunter0</ID>
     <Name>Стандартный колчан</Name>
     <Description></Description>
-    <ImageIndex>152</ImageIndex>
+    <ImageIndex>162</ImageIndex>
     <CategoryItem>Quiver</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupQuiver0</GroupItem>
@@ -2294,7 +2294,7 @@
     <ID>QuiverElf0</ID>
     <Name>Стандартный колчан</Name>
     <Description></Description>
-    <ImageIndex>152</ImageIndex>
+    <ImageIndex>162</ImageIndex>
     <CategoryItem>Quiver</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupQuiver0</GroupItem>
@@ -2305,7 +2305,7 @@
     <ID>QuiverBeastMaster0</ID>
     <Name>Стандартный колчан</Name>
     <Description></Description>
-    <ImageIndex>152</ImageIndex>
+    <ImageIndex>162</ImageIndex>
     <CategoryItem>Quiver</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupQuiver0</GroupItem>
@@ -2316,7 +2316,7 @@
     <ID>QuiverMarksman0</ID>
     <Name>Стандартный колчан</Name>
     <Description></Description>
-    <ImageIndex>152</ImageIndex>
+    <ImageIndex>162</ImageIndex>
     <CategoryItem>Quiver</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupQuiver0</GroupItem>
