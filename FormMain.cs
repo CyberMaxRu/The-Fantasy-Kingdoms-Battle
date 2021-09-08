@@ -118,6 +118,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly PanelConstruction[,] panelLairs;
         private PanelWithPanelEntity panelWarehouse;
         private PanelWithPanelEntity panelHeroes;
+        private readonly VisualControl vcRightPanel;
         private PanelWithPanelEntity panelCombatHeroes;
 
         private readonly VisualControl panelNeighborhood;
@@ -303,10 +304,10 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Загружаем настройки
-            //try
-            //{
+            try
+            {
                 Settings = new Settings();
-            Settings.PlayMusicChanged += Settings_PlayMusicChanged;
+                Settings.PlayMusicChanged += Settings_PlayMusicChanged;
 
                 MainConfig = new MainConfig(dirResources);
                 // Проверяем требование по разрешению экрана
@@ -577,8 +578,11 @@ namespace Fantasy_Kingdoms_Battle
                 vcDebugInfo.ApplyMaxSize();
                 vcDebugInfo.ArrangeControls();
 
+                // Правая панель с героями и меню
+                vcRightPanel = new VisualControl(MainControl, 0, 0);
+
                 // Создаем меню
-                bitmapMenu = new VCBitmap(MainControl, 0, 0, LoadBitmap("Menu.png"));
+                bitmapMenu = new VCBitmap(vcRightPanel, 0, 0, LoadBitmap("Menu.png"));
                 //Debug.Assert(panelHeroInfo.Width >= bitmapMenu.Width);
 
                 CellsMenu = new VCMenuCell[PANEL_MENU_CELLS.Height, PANEL_MENU_CELLS.Width];
@@ -594,10 +598,10 @@ namespace Fantasy_Kingdoms_Battle
 
                 // Панель со всеми героями
                 panelCombatHeroes = new PanelWithPanelEntity(4, false, 8, 4);
-                panelCombatHeroes.ShiftY = panelLairWithFlags.NextTop();
                 panelCombatHeroes.Click += PanelCombatHeroes_Click;
-                panelCombatHeroes.Width += Config.GridSize;
-                MainControl.AddControl(panelCombatHeroes);
+                vcRightPanel.AddControl(panelCombatHeroes);
+
+                vcRightPanel.Width = Math.Max(bitmapMenu.Width, panelCombatHeroes.Width);
 
                 // Панели информации об объектахs
                 panelHeroInfo = new PanelHeroInfo(MainControl, Config.GridSize, panelLairWithFlags.NextTop());
@@ -644,7 +648,8 @@ namespace Fantasy_Kingdoms_Battle
                 pageControl.ApplyMaxSize();
                 pageControl.ShiftX = panelEmptyInfo.NextLeft();
 
-                panelCombatHeroes.ShiftX = pageControl.NextLeft();
+                vcRightPanel.ShiftX = pageControl.NextLeft();
+                vcRightPanel.ShiftY = panelLairWithFlags.NextTop();
 
                 //
                 Debug.Assert(panelConstructionInfo.Height > 0);
@@ -658,7 +663,7 @@ namespace Fantasy_Kingdoms_Battle
                 int maxHeightControls = Math.Max(pageControl.Height, maxHeightPanelInfo);
 
                 // Все контролы созданы, устанавливаем размеры bitmapMenu
-                MainControl.Width = panelCombatHeroes.ShiftX + panelCombatHeroes.Width + Config.GridSize;
+                MainControl.Width = vcRightPanel.ShiftX + vcRightPanel.Width;
                 bmpPreparedToolbar.Bitmap = PrepareToolbar();
                 bmpPreparedToolbar.ShiftY = panelPlayers.NextTop();
                 MainControl.ShiftY = bmpPreparedToolbar.NextTop();
@@ -668,7 +673,7 @@ namespace Fantasy_Kingdoms_Battle
                 // Теперь когда известна ширина окна, можно создавать картинку тулбара
                 labelNamePlayer.Height = bmpPreparedToolbar.Height;
                 panelPlayers.ShiftX = (MainControl.Width - panelPlayers.Width) / 2;
-                panelCombatHeroes.Height = pageControl.Height - bitmapMenu.Height - Config.GridSize;
+                vcRightPanel.Height = MainControl.Height - panelLairWithFlags.NextTop();
 
                 sizeGamespace = new Size(MainControl.Width, MainControl.ShiftY + MainControl.Height);
                 Width = Width - ClientSize.Width + sizeGamespace.Width;
@@ -676,8 +681,9 @@ namespace Fantasy_Kingdoms_Battle
                 layerGame.Width = sizeGamespace.Width;
                 layerGame.Height = sizeGamespace.Height;
 
-                bitmapMenu.ShiftX = MainControl.Width - bitmapMenu.Width;
-                bitmapMenu.ShiftY = MainControl.Height - bitmapMenu.Height;
+                bitmapMenu.ShiftX = vcRightPanel.Width - bitmapMenu.Width;
+                bitmapMenu.ShiftY = vcRightPanel.Height - bitmapMenu.Height;
+                panelCombatHeroes.ShiftX = vcRightPanel.Width - panelCombatHeroes.Width;
 
                 panelConstructionInfo.Height = MainControl.Height - panelConstructionInfo.ShiftY - Config.GridSize;
                 panelLairInfo.Height = panelConstructionInfo.Height;
@@ -752,12 +758,12 @@ namespace Fantasy_Kingdoms_Battle
                     lblStage.Text = text + "...";
                     lblStage.Refresh();
                 }
-            /*}
+            }
             catch (Exception exc)
             {
                 MessageBox.Show(exc.Message + Environment.NewLine + exc.StackTrace);
                 Environment.Exit(-1);
-            }*/
+            }
         }
 
         private void Settings_PlayMusicChanged(object sender, EventArgs e)
