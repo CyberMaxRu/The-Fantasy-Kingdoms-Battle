@@ -45,6 +45,7 @@ namespace Fantasy_Kingdoms_Battle
             imgMapObject.ShowHint += ImgLair_ShowHint;
 
             btnHeroes = new VCIconButton48(this, imgMapObject.ShiftX, imgMapObject.ShiftY, FormMain.Config.Gui48_Home);
+            btnHeroes.Click += BtnHeroes_Click;
             btnHeroes.ShowHint += BtnHeroes_ShowHint;
 
             btnHireHero = new VCIconButton48(this, imgMapObject.NextLeft(), btnHeroes.NextTop() + FormMain.Config.GridSize + FormMain.Config.GridSizeHalf, -1);
@@ -108,6 +109,13 @@ namespace Fantasy_Kingdoms_Battle
 
             Click += ImgLair_Click;
         }
+
+        private void BtnHeroes_Click(object sender, EventArgs e)
+        {
+            SelectThisConstruction();
+            Program.formMain.panelConstructionInfo.SelectPageInhabitant();
+        }
+
         internal Construction Construction { get; private set; }
 
         protected override void ValidateRectangle()
