@@ -222,7 +222,7 @@
     <Name>Обычный меч</Name>
     <Description>Обычный меч</Description>
     <ImageIndex>6</ImageIndex>
-    <CategoryItem>MeleeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>0</Cost>
     <GroupItem>GroupWeaponMelee0</GroupItem>
     <Hero>Warrior</Hero>
@@ -236,7 +236,7 @@
     <Name>Обычный меч</Name>
     <Description>Обычный нож</Description>
     <ImageIndex>6</ImageIndex>
-    <CategoryItem>MeleeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>10</Cost>
     <GroupItem>GroupWeaponMelee0</GroupItem>
     <Hero>Rogue</Hero>
@@ -249,7 +249,7 @@
     <Hero>Dwarf</Hero>
     <Description>Обычный молот</Description>
     <ImageIndex>6</ImageIndex>
-    <CategoryItem>MeleeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>10</Cost>
     <GroupItem>GroupWeaponMelee0</GroupItem>
     <TimeHit>50</TimeHit>
@@ -261,7 +261,7 @@
     <Hero>Paladin</Hero>
     <Description>Обычный меч</Description>
     <ImageIndex>6</ImageIndex>
-    <CategoryItem>MeleeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>10</Cost>
     <GroupItem>GroupWeaponMelee0</GroupItem>
     <TimeHit>50</TimeHit>
@@ -273,7 +273,7 @@
     <Hero>BladeMaster</Hero>
     <Description>Обычный меч</Description>
     <ImageIndex>6</ImageIndex>
-    <CategoryItem>MeleeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>10</Cost>
     <GroupItem>GroupWeaponMelee0</GroupItem>
     <TimeHit>50</TimeHit>
@@ -285,7 +285,7 @@
     <Hero>DeathKnight</Hero>
     <Description>Обычный меч</Description>
     <ImageIndex>6</ImageIndex>
-    <CategoryItem>MeleeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>10</Cost>
     <GroupItem>GroupWeaponMelee0</GroupItem>
     <TimeHit>50</TimeHit>
@@ -297,7 +297,7 @@
     <Hero>Hunter</Hero>
     <Description>Обычный меч</Description>
     <ImageIndex>6</ImageIndex>
-    <CategoryItem>MeleeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>10</Cost>
     <GroupItem>GroupWeaponMelee0</GroupItem>
     <TimeHit>50</TimeHit>
@@ -310,7 +310,7 @@
     <Hero>Elf</Hero>
     <Description>Обычный меч</Description>
     <ImageIndex>6</ImageIndex>
-    <CategoryItem>MeleeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>10</Cost>
     <GroupItem>GroupWeaponMelee0</GroupItem>
     <TimeHit>50</TimeHit>
@@ -323,7 +323,7 @@
     <Hero>BeastMaster</Hero>
     <Description>Обычный меч</Description>
     <ImageIndex>6</ImageIndex>
-    <CategoryItem>MeleeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>10</Cost>
     <GroupItem>GroupWeaponMelee0</GroupItem>
     <TimeHit>50</TimeHit>
@@ -337,7 +337,7 @@
     <TimeHit>50</TimeHit>
     <Description>Обычный меч</Description>
     <ImageIndex>6</ImageIndex>
-    <CategoryItem>MeleeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>10</Cost>
     <GroupItem>GroupWeaponMelee0</GroupItem>
     <VelocityMissile>1</VelocityMissile>
@@ -349,7 +349,7 @@
     <Hero>Warrior</Hero>
     <Description>Улучшенный меч</Description>
     <ImageIndex>7</ImageIndex>
-    <CategoryItem>MeleeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMelee1</GroupItem>
     <TimeHit>50</TimeHit>
@@ -361,7 +361,7 @@
     <Hero>Rogue</Hero>
     <Description>Улучшенный меч</Description>
     <ImageIndex>7</ImageIndex>
-    <CategoryItem>MeleeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMelee1</GroupItem>
     <TimeHit>50</TimeHit>
@@ -373,7 +373,7 @@
     <Hero>Dwarf</Hero>
     <Description>Улучшенный меч</Description>
     <ImageIndex>7</ImageIndex>
-    <CategoryItem>MeleeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMelee1</GroupItem>
     <TimeHit>50</TimeHit>
@@ -385,7 +385,7 @@
     <Hero>Paladin</Hero>
     <Description>Улучшенный меч</Description>
     <ImageIndex>7</ImageIndex>
-    <CategoryItem>MeleeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMelee1</GroupItem>
     <TimeHit>50</TimeHit>
@@ -397,7 +397,7 @@
     <Hero>BladeMaster</Hero>
     <Description>Улучшенный меч</Description>
     <ImageIndex>7</ImageIndex>
-    <CategoryItem>MeleeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMelee1</GroupItem>
     <TimeHit>50</TimeHit>
@@ -409,7 +409,7 @@
     <Hero>DeathKnight</Hero>
     <Description>Улучшенный меч</Description>
     <ImageIndex>7</ImageIndex>
-    <CategoryItem>MeleeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMelee1</GroupItem>
     <TimeHit>50</TimeHit>
@@ -421,7 +421,7 @@
     <Hero>Warrior</Hero>
     <Description>Мастерский меч</Description>
     <ImageIndex>8</ImageIndex>
-    <CategoryItem>MeleeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMelee2</GroupItem>
     <TimeHit>50</TimeHit>
@@ -433,7 +433,7 @@
     <Hero>Rogue</Hero>
     <Description>Мастерский меч</Description>
     <ImageIndex>8</ImageIndex>
-    <CategoryItem>MeleeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMelee2</GroupItem>
     <TimeHit>50</TimeHit>
@@ -445,7 +445,7 @@
     <Hero>Dwarf</Hero>
     <Description>Мастерский меч</Description>
     <ImageIndex>8</ImageIndex>
-    <CategoryItem>MeleeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMelee2</GroupItem>
     <TimeHit>50</TimeHit>
@@ -456,7 +456,7 @@
     <Name>Обычный меч</Name>
     <Description>Мастерский меч</Description>
     <ImageIndex>8</ImageIndex>
-    <CategoryItem>MeleeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMelee2</GroupItem>
     <Hero>Paladin</Hero>
@@ -469,7 +469,7 @@
     <Hero>BladeMaster</Hero>
     <Description>Мастерский меч</Description>
     <ImageIndex>8</ImageIndex>
-    <CategoryItem>MeleeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMelee2</GroupItem>
     <TimeHit>50</TimeHit>
@@ -481,7 +481,7 @@
     <Hero>DeathKnight</Hero>
     <Description>Мастерский меч</Description>
     <ImageIndex>8</ImageIndex>
-    <CategoryItem>MeleeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMelee2</GroupItem>
     <TimeHit>50</TimeHit>
@@ -493,7 +493,7 @@
     <Hero>Warrior</Hero>
     <Description>Экспертный меч</Description>
     <ImageIndex>9</ImageIndex>
-    <CategoryItem>MeleeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMelee3</GroupItem>
     <TimeHit>50</TimeHit>
@@ -505,7 +505,7 @@
     <Hero>Rogue</Hero>
     <Description>Экспертный меч</Description>
     <ImageIndex>9</ImageIndex>
-    <CategoryItem>MeleeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMelee3</GroupItem>
     <TimeHit>50</TimeHit>
@@ -517,7 +517,7 @@
     <Hero>Dwarf</Hero>
     <Description>Экспертный меч</Description>
     <ImageIndex>9</ImageIndex>
-    <CategoryItem>MeleeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMelee3</GroupItem>
     <TimeHit>50</TimeHit>
@@ -529,7 +529,7 @@
     <Hero>Paladin</Hero>
     <Description>Экспертный меч</Description>
     <ImageIndex>9</ImageIndex>
-    <CategoryItem>MeleeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMelee3</GroupItem>
     <TimeHit>50</TimeHit>
@@ -541,7 +541,7 @@
     <Hero>BladeMaster</Hero>
     <Description>Экспертный меч</Description>
     <ImageIndex>9</ImageIndex>
-    <CategoryItem>MeleeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMelee3</GroupItem>
     <TimeHit>50</TimeHit>
@@ -553,7 +553,7 @@
     <Hero>DeathKnight</Hero>
     <Description>Экспертный меч</Description>
     <ImageIndex>9</ImageIndex>
-    <CategoryItem>MeleeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMelee3</GroupItem>
     <TimeHit>50</TimeHit>
@@ -565,7 +565,7 @@
     <Hero>Warrior</Hero>
     <Description>Рунический меч</Description>
     <ImageIndex>10</ImageIndex>
-    <CategoryItem>MeleeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMelee4</GroupItem>
     <TimeHit>50</TimeHit>
@@ -577,7 +577,7 @@
     <Hero>Rogue</Hero>
     <Description>Рунический меч</Description>
     <ImageIndex>10</ImageIndex>
-    <CategoryItem>MeleeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMelee4</GroupItem>
     <TimeHit>50</TimeHit>
@@ -589,7 +589,7 @@
     <Hero>Dwarf</Hero>
     <Description>Рунический меч</Description>
     <ImageIndex>10</ImageIndex>
-    <CategoryItem>MeleeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMelee4</GroupItem>
     <TimeHit>50</TimeHit>
@@ -601,7 +601,7 @@
     <Hero>Paladin</Hero>
     <Description>Рунический меч</Description>
     <ImageIndex>10</ImageIndex>
-    <CategoryItem>MeleeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMelee4</GroupItem>
     <TimeHit>50</TimeHit>
@@ -613,7 +613,7 @@
     <Hero>BladeMaster</Hero>
     <Description>Рунический меч</Description>
     <ImageIndex>10</ImageIndex>
-    <CategoryItem>MeleeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMelee4</GroupItem>
     <TimeHit>50</TimeHit>
@@ -625,7 +625,7 @@
     <Hero>DeathKnight</Hero>
     <Description>Рунический меч</Description>
     <ImageIndex>10</ImageIndex>
-    <CategoryItem>MeleeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMelee4</GroupItem>
     <TimeHit>50</TimeHit>
@@ -637,7 +637,7 @@
     <Hero>Hunter</Hero>
     <Description>Обычный лук</Description>
     <ImageIndex>11</ImageIndex>
-    <CategoryItem>RangeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponRange0</GroupItem>
     <TimeHit>50</TimeHit>
@@ -650,7 +650,7 @@
     <Hero>Elf</Hero>
     <Description>Обычный лук</Description>
     <ImageIndex>11</ImageIndex>
-    <CategoryItem>RangeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponRange0</GroupItem>
     <TimeHit>50</TimeHit>
@@ -663,7 +663,7 @@
     <Hero>BeastMaster</Hero>
     <Description>Обычный лук</Description>
     <ImageIndex>11</ImageIndex>
-    <CategoryItem>RangeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponRange0</GroupItem>
     <TimeHit>50</TimeHit>
@@ -676,7 +676,7 @@
     <Hero>Marksman</Hero>
     <Description>Обычный лук</Description>
     <ImageIndex>11</ImageIndex>
-    <CategoryItem>RangeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponRange0</GroupItem>
     <TimeHit>50</TimeHit>
@@ -689,7 +689,7 @@
     <Hero>Hunter</Hero>
     <Description>Улучшенный лук</Description>
     <ImageIndex>12</ImageIndex>
-    <CategoryItem>RangeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponRange1</GroupItem>
     <TimeHit>50</TimeHit>
@@ -701,7 +701,7 @@
     <Hero>Elf</Hero>
     <Description>Улучшенный лук</Description>
     <ImageIndex>12</ImageIndex>
-    <CategoryItem>RangeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponRange1</GroupItem>
     <TimeHit>50</TimeHit>
@@ -713,7 +713,7 @@
     <Hero>BeastMaster</Hero>
     <Description>Улучшенный лук</Description>
     <ImageIndex>12</ImageIndex>
-    <CategoryItem>RangeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponRange1</GroupItem>
     <TimeHit>50</TimeHit>
@@ -725,7 +725,7 @@
     <Hero>Marksman</Hero>
     <Description>Улучшенный лук</Description>
     <ImageIndex>12</ImageIndex>
-    <CategoryItem>RangeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponRange1</GroupItem>
     <TimeHit>50</TimeHit>
@@ -737,7 +737,7 @@
     <Hero>Hunter</Hero>
     <Description>Мастерский лук</Description>
     <ImageIndex>13</ImageIndex>
-    <CategoryItem>RangeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponRange2</GroupItem>
     <TimeHit>50</TimeHit>
@@ -749,7 +749,7 @@
     <Hero>Elf</Hero>
     <Description>Мастерский лук</Description>
     <ImageIndex>13</ImageIndex>
-    <CategoryItem>RangeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponRange2</GroupItem>
     <TimeHit>50</TimeHit>
@@ -761,7 +761,7 @@
     <Hero>BeastMaster</Hero>
     <Description>Мастерский лук</Description>
     <ImageIndex>13</ImageIndex>
-    <CategoryItem>RangeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponRange2</GroupItem>
     <TimeHit>50</TimeHit>
@@ -773,7 +773,7 @@
     <Hero>Marksman</Hero>
     <Description>Мастерский лук</Description>
     <ImageIndex>13</ImageIndex>
-    <CategoryItem>RangeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponRange2</GroupItem>
     <TimeHit>50</TimeHit>
@@ -785,7 +785,7 @@
     <Hero>Hunter</Hero>
     <Description>Экспертный лук</Description>
     <ImageIndex>14</ImageIndex>
-    <CategoryItem>RangeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponRange3</GroupItem>
     <TimeHit>50</TimeHit>
@@ -797,7 +797,7 @@
     <Hero>Elf</Hero>
     <Description>Экспертный лук</Description>
     <ImageIndex>14</ImageIndex>
-    <CategoryItem>RangeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponRange3</GroupItem>
     <TimeHit>50</TimeHit>
@@ -809,7 +809,7 @@
     <Hero>BeastMaster</Hero>
     <Description>Экспертный лук</Description>
     <ImageIndex>14</ImageIndex>
-    <CategoryItem>RangeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponRange3</GroupItem>
     <TimeHit>50</TimeHit>
@@ -821,7 +821,7 @@
     <Hero>Marksman</Hero>
     <Description>Экспертный лук</Description>
     <ImageIndex>14</ImageIndex>
-    <CategoryItem>RangeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponRange3</GroupItem>
     <TimeHit>50</TimeHit>
@@ -833,7 +833,7 @@
     <Hero>Hunter</Hero>
     <Description>Демонический лук</Description>
     <ImageIndex>15</ImageIndex>
-    <CategoryItem>RangeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponRange4</GroupItem>
     <TimeHit>50</TimeHit>
@@ -845,7 +845,7 @@
     <Hero>Elf</Hero>
     <Description>Демонический лук</Description>
     <ImageIndex>15</ImageIndex>
-    <CategoryItem>RangeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponRange4</GroupItem>
     <TimeHit>50</TimeHit>
@@ -857,7 +857,7 @@
     <Hero>BeastMaster</Hero>
     <Description>Демонический лук</Description>
     <ImageIndex>15</ImageIndex>
-    <CategoryItem>RangeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponRange4</GroupItem>
     <TimeHit>50</TimeHit>
@@ -869,7 +869,7 @@
     <Hero>Marksman</Hero>
     <Description>Демонический лук</Description>
     <ImageIndex>15</ImageIndex>
-    <CategoryItem>RangeWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponRange4</GroupItem>
     <TimeHit>50</TimeHit>
@@ -881,7 +881,7 @@
     <Hero>Cleric</Hero>
     <Description>Обычный посох</Description>
     <ImageIndex>16</ImageIndex>
-    <CategoryItem>MageWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMage0</GroupItem>
     <TimeHit>50</TimeHit>
@@ -893,7 +893,7 @@
     <Hero>Mage</Hero>
     <Description>Обычный посох</Description>
     <ImageIndex>16</ImageIndex>
-    <CategoryItem>MageWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMage0</GroupItem>
     <TimeHit>50</TimeHit>
@@ -905,7 +905,7 @@
     <Description>Обычный посох</Description>
     <Hero>DarkPriest</Hero>
     <ImageIndex>16</ImageIndex>
-    <CategoryItem>MageWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMage0</GroupItem>
     <TimeHit>50</TimeHit>
@@ -917,7 +917,7 @@
     <Hero>Priest</Hero>
     <Description>Обычный посох</Description>
     <ImageIndex>16</ImageIndex>
-    <CategoryItem>MageWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMage0</GroupItem>
     <TimeHit>50</TimeHit>
@@ -929,7 +929,7 @@
     <Hero>FireMage</Hero>
     <Description>Обычный посох</Description>
     <ImageIndex>16</ImageIndex>
-    <CategoryItem>MageWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMage0</GroupItem>
     <TimeHit>50</TimeHit>
@@ -941,7 +941,7 @@
     <Hero>IceMage</Hero>
     <Description>Обычный посох</Description>
     <ImageIndex>16</ImageIndex>
-    <CategoryItem>MageWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMage0</GroupItem>
     <TimeHit>50</TimeHit>
@@ -953,7 +953,7 @@
     <Hero>Cleric</Hero>
     <Description>Улучшенный посох</Description>
     <ImageIndex>17</ImageIndex>
-    <CategoryItem>MageWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMage1</GroupItem>
     <TimeHit>50</TimeHit>
@@ -965,7 +965,7 @@
     <Hero>Mage</Hero>
     <Description>Улучшенный посох</Description>
     <ImageIndex>17</ImageIndex>
-    <CategoryItem>MageWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMage1</GroupItem>
     <TimeHit>50</TimeHit>
@@ -977,7 +977,7 @@
     <Hero>DarkPriest</Hero>
     <Description>Улучшенный посох</Description>
     <ImageIndex>17</ImageIndex>
-    <CategoryItem>MageWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMage1</GroupItem>
     <TimeHit>50</TimeHit>
@@ -989,7 +989,7 @@
     <Hero>Priest</Hero>
     <Description>Улучшенный посох</Description>
     <ImageIndex>17</ImageIndex>
-    <CategoryItem>MageWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMage1</GroupItem>
     <TimeHit>50</TimeHit>
@@ -1001,7 +1001,7 @@
     <Hero>FireMage</Hero>
     <Description>Улучшенный посох</Description>
     <ImageIndex>17</ImageIndex>
-    <CategoryItem>MageWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMage1</GroupItem>
     <TimeHit>50</TimeHit>
@@ -1013,7 +1013,7 @@
     <Hero>IceMage</Hero>
     <Description>Улучшенный посох</Description>
     <ImageIndex>17</ImageIndex>
-    <CategoryItem>MageWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMage1</GroupItem>
     <TimeHit>50</TimeHit>
@@ -1025,7 +1025,7 @@
     <Hero>Cleric</Hero>
     <Description>Мастерский посох</Description>
     <ImageIndex>18</ImageIndex>
-    <CategoryItem>MageWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMage2</GroupItem>
     <TimeHit>50</TimeHit>
@@ -1037,7 +1037,7 @@
     <Hero>Mage</Hero>
     <Description>Мастерский посох</Description>
     <ImageIndex>18</ImageIndex>
-    <CategoryItem>MageWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMage2</GroupItem>
     <TimeHit>50</TimeHit>
@@ -1049,7 +1049,7 @@
     <Hero>DarkPriest</Hero>
     <Description>Мастерский посох</Description>
     <ImageIndex>18</ImageIndex>
-    <CategoryItem>MageWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMage2</GroupItem>
     <TimeHit>50</TimeHit>
@@ -1061,7 +1061,7 @@
     <Hero>Priest</Hero>
     <Description>Мастерский посох</Description>
     <ImageIndex>18</ImageIndex>
-    <CategoryItem>MageWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMage2</GroupItem>
     <TimeHit>50</TimeHit>
@@ -1073,7 +1073,7 @@
     <Hero>FireMage</Hero>
     <Description>Мастерский посох</Description>
     <ImageIndex>18</ImageIndex>
-    <CategoryItem>MageWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMage2</GroupItem>
     <TimeHit>50</TimeHit>
@@ -1085,7 +1085,7 @@
     <Hero>IceMage</Hero>
     <Description>Мастерский посох</Description>
     <ImageIndex>18</ImageIndex>
-    <CategoryItem>MageWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMage2</GroupItem>
     <TimeHit>50</TimeHit>
@@ -1097,7 +1097,7 @@
     <Hero>Cleric</Hero>
     <Description>Экспертный посох</Description>
     <ImageIndex>19</ImageIndex>
-    <CategoryItem>MageWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMage3</GroupItem>
     <TimeHit>50</TimeHit>
@@ -1109,7 +1109,7 @@
     <Hero>Mage</Hero>
     <Description>Экспертный посох</Description>
     <ImageIndex>19</ImageIndex>
-    <CategoryItem>MageWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMage3</GroupItem>
     <TimeHit>50</TimeHit>
@@ -1121,7 +1121,7 @@
     <Hero>DarkPriest</Hero>
     <Description>Экспертный посох</Description>
     <ImageIndex>19</ImageIndex>
-    <CategoryItem>MageWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMage3</GroupItem>
     <TimeHit>50</TimeHit>
@@ -1133,7 +1133,7 @@
     <Hero>Priest</Hero>
     <Description>Экспертный посох</Description>
     <ImageIndex>19</ImageIndex>
-    <CategoryItem>MageWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMage3</GroupItem>
     <TimeHit>50</TimeHit>
@@ -1145,7 +1145,7 @@
     <Hero>FireMage</Hero>
     <Description>Экспертный посох</Description>
     <ImageIndex>19</ImageIndex>
-    <CategoryItem>MageWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMage3</GroupItem>
     <TimeHit>50</TimeHit>
@@ -1157,7 +1157,7 @@
     <Hero>IceMage</Hero>
     <Description>Экспертный посох</Description>
     <ImageIndex>19</ImageIndex>
-    <CategoryItem>MageWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMage3</GroupItem>
     <TimeHit>50</TimeHit>
@@ -1169,7 +1169,7 @@
     <Hero>Cleric</Hero>
     <Description>Посох из кости дракона</Description>
     <ImageIndex>20</ImageIndex>
-    <CategoryItem>MageWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMage4</GroupItem>
     <TimeHit>50</TimeHit>
@@ -1181,7 +1181,7 @@
     <Hero>Mage</Hero>
     <Description>Посох из кости дракона</Description>
     <ImageIndex>20</ImageIndex>
-    <CategoryItem>MageWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMage4</GroupItem>
     <TimeHit>50</TimeHit>
@@ -1193,7 +1193,7 @@
     <Hero>DarkPriest</Hero>
     <Description>Посох из кости дракона</Description>
     <ImageIndex>20</ImageIndex>
-    <CategoryItem>MageWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMage4</GroupItem>
     <TimeHit>50</TimeHit>
@@ -1205,7 +1205,7 @@
     <Hero>Priest</Hero>
     <Description>Посох из кости дракона</Description>
     <ImageIndex>20</ImageIndex>
-    <CategoryItem>MageWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMage4</GroupItem>
     <TimeHit>50</TimeHit>
@@ -1217,7 +1217,7 @@
     <Hero>FireMage</Hero>
     <Description>Посох из кости дракона</Description>
     <ImageIndex>20</ImageIndex>
-    <CategoryItem>MageWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMage4</GroupItem>
     <TimeHit>50</TimeHit>
@@ -1229,7 +1229,7 @@
     <Hero>IceMage</Hero>
     <Description>Посох из кости дракона</Description>
     <ImageIndex>20</ImageIndex>
-    <CategoryItem>MageWeapon</CategoryItem>
+    <CategoryItem>Weapon</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupWeaponMage4</GroupItem>
     <TimeHit>50</TimeHit>
@@ -1240,7 +1240,7 @@
     <Name>Простая стальная броня</Name>
     <Description>Грубо выкованная кольчуга</Description>
     <ImageIndex>21</ImageIndex>
-    <CategoryItem>MeleeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMelee0</GroupItem>
     <Hero>Warrior</Hero>
@@ -1253,7 +1253,7 @@
     <Name>Простая стальная броня</Name>
     <Description>Грубо выкованная кольчуга</Description>
     <ImageIndex>21</ImageIndex>
-    <CategoryItem>MeleeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMelee0</GroupItem>
     <Hero>Dwarf</Hero>
@@ -1266,7 +1266,7 @@
     <Name>Простая стальная броня</Name>
     <Description>Грубо выкованная кольчуга</Description>
     <ImageIndex>21</ImageIndex>
-    <CategoryItem>MeleeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMelee0</GroupItem>
     <Hero>Paladin</Hero>
@@ -1279,7 +1279,7 @@
     <Name>Простая стальная броня</Name>
     <Description>Грубо выкованная кольчуга</Description>
     <ImageIndex>21</ImageIndex>
-    <CategoryItem>MeleeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMelee0</GroupItem>
     <Hero>BladeMaster</Hero>
@@ -1292,7 +1292,7 @@
     <Name>Простая стальная броня</Name>
     <Description>Грубо выкованная кольчуга</Description>
     <ImageIndex>21</ImageIndex>
-    <CategoryItem>MeleeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMelee0</GroupItem>
     <Hero>DeathKnight</Hero>
@@ -1306,7 +1306,7 @@
     <Name>Простая стальная броня</Name>
     <Description>Грубо выкованная кольчуга</Description>
     <ImageIndex>22</ImageIndex>
-    <CategoryItem>MeleeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMelee1</GroupItem>
     <DefenseMelee>0</DefenseMelee>
@@ -1319,7 +1319,7 @@
     <Name>Простая стальная броня</Name>
     <Description>Грубо выкованная кольчуга</Description>
     <ImageIndex>22</ImageIndex>
-    <CategoryItem>MeleeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMelee1</GroupItem>
     <Hero>Dwarf</Hero>
@@ -1333,7 +1333,7 @@
     <Name>Простая стальная броня</Name>
     <Description>Грубо выкованная кольчуга</Description>
     <ImageIndex>22</ImageIndex>
-    <CategoryItem>MeleeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMelee1</GroupItem>
     <Hero>Paladin</Hero>
@@ -1347,7 +1347,7 @@
     <Name>Простая стальная броня</Name>
     <Description>Грубо выкованная кольчуга</Description>
     <ImageIndex>22</ImageIndex>
-    <CategoryItem>MeleeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMelee1</GroupItem>
     <Hero>BladeMaster</Hero>
@@ -1361,7 +1361,7 @@
     <Name>Простая стальная броня</Name>
     <Description>Грубо выкованная кольчуга</Description>
     <ImageIndex>22</ImageIndex>
-    <CategoryItem>MeleeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMelee1</GroupItem>
     <Hero>DeathKnight</Hero>
@@ -1374,7 +1374,7 @@
     <Name>Простая стальная броня</Name>
     <Description>Грубо выкованная кольчуга</Description>
     <ImageIndex>23</ImageIndex>
-    <CategoryItem>MeleeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMelee2</GroupItem>
     <Hero>Warrior</Hero>
@@ -1387,7 +1387,7 @@
     <Name>Простая стальная броня</Name>
     <Description>Грубо выкованная кольчуга</Description>
     <ImageIndex>23</ImageIndex>
-    <CategoryItem>MeleeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMelee2</GroupItem>
     <Hero>Dwarf</Hero>
@@ -1400,7 +1400,7 @@
     <Name>Простая стальная броня</Name>
     <Description>Грубо выкованная кольчуга</Description>
     <ImageIndex>23</ImageIndex>
-    <CategoryItem>MeleeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMelee2</GroupItem>
     <Hero>Paladin</Hero>
@@ -1413,7 +1413,7 @@
     <Name>Простая стальная броня</Name>
     <Description>Грубо выкованная кольчуга</Description>
     <ImageIndex>23</ImageIndex>
-    <CategoryItem>MeleeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMelee2</GroupItem>
     <Hero>BladeMaster</Hero>
@@ -1426,7 +1426,7 @@
     <Name>Простая стальная броня</Name>
     <Description>Грубо выкованная кольчуга</Description>
     <ImageIndex>23</ImageIndex>
-    <CategoryItem>MeleeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMelee2</GroupItem>
     <Hero>DeathKnight</Hero>
@@ -1439,7 +1439,7 @@
     <Name>Простая стальная броня</Name>
     <Description>Грубо выкованная кольчуга</Description>
     <ImageIndex>24</ImageIndex>
-    <CategoryItem>MeleeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMelee3</GroupItem>
     <Hero>Warrior</Hero>
@@ -1452,7 +1452,7 @@
     <Name>Простая стальная броня</Name>
     <Description>Грубо выкованная кольчуга</Description>
     <ImageIndex>24</ImageIndex>
-    <CategoryItem>MeleeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMelee3</GroupItem>
     <Hero>Dwarf</Hero>
@@ -1465,7 +1465,7 @@
     <Name>Простая стальная броня</Name>
     <Description>Грубо выкованная кольчуга</Description>
     <ImageIndex>24</ImageIndex>
-    <CategoryItem>MeleeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMelee3</GroupItem>
     <Hero>Paladin</Hero>
@@ -1478,7 +1478,7 @@
     <Name>Простая стальная броня</Name>
     <Description>Грубо выкованная кольчуга</Description>
     <ImageIndex>24</ImageIndex>
-    <CategoryItem>MeleeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMelee3</GroupItem>
     <Hero>BladeMaster</Hero>
@@ -1491,7 +1491,7 @@
     <Name>Простая стальная броня</Name>
     <Description>Грубо выкованная кольчуга</Description>
     <ImageIndex>24</ImageIndex>
-    <CategoryItem>MeleeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMelee3</GroupItem>
     <Hero>DeathKnight</Hero>
@@ -1504,7 +1504,7 @@
     <Name>Доспех из неврила</Name>
     <Description>Грубо выкованная кольчуга</Description>
     <ImageIndex>25</ImageIndex>
-    <CategoryItem>MeleeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMelee4</GroupItem>
     <Hero>Warrior</Hero>
@@ -1517,7 +1517,7 @@
     <Name>Доспех из неврила</Name>
     <Description>Грубо выкованная кольчуга</Description>
     <ImageIndex>25</ImageIndex>
-    <CategoryItem>MeleeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMelee4</GroupItem>
     <Hero>Dwarf</Hero>
@@ -1530,7 +1530,7 @@
     <Name>Доспех из неврила</Name>
     <Description>Грубо выкованная кольчуга</Description>
     <ImageIndex>25</ImageIndex>
-    <CategoryItem>MeleeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMelee4</GroupItem>
     <Hero>Paladin</Hero>
@@ -1543,7 +1543,7 @@
     <Name>Доспех из неврила</Name>
     <Description>Грубо выкованная кольчуга</Description>
     <ImageIndex>25</ImageIndex>
-    <CategoryItem>MeleeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMelee4</GroupItem>
     <Hero>BladeMaster</Hero>
@@ -1556,7 +1556,7 @@
     <Name>Доспех из неврила</Name>
     <Description>Грубо выкованная кольчуга</Description>
     <ImageIndex>25</ImageIndex>
-    <CategoryItem>MeleeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMelee4</GroupItem>
     <Hero>DeathKnight</Hero>
@@ -1569,7 +1569,7 @@
     <Name>Простая кожаная броня</Name>
     <Description>Броня из грубо выделанной кожи</Description>
     <ImageIndex>26</ImageIndex>
-    <CategoryItem>RangeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourRange0</GroupItem>
     <Hero>Rogue</Hero>
@@ -1583,7 +1583,7 @@
     <Name>Простая кожаная броня</Name>
     <Description>Броня из грубо выделанной кожи</Description>
     <ImageIndex>26</ImageIndex>
-    <CategoryItem>RangeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourRange0</GroupItem>
     <DefenseMelee>0</DefenseMelee>
@@ -1596,7 +1596,7 @@
     <Name>Простая кожаная броня</Name>
     <Description>Броня из грубо выделанной кожи</Description>
     <ImageIndex>26</ImageIndex>
-    <CategoryItem>RangeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourRange0</GroupItem>
     <DefenseMelee>0</DefenseMelee>
@@ -1608,7 +1608,7 @@
     <Name>Простая кожаная броня</Name>
     <Description>Броня из грубо выделанной кожи</Description>
     <ImageIndex>26</ImageIndex>
-    <CategoryItem>RangeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourRange0</GroupItem>
     <Hero>BeastMaster</Hero>
@@ -1621,7 +1621,7 @@
     <Name>Простая кожаная броня</Name>
     <Description>Броня из грубо выделанной кожи</Description>
     <ImageIndex>26</ImageIndex>
-    <CategoryItem>RangeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourRange0</GroupItem>
     <Hero>Marksman</Hero>
@@ -1634,7 +1634,7 @@
     <Name>Улучшенная кожаная броня</Name>
     <Description>Броня из грубо выделанной кожи</Description>
     <ImageIndex>27</ImageIndex>
-    <CategoryItem>RangeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourRange1</GroupItem>
     <Hero>Rogue</Hero>
@@ -1647,7 +1647,7 @@
     <Name>Улучшенная кожаная броня</Name>
     <Description>Броня из грубо выделанной кожи</Description>
     <ImageIndex>27</ImageIndex>
-    <CategoryItem>RangeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourRange1</GroupItem>
     <Hero>Hunter</Hero>
@@ -1660,7 +1660,7 @@
     <Name>Улучшенная кожаная броня</Name>
     <Description>Броня из грубо выделанной кожи</Description>
     <ImageIndex>27</ImageIndex>
-    <CategoryItem>RangeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourRange1</GroupItem>
     <Hero>Elf</Hero>
@@ -1673,7 +1673,7 @@
     <Name>Улучшенная кожаная броня</Name>
     <Description>Броня из грубо выделанной кожи</Description>
     <ImageIndex>27</ImageIndex>
-    <CategoryItem>RangeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourRange1</GroupItem>
     <Hero>BeastMaster</Hero>
@@ -1686,7 +1686,7 @@
     <Name>Улучшенная кожаная броня</Name>
     <Description>Броня из грубо выделанной кожи</Description>
     <ImageIndex>27</ImageIndex>
-    <CategoryItem>RangeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourRange1</GroupItem>
     <Hero>Marksman</Hero>
@@ -1699,7 +1699,7 @@
     <Name>Мастерская кожаная броня</Name>
     <Description>Броня из грубо выделанной кожи</Description>
     <ImageIndex>28</ImageIndex>
-    <CategoryItem>RangeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourRange2</GroupItem>
     <Hero>Rogue</Hero>
@@ -1712,7 +1712,7 @@
     <Name>Мастерская кожаная броня</Name>
     <Description>Броня из грубо выделанной кожи</Description>
     <ImageIndex>28</ImageIndex>
-    <CategoryItem>RangeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourRange2</GroupItem>
     <Hero>Hunter</Hero>
@@ -1725,7 +1725,7 @@
     <Name>Мастерская кожаная броня</Name>
     <Description>Броня из грубо выделанной кожи</Description>
     <ImageIndex>28</ImageIndex>
-    <CategoryItem>RangeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourRange2</GroupItem>
     <Hero>Elf</Hero>
@@ -1738,7 +1738,7 @@
     <Name>Мастерская кожаная броня</Name>
     <Description>Броня из грубо выделанной кожи</Description>
     <ImageIndex>28</ImageIndex>
-    <CategoryItem>RangeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourRange2</GroupItem>
     <Hero>BeastMaster</Hero>
@@ -1751,7 +1751,7 @@
     <Name>Мастерская кожаная броня</Name>
     <Description>Броня из грубо выделанной кожи</Description>
     <ImageIndex>28</ImageIndex>
-    <CategoryItem>RangeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourRange2</GroupItem>
     <Hero>Marksman</Hero>
@@ -1764,7 +1764,7 @@
     <Name>Экспертная кожаная броня</Name>
     <Description>Броня из грубо выделанной кожи</Description>
     <ImageIndex>29</ImageIndex>
-    <CategoryItem>RangeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourRange3</GroupItem>
     <Hero>Rogue</Hero>
@@ -1777,7 +1777,7 @@
     <Name>Экспертная кожаная броня</Name>
     <Description>Броня из грубо выделанной кожи</Description>
     <ImageIndex>29</ImageIndex>
-    <CategoryItem>RangeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourRange3</GroupItem>
     <Hero>Hunter</Hero>
@@ -1790,7 +1790,7 @@
     <Name>Экспертная кожаная броня</Name>
     <Description>Броня из грубо выделанной кожи</Description>
     <ImageIndex>29</ImageIndex>
-    <CategoryItem>RangeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourRange3</GroupItem>
     <Hero>Elf</Hero>
@@ -1803,7 +1803,7 @@
     <Name>Экспертная кожаная броня</Name>
     <Description>Броня из грубо выделанной кожи</Description>
     <ImageIndex>29</ImageIndex>
-    <CategoryItem>RangeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourRange3</GroupItem>
     <Hero>BeastMaster</Hero>
@@ -1816,7 +1816,7 @@
     <Name>Экспертная кожаная броня</Name>
     <Description>Броня из грубо выделанной кожи</Description>
     <ImageIndex>29</ImageIndex>
-    <CategoryItem>RangeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourRange3</GroupItem>
     <Hero>Marksman</Hero>
@@ -1829,7 +1829,7 @@
     <Name>Доспех из кожи дракона</Name>
     <Description>Броня из грубо выделанной кожи</Description>
     <ImageIndex>30</ImageIndex>
-    <CategoryItem>RangeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourRange4</GroupItem>
     <Hero>Rogue</Hero>
@@ -1842,7 +1842,7 @@
     <Name>Доспех из кожи дракона</Name>
     <Description>Броня из грубо выделанной кожи</Description>
     <ImageIndex>30</ImageIndex>
-    <CategoryItem>RangeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourRange4</GroupItem>
     <Hero>Hunter</Hero>
@@ -1855,7 +1855,7 @@
     <Name>Доспех из кожи дракона</Name>
     <Description>Броня из грубо выделанной кожи</Description>
     <ImageIndex>30</ImageIndex>
-    <CategoryItem>RangeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourRange4</GroupItem>
     <Hero>Elf</Hero>
@@ -1868,7 +1868,7 @@
     <Name>Доспех из кожи дракона</Name>
     <Description>Броня из грубо выделанной кожи</Description>
     <ImageIndex>30</ImageIndex>
-    <CategoryItem>RangeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourRange4</GroupItem>
     <Hero>BeastMaster</Hero>
@@ -1881,7 +1881,7 @@
     <Name>Доспех из кожи дракона</Name>
     <Description>Броня из грубо выделанной кожи</Description>
     <ImageIndex>30</ImageIndex>
-    <CategoryItem>RangeArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourRange4</GroupItem>
     <Hero>Marksman</Hero>
@@ -1894,7 +1894,7 @@
     <Name>Простая роба</Name>
     <Description></Description>
     <ImageIndex>31</ImageIndex>
-    <CategoryItem>MageArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMage0</GroupItem>
     <Hero>Cleric</Hero>
@@ -1907,7 +1907,7 @@
     <Name>Простая роба</Name>
     <Description></Description>
     <ImageIndex>31</ImageIndex>
-    <CategoryItem>MageArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMage0</GroupItem>
     <Hero>Mage</Hero>
@@ -1920,7 +1920,7 @@
     <Name>Простая роба</Name>
     <Description></Description>
     <ImageIndex>31</ImageIndex>
-    <CategoryItem>MageArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMage0</GroupItem>
     <Hero>DarkPriest</Hero>
@@ -1933,7 +1933,7 @@
     <Name>Простая роба</Name>
     <Description></Description>
     <ImageIndex>31</ImageIndex>
-    <CategoryItem>MageArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMage0</GroupItem>
     <Hero>Priest</Hero>
@@ -1946,7 +1946,7 @@
     <Name>Простая роба</Name>
     <Description></Description>
     <ImageIndex>31</ImageIndex>
-    <CategoryItem>MageArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMage0</GroupItem>
     <Hero>FireMage</Hero>
@@ -1959,7 +1959,7 @@
     <Name>Простая роба</Name>
     <Description></Description>
     <ImageIndex>31</ImageIndex>
-    <CategoryItem>MageArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMage0</GroupItem>
     <Hero>IceMage</Hero>
@@ -1972,7 +1972,7 @@
     <Name>Улучшенная магическая роба</Name>
     <Description></Description>
     <ImageIndex>32</ImageIndex>
-    <CategoryItem>MageArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMage1</GroupItem>
     <Hero>Cleric</Hero>
@@ -1985,7 +1985,7 @@
     <Name>Улучшенная магическая роба</Name>
     <Description></Description>
     <ImageIndex>32</ImageIndex>
-    <CategoryItem>MageArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMage1</GroupItem>
     <Hero>Mage</Hero>
@@ -1998,7 +1998,7 @@
     <Name>Улучшенная магическая роба</Name>
     <Description></Description>
     <ImageIndex>32</ImageIndex>
-    <CategoryItem>MageArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMage1</GroupItem>
     <Hero>DarkPriest</Hero>
@@ -2011,7 +2011,7 @@
     <Name>Улучшенная магическая роба</Name>
     <Description></Description>
     <ImageIndex>32</ImageIndex>
-    <CategoryItem>MageArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMage1</GroupItem>
     <Hero>Priest</Hero>
@@ -2024,7 +2024,7 @@
     <Name>Улучшенная магическая роба</Name>
     <Description></Description>
     <ImageIndex>32</ImageIndex>
-    <CategoryItem>MageArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMage1</GroupItem>
     <Hero>FireMage</Hero>
@@ -2037,7 +2037,7 @@
     <Name>Улучшенная магическая роба</Name>
     <Description></Description>
     <ImageIndex>32</ImageIndex>
-    <CategoryItem>MageArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMage1</GroupItem>
     <Hero>IceMage</Hero>
@@ -2050,7 +2050,7 @@
     <Name>Мастерская магическая роба</Name>
     <Description></Description>
     <ImageIndex>33</ImageIndex>
-    <CategoryItem>MageArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMage2</GroupItem>
     <Hero>Cleric</Hero>
@@ -2063,7 +2063,7 @@
     <Name>Мастерская магическая роба</Name>
     <Description></Description>
     <ImageIndex>33</ImageIndex>
-    <CategoryItem>MageArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMage2</GroupItem>
     <Hero>Mage</Hero>
@@ -2076,7 +2076,7 @@
     <Name>Мастерская магическая роба</Name>
     <Description></Description>
     <ImageIndex>33</ImageIndex>
-    <CategoryItem>MageArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMage2</GroupItem>
     <Hero>DarkPriest</Hero>
@@ -2089,7 +2089,7 @@
     <Name>Мастерская магическая роба</Name>
     <Description></Description>
     <ImageIndex>33</ImageIndex>
-    <CategoryItem>MageArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMage2</GroupItem>
     <Hero>Priest</Hero>
@@ -2102,7 +2102,7 @@
     <Name>Мастерская магическая роба</Name>
     <Description></Description>
     <ImageIndex>33</ImageIndex>
-    <CategoryItem>MageArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMage2</GroupItem>
     <Hero>FireMage</Hero>
@@ -2115,7 +2115,7 @@
     <Name>Мастерская магическая роба</Name>
     <Description></Description>
     <ImageIndex>33</ImageIndex>
-    <CategoryItem>MageArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMage2</GroupItem>
     <Hero>IceMage</Hero>
@@ -2128,7 +2128,7 @@
     <Name>Экспертная магическая роба</Name>
     <Description></Description>
     <ImageIndex>34</ImageIndex>
-    <CategoryItem>MageArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMage3</GroupItem>
     <Hero>Cleric</Hero>
@@ -2141,7 +2141,7 @@
     <Name>Экспертная магическая роба</Name>
     <Description></Description>
     <ImageIndex>34</ImageIndex>
-    <CategoryItem>MageArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMage3</GroupItem>
     <Hero>Mage</Hero>
@@ -2154,7 +2154,7 @@
     <Name>Экспертная магическая роба</Name>
     <Description></Description>
     <ImageIndex>34</ImageIndex>
-    <CategoryItem>MageArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMage3</GroupItem>
     <Hero>DarkPriest</Hero>
@@ -2167,7 +2167,7 @@
     <Name>Экспертная магическая роба</Name>
     <Description></Description>
     <ImageIndex>34</ImageIndex>
-    <CategoryItem>MageArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMage3</GroupItem>
     <Hero>Priest</Hero>
@@ -2180,7 +2180,7 @@
     <Name>Экспертная магическая роба</Name>
     <Description></Description>
     <ImageIndex>34</ImageIndex>
-    <CategoryItem>MageArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMage3</GroupItem>
     <Hero>FireMage</Hero>
@@ -2193,7 +2193,7 @@
     <Name>Экспертная магическая роба</Name>
     <Description></Description>
     <ImageIndex>34</ImageIndex>
-    <CategoryItem>MageArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMage3</GroupItem>
     <Hero>IceMage</Hero>
@@ -2206,7 +2206,7 @@
     <Name>Роба из зачарованной ткани</Name>
     <Description></Description>
     <ImageIndex>35</ImageIndex>
-    <CategoryItem>MageArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMage4</GroupItem>
     <Hero>Cleric</Hero>
@@ -2219,7 +2219,7 @@
     <Name>Роба из зачарованной ткани</Name>
     <Description></Description>
     <ImageIndex>35</ImageIndex>
-    <CategoryItem>MageArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMage4</GroupItem>
     <Hero>Mage</Hero>
@@ -2232,7 +2232,7 @@
     <Name>Роба из зачарованной ткани</Name>
     <Description></Description>
     <ImageIndex>35</ImageIndex>
-    <CategoryItem>MageArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMage4</GroupItem>
     <Hero>DarkPriest</Hero>
@@ -2245,7 +2245,7 @@
     <Name>Роба из зачарованной ткани</Name>
     <Description></Description>
     <ImageIndex>35</ImageIndex>
-    <CategoryItem>MageArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMage4</GroupItem>
     <Hero>Priest</Hero>
@@ -2258,7 +2258,7 @@
     <Name>Роба из зачарованной ткани</Name>
     <Description></Description>
     <ImageIndex>35</ImageIndex>
-    <CategoryItem>MageArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMage4</GroupItem>
     <Hero>FireMage</Hero>
@@ -2271,7 +2271,7 @@
     <Name>Роба из зачарованной ткани</Name>
     <Description></Description>
     <ImageIndex>35</ImageIndex>
-    <CategoryItem>MageArmour</CategoryItem>
+    <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
     <GroupItem>GroupArmourMage4</GroupItem>
     <Hero>IceMage</Hero>

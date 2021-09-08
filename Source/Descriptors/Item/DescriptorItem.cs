@@ -8,7 +8,7 @@ using System.Xml;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal enum CategoryItem { Potion, Enchant, Artifact, Elixir, Thing, MeleeWeapon, RangeWeapon, MageWeapon, MeleeArmour, RangeArmour, MageArmour, Quiver }
+    internal enum CategoryItem { Potion, Enchant, Artifact, Elixir, Thing, Weapon, Armour, Quiver }
 
     // Класс предмета
     internal sealed class DescriptorItem : DescriptorSmallEntity
@@ -43,15 +43,15 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(QuantityShots == 0);
             }
 
-            if (CategoryItem == CategoryItem.MeleeWeapon)
+            if (CategoryItem == CategoryItem.Weapon)
             {
-                Debug.Assert(DamageRange == 0);
+                //Debug.Assert(DamageRange == 0);
             }
 
-            if (CategoryItem == CategoryItem.RangeWeapon)
+            /*if (CategoryItem == CategoryItem.RangeWeapon)
             {
                 Debug.Assert(DamageMelee == 0);
-            }
+            }*/
 
             UsedByTypeCreature = new List<DescriptorCreature>();
             /*switch (TypeAttack)
