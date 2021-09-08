@@ -27,6 +27,7 @@ namespace Fantasy_Kingdoms_Battle
             lblGold.StringFormat.Alignment = StringAlignment.Far;                 
             lblGold.BitmapList = Program.formMain.ilGui16;
             lblGold.ImageIndex = FormMain.GUI_16_COFFERS;
+            lblGold.ShowHint += LblGold_ShowHint;
 
             separator.ShiftY = lblGold.NextTop();
             pageControl.ShiftY = separator.NextTop();
@@ -37,6 +38,13 @@ namespace Fantasy_Kingdoms_Battle
 
             pageControl.ApplyMinSize();
             Width = pageControl.Width + FormMain.Config.GridSize * 2;
+        }
+
+        private void LblGold_ShowHint(object sender, EventArgs e)
+        {
+            if (Construction.TypeConstruction.IsOurConstruction)
+                Program.formMain.formHint.AddSimpleHint(Construction.Gold > 0 ? $"Золота в казне: {Construction.Gold}" : "Казна пуста");
+            //Program.formMain.formHint.AddSimpleHint(Hero.Gold > 0 ? $"Золота в кошельке: {Hero.Gold}" : "Кошелек пуст");
         }
 
         internal Construction Construction { get => Entity as Construction; }

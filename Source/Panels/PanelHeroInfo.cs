@@ -47,6 +47,8 @@ namespace Fantasy_Kingdoms_Battle
             };
             btnDismiss.Click += BtnDismiss_Click;
 
+            lvGold.ShowHint += LvGold_ShowHint;
+
             return;
             /*lblLevel = GuiUtils.CreateLabel(this, Config.GRID_SIZE, TopForControls());
             lblHealth = GuiUtils.CreateLabel(this, Config.GRID_SIZE, lblLevel.Top + lblLevel.Height + Config.GRID_SIZE);
@@ -81,6 +83,11 @@ namespace Fantasy_Kingdoms_Battle
                     slots[x + y * FormMain.SLOTS_IN_LINE] = pb;
                 }
             }*/
+        }
+
+        private void LvGold_ShowHint(object sender, EventArgs e)
+        {
+            Program.formMain.formHint.AddSimpleHint(Hero.Gold > 0 ? $"Золота в кошельке: {Hero.Gold}" : "Кошелек пуст");
         }
 
         internal Hero Hero { get => Entity as Hero; }
