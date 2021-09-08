@@ -35,6 +35,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly VCLabelValue lblBuildersPerDay;
         internal readonly VCLabelValue lblGold;
         internal readonly VCLabelValue lblBuilders;
+        private readonly List<VCCellSimple> listCell = new List<VCCellSimple>();
         internal readonly VCLabel lblDamageMelee;
         internal readonly VCLabel lblDamageArcher;
         internal readonly VCLabel lblDamageMagic;
@@ -202,6 +203,9 @@ namespace Fantasy_Kingdoms_Battle
 
             lblGold.Visible = false;
             lblBuilders.Visible = false;
+
+            foreach (VCCellSimple cell in listCell)
+                cell.Visible = false;
 
             /*lblDamageMelee.Hide();
             lblDamageArcher.Hide();
@@ -457,6 +461,44 @@ namespace Fantasy_Kingdoms_Battle
             lblDefenseMagic.Show();
 
             nextTop = GuiUtils.NextTop(lblDefenseMelee);*/
+        }
+
+        internal void AddStep9Descriptors(List<DescriptorItem> list)
+        {
+            if (list.Count > 0)
+            {
+                VCCellSimple cell = null;
+                int nextLeft = FormMain.Config.GridSize;
+
+                for (int i = 0; i < list.Count; i++)
+                {
+                    cell = GetCell(i);
+                    cell.Visible = true;
+                    cell.Descriptor = list[i];
+                    cell.ShiftY = nextTop;
+                    cell.ShiftX = nextLeft;
+                    nextLeft = cell.NextLeft();
+                    if (nextLeft > Width)
+                    {
+                        nextLeft = 0;
+                        nextTop = cell.NextTop();
+                    }
+                }
+
+                nextTop = cell.NextLeft() + 4;
+
+                VCCellSimple GetCell(int index)
+                {
+                    if (index < listCell.Count)
+                        return listCell[index];
+                    else
+                    {
+                        VCCellSimple c = new VCCellSimple(this, 0, 0);
+                        listCell.Add(c);
+                        return c;
+                    }
+                }
+            }
         }
 
         internal void DrawHint(VisualControl c)
