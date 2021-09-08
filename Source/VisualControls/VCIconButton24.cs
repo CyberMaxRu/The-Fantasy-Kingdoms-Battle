@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal sealed class VCIconButton24 : VCImage
+    internal sealed class VCIconButton24 : VCImage24
     {
-        public VCIconButton24(VisualControl parent, int shiftX, int shiftY, int imageIndex) : base(parent, shiftX, shiftY, Program.formMain.ilGui24, imageIndex)
+        public VCIconButton24(VisualControl parent, int shiftX, int shiftY, int imageIndex) : base(parent, shiftX, shiftY, imageIndex)
         {
             HighlightUnderMouse = true;
             PlaySoundOnClick = true;
