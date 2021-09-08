@@ -601,7 +601,7 @@ namespace Fantasy_Kingdoms_Battle
                 panelCombatHeroes.Click += PanelCombatHeroes_Click;
                 vcRightPanel.AddControl(panelCombatHeroes);
 
-                vcRightPanel.Width = Math.Max(bitmapMenu.Width, panelCombatHeroes.Width);
+                vcRightPanel.Width = Math.Max(bitmapMenu.Width, panelCombatHeroes.Width + Config.GridSize);
 
                 // Панели информации об объектахs
                 panelHeroInfo = new PanelHeroInfo(MainControl, Config.GridSize, panelLairWithFlags.NextTop());
@@ -683,7 +683,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 bitmapMenu.ShiftX = vcRightPanel.Width - bitmapMenu.Width;
                 bitmapMenu.ShiftY = vcRightPanel.Height - bitmapMenu.Height;
-                panelCombatHeroes.ShiftX = vcRightPanel.Width - panelCombatHeroes.Width;
+                panelCombatHeroes.ShiftX = vcRightPanel.Width - panelCombatHeroes.Width - Config.GridSize;
 
                 panelConstructionInfo.Height = MainControl.Height - panelConstructionInfo.ShiftY - Config.GridSize;
                 panelLairInfo.Height = panelConstructionInfo.Height;
