@@ -57,7 +57,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int Quantity { get; set; }
         protected int ShiftImageX { get => shiftImageX; set { shiftImageX = value; ValidateSize(); } }
         protected int ShiftImageY { get => shiftImageY; set { shiftImageY = value; ValidateSize(); } }
-        internal bool ShowAsPressed { get; set; } = false;
 
         internal override void Draw(Graphics g)
         {

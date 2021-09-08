@@ -62,7 +62,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (ImageIsEnabled)
                 {
-                    if (ShowAsPressed || (MouseClicked && MouseOver))
+                    if (MouseClicked && MouseOver)
                         ImageFilter = ImageFilter.Press;
                     else if (MouseOver)
                         ImageFilter = ImageFilter.Select;
