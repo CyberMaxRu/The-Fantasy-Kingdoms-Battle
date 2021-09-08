@@ -37,11 +37,6 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.SetNeedRedrawFrame();
         }
 
-        protected override bool AllowClick()
-        {
-            return ImageIsEnabled && base.AllowClick();
-        }
-
         internal override void Draw(Graphics g)
         {
             base.Draw(g);

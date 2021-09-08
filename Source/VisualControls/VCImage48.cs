@@ -85,6 +85,11 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        protected override bool AllowClick()
+        {
+            return ImageIsEnabled && base.AllowClick();
+        }
+
         internal override void ArrangeControls()
         {
             base.ArrangeControls();
