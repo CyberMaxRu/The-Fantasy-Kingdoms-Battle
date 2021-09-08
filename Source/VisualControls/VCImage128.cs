@@ -12,27 +12,21 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class VCImage128 : VCImage
     {
         private VCLabel labelLevel;
-        private VCLabel labelCost;
+        private VCLabel labelText;
 
         public VCImage128(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY, Program.formMain.imListObjects128, -1)
         {
             ShowBorder = true;
 
-            Width = BitmapList.Size;
-            Height = BitmapList.Size;
-
-            labelCost = new VCLabel(this, 0, Height - 12, Program.formMain.fontSmallC, FormMain.Config.CommonCost, 16, "");
-            labelCost.StringFormat.LineAlignment = StringAlignment.Far;
-            labelCost.Width = Width;
-            //labelCost.Visible = false;// Текст перекрывается иконкой. Поэтому рисуем вручную
-            //labelCost.ManualDraw = true;
-
             labelLevel = new VCLabel(this, 0, FormMain.Config.GridSizeHalf, Program.formMain.fontMedCaptionC, FormMain.Config.CommonLevel, 16, ""); ;
-            labelLevel.StringFormat.LineAlignment = StringAlignment.Near;
             labelLevel.StringFormat.Alignment = StringAlignment.Far;
-            //labelLevel.Visible = false;
-            //labelLevel.ManualDraw = true;
-            labelLevel.Width = Width - FormMain.Config.GridSizeHalf;
+            labelLevel.StringFormat.LineAlignment = StringAlignment.Near;
+            labelLevel.Width = 24;
+            labelLevel.ShiftX = Width - labelLevel.Width - 6;
+
+            labelText = new VCLabel(this, 0, Height - 16, Program.formMain.fontSmallC, FormMain.Config.CommonCost, 16, "");
+            labelText.StringFormat.LineAlignment = StringAlignment.Far;
+            labelText.Width = Width;
         }
 
         internal int Level { get; set; }
@@ -53,10 +47,12 @@ namespace Fantasy_Kingdoms_Battle
         internal override void Draw(Graphics g)
         {
             labelLevel.Visible = Level > 0;
-            labelLevel.Text = Level.ToString();
+            if (labelLevel.Visible)
+                labelLevel.Text = Level.ToString();
 
-            labelCost.Visible = Text.Length > 0;
-            labelCost.Text = Text;
+            labelText.Visible = Text.Length > 0;
+            if (labelText.Visible)
+                labelText.Text = Text;
 
             base.Draw(g);
         }
