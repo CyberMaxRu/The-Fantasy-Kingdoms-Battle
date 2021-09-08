@@ -23,7 +23,7 @@ namespace Fantasy_Kingdoms_Battle
             lblDay.StringFormat.LineAlignment = StringAlignment.Center;
 
             //
-            VCImage img;
+            VCImage24 img;
             int nextTop = lblDay.NextTop();
 
             for (int i = 0; i < players; i++)
@@ -31,7 +31,7 @@ namespace Fantasy_Kingdoms_Battle
                 VisualControl panel = new VisualControl(this, 0, nextTop);
                 panel.Width = Program.formMain.imListObjects48.Size;
                 panel.Height = Program.formMain.imListObjects48.Size;
-                img = new VCImage(panel, 0, 0, Program.formMain.ilGui24, -1);
+                img = new VCImage24(panel, 0, 0, -1);
                 img.ShiftX = (panel.Width - img.Width) / 2;
                 img.ShiftY = (panel.Height - img.Height) / 2;
                 nextTop = panel.NextTop();

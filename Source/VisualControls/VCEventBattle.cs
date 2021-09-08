@@ -21,7 +21,7 @@ namespace Fantasy_Kingdoms_Battle
             VCCell cellPlayer1 = new VCCell(this, FormMain.Config.GridSize, FormMain.Config.GridSize);
             cellPlayer1.Entity = b.Player1;
 
-            VCImage im1 = new VCImage(this, cellPlayer1.NextLeft(), cellPlayer1.ShiftY, Program.formMain.ilGui24,
+            VCImage24 im1 = new VCImage24(this, cellPlayer1.NextLeft(), cellPlayer1.ShiftY, 
                 b.Winner == b.Player1 ? FormMain.GUI_24_TRANSP_WIN : FormMain.GUI_24_TRANSP_LOSE);
             im1.ShiftY = im1.ShiftY + ((cellPlayer1.Height - im1.Height) / 2);
             im1.Hint = b.Winner == b.Player1 ? "Победитель" : "Проигравший";
@@ -31,7 +31,7 @@ namespace Fantasy_Kingdoms_Battle
             textVersus.StringFormat.LineAlignment = StringAlignment.Center;
             textVersus.Width = textVersus.Font.WidthText(textVersus.Text);
 
-            VCImage im2 = new VCImage(this, textVersus.NextLeft(), im1.ShiftY, Program.formMain.ilGui24,
+            VCImage24 im2 = new VCImage24(this, textVersus.NextLeft(), im1.ShiftY, 
                 b.Winner == b.Player2 ? FormMain.GUI_24_TRANSP_WIN : FormMain.GUI_24_TRANSP_LOSE);
             im2.Hint = b.Winner == b.Player2 ? "Победитель" : "Проигравший";
 
