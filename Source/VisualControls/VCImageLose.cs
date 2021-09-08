@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 namespace Fantasy_Kingdoms_Battle
 {
     // Визуальный контрол - информация о поражении
-    internal sealed class VCImageLose : VCImage
+    internal sealed class VCImageLose : VCImage24
     {
-        public VCImageLose(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY, Program.formMain.ilGui24, -1)
+        public VCImageLose(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY, -1)
         {
         }
 
