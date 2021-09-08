@@ -18,7 +18,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal BitmapList BitmapList { get; set; }
         internal int ImageIndex { get; set; }
-        internal bool NormalImage { get; set; } = true;
         internal bool ImageIsEnabled { get; set; } = true;
         internal bool HighlightUnderMouse { get; set; } = false;
 
@@ -50,7 +49,7 @@ namespace Fantasy_Kingdoms_Battle
             // Иконка
             if (Visible && (ImageIndex != -1))
             {
-                BitmapList.DrawImage(g, ImageIndex, (/*UseFilter*/ ImageIsEnabled) && NormalImage, HighlightUnderMouse && MouseOver && !MouseClicked, Left, Top);
+                BitmapList.DrawImage(g, ImageIndex, /*UseFilter*/ ImageIsEnabled, HighlightUnderMouse && MouseOver && !MouseClicked, Left, Top);
             }
         }
 

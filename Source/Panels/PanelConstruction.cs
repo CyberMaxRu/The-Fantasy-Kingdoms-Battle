@@ -138,7 +138,7 @@ namespace Fantasy_Kingdoms_Battle
             if (Construction.TypeConstruction.IsOurConstruction || Construction.TypeConstruction.Category == CategoryConstruction.External)
             {
                 imgMapObject.ImageIndex = Construction.TypeConstruction.ImageIndex;
-                imgMapObject.NormalImage = Construction.Level > 0;
+                imgMapObject.ImageIsEnabled = Construction.Level > 0;
 
                 lblNameMapObject.Text = Construction.TypeConstruction.Name;
                 lblNameMapObject.Color = FormMain.Config.ColorMapObjectCaption(Construction.Level > 0);
