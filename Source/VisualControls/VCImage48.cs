@@ -14,7 +14,6 @@ namespace Fantasy_Kingdoms_Battle
         private VCLabel labelLevel;
         private VCLabel labelText;
         protected VCLabel labelQuantity;
-        int shiftlabelLevel;
 
         public VCImage48(VisualControl parent, int shiftX, int shiftY, int imageIndex) : base(parent, shiftX, shiftY, Program.formMain.imListObjects48, imageIndex)
         {
@@ -23,25 +22,24 @@ namespace Fantasy_Kingdoms_Battle
             labelText.Visible = false;// Текст перекрывается иконкой. Поэтому рисуем вручную
             labelText.ManualDraw = true;
 
-            shiftlabelLevel = BitmapList.Size >= 128 ? FormMain.Config.GridSize : 6;
-            labelLevel = new VCLabel(this, 0, shiftlabelLevel - 4, Program.formMain.fontMedCaptionC, FormMain.Config.CommonLevel, 16, "");
+            labelLevel = new VCLabel(this, 0, 2, Program.formMain.fontSmallC, FormMain.Config.CommonLevel, 16, "");
             labelLevel.StringFormat.LineAlignment = StringAlignment.Near;
             labelLevel.StringFormat.Alignment = StringAlignment.Far;
             labelLevel.Visible = false;
             labelLevel.ManualDraw = true;
 
-            labelQuantity = new VCLabel(this, 0, shiftlabelLevel - 2, Program.formMain.fontMedCaptionC, FormMain.Config.CommonQuantity, 16, "");
+            labelQuantity = new VCLabel(this, 0, 4, Program.formMain.fontSmallC, FormMain.Config.CommonQuantity, 16, "");
             labelQuantity.StringFormat.LineAlignment = StringAlignment.Far;
             labelQuantity.StringFormat.Alignment = StringAlignment.Far;
             labelQuantity.Visible = false;
             labelQuantity.ManualDraw = true;
 
-            labelLevel.Width = Width - shiftlabelLevel;
-            labelQuantity.Width = Width - shiftlabelLevel;
+            labelLevel.Width = Width - 4;
+            labelQuantity.Width = Width - 4;
             labelText.Width = Width;
 
-            labelLevel.Width = Width - shiftlabelLevel;
-            labelQuantity.Width = Width - shiftlabelLevel;
+            labelLevel.Width = Width - 4;
+            labelQuantity.Width = Width - 4;
             labelText.Width = Width;
         }
 
