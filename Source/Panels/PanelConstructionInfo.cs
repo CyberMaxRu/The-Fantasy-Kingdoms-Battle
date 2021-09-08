@@ -26,7 +26,7 @@ namespace Fantasy_Kingdoms_Battle
             lblGold.Width = imgIcon.Width;
             lblGold.StringFormat.Alignment = StringAlignment.Far;                 
             lblGold.BitmapList = Program.formMain.ilGui16;
-            lblGold.ImageIndex = FormMain.GUI_16_GOLD;
+            lblGold.ImageIndex = FormMain.GUI_16_COFFERS;
 
             separator.ShiftY = lblGold.NextTop();
             pageControl.ShiftY = separator.NextTop();

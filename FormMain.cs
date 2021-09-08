@@ -165,6 +165,7 @@ namespace Fantasy_Kingdoms_Battle
         internal const int GUI_16_FLAG_ATTACK = 8;
         internal const int GUI_16_FLAG_DEFENSE = 9;
         internal const int GUI_16_HEROES = 10;
+        internal const int GUI_16_COFFERS = 11;
 
         internal const int GUI_24_FIRE = 0;
         internal const int GUI_24_HEROES = 1;
@@ -543,7 +544,7 @@ namespace Fantasy_Kingdoms_Battle
                 labelBuilders = new VCToolLabel(bmpPreparedToolbar, labelDay.NextLeft(), labelDay.ShiftY, "", GUI_16_BUILDER);
                 labelBuilders.ShowHint += LabelBuilders_ShowHint;
                 labelBuilders.Width = 112;
-                labelGold = new VCToolLabel(bmpPreparedToolbar, labelBuilders.NextLeft(), labelDay.ShiftY, "", GUI_16_GOLD);
+                labelGold = new VCToolLabel(bmpPreparedToolbar, labelBuilders.NextLeft(), labelDay.ShiftY, "", GUI_16_COFFERS);
                 labelGold.ShowHint += LabelGold_ShowHint;
                 labelGold.Width = 168;
                 labelGreatness = new VCToolLabel(bmpPreparedToolbar, labelGold.NextLeft(), labelDay.ShiftY, "", GUI_16_GREATNESS);

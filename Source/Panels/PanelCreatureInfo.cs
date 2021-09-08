@@ -75,7 +75,7 @@ namespace Fantasy_Kingdoms_Battle
             lvGold = new VCLabelValue(this, FormMain.Config.GridSize, panelMeleeWeapon.NextTop(), Color.White, true);
             lvGold.Width = imgIcon.Width;
             lvGold.StringFormat.Alignment = StringAlignment.Far;
-            lvGold.ImageIndex = FormMain.GUI_16_GOLD;
+            lvGold.ImageIndex = FormMain.GUI_16_COFFERS;
 
             separator.ShiftY = lvGold.NextTop();
             pageControl.ShiftY = separator.NextTop();
