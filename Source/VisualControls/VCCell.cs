@@ -10,23 +10,11 @@ namespace Fantasy_Kingdoms_Battle
         {
             HighlightUnderMouse = true;
 
-            // Ставим размеры после изменения ShiftImageX и ShiftImageY, так так там меняется размер ячейки
-            Width = Program.formMain.bmpBorderForIcon.Width;
-            Height = Program.formMain.bmpBorderForIcon.Height;
-
             DrawState = true;
         }
 
         internal bool DrawState { get; set; }
         internal string HintForEmpty { get; set; }
-
-        internal override void ArrangeControls()
-        {
-            base.ArrangeControls();
-
-            Debug.Assert(Width == Program.formMain.bmpBorderForIcon.Width);
-            Debug.Assert(Height == Program.formMain.bmpBorderForIcon.Height);
-        }
 
         internal override bool PrepareHint()
         {
