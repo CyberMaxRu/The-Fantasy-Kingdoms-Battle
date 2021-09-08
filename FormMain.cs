@@ -597,7 +597,7 @@ namespace Fantasy_Kingdoms_Battle
                 labelMenuNameObject.StringFormat.LineAlignment = StringAlignment.Near;
 
                 // Панель со всеми героями
-                panelCombatHeroes = new PanelWithPanelEntity(4, false, 8, 4);
+                panelCombatHeroes = new PanelWithPanelEntity(4, false, 12, 12);
                 panelCombatHeroes.Click += PanelCombatHeroes_Click;
                 vcRightPanel.AddControl(panelCombatHeroes);
 

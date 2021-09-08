@@ -15,7 +15,7 @@ namespace Fantasy_Kingdoms_Battle
         private List<VCCell> listCells = new List<VCCell>();
         private int rows;// Сколько сейчас строк подготовлено
 
-        public PanelWithPanelEntity(int entityInRow, bool fixedMode = true, int distanceBetweenCells = 2, int distanceBetweenRows = 2) : base()
+        public PanelWithPanelEntity(int entityInRow, bool fixedMode = true, int distanceBetweenCells = 8, int distanceBetweenRows = 8) : base()
         {
             Debug.Assert(entityInRow > 1);
 
