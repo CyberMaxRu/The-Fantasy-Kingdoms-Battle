@@ -10,8 +10,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             HighlightUnderMouse = true;
             ShowBorder = true;
-            ShiftImageX = 2;
-            ShiftImageY = 0;
 
             // Ставим размеры после изменения ShiftImageX и ShiftImageY, так так там меняется размер ячейки
             Width = Program.formMain.bmpBorderForIcon.Width;

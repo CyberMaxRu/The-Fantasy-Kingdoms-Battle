@@ -29,7 +29,7 @@ namespace Fantasy_Kingdoms_Battle
             base.Draw(g);
 
             if ((Parent as VCTabControl).ActivePage == IndexPage)
-                g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage((int)ImageFilter.Press, true, false), Left + ShiftImageX, Top + ShiftImageY);
+                g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage((int)ImageFilter.Press, true, false), Left, Top);
         }
     }
 }

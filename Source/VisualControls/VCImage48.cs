@@ -11,9 +11,6 @@ namespace Fantasy_Kingdoms_Battle
     // Класс для иконок 48 * 48
     internal class VCImage48 : VCImage
     {
-        private int shiftImageX;
-        private int shiftImageY;
-
         private VCLabel labelLevel;
         private VCLabel labelCost;
         protected VCLabel labelQuantity;
@@ -21,9 +18,6 @@ namespace Fantasy_Kingdoms_Battle
 
         public VCImage48(VisualControl parent, int shiftX, int shiftY, int imageIndex) : base(parent, shiftX, shiftY, Program.formMain.imListObjects48, imageIndex)
         {
-            Width = BitmapList.Size + (ShiftImageX * 2);
-            Height = BitmapList.Size + (ShiftImageY * 2);
-
             labelCost = new VCLabel(this, 0, Height - 12, Program.formMain.fontSmallC, FormMain.Config.CommonCost, 16, "");
             labelCost.StringFormat.LineAlignment = StringAlignment.Far;
             labelCost.Visible = false;// Текст перекрывается иконкой. Поэтому рисуем вручную
@@ -55,9 +49,6 @@ namespace Fantasy_Kingdoms_Battle
         internal string Cost { get; set; }
         internal int Level { get; set; }
         internal int Quantity { get; set; }
-        protected int ShiftImageX { get => shiftImageX; set { shiftImageX = value; ValidateSize(); } }
-        protected int ShiftImageY { get => shiftImageY; set { shiftImageY = value; ValidateSize(); } }
-
         internal override void Draw(Graphics g)
         {
             //Debug.Assert(Cost >= 0);
@@ -100,12 +91,6 @@ namespace Fantasy_Kingdoms_Battle
 
             labelQuantity.ShiftY = Height - 16;
             labelCost.ShiftY = Height - 16;
-        }
-
-        private void ValidateSize()
-        {
-            Width = BitmapList.Size + (ShiftImageX * 2);
-            Height = BitmapList.Size + (ShiftImageY * 2);
         }
     }
 }
