@@ -269,6 +269,12 @@
         <Builders>0</Builders>
         <Income>0</Income>
         <MaxHeroes>10</MaxHeroes>
+        <Requirements>
+          <Requirement>
+            <Construction>Library</Construction>
+            <Level>1</Level>
+          </Requirement>
+        </Requirements>
       </Level>
       <Level>
         <Pos>2</Pos>
@@ -375,6 +381,12 @@
         <Builders>1</Builders>
         <Income>0</Income>
         <MaxHeroes>10</MaxHeroes>
+        <Requirements>
+          <Requirement>
+            <Construction>Garden</Construction>
+            <Level>1</Level>
+          </Requirement>
+        </Requirements>
       </Level>
       <Level>
         <Pos>2</Pos>
@@ -470,6 +482,12 @@
         <Income>0</Income>
         <BuildersPerDay>1</BuildersPerDay>
         <MaxHeroes>10</MaxHeroes>
+        <Requirements>
+          <Requirement>
+            <Construction>Tavern</Construction>
+            <Level>1</Level>
+          </Requirement>
+        </Requirements>
       </Level>
       <Level>
         <Pos>2</Pos>
