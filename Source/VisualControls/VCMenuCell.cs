@@ -5,7 +5,7 @@ using System.Diagnostics;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal enum ImageFilter { None = -1, Active = 0, Select = 1, Press = 2, Disabled = 3 };
+    internal enum MenuCellFilter { None = -1, Active = 0, Select = 1, Press = 2, Disabled = 3 };
 
     // Визуальный контрол - ячейка меню
     internal sealed class VCMenuCell : VCImage48
@@ -17,7 +17,6 @@ namespace Fantasy_Kingdoms_Battle
         {
         }
 
-        internal ImageFilter ImageFilter { get; set; }// private field?
         internal bool Used { get; set; }
         internal PlayerCellMenu Research
         {
@@ -100,14 +99,14 @@ namespace Fantasy_Kingdoms_Battle
                 if (ImageIsEnabled)
                 {
                     if (MouseClicked && MouseOver)
-                        g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage((int)ImageFilter.Press, true, false), Left, Top);
+                        g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage((int)MenuCellFilter.Press, true, false), Left, Top);
                     else if (MouseOver)
-                        g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage((int)ImageFilter.Select, true, false), Left, Top);
+                        g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage((int)MenuCellFilter.Select, true, false), Left, Top);
                     else
-                        g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage((int)ImageFilter.Active, true, false), Left, Top);
+                        g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage((int)MenuCellFilter.Active, true, false), Left, Top);
                 }
                 else
-                    g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage((int)ImageFilter.Disabled, true, false), Left, Top);
+                    g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage((int)MenuCellFilter.Disabled, true, false), Left, Top);
             }
         }
     }
