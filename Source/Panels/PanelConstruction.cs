@@ -241,9 +241,9 @@ namespace Fantasy_Kingdoms_Battle
                 btnAction.Visible = Construction.Hidden || (Construction.TypeConstruction.Category == CategoryConstruction.Lair);
                 if (btnAction.Visible)
                 {
-                    btnAction.ImageIsEnabled = Construction.CheckFlagRequirements();
+                    btnAction.ImageIsEnabled = true;                    
                     btnAction.Level = (int)Construction.PriorityFlag + 1;
-                    btnAction.Text = Construction.PriorityFlag < PriorityExecution.High ? Construction.RequiredGold().ToString() : null;
+                    btnAction.Text = Construction.CheckFlagRequirements() ? Construction.RequiredGold().ToString() : null;
                 }
 
                 Debug.Assert(btnAction.Visible || (!btnAction.Visible && (Construction.PriorityFlag == PriorityExecution.None)));
