@@ -565,8 +565,8 @@ namespace Fantasy_Kingdoms_Battle
                 btnEndTurn.HighlightUnderMouse = true;
                 btnEndTurn.ShowBorder = true;
                 panelLairWithFlags = new VisualControl(MainControl, 0, 0);
-                panelLairWithFlags.Width = Program.formMain.bmpBorderForIcon.Width;
-                panelLairWithFlags.Height = Program.formMain.bmpBorderForIcon.Height;
+                panelLairWithFlags.Width = imListObjects48.Size;
+                panelLairWithFlags.Height = imListObjects48.Size;
 
                 // Отладочная информация
                 vcDebugInfo = new VisualControl();
