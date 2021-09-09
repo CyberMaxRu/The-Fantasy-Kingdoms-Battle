@@ -49,7 +49,7 @@ namespace Fantasy_Kingdoms_Battle
             X = x;
             Y = y;
             Layer = layer;
-            Hidden = !((Layer == 0) || (l.Category == CategoryConstruction.External));
+            Hidden = Layer != 0;
 
             Debug.Assert((TypeConstruction.Category == CategoryConstruction.Lair) || (TypeConstruction.Category == CategoryConstruction.External)
                 || (TypeConstruction.Category == CategoryConstruction.Place) || (TypeConstruction.Category == CategoryConstruction.BasePlace));
@@ -843,7 +843,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(TypeConstruction.Category != CategoryConstruction.Economic);
             Debug.Assert(TypeConstruction.Category != CategoryConstruction.Temple);
             Debug.Assert(TypeConstruction.Category != CategoryConstruction.Military);
-            Debug.Assert(TypeConstruction.Category != CategoryConstruction.External);
+            //Debug.Assert(TypeConstruction.Category != CategoryConstruction.External);
             Debug.Assert(Hidden);
             Debug.Assert(TypeFlag == TypeFlag.None);
             Debug.Assert(!Destroyed);
