@@ -196,7 +196,7 @@ namespace Fantasy_Kingdoms_Battle
                     else
                     {
                         btnBuildOrUpgrade.Visible = true;
-                        btnBuildOrUpgrade.Text = Construction.CostBuyOrUpgrade().ToString();
+                        btnBuildOrUpgrade.Text = Construction.TypeConstruction.ID != FormMain.Config.IDHolyPlace ? Construction.CostBuyOrUpgrade().ToString() : "";
                         btnBuildOrUpgrade.ImageIndex = Construction.TypeConstruction.ID != FormMain.Config.IDHolyPlace ? FormMain.Config.Gui48_Build : FormMain.Config.Gui48_Temple;
                         btnBuildOrUpgrade.ImageIsEnabled = (Construction.TypeConstruction.MaxLevel > 0) ? Construction.CheckRequirements() : true;
                         btnBuildOrUpgrade.Color = btnBuildOrUpgrade.ImageIsEnabled ? Color.LimeGreen : Color.Gray;
