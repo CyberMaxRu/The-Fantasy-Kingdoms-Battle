@@ -7,7 +7,7 @@
     <ImageIndex>49</ImageIndex>
     <Category>Guild</Category>
     <Page>Guild</Page>
-    <Line>1</Line>
+    <Line>2</Line>
     <Pos>1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
@@ -87,7 +87,7 @@
     <ImageIndex>42</ImageIndex>
     <Category>Guild</Category>
     <Page>Guild</Page>
-    <Line>1</Line>
+    <Line>2</Line>
     <Pos>2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
@@ -167,7 +167,7 @@
     <ImageIndex>38</ImageIndex>
     <Category>Guild</Category>
     <Page>Guild</Page>
-    <Line>1</Line>
+    <Line>2</Line>
     <Pos>3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
@@ -254,7 +254,7 @@
     <ImageIndex>43</ImageIndex>
     <Category>Guild</Category>
     <Page>Guild</Page>
-    <Line>2</Line>
+    <Line>3</Line>
     <Pos>3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
@@ -366,7 +366,7 @@
     <ImageIndex>41</ImageIndex>
     <Category>Guild</Category>
     <Page>Guild</Page>
-    <Line>2</Line>
+    <Line>3</Line>
     <Pos>2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
@@ -466,7 +466,7 @@
     <ImageIndex>40</ImageIndex>
     <Category>Guild</Category>
     <Page>Guild</Page>
-    <Line>2</Line>
+    <Line>3</Line>
     <Pos>1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
@@ -560,10 +560,10 @@
     <ID>GuildRogue</ID>
     <Name>Гильдия разбойниц</Name>
     <Description>- Позволяет нанимать разбойниц//- В гильдии исследуют и продают особые способности разбойниц//- Здесь исследуют и продают яды для оружия//- Здесь исследуют способность "Вымогательство"</Description>
-    <ImageIndex>73</ImageIndex>
+    <ImageIndex>47</ImageIndex>
     <Category>Guild</Category>
     <Page>Guild</Page>
-    <Line>1</Line>
+    <Line>2</Line>
     <Pos>4</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
@@ -656,7 +656,7 @@
     <Description>- Позволяет отдавать приказы строительства//- Содержит налоговую и охранную службы//- Здесь хранится казна королевства</Description>
     <ImageIndex>20</ImageIndex>
     <Category>Economic</Category>
-    <Page>Economic</Page>
+    <Page>Guild</Page>
     <Line>1</Line>
     <Pos>1</Pos>
     <DefaultLevel>1</DefaultLevel>
@@ -802,7 +802,7 @@
     <ImageIndex>82</ImageIndex>
     <Category>Economic</Category>
     <Page>Economic</Page>
-    <Line>2</Line>
+    <Line>1</Line>
     <Pos>1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
@@ -912,7 +912,7 @@
     <ImageIndex>87</ImageIndex>
     <Category>Economic</Category>
     <Page>Economic</Page>
-    <Line>2</Line>
+    <Line>1</Line>
     <Pos>2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
@@ -1271,7 +1271,7 @@
     <ImageIndex>81</ImageIndex>
     <Category>Economic</Category>
     <Page>Economic</Page>
-    <Line>2</Line>
+    <Line>1</Line>
     <Pos>3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
@@ -1353,13 +1353,13 @@
     </CellsMenu>
   </Construction>
   <Construction>
-    <ID>AlchemistHouse</ID>
-    <Name>Дом алхимика</Name>
+    <ID>AlchemistHut</ID>
+    <Name>Хижина алхимика</Name>
     <Description>- Приносит небольшой доход//- Здесь изобретают и продают эликсиры/напитки</Description>
     <ImageIndex>111</ImageIndex>
     <Category>Economic</Category>
     <Page>Economic</Page>
-    <Line>2</Line>
+    <Line>1</Line>
     <Pos>4</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
@@ -1465,11 +1465,11 @@
     <ID>Library</ID>
     <Name>Библиотека</Name>
     <Description>- Позволяет изучить заклинания</Description>
-    <ImageIndex>129</ImageIndex>
+    <ImageIndex>146</ImageIndex>
     <Category>Economic</Category>
     <Page>Economic</Page>
     <Line>3</Line>
-    <Pos>2</Pos>
+    <Pos>3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>2</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>
@@ -1495,9 +1495,9 @@
     <Description>- Повышает энтузиазм героев</Description>
     <ImageIndex>88</ImageIndex>
     <Category>Economic</Category>
-    <Page>Economic</Page>
-    <Line>3</Line>
-    <Pos>3</Pos>
+    <Page>Guild</Page>
+    <Line>1</Line>
+    <Pos>2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>2</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>
@@ -1522,14 +1522,14 @@
     </Levels>
   </Construction>
   <Construction>
-    <ID>Academy</ID>
-    <Name>Военная академия</Name>
+    <ID>TrainingHall</ID>
+    <Name>Тренировочный зал</Name>
     <Description>- Позволяет улучшать навыки героями</Description>
-    <ImageIndex>50</ImageIndex>
+    <ImageIndex>147</ImageIndex>
     <Category>Military</Category>
-    <Page>Guild</Page>
-    <Line>3</Line>
-    <Pos>1</Pos>
+    <Page>Economic</Page>
+    <Line>2</Line>
+    <Pos>4</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>
@@ -1547,11 +1547,11 @@
     <ID>Hospital</ID>
     <Name>Госпиталь</Name>
     <Description>- Лечение героев</Description>
-    <ImageIndex>47</ImageIndex>
+    <ImageIndex>149</ImageIndex>
     <Category>Military</Category>
-    <Page>Guild</Page>
-    <Line>3</Line>
-    <Pos>2</Pos>
+    <Page>Economic</Page>
+    <Line>2</Line>
+    <Pos>3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>
@@ -1571,9 +1571,9 @@
     <Description>- Позволяет улучшить навыки командной работы героями</Description>
     <ImageIndex>138</ImageIndex>
     <Category>Military</Category>
-    <Page>Guild</Page>
-    <Line>3</Line>
-    <Pos>3</Pos>
+    <Page>Economic</Page>
+    <Line>2</Line>
+    <Pos>1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>
@@ -1595,7 +1595,7 @@
     <Category>Economic</Category>
     <Page>Economic</Page>
     <Line>3</Line>
-    <Pos>4</Pos>
+    <Pos>2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>
@@ -2425,5 +2425,73 @@
     <TypePlaceForConstruct></TypePlaceForConstruct>
     <Reward>
     </Reward>
+  </Construction>
+  <Construction>
+    <ID>Menagerie</ID>
+    <Name>Зверинец</Name>
+    <Description>- В зверинце содержат зверей для развлечений и изучения</Description>
+    <ImageIndex>145</ImageIndex>
+    <Category>Economic</Category>
+    <Page>Economic</Page>
+    <Line>2</Line>
+    <Pos>2</Pos>
+    <DefaultLevel>0</DefaultLevel>
+    <MaxLevel>2</MaxLevel>
+    <ResearchesPerDay>1</ResearchesPerDay>
+    <SoundSelect>tavern_select.wav</SoundSelect>
+    <Levels>
+      <Level>
+        <Pos>1</Pos>
+        <Cost>250</Cost>
+        <Builders>1</Builders>
+        <Income>0</Income>
+      </Level>
+      <Level>
+        <Pos>2</Pos>
+        <Cost>1000</Cost>
+        <Builders>1</Builders>
+        <Income>0</Income>
+        <Requirements>
+          <Requirement>
+            <Construction>Castle</Construction>
+            <Level>2</Level>
+          </Requirement>
+        </Requirements>
+      </Level>
+    </Levels>
+  </Construction>
+  <Construction>
+    <ID>GamblingHall</ID>
+    <Name>Игорный дом</Name>
+    <Description>- В игорном доме играют в карты</Description>
+    <ImageIndex>148</ImageIndex>
+    <Category>Economic</Category>
+    <Page>Economic</Page>
+    <Line>3</Line>
+    <Pos>4</Pos>
+    <DefaultLevel>0</DefaultLevel>
+    <MaxLevel>2</MaxLevel>
+    <ResearchesPerDay>1</ResearchesPerDay>
+    <SoundSelect>tavern_select.wav</SoundSelect>
+    <Levels>
+      <Level>
+        <Pos>1</Pos>
+        <Cost>250</Cost>
+        <Builders>1</Builders>
+        <Income>0</Income>
+      </Level>
+      <Level>
+        <Pos>2</Pos>
+        <Cost>1000</Cost>
+        <Builders>1</Builders>
+        <Income>0</Income>
+        <Requirements>
+          <Requirement>
+            <Construction>Castle</Construction>
+            <Level>2</Level>
+          </Requirement>
+        </Requirements>
+      </Level>
+    </Levels>
   </Construction>
 </Descriptors>
