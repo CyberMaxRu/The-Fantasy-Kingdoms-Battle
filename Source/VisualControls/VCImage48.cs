@@ -45,6 +45,7 @@ namespace Fantasy_Kingdoms_Battle
 
 
         internal string Text { get; set; }
+        internal Color Color { get; set; }
         internal int Level { get; set; }
         internal int Quantity { get; set; }
         internal override void Draw(Graphics g)
@@ -64,6 +65,7 @@ namespace Fantasy_Kingdoms_Battle
                     Debug.Assert(Text.Length > 0);
 
                     labelText.Text = Text;
+                    labelText.Color = Color;
                     labelText.Draw(g);
                 }
 
