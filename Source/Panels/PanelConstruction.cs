@@ -85,17 +85,16 @@ namespace Fantasy_Kingdoms_Battle
             btnAttackHeroes.Click += BtnAttackHeroes_Click;
             btnAttackHeroes.ShowHint += BtnAttackHeroes_ShowHint;
 
-            lblRewardGold = new VCLabelValue(this, FormMain.Config.GridSize, imgMapObject.NextTop(), Color.Green, true);
+            lblRewardGold = new VCLabelValue(this, FormMain.Config.GridSize, imgMapObject.NextTop(), FormMain.Config.HintIncome, true);
             lblRewardGold.Width = btnCancel.ShiftX - FormMain.Config.GridSize - lblRewardGold.ShiftX;
             lblRewardGold.ImageIndex = FormMain.GUI_16_GOLD;
             lblRewardGold.StringFormat.Alignment = StringAlignment.Near;
             lblRewardGold.Hint = "Награда золотом за уничтожение";
 
-            lblRewardGreatness = new VCLabelValue(this, lblRewardGold.ShiftX, lblRewardGold.NextTop() - FormMain.Config.GridSizeHalf, Color.Green, true);
+            lblRewardGreatness = new VCLabelValue(this, lblRewardGold.ShiftX, lblRewardGold.NextTop() - FormMain.Config.GridSizeHalf, FormMain.Config.HintIncome, true);
             lblRewardGreatness.Width = lblRewardGold.Width;
             lblRewardGreatness.ImageIndex = FormMain.GUI_16_GREATNESS;
             lblRewardGreatness.StringFormat.Alignment = StringAlignment.Near;
-            lblRewardGreatness.Color = FormMain.Config.HintIncome;
             lblRewardGreatness.Hint = "Награда величием за уничтожение";
 
             Height = btnAction.NextTop();
