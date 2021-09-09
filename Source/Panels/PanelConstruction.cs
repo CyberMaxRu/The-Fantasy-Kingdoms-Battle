@@ -363,6 +363,9 @@ namespace Fantasy_Kingdoms_Battle
 
             SelectThisConstruction();
 
+            if (Construction.TypeConstruction.ID == FormMain.Config.IDHolyPlace)
+                return;
+
             if (Construction.Player.Gold >= Construction.CostBuyOrUpgrade())
             {
                 if (Construction.Level == 0)
