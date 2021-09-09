@@ -17,7 +17,9 @@ namespace Fantasy_Kingdoms_Battle
 
         public VCImage48(VisualControl parent, int shiftX, int shiftY, int imageIndex) : base(parent, shiftX, shiftY, Program.formMain.imListObjects48, imageIndex)
         {
-            labelText = new VCLabel(this, 0, Height - 12, Program.formMain.fontSmallC, FormMain.Config.CommonCost, 16, "");
+            Color = FormMain.Config.CommonCost;
+
+            labelText = new VCLabel(this, 0, Height - 12, Program.formMain.fontSmallC, Color, 16, "");
             labelText.StringFormat.LineAlignment = StringAlignment.Far;
             labelText.Visible = false;// Текст перекрывается иконкой. Поэтому рисуем вручную
             labelText.ManualDraw = true;
