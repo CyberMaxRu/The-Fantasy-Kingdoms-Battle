@@ -669,7 +669,7 @@
         <Pos>1</Pos>
         <Cost>0</Cost>
         <Builders>0</Builders>
-        <Income>50</Income>
+        <Income>1000</Income>
         <GreatnessByConstruction>0</GreatnessByConstruction>
         <GreatnessPerDay>5</GreatnessPerDay>
         <BuildersPerDay>3</BuildersPerDay>
@@ -679,7 +679,7 @@
         <Pos>2</Pos>
         <Cost>2000</Cost>
         <Builders>2</Builders>
-        <Income>125</Income>
+        <Income>1500</Income>
         <GreatnessByConstruction>250</GreatnessByConstruction>
         <GreatnessPerDay>10</GreatnessPerDay>
         <BuildersPerDay>4</BuildersPerDay>
@@ -699,7 +699,7 @@
         <Pos>3</Pos>
         <Cost>4000</Cost>
         <Builders>3</Builders>
-        <Income>275</Income>
+        <Income>2000</Income>
         <GreatnessByConstruction>500</GreatnessByConstruction>
         <GreatnessPerDay>15</GreatnessPerDay>
         <BuildersPerDay>4</BuildersPerDay>
