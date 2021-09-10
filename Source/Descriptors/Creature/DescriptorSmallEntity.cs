@@ -10,7 +10,7 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal abstract class DescriptorSmallEntity : DescriptorEntity
     {
-        private List<string> availableForHeroesString = new List<string>();
+        private List<string> availableForHeroesString;
 
         public DescriptorSmallEntity(XmlNode n) : base(n)
         {
@@ -20,6 +20,7 @@ namespace Fantasy_Kingdoms_Battle
             XmlNode nch = n.SelectSingleNode("Heroes");
             if (nch != null)
             {
+                availableForHeroesString = new List<string>();
                 string nameHero;
 
                 foreach (XmlNode l in nch.SelectNodes("Hero"))
@@ -36,7 +37,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
-            Debug.Assert((AvailableForAllHeroes && (availableForHeroesString.Count > 0)) || (!AvailableForAllHeroes && (availableForHeroesString.Count > 0)));
+            Debug.Assert((AvailableForAllHeroes && (availableForHeroesString is null)) || (!AvailableForAllHeroes && (availableForHeroesString != null) && (availableForHeroesString.Count > 0)));
         }
 
         internal bool AvailableForAllHeroes { get; }// Сущность доступна всем существам
@@ -48,10 +49,13 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.TuneDeferredLinks();
 
-            foreach (string nameHero in availableForHeroesString)
-                AvailableForHeroes.Add(Config.FindCreature(nameHero));
+            if (availableForHeroesString != null)
+            {
+                foreach (string nameHero in availableForHeroesString)
+                    AvailableForHeroes.Add(Config.FindCreature(nameHero));
 
-            availableForHeroesString = null;
+                availableForHeroesString = null;
+            }
         }
     }
 }
