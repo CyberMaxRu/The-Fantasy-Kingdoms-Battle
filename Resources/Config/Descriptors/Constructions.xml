@@ -1262,7 +1262,7 @@
     <ID>Tavern</ID>
     <Name>Таверна</Name>
     <Description>- Здесь герои могут отдыхать и лечиться//- Позволяет собирать партии героев</Description>
-    <ImageIndex>89</ImageIndex>
+    <ImageIndex>150</ImageIndex>
     <Category>Economic</Category>
     <Page>Economic</Page>
     <Line>3</Line>
@@ -1493,7 +1493,7 @@
     <ID>Library</ID>
     <Name>Библиотека</Name>
     <Description>- Позволяет изучить заклинания</Description>
-    <ImageIndex>146</ImageIndex>
+    <ImageIndex>151</ImageIndex>
     <Category>Economic</Category>
     <Page>Economic</Page>
     <Line>3</Line>
