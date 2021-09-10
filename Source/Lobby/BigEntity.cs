@@ -13,11 +13,6 @@ namespace Fantasy_Kingdoms_Battle
 
         }
 
-        internal override string GetCost()
-        {
-            return "";
-        }
-
         internal abstract void ShowInfo();
         internal abstract void HideInfo();
     }

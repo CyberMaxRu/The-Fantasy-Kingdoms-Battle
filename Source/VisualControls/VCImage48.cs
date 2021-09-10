@@ -45,8 +45,7 @@ namespace Fantasy_Kingdoms_Battle
             labelText.Width = Width;
         }
 
-
-        internal string Text { get; set; }
+        internal string Text { get; set; } = "";
         internal Color Color { get; set; }
         internal int Level { get; set; }
         internal int Quantity { get; set; }
@@ -62,10 +61,8 @@ namespace Fantasy_Kingdoms_Battle
             if (Visible && (ImageIndex != -1))
             {
                 // Цена
-                if ((Text != null) && (Text != ""))
+                if (Text.Length > 0)
                 {
-                    Debug.Assert(Text.Length > 0);
-
                     labelText.Text = Text;
                     labelText.Color = Color;
                     labelText.Draw(g);

@@ -17,29 +17,9 @@ namespace Fantasy_Kingdoms_Battle
         internal Entity Owner { get; }
         internal DescriptorGroupItems Descriptor { get; }
 
-        internal override string GetCost()
-        {
-            return "";
-        }
-
         internal override int GetImageIndex()
         {
             return Descriptor.ImageIndex;
-        }
-
-        internal override int GetLevel()
-        {
-            return 0;
-        }
-
-        internal override bool GetNormalImage()
-        {
-            return true;
-        }
-
-        internal override int GetQuantity()
-        {
-            return 0;
         }
 
         internal override void PrepareHint()

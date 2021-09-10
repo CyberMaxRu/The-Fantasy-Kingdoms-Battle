@@ -222,7 +222,7 @@ namespace Fantasy_Kingdoms_Battle
                         btnHireHero.ImageIndex = ((Construction.Level > 0) && (Construction.MaxHeroesAtPlayer() == true)) ? -1 : Construction.TypeConstruction.TrainedHero.ImageIndex;
                         btnHireHero.ImageIndex = Program.formMain.TreatImageIndex(Construction.TypeConstruction.TrainedHero.ImageIndex, Construction.Player);
                         btnHireHero.ImageIsEnabled = Construction.CanTrainHero();
-                        btnHireHero.Text = (Construction.Level == 0) || (Construction.CanTrainHero() == true) ? Construction.TypeConstruction.TrainedHero.Cost.ToString() : null;
+                        btnHireHero.Text = (Construction.Level == 0) || (Construction.CanTrainHero() == true) ? Construction.TypeConstruction.TrainedHero.Cost.ToString() : "";
                     }
                     else
                         btnHireHero.Visible = false;
@@ -240,7 +240,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
                 else
                 {
-                    btnHeroes.Text = null;
+                    btnHeroes.Text = "";
                     btnHeroes.Visible = false;
                 }
             }

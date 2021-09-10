@@ -372,6 +372,8 @@ namespace Fantasy_Kingdoms_Battle
 
             bool shopped = true;
 
+
+
             if (shopped)
                 CounterConstructionForBuy--;
         }
@@ -382,6 +384,6 @@ namespace Fantasy_Kingdoms_Battle
             return null;
         }
 
-        internal override string GetCost() => null;
+        internal override string GetCost() => "";
     }
 }

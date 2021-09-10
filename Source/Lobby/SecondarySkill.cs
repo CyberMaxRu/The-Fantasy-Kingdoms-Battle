@@ -17,29 +17,14 @@ namespace Fantasy_Kingdoms_Battle
         internal Creature Creature { get; }
         internal DescriptorSecondarySkill TypeSecondarySkill { get; }
 
-        internal override string GetCost()
-        {
-            return "";
-        }
-
         internal override int GetImageIndex()
         {
             return TypeSecondarySkill.ImageIndex;
         }
 
-        internal override int GetLevel()
-        {
-            return 0;
-        }
-
         internal override bool GetNormalImage()
         {
             return true;
-        }
-
-        internal override int GetQuantity()
-        {
-            return 0;
         }
 
         internal override void PrepareHint()

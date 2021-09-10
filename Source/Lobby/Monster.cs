@@ -17,8 +17,6 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(level > 0);
         }
 
-        internal override string GetCost() => null;
-
         internal override void PrepareHint()
         {
             //Debug.Assert(IsLive);

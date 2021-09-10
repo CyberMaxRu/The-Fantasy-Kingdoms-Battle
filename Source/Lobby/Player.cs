@@ -1129,16 +1129,6 @@ namespace Fantasy_Kingdoms_Battle
             return LevelGreatness;
         }
 
-        internal override int GetQuantity()
-        {
-            return 0;
-        }
-
-        internal override string GetCost()
-        {
-            return null;
-        }
-
         internal override void ShowInfo()
         {
             
