@@ -229,7 +229,7 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(ExistsHumanPlayer());
 
                 // Общая подготовка хода
-                DoPrepareTurn();
+                PrepareTurn();
 
                 for (int i = 0; i < Players.Length; i++)
                 {
@@ -296,7 +296,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void DoPrepareTurn()
+        internal void PrepareTurn()
         {
             // Считаем день следующей битвы между игроками
             CalcDayNextBattleBetweenPlayers();
