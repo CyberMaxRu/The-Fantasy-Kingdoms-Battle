@@ -54,7 +54,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void TuneDeferredLinks()
         {
-
+            base.TuneDeferredLinks();
         }
 
         /*protected override void DoPrepareHint()

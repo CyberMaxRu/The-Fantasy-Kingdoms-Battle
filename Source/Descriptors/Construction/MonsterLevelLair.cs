@@ -46,7 +46,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.TuneDeferredLinks();
 
-            Monster = Config.FindTypeCreature(idMonster);
+            Monster = Config.FindCreature(idMonster);
             idMonster = "";
 
             Debug.Assert(Monster.CategoryCreature == CategoryCreature.Monster);

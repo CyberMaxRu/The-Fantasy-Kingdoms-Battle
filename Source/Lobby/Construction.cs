@@ -1078,5 +1078,20 @@ namespace Fantasy_Kingdoms_Battle
         {
             return TypeConstruction.ImageIndex;
         }
+
+        internal List<ConstructionProduct> GetProducts(DescriptorCreature dc)
+        {
+            List<ConstructionProduct> list = new List<ConstructionProduct>();
+
+            foreach (ConstructionProduct cp in Items)
+            {
+                if (cp.IsAvailableForCreature(dc))
+                {
+                    list.Add(cp);
+                }
+            }
+
+            return list;
+        }
     }
 }

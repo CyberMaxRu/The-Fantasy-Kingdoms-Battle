@@ -16,7 +16,6 @@ namespace Fantasy_Kingdoms_Battle
 
     internal sealed class DescriptorAbility : DescriptorSmallEntity
     {
-        private List<string> classesHeroesString = new List<string>();
         public DescriptorAbility(XmlNode n) : base(n)
         {
             KindAbility = (KindAbility)Enum.Parse(typeof(KindAbility), n.SelectSingleNode("KindAbility").InnerText);
@@ -86,26 +85,6 @@ namespace Fantasy_Kingdoms_Battle
 
                     break;
             }
-
-            // Загружаем классы героев, которые могут использовать способность
-            XmlNode nch = n.SelectSingleNode("ClassesHeroes");
-            string nameHero;
-
-            foreach (XmlNode l in nch.SelectNodes("ClassHero"))
-            {
-                nameHero = l.InnerText;
-
-                // Проверяем, что такой класс героев не повторяется
-                foreach (string nameHero2 in classesHeroesString)
-                {
-                    if (nameHero == nameHero2)
-                        throw new Exception("Класс героев " + nameHero + " повторяется в списке классов героев способности.");
-                }
-
-                classesHeroesString.Add(nameHero);
-            }
-
-            Debug.Assert(classesHeroesString.Count > 0);
         }
 
         internal KindAbility KindAbility { get; }
@@ -118,18 +97,14 @@ namespace Fantasy_Kingdoms_Battle
         internal int ManaCost { get; }
         internal int CoolDown { get; }
         internal List<Effect> Effects { get; } = new List<Effect>();
-        internal List<DescriptorCreature> ClassesHeroes { get; } = new List<DescriptorCreature>();
 
         internal override void TuneDeferredLinks()
         {
-            foreach (string nameHero in classesHeroesString)
-                ClassesHeroes.Add(Config.FindTypeCreature(nameHero));
-
-            classesHeroesString = null;
+            base.TuneDeferredLinks();
 
             Description += (Description.Length > 0 ? Environment.NewLine : "") + "- Доступно:";
 
-            foreach (DescriptorCreature u in ClassesHeroes)
+            foreach (DescriptorCreature u in AvailableForHeroes)
             {
                 Description += Environment.NewLine + "  - " + u.Name;
             }

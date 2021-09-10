@@ -31,6 +31,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void TuneDeferredLinks()
         {
+            base.TuneDeferredLinks();
+
             Description += (Description.Length > 0 ? Environment.NewLine : "") + "- Используется:";
 
             foreach (DescriptorCreature tc in UsedByTypeCreature)

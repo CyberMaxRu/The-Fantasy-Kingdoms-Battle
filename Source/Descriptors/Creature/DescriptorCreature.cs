@@ -22,7 +22,7 @@ namespace Fantasy_Kingdoms_Battle
         public DescriptorCreature(XmlNode n) : base(n)
         {
             CategoryCreature = (CategoryCreature)Enum.Parse(typeof(CategoryCreature), n.SelectSingleNode("CategoryCreature").InnerText);
-            KindCreature = FormMain.Config.FindKindCreature(XmlUtils.GetStringNotNull(n, "KindCreature"));
+            KindCreature = FormMain.Config.FindTypeCreature(XmlUtils.GetStringNotNull(n, "KindCreature"));
             MaxLevel = XmlUtils.GetInteger(n, "MaxLevel");
             DefaultPositionPriority = XmlUtils.GetInteger(n, "DefaultPositionPriority");
             if (CategoryCreature != CategoryCreature.Citizen)
@@ -275,9 +275,9 @@ namespace Fantasy_Kingdoms_Battle
             base.TuneDeferredLinks();
 
             if (nameFromTypeHero.Length > 0)
-                NameFromTypeHero = FormMain.Config.FindTypeCreature(nameFromTypeHero);
+                NameFromTypeHero = FormMain.Config.FindCreature(nameFromTypeHero);
             if (surnameFromTypeHero.Length > 0)
-                SurnameFromTypeHero = FormMain.Config.FindTypeCreature(surnameFromTypeHero);
+                SurnameFromTypeHero = FormMain.Config.FindCreature(surnameFromTypeHero);
 
             nameFromTypeHero = "";
             surnameFromTypeHero = "";
@@ -289,7 +289,7 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (DescriptorAbility a in Abilities)
             {
-                Debug.Assert(a.ClassesHeroes.IndexOf(this) != -1, $"Типу существа {ID} не доступна стартовая способность {a.ID}.");
+                Debug.Assert(a.AvailableForHeroes.IndexOf(this) != -1, $"Типу существа {ID} не доступна стартовая способность {a.ID}.");
             }
 
             // Загружаем дефолтное оружие и доспехи

@@ -53,5 +53,10 @@ namespace Fantasy_Kingdoms_Battle
         {
             Program.formMain.formHint.AddStep1Header(Descriptor.Name, "", Descriptor.Description);
         }
+
+        internal bool IsAvailableForCreature(DescriptorCreature dc)
+        {
+            return Descriptor.AvailableForAllHeroes || (Descriptor.AvailableForHeroes.IndexOf(dc) != -1);
+        }
     }
 }

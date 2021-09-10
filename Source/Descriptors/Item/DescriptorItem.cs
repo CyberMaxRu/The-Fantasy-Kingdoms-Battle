@@ -133,6 +133,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void TuneDeferredLinks()
         {
+            base.TuneDeferredLinks();
+
             if (nameGroupItem.Length > 0)
             {
                 GroupItem = Config.FindGroupItem(nameGroupItem);

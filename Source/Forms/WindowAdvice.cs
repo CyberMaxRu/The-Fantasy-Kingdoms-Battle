@@ -18,7 +18,7 @@ namespace Fantasy_Kingdoms_Battle
             windowCaption.Caption = "Королевский советник";
 
             imgAdvisor = new VCImage128(ClientControl, 0, 0);
-            imgAdvisor.ImageIndex = FormMain.Config.FindTypeCreature(FormMain.Config.IDHeroAdvisor).ImageIndex;
+            imgAdvisor.ImageIndex = FormMain.Config.FindCreature(FormMain.Config.IDHeroAdvisor).ImageIndex;
 
             textAdvice = new VCText(ClientControl, imgAdvisor.NextLeft(), imgAdvisor.ShiftY, Program.formMain.fontParagraph, Color.White, 200);
             textAdvice.Height = 160;

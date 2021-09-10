@@ -454,7 +454,7 @@ namespace Fantasy_Kingdoms_Battle
             throw new Exception("Состояние существа " + ID + " не найдено.");
         }
 
-        internal TypeCreature FindKindCreature(string ID)
+        internal TypeCreature FindTypeCreature(string ID)
         {
             foreach (TypeCreature tu in TypeCreatures)
             {
@@ -462,7 +462,7 @@ namespace Fantasy_Kingdoms_Battle
                     return tu;
             }
 
-            throw new Exception("Вид существа " + ID + " не найден.");
+            throw new Exception("Тип существа " + ID + " не найден.");
         }
 
         internal DescriptorSpecialization FindSpecialization(string ID)
@@ -487,7 +487,7 @@ namespace Fantasy_Kingdoms_Battle
             throw new Exception("Вторичный навык " + ID + " не найден.");
         }
 
-        internal DescriptorCreature FindTypeCreature(string ID)
+        internal DescriptorCreature FindCreature(string ID)
         {
             foreach (DescriptorCreature tc in Creatures)
             {
@@ -495,7 +495,7 @@ namespace Fantasy_Kingdoms_Battle
                     return tc;
             }
 
-            throw new Exception("Тип существ " + ID + " не найден.");
+            throw new Exception("Существо " + ID + " не найден.");
         }
 
         private void LoadConfigGame(XmlDocument xmlDoc)

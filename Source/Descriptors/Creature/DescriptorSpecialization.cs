@@ -15,8 +15,9 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void TuneDeferredLinks()
         {
-
+            base.TuneDeferredLinks();
         }
+
         /*protected override void DoPrepareHint()
         {
             Program.formMain.formHint.AddStep1Header(Name, "Специализация", Description);

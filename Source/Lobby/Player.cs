@@ -93,10 +93,10 @@ namespace Fantasy_Kingdoms_Battle
             LevelGreatness = 1;
             PointGreatnessForNextLevel = 100;
 
-            Hero king = Castle.HireHero(FormMain.Config.FindTypeCreature("King"));
-            Hero advisor = Castle.HireHero(FormMain.Config.FindTypeCreature("Advisor"));
-            Hero captain = Castle.HireHero(FormMain.Config.FindTypeCreature("Captain"));
-            Hero treasurer = Castle.HireHero(FormMain.Config.FindTypeCreature("Treasurer"));
+            Hero king = Castle.HireHero(FormMain.Config.FindCreature("King"));
+            Hero advisor = Castle.HireHero(FormMain.Config.FindCreature("Advisor"));
+            Hero captain = Castle.HireHero(FormMain.Config.FindCreature("Captain"));
+            Hero treasurer = Castle.HireHero(FormMain.Config.FindCreature("Treasurer"));
 
             //
             /*AddItem(new PlayerItem(FormMain.Config.FindItem("PotionOfHealth"), 10, true));

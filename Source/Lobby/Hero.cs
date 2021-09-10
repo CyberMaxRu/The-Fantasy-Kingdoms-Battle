@@ -370,9 +370,17 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(CounterConstructionForBuy > 0);
 
-            bool shopped = true;
+            bool shopped = false;
+
+            // Получаем список доступных покупок
+            List<ConstructionProduct> listProducts = c.GetProducts(TypeCreature);
+
+            // Покупаем все, что можем
+            foreach (ConstructionProduct cp in listProducts)
+            {
 
 
+            }
 
             if (shopped)
                 CounterConstructionForBuy--;
