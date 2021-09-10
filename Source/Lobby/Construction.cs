@@ -467,6 +467,11 @@ namespace Fantasy_Kingdoms_Battle
                 if (TypeConstruction.Levels[Level].GreatnessPerDay > 0)
                     Player.AddGreatness(GreatnessPerDay());
             }
+
+            foreach (Hero h in Heroes)
+            {
+                h.PrepareTurn();
+            }
         }
 
         internal void PrepareQueueShopping(List<UnitOfQueueForBuy> queue)

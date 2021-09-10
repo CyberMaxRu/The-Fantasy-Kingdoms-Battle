@@ -21,6 +21,8 @@ namespace Fantasy_Kingdoms_Battle
                 + GetRandomName(pb.TypeConstruction.TrainedHero.NameFromTypeHero == null ? pb.TypeConstruction.TrainedHero.Names : pb.TypeConstruction.TrainedHero.NameFromTypeHero.Names)
                 + " " + GetRandomName(pb.TypeConstruction.TrainedHero.SurnameFromTypeHero == null ? pb.TypeConstruction.TrainedHero.Surnames : pb.TypeConstruction.TrainedHero.Surnames);
 
+            PrepareTurn();
+
             string GetRandomName(List<string> list)
             {
                 return list.Count > 0 ? list[Player.Lobby.Rnd.Next(list.Count)] : "";
@@ -32,6 +34,8 @@ namespace Fantasy_Kingdoms_Battle
             Construction = pb;
             DayOfHire = Player.Lobby.Day;
             FullName = TypeCreature.Name;
+
+            PrepareTurn();
         }
 
         internal Construction Construction { get; }// Здание, которому принадлежит герой
@@ -58,6 +62,8 @@ namespace Fantasy_Kingdoms_Battle
         internal ResultBattle PriorResultBattle { get; set; }// Предыдущий результат битвы для расчета страйков
 
         //internal bool Selected { get; set; }
+
+        internal int CounterConstructionForBuy { get; private set; }// Счетчик сооружений для посещения для покупок
 
         // Увольнение героя
         internal void Dismiss()
@@ -345,6 +351,11 @@ namespace Fantasy_Kingdoms_Battle
             Gold += income;
         }
 
+        internal void PrepareTurn()
+        {
+            CounterConstructionForBuy = TypeCreature.MaxConstructionForBuyPerDay;
+        }
+
         internal void PrepareQueueShopping(List<UnitOfQueueForBuy> queue)
         {
             Debug.Assert(IsLive);
@@ -357,7 +368,12 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void DoShopping(Construction c)
         {
+            Debug.Assert(CounterConstructionForBuy > 0);
 
+            bool shopped = true;
+
+            if (shopped)
+                CounterConstructionForBuy--;
         }
 
         private DescriptorItem FindWeaponForBuy()
