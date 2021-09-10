@@ -243,7 +243,7 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorItem Armour { get; private set; }// Доспех по умолчанию
         internal DescriptorReward TypeReward { get; }// Награда за убийство существа
         internal (string, int)[] PriorityConstructionsForBuy;
-        internal (string, int)[] PriorityConstructionsForBuy;
+        //internal (string, int)[] PriorityConstructionsForBuy;
         internal int Cost { get; }
         internal DescriptorConstruction Construction { get; }
         internal bool CanBuild { get; }
