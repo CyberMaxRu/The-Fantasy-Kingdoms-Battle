@@ -6,6 +6,17 @@
     <Description>- Безыскусное, но функциональное рукопашное оружие// Включает в себя мечи, ножи, топоры, молоты</Description>
     <ImageIndex>6</ImageIndex>
     <ShortName>Ближ.</ShortName>
+    <Heroes>
+      <Hero>Warrior</Hero>
+      <Hero>Hunter</Hero>
+      <Hero>Rogue</Hero>
+      <Hero>Dwarf</Hero>
+      <Hero>Elf</Hero>
+      <Hero>BladeMaster</Hero>
+      <Hero>Paladin</Hero>
+      <Hero>BeastMaster</Hero>
+      <Hero>Marksman</Hero>
+    </Heroes>
   </GroupItems>
   <GroupItems>
     <ID>GroupWeaponMelee1</ID>
@@ -13,6 +24,17 @@
     <Description>- Повышает умение рукопашной атаки// Включает в себя мечи, ножи, топоры, молоты</Description>
     <ImageIndex>7</ImageIndex>
     <ShortName>Ближ.</ShortName>
+    <Heroes>
+      <Hero>Warrior</Hero>
+      <Hero>Hunter</Hero>
+      <Hero>Rogue</Hero>
+      <Hero>Dwarf</Hero>
+      <Hero>Elf</Hero>
+      <Hero>BladeMaster</Hero>
+      <Hero>Paladin</Hero>
+      <Hero>BeastMaster</Hero>
+      <Hero>Marksman</Hero>
+    </Heroes>
   </GroupItems>
   <GroupItems>
     <ID>GroupWeaponMelee2</ID>
@@ -20,6 +42,17 @@
     <Description>- Повышает умение рукопашной атаки// Включает в себя мечи, ножи, топоры, молоты</Description>
     <ImageIndex>8</ImageIndex>
     <ShortName>Ближ.</ShortName>
+    <Heroes>
+      <Hero>Warrior</Hero>
+      <Hero>Hunter</Hero>
+      <Hero>Rogue</Hero>
+      <Hero>Dwarf</Hero>
+      <Hero>Elf</Hero>
+      <Hero>BladeMaster</Hero>
+      <Hero>Paladin</Hero>
+      <Hero>BeastMaster</Hero>
+      <Hero>Marksman</Hero>
+    </Heroes>
   </GroupItems>
   <GroupItems>
     <ID>GroupWeaponMelee3</ID>
@@ -27,6 +60,17 @@
     <Description>- Повышает умение рукопашной атаки// Включает в себя мечи, ножи, топоры, молоты</Description>
     <ImageIndex>9</ImageIndex>
     <ShortName>Ближ.</ShortName>
+    <Heroes>
+      <Hero>Warrior</Hero>
+      <Hero>Hunter</Hero>
+      <Hero>Rogue</Hero>
+      <Hero>Dwarf</Hero>
+      <Hero>Elf</Hero>
+      <Hero>BladeMaster</Hero>
+      <Hero>Paladin</Hero>
+      <Hero>BeastMaster</Hero>
+      <Hero>Marksman</Hero>
+    </Heroes>
   </GroupItems>
   <GroupItems>
     <ID>GroupWeaponMelee4</ID>
@@ -34,6 +78,17 @@
     <Description>- Руническое рукопашное оружие// Включает в себя мечи, ножи, топоры, молоты</Description>
     <ImageIndex>10</ImageIndex>
     <ShortName>Ближ.</ShortName>
+    <Heroes>
+      <Hero>Warrior</Hero>
+      <Hero>Hunter</Hero>
+      <Hero>Rogue</Hero>
+      <Hero>Dwarf</Hero>
+      <Hero>Elf</Hero>
+      <Hero>BladeMaster</Hero>
+      <Hero>Paladin</Hero>
+      <Hero>BeastMaster</Hero>
+      <Hero>Marksman</Hero>
+    </Heroes>
   </GroupItems>
   <GroupItems>
     <ID>GroupWeaponRange0</ID>
@@ -41,6 +96,12 @@
     <Description>- Обычное добротное стрелковое оружие// Включает в себя луки, арбалеты</Description>
     <ImageIndex>11</ImageIndex>
     <ShortName>Даль.</ShortName>
+    <Heroes>
+      <Hero>Hunter</Hero>
+      <Hero>Elf</Hero>
+      <Hero>BeastMaster</Hero>
+      <Hero>Marksman</Hero>
+    </Heroes>
   </GroupItems>
   <GroupItems>
     <ID>GroupWeaponRange1</ID>
@@ -48,6 +109,12 @@
     <Description>- Обычное добротное стрелковое оружие// Включает в себя луки, арбалеты</Description>
     <ImageIndex>12</ImageIndex>
     <ShortName>Даль.</ShortName>
+    <Heroes>
+      <Hero>Hunter</Hero>
+      <Hero>Elf</Hero>
+      <Hero>BeastMaster</Hero>
+      <Hero>Marksman</Hero>
+    </Heroes>
   </GroupItems>
   <GroupItems>
     <ID>GroupWeaponRange2</ID>
@@ -55,6 +122,12 @@
     <Description>- Обычное добротное стрелковое оружие// Включает в себя луки, арбалеты</Description>
     <ImageIndex>13</ImageIndex>
     <ShortName>Даль.</ShortName>
+    <Heroes>
+      <Hero>Hunter</Hero>
+      <Hero>Elf</Hero>
+      <Hero>BeastMaster</Hero>
+      <Hero>Marksman</Hero>
+    </Heroes>
   </GroupItems>
   <GroupItems>
     <ID>GroupWeaponRange3</ID>
@@ -62,6 +135,12 @@
     <Description>- Обычное добротное стрелковое оружие// Включает в себя луки, арбалеты</Description>
     <ImageIndex>14</ImageIndex>
     <ShortName>Даль.</ShortName>
+    <Heroes>
+      <Hero>Hunter</Hero>
+      <Hero>Elf</Hero>
+      <Hero>BeastMaster</Hero>
+      <Hero>Marksman</Hero>
+    </Heroes>
   </GroupItems>
   <GroupItems>
     <ID>GroupWeaponRange4</ID>
@@ -69,6 +148,12 @@
     <Description>- Обычное добротное стрелковое оружие// Включает в себя луки, арбалеты</Description>
     <ImageIndex>15</ImageIndex>
     <ShortName>Даль.</ShortName>
+    <Heroes>
+      <Hero>Hunter</Hero>
+      <Hero>Elf</Hero>
+      <Hero>BeastMaster</Hero>
+      <Hero>Marksman</Hero>
+    </Heroes>
   </GroupItems>
   <GroupItems>
     <ID>GroupWeaponMage0</ID>
@@ -76,6 +161,14 @@
     <Description>Обыкновенная тисовая палка// Включает в себя посохи</Description>
     <ImageIndex>16</ImageIndex>
     <ShortName>Даль.</ShortName>
+    <Heroes>
+      <Hero>Cleric</Hero>
+      <Hero>Mage</Hero>
+      <Hero>DarkPriest</Hero>
+      <Hero>Priest</Hero>
+      <Hero>IceMage</Hero>
+      <Hero>FireMage</Hero>
+    </Heroes>
   </GroupItems>
   <GroupItems>
     <ID>GroupWeaponMage1</ID>
@@ -83,6 +176,14 @@
     <Description>- Обычное добротное стрелковое оружие// Включает в себя посохи</Description>
     <ImageIndex>17</ImageIndex>
     <ShortName>Даль.</ShortName>
+    <Heroes>
+      <Hero>Cleric</Hero>
+      <Hero>Mage</Hero>
+      <Hero>DarkPriest</Hero>
+      <Hero>Priest</Hero>
+      <Hero>IceMage</Hero>
+      <Hero>FireMage</Hero>
+    </Heroes>
   </GroupItems>
   <GroupItems>
     <ID>GroupWeaponMage2</ID>
@@ -90,6 +191,14 @@
     <Description>- Обычное добротное стрелковое оружие// Включает в себя посохи</Description>
     <ImageIndex>18</ImageIndex>
     <ShortName>Даль.</ShortName>
+    <Heroes>
+      <Hero>Cleric</Hero>
+      <Hero>Mage</Hero>
+      <Hero>DarkPriest</Hero>
+      <Hero>Priest</Hero>
+      <Hero>IceMage</Hero>
+      <Hero>FireMage</Hero>
+    </Heroes>
   </GroupItems>
   <GroupItems>
     <ID>GroupWeaponMage3</ID>
@@ -97,6 +206,14 @@
     <Description>- Обычное добротное стрелковое оружие// Включает в себя посохи</Description>
     <ImageIndex>19</ImageIndex>
     <ShortName>Даль.</ShortName>
+    <Heroes>
+      <Hero>Cleric</Hero>
+      <Hero>Mage</Hero>
+      <Hero>DarkPriest</Hero>
+      <Hero>Priest</Hero>
+      <Hero>IceMage</Hero>
+      <Hero>FireMage</Hero>
+    </Heroes>
   </GroupItems>
   <GroupItems>
     <ID>GroupWeaponMage4</ID>
@@ -104,6 +221,14 @@
     <Description>- Обычное добротное стрелковое оружие// Включает в себя посохи</Description>
     <ImageIndex>20</ImageIndex>
     <ShortName>Даль.</ShortName>
+    <Heroes>
+      <Hero>Cleric</Hero>
+      <Hero>Mage</Hero>
+      <Hero>DarkPriest</Hero>
+      <Hero>Priest</Hero>
+      <Hero>IceMage</Hero>
+      <Hero>FireMage</Hero>
+    </Heroes>
   </GroupItems>
   <GroupItems>
     <ID>GroupArmourMelee0</ID>
@@ -111,6 +236,12 @@
     <Description>Грубо выкованная кольчуга</Description>
     <ImageIndex>21</ImageIndex>
     <ShortName>Досп.</ShortName>
+    <Heroes>
+      <Hero>Warrior</Hero>
+      <Hero>Dwarf</Hero>
+      <Hero>BladeMaster</Hero>
+      <Hero>Paladin</Hero>
+    </Heroes>
   </GroupItems>
   <GroupItems>
     <ID>GroupArmourMelee1</ID>
@@ -118,6 +249,12 @@
     <Description></Description>
     <ImageIndex>22</ImageIndex>
     <ShortName>Досп.</ShortName>
+    <Heroes>
+      <Hero>Warrior</Hero>
+      <Hero>Dwarf</Hero>
+      <Hero>BladeMaster</Hero>
+      <Hero>Paladin</Hero>
+    </Heroes>
   </GroupItems>
   <GroupItems>
     <ID>GroupArmourMelee2</ID>
@@ -125,13 +262,25 @@
     <Description></Description>
     <ImageIndex>23</ImageIndex>
     <ShortName>Досп.</ShortName>
-    </GroupItems>
+    <Heroes>
+      <Hero>Warrior</Hero>
+      <Hero>Dwarf</Hero>
+      <Hero>BladeMaster</Hero>
+      <Hero>Paladin</Hero>
+    </Heroes>
+  </GroupItems>
   <GroupItems>
     <ID>GroupArmourMelee3</ID>
     <Name>Экспертная стальная броня</Name>
     <Description></Description>
     <ImageIndex>24</ImageIndex>
     <ShortName>Досп.</ShortName>
+    <Heroes>
+      <Hero>Warrior</Hero>
+      <Hero>Dwarf</Hero>
+      <Hero>BladeMaster</Hero>
+      <Hero>Paladin</Hero>
+    </Heroes>
   </GroupItems>
   <GroupItems>
     <ID>GroupArmourMelee4</ID>
@@ -139,6 +288,12 @@
     <Description></Description>
     <ImageIndex>25</ImageIndex>
     <ShortName>Досп.</ShortName>
+    <Heroes>
+      <Hero>Warrior</Hero>
+      <Hero>Dwarf</Hero>
+      <Hero>BladeMaster</Hero>
+      <Hero>Paladin</Hero>
+    </Heroes>
   </GroupItems>
   <GroupItems>
     <ID>GroupArmourRange0</ID>
@@ -146,6 +301,12 @@
     <Description>Броня из грубо выделанной кожи</Description>
     <ImageIndex>26</ImageIndex>
     <ShortName>Досп.</ShortName>
+    <Heroes>
+      <Hero>Rogue</Hero>
+      <Hero>Elf</Hero>
+      <Hero>BeastMaster</Hero>
+      <Hero>Marksman</Hero>
+    </Heroes>
   </GroupItems>
   <GroupItems>
     <ID>GroupArmourRange1</ID>
@@ -153,6 +314,12 @@
     <Description></Description>
     <ImageIndex>27</ImageIndex>
     <ShortName>Досп.</ShortName>
+    <Heroes>
+      <Hero>Rogue</Hero>
+      <Hero>Elf</Hero>
+      <Hero>BeastMaster</Hero>
+      <Hero>Marksman</Hero>
+    </Heroes>
   </GroupItems>
   <GroupItems>
     <ID>GroupArmourRange2</ID>
@@ -160,6 +327,12 @@
     <Description></Description>
     <ImageIndex>28</ImageIndex>
     <ShortName>Досп.</ShortName>
+    <Heroes>
+      <Hero>Rogue</Hero>
+      <Hero>Elf</Hero>
+      <Hero>BeastMaster</Hero>
+      <Hero>Marksman</Hero>
+    </Heroes>
   </GroupItems>
   <GroupItems>
     <ID>GroupArmourRange3</ID>
@@ -167,6 +340,12 @@
     <Description></Description>
     <ImageIndex>29</ImageIndex>
     <ShortName>Досп.</ShortName>
+    <Heroes>
+      <Hero>Rogue</Hero>
+      <Hero>Elf</Hero>
+      <Hero>BeastMaster</Hero>
+      <Hero>Marksman</Hero>
+    </Heroes>
   </GroupItems>
   <GroupItems>
     <ID>GroupArmourRange4</ID>
@@ -174,6 +353,12 @@
     <Description></Description>
     <ImageIndex>30</ImageIndex>
     <ShortName>Досп.</ShortName>
+    <Heroes>
+      <Hero>Rogue</Hero>
+      <Hero>Elf</Hero>
+      <Hero>BeastMaster</Hero>
+      <Hero>Marksman</Hero>
+    </Heroes>
   </GroupItems>
   <GroupItems>
     <ID>GroupArmourMage0</ID>
@@ -181,6 +366,14 @@
     <Description>Обычная льняная роба</Description>
     <ImageIndex>31</ImageIndex>
     <ShortName>Досп.</ShortName>
+    <Heroes>
+      <Hero>Cleric</Hero>
+      <Hero>Mage</Hero>
+      <Hero>DarkPriest</Hero>
+      <Hero>Priest</Hero>
+      <Hero>IceMage</Hero>
+      <Hero>FireMage</Hero>
+    </Heroes>
   </GroupItems>
   <GroupItems>
     <ID>GroupArmourMage1</ID>
@@ -188,6 +381,14 @@
     <Description></Description>
     <ImageIndex>32</ImageIndex>
     <ShortName>Досп.</ShortName>
+    <Heroes>
+      <Hero>Cleric</Hero>
+      <Hero>Mage</Hero>
+      <Hero>DarkPriest</Hero>
+      <Hero>Priest</Hero>
+      <Hero>IceMage</Hero>
+      <Hero>FireMage</Hero>
+    </Heroes>
   </GroupItems>
   <GroupItems>
     <ID>GroupArmourMage2</ID>
@@ -195,6 +396,14 @@
     <Description></Description>
     <ImageIndex>33</ImageIndex>
     <ShortName>Досп.</ShortName>
+    <Heroes>
+      <Hero>Cleric</Hero>
+      <Hero>Mage</Hero>
+      <Hero>DarkPriest</Hero>
+      <Hero>Priest</Hero>
+      <Hero>IceMage</Hero>
+      <Hero>FireMage</Hero>
+    </Heroes>
   </GroupItems>
   <GroupItems>
     <ID>GroupArmourMage3</ID>
@@ -202,6 +411,14 @@
     <Description></Description>
     <ImageIndex>34</ImageIndex>
     <ShortName>Досп.</ShortName>
+    <Heroes>
+      <Hero>Cleric</Hero>
+      <Hero>Mage</Hero>
+      <Hero>DarkPriest</Hero>
+      <Hero>Priest</Hero>
+      <Hero>IceMage</Hero>
+      <Hero>FireMage</Hero>
+    </Heroes>
   </GroupItems>
   <GroupItems>
     <ID>GroupArmourMage4</ID>
@@ -209,6 +426,14 @@
     <Description></Description>
     <ImageIndex>35</ImageIndex>
     <ShortName>Досп.</ShortName>
+    <Heroes>
+      <Hero>Cleric</Hero>
+      <Hero>Mage</Hero>
+      <Hero>DarkPriest</Hero>
+      <Hero>Priest</Hero>
+      <Hero>IceMage</Hero>
+      <Hero>FireMage</Hero>
+    </Heroes>
   </GroupItems>
   <GroupItems>
     <ID>GroupQuiver0</ID>
@@ -216,5 +441,13 @@
     <Description>Колчан на минимальное количество стрел</Description>
     <ImageIndex>152</ImageIndex>
     <ShortName>Колч.</ShortName>
+    <Heroes>
+      <Hero>Cleric</Hero>
+      <Hero>Mage</Hero>
+      <Hero>DarkPriest</Hero>
+      <Hero>Priest</Hero>
+      <Hero>IceMage</Hero>
+      <Hero>FireMage</Hero>
+    </Heroes>
   </GroupItems>
 </Descriptors>
