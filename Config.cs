@@ -517,12 +517,13 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(ShiftForBorder.Y >= 0);
             Debug.Assert(ShiftForBorder.Y <= 10);
 
-            ImageIndexFirstAvatar = XmlUtils.GetIntegerNotNull(xmlDoc, "Game/Interface/ImageIndexFirstAvatar");
+            // Т.к. ImageIndex у аватаров указан со смещением 1 и ImageIndexFirstAvatar указывается со смещением в 1, то уменьшаем итог на 1
+            ImageIndexFirstAvatar = XmlUtils.GetIntegerNotNull(xmlDoc, "Game/Interface/ImageIndexFirstAvatar") - 1;
             QuantityInternalAvatars = XmlUtils.GetIntegerNotNull(xmlDoc, "Game/Interface/QuantityInternalAvatars");
             ImageIndexExternalAvatar = ImageIndexFirstAvatar + QuantityInternalAvatars;
             MaxQuantityExternalAvatars = XmlUtils.GetIntegerNotNull(xmlDoc, "Game/Interface/MaxQuantityExternalAvatars");
             Debug.Assert(ImageIndexFirstAvatar > 0);
-            Debug.Assert(ImageIndexFirstAvatar < 200);
+            Debug.Assert(ImageIndexFirstAvatar < 240);
             Debug.Assert(QuantityInternalAvatars > 1);
             Debug.Assert(QuantityInternalAvatars < 64);
             Debug.Assert(MaxQuantityExternalAvatars > 1);
