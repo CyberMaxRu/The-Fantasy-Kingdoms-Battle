@@ -37,7 +37,8 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
-            Debug.Assert((AvailableForAllHeroes && (availableForHeroesString is null)) || (!AvailableForAllHeroes && (availableForHeroesString != null) && (availableForHeroesString.Count > 0)));
+            Debug.Assert((AvailableForAllHeroes && (availableForHeroesString is null)) || (!AvailableForAllHeroes && (availableForHeroesString != null) && (availableForHeroesString.Count > 0)),
+                $"Не настроена доступность героям у {ID}.");
         }
 
         internal bool AvailableForAllHeroes { get; }// Сущность доступна всем существам
