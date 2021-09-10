@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Xml;
+using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal enum CategoryCreature { Citizen, Hero, Monster };
+    internal enum CategoryCreature { Citizen, Hero, Monster };    
+    internal enum PriorityBuy { None, Min, Low, Average, High, Max };// Приоритет обработки сооружений героями
+
 
     // Базовый тип существа
     internal sealed class DescriptorCreature : DescriptorEntity
@@ -193,7 +196,15 @@ namespace Fantasy_Kingdoms_Battle
             // Загружаем награду
             TypeReward = new DescriptorReward(n.SelectSingleNode("Reward"));
 
-
+            // Загружаем приоритеты обхода сооружений для покупок
+            XmlNode priorityConstr = n.SelectSingleNode("ConstructionsForShopping");
+            if (priorityConstr != null)
+            {
+                foreach (XmlNode constr in priorityConstr.SelectNodes("Construction"))
+                {
+                    PriorityConstructionForShoppings.Add(new PriorityConstructionForShopping(constr, PriorityConstructionForShoppings));
+                }
+            }
 
             // Проверки корректности данных
             if (CategoryCreature == CategoryCreature.Hero)
@@ -206,6 +217,7 @@ namespace Fantasy_Kingdoms_Battle
             else
             {
                 Debug.Assert(MaxConstructionForBuyPerDay == 0);
+                Debug.Assert(PriorityConstructionForShoppings.Count == 0);
             }
 
             void LoadName(string nodes, string node, List<string> list)
@@ -242,7 +254,7 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorItem WeaponRange { get; private set; }// Стрелковое оружие
         internal DescriptorItem Armour { get; private set; }// Доспех по умолчанию
         internal DescriptorReward TypeReward { get; }// Награда за убийство существа
-        internal (string, int)[] PriorityConstructionsForBuy;
+        internal List<PriorityConstructionForShopping> PriorityConstructionForShoppings { get; } = new List<PriorityConstructionForShopping>();
         //internal (string, int)[] PriorityConstructionsForBuy;
         internal int Cost { get; }
         internal DescriptorConstruction Construction { get; }
@@ -308,10 +320,42 @@ namespace Fantasy_Kingdoms_Battle
                 //Debug.Assert(Armour.ClassHero == this);
             }
 
+            foreach (PriorityConstructionForShopping pc in PriorityConstructionForShoppings)
+            {
+                pc.TuneDeferredLinks();
+            }
+
             /*foreach (Ability a in Abilities)
                 if (a.ClassesHeroes.IndexOf(this) == -1)
                     throw new Exception("Класс героя " + ID + " отсутствует в списке доступных для способности " + a.ID);
             */
         }
     }
-}
+
+    internal sealed class PriorityConstructionForShopping : Descriptor
+    {
+        private string nameConstruction;
+
+        public PriorityConstructionForShopping(XmlNode n, List<PriorityConstructionForShopping> list) : base()
+        {
+            nameConstruction = GetStringNotNull(n, "ID");
+            Priority = (PriorityBuy)Enum.Parse(typeof(PriorityBuy), n.SelectSingleNode("Priority").InnerText);
+
+            foreach (PriorityConstructionForShopping pc in list)
+            {
+                Debug.Assert(pc.nameConstruction != nameConstruction);
+            }
+        }
+
+        internal DescriptorConstruction Descriptor { get; private set; }
+        internal PriorityBuy Priority { get; }
+
+        internal override void TuneDeferredLinks()
+        {
+            base.TuneDeferredLinks();
+
+            Descriptor = Config.FindConstruction(nameConstruction);
+            nameConstruction = "";
+        }
+    }
+} 

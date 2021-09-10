@@ -9,9 +9,6 @@ using System.Windows.Forms;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    // Приоритет обработки сооружений героями
-    internal enum PriorityBuyInConstruction { None, Min, Low, Average, High, Max };
-
     // Класс героя игрока
     internal sealed class Hero : Creature
     {

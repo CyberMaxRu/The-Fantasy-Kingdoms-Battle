@@ -156,13 +156,28 @@
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
     <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
-    <ConstructionsForBuy>
-      <Construction Priority="Max">GuildWarrior</Construction>
-      <Construction Priority="High">Smithy</Construction>
-      <Construction Priority="Average">AlchemistHut</Construction>
-      <Construction Priority="Average">Market</Construction>
-      <Construction Priority="Low">MagicBazaar</Construction>
-    </ConstructionsForBuy>
+    <ConstructionsForShopping>
+      <Construction>
+        <ID>GuildWarrior</ID>
+        <Priority>Max</Priority>
+      </Construction>
+      <Construction>
+        <ID>Smithy</ID>
+        <Priority>High</Priority>
+      </Construction>
+      <Construction>
+        <ID>AlchemistHut</ID>
+        <Priority>Average</Priority>
+      </Construction>
+      <Construction>
+        <ID>Market</ID>
+        <Priority>Average</Priority>
+      </Construction>
+      <Construction>
+        <ID>MagicBazaar</ID>
+        <Priority>Low</Priority>
+      </Construction>
+    </ConstructionsForShopping>
     <Names>
       <Name>Арагондер</Name>
       <Name>Аргот</Name>
