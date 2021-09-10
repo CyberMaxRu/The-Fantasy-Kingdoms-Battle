@@ -10,7 +10,7 @@
     <ShowGrid>False</ShowGrid>
   </Battlefield>
   <Sound>
-    <PlaySound>False</PlaySound>
+    <PlaySound>True</PlaySound>
     <PlayMusic>False</PlayMusic>
   </Sound>
 </Settings>
