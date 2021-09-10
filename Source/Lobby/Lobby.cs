@@ -32,7 +32,7 @@ namespace Fantasy_Kingdoms_Battle
             Players = new Player[tl.QuantityPlayers];
             Players[0] = new PlayerHuman(this, Program.formMain.CurrentHumanPlayer, 0);// Живой игрок всегда первый
             // Подбираем компьютерных игроков из пула доступных
-            GeneratePlayers();
+            GenerateComputerPlayers();
 
             CalcDayNextBattleBetweenPlayers();
 
@@ -99,7 +99,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
-            void GeneratePlayers()
+            void GenerateComputerPlayers()
             {
 
                 List<ComputerPlayer> listCompPlayers = new List<ComputerPlayer>();
