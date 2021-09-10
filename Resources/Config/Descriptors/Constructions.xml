@@ -29,6 +29,12 @@
         <Builders>1</Builders>
         <Income>0</Income>
         <MaxHeroes>20</MaxHeroes>
+        <Requirements>
+          <Requirement>
+            <Construction>Arena</Construction>
+            <Level>1</Level>
+          </Requirement>
+        </Requirements>
       </Level>
       <Level>
         <Pos>3</Pos>
@@ -109,6 +115,12 @@
         <Builders>1</Builders>
         <Income>0</Income>
         <MaxHeroes>20</MaxHeroes>
+        <Requirements>
+          <Requirement>
+            <Construction>Menagerie</Construction>
+            <Level>1</Level>
+          </Requirement>
+        </Requirements>
       </Level>
       <Level>
         <Pos>3</Pos>
@@ -189,6 +201,12 @@
         <Builders>1</Builders>
         <Income>0</Income>
         <MaxHeroes>20</MaxHeroes>
+        <Requirements>
+          <Requirement>
+            <Construction>Hospital</Construction>
+            <Level>1</Level>
+          </Requirement>
+        </Requirements>
       </Level>
       <Level>
         <Pos>3</Pos>
@@ -271,8 +289,8 @@
         <MaxHeroes>10</MaxHeroes>
         <Requirements>
           <Requirement>
-            <Construction>Library</Construction>
-            <Level>1</Level>
+            <Construction>Castle</Construction>
+            <Level>2</Level>
           </Requirement>
         </Requirements>
       </Level>
@@ -286,6 +304,10 @@
           <Requirement>
             <Construction>Castle</Construction>
             <Level>2</Level>
+          </Requirement>
+          <Requirement>
+            <Construction>Library</Construction>
+            <Level>1</Level>
           </Requirement>
         </Requirements>
       </Level>
@@ -383,8 +405,8 @@
         <MaxHeroes>10</MaxHeroes>
         <Requirements>
           <Requirement>
-            <Construction>Garden</Construction>
-            <Level>1</Level>
+            <Construction>Castle</Construction>
+            <Level>2</Level>
           </Requirement>
         </Requirements>
       </Level>
@@ -400,8 +422,8 @@
             <Level>2</Level>
           </Requirement>
           <Requirement>
-            <Construction>Market</Construction>
-            <Level>2</Level>
+            <Construction>Garden</Construction>
+            <Level>1</Level>
           </Requirement>
         </Requirements>
       </Level>
@@ -417,7 +439,7 @@
             <Level>2</Level>
           </Requirement>
           <Requirement>
-            <Construction>Market</Construction>
+            <Construction>Garden</Construction>
             <Level>2</Level>
           </Requirement>
         </Requirements>
@@ -484,8 +506,8 @@
         <MaxHeroes>10</MaxHeroes>
         <Requirements>
           <Requirement>
-            <Construction>Tavern</Construction>
-            <Level>1</Level>
+            <Construction>Castle</Construction>
+            <Level>2</Level>
           </Requirement>
         </Requirements>
       </Level>
@@ -502,8 +524,8 @@
             <Level>2</Level>
           </Requirement>
           <Requirement>
-            <Construction>Smithy</Construction>
-            <Level>2</Level>
+            <Construction>Tavern</Construction>
+            <Level>1</Level>
           </Requirement>
         </Requirements>
       </Level>
@@ -520,7 +542,7 @@
             <Level>2</Level>
           </Requirement>
           <Requirement>
-            <Construction>Smithy</Construction>
+            <Construction>Tavern</Construction>
             <Level>2</Level>
           </Requirement>
         </Requirements>
@@ -585,6 +607,12 @@
         <Builders>1</Builders>
         <Income>0</Income>
         <MaxHeroes>20</MaxHeroes>
+        <Requirements>
+          <Requirement>
+            <Construction>TrainingHall</Construction>
+            <Level>1</Level>
+          </Requirement>
+        </Requirements>
       </Level>
       <Level>
         <Pos>3</Pos>
@@ -1531,12 +1559,18 @@
     <Line>2</Line>
     <Pos>4</Pos>
     <DefaultLevel>0</DefaultLevel>
-    <MaxLevel>1</MaxLevel>
+    <MaxLevel>2</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>hall_of_lords_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>
+        <Cost>1500</Cost>
+        <Builders>1</Builders>
+        <Income>0</Income>
+      </Level>
+      <Level>
+        <Pos>2</Pos>
         <Cost>1500</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -1597,7 +1631,7 @@
     <Line>3</Line>
     <Pos>2</Pos>
     <DefaultLevel>0</DefaultLevel>
-    <MaxLevel>1</MaxLevel>
+    <MaxLevel>2</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>garden_select.wav</SoundSelect>
     <Levels>
@@ -1606,6 +1640,12 @@
         <Cost>500</Cost>
         <Builders>1</Builders>
         <Income>50</Income>
+      </Level>
+      <Level>
+        <Pos>2</Pos>
+        <Cost>500</Cost>
+        <Builders>1</Builders>
+        <Income>100</Income>
       </Level>
     </Levels>
   </Construction>
