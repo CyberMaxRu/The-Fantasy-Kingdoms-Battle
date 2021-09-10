@@ -32,6 +32,7 @@ namespace Fantasy_Kingdoms_Battle
             DefenseRange = n.SelectSingleNode("DefenseRange") != null ? Convert.ToInt32(n.SelectSingleNode("DefenseRange").InnerText) : 0;
             DefenseMagic = n.SelectSingleNode("DefenseMagic") != null ? Convert.ToInt32(n.SelectSingleNode("DefenseMagic").InnerText) : 0;
             QuantityShots = XmlUtils.GetInteger(n, "QuantityShots");
+            TimeOfAction = XmlUtils.GetInteger(n, "TimeOfAction");
 
             if (CategoryItem == CategoryItem.Quiver)
             {
@@ -46,6 +47,16 @@ namespace Fantasy_Kingdoms_Battle
             if (CategoryItem == CategoryItem.Weapon)
             {
                 //Debug.Assert(DamageRange == 0);
+            }
+
+            if (CategoryItem == CategoryItem.Elixir)
+            {
+                Debug.Assert(TimeOfAction > 0);
+                Debug.Assert(TimeOfAction <= 60);
+            }
+            else
+            {
+                Debug.Assert(TimeOfAction == 0);
             }
 
             /*if (CategoryItem == CategoryItem.RangeWeapon)
@@ -107,6 +118,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int DefenseMagic { get; }
         internal int QuantityShots { get; }
         internal int Distance { get; }
+        internal int TimeOfAction { get; }// Время действия (эликсира)
 
         /*protected override void DoPrepareHint()
         {

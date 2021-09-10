@@ -12,7 +12,6 @@ namespace Fantasy_Kingdoms_Battle
     // Базовый класс существа
     internal abstract class Creature : BigEntity
     {
-        private VCCell panelEntity;
         private static int sequenceID = 0;// Генератор уникального кода героя
 
         public Creature(DescriptorCreature tc, BattleParticipant bp)

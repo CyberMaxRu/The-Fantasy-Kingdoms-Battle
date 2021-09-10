@@ -461,14 +461,23 @@ namespace Fantasy_Kingdoms_Battle
 
             ResearchesAvailabled = TypeConstruction.ResearchesPerDay;
             BuildedOrUpgraded = false;
+
+            if (Lobby.Day > 1)
+            {
+                if (TypeConstruction.Levels[Level].GreatnessPerDay > 0)
+                    Player.AddGreatness(GreatnessPerDay());
+            }
         }
 
         internal void AfterEndTurn()
         {
             Debug.Assert(Level > 0);
 
-            if (TypeConstruction.Levels[Level].GreatnessPerDay > 0)
-                Player.AddGreatness(GreatnessPerDay());
+            // Ходим героями
+            foreach (Hero h in Heroes)
+            {
+                h.DoTurn();
+            }
         }
 
         internal bool CanResearch()

@@ -9,6 +9,9 @@ using System.Windows.Forms;
 
 namespace Fantasy_Kingdoms_Battle
 {
+    // Приоритет обработки сооружений героями
+    internal enum PriorityBuyInConstruction { None, Min, Low, Average, High, Max };
+
     // Класс героя игрока
     internal sealed class Hero : Creature
     {
@@ -16,7 +19,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             Construction = pb;
             DayOfHire = Player.Lobby.Day;
-            TypeHero = pb.TypeConstruction.TrainedHero;
 
             FullName = (pb.TypeConstruction.TrainedHero.PrefixName.Length > 0 ? pb.TypeConstruction.TrainedHero.PrefixName + " " : "")
                 + GetRandomName(pb.TypeConstruction.TrainedHero.NameFromTypeHero == null ? pb.TypeConstruction.TrainedHero.Names : pb.TypeConstruction.TrainedHero.NameFromTypeHero.Names)
@@ -32,15 +34,14 @@ namespace Fantasy_Kingdoms_Battle
         {
             Construction = pb;
             DayOfHire = Player.Lobby.Day;
-            TypeHero = th;
-            FullName = TypeHero.Name;
+            FullName = TypeCreature.Name;
         }
 
         internal Construction Construction { get; }// Здание, которому принадлежит герой
         internal Player Player => Construction.Player;// Игрок, которому принадлежит герой
-        internal DescriptorCreature TypeHero { get; } // Класс героя
         internal string FullName { get; }// Полное имя
         internal int Gold { get; private set; }// Количество золота у героя
+
 
         // Выполнение флагов
         internal Construction TargetByFlag { get; set; }// Логово флага, который выполняется
@@ -272,7 +273,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(FullName != null);
             Debug.Assert(FullName.Length > 0);
 
-            return TypeHero.ImageIndex != FormMain.IMAGE_INDEX_CURRENT_AVATAR ? FullName : Player.GetName();
+            return TypeCreature.ImageIndex != FormMain.IMAGE_INDEX_CURRENT_AVATAR ? FullName : Player.GetName();
         }
 
         internal override void PrepareHint()
@@ -280,14 +281,14 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(IsLive);
 
             Program.formMain.formHint.AddStep0Name(GetNameHero());
-            Program.formMain.formHint.AddStep1Header($"{TypeCreature.Name} ({TypeCreature.KindCreature.Name})", $"Уровень {Level}", TypeHero.Description);
+            Program.formMain.formHint.AddStep1Header($"{TypeCreature.Name} ({TypeCreature.KindCreature.Name})", $"Уровень {Level}", TypeCreature.Description);
         }
 
         protected override void DoCustomDraw(Graphics g, int x, int y, bool drawState)
         {
             base.DoCustomDraw(g, x, y, drawState);
 
-            if (drawState && (TypeHero.Construction.ID != "Castle"))
+            if (drawState && (TypeCreature.Construction.ID != "Castle"))
                 Program.formMain.ilStateHero.DrawImage(g, StateCreature.ImageIndex, true, false, x - 7, y - 3);
         }
 
@@ -346,6 +347,26 @@ namespace Fantasy_Kingdoms_Battle
 
             Gold += income;
         }
+
+        internal void DoTurn()
+        {
+            Debug.Assert(IsLive);
+
+            // Закупаем оружие и доспехи
+            // Ищем, доступно ли более лучшее оружие
+            DescriptorItem newWeapon = FindWeaponForBuy();
+            if (newWeapon != null)
+            {
+
+            }
+        }
+
+        private DescriptorItem FindWeaponForBuy()
+        {
+            // Ищем кузницу
+            return null;
+        }
+
         internal override string GetCost() => null;
     }
 }

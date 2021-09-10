@@ -71,6 +71,7 @@
     <ImageIndex>76</ImageIndex>
     <CategoryItem>Elixir</CategoryItem>
     <Cost>50</Cost>
+    <TimeOfAction>30</TimeOfAction>
     <Perk></Perk>
   </Item>
   <Item>
@@ -80,6 +81,7 @@
     <ImageIndex>77</ImageIndex>
     <CategoryItem>Elixir</CategoryItem>
     <Cost>50</Cost>
+    <TimeOfAction>30</TimeOfAction>
     <Perk></Perk>
   </Item>
   <Item>
@@ -89,6 +91,7 @@
     <ImageIndex>78</ImageIndex>
     <CategoryItem>Elixir</CategoryItem>
     <Cost>50</Cost>
+    <TimeOfAction>30</TimeOfAction>
     <Perk></Perk>
   </Item>
   <Item>
@@ -98,6 +101,7 @@
     <ImageIndex>79</ImageIndex>
     <CategoryItem>Elixir</CategoryItem>
     <Cost>50</Cost>
+    <TimeOfAction>30</TimeOfAction>
     <Perk></Perk>
   </Item>
   <Item>
@@ -107,6 +111,7 @@
     <ImageIndex>80</ImageIndex>
     <CategoryItem>Elixir</CategoryItem>
     <Cost>50</Cost>
+    <TimeOfAction>30</TimeOfAction>
     <Perk></Perk>
   </Item>
   <Item>
@@ -116,6 +121,7 @@
     <ImageIndex>81</ImageIndex>
     <CategoryItem>Elixir</CategoryItem>
     <Cost>50</Cost>
+    <TimeOfAction>30</TimeOfAction>
     <Perk></Perk>
   </Item>
   <Item>
@@ -125,6 +131,7 @@
     <ImageIndex>82</ImageIndex>
     <CategoryItem>Elixir</CategoryItem>
     <Cost>50</Cost>
+    <TimeOfAction>30</TimeOfAction>
     <Perk></Perk>
   </Item>
   <Item>
@@ -134,6 +141,7 @@
     <ImageIndex>83</ImageIndex>
     <CategoryItem>Elixir</CategoryItem>
     <Cost>50</Cost>
+    <TimeOfAction>30</TimeOfAction>
     <Perk></Perk>
   </Item>
   <Item>
@@ -143,6 +151,7 @@
     <ImageIndex>84</ImageIndex>
     <CategoryItem>Elixir</CategoryItem>
     <Cost>50</Cost>
+    <TimeOfAction>30</TimeOfAction>
     <Perk></Perk>
   </Item>
   <Item>

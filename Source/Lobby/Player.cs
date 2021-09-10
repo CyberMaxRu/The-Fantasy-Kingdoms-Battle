@@ -175,7 +175,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal abstract void DoTurn();
         internal abstract void EndTurn();
-        internal virtual void AfterEndTurn()
+        internal virtual void CalcTurn()
         {
             foreach (Construction pc in Constructions)
                 if (pc.Level > 0)

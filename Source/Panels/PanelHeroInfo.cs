@@ -154,7 +154,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        protected override int GetImageIndex() => Program.formMain.TreatImageIndex(Hero.TypeHero.ImageIndex, Hero.Player);
+        protected override int GetImageIndex() => Program.formMain.TreatImageIndex(Hero.TypeCreature.ImageIndex, Hero.Player);
         protected override bool ImageIsEnabled() => true;
         protected override string GetCaption() => Hero.GetNameHero();
     }

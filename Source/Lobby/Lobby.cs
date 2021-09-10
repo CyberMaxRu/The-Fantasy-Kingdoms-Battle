@@ -32,7 +32,7 @@ namespace Fantasy_Kingdoms_Battle
             Players = new Player[tl.QuantityPlayers];
             Players[0] = new PlayerHuman(this, Program.formMain.CurrentHumanPlayer, 0);// Живой игрок всегда первый
             // Подбираем компьютерных игроков из пула доступных
-            GeneratePlayers();
+            GenerateComputerPlayers();
 
             CalcDayNextBattleBetweenPlayers();
 
@@ -99,7 +99,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
-            void GeneratePlayers()
+            void GenerateComputerPlayers()
             {
 
                 List<ComputerPlayer> listCompPlayers = new List<ComputerPlayer>();
@@ -116,11 +116,11 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal int ID { get; }
-        internal TypeLobby TypeLobby { get; }
+        internal int ID { get; }// Уникальный код лобби
+        internal TypeLobby TypeLobby { get; }// Тип лобби
         internal Player[] Players { get; }
         internal Player CurrentPlayer { get; private set; }
-        internal int Day { get; private set; }        
+        internal int Day { get; private set; }// Текущий день лобби
         internal List<Battle> Battles { get; } = new List<Battle>();
         internal bool HumanIsWin { get; private set; }
         internal StateLobby StateLobby { get; set; }
@@ -229,8 +229,9 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(ExistsHumanPlayer());
 
                 // Общая подготовка хода
-                DoPrepareTurn();
+                PrepareTurn();
 
+                // Действие игроков (ход людей и ИИ)
                 for (int i = 0; i < Players.Length; i++)
                 {
                     if (Players[i].IsLive || (Players[i].DayOfEndGame == Day - 1))
@@ -265,15 +266,11 @@ namespace Fantasy_Kingdoms_Battle
                     }
                 }
 
-                for (int i = 0; i < Players.Length; i++)
-                {
-                    if (Players[i].IsLive || (Players[i].DayOfEndGame == Day - 1))
-                    {
-                        Players[i].AfterEndTurn();
-                    }
-                }
+                // Расчет результатов хода игроков
+                foreach (Player p in Players.Where(pl => pl.IsLive || (pl.DayOfEndGame == Day - 1)))
+                    p.CalcTurn();
 
-                    DoEndTurn();
+                DoEndTurn();
             }
 
             bool ExistsHumanPlayer()
@@ -296,7 +293,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void DoPrepareTurn()
+        internal void PrepareTurn()
         {
             // Считаем день следующей битвы между игроками
             CalcDayNextBattleBetweenPlayers();

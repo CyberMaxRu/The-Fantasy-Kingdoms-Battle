@@ -4,7 +4,7 @@
     <ID>HumanPlayer1</ID>
     <Name>CyberMax</Name>
     <Description>-</Description>
-    <ImageIndex>3</ImageIndex>
+    <ImageIndex>1</ImageIndex>
     <DirectoryAvatar>F:\Projects\C-Sharp\Fantasy King's Battle\bin\Debug\Avatars</DirectoryAvatar>
   </Player>
 </Players>

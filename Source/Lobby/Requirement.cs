@@ -31,7 +31,7 @@ namespace Fantasy_Kingdoms_Battle
             Construction = Config.FindConstruction(nameConstruction);
             nameConstruction = "";
 
-            Debug.Assert(Level <= Construction.MaxLevel);
+            Debug.Assert(Level <= Construction.MaxLevel, $"Требуется сооружение {Construction.ID} {Level} уровня, но у него максимум {Construction.MaxLevel} уровень.");
         }
     }
 }
