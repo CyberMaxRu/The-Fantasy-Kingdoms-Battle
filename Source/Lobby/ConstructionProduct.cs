@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -14,18 +15,24 @@ namespace Fantasy_Kingdoms_Battle
 
         public ConstructionProduct(DescriptorAbility descriptor) : base()
         {
+            Debug.Assert(descriptor != null);
+
             descriptorAbility = descriptor;
             Descriptor = descriptor;
         }
 
         public ConstructionProduct(DescriptorItem descriptor) : base()
         {
+            Debug.Assert(descriptor != null);
+
             descriptorItem = descriptor;
             Descriptor = descriptor;
         }
 
         public ConstructionProduct(DescriptorGroupItems descriptor) : base()
         {
+            Debug.Assert(descriptor != null);
+
             descriptorGroupItem = descriptor;
             Descriptor = descriptor;
         }
@@ -59,7 +66,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PrepareHint()
         {
-            
+            Program.formMain.formHint.AddStep1Header(Descriptor.Name, "", Descriptor.Description);
         }
     }
 }
