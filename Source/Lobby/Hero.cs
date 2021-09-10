@@ -377,13 +377,5 @@ namespace Fantasy_Kingdoms_Battle
             if (shopped)
                 CounterConstructionForBuy--;
         }
-
-        private DescriptorItem FindWeaponForBuy()
-        {
-            // Ищем кузницу
-            return null;
-        }
-
-        internal override string GetCost() => "";
     }
 }
