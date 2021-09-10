@@ -116,11 +116,11 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal int ID { get; }
-        internal TypeLobby TypeLobby { get; }
+        internal int ID { get; }// Уникальный код лобби
+        internal TypeLobby TypeLobby { get; }// Тип лобби
         internal Player[] Players { get; }
         internal Player CurrentPlayer { get; private set; }
-        internal int Day { get; private set; }        
+        internal int Day { get; private set; }// Текущий день лобби
         internal List<Battle> Battles { get; } = new List<Battle>();
         internal bool HumanIsWin { get; private set; }
         internal StateLobby StateLobby { get; set; }
