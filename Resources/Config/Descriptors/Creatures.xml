@@ -345,6 +345,7 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
     <Names>
       <Name>Весси</Name>
       <Name>Халелифь</Name>
@@ -483,6 +484,7 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
     <Names>
       <Name>Аллеран</Name>
       <Name>Анариен</Name>
@@ -652,6 +654,7 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
     <Names>
       <Name>Арбера</Name>
       <Name>Челла</Name>
@@ -801,6 +804,7 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
     <Names>
       <Name>Амелон</Name>
       <Name>Борадор</Name>
@@ -949,6 +953,7 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
     <Names>
       <Name>Элькина</Name>
       <Name>Филлиана</Name>
@@ -1079,6 +1084,7 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
     <Names>
       <Name>Фильбо</Name>
       <Name>Геджет</Name>
@@ -1211,6 +1217,7 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
     <Surnames>
       <Surname>Чернокровка</Surname>
       <Surname>Даэдра</Surname>
@@ -1308,6 +1315,7 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
     <Surnames>
       <Surname>, Дочь Любви</Surname>
       <Surname>Тихая</Surname>
@@ -1403,6 +1411,7 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
     <Surnames>
       <Surname>Яркая Душа</Surname>
       <Surname>Святой Клинок</Surname>
@@ -1497,6 +1506,7 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
     <Surnames>
       <Surname>Дуболом</Surname>
       <Surname>Быстромеч</Surname>
@@ -1592,6 +1602,7 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
     <Surnames>
       <Surname>Глаз Ворона</Surname>
       <Surname>Волк</Surname>
@@ -1687,6 +1698,7 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
     <Surnames>
       <Surname>Острострел</Surname>
       <Surname>Снайпер</Surname>
@@ -1783,6 +1795,7 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
   </Creature>
   <Creature>
     <ID>IceMage</ID>
@@ -1834,6 +1847,7 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
     <Surnames>
       <Surname>Колотун</Surname>
       <Surname>Свиристень</Surname>
@@ -1908,6 +1922,7 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
+    <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
     <Surnames>
       <Surname>Гибель Дня</Surname>
       <Surname>Быстроногая</Surname>

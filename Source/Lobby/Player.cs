@@ -35,6 +35,8 @@ namespace Fantasy_Kingdoms_Battle
         internal const int MAX_FLAG_HIGH = 2;// Максимальное число флагов с высоким приоритетом
         internal const int MAX_FLAG_COUNT = 5;// Максимальное число активных флагов
 
+        private List<UnitOfQueueForBuy> queueShopping = new List<UnitOfQueueForBuy>();
+
         public Player(Lobby lobby, DescriptorPlayer player, int playerIndex) : base(lobby)
         {
             Descriptor = player;
@@ -177,9 +179,20 @@ namespace Fantasy_Kingdoms_Battle
         internal abstract void EndTurn();
         internal virtual void CalcTurn()
         {
+            queueShopping.Clear();
+
+            // Собираем очередь из героев на посещение сооружений
             foreach (Construction pc in Constructions)
+            {
                 if (pc.Level > 0)
-                    pc.AfterEndTurn();
+                    pc.PrepareQueueShopping(queueShopping);
+            }
+
+            // Выполняем покупки
+            foreach(UnitOfQueueForBuy u in queueShopping)
+            {
+                u.Hero.DoShopping(u.Construction);
+            }
         }
 
         private void UpdateBuildersNextDay()
@@ -1134,5 +1147,30 @@ namespace Fantasy_Kingdoms_Battle
         {
             
         }
+
+        internal Construction FindConstruction(string ID)
+        {
+            foreach (Construction c in Constructions)
+            {
+                if (c.TypeConstruction.ID == ID)
+                    return c;
+            }
+
+            throw new Exception($"У игрока {GetName()} не найдено сооружение с ID = {ID}.");
+        }
+    }
+
+    internal sealed class UnitOfQueueForBuy
+    {
+        public UnitOfQueueForBuy(Hero hero, Construction construction, int priority)
+        {
+            Hero = hero;
+            Construction = construction;
+            Priority = priority;
+        }
+
+        internal Hero Hero { get; }
+        internal Construction Construction { get; }
+        internal int Priority { get; }
     }
 }

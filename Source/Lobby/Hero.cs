@@ -345,17 +345,19 @@ namespace Fantasy_Kingdoms_Battle
             Gold += income;
         }
 
-        internal void DoTurn()
+        internal void PrepareQueueShopping(List<UnitOfQueueForBuy> queue)
         {
             Debug.Assert(IsLive);
 
-            // Закупаем оружие и доспехи
-            // Ищем, доступно ли более лучшее оружие
-            DescriptorItem newWeapon = FindWeaponForBuy();
-            if (newWeapon != null)
+            foreach (PriorityConstructionForShopping pc in TypeCreature.PriorityConstructionForShoppings)
             {
+                queue.Add(new UnitOfQueueForBuy(this, Player.FindConstruction(pc.Descriptor.ID), (int)pc.Priority));
+            }           
+        }
 
-            }
+        internal void DoShopping(Construction c)
+        {
+
         }
 
         private DescriptorItem FindWeaponForBuy()

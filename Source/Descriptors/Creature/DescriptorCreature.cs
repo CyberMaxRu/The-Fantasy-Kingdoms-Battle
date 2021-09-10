@@ -7,7 +7,7 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 namespace Fantasy_Kingdoms_Battle
 {
     internal enum CategoryCreature { Citizen, Hero, Monster };    
-    internal enum PriorityBuy { None, Min, Low, Average, High, Max };// Приоритет обработки сооружений героями
+    internal enum PriorityBuy { None = 0, Min = 100, Low = 200, Average = 300, High = 400, Max = 500 };// Приоритет обработки сооружений героями
 
 
     // Базовый тип существа
@@ -209,9 +209,6 @@ namespace Fantasy_Kingdoms_Battle
             // Проверки корректности данных
             if (CategoryCreature == CategoryCreature.Hero)
             {
-                if (MaxConstructionForBuyPerDay == 0)
-                    MaxConstructionForBuyPerDay = 3;// Убрать после настройки всех героев
-
                 Debug.Assert(MaxConstructionForBuyPerDay > 0);
             }
             else

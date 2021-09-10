@@ -469,14 +469,13 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AfterEndTurn()
+        internal void PrepareQueueShopping(List<UnitOfQueueForBuy> queue)
         {
             Debug.Assert(Level > 0);
 
-            // Ходим героями
             foreach (Hero h in Heroes)
             {
-                h.DoTurn();
+                h.PrepareQueueShopping(queue);
             }
         }
 
