@@ -1561,7 +1561,7 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>2</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>
-    <SoundSelect>hall_of_lords_select.wav</SoundSelect>
+    <SoundSelect>training_hall_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -2478,7 +2478,7 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>2</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>
-    <SoundSelect>tavern_select.wav</SoundSelect>
+    <SoundSelect>menagerie_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -2512,7 +2512,7 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>2</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>
-    <SoundSelect>tavern_select.wav</SoundSelect>
+    <SoundSelect>gambling_hall_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>
