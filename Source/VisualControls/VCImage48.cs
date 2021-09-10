@@ -17,8 +17,6 @@ namespace Fantasy_Kingdoms_Battle
 
         public VCImage48(VisualControl parent, int shiftX, int shiftY, int imageIndex) : base(parent, shiftX, shiftY, Program.formMain.imListObjects48, imageIndex)
         {
-            Color = FormMain.Config.CommonCost;
-
             labelText = new VCLabel(this, 0, Height - 12, Program.formMain.fontSmallC, Color, 16, "");
             labelText.StringFormat.LineAlignment = StringAlignment.Far;
             labelText.Visible = false;// Текст перекрывается иконкой. Поэтому рисуем вручную
@@ -46,7 +44,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal string Text { get; set; } = "";
-        internal Color Color { get; set; }
+        internal Color Color { get; set; } = FormMain.Config.CommonCost;
         internal int Level { get; set; }
         internal int Quantity { get; set; }
         internal override void Draw(Graphics g)
