@@ -17,30 +17,25 @@ namespace Fantasy_Kingdoms_Battle
 
         public VCImage48(VisualControl parent, int shiftX, int shiftY, int imageIndex) : base(parent, shiftX, shiftY, Program.formMain.imListObjects48, imageIndex)
         {
-            labelText = new VCLabel(this, 0, Height - 12, Program.formMain.fontSmallC, Color, 16, "");
+            labelText = new VCLabel(this, 0, Height - 16, Program.formMain.fontSmallC, Color, 16, "");
             labelText.StringFormat.LineAlignment = StringAlignment.Far;
             labelText.Visible = false;// Текст перекрывается иконкой. Поэтому рисуем вручную
             labelText.ManualDraw = true;
+            labelText.Width = Width;
 
             labelLevel = new VCLabel(this, 0, 1, Program.formMain.fontSmallC, FormMain.Config.CommonLevel, 16, "");
             labelLevel.StringFormat.LineAlignment = StringAlignment.Near;
             labelLevel.StringFormat.Alignment = StringAlignment.Far;
             labelLevel.Visible = false;
             labelLevel.ManualDraw = true;
+            labelLevel.Width = Width - 4;
 
-            labelQuantity = new VCLabel(this, 0, 4, Program.formMain.fontSmallC, FormMain.Config.CommonQuantity, 16, "");
+            labelQuantity = new VCLabel(this, 0, Height - 16, Program.formMain.fontSmallC, FormMain.Config.CommonQuantity, 16, "");
             labelQuantity.StringFormat.LineAlignment = StringAlignment.Far;
             labelQuantity.StringFormat.Alignment = StringAlignment.Far;
             labelQuantity.Visible = false;
             labelQuantity.ManualDraw = true;
-
-            labelLevel.Width = Width - 4;
             labelQuantity.Width = Width - 4;
-            labelText.Width = Width;
-
-            labelLevel.Width = Width - 4;
-            labelQuantity.Width = Width - 4;
-            labelText.Width = Width;
         }
 
         internal string Text { get; set; } = "";
@@ -85,14 +80,6 @@ namespace Fantasy_Kingdoms_Battle
         protected override bool AllowClick()
         {
             return ImageIsEnabled && base.AllowClick();
-        }
-
-        internal override void ArrangeControls()
-        {
-            base.ArrangeControls();
-
-            labelQuantity.ShiftY = Height - 16;
-            labelText.ShiftY = Height - 16;
         }
     }
 }
