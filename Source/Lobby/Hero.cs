@@ -9,6 +9,9 @@ using System.Windows.Forms;
 
 namespace Fantasy_Kingdoms_Battle
 {
+    // Приоритет обработки сооружений героями
+    internal enum PriorityBuyInConstruction { None, Min, Low, Average, High, Max };
+
     // Класс героя игрока
     internal sealed class Hero : Creature
     {
@@ -38,6 +41,7 @@ namespace Fantasy_Kingdoms_Battle
         internal Player Player => Construction.Player;// Игрок, которому принадлежит герой
         internal string FullName { get; }// Полное имя
         internal int Gold { get; private set; }// Количество золота у героя
+
 
         // Выполнение флагов
         internal Construction TargetByFlag { get; set; }// Логово флага, который выполняется
@@ -343,6 +347,26 @@ namespace Fantasy_Kingdoms_Battle
 
             Gold += income;
         }
+
+        internal void DoTurn()
+        {
+            Debug.Assert(IsLive);
+
+            // Закупаем оружие и доспехи
+            // Ищем, доступно ли более лучшее оружие
+            DescriptorItem newWeapon = FindWeaponForBuy();
+            if (newWeapon != null)
+            {
+
+            }
+        }
+
+        private DescriptorItem FindWeaponForBuy()
+        {
+            // Ищем кузницу
+            return null;
+        }
+
         internal override string GetCost() => null;
     }
 }

@@ -473,6 +473,11 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(Level > 0);
 
+            // Ходим героями
+            foreach (Hero h in Heroes)
+            {
+                h.DoTurn();
+            }
         }
 
         internal bool CanResearch()

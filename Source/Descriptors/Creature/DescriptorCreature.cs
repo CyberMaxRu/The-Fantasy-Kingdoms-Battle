@@ -48,6 +48,8 @@ namespace Fantasy_Kingdoms_Battle
                 surnameFromTypeHero = XmlUtils.GetString(n, "SurnameFromTypeHero");
             }
 
+            MaxConstructionForBuyPerDay = XmlUtils.GetInteger(n, "MaxConstructionForBuyPerDay");// NOT NULL
+
             //Debug.Assert(Cost > 0);
 
 
@@ -188,9 +190,23 @@ namespace Fantasy_Kingdoms_Battle
                 //Debug.Assert(QuantityArrows == 0);
             }
 
-
             // Загружаем награду
             TypeReward = new DescriptorReward(n.SelectSingleNode("Reward"));
+
+
+
+            // Проверки корректности данных
+            if (CategoryCreature == CategoryCreature.Hero)
+            {
+                if (MaxConstructionForBuyPerDay == 0)
+                    MaxConstructionForBuyPerDay = 3;// Убрать после настройки всех героев
+
+                Debug.Assert(MaxConstructionForBuyPerDay > 0);
+            }
+            else
+            {
+                Debug.Assert(MaxConstructionForBuyPerDay == 0);
+            }
 
             void LoadName(string nodes, string node, List<string> list)
             {
@@ -226,11 +242,14 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorItem WeaponRange { get; private set; }// Стрелковое оружие
         internal DescriptorItem Armour { get; private set; }// Доспех по умолчанию
         internal DescriptorReward TypeReward { get; }// Награда за убийство существа
+        internal (string, int)[] PriorityConstructionsForBuy;
+        internal (string, int)[] PriorityConstructionsForBuy;
         internal int Cost { get; }
         internal DescriptorConstruction Construction { get; }
         internal bool CanBuild { get; }
         internal Dictionary<DescriptorItem, int> CarryItems { get; } = new Dictionary<DescriptorItem, int>();
         internal List<Item> Inventory { get; } = new List<Item>();// Инвентарь
+        internal int MaxConstructionForBuyPerDay { get; }// Максимальное количество посещений сооружений для покупок в день
         internal string PrefixName { get; }
         internal List<string> Names { get; } = new List<string>();
         internal List<string> Surnames { get; } = new List<string>();
