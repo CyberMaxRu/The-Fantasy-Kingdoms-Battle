@@ -2509,6 +2509,10 @@
             <Construction>Castle</Construction>
             <Level>2</Level>
           </Requirement>
+          <Requirement>
+            <Construction>GuildMage</Construction>
+            <Level>2</Level>
+          </Requirement>
         </Requirements>
       </Level>
     </Levels>
@@ -2530,15 +2534,15 @@
         <PosX>2</PosX>
         <PosY>1</PosY>
         <Layer>1</Layer>
-        <TypeObject>SerpentInMenagerie</TypeObject>
-        <Cost>750</Cost>
+        <TypeObject>BearInMenagerie</TypeObject>
+        <Cost>1000</Cost>
         <Requirements>
           <Requirement>
             <Construction>Menagerie</Construction>
             <Level>2</Level>
           </Requirement>
           <Requirement>
-            <Construction>SerpentsNest</Construction>
+            <Construction>BearsDen</Construction>
             <Destroyed>2</Destroyed>
           </Requirement>
         </Requirements>
@@ -2547,15 +2551,15 @@
         <PosX>3</PosX>
         <PosY>1</PosY>
         <Layer>1</Layer>
-        <TypeObject>BearInMenagerie</TypeObject>
-        <Cost>1000</Cost>
+        <TypeObject>SerpentInMenagerie</TypeObject>
+        <Cost>750</Cost>
         <Requirements>
           <Requirement>
             <Construction>Menagerie</Construction>
             <Level>3</Level>
           </Requirement>
           <Requirement>
-            <Construction>BearsDen</Construction>
+            <Construction>SerpentsNest</Construction>
             <Destroyed>2</Destroyed>
           </Requirement>
         </Requirements>

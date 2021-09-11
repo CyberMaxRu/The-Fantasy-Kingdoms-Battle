@@ -2937,21 +2937,21 @@
   <Item>
     <ID>WolfInMenagerie</ID>
     <Name>Лесной волк</Name>
-    <Description>Разместить в зверинце лесных волков</Description>
+    <Description>- Разместить в зверинце лесных волков</Description>
     <ImageIndex>200</ImageIndex>
     <CategoryItem>Monster</CategoryItem>
   </Item>
   <Item>
     <ID>SerpentInMenagerie</ID>
     <Name>Змей</Name>
-    <Description>Разместить в зверинце змеев</Description>
+    <Description>- Разместить в зверинце змеев//- Так как Змеи являются магическими существами, их содержание самое хлопотное, и требует установки специальных клеток с учетом самых высоких требований к безопасности!</Description>
     <ImageIndex>201</ImageIndex>
     <CategoryItem>Monster</CategoryItem>
   </Item>
   <Item>
     <ID>BearInMenagerie</ID>
     <Name>Медведь</Name>
-    <Description>Разместить в зверинце медведей</Description>
+    <Description>- Разместить в зверинце медведей</Description>
     <ImageIndex>202</ImageIndex>
     <CategoryItem>Monster</CategoryItem>
   </Item>
