@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Descriptors>
   <SecondarySkill>
-    <ID>Health</ID>
+    <ID>HealthSecSkill</ID>
     <Name>Здоровье</Name>
     <ImageIndex>99</ImageIndex>
     <Description>Увеличение здоровья</Description>
@@ -23,9 +23,12 @@
         <Health>20</Health>
       </Level>
     </Levels>
+    <Heroes>
+      <Hero>Warrior</Hero>
+    </Heroes>
   </SecondarySkill>
   <SecondarySkill>
-    <ID>Income</ID>
+    <ID>IncomeSecSkill</ID>
     <Name>Доход</Name>
     <ImageIndex>99</ImageIndex>
     <Description>Увеличивает доход от Замка</Description>
@@ -47,9 +50,12 @@
         <Income>20</Income>
       </Level>
     </Levels>
+    <Heroes>
+      <Hero>King</Hero>
+    </Heroes>
   </SecondarySkill>
   <SecondarySkill>
-    <ID>Drill</ID>
+    <ID>DrillSecSkill</ID>
     <Name>Муштра</Name>
     <ImageIndex>99</ImageIndex>
     <Description>Увеличивает скорость передвижения героев в бою</Description>
@@ -71,5 +77,8 @@
         <SpeedMove>20</SpeedMove>
       </Level>
     </Levels>
+    <Heroes>
+      <Hero>Warrior</Hero>
+    </Heroes>
   </SecondarySkill>
 </Descriptors>
