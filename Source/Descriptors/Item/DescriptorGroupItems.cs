@@ -27,8 +27,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal string ShortName { get; }//
         internal List<DescriptorItem> Items { get; } = new List<DescriptorItem>();
-        internal List<DescriptorCreature> UsedByTypeCreature { get; } = new List<DescriptorCreature>();
-
+        
         internal override void TuneDeferredLinks()
         {
             base.TuneDeferredLinks();
@@ -62,14 +61,6 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     Debug.Assert(creaturesInItems.IndexOf(dc) >= 0, $"У {ID} герой {dc.ID} доступен, но он не найден в списке доступных героев у предметов группы.");
                 }
-            }
-
-            // Дополняем описание
-            Description += (Description.Length > 0 ? Environment.NewLine : "") + "- Доступен героям:";
-
-            foreach (DescriptorCreature tc in UsedByTypeCreature)
-            {
-                Description += Environment.NewLine + "  - " + tc.Name;
             }
         }
 
