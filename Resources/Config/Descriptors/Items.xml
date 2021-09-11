@@ -61,7 +61,7 @@
   <Item>
     <ID>EnchantWeaponPoison</ID>
     <Name>Яды для оружия</Name>
-    <Description>Гильдия разбойниц продает всем героям яды для оружия./Обработанное такие ядом оружие при ударе накладывает на противника "Жгучий яд".</Description>
+    <Description>Гильдия разбойниц продает всем героям яды для оружия.//Обработанное такие ядом оружие при ударе накладывает на противника "Жгучий яд".</Description>
     <ImageIndex>48</ImageIndex>
     <CategoryItem>Enchant</CategoryItem>
     <Cost>100</Cost>
@@ -75,7 +75,7 @@
   <Item>
     <ID>EnchantWeaponAttack</ID>
     <Name>Зачарование оружия</Name>
-    <Description>Гильдия магов продает всем героям чары на оружие./Зачарованное оружие повышает умение всех атак.</Description>
+    <Description>Гильдия магов продает всем героям чары на оружие.//Зачарованное оружие повышает умение всех атак.</Description>
     <ImageIndex>63</ImageIndex>
     <CategoryItem>Enchant</CategoryItem>
     <Cost>100</Cost>
