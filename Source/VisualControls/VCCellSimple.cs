@@ -21,9 +21,10 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (Visible)
             {
-                Debug.Assert(Descriptor != null);
+                if (Descriptor != null)
+                    ImageIndex = Descriptor.ImageIndex;
 
-                ImageIndex = Descriptor.ImageIndex;
+                Debug.Assert(ImageIndex != -1);
             }
 
             base.Draw(g);
