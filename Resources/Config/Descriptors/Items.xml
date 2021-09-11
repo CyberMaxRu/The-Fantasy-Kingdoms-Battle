@@ -1741,21 +1741,6 @@
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
-    <ID>ArmourDeathKnight0</ID>
-    <Name>Простая стальная броня</Name>
-    <Description>Грубо выкованная кольчуга</Description>
-    <ImageIndex>21</ImageIndex>
-    <CategoryItem>Armour</CategoryItem>
-    <Cost>20</Cost>
-    <GroupItem>GroupArmourMelee0</GroupItem>
-    <Heroes>
-      <Hero>DeathKnight</Hero>
-    </Heroes>
-    <DefenseMelee>0</DefenseMelee>
-    <DefenseRange>0</DefenseRange>
-    <DefenseMagic>0</DefenseMagic>
-  </Item>
-  <Item>
     <ID>ArmourWarrior1</ID>
     <Name>Простая стальная броня</Name>
     <Description>Грубо выкованная кольчуга</Description>
@@ -1817,22 +1802,6 @@
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
-    <ID>ArmourDeathKnight1</ID>
-    <Name>Простая стальная броня</Name>
-    <Description>Грубо выкованная кольчуга</Description>
-    <ImageIndex>22</ImageIndex>
-    <CategoryItem>Armour</CategoryItem>
-    <Cost>20</Cost>
-    <GroupItem>GroupArmourMelee1</GroupItem>
-    <Heroes>
-      <Hero>DeathKnight</Hero>
-    </Heroes>
-    <Hero>DeathKnight</Hero>
-    <DefenseMelee>0</DefenseMelee>
-    <DefenseRange>0</DefenseRange>
-    <DefenseMagic>0</DefenseMagic>
-  </Item>
-  <Item>
     <ID>ArmourWarrior2</ID>
     <Name>Простая стальная броня</Name>
     <Description>Грубо выкованная кольчуга</Description>
@@ -1887,21 +1856,6 @@
     <GroupItem>GroupArmourMelee2</GroupItem>
     <Heroes>
       <Hero>BladeMaster</Hero>
-    </Heroes>
-    <DefenseMelee>0</DefenseMelee>
-    <DefenseRange>0</DefenseRange>
-    <DefenseMagic>0</DefenseMagic>
-  </Item>
-  <Item>
-    <ID>ArmourDeathKnight2</ID>
-    <Name>Простая стальная броня</Name>
-    <Description>Грубо выкованная кольчуга</Description>
-    <ImageIndex>23</ImageIndex>
-    <CategoryItem>Armour</CategoryItem>
-    <Cost>20</Cost>
-    <GroupItem>GroupArmourMelee2</GroupItem>
-    <Heroes>
-      <Hero>DeathKnight</Hero>
     </Heroes>
     <DefenseMelee>0</DefenseMelee>
     <DefenseRange>0</DefenseRange>
@@ -1968,21 +1922,6 @@
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
-    <ID>ArmourDeathKnight3</ID>
-    <Name>Простая стальная броня</Name>
-    <Description>Грубо выкованная кольчуга</Description>
-    <ImageIndex>24</ImageIndex>
-    <CategoryItem>Armour</CategoryItem>
-    <Cost>20</Cost>
-    <GroupItem>GroupArmourMelee3</GroupItem>
-    <Heroes>
-      <Hero>DeathKnight</Hero>
-    </Heroes>
-    <DefenseMelee>0</DefenseMelee>
-    <DefenseRange>0</DefenseRange>
-    <DefenseMagic>0</DefenseMagic>
-  </Item>
-  <Item>
     <ID>ArmourWarrior4</ID>
     <Name>Доспех из неврила</Name>
     <Description>Грубо выкованная кольчуга</Description>
@@ -2037,21 +1976,6 @@
     <GroupItem>GroupArmourMelee4</GroupItem>
     <Heroes>
       <Hero>BladeMaster</Hero>
-    </Heroes>
-    <DefenseMelee>0</DefenseMelee>
-    <DefenseRange>0</DefenseRange>
-    <DefenseMagic>0</DefenseMagic>
-  </Item>
-  <Item>
-    <ID>ArmourDeathKnight4</ID>
-    <Name>Доспех из неврила</Name>
-    <Description>Грубо выкованная кольчуга</Description>
-    <ImageIndex>25</ImageIndex>
-    <CategoryItem>Armour</CategoryItem>
-    <Cost>20</Cost>
-    <GroupItem>GroupArmourMelee4</GroupItem>
-    <Heroes>
-      <Hero>DeathKnight</Hero>
     </Heroes>
     <DefenseMelee>0</DefenseMelee>
     <DefenseRange>0</DefenseRange>
@@ -2133,6 +2057,21 @@
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
+    <ID>ArmourDeathKnight0</ID>
+    <Name>Простая стальная броня</Name>
+    <Description>Грубо выкованная кольчуга</Description>
+    <ImageIndex>21</ImageIndex>
+    <CategoryItem>Armour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItem>GroupArmourRange0</GroupItem>
+    <Heroes>
+      <Hero>DeathKnight</Hero>
+    </Heroes>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseRange>0</DefenseRange>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
     <ID>ArmourRogue1</ID>
     <Name>Улучшенная кожаная броня</Name>
     <Description>Броня из грубо выделанной кожи</Description>
@@ -2208,6 +2147,22 @@
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
+    <ID>ArmourDeathKnight1</ID>
+    <Name>Простая стальная броня</Name>
+    <Description>Грубо выкованная кольчуга</Description>
+    <ImageIndex>22</ImageIndex>
+    <CategoryItem>Armour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItem>GroupArmourRange1</GroupItem>
+    <Heroes>
+      <Hero>DeathKnight</Hero>
+    </Heroes>
+    <Hero>DeathKnight</Hero>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseRange>0</DefenseRange>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
     <ID>ArmourRogue2</ID>
     <Name>Мастерская кожаная броня</Name>
     <Description>Броня из грубо выделанной кожи</Description>
@@ -2277,6 +2232,21 @@
     <GroupItem>GroupArmourRange2</GroupItem>
     <Heroes>
       <Hero>Marksman</Hero>
+    </Heroes>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseRange>0</DefenseRange>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourDeathKnight2</ID>
+    <Name>Простая стальная броня</Name>
+    <Description>Грубо выкованная кольчуга</Description>
+    <ImageIndex>23</ImageIndex>
+    <CategoryItem>Armour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItem>GroupArmourRange2</GroupItem>
+    <Heroes>
+      <Hero>DeathKnight</Hero>
     </Heroes>
     <DefenseMelee>0</DefenseMelee>
     <DefenseRange>0</DefenseRange>
@@ -2358,6 +2328,21 @@
     <DefenseMagic>0</DefenseMagic>
   </Item>
   <Item>
+    <ID>ArmourDeathKnight3</ID>
+    <Name>Простая стальная броня</Name>
+    <Description>Грубо выкованная кольчуга</Description>
+    <ImageIndex>24</ImageIndex>
+    <CategoryItem>Armour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItem>GroupArmourRange3</GroupItem>
+    <Heroes>
+      <Hero>DeathKnight</Hero>
+    </Heroes>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseRange>0</DefenseRange>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
     <ID>ArmourRogue4</ID>
     <Name>Доспех из кожи дракона</Name>
     <Description>Броня из грубо выделанной кожи</Description>
@@ -2427,6 +2412,21 @@
     <GroupItem>GroupArmourRange4</GroupItem>
     <Heroes>
       <Hero>Marksman</Hero>
+    </Heroes>
+    <DefenseMelee>0</DefenseMelee>
+    <DefenseRange>0</DefenseRange>
+    <DefenseMagic>0</DefenseMagic>
+  </Item>
+  <Item>
+    <ID>ArmourDeathKnight4</ID>
+    <Name>Доспех из неврила</Name>
+    <Description>Грубо выкованная кольчуга</Description>
+    <ImageIndex>25</ImageIndex>
+    <CategoryItem>Armour</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItem>GroupArmourRange4</GroupItem>
+    <Heroes>
+      <Hero>DeathKnight</Hero>
     </Heroes>
     <DefenseMelee>0</DefenseMelee>
     <DefenseRange>0</DefenseRange>
