@@ -236,7 +236,7 @@
     </Heroes>
   </GroupItems>
   <GroupItems>
-    <ID>GroupArmourMelee0</ID>
+    <ID>GroupArmourMetal0</ID>
     <Name>Простая стальная броня</Name>
     <Description>Грубо выкованная кольчуга</Description>
     <ImageIndex>21</ImageIndex>
@@ -249,7 +249,7 @@
     </Heroes>
   </GroupItems>
   <GroupItems>
-    <ID>GroupArmourMelee1</ID>
+    <ID>GroupArmourMetal1</ID>
     <Name>Улучшенная стальная броня</Name>
     <Description></Description>
     <ImageIndex>22</ImageIndex>
@@ -262,7 +262,7 @@
     </Heroes>
   </GroupItems>
   <GroupItems>
-    <ID>GroupArmourMelee2</ID>
+    <ID>GroupArmourMetal2</ID>
     <Name>Мастерская стальная броня</Name>
     <Description></Description>
     <ImageIndex>23</ImageIndex>
@@ -275,7 +275,7 @@
     </Heroes>
   </GroupItems>
   <GroupItems>
-    <ID>GroupArmourMelee3</ID>
+    <ID>GroupArmourMetal3</ID>
     <Name>Экспертная стальная броня</Name>
     <Description></Description>
     <ImageIndex>24</ImageIndex>
@@ -288,7 +288,7 @@
     </Heroes>
   </GroupItems>
   <GroupItems>
-    <ID>GroupArmourMelee4</ID>
+    <ID>GroupArmourMetal4</ID>
     <Name>Доспех из неврила</Name>
     <Description></Description>
     <ImageIndex>25</ImageIndex>
@@ -301,7 +301,7 @@
     </Heroes>
   </GroupItems>
   <GroupItems>
-    <ID>GroupArmourRange0</ID>
+    <ID>GroupArmourLeather0</ID>
     <Name>Простая кожаная броня</Name>
     <Description>Броня из грубо выделанной кожи</Description>
     <ImageIndex>26</ImageIndex>
@@ -316,7 +316,7 @@
     </Heroes>
   </GroupItems>
   <GroupItems>
-    <ID>GroupArmourRange1</ID>
+    <ID>GroupArmourLeather1</ID>
     <Name>Улучшенная кожаная броня</Name>
     <Description></Description>
     <ImageIndex>27</ImageIndex>
@@ -331,7 +331,7 @@
     </Heroes>
   </GroupItems>
   <GroupItems>
-    <ID>GroupArmourRange2</ID>
+    <ID>GroupArmourLeather2</ID>
     <Name>Мастерская кожаная броня</Name>
     <Description></Description>
     <ImageIndex>28</ImageIndex>
@@ -346,7 +346,7 @@
     </Heroes>
   </GroupItems>
   <GroupItems>
-    <ID>GroupArmourRange3</ID>
+    <ID>GroupArmourLeather3</ID>
     <Name>Экспертная кожаная броня</Name>
     <Description></Description>
     <ImageIndex>29</ImageIndex>
@@ -361,7 +361,7 @@
     </Heroes>
   </GroupItems>
   <GroupItems>
-    <ID>GroupArmourRange4</ID>
+    <ID>GroupArmourLeather4</ID>
     <Name>Доспех из кожи дракона</Name>
     <Description></Description>
     <ImageIndex>30</ImageIndex>

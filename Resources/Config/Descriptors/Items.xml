@@ -1687,7 +1687,7 @@
     <ImageIndex>21</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourMelee0</GroupItem>
+    <GroupItem>GroupArmourMetal0</GroupItem>
     <Heroes>
       <Hero>Warrior</Hero>
     </Heroes>
@@ -1702,7 +1702,7 @@
     <ImageIndex>21</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourMelee0</GroupItem>
+    <GroupItem>GroupArmourMetal0</GroupItem>
     <Heroes>
       <Hero>Dwarf</Hero>
     </Heroes>
@@ -1717,7 +1717,7 @@
     <ImageIndex>21</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourMelee0</GroupItem>
+    <GroupItem>GroupArmourMetal0</GroupItem>
     <Heroes>
       <Hero>Paladin</Hero>
     </Heroes>
@@ -1732,7 +1732,7 @@
     <ImageIndex>21</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourMelee0</GroupItem>
+    <GroupItem>GroupArmourMetal0</GroupItem>
     <Heroes>
       <Hero>BladeMaster</Hero>
     </Heroes>
@@ -1747,7 +1747,7 @@
     <ImageIndex>22</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourMelee1</GroupItem>
+    <GroupItem>GroupArmourMetal1</GroupItem>
     <Heroes>
       <Hero>Warrior</Hero>
     </Heroes>
@@ -1762,7 +1762,7 @@
     <ImageIndex>22</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourMelee1</GroupItem>
+    <GroupItem>GroupArmourMetal1</GroupItem>
     <Heroes>
       <Hero>Dwarf</Hero>
     </Heroes>
@@ -1778,7 +1778,7 @@
     <ImageIndex>22</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourMelee1</GroupItem>
+    <GroupItem>GroupArmourMetal1</GroupItem>
     <Heroes>
       <Hero>Paladin</Hero>
     </Heroes>
@@ -1793,7 +1793,7 @@
     <ImageIndex>22</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourMelee1</GroupItem>
+    <GroupItem>GroupArmourMetal1</GroupItem>
     <Heroes>
       <Hero>BladeMaster</Hero>
     </Heroes>
@@ -1808,7 +1808,7 @@
     <ImageIndex>23</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourMelee2</GroupItem>
+    <GroupItem>GroupArmourMetal2</GroupItem>
     <Heroes>
       <Hero>Warrior</Hero>
     </Heroes>
@@ -1823,7 +1823,7 @@
     <ImageIndex>23</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourMelee2</GroupItem>
+    <GroupItem>GroupArmourMetal2</GroupItem>
     <Heroes>
       <Hero>Dwarf</Hero>
     </Heroes>
@@ -1838,7 +1838,7 @@
     <ImageIndex>23</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourMelee2</GroupItem>
+    <GroupItem>GroupArmourMetal2</GroupItem>
     <Heroes>
       <Hero>Paladin</Hero>
     </Heroes>
@@ -1853,7 +1853,7 @@
     <ImageIndex>23</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourMelee2</GroupItem>
+    <GroupItem>GroupArmourMetal2</GroupItem>
     <Heroes>
       <Hero>BladeMaster</Hero>
     </Heroes>
@@ -1868,7 +1868,7 @@
     <ImageIndex>24</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourMelee3</GroupItem>
+    <GroupItem>GroupArmourMetal3</GroupItem>
     <Heroes>
       <Hero>Warrior</Hero>
     </Heroes>
@@ -1883,7 +1883,7 @@
     <ImageIndex>24</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourMelee3</GroupItem>
+    <GroupItem>GroupArmourMetal3</GroupItem>
     <Heroes>
       <Hero>Dwarf</Hero>
     </Heroes>
@@ -1898,7 +1898,7 @@
     <ImageIndex>24</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourMelee3</GroupItem>
+    <GroupItem>GroupArmourMetal3</GroupItem>
     <Heroes>
       <Hero>Paladin</Hero>
     </Heroes>
@@ -1913,7 +1913,7 @@
     <ImageIndex>24</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourMelee3</GroupItem>
+    <GroupItem>GroupArmourMetal3</GroupItem>
     <Heroes>
       <Hero>BladeMaster</Hero>
     </Heroes>
@@ -1928,7 +1928,7 @@
     <ImageIndex>25</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourMelee4</GroupItem>
+    <GroupItem>GroupArmourMetal4</GroupItem>
     <Heroes>
       <Hero>Warrior</Hero>
     </Heroes>
@@ -1943,7 +1943,7 @@
     <ImageIndex>25</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourMelee4</GroupItem>
+    <GroupItem>GroupArmourMetal4</GroupItem>
     <Heroes>
       <Hero>Dwarf</Hero>
     </Heroes>
@@ -1958,7 +1958,7 @@
     <ImageIndex>25</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourMelee4</GroupItem>
+    <GroupItem>GroupArmourMetal4</GroupItem>
     <Heroes>
       <Hero>Paladin</Hero>
     </Heroes>
@@ -1973,7 +1973,7 @@
     <ImageIndex>25</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourMelee4</GroupItem>
+    <GroupItem>GroupArmourMetal4</GroupItem>
     <Heroes>
       <Hero>BladeMaster</Hero>
     </Heroes>
@@ -1988,7 +1988,7 @@
     <ImageIndex>26</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourRange0</GroupItem>
+    <GroupItem>GroupArmourLeather0</GroupItem>
     <Heroes>
       <Hero>Rogue</Hero>
     </Heroes>
@@ -2003,7 +2003,7 @@
     <ImageIndex>26</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourRange0</GroupItem>
+    <GroupItem>GroupArmourLeather0</GroupItem>
     <Heroes>
       <Hero>Hunter</Hero>
     </Heroes>
@@ -2018,7 +2018,7 @@
     <ImageIndex>26</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourRange0</GroupItem>
+    <GroupItem>GroupArmourLeather0</GroupItem>
     <Heroes>
       <Hero>Elf</Hero>
     </Heroes>
@@ -2033,7 +2033,7 @@
     <ImageIndex>26</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourRange0</GroupItem>
+    <GroupItem>GroupArmourLeather0</GroupItem>
     <Heroes>
       <Hero>BeastMaster</Hero>
     </Heroes>
@@ -2048,7 +2048,7 @@
     <ImageIndex>26</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourRange0</GroupItem>
+    <GroupItem>GroupArmourLeather0</GroupItem>
     <Heroes>
       <Hero>Marksman</Hero>
     </Heroes>
@@ -2063,7 +2063,7 @@
     <ImageIndex>21</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourRange0</GroupItem>
+    <GroupItem>GroupArmourLeather0</GroupItem>
     <Heroes>
       <Hero>DeathKnight</Hero>
     </Heroes>
@@ -2078,7 +2078,7 @@
     <ImageIndex>27</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourRange1</GroupItem>
+    <GroupItem>GroupArmourLeather1</GroupItem>
     <Heroes>
       <Hero>Rogue</Hero>
     </Heroes>
@@ -2093,7 +2093,7 @@
     <ImageIndex>27</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourRange1</GroupItem>
+    <GroupItem>GroupArmourLeather1</GroupItem>
     <Heroes>
       <Hero>Hunter</Hero>
     </Heroes>
@@ -2108,7 +2108,7 @@
     <ImageIndex>27</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourRange1</GroupItem>
+    <GroupItem>GroupArmourLeather1</GroupItem>
     <Heroes>
       <Hero>Elf</Hero>
     </Heroes>
@@ -2123,7 +2123,7 @@
     <ImageIndex>27</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourRange1</GroupItem>
+    <GroupItem>GroupArmourLeather1</GroupItem>
     <Heroes>
       <Hero>BeastMaster</Hero>
     </Heroes>
@@ -2138,7 +2138,7 @@
     <ImageIndex>27</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourRange1</GroupItem>
+    <GroupItem>GroupArmourLeather1</GroupItem>
     <Heroes>
       <Hero>Marksman</Hero>
     </Heroes>
@@ -2153,7 +2153,7 @@
     <ImageIndex>22</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourRange1</GroupItem>
+    <GroupItem>GroupArmourLeather1</GroupItem>
     <Heroes>
       <Hero>DeathKnight</Hero>
     </Heroes>
@@ -2169,7 +2169,7 @@
     <ImageIndex>28</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourRange2</GroupItem>
+    <GroupItem>GroupArmourLeather2</GroupItem>
     <Heroes>
       <Hero>Rogue</Hero>
     </Heroes>
@@ -2184,7 +2184,7 @@
     <ImageIndex>28</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourRange2</GroupItem>
+    <GroupItem>GroupArmourLeather2</GroupItem>
     <Heroes>
       <Hero>Hunter</Hero>
     </Heroes>
@@ -2199,7 +2199,7 @@
     <ImageIndex>28</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourRange2</GroupItem>
+    <GroupItem>GroupArmourLeather2</GroupItem>
     <Heroes>
       <Hero>Elf</Hero>
     </Heroes>
@@ -2214,7 +2214,7 @@
     <ImageIndex>28</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourRange2</GroupItem>
+    <GroupItem>GroupArmourLeather2</GroupItem>
     <Heroes>
       <Hero>BeastMaster</Hero>
     </Heroes>
@@ -2229,7 +2229,7 @@
     <ImageIndex>28</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourRange2</GroupItem>
+    <GroupItem>GroupArmourLeather2</GroupItem>
     <Heroes>
       <Hero>Marksman</Hero>
     </Heroes>
@@ -2244,7 +2244,7 @@
     <ImageIndex>23</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourRange2</GroupItem>
+    <GroupItem>GroupArmourLeather2</GroupItem>
     <Heroes>
       <Hero>DeathKnight</Hero>
     </Heroes>
@@ -2259,7 +2259,7 @@
     <ImageIndex>29</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourRange3</GroupItem>
+    <GroupItem>GroupArmourLeather3</GroupItem>
     <Heroes>
       <Hero>Rogue</Hero>
     </Heroes>
@@ -2274,7 +2274,7 @@
     <ImageIndex>29</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourRange3</GroupItem>
+    <GroupItem>GroupArmourLeather3</GroupItem>
     <Heroes>
       <Hero>Hunter</Hero>
     </Heroes>
@@ -2289,7 +2289,7 @@
     <ImageIndex>29</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourRange3</GroupItem>
+    <GroupItem>GroupArmourLeather3</GroupItem>
     <Heroes>
       <Hero>Elf</Hero>
     </Heroes>
@@ -2304,7 +2304,7 @@
     <ImageIndex>29</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourRange3</GroupItem>
+    <GroupItem>GroupArmourLeather3</GroupItem>
     <Heroes>
       <Hero>BeastMaster</Hero>
     </Heroes>
@@ -2319,7 +2319,7 @@
     <ImageIndex>29</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourRange3</GroupItem>
+    <GroupItem>GroupArmourLeather3</GroupItem>
     <Heroes>
       <Hero>Marksman</Hero>
     </Heroes>
@@ -2334,7 +2334,7 @@
     <ImageIndex>24</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourRange3</GroupItem>
+    <GroupItem>GroupArmourLeather3</GroupItem>
     <Heroes>
       <Hero>DeathKnight</Hero>
     </Heroes>
@@ -2349,7 +2349,7 @@
     <ImageIndex>30</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourRange4</GroupItem>
+    <GroupItem>GroupArmourLeather4</GroupItem>
     <Heroes>
       <Hero>Rogue</Hero>
     </Heroes>
@@ -2364,7 +2364,7 @@
     <ImageIndex>30</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourRange4</GroupItem>
+    <GroupItem>GroupArmourLeather4</GroupItem>
     <Heroes>
       <Hero>Hunter</Hero>
     </Heroes>
@@ -2379,7 +2379,7 @@
     <ImageIndex>30</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourRange4</GroupItem>
+    <GroupItem>GroupArmourLeather4</GroupItem>
     <Heroes>
       <Hero>Elf</Hero>
     </Heroes>
@@ -2394,7 +2394,7 @@
     <ImageIndex>30</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourRange4</GroupItem>
+    <GroupItem>GroupArmourLeather4</GroupItem>
     <Heroes>
       <Hero>BeastMaster</Hero>
     </Heroes>
@@ -2409,7 +2409,7 @@
     <ImageIndex>30</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourRange4</GroupItem>
+    <GroupItem>GroupArmourLeather4</GroupItem>
     <Heroes>
       <Hero>Marksman</Hero>
     </Heroes>
@@ -2424,7 +2424,7 @@
     <ImageIndex>25</ImageIndex>
     <CategoryItem>Armour</CategoryItem>
     <Cost>20</Cost>
-    <GroupItem>GroupArmourRange4</GroupItem>
+    <GroupItem>GroupArmourLeather4</GroupItem>
     <Heroes>
       <Hero>DeathKnight</Hero>
     </Heroes>
