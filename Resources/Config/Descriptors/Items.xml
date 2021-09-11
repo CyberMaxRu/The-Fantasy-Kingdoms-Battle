@@ -1037,7 +1037,7 @@
     <DamageRange>0</DamageRange>
   </Item>
   <Item>
-    <ID>WeaponHunter1</ID>
+    <ID>BowHunter1</ID>
     <Name>Обычный лук</Name>
     <Description>Улучшенный лук</Description>
     <ImageIndex>12</ImageIndex>
@@ -1051,7 +1051,7 @@
     <DamageRange>0</DamageRange>
   </Item>
   <Item>
-    <ID>WeaponElf1</ID>
+    <ID>BowElf1</ID>
     <Name>Обычный лук</Name>
     <Description>Улучшенный лук</Description>
     <ImageIndex>12</ImageIndex>
@@ -1065,7 +1065,7 @@
     <DamageRange>0</DamageRange>
   </Item>
   <Item>
-    <ID>WeaponBeastMaster1</ID>
+    <ID>BowBeastMaster1</ID>
     <Name>Обычный лук</Name>
     <Description>Улучшенный лук</Description>
     <ImageIndex>12</ImageIndex>
@@ -1079,7 +1079,7 @@
     <DamageRange>0</DamageRange>
   </Item>
   <Item>
-    <ID>WeaponMarksman1</ID>
+    <ID>BowMarksman1</ID>
     <Name>Обычный лук</Name>
     <Description>Улучшенный лук</Description>
     <ImageIndex>12</ImageIndex>
@@ -1093,7 +1093,7 @@
     <DamageRange>0</DamageRange>
   </Item>
   <Item>
-    <ID>WeaponHunter2</ID>
+    <ID>BowHunter2</ID>
     <Name>Обычный лук</Name>
     <Description>Мастерский лук</Description>
     <ImageIndex>13</ImageIndex>
@@ -1107,7 +1107,7 @@
     <DamageRange>0</DamageRange>
   </Item>
   <Item>
-    <ID>WeaponElf2</ID>
+    <ID>BowElf2</ID>
     <Name>Обычный лук</Name>
     <Description>Мастерский лук</Description>
     <ImageIndex>13</ImageIndex>
@@ -1121,7 +1121,7 @@
     <DamageRange>0</DamageRange>
   </Item>
   <Item>
-    <ID>WeaponBeastMaster2</ID>
+    <ID>BowBeastMaster2</ID>
     <Name>Обычный лук</Name>
     <Description>Мастерский лук</Description>
     <ImageIndex>13</ImageIndex>
@@ -1135,7 +1135,7 @@
     <DamageRange>0</DamageRange>
   </Item>
   <Item>
-    <ID>WeaponMarksman2</ID>
+    <ID>BowMarksman2</ID>
     <Name>Обычный лук</Name>
     <Description>Мастерский лук</Description>
     <ImageIndex>13</ImageIndex>
@@ -1149,7 +1149,7 @@
     <DamageRange>0</DamageRange>
   </Item>
   <Item>
-    <ID>WeaponHunter3</ID>
+    <ID>BowHunter3</ID>
     <Name>Обычный лук</Name>
     <Description>Экспертный лук</Description>
     <ImageIndex>14</ImageIndex>
@@ -1163,7 +1163,7 @@
     <DamageRange>0</DamageRange>
   </Item>
   <Item>
-    <ID>WeaponElf3</ID>
+    <ID>BowElf3</ID>
     <Name>Обычный лук</Name>
     <Description>Экспертный лук</Description>
     <ImageIndex>14</ImageIndex>
@@ -1177,7 +1177,7 @@
     <DamageRange>0</DamageRange>
   </Item>
   <Item>
-    <ID>WeaponBeastMaster3</ID>
+    <ID>BowBeastMaster3</ID>
     <Name>Обычный лук</Name>
     <Description>Экспертный лук</Description>
     <ImageIndex>14</ImageIndex>
@@ -1191,7 +1191,7 @@
     <DamageRange>0</DamageRange>
   </Item>
   <Item>
-    <ID>WeaponMarksman3</ID>
+    <ID>BowMarksman3</ID>
     <Name>Обычный лук</Name>
     <Description>Экспертный лук</Description>
     <ImageIndex>14</ImageIndex>
@@ -1205,7 +1205,7 @@
     <DamageRange>0</DamageRange>
   </Item>
   <Item>
-    <ID>WeaponHunter4</ID>
+    <ID>BowHunter4</ID>
     <Name>Обычный лук</Name>
     <Description>Демонический лук</Description>
     <ImageIndex>15</ImageIndex>
@@ -1219,7 +1219,7 @@
     <DamageRange>0</DamageRange>
   </Item>
   <Item>
-    <ID>WeaponElf4</ID>
+    <ID>BowElf4</ID>
     <Name>Обычный лук</Name>
     <Description>Демонический лук</Description>
     <ImageIndex>15</ImageIndex>
@@ -1233,7 +1233,7 @@
     <DamageRange>0</DamageRange>
   </Item>
   <Item>
-    <ID>WeaponBeastMaster4</ID>
+    <ID>BowBeastMaster4</ID>
     <Name>Обычный лук</Name>
     <Description>Демонический лук</Description>
     <ImageIndex>15</ImageIndex>
@@ -1247,7 +1247,7 @@
     <DamageRange>0</DamageRange>
   </Item>
   <Item>
-    <ID>WeaponMarksman4</ID>
+    <ID>BowMarksman4</ID>
     <Name>Обычный лук</Name>
     <Description>Демонический лук</Description>
     <ImageIndex>15</ImageIndex>
