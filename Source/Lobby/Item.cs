@@ -30,24 +30,9 @@ namespace Fantasy_Kingdoms_Battle
             return Descriptor.ImageIndex;
         }
 
-        internal override bool GetNormalImage()
-        {
-            return true;
-        }
-
-        internal override int GetLevel()
-        {
-            return 0;
-        }
-
         internal override int GetQuantity()
         {
             return Quantity == 1 ? 0 : Quantity;
-        }
-
-        internal override string GetCost()
-        {
-            return null;
         }
 
         internal override void PrepareHint()
