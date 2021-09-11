@@ -2421,7 +2421,7 @@
     <Description>Говорят, именно летающие змеи виновны в исчезновении героев, забредающих слишком далеко от своих гильдий.</Description>
     <ImageIndex>28</ImageIndex>
     <CategoryCreature>Monster</CategoryCreature>
-    <KindCreature>Beast</KindCreature>
+    <KindCreature>MagicCreature</KindCreature>
     <MaxLevel>5</MaxLevel>
     <TypeAttackMelee>Bite</TypeAttackMelee>
     <DefaultPositionPriority>10</DefaultPositionPriority>
