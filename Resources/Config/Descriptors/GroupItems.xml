@@ -457,12 +457,10 @@
     <ImageIndex>152</ImageIndex>
     <ShortName>Колч.</ShortName>
     <Heroes>
-      <Hero>Cleric</Hero>
-      <Hero>Mage</Hero>
-      <Hero>DarkPriest</Hero>
-      <Hero>Priest</Hero>
-      <Hero>IceMage</Hero>
-      <Hero>FireMage</Hero>
+      <Hero>Hunter</Hero>
+      <Hero>Elf</Hero>
+      <Hero>BeastMaster</Hero>
+      <Hero>Marksman</Hero>
     </Heroes>
   </GroupItems>
 </Descriptors>
