@@ -371,6 +371,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(CounterConstructionForBuy > 0);
 
             bool shopped = false;
+            bool abilityBought = false;
 
             // Получаем список доступных покупок
             List<ConstructionProduct> listProducts = c.GetProducts(TypeCreature);
@@ -383,12 +384,16 @@ namespace Fantasy_Kingdoms_Battle
                     if (!AbilityExists(cp.DescriptorAbility))
                     {
                         Abilities.Add(c.PurchaseAbility(this, cp));
+                        abilityBought = true;
                     }
                 }
             }
 
             if (shopped)
                 CounterConstructionForBuy--;
+
+            if (abilityBought)
+                SortAbility();
         }
 
         private bool AbilityExists(DescriptorAbility da)
@@ -400,6 +405,11 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             return false;
+        }
+
+        private void SortAbility()
+        {
+            //Abilities.Sort();
         }
     }
 }
