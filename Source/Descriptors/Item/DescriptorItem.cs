@@ -63,7 +63,6 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(DamageMelee == 0);
             }*/
 
-            UsedByTypeCreature = new List<DescriptorCreature>();
             /*switch (TypeAttack)
             {
                 case TypeAttack.None:
@@ -105,7 +104,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal CategoryItem CategoryItem { get; }
         internal DescriptorGroupItems GroupItem { get; private set; }
-        internal List<DescriptorCreature> UsedByTypeCreature { get; }
         internal int Position { get; }
         internal int TimeHit { get; }
         internal double VelocityMissile { get; }
@@ -140,15 +138,6 @@ namespace Fantasy_Kingdoms_Battle
                 GroupItem.Items.Add(this);
                 nameGroupItem = "";
             }
-
-            /*Description += (Description.Length > 0 ? Environment.NewLine : "") + "- Используется:";
-
-            foreach (Weapon w in Weapons)
-            {
-                Description += Environment.NewLine + "  - " + w.ClassHero.Name;
-            }*/
-
-            //Debug.Assert(ClassHero.CategoryCreature != CategoryCreature.Citizen);//Weapon
         }
 
         protected override bool ForHeroes() => CategoryItem != CategoryItem.Monster;
