@@ -14,10 +14,10 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Warrior</ClassHero>
-      <ClassHero>BladeMaster</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Warrior</Hero>
+      <Hero>BladeMaster</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>WarriorTaunt</ID>
@@ -35,9 +35,9 @@
     <Effects>
       <Effect>Taunt</Effect>
     </Effects>
-    <ClassesHeroes>
-      <ClassHero>Warrior</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Warrior</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>WarriorAntiknockbackBuff</ID>
@@ -53,9 +53,9 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>60</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Warrior</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Warrior</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>WarriorImpAttack</ID>
@@ -71,10 +71,10 @@
     <SkillModif>3,0</SkillModif>
     <Effects/>
     <CoolDown>10</CoolDown>
-      <ClassesHeroes>
-        <ClassHero>Warrior</ClassHero>
-        <ClassHero>BladeMaster</ClassHero>
-      </ClassesHeroes>
+      <Heroes>
+        <Hero>Warrior</Hero>
+        <Hero>BladeMaster</Hero>
+      </Heroes>
   </Ability>
   <Ability>
     <ID>WarriorMaimAttack</ID>
@@ -92,10 +92,10 @@
     <Effects>
       <Effect>Slow</Effect>
     </Effects>
-      <ClassesHeroes>
-      <ClassHero>Warrior</ClassHero>
-      <ClassHero>BladeMaster</ClassHero>
-    </ClassesHeroes>
+      <Heroes>
+      <Hero>Warrior</Hero>
+      <Hero>BladeMaster</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>WarriorResistanceBuff</ID>
@@ -111,9 +111,9 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>60</CoolDown>
     <Effects/>
-      <ClassesHeroes>
-      <ClassHero>Warrior</ClassHero>
-    </ClassesHeroes>
+      <Heroes>
+      <Hero>Warrior</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>RogueBasicAttack</ID>
@@ -129,9 +129,9 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Rogue</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Rogue</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>RogueWoundAttack</ID>
@@ -147,9 +147,9 @@
     <SkillModif>2,0</SkillModif>
     <CoolDown>30</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Rogue</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Rogue</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>RoguePoisonAttack</ID>
@@ -165,9 +165,9 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>15</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Rogue</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Rogue</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>RogueImpAttack</ID>
@@ -183,9 +183,9 @@
     <SkillModif>3,0</SkillModif>
     <CoolDown>10</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Rogue</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Rogue</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>RogueKickAttack</ID>
@@ -201,9 +201,9 @@
     <SkillModif>1,5</SkillModif>
     <CoolDown>10</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Rogue</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Rogue</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>StunAttack</ID>
@@ -219,10 +219,10 @@
     <SkillModif>1,5</SkillModif>
     <CoolDown>10</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Rogue</ClassHero>
-      <ClassHero>Dwarf</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Rogue</Hero>
+      <Hero>Dwarf</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>ArcherBasicAttack</ID>
@@ -238,10 +238,10 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Hunter</ClassHero>
-      <ClassHero>Elf</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Hunter</Hero>
+      <Hero>Elf</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>HunterBeastSlayerAttack</ID>
@@ -257,9 +257,9 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>10</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Hunter</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Hunter</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>HunterAoeAttack</ID>
@@ -275,9 +275,9 @@
     <SkillModif>4,0</SkillModif>
     <CoolDown>30</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Hunter</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Hunter</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>HunterImpAttack</ID>
@@ -293,9 +293,9 @@
     <SkillModif>3,0</SkillModif>
     <CoolDown>10</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Hunter</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Hunter</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>HunterStingShotAttack</ID>
@@ -311,9 +311,9 @@
     <SkillModif>1,5</SkillModif>
     <CoolDown>15</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Hunter</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Hunter</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>HunterManaburnAttack</ID>
@@ -329,9 +329,9 @@
     <SkillModif>1,5</SkillModif>
     <CoolDown>15</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Hunter</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Hunter</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>HolyHeal</ID>
@@ -349,10 +349,10 @@
     <CoolDown>0</CoolDown>
     <ManaCost>15</ManaCost>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Cleric</ClassHero>
-      <ClassHero>Priest</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Cleric</Hero>
+      <Hero>Priest</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>MagicBasicAttack</ID>
@@ -370,12 +370,12 @@
     <CoolDown>0</CoolDown>
     <ManaCost>15</ManaCost>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Cleric</ClassHero>
-      <ClassHero>Mage</ClassHero>
-      <ClassHero>DarkPriest</ClassHero>
-      <ClassHero>Priest</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Cleric</Hero>
+      <Hero>Mage</Hero>
+      <Hero>DarkPriest</Hero>
+      <Hero>Priest</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>ClericWisdomBuff</ID>
@@ -392,9 +392,9 @@
     <CoolDown>20</CoolDown>
     <ManaCost>10</ManaCost>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Cleric</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Cleric</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>HolyAttack</ID>
@@ -412,10 +412,10 @@
     <CoolDown>5</CoolDown>
     <ManaCost>10</ManaCost>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Cleric</ClassHero>
-      <ClassHero>Priest</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Cleric</Hero>
+      <Hero>Priest</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>ClericManaRegenBuff</ID>
@@ -432,9 +432,9 @@
     <CoolDown>20</CoolDown>
     <ManaCost>10</ManaCost>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Cleric</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Cleric</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>ClericKnockbackAttack</ID>
@@ -452,9 +452,9 @@
     <CoolDown>15</CoolDown>
     <ManaCost>20</ManaCost>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Cleric</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Cleric</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>MageArcaneShield</ID>
@@ -471,9 +471,9 @@
     <CoolDown>60</CoolDown>
     <ManaCost>10</ManaCost>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Mage</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Mage</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>MageSummonSerpent</ID>
@@ -490,9 +490,9 @@
     <CoolDown>20</CoolDown>
     <ManaCost>10</ManaCost>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Mage</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Mage</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>MageSummonDragon</ID>
@@ -509,9 +509,9 @@
     <CoolDown>20</CoolDown>
     <ManaCost>10</ManaCost>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Mage</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Mage</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>MageFireballAttack</ID>
@@ -528,9 +528,9 @@
     <CoolDown>8</CoolDown>
     <ManaCost>30</ManaCost>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Mage</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Mage</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>MageFreezeAttack</ID>
@@ -548,9 +548,9 @@
     <CoolDown>8</CoolDown>
     <ManaCost>20</ManaCost>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Mage</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Mage</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>MageGuardianWind</ID>
@@ -568,9 +568,9 @@
     <CoolDown>20</CoolDown>
     <ManaCost>10</ManaCost>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Mage</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Mage</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>MageFirestormAttack</ID>
@@ -588,9 +588,9 @@
     <CoolDown>20</CoolDown>
     <ManaCost>50</ManaCost>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Mage</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Mage</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>ElfRoots</ID>
@@ -607,9 +607,9 @@
     <CoolDown>30</CoolDown>
     <ManaCost>20</ManaCost>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Elf</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Elf</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>ElfImpAttack</ID>
@@ -625,9 +625,9 @@
     <SkillModif>3,0</SkillModif>
     <CoolDown>10</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Elf</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Elf</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>ElfBuff</ID>
@@ -644,9 +644,9 @@
     <CoolDown>20</CoolDown>
     <ManaCost>10</ManaCost>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Elf</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Elf</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>ElfMagicArrow</ID>
@@ -663,9 +663,9 @@
     <CoolDown>15</CoolDown>
     <ManaCost>10</ManaCost>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Elf</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Elf</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>HammerBasicAttack</ID>
@@ -681,10 +681,10 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Dwarf</ClassHero>
-      <ClassHero>Paladin</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Dwarf</Hero>
+      <Hero>Paladin</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>DwarfAntiBuildingAttack</ID>
@@ -700,9 +700,9 @@
     <SkillModif>5,0</SkillModif>
     <CoolDown>10</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Dwarf</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Dwarf</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>DwarfImpAttack</ID>
@@ -718,9 +718,9 @@
     <SkillModif>3,0</SkillModif>
     <CoolDown>10</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Dwarf</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Dwarf</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>DwarfBerserkBuff</ID>
@@ -736,9 +736,9 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>60</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Dwarf</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Dwarf</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>DarkPriestSummonSeleton</ID>
@@ -755,9 +755,9 @@
     <CoolDown>20</CoolDown>
     <ManaCost>10</ManaCost>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>DarkPriest</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>DarkPriest</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>DarkPriestDrainLifeAttack</ID>
@@ -774,9 +774,9 @@
     <CoolDown>10</CoolDown>
     <ManaCost>15</ManaCost>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>DarkPriest</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>DarkPriest</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>DarkPriestSummonLich</ID>
@@ -793,9 +793,9 @@
     <CoolDown>20</CoolDown>
     <ManaCost>20</ManaCost>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>DarkPriest</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>DarkPriest</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>DarkPriestPestilence</ID>
@@ -812,9 +812,9 @@
     <CoolDown>20</CoolDown>
     <ManaCost>20</ManaCost>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>DarkPriest</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>DarkPriest</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>DarkPriestSummonVampire</ID>
@@ -831,9 +831,9 @@
     <CoolDown>20</CoolDown>
     <ManaCost>10</ManaCost>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>DarkPriest</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>DarkPriest</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>PriestMightBuff</ID>
@@ -850,9 +850,9 @@
     <CoolDown>0</CoolDown>
     <ManaCost>10</ManaCost>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Priest</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Priest</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>PriestMassHeal</ID>
@@ -869,9 +869,9 @@
     <CoolDown>10</CoolDown>
     <ManaCost>30</ManaCost>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Priest</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Priest</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>PriestHotHeal</ID>
@@ -888,9 +888,9 @@
     <CoolDown>10</CoolDown>
     <ManaCost>30</ManaCost>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Priest</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Priest</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>PaladinTaunt</ID>
@@ -908,9 +908,9 @@
     <Effects>
       <Effect>Taunt</Effect>
     </Effects>
-    <ClassesHeroes>
-      <ClassHero>Paladin</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Paladin</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>PaladinImpAttack</ID>
@@ -928,9 +928,9 @@
     <Effects>
       <Effect>Taunt</Effect>
     </Effects>
-    <ClassesHeroes>
-      <ClassHero>Paladin</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Paladin</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>PaladinResistanceBuff</ID>
@@ -946,9 +946,9 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>15</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Paladin</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Paladin</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>PaladinHolyNovaAttack</ID>
@@ -964,9 +964,9 @@
     <SkillModif>5,0</SkillModif>
     <CoolDown>4</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Paladin</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Paladin</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>PaladinChargeAttack</ID>
@@ -982,9 +982,9 @@
     <SkillModif>5,0</SkillModif>
     <CoolDown>20</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Paladin</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Paladin</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>BladeMasterTaunt</ID>
@@ -1002,9 +1002,9 @@
     <Effects>
       <Effect>Taunt</Effect>
     </Effects>
-    <ClassesHeroes>
-      <ClassHero>BladeMaster</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>BladeMaster</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>BladeMasterWhirlwindAttack</ID>
@@ -1020,9 +1020,9 @@
     <SkillModif>2,0</SkillModif>
     <CoolDown>10</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>BladeMaster</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>BladeMaster</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>BladeMasterImpWhirlwindAttack</ID>
@@ -1038,9 +1038,9 @@
     <SkillModif>3,0</SkillModif>
     <CoolDown>30</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>BladeMaster</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>BladeMaster</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>BeastMasterBasicAttack</ID>
@@ -1056,9 +1056,9 @@
     <SkillModif>2,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>BeastMaster</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>BeastMaster</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>BeastMasterBeastSlayerAttack</ID>
@@ -1074,9 +1074,9 @@
     <SkillModif>4,0</SkillModif>
     <CoolDown>10</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>BeastMaster</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>BeastMaster</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>BeastMasterImpAttack</ID>
@@ -1092,9 +1092,9 @@
     <SkillModif>3,0</SkillModif>
     <CoolDown>10</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>BeastMaster</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>BeastMaster</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>BeastMasterSummonBeast</ID>
@@ -1110,9 +1110,9 @@
     <SkillModif>3,0</SkillModif>
     <CoolDown>30</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>BeastMaster</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>BeastMaster</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>BeastMasterEnrageBeast</ID>
@@ -1128,9 +1128,9 @@
     <SkillModif>3,0</SkillModif>
     <CoolDown>20</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>BeastMaster</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>BeastMaster</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>BeastMasterHealBeast</ID>
@@ -1146,9 +1146,9 @@
     <SkillModif>3,0</SkillModif>
     <CoolDown>50</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>BeastMaster</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>BeastMaster</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>BeastMasterSummonBeast2</ID>
@@ -1164,9 +1164,9 @@
     <SkillModif>3,0</SkillModif>
     <CoolDown>45</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>BeastMaster</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>BeastMaster</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>BeastMasterAntiStunBuff</ID>
@@ -1182,9 +1182,9 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>20</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>BeastMaster</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>BeastMaster</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>BeastMasterHoneyArrowAttack</ID>
@@ -1200,9 +1200,9 @@
     <SkillModif>3,0</SkillModif>
     <CoolDown>10</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>BeastMaster</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>BeastMaster</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>MarksmanBasicAttack</ID>
@@ -1218,9 +1218,9 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Marksman</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Marksman</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>MarksmanBeastSlayerAttack</ID>
@@ -1236,9 +1236,9 @@
     <SkillModif>4,0</SkillModif>
     <CoolDown>10</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Marksman</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Marksman</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>MarksmanImpAttack</ID>
@@ -1254,9 +1254,9 @@
     <SkillModif>3,0</SkillModif>
     <CoolDown>10</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Marksman</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Marksman</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>MarksmanHoodShotAttack</ID>
@@ -1272,9 +1272,9 @@
     <SkillModif>5,0</SkillModif>
     <CoolDown>30</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Marksman</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Marksman</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>MarksmanStingShotAttack</ID>
@@ -1290,9 +1290,9 @@
     <SkillModif>1,5</SkillModif>
     <CoolDown>15</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Marksman</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Marksman</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>MarksmanSunburstAttack</ID>
@@ -1308,9 +1308,9 @@
     <SkillModif>2,0</SkillModif>
     <CoolDown>30</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Marksman</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Marksman</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>MarksmanFriendlyTargetAttack</ID>
@@ -1326,9 +1326,9 @@
     <SkillModif>50,0</SkillModif>
     <CoolDown>15</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Marksman</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Marksman</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>IceMageBasicAttack</ID>
@@ -1346,9 +1346,9 @@
     <CoolDown>0</CoolDown>
     <ManaCost>0</ManaCost>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>IceMage</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>IceMage</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>IceMageFrostBoltAttack</ID>
@@ -1366,9 +1366,9 @@
     <CoolDown>10</CoolDown>
     <ManaCost>20</ManaCost>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>IceMage</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>IceMage</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>IceMageIceBlock</ID>
@@ -1386,9 +1386,9 @@
     <CoolDown>20</CoolDown>
     <ManaCost>50</ManaCost>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>IceMage</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>IceMage</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>IceMageBlizzardAttack</ID>
@@ -1406,9 +1406,9 @@
     <CoolDown>25</CoolDown>
     <ManaCost>60</ManaCost>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>IceMage</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>IceMage</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>IceMageGuardianWind</ID>
@@ -1426,9 +1426,9 @@
     <CoolDown>20</CoolDown>
     <ManaCost>10</ManaCost>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>IceMage</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>IceMage</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>IceMageShield</ID>
@@ -1444,9 +1444,9 @@
     <SkillModif>2,5</SkillModif>
     <CoolDown>60</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>IceMage</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>IceMage</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>DeathKnightBasicAttack</ID>
@@ -1462,9 +1462,9 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>DeathKnight</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>DeathKnight</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>DeathKnightPoisonAttack</ID>
@@ -1480,9 +1480,9 @@
     <SkillModif>2,0</SkillModif>
     <CoolDown>40</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>DeathKnight</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>DeathKnight</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>DeathKnightStunAttack</ID>
@@ -1498,9 +1498,9 @@
     <SkillModif>3,0</SkillModif>
     <CoolDown>40</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>DeathKnight</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>DeathKnight</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>DeathKnightDebuff1Attack</ID>
@@ -1516,9 +1516,9 @@
     <SkillModif>2,0</SkillModif>
     <CoolDown>20</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>DeathKnight</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>DeathKnight</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>DeathKnightDebuff2Attack</ID>
@@ -1534,9 +1534,9 @@
     <SkillModif>2,0</SkillModif>
     <CoolDown>20</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>DeathKnight</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>DeathKnight</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>DeathKnightDebuff3Attack</ID>
@@ -1552,9 +1552,9 @@
     <SkillModif>2,0</SkillModif>
     <CoolDown>20</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>DeathKnight</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>DeathKnight</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>FireMageBasicAttack</ID>
@@ -1570,9 +1570,9 @@
     <SkillModif>2,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>FireMage</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>FireMage</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>FireMageFireWeapon</ID>
@@ -1589,9 +1589,9 @@
     <CoolDown>35</CoolDown>
     <ManaCost>10</ManaCost>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>FireMage</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>FireMage</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>FireMageFireBallAttack</ID>
@@ -1608,9 +1608,9 @@
     <CoolDown>6</CoolDown>
     <ManaCost>10</ManaCost>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>FireMage</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>FireMage</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>FireMageFireWall</ID>
@@ -1627,9 +1627,9 @@
     <CoolDown>30</CoolDown>
     <ManaCost>15</ManaCost>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>FireMage</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>FireMage</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>FireMageFireStorm</ID>
@@ -1646,9 +1646,9 @@
     <CoolDown>20</CoolDown>
     <ManaCost>15</ManaCost>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>FireMage</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>FireMage</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>FireMageFireShield</ID>
@@ -1665,9 +1665,9 @@
     <CoolDown>60</CoolDown>
     <ManaCost>20</ManaCost>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>FireMage</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>FireMage</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>WolfBasicAttack</ID>
@@ -1681,10 +1681,10 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Wolf</ClassHero>
-      <ClassHero>OldWolf</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Wolf</Hero>
+      <Hero>OldWolf</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>WolfChildOfTheForest</ID>
@@ -1698,10 +1698,10 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Wolf</ClassHero>
-      <ClassHero>OldWolf</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Wolf</Hero>
+      <Hero>OldWolf</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>Fangs</ID>
@@ -1715,10 +1715,10 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Wolf</ClassHero>
-      <ClassHero>OldWolf</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Wolf</Hero>
+      <Hero>OldWolf</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>Predator</ID>
@@ -1732,10 +1732,10 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Wolf</ClassHero>
-      <ClassHero>OldWolf</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Wolf</Hero>
+      <Hero>OldWolf</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>LeaderOfThePack</ID>
@@ -1749,9 +1749,9 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>OldWolf</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>OldWolf</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>WolfCommonBite</ID>
@@ -1765,9 +1765,9 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>OldWolf</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>OldWolf</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>ZombieBasicAttack</ID>
@@ -1781,9 +1781,9 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Zombie</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Zombie</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>WillOfDarkness</ID>
@@ -1797,9 +1797,9 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Zombie</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Zombie</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>DeadFlesh</ID>
@@ -1813,9 +1813,9 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Zombie</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Zombie</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>NeedFood</ID>
@@ -1829,9 +1829,9 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Zombie</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Zombie</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>Ptomaine</ID>
@@ -1845,9 +1845,9 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Zombie</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Zombie</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>SkeletBasicAttack</ID>
@@ -1861,9 +1861,9 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Skelet</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Skelet</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>SkeletArcherBasicAttack</ID>
@@ -1877,9 +1877,9 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>SkeletArcher</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>SkeletArcher</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>SkeletVeteranBasicAttack</ID>
@@ -1893,9 +1893,9 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>SkeletVeteran</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>SkeletVeteran</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>SkeletSniperBasicAttack</ID>
@@ -1909,9 +1909,9 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>SkeletSniper</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>SkeletSniper</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>GhostBasicAttack</ID>
@@ -1925,9 +1925,9 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Ghost</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Ghost</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>LichBasicAttack</ID>
@@ -1941,10 +1941,10 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Lich</ClassHero>
-      <ClassHero>AncientLich</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Lich</Hero>
+      <Hero>AncientLich</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>VampireAttack</ID>
@@ -1958,9 +1958,9 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Vampire</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Vampire</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>SerpentBasicAttack</ID>
@@ -1974,9 +1974,9 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Serpent</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Serpent</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>BearBasicAttack</ID>
@@ -1990,10 +1990,10 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Bear</ClassHero>
-      <ClassHero>GreatBear</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Bear</Hero>
+      <Hero>GreatBear</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>BearChildOfTheForest</ID>
@@ -2007,10 +2007,10 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Bear</ClassHero>
-      <ClassHero>GreatBear</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Bear</Hero>
+      <Hero>GreatBear</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>BearPaw</ID>
@@ -2024,10 +2024,10 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Bear</ClassHero>
-      <ClassHero>GreatBear</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Bear</Hero>
+      <Hero>GreatBear</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>BearBleeding</ID>
@@ -2041,10 +2041,10 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Bear</ClassHero>
-      <ClassHero>GreatBear</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Bear</Hero>
+      <Hero>GreatBear</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>BearStrongClaws</ID>
@@ -2058,9 +2058,9 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>GreatBear</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>GreatBear</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>WerewolfBearBasicAttack</ID>
@@ -2074,9 +2074,9 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>WerewolfBear</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>WerewolfBear</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>MinotaurBasicAttack</ID>
@@ -2090,10 +2090,10 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Minotaur</ClassHero>
-      <ClassHero>BlackMinotaur</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Minotaur</Hero>
+      <Hero>BlackMinotaur</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>OgreBasicAttack</ID>
@@ -2107,10 +2107,10 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Ogre</ClassHero>
-      <ClassHero>GrendarOgre</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Ogre</Hero>
+      <Hero>GrendarOgre</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>WerewolfBasicAttack</ID>
@@ -2124,9 +2124,9 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Werewolf</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Werewolf</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>DragonBasicAttack</ID>
@@ -2140,9 +2140,9 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Dragon</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Dragon</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>KingRatBasicAttack</ID>
@@ -2156,9 +2156,9 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>KingRat</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>KingRat</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>OldRatBasicAttack</ID>
@@ -2172,9 +2172,9 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>OldRat</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>OldRat</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>KingSkeletonBasicAttack</ID>
@@ -2188,9 +2188,9 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>KingSkeleton</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>KingSkeleton</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>RatmanBasicAttack</ID>
@@ -2204,9 +2204,9 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Ratman</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Ratman</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>RatBasicAttack</ID>
@@ -2220,9 +2220,9 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>Rat</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>Rat</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>ElementalEarthBasicAttack</ID>
@@ -2236,9 +2236,9 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>ElementalEarth</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>ElementalEarth</Hero>
+    </Heroes>
   </Ability>
   <Ability>
     <ID>ElementalFireBasicAttack</ID>
@@ -2252,8 +2252,8 @@
     <SkillModif>1,0</SkillModif>
     <CoolDown>0</CoolDown>
     <Effects/>
-    <ClassesHeroes>
-      <ClassHero>ElementalFire</ClassHero>
-    </ClassesHeroes>
+    <Heroes>
+      <Hero>ElementalFire</Hero>
+    </Heroes>
   </Ability>
 </Descriptors>
