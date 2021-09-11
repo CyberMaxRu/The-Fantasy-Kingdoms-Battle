@@ -36,19 +36,28 @@ namespace Fantasy_Kingdoms_Battle
                     availableForHeroesString.Add(nameHero);
                 }
             }
-
-            Debug.Assert((AvailableForAllHeroes && (availableForHeroesString is null)) || (!AvailableForAllHeroes && (availableForHeroesString != null) && (availableForHeroesString.Count > 0)),
-                $"Не настроена доступность героям у {ID}.");
         }
 
         internal bool AvailableForAllHeroes { get; }// Сущность доступна всем существам
         internal List<DescriptorCreature> AvailableForHeroes { get; } = new List<DescriptorCreature>();
 
         protected override int ShiftImageIndex() => Config.ImageIndexFirstItems;
+        protected virtual bool ForHeroes() => true;
 
         internal override void TuneDeferredLinks()
         {
             base.TuneDeferredLinks();
+
+            if (ForHeroes())
+            {
+                Debug.Assert((AvailableForAllHeroes && (availableForHeroesString is null)) || (!AvailableForAllHeroes && (availableForHeroesString != null) && (availableForHeroesString.Count > 0)),
+                    $"Не настроена доступность героям у {ID}.");
+            }
+            else
+            {
+                Debug.Assert(AvailableForAllHeroes == false);
+                Debug.Assert(availableForHeroesString is null);
+            }
 
             if (availableForHeroesString != null)
             {

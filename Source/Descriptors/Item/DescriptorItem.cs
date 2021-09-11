@@ -8,7 +8,7 @@ using System.Xml;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal enum CategoryItem { Potion, Enchant, Artifact, Elixir, Thing, Weapon, Armour, Quiver }
+    internal enum CategoryItem { Potion, Enchant, Artifact, Elixir, Thing, Weapon, Armour, Quiver, Monster }
 
     // Класс предмета
     internal sealed class DescriptorItem : DescriptorSmallEntity
@@ -19,7 +19,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             CategoryItem = (CategoryItem)Enum.Parse(typeof(CategoryItem), n.SelectSingleNode("CategoryItem").InnerText);
             nameGroupItem = XmlUtils.GetString(n, "GroupItem");
-
 
             TimeHit = n.SelectSingleNode("TimeHit") == null ? 0 : Convert.ToInt32(n.SelectSingleNode("TimeHit").InnerText);
             if (n.SelectSingleNode("VelocityMissile") != null)
@@ -150,7 +149,8 @@ namespace Fantasy_Kingdoms_Battle
             }*/
 
             //Debug.Assert(ClassHero.CategoryCreature != CategoryCreature.Citizen);//Weapon
-
         }
+
+        protected override bool ForHeroes() => CategoryItem != CategoryItem.Monster;
     }
 }
