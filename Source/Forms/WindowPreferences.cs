@@ -31,6 +31,10 @@ namespace Fantasy_Kingdoms_Battle
         private VCCheckBox chkbPlaySound;
         private VCCheckBox chkbPlayMusic;
 
+        private VisualControl vcPanelInterface;
+        private VCLabel lblCaptionPanelInterface;
+        private VCCheckBox chkbShowShortNames;
+
         private Settings settings;
 
         private bool playSound;
@@ -80,7 +84,17 @@ namespace Fantasy_Kingdoms_Battle
             vcPanelSound.Height += 8;
             lblCaptionPanelSound.Width = vcPanelSound.Width - (FormMain.Config.GridSize * 2);
 
-            btnAccept = new VCButton(ClientControl, 0, vcPanelSound.NextTop() + (FormMain.Config.GridSize * 2), "Принять");
+            vcPanelInterface = new VisualControl(ClientControl, 0, vcPanelSound.NextTop());
+            vcPanelInterface.ShowBorder = true;
+            lblCaptionPanelInterface = new VCLabel(vcPanelInterface, FormMain.Config.GridSize, 8, Program.formMain.fontMedCaption, Color.MediumTurquoise, 24, "Интерфейс:");
+            lblCaptionPanelInterface.StringFormat.Alignment = StringAlignment.Near;
+            chkbShowShortNames = new VCCheckBox(vcPanelInterface, FormMain.Config.GridSize, lblCaptionPanelInterface.NextTop(), "Наименования на иконках умений и предметов");
+            chkbShowShortNames.Width = 400;
+            vcPanelInterface.ApplyMaxSize();
+            vcPanelInterface.Height += 8;
+            lblCaptionPanelInterface.Width = vcPanelInterface.Width - (FormMain.Config.GridSize * 2);
+
+            btnAccept = new VCButton(ClientControl, 0, vcPanelInterface.NextTop() + (FormMain.Config.GridSize * 2), "Принять");
             btnAccept.Width = 160;
             btnAccept.Click += BtnAccept_Click;
             btnDefault = new VCButton(ClientControl, btnAccept.NextLeft(), btnAccept.ShiftY, "Базовые");
@@ -98,6 +112,7 @@ namespace Fantasy_Kingdoms_Battle
             vcPanelGame.Width = ClientControl.Width - (vcPanelGame.ShiftX * 2);
             vcPanelBatttlefield.Width = ClientControl.Width - (vcPanelBatttlefield.ShiftX * 2);
             vcPanelSound.Width = ClientControl.Width - (vcPanelSound.ShiftX * 2);
+            vcPanelInterface.Width = ClientControl.Width - (vcPanelInterface.ShiftX * 2);
         }
 
         private void ChkbPlayMusic_Click(object sender, EventArgs e)
@@ -121,6 +136,7 @@ namespace Fantasy_Kingdoms_Battle
             chkbShowGrid.Checked = settings.BattlefieldShowGrid;
             chkbPlaySound.Checked = settings.PlaySound;
             chkbPlayMusic.Checked = settings.PlayMusic;
+            chkbShowShortNames.Checked = settings.ShowShortNames;
 
             playSound = settings.PlaySound;
             playMusic = settings.PlayMusic;
@@ -154,6 +170,7 @@ namespace Fantasy_Kingdoms_Battle
             settings.BattlefieldShowGrid = chkbShowGrid.Checked;
             settings.PlaySound = chkbPlaySound.Checked;
             settings.PlayMusic = chkbPlayMusic.Checked;
+            settings.ShowShortNames = chkbShowShortNames.Checked;
             settings.SaveSettings();
 
             CloseForm(DialogAction.OK);

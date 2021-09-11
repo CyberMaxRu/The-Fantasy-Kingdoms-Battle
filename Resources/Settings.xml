@@ -2,7 +2,7 @@
 <Settings>
   <Game>
     <ShowSplashVideo>False</ShowSplashVideo>
-    <FullScreenMode>False</FullScreenMode>
+    <FullScreenMode>True</FullScreenMode>
     <CheckUpdatesOnStartup>False</CheckUpdatesOnStartup>
   </Game>
   <Battlefield>
@@ -13,4 +13,7 @@
     <PlaySound>True</PlaySound>
     <PlayMusic>False</PlayMusic>
   </Sound>
+  <Interface>
+    <ShowShortNames>True</ShowShortNames>
+  </Interface>
 </Settings>

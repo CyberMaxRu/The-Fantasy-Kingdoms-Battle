@@ -37,6 +37,8 @@ namespace Fantasy_Kingdoms_Battle
                     PlaySound = XmlUtils.GetBoolean(doc, "Settings/Sound/PlaySound", PlaySound);
                     PlayMusic = XmlUtils.GetBoolean(doc, "Settings/Sound/PlayMusic", PlayMusic);
 
+                    ShowShortNames = XmlUtils.GetBoolean(doc, "Settings/Interface/ShowShortNames", PlayMusic);
+
                     DirectoryAvatar = XmlUtils.GetString(doc, "Settings/Player/DirectoryAvatar");
                 }
                 catch (Exception e)
@@ -67,6 +69,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
         }
+        internal bool ShowShortNames { get; set; }
 
         internal event EventHandler PlayMusicChanged;
 
@@ -79,6 +82,7 @@ namespace Fantasy_Kingdoms_Battle
             BattlefieldShowGrid = false;
             PlaySound = true;
             PlayMusic = true;
+            ShowShortNames = false;
         }
 
         internal void SaveSettings()
@@ -105,6 +109,9 @@ namespace Fantasy_Kingdoms_Battle
             textWriter.WriteElementString("PlaySound", PlaySound.ToString());
             textWriter.WriteElementString("PlayMusic", PlayMusic.ToString());
             textWriter.WriteEndElement();
+
+            textWriter.WriteStartElement("Interface");
+            textWriter.WriteElementString("ShowShortNames", PlaySound.ToString());
 
             textWriter.WriteEndElement();
             textWriter.Close();
