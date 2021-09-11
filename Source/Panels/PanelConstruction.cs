@@ -232,7 +232,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 imgMapObject.Level = Construction.Level < Construction.TypeConstruction.MaxLevel ? Construction.Level : 0;
 
-                if ((Construction.TypeConstruction.TrainedHero != null) && !(Construction.TypeConstruction.TrainedHero is null) && (Construction.Level > 0) && (Construction.Heroes.Count > 0))
+                if ((Construction.TypeConstruction.TrainedHero != null) && !(Construction.TypeConstruction.TrainedHero is null) && (Construction.Level > 0))
                 {
                     btnHeroes.Text = Construction.Heroes.Count.ToString() + (Construction.Heroes.Count != Construction.MaxHeroes() ? "/" + Construction.MaxHeroes() : "");
                     //btnHeroes.ImageIndex = Program.formMain.TreatImageIndex(Construction.TypeConstruction.TrainedHero.ImageIndex, Construction.Player);
