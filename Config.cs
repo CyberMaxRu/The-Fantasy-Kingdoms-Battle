@@ -212,6 +212,9 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorItem i in Items)
                 i.TuneDeferredLinks();
 
+            foreach (DescriptorGroupItems i in GroupItems)
+                i.TuneDeferredLinks();
+
             foreach (DescriptorCreature tc in Creatures)
                 tc.TuneDeferredLinks();
 
