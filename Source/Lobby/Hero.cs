@@ -393,23 +393,8 @@ namespace Fantasy_Kingdoms_Battle
                 CounterConstructionForBuy--;
 
             if (abilityBought)
-                SortAbility();
+                SortAbilities();
         }
 
-        private bool AbilityExists(DescriptorAbility da)
-        {
-            foreach (Ability a in Abilities)
-            {
-                if (a.Descriptor == da)
-                    return true;
-            }
-
-            return false;
-        }
-
-        private void SortAbility()
-        {
-            //Abilities.Sort();
-        }
     }
 }

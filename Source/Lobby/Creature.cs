@@ -25,6 +25,8 @@ namespace Fantasy_Kingdoms_Battle
             // Применяем дефолтные способности
             foreach (DescriptorAbility ta in TypeCreature.Abilities)
                 AddAbility(ta);
+            SortAbilities();
+
             Specialization = new Specialization(this, FormMain.Config.FindSpecialization("SpeedMove"));
             AddSecondarySkill(FormMain.Config.FindSecondarySkill("HealthSecSkill"));
 
@@ -222,6 +224,42 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(SecondarySkills.Count < FormMain.Config.MaxCreatureSecondarySkills);
 
             SecondarySkills.Add(new SecondarySkill(this, descriptor));
+        }
+        internal bool AbilityExists(DescriptorAbility da)
+        {
+            foreach (Ability a in Abilities)
+            {
+                if (a.Descriptor == da)
+                    return true;
+            }
+
+            return false;
+        }
+
+        private static int CompareAbility(Ability a1, Ability a2)
+        {
+            DescriptorAbility d1 = a1.Descriptor;
+            DescriptorAbility d2 = a2.Descriptor;
+
+            if (d2.TypeAbility == d2.TypeAbility)
+            {
+                if (d1.MinUnitLevel == d2.MinUnitLevel)
+                {
+                    Debug.Assert(a1.Pos != a2.Pos);
+                    return a1.Pos > a2.Pos ? 1 : -1;
+                }
+                else
+                {
+                    return d1.MinUnitLevel > d2.MinUnitLevel ? 1 : -1;
+                }
+            }
+            else
+                return d1.TypeAbility > d2.TypeAbility ? 1 : -1;
+        }
+
+        protected void SortAbilities()
+        {
+            Abilities.Sort(CompareAbility);
         }
     }
 }

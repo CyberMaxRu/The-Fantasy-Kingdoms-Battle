@@ -14,10 +14,12 @@ namespace Fantasy_Kingdoms_Battle
         {
             Creature = creature;
             Descriptor = typeAbility;
+            Pos = creature.Abilities.Count + 1;
         }
 
         internal Creature Creature { get; }
         internal DescriptorAbility Descriptor { get; }
+        internal int Pos { get; }// Позиция, под которой умение было добавлено существу. Применяется для сортировки
 
         internal override int GetImageIndex() => Descriptor.ImageIndex;
         internal override int GetLevel() => Descriptor.MinUnitLevel;
