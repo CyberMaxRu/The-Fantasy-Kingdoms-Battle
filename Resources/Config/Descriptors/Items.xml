@@ -2955,4 +2955,50 @@
     <ImageIndex>202</ImageIndex>
     <CategoryItem>Monster</CategoryItem>
   </Item>
+  <Item>
+    <ID>PlayingCards</ID>
+    <Name>Карточные игры</Name>
+    <Description>- Организовать столы для карточных игр</Description>
+    <ImageIndex>203</ImageIndex>
+    <CategoryItem>Thing</CategoryItem>
+    <Heroes>
+      <Hero>Hunter</Hero>
+      <Hero>Elf</Hero>
+      <Hero>Rogue</Hero>
+    </Heroes>
+  </Item>
+  <Item>
+    <ID>Dice</ID>
+    <Name>Игральные кости</Name>
+    <Description>- Организовать столы для игр в кости</Description>
+    <ImageIndex>204</ImageIndex>
+    <CategoryItem>Thing</CategoryItem>
+    <Heroes>
+      <Hero>Warrior</Hero>
+      <Hero>Dwarf</Hero>
+      <Hero>Rogue</Hero>
+    </Heroes>
+  </Item>
+  <Item>
+    <ID>TavernMeat</ID>
+    <Name>Сытный ужин</Name>
+    <Description>- Сытный ужин дает силы герою</Description>
+    <ImageIndex>205</ImageIndex>
+    <CategoryItem>Thing</CategoryItem>
+    <Heroes>
+      <Hero>Warrior</Hero>
+      <Hero>Dwarf</Hero>
+    </Heroes>
+  </Item>
+  <Item>
+    <ID>TavernBeer</ID>
+    <Name>Пиво</Name>
+    <Description>- От хорошей гулянки в таверне у героя поднимается настроение</Description>
+    <ImageIndex>206</ImageIndex>
+    <CategoryItem>Thing</CategoryItem>
+    <Heroes>
+      <Hero>Warrior</Hero>
+      <Hero>Dwarf</Hero>
+    </Heroes>
+  </Item>
 </Descriptors>

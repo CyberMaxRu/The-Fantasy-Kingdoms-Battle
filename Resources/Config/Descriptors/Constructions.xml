@@ -1270,6 +1270,7 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>2</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>
+    <LayersCellMenu>1</LayersCellMenu>
     <SoundSelect>tavern_select.wav</SoundSelect>
     <Levels>
       <Level>
@@ -1291,6 +1292,22 @@
         </Requirements>
       </Level>
     </Levels>
+    <CellsMenu>
+      <CellMenu>
+        <PosX>1</PosX>
+        <PosY>1</PosY>
+        <Layer>1</Layer>
+        <TypeObject>TavernBeer</TypeObject>
+        <Cost>500</Cost>
+      </CellMenu>
+      <CellMenu>
+        <PosX>2</PosX>
+        <PosY>1</PosY>
+        <Layer>1</Layer>
+        <TypeObject>TavernMeat</TypeObject>
+        <Cost>500</Cost>
+      </CellMenu>
+    </CellsMenu>
   </Construction>
   <Construction>
     <ID>MagicBazaar</ID>
@@ -2578,6 +2595,7 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>2</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>
+    <LayersCellMenu>1</LayersCellMenu>
     <SoundSelect>gambling_hall_select.wav</SoundSelect>
     <Levels>
       <Level>
@@ -2599,5 +2617,27 @@
         </Requirements>
       </Level>
     </Levels>
+    <CellsMenu>
+      <CellMenu>
+        <PosX>1</PosX>
+        <PosY>1</PosY>
+        <Layer>1</Layer>
+        <TypeObject>PlayingCards</TypeObject>
+        <Cost>500</Cost>
+      </CellMenu>
+      <CellMenu>
+        <PosX>2</PosX>
+        <PosY>1</PosY>
+        <Layer>1</Layer>
+        <TypeObject>Dice</TypeObject>
+        <Cost>1000</Cost>
+        <Requirements>
+          <Requirement>
+            <Construction>GamblingHall</Construction>
+            <Level>2</Level>
+          </Requirement>
+        </Requirements>
+      </CellMenu>
+    </CellsMenu>
   </Construction>
 </Descriptors>
