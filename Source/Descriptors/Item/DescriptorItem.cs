@@ -138,6 +138,7 @@ namespace Fantasy_Kingdoms_Battle
             if (nameGroupItem.Length > 0)
             {
                 GroupItem = Config.FindGroupItem(nameGroupItem);
+                GroupItem.Items.Add(this);
                 nameGroupItem = "";
             }
 
