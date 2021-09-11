@@ -770,7 +770,7 @@
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
     <TypeAttackMelee>Staff</TypeAttackMelee>
-    <MeleeWeapon>WeaponMage0</MeleeWeapon>
+    <MeleeWeapon>StaffMage0</MeleeWeapon>
     <Armour>ArmourMage0</Armour>
     <DefaultPositionPriority>210</DefaultPositionPriority>
     <BaseParameters>
@@ -1180,7 +1180,7 @@
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
     <TypeAttackMelee>Staff</TypeAttackMelee>
-    <MeleeWeapon>WeaponDarkPriest0</MeleeWeapon>
+    <MeleeWeapon>StaffDarkPriest0</MeleeWeapon>
     <Armour>ArmourDarkPriest0</Armour>
     <DefaultPositionPriority>220</DefaultPositionPriority>
     <NameFromTypeHero>Cleric</NameFromTypeHero>
@@ -1278,7 +1278,7 @@
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
     <TypeAttackMelee>Staff</TypeAttackMelee>
-    <MeleeWeapon>WeaponPriest0</MeleeWeapon>
+    <MeleeWeapon>StaffPriest0</MeleeWeapon>
     <Armour>ArmourPriest0</Armour>
     <DefaultPositionPriority>230</DefaultPositionPriority>
     <NameFromTypeHero>Cleric</NameFromTypeHero>
@@ -1756,7 +1756,7 @@
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
     <TypeAttackMelee>Staff</TypeAttackMelee>
-    <MeleeWeapon>WeaponFireMage0</MeleeWeapon>
+    <MeleeWeapon>StaffFireMage0</MeleeWeapon>
     <Armour>ArmourFireMage0</Armour>
     <DefaultPositionPriority>250</DefaultPositionPriority>
     <NameFromTypeHero>Mage</NameFromTypeHero>
@@ -1810,7 +1810,7 @@
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
     <TypeAttackMelee>Staff</TypeAttackMelee>
-    <MeleeWeapon>WeaponIceMage0</MeleeWeapon>
+    <MeleeWeapon>StaffIceMage0</MeleeWeapon>
     <Armour>ArmourIceMage0</Armour>
     <DefaultPositionPriority>260</DefaultPositionPriority>
     <NameFromTypeHero>Mage</NameFromTypeHero>
