@@ -98,18 +98,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int CoolDown { get; }
         internal List<Effect> Effects { get; } = new List<Effect>();
 
-        internal override void TuneDeferredLinks()
-        {
-            base.TuneDeferredLinks();
-
-            Description += (Description.Length > 0 ? Environment.NewLine : "") + "- Доступно:";
-
-            foreach (DescriptorCreature u in AvailableForHeroes)
-            {
-                Description += Environment.NewLine + "  - " + u.Name;
-            }
-        }
-
         /*protected override string GetCost()
         {
             switch (KindAbility)
