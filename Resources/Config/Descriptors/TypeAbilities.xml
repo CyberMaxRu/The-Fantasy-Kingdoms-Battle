@@ -11,6 +11,11 @@
     <ShortName>даль.</ShortName>
   </TypeAbility>
   <TypeAbility>
+    <ID>MagicAttack</ID>
+    <Name>Магическая атака</Name>
+    <ShortName>маг.</ShortName>
+  </TypeAbility>
+  <TypeAbility>
     <ID>Spell</ID>
     <Name>Заклинание</Name>
     <ShortName>закл.</ShortName>

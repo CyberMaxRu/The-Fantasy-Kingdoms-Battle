@@ -8,7 +8,7 @@ using System.Diagnostics;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal enum NameTypeAbility { MeleeAttack, RangeAttack, Spell, Buff, Debuff, Heal, Summon, Passive, Aura }
+    internal enum NameTypeAbility { MeleeAttack, RangeAttack, MagicAttack, Spell, Buff, Debuff, Heal, Summon, Passive, Aura }
 
     // Класс типа способности
     internal sealed class DescriptorTypeAbility : Descriptor

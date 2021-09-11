@@ -360,7 +360,7 @@
     <Description>- Обычная атака магией или магическим оружием//- Наносит урон одной цели</Description>
     <ImageIndex>56</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>Spell</TypeAbility>
+    <TypeAbility>MagicAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -402,7 +402,7 @@
     <Description>- Наносит огромный урон нежити//- Требует маны//- Магическая атака</Description>
     <ImageIndex>58</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>Spell</TypeAbility>
+    <TypeAbility>MagicAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -1336,7 +1336,7 @@
     <Description>- Обычная атака магией или магическим оружием//- Наносит урон одной цели</Description>
     <ImageIndex>56</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>Spell</TypeAbility>
+    <TypeAbility>MagicAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -1562,7 +1562,7 @@
     <Description>- Обычная атака магией или магическим оружием//- Наносит урон одной цели</Description>
     <ImageIndex>145</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>Spell</TypeAbility>
+    <TypeAbility>MagicAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>False</Ranged>

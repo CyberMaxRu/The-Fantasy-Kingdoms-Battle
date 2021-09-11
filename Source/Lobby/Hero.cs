@@ -383,7 +383,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     if (!AbilityExists(cp.DescriptorAbility))
                     {
-                        Abilities.Add(c.PurchaseAbility(this, cp));
+                        AddAbility(c.PurchaseAbility(this, cp));
                         abilityBought = true;
                     }
                 }

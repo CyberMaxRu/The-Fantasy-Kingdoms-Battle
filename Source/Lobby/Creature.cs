@@ -212,11 +212,18 @@ namespace Fantasy_Kingdoms_Battle
             DoCustomDraw(g, x, y, drawState);
         }
 
-        private void AddAbility(DescriptorAbility descriptor)
+        protected void AddAbility(DescriptorAbility descriptor)
         {
             Debug.Assert(Abilities.Count < FormMain.Config.MaxCreatureAbilities);
 
             Abilities.Add(new Ability(this, descriptor));
+        }
+
+        protected void AddAbility(Ability ability)
+        {
+            Debug.Assert(Abilities.Count < FormMain.Config.MaxCreatureAbilities);
+
+            Abilities.Add(ability);
         }
 
         private void AddSecondarySkill(DescriptorSecondarySkill descriptor)
@@ -238,23 +245,20 @@ namespace Fantasy_Kingdoms_Battle
 
         private static int CompareAbility(Ability a1, Ability a2)
         {
+            Debug.Assert(a1.Pos != a2.Pos);
+
             DescriptorAbility d1 = a1.Descriptor;
             DescriptorAbility d2 = a2.Descriptor;
 
-            if (d2.TypeAbility == d2.TypeAbility)
+            if (d1.TypeAbility.ID == d2.TypeAbility.ID)
             {
                 if (d1.MinUnitLevel == d2.MinUnitLevel)
-                {
-                    Debug.Assert(a1.Pos != a2.Pos);
                     return a1.Pos > a2.Pos ? 1 : -1;
-                }
                 else
-                {
                     return d1.MinUnitLevel > d2.MinUnitLevel ? 1 : -1;
-                }
             }
             else
-                return d1.TypeAbility.Pos > d2.TypeAbility.Pos ? 1 : -1;
+                return d1.TypeAbility.Pos > d2.TypeAbility.Pos ? 1: -1;
         }
 
         protected void SortAbilities()
