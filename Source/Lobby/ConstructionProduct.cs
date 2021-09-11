@@ -9,15 +9,11 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class ConstructionProduct : SmallEntity
     {
-        private DescriptorAbility descriptorAbility;
-        private DescriptorItem descriptorItem;
-        private DescriptorGroupItems descriptorGroupItem;
-
         public ConstructionProduct(DescriptorAbility descriptor) : base()
         {
             Debug.Assert(descriptor != null);
 
-            descriptorAbility = descriptor;
+            DescriptorAbility = descriptor;
             Descriptor = descriptor;
         }
 
@@ -25,7 +21,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(descriptor != null);
 
-            descriptorItem = descriptor;
+            DescriptorItem = descriptor;
             Descriptor = descriptor;
         }
 
@@ -33,11 +29,14 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(descriptor != null);
 
-            descriptorGroupItem = descriptor;
+            DescriptorGroupItem = descriptor;
             Descriptor = descriptor;
         }
 
         internal DescriptorSmallEntity Descriptor { get; }
+        internal DescriptorAbility DescriptorAbility { get; }
+        internal DescriptorItem DescriptorItem { get; }
+        internal DescriptorGroupItems DescriptorGroupItem { get; }
 
         internal override int GetImageIndex()
         {

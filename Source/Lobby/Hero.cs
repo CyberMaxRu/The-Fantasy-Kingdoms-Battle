@@ -378,12 +378,28 @@ namespace Fantasy_Kingdoms_Battle
             // Покупаем все, что можем
             foreach (ConstructionProduct cp in listProducts)
             {
-
-
+                if (cp.DescriptorAbility != null)
+                {
+                    if (!AbilityExists(cp.DescriptorAbility))
+                    {
+                        Abilities.Add(c.PurchaseAbility(this, cp));
+                    }
+                }
             }
 
             if (shopped)
                 CounterConstructionForBuy--;
+        }
+
+        private bool AbilityExists(DescriptorAbility da)
+        {
+            foreach (Ability a in Abilities)
+            {
+                if (a.Descriptor == da)
+                    return true;
+            }
+
+            return false;
         }
     }
 }

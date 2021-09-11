@@ -1093,5 +1093,14 @@ namespace Fantasy_Kingdoms_Battle
 
             return list;
         }
+
+        internal Ability PurchaseAbility(Creature creature, ConstructionProduct product)
+        {
+            Debug.Assert(Items.IndexOf(product) >= 0);
+            Debug.Assert(product.DescriptorAbility != null);
+
+            Ability a = new Ability(creature, product.DescriptorAbility);
+            return a;
+        }
     }
 }
