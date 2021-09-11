@@ -5,5 +5,8 @@
     <Name>Скорость движения</Name>
     <ImageIndex>98</ImageIndex>
     <Description>Скорость движения увеличивается на 5% за каждый уровень</Description>
+    <Heroes>
+      <Hero>Warrior</Hero>
+    </Heroes>
   </Specialization>
 </Descriptors>
