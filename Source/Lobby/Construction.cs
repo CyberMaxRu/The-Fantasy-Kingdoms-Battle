@@ -525,7 +525,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 // Если нет требований, то по умолчанию остается только одно - сооружение должно быть построено
                 // Если есть, то не надо писать, что сооружение не построено - иначе не видно, какие там требования
-                if ((Level == 0) && (research.Research.Requirements.Count == 0))
+                if (Level == 0)
                     list.Add(new TextRequirement(false, "Сооружение не построено"));
 
                 Player.TextRequirements(research.Research.Requirements, list);
