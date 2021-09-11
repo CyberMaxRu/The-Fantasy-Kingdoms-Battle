@@ -14,12 +14,11 @@ namespace Fantasy_Kingdoms_Battle
     // Класс исследования
     internal sealed class TypeCellMenu : Descriptor
     {
-        private string nameTypeObject;
         public TypeCellMenu(XmlNode n) : base()
         {
             Coord = new Point(XmlUtils.GetIntegerNotNull(n, "PosX") - 1, XmlUtils.GetIntegerNotNull(n, "PosY") - 1);
             Layer = XmlUtils.GetIntegerNotNull(n, "Layer") - 1;
-            nameTypeObject = XmlUtils.GetStringNotNull(n, "TypeObject");
+            NameTypeObject = XmlUtils.GetStringNotNull(n, "TypeObject");
             Cost = XmlUtils.GetInteger(n, "Cost");
             XmlUtils.LoadRequirements(Requirements, n);
 
@@ -29,7 +28,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Coord.Y <= Config.PlateHeight - 1);
             Debug.Assert(Layer >= 0);
             Debug.Assert(Layer <= 4);
-            Debug.Assert(nameTypeObject.Length > 0);
+            Debug.Assert(NameTypeObject.Length > 0);
         }
     
         internal Point Coord { get; }// Координаты ячейки
@@ -39,40 +38,41 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorConstruction TypeConstruction { get; set; }// Строимое сооружение
         internal List<Requirement> Requirements { get; } = new List<Requirement>();
         internal int Cost { get; }// Стоимость
+        internal string NameTypeObject { get; private set; }
 
         internal override void TuneDeferredLinks()
         {
             base.TuneDeferredLinks();
 
-            TypeEntity = Config.FindItem(nameTypeObject, false);
+            TypeEntity = Config.FindItem(NameTypeObject, false);
 
             if (TypeEntity is null)
-                TypeEntity = Config.FindGroupItem(nameTypeObject, false);
+                TypeEntity = Config.FindGroupItem(NameTypeObject, false);
 
             if (TypeEntity is null)
-                TypeEntity = Config.FindAbility(nameTypeObject, false);
+                TypeEntity = Config.FindAbility(NameTypeObject, false);
 
             if (TypeEntity is null)
             {
-                TypeConstruction = Config.FindConstruction(nameTypeObject, false);
+                TypeConstruction = Config.FindConstruction(NameTypeObject, false);
             }
 
             if ((TypeEntity is null) && (TypeConstruction is null))
-                throw new Exception("Сущность " + nameTypeObject + " не найдена.");
+                throw new Exception("Сущность " + NameTypeObject + " не найдена.");
 
             foreach (Requirement r in Requirements)
                 r.TuneDeferredLinks();
 
             if (TypeConstruction is null)
             {
-                Debug.Assert(Cost > 0, $"У {nameTypeObject} не указана цена.");
+                Debug.Assert(Cost > 0, $"У {NameTypeObject} не указана цена.");
             }
             else
             {
-                Debug.Assert(Cost == 0, $"У {nameTypeObject} цена должна быть 0 (указана {Cost}).");
+                Debug.Assert(Cost == 0, $"У {NameTypeObject} цена должна быть 0 (указана {Cost}).");
             }
 
-            nameTypeObject = "";
+            NameTypeObject = "";
         }
     }
 }

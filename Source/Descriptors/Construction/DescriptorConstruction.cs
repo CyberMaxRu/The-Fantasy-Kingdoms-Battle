@@ -138,6 +138,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     Debug.Assert(layersResearches > 0);
                     Researches = new TypeCellMenu[layersResearches, Config.PlateHeight, Config.PlateWidth];
+                    List<TypeCellMenu> listMenu = new List<TypeCellMenu>();
 
                     TypeCellMenu research;
 
@@ -146,7 +147,14 @@ namespace Fantasy_Kingdoms_Battle
                         research = new TypeCellMenu(l);
                         Debug.Assert(Researches[research.Layer, research.Coord.Y, research.Coord.X] == null,
                             $"У {ID} в слое {research.Layer} в ячейке ({research.Coord.Y}, {research.Coord.X}) уже есть сущность.");
+
+                        foreach (TypeCellMenu tcm in listMenu)
+                        {
+                            Debug.Assert(research.NameTypeObject != tcm.NameTypeObject, $"У {ID} в меню повторяется объект {research.NameTypeObject}.");
+                        }
+
                         Researches[research.Layer, research.Coord.Y, research.Coord.X] = research;
+                        listMenu.Add(research);
                     }
                 }
             }
