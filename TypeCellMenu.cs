@@ -63,16 +63,16 @@ namespace Fantasy_Kingdoms_Battle
             foreach (Requirement r in Requirements)
                 r.TuneDeferredLinks();
 
-            nameTypeObject = null;
-
             if (TypeConstruction is null)
             {
-                Debug.Assert(Cost > 0);
+                Debug.Assert(Cost > 0, $"У {nameTypeObject} не указана цена.");
             }
             else
             {
-                Debug.Assert(Cost == 0);
+                Debug.Assert(Cost == 0, $"У {nameTypeObject} цена должна быть 0 (указана {Cost}).");
             }
+
+            nameTypeObject = "";
         }
     }
 }
