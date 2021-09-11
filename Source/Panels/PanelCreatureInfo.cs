@@ -37,6 +37,8 @@ namespace Fantasy_Kingdoms_Battle
         private readonly PanelWithPanelEntity panelAbilities;
         private readonly VCSeparator separSecSkills;
         private readonly PanelWithPanelEntity panelSecondarySkills;
+        private readonly VCTabButton btnInventory;
+        private readonly VCTabButton btnAbilities;
         protected VCCell panelSpecialization;
         private VCCell panelMeleeWeapon;
         private VCCell panelRangeWeapon;
@@ -80,8 +82,8 @@ namespace Fantasy_Kingdoms_Battle
             separator.ShiftY = lvGold.NextTop();
             pageControl.ShiftY = separator.NextTop();
             pageControl.AddTab("Статистика", FormMain.Config.Gui48_Scroll, null);
-            pageControl.AddTab("Инвентарь", FormMain.Config.Gui48_Inventory, panelInventory);
-            pageControl.AddTab("Способности и навыки", FormMain.Config.Gui48_Target, panelAbilitiesAndSecSkills);
+            btnInventory = pageControl.AddTab("Инвентарь", FormMain.Config.Gui48_Inventory, panelInventory);
+            btnAbilities = pageControl.AddTab("Способности и навыки", FormMain.Config.Gui48_Target, panelAbilitiesAndSecSkills);
             pageControl.AddTab("История", FormMain.Config.Gui48_Book, null);
 
             panelAbilitiesAndSecSkills.AddControl(panelAbilities);
@@ -180,6 +182,9 @@ namespace Fantasy_Kingdoms_Battle
             panelAbilitiesAndSecSkills.ArrangeControl(separSecSkills);
             panelSecondarySkills.ShiftY = separSecSkills.NextTop();
             panelAbilitiesAndSecSkills.ArrangeControl(panelSecondarySkills);
+
+            btnInventory.Quantity = Creature.Inventory.Count;
+            btnAbilities.Quantity = Creature.Abilities.Count;
 
             base.Draw(g);
             

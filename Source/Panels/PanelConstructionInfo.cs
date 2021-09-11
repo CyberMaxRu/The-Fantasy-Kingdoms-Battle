@@ -15,6 +15,9 @@ namespace Fantasy_Kingdoms_Battle
         private readonly PanelWithPanelEntity panelProducts;
         private readonly PanelWithPanelEntity panelInhabitants;
         private readonly PanelWithPanelEntity panelWarehouse;
+        private readonly VCTabButton btnProducts;
+        private readonly VCTabButton btnInhabitants;
+        private readonly VCTabButton btnWarehouse;
 
         public PanelConstructionInfo(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
@@ -31,9 +34,9 @@ namespace Fantasy_Kingdoms_Battle
 
             separator.ShiftY = lblGold.NextTop();
             pageControl.ShiftY = separator.NextTop();
-            pageControl.AddTab("Товары", FormMain.Config.Gui48_Goods, panelProducts);
-            pageControl.AddTab("Склад", FormMain.Config.Gui48_Inventory, panelWarehouse);
-            pageControl.AddTab("Жители", FormMain.Config.Gui48_Home, panelInhabitants);
+            btnProducts = pageControl.AddTab("Товары", FormMain.Config.Gui48_Goods, panelProducts);
+            btnWarehouse = pageControl.AddTab("Склад", FormMain.Config.Gui48_Inventory, panelWarehouse);
+            btnInhabitants = pageControl.AddTab("Жители", FormMain.Config.Gui48_Home, panelInhabitants);
             pageControl.AddTab("История", FormMain.Config.Gui48_Book, null);
 
             pageControl.ApplyMinSize();
@@ -76,6 +79,10 @@ namespace Fantasy_Kingdoms_Battle
             panelProducts.ApplyList(Construction.Items);
             panelWarehouse.ApplyList(Construction.Warehouse);
             panelInhabitants.ApplyList(Construction.Heroes);
+
+            btnProducts.Quantity = Construction.Items.Count;
+            btnWarehouse.Quantity = Construction.Warehouse.Count;
+            btnInhabitants.Quantity = Construction.Heroes.Count;
 
             base.Draw(g); 
         }

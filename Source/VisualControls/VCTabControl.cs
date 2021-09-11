@@ -38,7 +38,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddTab(string nameTab, int imageIndex, VisualControl controlForPage)
+        internal VCTabButton AddTab(string nameTab, int imageIndex, VisualControl controlForPage)
         {
             if (controlForPage != null)
                 controlForPage.Visible = false;
@@ -61,6 +61,8 @@ namespace Fantasy_Kingdoms_Battle
 
             if (ActivePage == -1)
                 ActivatePage(0);
+
+            return btnTab;
         }
 
         internal void ActivatePage(int indexPage)

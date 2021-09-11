@@ -14,6 +14,8 @@ namespace Fantasy_Kingdoms_Battle
     {
         private readonly PanelWithPanelEntity panelInhabitants;
         private readonly PanelWithPanelEntity panelHeroes;
+        private readonly VCTabButton btnInhabitants;
+        private readonly VCTabButton btnHeroes;
 
         public PanelLairInfo(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
@@ -22,8 +24,8 @@ namespace Fantasy_Kingdoms_Battle
 
             //..separator.ShiftY = TopForControls();
             //pageControl.ShiftY = TopForControls();
-            pageControl.AddTab("Существа", FormMain.Config.Gui48_Home, panelInhabitants);
-            pageControl.AddTab("Герои", FormMain.Config.Gui48_Target, panelHeroes);
+            btnInhabitants = pageControl.AddTab("Существа", FormMain.Config.Gui48_Home, panelInhabitants);
+            btnHeroes = pageControl.AddTab("Герои", FormMain.Config.Gui48_Target, panelHeroes);
             pageControl.AddTab("История", FormMain.Config.Gui48_Book, null);
 
             pageControl.ApplyMinSize();
@@ -54,11 +56,18 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(!Lair.Destroyed);
 
             if (Lair.Hidden)
+            {
                 panelInhabitants.SetUnknownList();
+                btnInhabitants.Quantity = 0;
+            }
             else
+            {
                 panelInhabitants.ApplyList(Lair.Monsters);
+                btnInhabitants.Quantity = Lair.Monsters.Count;
+            }
 
             panelHeroes.ApplyList(Lair.listAttackedHero);
+            btnHeroes.Quantity = Lair.listAttackedHero.Count;
 
             base.Draw(g);
         }
