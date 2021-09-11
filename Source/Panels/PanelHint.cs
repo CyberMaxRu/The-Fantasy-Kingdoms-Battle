@@ -25,6 +25,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         internal readonly VCText lblName;
         internal readonly VCText lblHeader;
+        internal readonly VCCellSimple imgCell;
         internal readonly VCImage128 img128;
         internal readonly VCText lblAction;
         internal readonly VCText lblDescription;
@@ -65,6 +66,7 @@ namespace Fantasy_Kingdoms_Battle
             lblHeader.StringFormat.Alignment = StringAlignment.Near;
             lblHeader.StringFormat.LineAlignment = StringAlignment.Near;
 
+            imgCell = new VCCellSimple(this, FormMain.Config.GridSize, lblHeader.NextTop());
             img128 = new VCImage128(this, FormMain.Config.GridSize, lblHeader.NextTop());
 
             lblAction = new VCText(this, FormMain.Config.GridSize, lblHeader.NextTop(), Program.formMain.fontMedCaptionC, FormMain.Config.HintAction, widthControl);
@@ -189,6 +191,8 @@ namespace Fantasy_Kingdoms_Battle
             ExistHint = false;
             lblName.Visible = false;
             lblHeader.Text = "";
+            lblHeader.ShiftX = FormMain.Config.GridSize;
+            imgCell.Visible = false;
             img128.Visible = false;
             lblAction.Visible = false;
             lblDescription.Visible = false;
@@ -248,7 +252,7 @@ namespace Fantasy_Kingdoms_Battle
             nextTop = lblName.NextTop();
         }
 
-        internal void AddStep1Header(string header, string action, string description, int imageIndex = -1)
+        internal void AddStep1Header(string header, string action, string description, int imageIndex = -1, bool bigImage = true)
         {
             Debug.Assert(lblHeader.Text == "");
             Debug.Assert(header != null);
@@ -265,10 +269,22 @@ namespace Fantasy_Kingdoms_Battle
 
             if (imageIndex != -1)
             {
-                img128.ShiftY = nextTop;
-                img128.ImageIndex = imageIndex;
-                img128.Visible = true;
-                nextTop = img128.NextTop();
+                if (bigImage)
+                {
+                    img128.ShiftY = nextTop;
+                    img128.ImageIndex = imageIndex;
+                    img128.Visible = true;
+                    nextTop = img128.NextTop();
+                }
+                else
+                {
+                    imgCell.ShiftY = lblHeader.ShiftY;
+                    imgCell.ImageIndex = imageIndex;
+                    imgCell.Visible = true;
+
+                    lblHeader.ShiftX = imgCell.NextLeft();
+                    nextTop = Math.Max(lblHeader.NextTop(), imgCell.NextTop());
+                }
             }
 
             if (action.Length > 0)
