@@ -6,7 +6,7 @@
     <Description>Это вы, Ваше Величество!</Description>
     <ImageIndex>-100</ImageIndex>
     <CategoryCreature>Citizen</CategoryCreature>
-    <KindCreature>Human</KindCreature>
+    <TypeCreature>Human</TypeCreature>
     <Reward>0</Reward>
     <Cost>0</Cost>
     <Construction>Castle</Construction>
@@ -20,7 +20,7 @@
 	  <Description>Ваш личный советник, Сир.</Description>
 	  <ImageIndex>137</ImageIndex>
     <CategoryCreature>Citizen</CategoryCreature>
-    <KindCreature>Human</KindCreature>
+    <TypeCreature>Human</TypeCreature>
 	  <Reward>0</Reward>
 	  <Cost>0</Cost>
 	  <Construction>Castle</Construction>
@@ -34,7 +34,7 @@
     <Description>Занимается обороной Королевства и тренировками героев. В общем всем, что связано с военной службой.</Description>
     <ImageIndex>104</ImageIndex>
     <CategoryCreature>Citizen</CategoryCreature>
-    <KindCreature>Human</KindCreature>
+    <TypeCreature>Human</TypeCreature>
     <Reward>0</Reward>
     <Cost>0</Cost>
     <Construction>Castle</Construction>
@@ -48,7 +48,7 @@
 		<Description>Собирает налоги, заведует казной и эффективностью трат из неё.</Description>
 		<ImageIndex>90</ImageIndex>
     <CategoryCreature>Citizen</CategoryCreature>
-    <KindCreature>Human</KindCreature>
+    <TypeCreature>Human</TypeCreature>
 		<Reward>0</Reward>
 		<Cost>0</Cost>
 		<Construction>Castle</Construction>
@@ -62,7 +62,7 @@
     <Description>Это просто крестьяне, Сир. Они обучены строить и чинить здания.</Description>
     <ImageIndex>85</ImageIndex>
     <CategoryCreature>Citizen</CategoryCreature>
-    <KindCreature>Human</KindCreature>
+    <TypeCreature>Human</TypeCreature>
     <Reward>1</Reward>
     <Cost>0</Cost>
     <Building>House</Building>
@@ -74,7 +74,7 @@
     <Description>Королевские гвардейцы в меру своих сил охраняют покой короля.</Description>
     <ImageIndex>35</ImageIndex>
     <CategoryCreature>Citizen</CategoryCreature>
-    <KindCreature>Human</KindCreature>
+    <TypeCreature>Human</TypeCreature>
     <Reward>25</Reward>
     <Cost>0</Cost>
     <Building>Castle</Building>
@@ -98,7 +98,7 @@
     <Description>Мельник работает на мельнице.</Description>
     <ImageIndex>127</ImageIndex>
     <CategoryCreature>Citizen</CategoryCreature>
-    <KindCreature>Human</KindCreature>
+    <TypeCreature>Human</TypeCreature>
     <Reward>1</Reward>
     <Cost>0</Cost>
     <Building>Mill</Building>
@@ -113,7 +113,7 @@
     <Description>- Весьма вынослив//- В первую очередь выполняет задания атаки и защиты//- На 5-ом уровне учится отвлекать врагов на себя</Description>
     <ImageIndex>63</ImageIndex>
     <CategoryCreature>Hero</CategoryCreature>
-    <KindCreature>Human</KindCreature>
+    <TypeCreature>Human</TypeCreature>
     <Reward>100</Reward>
     <Cost>200</Cost>
     <Construction>GuildWarrior</Construction>
@@ -305,7 +305,7 @@
     <Description>- Любит деньги, охотно выполняет любые задания//- Умеет воровать//- Избегает серьезных боев</Description>
     <ImageIndex>62</ImageIndex>
     <CategoryCreature>Hero</CategoryCreature>
-    <KindCreature>Human</KindCreature>
+    <TypeCreature>Human</TypeCreature>
     <Reward>50</Reward>
     <Cost>100</Cost>
     <Construction>GuildRogue</Construction>
@@ -435,7 +435,7 @@
     <Description>- Любит выполнять задания исследования//- Лучше всего воюет против зверей</Description>
     <ImageIndex>57</ImageIndex>
     <CategoryCreature>Hero</CategoryCreature>
-    <KindCreature>Human</KindCreature>
+    <TypeCreature>Human</TypeCreature>
     <Reward>75</Reward>
     <Cost>150</Cost>
     <Construction>GuildHunter</Construction>
@@ -614,7 +614,7 @@
     <Description>- Умеет лечить//- Лучше всего воюет против нежити</Description>
     <ImageIndex>53</ImageIndex>
     <CategoryCreature>Hero</CategoryCreature>
-    <KindCreature>Human</KindCreature>
+    <TypeCreature>Human</TypeCreature>
     <Reward>125</Reward>
     <Cost>350</Cost>
     <Construction>GuildCleric</Construction>
@@ -763,7 +763,7 @@
     <Description>- Способен выучить множество разрушительных заклинаний//- Почти не защищен//- На 5-ом уровне изучает "Магический щит"</Description>
     <ImageIndex>58</ImageIndex>
     <CategoryCreature>Hero</CategoryCreature>
-    <KindCreature>Human</KindCreature>
+    <TypeCreature>Human</TypeCreature>
     <Reward>150</Reward>
     <Cost>500</Cost>
     <Construction>GuildMage</Construction>
@@ -912,7 +912,7 @@
     <Description>- Прекрасно стреляет из лука//- Самая быстрая из героев//- Не любит гномов</Description>
     <ImageIndex>56</ImageIndex>
     <CategoryCreature>Hero</CategoryCreature>
-    <KindCreature>Elf</KindCreature>
+    <TypeCreature>Elf</TypeCreature>
     <Reward>200</Reward>
     <Cost>700</Cost>
     <Construction>GuildElf</Construction>
@@ -1045,7 +1045,7 @@
     <Description>- Обладает высоким сопротивлением магии//- В первую очередь выполняет задания атаки//- Умело рушит здания//- Не любит эльфов</Description>
     <ImageIndex>55</ImageIndex>
     <CategoryCreature>Hero</CategoryCreature>
-    <KindCreature>Dwarf</KindCreature>
+    <TypeCreature>Dwarf</TypeCreature>
     <Reward>250</Reward>
     <Cost>700</Cost>
     <Construction>GuildDwarf</Construction>
@@ -1173,7 +1173,7 @@
     <Description>- Вызывает себе на помощь скелетов//- Любит выполнять задания атаки//- На 5-ом уровне изучает заклинание "Чума"//- С 10-го уровня призывает себе на помощь темных личей//- Не любит паладинов Дауроса</Description>
     <ImageIndex>54</ImageIndex>
     <CategoryCreature>Hero</CategoryCreature>
-    <KindCreature>Human</KindCreature>
+    <TypeCreature>Human</TypeCreature>
     <Reward>500</Reward>
     <Cost>1000</Cost>
     <Construction>GuildDarkPriest</Construction>
@@ -1271,7 +1271,7 @@
     <Description>- Умеет лечить//- Лучше всего воюет против нежити//- На 10-ом уровне изучает "Массовое лечение"</Description>
     <ImageIndex>61</ImageIndex>
     <CategoryCreature>Hero</CategoryCreature>
-    <KindCreature>Human</KindCreature>
+    <TypeCreature>Human</TypeCreature>
     <Reward>500</Reward>
     <Cost>1000</Cost>
     <Construction>GuildPriest</Construction>
@@ -1366,7 +1366,7 @@
     <Description>- Самый выносливый из героев//- Не знает страха//- На 5-ом уровне изучает заклинание "Святая защита"//- На 10-ом уровне изучает "Священный удар"//- Умеет отвлекать врагов на себя//- Не любит нежить, вызванную сестрами Крипты</Description>
     <ImageIndex>60</ImageIndex>
     <CategoryCreature>Hero</CategoryCreature>
-    <KindCreature>Human</KindCreature>
+    <TypeCreature>Human</TypeCreature>
     <Reward>500</Reward>
     <Cost>1000</Cost>
     <Construction>GuildPaladin</Construction>
@@ -1461,7 +1461,7 @@
     <Description>- Обладает самым сильным ударом//- Любит выполнять задания атаки//- На 5-ом уровне изучает "Калечащий удар"//- На 10-ом уровне изучает "Ураган клинков"//- Умеет отвлекать врагов на себя</Description>
     <ImageIndex>52</ImageIndex>
     <CategoryCreature>Hero</CategoryCreature>
-    <KindCreature>Human</KindCreature>
+    <TypeCreature>Human</TypeCreature>
     <Reward>500</Reward>
     <Cost>1000</Cost>
     <Construction>GuildBlademaster</Construction>
@@ -1553,7 +1553,7 @@
     <Description>- Вызывает себе на помощь волков Фервуса//- Любит выполнять задания исследования//- На 5-ом уровне изучает способность "Звериная ярость"//- С 10-го уровня призывает себе на помощь медведей Хаоса</Description>
     <ImageIndex>51</ImageIndex>
     <CategoryCreature>Hero</CategoryCreature>
-    <KindCreature>Human</KindCreature>
+    <TypeCreature>Human</TypeCreature>
     <Reward>500</Reward>
     <Cost>1000</Cost>
     <Construction>GuildBeastmaster</Construction>
@@ -1651,7 +1651,7 @@
     <Description>- Лучший из стрелков//- Любит выполнять задания исследования//- На 5-ом уровне изучает "Смертельный выстрел"//- На 10-ом уровне изучает заклинание "Солнечная стрела"</Description>
     <ImageIndex>59</ImageIndex>
     <CategoryCreature>Hero</CategoryCreature>
-    <KindCreature>Human</KindCreature>
+    <TypeCreature>Human</TypeCreature>
     <Reward>500</Reward>
     <Cost>1000</Cost>
     <Construction>GuildMarksman</Construction>
@@ -1749,7 +1749,7 @@
     <Description>- Способен выучить множество заклинаний//- Почти не защищен//- На 5-ом уровне изучает "Магический щит"</Description>
     <ImageIndex>135</ImageIndex>
     <CategoryCreature>Hero</CategoryCreature>
-    <KindCreature>Human</KindCreature>
+    <TypeCreature>Human</TypeCreature>
     <Reward>500</Reward>
     <Cost>1000</Cost>
     <Construction>GuildFireMage</Construction>
@@ -1803,7 +1803,7 @@
     <Description>- Любит выполнять задания атаки//- Знает множество разрушительных заклинаний//- На 5-ом уровне изучает заклинания "Заморозка" и "Щит Холода"//- На 10-ом уровне изучает заклинание "Гнев Холода"</Description>
     <ImageIndex>131</ImageIndex>
     <CategoryCreature>Hero</CategoryCreature>
-    <KindCreature>Human</KindCreature>
+    <TypeCreature>Human</TypeCreature>
     <Reward>500</Reward>
     <Cost>1000</Cost>
     <Construction>GuildIceMage</Construction>
@@ -1878,7 +1878,7 @@
     <Description>- Любит деньги, охотно выполняет любые задания//- Умеет воровать//- На 5-ом уровне изучает "Умелое оглушение"//- На 10-ом уровне изучает "Черный яд"</Description>
     <ImageIndex>133</ImageIndex>
     <CategoryCreature>Hero</CategoryCreature>
-    <KindCreature>Human</KindCreature>
+    <TypeCreature>Human</TypeCreature>
     <Reward>500</Reward>
     <Cost>1000</Cost>
     <Construction>GuildDeathKnight</Construction>
@@ -1960,7 +1960,7 @@
     <Description>Зомби - любимые игрушки некромантов. Зомби весьма сильны, но очень медлительны. Основной прием самозащиты от зомби - бег трусцой.</Description>
     <ImageIndex>103</ImageIndex>
     <CategoryCreature>Monster</CategoryCreature>
-    <KindCreature>Undead</KindCreature>
+    <TypeCreature>Undead</TypeCreature>
     <MaxLevel>10</MaxLevel>
     <TypeAttackMelee>Hands</TypeAttackMelee>
     <DefaultPositionPriority>10</DefaultPositionPriority>
@@ -2011,7 +2011,7 @@
     <Description>Эти ожившие кости движимы черной магией неизвестного происхождения.</Description>
     <ImageIndex>100</ImageIndex>
     <CategoryCreature>Monster</CategoryCreature>
-    <KindCreature>Undead</KindCreature>
+    <TypeCreature>Undead</TypeCreature>
     <MaxLevel>10</MaxLevel>
     <TypeAttackMelee>Hands</TypeAttackMelee>
     <DefaultPositionPriority>10</DefaultPositionPriority>
@@ -2051,7 +2051,7 @@
     <Description>Скелет лучника - прекрасная анатомическая модель. Жаль, что подойти к ней не так-то просто, а убежать от неё еще труднее.</Description>
     <ImageIndex>95</ImageIndex>
     <CategoryCreature>Monster</CategoryCreature>
-    <KindCreature>Undead</KindCreature>
+    <TypeCreature>Undead</TypeCreature>
     <MaxLevel>10</MaxLevel>
     <TypeAttackMelee>Hands</TypeAttackMelee>
     <TypeAttackRange>Arrow</TypeAttackRange>
@@ -2092,7 +2092,7 @@
     <Description>Скелет ветеран не потерял ни капли своего боевого опыта потому гораздо опаснее обычного скелета.</Description>
     <ImageIndex>98</ImageIndex>
     <CategoryCreature>Monster</CategoryCreature>
-    <KindCreature>Undead</KindCreature>
+    <TypeCreature>Undead</TypeCreature>
     <MaxLevel>10</MaxLevel>
     <TypeAttackMelee>Hands</TypeAttackMelee>
     <DefaultPositionPriority>50</DefaultPositionPriority>
@@ -2132,7 +2132,7 @@
     <Description>Этот стрелок-снайпер с веками нисколько не потерял, а скорее приобрез заметную "смертельность".</Description>
     <ImageIndex>101</ImageIndex>
     <CategoryCreature>Monster</CategoryCreature>
-    <KindCreature>Undead</KindCreature>
+    <TypeCreature>Undead</TypeCreature>
     <MaxLevel>15</MaxLevel>
     <TypeAttackMelee>Hands</TypeAttackMelee>
     <TypeAttackRange>Arrow</TypeAttackRange>
@@ -2173,7 +2173,7 @@
     <Description>Прозрачные, почти незаметные духи павших героев после смерти дают волю накопленным при жизни обидам и принимаются мстить живым.</Description>
     <ImageIndex>97</ImageIndex>
     <CategoryCreature>Monster</CategoryCreature>
-    <KindCreature>Undead</KindCreature>
+    <TypeCreature>Undead</TypeCreature>
     <MaxLevel>10</MaxLevel>
     <TypeAttackMelee>Hands</TypeAttackMelee>
     <DefaultPositionPriority>30</DefaultPositionPriority>
@@ -2213,7 +2213,7 @@
     <Description>Лич - это, как правило, могущественный маг, ставший еще более могущественным после смерти.</Description>
     <ImageIndex>99</ImageIndex>
     <CategoryCreature>Monster</CategoryCreature>
-    <KindCreature>Undead</KindCreature>
+    <TypeCreature>Undead</TypeCreature>
     <MaxLevel>15</MaxLevel>
     <TypeAttackMelee>Hands</TypeAttackMelee>
     <DefaultPositionPriority>40</DefaultPositionPriority>
@@ -2253,7 +2253,7 @@
     <Description>Вампиры - древний вид, вымирающий вот уже несколько тысяч лет. Носят черное, потому что цвета темнее ещё не придумали, из напитков предпочитают свежую человеческую кровь. С предубеждением относятся к чесноку, серебру, осиновым колам и яркому солнцу.</Description>
     <ImageIndex>102</ImageIndex>
     <CategoryCreature>Monster</CategoryCreature>
-    <KindCreature>Undead</KindCreature>
+    <TypeCreature>Undead</TypeCreature>
     <MaxLevel>20</MaxLevel>
     <TypeAttackMelee>Hands</TypeAttackMelee>
     <DefaultPositionPriority>15</DefaultPositionPriority>
@@ -2293,7 +2293,7 @@
     <Description>Это один из темных магов, которыми так богата древняя история Ардании. Его особенность лишь в том, что этот сумел возродиться и, похоже, ничуть не потерял в своей силе, хотя и похудел изрядно.</Description>
     <ImageIndex>14</ImageIndex>
     <CategoryCreature>Monster</CategoryCreature>
-    <KindCreature>Undead</KindCreature>
+    <TypeCreature>Undead</TypeCreature>
     <MaxLevel>10</MaxLevel>
     <TypeAttackMelee>Hands</TypeAttackMelee>
     <DefaultPositionPriority>40</DefaultPositionPriority>
@@ -2333,7 +2333,7 @@
     <Description>Волки - такая же привычная часть пейзажа в лесах Ардании, как, скажем, деревья. Но деревья, в отличие от волков, не грызут героев и простой люд.</Description>
     <ImageIndex>8</ImageIndex>
     <CategoryCreature>Monster</CategoryCreature>
-    <KindCreature>Beast</KindCreature>
+    <TypeCreature>Beast</TypeCreature>
     <MaxLevel>5</MaxLevel>
     <TypeAttackMelee>Bite</TypeAttackMelee>
     <DefaultPositionPriority>20</DefaultPositionPriority>
@@ -2376,7 +2376,7 @@
     <Description>Старый волк сильнее, хитрее и опасней своих "зеленых" сородичей. С возрастом его зубы становятся крепче, а клыки - острее.</Description>
     <ImageIndex>5</ImageIndex>
     <CategoryCreature>Monster</CategoryCreature>
-    <KindCreature>Beast</KindCreature>
+    <TypeCreature>Beast</TypeCreature>
     <MaxLevel>10</MaxLevel>
     <TypeAttackMelee>Bite</TypeAttackMelee>
     <DefaultPositionPriority>10</DefaultPositionPriority>
@@ -2421,7 +2421,7 @@
     <Description>Говорят, именно летающие змеи виновны в исчезновении героев, забредающих слишком далеко от своих гильдий.</Description>
     <ImageIndex>28</ImageIndex>
     <CategoryCreature>Monster</CategoryCreature>
-    <KindCreature>MagicCreature</KindCreature>
+    <TypeCreature>MagicCreature</TypeCreature>
     <MaxLevel>5</MaxLevel>
     <TypeAttackMelee>Bite</TypeAttackMelee>
     <DefaultPositionPriority>10</DefaultPositionPriority>
@@ -2461,7 +2461,7 @@
     <Description>Медведи любят полакомиться заблудившимися героями, приблизившимися к берлоге.</Description>
     <ImageIndex>1</ImageIndex>
     <CategoryCreature>Monster</CategoryCreature>
-    <KindCreature>Beast</KindCreature>
+    <TypeCreature>Beast</TypeCreature>
     <MaxLevel>10</MaxLevel>
     <TypeAttackMelee>Bite</TypeAttackMelee>
     <DefaultPositionPriority>10</DefaultPositionPriority>
@@ -2504,7 +2504,7 @@
     <Description>Это агрессивный и жестокий хищник. Великий медведь может разодрать в клочья даже героя, защищенного крепким доспехом!</Description>
     <ImageIndex>3</ImageIndex>
     <CategoryCreature>Monster</CategoryCreature>
-    <KindCreature>Beast</KindCreature>
+    <TypeCreature>Beast</TypeCreature>
     <MaxLevel>15</MaxLevel>
     <TypeAttackMelee>Bite</TypeAttackMelee>
     <DefaultPositionPriority>10</DefaultPositionPriority>
@@ -2548,7 +2548,7 @@
     <Description>Огромный прямоходящий медведь - гроза всех четверолапых Ардании. Любит полакомиться героями, но не брезгует и простыми крестьянами.</Description>
     <ImageIndex>2</ImageIndex>
     <CategoryCreature>Monster</CategoryCreature>
-    <KindCreature>Beast</KindCreature>
+    <TypeCreature>Beast</TypeCreature>
     <MaxLevel>20</MaxLevel>
     <TypeAttackMelee>Bite</TypeAttackMelee>
     <DefaultPositionPriority>10</DefaultPositionPriority>
@@ -2588,7 +2588,7 @@
     <Description>Огромные полулюди-полубыки, обожающие сеять разрушение и смерть. В малом количестве они не очень опасны, но стадо минотавров способно сровнять с землей небольшое королевство.</Description>
     <ImageIndex>26</ImageIndex>
     <CategoryCreature>Monster</CategoryCreature>
-    <KindCreature>Minotaur</KindCreature>
+    <TypeCreature>Minotaur</TypeCreature>
     <MaxLevel>10</MaxLevel>
     <TypeAttackMelee>Hands</TypeAttackMelee>
     <DefaultPositionPriority>10</DefaultPositionPriority>
@@ -2628,7 +2628,7 @@
     <Description>Черные минотавры еще свирепей и опасней своих менее загорелых собратьев.</Description>
     <ImageIndex>27</ImageIndex>
     <CategoryCreature>Monster</CategoryCreature>
-    <KindCreature>Minotaur</KindCreature>
+    <TypeCreature>Minotaur</TypeCreature>
     <MaxLevel>15</MaxLevel>
     <TypeAttackMelee>Hands</TypeAttackMelee>
     <DefaultPositionPriority>10</DefaultPositionPriority>
@@ -2668,7 +2668,7 @@
     <Description>Огры-людоеды знамениты своими размерами, силой и привычкой ложиться спать в самых неожиданных местах.</Description>
     <ImageIndex>34</ImageIndex>
     <CategoryCreature>Monster</CategoryCreature>
-    <KindCreature>Ogre</KindCreature>
+    <TypeCreature>Ogre</TypeCreature>
     <MaxLevel>15</MaxLevel>
     <TypeAttackMelee>Hands</TypeAttackMelee>
     <DefaultPositionPriority>10</DefaultPositionPriority>
@@ -2708,7 +2708,7 @@
     <Description>Грендар - самый большой, самый сильный и самый ленивый из огров. Больше всего любит с большим шумом разрушать здания, а то и целые деревни.</Description>
     <ImageIndex>15</ImageIndex>
     <CategoryCreature>Monster</CategoryCreature>
-    <KindCreature>Ogre</KindCreature>
+    <TypeCreature>Ogre</TypeCreature>
     <MaxLevel>30</MaxLevel>
     <TypeAttackMelee>Hands</TypeAttackMelee>
     <DefaultPositionPriority>10</DefaultPositionPriority>
@@ -2748,7 +2748,7 @@
     <Description>Волколак - это человек, зараженный редким вирусом ликантропии. Всем известно, что излечить его измученное тело и спасти заблудшую душу можно, лишь убив его. Такое лечение опасно - немало "докторов" теперь сами воют на луну по ночам.</Description>
     <ImageIndex>9</ImageIndex>
     <CategoryCreature>Monster</CategoryCreature>
-    <KindCreature>Beast</KindCreature>
+    <TypeCreature>Beast</TypeCreature>
     <MaxLevel>10</MaxLevel>
     <TypeAttackMelee>Bite</TypeAttackMelee>
     <DefaultPositionPriority>10</DefaultPositionPriority>
@@ -2788,7 +2788,7 @@
     <Description>Гадалки Ардании говорят, что встретить дракона, знак крылатой смерти, - дурная примета. Сулит огромные потери. Тот, кто увидит дракона должен будет в ближайшем будущем принять решительные и активные действия, возможно, у него появится тяга к перемене мест или он станет глубоко верующим человеком.</Description>
     <ImageIndex>23</ImageIndex>
     <CategoryCreature>Monster</CategoryCreature>
-    <KindCreature>Dragon</KindCreature>
+    <TypeCreature>Dragon</TypeCreature>
     <MaxLevel>20</MaxLevel>
     <TypeAttackMelee>Bite</TypeAttackMelee>
     <DefaultPositionPriority>10</DefaultPositionPriority>
@@ -2828,7 +2828,7 @@
     <Description>Целебная проточная вода в канализациях Ардании способствует увеличению популяции крыс. Оттого-то они вырастают до таких огромных размеров.</Description>
     <ImageIndex>6</ImageIndex>
     <CategoryCreature>Monster</CategoryCreature>
-    <KindCreature>Beast</KindCreature>
+    <TypeCreature>Beast</TypeCreature>
     <MaxLevel>5</MaxLevel>
     <TypeAttackMelee>Bite</TypeAttackMelee>
     <DefaultPositionPriority>10</DefaultPositionPriority>
@@ -2868,7 +2868,7 @@
     <Description>Некоторые крысы за свою жизнь съедают такое количество объедков, что становятся матерыми крысами.</Description>
     <ImageIndex>4</ImageIndex>
     <CategoryCreature>Monster</CategoryCreature>
-    <KindCreature>Beast</KindCreature>
+    <TypeCreature>Beast</TypeCreature>
     <MaxLevel>5</MaxLevel>
     <TypeAttackMelee>Bite</TypeAttackMelee>
     <DefaultPositionPriority>10</DefaultPositionPriority>
@@ -2908,7 +2908,7 @@
     <Description>Король Крыс Пятый, наследник славной династии крысиных королей, повелитель канализации всея Ардании. Он пуляет отравленную воду в своих врагов, из-за чего последние страдают от различных заболеваний. Даже поговаривают, что это он когда-то украл державу Сидриана!</Description>
     <ImageIndex>17</ImageIndex>
     <CategoryCreature>Monster</CategoryCreature>
-    <KindCreature>Beast</KindCreature>
+    <TypeCreature>Beast</TypeCreature>
     <MaxLevel>30</MaxLevel>
     <TypeAttackMelee>Bite</TypeAttackMelee>
     <DefaultPositionPriority>10</DefaultPositionPriority>
@@ -2948,7 +2948,7 @@
     <Description>Король-скелет вот уже несколько столетий является основной достопримечательностью Ардании. Правда, мало кто его видел - знают-то о нем все, но вот подойти к нему боятся даже редкие смельчаки.</Description>
     <ImageIndex>18</ImageIndex>
     <CategoryCreature>Monster</CategoryCreature>
-    <KindCreature>Undead</KindCreature>
+    <TypeCreature>Undead</TypeCreature>
     <MaxLevel>30</MaxLevel>
     <TypeAttackMelee>Hands</TypeAttackMelee>
     <DefaultPositionPriority>10</DefaultPositionPriority>
@@ -2988,7 +2988,7 @@
     <Description>Магические отходы, попадающие в сточные воды канализаций, дают непредсказуемые результаты. Говорят, крысолюды, или огромные человекоподобные прямоходящие крысы, - это результат мутации.</Description>
     <ImageIndex>7</ImageIndex>
     <CategoryCreature>Monster</CategoryCreature>
-    <KindCreature>Beast</KindCreature>
+    <TypeCreature>Beast</TypeCreature>
     <MaxLevel>30</MaxLevel>
     <TypeAttackMelee>Bite</TypeAttackMelee>
     <DefaultPositionPriority>10</DefaultPositionPriority>
@@ -3028,7 +3028,7 @@
     <Description>При виде человека элементаль молнии начинает светиться характерным ярким светом. Некоторые исследователи полагают, что такое поведение элементалей - всего лишь радостное приветствие.</Description>
     <ImageIndex>24</ImageIndex>
     <CategoryCreature>Monster</CategoryCreature>
-    <KindCreature>MagicCreature</KindCreature>
+    <TypeCreature>MagicCreature</TypeCreature>
     <MaxLevel>15</MaxLevel>
     <TypeAttackMelee>Paw</TypeAttackMelee>
     <DefaultPositionPriority>11</DefaultPositionPriority>
@@ -3068,7 +3068,7 @@
     <Description>Элементалей плана огня можно легко отличить от прочих элементалей по пламени, охватывающем одежду тех, кто приближается к ним слишком близко.</Description>
     <ImageIndex>25</ImageIndex>
     <CategoryCreature>Monster</CategoryCreature>
-    <KindCreature>MagicCreature</KindCreature>
+    <TypeCreature>MagicCreature</TypeCreature>
     <MaxLevel>15</MaxLevel>
     <TypeAttackMelee>Paw</TypeAttackMelee>
     <DefaultPositionPriority>12</DefaultPositionPriority>

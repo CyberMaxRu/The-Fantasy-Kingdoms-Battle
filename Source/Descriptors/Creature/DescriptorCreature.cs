@@ -22,7 +22,7 @@ namespace Fantasy_Kingdoms_Battle
         public DescriptorCreature(XmlNode n) : base(n)
         {
             CategoryCreature = (CategoryCreature)Enum.Parse(typeof(CategoryCreature), n.SelectSingleNode("CategoryCreature").InnerText);
-            KindCreature = FormMain.Config.FindTypeCreature(XmlUtils.GetStringNotNull(n, "KindCreature"));
+            TypeCreature = FormMain.Config.FindTypeCreature(XmlUtils.GetStringNotNull(n, "TypeCreature"));
             MaxLevel = XmlUtils.GetInteger(n, "MaxLevel");
             DefaultPositionPriority = XmlUtils.GetInteger(n, "DefaultPositionPriority");
             if (CategoryCreature != CategoryCreature.Citizen)
@@ -238,7 +238,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal CategoryCreature CategoryCreature { get; }// Категория существа
-        internal TypeCreature KindCreature { get; }// Вид существа
+        internal TypeCreature TypeCreature { get; }// Вид существа
         internal int MaxLevel { get; }// Максимальный уровень существа
         internal StateCreature PersistentStateHeroAtMap { get; set; }
         internal HeroParameters ParametersByHire { get; }// Параметры при создании существа
