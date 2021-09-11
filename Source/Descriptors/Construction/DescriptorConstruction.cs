@@ -136,7 +136,7 @@ namespace Fantasy_Kingdoms_Battle
                 XmlNode nr = n.SelectSingleNode("CellsMenu");
                 if (nr != null)
                 {
-                    Debug.Assert(layersResearches > 0);
+                    Debug.Assert(layersResearches > 0, $"У {ID} не указано количество слоев меню, но есть меню.");
                     Researches = new TypeCellMenu[layersResearches, Config.PlateHeight, Config.PlateWidth];
                     List<TypeCellMenu> listMenu = new List<TypeCellMenu>();
 
