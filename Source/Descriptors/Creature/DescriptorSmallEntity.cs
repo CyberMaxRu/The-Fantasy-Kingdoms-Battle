@@ -68,18 +68,23 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Дополняем описание
-            Description += Description.Length > 0 ? Environment.NewLine : "";
-            if (AvailableForAllHeroes)
+            if (ForHeroes())
             {
-                Description += "- Доступно всем героям";
-            }
-            else
-            {
-                Description += "- Доступно героям:";
-
-                foreach (DescriptorCreature tc in AvailableForHeroes)
+                Description += Description.Length > 0 ? Environment.NewLine : "";
+                if (AvailableForAllHeroes)
                 {
-                    Description += Environment.NewLine + "  - " + tc.Name;
+                    Description += "- Доступно всем героям";
+                }
+                else
+                {
+                    Debug.Assert(AvailableForHeroes.Count > 0);
+
+                    Description += "- Доступно героям:";
+
+                    foreach (DescriptorCreature tc in AvailableForHeroes)
+                    {
+                        Description += Environment.NewLine + "  - " + tc.Name;
+                    }
                 }
             }
         }
