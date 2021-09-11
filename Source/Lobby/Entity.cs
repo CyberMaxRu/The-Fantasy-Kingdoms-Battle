@@ -15,7 +15,7 @@ namespace Fantasy_Kingdoms_Battle
         internal virtual bool GetNormalImage() => true;
         internal virtual int GetLevel() => 0;
         internal virtual int GetQuantity() => 0;
-        internal virtual string GetCost() => "";
+        internal virtual string GetText() => "";
         internal abstract void PrepareHint();
 
         internal virtual void Click(VCCell pe)

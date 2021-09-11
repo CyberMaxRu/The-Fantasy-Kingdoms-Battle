@@ -68,7 +68,7 @@ namespace Fantasy_Kingdoms_Battle
                     ImageIsEnabled = Entity.GetNormalImage();                        
                     Quantity = Entity.GetQuantity();
                     Level = Entity.GetLevel();
-                    Text = Entity.GetCost();
+                    Text = Entity.GetText();
 
                     Debug.Assert(BitmapList.Size == 48);
                 }

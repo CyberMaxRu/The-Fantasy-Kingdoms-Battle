@@ -24,7 +24,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override int GetImageIndex() => Descriptor.ImageIndex;
         internal override int GetLevel() => Descriptor.MinUnitLevel;
         internal override bool GetNormalImage() => Creature.Level >= Descriptor.MinUnitLevel;
-        internal override string GetCost() => Program.formMain.Settings.ShowShortNames ? Descriptor.TypeAbility.ShortName : "";
+        internal override string GetText() => Program.formMain.Settings.ShowShortNames ? Descriptor.TypeAbility.ShortName : "";
 
         internal override void PrepareHint()
         {

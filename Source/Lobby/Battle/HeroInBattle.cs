@@ -666,7 +666,7 @@ namespace Fantasy_Kingdoms_Battle
             return 0;
         }
 
-        internal override string GetCost()
+        internal override string GetText()
         {
             return null;
         }

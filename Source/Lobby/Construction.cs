@@ -1046,7 +1046,7 @@ namespace Fantasy_Kingdoms_Battle
             else
                 return FormMain.Config.Gui48_Battle;
         }
-        internal override string GetCost() => "";
+        internal override string GetText() => "";
 
         internal override bool GetNormalImage()
         {
