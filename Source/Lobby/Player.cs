@@ -108,6 +108,9 @@ namespace Fantasy_Kingdoms_Battle
 
             ValidateHeroes();
 
+            //LairCaptured(FormMain.Config.FindConstruction("WolfsDen"));
+            //LairCaptured(FormMain.Config.FindConstruction("WolfsDen"));
+
             StartBonus GenerateStartBonus()
             {
                 int restAttempts = 100;
@@ -338,6 +341,9 @@ namespace Fantasy_Kingdoms_Battle
                         {
                             // Победил игрок
                             pl.DoCapture();
+
+                            if (!pl.TypeConstruction.IsOurConstruction)
+                                LairCaptured(pl.TypeConstruction);
                         }
                         else
                         {
@@ -355,6 +361,23 @@ namespace Fantasy_Kingdoms_Battle
                         h.AddEvent(new VCEventExecuteFlag(typeFlag, pl.TypeConstruction, pl.Destroyed ? null : pl, (b is null) || (b.Winner == this), b));
                 }
             }
+        }
+
+        private void LairCaptured(DescriptorConstruction dc)
+        {
+            Debug.Assert(!dc.IsOurConstruction);
+
+            if (destroyedLair.ContainsKey(dc))
+                destroyedLair[dc]++;
+            else
+                destroyedLair.Add(dc, 1);
+        }
+
+        private int LairsDestroyed(DescriptorConstruction dc)
+        {
+            Debug.Assert(!dc.IsOurConstruction);
+
+            return destroyedLair.ContainsKey(dc) ? destroyedLair[dc] : 0;
         }
 
         internal void CalcResultTurn()
@@ -412,6 +435,9 @@ namespace Fantasy_Kingdoms_Battle
         internal Dictionary<PriorityExecution, int> QuantityFlags { get; } = new Dictionary<PriorityExecution, int>();
         internal int LairsScouted { get; private set; }
         internal int LairsShowed { get; private set; }
+
+        // Статистика
+        internal Dictionary<DescriptorConstruction, int> destroyedLair = new Dictionary<DescriptorConstruction, int>();
 
         // Визуальные контролы
         private Player opponent;// Убрать это
@@ -662,9 +688,14 @@ namespace Fantasy_Kingdoms_Battle
             Construction pb;
             foreach (Requirement r in list)
             {
-                pb = GetPlayerConstruction(r.Construction);
-                if (r.Level > pb.Level)
-                    return false;
+                if (r.Level > 0)
+                {
+                    pb = GetPlayerConstruction(r.Construction);
+                    if (r.Level > pb.Level)
+                        return false;
+                }
+                else
+                    return LairsDestroyed(r.Construction) >= r.Destroyed;
             }
 
             return true;
@@ -676,8 +707,13 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (Requirement r in listReq)
             {
-                pb = GetPlayerConstruction(r.Construction);
-                listTextReq.Add(new TextRequirement(r.Level <= pb.Level, pb.TypeConstruction.Name + (r.Level > 1 ? " " + r.Level + " уровня" : "")));
+                if (r.Level > 0)
+                {
+                    pb = GetPlayerConstruction(r.Construction);
+                    listTextReq.Add(new TextRequirement(r.Level <= pb.Level, pb.TypeConstruction.Name + (r.Level > 1 ? " " + r.Level + " уровня" : "")));
+                }
+                else
+                    listTextReq.Add(new TextRequirement(LairsDestroyed(r.Construction) >= r.Destroyed, $"Разрушить {r.Construction.Name}: {LairsDestroyed(r.Construction)}/{r.Destroyed}"));
             }
         }
 

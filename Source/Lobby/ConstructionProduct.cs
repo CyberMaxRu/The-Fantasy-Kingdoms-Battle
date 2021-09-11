@@ -48,6 +48,16 @@ namespace Fantasy_Kingdoms_Battle
             return true;
         }
 
+        internal override string GetText()
+        {
+            //if (DescriptorAbility != null)
+            //    return DescriptorAbility.TypeAbility.ShortName;
+
+//            if (DescriptorItem != null)
+                //return DescriptorItem.CategoryItem;
+            return base.GetText();
+        }
+
         internal override void PrepareHint()
         {
             Program.formMain.formHint.AddStep1Header(Descriptor.Name, "", Descriptor.Description);
