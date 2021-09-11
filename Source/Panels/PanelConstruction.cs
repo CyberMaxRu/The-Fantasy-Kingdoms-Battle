@@ -251,7 +251,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     btnAction.ImageIsEnabled = true;                    
                     btnAction.Level = (int)Construction.PriorityFlag + 1;
-                    btnAction.Text = Construction.CheckFlagRequirements() ? Construction.RequiredGold().ToString() : null;
+                    btnAction.Text = Construction.CheckFlagRequirements() ? Construction.RequiredGold().ToString() : "";
                 }
 
                 Debug.Assert(btnAction.Visible || (!btnAction.Visible && (Construction.PriorityFlag == PriorityExecution.None)));
