@@ -148,7 +148,7 @@
     </NextLevel>
     <Abilities>
       <Ability>WarriorBasicAttack</Ability>
-      <Ability>WarriorTaunt</Ability>
+      <Ability>Taunt</Ability>
       <Ability>WarriorAntiknockbackBuff</Ability>
     </Abilities>
     <CarryItems>
@@ -1401,7 +1401,7 @@
     </NextLevel>
     <Abilities>
       <Ability>HammerBasicAttack</Ability>
-      <Ability>PaladinTaunt</Ability>
+      <Ability>Taunt</Ability>
       <Ability>PaladinImpAttack</Ability>
       <Ability>PaladinResistanceBuff</Ability>
       <Ability>PaladinHolyNovaAttack</Ability>

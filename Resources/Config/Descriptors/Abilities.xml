@@ -20,12 +20,12 @@
     </Heroes>
   </Ability>
   <Ability>
-    <ID>WarriorTaunt</ID>
+    <ID>Taunt</ID>
     <Name>Вызов на бой</Name>
-    <Description>Вынуждает врагов атаковать воина</Description>
+    <Description>Вынуждает врагов атаковать этого героя</Description>
     <ImageIndex>37</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>Buff</TypeAbility>
+    <TypeAbility>Permanent</TypeAbility>
     <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>5</MinUnitLevel>
     <Ranged>False</Ranged>
@@ -37,6 +37,7 @@
     </Effects>
     <Heroes>
       <Hero>Warrior</Hero>
+      <Hero>Paladin</Hero>
     </Heroes>
   </Ability>
   <Ability>
@@ -893,26 +894,6 @@
     </Heroes>
   </Ability>
   <Ability>
-    <ID>PaladinTaunt</ID>
-    <Name>Вызов на бой</Name>
-    <Description>- Вынуждает врагов атаковать паладина</Description>
-    <ImageIndex>37</ImageIndex>
-    <Cost>20</Cost>
-    <TypeAbility>Buff</TypeAbility>
-    <TypeTarget>Self</TypeTarget>
-    <MinUnitLevel>1</MinUnitLevel>
-    <Ranged>False</Ranged>
-    <AoeRadius>5</AoeRadius>
-    <SkillModif>1,5</SkillModif>
-    <CoolDown>15</CoolDown>
-    <Effects>
-      <Effect>Taunt</Effect>
-    </Effects>
-    <Heroes>
-      <Hero>Paladin</Hero>
-    </Heroes>
-  </Ability>
-  <Ability>
     <ID>PaladinImpAttack</ID>
     <Name>Сокрушительный удар</Name>
     <Description>- Наносит большой урон//- Рукопашная атака</Description>
@@ -925,9 +906,7 @@
     <AoeRadius>0</AoeRadius>
     <SkillModif>3,5</SkillModif>
     <CoolDown>10</CoolDown>
-    <Effects>
-      <Effect>Taunt</Effect>
-    </Effects>
+    <Effects/>
     <Heroes>
       <Hero>Paladin</Hero>
     </Heroes>
@@ -1691,7 +1670,7 @@
     <Name>Дитя леса</Name>
     <Description>Леса Ардании полны всякой живности и волки в них не редкость. Волки Ардании - суровые хищники, охотящиеся стаей и доставляющие неприятности многих путникам и жителям деревень, однако звери уязвимы к стрелам охотникам. Вблизи волчьих логов добавляет 10% здоровья, уязвимость к охотничьим стрелам на 25%.</Description>
     <ImageIndex>114</ImageIndex>
-    <TypeAbility>Passive</TypeAbility>
+    <TypeAbility>Permanent</TypeAbility>
     <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>False</Ranged>
@@ -1708,7 +1687,7 @@
     <Name>Клыки</Name>
     <Description>Волки, как любые другие хищники, будут пытаться всеми силами догнать раненную жертву, чтобы ее загрызть. Преследует раненного героя, игнорируя других.</Description>
     <ImageIndex>115</ImageIndex>
-    <TypeAbility>Passive</TypeAbility>
+    <TypeAbility>Permanent</TypeAbility>
     <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>False</Ranged>
@@ -1725,7 +1704,7 @@
     <Name>Хищник</Name>
     <Description>В отличии от других хищников волки собираются в стаи и нападают, тем самым многократно повышая эффективность охоты. Увеличивает скорость и урон на 10%. Требует наличия 3 и более волков.</Description>
     <ImageIndex>116</ImageIndex>
-    <TypeAbility>Passive</TypeAbility>
+    <TypeAbility>Permanent</TypeAbility>
     <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>False</Ranged>
@@ -1742,7 +1721,7 @@
     <Name>Вожак стаи</Name>
     <Description>у любой стаи волков есть вожак, которому все другие подчиняются. Обычно им является уже опытный и матёрый волк. Во время битвы вожак не нападает, а смотрит на происходящим. Вступает в бой только когда появляется в этом острая нужда. Добавляет всем волкам храбрости на 20%.</Description>
     <ImageIndex>117</ImageIndex>
-    <TypeAbility>Passive</TypeAbility>
+    <TypeAbility>Permanent</TypeAbility>
     <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>False</Ranged>
@@ -1790,7 +1769,7 @@
     <Name>Воля Тьмы</Name>
     <Description>Темная магия способна тысячами поднимать из могил тела усопших и заставлять их действовать по воли некроманта. Несмотря на то, что Великий король запретил кому попало использовать некромантию, нередко находятся те, кто пренебрегает этому указу. Поэтому в Ардании время от времени проводятся зачистки близ кладбищ и склепов. Невосприимчивость к усталости, чувствам и влиянию на разум.</Description>
     <ImageIndex>111</ImageIndex>
-    <TypeAbility>Passive</TypeAbility>
+    <TypeAbility>Permanent</TypeAbility>
     <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>False</Ranged>
@@ -1806,7 +1785,7 @@
     <Name>Мертвая плоть</Name>
     <Description>В телах, поднятых с кладбищ отсутствуют какие-либо естественные свойства - циркуляция крови, заживление ран, работа внутренних органов. Благодаря этому на зомби не действует отравление ядом или кровотечение, однако они очень чувствительны к святым атакам.</Description>
     <ImageIndex>110</ImageIndex>
-    <TypeAbility>Passive</TypeAbility>
+    <TypeAbility>Permanent</TypeAbility>
     <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>False</Ranged>
@@ -1822,7 +1801,7 @@
     <Name>Потребность в пище</Name>
     <Description>Зомби, в отличии от скелетов, иногда нуждаются в еде - из-за этого они вынуждены бродить по землям и искать того, кто станет их обедом.//Добавляет 10% урона.</Description>
     <ImageIndex>112</ImageIndex>
-    <TypeAbility>Passive</TypeAbility>
+    <TypeAbility>Permanent</TypeAbility>
     <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>False</Ranged>
@@ -2000,7 +1979,7 @@
     <Name>Дитя леса</Name>
     <Description>Леса Ардании полны всякой живности и медведи в них не редкость. Медведи Ардании - очень опасные хищники, охотящиеся по одиночке и доставляющие неприятности многим гостям леса, однако звери уязвимы к стрелам охотникам. Вблизи медвежьих берлог добавляет 10% здоровья.уязвимость к охотничьим стрелам на 25%.</Description>
     <ImageIndex>114</ImageIndex>
-    <TypeAbility>Passive</TypeAbility>
+    <TypeAbility>Permanent</TypeAbility>
     <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>False</Ranged>
@@ -2017,7 +1996,7 @@
     <Name>Медвежья лапа</Name>
     <Description>Многие медведи когда спят предпочитают сосать свою лапу, тем самым делая свой сон более спокойным. Добавляет 15% к восстановлению здоровья во время отдыха.</Description>
     <ImageIndex>120</ImageIndex>
-    <TypeAbility>Passive</TypeAbility>
+    <TypeAbility>Permanent</TypeAbility>
     <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>False</Ranged>
@@ -2034,7 +2013,7 @@
     <Name>Кровотечение</Name>
     <Description>Огромные медвежьи когти способны сильно калечить любых живых существ, что попадаются под лапу медведя. Вылечить такие раны можно только в гильдии, на поле боя их исцелить не могут даже лучшие лекари Ардании. При получении такого ранения героям рекомендуется как можно скорее возвращаться домой. Отнимает здоровье с течением времени.</Description>
     <ImageIndex>121</ImageIndex>
-    <TypeAbility>Passive</TypeAbility>
+    <TypeAbility>Permanent</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>False</Ranged>
@@ -2051,7 +2030,7 @@
     <Name>Крепкие когти</Name>
     <Description>Огромные медвежьи когти способны сильно калечить любых живых существ, что попадаются под лапу медведя. Вылечить такие раны можно только в гильдии, на поле боя их исцелить не могут даже лучшие лекари Ардании. При получении такого ранения героям рекомендуется как можно скорее возвращаться домой. Отнимает здоровье с течением времени.</Description>
     <ImageIndex>122</ImageIndex>
-    <TypeAbility>Passive</TypeAbility>
+    <TypeAbility>Permanent</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>False</Ranged>

@@ -16,6 +16,11 @@
     <ShortName>маг.</ShortName>
   </TypeAbility>
   <TypeAbility>
+    <ID>Permanent</ID>
+    <Name>Постоянная способность</Name>
+    <ShortName>пост.</ShortName>
+  </TypeAbility>
+  <TypeAbility>
     <ID>Spell</ID>
     <Name>Заклинание</Name>
     <ShortName>закл.</ShortName>
@@ -39,11 +44,6 @@
     <ID>Summon</ID>
     <Name>Призыв</Name>
     <ShortName>приз.</ShortName>
-  </TypeAbility>
-  <TypeAbility>
-    <ID>Passive</ID>
-    <Name>Постоянная способность</Name>
-    <ShortName>пост.</ShortName>
   </TypeAbility>
   <TypeAbility>
     <ID>Aura</ID>
