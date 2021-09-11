@@ -2079,11 +2079,7 @@ namespace Fantasy_Kingdoms_Battle
             for (int i = 0; i < lobby.TypeLobby.LairsLayers; i++)
             {
                 ls = lobby.TypeLobby.LayerSettings[i];
-                VCNeighborhood im = new VCNeighborhood(panelNeighborhood, nextLeft, 0, ls.ImageIndex);
-                im.ShowBorder = true;
-                im.Layer = i;
-                im.Text = ls.Name;
-                im.Hint = ls.Hint;
+                VCNeighborhood im = new VCNeighborhood(panelNeighborhood, nextLeft, 0, ls);
                 im.Click += Neighborhood_Click;
                 nextLeft = im.NextLeft();
                 listButtonsLayers.Add(im);
@@ -2103,7 +2099,7 @@ namespace Fantasy_Kingdoms_Battle
                 i.ManualSelected = i == sender;
             }
 
-            currentNeighborhood = ((VCNeighborhood)sender).Layer;
+            currentNeighborhood = ((VCNeighborhood)sender).Layer.Number;
             UpdateNeighborhood();
         }
 
