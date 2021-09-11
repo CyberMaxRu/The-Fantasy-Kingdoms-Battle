@@ -33,7 +33,39 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.TuneDeferredLinks();
 
-            Description += (Description.Length > 0 ? Environment.NewLine : "") + "- Используется:";
+            // Проверяем, что списки доступных героев в списках группы и у предметов совпадают
+            if (AvailableForAllHeroes)
+            {
+                foreach (DescriptorItem di in Items)
+                {
+                    Debug.Assert(di.AvailableForAllHeroes, $"У {ID} указано, что доступна всем героям, но у {di.ID} не указано, что доступно всем героям.");
+                }
+            }
+            else
+            {
+                List<DescriptorCreature> creaturesInItems = new List<DescriptorCreature>();
+
+                foreach (DescriptorItem di in Items)
+                {
+                    Debug.Assert(!di.AvailableForAllHeroes);
+
+                    foreach (DescriptorCreature dc in di.AvailableForHeroes)
+                    {
+                        Debug.Assert(AvailableForHeroes.IndexOf(dc) >= 0, $"У {ID} герой {dc.ID} недоступен, но он доступен у {di.ID}.");
+
+                        if (creaturesInItems.IndexOf(dc) == -1)
+                            creaturesInItems.Add(dc);
+                    }
+                }
+
+                foreach (DescriptorCreature dc in AvailableForHeroes)
+                {
+                    Debug.Assert(creaturesInItems.IndexOf(dc) >= 0, $"У {ID} герой {dc.ID} доступен, но он не найден в списке доступных героев у предметов группы.");
+                }
+            }
+
+            // Дополняем описание
+            Description += (Description.Length > 0 ? Environment.NewLine : "") + "- Доступен героям:";
 
             foreach (DescriptorCreature tc in UsedByTypeCreature)
             {
