@@ -307,10 +307,12 @@
     <ImageIndex>26</ImageIndex>
     <ShortName>Досп.</ShortName>
     <Heroes>
+      <Hero>Hunter</Hero>
       <Hero>Rogue</Hero>
       <Hero>Elf</Hero>
       <Hero>BeastMaster</Hero>
       <Hero>Marksman</Hero>
+      <Hero>DeathKnight</Hero>
     </Heroes>
   </GroupItems>
   <GroupItems>
@@ -320,10 +322,12 @@
     <ImageIndex>27</ImageIndex>
     <ShortName>Досп.</ShortName>
     <Heroes>
+      <Hero>Hunter</Hero>
       <Hero>Rogue</Hero>
       <Hero>Elf</Hero>
       <Hero>BeastMaster</Hero>
       <Hero>Marksman</Hero>
+      <Hero>DeathKnight</Hero>
     </Heroes>
   </GroupItems>
   <GroupItems>
@@ -333,10 +337,12 @@
     <ImageIndex>28</ImageIndex>
     <ShortName>Досп.</ShortName>
     <Heroes>
+      <Hero>Hunter</Hero>
       <Hero>Rogue</Hero>
       <Hero>Elf</Hero>
       <Hero>BeastMaster</Hero>
       <Hero>Marksman</Hero>
+      <Hero>DeathKnight</Hero>
     </Heroes>
   </GroupItems>
   <GroupItems>
@@ -346,10 +352,12 @@
     <ImageIndex>29</ImageIndex>
     <ShortName>Досп.</ShortName>
     <Heroes>
+      <Hero>Hunter</Hero>
       <Hero>Rogue</Hero>
       <Hero>Elf</Hero>
       <Hero>BeastMaster</Hero>
       <Hero>Marksman</Hero>
+      <Hero>DeathKnight</Hero>
     </Heroes>
   </GroupItems>
   <GroupItems>
@@ -359,10 +367,12 @@
     <ImageIndex>30</ImageIndex>
     <ShortName>Досп.</ShortName>
     <Heroes>
+      <Hero>Hunter</Hero>
       <Hero>Rogue</Hero>
       <Hero>Elf</Hero>
       <Hero>BeastMaster</Hero>
       <Hero>Marksman</Hero>
+      <Hero>DeathKnight</Hero>
     </Heroes>
   </GroupItems>
   <GroupItems>
