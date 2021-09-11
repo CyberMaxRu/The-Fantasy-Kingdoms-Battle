@@ -144,7 +144,8 @@ namespace Fantasy_Kingdoms_Battle
                     foreach (XmlNode l in nr.SelectNodes("CellMenu"))
                     {
                         research = new TypeCellMenu(l);
-                        Debug.Assert(Researches[research.Layer, research.Coord.Y, research.Coord.X] == null);
+                        Debug.Assert(Researches[research.Layer, research.Coord.Y, research.Coord.X] == null,
+                            $"У {ID} в слое {research.Layer} в ячейке ({research.Coord.Y}, {research.Coord.X}) уже есть сущность.");
                         Researches[research.Layer, research.Coord.Y, research.Coord.X] = research;
                     }
                 }
