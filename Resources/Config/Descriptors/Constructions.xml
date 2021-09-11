@@ -2476,9 +2476,10 @@
     <Line>2</Line>
     <Pos>2</Pos>
     <DefaultLevel>0</DefaultLevel>
-    <MaxLevel>2</MaxLevel>
+    <MaxLevel>3</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>menagerie_select.wav</SoundSelect>
+    <LayersCellMenu>1</LayersCellMenu>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -2498,7 +2499,68 @@
           </Requirement>
         </Requirements>
       </Level>
+      <Level>
+        <Pos>3</Pos>
+        <Cost>1500</Cost>
+        <Builders>1</Builders>
+        <Income>0</Income>
+        <Requirements>
+          <Requirement>
+            <Construction>Castle</Construction>
+            <Level>2</Level>
+          </Requirement>
+        </Requirements>
+      </Level>
     </Levels>
+    <CellsMenu>
+      <CellMenu>
+        <PosX>1</PosX>
+        <PosY>1</PosY>
+        <Layer>1</Layer>
+        <TypeObject>WolfInMenagerie</TypeObject>
+        <Cost>500</Cost>
+        <Requirements>
+          <Requirement>
+            <Construction>WolfsDen</Construction>
+            <Destroyed>2</Destroyed>
+          </Requirement>
+        </Requirements>
+      </CellMenu>
+      <CellMenu>
+        <PosX>2</PosX>
+        <PosY>1</PosY>
+        <Layer>1</Layer>
+        <TypeObject>SerpentInMenagerie</TypeObject>
+        <Cost>750</Cost>
+        <Requirements>
+          <Requirement>
+            <Construction>Menagerie</Construction>
+            <Level>2</Level>
+          </Requirement>
+          <Requirement>
+            <Construction>SerpentsNest</Construction>
+            <Destroyed>2</Destroyed>
+          </Requirement>
+        </Requirements>
+      </CellMenu>
+      <CellMenu>
+        <PosX>3</PosX>
+        <PosY>1</PosY>
+        <Layer>1</Layer>
+        <TypeObject>BearInMenagerie</TypeObject>
+        <Cost>1000</Cost>
+        <Requirements>
+          <Requirement>
+            <Construction>Menagerie</Construction>
+            <Level>3</Level>
+          </Requirement>
+          <Requirement>
+            <Construction>BearsDen</Construction>
+            <Destroyed>2</Destroyed>
+          </Requirement>
+        </Requirements>
+      </CellMenu>
+    </CellsMenu>
   </Construction>
   <Construction>
     <ID>GamblingHall</ID>
