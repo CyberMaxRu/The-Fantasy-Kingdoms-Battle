@@ -254,7 +254,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
             else
-                return d1.TypeAbility > d2.TypeAbility ? 1 : -1;
+                return d1.TypeAbility.Pos > d2.TypeAbility.Pos ? 1 : -1;
         }
 
         protected void SortAbilities()

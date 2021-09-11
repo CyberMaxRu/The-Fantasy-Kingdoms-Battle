@@ -230,7 +230,7 @@
     <Description>- Обычная атака стрелковым или метательным оружием//- Наносит урон одной цели</Description>
     <ImageIndex>49</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>MissileAttack</TypeAbility>
+    <TypeAbility>RangeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -249,7 +249,7 @@
     <Description>- Наносит большой урон зверям//- Стрелковая атака</Description>
     <ImageIndex>50</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>MissileAttack</TypeAbility>
+    <TypeAbility>RangeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -267,7 +267,7 @@
     <Description>- Наносит большой урон всем целям в радиусе//- Стрелковая атака</Description>
     <ImageIndex>51</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>MissileAttack</TypeAbility>
+    <TypeAbility>RangeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>10</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -285,7 +285,7 @@
     <Description>- Наносит большой урон//- Стрелковая атака</Description>
     <ImageIndex>52</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>MissileAttack</TypeAbility>
+    <TypeAbility>RangeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -303,7 +303,7 @@
     <Description>- Наносит небольшой урон//- Накладывает эффект, понижающий умение рукопашной атаки//- Стрелковая атака</Description>
     <ImageIndex>53</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>MissileAttack</TypeAbility>
+    <TypeAbility>RangeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -321,7 +321,7 @@
     <Description>- Наносит большой урон//- Накладывает эффект, уменьшающий количество маны с течением времени//- Стрелковая атака</Description>
     <ImageIndex>54</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>MissileAttack</TypeAbility>
+    <TypeAbility>RangeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -598,7 +598,7 @@
     <Description>- Наносит небольшой урон//- Накладывает эффект, не позволяющий двигаться//- Требует маны//- Стрелковая атака</Description>
     <ImageIndex>68</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>MissileAttack</TypeAbility>
+    <TypeAbility>RangeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -617,7 +617,7 @@
     <Description>- Наносит большой урон//- Стрелковая атака</Description>
     <ImageIndex>69</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>MissileAttack</TypeAbility>
+    <TypeAbility>RangeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -654,7 +654,7 @@
     <Description>- Наносит огромный урон//- Требует маны//- Магическая атака</Description>
     <ImageIndex>71</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>MissileAttack</TypeAbility>
+    <TypeAbility>RangeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -1048,7 +1048,7 @@
     <Description>- Обычная атака стрелковым или метательным оружием//- Наносит урон одной цели</Description>
     <ImageIndex>49</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>MissileAttack</TypeAbility>
+    <TypeAbility>RangeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -1066,7 +1066,7 @@
     <Description>- Наносит большой урон зверям//- Стрелковая атака</Description>
     <ImageIndex>50</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>MissileAttack</TypeAbility>
+    <TypeAbility>RangeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -1084,7 +1084,7 @@
     <Description>- Наносит большой урон//- Стрелковая атака</Description>
     <ImageIndex>52</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>MissileAttack</TypeAbility>
+    <TypeAbility>RangeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -1192,7 +1192,7 @@
     <Description>- Наносит средний урон//- Накладывает эффект, наносящий небольшие повреждения с течением времени//- Стрелковая атака</Description>
     <ImageIndex>131</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>MissileAttack</TypeAbility>
+    <TypeAbility>RangeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -1210,7 +1210,7 @@
     <Description>- Обычная атака стрелковым или метательным оружием//- Наносит урон одной цели</Description>
     <ImageIndex>150</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>MissileAttack</TypeAbility>
+    <TypeAbility>RangeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -1228,7 +1228,7 @@
     <Description>- Наносит большой урон зверям//- Стрелковая атака</Description>
     <ImageIndex>50</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>MissileAttack</TypeAbility>
+    <TypeAbility>RangeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -1246,7 +1246,7 @@
     <Description>- Наносит большой урон//- Стрелковая атака</Description>
     <ImageIndex>151</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>MissileAttack</TypeAbility>
+    <TypeAbility>RangeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -1264,7 +1264,7 @@
     <Description>- Наносит огромный урон//- Стрелковая атака</Description>
     <ImageIndex>54</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>MissileAttack</TypeAbility>
+    <TypeAbility>RangeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>5</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -1282,7 +1282,7 @@
     <Description>- Наносит средний урон//- Накладывает эффект, понижающий умения всех типов атак//- Стрелковая атака</Description>
     <ImageIndex>53</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>MissileAttack</TypeAbility>
+    <TypeAbility>RangeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -1300,7 +1300,7 @@
     <Description>- Наносит большой урон всем целям в радиусе//- Стрелковая атака</Description>
     <ImageIndex>132</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>MissileAttack</TypeAbility>
+    <TypeAbility>RangeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>10</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -1318,7 +1318,7 @@
     <Description>- Накладывает эффект, дающий иммунитет к заморозке</Description>
     <ImageIndex>133</ImageIndex>
     <Cost>20</Cost>
-    <TypeAbility>MissileAttack</TypeAbility>
+    <TypeAbility>RangeAttack</TypeAbility>
     <TypeTarget>AllyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -1870,7 +1870,7 @@
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
     <ImageIndex>49</ImageIndex>
-    <TypeAbility>MissileAttack</TypeAbility>
+    <TypeAbility>RangeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>
@@ -1902,7 +1902,7 @@
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
     <ImageIndex>1</ImageIndex>
-    <TypeAbility>MissileAttack</TypeAbility>
+    <TypeAbility>RangeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
     <Ranged>True</Ranged>

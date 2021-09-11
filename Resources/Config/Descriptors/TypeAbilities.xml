@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Descriptors>
+  <TypeAbility>
+    <ID>MeleeAttack</ID>
+    <Name>Aтака ближнего боя</Name>
+    <ShortName>ближ.</ShortName>
+  </TypeAbility>
+  <TypeAbility>
+    <ID>RangeAttack</ID>
+    <Name>Дальнобойная атака</Name>
+    <ShortName>даль.</ShortName>
+  </TypeAbility>
+  <TypeAbility>
+    <ID>Spell</ID>
+    <Name>Заклинание</Name>
+    <ShortName>закл.</ShortName>
+  </TypeAbility>
+  <TypeAbility>
+    <ID>Buff</ID>
+    <Name>Усиление</Name>
+    <ShortName>усил.</ShortName>
+  </TypeAbility>
+  <TypeAbility>
+    <ID>Debuff</ID>
+    <Name>Ослабление</Name>
+    <ShortName>осл.</ShortName>
+  </TypeAbility>
+  <TypeAbility>
+    <ID>Heal</ID>
+    <Name>Лечение</Name>
+    <ShortName>леч.</ShortName>
+  </TypeAbility>
+  <TypeAbility>
+    <ID>Summon</ID>
+    <Name>Призыв</Name>
+    <ShortName>приз.</ShortName>
+  </TypeAbility>
+  <TypeAbility>
+    <ID>Passive</ID>
+    <Name>Постоянная способность</Name>
+    <ShortName>пост.</ShortName>
+  </TypeAbility>
+  <TypeAbility>
+    <ID>Aura</ID>
+    <Name>Аура</Name>
+    <ShortName>аура</ShortName>
+  </TypeAbility>
+</Descriptors>

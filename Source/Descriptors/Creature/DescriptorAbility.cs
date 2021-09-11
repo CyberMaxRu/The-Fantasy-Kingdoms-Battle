@@ -10,7 +10,6 @@ using System.Windows.Forms;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс способности
-    internal enum TypeAbility { MeleeAttack, MissileAttack, Spell, Buff, Heal, Summon, Passive, Aura }
     internal enum TypeTarget { Self, EnemyUnit, EnemyBuilding, AllyUnit }// Тип цели для способности
     internal enum Effect { Taunt, Slow }// Эффекты
 
@@ -18,7 +17,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         public DescriptorAbility(XmlNode n) : base(n)
         {
-            TypeAbility = (TypeAbility)Enum.Parse(typeof(TypeAbility), n.SelectSingleNode("TypeAbility").InnerText);
+            TypeAbility = Config.FindTypeAbility(XmlUtils.GetStringNotNull(n, "TypeAbility"));
             TypeTarget = (TypeTarget)Enum.Parse(typeof(TypeTarget), n.SelectSingleNode("TypeTarget").InnerText);
             MinUnitLevel = Convert.ToInt32(n.SelectSingleNode("MinUnitLevel").InnerText);
             Ranged = Convert.ToBoolean(n.SelectSingleNode("Ranged").InnerText);
@@ -59,27 +58,27 @@ namespace Fantasy_Kingdoms_Battle
                 Effects.Add(e);
             }
 
-            switch (TypeAbility)
+            switch (TypeAbility.NameTypeAbility)
             {
-                case TypeAbility.MeleeAttack:
+                case NameTypeAbility.MeleeAttack:
                     Debug.Assert(TypeTarget != TypeTarget.Self);
                     Debug.Assert(TypeTarget != TypeTarget.AllyUnit);
 
                     break;
-                case TypeAbility.MissileAttack:
+                case NameTypeAbility.RangeAttack:
                     Debug.Assert(TypeTarget != TypeTarget.Self);
                     //Debug.Assert(TypeTarget != TypeTarget.AllyUnit);
 
                     break;
-                case TypeAbility.Buff:
+                case NameTypeAbility.Buff:
                     Debug.Assert(TypeTarget != TypeTarget.EnemyUnit);
                     Debug.Assert(TypeTarget != TypeTarget.EnemyBuilding);
 
                     //Debug.Assert(Effects.Count > 0);
                     break;
-                case TypeAbility.Spell:
+                case NameTypeAbility.Spell:
                     break;
-                case TypeAbility.Heal:
+                case NameTypeAbility.Heal:
                     Debug.Assert(TypeTarget != TypeTarget.EnemyUnit);
                     Debug.Assert(TypeTarget != TypeTarget.EnemyBuilding);
 
@@ -87,7 +86,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal TypeAbility TypeAbility { get; }
+        internal DescriptorTypeAbility TypeAbility { get; }
         internal TypeTarget TypeTarget { get; }
         internal int MinUnitLevel { get; }
         internal bool Ranged { get; }

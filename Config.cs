@@ -151,6 +151,14 @@ namespace Fantasy_Kingdoms_Battle
                 TypeAttacks.Add(new DescriptorAttack(n));
             }
 
+            // Загрузка конфигурации типов способностей
+            xmlDoc = CreateXmlDocument(@"Config\Descriptors\TypeAbilities.xml");
+
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/TypeAbility"))
+            {
+                TypeAbilities.Add(new DescriptorTypeAbility(n));
+            }
+
             // Загрузка конфигурации способностей
             xmlDoc = CreateXmlDocument(@"Config\Descriptors\Abilities.xml");
 
@@ -200,6 +208,9 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Настраиваем связи
+            foreach (DescriptorTypeAbility ta in TypeAbilities)
+                ta.TuneDeferredLinks();
+
             foreach (DescriptorAbility a in Abilities)
                 a.TuneDeferredLinks();
 
@@ -243,6 +254,7 @@ namespace Fantasy_Kingdoms_Battle
         // Списки описателей
         internal List<DescriptorConstruction> Constructions { get; } = new List<DescriptorConstruction>();
         internal List<DescriptorAttack> TypeAttacks { get; } = new List<DescriptorAttack>();
+        internal List<DescriptorTypeAbility> TypeAbilities { get; } = new List<DescriptorTypeAbility>();
         internal List<DescriptorAbility> Abilities { get; } = new List<DescriptorAbility>();
         internal List<DescriptorSpecialization> Specializations { get; } = new List<DescriptorSpecialization>();
         internal List<DescriptorSecondarySkill> SecondarySkills { get; } = new List<DescriptorSecondarySkill>();
@@ -418,6 +430,17 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             throw new Exception("Тип атаки " + ID + " не найден.");
+        }
+
+        internal DescriptorTypeAbility FindTypeAbility(string ID)
+        {
+            foreach (DescriptorTypeAbility ta in TypeAbilities)
+            {
+                if (ta.ID == ID)
+                    return ta;
+            }
+
+            throw new Exception($"Тип способности {ID} не найден.");
         }
 
         internal DescriptorAbility FindAbility(string ID, bool mustBeExists = true)
