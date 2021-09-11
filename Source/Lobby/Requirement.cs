@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Xml;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -12,17 +13,20 @@ namespace Fantasy_Kingdoms_Battle
     {
         private string nameConstruction;
 
-        public Requirement(string nameRequiredConstruction, int level) : base()
+        public Requirement(XmlNode n) : base()
         {
-            Debug.Assert(nameRequiredConstruction.Length > 0);
-            Debug.Assert(level >= 0);
+            nameConstruction = XmlUtils.GetStringNotNull(n, "Construction");
+            Level = XmlUtils.GetInteger(n, "Level");
+            Destroyed = XmlUtils.GetInteger(n, "Destroyed");
 
-            nameConstruction = nameRequiredConstruction;
-            Level = level;
+            Debug.Assert(nameConstruction.Length > 0);
+            Debug.Assert(Level >= 0);
+            Debug.Assert(Destroyed >= 0);
         }
 
         internal DescriptorConstruction Construction { get; private set; }
         internal int Level { get; }
+        internal int Destroyed { get; }
 
         internal override void TuneDeferredLinks()
         {
@@ -31,7 +35,16 @@ namespace Fantasy_Kingdoms_Battle
             Construction = Config.FindConstruction(nameConstruction);
             nameConstruction = "";
 
-            Debug.Assert(Level <= Construction.MaxLevel, $"Требуется сооружение {Construction.ID} {Level} уровня, но у него максимум {Construction.MaxLevel} уровень.");
+            if (Construction.IsOurConstruction)
+            {
+                Debug.Assert(Level <= Construction.MaxLevel, $"Требуется сооружение {Construction.ID} {Level} уровня, но у него максимум {Construction.MaxLevel} уровень.");
+                Debug.Assert(Destroyed == 0);
+            }
+            else
+            {
+                Debug.Assert(Level == 0);
+                Debug.Assert(Destroyed > 0);
+            }
         }
     }
 }

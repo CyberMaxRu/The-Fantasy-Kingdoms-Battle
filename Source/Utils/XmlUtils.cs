@@ -14,7 +14,7 @@ namespace Fantasy_Kingdoms_Battle
             if (nr != null)
             {
                 foreach (XmlNode r in nr.SelectNodes("Requirement"))
-                    list.Add(new Requirement(r.SelectSingleNode("Construction").InnerText, GetInteger(r, "Level")));
+                    list.Add(new Requirement(r));
             }
         }
 
