@@ -1275,7 +1275,7 @@
     <DamageMelee>10</DamageMelee>
   </Item>
   <Item>
-    <ID>WeaponMage0</ID>
+    <ID>StaffMage0</ID>
     <Name>Обычный лук</Name>
     <Description>Обычный посох</Description>
     <ImageIndex>16</ImageIndex>
@@ -1289,7 +1289,7 @@
     <DamageMelee>10</DamageMelee>
   </Item>
   <Item>
-    <ID>WeaponDarkPriest0</ID>
+    <ID>StaffDarkPriest0</ID>
     <Name>Обычный лук</Name>
     <Description>Обычный посох</Description>
     <ImageIndex>16</ImageIndex>
@@ -1303,7 +1303,7 @@
     <DamageMelee>0</DamageMelee>
   </Item>
   <Item>
-    <ID>WeaponPriest0</ID>
+    <ID>StaffPriest0</ID>
     <Name>Обычный лук</Name>
     <Description>Обычный посох</Description>
     <ImageIndex>16</ImageIndex>
@@ -1317,7 +1317,7 @@
     <DamageMelee>0</DamageMelee>
   </Item>
   <Item>
-    <ID>WeaponFireMage0</ID>
+    <ID>StaffFireMage0</ID>
     <Name>Обычный лук</Name>
     <Description>Обычный посох</Description>
     <ImageIndex>16</ImageIndex>
@@ -1331,7 +1331,7 @@
     <DamageMelee>0</DamageMelee>
   </Item>
   <Item>
-    <ID>WeaponIceMage0</ID>
+    <ID>StaffIceMage0</ID>
     <Name>Обычный лук</Name>
     <Description>Обычный посох</Description>
     <ImageIndex>16</ImageIndex>
@@ -1345,7 +1345,7 @@
     <DamageMelee>0</DamageMelee>
   </Item>
   <Item>
-    <ID>WeaponCleric1</ID>
+    <ID>StaffCleric1</ID>
     <Name>Обычный лук</Name>
     <Description>Улучшенный посох</Description>
     <ImageIndex>17</ImageIndex>
@@ -1359,7 +1359,7 @@
     <DamageMelee>0</DamageMelee>
   </Item>
   <Item>
-    <ID>WeaponMage1</ID>
+    <ID>StaffMage1</ID>
     <Name>Обычный лук</Name>
     <Description>Улучшенный посох</Description>
     <ImageIndex>17</ImageIndex>
@@ -1373,7 +1373,7 @@
     <DamageMelee>0</DamageMelee>
   </Item>
   <Item>
-    <ID>WeaponDarkPriest1</ID>
+    <ID>StaffDarkPriest1</ID>
     <Name>Обычный лук</Name>
     <Description>Улучшенный посох</Description>
     <ImageIndex>17</ImageIndex>
@@ -1387,7 +1387,7 @@
     <DamageMelee>0</DamageMelee>
   </Item>
   <Item>
-    <ID>WeaponPriest1</ID>
+    <ID>StaffPriest1</ID>
     <Name>Обычный лук</Name>
     <Description>Улучшенный посох</Description>
     <ImageIndex>17</ImageIndex>
@@ -1401,7 +1401,7 @@
     <DamageMelee>0</DamageMelee>
   </Item>
   <Item>
-    <ID>WeaponFireMage1</ID>
+    <ID>StaffFireMage1</ID>
     <Name>Обычный лук</Name>
     <Description>Улучшенный посох</Description>
     <ImageIndex>17</ImageIndex>
@@ -1415,7 +1415,7 @@
     <DamageMelee>0</DamageMelee>
   </Item>
   <Item>
-    <ID>WeaponIceMage1</ID>
+    <ID>StaffIceMage1</ID>
     <Name>Обычный лук</Name>
     <Description>Улучшенный посох</Description>
     <ImageIndex>17</ImageIndex>
@@ -1429,7 +1429,7 @@
     <DamageMelee>0</DamageMelee>
   </Item>
   <Item>
-    <ID>WeaponCleric2</ID>
+    <ID>StaffCleric2</ID>
     <Name>Обычный лук</Name>
     <Description>Мастерский посох</Description>
     <ImageIndex>18</ImageIndex>
@@ -1443,7 +1443,7 @@
     <DamageMelee>0</DamageMelee>
   </Item>
   <Item>
-    <ID>WeaponMage2</ID>
+    <ID>StaffMage2</ID>
     <Name>Обычный лук</Name>
     <Description>Мастерский посох</Description>
     <ImageIndex>18</ImageIndex>
@@ -1457,7 +1457,7 @@
     <DamageMelee>0</DamageMelee>
   </Item>
   <Item>
-    <ID>WeaponDarkPriest2</ID>
+    <ID>StaffDarkPriest2</ID>
     <Name>Обычный лук</Name>
     <Description>Мастерский посох</Description>
     <ImageIndex>18</ImageIndex>
@@ -1471,7 +1471,7 @@
     <DamageMelee>0</DamageMelee>
   </Item>
   <Item>
-    <ID>WeaponPriest2</ID>
+    <ID>StaffPriest2</ID>
     <Name>Обычный лук</Name>
     <Description>Мастерский посох</Description>
     <ImageIndex>18</ImageIndex>
@@ -1485,7 +1485,7 @@
     <DamageMelee>0</DamageMelee>
   </Item>
   <Item>
-    <ID>WeaponFireMage2</ID>
+    <ID>StaffFireMage2</ID>
     <Name>Обычный лук</Name>
     <Description>Мастерский посох</Description>
     <ImageIndex>18</ImageIndex>
@@ -1499,7 +1499,7 @@
     <DamageMelee>0</DamageMelee>
   </Item>
   <Item>
-    <ID>WeaponIceMage2</ID>
+    <ID>StaffIceMage2</ID>
     <Name>Обычный лук</Name>
     <Description>Мастерский посох</Description>
     <ImageIndex>18</ImageIndex>
@@ -1513,7 +1513,7 @@
     <DamageMelee>0</DamageMelee>
   </Item>
   <Item>
-    <ID>WeaponCleric3</ID>
+    <ID>StaffCleric3</ID>
     <Name>Обычный лук</Name>
     <Description>Экспертный посох</Description>
     <ImageIndex>19</ImageIndex>
@@ -1527,7 +1527,7 @@
     <DamageMelee>0</DamageMelee>
   </Item>
   <Item>
-    <ID>WeaponMage3</ID>
+    <ID>StaffMage3</ID>
     <Name>Обычный лук</Name>
     <Description>Экспертный посох</Description>
     <ImageIndex>19</ImageIndex>
@@ -1541,7 +1541,7 @@
     <DamageMelee>0</DamageMelee>
   </Item>
   <Item>
-    <ID>WeaponDarkPriest3</ID>
+    <ID>StaffDarkPriest3</ID>
     <Name>Обычный лук</Name>
     <Description>Экспертный посох</Description>
     <ImageIndex>19</ImageIndex>
@@ -1555,7 +1555,7 @@
     <DamageMelee>0</DamageMelee>
   </Item>
   <Item>
-    <ID>WeaponPriest3</ID>
+    <ID>StaffPriest3</ID>
     <Name>Обычный лук</Name>
     <Description>Экспертный посох</Description>
     <ImageIndex>19</ImageIndex>
@@ -1569,7 +1569,7 @@
     <DamageMelee>0</DamageMelee>
   </Item>
   <Item>
-    <ID>WeaponFireMage3</ID>
+    <ID>StaffFireMage3</ID>
     <Name>Обычный лук</Name>
     <Description>Экспертный посох</Description>
     <ImageIndex>19</ImageIndex>
@@ -1583,7 +1583,7 @@
     <DamageMelee>0</DamageMelee>
   </Item>
   <Item>
-    <ID>WeaponIceMage3</ID>
+    <ID>StaffIceMage3</ID>
     <Name>Обычный лук</Name>
     <Description>Экспертный посох</Description>
     <ImageIndex>19</ImageIndex>
@@ -1597,7 +1597,7 @@
     <DamageMelee>0</DamageMelee>
   </Item>
   <Item>
-    <ID>WeaponCleric4</ID>
+    <ID>StaffCleric4</ID>
     <Name>Обычный лук</Name>
     <Description>Посох из кости дракона</Description>
     <ImageIndex>20</ImageIndex>
@@ -1611,7 +1611,7 @@
     <DamageMelee>0</DamageMelee>
   </Item>
   <Item>
-    <ID>WeaponMage4</ID>
+    <ID>StaffMage4</ID>
     <Name>Обычный лук</Name>
     <Description>Посох из кости дракона</Description>
     <ImageIndex>20</ImageIndex>
@@ -1625,7 +1625,7 @@
     <DamageMelee>0</DamageMelee>
   </Item>
   <Item>
-    <ID>WeaponDarkPriest4</ID>
+    <ID>StaffDarkPriest4</ID>
     <Name>Обычный лук</Name>
     <Description>Посох из кости дракона</Description>
     <ImageIndex>20</ImageIndex>
@@ -1639,7 +1639,7 @@
     <DamageMelee>0</DamageMelee>
   </Item>
   <Item>
-    <ID>WeaponPriest4</ID>
+    <ID>StaffPriest4</ID>
     <Name>Обычный лук</Name>
     <Description>Посох из кости дракона</Description>
     <ImageIndex>20</ImageIndex>
@@ -1653,7 +1653,7 @@
     <DamageMelee>0</DamageMelee>
   </Item>
   <Item>
-    <ID>WeaponFireMage4</ID>
+    <ID>StaffFireMage4</ID>
     <Name>Обычный лук</Name>
     <Description>Посох из кости дракона</Description>
     <ImageIndex>20</ImageIndex>
@@ -1667,7 +1667,7 @@
     <DamageMelee>0</DamageMelee>
   </Item>
   <Item>
-    <ID>WeaponIceMage4</ID>
+    <ID>StaffIceMage4</ID>
     <Name>Обычный лук</Name>
     <Description>Посох из кости дракона</Description>
     <ImageIndex>20</ImageIndex>
