@@ -501,6 +501,62 @@
     <DamageMelee>0</DamageMelee>
   </Item>
   <Item>
+    <ID>WeaponHunter1</ID>
+    <Name>Обычный меч</Name>
+    <Description>Улучшенный меч</Description>
+    <ImageIndex>7</ImageIndex>
+    <CategoryItem>Weapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItem>GroupWeaponMelee1</GroupItem>
+    <Heroes>
+      <Hero>Hunter</Hero>
+    </Heroes>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponElf1</ID>
+    <Name>Обычный меч</Name>
+    <Description>Улучшенный меч</Description>
+    <ImageIndex>7</ImageIndex>
+    <CategoryItem>Weapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItem>GroupWeaponMelee1</GroupItem>
+    <Heroes>
+      <Hero>Elf</Hero>
+    </Heroes>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponBeastMaster1</ID>
+    <Name>Обычный меч</Name>
+    <Description>Улучшенный меч</Description>
+    <ImageIndex>7</ImageIndex>
+    <CategoryItem>Weapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItem>GroupWeaponMelee1</GroupItem>
+    <Heroes>
+      <Hero>BeastMaster</Hero>
+    </Heroes>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponMarksman1</ID>
+    <Name>Обычный меч</Name>
+    <Description>Улучшенный меч</Description>
+    <ImageIndex>7</ImageIndex>
+    <CategoryItem>Weapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItem>GroupWeaponMelee1</GroupItem>
+    <Heroes>
+      <Hero>Marksman</Hero>
+    </Heroes>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
     <ID>WeaponWarrior2</ID>
     <Name>Обычный меч</Name>
     <Description>Мастерский меч</Description>
@@ -580,6 +636,62 @@
     <GroupItem>GroupWeaponMelee2</GroupItem>
     <Heroes>
       <Hero>DeathKnight</Hero>
+    </Heroes>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponHunter2</ID>
+    <Name>Обычный меч</Name>
+    <Description>Мастерский меч</Description>
+    <ImageIndex>8</ImageIndex>
+    <CategoryItem>Weapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItem>GroupWeaponMelee2</GroupItem>
+    <Heroes>
+      <Hero>Hunter</Hero>
+    </Heroes>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponElf2</ID>
+    <Name>Обычный меч</Name>
+    <Description>Мастерский меч</Description>
+    <ImageIndex>8</ImageIndex>
+    <CategoryItem>Weapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItem>GroupWeaponMelee2</GroupItem>
+    <Heroes>
+      <Hero>Elf</Hero>
+    </Heroes>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponBeastMaster2</ID>
+    <Name>Обычный меч</Name>
+    <Description>Мастерский меч</Description>
+    <ImageIndex>8</ImageIndex>
+    <CategoryItem>Weapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItem>GroupWeaponMelee2</GroupItem>
+    <Heroes>
+      <Hero>BeastMaster</Hero>
+    </Heroes>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponMarksman2</ID>
+    <Name>Обычный меч</Name>
+    <Description>Мастерский меч</Description>
+    <ImageIndex>8</ImageIndex>
+    <CategoryItem>Weapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItem>GroupWeaponMelee2</GroupItem>
+    <Heroes>
+      <Hero>Marksman</Hero>
     </Heroes>
     <TimeHit>50</TimeHit>
     <DamageMelee>0</DamageMelee>
@@ -669,6 +781,62 @@
     <DamageMelee>0</DamageMelee>
   </Item>
   <Item>
+    <ID>WeaponHunter3</ID>
+    <Name>Обычный меч</Name>
+    <Description>Экспертный меч</Description>
+    <ImageIndex>9</ImageIndex>
+    <CategoryItem>Weapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItem>GroupWeaponMelee3</GroupItem>
+    <Heroes>
+      <Hero>Hunter</Hero>
+    </Heroes>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponElf3</ID>
+    <Name>Обычный меч</Name>
+    <Description>Экспертный меч</Description>
+    <ImageIndex>9</ImageIndex>
+    <CategoryItem>Weapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItem>GroupWeaponMelee3</GroupItem>
+    <Heroes>
+      <Hero>Elf</Hero>
+    </Heroes>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponBeastMaster3</ID>
+    <Name>Обычный меч</Name>
+    <Description>Экспертный меч</Description>
+    <ImageIndex>9</ImageIndex>
+    <CategoryItem>Weapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItem>GroupWeaponMelee3</GroupItem>
+    <Heroes>
+      <Hero>BeastMaster</Hero>
+    </Heroes>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponMarksman3</ID>
+    <Name>Обычный меч</Name>
+    <Description>Экспертный меч</Description>
+    <ImageIndex>9</ImageIndex>
+    <CategoryItem>Weapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItem>GroupWeaponMelee3</GroupItem>
+    <Heroes>
+      <Hero>Marksman</Hero>
+    </Heroes>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
     <ID>WeaponWarrior4</ID>
     <Name>Обычный меч</Name>
     <Description>Рунический меч</Description>
@@ -748,6 +916,62 @@
     <GroupItem>GroupWeaponMelee4</GroupItem>
     <Heroes>
       <Hero>DeathKnight</Hero>
+    </Heroes>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponHunter4</ID>
+    <Name>Обычный меч</Name>
+    <Description>Рунический меч</Description>
+    <ImageIndex>10</ImageIndex>
+    <CategoryItem>Weapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItem>GroupWeaponMelee4</GroupItem>
+    <Heroes>
+      <Hero>Hunter</Hero>
+    </Heroes>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponElf4</ID>
+    <Name>Обычный меч</Name>
+    <Description>Рунический меч</Description>
+    <ImageIndex>10</ImageIndex>
+    <CategoryItem>Weapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItem>GroupWeaponMelee4</GroupItem>
+    <Heroes>
+      <Hero>Elf</Hero>
+    </Heroes>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponBeastMaster4</ID>
+    <Name>Обычный меч</Name>
+    <Description>Рунический меч</Description>
+    <ImageIndex>10</ImageIndex>
+    <CategoryItem>Weapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItem>GroupWeaponMelee4</GroupItem>
+    <Heroes>
+      <Hero>BeastMaster</Hero>
+    </Heroes>
+    <TimeHit>50</TimeHit>
+    <DamageMelee>0</DamageMelee>
+  </Item>
+  <Item>
+    <ID>WeaponMarksman4</ID>
+    <Name>Обычный меч</Name>
+    <Description>Рунический меч</Description>
+    <ImageIndex>10</ImageIndex>
+    <CategoryItem>Weapon</CategoryItem>
+    <Cost>20</Cost>
+    <GroupItem>GroupWeaponMelee4</GroupItem>
+    <Heroes>
+      <Hero>Marksman</Hero>
     </Heroes>
     <TimeHit>50</TimeHit>
     <DamageMelee>0</DamageMelee>
