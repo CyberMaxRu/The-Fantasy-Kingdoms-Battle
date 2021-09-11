@@ -26,7 +26,7 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorAbility ta in TypeCreature.Abilities)
                 AddAbility(ta);
             Specialization = new Specialization(this, FormMain.Config.FindSpecialization("SpeedMove"));
-            AddSecondarySkill(FormMain.Config.FindSecondarySkill("Health"));
+            AddSecondarySkill(FormMain.Config.FindSecondarySkill("HealthSecSkill"));
 
             // Загружаем дефолтный инвентарь
             foreach (Item i in TypeCreature.Inventory)
