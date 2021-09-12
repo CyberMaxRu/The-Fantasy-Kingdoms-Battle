@@ -28,7 +28,7 @@ namespace Fantasy_Kingdoms_Battle
                                 Researches.Add(new PlayerCellMenu(this, TypeConstruction.Researches[z, y, x]));
             }
 
-            Hidden = !TypeConstruction.IsInternalConstruction;
+            Hidden = !TypeConstruction.IsInternalConstruction || (Layer > 0);
 
             Level = b.DefaultLevel;
 
