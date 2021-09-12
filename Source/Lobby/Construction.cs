@@ -622,6 +622,29 @@ namespace Fantasy_Kingdoms_Battle
             return Hidden ? FormMain.IMAGE_INDEX_UNKNOWN : TypeConstruction.ImageIndex;
         }
 
+        internal bool ImageEnabled()
+        {
+            return (Level > 0) || (TypeConstruction.MaxLevel == 0);
+        }
+
+        internal Color GetColorCaption()
+        {
+            if (PriorityFlag == PriorityExecution.None)
+                return Hidden ? FormMain.Config.ColorMapObjectCaption(false) : Color.MediumAquamarine;
+
+            switch (TypeAction())
+            {
+                case TypeFlag.Scout:
+                    return Color.LimeGreen;
+                case TypeFlag.Attack:
+                    return Color.OrangeRed;
+                case TypeFlag.Defense:
+                    return Color.DodgerBlue;
+                default:
+                    throw new Exception($"Неизвестный тип действия: {TypeAction()}");
+            }
+        }
+
         internal int RequiredGold()
         {
             AssertNotDestroyed();

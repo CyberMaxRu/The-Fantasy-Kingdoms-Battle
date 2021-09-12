@@ -139,17 +139,15 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
-
             Debug.Assert(Construction.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
 
-            if (Construction.TypeConstruction.IsOurConstruction || Construction.TypeConstruction.Category == CategoryConstruction.External)
+            imgMapObject.ImageIndex = Construction.ImageIndexLair();
+            imgMapObject.ImageIsEnabled = Construction.ImageEnabled();
+            lblNameMapObject.Text = Construction.NameLair();
+            lblNameMapObject.Color = Construction.GetColorCaption();
+
+            if (!Construction.Hidden && (Construction.TypeConstruction.IsOurConstruction || Construction.TypeConstruction.Category == CategoryConstruction.External))
             {
-                imgMapObject.ImageIndex = Construction.TypeConstruction.ImageIndex;
-                imgMapObject.ImageIsEnabled = Construction.Level > 0;
-
-                lblNameMapObject.Text = Construction.TypeConstruction.Name;
-                lblNameMapObject.Color = FormMain.Config.ColorMapObjectCaption(Construction.Level > 0);
-
                 int income = Construction.Level > 0 ? Construction.Income() : Construction.IncomeNextLevel();
                 if (income > 0)
                 {
@@ -291,10 +289,6 @@ namespace Fantasy_Kingdoms_Battle
                 if (btnAttackHeroes.Visible)
                     btnAttackHeroes.Text = $"{Construction.listAttackedHero.Count}/{Construction.MaxHeroesForFlag()}";
 
-                imgMapObject.ImageIndex = Construction.ImageIndexLair();
-                lblNameMapObject.Text = Construction.NameLair();
-                lblNameMapObject.Color = GetColorCaption();
-
                 lblRewardGold.Visible = !Construction.Hidden && (Construction.TypeConstruction.Reward != null) && (Construction.TypeConstruction.Reward.Gold > 0);
                 if (lblRewardGold.Visible)
                 {
@@ -307,8 +301,6 @@ namespace Fantasy_Kingdoms_Battle
                     lblRewardGreatness.Text = Construction.TypeConstruction.Reward.Greatness.ToString();
                 }
             }
-
-            Debug.Assert(lblNameMapObject.Text.Length > 0);
 
             base.Draw(g);
         }
@@ -539,24 +531,6 @@ namespace Fantasy_Kingdoms_Battle
                     Construction.IncPriority();
                     Construction.Player.SetTaskForHeroes();
                 }
-            }
-        }
-
-        private Color GetColorCaption()
-        {
-            if (Construction.PriorityFlag == PriorityExecution.None)
-                return Construction.Hidden ? FormMain.Config.ColorMapObjectCaption(false) : Color.MediumAquamarine;
-
-            switch (Construction.TypeAction())
-            {
-                case TypeFlag.Scout:
-                    return Color.LimeGreen;
-                case TypeFlag.Attack:
-                    return Color.OrangeRed;
-                case TypeFlag.Defense:
-                    return Color.DodgerBlue;
-                default:
-                    throw new Exception($"Неизвестный тип действия: {Construction.TypeAction()}");
             }
         }
     }
