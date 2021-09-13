@@ -33,7 +33,7 @@
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Arena</Construction>
+            <Construction>TrainingHall</Construction>
             <Level>1</Level>
           </Requirement>
         </Requirements>
@@ -649,7 +649,7 @@
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>TrainingHall</Construction>
+            <Construction>GamblingHall</Construction>
             <Level>1</Level>
           </Requirement>
         </Requirements>
@@ -1022,7 +1022,7 @@
     <Category>Economic</Category>
     <Page>Economic</Page>
     <Line>1</Line>
-    <Pos>2</Pos>
+    <Pos>3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <LayersCellMenu>4</LayersCellMenu>
@@ -1413,15 +1413,15 @@
     </CellsMenu>
   </Construction>
   <Construction>
-    <ID>MagicBazaar</ID>
-    <Name>Магический базар</Name>
-    <Description>- Приносит небольшой доход//- Здесь изобретают и продают артефакты и магические предметы</Description>
-    <ImageIndex>81</ImageIndex>
+    <ID>Workshop</ID>
+    <Name>Мастерская</Name>
+    <Description>- Приносит небольшой доход//- Здесь изобретают и продают вещи из кожи, дерева, тканей</Description>
+    <ImageIndex>154</ImageIndex>
     <TypeConstruction>Manufacture</TypeConstruction>
     <Category>Economic</Category>
     <Page>Economic</Page>
     <Line>1</Line>
-    <Pos>3</Pos>
+    <Pos>4</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <LayersCellMenu>1</LayersCellMenu>
@@ -1449,7 +1449,7 @@
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>MagicBazaar</Construction>
+            <Construction>Workshop</Construction>
             <Level>1</Level>
           </Requirement>
         </Requirements>
@@ -1462,7 +1462,7 @@
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>MagicBazaar</Construction>
+            <Construction>Workshop</Construction>
             <Level>2</Level>
           </Requirement>
         </Requirements>
@@ -1485,7 +1485,7 @@
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>MagicBazaar</Construction>
+            <Construction>Workshop</Construction>
             <Level>2</Level>
           </Requirement>
         </Requirements>
@@ -1499,7 +1499,7 @@
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>MagicBazaar</Construction>
+            <Construction>Workshop</Construction>
             <Level>3</Level>
           </Requirement>
         </Requirements>
@@ -1508,14 +1508,14 @@
   </Construction>
   <Construction>
     <ID>AlchemistHut</ID>
-    <Name>Хижина алхимика</Name>
+    <Name>Лавка алхимика</Name>
     <Description>- Приносит небольшой доход//- Здесь изобретают и продают эликсиры/напитки</Description>
-    <ImageIndex>111</ImageIndex>
+    <ImageIndex>81</ImageIndex>
     <TypeConstruction>Manufacture</TypeConstruction>
     <Category>Economic</Category>
     <Page>Economic</Page>
     <Line>1</Line>
-    <Pos>4</Pos>
+    <Pos>2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <LayersCellMenu>1</LayersCellMenu>
@@ -1646,10 +1646,10 @@
     </Levels>
   </Construction>
   <Construction>
-    <ID>Statue</ID>
-    <Name>Статуя</Name>
+    <ID>Fountain</ID>
+    <Name>Фонтан</Name>
     <Description>- Повышает энтузиазм героев</Description>
-    <ImageIndex>88</ImageIndex>
+    <ImageIndex>153</ImageIndex>
     <TypeConstruction>Greatness</TypeConstruction>
     <Category>Economic</Category>
     <Page>Guild</Page>
@@ -1679,15 +1679,81 @@
     </Levels>
   </Construction>
   <Construction>
+    <ID>Statue</ID>
+    <Name>Статуя</Name>
+    <Description>- Повышает энтузиазм героев</Description>
+    <ImageIndex>88</ImageIndex>
+    <TypeConstruction>Greatness</TypeConstruction>
+    <Category>Economic</Category>
+    <Page>Guild</Page>
+    <Line>1</Line>
+    <Pos>3</Pos>
+    <DefaultLevel>0</DefaultLevel>
+    <MaxLevel>2</MaxLevel>
+    <ResearchesPerDay>1</ResearchesPerDay>
+    <SoundSelect>statue_select.wav</SoundSelect>
+    <Levels>
+      <Level>
+        <Pos>1</Pos>
+        <Cost>500</Cost>
+        <Builders>1</Builders>
+        <Income>0</Income>
+        <GreatnessByConstruction>100</GreatnessByConstruction>
+        <GreatnessPerDay>5</GreatnessPerDay>
+      </Level>
+      <Level>
+        <Pos>2</Pos>
+        <Cost>500</Cost>
+        <Builders>1</Builders>
+        <Income>0</Income>
+        <GreatnessByConstruction>200</GreatnessByConstruction>
+        <GreatnessPerDay>10</GreatnessPerDay>
+      </Level>
+    </Levels>
+  </Construction>
+  <Construction>
+    <ID>Throne</ID>
+    <Name>Трон</Name>
+    <Description>- Трон из чистого золота покажет всем Ваше величие!</Description>
+    <ImageIndex>155</ImageIndex>
+    <TypeConstruction>Greatness</TypeConstruction>
+    <Category>Economic</Category>
+    <Page>Guild</Page>
+    <Line>1</Line>
+    <Pos>4</Pos>
+    <DefaultLevel>0</DefaultLevel>
+    <MaxLevel>2</MaxLevel>
+    <ResearchesPerDay>1</ResearchesPerDay>
+    <SoundSelect>statue_select.wav</SoundSelect>
+    <Levels>
+      <Level>
+        <Pos>1</Pos>
+        <Cost>500</Cost>
+        <Builders>1</Builders>
+        <Income>0</Income>
+        <GreatnessByConstruction>100</GreatnessByConstruction>
+        <GreatnessPerDay>5</GreatnessPerDay>
+      </Level>
+      <Level>
+        <Pos>2</Pos>
+        <Cost>500</Cost>
+        <Builders>1</Builders>
+        <Income>0</Income>
+        <GreatnessByConstruction>200</GreatnessByConstruction>
+        <GreatnessPerDay>10</GreatnessPerDay>
+      </Level>
+    </Levels>
+  </Construction>
+  <Construction>
     <ID>TrainingHall</ID>
     <Name>Тренировочный зал</Name>
-    <Description>- Позволяет улучшать навыки героями</Description>
+    <Description>- Позволяет улучшать рукопашные навыки героями</Description>
     <ImageIndex>147</ImageIndex>
     <TypeConstruction>Military</TypeConstruction>
     <Category>Military</Category>
     <Page>Economic</Page>
     <Line>2</Line>
-    <Pos>4</Pos>
+    <Pos>1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>2</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>
@@ -1731,15 +1797,15 @@
     </Levels>
   </Construction>
   <Construction>
-    <ID>Arena</ID>
-    <Name>Арена</Name>
-    <Description>- Позволяет улучшить навыки командной работы героями</Description>
-    <ImageIndex>138</ImageIndex>
+    <ID>Prison</ID>
+    <Name>Темница</Name>
+    <Description>- Здесь содержатся пленные герои</Description>
+    <ImageIndex>152</ImageIndex>
     <TypeConstruction>Military</TypeConstruction>
     <Category>Military</Category>
     <Page>Economic</Page>
     <Line>2</Line>
-    <Pos>1</Pos>
+    <Pos>4</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>
