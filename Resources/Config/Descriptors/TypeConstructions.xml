@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Descriptors>
+  <TypeConstruction>
+    <ID>Castle</ID>
+    <Name>Замок</Name>
+  </TypeConstruction>
+  <TypeConstruction>
+    <ID>Guild</ID>
+    <Name>Гильдия</Name>
+  </TypeConstruction>
+  <TypeConstruction>
+    <ID>Manufacture</ID>
+    <Name>Производство</Name>
+  </TypeConstruction>
+  <TypeConstruction>
+    <ID>Recreation</ID>
+    <Name>Отдых</Name>
+  </TypeConstruction>
+  <TypeConstruction>
+    <ID>Military</ID>
+    <Name>Военное</Name>
+  </TypeConstruction>
+  <TypeConstruction>
+    <ID>Greatness</ID>
+    <Name>Величие</Name>
+  </TypeConstruction>
+  <TypeConstruction>
+    <ID>Lair</ID>
+    <Name>Логово</Name>
+  </TypeConstruction>
+</Descriptors>

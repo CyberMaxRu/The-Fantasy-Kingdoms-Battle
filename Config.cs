@@ -120,6 +120,13 @@ namespace Fantasy_Kingdoms_Battle
                 StartBonuses.Add(new StartBonus(n));
             }
 
+            // Загрузка конфигурации типов сооружений
+            xmlDoc = CreateXmlDocument(@"Config\Descriptors\TypeConstructions.xml");
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/TypeConstruction"))
+            {
+                TypeConstructions.Add(new DescriptorTypeConstruction(n));
+            }
+
             // Загрузка конфигурации сооружений
             xmlDoc = CreateXmlDocument(@"Config\Descriptors\Constructions.xml");
             foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/Construction"))
@@ -252,6 +259,7 @@ namespace Fantasy_Kingdoms_Battle
         internal bool AutoCreatedPlayer { get; }
 
         // Списки описателей
+        internal List<DescriptorTypeConstruction> TypeConstructions { get; } = new List<DescriptorTypeConstruction>();
         internal List<DescriptorConstruction> Constructions { get; } = new List<DescriptorConstruction>();
         internal List<DescriptorAttack> TypeAttacks { get; } = new List<DescriptorAttack>();
         internal List<DescriptorTypeAbility> TypeAbilities { get; } = new List<DescriptorTypeAbility>();
