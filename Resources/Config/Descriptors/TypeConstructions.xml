@@ -25,6 +25,10 @@
     <Name>Величие</Name>
   </TypeConstruction>
   <TypeConstruction>
+    <ID>Temple</ID>
+    <Name>Храм</Name>
+  </TypeConstruction>
+  <TypeConstruction>
     <ID>Lair</ID>
     <Name>Логово</Name>
   </TypeConstruction>
