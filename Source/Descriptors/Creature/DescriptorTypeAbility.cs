@@ -11,20 +11,15 @@ namespace Fantasy_Kingdoms_Battle
     internal enum NameTypeAbility { MeleeAttack, RangeAttack, MagicAttack, Spell, Buff, Debuff, Heal, Summon, Permanent, Aura }
 
     // Класс типа способности
-    internal sealed class DescriptorTypeAbility : Descriptor
+    internal sealed class DescriptorTypeAbility : DescriptorWithID
     {
-        public DescriptorTypeAbility(XmlNode n) : base()
+        public DescriptorTypeAbility(XmlNode n) : base(n)
         {
-            ID = XmlUtils.GetStringNotNull(n, "ID");
-            Name = XmlUtils.GetStringNotNull(n, "Name");
             ShortName = XmlUtils.GetStringNotNull(n, "ShortName");
-
             NameTypeAbility = (NameTypeAbility)Enum.Parse(typeof(NameTypeAbility), ID);
             Pos = Config.TypeAbilities.Count + 1;
         }
 
-        internal string ID { get; }
-        internal string Name { get; }
         internal string ShortName { get; }
         internal NameTypeAbility NameTypeAbility { get; }
         internal int Pos { get; }

@@ -8,21 +8,15 @@ using System.Xml;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal sealed class DescriptorTypeConstruction : Descriptor
+    internal sealed class DescriptorTypeConstruction : DescriptorWithID
     {
-        public DescriptorTypeConstruction(XmlNode n) : base()
+        public DescriptorTypeConstruction(XmlNode n) : base(n)
         {
-            ID = XmlUtils.GetStringNotNull(n, "ID");
-            Name = XmlUtils.GetStringNotNull(n, "Name");
-
             foreach (DescriptorTypeConstruction tc in Config.TypeConstructions)
             {
                 Debug.Assert(tc.ID != ID);
                 Debug.Assert(tc.Name != Name);
             }
         }
-
-        internal string ID { get; }
-        internal string Name { get; }
     }
 }

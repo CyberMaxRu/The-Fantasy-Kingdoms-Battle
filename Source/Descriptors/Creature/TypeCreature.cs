@@ -5,13 +5,10 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 namespace Fantasy_Kingdoms_Battle
 {
     // Типы существ
-    internal sealed class TypeCreature : Descriptor
+    internal sealed class TypeCreature : DescriptorWithID
     {
-        public TypeCreature(XmlNode n)
+        public TypeCreature(XmlNode n) : base(n)
         {
-            ID = GetStringNotNull(n, "ID");
-            Name = GetStringNotNull(n, "Name");
-
             // Проверяем, что таких же ID и наименования нет
             foreach (TypeCreature kc in Config.TypeCreatures)
             {
@@ -19,8 +16,5 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(kc.Name != Name);
             }
         }
-
-        internal string ID { get; }
-        internal string Name { get; }       
     }
 }
