@@ -10,11 +10,11 @@
   </TypeConstruction>
   <TypeConstruction>
     <ID>Manufacture</ID>
-    <Name>Производство</Name>
+    <Name>Торговля/производство</Name>
   </TypeConstruction>
   <TypeConstruction>
     <ID>Recreation</ID>
-    <Name>Отдых</Name>
+    <Name>Отдых/развлечение</Name>
   </TypeConstruction>
   <TypeConstruction>
     <ID>Military</ID>
