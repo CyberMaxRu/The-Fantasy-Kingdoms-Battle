@@ -440,6 +440,17 @@ namespace Fantasy_Kingdoms_Battle
             throw new Exception("Тип атаки " + ID + " не найден.");
         }
 
+        internal DescriptorTypeConstruction FindTypeConstruction(string ID)
+        {
+            foreach (DescriptorTypeConstruction tc in TypeConstructions)
+            {
+                if (tc.ID == ID)
+                    return tc;
+            }
+
+            throw new Exception($"Тип сооружения {ID} не найден.");
+        }
+
         internal DescriptorTypeAbility FindTypeAbility(string ID)
         {
             foreach (DescriptorTypeAbility ta in TypeAbilities)

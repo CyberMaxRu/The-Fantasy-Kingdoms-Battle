@@ -23,6 +23,8 @@ namespace Fantasy_Kingdoms_Battle
 
         public DescriptorConstruction(XmlNode n) : base(n)
         {
+            if (GetString(n, "TypeConstruction").Length > 0)
+                TypeConstruction = Config.FindTypeConstruction(GetString(n, "TypeConstruction"));
             Category = (CategoryConstruction)Enum.Parse(typeof(CategoryConstruction), GetStringNotNull(n, "Category"));
             IsInternalConstruction = (Category == CategoryConstruction.Guild) || (Category == CategoryConstruction.Economic) || (Category == CategoryConstruction.Temple) || (Category == CategoryConstruction.Military);
             IsOurConstruction = IsInternalConstruction || (Category == CategoryConstruction.External);
@@ -228,6 +230,7 @@ namespace Fantasy_Kingdoms_Battle
             //    throw new Exception("В конфигурации логова у " + ID + " нет информации об уровнях. ");
         }
 
+        internal DescriptorTypeConstruction TypeConstruction { get; }// Тип сооружения
         internal CategoryConstruction Category { get; }// Категория сооружения
         internal bool IsInternalConstruction { get; }// Это внутреннее сооружение
         internal bool IsOurConstruction { get; }// Это сооружение, относящееся к Королевству
