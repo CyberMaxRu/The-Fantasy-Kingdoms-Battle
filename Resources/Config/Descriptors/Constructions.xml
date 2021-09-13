@@ -758,14 +758,24 @@
         <MaxHeroes>25</MaxHeroes>
         <Requirements>
           <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Market</Construction>
-            <Level>1</Level>
+            <TypeRequirement>BuildedTypeConstruction</TypeRequirement>
+            <TypeConstruction>Guild</TypeConstruction>
+            <Quantity>1</Quantity>
           </Requirement>
           <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Smithy</Construction>
-            <Level>1</Level>
+            <TypeRequirement>BuildedTypeConstruction</TypeRequirement>
+            <TypeConstruction>Manufacture</TypeConstruction>
+            <Quantity>1</Quantity>
+          </Requirement>
+          <Requirement>
+            <TypeRequirement>BuildedTypeConstruction</TypeRequirement>
+            <TypeConstruction>Military</TypeConstruction>
+            <Quantity>1</Quantity>
+          </Requirement>
+          <Requirement>
+            <TypeRequirement>BuildedTypeConstruction</TypeRequirement>
+            <TypeConstruction>Recreation</TypeConstruction>
+            <Quantity>1</Quantity>
           </Requirement>
         </Requirements>
       </Level>
@@ -780,14 +790,24 @@
         <MaxHeroes>30</MaxHeroes>
         <Requirements>
           <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Market</Construction>
-            <Level>2</Level>
+            <TypeRequirement>BuildedTypeConstruction</TypeRequirement>
+            <TypeConstruction>Guild</TypeConstruction>
+            <Quantity>2</Quantity>
           </Requirement>
           <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Smithy</Construction>
-            <Level>2</Level>
+            <TypeRequirement>BuildedTypeConstruction</TypeRequirement>
+            <TypeConstruction>Manufacture</TypeConstruction>
+            <Quantity>2</Quantity>
+          </Requirement>
+          <Requirement>
+            <TypeRequirement>BuildedTypeConstruction</TypeRequirement>
+            <TypeConstruction>Military</TypeConstruction>
+            <Quantity>2</Quantity>
+          </Requirement>
+          <Requirement>
+            <TypeRequirement>BuildedTypeConstruction</TypeRequirement>
+            <TypeConstruction>Recreation</TypeConstruction>
+            <Quantity>2</Quantity>
           </Requirement>
         </Requirements>
       </Level>

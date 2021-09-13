@@ -22,7 +22,7 @@ namespace Fantasy_Kingdoms_Battle
                     else if (type == "DestroyedLairs")
                         list.Add(new RequirementDestroyedLairs(r));
                     else if (type == "BuildedTypeConstruction")
-                        list.Add(new RequirementConstruction(r));
+                        list.Add(new RequirementTypeConstruction(r));
                     else
                         throw new Exception($"Неизвестный тип условия: {type}.");
                 }
