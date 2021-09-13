@@ -9,42 +9,110 @@ using System.Xml;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс требования
-    internal sealed class Requirement : Descriptor
+    internal abstract class Requirement : Descriptor
     {
-        private string nameConstruction;
-
         public Requirement(XmlNode n) : base()
         {
-            nameConstruction = XmlUtils.GetStringNotNull(n, "Construction");
-            Level = XmlUtils.GetInteger(n, "Level");
-            Destroyed = XmlUtils.GetInteger(n, "Destroyed");
-
-            Debug.Assert(nameConstruction.Length > 0);
-            Debug.Assert(Level >= 0);
-            Debug.Assert(Destroyed >= 0);
         }
 
-        internal DescriptorConstruction Construction { get; private set; }
-        internal int Level { get; }
-        internal int Destroyed { get; }
+        internal abstract bool CheckRequirement(Player p);
+        internal abstract TextRequirement GetTextRequirement(Player p);
+    }
+
+    internal sealed class RequirementConstruction : Requirement
+    {
+        private DescriptorConstruction construction;
+        private string nameConstruction;
+        private int level;
+
+        public RequirementConstruction(XmlNode n) : base(n)
+        {
+            nameConstruction = XmlUtils.GetStringNotNull(n, "Construction");
+            level = XmlUtils.GetInteger(n, "Level");
+
+            Debug.Assert(nameConstruction.Length > 0);
+            Debug.Assert(level >= 0);
+        }
 
         internal override void TuneDeferredLinks()
         {
             base.TuneDeferredLinks();
 
-            Construction = Config.FindConstruction(nameConstruction);
+            construction = Config.FindConstruction(nameConstruction);
             nameConstruction = "";
 
-            if (Construction.IsOurConstruction)
-            {
-                Debug.Assert(Level <= Construction.MaxLevel, $"Требуется сооружение {Construction.ID} {Level} уровня, но у него максимум {Construction.MaxLevel} уровень.");
-                Debug.Assert(Destroyed == 0);
-            }
-            else
-            {
-                Debug.Assert(Level == 0);
-                Debug.Assert(Destroyed > 0);
-            }
+            Debug.Assert(construction.IsOurConstruction);
+            Debug.Assert(level <= construction.MaxLevel, $"Требуется сооружение {construction.ID} {level} уровня, но у него максимум {construction.MaxLevel} уровень.");
         }
+
+        internal override bool CheckRequirement(Player p) => p.GetPlayerConstruction(construction).Level >= level;
+        internal override TextRequirement GetTextRequirement(Player p)
+        {
+            return new TextRequirement(CheckRequirement(p), p.GetPlayerConstruction(construction).TypeConstruction.Name + (level > 1 ? " " + level + " уровня" : ""));
+        }
+    }
+
+    internal sealed class RequirementDestroyedLairs : Requirement
+    {
+        private DescriptorConstruction construction;
+        private string nameConstruction;
+        private int destroyed;
+
+        public RequirementDestroyedLairs(XmlNode n) : base(n)
+        {
+            nameConstruction = XmlUtils.GetStringNotNull(n, "Construction");
+            destroyed = XmlUtils.GetInteger(n, "Destroyed");
+
+            Debug.Assert(nameConstruction.Length > 0);
+            Debug.Assert(destroyed > 0);
+        }
+
+        internal override bool CheckRequirement(Player p) => p.LairsDestroyed(construction) >= destroyed;
+
+        internal override TextRequirement GetTextRequirement(Player p)
+        {
+            return new TextRequirement(CheckRequirement(p), $"Разрушить {construction.Name}: {p.LairsDestroyed(construction)}/{destroyed}");
+        }
+
+        internal override void TuneDeferredLinks()
+        {
+            base.TuneDeferredLinks();
+
+            construction = Config.FindConstruction(nameConstruction);
+            nameConstruction = "";
+
+            Debug.Assert(construction.Category == CategoryConstruction.Lair);
+        }
+    }
+
+    internal sealed class RequirementTypeConstruction : Requirement
+    {
+        private DescriptorTypeConstruction typeConstruction;
+        private string nameTypeConstruction;
+        private int quantity;
+
+        public RequirementTypeConstruction(XmlNode n) : base(n)
+        {
+            nameTypeConstruction = XmlUtils.GetStringNotNull(n, "TypeConstruction");
+            quantity = XmlUtils.GetInteger(n, "Quantity");
+
+            Debug.Assert(nameTypeConstruction.Length > 0);
+            Debug.Assert(quantity > 0);
+        }
+
+        internal override bool CheckRequirement(Player p)
+        {
+            return p.TypeConstructionBuilded(typeConstruction) >= quantity;
+        }
+
+        internal override void TuneDeferredLinks()
+        {
+            base.TuneDeferredLinks();
+
+            typeConstruction = Config.FindTypeConstruction(nameTypeConstruction);
+            nameTypeConstruction = "";
+        }
+
+        internal override TextRequirement GetTextRequirement(Player p) => new TextRequirement(CheckRequirement(p), $"{typeConstruction.Name}: {quantity} шт.");
     }
 }

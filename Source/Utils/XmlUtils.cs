@@ -13,8 +13,19 @@ namespace Fantasy_Kingdoms_Battle
 
             if (nr != null)
             {
+                string type;
                 foreach (XmlNode r in nr.SelectNodes("Requirement"))
-                    list.Add(new Requirement(r));
+                {
+                    type = GetStringNotNull(r, "TypeRequirement");
+                    if (type == "BuildedConstruction")
+                        list.Add(new RequirementConstruction(r));
+                    else if (type == "DestroyedLairs")
+                        list.Add(new RequirementDestroyedLairs(r));
+                    else if (type == "BuildedTypeConstruction")
+                        list.Add(new RequirementConstruction(r));
+                    else
+                        throw new Exception($"Неизвестный тип условия: {type}.");
+                }
             }
         }
 

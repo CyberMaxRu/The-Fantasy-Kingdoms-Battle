@@ -32,6 +32,7 @@
         <MaxHeroes>20</MaxHeroes>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Arena</Construction>
             <Level>1</Level>
           </Requirement>
@@ -54,6 +55,7 @@
         <Cost>200</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>GuildWarrior</Construction>
             <Level>2</Level>
           </Requirement>
@@ -67,6 +69,7 @@
         <Cost>500</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>GuildWarrior</Construction>
             <Level>3</Level>
           </Requirement>
@@ -80,6 +83,7 @@
         <Cost>500</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>GuildWarrior</Construction>
             <Level>3</Level>
           </Requirement>
@@ -119,6 +123,7 @@
         <MaxHeroes>20</MaxHeroes>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Menagerie</Construction>
             <Level>1</Level>
           </Requirement>
@@ -141,6 +146,7 @@
         <Cost>200</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>GuildHunter</Construction>
             <Level>2</Level>
           </Requirement>
@@ -154,6 +160,7 @@
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>GuildHunter</Construction>
             <Level>3</Level>
           </Requirement>
@@ -167,6 +174,7 @@
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>GuildHunter</Construction>
             <Level>3</Level>
           </Requirement>
@@ -206,6 +214,7 @@
         <MaxHeroes>20</MaxHeroes>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Hospital</Construction>
             <Level>1</Level>
           </Requirement>
@@ -235,6 +244,7 @@
         <Cost>200</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>GuildCleric</Construction>
             <Level>2</Level>
           </Requirement>
@@ -248,6 +258,7 @@
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>GuildCleric</Construction>
             <Level>3</Level>
           </Requirement>
@@ -261,6 +272,7 @@
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>GuildCleric</Construction>
             <Level>3</Level>
           </Requirement>
@@ -293,6 +305,7 @@
         <MaxHeroes>10</MaxHeroes>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Castle</Construction>
             <Level>2</Level>
           </Requirement>
@@ -306,10 +319,12 @@
         <MaxHeroes>20</MaxHeroes>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Castle</Construction>
             <Level>2</Level>
           </Requirement>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Library</Construction>
             <Level>1</Level>
           </Requirement>
@@ -323,6 +338,7 @@
         <MaxHeroes>30</MaxHeroes>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Castle</Construction>
             <Level>2</Level>
           </Requirement>
@@ -352,6 +368,7 @@
         <Cost>500</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>GuildMage</Construction>
             <Level>2</Level>
           </Requirement>
@@ -365,6 +382,7 @@
         <Cost>750</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>GuildMage</Construction>
             <Level>2</Level>
           </Requirement>
@@ -378,6 +396,7 @@
         <Cost>2000</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>GuildMage</Construction>
             <Level>3</Level>
           </Requirement>
@@ -410,6 +429,7 @@
         <MaxHeroes>10</MaxHeroes>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Castle</Construction>
             <Level>2</Level>
           </Requirement>
@@ -423,10 +443,12 @@
         <MaxHeroes>20</MaxHeroes>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Castle</Construction>
             <Level>2</Level>
           </Requirement>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Garden</Construction>
             <Level>1</Level>
           </Requirement>
@@ -440,10 +462,12 @@
         <MaxHeroes>30</MaxHeroes>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Castle</Construction>
             <Level>2</Level>
           </Requirement>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Garden</Construction>
             <Level>2</Level>
           </Requirement>
@@ -466,6 +490,7 @@
         <Cost>200</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>GuildElf</Construction>
             <Level>2</Level>
           </Requirement>
@@ -479,6 +504,7 @@
         <Cost>300</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>GuildElf</Construction>
             <Level>2</Level>
           </Requirement>
@@ -512,6 +538,7 @@
         <MaxHeroes>10</MaxHeroes>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Castle</Construction>
             <Level>2</Level>
           </Requirement>
@@ -526,10 +553,12 @@
         <MaxHeroes>20</MaxHeroes>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Castle</Construction>
             <Level>2</Level>
           </Requirement>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Tavern</Construction>
             <Level>1</Level>
           </Requirement>
@@ -544,10 +573,12 @@
         <MaxHeroes>30</MaxHeroes>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Castle</Construction>
             <Level>2</Level>
           </Requirement>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Tavern</Construction>
             <Level>2</Level>
           </Requirement>
@@ -577,6 +608,7 @@
         <Cost>750</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>GuildDwarf</Construction>
             <Level>2</Level>
           </Requirement>
@@ -616,6 +648,7 @@
         <MaxHeroes>20</MaxHeroes>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>TrainingHall</Construction>
             <Level>1</Level>
           </Requirement>
@@ -652,6 +685,7 @@
         <Cost>500</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>GuildRogue</Construction>
             <Level>2</Level>
           </Requirement>
@@ -665,6 +699,7 @@
         <Cost>500</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>GuildRogue</Construction>
             <Level>2</Level>
           </Requirement>
@@ -678,6 +713,7 @@
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>GuildRogue</Construction>
             <Level>3</Level>
           </Requirement>
@@ -722,10 +758,12 @@
         <MaxHeroes>25</MaxHeroes>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Market</Construction>
             <Level>1</Level>
           </Requirement>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Smithy</Construction>
             <Level>1</Level>
           </Requirement>
@@ -742,10 +780,12 @@
         <MaxHeroes>30</MaxHeroes>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Market</Construction>
             <Level>2</Level>
           </Requirement>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Smithy</Construction>
             <Level>2</Level>
           </Requirement>
@@ -773,6 +813,7 @@
         <Income>50</Income>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Castle</Construction>
             <Level>1</Level>
           </Requirement>
@@ -800,6 +841,7 @@
         <Income>250</Income>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Castle</Construction>
             <Level>1</Level>
           </Requirement>
@@ -827,6 +869,7 @@
         <Income>100</Income>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Market</Construction>
             <Level>1</Level>
           </Requirement>
@@ -863,6 +906,7 @@
         <Income>300</Income>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Castle</Construction>
             <Level>2</Level>
           </Requirement>
@@ -875,6 +919,7 @@
         <Income>525</Income>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Castle</Construction>
             <Level>3</Level>
           </Requirement>
@@ -886,7 +931,7 @@
         <PosX>1</PosX>
         <PosY>1</PosY>
         <Layer>1</Layer>
-        <Type>Research</Type>
+        <TypeRequirement>Research</TypeRequirement>
         <TypeObject>Quiver</TypeObject>
         <Cost>250</Cost>
       </CellMenu>
@@ -898,6 +943,7 @@
         <Cost>500</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Market</Construction>
             <Level>2</Level>
           </Requirement>
@@ -918,6 +964,7 @@
         <Cost>500</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Market</Construction>
             <Level>2</Level>
           </Requirement>
@@ -931,6 +978,7 @@
         <Cost>750</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Market</Construction>
             <Level>3</Level>
           </Requirement>
@@ -974,6 +1022,7 @@
         <Income>50</Income>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Castle</Construction>
             <Level>2</Level>
           </Requirement>
@@ -986,6 +1035,7 @@
         <Builders>1</Builders>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Castle</Construction>
             <Level>3</Level>
           </Requirement>
@@ -1043,6 +1093,7 @@
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Smithy</Construction>
             <Level>2</Level>
           </Requirement>
@@ -1056,6 +1107,7 @@
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Smithy</Construction>
             <Level>2</Level>
           </Requirement>
@@ -1069,6 +1121,7 @@
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Smithy</Construction>
             <Level>2</Level>
           </Requirement>
@@ -1082,6 +1135,7 @@
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Smithy</Construction>
             <Level>2</Level>
           </Requirement>
@@ -1095,6 +1149,7 @@
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Smithy</Construction>
             <Level>2</Level>
           </Requirement>
@@ -1108,6 +1163,7 @@
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Smithy</Construction>
             <Level>2</Level>
           </Requirement>
@@ -1121,6 +1177,7 @@
         <Cost>3000</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Smithy</Construction>
             <Level>3</Level>
           </Requirement>
@@ -1134,6 +1191,7 @@
         <Cost>3000</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Smithy</Construction>
             <Level>3</Level>
           </Requirement>
@@ -1147,6 +1205,7 @@
         <Cost>3000</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Smithy</Construction>
             <Level>3</Level>
           </Requirement>
@@ -1160,6 +1219,7 @@
         <Cost>3000</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Smithy</Construction>
             <Level>3</Level>
           </Requirement>
@@ -1173,6 +1233,7 @@
         <Cost>3000</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Smithy</Construction>
             <Level>3</Level>
           </Requirement>
@@ -1186,6 +1247,7 @@
         <Cost>3000</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Smithy</Construction>
             <Level>3</Level>
           </Requirement>
@@ -1199,6 +1261,7 @@
         <Cost>3500</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Smithy</Construction>
             <Level>3</Level>
           </Requirement>
@@ -1212,6 +1275,7 @@
         <Cost>3500</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Smithy</Construction>
             <Level>3</Level>
           </Requirement>
@@ -1225,6 +1289,7 @@
         <Cost>3500</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Smithy</Construction>
             <Level>3</Level>
           </Requirement>
@@ -1238,6 +1303,7 @@
         <Cost>3500</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Smithy</Construction>
             <Level>3</Level>
           </Requirement>
@@ -1251,6 +1317,7 @@
         <Cost>3500</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Smithy</Construction>
             <Level>2</Level>
           </Requirement>
@@ -1264,6 +1331,7 @@
         <Cost>3500</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Smithy</Construction>
             <Level>3</Level>
           </Requirement>
@@ -1300,6 +1368,7 @@
         <Income>0</Income>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Castle</Construction>
             <Level>2</Level>
           </Requirement>
@@ -1346,6 +1415,7 @@
         <Income>150</Income>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>GuildMage</Construction>
             <Level>1</Level>
           </Requirement>
@@ -1358,6 +1428,7 @@
         <Income>250</Income>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>MagicBazaar</Construction>
             <Level>1</Level>
           </Requirement>
@@ -1370,6 +1441,7 @@
         <Income>350</Income>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>MagicBazaar</Construction>
             <Level>2</Level>
           </Requirement>
@@ -1392,6 +1464,7 @@
         <Cost>500</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>MagicBazaar</Construction>
             <Level>2</Level>
           </Requirement>
@@ -1405,6 +1478,7 @@
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>MagicBazaar</Construction>
             <Level>3</Level>
           </Requirement>
@@ -1715,10 +1789,12 @@
         <MaxHeroes>5</MaxHeroes>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Castle</Construction>
             <Level>3</Level>
           </Requirement>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>GuildCleric</Construction>
             <Level>1</Level>
           </Requirement>
@@ -1753,10 +1829,12 @@
         <MaxHeroes>5</MaxHeroes>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Castle</Construction>
             <Level>3</Level>
           </Requirement>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>GuildCleric</Construction>
             <Level>1</Level>
           </Requirement>
@@ -1791,10 +1869,12 @@
         <MaxHeroes>5</MaxHeroes>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Castle</Construction>
             <Level>3</Level>
           </Requirement>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>GuildWarrior</Construction>
             <Level>1</Level>
           </Requirement>
@@ -1829,10 +1909,12 @@
         <MaxHeroes>5</MaxHeroes>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Castle</Construction>
             <Level>3</Level>
           </Requirement>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>GuildWarrior</Construction>
             <Level>1</Level>
           </Requirement>
@@ -1867,10 +1949,12 @@
         <MaxHeroes>5</MaxHeroes>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Castle</Construction>
             <Level>3</Level>
           </Requirement>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>GuildHunter</Construction>
             <Level>1</Level>
           </Requirement>
@@ -1905,10 +1989,12 @@
         <MaxHeroes>5</MaxHeroes>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Castle</Construction>
             <Level>3</Level>
           </Requirement>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>GuildHunter</Construction>
             <Level>1</Level>
           </Requirement>
@@ -1943,10 +2029,12 @@
         <MaxHeroes>5</MaxHeroes>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Castle</Construction>
             <Level>3</Level>
           </Requirement>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>GuildMage</Construction>
             <Level>1</Level>
           </Requirement>
@@ -1981,10 +2069,12 @@
         <MaxHeroes>5</MaxHeroes>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Castle</Construction>
             <Level>3</Level>
           </Requirement>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>GuildRogue</Construction>
             <Level>1</Level>
           </Requirement>
@@ -2019,10 +2109,12 @@
         <MaxHeroes>5</MaxHeroes>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Castle</Construction>
             <Level>3</Level>
           </Requirement>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>GuildMage</Construction>
             <Level>1</Level>
           </Requirement>
@@ -2561,6 +2653,7 @@
         <Income>0</Income>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Castle</Construction>
             <Level>2</Level>
           </Requirement>
@@ -2573,10 +2666,12 @@
         <Income>0</Income>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Castle</Construction>
             <Level>2</Level>
           </Requirement>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>GuildMage</Construction>
             <Level>2</Level>
           </Requirement>
@@ -2592,6 +2687,7 @@
         <Cost>500</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>DestroyedLairs</TypeRequirement>
             <Construction>WolfsDen</Construction>
             <Destroyed>2</Destroyed>
           </Requirement>
@@ -2605,10 +2701,12 @@
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Menagerie</Construction>
             <Level>2</Level>
           </Requirement>
           <Requirement>
+            <TypeRequirement>DestroyedLairs</TypeRequirement>
             <Construction>BearsDen</Construction>
             <Destroyed>2</Destroyed>
           </Requirement>
@@ -2622,10 +2720,12 @@
         <Cost>750</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Menagerie</Construction>
             <Level>3</Level>
           </Requirement>
           <Requirement>
+            <TypeRequirement>DestroyedLairs</TypeRequirement>
             <Construction>SerpentsNest</Construction>
             <Destroyed>2</Destroyed>
           </Requirement>
@@ -2662,6 +2762,7 @@
         <Income>0</Income>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Castle</Construction>
             <Level>2</Level>
           </Requirement>
@@ -2684,6 +2785,7 @@
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>GamblingHall</Construction>
             <Level>2</Level>
           </Requirement>

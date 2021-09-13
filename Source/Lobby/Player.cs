@@ -373,11 +373,23 @@ namespace Fantasy_Kingdoms_Battle
                 destroyedLair.Add(dc, 1);
         }
 
-        private int LairsDestroyed(DescriptorConstruction dc)
+        internal int LairsDestroyed(DescriptorConstruction dc)
         {
             Debug.Assert(!dc.IsOurConstruction);
 
             return destroyedLair.ContainsKey(dc) ? destroyedLair[dc] : 0;
+        }
+
+        internal int TypeConstructionBuilded(DescriptorTypeConstruction typeConstruction)
+        {
+            int builded = 0;
+            foreach (Construction c in Constructions)
+            {
+                if ((c.TypeConstruction.TypeConstruction == typeConstruction) && (!c.Hidden) && (c.Level > 0))
+                    builded++;
+            }
+
+            return builded;
         }
 
         internal void CalcResultTurn()
@@ -685,17 +697,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal bool CheckRequirements(List<Requirement> list)
         {
-            Construction pb;
             foreach (Requirement r in list)
             {
-                if (r.Level > 0)
-                {
-                    pb = GetPlayerConstruction(r.Construction);
-                    if (r.Level > pb.Level)
-                        return false;
-                }
-                else
-                    return LairsDestroyed(r.Construction) >= r.Destroyed;
+                if (!r.CheckRequirement(this))
+                    return false;
             }
 
             return true;
@@ -707,13 +712,7 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (Requirement r in listReq)
             {
-                if (r.Level > 0)
-                {
-                    pb = GetPlayerConstruction(r.Construction);
-                    listTextReq.Add(new TextRequirement(r.Level <= pb.Level, pb.TypeConstruction.Name + (r.Level > 1 ? " " + r.Level + " уровня" : "")));
-                }
-                else
-                    listTextReq.Add(new TextRequirement(LairsDestroyed(r.Construction) >= r.Destroyed, $"Разрушить {r.Construction.Name}: {LairsDestroyed(r.Construction)}/{r.Destroyed}"));
+                listTextReq.Add(r.GetTextRequirement(this));
             }
         }
 
