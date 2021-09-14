@@ -10,15 +10,15 @@
   </TypeConstruction>
   <TypeConstruction>
     <ID>Manufacture</ID>
-    <Name>Торговля/производство</Name>
+    <Name>Торговля и производство</Name>
   </TypeConstruction>
   <TypeConstruction>
     <ID>Recreation</ID>
-    <Name>Отдых/развлечение</Name>
+    <Name>Отдых и развлечение</Name>
   </TypeConstruction>
   <TypeConstruction>
     <ID>Military</ID>
-    <Name>Военное</Name>
+    <Name>Военное дело</Name>
   </TypeConstruction>
   <TypeConstruction>
     <ID>Greatness</ID>
