@@ -608,6 +608,10 @@ namespace Fantasy_Kingdoms_Battle
                 panelHeroInfo = new PanelHeroInfo(MainControl, Config.GridSize, panelLairWithFlags.NextTop());
                 panelHeroInfo.Width = vcRightPanel.Width - Config.GridSize;
                 panelHeroInfo.ApplyMaxSize();
+                panelHeroInfo.Width = panelHeroInfo.Width + Config.GridSize;
+                vcRightPanel.Width = Math.Max(vcRightPanel.Width, panelHeroInfo.Width);
+                panelHeroInfo.Width = vcRightPanel.Width;
+
                 panelConstructionInfo = new PanelConstructionInfo(MainControl, panelHeroInfo.ShiftX, panelHeroInfo.ShiftY);
                 panelConstructionInfo.Width = panelHeroInfo.Width;
                 panelConstructionInfo.ApplyMaxSize();
