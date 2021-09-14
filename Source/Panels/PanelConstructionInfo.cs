@@ -28,6 +28,7 @@ namespace Fantasy_Kingdoms_Battle
 
             lblTypeConstruction = new VCLabel(this, FormMain.Config.GridSize, TopForControls(), Program.formMain.fontParagraph, Color.White, 16, "");
             lblTypeConstruction.StringFormat.Alignment = StringAlignment.Near;
+            lblTypeConstruction.Hint = "Тип сооружения";
 
             lblGold = new VCLabelValue(this, FormMain.Config.GridSize, lblTypeConstruction.NextTop(), Color.White, true);
             lblGold.Width = imgIcon.Width;
