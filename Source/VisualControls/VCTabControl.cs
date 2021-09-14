@@ -99,7 +99,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             Height = lblCaptionPage.NextTop() + minHeight;
-            Width = minWidth;
+            Width = Math.Max(minWidth, leftForNextPage);
         }
 
         internal void SetPageVisible(int page, bool visible)
