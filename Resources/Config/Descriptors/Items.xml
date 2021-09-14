@@ -3001,4 +3001,12 @@
       <Hero>Dwarf</Hero>
     </Heroes>
   </Item>
+  <Item>
+    <ID>Fireworks</ID>
+    <Name>Фейерверк</Name>
+    <Description>- От красочного фейерверка у подданных целую неделю будет хорошее настроение.</Description>
+    <ImageIndex>208</ImageIndex>
+    <CategoryItem>Thing</CategoryItem>
+    <AvailableForAll>true</AvailableForAll>
+  </Item>
 </Descriptors>

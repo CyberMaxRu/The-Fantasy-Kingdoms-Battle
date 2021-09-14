@@ -57,6 +57,20 @@
 		<PersistentState>Treasurer</PersistentState>
 	</Creature>
   <Creature>
+    <ID>Executioner</ID>
+    <Name>Палач</Name>
+    <Description>Рубит головы с шеи или плеч - тут как повезет!</Description>
+    <ImageIndex>156</ImageIndex>
+    <CategoryCreature>Citizen</CategoryCreature>
+    <TypeCreature>Human</TypeCreature>
+    <Reward>0</Reward>
+    <Cost>0</Cost>
+    <Construction>Dungeon</Construction>
+    <MaxLevel>100</MaxLevel>
+    <CanBuild>False</CanBuild>
+    <PersistentState>Treasurer</PersistentState>
+  </Creature>
+  <Creature>
     <ID>Peasant</ID>
     <Name>Крестьянин</Name>
     <Description>Это просто крестьяне, Сир. Они обучены строить и чинить здания.</Description>
@@ -65,7 +79,7 @@
     <TypeCreature>Human</TypeCreature>
     <Reward>1</Reward>
     <Cost>0</Cost>
-    <Building>House</Building>
+    <Construction>PeasantHouse</Construction>
     <MaxLevel>1</MaxLevel>
   </Creature>
   <Creature>
@@ -77,7 +91,7 @@
     <TypeCreature>Human</TypeCreature>
     <Reward>25</Reward>
     <Cost>0</Cost>
-    <Building>Castle</Building>
+    <Construction>Castle</Construction>
     <MaxLevel>1</MaxLevel>
     <TypeAttackMelee>Sword</TypeAttackMelee>
     <CanBuild>False</CanBuild>
@@ -101,7 +115,7 @@
     <TypeCreature>Human</TypeCreature>
     <Reward>1</Reward>
     <Cost>0</Cost>
-    <Building>Mill</Building>
+    <Construction>Mill</Construction>
     <MaxLevel>1</MaxLevel>
     <TypeAttackMelee>Hands</TypeAttackMelee>
     <KindHero>NonCombatant</KindHero>

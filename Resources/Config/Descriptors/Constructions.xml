@@ -745,7 +745,7 @@
         <GreatnessByConstruction>0</GreatnessByConstruction>
         <GreatnessPerDay>5</GreatnessPerDay>
         <BuildersPerDay>3</BuildersPerDay>
-        <MaxHeroes>15</MaxHeroes>        
+        <MaxHeroes>15</MaxHeroes>
       </Level>
       <Level>
         <Pos>2</Pos>
@@ -1797,7 +1797,7 @@
     </Levels>
   </Construction>
   <Construction>
-    <ID>Prison</ID>
+    <ID>Dungeon</ID>
     <Name>Темница</Name>
     <Description>- Здесь содержатся пленные герои</Description>
     <ImageIndex>152</ImageIndex>
@@ -1809,6 +1809,7 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>
+    <LayersCellMenu>1</LayersCellMenu>
     <SoundSelect>arena_select.wav</SoundSelect>
     <Levels>
       <Level>
@@ -1816,8 +1817,18 @@
         <Cost>2500</Cost>
         <Builders>1</Builders>
         <Income>50</Income>
+        <MaxHeroes>1</MaxHeroes>
       </Level>
     </Levels>
+    <CellsMenu>
+      <CellMenu>
+        <PosX>1</PosX>
+        <PosY>3</PosY>
+        <Layer>1</Layer>
+        <TypeObject>Executioner</TypeObject>
+        <Cost>2500</Cost>
+      </CellMenu>
+    </CellsMenu>
   </Construction>
   <Construction>
     <ID>Garden</ID>
@@ -1832,6 +1843,7 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>2</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>
+    <LayersCellMenu>1</LayersCellMenu>
     <SoundSelect>garden_select.wav</SoundSelect>
     <Levels>
       <Level>
@@ -1847,6 +1859,15 @@
         <Income>100</Income>
       </Level>
     </Levels>
+    <CellsMenu>
+      <CellMenu>
+        <PosX>1</PosX>
+        <PosY>1</PosY>
+        <Layer>1</Layer>
+        <TypeObject>Fireworks</TypeObject>
+        <Cost>5000</Cost>
+      </CellMenu>
+    </CellsMenu>
   </Construction>
   <Construction>
     <ID>GuildDarkPriest</ID>
