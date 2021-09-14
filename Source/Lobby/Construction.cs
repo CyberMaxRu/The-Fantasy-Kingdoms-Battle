@@ -1048,17 +1048,21 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void PrepareHintForInhabitantCreatures()
         {
-            Debug.Assert(Heroes.Count > 0);
-
-            string list = "";
-            int pos = 1;
-            foreach (Hero h in Heroes)
+            if (Heroes.Count > 0)
             {
-                list += (list != "" ? Environment.NewLine : "") + $"{pos}. {h.GetNameHero()} ({h.Level})";
-                pos++;
-            }
 
-            Program.formMain.formHint.AddStep1Header(TypeConstruction.IsOurConstruction ? "Жители" : "Существа", "", list);
+                string list = "";
+                int pos = 1;
+                foreach (Hero h in Heroes)
+                {
+                    list += (list != "" ? Environment.NewLine : "") + $"{pos}. {h.GetNameHero()} ({h.Level})";
+                    pos++;
+                }
+
+                Program.formMain.formHint.AddStep1Header(TypeConstruction.IsOurConstruction ? "Жители" : "Существа", "", list);
+            }
+            else
+                Program.formMain.formHint.AddSimpleHint("Обитателей нет");
         }
 
         internal override int GetImageIndex()
