@@ -498,7 +498,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(AllHeroes.IndexOf(ph) == -1);
 
             AllHeroes.Add(ph);
-            if ((ph.TypeCreature.ID != "King") && (ph.TypeCreature.ID != "Advisor") && (ph.TypeCreature.ID != "Captain") && (ph.TypeCreature.ID != "Treasurer"))
+            if (ph.TypeCreature.CategoryCreature == CategoryCreature.Hero)
                 AddCombatHero(ph);
 
             SetTaskForHeroes();
