@@ -33,7 +33,7 @@ namespace Fantasy_Kingdoms_Battle
     
         internal Point Coord { get; }// Координаты ячейки
         internal int Layer { get; }// Визуальный слой ячейки
-        internal DescriptorSmallEntity TypeEntity { get; set; }// Тип получаемой сущности
+        internal DescriptorEntity TypeEntity { get; set; }// Тип получаемой сущности
         internal DescriptorGroupItems GroupItems { get; }// Исследуемая группа предметов
         internal DescriptorConstruction TypeConstruction { get; set; }// Строимое сооружение
         internal List<Requirement> Requirements { get; } = new List<Requirement>();
@@ -51,6 +51,9 @@ namespace Fantasy_Kingdoms_Battle
 
             if (TypeEntity is null)
                 TypeEntity = Config.FindAbility(NameTypeObject, false);
+
+            if (TypeEntity is null)
+                TypeEntity = Config.FindCreature(NameTypeObject, false);
 
             if (TypeEntity is null)
             {

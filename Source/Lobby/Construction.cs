@@ -127,6 +127,8 @@ namespace Fantasy_Kingdoms_Battle
                         Items.Add(new ConstructionProduct(da));
                     else if (research.Research.TypeEntity is DescriptorGroupItems dgi)
                         Items.Add(new ConstructionProduct(dgi));
+                    else if (research.Research.TypeEntity is DescriptorCreature dc)
+                        HireHero(dc);
                     else
                         throw new Exception("неизвестный тип");
                 }
