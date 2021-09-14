@@ -228,7 +228,7 @@ namespace Fantasy_Kingdoms_Battle
                 else
                     btnHireHero.Visible = false;
 
-                imgMapObject.Level = Construction.Level < Construction.TypeConstruction.MaxLevel ? Construction.Level : 0;
+                imgMapObject.Level = Construction.GetLevel();
 
                 if ((Construction.TypeConstruction.TrainedHero != null) && !(Construction.TypeConstruction.TrainedHero is null) && (Construction.Level > 0))
                 {
@@ -248,7 +248,7 @@ namespace Fantasy_Kingdoms_Battle
                 if (btnAction.Visible)
                 {
                     btnAction.ImageIsEnabled = true;                    
-                    btnAction.Level = (int)Construction.PriorityFlag + 1;
+                    btnAction.Level = (Construction.PriorityFlag + 1).ToString();
                     btnAction.Text = Construction.CheckFlagRequirements() ? Construction.RequiredGold().ToString() : "";
                 }
 

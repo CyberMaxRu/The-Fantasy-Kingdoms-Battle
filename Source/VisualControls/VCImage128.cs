@@ -21,7 +21,7 @@ namespace Fantasy_Kingdoms_Battle
             labelLevel = new VCLabel(this, 0, FormMain.Config.GridSizeHalf, Program.formMain.fontMedCaptionC, FormMain.Config.CommonLevel, 16, ""); ;
             labelLevel.StringFormat.Alignment = StringAlignment.Far;
             labelLevel.StringFormat.LineAlignment = StringAlignment.Near;
-            labelLevel.Width = 24;
+            labelLevel.Width = 32;
             labelLevel.ShiftX = Width - labelLevel.Width - 6;
 
             labelText = new VCLabel(this, 0, Height - 16, Program.formMain.fontSmallC, FormMain.Config.CommonCost, 16, "");
@@ -29,7 +29,7 @@ namespace Fantasy_Kingdoms_Battle
             labelText.Width = Width;
         }
 
-        internal int Level { get; set; }
+        internal string Level { get; set; } = "";
         internal string Text { get; set; } = "";
 
         internal override void ArrangeControls()
@@ -46,9 +46,9 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
-            labelLevel.Visible = Level > 0;
+            labelLevel.Visible = Level.Length > 0;
             if (labelLevel.Visible)
-                labelLevel.Text = Level.ToString();
+                labelLevel.Text = Level;
 
             labelText.Visible = Text.Length > 0;
             if (labelText.Visible)

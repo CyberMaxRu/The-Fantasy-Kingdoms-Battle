@@ -163,9 +163,9 @@ namespace Fantasy_Kingdoms_Battle
             IsLive = false;
         }
 
-        internal override int GetLevel()
+        internal override string GetLevel()
         {
-            return Level;
+            return Level.ToString();
         }
 
         internal override int GetQuantity()

@@ -68,7 +68,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override void Draw(Graphics g)
         {
             lblTypeConstruction.Text = Construction.TypeConstruction.TypeConstruction.Name;
-            imgIcon.Level = (Construction.TypeConstruction.MaxLevel > 1) && (Construction.Level > 0) ? Construction.Level : 0;
+            imgIcon.Level = Construction.GetLevel();
 
             if (Construction.TypeConstruction.HasTreasury)
             {

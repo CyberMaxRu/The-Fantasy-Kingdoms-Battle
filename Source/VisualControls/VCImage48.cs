@@ -40,12 +40,11 @@ namespace Fantasy_Kingdoms_Battle
 
         internal string Text { get; set; } = "";
         internal Color Color { get; set; } = FormMain.Config.CommonCost;
-        internal int Level { get; set; }
+        internal string Level { get; set; } = "";
         internal int Quantity { get; set; }
         internal override void Draw(Graphics g)
         {
             //Debug.Assert(Cost >= 0);
-            Debug.Assert(Level >= 0);
             Debug.Assert(Quantity >= 0);
 
             base.Draw(g);
@@ -62,7 +61,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
 
                 // Уровень
-                if (Level > 0)
+                if (Level.Length > 0)
                 {
                     labelLevel.Text = Level.ToString();
                     labelLevel.Draw(g);

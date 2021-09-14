@@ -545,11 +545,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal bool ShowMenuForPlayer() => !Hidden;
 
-        internal override int GetLevel()
-        {
-            return Level;
-        }
-
         internal override int GetQuantity()
         {
             return 0;
@@ -1075,6 +1070,11 @@ namespace Fantasy_Kingdoms_Battle
         internal override bool GetNormalImage()
         {
             return true;
+        }
+
+        internal override string GetLevel()
+        {
+            return Level == 0 ? "" : Level < TypeConstruction.MaxLevel ? $"{Level}/{TypeConstruction.MaxLevel}" : Level.ToString();
         }
 
         internal override void Click(VCCell pe)

@@ -22,7 +22,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int Pos { get; }// Позиция, под которой умение было добавлено существу. Применяется для сортировки
 
         internal override int GetImageIndex() => Descriptor.ImageIndex;
-        internal override int GetLevel() => Descriptor.MinUnitLevel;
+        internal override string GetLevel() => Descriptor.MinUnitLevel.ToString();
         internal override bool GetNormalImage() => Creature.Level >= Descriptor.MinUnitLevel;
         internal override string GetText() => Program.formMain.Settings.ShowShortNames ? Descriptor.TypeAbility.ShortName : "";
 

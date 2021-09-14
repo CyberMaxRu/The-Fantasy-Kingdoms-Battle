@@ -63,7 +63,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 ImageIndex = FormMain.IMAGE_INDEX_NONE;
                 ImageIsEnabled = false;
-                Level = 0;
+                Level = "";
                 Quantity = 0;
                 Text = "";
             }
