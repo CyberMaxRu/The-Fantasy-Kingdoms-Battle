@@ -190,6 +190,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             ExistHint = false;
             lblName.Visible = false;
+            lblName.Text = "";
             lblHeader.Text = "";
             lblHeader.ShiftX = FormMain.Config.GridSize;
             imgCell.Visible = false;
@@ -255,17 +256,33 @@ namespace Fantasy_Kingdoms_Battle
         internal void AddStep1Header(string header, string action, string description, int imageIndex = -1, bool bigImage = true)
         {
             Debug.Assert(lblHeader.Text == "");
-            Debug.Assert(header != null);
-            Debug.Assert(header.Length > 0);
+            if (header.Length == 0)
+            {
+                Debug.Assert(lblName.Visible);
+            }              
 
             Width = 256;
             ExistHint = true;
-            lblHeader.Color = Color.Yellow;
-            lblHeader.ShiftY = nextTop;
-            lblHeader.Width = widthControl;
-            lblHeader.Text = header;
-            lblHeader.Height = lblHeader.MinHeigth();
-            nextTop = lblHeader.NextTop();
+
+            if (header.Length > 0)
+            {
+                lblHeader.Color = Color.Yellow;
+                lblHeader.ShiftY = nextTop;
+                lblHeader.Width = widthControl;
+                lblHeader.Text = header;
+                lblHeader.Height = lblHeader.MinHeigth();
+                nextTop = lblHeader.NextTop();
+            }
+
+            if (action.Length > 0)
+            {
+                lblAction.ShiftY = nextTop;
+                lblAction.Text = action;
+                lblAction.Height = lblAction.MinHeigth();
+                lblAction.Visible = true;
+
+                nextTop = lblAction.NextTop();
+            }
 
             if (imageIndex != -1)
             {
@@ -285,16 +302,6 @@ namespace Fantasy_Kingdoms_Battle
                     lblHeader.ShiftX = imgCell.NextLeft();
                     nextTop = Math.Max(lblHeader.NextTop(), imgCell.NextTop());
                 }
-            }
-
-            if (action.Length > 0)
-            { 
-                lblAction.ShiftY = nextTop;
-                lblAction.Text = action;
-                lblAction.Height = lblAction.MinHeigth();
-                lblAction.Visible = true;
-
-                nextTop = lblAction.NextTop();
             }
 
             if (description.Length > 0)
@@ -525,7 +532,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(c.Visible);
             Debug.Assert(c.Width > 8);
             Debug.Assert(c.Height > 8);
-            Debug.Assert(lblHeader.Text.Length > 0);
+            Debug.Assert((lblName.Text.Length > 0) || (lblHeader.Text.Length > 0));
 
             Height = nextTop;
 

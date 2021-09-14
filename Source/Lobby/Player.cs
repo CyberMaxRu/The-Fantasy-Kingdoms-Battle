@@ -723,8 +723,9 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PrepareHint()
         {
+            Program.formMain.formHint.AddStep0Name(GetName());
             Program.formMain.formHint.AddStep1Header(
-                Descriptor.Name, $"{PositionInLobby} место",
+                "", $"{PositionInLobby} место",
                 "Уровень Замка: " + LevelCastle.ToString() + Environment.NewLine
                     + "Героев: " + QuantityHeroes.ToString() + Environment.NewLine
                     + " " + Environment.NewLine
