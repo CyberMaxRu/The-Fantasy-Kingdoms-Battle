@@ -407,7 +407,9 @@ namespace Fantasy_Kingdoms_Battle
 
                 if (TypeConstruction.IsOurConstruction)
                 {
-                    Program.formMain.formHint.AddStep1Header(TypeConstruction.Name, Level > 0 ? "Уровень " + Level.ToString() : "", TypeConstruction.Description + ((Level > 0) && (TypeConstruction.TrainedHero != null) ? Environment.NewLine + Environment.NewLine
+                    Program.formMain.formHint.AddStep1Header(TypeConstruction.Name, 
+                        Level > 0 ? "Уровень " + Level.ToString() + Environment.NewLine : "" + TypeConstruction.TypeConstruction.Name,
+                        TypeConstruction.Description + ((Level > 0) && (TypeConstruction.TrainedHero != null) ? Environment.NewLine + Environment.NewLine
                         + (!(TypeConstruction.TrainedHero is null) ? "Героев: " + Heroes.Count.ToString() + "/" + MaxHeroes().ToString() : "") : ""));
                     Program.formMain.formHint.AddStep2Income(Income());
                     Program.formMain.formHint.AddStep3Greatness(0, GreatnessPerDay());
@@ -419,7 +421,7 @@ namespace Fantasy_Kingdoms_Battle
                         Program.formMain.formHint.AddStep1Header("Неизвестное место", "Место не разведано", "Установите флаг разведки для отправки героев к месту");
                     else
                     {
-                        Program.formMain.formHint.AddStep1Header(TypeConstruction.Name, "", TypeConstruction.Description);
+                        Program.formMain.formHint.AddStep1Header(TypeConstruction.Name, TypeConstruction.TypeConstruction.Name, TypeConstruction.Description);
                         if (TypeConstruction.Reward != null)
                         {
                             Program.formMain.formHint.AddStep2Reward(TypeConstruction.Reward.Gold);
@@ -1021,7 +1023,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (Level < TypeConstruction.MaxLevel)
             {
-                Program.formMain.formHint.AddStep1Header(TypeConstruction.Name, Level == 0 ? "Уровень 1" : (CanLevelUp() == true) ? $"Улучшить строение ({Level + 1} ур.)" : "", Level == 0 ? TypeConstruction.Description : "");
+                Program.formMain.formHint.AddStep1Header(TypeConstruction.Name, Level == 0 ? "Уровень 1" + Environment.NewLine + TypeConstruction.TypeConstruction.Name : (CanLevelUp() == true) ? $"Улучшить строение ({Level + 1} ур.)" + Environment.NewLine : "" + TypeConstruction.TypeConstruction.Name, Level == 0 ? TypeConstruction.Description : "");
                 Program.formMain.formHint.AddStep2Income(IncomeNextLevel());
                 Program.formMain.formHint.AddStep3Greatness(GreatnessAddNextLevel(), GreatnessPerDayNextLevel());
                 Program.formMain.formHint.AddStep35PlusBuilders(BuildersPerDayNextLevel());
