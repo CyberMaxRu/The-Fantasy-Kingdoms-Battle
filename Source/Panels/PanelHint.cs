@@ -274,6 +274,16 @@ namespace Fantasy_Kingdoms_Battle
                 nextTop = lblHeader.NextTop();
             }
 
+            if ((imageIndex != -1) && !bigImage)
+            {
+                imgCell.ShiftY = lblHeader.ShiftY;
+                imgCell.ImageIndex = imageIndex;
+                imgCell.Visible = true;
+
+                lblHeader.ShiftX = imgCell.NextLeft();
+                nextTop = Math.Max(lblHeader.NextTop(), imgCell.NextTop());
+            }
+
             if (action.Length > 0)
             {
                 lblAction.ShiftY = nextTop;
@@ -284,24 +294,12 @@ namespace Fantasy_Kingdoms_Battle
                 nextTop = lblAction.NextTop();
             }
 
-            if (imageIndex != -1)
+            if ((imageIndex != -1) && bigImage)
             {
-                if (bigImage)
-                {
-                    img128.ShiftY = nextTop;
-                    img128.ImageIndex = imageIndex;
-                    img128.Visible = true;
-                    nextTop = img128.NextTop();
-                }
-                else
-                {
-                    imgCell.ShiftY = lblHeader.ShiftY;
-                    imgCell.ImageIndex = imageIndex;
-                    imgCell.Visible = true;
-
-                    lblHeader.ShiftX = imgCell.NextLeft();
-                    nextTop = Math.Max(lblHeader.NextTop(), imgCell.NextTop());
-                }
+                img128.ShiftY = nextTop;
+                img128.ImageIndex = imageIndex;
+                img128.Visible = true;
+                nextTop = img128.NextTop();
             }
 
             if (description.Length > 0)
