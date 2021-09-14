@@ -84,7 +84,6 @@ namespace Fantasy_Kingdoms_Battle
         internal List<Hero> Heroes { get; } = new List<Hero>();
         internal int ResearchesAvailabled { get; private set; }// Сколько еще исследований доступно на этом ходу
         internal List<ConstructionProduct> Items { get; } = new List<ConstructionProduct>();// Товары, доступные в строении
-        internal List<Item> Warehouse { get; } = new List<Item>();// Склад здания
         internal Player Player { get; }
         internal List<PlayerCellMenu> Researches { get; } = new List<PlayerCellMenu>();
 

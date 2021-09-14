@@ -15,16 +15,16 @@ namespace Fantasy_Kingdoms_Battle
         private VCLabelValue lblGold;
         private readonly PanelWithPanelEntity panelProducts;
         private readonly PanelWithPanelEntity panelInhabitants;
-        private readonly PanelWithPanelEntity panelWarehouse;
+        private readonly PanelWithPanelEntity panelVisitors;
         private readonly VCTabButton btnProducts;
         private readonly VCTabButton btnInhabitants;
-        private readonly VCTabButton btnWarehouse;
+        private readonly VCTabButton btnVisitors;
 
         public PanelConstructionInfo(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
             panelProducts = new PanelWithPanelEntity(4);
             panelInhabitants = new PanelWithPanelEntity(4);
-            panelWarehouse = new PanelWithPanelEntity(4);
+            panelVisitors = new PanelWithPanelEntity(4);
 
             lblTypeConstruction = new VCLabel(this, FormMain.Config.GridSize, TopForControls(), Program.formMain.fontParagraph, Color.White, 16, "");
             lblTypeConstruction.StringFormat.Alignment = StringAlignment.Near;
@@ -40,8 +40,8 @@ namespace Fantasy_Kingdoms_Battle
             separator.ShiftY = lblGold.NextTop();
             pageControl.ShiftY = separator.NextTop();
             btnProducts = pageControl.AddTab("Товары", FormMain.Config.Gui48_Goods, panelProducts);
-            btnWarehouse = pageControl.AddTab("Склад", FormMain.Config.Gui48_Inventory, panelWarehouse);
             btnInhabitants = pageControl.AddTab("Жители", FormMain.Config.Gui48_Home, panelInhabitants);
+            btnVisitors = pageControl.AddTab("Посетители", FormMain.Config.Gui48_Exit, panelVisitors);
             pageControl.AddTab("История", FormMain.Config.Gui48_Book, null);
 
             pageControl.ApplyMinSize();
@@ -84,11 +84,9 @@ namespace Fantasy_Kingdoms_Battle
             //pageControl.SetPageVisible(2, Construction.TypeConstruction.TrainedHero != null);
 
             panelProducts.ApplyList(Construction.Items);
-            panelWarehouse.ApplyList(Construction.Warehouse);
             panelInhabitants.ApplyList(Construction.Heroes);
 
             btnProducts.Quantity = Construction.Items.Count;
-            btnWarehouse.Quantity = Construction.Warehouse.Count;
             btnInhabitants.Quantity = Construction.Heroes.Count;
 
             base.Draw(g); 
