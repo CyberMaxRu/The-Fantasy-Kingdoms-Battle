@@ -532,7 +532,7 @@ namespace Fantasy_Kingdoms_Battle
             throw new Exception("Вторичный навык " + ID + " не найден.");
         }
 
-        internal DescriptorCreature FindCreature(string ID)
+        internal DescriptorCreature FindCreature(string ID, bool mustBeExists = true)
         {
             foreach (DescriptorCreature tc in Creatures)
             {
@@ -540,7 +540,10 @@ namespace Fantasy_Kingdoms_Battle
                     return tc;
             }
 
-            throw new Exception("Существо " + ID + " не найден.");
+            if (mustBeExists)
+                throw new Exception("Существо " + ID + " не найден.");
+
+            return null;
         }
 
         private void LoadConfigGame(XmlDocument xmlDoc)
