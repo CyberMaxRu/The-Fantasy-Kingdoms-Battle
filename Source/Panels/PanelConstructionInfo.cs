@@ -11,6 +11,7 @@ namespace Fantasy_Kingdoms_Battle
     // Класс подробной информации о сооружении
     internal sealed class PanelConstructionInfo : PanelBaseInfo
     {
+        private VCLabel lblTypeConstruction;
         private VCLabelValue lblGold;
         private readonly PanelWithPanelEntity panelProducts;
         private readonly PanelWithPanelEntity panelInhabitants;
@@ -25,7 +26,10 @@ namespace Fantasy_Kingdoms_Battle
             panelInhabitants = new PanelWithPanelEntity(4);
             panelWarehouse = new PanelWithPanelEntity(4);
 
-            lblGold = new VCLabelValue(this, FormMain.Config.GridSize, TopForControls(), Color.White, true);
+            lblTypeConstruction = new VCLabel(this, FormMain.Config.GridSize, TopForControls(), Program.formMain.fontParagraph, Color.White, 16, "");
+            lblTypeConstruction.StringFormat.Alignment = StringAlignment.Near;
+
+            lblGold = new VCLabelValue(this, FormMain.Config.GridSize, lblTypeConstruction.NextTop(), Color.White, true);
             lblGold.Width = imgIcon.Width;
             lblGold.StringFormat.Alignment = StringAlignment.Far;                 
             lblGold.BitmapList = Program.formMain.ilGui16;
@@ -41,6 +45,7 @@ namespace Fantasy_Kingdoms_Battle
 
             pageControl.ApplyMinSize();
             Width = pageControl.Width + FormMain.Config.GridSize * 2;
+            lblTypeConstruction.Width = Width - lblTypeConstruction.ShiftX * 2;
         }
 
         private void LblGold_ShowHint(object sender, EventArgs e)
@@ -61,6 +66,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
+            lblTypeConstruction.Text = Construction.TypeConstruction.TypeConstruction.Name;
             imgIcon.Level = (Construction.TypeConstruction.MaxLevel > 1) && (Construction.Level > 0) ? Construction.Level : 0;
 
             if (Construction.TypeConstruction.HasTreasury)
