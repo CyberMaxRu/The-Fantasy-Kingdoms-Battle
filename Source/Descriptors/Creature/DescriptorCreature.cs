@@ -40,11 +40,17 @@ namespace Fantasy_Kingdoms_Battle
                 PersistentStateHeroAtMap = FormMain.Config.FindStateCreature(XmlUtils.GetStringNotNull(n, "PersistentState"));
             else
                 PersistentStateHeroAtMap = FormMain.Config.FindStateCreature(NameStateCreature.Nothing.ToString());
+
+            if ((CategoryCreature == CategoryCreature.Citizen) || (CategoryCreature == CategoryCreature.Hero))
+            { 
+                Construction = FormMain.Config.FindConstruction(n.SelectSingleNode("Construction").InnerText);
+                Construction.TrainedHero = this;
+
+            }
+
             if (CategoryCreature == CategoryCreature.Hero)
             {
                 Cost = Convert.ToInt32(n.SelectSingleNode("Cost").InnerText);
-                Construction = FormMain.Config.FindConstruction(n.SelectSingleNode("Construction").InnerText);
-                Construction.TrainedHero = this;
                 CanBuild = Convert.ToBoolean(n.SelectSingleNode("CanBuild").InnerText);
                 PrefixName = XmlUtils.GetString(n, "PrefixName");
                 nameFromTypeHero = XmlUtils.GetString(n, "NameFromTypeHero");
