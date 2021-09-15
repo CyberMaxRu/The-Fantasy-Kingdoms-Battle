@@ -12,8 +12,11 @@ namespace Fantasy_Kingdoms_Battle
     {
         public DescriptorConstructionEvent(XmlNode n) : base(n)
         {
+            Duration = XmlUtils.GetIntegerNotNull(n, "Duration");
             Cooldown = XmlUtils.GetIntegerNotNull(n, "Cooldown");
 
+            Debug.Assert(Duration >= 1);
+            Debug.Assert(Duration < 10);
             Debug.Assert(Cooldown >= 1);
             Debug.Assert(Cooldown <= 100);
 
@@ -26,6 +29,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal int Cooldown { get; }
+        internal int Duration { get; }// Длительность (в днях)
+        internal int Cooldown { get; }// Пауза до возможности снова использовать (в днях)
     }
 }
