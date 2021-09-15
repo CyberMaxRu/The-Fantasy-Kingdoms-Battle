@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Descriptors>
+  <ConstructionEvent>
+    <ID>SmallFireworks</ID>
+    <Name>Малый фейерверк</Name>
+    <Description>Устроить маленький фейерверк</Description>
+    <ImageIndex>157</ImageIndex>
+    <Cooldown>3</Cooldown>
+  </ConstructionEvent>
+  <ConstructionEvent>
+    <ID>BigFireworks</ID>
+    <Name>Большой фейерверк</Name>
+    <Description>Устроить большой фейерверк</Description>
+    <ImageIndex>158</ImageIndex>
+    <Cooldown>7</Cooldown>
+  </ConstructionEvent>
+  <ConstructionEvent>
+    <ID>Feast</ID>
+    <Name>Пир</Name>
+    <Description>Устроить пир</Description>
+    <ImageIndex>155</ImageIndex>
+    <Cooldown>7</Cooldown>
+  </ConstructionEvent>
+</Descriptors>

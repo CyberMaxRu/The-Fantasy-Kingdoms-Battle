@@ -127,6 +127,13 @@ namespace Fantasy_Kingdoms_Battle
                 TypeConstructions.Add(new DescriptorTypeConstruction(n));
             }
 
+            // Загрузка конфигурации событий в сооружениях
+            xmlDoc = CreateXmlDocument(@"Config\Descriptors\ConstructionEvents.xml");
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/ConstructionEvent"))
+            {
+                ConstructionsEvents.Add(new DescriptorConstructionEvent(n));
+            }
+
             // Загрузка конфигурации сооружений
             xmlDoc = CreateXmlDocument(@"Config\Descriptors\Constructions.xml");
             foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/Construction"))
@@ -260,6 +267,7 @@ namespace Fantasy_Kingdoms_Battle
 
         // Списки описателей
         internal List<DescriptorTypeConstruction> TypeConstructions { get; } = new List<DescriptorTypeConstruction>();
+        internal List<DescriptorConstructionEvent> ConstructionsEvents { get; } = new List<DescriptorConstructionEvent>();
         internal List<DescriptorConstruction> Constructions { get; } = new List<DescriptorConstruction>();
         internal List<DescriptorAttack> TypeAttacks { get; } = new List<DescriptorAttack>();
         internal List<DescriptorTypeAbility> TypeAbilities { get; } = new List<DescriptorTypeAbility>();
