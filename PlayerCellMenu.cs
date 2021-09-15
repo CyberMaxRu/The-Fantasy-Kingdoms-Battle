@@ -10,7 +10,7 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class PlayerCellMenu
     {
-        public PlayerCellMenu(Construction c, TypeCellMenu r)
+        public PlayerCellMenu(Construction c, DescriptorCellMenu r)
         {
             Player = c.Player;
             ObjectOfMap = c;
@@ -31,7 +31,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal Player Player { get; }
         internal Construction ObjectOfMap { get; }
-        internal TypeCellMenu Research { get; }
+        internal DescriptorCellMenu Research { get; }
         internal Construction ConstructionForBuild;
 
         internal int Cost()

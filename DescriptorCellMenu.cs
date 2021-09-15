@@ -12,9 +12,9 @@ using System.Windows.Forms;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс исследования
-    internal sealed class TypeCellMenu : Descriptor
+    internal sealed class DescriptorCellMenu : Descriptor
     {
-        public TypeCellMenu(XmlNode n) : base()
+        public DescriptorCellMenu(XmlNode n) : base()
         {
             Coord = new Point(XmlUtils.GetIntegerNotNull(n, "PosX") - 1, XmlUtils.GetIntegerNotNull(n, "PosY") - 1);
             Layer = XmlUtils.GetIntegerNotNull(n, "Layer") - 1;
@@ -78,4 +78,6 @@ namespace Fantasy_Kingdoms_Battle
             NameTypeObject = "";
         }
     }
+
+    //internal class 
 }
