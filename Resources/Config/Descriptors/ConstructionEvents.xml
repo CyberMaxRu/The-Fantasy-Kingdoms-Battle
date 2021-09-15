@@ -7,6 +7,11 @@
     <ImageIndex>157</ImageIndex>
     <Duration>1</Duration>
     <Cooldown>3</Cooldown>
+    <Heroes>
+      <Hero>Warrior</Hero>
+      <Hero>Hunter</Hero>
+      <Hero>Cleric</Hero>
+    </Heroes>
   </ConstructionEvent>
   <ConstructionEvent>
     <ID>BigFireworks</ID>
@@ -15,6 +20,11 @@
     <ImageIndex>158</ImageIndex>
     <Duration>1</Duration>
     <Cooldown>7</Cooldown>
+    <Heroes>
+      <Hero>Warrior</Hero>
+      <Hero>Hunter</Hero>
+      <Hero>Cleric</Hero>
+    </Heroes>
   </ConstructionEvent>
   <ConstructionEvent>
     <ID>Feast</ID>
@@ -23,6 +33,11 @@
     <ImageIndex>155</ImageIndex>
     <Duration>1</Duration>
     <Cooldown>7</Cooldown>
+    <Heroes>
+      <Hero>Warrior</Hero>
+      <Hero>Hunter</Hero>
+      <Hero>Dwarf</Hero>
+    </Heroes>
   </ConstructionEvent>
   <ConstructionEvent>
     <ID>Fair</ID>
@@ -31,5 +46,11 @@
     <ImageIndex>154</ImageIndex>
     <Duration>3</Duration>
     <Cooldown>10</Cooldown>
+    <Heroes>
+      <Hero>Warrior</Hero>
+      <Hero>Hunter</Hero>
+      <Hero>Dwarf</Hero>
+      <Hero>Elf</Hero>
+    </Heroes>
   </ConstructionEvent>
 </Descriptors>
