@@ -243,8 +243,14 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorCreature tc in Creatures)
                 tc.TuneDeferredLinks();
 
-            foreach (DescriptorConstruction tc in Constructions)
+            foreach (DescriptorTypeConstruction tc in TypeConstructions)
                 tc.TuneDeferredLinks();
+
+            foreach (DescriptorConstructionEvent ce in ConstructionsEvents)
+                ce.TuneDeferredLinks();
+
+            foreach (DescriptorConstruction c in Constructions)
+                c.TuneDeferredLinks();
 
             foreach (TypeLobby tl in TypeLobbies)
                 tl.TuneDeferredLinks();
