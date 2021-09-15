@@ -3004,8 +3004,16 @@
   <Item>
     <ID>Fireworks</ID>
     <Name>Фейерверк</Name>
-    <Description>- От красочного фейерверка у подданных целую неделю будет хорошее настроение.</Description>
+    <Description>- Посмотреть на фейерверк.</Description>
     <ImageIndex>208</ImageIndex>
+    <CategoryItem>Thing</CategoryItem>
+    <AvailableForAll>true</AvailableForAll>
+  </Item>
+  <Item>
+    <ID>Feast</ID>
+    <Name>Пир</Name>
+    <Description>- Участие в пире.</Description>
+    <ImageIndex>206</ImageIndex>
     <CategoryItem>Thing</CategoryItem>
     <AvailableForAll>true</AvailableForAll>
   </Item>

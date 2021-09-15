@@ -12,11 +12,14 @@
       <Hero>Hunter</Hero>
       <Hero>Cleric</Hero>
     </Heroes>
+    <Items>
+      <Item>Fireworks</Item>
+    </Items>
   </ConstructionEvent>
   <ConstructionEvent>
     <ID>BigFireworks</ID>
     <Name>Большой фейерверк</Name>
-    <Description>Устроить большой фейерверк</Description>
+    <Description>- Устроить большой фейерверк//- От красочного фейерверка у подданных целую неделю будет хорошее настроение</Description>
     <ImageIndex>158</ImageIndex>
     <Duration>1</Duration>
     <Cooldown>7</Cooldown>
@@ -25,6 +28,9 @@
       <Hero>Hunter</Hero>
       <Hero>Cleric</Hero>
     </Heroes>
+    <Items>
+      <Item>Fireworks</Item>
+    </Items>
   </ConstructionEvent>
   <ConstructionEvent>
     <ID>Feast</ID>
@@ -38,6 +44,9 @@
       <Hero>Hunter</Hero>
       <Hero>Dwarf</Hero>
     </Heroes>
+    <Items>
+      <Item>Feast</Item>
+    </Items>
   </ConstructionEvent>
   <ConstructionEvent>
     <ID>Fair</ID>
@@ -52,5 +61,8 @@
       <Hero>Dwarf</Hero>
       <Hero>Elf</Hero>
     </Heroes>
+    <Items>
+      <Item>Feast</Item>
+    </Items>
   </ConstructionEvent>
 </Descriptors>
