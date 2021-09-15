@@ -9,7 +9,7 @@ using System.Xml;
 namespace Fantasy_Kingdoms_Battle
 {
     // Типы перков существ
-    internal sealed class DescriptorPerk : DescriptorEntity
+    internal sealed class DescriptorPerk : DescriptorSmallEntity
     {
         public DescriptorPerk(XmlNode n) : base(n)
         {
