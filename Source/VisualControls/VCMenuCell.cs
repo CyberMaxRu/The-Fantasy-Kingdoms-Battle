@@ -11,14 +11,14 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class VCMenuCell : VCImage48
     {
 
-        private PlayerCellMenu research;
+        private ConstructionCellMenu research;
 
         public VCMenuCell(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY, -1)
         {
         }
 
         internal bool Used { get; set; }
-        internal PlayerCellMenu Research
+        internal ConstructionCellMenu Research
         {
             get { return research; }
             set
@@ -26,7 +26,7 @@ namespace Fantasy_Kingdoms_Battle
                 research = value;
                 Visible = research != null;
                 if (Visible)
-                    Text = research.Cost().ToString();
+                    Text = research.GetCost().ToString();
             }
         }
 
@@ -38,7 +38,7 @@ namespace Fantasy_Kingdoms_Battle
             if (research.CheckRequirements())
             {
                 Program.formMain.PlayPushButton();
-                research.DoResearch();
+                research.Execute();
             }
         }
 
@@ -57,21 +57,21 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
-            if ((research != null) && (research.Research.TypeEntity != null))
+            if (research != null)
             {
-                Text = research.Cost().ToString();
-                ImageIndex = research.Research.TypeEntity.ImageIndex;
+                Text = research.GetCost().ToString();
+                ImageIndex = research.GetImageIndex();
                 ImageIsEnabled = research.CheckRequirements();
 
                 // Накладываем фильтр
                 //if (!research.CheckRequirements())
                 //    ImageFilter = ImageFilter.Disabled;
             }
-            else if ((research != null) && (research.Research.TypeConstruction != null))
+            else if ((research != null) && (research.Research.Construction != null))
             {
                 if (research.ConstructionForBuild != null)
                 {
-                    Construction pc = research.ObjectOfMap.Player.GetPlayerConstruction(research.Research.TypeConstruction);
+                    Construction pc = research.ObjectOfMap.Player.GetPlayerConstruction(research.Research.Construction);
                     Debug.Assert(!(pc is null));
                     Text = pc.CostBuyOrUpgrade().ToString();
                     ImageIndex = pc.TypeConstruction.ImageIndex;
@@ -79,9 +79,9 @@ namespace Fantasy_Kingdoms_Battle
                 }
                 else
                 {
-                    Text = research.Research.TypeConstruction.Levels[1].Cost.ToString();
-                    ImageIndex = research.Research.TypeConstruction.ImageIndex;
-                    ImageIsEnabled = research.Player.CanBuildTypeConstruction(research.Research.TypeConstruction);
+                    Text = research.Research.Construction.Levels[1].Cost.ToString();
+                    ImageIndex = research.Research.Construction.ImageIndex;
+                    ImageIsEnabled = research.Player.CanBuildTypeConstruction(research.Research.Construction);
                 }
                 // Накладываем фильтр
                 //if (!research.CheckRequirements())

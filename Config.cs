@@ -28,6 +28,7 @@ namespace Fantasy_Kingdoms_Battle
 
             // Загружаем конфигурацию игры
             Descriptor.Config = this;
+            ConstructionCellMenu.Config = this;
 
             xmlDoc = CreateXmlDocument("Config\\Game.xml");
             LoadConfigGame(xmlDoc);
@@ -414,6 +415,17 @@ namespace Fantasy_Kingdoms_Battle
         internal Pen PenSelectedBorder { get; private set; }
 
         //
+        internal DescriptorConstructionEvent FindConstructionEvent(string ID)
+        {
+            foreach (DescriptorConstructionEvent dce in ConstructionsEvents)
+            {
+                if (dce.ID == ID)
+                    return dce;
+            }
+
+            throw new Exception("Событие сооружения " + ID + " не найдено.");
+        }
+
         internal DescriptorConstruction FindConstruction(string ID, bool mustBeExists = true)
         {
             foreach (DescriptorConstruction dc in Constructions)
@@ -426,7 +438,6 @@ namespace Fantasy_Kingdoms_Battle
 
             return null;
         }
-
         internal DescriptorItem FindItem(string ID, bool mustBeExists = true)
         {
             foreach (DescriptorItem i in Items)

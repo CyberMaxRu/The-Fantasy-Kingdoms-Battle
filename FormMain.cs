@@ -1504,16 +1504,16 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     pb.ValidateResearches();
 
-                    foreach (PlayerCellMenu pr in pb.Researches)
+                    foreach (ConstructionCellMenu pr in pb.Researches)
                     {
-                        if (!CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Used)
+                        if (!CellsMenu[pr.Descriptor.Coord.Y, pr.Descriptor.Coord.X].Used)
                         {
-                            CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research = pr;
-                            CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Used = true;
+                            CellsMenu[pr.Descriptor.Coord.Y, pr.Descriptor.Coord.X].Research = pr;
+                            CellsMenu[pr.Descriptor.Coord.Y, pr.Descriptor.Coord.X].Used = true;
                         }
-                        else if ((CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research.Research.Layer > pr.Research.Layer)
-                            && (CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research.ObjectOfMap == pr.ObjectOfMap))
-                            CellsMenu[pr.Research.Coord.Y, pr.Research.Coord.X].Research = pr;
+                        else if ((CellsMenu[pr.Descriptor.Coord.Y, pr.Descriptor.Coord.X].Research.Descriptor.Layer > pr.Descriptor.Layer)
+                            && (CellsMenu[pr.Descriptor.Coord.Y, pr.Descriptor.Coord.X].Research.Construction == pr.Construction))
+                            CellsMenu[pr.Descriptor.Coord.Y, pr.Descriptor.Coord.X].Research = pr;
                     }
                 }
             }

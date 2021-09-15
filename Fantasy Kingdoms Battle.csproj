@@ -171,7 +171,7 @@
     <Compile Include="Source\Panels\PanelWithPanelEntity.cs" />
     <Compile Include="Source\Lobby\Item.cs" />
     <Compile Include="Source\VisualControls\VCCell.cs" />
-    <Compile Include="PlayerCellMenu.cs" />
+    <Compile Include="ConstructionCellMenu.cs" />
     <Compile Include="Source\Lobby\Requirement.cs" />
     <Compile Include="DescriptorCellMenu.cs" />
     <Compile Include="Settings.cs" />

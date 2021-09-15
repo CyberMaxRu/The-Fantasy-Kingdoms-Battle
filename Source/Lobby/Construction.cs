@@ -25,7 +25,7 @@ namespace Fantasy_Kingdoms_Battle
                     for (int y = 0; y < TypeConstruction.Researches.GetLength(1); y++)
                         for (int x = 0; x < TypeConstruction.Researches.GetLength(2); x++)
                             if (TypeConstruction.Researches[z, y, x] != null)                       
-                                Researches.Add(new PlayerCellMenu(this, TypeConstruction.Researches[z, y, x]));
+                                Researches.Add(ConstructionCellMenu.Create(this, TypeConstruction.Researches[z, y, x]));
             }
 
             Hidden = !TypeConstruction.IsInternalConstruction || (Layer > 0);
@@ -67,7 +67,7 @@ namespace Fantasy_Kingdoms_Battle
                     for (int y1 = 0; y1 < TypeConstruction.Researches.GetLength(1); y1++)
                         for (int x1 = 0; x1 < TypeConstruction.Researches.GetLength(2); x1++)
                             if (TypeConstruction.Researches[z, y1, x1] != null)
-                                Researches.Add(new PlayerCellMenu(this, TypeConstruction.Researches[z, y1, x1]));
+                                Researches.Add(ConstructionCellMenu.Create(this, TypeConstruction.Researches[z, y1, x1]));
             }
 
             // Убрать эту проверку после настройки всех логов
@@ -82,15 +82,15 @@ namespace Fantasy_Kingdoms_Battle
         internal bool BuildedOrUpgraded { get; private set; }
         internal int Gold { get => gold; set { Debug.Assert(TypeConstruction.HasTreasury); gold = value; } }
         internal List<Hero> Heroes { get; } = new List<Hero>();
-        internal int ResearchesAvailabled { get; private set; }// Сколько еще исследований доступно на этом ходу
+        internal int ResearchesAvailabled { get; set; }// Сколько еще исследований доступно на этом ходу
         internal List<ConstructionProduct> Items { get; } = new List<ConstructionProduct>();// Товары, доступные в строении
         internal Player Player { get; }
-        internal List<PlayerCellMenu> Researches { get; } = new List<PlayerCellMenu>();
+        internal List<ConstructionCellMenu> Researches { get; } = new List<ConstructionCellMenu>();
 
         // Свойства для внешних сооружений
-        internal int Layer { get; private set; }// Слой, на котором находится логово
-        internal int X { get; private set; }// Позиция по X в слое
-        internal int Y { get; private set; }// Позиция по Y в слое
+        internal int Layer { get; set; }// Слой, на котором находится логово
+        internal int X { get; set; }// Позиция по X в слое
+        internal int Y { get; set; }// Позиция по Y в слое
         internal bool Hidden { get; private set; }// Логово не разведано
 
         internal List<Monster> Monsters { get; } = new List<Monster>();// Монстры текущего уровня
@@ -102,65 +102,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int SpendedGoldForSetFlag { get; private set; }// Сколько золота было потрачено на установку флага
         internal PriorityExecution PriorityFlag { get; private set; } = PriorityExecution.None;// Приоритет разведки/атаки
         internal List<Hero> listAttackedHero { get; } = new List<Hero>();// Список героев, откликнувшихся на флаг
-
-        internal void ResearchCompleted(PlayerCellMenu research)
-        {
-            Debug.Assert(CheckRequirementsForResearch(research));
-            Debug.Assert(Researches.IndexOf(research) != -1);
-
-            Researches.Remove(research);
-
-            if (research.Research.TypeConstruction is null)
-            {
-                Player.SpendGold(research.Cost());
-
-                Debug.Assert(ResearchesAvailabled > 0);
-
-                ResearchesAvailabled--;
-
-                if (research.Research.TypeEntity != null)
-                {
-                    if (research.Research.TypeEntity is DescriptorItem di)
-                        Items.Add(new ConstructionProduct(di));
-                    else if (research.Research.TypeEntity is DescriptorAbility da)
-                        Items.Add(new ConstructionProduct(da));
-                    else if (research.Research.TypeEntity is DescriptorGroupItems dgi)
-                        Items.Add(new ConstructionProduct(dgi));
-                    else if (research.Research.TypeEntity is DescriptorCreature dc)
-                        HireHero(dc);
-                    else
-                        throw new Exception("неизвестный тип");
-                }
-                else
-                {
-                    Debug.Assert(research.Research.GroupItems != null);
-                }
-            }
-            else
-            {
-                if (research.ConstructionForBuild != null)
-                {
-                    Debug.Assert(research.ConstructionForBuild.Level == 0);
-                    research.ConstructionForBuild.Build();
-                    research.ConstructionForBuild.X = research.ObjectOfMap.X;
-                    research.ConstructionForBuild.Y = research.ObjectOfMap.Y;
-                    research.ConstructionForBuild.Layer = research.ObjectOfMap.Layer;
-                    Player.Lairs[research.ConstructionForBuild.Layer, research.ConstructionForBuild.Y, research.ConstructionForBuild.X] = research.ConstructionForBuild;
-                }
-                else
-                {
-                    Construction pc = new Construction(Player, research.Research.TypeConstruction, 1, research.ObjectOfMap.X, research.ObjectOfMap.Y, research.ObjectOfMap.Layer);
-                    Player.Lairs[pc.Layer, pc.Y, pc.X] = pc;
-                    Program.formMain.SelectPlayerObject(pc);
-                }
-
-                if (Player.GetTypePlayer() == TypePlayer.Human)
-                    Program.formMain.UpdateNeighborhood();                        
-
-                Program.formMain.SetNeedRedrawFrame();
-                Program.formMain.PlayConstructionComplete();
-            }
-        }
 
         internal void Build()
         {
@@ -209,9 +150,9 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(Researches != null);
 
-            List<PlayerCellMenu> forRemove = new List<PlayerCellMenu>();
+            List<ConstructionCellMenu> forRemove = new List<ConstructionCellMenu>();
 
-            foreach (PlayerCellMenu mc in Researches)
+            foreach (ConstructionCellMenu mc in Researches)
             {
                 if (mc.Research.TypeConstruction != null)
                     if (mc.ConstructionForBuild != null)
@@ -223,7 +164,7 @@ namespace Fantasy_Kingdoms_Battle
                     }
             }
 
-            foreach (PlayerCellMenu mc in forRemove)
+            foreach (ConstructionCellMenu mc in forRemove)
             {
                 Researches.Remove(mc);
             }
@@ -492,7 +433,7 @@ namespace Fantasy_Kingdoms_Battle
             return ResearchesAvailabled > 0;
         }
 
-        internal bool CheckRequirementsForResearch(PlayerCellMenu research)
+        internal bool CheckRequirementsForResearch(ConstructionCellMenu research)
         {
             // Сначала проверяем, построено ли здание
             if (TypeConstruction.IsInternalConstruction)
@@ -520,7 +461,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal List<TextRequirement> GetResearchTextRequirements(PlayerCellMenu research)
+        internal List<TextRequirement> GetResearchTextRequirements(ConstructionCellMenu research)
         {
             List<TextRequirement> list = new List<TextRequirement>();
 

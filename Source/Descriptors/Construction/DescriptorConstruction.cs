@@ -70,7 +70,7 @@ namespace Fantasy_Kingdoms_Battle
                 XmlFieldNotExist(n, "MaxLevel");
                 XmlFieldNotExist(n, "ResearchesPerDay");
                 XmlFieldNotExist(n, "PlayerCanBuild");
-                XmlFieldNotExist(n, "LayersCellMenu");                
+                XmlFieldNotExist(n, "LayersCellMenu");
             }
 
             if (HasTreasury)
@@ -132,32 +132,29 @@ namespace Fantasy_Kingdoms_Battle
                     throw new Exception("В конфигурации зданий у " + ID + " нет информации об уровнях. ");
             }
 
-            // Загружаем исследования
-            if (IsOurConstruction)
-            {
+            // Загружаем меню
                 XmlNode nr = n.SelectSingleNode("CellsMenu");
-                if (nr != null)
+            if (nr != null)
+            {
+                Debug.Assert(layersResearches > 0, $"У {ID} не указано количество слоев меню, но есть меню.");
+                Researches = new DescriptorCellMenuForConstruction[layersResearches, Config.PlateHeight, Config.PlateWidth];
+                List<DescriptorCellMenu> listMenu = new List<DescriptorCellMenu>();
+
+                DescriptorCellMenuForConstruction research;
+
+                foreach (XmlNode l in nr.SelectNodes("CellMenu"))
                 {
-                    Debug.Assert(layersResearches > 0, $"У {ID} не указано количество слоев меню, но есть меню.");
-                    Researches = new DescriptorCellMenu[layersResearches, Config.PlateHeight, Config.PlateWidth];
-                    List<DescriptorCellMenu> listMenu = new List<DescriptorCellMenu>();
+                    research = new DescriptorCellMenuForConstruction(l);
+                    Debug.Assert(Researches[research.Layer, research.Coord.Y, research.Coord.X] == null,
+                        $"У {ID} в слое {research.Layer} в ячейке ({research.Coord.Y}, {research.Coord.X}) уже есть сущность.");
 
-                    DescriptorCellMenu research;
-
-                    foreach (XmlNode l in nr.SelectNodes("CellMenu"))
+                    foreach (DescriptorCellMenu tcm in listMenu)
                     {
-                        research = new DescriptorCellMenu(l);
-                        Debug.Assert(Researches[research.Layer, research.Coord.Y, research.Coord.X] == null,
-                            $"У {ID} в слое {research.Layer} в ячейке ({research.Coord.Y}, {research.Coord.X}) уже есть сущность.");
-
-                        foreach (DescriptorCellMenu tcm in listMenu)
-                        {
-                            Debug.Assert(research.NameTypeObject != tcm.NameTypeObject, $"У {ID} в меню повторяется объект {research.NameTypeObject}.");
-                        }
-
-                        Researches[research.Layer, research.Coord.Y, research.Coord.X] = research;
-                        listMenu.Add(research);
+                        //Debug.Assert(research.Construction. NameTypeObject != tcm.NameTypeObject, $"У {ID} в меню повторяется объект {research.NameTypeObject}.");
                     }
+
+                    Researches[research.Layer, research.Coord.Y, research.Coord.X] = research;
+                    listMenu.Add(research);
                 }
             }
 
@@ -219,7 +216,7 @@ namespace Fantasy_Kingdoms_Battle
                     Debug.Assert(nameTypePlaceForConstruct.Length == 0);
                 }
                 else
-                { 
+                {
                     Debug.Assert(nameTypePlaceForConstruct.Length > 0);
                 }
             }
@@ -244,8 +241,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int ResearchesPerDay { get; }// Количество исследований в сооружении в день
         internal bool HasTreasury { get; }// Имеет собственную казну (Замок, гильдии, храмы)
         internal int GoldByConstruction { get; }// Количество золота в казне при постройке
-        internal DescriptorCellMenu[,,] Researches;
-
+        internal DescriptorCellMenuForConstruction[,,] Researches;
         //
         internal LevelConstruction[] Levels;
 
