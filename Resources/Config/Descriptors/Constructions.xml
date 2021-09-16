@@ -13,7 +13,6 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <GoldByConstruction>500</GoldByConstruction>
-    <LayersCellMenu>1</LayersCellMenu>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>guild_warrior_select.wav</SoundSelect>
     <Levels>
@@ -101,7 +100,6 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
-    <LayersCellMenu>1</LayersCellMenu>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>guild_hunter_select.wav</SoundSelect>
     <Levels>
@@ -189,7 +187,6 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
-    <LayersCellMenu>1</LayersCellMenu>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>guild_cleric_select.wav</SoundSelect>
     <Levels>
@@ -283,7 +280,6 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
-    <LayersCellMenu>1</LayersCellMenu>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>guild_magic_select.wav</SoundSelect>
     <Levels>
@@ -402,7 +398,6 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
-    <LayersCellMenu>1</LayersCellMenu>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>guild_elves_select.wav</SoundSelect>
     <Levels>
@@ -507,7 +502,6 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
-    <LayersCellMenu>1</LayersCellMenu>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>guild_dwarf_select.wav</SoundSelect>
     <Levels>
@@ -608,7 +602,6 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
-    <LayersCellMenu>1</LayersCellMenu>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>guild_rogue_select.wav</SoundSelect>
     <Levels>
@@ -883,7 +876,6 @@
     <Pos>1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
-    <LayersCellMenu>1</LayersCellMenu>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>marketplace_select.wav</SoundSelect>
     <Levels>
@@ -992,7 +984,6 @@
     <Pos>3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
-    <LayersCellMenu>4</LayersCellMenu>
     <ResearchesPerDay>2</ResearchesPerDay>
     <SoundSelect>smithy_select.wav</SoundSelect>
     <Levels>
@@ -1315,7 +1306,6 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>2</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>
-    <LayersCellMenu>1</LayersCellMenu>
     <SoundSelect>tavern_select.wav</SoundSelect>
     <Levels>
       <Level>
@@ -1365,7 +1355,6 @@
     <Pos>4</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
-    <LayersCellMenu>1</LayersCellMenu>
     <ResearchesPerDay>2</ResearchesPerDay>
     <SoundSelect>magic_bazaar2_select.wav</SoundSelect>
     <Levels>
@@ -1456,7 +1445,6 @@
     <Pos>2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
-    <LayersCellMenu>1</LayersCellMenu>
     <ResearchesPerDay>2</ResearchesPerDay>
     <SoundSelect>magic_bazaar_select.wav</SoundSelect>
     <Levels>
@@ -1735,7 +1723,6 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>
-    <LayersCellMenu>1</LayersCellMenu>
     <SoundSelect>arena_select.wav</SoundSelect>
     <Levels>
       <Level>
@@ -1768,7 +1755,6 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>2</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>
-    <LayersCellMenu>1</LayersCellMenu>
     <SoundSelect>garden_select.wav</SoundSelect>
     <Levels>
       <Level>
@@ -2582,7 +2568,6 @@
     <SoundSelect>place_temple_select.wav</SoundSelect>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>1</MaxLevel>
-    <LayersCellMenu>1</LayersCellMenu>
     <TypePlaceForConstruct></TypePlaceForConstruct>
     <Levels>
       <Level>
@@ -2666,7 +2651,6 @@
     <MaxLevel>3</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>menagerie_select.wav</SoundSelect>
-    <LayersCellMenu>1</LayersCellMenu>
     <Levels>
       <Level>
         <Pos>1</Pos>
@@ -2772,7 +2756,6 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>2</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>
-    <LayersCellMenu>1</LayersCellMenu>
     <SoundSelect>gambling_hall_select.wav</SoundSelect>
     <Levels>
       <Level>
