@@ -33,10 +33,19 @@ namespace Fantasy_Kingdoms_Battle
             Descriptor = descriptor;
         }
 
+        public ConstructionProduct(DescriptorConstructionEvent descriptor) : base()
+        {
+            Debug.Assert(descriptor != null);
+
+            DescriptorConstructionEvent = descriptor;
+            Descriptor = descriptor;
+        }
+
         internal DescriptorSmallEntity Descriptor { get; }
         internal DescriptorAbility DescriptorAbility { get; }
         internal DescriptorItem DescriptorItem { get; }
         internal DescriptorGroupItems DescriptorGroupItem { get; }
+        internal DescriptorConstructionEvent DescriptorConstructionEvent { get; }
 
         internal override int GetImageIndex()
         {
