@@ -33,8 +33,6 @@ namespace Fantasy_Kingdoms_Battle
             nameTypePlaceForConstruct = GetString(n, "TypePlaceForConstruct");
             Debug.Assert(Name != nameTypePlaceForConstruct);
 
-            int layersResearches = 0;
-
             if (IsInternalConstruction)
             {
                 Page = (ConstructionPage)Enum.Parse(typeof(ConstructionPage), GetStringNotNull(n, "Page"));
@@ -53,7 +51,6 @@ namespace Fantasy_Kingdoms_Battle
                 DefaultLevel = GetIntegerNotNull(n, "DefaultLevel");
                 MaxLevel = GetIntegerNotNull(n, "MaxLevel");
                 PlayerCanBuild = GetBoolean(n, "PlayerCanBuild", true);
-                layersResearches = GetInteger(n, "LayersCellMenu");
 
                 if (IsInternalConstruction)
                 {
@@ -136,8 +133,7 @@ namespace Fantasy_Kingdoms_Battle
                 XmlNode nr = n.SelectSingleNode("CellsMenu");
             if (nr != null)
             {
-                Debug.Assert(layersResearches > 0, $"У {ID} не указано количество слоев меню, но есть меню.");
-                Researches = new DescriptorCellMenuForConstruction[layersResearches, Config.PlateHeight, Config.PlateWidth];
+                Researches = new DescriptorCellMenuForConstruction[Config.PlateHeight, Config.PlateWidth];
                 List<DescriptorCellMenu> listMenu = new List<DescriptorCellMenu>();
 
                 DescriptorCellMenuForConstruction research;
@@ -145,15 +141,15 @@ namespace Fantasy_Kingdoms_Battle
                 foreach (XmlNode l in nr.SelectNodes("CellMenu"))
                 {
                     research = new DescriptorCellMenuForConstruction(l);
-                    Debug.Assert(Researches[research.Layer, research.Coord.Y, research.Coord.X] == null,
-                        $"У {ID} в слое {research.Layer} в ячейке ({research.Coord.Y}, {research.Coord.X}) уже есть сущность.");
+                    Debug.Assert(Researches[research.Coord.Y, research.Coord.X] == null,
+                        $"У {ID} в ячейке ({research.Coord.Y}, {research.Coord.X}) уже есть сущность.");
 
                     foreach (DescriptorCellMenu tcm in listMenu)
                     {
                         //Debug.Assert(research.Construction. NameTypeObject != tcm.NameTypeObject, $"У {ID} в меню повторяется объект {research.NameTypeObject}.");
                     }
 
-                    Researches[research.Layer, research.Coord.Y, research.Coord.X] = research;
+                    Researches[research.Coord.Y, research.Coord.X] = research;
                     listMenu.Add(research);
                 }
             }
@@ -241,7 +237,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int ResearchesPerDay { get; }// Количество исследований в сооружении в день
         internal bool HasTreasury { get; }// Имеет собственную казну (Замок, гильдии, храмы)
         internal int GoldByConstruction { get; }// Количество золота в казне при постройке
-        internal DescriptorCellMenuForConstruction[,,] Researches;
+        internal DescriptorCellMenuForConstruction[,] Researches;
         //
         internal LevelConstruction[] Levels;
 
@@ -275,10 +271,9 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Researches != null)
             {
-                for (int z = 0; z < Researches.GetLength(0); z++)
-                    for (int y = 0; y < Researches.GetLength(1); y++)
-                        for (int x = 0; x < Researches.GetLength(2); x++)
-                            Researches[z, y, x]?.TuneDeferredLinks();
+                for (int y = 0; y < Researches.GetLength(0); y++)
+                    for (int x = 0; x < Researches.GetLength(1); x++)
+                        Researches[y, x]?.TuneDeferredLinks();
             }
 
             foreach (MonsterLevelLair mll in Monsters)

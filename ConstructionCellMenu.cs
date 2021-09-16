@@ -60,11 +60,11 @@ namespace Fantasy_Kingdoms_Battle
                 case TypeCellMenuForConstruction.Research:
                     return new CellMenuConstructionResearch(c, d);
                 case TypeCellMenuForConstruction.Build:
-                    return new CellMenuConstructionResearch(c, d);
+                    return new CellMenuConstructionBuild(c, d);
                 case TypeCellMenuForConstruction.HireCreature:
-                    return new CellMenuConstructionResearch(c, d);
+                    return new CellMenuConstructionHireCreature(c, d);
                 case TypeCellMenuForConstruction.Event:
-                    return new CellMenuConstructionResearch(c, d);
+                    return new CellMenuConstructionEvent(c, d);
                 //case TypeCellMenuForConstruction.Action:
                 //    break;
                 default:
@@ -140,15 +140,15 @@ namespace Fantasy_Kingdoms_Battle
             TypeConstruction = Config.FindConstruction(d.NameEntity);
             if (TypeConstruction.Category == CategoryConstruction.Temple)
                 ConstructionForBuild = c.Player.GetPlayerConstruction(TypeConstruction);
-            if (TypeConstruction.Category == CategoryConstruction.External)
+            else if (TypeConstruction.Category == CategoryConstruction.External)
             {
             }
             else
                 throw new Exception("Неизвестная категория сооружения: " + TypeConstruction.ID);
         }
 
-        internal DescriptorConstruction TypeConstruction { get; set; }// Описатель строимого сооружения
-        internal Construction ConstructionForBuild { get; }// Строимое у игрока сооружение
+        private DescriptorConstruction TypeConstruction { get; set; }// Описатель строимого сооружения
+        private Construction ConstructionForBuild { get; }// Строимое у игрока сооружение
 
         internal override bool CheckRequirements()
         {

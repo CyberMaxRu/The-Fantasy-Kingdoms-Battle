@@ -21,11 +21,10 @@ namespace Fantasy_Kingdoms_Battle
             // Настраиваем исследования 
             if (TypeConstruction.Researches != null)
             {
-                for (int z = 0; z < TypeConstruction.Researches.GetLength(0); z++)
-                    for (int y = 0; y < TypeConstruction.Researches.GetLength(1); y++)
-                        for (int x = 0; x < TypeConstruction.Researches.GetLength(2); x++)
-                            if (TypeConstruction.Researches[z, y, x] != null)                       
-                                Researches.Add(ConstructionCellMenu.Create(this, TypeConstruction.Researches[z, y, x]));
+                for (int y = 0; y < TypeConstruction.Researches.GetLength(0); y++)
+                    for (int x = 0; x < TypeConstruction.Researches.GetLength(1); x++)
+                        if (TypeConstruction.Researches[y, x] != null)                       
+                            Researches.Add(ConstructionCellMenu.Create(this, TypeConstruction.Researches[y, x]));
             }
 
             Hidden = !TypeConstruction.IsInternalConstruction || (Layer > 0);
@@ -63,11 +62,10 @@ namespace Fantasy_Kingdoms_Battle
             // Настраиваем исследования 
             if (TypeConstruction.Researches != null)
             {
-                for (int z = 0; z < TypeConstruction.Researches.GetLength(0); z++)
-                    for (int y1 = 0; y1 < TypeConstruction.Researches.GetLength(1); y1++)
-                        for (int x1 = 0; x1 < TypeConstruction.Researches.GetLength(2); x1++)
-                            if (TypeConstruction.Researches[z, y1, x1] != null)
-                                Researches.Add(ConstructionCellMenu.Create(this, TypeConstruction.Researches[z, y1, x1]));
+                for (int y1 = 0; y1 < TypeConstruction.Researches.GetLength(0); y1++)
+                    for (int x1 = 0; x1 < TypeConstruction.Researches.GetLength(1); x1++)
+                        if (TypeConstruction.Researches[y1, x1] != null)
+                            Researches.Add(ConstructionCellMenu.Create(this, TypeConstruction.Researches[y1, x1]));
             }
 
             // Убрать эту проверку после настройки всех логов

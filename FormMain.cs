@@ -1511,8 +1511,7 @@ namespace Fantasy_Kingdoms_Battle
                             CellsMenu[pr.Descriptor.Coord.Y, pr.Descriptor.Coord.X].Research = pr;
                             CellsMenu[pr.Descriptor.Coord.Y, pr.Descriptor.Coord.X].Used = true;
                         }
-                        else if ((CellsMenu[pr.Descriptor.Coord.Y, pr.Descriptor.Coord.X].Research.Descriptor.Layer > pr.Descriptor.Layer)
-                            && (CellsMenu[pr.Descriptor.Coord.Y, pr.Descriptor.Coord.X].Research.Construction == pr.Construction))
+                        else if ((CellsMenu[pr.Descriptor.Coord.Y, pr.Descriptor.Coord.X].Research.Construction == pr.Construction))
                             CellsMenu[pr.Descriptor.Coord.Y, pr.Descriptor.Coord.X].Research = pr;
                     }
                 }

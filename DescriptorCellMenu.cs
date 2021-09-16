@@ -18,9 +18,13 @@ namespace Fantasy_Kingdoms_Battle
     {
         public DescriptorCellMenu(XmlNode n) : base()
         {
-            Layer = GetIntegerNotNull(n, "Layer");
-            string[] parts = GetStringNotNull(n, "Pos").Split();
-            Coord = new Point(int.Parse(parts[0]) - 1, int.Parse(parts[1]) - 1);
+            string pos = GetStringNotNull(n, "Pos");
+            Debug.Assert(pos.Length > 0);
+            string[] parts = pos.Split(',');
+            int x, y;
+            if (!int.TryParse(parts[0], out x) || !int.TryParse(parts[1], out y))
+                throw new Exception($"Не могу распарсить координаты: {pos}.");
+            Coord = new Point(x - 1, y - 1);
 
             Cost = GetInteger(n, "Cost");
             LoadRequirements(Requirements, n);
@@ -31,7 +35,6 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Coord.Y <= Config.PlateHeight - 1);
         }
 
-        internal int Layer { get; }
         internal Point Coord { get; }// Координаты ячейки
         internal int Cost { get; }// Стоимость
         internal List<Requirement> Requirements { get; } = new List<Requirement>();// Список требований
@@ -51,9 +54,17 @@ namespace Fantasy_Kingdoms_Battle
     {
         public DescriptorCellMenuForConstruction(XmlNode n) : base(n)
         {
+            Type = (TypeCellMenuForConstruction)Enum.Parse(typeof(TypeCellMenuForConstruction), n.SelectSingleNode("Type").InnerText);
             NameEntity = GetStringNotNull(n, "Entity");
 
             Debug.Assert(NameEntity.Length > 0);
+
+            XmlNode next = n.SelectSingleNode("CellMenu");
+            if (next != null)
+            {
+                NextCell = new DescriptorCellMenuForConstruction(next);
+                Debug.Assert(Coord.Equals(NextCell.Coord), $"У {NameEntity} в ячейку {Coord} вложена ячейка {NextCell.Coord}.");
+            }
         }
 
         internal TypeCellMenuForConstruction Type { get; }

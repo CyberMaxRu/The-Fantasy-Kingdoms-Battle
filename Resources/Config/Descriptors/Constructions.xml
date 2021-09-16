@@ -48,10 +48,9 @@
     </Levels>
     <CellsMenu>
       <CellMenu>
-        <PosX>1</PosX>
-        <PosY>3</PosY>
-        <Layer>1</Layer>
-        <TypeObject>WarriorImpAttack</TypeObject>
+        <Pos>1,3</Pos>
+        <Type>Research</Type>
+        <Entity>WarriorImpAttack</Entity>
         <Cost>200</Cost>
         <Requirements>
           <Requirement>
@@ -62,10 +61,9 @@
         </Requirements>
       </CellMenu>
       <CellMenu>
-        <PosX>2</PosX>
-        <PosY>3</PosY>
-        <Layer>1</Layer>
-        <TypeObject>WarriorMaimAttack</TypeObject>
+        <Pos>2,3</Pos>
+        <Type>Research</Type>
+        <Entity>WarriorMaimAttack</Entity>
         <Cost>500</Cost>
         <Requirements>
           <Requirement>
@@ -76,10 +74,9 @@
         </Requirements>
       </CellMenu>
       <CellMenu>
-        <PosX>3</PosX>
-        <PosY>3</PosY>
-        <Layer>1</Layer>
-        <TypeObject>WarriorResistanceBuff</TypeObject>
+        <Pos>3,3</Pos>
+        <Type>Research</Type>
+        <Entity>WarriorResistanceBuff</Entity>
         <Cost>500</Cost>
         <Requirements>
           <Requirement>
@@ -139,10 +136,9 @@
     </Levels>
     <CellsMenu>
       <CellMenu>
-        <PosX>1</PosX>
-        <PosY>3</PosY>
-        <Layer>1</Layer>
-        <TypeObject>HunterImpAttack</TypeObject>
+        <Pos>1,3</Pos>
+        <Type>Research</Type>
+        <Entity>HunterImpAttack</Entity>
         <Cost>200</Cost>
         <Requirements>
           <Requirement>
@@ -153,10 +149,9 @@
         </Requirements>
       </CellMenu>
       <CellMenu>
-        <PosX>2</PosX>
-        <PosY>3</PosY>
-        <Layer>1</Layer>
-        <TypeObject>HunterStingShotAttack</TypeObject>
+        <Pos>2,3</Pos>
+        <Type>Research</Type>
+        <Entity>HunterStingShotAttack</Entity>
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
@@ -167,10 +162,9 @@
         </Requirements>
       </CellMenu>
       <CellMenu>
-        <PosX>3</PosX>
-        <PosY>3</PosY>
-        <Layer>1</Layer>
-        <TypeObject>HunterManaburnAttack</TypeObject>
+        <Pos>3,3</Pos>
+        <Type>Research</Type>
+        <Entity>HunterManaburnAttack</Entity>
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
@@ -230,17 +224,15 @@
     </Levels>
     <CellsMenu>
       <CellMenu>
-        <PosX>2</PosX>
-        <PosY>1</PosY>
-        <Layer>1</Layer>
-        <TypeObject>HolyWater</TypeObject>
+        <Pos>2,1</Pos>
+        <Type>Research</Type>
+        <Entity>HolyWater</Entity>
         <Cost>250</Cost>
       </CellMenu>
       <CellMenu>
-        <PosX>1</PosX>
-        <PosY>3</PosY>
-        <Layer>1</Layer>
-        <TypeObject>HolyAttack</TypeObject>
+        <Pos>1,3</Pos>
+        <Type>Research</Type>
+        <Entity>HolyAttack</Entity>
         <Cost>200</Cost>
         <Requirements>
           <Requirement>
@@ -251,10 +243,9 @@
         </Requirements>
       </CellMenu>
       <CellMenu>
-        <PosX>2</PosX>
-        <PosY>3</PosY>
-        <Layer>1</Layer>
-        <TypeObject>ClericManaRegenBuff</TypeObject>
+        <Pos>2,3</Pos>
+        <Type>Research</Type>
+        <Entity>ClericManaRegenBuff</Entity>
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
@@ -265,10 +256,9 @@
         </Requirements>
       </CellMenu>
       <CellMenu>
-        <PosX>3</PosX>
-        <PosY>3</PosY>
-        <Layer>1</Layer>
-        <TypeObject>ClericKnockbackAttack</TypeObject>
+        <Pos>3,3</Pos>
+        <Type>Research</Type>
+        <Entity>ClericKnockbackAttack</Entity>
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
@@ -347,24 +337,21 @@
     </Levels>
     <CellsMenu>
       <CellMenu>
-        <PosX>3</PosX>
-        <PosY>1</PosY>
-        <Layer>1</Layer>
-        <TypeObject>EnchantWeaponAttack</TypeObject>
+        <Pos>3,1</Pos>
+        <Type>Research</Type>
+        <Entity>EnchantWeaponAttack</Entity>
         <Cost>300</Cost>
       </CellMenu>
       <CellMenu>
-        <PosX>1</PosX>
-        <PosY>3</PosY>
-        <Layer>1</Layer>
-        <TypeObject>MageFireballAttack</TypeObject>
+        <Pos>1,3</Pos>
+        <Type>Research</Type>
+        <Entity>MageFireballAttack</Entity>
         <Cost>200</Cost>
       </CellMenu>
       <CellMenu>
-        <PosX>2</PosX>
-        <PosY>3</PosY>
-        <Layer>1</Layer>
-        <TypeObject>MageFreezeAttack</TypeObject>
+        <Pos>2,3</Pos>
+        <Type>Research</Type>
+        <Entity>MageFreezeAttack</Entity>
         <Cost>500</Cost>
         <Requirements>
           <Requirement>
@@ -375,10 +362,9 @@
         </Requirements>
       </CellMenu>
       <CellMenu>
-        <PosX>3</PosX>
-        <PosY>3</PosY>
-        <Layer>1</Layer>
-        <TypeObject>MageGuardianWind</TypeObject>
+        <Pos>3,3</Pos>
+        <Type>Research</Type>
+        <Entity>MageGuardianWind</Entity>
         <Cost>750</Cost>
         <Requirements>
           <Requirement>
@@ -389,10 +375,9 @@
         </Requirements>
       </CellMenu>
       <CellMenu>
-        <PosX>4</PosX>
-        <PosY>3</PosY>
-        <Layer>1</Layer>
-        <TypeObject>MageFirestormAttack</TypeObject>
+        <Pos>4,3</Pos>
+        <Type>Research</Type>
+        <Entity>MageFirestormAttack</Entity>
         <Cost>2000</Cost>
         <Requirements>
           <Requirement>
@@ -476,17 +461,15 @@
     </Levels>
     <CellsMenu>
       <CellMenu>
-        <PosX>1</PosX>
-        <PosY>3</PosY>
-        <Layer>1</Layer>
-        <TypeObject>ElfImpAttack</TypeObject>
+        <Pos>1,3</Pos>
+        <Type>Research</Type>
+        <Entity>ElfImpAttack</Entity>
         <Cost>200</Cost>
       </CellMenu>
       <CellMenu>
-        <PosX>2</PosX>
-        <PosY>3</PosY>
-        <Layer>1</Layer>
-        <TypeObject>ElfBuff</TypeObject>
+        <Pos>2,3</Pos>
+        <Type>Research</Type>
+        <Entity>ElfBuff</Entity>
         <Cost>200</Cost>
         <Requirements>
           <Requirement>
@@ -497,10 +480,9 @@
         </Requirements>
       </CellMenu>
       <CellMenu>
-        <PosX>3</PosX>
-        <PosY>3</PosY>
-        <Layer>1</Layer>
-        <TypeObject>ElfMagicArrow</TypeObject>
+        <Pos>3,3</Pos>
+        <Type>Research</Type>
+        <Entity>ElfMagicArrow</Entity>
         <Cost>300</Cost>
         <Requirements>
           <Requirement>
@@ -587,24 +569,21 @@
     </Levels>
     <CellsMenu>
       <CellMenu>
-        <PosX>1</PosX>
-        <PosY>3</PosY>
-        <Layer>1</Layer>
-        <TypeObject>DwarfAntiBuildingAttack</TypeObject>
+        <Pos>1,3</Pos>
+        <Type>Research</Type>
+        <Entity>DwarfAntiBuildingAttack</Entity>
         <Cost>500</Cost>
       </CellMenu>
       <CellMenu>
-        <PosX>2</PosX>
-        <PosY>3</PosY>
-        <Layer>1</Layer>
-        <TypeObject>DwarfImpAttack</TypeObject>
+        <Pos>2,3</Pos>
+        <Type>Research</Type>
+        <Entity>DwarfImpAttack</Entity>
         <Cost>300</Cost>
       </CellMenu>
       <CellMenu>
-        <PosX>3</PosX>
-        <PosY>3</PosY>
-        <Layer>1</Layer>
-        <TypeObject>DwarfBerserkBuff</TypeObject>
+        <Pos>3,3</Pos>
+        <Type>Research</Type>
+        <Entity>DwarfBerserkBuff</Entity>
         <Cost>750</Cost>
         <Requirements>
           <Requirement>
@@ -664,24 +643,21 @@
     </Levels>
     <CellsMenu>
       <CellMenu>
-        <PosX>2</PosX>
-        <PosY>1</PosY>
-        <Layer>1</Layer>
-        <TypeObject>EnchantWeaponPoison</TypeObject>
+        <Pos>2,1</Pos>
+        <Type>Research</Type>
+        <Entity>EnchantWeaponPoison</Entity>
         <Cost>300</Cost>
       </CellMenu>
       <CellMenu>
-        <PosX>1</PosX>
-        <PosY>3</PosY>
-        <Layer>1</Layer>
-        <TypeObject>RoguePoisonAttack</TypeObject>
+        <Pos>1,3</Pos>
+        <Type>Research</Type>
+        <Entity>RoguePoisonAttack</Entity>
         <Cost>200</Cost>
       </CellMenu>
       <CellMenu>
-        <PosX>2</PosX>
-        <PosY>3</PosY>
-        <Layer>1</Layer>
-        <TypeObject>RogueImpAttack</TypeObject>
+        <Pos>2,3</Pos>
+        <Type>Research</Type>
+        <Entity>RogueImpAttack</Entity>
         <Cost>500</Cost>
         <Requirements>
           <Requirement>
@@ -692,10 +668,9 @@
         </Requirements>
       </CellMenu>
       <CellMenu>
-        <PosX>3</PosX>
-        <PosY>3</PosY>
-        <Layer>1</Layer>
-        <TypeObject>RogueKickAttack</TypeObject>
+        <Pos>3,3</Pos>
+        <Type>Research</Type>
+        <Entity>RogueKickAttack</Entity>
         <Cost>500</Cost>
         <Requirements>
           <Requirement>
@@ -706,10 +681,9 @@
         </Requirements>
       </CellMenu>
       <CellMenu>
-        <PosX>4</PosX>
-        <PosY>3</PosY>
-        <Layer>1</Layer>
-        <TypeObject>StunAttack</TypeObject>
+        <Pos>4,3</Pos>
+        <Type>Research</Type>
+        <Entity>StunAttack</Entity>
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
@@ -948,18 +922,15 @@
     </Levels>
     <CellsMenu>
       <CellMenu>
-        <PosX>1</PosX>
-        <PosY>1</PosY>
-        <Layer>1</Layer>
-        <TypeRequirement>Research</TypeRequirement>
-        <TypeObject>Quiver</TypeObject>
+        <Pos>1,1</Pos>
+        <Type>Research</Type>
+        <Entity>Quiver</Entity>
         <Cost>250</Cost>
       </CellMenu>
       <CellMenu>
-        <PosX>2</PosX>
-        <PosY>1</PosY>
-        <Layer>1</Layer>
-        <TypeObject>SmallBag</TypeObject>
+        <Pos>2,1</Pos>
+        <Type>Research</Type>
+        <Entity>SmallBag</Entity>
         <Cost>500</Cost>
         <Requirements>
           <Requirement>
@@ -970,17 +941,15 @@
         </Requirements>
       </CellMenu>
       <CellMenu>
-        <PosX>1</PosX>
-        <PosY>2</PosY>
-        <Layer>1</Layer>
-        <TypeObject>GingerRoot</TypeObject>
+        <Pos>1,2</Pos>
+        <Type>Research</Type>
+        <Entity>GingerRoot</Entity>
         <Cost>250</Cost>
       </CellMenu>
       <CellMenu>
-        <PosX>2</PosX>
-        <PosY>2</PosY>
-        <Layer>1</Layer>
-        <TypeObject>Amanita</TypeObject>
+        <Pos>2,2</Pos>
+        <Type>Research</Type>
+        <Entity>Amanita</Entity>
         <Cost>500</Cost>
         <Requirements>
           <Requirement>
@@ -991,10 +960,9 @@
         </Requirements>
       </CellMenu>
       <CellMenu>
-        <PosX>3</PosX>
-        <PosY>2</PosY>
-        <Layer>1</Layer>
-        <TypeObject>Beer</TypeObject>
+        <Pos>3,2</Pos>
+        <Type>Research</Type>
+        <Entity>Beer</Entity>
         <Cost>750</Cost>
         <Requirements>
           <Requirement>
@@ -1005,10 +973,9 @@
         </Requirements>
       </CellMenu>
       <CellMenu>
-        <PosX>1</PosX>
-        <PosY>3</PosY>
-        <Layer>1</Layer>
-        <TypeObject>Horseshoe</TypeObject>
+        <Pos>1,3</Pos>
+        <Type>Research</Type>
+        <Entity>Horseshoe</Entity>
         <Cost>250</Cost>
       </CellMenu>
     </CellsMenu>
@@ -1064,298 +1031,274 @@
     </Levels>
     <CellsMenu>
       <CellMenu>
-        <PosX>1</PosX>
-        <PosY>1</PosY>
-        <Layer>1</Layer>
-        <TypeObject>GroupArmourMetal1</TypeObject>
+        <Pos>1,1</Pos>
+        <Type>Research</Type>
+        <Entity>GroupArmourMetal1</Entity>
         <Cost>250</Cost>
+        <CellMenu>
+          <Pos>1,1</Pos>
+          <Type>Research</Type>
+          <Entity>GroupArmourMetal2</Entity>
+          <Cost>1000</Cost>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Smithy</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+          <CellMenu>
+            <Pos>1,1</Pos>
+            <Type>Research</Type>
+            <Entity>GroupArmourMetal3</Entity>
+            <Cost>3000</Cost>
+            <Requirements>
+              <Requirement>
+                <TypeRequirement>BuildedConstruction</TypeRequirement>
+                <Construction>Smithy</Construction>
+                <Level>3</Level>
+              </Requirement>
+            </Requirements>
+            <CellMenu>
+              <Pos>1,1</Pos>
+              <Type>Research</Type>
+              <Entity>GroupArmourMetal4</Entity>
+              <Cost>3500</Cost>
+              <Requirements>
+                <Requirement>
+                  <TypeRequirement>BuildedConstruction</TypeRequirement>
+                  <Construction>Smithy</Construction>
+                  <Level>3</Level>
+                </Requirement>
+              </Requirements>
+            </CellMenu>
+          </CellMenu>
+        </CellMenu>
       </CellMenu>
       <CellMenu>
-        <PosX>1</PosX>
-        <PosY>2</PosY>
-        <Layer>1</Layer>
-        <TypeObject>GroupWeaponMelee1</TypeObject>
+        <Pos>1,2</Pos>
+        <Type>Research</Type>
+        <Entity>GroupWeaponMelee1</Entity>
         <Cost>250</Cost>
+        <CellMenu>
+          <Pos>1,2</Pos>
+          <Type>Research</Type>
+          <Entity>GroupWeaponMelee2</Entity>
+          <Cost>1000</Cost>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Smithy</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+          <CellMenu>
+            <Pos>1,2</Pos>
+            <Type>Research</Type>
+            <Entity>GroupWeaponMelee3</Entity>
+            <Cost>3000</Cost>
+            <Requirements>
+              <Requirement>
+                <TypeRequirement>BuildedConstruction</TypeRequirement>
+                <Construction>Smithy</Construction>
+                <Level>3</Level>
+              </Requirement>
+            </Requirements>
+            <CellMenu>
+              <Pos>1,2</Pos>
+              <Type>Research</Type>
+              <Entity>GroupWeaponMelee4</Entity>
+              <Cost>3500</Cost>
+              <Requirements>
+                <Requirement>
+                  <TypeRequirement>BuildedConstruction</TypeRequirement>
+                  <Construction>Smithy</Construction>
+                  <Level>3</Level>
+                </Requirement>
+              </Requirements>
+            </CellMenu>
+          </CellMenu>
+        </CellMenu>
       </CellMenu>
       <CellMenu>
-        <PosX>2</PosX>
-        <PosY>1</PosY>
-        <Layer>1</Layer>
-        <TypeObject>GroupArmourLeather1</TypeObject>
+        <Pos>2,1</Pos>
+        <Type>Research</Type>
+        <Entity>GroupArmourLeather1</Entity>
         <Cost>250</Cost>
+        <CellMenu>
+          <Pos>2,1</Pos>
+          <Type>Research</Type>
+          <Entity>GroupArmourLeather2</Entity>
+          <Cost>1000</Cost>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Smithy</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+          <CellMenu>
+            <Pos>2,1</Pos>
+            <Type>Research</Type>
+            <Entity>GroupArmourLeather3</Entity>
+            <Cost>3000</Cost>
+            <Requirements>
+              <Requirement>
+                <TypeRequirement>BuildedConstruction</TypeRequirement>
+                <Construction>Smithy</Construction>
+                <Level>3</Level>
+              </Requirement>
+            </Requirements>
+            <CellMenu>
+              <Pos>2,1</Pos>
+              <Type>Research</Type>
+              <Entity>GroupArmourLeather4</Entity>
+              <Cost>3500</Cost>
+              <Requirements>
+                <Requirement>
+                  <TypeRequirement>BuildedConstruction</TypeRequirement>
+                  <Construction>Smithy</Construction>
+                  <Level>3</Level>
+                </Requirement>
+              </Requirements>
+            </CellMenu>
+          </CellMenu>
+        </CellMenu>
       </CellMenu>
       <CellMenu>
-        <PosX>2</PosX>
-        <PosY>2</PosY>
-        <Layer>1</Layer>
-        <TypeObject>GroupWeaponRange1</TypeObject>
+        <Pos>2,2</Pos>
+        <Type>Research</Type>
+        <Entity>GroupWeaponRange1</Entity>
         <Cost>250</Cost>
+        <CellMenu>
+          <Pos>2,2</Pos>
+          <Type>Research</Type>
+          <Entity>GroupWeaponRange2</Entity>
+          <Cost>1000</Cost>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Smithy</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+          <CellMenu>
+            <Pos>2,2</Pos>
+            <Type>Research</Type>
+            <Entity>GroupWeaponRange3</Entity>
+            <Cost>3000</Cost>
+            <Requirements>
+              <Requirement>
+                <TypeRequirement>BuildedConstruction</TypeRequirement>
+                <Construction>Smithy</Construction>
+                <Level>3</Level>
+              </Requirement>
+            </Requirements>
+            <CellMenu>
+              <Pos>2,2</Pos>
+              <Type>Research</Type>
+              <Entity>GroupWeaponRange4</Entity>
+              <Cost>3500</Cost>
+              <Requirements>
+                <Requirement>
+                  <TypeRequirement>BuildedConstruction</TypeRequirement>
+                  <Construction>Smithy</Construction>
+                  <Level>2</Level>
+                </Requirement>
+              </Requirements>
+            </CellMenu>
+          </CellMenu>
+        </CellMenu>
       </CellMenu>
       <CellMenu>
-        <PosX>3</PosX>
-        <PosY>1</PosY>
-        <Layer>1</Layer>
-        <TypeObject>GroupArmourMage1</TypeObject>
+        <Pos>3,1</Pos>
+        <Type>Research</Type>
+        <Entity>GroupArmourMage1</Entity>
         <Cost>250</Cost>
+        <CellMenu>
+          <Pos>3,1</Pos>
+          <Type>Research</Type>
+          <Entity>GroupArmourMage2</Entity>
+          <Cost>1000</Cost>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Smithy</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+          <CellMenu>
+            <Pos>3,1</Pos>
+            <Type>Research</Type>
+            <Entity>GroupArmourMage3</Entity>
+            <Cost>3000</Cost>
+            <Requirements>
+              <Requirement>
+                <TypeRequirement>BuildedConstruction</TypeRequirement>
+                <Construction>Smithy</Construction>
+                <Level>3</Level>
+              </Requirement>
+            </Requirements>
+            <CellMenu>
+              <Pos>3,1</Pos>
+              <Type>Research</Type>
+              <Entity>GroupArmourMage4</Entity>
+              <Cost>3500</Cost>
+              <Requirements>
+                <Requirement>
+                  <TypeRequirement>BuildedConstruction</TypeRequirement>
+                  <Construction>Smithy</Construction>
+                  <Level>3</Level>
+                </Requirement>
+              </Requirements>
+            </CellMenu>
+          </CellMenu>
+        </CellMenu>
       </CellMenu>
       <CellMenu>
-        <PosX>3</PosX>
-        <PosY>2</PosY>
-        <Layer>1</Layer>
-        <TypeObject>GroupWeaponMage1</TypeObject>
+        <Pos>3,2</Pos>
+        <Type>Research</Type>
+        <Entity>GroupWeaponMage1</Entity>
         <Cost>250</Cost>
-      </CellMenu>
-      <CellMenu>
-        <PosX>1</PosX>
-        <PosY>1</PosY>
-        <Layer>2</Layer>
-        <TypeObject>GroupArmourMetal2</TypeObject>
-        <Cost>1000</Cost>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Smithy</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
-      </CellMenu>
-      <CellMenu>
-        <PosX>2</PosX>
-        <PosY>1</PosY>
-        <Layer>2</Layer>
-        <TypeObject>GroupArmourLeather2</TypeObject>
-        <Cost>1000</Cost>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Smithy</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
-      </CellMenu>
-      <CellMenu>
-        <PosX>3</PosX>
-        <PosY>1</PosY>
-        <Layer>2</Layer>
-        <TypeObject>GroupArmourMage2</TypeObject>
-        <Cost>1000</Cost>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Smithy</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
-      </CellMenu>
-      <CellMenu>
-        <PosX>1</PosX>
-        <PosY>2</PosY>
-        <Layer>2</Layer>
-        <TypeObject>GroupWeaponMelee2</TypeObject>
-        <Cost>1000</Cost>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Smithy</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
-      </CellMenu>
-      <CellMenu>
-        <PosX>2</PosX>
-        <PosY>2</PosY>
-        <Layer>2</Layer>
-        <TypeObject>GroupWeaponRange2</TypeObject>
-        <Cost>1000</Cost>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Smithy</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
-      </CellMenu>
-      <CellMenu>
-        <PosX>3</PosX>
-        <PosY>2</PosY>
-        <Layer>2</Layer>
-        <TypeObject>GroupWeaponMage2</TypeObject>
-        <Cost>1000</Cost>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Smithy</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
-      </CellMenu>
-      <CellMenu>
-        <PosX>1</PosX>
-        <PosY>1</PosY>
-        <Layer>3</Layer>
-        <TypeObject>GroupArmourMetal3</TypeObject>
-        <Cost>3000</Cost>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Smithy</Construction>
-            <Level>3</Level>
-          </Requirement>
-        </Requirements>
-      </CellMenu>
-      <CellMenu>
-        <PosX>2</PosX>
-        <PosY>1</PosY>
-        <Layer>3</Layer>
-        <TypeObject>GroupArmourLeather3</TypeObject>
-        <Cost>3000</Cost>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Smithy</Construction>
-            <Level>3</Level>
-          </Requirement>
-        </Requirements>
-      </CellMenu>
-      <CellMenu>
-        <PosX>3</PosX>
-        <PosY>1</PosY>
-        <Layer>3</Layer>
-        <TypeObject>GroupArmourMage3</TypeObject>
-        <Cost>3000</Cost>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Smithy</Construction>
-            <Level>3</Level>
-          </Requirement>
-        </Requirements>
-      </CellMenu>
-      <CellMenu>
-        <PosX>1</PosX>
-        <PosY>2</PosY>
-        <Layer>3</Layer>
-        <TypeObject>GroupWeaponMelee3</TypeObject>
-        <Cost>3000</Cost>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Smithy</Construction>
-            <Level>3</Level>
-          </Requirement>
-        </Requirements>
-      </CellMenu>
-      <CellMenu>
-        <PosX>2</PosX>
-        <PosY>2</PosY>
-        <Layer>3</Layer>
-        <TypeObject>GroupWeaponRange3</TypeObject>
-        <Cost>3000</Cost>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Smithy</Construction>
-            <Level>3</Level>
-          </Requirement>
-        </Requirements>
-      </CellMenu>
-      <CellMenu>
-        <PosX>3</PosX>
-        <PosY>2</PosY>
-        <Layer>3</Layer>
-        <TypeObject>GroupWeaponMage3</TypeObject>
-        <Cost>3000</Cost>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Smithy</Construction>
-            <Level>3</Level>
-          </Requirement>
-        </Requirements>
-      </CellMenu>
-      <CellMenu>
-        <PosX>1</PosX>
-        <PosY>1</PosY>
-        <Layer>4</Layer>
-        <TypeObject>GroupArmourMetal4</TypeObject>
-        <Cost>3500</Cost>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Smithy</Construction>
-            <Level>3</Level>
-          </Requirement>
-        </Requirements>
-      </CellMenu>
-      <CellMenu>
-        <PosX>2</PosX>
-        <PosY>1</PosY>
-        <Layer>4</Layer>
-        <TypeObject>GroupArmourLeather4</TypeObject>
-        <Cost>3500</Cost>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Smithy</Construction>
-            <Level>3</Level>
-          </Requirement>
-        </Requirements>
-      </CellMenu>
-      <CellMenu>
-        <PosX>3</PosX>
-        <PosY>1</PosY>
-        <Layer>4</Layer>
-        <TypeObject>GroupArmourMage4</TypeObject>
-        <Cost>3500</Cost>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Smithy</Construction>
-            <Level>3</Level>
-          </Requirement>
-        </Requirements>
-      </CellMenu>
-      <CellMenu>
-        <PosX>1</PosX>
-        <PosY>2</PosY>
-        <Layer>4</Layer>
-        <TypeObject>GroupWeaponMelee4</TypeObject>
-        <Cost>3500</Cost>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Smithy</Construction>
-            <Level>3</Level>
-          </Requirement>
-        </Requirements>
-      </CellMenu>
-      <CellMenu>
-        <PosX>2</PosX>
-        <PosY>2</PosY>
-        <Layer>4</Layer>
-        <TypeObject>GroupWeaponRange4</TypeObject>
-        <Cost>3500</Cost>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Smithy</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
-      </CellMenu>
-      <CellMenu>
-        <PosX>3</PosX>
-        <PosY>2</PosY>
-        <Layer>4</Layer>
-        <TypeObject>GroupWeaponMage4</TypeObject>
-        <Cost>3500</Cost>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Smithy</Construction>
-            <Level>3</Level>
-          </Requirement>
-        </Requirements>
+        <CellMenu>
+          <Pos>3,2</Pos>
+          <Type>Research</Type>
+          <Entity>GroupWeaponMage2</Entity>
+          <Cost>1000</Cost>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Smithy</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+          <CellMenu>
+            <Pos>3,2</Pos>
+            <Type>Research</Type>
+            <Entity>GroupWeaponMage3</Entity>
+            <Cost>3000</Cost>
+            <Requirements>
+              <Requirement>
+                <TypeRequirement>BuildedConstruction</TypeRequirement>
+                <Construction>Smithy</Construction>
+                <Level>3</Level>
+              </Requirement>
+            </Requirements>
+            <CellMenu>
+              <Pos>3,2</Pos>
+              <Type>Research</Type>
+              <Entity>GroupWeaponMage4</Entity>
+              <Cost>3500</Cost>
+              <Requirements>
+                <Requirement>
+                  <TypeRequirement>BuildedConstruction</TypeRequirement>
+                  <Construction>Smithy</Construction>
+                  <Level>3</Level>
+                </Requirement>
+              </Requirements>
+            </CellMenu>
+          </CellMenu>
+        </CellMenu>
       </CellMenu>
     </CellsMenu>
   </Construction>
@@ -1397,17 +1340,15 @@
     </Levels>
     <CellsMenu>
       <CellMenu>
-        <PosX>1</PosX>
-        <PosY>1</PosY>
-        <Layer>1</Layer>
-        <TypeObject>TavernBeer</TypeObject>
+        <Pos>1,1</Pos>
+        <Type>Research</Type>
+        <Entity>TavernBeer</Entity>
         <Cost>500</Cost>
       </CellMenu>
       <CellMenu>
-        <PosX>2</PosX>
-        <PosY>1</PosY>
-        <Layer>1</Layer>
-        <TypeObject>TavernMeat</TypeObject>
+        <Pos>2,1</Pos>
+        <Type>Research</Type>
+        <Entity>TavernMeat</Entity>
         <Cost>500</Cost>
       </CellMenu>
     </CellsMenu>
@@ -1470,17 +1411,15 @@
     </Levels>
     <CellsMenu>
       <CellMenu>
-        <PosX>1</PosX>
-        <PosY>2</PosY>
-        <Layer>1</Layer>
-        <TypeObject>Regeneration</TypeObject>
+        <Pos>1,2</Pos>
+        <Type>Research</Type>
+        <Entity>Regeneration</Entity>
         <Cost>250</Cost>
       </CellMenu>
       <CellMenu>
-        <PosX>2</PosX>
-        <PosY>2</PosY>
-        <Layer>1</Layer>
-        <TypeObject>Protection</TypeObject>
+        <Pos>2,2</Pos>
+        <Type>Research</Type>
+        <Entity>Protection</Entity>
         <Cost>500</Cost>
         <Requirements>
           <Requirement>
@@ -1491,10 +1430,9 @@
         </Requirements>
       </CellMenu>
       <CellMenu>
-        <PosX>3</PosX>
-        <PosY>2</PosY>
-        <Layer>1</Layer>
-        <TypeObject>ImpProtection</TypeObject>
+        <Pos>3,2</Pos>
+        <Type>Research</Type>
+        <Entity>ImpProtection</Entity>
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
@@ -1531,87 +1469,75 @@
     </Levels>
     <CellsMenu>
       <CellMenu>
-        <PosX>1</PosX>
-        <PosY>1</PosY>
-        <Layer>1</Layer>
-        <TypeObject>ElixirMeleeProt</TypeObject>
+        <Pos>1,1</Pos>
+        <Type>Research</Type>
+        <Entity>ElixirMeleeProt</Entity>
         <Cost>1000</Cost>
       </CellMenu>
       <CellMenu>
-        <PosX>2</PosX>
-        <PosY>1</PosY>
-        <Layer>1</Layer>
-        <TypeObject>ElixirRangeProt</TypeObject>
+        <Pos>2,1</Pos>
+        <Type>Research</Type>
+        <Entity>ElixirRangeProt</Entity>
         <Cost>1000</Cost>
       </CellMenu>
       <CellMenu>
-        <PosX>3</PosX>
-        <PosY>1</PosY>
-        <Layer>1</Layer>
-        <TypeObject>ElixirMagicProt</TypeObject>
+        <Pos>3,1</Pos>
+        <Type>Research</Type>
+        <Entity>ElixirMagicProt</Entity>
         <Cost>1000</Cost>
       </CellMenu>
       <CellMenu>
-        <PosX>4</PosX>
-        <PosY>1</PosY>
-        <Layer>1</Layer>
-        <TypeObject>PotionOfHealth</TypeObject>
+        <Pos>4,1</Pos>
+        <Type>Research</Type>
+        <Entity>PotionOfHealth</Entity>
         <Cost>150</Cost>
       </CellMenu>
       <CellMenu>
-        <PosX>1</PosX>
-        <PosY>2</PosY>
-        <Layer>1</Layer>
-        <TypeObject>ElixirStrength</TypeObject>
+        <Pos>1,2</Pos>
+        <Type>Research</Type>
+        <Entity>ElixirStrength</Entity>
         <Cost>2000</Cost>
       </CellMenu>
       <CellMenu>
-        <PosX>2</PosX>
-        <PosY>2</PosY>
-        <Layer>1</Layer>
-        <TypeObject>ElixirAccuracy</TypeObject>
+        <Pos>2,2</Pos>
+        <Type>Research</Type>
+        <Entity>ElixirAccuracy</Entity>
         <Cost>2000</Cost>
       </CellMenu>
       <CellMenu>
-        <PosX>3</PosX>
-        <PosY>2</PosY>
-        <Layer>1</Layer>
-        <TypeObject>ElixirWisdom</TypeObject>
+        <Pos>3,2</Pos>
+        <Type>Research</Type>
+        <Entity>ElixirWisdom</Entity>
         <Cost>2000</Cost>
       </CellMenu>
       <CellMenu>
-        <PosX>4</PosX>
-        <PosY>2</PosY>
-        <Layer>1</Layer>
-        <TypeObject>PotionOfMana</TypeObject>
+        <Pos>4,2</Pos>
+        <Type>Research</Type>
+        <Entity>PotionOfMana</Entity>
         <Cost>300</Cost>
       </CellMenu>
       <CellMenu>
-        <PosX>1</PosX>
-        <PosY>3</PosY>
-        <Layer>1</Layer>
-        <TypeObject>ElixirSpeed</TypeObject>
+        <Pos>1,3</Pos>
+        <Type>Research</Type>
+        <Entity>ElixirSpeed</Entity>
         <Cost>1500</Cost>
       </CellMenu>
       <CellMenu>
-        <PosX>2</PosX>
-        <PosY>3</PosY>
-        <Layer>1</Layer>
-        <TypeObject>ElixirAntipoison</TypeObject>
+        <Pos>2,3</Pos>
+        <Type>Research</Type>
+        <Entity>ElixirAntipoison</Entity>
         <Cost>500</Cost>
       </CellMenu>
       <CellMenu>
-        <PosX>3</PosX>
-        <PosY>3</PosY>
-        <Layer>1</Layer>
-        <TypeObject>ElixirRegeneration</TypeObject>
+        <Pos>3,3</Pos>
+        <Type>Research</Type>
+        <Entity>ElixirRegeneration</Entity>
         <Cost>1000</Cost>
       </CellMenu>
       <CellMenu>
-        <PosX>4</PosX>
-        <PosY>3</PosY>
-        <Layer>1</Layer>
-        <TypeObject>PotionOfCheerfulness</TypeObject>
+        <Pos>4,3</Pos>
+        <Type>Research</Type>
+        <Entity>PotionOfCheerfulness</Entity>
         <Cost>200</Cost>
       </CellMenu>
     </CellsMenu>
@@ -1822,10 +1748,9 @@
     </Levels>
     <CellsMenu>
       <CellMenu>
-        <PosX>1</PosX>
-        <PosY>3</PosY>
-        <Layer>1</Layer>
-        <TypeObject>Executioner</TypeObject>
+        <Pos>1,3</Pos>
+        <Type>HireCreature</Type>
+        <Entity>Executioner</Entity>
         <Cost>2500</Cost>
       </CellMenu>
     </CellsMenu>
@@ -1861,10 +1786,15 @@
     </Levels>
     <CellsMenu>
       <CellMenu>
-        <PosX>1</PosX>
-        <PosY>1</PosY>
-        <Layer>1</Layer>
-        <TypeObject>Fireworks</TypeObject>
+        <Pos>1,1</Pos>
+        <Type>Event</Type>
+        <Entity>SmallFireworks</Entity>
+        <Cost>1000</Cost>
+      </CellMenu>
+      <CellMenu>
+        <Pos>2,1</Pos>
+        <Type>Event</Type>
+        <Entity>BigFireworks</Entity>
         <Cost>5000</Cost>
       </CellMenu>
     </CellsMenu>
@@ -2664,58 +2594,49 @@
     </Levels>
     <CellsMenu>
       <CellMenu>
-        <PosX>1</PosX>
-        <PosY>1</PosY>
-        <Layer>1</Layer>
-        <TypeObject>GuildDarkPriest</TypeObject>
+        <Pos>1,1</Pos>
+        <Type>Build</Type>
+        <Entity>GuildDarkPriest</Entity>
       </CellMenu>
       <CellMenu>
-        <PosX>2</PosX>
-        <PosY>1</PosY>
-        <Layer>1</Layer>
-        <TypeObject>GuildPriest</TypeObject>
+        <Pos>2,1</Pos>
+        <Type>Build</Type>
+        <Entity>GuildPriest</Entity>
       </CellMenu>
       <CellMenu>
-        <PosX>3</PosX>
-        <PosY>1</PosY>
-        <Layer>1</Layer>
-        <TypeObject>GuildPaladin</TypeObject>
+        <Pos>3,1</Pos>
+        <Type>Build</Type>
+        <Entity>GuildPaladin</Entity>
       </CellMenu>
       <CellMenu>
-        <PosX>1</PosX>
-        <PosY>2</PosY>
-        <Layer>1</Layer>
-        <TypeObject>GuildBlademaster</TypeObject>
+        <Pos>1,2</Pos>
+        <Type>Build</Type>
+        <Entity>GuildBlademaster</Entity>
       </CellMenu>
       <CellMenu>
-        <PosX>2</PosX>
-        <PosY>2</PosY>
-        <Layer>1</Layer>
-        <TypeObject>GuildBeastmaster</TypeObject>
+        <Pos>2,2</Pos>
+        <Type>Build</Type>
+        <Entity>GuildBeastmaster</Entity>
       </CellMenu>
       <CellMenu>
-        <PosX>3</PosX>
-        <PosY>2</PosY>
-        <Layer>1</Layer>
-        <TypeObject>GuildMarksman</TypeObject>
+        <Pos>3,2</Pos>
+        <Type>Build</Type>
+        <Entity>GuildMarksman</Entity>
       </CellMenu>
       <CellMenu>
-        <PosX>1</PosX>
-        <PosY>3</PosY>
-        <Layer>1</Layer>
-        <TypeObject>GuildIceMage</TypeObject>
+        <Pos>1,3</Pos>
+        <Type>Build</Type>
+        <Entity>GuildIceMage</Entity>
       </CellMenu>
       <CellMenu>
-        <PosX>2</PosX>
-        <PosY>3</PosY>
-        <Layer>1</Layer>
-        <TypeObject>GuildDeathKnight</TypeObject>
+        <Pos>2,3</Pos>
+        <Type>Build</Type>
+        <Entity>GuildDeathKnight</Entity>
       </CellMenu>
       <CellMenu>
-        <PosX>3</PosX>
-        <PosY>3</PosY>
-        <Layer>1</Layer>
-        <TypeObject>GuildFireMage</TypeObject>
+        <Pos>3,3</Pos>
+        <Type>Build</Type>
+        <Entity>GuildFireMage</Entity>
       </CellMenu>
     </CellsMenu>
   </Construction>
@@ -2787,10 +2708,10 @@
     </Levels>
     <CellsMenu>
       <CellMenu>
-        <PosX>1</PosX>
-        <PosY>1</PosY>
-        <Layer>1</Layer>
-        <TypeObject>WolfInMenagerie</TypeObject>
+        <Pos>1,1</Pos>
+        <Type>Research</Type>
+        <Type>Research</Type>
+        <Entity>WolfInMenagerie</Entity>
         <Cost>500</Cost>
         <Requirements>
           <Requirement>
@@ -2801,10 +2722,9 @@
         </Requirements>
       </CellMenu>
       <CellMenu>
-        <PosX>2</PosX>
-        <PosY>1</PosY>
-        <Layer>1</Layer>
-        <TypeObject>BearInMenagerie</TypeObject>
+        <Pos>2,1</Pos>
+        <Type>Research</Type>
+        <Entity>BearInMenagerie</Entity>
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
@@ -2820,10 +2740,9 @@
         </Requirements>
       </CellMenu>
       <CellMenu>
-        <PosX>3</PosX>
-        <PosY>1</PosY>
-        <Layer>1</Layer>
-        <TypeObject>SerpentInMenagerie</TypeObject>
+        <Pos>3,1</Pos>
+        <Type>Research</Type>
+        <Entity>SerpentInMenagerie</Entity>
         <Cost>750</Cost>
         <Requirements>
           <Requirement>
@@ -2878,17 +2797,15 @@
     </Levels>
     <CellsMenu>
       <CellMenu>
-        <PosX>1</PosX>
-        <PosY>1</PosY>
-        <Layer>1</Layer>
-        <TypeObject>PlayingCards</TypeObject>
+        <Pos>1,1</Pos>
+        <Type>Research</Type>
+        <Entity>PlayingCards</Entity>
         <Cost>500</Cost>
       </CellMenu>
       <CellMenu>
-        <PosX>2</PosX>
-        <PosY>1</PosY>
-        <Layer>1</Layer>
-        <TypeObject>Dice</TypeObject>
+        <Pos>2,1</Pos>
+        <Type>Research</Type>
+        <Entity>Dice</Entity>
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
