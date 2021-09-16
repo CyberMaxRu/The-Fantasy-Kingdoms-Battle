@@ -14,6 +14,11 @@ namespace Fantasy_Kingdoms_Battle
         public DescriptorPerk(XmlNode n) : base(n)
         {
 
+            foreach (DescriptorPerk dp in Config.Perks)
+            {
+                Debug.Assert(dp.ID != ID);
+                Debug.Assert(dp.Name != Name);
+            }
         }
     }
 }

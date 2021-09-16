@@ -166,6 +166,14 @@ namespace Fantasy_Kingdoms_Battle
                 TypeAttacks.Add(new DescriptorAttack(n));
             }
 
+            // Загрузка конфигурации перков
+            xmlDoc = CreateXmlDocument(@"Config\Descriptors\Perks.xml");
+
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/Perk"))
+            {
+                Perks.Add(new DescriptorPerk(n));
+            }
+
             // Загрузка конфигурации типов способностей
             xmlDoc = CreateXmlDocument(@"Config\Descriptors\TypeAbilities.xml");
 
@@ -277,6 +285,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<DescriptorConstructionEvent> ConstructionsEvents { get; } = new List<DescriptorConstructionEvent>();
         internal List<DescriptorConstruction> Constructions { get; } = new List<DescriptorConstruction>();
         internal List<DescriptorAttack> TypeAttacks { get; } = new List<DescriptorAttack>();
+        internal List<DescriptorPerk> Perks { get; } = new List<DescriptorPerk>();
         internal List<DescriptorTypeAbility> TypeAbilities { get; } = new List<DescriptorTypeAbility>();
         internal List<DescriptorAbility> Abilities { get; } = new List<DescriptorAbility>();
         internal List<DescriptorSpecialization> Specializations { get; } = new List<DescriptorSpecialization>();

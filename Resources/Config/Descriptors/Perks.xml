@@ -3,7 +3,25 @@
   <Perk>
     <ID>Live</ID>
     <Name>Живой</Name>
-    <Description></Description>
-    <ImageIndex></ImageIndex>
+    <Description>Существо является живым</Description>
+    <ImageIndex>100</ImageIndex>
+  </Perk>
+  <Perk>
+    <ID>SmallFireworksVisitor</ID>
+    <Name>Посмотрел на малый фейерверк</Name>
+    <Description>Посетил сад и посмотрел на малый фейерверк</Description>
+    <ImageIndex>101</ImageIndex>
+  </Perk>
+  <Perk>
+    <ID>DenialExecute</ID>
+    <Name>Нельзя казнить</Name>
+    <Description>Нельзя казнить</Description>
+    <ImageIndex>102</ImageIndex>
+  </Perk>
+  <Perk>
+    <ID>Advisor</ID>
+    <Name>Может давать советы Королю</Name>
+    <Description>-</Description>
+    <ImageIndex>103</ImageIndex>
   </Perk>
 </Descriptors>
