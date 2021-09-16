@@ -42,6 +42,7 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep1Header(Descriptor.Name, "", Descriptor.Description);
             Program.formMain.formHint.AddStep6PlayerItem(this);
             Program.formMain.formHint.AddStep9Descriptors(Modifiers);
+            Program.formMain.formHint.AddStep10Perks(Descriptor.Perks);
         }
 
         internal void AddModificator(DescriptorItem descriptor)

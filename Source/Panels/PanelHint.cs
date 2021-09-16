@@ -37,6 +37,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly VCLabelValue lblGold;
         internal readonly VCLabelValue lblBuilders;
         private readonly List<VCCellSimple> listCell = new List<VCCellSimple>();
+        private readonly List<(VCCellSimple, VCLabel)> listPerks = new List<(VCCellSimple, VCLabel)>();
         internal readonly VCLabel lblDamageMelee;
         internal readonly VCLabel lblDamageArcher;
         internal readonly VCLabel lblDamageMagic;
@@ -211,6 +212,12 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (VCCellSimple cell in listCell)
                 cell.Visible = false;
+
+            foreach ((VCCellSimple, VCLabel) cp in listPerks)
+            {
+                cp.Item1.Visible = false;
+                cp.Item2.Visible = false;
+            }
 
             /*lblDamageMelee.Hide();
             lblDamageArcher.Hide();
@@ -516,6 +523,44 @@ namespace Fantasy_Kingdoms_Battle
                     {
                         VCCellSimple c = new VCCellSimple(this, 0, 0);
                         listCell.Add(c);
+                        return c;
+                    }
+                }
+            }
+        }
+
+        internal void AddStep10Perks(List<DescriptorPerk> list)
+        {
+            if (list.Count > 0)
+            {
+                (VCCellSimple, VCLabel) cell = (null, null);
+
+                for (int i = 0; i < list.Count; i++)
+                {
+                    cell = GetCell(i);
+                    cell.Item1.Visible = true;
+                    cell.Item1.Descriptor = list[i];
+                    cell.Item1.ShiftY = nextTop;
+
+                    cell.Item2.Visible = true;
+                    cell.Item2.Text = list[i].Name;
+                    cell.Item2.ShiftY = cell.Item1.ShiftY;
+
+                    nextTop = cell.Item1.NextTop();
+                }
+
+                (VCCellSimple, VCLabel) GetCell(int index)
+                {
+                    if (index < listCell.Count)
+                        return listPerks[index];
+                    else
+                    {
+                        (VCCellSimple, VCLabel) c = (new VCCellSimple(this, FormMain.Config.GridSize, 0), new VCLabel(this, 0, 0, Program.formMain.fontSmallC, Color.White, 48, ""));
+                        c.Item2.ShiftX = c.Item1.NextLeft();
+                        c.Item2.Width = Width - c.Item2.ShiftX - FormMain.Config.GridSize;
+                        c.Item2.StringFormat.Alignment = StringAlignment.Near;
+                        c.Item2.StringFormat.LineAlignment = StringAlignment.Center;
+                        listPerks.Add(c);
                         return c;
                     }
                 }
