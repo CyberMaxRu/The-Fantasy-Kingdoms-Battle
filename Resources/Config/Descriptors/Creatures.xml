@@ -27,6 +27,12 @@
 	  <MaxLevel>100</MaxLevel>
 	  <CanBuild>False</CanBuild>
 	  <PersistentState>Advisor</PersistentState>
+    <Inventory>
+      <Item>
+        <ID>SertificateAdvisor</ID>
+        <Quantity>1</Quantity>
+      </Item>
+    </Inventory>
   </Creature>
   <Creature>
     <ID>Captain</ID>
