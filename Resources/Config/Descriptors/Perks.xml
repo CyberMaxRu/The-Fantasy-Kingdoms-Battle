@@ -20,7 +20,7 @@
   </Perk>
   <Perk>
     <ID>PerkAdvisor</ID>
-    <Name>Может давать советы Королю</Name>
+    <Name>Советник Короля</Name>
     <Description>-</Description>
     <ImageIndex>103</ImageIndex>
   </Perk>
