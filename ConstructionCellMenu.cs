@@ -117,11 +117,11 @@ namespace Fantasy_Kingdoms_Battle
             Construction.ResearchesAvailabled--;
 
             if (Entity is DescriptorItem di)
-                Construction.Items.Add(new ConstructionProduct(di));
+                Construction.AddProduct(new ConstructionProduct(di));
             else if (Entity is DescriptorAbility da)
-                Construction.Items.Add(new ConstructionProduct(da));
+                Construction.AddProduct(new ConstructionProduct(da));
             else if (Entity is DescriptorGroupItems dgi)
-                Construction.Items.Add(new ConstructionProduct(dgi));
+                Construction.AddProduct(new ConstructionProduct(dgi));
             else
                 throw new Exception("неизвестный тип");
 

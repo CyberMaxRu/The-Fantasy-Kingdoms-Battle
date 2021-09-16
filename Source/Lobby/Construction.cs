@@ -1044,5 +1044,15 @@ namespace Fantasy_Kingdoms_Battle
             Ability a = new Ability(creature, product.DescriptorAbility);
             return a;
         }
+
+        internal void AddProduct(ConstructionProduct cp)
+        {
+            foreach (ConstructionProduct i in Items)
+            {
+                Debug.Assert(i.Descriptor.ID != cp.Descriptor.ID);
+            }
+
+            Items.Add(cp);
+        }
     }
 }
