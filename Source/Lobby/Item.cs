@@ -12,7 +12,7 @@ namespace Fantasy_Kingdoms_Battle
     // Класс предмета у игрока (находящегося на герое или на складе)
     internal sealed class Item : SmallEntity
     {
-        public Item(DescriptorItem i, int quantity)
+        public Item(BigEntity owner, DescriptorItem i, int quantity)
         {
             Debug.Assert(i != null);
             Debug.Assert(quantity > 0);
@@ -21,6 +21,7 @@ namespace Fantasy_Kingdoms_Battle
             Quantity = quantity;
         }
 
+        internal BigEntity Owner { get; private set; }//Владелец предмета (у кого он сейчас находится)
         internal DescriptorItem Descriptor { get; }
         internal int Quantity { get; set; }// Количество предметов
         internal List<DescriptorItem> Modifiers { get; } = new List<DescriptorItem>();// Модификаторы (зачарование, яды) в предмете (оружие, доспехи)

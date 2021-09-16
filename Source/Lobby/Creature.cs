@@ -31,22 +31,22 @@ namespace Fantasy_Kingdoms_Battle
             AddSecondarySkill(FormMain.Config.FindSecondarySkill("HealthSecSkill"));
 
             // Загружаем дефолтный инвентарь
-            foreach (Item i in TypeCreature.Inventory)
+            foreach ((DescriptorItem, int) inv in TypeCreature.Inventory)
             {
-                Inventory.Add(new Item(i.Descriptor, i.Quantity));
+                CreateItem(inv.Item1, inv.Item2);
             }
 
             // Берем оружие и доспехи
             if (TypeCreature.WeaponMelee != null)
             {
-                MeleeWeapon = new Item(TypeCreature.WeaponMelee, 1);
+                MeleeWeapon = new Item(this, TypeCreature.WeaponMelee, 1);
                 //MeleeWeapon.AddModificator(FormMain.Config.FindItem("EnchantWeaponAttack"));
                 //MeleeWeapon.AddModificator(FormMain.Config.FindItem("EnchantWeaponPoison"));
             }
             if (TypeCreature.WeaponRange != null)
-                RangeWeapon = new Item(TypeCreature.WeaponRange, 1);
+                RangeWeapon = new Item(this, TypeCreature.WeaponRange, 1);
             if (TypeCreature.Armour != null)
-                Armour = new Item(TypeCreature.Armour, 1);
+                Armour = new Item(this, TypeCreature.Armour, 1);
             FindQuiver();
             
             if (TypeCreature.CategoryCreature != CategoryCreature.Citizen)
@@ -264,6 +264,13 @@ namespace Fantasy_Kingdoms_Battle
         protected void SortAbilities()
         {
             Abilities.Sort(CompareAbility);
+        }
+
+        internal void CreateItem(DescriptorItem di, int quantity)
+        {
+            Debug.Assert(quantity > 0);
+
+            Inventory.Add(new Item(this, di, quantity));
         }
     }
 }

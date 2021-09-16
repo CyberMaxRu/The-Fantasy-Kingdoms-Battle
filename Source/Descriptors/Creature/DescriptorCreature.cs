@@ -102,20 +102,20 @@ namespace Fantasy_Kingdoms_Battle
             XmlNode ni = n.SelectSingleNode("Inventory");
             if (ni != null)
             {
-                DescriptorItem a;
+                DescriptorItem di;
 
                 foreach (XmlNode l in ni.SelectNodes("Item"))
                 {
-                    a = FormMain.Config.FindItem(XmlUtils.GetStringNotNull(l, "ID"));
+                    di = FormMain.Config.FindItem(GetStringNotNull(l, "ID"));
 
-                    // Проверяем, что такая способность не повторяется
-                    foreach (DescriptorAbility a2 in Abilities)
+                    // Проверяем, что такая способность не повторяется                    
+                    foreach ((DescriptorItem, int) di2 in Inventory)
                     {
-                        if (a.ID == a2.ID)
-                            throw new Exception("Способность " + a.ID + " повторяется в списке способностей героя.");
+                        if (di2.Item1.ID == di.ID)
+                            throw new Exception($"Предмет {di.ID} повторяется в списке способностей существа {ID}.");
                     }
 
-                    Inventory.Add(new Item(a, XmlUtils.GetIntegerNotNull(l, "Quantity")));
+                    Inventory.Add((di, GetIntegerNotNull(l, "Quantity")));
                 }
             }
 
@@ -263,7 +263,7 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorConstruction Construction { get; }
         internal bool CanBuild { get; }
         internal Dictionary<DescriptorItem, int> CarryItems { get; } = new Dictionary<DescriptorItem, int>();
-        internal List<Item> Inventory { get; } = new List<Item>();// Инвентарь
+        internal List<(DescriptorItem item, int quantity)> Inventory { get; } = new List<(DescriptorItem item, int quantity)>();// Дефолтный Инвентарь
         internal int MaxConstructionForBuyPerDay { get; }// Максимальное количество посещений сооружений для покупок в день
         internal string PrefixName { get; }
         internal List<string> Names { get; } = new List<string>();
