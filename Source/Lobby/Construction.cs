@@ -150,7 +150,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(Researches != null);
 
-            List<ConstructionCellMenu> forRemove = new List<ConstructionCellMenu>();
+            /*List<ConstructionCellMenu> forRemove = new List<ConstructionCellMenu>();
 
             foreach (ConstructionCellMenu mc in Researches)
             {
@@ -167,7 +167,7 @@ namespace Fantasy_Kingdoms_Battle
             foreach (ConstructionCellMenu mc in forRemove)
             {
                 Researches.Remove(mc);
-            }
+            }*/
         }
 
         internal bool CanLevelUp()
@@ -433,34 +433,6 @@ namespace Fantasy_Kingdoms_Battle
             return ResearchesAvailabled > 0;
         }
 
-        internal bool CheckRequirementsForResearch(ConstructionCellMenu research)
-        {
-            // Сначала проверяем, построено ли здание
-            if (TypeConstruction.IsInternalConstruction)
-                if (Level == 0)
-                    return false;
-
-            // Потом проверяем наличие золота
-            if (Player.Gold < research.Cost())
-                return false;
-
-            // Проверяем, что еще можно делать исследования
-            if (research.Research.TypeEntity != null)
-                if (!CanResearch())
-                    return false;
-
-            // Проверяем требования к исследованию
-            if (research.Research.TypeConstruction is null)
-                return Player.CheckRequirements(research.Research.Requirements);
-            else
-            {
-                if (research.ConstructionForBuild != null)
-                    return research.ConstructionForBuild.CheckRequirements();
-                else
-                    return research.Player.CanBuildTypeConstruction(research.Research.TypeConstruction);
-            }
-        }
-
         internal List<TextRequirement> GetResearchTextRequirements(ConstructionCellMenu research)
         {
             List<TextRequirement> list = new List<TextRequirement>();
@@ -472,9 +444,9 @@ namespace Fantasy_Kingdoms_Battle
                 if (Level == 0)
                     list.Add(new TextRequirement(false, "Сооружение не построено"));
 
-                Player.TextRequirements(research.Research.Requirements, list);
+                Player.TextRequirements(research.Descriptor.Requirements, list);
 
-                if ((Level > 0) && (research.Research.TypeEntity != null))
+                if ((Level > 0) && (research is CellMenuConstructionResearch))
                 {
                     if (ResearchesAvailabled > 0)
                         list.Add(new TextRequirement(true, $"Доступно к изучению: {ResearchesAvailabled}"));

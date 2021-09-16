@@ -61,13 +61,13 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Text = research.GetCost().ToString();
                 ImageIndex = research.GetImageIndex();
-                ImageIsEnabled = research.CheckRequirements();
+                //ImageIsEnabled = research.CheckRequirements();
 
                 // Накладываем фильтр
                 //if (!research.CheckRequirements())
                 //    ImageFilter = ImageFilter.Disabled;
             }
-            else if ((research != null) && (research.Research.Construction != null))
+/*            else if ((research != null) && (research.Research.Construction != null))
             {
                 if (research.ConstructionForBuild != null)
                 {
@@ -86,7 +86,7 @@ namespace Fantasy_Kingdoms_Battle
                 // Накладываем фильтр
                 //if (!research.CheckRequirements())
                 //    ImageFilter = ImageFilter.Disabled;
-            }
+            }*/
             else
             {
                 ImageIndex = -1;
@@ -96,7 +96,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Visible && (ImageIndex != -1))
             {
-                if (ImageIsEnabled)
+                if (research.CheckRequirements())
                 {
                     if (MouseClicked && MouseOver)
                         g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage((int)MenuCellFilter.Press, true, false), Left, Top);

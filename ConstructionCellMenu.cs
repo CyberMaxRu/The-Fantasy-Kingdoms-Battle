@@ -39,7 +39,13 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override bool CheckRequirements()
         {
-            return Construction.CheckRequirementsForResearch(this);
+            // Сначала проверяем, построено ли здание
+            if (Construction.TypeConstruction.IsInternalConstruction)
+                if (Construction.Level == 0)
+                    return false;
+
+            // Потом проверяем наличие золота
+            return Construction.Player.Gold >= GetCost();
         }
 
         internal override List<TextRequirement> GetTextRequirements()
@@ -94,9 +100,14 @@ namespace Fantasy_Kingdoms_Battle
             return Descriptor.Cost;
         }
 
+        internal override bool CheckRequirements()
+        {
+            return base.CheckRequirements() && Construction.CanResearch();
+        }
+
         internal override void Execute()
         {
-            Debug.Assert(Construction.CheckRequirementsForResearch(this));
+            Debug.Assert(CheckRequirements());
             Debug.Assert(Construction.Researches.IndexOf(this) != -1);
 
             Construction.Researches.Remove(this);
@@ -139,6 +150,22 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorConstruction TypeConstruction { get; set; }// Описатель строимого сооружения
         internal Construction ConstructionForBuild { get; }// Строимое у игрока сооружение
 
+        internal override bool CheckRequirements()
+        {
+            if (!base.CheckRequirements())
+                return false;
+
+            if (TypeConstruction is null)
+                return Construction.Player.CheckRequirements(Descriptor.Requirements);
+            else
+            {
+                if (ConstructionForBuild != null)
+                    return ConstructionForBuild.CheckRequirements();
+                else
+                    return Construction.Player.CanBuildTypeConstruction(TypeConstruction);
+            }
+        }
+
         internal override void Execute()
         {
             if (ConstructionForBuild != null)
@@ -166,7 +193,17 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override int GetCost()
         {
-            return ConstructionForBuild.CostBuyOrUpgrade();
+            if (ConstructionForBuild != null)
+                return ConstructionForBuild.CostBuyOrUpgrade();
+            else
+                return TypeConstruction.Levels[1].Cost;
+        }
+        internal override int GetImageIndex()
+        {
+            if (ConstructionForBuild != null)
+                return ConstructionForBuild.TypeConstruction.ImageIndex;
+            else
+                return TypeConstruction.ImageIndex;
         }
 
         internal override void PrepareHint()
