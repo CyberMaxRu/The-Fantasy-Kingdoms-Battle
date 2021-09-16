@@ -6,15 +6,13 @@ using System.Threading.Tasks;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal sealed class Specialization : SmallEntity
+    internal sealed class Specialization : EntityForCreature
     {
-        public Specialization(Creature c, DescriptorSpecialization type) : base()
+        public Specialization(Creature creature, DescriptorSpecialization type) : base(creature)
         {
-            Creature = c;
             TypeSpecialization = type;
         }
 
-        internal Creature Creature { get; }
         internal DescriptorSpecialization TypeSpecialization { get; }
 
         internal override int GetImageIndex()

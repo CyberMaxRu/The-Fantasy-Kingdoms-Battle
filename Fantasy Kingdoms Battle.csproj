@@ -67,7 +67,9 @@
     <Compile Include="Source\Descriptors\DescriptorWithID.cs" />
     <Compile Include="Source\Lobby\BigEntity.cs" />
     <Compile Include="Source\Lobby\ConstructionProduct.cs" />
+    <Compile Include="Source\Lobby\EntityForCreature.cs" />
     <Compile Include="Source\Lobby\GroupItem.cs" />
+    <Compile Include="Source\Lobby\Perk.cs" />
     <Compile Include="Source\Lobby\SecondarySkill.cs" />
     <Compile Include="Source\Lobby\SmallEntity.cs" />
     <Compile Include="Source\Lobby\Specialization.cs" />

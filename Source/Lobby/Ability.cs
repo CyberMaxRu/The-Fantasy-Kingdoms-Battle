@@ -8,16 +8,14 @@ using System.Threading.Tasks;
 namespace Fantasy_Kingdoms_Battle
 {
     // Cпособность у существа
-    internal sealed class Ability : SmallEntity
+    internal sealed class Ability : EntityForCreature
     {
-        public Ability(Creature creature, DescriptorAbility typeAbility) : base()
+        public Ability(Creature creature, DescriptorAbility typeAbility) : base(creature)
         {
-            Creature = creature;
             Descriptor = typeAbility;
             Pos = creature.Abilities.Count + 1;
         }
 
-        internal Creature Creature { get; }
         internal DescriptorAbility Descriptor { get; }
         internal int Pos { get; }// Позиция, под которой умение было добавлено существу. Применяется для сортировки
 
