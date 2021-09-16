@@ -13,15 +13,21 @@
     <ImageIndex>101</ImageIndex>
   </Perk>
   <Perk>
-    <ID>PerkDenialExecute</ID>
-    <Name>Нельзя казнить</Name>
-    <Description>Нельзя казнить</Description>
-    <ImageIndex>102</ImageIndex>
+    <ID>PerkRetinue</ID>
+    <Name>Свита Короля</Name>
+    <Description>Особа, приближенная к Королю</Description>
+    <ImageIndex>210</ImageIndex>
   </Perk>
   <Perk>
-    <ID>PerkAdvisor</ID>
-    <Name>Советник Короля</Name>
-    <Description>-</Description>
-    <ImageIndex>103</ImageIndex>
+    <ID>PerkDenialExecute</ID>
+    <Name>Нельзя казнить</Name>
+    <Description>Его нельзя казнить</Description>
+    <ImageIndex>211</ImageIndex>
+  </Perk>
+  <Perk>
+    <ID>PerkOrderToKill</ID>
+    <Name>Казнь</Name>
+    <Description>Может казнить героев</Description>
+    <ImageIndex>207</ImageIndex>
   </Perk>
 </Descriptors>

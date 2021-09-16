@@ -66,7 +66,7 @@
   <Creature>
     <ID>Executioner</ID>
     <Name>Палач</Name>
-    <Description>Рубит головы с шеи или плеч - тут как повезет!</Description>
+    <Description>Рубит головы с шеи или с плеч - тут как повезет!</Description>
     <ImageIndex>156</ImageIndex>
     <CategoryCreature>Citizen</CategoryCreature>
     <TypeCreature>Human</TypeCreature>
@@ -76,6 +76,12 @@
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
     <PersistentState>Treasurer</PersistentState>
+    <Inventory>
+      <Item>
+        <ID>SertificateExecutioner</ID>
+        <Quantity>1</Quantity>
+      </Item>
+    </Inventory>
   </Creature>
   <Creature>
     <ID>Peasant</ID>
