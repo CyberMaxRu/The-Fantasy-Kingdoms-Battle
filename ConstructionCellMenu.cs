@@ -243,22 +243,11 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PrepareHint()
         {
-            
-            /*if (ConstructionForBuild != null)
-                ConstructionForBuild.PrepareHintForBuildOrUpgrade();
-            else
-                Player.PrepareHintForBuildTypeConstruction(Research.Construction);
-
-            /*if (!(Research.TypeEntity is null))
-            {
-                string level = Research.TypeEntity is DescriptorAbility ta ? "Требуемый уровень: " + ta.MinUnitLevel.ToString() : "";
-                Program.formMain.formHint.AddStep1Header(Research.TypeEntity.Name, level, Research.TypeEntity.Description);
-                Program.formMain.formHint.AddStep3Requirement(GetTextRequirements());
-                Program.formMain.formHint.AddStep4Gold(Cost(), Cost() <= ObjectOfMap.Player.Gold);
-            }*/
+            Program.formMain.formHint.AddStep1Header(Creature.Name, "", Creature.Description);
+            Program.formMain.formHint.AddStep3Requirement(GetTextRequirements());
+            Program.formMain.formHint.AddStep4Gold(GetCost(), GetCost() <= Construction.Player.Gold);
         }
     }
-
 
     internal sealed class CellMenuConstructionEvent : ConstructionCellMenu
     {
