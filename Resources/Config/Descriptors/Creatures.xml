@@ -13,6 +13,7 @@
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
   	<PersistentState>King</PersistentState>
+    <PrefixName>Король</PrefixName>
   </Creature>
   <Creature>
 	  <ID>Advisor</ID>
