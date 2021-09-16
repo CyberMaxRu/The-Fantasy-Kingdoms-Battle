@@ -496,6 +496,17 @@ namespace Fantasy_Kingdoms_Battle
             throw new Exception($"Тип способности {ID} не найден.");
         }
 
+        internal DescriptorPerk FindPerk(string ID)
+        {
+            foreach (DescriptorPerk p in Perks)
+            {
+                if (p.ID == ID)
+                    return p;
+            }
+
+            throw new Exception($"Перк {ID} не найден.");
+        }
+
         internal DescriptorAbility FindAbility(string ID, bool mustBeExists = true)
         {
             foreach (DescriptorAbility a in Abilities)

@@ -3017,4 +3017,16 @@
     <CategoryItem>Thing</CategoryItem>
     <AvailableForAll>true</AvailableForAll>
   </Item>
+  <Item>
+    <ID>SertificateAdvisor</ID>
+    <Name>Грамота Советника</Name>
+    <Description>Сия грамота подтверждает, что ее владелец является действительным Советником Короля.</Description>
+    <ImageIndex>150</ImageIndex>
+    <CategoryItem>Thing</CategoryItem>
+    <AvailableForAll>true</AvailableForAll>
+    <Perks>
+      <Perk>PerkAdvisor</Perk>
+      <Perk>PerkDenialExecute</Perk>
+    </Perks>
+  </Item>
 </Descriptors>

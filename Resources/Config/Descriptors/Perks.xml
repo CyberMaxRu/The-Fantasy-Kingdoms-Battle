@@ -1,25 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Descriptors>
   <Perk>
-    <ID>Live</ID>
+    <ID>PerkLive</ID>
     <Name>Живой</Name>
     <Description>Существо является живым</Description>
     <ImageIndex>100</ImageIndex>
   </Perk>
   <Perk>
-    <ID>SmallFireworksVisitor</ID>
+    <ID>PerkSmallFireworksVisitor</ID>
     <Name>Посмотрел на малый фейерверк</Name>
     <Description>Посетил сад и посмотрел на малый фейерверк</Description>
     <ImageIndex>101</ImageIndex>
   </Perk>
   <Perk>
-    <ID>DenialExecute</ID>
+    <ID>PerkDenialExecute</ID>
     <Name>Нельзя казнить</Name>
     <Description>Нельзя казнить</Description>
     <ImageIndex>102</ImageIndex>
   </Perk>
   <Perk>
-    <ID>Advisor</ID>
+    <ID>PerkAdvisor</ID>
     <Name>Может давать советы Королю</Name>
     <Description>-</Description>
     <ImageIndex>103</ImageIndex>

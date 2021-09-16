@@ -14,6 +14,7 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class DescriptorItem : DescriptorSmallEntity
     {
         private string nameGroupItem;
+        private List<string> namePerks;
 
         public DescriptorItem(XmlNode n) : base(n)
         {
@@ -56,6 +57,24 @@ namespace Fantasy_Kingdoms_Battle
             else
             {
                 Debug.Assert(TimeOfAction == 0);
+            }
+
+            XmlNode nodePerks = n.SelectSingleNode("Perks");
+            if (nodePerks != null)
+            {
+                Perks = new List<DescriptorPerk>();
+                namePerks = new List<string>();
+
+                foreach (XmlNode l in nodePerks.SelectNodes("Perk"))
+                {
+                    // Проверяем, что такой перк не повторяется
+                    foreach (DescriptorPerk dp in Perks)
+                    {
+                        Debug.Assert(dp.ID != l.InnerText);
+                    }
+
+                    namePerks.Add(l.InnerText);
+                }
             }
 
             /*if (CategoryItem == CategoryItem.RangeWeapon)
@@ -104,6 +123,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal CategoryItem CategoryItem { get; }
         internal DescriptorGroupItems GroupItem { get; private set; }
+        internal List<DescriptorPerk> Perks { get; }// Перки, даваемые предметом
         internal int Position { get; }
         internal int TimeHit { get; }
         internal double VelocityMissile { get; }
@@ -137,6 +157,12 @@ namespace Fantasy_Kingdoms_Battle
                 GroupItem = Config.FindGroupItem(nameGroupItem);
                 GroupItem.Items.Add(this);
                 nameGroupItem = "";
+            }
+
+            if (Perks != null)
+            {
+                foreach (string perk in namePerks)
+                    Perks.Add(Config.FindPerk(perk));
             }
         }
 
