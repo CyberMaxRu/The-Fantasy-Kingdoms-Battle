@@ -20,6 +20,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             CategoryItem = (CategoryItem)Enum.Parse(typeof(CategoryItem), n.SelectSingleNode("CategoryItem").InnerText);
             nameGroupItem = XmlUtils.GetString(n, "GroupItem");
+            Signer = XmlUtils.GetString(n, "Signer");
 
             TimeHit = n.SelectSingleNode("TimeHit") == null ? 0 : Convert.ToInt32(n.SelectSingleNode("TimeHit").InnerText);
             if (n.SelectSingleNode("VelocityMissile") != null)
@@ -124,6 +125,7 @@ namespace Fantasy_Kingdoms_Battle
         internal CategoryItem CategoryItem { get; }
         internal DescriptorGroupItems GroupItem { get; private set; }
         internal List<DescriptorPerk> Perks { get; }// Перки, даваемые предметом
+        internal string Signer { get; }//
         internal int Position { get; }
         internal int TimeHit { get; }
         internal double VelocityMissile { get; }

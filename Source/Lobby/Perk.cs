@@ -9,18 +9,16 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class Perk : EntityForCreature
     {
-        public Perk(Creature creature, DescriptorPerk descriptor, Entity owner, Creature signer = null, int counter = 0) : base(creature)
+        public Perk(Creature creature, DescriptorPerk descriptor, Entity owner, int counter = 0) : base(creature)
         {
             Descriptor = descriptor;
             Owner = owner;
-            Signer = signer;
             Counter = counter;
         }
 
         internal DescriptorPerk Descriptor { get; }
         internal int Counter { get; private set; }// Счетчик действия
         internal Entity Owner { get; }// Владелец перка
-        internal Creature Signer { get; }// Кто подписал (если указывается)
 
         internal override int GetImageIndex() => Descriptor.ImageIndex;
 

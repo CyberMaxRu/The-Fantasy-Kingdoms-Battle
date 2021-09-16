@@ -3023,6 +3023,7 @@
     <Description>Сия грамота подтверждает, что ее владелец является действительным Советником Короля.</Description>
     <ImageIndex>150</ImageIndex>
     <CategoryItem>Thing</CategoryItem>
+    <Signer>King</Signer>
     <AvailableForAll>true</AvailableForAll>
     <Perks>
       <Perk>PerkAdvisor</Perk>

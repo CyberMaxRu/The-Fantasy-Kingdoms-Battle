@@ -271,7 +271,30 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(quantity > 0);
 
-            return new Item(this, di, quantity);
+            Creature signer = null;
+            if (di.Signer.Length > 0)
+            {
+                if (di.Signer == "King")
+                {
+                    if (BattleParticipant is Player p)
+                    {
+                        foreach (Creature c in p.AllHeroes)
+                        {
+                            if (c.TypeCreature.ID == "King")
+                            {
+                                signer = c;
+                                break;
+                            }
+                        }
+
+                        Debug.Assert(signer != null);
+                    }
+                    else
+                        throw new Exception("Не игрок.");
+                }
+            }
+
+            return new Item(this, di, quantity, signer);
         }
 
         internal void AddItemToInventory(Item i)
@@ -297,7 +320,7 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(p.Descriptor.ID != dp.ID);
             }
 
-            Perks.Add(new Perk(this, dp, fromEntity, null, -1));
+            Perks.Add(new Perk(this, dp, fromEntity, -1));
         }
     }
 }
