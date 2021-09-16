@@ -233,7 +233,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override int GetCost()
         {
-            return Creature.Cost;
+            return Descriptor.Cost;
         }
 
         internal override int GetImageIndex()
