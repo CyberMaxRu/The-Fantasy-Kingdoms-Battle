@@ -37,8 +37,10 @@ namespace Fantasy_Kingdoms_Battle
         private readonly PanelWithPanelEntity panelAbilities;
         private readonly VCSeparator separSecSkills;
         private readonly PanelWithPanelEntity panelSecondarySkills;
+        private readonly PanelWithPanelEntity panelPerks;
         private readonly VCTabButton btnInventory;
         private readonly VCTabButton btnAbilities;
+        private readonly VCTabButton btnPerks;
         protected VCCell panelSpecialization;
         private VCCell panelMeleeWeapon;
         private VCCell panelRangeWeapon;
@@ -52,6 +54,7 @@ namespace Fantasy_Kingdoms_Battle
             panelInventory = new PanelWithPanelEntity(4);
             panelAbilities = new PanelWithPanelEntity(4);
             panelSecondarySkills = new PanelWithPanelEntity(4);
+            panelPerks = new PanelWithPanelEntity(4);
 
             lblKindHero = new VCLabel(this, FormMain.Config.GridSize, TopForControls(), Program.formMain.fontMedCaptionC, FormMain.Config.CommonCaptionPage, 16, "");
             lblKindHero.StringFormat.Alignment = StringAlignment.Near;
@@ -84,8 +87,8 @@ namespace Fantasy_Kingdoms_Battle
             pageControl.AddTab("Статистика", FormMain.Config.Gui48_Scroll, null);
             btnInventory = pageControl.AddTab("Инвентарь", FormMain.Config.Gui48_Inventory, panelInventory);
             btnAbilities = pageControl.AddTab("Способности и навыки", FormMain.Config.Gui48_Target, panelAbilitiesAndSecSkills);
-            pageControl.AddTab("История", FormMain.Config.Gui48_Book, null);
-
+            btnPerks = pageControl.AddTab("Перки", FormMain.Config.Gui48_Book, panelPerks);
+            
             panelAbilitiesAndSecSkills.AddControl(panelAbilities);
             panelAbilitiesAndSecSkills.AddControl(panelSecondarySkills);
             panelSecondarySkills.ShiftY = panelAbilities.NextTop();// Это для расчета минимальной высоты
@@ -178,6 +181,7 @@ namespace Fantasy_Kingdoms_Battle
             panelInventory.ApplyList(Creature.Inventory);
             panelAbilities.ApplyList(Creature.Abilities);
             panelSecondarySkills.ApplyList(Creature.SecondarySkills);
+            panelPerks.ApplyList(Creature.Perks);
 
             separSecSkills.ShiftY = panelAbilities.NextTop();
             panelAbilitiesAndSecSkills.ArrangeControl(separSecSkills);
@@ -186,6 +190,7 @@ namespace Fantasy_Kingdoms_Battle
 
             btnInventory.Quantity = Creature.Inventory.Count;
             btnAbilities.Quantity = Creature.Abilities.Count;
+            btnPerks.Quantity = Creature.Perks.Count;
 
             base.Draw(g);
             

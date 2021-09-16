@@ -17,6 +17,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(i != null);
             Debug.Assert(quantity > 0);
 
+            Owner = owner;
             Descriptor = i;
             Quantity = quantity;
         }

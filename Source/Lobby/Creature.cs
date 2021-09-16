@@ -33,7 +33,7 @@ namespace Fantasy_Kingdoms_Battle
             // Загружаем дефолтный инвентарь
             foreach ((DescriptorItem, int) inv in TypeCreature.Inventory)
             {
-                CreateItem(inv.Item1, inv.Item2);
+                AddItemToInventory(CreateItem(inv.Item1, inv.Item2));
             }
 
             // Берем оружие и доспехи
@@ -75,6 +75,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<SecondarySkill> SecondarySkills { get; } = new List<SecondarySkill>();
         internal List<Item> Inventory { get; } = new List<Item>();
         internal List<Ability> Abilities { get; } = new List<Ability>();// Cпособности
+        internal List<Perk> Perks { get; } = new List<Perk>();// Перки
         internal Item MeleeWeapon { get; private set; }// Рукопашное оружие (ближнего боя)
         internal Item RangeWeapon { get; private set; }// Стрелковое оружие (дальнего боя)
         internal Item Armour { get; private set; }// Доспех        
@@ -266,11 +267,37 @@ namespace Fantasy_Kingdoms_Battle
             Abilities.Sort(CompareAbility);
         }
 
-        internal void CreateItem(DescriptorItem di, int quantity)
+        internal Item CreateItem(DescriptorItem di, int quantity)
         {
             Debug.Assert(quantity > 0);
 
-            Inventory.Add(new Item(this, di, quantity));
+            return new Item(this, di, quantity);
+        }
+
+        internal void AddItemToInventory(Item i)
+        {
+            Debug.Assert(i.Owner == this);
+
+            Inventory.Add(i);
+
+            // Добавляем перки
+            if (i.Descriptor.Perks != null)
+            {
+                foreach (DescriptorPerk dp in i.Descriptor.Perks)
+                {
+                    AddPerk(dp, i);
+                }
+            }
+        }
+
+        private void AddPerk(DescriptorPerk dp, Entity fromEntity)
+        {
+            foreach (Perk p in Perks)
+            {
+                Debug.Assert(p.Descriptor.ID != dp.ID);
+            }
+
+            Perks.Add(new Perk(this, dp, fromEntity, null, -1));
         }
     }
 }
