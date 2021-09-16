@@ -965,10 +965,16 @@
         </Requirements>
       </CellMenu>
       <CellMenu>
-        <Pos>1,3</Pos>
+        <Pos>4,2</Pos>
         <Type>Research</Type>
         <Entity>Horseshoe</Entity>
         <Cost>250</Cost>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,3</Pos>
+        <Type>Event</Type>
+        <Entity>EventFair</Entity>
+        <Cost>1000</Cost>
       </CellMenu>
     </CellsMenu>
   </Construction>
@@ -1339,6 +1345,12 @@
         <Pos>2,1</Pos>
         <Type>Research</Type>
         <Entity>TavernMeat</Entity>
+        <Cost>500</Cost>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,3</Pos>
+        <Type>Event</Type>
+        <Entity>EventFeast</Entity>
         <Cost>500</Cost>
       </CellMenu>
     </CellsMenu>
@@ -1772,16 +1784,10 @@
     </Levels>
     <CellsMenu>
       <CellMenu>
-        <Pos>1,1</Pos>
+        <Pos>1,3</Pos>
         <Type>Event</Type>
-        <Entity>SmallFireworks</Entity>
-        <Cost>1000</Cost>
-      </CellMenu>
-      <CellMenu>
-        <Pos>2,1</Pos>
-        <Type>Event</Type>
-        <Entity>BigFireworks</Entity>
-        <Cost>5000</Cost>
+        <Entity>EventFireworks</Entity>
+        <Cost>2500</Cost>
       </CellMenu>
     </CellsMenu>
   </Construction>

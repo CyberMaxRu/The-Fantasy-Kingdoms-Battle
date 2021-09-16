@@ -7,10 +7,10 @@
     <ImageIndex>100</ImageIndex>
   </Perk>
   <Perk>
-    <ID>PerkSmallFireworksVisitor</ID>
-    <Name>Посмотрел на малый фейерверк</Name>
-    <Description>Посетил сад и посмотрел на малый фейерверк</Description>
-    <ImageIndex>101</ImageIndex>
+    <ID>PerkFireworksVisitor</ID>
+    <Name>Посмотрел фейерверк</Name>
+    <Description></Description>
+    <ImageIndex>208</ImageIndex>
   </Perk>
   <Perk>
     <ID>PerkRetinue</ID>
