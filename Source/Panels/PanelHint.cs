@@ -497,8 +497,11 @@ namespace Fantasy_Kingdoms_Battle
             nextTop = GuiUtils.NextTop(lblDefenseMelee);*/
         }
 
-        internal void AddStep85Signer(Hero signer)
+        internal void AddStep85Signer(Hero signer, Entity owner = null)
         {
+            Debug.Assert(!((signer != null) && (owner != null)));
+            Debug.Assert(!((signer == null) && (owner == null)));
+
             if (signer != null)
             {
                 lblSigner.ShiftY = nextTop;
@@ -507,6 +510,21 @@ namespace Fantasy_Kingdoms_Battle
 
                 nextTop = lblSigner.NextTop();
             }
+
+            if (owner != null)
+            {
+                string source = null;
+                if (owner is Item i)
+                    source = i.Descriptor.Name;
+                Debug.Assert(source != null);
+
+                lblSigner.ShiftY = nextTop;
+                lblSigner.Text = $"{source}";
+                lblSigner.Visible = true;
+
+                nextTop = lblSigner.NextTop();
+            }
+
         }
 
 

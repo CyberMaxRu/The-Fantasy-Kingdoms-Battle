@@ -11,6 +11,10 @@ namespace Fantasy_Kingdoms_Battle
     {
         public Perk(Creature creature, DescriptorPerk descriptor, Entity owner, int counter = 0) : base(creature)
         {
+            Debug.Assert(creature != null);
+            Debug.Assert(descriptor != null);
+            Debug.Assert(owner != null);
+
             Descriptor = descriptor;
             Owner = owner;
             Counter = counter;
@@ -25,6 +29,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override void PrepareHint()
         {
             Program.formMain.formHint.AddStep1Header(Descriptor.Name, "", Descriptor.Description, Descriptor.ImageIndex, false);
+            Program.formMain.formHint.AddStep85Signer(null, Owner);
         }
     }
 }
