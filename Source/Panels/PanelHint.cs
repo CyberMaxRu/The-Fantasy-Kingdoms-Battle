@@ -36,6 +36,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly VCLabelValue lblBuildersPerDay;
         internal readonly VCLabelValue lblGold;
         internal readonly VCLabelValue lblBuilders;
+        internal readonly VCLabel lblSigner;
         private readonly List<VCCellSimple> listCell = new List<VCCellSimple>();
         private readonly List<(VCCellSimple, VCLabel)> listPerks = new List<(VCCellSimple, VCLabel)>();
         internal readonly VCLabel lblDamageMelee;
@@ -99,6 +100,9 @@ namespace Fantasy_Kingdoms_Battle
             lblBuilders.ImageIndex = FormMain.GUI_16_BUILDER;
             lblBuilders.Width = widthControl;
 
+            lblSigner = new VCLabel(this, FormMain.Config.GridSize, lblGold.NextTop(), Program.formMain.fontSmallC, Color.SkyBlue, 16, "");
+            lblSigner.StringFormat.Alignment = StringAlignment.Near;
+            lblSigner.Width = widthControl;
             /*            lblDamageMelee = new Label()
                         {
                             Parent = this,
@@ -201,6 +205,7 @@ namespace Fantasy_Kingdoms_Battle
             lblIncome.Visible = false;
             lblGreatnessAdd.Visible = false;
             lblBuildersPerDay.Visible = false;
+            lblBuildersPerDay.Visible = false;
 
             foreach (VCText l in listRequirements)
                 l.Dispose();
@@ -209,6 +214,7 @@ namespace Fantasy_Kingdoms_Battle
 
             lblGold.Visible = false;
             lblBuilders.Visible = false;
+            lblSigner.Visible = false;
 
             foreach (VCCellSimple cell in listCell)
                 cell.Visible = false;
@@ -490,6 +496,19 @@ namespace Fantasy_Kingdoms_Battle
 
             nextTop = GuiUtils.NextTop(lblDefenseMelee);*/
         }
+
+        internal void AddStep85Signer(Hero signer)
+        {
+            if (signer != null)
+            {
+                lblSigner.ShiftY = nextTop;
+                lblSigner.Text = $"Подписал: {signer.GetNameHero()}";
+                lblSigner.Visible = true;
+
+                nextTop = lblSigner.NextTop();
+            }
+        }
+
 
         internal void AddStep9Descriptors(List<DescriptorItem> list)
         {

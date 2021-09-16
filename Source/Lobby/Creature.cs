@@ -271,14 +271,14 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(quantity > 0);
 
-            Creature signer = null;
+            Hero signer = null;
             if (di.Signer.Length > 0)
             {
                 if (di.Signer == "King")
                 {
                     if (BattleParticipant is Player p)
                     {
-                        foreach (Creature c in p.AllHeroes)
+                        foreach (Hero c in p.AllHeroes)
                         {
                             if (c.TypeCreature.ID == "King")
                             {
