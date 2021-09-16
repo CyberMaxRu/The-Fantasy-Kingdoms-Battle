@@ -257,6 +257,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal DescriptorConstructionEvent ConstructionEvent { get; }
+        internal int Cooldown { get; private set; }
 
         internal override void Execute()
         {
@@ -264,8 +265,21 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Construction.Researches.IndexOf(this) != -1);
 
             Construction.Player.SpendGold(GetCost());
-
             Construction.AddProduct(new ConstructionProduct(ConstructionEvent));
+
+            Cooldown = ConstructionEvent.Cooldown;
+        }
+
+        internal override bool CheckRequirements()
+        {
+            return (Cooldown == 0) && base.CheckRequirements();
+        }
+
+        internal override List<TextRequirement> GetTextRequirements()
+        {
+            List<TextRequirement> list = base.GetTextRequirements();
+            list.Add(new TextRequirement(Cooldown == 0, Cooldown == 0 ? "Событие можно проводить" : $"Осталось подождать дней: {Cooldown}"));
+            return list;
         }
 
         internal override int GetCost()
