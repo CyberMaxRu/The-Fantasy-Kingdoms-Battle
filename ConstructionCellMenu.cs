@@ -283,5 +283,12 @@ namespace Fantasy_Kingdoms_Battle
         {
             return ConstructionEvent.ImageIndex;
         }
+
+        internal override void PrepareHint()
+        {
+            Program.formMain.formHint.AddStep1Header(ConstructionEvent.Name, $"Длительность: {ConstructionEvent.Duration} дн.", ConstructionEvent.Description);
+            Program.formMain.formHint.AddStep3Requirement(GetTextRequirements());
+            Program.formMain.formHint.AddStep4Gold(GetCost(), GetCost() <= Construction.Player.Gold);
+        }
     }
 }
