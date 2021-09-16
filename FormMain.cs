@@ -589,7 +589,7 @@ namespace Fantasy_Kingdoms_Battle
                 CellsMenu = new VCMenuCell[PANEL_MENU_CELLS.Height, PANEL_MENU_CELLS.Width];
                 for (int y = 0; y < PANEL_MENU_CELLS.Height; y++)
                     for (int x = 0; x < PANEL_MENU_CELLS.Width; x++)
-                        CellsMenu[y, x] = new VCMenuCell(bitmapMenu, 25 + (x * (imListObjects48.Size + DISTANCE_BETWEEN_CELLS)), 95 + (y * (imListObjects48.Size + DISTANCE_BETWEEN_CELLS)));
+                        CellsMenu[y, x] = new VCMenuCell(bitmapMenu, 22 + (x * (imListObjects48.Size + DISTANCE_BETWEEN_CELLS)), 95 + (y * (imListObjects48.Size + DISTANCE_BETWEEN_CELLS)));
 
                 labelMenuNameObject = new VCLabel(bitmapMenu, 144, 67, fontSmall, Color.White, 14, "");
                 labelMenuNameObject.Width = 131;
