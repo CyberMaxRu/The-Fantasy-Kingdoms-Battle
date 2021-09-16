@@ -35,8 +35,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal Construction Construction { get; }
 
-        internal override int GetImageIndex() => Construction.TypeConstruction.ImageIndex;
-
         internal override bool CheckRequirements()
         {
             // Сначала проверяем, построено ли здание
@@ -128,6 +126,11 @@ namespace Fantasy_Kingdoms_Battle
                 throw new Exception("неизвестный тип");
 
             Program.formMain.SetNeedRedrawFrame();
+        }
+
+        internal override int GetImageIndex()
+        {
+            return Entity.ImageIndex;
         }
     }
 
@@ -233,6 +236,11 @@ namespace Fantasy_Kingdoms_Battle
             return Creature.Cost;
         }
 
+        internal override int GetImageIndex()
+        {
+            return Creature.ImageIndex;
+        }
+
         internal override void PrepareHint()
         {
             
@@ -269,6 +277,11 @@ namespace Fantasy_Kingdoms_Battle
         internal override int GetCost()
         {
             return Descriptor.Cost;
+        }
+
+        internal override int GetImageIndex()
+        {
+            return ConstructionEvent.ImageIndex;
         }
     }
 }

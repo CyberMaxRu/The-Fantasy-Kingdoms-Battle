@@ -10,10 +10,10 @@
     <ShowGrid>False</ShowGrid>
   </Battlefield>
   <Sound>
-    <PlaySound>True</PlaySound>
+    <PlaySound>False</PlaySound>
     <PlayMusic>False</PlayMusic>
   </Sound>
   <Interface>
-    <ShowShortNames>True</ShowShortNames>
+    <ShowShortNames>False</ShowShortNames>
   </Interface>
 </Settings>
