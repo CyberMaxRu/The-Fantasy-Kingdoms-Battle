@@ -260,7 +260,12 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Execute()
         {
-            
+            Debug.Assert(CheckRequirements());
+            Debug.Assert(Construction.Researches.IndexOf(this) != -1);
+
+            Construction.Player.SpendGold(GetCost());
+
+            Construction.AddProduct(new ConstructionProduct(ConstructionEvent));
         }
 
         internal override int GetCost()
