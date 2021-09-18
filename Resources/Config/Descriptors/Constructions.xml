@@ -269,7 +269,7 @@
   </Construction>
   <Construction>
     <ID>GuildMage</ID>
-    <Name>Гильдия магов</Name>
+    <Name>Башня магов</Name>
     <Description>- Позволяет нанимать магов//- В гильдии исследуют и продают особые способности магов//- Здесь исследуют разнообразные заклинания</Description>
     <ImageIndex>43</ImageIndex>
     <TypeConstruction>Guild</TypeConstruction>
@@ -590,10 +590,10 @@
     </CellsMenu>
   </Construction>
   <Construction>
-    <ID>GuildRogue</ID>
-    <Name>Гильдия разбойниц</Name>
-    <Description>- Позволяет нанимать разбойниц//- В гильдии исследуют и продают особые способности разбойниц//- Здесь исследуют и продают яды для оружия//- Здесь исследуют способность "Вымогательство"</Description>
-    <ImageIndex>47</ImageIndex>
+    <ID>GuardBarrack</ID>
+    <Name>Казарма стражи</Name>
+    <Description>- Позволяет нанимать стражу</Description>
+    <ImageIndex>157</ImageIndex>
     <TypeConstruction>Guild</TypeConstruction>
     <Category>Guild</Category>
     <Page>Guild</Page>
@@ -611,6 +611,59 @@
         <Builders>1</Builders>
         <Income>0</Income>
         <MaxHeroes>10</MaxHeroes>
+      </Level>
+      <Level>
+        <Pos>2</Pos>
+        <Cost>450</Cost>
+        <Builders>1</Builders>
+        <Income>0</Income>
+        <MaxHeroes>20</MaxHeroes>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>Dungeon</Construction>
+            <Level>1</Level>
+          </Requirement>
+        </Requirements>
+      </Level>
+      <Level>
+        <Pos>3</Pos>
+        <Cost>450</Cost>
+        <Builders>1</Builders>
+        <Income>0</Income>
+        <MaxHeroes>30</MaxHeroes>
+      </Level>
+    </Levels>
+  </Construction>
+  <Construction>
+    <ID>GuildRogue</ID>
+    <Name>Гильдия воровок</Name>
+    <Description>- Позволяет нанимать воровок//- В гильдии исследуют и продают особые способности разбойниц//- Здесь исследуют и продают яды для оружия//- Здесь исследуют способность "Вымогательство"</Description>
+    <ImageIndex>47</ImageIndex>
+    <TypeConstruction>Guild</TypeConstruction>
+    <Category>Guild</Category>
+    <Page>Guild</Page>
+    <Line>3</Line>
+    <Pos>4</Pos>
+    <DefaultLevel>0</DefaultLevel>
+    <MaxLevel>3</MaxLevel>
+    <GoldByConstruction>0</GoldByConstruction>
+    <ResearchesPerDay>1</ResearchesPerDay>
+    <SoundSelect>guild_rogue_select.wav</SoundSelect>
+    <Levels>
+      <Level>
+        <Pos>1</Pos>
+        <Cost>450</Cost>
+        <Builders>1</Builders>
+        <Income>0</Income>
+        <MaxHeroes>10</MaxHeroes>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>Castle</Construction>
+            <Level>2</Level>
+          </Requirement>
+        </Requirements>
       </Level>
       <Level>
         <Pos>2</Pos>
