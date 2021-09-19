@@ -134,7 +134,6 @@ namespace Fantasy_Kingdoms_Battle
             if (nr != null)
             {
                 Researches = new DescriptorCellMenuForConstruction[Config.PlateHeight, Config.PlateWidth];
-                List<DescriptorCellMenu> listMenu = new List<DescriptorCellMenu>();
 
                 DescriptorCellMenuForConstruction research;
 
@@ -144,13 +143,13 @@ namespace Fantasy_Kingdoms_Battle
                     Debug.Assert(Researches[research.Coord.Y, research.Coord.X] == null,
                         $"У {ID} в ячейке ({research.Coord.Y}, {research.Coord.X}) уже есть сущность.");
 
-                    foreach (DescriptorCellMenu tcm in listMenu)
+                    foreach (DescriptorCellMenu tcm in ListResearches)
                     {
                         //Debug.Assert(research.Construction. NameTypeObject != tcm.NameTypeObject, $"У {ID} в меню повторяется объект {research.NameTypeObject}.");
                     }
 
                     Researches[research.Coord.Y, research.Coord.X] = research;
-                    listMenu.Add(research);
+                    ListResearches.Add(research);
                 }
             }
 
@@ -237,6 +236,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int ResearchesPerDay { get; }// Количество исследований в сооружении в день
         internal bool HasTreasury { get; }// Имеет собственную казну (Замок, гильдии, храмы)
         internal int GoldByConstruction { get; }// Количество золота в казне при постройке
+        internal List<DescriptorCellMenuForConstruction> ListResearches { get; } = new List<DescriptorCellMenuForConstruction>();
         internal DescriptorCellMenuForConstruction[,] Researches;
         //
         internal LevelConstruction[] Levels;

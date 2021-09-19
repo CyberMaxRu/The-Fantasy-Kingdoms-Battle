@@ -144,6 +144,16 @@ namespace Fantasy_Kingdoms_Battle
             nameConstruction = "";
             Goods = Config.FindItem(nameGoods);
             nameGoods = "";
+
+            bool founded = false;
+            foreach (DescriptorCellMenuForConstruction cm in Construction.ListResearches)
+                if (cm.NameEntity == Goods.ID)
+                {
+                    founded = true;
+                    break;
+                }
+
+            Debug.Assert(founded, $"Товар {Goods.ID} не найден в {Construction.ID}.");
         }
 
         internal override TextRequirement GetTextRequirement(Player p)
