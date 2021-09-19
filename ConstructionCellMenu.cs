@@ -77,6 +77,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(d.Cost > 0, $"У {d.NameEntity} не указана цена.");
 
+            Descriptor = d;
+
             Entity = Config.FindAbility(d.NameEntity, false);
             if (Entity is null)
                 Entity = Config.FindItem(d.NameEntity, false);
@@ -84,11 +86,13 @@ namespace Fantasy_Kingdoms_Battle
                 Entity = Config.FindGroupItem(d.NameEntity, false);
         }
 
+        internal new DescriptorCellMenuForConstruction Descriptor { get; }
         internal DescriptorSmallEntity Entity { get; }
         internal override void PrepareHint()
         {
             string level = Entity is DescriptorAbility ta ? "Требуемый уровень: " + ta.MinUnitLevel.ToString() : "";
             Program.formMain.formHint.AddStep1Header(Entity.Name, level, Entity.Description);
+            Program.formMain.formHint.AddStep2Income(Descriptor.Income);
             Program.formMain.formHint.AddStep3Requirement(GetTextRequirements());
             Program.formMain.formHint.AddStep4Gold(GetCost(), GetCost() <= Construction.Player.Gold);
         }

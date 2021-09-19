@@ -2856,12 +2856,14 @@
         <Type>Research</Type>
         <Entity>PlayingLotto</Entity>
         <Cost>500</Cost>
+        <Income>50</Income>
       </CellMenu>
       <CellMenu>
         <Pos>1,2</Pos>
         <Type>Research</Type>
         <Entity>Dice</Entity>
         <Cost>1000</Cost>
+        <Income>100</Income>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2875,6 +2877,7 @@
         <Type>Research</Type>
         <Entity>PlayingCards</Entity>
         <Cost>1500</Cost>
+        <Income>200</Income>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>

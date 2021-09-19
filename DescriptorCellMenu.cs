@@ -56,8 +56,10 @@ namespace Fantasy_Kingdoms_Battle
         {
             Type = (TypeCellMenuForConstruction)Enum.Parse(typeof(TypeCellMenuForConstruction), n.SelectSingleNode("Type").InnerText);
             NameEntity = GetStringNotNull(n, "Entity");
+            Income = GetInteger(n, "Income");
 
             Debug.Assert(NameEntity.Length > 0);
+            Debug.Assert(Income >= 0);
 
             XmlNode next = n.SelectSingleNode("CellMenu");
             if (next != null)
@@ -69,6 +71,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal TypeCellMenuForConstruction Type { get; }
         internal string NameEntity { get; set; }
+        internal int Income { get; }// Прибавление дохода
         internal DescriptorCellMenu NextCell { get; }
     }
 }
