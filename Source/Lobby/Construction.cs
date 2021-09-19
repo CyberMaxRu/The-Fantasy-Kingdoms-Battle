@@ -1054,5 +1054,28 @@ namespace Fantasy_Kingdoms_Battle
 
             Items.Add(cp);
         }
+
+        internal bool GoodsExists(DescriptorItem item)
+        {
+            foreach (ConstructionCellMenu cm in Researches)
+            {
+                if (cm is CellMenuConstructionResearch cmr)
+                    if (cmr.Entity.ID == item.ID)
+                        return true;
+            }
+
+            return false;
+        }
+
+        internal bool GoodsAvailabled(DescriptorItem item)
+        {
+            foreach (ConstructionProduct cp in Items)
+            {
+                if (cp.Descriptor.ID == item.ID)
+                    return true;
+            }
+
+            return false;
+        }
     }
 }

@@ -115,4 +115,40 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override TextRequirement GetTextRequirement(Player p) => new TextRequirement(CheckRequirement(p), $"{typeConstruction.Name}: {quantity} шт.");
     }
+
+    internal sealed class RequirementGoods : Requirement
+    {
+        private DescriptorConstruction Construction;
+        private string nameConstruction;
+        private DescriptorItem Goods;
+        private string nameGoods;
+        public RequirementGoods(XmlNode n) : base(n)
+        {
+            nameConstruction = XmlUtils.GetStringNotNull(n, "Construction");
+            nameGoods = XmlUtils.GetStringNotNull(n, "Goods");
+
+            Debug.Assert(nameConstruction.Length > 0);
+            Debug.Assert(nameGoods.Length > 0);
+        }
+
+        internal override bool CheckRequirement(Player p)
+        {
+            return p.FindConstruction(Construction.ID).GoodsAvailabled(Goods);
+        }
+
+        internal override void TuneDeferredLinks()
+        {
+            base.TuneDeferredLinks();
+
+            Construction = Config.FindConstruction(nameConstruction);
+            nameConstruction = "";
+            Goods = Config.FindItem(nameGoods);
+            nameGoods = "";
+        }
+
+        internal override TextRequirement GetTextRequirement(Player p)
+        {
+           return new TextRequirement(CheckRequirement(p), $"{Goods.Name} в {Construction.Name}");
+        }            
+    }
 }
