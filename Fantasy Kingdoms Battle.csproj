@@ -175,7 +175,7 @@
     <Compile Include="Source\VisualControls\VCCell.cs" />
     <Compile Include="ConstructionCellMenu.cs" />
     <Compile Include="Source\Lobby\Requirement.cs" />
-    <Compile Include="DescriptorCellMenu.cs" />
+    <Compile Include="Source\Descriptors\DescriptorCellMenu.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Source\TypeLobby\TypeLobby.cs" />
     <Compile Include="Source\Descriptors\Construction\LevelConstruction.cs" />
