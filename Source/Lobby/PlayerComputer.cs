@@ -42,8 +42,8 @@ namespace Fantasy_Kingdoms_Battle
             }
             else if (Lobby.Day == 2)
             {
-                GetPlayerConstruction(FormMain.Config.FindConstruction("GuildRogue")).Build();
-                HireHeroes(GetPlayerConstruction(FormMain.Config.FindConstruction("GuildRogue")), 4);
+                //GetPlayerConstruction(FormMain.Config.FindConstruction("GuardBarrack")).Build();
+                //HireHeroes(GetPlayerConstruction(FormMain.Config.FindConstruction("GuardBarrack")), 4);
             }
             else if (Lobby.Day == 3)
             {
@@ -55,11 +55,11 @@ namespace Fantasy_Kingdoms_Battle
                 GetPlayerConstruction(FormMain.Config.FindConstruction("GuildCleric")).Build();
                 HireHeroes(GetPlayerConstruction(FormMain.Config.FindConstruction("GuildCleric")), 4);
             }
-            else if (Lobby.Day == 4)
+            /*else if (Lobby.Day == 4)
             {
                 GetPlayerConstruction(FormMain.Config.FindConstruction("GuildMage")).Build();
                 HireHeroes(GetPlayerConstruction(FormMain.Config.FindConstruction("GuildMage")), 4);
-            }
+            }*/
 
 
             System.Windows.Forms.Application.DoEvents();
