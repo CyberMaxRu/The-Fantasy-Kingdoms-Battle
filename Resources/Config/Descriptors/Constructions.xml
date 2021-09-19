@@ -2813,26 +2813,39 @@
     <Line>3</Line>
     <Pos>4</Pos>
     <DefaultLevel>0</DefaultLevel>
-    <MaxLevel>2</MaxLevel>
+    <MaxLevel>3</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>gambling_hall_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Pos>1</Pos>
-        <Cost>250</Cost>
+        <Cost>1000</Cost>
         <Builders>1</Builders>
-        <Income>0</Income>
+        <Income>250</Income>
       </Level>
       <Level>
         <Pos>2</Pos>
-        <Cost>1000</Cost>
+        <Cost>2000</Cost>
         <Builders>1</Builders>
-        <Income>0</Income>
+        <Income>500</Income>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Castle</Construction>
             <Level>2</Level>
+          </Requirement>
+        </Requirements>
+      </Level>
+      <Level>
+        <Pos>3</Pos>
+        <Cost>3000</Cost>
+        <Builders>1</Builders>
+        <Income>750</Income>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>GoodsInConstruction</TypeRequirement>
+            <Construction>Tavern</Construction>
+            <Goods>TavernBeer</Goods>
           </Requirement>
         </Requirements>
       </Level>
