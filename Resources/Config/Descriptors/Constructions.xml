@@ -2854,11 +2854,11 @@
       <CellMenu>
         <Pos>1,1</Pos>
         <Type>Research</Type>
-        <Entity>PlayingCards</Entity>
+        <Entity>PlayingLotto</Entity>
         <Cost>500</Cost>
       </CellMenu>
       <CellMenu>
-        <Pos>2,1</Pos>
+        <Pos>1,2</Pos>
         <Type>Research</Type>
         <Entity>Dice</Entity>
         <Cost>1000</Cost>
@@ -2867,6 +2867,19 @@
             <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>GamblingHall</Construction>
             <Level>2</Level>
+          </Requirement>
+        </Requirements>
+      </CellMenu>
+      <CellMenu>
+        <Pos>1,3</Pos>
+        <Type>Research</Type>
+        <Entity>PlayingCards</Entity>
+        <Cost>1500</Cost>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>GamblingHall</Construction>
+            <Level>3</Level>
           </Requirement>
         </Requirements>
       </CellMenu>

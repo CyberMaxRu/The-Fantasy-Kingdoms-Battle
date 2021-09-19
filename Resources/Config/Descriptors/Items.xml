@@ -2960,7 +2960,7 @@
     <Name>Карточные игры</Name>
     <Description>- Организовать столы для карточных игр</Description>
     <ImageIndex>203</ImageIndex>
-    <CategoryItem>Thing</CategoryItem>
+    <CategoryItem>Game</CategoryItem>
     <Heroes>
       <Hero>Hunter</Hero>
       <Hero>Elf</Hero>
@@ -2972,7 +2972,7 @@
     <Name>Игральные кости</Name>
     <Description>- Организовать столы для игр в кости</Description>
     <ImageIndex>204</ImageIndex>
-    <CategoryItem>Thing</CategoryItem>
+    <CategoryItem>Game</CategoryItem>
     <Heroes>
       <Hero>Warrior</Hero>
       <Hero>Dwarf</Hero>
@@ -3033,7 +3033,7 @@
   <Item>
     <ID>SertificateExecutioner</ID>
     <Name>Удостоверение палача</Name>
-    <Description>Сия грамота подтверждает, что ее владелец является Палачом Короля.</Description>
+    <Description>Сия грамота подтверждает, что ее владелец является палачом Короля.</Description>
     <ImageIndex>209</ImageIndex>
     <CategoryItem>Thing</CategoryItem>
     <Signer>King</Signer>
@@ -3042,5 +3042,13 @@
       <Perk>PerkOrderToKill</Perk>
       <Perk>PerkDenialExecute</Perk>
     </Perks>
+  </Item>
+  <Item>
+    <ID>PlayingLotto</ID>
+    <Name>Лото</Name>
+    <Description>Игра в лото.</Description>
+    <ImageIndex>212</ImageIndex>
+    <CategoryItem>Game</CategoryItem>
+    <AvailableForAll>true</AvailableForAll>
   </Item>
 </Descriptors>
