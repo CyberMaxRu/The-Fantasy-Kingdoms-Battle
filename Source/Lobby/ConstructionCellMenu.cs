@@ -39,12 +39,15 @@ namespace Fantasy_Kingdoms_Battle
         {
             // Сначала проверяем, построено ли здание
             if (Construction.TypeConstruction.IsInternalConstruction)
-                if (Construction.Level == 0)
-                    return false;
+                if (ConstructionMustMeConstructed())
+                    if (Construction.Level == 0)
+                        return false;
 
             // Потом проверяем наличие золота
             return Construction.Player.Gold >= GetCost();
         }
+
+        protected virtual bool ConstructionMustMeConstructed() => true;
 
         internal override List<TextRequirement> GetTextRequirements()
         {
@@ -318,6 +321,8 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal new DescriptorCellMenuForConstructionLevel Descriptor { get; }
+
+        protected override bool ConstructionMustMeConstructed() => false;
 
         internal override List<TextRequirement> GetTextRequirements()
         {
