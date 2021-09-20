@@ -178,7 +178,6 @@
     <Compile Include="Source\Descriptors\DescriptorCellMenu.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Source\TypeLobby\TypeLobby.cs" />
-    <Compile Include="Source\Descriptors\Construction\LevelConstruction.cs" />
     <Compile Include="Source\Lobby\Lobby.cs" />
     <Compile Include="Source\Panels\PanelHeroInfo.cs" />
     <Compile Include="Source\Lobby\HeroParameters.cs" />
