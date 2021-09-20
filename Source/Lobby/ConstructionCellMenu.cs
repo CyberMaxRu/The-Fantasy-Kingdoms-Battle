@@ -63,6 +63,8 @@ namespace Fantasy_Kingdoms_Battle
                     return new CellMenuConstructionHireCreature(c, d);
                 case TypeCellMenuForConstruction.Event:
                     return new CellMenuConstructionEvent(c, d);
+                case TypeCellMenuForConstruction.LevelUp:
+                    return new CellMenuConstructionLevelUp(c, d as DescriptorCellMenuForConstructionLevel);
                 //case TypeCellMenuForConstruction.Action:
                 //    break;
                 default:
