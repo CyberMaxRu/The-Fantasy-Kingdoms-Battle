@@ -105,8 +105,7 @@ namespace Fantasy_Kingdoms_Battle
                         number = GetIntegerNotNull(l, "Number");
                         Debug.Assert(number > 0);
                         Debug.Assert(Levels[number] == null);
-                        number--;
-                        level = new DescriptorCellMenuForConstructionLevel(number, new Point(0, number), l);
+                        level = new DescriptorCellMenuForConstructionLevel(number, new Point(0, number - 1), l);
 
                         /*switch (TypeIncome)
                         {
@@ -122,8 +121,8 @@ namespace Fantasy_Kingdoms_Battle
                                 throw new Exception("Неизвестный тип дохода.");
                         }*/
 
-                        Levels[number + 1] = level;
-                        Researches[number, 0] = level;
+                        Levels[number] = level;
+                        Researches[number - 1, 0] = level;
 
                         //Researches[level.]
                     }
