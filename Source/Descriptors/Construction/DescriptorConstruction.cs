@@ -148,7 +148,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     research = new DescriptorCellMenuForConstruction(l);
                     Debug.Assert(Researches[research.Coord.Y, research.Coord.X] == null,
-                        $"У {ID} в ячейке ({research.Coord.X}, {research.Coord.Y}) уже есть сущность.");
+                        $"У {ID} в ячейке ({research.Coord.X + 1}, {research.Coord.Y + 1}) уже есть сущность.");
 
                     foreach (DescriptorCellMenu tcm in ListResearches)
                     {
