@@ -92,7 +92,8 @@ namespace Fantasy_Kingdoms_Battle
             // Загружаем информацию об уровнях
             if ((IsOurConstruction || (n.SelectSingleNode("Levels") != null)) && (MaxLevel > 0))
             {
-                Levels = new DescriptorCellMenuForConstructionLevel[MaxLevel + 1];// Для удобства уровень равен номеру позиции в массиве
+                // Для удобства уровень равен номеру позиции в массиве
+                Levels = new DescriptorCellMenuForConstructionLevel[MaxLevel + 1];
 
                 XmlNode nl = n.SelectSingleNode("Levels");
                 if (nl != null)
@@ -122,7 +123,7 @@ namespace Fantasy_Kingdoms_Battle
                         }*/
 
                         Levels[number] = level;
-                        Researches[number - 1, 0] = level;
+                        Researches[level.Coord.Y, level.Coord.X] = level;
 
                         ListResearches.Add(level);
                     }
