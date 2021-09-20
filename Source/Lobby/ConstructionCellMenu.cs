@@ -115,7 +115,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override bool CheckRequirements()
         {
-            return base.CheckRequirements() && Construction.CanResearch();
+            return Construction.CanResearch() && base.CheckRequirements();
         }
 
         internal override void Execute()
