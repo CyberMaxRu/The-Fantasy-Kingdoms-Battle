@@ -275,13 +275,6 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
-            if (Researches != null)
-            {
-                for (int y = 0; y < Researches.GetLength(0); y++)
-                    for (int x = 0; x < Researches.GetLength(1); x++)
-                        Researches[y, x]?.TuneDeferredLinks();
-            }
-
             foreach (MonsterLevelLair mll in Monsters)
             {
                 mll.TuneDeferredLinks();
