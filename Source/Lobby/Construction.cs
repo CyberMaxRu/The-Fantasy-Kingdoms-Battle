@@ -931,17 +931,17 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void PrepareHintForBuildOrUpgrade()
+        internal void PrepareHintForBuildOrUpgrade(int requiredLevel)
         {
-            if (Level < TypeConstruction.MaxLevel)
+            if (requiredLevel < TypeConstruction.MaxLevel)
             {
-                Program.formMain.formHint.AddStep1Header(TypeConstruction.Name, Level == 0 ? "Уровень 1" + Environment.NewLine + TypeConstruction.TypeConstruction.Name : (CanLevelUp() == true) ? $"Улучшить строение ({Level + 1} ур.)" + Environment.NewLine : "" + TypeConstruction.TypeConstruction.Name, Level == 0 ? TypeConstruction.Description : "");
+                Program.formMain.formHint.AddStep1Header(TypeConstruction.Name, requiredLevel == 0 ? "Уровень 1" + Environment.NewLine + TypeConstruction.TypeConstruction.Name : (CanLevelUp() == true) ? $"Улучшить строение ({Level + 1} ур.)" + Environment.NewLine : "" + TypeConstruction.TypeConstruction.Name, requiredLevel == 0 ? TypeConstruction.Description : "");
                 Program.formMain.formHint.AddStep2Income(IncomeNextLevel());
                 Program.formMain.formHint.AddStep3Greatness(GreatnessAddNextLevel(), GreatnessPerDayNextLevel());
                 Program.formMain.formHint.AddStep35PlusBuilders(BuildersPerDayNextLevel());
                 Program.formMain.formHint.AddStep3Requirement(GetTextRequirements());
                 Program.formMain.formHint.AddStep4Gold(CostBuyOrUpgrade(), Player.Gold >= CostBuyOrUpgrade());
-                Program.formMain.formHint.AddStep5Builders(TypeConstruction.Levels[Level + 1].Builders, Player.FreeBuilders >= TypeConstruction.Levels[Level + 1].Builders);
+                Program.formMain.formHint.AddStep5Builders(TypeConstruction.Levels[requiredLevel + 1].Builders, Player.FreeBuilders >= TypeConstruction.Levels[requiredLevel + 1].Builders);
             }
         }
 

@@ -340,7 +340,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnBuildOrUpgrade_ShowHint(object sender, EventArgs e)
         {
-            Construction.PrepareHintForBuildOrUpgrade();
+            Construction.PrepareHintForBuildOrUpgrade(Construction.Level);
         }
 
         private void BtnHireHero_Click(object sender, EventArgs e)

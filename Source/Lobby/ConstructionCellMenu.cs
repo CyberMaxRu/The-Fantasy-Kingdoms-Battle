@@ -217,7 +217,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PrepareHint()
         {
-            ConstructionForBuild.PrepareHintForBuildOrUpgrade();
+            ConstructionForBuild.PrepareHintForBuildOrUpgrade(Construction.Level);
             //else
             //    Player.PrepareHintForBuildTypeConstruction(Research.Construction);
         }
@@ -336,6 +336,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PrepareHint()
         {
+            Construction.PrepareHintForBuildOrUpgrade(Descriptor.Number - 1);
         }
     }
 }
