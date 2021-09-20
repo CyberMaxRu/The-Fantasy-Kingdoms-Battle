@@ -105,7 +105,8 @@ namespace Fantasy_Kingdoms_Battle
                         number = GetIntegerNotNull(l, "Number");
                         Debug.Assert(number > 0);
                         Debug.Assert(Levels[number] == null);
-                        level = new DescriptorCellMenuForConstructionLevel(number, new Point(0, number - 1), l);
+                        number--;
+                        level = new DescriptorCellMenuForConstructionLevel(number, new Point(0, number), l);
 
                         /*switch (TypeIncome)
                         {
@@ -121,8 +122,8 @@ namespace Fantasy_Kingdoms_Battle
                                 throw new Exception("Неизвестный тип дохода.");
                         }*/
 
-                        Levels[number] = level;
-                        Researches[0, number - 1] = level;
+                        Levels[number + 1] = level;
+                        Researches[number, 0] = level;
 
                         //Researches[level.]
                     }
@@ -147,7 +148,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     research = new DescriptorCellMenuForConstruction(l);
                     Debug.Assert(Researches[research.Coord.Y, research.Coord.X] == null,
-                        $"У {ID} в ячейке ({research.Coord.Y}, {research.Coord.X}) уже есть сущность.");
+                        $"У {ID} в ячейке ({research.Coord.X}, {research.Coord.Y}) уже есть сущность.");
 
                     foreach (DescriptorCellMenu tcm in ListResearches)
                     {
