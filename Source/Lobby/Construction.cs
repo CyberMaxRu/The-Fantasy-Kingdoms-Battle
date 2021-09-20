@@ -173,6 +173,11 @@ namespace Fantasy_Kingdoms_Battle
             return Level < TypeConstruction.MaxLevel;
         }
 
+        internal int CostBuyOrUpgradeForLevel(int level)
+        {
+            return TypeConstruction.Levels[level].Cost;
+        }
+
         internal int CostBuyOrUpgrade()
         {
             return CanLevelUp() == true ? TypeConstruction.Levels[Level + 1].Cost : 0;
@@ -196,14 +201,11 @@ namespace Fantasy_Kingdoms_Battle
             return Player.CheckRequirements(TypeConstruction.Levels[Level + 1].Requirements);
         }
 
-        internal List<TextRequirement> GetTextRequirements()
+        internal List<TextRequirement> GetTextRequirements(int level)
         {
-            if (Level == TypeConstruction.MaxLevel)
-                return null;
-
             List<TextRequirement> list = new List<TextRequirement>();
 
-            Player.TextRequirements(TypeConstruction.Levels[Level + 1].Requirements, list);
+            Player.TextRequirements(TypeConstruction.Levels[level].Requirements, list);
 
             if (BuildedOrUpgraded)
                 list.Add(new TextRequirement(false, "Сооружение уже строили/улучшали в этот день"));
@@ -221,9 +223,29 @@ namespace Fantasy_Kingdoms_Battle
             return TypeConstruction.Levels[1].Income > 0;
         }
 
+        internal int IncomeForLevel(int level)
+        {
+            return TypeConstruction.Levels[level].Income;
+        }
+
+        internal int GreatnesAddForLevel(int level)
+        {
+            return TypeConstruction.Levels[level].GreatnessByConstruction;
+        }
+
+        internal int GreatnesPerDayForLevel(int level)
+        {
+            return TypeConstruction.Levels[level].GreatnessPerDay;
+        }
+
+        internal int BuildersPerDayForLevel(int level)
+        {
+            return TypeConstruction.Levels[level].BuildersPerDay;
+        }
+
         internal int IncomeNextLevel()
         {
-            return Level < TypeConstruction.MaxLevel ? TypeConstruction.Levels[Level + 1].Income : 0;
+            return Level < TypeConstruction.MaxLevel ? IncomeForLevel(Level + 1) : 0;
         }
 
         internal int GreatnessPerDay()
@@ -238,17 +260,17 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int GreatnessAddNextLevel()
         {
-            return Level < TypeConstruction.MaxLevel ? TypeConstruction.Levels[Level + 1].GreatnessByConstruction : 0;
+            return Level < TypeConstruction.MaxLevel ? GreatnesAddForLevel(Level + 1) : 0;
         }
 
         internal int GreatnessPerDayNextLevel()
         {
-            return Level < TypeConstruction.MaxLevel ? TypeConstruction.Levels[Level + 1].GreatnessPerDay : 0;
+            return Level < TypeConstruction.MaxLevel ? GreatnesPerDayForLevel(Level + 1) : 0;
         }
 
         internal int BuildersPerDayNextLevel()
         {
-            return Level < TypeConstruction.MaxLevel ? TypeConstruction.Levels[Level + 1].BuildersPerDay : 0;
+            return Level < TypeConstruction.MaxLevel ? BuildersPerDayForLevel(Level + 1) : 0;
         }
 
         internal List<TextRequirement> GetTextRequirementsHire()
@@ -933,16 +955,18 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void PrepareHintForBuildOrUpgrade(int requiredLevel)
         {
-            if (requiredLevel < TypeConstruction.MaxLevel)
-            {
-                Program.formMain.formHint.AddStep1Header(TypeConstruction.Name, requiredLevel == 0 ? "Уровень 1" + Environment.NewLine + TypeConstruction.TypeConstruction.Name : (CanLevelUp() == true) ? $"Улучшить строение ({Level + 1} ур.)" + Environment.NewLine : "" + TypeConstruction.TypeConstruction.Name, requiredLevel == 0 ? TypeConstruction.Description : "");
-                Program.formMain.formHint.AddStep2Income(IncomeNextLevel());
-                Program.formMain.formHint.AddStep3Greatness(GreatnessAddNextLevel(), GreatnessPerDayNextLevel());
-                Program.formMain.formHint.AddStep35PlusBuilders(BuildersPerDayNextLevel());
-                Program.formMain.formHint.AddStep3Requirement(GetTextRequirements());
-                Program.formMain.formHint.AddStep4Gold(CostBuyOrUpgrade(), Player.Gold >= CostBuyOrUpgrade());
-                Program.formMain.formHint.AddStep5Builders(TypeConstruction.Levels[requiredLevel + 1].Builders, Player.FreeBuilders >= TypeConstruction.Levels[requiredLevel + 1].Builders);
-            }
+            Debug.Assert(requiredLevel > 0);
+            Debug.Assert(requiredLevel <= TypeConstruction.MaxLevel);
+
+            Program.formMain.formHint.AddStep1Header(TypeConstruction.Name, 
+                requiredLevel == 1 ? "Уровень 1" + Environment.NewLine + TypeConstruction.TypeConstruction.Name :
+                    $"Улучшить строение ({requiredLevel} ур.)" + Environment.NewLine + TypeConstruction.TypeConstruction.Name, requiredLevel == 1 ? TypeConstruction.Description : "");
+            Program.formMain.formHint.AddStep2Income(IncomeForLevel(requiredLevel));
+            Program.formMain.formHint.AddStep3Greatness(GreatnesAddForLevel(requiredLevel), GreatnesPerDayForLevel(requiredLevel));
+            Program.formMain.formHint.AddStep35PlusBuilders(BuildersPerDayForLevel(requiredLevel));
+            Program.formMain.formHint.AddStep3Requirement(GetTextRequirements(requiredLevel));
+            Program.formMain.formHint.AddStep4Gold(CostBuyOrUpgradeForLevel(requiredLevel), Player.Gold >= CostBuyOrUpgradeForLevel(requiredLevel));
+            Program.formMain.formHint.AddStep5Builders(TypeConstruction.Levels[requiredLevel].Builders, Player.FreeBuilders >= TypeConstruction.Levels[requiredLevel].Builders);
         }
 
         internal void PrepareHintForHireHero()
