@@ -47,6 +47,12 @@ namespace Fantasy_Kingdoms_Battle
             return Construction.Player.Gold >= GetCost();
         }
 
+        protected void RemoveSelf()
+        {
+            Debug.Assert(Construction.Researches.IndexOf(this) != -1);
+            Construction.Researches.Remove(this);
+        }
+
         protected virtual bool ConstructionMustMeConstructed() => true;
 
         internal override List<TextRequirement> GetTextRequirements()
@@ -115,11 +121,9 @@ namespace Fantasy_Kingdoms_Battle
         internal override void Execute()
         {
             Debug.Assert(CheckRequirements());
-            Debug.Assert(Construction.Researches.IndexOf(this) != -1);
-
-            Construction.Researches.Remove(this);
 
             Construction.Player.SpendGold(GetCost());
+            RemoveSelf();
 
             Debug.Assert(Construction.ResearchesAvailabled > 0);
 
@@ -318,15 +322,21 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Execute()
         {
+            if (Construction.Level == 0)
+                Construction.Build();
+            else
+                Construction.Upgrade();
+
+            RemoveSelf();
         }
 
         internal new DescriptorCellMenuForConstructionLevel Descriptor { get; }
 
         protected override bool ConstructionMustMeConstructed() => false;
 
-        internal override List<TextRequirement> GetTextRequirements()
+        internal override bool CheckRequirements()
         {
-            return base.GetTextRequirements();
+            return (Construction.Level + 1 == Descriptor.Number) && Construction.CheckRequirements();
         }
 
         internal override int GetCost()

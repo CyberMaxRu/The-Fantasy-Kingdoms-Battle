@@ -107,6 +107,8 @@ namespace Fantasy_Kingdoms_Battle
                         Debug.Assert(number > 0);
                         Debug.Assert(Levels[number] == null);
                         level = new DescriptorCellMenuForConstructionLevel(number, new Point(0, number - 1), l);
+                        if (number > 1)
+                            level.Requirements.Insert(0, new RequirementConstruction(ID, number - 1));
 
                         /*switch (TypeIncome)
                         {

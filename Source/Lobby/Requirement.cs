@@ -15,6 +15,10 @@ namespace Fantasy_Kingdoms_Battle
         {
         }
 
+        public Requirement() : base()
+        {
+        }
+
         internal abstract bool CheckRequirement(Player p);
         internal abstract TextRequirement GetTextRequirement(Player p);
     }
@@ -32,6 +36,12 @@ namespace Fantasy_Kingdoms_Battle
 
             Debug.Assert(nameConstruction.Length > 0);
             Debug.Assert(level >= 0);
+        }
+
+        public RequirementConstruction(string name, int requiredLevel) : base()
+        {
+            nameConstruction = name;
+            level = requiredLevel;
         }
 
         internal override void TuneDeferredLinks()
