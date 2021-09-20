@@ -168,7 +168,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override TextRequirement GetTextRequirement(Player p)
         {
-           return new TextRequirement(CheckRequirement(p), $"{Goods.Name} в {Construction.Name}");
+           return new TextRequirement(CheckRequirement(p), $"{Goods.Name} ({Construction.Name})");
         }            
     }
 }
