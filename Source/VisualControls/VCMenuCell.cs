@@ -61,6 +61,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Text = research.GetCost().ToString();
                 ImageIndex = research.GetImageIndex();
+                Level = research.GetLevel();
                 //ImageIsEnabled = research.CheckRequirements();
 
                 // Накладываем фильтр

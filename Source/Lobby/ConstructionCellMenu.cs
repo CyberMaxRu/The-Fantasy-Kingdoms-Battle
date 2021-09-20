@@ -20,6 +20,7 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorCellMenu Descriptor { get; }
         internal abstract int GetCost();
         internal abstract int GetImageIndex();
+        internal virtual string GetLevel() => "";
         internal virtual bool CheckRequirements() => true;
         internal virtual List<TextRequirement> GetTextRequirements() => new List<TextRequirement>();
         internal virtual void PrepareHint() { }
@@ -350,6 +351,11 @@ namespace Fantasy_Kingdoms_Battle
         internal override int GetImageIndex()
         {
             return Descriptor.Number == 1 ? Config.Gui48_Build : Config.Gui48_LevelUp;
+        }
+
+        internal override string GetLevel()
+        {
+            return Descriptor.Number == 1 ? "" : Descriptor.Number.ToString();
         }
 
         internal override void PrepareHint()
