@@ -335,7 +335,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int MaxHeroes()
         {
-            return Level > 0 ? TypeConstruction.Levels[Level].MaxHeroes : 0;
+            return Level > 0 ? TypeConstruction.Levels[Level].MaxInhabitant : 0;
         }
 
         internal override void PrepareHint()

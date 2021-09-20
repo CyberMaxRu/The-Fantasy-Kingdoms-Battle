@@ -87,20 +87,25 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(tec.ImageIndex != ImageIndex);
             }
 
+            Researches = new DescriptorCellMenuForConstruction[Config.PlateHeight, Config.PlateWidth];
+
             // Загружаем информацию об уровнях
             if ((IsOurConstruction || (n.SelectSingleNode("Levels") != null)) && (MaxLevel > 0))
             {
-                Levels = new LevelConstruction[MaxLevel + 1];// Для упрощения работы с уровнями, добавляем 1, чтобы уровень был равен индексу в массиве
+                Levels = new DescriptorCellMenuForConstructionLevel[MaxLevel + 1];// Для удобства уровень равен номеру позиции в массиве
 
                 XmlNode nl = n.SelectSingleNode("Levels");
                 if (nl != null)
                 {
-                    LevelConstruction level;
+                    DescriptorCellMenuForConstructionLevel level;
+                    int number;
 
                     foreach (XmlNode l in nl.SelectNodes("Level"))
                     {
-                        level = new LevelConstruction(l);
-                        Debug.Assert(Levels[level.Pos] == null);
+                        number = GetIntegerNotNull(l, "Number");
+                        Debug.Assert(number > 0);
+                        Debug.Assert(Levels[number] == null);
+                        level = new DescriptorCellMenuForConstructionLevel(number, new Point(0, number - 1), l);
 
                         /*switch (TypeIncome)
                         {
@@ -116,7 +121,10 @@ namespace Fantasy_Kingdoms_Battle
                                 throw new Exception("Неизвестный тип дохода.");
                         }*/
 
-                        Levels[level.Pos] = level;
+                        Levels[number] = level;
+                        Researches[0, number - 1] = level;
+
+                        //Researches[level.]
                     }
 
                     for (int i = 1; i < Levels.Length; i++)
@@ -133,8 +141,6 @@ namespace Fantasy_Kingdoms_Battle
                 XmlNode nr = n.SelectSingleNode("CellsMenu");
             if (nr != null)
             {
-                Researches = new DescriptorCellMenuForConstruction[Config.PlateHeight, Config.PlateWidth];
-
                 DescriptorCellMenuForConstruction research;
 
                 foreach (XmlNode l in nr.SelectNodes("CellMenu"))
@@ -237,9 +243,9 @@ namespace Fantasy_Kingdoms_Battle
         internal bool HasTreasury { get; }// Имеет собственную казну (Замок, гильдии, храмы)
         internal int GoldByConstruction { get; }// Количество золота в казне при постройке
         internal List<DescriptorCellMenuForConstruction> ListResearches { get; } = new List<DescriptorCellMenuForConstruction>();
+        internal DescriptorCellMenuForConstructionLevel[] Levels { get; }
         internal DescriptorCellMenuForConstruction[,] Researches;
         //
-        internal LevelConstruction[] Levels;
 
         internal PanelConstruction Panel { get; set; }
         internal DescriptorCreature TrainedHero { get; set; }
@@ -261,11 +267,10 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Levels != null)
             {
-                foreach (LevelConstruction l in Levels)
+                foreach (DescriptorCellMenuForConstructionLevel l in Levels)
                 {
                     if (l != null)
-                        foreach (Requirement r in l.Requirements)
-                            r.TuneDeferredLinks();
+                        l.TuneDeferredLinks();
                 }
             }
 

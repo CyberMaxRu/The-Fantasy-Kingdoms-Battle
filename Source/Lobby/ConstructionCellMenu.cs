@@ -303,4 +303,37 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep4Gold(GetCost(), GetCost() <= Construction.Player.Gold);
         }
     }
+
+    internal sealed class CellMenuConstructionLevelUp : ConstructionCellMenu
+    {
+        public CellMenuConstructionLevelUp(Construction c, DescriptorCellMenuForConstructionLevel d) : base(c, d)
+        {
+            Descriptor = d;
+        }
+
+        internal override void Execute()
+        {
+        }
+
+        internal new DescriptorCellMenuForConstructionLevel Descriptor { get; }
+
+        internal override List<TextRequirement> GetTextRequirements()
+        {
+            return base.GetTextRequirements();
+        }
+
+        internal override int GetCost()
+        {
+            return Descriptor.Cost;
+        }
+
+        internal override int GetImageIndex()
+        {
+            return Descriptor.Number == 1 ? Config.Gui48_Build : Config.Gui48_LevelUp;
+        }
+
+        internal override void PrepareHint()
+        {
+        }
+    }
 }

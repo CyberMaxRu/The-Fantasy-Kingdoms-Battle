@@ -17,18 +17,18 @@
     <SoundSelect>guild_warrior_select.wav</SoundSelect>
     <Levels>
       <Level>
-        <Pos>1</Pos>
+        <Number>1</Number>
         <Cost>550</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
-        <MaxHeroes>10</MaxHeroes>
+        <MaxInhabitant>10</MaxInhabitant>
       </Level>
       <Level>
-        <Pos>2</Pos>
+        <Number>2</Number>
         <Cost>550</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
-        <MaxHeroes>20</MaxHeroes>
+        <MaxInhabitant>20</MaxInhabitant>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -38,11 +38,11 @@
         </Requirements>
       </Level>
       <Level>
-        <Pos>3</Pos>
+        <Number>3</Number>
         <Cost>550</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
-        <MaxHeroes>30</MaxHeroes>
+        <MaxInhabitant>30</MaxInhabitant>
       </Level>
     </Levels>
     <CellsMenu>
@@ -104,18 +104,18 @@
     <SoundSelect>guild_hunter_select.wav</SoundSelect>
     <Levels>
       <Level>
-        <Pos>1</Pos>
+        <Number>1</Number>
         <Cost>450</Cost>
         <Income>0</Income>
         <Builders>1</Builders>
-        <MaxHeroes>10</MaxHeroes>
+        <MaxInhabitant>10</MaxInhabitant>
       </Level>
       <Level>
-        <Pos>2</Pos>
+        <Number>2</Number>
         <Cost>450</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
-        <MaxHeroes>20</MaxHeroes>
+        <MaxInhabitant>20</MaxInhabitant>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -125,11 +125,11 @@
         </Requirements>
       </Level>
       <Level>
-        <Pos>3</Pos>
+        <Number>3</Number>
         <Cost>450</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
-        <MaxHeroes>30</MaxHeroes>
+        <MaxInhabitant>30</MaxInhabitant>
       </Level>
     </Levels>
     <CellsMenu>
@@ -191,18 +191,18 @@
     <SoundSelect>guild_cleric_select.wav</SoundSelect>
     <Levels>
       <Level>
-        <Pos>1</Pos>
+        <Number>1</Number>
         <Cost>700</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
-        <MaxHeroes>10</MaxHeroes>
+        <MaxInhabitant>10</MaxInhabitant>
       </Level>
       <Level>
-        <Pos>2</Pos>
+        <Number>2</Number>
         <Cost>700</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
-        <MaxHeroes>20</MaxHeroes>
+        <MaxInhabitant>20</MaxInhabitant>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -212,11 +212,11 @@
         </Requirements>
       </Level>
       <Level>
-        <Pos>3</Pos>
+        <Number>3</Number>
         <Cost>700</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
-        <MaxHeroes>30</MaxHeroes>
+        <MaxInhabitant>30</MaxInhabitant>
       </Level>
     </Levels>
     <CellsMenu>
@@ -284,11 +284,11 @@
     <SoundSelect>guild_magic_select.wav</SoundSelect>
     <Levels>
       <Level>
-        <Pos>1</Pos>
+        <Number>1</Number>
         <Cost>1000</Cost>
         <Builders>0</Builders>
         <Income>0</Income>
-        <MaxHeroes>10</MaxHeroes>
+        <MaxInhabitant>10</MaxInhabitant>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -298,11 +298,11 @@
         </Requirements>
       </Level>
       <Level>
-        <Pos>2</Pos>
+        <Number>2</Number>
         <Cost>1000</Cost>
         <Builders>0</Builders>
         <Income>0</Income>
-        <MaxHeroes>20</MaxHeroes>
+        <MaxInhabitant>20</MaxInhabitant>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -317,11 +317,11 @@
         </Requirements>
       </Level>
       <Level>
-        <Pos>3</Pos>
+        <Number>3</Number>
         <Cost>1000</Cost>
         <Builders>0</Builders>
         <Income>0</Income>
-        <MaxHeroes>30</MaxHeroes>
+        <MaxInhabitant>30</MaxInhabitant>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -402,11 +402,11 @@
     <SoundSelect>guild_elves_select.wav</SoundSelect>
     <Levels>
       <Level>
-        <Pos>1</Pos>
+        <Number>1</Number>
         <Cost>2500</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
-        <MaxHeroes>10</MaxHeroes>
+        <MaxInhabitant>10</MaxInhabitant>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -416,11 +416,11 @@
         </Requirements>
       </Level>
       <Level>
-        <Pos>2</Pos>
+        <Number>2</Number>
         <Cost>2500</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
-        <MaxHeroes>20</MaxHeroes>
+        <MaxInhabitant>20</MaxInhabitant>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -435,11 +435,11 @@
         </Requirements>
       </Level>
       <Level>
-        <Pos>3</Pos>
+        <Number>3</Number>
         <Cost>2500</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
-        <MaxHeroes>30</MaxHeroes>
+        <MaxInhabitant>30</MaxInhabitant>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -506,12 +506,12 @@
     <SoundSelect>guild_dwarf_select.wav</SoundSelect>
     <Levels>
       <Level>
-        <Pos>1</Pos>
+        <Number>1</Number>
         <Cost>2000</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
         <BuildersPerDay>1</BuildersPerDay>
-        <MaxHeroes>10</MaxHeroes>
+        <MaxInhabitant>10</MaxInhabitant>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -521,12 +521,12 @@
         </Requirements>
       </Level>
       <Level>
-        <Pos>2</Pos>
+        <Number>2</Number>
         <Cost>2000</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
         <BuildersPerDay>1</BuildersPerDay>
-        <MaxHeroes>20</MaxHeroes>
+        <MaxInhabitant>20</MaxInhabitant>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -541,12 +541,12 @@
         </Requirements>
       </Level>
       <Level>
-        <Pos>3</Pos>
+        <Number>3</Number>
         <Cost>2500</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
         <BuildersPerDay>1</BuildersPerDay>
-        <MaxHeroes>30</MaxHeroes>
+        <MaxInhabitant>30</MaxInhabitant>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -606,18 +606,18 @@
     <SoundSelect>guild_rogue_select.wav</SoundSelect>
     <Levels>
       <Level>
-        <Pos>1</Pos>
+        <Number>1</Number>
         <Cost>450</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
-        <MaxHeroes>10</MaxHeroes>
+        <MaxInhabitant>10</MaxInhabitant>
       </Level>
       <Level>
-        <Pos>2</Pos>
+        <Number>2</Number>
         <Cost>450</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
-        <MaxHeroes>20</MaxHeroes>
+        <MaxInhabitant>20</MaxInhabitant>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -627,11 +627,11 @@
         </Requirements>
       </Level>
       <Level>
-        <Pos>3</Pos>
+        <Number>3</Number>
         <Cost>450</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
-        <MaxHeroes>30</MaxHeroes>
+        <MaxInhabitant>30</MaxInhabitant>
       </Level>
     </Levels>
   </Construction>
@@ -652,11 +652,11 @@
     <SoundSelect>guild_rogue_select.wav</SoundSelect>
     <Levels>
       <Level>
-        <Pos>1</Pos>
+        <Number>1</Number>
         <Cost>450</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
-        <MaxHeroes>10</MaxHeroes>
+        <MaxInhabitant>10</MaxInhabitant>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -666,11 +666,11 @@
         </Requirements>
       </Level>
       <Level>
-        <Pos>2</Pos>
+        <Number>2</Number>
         <Cost>450</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
-        <MaxHeroes>20</MaxHeroes>
+        <MaxInhabitant>20</MaxInhabitant>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -680,11 +680,11 @@
         </Requirements>
       </Level>
       <Level>
-        <Pos>3</Pos>
+        <Number>3</Number>
         <Cost>450</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
-        <MaxHeroes>30</MaxHeroes>
+        <MaxInhabitant>30</MaxInhabitant>
       </Level>
     </Levels>
     <CellsMenu>
@@ -758,24 +758,24 @@
     <SoundSelect>castle_select.wav</SoundSelect>
     <Levels>
       <Level>
-        <Pos>1</Pos>
+        <Number>1</Number>
         <Cost>0</Cost>
         <Builders>0</Builders>
         <Income>1000</Income>
         <GreatnessByConstruction>0</GreatnessByConstruction>
         <GreatnessPerDay>5</GreatnessPerDay>
         <BuildersPerDay>3</BuildersPerDay>
-        <MaxHeroes>15</MaxHeroes>
+        <MaxInhabitant>15</MaxInhabitant>
       </Level>
       <Level>
-        <Pos>2</Pos>
+        <Number>2</Number>
         <Cost>2000</Cost>
         <Builders>2</Builders>
         <Income>1500</Income>
         <GreatnessByConstruction>250</GreatnessByConstruction>
         <GreatnessPerDay>10</GreatnessPerDay>
         <BuildersPerDay>4</BuildersPerDay>
-        <MaxHeroes>25</MaxHeroes>
+        <MaxInhabitant>25</MaxInhabitant>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedTypeConstruction</TypeRequirement>
@@ -800,14 +800,14 @@
         </Requirements>
       </Level>
       <Level>
-        <Pos>3</Pos>
+        <Number>3</Number>
         <Cost>4000</Cost>
         <Builders>3</Builders>
         <Income>2000</Income>
         <GreatnessByConstruction>500</GreatnessByConstruction>
         <GreatnessPerDay>15</GreatnessPerDay>
         <BuildersPerDay>4</BuildersPerDay>
-        <MaxHeroes>30</MaxHeroes>
+        <MaxInhabitant>30</MaxInhabitant>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedTypeConstruction</TypeRequirement>
@@ -847,7 +847,7 @@
     <PlayerCanBuild>false</PlayerCanBuild>
     <Levels>
       <Level>
-        <Pos>1</Pos>
+        <Number>1</Number>
         <Cost>0</Cost>
         <Builders>0</Builders>
         <Income>50</Income>
@@ -875,7 +875,7 @@
     <PlayerCanBuild>false</PlayerCanBuild>
     <Levels>
       <Level>
-        <Pos>1</Pos>
+        <Number>1</Number>
         <Cost>0</Cost>
         <Builders>1</Builders>
         <Income>250</Income>
@@ -903,7 +903,7 @@
     <PlayerCanBuild>true</PlayerCanBuild>
     <Levels>
       <Level>
-        <Pos>1</Pos>
+        <Number>1</Number>
         <Cost>250</Cost>
         <Builders>1</Builders>
         <Income>100</Income>
@@ -933,13 +933,13 @@
     <SoundSelect>marketplace_select.wav</SoundSelect>
     <Levels>
       <Level>
-        <Pos>1</Pos>
+        <Number>1</Number>
         <Cost>500</Cost>
         <Builders>1</Builders>
         <Income>175</Income>
       </Level>
       <Level>
-        <Pos>2</Pos>
+        <Number>2</Number>
         <Cost>1500</Cost>
         <Builders>1</Builders>
         <Income>300</Income>
@@ -952,7 +952,7 @@
         </Requirements>
       </Level>
       <Level>
-        <Pos>3</Pos>
+        <Number>3</Number>
         <Cost>3000</Cost>
         <Builders>1</Builders>
         <Income>525</Income>
@@ -1047,13 +1047,13 @@
     <SoundSelect>smithy_select.wav</SoundSelect>
     <Levels>
       <Level>
-        <Pos>1</Pos>
+        <Number>1</Number>
         <Cost>500</Cost>
         <Builders>1</Builders>
         <Income>50</Income>
       </Level>
       <Level>
-        <Pos>2</Pos>
+        <Number>2</Number>
         <Cost>1000</Cost>
         <Builders>1</Builders>
         <Income>50</Income>
@@ -1066,7 +1066,7 @@
         </Requirements>
       </Level>
       <Level>
-        <Pos>3</Pos>
+        <Number>3</Number>
         <Cost>2000</Cost>
         <Income>50</Income>
         <Builders>1</Builders>
@@ -1368,13 +1368,13 @@
     <SoundSelect>tavern_select.wav</SoundSelect>
     <Levels>
       <Level>
-        <Pos>1</Pos>
+        <Number>1</Number>
         <Cost>250</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
       </Level>
       <Level>
-        <Pos>2</Pos>
+        <Number>2</Number>
         <Cost>1000</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -1424,7 +1424,7 @@
     <SoundSelect>magic_bazaar2_select.wav</SoundSelect>
     <Levels>
       <Level>
-        <Pos>1</Pos>
+        <Number>1</Number>
         <Cost>1500</Cost>
         <Builders>0</Builders>
         <Income>150</Income>
@@ -1437,7 +1437,7 @@
         </Requirements>
       </Level>
       <Level>
-        <Pos>2</Pos>
+        <Number>2</Number>
         <Cost>2500</Cost>
         <Builders>0</Builders>
         <Income>250</Income>
@@ -1450,7 +1450,7 @@
         </Requirements>
       </Level>
       <Level>
-        <Pos>3</Pos>
+        <Number>3</Number>
         <Cost>2500</Cost>
         <Builders>0</Builders>
         <Income>350</Income>
@@ -1514,7 +1514,7 @@
     <SoundSelect>magic_bazaar_select.wav</SoundSelect>
     <Levels>
       <Level>
-        <Pos>1</Pos>
+        <Number>1</Number>
         <Cost>1500</Cost>
         <Builders>1</Builders>
         <Income>200</Income>
@@ -1611,13 +1611,13 @@
     <SoundSelect>library_select.wav</SoundSelect>
     <Levels>
       <Level>
-        <Pos>1</Pos>
+        <Number>1</Number>
         <Cost>500</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
       </Level>
       <Level>
-        <Pos>2</Pos>
+        <Number>2</Number>
         <Cost>400</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -1640,7 +1640,7 @@
     <SoundSelect>statue_select.wav</SoundSelect>
     <Levels>
       <Level>
-        <Pos>1</Pos>
+        <Number>1</Number>
         <Cost>500</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -1648,7 +1648,7 @@
         <GreatnessPerDay>5</GreatnessPerDay>
       </Level>
       <Level>
-        <Pos>2</Pos>
+        <Number>2</Number>
         <Cost>500</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -1673,7 +1673,7 @@
     <SoundSelect>statue_select.wav</SoundSelect>
     <Levels>
       <Level>
-        <Pos>1</Pos>
+        <Number>1</Number>
         <Cost>500</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -1681,7 +1681,7 @@
         <GreatnessPerDay>5</GreatnessPerDay>
       </Level>
       <Level>
-        <Pos>2</Pos>
+        <Number>2</Number>
         <Cost>500</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -1706,7 +1706,7 @@
     <SoundSelect>statue_select.wav</SoundSelect>
     <Levels>
       <Level>
-        <Pos>1</Pos>
+        <Number>1</Number>
         <Cost>500</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -1714,7 +1714,7 @@
         <GreatnessPerDay>5</GreatnessPerDay>
       </Level>
       <Level>
-        <Pos>2</Pos>
+        <Number>2</Number>
         <Cost>500</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -1739,13 +1739,13 @@
     <SoundSelect>training_hall_select.wav</SoundSelect>
     <Levels>
       <Level>
-        <Pos>1</Pos>
+        <Number>1</Number>
         <Cost>1500</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
       </Level>
       <Level>
-        <Pos>2</Pos>
+        <Number>2</Number>
         <Cost>1500</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -1768,7 +1768,7 @@
     <SoundSelect>hospital_select.wav</SoundSelect>
     <Levels>
       <Level>
-        <Pos>1</Pos>
+        <Number>1</Number>
         <Cost>1500</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -1791,11 +1791,11 @@
     <SoundSelect>arena_select.wav</SoundSelect>
     <Levels>
       <Level>
-        <Pos>1</Pos>
+        <Number>1</Number>
         <Cost>2500</Cost>
         <Builders>1</Builders>
         <Income>50</Income>
-        <MaxHeroes>1</MaxHeroes>
+        <MaxInhabitant>1</MaxInhabitant>
       </Level>
     </Levels>
     <CellsMenu>
@@ -1823,13 +1823,13 @@
     <SoundSelect>garden_select.wav</SoundSelect>
     <Levels>
       <Level>
-        <Pos>1</Pos>
+        <Number>1</Number>
         <Cost>500</Cost>
         <Builders>1</Builders>
         <Income>50</Income>
       </Level>
       <Level>
-        <Pos>2</Pos>
+        <Number>2</Number>
         <Cost>500</Cost>
         <Builders>1</Builders>
         <Income>100</Income>
@@ -1862,13 +1862,13 @@
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
-        <Pos>1</Pos>
+        <Number>1</Number>
         <Cost>3000</Cost>
         <Builders>3</Builders>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
-        <MaxHeroes>5</MaxHeroes>
+        <MaxInhabitant>5</MaxInhabitant>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1902,13 +1902,13 @@
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
-        <Pos>1</Pos>
+        <Number>1</Number>
         <Cost>3000</Cost>
         <Builders>3</Builders>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
-        <MaxHeroes>5</MaxHeroes>
+        <MaxInhabitant>5</MaxInhabitant>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1942,13 +1942,13 @@
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
-        <Pos>1</Pos>
+        <Number>1</Number>
         <Cost>3000</Cost>
         <Builders>3</Builders>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
-        <MaxHeroes>5</MaxHeroes>
+        <MaxInhabitant>5</MaxInhabitant>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1982,13 +1982,13 @@
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
-        <Pos>1</Pos>
+        <Number>1</Number>
         <Cost>3000</Cost>
         <Builders>3</Builders>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
-        <MaxHeroes>5</MaxHeroes>
+        <MaxInhabitant>5</MaxInhabitant>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2022,13 +2022,13 @@
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
-        <Pos>1</Pos>
+        <Number>1</Number>
         <Cost>3000</Cost>
         <Builders>3</Builders>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
-        <MaxHeroes>5</MaxHeroes>
+        <MaxInhabitant>5</MaxInhabitant>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2062,13 +2062,13 @@
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
-        <Pos>1</Pos>
+        <Number>1</Number>
         <Cost>3000</Cost>
         <Builders>3</Builders>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
-        <MaxHeroes>5</MaxHeroes>
+        <MaxInhabitant>5</MaxInhabitant>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2102,13 +2102,13 @@
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
-        <Pos>1</Pos>
+        <Number>1</Number>
         <Cost>3000</Cost>
         <Builders>3</Builders>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
-        <MaxHeroes>5</MaxHeroes>
+        <MaxInhabitant>5</MaxInhabitant>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2142,13 +2142,13 @@
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
-        <Pos>1</Pos>
+        <Number>1</Number>
         <Cost>3000</Cost>
         <Builders>3</Builders>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
-        <MaxHeroes>5</MaxHeroes>
+        <MaxInhabitant>5</MaxInhabitant>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2182,13 +2182,13 @@
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
       <Level>
-        <Pos>1</Pos>
+        <Number>1</Number>
         <Cost>3000</Cost>
         <Builders>3</Builders>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>25</GreatnessPerDay>
-        <MaxHeroes>5</MaxHeroes>
+        <MaxInhabitant>5</MaxInhabitant>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2630,7 +2630,7 @@
     <TypePlaceForConstruct></TypePlaceForConstruct>
     <Levels>
       <Level>
-        <Pos>1</Pos>
+        <Number>1</Number>
         <Cost>0</Cost>
         <Builders>0</Builders>
         <Income>0</Income>
@@ -2712,13 +2712,13 @@
     <SoundSelect>menagerie_select.wav</SoundSelect>
     <Levels>
       <Level>
-        <Pos>1</Pos>
+        <Number>1</Number>
         <Cost>250</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
       </Level>
       <Level>
-        <Pos>2</Pos>
+        <Number>2</Number>
         <Cost>1000</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -2731,7 +2731,7 @@
         </Requirements>
       </Level>
       <Level>
-        <Pos>3</Pos>
+        <Number>3</Number>
         <Cost>1500</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -2818,13 +2818,13 @@
     <SoundSelect>gambling_hall_select.wav</SoundSelect>
     <Levels>
       <Level>
-        <Pos>1</Pos>
+        <Number>1</Number>
         <Cost>1000</Cost>
         <Builders>1</Builders>
         <Income>250</Income>
       </Level>
       <Level>
-        <Pos>2</Pos>
+        <Number>2</Number>
         <Cost>2000</Cost>
         <Builders>1</Builders>
         <Income>500</Income>
@@ -2837,7 +2837,7 @@
         </Requirements>
       </Level>
       <Level>
-        <Pos>3</Pos>
+        <Number>3</Number>
         <Cost>3000</Cost>
         <Builders>1</Builders>
         <Income>750</Income>
