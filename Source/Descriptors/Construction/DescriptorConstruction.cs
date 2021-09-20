@@ -124,7 +124,7 @@ namespace Fantasy_Kingdoms_Battle
                         Levels[number] = level;
                         Researches[number - 1, 0] = level;
 
-                        //Researches[level.]
+                        ListResearches.Add(level);
                     }
 
                     for (int i = 1; i < Levels.Length; i++)
@@ -138,7 +138,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Загружаем меню
-                XmlNode nr = n.SelectSingleNode("CellsMenu");
+            XmlNode nr = n.SelectSingleNode("CellsMenu");
             if (nr != null)
             {
                 DescriptorCellMenuForConstruction research;
@@ -265,14 +265,17 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.TuneDeferredLinks();
 
-            if (Levels != null)
+            /*if (Levels != null)
             {
                 foreach (DescriptorCellMenuForConstructionLevel l in Levels)
                 {
                     if (l != null)
                         l.TuneDeferredLinks();
                 }
-            }
+            }*/
+
+            foreach (DescriptorCellMenuForConstruction cm in ListResearches)
+                cm.TuneDeferredLinks();
 
             foreach (MonsterLevelLair mll in Monsters)
             {
