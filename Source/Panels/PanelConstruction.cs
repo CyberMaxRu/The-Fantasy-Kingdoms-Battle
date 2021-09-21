@@ -182,6 +182,7 @@ namespace Fantasy_Kingdoms_Battle
                         {
                             btnBuildOrUpgrade.Visible = true;
                             btnBuildOrUpgrade.Text = Construction.CostBuyOrUpgrade().ToString();
+                            btnBuildOrUpgrade.Level = (Construction.Level + 1).ToString();
                             btnBuildOrUpgrade.ImageIndex = FormMain.Config.Gui48_LevelUp;
                             btnBuildOrUpgrade.ImageIsEnabled = Construction.CheckRequirements();
                             btnBuildOrUpgrade.Color = btnBuildOrUpgrade.ImageIsEnabled ? Color.LimeGreen : Color.Gray;
@@ -192,6 +193,7 @@ namespace Fantasy_Kingdoms_Battle
                             {
                                 btnBuildOrUpgrade.Visible = true;
                                 btnBuildOrUpgrade.Text = "";
+                                btnBuildOrUpgrade.Level = "";
                                 btnBuildOrUpgrade.ImageIndex = FormMain.Config.Gui48_Temple;
                                 btnBuildOrUpgrade.ImageIsEnabled = true;
                             }
@@ -203,6 +205,7 @@ namespace Fantasy_Kingdoms_Battle
                     {
                         btnBuildOrUpgrade.Visible = true;
                         btnBuildOrUpgrade.Text = Construction.CostBuyOrUpgrade().ToString();
+                        btnBuildOrUpgrade.Level = "";
                         btnBuildOrUpgrade.ImageIndex = FormMain.Config.Gui48_Build;
                         btnBuildOrUpgrade.ImageIsEnabled = (Construction.TypeConstruction.MaxLevel > 0) ? Construction.CheckRequirements() : true;
                         btnBuildOrUpgrade.Color = btnBuildOrUpgrade.ImageIsEnabled ? Color.LimeGreen : Color.Gray;
