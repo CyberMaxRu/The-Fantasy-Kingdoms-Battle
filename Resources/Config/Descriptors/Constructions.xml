@@ -1625,17 +1625,17 @@
     </Levels>
   </Construction>
   <Construction>
-    <ID>Fountain</ID>
-    <Name>Фонтан</Name>
-    <Description>- Повышает энтузиазм героев</Description>
-    <ImageIndex>153</ImageIndex>
+    <ID>TownSqare</ID>
+    <Name>Городская площадь</Name>
+    <Description>- Главное место города.//- Здесь могут проводиться казни.</Description>
+    <ImageIndex>158</ImageIndex>
     <TypeConstruction>Greatness</TypeConstruction>
     <Category>Economic</Category>
     <Page>Guild</Page>
     <Line>1</Line>
     <Pos>2</Pos>
     <DefaultLevel>0</DefaultLevel>
-    <MaxLevel>2</MaxLevel>
+    <MaxLevel>1</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>statue_select.wav</SoundSelect>
     <Levels>
@@ -1647,21 +1647,13 @@
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>5</GreatnessPerDay>
       </Level>
-      <Level>
-        <Number>2</Number>
-        <Cost>500</Cost>
-        <Builders>1</Builders>
-        <Income>0</Income>
-        <GreatnessByConstruction>200</GreatnessByConstruction>
-        <GreatnessPerDay>10</GreatnessPerDay>
-      </Level>
     </Levels>
   </Construction>
   <Construction>
-    <ID>Statue</ID>
-    <Name>Статуя</Name>
-    <Description>- Повышает энтузиазм героев</Description>
-    <ImageIndex>88</ImageIndex>
+    <ID>TreasureDepartment</ID>
+    <Name>Казначейство</Name>
+    <Description>- Здесь считают деньги и проводят финансовые операции.</Description>
+    <ImageIndex>159</ImageIndex>
     <TypeConstruction>Greatness</TypeConstruction>
     <Category>Economic</Category>
     <Page>Guild</Page>
@@ -1691,10 +1683,10 @@
     </Levels>
   </Construction>
   <Construction>
-    <ID>Throne</ID>
-    <Name>Трон</Name>
-    <Description>- Трон из чистого золота покажет всем Ваше величие!</Description>
-    <ImageIndex>155</ImageIndex>
+    <ID>Municipality</ID>
+    <Name>Муниципалитет</Name>
+    <Description>- Когда город разрастается, можно дать ему самоуправление</Description>
+    <ImageIndex>160</ImageIndex>
     <TypeConstruction>Greatness</TypeConstruction>
     <Category>Economic</Category>
     <Page>Guild</Page>
