@@ -59,6 +59,9 @@ namespace Fantasy_Kingdoms_Battle
             for (int i = 0; i < MaxLoses; i++)
                 LoseInfo.Add(null);
 
+            PercentCorruption = 10;
+            ChangeCorruption = 1;
+
             // Настраиваем стартовые бонусы
             if (lobby.TypeLobby.VariantStartBonus > 0)
             {
@@ -423,6 +426,12 @@ namespace Fantasy_Kingdoms_Battle
         internal int Gold { get => gold; private set { gold = value; if (Castle != null) Castle.Gold = gold; } }// Текущее количество золота
         internal int GoldCollected { get; private set; }// Собрано золота за игру
         internal int GreatnessCollected { get; private set; }// Собрано величия за игру
+
+        //
+        internal int PercentCorruption { get; set; }//
+        internal int ChangeCorruption { get; set; }
+        internal int MinPercentCorruption { get; }
+        internal int MaxPercentCorruption { get; }
 
         // Информация о поражениях и вылете из лобби
         internal List<LoseInfo> LoseInfo { get; } = new List<LoseInfo>();

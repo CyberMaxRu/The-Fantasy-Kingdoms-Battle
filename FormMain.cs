@@ -72,6 +72,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCToolLabel labelGold;
         private readonly VCToolLabel labelGreatness;
         private readonly VCToolLabel labelHeroes;
+        private readonly VCToolLabel labelCorruption;
         private readonly VCLabel labelNamePlayer;
 
         private readonly VCIconButton48 btnInGameMenu;
@@ -166,6 +167,7 @@ namespace Fantasy_Kingdoms_Battle
         internal const int GUI_16_FLAG_DEFENSE = 9;
         internal const int GUI_16_HEROES = 10;
         internal const int GUI_16_COFFERS = 11;
+        internal const int GUI_16_CORRUPTION = 12;
 
         internal const int GUI_24_FIRE = 0;
         internal const int GUI_24_HEROES = 1;
@@ -553,6 +555,9 @@ namespace Fantasy_Kingdoms_Battle
                 labelHeroes = new VCToolLabel(bmpPreparedToolbar, labelGreatness.NextLeft() + 240, labelDay.ShiftY, "", GUI_16_HEROES);
                 labelHeroes.ShowHint += LabelHeroes_ShowHint;
                 labelHeroes.Width = 96;
+                labelCorruption = new VCToolLabel(bmpPreparedToolbar, labelHeroes.NextLeft(), labelDay.ShiftY, "", GUI_16_CORRUPTION);
+                labelCorruption.ShowHint += LabelCorruption_ShowHint;
+                labelCorruption.Width = 128;
 
                 labelNamePlayer = new VCLabel(bmpPreparedToolbar, 0, 0, fontMedCaptionC, Color.White, fontMedCaptionC.MaxHeightSymbol, "");
                 labelNamePlayer.StringFormat.LineAlignment = StringAlignment.Center;
@@ -769,6 +774,13 @@ namespace Fantasy_Kingdoms_Battle
                 MessageBox.Show(exc.Message + Environment.NewLine + exc.StackTrace);
                 Environment.Exit(-1);
             }
+        }
+
+        private void LabelCorruption_ShowHint(object sender, EventArgs e)
+        {
+            formHint.AddStep1Header("Воровство", "",
+                $"Всего процент: {curAppliedPlayer.PercentCorruption}" + Environment.NewLine
+                + $"Изменение за день: {curAppliedPlayer.ChangeCorruption}");
         }
 
         private void Settings_PlayMusicChanged(object sender, EventArgs e)
@@ -1166,6 +1178,7 @@ namespace Fantasy_Kingdoms_Battle
                     labelGold.Visible = true;
                     labelGreatness.Visible = true;
                     labelHeroes.Visible = true;
+                    labelCorruption.Visible = true;
                     MainControl.Visible = true;
                     ShowDataPlayer();
                 }
@@ -1177,6 +1190,7 @@ namespace Fantasy_Kingdoms_Battle
                     labelGold.Visible = false;
                     labelGreatness.Visible = false;
                     labelHeroes.Visible = false;
+                    labelCorruption.Visible = false;
                     MainControl.Visible = false;
                     foreach (VCImageLose il in listBtnLoses)
                         il.Visible = false;
@@ -1616,8 +1630,9 @@ namespace Fantasy_Kingdoms_Battle
                     + ": " + curAppliedPlayer.PointGreatness.ToString() + "/"
                     + curAppliedPlayer.PointGreatnessForNextLevel.ToString();
                 labelHeroes.Text = curAppliedPlayer.CombatHeroes.Count.ToString() + "/" + curAppliedPlayer.Lobby.TypeLobby.MaxHeroes.ToString();
+                labelCorruption.Text = $"{curAppliedPlayer.PercentCorruption}% ({(curAppliedPlayer.ChangeCorruption > 0 ? "+" : "")}{curAppliedPlayer.ChangeCorruption}%)";
 
-                pageTournament.Text = lobby.DaysLeftForBattle > 0 ? lobby.DaysLeftForBattle.ToString() + " д." : 
+                pageTournament.Text = lobby.DaysLeftForBattle > 0 ? lobby.DaysLeftForBattle.ToString() + " д." :
                         curAppliedPlayer.SkipBattle ? "Проп." : "Битва";
 
                 //
