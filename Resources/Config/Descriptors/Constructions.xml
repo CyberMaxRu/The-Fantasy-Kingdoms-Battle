@@ -47,7 +47,7 @@
     </Levels>
     <CellsMenu>
       <CellMenu>
-        <Pos>4,3</Pos>
+        <Pos>2,2</Pos>
         <Type>Research</Type>
         <Entity>WarriorImpAttack</Entity>
         <Cost>200</Cost>
