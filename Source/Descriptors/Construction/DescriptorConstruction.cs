@@ -125,7 +125,8 @@ namespace Fantasy_Kingdoms_Battle
                         }*/
 
                         Levels[number] = level;
-                        Researches[level.Coord.Y, level.Coord.X] = level;
+                        if (number > DefaultLevel)
+                            Researches[level.Coord.Y, level.Coord.X] = level;
 
                         ListResearches.Add(level);
                     }
