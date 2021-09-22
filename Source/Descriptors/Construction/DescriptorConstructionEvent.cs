@@ -31,5 +31,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int Duration { get; }// Длительность (в днях)
         internal int Cooldown { get; }// Пауза до возможности снова использовать (в днях)
+        internal string NameGoods { get; }// Наименование события-товара
     }
 }

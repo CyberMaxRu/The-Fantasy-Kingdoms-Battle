@@ -39,6 +39,9 @@ namespace Fantasy_Kingdoms_Battle
 
             DescriptorConstructionEvent = descriptor;
             Descriptor = descriptor;
+
+            Duration = descriptor.Duration;
+            Counter = Duration;
         }
 
         internal DescriptorSmallEntity Descriptor { get; }
@@ -46,6 +49,8 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorItem DescriptorItem { get; }
         internal DescriptorGroupItems DescriptorGroupItem { get; }
         internal DescriptorConstructionEvent DescriptorConstructionEvent { get; }
+        internal int Duration { get; private set; }// Длительность нахождения товара в сооружении
+        internal int Counter { get; set; }// Счетчик дней товара в сооружении
 
         internal override int GetImageIndex()
         {

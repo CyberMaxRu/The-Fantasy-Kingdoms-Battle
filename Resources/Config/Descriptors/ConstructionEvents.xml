@@ -5,8 +5,8 @@
     <Name>Устроить фейерверк</Name>
     <Description>- От красочного фейерверка у подданных целую неделю будет хорошее настроение</Description>
     <ImageIndex>208</ImageIndex>
-    <Duration>1</Duration>
-    <Cooldown>7</Cooldown>
+    <Duration>3</Duration>
+    <Cooldown>2</Cooldown>
     <Heroes>
       <Hero>Warrior</Hero>
       <Hero>Hunter</Hero>

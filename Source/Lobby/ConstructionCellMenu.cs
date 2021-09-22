@@ -269,6 +269,7 @@ namespace Fantasy_Kingdoms_Battle
 
     internal sealed class CellMenuConstructionEvent : ConstructionCellMenu
     {
+        private ConstructionProduct cp;
         public CellMenuConstructionEvent(Construction c, DescriptorCellMenuForConstruction d) : base(c, d)
         {
             ConstructionEvent = Config.FindConstructionEvent(d.NameEntity);
@@ -281,28 +282,35 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(CheckRequirements());
             Debug.Assert(Construction.Researches.IndexOf(this) != -1);
+            Debug.Assert(cp is null);
 
             Construction.Player.SpendGold(GetCost());
-            Construction.AddProduct(new ConstructionProduct(ConstructionEvent));
+            cp = new ConstructionProduct(ConstructionEvent);
+            Construction.AddProduct(cp);
 
-            Cooldown = ConstructionEvent.Cooldown;
+            //Cooldown = ConstructionEvent.Cooldown;
         }
 
         internal override bool CheckRequirements()
         {
-            return (Cooldown == 0) && base.CheckRequirements();
+            return (cp is null) && (Cooldown == 0) && base.CheckRequirements();
         }
 
         internal override List<TextRequirement> GetTextRequirements()
         {
+            Debug.Assert(!((cp != null) && (Cooldown > 0)));
+
             List<TextRequirement> list = base.GetTextRequirements();
-            list.Add(new TextRequirement(Cooldown == 0, Cooldown == 0 ? "Событие можно проводить" : $"Осталось подождать дней: {Cooldown}"));
+            list.Add(new TextRequirement((cp is null) && (Cooldown == 0), (cp is null) && (Cooldown == 0) ? "Событие можно проводить" :                
+                cp != null ? $"Событие будет идти еще {cp.Counter} дн." : $"Осталось подождать дней: {Cooldown}"));
+
             return list;
         }
 
         internal override string GetText()
         {
-            return Cooldown == 0 ? GetCost().ToString() : Cooldown.ToString() + " дн.";
+            return (cp is null) && (Cooldown == 0) ? GetCost().ToString() : 
+                cp != null ? "идёт" : Cooldown.ToString() + " дн.";
         }
 
         internal override int GetCost()
