@@ -64,6 +64,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override string GetText()
         {
+            if (Duration > 0)
+                return Counter.ToString();
             //if (DescriptorAbility != null)
             //    return DescriptorAbility.TypeAbility.ShortName;
 
