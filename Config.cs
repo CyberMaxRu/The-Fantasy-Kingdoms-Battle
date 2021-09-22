@@ -813,6 +813,16 @@ namespace Fantasy_Kingdoms_Battle
             return existGreatness ? HintIncome : Color.Gray;
         }
 
+        internal Color ColorCost(bool allowed, bool goldEnough)
+        {
+            if (allowed && goldEnough)
+                return Color.LimeGreen;
+            if (allowed && !goldEnough)
+                return Color.Red;
+
+            return Color.Gray;
+        }
+
         internal void AddHumanPlayer(string name)
         {
             string id;
