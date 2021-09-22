@@ -432,6 +432,25 @@ namespace Fantasy_Kingdoms_Battle
                     Player.AddGreatness(GreatnessPerDay());
             }
 
+            ConstructionProduct cp;
+            for (int i = 0; i < Items.Count;)
+            {
+                cp = Items[i];
+                if (cp.Duration > 0)
+                {
+                    cp.Counter--;
+                    if (cp.Counter == 0)
+                        Items.RemoveAt(i);
+                    else
+                        i++;
+                }
+            }
+
+            foreach (ConstructionCellMenu cm in Researches)
+            {
+                cm.PrepareTurn();
+            }
+
             foreach (Hero h in Heroes)
             {
                 h.PrepareTurn();

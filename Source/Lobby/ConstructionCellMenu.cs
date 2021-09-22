@@ -26,6 +26,7 @@ namespace Fantasy_Kingdoms_Battle
         internal virtual List<TextRequirement> GetTextRequirements() => new List<TextRequirement>();
         internal virtual void PrepareHint() { }
         internal abstract void Execute();
+        internal virtual void PrepareTurn() { }
     }
 
     internal abstract class ConstructionCellMenu : CellMenu
@@ -329,6 +330,21 @@ namespace Fantasy_Kingdoms_Battle
                 + Environment.NewLine + $"Перерыв: {ConstructionEvent.Cooldown} дн.", ConstructionEvent.Description);
             Program.formMain.formHint.AddStep3Requirement(GetTextRequirements());
             Program.formMain.formHint.AddStep4Gold(GetCost(), GetCost() <= Construction.Player.Gold);
+        }
+
+        internal override void PrepareTurn()
+        {
+            base.PrepareTurn();
+
+            if (cp?.Counter == 0)
+            {
+                cp = null;
+                Cooldown = ConstructionEvent.Cooldown;
+            }
+            else if (Cooldown > 0)
+            {
+                Cooldown--;
+            }
         }
     }
 
