@@ -87,8 +87,6 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(tec.ImageIndex != ImageIndex);
             }
 
-            Researches = new DescriptorCellMenuForConstruction[Config.PlateHeight, Config.PlateWidth];
-
             // Загружаем информацию об уровнях
             if ((IsOurConstruction || (n.SelectSingleNode("Levels") != null)) && (MaxLevel > 0))
             {
@@ -125,19 +123,16 @@ namespace Fantasy_Kingdoms_Battle
                         }*/
 
                         Levels[number] = level;
-                        if (number > DefaultLevel)
-                        {
-                            Debug.Assert(Researches[level.Coord.Y, level.Coord.X] is null);
-                            Researches[level.Coord.Y, level.Coord.X] = level;
-                        }
-
+                        CheckFreeCellMenu(level.Coord);
                         ListResearches.Add(level);
                     }
 
+                    Debug.Assert(Levels[0] is null);
+
                     for (int i = 1; i < Levels.Length; i++)
                     {
-                        if (Levels[i] == null)
-                            throw new Exception("В конфигурации зданий у " + ID + " нет информации об уровне " + i.ToString());
+                        if (Levels[i] is null)
+                            throw new Exception($"В конфигурации зданий у {ID} нет информации об уровне {i}.");
                     }
                 }
                 else
@@ -153,15 +148,13 @@ namespace Fantasy_Kingdoms_Battle
                 foreach (XmlNode l in nr.SelectNodes("CellMenu"))
                 {
                     research = new DescriptorCellMenuForConstruction(l);
-                    Debug.Assert(Researches[research.Coord.Y, research.Coord.X] == null,
-                        $"У {ID} в ячейке ({research.Coord.X + 1}, {research.Coord.Y + 1}) уже есть сущность.");
+                    CheckFreeCellMenu(research.Coord);
 
                     foreach (DescriptorCellMenu tcm in ListResearches)
                     {
                         //Debug.Assert(research.Construction. NameTypeObject != tcm.NameTypeObject, $"У {ID} в меню повторяется объект {research.NameTypeObject}.");
                     }
 
-                    Researches[research.Coord.Y, research.Coord.X] = research;
                     ListResearches.Add(research);
                 }
             }
@@ -233,6 +226,14 @@ namespace Fantasy_Kingdoms_Battle
 
             //else
             //    throw new Exception("В конфигурации логова у " + ID + " нет информации об уровнях. ");
+
+            void CheckFreeCellMenu(Point p)
+            {
+                foreach (DescriptorCellMenuForConstruction cm in ListResearches)
+                {
+                    Debug.Assert(!cm.Coord.Equals(p), $"У {ID} в ячейке ({p.X + 1}, {p.Y + 1}) уже есть сущность.");
+                }
+            }
         }
 
         internal DescriptorTypeConstruction TypeConstruction { get; }// Тип сооружения
@@ -251,7 +252,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int GoldByConstruction { get; }// Количество золота в казне при постройке
         internal List<DescriptorCellMenuForConstruction> ListResearches { get; } = new List<DescriptorCellMenuForConstruction>();
         internal DescriptorCellMenuForConstructionLevel[] Levels { get; }
-        internal DescriptorCellMenuForConstruction[,] Researches { get; }
 
         //
         internal PanelConstruction Panel { get; set; }
@@ -300,6 +300,8 @@ namespace Fantasy_Kingdoms_Battle
 
             nameTypePlaceForConstruct = null;
 
+            if (DefaultLevel == 1)
+                ListResearches.Remove(Levels[1]);
         }
 
         internal string GetTextConstructionNotBuilded()
