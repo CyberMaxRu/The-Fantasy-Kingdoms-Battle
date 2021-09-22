@@ -14,6 +14,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Duration = XmlUtils.GetIntegerNotNull(n, "Duration");
             Cooldown = XmlUtils.GetIntegerNotNull(n, "Cooldown");
+            NameGoods = XmlUtils.GetStringNotNull(n, "NameGoods");
 
             Debug.Assert(Duration >= 1);
             Debug.Assert(Duration < 10);

@@ -7,6 +7,7 @@
     <ImageIndex>208</ImageIndex>
     <Duration>1</Duration>
     <Cooldown>7</Cooldown>
+    <NameGoods>Посмотреть фейерверк</NameGoods>
     <Heroes>
       <Hero>Warrior</Hero>
       <Hero>Hunter</Hero>
@@ -23,6 +24,7 @@
     <ImageIndex>155</ImageIndex>
     <Duration>1</Duration>
     <Cooldown>7</Cooldown>
+    <NameGoods>Участвовать в пире</NameGoods>
     <Heroes>
       <Hero>Warrior</Hero>
       <Hero>Hunter</Hero>
@@ -39,6 +41,7 @@
     <ImageIndex>154</ImageIndex>
     <Duration>3</Duration>
     <Cooldown>10</Cooldown>
+    <NameGoods>Посетить ярмарку</NameGoods>
     <Heroes>
       <Hero>Warrior</Hero>
       <Hero>Hunter</Hero>
