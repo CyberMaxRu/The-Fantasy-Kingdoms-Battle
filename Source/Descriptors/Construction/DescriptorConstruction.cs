@@ -251,9 +251,9 @@ namespace Fantasy_Kingdoms_Battle
         internal int GoldByConstruction { get; }// Количество золота в казне при постройке
         internal List<DescriptorCellMenuForConstruction> ListResearches { get; } = new List<DescriptorCellMenuForConstruction>();
         internal DescriptorCellMenuForConstructionLevel[] Levels { get; }
-        internal DescriptorCellMenuForConstruction[,] Researches;
-        //
+        internal DescriptorCellMenuForConstruction[,] Researches { get; }
 
+        //
         internal PanelConstruction Panel { get; set; }
         internal DescriptorCreature TrainedHero { get; set; }
 
