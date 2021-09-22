@@ -26,7 +26,7 @@ namespace Fantasy_Kingdoms_Battle
                 research = value;
                 Visible = research != null;
                 if (Visible)
-                    Text = research.GetCost().ToString();
+                    Text = research.GetText();
             }
         }
 
@@ -59,7 +59,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (research != null)
             {
-                Text = research.GetCost().ToString();
+                Text = research.GetText();
                 ImageIndex = research.GetImageIndex();
                 Level = research.GetLevel();
                 //ImageIsEnabled = research.CheckRequirements();

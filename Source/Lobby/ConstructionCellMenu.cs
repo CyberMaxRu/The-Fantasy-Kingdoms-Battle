@@ -18,6 +18,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal static Config Config { get; set; }
         internal DescriptorCellMenu Descriptor { get; }
+        internal virtual string GetText() => GetCost().ToString();
         internal abstract int GetCost();
         internal abstract int GetImageIndex();
         internal virtual string GetLevel() => "";
@@ -297,6 +298,11 @@ namespace Fantasy_Kingdoms_Battle
             List<TextRequirement> list = base.GetTextRequirements();
             list.Add(new TextRequirement(Cooldown == 0, Cooldown == 0 ? "Событие можно проводить" : $"Осталось подождать дней: {Cooldown}"));
             return list;
+        }
+
+        internal override string GetText()
+        {
+            return Cooldown == 0 ? GetCost().ToString() : Cooldown.ToString() + " дн.";
         }
 
         internal override int GetCost()
