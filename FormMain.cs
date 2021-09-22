@@ -1514,7 +1514,7 @@ namespace Fantasy_Kingdoms_Battle
                 //labelMenuNameObject.Visible = true;
                 labelMenuNameObject.Text = pb.TypeConstruction.Name;
 
-                if (pb.TypeConstruction.Researches != null)
+                if (pb.Researches != null)
                 {
                     pb.ValidateResearches();
 
