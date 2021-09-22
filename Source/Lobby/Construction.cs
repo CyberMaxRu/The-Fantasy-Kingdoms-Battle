@@ -19,13 +19,8 @@ namespace Fantasy_Kingdoms_Battle
             TypeConstruction = b;
 
             // Настраиваем исследования 
-            if (TypeConstruction.Researches != null)
-            {
-                for (int y = 0; y < TypeConstruction.Researches.GetLength(0); y++)
-                    for (int x = 0; x < TypeConstruction.Researches.GetLength(1); x++)
-                        if (TypeConstruction.Researches[y, x] != null)                       
-                            Researches.Add(ConstructionCellMenu.Create(this, TypeConstruction.Researches[y, x]));
-            }
+            foreach (DescriptorCellMenuForConstruction d in TypeConstruction.ListResearches)
+                Researches.Add(ConstructionCellMenu.Create(this, d));
 
             Hidden = !TypeConstruction.IsInternalConstruction || (Layer > 0);
 
@@ -60,13 +55,8 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Настраиваем исследования 
-            if (TypeConstruction.Researches != null)
-            {
-                for (int y1 = 0; y1 < TypeConstruction.Researches.GetLength(0); y1++)
-                    for (int x1 = 0; x1 < TypeConstruction.Researches.GetLength(1); x1++)
-                        if (TypeConstruction.Researches[y1, x1] != null)
-                            Researches.Add(ConstructionCellMenu.Create(this, TypeConstruction.Researches[y1, x1]));
-            }
+            foreach (DescriptorCellMenuForConstruction d in TypeConstruction.ListResearches)
+                Researches.Add(ConstructionCellMenu.Create(this, d));
 
             // Убрать эту проверку после настройки всех логов
             if (TypeConstruction.Monsters.Count > 0)
