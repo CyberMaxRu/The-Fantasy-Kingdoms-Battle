@@ -5,8 +5,6 @@ namespace Fantasy_Kingdoms_Battle
     // Визуальный контрол - иконка 16 * 16 с текстом для тулбара
     internal sealed class VCToolLabel : VCLabel
     {
-        private Bitmap bmpBackround;
-
         public VCToolLabel(VisualControl parent, int shiftX, int shiftY, string text, int imageIndex)
             : base(parent, shiftX, shiftY, Program.formMain.fontMedCaption, Color.White, 26, text)
         {
@@ -21,22 +19,11 @@ namespace Fantasy_Kingdoms_Battle
             ShiftImage = new Point(6, 4);
         }
 
-        protected override void ValidateRectangle()
+        internal override void DrawBackground(Graphics g)
         {
-            base.ValidateRectangle();
+            base.DrawBackground(g);
 
-            if ((Width > 0) && (Height > 0) && ((bmpBackround == null) || (bmpBackround.Width != Width) || (bmpBackround.Height != Height)))
-            {
-                bmpBackround?.Dispose();
-                bmpBackround = Program.formMain.bbToolBarLabel.DrawBorder(Width, Height);
-            }
-        }
-
-        internal override void Draw(Graphics g)
-        {
-            g.DrawImageUnscaled(bmpBackround, Left, Top);
-
-            base.Draw(g);
+            Program.formMain.bbToolBarLabel.DrawBorder(g, Left, Top, Width, Height);
         }
     }
 }

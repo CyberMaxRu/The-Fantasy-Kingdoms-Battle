@@ -1683,10 +1683,8 @@ namespace Fantasy_Kingdoms_Battle
                     if (Settings.FullScreenMode)
                     {
                         bmpRenderClientArea = GuiUtils.MakeBackground(ClientSize);
-                        Bitmap border = bbGamespace.DrawBorder(sizeGamespace.Width + 14, sizeGamespace.Height + 14);
                         Graphics g = Graphics.FromImage(bmpRenderClientArea);
-                        g.DrawImageUnscaled(border, topLeftFrame.X - 7, topLeftFrame.Y - 7);
-                        border.Dispose();
+                        bbGamespace.DrawBorder(g, topLeftFrame.X - 7, topLeftFrame.Y - 7, sizeGamespace.Width + 14, sizeGamespace.Height + 14);
                         g.Dispose();
                     }
                     else

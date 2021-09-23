@@ -12,7 +12,6 @@ namespace Fantasy_Kingdoms_Battle
     // Визуальный контрол - поле для ввода текста
     internal sealed class VCEdit : VCLabel
     {
-        private Bitmap bmpBackround;
         private Timer timerCursor;
         private int posCursor;
         private int shiftCursor;
@@ -57,21 +56,13 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int MaxLength { get; set; }
 
-        protected override void ValidateRectangle()
+        internal override void PaintBorder(Graphics g)
         {
-            base.ValidateRectangle();
-
-            if ((Width > 0) && (Height > 0) && ((bmpBackround == null) || (bmpBackround.Width != Width) || (bmpBackround.Height != Height)))
-            {
-                bmpBackround?.Dispose();
-                bmpBackround = Program.formMain.bbToolBarLabel.DrawBorder(Width, Height);
-            }
+            Program.formMain.bbToolBarLabel.DrawBorder(g, Left, Top, Width, Height);
         }
 
         internal override void Draw(Graphics g)
         {
-            g.DrawImageUnscaled(bmpBackround, Left, Top);
-
             base.Draw(g);
 
             if (cursorShow)

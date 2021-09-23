@@ -40,9 +40,7 @@ namespace Fantasy_Kingdoms_Battle
                 Graphics g = Graphics.FromImage(bmpBackground);
 
                 // Рисуем границу
-                Bitmap border = Program.formMain.bbBorderWindow.DrawBorder(Width, Height - 13);
-                g.DrawImage(border, 0, 0);
-                border.Dispose();
+                Program.formMain.bbBorderWindow.DrawBorder(g, 0, 0, Width, Height - 13);
 
                 // Рисуем фон
                 Bitmap back = GuiUtils.MakeBackground(new Size(Width - 14 - 14, Height - 13 - 14 - 14));

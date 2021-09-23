@@ -12,6 +12,8 @@ namespace Fantasy_Kingdoms_Battle
     // Класс картинки с границами
     internal sealed class BitmapBorder
     {
+        private List<Bitmap> cacheBitmap = new List<Bitmap>();
+        
         public BitmapBorder(Bitmap bmpOrigin, bool useCentre, int widthLeftCorner, int widthRightCorner, int heightTopCorner, int heightBottomCorner, 
             int widthHorizBand, int heightTopBand, int heightBottomBand, int heightVertBand, int widthLeftBand, int widthRightBand)
         {
@@ -60,7 +62,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int Width { get; }
         internal int Height { get; }
 
-        internal Bitmap DrawBorder(int width, int height)
+        private Bitmap PrepareBorder(int width, int height)
         {
             //Debug.Assert(width >= widthBorder);
             //Debug.Assert(height >= heightBorder);
@@ -139,6 +141,27 @@ namespace Fantasy_Kingdoms_Battle
 
             g.Dispose();
             return bmp;
+        }
+
+        internal void DrawBorder(Graphics g, int x, int y, int width, int height)
+        {
+            Bitmap bmpBorder = null;
+
+            // Ищем бордюр в кэше
+            foreach (Bitmap b in cacheBitmap)
+                if ((b.Width == width) && (b.Height == height))
+                {
+                    bmpBorder = b;
+                    break;
+                }
+
+            if (bmpBorder is null)
+            {
+                bmpBorder = PrepareBorder(width, height);
+                cacheBitmap.Add(bmpBorder);
+            }
+
+            g.DrawImageUnscaled(bmpBorder, x, y);
         }
     }
 }

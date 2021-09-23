@@ -9,17 +9,11 @@ namespace Fantasy_Kingdoms_Battle
     // Базовый класс и класс-контейнер для всех визуальных контролов
     internal class VisualControl : IDisposable
     {
-        private static Dictionary<Size, Bitmap> poolBorders = new Dictionary<Size, Bitmap>();// Список готовых картинок с бордюрами, каждого размера
-
         private int left;// Координата Left на главном окне (абсолютная)
         private int top;// Координата Top на главном окне (абсолютная)
         private int width;// Ширина контрола
         private int height;// Высота контрола
         private bool _visible;
-
-        private Bitmap bmpBorder;
-        private Bitmap bmpBorderSelect;
-        private Size sizeBorder;
 
         private Entity entity;
         private bool _disposed = false;
@@ -112,13 +106,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (Selected())
             {
-                if ((bmpBorderSelect == null) || (bmpBorderSelect.Width != Width + 16) || (bmpBorderSelect.Height != Height + 16))
-                {
-                    bmpBorderSelect?.Dispose();
-                    bmpBorderSelect = Program.formMain.bbSelect.DrawBorder(Width + 16, Height + 16);
-                }
-
-                g.DrawImageUnscaled(bmpBorderSelect, Left - 8, Top - 8);
+                Program.formMain.bbSelect.DrawBorder(g, Left - 8, Top - 8, Width + 16, Height + 16);
             }
         }
 
@@ -131,10 +119,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal virtual void PaintBorder(Graphics g)
         {
-            if ((sizeBorder == null) || (sizeBorder.Width != Width + 4) || (sizeBorder.Height != Height + 3))
-                sizeBorder = new Size(Width + 4, Height + 3);
-
-            g.DrawImageUnscaled(GetBorder(sizeBorder), Left - 2, Top);
+            Program.formMain.bbObject.DrawBorder(g, Left - 2, Top, Width + 4, Height + 3);
         }
 
         internal virtual void PaintForeground(Graphics g)
@@ -434,9 +419,6 @@ namespace Fantasy_Kingdoms_Battle
             { 
                 if (disposing)
                 {
-                    bmpBorder?.Dispose();
-                    bmpBorderSelect?.Dispose();
-
                     if (Parent != null)
                     {
                         Parent.RemoveControl(this);
@@ -444,23 +426,7 @@ namespace Fantasy_Kingdoms_Battle
                     }
                 }
 
-                bmpBorder = null;
-                bmpBorderSelect = null;
-
                 _disposed = true;
-            }
-        }
-
-        private Bitmap GetBorder(Size size)
-        {
-            // Ищем бордюр такого размера в пуле
-            if (poolBorders.ContainsKey(size))
-                return poolBorders[size];
-            else
-            {
-                Bitmap bmpBorder = Program.formMain.bbObject.DrawBorder(size.Width, size.Height);
-                poolBorders.Add(size, bmpBorder);
-                return bmpBorder;
             }
         }
 
