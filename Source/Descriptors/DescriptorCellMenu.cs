@@ -59,7 +59,7 @@ namespace Fantasy_Kingdoms_Battle
         }
     }
 
-    internal enum TypeCellMenuForConstruction { Research, Event, HireCreature, Build, LevelUp, Action };
+    internal enum TypeCellMenuForConstruction { Research, Event, HireCreature, Build, LevelUp, Action, Extension };
 
     internal class DescriptorCellMenuForConstruction : DescriptorCellMenu
     {

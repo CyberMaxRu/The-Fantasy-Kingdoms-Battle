@@ -1836,13 +1836,13 @@
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
-        <Type>Research</Type>
+        <Type>Extension</Type>
         <Entity>Gazebo</Entity>
         <Cost>500</Cost>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
-        <Type>Research</Type>
+        <Type>Extension</Type>
         <Entity>Fountain</Entity>
         <Cost>1000</Cost>
         <Requirements>
@@ -1855,7 +1855,7 @@
       </CellMenu>
       <CellMenu>
         <Pos>2,3</Pos>
-        <Type>Research</Type>
+        <Type>Extension</Type>
         <Entity>Alley</Entity>
         <Cost>1500</Cost>
         <Requirements>
