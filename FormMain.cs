@@ -548,11 +548,11 @@ namespace Fantasy_Kingdoms_Battle
                 labelBuilders.Width = 112;
                 labelGold = new VCToolLabel(bmpPreparedToolbar, labelBuilders.NextLeft(), labelDay.ShiftY, "", GUI_16_COFFERS);
                 labelGold.ShowHint += LabelGold_ShowHint;
-                labelGold.Width = 168;
+                labelGold.Width = 152;
                 labelGreatness = new VCToolLabel(bmpPreparedToolbar, labelGold.NextLeft(), labelDay.ShiftY, "", GUI_16_GREATNESS);
                 labelGreatness.ShowHint += LabelGreatness_ShowHint;
-                labelGreatness.Width = 168;
-                labelHeroes = new VCToolLabel(bmpPreparedToolbar, labelGreatness.NextLeft() + 240, labelDay.ShiftY, "", GUI_16_HEROES);
+                labelGreatness.Width = 152;
+                labelHeroes = new VCToolLabel(bmpPreparedToolbar, labelGreatness.NextLeft() + 288, labelDay.ShiftY, "", GUI_16_HEROES);
                 labelHeroes.ShowHint += LabelHeroes_ShowHint;
                 labelHeroes.Width = 96;
                 labelCorruption = new VCToolLabel(bmpPreparedToolbar, labelHeroes.NextLeft(), labelDay.ShiftY, "", GUI_16_CORRUPTION);
