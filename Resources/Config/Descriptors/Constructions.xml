@@ -32,7 +32,7 @@
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>TrainingHall</Construction>
+            <Construction>Arena</Construction>
             <Level>1</Level>
           </Requirement>
         </Requirements>
@@ -1716,10 +1716,10 @@
     </Levels>
   </Construction>
   <Construction>
-    <ID>TrainingHall</ID>
-    <Name>Тренировочный зал</Name>
-    <Description>- Позволяет улучшать рукопашные навыки героями</Description>
-    <ImageIndex>147</ImageIndex>
+    <ID>Arena</ID>
+    <Name>Арена</Name>
+    <Description>- Позволяет улучшать навыки героями</Description>
+    <ImageIndex>138</ImageIndex>
     <TypeConstruction>Military</TypeConstruction>
     <Category>Military</Category>
     <Page>Economic</Page>
