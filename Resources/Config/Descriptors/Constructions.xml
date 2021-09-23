@@ -1726,19 +1726,25 @@
     <Line>2</Line>
     <Pos>1</Pos>
     <DefaultLevel>0</DefaultLevel>
-    <MaxLevel>2</MaxLevel>
+    <MaxLevel>3</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>training_hall_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>1500</Cost>
+        <Cost>1000</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
       </Level>
       <Level>
         <Number>2</Number>
         <Cost>1500</Cost>
+        <Builders>1</Builders>
+        <Income>0</Income>
+      </Level>
+      <Level>
+        <Number>3</Number>
+        <Cost>2000</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
       </Level>
