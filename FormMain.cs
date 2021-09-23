@@ -636,13 +636,13 @@ namespace Fantasy_Kingdoms_Battle
                 // Страницы игры
                 pageControl = new VCPageControl(MainControl, 0, panelLairWithFlags.ShiftY);
                 pageControl.PageChanged += PageControl_PageChanged;
-                pageResultTurn = pageControl.AddPage(Config.Gui48_ResultDay, "Сводка", PageResultTurn_ShowHint);
-                pageGuilds = pageControl.AddPage(Config.Gui48_Guilds, "В гильдиях нанимаются герои", PageGuilds_ShowHint);
-                pageEconomicConstructions = pageControl.AddPage(Config.Gui48_Economy, "Надежная экономика - залог победы", PageEconomicConstructions_ShowHint);
-                pageTemples = pageControl.AddPage(Config.Gui48_Temple, "Храмы позволяют нанимать самых сильных героев", PageTemples_ShowHint);
-                pageHeroes = pageControl.AddPage(Config.Gui48_Heroes, "Здесь можно посмотреть своих героев", PageHeroes_ShowHint);
-                pageLairs = pageControl.AddPage(Config.Gui48_Map, "В окрестностях замка водятся различные монстры", PageLairs_ShowHint);
-                pageTournament = pageControl.AddPage(Config.Gui48_Tournament, "Здесь можно увидеть положение всех игроков на турнире", PageTournament_ShowHint);
+                pageResultTurn = pageControl.AddPage(Config.Gui48_ResultDay, "Итоги хода", "Сводка", PageResultTurn_ShowHint);
+                pageGuilds = pageControl.AddPage(Config.Gui48_Guilds, "Гильдии и военные сооружения", "В гильдиях нанимаются герои", PageGuilds_ShowHint);
+                pageEconomicConstructions = pageControl.AddPage(Config.Gui48_Economy, "Экономические строения", "Надежная экономика - залог победы", PageEconomicConstructions_ShowHint);
+                pageTemples = pageControl.AddPage(Config.Gui48_Temple, "Храмы", "Храмы позволяют нанимать самых сильных героев", PageTemples_ShowHint);
+                pageHeroes = pageControl.AddPage(Config.Gui48_Heroes, "Герои", "Здесь можно посмотреть своих героев", PageHeroes_ShowHint);
+                pageLairs = pageControl.AddPage(Config.Gui48_Map, "Окрестности", "В окрестностях замка водятся различные монстры", PageLairs_ShowHint);
+                pageTournament = pageControl.AddPage(Config.Gui48_Tournament, "Турнир", "Здесь можно увидеть положение всех игроков на турнире", PageTournament_ShowHint);
 
                 panelNeighborhood = new VisualControl(pageControl, 0, 0);
                 panelNeighborhood.Visible = false;
@@ -733,6 +733,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 //
                 pageControl.ActivatePage(pageResultTurn);
+                ShowNamePlayer(pageControl.CurrentPage.Caption);
 
                 //
                 playerMusic = new PlayerMusic(dirResources, Settings);
@@ -801,6 +802,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (currentLayer == layerGame)
             {
+                ShowNamePlayer(pageControl.CurrentPage.Caption);
                 //if (winAdvice is null)
                 //    winAdvice = new WindowAdvice();
                 //winAdvice.ShowAdvice(pageControl.CurrentPage.Advice);
@@ -1194,9 +1196,9 @@ namespace Fantasy_Kingdoms_Battle
                     MainControl.Visible = false;
                     foreach (VCImageLose il in listBtnLoses)
                         il.Visible = false;
-                }
 
-                ShowNamePlayer(lobby.CurrentPlayer.Descriptor.Name);
+                    ShowNamePlayer(lobby.CurrentPlayer.Descriptor.Name);
+                }
             }
 
             ShowFrame(true);
