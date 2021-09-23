@@ -3051,4 +3051,31 @@
     <CategoryItem>Game</CategoryItem>
     <AvailableForAll>true</AvailableForAll>
   </Item>
+  <Item>
+    <ID>Gazebo</ID>
+    <Name>Беседки</Name>
+    <Description>Беседки увеличат популярность Сада</Description>
+    <ImageIndex>215</ImageIndex>
+    <Cost>500</Cost>
+    <CategoryItem>Extension</CategoryItem>
+    <AvailableForAll>true</AvailableForAll>
+  </Item>
+  <Item>
+    <ID>Fountain</ID>
+    <Name>Фонтан</Name>
+    <Description>Фонтан увеличит популярность Сада</Description>
+    <ImageIndex>213</ImageIndex>
+    <Cost>1000</Cost>
+    <CategoryItem>Extension</CategoryItem>
+    <AvailableForAll>true</AvailableForAll>
+  </Item>
+  <Item>
+    <ID>Alley</ID>
+    <Name>Аллея</Name>
+    <Description>Аллея увеличит популярность Сада</Description>
+    <ImageIndex>214</ImageIndex>
+    <Cost>1500</Cost>
+    <CategoryItem>Extension</CategoryItem>
+    <AvailableForAll>true</AvailableForAll>
+  </Item>
 </Descriptors>

@@ -1835,10 +1835,49 @@
     </Levels>
     <CellsMenu>
       <CellMenu>
+        <Pos>2,1</Pos>
+        <Type>Research</Type>
+        <Entity>Gazebo</Entity>
+        <Cost>500</Cost>
+      </CellMenu>
+      <CellMenu>
         <Pos>2,2</Pos>
+        <Type>Research</Type>
+        <Entity>Fountain</Entity>
+        <Cost>1000</Cost>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>Garden</Construction>
+            <Level>2</Level>
+          </Requirement>
+        </Requirements>
+      </CellMenu>
+      <CellMenu>
+        <Pos>2,3</Pos>
+        <Type>Research</Type>
+        <Entity>Alley</Entity>
+        <Cost>1500</Cost>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>Garden</Construction>
+            <Level>3</Level>
+          </Requirement>
+        </Requirements>
+      </CellMenu>
+      <CellMenu>
+        <Pos>3,3</Pos>
         <Type>Event</Type>
         <Entity>EventFireworks</Entity>
         <Cost>2500</Cost>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>Garden</Construction>
+            <Level>3</Level>
+          </Requirement>
+        </Requirements>
       </CellMenu>
     </CellsMenu>
   </Construction>
