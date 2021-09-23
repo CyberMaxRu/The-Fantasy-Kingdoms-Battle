@@ -434,6 +434,8 @@ namespace Fantasy_Kingdoms_Battle
                     else
                         i++;
                 }
+                else
+                    i++;
             }
 
             foreach (ConstructionCellMenu cm in Researches)
