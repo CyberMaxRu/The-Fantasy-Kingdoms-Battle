@@ -1939,6 +1939,7 @@
     </NextLevel>
     <Abilities>
       <Ability>DeathKnightBasicAttack</Ability>
+      <Ability>RogueWoundAttack</Ability>
       <Ability>DeathKnightPoisonAttack</Ability>
       <Ability>DeathKnightStunAttack</Ability>
       <Ability>DeathKnightDebuff1Attack</Ability>
