@@ -1467,13 +1467,13 @@
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
-        <Entity>Regeneration</Entity>
+        <Entity>AmuletOfRegeneration</Entity>
         <Cost>250</Cost>
       </CellMenu>
       <CellMenu>
         <Pos>3,2</Pos>
         <Type>Research</Type>
-        <Entity>Protection</Entity>
+        <Entity>RingOfProtection</Entity>
         <Cost>500</Cost>
         <Requirements>
           <Requirement>
@@ -1486,7 +1486,7 @@
       <CellMenu>
         <Pos>4,2</Pos>
         <Type>Research</Type>
-        <Entity>ImpProtection</Entity>
+        <Entity>ImpAmuletOfProtection</Entity>
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
@@ -1795,7 +1795,7 @@
     <Line>2</Line>
     <Pos>3</Pos>
     <DefaultLevel>0</DefaultLevel>
-    <MaxLevel>1</MaxLevel>
+    <MaxLevel>3</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>hospital_select.wav</SoundSelect>
     <Levels>
@@ -1805,7 +1805,46 @@
         <Builders>1</Builders>
         <Income>0</Income>
       </Level>
+      <Level>
+        <Number>2</Number>
+        <Cost>3000</Cost>
+        <Builders>1</Builders>
+        <Income>0</Income>
+      </Level>
+      <Level>
+        <Number>3</Number>
+        <Cost>5000</Cost>
+        <Builders>1</Builders>
+        <Income>0</Income>
+      </Level>
     </Levels>
+    <CellsMenu>
+      <CellMenu>
+        <Pos>2,1</Pos>
+        <Type>Research</Type>
+        <Entity>HospitalHerbs</Entity>
+        <Cost>500</Cost>
+      </CellMenu>
+      <CellMenu>
+        <Pos>3,1</Pos>
+        <Type>Research</Type>
+        <Entity>HospitalHealthPotion</Entity>
+        <Cost>1000</Cost>
+      </CellMenu>
+      <CellMenu>
+        <Pos>2,3</Pos>
+        <Type>Research</Type>
+        <Entity>HospitalPowerTherapy</Entity>
+        <Cost>2500</Cost>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>Hospital</Construction>
+            <Level>3</Level>
+          </Requirement>
+        </Requirements>
+      </CellMenu>
+    </CellsMenu>
   </Construction>
   <Construction>
     <ID>Dungeon</ID>

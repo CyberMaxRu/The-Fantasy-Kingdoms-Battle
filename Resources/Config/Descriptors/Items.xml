@@ -3103,10 +3103,34 @@
   </Item>
   <Item>
     <ID>TournamentMage</ID>
-    <Name>Магический турнир </Name>
+    <Name>Магический турнир</Name>
     <Description>Провести турнир по магическим дисциплинам.</Description>
     <ImageIndex>218</ImageIndex>
     <CategoryItem>Tournament</CategoryItem>
+    <AvailableForAll>true</AvailableForAll>
+  </Item>
+  <Item>
+    <ID>HospitalHerbs</ID>
+    <Name>Лекарственные травы</Name>
+    <Description>Изучить новые травы для лечения.</Description>
+    <ImageIndex>220</ImageIndex>
+    <CategoryItem>Thing</CategoryItem>
+    <AvailableForAll>true</AvailableForAll>
+  </Item>
+  <Item>
+    <ID>HospitalHealthPotion</ID>
+    <Name>Улучшенные напитки для лечения</Name>
+    <Description>Изучить новые напитки для лечения.</Description>
+    <ImageIndex>221</ImageIndex>
+    <CategoryItem>Thing</CategoryItem>
+    <AvailableForAll>true</AvailableForAll>
+  </Item>
+  <Item>
+    <ID>HospitalPowerTherapy</ID>
+    <Name>Палата интенсивного лечения</Name>
+    <Description>Позволяет лечить героев, получивших смертельные раны.</Description>
+    <ImageIndex>222</ImageIndex>
+    <CategoryItem>Thing</CategoryItem>
     <AvailableForAll>true</AvailableForAll>
   </Item>
 </Descriptors>
