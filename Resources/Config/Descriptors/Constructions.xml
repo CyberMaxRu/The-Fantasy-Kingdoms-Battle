@@ -1562,36 +1562,78 @@
         <Type>Research</Type>
         <Entity>ElixirMeleeProt</Entity>
         <Cost>1000</Cost>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>AlchemistHut</Construction>
+            <Level>2</Level>
+          </Requirement>
+        </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>3,2</Pos>
         <Type>Research</Type>
         <Entity>ElixirRangeProt</Entity>
         <Cost>1000</Cost>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>AlchemistHut</Construction>
+            <Level>2</Level>
+          </Requirement>
+        </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>4,2</Pos>
         <Type>Research</Type>
         <Entity>ElixirMagicProt</Entity>
         <Cost>1000</Cost>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>AlchemistHut</Construction>
+            <Level>2</Level>
+          </Requirement>
+        </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>2,3</Pos>
         <Type>Research</Type>
         <Entity>ElixirStrength</Entity>
         <Cost>2000</Cost>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>AlchemistHut</Construction>
+            <Level>3</Level>
+          </Requirement>
+        </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>3,3</Pos>
         <Type>Research</Type>
         <Entity>ElixirAccuracy</Entity>
         <Cost>2000</Cost>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>AlchemistHut</Construction>
+            <Level>3</Level>
+          </Requirement>
+        </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>4,3</Pos>
         <Type>Research</Type>
         <Entity>ElixirWisdom</Entity>
         <Cost>2000</Cost>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>AlchemistHut</Construction>
+            <Level>3</Level>
+          </Requirement>
+        </Requirements>
       </CellMenu>
     </CellsMenu>
   </Construction>
