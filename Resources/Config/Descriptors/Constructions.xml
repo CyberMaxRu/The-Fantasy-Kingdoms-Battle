@@ -1753,19 +1753,19 @@
       <CellMenu>
         <Pos>2,1</Pos>
         <Type>Tournament</Type>
-        <Entity>TorunameHandFight</Entity>
+        <Entity>TournamentHandFight</Entity>
         <Cost>500</Cost>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Tournament</Type>
-        <Entity>TorunameArcher</Entity>
+        <Entity>TournamentArcher</Entity>
         <Cost>1000</Cost>
       </CellMenu>
       <CellMenu>
         <Pos>2,3</Pos>
         <Type>Tournament</Type>
-        <Entity>TorunameMage</Entity>
+        <Entity>TournamentMage</Entity>
         <Cost>2000</Cost>
       </CellMenu>
     </CellsMenu>
