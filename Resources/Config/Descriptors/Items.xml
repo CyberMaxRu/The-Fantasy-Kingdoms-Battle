@@ -185,7 +185,7 @@
     <ID>PotionOfCheerfulness</ID>
     <Name>Напиток бодрости</Name>
     <Description>Убирает усталость</Description>
-    <ImageIndex>101</ImageIndex>
+    <ImageIndex>111</ImageIndex>
     <CategoryItem>Potion</CategoryItem>
     <Cost>50</Cost>
     <Perk></Perk>
