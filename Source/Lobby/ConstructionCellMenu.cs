@@ -107,6 +107,8 @@ namespace Fantasy_Kingdoms_Battle
                 Entity = Config.FindItem(d.NameEntity, false);
             if (Entity is null)
                 Entity = Config.FindGroupItem(d.NameEntity, false);
+
+            Debug.Assert(Entity != null, $"Для {c.TypeConstruction.ID} не найдена сущность {d.NameEntity}.");
         }
 
         internal new DescriptorCellMenuForConstruction Descriptor { get; }
