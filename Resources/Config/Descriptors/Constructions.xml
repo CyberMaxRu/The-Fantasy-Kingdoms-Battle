@@ -1502,6 +1502,43 @@
           </Requirement>
         </Requirements>
       </CellMenu>
+    </CellsMenu>
+  </Construction>
+  <Construction>
+    <ID>AlchemistHut</ID>
+    <Name>Лавка алхимика</Name>
+    <Description>- Приносит небольшой доход//- Здесь изобретают и продают эликсиры/напитки</Description>
+    <ImageIndex>81</ImageIndex>
+    <TypeConstruction>Manufacture</TypeConstruction>
+    <Category>Economic</Category>
+    <Page>Economic</Page>
+    <Line>1</Line>
+    <Pos>2</Pos>
+    <DefaultLevel>0</DefaultLevel>
+    <MaxLevel>3</MaxLevel>
+    <ResearchesPerDay>2</ResearchesPerDay>
+    <SoundSelect>magic_bazaar_select.wav</SoundSelect>
+    <Levels>
+      <Level>
+        <Number>1</Number>
+        <Cost>1500</Cost>
+        <Builders>1</Builders>
+        <Income>200</Income>
+      </Level>
+      <Level>
+        <Number>2</Number>
+        <Cost>2000</Cost>
+        <Builders>1</Builders>
+        <Income>300</Income>
+      </Level>
+      <Level>
+        <Number>3</Number>
+        <Cost>2500</Cost>
+        <Builders>1</Builders>
+        <Income>500</Income>
+      </Level>
+    </Levels>
+    <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
         <Type>Research</Type>
@@ -1520,63 +1557,38 @@
         <Entity>PotionOfCheerfulness</Entity>
         <Cost>200</Cost>
       </CellMenu>
-    </CellsMenu>
-  </Construction>
-  <Construction>
-    <ID>AlchemistHut</ID>
-    <Name>Лавка алхимика</Name>
-    <Description>- Приносит небольшой доход//- Здесь изобретают и продают эликсиры/напитки</Description>
-    <ImageIndex>81</ImageIndex>
-    <TypeConstruction>Manufacture</TypeConstruction>
-    <Category>Economic</Category>
-    <Page>Economic</Page>
-    <Line>1</Line>
-    <Pos>2</Pos>
-    <DefaultLevel>0</DefaultLevel>
-    <MaxLevel>1</MaxLevel>
-    <ResearchesPerDay>2</ResearchesPerDay>
-    <SoundSelect>magic_bazaar_select.wav</SoundSelect>
-    <Levels>
-      <Level>
-        <Number>1</Number>
-        <Cost>1500</Cost>
-        <Builders>1</Builders>
-        <Income>200</Income>
-      </Level>
-    </Levels>
-    <CellsMenu>
       <CellMenu>
-        <Pos>2,1</Pos>
+        <Pos>2,2</Pos>
         <Type>Research</Type>
         <Entity>ElixirMeleeProt</Entity>
         <Cost>1000</Cost>
       </CellMenu>
       <CellMenu>
-        <Pos>3,1</Pos>
+        <Pos>3,2</Pos>
         <Type>Research</Type>
         <Entity>ElixirRangeProt</Entity>
         <Cost>1000</Cost>
       </CellMenu>
       <CellMenu>
-        <Pos>4,1</Pos>
+        <Pos>4,2</Pos>
         <Type>Research</Type>
         <Entity>ElixirMagicProt</Entity>
         <Cost>1000</Cost>
       </CellMenu>
       <CellMenu>
-        <Pos>2,2</Pos>
+        <Pos>2,3</Pos>
         <Type>Research</Type>
         <Entity>ElixirStrength</Entity>
         <Cost>2000</Cost>
       </CellMenu>
       <CellMenu>
-        <Pos>3,2</Pos>
+        <Pos>3,3</Pos>
         <Type>Research</Type>
         <Entity>ElixirAccuracy</Entity>
         <Cost>2000</Cost>
       </CellMenu>
       <CellMenu>
-        <Pos>4,2</Pos>
+        <Pos>4,3</Pos>
         <Type>Research</Type>
         <Entity>ElixirWisdom</Entity>
         <Cost>2000</Cost>
@@ -1853,7 +1865,7 @@
         <Cost>500</Cost>
       </CellMenu>
       <CellMenu>
-        <Pos>2,3</Pos>
+        <Pos>3,2</Pos>
         <Type>Research</Type>
         <Entity>ElixirRegeneration</Entity>
         <Cost>1000</Cost>
