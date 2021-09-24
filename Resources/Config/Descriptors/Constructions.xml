@@ -1857,24 +1857,38 @@
     <Line>2</Line>
     <Pos>4</Pos>
     <DefaultLevel>0</DefaultLevel>
-    <MaxLevel>1</MaxLevel>
+    <MaxLevel>2</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>arena_select.wav</SoundSelect>
     <Levels>
       <Level>
         <Number>1</Number>
+        <Cost>1000</Cost>
+        <Builders>1</Builders>
+        <Income>0</Income>
+        <MaxInhabitant>1</MaxInhabitant>
+      </Level>
+      <Level>
+        <Number>2</Number>
         <Cost>2500</Cost>
         <Builders>1</Builders>
-        <Income>50</Income>
+        <Income>0</Income>
         <MaxInhabitant>1</MaxInhabitant>
       </Level>
     </Levels>
     <CellsMenu>
       <CellMenu>
-        <Pos>4,3</Pos>
+        <Pos>2,2</Pos>
         <Type>HireCreature</Type>
         <Entity>Executioner</Entity>
         <Cost>2500</Cost>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>Dungeon</Construction>
+            <Level>2</Level>
+          </Requirement>
+        </Requirements>
       </CellMenu>
     </CellsMenu>
   </Construction>
