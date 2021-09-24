@@ -52,4 +52,20 @@
       <Item>Feast</Item>
     </Items>
   </ConstructionEvent>
+  <ConstructionEvent>
+    <ID>EventSellBooks</ID>
+    <Name>Устроить выставку-продажу редких книг</Name>
+    <Description>- На выставке-продаже маги могут найти книги, которые искали долгое время</Description>
+    <ImageIndex>224</ImageIndex>
+    <Duration>1</Duration>
+    <Cooldown>7</Cooldown>
+    <NameGoods>Посетить выставку-продажу книг</NameGoods>
+    <Heroes>
+      <Hero>Cleric</Hero>
+      <Hero>Mage</Hero>
+    </Heroes>
+    <Items>
+      <Item>LibrarySellBooks</Item>
+    </Items>
+  </ConstructionEvent>
 </Descriptors>

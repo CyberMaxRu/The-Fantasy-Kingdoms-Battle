@@ -1606,7 +1606,7 @@
     <Line>3</Line>
     <Pos>3</Pos>
     <DefaultLevel>0</DefaultLevel>
-    <MaxLevel>2</MaxLevel>
+    <MaxLevel>3</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>library_select.wav</SoundSelect>
     <Levels>
@@ -1618,11 +1618,38 @@
       </Level>
       <Level>
         <Number>2</Number>
-        <Cost>400</Cost>
+        <Cost>1000</Cost>
+        <Builders>1</Builders>
+        <Income>0</Income>
+      </Level>
+      <Level>
+        <Number>3</Number>
+        <Cost>1500</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
       </Level>
     </Levels>
+    <CellsMenu>
+      <CellMenu>
+        <Pos>2,1</Pos>
+        <Type>Research</Type>
+        <Entity>LibraryLadder</Entity>
+        <Cost>500</Cost>
+      </CellMenu>
+      <CellMenu>
+        <Pos>2,3</Pos>
+        <Type>Event</Type>
+        <Entity>EventSellBooks</Entity>
+        <Cost>1000</Cost>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>Library</Construction>
+            <Level>3</Level>
+          </Requirement>
+        </Requirements>
+      </CellMenu>
+    </CellsMenu>
   </Construction>
   <Construction>
     <ID>TownSqare</ID>
