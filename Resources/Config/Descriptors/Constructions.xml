@@ -1761,12 +1761,26 @@
         <Type>Tournament</Type>
         <Entity>TournamentArcher</Entity>
         <Cost>1000</Cost>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>Arena</Construction>
+            <Level>2</Level>
+          </Requirement>
+        </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>2,3</Pos>
         <Type>Tournament</Type>
         <Entity>TournamentMage</Entity>
         <Cost>2000</Cost>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>Arena</Construction>
+            <Level>3</Level>
+          </Requirement>
+        </Requirements>
       </CellMenu>
     </CellsMenu>
   </Construction>

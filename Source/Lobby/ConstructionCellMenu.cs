@@ -84,6 +84,8 @@ namespace Fantasy_Kingdoms_Battle
                     return new CellMenuConstructionLevelUp(c, d as DescriptorCellMenuForConstructionLevel);
                 case TypeCellMenuForConstruction.Extension:
                     return new CellMenuConstructionExtension(c, d);
+                case TypeCellMenuForConstruction.Tournament:
+                    return new CellMenuConstructionTournament(c, d);
                 //case TypeCellMenuForConstruction.Action:
                 //    break;
                 default:
@@ -402,6 +404,46 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class CellMenuConstructionExtension : ConstructionCellMenu
     {
         public CellMenuConstructionExtension(Construction c, DescriptorCellMenuForConstruction d) : base(c, d)
+        {
+            Entity = Config.FindItem(d.NameEntity);
+        }
+
+        internal DescriptorSmallEntity Entity { get; }
+
+        internal override void Execute()
+        {
+            Debug.Assert(CheckRequirements());
+
+            Construction.Player.SpendGold(GetCost());
+            RemoveSelf();
+
+            Construction.AddProduct(new ConstructionProduct(Entity as DescriptorItem));
+
+            Program.formMain.SetNeedRedrawFrame();
+        }
+
+        internal override int GetCost()
+        {
+            return Descriptor.Cost;
+        }
+
+        internal override int GetImageIndex()
+        {
+            return Entity.ImageIndex;
+        }
+
+        internal override void PrepareHint()
+        {
+            Program.formMain.formHint.AddStep1Header(Entity.Name, "", Entity.Description);
+            Program.formMain.formHint.AddStep2Income(Descriptor.Income);
+            Program.formMain.formHint.AddStep3Requirement(GetTextRequirements());
+            Program.formMain.formHint.AddStep4Gold(GetCost(), GetCost() <= Construction.Player.Gold);
+        }
+    }
+
+    internal sealed class CellMenuConstructionTournament : ConstructionCellMenu
+    {
+        public CellMenuConstructionTournament(Construction c, DescriptorCellMenuForConstruction d) : base(c, d)
         {
             Entity = Config.FindItem(d.NameEntity);
         }
