@@ -2860,10 +2860,28 @@
         </Requirements>
       </CellMenu>
       <CellMenu>
-        <Pos>4,1</Pos>
+        <Pos>2,2</Pos>
         <Type>Research</Type>
         <Entity>SerpentInMenagerie</Entity>
         <Cost>750</Cost>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>Menagerie</Construction>
+            <Level>2</Level>
+          </Requirement>
+          <Requirement>
+            <TypeRequirement>DestroyedLairs</TypeRequirement>
+            <Construction>SerpentsNest</Construction>
+            <Destroyed>2</Destroyed>
+          </Requirement>
+        </Requirements>
+      </CellMenu>
+      <CellMenu>
+        <Pos>2,3</Pos>
+        <Type>Research</Type>
+        <Entity>DragonInMenagerie</Entity>
+        <Cost>5000</Cost>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2872,8 +2890,8 @@
           </Requirement>
           <Requirement>
             <TypeRequirement>DestroyedLairs</TypeRequirement>
-            <Construction>SerpentsNest</Construction>
-            <Destroyed>2</Destroyed>
+            <Construction>DragonCave</Construction>
+            <Destroyed>1</Destroyed>
           </Requirement>
         </Requirements>
       </CellMenu>

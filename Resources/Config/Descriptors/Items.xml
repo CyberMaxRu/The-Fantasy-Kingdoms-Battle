@@ -2956,6 +2956,13 @@
     <CategoryItem>Monster</CategoryItem>
   </Item>
   <Item>
+    <ID>DragonInMenagerie</ID>
+    <Name>Дракон</Name>
+    <Description>- Разместить в зверинце драконов//- Так как Драконы являются самыми сильными и магическими существами, их содержание самое хлопотное, и требует установки специальных с учетом самых высоких требований к безопасности!</Description>
+    <ImageIndex>219</ImageIndex>
+    <CategoryItem>Monster</CategoryItem>
+  </Item>
+  <Item>
     <ID>PlayingCards</ID>
     <Name>Карточные игры</Name>
     <Description>- Организовать столы для карточных игр</Description>
