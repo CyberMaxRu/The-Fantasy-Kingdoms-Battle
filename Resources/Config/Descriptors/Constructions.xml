@@ -456,7 +456,13 @@
     </Levels>
     <CellsMenu>
       <CellMenu>
-        <Pos>4,3</Pos>
+        <Pos>2,1</Pos>
+        <Type>Research</Type>
+        <Entity>ElixirSpeed</Entity>
+        <Cost>1500</Cost>
+      </CellMenu>
+      <CellMenu>
+        <Pos>2,2</Pos>
         <Type>Research</Type>
         <Entity>ElfImpAttack</Entity>
         <Cost>200</Cost>
@@ -1575,24 +1581,6 @@
         <Entity>ElixirWisdom</Entity>
         <Cost>2000</Cost>
       </CellMenu>
-      <CellMenu>
-        <Pos>2,3</Pos>
-        <Type>Research</Type>
-        <Entity>ElixirSpeed</Entity>
-        <Cost>1500</Cost>
-      </CellMenu>
-      <CellMenu>
-        <Pos>3,3</Pos>
-        <Type>Research</Type>
-        <Entity>ElixirAntipoison</Entity>
-        <Cost>500</Cost>
-      </CellMenu>
-      <CellMenu>
-        <Pos>4,3</Pos>
-        <Type>Research</Type>
-        <Entity>ElixirRegeneration</Entity>
-        <Cost>1000</Cost>
-      </CellMenu>
     </CellsMenu>
   </Construction>
   <Construction>
@@ -1856,6 +1844,18 @@
         <Pos>3,1</Pos>
         <Type>Research</Type>
         <Entity>HospitalHealthPotion</Entity>
+        <Cost>1000</Cost>
+      </CellMenu>
+      <CellMenu>
+        <Pos>2,2</Pos>
+        <Type>Research</Type>
+        <Entity>ElixirAntipoison</Entity>
+        <Cost>500</Cost>
+      </CellMenu>
+      <CellMenu>
+        <Pos>2,3</Pos>
+        <Type>Research</Type>
+        <Entity>ElixirRegeneration</Entity>
         <Cost>1000</Cost>
       </CellMenu>
       <CellMenu>
