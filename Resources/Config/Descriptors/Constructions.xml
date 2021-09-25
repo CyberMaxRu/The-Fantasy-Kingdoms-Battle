@@ -345,19 +345,19 @@
     </Levels>
     <CellsMenu>
       <CellMenu>
-        <Pos>3,1</Pos>
+        <Pos>2,1</Pos>
         <Type>Research</Type>
         <Entity>EnchantWeaponAttack</Entity>
         <Cost>300</Cost>
       </CellMenu>
       <CellMenu>
-        <Pos>2,3</Pos>
+        <Pos>3,1</Pos>
         <Type>Research</Type>
         <Entity>MageFireballAttack</Entity>
         <Cost>200</Cost>
       </CellMenu>
       <CellMenu>
-        <Pos>2,1</Pos>
+        <Pos>2,2</Pos>
         <Type>Research</Type>
         <Entity>MageFreezeAttack</Entity>
         <Cost>500</Cost>
@@ -370,7 +370,7 @@
         </Requirements>
       </CellMenu>
       <CellMenu>
-        <Pos>3,3</Pos>
+        <Pos>3,2</Pos>
         <Type>Research</Type>
         <Entity>MageGuardianWind</Entity>
         <Cost>750</Cost>
@@ -383,7 +383,7 @@
         </Requirements>
       </CellMenu>
       <CellMenu>
-        <Pos>4,3</Pos>
+        <Pos>2,3</Pos>
         <Type>Research</Type>
         <Entity>MageFirestormAttack</Entity>
         <Cost>2000</Cost>
