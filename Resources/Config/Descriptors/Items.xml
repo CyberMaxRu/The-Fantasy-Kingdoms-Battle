@@ -3145,6 +3145,14 @@
     <ID>LibrarySellBooks</ID>
     <Name>Выставка-продажа редких книг</Name>
     <Description>Позволяет увеличить доступность книг.</Description>
+    <ImageIndex>233</ImageIndex>
+    <CategoryItem>Thing</CategoryItem>
+    <AvailableForAll>true</AvailableForAll>
+  </Item>
+  <Item>
+    <ID>LibraryMemoir</ID>
+    <Name>Написать мемуар</Name>
+    <Description>Опытный герой напишет мемуар, который станет достойным библиотеки.</Description>
     <ImageIndex>224</ImageIndex>
     <CategoryItem>Thing</CategoryItem>
     <AvailableForAll>true</AvailableForAll>

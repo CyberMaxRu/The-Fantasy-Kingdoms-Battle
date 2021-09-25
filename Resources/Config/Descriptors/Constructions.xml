@@ -1145,12 +1145,12 @@
     </Levels>
     <CellsMenu>
       <CellMenu>
-        <Pos>2,1</Pos>
+        <Pos>4,1</Pos>
         <Type>Research</Type>
         <Entity>GroupArmourMetal1</Entity>
         <Cost>250</Cost>
         <CellMenu>
-          <Pos>2,1</Pos>
+          <Pos>4,1</Pos>
           <Type>Research</Type>
           <Entity>GroupArmourMetal2</Entity>
           <Cost>1000</Cost>
@@ -1162,7 +1162,7 @@
             </Requirement>
           </Requirements>
           <CellMenu>
-            <Pos>2,1</Pos>
+            <Pos>4,1</Pos>
             <Type>Research</Type>
             <Entity>GroupArmourMetal3</Entity>
             <Cost>3000</Cost>
@@ -1174,7 +1174,7 @@
               </Requirement>
             </Requirements>
             <CellMenu>
-              <Pos>2,1</Pos>
+              <Pos>4,1</Pos>
               <Type>Research</Type>
               <Entity>GroupArmourMetal4</Entity>
               <Cost>3500</Cost>
@@ -1195,12 +1195,12 @@
         </CellMenu>
       </CellMenu>
       <CellMenu>
-        <Pos>2,2</Pos>
+        <Pos>4,2</Pos>
         <Type>Research</Type>
         <Entity>GroupWeaponMelee1</Entity>
         <Cost>250</Cost>
         <CellMenu>
-          <Pos>2,2</Pos>
+          <Pos>4,2</Pos>
           <Type>Research</Type>
           <Entity>GroupWeaponMelee2</Entity>
           <Cost>1000</Cost>
@@ -1212,7 +1212,7 @@
             </Requirement>
           </Requirements>
           <CellMenu>
-            <Pos>2,2</Pos>
+            <Pos>4,2</Pos>
             <Type>Research</Type>
             <Entity>GroupWeaponMelee3</Entity>
             <Cost>3000</Cost>
@@ -1224,7 +1224,7 @@
               </Requirement>
             </Requirements>
             <CellMenu>
-              <Pos>2,2</Pos>
+              <Pos>4,2</Pos>
               <Type>Research</Type>
               <Entity>GroupWeaponMelee4</Entity>
               <Cost>3500</Cost>
@@ -1240,12 +1240,12 @@
         </CellMenu>
       </CellMenu>
       <CellMenu>
-        <Pos>3,1</Pos>
+        <Pos>4,3</Pos>
         <Type>Research</Type>
         <Entity>GroupArmourLeather1</Entity>
         <Cost>250</Cost>
         <CellMenu>
-          <Pos>3,1</Pos>
+          <Pos>4,3</Pos>
           <Type>Research</Type>
           <Entity>GroupArmourLeather2</Entity>
           <Cost>1000</Cost>
@@ -1257,7 +1257,7 @@
             </Requirement>
           </Requirements>
           <CellMenu>
-            <Pos>3,1</Pos>
+            <Pos>4,3</Pos>
             <Type>Research</Type>
             <Entity>GroupArmourLeather3</Entity>
             <Cost>3000</Cost>
@@ -1269,144 +1269,9 @@
               </Requirement>
             </Requirements>
             <CellMenu>
-              <Pos>3,1</Pos>
+              <Pos>4,3</Pos>
               <Type>Research</Type>
               <Entity>GroupArmourLeather4</Entity>
-              <Cost>3500</Cost>
-              <Requirements>
-                <Requirement>
-                  <TypeRequirement>BuildedConstruction</TypeRequirement>
-                  <Construction>Smithy</Construction>
-                  <Level>3</Level>
-                </Requirement>
-              </Requirements>
-            </CellMenu>
-          </CellMenu>
-        </CellMenu>
-      </CellMenu>
-      <CellMenu>
-        <Pos>3,2</Pos>
-        <Type>Research</Type>
-        <Entity>GroupWeaponRange1</Entity>
-        <Cost>250</Cost>
-        <CellMenu>
-          <Pos>3,2</Pos>
-          <Type>Research</Type>
-          <Entity>GroupWeaponRange2</Entity>
-          <Cost>1000</Cost>
-          <Requirements>
-            <Requirement>
-              <TypeRequirement>BuildedConstruction</TypeRequirement>
-              <Construction>Smithy</Construction>
-              <Level>2</Level>
-            </Requirement>
-          </Requirements>
-          <CellMenu>
-            <Pos>3,2</Pos>
-            <Type>Research</Type>
-            <Entity>GroupWeaponRange3</Entity>
-            <Cost>3000</Cost>
-            <Requirements>
-              <Requirement>
-                <TypeRequirement>BuildedConstruction</TypeRequirement>
-                <Construction>Smithy</Construction>
-                <Level>3</Level>
-              </Requirement>
-            </Requirements>
-            <CellMenu>
-              <Pos>3,2</Pos>
-              <Type>Research</Type>
-              <Entity>GroupWeaponRange4</Entity>
-              <Cost>3500</Cost>
-              <Requirements>
-                <Requirement>
-                  <TypeRequirement>BuildedConstruction</TypeRequirement>
-                  <Construction>Smithy</Construction>
-                  <Level>2</Level>
-                </Requirement>
-              </Requirements>
-            </CellMenu>
-          </CellMenu>
-        </CellMenu>
-      </CellMenu>
-      <CellMenu>
-        <Pos>4,1</Pos>
-        <Type>Research</Type>
-        <Entity>GroupArmourMage1</Entity>
-        <Cost>250</Cost>
-        <CellMenu>
-          <Pos>4,1</Pos>
-          <Type>Research</Type>
-          <Entity>GroupArmourMage2</Entity>
-          <Cost>1000</Cost>
-          <Requirements>
-            <Requirement>
-              <TypeRequirement>BuildedConstruction</TypeRequirement>
-              <Construction>Smithy</Construction>
-              <Level>2</Level>
-            </Requirement>
-          </Requirements>
-          <CellMenu>
-            <Pos>4,1</Pos>
-            <Type>Research</Type>
-            <Entity>GroupArmourMage3</Entity>
-            <Cost>3000</Cost>
-            <Requirements>
-              <Requirement>
-                <TypeRequirement>BuildedConstruction</TypeRequirement>
-                <Construction>Smithy</Construction>
-                <Level>3</Level>
-              </Requirement>
-            </Requirements>
-            <CellMenu>
-              <Pos>4,1</Pos>
-              <Type>Research</Type>
-              <Entity>GroupArmourMage4</Entity>
-              <Cost>3500</Cost>
-              <Requirements>
-                <Requirement>
-                  <TypeRequirement>BuildedConstruction</TypeRequirement>
-                  <Construction>Smithy</Construction>
-                  <Level>3</Level>
-                </Requirement>
-              </Requirements>
-            </CellMenu>
-          </CellMenu>
-        </CellMenu>
-      </CellMenu>
-      <CellMenu>
-        <Pos>4,2</Pos>
-        <Type>Research</Type>
-        <Entity>GroupWeaponMage1</Entity>
-        <Cost>250</Cost>
-        <CellMenu>
-          <Pos>4,2</Pos>
-          <Type>Research</Type>
-          <Entity>GroupWeaponMage2</Entity>
-          <Cost>1000</Cost>
-          <Requirements>
-            <Requirement>
-              <TypeRequirement>BuildedConstruction</TypeRequirement>
-              <Construction>Smithy</Construction>
-              <Level>2</Level>
-            </Requirement>
-          </Requirements>
-          <CellMenu>
-            <Pos>4,2</Pos>
-            <Type>Research</Type>
-            <Entity>GroupWeaponMage3</Entity>
-            <Cost>3000</Cost>
-            <Requirements>
-              <Requirement>
-                <TypeRequirement>BuildedConstruction</TypeRequirement>
-                <Construction>Smithy</Construction>
-                <Level>3</Level>
-              </Requirement>
-            </Requirements>
-            <CellMenu>
-              <Pos>4,2</Pos>
-              <Type>Research</Type>
-              <Entity>GroupWeaponMage4</Entity>
               <Cost>3500</Cost>
               <Requirements>
                 <Requirement>
@@ -1534,13 +1399,13 @@
     </Levels>
     <CellsMenu>
       <CellMenu>
-        <Pos>2,2</Pos>
+        <Pos>2,1</Pos>
         <Type>Research</Type>
         <Entity>AmuletOfRegeneration</Entity>
         <Cost>250</Cost>
       </CellMenu>
       <CellMenu>
-        <Pos>3,2</Pos>
+        <Pos>2,2</Pos>
         <Type>Research</Type>
         <Entity>RingOfProtection</Entity>
         <Cost>500</Cost>
@@ -1553,7 +1418,7 @@
         </Requirements>
       </CellMenu>
       <CellMenu>
-        <Pos>4,2</Pos>
+        <Pos>2,3</Pos>
         <Type>Research</Type>
         <Entity>ImpAmuletOfProtection</Entity>
         <Cost>1000</Cost>
@@ -1564,6 +1429,141 @@
             <Level>3</Level>
           </Requirement>
         </Requirements>
+      </CellMenu>
+      <CellMenu>
+        <Pos>4,1</Pos>
+        <Type>Research</Type>
+        <Entity>GroupWeaponRange1</Entity>
+        <Cost>250</Cost>
+        <CellMenu>
+          <Pos>4,1</Pos>
+          <Type>Research</Type>
+          <Entity>GroupWeaponRange2</Entity>
+          <Cost>1000</Cost>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Smithy</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+          <CellMenu>
+            <Pos>4,1</Pos>
+            <Type>Research</Type>
+            <Entity>GroupWeaponRange3</Entity>
+            <Cost>3000</Cost>
+            <Requirements>
+              <Requirement>
+                <TypeRequirement>BuildedConstruction</TypeRequirement>
+                <Construction>Smithy</Construction>
+                <Level>3</Level>
+              </Requirement>
+            </Requirements>
+            <CellMenu>
+              <Pos>4,1</Pos>
+              <Type>Research</Type>
+              <Entity>GroupWeaponRange4</Entity>
+              <Cost>3500</Cost>
+              <Requirements>
+                <Requirement>
+                  <TypeRequirement>BuildedConstruction</TypeRequirement>
+                  <Construction>Smithy</Construction>
+                  <Level>2</Level>
+                </Requirement>
+              </Requirements>
+            </CellMenu>
+          </CellMenu>
+        </CellMenu>
+      </CellMenu>
+      <CellMenu>
+        <Pos>4,2</Pos>
+        <Type>Research</Type>
+        <Entity>GroupArmourMage1</Entity>
+        <Cost>250</Cost>
+        <CellMenu>
+          <Pos>4,2</Pos>
+          <Type>Research</Type>
+          <Entity>GroupArmourMage2</Entity>
+          <Cost>1000</Cost>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Smithy</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+          <CellMenu>
+            <Pos>4,2</Pos>
+            <Type>Research</Type>
+            <Entity>GroupArmourMage3</Entity>
+            <Cost>3000</Cost>
+            <Requirements>
+              <Requirement>
+                <TypeRequirement>BuildedConstruction</TypeRequirement>
+                <Construction>Smithy</Construction>
+                <Level>3</Level>
+              </Requirement>
+            </Requirements>
+            <CellMenu>
+              <Pos>4,2</Pos>
+              <Type>Research</Type>
+              <Entity>GroupArmourMage4</Entity>
+              <Cost>3500</Cost>
+              <Requirements>
+                <Requirement>
+                  <TypeRequirement>BuildedConstruction</TypeRequirement>
+                  <Construction>Smithy</Construction>
+                  <Level>3</Level>
+                </Requirement>
+              </Requirements>
+            </CellMenu>
+          </CellMenu>
+        </CellMenu>
+      </CellMenu>
+      <CellMenu>
+        <Pos>4,3</Pos>
+        <Type>Research</Type>
+        <Entity>GroupWeaponMage1</Entity>
+        <Cost>250</Cost>
+        <CellMenu>
+          <Pos>4,3</Pos>
+          <Type>Research</Type>
+          <Entity>GroupWeaponMage2</Entity>
+          <Cost>1000</Cost>
+          <Requirements>
+            <Requirement>
+              <TypeRequirement>BuildedConstruction</TypeRequirement>
+              <Construction>Smithy</Construction>
+              <Level>2</Level>
+            </Requirement>
+          </Requirements>
+          <CellMenu>
+            <Pos>4,3</Pos>
+            <Type>Research</Type>
+            <Entity>GroupWeaponMage3</Entity>
+            <Cost>3000</Cost>
+            <Requirements>
+              <Requirement>
+                <TypeRequirement>BuildedConstruction</TypeRequirement>
+                <Construction>Smithy</Construction>
+                <Level>3</Level>
+              </Requirement>
+            </Requirements>
+            <CellMenu>
+              <Pos>4,3</Pos>
+              <Type>Research</Type>
+              <Entity>GroupWeaponMage4</Entity>
+              <Cost>3500</Cost>
+              <Requirements>
+                <Requirement>
+                  <TypeRequirement>BuildedConstruction</TypeRequirement>
+                  <Construction>Smithy</Construction>
+                  <Level>3</Level>
+                </Requirement>
+              </Requirements>
+            </CellMenu>
+          </CellMenu>
+        </CellMenu>
       </CellMenu>
     </CellsMenu>
   </Construction>
@@ -1742,9 +1742,22 @@
         <Cost>500</Cost>
       </CellMenu>
       <CellMenu>
-        <Pos>2,3</Pos>
+        <Pos>2,2</Pos>
         <Type>Event</Type>
         <Entity>EventSellBooks</Entity>
+        <Cost>750</Cost>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>Library</Construction>
+            <Level>2</Level>
+          </Requirement>
+        </Requirements>
+      </CellMenu>
+      <CellMenu>
+        <Pos>2,3</Pos>
+        <Type>Event</Type>
+        <Entity>EventMemoir</Entity>
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>

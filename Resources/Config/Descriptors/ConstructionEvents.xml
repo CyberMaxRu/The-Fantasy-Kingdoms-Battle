@@ -56,7 +56,7 @@
     <ID>EventSellBooks</ID>
     <Name>Устроить выставку-продажу редких книг</Name>
     <Description>- На выставке-продаже маги могут найти книги, которые искали долгое время</Description>
-    <ImageIndex>224</ImageIndex>
+    <ImageIndex>233</ImageIndex>
     <Duration>1</Duration>
     <Cooldown>7</Cooldown>
     <NameGoods>Посетить выставку-продажу книг</NameGoods>
@@ -66,6 +66,23 @@
     </Heroes>
     <Items>
       <Item>LibrarySellBooks</Item>
+    </Items>
+  </ConstructionEvent>
+  <ConstructionEvent>
+    <ID>EventMemoir</ID>
+    <Name>Написать мемуар</Name>
+    <Description>- Опытным героям всегда есть что оставить потомкам в виде мемуаров.</Description>
+    <ImageIndex>224</ImageIndex>
+    <Duration>1</Duration>
+    <Cooldown>14</Cooldown>
+    <NameGoods>Найти героя для написания мемуара</NameGoods>
+    <Heroes>
+      <Hero>Warrior</Hero>
+      <Hero>Cleric</Hero>
+      <Hero>Mage</Hero>
+    </Heroes>
+    <Items>
+      <Item>LibraryMemoir</Item>
     </Items>
   </ConstructionEvent>
   <ConstructionEvent>
