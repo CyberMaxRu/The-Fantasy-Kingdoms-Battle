@@ -1126,6 +1126,11 @@
                   <Construction>Smithy</Construction>
                   <Level>3</Level>
                 </Requirement>
+                <Requirement>
+                  <TypeRequirement>BuildedConstruction</TypeRequirement>
+                  <Construction>GuildDwarf</Construction>
+                  <Level>2</Level>
+                </Requirement>
               </Requirements>
             </CellMenu>
           </CellMenu>
