@@ -759,13 +759,13 @@
         <Cost>300</Cost>
       </CellMenu>
       <CellMenu>
-        <Pos>2,2</Pos>
+        <Pos>3,1</Pos>
         <Type>Research</Type>
         <Entity>RoguePoisonAttack</Entity>
         <Cost>200</Cost>
       </CellMenu>
       <CellMenu>
-        <Pos>2,3</Pos>
+        <Pos>2,2</Pos>
         <Type>Research</Type>
         <Entity>RogueImpAttack</Entity>
         <Cost>500</Cost>
@@ -778,7 +778,7 @@
         </Requirements>
       </CellMenu>
       <CellMenu>
-        <Pos>3,3</Pos>
+        <Pos>3,2</Pos>
         <Type>Research</Type>
         <Entity>RogueKickAttack</Entity>
         <Cost>500</Cost>
@@ -791,7 +791,7 @@
         </Requirements>
       </CellMenu>
       <CellMenu>
-        <Pos>4,3</Pos>
+        <Pos>2,3</Pos>
         <Type>Research</Type>
         <Entity>StunAttack</Entity>
         <Cost>1000</Cost>
