@@ -2091,6 +2091,24 @@
         </Requirements>
       </CellMenu>
       <CellMenu>
+        <Pos>3,2</Pos>
+        <Type>Event</Type>
+        <Entity>EventElvenMusic</Entity>
+        <Cost>1000</Cost>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>Garden</Construction>
+            <Level>2</Level>
+          </Requirement>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>GuildElf</Construction>
+            <Level>1</Level>
+          </Requirement>
+        </Requirements>
+      </CellMenu>
+      <CellMenu>
         <Pos>2,3</Pos>
         <Type>Extension</Type>
         <Entity>Alley</Entity>

@@ -68,4 +68,20 @@
       <Item>LibrarySellBooks</Item>
     </Items>
   </ConstructionEvent>
+  <ConstructionEvent>
+    <ID>EventElvenMusic</ID>
+    <Name>Концерт эльфийской музыки</Name>
+    <Description>- Прослушивание известных и новых композиций эльфийской музыки благотворно влияет на подданных!</Description>
+    <ImageIndex>232</ImageIndex>
+    <Duration>1</Duration>
+    <Cooldown>7</Cooldown>
+    <NameGoods>Посетить концерт эльфийской музыки</NameGoods>
+    <Heroes>
+      <Hero>Warrior</Hero>
+      <Hero>Hunter</Hero>
+      <Hero>Elf</Hero>
+      <Hero>Cleric</Hero>
+      <Hero>Mage</Hero>
+    </Heroes>
+  </ConstructionEvent>
 </Descriptors>
