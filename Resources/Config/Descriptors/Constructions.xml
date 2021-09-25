@@ -594,22 +594,55 @@
     </Levels>
     <CellsMenu>
       <CellMenu>
-        <Pos>4,3</Pos>
+        <Pos>2,1</Pos>
         <Type>Research</Type>
-        <Entity>DwarfAntiBuildingAttack</Entity>
-        <Cost>500</Cost>
+        <Entity>SimpleRunes</Entity>
+        <Cost>250</Cost>
+      </CellMenu>
+      <CellMenu>
+        <Pos>2,2</Pos>
+        <Type>Research</Type>
+        <Entity>DwarfImpAttack</Entity>
+        <Cost>300</Cost>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>GuildDwarf</Construction>
+            <Level>2</Level>
+          </Requirement>
+        </Requirements>
+      </CellMenu>
+      <CellMenu>
+        <Pos>3,2</Pos>
+        <Type>Research</Type>
+        <Entity>DwarfBerserkBuff</Entity>
+        <Cost>750</Cost>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>GuildDwarf</Construction>
+            <Level>2</Level>
+          </Requirement>
+        </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>2,3</Pos>
         <Type>Research</Type>
-        <Entity>DwarfImpAttack</Entity>
-        <Cost>300</Cost>
+        <Entity>DwarfAntiBuildingAttack</Entity>
+        <Cost>500</Cost>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>GuildDwarf</Construction>
+            <Level>3</Level>
+          </Requirement>
+        </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>3,3</Pos>
         <Type>Research</Type>
-        <Entity>DwarfBerserkBuff</Entity>
-        <Cost>750</Cost>
+        <Entity>DwarfForge</Entity>
+        <Cost>2000</Cost>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>

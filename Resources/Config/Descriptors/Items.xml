@@ -3173,4 +3173,20 @@
     <CategoryItem>Thing</CategoryItem>
     <AvailableForAll>true</AvailableForAll>
   </Item>
+  <Item>
+    <ID>SimpleRunes</ID>
+    <Name>Простые руны</Name>
+    <Description>Гномы готовы за небольшие деньги наковать на оружии простые руны, которые увеличат наносимый урон.</Description>
+    <ImageIndex>230</ImageIndex>
+    <CategoryItem>Thing</CategoryItem>
+    <AvailableForAll>true</AvailableForAll>
+  </Item>
+  <Item>
+    <ID>DwarfForge</ID>
+    <Name>Кузница гномов</Name>
+    <Description>Пристроить гномью кузницу. Позволяет гномам создавать именные предметы.</Description>
+    <ImageIndex>226</ImageIndex>
+    <CategoryItem>Extension</CategoryItem>
+    <AvailableForAll>true</AvailableForAll>
+  </Item>
 </Descriptors>
