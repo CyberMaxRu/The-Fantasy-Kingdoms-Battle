@@ -966,6 +966,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void PrepareHintForBuildOrUpgrade(int requiredLevel)
         {
+            if (requiredLevel > TypeConstruction.MaxLevel)
+                return;// Убрать это
             Debug.Assert(requiredLevel > 0);
             Debug.Assert(requiredLevel <= TypeConstruction.MaxLevel);
 
