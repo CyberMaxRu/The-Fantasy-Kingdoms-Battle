@@ -3165,4 +3165,12 @@
     <CategoryItem>Thing</CategoryItem>
     <AvailableForAll>true</AvailableForAll>
   </Item>
+  <Item>
+    <ID>ElvenSharpener</ID>
+    <Name>Эльфийская заточка</Name>
+    <Description>Эльфы эффективно заточат оружие по своим секретным технологиям.</Description>
+    <ImageIndex>227</ImageIndex>
+    <CategoryItem>Thing</CategoryItem>
+    <AvailableForAll>true</AvailableForAll>
+  </Item>
 </Descriptors>

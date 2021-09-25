@@ -470,6 +470,12 @@
       <CellMenu>
         <Pos>2,1</Pos>
         <Type>Research</Type>
+        <Entity>ElvenSharpener</Entity>
+        <Cost>250</Cost>
+      </CellMenu>
+      <CellMenu>
+        <Pos>3,1</Pos>
+        <Type>Research</Type>
         <Entity>ElixirSpeed</Entity>
         <Cost>1500</Cost>
       </CellMenu>
@@ -478,6 +484,13 @@
         <Type>Research</Type>
         <Entity>ElfImpAttack</Entity>
         <Cost>200</Cost>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>GuildElf</Construction>
+            <Level>2</Level>
+          </Requirement>
+        </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>2,3</Pos>
@@ -488,7 +501,7 @@
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>GuildElf</Construction>
-            <Level>2</Level>
+            <Level>3</Level>
           </Requirement>
         </Requirements>
       </CellMenu>
@@ -501,7 +514,7 @@
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>GuildElf</Construction>
-            <Level>2</Level>
+            <Level>3</Level>
           </Requirement>
         </Requirements>
       </CellMenu>
