@@ -47,6 +47,12 @@
     </Levels>
     <CellsMenu>
       <CellMenu>
+        <Pos>2,1</Pos>
+        <Type>Research</Type>
+        <Entity>CloseCombatCourse</Entity>
+        <Cost>250</Cost>
+      </CellMenu>
+      <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
         <Entity>WarriorImpAttack</Entity>
@@ -134,7 +140,13 @@
     </Levels>
     <CellsMenu>
       <CellMenu>
-        <Pos>4,3</Pos>
+        <Pos>2,1</Pos>
+        <Type>Research</Type>
+        <Entity>FittingClothes</Entity>
+        <Cost>250</Cost>
+      </CellMenu>
+      <CellMenu>
+        <Pos>2,2</Pos>
         <Type>Research</Type>
         <Entity>HunterImpAttack</Entity>
         <Cost>200</Cost>
@@ -227,7 +239,7 @@
         <Cost>250</Cost>
       </CellMenu>
       <CellMenu>
-        <Pos>4,3</Pos>
+        <Pos>2,2</Pos>
         <Type>Research</Type>
         <Entity>HolyAttack</Entity>
         <Cost>200</Cost>

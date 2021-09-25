@@ -3149,4 +3149,20 @@
     <CategoryItem>Thing</CategoryItem>
     <AvailableForAll>true</AvailableForAll>
   </Item>
+  <Item>
+    <ID>FittingClothes</ID>
+    <Name>Подгонка одежды</Name>
+    <Description>В гильдиии рейнджеров как ни в какой другой гильдии знают, что хорошо сидящая одежда - залог эффективности в бою. Подгонка увеличивает ловкость и шанс ухода от удара противника.</Description>
+    <ImageIndex>228</ImageIndex>
+    <CategoryItem>Thing</CategoryItem>
+    <AvailableForAll>true</AvailableForAll>
+  </Item>
+  <Item>
+    <ID>CloseCombatCourse</ID>
+    <Name>Курс ближнего боя</Name>
+    <Description>В гильдиии воинов проведут курс, как действовать в ближнем бою.</Description>
+    <ImageIndex>229</ImageIndex>
+    <CategoryItem>Thing</CategoryItem>
+    <AvailableForAll>true</AvailableForAll>
+  </Item>
 </Descriptors>
