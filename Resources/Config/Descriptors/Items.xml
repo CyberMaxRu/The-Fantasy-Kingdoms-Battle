@@ -3197,4 +3197,36 @@
     <CategoryItem>Extension</CategoryItem>
     <AvailableForAll>true</AvailableForAll>
   </Item>
+  <Item>
+    <ID>ImproveForging</ID>
+    <Name>Улучшить проковку металла</Name>
+    <Description>Оружие и доспехи получают дополнительную прочность.</Description>
+    <ImageIndex>234</ImageIndex>
+    <CategoryItem>Thing</CategoryItem>
+    <AvailableForAll>true</AvailableForAll>
+  </Item>
+  <Item>
+    <ID>ImproveFounding</ID>
+    <Name>Улучшить технологию литья</Name>
+    <Description>Кузница может выпускать больше оружия и доспехов.</Description>
+    <ImageIndex>235</ImageIndex>
+    <CategoryItem>Thing</CategoryItem>
+    <AvailableForAll>true</AvailableForAll>
+  </Item>
+  <Item>
+    <ID>ImproveAnvil</ID>
+    <Name>Улучшить наковальни</Name>
+    <Description>- Кузница может выпускать больше оружия и доспехов.</Description>
+    <ImageIndex>236</ImageIndex>
+    <CategoryItem>Thing</CategoryItem>
+    <AvailableForAll>true</AvailableForAll>
+  </Item>
+  <Item>
+    <ID>Sickle</ID>
+    <Name>Улучшить крестьянские орудия труда</Name>
+    <Description>- Увеличивает доход от крестьянских хозяйств.</Description>
+    <ImageIndex>237</ImageIndex>
+    <CategoryItem>Thing</CategoryItem>
+    <AvailableForAll>true</AvailableForAll>
+  </Item>
 </Descriptors>

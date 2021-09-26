@@ -1145,6 +1145,51 @@
     </Levels>
     <CellsMenu>
       <CellMenu>
+        <Pos>2,1</Pos>
+        <Type>Research</Type>
+        <Entity>ImproveAnvil</Entity>
+        <Cost>500</Cost>
+      </CellMenu>
+      <CellMenu>
+        <Pos>2,2</Pos>
+        <Type>Research</Type>
+        <Entity>ImproveForging</Entity>
+        <Cost>1500</Cost>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>Smithy</Construction>
+            <Level>2</Level>
+          </Requirement>
+        </Requirements>
+      </CellMenu>
+      <CellMenu>
+        <Pos>3,2</Pos>
+        <Type>Research</Type>
+        <Entity>Sickle</Entity>
+        <Cost>1000</Cost>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>Smithy</Construction>
+            <Level>2</Level>
+          </Requirement>
+        </Requirements>
+      </CellMenu>
+      <CellMenu>
+        <Pos>2,3</Pos>
+        <Type>Research</Type>
+        <Entity>ImproveFounding</Entity>
+        <Cost>3000</Cost>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>Smithy</Construction>
+            <Level>3</Level>
+          </Requirement>
+        </Requirements>
+      </CellMenu>
+      <CellMenu>
         <Pos>4,1</Pos>
         <Type>Research</Type>
         <Entity>GroupArmourMetal1</Entity>
