@@ -3059,6 +3059,15 @@
     <AvailableForAll>true</AvailableForAll>
   </Item>
   <Item>
+    <ID>Fountain</ID>
+    <Name>Фонтан</Name>
+    <Description>Фонтан увеличит популярность Площади</Description>
+    <ImageIndex>213</ImageIndex>
+    <Cost>1000</Cost>
+    <CategoryItem>Extension</CategoryItem>
+    <AvailableForAll>true</AvailableForAll>
+  </Item>
+  <Item>
     <ID>Gazebo</ID>
     <Name>Беседки</Name>
     <Description>Беседки увеличат популярность Сада</Description>
@@ -3068,10 +3077,10 @@
     <AvailableForAll>true</AvailableForAll>
   </Item>
   <Item>
-    <ID>Fountain</ID>
-    <Name>Фонтан</Name>
-    <Description>Фонтан увеличит популярность Сада</Description>
-    <ImageIndex>213</ImageIndex>
+    <ID>Waterfall</ID>
+    <Name>Водопад</Name>
+    <Description>Водопад увеличит популярность Площади</Description>
+    <ImageIndex>246</ImageIndex>
     <Cost>1000</Cost>
     <CategoryItem>Extension</CategoryItem>
     <AvailableForAll>true</AvailableForAll>

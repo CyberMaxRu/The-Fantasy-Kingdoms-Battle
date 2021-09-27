@@ -2200,7 +2200,7 @@
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Extension</Type>
-        <Entity>Fountain</Entity>
+        <Entity>Waterfall</Entity>
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
