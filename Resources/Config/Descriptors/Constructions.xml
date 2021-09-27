@@ -983,8 +983,8 @@
   </Construction>
   <Construction>
     <ID>Market</ID>
-    <Name>Рынок</Name>
-    <Description>- Приносит существенный доход//- Здесь исследуют и продают амуницию//- Здесь исследуют и продают продукты//- Здесь исследуют и продают разные предметы</Description>
+    <Name>Продуктовый рынок</Name>
+    <Description>- Приносит существенный доход//- Здесь продают продукты питания</Description>
     <ImageIndex>82</ImageIndex>
     <TypeConstruction>Manufacture</TypeConstruction>
     <Category>Economic</Category>
@@ -1031,16 +1031,34 @@
     </Levels>
     <CellsMenu>
       <CellMenu>
+        <Pos>2,1</Pos>
+        <Type>Research</Type>
+        <Entity>Apple</Entity>
+        <Cost>250</Cost>
+      </CellMenu>
+      <CellMenu>
+        <Pos>3,1</Pos>
+        <Type>Research</Type>
+        <Entity>Wheat</Entity>
+        <Cost>500</Cost>
+      </CellMenu>
+      <CellMenu>
+        <Pos>4,1</Pos>
+        <Type>Research</Type>
+        <Entity>Meat</Entity>
+        <Cost>750</Cost>
+      </CellMenu>
+      <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
         <Entity>GingerRoot</Entity>
-        <Cost>250</Cost>
+        <Cost>500</Cost>
       </CellMenu>
       <CellMenu>
         <Pos>3,2</Pos>
         <Type>Research</Type>
         <Entity>Amanita</Entity>
-        <Cost>500</Cost>
+        <Cost>1000</Cost>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1051,9 +1069,22 @@
       </CellMenu>
       <CellMenu>
         <Pos>4,2</Pos>
+        <Type>Event</Type>
+        <Entity>EventFair</Entity>
+        <Cost>1500</Cost>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>Market</Construction>
+            <Level>2</Level>
+          </Requirement>
+        </Requirements>
+      </CellMenu>
+      <CellMenu>
+        <Pos>2,3</Pos>
         <Type>Research</Type>
-        <Entity>Beer</Entity>
-        <Cost>750</Cost>
+        <Entity>CornedBeef</Entity>
+        <Cost>1000</Cost>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1061,18 +1092,6 @@
             <Level>3</Level>
           </Requirement>
         </Requirements>
-      </CellMenu>
-      <CellMenu>
-        <Pos>2,3</Pos>
-        <Type>Research</Type>
-        <Entity>Horseshoe</Entity>
-        <Cost>250</Cost>
-      </CellMenu>
-      <CellMenu>
-        <Pos>3,3</Pos>
-        <Type>Event</Type>
-        <Entity>EventFair</Entity>
-        <Cost>1000</Cost>
       </CellMenu>
     </CellsMenu>
   </Construction>
@@ -1323,7 +1342,7 @@
     <Line>3</Line>
     <Pos>1</Pos>
     <DefaultLevel>0</DefaultLevel>
-    <MaxLevel>2</MaxLevel>
+    <MaxLevel>3</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>tavern_select.wav</SoundSelect>
     <Levels>
@@ -1346,25 +1365,68 @@
           </Requirement>
         </Requirements>
       </Level>
+      <Level>
+        <Number>3</Number>
+        <Cost>1500</Cost>
+        <Builders>1</Builders>
+        <Income>0</Income>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>Castle</Construction>
+            <Level>2</Level>
+          </Requirement>
+        </Requirements>
+      </Level>
     </Levels>
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
         <Type>Research</Type>
-        <Entity>TavernBeer</Entity>
-        <Cost>500</Cost>
+        <Entity>TavernSoup</Entity>
+        <Cost>250</Cost>
       </CellMenu>
       <CellMenu>
-        <Pos>3,1</Pos>
+        <Pos>2,2</Pos>
         <Type>Research</Type>
         <Entity>TavernMeat</Entity>
         <Cost>500</Cost>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>GoodsInConstruction</TypeRequirement>
+            <Construction>Market</Construction>
+            <Goods>Meat</Goods>
+          </Requirement>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>Tavern</Construction>
+            <Level>2</Level>
+          </Requirement>
+        </Requirements>
+      </CellMenu>
+      <CellMenu>
+        <Pos>3,2</Pos>
+        <Type>Research</Type>
+        <Entity>TavernBeer</Entity>
+        <Cost>500</Cost>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>GoodsInConstruction</TypeRequirement>
+            <Construction>Market</Construction>
+            <Goods>Wheat</Goods>
+          </Requirement>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>Tavern</Construction>
+            <Level>2</Level>
+          </Requirement>
+        </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>2,3</Pos>
         <Type>Event</Type>
         <Entity>EventFeast</Entity>
-        <Cost>500</Cost>
+        <Cost>1000</Cost>
       </CellMenu>
     </CellsMenu>
   </Construction>
@@ -3237,6 +3299,25 @@
             <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>GamblingHall</Construction>
             <Level>2</Level>
+          </Requirement>
+        </Requirements>
+      </CellMenu>
+      <CellMenu>
+        <Pos>4,2</Pos>
+        <Type>Research</Type>
+        <Entity>Cider</Entity>
+        <Cost>500</Cost>
+        <Income>100</Income>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>GamblingHall</Construction>
+            <Level>2</Level>
+          </Requirement>
+          <Requirement>
+            <TypeRequirement>GoodsInConstruction</TypeRequirement>
+            <Construction>Market</Construction>
+            <Goods>Apple</Goods>
           </Requirement>
         </Requirements>
       </CellMenu>

@@ -19,9 +19,9 @@
   </ConstructionEvent>
   <ConstructionEvent>
     <ID>EventFeast</ID>
-    <Name>Пир</Name>
-    <Description>Устроить пир</Description>
-    <ImageIndex>155</ImageIndex>
+    <Name>Пивной фестиваль</Name>
+    <Description>Устроить пивной фестиваль</Description>
+    <ImageIndex>225</ImageIndex>
     <Duration>1</Duration>
     <Cooldown>7</Cooldown>
     <NameGoods>Участвовать в пире</NameGoods>
@@ -38,7 +38,7 @@
     <ID>EventFair</ID>
     <Name>Ярмарка</Name>
     <Description>Устроить ярмарку</Description>
-    <ImageIndex>154</ImageIndex>
+    <ImageIndex>243</ImageIndex>
     <Duration>3</Duration>
     <Cooldown>10</Cooldown>
     <NameGoods>Посетить ярмарку</NameGoods>

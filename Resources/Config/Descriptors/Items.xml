@@ -3229,4 +3229,52 @@
     <CategoryItem>Thing</CategoryItem>
     <AvailableForAll>true</AvailableForAll>
   </Item>
+  <Item>
+    <ID>Wheat</ID>
+    <Name>Пшеница</Name>
+    <Description>Пшеница - основной злак Ардании.</Description>
+    <ImageIndex>240</ImageIndex>
+    <CategoryItem>Thing</CategoryItem>
+    <AvailableForAll>true</AvailableForAll>
+  </Item>
+  <Item>
+    <ID>Meat</ID>
+    <Name>Мясо</Name>
+    <Description>Просто мясо.</Description>
+    <ImageIndex>241</ImageIndex>
+    <CategoryItem>Thing</CategoryItem>
+    <AvailableForAll>true</AvailableForAll>
+  </Item>
+  <Item>
+    <ID>Apple</ID>
+    <Name>Яблоки</Name>
+    <Description>Свежие яблоки</Description>
+    <ImageIndex>242</ImageIndex>
+    <CategoryItem>Thing</CategoryItem>
+    <AvailableForAll>true</AvailableForAll>
+  </Item>
+  <Item>
+    <ID>CornedBeef</ID>
+    <Name>Солонина</Name>
+    <Description>Позволяет героям путешествовать на дальние расстояния</Description>
+    <ImageIndex>239</ImageIndex>
+    <CategoryItem>Thing</CategoryItem>
+    <AvailableForAll>true</AvailableForAll>
+  </Item>
+  <Item>
+    <ID>Cider</ID>
+    <Name>Сидр</Name>
+    <Description>Великолепный сидр</Description>
+    <ImageIndex>245</ImageIndex>
+    <CategoryItem>Thing</CategoryItem>
+    <AvailableForAll>true</AvailableForAll>
+  </Item>
+  <Item>
+    <ID>TavernSoup</ID>
+    <Name>Похлебка</Name>
+    <Description>Вкусная похлебка - залог здоровья героев</Description>
+    <ImageIndex>244</ImageIndex>
+    <CategoryItem>Thing</CategoryItem>
+    <AvailableForAll>true</AvailableForAll>
+  </Item>
 </Descriptors>
