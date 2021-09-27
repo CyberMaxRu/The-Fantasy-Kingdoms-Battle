@@ -1427,6 +1427,18 @@
         <Type>Event</Type>
         <Entity>EventFeast</Entity>
         <Cost>1000</Cost>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>Tavern</Construction>
+            <Level>3</Level>
+          </Requirement>
+          <Requirement>
+            <TypeRequirement>GoodsInConstruction</TypeRequirement>
+            <Construction>Tavern</Construction>
+            <Goods>TavernBeer</Goods>
+          </Requirement>
+        </Requirements>
       </CellMenu>
     </CellsMenu>
   </Construction>
