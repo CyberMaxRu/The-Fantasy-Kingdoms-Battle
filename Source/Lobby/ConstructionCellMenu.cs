@@ -365,12 +365,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Execute()
         {
-            if (Construction.Level == 0)
-                Construction.Build();
-            else
-                Construction.Upgrade();
-
-            RemoveSelf();
+            Construction.Build();
         }
 
         internal new DescriptorCellMenuForConstructionLevel Descriptor { get; }

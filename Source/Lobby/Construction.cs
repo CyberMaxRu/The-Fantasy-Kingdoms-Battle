@@ -93,21 +93,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void Build()
         {
-            Debug.Assert(Level == 0);
-            Debug.Assert(CheckRequirements());
-            Debug.Assert(Player.Gold >= CostBuyOrUpgrade());
-            Debug.Assert(!BuildedOrUpgraded);
-
-            Player.Constructed(this);
-            Level++;
-            ValidateHeroes();
-            PrepareTurn();
-            if (!Player.Initialization)
-                BuildedOrUpgraded = true;
-        }
-
-        internal void Upgrade()
-        {
             Debug.Assert(Level < TypeConstruction.MaxLevel);
             Debug.Assert(CheckRequirements());
             Debug.Assert(Player.Gold >= CostBuyOrUpgrade());
@@ -115,8 +100,30 @@ namespace Fantasy_Kingdoms_Battle
 
             Player.Constructed(this);
             Level++;
+
+            if (Level == 1)
+            {
+                ValidateHeroes();
+                PrepareTurn();
+            }
+
             if (!Player.Initialization)
                 BuildedOrUpgraded = true;
+
+            // Убираем операцию постройки из меню
+            ConstructionCellMenu cmBuild = null;
+            foreach (ConstructionCellMenu cm in Researches)
+            {
+                if (cm is CellMenuConstructionLevelUp cml)
+                    if (cml.Descriptor.Number == Level)
+                    {
+                        cmBuild = cml;
+                        break;
+                    }
+            }
+
+            if (cmBuild != null)
+                Researches.Remove(cmBuild);
         }
 
         internal void ValidateHeroes()
