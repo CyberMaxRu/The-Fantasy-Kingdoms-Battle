@@ -1976,6 +1976,19 @@
           </Requirement>
         </Requirements>
       </CellMenu>
+      <CellMenu>
+        <Pos>3,3</Pos>
+        <Type>Research</Type>
+        <Entity>Herald</Entity>
+        <Cost>1000</Cost>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>TownSquare</Construction>
+            <Level>3</Level>
+          </Requirement>
+        </Requirements>
+      </CellMenu>
     </CellsMenu>
   </Construction>
   <Construction>

@@ -3313,4 +3313,13 @@
     <CategoryItem>Thing</CategoryItem>
     <AvailableForAll>true</AvailableForAll>
   </Item>
+  <Item>
+    <ID>Herald</ID>
+    <Name>Глашатай</Name>
+    <Description>Увеличивает энтузиазм героев</Description>
+    <ImageIndex>249</ImageIndex>
+    <Cost>500</Cost>
+    <CategoryItem>Thing</CategoryItem>
+    <AvailableForAll>true</AvailableForAll>
+  </Item>
 </Descriptors>
