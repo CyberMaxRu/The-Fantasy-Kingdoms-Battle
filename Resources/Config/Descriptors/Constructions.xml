@@ -1877,7 +1877,7 @@
     </CellsMenu>
   </Construction>
   <Construction>
-    <ID>TownSqare</ID>
+    <ID>TownSquare</ID>
     <Name>Городская площадь</Name>
     <Description>- Главное место города.//- Здесь могут проводиться казни.</Description>
     <ImageIndex>158</ImageIndex>
