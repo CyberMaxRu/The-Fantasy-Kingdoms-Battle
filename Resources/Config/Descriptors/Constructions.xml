@@ -626,6 +626,24 @@
         </Requirements>
       </CellMenu>
       <CellMenu>
+        <Pos>4,2</Pos>
+        <Type>Research</Type>
+        <Entity>DwarfBeer</Entity>
+        <Cost>1000</Cost>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>GuildDwarf</Construction>
+            <Level>2</Level>
+          </Requirement>
+          <Requirement>
+            <TypeRequirement>GoodsInConstruction</TypeRequirement>
+            <Construction>Market</Construction>
+            <Goods>Wheat</Goods>
+          </Requirement>
+        </Requirements>
+      </CellMenu>
+      <CellMenu>
         <Pos>2,3</Pos>
         <Type>Research</Type>
         <Entity>DwarfAntiBuildingAttack</Entity>

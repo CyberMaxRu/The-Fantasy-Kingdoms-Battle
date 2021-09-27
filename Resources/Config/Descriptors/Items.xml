@@ -3322,4 +3322,15 @@
     <CategoryItem>Thing</CategoryItem>
     <AvailableForAll>true</AvailableForAll>
   </Item>
+  <Item>
+    <ID>DwarfBeer</ID>
+    <Name>Гномье пиво</Name>
+    <Description>- Гномы варят пиво по своим секретным рецептам//- Увеличивает энтузиазм гномов</Description>
+    <ImageIndex>250</ImageIndex>
+    <Cost>1000</Cost>
+    <CategoryItem>Thing</CategoryItem>
+    <Heroes>
+      <Hero>Dwarf</Hero>
+    </Heroes>
+  </Item>
 </Descriptors>
