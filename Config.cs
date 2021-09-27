@@ -861,7 +861,7 @@ namespace Fantasy_Kingdoms_Battle
                     break;
             }
 
-            HumanPlayers.Add(new HumanPlayer(id, name, "-", imageIndex));
+            HumanPlayers.Add(new HumanPlayer(id, name, "-", imageIndex + ImageIndexFirstAvatar));
 
             SaveHumanPlayers();
         }
