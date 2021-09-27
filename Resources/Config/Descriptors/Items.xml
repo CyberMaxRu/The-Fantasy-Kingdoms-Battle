@@ -3059,11 +3059,29 @@
     <AvailableForAll>true</AvailableForAll>
   </Item>
   <Item>
+    <ID>Paving</ID>
+    <Name>Мощение</Name>
+    <Description>Мощение плиткой увеличит популярность Площади</Description>
+    <ImageIndex>247</ImageIndex>
+    <Cost>500</Cost>
+    <CategoryItem>Extension</CategoryItem>
+    <AvailableForAll>true</AvailableForAll>
+  </Item>
+  <Item>
     <ID>Fountain</ID>
     <Name>Фонтан</Name>
     <Description>Фонтан увеличит популярность Площади</Description>
     <ImageIndex>213</ImageIndex>
     <Cost>1000</Cost>
+    <CategoryItem>Extension</CategoryItem>
+    <AvailableForAll>true</AvailableForAll>
+  </Item>
+  <Item>
+    <ID>Statue</ID>
+    <Name>Статуя</Name>
+    <Description>Статуя Короля обозначит Королевский статус площади</Description>
+    <ImageIndex>231</ImageIndex>
+    <Cost>3000</Cost>
     <CategoryItem>Extension</CategoryItem>
     <AvailableForAll>true</AvailableForAll>
   </Item>
@@ -3283,6 +3301,15 @@
     <Name>Похлебка</Name>
     <Description>Вкусная похлебка - залог здоровья героев</Description>
     <ImageIndex>244</ImageIndex>
+    <CategoryItem>Thing</CategoryItem>
+    <AvailableForAll>true</AvailableForAll>
+  </Item>
+  <Item>
+    <ID>LuckyCoins</ID>
+    <Name>Монетки на удачу</Name>
+    <Description>Можно бросать монетки в Фонтан, увеличивая удачу</Description>
+    <ImageIndex>248</ImageIndex>
+    <Cost>500</Cost>
     <CategoryItem>Thing</CategoryItem>
     <AvailableForAll>true</AvailableForAll>
   </Item>

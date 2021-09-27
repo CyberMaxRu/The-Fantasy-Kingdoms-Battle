@@ -1887,7 +1887,7 @@
     <Line>1</Line>
     <Pos>2</Pos>
     <DefaultLevel>0</DefaultLevel>
-    <MaxLevel>1</MaxLevel>
+    <MaxLevel>3</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>statue_select.wav</SoundSelect>
     <Levels>
@@ -1899,7 +1899,84 @@
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>5</GreatnessPerDay>
       </Level>
+      <Level>
+        <Number>2</Number>
+        <Cost>1000</Cost>
+        <Builders>1</Builders>
+        <Income>0</Income>
+        <GreatnessByConstruction>100</GreatnessByConstruction>
+        <GreatnessPerDay>5</GreatnessPerDay>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>Castle</Construction>
+            <Level>2</Level>
+          </Requirement>
+        </Requirements>
+      </Level>
+      <Level>
+        <Number>3</Number>
+        <Cost>2000</Cost>
+        <Builders>1</Builders>
+        <Income>0</Income>
+        <GreatnessByConstruction>100</GreatnessByConstruction>
+        <GreatnessPerDay>5</GreatnessPerDay>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>Castle</Construction>
+            <Level>3</Level>
+          </Requirement>
+        </Requirements>
+      </Level>
     </Levels>
+    <CellsMenu>
+      <CellMenu>
+        <Pos>2,1</Pos>
+        <Type>Extension</Type>
+        <Entity>Paving</Entity>
+        <Cost>500</Cost>
+      </CellMenu>
+      <CellMenu>
+        <Pos>2,2</Pos>
+        <Type>Extension</Type>
+        <Entity>Fountain</Entity>
+        <Cost>1000</Cost>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>TownSquare</Construction>
+            <Level>2</Level>
+          </Requirement>
+        </Requirements>
+      </CellMenu>
+      <CellMenu>
+        <Pos>3,2</Pos>
+        <Type>Research</Type>
+        <Entity>LuckyCoins</Entity>
+        <Cost>500</Cost>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>GoodsInConstruction</TypeRequirement>
+            <Construction>TownSquare</Construction>
+            <Goods>Fountain</Goods>
+          </Requirement>
+        </Requirements>
+      </CellMenu>
+      <CellMenu>
+        <Pos>2,3</Pos>
+        <Type>Extension</Type>
+        <Entity>Statue</Entity>
+        <Cost>1500</Cost>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>TownSquare</Construction>
+            <Level>3</Level>
+          </Requirement>
+        </Requirements>
+      </CellMenu>
+    </CellsMenu>
   </Construction>
   <Construction>
     <ID>TreasureDepartment</ID>
