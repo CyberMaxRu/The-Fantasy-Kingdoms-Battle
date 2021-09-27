@@ -1031,25 +1031,6 @@
     </Levels>
     <CellsMenu>
       <CellMenu>
-        <Pos>2,1</Pos>
-        <Type>Research</Type>
-        <Entity>Quiver</Entity>
-        <Cost>250</Cost>
-      </CellMenu>
-      <CellMenu>
-        <Pos>3,1</Pos>
-        <Type>Research</Type>
-        <Entity>SmallBag</Entity>
-        <Cost>500</Cost>
-        <Requirements>
-          <Requirement>
-            <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Market</Construction>
-            <Level>2</Level>
-          </Requirement>
-        </Requirements>
-      </CellMenu>
-      <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
         <Entity>GingerRoot</Entity>
@@ -1472,6 +1453,25 @@
             <TypeRequirement>BuildedConstruction</TypeRequirement>
             <Construction>Workshop</Construction>
             <Level>3</Level>
+          </Requirement>
+        </Requirements>
+      </CellMenu>
+      <CellMenu>
+        <Pos>3,1</Pos>
+        <Type>Research</Type>
+        <Entity>Quiver</Entity>
+        <Cost>250</Cost>
+      </CellMenu>
+      <CellMenu>
+        <Pos>3,2</Pos>
+        <Type>Research</Type>
+        <Entity>SmallBag</Entity>
+        <Cost>500</Cost>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>Workshop</Construction>
+            <Level>2</Level>
           </Requirement>
         </Requirements>
       </CellMenu>
