@@ -658,7 +658,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override string GetLevel()
         {
-            return PlayerHero.ToString();
+            return PlayerHero.Level.ToString();
         }
 
         internal override int GetQuantity()
@@ -668,7 +668,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override string GetText()
         {
-            return null;
+            return "";
         }
 
         internal override void PrepareHint()
