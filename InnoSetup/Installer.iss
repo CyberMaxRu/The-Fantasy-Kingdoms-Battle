@@ -51,7 +51,7 @@ Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
 Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 
 [Run]
-Filename: "https://vk.com/majesty_2_vozrozhdeniye"; Description: "Перейти в группу проекта Возрождение"; Flags: shellexec postinstall;
+Filename: "https://vk.com/majesty_2_vozrozhdeniye"; Description: "Перейти в группу проекта 'Возрождение'"; Flags: shellexec postinstall;
 Filename: "https://discord.com/invite/3R4PDsR"; Description: "Присоединиться к проекту в Discord"; Flags: shellexec postinstall;
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
 Filename: attrib; Parameters: "+r ""{app}""";
