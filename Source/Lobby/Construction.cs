@@ -870,6 +870,9 @@ namespace Fantasy_Kingdoms_Battle
             Player.ApplyReward(this);
             Destroyed = true;
 
+            // Если сооружение было выбрано, очищаем ссылку
+            Program.formMain.ObjectDestroyed(this);
+
             // Ставим тип места, который должен быть после зачистки
             Debug.Assert(!(TypeConstruction.TypePlaceForConstruct is null));
 

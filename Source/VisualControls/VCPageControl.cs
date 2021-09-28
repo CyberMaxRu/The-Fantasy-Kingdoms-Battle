@@ -10,7 +10,6 @@ namespace Fantasy_Kingdoms_Battle
     // Класс кнопок со страницами
     internal sealed class VCPageControl : VisualControl
     {
-        private readonly List<VCPageButton> listFormPage = new List<VCPageButton>();
         private int nextLeft;
 
         public VCPageControl(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
@@ -20,6 +19,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal VCPageButton CurrentPage { get; private set; }
         internal event EventHandler PageChanged;
+        internal List<VCPageButton> Pages { get; } = new List<VCPageButton>();
 
         internal VCPageButton AddPage(int imageIndex, string caption, string advice, EventHandler onShowHint)
         {
@@ -29,7 +29,7 @@ namespace Fantasy_Kingdoms_Battle
             page.Click += Page_Click;
             page.ShowHint += onShowHint;
             nextLeft = page.NextLeft();
-            listFormPage.Add(page);
+            Pages.Add(page);
 
             return page;
         }
@@ -44,7 +44,7 @@ namespace Fantasy_Kingdoms_Battle
             // Приводим страницы к единому максимальному размеру
             int maxWidth = 0;
             int maxHeight = 0;
-            foreach (VCPageButton p in listFormPage)
+            foreach (VCPageButton p in Pages)
             {
                 p.Page.ApplyMaxSize();
 
@@ -52,7 +52,7 @@ namespace Fantasy_Kingdoms_Battle
                 maxHeight = Math.Max(maxHeight, p.Page.Height);
             }
 
-            foreach (VCPageButton p in listFormPage)
+            foreach (VCPageButton p in Pages)
             {
                 p.Page.Width = maxWidth;
                 p.Page.Height = maxHeight;

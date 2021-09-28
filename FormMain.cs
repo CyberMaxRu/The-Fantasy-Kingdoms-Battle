@@ -2493,5 +2493,18 @@ namespace Fantasy_Kingdoms_Battle
                 ControlForHintLeave();
             }
         }
+
+        internal void ObjectDestroyed(BigEntity entity)
+        {
+            Debug.Assert(entity != null);
+
+            foreach (VCPageButton button in pageControl.Pages)
+            {
+                if (button.SelectedPlayerObject == entity)
+                {
+                    button.SelectedPlayerObject = null;
+                }
+            }
+        }
     }
 }
