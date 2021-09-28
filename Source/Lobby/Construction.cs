@@ -873,7 +873,7 @@ namespace Fantasy_Kingdoms_Battle
             // Ставим тип места, который должен быть после зачистки
             Debug.Assert(!(TypeConstruction.TypePlaceForConstruct is null));
 
-            Construction pl = new Construction(Player, TypeConstruction.TypePlaceForConstruct, 1, X, Y, Layer);
+            Construction pl = new Construction(Player, TypeConstruction.TypePlaceForConstruct, TypeConstruction.DefaultLevel, X, Y, Layer);
             pl.Hidden = false;
             Player.Lairs[Layer, Y, X] = pl;
         }
