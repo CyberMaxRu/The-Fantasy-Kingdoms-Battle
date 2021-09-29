@@ -500,7 +500,6 @@ namespace Fantasy_Kingdoms_Battle
         internal void AddStep85Signer(Hero signer, Entity owner = null)
         {
             Debug.Assert(!((signer != null) && (owner != null)));
-            Debug.Assert(!((signer == null) && (owner == null)));
 
             if (signer != null)
             {
