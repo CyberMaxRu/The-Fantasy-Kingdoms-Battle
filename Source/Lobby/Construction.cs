@@ -377,25 +377,25 @@ namespace Fantasy_Kingdoms_Battle
 
                 if (TypeConstruction.IsOurConstruction)
                 {
-                    Program.formMain.formHint.AddStep1Header(TypeConstruction.Name, 
+                    Program.formMain.formHint.AddStep2Header(TypeConstruction.Name, 
                         Level > 0 ? "Уровень " + Level.ToString() + Environment.NewLine : "" + TypeConstruction.TypeConstruction.Name,
                         TypeConstruction.Description + ((Level > 0) && (TypeConstruction.TrainedHero != null) ? Environment.NewLine + Environment.NewLine
                         + (!(TypeConstruction.TrainedHero is null) ? "Героев: " + Heroes.Count.ToString() + "/" + MaxHeroes().ToString() : "") : ""));
-                    Program.formMain.formHint.AddStep2Income(Income());
-                    Program.formMain.formHint.AddStep3Greatness(0, GreatnessPerDay());
-                    Program.formMain.formHint.AddStep35PlusBuilders(BuildersPerDay());
+                    Program.formMain.formHint.AddStep6Income(Income());
+                    Program.formMain.formHint.AddStep8Greatness(0, GreatnessPerDay());
+                    Program.formMain.formHint.AddStep9PlusBuilders(BuildersPerDay());
                 }
                 else
                 {
                     if (Hidden)
-                        Program.formMain.formHint.AddStep1Header("Неизвестное место", "Место не разведано", "Установите флаг разведки для отправки героев к месту");
+                        Program.formMain.formHint.AddStep2Header("Неизвестное место", "Место не разведано", "Установите флаг разведки для отправки героев к месту");
                     else
                     {
-                        Program.formMain.formHint.AddStep1Header(TypeConstruction.Name, TypeConstruction.TypeConstruction.Name, TypeConstruction.Description);
+                        Program.formMain.formHint.AddStep2Header(TypeConstruction.Name, TypeConstruction.TypeConstruction.Name, TypeConstruction.Description);
                         if (TypeConstruction.Reward != null)
                         {
-                            Program.formMain.formHint.AddStep2Reward(TypeConstruction.Reward.Gold);
-                            Program.formMain.formHint.AddStep3Greatness(TypeConstruction.Reward.Greatness, 0);
+                            Program.formMain.formHint.AddStep7Reward(TypeConstruction.Reward.Gold);
+                            Program.formMain.formHint.AddStep8Greatness(TypeConstruction.Reward.Greatness, 0);
                         }
                     }
                 }
@@ -990,15 +990,15 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(requiredLevel > 0);
             Debug.Assert(requiredLevel <= TypeConstruction.MaxLevel);
 
-            Program.formMain.formHint.AddStep1Header(TypeConstruction.Name, 
+            Program.formMain.formHint.AddStep2Header(TypeConstruction.Name, 
                 requiredLevel == 1 ? "Уровень 1" + Environment.NewLine + TypeConstruction.TypeConstruction.Name :
                     $"Улучшить строение ({requiredLevel} ур.)" + Environment.NewLine + TypeConstruction.TypeConstruction.Name, requiredLevel == 1 ? TypeConstruction.Description : "");
-            Program.formMain.formHint.AddStep2Income(IncomeForLevel(requiredLevel));
-            Program.formMain.formHint.AddStep3Greatness(GreatnesAddForLevel(requiredLevel), GreatnesPerDayForLevel(requiredLevel));
-            Program.formMain.formHint.AddStep35PlusBuilders(BuildersPerDayForLevel(requiredLevel));
-            Program.formMain.formHint.AddStep3Requirement(GetTextRequirements(requiredLevel));
-            Program.formMain.formHint.AddStep4Gold(CostBuyOrUpgradeForLevel(requiredLevel), Player.Gold >= CostBuyOrUpgradeForLevel(requiredLevel));
-            Program.formMain.formHint.AddStep5Builders(TypeConstruction.Levels[requiredLevel].Builders, Player.FreeBuilders >= TypeConstruction.Levels[requiredLevel].Builders);
+            Program.formMain.formHint.AddStep6Income(IncomeForLevel(requiredLevel));
+            Program.formMain.formHint.AddStep8Greatness(GreatnesAddForLevel(requiredLevel), GreatnesPerDayForLevel(requiredLevel));
+            Program.formMain.formHint.AddStep9PlusBuilders(BuildersPerDayForLevel(requiredLevel));
+            Program.formMain.formHint.AddStep11Requirement(GetTextRequirements(requiredLevel));
+            Program.formMain.formHint.AddStep12Gold(CostBuyOrUpgradeForLevel(requiredLevel), Player.Gold >= CostBuyOrUpgradeForLevel(requiredLevel));
+            Program.formMain.formHint.AddStep13Builders(TypeConstruction.Levels[requiredLevel].Builders, Player.FreeBuilders >= TypeConstruction.Levels[requiredLevel].Builders);
         }
 
         internal void PrepareHintForHireHero()
@@ -1006,10 +1006,10 @@ namespace Fantasy_Kingdoms_Battle
             if (Heroes.Count < MaxHeroes())
             {
 
-                Program.formMain.formHint.AddStep1Header(TypeConstruction.TrainedHero.Name, "", TypeConstruction.TrainedHero.Description);
+                Program.formMain.formHint.AddStep2Header(TypeConstruction.TrainedHero.Name, "", TypeConstruction.TrainedHero.Description);
                 if ((TypeConstruction.TrainedHero != null) && (TypeConstruction.TrainedHero.Cost > 0))
-                    Program.formMain.formHint.AddStep3Requirement(GetTextRequirementsHire());
-                Program.formMain.formHint.AddStep4Gold(TypeConstruction.TrainedHero.Cost, Player.Gold >= TypeConstruction.TrainedHero.Cost);
+                    Program.formMain.formHint.AddStep11Requirement(GetTextRequirementsHire());
+                Program.formMain.formHint.AddStep12Gold(TypeConstruction.TrainedHero.Cost, Player.Gold >= TypeConstruction.TrainedHero.Cost);
             }
         }
 
@@ -1026,7 +1026,7 @@ namespace Fantasy_Kingdoms_Battle
                     pos++;
                 }
 
-                Program.formMain.formHint.AddStep1Header(TypeConstruction.IsOurConstruction ? "Жители" : "Существа", "", list);
+                Program.formMain.formHint.AddStep2Header(TypeConstruction.IsOurConstruction ? "Жители" : "Существа", "", list);
             }
             else
                 Program.formMain.formHint.AddSimpleHint("Обитателей нет");

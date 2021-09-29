@@ -41,11 +41,11 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PrepareHint()
         {
-            Program.formMain.formHint.AddStep1Header(Descriptor.Name, "", Descriptor.Description);
-            Program.formMain.formHint.AddStep6PlayerItem(this);
-            Program.formMain.formHint.AddStep85Signer(Signer);
-            Program.formMain.formHint.AddStep9Descriptors(Modifiers);
-            Program.formMain.formHint.AddStep10Perks(Descriptor.Perks);
+            Program.formMain.formHint.AddStep2Header(Descriptor.Name, "", Descriptor.Description);
+            Program.formMain.formHint.AddStep14PlayerItem(this);
+            Program.formMain.formHint.AddStep17Signer(Signer);
+            Program.formMain.formHint.AddStep19Descriptors(Modifiers);
+            Program.formMain.formHint.AddStep20Perks(Descriptor.Perks);
         }
 
         internal void AddModificator(DescriptorItem descriptor)

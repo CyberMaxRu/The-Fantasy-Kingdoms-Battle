@@ -77,9 +77,9 @@ namespace Fantasy_Kingdoms_Battle
         internal override void PrepareHint()
         {
             if (DescriptorConstructionEvent != null)
-                Program.formMain.formHint.AddStep1Header(DescriptorConstructionEvent.NameGoods, Duration > 0 ? $"Осталось дней: {Counter}" : "", Descriptor.Description);
+                Program.formMain.formHint.AddStep2Header(DescriptorConstructionEvent.NameGoods, Duration > 0 ? $"Осталось дней: {Counter}" : "", Descriptor.Description);
             else
-                Program.formMain.formHint.AddStep1Header(Descriptor.Name, "", Descriptor.Description);
+                Program.formMain.formHint.AddStep2Header(Descriptor.Name, "", Descriptor.Description);
         }
 
         internal bool IsAvailableForCreature(DescriptorCreature dc)

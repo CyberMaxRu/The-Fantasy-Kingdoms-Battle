@@ -31,7 +31,7 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
             {
-                Program.formMain.formHint.AddStep1Header($"Поражение от: {Info.Opponent.GetName()}", "", $"День: {Info.Day}");
+                Program.formMain.formHint.AddStep2Header($"Поражение от: {Info.Opponent.GetName()}", "", $"День: {Info.Day}");
             }
 
             return true;

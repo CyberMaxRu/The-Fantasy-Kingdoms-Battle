@@ -429,12 +429,12 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnInhabitants_ShowHint(object sender, EventArgs e)
         {
-            Program.formMain.formHint.AddStep1Header("Существа", "", Construction.ListMonstersForHint());
+            Program.formMain.formHint.AddStep2Header("Существа", "", Construction.ListMonstersForHint());
         }
 
         private void BtnAttackHeroes_ShowHint(object sender, EventArgs e)
         {
-            Program.formMain.formHint.AddStep1Header("Герои, выполняющие флаг", "", Construction.ListHeroesForHint());
+            Program.formMain.formHint.AddStep2Header("Герои, выполняющие флаг", "", Construction.ListHeroesForHint());
         }
 
         private void BtnAttackHeroes_Click(object sender, EventArgs e)
@@ -453,8 +453,8 @@ namespace Fantasy_Kingdoms_Battle
                 }
                 else
                 {
-                    Program.formMain.formHint.AddStep1Header("Отмена флага разведки", "", "Возврат денег");
-                    Program.formMain.formHint.AddStep2Income(Construction.Cashback());
+                    Program.formMain.formHint.AddStep2Header("Отмена флага разведки", "", "Возврат денег");
+                    Program.formMain.formHint.AddStep6Income(Construction.Cashback());
                 }
             }
             else
@@ -465,8 +465,8 @@ namespace Fantasy_Kingdoms_Battle
                 }
                 else
                 {
-                    Program.formMain.formHint.AddStep1Header("Отмена флага атаки", "", "Возврат денег");
-                    Program.formMain.formHint.AddStep2Income(Construction.Cashback());
+                    Program.formMain.formHint.AddStep2Header("Отмена флага атаки", "", "Возврат денег");
+                    Program.formMain.formHint.AddStep6Income(Construction.Cashback());
                 }
             }
         }
@@ -485,34 +485,34 @@ namespace Fantasy_Kingdoms_Battle
             {
                 case TypeFlag.Scout:
                     if (Construction.PriorityFlag == PriorityExecution.None)
-                        Program.formMain.formHint.AddStep1Header("Разведка", "", "Установить флаг разведки для отправки героев к месту");
+                        Program.formMain.formHint.AddStep2Header("Разведка", "", "Установить флаг разведки для отправки героев к месту");
                     else if (Construction.PriorityFlag < PriorityExecution.Exclusive)
-                        Program.formMain.formHint.AddStep1Header("Разведка", Construction.PriorityFlatToText() + " приоритет", "Повысить приоритет разведки места");
+                        Program.formMain.formHint.AddStep2Header("Разведка", Construction.PriorityFlatToText() + " приоритет", "Повысить приоритет разведки места");
                     else
-                        Program.formMain.formHint.AddStep1Header("Разведка", Construction.PriorityFlatToText() + " приоритет", "Установлен максимальный приоритет флага");
+                        Program.formMain.formHint.AddStep2Header("Разведка", Construction.PriorityFlatToText() + " приоритет", "Установлен максимальный приоритет флага");
                     break;
                 case TypeFlag.Attack:
                     if (Construction.PriorityFlag == PriorityExecution.None)
-                        Program.formMain.formHint.AddStep1Header("Атака", "", "Установить флаг атаки для отправки героев к месту");
+                        Program.formMain.formHint.AddStep2Header("Атака", "", "Установить флаг атаки для отправки героев к месту");
                     else if (Construction.PriorityFlag < PriorityExecution.Exclusive)
-                        Program.formMain.formHint.AddStep1Header("Атака", Construction.PriorityFlatToText() + " приоритет", "Повысить приоритет атаки логова");
+                        Program.formMain.formHint.AddStep2Header("Атака", Construction.PriorityFlatToText() + " приоритет", "Повысить приоритет атаки логова");
                     else
-                        Program.formMain.formHint.AddStep1Header("Атака", Construction.PriorityFlatToText() + " приоритет", "Установлен максимальный приоритет флага");
+                        Program.formMain.formHint.AddStep2Header("Атака", Construction.PriorityFlatToText() + " приоритет", "Установлен максимальный приоритет флага");
                     break;
                 case TypeFlag.Defense:
                     if (Construction.PriorityFlag == PriorityExecution.None)
-                        Program.formMain.formHint.AddStep1Header("Защита", "", "Установить флаг защиты для отправки героев к месту");
+                        Program.formMain.formHint.AddStep2Header("Защита", "", "Установить флаг защиты для отправки героев к месту");
                     else if (Construction.PriorityFlag < PriorityExecution.Exclusive)
-                        Program.formMain.formHint.AddStep1Header("Защита", Construction.PriorityFlatToText() + " приоритет", "Повысить приоритет защиты места");
+                        Program.formMain.formHint.AddStep2Header("Защита", Construction.PriorityFlatToText() + " приоритет", "Повысить приоритет защиты места");
                     else
-                        Program.formMain.formHint.AddStep1Header("Защита", Construction.PriorityFlatToText() + " приоритет", "Установлен максимальный приоритет флага");
+                        Program.formMain.formHint.AddStep2Header("Защита", Construction.PriorityFlatToText() + " приоритет", "Установлен максимальный приоритет флага");
                     break;
                 default:
                     throw new Exception($"Неизвестный тип действия: {Construction.TypeAction()}");
             }
 
-            Program.formMain.formHint.AddStep3Requirement(Construction.GetRequirements());
-            Program.formMain.formHint.AddStep4Gold(Construction.RequiredGold(), Construction.Player.Gold >= Construction.RequiredGold());
+            Program.formMain.formHint.AddStep11Requirement(Construction.GetRequirements());
+            Program.formMain.formHint.AddStep12Gold(Construction.RequiredGold(), Construction.Player.Gold >= Construction.RequiredGold());
         }
 
         private void BtnInhabitants_Click(object sender, EventArgs e)

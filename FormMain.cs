@@ -772,7 +772,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void LabelCorruption_ShowHint(object sender, EventArgs e)
         {
-            formHint.AddStep1Header("Воровство", "",
+            formHint.AddStep2Header("Воровство", "",
                 $"Всего процент: {curAppliedPlayer.PercentCorruption}" + Environment.NewLine
                 + $"Изменение за день: {curAppliedPlayer.ChangeCorruption}");
         }
@@ -784,7 +784,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void LabelHeroes_ShowHint(object sender, EventArgs e)
         {
-            formHint.AddStep1Header("Герои", "",
+            formHint.AddStep2Header("Герои", "",
                 $"Нанято героев: {curAppliedPlayer.CombatHeroes.Count}" + Environment.NewLine
                 + $"Максимум героев: {curAppliedPlayer.Lobby.TypeLobby.MaxHeroes}");
         }
@@ -804,7 +804,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void LabelBuilders_ShowHint(object sender, EventArgs e)
         {
-            formHint.AddStep1Header("Строители", "", "Всего строителей: " + curAppliedPlayer.Builders.ToString()
+            formHint.AddStep2Header("Строители", "", "Всего строителей: " + curAppliedPlayer.Builders.ToString()
                 + Environment.NewLine + "Свободно строителей: " + curAppliedPlayer.FreeBuilders.ToString()
                 + Environment.NewLine + "Строителей на следующем ходу: " + curAppliedPlayer.BuildersAtNextDay.ToString());
         }
@@ -826,7 +826,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void LabelGreatness_ShowHint(object sender, EventArgs e)
         {
-            formHint.AddStep1Header("Уровень величия: " + curAppliedPlayer.LevelGreatness.ToString(), "",
+            formHint.AddStep2Header("Уровень величия: " + curAppliedPlayer.LevelGreatness.ToString(), "",
                 $"Очков набрано: {curAppliedPlayer.PointGreatness} из {curAppliedPlayer.PointGreatnessForNextLevel}"
                     + Environment.NewLine
                     + "До следующего уровня: " + (curAppliedPlayer.PointGreatnessForNextLevel - curAppliedPlayer.PointGreatness).ToString()
@@ -855,7 +855,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void PageHeroes_ShowHint(object sender, EventArgs e)
         {
-            formHint.AddStep1Header("Герои", "", "Нанято героев: " + lobby.CurrentPlayer.CombatHeroes.Count.ToString());
+            formHint.AddStep2Header("Герои", "", "Нанято героев: " + lobby.CurrentPlayer.CombatHeroes.Count.ToString());
         }
 
         private void PageEconomicConstructions_ShowHint(object sender, EventArgs e)
@@ -875,24 +875,24 @@ namespace Fantasy_Kingdoms_Battle
 
         private void PageLairs_ShowHint(object sender, EventArgs e)
         {
-            formHint.AddStep1Header("Окрестности", "", $"Разведано мест: {lobby.CurrentPlayer.LairsScouted}/{lobby.CurrentPlayer.LairsShowed}");
+            formHint.AddStep2Header("Окрестности", "", $"Разведано мест: {lobby.CurrentPlayer.LairsScouted}/{lobby.CurrentPlayer.LairsShowed}");
         }
 
         private void PageTournament_ShowHint(object sender, EventArgs e)
         {
-            formHint.AddStep1Header("Турнир", "",
+            formHint.AddStep2Header("Турнир", "",
                 lobby.DaysLeftForBattle > 0 ? "Битва с другим игроком начнется через " + lobby.DaysLeftForBattle.ToString() + " дн." : 
                     curAppliedPlayer.SkipBattle ? "Битва пропускается" : "Сегодня битва с другим игроком");
         }
 
         private void LabelGold_ShowHint(object sender, EventArgs e)
         {
-            formHint.AddStep1Header("Казна", "", "Количество золота в казне и постоянный доход в день");
+            formHint.AddStep2Header("Казна", "", "Количество золота в казне и постоянный доход в день");
         }
 
         private void LabelDay_ShowHint(object sender, EventArgs e)
         {
-            formHint.AddStep1Header("День игры", "", "День игры: " + lobby.Day.ToString());
+            formHint.AddStep2Header("День игры", "", "День игры: " + lobby.Day.ToString());
         }
         
         internal bool CheckForNewVersion()
@@ -1019,7 +1019,7 @@ namespace Fantasy_Kingdoms_Battle
         private void BtnInGameMenu_MouseHover(object sender, EventArgs e)
         {
             formHint.Clear();
-            formHint.AddStep1Header("Меню", "", "Показать внутриигровое меню");
+            formHint.AddStep2Header("Меню", "", "Показать внутриигровое меню");
             formHint.DrawHint(btnInGameMenu);
         }
 
@@ -1035,7 +1035,7 @@ namespace Fantasy_Kingdoms_Battle
         private void BtnEndTurn_MouseHover(object sender, EventArgs e)
         {
             formHint.Clear();
-            formHint.AddStep1Header("Конец хода", "", "Завершение хода");
+            formHint.AddStep2Header("Конец хода", "", "Завершение хода");
             formHint.DrawHint(btnEndTurn);
         }
 

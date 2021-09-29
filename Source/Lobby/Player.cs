@@ -732,8 +732,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PrepareHint()
         {
-            Program.formMain.formHint.AddStep0Name(GetName());
-            Program.formMain.formHint.AddStep1Header(
+            Program.formMain.formHint.AddStep1Name(GetName());
+            Program.formMain.formHint.AddStep2Header(
                 "", $"{PositionInLobby} место",
                 "Уровень Замка: " + LevelCastle.ToString() + Environment.NewLine
                     + "Героев: " + QuantityHeroes.ToString() + Environment.NewLine
@@ -1144,13 +1144,13 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void PrepareHintForBuildTypeConstruction(DescriptorConstruction type)
         {
-            Program.formMain.formHint.AddStep1Header(type.Name, "Уровень 1", type.Description);
-            Program.formMain.formHint.AddStep2Income(type.Levels[1].Income);
-            Program.formMain.formHint.AddStep3Greatness(type.Levels[1].GreatnessByConstruction, type.Levels[1].GreatnessPerDay);
-            Program.formMain.formHint.AddStep35PlusBuilders(type.Levels[1].BuildersPerDay);
-            Program.formMain.formHint.AddStep3Requirement(GetTextRequirementsBuildTypeConstruction(type));
-            Program.formMain.formHint.AddStep4Gold(type.Levels[1].Cost, Gold >= type.Levels[1].Cost);
-            Program.formMain.formHint.AddStep5Builders(type.Levels[1].Builders, FreeBuilders >= type.Levels[1].Builders);
+            Program.formMain.formHint.AddStep2Header(type.Name, "Уровень 1", type.Description);
+            Program.formMain.formHint.AddStep6Income(type.Levels[1].Income);
+            Program.formMain.formHint.AddStep8Greatness(type.Levels[1].GreatnessByConstruction, type.Levels[1].GreatnessPerDay);
+            Program.formMain.formHint.AddStep9PlusBuilders(type.Levels[1].BuildersPerDay);
+            Program.formMain.formHint.AddStep11Requirement(GetTextRequirementsBuildTypeConstruction(type));
+            Program.formMain.formHint.AddStep12Gold(type.Levels[1].Cost, Gold >= type.Levels[1].Cost);
+            Program.formMain.formHint.AddStep13Builders(type.Levels[1].Builders, FreeBuilders >= type.Levels[1].Builders);
         }
 
         //

@@ -252,7 +252,7 @@ namespace Fantasy_Kingdoms_Battle
             Width = lblHeader.ShiftX + lblHeader.MinWidth() + FormMain.Config.GridSize;
         }
 
-        internal void AddStep0Name(string name)
+        internal void AddStep1Name(string name)
         {
             Debug.Assert(!lblName.Visible);
             Debug.Assert(name != null);
@@ -266,7 +266,7 @@ namespace Fantasy_Kingdoms_Battle
             nextTop = lblName.NextTop();
         }
 
-        internal void AddStep1Header(string header, string action, string description, int imageIndex = -1, bool bigImage = true)
+        internal void AddStep2Header(string header, string action, string description, int imageIndex = -1, bool bigImage = true)
         {
             Debug.Assert(lblHeader.Text.Length == 0);
             if (header.Length == 0)
@@ -326,7 +326,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddStep2Income(int income)
+        internal void AddStep6Income(int income)
         {
             if (income > 0)
             {
@@ -338,7 +338,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddStep2Reward(int reward)
+        internal void AddStep7Reward(int reward)
         {
             Debug.Assert(reward >= 0);
 
@@ -354,7 +354,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddStep3Greatness(int addGreatness, int greatnessPerDay)
+        internal void AddStep8Greatness(int addGreatness, int greatnessPerDay)
         {
             Debug.Assert(addGreatness >= 0);
             Debug.Assert(greatnessPerDay >= 0);
@@ -368,7 +368,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddStep35PlusBuilders(int buildersPerDay)
+        internal void AddStep9PlusBuilders(int buildersPerDay)
         {
             Debug.Assert(buildersPerDay >= 0);
 
@@ -382,14 +382,14 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddStep3Requirement(string notEnoughrequirement)
+        internal void AddStep10Requirement(string notEnoughrequirement)
         {
             List<TextRequirement> r = new List<TextRequirement>();
             r.Add(new TextRequirement(false, notEnoughrequirement));
-            AddStep3Requirement(r);
+            AddStep11Requirement(r);
         }
 
-        internal void AddStep3Requirement(List<TextRequirement> requirement)
+        internal void AddStep11Requirement(List<TextRequirement> requirement)
         {
             Debug.Assert(requirement != null);
             if (requirement.Count > 0)
@@ -413,7 +413,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddStep4Gold(int gold, bool goldEnough)
+        internal void AddStep12Gold(int gold, bool goldEnough)
         {
             if (gold > 0)
             {
@@ -433,7 +433,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddStep5Builders(int builders, bool buildersEnough)
+        internal void AddStep13Builders(int builders, bool buildersEnough)
         {
             if (builders > 0)
             {
@@ -453,13 +453,13 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddStep6PlayerItem(Item pi)
+        internal void AddStep14PlayerItem(Item pi)
         {
             Debug.Assert(pi != null);
 
         }
 
-        internal void AddStep7Weapon(DescriptorItem w)
+        internal void AddStep15Weapon(DescriptorItem w)
         {
             Debug.Assert(w != null);
 
@@ -478,7 +478,7 @@ namespace Fantasy_Kingdoms_Battle
             nextTop = GuiUtils.NextTop(lblDamageMelee);*/
         }
 
-        internal void AddStep8Armour(DescriptorItem a)
+        internal void AddStep16Armour(DescriptorItem a)
         {
             Debug.Assert(a != null);
 
@@ -497,10 +497,8 @@ namespace Fantasy_Kingdoms_Battle
             nextTop = GuiUtils.NextTop(lblDefenseMelee);*/
         }
 
-        internal void AddStep85Signer(Hero signer, Entity owner = null)
+        internal void AddStep17Signer(Hero signer)
         {
-            Debug.Assert(!((signer != null) && (owner != null)));
-
             if (signer != null)
             {
                 lblSigner.ShiftY = nextTop;
@@ -509,7 +507,10 @@ namespace Fantasy_Kingdoms_Battle
 
                 nextTop = lblSigner.NextTop();
             }
+        }
 
+        internal void AddStep18Owner(Entity owner = null)
+        {
             if (owner != null)
             {
                 string source = null;
@@ -523,11 +524,9 @@ namespace Fantasy_Kingdoms_Battle
 
                 nextTop = lblSigner.NextTop();
             }
-
         }
 
-
-        internal void AddStep9Descriptors(List<DescriptorItem> list)
+        internal void AddStep19Descriptors(List<DescriptorItem> list)
         {
             if (list.Count > 0)
             {
@@ -565,7 +564,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddStep10Perks(List<DescriptorPerk> list)
+        internal void AddStep20Perks(List<DescriptorPerk> list)
         {
             if (list.Count > 0)
             {

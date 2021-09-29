@@ -116,10 +116,10 @@ namespace Fantasy_Kingdoms_Battle
         internal override void PrepareHint()
         {
             string level = Entity is DescriptorAbility ta ? "Требуемый уровень: " + ta.MinUnitLevel.ToString() : "";
-            Program.formMain.formHint.AddStep1Header(Entity.Name, level, Entity.Description);
-            Program.formMain.formHint.AddStep2Income(Descriptor.Income);
-            Program.formMain.formHint.AddStep3Requirement(GetTextRequirements());
-            Program.formMain.formHint.AddStep4Gold(GetCost(), GetCost() <= Construction.Player.Gold);
+            Program.formMain.formHint.AddStep2Header(Entity.Name, level, Entity.Description);
+            Program.formMain.formHint.AddStep6Income(Descriptor.Income);
+            Program.formMain.formHint.AddStep11Requirement(GetTextRequirements());
+            Program.formMain.formHint.AddStep12Gold(GetCost(), GetCost() <= Construction.Player.Gold);
         }
 
         internal override int GetCost()
@@ -270,9 +270,9 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PrepareHint()
         {
-            Program.formMain.formHint.AddStep1Header(Creature.Name, "", Creature.Description);
-            Program.formMain.formHint.AddStep3Requirement(GetTextRequirements());
-            Program.formMain.formHint.AddStep4Gold(GetCost(), GetCost() <= Construction.Player.Gold);
+            Program.formMain.formHint.AddStep2Header(Creature.Name, "", Creature.Description);
+            Program.formMain.formHint.AddStep11Requirement(GetTextRequirements());
+            Program.formMain.formHint.AddStep12Gold(GetCost(), GetCost() <= Construction.Player.Gold);
         }
     }
 
@@ -334,10 +334,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PrepareHint()
         {
-            Program.formMain.formHint.AddStep1Header(ConstructionEvent.Name, $"Длительность: {ConstructionEvent.Duration} дн."
+            Program.formMain.formHint.AddStep2Header(ConstructionEvent.Name, $"Длительность: {ConstructionEvent.Duration} дн."
                 + Environment.NewLine + $"Перерыв: {ConstructionEvent.Cooldown} дн.", ConstructionEvent.Description);
-            Program.formMain.formHint.AddStep3Requirement(GetTextRequirements());
-            Program.formMain.formHint.AddStep4Gold(GetCost(), GetCost() <= Construction.Player.Gold);
+            Program.formMain.formHint.AddStep11Requirement(GetTextRequirements());
+            Program.formMain.formHint.AddStep12Gold(GetCost(), GetCost() <= Construction.Player.Gold);
         }
 
         internal override void PrepareTurn()
@@ -431,10 +431,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PrepareHint()
         {
-            Program.formMain.formHint.AddStep1Header(Entity.Name, "", Entity.Description);
-            Program.formMain.formHint.AddStep2Income(Descriptor.Income);
-            Program.formMain.formHint.AddStep3Requirement(GetTextRequirements());
-            Program.formMain.formHint.AddStep4Gold(GetCost(), GetCost() <= Construction.Player.Gold);
+            Program.formMain.formHint.AddStep2Header(Entity.Name, "", Entity.Description);
+            Program.formMain.formHint.AddStep6Income(Descriptor.Income);
+            Program.formMain.formHint.AddStep11Requirement(GetTextRequirements());
+            Program.formMain.formHint.AddStep12Gold(GetCost(), GetCost() <= Construction.Player.Gold);
         }
     }
 
@@ -471,10 +471,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PrepareHint()
         {
-            Program.formMain.formHint.AddStep1Header(Entity.Name, "", Entity.Description);
-            Program.formMain.formHint.AddStep2Income(Descriptor.Income);
-            Program.formMain.formHint.AddStep3Requirement(GetTextRequirements());
-            Program.formMain.formHint.AddStep4Gold(GetCost(), GetCost() <= Construction.Player.Gold);
+            Program.formMain.formHint.AddStep2Header(Entity.Name, "", Entity.Description);
+            Program.formMain.formHint.AddStep6Income(Descriptor.Income);
+            Program.formMain.formHint.AddStep11Requirement(GetTextRequirements());
+            Program.formMain.formHint.AddStep12Gold(GetCost(), GetCost() <= Construction.Player.Gold);
         }
     }
 }

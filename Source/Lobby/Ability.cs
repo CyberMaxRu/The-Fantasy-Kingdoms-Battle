@@ -26,7 +26,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PrepareHint()
         {
-            Program.formMain.formHint.AddStep1Header(Descriptor.Name, $"{Descriptor.TypeAbility.Name}{Environment.NewLine}Уровень для обучения: {Descriptor.MinUnitLevel}", Descriptor.Description, Descriptor.ImageIndex, false);
+            Program.formMain.formHint.AddStep2Header(Descriptor.Name, $"{Descriptor.TypeAbility.Name}{Environment.NewLine}Уровень для обучения: {Descriptor.MinUnitLevel}", Descriptor.Description, Descriptor.ImageIndex, false);
         }
     }
 }
