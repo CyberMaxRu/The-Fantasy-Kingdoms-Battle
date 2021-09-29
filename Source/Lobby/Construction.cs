@@ -497,8 +497,6 @@ namespace Fantasy_Kingdoms_Battle
             return list;
         }
 
-        internal bool ShowMenuForPlayer() => !Hidden;
-
         internal override int GetQuantity()
         {
             return 0;

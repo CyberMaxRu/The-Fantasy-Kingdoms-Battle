@@ -1502,7 +1502,7 @@ namespace Fantasy_Kingdoms_Battle
             ClearMenu();
 
             // Рисуем содержимое ячеек
-            if ((selectedPlayerObject != null) && (selectedPlayerObject is Construction pb) && pb.ShowMenuForPlayer())
+            if ((selectedPlayerObject != null) && (selectedPlayerObject is Construction pb) && !pb.Hidden)
             {
                 Debug.Assert(pb.TypeConstruction != null);
 
