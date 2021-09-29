@@ -63,7 +63,6 @@ namespace Fantasy_Kingdoms_Battle
             XmlNode nodePerks = n.SelectSingleNode("Perks");
             if (nodePerks != null)
             {
-                Perks = new List<DescriptorPerk>();
                 namePerks = new List<string>();
 
                 foreach (XmlNode l in nodePerks.SelectNodes("Perk"))
@@ -124,7 +123,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal CategoryItem CategoryItem { get; }
         internal DescriptorGroupItems GroupItem { get; private set; }
-        internal List<DescriptorPerk> Perks { get; }// Перки, даваемые предметом
+        internal List<DescriptorPerk> Perks { get; } = new List<DescriptorPerk>();// Перки, даваемые предметом
         internal string Signer { get; }//
         internal int Position { get; }
         internal int TimeHit { get; }
@@ -161,7 +160,7 @@ namespace Fantasy_Kingdoms_Battle
                 nameGroupItem = "";
             }
 
-            if (Perks != null)
+            if (namePerks != null)
             {
                 foreach (string perk in namePerks)
                     Perks.Add(Config.FindPerk(perk));
