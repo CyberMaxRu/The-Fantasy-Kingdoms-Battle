@@ -232,6 +232,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly M2Font fontBigCaption;
         internal readonly M2Font fontSmallBC;
         internal readonly M2Font fontParagraph;
+        internal readonly M2Font fontParagraphC;
 
         internal Size sizeGamespace { get; }
         private Point topLeftFrame;
@@ -335,6 +336,7 @@ namespace Fantasy_Kingdoms_Battle
                 fontBigCaption = new M2Font(dirResources, "big_caption");
                 fontSmallBC = new M2Font(dirResources, "_small_b_c");
                 fontParagraph = new M2Font(dirResources, "paragraph");
+                fontParagraphC = new M2Font(dirResources, "paragraph_c");
 
                 // Формируем и показываем сплэш-заставку
                 Image splashBitmap = LoadBitmap("Splash.png");
