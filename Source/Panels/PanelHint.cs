@@ -237,7 +237,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void AddSimpleHint(string header)
         {
-            Debug.Assert(lblHeader.Text == "");
+            Debug.Assert(lblHeader.Text.Length == 0);
             Debug.Assert(header != null);
             Debug.Assert(header.Length > 0);
 
@@ -268,7 +268,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void AddStep1Header(string header, string action, string description, int imageIndex = -1, bool bigImage = true)
         {
-            Debug.Assert(lblHeader.Text == "");
+            Debug.Assert(lblHeader.Text.Length == 0);
             if (header.Length == 0)
             {
                 Debug.Assert(lblName.Visible);
