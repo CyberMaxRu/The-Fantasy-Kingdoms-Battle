@@ -27,6 +27,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly VCText lblHeader;
         internal readonly VCCellSimple imgCell;
         internal readonly VCImage128 img128;
+        internal readonly VCText lblType;
         internal readonly VCText lblAction;
         internal readonly VCText lblDescription;
         internal readonly VCSeparator lblSeparateRequirement;
@@ -71,7 +72,11 @@ namespace Fantasy_Kingdoms_Battle
             imgCell = new VCCellSimple(this, FormMain.Config.GridSize, lblHeader.NextTop());
             img128 = new VCImage128(this, FormMain.Config.GridSize, lblHeader.NextTop());
 
-            lblAction = new VCText(this, FormMain.Config.GridSize, lblHeader.NextTop(), Program.formMain.fontMedCaptionC, FormMain.Config.HintAction, widthControl);
+            lblType = new VCText(this, FormMain.Config.GridSize, lblHeader.NextTop(), Program.formMain.fontParagraphC, Color.DarkKhaki, widthControl);
+            lblType.StringFormat.Alignment = StringAlignment.Near;
+            lblType.StringFormat.LineAlignment = StringAlignment.Near;
+
+            lblAction = new VCText(this, FormMain.Config.GridSize, lblType.NextTop(), Program.formMain.fontMedCaptionC, FormMain.Config.HintAction, widthControl);
             lblAction.StringFormat.Alignment = StringAlignment.Near;
             lblAction.StringFormat.LineAlignment = StringAlignment.Near;
 
@@ -200,6 +205,7 @@ namespace Fantasy_Kingdoms_Battle
             lblHeader.ShiftX = FormMain.Config.GridSize;
             imgCell.Visible = false;
             img128.Visible = false;
+            lblType.Visible = false;
             lblAction.Visible = false;
             lblDescription.Visible = false;
             lblIncome.Visible = false;
@@ -295,6 +301,20 @@ namespace Fantasy_Kingdoms_Battle
 
                 lblHeader.ShiftX = imgCell.NextLeft();
                 nextTop = Math.Max(lblHeader.NextTop(), imgCell.NextTop());
+            }
+        }
+
+        internal void AddStep3Type(string type)
+        {
+            if (type.Length > 0)
+            {
+                lblType.ShiftX = lblHeader.ShiftX;
+                lblType.ShiftY = lblHeader.NextTop();
+                lblType.Text = type;
+                lblType.Height = lblType.MinHeigth();
+                lblType.Visible = true;
+
+                nextTop = imgCell.Visible ? Math.Max(lblType.NextTop(), imgCell.NextTop()) : lblType.NextTop();
             }
         }
 
