@@ -377,9 +377,9 @@ namespace Fantasy_Kingdoms_Battle
 
                 if (TypeConstruction.IsOurConstruction)
                 {
-                    Program.formMain.formHint.AddStep2Header(TypeConstruction.Name, 
-                        Level > 0 ? "Уровень " + Level.ToString() + Environment.NewLine : "" + TypeConstruction.TypeConstruction.Name,
-                        TypeConstruction.Description + ((Level > 0) && (TypeConstruction.TrainedHero != null) ? Environment.NewLine + Environment.NewLine
+                    Program.formMain.formHint.AddStep2Header(TypeConstruction.Name);
+                    Program.formMain.formHint.AddStep4Level(Level > 0 ? "Уровень " + Level.ToString() + Environment.NewLine : "" + TypeConstruction.TypeConstruction.Name);
+                    Program.formMain.formHint.AddStep5Description(TypeConstruction.Description + ((Level > 0) && (TypeConstruction.TrainedHero != null) ? Environment.NewLine + Environment.NewLine
                         + (!(TypeConstruction.TrainedHero is null) ? "Героев: " + Heroes.Count.ToString() + "/" + MaxHeroes().ToString() : "") : ""));
                     Program.formMain.formHint.AddStep6Income(Income());
                     Program.formMain.formHint.AddStep8Greatness(0, GreatnessPerDay());
@@ -388,10 +388,17 @@ namespace Fantasy_Kingdoms_Battle
                 else
                 {
                     if (Hidden)
-                        Program.formMain.formHint.AddStep2Header("Неизвестное место", "Место не разведано", "Установите флаг разведки для отправки героев к месту");
+                    {
+                        Program.formMain.formHint.AddStep2Header("Неизвестное место");
+                        Program.formMain.formHint.AddStep4Level("Место не разведано");
+                        Program.formMain.formHint.AddStep5Description("Установите флаг разведки для отправки героев к месту");
+                    }
                     else
                     {
-                        Program.formMain.formHint.AddStep2Header(TypeConstruction.Name, TypeConstruction.TypeConstruction.Name, TypeConstruction.Description);
+                        Program.formMain.formHint.AddStep2Header(TypeConstruction.Name);
+                        Program.formMain.formHint.AddStep4Level(TypeConstruction.TypeConstruction.Name);
+                        Program.formMain.formHint.AddStep5Description(TypeConstruction.Description);
+
                         if (TypeConstruction.Reward != null)
                         {
                             Program.formMain.formHint.AddStep7Reward(TypeConstruction.Reward.Gold);
@@ -990,9 +997,10 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(requiredLevel > 0);
             Debug.Assert(requiredLevel <= TypeConstruction.MaxLevel);
 
-            Program.formMain.formHint.AddStep2Header(TypeConstruction.Name, 
-                requiredLevel == 1 ? "Уровень 1" + Environment.NewLine + TypeConstruction.TypeConstruction.Name :
-                    $"Улучшить строение ({requiredLevel} ур.)" + Environment.NewLine + TypeConstruction.TypeConstruction.Name, requiredLevel == 1 ? TypeConstruction.Description : "");
+            Program.formMain.formHint.AddStep2Header(TypeConstruction.Name);
+            Program.formMain.formHint.AddStep4Level(requiredLevel == 1 ? "Уровень 1" + Environment.NewLine + TypeConstruction.TypeConstruction.Name :
+                    $"Улучшить строение ({requiredLevel} ур.)" + Environment.NewLine + TypeConstruction.TypeConstruction.Name);
+            Program.formMain.formHint.AddStep5Description(requiredLevel == 1 ? TypeConstruction.Description : "");
             Program.formMain.formHint.AddStep6Income(IncomeForLevel(requiredLevel));
             Program.formMain.formHint.AddStep8Greatness(GreatnesAddForLevel(requiredLevel), GreatnesPerDayForLevel(requiredLevel));
             Program.formMain.formHint.AddStep9PlusBuilders(BuildersPerDayForLevel(requiredLevel));
@@ -1006,7 +1014,8 @@ namespace Fantasy_Kingdoms_Battle
             if (Heroes.Count < MaxHeroes())
             {
 
-                Program.formMain.formHint.AddStep2Header(TypeConstruction.TrainedHero.Name, "", TypeConstruction.TrainedHero.Description);
+                Program.formMain.formHint.AddStep2Header(TypeConstruction.TrainedHero.Name);
+                Program.formMain.formHint.AddStep5Description(TypeConstruction.TrainedHero.Description);
                 if ((TypeConstruction.TrainedHero != null) && (TypeConstruction.TrainedHero.Cost > 0))
                     Program.formMain.formHint.AddStep11Requirement(GetTextRequirementsHire());
                 Program.formMain.formHint.AddStep12Gold(TypeConstruction.TrainedHero.Cost, Player.Gold >= TypeConstruction.TrainedHero.Cost);
@@ -1026,7 +1035,8 @@ namespace Fantasy_Kingdoms_Battle
                     pos++;
                 }
 
-                Program.formMain.formHint.AddStep2Header(TypeConstruction.IsOurConstruction ? "Жители" : "Существа", "", list);
+                Program.formMain.formHint.AddStep2Header(TypeConstruction.IsOurConstruction ? "Жители" : "Существа");
+                Program.formMain.formHint.AddStep5Description(list);
             }
             else
                 Program.formMain.formHint.AddSimpleHint("Обитателей нет");

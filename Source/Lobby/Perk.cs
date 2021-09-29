@@ -28,7 +28,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PrepareHint()
         {
-            Program.formMain.formHint.AddStep2Header(Descriptor.Name, "", Descriptor.Description, Descriptor.ImageIndex, false);
+            Program.formMain.formHint.AddStep2Header(Descriptor.Name, Descriptor.ImageIndex);
+            Program.formMain.formHint.AddStep5Description(Descriptor.Description);
             Program.formMain.formHint.AddStep18Owner(Owner);
         }
     }

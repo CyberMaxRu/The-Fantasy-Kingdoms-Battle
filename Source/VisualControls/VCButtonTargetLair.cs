@@ -44,9 +44,16 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Debug.Assert(!(Lair is null));
                 if (Lair.TypeFlag != TypeFlag.Battle)
-                    Program.formMain.formHint.AddStep2Header(Lair.NameLair(), "", Lair.ListHeroesForHint());
+                {
+                    Program.formMain.formHint.AddStep2Header(Lair.NameLair());
+                    Program.formMain.formHint.AddStep5Description(Lair.ListHeroesForHint());
+                }
                 else
-                    Program.formMain.formHint.AddStep2Header("Битва против игрока", "Игрок: неизвестен", Lair.ListHeroesForHint());
+                {
+                    Program.formMain.formHint.AddStep2Header("Битва против игрока");
+                    Program.formMain.formHint.AddStep4Level("Игрок: неизвестен");
+                    Program.formMain.formHint.AddStep5Description(Lair.ListHeroesForHint());
+                }
             }
 
             return true;

@@ -733,13 +733,12 @@ namespace Fantasy_Kingdoms_Battle
         internal override void PrepareHint()
         {
             Program.formMain.formHint.AddStep1Name(GetName());
-            Program.formMain.formHint.AddStep2Header(
-                "", $"{PositionInLobby} место",
-                "Уровень Замка: " + LevelCastle.ToString() + Environment.NewLine
+            Program.formMain.formHint.AddStep4Level($"{PositionInLobby} место", GetImageIndex());
+            Program.formMain.formHint.AddStep5Description("Уровень Замка: " + LevelCastle.ToString() + Environment.NewLine
                     + "Героев: " + QuantityHeroes.ToString() + Environment.NewLine
                     + " " + Environment.NewLine
                     + "Поражений: " + CurrentLoses.ToString()
-                    + (DayOfEndGame > 0 ? Environment.NewLine + "Поражение в лобби: " + DayOfEndGame.ToString() + " день" : ""), GetImageIndex());
+                    + (DayOfEndGame > 0 ? Environment.NewLine + "Поражение в лобби: " + DayOfEndGame.ToString() + " день" : ""));
         }
 
         // Метод по распределению задач героев
@@ -1144,7 +1143,9 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void PrepareHintForBuildTypeConstruction(DescriptorConstruction type)
         {
-            Program.formMain.formHint.AddStep2Header(type.Name, "Уровень 1", type.Description);
+            Program.formMain.formHint.AddStep2Header(type.Name);
+            Program.formMain.formHint.AddStep4Level("Уровень 1");
+            Program.formMain.formHint.AddStep5Description(type.Description);
             Program.formMain.formHint.AddStep6Income(type.Levels[1].Income);
             Program.formMain.formHint.AddStep8Greatness(type.Levels[1].GreatnessByConstruction, type.Levels[1].GreatnessPerDay);
             Program.formMain.formHint.AddStep9PlusBuilders(type.Levels[1].BuildersPerDay);

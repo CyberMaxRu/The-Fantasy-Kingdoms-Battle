@@ -266,7 +266,7 @@ namespace Fantasy_Kingdoms_Battle
             nextTop = lblName.NextTop();
         }
 
-        internal void AddStep2Header(string header, string action, string description, int imageIndex = -1, bool bigImage = true)
+        internal void AddStep2Header(string header, int imageIndexSmall = -1)
         {
             Debug.Assert(lblHeader.Text.Length == 0);
             if (header.Length == 0)
@@ -287,34 +287,40 @@ namespace Fantasy_Kingdoms_Battle
                 nextTop = lblHeader.NextTop();
             }
 
-            if ((imageIndex != -1) && !bigImage)
+            if (imageIndexSmall != -1)
             {
                 imgCell.ShiftY = lblHeader.ShiftY;
-                imgCell.ImageIndex = imageIndex;
+                imgCell.ImageIndex = imageIndexSmall;
                 imgCell.Visible = true;
 
                 lblHeader.ShiftX = imgCell.NextLeft();
                 nextTop = Math.Max(lblHeader.NextTop(), imgCell.NextTop());
             }
+        }
 
-            if (action.Length > 0)
+        internal void AddStep4Level(string level, int imageIndexBig = -1)
+        {
+            if (level.Length > 0)
             {
                 lblAction.ShiftY = nextTop;
-                lblAction.Text = action;
+                lblAction.Text = level;
                 lblAction.Height = lblAction.MinHeigth();
                 lblAction.Visible = true;
 
                 nextTop = lblAction.NextTop();
             }
 
-            if ((imageIndex != -1) && bigImage)
+            if (imageIndexBig != -1)
             {
                 img128.ShiftY = nextTop;
-                img128.ImageIndex = imageIndex;
+                img128.ImageIndex = imageIndexBig;
                 img128.Visible = true;
                 nextTop = img128.NextTop();
             }
+        }
 
+        internal void AddStep5Description(string description)
+        {
             if (description.Length > 0)
             {
                 lblDescription.ShiftY = nextTop;
