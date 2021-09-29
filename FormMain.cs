@@ -1501,40 +1501,20 @@ namespace Fantasy_Kingdoms_Battle
         {
             ClearMenu();
 
-            // Рисуем содержимое ячеек
-            if ((selectedPlayerObject != null) && (selectedPlayerObject is Construction pb) && !pb.Hidden)
-            {
-                Debug.Assert(pb.TypeConstruction != null);
-
-                if (pb.Researches != null)
-                {
-                    pb.ValidateResearches();
-
-                    foreach (ConstructionCellMenu pr in pb.Researches)
-                    {
-                        if (!CellsMenu[pr.Descriptor.Coord.Y, pr.Descriptor.Coord.X].Used)
-                        {
-                            CellsMenu[pr.Descriptor.Coord.Y, pr.Descriptor.Coord.X].Research = pr;
-                            CellsMenu[pr.Descriptor.Coord.Y, pr.Descriptor.Coord.X].Used = true;
-                        }
-                        else if ((CellsMenu[pr.Descriptor.Coord.Y, pr.Descriptor.Coord.X].Research.Construction == pr.Construction))
-                            CellsMenu[pr.Descriptor.Coord.Y, pr.Descriptor.Coord.X].Research = pr;
-                    }
-                }
-            }
+            if (selectedPlayerObject != null)
+                selectedPlayerObject.MakeMenu(CellsMenu);
 
             for (int y = 0; y < PANEL_MENU_CELLS.Height; y++)
                 for (int x = 0; x < PANEL_MENU_CELLS.Width; x++)
                     if (!CellsMenu[y, x].Used)
                         CellsMenu[y, x].Research = null;
+        }
 
-
-            void ClearMenu()
-            {
-                for (int y = 0; y < PANEL_MENU_CELLS.Height; y++)
-                    for (int x = 0; x < PANEL_MENU_CELLS.Width; x++)
-                        CellsMenu[y, x].Used = false;
-            }
+        internal void ClearMenu()
+        {
+            for (int y = 0; y < PANEL_MENU_CELLS.Height; y++)
+                for (int x = 0; x < PANEL_MENU_CELLS.Width; x++)
+                    CellsMenu[y, x].Used = false;
         }
 
         private void MakeAlpha()

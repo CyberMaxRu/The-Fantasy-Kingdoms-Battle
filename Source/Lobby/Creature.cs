@@ -322,5 +322,10 @@ namespace Fantasy_Kingdoms_Battle
 
             Perks.Add(new Perk(this, dp, fromEntity, -1));
         }
+
+        internal override void MakeMenu(VCMenuCell[,] menu)
+        {
+
+        }
     }
 }

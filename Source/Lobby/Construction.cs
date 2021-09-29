@@ -73,7 +73,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int ResearchesAvailabled { get; set; }// Сколько еще исследований доступно на этом ходу
         internal List<ConstructionProduct> Items { get; } = new List<ConstructionProduct>();// Товары, доступные в строении
         internal Player Player { get; }
-        internal List<ConstructionCellMenu> Researches { get; } = new List<ConstructionCellMenu>();
 
         // Свойства для внешних сооружений
         internal int Layer { get; set; }// Слой, на котором находится логово
@@ -139,6 +138,18 @@ namespace Fantasy_Kingdoms_Battle
                     }
                 }
             }*/
+        }
+
+        internal override void MakeMenu(VCMenuCell[,] menu)
+        {
+            // Рисуем содержимое ячеек
+            if (!Hidden)
+            {
+                Debug.Assert(TypeConstruction != null);
+
+                ValidateResearches();
+                FillResearches(menu);
+            }
         }
 
         internal void ValidateResearches()

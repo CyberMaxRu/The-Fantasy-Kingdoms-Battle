@@ -395,6 +395,5 @@ namespace Fantasy_Kingdoms_Battle
             if (abilityBought)
                 SortAbilities();
         }
-
     }
 }

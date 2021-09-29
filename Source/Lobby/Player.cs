@@ -1194,6 +1194,11 @@ namespace Fantasy_Kingdoms_Battle
 
             throw new Exception($"У игрока {GetName()} не найдено сооружение с ID = {ID}.");
         }
+
+        internal override void MakeMenu(VCMenuCell[,] menu)
+        {
+
+        }
     }
 
     internal sealed class UnitOfQueueForBuy
