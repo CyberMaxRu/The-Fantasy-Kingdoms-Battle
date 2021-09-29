@@ -95,7 +95,6 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCBitmap bitmapLogo;
         private readonly VCBitmap bitmapNameGame;
         private readonly VCBitmap bitmapMenu;
-        private readonly VCLabel labelMenuNameObject;
         private readonly VCLabel labelVersion;
         private readonly VCBitmap bmpMainMenu;
         private readonly VCButton btnTournament;
@@ -595,12 +594,6 @@ namespace Fantasy_Kingdoms_Battle
                 for (int y = 0; y < PANEL_MENU_CELLS.Height; y++)
                     for (int x = 0; x < PANEL_MENU_CELLS.Width; x++)
                         CellsMenu[y, x] = new VCMenuCell(bitmapMenu, 22 + (x * (imListObjects48.Size + DISTANCE_BETWEEN_CELLS)), 95 + (y * (imListObjects48.Size + DISTANCE_BETWEEN_CELLS)));
-
-                labelMenuNameObject = new VCLabel(bitmapMenu, 144, 67, fontSmall, Color.White, 14, "");
-                labelMenuNameObject.Width = 131;
-                labelMenuNameObject.TruncLongText = true;
-                labelMenuNameObject.StringFormat.Alignment = StringAlignment.Near;
-                labelMenuNameObject.StringFormat.LineAlignment = StringAlignment.Near;
 
                 // Панель со всеми героями
                 panelCombatHeroes = new PanelWithPanelEntity(4, false, 12, 12);
@@ -1513,9 +1506,6 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Debug.Assert(pb.TypeConstruction != null);
 
-                //labelMenuNameObject.Visible = true;
-                labelMenuNameObject.Text = pb.TypeConstruction.Name;
-
                 if (pb.Researches != null)
                 {
                     pb.ValidateResearches();
@@ -1531,10 +1521,6 @@ namespace Fantasy_Kingdoms_Battle
                             CellsMenu[pr.Descriptor.Coord.Y, pr.Descriptor.Coord.X].Research = pr;
                     }
                 }
-            }
-            else
-            {
-                labelMenuNameObject.Visible = false;
             }
 
             for (int y = 0; y < PANEL_MENU_CELLS.Height; y++)
@@ -1636,9 +1622,6 @@ namespace Fantasy_Kingdoms_Battle
 
                 pageTournament.Text = lobby.DaysLeftForBattle > 0 ? lobby.DaysLeftForBattle.ToString() + " д." :
                         curAppliedPlayer.SkipBattle ? "Проп." : "Битва";
-
-                //
-                UpdateMenu();
             }
 
             // Рисуем контролы
@@ -2251,6 +2234,7 @@ namespace Fantasy_Kingdoms_Battle
                 else
                     panelEmptyInfo.Visible = true;
 
+                UpdateMenu();
                 SetNeedRedrawFrame();
             }
         }
