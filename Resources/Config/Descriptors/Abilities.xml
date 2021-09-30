@@ -1634,7 +1634,7 @@
     <ID>FireMageFireShield</ID>
     <Name>Огненный щит</Name>
     <Description>- Снижает получаемый урон от всех видов атак//- Требует маны</Description>
-    <ImageIndex>149</ImageIndex>
+    <ImageIndex>159</ImageIndex>
     <Cost>20</Cost>
     <TypeAbility>Buff</TypeAbility>
     <TypeTarget>Self</TypeTarget>
@@ -1653,7 +1653,7 @@
     <ID>WolfBasicAttack</ID>
     <Name>Укус</Name>
     <Description>- Наносит малый урон</Description>
-    <ImageIndex>113</ImageIndex>
+    <ImageIndex>133</ImageIndex>
     <TypeAbility>MeleeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -1670,7 +1670,7 @@
     <ID>WolfChildOfTheForest</ID>
     <Name>Дитя леса</Name>
     <Description>Леса Ардании полны всякой живности и волки в них не редкость. Волки Ардании - суровые хищники, охотящиеся стаей и доставляющие неприятности многих путникам и жителям деревень, однако звери уязвимы к стрелам охотникам. Вблизи волчьих логов добавляет 10% здоровья, уязвимость к охотничьим стрелам на 25%.</Description>
-    <ImageIndex>114</ImageIndex>
+    <ImageIndex>124</ImageIndex>
     <TypeAbility>Permanent</TypeAbility>
     <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -1687,7 +1687,7 @@
     <ID>Fangs</ID>
     <Name>Клыки</Name>
     <Description>Волки, как любые другие хищники, будут пытаться всеми силами догнать раненную жертву, чтобы ее загрызть. Преследует раненного героя, игнорируя других.</Description>
-    <ImageIndex>115</ImageIndex>
+    <ImageIndex>125</ImageIndex>
     <TypeAbility>Permanent</TypeAbility>
     <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -1704,7 +1704,7 @@
     <ID>Predator</ID>
     <Name>Хищник</Name>
     <Description>В отличии от других хищников волки собираются в стаи и нападают, тем самым многократно повышая эффективность охоты. Увеличивает скорость и урон на 10%. Требует наличия 3 и более волков.</Description>
-    <ImageIndex>116</ImageIndex>
+    <ImageIndex>126</ImageIndex>
     <TypeAbility>Permanent</TypeAbility>
     <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -1721,7 +1721,7 @@
     <ID>LeaderOfThePack</ID>
     <Name>Вожак стаи</Name>
     <Description>у любой стаи волков есть вожак, которому все другие подчиняются. Обычно им является уже опытный и матёрый волк. Во время битвы вожак не нападает, а смотрит на происходящим. Вступает в бой только когда появляется в этом острая нужда. Добавляет всем волкам храбрости на 20%.</Description>
-    <ImageIndex>117</ImageIndex>
+    <ImageIndex>127</ImageIndex>
     <TypeAbility>Permanent</TypeAbility>
     <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -1769,7 +1769,7 @@
     <ID>WillOfDarkness</ID>
     <Name>Воля Тьмы</Name>
     <Description>Темная магия способна тысячами поднимать из могил тела усопших и заставлять их действовать по воли некроманта. Несмотря на то, что Великий король запретил кому попало использовать некромантию, нередко находятся те, кто пренебрегает этому указу. Поэтому в Ардании время от времени проводятся зачистки близ кладбищ и склепов. Невосприимчивость к усталости, чувствам и влиянию на разум.</Description>
-    <ImageIndex>111</ImageIndex>
+    <ImageIndex>121</ImageIndex>
     <TypeAbility>Permanent</TypeAbility>
     <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -1785,7 +1785,7 @@
     <ID>DeadFlesh</ID>
     <Name>Мертвая плоть</Name>
     <Description>В телах, поднятых с кладбищ отсутствуют какие-либо естественные свойства - циркуляция крови, заживление ран, работа внутренних органов. Благодаря этому на зомби не действует отравление ядом или кровотечение, однако они очень чувствительны к святым атакам.</Description>
-    <ImageIndex>110</ImageIndex>
+    <ImageIndex>120</ImageIndex>
     <TypeAbility>Permanent</TypeAbility>
     <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -1801,7 +1801,7 @@
     <ID>NeedFood</ID>
     <Name>Потребность в пище</Name>
     <Description>Зомби, в отличии от скелетов, иногда нуждаются в еде - из-за этого они вынуждены бродить по землям и искать того, кто станет их обедом.//Добавляет 10% урона.</Description>
-    <ImageIndex>112</ImageIndex>
+    <ImageIndex>122</ImageIndex>
     <TypeAbility>Permanent</TypeAbility>
     <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -1817,7 +1817,7 @@
     <ID>Ptomaine</ID>
     <Name>Трупный яд</Name>
     <Description>Поскольку мертвецы убивают и питаются свежими телами, их сгнившая плоть содержит многочисленные ядовитые споры, которые перекидываются на того, кто сильно близко приблизится к зомби. Заражение ядом (медленно понижает здоровье).</Description>
-    <ImageIndex>109</ImageIndex>
+    <ImageIndex>119</ImageIndex>
     <TypeAbility>Aura</TypeAbility>
     <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -1962,7 +1962,7 @@
     <ID>BearBasicAttack</ID>
     <Name>Удар лапой</Name>
     <Description>- Наносит средний урон</Description>
-    <ImageIndex>119</ImageIndex>
+    <ImageIndex>129</ImageIndex>
     <TypeAbility>MeleeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -1979,7 +1979,7 @@
     <ID>BearChildOfTheForest</ID>
     <Name>Дитя леса</Name>
     <Description>Леса Ардании полны всякой живности и медведи в них не редкость. Медведи Ардании - очень опасные хищники, охотящиеся по одиночке и доставляющие неприятности многим гостям леса, однако звери уязвимы к стрелам охотникам. Вблизи медвежьих берлог добавляет 10% здоровья.уязвимость к охотничьим стрелам на 25%.</Description>
-    <ImageIndex>114</ImageIndex>
+    <ImageIndex>124</ImageIndex>
     <TypeAbility>Permanent</TypeAbility>
     <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -1996,7 +1996,7 @@
     <ID>BearPaw</ID>
     <Name>Медвежья лапа</Name>
     <Description>Многие медведи когда спят предпочитают сосать свою лапу, тем самым делая свой сон более спокойным. Добавляет 15% к восстановлению здоровья во время отдыха.</Description>
-    <ImageIndex>120</ImageIndex>
+    <ImageIndex>130</ImageIndex>
     <TypeAbility>Permanent</TypeAbility>
     <TypeTarget>Self</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -2013,7 +2013,7 @@
     <ID>BearBleeding</ID>
     <Name>Кровотечение</Name>
     <Description>Огромные медвежьи когти способны сильно калечить любых живых существ, что попадаются под лапу медведя. Вылечить такие раны можно только в гильдии, на поле боя их исцелить не могут даже лучшие лекари Ардании. При получении такого ранения героям рекомендуется как можно скорее возвращаться домой. Отнимает здоровье с течением времени.</Description>
-    <ImageIndex>121</ImageIndex>
+    <ImageIndex>131</ImageIndex>
     <TypeAbility>Permanent</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -2030,7 +2030,7 @@
     <ID>BearStrongClaws</ID>
     <Name>Крепкие когти</Name>
     <Description>Огромные медвежьи когти способны сильно калечить любых живых существ, что попадаются под лапу медведя. Вылечить такие раны можно только в гильдии, на поле боя их исцелить не могут даже лучшие лекари Ардании. При получении такого ранения героям рекомендуется как можно скорее возвращаться домой. Отнимает здоровье с течением времени.</Description>
-    <ImageIndex>122</ImageIndex>
+    <ImageIndex>132</ImageIndex>
     <TypeAbility>Permanent</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -2046,7 +2046,7 @@
     <ID>WerewolfBearBasicAttack</ID>
     <Name>Укус</Name>
     <Description>- Наносит малый урон</Description>
-    <ImageIndex>1</ImageIndex>
+    <ImageIndex>123</ImageIndex>
     <TypeAbility>MeleeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -2062,7 +2062,7 @@
     <ID>MinotaurBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
-    <ImageIndex>1</ImageIndex>
+    <ImageIndex>129</ImageIndex>
     <TypeAbility>MeleeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -2079,7 +2079,7 @@
     <ID>OgreBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
-    <ImageIndex>1</ImageIndex>
+    <ImageIndex>129</ImageIndex>
     <TypeAbility>MeleeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -2096,7 +2096,7 @@
     <ID>WerewolfBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
-    <ImageIndex>1</ImageIndex>
+    <ImageIndex>129</ImageIndex>
     <TypeAbility>MeleeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -2112,7 +2112,7 @@
     <ID>DragonBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
-    <ImageIndex>1</ImageIndex>
+    <ImageIndex>129</ImageIndex>
     <TypeAbility>MeleeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -2128,7 +2128,7 @@
     <ID>KingRatBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
-    <ImageIndex>1</ImageIndex>
+    <ImageIndex>129</ImageIndex>
     <TypeAbility>MeleeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -2144,7 +2144,7 @@
     <ID>OldRatBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
-    <ImageIndex>1</ImageIndex>
+    <ImageIndex>129</ImageIndex>
     <TypeAbility>MeleeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -2160,7 +2160,7 @@
     <ID>KingSkeletonBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
-    <ImageIndex>1</ImageIndex>
+    <ImageIndex>129</ImageIndex>
     <TypeAbility>MeleeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -2176,7 +2176,7 @@
     <ID>RatmanBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
-    <ImageIndex>1</ImageIndex>
+    <ImageIndex>129</ImageIndex>
     <TypeAbility>MeleeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -2192,7 +2192,7 @@
     <ID>RatBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
-    <ImageIndex>1</ImageIndex>
+    <ImageIndex>129</ImageIndex>
     <TypeAbility>MeleeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -2208,7 +2208,7 @@
     <ID>ElementalEarthBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
-    <ImageIndex>1</ImageIndex>
+    <ImageIndex>129</ImageIndex>
     <TypeAbility>MeleeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
@@ -2224,7 +2224,7 @@
     <ID>ElementalFireBasicAttack</ID>
     <Name>Удар</Name>
     <Description>- Наносит малый урон</Description>
-    <ImageIndex>1</ImageIndex>
+    <ImageIndex>129</ImageIndex>
     <TypeAbility>MeleeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
     <MinUnitLevel>1</MinUnitLevel>
