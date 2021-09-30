@@ -1049,6 +1049,7 @@ namespace Fantasy_Kingdoms_Battle
             else
                 return FormMain.Config.Gui48_Battle;
         }
+
         internal override string GetText() => "";
 
         internal override bool GetNormalImage()
@@ -1058,7 +1059,9 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override string GetLevel()
         {
-            return Level == 0 ? "" : Level < TypeConstruction.MaxLevel ? $"{Level}/{TypeConstruction.MaxLevel}" : Level.ToString();
+            AssertNotDestroyed();
+
+            return Hidden ? "" : Level == 0 ? "" : Level < TypeConstruction.MaxLevel ? $"{Level}/{TypeConstruction.MaxLevel}" : Level.ToString();
         }
 
         internal override void Click(VCCell pe)

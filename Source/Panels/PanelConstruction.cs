@@ -143,6 +143,8 @@ namespace Fantasy_Kingdoms_Battle
 
             imgMapObject.ImageIndex = Construction.ImageIndexLair();
             imgMapObject.ImageIsEnabled = Construction.ImageEnabled();
+            imgMapObject.Level = Construction.GetLevel();
+
             lblNameMapObject.Text = Construction.NameLair();
             lblNameMapObject.Color = Construction.GetColorCaption();
 
@@ -230,8 +232,6 @@ namespace Fantasy_Kingdoms_Battle
                 }
                 else
                     btnHireHero.Visible = false;
-
-                imgMapObject.Level = Construction.GetLevel();
 
                 if ((Construction.TypeConstruction.TrainedHero != null) && !(Construction.TypeConstruction.TrainedHero is null) && (Construction.Level > 0))
                 {
