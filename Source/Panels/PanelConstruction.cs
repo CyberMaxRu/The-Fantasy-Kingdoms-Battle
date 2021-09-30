@@ -250,7 +250,7 @@ namespace Fantasy_Kingdoms_Battle
                 btnAction.Visible = Construction.Hidden || (Construction.TypeConstruction.Category == CategoryConstruction.Lair);
                 if (btnAction.Visible)
                 {
-                    btnAction.ImageIsEnabled = true;
+                    btnAction.ImageIsEnabled = Construction.Player.ExistsFreeFlag();
                     int level = (int)(Construction.PriorityFlag + 1);
                     btnAction.Level = level == 0 ? "" : level.ToString();
                     btnAction.Text = Construction.CheckFlagRequirements() ? Construction.RequiredGold().ToString() : "";
