@@ -11,7 +11,7 @@ namespace Fantasy_Kingdoms_Battle
     // Класс требования
     internal abstract class Requirement : Descriptor
     {
-        public Requirement(XmlNode n) : base()
+        public Requirement(XmlNode n, Entity ) : base()
         {
         }
 
@@ -19,6 +19,7 @@ namespace Fantasy_Kingdoms_Battle
         {
         }
 
+        internal des Entity { get; }
         internal abstract bool CheckRequirement(Player p);
         internal abstract TextRequirement GetTextRequirement(Player p);
     }
@@ -151,14 +152,15 @@ namespace Fantasy_Kingdoms_Battle
             base.TuneDeferredLinks();
 
             Construction = Config.FindConstruction(nameConstruction);
-            nameConstruction = "";
             Goods = Config.FindItem(nameGoods);
+            nameConstruction = "";
             nameGoods = "";
 
             bool founded = false;
             foreach (DescriptorCellMenuForConstruction cm in Construction.ListResearches)
                 if (cm.NameEntity == Goods.ID)
                 {
+                    cm.UseForResearches.Add(Goods);
                     founded = true;
                     break;
                 }
