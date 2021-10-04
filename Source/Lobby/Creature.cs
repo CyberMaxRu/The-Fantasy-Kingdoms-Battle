@@ -81,6 +81,14 @@ namespace Fantasy_Kingdoms_Battle
         internal Item Armour { get; private set; }// Доспех        
         internal Item Quiver { get; private set; }// Колчан
         internal StateCreature StateCreature { get; private set; }// Состояние (на карте)
+
+        //
+        internal int Morale { get; set; }// Уровень морали, умноженный на 100
+        internal int Luck { get; set; }// Уровень удачи (от 0 до 100)
+        internal int Mood { get; set; }// Уровень настроения, умноженный на 100
+        internal int Food { get; set; }// Уровень еды (+ сытость, - голод), умноженный на 100
+
+        
         internal bool IsLive { get; private set; } = true;// Существо живо
 
         // Повышение уровня
