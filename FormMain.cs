@@ -572,7 +572,7 @@ namespace Fantasy_Kingdoms_Battle
                 btnEndTurn = CreateButton(bmpTopPanel, Config.Gui48_Hourglass, 0, Config.GridSize, BtnEndTurn_Click, BtnEndTurn_MouseHover);
                 btnEndTurn.HighlightUnderMouse = true;
                 btnEndTurn.ShowBorder = true;
-                panelLairWithFlags = new VisualControl(MainControl, 0, 0);
+                panelLairWithFlags = new VisualControl(MainControl, 0, Config.GridSize);
                 panelLairWithFlags.Width = imListObjects48.Size;
                 panelLairWithFlags.Height = imListObjects48.Size;
 
@@ -588,7 +588,7 @@ namespace Fantasy_Kingdoms_Battle
                 vcDebugInfo.ArrangeControls();
 
                 // Правая панель с героями и меню
-                vcRightPanel = new VisualControl(MainControl, 0, 0);
+                vcRightPanel = new VisualControl(MainControl, 0, Config.GridSize);
 
                 // Создаем меню
                 bitmapMenu = new VCBitmap(vcRightPanel, 0, 0, LoadBitmap("Menu.png"));
@@ -673,13 +673,13 @@ namespace Fantasy_Kingdoms_Battle
                 MainControl.Width = vcRightPanel.ShiftX + vcRightPanel.Width;
                 bmpPreparedToolbar.Bitmap = PrepareToolbar();
                 bmpPreparedToolbar.ShiftY = panelPlayers.NextTop();
-                MainControl.ShiftY = bmpPreparedToolbar.NextTop();
+                MainControl.ShiftY = bmpPreparedToolbar.NextTop() - Config.GridSize;
 
                 bmpTopPanel.Bitmap = GuiUtils.MakeBackground(new Size(MainControl.Width, bmpPreparedToolbar.ShiftY));
                 bmpTopPanel.Width = bmpTopPanel.Bitmap.Width;
                 bmpTopPanel.Height = bmpTopPanel.Bitmap.Height;
 
-                MainControl.Height = pageResultTurn.ShiftX + maxHeightControls + Config.GridSize;
+                MainControl.Height = pageResultTurn.ShiftY + maxHeightControls + (Config.GridSize * 2);
 
                 // Теперь когда известна ширина окна, можно создавать картинку тулбара
                 labelNamePlayer.Height = bmpPreparedToolbar.Height;
@@ -717,6 +717,19 @@ namespace Fantasy_Kingdoms_Battle
                 labelVersion.ShiftY = sizeGamespace.Height - labelVersion.Height - Config.GridSize;
                 bmpMainMenu.ShiftX = sizeGamespace.Width - bmpMainMenu.Width - Config.GridSize;
                 bmpMainMenu.ShiftY = (sizeGamespace.Height - bmpMainMenu.Height) / 2 - (Config.GridSize * 1);
+
+                pageResultTurn.BackgroundImage = MainControlbackground("Paper");
+                pageGuilds.BackgroundImage = MainControlbackground("Castle");
+                pageEconomicConstructions.BackgroundImage = MainControlbackground("Relax");
+                pageTemples.BackgroundImage = MainControlbackground("Temple");
+                pageHeroes.BackgroundImage = MainControlbackground("Wood");
+                pageLairs.BackgroundImage = MainControlbackground("Wood");
+                pageTournament.BackgroundImage = MainControlbackground("Wood");
+
+                Bitmap MainControlbackground(string nameTexture)
+                {
+                    return GuiUtils.MakeCustomBackground(Config.GetTexture(nameTexture), MainControl);
+                }
 
                 layerMainMenu.ArrangeControls();
                 layerGame.ArrangeControls();
@@ -808,6 +821,8 @@ namespace Fantasy_Kingdoms_Battle
                 //    winAdvice = new WindowAdvice();
                 //winAdvice.ShowAdvice(pageControl.CurrentPage.Advice);
             }
+
+            MainControl.BackgroundImage = pageControl.CurrentPage.BackgroundImage;
         }
 
         private void LabelBuilders_ShowHint(object sender, EventArgs e)

@@ -134,7 +134,7 @@ namespace Fantasy_Kingdoms_Battle
                 bmpBackground = GuiUtils.MakeBackground(new Size(Width, Height));
             }
 
-            g.DrawImageUnscaled(bmpBackground, Left, Top);
+            //g.DrawImageUnscaled(bmpBackground, Left, Top);
         }
 
         internal override void Draw(Graphics g)

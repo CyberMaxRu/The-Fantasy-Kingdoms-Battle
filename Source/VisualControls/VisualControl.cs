@@ -64,6 +64,8 @@ namespace Fantasy_Kingdoms_Battle
         internal bool PlaySoundOnEnter { get; set; } = false;// Проигрывать звук при входе в контрол
         internal bool PlaySoundOnClick { get; set; } = false;// Проигрывать звук при клике
 
+        internal Bitmap BackgroundImage { get; set; }// Фоновое изображение
+
         // Защищенные свойства
         internal bool MouseOver { get; private set; }// Курсор мыши находится над контролом
         protected bool MouseClicked { get; private set; }// ЛКМ нажата
@@ -103,7 +105,15 @@ namespace Fantasy_Kingdoms_Battle
 
         // Метод для рисования фона - то есть то, что будет перекрываться изображением через Draw
         internal virtual void DrawBackground(Graphics g)
-        {
+        { 
+            if (BackgroundImage != null)
+            {
+                Debug.Assert(width == BackgroundImage.Width);
+                Debug.Assert(height == BackgroundImage.Height);
+
+                g.DrawImageUnscaled(BackgroundImage, Left, Top);
+            }
+
             if (Selected())
             {
                 Program.formMain.bbSelect.DrawBorder(g, Left - 8, Top - 8, Width + 16, Height + 16);

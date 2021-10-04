@@ -25,6 +25,27 @@ namespace Fantasy_Kingdoms_Battle
                 g.FillRectangle(brushBack, r.Left + widthMain, r.Top, widthNone, r.Height);
         }
 
+        internal static Bitmap MakeCustomBackground(Bitmap texture, VisualControl control)
+        {
+            Debug.Assert(control.Width > FormMain.Config.GridSize);
+            Debug.Assert(control.Height > FormMain.Config.GridSize);
+
+            Bitmap bmpBackground = new Bitmap(control.Width, control.Height);
+            Graphics g = Graphics.FromImage(bmpBackground);
+            g.CompositingMode = CompositingMode.SourceCopy;
+
+            int repX = control.Width / texture.Width + 1;
+            int repY = control.Height / texture.Height + 1;
+
+            for (int y = 0; y < repY; y++)
+                for (int x = 0; x < repX; x++)
+                    g.DrawImageUnscaled(texture, x * texture.Width, y * texture.Height);
+
+            g.Dispose();
+
+            return bmpBackground;
+        }
+
         internal static Bitmap MakeBackground(Size size)
         {
             Debug.Assert(size.Width > FormMain.Config.GridSize);
