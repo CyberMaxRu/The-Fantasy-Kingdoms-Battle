@@ -91,6 +91,7 @@ namespace Fantasy_Kingdoms_Battle
 
         // Первый слой (главное меню)
         private readonly VisualControl layerMainMenu;
+        private readonly VCBitmap bmpTopPanel;
         private readonly VCBitmap bmpPreparedToolbar;
         private readonly VCBitmap bitmapLogo;
         private readonly VCBitmap bitmapNameGame;
@@ -520,7 +521,8 @@ namespace Fantasy_Kingdoms_Battle
                 layerGame = new VisualControl();
 
                 // Создаем панели игроков
-                panelPlayers = new VisualControl(layerGame, 0, Config.GridSize);
+                bmpTopPanel = new VCBitmap(layerGame, 0, 0, null);
+                panelPlayers = new VisualControl(bmpTopPanel, 0, Config.GridSize);
 
                 CellPlayer pp;
                 int nextLeftPanelPlayer = 0;
@@ -564,10 +566,10 @@ namespace Fantasy_Kingdoms_Battle
                 labelNamePlayer.StringFormat.LineAlignment = StringAlignment.Center;
                 labelNamePlayer.Width = 16;
 
-                btnInGameMenu = CreateButton(layerGame, Config.Gui48_Settings, Config.GridSize, Config.GridSize, BtnInGameMenu_Click, BtnInGameMenu_MouseHover);
+                btnInGameMenu = CreateButton(bmpTopPanel, Config.Gui48_Settings, Config.GridSize, Config.GridSize, BtnInGameMenu_Click, BtnInGameMenu_MouseHover);
                 btnInGameMenu.HighlightUnderMouse = true;
                 btnInGameMenu.ShowBorder = false;
-                btnEndTurn = CreateButton(layerGame, Config.Gui48_Hourglass, 0, Config.GridSize, BtnEndTurn_Click, BtnEndTurn_MouseHover);
+                btnEndTurn = CreateButton(bmpTopPanel, Config.Gui48_Hourglass, 0, Config.GridSize, BtnEndTurn_Click, BtnEndTurn_MouseHover);
                 btnEndTurn.HighlightUnderMouse = true;
                 btnEndTurn.ShowBorder = true;
                 panelLairWithFlags = new VisualControl(MainControl, 0, 0);
@@ -672,6 +674,10 @@ namespace Fantasy_Kingdoms_Battle
                 bmpPreparedToolbar.Bitmap = PrepareToolbar();
                 bmpPreparedToolbar.ShiftY = panelPlayers.NextTop();
                 MainControl.ShiftY = bmpPreparedToolbar.NextTop();
+
+                bmpTopPanel.Bitmap = GuiUtils.MakeBackground(new Size(MainControl.Width, bmpPreparedToolbar.ShiftY));
+                bmpTopPanel.Width = bmpTopPanel.Bitmap.Width;
+                bmpTopPanel.Height = bmpTopPanel.Bitmap.Height;
 
                 MainControl.Height = pageResultTurn.ShiftX + maxHeightControls + Config.GridSize;
 
