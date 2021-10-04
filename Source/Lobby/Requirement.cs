@@ -11,7 +11,7 @@ namespace Fantasy_Kingdoms_Battle
     // Класс требования
     internal abstract class Requirement : Descriptor
     {
-        public Requirement(XmlNode n, Entity ) : base()
+        public Requirement(XmlNode n) : base()
         {
         }
 
@@ -19,7 +19,6 @@ namespace Fantasy_Kingdoms_Battle
         {
         }
 
-        internal des Entity { get; }
         internal abstract bool CheckRequirement(Player p);
         internal abstract TextRequirement GetTextRequirement(Player p);
     }

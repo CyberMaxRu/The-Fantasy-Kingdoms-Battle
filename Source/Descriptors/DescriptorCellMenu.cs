@@ -101,7 +101,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (UseForResearches.Count > 0)
             {
-                description
+                //description
                 foreach (DescriptorItem di in UseForResearches)
                 {
 
