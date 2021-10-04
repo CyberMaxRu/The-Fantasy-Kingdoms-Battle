@@ -722,9 +722,9 @@ namespace Fantasy_Kingdoms_Battle
                 pageGuilds.BackgroundImage = MainControlbackground("Castle");
                 pageEconomicConstructions.BackgroundImage = MainControlbackground("Relax");
                 pageTemples.BackgroundImage = MainControlbackground("Temple");
-                pageHeroes.BackgroundImage = MainControlbackground("Wood");
+                pageHeroes.BackgroundImage = MainControlbackground("Heroes");
                 pageLairs.BackgroundImage = MainControlbackground("Wood");
-                pageTournament.BackgroundImage = MainControlbackground("Wood");
+                pageTournament.BackgroundImage = MainControlbackground("Tournament");
 
                 Bitmap MainControlbackground(string nameTexture)
                 {
