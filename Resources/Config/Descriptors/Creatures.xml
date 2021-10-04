@@ -183,6 +183,12 @@
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
     <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
+    <CoefficientFlags>
+      <Scout>1</Scout>
+      <Attack>1.1</Attack>
+      <Defense>1</Defense>
+      <Battle>1</Battle>
+    </CoefficientFlags>
     <ConstructionsForShopping>
       <Construction>
         <ID>GuildWarrior</ID>
@@ -373,6 +379,12 @@
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
     <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
+    <CoefficientFlags>
+      <Scout>1.1</Scout>
+      <Attack>1</Attack>
+      <Defense>1</Defense>
+      <Battle>1</Battle>
+    </CoefficientFlags>
     <Names>
       <Name>Весси</Name>
       <Name>Халелифь</Name>
@@ -512,6 +524,12 @@
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
     <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
+    <CoefficientFlags>
+      <Scout>1.5</Scout>
+      <Attack>1</Attack>
+      <Defense>1</Defense>
+      <Battle>1</Battle>
+    </CoefficientFlags>
     <Names>
       <Name>Аллеран</Name>
       <Name>Анариен</Name>
@@ -682,6 +700,12 @@
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
     <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
+    <CoefficientFlags>
+      <Scout>1</Scout>
+      <Attack>1.1</Attack>
+      <Defense>1.2</Defense>
+      <Battle>1</Battle>
+    </CoefficientFlags>
     <Names>
       <Name>Арбера</Name>
       <Name>Челла</Name>
@@ -832,6 +856,12 @@
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
     <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
+    <CoefficientFlags>
+      <Scout>0.6</Scout>
+      <Attack>1</Attack>
+      <Defense>0.9</Defense>
+      <Battle>1</Battle>
+    </CoefficientFlags>
     <Names>
       <Name>Амелон</Name>
       <Name>Борадор</Name>
@@ -981,6 +1011,12 @@
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
     <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
+    <CoefficientFlags>
+      <Scout>1.3</Scout>
+      <Attack>1.2</Attack>
+      <Defense>1</Defense>
+      <Battle>1</Battle>
+    </CoefficientFlags>
     <Names>
       <Name>Элькина</Name>
       <Name>Филлиана</Name>
@@ -1112,6 +1148,12 @@
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
     <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
+    <CoefficientFlags>
+      <Scout>0.5</Scout>
+      <Attack>1.2</Attack>
+      <Defense>1.2</Defense>
+      <Battle>1</Battle>
+    </CoefficientFlags>
     <Names>
       <Name>Фильбо</Name>
       <Name>Геджет</Name>
@@ -1245,6 +1287,12 @@
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
     <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
+    <CoefficientFlags>
+      <Scout>0</Scout>
+      <Attack>1.2</Attack>
+      <Defense>0.5</Defense>
+      <Battle>1</Battle>
+    </CoefficientFlags>
     <Surnames>
       <Surname>Чернокровка</Surname>
       <Surname>Даэдра</Surname>
@@ -1343,6 +1391,12 @@
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
     <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
+    <CoefficientFlags>
+      <Scout>0</Scout>
+      <Attack>1</Attack>
+      <Defense>1</Defense>
+      <Battle>1</Battle>
+    </CoefficientFlags>
     <Surnames>
       <Surname>, Дочь Любви</Surname>
       <Surname>Тихая</Surname>
@@ -1439,6 +1493,12 @@
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
     <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
+    <CoefficientFlags>
+      <Scout>0</Scout>
+      <Attack>1.3</Attack>
+      <Defense>1.2</Defense>
+      <Battle>1</Battle>
+    </CoefficientFlags>
     <Surnames>
       <Surname>Яркая Душа</Surname>
       <Surname>Святой Клинок</Surname>
@@ -1534,6 +1594,12 @@
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
     <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
+    <CoefficientFlags>
+      <Scout>1</Scout>
+      <Attack>1.1</Attack>
+      <Defense>1</Defense>
+      <Battle>1</Battle>
+    </CoefficientFlags>
     <Surnames>
       <Surname>Дуболом</Surname>
       <Surname>Быстромеч</Surname>
@@ -1630,6 +1696,12 @@
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
     <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
+    <CoefficientFlags>
+      <Scout>1</Scout>
+      <Attack>1</Attack>
+      <Defense>1</Defense>
+      <Battle>1</Battle>
+    </CoefficientFlags>
     <Surnames>
       <Surname>Глаз Ворона</Surname>
       <Surname>Волк</Surname>
@@ -1726,6 +1798,12 @@
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
     <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
+    <CoefficientFlags>
+      <Scout>1.1</Scout>
+      <Attack>1.2</Attack>
+      <Defense>0.9</Defense>
+      <Battle>1</Battle>
+    </CoefficientFlags>
     <Surnames>
       <Surname>Острострел</Surname>
       <Surname>Снайпер</Surname>
@@ -1823,6 +1901,12 @@
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
     <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
+    <CoefficientFlags>
+      <Scout>0</Scout>
+      <Attack>1.2</Attack>
+      <Defense>0.9</Defense>
+      <Battle>1</Battle>
+    </CoefficientFlags>
   </Creature>
   <Creature>
     <ID>IceMage</ID>
@@ -1875,6 +1959,12 @@
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
     <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
+    <CoefficientFlags>
+      <Scout>0</Scout>
+      <Attack>1.5</Attack>
+      <Defense>0.8</Defense>
+      <Battle>1</Battle>
+    </CoefficientFlags>
     <Surnames>
       <Surname>Колотун</Surname>
       <Surname>Свиристень</Surname>
@@ -1951,6 +2041,12 @@
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
     <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
+    <CoefficientFlags>
+      <Scout>0.5</Scout>
+      <Attack>1.2</Attack>
+      <Defense>0</Defense>
+      <Battle>1</Battle>
+    </CoefficientFlags>
     <Surnames>
       <Surname>Гибель Дня</Surname>
       <Surname>Быстроногая</Surname>

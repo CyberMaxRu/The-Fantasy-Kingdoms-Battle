@@ -169,6 +169,18 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
+            // Загружаем поправочные коэффициенты для флагов
+            XmlNode ncf = n.SelectSingleNode("CoefficientFlags");
+            if (ncf != null)
+            {
+                CoefficientFlags = new double[(int)TypeFlag.Battle + 1];
+
+                CoefficientFlags[(int)TypeFlag.Scout] = GetDouble(ncf, "Scout");
+                CoefficientFlags[(int)TypeFlag.Attack] = GetDouble(ncf, "Attack");
+                CoefficientFlags[(int)TypeFlag.Defense] = GetDouble(ncf, "Defense");
+                CoefficientFlags[(int)TypeFlag.Battle] = GetDouble(ncf, "Battle");
+            }
+
             // Загружаем имена и фамилии
             if (CategoryCreature == CategoryCreature.Hero)
             {
@@ -216,11 +228,14 @@ namespace Fantasy_Kingdoms_Battle
             if (CategoryCreature == CategoryCreature.Hero)
             {
                 Debug.Assert(MaxConstructionForBuyPerDay > 0);
+
+                Debug.Assert(CoefficientFlags != null);
             }
             else
             {
                 Debug.Assert(MaxConstructionForBuyPerDay == 0);
                 Debug.Assert(PriorityConstructionForShoppings.Count == 0);
+                Debug.Assert(CoefficientFlags is null);
             }
 
             void LoadName(string nodes, string node, List<string> list)
@@ -257,6 +272,7 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorItem WeaponRange { get; private set; }// Стрелковое оружие
         internal DescriptorItem Armour { get; private set; }// Доспех по умолчанию
         internal DescriptorReward TypeReward { get; }// Награда за убийство существа
+        internal double[] CoefficientFlags { get; }// Поправочные коэффициенты для флагов
         internal List<PriorityConstructionForShopping> PriorityConstructionForShoppings { get; } = new List<PriorityConstructionForShopping>();
         //internal (string, int)[] PriorityConstructionsForBuy;
         internal int Cost { get; }
