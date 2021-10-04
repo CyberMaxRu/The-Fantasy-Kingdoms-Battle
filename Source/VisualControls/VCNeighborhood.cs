@@ -14,9 +14,11 @@ namespace Fantasy_Kingdoms_Battle
             ShowBorder = true;
             Layer = layer;
             Hint = Layer.Hint;
+            Background = GuiUtils.MakeCustomBackground(FormMain.Config.GetTexture(layer.NameTexture), Program.formMain.MainControl);
         }
 
         internal TypeLobbyLayerSettings Layer { get; }
+        internal Bitmap Background { get; }
 
         internal override void Draw(Graphics g)
         {

@@ -80,8 +80,9 @@
       <Layer>
         <Number>0</Number>
         <Name>стол.</Name>
-        <Hint>Окрестности Столицы</Hint>
+        <Hint>Окрестности Столицы</Hint>        
         <ImageIndex>196</ImageIndex>
+        <Texture>AroundCastle</Texture>
         <CostScout>100</CostScout>
         <CostAttack>250</CostAttack>
         <CostDefense>200</CostDefense>
@@ -113,6 +114,7 @@
         <Name>лес</Name>
         <Hint>Лес Ардании</Hint>
         <ImageIndex>197</ImageIndex>
+        <Texture>Wood</Texture>
         <CostScout>100</CostScout>
         <CostAttack>250</CostAttack>
         <CostDefense>200</CostDefense>
@@ -164,6 +166,7 @@
         <Name>клад.</Name>
         <Hint>Кладбища Ардании</Hint>
         <ImageIndex>198</ImageIndex>
+        <Texture>Graveyard</Texture>
         <CostScout>200</CostScout>
         <CostAttack>500</CostAttack>
         <CostDefense>250</CostDefense>
@@ -190,6 +193,7 @@
         <Name>огры</Name>
         <Hint>Пещеры огров</Hint>
         <ImageIndex>199</ImageIndex>
+        <Texture>DenOgres</Texture>
         <CostScout>400</CostScout>
         <CostAttack>1000</CostAttack>
         <CostDefense>500</CostDefense>

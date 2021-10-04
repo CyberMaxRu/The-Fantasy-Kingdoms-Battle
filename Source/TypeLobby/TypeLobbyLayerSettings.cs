@@ -17,6 +17,7 @@ namespace Fantasy_Kingdoms_Battle
             Name = XmlUtils.GetStringNotNull(n, "Name");
             Hint = XmlUtils.GetStringNotNull(n, "Hint");
             ImageIndex = XmlUtils.GetIntegerNotNull(n, "ImageIndex") + FormMain.Config.ImageIndexFirstItems - 1;
+            NameTexture = XmlUtils.GetStringNotNull(n, "Texture");
             CostScout = XmlUtils.GetInteger(n, "CostScout");
             CostAttack = XmlUtils.GetInteger(n, "CostAttack");
             CostDefense = XmlUtils.GetInteger(n, "CostDefense");
@@ -75,6 +76,7 @@ namespace Fantasy_Kingdoms_Battle
         internal string Name { get; }// Наименование слоя
         internal string Hint { get; }// Подсказка к слою
         internal int ImageIndex { get; }// Иконка
+        internal string NameTexture { get; }// Текстура фона
         internal int CostScout { get; }// Стоимость разведки
         internal int CostAttack { get; }// Стоимость атаки
         internal int CostDefense { get; }// Стоимость защиты

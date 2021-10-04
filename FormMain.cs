@@ -59,7 +59,7 @@ namespace Fantasy_Kingdoms_Battle
         private TimeSpan durationDrawFrame;
 
         // Контролы главного меню
-        private readonly VisualControl MainControl;
+        internal readonly VisualControl MainControl;
 
         private Point mousePos;
         private VisualControl controlWithHint;
@@ -1487,6 +1487,7 @@ namespace Fantasy_Kingdoms_Battle
             AdjustNeighborhood();
             listButtonsLayers[0].DoClick();
             pageControl.ActivatePage(pageResultTurn);
+            PageControl_PageChanged(null, new EventArgs());
             ShowCurrentPlayerLobby();
 
             lobby.Start();
@@ -2111,6 +2112,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             currentNeighborhood = ((VCNeighborhood)sender).Layer.Number;
+            MainControl.BackgroundImage = ((VCNeighborhood)sender).Background;
             UpdateNeighborhood();
         }
 
