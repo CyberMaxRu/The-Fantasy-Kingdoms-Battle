@@ -29,7 +29,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly Button btnDismiss;
         private readonly VCButtonTargetLair btnTarget;
 
-        private VCIconAndDigitValue idvFood;
+        private readonly VCIconAndDigitValue idvFood;
 
         public PanelHeroInfo(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
@@ -50,6 +50,8 @@ namespace Fantasy_Kingdoms_Battle
             btnDismiss.Click += BtnDismiss_Click;
 
             lvGold.ShowHint += LvGold_ShowHint;
+
+            idvFood = new VCIconAndDigitValue(panelStatistics, 0, 0, 60, FormMain.GUI_16_FOOD);
 
             return;
             /*lblLevel = GuiUtils.CreateLabel(this, Config.GRID_SIZE, TopForControls());
@@ -93,13 +95,6 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal Hero Hero { get => Entity as Hero; }
-
-        protected override void CreateCustomControls()
-        {
-            base.CreateCustomControls();
-
-            idvFood = new VCIconAndDigitValue(this, FormMain.Config.GridSize, lvGold.NextTop(), 60, FormMain.GUI_16_FOOD);
-        }
 
         private void BtnDismiss_Click(object sender, EventArgs e)
         {

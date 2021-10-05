@@ -33,11 +33,13 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCBitmap bmpState;
         private readonly VCLabel labelNameState;
         private readonly VisualControl panelAbilitiesAndSecSkills;
+        protected readonly VisualControl panelStatistics;
         private readonly PanelWithPanelEntity panelInventory;
         private readonly PanelWithPanelEntity panelAbilities;
         private readonly VCSeparator separSecSkills;
         private readonly PanelWithPanelEntity panelSecondarySkills;
         private readonly PanelWithPanelEntity panelPerks;
+        private readonly VCTabButton btnStatistics;
         private readonly VCTabButton btnInventory;
         private readonly VCTabButton btnAbilities;
         private readonly VCTabButton btnPerks;
@@ -79,9 +81,12 @@ namespace Fantasy_Kingdoms_Battle
 
             lvGold = new VCIconAndDigitValue(this, FormMain.Config.GridSize, panelMeleeWeapon.NextTop(), imgIcon.Width, FormMain.GUI_16_COFFERS);
 
+            panelStatistics = new VisualControl();
+            panelStatistics.Width = panelInventory.Width;
+
             separator.ShiftY = lvGold.NextTop();
             pageControl.ShiftY = separator.NextTop();
-            pageControl.AddTab("Статистика", FormMain.Config.Gui48_Scroll, null);
+            btnStatistics = pageControl.AddTab("Статистика", FormMain.Config.Gui48_Scroll, panelStatistics);
             btnInventory = pageControl.AddTab("Инвентарь", FormMain.Config.Gui48_Inventory, panelInventory);
             btnAbilities = pageControl.AddTab("Способности и навыки", FormMain.Config.Gui48_Target, panelAbilitiesAndSecSkills);
             btnPerks = pageControl.AddTab("Перки", FormMain.Config.Gui48_Book, panelPerks);
@@ -159,6 +164,7 @@ namespace Fantasy_Kingdoms_Battle
             lblKindHero.Width = Width - (lblKindHero.ShiftX * 2);
             labelNameState.Width = bmpStateBackground.Width - labelNameState.ShiftX - FormMain.Config.GridSize;
             separSecSkills.Width = panelAbilities.Width;
+            panelStatistics.Height = pageControl.Height - panelStatistics.ShiftY - FormMain.Config.GridSize;
 
             base.ArrangeControls();
         }
