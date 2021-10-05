@@ -21,6 +21,12 @@ namespace Fantasy_Kingdoms_Battle
                 + GetRandomName(pb.TypeConstruction.TrainedHero.NameFromTypeHero == null ? pb.TypeConstruction.TrainedHero.Names : pb.TypeConstruction.TrainedHero.NameFromTypeHero.Names)
                 + " " + GetRandomName(pb.TypeConstruction.TrainedHero.SurnameFromTypeHero == null ? pb.TypeConstruction.TrainedHero.Surnames : pb.TypeConstruction.TrainedHero.Surnames);
 
+            // 
+            CurrentFood = pb.Lobby.Rnd.Next(pb.TypeConstruction.TrainedHero.MinFoodOnHire, pb.TypeConstruction.TrainedHero.MaxFoodOnHire);
+            FoodPerDay = pb.TypeConstruction.TrainedHero.FoodPerDay;
+            MaxFood = pb.TypeConstruction.TrainedHero.MaxFood;
+            Starvation = pb.TypeConstruction.TrainedHero.Starvation;
+
             PrepareTurn();
 
             string GetRandomName(List<string> list)
@@ -67,7 +73,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int Mood { get; set; }// Уровень настроения, умноженный на 100
 
         // Характеристики для работы с едой
-        internal int Food { get; private set; }// Уровень еды (+ сытость, - голод), умноженный на 100
+        internal int CurrentFood { get; private set; }// Уровень еды (+ сытость, - голод), умноженный на 100
         internal int MaxFood { get; private set; }// Максимальная сытость
         internal int FoodPerDay { get; private set; }// Потребление еды в день
         internal int Starvation { get; private set; }// На каком уровне еды наступает смерть от голода
