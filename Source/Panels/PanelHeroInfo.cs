@@ -120,7 +120,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             btnTarget.Entity = Hero.TargetByFlag;
             lvGold.Text = Hero.Gold.ToString();
-            idvFood.Text = Hero.CurrentFood.ToString();
+            idvFood.Text = DecIntegerBy10(Hero.CurrentFood).ToString();
 
             base.Draw(g);
         }

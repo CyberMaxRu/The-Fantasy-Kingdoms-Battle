@@ -27,7 +27,7 @@ namespace Fantasy_Kingdoms_Battle
             MaxFood = pb.TypeConstruction.TrainedHero.MaxFood;
             Starvation = pb.TypeConstruction.TrainedHero.Starvation;
 
-            PrepareTurn();
+            Initialize();
 
             string GetRandomName(List<string> list)
             {
@@ -41,7 +41,16 @@ namespace Fantasy_Kingdoms_Battle
             DayOfHire = Player.Lobby.Day;
             FullName = TypeCreature.Name;
 
-            PrepareTurn();
+            //
+            if (pb.TypeConstruction.TrainedHero.CategoryCreature == CategoryCreature.Hero)
+            {
+                CurrentFood = pb.Lobby.Rnd.Next(pb.TypeConstruction.TrainedHero.MinFoodOnHire, pb.TypeConstruction.TrainedHero.MaxFoodOnHire + 1);
+                FoodPerDay = pb.TypeConstruction.TrainedHero.FoodPerDay;
+                MaxFood = pb.TypeConstruction.TrainedHero.MaxFood;
+                Starvation = pb.TypeConstruction.TrainedHero.Starvation;
+            }
+
+            Initialize();
         }
 
         internal Construction Construction { get; }// Здание, которому принадлежит герой
@@ -371,9 +380,27 @@ namespace Fantasy_Kingdoms_Battle
             Gold += income;
         }
 
-        internal void PrepareTurn()
+        internal void Initialize()
         {
             CounterConstructionForBuy = TypeCreature.MaxConstructionForBuyPerDay;
+        }
+
+        internal void PrepareTurn()
+        {
+            Initialize();
+
+            if ((TypeCreature.CategoryCreature == CategoryCreature.Hero) && (Construction.Lobby.Day > 0))
+            {
+                Debug.Assert(CurrentFood > Starvation);
+
+                // Уменьшаем сытость
+                CurrentFood -= FoodPerDay;
+
+                if (CurrentFood <= Starvation)// Помираем от голода
+                {
+
+                }
+            }
         }
 
         internal void PrepareQueueShopping(List<UnitOfQueueForBuy> queue)

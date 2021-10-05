@@ -237,18 +237,15 @@ namespace Fantasy_Kingdoms_Battle
 
                 Debug.Assert(CoefficientFlags != null);
 
-                if (MinFoodOnHire > 0)
-                {
-                    Debug.Assert(MinFoodOnHire > 0);
-                    Debug.Assert(MaxFoodOnHire > 0);
-                    Debug.Assert(MaxFood > 0);
-                    Debug.Assert(FoodPerDay > 0);
-                    Debug.Assert(Starvation < 0);
+                Debug.Assert(MinFoodOnHire > 0);
+                Debug.Assert(MaxFoodOnHire > 0);
+                Debug.Assert(MaxFood > 0);
+                Debug.Assert(FoodPerDay > 0);
+                Debug.Assert(Starvation < 0);
 
-                    Debug.Assert(MinFoodOnHire <= MaxFoodOnHire);
-                    Debug.Assert(MaxFoodOnHire <= MaxFood);
-                    Debug.Assert(FoodPerDay < MaxFood);
-                }
+                Debug.Assert(MinFoodOnHire <= MaxFoodOnHire);
+                Debug.Assert(MaxFoodOnHire <= MaxFood);
+                Debug.Assert(FoodPerDay < MaxFood);
             }
             else
             {
