@@ -52,6 +52,7 @@ namespace Fantasy_Kingdoms_Battle
             lvGold.ShowHint += LvGold_ShowHint;
 
             idvFood = new VCIconAndDigitValue(panelStatistics, 0, 0, 60, FormMain.GUI_16_FOOD);
+            idvFood.ShowHint += IdvFood_ShowHint;
 
             return;
             /*lblLevel = GuiUtils.CreateLabel(this, Config.GRID_SIZE, TopForControls());
@@ -87,6 +88,13 @@ namespace Fantasy_Kingdoms_Battle
                     slots[x + y * FormMain.SLOTS_IN_LINE] = pb;
                 }
             }*/
+        }
+
+        private void IdvFood_ShowHint(object sender, EventArgs e)
+        {
+            Program.formMain.formHint.AddStep2Header("Сытость");
+            Program.formMain.formHint.AddStep5Description($"Сытость: {Hero.CurrentFood}/{Hero.MaxFood}{Environment.NewLine}"
+                + $"Потребление в день: {Hero.FoodPerDay}");
         }
 
         private void LvGold_ShowHint(object sender, EventArgs e)
