@@ -83,7 +83,7 @@ namespace Fantasy_Kingdoms_Battle
         internal StateCreature StateCreature { get; private set; }// Состояние (на карте)
 
         //
-        
+
         internal bool IsLive { get; private set; } = true;// Существо живо
 
         // Повышение уровня
