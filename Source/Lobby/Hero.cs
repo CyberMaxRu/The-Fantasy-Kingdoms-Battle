@@ -22,7 +22,7 @@ namespace Fantasy_Kingdoms_Battle
                 + " " + GetRandomName(pb.TypeConstruction.TrainedHero.SurnameFromTypeHero == null ? pb.TypeConstruction.TrainedHero.Surnames : pb.TypeConstruction.TrainedHero.Surnames);
 
             // 
-            CurrentFood = pb.Lobby.Rnd.Next(pb.TypeConstruction.TrainedHero.MinFoodOnHire, pb.TypeConstruction.TrainedHero.MaxFoodOnHire);
+            CurrentFood = pb.Lobby.Rnd.Next(pb.TypeConstruction.TrainedHero.MinFoodOnHire, pb.TypeConstruction.TrainedHero.MaxFoodOnHire + 1);
             FoodPerDay = pb.TypeConstruction.TrainedHero.FoodPerDay;
             MaxFood = pb.TypeConstruction.TrainedHero.MaxFood;
             Starvation = pb.TypeConstruction.TrainedHero.Starvation;
