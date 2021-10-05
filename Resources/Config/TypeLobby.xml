@@ -107,6 +107,11 @@
             <MinQuantity>1</MinQuantity>
             <MaxQuantity>1</MaxQuantity>
           </TypeConstruction>
+          <TypeConstruction>
+            <ID>CityGraveyard</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
+          </TypeConstruction>
         </TypeConstructions>
       </Layer>
       <Layer>

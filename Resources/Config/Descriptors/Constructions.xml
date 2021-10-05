@@ -3457,4 +3457,25 @@
       </CellMenu>
     </CellsMenu>
   </Construction>
+  <Construction>
+    <ID>CityGraveyard</ID>
+    <Name>Городское кладбище</Name>
+    <Description>Здесь покоятся погибшие герои.</Description>
+    <ImageIndex>153</ImageIndex>
+    <TypeConstruction>Village</TypeConstruction>
+    <Category>External</Category>
+    <DefaultLevel>1</DefaultLevel>
+    <MaxLevel>1</MaxLevel>
+    <SoundSelect>graveyard_select.wav</SoundSelect>
+    <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
+    <Levels>
+      <Level>
+        <Number>1</Number>
+        <Cost>0</Cost>
+        <Builders>0</Builders>
+        <Income>0</Income>
+        <MaxInhabitant>100</MaxInhabitant>
+      </Level>
+    </Levels>
+  </Construction>
 </Descriptors>
