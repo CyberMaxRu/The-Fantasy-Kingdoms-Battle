@@ -56,9 +56,13 @@ namespace Fantasy_Kingdoms_Battle
 
         internal static string DecIntegerBy10(int value)
         {
-            string r = value.ToString();
-            r = r.Insert(r.Length - 1, ".").TrimEnd('0');
-            return r;
+            if (value == 0)
+                return "0";
+
+            int val10 = value / 10;
+            int modval = Math.Abs(value) % 10;
+
+            return (value > 0 ? "" : "-") + val10.ToString() + (modval > 0 ? "." + modval.ToString() : "");
         }
     }
 }
