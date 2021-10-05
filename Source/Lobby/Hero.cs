@@ -65,7 +65,12 @@ namespace Fantasy_Kingdoms_Battle
         internal int Morale { get; set; }// Уровень морали, умноженный на 100
         internal int Luck { get; set; }// Уровень удачи (от 0 до 100)
         internal int Mood { get; set; }// Уровень настроения, умноженный на 100
-        internal int Food { get; set; }// Уровень еды (+ сытость, - голод), умноженный на 100
+
+        // Характеристики для работы с едой
+        internal int Food { get; private set; }// Уровень еды (+ сытость, - голод), умноженный на 100
+        internal int MaxFood { get; private set; }// Максимальная сытость
+        internal int FoodPerDay { get; private set; }// Потребление еды в день
+        internal int Starvation { get; private set; }// На каком уровне еды наступает смерть от голода
 
 
         //internal bool Selected { get; set; }
