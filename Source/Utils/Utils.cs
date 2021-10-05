@@ -59,7 +59,7 @@ namespace Fantasy_Kingdoms_Battle
             if (value == 0)
                 return "0";
 
-            int val10 = value / 10;
+            int val10 = Math.Abs(value) / 10;
             int modval = Math.Abs(value) % 10;
 
             return (value > 0 ? "" : "-") + val10.ToString() + (modval > 0 ? "." + modval.ToString() : "");
