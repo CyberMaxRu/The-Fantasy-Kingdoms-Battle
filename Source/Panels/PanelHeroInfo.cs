@@ -29,6 +29,8 @@ namespace Fantasy_Kingdoms_Battle
         private readonly Button btnDismiss;
         private readonly VCButtonTargetLair btnTarget;
 
+        private VCIconAndDigitValue idvFood;
+
         public PanelHeroInfo(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
             btnTarget = new VCButtonTargetLair(this);
@@ -92,6 +94,13 @@ namespace Fantasy_Kingdoms_Battle
 
         internal Hero Hero { get => Entity as Hero; }
 
+        protected override void CreateCustomControls()
+        {
+            base.CreateCustomControls();
+
+            idvFood = new VCIconAndDigitValue(this, FormMain.Config.GridSize, lvGold.NextTop(), 60, FormMain.GUI_16_FOOD);
+        }
+
         private void BtnDismiss_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Уволить героя?", "FKB", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -107,6 +116,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             btnTarget.Entity = Hero.TargetByFlag;
             lvGold.Text = Hero.Gold.ToString();
+            idvFood.Text = Hero.CurrentFood.ToString();
 
             base.Draw(g);
         }
