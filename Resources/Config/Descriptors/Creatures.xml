@@ -184,11 +184,11 @@
     </CarryItems>
     <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
     <Properties>
-      <MinFoodOnHire>1</MinFoodOnHire>
-      <MaxFoodOnHire>3</MaxFoodOnHire>
-      <MaxFood>5</MaxFood>
-      <FoodPerDay>1</FoodPerDay>
-      <Starvation>-3</Starvation>
+      <MinFoodOnHire>10</MinFoodOnHire>
+      <MaxFoodOnHire>30</MaxFoodOnHire>
+      <MaxFood>50</MaxFood>
+      <FoodPerDay>10</FoodPerDay>
+      <Starvation>-30</Starvation>
     </Properties>
     <CoefficientFlags>
       <Scout>1</Scout>

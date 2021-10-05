@@ -53,5 +53,12 @@ namespace Fantasy_Kingdoms_Battle
 
             return text;
         }
+
+        internal static string DecIntegerBy10(int value)
+        {
+            string r = value.ToString();
+            r = r.Insert(r.Length - 1, ".").TrimEnd('0');
+            return r;
+        }
     }
 }

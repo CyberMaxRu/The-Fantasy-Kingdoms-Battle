@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using static Fantasy_Kingdoms_Battle.Utils;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -93,8 +94,8 @@ namespace Fantasy_Kingdoms_Battle
         private void IdvFood_ShowHint(object sender, EventArgs e)
         {
             Program.formMain.formHint.AddStep2Header("Сытость");
-            Program.formMain.formHint.AddStep5Description($"Сытость: {Hero.CurrentFood}/{Hero.MaxFood}{Environment.NewLine}"
-                + $"Потребление в день: {Hero.FoodPerDay}");
+            Program.formMain.formHint.AddStep5Description($"Сытость: {DecIntegerBy10(Hero.CurrentFood)}/{DecIntegerBy10(Hero.MaxFood)}{Environment.NewLine}"
+                + $"Потребление в день: {DecIntegerBy10(Hero.FoodPerDay)}{Environment.NewLine}Голодная смерть при: {DecIntegerBy10(Hero.Starvation)}");
         }
 
         private void LvGold_ShowHint(object sender, EventArgs e)
