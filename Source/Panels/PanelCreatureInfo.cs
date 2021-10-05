@@ -45,7 +45,7 @@ namespace Fantasy_Kingdoms_Battle
         private VCCell panelMeleeWeapon;
         private VCCell panelRangeWeapon;
         private VCCell panelArmour;
-        protected VCLabelValue lvGold;
+        protected VCIconAndDigitValue lvGold;
         internal List<VCCell> slots { get; } = new List<VCCell>();
 
         public PanelCreatureInfo(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
@@ -77,10 +77,7 @@ namespace Fantasy_Kingdoms_Battle
             panelArmour = new VCCell(this, panelRangeWeapon.NextLeft(), panelMeleeWeapon.ShiftY);
             panelArmour.HintForEmpty = "Нет доспехов";
 
-            lvGold = new VCLabelValue(this, FormMain.Config.GridSize, panelMeleeWeapon.NextTop(), Color.White, true);
-            lvGold.Width = imgIcon.Width;
-            lvGold.StringFormat.Alignment = StringAlignment.Far;
-            lvGold.ImageIndex = FormMain.GUI_16_COFFERS;
+            lvGold = new VCIconAndDigitValue(this, FormMain.Config.GridSize, panelMeleeWeapon.NextTop(), imgIcon.Width, FormMain.GUI_16_COFFERS);
 
             separator.ShiftY = lvGold.NextTop();
             pageControl.ShiftY = separator.NextTop();

@@ -12,7 +12,7 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class PanelConstructionInfo : PanelBaseInfo
     {
         private VCLabel lblTypeConstruction;
-        private VCLabelValue lblGold;
+        private VCIconAndDigitValue lblGold;
         private readonly PanelWithPanelEntity panelProducts;
         private readonly PanelWithPanelEntity panelInhabitants;
         private readonly PanelWithPanelEntity panelVisitors;
@@ -30,11 +30,7 @@ namespace Fantasy_Kingdoms_Battle
             lblTypeConstruction.StringFormat.Alignment = StringAlignment.Near;
             lblTypeConstruction.Hint = "Тип сооружения";
 
-            lblGold = new VCLabelValue(this, FormMain.Config.GridSize, lblTypeConstruction.NextTop(), Color.White, true);
-            lblGold.Width = imgIcon.Width;
-            lblGold.StringFormat.Alignment = StringAlignment.Far;                 
-            lblGold.BitmapList = Program.formMain.ilGui16;
-            lblGold.ImageIndex = FormMain.GUI_16_COFFERS;
+            lblGold = new VCIconAndDigitValue(this, FormMain.Config.GridSize, lblTypeConstruction.NextTop(), imgIcon.Width, FormMain.GUI_16_COFFERS);
             lblGold.ShowHint += LblGold_ShowHint;
 
             separator.ShiftY = lblGold.NextTop();

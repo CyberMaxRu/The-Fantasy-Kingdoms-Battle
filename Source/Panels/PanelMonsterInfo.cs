@@ -9,7 +9,7 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class PanelMonsterInfo : PanelCreatureInfo
     {
-        private VCLabelValue lvGreatness;
+        private VCIconAndDigitValue lvGreatness;
 
         public PanelMonsterInfo(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
@@ -21,10 +21,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.CreateCustomControls();
 
-            lvGreatness = new VCLabelValue(this, FormMain.Config.GridSize, lvGold.NextTop() - FormMain.Config.GridSizeHalf, Color.White, true);
-            lvGreatness.Width = imgIcon.Width;
-            lvGreatness.StringFormat.Alignment = StringAlignment.Far;
-            lvGreatness.ImageIndex = FormMain.GUI_16_GREATNESS;
+            lvGreatness = new VCIconAndDigitValue(this, FormMain.Config.GridSize, lvGold.NextTop() - FormMain.Config.GridSizeHalf, imgIcon.Width, FormMain.GUI_16_GREATNESS);
 
             separator.ShiftY = lvGreatness.NextTop();
             pageControl.ShiftY = separator.NextTop();
