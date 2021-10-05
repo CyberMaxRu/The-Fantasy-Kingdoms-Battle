@@ -61,6 +61,13 @@ namespace Fantasy_Kingdoms_Battle
         internal int DrawStreak { get; }// Ничьих подряд
         internal ResultBattle PriorResultBattle { get; set; }// Предыдущий результат битвы для расчета страйков
 
+        // Параметры
+        internal int Morale { get; set; }// Уровень морали, умноженный на 100
+        internal int Luck { get; set; }// Уровень удачи (от 0 до 100)
+        internal int Mood { get; set; }// Уровень настроения, умноженный на 100
+        internal int Food { get; set; }// Уровень еды (+ сытость, - голод), умноженный на 100
+
+
         //internal bool Selected { get; set; }
 
         internal int CounterConstructionForBuy { get; private set; }// Счетчик сооружений для посещения для покупок
