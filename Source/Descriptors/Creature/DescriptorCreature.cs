@@ -119,6 +119,12 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
+            MinFoodOnHire = GetInteger(n, "Properties/MinFoodOnHire");
+            MaxFoodOnHire = GetInteger(n, "Properties/MaxFoodOnHire");
+            MaxFood = GetInteger(n, "Properties/MaxFood");
+            FoodPerDay = GetInteger(n, "Properties/FoodPerDay");
+            Starvation = GetInteger(n, "Properties/Starvation");
+
             // Проверяем, что таких же ID и наименования нет
             foreach (DescriptorCreature h in FormMain.Config.Creatures)
             {
@@ -230,12 +236,31 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(MaxConstructionForBuyPerDay > 0);
 
                 Debug.Assert(CoefficientFlags != null);
+
+                if (MinFoodOnHire > 0)
+                {
+                    Debug.Assert(MinFoodOnHire > 0);
+                    Debug.Assert(MaxFoodOnHire > 0);
+                    Debug.Assert(MaxFood > 0);
+                    Debug.Assert(FoodPerDay > 0);
+                    Debug.Assert(Starvation < 0);
+
+                    Debug.Assert(MinFoodOnHire <= MaxFoodOnHire);
+                    Debug.Assert(MaxFoodOnHire <= MaxFood);
+                    Debug.Assert(FoodPerDay < MaxFood);
+                }
             }
             else
             {
                 Debug.Assert(MaxConstructionForBuyPerDay == 0);
                 Debug.Assert(PriorityConstructionForShoppings.Count == 0);
                 Debug.Assert(CoefficientFlags is null);
+
+                Debug.Assert(MinFoodOnHire == 0);
+                Debug.Assert(MaxFoodOnHire == 0);
+                Debug.Assert(MaxFood == 0);
+                Debug.Assert(FoodPerDay == 0);
+                Debug.Assert(Starvation == 0);
             }
 
             void LoadName(string nodes, string node, List<string> list)
@@ -286,6 +311,15 @@ namespace Fantasy_Kingdoms_Battle
         internal List<string> Surnames { get; } = new List<string>();
         internal DescriptorCreature NameFromTypeHero { get; private set; }
         internal DescriptorCreature SurnameFromTypeHero { get; private set; }
+
+        // Свойства по еде
+        internal int MinFoodOnHire { get; }// Минимальное количество еды при найме
+        internal int MaxFoodOnHire { get; }// Максимальное количество еды при найме
+        internal int MaxFood { get; }// Максимальная сытость
+        internal int FoodPerDay { get; }// Потребление еды в день
+        internal int Starvation { get; }// На каком уровне еды наступает смерть от голода
+
+        //
 
         internal int MaxQuantityItem(DescriptorItem i)
         {

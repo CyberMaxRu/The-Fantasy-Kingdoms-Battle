@@ -183,6 +183,13 @@
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
     <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
+    <Properties>
+      <MinFoodOnHire>1</MinFoodOnHire>
+      <MaxFoodOnHire>3</MaxFoodOnHire>
+      <MaxFood>5</MaxFood>
+      <FoodPerDay>1</FoodPerDay>
+      <Starvation>-3</Starvation>
+    </Properties>
     <CoefficientFlags>
       <Scout>1</Scout>
       <Attack>1.1</Attack>
