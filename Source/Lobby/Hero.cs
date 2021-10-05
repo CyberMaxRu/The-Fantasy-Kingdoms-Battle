@@ -15,6 +15,7 @@ namespace Fantasy_Kingdoms_Battle
         public Hero(Construction pb, BattleParticipant bp) : base(pb.TypeConstruction.TrainedHero, bp)
         {
             Construction = pb;
+            Abode = Construction;
             DayOfHire = Player.Lobby.Day;
 
             FullName = (pb.TypeConstruction.TrainedHero.PrefixName.Length > 0 ? pb.TypeConstruction.TrainedHero.PrefixName + " " : "")
@@ -38,6 +39,7 @@ namespace Fantasy_Kingdoms_Battle
         public Hero(Construction pb, BattleParticipant bp, DescriptorCreature th) : base(th, bp)
         {
             Construction = pb;
+            Abode = Construction;
             DayOfHire = Player.Lobby.Day;
             FullName = TypeCreature.Name;
 
@@ -54,6 +56,9 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal Construction Construction { get; }// Здание, которому принадлежит герой
+        internal Construction Abode { get; private set; }// Текущая обитель героя
+        internal Construction NeedMoveToAbode { get; set; }// Героя необходимо перенести в новую обитель
+
         internal Player Player => Construction.Player;// Игрок, которому принадлежит герой
         internal string FullName { get; }// Полное имя
         internal int Gold { get; private set; }// Количество золота у героя
@@ -292,14 +297,15 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override int GetImageIndex()
         {
-            Debug.Assert(IsLive);
+            //Debug.Assert(IsLive);
 
             return Program.formMain.TreatImageIndex(TypeCreature.ImageIndex, Player);
         }
 
+        internal override bool GetNormalImage() => IsLive;
+
         internal string GetNameHero()
         {
-            Debug.Assert(IsLive);
             Debug.Assert(FullName != null);
             Debug.Assert(FullName.Length > 0);
 
@@ -308,12 +314,20 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PrepareHint()
         {
-            Debug.Assert(IsLive);
-
-            Program.formMain.formHint.AddStep1Name(GetNameHero());
-            Program.formMain.formHint.AddStep2Header($"{TypeCreature.Name} ({TypeCreature.TypeCreature.Name})");
-            Program.formMain.formHint.AddStep4Level($"Уровень {Level}");
-            Program.formMain.formHint.AddStep5Description(TypeCreature.Description);
+            if (IsLive)
+            {
+                Program.formMain.formHint.AddStep1Name(GetNameHero());
+                Program.formMain.formHint.AddStep2Header($"{TypeCreature.Name} ({TypeCreature.TypeCreature.Name})");
+                Program.formMain.formHint.AddStep4Level($"Уровень {Level}");
+                Program.formMain.formHint.AddStep5Description(TypeCreature.Description);
+            }
+            else
+            {
+                Program.formMain.formHint.AddStep1Name(GetNameHero());
+                Program.formMain.formHint.AddStep2Header($"{TypeCreature.Name} ({TypeCreature.TypeCreature.Name})");
+                Program.formMain.formHint.AddStep4Level($"Уровень {Level}");
+                Program.formMain.formHint.AddStep5Description($"День смерти: {DayOfDeath}{Environment.NewLine}{NameReasonOfDeath()}");
+            }
         }
 
         protected override void DoCustomDraw(Graphics g, int x, int y, bool drawState)
@@ -398,7 +412,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 if (CurrentFood <= Starvation)// Помираем от голода
                 {
-
+                    SetIsDead(ReasonOfDeath.Hunger);
                 }
             }
         }
@@ -441,6 +455,32 @@ namespace Fantasy_Kingdoms_Battle
 
             if (abilityBought)
                 SortAbilities();
+        }
+
+        internal override void SetIsDead(ReasonOfDeath reason)
+        {
+            base.SetIsDead(reason);
+
+            Debug.Assert(Abode != null);
+            Debug.Assert(Abode.Heroes.IndexOf(this) != -1);
+
+            // Перемещаем героя из его сооружения на кладбище
+            NeedMoveToAbode = Player.Graveyard;
+        }
+
+        internal string NameReasonOfDeath()
+        {
+            Debug.Assert(!IsLive);
+
+            switch (ReasonOfDeath)
+            {
+                case ReasonOfDeath.InBattle:
+                    return "Смерть в бою";
+                case ReasonOfDeath.Hunger:
+                    return "Смерть от голода";
+                default:
+                    throw new Exception($"Неизвестная причина смерти: {ReasonOfDeath}.");
+            }
         }
     }
 }

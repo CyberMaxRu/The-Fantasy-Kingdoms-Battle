@@ -174,6 +174,37 @@ namespace Fantasy_Kingdoms_Battle
                 if (pc.Level > 0)
                     pc.PrepareTurn();
 
+            List<Hero> listForDelete = new List<Hero>();
+
+            foreach (Hero h in CombatHeroes)
+            {
+                if (h.NeedMoveToAbode != null)
+                {
+                    Debug.Assert(h.Abode.Heroes.IndexOf(h) != -1);
+                    Debug.Assert(h.NeedMoveToAbode.Heroes.IndexOf(h) == -1);
+
+                    h.Abode.Heroes.Remove(h);
+                    h.NeedMoveToAbode.Heroes.Add(h);
+                    h.NeedMoveToAbode = null;
+                }
+
+                if (!h.IsLive)
+                {
+                    listForDelete.Add(h);
+                }
+
+            }
+
+            // Убираем мертвых героев из своих списков
+            foreach (Hero h in listForDelete)
+            {
+                Debug.Assert(AllHeroes.IndexOf(h) != -1);
+                Debug.Assert(CombatHeroes.IndexOf(h) != -1);
+
+                AllHeroes.Remove(h);
+                CombatHeroes.Remove(h);
+            }
+
             Builders = BuildersAtNextDay;
             if (Lobby.Day == 1)
                 Builders += Lobby.TypeLobby.StartBuilders;
