@@ -51,6 +51,7 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorConstructionEvent DescriptorConstructionEvent { get; }
         internal int Duration { get; private set; }// Длительность нахождения товара в сооружении
         internal int Counter { get; set; }// Счетчик дней товара в сооружении
+        internal int Food { get; }// Количество еды, получаемое при покупке товара
 
         internal override int GetImageIndex()
         {

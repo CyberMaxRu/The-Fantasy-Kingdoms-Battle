@@ -8,7 +8,7 @@ using System.Xml;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal enum CategoryItem { Potion, Enchant, Artifact, Elixir, Thing, Weapon, Armour, Quiver, Monster, Game, Extension, Tournament }
+    internal enum CategoryItem { Potion, Enchant, Artifact, Elixir, Food, Thing, Weapon, Armour, Quiver, Monster, Game, Extension, Tournament }
 
     // Класс предмета
     internal sealed class DescriptorItem : DescriptorSmallEntity
@@ -35,6 +35,8 @@ namespace Fantasy_Kingdoms_Battle
             QuantityShots = XmlUtils.GetInteger(n, "QuantityShots");
             TimeOfAction = XmlUtils.GetInteger(n, "TimeOfAction");
 
+            Food = XmlUtils.GetInteger(n, "Food");
+
             if (CategoryItem == CategoryItem.Quiver)
             {
                 Debug.Assert(QuantityShots > 0);
@@ -58,6 +60,16 @@ namespace Fantasy_Kingdoms_Battle
             else
             {
                 Debug.Assert(TimeOfAction == 0);
+            }
+
+            if (CategoryItem == CategoryItem.Food)
+            {
+                Debug.Assert(Food > 0);
+                Debug.Assert(Food <= 100);
+            }
+            else
+            {
+                Debug.Assert(Food == 0);
             }
 
             XmlNode nodePerks = n.SelectSingleNode("Perks");
@@ -137,6 +149,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int QuantityShots { get; }
         internal int Distance { get; }
         internal int TimeOfAction { get; }// Время действия (эликсира)
+        internal int Food { get; }
 
         /*protected override void DoPrepareHint()
         {
