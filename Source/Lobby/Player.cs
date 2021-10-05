@@ -92,6 +92,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Castle = GetPlayerConstruction(FormMain.Config.FindConstruction(FormMain.Config.IDConstructionCastle));
             Castle.Gold = Gold;
+            Graveyard = GetPlayerConstruction(FormMain.Config.FindConstruction(FormMain.Config.IDCityGraveyard));
 
             LevelGreatness = 1;
             PointGreatnessForNextLevel = 100;
@@ -456,6 +457,9 @@ namespace Fantasy_Kingdoms_Battle
         internal Dictionary<PriorityExecution, int> QuantityFlags { get; } = new Dictionary<PriorityExecution, int>();
         internal int LairsScouted { get; private set; }
         internal int LairsShowed { get; private set; }
+
+        //
+        internal Construction Graveyard { get; }// Кладбище игрока
 
         // Статистика
         internal Dictionary<DescriptorConstruction, int> destroyedLair = new Dictionary<DescriptorConstruction, int>();

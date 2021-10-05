@@ -87,6 +87,7 @@
     <EmptyPlace>EmptyPlace</EmptyPlace>
     <HolyPlace>HolyPlace</HolyPlace>
     <TradePost>TradePost</TradePost>
+    <CityGraveyard>CityGraveyard</CityGraveyard>
   </Links>
   <Warehouse>
     <Width>10</Width>
