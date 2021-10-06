@@ -227,7 +227,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Выполняем покупки
-            foreach(UnitOfQueueForBuy u in queueShopping)
+            foreach (UnitOfQueueForBuy u in queueShopping)
             {
                 if (u.Hero.CounterConstructionForBuy > 0)
                     u.Hero.DoShopping(u.Construction);
@@ -482,6 +482,9 @@ namespace Fantasy_Kingdoms_Battle
 
         internal Item[] Warehouse = new Item[FormMain.Config.WarehouseMaxCells];// Предметы на складе игрока
 
+        // Перки от сооружений
+        internal List<(Construction, DescriptorPerk)> listPerksFromConstruction = new List<(Construction, DescriptorPerk)>();
+
         // Логова
         internal Construction[,,] Lairs { get; }
         internal List<Construction> ListFlags { get; } = new List<Construction>();
@@ -544,6 +547,8 @@ namespace Fantasy_Kingdoms_Battle
             AllHeroes.Add(ph);
             if (ph.TypeCreature.CategoryCreature == CategoryCreature.Hero)
                 AddCombatHero(ph);
+
+            UpdatePerksFromConstructionForHero(ph);
 
             SetTaskForHeroes();
 
@@ -1212,12 +1217,12 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void ShowInfo()
         {
-            
+
         }
 
         internal override void HideInfo()
         {
-            
+
         }
 
         internal Construction FindConstruction(string ID)
@@ -1234,6 +1239,59 @@ namespace Fantasy_Kingdoms_Battle
         internal override void MakeMenu(VCMenuCell[,] menu)
         {
 
+        }
+
+        internal void AddPerkFromConstruction(Construction c, DescriptorPerk dp)
+        {
+            Debug.Assert(c.Player == this);
+            Debug.Assert(c.Level > 0);
+
+            foreach ((Construction, DescriptorPerk) p in listPerksFromConstruction)
+            {
+                Debug.Assert(p.Item2.ID != dp.ID);
+
+            }
+
+            listPerksFromConstruction.Add((c, dp));
+
+            foreach (Hero h in CombatHeroes)
+            {
+                h.AddPerk(dp, c);
+            }
+        }
+
+        internal void RemovePerkFromConstruction(Construction c, DescriptorPerk dp)
+        {
+            Debug.Assert(c.Player == this);
+            Debug.Assert(c.Level > 0);
+
+            if (!listPerksFromConstruction.Remove((c, dp)))
+                throw new Exception($"Перк {dp.ID} сооружения {c.TypeConstruction.ID} не был в списке.");
+
+            foreach (Hero h in CombatHeroes)
+            {
+                h.RemovePerk(dp);
+            }
+        }
+
+        internal void UpdatePerksFromConstructionForHero(Hero h)
+        {
+            Debug.Assert(h.IsLive);
+
+            foreach ((Construction, DescriptorPerk) p in listPerksFromConstruction)
+            {
+                h.AddPerk(p.Item2, p.Item1);
+            }
+
+            h.PerksChanged();
+        }
+
+        internal void RecalcPerksHeroes()
+        {
+            foreach (Hero h in CombatHeroes)
+            {
+                h.PerksChanged();
+            }
         }
     }
 
