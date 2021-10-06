@@ -30,4 +30,25 @@
     <Description>Может казнить героев</Description>
     <ImageIndex>207</ImageIndex>
   </Perk>
+  <Perk>
+    <ID>PerkSubject1</ID>
+    <Name>Подданный (1)</Name>
+    <Description>Герой является подданным Королевства</Description>
+    <ImageIndex>252</ImageIndex>
+    <Loyalty>10</Loyalty>
+  </Perk>
+  <Perk>
+    <ID>PerkSubject2</ID>
+    <Name>Подданный (2)</Name>
+    <Description>Герой является подданным Королевства</Description>
+    <ImageIndex>252</ImageIndex>
+    <Loyalty>20</Loyalty>
+  </Perk>
+  <Perk>
+    <ID>PerkSubject3</ID>
+    <Name>Подданный (3)</Name>
+    <Description>Герой является подданным Королевства</Description>
+    <ImageIndex>252</ImageIndex>
+    <Loyalty>30</Loyalty>
+  </Perk>
 </Descriptors>

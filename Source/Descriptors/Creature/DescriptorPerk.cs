@@ -13,6 +13,10 @@ namespace Fantasy_Kingdoms_Battle
     {
         public DescriptorPerk(XmlNode n) : base(n)
         {
+            Loyalty = XmlUtils.GetInteger(n, "Loyalty");
+
+            Debug.Assert(Loyalty >= 0);
+            Debug.Assert(Loyalty <= 100);
 
             foreach (DescriptorPerk dp in Config.Perks)
             {
@@ -20,5 +24,7 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(dp.Name != Name);
             }
         }
+
+        internal int Loyalty { get; }// Дает уровень лояльности
     }
 }
