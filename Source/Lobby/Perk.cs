@@ -30,6 +30,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Program.formMain.formHint.AddStep2Header(Descriptor.Name, Descriptor.ImageIndex);
             Program.formMain.formHint.AddStep5Description(Descriptor.Description);
+            Program.formMain.formHint.AddStep9Loyalty(Descriptor.Loyalty);
             Program.formMain.formHint.AddStep18Owner(Owner);
         }
     }
