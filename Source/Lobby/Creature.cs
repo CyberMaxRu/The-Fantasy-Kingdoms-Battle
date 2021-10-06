@@ -324,7 +324,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        private void AddPerk(DescriptorPerk dp, Entity fromEntity)
+        internal void AddPerk(DescriptorPerk dp, Entity fromEntity)
         {
             foreach (Perk p in Perks)
             {
@@ -332,6 +332,26 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             Perks.Add(new Perk(this, dp, fromEntity, -1));
+        }
+
+        internal void RemovePerk(DescriptorPerk dp)
+        {
+            Perk removedPerk = null;
+            foreach (Perk p in Perks)
+            {
+                if (p.Descriptor.ID == dp.ID)
+                {
+                    removedPerk = p;
+                    break;
+                }
+            }
+
+            if (removedPerk != null)
+                Perks.Remove(removedPerk);
+        }
+
+        internal virtual void PerksChanged()
+        {
         }
 
         internal override void MakeMenu(VCMenuCell[,] menu)
