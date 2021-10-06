@@ -826,7 +826,7 @@
   <Construction>
     <ID>Castle</ID>
     <Name>Замок</Name>
-    <Description>- Позволяет отдавать приказы строительства//- Содержит налоговую и охранную службы//- Здесь хранится казна королевства</Description>
+    <Description>- Позволяет отдавать приказы строительства//- Содержит налоговую и охранную службы//- Здесь хранится казна королевства//- Задает уровень лояльности</Description>
     <ImageIndex>20</ImageIndex>
     <TypeConstruction>Castle</TypeConstruction>
     <Category>Economic</Category>
@@ -848,6 +848,9 @@
         <GreatnessPerDay>5</GreatnessPerDay>
         <BuildersPerDay>3</BuildersPerDay>
         <MaxInhabitant>15</MaxInhabitant>
+        <Perks>
+          <Perk>PerkSubject1</Perk>
+        </Perks>
       </Level>
       <Level>
         <Number>2</Number>
@@ -880,6 +883,9 @@
             <Quantity>1</Quantity>
           </Requirement>
         </Requirements>
+        <Perks>
+          <Perk>PerkSubject2</Perk>
+        </Perks>
       </Level>
       <Level>
         <Number>3</Number>
@@ -912,6 +918,9 @@
             <Quantity>2</Quantity>
           </Requirement>
         </Requirements>
+        <Perks>
+          <Perk>PerkSubject3</Perk>
+        </Perks>
       </Level>
     </Levels>
   </Construction>
