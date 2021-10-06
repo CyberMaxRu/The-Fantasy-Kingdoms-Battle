@@ -561,7 +561,7 @@ namespace Fantasy_Kingdoms_Battle
                 if (owner is Item i)
                     source = i.Descriptor.Name;
                 else if (owner is Construction c)
-                    source = c.TypeConstruction.Name;
+                    source = c.TypeConstruction.Name + (c.TypeConstruction.MaxLevel > 1 ? $" ({c.Level} ур.)" : "");
                 Debug.Assert(source != null);
 
                 lblSigner.ShiftY = nextTop;
