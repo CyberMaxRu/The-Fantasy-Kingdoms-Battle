@@ -25,6 +25,8 @@ namespace Fantasy_Kingdoms_Battle
             Hidden = !TypeConstruction.IsInternalConstruction || (Layer > 0);
 
             Level = b.DefaultLevel;
+            if (Level > 0)
+                AddPerksToPlayer();
 
             // Убрать эту проверку после настройки всех логов
             if (TypeConstruction.Monsters.Count > 0)
@@ -98,6 +100,14 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(!BuildedOrUpgraded);
 
             Player.Constructed(this);
+
+            if (Level > 0)
+            {
+                // Убираем перки от сооружения
+                foreach (DescriptorPerk dp in TypeConstruction.Levels[Level].Perks)
+                    Player.RemovePerkFromConstruction(this, dp);
+            }
+
             Level++;
 
             if (Level == 1)
@@ -121,8 +131,20 @@ namespace Fantasy_Kingdoms_Battle
                     }
             }
 
+            // Обновляем список перков от сооружения
+            AddPerksToPlayer();
+
+            //
             if (cmBuild != null)
                 Researches.Remove(cmBuild);
+        }
+
+        internal void AddPerksToPlayer()
+        {
+            foreach (DescriptorPerk dp in TypeConstruction.Levels[Level].Perks)
+                Player.AddPerkFromConstruction(this, dp);
+
+            Player.RecalcPerksHeroes();
         }
 
         internal void ValidateHeroes()
