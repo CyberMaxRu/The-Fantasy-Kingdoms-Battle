@@ -54,7 +54,7 @@ namespace Fantasy_Kingdoms_Battle
             return text;
         }
 
-        internal static string DecIntegerBy10(int value)
+        internal static string DecIntegerBy10(int value, bool showPlus = false)
         {
             if (value == 0)
                 return "0";
@@ -62,7 +62,7 @@ namespace Fantasy_Kingdoms_Battle
             int val10 = Math.Abs(value) / 10;
             int modval = Math.Abs(value) % 10;
 
-            return (value > 0 ? "" : "-") + val10.ToString() + (modval > 0 ? "." + modval.ToString() : "");
+            return (value > 0 ? (showPlus ? "+" : "") : "-") + val10.ToString() + (modval > 0 ? "." + modval.ToString() : "");
         }
     }
 }
