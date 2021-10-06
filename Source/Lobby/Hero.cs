@@ -92,6 +92,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int Enthusiasm { get; private set; }// Энтузиазм
         internal int EnthusiasmPerDay { get; private set; }// Уменьшение энтузиазма в день
         internal int Loyalty { get; private set; }// Лояльность
+        internal List<Perk> ListSourceLoyalty = new List<Perk>();// Источники лояльности
 
         //internal bool Selected { get; set; }
 
@@ -491,6 +492,13 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        internal override void PerksChanged()
+        {
+            base.PerksChanged();
+
+            CalcLoyalty();
+        }
+
         private void CalcEnthusiasm()
         {
             Enthusiasm = 20;
@@ -504,7 +512,15 @@ namespace Fantasy_Kingdoms_Battle
 
         private void CalcLoyalty()
         {
-            Loyalty = 10;
+            ListSourceLoyalty.Clear();
+            Loyalty = 0;
+
+            foreach (Perk p in Perks)
+                if (p.Descriptor.Loyalty != 0)
+                {
+                    ListSourceLoyalty.Add(p);
+                    Loyalty += p.Descriptor.Loyalty;
+                }
         }
     }
 }
