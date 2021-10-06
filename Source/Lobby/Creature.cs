@@ -9,7 +9,7 @@ using System.Drawing;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal enum ReasonOfDeath { None, InBattle, Hunger };
+    internal enum ReasonOfDeath { None, InBattle, Hunger, SuicideByHopelessness };
 
     // Базовый класс существа
     internal abstract class Creature : BigEntity

@@ -31,6 +31,8 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCButtonTargetLair btnTarget;
 
         private readonly VCIconAndDigitValue idvFood;
+        private readonly VCIconAndDigitValue idvEnthusiasm;
+        private readonly VCIconAndDigitValue idvLoyalty;
 
         public PanelHeroInfo(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
@@ -52,8 +54,14 @@ namespace Fantasy_Kingdoms_Battle
 
             lvGold.ShowHint += LvGold_ShowHint;
 
-            idvFood = new VCIconAndDigitValue(panelStatistics, 0, 0, 60, FormMain.GUI_16_FOOD);
+            idvFood = new VCIconAndDigitValue(panelStatistics, 0, 0, 64, FormMain.GUI_16_FOOD);
             idvFood.ShowHint += IdvFood_ShowHint;
+
+            idvEnthusiasm = new VCIconAndDigitValue(panelStatistics, idvFood.NextLeft(), 0, 64, FormMain.GUI_16_ENTHUSIASM);
+            idvEnthusiasm.ShowHint += IdvEnthusiasm_ShowHint;
+
+            idvLoyalty = new VCIconAndDigitValue(panelStatistics, idvEnthusiasm.NextLeft(), 0, 64, FormMain.GUI_16_LOYALTY);
+            idvLoyalty.ShowHint += IdvLoyalty_ShowHint;
 
             return;
             /*lblLevel = GuiUtils.CreateLabel(this, Config.GRID_SIZE, TopForControls());
@@ -91,6 +99,18 @@ namespace Fantasy_Kingdoms_Battle
             }*/
         }
 
+        private void IdvLoyalty_ShowHint(object sender, EventArgs e)
+        {
+            Program.formMain.formHint.AddStep2Header("Лояльность");
+            Program.formMain.formHint.AddStep5Description($"Лояльность: {DecIntegerBy10(Hero.Loyalty)}");
+        }
+
+        private void IdvEnthusiasm_ShowHint(object sender, EventArgs e)
+        {
+            Program.formMain.formHint.AddStep2Header("Энтузиазм");
+            Program.formMain.formHint.AddStep5Description($"Энтузиазм: {DecIntegerBy10(Hero.Enthusiasm)}{Environment.NewLine}Уменьшение в день (на перк): -{DecIntegerBy10(Hero.EnthusiasmPerDay)}");
+        }
+
         private void IdvFood_ShowHint(object sender, EventArgs e)
         {
             Program.formMain.formHint.AddStep2Header("Сытость");
@@ -121,6 +141,8 @@ namespace Fantasy_Kingdoms_Battle
             btnTarget.Entity = Hero.TargetByFlag;
             lvGold.Text = Hero.Gold.ToString();
             idvFood.Text = DecIntegerBy10(Hero.CurrentFood).ToString();
+            idvEnthusiasm.Text = DecIntegerBy10(Hero.Enthusiasm).ToString();
+            idvLoyalty.Text = DecIntegerBy10(Hero.Loyalty).ToString();
 
             base.Draw(g);
         }

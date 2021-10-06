@@ -26,6 +26,7 @@ namespace Fantasy_Kingdoms_Battle
             CurrentFood = pb.Lobby.Rnd.Next(pb.TypeConstruction.TrainedHero.MinFoodOnHire, pb.TypeConstruction.TrainedHero.MaxFoodOnHire + 1);
             FoodPerDay = pb.TypeConstruction.TrainedHero.FoodPerDay;
             MaxFood = pb.TypeConstruction.TrainedHero.MaxFood;
+            EnthusiasmPerDay = pb.TypeConstruction.TrainedHero.EnthusiasmPerDay;
 
             Initialize();
 
@@ -88,7 +89,9 @@ namespace Fantasy_Kingdoms_Battle
         internal int CurrentFood { get; private set; }// Уровень еды (+ сытость, - голод), умноженный на 100
         internal int MaxFood { get; private set; }// Максимальная сытость
         internal int FoodPerDay { get; private set; }// Потребление еды в день
-
+        internal int Enthusiasm { get; private set; }// Энтузиазм
+        internal int EnthusiasmPerDay { get; private set; }// Уменьшение энтузиазма в день
+        internal int Loyalty { get; private set; }// Лояльность
 
         //internal bool Selected { get; set; }
 
@@ -394,6 +397,10 @@ namespace Fantasy_Kingdoms_Battle
         internal void Initialize()
         {
             CounterConstructionForBuy = TypeCreature.MaxConstructionForBuyPerDay;
+
+            // Считаем энтузиазм и лояльность
+            CalcEnthusiasm();
+            CalcLoyalty();
         }
 
         internal void PrepareTurn()
@@ -403,6 +410,8 @@ namespace Fantasy_Kingdoms_Battle
             if ((TypeCreature.CategoryCreature == CategoryCreature.Hero) && (Construction.Lobby.Day > 0))
             {
                 Debug.Assert(CurrentFood > 0);
+                Debug.Assert(Enthusiasm > 0);
+                Debug.Assert(EnthusiasmPerDay > 0);
 
                 // Уменьшаем сытость
                 CurrentFood -= FoodPerDay;
@@ -475,9 +484,27 @@ namespace Fantasy_Kingdoms_Battle
                     return "Смерть в бою";
                 case ReasonOfDeath.Hunger:
                     return "Смерть от голода";
+                case ReasonOfDeath.SuicideByHopelessness:
+                    return "Суицид от безысходности";
                 default:
                     throw new Exception($"Неизвестная причина смерти: {ReasonOfDeath}.");
             }
+        }
+
+        private void CalcEnthusiasm()
+        {
+            Enthusiasm = 20;
+
+            /*Enthusiasm -= EnthusiasmPerDay;
+            if (Enthusiasm <= 0)
+            {
+                SetIsDead(ReasonOfDeath.SuicideByHopelessness);
+            }*/
+        }
+
+        private void CalcLoyalty()
+        {
+            Loyalty = 10;
         }
     }
 }
