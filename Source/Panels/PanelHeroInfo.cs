@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Diagnostics;
 using static Fantasy_Kingdoms_Battle.Utils;
 
 namespace Fantasy_Kingdoms_Battle
@@ -103,6 +104,18 @@ namespace Fantasy_Kingdoms_Battle
         {
             Program.formMain.formHint.AddStep2Header("Лояльность");
             Program.formMain.formHint.AddStep5Description($"Лояльность: {DecIntegerBy10(Hero.Loyalty)}");
+            if (Hero.ListSourceLoyalty.Count > 0)
+            { 
+                List<(DescriptorSmallEntity, string)> list = new List<(DescriptorSmallEntity, string)>();
+                foreach (Perk p in Hero.ListSourceLoyalty)
+                {
+                    Debug.Assert(p.Descriptor.Loyalty != 0);
+
+                    list.Add((p.Descriptor, DecIntegerBy10(p.Descriptor.Loyalty, true)));
+                }
+
+                Program.formMain.formHint.AddStep19Descriptors(list);
+            }
         }
 
         private void IdvEnthusiasm_ShowHint(object sender, EventArgs e)
