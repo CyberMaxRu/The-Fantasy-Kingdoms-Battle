@@ -123,7 +123,6 @@ namespace Fantasy_Kingdoms_Battle
             MaxFoodOnHire = GetInteger(n, "Properties/MaxFoodOnHire");
             MaxFood = GetInteger(n, "Properties/MaxFood");
             FoodPerDay = GetInteger(n, "Properties/FoodPerDay");
-            Starvation = GetInteger(n, "Properties/Starvation");
 
             // Проверяем, что таких же ID и наименования нет
             foreach (DescriptorCreature h in FormMain.Config.Creatures)
@@ -241,7 +240,6 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(MaxFoodOnHire > 0);
                 Debug.Assert(MaxFood > 0);
                 Debug.Assert(FoodPerDay > 0);
-                Debug.Assert(Starvation < 0);
 
                 Debug.Assert(MinFoodOnHire <= MaxFoodOnHire);
                 Debug.Assert(MaxFoodOnHire <= MaxFood);
@@ -257,7 +255,6 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(MaxFoodOnHire == 0);
                 Debug.Assert(MaxFood == 0);
                 Debug.Assert(FoodPerDay == 0);
-                Debug.Assert(Starvation == 0);
             }
 
             void LoadName(string nodes, string node, List<string> list)
@@ -314,7 +311,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int MaxFoodOnHire { get; }// Максимальное количество еды при найме
         internal int MaxFood { get; }// Максимальная сытость
         internal int FoodPerDay { get; }// Потребление еды в день
-        internal int Starvation { get; }// На каком уровне еды наступает смерть от голода
 
         //
 

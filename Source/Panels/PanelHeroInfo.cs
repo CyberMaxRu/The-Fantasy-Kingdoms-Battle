@@ -95,7 +95,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Program.formMain.formHint.AddStep2Header("Сытость");
             Program.formMain.formHint.AddStep5Description($"Сытость: {DecIntegerBy10(Hero.CurrentFood)}/{DecIntegerBy10(Hero.MaxFood)}{Environment.NewLine}"
-                + $"Потребление в день: {DecIntegerBy10(Hero.FoodPerDay)}{Environment.NewLine}Голодная смерть при: {DecIntegerBy10(Hero.Starvation)}");
+                + $"Потребление в день: {DecIntegerBy10(Hero.FoodPerDay)}");
         }
 
         private void LvGold_ShowHint(object sender, EventArgs e)

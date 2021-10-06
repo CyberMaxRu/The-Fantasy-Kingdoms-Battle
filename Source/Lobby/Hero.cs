@@ -26,7 +26,6 @@ namespace Fantasy_Kingdoms_Battle
             CurrentFood = pb.Lobby.Rnd.Next(pb.TypeConstruction.TrainedHero.MinFoodOnHire, pb.TypeConstruction.TrainedHero.MaxFoodOnHire + 1);
             FoodPerDay = pb.TypeConstruction.TrainedHero.FoodPerDay;
             MaxFood = pb.TypeConstruction.TrainedHero.MaxFood;
-            Starvation = pb.TypeConstruction.TrainedHero.Starvation;
 
             Initialize();
 
@@ -49,7 +48,6 @@ namespace Fantasy_Kingdoms_Battle
                 CurrentFood = pb.Lobby.Rnd.Next(pb.TypeConstruction.TrainedHero.MinFoodOnHire, pb.TypeConstruction.TrainedHero.MaxFoodOnHire + 1);
                 FoodPerDay = pb.TypeConstruction.TrainedHero.FoodPerDay;
                 MaxFood = pb.TypeConstruction.TrainedHero.MaxFood;
-                Starvation = pb.TypeConstruction.TrainedHero.Starvation;
             }
 
             Initialize();
@@ -90,7 +88,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int CurrentFood { get; private set; }// Уровень еды (+ сытость, - голод), умноженный на 100
         internal int MaxFood { get; private set; }// Максимальная сытость
         internal int FoodPerDay { get; private set; }// Потребление еды в день
-        internal int Starvation { get; private set; }// На каком уровне еды наступает смерть от голода
 
 
         //internal bool Selected { get; set; }
@@ -405,12 +402,12 @@ namespace Fantasy_Kingdoms_Battle
 
             if ((TypeCreature.CategoryCreature == CategoryCreature.Hero) && (Construction.Lobby.Day > 0))
             {
-                Debug.Assert(CurrentFood > Starvation);
+                Debug.Assert(CurrentFood > 0);
 
                 // Уменьшаем сытость
                 CurrentFood -= FoodPerDay;
 
-                if (CurrentFood <= Starvation)// Помираем от голода
+                if (CurrentFood <= 0)// Помираем от голода
                 {
                     SetIsDead(ReasonOfDeath.Hunger);
                 }
