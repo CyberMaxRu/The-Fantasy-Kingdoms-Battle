@@ -37,6 +37,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly VCLabelValue lblBuildersPerDay;
         internal readonly VCLabelValue lblGold;
         internal readonly VCLabelValue lblBuilders;
+        internal readonly VCLabelValue lblLoyalty;
         internal readonly VCLabel lblSigner;
         private readonly List<VCCellSimple> listCell = new List<VCCellSimple>();
         private readonly List<(VCCellSimple, VCLabel)> listPerks = new List<(VCCellSimple, VCLabel)>();
@@ -101,11 +102,16 @@ namespace Fantasy_Kingdoms_Battle
             lblGold = new VCLabelValue(this, FormMain.Config.GridSize, lblSeparateRequirement.NextTop(), FormMain.Config.HintIncome, false);
             lblGold.ImageIndex = FormMain.GUI_16_GOLD;
             lblGold.Width = widthControl;
+
             lblBuilders = new VCLabelValue(this, FormMain.Config.GridSize, lblGold.NextTop(), FormMain.Config.HintIncome, false);
             lblBuilders.ImageIndex = FormMain.GUI_16_BUILDER;
             lblBuilders.Width = widthControl;
 
-            lblSigner = new VCLabel(this, FormMain.Config.GridSize, lblGold.NextTop(), Program.formMain.fontSmallC, Color.SkyBlue, 16, "");
+            lblLoyalty = new VCLabelValue(this, FormMain.Config.GridSize, lblBuilders.NextTop(), FormMain.Config.HintIncome, false);
+            lblLoyalty.ImageIndex = FormMain.GUI_16_LOYALTY;
+            lblLoyalty.Width = widthControl;
+
+            lblSigner = new VCLabel(this, FormMain.Config.GridSize, lblLoyalty.NextTop(), Program.formMain.fontSmallC, Color.SkyBlue, 16, "");
             lblSigner.StringFormat.Alignment = StringAlignment.Near;
             lblSigner.Width = widthControl;
             /*            lblDamageMelee = new Label()
@@ -211,7 +217,6 @@ namespace Fantasy_Kingdoms_Battle
             lblIncome.Visible = false;
             lblGreatnessAdd.Visible = false;
             lblBuildersPerDay.Visible = false;
-            lblBuildersPerDay.Visible = false;
 
             foreach (VCText l in listRequirements)
                 l.Dispose();
@@ -220,6 +225,7 @@ namespace Fantasy_Kingdoms_Battle
 
             lblGold.Visible = false;
             lblBuilders.Visible = false;
+            lblLoyalty.Visible = false;
             lblSigner.Visible = false;
 
             foreach (VCCellSimple cell in listCell)
@@ -408,6 +414,18 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        internal void AddStep9Loyalty(int loyalty)
+        {
+            if (loyalty != 0)
+            {
+                lblLoyalty.ShiftY = nextTop;
+                lblLoyalty.Text = Utils.DecIntegerBy10(loyalty, true);
+                lblLoyalty.Visible = true;
+
+                nextTop = lblLoyalty.NextTop();
+            }
+        }
+
         internal void AddStep10Requirement(string notEnoughrequirement)
         {
             List<TextRequirement> r = new List<TextRequirement>();
@@ -542,6 +560,8 @@ namespace Fantasy_Kingdoms_Battle
                 string source = null;
                 if (owner is Item i)
                     source = i.Descriptor.Name;
+                else if (owner is Construction c)
+                    source = c.TypeConstruction.Name;
                 Debug.Assert(source != null);
 
                 lblSigner.ShiftY = nextTop;
@@ -549,6 +569,45 @@ namespace Fantasy_Kingdoms_Battle
                 lblSigner.Visible = true;
 
                 nextTop = lblSigner.NextTop();
+            }
+        }
+
+        internal void AddStep19Descriptors(List<(DescriptorSmallEntity, string)> list)
+        {
+            if (list.Count > 0)
+            {
+                VCCellSimple cell = null;
+                int nextLeft = FormMain.Config.GridSize;
+
+                for (int i = 0; i < list.Count; i++)
+                {
+                    cell = GetCell(i);
+                    cell.Visible = true;
+                    cell.Descriptor = list[i].Item1;
+                    cell.Text = list[i].Item2;
+                    cell.ShiftY = nextTop;
+                    cell.ShiftX = nextLeft;
+                    nextLeft = cell.NextLeft();
+                    if (nextLeft > Width)
+                    {
+                        nextLeft = 0;
+                        nextTop = cell.NextTop();
+                    }
+                }
+
+                nextTop = cell.NextTop() + 4;
+
+                VCCellSimple GetCell(int index)
+                {
+                    if (index < listCell.Count)
+                        return listCell[index];
+                    else
+                    {
+                        VCCellSimple c = new VCCellSimple(this, 0, 0);
+                        listCell.Add(c);
+                        return c;
+                    }
+                }
             }
         }
 
