@@ -104,9 +104,13 @@ namespace Fantasy_Kingdoms_Battle
         {
             Program.formMain.formHint.AddStep2Header("Лояльность");
             Program.formMain.formHint.AddStep5Description($"Лояльность: {DecIntegerBy10(Hero.Loyalty)}");
-            if (Hero.ListSourceLoyalty.Count > 0)
+            if ((Hero.TypeCreature.Loyalty != 0) || (Hero.ListSourceLoyalty.Count > 0))
             { 
-                List<(DescriptorSmallEntity, string)> list = new List<(DescriptorSmallEntity, string)>();
+                List<(DescriptorEntity, string)> list = new List<(DescriptorEntity, string)>();
+
+                if (Hero.TypeCreature.Loyalty != 0)
+                    list.Add((Hero.TypeCreature, DecIntegerBy10(Hero.TypeCreature.Loyalty, true)));
+
                 foreach (Perk p in Hero.ListSourceLoyalty)
                 {
                     Debug.Assert(p.Descriptor.Loyalty != 0);

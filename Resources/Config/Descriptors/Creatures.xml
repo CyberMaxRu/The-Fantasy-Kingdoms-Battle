@@ -189,6 +189,7 @@
       <MaxFood>50</MaxFood>
       <FoodPerDay>10</FoodPerDay>
       <EnthusiasmPerDay>10</EnthusiasmPerDay>
+      <Loyalty>20</Loyalty>
     </Properties>
     <CoefficientFlags>
       <Scout>1</Scout>
@@ -392,6 +393,7 @@
       <MaxFood>50</MaxFood>
       <FoodPerDay>10</FoodPerDay>
       <EnthusiasmPerDay>10</EnthusiasmPerDay>
+      <Loyalty>-20</Loyalty>
     </Properties>
     <CoefficientFlags>
       <Scout>1.1</Scout>
@@ -544,6 +546,7 @@
       <MaxFood>50</MaxFood>
       <FoodPerDay>10</FoodPerDay>
       <EnthusiasmPerDay>10</EnthusiasmPerDay>
+      <Loyalty>10</Loyalty>
     </Properties>
     <CoefficientFlags>
       <Scout>1.5</Scout>
@@ -727,6 +730,7 @@
       <MaxFood>50</MaxFood>
       <FoodPerDay>10</FoodPerDay>
       <EnthusiasmPerDay>10</EnthusiasmPerDay>
+      <Loyalty>10</Loyalty>
     </Properties>
     <CoefficientFlags>
       <Scout>1</Scout>
@@ -890,6 +894,7 @@
       <MaxFood>50</MaxFood>
       <FoodPerDay>10</FoodPerDay>
       <EnthusiasmPerDay>10</EnthusiasmPerDay>
+      <Loyalty>0</Loyalty>
     </Properties>
     <CoefficientFlags>
       <Scout>0.6</Scout>
@@ -1052,6 +1057,7 @@
       <MaxFood>50</MaxFood>
       <FoodPerDay>10</FoodPerDay>
       <EnthusiasmPerDay>10</EnthusiasmPerDay>
+      <Loyalty>0</Loyalty>
     </Properties>
     <CoefficientFlags>
       <Scout>1.3</Scout>
@@ -1196,6 +1202,7 @@
       <MaxFood>50</MaxFood>
       <FoodPerDay>10</FoodPerDay>
       <EnthusiasmPerDay>10</EnthusiasmPerDay>
+      <Loyalty>0</Loyalty>
     </Properties>
     <CoefficientFlags>
       <Scout>0.5</Scout>
@@ -1342,6 +1349,7 @@
       <MaxFood>50</MaxFood>
       <FoodPerDay>10</FoodPerDay>
       <EnthusiasmPerDay>10</EnthusiasmPerDay>
+      <Loyalty>0</Loyalty>
     </Properties>
     <CoefficientFlags>
       <Scout>0</Scout>
@@ -1453,6 +1461,7 @@
       <MaxFood>50</MaxFood>
       <FoodPerDay>10</FoodPerDay>
       <EnthusiasmPerDay>10</EnthusiasmPerDay>
+      <Loyalty>0</Loyalty>
     </Properties>
     <CoefficientFlags>
       <Scout>0</Scout>
@@ -1562,6 +1571,7 @@
       <MaxFood>50</MaxFood>
       <FoodPerDay>10</FoodPerDay>
       <EnthusiasmPerDay>10</EnthusiasmPerDay>
+      <Loyalty>0</Loyalty>
     </Properties>
     <CoefficientFlags>
       <Scout>0</Scout>
@@ -1670,6 +1680,7 @@
       <MaxFood>50</MaxFood>
       <FoodPerDay>10</FoodPerDay>
       <EnthusiasmPerDay>10</EnthusiasmPerDay>
+      <Loyalty>0</Loyalty>
     </Properties>
     <CoefficientFlags>
       <Scout>1</Scout>
@@ -1779,6 +1790,7 @@
       <MaxFood>50</MaxFood>
       <FoodPerDay>10</FoodPerDay>
       <EnthusiasmPerDay>10</EnthusiasmPerDay>
+      <Loyalty>0</Loyalty>
     </Properties>
     <CoefficientFlags>
       <Scout>1</Scout>
@@ -1888,6 +1900,7 @@
       <MaxFood>50</MaxFood>
       <FoodPerDay>10</FoodPerDay>
       <EnthusiasmPerDay>10</EnthusiasmPerDay>
+      <Loyalty>0</Loyalty>
     </Properties>
     <CoefficientFlags>
       <Scout>1.1</Scout>
@@ -1998,6 +2011,7 @@
       <MaxFood>50</MaxFood>
       <FoodPerDay>10</FoodPerDay>
       <EnthusiasmPerDay>10</EnthusiasmPerDay>
+      <Loyalty>0</Loyalty>
     </Properties>
     <CoefficientFlags>
       <Scout>0</Scout>
@@ -2063,6 +2077,7 @@
       <MaxFood>50</MaxFood>
       <FoodPerDay>10</FoodPerDay>
       <EnthusiasmPerDay>10</EnthusiasmPerDay>
+      <Loyalty>0</Loyalty>
     </Properties>
     <CoefficientFlags>
       <Scout>0</Scout>
@@ -2152,6 +2167,7 @@
       <MaxFood>50</MaxFood>
       <FoodPerDay>10</FoodPerDay>
       <EnthusiasmPerDay>10</EnthusiasmPerDay>
+      <Loyalty>0</Loyalty>
     </Properties>
     <CoefficientFlags>
       <Scout>0.5</Scout>

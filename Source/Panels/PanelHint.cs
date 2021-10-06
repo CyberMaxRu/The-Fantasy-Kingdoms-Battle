@@ -572,7 +572,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddStep19Descriptors(List<(DescriptorSmallEntity, string)> list)
+        internal void AddStep19Descriptors(List<(DescriptorEntity, string)> list)
         {
             if (list.Count > 0)
             {

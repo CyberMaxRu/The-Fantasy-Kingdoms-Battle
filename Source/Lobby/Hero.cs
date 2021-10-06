@@ -513,7 +513,7 @@ namespace Fantasy_Kingdoms_Battle
         private void CalcLoyalty()
         {
             ListSourceLoyalty.Clear();
-            Loyalty = 0;
+            Loyalty = TypeCreature.Loyalty;
 
             foreach (Perk p in Perks)
                 if (p.Descriptor.Loyalty != 0)
