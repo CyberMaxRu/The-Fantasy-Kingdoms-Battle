@@ -23,9 +23,9 @@ namespace Fantasy_Kingdoms_Battle
                 + " " + GetRandomName(pb.TypeConstruction.TrainedHero.SurnameFromTypeHero == null ? pb.TypeConstruction.TrainedHero.Surnames : pb.TypeConstruction.TrainedHero.Surnames);
 
             // 
-            CurrentFood = pb.Lobby.Rnd.Next(pb.TypeConstruction.TrainedHero.MinFoodOnHire, pb.TypeConstruction.TrainedHero.MaxFoodOnHire + 1);
-            FoodPerDay = pb.TypeConstruction.TrainedHero.FoodPerDay;
-            MaxFood = pb.TypeConstruction.TrainedHero.MaxFood;
+            CurrentSatiety = pb.Lobby.Rnd.Next(pb.TypeConstruction.TrainedHero.MinSatietyOnHire, pb.TypeConstruction.TrainedHero.MaxSatietyOnHire + 1);
+            ReductionSatietyPerDay = pb.TypeConstruction.TrainedHero.ReductionSatietyPerDay;
+            MaxSatiety = pb.TypeConstruction.TrainedHero.MaxSatiety;
             EnthusiasmPerDay = pb.TypeConstruction.TrainedHero.EnthusiasmPerDay;
 
             Initialize();
@@ -46,9 +46,9 @@ namespace Fantasy_Kingdoms_Battle
             //
             if (pb.TypeConstruction.TrainedHero.CategoryCreature == CategoryCreature.Hero)
             {
-                CurrentFood = pb.Lobby.Rnd.Next(pb.TypeConstruction.TrainedHero.MinFoodOnHire, pb.TypeConstruction.TrainedHero.MaxFoodOnHire + 1);
-                FoodPerDay = pb.TypeConstruction.TrainedHero.FoodPerDay;
-                MaxFood = pb.TypeConstruction.TrainedHero.MaxFood;
+                CurrentSatiety = pb.Lobby.Rnd.Next(pb.TypeConstruction.TrainedHero.MinSatietyOnHire, pb.TypeConstruction.TrainedHero.MaxSatietyOnHire + 1);
+                ReductionSatietyPerDay = pb.TypeConstruction.TrainedHero.ReductionSatietyPerDay;
+                MaxSatiety = pb.TypeConstruction.TrainedHero.MaxSatiety;
             }
 
             Initialize();
@@ -86,9 +86,9 @@ namespace Fantasy_Kingdoms_Battle
         internal int Mood { get; set; }// Уровень настроения, умноженный на 100
 
         // Характеристики для работы с едой
-        internal int CurrentFood { get; private set; }// Уровень еды (+ сытость, - голод), умноженный на 100
-        internal int MaxFood { get; private set; }// Максимальная сытость
-        internal int FoodPerDay { get; private set; }// Потребление еды в день
+        internal int CurrentSatiety { get; private set; }// Уровень еды (+ сытость, - голод), умноженный на 100
+        internal int MaxSatiety { get; private set; }// Максимальная сытость
+        internal int ReductionSatietyPerDay { get; private set; }// Потребление еды в день
         internal int Enthusiasm { get; private set; }// Энтузиазм
         internal int EnthusiasmPerDay { get; private set; }// Уменьшение энтузиазма в день
         internal int Loyalty { get; private set; }// Лояльность
@@ -410,14 +410,14 @@ namespace Fantasy_Kingdoms_Battle
 
             if ((TypeCreature.CategoryCreature == CategoryCreature.Hero) && (Construction.Lobby.Day > 0))
             {
-                Debug.Assert(CurrentFood > 0);
+                Debug.Assert(CurrentSatiety > 0);
                 Debug.Assert(Enthusiasm > 0);
                 Debug.Assert(EnthusiasmPerDay > 0);
 
                 // Уменьшаем сытость
-                CurrentFood -= FoodPerDay;
+                CurrentSatiety -= ReductionSatietyPerDay;
 
-                if (CurrentFood <= 0)// Помираем от голода
+                if (CurrentSatiety <= 0)// Помираем от голода
                 {
                     SetIsDead(ReasonOfDeath.Hunger);
                 }

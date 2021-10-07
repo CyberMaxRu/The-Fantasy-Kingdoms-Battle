@@ -131,8 +131,8 @@ namespace Fantasy_Kingdoms_Battle
         private void IdvFood_ShowHint(object sender, EventArgs e)
         {
             Program.formMain.formHint.AddStep2Header("Сытость");
-            Program.formMain.formHint.AddStep5Description($"Сытость: {DecIntegerBy10(Hero.CurrentFood)}/{DecIntegerBy10(Hero.MaxFood)}{Environment.NewLine}"
-                + $"Потребление в день: {DecIntegerBy10(Hero.FoodPerDay)}");
+            Program.formMain.formHint.AddStep5Description($"Сытость: {DecIntegerBy10(Hero.CurrentSatiety)}/{DecIntegerBy10(Hero.MaxSatiety)}{Environment.NewLine}"
+                + $"Потребление в день: {DecIntegerBy10(Hero.ReductionSatietyPerDay)}");
         }
 
         private void LvGold_ShowHint(object sender, EventArgs e)
@@ -157,7 +157,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             btnTarget.Entity = Hero.TargetByFlag;
             lvGold.Text = Hero.Gold.ToString();
-            idvFood.Text = DecIntegerBy10(Hero.CurrentFood).ToString();
+            idvFood.Text = DecIntegerBy10(Hero.CurrentSatiety).ToString();
             idvEnthusiasm.Text = DecIntegerBy10(Hero.Enthusiasm).ToString();
             idvLoyalty.Text = DecIntegerBy10(Hero.Loyalty).ToString();
 
