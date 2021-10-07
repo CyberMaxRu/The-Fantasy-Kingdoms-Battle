@@ -31,8 +31,11 @@ namespace Fantasy_Kingdoms_Battle
         private readonly Button btnDismiss;
         private readonly VCButtonTargetLair btnTarget;
 
-        private readonly VCIconAndDigitValue idvFood;
-        private readonly VCIconAndDigitValue idvEnthusiasm;
+        private readonly VCIconAndDigitValue idvMorale;
+        private readonly VCIconAndDigitValue idvLuck;
+        private readonly VCIconAndDigitValue idvSatiety;
+        private readonly VCIconAndDigitValue idvEnergy;
+        private readonly VCIconAndDigitValue idvHonor;
         private readonly VCIconAndDigitValue idvLoyalty;
 
         public PanelHeroInfo(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
@@ -55,13 +58,22 @@ namespace Fantasy_Kingdoms_Battle
 
             lvGold.ShowHint += LvGold_ShowHint;
 
-            idvFood = new VCIconAndDigitValue(panelStatistics, 0, 0, 64, FormMain.GUI_16_FOOD);
-            idvFood.ShowHint += IdvFood_ShowHint;
+            idvMorale = new VCIconAndDigitValue(panelStatistics, 0, 0, 104, FormMain.GUI_16_MORALE);
+            idvMorale.ShowHint += IdvMorale_ShowHint;
 
-            idvEnthusiasm = new VCIconAndDigitValue(panelStatistics, idvFood.NextLeft(), 0, 64, FormMain.GUI_16_ENTHUSIASM);
-            idvEnthusiasm.ShowHint += IdvEnthusiasm_ShowHint;
+            idvLuck = new VCIconAndDigitValue(panelStatistics, idvMorale.NextLeft(), 0, 104, FormMain.GUI_16_LUCK);
+            idvLuck.ShowHint += IdvLuck_ShowHint;
 
-            idvLoyalty = new VCIconAndDigitValue(panelStatistics, idvEnthusiasm.NextLeft(), 0, 64, FormMain.GUI_16_LOYALTY);
+            idvSatiety = new VCIconAndDigitValue(panelStatistics, 0, idvMorale.NextTop() - 4, 104, FormMain.GUI_16_SATIETY);
+            idvSatiety.ShowHint += IdvFood_ShowHint;
+
+            idvEnergy = new VCIconAndDigitValue(panelStatistics, idvSatiety.NextLeft(), idvSatiety.ShiftY, 104, FormMain.GUI_16_ENERGY);
+            idvEnergy.ShowHint += IdvEnthusiasm_ShowHint;
+
+            idvHonor = new VCIconAndDigitValue(panelStatistics, 0, idvSatiety.NextTop() - 4, 104, FormMain.GUI_16_HONOR);
+            idvHonor.ShowHint += IdvHonor_ShowHint;
+
+            idvLoyalty = new VCIconAndDigitValue(panelStatistics, idvHonor.NextLeft(), idvHonor.ShiftY, 104, FormMain.GUI_16_LOYALTY);
             idvLoyalty.ShowHint += IdvLoyalty_ShowHint;
 
             return;
@@ -100,6 +112,21 @@ namespace Fantasy_Kingdoms_Battle
             }*/
         }
 
+        private void IdvLuck_ShowHint(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void IdvMorale_ShowHint(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void IdvHonor_ShowHint(object sender, EventArgs e)
+        {
+            
+        }
+
         private void IdvLoyalty_ShowHint(object sender, EventArgs e)
         {
             Program.formMain.formHint.AddStep2Header("Лояльность");
@@ -124,8 +151,9 @@ namespace Fantasy_Kingdoms_Battle
 
         private void IdvEnthusiasm_ShowHint(object sender, EventArgs e)
         {
-            Program.formMain.formHint.AddStep2Header("Энтузиазм");
-            Program.formMain.formHint.AddStep5Description($"Энтузиазм: {DecIntegerBy10(Hero.Enthusiasm)}{Environment.NewLine}Уменьшение в день (на перк): -{DecIntegerBy10(Hero.EnthusiasmPerDay)}");
+            Program.formMain.formHint.AddStep2Header("Энергия");
+            //Program.formMain.formHint.AddStep4Level()
+            Program.formMain.formHint.AddStep5Description($"Энергия: {DecIntegerBy10(Hero.Enthusiasm)}{Environment.NewLine}Уменьшение в день (на перк): -{DecIntegerBy10(Hero.EnthusiasmPerDay)}");
         }
 
         private void IdvFood_ShowHint(object sender, EventArgs e)
@@ -157,8 +185,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             btnTarget.Entity = Hero.TargetByFlag;
             lvGold.Text = Hero.Gold.ToString();
-            idvFood.Text = DecIntegerBy10(Hero.CurrentSatiety).ToString();
-            idvEnthusiasm.Text = DecIntegerBy10(Hero.Enthusiasm).ToString();
+            idvSatiety.Text = DecIntegerBy10(Hero.CurrentSatiety).ToString();
+            idvEnergy.Text = DecIntegerBy10(Hero.Enthusiasm).ToString();
             idvLoyalty.Text = DecIntegerBy10(Hero.Loyalty).ToString();
 
             base.Draw(g);
