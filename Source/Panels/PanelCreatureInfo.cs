@@ -89,7 +89,7 @@ namespace Fantasy_Kingdoms_Battle
             btnStatistics = pageControl.AddTab("Статистика", FormMain.Config.Gui48_Scroll, panelStatistics);
             btnInventory = pageControl.AddTab("Инвентарь", FormMain.Config.Gui48_Inventory, panelInventory);
             btnAbilities = pageControl.AddTab("Способности и навыки", FormMain.Config.Gui48_Target, panelAbilitiesAndSecSkills);
-            btnPerks = pageControl.AddTab("Перки", FormMain.Config.Gui48_Book, panelPerks);
+            btnPerks = pageControl.AddTab("Характеристики", FormMain.Config.Gui48_Book, panelPerks);
             
             panelAbilitiesAndSecSkills.AddControl(panelAbilities);
             panelAbilitiesAndSecSkills.AddControl(panelSecondarySkills);
