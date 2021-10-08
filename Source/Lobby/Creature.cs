@@ -38,6 +38,12 @@ namespace Fantasy_Kingdoms_Battle
                 AddItemToInventory(CreateItem(inv.Item1, inv.Item2));
             }
 
+            // Берем дефолтные перки
+            foreach (DescriptorPerk dp in TypeCreature.Perks)
+            {
+                AddPerk(dp, this);
+            }
+
             // Берем оружие и доспехи
             if (TypeCreature.WeaponMelee != null)
             {
