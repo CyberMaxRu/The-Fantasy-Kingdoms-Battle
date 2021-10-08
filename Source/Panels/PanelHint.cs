@@ -567,7 +567,7 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(source != null);
 
                 lblSigner.ShiftY = nextTop;
-                lblSigner.Text = $"{source}";
+                lblSigner.Text = $"От: {source}";
                 lblSigner.Visible = true;
 
                 nextTop = lblSigner.NextTop();
