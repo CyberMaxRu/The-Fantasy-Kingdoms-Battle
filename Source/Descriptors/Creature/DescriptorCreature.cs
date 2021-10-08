@@ -388,6 +388,8 @@ namespace Fantasy_Kingdoms_Battle
                 if (a.ClassesHeroes.IndexOf(this) == -1)
                     throw new Exception("Класс героя " + ID + " отсутствует в списке доступных для способности " + a.ID);
             */
+
+            Perks.TuneDeferredLinks();
         }
     }
 
