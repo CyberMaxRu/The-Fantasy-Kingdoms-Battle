@@ -80,7 +80,7 @@ namespace Fantasy_Kingdoms_Battle
             idvHonor.ShowHint += IdvHonor_ShowHint;
 
             idvEnthusiasm = new VCIconAndDigitValue(panelStatistics, idvHonor.NextLeft(), idvHonor.ShiftY, 104, FormMain.GUI_16_ENTHUSIASM);
-            idvEnthusiasm.ShowHint += IdvLoyalty_ShowHint;
+            idvEnthusiasm.ShowHint += IdvEnthusiasm_ShowHint1;
 
             idvMorale = new VCIconAndDigitValue(panelStatistics, 0, idvHonor.NextTop() - 4, 104, FormMain.GUI_16_MORALE);
             idvMorale.ShowHint += IdvMorale_ShowHint;
@@ -111,16 +111,16 @@ namespace Fantasy_Kingdoms_Battle
             lblInterests.StringFormat.Alignment = StringAlignment.Near;
 
             idvInterestAttack = new VCIconAndDigitValue(panelStatistics, 0, lblInterests.NextTop() - 4, 104, FormMain.GUI_16_INTEREST_ATTACK);
-            idvInterestAttack.ShowHint += IdvFood_ShowHint;
+            idvInterestAttack.ShowHint += IdvInterestAttack_ShowHint;
 
             idvInterestDefense = new VCIconAndDigitValue(panelStatistics, idvInterestAttack.NextLeft(), idvInterestAttack.ShiftY, 104, FormMain.GUI_16_INTEREST_DEFENSE);
-            idvInterestDefense.ShowHint += IdvRest_ShowHint;
+            idvInterestDefense.ShowHint += IdvInterestDefense_ShowHint;
 
             idvInterestExplore = new VCIconAndDigitValue(panelStatistics, 0, idvInterestDefense.NextTop() - 4, 104, FormMain.GUI_16_INTEREST_EXPLORE);
-            idvInterestExplore.ShowHint += IdvEntertainment_ShowHint;
+            idvInterestExplore.ShowHint += IdvInterestExplore_ShowHint;
 
             idvInterestOther = new VCIconAndDigitValue(panelStatistics, idvInterestExplore.NextLeft(), idvInterestExplore.ShiftY, 104, FormMain.GUI_16_INTEREST_OTHER);
-            idvInterestOther.ShowHint += IdvNeedsGold_ShowHint;
+            idvInterestOther.ShowHint += IdvInterestOther_ShowHint;
 
             return;
             /*lblLevel = GuiUtils.CreateLabel(this, Config.GRID_SIZE, TopForControls());
@@ -158,19 +158,44 @@ namespace Fantasy_Kingdoms_Battle
             }*/
         }
 
+        private void IdvInterestOther_ShowHint(object sender, EventArgs e)
+        {
+
+        }
+
+        private void IdvInterestExplore_ShowHint(object sender, EventArgs e)
+        {
+
+        }
+
+        private void IdvInterestDefense_ShowHint(object sender, EventArgs e)
+        {
+
+        }
+
+        private void IdvInterestAttack_ShowHint(object sender, EventArgs e)
+        {
+
+        }
+
+        private void IdvEnthusiasm_ShowHint1(object sender, EventArgs e)
+        {
+
+        }
+
         private void IdvRest_ShowHint(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+
         }
 
         private void IdvNeedsGold_ShowHint(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+
         }
 
         private void IdvEntertainment_ShowHint(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+
         }
 
         private void IdvLuck_ShowHint(object sender, EventArgs e)
@@ -185,25 +210,19 @@ namespace Fantasy_Kingdoms_Battle
 
         private void IdvHonor_ShowHint(object sender, EventArgs e)
         {
-            
-        }
-
-        private void IdvLoyalty_ShowHint(object sender, EventArgs e)
-        {
-            Program.formMain.formHint.AddStep2Header("Лояльность");
-            Program.formMain.formHint.AddStep5Description($"Лояльность: {DecIntegerBy10(Hero.Loyalty)}");
-            if ((Hero.TypeCreature.Loyalty != 0) || (Hero.ListSourceLoyalty.Count > 0))
-            { 
+            Program.formMain.formHint.AddStep2Header("Честь");
+            Program.formMain.formHint.AddStep3Type("Основная характеристика");
+            Program.formMain.formHint.AddStep4Level($"Честь: {DecIntegerBy10(Hero.Honor)}");
+            Program.formMain.formHint.AddStep5Description("От чести зависят действия героя. Бесчестный герой ворует, грабит. Герой с высокой честью не замарает себя такими поступками.");
+            if (Hero.ListSourceHonor.Count > 0)
+            {
                 List<(DescriptorEntity, string)> list = new List<(DescriptorEntity, string)>();
 
-                if (Hero.TypeCreature.Loyalty != 0)
-                    list.Add((Hero.TypeCreature, DecIntegerBy10(Hero.TypeCreature.Loyalty, true)));
-
-                foreach (Perk p in Hero.ListSourceLoyalty)
+                foreach (Perk p in Hero.ListSourceHonor)
                 {
-                    Debug.Assert(p.Descriptor.Loyalty != 0);
+                    Debug.Assert(p.Descriptor.Honor != 0);
 
-                    list.Add((p.Descriptor, DecIntegerBy10(p.Descriptor.Loyalty, true)));
+                    list.Add((p.Descriptor, DecIntegerBy10(p.Descriptor.Honor, true)));
                 }
 
                 Program.formMain.formHint.AddStep19Descriptors(list);
@@ -257,6 +276,12 @@ namespace Fantasy_Kingdoms_Battle
         {
             btnTarget.Entity = Hero.TargetByFlag;
             lvGold.Text = Hero.Gold.ToString();
+
+            idvHonor.Text = DecIntegerBy10(Hero.Honor).ToString();
+            idvEnthusiasm.Text = DecIntegerBy10(Hero.Enthusiasm).ToString();
+            idvMorale.Text = DecIntegerBy10(Hero.Morale).ToString();
+            idvLuck.Text = FormatInteger(Hero.Luck);
+
             idvFood.Text = DecIntegerBy10(Hero.CurrentSatiety).ToString();
             //idvEnergy.Text = DecIntegerBy10(Hero.Enthusiasm).ToString();
             //idvLoyalty.Text = DecIntegerBy10(Hero.Loyalty).ToString();
