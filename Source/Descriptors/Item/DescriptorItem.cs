@@ -14,7 +14,6 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class DescriptorItem : DescriptorSmallEntity
     {
         private string nameGroupItem;
-        private List<string> namePerks;
 
         public DescriptorItem(XmlNode n) : base(n)
         {
@@ -72,22 +71,7 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(Food == 0);
             }
 
-            XmlNode nodePerks = n.SelectSingleNode("Perks");
-            if (nodePerks != null)
-            {
-                namePerks = new List<string>();
-
-                foreach (XmlNode l in nodePerks.SelectNodes("Perk"))
-                {
-                    // Проверяем, что такой перк не повторяется
-                    foreach (DescriptorPerk dp in Perks)
-                    {
-                        Debug.Assert(dp.ID != l.InnerText);
-                    }
-
-                    namePerks.Add(l.InnerText);
-                }
-            }
+            Perks = new ListDescriptorPerks(n.SelectSingleNode("Perks"));
 
             /*if (CategoryItem == CategoryItem.RangeWeapon)
             {
@@ -135,7 +119,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal CategoryItem CategoryItem { get; }
         internal DescriptorGroupItems GroupItem { get; private set; }
-        internal List<DescriptorPerk> Perks { get; } = new List<DescriptorPerk>();// Перки, даваемые предметом
+        internal ListDescriptorPerks Perks { get; }// Перки, даваемые предметом
         internal string Signer { get; }//
         internal int Position { get; }
         internal int TimeHit { get; }
@@ -173,11 +157,7 @@ namespace Fantasy_Kingdoms_Battle
                 nameGroupItem = "";
             }
 
-            if (namePerks != null)
-            {
-                foreach (string perk in namePerks)
-                    Perks.Add(Config.FindPerk(perk));
-            }
+            Perks.TuneDeferredLinks();
         }
 
         protected override bool ForHeroes() => CategoryItem != CategoryItem.Monster;
