@@ -13,6 +13,10 @@ namespace Fantasy_Kingdoms_Battle
     {
         public DescriptorPerk(XmlNode n) : base(n)
         {
+            XmlAttribute attrIcon = n.SelectSingleNode("ImageIndex").Attributes["Size"];
+            if ((attrIcon != null) && (attrIcon.Value == "128"))
+                ImageIndex = XmlUtils.GetIntegerNotNull(n, "ImageIndex") - 1;
+
             Honor = XmlUtils.GetInteger(n, "Honor");
             Enthusiasm = XmlUtils.GetInteger(n, "Enthusiasm");
             Morale = XmlUtils.GetInteger(n, "Morale");
