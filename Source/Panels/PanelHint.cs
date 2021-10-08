@@ -37,6 +37,10 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly VCLabelValue lblBuildersPerDay;
         internal readonly VCLabelValue lblGold;
         internal readonly VCLabelValue lblBuilders;
+        internal readonly VCLabelValue lblHonor;
+        internal readonly VCLabelValue lblEnthusiasm;
+        internal readonly VCLabelValue lblMorale;
+        internal readonly VCLabelValue lblLuck;
         internal readonly VCLabelValue lblLoyalty;
         internal readonly VCLabel lblSigner;
         private readonly List<VCCellSimple> listCell = new List<VCCellSimple>();
@@ -107,7 +111,23 @@ namespace Fantasy_Kingdoms_Battle
             lblBuilders.ImageIndex = FormMain.GUI_16_BUILDER;
             lblBuilders.Width = widthControl;
 
-            lblLoyalty = new VCLabelValue(this, FormMain.Config.GridSize, lblBuilders.NextTop(), FormMain.Config.HintIncome, false);
+            lblHonor = new VCLabelValue(this, FormMain.Config.GridSize, lblBuilders.NextTop(), FormMain.Config.HintIncome, false);
+            lblHonor.ImageIndex = FormMain.GUI_16_HONOR;
+            lblHonor.Width = widthControl;
+
+            lblEnthusiasm = new VCLabelValue(this, FormMain.Config.GridSize, lblHonor.NextTop(), FormMain.Config.HintIncome, false);
+            lblEnthusiasm.ImageIndex = FormMain.GUI_16_ENTHUSIASM;
+            lblEnthusiasm.Width = widthControl;
+
+            lblMorale = new VCLabelValue(this, FormMain.Config.GridSize, lblEnthusiasm.NextTop(), FormMain.Config.HintIncome, false);
+            lblMorale.ImageIndex = FormMain.GUI_16_MORALE;
+            lblMorale.Width = widthControl;
+
+            lblLuck = new VCLabelValue(this, FormMain.Config.GridSize, lblMorale.NextTop(), FormMain.Config.HintIncome, false);
+            lblLuck.ImageIndex = FormMain.GUI_16_LUCK;
+            lblLuck.Width = widthControl;
+
+            lblLoyalty = new VCLabelValue(this, FormMain.Config.GridSize, lblLuck.NextTop(), FormMain.Config.HintIncome, false);
             lblLoyalty.ImageIndex = FormMain.GUI_16_INTEREST_DEFENSE;
             lblLoyalty.Width = widthControl;
 
@@ -225,6 +245,10 @@ namespace Fantasy_Kingdoms_Battle
 
             lblGold.Visible = false;
             lblBuilders.Visible = false;
+            lblHonor.Visible = false;
+            lblEnthusiasm.Visible = false;
+            lblMorale.Visible = false;
+            lblLuck.Visible = false;
             lblLoyalty.Visible = false;
             lblSigner.Visible = false;
 
@@ -411,6 +435,54 @@ namespace Fantasy_Kingdoms_Battle
                 lblBuildersPerDay.Visible = true;
 
                 nextTop = lblBuildersPerDay.NextTop();
+            }
+        }
+
+        internal void AddStep9Honor(int honor)
+        {
+            if (honor != 0)
+            {
+                lblHonor.ShiftY = nextTop;
+                lblHonor.Text = Utils.DecIntegerBy10(honor, true);
+                lblHonor.Visible = true;
+
+                nextTop = lblHonor.NextTop();
+            }
+        }
+
+        internal void AddStep9Enthusiasm(int enthusiasm)
+        {
+            if (enthusiasm != 0)
+            {
+                lblEnthusiasm.ShiftY = nextTop;
+                lblEnthusiasm.Text = Utils.DecIntegerBy10(enthusiasm, true);
+                lblEnthusiasm.Visible = true;
+
+                nextTop = lblEnthusiasm.NextTop();
+            }
+        }
+
+        internal void AddStep9Morale(int morale)
+        {
+            if (morale != 0)
+            {
+                lblMorale.ShiftY = nextTop;
+                lblMorale.Text = Utils.DecIntegerBy10(morale, true);
+                lblMorale.Visible = true;
+
+                nextTop = lblMorale.NextTop();
+            }
+        }
+
+        internal void AddStep9Luck(int luck)
+        {
+            if (luck != 0)
+            {
+                lblLuck.ShiftY = nextTop;
+                lblLuck.Text = Utils.FormatInteger(luck);
+                lblLuck.Visible = true;
+
+                nextTop = lblLuck.NextTop();
             }
         }
 
