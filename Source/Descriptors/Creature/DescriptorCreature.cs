@@ -119,6 +119,9 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
+            // Загружаем дефолтные перки
+            Perks = new ListDescriptorPerks(n.SelectSingleNode("Perks"));
+
             MinFoodOnHire = GetInteger(n, "Properties/MinFoodOnHire");
             MaxFoodOnHire = GetInteger(n, "Properties/MaxFoodOnHire");
             MaxFood = GetInteger(n, "Properties/MaxFood");
@@ -311,6 +314,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<string> Surnames { get; } = new List<string>();
         internal DescriptorCreature NameFromTypeHero { get; private set; }
         internal DescriptorCreature SurnameFromTypeHero { get; private set; }
+        internal ListDescriptorPerks Perks { get; }// Дефолтные перки
 
         // Потребности
         internal int MinFoodOnHire { get; }// Минимальный уровень еды при найме
