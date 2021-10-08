@@ -40,6 +40,8 @@ namespace Fantasy_Kingdoms_Battle
             {
                 foreach (string perk in namePerks)
                     Add(FormMain.Config.FindPerk(perk));
+
+                namePerks = null;
             }
         }
     }
