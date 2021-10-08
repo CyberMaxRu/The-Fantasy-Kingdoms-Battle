@@ -38,6 +38,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (namePerks != null)
             {
+                Capacity = namePerks.Count;
+
                 foreach (string perk in namePerks)
                     Add(FormMain.Config.FindPerk(perk));
 
