@@ -127,7 +127,6 @@ namespace Fantasy_Kingdoms_Battle
             MaxFood = GetInteger(n, "Properties/MaxFood");
             ReductionFoodPerDay = GetInteger(n, "Properties/FoodPerDay");
             EnthusiasmPerDay = GetInteger(n, "Properties/EnthusiasmPerDay");
-            Loyalty = GetInteger(n, "Properties/Loyalty");
 
             // Проверяем, что таких же ID и наименования нет
             foreach (DescriptorCreature h in FormMain.Config.Creatures)
@@ -245,8 +244,6 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(MaxFoodOnHire > 0);
                 Debug.Assert(MaxFood > 0);
                 Debug.Assert(EnthusiasmPerDay > 0);
-                Debug.Assert(Loyalty >= -100);
-                Debug.Assert(Loyalty <= 100);
 
                 Debug.Assert(MinFoodOnHire <= MaxFoodOnHire);
                 Debug.Assert(MaxFoodOnHire <= MaxFood);
@@ -263,7 +260,6 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(MaxFood == 0);
                 Debug.Assert(ReductionFoodPerDay == 0);
                 Debug.Assert(EnthusiasmPerDay == 0);
-                Debug.Assert(Loyalty == 0);
             }
 
             void LoadName(string nodes, string node, List<string> list)
@@ -323,7 +319,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int ReductionFoodPerDay { get; }// Потребление еды в день
 
         internal int EnthusiasmPerDay { get; }// Уменьшение энтузиазма в день
-        internal int Loyalty { get; }// Базовая лояльность
 
         //
 
