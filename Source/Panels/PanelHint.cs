@@ -108,7 +108,7 @@ namespace Fantasy_Kingdoms_Battle
             lblBuilders.Width = widthControl;
 
             lblLoyalty = new VCLabelValue(this, FormMain.Config.GridSize, lblBuilders.NextTop(), FormMain.Config.HintIncome, false);
-            lblLoyalty.ImageIndex = FormMain.GUI_16_LOYALTY;
+            lblLoyalty.ImageIndex = FormMain.GUI_16_INTEREST_DEFENSE;
             lblLoyalty.Width = widthControl;
 
             lblSigner = new VCLabel(this, FormMain.Config.GridSize, lblLoyalty.NextTop(), Program.formMain.fontSmallC, Color.SkyBlue, 16, "");

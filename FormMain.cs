@@ -170,10 +170,16 @@ namespace Fantasy_Kingdoms_Battle
         internal const int GUI_16_CORRUPTION = 12;
         internal const int GUI_16_MORALE = 13;
         internal const int GUI_16_LUCK = 14;
-        internal const int GUI_16_LOYALTY = 15;
-        internal const int GUI_16_SATIETY = 16;
-        internal const int GUI_16_ENERGY = 17;
+        internal const int GUI_16_INTEREST_DEFENSE = 15;
+        internal const int GUI_16_NEEDS_FOOD = 16;
+        internal const int GUI_16_ENTHUSIASM = 17;
         internal const int GUI_16_HONOR = 18;
+        internal const int GUI_16_NEEDS_GOLD = 19;
+        internal const int GUI_16_NEEDS_REST = 20;
+        internal const int GUI_16_NEEDS_ENTERTAINMENT = 21;
+        internal const int GUI_16_INTEREST_EXPLORE = 22;
+        internal const int GUI_16_INTEREST_ATTACK = 23;
+        internal const int GUI_16_INTEREST_OTHER = 24;
 
         internal const int GUI_24_FIRE = 0;
         internal const int GUI_24_HEROES = 1;

@@ -31,12 +31,26 @@ namespace Fantasy_Kingdoms_Battle
         private readonly Button btnDismiss;
         private readonly VCButtonTargetLair btnTarget;
 
+        private readonly VCLabel lblCharacters;
+        private readonly VCLabel lblNeeds;
+        private readonly VCLabel lblInterests;
+        private readonly VCSeparator separator1;
+        private readonly VCSeparator separator2;
+
+        private readonly VCIconAndDigitValue idvFood;
+        private readonly VCIconAndDigitValue idvRest;
+        private readonly VCIconAndDigitValue idvEntertainment;
+        private readonly VCIconAndDigitValue idvNeedsGold;
+
+        private readonly VCIconAndDigitValue idvHonor;
+        private readonly VCIconAndDigitValue idvEnthusiasm;
         private readonly VCIconAndDigitValue idvMorale;
         private readonly VCIconAndDigitValue idvLuck;
-        private readonly VCIconAndDigitValue idvSatiety;
-        private readonly VCIconAndDigitValue idvEnergy;
-        private readonly VCIconAndDigitValue idvHonor;
-        private readonly VCIconAndDigitValue idvLoyalty;
+
+        private readonly VCIconAndDigitValue idvInterestAttack;
+        private readonly VCIconAndDigitValue idvInterestDefense;
+        private readonly VCIconAndDigitValue idvInterestExplore;
+        private readonly VCIconAndDigitValue idvInterestOther;
 
         public PanelHeroInfo(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
@@ -58,23 +72,55 @@ namespace Fantasy_Kingdoms_Battle
 
             lvGold.ShowHint += LvGold_ShowHint;
 
-            idvMorale = new VCIconAndDigitValue(panelStatistics, 0, 0, 104, FormMain.GUI_16_MORALE);
-            idvMorale.ShowHint += IdvMorale_ShowHint;
+            // Основные характеристики
+            lblCharacters = new VCLabel(panelStatistics, 0, 0, Program.formMain.fontSmall, Color.White, 16, "Основные характеристики:");
+            lblCharacters.StringFormat.Alignment = StringAlignment.Near;
 
-            idvLuck = new VCIconAndDigitValue(panelStatistics, idvMorale.NextLeft(), 0, 104, FormMain.GUI_16_LUCK);
-            idvLuck.ShowHint += IdvLuck_ShowHint;
-
-            idvSatiety = new VCIconAndDigitValue(panelStatistics, 0, idvMorale.NextTop() - 4, 104, FormMain.GUI_16_SATIETY);
-            idvSatiety.ShowHint += IdvFood_ShowHint;
-
-            idvEnergy = new VCIconAndDigitValue(panelStatistics, idvSatiety.NextLeft(), idvSatiety.ShiftY, 104, FormMain.GUI_16_ENERGY);
-            idvEnergy.ShowHint += IdvEnthusiasm_ShowHint;
-
-            idvHonor = new VCIconAndDigitValue(panelStatistics, 0, idvSatiety.NextTop() - 4, 104, FormMain.GUI_16_HONOR);
+            idvHonor = new VCIconAndDigitValue(panelStatistics, 0, lblCharacters.NextTop() - 4, 104, FormMain.GUI_16_HONOR);
             idvHonor.ShowHint += IdvHonor_ShowHint;
 
-            idvLoyalty = new VCIconAndDigitValue(panelStatistics, idvHonor.NextLeft(), idvHonor.ShiftY, 104, FormMain.GUI_16_LOYALTY);
-            idvLoyalty.ShowHint += IdvLoyalty_ShowHint;
+            idvEnthusiasm = new VCIconAndDigitValue(panelStatistics, idvHonor.NextLeft(), idvHonor.ShiftY, 104, FormMain.GUI_16_ENTHUSIASM);
+            idvEnthusiasm.ShowHint += IdvLoyalty_ShowHint;
+
+            idvMorale = new VCIconAndDigitValue(panelStatistics, 0, idvHonor.NextTop() - 4, 104, FormMain.GUI_16_MORALE);
+            idvMorale.ShowHint += IdvMorale_ShowHint;
+
+            idvLuck = new VCIconAndDigitValue(panelStatistics, idvMorale.NextLeft(), idvMorale.ShiftY, 104, FormMain.GUI_16_LUCK);
+            idvLuck.ShowHint += IdvLuck_ShowHint;
+
+            // Потребности
+            separator1 = new VCSeparator(panelStatistics, 0, idvMorale.NextTop() - 4);
+            lblNeeds = new VCLabel(panelStatistics, 0, separator1.NextTop() - 8, Program.formMain.fontSmall, Color.White, 16, "Потребности:");
+            lblNeeds.StringFormat.Alignment = StringAlignment.Near;
+
+            idvFood = new VCIconAndDigitValue(panelStatistics, 0, lblNeeds.NextTop() - 4, 104, FormMain.GUI_16_NEEDS_FOOD);
+            idvFood.ShowHint += IdvFood_ShowHint;
+
+            idvRest = new VCIconAndDigitValue(panelStatistics, idvFood.NextLeft(), idvFood.ShiftY, 104, FormMain.GUI_16_NEEDS_REST);
+            idvRest.ShowHint += IdvRest_ShowHint;
+
+            idvEntertainment = new VCIconAndDigitValue(panelStatistics, 0, idvFood.NextTop() - 4, 104, FormMain.GUI_16_NEEDS_ENTERTAINMENT);
+            idvEntertainment.ShowHint += IdvEntertainment_ShowHint;
+
+            idvNeedsGold = new VCIconAndDigitValue(panelStatistics, idvEntertainment.NextLeft(), idvEntertainment.ShiftY, 104, FormMain.GUI_16_NEEDS_GOLD);
+            idvNeedsGold.ShowHint += IdvNeedsGold_ShowHint;
+
+            // Интересы
+            separator2 = new VCSeparator(panelStatistics, 0, idvEntertainment.NextTop() - 4);
+            lblInterests = new VCLabel(panelStatistics, 0, separator2.NextTop() - 8, Program.formMain.fontSmall, Color.White, 16, "Интересы:");
+            lblInterests.StringFormat.Alignment = StringAlignment.Near;
+
+            idvInterestAttack = new VCIconAndDigitValue(panelStatistics, 0, lblInterests.NextTop() - 4, 104, FormMain.GUI_16_INTEREST_ATTACK);
+            idvInterestAttack.ShowHint += IdvFood_ShowHint;
+
+            idvInterestDefense = new VCIconAndDigitValue(panelStatistics, idvInterestAttack.NextLeft(), idvInterestAttack.ShiftY, 104, FormMain.GUI_16_INTEREST_DEFENSE);
+            idvInterestDefense.ShowHint += IdvRest_ShowHint;
+
+            idvInterestExplore = new VCIconAndDigitValue(panelStatistics, 0, idvInterestDefense.NextTop() - 4, 104, FormMain.GUI_16_INTEREST_EXPLORE);
+            idvInterestExplore.ShowHint += IdvEntertainment_ShowHint;
+
+            idvInterestOther = new VCIconAndDigitValue(panelStatistics, idvInterestExplore.NextLeft(), idvInterestExplore.ShiftY, 104, FormMain.GUI_16_INTEREST_OTHER);
+            idvInterestOther.ShowHint += IdvNeedsGold_ShowHint;
 
             return;
             /*lblLevel = GuiUtils.CreateLabel(this, Config.GRID_SIZE, TopForControls());
@@ -110,6 +156,21 @@ namespace Fantasy_Kingdoms_Battle
                     slots[x + y * FormMain.SLOTS_IN_LINE] = pb;
                 }
             }*/
+        }
+
+        private void IdvRest_ShowHint(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void IdvNeedsGold_ShowHint(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void IdvEntertainment_ShowHint(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void IdvLuck_ShowHint(object sender, EventArgs e)
@@ -170,6 +231,17 @@ namespace Fantasy_Kingdoms_Battle
 
         internal Hero Hero { get => Entity as Hero; }
 
+        internal override void ArrangeControls()
+        {
+            lblCharacters.Width = panelStatistics.Width;
+            lblNeeds.Width = panelStatistics.Width;
+            lblInterests.Width = panelStatistics.Width;
+            separator1.Width = panelStatistics.Width;
+            separator2.Width = panelStatistics.Width;
+
+            base.ArrangeControls();
+        }
+
         private void BtnDismiss_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Уволить героя?", "FKB", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -185,9 +257,9 @@ namespace Fantasy_Kingdoms_Battle
         {
             btnTarget.Entity = Hero.TargetByFlag;
             lvGold.Text = Hero.Gold.ToString();
-            idvSatiety.Text = DecIntegerBy10(Hero.CurrentSatiety).ToString();
-            idvEnergy.Text = DecIntegerBy10(Hero.Enthusiasm).ToString();
-            idvLoyalty.Text = DecIntegerBy10(Hero.Loyalty).ToString();
+            idvFood.Text = DecIntegerBy10(Hero.CurrentSatiety).ToString();
+            //idvEnergy.Text = DecIntegerBy10(Hero.Enthusiasm).ToString();
+            //idvLoyalty.Text = DecIntegerBy10(Hero.Loyalty).ToString();
 
             base.Draw(g);
         }
