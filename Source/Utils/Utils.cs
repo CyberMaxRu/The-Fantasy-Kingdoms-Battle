@@ -64,5 +64,10 @@ namespace Fantasy_Kingdoms_Battle
 
             return (value > 0 ? (showPlus ? "+" : "") : "-") + val10.ToString() + (modval > 0 ? "." + modval.ToString() : "");
         }
+
+        internal static string FormatInteger(int value)
+        {
+            return (value > 0 ? "+" : "") + value.ToString();
+        }
     }
 }
