@@ -22,7 +22,7 @@ namespace Fantasy_Kingdoms_Battle
                 + GetRandomName(pb.TypeConstruction.TrainedHero.NameFromTypeHero == null ? pb.TypeConstruction.TrainedHero.Names : pb.TypeConstruction.TrainedHero.NameFromTypeHero.Names)
                 + " " + GetRandomName(pb.TypeConstruction.TrainedHero.SurnameFromTypeHero == null ? pb.TypeConstruction.TrainedHero.Surnames : pb.TypeConstruction.TrainedHero.Surnames);
 
-            // 
+            //
             CurrentSatiety = pb.Lobby.Rnd.Next(pb.TypeConstruction.TrainedHero.MinFoodOnHire, pb.TypeConstruction.TrainedHero.MaxFoodOnHire + 1);
             ReductionSatietyPerDay = pb.TypeConstruction.TrainedHero.ReductionFoodPerDay;
             MaxSatiety = pb.TypeConstruction.TrainedHero.MaxFood;
@@ -81,9 +81,8 @@ namespace Fantasy_Kingdoms_Battle
         internal ResultBattle PriorResultBattle { get; set; }// Предыдущий результат битвы для расчета страйков
 
         // Параметры
-        internal int Morale { get; set; }// Уровень морали, умноженный на 100
-        internal int Luck { get; set; }// Уровень удачи (от 0 до 100)
-        internal int Mood { get; set; }// Уровень настроения, умноженный на 100
+        internal int Morale { get; set; }// Уровень морали
+        internal int Luck { get; set; }// Уровень удачи (от -100 до 100)
 
         // Характеристики для работы с едой
         internal int CurrentSatiety { get; private set; }// Уровень еды (+ сытость, - голод), умноженный на 100
@@ -499,6 +498,11 @@ namespace Fantasy_Kingdoms_Battle
             CalcLoyalty();
         }
 
+        private void CalcHonor()
+        {
+
+        }
+
         private void CalcEnthusiasm()
         {
             Enthusiasm = 20;
@@ -508,6 +512,16 @@ namespace Fantasy_Kingdoms_Battle
             {
                 SetIsDead(ReasonOfDeath.SuicideByHopelessness);
             }*/
+        }
+
+        private void CalcMorale()
+        {
+
+        }
+
+        private void CalcLuck()
+        {
+
         }
 
         private void CalcLoyalty()
