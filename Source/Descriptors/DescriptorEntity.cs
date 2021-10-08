@@ -14,7 +14,7 @@ namespace Fantasy_Kingdoms_Battle
             Description = GetDescription(n, "Description");            
             imageIndex = GetIntegerNotNull(n, "ImageIndex");
             if (imageIndex > 0)
-                imageIndex += ShiftImageIndex() - 1;// Для удобства людей, нумерация иконов в конфигурации идет с 1, а не с 0.
+                imageIndex += ShiftImageIndex() - 1;// Для удобства людей, нумерация иконок в конфигурации идет с 1, а не с 0.
 
             CheckData();
         }
