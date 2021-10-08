@@ -183,6 +183,9 @@
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
     <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
+    <Perks>
+      <Perk>PerkWarrior</Perk>
+    </Perks>
     <Properties>
       <MinFoodOnHire>10</MinFoodOnHire>
       <MaxFoodOnHire>30</MaxFoodOnHire>
