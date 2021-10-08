@@ -23,9 +23,9 @@ namespace Fantasy_Kingdoms_Battle
                 + " " + GetRandomName(pb.TypeConstruction.TrainedHero.SurnameFromTypeHero == null ? pb.TypeConstruction.TrainedHero.Surnames : pb.TypeConstruction.TrainedHero.Surnames);
 
             // 
-            CurrentSatiety = pb.Lobby.Rnd.Next(pb.TypeConstruction.TrainedHero.MinSatietyOnHire, pb.TypeConstruction.TrainedHero.MaxSatietyOnHire + 1);
-            ReductionSatietyPerDay = pb.TypeConstruction.TrainedHero.ReductionSatietyPerDay;
-            MaxSatiety = pb.TypeConstruction.TrainedHero.MaxSatiety;
+            CurrentSatiety = pb.Lobby.Rnd.Next(pb.TypeConstruction.TrainedHero.MinFoodOnHire, pb.TypeConstruction.TrainedHero.MaxFoodOnHire + 1);
+            ReductionSatietyPerDay = pb.TypeConstruction.TrainedHero.ReductionFoodPerDay;
+            MaxSatiety = pb.TypeConstruction.TrainedHero.MaxFood;
             EnthusiasmPerDay = pb.TypeConstruction.TrainedHero.EnthusiasmPerDay;
 
             Initialize();
@@ -46,9 +46,9 @@ namespace Fantasy_Kingdoms_Battle
             //
             if (pb.TypeConstruction.TrainedHero.CategoryCreature == CategoryCreature.Hero)
             {
-                CurrentSatiety = pb.Lobby.Rnd.Next(pb.TypeConstruction.TrainedHero.MinSatietyOnHire, pb.TypeConstruction.TrainedHero.MaxSatietyOnHire + 1);
-                ReductionSatietyPerDay = pb.TypeConstruction.TrainedHero.ReductionSatietyPerDay;
-                MaxSatiety = pb.TypeConstruction.TrainedHero.MaxSatiety;
+                CurrentSatiety = pb.Lobby.Rnd.Next(pb.TypeConstruction.TrainedHero.MinFoodOnHire, pb.TypeConstruction.TrainedHero.MaxFoodOnHire + 1);
+                ReductionSatietyPerDay = pb.TypeConstruction.TrainedHero.ReductionFoodPerDay;
+                MaxSatiety = pb.TypeConstruction.TrainedHero.MaxFood;
             }
 
             Initialize();

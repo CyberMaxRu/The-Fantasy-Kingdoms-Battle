@@ -119,10 +119,10 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
-            MinSatietyOnHire = GetInteger(n, "Properties/MinFoodOnHire");
-            MaxSatietyOnHire = GetInteger(n, "Properties/MaxFoodOnHire");
-            MaxSatiety = GetInteger(n, "Properties/MaxFood");
-            ReductionSatietyPerDay = GetInteger(n, "Properties/FoodPerDay");
+            MinFoodOnHire = GetInteger(n, "Properties/MinFoodOnHire");
+            MaxFoodOnHire = GetInteger(n, "Properties/MaxFoodOnHire");
+            MaxFood = GetInteger(n, "Properties/MaxFood");
+            ReductionFoodPerDay = GetInteger(n, "Properties/FoodPerDay");
             EnthusiasmPerDay = GetInteger(n, "Properties/EnthusiasmPerDay");
             Loyalty = GetInteger(n, "Properties/Loyalty");
 
@@ -238,16 +238,16 @@ namespace Fantasy_Kingdoms_Battle
 
                 Debug.Assert(CoefficientFlags != null);
 
-                Debug.Assert(MinSatietyOnHire > 0);
-                Debug.Assert(MaxSatietyOnHire > 0);
-                Debug.Assert(MaxSatiety > 0);
+                Debug.Assert(MinFoodOnHire > 0);
+                Debug.Assert(MaxFoodOnHire > 0);
+                Debug.Assert(MaxFood > 0);
                 Debug.Assert(EnthusiasmPerDay > 0);
                 Debug.Assert(Loyalty >= -100);
                 Debug.Assert(Loyalty <= 100);
 
-                Debug.Assert(MinSatietyOnHire <= MaxSatietyOnHire);
-                Debug.Assert(MaxSatietyOnHire <= MaxSatiety);
-                Debug.Assert(ReductionSatietyPerDay < MaxSatiety);
+                Debug.Assert(MinFoodOnHire <= MaxFoodOnHire);
+                Debug.Assert(MaxFoodOnHire <= MaxFood);
+                Debug.Assert(ReductionFoodPerDay < MaxFood);
             }
             else
             {
@@ -255,10 +255,10 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(PriorityConstructionForShoppings.Count == 0);
                 Debug.Assert(CoefficientFlags is null);
 
-                Debug.Assert(MinSatietyOnHire == 0);
-                Debug.Assert(MaxSatietyOnHire == 0);
-                Debug.Assert(MaxSatiety == 0);
-                Debug.Assert(ReductionSatietyPerDay == 0);
+                Debug.Assert(MinFoodOnHire == 0);
+                Debug.Assert(MaxFoodOnHire == 0);
+                Debug.Assert(MaxFood == 0);
+                Debug.Assert(ReductionFoodPerDay == 0);
                 Debug.Assert(EnthusiasmPerDay == 0);
                 Debug.Assert(Loyalty == 0);
             }
@@ -312,11 +312,12 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorCreature NameFromTypeHero { get; private set; }
         internal DescriptorCreature SurnameFromTypeHero { get; private set; }
 
-        // Свойства по еде
-        internal int MinSatietyOnHire { get; }// Минимальное количество сытости при найме
-        internal int MaxSatietyOnHire { get; }// Максимальное количество сытости при найме
-        internal int MaxSatiety { get; }// Максимальная сытость
-        internal int ReductionSatietyPerDay { get; }// Уменьшение сытости в день
+        // Потребности
+        internal int MinFoodOnHire { get; }// Минимальный уровень еды при найме
+        internal int MaxFoodOnHire { get; }// Максимальный уровень еды при найме
+        internal int MaxFood { get; }// Максимальный уровень еды
+        internal int ReductionFoodPerDay { get; }// Потребление еды в день
+
         internal int EnthusiasmPerDay { get; }// Уменьшение энтузиазма в день
         internal int Loyalty { get; }// Базовая лояльность
 
