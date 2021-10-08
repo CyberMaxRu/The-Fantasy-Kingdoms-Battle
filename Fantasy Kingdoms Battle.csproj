@@ -63,6 +63,7 @@
     <Compile Include="Source\Descriptors\Construction\DescriptorConstructionEvent.cs" />
     <Compile Include="Source\Descriptors\Construction\DescriptorTypeConstruction.cs" />
     <Compile Include="Source\Descriptors\Creature\DescriptorTypeAbility.cs" />
+    <Compile Include="Source\Descriptors\Creature\ListDescriptorPerks.cs" />
     <Compile Include="Source\Descriptors\Descriptor.cs" />
     <Compile Include="Source\Descriptors\DescriptorWithID.cs" />
     <Compile Include="Source\Lobby\BigEntity.cs" />
