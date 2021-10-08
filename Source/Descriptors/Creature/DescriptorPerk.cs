@@ -13,7 +13,15 @@ namespace Fantasy_Kingdoms_Battle
     {
         public DescriptorPerk(XmlNode n) : base(n)
         {
-            Loyalty = XmlUtils.GetInteger(n, "Loyalty");
+            Honor = XmlUtils.GetInteger(n, "Honor");
+            Enthusiasm = XmlUtils.GetInteger(n, "Enthusiasm");
+            Morale = XmlUtils.GetInteger(n, "Morale");
+            Luck = XmlUtils.GetInteger(n, "Luck");
+
+            //Debug.Assert(Honor <= 0);
+            //Debug.Assert(Honor > 0);
+            Debug.Assert(Enthusiasm >= 0);
+            //Debug.Assert(Luck >= 0);
 
             Debug.Assert(Loyalty >= 0);
             Debug.Assert(Loyalty <= 100);
@@ -25,6 +33,10 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        internal int Honor { get; }
+        internal int Enthusiasm { get; }
+        internal int Morale { get; }
+        internal int Luck { get; }
         internal int Loyalty { get; }// Дает уровень лояльности
     }
 }
