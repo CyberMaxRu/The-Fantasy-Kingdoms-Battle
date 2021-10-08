@@ -90,8 +90,18 @@ namespace Fantasy_Kingdoms_Battle
         internal Item Quiver { get; private set; }// Колчан
         internal StateCreature StateCreature { get; private set; }// Состояние (на карте)
 
-        //
+        // Характеристики
+        internal int Honor { get; private set; }// Уровень чести
+        internal int Enthusiasm { get; private set; }// Уровень энтузиазма
+        internal int Morale { get; private set; }// Уровень морали
+        internal int Luck { get; private set; }// Уровень удачи
 
+        internal List<Perk> ListSourceHonor { get; } = new List<Perk>();// Источники чести
+        internal List<Perk> ListSourceEnthusiasm { get; } = new List<Perk>();// Источники энтузиазма
+        internal List<Perk> ListSourceMorale { get; } = new List<Perk>();// Источники морали
+        internal List<Perk> ListSourceLuck { get; } = new List<Perk>();// Источники удачи
+
+        //
         internal bool IsLive { get; private set; } = true;// Существо живо
         internal int DayOfDeath { get; private set; }// День смерти
         internal ReasonOfDeath ReasonOfDeath { get; private set; } = ReasonOfDeath.None;// Причина смерти
@@ -358,6 +368,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal virtual void PerksChanged()
         {
+            CalcHonor();
+            CalcEnthusiasm();
+            CalcMorale();
+            CalcLuck();
         }
 
         internal override void MakeMenu(VCMenuCell[,] menu)
@@ -365,6 +379,66 @@ namespace Fantasy_Kingdoms_Battle
 
         }
 
+        private void CalcHonor()
+        {
+            ListSourceHonor.Clear();
 
+            foreach (Perk p in Perks)
+            {
+                if (p.Descriptor.Honor != 0)
+                {
+                    ListSourceHonor.Add(p);
+                    Honor += p.Descriptor.Honor;
+                }
+            }
+        }
+
+        private void CalcEnthusiasm()
+        {
+            ListSourceEnthusiasm.Clear();
+
+            foreach (Perk p in Perks)
+            {
+                if (p.Descriptor.Enthusiasm != 0)
+                {
+                    ListSourceEnthusiasm.Add(p);
+                    Enthusiasm += p.Descriptor.Enthusiasm;
+                }
+            }
+
+            /*Enthusiasm -= EnthusiasmPerDay;
+            if (Enthusiasm <= 0)
+            {
+                SetIsDead(ReasonOfDeath.SuicideByHopelessness);
+            }*/
+        }
+
+        private void CalcMorale()
+        {
+            ListSourceMorale.Clear();
+
+            foreach (Perk p in Perks)
+            {
+                if (p.Descriptor.Morale != 0)
+                {
+                    ListSourceMorale.Add(p);
+                    Morale += p.Descriptor.Morale;
+                }
+            }
+        }
+
+        private void CalcLuck()
+        {
+            ListSourceLuck.Clear();
+
+            foreach (Perk p in Perks)
+            {
+                if (p.Descriptor.Luck != 0)
+                {
+                    ListSourceLuck.Add(p);
+                    Luck += p.Descriptor.Luck;
+                }
+            }
+        }
     }
 }

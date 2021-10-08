@@ -80,18 +80,12 @@ namespace Fantasy_Kingdoms_Battle
         internal int DrawStreak { get; }// Ничьих подряд
         internal ResultBattle PriorResultBattle { get; set; }// Предыдущий результат битвы для расчета страйков
 
-        // Параметры
-        internal int Morale { get; set; }// Уровень морали
-        internal int Luck { get; set; }// Уровень удачи (от -100 до 100)
 
         // Характеристики для работы с едой
         internal int CurrentSatiety { get; private set; }// Уровень еды (+ сытость, - голод), умноженный на 100
         internal int MaxSatiety { get; private set; }// Максимальная сытость
         internal int ReductionSatietyPerDay { get; private set; }// Потребление еды в день
-        internal int Enthusiasm { get; private set; }// Энтузиазм
         internal int EnthusiasmPerDay { get; private set; }// Уменьшение энтузиазма в день
-        internal int Loyalty { get; private set; }// Лояльность
-        internal List<Perk> ListSourceLoyalty = new List<Perk>();// Источники лояльности
 
         //internal bool Selected { get; set; }
 
@@ -399,8 +393,7 @@ namespace Fantasy_Kingdoms_Battle
             CounterConstructionForBuy = TypeCreature.MaxConstructionForBuyPerDay;
 
             // Считаем энтузиазм и лояльность
-            CalcEnthusiasm();
-            CalcLoyalty();
+            PerksChanged();
         }
 
         internal void PrepareTurn()
@@ -489,52 +482,6 @@ namespace Fantasy_Kingdoms_Battle
                 default:
                     throw new Exception($"Неизвестная причина смерти: {ReasonOfDeath}.");
             }
-        }
-
-        internal override void PerksChanged()
-        {
-            base.PerksChanged();
-
-            CalcLoyalty();
-        }
-
-        private void CalcHonor()
-        {
-
-        }
-
-        private void CalcEnthusiasm()
-        {
-            Enthusiasm = 20;
-
-            /*Enthusiasm -= EnthusiasmPerDay;
-            if (Enthusiasm <= 0)
-            {
-                SetIsDead(ReasonOfDeath.SuicideByHopelessness);
-            }*/
-        }
-
-        private void CalcMorale()
-        {
-
-        }
-
-        private void CalcLuck()
-        {
-
-        }
-
-        private void CalcLoyalty()
-        {
-            ListSourceLoyalty.Clear();
-            Loyalty = TypeCreature.Loyalty;
-
-            foreach (Perk p in Perks)
-                if (p.Descriptor.Loyalty != 0)
-                {
-                    ListSourceLoyalty.Add(p);
-                    Loyalty += p.Descriptor.Loyalty;
-                }
         }
     }
 }
