@@ -389,6 +389,11 @@ namespace Fantasy_Kingdoms_Battle
                     cp.Value += value;
                 }
             }
+
+            if (cp.Value > cp.Property.MaxValue)
+                cp.Value = cp.Property.MaxValue;
+            else if (cp.Value < cp.Property.MinValue)
+                cp.Value = cp.Property.MinValue;
         }
     }
 }
