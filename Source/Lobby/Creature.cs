@@ -382,6 +382,7 @@ namespace Fantasy_Kingdoms_Battle
         private void CalcHonor()
         {
             ListSourceHonor.Clear();
+            Honor = 0;
 
             foreach (Perk p in Perks)
             {
@@ -396,6 +397,7 @@ namespace Fantasy_Kingdoms_Battle
         private void CalcEnthusiasm()
         {
             ListSourceEnthusiasm.Clear();
+            Enthusiasm = 0;
 
             foreach (Perk p in Perks)
             {
@@ -416,6 +418,7 @@ namespace Fantasy_Kingdoms_Battle
         private void CalcMorale()
         {
             ListSourceMorale.Clear();
+            Morale = 0;
 
             foreach (Perk p in Perks)
             {
@@ -430,6 +433,7 @@ namespace Fantasy_Kingdoms_Battle
         private void CalcLuck()
         {
             ListSourceLuck.Clear();
+            Luck = 0;
 
             foreach (Perk p in Perks)
             {
