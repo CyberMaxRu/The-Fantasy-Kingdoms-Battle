@@ -80,7 +80,7 @@ namespace Fantasy_Kingdoms_Battle
             idvHonor.ShowHint += IdvHonor_ShowHint;
 
             idvEnthusiasm = new VCIconAndDigitValue(panelStatistics, idvHonor.NextLeft(), idvHonor.ShiftY, 104, FormMain.GUI_16_ENTHUSIASM);
-            idvEnthusiasm.ShowHint += IdvEnthusiasm_ShowHint1;
+            idvEnthusiasm.ShowHint += IdvEnthusiasm_ShowHint;
 
             idvMorale = new VCIconAndDigitValue(panelStatistics, 0, idvHonor.NextTop() - 4, 104, FormMain.GUI_16_MORALE);
             idvMorale.ShowHint += IdvMorale_ShowHint;
@@ -178,11 +178,6 @@ namespace Fantasy_Kingdoms_Battle
 
         }
 
-        private void IdvEnthusiasm_ShowHint1(object sender, EventArgs e)
-        {
-
-        }
-
         private void IdvRest_ShowHint(object sender, EventArgs e)
         {
 
@@ -198,42 +193,46 @@ namespace Fantasy_Kingdoms_Battle
 
         }
 
-        private void IdvLuck_ShowHint(object sender, EventArgs e)
+        private void ShowHintForProperty(CreatureProperty cp)
         {
-            
-        }
-
-        private void IdvMorale_ShowHint(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void IdvHonor_ShowHint(object sender, EventArgs e)
-        {
-            Program.formMain.formHint.AddStep2Header(Hero.Honor.Property.Name);
-            Program.formMain.formHint.AddStep3Type(Hero.Honor.Property.NameType);
-            Program.formMain.formHint.AddStep4Level($"{Hero.Honor.Property.Name}: {DecIntegerBy10(Hero.Honor.Value)}");
-            Program.formMain.formHint.AddStep5Description("");
-            if (Hero.Honor.ListSource.Count > 0)
+            Program.formMain.formHint.AddStep2Header(cp.Property.Name);
+            Program.formMain.formHint.AddStep3Type(cp.Property.NameType);
+            Program.formMain.formHint.AddStep4Level($"{cp.Property.Name}: {DecIntegerBy10(cp.Value)}");
+            Program.formMain.formHint.AddStep5Description(cp.Property.Description);
+            if (cp.ListSource.Count > 0)
             {
                 List<(DescriptorEntity, string)> list = new List<(DescriptorEntity, string)>();
 
-                foreach (Perk p in Hero.Honor.ListSource)
+                foreach (Perk p in cp.ListSource)
                 {
-                    Debug.Assert(p.Descriptor.GetValueProperty(NamePropertyCreature.Honor) != 0);
+                    Debug.Assert(p.Descriptor.GetValueProperty(cp.Property.NameProperty) != 0);
 
-                    list.Add((p.Descriptor, DecIntegerBy10(p.Descriptor.GetValueProperty(NamePropertyCreature.Honor), true)));
+                    list.Add((p.Descriptor, DecIntegerBy10(p.Descriptor.GetValueProperty(cp.Property.NameProperty), true)));
                 }
 
+                Debug.Assert(list.Count > 0);
                 Program.formMain.formHint.AddStep19Descriptors(list);
             }
         }
 
+        private void IdvLuck_ShowHint(object sender, EventArgs e)
+        {
+            ShowHintForProperty(Hero.Luck);
+        }
+
+        private void IdvMorale_ShowHint(object sender, EventArgs e)
+        {
+            ShowHintForProperty(Hero.Morale);
+        }
+
+        private void IdvHonor_ShowHint(object sender, EventArgs e)
+        {
+            ShowHintForProperty(Hero.Honor);
+        }
+
         private void IdvEnthusiasm_ShowHint(object sender, EventArgs e)
         {
-            Program.formMain.formHint.AddStep2Header("Энергия");
-            //Program.formMain.formHint.AddStep4Level()
-            Program.formMain.formHint.AddStep5Description($"Энергия: {DecIntegerBy10(Hero.Enthusiasm.Value)}{Environment.NewLine}Уменьшение в день (на перк): -{DecIntegerBy10(Hero.EnthusiasmPerDay)}");
+            ShowHintForProperty(Hero.Enthusiasm);
         }
 
         private void IdvFood_ShowHint(object sender, EventArgs e)
@@ -280,7 +279,7 @@ namespace Fantasy_Kingdoms_Battle
             idvHonor.Text = DecIntegerBy10(Hero.Honor.Value).ToString();
             idvEnthusiasm.Text = DecIntegerBy10(Hero.Enthusiasm.Value).ToString();
             idvMorale.Text = DecIntegerBy10(Hero.Morale.Value).ToString();
-            idvLuck.Text = FormatInteger(Hero.Luck.Value);
+            idvLuck.Text = DecIntegerBy10(Hero.Luck.Value).ToString();
 
             idvFood.Text = DecIntegerBy10(Hero.CurrentSatiety).ToString();
             //idvEnergy.Text = DecIntegerBy10(Hero.Enthusiasm).ToString();
