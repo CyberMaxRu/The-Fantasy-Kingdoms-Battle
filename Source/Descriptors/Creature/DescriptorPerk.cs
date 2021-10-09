@@ -56,14 +56,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int GetValueProperty(NamePropertyCreature name)
         {
-            string idProperty = name.ToString();
-
             foreach ((DescriptorPropertyCreature, int) d in ListProperty)
             {
-                if (d.Item1.ID != idProperty)
-                {
+                if (d.Item1.NameProperty == name)
                     return d.Item2;
-                }
             }
 
             return 0;
