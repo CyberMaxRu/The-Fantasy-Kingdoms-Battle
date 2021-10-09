@@ -210,19 +210,19 @@ namespace Fantasy_Kingdoms_Battle
 
         private void IdvHonor_ShowHint(object sender, EventArgs e)
         {
-            Program.formMain.formHint.AddStep2Header("Честь");
-            Program.formMain.formHint.AddStep3Type("Основная характеристика");
-            Program.formMain.formHint.AddStep4Level($"Честь: {DecIntegerBy10(Hero.Honor)}");
-            Program.formMain.formHint.AddStep5Description("От чести зависят действия героя. Бесчестный герой ворует, грабит. Герой с высокой честью не замарает себя такими поступками.");
-            if (Hero.ListSourceHonor.Count > 0)
+            Program.formMain.formHint.AddStep2Header(Hero.Honor.Property.Name);
+            Program.formMain.formHint.AddStep3Type(Hero.Honor.Property.NameType);
+            Program.formMain.formHint.AddStep4Level($"{Hero.Honor.Property.Name}: {DecIntegerBy10(Hero.Honor.Value)}");
+            Program.formMain.formHint.AddStep5Description("");
+            if (Hero.Honor.ListSource.Count > 0)
             {
                 List<(DescriptorEntity, string)> list = new List<(DescriptorEntity, string)>();
 
-                foreach (Perk p in Hero.ListSourceHonor)
+                foreach (Perk p in Hero.Honor.ListSource)
                 {
-                    Debug.Assert(p.Descriptor.Honor != 0);
+                    Debug.Assert(p.Descriptor.GetValueProperty(NamePropertyCreature.Honor) != 0);
 
-                    list.Add((p.Descriptor, DecIntegerBy10(p.Descriptor.Honor, true)));
+                    list.Add((p.Descriptor, DecIntegerBy10(p.Descriptor.GetValueProperty(NamePropertyCreature.Honor), true)));
                 }
 
                 Program.formMain.formHint.AddStep19Descriptors(list);
@@ -233,7 +233,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Program.formMain.formHint.AddStep2Header("Энергия");
             //Program.formMain.formHint.AddStep4Level()
-            Program.formMain.formHint.AddStep5Description($"Энергия: {DecIntegerBy10(Hero.Enthusiasm)}{Environment.NewLine}Уменьшение в день (на перк): -{DecIntegerBy10(Hero.EnthusiasmPerDay)}");
+            Program.formMain.formHint.AddStep5Description($"Энергия: {DecIntegerBy10(Hero.Enthusiasm.Value)}{Environment.NewLine}Уменьшение в день (на перк): -{DecIntegerBy10(Hero.EnthusiasmPerDay)}");
         }
 
         private void IdvFood_ShowHint(object sender, EventArgs e)
@@ -277,10 +277,10 @@ namespace Fantasy_Kingdoms_Battle
             btnTarget.Entity = Hero.TargetByFlag;
             lvGold.Text = Hero.Gold.ToString();
 
-            idvHonor.Text = DecIntegerBy10(Hero.Honor).ToString();
-            idvEnthusiasm.Text = DecIntegerBy10(Hero.Enthusiasm).ToString();
-            idvMorale.Text = DecIntegerBy10(Hero.Morale).ToString();
-            idvLuck.Text = FormatInteger(Hero.Luck);
+            idvHonor.Text = DecIntegerBy10(Hero.Honor.Value).ToString();
+            idvEnthusiasm.Text = DecIntegerBy10(Hero.Enthusiasm.Value).ToString();
+            idvMorale.Text = DecIntegerBy10(Hero.Morale.Value).ToString();
+            idvLuck.Text = FormatInteger(Hero.Luck.Value);
 
             idvFood.Text = DecIntegerBy10(Hero.CurrentSatiety).ToString();
             //idvEnergy.Text = DecIntegerBy10(Hero.Enthusiasm).ToString();

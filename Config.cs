@@ -166,6 +166,14 @@ namespace Fantasy_Kingdoms_Battle
                 TypeAttacks.Add(new DescriptorAttack(n));
             }
 
+            // Загрузка конфигурации свойств существ
+            xmlDoc = CreateXmlDocument(@"Config\Descriptors\PropertiesCreature.xml");
+
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/PropertyCreature"))
+            {
+                PropertiesCreature.Add(new DescriptorPropertyCreature(n));
+            }
+
             // Загрузка конфигурации перков
             xmlDoc = CreateXmlDocument(@"Config\Descriptors\Perks.xml");
 
@@ -249,6 +257,9 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorGroupItems i in GroupItems)
                 i.TuneDeferredLinks();
 
+            foreach (DescriptorPropertyCreature pc in PropertiesCreature)
+                pc.TuneDeferredLinks();
+
             foreach (DescriptorCreature tc in Creatures)
                 tc.TuneDeferredLinks();
 
@@ -293,6 +304,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<DescriptorSpecialization> Specializations { get; } = new List<DescriptorSpecialization>();
         internal List<DescriptorSecondarySkill> SecondarySkills { get; } = new List<DescriptorSecondarySkill>();
         internal List<StateCreature> StatesCreature { get; } = new List<StateCreature>();
+        internal List<DescriptorPropertyCreature> PropertiesCreature { get; } = new List<DescriptorPropertyCreature>();
         internal List<TypeCreature> TypeCreatures { get; } = new List<TypeCreature>();
         internal List<DescriptorCreature> Creatures { get; } = new List<DescriptorCreature>();
         internal List<DescriptorGroupItems> GroupItems { get; } = new List<DescriptorGroupItems>();
@@ -548,6 +560,22 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             throw new Exception("Состояние существа " + ID + " не найдено.");
+        }
+
+        internal DescriptorPropertyCreature FindPropertyCreature(NamePropertyCreature npc)
+        {
+            return FindPropertyCreature(npc.ToString());
+        }
+
+        internal DescriptorPropertyCreature FindPropertyCreature(string ID)
+        {
+            foreach (DescriptorPropertyCreature pc in PropertiesCreature)
+            {
+                if (pc.ID == ID)
+                    return pc;
+            }
+
+            throw new Exception("Свойство существа " + ID + " не найдено.");
         }
 
         internal TypeCreature FindTypeCreature(string ID)

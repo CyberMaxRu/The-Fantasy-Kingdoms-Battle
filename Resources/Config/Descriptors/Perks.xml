@@ -56,9 +56,11 @@
     <Name>Воин</Name>
     <Description></Description>
     <ImageIndex Size="128">63</ImageIndex>
-    <Honor>10</Honor>
-    <Enthusiasm>20</Enthusiasm>
-    <Morale>10</Morale>
-    <Luck>3</Luck>
+    <Properties>
+      <Honor>10</Honor>
+      <Enthusiasm>20</Enthusiasm>
+      <Morale>10</Morale>
+      <Luck>3</Luck>
+    </Properties>
   </Perk>
 </Descriptors>

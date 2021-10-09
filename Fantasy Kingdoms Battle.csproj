@@ -62,12 +62,14 @@
   <ItemGroup>
     <Compile Include="Source\Descriptors\Construction\DescriptorConstructionEvent.cs" />
     <Compile Include="Source\Descriptors\Construction\DescriptorTypeConstruction.cs" />
+    <Compile Include="Source\Descriptors\Creature\DescriptorPropertyCreature.cs" />
     <Compile Include="Source\Descriptors\Creature\DescriptorTypeAbility.cs" />
     <Compile Include="Source\Descriptors\Creature\ListDescriptorPerks.cs" />
     <Compile Include="Source\Descriptors\Descriptor.cs" />
     <Compile Include="Source\Descriptors\DescriptorWithID.cs" />
     <Compile Include="Source\Lobby\BigEntity.cs" />
     <Compile Include="Source\Lobby\ConstructionProduct.cs" />
+    <Compile Include="Source\Lobby\CreatureProperty.cs" />
     <Compile Include="Source\Lobby\EntityForCreature.cs" />
     <Compile Include="Source\Lobby\GroupItem.cs" />
     <Compile Include="Source\Lobby\Perk.cs" />
@@ -228,6 +230,7 @@
     <Content Include="Resources\Config\ComputerPlayers.xml" />
     <Content Include="Resources\Config\Descriptors\ConstructionEvents.xml" />
     <Content Include="Resources\Config\Descriptors\GroupItems.xml" />
+    <Content Include="Resources\Config\Descriptors\PropertiesCreature.xml" />
     <Content Include="Resources\Config\Descriptors\SecondarySkills.xml" />
     <Content Include="Resources\Config\Descriptors\Specializations.xml" />
     <Content Include="Resources\Config\Descriptors\TypeAbilities.xml" />

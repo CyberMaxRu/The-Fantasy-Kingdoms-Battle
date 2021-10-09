@@ -17,14 +17,32 @@ namespace Fantasy_Kingdoms_Battle
             if ((attrIcon != null) && (attrIcon.Value == "128"))
                 ImageIndex = XmlUtils.GetIntegerNotNull(n, "ImageIndex") - 1;
 
-            Honor = XmlUtils.GetInteger(n, "Honor");
-            Enthusiasm = XmlUtils.GetInteger(n, "Enthusiasm");
-            Morale = XmlUtils.GetInteger(n, "Morale");
-            Luck = XmlUtils.GetInteger(n, "Luck");
+            // Загружаем изменяемые свойства
+            XmlNode np = n.SelectSingleNode("Properties");
+            if (np != null)
+            {
+                string idProperty;
+                int valueProperty;
+                DescriptorPropertyCreature dpc;
+                for (int i = 0; i < np.ChildNodes.Count; i++)
+                {
+                    idProperty = np.ChildNodes[i].Name;
+                    valueProperty = Convert.ToInt32(np.ChildNodes[i].Value);
+                    dpc = Config.FindPropertyCreature(idProperty);
+
+                    // Проверяем, что нет повтора свойства
+                    foreach ((DescriptorPropertyCreature, int) dpc2 in ListProperty)
+                    {
+                        Debug.Assert(dpc2.Item1.ID != idProperty);
+                    }
+
+                    ListProperty.Add((dpc, valueProperty));
+                }
+            }
 
             //Debug.Assert(Honor <= 0);
             //Debug.Assert(Honor > 0);
-            Debug.Assert(Enthusiasm >= 0);
+            //Debug.Assert(Enthusiasm >= 0);
             //Debug.Assert(Luck >= 0);
 
             foreach (DescriptorPerk dp in Config.Perks)
@@ -34,9 +52,21 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal int Honor { get; }
-        internal int Enthusiasm { get; }
-        internal int Morale { get; }
-        internal int Luck { get; }
+        internal List<(DescriptorPropertyCreature, int)> ListProperty = new List<(DescriptorPropertyCreature, int)>();
+
+        internal int GetValueProperty(NamePropertyCreature name)
+        {
+            string idProperty = name.ToString();
+
+            foreach ((DescriptorPropertyCreature, int) d in ListProperty)
+            {
+                if (d.Item1.ID != idProperty)
+                {
+                    return d.Item2;
+                }
+            }
+
+            return 0;
+        }
     }
 }

@@ -91,15 +91,10 @@ namespace Fantasy_Kingdoms_Battle
         internal StateCreature StateCreature { get; private set; }// Состояние (на карте)
 
         // Характеристики
-        internal int Honor { get; private set; }// Уровень чести
-        internal int Enthusiasm { get; private set; }// Уровень энтузиазма
-        internal int Morale { get; private set; }// Уровень морали
-        internal int Luck { get; private set; }// Уровень удачи
-
-        internal List<Perk> ListSourceHonor { get; } = new List<Perk>();// Источники чести
-        internal List<Perk> ListSourceEnthusiasm { get; } = new List<Perk>();// Источники энтузиазма
-        internal List<Perk> ListSourceMorale { get; } = new List<Perk>();// Источники морали
-        internal List<Perk> ListSourceLuck { get; } = new List<Perk>();// Источники удачи
+        internal CreatureProperty Honor { get; } = new CreatureProperty(FormMain.Config.FindPropertyCreature(NamePropertyCreature.Honor));// Честь
+        internal CreatureProperty Enthusiasm { get; } = new CreatureProperty(FormMain.Config.FindPropertyCreature(NamePropertyCreature.Enthusiasm));// Энтузиазм
+        internal CreatureProperty Morale { get; } = new CreatureProperty(FormMain.Config.FindPropertyCreature(NamePropertyCreature.Morale));// Мораль
+        internal CreatureProperty Luck { get; } = new CreatureProperty(FormMain.Config.FindPropertyCreature(NamePropertyCreature.Luck));// Удача
 
         //
         internal bool IsLive { get; private set; } = true;// Существо живо
@@ -368,10 +363,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal virtual void PerksChanged()
         {
-            CalcHonor();
-            CalcEnthusiasm();
-            CalcMorale();
-            CalcLuck();
+            CalcProperty(Honor);
+            CalcProperty(Enthusiasm);
+            CalcProperty(Morale);
+            CalcProperty(Luck);
         }
 
         internal override void MakeMenu(VCMenuCell[,] menu)
@@ -379,68 +374,19 @@ namespace Fantasy_Kingdoms_Battle
 
         }
 
-        private void CalcHonor()
+        private void CalcProperty(CreatureProperty cp)
         {
-            ListSourceHonor.Clear();
-            Honor = 0;
+            cp.ListSource.Clear();
+            cp.Value = 0;
+            int value;
 
             foreach (Perk p in Perks)
             {
-                if (p.Descriptor.Honor != 0)
+                value = p.Descriptor.GetValueProperty(cp.Property.NameProperty);
+                if (value != 0)
                 {
-                    ListSourceHonor.Add(p);
-                    Honor += p.Descriptor.Honor;
-                }
-            }
-        }
-
-        private void CalcEnthusiasm()
-        {
-            ListSourceEnthusiasm.Clear();
-            Enthusiasm = 0;
-
-            foreach (Perk p in Perks)
-            {
-                if (p.Descriptor.Enthusiasm != 0)
-                {
-                    ListSourceEnthusiasm.Add(p);
-                    Enthusiasm += p.Descriptor.Enthusiasm;
-                }
-            }
-
-            /*Enthusiasm -= EnthusiasmPerDay;
-            if (Enthusiasm <= 0)
-            {
-                SetIsDead(ReasonOfDeath.SuicideByHopelessness);
-            }*/
-        }
-
-        private void CalcMorale()
-        {
-            ListSourceMorale.Clear();
-            Morale = 0;
-
-            foreach (Perk p in Perks)
-            {
-                if (p.Descriptor.Morale != 0)
-                {
-                    ListSourceMorale.Add(p);
-                    Morale += p.Descriptor.Morale;
-                }
-            }
-        }
-
-        private void CalcLuck()
-        {
-            ListSourceLuck.Clear();
-            Luck = 0;
-
-            foreach (Perk p in Perks)
-            {
-                if (p.Descriptor.Luck != 0)
-                {
-                    ListSourceLuck.Add(p);
-                    Luck += p.Descriptor.Luck;
+                    cp.ListSource.Add(p);
+                    cp.Value += value;
                 }
             }
         }

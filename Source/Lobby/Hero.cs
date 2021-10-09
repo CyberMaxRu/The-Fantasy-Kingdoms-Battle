@@ -403,7 +403,7 @@ namespace Fantasy_Kingdoms_Battle
             if ((TypeCreature.CategoryCreature == CategoryCreature.Hero) && (Construction.Lobby.Day > 0))
             {
                 Debug.Assert(CurrentSatiety > 0);
-                Debug.Assert(Enthusiasm > 0);
+                Debug.Assert(Enthusiasm.Value > 0);
                 Debug.Assert(EnthusiasmPerDay > 0);
 
                 // Уменьшаем сытость
