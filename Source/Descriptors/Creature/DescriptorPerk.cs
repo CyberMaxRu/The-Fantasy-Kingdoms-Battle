@@ -27,7 +27,7 @@ namespace Fantasy_Kingdoms_Battle
                 for (int i = 0; i < np.ChildNodes.Count; i++)
                 {
                     idProperty = np.ChildNodes[i].Name;
-                    valueProperty = Convert.ToInt32(np.ChildNodes[i].Value);
+                    valueProperty = Convert.ToInt32(np.ChildNodes[i].InnerText);
                     dpc = Config.FindPropertyCreature(idProperty);
 
                     // Проверяем, что нет повтора свойства
