@@ -490,6 +490,40 @@ namespace Fantasy_Kingdoms_Battle
                 nextTop = lblLuck.NextTop();
             }
         }
+        internal void AddStep9ListNeeds(int[] array)
+        {
+            if ((array != null) && (array.Length > 0))
+            {
+                VCLabelValue lv;
+
+                for (int i = 0; i < array.Length; i++)
+                {
+                    if (array[i] != 0)
+                    {
+                        lv = GetLabel(i);
+                        lv.Visible = true;
+                        lv.ImageIndex = FormMain.Config.NeedsCreature[i].ImageIndex;
+                        lv.Text = Utils.DecIntegerBy10(array[i]);
+                        lv.ShiftY = nextTop;
+
+                        nextTop = lv.NextTop();
+                    }
+                }
+            }
+
+            VCLabelValue GetLabel(int index)
+            {
+                if (index < listLabelNeeds.Count)
+                    return listLabelNeeds[index];
+                else
+                {
+                    VCLabelValue l = new VCLabelValue(this, FormMain.Config.GridSize, 0, Color.White, false);
+                    l.Width = widthControl;
+                    listLabelNeeds.Add(l);
+                    return l;
+                }
+            }
+        }
 
         internal void AddStep9ListNeeds(List<(DescriptorNeed, int)> list)
         {

@@ -93,7 +93,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<Hero> listAttackedHero { get; } = new List<Hero>();// Список героев, откликнувшихся на флаг
 
         // 
-        internal List<(DescriptorNeed, int)> ListNeeds { get; } = new List<(DescriptorNeed, int)>();
+        internal int[] ListNeeds { get; private set; }
 
         internal void Build()
         {
@@ -138,9 +138,10 @@ namespace Fantasy_Kingdoms_Battle
             AddPerksToPlayer();
 
             // Инициализируем удовлетворяемые потребности
+            ListNeeds = new int[FormMain.Config.NeedsCreature.Count];
             foreach ((DescriptorNeed, int) need in TypeConstruction.Levels[Level].ListNeeds)
             {
-                ListNeeds.Add((need.Item1, need.Item2));
+                ListNeeds[need.Item1.Index] = need.Item2;
             }
 
             //
@@ -1169,21 +1170,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void ChangeNeed(NameNeedCreature nameNeed, int value)
         {
-            (DescriptorNeed, int) need = FindNeed(nameNeed);
-            need.Item2 += value;
-        }
-
-        private (DescriptorNeed, int) FindNeed(NameNeedCreature nameNeed)
-        {
-            foreach ((DescriptorNeed, int) need in ListNeeds)
-            {
-                if (need.Item1.NameNeed == nameNeed)
-                    return need;
-            }
-
-            (DescriptorNeed, int) n = (FormMain.Config.FindNeedCreature(nameNeed), 0);
-            ListNeeds.Add(n);
-            return n;
+            ListNeeds[(int)nameNeed] += value;
         }
 
         internal bool GoodsExists(DescriptorItem item)
