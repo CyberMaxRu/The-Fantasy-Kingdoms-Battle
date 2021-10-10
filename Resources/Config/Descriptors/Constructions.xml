@@ -2305,6 +2305,10 @@
         <Cost>500</Cost>
         <Builders>1</Builders>
         <Income>50</Income>
+        <Needs>
+          <Rest>-30</Rest>
+          <Entertainment>-5</Entertainment>
+        </Needs>
       </Level>
       <Level>
         <Number>2</Number>
