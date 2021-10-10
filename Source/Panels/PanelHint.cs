@@ -42,6 +42,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly VCLabelValue lblMorale;
         internal readonly VCLabelValue lblLuck;
         internal readonly VCLabelValue lblLoyalty;
+        private readonly List<VCLabelValue> listLabelNeeds = new List<VCLabelValue>();
         internal readonly VCLabel lblSigner;
         private readonly List<VCCellSimple> listCell = new List<VCCellSimple>();
         private readonly List<(VCCellSimple, VCLabel)> listPerks = new List<(VCCellSimple, VCLabel)>();
@@ -249,6 +250,10 @@ namespace Fantasy_Kingdoms_Battle
             lblEnthusiasm.Visible = false;
             lblMorale.Visible = false;
             lblLuck.Visible = false;
+
+            foreach (VCLabelValue ln in listLabelNeeds)
+                ln.Visible = false;
+
             lblLoyalty.Visible = false;
             lblSigner.Visible = false;
 
@@ -308,7 +313,7 @@ namespace Fantasy_Kingdoms_Battle
             if (header.Length == 0)
             {
                 Debug.Assert(lblName.Visible);
-            }              
+            }
 
             Width = 256;
             ExistHint = true;
@@ -483,6 +488,42 @@ namespace Fantasy_Kingdoms_Battle
                 lblLuck.Visible = true;
 
                 nextTop = lblLuck.NextTop();
+            }
+        }
+
+        internal void AddStep9ListNeeds(List<(DescriptorNeed, int)> list)
+        {
+            if (list.Count > 0)
+            {
+                (DescriptorNeed, int) need;
+                VCLabelValue lv;
+
+                for (int i = 0; i < list.Count; i++)
+                {
+                    need = list[i];
+                    Debug.Assert(need.Item2 != 0);
+
+                    lv = GetLabel(i);
+                    lv.Visible = true;
+                    lv.ImageIndex = need.Item1.ImageIndex;
+                    lv.Text = Utils.DecIntegerBy10(need.Item2);
+                    lv.ShiftY = nextTop;
+
+                    nextTop = lv.NextTop();
+                }
+            }
+
+            VCLabelValue GetLabel(int index)
+            {
+                if (index < listLabelNeeds.Count)
+                    return listLabelNeeds[index];
+                else
+                {
+                    VCLabelValue l = new VCLabelValue(this, FormMain.Config.GridSize, 0, Color.White, false);
+                    l.Width = widthControl;
+                    listLabelNeeds.Add(l);
+                    return l;
+                }
             }
         }
 
