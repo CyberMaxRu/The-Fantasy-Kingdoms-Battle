@@ -1156,6 +1156,34 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             Items.Add(cp);
+
+            // Если это пристройка, то прибавляем ее удовлетворение потребностей к текущим
+            if ((cp.DescriptorItem != null) && (cp.DescriptorItem.CategoryItem == CategoryItem.Extension))
+            { 
+                foreach ((DescriptorNeed, int) need in cp.DescriptorItem.ListNeeds)
+                {
+                    ChangeNeed(need.Item1.NameNeed, need.Item2);
+                }
+            }
+        }
+
+        private void ChangeNeed(NameNeedCreature nameNeed, int value)
+        {
+            (DescriptorNeed, int) need = FindNeed(nameNeed);
+            need.Item2 += value;
+        }
+
+        private (DescriptorNeed, int) FindNeed(NameNeedCreature nameNeed)
+        {
+            foreach ((DescriptorNeed, int) need in ListNeeds)
+            {
+                if (need.Item1.NameNeed == nameNeed)
+                    return need;
+            }
+
+            (DescriptorNeed, int) n = (FormMain.Config.FindNeedCreature(nameNeed), 0);
+            ListNeeds.Add(n);
+            return n;
         }
 
         internal bool GoodsExists(DescriptorItem item)
