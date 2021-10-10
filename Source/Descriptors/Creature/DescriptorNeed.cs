@@ -16,7 +16,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         public DescriptorNeed(XmlNode n) : base(n)
         {
-            Index = Config.PropertiesCreature.Count;
+            Index = Config.NeedsCreature.Count;
 
             NameNeed = (NameNeedCreature)Enum.Parse(typeof(NameNeedCreature), ID);
             ReasonOfDeath = (ReasonOfDeath)Enum.Parse(typeof(ReasonOfDeath), GetStringNotNull(n, "ReasonOfDeath"));
