@@ -112,7 +112,6 @@ namespace Fantasy_Kingdoms_Battle
 
     internal sealed class DescriptorCellMenuForConstructionLevel : DescriptorCellMenuForConstruction
     {
-        private List<string> listPerks;
 
         public DescriptorCellMenuForConstructionLevel(int number, Point coord, XmlNode n) : base(coord, n)
         {
@@ -125,25 +124,7 @@ namespace Fantasy_Kingdoms_Battle
             BuildersPerDay = GetInteger(n, "BuildersPerDay");
 
             // Загружаем перки, которые дает сооружение
-            XmlNode np = n.SelectSingleNode("Perks");
-            if (np != null)
-            {
-                listPerks = new List<string>();
-                string namePerk;
-
-                foreach (XmlNode l in np.SelectNodes("Perk"))
-                {
-                    namePerk = l.InnerText;
-
-                    // Проверяем, что такой перк не повторяется
-                    foreach (string namePerk2 in listPerks)
-                    {
-                        Debug.Assert(namePerk != namePerk2);
-                    }
-
-                    listPerks.Add(namePerk);
-                }
-            }
+            Perks = new ListDescriptorPerks(n.SelectSingleNode("Perks"));
 
             // Загружаем потребности
             ListNeeds = new ListNeeds(n.SelectSingleNode("Needs"));
@@ -166,23 +147,14 @@ namespace Fantasy_Kingdoms_Battle
         internal int GreatnessByConstruction { get; }// Дает очков Величия при постройке
         internal int GreatnessPerDay { get; }// Дает очков Величия в день
         internal int BuildersPerDay { get; }// Дает строителей в день
-        internal List<DescriptorPerk> Perks { get; } = new List<DescriptorPerk>();// Перки, которые дает уровень сооружения
+        internal ListDescriptorPerks Perks { get; }// Перки, которые дает уровень сооружения
         internal ListNeeds ListNeeds { get; }// Потребности, которые удовлетворяет сооружение
 
         internal override void TuneDeferredLinks()
         {
             base.TuneDeferredLinks();
 
-            if (listPerks != null)
-            {
-                foreach (string namePerk in listPerks)
-                {
-                    Perks.Add(Config.FindPerk(namePerk));
-                }
-
-                listPerks = null;
-            }
-
+            Perks.TuneDeferredLinks();
             ListNeeds.TuneDeferredLinks();
         }
     }
