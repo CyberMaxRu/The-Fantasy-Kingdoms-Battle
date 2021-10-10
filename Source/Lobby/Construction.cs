@@ -107,7 +107,7 @@ namespace Fantasy_Kingdoms_Battle
             if (Level > 0)
             {
                 // Убираем перки от сооружения
-                foreach (DescriptorPerk dp in TypeConstruction.Levels[Level].Perks)
+                foreach (DescriptorPerk dp in TypeConstruction.Levels[Level].ListPerks)
                     Player.RemovePerkFromConstruction(this, dp);
             }
 
@@ -151,7 +151,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void AddPerksToPlayer()
         {
-            foreach (DescriptorPerk dp in TypeConstruction.Levels[Level].Perks)
+            foreach (DescriptorPerk dp in TypeConstruction.Levels[Level].ListPerks)
                 Player.AddPerkFromConstruction(this, dp);
 
             Player.RecalcPerksHeroes();

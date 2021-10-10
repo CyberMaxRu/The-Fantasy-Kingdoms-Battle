@@ -124,7 +124,7 @@ namespace Fantasy_Kingdoms_Battle
             BuildersPerDay = GetInteger(n, "BuildersPerDay");
 
             // Загружаем перки, которые дает сооружение
-            Perks = new ListDescriptorPerks(n.SelectSingleNode("Perks"));
+            ListPerks = new ListDescriptorPerks(n.SelectSingleNode("Perks"));
 
             // Загружаем потребности
             ListNeeds = new ListNeeds(n.SelectSingleNode("Needs"));
@@ -147,14 +147,14 @@ namespace Fantasy_Kingdoms_Battle
         internal int GreatnessByConstruction { get; }// Дает очков Величия при постройке
         internal int GreatnessPerDay { get; }// Дает очков Величия в день
         internal int BuildersPerDay { get; }// Дает строителей в день
-        internal ListDescriptorPerks Perks { get; }// Перки, которые дает уровень сооружения
+        internal ListDescriptorPerks ListPerks { get; }// Перки, которые дает уровень сооружения
         internal ListNeeds ListNeeds { get; }// Потребности, которые удовлетворяет сооружение
 
         internal override void TuneDeferredLinks()
         {
             base.TuneDeferredLinks();
 
-            Perks.TuneDeferredLinks();
+            ListPerks.TuneDeferredLinks();
             ListNeeds.TuneDeferredLinks();
         }
     }
