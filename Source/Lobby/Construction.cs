@@ -92,6 +92,9 @@ namespace Fantasy_Kingdoms_Battle
         internal PriorityExecution PriorityFlag { get; private set; } = PriorityExecution.None;// Приоритет разведки/атаки
         internal List<Hero> listAttackedHero { get; } = new List<Hero>();// Список героев, откликнувшихся на флаг
 
+        // 
+        internal List<(DescriptorNeed, int)> ListNeeds { get; } = new List<(DescriptorNeed, int)>();
+
         internal void Build()
         {
             Debug.Assert(Level < TypeConstruction.MaxLevel);
@@ -133,6 +136,12 @@ namespace Fantasy_Kingdoms_Battle
 
             // Обновляем список перков от сооружения
             AddPerksToPlayer();
+
+            // Инициализируем удовлетворяемые потребности
+            foreach ((DescriptorNeed, int) need in TypeConstruction.Levels[Level].ListNeeds)
+            {
+                ListNeeds.Add((need.Item1, need.Item2));
+            }
 
             //
             if (cmBuild != null)
@@ -406,6 +415,7 @@ namespace Fantasy_Kingdoms_Battle
                     Program.formMain.formHint.AddStep6Income(Income());
                     Program.formMain.formHint.AddStep8Greatness(0, GreatnessPerDay());
                     Program.formMain.formHint.AddStep9PlusBuilders(BuildersPerDay());
+                    Program.formMain.formHint.AddStep9ListNeeds(ListNeeds);
                 }
                 else
                 {
@@ -1027,6 +1037,7 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep6Income(IncomeForLevel(requiredLevel));
             Program.formMain.formHint.AddStep8Greatness(GreatnesAddForLevel(requiredLevel), GreatnesPerDayForLevel(requiredLevel));
             Program.formMain.formHint.AddStep9PlusBuilders(BuildersPerDayForLevel(requiredLevel));
+            Program.formMain.formHint.AddStep9ListNeeds(TypeConstruction.Levels[requiredLevel].ListNeeds);
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirements(requiredLevel));
             Program.formMain.formHint.AddStep12Gold(CostBuyOrUpgradeForLevel(requiredLevel), Player.Gold >= CostBuyOrUpgradeForLevel(requiredLevel));
             Program.formMain.formHint.AddStep13Builders(TypeConstruction.Levels[requiredLevel].Builders, Player.FreeBuilders >= TypeConstruction.Levels[requiredLevel].Builders);

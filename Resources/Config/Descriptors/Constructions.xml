@@ -2306,8 +2306,8 @@
         <Builders>1</Builders>
         <Income>50</Income>
         <Needs>
-          <Rest>-30</Rest>
-          <Entertainment>-5</Entertainment>
+          <Rest>10</Rest>
+          <Entertainment>5</Entertainment>
         </Needs>
       </Level>
       <Level>
@@ -2315,12 +2315,20 @@
         <Cost>500</Cost>
         <Builders>1</Builders>
         <Income>100</Income>
+        <Needs>
+          <Rest>20</Rest>
+          <Entertainment>10</Entertainment>
+        </Needs>
       </Level>
       <Level>
         <Number>3</Number>
         <Cost>500</Cost>
         <Builders>1</Builders>
         <Income>150</Income>
+        <Needs>
+          <Rest>30</Rest>
+          <Entertainment>15</Entertainment>
+        </Needs>
       </Level>
     </Levels>
     <CellsMenu>

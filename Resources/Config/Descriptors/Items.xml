@@ -2996,6 +2996,9 @@
       <Hero>Warrior</Hero>
       <Hero>Dwarf</Hero>
     </Heroes>
+    <Needs>
+      <Food>-50</Food>
+    </Needs>
   </Item>
   <Item>
     <ID>TavernBeer</ID>
@@ -3007,6 +3010,9 @@
       <Hero>Warrior</Hero>
       <Hero>Dwarf</Hero>
     </Heroes>
+    <Needs>
+      <Entertainment>-20</Entertainment>
+    </Needs>
   </Item>
   <Item>
     <ID>Fireworks</ID>
@@ -3015,6 +3021,9 @@
     <ImageIndex>208</ImageIndex>
     <CategoryItem>Thing</CategoryItem>
     <AvailableForAll>true</AvailableForAll>
+    <Needs>
+      <Entertainment>-50</Entertainment>
+    </Needs>
   </Item>
   <Item>
     <ID>Feast</ID>
@@ -3023,6 +3032,10 @@
     <ImageIndex>206</ImageIndex>
     <CategoryItem>Thing</CategoryItem>
     <AvailableForAll>true</AvailableForAll>
+    <Needs>
+      <Food>-50</Food>
+      <Entertainment>-50</Entertainment>
+    </Needs>
   </Item>
   <Item>
     <ID>SertificateAdvisor</ID>
@@ -3279,6 +3292,9 @@
     <ImageIndex>242</ImageIndex>
     <CategoryItem>Thing</CategoryItem>
     <AvailableForAll>true</AvailableForAll>
+    <Needs>
+      <Food>-10</Food>
+    </Needs>
   </Item>
   <Item>
     <ID>CornedBeef</ID>
@@ -3287,6 +3303,9 @@
     <ImageIndex>239</ImageIndex>
     <CategoryItem>Thing</CategoryItem>
     <AvailableForAll>true</AvailableForAll>
+    <Needs>
+      <Food>-40</Food>
+    </Needs>
   </Item>
   <Item>
     <ID>Cider</ID>
@@ -3303,6 +3322,9 @@
     <ImageIndex>244</ImageIndex>
     <CategoryItem>Thing</CategoryItem>
     <AvailableForAll>true</AvailableForAll>
+    <Needs>
+      <Food>-30</Food>
+    </Needs>
   </Item>
   <Item>
     <ID>LuckyCoins</ID>

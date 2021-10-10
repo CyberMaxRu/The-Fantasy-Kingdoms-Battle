@@ -145,6 +145,9 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
+            // Загружаем потребности
+            ListNeeds = new ListNeeds(n.SelectSingleNode("Needs"));
+
             Debug.Assert(Number >= 0);
             Debug.Assert(Number <= 5);
             Debug.Assert(MaxInhabitant >= 0);
@@ -164,6 +167,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int GreatnessPerDay { get; }// Дает очков Величия в день
         internal int BuildersPerDay { get; }// Дает строителей в день
         internal List<DescriptorPerk> Perks { get; } = new List<DescriptorPerk>();// Перки, которые дает уровень сооружения
+        internal ListNeeds ListNeeds { get; }// Потребности, которые удовлетворяет сооружение
 
         internal override void TuneDeferredLinks()
         {
@@ -178,6 +182,8 @@ namespace Fantasy_Kingdoms_Battle
 
                 listPerks = null;
             }
+
+            ListNeeds.TuneDeferredLinks();
         }
     }
 }
