@@ -384,6 +384,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PrepareTurn()
         {
+            base.PrepareTurn();
+
             Initialize();
         }
 
