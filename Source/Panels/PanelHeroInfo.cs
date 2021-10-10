@@ -40,7 +40,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCIconAndDigitValue idvFood;
         private readonly VCIconAndDigitValue idvRest;
         private readonly VCIconAndDigitValue idvEntertainment;
-        private readonly VCIconAndDigitValue idvNeedsGold;
+        private readonly VCIconAndDigitValue idvNeedMoney;
 
         private readonly VCIconAndDigitValue idvHonor;
         private readonly VCIconAndDigitValue idvEnthusiasm;
@@ -102,8 +102,8 @@ namespace Fantasy_Kingdoms_Battle
             idvEntertainment = new VCIconAndDigitValue(panelStatistics, 0, idvFood.NextTop() - 4, 104, FormMain.GUI_16_NEEDS_ENTERTAINMENT);
             idvEntertainment.ShowHint += IdvEntertainment_ShowHint;
 
-            idvNeedsGold = new VCIconAndDigitValue(panelStatistics, idvEntertainment.NextLeft(), idvEntertainment.ShiftY, 104, FormMain.GUI_16_NEEDS_GOLD);
-            idvNeedsGold.ShowHint += IdvNeedsGold_ShowHint;
+            idvNeedMoney = new VCIconAndDigitValue(panelStatistics, idvEntertainment.NextLeft(), idvEntertainment.ShiftY, 104, FormMain.GUI_16_NEEDS_GOLD);
+            idvNeedMoney.ShowHint += IdvNeedsGold_ShowHint;
 
             // Интересы
             separator2 = new VCSeparator(panelStatistics, 0, idvEntertainment.NextTop() - 4);
@@ -180,17 +180,17 @@ namespace Fantasy_Kingdoms_Battle
 
         private void IdvRest_ShowHint(object sender, EventArgs e)
         {
-
+            ShowHintForNeed(Hero.Rest);
         }
 
         private void IdvNeedsGold_ShowHint(object sender, EventArgs e)
         {
-
+            ShowHintForNeed(Hero.Money);
         }
 
         private void IdvEntertainment_ShowHint(object sender, EventArgs e)
         {
-
+            ShowHintForNeed(Hero.Entertainment);
         }
 
         private void ShowHintForProperty(CreatureProperty cp)
@@ -235,11 +235,18 @@ namespace Fantasy_Kingdoms_Battle
             ShowHintForProperty(Hero.Enthusiasm);
         }
 
+        private void ShowHintForNeed(CreatureNeed cn)
+        {
+            Program.formMain.formHint.AddStep2Header(cn.Need.Descriptor.Name);
+            Program.formMain.formHint.AddStep3Type("Потребность");
+            Program.formMain.formHint.AddStep4Level($"{cn.Need.Descriptor.Name}: {DecIntegerBy10(cn.Value)}/{DecIntegerBy10(100)}"
+                + Environment.NewLine + $"Увеличение в день: {DecIntegerBy10(cn.IncreasePerDay)}");
+            Program.formMain.formHint.AddStep5Description(cn.Need.Descriptor.Description);
+        }
+
         private void IdvFood_ShowHint(object sender, EventArgs e)
         {
-            Program.formMain.formHint.AddStep2Header("Сытость");
-            Program.formMain.formHint.AddStep5Description($"Сытость: {DecIntegerBy10(Hero.CurrentSatiety)}/{DecIntegerBy10(Hero.MaxSatiety)}{Environment.NewLine}"
-                + $"Потребление в день: {DecIntegerBy10(Hero.ReductionSatietyPerDay)}");
+            ShowHintForNeed(Hero.Food);
         }
 
         private void LvGold_ShowHint(object sender, EventArgs e)
@@ -281,9 +288,10 @@ namespace Fantasy_Kingdoms_Battle
             idvMorale.Text = DecIntegerBy10(Hero.Morale.Value).ToString();
             idvLuck.Text = DecIntegerBy10(Hero.Luck.Value).ToString();
 
-            idvFood.Text = DecIntegerBy10(Hero.CurrentSatiety).ToString();
-            //idvEnergy.Text = DecIntegerBy10(Hero.Enthusiasm).ToString();
-            //idvLoyalty.Text = DecIntegerBy10(Hero.Loyalty).ToString();
+            idvFood.Text = DecIntegerBy10(Hero.Food.Value).ToString();
+            idvRest.Text = DecIntegerBy10(Hero.Rest.Value).ToString();
+            idvEntertainment.Text = DecIntegerBy10(Hero.Entertainment.Value).ToString();
+            idvNeedMoney.Text = DecIntegerBy10(Hero.Money.Value).ToString();
 
             base.Draw(g);
         }

@@ -174,6 +174,14 @@ namespace Fantasy_Kingdoms_Battle
                 PropertiesCreature.Add(new DescriptorPropertyCreature(n));
             }
 
+            // Загрузка конфигурации потребностей существ
+            xmlDoc = CreateXmlDocument(@"Config\Descriptors\NeedsCreature.xml");
+
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/NeedCreature"))
+            {
+                NeedsCreature.Add(new DescriptorNeed(n));
+            }
+
             // Загрузка конфигурации перков
             xmlDoc = CreateXmlDocument(@"Config\Descriptors\Perks.xml");
 
@@ -260,6 +268,9 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorPropertyCreature pc in PropertiesCreature)
                 pc.TuneDeferredLinks();
 
+            foreach (DescriptorNeed pc in NeedsCreature)
+                pc.TuneDeferredLinks();
+
             foreach (DescriptorCreature tc in Creatures)
                 tc.TuneDeferredLinks();
 
@@ -305,6 +316,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<DescriptorSecondarySkill> SecondarySkills { get; } = new List<DescriptorSecondarySkill>();
         internal List<StateCreature> StatesCreature { get; } = new List<StateCreature>();
         internal List<DescriptorPropertyCreature> PropertiesCreature { get; } = new List<DescriptorPropertyCreature>();
+        internal List<DescriptorNeed> NeedsCreature { get; } = new List<DescriptorNeed>();
         internal List<TypeCreature> TypeCreatures { get; } = new List<TypeCreature>();
         internal List<DescriptorCreature> Creatures { get; } = new List<DescriptorCreature>();
         internal List<DescriptorGroupItems> GroupItems { get; } = new List<DescriptorGroupItems>();
@@ -576,6 +588,17 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             throw new Exception("Свойство существа " + ID + " не найдено.");
+        }
+
+        internal DescriptorNeed FindNeedCreature(NameNeedCreature nnc)
+        {
+            foreach (DescriptorNeed nc in NeedsCreature)
+            {
+                if (nc.NameNeed == nnc)
+                    return nc;
+            }
+
+            throw new Exception($"Потребность существа {nnc} не найдена.");
         }
 
         internal TypeCreature FindTypeCreature(string ID)

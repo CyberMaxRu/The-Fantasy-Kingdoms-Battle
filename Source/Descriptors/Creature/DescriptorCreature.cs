@@ -122,11 +122,23 @@ namespace Fantasy_Kingdoms_Battle
             // Загружаем дефолтные перки
             Perks = new ListDescriptorPerks(n.SelectSingleNode("Perks"));
 
-            MinFoodOnHire = GetInteger(n, "Properties/MinFoodOnHire");
-            MaxFoodOnHire = GetInteger(n, "Properties/MaxFoodOnHire");
-            MaxFood = GetInteger(n, "Properties/MaxFood");
-            ReductionFoodPerDay = GetInteger(n, "Properties/FoodPerDay");
-            EnthusiasmPerDay = GetInteger(n, "Properties/EnthusiasmPerDay");
+            // Загружаем потребности
+            XmlNode nn = n.SelectSingleNode("Needs");
+            if (nn != null)
+            {
+                foreach (XmlNode nnl in nn.SelectNodes("Need"))
+                {
+                    NameNeedCreature idNeed = (NameNeedCreature)Enum.Parse(typeof(NameNeedCreature), GetStringNotNull(nnl, "ID"));
+                    DescriptorCreatureNeed cn = new DescriptorCreatureNeed(Config.FindNeedCreature(idNeed), nnl);
+
+                    foreach (DescriptorCreatureNeed cn2 in Needs)
+                    {
+                        Debug.Assert(cn2.Descriptor.ID != cn.Descriptor.ID);
+                    }
+
+                    Needs.Add(cn);
+                }
+            }
 
             // Проверяем, что таких же ID и наименования нет
             foreach (DescriptorCreature h in FormMain.Config.Creatures)
@@ -239,27 +251,12 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(MaxConstructionForBuyPerDay > 0);
 
                 Debug.Assert(CoefficientFlags != null);
-
-                Debug.Assert(MinFoodOnHire > 0);
-                Debug.Assert(MaxFoodOnHire > 0);
-                Debug.Assert(MaxFood > 0);
-                Debug.Assert(EnthusiasmPerDay > 0);
-
-                Debug.Assert(MinFoodOnHire <= MaxFoodOnHire);
-                Debug.Assert(MaxFoodOnHire <= MaxFood);
-                Debug.Assert(ReductionFoodPerDay < MaxFood);
             }
             else
             {
                 Debug.Assert(MaxConstructionForBuyPerDay == 0);
                 Debug.Assert(PriorityConstructionForShoppings.Count == 0);
                 Debug.Assert(CoefficientFlags is null);
-
-                Debug.Assert(MinFoodOnHire == 0);
-                Debug.Assert(MaxFoodOnHire == 0);
-                Debug.Assert(MaxFood == 0);
-                Debug.Assert(ReductionFoodPerDay == 0);
-                Debug.Assert(EnthusiasmPerDay == 0);
             }
 
             void LoadName(string nodes, string node, List<string> list)
@@ -310,16 +307,8 @@ namespace Fantasy_Kingdoms_Battle
         internal List<string> Surnames { get; } = new List<string>();
         internal DescriptorCreature NameFromTypeHero { get; private set; }
         internal DescriptorCreature SurnameFromTypeHero { get; private set; }
-        internal ListDescriptorPerks Perks { get; }// Дефолтные перки
-
-        // Потребности
-        internal int MinFoodOnHire { get; }// Минимальный уровень еды при найме
-        internal int MaxFoodOnHire { get; }// Максимальный уровень еды при найме
-        internal int MaxFood { get; }// Максимальный уровень еды
-        internal int ReductionFoodPerDay { get; }// Потребление еды в день
-
-        internal int EnthusiasmPerDay { get; }// Уменьшение энтузиазма в день
-
+        internal ListDescriptorPerks Perks { get; }// Дефолтные перки        
+        internal List<DescriptorCreatureNeed> Needs { get; } = new List<DescriptorCreatureNeed>();// Потребности
         //
 
         internal int MaxQuantityItem(DescriptorItem i)

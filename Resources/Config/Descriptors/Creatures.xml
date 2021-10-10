@@ -186,14 +186,32 @@
     <Perks>
       <Perk>PerkWarrior</Perk>
     </Perks>
-    <Properties>
-      <MinFoodOnHire>10</MinFoodOnHire>
-      <MaxFoodOnHire>30</MaxFoodOnHire>
-      <MaxFood>50</MaxFood>
-      <FoodPerDay>10</FoodPerDay>
-      <EnthusiasmPerDay>10</EnthusiasmPerDay>
-      <Loyalty>20</Loyalty>
-    </Properties>
+    <Needs>
+      <Need>
+        <ID>Food</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Rest</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Entertainment</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Money</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+    </Needs>
     <CoefficientFlags>
       <Scout>1</Scout>
       <Attack>1.1</Attack>
@@ -390,14 +408,35 @@
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
     <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
-    <Properties>
-      <MinFoodOnHire>10</MinFoodOnHire>
-      <MaxFoodOnHire>30</MaxFoodOnHire>
-      <MaxFood>50</MaxFood>
-      <FoodPerDay>10</FoodPerDay>
-      <EnthusiasmPerDay>10</EnthusiasmPerDay>
-      <Loyalty>-20</Loyalty>
-    </Properties>
+    <Perks>
+      <Perk>PerkRogue</Perk>
+    </Perks>
+    <Needs>
+      <Need>
+        <ID>Food</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Rest</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Entertainment</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Money</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+    </Needs>
     <CoefficientFlags>
       <Scout>1.1</Scout>
       <Attack>1</Attack>
@@ -543,14 +582,35 @@
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
     <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
-    <Properties>
-      <MinFoodOnHire>10</MinFoodOnHire>
-      <MaxFoodOnHire>30</MaxFoodOnHire>
-      <MaxFood>50</MaxFood>
-      <FoodPerDay>10</FoodPerDay>
-      <EnthusiasmPerDay>10</EnthusiasmPerDay>
-      <Loyalty>10</Loyalty>
-    </Properties>
+    <Perks>
+      <Perk>PerkHunter</Perk>
+    </Perks>
+    <Needs>
+      <Need>
+        <ID>Food</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Rest</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Entertainment</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Money</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+    </Needs>
     <CoefficientFlags>
       <Scout>1.5</Scout>
       <Attack>1</Attack>
@@ -727,14 +787,35 @@
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
     <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
-    <Properties>
-      <MinFoodOnHire>10</MinFoodOnHire>
-      <MaxFoodOnHire>30</MaxFoodOnHire>
-      <MaxFood>50</MaxFood>
-      <FoodPerDay>10</FoodPerDay>
-      <EnthusiasmPerDay>10</EnthusiasmPerDay>
-      <Loyalty>10</Loyalty>
-    </Properties>
+    <Perks>
+      <Perk>PerkCleric</Perk>
+    </Perks>
+    <Needs>
+      <Need>
+        <ID>Food</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Rest</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Entertainment</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Money</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+    </Needs>
     <CoefficientFlags>
       <Scout>1</Scout>
       <Attack>1.1</Attack>
@@ -891,14 +972,35 @@
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
     <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
-    <Properties>
-      <MinFoodOnHire>10</MinFoodOnHire>
-      <MaxFoodOnHire>30</MaxFoodOnHire>
-      <MaxFood>50</MaxFood>
-      <FoodPerDay>10</FoodPerDay>
-      <EnthusiasmPerDay>10</EnthusiasmPerDay>
-      <Loyalty>0</Loyalty>
-    </Properties>
+    <Perks>
+      <Perk>PerkMage</Perk>
+    </Perks>
+    <Needs>
+      <Need>
+        <ID>Food</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Rest</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Entertainment</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Money</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+    </Needs>
     <CoefficientFlags>
       <Scout>0.6</Scout>
       <Attack>1</Attack>
@@ -1054,14 +1156,35 @@
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
     <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
-    <Properties>
-      <MinFoodOnHire>10</MinFoodOnHire>
-      <MaxFoodOnHire>30</MaxFoodOnHire>
-      <MaxFood>50</MaxFood>
-      <FoodPerDay>10</FoodPerDay>
-      <EnthusiasmPerDay>10</EnthusiasmPerDay>
-      <Loyalty>0</Loyalty>
-    </Properties>
+    <Perks>
+      <Perk>PerkElf</Perk>
+    </Perks>
+    <Needs>
+      <Need>
+        <ID>Food</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Rest</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Entertainment</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Money</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+    </Needs>
     <CoefficientFlags>
       <Scout>1.3</Scout>
       <Attack>1.2</Attack>
@@ -1199,14 +1322,35 @@
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
     <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
-    <Properties>
-      <MinFoodOnHire>10</MinFoodOnHire>
-      <MaxFoodOnHire>30</MaxFoodOnHire>
-      <MaxFood>50</MaxFood>
-      <FoodPerDay>10</FoodPerDay>
-      <EnthusiasmPerDay>10</EnthusiasmPerDay>
-      <Loyalty>0</Loyalty>
-    </Properties>
+    <Perks>
+      <Perk>PerkDwarf</Perk>
+    </Perks>
+    <Needs>
+      <Need>
+        <ID>Food</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Rest</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Entertainment</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Money</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+    </Needs>
     <CoefficientFlags>
       <Scout>0.5</Scout>
       <Attack>1.2</Attack>
@@ -1346,14 +1490,35 @@
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
     <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
-    <Properties>
-      <MinFoodOnHire>10</MinFoodOnHire>
-      <MaxFoodOnHire>30</MaxFoodOnHire>
-      <MaxFood>50</MaxFood>
-      <FoodPerDay>10</FoodPerDay>
-      <EnthusiasmPerDay>10</EnthusiasmPerDay>
-      <Loyalty>0</Loyalty>
-    </Properties>
+    <Perks>
+      <Perk>PerkDarkPriest</Perk>
+    </Perks>
+    <Needs>
+      <Need>
+        <ID>Food</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Rest</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Entertainment</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Money</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+    </Needs>
     <CoefficientFlags>
       <Scout>0</Scout>
       <Attack>1.2</Attack>
@@ -1458,14 +1623,35 @@
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
     <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
-    <Properties>
-      <MinFoodOnHire>10</MinFoodOnHire>
-      <MaxFoodOnHire>30</MaxFoodOnHire>
-      <MaxFood>50</MaxFood>
-      <FoodPerDay>10</FoodPerDay>
-      <EnthusiasmPerDay>10</EnthusiasmPerDay>
-      <Loyalty>0</Loyalty>
-    </Properties>
+    <Perks>
+      <Perk>PerkPriest</Perk>
+    </Perks>
+    <Needs>
+      <Need>
+        <ID>Food</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Rest</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Entertainment</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Money</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+    </Needs>
     <CoefficientFlags>
       <Scout>0</Scout>
       <Attack>1</Attack>
@@ -1568,14 +1754,35 @@
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
     <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
-    <Properties>
-      <MinFoodOnHire>10</MinFoodOnHire>
-      <MaxFoodOnHire>30</MaxFoodOnHire>
-      <MaxFood>50</MaxFood>
-      <FoodPerDay>10</FoodPerDay>
-      <EnthusiasmPerDay>10</EnthusiasmPerDay>
-      <Loyalty>0</Loyalty>
-    </Properties>
+    <Perks>
+      <Perk>PerkPaladin</Perk>
+    </Perks>
+    <Needs>
+      <Need>
+        <ID>Food</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Rest</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Entertainment</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Money</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+    </Needs>
     <CoefficientFlags>
       <Scout>0</Scout>
       <Attack>1.3</Attack>
@@ -1677,14 +1884,35 @@
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
     <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
-    <Properties>
-      <MinFoodOnHire>10</MinFoodOnHire>
-      <MaxFoodOnHire>30</MaxFoodOnHire>
-      <MaxFood>50</MaxFood>
-      <FoodPerDay>10</FoodPerDay>
-      <EnthusiasmPerDay>10</EnthusiasmPerDay>
-      <Loyalty>0</Loyalty>
-    </Properties>
+    <Perks>
+      <Perk>PerkBladeMaster</Perk>
+    </Perks>
+    <Needs>
+      <Need>
+        <ID>Food</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Rest</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Entertainment</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Money</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+    </Needs>
     <CoefficientFlags>
       <Scout>1</Scout>
       <Attack>1.1</Attack>
@@ -1787,14 +2015,35 @@
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
     <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
-    <Properties>
-      <MinFoodOnHire>10</MinFoodOnHire>
-      <MaxFoodOnHire>30</MaxFoodOnHire>
-      <MaxFood>50</MaxFood>
-      <FoodPerDay>10</FoodPerDay>
-      <EnthusiasmPerDay>10</EnthusiasmPerDay>
-      <Loyalty>0</Loyalty>
-    </Properties>
+    <Perks>
+      <Perk>PerkBeastMaster</Perk>
+    </Perks>
+    <Needs>
+      <Need>
+        <ID>Food</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Rest</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Entertainment</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Money</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+    </Needs>
     <CoefficientFlags>
       <Scout>1</Scout>
       <Attack>1</Attack>
@@ -1897,14 +2146,35 @@
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
     <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
-    <Properties>
-      <MinFoodOnHire>10</MinFoodOnHire>
-      <MaxFoodOnHire>30</MaxFoodOnHire>
-      <MaxFood>50</MaxFood>
-      <FoodPerDay>10</FoodPerDay>
-      <EnthusiasmPerDay>10</EnthusiasmPerDay>
-      <Loyalty>0</Loyalty>
-    </Properties>
+    <Perks>
+      <Perk>PerkMarksman</Perk>
+    </Perks>
+    <Needs>
+      <Need>
+        <ID>Food</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Rest</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Entertainment</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Money</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+    </Needs>
     <CoefficientFlags>
       <Scout>1.1</Scout>
       <Attack>1.2</Attack>
@@ -2008,14 +2278,35 @@
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
     <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
-    <Properties>
-      <MinFoodOnHire>10</MinFoodOnHire>
-      <MaxFoodOnHire>30</MaxFoodOnHire>
-      <MaxFood>50</MaxFood>
-      <FoodPerDay>10</FoodPerDay>
-      <EnthusiasmPerDay>10</EnthusiasmPerDay>
-      <Loyalty>0</Loyalty>
-    </Properties>
+    <Perks>
+      <Perk>PerkFireMage</Perk>
+    </Perks>
+    <Needs>
+      <Need>
+        <ID>Food</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Rest</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Entertainment</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Money</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+    </Needs>
     <CoefficientFlags>
       <Scout>0</Scout>
       <Attack>1.2</Attack>
@@ -2074,14 +2365,35 @@
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
     <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
-    <Properties>
-      <MinFoodOnHire>10</MinFoodOnHire>
-      <MaxFoodOnHire>30</MaxFoodOnHire>
-      <MaxFood>50</MaxFood>
-      <FoodPerDay>10</FoodPerDay>
-      <EnthusiasmPerDay>10</EnthusiasmPerDay>
-      <Loyalty>0</Loyalty>
-    </Properties>
+    <Perks>
+      <Perk>PerkIceMage</Perk>
+    </Perks>
+    <Needs>
+      <Need>
+        <ID>Food</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Rest</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Entertainment</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Money</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+    </Needs>
     <CoefficientFlags>
       <Scout>0</Scout>
       <Attack>1.5</Attack>
@@ -2164,14 +2476,35 @@
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
     <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
-    <Properties>
-      <MinFoodOnHire>10</MinFoodOnHire>
-      <MaxFoodOnHire>30</MaxFoodOnHire>
-      <MaxFood>50</MaxFood>
-      <FoodPerDay>10</FoodPerDay>
-      <EnthusiasmPerDay>10</EnthusiasmPerDay>
-      <Loyalty>0</Loyalty>
-    </Properties>
+    <Perks>
+      <Perk>PerkDeathKnight</Perk>
+    </Perks>
+    <Needs>
+      <Need>
+        <ID>Food</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Rest</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Entertainment</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Money</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+    </Needs>
     <CoefficientFlags>
       <Scout>0.5</Scout>
       <Attack>1.2</Attack>

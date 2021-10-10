@@ -14,6 +14,11 @@ namespace Fantasy_Kingdoms_Battle
     {
         public Hero(Construction pb, BattleParticipant bp) : base(pb.TypeConstruction.TrainedHero, bp)
         {
+            Debug.Assert(Food != null);
+            Debug.Assert(Rest != null);
+            Debug.Assert(Entertainment != null);
+            Debug.Assert(Money != null);
+
             Construction = pb;
             Abode = Construction;
             DayOfHire = Player.Lobby.Day;
@@ -23,11 +28,6 @@ namespace Fantasy_Kingdoms_Battle
                 + " " + GetRandomName(pb.TypeConstruction.TrainedHero.SurnameFromTypeHero == null ? pb.TypeConstruction.TrainedHero.Surnames : pb.TypeConstruction.TrainedHero.Surnames);
 
             //
-            CurrentSatiety = pb.Lobby.Rnd.Next(pb.TypeConstruction.TrainedHero.MinFoodOnHire, pb.TypeConstruction.TrainedHero.MaxFoodOnHire + 1);
-            ReductionSatietyPerDay = pb.TypeConstruction.TrainedHero.ReductionFoodPerDay;
-            MaxSatiety = pb.TypeConstruction.TrainedHero.MaxFood;
-            EnthusiasmPerDay = pb.TypeConstruction.TrainedHero.EnthusiasmPerDay;
-
             Initialize();
 
             string GetRandomName(List<string> list)
@@ -44,13 +44,6 @@ namespace Fantasy_Kingdoms_Battle
             FullName = TypeCreature.Name;
 
             //
-            if (pb.TypeConstruction.TrainedHero.CategoryCreature == CategoryCreature.Hero)
-            {
-                CurrentSatiety = pb.Lobby.Rnd.Next(pb.TypeConstruction.TrainedHero.MinFoodOnHire, pb.TypeConstruction.TrainedHero.MaxFoodOnHire + 1);
-                ReductionSatietyPerDay = pb.TypeConstruction.TrainedHero.ReductionFoodPerDay;
-                MaxSatiety = pb.TypeConstruction.TrainedHero.MaxFood;
-            }
-
             Initialize();
         }
 
@@ -79,13 +72,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int LoseStreak { get; }// Поражений подряд
         internal int DrawStreak { get; }// Ничьих подряд
         internal ResultBattle PriorResultBattle { get; set; }// Предыдущий результат битвы для расчета страйков
-
-
-        // Характеристики для работы с едой
-        internal int CurrentSatiety { get; private set; }// Уровень еды (+ сытость, - голод), умноженный на 100
-        internal int MaxSatiety { get; private set; }// Максимальная сытость
-        internal int ReductionSatietyPerDay { get; private set; }// Потребление еды в день
-        internal int EnthusiasmPerDay { get; private set; }// Уменьшение энтузиазма в день
 
         //internal bool Selected { get; set; }
 
@@ -396,24 +382,9 @@ namespace Fantasy_Kingdoms_Battle
             PerksChanged();
         }
 
-        internal void PrepareTurn()
+        internal override void PrepareTurn()
         {
             Initialize();
-
-            if ((TypeCreature.CategoryCreature == CategoryCreature.Hero) && (Construction.Lobby.Day > 0))
-            {
-                Debug.Assert(CurrentSatiety > 0);
-                Debug.Assert(Enthusiasm.Value > 0);
-                Debug.Assert(EnthusiasmPerDay > 0);
-
-                // Уменьшаем сытость
-                CurrentSatiety -= ReductionSatietyPerDay;
-
-                if (CurrentSatiety <= 0)// Помираем от голода
-                {
-                    SetIsDead(ReasonOfDeath.Hunger);
-                }
-            }
         }
 
         internal void PrepareQueueShopping(List<UnitOfQueueForBuy> queue)
@@ -477,8 +448,12 @@ namespace Fantasy_Kingdoms_Battle
                     return "Смерть в бою";
                 case ReasonOfDeath.Hunger:
                     return "Смерть от голода";
-                case ReasonOfDeath.SuicideByHopelessness:
-                    return "Суицид от безысходности";
+                case ReasonOfDeath.Emaciation:
+                    return "Смерть от истощения";
+                case ReasonOfDeath.Boredom:
+                    return "Суицид от скуки";
+                case ReasonOfDeath.Poverty:
+                    return "Суицид от нищеты";
                 default:
                     throw new Exception($"Неизвестная причина смерти: {ReasonOfDeath}.");
             }

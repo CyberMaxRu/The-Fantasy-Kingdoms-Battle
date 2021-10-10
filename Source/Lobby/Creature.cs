@@ -9,7 +9,7 @@ using System.Drawing;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal enum ReasonOfDeath { None, InBattle, Hunger, SuicideByHopelessness };
+    internal enum ReasonOfDeath { None, InBattle, Hunger, Emaciation, Boredom, Poverty };
 
     // Базовый класс существа
     internal abstract class Creature : BigEntity
@@ -42,6 +42,31 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorPerk dp in TypeCreature.Perks)
             {
                 AddPerk(dp, this);
+            }
+
+            // Создаем потребности
+            foreach (DescriptorCreatureNeed dcn in TypeCreature.Needs)
+            {
+                CreatureNeed cn = new CreatureNeed(this, dcn);
+                Needs.Add(cn);
+
+                switch (dcn.Descriptor.NameNeed)
+                {
+                    case NameNeedCreature.Food:
+                        Food = cn;
+                        break;
+                    case NameNeedCreature.Rest:
+                        Rest = cn;
+                        break;
+                    case NameNeedCreature.Entertainment:
+                        Entertainment = cn;
+                        break;
+                    case NameNeedCreature.Money:
+                        Money = cn;
+                        break;
+                    default:
+                        throw new Exception($"Неизвестная потребность {dcn.Descriptor.NameNeed}.");
+                }
             }
 
             // Берем оружие и доспехи
@@ -95,6 +120,13 @@ namespace Fantasy_Kingdoms_Battle
         internal CreatureProperty Enthusiasm { get; } = new CreatureProperty(FormMain.Config.FindPropertyCreature(NamePropertyCreature.Enthusiasm));// Энтузиазм
         internal CreatureProperty Morale { get; } = new CreatureProperty(FormMain.Config.FindPropertyCreature(NamePropertyCreature.Morale));// Мораль
         internal CreatureProperty Luck { get; } = new CreatureProperty(FormMain.Config.FindPropertyCreature(NamePropertyCreature.Luck));// Удача
+
+        // Потребности
+        internal List<CreatureNeed> Needs { get; } = new List<CreatureNeed>();
+        internal CreatureNeed Food { get; }// Еда
+        internal CreatureNeed Rest { get; }// Отдых
+        internal CreatureNeed Entertainment { get; }// Развлечение
+        internal CreatureNeed Money { get; }// Деньги
 
         //
         internal bool IsLive { get; private set; } = true;// Существо живо
@@ -394,6 +426,29 @@ namespace Fantasy_Kingdoms_Battle
                 cp.Value = cp.Property.MaxValue;
             else if (cp.Value < cp.Property.MinValue)
                 cp.Value = cp.Property.MinValue;
+        }
+
+        internal virtual void PrepareTurn()
+        {
+            // Расчет потребностей
+            if (BattleParticipant.Lobby.Day > 0)
+            {
+                foreach (CreatureNeed cn in Needs)
+                {
+                    cn.Value += cn.IncreasePerDay - cn.Satisfacted;
+                    if (cn.Value < 0)
+                        cn.Value = 0;
+                    else if (cn.Value >= 10)
+                    {
+                        cn.DaysMax++;
+                        if (cn.DaysMax > 3)
+                        {
+                            SetIsDead(cn.Need.Descriptor.ReasonOfDeath);
+                            break;
+                        }
+                    }
+                }
+            }
         }
     }
 }

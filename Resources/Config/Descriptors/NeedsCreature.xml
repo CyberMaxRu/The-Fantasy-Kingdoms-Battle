@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Descriptors>
+  <NeedCreature>
+    <ID>Food</ID>
+    <Name>Еда</Name>
+    <Description>Еда - основа жизни героя.</Description>
+    <ImageIndex>17</ImageIndex>
+    <ReasonOfDeath>Hunger</ReasonOfDeath>
+  </NeedCreature>
+  <NeedCreature>
+    <ID>Rest</ID>
+    <Name>Отдых</Name>
+    <Description>Любому герою время от времени надо отдыхать. Чем больше он делает действий, тем больше он тратит сил.</Description>
+    <ImageIndex>21</ImageIndex>
+    <ReasonOfDeath>Emaciation</ReasonOfDeath>
+  </NeedCreature>
+  <NeedCreature>
+    <ID>Entertainment</ID>
+    <Name>Развлечение</Name>
+    <Description>После отдыха, можно и развлечься.</Description>
+    <ImageIndex>22</ImageIndex>
+    <ReasonOfDeath>Boredom</ReasonOfDeath>
+  </NeedCreature>
+  <NeedCreature>
+    <ID>Money</ID>
+    <Name>Деньги</Name>
+    <Description>На все нужны деньги. Чем их больше, тем меньше о них думаешь.</Description>
+    <ImageIndex>20</ImageIndex>
+    <ReasonOfDeath>Poverty</ReasonOfDeath>
+  </NeedCreature>
+</Descriptors>
