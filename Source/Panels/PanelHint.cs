@@ -41,7 +41,6 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly VCLabelValue lblEnthusiasm;
         internal readonly VCLabelValue lblMorale;
         internal readonly VCLabelValue lblLuck;
-        internal readonly VCLabelValue lblLoyalty;
         private readonly List<VCLabelValue> listLabelNeeds = new List<VCLabelValue>();
         internal readonly VCLabel lblSigner;
         private readonly List<VCCellSimple> listCell = new List<VCCellSimple>();
@@ -128,11 +127,7 @@ namespace Fantasy_Kingdoms_Battle
             lblLuck.ImageIndex = FormMain.GUI_16_LUCK;
             lblLuck.Width = widthControl;
 
-            lblLoyalty = new VCLabelValue(this, FormMain.Config.GridSize, lblLuck.NextTop(), FormMain.Config.HintIncome, false);
-            lblLoyalty.ImageIndex = FormMain.GUI_16_INTEREST_DEFENSE;
-            lblLoyalty.Width = widthControl;
-
-            lblSigner = new VCLabel(this, FormMain.Config.GridSize, lblLoyalty.NextTop(), Program.formMain.fontSmallC, Color.SkyBlue, 16, "");
+            lblSigner = new VCLabel(this, FormMain.Config.GridSize, lblLuck.NextTop(), Program.formMain.fontSmallC, Color.SkyBlue, 16, "");
             lblSigner.StringFormat.Alignment = StringAlignment.Near;
             lblSigner.Width = widthControl;
             /*            lblDamageMelee = new Label()
@@ -254,7 +249,6 @@ namespace Fantasy_Kingdoms_Battle
             foreach (VCLabelValue ln in listLabelNeeds)
                 ln.Visible = false;
 
-            lblLoyalty.Visible = false;
             lblSigner.Visible = false;
 
             foreach (VCCellSimple cell in listCell)
@@ -558,18 +552,6 @@ namespace Fantasy_Kingdoms_Battle
                     listLabelNeeds.Add(l);
                     return l;
                 }
-            }
-        }
-
-        internal void AddStep9Loyalty(int loyalty)
-        {
-            if (loyalty != 0)
-            {
-                lblLoyalty.ShiftY = nextTop;
-                lblLoyalty.Text = Utils.DecIntegerBy10(loyalty, true);
-                lblLoyalty.Visible = true;
-
-                nextTop = lblLoyalty.NextTop();
             }
         }
 
