@@ -88,6 +88,8 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Program.formMain.formHint.AddStep2Header(Descriptor.Name);
                 Program.formMain.formHint.AddStep5Description(Descriptor.Description);
+                if (DescriptorItem != null)
+                    Program.formMain.formHint.AddStep9ListNeeds(DescriptorItem.ListNeeds);
             }
         }
 

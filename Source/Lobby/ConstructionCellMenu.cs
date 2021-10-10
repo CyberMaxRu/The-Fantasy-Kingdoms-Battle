@@ -410,7 +410,7 @@ namespace Fantasy_Kingdoms_Battle
             Entity = Config.FindItem(d.NameEntity);
         }
 
-        internal DescriptorSmallEntity Entity { get; }
+        internal DescriptorItem Entity { get; }
 
         internal override void Execute()
         {
@@ -419,7 +419,7 @@ namespace Fantasy_Kingdoms_Battle
             Construction.Player.SpendGold(GetCost());
             RemoveSelf();
 
-            Construction.AddProduct(new ConstructionProduct(Entity as DescriptorItem));
+            Construction.AddProduct(new ConstructionProduct(Entity));
 
             Program.formMain.SetNeedRedrawFrame();
         }
@@ -439,6 +439,7 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep2Header(Entity.Name);
             Program.formMain.formHint.AddStep5Description(Entity.Description);
             Program.formMain.formHint.AddStep6Income(Descriptor.Income);
+            Program.formMain.formHint.AddStep9ListNeeds(Entity.ListNeeds);
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirements());
             Program.formMain.formHint.AddStep12Gold(GetCost(), GetCost() <= Construction.Player.Gold);
         }

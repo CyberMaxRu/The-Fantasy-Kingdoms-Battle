@@ -2997,7 +2997,7 @@
       <Hero>Dwarf</Hero>
     </Heroes>
     <Needs>
-      <Food>-50</Food>
+      <Food>50</Food>
     </Needs>
   </Item>
   <Item>
@@ -3011,7 +3011,7 @@
       <Hero>Dwarf</Hero>
     </Heroes>
     <Needs>
-      <Entertainment>-20</Entertainment>
+      <Entertainment>20</Entertainment>
     </Needs>
   </Item>
   <Item>
@@ -3022,7 +3022,7 @@
     <CategoryItem>Thing</CategoryItem>
     <AvailableForAll>true</AvailableForAll>
     <Needs>
-      <Entertainment>-50</Entertainment>
+      <Entertainment>50</Entertainment>
     </Needs>
   </Item>
   <Item>
@@ -3033,8 +3033,8 @@
     <CategoryItem>Thing</CategoryItem>
     <AvailableForAll>true</AvailableForAll>
     <Needs>
-      <Food>-50</Food>
-      <Entertainment>-50</Entertainment>
+      <Food>50</Food>
+      <Entertainment>50</Entertainment>
     </Needs>
   </Item>
   <Item>
@@ -3106,6 +3106,9 @@
     <Cost>500</Cost>
     <CategoryItem>Extension</CategoryItem>
     <AvailableForAll>true</AvailableForAll>
+    <Needs>
+      <Rest>5</Rest>
+    </Needs>
   </Item>
   <Item>
     <ID>Waterfall</ID>
@@ -3115,6 +3118,10 @@
     <Cost>1000</Cost>
     <CategoryItem>Extension</CategoryItem>
     <AvailableForAll>true</AvailableForAll>
+    <Needs>
+      <Rest>10</Rest>
+      <Entertainment>5</Entertainment>
+    </Needs>
   </Item>
   <Item>
     <ID>Alley</ID>
@@ -3124,6 +3131,10 @@
     <Cost>1500</Cost>
     <CategoryItem>Extension</CategoryItem>
     <AvailableForAll>true</AvailableForAll>
+    <Needs>
+      <Rest>5</Rest>
+      <Entertainment>2</Entertainment>
+    </Needs>
   </Item>
   <Item>
     <ID>TournamentHandFight</ID>
@@ -3293,7 +3304,7 @@
     <CategoryItem>Thing</CategoryItem>
     <AvailableForAll>true</AvailableForAll>
     <Needs>
-      <Food>-10</Food>
+      <Food>10</Food>
     </Needs>
   </Item>
   <Item>
@@ -3304,7 +3315,7 @@
     <CategoryItem>Thing</CategoryItem>
     <AvailableForAll>true</AvailableForAll>
     <Needs>
-      <Food>-40</Food>
+      <Food>40</Food>
     </Needs>
   </Item>
   <Item>
@@ -3323,7 +3334,7 @@
     <CategoryItem>Thing</CategoryItem>
     <AvailableForAll>true</AvailableForAll>
     <Needs>
-      <Food>-30</Food>
+      <Food>30</Food>
     </Needs>
   </Item>
   <Item>

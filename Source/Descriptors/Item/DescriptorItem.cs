@@ -34,8 +34,6 @@ namespace Fantasy_Kingdoms_Battle
             QuantityShots = XmlUtils.GetInteger(n, "QuantityShots");
             TimeOfAction = XmlUtils.GetInteger(n, "TimeOfAction");
 
-            Food = XmlUtils.GetInteger(n, "Food");
-
             if (CategoryItem == CategoryItem.Quiver)
             {
                 Debug.Assert(QuantityShots > 0);
@@ -63,15 +61,16 @@ namespace Fantasy_Kingdoms_Battle
 
             if (CategoryItem == CategoryItem.Food)
             {
-                Debug.Assert(Food > 0);
-                Debug.Assert(Food <= 100);
+                //Debug.Assert(Food > 0);
+                //Debug.Assert(Food <= 100);
             }
             else
             {
-                Debug.Assert(Food == 0);
+                //Debug.Assert(Food == 0);
             }
 
             Perks = new ListDescriptorPerks(n.SelectSingleNode("Perks"));
+            ListNeeds = new ListNeeds(n.SelectSingleNode("Needs"));
 
             /*if (CategoryItem == CategoryItem.RangeWeapon)
             {
@@ -133,7 +132,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int QuantityShots { get; }
         internal int Distance { get; }
         internal int TimeOfAction { get; }// Время действия (эликсира)
-        internal int Food { get; }
+        internal ListNeeds ListNeeds { get; }
 
         /*protected override void DoPrepareHint()
         {
@@ -158,6 +157,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             Perks.TuneDeferredLinks();
+            ListNeeds.TuneDeferredLinks();
         }
 
         protected override bool ForHeroes() => CategoryItem != CategoryItem.Monster;
