@@ -180,6 +180,7 @@ namespace Fantasy_Kingdoms_Battle
         internal const int GUI_16_INTEREST_EXPLORE = 22;
         internal const int GUI_16_INTEREST_ATTACK = 23;
         internal const int GUI_16_INTEREST_OTHER = 24;
+        internal const int GUI_16_PURSE = 25;
 
         internal const int GUI_24_FIRE = 0;
         internal const int GUI_24_HEROES = 1;
