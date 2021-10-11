@@ -83,6 +83,7 @@ namespace Fantasy_Kingdoms_Battle
                 Program.formMain.formHint.AddStep3Type("Событие");
                 Program.formMain.formHint.AddStep4Level(Duration > 0 ? $"Осталось дней: {Counter}" : "");
                 Program.formMain.formHint.AddStep5Description(Descriptor.Description);
+                Program.formMain.formHint.AddStep9ListNeeds(DescriptorItem.ListNeeds);
             }
             else
             {
