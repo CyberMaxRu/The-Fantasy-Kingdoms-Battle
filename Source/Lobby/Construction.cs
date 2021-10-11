@@ -157,9 +157,12 @@ namespace Fantasy_Kingdoms_Battle
 
             // Инициализируем удовлетворяемые потребности
             ListNeeds = new int[FormMain.Config.NeedsCreature.Count];
-            foreach ((DescriptorNeed, int) need in TypeConstruction.Levels[Level].ListNeeds)
+            if (TypeConstruction.Levels[Level].DescriptorVisit != null)
             {
-                ListNeeds[need.Item1.Index] = need.Item2;
+                foreach ((DescriptorNeed, int) need in TypeConstruction.Levels[Level].DescriptorVisit.ListNeeds)
+                {
+                    ListNeeds[need.Item1.Index] = need.Item2;
+                }
             }
         }
 
@@ -1052,7 +1055,8 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep6Income(IncomeForLevel(requiredLevel));
             Program.formMain.formHint.AddStep8Greatness(GreatnesAddForLevel(requiredLevel), GreatnesPerDayForLevel(requiredLevel));
             Program.formMain.formHint.AddStep9PlusBuilders(BuildersPerDayForLevel(requiredLevel));
-            Program.formMain.formHint.AddStep9ListNeeds(TypeConstruction.Levels[requiredLevel].ListNeeds);
+            if (TypeConstruction.Levels[requiredLevel].DescriptorVisit != null)
+                Program.formMain.formHint.AddStep9ListNeeds(TypeConstruction.Levels[requiredLevel].DescriptorVisit.ListNeeds);
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirements(requiredLevel));
             Program.formMain.formHint.AddStep12Gold(CostBuyOrUpgradeForLevel(requiredLevel), Player.Gold >= CostBuyOrUpgradeForLevel(requiredLevel));
             Program.formMain.formHint.AddStep13Builders(TypeConstruction.Levels[requiredLevel].Builders, Player.FreeBuilders >= TypeConstruction.Levels[requiredLevel].Builders);

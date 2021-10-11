@@ -127,9 +127,6 @@ namespace Fantasy_Kingdoms_Battle
             // Загружаем перки, которые дает сооружение
             ListPerks = new ListDescriptorPerks(n.SelectSingleNode("Perks"));
 
-            // Загружаем потребности
-            ListNeeds = new ListNeeds(n.SelectSingleNode("Needs"));
-
             Debug.Assert(Number >= 0);
             Debug.Assert(Number <= 5);
             Debug.Assert(MaxInhabitant >= 0);
@@ -150,7 +147,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int BuildersPerDay { get; }// Дает строителей в день
         internal DescriptorConstructionVisit DescriptorVisit { get; private set; }// Товар для посещения сооружения
         internal ListDescriptorPerks ListPerks { get; }// Перки, которые дает уровень сооружения
-        internal ListNeeds ListNeeds { get; }// Потребности, которые удовлетворяет сооружение
 
         internal override void TuneDeferredLinks()
         {
@@ -160,7 +156,6 @@ namespace Fantasy_Kingdoms_Battle
                 DescriptorVisit = Config.FindConstructionVisit(nameVisit);
 
             ListPerks.TuneDeferredLinks();
-            ListNeeds.TuneDeferredLinks();
         }
     }
 }

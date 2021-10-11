@@ -2306,10 +2306,6 @@
         <Builders>1</Builders>
         <Income>50</Income>
         <Visit>GardenVisit1</Visit>
-        <Needs>
-          <Rest>10</Rest>
-          <Entertainment>5</Entertainment>
-        </Needs>
       </Level>
       <Level>
         <Number>2</Number>
@@ -2317,10 +2313,6 @@
         <Builders>1</Builders>
         <Income>100</Income>
         <Visit>GardenVisit2</Visit>
-        <Needs>
-          <Rest>20</Rest>
-          <Entertainment>10</Entertainment>
-        </Needs>
       </Level>
       <Level>
         <Number>3</Number>
@@ -2328,10 +2320,6 @@
         <Builders>1</Builders>
         <Income>150</Income>
         <Visit>GardenVisit3</Visit>
-        <Needs>
-          <Rest>30</Rest>
-          <Entertainment>15</Entertainment>
-        </Needs>
       </Level>
     </Levels>
     <CellsMenu>
