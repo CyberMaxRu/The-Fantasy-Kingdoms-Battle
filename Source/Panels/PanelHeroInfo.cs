@@ -77,16 +77,16 @@ namespace Fantasy_Kingdoms_Battle
             lblCharacters = new VCLabel(panelStatistics, 0, 0, Program.formMain.fontSmall, Color.White, 16, "Основные характеристики:");
             lblCharacters.StringFormat.Alignment = StringAlignment.Near;
 
-            idvHonor = new VCIconAndDigitValue(panelStatistics, 0, lblCharacters.NextTop() - 4, 104, FormMain.GUI_16_HONOR);
+            idvHonor = new VCIconAndDigitValue(panelStatistics, 0, lblCharacters.NextTop() - 4, 104, FormMain.Config.FindPropertyCreature(NamePropertyCreature.Honor).ImageIndex);
             idvHonor.ShowHint += IdvHonor_ShowHint;
 
-            idvEnthusiasm = new VCIconAndDigitValue(panelStatistics, idvHonor.NextLeft(), idvHonor.ShiftY, 104, FormMain.GUI_16_ENTHUSIASM);
+            idvEnthusiasm = new VCIconAndDigitValue(panelStatistics, idvHonor.NextLeft(), idvHonor.ShiftY, 104, FormMain.Config.FindPropertyCreature(NamePropertyCreature.Enthusiasm).ImageIndex);
             idvEnthusiasm.ShowHint += IdvEnthusiasm_ShowHint;
 
-            idvMorale = new VCIconAndDigitValue(panelStatistics, 0, idvHonor.NextTop() - 4, 104, FormMain.GUI_16_MORALE);
+            idvMorale = new VCIconAndDigitValue(panelStatistics, 0, idvHonor.NextTop() - 4, 104, FormMain.Config.FindPropertyCreature(NamePropertyCreature.Morale).ImageIndex);
             idvMorale.ShowHint += IdvMorale_ShowHint;
 
-            idvLuck = new VCIconAndDigitValue(panelStatistics, idvMorale.NextLeft(), idvMorale.ShiftY, 104, FormMain.GUI_16_LUCK);
+            idvLuck = new VCIconAndDigitValue(panelStatistics, idvMorale.NextLeft(), idvMorale.ShiftY, 104, FormMain.Config.FindPropertyCreature(NamePropertyCreature.Luck).ImageIndex);
             idvLuck.ShowHint += IdvLuck_ShowHint;
 
             // Потребности
@@ -94,16 +94,16 @@ namespace Fantasy_Kingdoms_Battle
             lblNeeds = new VCLabel(panelStatistics, 0, separator1.NextTop() - 8, Program.formMain.fontSmall, Color.White, 16, "Потребности:");
             lblNeeds.StringFormat.Alignment = StringAlignment.Near;
 
-            idvFood = new VCIconAndDigitValue(panelStatistics, 0, lblNeeds.NextTop() - 4, 104, FormMain.GUI_16_NEEDS_FOOD);
+            idvFood = new VCIconAndDigitValue(panelStatistics, 0, lblNeeds.NextTop() - 4, 104, FormMain.Config.FindNeedCreature(NameNeedCreature.Food).ImageIndex);
             idvFood.ShowHint += IdvFood_ShowHint;
 
-            idvRest = new VCIconAndDigitValue(panelStatistics, idvFood.NextLeft(), idvFood.ShiftY, 104, FormMain.GUI_16_NEEDS_REST);
+            idvRest = new VCIconAndDigitValue(panelStatistics, idvFood.NextLeft(), idvFood.ShiftY, 104, FormMain.Config.FindNeedCreature(NameNeedCreature.Rest).ImageIndex);
             idvRest.ShowHint += IdvRest_ShowHint;
 
-            idvEntertainment = new VCIconAndDigitValue(panelStatistics, 0, idvFood.NextTop() - 4, 104, FormMain.GUI_16_NEEDS_ENTERTAINMENT);
+            idvEntertainment = new VCIconAndDigitValue(panelStatistics, 0, idvFood.NextTop() - 4, 104, FormMain.Config.FindNeedCreature(NameNeedCreature.Entertainment).ImageIndex);
             idvEntertainment.ShowHint += IdvEntertainment_ShowHint;
 
-            idvNeedMoney = new VCIconAndDigitValue(panelStatistics, idvEntertainment.NextLeft(), idvEntertainment.ShiftY, 104, FormMain.GUI_16_NEEDS_GOLD);
+            idvNeedMoney = new VCIconAndDigitValue(panelStatistics, idvEntertainment.NextLeft(), idvEntertainment.ShiftY, 104, FormMain.Config.FindNeedCreature(NameNeedCreature.Money).ImageIndex);
             idvNeedMoney.ShowHint += IdvNeedsGold_ShowHint;
 
             // Интересы
