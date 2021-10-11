@@ -182,6 +182,14 @@ namespace Fantasy_Kingdoms_Battle
                 NeedsCreature.Add(new DescriptorNeed(n));
             }
 
+            // Загрузка конфигурации типов интересов существ
+            xmlDoc = CreateXmlDocument(@"Config\Descriptors\TypeInterestCreature.xml");
+
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/TypeInterestCreature"))
+            {
+                TypeInterestCreature.Add(new DescriptorCreatureTypeInterest(n));
+            }
+
             // Загрузка конфигурации перков
             xmlDoc = CreateXmlDocument(@"Config\Descriptors\Perks.xml");
 
@@ -317,6 +325,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<StateCreature> StatesCreature { get; } = new List<StateCreature>();
         internal List<DescriptorPropertyCreature> PropertiesCreature { get; } = new List<DescriptorPropertyCreature>();
         internal List<DescriptorNeed> NeedsCreature { get; } = new List<DescriptorNeed>();
+        internal List<DescriptorCreatureTypeInterest> TypeInterestCreature { get; } = new List<DescriptorCreatureTypeInterest>();
         internal List<TypeCreature> TypeCreatures { get; } = new List<TypeCreature>();
         internal List<DescriptorCreature> Creatures { get; } = new List<DescriptorCreature>();
         internal List<DescriptorGroupItems> GroupItems { get; } = new List<DescriptorGroupItems>();
