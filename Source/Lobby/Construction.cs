@@ -134,6 +134,12 @@ namespace Fantasy_Kingdoms_Battle
                     }
             }
 
+            if (cmBuild != null)
+            {
+                Researches.Remove(cmBuild);
+                Program.formMain.UpdateMenu();
+            }
+
             // Обновляем список перков от сооружения
             AddPerksToPlayer();
 
