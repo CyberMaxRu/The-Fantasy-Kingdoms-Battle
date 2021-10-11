@@ -16,6 +16,8 @@ namespace Fantasy_Kingdoms_Battle
             Cooldown = XmlUtils.GetIntegerNotNull(n, "Cooldown");
             NameGoods = XmlUtils.GetStringNotNull(n, "NameGoods");
 
+            ListNeeds = new ListNeeds(n.SelectSingleNode("Needs"));
+
             Debug.Assert(Duration >= 1);
             Debug.Assert(Duration < 10);
             Debug.Assert(Cooldown >= 1);
@@ -33,5 +35,14 @@ namespace Fantasy_Kingdoms_Battle
         internal int Duration { get; }// Длительность (в днях)
         internal int Cooldown { get; }// Пауза до возможности снова использовать (в днях)
         internal string NameGoods { get; }// Наименование события-товара
+        internal ListNeeds ListNeeds { get; }
+
+        internal override void TuneDeferredLinks()
+        {
+            base.TuneDeferredLinks();
+
+            ListNeeds.TuneDeferredLinks();
+            Debug.Assert(ListNeeds.Count > 0);
+        }
     }
 }

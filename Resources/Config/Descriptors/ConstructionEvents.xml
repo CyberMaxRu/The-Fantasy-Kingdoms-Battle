@@ -16,6 +16,10 @@
     <Items>
       <Item>Fireworks</Item>
     </Items>
+    <Needs>
+      <Rest>20</Rest>
+      <Entertainment>40</Entertainment>
+    </Needs>
   </ConstructionEvent>
   <ConstructionEvent>
     <ID>EventFeast</ID>
@@ -33,6 +37,10 @@
     <Items>
       <Item>Feast</Item>
     </Items>
+    <Needs>
+      <Rest>25</Rest>
+      <Entertainment>70</Entertainment>
+    </Needs>
   </ConstructionEvent>
   <ConstructionEvent>
     <ID>EventFair</ID>
@@ -51,6 +59,10 @@
     <Items>
       <Item>Feast</Item>
     </Items>
+    <Needs>
+      <Rest>20</Rest>
+      <Entertainment>30</Entertainment>
+    </Needs>
   </ConstructionEvent>
   <ConstructionEvent>
     <ID>EventSellBooks</ID>
@@ -67,6 +79,10 @@
     <Items>
       <Item>LibrarySellBooks</Item>
     </Items>
+    <Needs>
+      <Rest>1</Rest>
+      <Entertainment>30</Entertainment>
+    </Needs>
   </ConstructionEvent>
   <ConstructionEvent>
     <ID>EventMemoir</ID>
@@ -84,6 +100,9 @@
     <Items>
       <Item>LibraryMemoir</Item>
     </Items>
+    <Needs>
+      <Rest>40</Rest>
+    </Needs>
   </ConstructionEvent>
   <ConstructionEvent>
     <ID>EventElvenMusic</ID>
@@ -100,5 +119,9 @@
       <Hero>Cleric</Hero>
       <Hero>Mage</Hero>
     </Heroes>
+    <Needs>
+      <Rest>50</Rest>
+      <Entertainment>20</Entertainment>
+    </Needs>
   </ConstructionEvent>
 </Descriptors>
