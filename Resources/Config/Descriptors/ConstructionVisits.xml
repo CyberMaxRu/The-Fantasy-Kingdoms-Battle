@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Descriptors>
+  <ConstructionVisit>
+    <ID>GardenVisit1</ID>
+    <Name>Прогулка по саду (1)</Name>
+    <Description>- Прогулка по саду благотворно действует на героев.</Description>
+    <ImageIndex Size="128">139</ImageIndex>
+    <AvailableForAll>true</AvailableForAll>
+    <Needs>
+      <Rest>10</Rest>
+      <Entertainment>5</Entertainment>
+    </Needs>
+  </ConstructionVisit>
+  <ConstructionVisit>
+    <ID>GardenVisit2</ID>
+    <Name>Прогулка по саду (2)</Name>
+    <Description>- Прогулка по саду благотворно действует на героев.</Description>
+    <ImageIndex Size="128">139</ImageIndex>
+    <AvailableForAll>true</AvailableForAll>
+    <Needs>
+      <Rest>20</Rest>
+      <Entertainment>10</Entertainment>
+    </Needs>
+  </ConstructionVisit>
+  <ConstructionVisit>
+    <ID>GardenVisit3</ID>
+    <Name>Прогулка по саду (3)</Name>
+    <Description>- Прогулка по саду благотворно действует на героев.</Description>
+    <ImageIndex Size="128">139</ImageIndex>
+    <AvailableForAll>true</AvailableForAll>
+    <Needs>
+      <Rest>30</Rest>
+      <Entertainment>15</Entertainment>
+    </Needs>
+  </ConstructionVisit>
+</Descriptors>

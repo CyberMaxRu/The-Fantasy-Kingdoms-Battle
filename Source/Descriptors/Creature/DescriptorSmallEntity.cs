@@ -14,6 +14,10 @@ namespace Fantasy_Kingdoms_Battle
 
         public DescriptorSmallEntity(XmlNode n) : base(n)
         {
+            XmlAttribute attrIcon = n.SelectSingleNode("ImageIndex").Attributes["Size"];
+            if ((attrIcon != null) && (attrIcon.Value == "128"))
+                ImageIndex = XmlUtils.GetIntegerNotNull(n, "ImageIndex") - 1;
+
             AvailableForAllHeroes = XmlUtils.GetBoolean(n, "AvailableForAll", false);
 
             // Загружаем классы героев, которые могут использовать способность

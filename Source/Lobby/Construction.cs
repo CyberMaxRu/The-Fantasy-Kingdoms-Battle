@@ -109,6 +109,12 @@ namespace Fantasy_Kingdoms_Battle
                 // Убираем перки от сооружения
                 foreach (DescriptorPerk dp in TypeConstruction.Levels[Level].ListPerks)
                     Player.RemovePerkFromConstruction(this, dp);
+
+                // Убираем товар посещения
+                if (TypeConstruction.Levels[Level].DescriptorVisit != null)
+                {
+                    RemoveProduct(TypeConstruction.Levels[Level].DescriptorVisit);
+                }
             }
 
             Level++;
@@ -143,16 +149,18 @@ namespace Fantasy_Kingdoms_Battle
             // Обновляем список перков от сооружения
             AddPerksToPlayer();
 
+            // Добавляем товар посещения
+            if (TypeConstruction.Levels[Level].DescriptorVisit != null)
+            {
+                AddProduct(new ConstructionProduct(TypeConstruction.Levels[Level].DescriptorVisit));
+            }
+
             // Инициализируем удовлетворяемые потребности
             ListNeeds = new int[FormMain.Config.NeedsCreature.Count];
             foreach ((DescriptorNeed, int) need in TypeConstruction.Levels[Level].ListNeeds)
             {
                 ListNeeds[need.Item1.Index] = need.Item2;
             }
-
-            //
-            if (cmBuild != null)
-                Researches.Remove(cmBuild);
         }
 
         internal void AddPerksToPlayer()
@@ -1172,6 +1180,23 @@ namespace Fantasy_Kingdoms_Battle
                     ChangeNeed(need.Item1.NameNeed, need.Item2);
                 }
             }
+        }
+
+        internal void RemoveProduct(DescriptorSmallEntity e)
+        {
+            ConstructionProduct productFromRemove = null;
+
+            foreach (ConstructionProduct cp in Items)
+            {
+                if (cp.Descriptor.ID == e.ID)
+                {
+                    productFromRemove = cp;
+                    break;
+                }
+            }
+
+            Debug.Assert(productFromRemove != null);
+            Items.Remove(productFromRemove);
         }
 
         private void ChangeNeed(NameNeedCreature nameNeed, int value)

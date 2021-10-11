@@ -2305,6 +2305,7 @@
         <Cost>500</Cost>
         <Builders>1</Builders>
         <Income>50</Income>
+        <Visit>GardenVisit1</Visit>
         <Needs>
           <Rest>10</Rest>
           <Entertainment>5</Entertainment>
@@ -2315,6 +2316,7 @@
         <Cost>500</Cost>
         <Builders>1</Builders>
         <Income>100</Income>
+        <Visit>GardenVisit2</Visit>
         <Needs>
           <Rest>20</Rest>
           <Entertainment>10</Entertainment>
@@ -2325,6 +2327,7 @@
         <Cost>500</Cost>
         <Builders>1</Builders>
         <Income>150</Income>
+        <Visit>GardenVisit3</Visit>
         <Needs>
           <Rest>30</Rest>
           <Entertainment>15</Entertainment>

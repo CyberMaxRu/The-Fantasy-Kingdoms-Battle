@@ -44,14 +44,22 @@ namespace Fantasy_Kingdoms_Battle
             Counter = Duration;
         }
 
+        public ConstructionProduct(DescriptorConstructionVisit descriptor) : base()
+        {
+            Debug.Assert(descriptor != null);
+
+            DescriptorConstructionVisit = descriptor;
+            Descriptor = descriptor;
+        }
+
         internal DescriptorSmallEntity Descriptor { get; }
         internal DescriptorAbility DescriptorAbility { get; }
         internal DescriptorItem DescriptorItem { get; }
         internal DescriptorGroupItems DescriptorGroupItem { get; }
         internal DescriptorConstructionEvent DescriptorConstructionEvent { get; }
+        internal DescriptorConstructionVisit DescriptorConstructionVisit { get; }
         internal int Duration { get; private set; }// Длительность нахождения товара в сооружении
         internal int Counter { get; set; }// Счетчик дней товара в сооружении
-        internal int Food { get; }// Количество еды, получаемое при покупке товара
 
         internal override int GetImageIndex()
         {
@@ -88,9 +96,13 @@ namespace Fantasy_Kingdoms_Battle
             else
             {
                 Program.formMain.formHint.AddStep2Header(Descriptor.Name);
+                if (DescriptorConstructionVisit != null)
+                    Program.formMain.formHint.AddStep3Type("Посещение");
                 Program.formMain.formHint.AddStep5Description(Descriptor.Description);
                 if (DescriptorItem != null)
                     Program.formMain.formHint.AddStep9ListNeeds(DescriptorItem.ListNeeds);
+                if (DescriptorConstructionVisit != null)
+                    Program.formMain.formHint.AddStep9ListNeeds(DescriptorConstructionVisit.ListNeeds);
             }
         }
 

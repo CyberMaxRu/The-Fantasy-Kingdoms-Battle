@@ -128,6 +128,13 @@ namespace Fantasy_Kingdoms_Battle
                 TypeConstructions.Add(new DescriptorTypeConstruction(n));
             }
 
+            // Загрузка конфигурации визитов в сооружения
+            xmlDoc = CreateXmlDocument(@"Config\Descriptors\ConstructionVisits.xml");
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/ConstructionVisit"))
+            {
+                ConstructionsVisits.Add(new DescriptorConstructionVisit(n));
+            }
+
             // Загрузка конфигурации событий в сооружениях
             xmlDoc = CreateXmlDocument(@"Config\Descriptors\ConstructionEvents.xml");
             foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/ConstructionEvent"))
@@ -285,6 +292,9 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorTypeConstruction tc in TypeConstructions)
                 tc.TuneDeferredLinks();
 
+            foreach (DescriptorConstructionVisit cv in ConstructionsVisits)
+                cv.TuneDeferredLinks();
+
             foreach (DescriptorConstructionEvent ce in ConstructionsEvents)
                 ce.TuneDeferredLinks();
 
@@ -314,6 +324,7 @@ namespace Fantasy_Kingdoms_Battle
 
         // Списки описателей
         internal List<DescriptorTypeConstruction> TypeConstructions { get; } = new List<DescriptorTypeConstruction>();
+        internal List<DescriptorConstructionVisit> ConstructionsVisits { get; } = new List<DescriptorConstructionVisit>();
         internal List<DescriptorConstructionEvent> ConstructionsEvents { get; } = new List<DescriptorConstructionEvent>();
         internal List<DescriptorConstruction> Constructions { get; } = new List<DescriptorConstruction>();
         internal List<DescriptorAttack> TypeAttacks { get; } = new List<DescriptorAttack>();
@@ -463,6 +474,17 @@ namespace Fantasy_Kingdoms_Battle
         internal Pen PenSelectedBorder { get; private set; }
 
         //
+        internal DescriptorConstructionVisit FindConstructionVisit(string ID)
+        {
+            foreach (DescriptorConstructionVisit dcv in ConstructionsVisits)
+            {
+                if (dcv.ID == ID)
+                    return dcv;
+            }
+
+            throw new Exception($"Посещение {ID} не найдено.");
+        }
+
         internal DescriptorConstructionEvent FindConstructionEvent(string ID)
         {
             foreach (DescriptorConstructionEvent dce in ConstructionsEvents)

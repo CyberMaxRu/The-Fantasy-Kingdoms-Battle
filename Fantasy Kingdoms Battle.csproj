@@ -60,6 +60,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Source\Descriptors\Construction\DescriptorConstructionVisit.cs" />
     <Compile Include="Source\Descriptors\Creature\DescriptorCreatureTypeInterest.cs" />
     <Compile Include="Source\Descriptors\Construction\DescriptorConstructionEvent.cs" />
     <Compile Include="Source\Descriptors\Construction\DescriptorTypeConstruction.cs" />
@@ -234,6 +235,7 @@
     <Content Include="FKB.ico" />
     <Content Include="Resources\Config\ComputerPlayers.xml" />
     <Content Include="Resources\Config\Descriptors\ConstructionEvents.xml" />
+    <Content Include="Resources\Config\Descriptors\ConstructionVisits.xml" />
     <Content Include="Resources\Config\Descriptors\GroupItems.xml" />
     <Content Include="Resources\Config\Descriptors\TypeInterestCreature.xml" />
     <Content Include="Resources\Config\Descriptors\NeedsCreature.xml" />
