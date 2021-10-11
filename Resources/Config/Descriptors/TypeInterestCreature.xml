@@ -31,8 +31,20 @@
     <ImageIndex>15</ImageIndex>
   </TypeInterestCreature>
   <TypeInterestCreature>
-    <ID>ExecuteQuest</ID>
-    <Name>Выполнение заданий</Name>
+    <ID>ExecuteQuestAttack</ID>
+    <Name>Выполнение задания атаки</Name>
+    <Description></Description>
+    <ImageIndex>16</ImageIndex>
+  </TypeInterestCreature>
+  <TypeInterestCreature>
+    <ID>ExecuteQuestDefense</ID>
+    <Name>Выполнение задания защиты</Name>
+    <Description></Description>
+    <ImageIndex>16</ImageIndex>
+  </TypeInterestCreature>
+  <TypeInterestCreature>
+    <ID>ExecuteQuestScout</ID>
+    <Name>Выполнение задания разведки</Name>
     <Description></Description>
     <ImageIndex>16</ImageIndex>
   </TypeInterestCreature>
