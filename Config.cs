@@ -235,7 +235,7 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/StateCreature"))
             {
-                StatesCreature.Add(new StateCreature(n));
+                StatesCreature.Add(new DescriptorStateCreature(n));
             }
 
             // Загрузка конфигурации типов существ
@@ -243,7 +243,7 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/TypeCreature"))
             {
-                TypeCreatures.Add(new TypeCreature(n));
+                TypeCreatures.Add(new DescriptorTypeCreature(n));
             }
 
             // Загрузка конфигурации существ
@@ -322,11 +322,11 @@ namespace Fantasy_Kingdoms_Battle
         internal List<DescriptorAbility> Abilities { get; } = new List<DescriptorAbility>();
         internal List<DescriptorSpecialization> Specializations { get; } = new List<DescriptorSpecialization>();
         internal List<DescriptorSecondarySkill> SecondarySkills { get; } = new List<DescriptorSecondarySkill>();
-        internal List<StateCreature> StatesCreature { get; } = new List<StateCreature>();
+        internal List<DescriptorStateCreature> StatesCreature { get; } = new List<DescriptorStateCreature>();
         internal List<DescriptorPropertyCreature> PropertiesCreature { get; } = new List<DescriptorPropertyCreature>();
         internal List<DescriptorNeed> NeedsCreature { get; } = new List<DescriptorNeed>();
         internal List<DescriptorCreatureTypeInterest> TypeInterestCreature { get; } = new List<DescriptorCreatureTypeInterest>();
-        internal List<TypeCreature> TypeCreatures { get; } = new List<TypeCreature>();
+        internal List<DescriptorTypeCreature> TypeCreatures { get; } = new List<DescriptorTypeCreature>();
         internal List<DescriptorCreature> Creatures { get; } = new List<DescriptorCreature>();
         internal List<DescriptorGroupItems> GroupItems { get; } = new List<DescriptorGroupItems>();
         internal List<DescriptorItem> Items { get; } = new List<DescriptorItem>();
@@ -572,9 +572,9 @@ namespace Fantasy_Kingdoms_Battle
             return null;
         }
 
-        internal StateCreature FindStateCreature(string ID)
+        internal DescriptorStateCreature FindStateCreature(string ID)
         {
-            foreach (StateCreature sc in StatesCreature)
+            foreach (DescriptorStateCreature sc in StatesCreature)
             {
                 if (sc.ID == ID)
                     return sc;
@@ -610,9 +610,9 @@ namespace Fantasy_Kingdoms_Battle
             throw new Exception($"Потребность существа {nnc} не найдена.");
         }
 
-        internal TypeCreature FindTypeCreature(string ID)
+        internal DescriptorTypeCreature FindTypeCreature(string ID)
         {
-            foreach (TypeCreature tu in TypeCreatures)
+            foreach (DescriptorTypeCreature tu in TypeCreatures)
             {
                 if (tu.ID == ID)
                     return tu;

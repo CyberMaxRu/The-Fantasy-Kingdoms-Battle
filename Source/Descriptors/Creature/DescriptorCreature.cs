@@ -280,9 +280,9 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal CategoryCreature CategoryCreature { get; }// Категория существа
-        internal TypeCreature TypeCreature { get; }// Вид существа
+        internal DescriptorTypeCreature TypeCreature { get; }// Вид существа
         internal int MaxLevel { get; }// Максимальный уровень существа
-        internal StateCreature PersistentStateHeroAtMap { get; set; }
+        internal DescriptorStateCreature PersistentStateHeroAtMap { get; set; }
         internal HeroParameters ParametersByHire { get; }// Параметры при создании существа
         internal ConfigNextLevelHero ConfigNextLevel { get; }
         internal List<DescriptorAbility> Abilities { get; } = new List<DescriptorAbility>();// Способности существа

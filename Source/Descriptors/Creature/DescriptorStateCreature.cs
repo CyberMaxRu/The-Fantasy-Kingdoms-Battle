@@ -12,11 +12,11 @@ namespace Fantasy_Kingdoms_Battle
     internal enum NameStateCreature { Nothing, DoScoutFlag, DoAttackFlag, DoDefenseFlag, BattleWithPlayer, InHome, Therapy, King, Advisor, Captain, Treasurer };
 
     // Класс описания состояния существ
-    internal sealed class StateCreature : DescriptorEntity
+    internal sealed class DescriptorStateCreature : DescriptorEntity
     {
-        public StateCreature(XmlNode n) : base(n)
+        public DescriptorStateCreature(XmlNode n) : base(n)
         {
-            foreach (StateCreature sc in Config.StatesCreature)
+            foreach (DescriptorStateCreature sc in Config.StatesCreature)
             {
                 Debug.Assert(sc.ID != ID);
                 Debug.Assert(sc.Name != Name);

@@ -113,7 +113,7 @@ namespace Fantasy_Kingdoms_Battle
         internal Item RangeWeapon { get; private set; }// Стрелковое оружие (дальнего боя)
         internal Item Armour { get; private set; }// Доспех        
         internal Item Quiver { get; private set; }// Колчан
-        internal StateCreature StateCreature { get; private set; }// Состояние (на карте)
+        internal DescriptorStateCreature StateCreature { get; private set; }// Состояние (на карте)
 
         // Характеристики
         internal CreatureProperty Honor { get; } = new CreatureProperty(FormMain.Config.FindPropertyCreature(NamePropertyCreature.Honor));// Честь

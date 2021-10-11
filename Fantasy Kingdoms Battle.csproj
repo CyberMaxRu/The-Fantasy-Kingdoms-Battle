@@ -155,13 +155,13 @@
     <Compile Include="Source\VisualControls\VCText.cs" />
     <Compile Include="Source\VisualControls\VCWindowCaption.cs" />
     <Compile Include="Source\Descriptors\Creature\DescriptorSpecialization.cs" />
-    <Compile Include="Source\Descriptors\Creature\StateCreature.cs" />
+    <Compile Include="Source\Descriptors\Creature\DescriptorStateCreature.cs" />
     <Compile Include="Source\Lobby\Creature.cs" />
     <Compile Include="Source\Lobby\Monster.cs" />
     <Compile Include="Source\Descriptors\Construction\DescriptorConstruction.cs" />
     <Compile Include="Source\Descriptors\DescriptorEntity.cs" />
     <Compile Include="Source\Panels\PanelLairInfo.cs" />
-    <Compile Include="Source\Descriptors\Creature\TypeCreature.cs" />
+    <Compile Include="Source\Descriptors\Creature\DescriptorTypeCreature.cs" />
     <Compile Include="Source\Descriptors\Creature\DescriptorCreature.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Source\Lobby\Entity.cs" />
