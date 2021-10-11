@@ -93,6 +93,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<Hero> listAttackedHero { get; } = new List<Hero>();// Список героев, откликнувшихся на флаг
 
         // 
+        internal int Interest { get; private set; }
         internal int[] ListNeeds { get; private set; }
 
         internal void Build()
@@ -155,6 +156,9 @@ namespace Fantasy_Kingdoms_Battle
                 AddProduct(new ConstructionProduct(TypeConstruction.Levels[Level].DescriptorVisit));
             }
 
+            // Интерес
+            CalcInterest();
+
             // Инициализируем удовлетворяемые потребности
             ListNeeds = new int[FormMain.Config.NeedsCreature.Count];
             if (TypeConstruction.Levels[Level].DescriptorVisit != null)
@@ -163,6 +167,16 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     ListNeeds[need.Item1.Index] = need.Item2;
                 }
+            }
+        }
+
+        private void CalcInterest()
+        {
+            Interest = TypeConstruction.Levels[Level].DescriptorVisit != null ? TypeConstruction.Levels[Level].DescriptorVisit.Interest : 0;
+
+            foreach (ConstructionProduct cp in Items)
+            {
+                //if ((cp.DescriptorItem != null) && (cp.DescriptorItem.
             }
         }
 
@@ -1177,9 +1191,9 @@ namespace Fantasy_Kingdoms_Battle
             Items.Add(cp);
 
             // Если это пристройка, то прибавляем ее удовлетворение потребностей к текущим
-            if ((cp.DescriptorItem != null) && (cp.DescriptorItem.CategoryItem == CategoryItem.Extension))
+            if (cp.DescriptorConstructionExtension != null)
             { 
-                foreach ((DescriptorNeed, int) need in cp.DescriptorItem.ListNeeds)
+                foreach ((DescriptorNeed, int) need in cp.DescriptorConstructionExtension.ListNeeds)
                 {
                     ChangeNeed(need.Item1.NameNeed, need.Item2);
                 }
@@ -1225,6 +1239,17 @@ namespace Fantasy_Kingdoms_Battle
             foreach (ConstructionProduct cp in Items)
             {
                 if (cp.Descriptor.ID == item.ID)
+                    return true;
+            }
+
+            return false;
+        }
+
+        internal bool ExtensionAvailabled(DescriptorConstructionExtension extension)
+        {
+            foreach (ConstructionProduct cp in Items)
+            {
+                if (cp.Descriptor.ID == extension.ID)
                     return true;
             }
 

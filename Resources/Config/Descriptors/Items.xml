@@ -3072,71 +3072,6 @@
     <AvailableForAll>true</AvailableForAll>
   </Item>
   <Item>
-    <ID>Paving</ID>
-    <Name>Мощение</Name>
-    <Description>Мощение плиткой увеличит популярность Площади</Description>
-    <ImageIndex>247</ImageIndex>
-    <Cost>500</Cost>
-    <CategoryItem>Extension</CategoryItem>
-    <AvailableForAll>true</AvailableForAll>
-  </Item>
-  <Item>
-    <ID>Fountain</ID>
-    <Name>Фонтан</Name>
-    <Description>Фонтан увеличит популярность Площади</Description>
-    <ImageIndex>213</ImageIndex>
-    <Cost>1000</Cost>
-    <CategoryItem>Extension</CategoryItem>
-    <AvailableForAll>true</AvailableForAll>
-  </Item>
-  <Item>
-    <ID>Statue</ID>
-    <Name>Статуя</Name>
-    <Description>Статуя Короля обозначит Королевский статус площади</Description>
-    <ImageIndex>231</ImageIndex>
-    <Cost>3000</Cost>
-    <CategoryItem>Extension</CategoryItem>
-    <AvailableForAll>true</AvailableForAll>
-  </Item>
-  <Item>
-    <ID>Gazebo</ID>
-    <Name>Беседки</Name>
-    <Description>Беседки увеличат популярность Сада</Description>
-    <ImageIndex>215</ImageIndex>
-    <Cost>500</Cost>
-    <CategoryItem>Extension</CategoryItem>
-    <AvailableForAll>true</AvailableForAll>
-    <Needs>
-      <Rest>5</Rest>
-    </Needs>
-  </Item>
-  <Item>
-    <ID>Waterfall</ID>
-    <Name>Водопад</Name>
-    <Description>Водопад увеличит популярность Площади</Description>
-    <ImageIndex>246</ImageIndex>
-    <Cost>1000</Cost>
-    <CategoryItem>Extension</CategoryItem>
-    <AvailableForAll>true</AvailableForAll>
-    <Needs>
-      <Rest>10</Rest>
-      <Entertainment>5</Entertainment>
-    </Needs>
-  </Item>
-  <Item>
-    <ID>Alley</ID>
-    <Name>Аллея</Name>
-    <Description>Аллея увеличит популярность Сада</Description>
-    <ImageIndex>214</ImageIndex>
-    <Cost>1500</Cost>
-    <CategoryItem>Extension</CategoryItem>
-    <AvailableForAll>true</AvailableForAll>
-    <Needs>
-      <Rest>5</Rest>
-      <Entertainment>2</Entertainment>
-    </Needs>
-  </Item>
-  <Item>
     <ID>TournamentHandFight</ID>
     <Name>Турнир по рукопашному бою</Name>
     <Description>Провести турнир по рукопашному бою.</Description>
@@ -3238,14 +3173,6 @@
     <Description>Гномы готовы за небольшие деньги наковать на оружии простые руны, которые увеличат наносимый урон.</Description>
     <ImageIndex>230</ImageIndex>
     <CategoryItem>Thing</CategoryItem>
-    <AvailableForAll>true</AvailableForAll>
-  </Item>
-  <Item>
-    <ID>DwarfForge</ID>
-    <Name>Кузница гномов</Name>
-    <Description>Пристроить гномью кузницу. Позволяет гномам создавать именные предметы.</Description>
-    <ImageIndex>226</ImageIndex>
-    <CategoryItem>Extension</CategoryItem>
     <AvailableForAll>true</AvailableForAll>
   </Item>
   <Item>

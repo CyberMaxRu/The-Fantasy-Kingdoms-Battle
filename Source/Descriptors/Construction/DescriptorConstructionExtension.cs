@@ -9,9 +9,9 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    class DescriptorConstructionVisit : DescriptorSmallEntity
+    internal sealed class DescriptorConstructionExtension : DescriptorSmallEntity
     {
-        public DescriptorConstructionVisit(XmlNode n) : base(n)
+        public DescriptorConstructionExtension(XmlNode n) : base(n)
         {
             Debug.Assert(Interest >= 0);
             Debug.Assert(Interest <= 100);
@@ -29,14 +29,14 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal int Interest { get; }// Интерес для посещения сооружения
-        internal ListNeeds ListNeeds { get; }
+        internal ListNeeds ListNeeds { get; }// Изменение удовлетворения потребностей героев
 
         internal override void TuneDeferredLinks()
         {
             base.TuneDeferredLinks();
 
             ListNeeds.TuneDeferredLinks();
-            Debug.Assert(ListNeeds.Count > 0);
+            //Debug.Assert(ListNeeds.Count > 0);
         }
     }
 }

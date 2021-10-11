@@ -172,4 +172,52 @@ namespace Fantasy_Kingdoms_Battle
            return new TextRequirement(CheckRequirement(p), $"{Goods.Name} ({Construction.Name})");
         }            
     }
+
+    internal sealed class RequirementExtension : Requirement
+    {
+        private DescriptorConstruction Construction;
+        private string nameConstruction;
+        private DescriptorConstructionExtension Extension;
+        private string nameExtension;
+
+        public RequirementExtension(XmlNode n) : base(n)
+        {
+            nameConstruction = XmlUtils.GetStringNotNull(n, "Construction");
+            nameExtension = XmlUtils.GetStringNotNull(n, "Extension");
+
+            Debug.Assert(nameConstruction.Length > 0);
+            Debug.Assert(nameExtension.Length > 0);
+        }
+
+        internal override bool CheckRequirement(Player p)
+        {
+            return p.FindConstruction(Construction.ID).ExtensionAvailabled(Extension);
+        }
+
+        internal override void TuneDeferredLinks()
+        {
+            base.TuneDeferredLinks();
+
+            Construction = Config.FindConstruction(nameConstruction);
+            Extension = Config.FindConstructionExtension(nameExtension);
+            nameConstruction = "";
+            nameExtension = "";
+
+            bool founded = false;
+            foreach (DescriptorCellMenuForConstruction cm in Construction.ListResearches)
+                if (cm.NameEntity == Extension.ID)
+                {
+                    //cm.UseForResearches.Add(Goods);
+                    founded = true;
+                    break;
+                }
+
+            Debug.Assert(founded, $"Расширение {Extension.ID} не найдено в {Construction.ID}.");
+        }
+
+        internal override TextRequirement GetTextRequirement(Player p)
+        {
+            return new TextRequirement(CheckRequirement(p), $"{Extension.Name} ({Construction.Name})");
+        }
+    }
 }

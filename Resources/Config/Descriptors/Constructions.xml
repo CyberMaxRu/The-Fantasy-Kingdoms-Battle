@@ -658,7 +658,7 @@
       </CellMenu>
       <CellMenu>
         <Pos>3,3</Pos>
-        <Type>Research</Type>
+        <Type>Extension</Type>
         <Entity>DwarfForge</Entity>
         <Cost>2000</Cost>
         <Requirements>
@@ -1996,9 +1996,9 @@
         <Cost>500</Cost>
         <Requirements>
           <Requirement>
-            <TypeRequirement>GoodsInConstruction</TypeRequirement>
+            <TypeRequirement>ExtensionInConstruction</TypeRequirement>
             <Construction>TownSquare</Construction>
-            <Goods>Fountain</Goods>
+            <Extension>Fountain</Extension>
           </Requirement>
         </Requirements>
       </CellMenu>

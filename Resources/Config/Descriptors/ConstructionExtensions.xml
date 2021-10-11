@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Descriptors>
+  <Extension>
+    <ID>Paving</ID>
+    <Name>Мощение</Name>
+    <Description>Мощение плиткой увеличит популярность Площади</Description>
+    <ImageIndex>247</ImageIndex>
+    <Interest>5</Interest>
+    <AvailableForAll>true</AvailableForAll>
+  </Extension>
+  <Extension>
+    <ID>Fountain</ID>
+    <Name>Фонтан</Name>
+    <Description>Фонтан увеличит популярность Площади</Description>
+    <ImageIndex>213</ImageIndex>
+    <Interest>10</Interest>
+    <AvailableForAll>true</AvailableForAll>
+  </Extension>
+  <Extension>
+    <ID>Statue</ID>
+    <Name>Статуя</Name>
+    <Description>Статуя Короля обозначит Королевский статус площади</Description>
+    <ImageIndex>231</ImageIndex>
+    <Interest>15</Interest>
+    <AvailableForAll>true</AvailableForAll>
+  </Extension>
+  <Extension>
+    <ID>Gazebo</ID>
+    <Name>Беседки</Name>
+    <Description>Беседки увеличат популярность Сада</Description>
+    <ImageIndex>215</ImageIndex>
+    <Cost>500</Cost>
+    <Interest>5</Interest>
+    <AvailableForAll>true</AvailableForAll>
+    <Needs>
+      <Rest>5</Rest>
+    </Needs>
+  </Extension>
+  <Extension>
+    <ID>Waterfall</ID>
+    <Name>Водопад</Name>
+    <Description>Водопад увеличит популярность Площади</Description>
+    <ImageIndex>246</ImageIndex>
+    <Interest>5</Interest>
+    <AvailableForAll>true</AvailableForAll>
+    <Needs>
+      <Rest>10</Rest>
+      <Entertainment>5</Entertainment>
+    </Needs>
+  </Extension>
+  <Extension>
+    <ID>Alley</ID>
+    <Name>Аллея</Name>
+    <Description>Аллея увеличит популярность Сада</Description>
+    <ImageIndex>214</ImageIndex>
+    <Interest>20</Interest>
+    <AvailableForAll>true</AvailableForAll>
+    <Needs>
+      <Rest>5</Rest>
+      <Entertainment>2</Entertainment>
+    </Needs>
+  </Extension>
+  <Extension>
+    <ID>DwarfForge</ID>
+    <Name>Кузница гномов</Name>
+    <Description>Пристроить гномью кузницу. Позволяет гномам создавать именные предметы.</Description>
+    <ImageIndex>226</ImageIndex>
+    <AvailableForAll>true</AvailableForAll>
+  </Extension>
+</Descriptors>

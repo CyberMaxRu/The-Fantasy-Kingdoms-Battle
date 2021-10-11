@@ -6,6 +6,7 @@
     <Description>- Прогулка по саду благотворно действует на героев.</Description>
     <ImageIndex Size="128">139</ImageIndex>
     <AvailableForAll>true</AvailableForAll>
+    <Interest>10</Interest>
     <Needs>
       <Rest>10</Rest>
       <Entertainment>5</Entertainment>
@@ -17,6 +18,7 @@
     <Description>- Прогулка по саду благотворно действует на героев.</Description>
     <ImageIndex Size="128">139</ImageIndex>
     <AvailableForAll>true</AvailableForAll>
+    <Interest>20</Interest>
     <Needs>
       <Rest>20</Rest>
       <Entertainment>10</Entertainment>
@@ -28,6 +30,7 @@
     <Description>- Прогулка по саду благотворно действует на героев.</Description>
     <ImageIndex Size="128">139</ImageIndex>
     <AvailableForAll>true</AvailableForAll>
+    <Interest>30</Interest>
     <Needs>
       <Rest>30</Rest>
       <Entertainment>15</Entertainment>

@@ -52,12 +52,21 @@ namespace Fantasy_Kingdoms_Battle
             Descriptor = descriptor;
         }
 
+        public ConstructionProduct(DescriptorConstructionExtension descriptor) : base()
+        {
+            Debug.Assert(descriptor != null);
+
+            DescriptorConstructionExtension = descriptor;
+            Descriptor = descriptor;
+        }
+
         internal DescriptorSmallEntity Descriptor { get; }
         internal DescriptorAbility DescriptorAbility { get; }
         internal DescriptorItem DescriptorItem { get; }
         internal DescriptorGroupItems DescriptorGroupItem { get; }
         internal DescriptorConstructionEvent DescriptorConstructionEvent { get; }
         internal DescriptorConstructionVisit DescriptorConstructionVisit { get; }
+        internal DescriptorConstructionExtension DescriptorConstructionExtension { get; }
         internal int Duration { get; private set; }// Длительность нахождения товара в сооружении
         internal int Counter { get; set; }// Счетчик дней товара в сооружении
 

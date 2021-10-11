@@ -408,10 +408,10 @@ namespace Fantasy_Kingdoms_Battle
     {
         public CellMenuConstructionExtension(Construction c, DescriptorCellMenuForConstruction d) : base(c, d)
         {
-            Entity = Config.FindItem(d.NameEntity);
+            Entity = Config.FindConstructionExtension(d.NameEntity);
         }
 
-        internal DescriptorItem Entity { get; }
+        internal DescriptorConstructionExtension Entity { get; }
 
         internal override void Execute()
         {
