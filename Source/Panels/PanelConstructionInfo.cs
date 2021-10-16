@@ -139,7 +139,7 @@ namespace Fantasy_Kingdoms_Battle
             btnInhabitants.Quantity = Construction.Heroes.Count;
 
             lblInterest.ImageIsEnabled = Construction.Level > 0;
-            lblInterest.Text = Construction.Interest > 0 ? Utils.DecIntegerBy10(Construction.Interest, false) : "";
+            lblInterest.Text = Construction.GetInterest() > 0 ? Utils.DecIntegerBy10(Construction.GetInterest(), false) : "";
 
             base.Draw(g);
 

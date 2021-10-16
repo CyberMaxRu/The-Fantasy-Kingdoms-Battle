@@ -50,6 +50,7 @@ namespace Fantasy_Kingdoms_Battle
 
             DescriptorConstructionVisit = descriptor;
             Descriptor = descriptor;
+            Interest = descriptor.Interest;
         }
 
         public ConstructionProduct(DescriptorConstructionExtension descriptor) : base()
@@ -58,6 +59,7 @@ namespace Fantasy_Kingdoms_Battle
 
             DescriptorConstructionExtension = descriptor;
             Descriptor = descriptor;
+            Interest = descriptor.Interest;
         }
 
         internal DescriptorSmallEntity Descriptor { get; }
@@ -69,6 +71,7 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorConstructionExtension DescriptorConstructionExtension { get; }
         internal int Duration { get; private set; }// Длительность нахождения товара в сооружении
         internal int Counter { get; set; }// Счетчик дней товара в сооружении
+        internal int Interest { get; set; }// Интерес героев к сущности
 
         internal override int GetImageIndex()
         {
@@ -111,10 +114,10 @@ namespace Fantasy_Kingdoms_Battle
                 if (DescriptorItem != null)
                     Program.formMain.formHint.AddStep9ListNeeds(DescriptorItem.ListNeeds);
                 if (DescriptorConstructionExtension != null)
-                    Program.formMain.formHint.AddStep9Interest(DescriptorConstructionExtension.Interest, true);
+                    Program.formMain.formHint.AddStep9Interest(Interest, true);
                 if (DescriptorConstructionVisit != null)
                 {
-                    Program.formMain.formHint.AddStep9Interest(DescriptorConstructionVisit.Interest, false);
+                    Program.formMain.formHint.AddStep9Interest(Interest, false);
                     Program.formMain.formHint.AddStep9ListNeeds(DescriptorConstructionVisit.ListNeeds);
                 }
             }

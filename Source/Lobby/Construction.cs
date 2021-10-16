@@ -97,7 +97,8 @@ namespace Fantasy_Kingdoms_Battle
         internal List<ConstructionProduct> Extensions { get; } = new List<ConstructionProduct>();// Дополнения
         internal List<ConstructionProduct> Goods { get; } = new List<ConstructionProduct>();// Товары, доступные в строении
         internal List<ConstructionProduct> Abilities { get; } = new List<ConstructionProduct>();// Умения, доступные в строении
-        internal int Interest { get; private set; }
+        internal ConstructionProduct MainVisit { get; private set; }// Основное посещение сооружения
+        internal ConstructionProduct CurrentVisit { get; private set; }// Текущее активное посещение сооружения
         internal int[] SatisfactionNeeds { get; private set; }// Удовлетворяемые потребности
 
         internal void Build()
@@ -157,11 +158,9 @@ namespace Fantasy_Kingdoms_Battle
             // Добавляем товар посещения
             if (TypeConstruction.Levels[Level].DescriptorVisit != null)
             {
-                AddProduct(new ConstructionProduct(TypeConstruction.Levels[Level].DescriptorVisit));
+                ConstructionProduct cpVisit = new ConstructionProduct(TypeConstruction.Levels[Level].DescriptorVisit);
+                AddProduct(cpVisit);
             }
-
-            // Интерес
-            CalcInterest();
 
             // Инициализируем удовлетворяемые потребности
             SatisfactionNeeds = new int[FormMain.Config.NeedsCreature.Count];
@@ -174,14 +173,9 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        private void CalcInterest()
+        internal int GetInterest()
         {
-            Interest = TypeConstruction.Levels[Level].DescriptorVisit != null ? TypeConstruction.Levels[Level].DescriptorVisit.Interest : 0;
-
-            foreach (ConstructionProduct cp in AllProducts)
-            {
-                //if ((cp.DescriptorItem != null) && (cp.DescriptorItem.
-            }
+            return CurrentVisit != null ? CurrentVisit.Interest : 0;
         }
 
         internal void AddPerksToPlayer()
@@ -451,7 +445,7 @@ namespace Fantasy_Kingdoms_Battle
                     Program.formMain.formHint.AddStep6Income(Income());
                     Program.formMain.formHint.AddStep8Greatness(0, GreatnessPerDay());
                     Program.formMain.formHint.AddStep9PlusBuilders(BuildersPerDay());
-                    Program.formMain.formHint.AddStep9Interest(Interest, false);
+                    Program.formMain.formHint.AddStep9Interest(GetInterest(), false);
                     Program.formMain.formHint.AddStep9ListNeeds(SatisfactionNeeds);
                 }
                 else
@@ -1210,12 +1204,21 @@ namespace Fantasy_Kingdoms_Battle
 
             if ((cp.DescriptorConstructionVisit != null) || (cp.DescriptorConstructionEvent != null))
             {
+                Debug.Assert(MainVisit == null);
+                Debug.Assert(CurrentVisit == null);
+
                 Visits.Add(cp);
+
+                MainVisit = cp;
+                CurrentVisit = MainVisit;
+                UpdateInterestMainVisit();
             }
 
             // Если это пристройка, то прибавляем ее удовлетворение потребностей к текущим
-                if (cp.DescriptorConstructionExtension != null)
+            if (cp.DescriptorConstructionExtension != null)
             {
+                Debug.Assert(MainVisit != null);
+
                 Extensions.Add(cp);
 
                 foreach ((DescriptorNeed, int) need in cp.DescriptorConstructionExtension.ListNeeds)
@@ -1223,7 +1226,7 @@ namespace Fantasy_Kingdoms_Battle
                     ChangeNeed(need.Item1.NameNeed, need.Item2);
                 }
 
-                Interest += cp.DescriptorConstructionExtension.Interest;
+                UpdateInterestMainVisit();
             }
         }
 
@@ -1240,6 +1243,11 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
+            if (MainVisit == productFromRemove)
+                MainVisit = null;
+            if (CurrentVisit == productFromRemove)
+                CurrentVisit = null;
+
             RemoveElement(productFromRemove);
         }
 
@@ -1252,6 +1260,14 @@ namespace Fantasy_Kingdoms_Battle
             Extensions.Remove(element);
             Goods.Remove(element);
             Abilities.Remove(element);
+        }
+
+        internal void UpdateInterestMainVisit()
+        {
+            MainVisit.Interest = MainVisit.DescriptorConstructionVisit.Interest;
+
+            foreach (ConstructionProduct cp in Extensions)
+                MainVisit.Interest += cp.DescriptorConstructionExtension.Interest;
         }
 
         private void ChangeNeed(NameNeedCreature nameNeed, int value)
@@ -1297,7 +1313,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(Level > 0);
 
-            if (Interest == 0)
+            if (GetInterest() == 0)
                 return "";
 
             string text = "Сооружение: " + Utils.DecIntegerBy10(TypeConstruction.Levels[Level].DescriptorVisit.Interest, false);
