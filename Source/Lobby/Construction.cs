@@ -1239,6 +1239,7 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(MainVisit != null);
 
                 CurrentVisit = cp;
+                MainVisit.Enabled = MainVisit == CurrentVisit;
             }
 
             // Если это пристройка, то прибавляем ее удовлетворение потребностей к текущим
@@ -1277,6 +1278,8 @@ namespace Fantasy_Kingdoms_Battle
             {
                 CurrentVisit = MainVisit;
             }
+            if (MainVisit != null)
+                MainVisit.Enabled = MainVisit == CurrentVisit;
 
             RemoveElement(productFromRemove);
         }
