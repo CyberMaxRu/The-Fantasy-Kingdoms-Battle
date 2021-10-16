@@ -527,14 +527,14 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             ConstructionProduct cp;
-            for (int i = 0; i < AllProducts.Count;)
+            for (int i = 0; i < Visits.Count; )
             {
-                cp = AllProducts[i];
+                cp = Visits[i];
                 if (cp.Duration > 0)
                 {
                     cp.Counter--;
                     if (cp.Counter == 0)
-                        AllProducts.RemoveAt(i);
+                        RemoveProduct(cp.Descriptor);
                     else
                         i++;
                 }
