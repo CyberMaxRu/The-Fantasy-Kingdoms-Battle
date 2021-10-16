@@ -14,6 +14,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Duration = XmlUtils.GetIntegerNotNull(n, "Duration");
             Cooldown = XmlUtils.GetIntegerNotNull(n, "Cooldown");
+            Interest = XmlUtils.GetIntegerNotNull(n, "Interest");
             NameGoods = XmlUtils.GetStringNotNull(n, "NameGoods");
 
             ListNeeds = new ListNeeds(n.SelectSingleNode("Needs"));
@@ -22,6 +23,8 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Duration < 10);
             Debug.Assert(Cooldown >= 1);
             Debug.Assert(Cooldown <= 100);
+            Debug.Assert(Interest >= 1);
+            Debug.Assert(Interest <= 100);
 
             foreach (DescriptorConstructionEvent ce in Config.ConstructionsEvents)
             {
@@ -34,6 +37,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int Duration { get; }// Длительность (в днях)
         internal int Cooldown { get; }// Пауза до возможности снова использовать (в днях)
+        internal int Interest { get; }// Интерес к событию
         internal string NameGoods { get; }// Наименование события-товара
         internal ListNeeds ListNeeds { get; }
 

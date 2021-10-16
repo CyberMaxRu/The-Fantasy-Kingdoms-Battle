@@ -363,6 +363,7 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep4Level($"Длительность: {ConstructionEvent.Duration} дн."
                 + Environment.NewLine + $"Перерыв: {ConstructionEvent.Cooldown} дн.");
             Program.formMain.formHint.AddStep5Description(ConstructionEvent.Description);
+            Program.formMain.formHint.AddStep9Interest(ConstructionEvent.Interest, false);
             Program.formMain.formHint.AddStep9ListNeeds(ConstructionEvent.ListNeeds);
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirements());
             Program.formMain.formHint.AddStep12Gold(GetCost(), GetCost() <= Construction.Player.Gold);

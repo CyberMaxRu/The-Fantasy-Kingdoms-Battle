@@ -7,6 +7,7 @@
     <ImageIndex>208</ImageIndex>
     <Duration>1</Duration>
     <Cooldown>7</Cooldown>
+    <Interest>70</Interest>
     <NameGoods>Посмотреть фейерверк</NameGoods>
     <Heroes>
       <Hero>Warrior</Hero>
@@ -28,6 +29,7 @@
     <ImageIndex>225</ImageIndex>
     <Duration>1</Duration>
     <Cooldown>7</Cooldown>
+    <Interest>40</Interest>
     <NameGoods>Участвовать в пире</NameGoods>
     <Heroes>
       <Hero>Warrior</Hero>
@@ -49,6 +51,7 @@
     <ImageIndex>243</ImageIndex>
     <Duration>3</Duration>
     <Cooldown>10</Cooldown>
+    <Interest>30</Interest>
     <NameGoods>Посетить ярмарку</NameGoods>
     <Heroes>
       <Hero>Warrior</Hero>
@@ -71,6 +74,7 @@
     <ImageIndex>233</ImageIndex>
     <Duration>1</Duration>
     <Cooldown>7</Cooldown>
+    <Interest>20</Interest>
     <NameGoods>Посетить выставку-продажу книг</NameGoods>
     <Heroes>
       <Hero>Cleric</Hero>
@@ -91,6 +95,7 @@
     <ImageIndex>224</ImageIndex>
     <Duration>1</Duration>
     <Cooldown>14</Cooldown>
+    <Interest>20</Interest>
     <NameGoods>Найти героя для написания мемуара</NameGoods>
     <Heroes>
       <Hero>Warrior</Hero>
@@ -111,6 +116,7 @@
     <ImageIndex>232</ImageIndex>
     <Duration>1</Duration>
     <Cooldown>7</Cooldown>
+    <Interest>50</Interest>
     <NameGoods>Посетить концерт эльфийской музыки</NameGoods>
     <Heroes>
       <Hero>Warrior</Hero>

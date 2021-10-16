@@ -42,6 +42,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Duration = descriptor.Duration;
             Counter = Duration;
+            Interest = descriptor.Interest;
         }
 
         public ConstructionProduct(DescriptorConstructionVisit descriptor) : base()
@@ -113,6 +114,8 @@ namespace Fantasy_Kingdoms_Battle
                 Program.formMain.formHint.AddStep5Description(Descriptor.Description);
                 if (DescriptorItem != null)
                     Program.formMain.formHint.AddStep9ListNeeds(DescriptorItem.ListNeeds);
+                if (DescriptorConstructionEvent != null)
+                    Program.formMain.formHint.AddStep9Interest(Interest, false);
                 if (DescriptorConstructionExtension != null)
                     Program.formMain.formHint.AddStep9Interest(Interest, true);
                 if (DescriptorConstructionVisit != null)
