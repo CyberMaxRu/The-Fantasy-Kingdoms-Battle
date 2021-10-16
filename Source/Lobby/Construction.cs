@@ -92,9 +92,10 @@ namespace Fantasy_Kingdoms_Battle
 
         // 
         internal int ResearchesAvailabled { get; set; }// Сколько еще исследований доступно на этом ходу
+        internal List<ConstructionProduct> AllProducts { get; } = new List<ConstructionProduct>();// Все сущности в сооружении
         internal List<ConstructionProduct> Visits { get; } = new List<ConstructionProduct>();// Посещения, события, турниры
         internal List<ConstructionProduct> Extensions { get; } = new List<ConstructionProduct>();// Дополнения
-        internal List<ConstructionProduct> Items { get; } = new List<ConstructionProduct>();// Товары, доступные в строении
+        internal List<ConstructionProduct> Goods { get; } = new List<ConstructionProduct>();// Товары, доступные в строении
         internal List<ConstructionProduct> Abilities { get; } = new List<ConstructionProduct>();// Умения, доступные в строении
         internal int Interest { get; private set; }
         internal int[] SatisfactionNeeds { get; private set; }// Удовлетворяемые потребности
@@ -177,7 +178,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Interest = TypeConstruction.Levels[Level].DescriptorVisit != null ? TypeConstruction.Levels[Level].DescriptorVisit.Interest : 0;
 
-            foreach (ConstructionProduct cp in Items)
+            foreach (ConstructionProduct cp in AllProducts)
             {
                 //if ((cp.DescriptorItem != null) && (cp.DescriptorItem.
             }
@@ -515,14 +516,14 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             ConstructionProduct cp;
-            for (int i = 0; i < Items.Count;)
+            for (int i = 0; i < AllProducts.Count;)
             {
-                cp = Items[i];
+                cp = AllProducts[i];
                 if (cp.Duration > 0)
                 {
                     cp.Counter--;
                     if (cp.Counter == 0)
-                        Items.RemoveAt(i);
+                        AllProducts.RemoveAt(i);
                     else
                         i++;
                 }
@@ -1164,7 +1165,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             List<ConstructionProduct> list = new List<ConstructionProduct>();
 
-            foreach (ConstructionProduct cp in Items)
+            foreach (ConstructionProduct cp in AllProducts)
             {
                 if (cp.IsAvailableForCreature(dc))
                 {
@@ -1177,7 +1178,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal Ability PurchaseAbility(Creature creature, ConstructionProduct product)
         {
-            Debug.Assert(Items.IndexOf(product) >= 0);
+            Debug.Assert(Abilities.IndexOf(product) >= 0);
             Debug.Assert(product.DescriptorAbility != null);
 
             Ability a = new Ability(creature, product.DescriptorAbility);
@@ -1186,16 +1187,33 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void AddProduct(ConstructionProduct cp)
         {
-            foreach (ConstructionProduct i in Items)
+            foreach (ConstructionProduct i in AllProducts)
             {
                 Debug.Assert(i.Descriptor.ID != cp.Descriptor.ID);
             }
 
-            Items.Add(cp);
+            AllProducts.Add(cp);
+
+            if (cp.DescriptorAbility != null)
+            {
+                Abilities.Add(cp);
+            }
+
+            if ((cp.DescriptorItem != null) || (cp.DescriptorGroupItem != null))
+            {
+                Goods.Add(cp);
+            }
+
+            if ((cp.DescriptorConstructionVisit != null) || (cp.DescriptorConstructionEvent != null))
+            {
+                Visits.Add(cp);
+            }
 
             // Если это пристройка, то прибавляем ее удовлетворение потребностей к текущим
-            if (cp.DescriptorConstructionExtension != null)
+                if (cp.DescriptorConstructionExtension != null)
             {
+                Extensions.Add(cp);
+
                 foreach ((DescriptorNeed, int) need in cp.DescriptorConstructionExtension.ListNeeds)
                 {
                     ChangeNeed(need.Item1.NameNeed, need.Item2);
@@ -1207,7 +1225,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             ConstructionProduct productFromRemove = null;
 
-            foreach (ConstructionProduct cp in Items)
+            foreach (ConstructionProduct cp in AllProducts)
             {
                 if (cp.Descriptor.ID == e.ID)
                 {
@@ -1216,8 +1234,18 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
-            Debug.Assert(productFromRemove != null);
-            Items.Remove(productFromRemove);
+            RemoveElement(productFromRemove);
+        }
+
+        internal void RemoveElement(ConstructionProduct element)
+        {
+            Debug.Assert(element != null);
+            AllProducts.Remove(element);
+
+            Visits.Remove(element);
+            Extensions.Remove(element);
+            Goods.Remove(element);
+            Abilities.Remove(element);
         }
 
         private void ChangeNeed(NameNeedCreature nameNeed, int value)
@@ -1239,7 +1267,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal bool GoodsAvailabled(DescriptorItem item)
         {
-            foreach (ConstructionProduct cp in Items)
+            foreach (ConstructionProduct cp in Goods)
             {
                 if (cp.Descriptor.ID == item.ID)
                     return true;
@@ -1250,7 +1278,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal bool ExtensionAvailabled(DescriptorConstructionExtension extension)
         {
-            foreach (ConstructionProduct cp in Items)
+            foreach (ConstructionProduct cp in Extensions)
             {
                 if (cp.Descriptor.ID == extension.ID)
                     return true;

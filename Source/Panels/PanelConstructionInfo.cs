@@ -13,6 +13,11 @@ namespace Fantasy_Kingdoms_Battle
     {
         private VCLabel lblTypeConstruction;
         private VCIconAndDigitValue lblGold;
+        private readonly VisualControl tabProducts;
+        private VCLabel lblSectionVisits;
+        private VCLabel lblSectionExtensions;
+        private VCLabel lblSectionGoods;
+        private VCLabel lblSectionAbilities;
         private readonly PanelWithPanelEntity panelProducts;
         private readonly PanelWithPanelEntity panelInhabitants;
         private readonly PanelWithPanelEntity panelVisitors;
@@ -79,10 +84,10 @@ namespace Fantasy_Kingdoms_Battle
             //pageControl.SetPageVisible(1, Construction.TypeConstruction.TrainedHero != null);
             //pageControl.SetPageVisible(2, Construction.TypeConstruction.TrainedHero != null);
 
-            panelProducts.ApplyList(Construction.Items);
+            panelProducts.ApplyList(Construction.AllProducts);
             panelInhabitants.ApplyList(Construction.Heroes);
 
-            btnProducts.Quantity = Construction.Items.Count;
+            btnProducts.Quantity = Construction.AllProducts.Count;
             btnInhabitants.Quantity = Construction.Heroes.Count;
 
             base.Draw(g); 
