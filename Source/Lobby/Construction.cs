@@ -1222,6 +1222,8 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     ChangeNeed(need.Item1.NameNeed, need.Item2);
                 }
+
+                Interest += cp.DescriptorConstructionExtension.Interest;
             }
         }
 
