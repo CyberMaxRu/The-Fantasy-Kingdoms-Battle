@@ -112,7 +112,7 @@ namespace Fantasy_Kingdoms_Battle
                     Program.formMain.formHint.AddStep9ListNeeds(DescriptorItem.ListNeeds);
                 if (DescriptorConstructionVisit != null)
                 {
-                    Program.formMain.formHint.AddStep9Interest(DescriptorConstructionVisit.Interest);
+                    Program.formMain.formHint.AddStep9Interest(DescriptorConstructionVisit.Interest, false);
                     Program.formMain.formHint.AddStep9ListNeeds(DescriptorConstructionVisit.ListNeeds);
                 }
             }

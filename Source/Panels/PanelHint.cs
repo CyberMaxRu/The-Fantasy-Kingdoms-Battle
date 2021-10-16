@@ -501,12 +501,12 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddStep9Interest(int interest)
+        internal void AddStep9Interest(int interest, bool showPlus)
         {
             if (interest != 0)
             {
                 lblInterest.ShiftY = nextTop;
-                lblInterest.Text = Utils.FormatInteger(interest);
+                lblInterest.Text = Utils.DecIntegerBy10(interest, showPlus);
                 lblInterest.Visible = true;
 
                 nextTop = lblInterest.NextTop();

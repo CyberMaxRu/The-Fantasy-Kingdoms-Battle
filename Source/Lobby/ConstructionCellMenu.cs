@@ -465,7 +465,7 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep3Type("Доп. сооружение");
             Program.formMain.formHint.AddStep5Description(Entity.Description);
             Program.formMain.formHint.AddStep6Income(Descriptor.Income);
-            Program.formMain.formHint.AddStep9Interest(Entity.Interest);
+            Program.formMain.formHint.AddStep9Interest(Entity.Interest, true);
             Program.formMain.formHint.AddStep9ListNeeds(Entity.ListNeeds);
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirements());
             Program.formMain.formHint.AddStep12Gold(GetCost(), GetCost() <= Construction.Player.Gold);

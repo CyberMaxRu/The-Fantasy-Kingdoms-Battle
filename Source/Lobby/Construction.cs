@@ -451,7 +451,7 @@ namespace Fantasy_Kingdoms_Battle
                     Program.formMain.formHint.AddStep6Income(Income());
                     Program.formMain.formHint.AddStep8Greatness(0, GreatnessPerDay());
                     Program.formMain.formHint.AddStep9PlusBuilders(BuildersPerDay());
-                    Program.formMain.formHint.AddStep9Interest(Interest);
+                    Program.formMain.formHint.AddStep9Interest(Interest, false);
                     Program.formMain.formHint.AddStep9ListNeeds(SatisfactionNeeds);
                 }
                 else
@@ -1076,7 +1076,7 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep9PlusBuilders(BuildersPerDayForLevel(requiredLevel));
             if (TypeConstruction.Levels[requiredLevel].DescriptorVisit != null)
             {
-                Program.formMain.formHint.AddStep9Interest(TypeConstruction.Levels[requiredLevel].DescriptorVisit.Interest);
+                Program.formMain.formHint.AddStep9Interest(TypeConstruction.Levels[requiredLevel].DescriptorVisit.Interest, false);
                 Program.formMain.formHint.AddStep9ListNeeds(TypeConstruction.Levels[requiredLevel].DescriptorVisit.ListNeeds);
             }
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirements(requiredLevel));
