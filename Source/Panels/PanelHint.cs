@@ -120,23 +120,23 @@ namespace Fantasy_Kingdoms_Battle
             lblBuilders.ImageIndex = FormMain.GUI_16_BUILDER;
             lblBuilders.Width = widthControl;
 
-            lblHonor = new VCLabelValue(this, FormMain.Config.GridSize, lblBuilders.NextTop(), FormMain.Config.HintIncome, false);
+            lblHonor = new VCLabelValue(this, FormMain.Config.GridSize, lblBuilders.NextTop(), Color.White, false);
             lblHonor.ImageIndex = FormMain.GUI_16_HONOR;
             lblHonor.Width = widthControl;
 
-            lblEnthusiasm = new VCLabelValue(this, FormMain.Config.GridSize, lblHonor.NextTop(), FormMain.Config.HintIncome, false);
+            lblEnthusiasm = new VCLabelValue(this, FormMain.Config.GridSize, lblHonor.NextTop(), Color.White, false);
             lblEnthusiasm.ImageIndex = FormMain.GUI_16_ENTHUSIASM;
             lblEnthusiasm.Width = widthControl;
 
-            lblMorale = new VCLabelValue(this, FormMain.Config.GridSize, lblEnthusiasm.NextTop(), FormMain.Config.HintIncome, false);
+            lblMorale = new VCLabelValue(this, FormMain.Config.GridSize, lblEnthusiasm.NextTop(), Color.White, false);
             lblMorale.ImageIndex = FormMain.GUI_16_MORALE;
             lblMorale.Width = widthControl;
 
-            lblLuck = new VCLabelValue(this, FormMain.Config.GridSize, lblMorale.NextTop(), FormMain.Config.HintIncome, false);
+            lblLuck = new VCLabelValue(this, FormMain.Config.GridSize, lblMorale.NextTop(), Color.White, false);
             lblLuck.ImageIndex = FormMain.GUI_16_LUCK;
             lblLuck.Width = widthControl;
 
-            lblInterest = new VCLabelValue(this, FormMain.Config.GridSize, lblLuck.NextTop(), FormMain.Config.HintIncome, false);
+            lblInterest = new VCLabelValue(this, FormMain.Config.GridSize, lblLuck.NextTop(), Color.White, false);
             lblInterest.ImageIndex = FormMain.GUI_16_INTEREST_OTHER;
             lblInterest.Width = widthControl;
 
