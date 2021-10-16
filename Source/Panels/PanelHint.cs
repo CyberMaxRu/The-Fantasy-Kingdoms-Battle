@@ -324,10 +324,12 @@ namespace Fantasy_Kingdoms_Battle
             if (header.Length > 0)
             {
                 lblHeader.Color = Color.Yellow;
+                lblHeader.ShiftX = imageIndexSmall == -1 ? FormMain.Config.GridSize : imgCell.NextLeft();
                 lblHeader.ShiftY = nextTop;
-                lblHeader.Width = widthControl;
+                lblHeader.Width = widthControl - lblHeader.ShiftX;
                 lblHeader.Text = header;
                 lblHeader.Height = lblHeader.MinHeigth();
+
                 nextTop = lblHeader.NextTop();
             }
 
@@ -337,7 +339,6 @@ namespace Fantasy_Kingdoms_Battle
                 imgCell.ImageIndex = imageIndexSmall;
                 imgCell.Visible = true;
 
-                lblHeader.ShiftX = imgCell.NextLeft();
                 nextTop = Math.Max(lblHeader.NextTop(), imgCell.NextTop());
             }
         }
