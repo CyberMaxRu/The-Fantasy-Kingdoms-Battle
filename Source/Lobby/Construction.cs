@@ -266,6 +266,13 @@ namespace Fantasy_Kingdoms_Battle
             if (BuildedOrUpgraded)
                 return false;
 
+            // Проверяем, что нет события или турнира
+            foreach (ConstructionProduct cp in Visits)
+            {
+                if (cp.DescriptorConstructionEvent != null)
+                    return false;
+            }
+
             // Проверяем требования к зданиям
             return Player.CheckRequirements(TypeConstruction.Levels[Level + 1].Requirements);
         }
@@ -278,6 +285,15 @@ namespace Fantasy_Kingdoms_Battle
 
             if (BuildedOrUpgraded)
                 list.Add(new TextRequirement(false, "Сооружение уже строили/улучшали в этот день"));
+
+            foreach (ConstructionProduct cp in Visits)
+            {
+                if (cp.DescriptorConstructionEvent != null)
+                {
+                    list.Add(new TextRequirement(false, "В сооружении идет событие"));
+                    break;
+                }
+            }
 
             return list;
         }
@@ -1204,14 +1220,23 @@ namespace Fantasy_Kingdoms_Battle
 
             if ((cp.DescriptorConstructionVisit != null) || (cp.DescriptorConstructionEvent != null))
             {
-                Debug.Assert(MainVisit == null);
-                Debug.Assert(CurrentVisit == null);
+                if (cp.DescriptorConstructionVisit != null)
+                {
+                    Debug.Assert(MainVisit == null);
+                    Debug.Assert(CurrentVisit == null);
+                }
 
                 Visits.Add(cp);
 
-                MainVisit = cp;
-                CurrentVisit = MainVisit;
-                UpdateInterestMainVisit();
+                if (cp.DescriptorConstructionVisit != null)
+                {
+                    MainVisit = cp;
+                    UpdateInterestMainVisit();
+                }
+
+                Debug.Assert(MainVisit != null);
+
+                CurrentVisit = cp;
             }
 
             // Если это пристройка, то прибавляем ее удовлетворение потребностей к текущим
@@ -1245,8 +1270,12 @@ namespace Fantasy_Kingdoms_Battle
 
             if (MainVisit == productFromRemove)
                 MainVisit = null;
+
             if (CurrentVisit == productFromRemove)
-                CurrentVisit = null;
+            {
+                Debug.Assert(MainVisit != null);
+                CurrentVisit = MainVisit;
+            }
 
             RemoveElement(productFromRemove);
         }
