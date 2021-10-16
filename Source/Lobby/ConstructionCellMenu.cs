@@ -49,7 +49,7 @@ namespace Fantasy_Kingdoms_Battle
                         return false;
 
             // Потом проверяем наличие золота
-            if (Construction.Player.Gold < GetCost())
+            if (!Construction.Player.CheckRequireGold(GetCost()))
                 return false;
 
             return Construction.Player.CheckRequirements(Descriptor.Requirements);

@@ -561,7 +561,8 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(pb.CheckRequirements());
 
             SpendGold(pb.CostBuyOrUpgrade());
-            FreeBuilders -= pb.TypeConstruction.Levels[pb.Level + 1].Builders;
+            if (!Program.formMain.Settings.CheatingIgnoreBuilders)
+                FreeBuilders -= pb.TypeConstruction.Levels[pb.Level + 1].Builders;
             AddGreatness(pb.TypeConstruction.Levels[pb.Level + 1].GreatnessByConstruction);
 
             Debug.Assert(FreeBuilders >= 0);
@@ -742,6 +743,22 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             return pi;
+        }
+
+        internal bool CheckRequireGold(int needGold)
+        {
+            if (Program.formMain.Settings.CheatingIgnoreGold)
+                return true;
+
+            return Gold >= needGold;
+        }
+
+        internal bool CheckRequireBuilders(int needBuilders)
+        {
+            if (Program.formMain.Settings.CheatingIgnoreBuilders)
+                return true;
+
+            return FreeBuilders >= needBuilders;
         }
 
         internal bool CheckRequirements(List<Requirement> list)
@@ -1102,7 +1119,8 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(gold >= 0);
             Debug.Assert(Gold >= gold);
 
-            Gold -= gold;
+            if (!Program.formMain.Settings.CheatingIgnoreGold)
+                Gold -= gold;
         }
 
         internal void ReturnGold(int gold)

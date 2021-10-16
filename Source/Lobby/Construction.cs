@@ -260,11 +260,11 @@ namespace Fantasy_Kingdoms_Battle
         internal bool CheckRequirements()
         {
             // Сначала проверяем наличие золота
-            if (Player.Gold < TypeConstruction.Levels[Level + 1].Cost)
+            if (!Player.CheckRequireGold(TypeConstruction.Levels[Level + 1].Cost))
                 return false;
 
             // Проверяем наличие очков строительства
-            if (TypeConstruction.Levels[Level + 1].Builders > Player.FreeBuilders)
+            if (!Player.CheckRequireBuilders(TypeConstruction.Levels[Level + 1].Builders))
                 return false;
 
             // Проверяем, что на этом ходу сооружение не строили/улучшали
