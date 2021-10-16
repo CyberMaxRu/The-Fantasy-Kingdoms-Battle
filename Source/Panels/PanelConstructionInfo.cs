@@ -50,7 +50,7 @@ namespace Fantasy_Kingdoms_Battle
 
             lblSectionVisits = new VCLabel(tabProducts, 0, 0, Program.formMain.fontSmallC, Color.White, 16, "Посещение:");
             lblSectionVisits.StringFormat.Alignment = StringAlignment.Near;
-            lblSectionExtensions = new VCLabel(tabProducts, 0, 0, Program.formMain.fontSmallC, Color.White, 16, "Дополнение:");
+            lblSectionExtensions = new VCLabel(tabProducts, 0, 0, Program.formMain.fontSmallC, Color.White, 16, "Доп. сооружения:");
             lblSectionExtensions.StringFormat.Alignment = StringAlignment.Near;
             lblSectionGoods = new VCLabel(tabProducts, 0, 0, Program.formMain.fontSmallC, Color.White, 16, "Товары:");
             lblSectionGoods.StringFormat.Alignment = StringAlignment.Near;

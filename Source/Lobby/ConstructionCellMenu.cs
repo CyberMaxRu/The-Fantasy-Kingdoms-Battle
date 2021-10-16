@@ -462,7 +462,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override void PrepareHint()
         {
             Program.formMain.formHint.AddStep2Header(Entity.Name, Entity.ImageIndex);
-            Program.formMain.formHint.AddStep3Type("Дополнение");
+            Program.formMain.formHint.AddStep3Type("Доп. сооружение");
             Program.formMain.formHint.AddStep5Description(Entity.Description);
             Program.formMain.formHint.AddStep6Income(Descriptor.Income);
             Program.formMain.formHint.AddStep9Interest(Entity.Interest);
