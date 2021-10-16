@@ -118,11 +118,25 @@ namespace Fantasy_Kingdoms_Battle
             int left = 0;
             byte[] text1251 = Encoding.Convert(Encoding.UTF8, Encoding.GetEncoding(1251), Encoding.UTF8.GetBytes(text));
 
+            bool defaultColor = true;
             Graphics gRaw = Graphics.FromImage(bmpRaw);
             foreach (byte b in text1251)
             {
+                if (b == '{')
+                {
+                    Debug.Assert(defaultColor);
+                    defaultColor = false;
+                    continue;
+                }
+                else if (b == '}')
+                {
+                    Debug.Assert(!defaultColor);
+                    defaultColor = true;
+                    continue;
+                }
+
                 bmpSymbol = symbols[b - 32];
-                gRaw.DrawImageUnscaled(bmpSymbol, left, 0);
+                DrawSymbol(gRaw, bmpSymbol, left, defaultColor ? color : Color.Yellow);
                 left += bmpSymbol.Width;
             }
             Debug.Assert(left <= bmpRaw.Width);
@@ -137,34 +151,50 @@ namespace Fantasy_Kingdoms_Battle
             gResult.Dispose();
             bmpRaw.Dispose();
 
-            // Применяем указанный цвет
-            Rectangle rect = new Rectangle(0, 0, bmpResult.Width, bmpResult.Height);
-            BitmapData bmpData = bmpResult.LockBits(rect, ImageLockMode.ReadWrite, bmpResult.PixelFormat);
-            IntPtr ptr = bmpData.Scan0;
-            int bytes = Math.Abs(bmpData.Stride) * bmpResult.Height;
-            byte[] rgbValues = new byte[bytes];
-            Marshal.Copy(ptr, rgbValues, 0, bytes);
-
-            for (int counter = 0; counter < rgbValues.Length; counter += 4)
-            {
-                if (rgbValues[counter + 3] > 0)
-                { 
-                    rgbValues[counter + 0] = Convert.ToByte(rgbValues[counter + 0] * color.B / 255);
-                    rgbValues[counter + 1] = Convert.ToByte(rgbValues[counter + 1] * color.G / 255);
-                    rgbValues[counter + 2] = Convert.ToByte(rgbValues[counter + 2] * color.R / 255);
-                }
-            }
-
-            Marshal.Copy(rgbValues, 0, ptr, bytes);
-            bmpResult.UnlockBits(bmpData);
-
             return bmpResult;
+
+            void DrawSymbol(Graphics g, Bitmap bmpOrigSymbol, int leftForDraw, Color colorSymbol)
+            {
+                // Создаем копию картинки с символом
+                Bitmap bmpTemp = new Bitmap(bmpOrigSymbol);
+
+                // Применяем указанный цвет
+                Rectangle rect = new Rectangle(0, 0, bmpTemp.Width, bmpTemp.Height);
+                BitmapData bmpData = bmpTemp.LockBits(rect, ImageLockMode.ReadWrite, bmpTemp.PixelFormat);
+                IntPtr ptr = bmpData.Scan0;
+                int bytes = Math.Abs(bmpData.Stride) * bmpTemp.Height;
+                byte[] rgbValues = new byte[bytes];
+                Marshal.Copy(ptr, rgbValues, 0, bytes);
+
+                for (int counter = 0; counter < rgbValues.Length; counter += 4)
+                {
+                    if (rgbValues[counter + 3] > 0)
+                    {
+                        rgbValues[counter + 0] = Convert.ToByte(rgbValues[counter + 0] * colorSymbol.B / 255);
+                        rgbValues[counter + 1] = Convert.ToByte(rgbValues[counter + 1] * colorSymbol.G / 255);
+                        rgbValues[counter + 2] = Convert.ToByte(rgbValues[counter + 2] * colorSymbol.R / 255);
+                    }
+                }
+
+                Marshal.Copy(rgbValues, 0, ptr, bytes);
+                bmpTemp.UnlockBits(bmpData);
+
+                // Рисуем символ
+                g.DrawImageUnscaled(bmpTemp, leftForDraw, 0);
+
+                bmpTemp.Dispose();
+            }
+        }
+
+        internal static string StripText(string text)
+        {
+            return text.Replace("{", "").Replace("}", "");
         }
 
         internal int WidthText(string text)
         {
             int width = 0;
-            byte[] text1251 = Encoding.Convert(Encoding.UTF8, Encoding.GetEncoding(1251), Encoding.UTF8.GetBytes(text));
+            byte[] text1251 = Encoding.Convert(Encoding.UTF8, Encoding.GetEncoding(1251), Encoding.UTF8.GetBytes(StripText(text)));
 
             foreach (byte b in text1251)
             {
