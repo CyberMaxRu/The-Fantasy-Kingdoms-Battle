@@ -31,6 +31,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly VCText lblAction;
         internal readonly VCText lblDescription;
         internal readonly VCSeparator lblSeparateRequirement;
+        internal readonly VCLabel lblTextForRequirement;
         internal readonly List<VCText> listRequirements = new List<VCText>();
         internal readonly VCLabelValue lblIncome;
         internal readonly VCLabelValue lblGreatnessAdd;
@@ -103,7 +104,12 @@ namespace Fantasy_Kingdoms_Battle
 
             lblSeparateRequirement = new VCSeparator(this, FormMain.Config.GridSize, lblBuildersPerDay.NextTop());
             lblSeparateRequirement.Width = widthControl;
-            lblGold = new VCLabelValue(this, FormMain.Config.GridSize, lblSeparateRequirement.NextTop(), FormMain.Config.HintIncome, false);
+
+            lblTextForRequirement = new VCLabel(this, FormMain.Config.GridSize, lblSeparateRequirement.NextTop(), Program.formMain.fontSmallC, Color.White, 16, "Требования:");
+            lblTextForRequirement.Width = widthControl;
+            lblTextForRequirement.StringFormat.Alignment = StringAlignment.Near;
+
+            lblGold = new VCLabelValue(this, FormMain.Config.GridSize, lblTextForRequirement.NextTop(), FormMain.Config.HintIncome, false);
             lblGold.ImageIndex = FormMain.GUI_16_GOLD;
             lblGold.Width = widthControl;
 
@@ -237,6 +243,7 @@ namespace Fantasy_Kingdoms_Battle
             foreach (VCText l in listRequirements)
                 l.Dispose();
             lblSeparateRequirement.Visible = false;
+            lblTextForRequirement.Visible = false;
             listRequirements.Clear();
 
             lblGold.Visible = false;
@@ -570,6 +577,9 @@ namespace Fantasy_Kingdoms_Battle
                 lblSeparateRequirement.Visible = true;
                 lblSeparateRequirement.ShiftY = nextTop;
                 nextTop = lblSeparateRequirement.NextTop();
+                lblTextForRequirement.Visible = true;
+                lblTextForRequirement.ShiftY = nextTop;
+                nextTop = lblTextForRequirement.NextTop();
 
                 VCText lr;
                 foreach (TextRequirement tr in requirement)
@@ -595,6 +605,9 @@ namespace Fantasy_Kingdoms_Battle
                     lblSeparateRequirement.Visible = true;
                     lblSeparateRequirement.ShiftY = nextTop;
                     nextTop = lblSeparateRequirement.NextTop();
+                    lblTextForRequirement.Visible = true;
+                    lblTextForRequirement.ShiftY = nextTop;
+                    nextTop = lblTextForRequirement.NextTop();
                 }
 
                 lblGold.Color = ColorRequirements(goldEnough);
@@ -615,6 +628,9 @@ namespace Fantasy_Kingdoms_Battle
                     lblSeparateRequirement.Visible = true;
                     lblSeparateRequirement.ShiftY = nextTop;
                     nextTop = lblSeparateRequirement.NextTop();
+                    lblTextForRequirement.Visible = true;
+                    lblTextForRequirement.ShiftY = nextTop;
+                    nextTop = lblTextForRequirement.NextTop();
                 }
 
                 lblBuilders.Color = ColorRequirements(buildersEnough);
