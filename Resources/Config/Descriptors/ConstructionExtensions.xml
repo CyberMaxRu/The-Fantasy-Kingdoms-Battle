@@ -18,7 +18,7 @@
   </Extension>
   <Extension>
     <ID>Statue</ID>
-    <Name>Статуя</Name>
+    <Name>Статуя Короля</Name>
     <Description>Статуя Короля обозначит Королевский статус {Площади}</Description>
     <ImageIndex>231</ImageIndex>
     <Interest>15</Interest>
