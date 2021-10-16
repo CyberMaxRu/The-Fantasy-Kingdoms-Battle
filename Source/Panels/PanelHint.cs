@@ -42,6 +42,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly VCLabelValue lblEnthusiasm;
         internal readonly VCLabelValue lblMorale;
         internal readonly VCLabelValue lblLuck;
+        internal readonly VCLabelValue lblInterest;
         private readonly List<VCLabelValue> listLabelNeeds = new List<VCLabelValue>();
         internal readonly VCLabel lblSigner;
         private readonly List<VCCellSimple> listCell = new List<VCCellSimple>();
@@ -135,7 +136,11 @@ namespace Fantasy_Kingdoms_Battle
             lblLuck.ImageIndex = FormMain.GUI_16_LUCK;
             lblLuck.Width = widthControl;
 
-            lblSigner = new VCLabel(this, FormMain.Config.GridSize, lblLuck.NextTop(), Program.formMain.fontSmallC, Color.SkyBlue, 16, "");
+            lblInterest = new VCLabelValue(this, FormMain.Config.GridSize, lblLuck.NextTop(), FormMain.Config.HintIncome, false);
+            lblInterest.ImageIndex = FormMain.GUI_16_INTEREST_OTHER;
+            lblInterest.Width = widthControl;
+
+            lblSigner = new VCLabel(this, FormMain.Config.GridSize, lblInterest.NextTop(), Program.formMain.fontSmallC, Color.SkyBlue, 16, "");
             lblSigner.StringFormat.Alignment = StringAlignment.Near;
             lblSigner.Width = widthControl;
             /*            lblDamageMelee = new Label()
@@ -254,6 +259,7 @@ namespace Fantasy_Kingdoms_Battle
             lblEnthusiasm.Visible = false;
             lblMorale.Visible = false;
             lblLuck.Visible = false;
+            lblInterest.Visible = false;
 
             foreach (VCLabelValue ln in listLabelNeeds)
                 ln.Visible = false;
@@ -494,6 +500,19 @@ namespace Fantasy_Kingdoms_Battle
                 nextTop = lblLuck.NextTop();
             }
         }
+
+        internal void AddStep9Interest(int interest)
+        {
+            if (interest != 0)
+            {
+                lblInterest.ShiftY = nextTop;
+                lblInterest.Text = Utils.FormatInteger(interest);
+                lblInterest.Visible = true;
+
+                nextTop = lblInterest.NextTop();
+            }
+        }
+
         internal void AddStep9ListNeeds(int[] array)
         {
             if ((array != null) && (array.Length > 0))
