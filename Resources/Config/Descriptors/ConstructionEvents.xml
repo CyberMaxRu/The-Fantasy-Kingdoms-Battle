@@ -14,9 +14,6 @@
       <Hero>Hunter</Hero>
       <Hero>Cleric</Hero>
     </Heroes>
-    <Items>
-      <Item>Fireworks</Item>
-    </Items>
     <Needs>
       <Rest>20</Rest>
       <Entertainment>40</Entertainment>
@@ -36,9 +33,6 @@
       <Hero>Hunter</Hero>
       <Hero>Dwarf</Hero>
     </Heroes>
-    <Items>
-      <Item>Feast</Item>
-    </Items>
     <Needs>
       <Rest>25</Rest>
       <Entertainment>70</Entertainment>
@@ -59,9 +53,6 @@
       <Hero>Dwarf</Hero>
       <Hero>Elf</Hero>
     </Heroes>
-    <Items>
-      <Item>Feast</Item>
-    </Items>
     <Needs>
       <Rest>20</Rest>
       <Entertainment>30</Entertainment>
@@ -80,9 +71,6 @@
       <Hero>Cleric</Hero>
       <Hero>Mage</Hero>
     </Heroes>
-    <Items>
-      <Item>LibrarySellBooks</Item>
-    </Items>
     <Needs>
       <Rest>1</Rest>
       <Entertainment>30</Entertainment>
@@ -102,9 +90,6 @@
       <Hero>Cleric</Hero>
       <Hero>Mage</Hero>
     </Heroes>
-    <Items>
-      <Item>LibraryMemoir</Item>
-    </Items>
     <Needs>
       <Rest>40</Rest>
     </Needs>
