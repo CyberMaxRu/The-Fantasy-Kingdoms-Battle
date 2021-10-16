@@ -73,16 +73,14 @@ namespace Fantasy_Kingdoms_Battle
         internal int Duration { get; private set; }// Длительность нахождения товара в сооружении
         internal int Counter { get; set; }// Счетчик дней товара в сооружении
         internal int Interest { get; set; }// Интерес героев к сущности
+        internal bool Enabled { get; set; } = true;// Товар доступен для продажи
 
         internal override int GetImageIndex()
         {
             return Descriptor.ImageIndex;
         }
 
-        internal override bool GetNormalImage()
-        {
-            return true;
-        }
+        internal override bool GetNormalImage() => Enabled;
 
         internal override string GetText()
         {
