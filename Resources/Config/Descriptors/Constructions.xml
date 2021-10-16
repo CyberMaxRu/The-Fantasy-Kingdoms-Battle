@@ -1378,6 +1378,7 @@
         <Cost>250</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
+        <Visit>TavernVisit1</Visit>
       </Level>
       <Level>
         <Number>2</Number>
@@ -1391,6 +1392,7 @@
             <Level>2</Level>
           </Requirement>
         </Requirements>
+        <Visit>TavernVisit2</Visit>
       </Level>
       <Level>
         <Number>3</Number>
@@ -1404,6 +1406,7 @@
             <Level>2</Level>
           </Requirement>
         </Requirements>
+        <Visit>TavernVisit3</Visit>
       </Level>
     </Levels>
     <CellsMenu>
@@ -1866,18 +1869,21 @@
         <Cost>500</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
+        <Visit>LibraryVisit1</Visit>
       </Level>
       <Level>
         <Number>2</Number>
         <Cost>1000</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
+        <Visit>LibraryVisit2</Visit>
       </Level>
       <Level>
         <Number>3</Number>
         <Cost>1500</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
+        <Visit>LibraryVisit3</Visit>
       </Level>
     </Levels>
     <CellsMenu>
@@ -1937,6 +1943,7 @@
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>5</GreatnessPerDay>
+        <Visit>TownSquareVisit1</Visit>
       </Level>
       <Level>
         <Number>2</Number>
@@ -1952,6 +1959,7 @@
             <Level>2</Level>
           </Requirement>
         </Requirements>
+        <Visit>TownSquareVisit2</Visit>
       </Level>
       <Level>
         <Number>3</Number>
@@ -1967,6 +1975,7 @@
             <Level>3</Level>
           </Requirement>
         </Requirements>
+        <Visit>TownSquareVisit3</Visit>
       </Level>
     </Levels>
     <CellsMenu>
@@ -2116,18 +2125,21 @@
         <Cost>1000</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
+        <Visit>ArenaVisit1</Visit>
       </Level>
       <Level>
         <Number>2</Number>
         <Cost>1500</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
+        <Visit>ArenaVisit2</Visit>
       </Level>
       <Level>
         <Number>3</Number>
         <Cost>2000</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
+        <Visit>ArenaVisit3</Visit>
       </Level>
     </Levels>
     <CellsMenu>
@@ -3384,6 +3396,7 @@
         <Cost>1000</Cost>
         <Builders>1</Builders>
         <Income>250</Income>
+        <Visit>GamblingHallVisit1</Visit>
       </Level>
       <Level>
         <Number>2</Number>
@@ -3397,6 +3410,7 @@
             <Level>2</Level>
           </Requirement>
         </Requirements>
+        <Visit>GamblingHallVisit2</Visit>
       </Level>
       <Level>
         <Number>3</Number>
@@ -3410,6 +3424,7 @@
             <Goods>TavernBeer</Goods>
           </Requirement>
         </Requirements>
+        <Visit>GamblingHallVisit3</Visit>
       </Level>
     </Levels>
     <CellsMenu>
