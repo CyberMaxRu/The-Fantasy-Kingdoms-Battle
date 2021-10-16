@@ -18,7 +18,10 @@ namespace Fantasy_Kingdoms_Battle
         private VCLabel lblSectionExtensions;
         private VCLabel lblSectionGoods;
         private VCLabel lblSectionAbilities;
-        private readonly PanelWithPanelEntity panelProducts;
+        private readonly PanelWithPanelEntity panelVisits;
+        private readonly PanelWithPanelEntity panelExtensions;
+        private readonly PanelWithPanelEntity panelGoods;
+        private readonly PanelWithPanelEntity panelAbilities;
         private readonly PanelWithPanelEntity panelInhabitants;
         private readonly PanelWithPanelEntity panelVisitors;
         private readonly VCTabButton btnProducts;
@@ -27,7 +30,7 @@ namespace Fantasy_Kingdoms_Battle
 
         public PanelConstructionInfo(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
-            panelProducts = new PanelWithPanelEntity(4);
+            tabProducts = new VisualControl();
             panelInhabitants = new PanelWithPanelEntity(4);
             panelVisitors = new PanelWithPanelEntity(4);
 
@@ -40,14 +43,39 @@ namespace Fantasy_Kingdoms_Battle
 
             separator.ShiftY = lblGold.NextTop();
             pageControl.ShiftY = separator.NextTop();
-            btnProducts = pageControl.AddTab("Товары", FormMain.Config.Gui48_Goods, panelProducts);
+            btnProducts = pageControl.AddTab("Товары", FormMain.Config.Gui48_Goods, tabProducts);
             btnInhabitants = pageControl.AddTab("Жители", FormMain.Config.Gui48_Home, panelInhabitants);
             btnVisitors = pageControl.AddTab("Посетители", FormMain.Config.Gui48_Exit, panelVisitors);
             pageControl.AddTab("История", FormMain.Config.Gui48_Book, null);
 
+            lblSectionVisits = new VCLabel(tabProducts, 0, 0, Program.formMain.fontSmallC, Color.White, 16, "Посещение:");
+            lblSectionVisits.StringFormat.Alignment = StringAlignment.Near;
+            lblSectionExtensions = new VCLabel(tabProducts, 0, 0, Program.formMain.fontSmallC, Color.White, 16, "Дополнение:");
+            lblSectionExtensions.StringFormat.Alignment = StringAlignment.Near;
+            lblSectionGoods = new VCLabel(tabProducts, 0, 0, Program.formMain.fontSmallC, Color.White, 16, "Товары:");
+            lblSectionGoods.StringFormat.Alignment = StringAlignment.Near;
+            lblSectionAbilities = new VCLabel(tabProducts, 0, 0, Program.formMain.fontSmallC, Color.White, 16, "Умения:");
+            lblSectionAbilities.StringFormat.Alignment = StringAlignment.Near;
+
+            panelVisits = new PanelWithPanelEntity(4, false);
+            tabProducts.AddControl(panelVisits);
+            panelExtensions = new PanelWithPanelEntity(4, false);
+            tabProducts.AddControl(panelExtensions);
+            panelGoods = new PanelWithPanelEntity(4, false);
+            tabProducts.AddControl(panelGoods);
+            panelAbilities = new PanelWithPanelEntity(4, false);
+            tabProducts.AddControl(panelAbilities);
+
+            tabProducts.ApplyMaxSize();
+
             pageControl.ApplyMinSize();
             Width = pageControl.Width + FormMain.Config.GridSize * 2;
             lblTypeConstruction.Width = Width - lblTypeConstruction.ShiftX * 2;
+            tabProducts.Width = pageControl.Width;
+            lblSectionVisits.Width = pageControl.Width;
+            lblSectionExtensions.Width = pageControl.Width;
+            lblSectionGoods.Width = pageControl.Width;
+            lblSectionAbilities.Width = pageControl.Width;
         }
 
         private void LblGold_ShowHint(object sender, EventArgs e)
@@ -64,6 +92,7 @@ namespace Fantasy_Kingdoms_Battle
             base.ArrangeControls();
 
             pageControl.Height = Height - pageControl.ShiftY - FormMain.Config.GridSize;
+            tabProducts.Height = pageControl.Height - tabProducts.ShiftY - FormMain.Config.GridSize;
         }
 
         internal override void Draw(Graphics g)
@@ -84,13 +113,40 @@ namespace Fantasy_Kingdoms_Battle
             //pageControl.SetPageVisible(1, Construction.TypeConstruction.TrainedHero != null);
             //pageControl.SetPageVisible(2, Construction.TypeConstruction.TrainedHero != null);
 
-            panelProducts.ApplyList(Construction.AllProducts);
+            int nextTop = 0;
+            DrawList(lblSectionVisits, panelVisits, Construction.Visits);
+            DrawList(lblSectionExtensions, panelExtensions, Construction.Extensions);
+            DrawList(lblSectionGoods, panelGoods, Construction.Goods);
+            DrawList(lblSectionAbilities, panelAbilities, Construction.Abilities);
+            tabProducts.ArrangeControls();
+
             panelInhabitants.ApplyList(Construction.Heroes);
 
             btnProducts.Quantity = Construction.AllProducts.Count;
             btnInhabitants.Quantity = Construction.Heroes.Count;
 
-            base.Draw(g); 
+            base.Draw(g);
+
+            void DrawList(VCLabel label, PanelWithPanelEntity panel, List<ConstructionProduct> list)
+            {
+                if (list.Count > 0)
+                {
+                    label.Visible = true;
+                    label.ShiftY = nextTop;
+
+                    panel.Visible = true;
+                    panel.ApplyList(list);
+                    panel.ShiftY = label.NextTop();
+
+                    nextTop = panel.NextTop() + FormMain.Config.GridSize;
+                }
+                else
+                {
+                    label.Visible = false;
+                    panel.Visible = false;
+                }
+
+            }
         }
 
         protected override int GetImageIndex() => Construction.TypeConstruction.ImageIndex;
