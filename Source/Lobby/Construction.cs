@@ -1290,5 +1290,23 @@ namespace Fantasy_Kingdoms_Battle
 
             return false;
         }
+
+        internal string HintDescriptionInterest()
+        {
+            Debug.Assert(Level > 0);
+
+            if (Interest == 0)
+                return "";
+
+            string text = "Сооружение: " + Utils.DecIntegerBy10(TypeConstruction.Levels[Level].DescriptorVisit.Interest, false);
+
+            foreach (ConstructionProduct cp in Extensions)
+            {
+                if (cp.DescriptorConstructionExtension.Interest > 0)
+                    text += Environment.NewLine + cp.DescriptorConstructionExtension.Name + ": " + Utils.DecIntegerBy10(cp.DescriptorConstructionExtension.Interest, true);
+            }
+
+            return text;
+        }
     }
 }

@@ -27,6 +27,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCTabButton btnProducts;
         private readonly VCTabButton btnInhabitants;
         private readonly VCTabButton btnVisitors;
+        private readonly VCIconAndDigitValue lblInterest;
 
         public PanelConstructionInfo(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
@@ -40,6 +41,9 @@ namespace Fantasy_Kingdoms_Battle
 
             lblGold = new VCIconAndDigitValue(this, FormMain.Config.GridSize, lblTypeConstruction.NextTop(), imgIcon.Width, FormMain.GUI_16_COFFERS);
             lblGold.ShowHint += LblGold_ShowHint;
+
+            lblInterest = new VCIconAndDigitValue(this, imgIcon.NextLeft(), imgIcon.ShiftY, 16, FormMain.GUI_16_INTEREST_OTHER);
+            lblInterest.ShowHint += LblInterest_ShowHint;
 
             separator.ShiftY = lblGold.NextTop();
             pageControl.ShiftY = separator.NextTop();
@@ -78,6 +82,13 @@ namespace Fantasy_Kingdoms_Battle
             lblSectionAbilities.Width = pageControl.Width;
         }
 
+        private void LblInterest_ShowHint(object sender, EventArgs e)
+        {
+            Program.formMain.formHint.AddStep2Header("Интерес героев к сооружению");
+            if (Construction.Level > 0)
+                Program.formMain.formHint.AddStep5Description(Construction.HintDescriptionInterest());
+        }
+
         private void LblGold_ShowHint(object sender, EventArgs e)
         {
             if (Construction.TypeConstruction.IsOurConstruction)
@@ -93,6 +104,8 @@ namespace Fantasy_Kingdoms_Battle
 
             pageControl.Height = Height - pageControl.ShiftY - FormMain.Config.GridSize;
             tabProducts.Height = pageControl.Height - tabProducts.ShiftY - FormMain.Config.GridSize;
+
+            lblInterest.Width = Width - imgIcon.NextLeft() - FormMain.Config.GridSize;
         }
 
         internal override void Draw(Graphics g)
@@ -124,6 +137,9 @@ namespace Fantasy_Kingdoms_Battle
 
             btnProducts.Quantity = Construction.AllProducts.Count;
             btnInhabitants.Quantity = Construction.Heroes.Count;
+
+            lblInterest.ImageIsEnabled = Construction.Level > 0;
+            lblInterest.Text = Construction.Interest > 0 ? Utils.DecIntegerBy10(Construction.Interest, false) : "";
 
             base.Draw(g);
 
