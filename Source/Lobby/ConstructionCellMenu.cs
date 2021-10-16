@@ -129,6 +129,8 @@ namespace Fantasy_Kingdoms_Battle
             return Descriptor.Cost;
         }
 
+        internal override string GetLevel() => "и";
+
         internal override bool CheckRequirements()
         {
             return Construction.CanResearch() && base.CheckRequirements();
@@ -230,6 +232,9 @@ namespace Fantasy_Kingdoms_Battle
             else
                 return TypeConstruction.Levels[1].Cost;
         }
+
+        internal override string GetLevel() => "п";
+
         internal override int GetImageIndex()
         {
             if (ConstructionForBuild != null)
@@ -264,6 +269,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             return Descriptor.Cost;
         }
+        internal override string GetLevel() => "н";
 
         internal override int GetImageIndex()
         {
@@ -329,6 +335,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             return Descriptor.Cost;
         }
+
+        internal override string GetLevel() => "с";
 
         internal override int GetImageIndex()
         {
@@ -430,6 +438,8 @@ namespace Fantasy_Kingdoms_Battle
             return Descriptor.Cost;
         }
 
+        internal override string GetLevel() => "д";
+
         internal override int GetImageIndex()
         {
             return Entity.ImageIndex;
@@ -471,6 +481,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             return Descriptor.Cost;
         }
+
+        internal override string GetLevel() => "т";
 
         internal override int GetImageIndex()
         {
