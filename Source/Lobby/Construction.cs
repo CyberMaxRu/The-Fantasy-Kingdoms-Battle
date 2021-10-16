@@ -72,8 +72,6 @@ namespace Fantasy_Kingdoms_Battle
         internal bool BuildedOrUpgraded { get; private set; }
         internal int Gold { get => gold; set { Debug.Assert(TypeConstruction.HasTreasury); gold = value; } }
         internal List<Hero> Heroes { get; } = new List<Hero>();
-        internal int ResearchesAvailabled { get; set; }// Сколько еще исследований доступно на этом ходу
-        internal List<ConstructionProduct> Items { get; } = new List<ConstructionProduct>();// Товары, доступные в строении
         internal Player Player { get; }
 
         // Свойства для внешних сооружений
@@ -93,8 +91,10 @@ namespace Fantasy_Kingdoms_Battle
         internal List<Hero> listAttackedHero { get; } = new List<Hero>();// Список героев, откликнувшихся на флаг
 
         // 
+        internal int ResearchesAvailabled { get; set; }// Сколько еще исследований доступно на этом ходу
+        internal List<ConstructionProduct> Items { get; } = new List<ConstructionProduct>();// Товары, доступные в строении
         internal int Interest { get; private set; }
-        internal int[] ListNeeds { get; private set; }
+        internal int[] SatisfactionNeeds { get; private set; }// Удовлетворяемые потребности
 
         internal void Build()
         {
@@ -160,12 +160,12 @@ namespace Fantasy_Kingdoms_Battle
             CalcInterest();
 
             // Инициализируем удовлетворяемые потребности
-            ListNeeds = new int[FormMain.Config.NeedsCreature.Count];
+            SatisfactionNeeds = new int[FormMain.Config.NeedsCreature.Count];
             if (TypeConstruction.Levels[Level].DescriptorVisit != null)
             {
                 foreach ((DescriptorNeed, int) need in TypeConstruction.Levels[Level].DescriptorVisit.ListNeeds)
                 {
-                    ListNeeds[need.Item1.Index] = need.Item2;
+                    SatisfactionNeeds[need.Item1.Index] = need.Item2;
                 }
             }
         }
@@ -447,7 +447,7 @@ namespace Fantasy_Kingdoms_Battle
                     Program.formMain.formHint.AddStep6Income(Income());
                     Program.formMain.formHint.AddStep8Greatness(0, GreatnessPerDay());
                     Program.formMain.formHint.AddStep9PlusBuilders(BuildersPerDay());
-                    Program.formMain.formHint.AddStep9ListNeeds(ListNeeds);
+                    Program.formMain.formHint.AddStep9ListNeeds(SatisfactionNeeds);
                 }
                 else
                 {
@@ -1219,7 +1219,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void ChangeNeed(NameNeedCreature nameNeed, int value)
         {
-            ListNeeds[(int)nameNeed] += value;
+            SatisfactionNeeds[(int)nameNeed] += value;
         }
 
         internal bool GoodsExists(DescriptorItem item)

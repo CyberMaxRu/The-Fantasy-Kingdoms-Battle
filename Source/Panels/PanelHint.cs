@@ -345,7 +345,7 @@ namespace Fantasy_Kingdoms_Battle
             if (type.Length > 0)
             {
                 lblType.ShiftX = lblHeader.ShiftX;
-                lblType.ShiftY = lblHeader.NextTop();
+                lblType.ShiftY = lblHeader.NextTop() - FormMain.Config.GridSize;
                 lblType.Text = type;
                 lblType.Height = lblType.MinHeigth();
                 lblType.Visible = true;
