@@ -47,7 +47,7 @@ namespace Fantasy_Kingdoms_Battle
 
             separator.ShiftY = lblGold.NextTop();
             pageControl.ShiftY = separator.NextTop();
-            btnProducts = pageControl.AddTab("Товары", FormMain.Config.Gui48_Goods, tabProducts);
+            btnProducts = pageControl.AddTab("Сооружение", FormMain.Config.Gui48_Goods, tabProducts);
             btnInhabitants = pageControl.AddTab("Жители", FormMain.Config.Gui48_Home, panelInhabitants);
             btnVisitors = pageControl.AddTab("Посетители", FormMain.Config.Gui48_Exit, panelVisitors);
             pageControl.AddTab("История", FormMain.Config.Gui48_Book, null);
