@@ -117,11 +117,23 @@ namespace Fantasy_Kingdoms_Battle
         {
             string level = Entity is DescriptorAbility ta ? "Требуемый уровень: " + ta.MinUnitLevel.ToString() : "";
             Program.formMain.formHint.AddStep2Header(Entity.Name, GetImageIndex());
+            Program.formMain.formHint.AddStep3Type(NameType());
             Program.formMain.formHint.AddStep4Level(level);
             Program.formMain.formHint.AddStep5Description(Entity.Description);
             Program.formMain.formHint.AddStep6Income(Descriptor.Income);
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirements());
             Program.formMain.formHint.AddStep12Gold(GetCost(), GetCost() <= Construction.Player.Gold);
+
+            string NameType()
+            {
+                if (Entity is DescriptorAbility)
+                    return "Умение";
+                if (Entity is DescriptorItem)
+                    return "Товар";
+                if (Entity is DescriptorGroupItems)
+                    return "Группа товаров";
+                throw new Exception("Тип исследования не определен.");
+            }
         }
 
         internal override int GetCost()
@@ -279,6 +291,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override void PrepareHint()
         {
             Program.formMain.formHint.AddStep2Header(Creature.Name, Creature.ImageIndex);
+            Program.formMain.formHint.AddStep3Type("Найм");
             Program.formMain.formHint.AddStep5Description(Creature.Description);
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirements());
             Program.formMain.formHint.AddStep12Gold(GetCost(), GetCost() <= Construction.Player.Gold);
@@ -346,6 +359,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override void PrepareHint()
         {
             Program.formMain.formHint.AddStep2Header(ConstructionEvent.Name, ConstructionEvent.ImageIndex);
+            Program.formMain.formHint.AddStep3Type("Событие");
             Program.formMain.formHint.AddStep4Level($"Длительность: {ConstructionEvent.Duration} дн."
                 + Environment.NewLine + $"Перерыв: {ConstructionEvent.Cooldown} дн.");
             Program.formMain.formHint.AddStep5Description(ConstructionEvent.Description);
@@ -448,6 +462,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override void PrepareHint()
         {
             Program.formMain.formHint.AddStep2Header(Entity.Name, Entity.ImageIndex);
+            Program.formMain.formHint.AddStep3Type("Дополнение");
             Program.formMain.formHint.AddStep5Description(Entity.Description);
             Program.formMain.formHint.AddStep6Income(Descriptor.Income);
             Program.formMain.formHint.AddStep9ListNeeds(Entity.ListNeeds);
@@ -492,6 +507,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override void PrepareHint()
         {
             Program.formMain.formHint.AddStep2Header(Entity.Name, Entity.ImageIndex);
+            Program.formMain.formHint.AddStep3Type("Турнир");
             Program.formMain.formHint.AddStep5Description(Entity.Description);
             Program.formMain.formHint.AddStep6Income(Descriptor.Income);
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirements());
