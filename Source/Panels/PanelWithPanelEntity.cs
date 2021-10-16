@@ -24,10 +24,11 @@ namespace Fantasy_Kingdoms_Battle
             DistanceBetweenCells = distanceBetweenCells;
             DistanceBetweenRows = distanceBetweenRows;
 
-            ValidateRows(FixedMode ? FormMain.Config.MinRowsEntities : 1);
+            int needRows = FixedMode ? FormMain.Config.MinRowsEntities : 1;
+            ValidateRows(needRows);
 
             Width = (listCells[0].Width + DistanceBetweenCells) * (EntityInRow - 1) + listCells[0].Width;
-            Height = (listCells[0].Height + DistanceBetweenCells) * (FormMain.Config.MinRowsEntities - 1) + listCells[0].Height;
+            Height = (listCells[0].Height + DistanceBetweenCells) * (needRows - 1) + listCells[0].Height;
         }
 
         private int EntityInRow { get; }
