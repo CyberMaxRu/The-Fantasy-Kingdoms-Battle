@@ -1273,7 +1273,6 @@ namespace Fantasy_Kingdoms_Battle
 
             if (CurrentVisit == productFromRemove)
             {
-                Debug.Assert(MainVisit != null);
                 CurrentVisit = MainVisit;
             }
 

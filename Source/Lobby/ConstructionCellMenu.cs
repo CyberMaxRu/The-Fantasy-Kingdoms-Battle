@@ -324,7 +324,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override bool CheckRequirements()
         {
-            return (cp is null) && (Cooldown == 0) && base.CheckRequirements();
+            return (cp is null) && (Cooldown == 0) && base.CheckRequirements() && (!Construction.BuildedOrUpgraded);
         }
 
         internal override List<TextRequirement> GetTextRequirements()
@@ -332,8 +332,8 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(!((cp != null) && (Cooldown > 0)));
 
             List<TextRequirement> list = base.GetTextRequirements();
-            list.Add(new TextRequirement((cp is null) && (Cooldown == 0), (cp is null) && (Cooldown == 0) ? "Событие можно проводить" :                
-                cp != null ? $"Событие будет идти еще {cp.Counter} дн." : $"Осталось подождать дней: {Cooldown}"));
+            list.Add(new TextRequirement((cp is null) && (Cooldown == 0) && (!Construction.BuildedOrUpgraded), (cp is null) && (Cooldown == 0) && (!Construction.BuildedOrUpgraded)
+                ? "Событие можно проводить" : Construction.BuildedOrUpgraded ? "Сооружение строили/улучшали в этот день" : cp != null ? $"Событие будет идти еще {cp.Counter} дн." : $"Осталось подождать дней: {Cooldown}"));
 
             return list;
         }
