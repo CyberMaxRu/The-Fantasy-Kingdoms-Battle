@@ -1220,6 +1220,8 @@ namespace Fantasy_Kingdoms_Battle
 
             if ((cp.DescriptorConstructionVisit != null) || (cp.DescriptorConstructionEvent != null))
             {
+                Debug.Assert(Visits.Count <= 1);
+
                 if (cp.DescriptorConstructionVisit != null)
                 {
                     Debug.Assert(MainVisit == null);
