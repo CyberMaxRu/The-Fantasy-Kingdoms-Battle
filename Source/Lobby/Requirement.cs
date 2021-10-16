@@ -123,7 +123,7 @@ namespace Fantasy_Kingdoms_Battle
             nameTypeConstruction = "";
         }
 
-        internal override TextRequirement GetTextRequirement(Player p) => new TextRequirement(CheckRequirement(p), $"{typeConstruction.Name}: {quantity} шт.");
+        internal override TextRequirement GetTextRequirement(Player p) => new TextRequirement(CheckRequirement(p), $"Сооружение с типом \"{typeConstruction.Name}\": {quantity} шт.");
     }
 
     internal sealed class RequirementGoods : Requirement
