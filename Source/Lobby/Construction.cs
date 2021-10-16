@@ -92,7 +92,10 @@ namespace Fantasy_Kingdoms_Battle
 
         // 
         internal int ResearchesAvailabled { get; set; }// Сколько еще исследований доступно на этом ходу
+        internal List<ConstructionProduct> Visits { get; } = new List<ConstructionProduct>();// Посещения, события, турниры
+        internal List<ConstructionProduct> Extensions { get; } = new List<ConstructionProduct>();// Дополнения
         internal List<ConstructionProduct> Items { get; } = new List<ConstructionProduct>();// Товары, доступные в строении
+        internal List<ConstructionProduct> Abilities { get; } = new List<ConstructionProduct>();// Умения, доступные в строении
         internal int Interest { get; private set; }
         internal int[] SatisfactionNeeds { get; private set; }// Удовлетворяемые потребности
 

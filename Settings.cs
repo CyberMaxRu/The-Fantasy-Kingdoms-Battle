@@ -71,6 +71,11 @@ namespace Fantasy_Kingdoms_Battle
         }
         internal bool ShowShortNames { get; set; }
 
+        // Читинг
+        internal bool CheatingIgnoreRequirements { get; set; }
+        internal bool CheatingIgnoreGold { get; set; }
+        internal bool CheatingIgnoreBuilders { get; set; }
+
         internal event EventHandler PlayMusicChanged;
 
         internal void SetDefault()

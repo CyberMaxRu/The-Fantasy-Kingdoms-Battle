@@ -76,6 +76,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCLabel labelNamePlayer;
 
         private readonly VCIconButton48 btnInGameMenu;
+        private readonly VCIconButton48 btnCheating;
         private readonly VCIconButton48 btnEndTurn;
 
         private readonly VisualControl panelLairWithFlags;
@@ -582,6 +583,8 @@ namespace Fantasy_Kingdoms_Battle
                 btnInGameMenu = CreateButton(bmpTopPanel, Config.Gui48_Settings, Config.GridSize, Config.GridSize, BtnInGameMenu_Click, BtnInGameMenu_MouseHover);
                 btnInGameMenu.HighlightUnderMouse = true;
                 btnInGameMenu.ShowBorder = false;
+                btnCheating = CreateButton(bmpTopPanel, Config.Gui48_Cheating, btnInGameMenu.NextLeft(), btnInGameMenu.ShiftY, BtnCheating_Click, BtnCheating_ShowHint);
+                btnCheating.HighlightUnderMouse = true;
                 btnEndTurn = CreateButton(bmpTopPanel, Config.Gui48_Hourglass, 0, Config.GridSize, BtnEndTurn_Click, BtnEndTurn_MouseHover);
                 btnEndTurn.HighlightUnderMouse = true;
                 btnEndTurn.ShowBorder = true;
@@ -802,6 +805,18 @@ namespace Fantasy_Kingdoms_Battle
                 MessageBox.Show(exc.Message + Environment.NewLine + exc.StackTrace);
                 Environment.Exit(-1);
             }
+        }
+
+        private void BtnCheating_ShowHint(object sender, EventArgs e)
+        {
+            formHint.AddStep2Header("Читинг");
+            formHint.AddStep5Description("Открыть настройки читинга");
+        }
+
+        private void BtnCheating_Click(object sender, EventArgs e)
+        {
+            WindowCheating w = new WindowCheating(Settings);
+            w.ShowDialog();
         }
 
         private void LabelCorruption_ShowHint(object sender, EventArgs e)

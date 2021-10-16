@@ -68,6 +68,7 @@ namespace Fantasy_Kingdoms_Battle
             Gui48_Defeat = GetGui48ImageIndex("Defeat");
             Gui48_Battle2 = GetGui48ImageIndex("Battle2");
             Gui48_NeighborCastle = GetGui48ImageIndex("NeighborCastle");
+            Gui48_Cheating = GetGui48ImageIndex("Cheating");
 
             int GetGui48ImageIndex(string name)
             {
@@ -478,6 +479,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int Gui48_Defeat { get; }
         internal int Gui48_Battle2 { get; }
         internal int Gui48_NeighborCastle { get; }
+        internal int Gui48_Cheating { get; }
 
         //
         internal Brush brushControl { get; private set; } = new SolidBrush(Color.White);

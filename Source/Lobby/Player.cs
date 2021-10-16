@@ -746,6 +746,9 @@ namespace Fantasy_Kingdoms_Battle
 
         internal bool CheckRequirements(List<Requirement> list)
         {
+            if (Program.formMain.Settings.CheatingIgnoreRequirements)
+                return true;
+
             foreach (Requirement r in list)
             {
                 if (!r.CheckRequirement(this))
