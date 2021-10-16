@@ -976,7 +976,7 @@ namespace Fantasy_Kingdoms_Battle
 
             // Убираем себя из списка логов игрока
             Player.RemoveLair(this);
-    
+
             Destroyed = true;
         }
 
@@ -1062,7 +1062,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(requiredLevel > 0);
             Debug.Assert(requiredLevel <= TypeConstruction.MaxLevel);
 
-            Program.formMain.formHint.AddStep2Header(TypeConstruction.Name);
+            Program.formMain.formHint.AddStep2Header(TypeConstruction.Name, TypeConstruction.ImageIndex);
             Program.formMain.formHint.AddStep4Level(requiredLevel == 1 ? "Уровень 1" + Environment.NewLine + TypeConstruction.TypeConstruction.Name :
                     $"Улучшить строение ({requiredLevel} ур.)" + Environment.NewLine + TypeConstruction.TypeConstruction.Name);
             Program.formMain.formHint.AddStep5Description(requiredLevel == 1 ? TypeConstruction.Description : "");
@@ -1192,7 +1192,7 @@ namespace Fantasy_Kingdoms_Battle
 
             // Если это пристройка, то прибавляем ее удовлетворение потребностей к текущим
             if (cp.DescriptorConstructionExtension != null)
-            { 
+            {
                 foreach ((DescriptorNeed, int) need in cp.DescriptorConstructionExtension.ListNeeds)
                 {
                     ChangeNeed(need.Item1.NameNeed, need.Item2);
