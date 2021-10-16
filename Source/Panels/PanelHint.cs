@@ -57,10 +57,12 @@ namespace Fantasy_Kingdoms_Battle
         private Bitmap bmpBackground;
         private int widthControl;
 
+        private const int PANEL_WIDTH = 296;
+
         public PanelHint() : base()
         {
             ShowBorder = true;
-            Width = 256;
+            Width = PANEL_WIDTH;
             Visible = false;
 
             colorBackground = Color.FromArgb(192, 0, 0, 0);
@@ -316,7 +318,7 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(lblName.Visible);
             }
 
-            Width = 256;
+            Width = PANEL_WIDTH;
             ExistHint = true;
 
             if (header.Length > 0)
