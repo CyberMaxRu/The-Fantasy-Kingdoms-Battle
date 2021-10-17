@@ -600,6 +600,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 // Правая панель с героями и меню
                 vcRightPanel = new VisualControl(MainControl, 0, Config.GridSize);
+                vcRightPanel.ClickOnParent = true;
 
                 // Создаем меню
                 bitmapMenu = new VCBitmap(vcRightPanel, 0, 0, LoadBitmap("Menu.png"));
@@ -2114,6 +2115,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Debug.Assert(curAppliedPlayer == lobby.CurrentPlayer);
 
+                panelCombatHeroes.Visible = curAppliedPlayer.CombatHeroes.Count > 0;
                 panelCombatHeroes.ApplyList(curAppliedPlayer.CombatHeroes);
 
                 SetNeedRedrawFrame();
