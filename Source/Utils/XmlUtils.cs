@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Xml;
 using System.Diagnostics;
+using System.Drawing;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -95,6 +96,20 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(nn != null, $"Поле {name} отсутствует.");
 
             return n is null ? 0 : Convert.ToDouble(nn.InnerText.Replace(".", ","));
+        }
+
+        internal static Point GetPoint(XmlNode n, string name)
+        {
+            string pos = GetStringNotNull(n, name);
+            Debug.Assert(pos.Length > 0);
+
+            string[] parts = pos.Split(',');
+            Debug.Assert(parts.Length == 2);
+
+            if (!int.TryParse(parts[0], out int x) || !int.TryParse(parts[1], out int y))
+                throw new Exception($"Не могу распарсить координаты: {pos}.");
+
+            return new Point(x - 1, y - 1);
         }
 
         internal static void XmlFieldNotExist(XmlNode n, string name)

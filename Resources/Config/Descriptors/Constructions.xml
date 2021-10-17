@@ -8,8 +8,7 @@
     <TypeConstruction>Guild</TypeConstruction>
     <Category>Guild</Category>
     <Page>Guild</Page>
-    <Line>2</Line>
-    <Pos>1</Pos>
+    <Pos>1,2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <GoldByConstruction>500</GoldByConstruction>
@@ -101,8 +100,7 @@
     <TypeConstruction>Guild</TypeConstruction>
     <Category>Guild</Category>
     <Page>Guild</Page>
-    <Line>2</Line>
-    <Pos>2</Pos>
+    <Pos>2,2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
@@ -194,8 +192,7 @@
     <TypeConstruction>Guild</TypeConstruction>
     <Category>Guild</Category>
     <Page>Guild</Page>
-    <Line>2</Line>
-    <Pos>3</Pos>
+    <Pos>3,2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
@@ -287,8 +284,7 @@
     <TypeConstruction>Guild</TypeConstruction>
     <Category>Guild</Category>
     <Page>Guild</Page>
-    <Line>3</Line>
-    <Pos>3</Pos>
+    <Pos>3,3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
@@ -418,8 +414,7 @@
     <TypeConstruction>Guild</TypeConstruction>
     <Category>Guild</Category>
     <Page>Guild</Page>
-    <Line>3</Line>
-    <Pos>2</Pos>
+    <Pos>2,3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
@@ -541,8 +536,7 @@
     <TypeConstruction>Guild</TypeConstruction>
     <Category>Guild</Category>
     <Page>Guild</Page>
-    <Line>3</Line>
-    <Pos>1</Pos>
+    <Pos>1,3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
@@ -692,8 +686,7 @@
     <TypeConstruction>Guild</TypeConstruction>
     <Category>Guild</Category>
     <Page>Guild</Page>
-    <Line>2</Line>
-    <Pos>4</Pos>
+    <Pos>4,2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
@@ -738,8 +731,7 @@
     <TypeConstruction>Guild</TypeConstruction>
     <Category>Guild</Category>
     <Page>Guild</Page>
-    <Line>3</Line>
-    <Pos>4</Pos>
+    <Pos>4,3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
@@ -844,8 +836,7 @@
     <TypeConstruction>Power</TypeConstruction>
     <Category>Economic</Category>
     <Page>Guild</Page>
-    <Line>1</Line>
-    <Pos>1</Pos>
+    <Pos>1,1</Pos>
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
@@ -1044,8 +1035,7 @@
     <TypeConstruction>Manufacture</TypeConstruction>
     <Category>Economic</Category>
     <Page>Economic</Page>
-    <Line>1</Line>
-    <Pos>1</Pos>
+    <Pos>1,1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>
@@ -1158,8 +1148,7 @@
     <TypeConstruction>Manufacture</TypeConstruction>
     <Category>Economic</Category>
     <Page>Economic</Page>
-    <Line>1</Line>
-    <Pos>3</Pos>
+    <Pos>3,1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <ResearchesPerDay>2</ResearchesPerDay>
@@ -1394,8 +1383,7 @@
     <TypeConstruction>Recreation</TypeConstruction>
     <Category>Economic</Category>
     <Page>Economic</Page>
-    <Line>3</Line>
-    <Pos>1</Pos>
+    <Pos>1,3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>
@@ -1508,8 +1496,7 @@
     <TypeConstruction>Manufacture</TypeConstruction>
     <Category>Economic</Category>
     <Page>Economic</Page>
-    <Line>1</Line>
-    <Pos>4</Pos>
+    <Pos>4,1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <ResearchesPerDay>2</ResearchesPerDay>
@@ -1752,8 +1739,7 @@
     <TypeConstruction>Manufacture</TypeConstruction>
     <Category>Economic</Category>
     <Page>Economic</Page>
-    <Line>1</Line>
-    <Pos>2</Pos>
+    <Pos>2,1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <ResearchesPerDay>2</ResearchesPerDay>
@@ -1885,8 +1871,7 @@
     <TypeConstruction>Recreation</TypeConstruction>
     <Category>Economic</Category>
     <Page>Economic</Page>
-    <Line>3</Line>
-    <Pos>3</Pos>
+    <Pos>3,3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>
@@ -1988,8 +1973,7 @@
     <TypeConstruction>Recreation</TypeConstruction>
     <Category>Economic</Category>
     <Page>Guild</Page>
-    <Line>1</Line>
-    <Pos>2</Pos>
+    <Pos>2,1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>
@@ -2106,8 +2090,7 @@
     <TypeConstruction>Power</TypeConstruction>
     <Category>Economic</Category>
     <Page>Guild</Page>
-    <Line>1</Line>
-    <Pos>3</Pos>
+    <Pos>3,1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>2</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>
@@ -2139,8 +2122,7 @@
     <TypeConstruction>Power</TypeConstruction>
     <Category>Economic</Category>
     <Page>Guild</Page>
-    <Line>1</Line>
-    <Pos>4</Pos>
+    <Pos>4,1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>2</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>
@@ -2172,8 +2154,7 @@
     <TypeConstruction>Military</TypeConstruction>
     <Category>Military</Category>
     <Page>Economic</Page>
-    <Line>2</Line>
-    <Pos>1</Pos>
+    <Pos>1,2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>
@@ -2244,8 +2225,7 @@
     <TypeConstruction>Military</TypeConstruction>
     <Category>Military</Category>
     <Page>Economic</Page>
-    <Line>2</Line>
-    <Pos>3</Pos>
+    <Pos>3,2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>
@@ -2318,8 +2298,7 @@
     <TypeConstruction>Power</TypeConstruction>
     <Category>Military</Category>
     <Page>Economic</Page>
-    <Line>2</Line>
-    <Pos>4</Pos>
+    <Pos>4,2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>2</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>
@@ -2364,8 +2343,7 @@
     <TypeConstruction>Recreation</TypeConstruction>
     <Category>Economic</Category>
     <Page>Economic</Page>
-    <Line>3</Line>
-    <Pos>2</Pos>
+    <Pos>2,3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>
@@ -2467,8 +2445,7 @@
     <TypeConstruction>Temple</TypeConstruction>
     <Category>Temple</Category>
     <Page>Temple</Page>
-    <Line>2</Line>
-    <Pos>3</Pos>
+    <Pos>3,2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
@@ -2507,8 +2484,7 @@
     <TypeConstruction>Temple</TypeConstruction>
     <Category>Temple</Category>
     <Page>Temple</Page>
-    <Line>1</Line>
-    <Pos>3</Pos>
+    <Pos>3,1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
@@ -2547,8 +2523,7 @@
     <TypeConstruction>Temple</TypeConstruction>
     <Category>Temple</Category>
     <Page>Temple</Page>
-    <Line>1</Line>
-    <Pos>1</Pos>
+    <Pos>1,1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
@@ -2587,8 +2562,7 @@
     <TypeConstruction>Temple</TypeConstruction>
     <Category>Temple</Category>
     <Page>Temple</Page>
-    <Line>2</Line>
-    <Pos>1</Pos>
+    <Pos>1,2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
@@ -2627,8 +2601,7 @@
     <TypeConstruction>Temple</TypeConstruction>
     <Category>Temple</Category>
     <Page>Temple</Page>
-    <Line>2</Line>
-    <Pos>2</Pos>
+    <Pos>2,2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
@@ -2667,8 +2640,7 @@
     <TypeConstruction>Temple</TypeConstruction>
     <Category>Temple</Category>
     <Page>Temple</Page>
-    <Line>1</Line>
-    <Pos>2</Pos>
+    <Pos>2,1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
@@ -2707,8 +2679,7 @@
     <TypeConstruction>Temple</TypeConstruction>
     <Category>Temple</Category>
     <Page>Temple</Page>
-    <Line>3</Line>
-    <Pos>2</Pos>
+    <Pos>2,3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
@@ -2747,8 +2718,7 @@
     <TypeConstruction>Temple</TypeConstruction>
     <Category>Temple</Category>
     <Page>Temple</Page>
-    <Line>3</Line>
-    <Pos>1</Pos>
+    <Pos>1,3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
@@ -2787,8 +2757,7 @@
     <TypeConstruction>Temple</TypeConstruction>
     <Category>Temple</Category>
     <Page>Temple</Page>
-    <Line>3</Line>
-    <Pos>3</Pos>
+    <Pos>3,3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
@@ -3319,8 +3288,7 @@
     <TypeConstruction>Military</TypeConstruction>
     <Category>Economic</Category>
     <Page>Economic</Page>
-    <Line>2</Line>
-    <Pos>2</Pos>
+    <Pos>2,2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>
@@ -3443,8 +3411,7 @@
     <TypeConstruction>Recreation</TypeConstruction>
     <Category>Economic</Category>
     <Page>Economic</Page>
-    <Line>3</Line>
-    <Pos>4</Pos>
+    <Pos>4,3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <ResearchesPerDay>1</ResearchesPerDay>

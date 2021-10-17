@@ -18,14 +18,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         public DescriptorCellMenu(XmlNode n) : base()
         {
-            string pos = GetStringNotNull(n, "Pos");
-            Debug.Assert(pos.Length > 0);
-            string[] parts = pos.Split(',');
-            Debug.Assert(parts.Length == 2);
-            if (!int.TryParse(parts[0], out int x) || !int.TryParse(parts[1], out int y))
-                throw new Exception($"Не могу распарсить координаты: {pos}.");
-            Coord = new Point(x - 1, y - 1);
-
+            Coord = GetPoint(n, "Pos");
             Cost = GetInteger(n, "Cost");
             LoadRequirements(Requirements, n);
 

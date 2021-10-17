@@ -36,7 +36,7 @@ namespace Fantasy_Kingdoms_Battle
             if (IsInternalConstruction)
             {
                 Page = (ConstructionPage)Enum.Parse(typeof(ConstructionPage), GetStringNotNull(n, "Page"));
-                CoordInPage = new Point(GetIntegerNotNull(n, "Pos") - 1, GetIntegerNotNull(n, "Line") - 1);
+                CoordInPage = GetPoint(n, "Pos");
             }
             else
             {
