@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Descriptors>
   <TypeConstruction>
-    <ID>Castle</ID>
-    <Name>Замок</Name>
+    <ID>Power</ID>
+    <Name>Власть</Name>
   </TypeConstruction>
   <TypeConstruction>
     <ID>Guild</ID>
@@ -19,10 +19,6 @@
   <TypeConstruction>
     <ID>Military</ID>
     <Name>Военное дело</Name>
-  </TypeConstruction>
-  <TypeConstruction>
-    <ID>Greatness</ID>
-    <Name>Величие</Name>
   </TypeConstruction>
   <TypeConstruction>
     <ID>Village</ID>

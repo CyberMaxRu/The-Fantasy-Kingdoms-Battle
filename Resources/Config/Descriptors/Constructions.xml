@@ -828,7 +828,7 @@
     <Name>Замок</Name>
     <Description>- Позволяет отдавать приказы строительства//- Содержит налоговую и охранную службы//- Здесь хранится казна королевства//- Задает уровень лояльности</Description>
     <ImageIndex>20</ImageIndex>
-    <TypeConstruction>Castle</TypeConstruction>
+    <TypeConstruction>Power</TypeConstruction>
     <Category>Economic</Category>
     <Page>Guild</Page>
     <Line>1</Line>
@@ -1926,7 +1926,7 @@
     <Name>Городская площадь</Name>
     <Description>- Главное место города.//- Здесь могут проводиться казни.</Description>
     <ImageIndex>158</ImageIndex>
-    <TypeConstruction>Greatness</TypeConstruction>
+    <TypeConstruction>Recreation</TypeConstruction>
     <Category>Economic</Category>
     <Page>Guild</Page>
     <Line>1</Line>
@@ -2044,7 +2044,7 @@
     <Name>Казначейство</Name>
     <Description>- Здесь считают деньги и проводят финансовые операции.</Description>
     <ImageIndex>159</ImageIndex>
-    <TypeConstruction>Greatness</TypeConstruction>
+    <TypeConstruction>Power</TypeConstruction>
     <Category>Economic</Category>
     <Page>Guild</Page>
     <Line>1</Line>
@@ -2077,7 +2077,7 @@
     <Name>Муниципалитет</Name>
     <Description>- Когда город разрастается, можно дать ему самоуправление</Description>
     <ImageIndex>160</ImageIndex>
-    <TypeConstruction>Greatness</TypeConstruction>
+    <TypeConstruction>Power</TypeConstruction>
     <Category>Economic</Category>
     <Page>Guild</Page>
     <Line>1</Line>
@@ -2256,7 +2256,7 @@
     <Name>Темница</Name>
     <Description>- Здесь содержатся пленные герои</Description>
     <ImageIndex>152</ImageIndex>
-    <TypeConstruction>Military</TypeConstruction>
+    <TypeConstruction>Power</TypeConstruction>
     <Category>Military</Category>
     <Page>Economic</Page>
     <Line>2</Line>
