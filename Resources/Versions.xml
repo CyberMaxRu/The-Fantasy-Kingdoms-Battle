@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Versions>
-  <ActualVersion>0.3.14</ActualVersion>
+  <ActualVersion>0.3.15</ActualVersion>
   <Version>
     <Number>0.2.0</Number>
     <DateBuild>07.12.2020</DateBuild>
@@ -530,8 +530,16 @@
     <Number>0.3.14</Number>
     <DateBuild>27.09.2021</DateBuild>
     <Description>
-      <Line>[!] Множество мелких улучшений.</Line>
       <Line>[!] Подготовлены сооружения и меню в них.</Line>
+      <Line>[!] Множество мелких улучшений.</Line>
+    </Description>
+  </Version>
+  <Version>
+    <Number>0.3.15</Number>
+    <DateBuild>17.10.2021</DateBuild>
+    <Description>
+      <Line>[!] Фон на страницах сооружений.</Line>
+      <Line>[!] Множество мелких улучшений.</Line>
     </Description>
   </Version>
 </Versions>
