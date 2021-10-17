@@ -332,8 +332,8 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(!((cp != null) && (Cooldown > 0)));
 
             List<TextRequirement> list = base.GetTextRequirements();
-            list.Add(new TextRequirement((cp is null) && (Cooldown == 0) && (!Construction.BuildedOrUpgraded) && (Construction.CurrentVisit.DescriptorConstructionVisit != null), (cp is null) && (Cooldown == 0) && (!Construction.BuildedOrUpgraded) && (Construction.CurrentVisit.DescriptorConstructionVisit != null)
-                ? "Событие можно проводить" :  Construction.CurrentVisit.DescriptorConstructionVisit == null ? "В сооружении уже идет другое событие" : Construction.BuildedOrUpgraded ? "Сооружение строили/улучшали в этот день" : cp != null ? $"Событие будет идти еще {cp.Counter} дн." : $"Осталось подождать дней: {Cooldown}"));
+            list.Add(new TextRequirement((cp is null) && (Cooldown == 0) && (!Construction.BuildedOrUpgraded) && (Construction.CurrentVisit?.DescriptorConstructionVisit != null), (cp is null) && (Cooldown == 0) && (!Construction.BuildedOrUpgraded) && (Construction.CurrentVisit?.DescriptorConstructionVisit != null)
+                ? "Событие можно проводить" : Construction.CurrentVisit?.DescriptorConstructionVisit == null ? "В сооружении уже идет другое событие" : Construction.BuildedOrUpgraded ? "Сооружение строили/улучшали в этот день" : cp != null ? $"Событие будет идти еще {cp.Counter} дн." : $"Осталось подождать дней: {Cooldown}"));
 
             return list;
         }
