@@ -383,6 +383,19 @@
         </Requirements>
       </CellMenu>
       <CellMenu>
+        <Pos>4,2</Pos>
+        <Type>Extension</Type>
+        <Entity>Library</Entity>
+        <Cost>1000</Cost>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>GuildMage</Construction>
+            <Level>2</Level>
+          </Requirement>
+        </Requirements>
+      </CellMenu>
+      <CellMenu>
         <Pos>2,3</Pos>
         <Type>Research</Type>
         <Entity>MageFirestormAttack</Entity>

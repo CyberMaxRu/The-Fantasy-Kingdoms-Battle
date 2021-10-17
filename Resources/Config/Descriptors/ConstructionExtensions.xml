@@ -76,4 +76,11 @@
     <ImageIndex>226</ImageIndex>
     <AvailableForAll>true</AvailableForAll>
   </Extension>
+  <Extension>
+    <ID>Library</ID>
+    <Name>Библиотека</Name>
+    <Description>Пристроить библиотеку. Повышает ум и знания героев.</Description>
+    <ImageIndex>254</ImageIndex>
+    <AvailableForAll>true</AvailableForAll>
+  </Extension>
 </Descriptors>
