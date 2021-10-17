@@ -323,7 +323,7 @@
           </Requirement>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Library</Construction>
+            <Construction>Park</Construction>
             <Level>1</Level>
           </Requirement>
         </Requirements>
@@ -1863,10 +1863,10 @@
     </CellsMenu>
   </Construction>
   <Construction>
-    <ID>Library</ID>
-    <Name>Библиотека</Name>
-    <Description>- Позволяет изучить заклинания</Description>
-    <ImageIndex>151</ImageIndex>
+    <ID>Park</ID>
+    <Name>Парк</Name>
+    <Description>- В парке герои могут хорошо отдохнуть.</Description>
+    <ImageIndex>143</ImageIndex>
     <TypeConstruction>Recreation</TypeConstruction>
     <Category>Economic</Category>
     <Page>Economic</Page>
@@ -1882,53 +1882,84 @@
         <Cost>500</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
-        <Visit>LibraryVisit1</Visit>
+        <Visit>ParkVisit1</Visit>
       </Level>
       <Level>
         <Number>2</Number>
         <Cost>1000</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
-        <Visit>LibraryVisit2</Visit>
+        <Visit>ParkVisit2</Visit>
       </Level>
       <Level>
         <Number>3</Number>
         <Cost>1500</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
-        <Visit>LibraryVisit3</Visit>
+        <Visit>ParkVisit3</Visit>
       </Level>
     </Levels>
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
-        <Type>Research</Type>
-        <Entity>LibraryLadder</Entity>
+        <Type>Extension</Type>
+        <Entity>Gazebo</Entity>
         <Cost>500</Cost>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
-        <Type>Event</Type>
-        <Entity>EventSellBooks</Entity>
-        <Cost>750</Cost>
+        <Type>Extension</Type>
+        <Entity>Alley</Entity>
+        <Cost>1500</Cost>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Library</Construction>
+            <Construction>Park</Construction>
+            <Level>2</Level>
+          </Requirement>
+        </Requirements>
+      </CellMenu>
+      <CellMenu>
+        <Pos>3,2</Pos>
+        <Type>Extension</Type>
+        <Entity>Maze</Entity>
+        <Cost>1500</Cost>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>Park</Construction>
             <Level>2</Level>
           </Requirement>
         </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>2,3</Pos>
-        <Type>Event</Type>
-        <Entity>EventMemoir</Entity>
-        <Cost>1000</Cost>
+        <Type>Extension</Type>
+        <Entity>Waterfall</Entity>
+        <Cost>2000</Cost>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
-            <Construction>Library</Construction>
+            <Construction>Park</Construction>
             <Level>3</Level>
+          </Requirement>
+        </Requirements>
+      </CellMenu>
+      <CellMenu>
+        <Pos>3,3</Pos>
+        <Type>Extension</Type>
+        <Entity>Pond</Entity>
+        <Cost>2500</Cost>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>Park</Construction>
+            <Level>3</Level>
+          </Requirement>
+          <Requirement>
+            <TypeRequirement>ExtensionInConstruction</TypeRequirement>
+            <Construction>Park</Construction>
+            <Extension>Pond</Extension>
           </Requirement>
         </Requirements>
       </CellMenu>

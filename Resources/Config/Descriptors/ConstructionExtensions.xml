@@ -36,7 +36,7 @@
   <Extension>
     <ID>Gazebo</ID>
     <Name>Беседки</Name>
-    <Description>Беседки увеличат популярность {Сада}</Description>
+    <Description>Беседки увеличат популярность {Парка}</Description>
     <ImageIndex>215</ImageIndex>
     <Cost>500</Cost>
     <Interest>5</Interest>
@@ -48,7 +48,7 @@
   <Extension>
     <ID>Waterfall</ID>
     <Name>Водопад</Name>
-    <Description>Водопад увеличит популярность {Сада}</Description>
+    <Description>Водопад увеличит популярность {Парка}</Description>
     <ImageIndex>246</ImageIndex>
     <Interest>5</Interest>
     <AvailableForAll>true</AvailableForAll>
@@ -60,8 +60,32 @@
   <Extension>
     <ID>Alley</ID>
     <Name>Аллея</Name>
-    <Description>Аллея увеличит популярность {Сада}</Description>
+    <Description>Аллея увеличит популярность {Парка}</Description>
     <ImageIndex>214</ImageIndex>
+    <Interest>20</Interest>
+    <AvailableForAll>true</AvailableForAll>
+    <Needs>
+      <Rest>5</Rest>
+      <Entertainment>2</Entertainment>
+    </Needs>
+  </Extension>
+  <Extension>
+    <ID>Maze</ID>
+    <Name>Лабиринт</Name>
+    <Description>Лабиринт увеличит популярность {Парка} и отдых героев</Description>
+    <ImageIndex>255</ImageIndex>
+    <Interest>20</Interest>
+    <AvailableForAll>true</AvailableForAll>
+    <Needs>
+      <Rest>5</Rest>
+      <Entertainment>2</Entertainment>
+    </Needs>
+  </Extension>
+  <Extension>
+    <ID>Pond</ID>
+    <Name>Пруд</Name>
+    <Description>Пруд увеличит популярность {Парка} и отдых героев</Description>
+    <ImageIndex>256</ImageIndex>
     <Interest>20</Interest>
     <AvailableForAll>true</AvailableForAll>
     <Needs>

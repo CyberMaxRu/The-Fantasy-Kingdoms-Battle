@@ -142,10 +142,10 @@
     </Needs>
   </ConstructionVisit>
   <ConstructionVisit>
-    <ID>LibraryVisit1</ID>
-    <Name>Посидеть в библиотеке (1)</Name>
-    <Description>- В библиотеке герои могут повысить свои знания и ум.</Description>
-    <ImageIndex Size="128">151</ImageIndex>
+    <ID>ParkVisit1</ID>
+    <Name>Прогулка по парку (1)</Name>
+    <Description>- В парке герои могут хорошо отдохнуть и собраться с мыслями.</Description>
+    <ImageIndex Size="128">143</ImageIndex>
     <AvailableForAll>true</AvailableForAll>
     <Interest>10</Interest>
     <Needs>
@@ -154,10 +154,10 @@
     </Needs>
   </ConstructionVisit>
   <ConstructionVisit>
-    <ID>LibraryVisit2</ID>
-    <Name>Посидеть в библиотеке (2)</Name>
-    <Description>- В библиотеке герои могут повысить свои знания и ум.</Description>
-    <ImageIndex Size="128">151</ImageIndex>
+    <ID>ParkVisit2</ID>
+    <Name>Прогулка по парку (2)</Name>
+    <Description>- В парке герои могут хорошо отдохнуть и собраться с мыслями.</Description>
+    <ImageIndex Size="128">143</ImageIndex>
     <AvailableForAll>true</AvailableForAll>
     <Interest>10</Interest>
     <Needs>
@@ -166,10 +166,10 @@
     </Needs>
   </ConstructionVisit>
   <ConstructionVisit>
-    <ID>LibraryVisit3</ID>
-    <Name>Посидеть в библиотеке (3)</Name>
-    <Description>- В библиотеке герои могут повысить свои знания и ум.</Description>
-    <ImageIndex Size="128">151</ImageIndex>
+    <ID>ParkVisit3</ID>
+    <Name>Прогулка по парку (3)</Name>
+    <Description>- В парке герои могут хорошо отдохнуть и собраться с мыслями.</Description>
+    <ImageIndex Size="128">143</ImageIndex>
     <AvailableForAll>true</AvailableForAll>
     <Interest>10</Interest>
     <Needs>
