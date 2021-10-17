@@ -148,6 +148,14 @@ namespace Fantasy_Kingdoms_Battle
             lblNameMapObject.Text = Construction.NameLair();
             lblNameMapObject.Color = Construction.GetColorCaption();
 
+            btnHeroes.Visible = false;
+            btnHireHero.Visible = false;
+            lblRewardGold.Visible = false;
+            lblRewardGreatness.Visible = false;
+            lblIncome.Visible = false;
+            lblGreatness.Visible = false;
+            btnBuildOrUpgrade.Visible = false;
+
             if (!Construction.Hidden && (Construction.TypeConstruction.IsOurConstruction || Construction.TypeConstruction.Category == CategoryConstruction.External))
             {
                 int income = Construction.Level > 0 ? Construction.Income() : Construction.IncomeNextLevel();
