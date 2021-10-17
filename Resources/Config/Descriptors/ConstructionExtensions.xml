@@ -107,4 +107,40 @@
     <ImageIndex>254</ImageIndex>
     <AvailableForAll>true</AvailableForAll>
   </Extension>
+  <Extension>
+    <ID>FlowerGarden</ID>
+    <Name>Цветники</Name>
+    <Description>Цветники увеличит популярность {Сада}</Description>
+    <ImageIndex>257</ImageIndex>
+    <Interest>20</Interest>
+    <AvailableForAll>true</AvailableForAll>
+    <Needs>
+      <Rest>5</Rest>
+      <Entertainment>2</Entertainment>
+    </Needs>
+  </Extension>
+  <Extension>
+    <ID>FruitTrees</ID>
+    <Name>Фруктовые деревья</Name>
+    <Description>Увеличат популярность {Сада}</Description>
+    <ImageIndex>258</ImageIndex>
+    <Interest>20</Interest>
+    <AvailableForAll>true</AvailableForAll>
+    <Needs>
+      <Rest>5</Rest>
+      <Entertainment>2</Entertainment>
+    </Needs>
+  </Extension>
+  <Extension>
+    <ID>Greenhouse</ID>
+    <Name>Оранжерея</Name>
+    <Description>Увеличит популярность {Сада}</Description>
+    <ImageIndex>259</ImageIndex>
+    <Interest>20</Interest>
+    <AvailableForAll>true</AvailableForAll>
+    <Needs>
+      <Rest>5</Rest>
+      <Entertainment>2</Entertainment>
+    </Needs>
+  </Extension>
 </Descriptors>

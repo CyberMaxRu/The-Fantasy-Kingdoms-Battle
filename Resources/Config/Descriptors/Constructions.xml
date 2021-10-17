@@ -2382,13 +2382,13 @@
       <CellMenu>
         <Pos>2,1</Pos>
         <Type>Extension</Type>
-        <Entity>Gazebo</Entity>
+        <Entity>FruitTrees</Entity>
         <Cost>500</Cost>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Extension</Type>
-        <Entity>Waterfall</Entity>
+        <Entity>FlowerGarden</Entity>
         <Cost>1000</Cost>
         <Requirements>
           <Requirement>
@@ -2419,7 +2419,7 @@
       <CellMenu>
         <Pos>2,3</Pos>
         <Type>Extension</Type>
-        <Entity>Alley</Entity>
+        <Entity>Greenhouse</Entity>
         <Cost>1500</Cost>
         <Requirements>
           <Requirement>
