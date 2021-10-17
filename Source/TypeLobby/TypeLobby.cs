@@ -91,7 +91,7 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (XmlNode l in nodeLairSettings.SelectNodes("Layer"))
             {
-                ls = new TypeLobbyLayerSettings(l, LairsWidth * LairsHeight);
+                ls = new TypeLobbyLayerSettings(this, l, LairsWidth * LairsHeight);
 
                 Debug.Assert(ls.Number >= 0);
                 Debug.Assert(ls.Number <= FormMain.MAX_LAIR_LAYERS - 1);

@@ -303,7 +303,7 @@ namespace Fantasy_Kingdoms_Battle
                     quantity--;
                 }
 
-                Program.formMain.UpdateNeighborhood();
+                Program.formMain.UpdateNeighborhoods();
             }
         }
 

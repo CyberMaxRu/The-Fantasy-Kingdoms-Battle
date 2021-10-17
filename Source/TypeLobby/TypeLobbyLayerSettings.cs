@@ -11,8 +11,10 @@ namespace Fantasy_Kingdoms_Battle
     // Класс настроек типа лобби
     internal sealed class TypeLobbyLayerSettings
     {
-        public TypeLobbyLayerSettings(XmlNode n, int quantitySlotLairs)
+        public TypeLobbyLayerSettings(TypeLobby typeLobby, XmlNode n, int quantitySlotLairs)
         {
+            TypeLobby = typeLobby;
+
             Number = XmlUtils.GetInteger(n, "Number");
             Name = XmlUtils.GetStringNotNull(n, "Name");
             Hint = XmlUtils.GetStringNotNull(n, "Hint");
@@ -72,6 +74,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(maxQuantity >= quantitySlotLairs);
         }
 
+        internal TypeLobby TypeLobby { get; }// Тип лобби
         internal int Number { get; }// Номер слоя
         internal string Name { get; }// Наименование слоя
         internal string Hint { get; }// Подсказка к слою

@@ -117,7 +117,6 @@
     <Compile Include="Source\Forms\WindowAdvice.cs" />
     <Compile Include="Source\TypeLobby\TypeLobbyLairSettings.cs" />
     <Compile Include="Source\VisualControls\VCMapArea.cs" />
-    <Compile Include="Source\VisualControls\VCNeighborhood.cs" />
     <Compile Include="Source\Descriptors\Creature\DescriptorReward.cs" />
     <Compile Include="Source\Descriptors\Creature\DescriptorSecondarySkill.cs" />
     <Compile Include="Source\Forms\CustomWindow.cs" />

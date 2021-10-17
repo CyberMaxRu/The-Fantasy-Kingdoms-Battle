@@ -25,9 +25,20 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(onShowHint != null);
 
-            VCPageButton page = new VCPageButton(this, nextLeft, 0, imageIndex, caption, advice);
+            VCPageButton page = new VCPageButton(this, nextLeft, 0, imageIndex, caption, advice, null);
             page.Click += Page_Click;
             page.ShowHint += onShowHint;
+            nextLeft = page.NextLeft();
+            Pages.Add(page);
+
+            return page;
+        }
+
+        internal VCPageButton AddPage(TypeLobbyLayerSettings layer)
+        {
+            VCPageButton page = new VCPageButton(this, nextLeft, 0, layer.ImageIndex, layer.Hint, "", layer);
+            page.Click += Page_Click;
+            page.Hint = layer.Hint;
             nextLeft = page.NextLeft();
             Pages.Add(page);
 

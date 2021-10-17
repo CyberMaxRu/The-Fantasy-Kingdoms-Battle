@@ -231,7 +231,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             if (Construction.Player.GetTypePlayer() == TypePlayer.Human)
-                Program.formMain.UpdateNeighborhood();
+                Program.formMain.UpdateNeighborhoods();
 
             Program.formMain.SetNeedRedrawFrame();
             Program.formMain.PlayConstructionComplete();

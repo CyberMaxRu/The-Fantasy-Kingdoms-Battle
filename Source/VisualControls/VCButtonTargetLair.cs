@@ -24,7 +24,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if ((Lair != null) && (Lair.TypeFlag != TypeFlag.Battle))
             {
-                Program.formMain.ActivatePageLairs();
+                //Program.formMain.ActivatePageLairs();
                 Program.formMain.SelectPlayerObject(Lair);
             }
         }
