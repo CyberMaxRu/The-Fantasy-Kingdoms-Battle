@@ -936,6 +936,21 @@
         </Perks>
       </Level>
     </Levels>
+    <CellsMenu>
+      <CellMenu>
+        <Pos>2,3</Pos>
+        <Type>Extension</Type>
+        <Entity>Throne</Entity>
+        <Cost>5000</Cost>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>Castle</Construction>
+            <Level>3</Level>
+          </Requirement>
+        </Requirements>
+      </CellMenu>      
+    </CellsMenu>
   </Construction>
   <Construction>
     <ID>PeasantHouse</ID>

@@ -143,4 +143,11 @@
       <Entertainment>2</Entertainment>
     </Needs>
   </Extension>
+  <Extension>
+    <ID>Throne</ID>
+    <Name>Трон</Name>
+    <Description>Трон покажет величие Короля</Description>
+    <ImageIndex>260</ImageIndex>
+    <AvailableForAll>true</AvailableForAll>
+  </Extension>
 </Descriptors>
