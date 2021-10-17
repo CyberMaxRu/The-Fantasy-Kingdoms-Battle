@@ -87,6 +87,7 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep2Header("Интерес героев к сооружению");
             if (Construction.Level > 0)
                 Program.formMain.formHint.AddStep5Description(Construction.HintDescriptionInterest());
+            Program.formMain.formHint.AddStep21Tooltip("Чем больше интерес у сооружения, тем чаще герои будут посещать его");
         }
 
         private void LblGold_ShowHint(object sender, EventArgs e)
