@@ -107,6 +107,8 @@ namespace Fantasy_Kingdoms_Battle
             else
             {
                 Program.formMain.formHint.AddStep2Header(Descriptor.Name, GetImageIndex());
+                if (DescriptorAbility != null)
+                    Program.formMain.formHint.AddStep3Type(DescriptorAbility.TypeAbility.Name);
                 if (DescriptorConstructionVisit != null)
                     Program.formMain.formHint.AddStep3Type("Посещение");
                 Program.formMain.formHint.AddStep5Description(Descriptor.Description);
