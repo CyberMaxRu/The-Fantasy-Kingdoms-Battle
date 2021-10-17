@@ -2467,8 +2467,8 @@
     <TypeConstruction>Temple</TypeConstruction>
     <Category>Temple</Category>
     <Page>Temple</Page>
-    <Line>1</Line>
-    <Pos>1</Pos>
+    <Line>2</Line>
+    <Pos>3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
@@ -2508,7 +2508,7 @@
     <Category>Temple</Category>
     <Page>Temple</Page>
     <Line>1</Line>
-    <Pos>2</Pos>
+    <Pos>3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
@@ -2548,7 +2548,7 @@
     <Category>Temple</Category>
     <Page>Temple</Page>
     <Line>1</Line>
-    <Pos>3</Pos>
+    <Pos>1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
@@ -2667,8 +2667,8 @@
     <TypeConstruction>Temple</TypeConstruction>
     <Category>Temple</Category>
     <Page>Temple</Page>
-    <Line>2</Line>
-    <Pos>3</Pos>
+    <Line>1</Line>
+    <Pos>2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
@@ -2708,7 +2708,7 @@
     <Category>Temple</Category>
     <Page>Temple</Page>
     <Line>3</Line>
-    <Pos>1</Pos>
+    <Pos>2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
@@ -2748,7 +2748,7 @@
     <Category>Temple</Category>
     <Page>Temple</Page>
     <Line>3</Line>
-    <Pos>2</Pos>
+    <Pos>1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
@@ -3253,17 +3253,17 @@
     </Levels>
     <CellsMenu>
       <CellMenu>
-        <Pos>2,1</Pos>
+        <Pos>4,2</Pos>
         <Type>Build</Type>
         <Entity>GuildDarkPriest</Entity>
       </CellMenu>
       <CellMenu>
-        <Pos>3,1</Pos>
+        <Pos>4,1</Pos>
         <Type>Build</Type>
         <Entity>GuildPriest</Entity>
       </CellMenu>
       <CellMenu>
-        <Pos>4,1</Pos>
+        <Pos>2,1</Pos>
         <Type>Build</Type>
         <Entity>GuildPaladin</Entity>
       </CellMenu>
@@ -3278,17 +3278,17 @@
         <Entity>GuildBeastmaster</Entity>
       </CellMenu>
       <CellMenu>
-        <Pos>4,2</Pos>
+        <Pos>3,1</Pos>
         <Type>Build</Type>
         <Entity>GuildMarksman</Entity>
       </CellMenu>
       <CellMenu>
-        <Pos>2,3</Pos>
+        <Pos>3,3</Pos>
         <Type>Build</Type>
         <Entity>GuildIceMage</Entity>
       </CellMenu>
       <CellMenu>
-        <Pos>3,3</Pos>
+        <Pos>2,3</Pos>
         <Type>Build</Type>
         <Entity>GuildDeathKnight</Entity>
       </CellMenu>
