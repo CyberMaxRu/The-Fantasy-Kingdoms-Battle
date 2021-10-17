@@ -2066,12 +2066,15 @@ namespace Fantasy_Kingdoms_Battle
                 b.Visible = false;
             }
 
-            TypeLobbyLayerSettings ls;
             for (int i = 0; i < lobby.TypeLobby.LairsLayers; i++)
             {
-                ls = lobby.TypeLobby.LayerSettings[i];
-                VCPageButton pb = pageControl.AddPage(ls);
-                pagesLairs.Add(pb);
+                if (pagesLairs.Count > i)
+                    pagesLairs[i].Visible = true;
+                else
+                {
+                    VCPageButton pb = pageControl.AddPage(lobby.TypeLobby.LayerSettings[i]);
+                    pagesLairs.Add(pb);
+                }
             }
 
             pageControl.ArrangeControls();
