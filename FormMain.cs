@@ -2462,5 +2462,12 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
         }
+
+        internal void ActivatePageLairs(int number)
+        {
+            Debug.Assert(pagesLairs[number].Visible);
+
+            pagesLairs[number].DoClick();
+        }
     }
 }
