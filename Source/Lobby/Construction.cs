@@ -1245,8 +1245,6 @@ namespace Fantasy_Kingdoms_Battle
             // Если это пристройка, то прибавляем ее удовлетворение потребностей к текущим
             if (cp.DescriptorConstructionExtension != null)
             {
-                Debug.Assert(MainVisit != null);
-
                 Extensions.Add(cp);
 
                 foreach ((DescriptorNeed, int) need in cp.DescriptorConstructionExtension.ListNeeds)
@@ -1254,7 +1252,8 @@ namespace Fantasy_Kingdoms_Battle
                     ChangeNeed(need.Item1.NameNeed, need.Item2);
                 }
 
-                UpdateInterestMainVisit();
+                if (MainVisit != null)
+                    UpdateInterestMainVisit();
             }
         }
 
