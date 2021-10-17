@@ -323,6 +323,9 @@ namespace Fantasy_Kingdoms_Battle
             lblName.Height = lblName.MinHeigth();
             lblName.Visible = true;
 
+            Width = PANEL_WIDTH;
+            ExistHint = true;
+
             nextTop = lblName.NextTop();
         }
 
