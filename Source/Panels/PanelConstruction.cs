@@ -148,16 +148,11 @@ namespace Fantasy_Kingdoms_Battle
             lblNameMapObject.Text = Construction.NameLair();
             lblNameMapObject.Color = Construction.GetColorCaption();
 
-            btnHeroes.Visible = false;
-            btnHireHero.Visible = false;
-            lblRewardGold.Visible = false;
-            lblRewardGreatness.Visible = false;
-            lblIncome.Visible = false;
-            lblGreatness.Visible = false;
-            btnBuildOrUpgrade.Visible = false;
-
             if (!Construction.Hidden && (Construction.TypeConstruction.IsOurConstruction || Construction.TypeConstruction.Category == CategoryConstruction.External))
             {
+                lblRewardGold.Visible = false;
+                lblRewardGreatness.Visible = false;
+
                 int income = Construction.Level > 0 ? Construction.Income() : Construction.IncomeNextLevel();
                 if (income > 0)
                 {
@@ -255,6 +250,11 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
             {
+                lblIncome.Visible = false;
+                lblGreatness.Visible = false;
+                btnHeroes.Visible = false;
+                btnHireHero.Visible = false;
+
                 btnAction.Visible = Construction.Hidden || (Construction.TypeConstruction.Category == CategoryConstruction.Lair);
                 if (btnAction.Visible)
                 {
