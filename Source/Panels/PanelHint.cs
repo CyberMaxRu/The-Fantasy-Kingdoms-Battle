@@ -45,6 +45,8 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly VCLabelValue lblInterest;
         private readonly List<VCLabelValue> listLabelNeeds = new List<VCLabelValue>();
         internal readonly VCLabel lblSigner;
+        internal readonly VCSeparator lblSeparateTooltip;
+        internal readonly VCText lblTooltip;
         private readonly List<VCCellSimple> listCell = new List<VCCellSimple>();
         private readonly List<(VCCellSimple, VCLabel)> listPerks = new List<(VCCellSimple, VCLabel)>();
         internal readonly VCLabel lblDamageMelee;
@@ -143,6 +145,12 @@ namespace Fantasy_Kingdoms_Battle
             lblSigner = new VCLabel(this, FormMain.Config.GridSize, lblInterest.NextTop(), Program.formMain.fontSmallC, Color.SkyBlue, 16, "");
             lblSigner.StringFormat.Alignment = StringAlignment.Near;
             lblSigner.Width = widthControl;
+
+            lblSeparateTooltip = new VCSeparator(this, FormMain.Config.GridSize, lblSigner.NextTop());
+            lblSeparateTooltip.Width = widthControl;
+
+            lblTooltip = new VCText(this, FormMain.Config.GridSize, lblSeparateTooltip.NextTop(), Program.formMain.fontSmallC, Color.White, widthControl);
+
             /*            lblDamageMelee = new Label()
                         {
                             Parent = this,
@@ -265,6 +273,8 @@ namespace Fantasy_Kingdoms_Battle
                 ln.Visible = false;
 
             lblSigner.Visible = false;
+            lblSeparateTooltip.Visible = false;
+            lblTooltip.Visible = false;
 
             foreach (VCCellSimple cell in listCell)
                 cell.Visible = false;
@@ -854,6 +864,21 @@ namespace Fantasy_Kingdoms_Battle
                     }
                 }
             }
+        }
+
+        internal void AddStep21Tooltip(string text)
+        {
+            Debug.Assert(text.Length > 0);
+
+            lblSeparateTooltip.Visible = true;
+            lblSeparateTooltip.ShiftY = nextTop;
+
+            lblTooltip.ShiftY = lblSeparateTooltip.NextTop();
+            lblTooltip.Text = text;
+            lblTooltip.Height = lblTooltip.MinHeigth();
+            lblTooltip.Visible = true;
+
+            nextTop = lblTooltip.NextTop();
         }
 
         internal void DrawHint(VisualControl c)
