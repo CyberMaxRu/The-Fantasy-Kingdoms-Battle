@@ -650,12 +650,14 @@ namespace Fantasy_Kingdoms_Battle
                 pageControl = new VCPageControl(MainControl, 0, panelLairWithFlags.ShiftY);
                 pageControl.PageChanged += PageControl_PageChanged;
                 pageResultTurn = pageControl.AddPage(Config.Gui48_ResultDay, "Итоги хода", "Сводка", PageResultTurn_ShowHint);
+                pageHeroes = pageControl.AddPage(Config.Gui48_Heroes, "Герои", "Здесь можно посмотреть своих героев", PageHeroes_ShowHint);
+                pageTournament = pageControl.AddPage(Config.Gui48_Tournament, "Турнир", "Здесь можно увидеть положение всех игроков на турнире", PageTournament_ShowHint);
+                pageControl.Separate();
                 pageGuilds = pageControl.AddPage(Config.Gui48_Guilds, "Гильдии и военные сооружения", "В гильдиях нанимаются герои", PageGuilds_ShowHint);
                 pageEconomicConstructions = pageControl.AddPage(Config.Gui48_Economy, "Экономические строения", "Надежная экономика - залог победы", PageEconomicConstructions_ShowHint);
                 pageTemples = pageControl.AddPage(Config.Gui48_Temple, "Храмы", "Храмы позволяют нанимать самых сильных героев", PageTemples_ShowHint);
-                pageHeroes = pageControl.AddPage(Config.Gui48_Heroes, "Герои", "Здесь можно посмотреть своих героев", PageHeroes_ShowHint);
+                pageControl.Separate();
                 pageLairs = pageControl.AddPage(Config.Gui48_Map, "Окрестности", "В окрестностях замка водятся различные монстры", PageLairs_ShowHint);
-                pageTournament = pageControl.AddPage(Config.Gui48_Tournament, "Турнир", "Здесь можно увидеть положение всех игроков на турнире", PageTournament_ShowHint);
 
                 panelNeighborhood = new VisualControl(pageControl, 0, 0);
                 panelNeighborhood.Visible = false;

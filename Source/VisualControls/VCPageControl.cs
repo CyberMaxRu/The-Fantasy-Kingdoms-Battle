@@ -34,6 +34,11 @@ namespace Fantasy_Kingdoms_Battle
             return page;
         }
 
+        internal void Separate()
+        {
+            nextLeft += FormMain.Config.GridSize * 3;
+        }
+
         private void Page_Click(object sender, EventArgs e)
         {
             ActivatePage((VCPageButton)sender);
