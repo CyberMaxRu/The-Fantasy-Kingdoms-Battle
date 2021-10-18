@@ -3254,4 +3254,15 @@
       <Hero>Dwarf</Hero>
     </Heroes>
   </Item>
+  <Item>
+    <ID>ElfWine</ID>
+    <Name>Эльфийское вино</Name>
+    <Description>- Вино от эльфийских виноделов - строго для эльфов//- Увеличивает энтузиазм эльфов</Description>
+    <ImageIndex>261</ImageIndex>
+    <Cost>1500</Cost>
+    <CategoryItem>Thing</CategoryItem>
+    <Heroes>
+      <Hero>Elf</Hero>
+    </Heroes>
+  </Item>
 </Descriptors>
