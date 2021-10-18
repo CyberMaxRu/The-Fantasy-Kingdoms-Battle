@@ -131,10 +131,12 @@ namespace Fantasy_Kingdoms_Battle
 
     internal sealed class RequirementGoods : Requirement
     {
-        private DescriptorConstruction Construction;
         private string nameConstruction;
-        private DescriptorItem Goods;
         private string nameGoods;
+
+        private DescriptorConstruction construction;
+        private DescriptorItem goods;
+
         public RequirementGoods(DescriptorEntity forEntity, XmlNode n) : base(forEntity, n)
         {
             nameConstruction = XmlUtils.GetStringNotNull(n, "Construction");
@@ -144,36 +146,31 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(nameGoods.Length > 0);
         }
 
-        internal override bool CheckRequirement(Player p)
-        {
-            return p.FindConstruction(Construction.ID).GoodsAvailabled(Goods);
-        }
+        internal override bool CheckRequirement(Player p) => p.FindConstruction(construction.ID).GoodsAvailabled(goods);        
+        internal override TextRequirement GetTextRequirement(Player p) => new TextRequirement(CheckRequirement(p), $"{goods.Name} ({construction.Name})");
 
         internal override void TuneDeferredLinks()
         {
             base.TuneDeferredLinks();
 
-            Construction = Config.FindConstruction(nameConstruction);
-            Goods = Config.FindItem(nameGoods);
+            construction = Config.FindConstruction(nameConstruction);
+            goods = Config.FindItem(nameGoods);
             nameConstruction = "";
             nameGoods = "";
 
             bool founded = false;
-            foreach (DescriptorCellMenuForConstruction cm in Construction.ListResearches)
-                if (cm.NameEntity == Goods.ID)
+            foreach (DescriptorCellMenuForConstruction cm in construction.ListResearches)
+            {
+                if (cm.NameEntity == goods.ID)
                 {
-                    //Goods.UseForResearch.Add(null);
                     founded = true;
                     break;
                 }
+            }
 
-            Debug.Assert(founded, $"Товар {Goods.ID} не найден в {Construction.ID}.");
+            Debug.Assert(founded, $"Товар {goods.ID} не найден в {construction.ID}.");
+            //goods.UseForResearch.Add();
         }
-
-        internal override TextRequirement GetTextRequirement(Player p)
-        {
-           return new TextRequirement(CheckRequirement(p), $"{Goods.Name} ({Construction.Name})");
-        }            
     }
 
     internal sealed class RequirementExtension : Requirement
