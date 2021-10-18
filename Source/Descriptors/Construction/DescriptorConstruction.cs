@@ -104,9 +104,9 @@ namespace Fantasy_Kingdoms_Battle
                         number = GetIntegerNotNull(l, "Number");
                         Debug.Assert(number > 0);
                         Debug.Assert(Levels[number] == null);
-                        level = new DescriptorCellMenuForConstructionLevel(number, new Point(0, number - 1), l);
+                        level = new DescriptorCellMenuForConstructionLevel(this, number, new Point(0, number - 1), l);
                         if (number > 1)
-                            level.Requirements.Insert(0, new RequirementConstruction(ID, number - 1));
+                            level.Requirements.Insert(0, new RequirementConstruction(this, ID, number - 1));
 
                         /*switch (TypeIncome)
                         {
@@ -147,7 +147,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 foreach (XmlNode l in nr.SelectNodes("CellMenu"))
                 {
-                    research = new DescriptorCellMenuForConstruction(l);
+                    research = new DescriptorCellMenuForConstruction(this, l);
                     CheckFreeCellMenu(research.Coord);
 
                     foreach (DescriptorCellMenu tcm in ListResearches)

@@ -8,7 +8,7 @@ namespace Fantasy_Kingdoms_Battle
 {
     public sealed class XmlUtils
     {
-        internal static void LoadRequirements(List<Requirement> list, XmlNode n)
+        internal static void LoadRequirements(DescriptorEntity forEntity, List<Requirement> list, XmlNode n)
         {
             XmlNode nr = n.SelectSingleNode("Requirements");
 
@@ -19,15 +19,15 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     type = GetStringNotNull(r, "TypeRequirement");
                     if (type == "BuildedConstruction")
-                        list.Add(new RequirementConstruction(r));
+                        list.Add(new RequirementConstruction(forEntity, r));
                     else if (type == "DestroyedLairs")
-                        list.Add(new RequirementDestroyedLairs(r));
+                        list.Add(new RequirementDestroyedLairs(forEntity, r));
                     else if (type == "BuildedTypeConstruction")
-                        list.Add(new RequirementTypeConstruction(r));
+                        list.Add(new RequirementTypeConstruction(forEntity, r));
                     else if (type == "GoodsInConstruction")
-                        list.Add(new RequirementGoods(r));
+                        list.Add(new RequirementGoods(forEntity, r));
                     else if (type == "ExtensionInConstruction")
-                        list.Add(new RequirementExtension(r));
+                        list.Add(new RequirementExtension(forEntity, r));
                     else
                         throw new Exception($"Неизвестный тип условия: {type}.");
                 }

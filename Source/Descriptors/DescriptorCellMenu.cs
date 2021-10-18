@@ -16,11 +16,13 @@ namespace Fantasy_Kingdoms_Battle
     // Класс описателя ячейки меню
     internal abstract class DescriptorCellMenu : Descriptor
     {
-        public DescriptorCellMenu(XmlNode n) : base()
+        public DescriptorCellMenu(DescriptorEntity forEntity, XmlNode n) : base()
         {
+            ForEntity = forEntity;
+
             Coord = GetPoint(n, "Pos");
             Cost = GetInteger(n, "Cost");
-            LoadRequirements(Requirements, n);
+            LoadRequirements(ForEntity, Requirements, n);
 
             Debug.Assert(Coord.X >= 0);
             Debug.Assert(Coord.X <= Config.PlateWidth - 1);
@@ -28,11 +30,13 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Coord.Y <= Config.PlateHeight - 1);
         }
 
-        public DescriptorCellMenu(Point coord, XmlNode n) : base()
+        public DescriptorCellMenu(DescriptorEntity forEntity, Point coord, XmlNode n) : base()
         {
+            ForEntity = forEntity;
+
             Coord = coord;
             Cost = GetInteger(n, "Cost");
-            LoadRequirements(Requirements, n);
+            LoadRequirements(ForEntity, Requirements, n);
 
             Debug.Assert(Coord.X >= 0);
             Debug.Assert(Coord.X <= Config.PlateWidth - 1);
@@ -40,6 +44,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Coord.Y <= Config.PlateHeight - 1);
         }
 
+        internal DescriptorEntity ForEntity { get; }
         internal Point Coord { get; }// Координаты ячейки
         internal int Cost { get; }// Стоимость
         internal List<Requirement> Requirements { get; } = new List<Requirement>();// Список требований
@@ -57,8 +62,10 @@ namespace Fantasy_Kingdoms_Battle
 
     internal class DescriptorCellMenuForConstruction : DescriptorCellMenu
     {
-        public DescriptorCellMenuForConstruction(XmlNode n) : base(n)
+        public DescriptorCellMenuForConstruction(DescriptorConstruction forConstruction, XmlNode n) : base(forConstruction, n)
         {
+            ForConstruction = forConstruction;
+
             Type = (TypeCellMenuForConstruction)Enum.Parse(typeof(TypeCellMenuForConstruction), n.SelectSingleNode("Type").InnerText);
             NameEntity = GetStringNotNull(n, "Entity");
             Income = GetInteger(n, "Income");
@@ -69,19 +76,22 @@ namespace Fantasy_Kingdoms_Battle
             XmlNode next = n.SelectSingleNode("CellMenu");
             if (next != null)
             {
-                NextCell = new DescriptorCellMenuForConstruction(next);
+                NextCell = new DescriptorCellMenuForConstruction(ForConstruction, next);
                 Debug.Assert(Coord.Equals(NextCell.Coord), $"У {NameEntity} в ячейку {Coord} вложена ячейка {NextCell.Coord}.");
             }
         }
 
-        public DescriptorCellMenuForConstruction(Point coord, XmlNode n) : base(coord, n)
+        public DescriptorCellMenuForConstruction(DescriptorConstruction forConstruction, Point coord, XmlNode n) : base(forConstruction, coord, n)
         {
+            ForConstruction = forConstruction;
+
             Type = TypeCellMenuForConstruction.LevelUp;
             Income = GetInteger(n, "Income");
 
             Debug.Assert(Income >= 0);
         }
 
+        internal DescriptorConstruction ForConstruction { get; }
         internal TypeCellMenuForConstruction Type { get; }
         internal string NameEntity { get; set; }
         internal int Income { get; }// Прибавление дохода
@@ -106,7 +116,7 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class DescriptorCellMenuForConstructionLevel : DescriptorCellMenuForConstruction
     {
         private string nameVisit;
-        public DescriptorCellMenuForConstructionLevel(int number, Point coord, XmlNode n) : base(coord, n)
+        public DescriptorCellMenuForConstructionLevel(DescriptorConstruction forConstruction, int number, Point coord, XmlNode n) : base(forConstruction, coord, n)
         {
             Number = number;
             Builders = GetIntegerNotNull(n, "Builders");

@@ -11,14 +11,17 @@ namespace Fantasy_Kingdoms_Battle
     // Класс требования
     internal abstract class Requirement : Descriptor
     {
-        public Requirement(XmlNode n) : base()
+        public Requirement(DescriptorEntity forEntity, XmlNode n) : base()
         {
+            ForEntity = forEntity;
         }
 
-        public Requirement() : base()
+        public Requirement(DescriptorEntity forEntity) : base()
         {
+            ForEntity = forEntity;
         }
 
+        internal DescriptorEntity ForEntity { get; }
         internal abstract bool CheckRequirement(Player p);
         internal abstract TextRequirement GetTextRequirement(Player p);
     }
@@ -29,7 +32,7 @@ namespace Fantasy_Kingdoms_Battle
         private string nameConstruction;
         private int level;
 
-        public RequirementConstruction(XmlNode n) : base(n)
+        public RequirementConstruction(DescriptorEntity forEntity, XmlNode n) : base(forEntity, n)
         {
             nameConstruction = XmlUtils.GetStringNotNull(n, "Construction");
             level = XmlUtils.GetInteger(n, "Level");
@@ -38,7 +41,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(level >= 0);
         }
 
-        public RequirementConstruction(string name, int requiredLevel) : base()
+        public RequirementConstruction(DescriptorEntity forEntity, string name, int requiredLevel) : base(forEntity)
         {
             nameConstruction = name;
             level = requiredLevel;
@@ -68,7 +71,7 @@ namespace Fantasy_Kingdoms_Battle
         private string nameConstruction;
         private int destroyed;
 
-        public RequirementDestroyedLairs(XmlNode n) : base(n)
+        public RequirementDestroyedLairs(DescriptorEntity forEntity, XmlNode n) : base(forEntity, n)
         {
             nameConstruction = XmlUtils.GetStringNotNull(n, "Construction");
             destroyed = XmlUtils.GetInteger(n, "Destroyed");
@@ -101,7 +104,7 @@ namespace Fantasy_Kingdoms_Battle
         private string nameTypeConstruction;
         private int quantity;
 
-        public RequirementTypeConstruction(XmlNode n) : base(n)
+        public RequirementTypeConstruction(DescriptorEntity forEntity, XmlNode n) : base(forEntity, n)
         {
             nameTypeConstruction = XmlUtils.GetStringNotNull(n, "TypeConstruction");
             quantity = XmlUtils.GetInteger(n, "Quantity");
@@ -132,7 +135,7 @@ namespace Fantasy_Kingdoms_Battle
         private string nameConstruction;
         private DescriptorItem Goods;
         private string nameGoods;
-        public RequirementGoods(XmlNode n) : base(n)
+        public RequirementGoods(DescriptorEntity forEntity, XmlNode n) : base(forEntity, n)
         {
             nameConstruction = XmlUtils.GetStringNotNull(n, "Construction");
             nameGoods = XmlUtils.GetStringNotNull(n, "Goods");
@@ -154,6 +157,12 @@ namespace Fantasy_Kingdoms_Battle
             Goods = Config.FindItem(nameGoods);
             nameConstruction = "";
             nameGoods = "";
+
+            foreach (DescriptorConstruction dc in Config.Constructions)
+                foreach (DescriptorCellMenuForConstruction dcm in dc.ListResearches)
+                {
+
+                }
 
             bool founded = false;
             foreach (DescriptorCellMenuForConstruction cm in Construction.ListResearches)
@@ -180,7 +189,7 @@ namespace Fantasy_Kingdoms_Battle
         private DescriptorConstructionExtension Extension;
         private string nameExtension;
 
-        public RequirementExtension(XmlNode n) : base(n)
+        public RequirementExtension(DescriptorEntity forEntity, XmlNode n) : base(forEntity, n)
         {
             nameConstruction = XmlUtils.GetStringNotNull(n, "Construction");
             nameExtension = XmlUtils.GetStringNotNull(n, "Extension");
