@@ -44,7 +44,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal bool AvailableForAllHeroes { get; }// Сущность доступна всем существам
         internal List<DescriptorCreature> AvailableForHeroes { get; } = new List<DescriptorCreature>();
-        internal List<DescriptorSmallEntity> UseForResearch { get; } = new List<DescriptorSmallEntity>();
+        internal List<DescriptorCellMenu> UseForResearch { get; } = new List<DescriptorCellMenu>();
 
         protected override int ShiftImageIndex() => Config.ImageIndexFirstItems;
         protected virtual bool ForHeroes() => true;

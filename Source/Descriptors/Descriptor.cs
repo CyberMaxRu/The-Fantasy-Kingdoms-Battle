@@ -8,10 +8,15 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal abstract class Descriptor
     {
+        internal static Config Config { get; set; }
+
         internal virtual void TuneDeferredLinks()
-        { 
+        {
         }
 
-        internal static Config Config { get; set; }
+        internal virtual void AfterTune()
+        {
+
+        }
     }
 }

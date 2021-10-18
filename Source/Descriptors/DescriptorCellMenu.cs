@@ -22,7 +22,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Coord = GetPoint(n, "Pos");
             Cost = GetInteger(n, "Cost");
-            LoadRequirements(ForEntity, Requirements, n);
+            LoadRequirements(this, Requirements, n);
 
             Debug.Assert(Coord.X >= 0);
             Debug.Assert(Coord.X <= Config.PlateWidth - 1);
@@ -36,7 +36,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Coord = coord;
             Cost = GetInteger(n, "Cost");
-            LoadRequirements(ForEntity, Requirements, n);
+            LoadRequirements(this, Requirements, n);
 
             Debug.Assert(Coord.X >= 0);
             Debug.Assert(Coord.X <= Config.PlateWidth - 1);
@@ -94,8 +94,33 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorConstruction ForConstruction { get; }
         internal TypeCellMenuForConstruction Type { get; }
         internal string NameEntity { get; set; }
+        internal DescriptorEntity Entity { get; private set; }
         internal int Income { get; }// Прибавление дохода
         internal DescriptorCellMenu NextCell { get; }
+
+        internal override void TuneDeferredLinks()
+        {
+            base.TuneDeferredLinks();
+
+            if (NameEntity != null)
+            {
+                Entity = FormMain.Config.FindAbility(NameEntity, false);
+                if (Entity is null)
+                    Entity = FormMain.Config.FindItem(NameEntity, false);
+                if (Entity is null)
+                    Entity = FormMain.Config.FindGroupItem(NameEntity, false);
+                if (Entity is null)
+                    Entity = FormMain.Config.FindConstructionExtension(NameEntity, false);
+                if (Entity is null)
+                    Entity = FormMain.Config.FindConstructionEvent(NameEntity, false);
+                if (Entity is null)
+                    Entity = FormMain.Config.FindCreature(NameEntity, false);
+                if (Entity is null)
+                    Entity = FormMain.Config.FindConstruction(NameEntity, false);
+
+                Debug.Assert(Entity != null);
+            }
+        }
     }
 
     internal sealed class DescriptorCellMenuForConstructionLevel : DescriptorCellMenuForConstruction

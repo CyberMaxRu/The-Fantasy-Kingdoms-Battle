@@ -160,6 +160,23 @@ namespace Fantasy_Kingdoms_Battle
             ListNeeds.TuneDeferredLinks();
         }
 
+        internal override void AfterTune()
+        {
+            base.AfterTune();
+
+            if (UseForResearch.Count > 0)
+            {
+                Description += Environment.NewLine + "- Необходимо для:";
+
+                foreach (DescriptorCellMenu cm in UseForResearch)
+                {
+                    if (cm is DescriptorCellMenuForConstruction cmc)
+                        if (cmc.Entity != null)
+                            Description += Environment.NewLine + "    - {" + cmc.Entity.Name + "} в {" + cm.ForEntity.Name + "}";
+                }
+            }
+        }
+
         protected override bool ForHeroes() => CategoryItem != CategoryItem.Monster;
     }
 }

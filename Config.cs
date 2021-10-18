@@ -317,6 +317,9 @@ namespace Fantasy_Kingdoms_Battle
 
             LoadTextures(pathResources);
 
+            foreach (DescriptorItem i in Items)
+                i.AfterTune();
+
             // Вспомогательные методы
             XmlDocument CreateXmlDocument(string pathToXml)
             {
@@ -498,7 +501,7 @@ namespace Fantasy_Kingdoms_Battle
             throw new Exception($"Посещение {ID} не найдено.");
         }
 
-        internal DescriptorConstructionEvent FindConstructionEvent(string ID)
+        internal DescriptorConstructionEvent FindConstructionEvent(string ID, bool mustBeExists = true)
         {
             foreach (DescriptorConstructionEvent dce in ConstructionsEvents)
             {
@@ -506,10 +509,13 @@ namespace Fantasy_Kingdoms_Battle
                     return dce;
             }
 
-            throw new Exception("Событие сооружения " + ID + " не найдено.");
+            if (mustBeExists)
+                throw new Exception("Событие сооружения " + ID + " не найдено.");
+
+            return null;
         }
 
-        internal DescriptorConstructionExtension FindConstructionExtension(string ID)
+        internal DescriptorConstructionExtension FindConstructionExtension(string ID, bool mustBeExists = true)
         {
             foreach (DescriptorConstructionExtension dce in ConstructionsExtensions)
             {
@@ -517,7 +523,10 @@ namespace Fantasy_Kingdoms_Battle
                     return dce;
             }
 
-            throw new Exception("Расширение сооружения " + ID + " не найдено.");
+            if (mustBeExists)
+                throw new Exception("Расширение сооружения " + ID + " не найдено.");
+
+            return null;
         }
 
         internal DescriptorConstruction FindConstruction(string ID, bool mustBeExists = true)
