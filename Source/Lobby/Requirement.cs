@@ -158,17 +158,11 @@ namespace Fantasy_Kingdoms_Battle
             nameConstruction = "";
             nameGoods = "";
 
-            foreach (DescriptorConstruction dc in Config.Constructions)
-                foreach (DescriptorCellMenuForConstruction dcm in dc.ListResearches)
-                {
-
-                }
-
             bool founded = false;
             foreach (DescriptorCellMenuForConstruction cm in Construction.ListResearches)
                 if (cm.NameEntity == Goods.ID)
                 {
-                    cm.UseForResearches.Add(Goods);
+                    //Goods.UseForResearch.Add(null);
                     founded = true;
                     break;
                 }

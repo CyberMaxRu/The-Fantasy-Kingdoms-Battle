@@ -96,21 +96,6 @@ namespace Fantasy_Kingdoms_Battle
         internal string NameEntity { get; set; }
         internal int Income { get; }// Прибавление дохода
         internal DescriptorCellMenu NextCell { get; }
-        internal List<DescriptorItem> UseForResearches { get; } = new List<DescriptorItem>();
-
-        internal override void TuneDeferredLinks()
-        {
-            base.TuneDeferredLinks();
-
-            if (UseForResearches.Count > 0)
-            {
-                //description
-                foreach (DescriptorItem di in UseForResearches)
-                {
-
-                }
-            }
-        }
     }
 
     internal sealed class DescriptorCellMenuForConstructionLevel : DescriptorCellMenuForConstruction
