@@ -320,6 +320,9 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorItem i in Items)
                 i.AfterTune();
 
+            foreach (DescriptorConstructionExtension ce in ConstructionsExtensions)
+                ce.AfterTune();
+
             // Вспомогательные методы
             XmlDocument CreateXmlDocument(string pathToXml)
             {

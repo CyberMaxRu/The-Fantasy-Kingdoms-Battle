@@ -5,6 +5,7 @@
     <Name>Мощение</Name>
     <Description>Мощение плиткой увеличит популярность {Площади}</Description>
     <ImageIndex>247</ImageIndex>
+    <Construction>TownSquare</Construction>
     <Interest>5</Interest>
     <Needs>
       <Rest>10</Rest>
@@ -16,6 +17,7 @@
     <Name>Фонтан</Name>
     <Description>Фонтан увеличит популярность {Площади}</Description>
     <ImageIndex>213</ImageIndex>
+    <Construction>TownSquare</Construction>
     <Interest>10</Interest>
     <Needs>
       <Rest>10</Rest>
@@ -27,6 +29,7 @@
     <Name>Статуя Короля</Name>
     <Description>Статуя Короля обозначит Королевский статус {Площади}</Description>
     <ImageIndex>231</ImageIndex>
+    <Construction>TownSquare</Construction>
     <Interest>15</Interest>
     <Needs>
       <Rest>15</Rest>
@@ -39,6 +42,7 @@
     <Description>Беседки увеличат популярность {Парка}</Description>
     <ImageIndex>215</ImageIndex>
     <Cost>500</Cost>
+    <Construction>Park</Construction>
     <Interest>5</Interest>
     <AvailableForAll>true</AvailableForAll>
     <Needs>
@@ -50,6 +54,7 @@
     <Name>Водопад</Name>
     <Description>Водопад увеличит популярность {Парка}</Description>
     <ImageIndex>246</ImageIndex>
+    <Construction>Park</Construction>
     <Interest>5</Interest>
     <AvailableForAll>true</AvailableForAll>
     <Needs>
@@ -62,6 +67,7 @@
     <Name>Аллея</Name>
     <Description>Аллея увеличит популярность {Парка}</Description>
     <ImageIndex>214</ImageIndex>
+    <Construction>Park</Construction>
     <Interest>20</Interest>
     <AvailableForAll>true</AvailableForAll>
     <Needs>
@@ -74,6 +80,7 @@
     <Name>Лабиринт</Name>
     <Description>Лабиринт увеличит популярность {Парка} и отдых героев</Description>
     <ImageIndex>255</ImageIndex>
+    <Construction>Park</Construction>
     <Interest>20</Interest>
     <AvailableForAll>true</AvailableForAll>
     <Needs>
@@ -86,6 +93,7 @@
     <Name>Пруд</Name>
     <Description>Пруд увеличит популярность {Парка} и отдых героев</Description>
     <ImageIndex>256</ImageIndex>
+    <Construction>Park</Construction>
     <Interest>20</Interest>
     <AvailableForAll>true</AvailableForAll>
     <Needs>
@@ -98,6 +106,7 @@
     <Name>Кузница гномов</Name>
     <Description>Пристроить гномью кузницу. Позволяет гномам создавать именные предметы.</Description>
     <ImageIndex>226</ImageIndex>
+    <Construction>GuildDwarf</Construction>
     <AvailableForAll>true</AvailableForAll>
   </Extension>
   <Extension>
@@ -105,6 +114,7 @@
     <Name>Библиотека</Name>
     <Description>Пристроить библиотеку. Повышает ум и знания героев.</Description>
     <ImageIndex>254</ImageIndex>
+    <Construction>GuildMage</Construction>
     <AvailableForAll>true</AvailableForAll>
   </Extension>
   <Extension>
@@ -112,6 +122,7 @@
     <Name>Цветники</Name>
     <Description>Цветники увеличит популярность {Сада}</Description>
     <ImageIndex>257</ImageIndex>
+    <Construction>Garden</Construction>
     <Interest>20</Interest>
     <AvailableForAll>true</AvailableForAll>
     <Needs>
@@ -124,6 +135,7 @@
     <Name>Фруктовые деревья</Name>
     <Description>Увеличат популярность {Сада}</Description>
     <ImageIndex>258</ImageIndex>
+    <Construction>Garden</Construction>
     <Interest>20</Interest>
     <AvailableForAll>true</AvailableForAll>
     <Needs>
@@ -136,6 +148,7 @@
     <Name>Оранжерея</Name>
     <Description>Увеличит популярность {Сада}</Description>
     <ImageIndex>259</ImageIndex>
+    <Construction>Garden</Construction>
     <Interest>20</Interest>
     <AvailableForAll>true</AvailableForAll>
     <Needs>
@@ -148,6 +161,7 @@
     <Name>Трон</Name>
     <Description>Трон покажет величие Короля</Description>
     <ImageIndex>260</ImageIndex>
+    <Construction>Castle</Construction>
     <AvailableForAll>true</AvailableForAll>
   </Extension>
 </Descriptors>

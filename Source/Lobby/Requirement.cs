@@ -218,6 +218,8 @@ namespace Fantasy_Kingdoms_Battle
             if (ForCellMenu is DescriptorCellMenuForConstruction cmc)
                 Debug.Assert(Extension.ID != cmc.NameEntity, $"Расширение {Extension.ID} требует само себя.");
             Debug.Assert(founded, $"Расширение {Extension.ID} не найдено в {Construction.ID}.");
+
+            Extension.UseForResearch.Add(ForCellMenu);
         }
 
         internal override TextRequirement GetTextRequirement(Player p)

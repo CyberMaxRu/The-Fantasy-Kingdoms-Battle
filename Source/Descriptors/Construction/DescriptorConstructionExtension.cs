@@ -11,12 +11,15 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class DescriptorConstructionExtension : DescriptorSmallEntity
     {
+        string nameConstruction;
+
         public DescriptorConstructionExtension(XmlNode n) : base(n)
         {
             Debug.Assert(Interest >= 0);
             Debug.Assert(Interest <= 100);
-            Interest = GetInteger(n, "Interest");
 
+            nameConstruction = GetStringNotNull(n, "Construction");
+            Interest = GetInteger(n, "Interest");
             ListNeeds = new ListNeeds(n.SelectSingleNode("Needs"));
 
             foreach (DescriptorConstructionVisit cv in Config.ConstructionsVisits)
@@ -28,6 +31,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        internal DescriptorConstruction Construction { get; private set; }
         internal int Interest { get; }// Интерес для посещения сооружения
         internal ListNeeds ListNeeds { get; }// Изменение удовлетворения потребностей героев
 
@@ -35,8 +39,28 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.TuneDeferredLinks();
 
+            Construction = Config.FindConstruction(nameConstruction);
+
             ListNeeds.TuneDeferredLinks();
             //Debug.Assert(ListNeeds.Count > 0);
+        }
+
+        internal override void AfterTune()
+        {
+            base.AfterTune();
+
+            if (UseForResearch.Count > 0)
+            {
+                Description += Environment.NewLine + "- Необходимо для:";
+
+                foreach (DescriptorCellMenu cm in UseForResearch)
+                {
+                    if (cm is DescriptorCellMenuForConstructionLevel cmcl)
+                        Description += Environment.NewLine + "    - { " + cmcl.ForEntity.Name + " (" + cmcl.Number.ToString() + " ур.)}";
+                    else if (cm is DescriptorCellMenuForConstruction cmc)
+                        Description += Environment.NewLine + "    - {" + cmc.Entity.Name + "}" + (cmc.ForEntity.ID != Construction.ID ? " ({" + cm.ForEntity.Name + "})" : "");
+                }
+            }
         }
     }
 }
