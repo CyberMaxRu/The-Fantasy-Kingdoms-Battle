@@ -1314,6 +1314,11 @@ namespace Fantasy_Kingdoms_Battle
                 h.PerksChanged();
             }
         }
+
+        internal void AddFreeBuilder()
+        {
+            FreeBuilders++;
+        }
     }
 
     internal sealed class UnitOfQueueForBuy

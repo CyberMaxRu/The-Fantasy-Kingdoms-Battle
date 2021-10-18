@@ -58,7 +58,7 @@ namespace Fantasy_Kingdoms_Battle
         }
     }
 
-    internal enum TypeCellMenuForConstruction { Research, Event, HireCreature, Build, LevelUp, Action, Extension, Tournament };
+    internal enum TypeCellMenuForConstruction { Research, Event, HireCreature, Build, LevelUp, Action, Extension, Tournament, Extra };
 
     internal class DescriptorCellMenuForConstruction : DescriptorCellMenu
     {
@@ -68,10 +68,12 @@ namespace Fantasy_Kingdoms_Battle
 
             Type = (TypeCellMenuForConstruction)Enum.Parse(typeof(TypeCellMenuForConstruction), n.SelectSingleNode("Type").InnerText);
             NameEntity = GetStringNotNull(n, "Entity");
+            Cooldown = GetInteger(n, "Cooldown");
             Income = GetInteger(n, "Income");
 
             Debug.Assert(NameEntity.Length > 0);
             Debug.Assert(Income >= 0);
+            Debug.Assert(Cooldown >= 0);
 
             XmlNode next = n.SelectSingleNode("CellMenu");
             if (next != null)
@@ -96,13 +98,14 @@ namespace Fantasy_Kingdoms_Battle
         internal string NameEntity { get; set; }
         internal DescriptorEntity Entity { get; private set; }
         internal int Income { get; }// Прибавление дохода
+        internal int Cooldown { get; }
         internal DescriptorCellMenu NextCell { get; }
 
         internal override void TuneDeferredLinks()
         {
             base.TuneDeferredLinks();
 
-            if (NameEntity != null)
+            if ((NameEntity != null) && (Type != TypeCellMenuForConstruction.Extra))
             {
                 Entity = FormMain.Config.FindAbility(NameEntity, false);
                 if (Entity is null)

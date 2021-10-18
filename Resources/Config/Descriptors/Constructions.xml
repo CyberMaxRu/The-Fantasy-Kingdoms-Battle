@@ -929,6 +929,13 @@
     </Levels>
     <CellsMenu>
       <CellMenu>
+        <Pos>2,1</Pos>
+        <Type>Extra</Type>
+        <Entity>Builder</Entity>
+        <Cooldown>2</Cooldown>
+        <Cost>2500</Cost>
+      </CellMenu>
+      <CellMenu>
         <Pos>2,3</Pos>
         <Type>Extension</Type>
         <Entity>Throne</Entity>

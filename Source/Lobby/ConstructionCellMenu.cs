@@ -86,6 +86,8 @@ namespace Fantasy_Kingdoms_Battle
                     return new CellMenuConstructionExtension(c, d);
                 case TypeCellMenuForConstruction.Tournament:
                     return new CellMenuConstructionTournament(c, d);
+                case TypeCellMenuForConstruction.Extra:
+                    return new CellMenuConstructionExtra(c, d);
                 //case TypeCellMenuForConstruction.Action:
                 //    break;
                 default:
@@ -514,6 +516,73 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep6Income(Descriptor.Income);
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirements());
             Program.formMain.formHint.AddStep12Gold(GetCost(), GetCost() <= Construction.Player.Gold);
+        }
+    }
+
+    internal sealed class CellMenuConstructionExtra : ConstructionCellMenu
+    {
+        public CellMenuConstructionExtra(Construction c, DescriptorCellMenuForConstruction d) : base(c, d)
+        {
+            
+        }
+
+        internal int Counter { get; set; }
+
+        internal override bool CheckRequirements()
+        {
+            return (Counter == 0) && base.CheckRequirements();
+        }
+
+        internal override List<TextRequirement> GetTextRequirements()
+        {
+            List<TextRequirement> list = base.GetTextRequirements();
+            list.Add(new TextRequirement(Counter == 0, Counter == 0 ? "Покупка доступна" : "Дней до новой покупки: " + Counter.ToString()));
+            return list;
+        }
+
+        internal override void Execute()
+        {
+            Debug.Assert(CheckRequirements());
+
+            Construction.Player.SpendGold(GetCost());
+            Construction.Player.AddFreeBuilder();
+
+            Counter = Descriptor.Cooldown;
+
+            Program.formMain.SetNeedRedrawFrame();
+        }
+
+        internal override int GetCost()
+        {
+            return Descriptor.Cost;
+        }
+
+        internal override string GetText()
+        {
+            return Counter == 0 ? GetCost().ToString() : Counter.ToString() + " д.";
+        }
+
+        internal override string GetLevel() => "+1";
+
+        internal override int GetImageIndex()
+        {
+            return Config.Gui48_Build;
+        }
+
+        internal override void PrepareHint()
+        {
+            Program.formMain.formHint.AddStep2Header("+1 Строитель");
+            Program.formMain.formHint.AddStep5Description("Добавляет 1 строителя на текущий ход" + Environment.NewLine + "Пауза: " + Descriptor.Cooldown.ToString() + " дн.");
+            Program.formMain.formHint.AddStep11Requirement(GetTextRequirements());
+            Program.formMain.formHint.AddStep12Gold(GetCost(), GetCost() <= Construction.Player.Gold);
+        }
+
+        internal override void PrepareTurn()
+        {
+            base.PrepareTurn();
+
+            if (Counter > 0)
+                Counter--;
         }
     }
 }
