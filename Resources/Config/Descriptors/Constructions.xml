@@ -1959,7 +1959,7 @@
           <Requirement>
             <TypeRequirement>ExtensionInConstruction</TypeRequirement>
             <Construction>Park</Construction>
-            <Extension>Pond</Extension>
+            <Extension>Waterfall</Extension>
           </Requirement>
         </Requirements>
       </CellMenu>
