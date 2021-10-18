@@ -168,7 +168,10 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
+            if (ForCellMenu is DescriptorCellMenuForConstruction cmc)
+                Debug.Assert(goods.ID != cmc.NameEntity, $"Товар {goods.ID} требует сам себя.");
             Debug.Assert(founded, $"Товар {goods.ID} не найден в {construction.ID}.");
+
             goods.UseForResearch.Add(ForCellMenu);
         }
     }
@@ -212,6 +215,8 @@ namespace Fantasy_Kingdoms_Battle
                     break;
                 }
 
+            if (ForCellMenu is DescriptorCellMenuForConstruction cmc)
+                Debug.Assert(Extension.ID != cmc.NameEntity, $"Расширение {Extension.ID} требует само себя.");
             Debug.Assert(founded, $"Расширение {Extension.ID} не найдено в {Construction.ID}.");
         }
 
