@@ -159,7 +159,10 @@ namespace Fantasy_Kingdoms_Battle
 
             Debug.Assert(Construction.ResearchesAvailabled > 0);
 
-            Construction.ResearchesAvailabled--;
+            if (Construction.ResearchesAvailabled > 0)
+                Construction.ResearchesAvailabled--;
+            else
+                Construction.Player.UseExtraResearch();
 
             if (Entity is DescriptorItem di)
                 Construction.AddProduct(new ConstructionProduct(di));
@@ -519,14 +522,17 @@ namespace Fantasy_Kingdoms_Battle
         }
     }
 
+    internal enum TypeExtra { Builder, LevelUp, Research };
+
     internal sealed class CellMenuConstructionExtra : ConstructionCellMenu
     {
         public CellMenuConstructionExtra(Construction c, DescriptorCellMenuForConstruction d) : base(c, d)
         {
-            
+            TypeExtra = (TypeExtra)Enum.Parse(typeof(TypeExtra), d.NameEntity);
         }
 
         internal int Counter { get; set; }
+        internal TypeExtra TypeExtra { get; }
 
         internal override bool CheckRequirements()
         {
@@ -545,7 +551,21 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(CheckRequirements());
 
             Construction.Player.SpendGold(GetCost());
-            Construction.Player.AddFreeBuilder();
+
+            switch (TypeExtra)
+            {
+                case TypeExtra.Builder:
+                    Construction.Player.AddFreeBuilder();
+                    break;
+                case TypeExtra.LevelUp:
+                    Construction.Player.AddExtraLevelUp();
+                    break;
+                case TypeExtra.Research:
+                    Construction.Player.AddExtraResearch();
+                    break;
+                default:
+                    throw new Exception($"Неизвестный тип бонуса: {TypeExtra}.");
+            }
 
             Counter = Descriptor.Cooldown;
 
@@ -566,13 +586,39 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override int GetImageIndex()
         {
-            return Config.Gui48_Build;
+            switch (TypeExtra)
+            {
+                case TypeExtra.Builder:
+                    return Config.Gui48_Build;
+                case TypeExtra.LevelUp:
+                    return Config.Gui48_LevelUp;
+                case TypeExtra.Research:
+                    return Config.Gui48_Goods;
+                default:
+                    throw new Exception($"Неизвестный тип бонуса: {TypeExtra}.");
+            }
         }
 
         internal override void PrepareHint()
         {
-            Program.formMain.formHint.AddStep2Header("+1 Строитель");
-            Program.formMain.formHint.AddStep5Description("Добавляет 1 строителя на текущий ход" + Environment.NewLine + "Пауза: " + Descriptor.Cooldown.ToString() + " дн.");
+            switch (TypeExtra)
+            {
+                case TypeExtra.Builder:
+                    Program.formMain.formHint.AddStep2Header("+1 Строитель");
+                    Program.formMain.formHint.AddStep5Description("Добавляет 1 строителя на текущий ход" + Environment.NewLine + "Пауза: " + Descriptor.Cooldown.ToString() + " дн.");
+                    break;
+                case TypeExtra.LevelUp:
+                    Program.formMain.formHint.AddStep2Header("+1 улучшение сооружение");
+                    Program.formMain.formHint.AddStep5Description("Добавляет 1 внеплановое улучшение на текущий ход" + Environment.NewLine + "Пауза: " + Descriptor.Cooldown.ToString() + " дн.");
+                    break;
+                case TypeExtra.Research:
+                    Program.formMain.formHint.AddStep2Header("+1 исследование");
+                    Program.formMain.formHint.AddStep5Description("Добавляет 1 внеплановое исследование на текущий ход" + Environment.NewLine + "Пауза: " + Descriptor.Cooldown.ToString() + " дн.");
+                    break;
+                default:
+                    throw new Exception($"Неизвестный тип бонуса: {TypeExtra}.");
+            }
+
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirements());
             Program.formMain.formHint.AddStep12Gold(GetCost(), GetCost() <= Construction.Player.Gold);
         }

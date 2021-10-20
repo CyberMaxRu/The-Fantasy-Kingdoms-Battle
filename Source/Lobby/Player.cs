@@ -478,6 +478,9 @@ namespace Fantasy_Kingdoms_Battle
         internal int BuildersAtNextDay { get; private set; }
         internal List<StartBonus> VariantsStartBonuses { get; }// Варианты стартовых бонусов
 
+        internal int ExtraLevelUp { get; private set; }
+        internal int ExtraResearch { get; private set; }
+
         internal int QuantityHeroes { get; private set; }
 
         internal Item[] Warehouse = new Item[FormMain.Config.WarehouseMaxCells];// Предметы на складе игрока
@@ -1318,6 +1321,34 @@ namespace Fantasy_Kingdoms_Battle
         internal void AddFreeBuilder()
         {
             FreeBuilders++;
+        }
+
+        internal void AddExtraLevelUp()
+        {
+            Debug.Assert(ExtraLevelUp >= 0);
+
+            ExtraLevelUp++;
+        }
+
+        internal void UseExtraLevelUp()
+        {
+            Debug.Assert(ExtraLevelUp > 0);
+
+            ExtraLevelUp--;
+        }
+
+        internal void AddExtraResearch()
+        {
+            Debug.Assert(ExtraResearch >= 0);
+
+            ExtraResearch++;
+        }
+
+        internal void UseExtraResearch()
+        {
+            Debug.Assert(ExtraResearch > 0);
+
+            ExtraResearch--;
         }
     }
 

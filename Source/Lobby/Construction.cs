@@ -132,7 +132,12 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             if (!Player.Initialization)
-                BuildedOrUpgraded = true;
+            {
+                if (!BuildedOrUpgraded)
+                    BuildedOrUpgraded = true;
+                else
+                    Player.UseExtraLevelUp();
+            }
 
             // Убираем операцию постройки из меню
             ConstructionCellMenu cmBuild = null;
@@ -263,7 +268,7 @@ namespace Fantasy_Kingdoms_Battle
                 return false;
 
             // Проверяем, что на этом ходу сооружение не строили/улучшали
-            if (BuildedOrUpgraded)
+            if (BuildedOrUpgraded && (Player.ExtraLevelUp == 0))
                 return false;
 
             // Проверяем, что нет события или турнира
@@ -566,7 +571,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal bool CanResearch()
         {
-            return ResearchesAvailabled > 0;
+            return (ResearchesAvailabled > 0) || (Player.ExtraResearch > 0);
         }
 
         internal List<TextRequirement> GetResearchTextRequirements(ConstructionCellMenu research)
