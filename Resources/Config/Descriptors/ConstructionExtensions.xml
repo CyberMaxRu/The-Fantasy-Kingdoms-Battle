@@ -164,4 +164,12 @@
     <Construction>Castle</Construction>
     <AvailableForAll>true</AvailableForAll>
   </Extension>
+  <Extension>
+    <ID>FieldOfWheat</ID>
+    <Name>Поле с пшеницей</Name>
+    <Description>На поле растет пшеница - основной источник еды в Ардании.</Description>
+    <ImageIndex>262</ImageIndex>
+    <Construction>PeasantHouse</Construction>
+    <AvailableForAll>true</AvailableForAll>
+  </Extension>
 </Descriptors>

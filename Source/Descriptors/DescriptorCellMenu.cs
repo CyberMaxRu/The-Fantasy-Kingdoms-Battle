@@ -140,6 +140,8 @@ namespace Fantasy_Kingdoms_Battle
             BuildersPerDay = GetInteger(n, "BuildersPerDay");
             nameVisit = GetString(n, "Visit");
 
+            Extensions = new ListSmallEntity(n.SelectSingleNode("Entities"));
+
             // Загружаем перки, которые дает сооружение
             ListPerks = new ListDescriptorPerks(n.SelectSingleNode("Perks"));
 
@@ -161,6 +163,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int GreatnessByConstruction { get; }// Дает очков Величия при постройке
         internal int GreatnessPerDay { get; }// Дает очков Величия в день
         internal int BuildersPerDay { get; }// Дает строителей в день
+        internal ListSmallEntity Extensions { get; }// Сущности, относящиеся к уровню
         internal DescriptorConstructionVisit DescriptorVisit { get; private set; }// Товар для посещения сооружения
         internal ListDescriptorPerks ListPerks { get; }// Перки, которые дает уровень сооружения
 
@@ -171,6 +174,7 @@ namespace Fantasy_Kingdoms_Battle
             if (nameVisit.Length > 0)
                 DescriptorVisit = Config.FindConstructionVisit(nameVisit);
 
+            Extensions.TuneDeferredLinks();
             ListPerks.TuneDeferredLinks();
         }
     }

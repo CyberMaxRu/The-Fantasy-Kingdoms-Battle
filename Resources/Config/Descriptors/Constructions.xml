@@ -1002,6 +1002,10 @@
             <Level>1</Level>
           </Requirement>
         </Requirements>
+        <Entities>
+          <Entity>Wheat</Entity>
+          <Entity>FieldOfWheat</Entity>
+        </Entities>
       </Level>
     </Levels>
   </Construction>

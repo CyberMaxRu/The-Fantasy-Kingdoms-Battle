@@ -26,7 +26,10 @@ namespace Fantasy_Kingdoms_Battle
 
             Level = b.DefaultLevel;
             if (Level > 0)
+            {
                 AddPerksToPlayer();
+                CreateProducts();
+            }
 
             // Убрать эту проверку после настройки всех логов
             if (TypeConstruction.Monsters.Count > 0)
@@ -131,6 +134,10 @@ namespace Fantasy_Kingdoms_Battle
                 PrepareTurn();
             }
 
+
+            //
+            CreateProducts();
+
             if (!Player.Initialization)
             {
                 if (!BuildedOrUpgraded)
@@ -175,6 +182,19 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     SatisfactionNeeds[need.Item1.Index] = need.Item2;
                 }
+            }
+        }
+
+        private void CreateProducts()
+        {
+            foreach (DescriptorSmallEntity se in TypeConstruction.Levels[Level].Extensions)
+            {
+                if (se is DescriptorConstructionExtension dce)
+                    AddProduct(new ConstructionProduct(dce));
+                else if (se is DescriptorItem di)
+                    AddProduct(new ConstructionProduct(di));
+                else
+                    throw new Exception($"Неизвестный товар: {se.ID}");
             }
         }
 
