@@ -157,7 +157,7 @@ namespace Fantasy_Kingdoms_Battle
             Construction.Player.SpendGold(GetCost());
             RemoveSelf();
 
-            Debug.Assert(Construction.ResearchesAvailabled > 0);
+            Debug.Assert((Construction.ResearchesAvailabled > 0) || (Construction.Player.ExtraResearch > 0));
 
             if (Construction.ResearchesAvailabled > 0)
                 Construction.ResearchesAvailabled--;

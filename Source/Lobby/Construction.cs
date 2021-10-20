@@ -288,7 +288,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Player.TextRequirements(TypeConstruction.Levels[level].Requirements, list);
 
-            if (BuildedOrUpgraded)
+            if (BuildedOrUpgraded && (Player.ExtraLevelUp == 0))
                 list.Add(new TextRequirement(false, "Сооружение уже строили/улучшали в этот день"));
 
             foreach (ConstructionProduct cp in Visits)
