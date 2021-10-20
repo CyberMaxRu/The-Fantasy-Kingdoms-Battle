@@ -727,6 +727,17 @@ namespace Fantasy_Kingdoms_Battle
             return null;
         }
 
+        internal DescriptorLocation FindLocation(string ID)
+        {
+            foreach (DescriptorLocation tl in Locations)
+            {
+                if (tl.ID == ID)
+                    return tl;
+            }
+
+            throw new Exception("Локация " + ID + " не найдена.");
+        }
+
         private void LoadConfigGame(XmlDocument xmlDoc)
         {
             GridSize = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/GridSize").InnerText);

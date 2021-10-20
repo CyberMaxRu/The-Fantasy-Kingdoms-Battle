@@ -17,7 +17,7 @@
     <StartScoutedLairs>2</StartScoutedLairs>
     <VariantStartBonus>3</VariantStartBonus>
     <MaxLoses>3</MaxLoses>
-    <LairsLayers>4</LairsLayers>
+    <LairsLayers>8</LairsLayers>
     <LairsWidth>4</LairsWidth>
     <LairsHeight>3</LairsHeight>
     <CoefficientFlags>
@@ -79,10 +79,7 @@
     <NeighborhoodSettings>
       <Layer>
         <Number>0</Number>
-        <Name>стол.</Name>
-        <Hint>Окрестности Столицы</Hint>        
-        <ImageIndex>196</ImageIndex>
-        <Texture>AroundCastle</Texture>
+        <Location>LocationNeighborhoodCapital</Location>
         <CostScout>100</CostScout>
         <CostAttack>250</CostAttack>
         <CostDefense>200</CostDefense>
@@ -116,10 +113,35 @@
       </Layer>
       <Layer>
         <Number>1</Number>
-        <Name>лес</Name>
-        <Hint>Лес Ардании</Hint>
-        <ImageIndex>197</ImageIndex>
-        <Texture>Wood</Texture>
+        <Location>LocationVillage</Location>
+        <CostScout>100</CostScout>
+        <CostAttack>250</CostAttack>
+        <CostDefense>200</CostDefense>
+        <TypeConstructions>
+          <TypeConstruction>
+            <ID>Treasure</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
+          </TypeConstruction>
+        </TypeConstructions>      
+      </Layer>
+      <Layer>
+        <Number>2</Number>
+        <Location>LocationNeighborhoodVillage</Location>
+        <CostScout>100</CostScout>
+        <CostAttack>250</CostAttack>
+        <CostDefense>200</CostDefense>
+        <TypeConstructions>
+          <TypeConstruction>
+            <ID>Treasure</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
+          </TypeConstruction>
+        </TypeConstructions>
+      </Layer>
+      <Layer>
+        <Number>3</Number>
+        <Location>LocationWood</Location>
         <CostScout>100</CostScout>
         <CostAttack>250</CostAttack>
         <CostDefense>200</CostDefense>
@@ -167,11 +189,8 @@
         </TypeConstructions>
       </Layer>
       <Layer>
-        <Number>2</Number>
-        <Name>клад.</Name>
-        <Hint>Кладбища Ардании</Hint>
-        <ImageIndex>198</ImageIndex>
-        <Texture>Graveyard</Texture>
+        <Number>4</Number>
+        <Location>LocationGraveyard</Location>
         <CostScout>200</CostScout>
         <CostAttack>500</CostAttack>
         <CostDefense>250</CostDefense>
@@ -194,11 +213,22 @@
         </TypeConstructions>
       </Layer>
       <Layer>
-        <Number>3</Number>
-        <Name>огры</Name>
-        <Hint>Пещеры огров</Hint>
-        <ImageIndex>199</ImageIndex>
-        <Texture>DenOgres</Texture>
+        <Number>5</Number>
+        <Location>LocationMountain</Location>
+        <CostScout>100</CostScout>
+        <CostAttack>250</CostAttack>
+        <CostDefense>200</CostDefense>
+        <TypeConstructions>
+          <TypeConstruction>
+            <ID>Treasure</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
+          </TypeConstruction>
+        </TypeConstructions>
+      </Layer>
+      <Layer>
+        <Number>6</Number>
+        <Location>LocationPlain</Location>
         <CostScout>400</CostScout>
         <CostAttack>1000</CostAttack>
         <CostDefense>500</CostDefense>
@@ -217,6 +247,20 @@
             <ID>GraveyardZombie</ID>
             <MinQuantity>1</MinQuantity>
             <MaxQuantity>10</MaxQuantity>
+          </TypeConstruction>
+        </TypeConstructions>
+      </Layer>
+      <Layer>
+        <Number>7</Number>
+        <Location>LocationWasteland</Location>
+        <CostScout>100</CostScout>
+        <CostAttack>250</CostAttack>
+        <CostDefense>200</CostDefense>
+        <TypeConstructions>
+          <TypeConstruction>
+            <ID>Treasure</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
           </TypeConstruction>
         </TypeConstructions>
       </Layer>

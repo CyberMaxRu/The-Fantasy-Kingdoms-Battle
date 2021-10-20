@@ -16,10 +16,7 @@ namespace Fantasy_Kingdoms_Battle
             TypeLobby = typeLobby;
 
             Number = XmlUtils.GetInteger(n, "Number");
-            Name = XmlUtils.GetStringNotNull(n, "Name");
-            Hint = XmlUtils.GetStringNotNull(n, "Hint");
-            ImageIndex = XmlUtils.GetIntegerNotNull(n, "ImageIndex") + FormMain.Config.ImageIndexFirstItems - 1;
-            NameTexture = XmlUtils.GetStringNotNull(n, "Texture");
+            Location = FormMain.Config.FindLocation(XmlUtils.GetStringNotNull(n, "Location"));
             CostScout = XmlUtils.GetInteger(n, "CostScout");
             CostAttack = XmlUtils.GetInteger(n, "CostAttack");
             CostDefense = XmlUtils.GetInteger(n, "CostDefense");
@@ -33,7 +30,7 @@ namespace Fantasy_Kingdoms_Battle
 
             // Загружаем конфигурацию логов
             XmlNode ne = n.SelectSingleNode("TypeConstructions");
-            TypeLobbyLairSettings tlls; 
+            TypeLobbyLairSettings tlls;
             foreach (XmlNode l in ne.SelectNodes("TypeConstruction"))
             {
                 tlls = new TypeLobbyLairSettings(l);
@@ -72,14 +69,12 @@ namespace Fantasy_Kingdoms_Battle
 
             Debug.Assert(minQuantity <= quantitySlotLairs);
             Debug.Assert(maxQuantity >= quantitySlotLairs);
+
         }
 
         internal TypeLobby TypeLobby { get; }// Тип лобби
         internal int Number { get; }// Номер слоя
-        internal string Name { get; }// Наименование слоя
-        internal string Hint { get; }// Подсказка к слою
-        internal int ImageIndex { get; }// Иконка
-        internal string NameTexture { get; }// Текстура фона
+        internal DescriptorLocation Location { get; }
         internal int CostScout { get; }// Стоимость разведки
         internal int CostAttack { get; }// Стоимость атаки
         internal int CostDefense { get; }// Стоимость защиты

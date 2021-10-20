@@ -36,9 +36,9 @@ namespace Fantasy_Kingdoms_Battle
 
         internal VCPageButton AddPage(TypeLobbyLayerSettings layer)
         {
-            VCPageButton page = new VCPageButton(this, nextLeft, 0, layer.ImageIndex, layer.Hint, "", layer);
+            VCPageButton page = new VCPageButton(this, nextLeft, 0, layer.Location.ImageIndex, layer.Location.Name, "", layer);
             page.Click += Page_Click;
-            page.Hint = layer.Hint;
+            page.Hint = layer.Location.Description;
             nextLeft = page.NextLeft();
             Pages.Add(page);
 

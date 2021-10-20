@@ -27,7 +27,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (layer != null)
             {
-                PageImage = GuiUtils.MakeCustomBackground(FormMain.Config.GetTexture(layer.NameTexture), Program.formMain.MainControl);
+                PageImage = GuiUtils.MakeCustomBackground(FormMain.Config.GetTexture(layer.Location.NameTexture), Program.formMain.MainControl);
 
                 panelLairs = new PanelConstruction[layer.TypeLobby.LairsHeight, layer.TypeLobby.LairsWidth];
 
@@ -64,14 +64,6 @@ namespace Fantasy_Kingdoms_Battle
         private void Page_Click(object sender, EventArgs e)
         {
             Program.formMain.SelectPlayerObject(null);
-        }
-
-        internal override void Draw(Graphics g)
-        {
-            if (Layer != null)
-                Text = Program.formMain.Settings.ShowShortNames ? Layer.Name : "";
-
-            base.Draw(g);
         }
 
         internal void UpdateLairs(Lobby lobby)

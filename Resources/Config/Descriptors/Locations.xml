@@ -4,56 +4,56 @@
     <ID>LocationNeighborhoodCapital</ID>
     <Name>Окрестности Столицы</Name>
     <Description>Окрестности Столицы - достаточно безопасное место. Если, конечно, заботиться об этой безопасности.</Description>
-    <ImageIndex>150</ImageIndex>
+    <ImageIndex>161</ImageIndex>
     <NameTexture>AroundCastle</NameTexture>
   </Location>
   <Location>
     <ID>LocationVillage</ID>
     <Name>Деревня</Name>
     <Description>В деревне живут подданные короля - крестьяне.</Description>
-    <ImageIndex>151</ImageIndex>
-    <NameTexture>Village</NameTexture>
+    <ImageIndex>162</ImageIndex>
+    <NameTexture>AroundCastle</NameTexture>
   </Location>
   <Location>
     <ID>LocationNeighborhoodVillage</ID>
     <Name>Окрестности деревни</Name>
     <Description>В деревне живут подданные короля - крестьяне.</Description>
-    <ImageIndex>152</ImageIndex>
-    <NameTexture>Village</NameTexture>
+    <ImageIndex>163</ImageIndex>
+    <NameTexture>AroundCastle</NameTexture>
   </Location>
   <Location>
     <ID>LocationGraveyard</ID>
     <Name>Земля мертвых</Name>
     <Description>Здесь неживет нежить.</Description>
-    <ImageIndex>153</ImageIndex>
-    <NameTexture>Village</NameTexture>
+    <ImageIndex>164</ImageIndex>
+    <NameTexture>Graveyard</NameTexture>
   </Location>
   <Location>
     <ID>LocationWood</ID>
     <Name>Лес</Name>
     <Description>Лес - полон волков и медведей.</Description>
-    <ImageIndex>154</ImageIndex>
-    <NameTexture>Village</NameTexture>
-  </Location>
-  <Location>
-    <ID>LocationPlain</ID>
-    <Name>Равнина</Name>
-    <Description>Равнина - отличное место, чтобы выращивать пшеницу или пасти скот. Но живут здесь огры.</Description>
-    <ImageIndex>155</ImageIndex>
-    <NameTexture>Village</NameTexture>
+    <ImageIndex>165</ImageIndex>
+    <NameTexture>Wood</NameTexture>
   </Location>
   <Location>
     <ID>LocationMountain</ID>
     <Name>Горы</Name>
     <Description>В горах можно добыть много металла. Например, золота. А там где золото - там драконы.</Description>
-    <ImageIndex>156</ImageIndex>
-    <NameTexture>Village</NameTexture>
+    <ImageIndex>166</ImageIndex>
+    <NameTexture>Mountain</NameTexture>
   </Location>
   <Location>
-    <ID>LocationDesert</ID>
-    <Name>Пустыня</Name>
-    <Description>Пустыня - жуткое место. Мало воды, мало деревьев, а еще этот досаждающий гнус...</Description>
-    <ImageIndex>157</ImageIndex>
-    <NameTexture>Village</NameTexture>
+    <ID>LocationPlain</ID>
+    <Name>Равнина</Name>
+    <Description>Равнина - отличное место, чтобы выращивать пшеницу или пасти скот. Но живут здесь огры.</Description>
+    <ImageIndex>167</ImageIndex>
+    <NameTexture>Relax</NameTexture>
+  </Location>
+  <Location>
+    <ID>LocationWasteland</ID>
+    <Name>Пустошь</Name>
+    <Description>Пустошь - жуткое место. Мало воды, мало деревьев, а еще этот досаждающий гнус...</Description>
+    <ImageIndex>168</ImageIndex>
+    <NameTexture>Wasteland</NameTexture>
   </Location>
 </Descriptors>
