@@ -74,6 +74,7 @@
     <Compile Include="Source\Descriptors\Creature\ListSmallEntity.cs" />
     <Compile Include="Source\Descriptors\Descriptor.cs" />
     <Compile Include="Source\Descriptors\DescriptorWithID.cs" />
+    <Compile Include="Source\Descriptors\Location\DescriptorLocation.cs" />
     <Compile Include="Source\Forms\WindowCheating.cs" />
     <Compile Include="Source\Lobby\BigEntity.cs" />
     <Compile Include="Source\Lobby\ConstructionProduct.cs" />
@@ -240,6 +241,7 @@
     <Content Include="Resources\Config\Descriptors\ConstructionExtensions.xml" />
     <Content Include="Resources\Config\Descriptors\ConstructionVisits.xml" />
     <Content Include="Resources\Config\Descriptors\GroupItems.xml" />
+    <Content Include="Resources\Config\Descriptors\Locations.xml" />
     <Content Include="Resources\Config\Descriptors\TypeInterestCreature.xml" />
     <Content Include="Resources\Config\Descriptors\NeedsCreature.xml" />
     <Content Include="Resources\Config\Descriptors\PropertiesCreature.xml" />

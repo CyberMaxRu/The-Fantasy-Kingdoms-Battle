@@ -108,6 +108,13 @@ namespace Fantasy_Kingdoms_Battle
                 AutoCreatedPlayer = true;
             }
 
+            // Загрузка локаций
+            xmlDoc = CreateXmlDocument(@"Config\Descriptors\Locations.xml");
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/Location"))
+            {
+                Locations.Add(new DescriptorLocation(n));
+            }
+
             // Загрузка конфигураций лобби
             xmlDoc = CreateXmlDocument("Config\\TypeLobby.xml");
             foreach (XmlNode n in xmlDoc.SelectNodes("/TypeLobbies/TypeLobby"))
@@ -270,6 +277,9 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Настраиваем связи
+            foreach (DescriptorLocation tl in Locations)
+                tl.TuneDeferredLinks();
+
             foreach (DescriptorTypeAbility ta in TypeAbilities)
                 ta.TuneDeferredLinks();
 
@@ -333,6 +343,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal string PathResources { get; }
+        internal List<DescriptorLocation> Locations { get; } = new List<DescriptorLocation>();
         internal List<TypeLobby> TypeLobbies { get; } = new List<TypeLobby>();
         internal List<StartBonus> StartBonuses { get; } = new List<StartBonus>();
         internal List<ComputerPlayer> ComputerPlayers { get; } = new List<ComputerPlayer>();
