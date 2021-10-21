@@ -17,7 +17,7 @@
   <Location>
     <ID>LocationNeighborhoodVillage</ID>
     <Name>Окрестности деревни</Name>
-    <Description>В деревне живут подданные короля - крестьяне.</Description>
+    <Description>В окрестностях деревни на полях растет пшеница.</Description>
     <ImageIndex>163</ImageIndex>
     <NameTexture>AroundCastle</NameTexture>
   </Location>
