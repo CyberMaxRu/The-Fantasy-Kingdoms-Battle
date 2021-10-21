@@ -573,9 +573,12 @@ namespace Fantasy_Kingdoms_Battle
                 cm.PrepareTurn();
             }
 
-            foreach (Hero h in Heroes)
+            if (TypeConstruction.ID != FormMain.Config.IDCityGraveyard)
             {
-                h.PrepareTurn();
+                foreach (Hero h in Heroes)
+                {
+                    h.PrepareTurn();
+                }
             }
         }
 
