@@ -61,14 +61,5 @@ namespace Fantasy_Kingdoms_Battle
 
         internal string NameTexture { get; }// Текстура фона
         internal Bitmap BackgroundImage { get; }// Картинка для фона
-        internal List<TypeLobbyLairSettings> LairsSettings { get; } = new List<TypeLobbyLairSettings>();// Настройки типов логов для слоя
-
-        internal void TuneDeferredLinks()
-        {
-            foreach (TypeLobbyLairSettings ls in LairsSettings)
-            {
-                ls.TuneDeferredLinks();
-            }
-        }
     }
 }
