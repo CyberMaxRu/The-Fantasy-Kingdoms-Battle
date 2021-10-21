@@ -1328,7 +1328,7 @@ namespace Fantasy_Kingdoms_Battle
         internal void UpdateNeighborhoods()
         {
             foreach (VCPageButton b in pagesLairs)
-                b.UpdateLairs(lobby);
+                b.UpdateLairs(curAppliedPlayer);
         }
 
         private void ShowEvents()

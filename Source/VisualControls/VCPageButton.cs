@@ -66,12 +66,12 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.SelectPlayerObject(null);
         }
 
-        internal void UpdateLairs(Lobby lobby)
+        internal void UpdateLairs(Player player)
         {
             for (int y = 0; y < Layer.TypeLobby.LairsHeight; y++)
                 for (int x = 0; x < Layer.TypeLobby.LairsWidth; x++)
                 {
-                    constructions[y, x].Entity = lobby.CurrentPlayer.Locations[Layer.Number].Lairs[y, x];
+                    constructions[y, x].Entity = player.Locations[Layer.Number].Lairs[y, x];
                     constructions[y, x].Visible = constructions[y, x].Entity != null;
                 }
         }
