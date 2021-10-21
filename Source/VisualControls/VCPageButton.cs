@@ -11,7 +11,7 @@ namespace Fantasy_Kingdoms_Battle
     // Класс кнопки для PageControl'а
     internal sealed class VCPageButton : VCIconButton48
     {
-        private PanelConstruction[,] panelLairs;
+        private PanelConstruction[,] constructions;
 
         public VCPageButton(VisualControl parent, int shiftX, int shiftY, int imageIndex, string caption, string advice, TypeLobbyLayerSettings layer) : base(parent, shiftX, shiftY, imageIndex)
         {
@@ -29,7 +29,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 PageImage = GuiUtils.MakeCustomBackground(FormMain.Config.GetTexture(layer.Location.NameTexture), Program.formMain.MainControl);
 
-                panelLairs = new PanelConstruction[layer.TypeLobby.LairsHeight, layer.TypeLobby.LairsWidth];
+                constructions = new PanelConstruction[layer.TypeLobby.LairsHeight, layer.TypeLobby.LairsWidth];
 
                 int top = 0;
                 int left;
@@ -40,11 +40,11 @@ namespace Fantasy_Kingdoms_Battle
                     left = 0;
                     for (int x = 0; x < layer.TypeLobby.LairsWidth; x++)
                     {
-                        Debug.Assert(panelLairs[y, x] == null);
-                        panelLairs[y, x] = new PanelConstruction(Page, left, top);
+                        Debug.Assert(constructions[y, x] == null);
+                        constructions[y, x] = new PanelConstruction(Page, left, top);
 
-                        left += panelLairs[y, x].Width + FormMain.Config.GridSize;
-                        height = panelLairs[y, x].Height;
+                        left += constructions[y, x].Width + FormMain.Config.GridSize;
+                        height = constructions[y, x].Height;
                     }
 
                     top += height + FormMain.Config.GridSize;
@@ -71,8 +71,8 @@ namespace Fantasy_Kingdoms_Battle
             for (int y = 0; y < Layer.TypeLobby.LairsHeight; y++)
                 for (int x = 0; x < Layer.TypeLobby.LairsWidth; x++)
                 {
-                    panelLairs[y, x].Entity = lobby.CurrentPlayer.Locations[Layer.Number].Lairs[y, x];
-                    panelLairs[y, x].Visible = panelLairs[y, x].Entity != null;
+                    constructions[y, x].Entity = lobby.CurrentPlayer.Locations[Layer.Number].Lairs[y, x];
+                    constructions[y, x].Visible = constructions[y, x].Entity != null;
                 }
         }
     }
