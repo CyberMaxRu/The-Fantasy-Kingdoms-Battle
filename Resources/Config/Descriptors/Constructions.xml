@@ -3569,4 +3569,67 @@
       </Level>
     </Levels>
   </Construction>
+  <Construction>
+    <ID>Lumberjack</ID>
+    <Name>Лесорубка</Name>
+    <Description>Это удобное место, чтобы рубить деревья.</Description>
+    <ImageIndex>169</ImageIndex>
+    <TypeConstruction>Village</TypeConstruction>
+    <Category>External</Category>
+    <DefaultLevel>0</DefaultLevel>
+    <MaxLevel>1</MaxLevel>
+    <SoundSelect>graveyard_select.wav</SoundSelect>
+    <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
+    <Levels>
+      <Level>
+        <Number>1</Number>
+        <Cost>0</Cost>
+        <Builders>0</Builders>
+        <Income>100</Income>
+        <MaxInhabitant>100</MaxInhabitant>
+      </Level>
+    </Levels>
+  </Construction>
+  <Construction>
+    <ID>StoneQuarry</ID>
+    <Name>Каменный карьер</Name>
+    <Description>Здесь можно добывать камень.</Description>
+    <ImageIndex>170</ImageIndex>
+    <TypeConstruction>Village</TypeConstruction>
+    <Category>External</Category>
+    <DefaultLevel>0</DefaultLevel>
+    <MaxLevel>1</MaxLevel>
+    <SoundSelect>graveyard_select.wav</SoundSelect>
+    <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
+    <Levels>
+      <Level>
+        <Number>1</Number>
+        <Cost>0</Cost>
+        <Builders>0</Builders>
+        <Income>100</Income>
+        <MaxInhabitant>100</MaxInhabitant>
+      </Level>
+    </Levels>
+  </Construction>
+  <Construction>
+    <ID>OreMine</ID>
+    <Name>Рудная шахта</Name>
+    <Description>Здесь можно добывать железо.</Description>
+    <ImageIndex>171</ImageIndex>
+    <TypeConstruction>Village</TypeConstruction>
+    <Category>External</Category>
+    <DefaultLevel>0</DefaultLevel>
+    <MaxLevel>1</MaxLevel>
+    <SoundSelect>graveyard_select.wav</SoundSelect>
+    <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
+    <Levels>
+      <Level>
+        <Number>1</Number>
+        <Cost>0</Cost>
+        <Builders>0</Builders>
+        <Income>100</Income>
+        <MaxInhabitant>100</MaxInhabitant>
+      </Level>
+    </Levels>
+  </Construction>
 </Descriptors>

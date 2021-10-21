@@ -110,6 +110,21 @@
             <MinQuantity>1</MinQuantity>
             <MaxQuantity>1</MaxQuantity>
           </TypeConstruction>
+          <TypeConstruction>
+            <ID>Lumberjack</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
+          </TypeConstruction>
+          <TypeConstruction>
+            <ID>StoneQuarry</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
+          </TypeConstruction>
+          <TypeConstruction>
+            <ID>OreMine</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
+          </TypeConstruction>
         </TypeConstructions>
       </Layer>
       <Layer>
