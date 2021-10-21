@@ -13,16 +13,17 @@ namespace Fantasy_Kingdoms_Battle
     {
         private int gold;
 
-        public Construction(Player p, DescriptorConstruction b) : base(p.Lobby)
+        public Construction(Player p, DescriptorConstruction b, Location location) : base(p.Lobby)
         {
             Player = p;
             TypeConstruction = b;
+            Location = location;
 
             // Настраиваем исследования 
             foreach (DescriptorCellMenuForConstruction d in TypeConstruction.ListResearches)
                 Researches.Add(ConstructionCellMenu.Create(this, d));
 
-            Hidden = !TypeConstruction.IsInternalConstruction || (Layer > 0);
+            Hidden = !TypeConstruction.IsInternalConstruction && !location.Ownership;
 
             Level = b.DefaultLevel;
             if (Level > 0)
@@ -41,14 +42,14 @@ namespace Fantasy_Kingdoms_Battle
             //    Gold = Construction.GoldByConstruction;
         }
 
-        public Construction(Player p, DescriptorConstruction l, int level, int x, int y, int layer) : base(p.Lobby)
+        public Construction(Player p, DescriptorConstruction l, int level, int x, int y, Location location) : base(p.Lobby)
         {
             Player = p;
             TypeConstruction = l;
             X = x;
             Y = y;
-            Layer = layer;
-            Hidden = Layer != 0;
+            Location = location;
+            Hidden = !location.Ownership;
 
             Debug.Assert((TypeConstruction.Category == CategoryConstruction.Lair) || (TypeConstruction.Category == CategoryConstruction.External)
                 || (TypeConstruction.Category == CategoryConstruction.Place) || (TypeConstruction.Category == CategoryConstruction.BasePlace));
@@ -78,7 +79,7 @@ namespace Fantasy_Kingdoms_Battle
         internal Player Player { get; }
 
         // Свойства для внешних сооружений
-        internal int Layer { get; set; }// Слой, на котором находится логово
+        internal Location Location { get; set; }// Локация, на которой находится сооружение
         internal int X { get; set; }// Позиция по X в слое
         internal int Y { get; set; }// Позиция по Y в слое
         internal bool Hidden { get; private set; }// Логово не разведано
@@ -648,7 +649,7 @@ namespace Fantasy_Kingdoms_Battle
             AssertNotDestroyed();
 
             return PriorityFlag < PriorityExecution.Exclusive ?
-                Player.Lobby.TypeLobby.LayerSettings[Layer].CostScout * Player.Lobby.TypeLobby.CoefFlagScout[(int)PriorityFlag + 1] / 100 : 0;
+                Location.Settings.CostScout * Player.Lobby.TypeLobby.CoefFlagScout[(int)PriorityFlag + 1] / 100 : 0;
         }
 
         private void AssertNotHidden()
@@ -667,7 +668,7 @@ namespace Fantasy_Kingdoms_Battle
             AssertNotDestroyed();
 
             return PriorityFlag < PriorityExecution.Exclusive ?
-                Player.Lobby.TypeLobby.LayerSettings[Layer].CostAttack * Player.Lobby.TypeLobby.CoefFlagAttack[(int)PriorityFlag + 1] / 100 : 0;
+                Location.Settings.CostAttack * Player.Lobby.TypeLobby.CoefFlagAttack[(int)PriorityFlag + 1] / 100 : 0;
         }
 
         internal int CostDefense()
@@ -676,7 +677,7 @@ namespace Fantasy_Kingdoms_Battle
             AssertNotDestroyed();
 
             return PriorityFlag < PriorityExecution.Exclusive ?
-                Player.Lobby.TypeLobby.LayerSettings[Layer].CostDefense * Player.Lobby.TypeLobby.CoefFlagDefense[(int)PriorityFlag + 1] / 100 : 0;
+                Location.Settings.CostDefense * Player.Lobby.TypeLobby.CoefFlagDefense[(int)PriorityFlag + 1] / 100 : 0;
         }
 
         internal string NameLair()
@@ -997,9 +998,9 @@ namespace Fantasy_Kingdoms_Battle
             // Ставим тип места, который должен быть после зачистки
             Debug.Assert(!(TypeConstruction.TypePlaceForConstruct is null));
 
-            Construction pl = new Construction(Player, TypeConstruction.TypePlaceForConstruct, TypeConstruction.DefaultLevel, X, Y, Layer);
+            Construction pl = new Construction(Player, TypeConstruction.TypePlaceForConstruct, TypeConstruction.DefaultLevel, X, Y, Location);
             pl.Hidden = false;
-            Player.Lairs[Layer, Y, X] = pl;
+            Location.Lairs[Y, X] = pl;
         }
 
         internal void DoDefense()

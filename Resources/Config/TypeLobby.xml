@@ -80,6 +80,7 @@
       <Layer>
         <Number>0</Number>
         <Location>LocationNeighborhoodCapital</Location>
+        <Ownership>true</Ownership>
         <CostScout>100</CostScout>
         <CostAttack>250</CostAttack>
         <CostDefense>200</CostDefense>
@@ -114,6 +115,7 @@
       <Layer>
         <Number>1</Number>
         <Location>LocationVillage</Location>
+        <Ownership>true</Ownership>
         <CostScout>100</CostScout>
         <CostAttack>250</CostAttack>
         <CostDefense>200</CostDefense>
@@ -128,6 +130,7 @@
       <Layer>
         <Number>2</Number>
         <Location>LocationNeighborhoodVillage</Location>
+        <Ownership>true</Ownership>
         <CostScout>100</CostScout>
         <CostAttack>250</CostAttack>
         <CostDefense>200</CostDefense>
@@ -142,6 +145,7 @@
       <Layer>
         <Number>3</Number>
         <Location>LocationWood</Location>
+        <Ownership>false</Ownership>
         <CostScout>100</CostScout>
         <CostAttack>250</CostAttack>
         <CostDefense>200</CostDefense>
@@ -191,6 +195,7 @@
       <Layer>
         <Number>4</Number>
         <Location>LocationGraveyard</Location>
+        <Ownership>false</Ownership>
         <CostScout>200</CostScout>
         <CostAttack>500</CostAttack>
         <CostDefense>250</CostDefense>
@@ -215,6 +220,7 @@
       <Layer>
         <Number>5</Number>
         <Location>LocationMountain</Location>
+        <Ownership>false</Ownership>
         <CostScout>100</CostScout>
         <CostAttack>250</CostAttack>
         <CostDefense>200</CostDefense>
@@ -229,6 +235,7 @@
       <Layer>
         <Number>6</Number>
         <Location>LocationPlain</Location>
+        <Ownership>false</Ownership>
         <CostScout>400</CostScout>
         <CostAttack>1000</CostAttack>
         <CostDefense>500</CostDefense>
@@ -253,6 +260,7 @@
       <Layer>
         <Number>7</Number>
         <Location>LocationWasteland</Location>
+        <Ownership>false</Ownership>
         <CostScout>100</CostScout>
         <CostAttack>250</CostAttack>
         <CostDefense>200</CostDefense>

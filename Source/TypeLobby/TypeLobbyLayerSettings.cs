@@ -17,6 +17,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Number = XmlUtils.GetInteger(n, "Number");
             Location = FormMain.Config.FindLocation(XmlUtils.GetStringNotNull(n, "Location"));
+            Ownership = XmlUtils.GetBooleanNotNull(n, "Ownership");
             CostScout = XmlUtils.GetInteger(n, "CostScout");
             CostAttack = XmlUtils.GetInteger(n, "CostAttack");
             CostDefense = XmlUtils.GetInteger(n, "CostDefense");
@@ -75,6 +76,7 @@ namespace Fantasy_Kingdoms_Battle
         internal TypeLobby TypeLobby { get; }// Тип лобби
         internal int Number { get; }// Номер слоя
         internal DescriptorLocation Location { get; }
+        internal bool Ownership { get; set; }// Локация является владением короля
         internal int CostScout { get; }// Стоимость разведки
         internal int CostAttack { get; }// Стоимость атаки
         internal int CostDefense { get; }// Стоимость защиты

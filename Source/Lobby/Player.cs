@@ -76,13 +76,16 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorConstruction tck in FormMain.Config.Constructions)
             {
                 if (tck.IsInternalConstruction)
-                    new Construction(this, tck);
+                    new Construction(this, tck, null);
+            }
+
+            //
+            foreach (TypeLobbyLayerSettings ls in lobby.TypeLobby.LayerSettings)
+            {
+                Locations.Add(new Location(this, ls));
             }
 
             // Инициализация логов
-            Lairs = new Construction[lobby.TypeLobby.LairsLayers, lobby.TypeLobby.LairsHeight, lobby.TypeLobby.LairsWidth];
-
-            GenerateLairs();
             ScoutRandomLair(lobby.TypeLobby.StartScoutedLairs);
 
             //
@@ -246,21 +249,21 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (scoutLaires > 0)
             {
-                for (int i = 0; i < Lairs.GetLength(0); i++)
+                foreach (Location l in Locations)
                 {
-                    scoutLaires = ScoutLayer(i, scoutLaires);
+                    scoutLaires = ScoutLayer(l, scoutLaires);
                     if (scoutLaires == 0)
                         break;
                 }
             }
 
-            int ScoutLayer(int layer, int maxScout)
+            int ScoutLayer(Location ll, int maxScout)
             {
                 List<Construction> lairs = new List<Construction>();
-                for (int y = 0; y < Lairs.GetLength(1); y++)
-                    for (int x = 0; x < Lairs.GetLength(2); x++)
-                        if (Lairs[layer, y, x].Hidden)
-                            lairs.Add(Lairs[layer, y, x]);
+                for (int y = 0; y < ll.Lairs.GetLength(0); y++)
+                    for (int x = 0; x < ll.Lairs.GetLength(1); x++)
+                        if (ll.Lairs[y, x].Hidden)
+                            lairs.Add(ll.Lairs[y, x]);
 
                 int scouting = Math.Min(maxScout, lairs.Count);
                 int restScouting = maxScout - scouting;
@@ -276,7 +279,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        private void CreateExternalConstructions(DescriptorConstruction typeConstruction, int level, int layer, int quantity)
+        private void CreateExternalConstructions(DescriptorConstruction typeConstruction, int level, Location location, int quantity)
         {
             Debug.Assert((typeConstruction.Category == CategoryConstruction.External) || (typeConstruction.Category == CategoryConstruction.BasePlace) || (typeConstruction.Category == CategoryConstruction.Place));
             Debug.Assert(level <= typeConstruction.MaxLevel);
@@ -286,10 +289,10 @@ namespace Fantasy_Kingdoms_Battle
             {
                 // Собираем список пустых мест
                 List<Construction> listEmptyPlaces = new List<Construction>();
-                for (int y = 0; y < Lairs.GetLength(1); y++)
-                    for (int x = 0; x < Lairs.GetLength(2); x++)
-                        if (Lairs[layer, y, x].TypeConstruction.ID == FormMain.Config.IDEmptyPlace)
-                            listEmptyPlaces.Add(Lairs[layer, y, x]);
+                for (int y = 0; y < location.Lairs.GetLength(0); y++)
+                    for (int x = 0; x < location.Lairs.GetLength(1); x++)
+                        if (location.Lairs[y, x].TypeConstruction.ID == FormMain.Config.IDEmptyPlace)
+                            listEmptyPlaces.Add(location.Lairs[y, x]);
 
                 Debug.Assert(quantity <= listEmptyPlaces.Count);
 
@@ -299,8 +302,8 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     index = Lobby.Rnd.Next(listEmptyPlaces.Count);
                     Construction empty = listEmptyPlaces[index];
-                    Construction pc = new Construction(this, typeConstruction, level, empty.X, empty.Y, empty.Layer);
-                    Lairs[pc.Layer, pc.Y, pc.X] = pc;
+                    Construction pc = new Construction(this, typeConstruction, level, empty.X, empty.Y, empty.Location);
+                    location.Lairs[pc.Y, pc.X] = pc;
                     listEmptyPlaces.RemoveAt(index);
                     quantity--;
                 }
@@ -313,14 +316,17 @@ namespace Fantasy_Kingdoms_Battle
         internal void CalcFinalityTurn()
         {
             // Убеждаемся, что у нас не сломалось соответствие флагов
-            foreach (Construction pl in Lairs)
+            foreach (Location l in Locations)
             {
-                if (pl != null)
+                foreach (Construction pl in l.Lairs)
                 {
-                    if (pl.PriorityFlag != PriorityExecution.None)
-                        Debug.Assert(ListFlags.IndexOf(pl) != -1);
-                    else
-                        Debug.Assert(ListFlags.IndexOf(pl) == -1);
+                    if (pl != null)
+                    {
+                        if (pl.PriorityFlag != PriorityExecution.None)
+                            Debug.Assert(ListFlags.IndexOf(pl) != -1);
+                        else
+                            Debug.Assert(ListFlags.IndexOf(pl) == -1);
+                    }
                 }
             }
 
@@ -461,6 +467,9 @@ namespace Fantasy_Kingdoms_Battle
         internal int GoldCollected { get; private set; }// Собрано золота за игру
         internal int GreatnessCollected { get; private set; }// Собрано величия за игру
 
+        // Локации
+        internal List<Location> Locations { get; } = new List<Location>();
+
         //
         internal int PercentCorruption { get; set; }//
         internal int ChangeCorruption { get; set; }
@@ -491,7 +500,6 @@ namespace Fantasy_Kingdoms_Battle
         internal List<(Construction, DescriptorPerk)> listPerksFromConstruction = new List<(Construction, DescriptorPerk)>();
 
         // Логова
-        internal Construction[,,] Lairs { get; }
         internal List<Construction> ListFlags { get; } = new List<Construction>();
         internal Dictionary<PriorityExecution, int> QuantityFlags { get; } = new Dictionary<PriorityExecution, int>();
         internal int LairsScouted { get; private set; }
@@ -1004,55 +1012,13 @@ namespace Fantasy_Kingdoms_Battle
         internal void RemoveLair(Construction l)
         {
             Debug.Assert(l != null);
-            Debug.Assert(Lairs[l.Layer, l.Y, l.X] != null);
-            Debug.Assert(Lairs[l.Layer, l.Y, l.X] == l);
+            Debug.Assert(l.Location.Lairs[l.Y, l.X] != null);
+            Debug.Assert(l.Location.Lairs[l.Y, l.X] == l);
 
-            Lairs[l.Layer, l.Y, l.X] = null;
+            l.Location.Lairs[l.Y, l.X] = null;
 
             if (Program.formMain.PlayerObjectIsSelected(l))
                 Program.formMain.SelectPlayerObject(null);
-        }
-
-        private void GenerateLairs()
-        {
-            // Создание рандомных логов монстров согласно настроек типа лобби
-            // Для этого сначала создаем логова по минимальному списку,
-            // а оставшиеся ячейки - из оставшихся по максимуму
-            //List<TypeLair>
-            int idxCell;
-            int idxTypeLair;
-            for (int layer = 0; layer < Lobby.TypeLobby.LairsLayers; layer++)
-            {
-                List<DescriptorConstruction> lairs = new List<DescriptorConstruction>();
-                lairs.AddRange(Lobby.Lairs[layer]);
-                List<Point> cells = GetCells();
-                Debug.Assert(cells.Count <= lairs.Count);
-
-                while (cells.Count > 0)
-                {
-                    // Берем случайную ячейку
-                    idxCell = Lobby.Rnd.Next(cells.Count);
-                    // Берем случайное логово
-                    idxTypeLair = Lobby.Rnd.Next(lairs.Count);
-
-                    // Помещаем в нее логово
-                    Debug.Assert(Lairs[layer, cells[idxCell].Y, cells[idxCell].X] == null);
-                    Lairs[layer, cells[idxCell].Y, cells[idxCell].X] = new Construction(this, lairs[idxTypeLair], lairs[idxTypeLair].DefaultLevel, cells[idxCell].X, cells[idxCell].Y, layer);
-
-                    cells.RemoveAt(idxCell);// Убираем ячейку из списка доступных
-                    lairs.RemoveAt(idxTypeLair);// Убираем тип логова из списка доступных
-                }
-            }
-
-            List<Point> GetCells()
-            {
-                List<Point> l = new List<Point>();
-                for (int y = 0; y < Lobby.TypeLobby.LairsHeight; y++)
-                    for (int x = 0; x < Lobby.TypeLobby.LairsWidth; x++)
-                        l.Add(new Point(x, y));
-
-                return l;
-            }
         }
 
         internal void ApplyReward(Construction l)
@@ -1076,11 +1042,11 @@ namespace Fantasy_Kingdoms_Battle
             PointGreatness += sb.Greatness;
             Builders += sb.Builders;
             FreeBuilders += sb.Builders;
-            CreateExternalConstructions(FormMain.Config.FindConstruction(FormMain.Config.IDPeasantHouse), 1, 0, sb.PeasantHouse);
+            CreateExternalConstructions(FormMain.Config.FindConstruction(FormMain.Config.IDPeasantHouse), 1, Locations[0], sb.PeasantHouse);
             DescriptorConstruction holyPlace = FormMain.Config.FindConstruction(FormMain.Config.IDHolyPlace);
-            CreateExternalConstructions(holyPlace, holyPlace.DefaultLevel, 0, sb.HolyPlace);
+            CreateExternalConstructions(holyPlace, holyPlace.DefaultLevel, Locations[0], sb.HolyPlace);
             DescriptorConstruction tradePost = FormMain.Config.FindConstruction(FormMain.Config.IDTradePost);
-            CreateExternalConstructions(tradePost, tradePost.DefaultLevel, 0, sb.TradePlace);
+            CreateExternalConstructions(tradePost, tradePost.DefaultLevel, Locations[0], sb.TradePlace);
             ScoutRandomLair(sb.Scouting);
 
             startBonusApplied = true;

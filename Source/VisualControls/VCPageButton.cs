@@ -71,7 +71,7 @@ namespace Fantasy_Kingdoms_Battle
             for (int y = 0; y < Layer.TypeLobby.LairsHeight; y++)
                 for (int x = 0; x < Layer.TypeLobby.LairsWidth; x++)
                 {
-                    panelLairs[y, x].Entity = lobby.CurrentPlayer.Lairs[Layer.Number, y, x];
+                    panelLairs[y, x].Entity = lobby.CurrentPlayer.Locations[Layer.Number].Lairs[y, x];
                     panelLairs[y, x].Visible = panelLairs[y, x].Entity != null;
                 }
         }

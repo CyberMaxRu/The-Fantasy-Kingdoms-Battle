@@ -268,6 +268,10 @@ namespace Fantasy_Kingdoms_Battle
                 }*/
                 if (vc.Visible)
                 {
+                    if (vc.Width < 0)
+                        vc.Width = 16;
+                    if (vc.Height < 0)
+                        vc.Height = 16;
                     Debug.Assert(vc.Width > 0);
                     Debug.Assert(vc.Height > 0);
                 }
