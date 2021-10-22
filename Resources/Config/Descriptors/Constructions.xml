@@ -3632,4 +3632,39 @@
       </Level>
     </Levels>
   </Construction>
+  <Construction>
+    <ID>Fort</ID>
+    <Name>Форт</Name>
+    <Description>Построенный форт и наличие в нем несущих службу героев - знак того, что данная местность принадлежит королю.//Когда форт покидает последний герой, местность становится ничейной.</Description>
+    <ImageIndex>50</ImageIndex>
+    <TypeConstruction>Village</TypeConstruction>
+    <Category>External</Category>
+    <DefaultLevel>0</DefaultLevel>
+    <MaxLevel>3</MaxLevel>
+    <SoundSelect>graveyard_select.wav</SoundSelect>
+    <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
+    <Levels>
+      <Level>
+        <Number>1</Number>
+        <Cost>500</Cost>
+        <Builders>0</Builders>
+        <Income>0</Income>
+        <MaxInhabitant>100</MaxInhabitant>
+      </Level>
+      <Level>
+        <Number>2</Number>
+        <Cost>1000</Cost>
+        <Builders>2</Builders>
+        <Income>0</Income>
+        <MaxInhabitant>100</MaxInhabitant>
+      </Level>
+      <Level>
+        <Number>3</Number>
+        <Cost>1500</Cost>
+        <Builders>2</Builders>
+        <Income>0</Income>
+        <MaxInhabitant>100</MaxInhabitant>
+      </Level>
+    </Levels>
+  </Construction>
 </Descriptors>
