@@ -13,7 +13,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         private PanelConstruction[,] constructions;
 
-        public VCPageButton(VisualControl parent, int shiftX, int shiftY, int imageIndex, string caption, string advice, TypeLobbyLayerSettings layer) : base(parent, shiftX, shiftY, imageIndex)
+        public VCPageButton(VisualControl parent, int shiftX, int shiftY, int imageIndex, string caption, string advice, TypeLobbyLocationSettings layer) : base(parent, shiftX, shiftY, imageIndex)
         {
             HighlightUnderMouse = true;
             ShowBorder = true;
@@ -59,7 +59,7 @@ namespace Fantasy_Kingdoms_Battle
         internal string Advice { get; }
         internal Bitmap PageImage { get; set; }
         internal BigEntity SelectedPlayerObject { get; set; }
-        internal TypeLobbyLayerSettings Layer { get; }
+        internal TypeLobbyLocationSettings Layer { get; }
 
         private void Page_Click(object sender, EventArgs e)
         {

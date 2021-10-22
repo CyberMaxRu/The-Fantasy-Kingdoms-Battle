@@ -8,10 +8,10 @@ using System.Diagnostics;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    // Класс настроек типа лобби
-    internal sealed class TypeLobbyLayerSettings
+    // Класс настройки локации типа лобби
+    internal sealed class TypeLobbyLocationSettings
     {
-        public TypeLobbyLayerSettings(TypeLobby typeLobby, XmlNode n, int quantitySlotLairs)
+        public TypeLobbyLocationSettings(TypeLobby typeLobby, XmlNode n, int quantitySlotLairs)
         {
             TypeLobby = typeLobby;
 

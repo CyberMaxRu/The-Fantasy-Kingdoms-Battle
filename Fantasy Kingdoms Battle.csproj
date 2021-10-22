@@ -139,7 +139,7 @@
     <Compile Include="Source\Panels\PanelConstruction.cs" />
     <Compile Include="Source\Panels\CellPlayer.cs" />
     <Compile Include="Source\TypeLobby\StartBonus.cs" />
-    <Compile Include="Source\TypeLobby\TypeLobbyLayerSettings.cs" />
+    <Compile Include="Source\TypeLobby\TypeLobbyLocationSettings.cs" />
     <Compile Include="Source\VisualControls\VCBitmapBand.cs" />
     <Compile Include="Source\VisualControls\VCButton.cs" />
     <Compile Include="Source\VisualControls\VCButtonTargetLair.cs" />

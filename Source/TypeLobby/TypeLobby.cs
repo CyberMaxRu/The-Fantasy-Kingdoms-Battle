@@ -86,12 +86,12 @@ namespace Fantasy_Kingdoms_Battle
             XmlNode nodeLairSettings = n.SelectSingleNode("NeighborhoodSettings");
             Debug.Assert(nodeLairSettings != null);
 
-            LayerSettings = new TypeLobbyLayerSettings[LairsLayers];
-            TypeLobbyLayerSettings ls;
+            LayerSettings = new TypeLobbyLocationSettings[LairsLayers];
+            TypeLobbyLocationSettings ls;
 
             foreach (XmlNode l in nodeLairSettings.SelectNodes("Layer"))
             {
-                ls = new TypeLobbyLayerSettings(this, l, LairsWidth * LairsHeight);
+                ls = new TypeLobbyLocationSettings(this, l, LairsWidth * LairsHeight);
 
                 Debug.Assert(ls.Number >= 0);
                 Debug.Assert(ls.Number <= FormMain.MAX_LAIR_LAYERS - 1);
@@ -164,14 +164,14 @@ namespace Fantasy_Kingdoms_Battle
         internal int LairsLayers{ get; }
         internal int LairsWidth { get; }
         internal int LairsHeight { get; }
-        internal TypeLobbyLayerSettings[] LayerSettings { get; }
+        internal TypeLobbyLocationSettings[] LayerSettings { get; }
         internal int[] CoefFlagScout { get; }
         internal int[] CoefFlagAttack { get; }
         internal int[] CoefFlagDefense { get; }
 
         internal void TuneDeferredLinks()
         {
-            foreach (TypeLobbyLayerSettings ls in LayerSettings)
+            foreach (TypeLobbyLocationSettings ls in LayerSettings)
             {
                 ls.TuneDeferredLinks();
             }

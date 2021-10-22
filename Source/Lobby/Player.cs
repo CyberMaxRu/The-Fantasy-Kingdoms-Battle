@@ -80,7 +80,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             //
-            foreach (TypeLobbyLayerSettings ls in lobby.TypeLobby.LayerSettings)
+            foreach (TypeLobbyLocationSettings ls in lobby.TypeLobby.LayerSettings)
             {
                 Locations.Add(new Location(this, ls));
             }

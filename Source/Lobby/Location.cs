@@ -11,7 +11,7 @@ namespace Fantasy_Kingdoms_Battle
     // Класс локации
     internal sealed class Location : BigEntity
     {
-        public Location(Player player, TypeLobbyLayerSettings settings)
+        public Location(Player player, TypeLobbyLocationSettings settings)
         {
             Player = player;
             Settings = settings;
@@ -56,7 +56,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal Player Player { get; }
-        internal TypeLobbyLayerSettings Settings { get; }
+        internal TypeLobbyLocationSettings Settings { get; }
         internal DescriptorLocation Descriptor { get; }
         internal bool Ownership { get; set; }
         internal Construction[,] Lairs { get; }
