@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ namespace Fantasy_Kingdoms_Battle
         public PanelLocationInfo(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
             cellOwner = new VCCellSimple(this, imgIcon.NextLeft(), imgIcon.ShiftY);
+            cellOwner.ShowHint += CellOwner_ShowHint;
 
             pageControl.AddTab("История", FormMain.Config.Gui48_Book, null);
 
@@ -33,12 +35,11 @@ namespace Fantasy_Kingdoms_Battle
             pageControl.Height = Height - pageControl.ShiftY - FormMain.Config.GridSize;
         }
 
-        protected override void SetEntity(Entity po)
+        internal override void Draw(Graphics g)
         {
-            base.SetEntity(po);
-
             cellOwner.ImageIndex = Location.Ownership ? Location.Player.GetImageIndexAvatar() : -1;
-            cellOwner.ShowHint += CellOwner_ShowHint;
+
+            base.Draw(g);
         }
 
         private void CellOwner_ShowHint(object sender, EventArgs e)
