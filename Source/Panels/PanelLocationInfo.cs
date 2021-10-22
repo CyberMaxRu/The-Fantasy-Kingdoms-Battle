@@ -8,8 +8,12 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class PanelLocationInfo : PanelBaseInfo
     {
+        private VCCellSimple cellOwner;
+
         public PanelLocationInfo(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY)
         {
+            cellOwner = new VCCellSimple(this, imgIcon.NextLeft(), imgIcon.ShiftY);
+
             pageControl.AddTab("История", FormMain.Config.Gui48_Book, null);
 
             pageControl.ApplyMinSize();
@@ -27,6 +31,29 @@ namespace Fantasy_Kingdoms_Battle
             base.ArrangeControls();
 
             pageControl.Height = Height - pageControl.ShiftY - FormMain.Config.GridSize;
+        }
+
+        protected override void SetEntity(Entity po)
+        {
+            base.SetEntity(po);
+
+            cellOwner.ImageIndex = Location.Ownership ? Location.Player.GetImageIndexAvatar() : -1;
+            cellOwner.ShowHint += CellOwner_ShowHint;
+        }
+
+        private void CellOwner_ShowHint(object sender, EventArgs e)
+        {
+            if (Location.Ownership)
+            {
+                Program.formMain.formHint.Clear();
+                Program.formMain.formHint.AddStep2Header(Location.Player.GetName());
+                Program.formMain.formHint.AddStep4Level("Владелец местности");
+            }
+            else
+            {
+                Program.formMain.formHint.Clear();
+                Program.formMain.formHint.AddSimpleHint("У местности нет владельца");
+            }
         }
     }
 }

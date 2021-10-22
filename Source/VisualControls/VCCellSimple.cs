@@ -23,16 +23,18 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (Descriptor != null)
                     ImageIndex = Descriptor.ImageIndex;
-
-                Debug.Assert(ImageIndex != -1);
             }
 
             base.Draw(g);
+
+            if (ImageIndex == -1)
+                g.DrawImageUnscaled(Program.formMain.bmpEmptyEntity, Left, Top);
         }
 
         internal override void PaintBorder(Graphics g)
         {
-            g.DrawImageUnscaled(Program.formMain.bmpBorderForIcon, Left - 2, Top - 1);
+            if (ImageIndex != -1)
+                g.DrawImageUnscaled(Program.formMain.bmpBorderForIcon, Left - 2, Top - 1);
         }
     }
 }
