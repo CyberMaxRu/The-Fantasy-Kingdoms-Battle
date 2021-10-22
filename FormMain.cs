@@ -2216,6 +2216,9 @@ namespace Fantasy_Kingdoms_Battle
                 }
 
                 selectedPlayerObject = po;
+                if ((po == null) && (pageControl.CurrentPage.Location != null))
+                    selectedPlayerObject = pageControl.CurrentPage.Location;
+
                 if (selectedPlayerObject != null)
                     selectedPlayerObject.ShowInfo();
                 else

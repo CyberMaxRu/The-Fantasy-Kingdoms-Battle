@@ -60,6 +60,7 @@ namespace Fantasy_Kingdoms_Battle
         internal Bitmap PageImage { get; set; }
         internal BigEntity SelectedPlayerObject { get; set; }
         internal TypeLobbyLocationSettings Layer { get; }
+        internal Location Location { get; private set; }
 
         private void Page_Click(object sender, EventArgs e)
         {
@@ -68,6 +69,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void UpdateLairs(Player player)
         {
+            Location = player.Locations[Layer.Number];
+
             for (int y = 0; y < Layer.TypeLobby.LairsHeight; y++)
                 for (int x = 0; x < Layer.TypeLobby.LairsWidth; x++)
                 {

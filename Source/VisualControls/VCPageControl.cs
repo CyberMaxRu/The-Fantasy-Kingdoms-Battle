@@ -90,6 +90,10 @@ namespace Fantasy_Kingdoms_Battle
                 CurrentPage = pc;
                 CurrentPage.ManualSelected = true;
                 CurrentPage.Page.Visible = true;
+
+                if ((CurrentPage.Location != null) && (CurrentPage.SelectedPlayerObject is null))
+                    CurrentPage.SelectedPlayerObject = CurrentPage.Location;
+
                 Program.formMain.SelectPlayerObject(CurrentPage.SelectedPlayerObject);
 
                 Program.formMain.SetNeedRedrawFrame();
