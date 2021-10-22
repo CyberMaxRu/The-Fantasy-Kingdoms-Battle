@@ -257,7 +257,6 @@
     <Content Include="Resources\Config\Descriptors\Constructions.xml" />
     <Content Include="Resources\Config\Descriptors\TypeCreatures.xml" />
     <Content Include="Resources\Config\Descriptors\Perks.xml" />
-    <Content Include="Resources\Icons\Avatars.png" />
     <Content Include="Resources\Icons\Background.png" />
     <Content Include="Resources\Icons\BackgroundEntity.png" />
     <Content Include="Resources\Icons\BorderBig.png" />
@@ -269,18 +268,14 @@
     <Content Include="Resources\Icons\BorderObject.png" />
     <Content Include="Resources\Icons\BorderSelected.png" />
     <Content Include="Resources\Icons\BorderWindow.png" />
-    <Content Include="Resources\Icons\border_new_bottom.png" />
-    <Content Include="Resources\Icons\border_new_top.png" />
     <Content Include="Resources\Icons\ButtonDisabled.png" />
     <Content Include="Resources\Icons\ButtonHot.png" />
     <Content Include="Resources\Icons\ButtonNormal.png" />
     <Content Include="Resources\Icons\ButtonPressed.png" />
     <Content Include="Resources\Icons\EmptyEntity.png" />
     <Content Include="Resources\Icons\EmptyEntityOrg.png" />
-    <Content Include="Resources\Icons\Gui.png" />
     <Content Include="Resources\Icons\Gui16.png" />
     <Content Include="Resources\Icons\Gui24.png" />
-    <Content Include="Resources\Icons\Items.png" />
     <Content Include="Resources\Icons\MaskBig.png" />
     <Content Include="Resources\Icons\MaskSmall.png" />
     <Content Include="Resources\Icons\Menu.png" />
@@ -289,7 +284,6 @@
     <Content Include="Resources\Icons\Parameters.png" />
     <Content Include="Resources\Icons\Separator.png" />
     <Content Include="Resources\Icons\Splash.png" />
-    <Content Include="Resources\Icons\StateHero.png" />
     <Content Include="Resources\Icons\Toolbar.png" />
     <Content Include="Resources\Icons\ToolbarBorder.png" />
     <Content Include="Resources\Icons\ToolbarLabel.png" />
