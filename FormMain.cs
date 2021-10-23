@@ -114,7 +114,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCPageButton pageTournament;
         private readonly VCPageButton pageGuilds;
         private readonly VCPageButton pageEconomicConstructions;
-        private readonly VCPageButton pageTemples;
+        //private readonly VCPageButton pageTemples;
         private readonly List<VCPageButton> pagesLairs = new List<VCPageButton>();
 
         private PanelWithPanelEntity panelWarehouse;
@@ -659,7 +659,7 @@ namespace Fantasy_Kingdoms_Battle
                 pageControl.Separate();
                 pageGuilds = pageControl.AddPage(Config.Gui48_Guilds, "Гильдии и военные сооружения", "В гильдиях нанимаются герои", PageGuilds_ShowHint);
                 pageEconomicConstructions = pageControl.AddPage(Config.Gui48_Economy, "Экономические строения", "Надежная экономика - залог победы", PageEconomicConstructions_ShowHint);
-                pageTemples = pageControl.AddPage(Config.Gui48_Temple, "Храмы", "Храмы позволяют нанимать самых сильных героев", PageTemples_ShowHint);
+                //pageTemples = pageControl.AddPage(Config.Gui48_Temple, "Храмы", "Храмы позволяют нанимать самых сильных героев", PageTemples_ShowHint);
                 pageControl.Separate();
 
                 DrawPageConstructions();
@@ -741,7 +741,7 @@ namespace Fantasy_Kingdoms_Battle
                 pageTournament.PageImage = MainControlbackground("Tournament");
                 pageGuilds.PageImage = MainControlbackground("Castle");
                 pageEconomicConstructions.PageImage = MainControlbackground("Relax");
-                pageTemples.PageImage = MainControlbackground("Temple");
+                //pageTemples.PageImage = MainControlbackground("Temple");
 
                 layerMainMenu.ArrangeControls();
                 layerGame.ArrangeControls();
@@ -1311,7 +1311,7 @@ namespace Fantasy_Kingdoms_Battle
             // Показываем сооружения
             foreach (Construction pb in lobby.CurrentPlayer.Constructions)
             {
-                if (pb.TypeConstruction.IsInternalConstruction)
+                if (pb.TypeConstruction.IsInternalConstruction && (pb.TypeConstruction.Category != CategoryConstruction.Temple))
                     pb.TypeConstruction.Panel.Entity = pb;
             }
 
@@ -1370,7 +1370,8 @@ namespace Fantasy_Kingdoms_Battle
                             parent = pageEconomicConstructions.Page;
                             break;
                         case ConstructionPage.Temple:
-                            parent = pageTemples.Page;
+                            parent = null;
+                            //parent = pageTemples.Page;
                             break;
                         default:
                             throw new Exception("Неизвестная страница " + tck.Page.ToString());
@@ -1378,10 +1379,13 @@ namespace Fantasy_Kingdoms_Battle
 
                     Debug.Assert(panels[(int)tck.Page, tck.CoordInPage.Y, tck.CoordInPage.X] == null);
 
-                    tck.Panel = new PanelConstruction(parent, 0, 0);
-                    tck.Panel.ShiftX = (tck.Panel.Width + Config.GridSize) * (tck.CoordInPage.X);
-                    tck.Panel.ShiftY = (tck.Panel.Height + Config.GridSize) * (tck.CoordInPage.Y);
-                    panels[(int)tck.Page, tck.CoordInPage.Y, tck.CoordInPage.X] = tck.Panel;
+                    if (parent != null)
+                    {
+                        tck.Panel = new PanelConstruction(parent, 0, 0);
+                        tck.Panel.ShiftX = (tck.Panel.Width + Config.GridSize) * (tck.CoordInPage.X);
+                        tck.Panel.ShiftY = (tck.Panel.Height + Config.GridSize) * (tck.CoordInPage.Y);
+                        panels[(int)tck.Page, tck.CoordInPage.Y, tck.CoordInPage.X] = tck.Panel;
+                    }
                 }
             }
         }
