@@ -187,7 +187,7 @@
           </TypeConstruction>
           <TypeConstruction>
             <ID>EmptyPlace</ID>
-            <MinQuantity>5</MinQuantity>
+            <MinQuantity>3</MinQuantity>
             <MaxQuantity>6</MaxQuantity>
           </TypeConstruction>
           <TypeConstruction>

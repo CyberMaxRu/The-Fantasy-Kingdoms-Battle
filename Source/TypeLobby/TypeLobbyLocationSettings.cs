@@ -29,9 +29,13 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(CostDefense > 0);
             Debug.Assert(CostDefense <= 10_000);
 
+            TypeLobbyLairSettings tlls;
+            // Загружаем форт для каждой локации
+            tlls = new TypeLobbyLairSettings("Fort", 1);
+            LairsSettings.Add(tlls);
+
             // Загружаем конфигурацию логов
             XmlNode ne = n.SelectSingleNode("TypeConstructions");
-            TypeLobbyLairSettings tlls;
             foreach (XmlNode l in ne.SelectNodes("TypeConstruction"))
             {
                 tlls = new TypeLobbyLairSettings(l);
@@ -39,6 +43,7 @@ namespace Fantasy_Kingdoms_Battle
                 // Проверяем, что тип логова не повторяется
                 foreach (TypeLobbyLairSettings ls in LairsSettings)
                 {
+                    Debug.Assert(tlls.NameTypeLair != "Fort");
                     if (tlls.NameTypeLair == ls.NameTypeLair)
                         throw new Exception($"Тип логова {tlls.NameTypeLair} повторяется в списке типов логов слоя {Number}.");
                 }
