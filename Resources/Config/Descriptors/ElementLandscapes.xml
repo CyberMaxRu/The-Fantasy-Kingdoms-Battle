@@ -13,6 +13,12 @@
     <ImageIndex>165</ImageIndex>
   </ElementLandscape>
   <ElementLandscape>
+    <ID>Plain</ID>
+    <Name>Равнина</Name>
+    <Description>На равнине растет трава.</Description>
+    <ImageIndex>165</ImageIndex>
+  </ElementLandscape>
+  <ElementLandscape>
     <ID>Mountain</ID>
     <Name>Гора</Name>
     <Description>На отвесных горах ничего не растет</Description>
@@ -22,6 +28,12 @@
     <ID>MountainSpring</ID>
     <Name>Горный ключ</Name>
     <Description>Из горного ключа идет чистейшая вода</Description>
+    <ImageIndex>165</ImageIndex>
+  </ElementLandscape>
+  <ElementLandscape>
+    <ID>MountainLake</ID>
+    <Name>Горное озеро</Name>
+    <Description>В озере водится рыба и птица.</Description>
     <ImageIndex>165</ImageIndex>
   </ElementLandscape>
   <ElementLandscape>
@@ -79,6 +91,12 @@
     <ImageIndex>165</ImageIndex>
   </ElementLandscape>
   <ElementLandscape>
+    <ID>Wasteland</ID>
+    <Name>Пустошь</Name>
+    <Description>Здесь ничего нет...</Description>
+    <ImageIndex>165</ImageIndex>
+  </ElementLandscape>
+  <ElementLandscape>
     <ID>Canyon</ID>
     <Name>Каньон</Name>
     <Description>Когда-то тут протекала река.</Description>
@@ -87,12 +105,6 @@
   <ElementLandscape>
     <ID>Lake</ID>
     <Name>Озеро</Name>
-    <Description>В озере водится рыба и птица.</Description>
-    <ImageIndex>165</ImageIndex>
-  </ElementLandscape>
-  <ElementLandscape>
-    <ID>MountainLake</ID>
-    <Name>Горное озеро</Name>
     <Description>В озере водится рыба и птица.</Description>
     <ImageIndex>165</ImageIndex>
   </ElementLandscape>

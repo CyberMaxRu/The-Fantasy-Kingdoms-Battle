@@ -7,26 +7,52 @@
       <Element>Hill</Element>
       <Element>Meadow</Element>
       <Element>Plain</Element>
+      <Element>River</Element>
     </Elements>
   </TypeLandscape>
   <TypeLandscape>
-    <ID>Wood</ID>
+    <ID>Forest</ID>
     <Name>Лес</Name>
+    <Elements>
+      <Element>Forest</Element>
+      <Element>Meadow</Element>
+      <Element>Glade</Element>
+      <Element>River</Element>
+    </Elements>
   </TypeLandscape>
   <TypeLandscape>
     <ID>Swamp</ID>
     <Name>Болото</Name>
+    <Elements>
+      <Element>Swamp</Element>
+      <Element>Marsh</Element>
+      <Element>SwampyForest</Element>
+    </Elements>
   </TypeLandscape>
   <TypeLandscape>
     <ID>Mountain</ID>
     <Name>Горы</Name>
+    <Elements>
+      <Element>Mountain</Element>
+      <Element>MountainSpring</Element>
+      <Element>MountainLake</Element>
+      <Element>Foothills</Element>
+    </Elements>
   </TypeLandscape>
   <TypeLandscape>
     <ID>Wasteland</ID>
     <Name>Пустошь</Name>
+    <Elements>
+      <Element>Wasteland</Element>
+      <Element>Canyon</Element>
+    </Elements>
   </TypeLandscape>
   <TypeLandscape>
     <ID>Desert</ID>
     <Name>Пустыня</Name>
+    <Elements>
+      <Element>Desert</Element>
+      <Element>Oasis</Element>
+    </Elements>
   </TypeLandscape>
 </Descriptors>
