@@ -1318,6 +1318,20 @@ namespace Fantasy_Kingdoms_Battle
 
             ExtraResearch--;
         }
+
+        internal void UnhideAll()
+        {
+            foreach (Location l in Locations)
+            {
+                foreach (Construction c in l.Lairs)
+                {
+                    if (c.Hidden)
+                    {
+                        c.Unhide();
+                    }
+                }
+            }
+        }
     }
 
     internal sealed class UnitOfQueueForBuy

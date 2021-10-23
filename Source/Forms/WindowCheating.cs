@@ -11,6 +11,8 @@ namespace Fantasy_Kingdoms_Battle
     {
         private Settings settings;
 
+        private VCButton btnShowAll;
+
         private VCButton btnAccept;
         private VCButton btnSetAll;
         private VCButton btnResetAll;
@@ -38,8 +40,12 @@ namespace Fantasy_Kingdoms_Battle
             chkbIgnoreBuilders.Hint = "Игнорировать требования к наличию достаточного количества строителей";
             chkbIgnoreBuilders.Checked = settings.CheatingIgnoreBuilders;
 
+            btnShowAll = new VCButton(ClientControl, 0, chkbIgnoreBuilders.NextTop() + (FormMain.Config.GridSize * 2), "Открыть все локации");
+            btnShowAll.Width = 240;
+            btnShowAll.Click += BtnShowAll_Click;
+
             // Кнопки
-            btnAccept = new VCButton(ClientControl, 0, chkbIgnoreBuilders.NextTop() + (FormMain.Config.GridSize * 2), "Принять");
+            btnAccept = new VCButton(ClientControl, 0, btnShowAll.NextTop() + (FormMain.Config.GridSize * 2), "Принять");
             btnAccept.Width = 160;
             btnAccept.Click += BtnAccept_Click;
 
@@ -66,6 +72,11 @@ namespace Fantasy_Kingdoms_Battle
             chkbIgnoreBuilders.Width = ClientControl.Width;
 
             ApplyMaxSize();
+        }
+
+        private void BtnShowAll_Click(object sender, EventArgs e)
+        {
+            Program.formMain.CurrentLobby.CurrentPlayer.UnhideAll();
         }
 
         private void BtnCancel_Click(object sender, EventArgs e)
