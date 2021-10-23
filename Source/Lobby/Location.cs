@@ -66,6 +66,8 @@ namespace Fantasy_Kingdoms_Battle
             return Descriptor.ImageIndex;
         }
 
+        internal override bool GetNormalImage() => Ownership;
+
         internal override void MakeMenu(VCMenuCell[,] menu)
         {
             

@@ -37,6 +37,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
+            imgIcon.ImageIsEnabled = Location.Ownership;
             cellOwner.ImageIndex = Location.Ownership ? Location.Player.GetImageIndexAvatar() : -1;
 
             base.Draw(g);

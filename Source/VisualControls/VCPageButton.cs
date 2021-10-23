@@ -62,6 +62,14 @@ namespace Fantasy_Kingdoms_Battle
         internal TypeLobbyLocationSettings Layer { get; }
         internal Location Location { get; private set; }
 
+        internal override void Draw(Graphics g)
+        {
+            if (Location != null)
+                ImageIsEnabled = Location.Ownership;
+
+            base.Draw(g);
+        }
+
         private void Page_Click(object sender, EventArgs e)
         {
             Program.formMain.SelectPlayerObject(null);
