@@ -75,6 +75,7 @@
     <Compile Include="Source\Descriptors\Descriptor.cs" />
     <Compile Include="Source\Descriptors\DescriptorWithID.cs" />
     <Compile Include="Source\Descriptors\Location\DescriptorLocation.cs" />
+    <Compile Include="Source\Descriptors\Location\DescriptorTypeLandscape.cs" />
     <Compile Include="Source\Forms\WindowCheating.cs" />
     <Compile Include="Source\Lobby\BigEntity.cs" />
     <Compile Include="Source\Lobby\ConstructionProduct.cs" />
@@ -251,6 +252,7 @@
     <Content Include="Resources\Config\Descriptors\Specializations.xml" />
     <Content Include="Resources\Config\Descriptors\TypeAbilities.xml" />
     <Content Include="Resources\Config\Descriptors\TypeConstructions.xml" />
+    <Content Include="Resources\Config\Descriptors\TypeLandscapes.xml" />
     <Content Include="Resources\Config\StartBonus.xml" />
     <Content Include="Resources\Config\Descriptors\StatesCreature.xml" />
     <Content Include="Resources\Config\Descriptors\TypeAttacks.xml" />

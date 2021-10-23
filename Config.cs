@@ -108,6 +108,13 @@ namespace Fantasy_Kingdoms_Battle
                 AutoCreatedPlayer = true;
             }
 
+            // Загрузка типов ландшафта
+            xmlDoc = CreateXmlDocument(@"Config\Descriptors\TypeLandscapes.xml");
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/TypeLandscape"))
+            {
+                TypeLandscapes.Add(new DescriptorTypeLandscape(n));
+            }
+
             // Загрузка локаций
             xmlDoc = CreateXmlDocument(@"Config\Descriptors\Locations.xml");
             foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/Location"))
@@ -277,6 +284,9 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Настраиваем связи
+            foreach (DescriptorTypeLandscape tl in TypeLandscapes)
+                tl.TuneDeferredLinks();
+
             foreach (DescriptorLocation tl in Locations)
                 tl.TuneDeferredLinks();
 
@@ -343,6 +353,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal string PathResources { get; }
+        internal List<DescriptorTypeLandscape> TypeLandscapes { get; } = new List<DescriptorTypeLandscape>();
         internal List<DescriptorLocation> Locations { get; } = new List<DescriptorLocation>();
         internal List<TypeLobby> TypeLobbies { get; } = new List<TypeLobby>();
         internal List<StartBonus> StartBonuses { get; } = new List<StartBonus>();
@@ -725,6 +736,17 @@ namespace Fantasy_Kingdoms_Battle
                 throw new Exception("Существо " + ID + " не найден.");
 
             return null;
+        }
+
+        internal DescriptorTypeLandscape FindTypeLandscape(string ID)
+        {
+            foreach (DescriptorTypeLandscape tt in TypeLandscapes)
+            {
+                if (tt.ID == ID)
+                    return tt;
+            }
+
+            throw new Exception("Тип местности " + ID + " не найден.");
         }
 
         internal DescriptorLocation FindLocation(string ID)

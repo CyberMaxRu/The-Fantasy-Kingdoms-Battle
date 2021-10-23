@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Descriptors>
+  <TypeLandscape>
+    <ID>Plain</ID>
+    <Name>Равнина</Name>
+  </TypeLandscape>
+  <TypeLandscape>
+    <ID>Wood</ID>
+    <Name>Лес</Name>
+  </TypeLandscape>
+  <TypeLandscape>
+    <ID>Swamp</ID>
+    <Name>Болото</Name>
+  </TypeLandscape>
+  <TypeLandscape>
+    <ID>Mountain</ID>
+    <Name>Горы</Name>
+  </TypeLandscape>
+  <TypeLandscape>
+    <ID>Wasteland</ID>
+    <Name>Пустошь</Name>
+  </TypeLandscape>
+  <TypeLandscape>
+    <ID>Desert</ID>
+    <Name>Пустыня</Name>
+  </TypeLandscape>
+</Descriptors>
