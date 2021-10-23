@@ -24,9 +24,9 @@ namespace Fantasy_Kingdoms_Battle
 
         internal Location Location { get => Entity as Location; }
 
-        protected override int GetImageIndex() => Location.Descriptor.ImageIndex;
+        protected override int GetImageIndex() => Location.Settings.ImageIndex;
         protected override bool ImageIsEnabled() => true;// Location.Level > 0;
-        protected override string GetCaption() => Location.Descriptor.Name;
+        protected override string GetCaption() => Location.Settings.Name;
 
         internal override void ArrangeControls()
         {

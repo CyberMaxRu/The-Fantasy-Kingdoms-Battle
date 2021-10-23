@@ -15,7 +15,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             Player = player;
             Settings = settings;
-            Descriptor = settings.Location;
             Ownership = settings.Ownership;
             Lairs = new Construction[Player.Lobby.TypeLobby.LairsHeight, Player.Lobby.TypeLobby.LairsWidth];
 
@@ -57,13 +56,12 @@ namespace Fantasy_Kingdoms_Battle
 
         internal Player Player { get; }
         internal TypeLobbyLocationSettings Settings { get; }
-        internal DescriptorLocation Descriptor { get; }
         internal bool Ownership { get; set; }
         internal Construction[,] Lairs { get; }
 
         internal override int GetImageIndex()
         {
-            return Descriptor.ImageIndex;
+            return Settings.ImageIndex;
         }
 
         internal override bool GetNormalImage() => Ownership;

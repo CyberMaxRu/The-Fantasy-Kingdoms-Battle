@@ -17,7 +17,7 @@
     <StartScoutedLairs>2</StartScoutedLairs>
     <VariantStartBonus>3</VariantStartBonus>
     <MaxLoses>3</MaxLoses>
-    <LairsLayers>8</LairsLayers>
+    <LairsLayers>9</LairsLayers>
     <LairsWidth>4</LairsWidth>
     <LairsHeight>3</LairsHeight>
     <CoefficientFlags>
@@ -78,74 +78,34 @@
     </CoefficientFlags>
     <NeighborhoodSettings>
       <Layer>
+        <ID>LocationMountain</ID>
+        <Name>Горы</Name>
+        <Description>В горах можно добыть много металла. Например, золота. А там где золото - там драконы.</Description>
+        <ImageIndex>166</ImageIndex>
+        <TypeLandscape>Mountain</TypeLandscape>
+        <NameTexture>Mountain</NameTexture>
         <Number>0</Number>
-        <Location>LocationNeighborhoodCapital</Location>
-        <Ownership>true</Ownership>
+        <Ownership>false</Ownership>
         <CostScout>100</CostScout>
         <CostAttack>250</CostAttack>
         <CostDefense>200</CostDefense>
         <TypeConstructions>
           <TypeConstruction>
-            <ID>HolyPlace</ID>
-            <MinQuantity>1</MinQuantity>
-            <MaxQuantity>1</MaxQuantity>
-          </TypeConstruction>
-          <TypeConstruction>
             <ID>Treasure</ID>
-            <MinQuantity>1</MinQuantity>
-            <MaxQuantity>1</MaxQuantity>
-          </TypeConstruction>
-          <TypeConstruction>
-            <ID>PeasantHouse</ID>
-            <MinQuantity>3</MinQuantity>
-            <MaxQuantity>3</MaxQuantity>
-          </TypeConstruction>
-          <TypeConstruction>
-            <ID>TradePost</ID>
-            <MinQuantity>1</MinQuantity>
-            <MaxQuantity>1</MaxQuantity>
-          </TypeConstruction>
-          <TypeConstruction>
-            <ID>CityGraveyard</ID>
-            <MinQuantity>1</MinQuantity>
-            <MaxQuantity>1</MaxQuantity>
-          </TypeConstruction>
-          <TypeConstruction>
-            <ID>Lumberjack</ID>
-            <MinQuantity>1</MinQuantity>
-            <MaxQuantity>1</MaxQuantity>
-          </TypeConstruction>
-          <TypeConstruction>
-            <ID>StoneQuarry</ID>
-            <MinQuantity>1</MinQuantity>
-            <MaxQuantity>1</MaxQuantity>
-          </TypeConstruction>
-          <TypeConstruction>
-            <ID>OreMine</ID>
             <MinQuantity>1</MinQuantity>
             <MaxQuantity>1</MaxQuantity>
           </TypeConstruction>
         </TypeConstructions>
       </Layer>
       <Layer>
+        <ID>LocationSwamp</ID>
+        <Name>Болото</Name>
+        <Description>В болотах Ардании сгинуло немало смелых героев.</Description>
+        <ImageIndex>164</ImageIndex>
+        <TypeLandscape>Forest</TypeLandscape>
+        <NameTexture>Swamp</NameTexture>
         <Number>1</Number>
-        <Location>LocationVillage</Location>
-        <Ownership>true</Ownership>
-        <CostScout>100</CostScout>
-        <CostAttack>250</CostAttack>
-        <CostDefense>200</CostDefense>
-        <TypeConstructions>
-          <TypeConstruction>
-            <ID>Treasure</ID>
-            <MinQuantity>1</MinQuantity>
-            <MaxQuantity>1</MaxQuantity>
-          </TypeConstruction>
-        </TypeConstructions>      
-      </Layer>
-      <Layer>
-        <Number>2</Number>
-        <Location>LocationNeighborhoodVillage</Location>
-        <Ownership>true</Ownership>
+        <Ownership>false</Ownership>
         <CostScout>100</CostScout>
         <CostAttack>250</CostAttack>
         <CostDefense>200</CostDefense>
@@ -158,8 +118,14 @@
         </TypeConstructions>
       </Layer>
       <Layer>
-        <Number>3</Number>
-        <Location>LocationWood</Location>
+        <ID>LocationForest</ID>
+        <Name>Лес</Name>
+        <Description>Лес - полон волков и медведей.</Description>
+        <ImageIndex>165</ImageIndex>
+        <TypeLandscape>Forest</TypeLandscape>
+        <NameTexture>Forest</NameTexture>
+        <Number>2</Number>
+        <Location>LocationForest</Location>
         <Ownership>false</Ownership>
         <CostScout>100</CostScout>
         <CostAttack>250</CostAttack>
@@ -208,34 +174,14 @@
         </TypeConstructions>
       </Layer>
       <Layer>
-        <Number>4</Number>
-        <Location>LocationGraveyard</Location>
-        <Ownership>false</Ownership>
-        <CostScout>200</CostScout>
-        <CostAttack>500</CostAttack>
-        <CostDefense>250</CostDefense>
-        <TypeConstructions>
-          <TypeConstruction>
-            <ID>TradePost</ID>
-            <MinQuantity>1</MinQuantity>
-            <MaxQuantity>2</MaxQuantity>
-          </TypeConstruction>
-          <TypeConstruction>
-            <ID>Treasure</ID>
-            <MinQuantity>5</MinQuantity>
-            <MaxQuantity>15</MaxQuantity>
-          </TypeConstruction>
-          <TypeConstruction>
-            <ID>GraveyardZombie</ID>
-            <MinQuantity>1</MinQuantity>
-            <MaxQuantity>10</MaxQuantity>
-          </TypeConstruction>
-        </TypeConstructions>
-      </Layer>
-      <Layer>
-        <Number>5</Number>
-        <Location>LocationMountain</Location>
-        <Ownership>false</Ownership>
+        <ID>LocationNorthVillage</ID>
+        <Name>Северная деревня</Name>
+        <Description>В деревне живут подданные короля - крестьяне.</Description>
+        <ImageIndex>162</ImageIndex>
+        <TypeLandscape>Plain</TypeLandscape>
+        <NameTexture>AroundCastle</NameTexture>
+        <Number>3</Number>
+        <Ownership>true</Ownership>
         <CostScout>100</CostScout>
         <CostAttack>250</CostAttack>
         <CostDefense>200</CostDefense>
@@ -248,8 +194,88 @@
         </TypeConstructions>
       </Layer>
       <Layer>
+        <ID>LocationCapital</ID>
+        <Name>Столица</Name>
+        <Description>Столица - достаточно безопасное место. Если, конечно, заботиться об этой безопасности.</Description>
+        <ImageIndex>161</ImageIndex>
+        <TypeLandscape>Plain</TypeLandscape>
+        <NameTexture>AroundCastle</NameTexture>
+        <Number>4</Number>
+        <Ownership>true</Ownership>
+        <CostScout>100</CostScout>
+        <CostAttack>250</CostAttack>
+        <CostDefense>200</CostDefense>
+        <TypeConstructions>
+          <TypeConstruction>
+            <ID>HolyPlace</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
+          </TypeConstruction>
+          <TypeConstruction>
+            <ID>Treasure</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
+          </TypeConstruction>
+          <TypeConstruction>
+            <ID>PeasantHouse</ID>
+            <MinQuantity>3</MinQuantity>
+            <MaxQuantity>3</MaxQuantity>
+          </TypeConstruction>
+          <TypeConstruction>
+            <ID>TradePost</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
+          </TypeConstruction>
+          <TypeConstruction>
+            <ID>CityGraveyard</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
+          </TypeConstruction>
+          <TypeConstruction>
+            <ID>Lumberjack</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
+          </TypeConstruction>
+          <TypeConstruction>
+            <ID>StoneQuarry</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
+          </TypeConstruction>
+          <TypeConstruction>
+            <ID>OreMine</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
+          </TypeConstruction>
+        </TypeConstructions>
+      </Layer>
+      <Layer>
+        <ID>LocationSouthVillage</ID>
+        <Name>Южная деревня</Name>
+        <Description>В деревне живут подданные короля - крестьяне.</Description>
+        <ImageIndex>162</ImageIndex>
+        <TypeLandscape>Plain</TypeLandscape>
+        <NameTexture>AroundCastle</NameTexture>
+        <Number>5</Number>
+        <Ownership>true</Ownership>
+        <CostScout>100</CostScout>
+        <CostAttack>250</CostAttack>
+        <CostDefense>200</CostDefense>
+        <TypeConstructions>
+          <TypeConstruction>
+            <ID>Treasure</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
+          </TypeConstruction>
+        </TypeConstructions>      
+      </Layer>
+      <Layer>
+        <ID>LocationPlain</ID>
+        <Name>Равнины</Name>
+        <Description>Равнина - отличное место, чтобы выращивать пшеницу или пасти скот. Но живут здесь огры.</Description>
+        <ImageIndex>167</ImageIndex>
+        <TypeLandscape>Plain</TypeLandscape>
+        <NameTexture>Relax</NameTexture>
         <Number>6</Number>
-        <Location>LocationPlain</Location>
         <Ownership>false</Ownership>
         <CostScout>400</CostScout>
         <CostAttack>1000</CostAttack>
@@ -273,8 +299,33 @@
         </TypeConstructions>
       </Layer>
       <Layer>
+        <ID>LocationWasteland</ID>
+        <Name>Пустошь</Name>
+        <Description>Пустошь - жуткое место. Мало воды, мало деревьев, а еще этот досаждающий гнус...</Description>
+        <ImageIndex>168</ImageIndex>
+        <TypeLandscape>Wasteland</TypeLandscape>
+        <NameTexture>Wasteland</NameTexture>
         <Number>7</Number>
-        <Location>LocationWasteland</Location>
+        <Ownership>false</Ownership>
+        <CostScout>100</CostScout>
+        <CostAttack>250</CostAttack>
+        <CostDefense>200</CostDefense>
+        <TypeConstructions>
+          <TypeConstruction>
+            <ID>Treasure</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
+          </TypeConstruction>
+        </TypeConstructions>
+      </Layer>
+      <Layer>
+        <ID>LocationDesert</ID>
+        <Name>Пустыня</Name>
+        <Description>В пустыне легко затеряться.</Description>
+        <ImageIndex>163</ImageIndex>
+        <TypeLandscape>Desert</TypeLandscape>
+        <NameTexture>Desert</NameTexture>
+        <Number>8</Number>
         <Ownership>false</Ownership>
         <CostScout>100</CostScout>
         <CostAttack>250</CostAttack>

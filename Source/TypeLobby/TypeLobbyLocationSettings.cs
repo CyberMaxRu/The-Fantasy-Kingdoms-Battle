@@ -5,18 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Diagnostics;
+using System.Drawing;
 
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс настройки локации типа лобби
-    internal sealed class TypeLobbyLocationSettings
+    internal sealed class TypeLobbyLocationSettings : DescriptorEntity
     {
-        public TypeLobbyLocationSettings(TypeLobby typeLobby, XmlNode n, int quantitySlotLairs)
+        public TypeLobbyLocationSettings(TypeLobby typeLobby, XmlNode n, int quantitySlotLairs) : base(n)
         {
             TypeLobby = typeLobby;
 
             Number = XmlUtils.GetInteger(n, "Number");
-            Location = FormMain.Config.FindLocation(XmlUtils.GetStringNotNull(n, "Location"));
+            NameTexture = XmlUtils.GetStringNotNull(n, "NameTexture");
             Ownership = XmlUtils.GetBooleanNotNull(n, "Ownership");
             CostScout = XmlUtils.GetInteger(n, "CostScout");
             CostAttack = XmlUtils.GetInteger(n, "CostAttack");
@@ -80,15 +81,18 @@ namespace Fantasy_Kingdoms_Battle
 
         internal TypeLobby TypeLobby { get; }// Тип лобби
         internal int Number { get; }// Номер слоя
-        internal DescriptorLocation Location { get; }
+        internal string NameTexture { get; }
+        internal Bitmap BackgroundImage { get; }// Картинка для фона
         internal bool Ownership { get; set; }// Локация является владением короля
         internal int CostScout { get; }// Стоимость разведки
         internal int CostAttack { get; }// Стоимость атаки
         internal int CostDefense { get; }// Стоимость защиты
         internal List<TypeLobbyLairSettings> LairsSettings { get; } = new List<TypeLobbyLairSettings>();// Настройки типов логов для слоя
 
-        internal void TuneDeferredLinks()
+        internal override void TuneDeferredLinks()
         {
+            base.TuneDeferredLinks();
+
             foreach (TypeLobbyLairSettings ls in LairsSettings)
             {
                 ls.TuneDeferredLinks();

@@ -3,6 +3,11 @@
   <TypeLandscape>
     <ID>Plain</ID>
     <Name>Равнина</Name>
+    <Elements>
+      <Element>Hill</Element>
+      <Element>Meadow</Element>
+      <Element>Plain</Element>
+    </Elements>
   </TypeLandscape>
   <TypeLandscape>
     <ID>Wood</ID>

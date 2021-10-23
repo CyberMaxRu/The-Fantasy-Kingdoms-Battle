@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Descriptors>
+  <ElementLandscape>
+    <ID>Hill</ID>
+    <Name>Холм</Name>
+    <Description>Из холмов можно добывать железо</Description>
+    <ImageIndex>165</ImageIndex>
+  </ElementLandscape>
+  <ElementLandscape>
+    <ID>Meadow</ID>
+    <Name>Луг</Name>
+    <Description>На лугах пасутся дикие животные</Description>
+    <ImageIndex>165</ImageIndex>
+  </ElementLandscape>
+  <ElementLandscape>
+    <ID>Mountain</ID>
+    <Name>Гора</Name>
+    <Description>На отвесных горах ничего не растет</Description>
+    <ImageIndex>165</ImageIndex>
+  </ElementLandscape>
+  <ElementLandscape>
+    <ID>MountainSpring</ID>
+    <Name>Горный ключ</Name>
+    <Description>Из горного ключа идет чистейшая вода</Description>
+    <ImageIndex>165</ImageIndex>
+  </ElementLandscape>
+  <ElementLandscape>
+    <ID>Foothills</ID>
+    <Name>Предгорье</Name>
+    <Description>В предгорьях можно найти редкие растения</Description>
+    <ImageIndex>165</ImageIndex>
+  </ElementLandscape>
+  <ElementLandscape>
+    <ID>Swamp</ID>
+    <Name>Болото</Name>
+    <Description>Болота опасны</Description>
+    <ImageIndex>165</ImageIndex>
+  </ElementLandscape>
+  <ElementLandscape>
+    <ID>Marsh</ID>
+    <Name>Топь</Name>
+    <Description>Болота опасны</Description>
+    <ImageIndex>165</ImageIndex>
+  </ElementLandscape>
+  <ElementLandscape>
+    <ID>SwampyForest</ID>
+    <Name>Заболоченный лес</Name>
+    <Description>Заболоченные леса опасны для передвижения</Description>
+    <ImageIndex>165</ImageIndex>
+  </ElementLandscape>
+  <ElementLandscape>
+    <ID>Forest</ID>
+    <Name>Лес</Name>
+    <Description>Леса полны различных животных</Description>
+    <ImageIndex>165</ImageIndex>
+  </ElementLandscape>
+  <ElementLandscape>
+    <ID>Glade</ID>
+    <Name>Поляна</Name>
+    <Description>На полянах растут редкие растения</Description>
+    <ImageIndex>165</ImageIndex>
+  </ElementLandscape>
+  <ElementLandscape>
+    <ID>River</ID>
+    <Name>Река</Name>
+    <Description>В реках полно рыбы</Description>
+    <ImageIndex>165</ImageIndex>
+  </ElementLandscape>
+  <ElementLandscape>
+    <ID>Desert</ID>
+    <Name>Пустыня</Name>
+    <Description>Пустыня - это очень много песка</Description>
+    <ImageIndex>165</ImageIndex>
+  </ElementLandscape>
+  <ElementLandscape>
+    <ID>Oasis</ID>
+    <Name>Оазис</Name>
+    <Description>Оазис - место, где есть вода</Description>
+    <ImageIndex>165</ImageIndex>
+  </ElementLandscape>
+  <ElementLandscape>
+    <ID>Canyon</ID>
+    <Name>Каньон</Name>
+    <Description>Когда-то тут протекала река.</Description>
+    <ImageIndex>165</ImageIndex>
+  </ElementLandscape>
+  <ElementLandscape>
+    <ID>Lake</ID>
+    <Name>Озеро</Name>
+    <Description>В озере водится рыба и птица.</Description>
+    <ImageIndex>165</ImageIndex>
+  </ElementLandscape>
+  <ElementLandscape>
+    <ID>MountainLake</ID>
+    <Name>Горное озеро</Name>
+    <Description>В озере водится рыба и птица.</Description>
+    <ImageIndex>165</ImageIndex>
+  </ElementLandscape>
+</Descriptors>

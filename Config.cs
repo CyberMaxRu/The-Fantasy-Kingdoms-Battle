@@ -115,11 +115,11 @@ namespace Fantasy_Kingdoms_Battle
                 TypeLandscapes.Add(new DescriptorTypeLandscape(n));
             }
 
-            // Загрузка локаций
-            xmlDoc = CreateXmlDocument(@"Config\Descriptors\Locations.xml");
-            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/Location"))
+            // Загрузка элементов ландшафта
+            xmlDoc = CreateXmlDocument(@"Config\Descriptors\ElementLandscapes.xml");
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/ElementLandscape"))
             {
-                Locations.Add(new DescriptorLocation(n));
+                ElementLandscapes.Add(new DescriptorElementLandscape(n));
             }
 
             // Загрузка конфигураций лобби
@@ -287,8 +287,8 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorTypeLandscape tl in TypeLandscapes)
                 tl.TuneDeferredLinks();
 
-            foreach (DescriptorLocation tl in Locations)
-                tl.TuneDeferredLinks();
+            foreach (DescriptorElementLandscape el in ElementLandscapes)
+                el.TuneDeferredLinks();
 
             foreach (DescriptorTypeAbility ta in TypeAbilities)
                 ta.TuneDeferredLinks();
@@ -354,7 +354,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal string PathResources { get; }
         internal List<DescriptorTypeLandscape> TypeLandscapes { get; } = new List<DescriptorTypeLandscape>();
-        internal List<DescriptorLocation> Locations { get; } = new List<DescriptorLocation>();
+        internal List<DescriptorElementLandscape> ElementLandscapes { get; } = new List<DescriptorElementLandscape>();
         internal List<TypeLobby> TypeLobbies { get; } = new List<TypeLobby>();
         internal List<StartBonus> StartBonuses { get; } = new List<StartBonus>();
         internal List<ComputerPlayer> ComputerPlayers { get; } = new List<ComputerPlayer>();
@@ -746,18 +746,18 @@ namespace Fantasy_Kingdoms_Battle
                     return tt;
             }
 
-            throw new Exception("Тип местности " + ID + " не найден.");
+            throw new Exception("Тип ландшафта " + ID + " не найден.");
         }
 
-        internal DescriptorLocation FindLocation(string ID)
+        internal DescriptorElementLandscape FindElementLandscape(string ID)
         {
-            foreach (DescriptorLocation tl in Locations)
+            foreach (DescriptorElementLandscape el in ElementLandscapes)
             {
-                if (tl.ID == ID)
-                    return tl;
+                if (el.ID == ID)
+                    return el;
             }
 
-            throw new Exception("Локация " + ID + " не найдена.");
+            throw new Exception("Элемент ландшафта " + ID + " не найден.");
         }
 
         private void LoadConfigGame(XmlDocument xmlDoc)

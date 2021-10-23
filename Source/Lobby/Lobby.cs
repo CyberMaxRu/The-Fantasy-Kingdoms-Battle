@@ -66,7 +66,7 @@ namespace Fantasy_Kingdoms_Battle
                             restLairs--;
                         }
 
-                        Debug.Assert(restLairs >= 0, $"{ls.Location.ID}: restLairs {restLairs}.");
+                        Debug.Assert(restLairs >= 0, $"{ls.ID}: restLairs {restLairs}.");
                     }
                     
                     // Если остались свободные ячейки, генерируем по данным о максимальном количестве
