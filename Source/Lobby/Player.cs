@@ -262,8 +262,8 @@ namespace Fantasy_Kingdoms_Battle
                 List<Construction> lairs = new List<Construction>();
                 for (int y = 0; y < ll.Lairs.GetLength(0); y++)
                     for (int x = 0; x < ll.Lairs.GetLength(1); x++)
-                        if (ll.Lairs[y, x].Hidden)
-                            lairs.Add(ll.Lairs[y, x]);
+                        if ((ll.Lairs[y, x].Construction != null) && (ll.Lairs[y, x].Construction.Hidden))
+                            lairs.Add(ll.Lairs[y, x].Construction);
 
                 int scouting = Math.Min(maxScout, lairs.Count);
                 int restScouting = maxScout - scouting;
@@ -291,8 +291,8 @@ namespace Fantasy_Kingdoms_Battle
                 List<Construction> listEmptyPlaces = new List<Construction>();
                 for (int y = 0; y < location.Lairs.GetLength(0); y++)
                     for (int x = 0; x < location.Lairs.GetLength(1); x++)
-                        if (location.Lairs[y, x].TypeConstruction.ID == FormMain.Config.IDEmptyPlace)
-                            listEmptyPlaces.Add(location.Lairs[y, x]);
+                        if (location.Lairs[y, x].Construction.TypeConstruction.ID == FormMain.Config.IDEmptyPlace)
+                            listEmptyPlaces.Add(location.Lairs[y, x].Construction);
 
                 Debug.Assert(quantity <= listEmptyPlaces.Count);
 
@@ -303,7 +303,7 @@ namespace Fantasy_Kingdoms_Battle
                     index = Lobby.Rnd.Next(listEmptyPlaces.Count);
                     Construction empty = listEmptyPlaces[index];
                     Construction pc = new Construction(this, typeConstruction, level, empty.X, empty.Y, empty.Location);
-                    location.Lairs[pc.Y, pc.X] = pc;
+                    location.Lairs[pc.Y, pc.X].Construction = pc;
                     listEmptyPlaces.RemoveAt(index);
                     quantity--;
                 }
@@ -318,14 +318,14 @@ namespace Fantasy_Kingdoms_Battle
             // Убеждаемся, что у нас не сломалось соответствие флагов
             foreach (Location l in Locations)
             {
-                foreach (Construction pl in l.Lairs)
+                foreach (LocationCell lc in l.Lairs)
                 {
-                    if (pl != null)
+                    if ((lc != null) && (lc.Construction != null))
                     {
-                        if (pl.PriorityFlag != PriorityExecution.None)
-                            Debug.Assert(ListFlags.IndexOf(pl) != -1);
+                        if (lc.Construction.PriorityFlag != PriorityExecution.None)
+                            Debug.Assert(ListFlags.IndexOf(lc.Construction) != -1);
                         else
-                            Debug.Assert(ListFlags.IndexOf(pl) == -1);
+                            Debug.Assert(ListFlags.IndexOf(lc.Construction) == -1);
                     }
                 }
             }
@@ -1013,7 +1013,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(l != null);
             Debug.Assert(l.Location.Lairs[l.Y, l.X] != null);
-            Debug.Assert(l.Location.Lairs[l.Y, l.X] == l);
+            Debug.Assert(l.Location.Lairs[l.Y, l.X].Construction == l);
 
             l.Location.Lairs[l.Y, l.X] = null;
 
@@ -1323,11 +1323,14 @@ namespace Fantasy_Kingdoms_Battle
         {
             foreach (Location l in Locations)
             {
-                foreach (Construction c in l.Lairs)
+                foreach (LocationCell lc in l.Lairs)
                 {
-                    if (c.Hidden)
+                    if (lc.Construction != null)
                     {
-                        c.Unhide();
+                        if (lc.Construction.Hidden)
+                        {
+                            lc.Construction.Unhide();
+                        }
                     }
                 }
             }

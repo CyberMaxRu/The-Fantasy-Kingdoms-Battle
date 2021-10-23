@@ -25,7 +25,7 @@ namespace Fantasy_Kingdoms_Battle
             Day = 1;
 
             // Создаем конфигурацию логов
-            Lairs = new List<DescriptorConstruction>[TypeLobby.LairsLayers];
+            Lairs = new List<DescriptorEntity>[TypeLobby.LairsLayers];
             GenerateConfigLairs();
 
             // Создание игроков
@@ -52,7 +52,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 for (int layer = 0; layer < TypeLobby.LairsLayers; layer++)
                 {
-                    Lairs[layer] = new List<DescriptorConstruction>();
+                    Lairs[layer] = new List<DescriptorEntity>();
 
                     ls = TypeLobby.LayerSettings[layer];
                     restLairs = TypeLobby.LairsHeight * TypeLobby.LairsWidth;
@@ -68,11 +68,23 @@ namespace Fantasy_Kingdoms_Battle
 
                         Debug.Assert(restLairs >= 0, $"{ls.ID}: restLairs {restLairs}.");
                     }
-                    
+
+                    // Заполняем элементы ландшафта
+                    foreach (TypeLobbyLocationElement le in ls.ElementSettings)
+                    {
+                        for (int i = 0; i < le.MinQuantity; i++)
+                        {
+                            Lairs[layer].Add(le.ElementLandscape);
+                            restLairs--;
+                        }
+
+                        Debug.Assert(restLairs >= 0, $"{ls.ID}: restLairs {restLairs}.");
+                    }
+
                     // Если остались свободные ячейки, генерируем по данным о максимальном количестве
                     if (restLairs > 0)
                     {
-                        List<DescriptorConstruction> listTypeLairs = new List<DescriptorConstruction>();
+                        List<DescriptorEntity> listTypeLairs = new List<DescriptorEntity>();
                         int q;
                         
                         // Составляем список из максимального числа доступных типов логов
@@ -84,7 +96,17 @@ namespace Fantasy_Kingdoms_Battle
                         }
 
                         Debug.Assert(restLairs <= listTypeLairs.Count);
-                        
+
+                        // Составляем список из максимального числа доступных типов логов
+                        foreach (TypeLobbyLocationElement le in ls.ElementSettings)
+                        {
+                            q = le.MaxQuantity - le.MinQuantity;
+                            for (int j = 0; j < q; j++)
+                                listTypeLairs.Add(le.ElementLandscape);
+                        }
+
+                        Debug.Assert(restLairs <= listTypeLairs.Count);
+
                         // Пока есть места, дергаем случайный тип логова
                         while (restLairs > 0)
                         {
@@ -125,7 +147,7 @@ namespace Fantasy_Kingdoms_Battle
         internal bool HumanIsWin { get; private set; }
         internal StateLobby StateLobby { get; set; }
         internal Random Rnd { get; } = new Random();
-        internal List<DescriptorConstruction>[] Lairs { get; }
+        internal List<DescriptorEntity>[] Lairs { get; }
 
         internal int DayNextBattleBetweenPlayers { get; private set; }// День следующей битвы между игроками
         internal int DaysLeftForBattle { get; private set; }// Осталось дней до следующей битвы между игроками

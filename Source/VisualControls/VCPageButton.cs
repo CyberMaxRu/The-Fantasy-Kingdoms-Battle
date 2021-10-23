@@ -64,8 +64,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Draw(Graphics g)
         {
-            if (Location != null)
-                ImageIsEnabled = Location.Ownership;
+            //if (Location != null)
+            //    ImageIsEnabled = Location.Ownership;
 
             base.Draw(g);
         }

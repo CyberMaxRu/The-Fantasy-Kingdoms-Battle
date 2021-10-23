@@ -84,6 +84,7 @@
     <Compile Include="Source\Lobby\EntityForCreature.cs" />
     <Compile Include="Source\Lobby\GroupItem.cs" />
     <Compile Include="Source\Lobby\Location.cs" />
+    <Compile Include="Source\Lobby\LocationCell.cs" />
     <Compile Include="Source\Lobby\Perk.cs" />
     <Compile Include="Source\Lobby\SecondarySkill.cs" />
     <Compile Include="Source\Lobby\SmallEntity.cs" />
@@ -95,6 +96,7 @@
     <Compile Include="Source\Descriptors\Creature\DescriptorSmallEntity.cs" />
     <Compile Include="Source\Descriptors\Item\DescriptorGroupItems.cs" />
     <Compile Include="Source\Panels\PanelLocationInfo.cs" />
+    <Compile Include="Source\TypeLobby\TypeLobbyLocationElement.cs" />
     <Compile Include="Source\VisualControls\VCCellSimple.cs" />
     <Compile Include="Source\VisualControls\VCIconAndDigitValue.cs" />
     <Compile Include="Source\VisualControls\VCIconButton24.cs" />

@@ -3667,4 +3667,25 @@
       </Level>
     </Levels>
   </Construction>
+  <Construction>
+    <ID>FrontierPost</ID>
+    <Name>Пограничная застава</Name>
+    <Description>Пограничная застава - означает границу Королевства. Дальше идти нельзя.</Description>
+    <ImageIndex>121</ImageIndex>
+    <TypeConstruction>Village</TypeConstruction>
+    <Category>External</Category>
+    <DefaultLevel>0</DefaultLevel>
+    <MaxLevel>1</MaxLevel>
+    <SoundSelect>graveyard_select.wav</SoundSelect>
+    <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
+    <Levels>
+      <Level>
+        <Number>1</Number>
+        <Cost>0</Cost>
+        <Builders>3</Builders>
+        <Income>00</Income>
+        <MaxInhabitant>100</MaxInhabitant>
+      </Level>
+    </Levels>
+  </Construction>
 </Descriptors>

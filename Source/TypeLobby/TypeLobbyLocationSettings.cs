@@ -22,6 +22,7 @@ namespace Fantasy_Kingdoms_Battle
             CostScout = XmlUtils.GetInteger(n, "CostScout");
             CostAttack = XmlUtils.GetInteger(n, "CostAttack");
             CostDefense = XmlUtils.GetInteger(n, "CostDefense");
+            DefaultElement = FormMain.Config.FindElementLandscape(XmlUtils.GetStringNotNull(n, "DefaultElement"));
 
             Debug.Assert(CostScout > 0);
             Debug.Assert(CostScout <= 10_000);
@@ -31,9 +32,29 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(CostDefense <= 10_000);
 
             TypeLobbyLairSettings tlls;
+            TypeLobbyLocationElement tlle;
             // Загружаем форт для каждой локации
             tlls = new TypeLobbyLairSettings("Fort", 1);
             LairsSettings.Add(tlls);
+
+            // Загружаем конфигурацию ландшафтов
+            XmlNode ne1 = n.SelectSingleNode("Elements");
+            if (ne1 != null)
+            {
+                foreach (XmlNode l in ne1.SelectNodes("Element"))
+                {
+                    tlle = new TypeLobbyLocationElement(l);
+
+                    // Проверяем, что тип ландшафта не повторяется
+                    foreach (TypeLobbyLocationElement le in ElementSettings)
+                    {
+                        if (tlle.NameElement == le.NameElement)
+                            throw new Exception($"Ландшафт {tlle.NameElement} повторяется в списке элементов ландшафта локации {ID}.");
+                    }
+
+                    ElementSettings.Add(tlle);
+                }
+            }
 
             // Загружаем конфигурацию логов
             XmlNode ne = n.SelectSingleNode("TypeConstructions");
@@ -61,17 +82,23 @@ namespace Fantasy_Kingdoms_Battle
                 maxQuantity += ls.MaxQuantity;
             }
 
+            foreach (TypeLobbyLocationElement le in ElementSettings)
+            {
+                minQuantity += le.MinQuantity;
+                maxQuantity += le.MaxQuantity;
+            }
+
             // Если количество сооружений меньше количества слотов, добиваем их пустыми местами
             if (maxQuantity < quantitySlotLairs)
             {
                 // Если надо добавлять пустые места, то не должно быть в настройках пустого места. Если есть - значит, неправильно настроено количество
-                foreach (TypeLobbyLairSettings ls in LairsSettings)
-                    Debug.Assert(ls.NameTypeLair != FormMain.Config.IDEmptyPlace);
+                foreach (TypeLobbyLocationElement le1 in ElementSettings)
+                    Debug.Assert(le1.NameElement != DefaultElement.ID);
 
-                TypeLobbyLairSettings s = new TypeLobbyLairSettings(FormMain.Config.IDEmptyPlace, quantitySlotLairs - maxQuantity);
-                LairsSettings.Add(s);
-                minQuantity += s.MinQuantity;
-                maxQuantity += s.MaxQuantity;
+                TypeLobbyLocationElement le = new TypeLobbyLocationElement(DefaultElement.ID, quantitySlotLairs - maxQuantity);
+                ElementSettings.Add(le);
+                minQuantity += le.MinQuantity;
+                maxQuantity += le.MaxQuantity;
             }
 
             Debug.Assert(minQuantity <= quantitySlotLairs);
@@ -87,11 +114,18 @@ namespace Fantasy_Kingdoms_Battle
         internal int CostScout { get; }// Стоимость разведки
         internal int CostAttack { get; }// Стоимость атаки
         internal int CostDefense { get; }// Стоимость защиты
+        internal DescriptorElementLandscape DefaultElement { get; }
+        internal List<TypeLobbyLocationElement> ElementSettings { get; } = new List<TypeLobbyLocationElement>();// Настройки ландшафта
         internal List<TypeLobbyLairSettings> LairsSettings { get; } = new List<TypeLobbyLairSettings>();// Настройки типов логов для слоя
 
         internal override void TuneDeferredLinks()
         {
             base.TuneDeferredLinks();
+
+            foreach (TypeLobbyLocationElement le in ElementSettings)
+            {
+                le.TuneDeferredLinks();
+            }
 
             foreach (TypeLobbyLairSettings ls in LairsSettings)
             {

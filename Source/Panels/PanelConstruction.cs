@@ -393,7 +393,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Construction = po as Construction;
             SwitchStyle();
-
+            
             Debug.Assert(Construction.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
         }
 

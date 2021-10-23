@@ -89,9 +89,37 @@
         <CostScout>100</CostScout>
         <CostAttack>250</CostAttack>
         <CostDefense>200</CostDefense>
+        <DefaultElement>Mountain</DefaultElement>
+        <Elements>
+          <Element>
+            <ID>MountainLake</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
+          </Element>
+          <Element>
+            <ID>MountainSpring</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
+          </Element>
+          <Element>
+            <ID>Foothills</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
+          </Element>
+        </Elements>
         <TypeConstructions>
           <TypeConstruction>
-            <ID>Treasure</ID>
+            <ID>DragonCave</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
+          </TypeConstruction>
+          <TypeConstruction>
+            <ID>FrontierPost</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
+          </TypeConstruction>
+          <TypeConstruction>
+            <ID>OreMine</ID>
             <MinQuantity>1</MinQuantity>
             <MaxQuantity>1</MaxQuantity>
           </TypeConstruction>
@@ -109,6 +137,7 @@
         <CostScout>100</CostScout>
         <CostAttack>250</CostAttack>
         <CostDefense>200</CostDefense>
+        <DefaultElement>Swamp</DefaultElement>
         <TypeConstructions>
           <TypeConstruction>
             <ID>Treasure</ID>
@@ -130,6 +159,7 @@
         <CostScout>100</CostScout>
         <CostAttack>250</CostAttack>
         <CostDefense>200</CostDefense>
+        <DefaultElement>Forest</DefaultElement>
         <TypeConstructions>
           <TypeConstruction>
             <ID>TradePost</ID>
@@ -185,6 +215,7 @@
         <CostScout>100</CostScout>
         <CostAttack>250</CostAttack>
         <CostDefense>200</CostDefense>
+        <DefaultElement>Plain</DefaultElement>
         <TypeConstructions>
           <TypeConstruction>
             <ID>Treasure</ID>
@@ -205,6 +236,7 @@
         <CostScout>100</CostScout>
         <CostAttack>250</CostAttack>
         <CostDefense>200</CostDefense>
+        <DefaultElement>Plain</DefaultElement>
         <TypeConstructions>
           <TypeConstruction>
             <ID>HolyPlace</ID>
@@ -260,6 +292,7 @@
         <CostScout>100</CostScout>
         <CostAttack>250</CostAttack>
         <CostDefense>200</CostDefense>
+        <DefaultElement>Plain</DefaultElement>
         <TypeConstructions>
           <TypeConstruction>
             <ID>Treasure</ID>
@@ -280,6 +313,7 @@
         <CostScout>400</CostScout>
         <CostAttack>1000</CostAttack>
         <CostDefense>500</CostDefense>
+        <DefaultElement>Plain</DefaultElement>
         <TypeConstructions>
           <TypeConstruction>
             <ID>TradePost</ID>
@@ -310,6 +344,7 @@
         <CostScout>100</CostScout>
         <CostAttack>250</CostAttack>
         <CostDefense>200</CostDefense>
+        <DefaultElement>Wasteland</DefaultElement>
         <TypeConstructions>
           <TypeConstruction>
             <ID>Treasure</ID>
@@ -330,6 +365,7 @@
         <CostScout>100</CostScout>
         <CostAttack>250</CostAttack>
         <CostDefense>200</CostDefense>
+        <DefaultElement>Desert</DefaultElement>
         <TypeConstructions>
           <TypeConstruction>
             <ID>Treasure</ID>

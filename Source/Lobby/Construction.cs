@@ -1003,7 +1003,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Construction pl = new Construction(Player, TypeConstruction.TypePlaceForConstruct, TypeConstruction.DefaultLevel, X, Y, Location);
             pl.Hidden = false;
-            Location.Lairs[Y, X] = pl;
+            Location.Lairs[Y, X].Construction = pl;
         }
 
         internal void DoDefense()
