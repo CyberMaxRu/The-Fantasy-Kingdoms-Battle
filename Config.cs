@@ -412,7 +412,6 @@ namespace Fantasy_Kingdoms_Battle
         internal string IDHeroPeasant { get; private set; }// ID типа героя - крестьянин
         internal string IDConstructionCastle { get; private set; }// ID Замка
         internal string IDPeasantHouse { get; private set; }// ID крестьянского дома
-        internal string IDEmptyPlace { get; private set; }// ID пустого места
         internal string IDHolyPlace { get; private set; }// ID Святой земли
         internal string IDTradePost { get; private set; }// ID торгового поста
         internal string IDCityGraveyard { get; private set; }// ID торгового поста
@@ -847,8 +846,6 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(IDConstructionCastle.Length > 0);
             IDPeasantHouse = xmlDoc.SelectSingleNode("Game/Links/PeasantHouse").InnerText;
             Debug.Assert(IDPeasantHouse.Length > 0);
-            IDEmptyPlace = xmlDoc.SelectSingleNode("Game/Links/EmptyPlace").InnerText;
-            Debug.Assert(IDEmptyPlace.Length > 0);
             IDHolyPlace = xmlDoc.SelectSingleNode("Game/Links/HolyPlace").InnerText;
             Debug.Assert(IDHolyPlace.Length > 0);
             IDTradePost = xmlDoc.SelectSingleNode("Game/Links/TradePost").InnerText;
