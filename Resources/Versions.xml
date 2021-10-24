@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Versions>
-  <ActualVersion>0.3.15</ActualVersion>
+  <ActualVersion>0.3.16</ActualVersion>
   <Version>
     <Number>0.2.0</Number>
     <DateBuild>07.12.2020</DateBuild>
@@ -540,6 +540,14 @@
     <Description>
       <Line>[!] Фон на страницах сооружений.</Line>
       <Line>[!] Множество мелких улучшений.</Line>
+    </Description>
+  </Version>
+  <Version>
+    <Number>0.3.16</Number>
+    <DateBuild>24.10.2021</DateBuild>
+    <Description>
+      <Line>[!] Переработка локаций. Обновлена локация "Горы".</Line>
+      <Line>[*] Несколько мелких улучшений и исправленных ошибок.</Line>
     </Description>
   </Version>
 </Versions>
