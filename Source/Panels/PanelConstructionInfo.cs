@@ -16,10 +16,12 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VisualControl tabProducts;
         private VCLabel lblSectionVisits;
         private VCLabel lblSectionExtensions;
+        private VCLabel lblSectionResources;
         private VCLabel lblSectionGoods;
         private VCLabel lblSectionAbilities;
         private readonly PanelWithPanelEntity panelVisits;
         private readonly PanelWithPanelEntity panelExtensions;
+        private readonly PanelWithPanelEntity panelResources;
         private readonly PanelWithPanelEntity panelGoods;
         private readonly PanelWithPanelEntity panelAbilities;
         private readonly PanelWithPanelEntity panelInhabitants;
@@ -56,6 +58,8 @@ namespace Fantasy_Kingdoms_Battle
             lblSectionVisits.StringFormat.Alignment = StringAlignment.Near;
             lblSectionExtensions = new VCLabel(tabProducts, 0, 0, Program.formMain.fontSmallC, Color.White, 16, "Доп. сооружения:");
             lblSectionExtensions.StringFormat.Alignment = StringAlignment.Near;
+            lblSectionResources = new VCLabel(tabProducts, 0, 0, Program.formMain.fontSmallC, Color.White, 16, "Ресурсы:");
+            lblSectionResources.StringFormat.Alignment = StringAlignment.Near;
             lblSectionGoods = new VCLabel(tabProducts, 0, 0, Program.formMain.fontSmallC, Color.White, 16, "Товары:");
             lblSectionGoods.StringFormat.Alignment = StringAlignment.Near;
             lblSectionAbilities = new VCLabel(tabProducts, 0, 0, Program.formMain.fontSmallC, Color.White, 16, "Умения:");
@@ -65,6 +69,8 @@ namespace Fantasy_Kingdoms_Battle
             tabProducts.AddControl(panelVisits);
             panelExtensions = new PanelWithPanelEntity(4, false);
             tabProducts.AddControl(panelExtensions);
+            panelResources = new PanelWithPanelEntity(4, false);
+            tabProducts.AddControl(panelResources);
             panelGoods = new PanelWithPanelEntity(4, false);
             tabProducts.AddControl(panelGoods);
             panelAbilities = new PanelWithPanelEntity(4, false);
@@ -78,6 +84,7 @@ namespace Fantasy_Kingdoms_Battle
             tabProducts.Width = pageControl.Width;
             lblSectionVisits.Width = pageControl.Width;
             lblSectionExtensions.Width = pageControl.Width;
+            lblSectionResources.Width = pageControl.Width;
             lblSectionGoods.Width = pageControl.Width;
             lblSectionAbilities.Width = pageControl.Width;
         }
@@ -113,6 +120,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             lblTypeConstruction.Text = Construction.TypeConstruction.TypeConstruction.Name;
             imgIcon.Level = Construction.GetLevel();
+            imgIcon.ImageIsEnabled = Construction.ImageEnabled();
 
             if (Construction.TypeConstruction.HasTreasury)
             {
@@ -130,14 +138,34 @@ namespace Fantasy_Kingdoms_Battle
             int nextTop = 0;
             DrawList(lblSectionVisits, panelVisits, Construction.Visits);
             DrawList(lblSectionExtensions, panelExtensions, Construction.Extensions);
+            DrawList(lblSectionResources, panelResources, Construction.Resources);
             DrawList(lblSectionGoods, panelGoods, Construction.Goods);
             DrawList(lblSectionAbilities, panelAbilities, Construction.Abilities);
             tabProducts.ArrangeControls();
 
-            panelInhabitants.ApplyList(Construction.Heroes);
+            if (Construction.TypeConstruction.Category != CategoryConstruction.Lair)
+            {
+                panelInhabitants.ApplyList(Construction.Heroes);
 
-            btnProducts.Quantity = Construction.AllProducts.Count;
-            btnInhabitants.Quantity = Construction.Heroes.Count;
+                btnProducts.Quantity = Construction.AllProducts.Count;
+                btnInhabitants.Quantity = Construction.Heroes.Count;
+            }
+            else
+            {
+                if (Construction.Hidden)
+                {
+                    panelInhabitants.SetUnknownList();
+                    btnInhabitants.Quantity = 0;
+                }
+                else
+                {
+                    panelInhabitants.ApplyList(Construction.Monsters);
+                    btnInhabitants.Quantity = Construction.Monsters.Count;
+                }
+
+                panelVisits.ApplyList(Construction.listAttackedHero);
+                btnVisitors.Quantity = Construction.listAttackedHero.Count;
+            }
 
             lblInterest.ImageIsEnabled = Construction.Level > 0;
             lblInterest.Text = Construction.GetInterest() > 0 ? Utils.DecIntegerBy10(Construction.GetInterest(), false) : "";

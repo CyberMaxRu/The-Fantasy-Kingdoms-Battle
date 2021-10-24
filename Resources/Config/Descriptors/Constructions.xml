@@ -2835,6 +2835,15 @@
     <Category>Lair</Category>
     <SoundSelect>graveyard_select.wav</SoundSelect>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
+    <Levels>
+      <Level>
+        <Number>1</Number>
+        <Cost>0</Cost>
+        <Builders>0</Builders>
+        <Income>0</Income>
+        <MaxInhabitant>100</MaxInhabitant>
+      </Level>
+    </Levels>
     <Monsters>
       <Monster>
         <ID>Zombie</ID>
@@ -2859,6 +2868,15 @@
     <Category>Lair</Category>
     <SoundSelect>logovo_skeleton_select.wav</SoundSelect>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
+    <Levels>
+      <Level>
+        <Number>1</Number>
+        <Cost>0</Cost>
+        <Builders>0</Builders>
+        <Income>0</Income>
+        <MaxInhabitant>100</MaxInhabitant>
+      </Level>
+    </Levels>
     <Monsters>
       <Monster>
         <ID>Skelet</ID>
@@ -2891,6 +2909,15 @@
     <Category>Lair</Category>
     <SoundSelect>logovo_vampire_select.wav</SoundSelect>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
+    <Levels>
+      <Level>
+        <Number>1</Number>
+        <Cost>0</Cost>
+        <Builders>0</Builders>
+        <Income>0</Income>
+        <MaxInhabitant>100</MaxInhabitant>
+      </Level>
+    </Levels>
     <Monsters>
       <Monster>
         <ID>Ghost</ID>
@@ -2923,6 +2950,15 @@
     <Category>Lair</Category>
     <SoundSelect>logovo_vampire_select.wav</SoundSelect>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
+    <Levels>
+      <Level>
+        <Number>1</Number>
+        <Cost>0</Cost>
+        <Builders>0</Builders>
+        <Income>0</Income>
+        <MaxInhabitant>100</MaxInhabitant>
+      </Level>
+    </Levels>
     <Monsters>
       <Monster>
         <ID>Vampire</ID>
@@ -2947,6 +2983,15 @@
     <Category>Lair</Category>
     <SoundSelect>logovo_wolf_select.wav</SoundSelect>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
+    <Levels>
+      <Level>
+        <Number>1</Number>
+        <Cost>0</Cost>
+        <Builders>0</Builders>
+        <Income>0</Income>
+        <MaxInhabitant>100</MaxInhabitant>
+      </Level>
+    </Levels>
     <Monsters>
       <Monster>
         <ID>Wolf</ID>
@@ -2979,6 +3024,15 @@
     <Category>Lair</Category>
     <SoundSelect>logovo_serpent_select.wav</SoundSelect>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
+    <Levels>
+      <Level>
+        <Number>1</Number>
+        <Cost>0</Cost>
+        <Builders>0</Builders>
+        <Income>0</Income>
+        <MaxInhabitant>100</MaxInhabitant>
+      </Level>
+    </Levels>
     <Monsters>
       <Monster>
         <ID>Serpent</ID>
@@ -3003,6 +3057,15 @@
     <Category>Lair</Category>
     <SoundSelect>logovo_bear_select.wav</SoundSelect>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
+    <Levels>
+      <Level>
+        <Number>1</Number>
+        <Cost>0</Cost>
+        <Builders>0</Builders>
+        <Income>0</Income>
+        <MaxInhabitant>100</MaxInhabitant>
+      </Level>
+    </Levels>
     <Monsters>
       <Monster>
         <ID>Bear</ID>
@@ -3035,6 +3098,15 @@
     <Category>Lair</Category>
     <SoundSelect>logovo_bearman_select.wav</SoundSelect>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
+    <Levels>
+      <Level>
+        <Number>1</Number>
+        <Cost>0</Cost>
+        <Builders>0</Builders>
+        <Income>0</Income>
+        <MaxInhabitant>100</MaxInhabitant>
+      </Level>
+    </Levels>
     <Monsters>
       <Monster>
         <ID>WerewolfBear</ID>
@@ -3059,6 +3131,15 @@
     <Category>Lair</Category>
     <SoundSelect>logovo_minotaur_select.wav</SoundSelect>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
+    <Levels>
+      <Level>
+        <Number>1</Number>
+        <Cost>0</Cost>
+        <Builders>0</Builders>
+        <Income>0</Income>
+        <MaxInhabitant>100</MaxInhabitant>
+      </Level>
+    </Levels>
     <Monsters>
       <Monster>
         <ID>Minotaur</ID>
@@ -3091,6 +3172,15 @@
     <Category>Lair</Category>
     <SoundSelect>logovo_ogre_select.wav</SoundSelect>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
+    <Levels>
+      <Level>
+        <Number>1</Number>
+        <Cost>0</Cost>
+        <Builders>0</Builders>
+        <Income>0</Income>
+        <MaxInhabitant>100</MaxInhabitant>
+      </Level>
+    </Levels>
     <Monsters>
       <Monster>
         <ID>Ogre</ID>
@@ -3115,6 +3205,15 @@
     <Category>Lair</Category>
     <SoundSelect>logovo_wolfman_select.wav</SoundSelect>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
+    <Levels>
+      <Level>
+        <Number>1</Number>
+        <Cost>0</Cost>
+        <Builders>0</Builders>
+        <Income>0</Income>
+        <MaxInhabitant>100</MaxInhabitant>
+      </Level>
+    </Levels>
     <Monsters>
       <Monster>
         <ID>Werewolf</ID>
@@ -3139,6 +3238,15 @@
     <Category>Lair</Category>
     <SoundSelect>logovo_boss_dragon_select.wav</SoundSelect>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
+    <Levels>
+      <Level>
+        <Number>1</Number>
+        <Cost>0</Cost>
+        <Builders>0</Builders>
+        <Income>0</Income>
+        <MaxInhabitant>100</MaxInhabitant>
+      </Level>
+    </Levels>
     <Monsters>
       <Monster>
         <ID>Dragon</ID>
@@ -3163,6 +3271,15 @@
     <Category>Lair</Category>
     <SoundSelect>sewers_select.wav</SoundSelect>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
+    <Levels>
+      <Level>
+        <Number>1</Number>
+        <Cost>0</Cost>
+        <Builders>0</Builders>
+        <Income>0</Income>
+        <MaxInhabitant>100</MaxInhabitant>
+      </Level>
+    </Levels>
     <Monsters>
       <Monster>
         <ID>Dragon</ID>
@@ -3187,6 +3304,15 @@
     <Category>Lair</Category>
     <SoundSelect>chest_select.wav</SoundSelect>
     <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
+    <Levels>
+      <Level>
+        <Number>1</Number>
+        <Cost>0</Cost>
+        <Builders>0</Builders>
+        <Income>0</Income>
+        <MaxInhabitant>100</MaxInhabitant>
+      </Level>
+    </Levels>
     <HiddenReward>
       <Gold>1000</Gold>
     </HiddenReward>
@@ -3200,6 +3326,15 @@
     <Category>Lair</Category>
     <SoundSelect>logovo_elemental_earth_select.wav</SoundSelect>
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
+    <Levels>
+      <Level>
+        <Number>1</Number>
+        <Cost>0</Cost>
+        <Builders>0</Builders>
+        <Income>0</Income>
+        <MaxInhabitant>100</MaxInhabitant>
+      </Level>
+    </Levels>
     <Monsters>
       <Monster>
         <ID>ElementalEarth</ID>
@@ -3224,6 +3359,15 @@
     <Category>Lair</Category>
     <SoundSelect>logovo_elemental_fire_select.wav</SoundSelect>
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
+    <Levels>
+      <Level>
+        <Number>1</Number>
+        <Cost>0</Cost>
+        <Builders>0</Builders>
+        <Income>0</Income>
+        <MaxInhabitant>100</MaxInhabitant>
+      </Level>
+    </Levels>
     <Monsters>
       <Monster>
         <ID>ElementalFire</ID>
@@ -3315,6 +3459,15 @@
     <Category>BasePlace</Category>
     <SoundSelect>empty_place.wav</SoundSelect>
     <TypePlaceForConstruct></TypePlaceForConstruct>
+    <Levels>
+      <Level>
+        <Number>1</Number>
+        <Cost>0</Cost>
+        <Builders>0</Builders>
+        <Income>00</Income>
+        <MaxInhabitant>100</MaxInhabitant>
+      </Level>
+    </Levels>
     <Reward>
     </Reward>
   </Construction>
@@ -3776,6 +3929,9 @@
         <Builders>0</Builders>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
+        <Entities>
+          <Entity>ResourceMountainLakeFish</Entity>
+        </Entities>
       </Level>
     </Levels>
   </Construction>
@@ -4026,7 +4182,7 @@
         <Number>1</Number>
         <Cost>0</Cost>
         <Builders>0</Builders>
-        <Income>00</Income>
+        <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>

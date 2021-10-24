@@ -99,6 +99,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<ConstructionProduct> AllProducts { get; } = new List<ConstructionProduct>();// Все сущности в сооружении
         internal List<ConstructionProduct> Visits { get; } = new List<ConstructionProduct>();// Посещения, события, турниры
         internal List<ConstructionProduct> Extensions { get; } = new List<ConstructionProduct>();// Дополнения
+        internal List<ConstructionProduct> Resources { get; } = new List<ConstructionProduct>();// Ресурсы
         internal List<ConstructionProduct> Goods { get; } = new List<ConstructionProduct>();// Товары, доступные в строении
         internal List<ConstructionProduct> Abilities { get; } = new List<ConstructionProduct>();// Умения, доступные в строении
         internal ConstructionProduct MainVisit { get; private set; }// Основное посещение сооружения
@@ -107,23 +108,26 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void Build()
         {
-            Debug.Assert(Level < TypeConstruction.MaxLevel);
-            Debug.Assert(CheckRequirements());
-            Debug.Assert(Player.Gold >= CostBuyOrUpgrade());
-            Debug.Assert(!BuildedOrUpgraded);
-
-            Player.Constructed(this);
-
-            if (Level > 0)
+            if ((TypeConstruction.Category != CategoryConstruction.Lair) && (TypeConstruction.Category != CategoryConstruction.ElementLandscape))
             {
-                // Убираем перки от сооружения
-                foreach (DescriptorPerk dp in TypeConstruction.Levels[Level].ListPerks)
-                    Player.RemovePerkFromConstruction(this, dp);
+                Debug.Assert(Level < TypeConstruction.MaxLevel);
+                Debug.Assert(CheckRequirements());
+                Debug.Assert(Player.Gold >= CostBuyOrUpgrade());
+                Debug.Assert(!BuildedOrUpgraded);
 
-                // Убираем товар посещения
-                if (TypeConstruction.Levels[Level].DescriptorVisit != null)
+                Player.Constructed(this);
+
+                if (Level > 0)
                 {
-                    RemoveProduct(TypeConstruction.Levels[Level].DescriptorVisit);
+                    // Убираем перки от сооружения
+                    foreach (DescriptorPerk dp in TypeConstruction.Levels[Level].ListPerks)
+                        Player.RemovePerkFromConstruction(this, dp);
+
+                    // Убираем товар посещения
+                    if (TypeConstruction.Levels[Level].DescriptorVisit != null)
+                    {
+                        RemoveProduct(TypeConstruction.Levels[Level].DescriptorVisit);
+                    }
                 }
             }
 
@@ -139,30 +143,34 @@ namespace Fantasy_Kingdoms_Battle
             //
             CreateProducts();
 
-            if (!Player.Initialization)
+            if ((TypeConstruction.Category != CategoryConstruction.Lair) && (TypeConstruction.Category != CategoryConstruction.ElementLandscape))
             {
-                if (!BuildedOrUpgraded)
-                    BuildedOrUpgraded = true;
-                else
-                    Player.UseExtraLevelUp();
-            }
 
-            // Убираем операцию постройки из меню
-            ConstructionCellMenu cmBuild = null;
-            foreach (ConstructionCellMenu cm in Researches)
-            {
-                if (cm is CellMenuConstructionLevelUp cml)
-                    if (cml.Descriptor.Number == Level)
-                    {
-                        cmBuild = cml;
-                        break;
-                    }
-            }
+                if (!Player.Initialization)
+                {
+                    if (!BuildedOrUpgraded)
+                        BuildedOrUpgraded = true;
+                    else
+                        Player.UseExtraLevelUp();
+                }
 
-            if (cmBuild != null)
-            {
-                Researches.Remove(cmBuild);
-                Program.formMain.UpdateMenu();
+                // Убираем операцию постройки из меню
+                ConstructionCellMenu cmBuild = null;
+                foreach (ConstructionCellMenu cm in Researches)
+                {
+                    if (cm is CellMenuConstructionLevelUp cml)
+                        if (cml.Descriptor.Number == Level)
+                        {
+                            cmBuild = cml;
+                            break;
+                        }
+                }
+
+                if (cmBuild != null)
+                {
+                    Researches.Remove(cmBuild);
+                    Program.formMain.UpdateMenu();
+                }
             }
 
             // Обновляем список перков от сооружения
@@ -194,6 +202,8 @@ namespace Fantasy_Kingdoms_Battle
                     AddProduct(new ConstructionProduct(dce));
                 else if (se is DescriptorItem di)
                     AddProduct(new ConstructionProduct(di));
+                else if (se is DescriptorResource dr)
+                    AddProduct(new ConstructionProduct(dr));
                 else
                     throw new Exception($"Неизвестный товар: {se.ID}");
             }
@@ -533,8 +543,10 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
             {
-                Program.formMain.panelLairInfo.Visible = true;
-                Program.formMain.panelLairInfo.Entity = this;
+                Program.formMain.panelConstructionInfo.Visible = true;
+                Program.formMain.panelConstructionInfo.Entity = this;
+//                Program.formMain.panelLairInfo.Visible = true;
+//                Program.formMain.panelLairInfo.Entity = this;
             }
 
         }
@@ -1247,6 +1259,11 @@ namespace Fantasy_Kingdoms_Battle
                 Goods.Add(cp);
             }
 
+            if (cp.DescriptorResource != null)
+            {
+                Resources.Add(cp);
+            }
+
             if ((cp.DescriptorConstructionVisit != null) || (cp.DescriptorConstructionEvent != null))
             {
                 Debug.Assert(Visits.Count <= 1);
@@ -1319,6 +1336,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Visits.Remove(element);
             Extensions.Remove(element);
+            Resources.Remove(element);
             Goods.Remove(element);
             Abilities.Remove(element);
         }

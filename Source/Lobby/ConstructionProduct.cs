@@ -63,6 +63,14 @@ namespace Fantasy_Kingdoms_Battle
             Interest = descriptor.Interest;
         }
 
+        public ConstructionProduct(DescriptorResource descriptor) : base()
+        {
+            Debug.Assert(descriptor != null);
+
+            DescriptorResource = descriptor;
+            Descriptor = descriptor;
+        }
+
         internal DescriptorSmallEntity Descriptor { get; }
         internal DescriptorAbility DescriptorAbility { get; }
         internal DescriptorItem DescriptorItem { get; }
@@ -70,6 +78,7 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorConstructionEvent DescriptorConstructionEvent { get; }
         internal DescriptorConstructionVisit DescriptorConstructionVisit { get; }
         internal DescriptorConstructionExtension DescriptorConstructionExtension { get; }
+        internal DescriptorResource DescriptorResource { get; }
         internal int Duration { get; private set; }// Длительность нахождения товара в сооружении
         internal int Counter { get; set; }// Счетчик дней товара в сооружении
         internal int Interest { get; set; }// Интерес героев к сущности

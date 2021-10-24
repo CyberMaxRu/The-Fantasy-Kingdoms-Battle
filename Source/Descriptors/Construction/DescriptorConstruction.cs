@@ -63,6 +63,9 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
             {
+                DefaultLevel = 1;
+                MaxLevel = 1;
+
                 if (Category != CategoryConstruction.ElementLandscape)
                 {
                     XmlFieldNotExist(n, "DefaultLevel");
@@ -303,7 +306,7 @@ namespace Fantasy_Kingdoms_Battle
 
             nameTypePlaceForConstruct = null;
 
-            if (DefaultLevel == 1)
+            if ((DefaultLevel == 1) && (Levels != null) && (Levels[1] != null))// Убрать вторую проверку после доработки логов
                 ListResearches.Remove(Levels[1]);
         }
 

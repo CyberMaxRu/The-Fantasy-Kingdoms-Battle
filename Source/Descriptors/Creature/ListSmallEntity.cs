@@ -46,6 +46,8 @@ namespace Fantasy_Kingdoms_Battle
                     e = FormMain.Config.FindConstructionExtension(entity, false);
                     if (e is null)
                         e = FormMain.Config.FindItem(entity, false);
+                    if (e is null)
+                        e = FormMain.Config.FindResource(entity, false);
 
                     Debug.Assert(e != null);
 

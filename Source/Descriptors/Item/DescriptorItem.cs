@@ -8,7 +8,7 @@ using System.Xml;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal enum CategoryItem { Potion, Enchant, Artifact, Elixir, Food, Thing, Weapon, Armour, Quiver, Monster, Game, Tournament }
+    internal enum CategoryItem { Potion, Enchant, Artifact, Elixir, Food, Thing, Weapon, Armour, Quiver, Monster, Game, Tournament, Resource }
 
     // Класс предмета
     internal sealed class DescriptorItem : DescriptorSmallEntity

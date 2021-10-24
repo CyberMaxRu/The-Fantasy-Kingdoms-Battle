@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Descriptors>
+  <Resource>
+    <ID>ResourceMountainLakeFish</ID>
+    <Name>Рыба из горного озера</Name>
+    <Description>- Рыба из горного озера - отличный выбор для богатых горожан.</Description>
+    <ImageIndex>266</ImageIndex>
+    <AvailableForAll>true</AvailableForAll>
+  </Resource>
+</Descriptors>
