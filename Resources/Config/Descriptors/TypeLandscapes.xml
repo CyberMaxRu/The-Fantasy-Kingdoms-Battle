@@ -3,56 +3,56 @@
   <TypeLandscape>
     <ID>Plain</ID>
     <Name>Равнина</Name>
-    <Elements>
-      <Element>Hill</Element>
-      <Element>Meadow</Element>
-      <Element>Plain</Element>
-      <Element>River</Element>
-    </Elements>
+    <Constructions>
+      <Construction>Hill</Construction>
+      <Construction>Meadow</Construction>
+      <Construction>Plain</Construction>
+      <Construction>River</Construction>
+    </Constructions>
   </TypeLandscape>
   <TypeLandscape>
     <ID>Forest</ID>
     <Name>Лес</Name>
-    <Elements>
-      <Element>Forest</Element>
-      <Element>Meadow</Element>
-      <Element>Glade</Element>
-      <Element>River</Element>
-    </Elements>
+    <Constructions>
+      <Construction>Forest</Construction>
+      <Construction>Meadow</Construction>
+      <Construction>Glade</Construction>
+      <Construction>River</Construction>
+    </Constructions>
   </TypeLandscape>
   <TypeLandscape>
     <ID>Swamp</ID>
     <Name>Болото</Name>
-    <Elements>
-      <Element>Swamp</Element>
-      <Element>Marsh</Element>
-      <Element>SwampyForest</Element>
-    </Elements>
+    <Constructions>
+      <Construction>Swamp</Construction>
+      <Construction>Marsh</Construction>
+      <Construction>SwampyForest</Construction>
+    </Constructions>
   </TypeLandscape>
   <TypeLandscape>
     <ID>Mountain</ID>
     <Name>Горы</Name>
-    <Elements>
-      <Element>Mountain</Element>
-      <Element>MountainSpring</Element>
-      <Element>MountainLake</Element>
-      <Element>Foothills</Element>
-    </Elements>
+    <Constructions>
+      <Construction>Mountain</Construction>
+      <Construction>MountainSpring</Construction>
+      <Construction>MountainLake</Construction>
+      <Construction>Foothills</Construction>
+    </Constructions>
   </TypeLandscape>
   <TypeLandscape>
     <ID>Wasteland</ID>
     <Name>Пустошь</Name>
-    <Elements>
-      <Element>Wasteland</Element>
-      <Element>Canyon</Element>
-    </Elements>
+    <Constructions>
+      <Construction>Wasteland</Construction>
+      <Construction>Canyon</Construction>
+    </Constructions>
   </TypeLandscape>
   <TypeLandscape>
     <ID>Desert</ID>
     <Name>Пустыня</Name>
-    <Elements>
-      <Element>Desert</Element>
-      <Element>Oasis</Element>
-    </Elements>
+    <Constructions>
+      <Construction>Desert</Construction>
+      <Construction>Oasis</Construction>
+    </Constructions>
   </TypeLandscape>
 </Descriptors>

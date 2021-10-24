@@ -226,12 +226,12 @@ namespace Fantasy_Kingdoms_Battle
                 ConstructionForBuild.X = Construction.X;
                 ConstructionForBuild.Y = Construction.Y;
                 ConstructionForBuild.Location = Construction.Location;
-                ConstructionForBuild.Location.Lairs[ConstructionForBuild.Y, ConstructionForBuild.X].Construction = ConstructionForBuild;
+                ConstructionForBuild.Location.Lairs[ConstructionForBuild.Y, ConstructionForBuild.X] = ConstructionForBuild;
             }
             else
             {
                 Construction pc = new Construction(Construction.Player, Construction.TypeConstruction, 1, Construction.X, Construction.Y, Construction.Location);
-                Construction.Location.Lairs[pc.Y, pc.X].Construction = pc;
+                Construction.Location.Lairs[pc.Y, pc.X] = pc;
                 Program.formMain.SelectPlayerObject(pc);
             }
 

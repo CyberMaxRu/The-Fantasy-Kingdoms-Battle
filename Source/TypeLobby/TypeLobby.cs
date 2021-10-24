@@ -104,6 +104,18 @@ namespace Fantasy_Kingdoms_Battle
             for (int i = 0; i < LayerSettings.Length; i++)
                 Debug.Assert(LayerSettings[i] != null);
 
+            string nameLocationCapital = XmlUtils.GetStringNotNull(n, "LocationCapital");
+            foreach (TypeLobbyLocationSettings ls1 in LayerSettings)
+            {
+                if (ls1.ID == nameLocationCapital)
+                {
+                    LocationCapital = ls1;
+                    break;
+                }
+            }
+
+            Debug.Assert(LocationCapital != null);
+
             // Проверяем, что количество у слоев указано корректно
 
             // Загружаем настройку коэффициентов для флагов разведки и атаки
@@ -164,6 +176,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int LairsLayers{ get; }
         internal int LairsWidth { get; }
         internal int LairsHeight { get; }
+        internal TypeLobbyLocationSettings LocationCapital { get; }
         internal TypeLobbyLocationSettings[] LayerSettings { get; }
         internal int[] CoefFlagScout { get; }
         internal int[] CoefFlagAttack { get; }

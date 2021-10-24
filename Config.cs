@@ -115,13 +115,6 @@ namespace Fantasy_Kingdoms_Battle
                 TypeLandscapes.Add(new DescriptorTypeLandscape(n));
             }
 
-            // Загрузка элементов ландшафта
-            xmlDoc = CreateXmlDocument(@"Config\Descriptors\ElementLandscapes.xml");
-            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/ElementLandscape"))
-            {
-                ElementLandscapes.Add(new DescriptorElementLandscape(n));
-            }
-
             // Загрузка конфигураций лобби
             xmlDoc = CreateXmlDocument("Config\\TypeLobby.xml");
             foreach (XmlNode n in xmlDoc.SelectNodes("/TypeLobbies/TypeLobby"))
@@ -287,9 +280,6 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorTypeLandscape tl in TypeLandscapes)
                 tl.TuneDeferredLinks();
 
-            foreach (DescriptorElementLandscape el in ElementLandscapes)
-                el.TuneDeferredLinks();
-
             foreach (DescriptorTypeAbility ta in TypeAbilities)
                 ta.TuneDeferredLinks();
 
@@ -354,7 +344,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal string PathResources { get; }
         internal List<DescriptorTypeLandscape> TypeLandscapes { get; } = new List<DescriptorTypeLandscape>();
-        internal List<DescriptorElementLandscape> ElementLandscapes { get; } = new List<DescriptorElementLandscape>();
         internal List<TypeLobby> TypeLobbies { get; } = new List<TypeLobby>();
         internal List<StartBonus> StartBonuses { get; } = new List<StartBonus>();
         internal List<ComputerPlayer> ComputerPlayers { get; } = new List<ComputerPlayer>();
@@ -747,17 +736,6 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             throw new Exception("Тип ландшафта " + ID + " не найден.");
-        }
-
-        internal DescriptorElementLandscape FindElementLandscape(string ID)
-        {
-            foreach (DescriptorElementLandscape el in ElementLandscapes)
-            {
-                if (el.ID == ID)
-                    return el;
-            }
-
-            throw new Exception("Элемент ландшафта " + ID + " не найден.");
         }
 
         private void LoadConfigGame(XmlDocument xmlDoc)

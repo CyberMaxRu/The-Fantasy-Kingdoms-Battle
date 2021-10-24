@@ -17,10 +17,10 @@ namespace Fantasy_Kingdoms_Battle
         public DescriptorTypeLandscape(XmlNode n) : base(n)
         {
             // Загружаем список доступных элементов
-            XmlNode ne = n.SelectSingleNode("Elements");
+            XmlNode ne = n.SelectSingleNode("Constructions");
             string name;
 
-            foreach (XmlNode l in ne.SelectNodes("Element"))
+            foreach (XmlNode l in ne.SelectNodes("Construction"))
             {
                 name = l.InnerText;
 
@@ -36,7 +36,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(nameElements.Count > 0, $"У {ID} нет элементов.");
         }
 
-        internal List<DescriptorElementLandscape> Elements { get; } = new List<DescriptorElementLandscape>();
+        internal List<DescriptorConstruction> Elements { get; } = new List<DescriptorConstruction>();
 
         internal override void TuneDeferredLinks()
         {
@@ -44,7 +44,7 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (string name in nameElements)
             {
-                Elements.Add(FormMain.Config.FindElementLandscape(name));
+                Elements.Add(FormMain.Config.FindConstruction(name));
             }
 
             nameElements = null;

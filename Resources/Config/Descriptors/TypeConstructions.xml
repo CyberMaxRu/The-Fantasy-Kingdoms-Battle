@@ -36,4 +36,8 @@
     <ID>Place</ID>
     <Name>Место</Name>
   </TypeConstruction>
+  <TypeConstruction>
+    <ID>ElementLandscape</ID>
+    <Name>Ландшафт</Name>
+  </TypeConstruction>
 </Descriptors>

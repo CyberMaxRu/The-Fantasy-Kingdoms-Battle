@@ -16,15 +16,14 @@ namespace Fantasy_Kingdoms_Battle
             Player = player;
             Settings = settings;
             Ownership = settings.Ownership;
-            Lairs = new LocationCell[Player.Lobby.TypeLobby.LairsHeight, Player.Lobby.TypeLobby.LairsWidth];
+            Lairs = new Construction[Player.Lobby.TypeLobby.LairsHeight, Player.Lobby.TypeLobby.LairsWidth];
 
             // Создание рандомных логов монстров согласно настроек типа лобби
             // Для этого сначала создаем логова по минимальному списку, а оставшиеся ячейки - из оставшихся по максимуму
             int idxCell;
             int idxTypeLair;
-            LocationCell lc;
 
-            List<DescriptorEntity> lairs = new List<DescriptorEntity>();
+            List<DescriptorConstruction> lairs = new List<DescriptorConstruction>();
             lairs.AddRange(Player.Lobby.Lairs[settings.Number]);
             List<Point> cells = GetCells();
             Debug.Assert(cells.Count <= lairs.Count);
@@ -39,12 +38,7 @@ namespace Fantasy_Kingdoms_Battle
                 // Помещаем в нее логово
                 Debug.Assert(Lairs[cells[idxCell].Y, cells[idxCell].X] == null);
 
-                Lairs[cells[idxCell].Y, cells[idxCell].X] = new LocationCell(this);
-
-                if (lairs[idxTypeLair] is DescriptorConstruction dc)
-                    Lairs[cells[idxCell].Y, cells[idxCell].X].Construction = new Construction(Player, dc, dc.DefaultLevel, cells[idxCell].X, cells[idxCell].Y, this);
-                else if (lairs[idxTypeLair] is DescriptorElementLandscape del)
-                    Lairs[cells[idxCell].Y, cells[idxCell].X].ElementLandscape = del;
+                Lairs[cells[idxCell].Y, cells[idxCell].X] = new Construction(Player, lairs[idxTypeLair], lairs[idxTypeLair].DefaultLevel, cells[idxCell].X, cells[idxCell].Y, this);
 
                 cells.RemoveAt(idxCell);// Убираем ячейку из списка доступных
                 lairs.RemoveAt(idxTypeLair);// Убираем тип логова из списка доступных
@@ -64,7 +58,7 @@ namespace Fantasy_Kingdoms_Battle
         internal Player Player { get; }
         internal TypeLobbyLocationSettings Settings { get; }
         internal bool Ownership { get; set; }
-        internal LocationCell[,] Lairs { get; }
+        internal Construction[,] Lairs { get; }
 
         internal override int GetImageIndex()
         {

@@ -52,7 +52,7 @@ namespace Fantasy_Kingdoms_Battle
             Hidden = !location.Ownership;
 
             Debug.Assert((TypeConstruction.Category == CategoryConstruction.Lair) || (TypeConstruction.Category == CategoryConstruction.External)
-                || (TypeConstruction.Category == CategoryConstruction.Place) || (TypeConstruction.Category == CategoryConstruction.BasePlace));
+                || (TypeConstruction.Category == CategoryConstruction.Place) || (TypeConstruction.Category == CategoryConstruction.BasePlace) || (TypeConstruction.Category == CategoryConstruction.ElementLandscape));
 
             Debug.Assert(level <= 1);
             if (level == 1)
@@ -1003,7 +1003,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Construction pl = new Construction(Player, TypeConstruction.TypePlaceForConstruct, TypeConstruction.DefaultLevel, X, Y, Location);
             pl.Hidden = false;
-            Location.Lairs[Y, X].Construction = pl;
+            Location.Lairs[Y, X] = pl;
         }
 
         internal void DoDefense()
