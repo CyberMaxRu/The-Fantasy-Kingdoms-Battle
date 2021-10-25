@@ -73,7 +73,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal DescriptorConstruction TypeConstruction { get; }
         internal int Level { get; private set; }
-        internal bool BuildedOrUpgraded { get; private set; }
+        internal bool BuildedOrUpgraded { get; set; }
         internal int Gold { get => gold; set { Debug.Assert(TypeConstruction.HasTreasury); gold = value; } }
         internal List<Hero> Heroes { get; } = new List<Hero>();
         internal Player Player { get; }

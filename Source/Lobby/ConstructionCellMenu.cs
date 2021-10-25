@@ -448,6 +448,7 @@ namespace Fantasy_Kingdoms_Battle
             Construction.Player.SpendGold(GetCost());
             RemoveSelf();
 
+            Construction.BuildedOrUpgraded = true;
             Construction.AddProduct(new ConstructionProduct(Entity));
 
             Program.formMain.SetNeedRedrawFrame();
@@ -463,6 +464,20 @@ namespace Fantasy_Kingdoms_Battle
         internal override int GetImageIndex()
         {
             return Entity.ImageIndex;
+        }
+
+        internal override bool CheckRequirements()
+        {
+            return base.CheckRequirements() && (!Construction.BuildedOrUpgraded || (Construction.Player.ExtraLevelUp > 0));
+        }
+
+        internal override List<TextRequirement> GetTextRequirements()
+        {
+            List<TextRequirement> list = base.GetTextRequirements();
+            if (Construction.BuildedOrUpgraded && (Construction.Player.ExtraLevelUp == 0))
+                list.Add(new TextRequirement(false, "Сооружение уже строили/улучшали в этот день"));
+
+            return list;
         }
 
         internal override void PrepareHint()
