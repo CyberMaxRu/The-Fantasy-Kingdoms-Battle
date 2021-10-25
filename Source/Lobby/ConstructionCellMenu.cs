@@ -369,7 +369,7 @@ namespace Fantasy_Kingdoms_Battle
                 + Environment.NewLine + $"Перерыв: {ConstructionEvent.Cooldown} дн.");
             Program.formMain.formHint.AddStep5Description(ConstructionEvent.Description);
             Program.formMain.formHint.AddStep9Interest(ConstructionEvent.Interest, false);
-            Program.formMain.formHint.AddStep9ListNeeds(ConstructionEvent.ListNeeds);
+            Program.formMain.formHint.AddStep9ListNeeds(ConstructionEvent.ListNeeds, false);
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirements());
             Program.formMain.formHint.AddStep12Gold(GetCost(), GetCost() <= Construction.Player.Gold);
         }
@@ -488,7 +488,7 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep5Description(Entity.Description);
             Program.formMain.formHint.AddStep6Income(Descriptor.Income);
             Program.formMain.formHint.AddStep9Interest(Entity.Interest, true);
-            Program.formMain.formHint.AddStep9ListNeeds(Entity.ListNeeds);
+            Program.formMain.formHint.AddStep9ListNeeds(Entity.ListNeeds, true);
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirements());
             Program.formMain.formHint.AddStep12Gold(GetCost(), GetCost() <= Construction.Player.Gold);
             Program.formMain.formHint.AddStep13Builders(Entity.Builders, Construction.Player.CheckRequireBuilders(Entity.Builders));

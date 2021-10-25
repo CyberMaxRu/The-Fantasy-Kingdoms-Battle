@@ -43,7 +43,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Program.formMain.formHint.AddStep2Header(Descriptor.Name);
             Program.formMain.formHint.AddStep5Description(Descriptor.Description);
-            Program.formMain.formHint.AddStep9ListNeeds(Descriptor.ListNeeds);
+            Program.formMain.formHint.AddStep9ListNeeds(Descriptor.ListNeeds, false);
             Program.formMain.formHint.AddStep14PlayerItem(this);
             Program.formMain.formHint.AddStep17Signer(Signer);
             Program.formMain.formHint.AddStep19Descriptors(Modifiers);

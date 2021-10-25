@@ -111,7 +111,7 @@ namespace Fantasy_Kingdoms_Battle
                 Program.formMain.formHint.AddStep3Type("Событие");
                 Program.formMain.formHint.AddStep4Level(Duration > 0 ? $"Осталось дней: {Counter}" : "");
                 Program.formMain.formHint.AddStep5Description(Descriptor.Description);
-                Program.formMain.formHint.AddStep9ListNeeds(DescriptorConstructionEvent.ListNeeds);
+                Program.formMain.formHint.AddStep9ListNeeds(DescriptorConstructionEvent.ListNeeds, true);
             }
             else
             {
@@ -122,7 +122,9 @@ namespace Fantasy_Kingdoms_Battle
                     Program.formMain.formHint.AddStep3Type("Посещение");
                 Program.formMain.formHint.AddStep5Description(Descriptor.Description);
                 if (DescriptorItem != null)
-                    Program.formMain.formHint.AddStep9ListNeeds(DescriptorItem.ListNeeds);
+                    Program.formMain.formHint.AddStep9ListNeeds(DescriptorItem.ListNeeds, false);
+                if (DescriptorConstructionExtension != null)
+                    Program.formMain.formHint.AddStep9ListNeeds(DescriptorConstructionExtension.ListNeeds, true);
                 if (DescriptorConstructionEvent != null)
                     Program.formMain.formHint.AddStep9Interest(Interest, false);
                 if (DescriptorConstructionExtension != null)
@@ -130,7 +132,7 @@ namespace Fantasy_Kingdoms_Battle
                 if (DescriptorConstructionVisit != null)
                 {
                     Program.formMain.formHint.AddStep9Interest(Interest, false);
-                    Program.formMain.formHint.AddStep9ListNeeds(DescriptorConstructionVisit.ListNeeds);
+                    Program.formMain.formHint.AddStep9ListNeeds(DescriptorConstructionVisit.ListNeeds, false);
                 }
             }
         }

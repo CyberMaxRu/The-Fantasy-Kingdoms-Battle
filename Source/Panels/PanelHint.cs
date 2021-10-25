@@ -561,7 +561,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddStep9ListNeeds(List<(DescriptorNeed, int)> list)
+        internal void AddStep9ListNeeds(List<(DescriptorNeed, int)> list, bool showPlus)
         {
             if (list.Count > 0)
             {
@@ -576,7 +576,7 @@ namespace Fantasy_Kingdoms_Battle
                     lv = GetLabel(i);
                     lv.Visible = true;
                     lv.ImageIndex = need.Item1.ImageIndex;
-                    lv.Text = Utils.DecIntegerBy10(need.Item2);
+                    lv.Text = Utils.DecIntegerBy10(need.Item2, showPlus);
                     lv.ShiftY = nextTop;
 
                     nextTop = lv.NextTop();

@@ -1128,7 +1128,7 @@ namespace Fantasy_Kingdoms_Battle
             if (TypeConstruction.Levels[requiredLevel].DescriptorVisit != null)
             {
                 Program.formMain.formHint.AddStep9Interest(TypeConstruction.Levels[requiredLevel].DescriptorVisit.Interest, false);
-                Program.formMain.formHint.AddStep9ListNeeds(TypeConstruction.Levels[requiredLevel].DescriptorVisit.ListNeeds);
+                Program.formMain.formHint.AddStep9ListNeeds(TypeConstruction.Levels[requiredLevel].DescriptorVisit.ListNeeds, false);
             }
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirements(requiredLevel));
             Program.formMain.formHint.AddStep12Gold(CostBuyOrUpgradeForLevel(requiredLevel), Player.Gold >= CostBuyOrUpgradeForLevel(requiredLevel));
