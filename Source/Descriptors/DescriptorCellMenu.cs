@@ -128,7 +128,6 @@ namespace Fantasy_Kingdoms_Battle
 
     internal sealed class DescriptorCellMenuForConstructionLevel : DescriptorCellMenuForConstruction
     {
-        private string nameVisit;
         public DescriptorCellMenuForConstructionLevel(DescriptorConstruction forConstruction, int number, Point coord, XmlNode n) : base(forConstruction, coord, n)
         {
             Number = number;
@@ -138,7 +137,13 @@ namespace Fantasy_Kingdoms_Battle
             GreatnessByConstruction = GetInteger(n, "GreatnessByConstruction");
             GreatnessPerDay = GetInteger(n, "GreatnessPerDay");
             BuildersPerDay = GetInteger(n, "BuildersPerDay");
-            nameVisit = GetString(n, "Visit");
+
+            // Посещение
+            XmlNode nv = n.SelectSingleNode("Visit");
+            if (nv != null)
+            {
+                DescriptorVisit = new DescriptorConstructionVisit(this, nv);
+            }
 
             Extensions = new ListSmallEntity(n.SelectSingleNode("Entities"));
 
@@ -164,15 +169,12 @@ namespace Fantasy_Kingdoms_Battle
         internal int GreatnessPerDay { get; }// Дает очков Величия в день
         internal int BuildersPerDay { get; }// Дает строителей в день
         internal ListSmallEntity Extensions { get; }// Сущности, относящиеся к уровню
-        internal DescriptorConstructionVisit DescriptorVisit { get; private set; }// Товар для посещения сооружения
+        internal DescriptorConstructionVisit DescriptorVisit { get;  }// Товар для посещения сооружения
         internal ListDescriptorPerks ListPerks { get; }// Перки, которые дает уровень сооружения
 
         internal override void TuneDeferredLinks()
         {
             base.TuneDeferredLinks();
-
-            if (nameVisit.Length > 0)
-                DescriptorVisit = Config.FindConstructionVisit(nameVisit);
 
             Extensions.TuneDeferredLinks();
             ListPerks.TuneDeferredLinks();

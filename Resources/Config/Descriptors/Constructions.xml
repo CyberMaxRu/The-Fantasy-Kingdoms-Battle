@@ -1432,7 +1432,17 @@
         <Cost>250</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
-        <Visit>TavernVisit1</Visit>
+        <Visit>
+          <ID>TavernVisit1</ID>
+          <Name>Посиделка в таверне (1)</Name>
+          <Description>- В таверне герои могут хорошо отдохнуть и провести время.</Description>
+          <AvailableForAll>true</AvailableForAll>
+          <Interest>30</Interest>
+          <Needs>
+            <Rest>30</Rest>
+            <Entertainment>30</Entertainment>
+          </Needs>
+        </Visit>
       </Level>
       <Level>
         <Number>2</Number>
@@ -1446,7 +1456,17 @@
             <Level>2</Level>
           </Requirement>
         </Requirements>
-        <Visit>TavernVisit2</Visit>
+        <Visit>
+          <ID>TavernVisit2</ID>
+          <Name>Посиделка в таверне (2)</Name>
+          <Description>- В таверне герои могут хорошо отдохнуть и провести время.</Description>
+          <AvailableForAll>true</AvailableForAll>
+          <Interest>40</Interest>
+          <Needs>
+            <Rest>40</Rest>
+            <Entertainment>40</Entertainment>
+          </Needs>
+        </Visit>
       </Level>
       <Level>
         <Number>3</Number>
@@ -1460,7 +1480,17 @@
             <Level>2</Level>
           </Requirement>
         </Requirements>
-        <Visit>TavernVisit3</Visit>
+        <Visit>
+          <ID>TavernVisit3</ID>
+          <Name>Посиделка в таверне (3)</Name>
+          <Description>- В таверне герои могут хорошо отдохнуть и провести время.</Description>
+          <AvailableForAll>true</AvailableForAll>
+          <Interest>50</Interest>
+          <Needs>
+            <Rest>50</Rest>
+            <Entertainment>50</Entertainment>
+          </Needs>
+        </Visit>
       </Level>
     </Levels>
     <CellsMenu>
@@ -1920,21 +1950,51 @@
         <Cost>500</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
-        <Visit>ParkVisit1</Visit>
+        <Visit>
+          <ID>ParkVisit1</ID>
+          <Name>Прогулка по парку (1)</Name>
+          <Description>- В парке герои могут хорошо отдохнуть и собраться с мыслями.</Description>
+          <AvailableForAll>true</AvailableForAll>
+          <Interest>10</Interest>
+          <Needs>
+            <Rest>30</Rest>
+            <Entertainment>5</Entertainment>
+          </Needs>
+        </Visit>
       </Level>
       <Level>
         <Number>2</Number>
         <Cost>1000</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
-        <Visit>ParkVisit2</Visit>
+        <Visit>
+          <ID>ParkVisit2</ID>
+          <Name>Прогулка по парку (2)</Name>
+          <Description>- В парке герои могут хорошо отдохнуть и собраться с мыслями.</Description>
+          <AvailableForAll>true</AvailableForAll>
+          <Interest>10</Interest>
+          <Needs>
+            <Rest>40</Rest>
+            <Entertainment>10</Entertainment>
+          </Needs>
+        </Visit>
       </Level>
       <Level>
         <Number>3</Number>
         <Cost>1500</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
-        <Visit>ParkVisit3</Visit>
+        <Visit>
+          <ID>ParkVisit3</ID>
+          <Name>Прогулка по парку (3)</Name>
+          <Description>- В парке герои могут хорошо отдохнуть и собраться с мыслями.</Description>
+          <AvailableForAll>true</AvailableForAll>
+          <Interest>10</Interest>
+          <Needs>
+            <Rest>50</Rest>
+            <Entertainment>15</Entertainment>
+          </Needs>
+        </Visit>
       </Level>
     </Levels>
     <CellsMenu>
@@ -2024,7 +2084,17 @@
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
         <GreatnessPerDay>5</GreatnessPerDay>
-        <Visit>TownSquareVisit1</Visit>
+        <Visit>
+          <ID>TownSquareVisit1</ID>
+          <Name>Прогулка по городской площади (1)</Name>
+          <Description>- Прогулка по городской площади благотворно действует на героев.</Description>
+          <AvailableForAll>true</AvailableForAll>
+          <Interest>10</Interest>
+          <Needs>
+            <Rest>10</Rest>
+            <Entertainment>15</Entertainment>
+          </Needs>
+        </Visit>
       </Level>
       <Level>
         <Number>2</Number>
@@ -2040,7 +2110,17 @@
             <Level>2</Level>
           </Requirement>
         </Requirements>
-        <Visit>TownSquareVisit2</Visit>
+        <Visit>
+          <ID>TownSquareVisit2</ID>
+          <Name>Прогулка по городской площади (2)</Name>
+          <Description>- Прогулка по городской площади благотворно действует на героев.</Description>
+          <AvailableForAll>true</AvailableForAll>
+          <Interest>20</Interest>
+          <Needs>
+            <Rest>15</Rest>
+            <Entertainment>20</Entertainment>
+          </Needs>
+        </Visit>
       </Level>
       <Level>
         <Number>3</Number>
@@ -2056,7 +2136,17 @@
             <Level>3</Level>
           </Requirement>
         </Requirements>
-        <Visit>TownSquareVisit3</Visit>
+        <Visit>
+          <ID>TownSquareVisit3</ID>
+          <Name>Прогулка по городской площади (3)</Name>
+          <Description>- Прогулка по городской площади благотворно действует на героев.</Description>
+          <AvailableForAll>true</AvailableForAll>
+          <Interest>30</Interest>
+          <Needs>
+            <Rest>20</Rest>
+            <Entertainment>25</Entertainment>
+          </Needs>
+        </Visit>
       </Level>
     </Levels>
     <CellsMenu>
@@ -2203,21 +2293,48 @@
         <Cost>1000</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
-        <Visit>ArenaVisit1</Visit>
+        <Visit>
+          <ID>ArenaVisit1</ID>
+          <Name>Тренировка на арене (1)</Name>
+          <Description>- В арене герои могут улучшить свои навыки.</Description>
+          <AvailableForAll>true</AvailableForAll>
+          <Interest>10</Interest>
+          <Needs>
+            <Entertainment>10</Entertainment>
+          </Needs>
+        </Visit>
       </Level>
       <Level>
         <Number>2</Number>
         <Cost>1500</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
-        <Visit>ArenaVisit2</Visit>
+        <Visit>
+          <ID>ArenaVisit2</ID>
+          <Name>Тренировка на арене (2)</Name>
+          <Description>- В таверне герои могут хорошо отдохнуть и провести время.</Description>
+          <AvailableForAll>true</AvailableForAll>
+          <Interest>10</Interest>
+          <Needs>
+            <Entertainment>15</Entertainment>
+          </Needs>
+        </Visit>
       </Level>
       <Level>
         <Number>3</Number>
         <Cost>2000</Cost>
         <Builders>1</Builders>
         <Income>0</Income>
-        <Visit>ArenaVisit3</Visit>
+        <Visit>
+          <ID>ArenaVisit3</ID>
+          <Name>Тренировка на арене (3)</Name>
+          <Description>- В таверне герои могут хорошо отдохнуть и провести время.</Description>
+          <AvailableForAll>true</AvailableForAll>
+          <Interest>10</Interest>
+          <Needs>
+            <Entertainment>20</Entertainment>
+          </Needs>
+        </Visit>
       </Level>
     </Levels>
     <CellsMenu>
@@ -2392,21 +2509,51 @@
         <Cost>500</Cost>
         <Builders>1</Builders>
         <Income>50</Income>
-        <Visit>GardenVisit1</Visit>
+        <Visit>
+          <ID>GardenVisit1</ID>
+          <Name>Прогулка по саду (1)</Name>
+          <Description>- Прогулка по саду благотворно действует на героев.</Description>
+          <AvailableForAll>true</AvailableForAll>
+          <Interest>10</Interest>
+          <Needs>
+            <Rest>10</Rest>
+            <Entertainment>5</Entertainment>
+          </Needs>
+        </Visit>
       </Level>
       <Level>
         <Number>2</Number>
         <Cost>500</Cost>
         <Builders>1</Builders>
         <Income>100</Income>
-        <Visit>GardenVisit2</Visit>
+        <Visit>
+          <ID>GardenVisit2</ID>
+          <Name>Прогулка по саду (2)</Name>
+          <Description>- Прогулка по саду благотворно действует на героев.</Description>
+          <AvailableForAll>true</AvailableForAll>
+          <Interest>20</Interest>
+          <Needs>
+            <Rest>20</Rest>
+            <Entertainment>10</Entertainment>
+          </Needs>
+        </Visit>
       </Level>
       <Level>
         <Number>3</Number>
         <Cost>500</Cost>
         <Builders>1</Builders>
         <Income>150</Income>
-        <Visit>GardenVisit3</Visit>
+        <Visit>
+          <ID>GardenVisit3</ID>
+          <Name>Прогулка по саду (3)</Name>
+          <Description>- Прогулка по саду благотворно действует на героев.</Description>
+          <AvailableForAll>true</AvailableForAll>
+          <Interest>30</Interest>
+          <Needs>
+            <Rest>30</Rest>
+            <Entertainment>15</Entertainment>
+          </Needs>
+        </Visit>
       </Level>
     </Levels>
     <CellsMenu>
@@ -3613,7 +3760,17 @@
         <Cost>1000</Cost>
         <Builders>1</Builders>
         <Income>250</Income>
-        <Visit>GamblingHallVisit1</Visit>
+        <Visit>
+          <ID>GamblingHallVisit1</ID>
+          <Name>Поиграть в азартные игры (1)</Name>
+          <Description>- В игорном доме герои могут поиграть в различные азартные игры.</Description>
+          <AvailableForAll>true</AvailableForAll>
+          <Interest>30</Interest>
+          <Needs>
+            <Rest>20</Rest>
+            <Entertainment>50</Entertainment>
+          </Needs>
+        </Visit>
       </Level>
       <Level>
         <Number>2</Number>
@@ -3627,7 +3784,17 @@
             <Level>2</Level>
           </Requirement>
         </Requirements>
-        <Visit>GamblingHallVisit2</Visit>
+        <Visit>
+          <ID>GamblingHallVisit2</ID>
+          <Name>Поиграть в азартные игры (2)</Name>
+          <Description>- В библиотеке герои могут повысить свои знания и ум.</Description>
+          <AvailableForAll>true</AvailableForAll>
+          <Interest>35</Interest>
+          <Needs>
+            <Rest>25</Rest>
+            <Entertainment>60</Entertainment>
+          </Needs>
+        </Visit>
       </Level>
       <Level>
         <Number>3</Number>
@@ -3641,7 +3808,17 @@
             <Goods>TavernBeer</Goods>
           </Requirement>
         </Requirements>
-        <Visit>GamblingHallVisit3</Visit>
+        <Visit>
+          <ID>GamblingHallVisit3</ID>
+          <Name>Поиграть в азартные игры (3)</Name>
+          <Description>- В библиотеке герои могут повысить свои знания и ум.</Description>
+          <AvailableForAll>true</AvailableForAll>
+          <Interest>40</Interest>
+          <Needs>
+            <Rest>20</Rest>
+            <Entertainment>70</Entertainment>
+          </Needs>
+        </Visit>
       </Level>
     </Levels>
     <CellsMenu>

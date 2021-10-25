@@ -136,13 +136,6 @@ namespace Fantasy_Kingdoms_Battle
                 TypeConstructions.Add(new DescriptorTypeConstruction(n));
             }
 
-            // Загрузка конфигурации визитов в сооружения
-            xmlDoc = CreateXmlDocument(@"Config\Descriptors\ConstructionVisits.xml");
-            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/ConstructionVisit"))
-            {
-                ConstructionsVisits.Add(new DescriptorConstructionVisit(null, n));
-            }
-
             // Загрузка конфигурации событий в сооружениях
             xmlDoc = CreateXmlDocument(@"Config\Descriptors\ConstructionEvents.xml");
             foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/ConstructionEvent"))
@@ -1113,6 +1106,11 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             throw new Exception($"Текстура {id} не найдена.");
+        }
+
+        internal void AddVisit(DescriptorConstructionVisit visit)
+        {
+            ConstructionsVisits.Add(visit);
         }
     }
 }

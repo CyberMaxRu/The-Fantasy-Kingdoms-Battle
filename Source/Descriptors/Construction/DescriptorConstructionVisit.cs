@@ -11,12 +11,13 @@ namespace Fantasy_Kingdoms_Battle
 {
     class DescriptorConstructionVisit : DescriptorSmallEntity
     {
-        public DescriptorConstructionVisit(DescriptorConstruction construction, XmlNode n) : base(n)
+        public DescriptorConstructionVisit(DescriptorCellMenuForConstructionLevel level, XmlNode n) : base(n)
         {
             Debug.Assert(Interest >= 0);
             Debug.Assert(Interest <= 100);
 
-            Construction = construction;
+            ImageIndex = level.ForConstruction.ImageIndex;
+            ConstructionLevel = level;
 
             Interest = GetInteger(n, "Interest");
             ListNeeds = new ListNeeds(n.SelectSingleNode("Needs"));
@@ -30,9 +31,14 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal DescriptorConstruction Construction { get; }
+        internal DescriptorCellMenuForConstructionLevel ConstructionLevel { get; }
         internal int Interest { get; }// Интерес для посещения сооружения
         internal ListNeeds ListNeeds { get; }
+
+        internal override int GetImageIndex(XmlNode n)
+        {
+            return 0;
+        }
 
         internal override void TuneDeferredLinks()
         {
