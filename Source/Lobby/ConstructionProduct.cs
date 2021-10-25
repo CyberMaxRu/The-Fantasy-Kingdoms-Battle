@@ -120,6 +120,8 @@ namespace Fantasy_Kingdoms_Battle
                     Program.formMain.formHint.AddStep3Type(DescriptorAbility.TypeAbility.Name);
                 if (DescriptorConstructionVisit != null)
                     Program.formMain.formHint.AddStep3Type("Посещение");
+                if (DescriptorResource != null)
+                    Program.formMain.formHint.AddStep3Type("Ресурс");
                 Program.formMain.formHint.AddStep5Description(Descriptor.Description);
                 if (DescriptorConstructionVisit != null)
                     Program.formMain.formHint.AddStep9Interest(Interest, false);
