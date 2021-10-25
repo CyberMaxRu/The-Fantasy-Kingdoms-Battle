@@ -449,6 +449,7 @@ namespace Fantasy_Kingdoms_Battle
             RemoveSelf();
 
             Construction.BuildedOrUpgraded = true;
+            Construction.Player.UseFreeBuilder(Entity.Builders);
             Construction.AddProduct(new ConstructionProduct(Entity));
 
             Program.formMain.SetNeedRedrawFrame();
@@ -468,7 +469,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override bool CheckRequirements()
         {
-            return base.CheckRequirements() && (!Construction.BuildedOrUpgraded || (Construction.Player.ExtraLevelUp > 0));
+            return base.CheckRequirements() && (Construction.Player.CheckRequireBuilders(Entity.Builders)) && (!Construction.BuildedOrUpgraded || (Construction.Player.ExtraLevelUp > 0));
         }
 
         internal override List<TextRequirement> GetTextRequirements()
@@ -490,6 +491,7 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep9ListNeeds(Entity.ListNeeds);
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirements());
             Program.formMain.formHint.AddStep12Gold(GetCost(), GetCost() <= Construction.Player.Gold);
+            Program.formMain.formHint.AddStep13Builders(Entity.Builders, Construction.Player.CheckRequireBuilders(Entity.Builders));
         }
     }
 

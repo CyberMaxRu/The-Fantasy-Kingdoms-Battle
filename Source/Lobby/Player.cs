@@ -1297,6 +1297,15 @@ namespace Fantasy_Kingdoms_Battle
             FreeBuilders++;
         }
 
+        internal void UseFreeBuilder(int builders)
+        {
+            Debug.Assert(FreeBuilders > 0);
+
+            FreeBuilders -= builders;
+
+            Debug.Assert(FreeBuilders >= 0);
+        }
+
         internal void AddExtraLevelUp()
         {
             Debug.Assert(ExtraLevelUp >= 0);
