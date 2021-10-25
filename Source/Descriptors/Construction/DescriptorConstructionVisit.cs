@@ -11,12 +11,14 @@ namespace Fantasy_Kingdoms_Battle
 {
     class DescriptorConstructionVisit : DescriptorSmallEntity
     {
-        public DescriptorConstructionVisit(XmlNode n) : base(n)
+        public DescriptorConstructionVisit(DescriptorConstruction construction, XmlNode n) : base(n)
         {
             Debug.Assert(Interest >= 0);
             Debug.Assert(Interest <= 100);
-            Interest = GetInteger(n, "Interest");
 
+            Construction = construction;
+
+            Interest = GetInteger(n, "Interest");
             ListNeeds = new ListNeeds(n.SelectSingleNode("Needs"));
 
             foreach (DescriptorConstructionVisit cv in Config.ConstructionsVisits)
@@ -28,6 +30,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        internal DescriptorConstruction Construction { get; }
         internal int Interest { get; }// Интерес для посещения сооружения
         internal ListNeeds ListNeeds { get; }
 

@@ -11,10 +11,8 @@ namespace Fantasy_Kingdoms_Battle
 
         public DescriptorEntity(XmlNode n) : base(n)
         {
-            Description = GetDescription(n, "Description");            
-            imageIndex = GetIntegerNotNull(n, "ImageIndex");
-            if (imageIndex > 0)
-                imageIndex += ShiftImageIndex() - 1;// Для удобства людей, нумерация иконок в конфигурации идет с 1, а не с 0.
+            Description = GetDescription(n, "Description");
+            imageIndex = GetImageIndex(n);
 
             CheckData();
         }
@@ -29,6 +27,15 @@ namespace Fantasy_Kingdoms_Battle
 
         internal string Description { get; set; }// Описание типа объекта
         internal int ImageIndex { get => imageIndex; set { imageIndex = value; CheckData(); } }// Код иконки типа объекта
+
+        internal virtual int GetImageIndex(XmlNode n)
+        {
+            int imageIndex = GetIntegerNotNull(n, "ImageIndex");
+            if (imageIndex > 0)
+                imageIndex += ShiftImageIndex() - 1;// Для удобства людей, нумерация иконок в конфигурации идет с 1, а не с 0.
+
+            return imageIndex;
+        }
 
         protected virtual int ShiftImageIndex() => 0;
 

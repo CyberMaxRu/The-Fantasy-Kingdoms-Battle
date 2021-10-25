@@ -140,7 +140,7 @@ namespace Fantasy_Kingdoms_Battle
             xmlDoc = CreateXmlDocument(@"Config\Descriptors\ConstructionVisits.xml");
             foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/ConstructionVisit"))
             {
-                ConstructionsVisits.Add(new DescriptorConstructionVisit(n));
+                ConstructionsVisits.Add(new DescriptorConstructionVisit(null, n));
             }
 
             // Загрузка конфигурации событий в сооружениях
