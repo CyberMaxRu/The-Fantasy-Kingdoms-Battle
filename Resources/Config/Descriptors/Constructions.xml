@@ -4064,6 +4064,17 @@
         <Builders>0</Builders>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
+        <Visit>
+          <ID>MountainVisit1</ID>
+          <Name>Отдых в горах</Name>
+          <Description>- Снежные горы - излюбленное место отдыха магов Холода.</Description>
+          <AvailableForAll>true</AvailableForAll>
+          <Interest>30</Interest>
+          <Needs>
+            <Rest>30</Rest>
+            <Entertainment>30</Entertainment>
+          </Needs>
+        </Visit>
       </Level>
     </Levels>
   </Construction>
@@ -4106,6 +4117,17 @@
         <Builders>0</Builders>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
+        <Visit>
+          <ID>MountainLakeVisit1</ID>
+          <Name>Отдых на горном озере</Name>
+          <Description>- Отдых в тиши горного озера - то, что нужно магам.</Description>
+          <AvailableForAll>true</AvailableForAll>
+          <Interest>30</Interest>
+          <Needs>
+            <Rest>30</Rest>
+            <Entertainment>30</Entertainment>
+          </Needs>
+        </Visit>
         <Entities>
           <Entity>ResourceMountainLakeFish</Entity>
         </Entities>
