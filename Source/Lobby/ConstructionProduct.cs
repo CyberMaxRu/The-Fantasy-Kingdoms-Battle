@@ -121,6 +121,8 @@ namespace Fantasy_Kingdoms_Battle
                 if (DescriptorConstructionVisit != null)
                     Program.formMain.formHint.AddStep3Type("Посещение");
                 Program.formMain.formHint.AddStep5Description(Descriptor.Description);
+                if (DescriptorConstructionVisit != null)
+                    Program.formMain.formHint.AddStep9Interest(Interest, false);
                 if (DescriptorItem != null)
                     Program.formMain.formHint.AddStep9ListNeeds(DescriptorItem.ListNeeds, false);
                 if (DescriptorConstructionExtension != null)
@@ -130,10 +132,7 @@ namespace Fantasy_Kingdoms_Battle
                 if (DescriptorConstructionExtension != null)
                     Program.formMain.formHint.AddStep9Interest(Interest, true);
                 if (DescriptorConstructionVisit != null)
-                {
-                    Program.formMain.formHint.AddStep9Interest(Interest, false);
                     Program.formMain.formHint.AddStep9ListNeeds(DescriptorConstructionVisit.ListNeeds, false);
-                }
             }
         }
 
