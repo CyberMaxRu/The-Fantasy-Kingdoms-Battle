@@ -143,7 +143,7 @@ namespace Fantasy_Kingdoms_Battle
             return Descriptor.Cost;
         }
 
-        internal override string GetLevel() => "и";
+        internal override string GetLevel() => Program.formMain.Settings.ShowTypeCellMenu ? "и" : "";
 
         internal override bool CheckRequirements()
         {
@@ -250,7 +250,7 @@ namespace Fantasy_Kingdoms_Battle
                 return TypeConstruction.Levels[1].Cost;
         }
 
-        internal override string GetLevel() => "п";
+        internal override string GetLevel() => Program.formMain.Settings.ShowTypeCellMenu ? "п" : "";
 
         internal override int GetImageIndex()
         {
@@ -286,7 +286,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             return Descriptor.Cost;
         }
-        internal override string GetLevel() => "н";
+        internal override string GetLevel() => Program.formMain.Settings.ShowTypeCellMenu ? "н" : "";
 
         internal override int GetImageIndex()
         {
@@ -354,7 +354,7 @@ namespace Fantasy_Kingdoms_Battle
             return Descriptor.Cost;
         }
 
-        internal override string GetLevel() => "с";
+        internal override string GetLevel() => Program.formMain.Settings.ShowTypeCellMenu ? "с" : "";
 
         internal override int GetImageIndex()
         {
@@ -460,7 +460,7 @@ namespace Fantasy_Kingdoms_Battle
             return Descriptor.Cost;
         }
 
-        internal override string GetLevel() => "д";
+        internal override string GetLevel() => Program.formMain.Settings.ShowTypeCellMenu ? "д" : "";
 
         internal override int GetImageIndex()
         {
@@ -521,7 +521,7 @@ namespace Fantasy_Kingdoms_Battle
             return Descriptor.Cost;
         }
 
-        internal override string GetLevel() => "т";
+        internal override string GetLevel() => Program.formMain.Settings.ShowTypeCellMenu ? "т" : "";
 
         internal override int GetImageIndex()
         {

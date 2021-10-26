@@ -37,7 +37,8 @@ namespace Fantasy_Kingdoms_Battle
                     PlaySound = XmlUtils.GetBoolean(doc, "Settings/Sound/PlaySound", PlaySound);
                     PlayMusic = XmlUtils.GetBoolean(doc, "Settings/Sound/PlayMusic", PlayMusic);
 
-                    ShowShortNames = XmlUtils.GetBoolean(doc, "Settings/Interface/ShowShortNames", PlayMusic);
+                    ShowShortNames = XmlUtils.GetBoolean(doc, "Settings/Interface/ShowShortNames", ShowShortNames);
+                    ShowTypeCellMenu = XmlUtils.GetBoolean(doc, "Settings/Interface/ShowTypeCellMenu", ShowTypeCellMenu);
 
                     DirectoryAvatar = XmlUtils.GetString(doc, "Settings/Player/DirectoryAvatar");
                 }
@@ -70,6 +71,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
         internal bool ShowShortNames { get; set; }
+        internal bool ShowTypeCellMenu { get; set; }
 
         // Читинг
         internal bool CheatingIgnoreRequirements { get; set; }
@@ -88,6 +90,7 @@ namespace Fantasy_Kingdoms_Battle
             PlaySound = true;
             PlayMusic = true;
             ShowShortNames = false;
+            ShowTypeCellMenu = true;
         }
 
         internal void SaveSettings()
@@ -116,7 +119,8 @@ namespace Fantasy_Kingdoms_Battle
             textWriter.WriteEndElement();
 
             textWriter.WriteStartElement("Interface");
-            textWriter.WriteElementString("ShowShortNames", PlaySound.ToString());
+            textWriter.WriteElementString("ShowShortNames", ShowShortNames.ToString());
+            textWriter.WriteElementString("ShowTypeCellMenu", ShowTypeCellMenu.ToString());
 
             textWriter.WriteEndElement();
             textWriter.Close();

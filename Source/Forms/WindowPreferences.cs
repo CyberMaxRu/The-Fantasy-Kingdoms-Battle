@@ -34,6 +34,7 @@ namespace Fantasy_Kingdoms_Battle
         private VisualControl vcPanelInterface;
         private VCLabel lblCaptionPanelInterface;
         private VCCheckBox chkbShowShortNames;
+        private VCCheckBox chkbShowTypeCellMenu;
 
         private Settings settings;
 
@@ -90,6 +91,8 @@ namespace Fantasy_Kingdoms_Battle
             lblCaptionPanelInterface.StringFormat.Alignment = StringAlignment.Near;
             chkbShowShortNames = new VCCheckBox(vcPanelInterface, FormMain.Config.GridSize, lblCaptionPanelInterface.NextTop(), "Наименования на иконках умений и предметов");
             chkbShowShortNames.Width = 400;
+            chkbShowTypeCellMenu = new VCCheckBox(vcPanelInterface, FormMain.Config.GridSize, chkbShowShortNames.NextTop(), "Показывать тип объекта в меню");
+            chkbShowTypeCellMenu.Width = 400;
             vcPanelInterface.ApplyMaxSize();
             vcPanelInterface.Height += 8;
             lblCaptionPanelInterface.Width = vcPanelInterface.Width - (FormMain.Config.GridSize * 2);
@@ -137,6 +140,7 @@ namespace Fantasy_Kingdoms_Battle
             chkbPlaySound.Checked = settings.PlaySound;
             chkbPlayMusic.Checked = settings.PlayMusic;
             chkbShowShortNames.Checked = settings.ShowShortNames;
+            chkbShowTypeCellMenu.Checked = settings.ShowTypeCellMenu;
 
             playSound = settings.PlaySound;
             playMusic = settings.PlayMusic;
@@ -171,6 +175,7 @@ namespace Fantasy_Kingdoms_Battle
             settings.PlaySound = chkbPlaySound.Checked;
             settings.PlayMusic = chkbPlayMusic.Checked;
             settings.ShowShortNames = chkbShowShortNames.Checked;
+            settings.ShowTypeCellMenu = chkbShowTypeCellMenu.Checked;
             settings.SaveSettings();
 
             CloseForm(DialogAction.OK);

@@ -15,5 +15,6 @@
   </Sound>
   <Interface>
     <ShowShortNames>False</ShowShortNames>
+    <ShowTypeCellMenu>False</ShowTypeCellMenu>
   </Interface>
 </Settings>
