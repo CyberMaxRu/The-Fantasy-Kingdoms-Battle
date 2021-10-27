@@ -145,6 +145,25 @@ namespace Fantasy_Kingdoms_Battle
                     throw new Exception("В конфигурации зданий у " + ID + " нет информации об уровнях. ");
             }
 
+            // Загружаем информацию о дополнительных сооружениях
+            XmlNode ne = n.SelectSingleNode("Extensions");
+            if (ne != null)
+            {
+                DescriptorConstructionExtension ce;
+                foreach (XmlNode l in ne.SelectNodes("Extension"))
+                {
+                    ce = new DescriptorConstructionExtension(this, l);
+
+                    foreach(DescriptorConstructionExtension ce2 in Extensions)
+                    {
+                        Debug.Assert(ce2.ID != ce.ID);
+                    }
+
+                    Extensions.Add(ce);
+                }
+            }
+
+
             // Загружаем меню
             XmlNode nr = n.SelectSingleNode("CellsMenu");
             if (nr != null)
@@ -166,7 +185,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Информация о монстрах
-            XmlNode ne = n.SelectSingleNode("Monsters");
+            ne = n.SelectSingleNode("Monsters");
             if (ne != null)
             {
                 MonsterLevelLair mll;
@@ -256,6 +275,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int ResearchesPerDay { get; }// Количество исследований в сооружении в день
         internal bool HasTreasury { get; }// Имеет собственную казну (Замок, гильдии, храмы)
         internal int GoldByConstruction { get; }// Количество золота в казне при постройке
+        internal List<DescriptorConstructionExtension> Extensions { get; } = new List<DescriptorConstructionExtension>();
         internal List<DescriptorCellMenuForConstruction> ListResearches { get; } = new List<DescriptorCellMenuForConstruction>();
         internal DescriptorCellMenuForConstructionLevel[] Levels { get; }
 
@@ -287,6 +307,9 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }*/
 
+            foreach (DescriptorConstructionExtension ce in Extensions)
+                ce.TuneDeferredLinks();
+
             foreach (DescriptorCellMenuForConstruction cm in ListResearches)
                 cm.TuneDeferredLinks();
 
@@ -308,6 +331,14 @@ namespace Fantasy_Kingdoms_Battle
 
             if ((DefaultLevel == 1) && (Levels != null) && (Levels[1] != null))// Убрать вторую проверку после доработки логов
                 ListResearches.Remove(Levels[1]);
+        }
+
+        internal override void AfterTune()
+        {
+            base.AfterTune();
+
+            foreach (DescriptorConstructionExtension ce in Extensions)
+                ce.AfterTune();
         }
 
         internal string GetTextConstructionNotBuilded()

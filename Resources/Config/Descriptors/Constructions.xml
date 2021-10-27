@@ -339,6 +339,16 @@
         </Requirements>
       </Level>
     </Levels>
+    <Extensions>
+      <Extension>
+        <ID>Library</ID>
+        <Name>Библиотека</Name>
+        <Description>Пристроить библиотеку. Повышает ум и знания героев.</Description>
+        <ImageIndex>254</ImageIndex>
+        <Builders>1</Builders>
+        <AvailableForAll>true</AvailableForAll>
+      </Extension>
+    </Extensions>
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
@@ -612,6 +622,16 @@
         </Requirements>
       </Level>
     </Levels>
+    <Extensions>
+      <Extension>
+        <ID>DwarfForge</ID>
+        <Name>Кузница гномов</Name>
+        <Description>Пристроить гномью кузницу. Позволяет гномам создавать именные предметы.</Description>
+        <ImageIndex>226</ImageIndex>
+        <Builders>1</Builders>
+        <AvailableForAll>true</AvailableForAll>
+      </Extension>
+    </Extensions>
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
@@ -940,6 +960,16 @@
         </Perks>
       </Level>
     </Levels>
+    <Extensions>
+      <Extension>
+        <ID>Throne</ID>
+        <Name>Трон</Name>
+        <Description>Трон покажет величие Короля</Description>
+        <ImageIndex>260</ImageIndex>
+        <Builders>1</Builders>
+        <AvailableForAll>true</AvailableForAll>
+      </Extension>
+    </Extensions>
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
@@ -1008,6 +1038,17 @@
         </Entities>
       </Level>
     </Levels>
+    <Extensions>
+      <Extension>
+        <ID>FieldOfWheat</ID>
+        <Name>Поле с пшеницей</Name>
+        <Description>На поле растет пшеница - основной источник еды в Ардании.</Description>
+        <ImageIndex>262</ImageIndex>
+        <Construction>PeasantHouse</Construction>
+        <Builders>1</Builders>
+        <AvailableForAll>true</AvailableForAll>
+      </Extension>
+    </Extensions>
   </Construction>
   <Construction>
     <ID>Mill</ID>
@@ -1997,6 +2038,73 @@
         </Visit>
       </Level>
     </Levels>
+    <Extensions>
+      <Extension>
+        <ID>Gazebo</ID>
+        <Name>Беседки</Name>
+        <Description>Беседки увеличат популярность {Парка}</Description>
+        <ImageIndex>215</ImageIndex>
+        <Cost>500</Cost>
+        <Builders>1</Builders>
+        <Interest>5</Interest>
+        <AvailableForAll>true</AvailableForAll>
+        <Needs>
+          <Rest>5</Rest>
+        </Needs>
+      </Extension>
+      <Extension>
+        <ID>Waterfall</ID>
+        <Name>Водопад</Name>
+        <Description>Водопад увеличит популярность {Парка}</Description>
+        <ImageIndex>246</ImageIndex>
+        <Builders>1</Builders>
+        <Interest>5</Interest>
+        <AvailableForAll>true</AvailableForAll>
+        <Needs>
+          <Rest>10</Rest>
+          <Entertainment>5</Entertainment>
+        </Needs>
+      </Extension>
+      <Extension>
+        <ID>Alley</ID>
+        <Name>Аллея</Name>
+        <Description>Аллея увеличит популярность {Парка}</Description>
+        <ImageIndex>214</ImageIndex>
+        <Builders>1</Builders>
+        <Interest>20</Interest>
+        <AvailableForAll>true</AvailableForAll>
+        <Needs>
+          <Rest>5</Rest>
+          <Entertainment>2</Entertainment>
+        </Needs>
+      </Extension>
+      <Extension>
+        <ID>Maze</ID>
+        <Name>Лабиринт</Name>
+        <Description>Лабиринт увеличит популярность {Парка} и отдых героев</Description>
+        <ImageIndex>255</ImageIndex>
+        <Builders>1</Builders>
+        <Interest>20</Interest>
+        <AvailableForAll>true</AvailableForAll>
+        <Needs>
+          <Rest>5</Rest>
+          <Entertainment>2</Entertainment>
+        </Needs>
+      </Extension>
+      <Extension>
+        <ID>Pond</ID>
+        <Name>Пруд</Name>
+        <Description>Пруд увеличит популярность {Парка} и отдых героев</Description>
+        <ImageIndex>256</ImageIndex>
+        <Builders>1</Builders>
+        <Interest>20</Interest>
+        <AvailableForAll>true</AvailableForAll>
+        <Needs>
+          <Rest>5</Rest>
+          <Entertainment>2</Entertainment>
+        </Needs>
+      </Extension>
+    </Extensions>
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
@@ -2149,6 +2257,44 @@
         </Visit>
       </Level>
     </Levels>
+    <Extensions>
+      <Extension>
+        <ID>Paving</ID>
+        <Name>Мощение</Name>
+        <Description>Мощение плиткой увеличит популярность {Площади}</Description>
+        <ImageIndex>247</ImageIndex>
+        <Builders>1</Builders>
+        <Interest>5</Interest>
+        <Needs>
+          <Rest>10</Rest>
+        </Needs>
+        <AvailableForAll>true</AvailableForAll>
+      </Extension>
+      <Extension>
+        <ID>Fountain</ID>
+        <Name>Фонтан</Name>
+        <Description>Фонтан увеличит популярность {Площади}</Description>
+        <ImageIndex>213</ImageIndex>
+        <Builders>1</Builders>
+        <Interest>10</Interest>
+        <Needs>
+          <Rest>10</Rest>
+        </Needs>
+        <AvailableForAll>true</AvailableForAll>
+      </Extension>
+      <Extension>
+        <ID>Statue</ID>
+        <Name>Статуя Короля</Name>
+        <Description>Статуя Короля обозначит Королевский статус {Площади}</Description>
+        <ImageIndex>231</ImageIndex>
+        <Builders>1</Builders>
+        <Interest>15</Interest>
+        <Needs>
+          <Rest>15</Rest>
+        </Needs>
+        <AvailableForAll>true</AvailableForAll>
+      </Extension>
+    </Extensions>
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
@@ -2556,6 +2702,47 @@
         </Visit>
       </Level>
     </Levels>
+    <Extensions>
+      <Extension>
+        <ID>FlowerGarden</ID>
+        <Name>Цветники</Name>
+        <Description>Цветники увеличит популярность {Сада}</Description>
+        <ImageIndex>257</ImageIndex>
+        <Builders>1</Builders>
+        <Interest>20</Interest>
+        <AvailableForAll>true</AvailableForAll>
+        <Needs>
+          <Rest>5</Rest>
+          <Entertainment>2</Entertainment>
+        </Needs>
+      </Extension>
+      <Extension>
+        <ID>FruitTrees</ID>
+        <Name>Фруктовые деревья</Name>
+        <Description>Увеличат популярность {Сада}</Description>
+        <ImageIndex>258</ImageIndex>
+        <Builders>1</Builders>
+        <Interest>20</Interest>
+        <AvailableForAll>true</AvailableForAll>
+        <Needs>
+          <Rest>5</Rest>
+          <Entertainment>2</Entertainment>
+        </Needs>
+      </Extension>
+      <Extension>
+        <ID>Greenhouse</ID>
+        <Name>Оранжерея</Name>
+        <Description>Увеличит популярность {Сада}</Description>
+        <ImageIndex>259</ImageIndex>
+        <Builders>1</Builders>
+        <Interest>20</Interest>
+        <AvailableForAll>true</AvailableForAll>
+        <Needs>
+          <Rest>5</Rest>
+          <Entertainment>2</Entertainment>
+        </Needs>
+      </Extension>
+    </Extensions>
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>

@@ -143,13 +143,6 @@ namespace Fantasy_Kingdoms_Battle
                 ConstructionsEvents.Add(new DescriptorConstructionEvent(n));
             }
 
-            // Загрузка конфигурации расширений в сооружениях
-            xmlDoc = CreateXmlDocument(@"Config\Descriptors\ConstructionExtensions.xml");
-            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/Extension"))
-            {
-                ConstructionsExtensions.Add(new DescriptorConstructionExtension(n));
-            }
-
             // Загрузка конфигурации сооружений
             xmlDoc = CreateXmlDocument(@"Config\Descriptors\Constructions.xml");
             foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/Construction"))
@@ -320,9 +313,6 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorConstructionEvent ce in ConstructionsEvents)
                 ce.TuneDeferredLinks();
 
-            foreach (DescriptorConstructionExtension ce in ConstructionsExtensions)
-                ce.TuneDeferredLinks();
-
             foreach (DescriptorConstruction c in Constructions)
                 c.TuneDeferredLinks();
 
@@ -334,8 +324,8 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorItem i in Items)
                 i.AfterTune();
 
-            foreach (DescriptorConstructionExtension ce in ConstructionsExtensions)
-                ce.AfterTune();
+            foreach (DescriptorConstruction c in Constructions)
+                c.AfterTune();
 
             // Вспомогательные методы
             XmlDocument CreateXmlDocument(string pathToXml)
@@ -358,7 +348,6 @@ namespace Fantasy_Kingdoms_Battle
         internal List<DescriptorTypeConstruction> TypeConstructions { get; } = new List<DescriptorTypeConstruction>();
         internal List<DescriptorConstructionVisit> ConstructionsVisits { get; } = new List<DescriptorConstructionVisit>();
         internal List<DescriptorConstructionEvent> ConstructionsEvents { get; } = new List<DescriptorConstructionEvent>();
-        internal List<DescriptorConstructionExtension> ConstructionsExtensions { get; } = new List<DescriptorConstructionExtension>();
         internal List<DescriptorConstruction> Constructions { get; } = new List<DescriptorConstruction>();
         internal List<DescriptorAttack> TypeAttacks { get; } = new List<DescriptorAttack>();
         internal List<DescriptorPerk> Perks { get; } = new List<DescriptorPerk>();
@@ -529,20 +518,6 @@ namespace Fantasy_Kingdoms_Battle
 
             if (mustBeExists)
                 throw new Exception("Событие сооружения " + ID + " не найдено.");
-
-            return null;
-        }
-
-        internal DescriptorConstructionExtension FindConstructionExtension(string ID, bool mustBeExists = true)
-        {
-            foreach (DescriptorConstructionExtension dce in ConstructionsExtensions)
-            {
-                if (dce.ID == ID)
-                    return dce;
-            }
-
-            if (mustBeExists)
-                throw new Exception("Расширение сооружения " + ID + " не найдено.");
 
             return null;
         }

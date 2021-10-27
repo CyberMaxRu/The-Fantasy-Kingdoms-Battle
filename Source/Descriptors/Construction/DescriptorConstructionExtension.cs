@@ -11,14 +11,13 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class DescriptorConstructionExtension : DescriptorSmallEntity
     {
-        string nameConstruction;
-
-        public DescriptorConstructionExtension(XmlNode n) : base(n)
+        public DescriptorConstructionExtension(DescriptorConstruction construction, XmlNode n) : base(n)
         {
             Debug.Assert(Interest >= 0);
             Debug.Assert(Interest <= 100);
 
-            nameConstruction = GetStringNotNull(n, "Construction");
+            Construction = construction;
+
             Builders = GetIntegerNotNull(n, "Builders");
             Interest = GetInteger(n, "Interest");
             ListNeeds = new ListNeeds(n.SelectSingleNode("Needs"));
@@ -43,8 +42,6 @@ namespace Fantasy_Kingdoms_Battle
         internal override void TuneDeferredLinks()
         {
             base.TuneDeferredLinks();
-
-            Construction = Config.FindConstruction(nameConstruction);
 
             ListNeeds.TuneDeferredLinks();
             //Debug.Assert(ListNeeds.Count > 0);
