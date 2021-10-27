@@ -436,7 +436,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         public CellMenuConstructionExtension(Construction c, DescriptorCellMenuForConstruction d) : base(c, d)
         {
-            Entity = Config.FindConstructionExtension(d.NameEntity);
+            Entity = d.ForConstruction.FindExtension(d.NameEntity, true);
         }
 
         internal DescriptorConstructionExtension Entity { get; }

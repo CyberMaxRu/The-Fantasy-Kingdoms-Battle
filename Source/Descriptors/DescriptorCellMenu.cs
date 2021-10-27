@@ -107,19 +107,31 @@ namespace Fantasy_Kingdoms_Battle
 
             if ((NameEntity != null) && (Type != TypeCellMenuForConstruction.Extra))
             {
-                Entity = FormMain.Config.FindAbility(NameEntity, false);
-                if (Entity is null)
-                    Entity = FormMain.Config.FindItem(NameEntity, false);
-                if (Entity is null)
-                    Entity = FormMain.Config.FindGroupItem(NameEntity, false);
-                if (Entity is null)
-                    Entity = FormMain.Config.FindConstructionExtension(NameEntity, false);
-                if (Entity is null)
-                    Entity = FormMain.Config.FindConstructionEvent(NameEntity, false);
-                if (Entity is null)
-                    Entity = FormMain.Config.FindCreature(NameEntity, false);
-                if (Entity is null)
-                    Entity = FormMain.Config.FindConstruction(NameEntity, false);
+                switch (Type)
+                {
+                    case TypeCellMenuForConstruction.Tournament:
+                    case TypeCellMenuForConstruction.Research:
+                        Entity = FormMain.Config.FindAbility(NameEntity, false);
+                        if (Entity is null)
+                            Entity = FormMain.Config.FindItem(NameEntity, false);
+                        if (Entity is null)
+                            Entity = FormMain.Config.FindGroupItem(NameEntity, false);
+                        break;
+                    case TypeCellMenuForConstruction.Extension:
+                        Entity = ForConstruction.FindExtension(NameEntity, true);
+                        break;
+                    case TypeCellMenuForConstruction.Event:
+                        Entity = FormMain.Config.FindConstructionEvent(NameEntity, true);
+                        break;
+                    case TypeCellMenuForConstruction.HireCreature:
+                        Entity = FormMain.Config.FindCreature(NameEntity);
+                        break;
+                    case TypeCellMenuForConstruction.Build:
+                        Entity = FormMain.Config.FindConstruction(NameEntity, true);
+                        break;
+                    default:
+                        throw new Exception($"Неизвестное действие: {Type}.");
+                }
 
                 Debug.Assert(Entity != null);
             }
@@ -145,7 +157,7 @@ namespace Fantasy_Kingdoms_Battle
                 DescriptorVisit = new DescriptorConstructionVisit(this, nv);
             }
 
-            Extensions = new ListSmallEntity(n.SelectSingleNode("Entities"));
+            Extensions = new ListSmallEntity(forConstruction, n.SelectSingleNode("Entities"));
 
             // Загружаем перки, которые дает сооружение
             ListPerks = new ListDescriptorPerks(n.SelectSingleNode("Perks"));

@@ -202,7 +202,7 @@ namespace Fantasy_Kingdoms_Battle
             base.TuneDeferredLinks();
 
             Construction = Config.FindConstruction(nameConstruction);
-            Extension = Config.FindConstructionExtension(nameExtension);
+            Extension = Construction.FindExtension(nameExtension, true);
             nameConstruction = "";
             nameExtension = "";
 

@@ -370,5 +370,19 @@ namespace Fantasy_Kingdoms_Battle
                     throw new Exception("Нельзя строить категорию сооружения: " + Category.ToString());
             }
         }
+
+        internal DescriptorConstructionExtension FindExtension(string id, bool mustBeFound)
+        {
+            foreach (DescriptorConstructionExtension ce in Extensions)
+            {
+                if (ce.ID == id)
+                    return ce;
+            }
+
+            if (mustBeFound)
+                throw new Exception($"Доп. сооружение {id} не найдено в {ID}.");
+
+            return null;
+        }
     }
 }

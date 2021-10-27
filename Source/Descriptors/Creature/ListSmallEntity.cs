@@ -12,8 +12,10 @@ namespace Fantasy_Kingdoms_Battle
     {
         private List<string> nameEntity;
 
-        public ListSmallEntity(XmlNode n)
+        public ListSmallEntity(DescriptorConstruction construction, XmlNode n)
         {
+            Construction = construction;
+
             if (n != null)
             {
                 nameEntity = new List<string>();
@@ -34,6 +36,8 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        internal DescriptorConstruction Construction { get; }
+
         internal void TuneDeferredLinks()
         {
             if (nameEntity != null)
@@ -43,7 +47,7 @@ namespace Fantasy_Kingdoms_Battle
                 DescriptorSmallEntity e;
                 foreach (string entity in nameEntity)
                 {
-                    e = FormMain.Config.FindConstructionExtension(entity, false);
+                    e = Construction.FindExtension(entity, false);
                     if (e is null)
                         e = FormMain.Config.FindItem(entity, false);
                     if (e is null)
