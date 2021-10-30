@@ -277,6 +277,9 @@ namespace Fantasy_Kingdoms_Battle
 
             Program.formMain = this;
 
+            Debug.Listeners.Insert(0, new DebugWriter(Environment.CurrentDirectory + @"\debug.log"));
+            Debug.AutoFlush = true;
+
             Text = NAME_PROJECT + " (сборка " + VERSION + ")";
             
             // Настройка переменной с папкой ресурсов
@@ -799,7 +802,8 @@ namespace Fantasy_Kingdoms_Battle
             catch (Exception exc)
             {
                 MessageBox.Show(exc.Message + Environment.NewLine + exc.StackTrace);
-                Environment.Exit(-1);
+                throw;
+                //Environment.Exit(-1);
             }
         }
 
@@ -1878,6 +1882,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (!(controlWithHint is null))
                 {
+                    Debug.Assert(false);
                     Debug.Assert(controlWithHint.Visible);
                     controlWithHint.MouseDown();
                 }
