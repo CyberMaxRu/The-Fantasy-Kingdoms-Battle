@@ -113,7 +113,7 @@
             <MaxQuantity>1</MaxQuantity>
           </TypeConstruction>
           <TypeConstruction>
-            <ID>FrontierPost</ID>
+            <ID>NorthFort</ID>
             <MinQuantity>1</MinQuantity>
             <MaxQuantity>1</MaxQuantity>
           </TypeConstruction>
@@ -121,6 +121,21 @@
             <ID>OreMine</ID>
             <MinQuantity>2</MinQuantity>
             <MaxQuantity>2</MaxQuantity>
+          </TypeConstruction>
+          <TypeConstruction>
+            <ID>MountainWay</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
+          </TypeConstruction>
+          <TypeConstruction>
+            <ID>Hotel</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
+          </TypeConstruction>
+          <TypeConstruction>
+            <ID>TradePost</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
           </TypeConstruction>
         </TypeConstructions>
       </Layer>

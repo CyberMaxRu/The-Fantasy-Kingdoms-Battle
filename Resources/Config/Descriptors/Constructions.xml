@@ -4573,4 +4573,67 @@
       </Level>
     </Levels>
   </Construction>
+  <Construction>
+    <ID>MountainWay</ID>
+    <Name>Горный путь</Name>
+    <Description>Путь в Северных горах.</Description>
+    <ImageIndex>179</ImageIndex>
+    <TypeConstruction>ElementLandscape</TypeConstruction>
+    <Category>ElementLandscape</Category>
+    <MaxLevel>1</MaxLevel>
+    <DefaultLevel>1</DefaultLevel>
+    <SoundSelect>graveyard_select.wav</SoundSelect>
+    <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
+    <Levels>
+      <Level>
+        <Number>1</Number>
+        <Cost>0</Cost>
+        <Builders>0</Builders>
+        <Income>0</Income>
+        <MaxInhabitant>100</MaxInhabitant>
+      </Level>
+    </Levels>
+  </Construction>
+  <Construction>
+    <ID>NorthFort</ID>
+    <Name>Северная застава</Name>
+    <Description>Северная застава находится на границе королевства, в горах.//Гарнизон обеспечивает безопасность дороги и близлежащих сооружений.//Кто владеет заставой - тот владеет землей.</Description>
+    <ImageIndex>180</ImageIndex>
+    <TypeConstruction>ElementLandscape</TypeConstruction>
+    <Category>ElementLandscape</Category>
+    <MaxLevel>1</MaxLevel>
+    <DefaultLevel>1</DefaultLevel>
+    <SoundSelect>graveyard_select.wav</SoundSelect>
+    <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
+    <Levels>
+      <Level>
+        <Number>1</Number>
+        <Cost>0</Cost>
+        <Builders>0</Builders>
+        <Income>0</Income>
+        <MaxInhabitant>100</MaxInhabitant>
+      </Level>
+    </Levels>
+  </Construction>
+  <Construction>
+    <ID>Hotel</ID>
+    <Name>Гостиница</Name>
+    <Description>В придорожной гостинице герои могут отдохнуть в относительной безопасности.</Description>
+    <ImageIndex>181</ImageIndex>
+    <TypeConstruction>ElementLandscape</TypeConstruction>
+    <Category>ElementLandscape</Category>
+    <MaxLevel>1</MaxLevel>
+    <DefaultLevel>1</DefaultLevel>
+    <SoundSelect>graveyard_select.wav</SoundSelect>
+    <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
+    <Levels>
+      <Level>
+        <Number>1</Number>
+        <Cost>0</Cost>
+        <Builders>0</Builders>
+        <Income>0</Income>
+        <MaxInhabitant>100</MaxInhabitant>
+      </Level>
+    </Levels>
+  </Construction>
 </Descriptors>
