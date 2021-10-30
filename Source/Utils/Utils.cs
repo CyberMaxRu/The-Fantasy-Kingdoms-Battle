@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -68,6 +69,48 @@ namespace Fantasy_Kingdoms_Battle
         internal static string FormatInteger(int value)
         {
             return (value > 0 ? "+" : "") + value.ToString();
+        }
+    }
+
+    internal class DebugWriter : TextWriterTraceListener
+    {
+        public DebugWriter(string filename) : base(filename)
+        {
+
+        }
+
+        public override void Fail(string message)
+        {
+            Debug.WriteLine(DateTime.Now.ToString() + ": " + Application.ProductVersion);
+            Debug.WriteLine(message);
+            WriteStack();
+            Debug.WriteLine(Environment.NewLine);
+            Debug.Flush();
+
+            base.Fail(message);
+        }
+
+        public override void Fail(string message, string detailMessage)
+        {
+            Debug.WriteLine(DateTime.Now.ToString() + ": " + Application.ProductVersion);
+            Debug.WriteLine(message);
+            Debug.WriteLine(detailMessage);
+            WriteStack();
+            Debug.WriteLine(Environment.NewLine);
+            Debug.Flush();
+
+            base.Fail(message, detailMessage);
+        }
+
+        internal void WriteStack()
+        {
+            StackTrace st = new StackTrace(5, true);
+            for (int i = 0; i < st.FrameCount; i++)
+            {
+                StackFrame sf = st.GetFrame(i);
+                string line = sf.GetFileLineNumber() > 0 ? $" (Line {sf.GetFileLineNumber()})" : "";
+                Debug.WriteLine($"{sf.GetMethod()}: {sf.GetFileName()}{line}");
+            }
         }
     }
 }
