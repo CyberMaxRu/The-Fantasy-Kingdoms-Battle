@@ -23,13 +23,11 @@ namespace Updater
         private string dirResources;
         private Version currentVersion;
         private Version actualVersion;
-        private string curVersionRelease;
         private string URLDrive;
         private string UIDVersion;
         private string UIDArchive;
         private string UIDArchive1;
         private State State = State.CheckUpdate;
-        private bool autoUpdate = false;
 
         public Form1()
         {
@@ -94,7 +92,6 @@ namespace Updater
             {
                 if (s == "-silence")
                 {
-                    autoUpdate = true;
                     CheckUpdate();
                 }
             }
