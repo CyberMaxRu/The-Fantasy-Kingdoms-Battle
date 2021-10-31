@@ -897,26 +897,6 @@ namespace Fantasy_Kingdoms_Battle
 
             PenBorder = new Pen(CommonBorder);
             PenSelectedBorder = new Pen(CommonSelectedBorder);
-
-            Font CreateFont(XmlNode n)
-            {
-                string name = n.SelectSingleNode("Name").InnerText;
-                
-/*                if (name == "Majesty2")
-                {
-                    if (XmlUtils.GetBool(n.SelectSingleNode("Bold"), false))
-                        return new Font(ffMajesty2, Convert.ToInt32(n.SelectSingleNode("Size").InnerText), FontStyle.Bold);
-                    else
-                        return new Font(ffMajesty2, Convert.ToInt32(n.SelectSingleNode("Size").InnerText));
-                }
-                else
-                {*/
-                    if (XmlUtils.GetBoolean(n, "Bold", false))
-                        return new Font(name, Convert.ToInt32(n.SelectSingleNode("Size").InnerText), FontStyle.Bold);
-                    else
-                        return new Font(name, Convert.ToInt32(n.SelectSingleNode("Size").InnerText));
-//                }
-            }
         }
 
         internal Color ColorEntity(bool ally)
