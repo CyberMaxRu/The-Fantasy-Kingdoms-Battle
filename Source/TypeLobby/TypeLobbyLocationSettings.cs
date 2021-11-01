@@ -10,15 +10,17 @@ using System.Drawing;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс настройки локации типа лобби
-    internal sealed class TypeLobbyLocationSettings : DescriptorEntity
+    internal sealed class TypeLobbyLocationSettings : DescriptorWithID
     {
+        private string nameTypeLandscape;
         private string nameDefaultConstruction;
+
         public TypeLobbyLocationSettings(TypeLobby typeLobby, XmlNode n, int quantitySlotLairs) : base(n)
         {
             TypeLobby = typeLobby;
 
+            nameTypeLandscape = XmlUtils.GetStringNotNull(n, "TypeLandscape");
             Number = XmlUtils.GetInteger(n, "Number");
-            NameTexture = XmlUtils.GetStringNotNull(n, "NameTexture");
             Ownership = XmlUtils.GetBooleanNotNull(n, "Ownership");
             CostScout = XmlUtils.GetInteger(n, "CostScout");
             CostAttack = XmlUtils.GetInteger(n, "CostAttack");
@@ -78,9 +80,8 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal TypeLobby TypeLobby { get; }// Тип лобби
+        internal DescriptorTypeLandscape TypeLandscape { get; private set; }
         internal int Number { get; }// Номер слоя
-        internal string NameTexture { get; }
-        internal Bitmap BackgroundImage { get; }// Картинка для фона
         internal bool Ownership { get; set; }// Локация является владением короля
         internal int CostScout { get; }// Стоимость разведки
         internal int CostAttack { get; }// Стоимость атаки
@@ -91,6 +92,9 @@ namespace Fantasy_Kingdoms_Battle
         internal override void TuneDeferredLinks()
         {
             base.TuneDeferredLinks();
+
+            TypeLandscape = FormMain.Config.FindTypeLandscape(nameTypeLandscape);
+            nameTypeLandscape = "";
 
             DefaultConstruction = FormMain.Config.FindConstruction(nameDefaultConstruction);
             nameDefaultConstruction = "";

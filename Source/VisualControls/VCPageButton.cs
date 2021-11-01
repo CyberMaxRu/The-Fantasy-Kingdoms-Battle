@@ -27,7 +27,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (layer != null)
             {
-                PageImage = GuiUtils.MakeCustomBackground(FormMain.Config.GetTexture(layer.NameTexture), Program.formMain.MainControl);
+                PageImage = GuiUtils.MakeCustomBackground(FormMain.Config.GetTexture(layer.TypeLandscape.NameTexture), Program.formMain.MainControl);
 
                 constructions = new PanelConstruction[layer.TypeLobby.LairsHeight, layer.TypeLobby.LairsWidth];
 

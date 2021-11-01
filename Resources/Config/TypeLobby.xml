@@ -80,11 +80,8 @@
     <NeighborhoodSettings>
       <Layer>
         <ID>LocationMountain</ID>
-        <Name>Горы</Name>
-        <Description>В горах можно добыть много металла. Например, золота. А там где золото - там драконы.</Description>
-        <ImageIndex>166</ImageIndex>
+        <Name>Горы #1</Name>
         <TypeLandscape>Mountain</TypeLandscape>
-        <NameTexture>Mountain</NameTexture>
         <Number>0</Number>
         <Ownership>false</Ownership>
         <CostScout>100</CostScout>
@@ -141,11 +138,8 @@
       </Layer>
       <Layer>
         <ID>LocationSwamp</ID>
-        <Name>Болото</Name>
-        <Description>В болотах Ардании сгинуло немало смелых героев.</Description>
-        <ImageIndex>164</ImageIndex>
-        <TypeLandscape>Forest</TypeLandscape>
-        <NameTexture>Swamp</NameTexture>
+        <Name>Болото #1</Name>
+        <TypeLandscape>Swamp</TypeLandscape>
         <Number>1</Number>
         <Ownership>false</Ownership>
         <CostScout>100</CostScout>
@@ -162,13 +156,9 @@
       </Layer>
       <Layer>
         <ID>LocationForest</ID>
-        <Name>Лес</Name>
-        <Description>Лес - полон волков и медведей.</Description>
-        <ImageIndex>165</ImageIndex>
+        <Name>Лес #1</Name>
         <TypeLandscape>Forest</TypeLandscape>
-        <NameTexture>Forest</NameTexture>
         <Number>2</Number>
-        <Location>LocationForest</Location>
         <Ownership>false</Ownership>
         <CostScout>100</CostScout>
         <CostAttack>250</CostAttack>
@@ -219,11 +209,8 @@
       </Layer>
       <Layer>
         <ID>LocationNorthVillage</ID>
-        <Name>Северная деревня</Name>
-        <Description>В деревне живут подданные короля - крестьяне.</Description>
-        <ImageIndex>162</ImageIndex>
-        <TypeLandscape>Plain</TypeLandscape>
-        <NameTexture>AroundCastle</NameTexture>
+        <Name>Деревня #1</Name>
+        <TypeLandscape>Village</TypeLandscape>
         <Number>3</Number>
         <Ownership>true</Ownership>
         <CostScout>100</CostScout>
@@ -241,10 +228,7 @@
       <Layer>
         <ID>LocationCapital</ID>
         <Name>Столица</Name>
-        <Description>Столица - достаточно безопасное место. Если, конечно, заботиться об этой безопасности.</Description>
-        <ImageIndex>161</ImageIndex>
-        <TypeLandscape>Plain</TypeLandscape>
-        <NameTexture>AroundCastle</NameTexture>
+        <TypeLandscape>Capital</TypeLandscape>
         <Number>4</Number>
         <Ownership>true</Ownership>
         <CostScout>100</CostScout>
@@ -296,11 +280,8 @@
       </Layer>
       <Layer>
         <ID>LocationSouthVillage</ID>
-        <Name>Южная деревня</Name>
-        <Description>В деревне живут подданные короля - крестьяне.</Description>
-        <ImageIndex>162</ImageIndex>
-        <TypeLandscape>Plain</TypeLandscape>
-        <NameTexture>AroundCastle</NameTexture>
+        <Name>Деревня #2</Name>
+        <TypeLandscape>Village</TypeLandscape>
         <Number>5</Number>
         <Ownership>true</Ownership>
         <CostScout>100</CostScout>
@@ -317,11 +298,8 @@
       </Layer>
       <Layer>
         <ID>LocationPlain</ID>
-        <Name>Равнины</Name>
-        <Description>Равнина - отличное место, чтобы выращивать пшеницу или пасти скот. Но живут здесь огры.</Description>
-        <ImageIndex>167</ImageIndex>
+        <Name>Равнины #1</Name>
         <TypeLandscape>Plain</TypeLandscape>
-        <NameTexture>Relax</NameTexture>
         <Number>6</Number>
         <Ownership>false</Ownership>
         <CostScout>400</CostScout>
@@ -348,11 +326,8 @@
       </Layer>
       <Layer>
         <ID>LocationWasteland</ID>
-        <Name>Пустошь</Name>
-        <Description>Пустошь - жуткое место. Мало воды, мало деревьев, а еще этот досаждающий гнус...</Description>
-        <ImageIndex>168</ImageIndex>
+        <Name>Пустошь #1</Name>
         <TypeLandscape>Wasteland</TypeLandscape>
-        <NameTexture>Wasteland</NameTexture>
         <Number>7</Number>
         <Ownership>false</Ownership>
         <CostScout>100</CostScout>
@@ -365,15 +340,17 @@
             <MinQuantity>1</MinQuantity>
             <MaxQuantity>1</MaxQuantity>
           </TypeConstruction>
+          <TypeConstruction>
+            <ID>SerpentsNest</ID>
+            <MinQuantity>2</MinQuantity>
+            <MaxQuantity>2</MaxQuantity>
+          </TypeConstruction>
         </TypeConstructions>
       </Layer>
       <Layer>
         <ID>LocationDesert</ID>
-        <Name>Пустыня</Name>
-        <Description>В пустыне легко затеряться.</Description>
-        <ImageIndex>163</ImageIndex>
+        <Name>Пустыня #1</Name>
         <TypeLandscape>Desert</TypeLandscape>
-        <NameTexture>Desert</NameTexture>
         <Number>8</Number>
         <Ownership>false</Ownership>
         <CostScout>100</CostScout>

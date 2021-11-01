@@ -3,6 +3,9 @@
   <TypeLandscape>
     <ID>Plain</ID>
     <Name>Равнина</Name>
+    <Description>Равнина - отличное место, чтобы выращивать пшеницу или пасти скот. Но живут здесь огры.</Description>
+    <ImageIndex>167</ImageIndex>
+    <NameTexture>Plain</NameTexture>
     <Constructions>
       <Construction>Hill</Construction>
       <Construction>Meadow</Construction>
@@ -13,6 +16,9 @@
   <TypeLandscape>
     <ID>Forest</ID>
     <Name>Лес</Name>
+    <Description>Лес - полон волков и медведей.</Description>
+    <ImageIndex>165</ImageIndex>
+    <NameTexture>Forest</NameTexture>
     <Constructions>
       <Construction>Forest</Construction>
       <Construction>Meadow</Construction>
@@ -23,6 +29,9 @@
   <TypeLandscape>
     <ID>Swamp</ID>
     <Name>Болото</Name>
+    <Description>В болотах Ардании сгинуло немало смелых героев.</Description>
+    <ImageIndex>164</ImageIndex>
+    <NameTexture>Swamp</NameTexture>
     <Constructions>
       <Construction>Swamp</Construction>
       <Construction>Marsh</Construction>
@@ -32,6 +41,9 @@
   <TypeLandscape>
     <ID>Mountain</ID>
     <Name>Горы</Name>
+    <Description>В горах можно добыть много металла. Например, золота. А там где золото - там драконы.</Description>
+    <ImageIndex>166</ImageIndex>
+    <NameTexture>Mountain</NameTexture>
     <Constructions>
       <Construction>Mountain</Construction>
       <Construction>MountainSpring</Construction>
@@ -42,6 +54,9 @@
   <TypeLandscape>
     <ID>Wasteland</ID>
     <Name>Пустошь</Name>
+    <Description>Пустошь - жуткое место. Мало воды, мало деревьев, а еще этот досаждающий гнус...</Description>
+    <ImageIndex>168</ImageIndex>
+    <NameTexture>Wasteland</NameTexture>
     <Constructions>
       <Construction>Wasteland</Construction>
       <Construction>Canyon</Construction>
@@ -50,9 +65,32 @@
   <TypeLandscape>
     <ID>Desert</ID>
     <Name>Пустыня</Name>
+    <Description>В пустыне легко затеряться.</Description>
+    <ImageIndex>163</ImageIndex>
+    <NameTexture>Desert</NameTexture>
     <Constructions>
       <Construction>Desert</Construction>
       <Construction>Oasis</Construction>
+    </Constructions>
+  </TypeLandscape>
+  <TypeLandscape>
+    <ID>Village</ID>
+    <Name>Деревня</Name>
+    <Description>В деревне живут подданные короля - крестьяне.</Description>
+    <ImageIndex>162</ImageIndex>
+    <NameTexture>Village</NameTexture>
+    <Constructions>
+      <Construction>PeasantHouse</Construction>
+    </Constructions>
+  </TypeLandscape>
+  <TypeLandscape>
+    <ID>Capital</ID>
+    <Name>Столица</Name>
+    <Description>Столица - достаточно безопасное место. Если, конечно, заботиться об этой безопасности.</Description>
+    <ImageIndex>161</ImageIndex>
+    <NameTexture>Capital</NameTexture>
+    <Constructions>
+      <Construction>CityGraveyard</Construction>
     </Constructions>
   </TypeLandscape>
 </Descriptors>

@@ -10,12 +10,14 @@ using System.Drawing;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс типа местности
-    internal sealed class DescriptorTypeLandscape : DescriptorWithID
+    internal sealed class DescriptorTypeLandscape : DescriptorEntity
     {
         internal List<string> nameElements = new List<string>();
 
         public DescriptorTypeLandscape(XmlNode n) : base(n)
         {
+            NameTexture = XmlUtils.GetStringNotNull(n, "NameTexture");
+
             // Загружаем список доступных элементов
             XmlNode ne = n.SelectSingleNode("Constructions");
             string name;
@@ -36,6 +38,8 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(nameElements.Count > 0, $"У {ID} нет элементов.");
         }
 
+        internal string NameTexture { get; }
+        internal Bitmap BackgroundImage { get; }// Картинка для фона
         internal List<DescriptorConstruction> Elements { get; } = new List<DescriptorConstruction>();
 
         internal override void TuneDeferredLinks()

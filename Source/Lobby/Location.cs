@@ -62,7 +62,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override int GetImageIndex()
         {
-            return Settings.ImageIndex;
+            return Settings.TypeLandscape.ImageIndex;
         }
 
         internal override bool GetNormalImage() => Ownership;
