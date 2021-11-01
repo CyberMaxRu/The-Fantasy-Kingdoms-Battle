@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Descriptors>
+  <Poison>
+    <ID>PoisonPromaine</ID>
+    <Name>Трупный яд</Name>
+  </Poison>
+  <Poison>
+    <ID>PoisonSerpent</ID>
+    <Name>Яд змеев</Name>
+  </Poison>
+</Descriptors>

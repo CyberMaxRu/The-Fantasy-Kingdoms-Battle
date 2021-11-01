@@ -174,6 +174,14 @@ namespace Fantasy_Kingdoms_Battle
                 Items.Add(new DescriptorItem(n));
             }
 
+            // Загрузка конфигурации ядов
+            xmlDoc = CreateXmlDocument(@"Config\Descriptors\Poisons.xml");
+
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/Poison"))
+            {
+                Poisons.Add(new DescriptorPoison(n));
+            }
+
             // Загрузка конфигурации типов атаки
             xmlDoc = CreateXmlDocument(@"Config\Descriptors\TypeAttacks.xml");
 
@@ -274,6 +282,9 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorTypeLandscape tl in TypeLandscapes)
                 tl.TuneDeferredLinks();
 
+            foreach (DescriptorPoison p in Poisons)
+                p.TuneDeferredLinks();
+
             foreach (DescriptorTypeAbility ta in TypeAbilities)
                 ta.TuneDeferredLinks();
 
@@ -349,6 +360,9 @@ namespace Fantasy_Kingdoms_Battle
         internal List<DescriptorConstructionVisit> ConstructionsVisits { get; } = new List<DescriptorConstructionVisit>();
         internal List<DescriptorConstructionEvent> ConstructionsEvents { get; } = new List<DescriptorConstructionEvent>();
         internal List<DescriptorConstruction> Constructions { get; } = new List<DescriptorConstruction>();
+
+        // Существа
+        internal List<DescriptorPoison> Poisons { get; } = new List<DescriptorPoison>();
         internal List<DescriptorAttack> TypeAttacks { get; } = new List<DescriptorAttack>();
         internal List<DescriptorPerk> Perks { get; } = new List<DescriptorPerk>();
         internal List<DescriptorTypeAbility> TypeAbilities { get; } = new List<DescriptorTypeAbility>();
