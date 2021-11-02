@@ -20,20 +20,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            try
-            {
-                new FormMain();
-                Application.Run(formMain);
-            }
-            catch(Exception e)
-            {
-                Debug.WriteLine(DateTime.Now.ToString() + ": " + Application.ProductVersion);
-                Debug.WriteLine(e.ToString());
-                Debug.WriteLine(e.Message);
-                Debug.WriteLine(e.StackTrace);
-                Debug.WriteLine(Environment.NewLine);
-                throw;
-            }
+            new FormMain();
+            Application.Run(formMain);
         }
     }
 }
