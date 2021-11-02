@@ -86,13 +86,13 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Загружаем настройки логов
-            XmlNode nodeLairSettings = n.SelectSingleNode("NeighborhoodSettings");
+            XmlNode nodeLairSettings = n.SelectSingleNode("Locations");
             Debug.Assert(nodeLairSettings != null);
 
             Locations = new TypeLobbyLocationSettings[MapHeight, MapWidth];
             TypeLobbyLocationSettings ls;
 
-            foreach (XmlNode l in nodeLairSettings.SelectNodes("Layer"))
+            foreach (XmlNode l in nodeLairSettings.SelectNodes("Location"))
             {
                 ls = new TypeLobbyLocationSettings(this, l, LairsWidth * LairsHeight);
 

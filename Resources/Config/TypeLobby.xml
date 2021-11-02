@@ -78,8 +78,8 @@
         </Priority>
       </Defense>
     </CoefficientFlags>
-    <NeighborhoodSettings>
-      <Layer>
+    <Locations>
+      <Location>
         <ID>LocationMountain1</ID>
         <Name>Горы #1</Name>
         <TypeLandscape>Mountain</TypeLandscape>
@@ -136,8 +136,8 @@
             <MaxQuantity>1</MaxQuantity>
           </TypeConstruction>
         </TypeConstructions>
-      </Layer>
-      <Layer>
+      </Location>
+      <Location>
         <ID>LocationMountain2</ID>
         <Name>Горы #2</Name>
         <TypeLandscape>Mountain</TypeLandscape>
@@ -154,8 +154,8 @@
             <MaxQuantity>1</MaxQuantity>
           </TypeConstruction>
         </TypeConstructions>
-      </Layer>
-      <Layer>
+      </Location>
+      <Location>
         <ID>LocationMountain3</ID>
         <Name>Горы #3</Name>
         <TypeLandscape>Mountain</TypeLandscape>
@@ -172,8 +172,8 @@
             <MaxQuantity>1</MaxQuantity>
           </TypeConstruction>
         </TypeConstructions>
-      </Layer>
-      <Layer>
+      </Location>
+      <Location>
         <ID>LocationSwamp1</ID>
         <Name>Болото #1</Name>
         <TypeLandscape>Swamp</TypeLandscape>
@@ -190,8 +190,8 @@
             <MaxQuantity>1</MaxQuantity>
           </TypeConstruction>
         </TypeConstructions>
-      </Layer>
-      <Layer>
+      </Location>
+      <Location>
         <ID>LocationSwamp2</ID>
         <Name>Болото #2</Name>
         <TypeLandscape>Swamp</TypeLandscape>
@@ -208,8 +208,8 @@
             <MaxQuantity>1</MaxQuantity>
           </TypeConstruction>
         </TypeConstructions>
-      </Layer>
-      <Layer>
+      </Location>
+      <Location>
         <ID>LocationSwamp3</ID>
         <Name>Болото #3</Name>
         <TypeLandscape>Swamp</TypeLandscape>
@@ -226,8 +226,8 @@
             <MaxQuantity>1</MaxQuantity>
           </TypeConstruction>
         </TypeConstructions>
-      </Layer>
-      <Layer>
+      </Location>
+      <Location>
         <ID>LocationForest1</ID>
         <Name>Лес #1</Name>
         <TypeLandscape>Forest</TypeLandscape>
@@ -279,8 +279,8 @@
             <MaxQuantity>2</MaxQuantity>
           </TypeConstruction>
         </TypeConstructions>
-      </Layer>
-      <Layer>
+      </Location>
+      <Location>
         <ID>LocationForest2</ID>
         <Name>Лес #2</Name>
         <TypeLandscape>Forest</TypeLandscape>
@@ -302,8 +302,8 @@
             <MaxQuantity>2</MaxQuantity>
           </TypeConstruction>
         </TypeConstructions>
-      </Layer>
-      <Layer>
+      </Location>
+      <Location>
         <ID>LocationForest3</ID>
         <Name>Лес #3</Name>
         <TypeLandscape>Forest</TypeLandscape>
@@ -325,8 +325,8 @@
             <MaxQuantity>2</MaxQuantity>
           </TypeConstruction>
         </TypeConstructions>
-      </Layer>
-      <Layer>
+      </Location>
+      <Location>
         <ID>LocationForest4</ID>
         <Name>Лес #4</Name>
         <TypeLandscape>Forest</TypeLandscape>
@@ -348,8 +348,8 @@
             <MaxQuantity>2</MaxQuantity>
           </TypeConstruction>
         </TypeConstructions>
-      </Layer>
-      <Layer>
+      </Location>
+      <Location>
         <ID>LocationForest5</ID>
         <Name>Лес #5</Name>
         <TypeLandscape>Forest</TypeLandscape>
@@ -371,8 +371,8 @@
             <MaxQuantity>2</MaxQuantity>
           </TypeConstruction>
         </TypeConstructions>
-      </Layer>
-      <Layer>
+      </Location>
+      <Location>
         <ID>LocationNorthVillage</ID>
         <Name>Деревня #1</Name>
         <TypeLandscape>Village</TypeLandscape>
@@ -389,8 +389,8 @@
             <MaxQuantity>1</MaxQuantity>
           </TypeConstruction>
         </TypeConstructions>
-      </Layer>
-      <Layer>
+      </Location>
+      <Location>
         <ID>LocationCapital</ID>
         <Name>Столица</Name>
         <TypeLandscape>Capital</TypeLandscape>
@@ -442,8 +442,8 @@
             <MaxQuantity>1</MaxQuantity>
           </TypeConstruction>
         </TypeConstructions>
-      </Layer>
-      <Layer>
+      </Location>
+      <Location>
         <ID>LocationSouthVillage</ID>
         <Name>Деревня #2</Name>
         <TypeLandscape>Village</TypeLandscape>
@@ -460,8 +460,8 @@
             <MaxQuantity>1</MaxQuantity>
           </TypeConstruction>
         </TypeConstructions>      
-      </Layer>
-      <Layer>
+      </Location>
+      <Location>
         <ID>LocationPlain1</ID>
         <Name>Равнины #1</Name>
         <TypeLandscape>Plain</TypeLandscape>
@@ -488,8 +488,8 @@
             <MaxQuantity>10</MaxQuantity>
           </TypeConstruction>
         </TypeConstructions>
-      </Layer>
-      <Layer>
+      </Location>
+      <Location>
         <ID>LocationPlain2</ID>
         <Name>Равнины #2</Name>
         <TypeLandscape>Plain</TypeLandscape>
@@ -516,8 +516,8 @@
             <MaxQuantity>10</MaxQuantity>
           </TypeConstruction>
         </TypeConstructions>
-      </Layer>
-      <Layer>
+      </Location>
+      <Location>
         <ID>LocationPlain3</ID>
         <Name>Равнины #3</Name>
         <TypeLandscape>Plain</TypeLandscape>
@@ -544,8 +544,8 @@
             <MaxQuantity>10</MaxQuantity>
           </TypeConstruction>
         </TypeConstructions>
-      </Layer>
-      <Layer>
+      </Location>
+      <Location>
         <ID>LocationWasteland1</ID>
         <Name>Пустошь #1</Name>
         <TypeLandscape>Wasteland</TypeLandscape>
@@ -567,8 +567,8 @@
             <MaxQuantity>2</MaxQuantity>
           </TypeConstruction>
         </TypeConstructions>
-      </Layer>
-      <Layer>
+      </Location>
+      <Location>
         <ID>LocationWasteland2</ID>
         <Name>Пустошь #2</Name>
         <TypeLandscape>Wasteland</TypeLandscape>
@@ -590,8 +590,8 @@
             <MaxQuantity>2</MaxQuantity>
           </TypeConstruction>
         </TypeConstructions>
-      </Layer>
-      <Layer>
+      </Location>
+      <Location>
         <ID>LocationWasteland3</ID>
         <Name>Пустошь #3</Name>
         <TypeLandscape>Wasteland</TypeLandscape>
@@ -613,8 +613,8 @@
             <MaxQuantity>2</MaxQuantity>
           </TypeConstruction>
         </TypeConstructions>
-      </Layer>
-      <Layer>
+      </Location>
+      <Location>
         <ID>LocationWasteland4</ID>
         <Name>Пустошь #4</Name>
         <TypeLandscape>Wasteland</TypeLandscape>
@@ -636,8 +636,8 @@
             <MaxQuantity>2</MaxQuantity>
           </TypeConstruction>
         </TypeConstructions>
-      </Layer>
-      <Layer>
+      </Location>
+      <Location>
         <ID>LocationWasteland5</ID>
         <Name>Пустошь #5</Name>
         <TypeLandscape>Wasteland</TypeLandscape>
@@ -659,8 +659,8 @@
             <MaxQuantity>2</MaxQuantity>
           </TypeConstruction>
         </TypeConstructions>
-      </Layer>
-      <Layer>
+      </Location>
+      <Location>
         <ID>LocationWasteland6</ID>
         <Name>Пустошь #6</Name>
         <TypeLandscape>Wasteland</TypeLandscape>
@@ -682,8 +682,8 @@
             <MaxQuantity>2</MaxQuantity>
           </TypeConstruction>
         </TypeConstructions>
-      </Layer>
-      <Layer>
+      </Location>
+      <Location>
         <ID>LocationDesert1</ID>
         <Name>Пустыня #1</Name>
         <TypeLandscape>Desert</TypeLandscape>
@@ -700,8 +700,8 @@
             <MaxQuantity>1</MaxQuantity>
           </TypeConstruction>
         </TypeConstructions>
-      </Layer>
-      <Layer>
+      </Location>
+      <Location>
         <ID>LocationDesert2</ID>
         <Name>Пустыня #2</Name>
         <TypeLandscape>Desert</TypeLandscape>
@@ -718,7 +718,8 @@
             <MaxQuantity>1</MaxQuantity>
           </TypeConstruction>
         </TypeConstructions>
-      </Layer>
-    </NeighborhoodSettings>
-  </TypeLobby>
+      </Location>
+    </Locations>
+  
+</TypeLobby>
 </TypeLobbies>
