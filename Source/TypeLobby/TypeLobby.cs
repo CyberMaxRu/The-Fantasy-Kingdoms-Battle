@@ -29,7 +29,8 @@ namespace Fantasy_Kingdoms_Battle
             VariantStartBonus = XmlUtils.GetInteger(n, "VariantStartBonus");
             StartScoutedLairs = XmlUtils.GetInteger(n, "StartScoutedLairs");
             MaxLoses = XmlUtils.GetInteger(n, "MaxLoses");
-            LairsLayers = XmlUtils.GetInteger(n, "LairsLayers");
+            MapWidth = XmlUtils.GetInteger(n, "MapWidth");
+            MapHeight = XmlUtils.GetInteger(n, "MapHeight");
             LairsWidth = XmlUtils.GetInteger(n, "LairsWidth");
             LairsHeight = XmlUtils.GetInteger(n, "LairsHeight");
 
@@ -69,8 +70,10 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(StartScoutedLairs <= 12);
             Debug.Assert(MaxLoses >= 1);
             Debug.Assert(MaxLoses <= 5);
-            Debug.Assert(LairsLayers >= 1);
-            Debug.Assert(LairsLayers <= FormMain.MAX_LAIR_LAYERS);
+            Debug.Assert(MapWidth >= 3);
+            Debug.Assert(MapWidth <= 5);
+            Debug.Assert(MapHeight >= 3);
+            Debug.Assert(MapHeight <= 5);
             Debug.Assert(LairsWidth >= 2);
             Debug.Assert(LairsWidth <= 5);
             Debug.Assert(LairsHeight >= 1);
@@ -86,33 +89,32 @@ namespace Fantasy_Kingdoms_Battle
             XmlNode nodeLairSettings = n.SelectSingleNode("NeighborhoodSettings");
             Debug.Assert(nodeLairSettings != null);
 
-            LayerSettings = new TypeLobbyLocationSettings[LairsLayers];
+            Locations = new TypeLobbyLocationSettings[MapHeight, MapWidth];
             TypeLobbyLocationSettings ls;
 
             foreach (XmlNode l in nodeLairSettings.SelectNodes("Layer"))
             {
                 ls = new TypeLobbyLocationSettings(this, l, LairsWidth * LairsHeight);
 
-                Debug.Assert(ls.Number >= 0);
-                Debug.Assert(ls.Number <= FormMain.MAX_LAIR_LAYERS - 1);
-                Debug.Assert(LayerSettings[ls.Number] == null);
+                Debug.Assert(Locations[ls.Coord.Y, ls.Coord.X] == null);
 
-                LayerSettings[ls.Number] = ls;
+                Locations[ls.Coord.Y, ls.Coord.X] = ls;
             }
 
-            // Проверяем, что указаны все слои
-            for (int i = 0; i < LayerSettings.Length; i++)
-                Debug.Assert(LayerSettings[i] != null);
-
+            // Проверяем, что указаны все локации
             string nameLocationCapital = XmlUtils.GetStringNotNull(n, "LocationCapital");
-            foreach (TypeLobbyLocationSettings ls1 in LayerSettings)
-            {
-                if (ls1.ID == nameLocationCapital)
+
+            for (int y = 0; y < MapHeight; y++)
+                for (int x = 0; x < MapWidth; x++)
                 {
-                    LocationCapital = ls1;
-                    break;
+                    Debug.Assert(Locations[y, x] != null);
+
+                    if (Locations[y, x].ID == nameLocationCapital)
+                    {
+                        Debug.Assert(LocationCapital is null);
+                        LocationCapital = Locations[y, x];
+                    }
                 }
-            }
 
             Debug.Assert(LocationCapital != null);
 
@@ -173,18 +175,19 @@ namespace Fantasy_Kingdoms_Battle
         internal int VariantStartBonus { get; }
         internal int StartScoutedLairs { get; }
         internal int MaxLoses { get; }
-        internal int LairsLayers{ get; }
+        internal int MapWidth{ get; }
+        internal int MapHeight { get; }
         internal int LairsWidth { get; }
         internal int LairsHeight { get; }
-        internal TypeLobbyLocationSettings LocationCapital { get; }
-        internal TypeLobbyLocationSettings[] LayerSettings { get; }
+        internal TypeLobbyLocationSettings LocationCapital { get; }// Локация столицы
+        internal TypeLobbyLocationSettings[,] Locations { get; }
         internal int[] CoefFlagScout { get; }
         internal int[] CoefFlagAttack { get; }
         internal int[] CoefFlagDefense { get; }
 
         internal void TuneDeferredLinks()
         {
-            foreach (TypeLobbyLocationSettings ls in LayerSettings)
+            foreach (TypeLobbyLocationSettings ls in Locations)
             {
                 ls.TuneDeferredLinks();
             }

@@ -20,12 +20,12 @@ namespace Fantasy_Kingdoms_Battle
             TypeLobby = typeLobby;
 
             nameTypeLandscape = XmlUtils.GetStringNotNull(n, "TypeLandscape");
-            Number = XmlUtils.GetInteger(n, "Number");
             Ownership = XmlUtils.GetBooleanNotNull(n, "Ownership");
             CostScout = XmlUtils.GetInteger(n, "CostScout");
             CostAttack = XmlUtils.GetInteger(n, "CostAttack");
             CostDefense = XmlUtils.GetInteger(n, "CostDefense");
             nameDefaultConstruction = XmlUtils.GetStringNotNull(n, "DefaultConstruction");
+            Coord = XmlUtils.GetPoint(n, "Coord");
 
             Debug.Assert(CostScout > 0);
             Debug.Assert(CostScout <= 10_000);
@@ -46,7 +46,7 @@ namespace Fantasy_Kingdoms_Battle
                 foreach (TypeLobbyLairSettings ls in LairsSettings)
                 {
                     if (tlls.NameTypeLair == ls.NameTypeLair)
-                        throw new Exception($"Тип логова {tlls.NameTypeLair} повторяется в списке типов логов слоя {Number}.");
+                        throw new Exception($"Тип логова {tlls.NameTypeLair} повторяется в списке типов логов локации {ID}.");
                 }
 
                 LairsSettings.Add(tlls);
@@ -81,7 +81,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal TypeLobby TypeLobby { get; }// Тип лобби
         internal DescriptorTypeLandscape TypeLandscape { get; private set; }
-        internal int Number { get; }// Номер слоя
+        internal Point Coord { get; }// Координаты локации
         internal bool Ownership { get; set; }// Локация является владением короля
         internal int CostScout { get; }// Стоимость разведки
         internal int CostAttack { get; }// Стоимость атаки

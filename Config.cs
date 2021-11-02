@@ -278,6 +278,9 @@ namespace Fantasy_Kingdoms_Battle
                 Creatures.Add(new DescriptorCreature(n));
             }
 
+            //
+            LoadTextures(pathResources);
+
             // Настраиваем связи
             foreach (DescriptorTypeLandscape tl in TypeLandscapes)
                 tl.TuneDeferredLinks();
@@ -329,8 +332,6 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (TypeLobby tl in TypeLobbies)
                 tl.TuneDeferredLinks();
-
-            LoadTextures(pathResources);
 
             foreach (DescriptorItem i in Items)
                 i.AfterTune();

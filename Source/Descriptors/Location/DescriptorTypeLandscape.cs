@@ -13,6 +13,7 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class DescriptorTypeLandscape : DescriptorEntity
     {
         internal List<string> nameElements = new List<string>();
+        private Bitmap BackgroundImage;
 
         public DescriptorTypeLandscape(XmlNode n) : base(n)
         {
@@ -39,7 +40,6 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal string NameTexture { get; }
-        internal Bitmap BackgroundImage { get; }// Картинка для фона
         internal List<DescriptorConstruction> Elements { get; } = new List<DescriptorConstruction>();
 
         internal override void TuneDeferredLinks()
@@ -52,6 +52,14 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             nameElements = null;
+        }
+
+        internal Bitmap GetBackgroundImage()
+        {
+            if (BackgroundImage is null)
+                BackgroundImage = GuiUtils.MakeCustomBackground(FormMain.Config.GetTexture(NameTexture), Program.formMain.MainControl);
+
+            return BackgroundImage;
         }
     }
 }

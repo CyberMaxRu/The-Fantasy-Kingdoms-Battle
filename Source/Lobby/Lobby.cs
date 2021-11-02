@@ -25,7 +25,7 @@ namespace Fantasy_Kingdoms_Battle
             Day = 1;
 
             // Создаем конфигурацию логов
-            Lairs = new List<DescriptorConstruction>[TypeLobby.LairsLayers];
+            Lairs = new List<DescriptorConstruction>[TypeLobby.MapHeight, TypeLobby.MapWidth];
             GenerateConfigLairs();
 
             // Создание игроков
@@ -50,11 +50,12 @@ namespace Fantasy_Kingdoms_Battle
                 int idx;
                 int restLairs;
 
-                for (int layer = 0; layer < TypeLobby.LairsLayers; layer++)
+                for (int y = 0; y < TypeLobby.MapHeight; y++)
+                    for (int x = 0; x < TypeLobby.MapWidth; x++)
                 {
-                    Lairs[layer] = new List<DescriptorConstruction>();
+                    Lairs[y, x] = new List<DescriptorConstruction>();
 
-                    ls = TypeLobby.LayerSettings[layer];
+                    ls = TypeLobby.Locations[y, x];
                     restLairs = TypeLobby.LairsHeight * TypeLobby.LairsWidth;
 
                     // Сначала заполняем минимальными количествами
@@ -62,7 +63,7 @@ namespace Fantasy_Kingdoms_Battle
                     {
                         for (int i = 0; i < l.MinQuantity; i++)
                         {
-                            Lairs[layer].Add(l.TypeLair);
+                            Lairs[y, x].Add(l.TypeLair);
                             restLairs--;
                         }
 
@@ -90,7 +91,7 @@ namespace Fantasy_Kingdoms_Battle
                         {
                             idx = Rnd.Next(listTypeLairs.Count);
 
-                            Lairs[layer].Add(listTypeLairs[idx]);
+                            Lairs[y, x].Add(listTypeLairs[idx]);
 
                             listTypeLairs.RemoveAt(idx);
                             restLairs--;
@@ -125,7 +126,7 @@ namespace Fantasy_Kingdoms_Battle
         internal bool HumanIsWin { get; private set; }
         internal StateLobby StateLobby { get; set; }
         internal Random Rnd { get; } = new Random();
-        internal List<DescriptorConstruction>[] Lairs { get; }
+        internal List<DescriptorConstruction>[,] Lairs { get; }
 
         internal int DayNextBattleBetweenPlayers { get; private set; }// День следующей битвы между игроками
         internal int DaysLeftForBattle { get; private set; }// Осталось дней до следующей битвы между игроками

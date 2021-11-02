@@ -81,14 +81,23 @@ namespace Fantasy_Kingdoms_Battle
 
             //
             Location l;
-            foreach (TypeLobbyLocationSettings ls in lobby.TypeLobby.LayerSettings)
+
+            Locations = new Location[lobby.TypeLobby.MapHeight, lobby.TypeLobby.MapWidth];
+
+            foreach (TypeLobbyLocationSettings ls in lobby.TypeLobby.Locations)
             {
                 l = new Location(this, ls);
-                Locations.Add(l);
+                Debug.Assert(Locations[l.Settings.Coord.Y, l.Settings.Coord.X] is null);
+                Locations[l.Settings.Coord.Y, l.Settings.Coord.X] = l;
 
-                if (l.Settings.ID == l.Settings.ID)
+                if (l.Settings.ID == lobby.TypeLobby.LocationCapital.ID)
+                {
+                    Debug.Assert(LocationCapital is null);
                     LocationCapital = l;
+                }
             }
+
+            CurrentLocation = LocationCapital;
 
             // Инициализация логов
             ScoutRandomLair(lobby.TypeLobby.StartScoutedLairs);
@@ -473,8 +482,9 @@ namespace Fantasy_Kingdoms_Battle
         internal int GreatnessCollected { get; private set; }// Собрано величия за игру
 
         // Локации
-        internal List<Location> Locations { get; } = new List<Location>();
+        internal Location[,] Locations { get; }
         internal Location LocationCapital { get; }
+        internal Location CurrentLocation { get; set; }// Текущая выбранная локация
 
         //
         internal int PercentCorruption { get; set; }//
@@ -1048,7 +1058,7 @@ namespace Fantasy_Kingdoms_Battle
             PointGreatness += sb.Greatness;
             Builders += sb.Builders;
             FreeBuilders += sb.Builders;
-            CreateExternalConstructions(FormMain.Config.FindConstruction(FormMain.Config.IDPeasantHouse), 1, Locations[0], sb.PeasantHouse);
+            CreateExternalConstructions(FormMain.Config.FindConstruction(FormMain.Config.IDPeasantHouse), 1, LocationCapital, sb.PeasantHouse);
             DescriptorConstruction holyPlace = FormMain.Config.FindConstruction(FormMain.Config.IDHolyPlace);
             CreateExternalConstructions(holyPlace, holyPlace.DefaultLevel, LocationCapital, sb.HolyPlace);
             DescriptorConstruction tradePost = FormMain.Config.FindConstruction(FormMain.Config.IDTradePost);

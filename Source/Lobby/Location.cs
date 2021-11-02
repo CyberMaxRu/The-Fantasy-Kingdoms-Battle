@@ -24,7 +24,7 @@ namespace Fantasy_Kingdoms_Battle
             int idxTypeLair;
 
             List<DescriptorConstruction> lairs = new List<DescriptorConstruction>();
-            lairs.AddRange(Player.Lobby.Lairs[settings.Number]);
+            lairs.AddRange(Player.Lobby.Lairs[settings.Coord.Y, settings.Coord.X]);
             List<Point> cells = GetCells();
             Debug.Assert(cells.Count <= lairs.Count);
 

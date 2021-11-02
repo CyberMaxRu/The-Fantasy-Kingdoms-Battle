@@ -17,7 +17,8 @@
     <StartScoutedLairs>2</StartScoutedLairs>
     <VariantStartBonus>3</VariantStartBonus>
     <MaxLoses>3</MaxLoses>
-    <LairsLayers>9</LairsLayers>
+    <MapWidth>5</MapWidth>
+    <MapHeight>5</MapHeight>
     <LairsWidth>4</LairsWidth>
     <LairsHeight>3</LairsHeight>
     <LocationCapital>LocationCapital</LocationCapital>
@@ -79,10 +80,10 @@
     </CoefficientFlags>
     <NeighborhoodSettings>
       <Layer>
-        <ID>LocationMountain</ID>
+        <ID>LocationMountain1</ID>
         <Name>Горы #1</Name>
         <TypeLandscape>Mountain</TypeLandscape>
-        <Number>0</Number>
+        <Coord>2,1</Coord>
         <Ownership>false</Ownership>
         <CostScout>100</CostScout>
         <CostAttack>250</CostAttack>
@@ -137,10 +138,46 @@
         </TypeConstructions>
       </Layer>
       <Layer>
-        <ID>LocationSwamp</ID>
+        <ID>LocationMountain2</ID>
+        <Name>Горы #2</Name>
+        <TypeLandscape>Mountain</TypeLandscape>
+        <Coord>3,1</Coord>
+        <Ownership>false</Ownership>
+        <CostScout>100</CostScout>
+        <CostAttack>250</CostAttack>
+        <CostDefense>200</CostDefense>
+        <DefaultConstruction>Mountain</DefaultConstruction>
+        <TypeConstructions>
+          <TypeConstruction>
+            <ID>MountainWay</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
+          </TypeConstruction>
+        </TypeConstructions>
+      </Layer>
+      <Layer>
+        <ID>LocationMountain3</ID>
+        <Name>Горы #3</Name>
+        <TypeLandscape>Mountain</TypeLandscape>
+        <Coord>4,1</Coord>
+        <Ownership>false</Ownership>
+        <CostScout>100</CostScout>
+        <CostAttack>250</CostAttack>
+        <CostDefense>200</CostDefense>
+        <DefaultConstruction>Mountain</DefaultConstruction>
+        <TypeConstructions>
+          <TypeConstruction>
+            <ID>MountainWay</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
+          </TypeConstruction>
+        </TypeConstructions>
+      </Layer>
+      <Layer>
+        <ID>LocationSwamp1</ID>
         <Name>Болото #1</Name>
         <TypeLandscape>Swamp</TypeLandscape>
-        <Number>1</Number>
+        <Coord>1,1</Coord>
         <Ownership>false</Ownership>
         <CostScout>100</CostScout>
         <CostAttack>250</CostAttack>
@@ -155,10 +192,46 @@
         </TypeConstructions>
       </Layer>
       <Layer>
-        <ID>LocationForest</ID>
+        <ID>LocationSwamp2</ID>
+        <Name>Болото #2</Name>
+        <TypeLandscape>Swamp</TypeLandscape>
+        <Coord>1,2</Coord>
+        <Ownership>false</Ownership>
+        <CostScout>100</CostScout>
+        <CostAttack>250</CostAttack>
+        <CostDefense>200</CostDefense>
+        <DefaultConstruction>Swamp</DefaultConstruction>
+        <TypeConstructions>
+          <TypeConstruction>
+            <ID>Treasure</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
+          </TypeConstruction>
+        </TypeConstructions>
+      </Layer>
+      <Layer>
+        <ID>LocationSwamp3</ID>
+        <Name>Болото #3</Name>
+        <TypeLandscape>Swamp</TypeLandscape>
+        <Coord>2,2</Coord>
+        <Ownership>false</Ownership>
+        <CostScout>100</CostScout>
+        <CostAttack>250</CostAttack>
+        <CostDefense>200</CostDefense>
+        <DefaultConstruction>Swamp</DefaultConstruction>
+        <TypeConstructions>
+          <TypeConstruction>
+            <ID>Treasure</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
+          </TypeConstruction>
+        </TypeConstructions>
+      </Layer>
+      <Layer>
+        <ID>LocationForest1</ID>
         <Name>Лес #1</Name>
         <TypeLandscape>Forest</TypeLandscape>
-        <Number>2</Number>
+        <Coord>5,1</Coord>
         <Ownership>false</Ownership>
         <CostScout>100</CostScout>
         <CostAttack>250</CostAttack>
@@ -208,10 +281,102 @@
         </TypeConstructions>
       </Layer>
       <Layer>
+        <ID>LocationForest2</ID>
+        <Name>Лес #2</Name>
+        <TypeLandscape>Forest</TypeLandscape>
+        <Coord>3,2</Coord>
+        <Ownership>false</Ownership>
+        <CostScout>100</CostScout>
+        <CostAttack>250</CostAttack>
+        <CostDefense>200</CostDefense>
+        <DefaultConstruction>Forest</DefaultConstruction>
+        <TypeConstructions>
+          <TypeConstruction>
+            <ID>ThroneLightning</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
+          </TypeConstruction>
+          <TypeConstruction>
+            <ID>BearsDen</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>2</MaxQuantity>
+          </TypeConstruction>
+        </TypeConstructions>
+      </Layer>
+      <Layer>
+        <ID>LocationForest3</ID>
+        <Name>Лес #3</Name>
+        <TypeLandscape>Forest</TypeLandscape>
+        <Coord>4,2</Coord>
+        <Ownership>false</Ownership>
+        <CostScout>100</CostScout>
+        <CostAttack>250</CostAttack>
+        <CostDefense>200</CostDefense>
+        <DefaultConstruction>Forest</DefaultConstruction>
+        <TypeConstructions>
+          <TypeConstruction>
+            <ID>ThroneLightning</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
+          </TypeConstruction>
+          <TypeConstruction>
+            <ID>BearsDen</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>2</MaxQuantity>
+          </TypeConstruction>
+        </TypeConstructions>
+      </Layer>
+      <Layer>
+        <ID>LocationForest4</ID>
+        <Name>Лес #4</Name>
+        <TypeLandscape>Forest</TypeLandscape>
+        <Coord>5,2</Coord>
+        <Ownership>false</Ownership>
+        <CostScout>100</CostScout>
+        <CostAttack>250</CostAttack>
+        <CostDefense>200</CostDefense>
+        <DefaultConstruction>Forest</DefaultConstruction>
+        <TypeConstructions>
+          <TypeConstruction>
+            <ID>ThroneLightning</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
+          </TypeConstruction>
+          <TypeConstruction>
+            <ID>BearsDen</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>2</MaxQuantity>
+          </TypeConstruction>
+        </TypeConstructions>
+      </Layer>
+      <Layer>
+        <ID>LocationForest5</ID>
+        <Name>Лес #5</Name>
+        <TypeLandscape>Forest</TypeLandscape>
+        <Coord>5,3</Coord>
+        <Ownership>false</Ownership>
+        <CostScout>100</CostScout>
+        <CostAttack>250</CostAttack>
+        <CostDefense>200</CostDefense>
+        <DefaultConstruction>Forest</DefaultConstruction>
+        <TypeConstructions>
+          <TypeConstruction>
+            <ID>ThroneLightning</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
+          </TypeConstruction>
+          <TypeConstruction>
+            <ID>BearsDen</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>2</MaxQuantity>
+          </TypeConstruction>
+        </TypeConstructions>
+      </Layer>
+      <Layer>
         <ID>LocationNorthVillage</ID>
         <Name>Деревня #1</Name>
         <TypeLandscape>Village</TypeLandscape>
-        <Number>3</Number>
+        <Coord>2,3</Coord>
         <Ownership>true</Ownership>
         <CostScout>100</CostScout>
         <CostAttack>250</CostAttack>
@@ -229,7 +394,7 @@
         <ID>LocationCapital</ID>
         <Name>Столица</Name>
         <TypeLandscape>Capital</TypeLandscape>
-        <Number>4</Number>
+        <Coord>3,3</Coord>
         <Ownership>true</Ownership>
         <CostScout>100</CostScout>
         <CostAttack>250</CostAttack>
@@ -282,7 +447,7 @@
         <ID>LocationSouthVillage</ID>
         <Name>Деревня #2</Name>
         <TypeLandscape>Village</TypeLandscape>
-        <Number>5</Number>
+        <Coord>4,3</Coord>
         <Ownership>true</Ownership>
         <CostScout>100</CostScout>
         <CostAttack>250</CostAttack>
@@ -297,10 +462,10 @@
         </TypeConstructions>      
       </Layer>
       <Layer>
-        <ID>LocationPlain</ID>
+        <ID>LocationPlain1</ID>
         <Name>Равнины #1</Name>
         <TypeLandscape>Plain</TypeLandscape>
-        <Number>6</Number>
+        <Coord>1,3</Coord>
         <Ownership>false</Ownership>
         <CostScout>400</CostScout>
         <CostAttack>1000</CostAttack>
@@ -325,10 +490,66 @@
         </TypeConstructions>
       </Layer>
       <Layer>
-        <ID>LocationWasteland</ID>
+        <ID>LocationPlain2</ID>
+        <Name>Равнины #2</Name>
+        <TypeLandscape>Plain</TypeLandscape>
+        <Coord>4,4</Coord>
+        <Ownership>false</Ownership>
+        <CostScout>400</CostScout>
+        <CostAttack>1000</CostAttack>
+        <CostDefense>500</CostDefense>
+        <DefaultConstruction>Plain</DefaultConstruction>
+        <TypeConstructions>
+          <TypeConstruction>
+            <ID>TradePost</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>3</MaxQuantity>s
+          </TypeConstruction>
+          <TypeConstruction>
+            <ID>Treasure</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>3</MaxQuantity>
+          </TypeConstruction>
+          <TypeConstruction>
+            <ID>GraveyardZombie</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>10</MaxQuantity>
+          </TypeConstruction>
+        </TypeConstructions>
+      </Layer>
+      <Layer>
+        <ID>LocationPlain3</ID>
+        <Name>Равнины #3</Name>
+        <TypeLandscape>Plain</TypeLandscape>
+        <Coord>5,4</Coord>
+        <Ownership>false</Ownership>
+        <CostScout>400</CostScout>
+        <CostAttack>1000</CostAttack>
+        <CostDefense>500</CostDefense>
+        <DefaultConstruction>Plain</DefaultConstruction>
+        <TypeConstructions>
+          <TypeConstruction>
+            <ID>TradePost</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>3</MaxQuantity>s
+          </TypeConstruction>
+          <TypeConstruction>
+            <ID>Treasure</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>3</MaxQuantity>
+          </TypeConstruction>
+          <TypeConstruction>
+            <ID>GraveyardZombie</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>10</MaxQuantity>
+          </TypeConstruction>
+        </TypeConstructions>
+      </Layer>
+      <Layer>
+        <ID>LocationWasteland1</ID>
         <Name>Пустошь #1</Name>
         <TypeLandscape>Wasteland</TypeLandscape>
-        <Number>7</Number>
+        <Coord>1,4</Coord>
         <Ownership>false</Ownership>
         <CostScout>100</CostScout>
         <CostAttack>250</CostAttack>
@@ -348,10 +569,143 @@
         </TypeConstructions>
       </Layer>
       <Layer>
-        <ID>LocationDesert</ID>
+        <ID>LocationWasteland2</ID>
+        <Name>Пустошь #2</Name>
+        <TypeLandscape>Wasteland</TypeLandscape>
+        <Coord>2,4</Coord>
+        <Ownership>false</Ownership>
+        <CostScout>100</CostScout>
+        <CostAttack>250</CostAttack>
+        <CostDefense>200</CostDefense>
+        <DefaultConstruction>Wasteland</DefaultConstruction>
+        <TypeConstructions>
+          <TypeConstruction>
+            <ID>Treasure</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
+          </TypeConstruction>
+          <TypeConstruction>
+            <ID>SerpentsNest</ID>
+            <MinQuantity>2</MinQuantity>
+            <MaxQuantity>2</MaxQuantity>
+          </TypeConstruction>
+        </TypeConstructions>
+      </Layer>
+      <Layer>
+        <ID>LocationWasteland3</ID>
+        <Name>Пустошь #3</Name>
+        <TypeLandscape>Wasteland</TypeLandscape>
+        <Coord>3,4</Coord>
+        <Ownership>false</Ownership>
+        <CostScout>100</CostScout>
+        <CostAttack>250</CostAttack>
+        <CostDefense>200</CostDefense>
+        <DefaultConstruction>Wasteland</DefaultConstruction>
+        <TypeConstructions>
+          <TypeConstruction>
+            <ID>Treasure</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
+          </TypeConstruction>
+          <TypeConstruction>
+            <ID>SerpentsNest</ID>
+            <MinQuantity>2</MinQuantity>
+            <MaxQuantity>2</MaxQuantity>
+          </TypeConstruction>
+        </TypeConstructions>
+      </Layer>
+      <Layer>
+        <ID>LocationWasteland4</ID>
+        <Name>Пустошь #4</Name>
+        <TypeLandscape>Wasteland</TypeLandscape>
+        <Coord>3,5</Coord>
+        <Ownership>false</Ownership>
+        <CostScout>100</CostScout>
+        <CostAttack>250</CostAttack>
+        <CostDefense>200</CostDefense>
+        <DefaultConstruction>Wasteland</DefaultConstruction>
+        <TypeConstructions>
+          <TypeConstruction>
+            <ID>Treasure</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
+          </TypeConstruction>
+          <TypeConstruction>
+            <ID>SerpentsNest</ID>
+            <MinQuantity>2</MinQuantity>
+            <MaxQuantity>2</MaxQuantity>
+          </TypeConstruction>
+        </TypeConstructions>
+      </Layer>
+      <Layer>
+        <ID>LocationWasteland5</ID>
+        <Name>Пустошь #5</Name>
+        <TypeLandscape>Wasteland</TypeLandscape>
+        <Coord>4,5</Coord>
+        <Ownership>false</Ownership>
+        <CostScout>100</CostScout>
+        <CostAttack>250</CostAttack>
+        <CostDefense>200</CostDefense>
+        <DefaultConstruction>Wasteland</DefaultConstruction>
+        <TypeConstructions>
+          <TypeConstruction>
+            <ID>Treasure</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
+          </TypeConstruction>
+          <TypeConstruction>
+            <ID>SerpentsNest</ID>
+            <MinQuantity>2</MinQuantity>
+            <MaxQuantity>2</MaxQuantity>
+          </TypeConstruction>
+        </TypeConstructions>
+      </Layer>
+      <Layer>
+        <ID>LocationWasteland6</ID>
+        <Name>Пустошь #6</Name>
+        <TypeLandscape>Wasteland</TypeLandscape>
+        <Coord>5,5</Coord>
+        <Ownership>false</Ownership>
+        <CostScout>100</CostScout>
+        <CostAttack>250</CostAttack>
+        <CostDefense>200</CostDefense>
+        <DefaultConstruction>Wasteland</DefaultConstruction>
+        <TypeConstructions>
+          <TypeConstruction>
+            <ID>Treasure</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
+          </TypeConstruction>
+          <TypeConstruction>
+            <ID>SerpentsNest</ID>
+            <MinQuantity>2</MinQuantity>
+            <MaxQuantity>2</MaxQuantity>
+          </TypeConstruction>
+        </TypeConstructions>
+      </Layer>
+      <Layer>
+        <ID>LocationDesert1</ID>
         <Name>Пустыня #1</Name>
         <TypeLandscape>Desert</TypeLandscape>
-        <Number>8</Number>
+        <Coord>1,5</Coord>
+        <Ownership>false</Ownership>
+        <CostScout>100</CostScout>
+        <CostAttack>250</CostAttack>
+        <CostDefense>200</CostDefense>
+        <DefaultConstruction>Desert</DefaultConstruction>
+        <TypeConstructions>
+          <TypeConstruction>
+            <ID>Treasure</ID>
+            <MinQuantity>1</MinQuantity>
+            <MaxQuantity>1</MaxQuantity>
+          </TypeConstruction>
+        </TypeConstructions>
+      </Layer>
+      <Layer>
+        <ID>LocationDesert2</ID>
+        <Name>Пустыня #2</Name>
+        <TypeLandscape>Desert</TypeLandscape>
+        <Coord>2,5</Coord>
         <Ownership>false</Ownership>
         <CostScout>100</CostScout>
         <CostAttack>250</CostAttack>
