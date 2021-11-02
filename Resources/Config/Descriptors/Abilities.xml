@@ -685,7 +685,6 @@
     <Effects/>
     <Heroes>
       <Hero>Dwarf</Hero>
-      <Hero>Paladin</Hero>
     </Heroes>
   </Ability>
   <Ability>
@@ -895,10 +894,28 @@
     </Heroes>
   </Ability>
   <Ability>
+    <ID>AxeBasicAttack</ID>
+    <Name>Рукопашная атака</Name>
+    <Description>- Обычная атака рукопашным оружием//- Наносит урон одной цели</Description>
+    <ImageIndex>94</ImageIndex>
+    <Cost>20</Cost>
+    <TypeAbility>MeleeAttack</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <AoeRadius>0</AoeRadius>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <Heroes>
+      <Hero>Paladin</Hero>
+    </Heroes>
+  </Ability>
+  <Ability>
     <ID>PaladinImpAttack</ID>
     <Name>Сокрушительный удар</Name>
     <Description>- Наносит большой урон//- Рукопашная атака</Description>
-    <ImageIndex>74</ImageIndex>
+    <ImageIndex>280</ImageIndex>
     <Cost>20</Cost>
     <TypeAbility>MeleeAttack</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>
@@ -952,7 +969,7 @@
     <ID>PaladinChargeAttack</ID>
     <Name>Священный удар</Name>
     <Description>- Наносит огромный урон//- Накладывает эффект, не позволяющий атаковать//- Магическая атака</Description>
-    <ImageIndex>94</ImageIndex>
+    <ImageIndex>281</ImageIndex>
     <Cost>20</Cost>
     <TypeAbility>Spell</TypeAbility>
     <TypeTarget>EnemyUnit</TypeTarget>

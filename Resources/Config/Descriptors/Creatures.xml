@@ -1742,7 +1742,7 @@
       <ResistMagic>0</ResistMagic>
     </NextLevel>
     <Abilities>
-      <Ability>HammerBasicAttack</Ability>
+      <Ability>AxeBasicAttack</Ability>
       <Ability>Taunt</Ability>
       <Ability>PaladinImpAttack</Ability>
       <Ability>PaladinResistanceBuff</Ability>
