@@ -96,8 +96,16 @@ namespace Fantasy_Kingdoms_Battle
             {
                 ls = new TypeLobbyLocationSettings(this, l, LairsWidth * LairsHeight);
 
-                Debug.Assert(Locations[ls.Coord.Y, ls.Coord.X] == null);
+                foreach (TypeLobbyLocationSettings ls2 in Locations)
+                {
+                    if (ls2 != null)
+                    {
+                        Debug.Assert(ls2.ID != ls.ID);
+                        Debug.Assert(ls2.Name != ls.Name);
+                    }
+                }
 
+                Debug.Assert(Locations[ls.Coord.Y, ls.Coord.X] == null);
                 Locations[ls.Coord.Y, ls.Coord.X] = ls;
             }
 
