@@ -4654,5 +4654,31 @@
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
     </Levels>
+    <Monsters>
+      <Monster>
+        <ID>Imp</ID>
+        <StartQuantity>4</StartQuantity>
+        <MaxQuantity>6</MaxQuantity>
+        <Level>5</Level>
+        <DaysRespawn>2</DaysRespawn>
+        <QuantityRespawn>1</QuantityRespawn>
+      </Monster>
+      <Monster>
+        <ID>Devil</ID>
+        <StartQuantity>2</StartQuantity>
+        <MaxQuantity>3</MaxQuantity>
+        <Level>10</Level>
+        <DaysRespawn>2</DaysRespawn>
+        <QuantityRespawn>1</QuantityRespawn>
+      </Monster>
+      <Monster>
+        <ID>Heck</ID>
+        <StartQuantity>1</StartQuantity>
+        <MaxQuantity>1</MaxQuantity>
+        <Level>15</Level>
+        <DaysRespawn>2</DaysRespawn>
+        <QuantityRespawn>1</QuantityRespawn>
+      </Monster>
+    </Monsters>
   </Construction>
 </Descriptors>

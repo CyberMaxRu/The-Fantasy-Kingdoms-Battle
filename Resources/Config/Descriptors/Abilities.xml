@@ -2236,4 +2236,246 @@
       <Hero>ElementalFire</Hero>
     </Heroes>
   </Ability>
+  <Ability>
+    <ID>ImpBasicAttack</ID>
+    <Name>Острые когти</Name>
+    <Description>- бесята пока ещё слишком малы чтобы колдовать. Поэтому они причиняют вред своими когти. Активная способность, ближний бой.</Description>
+    <ImageIndex>267</ImageIndex>
+    <TypeAbility>MeleeAttack</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <Heroes>
+      <Hero>Imp</Hero>
+    </Heroes>
+  </Ability>
+  <Ability>
+    <ID>Horniness</ID>
+    <Name>Рогатость</Name>
+    <Description>- все слуги Ада обладают рогами, которые могут служить им как оружие. Бесята с 10% долей вероятность могут нанести удар рогами, вызвав лёгкое кровотечение. Активная способность, ближний бой.</Description>
+    <ImageIndex>272</ImageIndex>
+    <TypeAbility>MeleeAttack</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <Heroes>
+      <Hero>Imp</Hero>
+    </Heroes>
+  </Ability>
+  <Ability>
+    <ID>ServantOfHell</ID>
+    <Name>Слуга Ада</Name>
+    <Description>- силы Ада очень многочисленны. В основном они прибывают в Арданию через порталы Ада, но есть и различные еретические секты, которые поклоняются сатанизму. Каждый из слуг Ада ставит перед собой цель возвращение в Арданию власти баронов Ада. Увеличивает скорость передвижения на 10%. Пассивная способность.</Description>
+    <ImageIndex>273</ImageIndex>
+    <TypeAbility>MeleeAttack</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <Heroes>
+      <Hero>Imp</Hero>
+    </Heroes>
+  </Ability>
+  <Ability>
+    <ID>Multiplicity</ID>
+    <Name>Многочисленность</Name>
+    <Description>- бесята никогда не действуют по одиночке, так как достаточно слабы и весьма глупы, поэтому они сбиваются в группы и таким образом творят различные пакости жителям Ардании. Увеличивает на 48% силу атаки и на 15% боевой дух. Требует наличие 5 и более бесят. Пассивная способность.</Description>
+    <ImageIndex>269</ImageIndex>
+    <TypeAbility>MeleeAttack</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <Heroes>
+      <Hero>Imp</Hero>
+    </Heroes>
+  </Ability>
+  <Ability>
+    <ID>FireproofLeather</ID>
+    <Name>Огнеупорная кожа</Name>
+    <Description>- за годы нахождения в аду кожа жителей Ада сильно окрепла и благодаря этому заклинания огня наносят на 50% меньше урона слугам Ада, зато заклинания холода на 50% больше урона. Пассивная способность.</Description>
+    <ImageIndex>270</ImageIndex>
+    <TypeAbility>MeleeAttack</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <Heroes>
+      <Hero>Imp</Hero>
+      <Hero>Devil</Hero>
+      <Hero>Heck</Hero>
+    </Heroes>
+  </Ability>
+  <Ability>
+    <ID>DemonBasicAttack</ID>
+    <Name>Огонь</Name>
+    <Description>бесы - это не маленькие бесята, которые только и делают что царапаются. Это настоящие воины, способные создавать огонь и пуляться во врагом, вызывая с 25% долей вероятности поджёг одежды. Активная способность, дальний бой.</Description>
+    <ImageIndex>271</ImageIndex>
+    <TypeAbility>MeleeAttack</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <Heroes>
+      <Hero>Devil</Hero>
+    </Heroes>
+  </Ability>
+  <Ability>
+    <ID>Horniness2</ID>
+    <Name>Рогатость</Name>
+    <Description>- все слуги Ада обладают рогами, которые могут служить им как оружие, однако бесы редко это делают, поскольку всегда стреляют огнём в своих врагов, но если кто-то к ним подойдёт - они, непременно, будут бодаться. Бесы с 20% долей вероятность могут нанести удар рогами, вызвав лёгкое кровотечение. Активная способность, ближний бой.</Description>
+    <ImageIndex>272</ImageIndex>
+    <TypeAbility>MeleeAttack</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <Heroes>
+      <Hero>Devil</Hero>
+    </Heroes>
+  </Ability>
+  <Ability>
+    <ID>MagicOfFire</ID>
+    <Name>Магия Огня</Name>
+    <Description>- бесы с 27% долей вероятности могут поджечь землю, чтобы создать преграду врагам. Активная способность, дальний бой.</Description>
+    <ImageIndex>268</ImageIndex>
+    <TypeAbility>MeleeAttack</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <Heroes>
+      <Hero>Devil</Hero>
+    </Heroes>
+  </Ability>
+  <Ability>
+    <ID>HeckBasicAttack</ID>
+    <Name>Темное пламя</Name>
+    <Description>- Чертей обучали лучшие наставники Ада создавать тёмное пламя, которое заставляет фактически сгорать заживо всех, кто загорелся. Поскольку это не простое пламя и потушить его обычным способом невозможно - прекратить воспламенение может только кто-то из опытных магов, не ниже 10-го уровня. Активная способность, дальний бой.</Description>
+    <ImageIndex>274</ImageIndex>
+    <TypeAbility>MeleeAttack</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <Heroes>
+      <Hero>Heck</Hero>
+    </Heroes>
+  </Ability>
+  <Ability>
+    <ID>Horniness3</ID>
+    <Name>Рогатость</Name>
+    <Description>- все слуги Ада обладают рогами, которые могут служить им как оружие. Несмотря на то, что черти командуют другими слугами Ада и не спешат вступать в ближний бой, они с 50% долей вероятность могут нанести удар рогами, вызвав лёгкое кровотечение. Активная способность, ближний бой.</Description>
+    <ImageIndex>272</ImageIndex>
+    <TypeAbility>MeleeAttack</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <Heroes>
+      <Hero>Heck</Hero>
+    </Heroes>
+  </Ability>
+  <Ability>
+    <ID>Commander</ID>
+    <Name>Командир Ада</Name>
+    <Description>- когда черти появляются на поле бое, другие слуги Ада беспрекословно подчиняются чертям. Бесы и бесята под предводительством чертей становятся на 38% опаснее, поскольку повышаются их всех характеристики. Также магия чертей постепенно сводит с ума врагов Ада, понижая их все характеристики на 5%. Пассивная способность.</Description>
+    <ImageIndex>275</ImageIndex>
+    <TypeAbility>MeleeAttack</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <Heroes>
+      <Hero>Heck</Hero>
+    </Heroes>
+  </Ability>
+  <Ability>
+    <ID>Reinforcement</ID>
+    <Name>Подкрепление</Name>
+    <Description>- черти способны постоянно вызывать подкрепления на поле битвы из бесов и бесят. Требуется наличие портала Ада, активная способность.</Description>
+    <ImageIndex>276</ImageIndex>
+    <TypeAbility>MeleeAttack</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <Heroes>
+      <Hero>Heck</Hero>
+    </Heroes>
+  </Ability>
+  <Ability>
+    <ID>SecondLife</ID>
+    <Name>Вторая жизнь</Name>
+    <Description>будучи сильно раненым, чёрт способен мгновенно на 25% исцелится, поджечь ближайших врагов тёмным пламенем и отбросить их. Активная способность ближний бой.</Description>
+    <ImageIndex>277</ImageIndex>
+    <TypeAbility>MeleeAttack</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <Heroes>
+      <Hero>Heck</Hero>
+    </Heroes>
+  </Ability>
+  <Ability>
+    <ID>DarkFireShield</ID>
+    <Name>Темный огненный щит</Name>
+    <Description>благодаря своей магии черти накладывают на себя щит из тёмного пламени, который подожжёт тёмным пламенем любого врага, вступившегося в рукопашную схватку с чёртом. Пассивная способность.</Description>
+    <ImageIndex>278</ImageIndex>
+    <TypeAbility>MeleeAttack</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <Heroes>
+      <Hero>Heck</Hero>
+    </Heroes>
+  </Ability>
+  <Ability>
+    <ID>GetSoul</ID>
+    <Name>Отдай свою душу!</Name>
+    <Description>- черти могут с 12% долей вероятности у сильно раненного героя отобрать его душу и превратить в бесёнка. Активная способность, дальний бой.</Description>
+    <ImageIndex>279</ImageIndex>
+    <TypeAbility>MeleeAttack</TypeAbility>
+    <TypeTarget>EnemyUnit</TypeTarget>
+    <MinUnitLevel>1</MinUnitLevel>
+    <Ranged>False</Ranged>
+    <SkillModif>1,0</SkillModif>
+    <CoolDown>0</CoolDown>
+    <Effects/>
+    <Heroes>
+      <Hero>Heck</Hero>
+    </Heroes>
+  </Ability>
 </Descriptors>
