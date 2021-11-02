@@ -1568,7 +1568,7 @@ namespace Fantasy_Kingdoms_Battle
 
             imgLocations[curAppliedPlayer.CurrentLocation.Settings.Coord.Y, curAppliedPlayer.CurrentLocation.Settings.Coord.X].ManualSelected = false;
 
-            l.ShowInfo();
+            SelectPlayerObject(l);
             curAppliedPlayer.CurrentLocation = l;
             UpdateNeighborhoods();
             imgLocations[curAppliedPlayer.CurrentLocation.Settings.Coord.Y, curAppliedPlayer.CurrentLocation.Settings.Coord.X].ManualSelected = true;
