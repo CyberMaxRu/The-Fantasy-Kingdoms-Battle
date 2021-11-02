@@ -4636,4 +4636,23 @@
       </Level>
     </Levels>
   </Construction>
+  <Construction>
+    <ID>HellPortal</ID>
+    <Name>Портал Ада</Name>
+    <Description>Порталы Ада пока непривычное зрелище для жителей Ардании. Они во множестве появились после того, как трон королевства захватил демон.</Description>
+    <ImageIndex>70</ImageIndex>
+    <TypeConstruction>Lair</TypeConstruction>
+    <Category>Lair</Category>
+    <SoundSelect>logovo_imp_select.wav</SoundSelect>
+    <TypePlaceForConstruct>EmptyPlace</TypePlaceForConstruct>
+    <Levels>
+      <Level>
+        <Number>1</Number>
+        <Cost>0</Cost>
+        <Builders>0</Builders>
+        <Income>0</Income>
+        <MaxInhabitant>100</MaxInhabitant>
+      </Level>
+    </Levels>
+  </Construction>
 </Descriptors>

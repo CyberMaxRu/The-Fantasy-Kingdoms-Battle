@@ -699,6 +699,11 @@
             <MinQuantity>1</MinQuantity>
             <MaxQuantity>1</MaxQuantity>
           </TypeConstruction>
+          <TypeConstruction>
+            <ID>HellPortal</ID>
+            <MinQuantity>2</MinQuantity>
+            <MaxQuantity>4</MaxQuantity>
+          </TypeConstruction>
         </TypeConstructions>
       </Location>
       <Location>
@@ -717,9 +722,13 @@
             <MinQuantity>1</MinQuantity>
             <MaxQuantity>1</MaxQuantity>
           </TypeConstruction>
+          <TypeConstruction>
+            <ID>HellPortal</ID>
+            <MinQuantity>2</MinQuantity>
+            <MaxQuantity>4</MaxQuantity>
+          </TypeConstruction>
         </TypeConstructions>
       </Location>
-    </Locations>
-  
+    </Locations>  
 </TypeLobby>
 </TypeLobbies>
