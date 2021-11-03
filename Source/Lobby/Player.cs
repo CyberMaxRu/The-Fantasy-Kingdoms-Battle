@@ -1368,6 +1368,14 @@ namespace Fantasy_Kingdoms_Battle
                 ListEvents.Add(new VCEventForPlayer(entity, typeEvent));
             }
         }
+
+        internal void RemoveEventForPlayer(VCEventForPlayer e)
+        {
+            Debug.Assert(ListEvents.IndexOf(e) != -1);
+
+            ListEvents.Remove(e);
+            e.Parent.RemoveControl(e);
+        }
     }
 
     internal sealed class UnitOfQueueForBuy

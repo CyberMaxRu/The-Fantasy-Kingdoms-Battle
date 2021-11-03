@@ -29,6 +29,7 @@ namespace Fantasy_Kingdoms_Battle
             cell = new VCCellSimple(this, 0, 3);
             cell.ImageIndex = Entity.GetImageIndex();
             cell.Click += Cell_Click;
+            cell.RightClick += Cell_RightClick;
             cell.HighlightUnderMouse = true;
 
             string nameEvent;
@@ -52,6 +53,13 @@ namespace Fantasy_Kingdoms_Battle
 
             Width = 399;
             Height = 54;
+        }
+
+        private void Cell_RightClick(object sender, EventArgs e)
+        {
+            Program.formMain.CurrentLobby.CurrentPlayer.RemoveEventForPlayer(this);
+            Program.formMain.ShowPlayersEvents();
+            Program.formMain.NeedRedrawFrame();
         }
 
         private void Cell_Click(object sender, EventArgs e)
