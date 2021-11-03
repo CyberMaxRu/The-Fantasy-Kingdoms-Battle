@@ -79,6 +79,12 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(frame.Continue);
 
+            foreach (VCEventForPlayer e in ListEventsForPlayer)
+            {
+                e.Dispose();
+            }
+            ListEventsForPlayer.Clear();
+
             frame.Continue = false;
         }
 

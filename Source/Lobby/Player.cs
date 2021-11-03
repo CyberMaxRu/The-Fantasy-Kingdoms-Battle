@@ -482,7 +482,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int GreatnessCollected { get; private set; }// Собрано величия за игру
 
         //
-        internal List<VCEventForPlayer> ListEvents { get; } = new List<VCEventForPlayer>();// Список событий в графстве
+        internal List<VCEventForPlayer> ListEventsForPlayer { get; } = new List<VCEventForPlayer>();// Список событий в графстве
 
         // Локации
         internal Location[,] Locations { get; }
@@ -1365,15 +1365,15 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (GetTypePlayer() == TypePlayer.Human)
             { 
-                ListEvents.Add(new VCEventForPlayer(entity, typeEvent));
+                ListEventsForPlayer.Add(new VCEventForPlayer(entity, typeEvent));
             }
         }
 
         internal void RemoveEventForPlayer(VCEventForPlayer e)
         {
-            Debug.Assert(ListEvents.IndexOf(e) != -1);
+            Debug.Assert(ListEventsForPlayer.IndexOf(e) != -1);
 
-            ListEvents.Remove(e);
+            ListEventsForPlayer.Remove(e);
         }
     }
 

@@ -1336,11 +1336,11 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void ShowPlayersEvents()
         {
-            if (curAppliedPlayer.ListEvents.Count > 0)
+            if (curAppliedPlayer.ListEventsForPlayer.Count > 0)
             {
-                int nextY = pageResultTurn.Page.Height - curAppliedPlayer.ListEvents[0].Height;
+                int nextY = pageResultTurn.Page.Height - curAppliedPlayer.ListEventsForPlayer[0].Height;
 
-                foreach (VCEventForPlayer ep in curAppliedPlayer.ListEvents)
+                foreach (VCEventForPlayer ep in curAppliedPlayer.ListEventsForPlayer)
                 {
                     ep.ShiftY = nextY;
                     ep.Visible = true;
