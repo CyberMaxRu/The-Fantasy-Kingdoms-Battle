@@ -57,7 +57,7 @@ namespace Fantasy_Kingdoms_Battle
             Height = 54;
         }
 
-        private void Cell_RightClick(object sender, EventArgs e)
+        private void CloseSelf()
         {
             Debug.Assert(Visible);
 
@@ -68,12 +68,19 @@ namespace Fantasy_Kingdoms_Battle
             Dispose();
         }
 
+        private void Cell_RightClick(object sender, EventArgs e)
+        {
+            CloseSelf();
+        }
+
         private void Cell_Click(object sender, EventArgs e)
         {
             if (Entity is Construction c)
                 Program.formMain.SelectConstruction(c);
             else
                 throw new Exception("Неизвестная сущность.");
+
+            CloseSelf();
         }
 
         internal TypeEventForPlayer TypeEvent { get; }
