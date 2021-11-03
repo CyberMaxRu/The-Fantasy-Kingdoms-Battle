@@ -481,6 +481,9 @@ namespace Fantasy_Kingdoms_Battle
         internal int GoldCollected { get; private set; }// Собрано золота за игру
         internal int GreatnessCollected { get; private set; }// Собрано величия за игру
 
+        //
+        internal List<VCEventForPlayer> ListEvents { get; } = new List<VCEventForPlayer>();// Список событий в графстве
+
         // Локации
         internal Location[,] Locations { get; }
         internal Location LocationCapital { get; }
@@ -1355,6 +1358,14 @@ namespace Fantasy_Kingdoms_Battle
                         lc.Unhide();
                     }
                 }
+            }
+        }
+
+        internal void AddEventForPlayer(BigEntity entity, TypeEventForPlayer typeEvent)
+        {
+            if (GetTypePlayer() == TypePlayer.Human)
+            { 
+                ListEvents.Add(new VCEventForPlayer(entity, typeEvent));
             }
         }
     }

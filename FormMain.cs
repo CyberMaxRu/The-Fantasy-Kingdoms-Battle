@@ -1331,6 +1331,28 @@ namespace Fantasy_Kingdoms_Battle
             AdjustPageTournament();
             UpdateNeighborhoods();
             AdjustNeighborhood();
+            ShowPlayersEvents();
+        }
+
+        private void ShowPlayersEvents()
+        {
+            if (curAppliedPlayer.ListEvents.Count > 0)
+            {
+                int nextY = pageResultTurn.Page.Height - curAppliedPlayer.ListEvents[0].Height;
+
+                foreach (VCEventForPlayer ep in curAppliedPlayer.ListEvents)
+                {
+                    ep.ShiftY = nextY;
+                    ep.Visible = true;
+                    if (ep.Parent is null)
+                    {
+                        pageResultTurn.Page.AddControl(ep);// Почему два раза добавляется?
+                    }
+
+                    pageResultTurn.Page.ArrangeControl(ep);
+                    nextY -= ep.Height + Config.GridSize;
+                }
+            }
         }
 
         internal void UpdateListHeroes()
@@ -2563,6 +2585,23 @@ namespace Fantasy_Kingdoms_Battle
                     button.SelectedPlayerObject = null;
                 }
             }
+        }
+
+        internal void SelectConstruction(Construction construction)
+        {
+            switch (construction.TypeConstruction.Page)
+            {
+                case ConstructionPage.Guild:
+                    pageControl.ActivatePage(pageGuilds);
+                    break;
+                case ConstructionPage.Economic:
+                    pageControl.ActivatePage(pageEconomicConstructions);
+                    break;
+                default:
+                    throw new Exception($"Необрабатывая страница: {construction.TypeConstruction.Page}.");                         
+            }
+
+            SelectPlayerObject(construction);
         }
 
         internal void ActivatePageLairs(Location l)

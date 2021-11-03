@@ -192,6 +192,9 @@ namespace Fantasy_Kingdoms_Battle
                     SatisfactionNeeds[need.Item1.Index] = need.Item2;
                 }
             }
+
+            if (TypeConstruction.IsInternalConstruction)
+                Player.AddEventForPlayer(this, TypeEventForPlayer.Build);
         }
 
         private void CreateProducts()
