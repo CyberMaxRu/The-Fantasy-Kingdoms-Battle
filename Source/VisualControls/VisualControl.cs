@@ -74,6 +74,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<VisualControl> Controls = new List<VisualControl>();
 
         internal event EventHandler Click;
+        internal event EventHandler RightClick;
         internal event EventHandler ShowHint;
 
         protected virtual void SetEntity(Entity po)
@@ -242,6 +243,11 @@ namespace Fantasy_Kingdoms_Battle
 
             MouseClicked = false;
             Program.formMain.SetNeedRedrawFrame();
+        }
+
+        internal virtual void RightButtonClick()
+        {
+            RightClick?.Invoke(this, new EventArgs());
         }
 
         internal virtual void KeyPress(KeyPressEventArgs e)

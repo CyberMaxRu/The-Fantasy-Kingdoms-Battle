@@ -1334,7 +1334,7 @@ namespace Fantasy_Kingdoms_Battle
             ShowPlayersEvents();
         }
 
-        private void ShowPlayersEvents()
+        internal void ShowPlayersEvents()
         {
             if (curAppliedPlayer.ListEvents.Count > 0)
             {
@@ -1995,6 +1995,17 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     Debug.Assert(controlWithHint.Visible);
                     controlWithHint.MouseDown();
+                }
+
+                ShowFrame(false);
+            }
+
+            if (e.Button == MouseButtons.Right)
+            {
+                if (controlWithHint != null)
+                {
+                    Debug.Assert(controlWithHint.Visible);
+                    controlWithHint.RightButtonClick();
                 }
 
                 ShowFrame(false);
