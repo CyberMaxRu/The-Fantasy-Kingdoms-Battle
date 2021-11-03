@@ -1345,9 +1345,7 @@ namespace Fantasy_Kingdoms_Battle
                     ep.ShiftY = nextY;
                     ep.Visible = true;
                     if (ep.Parent is null)
-                    {
-                        pageResultTurn.Page.AddControl(ep);// Почему два раза добавляется?
-                    }
+                        pageResultTurn.Page.AddControl(ep);
 
                     pageResultTurn.Page.ArrangeControl(ep);
                     nextY -= ep.Height + Config.GridSize;
@@ -1999,100 +1997,101 @@ namespace Fantasy_Kingdoms_Battle
 
                 ShowFrame(false);
             }
-
-            if (e.Button == MouseButtons.Right)
-            {
-                if (controlWithHint != null)
-                {
-                    Debug.Assert(controlWithHint.Visible);
-                    controlWithHint.RightButtonClick();
-                }
-
-                ShowFrame(false);
-            }
         }
 
         protected override void OnMouseUp(MouseEventArgs e)
         {
             base.OnMouseUp(e);
 
-            if (e.Button == MouseButtons.Left)
+            if ((e.Button == MouseButtons.Left) || (e.Button == MouseButtons.Right))
             {
-                // Обработка клика перемещена из MouseClick, так как если кликать часто, то системой
-                // это распознается как двойной клик и вызывает OnMouseDoubleClick вместо OnMouseClick
-                if (controlWithHint != null)
+                controlClicked = controlWithHint;
+
+                if (e.Button == MouseButtons.Left)
                 {
-                    Debug.Assert(controlWithHint.Visible);
-                    controlWithHint.MouseUp();
-                    // При клике происходит перерисовка кадра, и текущий элемент может стать уже невидимым
-                    // Но он будет все равно считаться активным, так как прописан в controlWithHint
-                    // Поэтому перед кликом убираем его
-                    controlClicked = controlWithHint;
-                    controlWithHint = null;
-                    controlClicked.DoClick();
-
-                    // Во время нажатия кнопки мог произойти выход из программы
-                    if (ProgramState == ProgramState.NeedQuit)
+                    // Обработка клика перемещена из MouseClick, так как если кликать часто, то системой
+                    // это распознается как двойной клик и вызывает OnMouseDoubleClick вместо OnMouseClick
+                    if (controlWithHint != null)
                     {
-                        if (!(lobby is null))
-                            EndLobby();
-                        Close();
-                    }
-                    if (IsDisposed)
-                        return;
+                        Debug.Assert(controlWithHint.Visible);
+                        controlWithHint.MouseUp();
+                        // При клике происходит перерисовка кадра, и текущий элемент может стать уже невидимым
+                        // Но он будет все равно считаться активным, так как прописан в controlWithHint
+                        // Поэтому перед кликом убираем его
+                        controlWithHint = null;
+                        controlClicked.DoClick();
 
-                    // Если был клик на ячейке меню, обновляем меню, так как меняется список исследований и как следствие подсказки
-                    // Так как ячейка может быть невидимой, обновляем меню перед проверкой, какой контрол сейчас под мышкой
-                    if (controlClicked is VCMenuCell)
-                        UpdateMenu();
-
-                    // Смотрим какой контрол под мышкой сейчас. Если тот же самый, восстанавливаем его
-                    // Перед этим актуализируем позицию курсора. Она могла поменяться, если игрок вызывал другое окно
-                    UpdateMousePos();
-                    VisualControl curControl = ControlUnderMouse();
-                    if ((curControl != null) && (curControl == controlClicked))
-                        controlWithHint = controlClicked;
-                    else
-                    {
-                        controlWithHint = controlClicked;
-                        ControlForHintLeave();// Контрол уже другой, отменяем подсказку
-
-                        // Если сейчас есть новый контрол, входим в него мышью и стартуем таймер подсказки
-                        // Когда закрывается слой (FormConfirmExit), в новый контрол происходит вход два раза
-                        // Поэтому проверяем - если уже вошли, то повторяться не надо
-                        controlWithHint = curControl;
-                        if ((controlWithHint != null) && !controlWithHint.MouseOver)
+                        // Во время нажатия кнопки мог произойти выход из программы
+                        if (ProgramState == ProgramState.NeedQuit)
                         {
-                            controlWithHint.MouseEnter(false);
-                            timerHover.Start();
+                            if (!(lobby is null))
+                                EndLobby();
+                            Close();
                         }
+                        if (IsDisposed)
+                            return;
+
+                        // Если был клик на ячейке меню, обновляем меню, так как меняется список исследований и как следствие подсказки
+                        // Так как ячейка может быть невидимой, обновляем меню перед проверкой, какой контрол сейчас под мышкой
+                        if (controlClicked is VCMenuCell)
+                            UpdateMenu();
                     }
-                    controlClicked = null;
-
-                    if (formHint.Visible)
-                    {
-                        controlWithHint.DoShowHint();
-
-                        // После клика может оказаться, что подсказки нет (контрол скрыт, например)
-                        if (!formHint.ExistHint)
-                            formHint.HideHint();
-                    }
-
-                    ShowFrame(false);
-
-                    // Если после отрисовки кадра контрола стал невидимым, выходим из него
-                    if (!(controlWithHint is null) && !controlWithHint.Visible)
-                    {
-                        ControlForHintLeave();
-                    }
-
-                    /*if (formHint.Visible)
-                    {
-                        ControlForHintLeave();
-                        mousePos = new Point(0, 0);
-                        TreatMouseMove(false);
-                    }*/
                 }
+                else if (e.Button == MouseButtons.Right)
+                {
+                    if (controlWithHint != null)
+                    {
+                        Debug.Assert(controlWithHint.Visible);
+                        controlWithHint.RightButtonClick();
+                    }
+                }
+
+                // Смотрим какой контрол под мышкой сейчас. Если тот же самый, восстанавливаем его
+                // Перед этим актуализируем позицию курсора. Она могла поменяться, если игрок вызывал другое окно
+                UpdateMousePos();
+                VisualControl curControl = ControlUnderMouse();
+                if ((curControl != null) && (curControl == controlClicked))
+                    controlWithHint = controlClicked;
+                else
+                {
+                    controlWithHint = controlClicked;
+                    ControlForHintLeave();// Контрол уже другой, отменяем подсказку
+
+                    // Если сейчас есть новый контрол, входим в него мышью и стартуем таймер подсказки
+                    // Когда закрывается слой (FormConfirmExit), в новый контрол происходит вход два раза
+                    // Поэтому проверяем - если уже вошли, то повторяться не надо
+                    controlWithHint = curControl;
+                    if ((controlWithHint != null) && !controlWithHint.MouseOver)
+                    {
+                        controlWithHint.MouseEnter(false);
+                        timerHover.Start();
+                    }
+                }
+                controlClicked = null;
+
+                if (formHint.Visible)
+                {
+                    controlWithHint.DoShowHint();
+
+                    // После клика может оказаться, что подсказки нет (контрол скрыт, например)
+                    if (!formHint.ExistHint)
+                        formHint.HideHint();
+                }
+
+                ShowFrame(false);
+
+                // Если после отрисовки кадра контрола стал невидимым, выходим из него
+                if (!(controlWithHint is null) && !controlWithHint.Visible)
+                {
+                    ControlForHintLeave();
+                }
+
+                /*if (formHint.Visible)
+                {
+                    ControlForHintLeave();
+                    mousePos = new Point(0, 0);
+                    TreatMouseMove(false);
+                }*/
             }
         }
 

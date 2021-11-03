@@ -1374,7 +1374,6 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(ListEvents.IndexOf(e) != -1);
 
             ListEvents.Remove(e);
-            e.Parent.RemoveControl(e);
         }
     }
 

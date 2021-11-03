@@ -247,7 +247,15 @@ namespace Fantasy_Kingdoms_Battle
 
         internal virtual void RightButtonClick()
         {
-            RightClick?.Invoke(this, new EventArgs());
+            if (AllowClick())
+                if (!ClickOnParent)
+                {
+                    RightClick?.Invoke(this, new EventArgs());
+                }
+                else
+                {
+                    Parent.RightButtonClick();
+                }
         }
 
         internal virtual void KeyPress(KeyPressEventArgs e)

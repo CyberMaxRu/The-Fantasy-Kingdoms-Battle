@@ -48,8 +48,10 @@ namespace Fantasy_Kingdoms_Battle
 
             lblCaption = new VCLabel(this, cell.NextLeft(), 4, Program.formMain.fontMedCaptionC, Color.Gray, 16, nameEvent);
             lblCaption.Width = lblCaption.Font.WidthText(lblCaption.Text);
+            lblCaption.ClickOnParent = true;
             lblText = new VCLabel(this, lblCaption.ShiftX, 27, Program.formMain.fontMedCaptionC, colorNameEntity, 16, nameText);
             lblText.Width = lblText.Font.WidthText(lblText.Text);
+            lblText.ClickOnParent = true;
 
             Width = 399;
             Height = 54;
@@ -57,9 +59,13 @@ namespace Fantasy_Kingdoms_Battle
 
         private void Cell_RightClick(object sender, EventArgs e)
         {
+            Debug.Assert(Visible);
+
+            Visible = false;
             Program.formMain.CurrentLobby.CurrentPlayer.RemoveEventForPlayer(this);
             Program.formMain.ShowPlayersEvents();
             Program.formMain.NeedRedrawFrame();
+            Dispose();
         }
 
         private void Cell_Click(object sender, EventArgs e)
