@@ -84,6 +84,16 @@ namespace Fantasy_Kingdoms_Battle
                 NextCell = new DescriptorCellMenuForConstruction(ForConstruction, next);
                 Debug.Assert(Coord.Equals(NextCell.Coord), $"У {NameEntity} в ячейку {Coord} вложена ячейка {NextCell.Coord}.");
             }
+
+            if ((Type != TypeCellMenuForConstruction.HireCreature) && (Type != TypeCellMenuForConstruction.Extra))
+            {
+                Debug.Assert(DaysProcessing > 0, $"В {forConstruction.ID} не указано дней процесса у {NameEntity}");
+                Debug.Assert(DaysProcessing <= 50);
+            }
+            else
+            {
+                Debug.Assert(DaysProcessing == 0, $"В {forConstruction.ID} указано дней процесса у {NameEntity}");
+            }
         }
 
         public DescriptorCellMenuForConstruction(DescriptorConstruction forConstruction, Point coord, XmlNode n) : base(forConstruction, coord, n)
