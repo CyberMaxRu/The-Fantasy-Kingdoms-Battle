@@ -14,11 +14,15 @@ namespace Fantasy_Kingdoms_Battle
         public CellMenu(DescriptorCellMenu d)
         {
             Descriptor = d;
+            PosInQueue = -1;
         }
 
         internal static Config Config { get; set; }
         internal DescriptorCellMenu Descriptor { get; }
-        internal int DaysProcessed { get; private set; }// Количество дней, прошедшее с начала обработки действия ячейки
+
+        internal int DaysProcessed { get; set; }// Количество дней, прошедшее с начала обработки действия ячейки
+        internal int DaysLeft { get; set; }// Сколько дней осталось до окончания обработки действия
+        internal int PosInQueue { get; set; }// Номер в очереди
 
         internal virtual string GetText() => GetCost().ToString();
         internal abstract int GetCost();
@@ -27,6 +31,7 @@ namespace Fantasy_Kingdoms_Battle
         internal virtual bool CheckRequirements() => true;
         internal virtual List<TextRequirement> GetTextRequirements() => new List<TextRequirement>();
         internal virtual void PrepareHint() { }
+        internal abstract void Click();
         internal abstract void Execute();
         internal virtual void PrepareTurn() { }
     }
@@ -95,6 +100,26 @@ namespace Fantasy_Kingdoms_Battle
                 default:
                     throw new Exception($"Неизвестный тип ячейки: {d.Type}");
             }
+        }
+
+        internal override void Click()
+        {
+            if (PosInQueue == -1)
+            {
+                if (CheckRequirements())
+                {
+                    Program.formMain.PlayPushButton();
+                    Construction.AddEntityToQueueProcessing(this);
+
+                    DaysLeft = Descriptor.DaysProcessing;
+                }
+            }
+            else
+            {
+                Program.formMain.PlayPushButton();
+                Construction.RemoveEntityFromQueueProcessing(this);
+            }
+
         }
     }
 

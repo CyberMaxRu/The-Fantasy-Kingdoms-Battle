@@ -10,11 +10,15 @@ namespace Fantasy_Kingdoms_Battle
     // Визуальный контрол - ячейка меню
     internal sealed class VCMenuCell : VCImage48
     {
-
+        private VCLabel lblBanner;
         private ConstructionCellMenu research;
 
         public VCMenuCell(VisualControl parent, int shiftX, int shiftY) : base(parent, shiftX, shiftY, -1)
         {
+            lblBanner = new VCLabel(this, 0, 0, Program.formMain.fontBigCaptionC, Color.White, Height, "");
+            lblBanner.StringFormat.LineAlignment = StringAlignment.Center;
+            lblBanner.Width = Width;
+            lblBanner.Visible = false;
         }
 
         internal bool Used { get; set; }
@@ -34,12 +38,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.DoClick();
 
-            Debug.Assert(research != null);
-            if (research.CheckRequirements())
-            {
-                Program.formMain.PlayPushButton();
-                research.Execute();
-            }
+            research.Click();
         }
 
         internal override bool PrepareHint()
@@ -59,9 +58,37 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (research != null)
             {
-                Text = research.GetText();
                 ImageIndex = research.GetImageIndex();
-                Level = research.GetLevel();
+
+                if (research.PosInQueue >= 0)
+                {
+                    //Level = "";
+                    //Text = "";
+                    Level = (research.PosInQueue + 1).ToString();
+
+                    //ImageIsEnabled = false;
+                    //lblBanner.Visible = true;
+                    if (research.PosInQueue == 0)
+                    {
+                        Text = research.DaysLeft.ToString() + " д.";
+
+                        lblBanner.Text = research.DaysLeft.ToString();
+                        lblBanner.Color = Color.LimeGreen;
+                    }
+                    else
+                    {
+                        Text = "ожид.";
+                        lblBanner.Text = research.PosInQueue.ToString();
+                        lblBanner.Color = Color.DarkGoldenrod;
+                    }
+                }
+                else
+                {
+                    ImageIsEnabled = true;
+                    lblBanner.Visible = false;
+                    Text = research.GetText();
+                    Level = research.GetLevel();
+                }
                 //ImageIsEnabled = research.CheckRequirements();
 
                 // Накладываем фильтр

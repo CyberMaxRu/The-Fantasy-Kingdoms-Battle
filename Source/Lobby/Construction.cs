@@ -99,6 +99,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<Hero> listAttackedHero { get; } = new List<Hero>();// Список героев, откликнувшихся на флаг
 
         // 
+        internal List<ConstructionCellMenu> ListQueueProcessing { get; } = new List<ConstructionCellMenu>();// Очередь обработки ячеек меню
         internal int ResearchesAvailabled { get; set; }// Сколько еще исследований доступно на этом ходу
         internal List<ConstructionProduct> AllProducts { get; } = new List<ConstructionProduct>();// Все сущности в сооружении
         internal List<ConstructionProduct> Visits { get; } = new List<ConstructionProduct>();// Посещения, события, турниры
@@ -594,6 +595,22 @@ namespace Fantasy_Kingdoms_Battle
                 }
                 else
                     i++;
+            }
+
+            if (ListQueueProcessing.Count > 0)
+            {
+                ConstructionCellMenu cm = ListQueueProcessing[0];
+                Debug.Assert(cm.DaysLeft > 0);
+
+                cm.DaysProcessed++;
+                cm.DaysLeft--;
+
+                if (cm.DaysLeft == 0)
+                {
+                    cm.Execute();
+
+                    RemoveEntityFromQueueProcessing(cm);
+                }
             }
 
             foreach (ConstructionCellMenu cm in Researches)
@@ -1421,6 +1438,31 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             return text;
+        }
+
+        internal void AddEntityToQueueProcessing(ConstructionCellMenu cell)
+        {
+            Debug.Assert(ListQueueProcessing.IndexOf(cell) == -1);
+            Debug.Assert(cell.DaysProcessed == 0);
+            Debug.Assert(cell.PosInQueue == -1);
+
+            cell.PosInQueue = ListQueueProcessing.Count;
+            ListQueueProcessing.Add(cell);
+        }
+
+        internal void RemoveEntityFromQueueProcessing(ConstructionCellMenu cell)
+        {
+            Debug.Assert(ListQueueProcessing.IndexOf(cell) != -1);
+            Debug.Assert((cell.DaysLeft == 0) || (cell.DaysProcessed == 0));
+            Debug.Assert(cell.PosInQueue >= 0);
+
+            ListQueueProcessing.Remove(cell);
+            cell.PosInQueue = -1;
+
+            for (int i = 0; i < ListQueueProcessing.Count; i++)
+            {
+                ListQueueProcessing[i].PosInQueue = i;
+            }
         }
     }
 }
