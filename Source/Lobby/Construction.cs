@@ -184,7 +184,7 @@ namespace Fantasy_Kingdoms_Battle
             // Добавляем товар посещения
             if (TypeConstruction.Levels[Level].DescriptorVisit != null)
             {
-                ConstructionProduct cpVisit = new ConstructionProduct(TypeConstruction.Levels[Level].DescriptorVisit);
+                ConstructionProduct cpVisit = new ConstructionProduct(this, TypeConstruction.Levels[Level].DescriptorVisit);
                 AddProduct(cpVisit);
             }
 
@@ -207,11 +207,11 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorSmallEntity se in TypeConstruction.Levels[Level].Extensions)
             {
                 if (se is DescriptorConstructionExtension dce)
-                    AddProduct(new ConstructionProduct(dce));
+                    AddProduct(new ConstructionProduct(this, dce));
                 else if (se is DescriptorItem di)
-                    AddProduct(new ConstructionProduct(di));
+                    AddProduct(new ConstructionProduct(this, di));
                 else if (se is DescriptorResource dr)
-                    AddProduct(new ConstructionProduct(dr));
+                    AddProduct(new ConstructionProduct(this, dr));
                 else
                     throw new Exception($"Неизвестный товар: {se.ID}");
             }
@@ -549,7 +549,7 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.panelLairInfo.Visible = false;
         }
 
-        internal override void ShowInfo()
+        internal override void ShowInfo(int selectPage = -1)
         {
             Debug.Assert(!Destroyed);
 
@@ -557,6 +557,8 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Program.formMain.panelConstructionInfo.Visible = true;
                 Program.formMain.panelConstructionInfo.Entity = this;
+                if (selectPage >= 0)
+                    Program.formMain.panelConstructionInfo.SelectPage(selectPage);
             }
             else
             {

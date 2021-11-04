@@ -9,34 +9,38 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class ConstructionProduct : SmallEntity
     {
-        public ConstructionProduct(DescriptorAbility descriptor) : base()
+        public ConstructionProduct(Construction construction, DescriptorAbility descriptor) : base()
         {
             Debug.Assert(descriptor != null);
 
+            Construction = construction;
             DescriptorAbility = descriptor;
             Descriptor = descriptor;
         }
 
-        public ConstructionProduct(DescriptorItem descriptor) : base()
+        public ConstructionProduct(Construction construction, DescriptorItem descriptor) : base()
         {
             Debug.Assert(descriptor != null);
 
+            Construction = construction;
             DescriptorItem = descriptor;
             Descriptor = descriptor;
         }
 
-        public ConstructionProduct(DescriptorGroupItems descriptor) : base()
+        public ConstructionProduct(Construction construction, DescriptorGroupItems descriptor) : base()
         {
             Debug.Assert(descriptor != null);
 
+            Construction = construction;
             DescriptorGroupItem = descriptor;
             Descriptor = descriptor;
         }
 
-        public ConstructionProduct(DescriptorConstructionEvent descriptor) : base()
+        public ConstructionProduct(Construction construction, DescriptorConstructionEvent descriptor) : base()
         {
             Debug.Assert(descriptor != null);
 
+            Construction = construction;
             DescriptorConstructionEvent = descriptor;
             Descriptor = descriptor;
 
@@ -45,32 +49,36 @@ namespace Fantasy_Kingdoms_Battle
             Interest = descriptor.Interest;
         }
 
-        public ConstructionProduct(DescriptorConstructionVisit descriptor) : base()
+        public ConstructionProduct(Construction construction, DescriptorConstructionVisit descriptor) : base()
         {
             Debug.Assert(descriptor != null);
 
+            Construction = construction;
             DescriptorConstructionVisit = descriptor;
             Descriptor = descriptor;
             Interest = descriptor.Interest;
         }
 
-        public ConstructionProduct(DescriptorConstructionExtension descriptor) : base()
+        public ConstructionProduct(Construction construction, DescriptorConstructionExtension descriptor) : base()
         {
             Debug.Assert(descriptor != null);
 
+            Construction = construction;
             DescriptorConstructionExtension = descriptor;
             Descriptor = descriptor;
             Interest = descriptor.Interest;
         }
 
-        public ConstructionProduct(DescriptorResource descriptor) : base()
+        public ConstructionProduct(Construction construction, DescriptorResource descriptor) : base()
         {
             Debug.Assert(descriptor != null);
 
+            Construction = construction;
             DescriptorResource = descriptor;
             Descriptor = descriptor;
         }
 
+        internal Construction Construction { get; }
         internal DescriptorSmallEntity Descriptor { get; }
         internal DescriptorAbility DescriptorAbility { get; }
         internal DescriptorItem DescriptorItem { get; }

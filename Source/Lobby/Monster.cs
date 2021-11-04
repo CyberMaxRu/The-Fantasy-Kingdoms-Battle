@@ -32,7 +32,7 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.panelMonsterInfo.Visible = false;
         }
 
-        internal override void ShowInfo()
+        internal override void ShowInfo(int selectPage = -1)
         {
             Debug.Assert(IsLive);
 

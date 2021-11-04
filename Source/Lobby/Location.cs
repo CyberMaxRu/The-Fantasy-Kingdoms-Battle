@@ -77,7 +77,7 @@ namespace Fantasy_Kingdoms_Battle
             
         }
 
-        internal override void ShowInfo()
+        internal override void ShowInfo(int selectPage = -1)
         {
             Program.formMain.panelLocationInfo.Entity = this;
             Program.formMain.panelLocationInfo.Visible = true;

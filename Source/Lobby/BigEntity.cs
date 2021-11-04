@@ -16,7 +16,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal List<ConstructionCellMenu> Researches { get; } = new List<ConstructionCellMenu>();
 
-        internal abstract void ShowInfo();
+        internal abstract void ShowInfo(int selectPage = -1);
         internal abstract void HideInfo();
 
         internal abstract void MakeMenu(VCMenuCell[,] menu);

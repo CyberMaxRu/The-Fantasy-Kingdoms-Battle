@@ -191,14 +191,18 @@ namespace Fantasy_Kingdoms_Battle
             else
                 Construction.Player.UseExtraResearch();
 
+            ConstructionProduct cp;
             if (Entity is DescriptorItem di)
-                Construction.AddProduct(new ConstructionProduct(di));
+                cp = new ConstructionProduct(Construction, di);
             else if (Entity is DescriptorAbility da)
-                Construction.AddProduct(new ConstructionProduct(da));
+                cp = new ConstructionProduct(Construction, da);
             else if (Entity is DescriptorGroupItems dgi)
-                Construction.AddProduct(new ConstructionProduct(dgi));
+                cp = new ConstructionProduct(Construction, dgi);
             else
                 throw new Exception("неизвестный тип");
+
+            Construction.AddProduct(cp);
+            Construction.Player.AddEventForPlayer(cp, TypeEventForPlayer.Research);
 
             Program.formMain.SetNeedRedrawFrame();
         }
@@ -348,9 +352,10 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(cp is null);
 
             Construction.Player.SpendGold(GetCost());
-            cp = new ConstructionProduct(ConstructionEvent);
+            cp = new ConstructionProduct(Construction, ConstructionEvent);
             Construction.AddProduct(cp);
 
+            Construction.Player.AddEventForPlayer(cp, TypeEventForPlayer.MassEventBegin);
             //Cooldown = ConstructionEvent.Cooldown;
         }
 
@@ -408,6 +413,8 @@ namespace Fantasy_Kingdoms_Battle
 
             if (cp?.Counter == 0)
             {
+                Construction.Player.AddEventForPlayer(cp, TypeEventForPlayer.MassEventEnd);
+
                 cp = null;
                 Cooldown = ConstructionEvent.Cooldown;
             }
@@ -477,9 +484,12 @@ namespace Fantasy_Kingdoms_Battle
             RemoveSelf();
 
             Construction.BuildedOrUpgraded = true;
-            Construction.AddProduct(new ConstructionProduct(Entity));
+            ConstructionProduct cp = new ConstructionProduct(Construction, Entity);
+            Construction.AddProduct(cp);
 
             Program.formMain.SetNeedRedrawFrame();
+
+            Construction.Player.AddEventForPlayer(cp, TypeEventForPlayer.Extension);
         }
 
         internal override int GetCost()
@@ -530,11 +540,13 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(CheckRequirements());
 
             Construction.Player.SpendGold(GetCost());
-            RemoveSelf();
 
-            Construction.AddProduct(new ConstructionProduct(Entity as DescriptorItem));
+            ConstructionProduct cp = new ConstructionProduct(Construction, Entity as DescriptorItem);
+            Construction.AddProduct(cp);
 
             Program.formMain.SetNeedRedrawFrame();
+
+            Construction.Player.AddEventForPlayer(cp, TypeEventForPlayer.TournamentBegin);
         }
 
         internal override int GetCost()

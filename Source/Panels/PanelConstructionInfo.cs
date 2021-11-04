@@ -202,5 +202,9 @@ namespace Fantasy_Kingdoms_Battle
         {
             pageControl.ActivatePage(2);
         }
+        internal void SelectPage(int number)
+        {
+            pageControl.ActivatePage(number);
+        }
     }
 }

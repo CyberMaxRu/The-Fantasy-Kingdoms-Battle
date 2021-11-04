@@ -1338,7 +1338,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (curAppliedPlayer.ListEventsForPlayer.Count > 0)
             {
-                int nextY = pageResultTurn.Page.Height - curAppliedPlayer.ListEventsForPlayer[0].Height;
+                int nextY = 0;
+                //int nextY = pageResultTurn.Page.Height - curAppliedPlayer.ListEventsForPlayer[0].Height;
 
                 foreach (VCEventForPlayer ep in curAppliedPlayer.ListEventsForPlayer)
                 {
@@ -1348,7 +1349,7 @@ namespace Fantasy_Kingdoms_Battle
                         pageResultTurn.Page.AddControl(ep);
 
                     pageResultTurn.Page.ArrangeControl(ep);
-                    nextY -= ep.Height + Config.GridSize;
+                    nextY += ep.NextTop();
                 }
             }
         }
@@ -2319,7 +2320,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void SelectPlayerObject(BigEntity po)
+        internal void SelectPlayerObject(BigEntity po, int selectPage = -1)
         {
             if (selectedPlayerObject != po)
             {
@@ -2336,7 +2337,9 @@ namespace Fantasy_Kingdoms_Battle
                     selectedPlayerObject = pageControl.CurrentPage.Location;
 
                 if (selectedPlayerObject != null)
+                {
                     selectedPlayerObject.ShowInfo();
+                }
                 else
                     panelEmptyInfo.Visible = true;
 
@@ -2597,7 +2600,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void SelectConstruction(Construction construction)
+        internal void SelectConstruction(Construction construction, int selectPage = -1)
         {
             switch (construction.TypeConstruction.Page)
             {
@@ -2611,7 +2614,7 @@ namespace Fantasy_Kingdoms_Battle
                     throw new Exception($"Необрабатывая страница: {construction.TypeConstruction.Page}.");                         
             }
 
-            SelectPlayerObject(construction);
+            SelectPlayerObject(construction, selectPage);
         }
 
         internal void ActivatePageLairs(Location l)

@@ -1229,7 +1229,7 @@ namespace Fantasy_Kingdoms_Battle
             return LevelGreatness.ToString();
         }
 
-        internal override void ShowInfo()
+        internal override void ShowInfo(int selectPage = -1)
         {
 
         }
@@ -1364,7 +1364,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddEventForPlayer(BigEntity entity, TypeEventForPlayer typeEvent)
+        internal void AddEventForPlayer(Entity entity, TypeEventForPlayer typeEvent)
         {
             if (GetTypePlayer() == TypePlayer.Human)
             { 

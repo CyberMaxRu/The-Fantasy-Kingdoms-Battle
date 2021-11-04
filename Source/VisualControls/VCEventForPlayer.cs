@@ -8,7 +8,7 @@ using System.Diagnostics;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal enum TypeEventForPlayer { Build };
+    internal enum TypeEventForPlayer { Build, Research, Extension, MassEventBegin, MassEventEnd, TournamentBegin, TournamentEnd };
 
     internal sealed class VCEventForPlayer : VisualControl
     {
@@ -17,7 +17,7 @@ namespace Fantasy_Kingdoms_Battle
         private VCLabel lblCaption;
         private VCLabel lblText;
 
-        public VCEventForPlayer(BigEntity entity, TypeEventForPlayer typeEvent) : base()
+        public VCEventForPlayer(Entity entity, TypeEventForPlayer typeEvent) : base()
         {
             Debug.Assert(entity != null);
 
@@ -33,7 +33,7 @@ namespace Fantasy_Kingdoms_Battle
             cell.HighlightUnderMouse = true;
 
             string nameEvent;
-            string nameText;
+            string nameText = "";
             Color colorNameEntity;
             switch (TypeEvent)
             {
@@ -42,9 +42,41 @@ namespace Fantasy_Kingdoms_Battle
                     nameText = (Entity as Construction).NameLair();
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
+                case TypeEventForPlayer.Research:
+                    nameEvent = "Исследование завершено:";
+                    nameText = (Entity as ConstructionProduct).Descriptor.Name;
+                    colorNameEntity = Color.DarkGoldenrod;
+                    break;
+                case TypeEventForPlayer.Extension:
+                    nameEvent = "Дополнительное сооружение построено:";
+                    nameText = (Entity as ConstructionProduct).Descriptor.Name;
+                    colorNameEntity = Color.DarkGoldenrod;
+                    break;
+                case TypeEventForPlayer.MassEventBegin:
+                    nameEvent = "Мероприятие начато:";
+                    nameText = (Entity as ConstructionProduct).Descriptor.Name;
+                    colorNameEntity = Color.DarkGoldenrod;
+                    break;
+                case TypeEventForPlayer.MassEventEnd:
+                    nameEvent = "Мероприятие завершено:";
+                    nameText = (Entity as ConstructionProduct).Descriptor.Name;
+                    colorNameEntity = Color.DarkGoldenrod;
+                    break;
+                case TypeEventForPlayer.TournamentBegin:
+                    nameEvent = "Турнир начат:";
+                    nameText = (Entity as ConstructionProduct).Descriptor.Name;
+                    colorNameEntity = Color.DarkGoldenrod;
+                    break;
+                case TypeEventForPlayer.TournamentEnd:
+                    nameEvent = "Турнир завершен:";
+                    nameText = (Entity as ConstructionProduct).Descriptor.Name;
+                    colorNameEntity = Color.DarkGoldenrod;
+                    break;
                 default:
                     throw new Exception($"Неизвестный тип события: {TypeEvent}.");
             }
+
+            Debug.Assert(nameText.Length > 0);
 
             lblCaption = new VCLabel(this, cell.NextLeft(), 4, Program.formMain.fontMedCaptionC, Color.Gray, 16, nameEvent);
             lblCaption.Width = lblCaption.Font.WidthText(lblCaption.Text);
@@ -77,6 +109,10 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (Entity is Construction c)
                 Program.formMain.SelectConstruction(c);
+            else if (Entity is ConstructionProduct cp)
+            {
+                Program.formMain.SelectConstruction(cp.Construction, 0);
+            }
             else
                 throw new Exception("Неизвестная сущность.");
 
