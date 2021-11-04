@@ -2766,6 +2766,13 @@
         <Entity>ElixirAntipoison</Entity>
         <Cost>500</Cost>
         <DaysProcessing>1</DaysProcessing>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>Hospital</Construction>
+            <Level>2</Level>
+          </Requirement>
+        </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>3,2</Pos>
@@ -2773,6 +2780,13 @@
         <Entity>ElixirRegeneration</Entity>
         <Cost>1000</Cost>
         <DaysProcessing>1</DaysProcessing>
+        <Requirements>
+          <Requirement>
+            <TypeRequirement>BuildedConstruction</TypeRequirement>
+            <Construction>Hospital</Construction>
+            <Level>2</Level>
+          </Requirement>
+        </Requirements>
       </CellMenu>
       <CellMenu>
         <Pos>2,3</Pos>
@@ -3979,7 +3993,7 @@
     <CellsMenu>
       <CellMenu>
         <Pos>4,2</Pos>
-        <Type>Build</Type>
+        <Type>п</Type>
         <Entity>GuildDarkPriest</Entity>
       </CellMenu>
       <CellMenu>
