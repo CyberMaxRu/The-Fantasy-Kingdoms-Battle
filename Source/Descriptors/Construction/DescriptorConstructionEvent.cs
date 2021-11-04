@@ -8,6 +8,7 @@ using System.Diagnostics;
 
 namespace Fantasy_Kingdoms_Battle
 {
+    // Класс мероприятий в сооружении
     internal sealed class DescriptorConstructionEvent : DescriptorSmallEntity
     {
         public DescriptorConstructionEvent(XmlNode n) : base(n)
@@ -38,7 +39,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int Duration { get; }// Длительность (в днях)
         internal int Cooldown { get; }// Пауза до возможности снова использовать (в днях)
         internal int Interest { get; }// Интерес к событию
-        internal string NameGoods { get; }// Наименование события-товара
+        internal string NameGoods { get; }// Наименование мероприятия-товара
         internal ListNeeds ListNeeds { get; }
 
         internal override void TuneDeferredLinks()

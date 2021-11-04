@@ -108,7 +108,7 @@ namespace Fantasy_Kingdoms_Battle
             if (DescriptorConstructionEvent != null)
             {
                 Program.formMain.formHint.AddStep2Header(DescriptorConstructionEvent.NameGoods, GetImageIndex());
-                Program.formMain.formHint.AddStep3Type("Событие");
+                Program.formMain.formHint.AddStep3Type("Мероприятие");
                 Program.formMain.formHint.AddStep4Level(Duration > 0 ? $"Осталось дней: {Counter}" : "");
                 Program.formMain.formHint.AddStep5Description(Descriptor.Description);
                 Program.formMain.formHint.AddStep9ListNeeds(DescriptorConstructionEvent.ListNeeds, true);

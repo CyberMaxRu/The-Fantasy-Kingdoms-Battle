@@ -356,7 +356,7 @@ namespace Fantasy_Kingdoms_Battle
             return Descriptor.Cost;
         }
 
-        internal override string GetLevel() => Program.formMain.Settings.ShowTypeCellMenu ? "с" : "";
+        internal override string GetLevel() => Program.formMain.Settings.ShowTypeCellMenu ? "м" : "";
 
         internal override int GetImageIndex()
         {
@@ -366,7 +366,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override void PrepareHint()
         {
             Program.formMain.formHint.AddStep2Header(ConstructionEvent.Name, ConstructionEvent.ImageIndex);
-            Program.formMain.formHint.AddStep3Type("Событие");
+            Program.formMain.formHint.AddStep3Type("Мероприятие");
             Program.formMain.formHint.AddStep4Level($"Длительность: {ConstructionEvent.Duration} дн."
                 + Environment.NewLine + $"Перерыв: {ConstructionEvent.Cooldown} дн.");
             Program.formMain.formHint.AddStep5Description(ConstructionEvent.Description);
