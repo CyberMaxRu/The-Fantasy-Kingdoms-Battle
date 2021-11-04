@@ -242,7 +242,6 @@
   <ItemGroup>
     <Content Include="FKB.ico" />
     <Content Include="Resources\Config\ComputerPlayers.xml" />
-    <Content Include="Resources\Config\Descriptors\ConstructionEvents.xml" />
     <Content Include="Resources\Config\Descriptors\GroupItems.xml" />
     <Content Include="Resources\Config\Descriptors\Poisons.xml" />
     <Content Include="Resources\Config\Descriptors\Resources.xml" />

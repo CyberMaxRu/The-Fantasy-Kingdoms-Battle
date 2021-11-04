@@ -1185,6 +1185,28 @@
         </Requirements>
       </Level>
     </Levels>
+    <Events>
+      <Event>
+        <ID>EventFair</ID>
+        <Name>Ярмарка</Name>
+        <Description>Устроить ярмарку</Description>
+        <ImageIndex>243</ImageIndex>
+        <Duration>3</Duration>
+        <Cooldown>10</Cooldown>
+        <Interest>30</Interest>
+        <NameGoods>Посетить ярмарку</NameGoods>
+        <Heroes>
+          <Hero>Warrior</Hero>
+          <Hero>Hunter</Hero>
+          <Hero>Dwarf</Hero>
+          <Hero>Elf</Hero>
+        </Heroes>
+        <Needs>
+          <Rest>20</Rest>
+          <Entertainment>30</Entertainment>
+        </Needs>
+      </Event>
+    </Events>
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
@@ -1572,6 +1594,27 @@
         </Visit>
       </Level>
     </Levels>
+    <Events>
+      <Event>
+        <ID>EventFeast</ID>
+        <Name>Пивной фестиваль</Name>
+        <Description>Устроить пивной фестиваль</Description>
+        <ImageIndex>225</ImageIndex>
+        <Duration>1</Duration>
+        <Cooldown>7</Cooldown>
+        <Interest>40</Interest>
+        <NameGoods>Участвовать в пире</NameGoods>
+        <Heroes>
+          <Hero>Warrior</Hero>
+          <Hero>Hunter</Hero>
+          <Hero>Dwarf</Hero>
+        </Heroes>
+        <Needs>
+          <Rest>25</Rest>
+          <Entertainment>70</Entertainment>
+        </Needs>
+      </Event>
+    </Events>
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
@@ -2805,6 +2848,48 @@
         </Needs>
       </Extension>
     </Extensions>
+    <Events>
+      <Event>
+        <ID>EventFireworks</ID>
+        <Name>Устроить фейерверк</Name>
+        <Description>- От красочного фейерверка у подданных целую неделю будет хорошее настроение</Description>
+        <ImageIndex>208</ImageIndex>
+        <Duration>1</Duration>
+        <Cooldown>7</Cooldown>
+        <Interest>70</Interest>
+        <NameGoods>Посмотреть фейерверк</NameGoods>
+        <Heroes>
+          <Hero>Warrior</Hero>
+          <Hero>Hunter</Hero>
+          <Hero>Cleric</Hero>
+        </Heroes>
+        <Needs>
+          <Rest>20</Rest>
+          <Entertainment>40</Entertainment>
+        </Needs>
+      </Event>
+      <Event>
+        <ID>EventElvenMusic</ID>
+        <Name>Концерт эльфийской музыки</Name>
+        <Description>- Прослушивание известных и новых композиций эльфийской музыки благотворно влияет на подданных!</Description>
+        <ImageIndex>232</ImageIndex>
+        <Duration>1</Duration>
+        <Cooldown>7</Cooldown>
+        <Interest>50</Interest>
+        <NameGoods>Посетить концерт эльфийской музыки</NameGoods>
+        <Heroes>
+          <Hero>Warrior</Hero>
+          <Hero>Hunter</Hero>
+          <Hero>Elf</Hero>
+          <Hero>Cleric</Hero>
+          <Hero>Mage</Hero>
+        </Heroes>
+        <Needs>
+          <Rest>50</Rest>
+          <Entertainment>20</Entertainment>
+        </Needs>
+      </Event>
+    </Events>
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>

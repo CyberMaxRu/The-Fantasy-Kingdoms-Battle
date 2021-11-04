@@ -136,13 +136,6 @@ namespace Fantasy_Kingdoms_Battle
                 TypeConstructions.Add(new DescriptorTypeConstruction(n));
             }
 
-            // Загрузка конфигурации событий в сооружениях
-            xmlDoc = CreateXmlDocument(@"Config\Descriptors\ConstructionEvents.xml");
-            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/ConstructionEvent"))
-            {
-                ConstructionsEvents.Add(new DescriptorConstructionEvent(n));
-            }
-
             // Загрузка конфигурации сооружений
             xmlDoc = CreateXmlDocument(@"Config\Descriptors\Constructions.xml");
             foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/Construction"))
@@ -324,9 +317,6 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorConstructionVisit cv in ConstructionsVisits)
                 cv.TuneDeferredLinks();
 
-            foreach (DescriptorConstructionEvent ce in ConstructionsEvents)
-                ce.TuneDeferredLinks();
-
             foreach (DescriptorConstruction c in Constructions)
                 c.TuneDeferredLinks();
 
@@ -359,7 +349,6 @@ namespace Fantasy_Kingdoms_Battle
         // Списки описателей
         internal List<DescriptorTypeConstruction> TypeConstructions { get; } = new List<DescriptorTypeConstruction>();
         internal List<DescriptorConstructionVisit> ConstructionsVisits { get; } = new List<DescriptorConstructionVisit>();
-        internal List<DescriptorConstructionEvent> ConstructionsEvents { get; } = new List<DescriptorConstructionEvent>();
         internal List<DescriptorConstruction> Constructions { get; } = new List<DescriptorConstruction>();
 
         // Существа
@@ -521,20 +510,6 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             throw new Exception($"Посещение {ID} не найдено.");
-        }
-
-        internal DescriptorConstructionEvent FindConstructionEvent(string ID, bool mustBeExists = true)
-        {
-            foreach (DescriptorConstructionEvent dce in ConstructionsEvents)
-            {
-                if (dce.ID == ID)
-                    return dce;
-            }
-
-            if (mustBeExists)
-                throw new Exception("Событие сооружения " + ID + " не найдено.");
-
-            return null;
         }
 
         internal DescriptorConstruction FindConstruction(string ID, bool mustBeExists = true)

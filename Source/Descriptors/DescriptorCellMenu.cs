@@ -124,7 +124,7 @@ namespace Fantasy_Kingdoms_Battle
                         Entity = ForConstruction.FindExtension(NameEntity, true);
                         break;
                     case TypeCellMenuForConstruction.Event:
-                        Entity = FormMain.Config.FindConstructionEvent(NameEntity, true);
+                        Entity = ForConstruction.FindConstructionEvent(NameEntity, true);
                         break;
                     case TypeCellMenuForConstruction.HireCreature:
                         Entity = FormMain.Config.FindCreature(NameEntity);

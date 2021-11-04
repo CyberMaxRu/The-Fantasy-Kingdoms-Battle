@@ -163,6 +163,23 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
+            // Загружаем информацию о мероприятиях
+            XmlNode nodeEvents = n.SelectSingleNode("Events");
+            if (nodeEvents != null)
+            {
+                DescriptorConstructionEvent dcEvent;
+                foreach (XmlNode l in nodeEvents.SelectNodes("Event"))
+                {
+                    dcEvent = new DescriptorConstructionEvent(this, l);
+
+                    foreach (DescriptorConstructionEvent dcEvent2 in Events)
+                    {
+                        Debug.Assert(dcEvent2.ID != dcEvent.ID);
+                    }
+
+                    Events.Add(dcEvent);
+                }
+            }
 
             // Загружаем меню
             XmlNode nr = n.SelectSingleNode("CellsMenu");
@@ -276,6 +293,7 @@ namespace Fantasy_Kingdoms_Battle
         internal bool HasTreasury { get; }// Имеет собственную казну (Замок, гильдии, храмы)
         internal int GoldByConstruction { get; }// Количество золота в казне при постройке
         internal List<DescriptorConstructionExtension> Extensions { get; } = new List<DescriptorConstructionExtension>();
+        internal List<DescriptorConstructionEvent> Events { get; } = new List<DescriptorConstructionEvent>();
         internal List<DescriptorCellMenuForConstruction> ListResearches { get; } = new List<DescriptorCellMenuForConstruction>();
         internal DescriptorCellMenuForConstructionLevel[] Levels { get; }
 
@@ -308,6 +326,9 @@ namespace Fantasy_Kingdoms_Battle
             }*/
 
             foreach (DescriptorConstructionExtension ce in Extensions)
+                ce.TuneDeferredLinks();
+
+            foreach (DescriptorConstructionEvent ce in Events)
                 ce.TuneDeferredLinks();
 
             foreach (DescriptorCellMenuForConstruction cm in ListResearches)
@@ -371,18 +392,33 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal DescriptorConstructionExtension FindExtension(string id, bool mustBeFound)
+        internal DescriptorConstructionExtension FindExtension(string IDExtension, bool mustBeFound)
         {
             foreach (DescriptorConstructionExtension ce in Extensions)
             {
-                if (ce.ID == id)
+                if (ce.ID == IDExtension)
                     return ce;
             }
 
             if (mustBeFound)
-                throw new Exception($"Доп. сооружение {id} не найдено в {ID}.");
+                throw new Exception($"Доп. сооружение {IDExtension} не найдено в {ID}.");
 
             return null;
         }
+
+        internal DescriptorConstructionEvent FindConstructionEvent(string IDEvent, bool mustBeExists = true)
+        {
+            foreach (DescriptorConstructionEvent dce in Events)
+            {
+                if (dce.ID == IDEvent)
+                    return dce;
+            }
+
+            if (mustBeExists)
+                throw new Exception($"Мероприятие {IDEvent} не найдено в {ID}.");
+
+            return null;
+        }
+
     }
 }

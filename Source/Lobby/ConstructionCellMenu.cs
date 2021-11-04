@@ -310,7 +310,7 @@ namespace Fantasy_Kingdoms_Battle
         private ConstructionProduct cp;
         public CellMenuConstructionEvent(Construction c, DescriptorCellMenuForConstruction d) : base(c, d)
         {
-            ConstructionEvent = Config.FindConstructionEvent(d.NameEntity);
+            ConstructionEvent = d.Entity as DescriptorConstructionEvent;
         }
 
         internal DescriptorConstructionEvent ConstructionEvent { get; }
