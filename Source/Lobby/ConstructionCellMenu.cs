@@ -310,9 +310,6 @@ namespace Fantasy_Kingdoms_Battle
         private ConstructionProduct cp;
         public CellMenuConstructionEvent(Construction c, DescriptorCellMenuForConstruction d) : base(c, d)
         {
-            Debug.Assert(DaysProcessed > 0);
-            Debug.Assert(DaysProcessed <= 50);
-
             ConstructionEvent = d.Entity as DescriptorConstructionEvent;            
         }
 
