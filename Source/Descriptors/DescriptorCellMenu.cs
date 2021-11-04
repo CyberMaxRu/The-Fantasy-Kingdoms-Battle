@@ -143,7 +143,8 @@ namespace Fantasy_Kingdoms_Battle
         public DescriptorCellMenuForConstructionLevel(DescriptorConstruction forConstruction, int number, Point coord, XmlNode n) : base(forConstruction, coord, n)
         {
             Number = number;
-            Builders = GetIntegerNotNull(n, "Builders");
+            DaysBuilding = GetInteger(n, "DaysBuilding");
+            Builders = GetInteger(n, "Builders");
             MaxInhabitant = GetInteger(n, "MaxInhabitant");
             Capacity = GetInteger(n, "Capacity");
             GreatnessByConstruction = GetInteger(n, "GreatnessByConstruction");
@@ -162,6 +163,17 @@ namespace Fantasy_Kingdoms_Battle
             // Загружаем перки, которые дает сооружение
             ListPerks = new ListDescriptorPerks(n.SelectSingleNode("Perks"));
 
+            if ((forConstruction.Category == CategoryConstruction.Lair) || (forConstruction.Category == CategoryConstruction.Place))
+            {
+                //Debug.Assert(DaysBuilding == 0);
+                //Debug.Assert(Builders == 0);
+            }
+            else
+            {
+                //Debug.Assert(DaysBuilding >= 1, $"У {forConstruction.ID}.{number} DaysBuilding = 0.");
+                //Debug.Assert(Builders >= 0);
+            }
+
             Debug.Assert(Number >= 0);
             Debug.Assert(Number <= 5);
             Debug.Assert(MaxInhabitant >= 0);
@@ -171,9 +183,11 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(GreatnessByConstruction >= 0);
             Debug.Assert(GreatnessPerDay >= 0);
             Debug.Assert(BuildersPerDay >= 0);
+            Debug.Assert(DaysBuilding <= 50);
         }
 
         internal int Number { get; }
+        internal int DaysBuilding { get; }// Кол-во дней, которое строится
         internal int Builders { get; }
         internal int MaxInhabitant { get; }
         internal int Capacity { get; }

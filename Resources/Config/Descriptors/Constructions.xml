@@ -18,6 +18,7 @@
       <Level>
         <Number>1</Number>guil
         <Cost>550</Cost>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <Income>0</Income>
         <MaxInhabitant>10</MaxInhabitant>
@@ -25,6 +26,7 @@
       <Level>
         <Number>2</Number>
         <Cost>550</Cost>
+        <DaysBuilding>2</DaysBuilding>
         <Builders>1</Builders>
         <Income>0</Income>
         <MaxInhabitant>20</MaxInhabitant>
@@ -39,6 +41,7 @@
       <Level>
         <Number>3</Number>
         <Cost>550</Cost>
+        <DaysBuilding>3</DaysBuilding>
         <Builders>1</Builders>
         <Income>0</Income>
         <MaxInhabitant>30</MaxInhabitant>
@@ -111,12 +114,14 @@
         <Number>1</Number>
         <Cost>450</Cost>
         <Income>0</Income>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <MaxInhabitant>10</MaxInhabitant>
       </Level>
       <Level>
         <Number>2</Number>
         <Cost>450</Cost>
+        <DaysBuilding>2</DaysBuilding>
         <Builders>1</Builders>
         <Income>0</Income>
         <MaxInhabitant>20</MaxInhabitant>
@@ -131,7 +136,8 @@
       <Level>
         <Number>3</Number>
         <Cost>450</Cost>
-        <Builders>1</Builders>
+        <DaysBuilding>1</DaysBuilding>
+        <Builders>3</Builders>
         <Income>0</Income>
         <MaxInhabitant>30</MaxInhabitant>
       </Level>
@@ -202,6 +208,7 @@
       <Level>
         <Number>1</Number>
         <Cost>700</Cost>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <Income>0</Income>
         <MaxInhabitant>10</MaxInhabitant>
@@ -209,6 +216,7 @@
       <Level>
         <Number>2</Number>
         <Cost>700</Cost>
+        <DaysBuilding>2</DaysBuilding>
         <Builders>1</Builders>
         <Income>0</Income>
         <MaxInhabitant>20</MaxInhabitant>
@@ -223,6 +231,7 @@
       <Level>
         <Number>3</Number>
         <Cost>700</Cost>
+        <DaysBuilding>3</DaysBuilding>
         <Builders>1</Builders>
         <Income>0</Income>
         <MaxInhabitant>30</MaxInhabitant>
@@ -294,6 +303,7 @@
       <Level>
         <Number>1</Number>
         <Cost>1000</Cost>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>0</Builders>
         <Income>0</Income>
         <MaxInhabitant>10</MaxInhabitant>
@@ -308,6 +318,7 @@
       <Level>
         <Number>2</Number>
         <Cost>1000</Cost>
+        <DaysBuilding>2</DaysBuilding>
         <Builders>0</Builders>
         <Income>0</Income>
         <MaxInhabitant>20</MaxInhabitant>
@@ -327,6 +338,7 @@
       <Level>
         <Number>3</Number>
         <Cost>1000</Cost>
+        <DaysBuilding>3</DaysBuilding>
         <Builders>0</Builders>
         <Income>0</Income>
         <MaxInhabitant>30</MaxInhabitant>
@@ -345,6 +357,7 @@
         <Name>Библиотека</Name>
         <Description>Пристроить библиотеку. Повышает ум и знания героев.</Description>
         <ImageIndex>254</ImageIndex>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <AvailableForAll>true</AvailableForAll>
       </Extension>
@@ -434,6 +447,7 @@
       <Level>
         <Number>1</Number>
         <Cost>2500</Cost>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <Income>0</Income>
         <MaxInhabitant>10</MaxInhabitant>
@@ -448,6 +462,7 @@
       <Level>
         <Number>2</Number>
         <Cost>2500</Cost>
+        <DaysBuilding>3</DaysBuilding>
         <Builders>1</Builders>
         <Income>0</Income>
         <MaxInhabitant>20</MaxInhabitant>
@@ -467,6 +482,7 @@
       <Level>
         <Number>3</Number>
         <Cost>2500</Cost>
+        <DaysBuilding>3</DaysBuilding>
         <Builders>1</Builders>
         <Income>0</Income>
         <MaxInhabitant>30</MaxInhabitant>
@@ -569,6 +585,7 @@
       <Level>
         <Number>1</Number>
         <Cost>2000</Cost>
+        <DaysBuilding>2</DaysBuilding>
         <Builders>1</Builders>
         <Income>0</Income>
         <BuildersPerDay>1</BuildersPerDay>
@@ -584,6 +601,7 @@
       <Level>
         <Number>2</Number>
         <Cost>2000</Cost>
+        <DaysBuilding>3</DaysBuilding>
         <Builders>1</Builders>
         <Income>0</Income>
         <BuildersPerDay>1</BuildersPerDay>
@@ -604,6 +622,7 @@
       <Level>
         <Number>3</Number>
         <Cost>2500</Cost>
+        <DaysBuilding>4</DaysBuilding>
         <Builders>1</Builders>
         <Income>0</Income>
         <BuildersPerDay>1</BuildersPerDay>
@@ -628,6 +647,7 @@
         <Name>Кузница гномов</Name>
         <Description>Пристроить гномью кузницу. Позволяет гномам создавать именные предметы.</Description>
         <ImageIndex>226</ImageIndex>
+        <DaysBuilding>2</DaysBuilding>
         <Builders>1</Builders>
         <AvailableForAll>true</AvailableForAll>
       </Extension>
@@ -729,6 +749,7 @@
       <Level>
         <Number>1</Number>
         <Cost>450</Cost>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <Income>0</Income>
         <MaxInhabitant>10</MaxInhabitant>
@@ -736,6 +757,7 @@
       <Level>
         <Number>2</Number>
         <Cost>450</Cost>
+        <DaysBuilding>2</DaysBuilding>
         <Builders>1</Builders>
         <Income>0</Income>
         <MaxInhabitant>20</MaxInhabitant>
@@ -750,6 +772,7 @@
       <Level>
         <Number>3</Number>
         <Cost>450</Cost>
+        <DaysBuilding>3</DaysBuilding>
         <Builders>1</Builders>
         <Income>0</Income>
         <MaxInhabitant>30</MaxInhabitant>
@@ -774,6 +797,7 @@
       <Level>
         <Number>1</Number>
         <Cost>450</Cost>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <Income>0</Income>
         <MaxInhabitant>10</MaxInhabitant>
@@ -788,6 +812,7 @@
       <Level>
         <Number>2</Number>
         <Cost>450</Cost>
+        <DaysBuilding>2</DaysBuilding>
         <Builders>1</Builders>
         <Income>0</Income>
         <MaxInhabitant>20</MaxInhabitant>
@@ -802,6 +827,7 @@
       <Level>
         <Number>3</Number>
         <Cost>450</Cost>
+        <DaysBuilding>3</DaysBuilding>
         <Builders>1</Builders>
         <Income>0</Income>
         <MaxInhabitant>30</MaxInhabitant>
@@ -879,6 +905,7 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>0</Builders>
         <Income>1000</Income>
         <GreatnessByConstruction>0</GreatnessByConstruction>
@@ -892,6 +919,7 @@
       <Level>
         <Number>2</Number>
         <Cost>2000</Cost>
+        <DaysBuilding>3</DaysBuilding>
         <Builders>2</Builders>
         <Income>1500</Income>
         <GreatnessByConstruction>250</GreatnessByConstruction>
@@ -927,6 +955,7 @@
       <Level>
         <Number>3</Number>
         <Cost>4000</Cost>
+        <DaysBuilding>5</DaysBuilding>
         <Builders>3</Builders>
         <Income>2000</Income>
         <GreatnessByConstruction>500</GreatnessByConstruction>
@@ -966,6 +995,7 @@
         <Name>Трон</Name>
         <Description>Трон покажет величие Короля</Description>
         <ImageIndex>260</ImageIndex>
+        <DaysBuilding>2</DaysBuilding>
         <Builders>1</Builders>
         <AvailableForAll>true</AvailableForAll>
       </Extension>
@@ -1023,6 +1053,7 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>0</Builders>
         <Income>50</Income>
         <Requirements>
@@ -1045,6 +1076,7 @@
         <Description>На поле растет пшеница - основной источник еды в Ардании.</Description>
         <ImageIndex>262</ImageIndex>
         <Construction>PeasantHouse</Construction>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <AvailableForAll>true</AvailableForAll>
       </Extension>
@@ -1066,6 +1098,7 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
+        <DaysBuilding>2</DaysBuilding>
         <Builders>1</Builders>
         <Income>250</Income>
         <Requirements>
@@ -1094,6 +1127,7 @@
       <Level>
         <Number>1</Number>
         <Cost>250</Cost>
+        <DaysBuilding>3</DaysBuilding>
         <Builders>1</Builders>
         <Income>100</Income>
         <Requirements>
@@ -1123,12 +1157,14 @@
       <Level>
         <Number>1</Number>
         <Cost>500</Cost>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <Income>175</Income>
       </Level>
       <Level>
         <Number>2</Number>
         <Cost>1500</Cost>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <Income>300</Income>
         <Requirements>
@@ -1142,6 +1178,7 @@
       <Level>
         <Number>3</Number>
         <Cost>3000</Cost>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <Income>525</Income>
         <Requirements>
@@ -1236,12 +1273,14 @@
       <Level>
         <Number>1</Number>
         <Cost>500</Cost>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <Income>50</Income>
       </Level>
       <Level>
         <Number>2</Number>
         <Cost>1000</Cost>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <Income>50</Income>
         <Requirements>
@@ -1256,6 +1295,7 @@
         <Number>3</Number>
         <Cost>2000</Cost>
         <Income>50</Income>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <Requirements>
           <Requirement>
@@ -1471,6 +1511,7 @@
       <Level>
         <Number>1</Number>
         <Cost>250</Cost>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <Income>0</Income>
         <Visit>
@@ -1488,6 +1529,7 @@
       <Level>
         <Number>2</Number>
         <Cost>1000</Cost>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <Income>0</Income>
         <Requirements>
@@ -1512,6 +1554,7 @@
       <Level>
         <Number>3</Number>
         <Cost>1500</Cost>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <Income>0</Income>
         <Requirements>
@@ -1614,6 +1657,7 @@
       <Level>
         <Number>1</Number>
         <Cost>1500</Cost>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>0</Builders>
         <Income>150</Income>
         <Requirements>
@@ -1627,6 +1671,7 @@
       <Level>
         <Number>2</Number>
         <Cost>2500</Cost>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>0</Builders>
         <Income>250</Income>
         <Requirements>
@@ -1640,6 +1685,7 @@
       <Level>
         <Number>3</Number>
         <Cost>2500</Cost>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>0</Builders>
         <Income>350</Income>
         <Requirements>
@@ -1857,18 +1903,21 @@
       <Level>
         <Number>1</Number>
         <Cost>1500</Cost>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <Income>200</Income>
       </Level>
       <Level>
         <Number>2</Number>
         <Cost>2000</Cost>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <Income>300</Income>
       </Level>
       <Level>
         <Number>3</Number>
         <Cost>2500</Cost>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <Income>500</Income>
       </Level>
@@ -1989,6 +2038,7 @@
       <Level>
         <Number>1</Number>
         <Cost>500</Cost>
+        <DaysBuilding>3</DaysBuilding>
         <Builders>1</Builders>
         <Income>0</Income>
         <Visit>
@@ -2006,6 +2056,7 @@
       <Level>
         <Number>2</Number>
         <Cost>1000</Cost>
+        <DaysBuilding>4</DaysBuilding>
         <Builders>1</Builders>
         <Income>0</Income>
         <Visit>
@@ -2023,6 +2074,7 @@
       <Level>
         <Number>3</Number>
         <Cost>1500</Cost>
+        <DaysBuilding>6</DaysBuilding>
         <Builders>1</Builders>
         <Income>0</Income>
         <Visit>
@@ -2045,6 +2097,7 @@
         <Description>Беседки увеличат популярность {Парка}</Description>
         <ImageIndex>215</ImageIndex>
         <Cost>500</Cost>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <Interest>5</Interest>
         <AvailableForAll>true</AvailableForAll>
@@ -2057,6 +2110,7 @@
         <Name>Водопад</Name>
         <Description>Водопад увеличит популярность {Парка}</Description>
         <ImageIndex>246</ImageIndex>
+        <DaysBuilding>2</DaysBuilding>
         <Builders>1</Builders>
         <Interest>5</Interest>
         <AvailableForAll>true</AvailableForAll>
@@ -2070,6 +2124,7 @@
         <Name>Аллея</Name>
         <Description>Аллея увеличит популярность {Парка}</Description>
         <ImageIndex>214</ImageIndex>
+        <DaysBuilding>2</DaysBuilding>
         <Builders>1</Builders>
         <Interest>20</Interest>
         <AvailableForAll>true</AvailableForAll>
@@ -2083,6 +2138,7 @@
         <Name>Лабиринт</Name>
         <Description>Лабиринт увеличит популярность {Парка} и отдых героев</Description>
         <ImageIndex>255</ImageIndex>
+        <DaysBuilding>2</DaysBuilding>
         <Builders>1</Builders>
         <Interest>20</Interest>
         <AvailableForAll>true</AvailableForAll>
@@ -2096,6 +2152,7 @@
         <Name>Пруд</Name>
         <Description>Пруд увеличит популярность {Парка} и отдых героев</Description>
         <ImageIndex>256</ImageIndex>
+        <DaysBuilding>3</DaysBuilding>
         <Builders>1</Builders>
         <Interest>20</Interest>
         <AvailableForAll>true</AvailableForAll>
@@ -2188,6 +2245,7 @@
       <Level>
         <Number>1</Number>
         <Cost>500</Cost>
+        <DaysBuilding>2</DaysBuilding>
         <Builders>1</Builders>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
@@ -2207,6 +2265,7 @@
       <Level>
         <Number>2</Number>
         <Cost>1000</Cost>
+        <DaysBuilding>2</DaysBuilding>
         <Builders>1</Builders>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
@@ -2233,6 +2292,7 @@
       <Level>
         <Number>3</Number>
         <Cost>2000</Cost>
+        <DaysBuilding>2</DaysBuilding>
         <Builders>1</Builders>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
@@ -2263,6 +2323,7 @@
         <Name>Мощение</Name>
         <Description>Мощение плиткой увеличит популярность {Площади}</Description>
         <ImageIndex>247</ImageIndex>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <Interest>5</Interest>
         <Needs>
@@ -2275,6 +2336,7 @@
         <Name>Фонтан</Name>
         <Description>Фонтан увеличит популярность {Площади}</Description>
         <ImageIndex>213</ImageIndex>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <Interest>10</Interest>
         <Needs>
@@ -2287,6 +2349,7 @@
         <Name>Статуя Короля</Name>
         <Description>Статуя Короля обозначит Королевский статус {Площади}</Description>
         <ImageIndex>231</ImageIndex>
+        <DaysBuilding>2</DaysBuilding>
         <Builders>1</Builders>
         <Interest>15</Interest>
         <Needs>
@@ -2373,6 +2436,7 @@
       <Level>
         <Number>1</Number>
         <Cost>500</Cost>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
@@ -2381,6 +2445,7 @@
       <Level>
         <Number>2</Number>
         <Cost>500</Cost>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <Income>0</Income>
         <GreatnessByConstruction>200</GreatnessByConstruction>
@@ -2405,6 +2470,7 @@
       <Level>
         <Number>1</Number>
         <Cost>500</Cost>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
@@ -2413,6 +2479,7 @@
       <Level>
         <Number>2</Number>
         <Cost>500</Cost>
+        <DaysBuilding>2</DaysBuilding>
         <Builders>1</Builders>
         <Income>0</Income>
         <GreatnessByConstruction>200</GreatnessByConstruction>
@@ -2437,6 +2504,7 @@
       <Level>
         <Number>1</Number>
         <Cost>1000</Cost>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <Income>0</Income>
         <Visit>
@@ -2453,6 +2521,7 @@
       <Level>
         <Number>2</Number>
         <Cost>1500</Cost>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <Income>0</Income>
         <Visit>
@@ -2469,6 +2538,7 @@
       <Level>
         <Number>3</Number>
         <Cost>2000</Cost>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <Income>0</Income>
         <Visit>
@@ -2535,18 +2605,21 @@
       <Level>
         <Number>1</Number>
         <Cost>1500</Cost>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <Income>0</Income>
       </Level>
       <Level>
         <Number>2</Number>
         <Cost>3000</Cost>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <Income>0</Income>
       </Level>
       <Level>
         <Number>3</Number>
         <Cost>5000</Cost>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <Income>0</Income>
       </Level>
@@ -2608,6 +2681,7 @@
       <Level>
         <Number>1</Number>
         <Cost>1000</Cost>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <Income>0</Income>
         <MaxInhabitant>1</MaxInhabitant>
@@ -2615,6 +2689,7 @@
       <Level>
         <Number>2</Number>
         <Cost>2500</Cost>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <Income>0</Income>
         <MaxInhabitant>1</MaxInhabitant>
@@ -2653,6 +2728,7 @@
       <Level>
         <Number>1</Number>
         <Cost>500</Cost>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <Income>50</Income>
         <Visit>
@@ -2670,6 +2746,7 @@
       <Level>
         <Number>2</Number>
         <Cost>500</Cost>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <Income>100</Income>
         <Visit>
@@ -2687,6 +2764,7 @@
       <Level>
         <Number>3</Number>
         <Cost>500</Cost>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <Income>150</Income>
         <Visit>
@@ -2708,6 +2786,7 @@
         <Name>Цветники</Name>
         <Description>Цветники увеличит популярность {Сада}</Description>
         <ImageIndex>257</ImageIndex>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <Interest>20</Interest>
         <AvailableForAll>true</AvailableForAll>
@@ -2721,6 +2800,7 @@
         <Name>Фруктовые деревья</Name>
         <Description>Увеличат популярность {Сада}</Description>
         <ImageIndex>258</ImageIndex>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <Interest>20</Interest>
         <AvailableForAll>true</AvailableForAll>
@@ -2734,6 +2814,7 @@
         <Name>Оранжерея</Name>
         <Description>Увеличит популярность {Сада}</Description>
         <ImageIndex>259</ImageIndex>
+        <DaysBuilding>3</DaysBuilding>
         <Builders>1</Builders>
         <Interest>20</Interest>
         <AvailableForAll>true</AvailableForAll>
@@ -2828,6 +2909,7 @@
       <Level>
         <Number>1</Number>
         <Cost>3000</Cost>
+        <DaysBuilding>5</DaysBuilding>
         <Builders>3</Builders>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
@@ -2867,6 +2949,7 @@
       <Level>
         <Number>1</Number>
         <Cost>3000</Cost>
+        <DaysBuilding>5</DaysBuilding>
         <Builders>3</Builders>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
@@ -2906,6 +2989,7 @@
       <Level>
         <Number>1</Number>
         <Cost>3000</Cost>
+        <DaysBuilding>5</DaysBuilding>
         <Builders>3</Builders>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
@@ -2945,6 +3029,7 @@
       <Level>
         <Number>1</Number>
         <Cost>3000</Cost>
+        <DaysBuilding>5</DaysBuilding>
         <Builders>3</Builders>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
@@ -2984,6 +3069,7 @@
       <Level>
         <Number>1</Number>
         <Cost>3000</Cost>
+        <DaysBuilding>5</DaysBuilding>
         <Builders>3</Builders>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
@@ -3023,6 +3109,7 @@
       <Level>
         <Number>1</Number>
         <Cost>3000</Cost>
+        <DaysBuilding>5</DaysBuilding>
         <Builders>3</Builders>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
@@ -3062,6 +3149,7 @@
       <Level>
         <Number>1</Number>
         <Cost>3000</Cost>
+        <DaysBuilding>5</DaysBuilding>
         <Builders>3</Builders>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
@@ -3101,6 +3189,7 @@
       <Level>
         <Number>1</Number>
         <Cost>3000</Cost>
+        <DaysBuilding>5</DaysBuilding>
         <Builders>3</Builders>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
@@ -3140,6 +3229,7 @@
       <Level>
         <Number>1</Number>
         <Cost>3000</Cost>
+        <DaysBuilding>5</DaysBuilding>
         <Builders>3</Builders>
         <Income>0</Income>
         <GreatnessByConstruction>100</GreatnessByConstruction>
@@ -3173,7 +3263,6 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -3206,7 +3295,6 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -3247,7 +3335,6 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -3288,7 +3375,6 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -3321,7 +3407,6 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -3362,7 +3447,6 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -3395,7 +3479,6 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -3436,7 +3519,6 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -3469,7 +3551,6 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -3510,7 +3591,6 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -3543,7 +3623,6 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -3576,7 +3655,6 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -3609,7 +3687,6 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -3642,7 +3719,6 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -3664,7 +3740,6 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -3697,7 +3772,6 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -3732,7 +3806,6 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
         <Income>0</Income>
       </Level>
     </Levels>
@@ -3797,7 +3870,6 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -3822,12 +3894,14 @@
       <Level>
         <Number>1</Number>
         <Cost>250</Cost>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <Income>0</Income>
       </Level>
       <Level>
         <Number>2</Number>
         <Cost>1000</Cost>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <Income>0</Income>
         <Requirements>
@@ -3841,6 +3915,7 @@
       <Level>
         <Number>3</Number>
         <Cost>1500</Cost>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <Income>0</Income>
         <Requirements>
@@ -3945,6 +4020,7 @@
       <Level>
         <Number>1</Number>
         <Cost>1000</Cost>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <Income>250</Income>
         <Visit>
@@ -3962,6 +4038,7 @@
       <Level>
         <Number>2</Number>
         <Cost>2000</Cost>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <Income>500</Income>
         <Requirements>
@@ -3986,6 +4063,7 @@
       <Level>
         <Number>3</Number>
         <Cost>3000</Cost>
+        <DaysBuilding>1</DaysBuilding>
         <Builders>1</Builders>
         <Income>750</Income>
         <Requirements>
@@ -4080,7 +4158,6 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4101,7 +4178,8 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
+        <DaysBuilding>2</DaysBuilding>
+        <Builders>1</Builders>
         <Income>100</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4122,7 +4200,8 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
+        <DaysBuilding>3</DaysBuilding>
+        <Builders>1</Builders>
         <Income>100</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4143,7 +4222,8 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
+        <DaysBuilding>4</DaysBuilding>
+        <Builders>1</Builders>
         <Income>100</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4164,6 +4244,7 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
+        <DaysBuilding>3</DaysBuilding>
         <Builders>3</Builders>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
@@ -4185,7 +4266,6 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4206,7 +4286,6 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4227,7 +4306,6 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4248,7 +4326,6 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
         <Visit>
@@ -4280,7 +4357,6 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4301,7 +4377,6 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
         <Visit>
@@ -4336,7 +4411,6 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4357,7 +4431,6 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4378,7 +4451,6 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4399,7 +4471,6 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4420,7 +4491,6 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4441,7 +4511,6 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4462,7 +4531,6 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4483,7 +4551,6 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4504,7 +4571,6 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4525,7 +4591,6 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4546,7 +4611,6 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4567,7 +4631,6 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4588,7 +4651,6 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4609,7 +4671,8 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
+        <DaysBuilding>5</DaysBuilding>
+        <Builders>1</Builders>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4630,7 +4693,8 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
+        <DaysBuilding>3</DaysBuilding>
+        <Builders>1</Builders>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4649,7 +4713,6 @@
       <Level>
         <Number>1</Number>
         <Cost>0</Cost>
-        <Builders>0</Builders>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
