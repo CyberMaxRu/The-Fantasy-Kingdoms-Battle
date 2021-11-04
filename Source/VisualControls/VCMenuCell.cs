@@ -124,7 +124,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Visible && (ImageIndex != -1))
             {
-                if (research.CheckRequirements())
+                if (research.CheckRequirements() && (research.DaysProcessed == 0))
                 {
                     if (MouseClicked && MouseOver)
                         g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage((int)MenuCellFilter.Press, true, false), Left, Top);

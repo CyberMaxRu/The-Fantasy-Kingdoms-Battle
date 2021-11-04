@@ -117,8 +117,11 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
             {
-                Program.formMain.PlayPushButton();
-                Construction.RemoveEntityFromQueueProcessing(this);
+                if (DaysProcessed == 0)
+                {
+                    Program.formMain.PlayPushButton();
+                    Construction.RemoveEntityFromQueueProcessing(this);
+                }
             }
 
         }
