@@ -12,7 +12,6 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <GoldByConstruction>500</GoldByConstruction>
-    <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>guild_warrior_select.wav</SoundSelect>
     <Levels>
       <Level>
@@ -111,7 +110,6 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
-    <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>guild_hunter_select.wav</SoundSelect>
     <Levels>
       <Level>
@@ -210,7 +208,6 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
-    <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>guild_cleric_select.wav</SoundSelect>
     <Levels>
       <Level>
@@ -309,7 +306,6 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
-    <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>guild_magic_select.wav</SoundSelect>
     <Levels>
       <Level>
@@ -457,7 +453,6 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
-    <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>guild_elves_select.wav</SoundSelect>
     <Levels>
       <Level>
@@ -601,7 +596,6 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
-    <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>guild_dwarf_select.wav</SoundSelect>
     <Levels>
       <Level>
@@ -769,7 +763,6 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
-    <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>guild_rogue_select.wav</SoundSelect>
     <Levels>
       <Level>
@@ -817,7 +810,6 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
-    <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>guild_rogue_select.wav</SoundSelect>
     <Levels>
       <Level>
@@ -930,7 +922,6 @@
     <DefaultLevel>1</DefaultLevel>
     <MaxLevel>3</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
-    <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>castle_select.wav</SoundSelect>
     <Levels>
       <Level>
@@ -1179,7 +1170,6 @@
     <Pos>1,1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
-    <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>marketplace_select.wav</SoundSelect>
     <Levels>
       <Level>
@@ -1324,7 +1314,6 @@
     <Pos>3,1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
-    <ResearchesPerDay>2</ResearchesPerDay>
     <SoundSelect>smithy_select.wav</SoundSelect>
     <Levels>
       <Level>
@@ -1578,7 +1567,6 @@
     <Pos>1,3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
-    <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>tavern_select.wav</SoundSelect>
     <Levels>
       <Level>
@@ -1749,7 +1737,6 @@
     <Pos>4,1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
-    <ResearchesPerDay>2</ResearchesPerDay>
     <SoundSelect>magic_bazaar2_select.wav</SoundSelect>
     <Levels>
       <Level>
@@ -2012,7 +1999,6 @@
     <Pos>2,1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
-    <ResearchesPerDay>2</ResearchesPerDay>
     <SoundSelect>magic_bazaar_select.wav</SoundSelect>
     <Levels>
       <Level>
@@ -2156,7 +2142,6 @@
     <Pos>3,3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
-    <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>library_select.wav</SoundSelect>
     <Levels>
       <Level>
@@ -2358,7 +2343,6 @@
     <Pos>2,1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
-    <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>statue_select.wav</SoundSelect>
     <Levels>
       <Level>
@@ -2548,7 +2532,6 @@
     <Pos>3,1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>2</MaxLevel>
-    <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>statue_select.wav</SoundSelect>
     <Levels>
       <Level>
@@ -2582,7 +2565,6 @@
     <Pos>4,1</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>2</MaxLevel>
-    <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>statue_select.wav</SoundSelect>
     <Levels>
       <Level>
@@ -2616,7 +2598,6 @@
     <Pos>1,2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
-    <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>training_hall_select.wav</SoundSelect>
     <Levels>
       <Level>
@@ -2720,7 +2701,6 @@
     <Pos>3,2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
-    <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>hospital_select.wav</SoundSelect>
     <Levels>
       <Level>
@@ -2815,7 +2795,6 @@
     <Pos>4,2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>2</MaxLevel>
-    <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>arena_select.wav</SoundSelect>
     <Levels>
       <Level>
@@ -2862,7 +2841,6 @@
     <Pos>2,3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
-    <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>garden_select.wav</SoundSelect>
     <Levels>
       <Level>
@@ -3083,7 +3061,6 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
-    <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>guild_darkpriestess_select.wav</SoundSelect>
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
@@ -3123,7 +3100,6 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
-    <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>guild_priestess_select.wav</SoundSelect>
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
@@ -3163,7 +3139,6 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
-    <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>guild_paladin_select.wav</SoundSelect>
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
@@ -3203,7 +3178,6 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
-    <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>temple_blademaster_select.wav</SoundSelect>
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
@@ -3243,7 +3217,6 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
-    <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>guild_beastmaster_select.wav</SoundSelect>
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
@@ -3283,7 +3256,6 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
-    <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>guild_marksman_select.wav</SoundSelect>
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
@@ -3323,7 +3295,6 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
-    <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>guild_ice_mage_select.wav</SoundSelect>
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
@@ -3363,7 +3334,6 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
-    <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>guild_deathknight_select.wav</SoundSelect>
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
@@ -3403,7 +3373,6 @@
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>1</MaxLevel>
     <GoldByConstruction>0</GoldByConstruction>
-    <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>guild_fire_mage_select.wav</SoundSelect>
     <TypePlaceForConstruct>HolyPlace</TypePlaceForConstruct>
     <Levels>
@@ -3993,7 +3962,7 @@
     <CellsMenu>
       <CellMenu>
         <Pos>4,2</Pos>
-        <Type>п</Type>
+        <Type>Build</Type>
         <Entity>GuildDarkPriest</Entity>
       </CellMenu>
       <CellMenu>
@@ -4069,7 +4038,6 @@
     <Pos>2,2</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
-    <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>menagerie_select.wav</SoundSelect>
     <Levels>
       <Level>
@@ -4199,7 +4167,6 @@
     <Pos>4,3</Pos>
     <DefaultLevel>0</DefaultLevel>
     <MaxLevel>3</MaxLevel>
-    <ResearchesPerDay>1</ResearchesPerDay>
     <SoundSelect>gambling_hall_select.wav</SoundSelect>
     <Levels>
       <Level>

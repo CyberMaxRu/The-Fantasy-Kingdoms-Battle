@@ -172,24 +172,12 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override string GetLevel() => Program.formMain.Settings.ShowTypeCellMenu ? "и" : "";
 
-        internal override bool CheckRequirements()
-        {
-            return Construction.CanResearch() && base.CheckRequirements();
-        }
-
         internal override void Execute()
         {
             Debug.Assert(CheckRequirements());
 
             Construction.Player.SpendGold(GetCost());
             RemoveSelf();
-
-            Debug.Assert((Construction.ResearchesAvailabled > 0) || (Construction.Player.ExtraResearch > 0));
-
-            if (Construction.ResearchesAvailabled > 0)
-                Construction.ResearchesAvailabled--;
-            else
-                Construction.Player.UseExtraResearch();
 
             ConstructionProduct cp;
             if (Entity is DescriptorItem di)
@@ -199,7 +187,7 @@ namespace Fantasy_Kingdoms_Battle
             else if (Entity is DescriptorGroupItems dgi)
                 cp = new ConstructionProduct(Construction, dgi);
             else
-                throw new Exception("неизвестный тип");
+                throw new Exception("Неизвестный тип");
 
             Construction.AddProduct(cp);
             Construction.Player.AddEventForPlayer(cp, TypeEventForPlayer.Research);

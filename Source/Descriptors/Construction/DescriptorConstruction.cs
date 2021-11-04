@@ -51,15 +51,6 @@ namespace Fantasy_Kingdoms_Battle
                 DefaultLevel = GetIntegerNotNull(n, "DefaultLevel");
                 MaxLevel = GetIntegerNotNull(n, "MaxLevel");
                 PlayerCanBuild = GetBoolean(n, "PlayerCanBuild", true);
-
-                if (IsInternalConstruction)
-                {
-                    ResearchesPerDay = GetIntegerNotNull(n, "ResearchesPerDay");
-                }
-                else
-                {
-                    XmlFieldNotExist(n, "ResearchesPerDay");
-                }
             }
             else
             {
@@ -71,7 +62,6 @@ namespace Fantasy_Kingdoms_Battle
                     XmlFieldNotExist(n, "DefaultLevel");
                     XmlFieldNotExist(n, "MaxLevel");
                 }
-                XmlFieldNotExist(n, "ResearchesPerDay");
                 XmlFieldNotExist(n, "PlayerCanBuild");
                 XmlFieldNotExist(n, "LayersCellMenu");
             }
@@ -226,8 +216,6 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(MaxLevel > 0);
                 Debug.Assert(MaxLevel <= 10);
                 Debug.Assert(DefaultLevel <= MaxLevel);
-                Debug.Assert(ResearchesPerDay > 0);
-                Debug.Assert(ResearchesPerDay <= 10);
 
                 if (Category != CategoryConstruction.Temple)
                 {
@@ -289,7 +277,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int DefaultLevel { get; }// Уровень сооружения по умолчанию
         internal int MaxLevel { get; }// Максимальный уровень сооружения
         internal bool PlayerCanBuild { get; }// Игрок может строить сооружение
-        internal int ResearchesPerDay { get; }// Количество исследований в сооружении в день
         internal bool HasTreasury { get; }// Имеет собственную казну (Замок, гильдии, храмы)
         internal int GoldByConstruction { get; }// Количество золота в казне при постройке
         internal List<DescriptorConstructionExtension> Extensions { get; } = new List<DescriptorConstructionExtension>();

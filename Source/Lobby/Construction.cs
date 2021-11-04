@@ -100,7 +100,6 @@ namespace Fantasy_Kingdoms_Battle
 
         // 
         internal List<ConstructionCellMenu> ListQueueProcessing { get; } = new List<ConstructionCellMenu>();// Очередь обработки ячеек меню
-        internal int ResearchesAvailabled { get; set; }// Сколько еще исследований доступно на этом ходу
         internal List<ConstructionProduct> AllProducts { get; } = new List<ConstructionProduct>();// Все сущности в сооружении
         internal List<ConstructionProduct> Visits { get; } = new List<ConstructionProduct>();// Посещения, события, турниры
         internal List<ConstructionProduct> Extensions { get; } = new List<ConstructionProduct>();// Дополнения
@@ -574,7 +573,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(Level > 0);
 
-            ResearchesAvailabled = TypeConstruction.ResearchesPerDay;
             BuildedOrUpgraded = false;
 
             if (Lobby.Day > 1)
@@ -640,11 +638,6 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal bool CanResearch()
-        {
-            return (ResearchesAvailabled > 0) || (Player.ExtraResearch > 0);
-        }
-
         internal List<TextRequirement> GetResearchTextRequirements(ConstructionCellMenu research)
         {
             List<TextRequirement> list = new List<TextRequirement>();
@@ -657,15 +650,6 @@ namespace Fantasy_Kingdoms_Battle
                     list.Add(new TextRequirement(false, "Сооружение не построено"));
 
                 Player.TextRequirements(research.Descriptor.Requirements, list);
-
-                if ((Level > 0) && (research is CellMenuConstructionResearch))
-                {
-                    if (ResearchesAvailabled > 0)
-                        list.Add(new TextRequirement(true, $"Доступно к изучению: {ResearchesAvailabled}"));
-                    else
-                        list.Add(new TextRequirement(false, "Больше нельзя изучить в этот день"));
-                }
-
             }
 
             return list;
