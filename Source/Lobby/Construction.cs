@@ -77,7 +77,6 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorConstruction TypeConstruction { get; }
         internal int Level { get; private set; }
         internal int DaysBuilded { get; private set; }// Сколько дней строится сооружение
-        internal bool BuildedOrUpgraded { get; set; }
         internal int Gold { get => gold; set { Debug.Assert(TypeConstruction.HasTreasury); gold = value; } }
         internal List<Hero> Heroes { get; } = new List<Hero>();
         internal Player Player { get; }
@@ -117,7 +116,6 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(Level < TypeConstruction.MaxLevel);
                 Debug.Assert(CheckRequirements());
                 Debug.Assert(Player.Gold >= CostBuyOrUpgrade());
-                Debug.Assert(!BuildedOrUpgraded);
 
                 Player.Constructed(this);
 
@@ -149,15 +147,6 @@ namespace Fantasy_Kingdoms_Battle
 
             if ((TypeConstruction.Category != CategoryConstruction.Lair) && (TypeConstruction.Category != CategoryConstruction.ElementLandscape))
             {
-
-                if (!Player.Initialization)
-                {
-                    if (!BuildedOrUpgraded)
-                        BuildedOrUpgraded = true;
-                    else
-                        Player.UseExtraLevelUp();
-                }
-
                 // Убираем операцию постройки из меню
                 ConstructionCellMenu cmBuild = null;
                 foreach (ConstructionCellMenu cm in Researches)
@@ -309,10 +298,6 @@ namespace Fantasy_Kingdoms_Battle
             if (!Player.CheckRequireBuilders(TypeConstruction.Levels[Level + 1].Builders))
                 return false;
 
-            // Проверяем, что на этом ходу сооружение не строили/улучшали
-            if (BuildedOrUpgraded && (Player.ExtraLevelUp == 0))
-                return false;
-
             // Проверяем, что нет события или турнира
             foreach (ConstructionProduct cp in Visits)
             {
@@ -329,9 +314,6 @@ namespace Fantasy_Kingdoms_Battle
             List<TextRequirement> list = new List<TextRequirement>();
 
             Player.TextRequirements(TypeConstruction.Levels[level].Requirements, list);
-
-            if (BuildedOrUpgraded && (Player.ExtraLevelUp == 0))
-                list.Add(new TextRequirement(false, "Сооружение уже строили/улучшали в этот день"));
 
             foreach (ConstructionProduct cp in Visits)
             {
@@ -572,8 +554,6 @@ namespace Fantasy_Kingdoms_Battle
         internal void PrepareTurn()
         {
             Debug.Assert(Level > 0);
-
-            BuildedOrUpgraded = false;
 
             if (Lobby.Day > 1)
             {

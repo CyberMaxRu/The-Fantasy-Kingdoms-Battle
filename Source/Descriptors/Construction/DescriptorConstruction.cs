@@ -232,7 +232,6 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(DefaultLevel <= 5);
                 //Debug.Assert(MaxLevel == 1);
                 Debug.Assert(DefaultLevel <= MaxLevel);
-                //Debug.Assert(ResearchesPerDay == 0);
 
                 if (Category == CategoryConstruction.External)
                 {

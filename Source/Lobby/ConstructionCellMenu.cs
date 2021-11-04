@@ -345,7 +345,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override bool CheckRequirements()
         {
-            return (cp is null) && (Cooldown == 0) && base.CheckRequirements() && (!Construction.BuildedOrUpgraded) && (Construction.CurrentVisit.DescriptorConstructionVisit != null);
+            return (cp is null) && (Cooldown == 0) && base.CheckRequirements() && (Construction.CurrentVisit.DescriptorConstructionVisit != null);
         }
 
         internal override List<TextRequirement> GetTextRequirements()
@@ -354,8 +354,8 @@ namespace Fantasy_Kingdoms_Battle
 
             List<TextRequirement> list = base.GetTextRequirements();
             if (Construction.Level > 1)
-                list.Add(new TextRequirement((cp is null) && (Cooldown == 0) && (!Construction.BuildedOrUpgraded) && (Construction.CurrentVisit?.DescriptorConstructionVisit != null), (cp is null) && (Cooldown == 0) && (!Construction.BuildedOrUpgraded) && (Construction.CurrentVisit?.DescriptorConstructionVisit != null)
-                    ? "Событие можно проводить" : Construction.CurrentVisit?.DescriptorConstructionVisit == null ? "В сооружении уже идет другое событие" : Construction.BuildedOrUpgraded ? "Сооружение строили/улучшали в этот день" : cp != null ? $"Событие будет идти еще {cp.Counter} дн." : $"Осталось подождать дней: {Cooldown}"));
+                list.Add(new TextRequirement((cp is null) && (Cooldown == 0) && (Construction.CurrentVisit?.DescriptorConstructionVisit != null), (cp is null) && (Cooldown == 0) && (Construction.CurrentVisit?.DescriptorConstructionVisit != null)
+                    ? "Событие можно проводить" : Construction.CurrentVisit?.DescriptorConstructionVisit == null ? "В сооружении уже идет другое событие" : cp != null ? $"Событие будет идти еще {cp.Counter} дн." : $"Осталось подождать дней: {Cooldown}"));
 
             return list;
         }
@@ -464,7 +464,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             RemoveSelf();
 
-            Construction.BuildedOrUpgraded = true;
             ConstructionProduct cp = new ConstructionProduct(Construction, Entity);
             Construction.AddProduct(cp);
 
@@ -483,15 +482,6 @@ namespace Fantasy_Kingdoms_Battle
         internal override int GetImageIndex()
         {
             return Entity.ImageIndex;
-        }
-
-        internal override List<TextRequirement> GetTextRequirements()
-        {
-            List<TextRequirement> list = base.GetTextRequirements();
-            if (Construction.BuildedOrUpgraded && (Construction.Player.ExtraLevelUp == 0))
-                list.Add(new TextRequirement(false, "Сооружение уже строили/улучшали в этот день"));
-
-            return list;
         }
 
         internal override void PrepareHint()
