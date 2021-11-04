@@ -18,7 +18,6 @@ namespace Fantasy_Kingdoms_Battle
 
             Construction = construction;
 
-            Builders = GetIntegerNotNull(n, "Builders");
             Interest = GetInteger(n, "Interest");
             ListNeeds = new ListNeeds(n.SelectSingleNode("Needs"));
 
@@ -29,13 +28,9 @@ namespace Fantasy_Kingdoms_Battle
                 //Debug.Assert(cv.Description != Description);
                 //Debug.Assert(cv.ImageIndex != ImageIndex);
             }
-
-            Debug.Assert(Builders >= 1);
-            Debug.Assert(Builders <= 10);
         }
 
         internal DescriptorConstruction Construction { get; private set; }
-        internal int Builders { get; }// Количество строителей для постройки 
         internal int Interest { get; }// Интерес для посещения сооружения
         internal ListNeeds ListNeeds { get; }// Изменение удовлетворения потребностей героев
 

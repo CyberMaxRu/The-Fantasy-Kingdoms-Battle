@@ -18,6 +18,7 @@ namespace Fantasy_Kingdoms_Battle
             Player = p;
             TypeConstruction = b;
             Location = location;
+            DaysBuilded = 0;
 
             // Настраиваем исследования 
             foreach (DescriptorCellMenuForConstruction d in TypeConstruction.ListResearches)
@@ -50,6 +51,7 @@ namespace Fantasy_Kingdoms_Battle
             Y = y;
             Location = location;
             Hidden = !location.Ownership;
+            DaysBuilded = 0;
 
             Debug.Assert((TypeConstruction.Category == CategoryConstruction.Lair) || (TypeConstruction.Category == CategoryConstruction.External)
                 || (TypeConstruction.Category == CategoryConstruction.Place) || (TypeConstruction.Category == CategoryConstruction.BasePlace) || (TypeConstruction.Category == CategoryConstruction.ElementLandscape));
@@ -58,6 +60,7 @@ namespace Fantasy_Kingdoms_Battle
             if (level == 1)
             {
                 Build();
+                DaysBuilded = TypeConstruction.Levels[1].DaysBuilding;
             }
 
             // Настраиваем исследования 
@@ -73,6 +76,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal DescriptorConstruction TypeConstruction { get; }
         internal int Level { get; private set; }
+        internal int DaysBuilded { get; private set; }// Сколько дней строится сооружение
         internal bool BuildedOrUpgraded { get; set; }
         internal int Gold { get => gold; set { Debug.Assert(TypeConstruction.HasTreasury); gold = value; } }
         internal List<Hero> Heroes { get; } = new List<Hero>();
@@ -354,6 +358,11 @@ namespace Fantasy_Kingdoms_Battle
         internal int IncomeForLevel(int level)
         {
             return TypeConstruction.Levels[level].Income;
+        }
+
+        internal int DayBuildingForLevel(int level)
+        {
+            return TypeConstruction.Levels[level].DaysBuilding;
         }
 
         internal int GreatnesAddForLevel(int level)
@@ -1137,6 +1146,7 @@ namespace Fantasy_Kingdoms_Battle
                 Program.formMain.formHint.AddStep9Interest(TypeConstruction.Levels[requiredLevel].DescriptorVisit.Interest, false);
                 Program.formMain.formHint.AddStep9ListNeeds(TypeConstruction.Levels[requiredLevel].DescriptorVisit.ListNeeds, false);
             }
+            Program.formMain.formHint.AddStep10DaysBuilding(-1, DayBuildingForLevel(requiredLevel));
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirements(requiredLevel));
             Program.formMain.formHint.AddStep12Gold(CostBuyOrUpgradeForLevel(requiredLevel), Player.Gold >= CostBuyOrUpgradeForLevel(requiredLevel));
             Program.formMain.formHint.AddStep13Builders(TypeConstruction.Levels[requiredLevel].Builders, Player.FreeBuilders >= TypeConstruction.Levels[requiredLevel].Builders);

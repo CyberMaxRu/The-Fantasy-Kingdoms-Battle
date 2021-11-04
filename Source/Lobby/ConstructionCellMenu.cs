@@ -18,6 +18,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal static Config Config { get; set; }
         internal DescriptorCellMenu Descriptor { get; }
+        internal int DaysProcessed { get; private set; }// Количество дней, прошедшее с начала обработки действия ячейки
+
         internal virtual string GetText() => GetCost().ToString();
         internal abstract int GetCost();
         internal abstract int GetImageIndex();
@@ -449,7 +451,6 @@ namespace Fantasy_Kingdoms_Battle
             RemoveSelf();
 
             Construction.BuildedOrUpgraded = true;
-            Construction.Player.UseFreeBuilder(Entity.Builders);
             Construction.AddProduct(new ConstructionProduct(Entity));
 
             Program.formMain.SetNeedRedrawFrame();
@@ -465,11 +466,6 @@ namespace Fantasy_Kingdoms_Battle
         internal override int GetImageIndex()
         {
             return Entity.ImageIndex;
-        }
-
-        internal override bool CheckRequirements()
-        {
-            return base.CheckRequirements() && (Construction.Player.CheckRequireBuilders(Entity.Builders)) && (!Construction.BuildedOrUpgraded || (Construction.Player.ExtraLevelUp > 0));
         }
 
         internal override List<TextRequirement> GetTextRequirements()
@@ -491,7 +487,6 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep9ListNeeds(Entity.ListNeeds, true);
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirements());
             Program.formMain.formHint.AddStep12Gold(GetCost(), GetCost() <= Construction.Player.Gold);
-            Program.formMain.formHint.AddStep13Builders(Entity.Builders, Construction.Player.CheckRequireBuilders(Entity.Builders));
         }
     }
 

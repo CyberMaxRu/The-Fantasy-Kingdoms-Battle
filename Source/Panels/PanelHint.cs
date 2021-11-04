@@ -43,6 +43,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly VCLabelValue lblMorale;
         internal readonly VCLabelValue lblLuck;
         internal readonly VCLabelValue lblInterest;
+        internal readonly VCLabelValue lblDaysBuilding;
         private readonly List<VCLabelValue> listLabelNeeds = new List<VCLabelValue>();
         internal readonly VCLabel lblSigner;
         internal readonly VCSeparator lblSeparateTooltip;
@@ -142,7 +143,11 @@ namespace Fantasy_Kingdoms_Battle
             lblInterest.ImageIndex = FormMain.GUI_16_INTEREST_OTHER;
             lblInterest.Width = widthControl;
 
-            lblSigner = new VCLabel(this, FormMain.Config.GridSize, lblInterest.NextTop(), Program.formMain.fontSmallC, Color.SkyBlue, 16, "");
+            lblDaysBuilding = new VCLabelValue(this, FormMain.Config.GridSize, lblInterest.NextTop(), FormMain.Config.HintIncome, false);
+            lblDaysBuilding.ImageIndex = FormMain.GUI_16_DAY;
+            lblDaysBuilding.Width = widthControl;
+
+            lblSigner = new VCLabel(this, FormMain.Config.GridSize, lblDaysBuilding.NextTop(), Program.formMain.fontSmallC, Color.SkyBlue, 16, "");
             lblSigner.StringFormat.Alignment = StringAlignment.Near;
             lblSigner.Width = widthControl;
 
@@ -268,6 +273,7 @@ namespace Fantasy_Kingdoms_Battle
             lblMorale.Visible = false;
             lblLuck.Visible = false;
             lblInterest.Visible = false;
+            lblDaysBuilding.Visible = false;
 
             foreach (VCLabelValue ln in listLabelNeeds)
                 ln.Visible = false;
@@ -596,6 +602,17 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
         }
+
+        internal void AddStep10DaysBuilding(int daysPassed, int daysBuilding)
+        {
+            Debug.Assert(daysBuilding > 0);
+
+            lblDaysBuilding.ShiftY = nextTop;
+            lblDaysBuilding.Text = (daysPassed >= 0 ? daysPassed.ToString() + "/" : "") + daysBuilding.ToString();
+            lblDaysBuilding.Visible = true;
+            nextTop = lblDaysBuilding.NextTop();
+        }
+
 
         internal void AddStep10Requirement(string notEnoughrequirement)
         {

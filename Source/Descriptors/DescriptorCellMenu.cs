@@ -22,6 +22,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Coord = GetPoint(n, "Pos");
             Cost = GetInteger(n, "Cost");
+            DaysProcessing = GetInteger(n, "DaysProcessing");
             LoadRequirements(this, Requirements, n);
 
             Debug.Assert(Coord.X >= 0);
@@ -36,6 +37,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Coord = coord;
             Cost = GetInteger(n, "Cost");
+            DaysProcessing = GetInteger(n, "DaysProcessing");
             LoadRequirements(this, Requirements, n);
 
             Debug.Assert(Coord.X >= 0);
@@ -47,6 +49,7 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorEntity ForEntity { get; }
         internal Point Coord { get; }// Координаты ячейки
         internal int Cost { get; }// Стоимость
+        internal int DaysProcessing { get; }// Количество дней для реализации действия
         internal List<Requirement> Requirements { get; } = new List<Requirement>();// Список требований
 
         internal override void TuneDeferredLinks()
@@ -187,8 +190,8 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal int Number { get; }
-        internal int DaysBuilding { get; }// Кол-во дней, которое строится
-        internal int Builders { get; }
+        internal int DaysBuilding { get; }// Количество дней, которое строится
+        internal int Builders { get; }// Количество требуемых строителей
         internal int MaxInhabitant { get; }
         internal int Capacity { get; }
         internal int GreatnessByConstruction { get; }// Дает очков Величия при постройке

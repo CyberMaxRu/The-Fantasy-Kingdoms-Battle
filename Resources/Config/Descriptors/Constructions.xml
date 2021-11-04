@@ -357,8 +357,6 @@
         <Name>Библиотека</Name>
         <Description>Пристроить библиотеку. Повышает ум и знания героев.</Description>
         <ImageIndex>254</ImageIndex>
-        <DaysBuilding>1</DaysBuilding>
-        <Builders>1</Builders>
         <AvailableForAll>true</AvailableForAll>
       </Extension>
     </Extensions>
@@ -406,6 +404,7 @@
         <Type>Extension</Type>
         <Entity>Library</Entity>
         <Cost>1000</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -647,8 +646,6 @@
         <Name>Кузница гномов</Name>
         <Description>Пристроить гномью кузницу. Позволяет гномам создавать именные предметы.</Description>
         <ImageIndex>226</ImageIndex>
-        <DaysBuilding>2</DaysBuilding>
-        <Builders>1</Builders>
         <AvailableForAll>true</AvailableForAll>
       </Extension>
     </Extensions>
@@ -720,6 +717,7 @@
         <Pos>3,3</Pos>
         <Type>Extension</Type>
         <Entity>DwarfForge</Entity>
+        <DaysProcessing>2</DaysProcessing>
         <Cost>2000</Cost>
         <Requirements>
           <Requirement>
@@ -995,8 +993,6 @@
         <Name>Трон</Name>
         <Description>Трон покажет величие Короля</Description>
         <ImageIndex>260</ImageIndex>
-        <DaysBuilding>2</DaysBuilding>
-        <Builders>1</Builders>
         <AvailableForAll>true</AvailableForAll>
       </Extension>
     </Extensions>
@@ -1027,6 +1023,7 @@
         <Type>Extension</Type>
         <Entity>Throne</Entity>
         <Cost>5000</Cost>
+        <DaysProcessing>2</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1076,8 +1073,6 @@
         <Description>На поле растет пшеница - основной источник еды в Ардании.</Description>
         <ImageIndex>262</ImageIndex>
         <Construction>PeasantHouse</Construction>
-        <DaysBuilding>1</DaysBuilding>
-        <Builders>1</Builders>
         <AvailableForAll>true</AvailableForAll>
       </Extension>
     </Extensions>
@@ -2097,8 +2092,6 @@
         <Description>Беседки увеличат популярность {Парка}</Description>
         <ImageIndex>215</ImageIndex>
         <Cost>500</Cost>
-        <DaysBuilding>1</DaysBuilding>
-        <Builders>1</Builders>
         <Interest>5</Interest>
         <AvailableForAll>true</AvailableForAll>
         <Needs>
@@ -2110,8 +2103,6 @@
         <Name>Водопад</Name>
         <Description>Водопад увеличит популярность {Парка}</Description>
         <ImageIndex>246</ImageIndex>
-        <DaysBuilding>2</DaysBuilding>
-        <Builders>1</Builders>
         <Interest>5</Interest>
         <AvailableForAll>true</AvailableForAll>
         <Needs>
@@ -2124,8 +2115,6 @@
         <Name>Аллея</Name>
         <Description>Аллея увеличит популярность {Парка}</Description>
         <ImageIndex>214</ImageIndex>
-        <DaysBuilding>2</DaysBuilding>
-        <Builders>1</Builders>
         <Interest>20</Interest>
         <AvailableForAll>true</AvailableForAll>
         <Needs>
@@ -2138,8 +2127,6 @@
         <Name>Лабиринт</Name>
         <Description>Лабиринт увеличит популярность {Парка} и отдых героев</Description>
         <ImageIndex>255</ImageIndex>
-        <DaysBuilding>2</DaysBuilding>
-        <Builders>1</Builders>
         <Interest>20</Interest>
         <AvailableForAll>true</AvailableForAll>
         <Needs>
@@ -2152,8 +2139,6 @@
         <Name>Пруд</Name>
         <Description>Пруд увеличит популярность {Парка} и отдых героев</Description>
         <ImageIndex>256</ImageIndex>
-        <DaysBuilding>3</DaysBuilding>
-        <Builders>1</Builders>
         <Interest>20</Interest>
         <AvailableForAll>true</AvailableForAll>
         <Needs>
@@ -2168,12 +2153,14 @@
         <Type>Extension</Type>
         <Entity>Gazebo</Entity>
         <Cost>500</Cost>
+        <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Extension</Type>
         <Entity>Alley</Entity>
         <Cost>1500</Cost>
+        <DaysProcessing>2</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2187,6 +2174,7 @@
         <Type>Extension</Type>
         <Entity>Maze</Entity>
         <Cost>1500</Cost>
+        <DaysProcessing>2</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2200,6 +2188,7 @@
         <Type>Extension</Type>
         <Entity>Waterfall</Entity>
         <Cost>2000</Cost>
+        <DaysProcessing>2</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2213,6 +2202,7 @@
         <Type>Extension</Type>
         <Entity>Pond</Entity>
         <Cost>2500</Cost>
+        <DaysProcessing>3</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2323,8 +2313,6 @@
         <Name>Мощение</Name>
         <Description>Мощение плиткой увеличит популярность {Площади}</Description>
         <ImageIndex>247</ImageIndex>
-        <DaysBuilding>1</DaysBuilding>
-        <Builders>1</Builders>
         <Interest>5</Interest>
         <Needs>
           <Rest>10</Rest>
@@ -2336,8 +2324,6 @@
         <Name>Фонтан</Name>
         <Description>Фонтан увеличит популярность {Площади}</Description>
         <ImageIndex>213</ImageIndex>
-        <DaysBuilding>1</DaysBuilding>
-        <Builders>1</Builders>
         <Interest>10</Interest>
         <Needs>
           <Rest>10</Rest>
@@ -2349,8 +2335,6 @@
         <Name>Статуя Короля</Name>
         <Description>Статуя Короля обозначит Королевский статус {Площади}</Description>
         <ImageIndex>231</ImageIndex>
-        <DaysBuilding>2</DaysBuilding>
-        <Builders>1</Builders>
         <Interest>15</Interest>
         <Needs>
           <Rest>15</Rest>
@@ -2364,12 +2348,14 @@
         <Type>Extension</Type>
         <Entity>Paving</Entity>
         <Cost>500</Cost>
+        <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Extension</Type>
         <Entity>Fountain</Entity>
         <Cost>1000</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2396,6 +2382,7 @@
         <Type>Extension</Type>
         <Entity>Statue</Entity>
         <Cost>1500</Cost>
+        <DaysProcessing>2</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2786,8 +2773,6 @@
         <Name>Цветники</Name>
         <Description>Цветники увеличит популярность {Сада}</Description>
         <ImageIndex>257</ImageIndex>
-        <DaysBuilding>1</DaysBuilding>
-        <Builders>1</Builders>
         <Interest>20</Interest>
         <AvailableForAll>true</AvailableForAll>
         <Needs>
@@ -2800,8 +2785,6 @@
         <Name>Фруктовые деревья</Name>
         <Description>Увеличат популярность {Сада}</Description>
         <ImageIndex>258</ImageIndex>
-        <DaysBuilding>1</DaysBuilding>
-        <Builders>1</Builders>
         <Interest>20</Interest>
         <AvailableForAll>true</AvailableForAll>
         <Needs>
@@ -2814,8 +2797,6 @@
         <Name>Оранжерея</Name>
         <Description>Увеличит популярность {Сада}</Description>
         <ImageIndex>259</ImageIndex>
-        <DaysBuilding>3</DaysBuilding>
-        <Builders>1</Builders>
         <Interest>20</Interest>
         <AvailableForAll>true</AvailableForAll>
         <Needs>
@@ -2830,12 +2811,14 @@
         <Type>Extension</Type>
         <Entity>FruitTrees</Entity>
         <Cost>500</Cost>
+        <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Extension</Type>
         <Entity>FlowerGarden</Entity>
         <Cost>1000</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2867,6 +2850,7 @@
         <Type>Extension</Type>
         <Entity>Greenhouse</Entity>
         <Cost>1500</Cost>
+        <DaysProcessing>3</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>

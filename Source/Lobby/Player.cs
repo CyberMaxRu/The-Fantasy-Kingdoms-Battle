@@ -506,6 +506,8 @@ namespace Fantasy_Kingdoms_Battle
         internal int Builders { get; private set; }
         internal int FreeBuilders { get; private set; }
         internal int BuildersAtNextDay { get; private set; }
+        internal List<Entity> QueueBuilding { get; } = new List<Entity>();// Очередь строительства
+
         internal List<StartBonus> VariantsStartBonuses { get; }// Варианты стартовых бонусов
 
         internal int ExtraLevelUp { get; private set; }
@@ -1200,6 +1202,7 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep6Income(type.Levels[1].Income);
             Program.formMain.formHint.AddStep8Greatness(type.Levels[1].GreatnessByConstruction, type.Levels[1].GreatnessPerDay);
             Program.formMain.formHint.AddStep9PlusBuilders(type.Levels[1].BuildersPerDay);
+            Program.formMain.formHint.AddStep10DaysBuilding(-1, type.Levels[1].DaysBuilding);
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirementsBuildTypeConstruction(type));
             Program.formMain.formHint.AddStep12Gold(type.Levels[1].Cost, Gold >= type.Levels[1].Cost);
             Program.formMain.formHint.AddStep13Builders(type.Levels[1].Builders, FreeBuilders >= type.Levels[1].Builders);
@@ -1374,6 +1377,20 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(ListEventsForPlayer.IndexOf(e) != -1);
 
             ListEventsForPlayer.Remove(e);
+        }
+
+        internal void AddEntityToQueueBuilding(Entity e)
+        {
+            Debug.Assert(QueueBuilding.IndexOf(e) == -1);
+
+            QueueBuilding.Add(e);
+        }
+
+        internal void RemoveEntityToQueueBuilding(Entity e)
+        {
+            Debug.Assert(QueueBuilding.IndexOf(e) != -1);
+
+            QueueBuilding.Remove(e);
         }
     }
 
