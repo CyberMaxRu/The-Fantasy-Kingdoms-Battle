@@ -1431,8 +1431,11 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(ListQueueProcessing.IndexOf(cell) == -1);
             Debug.Assert(cell.DaysProcessed == 0);
             Debug.Assert(cell.PosInQueue == -1);
+            Debug.Assert(cell.PurchaseValue == 0);
 
             cell.PosInQueue = ListQueueProcessing.Count;
+            cell.PurchaseValue = cell.GetCost();
+            Player.SpendGold(cell.PurchaseValue);
             ListQueueProcessing.Add(cell);
         }
 
@@ -1441,9 +1444,12 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(ListQueueProcessing.IndexOf(cell) != -1);
             Debug.Assert((cell.DaysLeft == 0) || (cell.DaysProcessed == 0));
             Debug.Assert(cell.PosInQueue >= 0);
+            Debug.Assert(cell.PurchaseValue > 0);
 
-            ListQueueProcessing.Remove(cell);
             cell.PosInQueue = -1;
+            Player.ReturnGold(cell.PurchaseValue);
+            cell.PurchaseValue = 0;
+            ListQueueProcessing.Remove(cell);
 
             for (int i = 0; i < ListQueueProcessing.Count; i++)
             {

@@ -23,6 +23,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int DaysProcessed { get; set; }// Количество дней, прошедшее с начала обработки действия ячейки
         internal int DaysLeft { get; set; }// Сколько дней осталось до окончания обработки действия
         internal int PosInQueue { get; set; }// Номер в очереди
+        internal int PurchaseValue { get; set; }// Стоимость покупки
 
         internal virtual string GetText() => GetCost().ToString();
         internal abstract int GetCost();
@@ -174,9 +175,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Execute()
         {
-            Debug.Assert(CheckRequirements());
-
-            Construction.Player.SpendGold(GetCost());
             RemoveSelf();
 
             ConstructionProduct cp;
@@ -335,11 +333,9 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Execute()
         {
-            Debug.Assert(CheckRequirements());
             Debug.Assert(Construction.Researches.IndexOf(this) != -1);
             Debug.Assert(cp is null);
 
-            Construction.Player.SpendGold(GetCost());
             cp = new ConstructionProduct(Construction, ConstructionEvent);
             Construction.AddProduct(cp);
 
@@ -466,9 +462,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Execute()
         {
-            Debug.Assert(CheckRequirements());
-
-            Construction.Player.SpendGold(GetCost());
             RemoveSelf();
 
             Construction.BuildedOrUpgraded = true;
@@ -525,10 +518,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Execute()
         {
-            Debug.Assert(CheckRequirements());
-
-            Construction.Player.SpendGold(GetCost());
-
             ConstructionProduct cp = new ConstructionProduct(Construction, Entity as DescriptorItem);
             Construction.AddProduct(cp);
 
