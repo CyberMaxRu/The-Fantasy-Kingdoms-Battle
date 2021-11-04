@@ -51,14 +51,16 @@
       <CellMenu>
         <Pos>2,1</Pos>
         <Type>Research</Type>
-        <Entity>CloseCombatCourse</Entity>
+        <Entity>CloseCombatCourse</Entity>        
         <Cost>250</Cost>
+        <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
         <Entity>WarriorImpAttack</Entity>
         <Cost>200</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -72,6 +74,7 @@
         <Type>Research</Type>
         <Entity>WarriorMaimAttack</Entity>
         <Cost>500</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -85,6 +88,7 @@
         <Type>Research</Type>
         <Entity>WarriorResistanceBuff</Entity>
         <Cost>500</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -148,12 +152,14 @@
         <Type>Research</Type>
         <Entity>FittingClothes</Entity>
         <Cost>250</Cost>
+        <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
         <Entity>HunterImpAttack</Entity>
         <Cost>200</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -167,6 +173,7 @@
         <Type>Research</Type>
         <Entity>HunterStingShotAttack</Entity>
         <Cost>1000</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -180,6 +187,7 @@
         <Type>Research</Type>
         <Entity>HunterManaburnAttack</Entity>
         <Cost>1000</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -243,12 +251,14 @@
         <Type>Research</Type>
         <Entity>HolyWater</Entity>
         <Cost>250</Cost>
+        <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
         <Entity>HolyAttack</Entity>
         <Cost>200</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -262,6 +272,7 @@
         <Type>Research</Type>
         <Entity>ClericManaRegenBuff</Entity>
         <Cost>1000</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -275,6 +286,7 @@
         <Type>Research</Type>
         <Entity>ClericKnockbackAttack</Entity>
         <Cost>1000</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -366,18 +378,21 @@
         <Type>Research</Type>
         <Entity>EnchantWeaponAttack</Entity>
         <Cost>300</Cost>
+        <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>3,1</Pos>
         <Type>Research</Type>
         <Entity>MageFireballAttack</Entity>
         <Cost>200</Cost>
+        <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
         <Entity>MageFreezeAttack</Entity>
         <Cost>500</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -391,6 +406,7 @@
         <Type>Research</Type>
         <Entity>MageGuardianWind</Entity>
         <Cost>750</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -418,6 +434,7 @@
         <Type>Research</Type>
         <Entity>MageFirestormAttack</Entity>
         <Cost>2000</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -505,18 +522,21 @@
         <Type>Research</Type>
         <Entity>ElvenSharpener</Entity>
         <Cost>250</Cost>
+        <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>3,1</Pos>
         <Type>Research</Type>
         <Entity>ElixirSpeed</Entity>
         <Cost>1500</Cost>
+        <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
         <Entity>ElfImpAttack</Entity>
         <Cost>200</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -530,6 +550,7 @@
         <Type>Research</Type>
         <Entity>ElfWine</Entity>
         <Cost>1500</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -543,6 +564,7 @@
         <Type>Research</Type>
         <Entity>ElfBuff</Entity>
         <Cost>200</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -556,6 +578,7 @@
         <Type>Research</Type>
         <Entity>ElfMagicArrow</Entity>
         <Cost>300</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -655,12 +678,14 @@
         <Type>Research</Type>
         <Entity>SimpleRunes</Entity>
         <Cost>250</Cost>
+        <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
         <Entity>DwarfImpAttack</Entity>
         <Cost>300</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -674,6 +699,7 @@
         <Type>Research</Type>
         <Entity>DwarfBerserkBuff</Entity>
         <Cost>750</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -687,6 +713,7 @@
         <Type>Research</Type>
         <Entity>DwarfBeer</Entity>
         <Cost>1000</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -705,6 +732,7 @@
         <Type>Research</Type>
         <Entity>DwarfAntiBuildingAttack</Entity>
         <Cost>500</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -837,18 +865,21 @@
         <Type>Research</Type>
         <Entity>EnchantWeaponPoison</Entity>
         <Cost>300</Cost>
+        <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>3,1</Pos>
         <Type>Research</Type>
         <Entity>RoguePoisonAttack</Entity>
         <Cost>200</Cost>
+        <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
         <Entity>RogueImpAttack</Entity>
         <Cost>500</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -862,6 +893,7 @@
         <Type>Research</Type>
         <Entity>RogueKickAttack</Entity>
         <Cost>500</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -875,6 +907,7 @@
         <Type>Research</Type>
         <Entity>StunAttack</Entity>
         <Cost>1000</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1213,30 +1246,35 @@
         <Type>Research</Type>
         <Entity>Apple</Entity>
         <Cost>250</Cost>
+        <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>3,1</Pos>
         <Type>Research</Type>
         <Entity>Wheat</Entity>
         <Cost>500</Cost>
+        <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>4,1</Pos>
         <Type>Research</Type>
         <Entity>Meat</Entity>
         <Cost>750</Cost>
+        <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
         <Entity>GingerRoot</Entity>
         <Cost>500</Cost>
+        <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>3,2</Pos>
         <Type>Research</Type>
         <Entity>Amanita</Entity>
         <Cost>1000</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1250,6 +1288,7 @@
         <Type>Event</Type>
         <Entity>EventFair</Entity>
         <Cost>1500</Cost>
+        <DaysProcessing>3</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1263,6 +1302,7 @@
         <Type>Research</Type>
         <Entity>CornedBeef</Entity>
         <Cost>1000</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1329,12 +1369,14 @@
         <Type>Research</Type>
         <Entity>ImproveAnvil</Entity>
         <Cost>500</Cost>
+        <DaysProcessing>3</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
         <Entity>ImproveForging</Entity>
         <Cost>1500</Cost>
+        <DaysProcessing>4</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1348,6 +1390,7 @@
         <Type>Research</Type>
         <Entity>Sickle</Entity>
         <Cost>1000</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1361,6 +1404,7 @@
         <Type>Research</Type>
         <Entity>ImproveFounding</Entity>
         <Cost>3000</Cost>
+        <DaysProcessing>3</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1374,11 +1418,13 @@
         <Type>Research</Type>
         <Entity>GroupArmourMetal1</Entity>
         <Cost>250</Cost>
+        <DaysProcessing>2</DaysProcessing>
         <CellMenu>
           <Pos>4,1</Pos>
           <Type>Research</Type>
           <Entity>GroupArmourMetal2</Entity>
           <Cost>1000</Cost>
+          <DaysProcessing>2</DaysProcessing>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1391,6 +1437,7 @@
             <Type>Research</Type>
             <Entity>GroupArmourMetal3</Entity>
             <Cost>3000</Cost>
+            <DaysProcessing>3</DaysProcessing>
             <Requirements>
               <Requirement>
                 <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1403,6 +1450,7 @@
               <Type>Research</Type>
               <Entity>GroupArmourMetal4</Entity>
               <Cost>3500</Cost>
+              <DaysProcessing>4</DaysProcessing>
               <Requirements>
                 <Requirement>
                   <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1424,11 +1472,13 @@
         <Type>Research</Type>
         <Entity>GroupWeaponMelee1</Entity>
         <Cost>250</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <CellMenu>
           <Pos>4,2</Pos>
           <Type>Research</Type>
           <Entity>GroupWeaponMelee2</Entity>
           <Cost>1000</Cost>
+          <DaysProcessing>2</DaysProcessing>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1441,6 +1491,7 @@
             <Type>Research</Type>
             <Entity>GroupWeaponMelee3</Entity>
             <Cost>3000</Cost>
+            <DaysProcessing>3</DaysProcessing>
             <Requirements>
               <Requirement>
                 <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1453,6 +1504,7 @@
               <Type>Research</Type>
               <Entity>GroupWeaponMelee4</Entity>
               <Cost>3500</Cost>
+              <DaysProcessing>4</DaysProcessing>
               <Requirements>
                 <Requirement>
                   <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1469,11 +1521,13 @@
         <Type>Research</Type>
         <Entity>GroupArmourLeather1</Entity>
         <Cost>250</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <CellMenu>
           <Pos>4,3</Pos>
           <Type>Research</Type>
           <Entity>GroupArmourLeather2</Entity>
           <Cost>1000</Cost>
+          <DaysProcessing>2</DaysProcessing>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1486,6 +1540,7 @@
             <Type>Research</Type>
             <Entity>GroupArmourLeather3</Entity>
             <Cost>3000</Cost>
+            <DaysProcessing>3</DaysProcessing>
             <Requirements>
               <Requirement>
                 <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1498,6 +1553,7 @@
               <Type>Research</Type>
               <Entity>GroupArmourLeather4</Entity>
               <Cost>3500</Cost>
+              <DaysProcessing>4</DaysProcessing>
               <Requirements>
                 <Requirement>
                   <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1621,12 +1677,14 @@
         <Type>Research</Type>
         <Entity>TavernSoup</Entity>
         <Cost>250</Cost>
+        <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
         <Entity>TavernMeat</Entity>
         <Cost>500</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>GoodsInConstruction</TypeRequirement>
@@ -1645,6 +1703,7 @@
         <Type>Research</Type>
         <Entity>TavernBeer</Entity>
         <Cost>500</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>GoodsInConstruction</TypeRequirement>
@@ -1663,6 +1722,7 @@
         <Type>Event</Type>
         <Entity>EventFeast</Entity>
         <Cost>1000</Cost>
+        <DaysProcessing>2</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1741,12 +1801,14 @@
         <Type>Research</Type>
         <Entity>AmuletOfRegeneration</Entity>
         <Cost>250</Cost>
+        <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
         <Entity>RingOfProtection</Entity>
         <Cost>500</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1760,6 +1822,7 @@
         <Type>Research</Type>
         <Entity>ImpAmuletOfProtection</Entity>
         <Cost>1000</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1773,12 +1836,14 @@
         <Type>Research</Type>
         <Entity>Quiver</Entity>
         <Cost>250</Cost>
+        <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>3,2</Pos>
         <Type>Research</Type>
         <Entity>SmallBag</Entity>
         <Cost>500</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1792,11 +1857,13 @@
         <Type>Research</Type>
         <Entity>GroupWeaponRange1</Entity>
         <Cost>250</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <CellMenu>
           <Pos>4,1</Pos>
           <Type>Research</Type>
           <Entity>GroupWeaponRange2</Entity>
           <Cost>1000</Cost>
+          <DaysProcessing>2</DaysProcessing>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1809,6 +1876,7 @@
             <Type>Research</Type>
             <Entity>GroupWeaponRange3</Entity>
             <Cost>3000</Cost>
+            <DaysProcessing>3</DaysProcessing>
             <Requirements>
               <Requirement>
                 <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1821,6 +1889,7 @@
               <Type>Research</Type>
               <Entity>GroupWeaponRange4</Entity>
               <Cost>3500</Cost>
+              <DaysProcessing>4</DaysProcessing>
               <Requirements>
                 <Requirement>
                   <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1837,11 +1906,13 @@
         <Type>Research</Type>
         <Entity>GroupArmourMage1</Entity>
         <Cost>250</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <CellMenu>
           <Pos>4,2</Pos>
           <Type>Research</Type>
           <Entity>GroupArmourMage2</Entity>
           <Cost>1000</Cost>
+          <DaysProcessing>2</DaysProcessing>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1854,6 +1925,7 @@
             <Type>Research</Type>
             <Entity>GroupArmourMage3</Entity>
             <Cost>3000</Cost>
+            <DaysProcessing>3</DaysProcessing>
             <Requirements>
               <Requirement>
                 <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1866,6 +1938,7 @@
               <Type>Research</Type>
               <Entity>GroupArmourMage4</Entity>
               <Cost>3500</Cost>
+              <DaysProcessing>4</DaysProcessing>
               <Requirements>
                 <Requirement>
                   <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1882,11 +1955,13 @@
         <Type>Research</Type>
         <Entity>GroupWeaponMage1</Entity>
         <Cost>250</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <CellMenu>
           <Pos>4,3</Pos>
           <Type>Research</Type>
           <Entity>GroupWeaponMage2</Entity>
           <Cost>1000</Cost>
+          <DaysProcessing>2</DaysProcessing>
           <Requirements>
             <Requirement>
               <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1899,6 +1974,7 @@
             <Type>Research</Type>
             <Entity>GroupWeaponMage3</Entity>
             <Cost>3000</Cost>
+            <DaysProcessing>3</DaysProcessing>
             <Requirements>
               <Requirement>
                 <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1911,6 +1987,7 @@
               <Type>Research</Type>
               <Entity>GroupWeaponMage4</Entity>
               <Cost>3500</Cost>
+              <DaysProcessing>4</DaysProcessing>
               <Requirements>
                 <Requirement>
                   <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1966,24 +2043,28 @@
         <Type>Research</Type>
         <Entity>PotionOfHealth</Entity>
         <Cost>150</Cost>
+        <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>3,1</Pos>
         <Type>Research</Type>
         <Entity>PotionOfMana</Entity>
         <Cost>300</Cost>
+        <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>4,1</Pos>
         <Type>Research</Type>
         <Entity>PotionOfCheerfulness</Entity>
         <Cost>200</Cost>
+        <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
         <Entity>ElixirMeleeProt</Entity>
         <Cost>1000</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -1997,6 +2078,7 @@
         <Type>Research</Type>
         <Entity>ElixirRangeProt</Entity>
         <Cost>1000</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2010,6 +2092,7 @@
         <Type>Research</Type>
         <Entity>ElixirMagicProt</Entity>
         <Cost>1000</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2023,6 +2106,7 @@
         <Type>Research</Type>
         <Entity>ElixirStrength</Entity>
         <Cost>2000</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2036,6 +2120,7 @@
         <Type>Research</Type>
         <Entity>ElixirAccuracy</Entity>
         <Cost>2000</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2049,6 +2134,7 @@
         <Type>Research</Type>
         <Entity>ElixirWisdom</Entity>
         <Cost>2000</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2412,6 +2498,7 @@
         <Type>Research</Type>
         <Entity>LuckyCoins</Entity>
         <Cost>500</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>ExtensionInConstruction</TypeRequirement>
@@ -2439,6 +2526,7 @@
         <Type>Research</Type>
         <Entity>Herald</Entity>
         <Cost>1000</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2589,12 +2677,14 @@
         <Type>Tournament</Type>
         <Entity>TournamentHandFight</Entity>
         <Cost>500</Cost>
+        <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Tournament</Type>
         <Entity>TournamentArcher</Entity>
         <Cost>1000</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2608,6 +2698,7 @@
         <Type>Tournament</Type>
         <Entity>TournamentMage</Entity>
         <Cost>2000</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2660,30 +2751,35 @@
         <Type>Research</Type>
         <Entity>HospitalHerbs</Entity>
         <Cost>500</Cost>
+        <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>3,1</Pos>
         <Type>Research</Type>
         <Entity>HospitalHealthPotion</Entity>
         <Cost>1000</Cost>
+        <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
         <Entity>ElixirAntipoison</Entity>
         <Cost>500</Cost>
+        <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>3,2</Pos>
         <Type>Research</Type>
         <Entity>ElixirRegeneration</Entity>
         <Cost>1000</Cost>
+        <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>2,3</Pos>
         <Type>Research</Type>
         <Entity>HospitalPowerTherapy</Entity>
         <Cost>2500</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2917,6 +3013,7 @@
         <Type>Event</Type>
         <Entity>EventElvenMusic</Entity>
         <Cost>1000</Cost>
+        <DaysProcessing>3</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2949,6 +3046,7 @@
         <Type>Event</Type>
         <Entity>EventFireworks</Entity>
         <Cost>2500</Cost>
+        <DaysProcessing>4</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -4008,6 +4106,7 @@
         <Type>Research</Type>
         <Entity>WolfInMenagerie</Entity>
         <Cost>500</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>DestroyedLairs</TypeRequirement>
@@ -4021,6 +4120,7 @@
         <Type>Research</Type>
         <Entity>BearInMenagerie</Entity>
         <Cost>1000</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -4039,6 +4139,7 @@
         <Type>Research</Type>
         <Entity>SerpentInMenagerie</Entity>
         <Cost>750</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -4057,6 +4158,7 @@
         <Type>Research</Type>
         <Entity>DragonInMenagerie</Entity>
         <Cost>5000</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -4162,12 +4264,14 @@
         <Entity>PlayingLotto</Entity>
         <Cost>500</Cost>
         <Income>50</Income>
+        <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
         <Entity>Dice</Entity>
         <Cost>1000</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Income>100</Income>
         <Requirements>
           <Requirement>
@@ -4182,6 +4286,7 @@
         <Type>Research</Type>
         <Entity>Cider</Entity>
         <Cost>500</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Income>100</Income>
         <Requirements>
           <Requirement>
@@ -4201,6 +4306,7 @@
         <Type>Research</Type>
         <Entity>PlayingCards</Entity>
         <Cost>1500</Cost>
+        <DaysProcessing>1</DaysProcessing>
         <Income>200</Income>
         <Requirements>
           <Requirement>
