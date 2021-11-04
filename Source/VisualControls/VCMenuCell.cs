@@ -64,7 +64,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     //Level = "";
                     //Text = "";
-                    Level = (research.PosInQueue + 1).ToString();
+                    Level = (research.PosInQueue).ToString();
 
                     //ImageIsEnabled = false;
                     //lblBanner.Visible = true;
