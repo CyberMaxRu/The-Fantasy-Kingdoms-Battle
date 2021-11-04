@@ -1410,20 +1410,20 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(ListQueueProcessing.IndexOf(cell) == -1);
             Debug.Assert(cell.DaysProcessed == 0);
-            Debug.Assert(cell.PosInQueue == -1);
+            Debug.Assert(cell.PosInQueue == 0);
             Debug.Assert(cell.PurchaseValue == 0);
 
-            cell.PosInQueue = ListQueueProcessing.Count;
             cell.PurchaseValue = cell.GetCost();
             Player.SpendGold(cell.PurchaseValue);
             ListQueueProcessing.Add(cell);
+            cell.PosInQueue = ListQueueProcessing.Count;
         }
 
         internal void RemoveEntityFromQueueProcessing(ConstructionCellMenu cell)
         {
             Debug.Assert(ListQueueProcessing.IndexOf(cell) != -1);
             Debug.Assert((cell.DaysLeft == 0) || (cell.DaysProcessed == 0));
-            Debug.Assert(cell.PosInQueue >= 0);
+            Debug.Assert(cell.PosInQueue > 0);
             Debug.Assert(cell.PurchaseValue > 0);
 
             cell.PosInQueue = -1;
@@ -1433,7 +1433,7 @@ namespace Fantasy_Kingdoms_Battle
 
             for (int i = 0; i < ListQueueProcessing.Count; i++)
             {
-                ListQueueProcessing[i].PosInQueue = i;
+                ListQueueProcessing[i].PosInQueue = i + 1;
             }
         }
     }

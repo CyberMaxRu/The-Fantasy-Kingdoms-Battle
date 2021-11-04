@@ -14,7 +14,7 @@ namespace Fantasy_Kingdoms_Battle
         public CellMenu(DescriptorCellMenu d)
         {
             Descriptor = d;
-            PosInQueue = -1;
+            PosInQueue = 0;
         }
 
         internal static Config Config { get; set; }
@@ -105,7 +105,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Click()
         {
-            if (PosInQueue == -1)
+            if (PosInQueue == 0)
             {
                 if (CheckRequirements())
                 {
@@ -151,6 +151,7 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep4Level(level);
             Program.formMain.formHint.AddStep5Description(Entity.Description);
             Program.formMain.formHint.AddStep6Income(Descriptor.Income);
+            Program.formMain.formHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.DaysProcessing);
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirements());
             Program.formMain.formHint.AddStep12Gold(GetCost(), GetCost() <= Construction.Player.Gold);
 
@@ -315,6 +316,7 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep2Header(Creature.Name, Creature.ImageIndex);
             Program.formMain.formHint.AddStep3Type("Найм");
             Program.formMain.formHint.AddStep5Description(Creature.Description);
+            Program.formMain.formHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.DaysProcessing);
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirements());
             Program.formMain.formHint.AddStep12Gold(GetCost(), GetCost() <= Construction.Player.Gold);
         }
@@ -387,6 +389,7 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep5Description(ConstructionEvent.Description);
             Program.formMain.formHint.AddStep9Interest(ConstructionEvent.Interest, false);
             Program.formMain.formHint.AddStep9ListNeeds(ConstructionEvent.ListNeeds, false);
+            Program.formMain.formHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.DaysProcessing);
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirements());
             Program.formMain.formHint.AddStep12Gold(GetCost(), GetCost() <= Construction.Player.Gold);
         }
@@ -492,6 +495,7 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep6Income(Descriptor.Income);
             Program.formMain.formHint.AddStep9Interest(Entity.Interest, true);
             Program.formMain.formHint.AddStep9ListNeeds(Entity.ListNeeds, true);
+            Program.formMain.formHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.DaysProcessing);
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirements());
             Program.formMain.formHint.AddStep12Gold(GetCost(), GetCost() <= Construction.Player.Gold);
         }
@@ -534,6 +538,7 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep3Type("Турнир");
             Program.formMain.formHint.AddStep5Description(Entity.Description);
             Program.formMain.formHint.AddStep6Income(Descriptor.Income);
+            Program.formMain.formHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.DaysProcessing);
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirements());
             Program.formMain.formHint.AddStep12Gold(GetCost(), GetCost() <= Construction.Player.Gold);
         }

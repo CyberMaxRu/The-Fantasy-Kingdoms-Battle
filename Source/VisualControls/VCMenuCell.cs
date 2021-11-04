@@ -60,7 +60,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 ImageIndex = research.GetImageIndex();
 
-                if (research.PosInQueue >= 0)
+                if (research.PosInQueue > 0)
                 {
                     //Level = "";
                     //Text = "";
@@ -68,7 +68,7 @@ namespace Fantasy_Kingdoms_Battle
 
                     //ImageIsEnabled = false;
                     //lblBanner.Visible = true;
-                    if (research.PosInQueue == 0)
+                    if (research.PosInQueue == 1)
                     {
                         Text = research.DaysLeft.ToString() + " д.";
 
