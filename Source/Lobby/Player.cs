@@ -185,7 +185,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal virtual void PrepareTurn()
         {
-            UpdateBuildersNextDay();
             ExtraLevelUp = 0;
             ExtraResearch = 0;
 
@@ -224,7 +223,7 @@ namespace Fantasy_Kingdoms_Battle
                 CombatHeroes.Remove(h);
             }
 
-            Builders = BuildersAtNextDay;
+            Builders = Castle.TypeConstruction.Levels[Castle.Level].BuildersPerDay;
             if (Lobby.Day == 1)
                 Builders += Lobby.TypeLobby.StartBuilders;
             FreeBuilders = Builders;
@@ -251,11 +250,6 @@ namespace Fantasy_Kingdoms_Battle
                 if (u.Hero.CounterConstructionForBuy > 0)
                     u.Hero.DoShopping(u.Construction);
             }
-        }
-
-        private void UpdateBuildersNextDay()
-        {
-            BuildersAtNextDay = Castle.TypeConstruction.Levels[Castle.Level].BuildersPerDay;
         }
 
         //
@@ -505,7 +499,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int Builders { get; private set; }
         internal int FreeBuilders { get; private set; }
-        internal int BuildersAtNextDay { get; private set; }
         internal List<Entity> QueueBuilding { get; } = new List<Entity>();// Очередь строительства
 
         internal List<StartBonus> VariantsStartBonuses { get; }// Варианты стартовых бонусов

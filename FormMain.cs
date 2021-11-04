@@ -905,8 +905,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             formHint.AddStep2Header("Строители");
             formHint.AddStep5Description("Всего строителей: " + curAppliedPlayer.Builders.ToString()
-                + Environment.NewLine + "Свободно строителей: " + curAppliedPlayer.FreeBuilders.ToString()
-                + Environment.NewLine + "Строителей на следующем ходу: " + curAppliedPlayer.BuildersAtNextDay.ToString());
+                + Environment.NewLine + "Свободно строителей: " + curAppliedPlayer.FreeBuilders.ToString());
         }
 
         private void PanelCombatHeroes_Click(object sender, EventArgs e)
@@ -1732,7 +1731,7 @@ namespace Fantasy_Kingdoms_Battle
             if ((Layers[0] == layerGame) && (lobby.CurrentPlayer != null) && MainControl.Visible)
             {
                 labelGold.Text = lobby.CurrentPlayer.Gold.ToString() + " (+" + lobby.CurrentPlayer.Income().ToString() + ")";
-                labelBuilders.Text = $"{curAppliedPlayer.FreeBuilders}/{curAppliedPlayer.Builders} (+{curAppliedPlayer.BuildersAtNextDay})";
+                labelBuilders.Text = $"{curAppliedPlayer.FreeBuilders}/{curAppliedPlayer.Builders}";
                 labelGreatness.Text = curAppliedPlayer.LevelGreatness.ToString()
                     + " (+" + curAppliedPlayer.PointGreatnessPerDay().ToString() + ")"
                     + ": " + curAppliedPlayer.PointGreatness.ToString() + "/"
