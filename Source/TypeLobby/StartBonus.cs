@@ -13,7 +13,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         public StartBonus()
         {
-            BaseResources = new QuantityBaseResources();
+            BaseResources = new ListBaseResources();
         }
 
         public StartBonus(XmlNode n)
@@ -23,7 +23,7 @@ namespace Fantasy_Kingdoms_Battle
             Scouting = XmlUtils.GetInteger(n, "Scouting");
             PeasantHouse = XmlUtils.GetInteger(n, "PeasantHouse");
             HolyPlace = XmlUtils.GetInteger(n, "HolyPlace");
-            BaseResources = new QuantityBaseResources(n.SelectSingleNode("Resources"));
+            BaseResources = new ListBaseResources(n.SelectSingleNode("Resources"));
             Points = XmlUtils.GetInteger(n, "Points");
             MaxQuantity = XmlUtils.GetInteger(n, "MaxQuantity");
             if (MaxQuantity == 0)
@@ -52,7 +52,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int Scouting { get; private set; }
         internal int PeasantHouse { get; private set; }
         internal int HolyPlace { get; private set; }
-        internal QuantityBaseResources BaseResources { get; }
+        internal ListBaseResources BaseResources { get; }
         internal int Points { get; private set; }
         internal int MaxQuantity { get; private set; }
         internal int CurrentQuantity { get; private set; }
@@ -82,9 +82,9 @@ namespace Fantasy_Kingdoms_Battle
                 + (PeasantHouse != 0 ? 1 : 0)
                 + (HolyPlace != 0 ? 1 : 0);
 
-            foreach (int r in BaseResources)
+            foreach (BaseResource br in BaseResources)
             {
-                if (r != 0)
+                if (br.Quantity != 0)
                     q++;
             }
 

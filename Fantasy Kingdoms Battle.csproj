@@ -79,6 +79,7 @@
     <Compile Include="Source\Descriptors\Item\DescriptorResource.cs" />
     <Compile Include="Source\Descriptors\Location\DescriptorTypeLandscape.cs" />
     <Compile Include="Source\Forms\WindowCheating.cs" />
+    <Compile Include="Source\Lobby\BaseResource.cs" />
     <Compile Include="Source\Lobby\BigEntity.cs" />
     <Compile Include="Source\Lobby\ConstructionProduct.cs" />
     <Compile Include="Source\Lobby\CreatureNeed.cs" />
@@ -87,7 +88,7 @@
     <Compile Include="Source\Lobby\GroupItem.cs" />
     <Compile Include="Source\Lobby\Location.cs" />
     <Compile Include="Source\Lobby\Perk.cs" />
-    <Compile Include="Source\Lobby\QuantityBaseResources.cs" />
+    <Compile Include="Source\Lobby\ListBaseResources.cs" />
     <Compile Include="Source\Lobby\SecondarySkill.cs" />
     <Compile Include="Source\Lobby\SmallEntity.cs" />
     <Compile Include="Source\Lobby\Specialization.cs" />

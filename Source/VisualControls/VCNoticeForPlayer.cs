@@ -8,7 +8,8 @@ using System.Diagnostics;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal enum TypeNoticeForPlayer { Build, Research, Extension, MassEventBegin, MassEventEnd, TournamentBegin, TournamentEnd };
+    internal enum TypeNoticeForPlayer { Build, Research, Extension, MassEventBegin, MassEventEnd, TournamentBegin, TournamentEnd,
+        ReceivedBaseResource};
 
     internal sealed class VCNoticeForPlayer : VCCustomNotice
     {
@@ -21,9 +22,13 @@ namespace Fantasy_Kingdoms_Battle
             TypeNotice = typeNotice;
 
             Visible = false;
-            Cell.Click += Cell_Click;
             Cell.RightClick += Cell_RightClick;
-            Cell.HighlightUnderMouse = true;
+
+            if (typeNotice != TypeNoticeForPlayer.ReceivedBaseResource)
+            {
+                Cell.Click += Cell_Click;
+                Cell.HighlightUnderMouse = true;
+            }
 
             string nameNotice;
             string nameText = "";
@@ -65,6 +70,12 @@ namespace Fantasy_Kingdoms_Battle
                     nameText = (Entity as ConstructionProduct).Descriptor.Name;
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
+                case TypeNoticeForPlayer.ReceivedBaseResource:
+                    BaseResource br = Entity as BaseResource;
+                    nameNotice = $"Поступил ресурс {br.Descriptor.Name}:";
+                    nameText = $"+{br.Quantity}";
+                    colorNameEntity = Color.DarkGoldenrod;
+                    break;
                 default:
                     throw new Exception($"Неизвестный тип события: {TypeNotice}.");
             }
@@ -99,7 +110,7 @@ namespace Fantasy_Kingdoms_Battle
                 Program.formMain.SelectConstruction(cp.Construction, 0);
             }
             else
-                throw new Exception("Неизвестная сущность.");
+                        throw new Exception("Неизвестная сущность.");
 
             CloseSelf();
         }

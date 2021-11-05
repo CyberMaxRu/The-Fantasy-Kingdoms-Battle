@@ -25,7 +25,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void UpdateData(Player p)
         {
-            Text = p.BaseResources.Quantity(Resource).ToString();
+            Text = p.BaseResources[Resource.Number].Quantity.ToString();
         }
     }
 }

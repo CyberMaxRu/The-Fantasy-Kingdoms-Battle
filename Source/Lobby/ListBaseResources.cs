@@ -9,20 +9,20 @@ using System.Xml;
 namespace Fantasy_Kingdoms_Battle
 {
     #pragma warning disable CS0659 // Тип переопределяет Object.Equals(object o), но не переопределяет Object.GetHashCode()
-    internal sealed class QuantityBaseResources : List<int>
+    internal sealed class ListBaseResources : List<BaseResource>
     #pragma warning restore CS0659 // Тип переопределяет Object.Equals(object o), но не переопределяет Object.GetHashCode()
     {
-        public QuantityBaseResources() : base(FormMain.Config.BaseResources.Count)
+        public ListBaseResources() : base(FormMain.Config.BaseResources.Count)
         {
-            for (int i = 0; i < Capacity; i++)
-                Add(0);
+            foreach (DescriptorBaseResource br in FormMain.Config.BaseResources)
+                Add(new BaseResource(br));
         }
 
 
-        public QuantityBaseResources(XmlNode n) : base(FormMain.Config.BaseResources.Count)
+        public ListBaseResources(XmlNode n) : base(FormMain.Config.BaseResources.Count)
         {
-            for (int i = 0; i < Capacity; i++)
-                Add(0);
+            foreach (DescriptorBaseResource br in FormMain.Config.BaseResources)
+                Add(new BaseResource(br));
 
             if (n != null)
             {
@@ -31,18 +31,18 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     int value = Convert.ToInt32(n.ChildNodes[i].InnerText);
                     res = FormMain.Config.FindBaseResource(n.ChildNodes[i].Name);
-                    Debug.Assert(this[res.Number] == 0);
+                    Debug.Assert(this[res.Number].Quantity == 0);
                     Debug.Assert(value >= 0);
 
-                    this[res.Number] = value;
+                    this[res.Number].Quantity = value;
                 }
             }
         }
 
-        public QuantityBaseResources(QuantityBaseResources qbr) : base(FormMain.Config.BaseResources.Count)
+        public ListBaseResources(ListBaseResources qbr) : base(FormMain.Config.BaseResources.Count)
         {
-            for (int i = 0; i < Capacity; i++)
-                Add(0);
+            foreach (DescriptorBaseResource br in FormMain.Config.BaseResources)
+                Add(new BaseResource(br));
 
             for (int i = 0; i < Count; i++)
             {
@@ -50,24 +50,11 @@ namespace Fantasy_Kingdoms_Battle
             }    
         }
 
-
-        internal int Quantity(DescriptorBaseResource res)
-        {
-            return this[res.Number];
-        }
-
-        internal void ChangeQuantity(DescriptorBaseResource res, int value)
-        {
-            this[res.Number] += value;
-
-            Debug.Assert(this[res.Number] >= 0);
-        }
-
-        internal void AddResources(QuantityBaseResources qbr)
+        internal void AddResources(ListBaseResources qbr)
         {
             for (int i = 0; i < Count; i++)
             {
-                this[i] += qbr[i];
+                this[i].Quantity += qbr[i].Quantity;
             }
         }
 
@@ -75,7 +62,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             for (int i = 0; i < Count; i++)
             {
-                if (this[i] != 0)
+                if (this[i].Quantity != 0)
                     return true;
             }
 
@@ -84,11 +71,11 @@ namespace Fantasy_Kingdoms_Battle
 
         public override bool Equals(object obj)
         {
-            QuantityBaseResources qbr = obj as QuantityBaseResources;
+            ListBaseResources qbr = obj as ListBaseResources;
 
             for (int i = 0; i < Count; i++)
             {
-                if (this[i] != qbr[i])
+                if (this[i].Quantity != qbr[i].Quantity)
                     return false;
             }
 

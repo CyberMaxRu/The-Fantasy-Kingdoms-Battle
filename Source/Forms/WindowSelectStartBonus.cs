@@ -50,10 +50,10 @@ namespace Fantasy_Kingdoms_Battle
                 if (sb.Scouting > 0)
                     AddBonus(text, FormMain.Config.Gui48_FlagScout, "Разведанных мест", $"+{sb.Scouting}");
 
-                for (int i = 0; i < sb.BaseResources.Count; i++)
+                foreach (BaseResource br in sb.BaseResources)
                 {
-                    if (sb.BaseResources[i] > 0)
-                        AddBonus(text, FormMain.Config.BaseResources[i].ImageIndex, FormMain.Config.BaseResources[i].Name, $"+{sb.BaseResources[i]}");
+                    if (br.Quantity > 0)
+                        AddBonus(text, br.Descriptor.ImageIndex, br.Descriptor.Name, $"+{br.Quantity}");
                 }
 
                 text.Height = lblCaption.NextTop() + (text.Controls[text.Controls.Count - 1].Height + FormMain.Config.GridSize) * 4;

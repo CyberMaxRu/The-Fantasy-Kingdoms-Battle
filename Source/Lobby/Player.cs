@@ -106,7 +106,7 @@ namespace Fantasy_Kingdoms_Battle
             Gold = Lobby.TypeLobby.Gold;
             if (Descriptor.TypePlayer == TypePlayer.Computer)
                 Gold = 100_000;
-            BaseResources = new QuantityBaseResources(lobby.TypeLobby.BaseResources);
+            BaseResources = new ListBaseResources(lobby.TypeLobby.BaseResources);
 
             Castle = GetPlayerConstruction(FormMain.Config.FindConstruction(FormMain.Config.IDConstructionCastle));
             Castle.Gold = Gold;
@@ -480,7 +480,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int Gold { get => gold; private set { gold = value; if (Castle != null) Castle.Gold = gold; } }// Текущее количество золота
         internal int GoldCollected { get; private set; }// Собрано золота за игру
         internal int GreatnessCollected { get; private set; }// Собрано величия за игру
-        internal QuantityBaseResources BaseResources { get; }// Базовые ресурсы
+        internal ListBaseResources BaseResources { get; }// Базовые ресурсы
 
         //
         internal List<VCNoticeForPlayer> ListNoticesForPlayer { get; } = new List<VCNoticeForPlayer>();// Список событий в графстве
@@ -1062,9 +1062,16 @@ namespace Fantasy_Kingdoms_Battle
             if (sb.Gold > 0)
             {
                 IncomeGold(sb.Gold);
+                //AddNoticeForPlayer()
             }
 
             BaseResources.AddResources(sb.BaseResources);
+            foreach (BaseResource br in sb.BaseResources)
+            {
+                if (br.Quantity > 0)
+                    AddNoticeForPlayer(br, TypeNoticeForPlayer.ReceivedBaseResource);
+            }
+
             Builders += sb.Builders;
             FreeBuilders += sb.Builders;
             CreateExternalConstructions(FormMain.Config.FindConstruction(FormMain.Config.IDPeasantHouse), 1, LocationCapital, sb.PeasantHouse);
@@ -1073,6 +1080,9 @@ namespace Fantasy_Kingdoms_Battle
             ScoutRandomLair(sb.Scouting);
 
             startBonusApplied = true;
+
+            if (GetTypePlayer() == TypePlayer.Human)
+                Program.formMain.ShowPlayersNotices();
         }
 
         internal void AddLose()
