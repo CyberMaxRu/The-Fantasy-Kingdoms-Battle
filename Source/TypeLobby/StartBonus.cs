@@ -23,7 +23,6 @@ namespace Fantasy_Kingdoms_Battle
             Scouting = XmlUtils.GetInteger(n, "Scouting");
             PeasantHouse = XmlUtils.GetInteger(n, "PeasantHouse");
             HolyPlace = XmlUtils.GetInteger(n, "HolyPlace");
-            TradePlace = XmlUtils.GetInteger(n, "TradePlace");
             Points = XmlUtils.GetInteger(n, "Points");
             MaxQuantity = XmlUtils.GetInteger(n, "MaxQuantity");
             if (MaxQuantity == 0)
@@ -42,8 +41,6 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(PeasantHouse <= 5);
             Debug.Assert(HolyPlace >= 0);
             Debug.Assert(HolyPlace <= 2);
-            Debug.Assert(TradePlace >= 0);
-            Debug.Assert(TradePlace <= 3);
             Debug.Assert(Points > 0);
             Debug.Assert(Points <= 10);
             Debug.Assert(MaxQuantity >= 1);
@@ -56,7 +53,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int Scouting { get; private set; }
         internal int PeasantHouse { get; private set; }
         internal int HolyPlace { get; private set; }
-        internal int TradePlace { get; private set; }
         internal int Points { get; private set; }
         internal int MaxQuantity { get; private set; }
         internal int CurrentQuantity { get; private set; }
@@ -69,7 +65,6 @@ namespace Fantasy_Kingdoms_Battle
             Scouting += sb.Scouting;
             PeasantHouse += sb.PeasantHouse;
             HolyPlace += sb.HolyPlace;
-            TradePlace += sb.TradePlace;
             Points += sb.Points;
             sb.CurrentQuantity++;
         }
@@ -88,7 +83,6 @@ namespace Fantasy_Kingdoms_Battle
                 && (Scouting == otherStartBonus.Scouting)
                 && (PeasantHouse == otherStartBonus.PeasantHouse)
                 && (HolyPlace == otherStartBonus.HolyPlace)
-                && (TradePlace == otherStartBonus.TradePlace)
                 && (Builders == otherStartBonus.Builders);
         }
     }

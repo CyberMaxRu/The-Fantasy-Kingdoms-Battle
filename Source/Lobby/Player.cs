@@ -1061,8 +1061,6 @@ namespace Fantasy_Kingdoms_Battle
             CreateExternalConstructions(FormMain.Config.FindConstruction(FormMain.Config.IDPeasantHouse), 1, LocationCapital, sb.PeasantHouse);
             DescriptorConstruction holyPlace = FormMain.Config.FindConstruction(FormMain.Config.IDHolyPlace);
             CreateExternalConstructions(holyPlace, holyPlace.DefaultLevel, LocationCapital, sb.HolyPlace);
-            DescriptorConstruction tradePost = FormMain.Config.FindConstruction(FormMain.Config.IDTradePost);
-            CreateExternalConstructions(tradePost, tradePost.DefaultLevel, LocationCapital, sb.TradePlace);
             ScoutRandomLair(sb.Scouting);
 
             startBonusApplied = true;

@@ -49,8 +49,6 @@ namespace Fantasy_Kingdoms_Battle
                     AddBonus(text, sb.PeasantHouse.ToString(), $"+{sb.PeasantHouse} крестьянских домов", FormMain.GUI_16_PEASANT_HOUSE);
                 if (sb.HolyPlace > 0)
                     AddBonus(text, sb.HolyPlace.ToString(), $"+{sb.HolyPlace} Святых земель", FormMain.GUI_16_HOLYLAND);
-                if (sb.TradePlace > 0)
-                    AddBonus(text, sb.TradePlace.ToString(), $"+{sb.TradePlace} торговых мест", FormMain.GUI_16_TRADEPOST);
                 if (sb.Scouting > 0)
                     AddBonus(text, sb.Scouting.ToString(), $"+{sb.Scouting} разведанных мест", FormMain.GUI_16_FLAG_SCOUT);
 
@@ -76,6 +74,8 @@ namespace Fantasy_Kingdoms_Battle
             void AddBonus(VisualControl parent, string text, string hint, int imageIndex)
             {
                 Debug.Assert(text != null);
+
+                //VCCustomEvent evnt = new VCCustomEvent()
 
                 VCLabel label = new VCLabel(parent, FormMain.Config.GridSize, nextTop, Program.formMain.fontParagraph, Color.White, Program.formMain.fontParagraph.MaxHeightSymbol, $"+{text}");
                 label.StringFormat.Alignment = StringAlignment.Near;
