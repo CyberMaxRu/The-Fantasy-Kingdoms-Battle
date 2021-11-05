@@ -1416,6 +1416,7 @@ namespace Fantasy_Kingdoms_Battle
             cell.PurchaseValue = cell.GetCost();
             Player.SpendResource(FormMain.Config.Gold, cell.PurchaseValue);
             ListQueueProcessing.Add(cell);
+            //Player.AddEntityToQueueBuilding()
             cell.PosInQueue = ListQueueProcessing.Count;
         }
 

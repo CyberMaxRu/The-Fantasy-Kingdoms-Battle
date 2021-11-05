@@ -109,6 +109,8 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (CheckRequirements())
                 {
+                    Debug.Assert(Descriptor.DaysProcessing > 0);
+
                     Program.formMain.PlayPushButton();
                     Construction.AddEntityToQueueProcessing(this);
 
