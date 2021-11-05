@@ -14,7 +14,7 @@ namespace Fantasy_Kingdoms_Battle
             BitmapList = Program.formMain.ilGui16;
             ImageIndex = imageIndex;
             Width = 80;
-            TopMargin = 1;
+            TopMargin = 2;
 
             ShiftImage = new Point(6, 4);
         }
