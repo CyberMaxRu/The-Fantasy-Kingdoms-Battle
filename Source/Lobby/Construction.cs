@@ -187,7 +187,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             if (TypeConstruction.IsInternalConstruction)
-                Player.AddEventForPlayer(this, TypeNoticeForPlayer.Build);
+                Player.AddNoticeForPlayer(this, TypeNoticeForPlayer.Build);
         }
 
         private void CreateProducts()

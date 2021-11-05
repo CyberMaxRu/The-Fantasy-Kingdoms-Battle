@@ -1059,7 +1059,11 @@ namespace Fantasy_Kingdoms_Battle
 
         protected void ApplyStartBonus(StartBonus sb)
         {
-            IncomeGold(sb.Gold);
+            if (sb.Gold > 0)
+            {
+                IncomeGold(sb.Gold);
+            }
+
             BaseResources.AddResources(sb.BaseResources);
             Builders += sb.Builders;
             FreeBuilders += sb.Builders;
@@ -1362,11 +1366,11 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddEventForPlayer(Entity entity, TypeNoticeForPlayer typeEvent)
+        internal void AddNoticeForPlayer(Entity entity, TypeNoticeForPlayer typeNotice)
         {
             if (GetTypePlayer() == TypePlayer.Human)
             { 
-                ListNoticesForPlayer.Add(new VCNoticeForPlayer(entity, typeEvent));
+                ListNoticesForPlayer.Add(new VCNoticeForPlayer(entity, typeNotice));
             }
         }
 
