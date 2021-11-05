@@ -433,6 +433,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int WarehouseMaxCells { get; private set; }// Количество ячеек в складе
         internal int ConstructionMaxLines { get; private set; }// Максимальное количество линий сооружений
         internal int ConstructionMaxPos { get; private set; }// Максимальное количество позиций в линии сооружений
+        internal int MaxElementInStartBonus { get; private set; }// Максимальное количество позиций в одном варианте стартового бонуса
 
         // Цвета
         internal Color CommonBorder { get; private set; }
@@ -798,6 +799,10 @@ namespace Fantasy_Kingdoms_Battle
             ConstructionMaxPos = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/ConstructionMaxPos").InnerText);
             Debug.Assert(ConstructionMaxLines >= 2);
             Debug.Assert(ConstructionMaxLines <= 5);
+
+            MaxElementInStartBonus = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/MaxElementInStartBonus").InnerText);
+            Debug.Assert(ConstructionMaxLines >= 1);
+            Debug.Assert(ConstructionMaxLines <= 10);
 
             HeroInRow = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battlefield/HeroInRow").InnerText);
             Debug.Assert(HeroInRow >= 3);

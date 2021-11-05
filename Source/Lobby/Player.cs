@@ -142,14 +142,19 @@ namespace Fantasy_Kingdoms_Battle
                     StartBonus newSb = GenerateNew(lobby.TypeLobby.PointStartBonus);
                     needRegenerate = false;
 
-                    // Ищем, есть ли такой же бонус
-                    foreach (StartBonus b in VariantsStartBonuses)
-                        if (b.Equals(newSb))
-                        {
-                            needRegenerate = true;
-                            break;
-                        }
-
+                    if (newSb.QuantityElements() > FormMain.Config.MaxElementInStartBonus)
+                        needRegenerate = true;
+                    else
+                    {
+                        // Ищем, есть ли такой же бонус
+                        foreach (StartBonus b in VariantsStartBonuses)
+                            if (b.Equals(newSb))
+                            {
+                                needRegenerate = true;
+                                break;
+                            }
+                    }
+                    
                     if (!needRegenerate)
                         return newSb;
 

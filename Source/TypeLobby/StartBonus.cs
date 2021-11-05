@@ -74,6 +74,23 @@ namespace Fantasy_Kingdoms_Battle
             CurrentQuantity = 0;
         }
 
+        internal int QuantityElements()
+        {
+            int q = (Gold != 0 ? 1 : 0)
+                + (Builders != 0 ? 1 : 0)
+                + (Scouting != 0 ? 1 : 0)
+                + (PeasantHouse != 0 ? 1 : 0)
+                + (HolyPlace != 0 ? 1 : 0);
+
+            foreach (int r in BaseResources)
+            {
+                if (r != 0)
+                    q++;
+            }
+
+            return q;
+        }
+
         public override bool Equals(object obj)
         {
             StartBonus otherStartBonus = obj as StartBonus;

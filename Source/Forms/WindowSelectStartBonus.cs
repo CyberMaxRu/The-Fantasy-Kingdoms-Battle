@@ -56,7 +56,7 @@ namespace Fantasy_Kingdoms_Battle
                         AddBonus(text, FormMain.Config.BaseResources[i].ImageIndex, FormMain.Config.BaseResources[i].Name, $"+{sb.BaseResources[i]}");
                 }
 
-                text.Height = 280;
+                text.Height = lblCaption.NextTop() + (text.Controls[text.Controls.Count - 1].Height + FormMain.Config.GridSize) * 4;
                 lblCaption.Width = text.Width;
                 nextLeft = text.NextLeft() + FormMain.Config.GridSize;
                 idx++;
