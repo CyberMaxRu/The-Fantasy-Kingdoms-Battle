@@ -271,7 +271,7 @@ namespace Fantasy_Kingdoms_Battle
                 return TypeConstruction.Levels[1].Cost;
         }
 
-        internal override string GetLevel() => Program.formMain.Settings.ShowTypeCellMenu ? "п" : "";
+        internal override string GetLevel() => Program.formMain.Settings.ShowTypeCellMenu ? "c" : "";
 
         internal override int GetImageIndex()
         {
