@@ -75,7 +75,7 @@ namespace Fantasy_Kingdoms_Battle
 
         // Читинг
         internal bool CheatingIgnoreRequirements { get; set; }
-        internal bool CheatingIgnoreGold { get; set; }
+        internal bool CheatingIgnoreBaseResources { get; set; }
         internal bool CheatingIgnoreBuilders { get; set; }
 
         internal event EventHandler PlayMusicChanged;

@@ -19,7 +19,7 @@ namespace Fantasy_Kingdoms_Battle
         private VCButton btnCancel;
 
         private VCCheckBox chkbIgnoreRequirements;
-        private VCCheckBox chkbIgnoreGold;
+        private VCCheckBox chkbIgnoreResources;
         private VCCheckBox chkbIgnoreBuilders;
 
         public WindowCheating(Settings s) : base()
@@ -32,11 +32,11 @@ namespace Fantasy_Kingdoms_Battle
             chkbIgnoreRequirements.Hint = "Игнорировать требования к наличию сооружений, исследований (кроме золота, строителей и тому подобного)";
             chkbIgnoreRequirements.Checked = settings.CheatingIgnoreRequirements;
 
-            chkbIgnoreGold = new VCCheckBox(ClientControl, 0, chkbIgnoreRequirements.NextTop(), "Игнорировать требования золота");
-            chkbIgnoreGold.Hint = "Игнорировать требования к наличию достаточного количества золота";
-            chkbIgnoreGold.Checked = settings.CheatingIgnoreGold;
+            chkbIgnoreResources = new VCCheckBox(ClientControl, 0, chkbIgnoreRequirements.NextTop(), "Игнорировать требования базовых ресурсов");
+            chkbIgnoreResources.Hint = "Игнорировать требования к наличию достаточного количества базовых ресурсов и не тратить их";
+            chkbIgnoreResources.Checked = settings.CheatingIgnoreBaseResources;
 
-            chkbIgnoreBuilders = new VCCheckBox(ClientControl, 0, chkbIgnoreGold.NextTop(), "Игнорировать требования строителей");
+            chkbIgnoreBuilders = new VCCheckBox(ClientControl, 0, chkbIgnoreResources.NextTop(), "Игнорировать требования строителей");
             chkbIgnoreBuilders.Hint = "Игнорировать требования к наличию достаточного количества строителей";
             chkbIgnoreBuilders.Checked = settings.CheatingIgnoreBuilders;
 
@@ -68,7 +68,7 @@ namespace Fantasy_Kingdoms_Battle
             ClientControl.Height = btnCancel.NextTop();
 
             chkbIgnoreRequirements.Width = ClientControl.Width;
-            chkbIgnoreGold.Width = ClientControl.Width;
+            chkbIgnoreResources.Width = ClientControl.Width;
             chkbIgnoreBuilders.Width = ClientControl.Width;
 
             ApplyMaxSize();
@@ -87,7 +87,7 @@ namespace Fantasy_Kingdoms_Battle
         private void SetAll(bool check)
         {
             chkbIgnoreRequirements.Checked = check;
-            chkbIgnoreGold.Checked = check;
+            chkbIgnoreResources.Checked = check;
             chkbIgnoreBuilders.Checked = check;
         }
 
@@ -104,7 +104,7 @@ namespace Fantasy_Kingdoms_Battle
         private void BtnAccept_Click(object sender, EventArgs e)
         {
             settings.CheatingIgnoreRequirements = chkbIgnoreRequirements.Checked;
-            settings.CheatingIgnoreGold = chkbIgnoreGold.Checked;
+            settings.CheatingIgnoreBaseResources = chkbIgnoreResources.Checked;
             settings.CheatingIgnoreBuilders = chkbIgnoreBuilders.Checked;
 
             CloseForm(DialogAction.OK);

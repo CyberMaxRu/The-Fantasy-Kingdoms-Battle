@@ -15,9 +15,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             Name = XmlUtils.GetString(n, "Name");
             QuantityPlayers = XmlUtils.GetInteger(n, "QuantityPlayers");
-            Gold = XmlUtils.GetInteger(n, "Gold");
             BaseResources = new ListBaseResources(n.SelectSingleNode("BaseResources"));
-            MaxGold = XmlUtils.GetInteger(n, "MaxGold");
+            MaxBaseResources = new ListBaseResources(n.SelectSingleNode("MaxBaseResources"));
             MaxHeroes = XmlUtils.GetInteger(n, "MaxHeroes");
             StartQuantityFlags = XmlUtils.GetInteger(n, "StartQuantityFlags");
             MaxQuantityFlags = XmlUtils.GetInteger(n, "MaxQuantityFlags");
@@ -40,11 +39,6 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(QuantityPlayers >= 8);
             Debug.Assert(QuantityPlayers <= FormMain.Config.ComputerPlayers.Count);
             Debug.Assert(QuantityPlayers % 2 == 0);
-            Debug.Assert(Gold >= 0);
-            Debug.Assert(Gold <= 100000);
-            Debug.Assert(MaxGold >= 100_00);
-            Debug.Assert(MaxGold <= 1_000_000);
-            Debug.Assert(Gold <= MaxGold);
             Debug.Assert(MaxHeroes >= 1);
             Debug.Assert(MaxHeroes <= 100);// Здесь проверять через максим. число героев на поле боя
             Debug.Assert(StartQuantityFlags >= 1);
@@ -79,6 +73,14 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(LairsWidth <= 5);
             Debug.Assert(LairsHeight >= 1);
             Debug.Assert(LairsHeight <= 4);
+
+            for (int i = 0; i < BaseResources.Count; i++)
+            {
+                Debug.Assert(BaseResources[i].Quantity >= 0);
+                Debug.Assert(MaxBaseResources[i].Quantity >= 1_000);
+                Debug.Assert(MaxBaseResources[i].Quantity <= 1_000_000);
+                Debug.Assert(BaseResources[i].Quantity <= MaxBaseResources[i].Quantity);
+            }
 
             foreach (TypeLobby t in FormMain.Config.TypeLobbies)
             {
@@ -170,9 +172,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal string Name { get; }
         internal int QuantityPlayers { get; }
-        internal int Gold { get; }
         internal ListBaseResources BaseResources { get; }
-        internal int MaxGold { get; }
+        internal ListBaseResources MaxBaseResources { get; }
         internal int MaxHeroes { get; }
         internal int StartQuantityFlags { get; }
         internal int MaxQuantityFlags { get; }

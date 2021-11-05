@@ -419,7 +419,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (TypeConstruction.TrainedHero.Cost > 0)
             {
-                Player.SpendGold(TypeConstruction.TrainedHero.Cost);
+                Player.SpendResource(FormMain.Config.Gold, TypeConstruction.TrainedHero.Cost);
                 if (Player.Descriptor.TypePlayer == TypePlayer.Human)
                     Program.formMain.SetNeedRedrawFrame();
             }
@@ -441,7 +441,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (TypeConstruction.TrainedHero.Cost > 0)
                 {
-                    Player.SpendGold(TypeConstruction.TrainedHero.Cost);
+                    Player.SpendResource(FormMain.Config.Gold, TypeConstruction.TrainedHero.Cost);
                     if (Player.Descriptor.TypePlayer == TypePlayer.Human)
                         Program.formMain.SetNeedRedrawFrame();
                 }
@@ -832,7 +832,7 @@ namespace Fantasy_Kingdoms_Battle
             // 
 
             int gold = RequiredGold();// На всякий случай запоминаем точное значение. вдруг потом при трате что-нибудь поменяется
-            Player.SpendGold(gold);
+            Player.SpendResource(FormMain.Config.Gold, gold);
             SpendedGoldForSetFlag += gold;
 
             if (DaySetFlag == 0)
@@ -874,7 +874,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(TypeFlag != TypeFlag.None);
             AssertNotDestroyed();
 
-            Player.ReturnGold(Cashback());
+            Player.ReturnResource(FormMain.Config.Gold, Cashback());
             DropFlag();
         }
 
@@ -1414,7 +1414,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(cell.PurchaseValue == 0);
 
             cell.PurchaseValue = cell.GetCost();
-            Player.SpendGold(cell.PurchaseValue);
+            Player.SpendResource(FormMain.Config.Gold, cell.PurchaseValue);
             ListQueueProcessing.Add(cell);
             cell.PosInQueue = ListQueueProcessing.Count;
         }
@@ -1427,7 +1427,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(cell.PurchaseValue > 0);
 
             cell.PosInQueue = -1;
-            Player.ReturnGold(cell.PurchaseValue);
+            Player.ReturnResource(FormMain.Config.Gold, cell.PurchaseValue);
             cell.PurchaseValue = 0;
             ListQueueProcessing.Remove(cell);
 

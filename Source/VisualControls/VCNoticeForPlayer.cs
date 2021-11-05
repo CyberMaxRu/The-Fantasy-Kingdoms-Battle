@@ -74,7 +74,7 @@ namespace Fantasy_Kingdoms_Battle
                     BaseResource br = Entity as BaseResource;
                     nameNotice = $"Поступил ресурс {br.Descriptor.Name}:";
                     nameText = $"+{br.Quantity}";
-                    colorNameEntity = Color.DarkGoldenrod;
+                    colorNameEntity = Color.LimeGreen;
                     break;
                 default:
                     throw new Exception($"Неизвестный тип события: {TypeNotice}.");
@@ -91,7 +91,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Visible = false;
             Program.formMain.CurrentLobby.CurrentPlayer.RemoveNoticeForPlayer(this);
-            Program.formMain.ShowPlayersNotices();
+            Program.formMain.ShowPlayerNotices();
             Program.formMain.NeedRedrawFrame();
             Dispose();
         }

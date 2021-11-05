@@ -575,7 +575,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(CheckRequirements());
 
-            Construction.Player.SpendGold(GetCost());
+            Construction.Player.SpendResource(FormMain.Config.Gold, GetCost());
 
             switch (TypeExtra)
             {

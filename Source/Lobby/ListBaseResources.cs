@@ -46,7 +46,7 @@ namespace Fantasy_Kingdoms_Battle
 
             for (int i = 0; i < Count; i++)
             {
-                this[i] = qbr[i];
+                this[i].Quantity = qbr[i].Quantity;
             }    
         }
 

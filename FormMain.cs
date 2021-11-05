@@ -69,7 +69,6 @@ namespace Fantasy_Kingdoms_Battle
 
         private readonly VCToolLabel labelDay;
         private readonly VCToolLabel labelBuilders;
-        private readonly VCToolLabel labelGold;
         private readonly VCToolLabelResource[] labelsResources;
         private readonly VCToolLabel labelHeroes;
         private readonly VCToolLabel labelCorruption;
@@ -571,13 +570,10 @@ namespace Fantasy_Kingdoms_Battle
                 labelBuilders = new VCToolLabel(bmpPreparedToolbar, labelDay.NextLeft() - 4, labelDay.ShiftY, "", GUI_16_BUILDER);
                 labelBuilders.ShowHint += LabelBuilders_ShowHint;
                 labelBuilders.Width = 88;
-                labelGold = new VCToolLabel(bmpPreparedToolbar, labelBuilders.NextLeft() - 4, labelDay.ShiftY, "", GUI_16_COFFERS);
-                labelGold.ShowHint += LabelGold_ShowHint;
-                labelGold.Width = 88;
 
                 labelsResources = new VCToolLabelResource[Config.BaseResources.Count];
 
-                int nextLeft = labelGold.NextLeft() - 4;
+                int nextLeft = labelBuilders.NextLeft() - 4;
                 foreach (DescriptorBaseResource br in Config.BaseResources)
                 {
                     VCToolLabelResource lblRes = new VCToolLabelResource(bmpPreparedToolbar, nextLeft, labelDay.ShiftY, br);
@@ -996,12 +992,6 @@ namespace Fantasy_Kingdoms_Battle
                     curAppliedPlayer.SkipBattle ? "Битва пропускается" : "Сегодня битва с другим игроком");
         }
 
-        private void LabelGold_ShowHint(object sender, EventArgs e)
-        {
-            formHint.AddStep2Header("Казна");
-            formHint.AddStep5Description("Количество золота в казне и постоянный доход в день");
-        }
-
         private void LabelDay_ShowHint(object sender, EventArgs e)
         {
             formHint.AddStep2Header("Ход игры");
@@ -1286,7 +1276,6 @@ namespace Fantasy_Kingdoms_Battle
                     btnEndTurn.ImageIsEnabled = true;
                     labelDay.Visible = true;
                     labelBuilders.Visible = true;
-                    labelGold.Visible = true;
                     ShowResoures(true);
                     labelGreatness.Visible = true;
                     labelHeroes.Visible = true;
@@ -1299,7 +1288,6 @@ namespace Fantasy_Kingdoms_Battle
                     btnEndTurn.ImageIsEnabled = false;
                     labelDay.Visible = false;
                     labelBuilders.Visible = false;
-                    labelGold.Visible = false;
                     ShowResoures(false);
                     labelGreatness.Visible = false;
                     labelHeroes.Visible = false;
@@ -1357,17 +1345,16 @@ namespace Fantasy_Kingdoms_Battle
             AdjustPageTournament();
             UpdateNeighborhoods();
             AdjustNeighborhood();
-            ShowPlayersNotices();
+            ShowPlayerNotices();
         }
 
-        internal void ShowPlayersNotices()
+        internal void ShowPlayerNotices()
         {
             pageResultTurn.Text = curAppliedPlayer.ListNoticesForPlayer.Count > 0 ? curAppliedPlayer.ListNoticesForPlayer.Count.ToString() : "";
 
             if (curAppliedPlayer.ListNoticesForPlayer.Count > 0)
             {
                 int nextY = 0;
-                //int nextY = pageResultTurn.Page.Height - curAppliedPlayer.ListEventsForPlayer[0].Height;
 
                 foreach (VCNoticeForPlayer ep in curAppliedPlayer.ListNoticesForPlayer)
                 {
@@ -1759,7 +1746,6 @@ namespace Fantasy_Kingdoms_Battle
             //
             if ((Layers[0] == layerGame) && (lobby.CurrentPlayer != null) && MainControl.Visible)
             {
-                labelGold.Text = lobby.CurrentPlayer.Gold.ToString();
                 labelBuilders.Text = $"{curAppliedPlayer.FreeBuilders}/{curAppliedPlayer.Builders}";
                 labelGreatness.Text = curAppliedPlayer.LevelGreatness.ToString()
                     + " (+" + curAppliedPlayer.PointGreatnessPerDay().ToString() + ")"

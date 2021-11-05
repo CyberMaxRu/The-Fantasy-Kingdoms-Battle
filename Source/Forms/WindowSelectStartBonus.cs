@@ -39,8 +39,11 @@ namespace Fantasy_Kingdoms_Battle
 
                 nextTop = lblCaption.NextTop();
 
-                if (sb.Gold > 0)
-                    AddBonus(text, FormMain.Config.Gold.ImageIndex, FormMain.Config.Gold.Name, $"+{sb.Gold}");
+                foreach (BaseResource br in sb.BaseResources)
+                {
+                    if (br.Quantity > 0)
+                        AddBonus(text, br.Descriptor.ImageIndex, br.Descriptor.Name, $"+{br.Quantity}");
+                }
                 if (sb.Builders > 0)
                     AddBonus(text, FormMain.Config.Gui48_Build, "Строители", $"+{sb.Builders}");
                 if (sb.PeasantHouse > 0)
@@ -49,12 +52,6 @@ namespace Fantasy_Kingdoms_Battle
                     AddBonus(text, FormMain.Config.FindConstruction(FormMain.Config.IDHolyPlace).ImageIndex, FormMain.Config.FindConstruction(FormMain.Config.IDHolyPlace).Name, $"+{sb.HolyPlace}");
                 if (sb.Scouting > 0)
                     AddBonus(text, FormMain.Config.Gui48_FlagScout, "Разведанных мест", $"+{sb.Scouting}");
-
-                foreach (BaseResource br in sb.BaseResources)
-                {
-                    if (br.Quantity > 0)
-                        AddBonus(text, br.Descriptor.ImageIndex, br.Descriptor.Name, $"+{br.Quantity}");
-                }
 
                 text.Height = lblCaption.NextTop() + (text.Controls[text.Controls.Count - 1].Height + FormMain.Config.GridSize) * 4;
                 lblCaption.Width = text.Width;

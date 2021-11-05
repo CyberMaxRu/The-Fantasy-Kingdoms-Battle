@@ -3,13 +3,18 @@
   <TypeLobby>
     <Name>8 игроков</Name>
     <QuantityPlayers>8</QuantityPlayers>
-    <Gold>8000</Gold>
     <BaseResources>
+      <Gold>8000</Gold>
       <Wood>200</Wood>
       <Iron>100</Iron>
       <Stone>500</Stone>
     </BaseResources>
-    <MaxGold>100000</MaxGold>
+    <MaxBaseResources>
+      <Gold>100000</Gold>
+      <Wood>10000</Wood>
+      <Iron>5000</Iron>
+      <Stone>50000</Stone>
+    </MaxBaseResources>
     <MaxHeroes>25</MaxHeroes>
     <StartQuantityFlags>3</StartQuantityFlags>
     <MaxQuantityFlags>7</MaxQuantityFlags>

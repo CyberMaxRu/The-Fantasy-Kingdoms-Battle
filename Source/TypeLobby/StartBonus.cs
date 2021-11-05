@@ -18,20 +18,23 @@ namespace Fantasy_Kingdoms_Battle
 
         public StartBonus(XmlNode n)
         {
-            Gold = XmlUtils.GetInteger(n, "Gold");
+            BaseResources = new ListBaseResources(n.SelectSingleNode("Resources"));
             Builders = XmlUtils.GetInteger(n, "Builders");
             Scouting = XmlUtils.GetInteger(n, "Scouting");
             PeasantHouse = XmlUtils.GetInteger(n, "PeasantHouse");
             HolyPlace = XmlUtils.GetInteger(n, "HolyPlace");
-            BaseResources = new ListBaseResources(n.SelectSingleNode("Resources"));
             Points = XmlUtils.GetInteger(n, "Points");
             MaxQuantity = XmlUtils.GetInteger(n, "MaxQuantity");
             if (MaxQuantity == 0)
                 MaxQuantity = 10;
             CurrentQuantity = 0;
 
-            Debug.Assert(Gold >= 0);
-            Debug.Assert(Gold <= 10000);
+            foreach (BaseResource br in BaseResources)
+            {
+                Debug.Assert(br.Quantity >= 0);
+                Debug.Assert(br.Quantity <= 10000);
+            }
+
             Debug.Assert(Builders >= 0);
             Debug.Assert(Builders <= 10);
             Debug.Assert(Scouting >= 0);
@@ -44,10 +47,9 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Points <= 10);
             Debug.Assert(MaxQuantity >= 1);
             Debug.Assert(MaxQuantity <= 10);
-            Debug.Assert((Gold > 0) || (Builders > 0) || (Scouting > 0) || (PeasantHouse > 0) || (HolyPlace > 0) || BaseResources.ExistsResources());
+            Debug.Assert((Builders > 0) || (Scouting > 0) || (PeasantHouse > 0) || (HolyPlace > 0) || BaseResources.ExistsResources());
         }
 
-        internal int Gold { get; private set; }
         internal int Builders { get; private set; }
         internal int Scouting { get; private set; }
         internal int PeasantHouse { get; private set; }
@@ -59,7 +61,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void AddBonus(StartBonus sb)
         {
-            Gold += sb.Gold;
             BaseResources.AddResources(sb.BaseResources);
             Builders += sb.Builders;
             Scouting += sb.Scouting;
@@ -76,8 +77,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int QuantityElements()
         {
-            int q = (Gold != 0 ? 1 : 0)
-                + (Builders != 0 ? 1 : 0)
+            int q = (Builders != 0 ? 1 : 0)
                 + (Scouting != 0 ? 1 : 0)
                 + (PeasantHouse != 0 ? 1 : 0)
                 + (HolyPlace != 0 ? 1 : 0);
@@ -95,8 +95,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             StartBonus otherStartBonus = obj as StartBonus;
 
-            return (Gold == otherStartBonus.Gold)
-                && BaseResources.Equals(otherStartBonus.BaseResources)
+            return BaseResources.Equals(otherStartBonus.BaseResources)
                 && (Scouting == otherStartBonus.Scouting)
                 && (PeasantHouse == otherStartBonus.PeasantHouse)
                 && (HolyPlace == otherStartBonus.HolyPlace)

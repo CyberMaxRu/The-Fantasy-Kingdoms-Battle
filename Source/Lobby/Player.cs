@@ -26,7 +26,6 @@ namespace Fantasy_Kingdoms_Battle
     internal abstract class Player : BattleParticipant
     {
         private Construction Castle;
-        private int gold;
 
         private bool startBonusApplied = false;
 
@@ -44,6 +43,11 @@ namespace Fantasy_Kingdoms_Battle
             PositionInLobby = playerIndex + 1;
 
             Initialization = true;
+
+            //
+            BaseResources = new ListBaseResources(lobby.TypeLobby.BaseResources);
+            if (Descriptor.TypePlayer == TypePlayer.Computer)
+                BaseResources[FormMain.Config.Gold.Number].Quantity = 100_000;
 
             // Создаем справочик количества приоритетов флагов
             foreach (PriorityExecution pe in Enum.GetValues(typeof(PriorityExecution)))
@@ -103,11 +107,6 @@ namespace Fantasy_Kingdoms_Battle
             ScoutRandomLair(lobby.TypeLobby.StartScoutedLairs);
 
             //
-            Gold = Lobby.TypeLobby.Gold;
-            if (Descriptor.TypePlayer == TypePlayer.Computer)
-                Gold = 100_000;
-            BaseResources = new ListBaseResources(lobby.TypeLobby.BaseResources);
-
             Castle = GetPlayerConstruction(FormMain.Config.FindConstruction(FormMain.Config.IDConstructionCastle));
             Castle.Gold = Gold;
             Graveyard = GetPlayerConstruction(FormMain.Config.FindConstruction(FormMain.Config.IDCityGraveyard));
@@ -453,7 +452,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (IsLive == true)
             {
-                IncomeGold(Income());
+                ReceivedResource(FormMain.Config.Gold, Income());
 
                 ValidateHeroes();
 
@@ -477,10 +476,10 @@ namespace Fantasy_Kingdoms_Battle
         internal List<Construction> Constructions { get; } = new List<Construction>();
         internal int LevelCastle => Castle.Level;
         internal List<Hero> AllHeroes { get; } = new List<Hero>();
-        internal int Gold { get => gold; private set { gold = value; if (Castle != null) Castle.Gold = gold; } }// Текущее количество золота
-        internal int GoldCollected { get; private set; }// Собрано золота за игру
+        internal int Gold { get => BaseResources[FormMain.Config.Gold.Number].Quantity; }// Текущее количество золота
         internal int GreatnessCollected { get; private set; }// Собрано величия за игру
         internal ListBaseResources BaseResources { get; }// Базовые ресурсы
+        internal ListBaseResources BaseResourcesCollected { get; } = new ListBaseResources();// Собрано базовых ресурсов
 
         //
         internal List<VCNoticeForPlayer> ListNoticesForPlayer { get; } = new List<VCNoticeForPlayer>();// Список событий в графстве
@@ -594,7 +593,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(pb.CheckRequirements());
 
-            SpendGold(pb.CostBuyOrUpgrade());
+            SpendResource(FormMain.Config.Gold, pb.CostBuyOrUpgrade());
             if (!Program.formMain.Settings.CheatingIgnoreBuilders)
                 FreeBuilders -= pb.TypeConstruction.Levels[pb.Level + 1].Builders;
             AddGreatness(pb.TypeConstruction.Levels[pb.Level + 1].GreatnessByConstruction);
@@ -781,7 +780,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal bool CheckRequireGold(int needGold)
         {
-            if (Program.formMain.Settings.CheatingIgnoreGold)
+            if (Program.formMain.Settings.CheatingIgnoreBaseResources)
                 return true;
 
             return Gold >= needGold;
@@ -1046,25 +1045,19 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (l.TypeConstruction.Reward != null)
             {
-                IncomeGold(l.TypeConstruction.Reward.Gold);
+                ReceivedResource(FormMain.Config.Gold, l.TypeConstruction.Reward.Gold);
                 AddGreatness(l.TypeConstruction.Reward.Greatness);
             }
 
             if (l.TypeConstruction.HiddenReward != null)
             {
-                IncomeGold(l.TypeConstruction.HiddenReward.Gold);
+                ReceivedResource(FormMain.Config.Gold, l.TypeConstruction.HiddenReward.Gold);
                 AddGreatness(l.TypeConstruction.HiddenReward.Greatness);
             }
         }
 
         protected void ApplyStartBonus(StartBonus sb)
         {
-            if (sb.Gold > 0)
-            {
-                IncomeGold(sb.Gold);
-                //AddNoticeForPlayer()
-            }
-
             BaseResources.AddResources(sb.BaseResources);
             foreach (BaseResource br in sb.BaseResources)
             {
@@ -1082,7 +1075,7 @@ namespace Fantasy_Kingdoms_Battle
             startBonusApplied = true;
 
             if (GetTypePlayer() == TypePlayer.Human)
-                Program.formMain.ShowPlayersNotices();
+                Program.formMain.ShowPlayerNotices();
         }
 
         internal void AddLose()
@@ -1118,38 +1111,51 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void SpendGold(int gold)
+        internal void SpendResource(DescriptorBaseResource r, int value)
         {
-            Debug.Assert(gold >= 0);
-            Debug.Assert(Gold >= gold);
+            Debug.Assert(BaseResources[r.Number].Quantity >= 0);
+            Debug.Assert(BaseResources[r.Number].Quantity >= value);
 
-            if (!Program.formMain.Settings.CheatingIgnoreGold)
-                Gold -= gold;
+            if (!Program.formMain.Settings.CheatingIgnoreBaseResources)
+                BaseResources[r.Number].Quantity -= value;
+
+            UpdateResourceInCastle(r);
         }
 
-        internal void ReturnGold(int gold)
+        internal void ReturnResource(DescriptorBaseResource r, int value)
         {
-            Debug.Assert(Gold >= 0);
-            Debug.Assert(Gold <= Lobby.TypeLobby.MaxGold);
-            Debug.Assert(gold >= 0);
+            Debug.Assert(BaseResources[r.Number].Quantity >= 0);
+            Debug.Assert(BaseResources[r.Number].Quantity <= Lobby.TypeLobby.MaxBaseResources[r.Number].Quantity);
+            Debug.Assert(value >= 0);
 
-            Gold += AllowAddGold(gold);
+            BaseResources[r.Number].Quantity += AllowAddBaseResource(r, value);
+
+            UpdateResourceInCastle(r);
         }
 
-        internal void IncomeGold(int gold)
+        internal void ReceivedResource(DescriptorBaseResource r, int value)
         {
-            Debug.Assert(Gold >= 0);
-            Debug.Assert(Gold <= Lobby.TypeLobby.MaxGold);
-            Debug.Assert(gold >= 0, $"Доход: {gold}");
+            Debug.Assert(BaseResources[r.Number].Quantity >= 0);
+            Debug.Assert(BaseResources[r.Number].Quantity <= Lobby.TypeLobby.MaxBaseResources[r.Number].Quantity);
+            Debug.Assert(value >= 0, $"Поступление ресурса {r.ID}: {value}");
 
-            int addGold = AllowAddGold(gold);
-            Gold += addGold;
-            GoldCollected += addGold;
+            int addValue = AllowAddBaseResource(r, value);
+            BaseResources[r.Number].Quantity += addValue;
+            BaseResourcesCollected[r.Number].Quantity += addValue;
+
+            UpdateResourceInCastle(r);
         }
 
-        private int AllowAddGold(int gold)
+        private int AllowAddBaseResource(DescriptorBaseResource r, int value)
         {
-            return Gold + gold <= Lobby.TypeLobby.MaxGold ? gold : Lobby.TypeLobby.MaxGold - Gold;
+            return BaseResources[r.Number].Quantity + value <= Lobby.TypeLobby.MaxBaseResources[r.Number].Quantity
+                ? value : Lobby.TypeLobby.MaxBaseResources[r.Number].Quantity - BaseResources[r.Number].Quantity;
+        }
+
+        private void UpdateResourceInCastle(DescriptorBaseResource r)
+        {
+            if ((Castle != null) && (r == FormMain.Config.Gold))
+                Castle.Gold = BaseResources[r.Number].Quantity;
         }
 
         internal void AddGreatness(int greatness)
