@@ -40,20 +40,23 @@ namespace Fantasy_Kingdoms_Battle
                 nextTop = lblCaption.NextTop();
 
                 if (sb.Gold > 0)
-                    AddBonus(text, sb.Gold.ToString(), $"+{sb.Gold} золота", FormMain.GUI_16_GOLD);
-                if (sb.Greatness > 0)
-                    AddBonus(text, sb.Greatness.ToString(), $"+{sb.Greatness} очков величия", FormMain.GUI_16_GREATNESS);
+                    AddBonus(text, FormMain.Config.Gui48_Gold, "Золото", $"+{sb.Gold}");
                 if (sb.Builders > 0)
-                    AddBonus(text, sb.Builders.ToString(), $"+{sb.Builders} строителей (на 1 ход)", FormMain.GUI_16_BUILDER);
+                    AddBonus(text, FormMain.Config.Gui48_Build, "Строители", $"+{sb.Builders}");
                 if (sb.PeasantHouse > 0)
-                    AddBonus(text, sb.PeasantHouse.ToString(), $"+{sb.PeasantHouse} крестьянских домов", FormMain.GUI_16_PEASANT_HOUSE);
+                    AddBonus(text, FormMain.Config.FindConstruction(FormMain.Config.IDPeasantHouse).ImageIndex, "Дом крестьян", $"+{sb.PeasantHouse}");
                 if (sb.HolyPlace > 0)
-                    AddBonus(text, sb.HolyPlace.ToString(), $"+{sb.HolyPlace} Святых земель", FormMain.GUI_16_HOLYLAND);
+                    AddBonus(text, FormMain.Config.FindConstruction(FormMain.Config.IDHolyPlace).ImageIndex, FormMain.Config.FindConstruction(FormMain.Config.IDHolyPlace).Name, $"+{sb.HolyPlace}");
                 if (sb.Scouting > 0)
-                    AddBonus(text, sb.Scouting.ToString(), $"+{sb.Scouting} разведанных мест", FormMain.GUI_16_FLAG_SCOUT);
+                    AddBonus(text, FormMain.Config.Gui48_FlagScout, "Разведанных мест", $"+{sb.Scouting}");
 
-                text.Width = 160;
-                text.Height = 200;
+                for (int i = 0; i < sb.BaseResources.Count; i++)
+                {
+                    if (sb.BaseResources[i] > 0)
+                        AddBonus(text, FormMain.Config.BaseResources[i].ImageIndex, FormMain.Config.BaseResources[i].Name, $"+{sb.BaseResources[i]}");
+                }
+
+                text.Height = 280;
                 lblCaption.Width = text.Width;
                 nextLeft = text.NextLeft() + FormMain.Config.GridSize;
                 idx++;
@@ -71,20 +74,20 @@ namespace Fantasy_Kingdoms_Battle
             ClientControl.Width = nextLeft - FormMain.Config.GridSize;
             ClientControl.Height = btnOk.ShiftY + btnOk.Height;
 
-            void AddBonus(VisualControl parent, string text, string hint, int imageIndex)
+            void AddBonus(VisualControl parent, int imageIndex, string caption, string text)
             {
                 Debug.Assert(text != null);
 
-                //VCCustomEvent evnt = new VCCustomEvent()
+                VCCustomEvent evnt = new VCCustomEvent();
+                parent.AddControl(evnt);
+                evnt.ShiftX = FormMain.Config.GridSize;
+                evnt.ShiftY = nextTop;
+                evnt.Width = 232;
+                evnt.SetEvent(imageIndex, caption, text, Color.DarkGoldenrod);
+                evnt.ClickOnParent = true;
 
-                VCLabel label = new VCLabel(parent, FormMain.Config.GridSize, nextTop, Program.formMain.fontParagraph, Color.White, Program.formMain.fontParagraph.MaxHeightSymbol, $"+{text}");
-                label.StringFormat.Alignment = StringAlignment.Near;
-                label.BitmapList = Program.formMain.ilGui16;
-                label.ImageIndex = imageIndex;
-                label.Width = 120;
-                label.ClickOnParent = true;
-                label.Hint = hint;
-                nextTop = label.ShiftY + label.Height;
+                nextTop = evnt.NextTop();
+                parent.Width = evnt.NextLeft();
             }
         }
 
