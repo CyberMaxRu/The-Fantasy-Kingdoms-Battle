@@ -22,7 +22,7 @@ namespace Fantasy_Kingdoms_Battle
             ID = generation++;
             TypeLobby = tl;
             StateLobby = StateLobby.Start;
-            Day = 1;
+            Turn = 1;
 
             // Создаем конфигурацию логов
             Lairs = new List<DescriptorConstruction>[TypeLobby.MapHeight, TypeLobby.MapWidth];
@@ -121,7 +121,8 @@ namespace Fantasy_Kingdoms_Battle
         internal TypeLobby TypeLobby { get; }// Тип лобби
         internal Player[] Players { get; }
         internal Player CurrentPlayer { get; private set; }
-        internal int Day { get; private set; }// Текущий день лобби
+        internal int Turn { get; private set; }// Текущий ход лобби
+        //internal int 
         internal List<Battle> Battles { get; } = new List<Battle>();
         internal bool HumanIsWin { get; private set; }
         internal StateLobby StateLobby { get; set; }
@@ -210,7 +211,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (index != -1)
             {
-                Debug.Assert(Players[index].IsLive || (Players[index].DayOfEndGame == Day - 1));
+                Debug.Assert(Players[index].IsLive || (Players[index].DayOfEndGame == Turn - 1));
 
                 CurrentPlayer = Players[index];
             }
@@ -235,7 +236,7 @@ namespace Fantasy_Kingdoms_Battle
                 // Действие игроков (ход людей и ИИ)
                 for (int i = 0; i < Players.Length; i++)
                 {
-                    if (Players[i].IsLive || (Players[i].DayOfEndGame == Day - 1))
+                    if (Players[i].IsLive || (Players[i].DayOfEndGame == Turn - 1))
                     {
                         SetPlayerAsCurrent(i);
                         Players[i].PrepareTurn();
@@ -249,7 +250,7 @@ namespace Fantasy_Kingdoms_Battle
                             return;
                         }
 
-                        if (Day == 1)
+                        if (Turn == 1)
                         {
                             if (Players[i].VariantsStartBonuses.Count > 0)
                                 Players[i].SelectStartBonus();
@@ -268,7 +269,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
 
                 // Расчет результатов хода игроков
-                foreach (Player p in Players.Where(pl => pl.IsLive || (pl.DayOfEndGame == Day - 1)))
+                foreach (Player p in Players.Where(pl => pl.IsLive || (pl.DayOfEndGame == Turn - 1)))
                     p.CalcTurn();
 
                 DoEndTurn();
@@ -277,7 +278,7 @@ namespace Fantasy_Kingdoms_Battle
             bool ExistsHumanPlayer()
             {
                 foreach (Player lp in Players)
-                    if ((lp.IsLive || (lp.DayOfEndGame == Day - 1)) && (lp.GetTypePlayer() == TypePlayer.Human))
+                    if ((lp.IsLive || (lp.DayOfEndGame == Turn - 1)) && (lp.GetTypePlayer() == TypePlayer.Human))
                         return true;
 
                 return false;
@@ -287,7 +288,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 for (int i = 0; i < Players.Length; i++)
                     if (Players[i].GetTypePlayer() == TypePlayer.Human)
-                        if (Players[i].IsLive || ((Players[i].DayOfEndGame == Day - 1)  && (i >= fromIndex)))
+                        if (Players[i].IsLive || ((Players[i].DayOfEndGame == Turn - 1)  && (i >= fromIndex)))
                             return true;
 
                 return false;
@@ -360,7 +361,7 @@ namespace Fantasy_Kingdoms_Battle
             }*/
 
             // Делаем начало хода
-            Day++;
+            Turn++;
             CurrentPlayer = null;
 
             int livePlayers = 0;
@@ -396,7 +397,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Battle b;
             WindowBattle formBattle;
-            BattlesPlayers rb = new BattlesPlayers(Day);
+            BattlesPlayers rb = new BattlesPlayers(Turn);
             BattlesPlayers.Add(rb);
 
             foreach (Player p in Players)
@@ -427,7 +428,7 @@ namespace Fantasy_Kingdoms_Battle
                         Debug.Assert(!(p.Opponent is null));
 
                         bool showForPlayer = false;// (p.GetTypePlayer() == TypePlayer.Human) || (p.Opponent.GetTypePlayer() == TypePlayer.Human);
-                        b = new Battle(p, p.Opponent, Day, Rnd.Next(), maxSteps, showForPlayer);
+                        b = new Battle(p, p.Opponent, Turn, Rnd.Next(), maxSteps, showForPlayer);
 
                         if (showForPlayer)
                         {
@@ -451,7 +452,7 @@ namespace Fantasy_Kingdoms_Battle
                         rb.Players.Add(b.Player2 as Player, b.Winner == b.Player2);
 
                         // Добавляем событие всем живым игрокам
-                        foreach (Player lp in Players.Where(lpp => lpp.IsLive || (lpp.DayOfEndGame == Day)))
+                        foreach (Player lp in Players.Where(lpp => lpp.IsLive || (lpp.DayOfEndGame == Turn)))
                             if (lp is PlayerHuman h)
                                 h.AddEvent(new VCEventBattle(b));
                     }
@@ -508,7 +509,7 @@ namespace Fantasy_Kingdoms_Battle
                 lp.PositionInLobby = pos++;
 
             // Теперь сортируем игроков, вылетевших на прошлом ходу
-            foreach (Player lp in Players.Where(p => p.DayOfEndGame == Day).OrderBy(p => p.CurrentLoses).OrderByDescending(p => p.GreatnessCollected).OrderByDescending(p => p.GoldCollected))
+            foreach (Player lp in Players.Where(p => p.DayOfEndGame == Turn).OrderBy(p => p.CurrentLoses).OrderByDescending(p => p.GreatnessCollected).OrderByDescending(p => p.GoldCollected))
                 lp.PositionInLobby = pos++;
 
             // Проверяем, что нет ошибки в позициях
@@ -556,13 +557,13 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void CalcDayNextBattleBetweenPlayers()
         {
-            if (Day <= TypeLobby.DayStartBattleBetweenPlayers)
+            if (Turn <= TypeLobby.DayStartBattleBetweenPlayers)
                 DayNextBattleBetweenPlayers = TypeLobby.DayStartBattleBetweenPlayers;
             else if (TypeLobby.DaysBeforeNextBattleBetweenPlayers == 0)
-                DayNextBattleBetweenPlayers = Day;
+                DayNextBattleBetweenPlayers = Turn;
             else
             {
-                int delta = Day - TypeLobby.DayStartBattleBetweenPlayers;
+                int delta = Turn - TypeLobby.DayStartBattleBetweenPlayers;
                 int rep = (int)Math.Truncate((double)delta / (TypeLobby.DaysBeforeNextBattleBetweenPlayers + 1));
                 int days = delta % (TypeLobby.DaysBeforeNextBattleBetweenPlayers + 1);
                 if (days > 0)
@@ -570,14 +571,14 @@ namespace Fantasy_Kingdoms_Battle
                 DayNextBattleBetweenPlayers = TypeLobby.DayStartBattleBetweenPlayers + (rep * (TypeLobby.DaysBeforeNextBattleBetweenPlayers + 1));
             }
 
-            Debug.Assert(DayNextBattleBetweenPlayers >= Day);
+            Debug.Assert(DayNextBattleBetweenPlayers >= Turn);
 
-            DaysLeftForBattle = DayNextBattleBetweenPlayers - Day;
+            DaysLeftForBattle = DayNextBattleBetweenPlayers - Turn;
         }
 
         internal bool IsDayForBattleBetweenPlayers()
         {
-            return Day == DayNextBattleBetweenPlayers;
+            return Turn == DayNextBattleBetweenPlayers;
         }
     }
 }

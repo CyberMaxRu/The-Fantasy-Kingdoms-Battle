@@ -225,7 +225,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             Builders = Castle.TypeConstruction.Levels[Castle.Level].BuildersPerDay;
-            if (Lobby.Day == 1)
+            if (Lobby.Turn == 1)
                 Builders += Lobby.TypeLobby.StartBuilders;
             FreeBuilders = Builders;
 
@@ -372,7 +372,7 @@ namespace Fantasy_Kingdoms_Battle
                         //Debug.Assert(p.TargetLair.CombatHeroes.Count > 0);
 
                         bool showForPlayer = false;// Player.TypePlayer == TypePlayer.Human;
-                        b = new Battle(this, pl, Lobby.Day, Lobby.Rnd.Next(), maxSteps, showForPlayer);
+                        b = new Battle(this, pl, Lobby.Turn, Lobby.Rnd.Next(), maxSteps, showForPlayer);
 
                         if (showForPlayer)
                         {
@@ -1076,13 +1076,13 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(IsLive);
             Debug.Assert(DayOfEndGame == 0);
 
-            LoseInfo[CurrentLoses] = new LoseInfo(Lobby.Day, opponent);
+            LoseInfo[CurrentLoses] = new LoseInfo(Lobby.Turn, opponent);
             CurrentLoses++;
 
             if (CurrentLoses == MaxLoses)
             {
                 IsLive = false;
-                DayOfEndGame = Lobby.Day;
+                DayOfEndGame = Lobby.Turn;
             }
         }
 

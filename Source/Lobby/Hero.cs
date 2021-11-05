@@ -21,7 +21,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Construction = pb;
             Abode = Construction;
-            DayOfHire = Player.Lobby.Day;
+            DayOfHire = Player.Lobby.Turn;
 
             FullName = (pb.TypeConstruction.TrainedHero.PrefixName.Length > 0 ? pb.TypeConstruction.TrainedHero.PrefixName + " " : "")
                 + GetRandomName(pb.TypeConstruction.TrainedHero.NameFromTypeHero == null ? pb.TypeConstruction.TrainedHero.Names : pb.TypeConstruction.TrainedHero.NameFromTypeHero.Names)
@@ -40,7 +40,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Construction = pb;
             Abode = Construction;
-            DayOfHire = Player.Lobby.Day;
+            DayOfHire = Player.Lobby.Turn;
             FullName = TypeCreature.Name;
 
             //

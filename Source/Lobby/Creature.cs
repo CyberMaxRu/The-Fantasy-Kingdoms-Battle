@@ -214,7 +214,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(ReasonOfDeath == ReasonOfDeath.None);
 
             IsLive = false;
-            DayOfDeath = BattleParticipant.Lobby.Day;
+            DayOfDeath = BattleParticipant.Lobby.Turn;
             ReasonOfDeath = reason;
         }
 
@@ -431,7 +431,7 @@ namespace Fantasy_Kingdoms_Battle
         internal virtual void PrepareTurn()
         {
             // Расчет потребностей
-            if (BattleParticipant.Lobby.Day > 0)
+            if (BattleParticipant.Lobby.Turn > 0)
             {
                 foreach (CreatureNeed cn in Needs)
                 {

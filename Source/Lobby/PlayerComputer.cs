@@ -25,7 +25,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override void DoTurn()
         {
             Debug.Assert(Descriptor.TypePlayer == TypePlayer.Computer);
-            Debug.Assert(IsLive || (DayOfEndGame == Lobby.Day - 1));
+            Debug.Assert(IsLive || (DayOfEndGame == Lobby.Turn - 1));
 
             // На прошлом ходу игрок потерпел последнее поражение. Выходим
             if (DayOfEndGame > 0)
@@ -35,22 +35,22 @@ namespace Fantasy_Kingdoms_Battle
 
             // Здесь расчет хода для ИИ
             // Покупаем гильдии и нанимаем героев. На этом пока всё
-            if (Lobby.Day == 1)
+            if (Lobby.Turn == 1)
             {
                 GetPlayerConstruction(FormMain.Config.FindConstruction("GuildWarrior")).Build();
                 HireHeroes(GetPlayerConstruction(FormMain.Config.FindConstruction("GuildWarrior")), 4);
             }
-            else if (Lobby.Day == 2)
+            else if (Lobby.Turn == 2)
             {
                 //GetPlayerConstruction(FormMain.Config.FindConstruction("GuardBarrack")).Build();
                 //HireHeroes(GetPlayerConstruction(FormMain.Config.FindConstruction("GuardBarrack")), 4);
             }
-            else if (Lobby.Day == 3)
+            else if (Lobby.Turn == 3)
             {
                 GetPlayerConstruction(FormMain.Config.FindConstruction("GuildHunter")).Build();
                 HireHeroes(GetPlayerConstruction(FormMain.Config.FindConstruction("GuildHunter")), 4);
             }
-            else if (Lobby.Day == 4)
+            else if (Lobby.Turn == 4)
             {
                 GetPlayerConstruction(FormMain.Config.FindConstruction("GuildCleric")).Build();
                 HireHeroes(GetPlayerConstruction(FormMain.Config.FindConstruction("GuildCleric")), 4);

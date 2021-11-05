@@ -49,7 +49,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override void DoTurn()
         {
             Debug.Assert(Descriptor.TypePlayer == TypePlayer.Human);
-            Debug.Assert(IsLive || (DayOfEndGame == Lobby.Day - 1));
+            Debug.Assert(IsLive || (DayOfEndGame == Lobby.Turn - 1));
 
             ListEvents.Clear();
 

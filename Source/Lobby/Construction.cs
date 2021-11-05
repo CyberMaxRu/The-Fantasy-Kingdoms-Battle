@@ -555,7 +555,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(Level > 0);
 
-            if (Lobby.Day > 1)
+            if (Lobby.Turn > 1)
             {
                 if (TypeConstruction.Levels[Level].GreatnessPerDay > 0)
                     Player.AddGreatness(GreatnessPerDay());
@@ -821,7 +821,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(TypeConstruction.ID == FormMain.Config.IDConstructionCastle);
             TypeFlag = TypeFlag.Battle;
-            DaySetFlag = Player.Lobby.Day;
+            DaySetFlag = Player.Lobby.Turn;
         }
 
         internal void IncPriority()
@@ -839,7 +839,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Debug.Assert(TypeFlag == TypeFlag.None);
                 TypeFlag = TypeAction();
-                DaySetFlag = Player.Lobby.Day;
+                DaySetFlag = Player.Lobby.Turn;
             }
             else
             {
@@ -863,7 +863,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(TypeFlag != TypeFlag.None);
             AssertNotDestroyed();
 
-            return DaySetFlag == Player.Lobby.Day ? SpendedGoldForSetFlag : 0;
+            return DaySetFlag == Player.Lobby.Turn ? SpendedGoldForSetFlag : 0;
         }
 
         internal void CancelFlag()
