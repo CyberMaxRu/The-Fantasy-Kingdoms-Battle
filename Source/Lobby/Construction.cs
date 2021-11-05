@@ -60,7 +60,7 @@ namespace Fantasy_Kingdoms_Battle
             if (level == 1)
             {
                 Build(false);
-                DaysBuilded = TypeConstruction.Levels[1].DaysBuilding;
+                DaysBuilded = TypeConstruction.Levels[1].DaysProcessing;
             }
 
             // Настраиваем исследования 
@@ -344,7 +344,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int DayBuildingForLevel(int level)
         {
-            return TypeConstruction.Levels[level].DaysBuilding;
+            return TypeConstruction.Levels[level].DaysProcessing;
         }
 
         internal int GreatnesAddForLevel(int level)

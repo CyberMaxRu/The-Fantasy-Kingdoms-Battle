@@ -156,7 +156,6 @@ namespace Fantasy_Kingdoms_Battle
         public DescriptorCellMenuForConstructionLevel(DescriptorConstruction forConstruction, int number, Point coord, XmlNode n) : base(forConstruction, coord, n)
         {
             Number = number;
-            DaysBuilding = GetInteger(n, "DaysBuilding");
             Builders = GetInteger(n, "Builders");
             MaxInhabitant = GetInteger(n, "MaxInhabitant");
             Capacity = GetInteger(n, "Capacity");
@@ -196,11 +195,9 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(GreatnessByConstruction >= 0);
             Debug.Assert(GreatnessPerDay >= 0);
             Debug.Assert(BuildersPerDay >= 0);
-            Debug.Assert(DaysBuilding <= 50);
         }
 
         internal int Number { get; }
-        internal int DaysBuilding { get; }// Количество дней, которое строится
         internal int Builders { get; }// Количество требуемых строителей
         internal int MaxInhabitant { get; }
         internal int Capacity { get; }
