@@ -71,6 +71,17 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        internal bool ExistsResources()
+        {
+            for (int i = 0; i < Count; i++)
+            {
+                if (this[i] != 0)
+                    return true;
+            }
+
+            return false;
+        }
+
         public override bool Equals(object obj)
         {
             QuantityBaseResources qbr = obj as QuantityBaseResources;

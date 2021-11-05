@@ -44,6 +44,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Points <= 10);
             Debug.Assert(MaxQuantity >= 1);
             Debug.Assert(MaxQuantity <= 10);
+            Debug.Assert((Gold > 0) || (Builders > 0) || (Scouting > 0) || (PeasantHouse > 0) || (HolyPlace > 0) || BaseResources.ExistsResources());
         }
 
         internal int Gold { get; private set; }
