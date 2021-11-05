@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Descriptors>
+  <BaseResource>
+    <ID>Wood</ID>
+    <Name>Дерево</Name>
+    <Descriptions>Используется для строительства сооружений, оружия</Descriptions>
+    <ImageIndex>262</ImageIndex>
+    <ImageIndex16>26</ImageIndex16>
+    <Number>1</Number>
+  </BaseResource>
+  <BaseResource>
+    <ID>Iron</ID>
+    <Name>Железо</Name>
+    <Descriptions>Используется для строительства оружия, доспехов</Descriptions>
+    <ImageIndex>263</ImageIndex>
+    <ImageIndex16>27</ImageIndex16>
+    <Number>2</Number>
+  </BaseResource>
+  <BaseResource>
+    <ID>Stone</ID>
+    <Name>Камень</Name>
+    <Descriptions>Основной материал для строительства сооружений</Descriptions>
+    <ImageIndex>264</ImageIndex>
+    <ImageIndex16>28</ImageIndex16>
+    <Number>3</Number>
+  </BaseResource>
+</Descriptors>

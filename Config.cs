@@ -129,6 +129,13 @@ namespace Fantasy_Kingdoms_Battle
                 StartBonuses.Add(new StartBonus(n));
             }
 
+            // Загрузка конфигурации базовых ресурсов
+            xmlDoc = CreateXmlDocument(@"Config\Descriptors\BaseResources.xml");
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/BaseResource"))
+            {
+                BaseResources.Add(new DescriptorBaseResource(n));
+            }
+
             // Загрузка конфигурации типов сооружений
             xmlDoc = CreateXmlDocument(@"Config\Descriptors\TypeConstructions.xml");
             foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/TypeConstruction"))
@@ -311,6 +318,9 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorCreature tc in Creatures)
                 tc.TuneDeferredLinks();
 
+            foreach (DescriptorBaseResource br in BaseResources)
+                br.TuneDeferredLinks();
+
             foreach (DescriptorTypeConstruction tc in TypeConstructions)
                 tc.TuneDeferredLinks();
 
@@ -347,6 +357,7 @@ namespace Fantasy_Kingdoms_Battle
         internal bool AutoCreatedPlayer { get; }
 
         // Списки описателей
+        internal List<DescriptorBaseResource> BaseResources { get; } = new List<DescriptorBaseResource>();
         internal List<DescriptorTypeConstruction> TypeConstructions { get; } = new List<DescriptorTypeConstruction>();
         internal List<DescriptorConstructionVisit> ConstructionsVisits { get; } = new List<DescriptorConstructionVisit>();
         internal List<DescriptorConstruction> Constructions { get; } = new List<DescriptorConstruction>();
@@ -565,6 +576,17 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             throw new Exception("Тип атаки " + ID + " не найден.");
+        }
+
+        internal DescriptorBaseResource FindBaseResource(string ID)
+        {
+            foreach (DescriptorBaseResource br in BaseResources)
+            {
+                if (br.ID == ID)
+                    return br;
+            }
+
+            throw new Exception($"Базовый ресурс {ID} не найден.");
         }
 
         internal DescriptorTypeConstruction FindTypeConstruction(string ID)
