@@ -4,6 +4,11 @@
     <Name>8 игроков</Name>
     <QuantityPlayers>8</QuantityPlayers>
     <Gold>8000</Gold>
+    <BaseResources>
+      <Wood>200</Wood>
+      <Iron>100</Iron>
+      <Stone>500</Stone>
+    </BaseResources>
     <MaxGold>100000</MaxGold>
     <MaxHeroes>25</MaxHeroes>
     <StartQuantityFlags>3</StartQuantityFlags>

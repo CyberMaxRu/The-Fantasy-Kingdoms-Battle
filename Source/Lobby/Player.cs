@@ -106,6 +106,7 @@ namespace Fantasy_Kingdoms_Battle
             Gold = Lobby.TypeLobby.Gold;
             if (Descriptor.TypePlayer == TypePlayer.Computer)
                 Gold = 100_000;
+            BaseResources = new QuantityBaseResources(lobby.TypeLobby.BaseResources);
 
             Castle = GetPlayerConstruction(FormMain.Config.FindConstruction(FormMain.Config.IDConstructionCastle));
             Castle.Gold = Gold;
@@ -474,6 +475,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int Gold { get => gold; private set { gold = value; if (Castle != null) Castle.Gold = gold; } }// Текущее количество золота
         internal int GoldCollected { get; private set; }// Собрано золота за игру
         internal int GreatnessCollected { get; private set; }// Собрано величия за игру
+        internal QuantityBaseResources BaseResources { get; }// Базовые ресурсы
 
         //
         internal List<VCEventForPlayer> ListEventsForPlayer { get; } = new List<VCEventForPlayer>();// Список событий в графстве

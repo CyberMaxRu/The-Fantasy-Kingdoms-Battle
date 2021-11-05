@@ -12,15 +12,14 @@ namespace Fantasy_Kingdoms_Battle
     {
         public DescriptorBaseResource(XmlNode n) : base(n)
         {
-            ImageIndex16 = XmlUtils.GetIntegerNotNull(n, "ImageIndex16") - 1;
-            Number = XmlUtils.GetIntegerNotNull(n, "Number") - 1;
+            ImageIndex16 = XmlUtils.GetIntegerNotNull(n, "ImageIndex16");
+            Number = Config.BaseResources.Count;
 
             foreach (DescriptorBaseResource br in Config.BaseResources)
             {
                 Debug.Assert(br.ID != ID);
                 Debug.Assert(br.Name != Name);
                 Debug.Assert(br.ImageIndex != ImageIndex);
-                Debug.Assert(br.Number != Number);
             }
         }
 

@@ -115,6 +115,16 @@ namespace Fantasy_Kingdoms_Battle
                 TypeLandscapes.Add(new DescriptorTypeLandscape(n));
             }
 
+            // Загрузка конфигурации базовых ресурсов
+            xmlDoc = CreateXmlDocument(@"Config\Descriptors\BaseResources.xml");
+            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/BaseResource"))
+            {
+                BaseResources.Add(new DescriptorBaseResource(n));
+            }
+
+            Debug.Assert(BaseResources.Count > 0);
+            BaseResources.Capacity = BaseResources.Count;
+
             // Загрузка конфигураций лобби
             xmlDoc = CreateXmlDocument("Config\\TypeLobby.xml");
             foreach (XmlNode n in xmlDoc.SelectNodes("/TypeLobbies/TypeLobby"))
@@ -127,13 +137,6 @@ namespace Fantasy_Kingdoms_Battle
             foreach (XmlNode n in xmlDoc.SelectNodes("/StartBonuses/StartBonus"))
             {
                 StartBonuses.Add(new StartBonus(n));
-            }
-
-            // Загрузка конфигурации базовых ресурсов
-            xmlDoc = CreateXmlDocument(@"Config\Descriptors\BaseResources.xml");
-            foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/BaseResource"))
-            {
-                BaseResources.Add(new DescriptorBaseResource(n));
             }
 
             // Загрузка конфигурации типов сооружений

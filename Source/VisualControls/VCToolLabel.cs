@@ -3,7 +3,7 @@
 namespace Fantasy_Kingdoms_Battle
 {
     // Визуальный контрол - иконка 16 * 16 с текстом для тулбара
-    internal sealed class VCToolLabel : VCLabel
+    internal class VCToolLabel : VCLabel
     {
         public VCToolLabel(VisualControl parent, int shiftX, int shiftY, string text, int imageIndex)
             : base(parent, shiftX, shiftY, Program.formMain.fontMedCaption, Color.White, 26, text)

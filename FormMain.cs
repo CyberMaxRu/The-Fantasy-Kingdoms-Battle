@@ -70,9 +70,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCToolLabel labelDay;
         private readonly VCToolLabel labelBuilders;
         private readonly VCToolLabel labelGold;
-        private readonly VCToolLabel labelWood;
-        private readonly VCToolLabel labelIron;
-        private readonly VCToolLabel labelStone;
+        private readonly VCToolLabelResource[] labelsResources;
         private readonly VCToolLabel labelHeroes;
         private readonly VCToolLabel labelCorruption;
         private readonly VCToolLabel labelGreatness;
@@ -576,17 +574,19 @@ namespace Fantasy_Kingdoms_Battle
                 labelGold = new VCToolLabel(bmpPreparedToolbar, labelBuilders.NextLeft() - 4, labelDay.ShiftY, "", GUI_16_COFFERS);
                 labelGold.ShowHint += LabelGold_ShowHint;
                 labelGold.Width = 88;
-                labelWood = new VCToolLabel(bmpPreparedToolbar, labelGold.NextLeft() - 4, labelDay.ShiftY, "", GUI_16_WOOD);
-                labelWood.ShowHint += LabelWood_ShowHint;
-                labelWood.Width = 88;
-                labelIron = new VCToolLabel(bmpPreparedToolbar, labelWood.NextLeft() - 4, labelDay.ShiftY, "", GUI_16_IRON);
-                labelIron.ShowHint += LabelIron_ShowHint;
-                labelIron.Width = 88;
-                labelStone = new VCToolLabel(bmpPreparedToolbar, labelIron.NextLeft() - 4, labelDay.ShiftY, "", GUI_16_STONE);
-                labelStone.ShowHint += LabelStone_ShowHint;
-                labelStone.Width = 88;
 
-                labelHeroes = new VCToolLabel(bmpPreparedToolbar, labelStone.NextLeft() + 240, labelDay.ShiftY, "", GUI_16_HEROES);
+                labelsResources = new VCToolLabelResource[Config.BaseResources.Count];
+
+                int nextLeft = labelGold.NextLeft() - 4;
+                foreach (DescriptorBaseResource br in Config.BaseResources)
+                {
+                    VCToolLabelResource lblRes = new VCToolLabelResource(bmpPreparedToolbar, nextLeft, labelDay.ShiftY, br);
+                    lblRes.Width = 88;
+                    nextLeft = lblRes.NextLeft() - 4;
+                    labelsResources[br.Number] = lblRes;
+                }
+
+                labelHeroes = new VCToolLabel(bmpPreparedToolbar, nextLeft + 240, labelDay.ShiftY, "", GUI_16_HEROES);
                 labelHeroes.ShowHint += LabelHeroes_ShowHint;
                 labelHeroes.Width = 96;
                 labelCorruption = new VCToolLabel(bmpPreparedToolbar, labelHeroes.NextLeft(), labelDay.ShiftY, "", GUI_16_CORRUPTION);
@@ -829,24 +829,6 @@ namespace Fantasy_Kingdoms_Battle
                 throw;
                 //Environment.Exit(-1);
             }
-        }
-
-        private void LabelStone_ShowHint(object sender, EventArgs e)
-        {
-            formHint.AddStep2Header("Камень");
-            formHint.AddStep5Description("Количество камня на складах");
-        }
-
-        private void LabelIron_ShowHint(object sender, EventArgs e)
-        {
-            formHint.AddStep2Header("Железо");
-            formHint.AddStep5Description("Количество железа на складах");
-        }
-
-        private void LabelWood_ShowHint(object sender, EventArgs e)
-        {
-            formHint.AddStep2Header("Дерево");
-            formHint.AddStep5Description("Количество дерева на складах");
         }
 
         private void DrawPageLocation()
@@ -1304,9 +1286,7 @@ namespace Fantasy_Kingdoms_Battle
                     labelDay.Visible = true;
                     labelBuilders.Visible = true;
                     labelGold.Visible = true;
-                    labelWood.Visible = true;
-                    labelIron.Visible = true;
-                    labelStone.Visible = true;
+                    ShowResoures(true);
                     labelGreatness.Visible = true;
                     labelHeroes.Visible = true;
                     labelCorruption.Visible = true;
@@ -1319,9 +1299,7 @@ namespace Fantasy_Kingdoms_Battle
                     labelDay.Visible = false;
                     labelBuilders.Visible = false;
                     labelGold.Visible = false;
-                    labelWood.Visible = false;
-                    labelIron.Visible = false;
-                    labelStone.Visible = false;
+                    ShowResoures(false);
                     labelGreatness.Visible = false;
                     labelHeroes.Visible = false;
                     labelCorruption.Visible = false;
@@ -1334,6 +1312,14 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             ShowFrame(true);
+
+            void ShowResoures(bool visible)
+            {
+                foreach (VCToolLabelResource l in labelsResources)
+                {
+                    l.Visible = visible;
+                }
+            }
         }
 
         internal void ShowNamePlayer(string name)
@@ -1781,6 +1767,11 @@ namespace Fantasy_Kingdoms_Battle
 
                 pageTournament.Text = lobby.DaysLeftForBattle > 0 ? lobby.DaysLeftForBattle.ToString() + " д." :
                         curAppliedPlayer.SkipBattle ? "Проп." : "Битва";
+
+                foreach (VCToolLabelResource l in labelsResources)
+                {
+                    l.UpdateData(curAppliedPlayer);
+                }
             }
 
             // Рисуем контролы

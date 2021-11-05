@@ -16,6 +16,7 @@ namespace Fantasy_Kingdoms_Battle
             Name = XmlUtils.GetString(n, "Name");
             QuantityPlayers = XmlUtils.GetInteger(n, "QuantityPlayers");
             Gold = XmlUtils.GetInteger(n, "Gold");
+            BaseResources = new QuantityBaseResources(n.SelectSingleNode("BaseResources"));
             MaxGold = XmlUtils.GetInteger(n, "MaxGold");
             MaxHeroes = XmlUtils.GetInteger(n, "MaxHeroes");
             StartQuantityFlags = XmlUtils.GetInteger(n, "StartQuantityFlags");
@@ -170,6 +171,7 @@ namespace Fantasy_Kingdoms_Battle
         internal string Name { get; }
         internal int QuantityPlayers { get; }
         internal int Gold { get; }
+        internal QuantityBaseResources BaseResources { get; }
         internal int MaxGold { get; }
         internal int MaxHeroes { get; }
         internal int StartQuantityFlags { get; }
