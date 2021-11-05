@@ -12,8 +12,12 @@ namespace Fantasy_Kingdoms_Battle
 
     internal sealed class VCEventForPlayer : VCCustomEvent
     {
-        public VCEventForPlayer(Entity entity, TypeEventForPlayer typeEvent) : base(entity)
+        public VCEventForPlayer(Entity entity, TypeEventForPlayer typeEvent) : base()
         {
+            Debug.Assert(entity != null);
+
+            Entity = entity;
+
             TypeEvent = typeEvent;
 
             Visible = false;
@@ -67,7 +71,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Debug.Assert(nameText.Length > 0);
 
-            SetEvent(nameEvent, nameText, colorNameEntity);
+            SetEvent(Entity.GetImageIndex(), nameEvent, nameText, colorNameEntity);
 
             Width = 52 + 399;
         }

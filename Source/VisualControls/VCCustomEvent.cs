@@ -15,15 +15,9 @@ namespace Fantasy_Kingdoms_Battle
         protected readonly VCLabel lblText;
         private static Bitmap bmpBackground;
 
-        public VCCustomEvent(Entity entity) : base()
+        public VCCustomEvent() : base()
         {
-            Debug.Assert(entity != null);
-
-            Entity = entity;
-
             cell = new VCCellSimple(this, 0, 3);
-            cell.ImageIndex = Entity.GetImageIndex();
-            cell.HighlightUnderMouse = true;
 
             lblCaption = new VCLabel(this, cell.NextLeft(), 4, Program.formMain.fontMedCaptionC, Color.Gray, 16, "");
             lblCaption.ClickOnParent = true;
@@ -43,8 +37,9 @@ namespace Fantasy_Kingdoms_Battle
             g.DrawImageUnscaled(bmpBackground, Left + 52, Top);
         }
 
-        internal void SetEvent(string caption, string text, Color colorText)
+        internal void SetEvent(int imageIndex, string caption, string text, Color colorText)
         {
+            cell.ImageIndex = imageIndex;
             lblCaption.Text = caption;
             lblText.Text = text;
             lblText.Color = colorText;
