@@ -5,7 +5,7 @@
     <Name>Золото</Name>
     <Descriptions>Основное платежное средство в Ардании</Descriptions>
     <ImageIndex>281</ImageIndex>
-    <ImageIndex16>1</ImageIndex16>
+    <ImageIndex16>11</ImageIndex16>
   </BaseResource>
   <BaseResource>
     <ID>Wood</ID>
