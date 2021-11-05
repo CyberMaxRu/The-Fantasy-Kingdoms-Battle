@@ -54,4 +54,40 @@
     <Points>2</Points>
     <MaxQuantity>2</MaxQuantity>
   </StartBonus>
+  <StartBonus>
+    <Gold>0</Gold>
+    <Builders>0</Builders>
+    <PeasantHouse>0</PeasantHouse>
+    <HolyPlace>0</HolyPlace>
+    <Scouting>0</Scouting>
+    <Resources>
+      <Wood>100</Wood>
+    </Resources>
+    <Points>1</Points>    
+    <MaxQuantity>5</MaxQuantity>
+  </StartBonus>
+  <StartBonus>
+    <Gold>0</Gold>
+    <Builders>0</Builders>
+    <PeasantHouse>0</PeasantHouse>
+    <HolyPlace>0</HolyPlace>
+    <Scouting>0</Scouting>
+    <Resources>
+      <Iron>50</Iron>
+    </Resources>
+    <Points>1</Points>
+    <MaxQuantity>5</MaxQuantity>
+  </StartBonus>
+  <StartBonus>
+    <Gold>0</Gold>
+    <Builders>0</Builders>
+    <PeasantHouse>0</PeasantHouse>
+    <HolyPlace>0</HolyPlace>
+    <Scouting>0</Scouting>
+    <Resources>
+      <Stone>200</Stone>
+    </Resources>
+    <Points>1</Points>
+    <MaxQuantity>5</MaxQuantity>
+  </StartBonus>
 </StartBonuses>
