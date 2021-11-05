@@ -1362,6 +1362,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void ShowPlayersEvents()
         {
+            pageResultTurn.Text = curAppliedPlayer.ListEventsForPlayer.Count > 0 ? curAppliedPlayer.ListEventsForPlayer.Count.ToString() : "";
+
             if (curAppliedPlayer.ListEventsForPlayer.Count > 0)
             {
                 int nextY = 0;
