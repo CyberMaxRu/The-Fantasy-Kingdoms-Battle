@@ -78,12 +78,12 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Debug.Assert(text != null);
 
-                VCCustomEvent evnt = new VCCustomEvent();
+                VCCustomNotice evnt = new VCCustomNotice();
                 parent.AddControl(evnt);
                 evnt.ShiftX = FormMain.Config.GridSize;
                 evnt.ShiftY = nextTop;
                 evnt.Width = 216;
-                evnt.SetEvent(imageIndex, caption, text, Color.DarkGoldenrod);
+                evnt.SetNotice(imageIndex, caption, text, Color.DarkGoldenrod);
                 evnt.ClickOnParent = true;
 
                 nextTop = evnt.NextTop();

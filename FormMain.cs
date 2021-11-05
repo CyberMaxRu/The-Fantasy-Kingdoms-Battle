@@ -1357,19 +1357,19 @@ namespace Fantasy_Kingdoms_Battle
             AdjustPageTournament();
             UpdateNeighborhoods();
             AdjustNeighborhood();
-            ShowPlayersEvents();
+            ShowPlayersNotices();
         }
 
-        internal void ShowPlayersEvents()
+        internal void ShowPlayersNotices()
         {
-            pageResultTurn.Text = curAppliedPlayer.ListEventsForPlayer.Count > 0 ? curAppliedPlayer.ListEventsForPlayer.Count.ToString() : "";
+            pageResultTurn.Text = curAppliedPlayer.ListNoticesForPlayer.Count > 0 ? curAppliedPlayer.ListNoticesForPlayer.Count.ToString() : "";
 
-            if (curAppliedPlayer.ListEventsForPlayer.Count > 0)
+            if (curAppliedPlayer.ListNoticesForPlayer.Count > 0)
             {
                 int nextY = 0;
                 //int nextY = pageResultTurn.Page.Height - curAppliedPlayer.ListEventsForPlayer[0].Height;
 
-                foreach (VCEventForPlayer ep in curAppliedPlayer.ListEventsForPlayer)
+                foreach (VCNoticeForPlayer ep in curAppliedPlayer.ListNoticesForPlayer)
                 {
                     ep.ShiftY = nextY;
                     ep.Visible = true;

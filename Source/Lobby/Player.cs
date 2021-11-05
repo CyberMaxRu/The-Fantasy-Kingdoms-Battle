@@ -483,7 +483,7 @@ namespace Fantasy_Kingdoms_Battle
         internal QuantityBaseResources BaseResources { get; }// Базовые ресурсы
 
         //
-        internal List<VCEventForPlayer> ListEventsForPlayer { get; } = new List<VCEventForPlayer>();// Список событий в графстве
+        internal List<VCNoticeForPlayer> ListNoticesForPlayer { get; } = new List<VCNoticeForPlayer>();// Список событий в графстве
 
         // Локации
         internal Location[,] Locations { get; }
@@ -1362,19 +1362,19 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddEventForPlayer(Entity entity, TypeEventForPlayer typeEvent)
+        internal void AddEventForPlayer(Entity entity, TypeNoticeForPlayer typeEvent)
         {
             if (GetTypePlayer() == TypePlayer.Human)
             { 
-                ListEventsForPlayer.Add(new VCEventForPlayer(entity, typeEvent));
+                ListNoticesForPlayer.Add(new VCNoticeForPlayer(entity, typeEvent));
             }
         }
 
-        internal void RemoveEventForPlayer(VCEventForPlayer e)
+        internal void RemoveNoticeForPlayer(VCNoticeForPlayer e)
         {
-            Debug.Assert(ListEventsForPlayer.IndexOf(e) != -1);
+            Debug.Assert(ListNoticesForPlayer.IndexOf(e) != -1);
 
-            ListEventsForPlayer.Remove(e);
+            ListNoticesForPlayer.Remove(e);
         }
 
         internal void AddEntityToQueueBuilding(Entity e)

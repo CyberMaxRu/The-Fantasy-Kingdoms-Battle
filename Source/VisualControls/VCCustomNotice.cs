@@ -8,14 +8,14 @@ using System.Diagnostics;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal class VCCustomEvent : VisualControl
+    internal class VCCustomNotice : VisualControl
     {
         protected readonly VCCellSimple cell;
         protected readonly VCLabel lblCaption;
         protected readonly VCLabel lblText;
         private static Bitmap bmpBackground;
 
-        public VCCustomEvent() : base()
+        public VCCustomNotice() : base()
         {
             cell = new VCCellSimple(this, 0, 3);
 
@@ -37,7 +37,7 @@ namespace Fantasy_Kingdoms_Battle
             g.DrawImageUnscaled(bmpBackground, Left + 52, Top);
         }
 
-        internal void SetEvent(int imageIndex, string caption, string text, Color colorText)
+        internal void SetNotice(int imageIndex, string caption, string text, Color colorText)
         {
             cell.ImageIndex = imageIndex;
             lblCaption.Text = caption;

@@ -8,70 +8,70 @@ using System.Diagnostics;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal enum TypeEventForPlayer { Build, Research, Extension, MassEventBegin, MassEventEnd, TournamentBegin, TournamentEnd };
+    internal enum TypeNoticeForPlayer { Build, Research, Extension, MassEventBegin, MassEventEnd, TournamentBegin, TournamentEnd };
 
-    internal sealed class VCEventForPlayer : VCCustomEvent
+    internal sealed class VCNoticeForPlayer : VCCustomNotice
     {
-        public VCEventForPlayer(Entity entity, TypeEventForPlayer typeEvent) : base()
+        public VCNoticeForPlayer(Entity entity, TypeNoticeForPlayer typeNotice) : base()
         {
             Debug.Assert(entity != null);
 
             Entity = entity;
 
-            TypeEvent = typeEvent;
+            TypeNotice = typeNotice;
 
             Visible = false;
             cell.Click += Cell_Click;
             cell.RightClick += Cell_RightClick;
             cell.HighlightUnderMouse = true;
 
-            string nameEvent;
+            string nameNotice;
             string nameText = "";
             Color colorNameEntity;
-            switch (TypeEvent)
+            switch (TypeNotice)
             {
-                case TypeEventForPlayer.Build:
-                    nameEvent = "Строительство завершено:";
+                case TypeNoticeForPlayer.Build:
+                    nameNotice = "Строительство завершено:";
                     nameText = (Entity as Construction).NameLair();
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
-                case TypeEventForPlayer.Research:
-                    nameEvent = "Исследование завершено:";
+                case TypeNoticeForPlayer.Research:
+                    nameNotice = "Исследование завершено:";
                     nameText = (Entity as ConstructionProduct).Descriptor.Name;
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
-                case TypeEventForPlayer.Extension:
-                    nameEvent = "Дополнительное сооружение построено:";
+                case TypeNoticeForPlayer.Extension:
+                    nameNotice = "Дополнительное сооружение построено:";
                     nameText = (Entity as ConstructionProduct).Descriptor.Name;
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
-                case TypeEventForPlayer.MassEventBegin:
-                    nameEvent = "Мероприятие начато:";
+                case TypeNoticeForPlayer.MassEventBegin:
+                    nameNotice = "Мероприятие начато:";
                     nameText = (Entity as ConstructionProduct).Descriptor.Name;
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
-                case TypeEventForPlayer.MassEventEnd:
-                    nameEvent = "Мероприятие завершено:";
+                case TypeNoticeForPlayer.MassEventEnd:
+                    nameNotice = "Мероприятие завершено:";
                     nameText = (Entity as ConstructionProduct).Descriptor.Name;
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
-                case TypeEventForPlayer.TournamentBegin:
-                    nameEvent = "Турнир начат:";
+                case TypeNoticeForPlayer.TournamentBegin:
+                    nameNotice = "Турнир начат:";
                     nameText = (Entity as ConstructionProduct).Descriptor.Name;
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
-                case TypeEventForPlayer.TournamentEnd:
-                    nameEvent = "Турнир завершен:";
+                case TypeNoticeForPlayer.TournamentEnd:
+                    nameNotice = "Турнир завершен:";
                     nameText = (Entity as ConstructionProduct).Descriptor.Name;
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
                 default:
-                    throw new Exception($"Неизвестный тип события: {TypeEvent}.");
+                    throw new Exception($"Неизвестный тип события: {TypeNotice}.");
             }
 
             Debug.Assert(nameText.Length > 0);
 
-            SetEvent(Entity.GetImageIndex(), nameEvent, nameText, colorNameEntity);
+            SetNotice(Entity.GetImageIndex(), nameNotice, nameText, colorNameEntity);
 
             Width = 52 + 399;
         }
@@ -81,8 +81,8 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Visible);
 
             Visible = false;
-            Program.formMain.CurrentLobby.CurrentPlayer.RemoveEventForPlayer(this);
-            Program.formMain.ShowPlayersEvents();
+            Program.formMain.CurrentLobby.CurrentPlayer.RemoveNoticeForPlayer(this);
+            Program.formMain.ShowPlayersNotices();
             Program.formMain.NeedRedrawFrame();
             Dispose();
         }
@@ -106,6 +106,6 @@ namespace Fantasy_Kingdoms_Battle
             CloseSelf();
         }
 
-        internal TypeEventForPlayer TypeEvent { get; }
+        internal TypeNoticeForPlayer TypeNotice { get; }
     }
 }

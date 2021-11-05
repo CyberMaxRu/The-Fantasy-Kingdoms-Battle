@@ -79,11 +79,11 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(frame.Continue);
 
-            foreach (VCEventForPlayer e in ListEventsForPlayer)
+            foreach (VCNoticeForPlayer e in ListNoticesForPlayer)
             {
                 e.Dispose();
             }
-            ListEventsForPlayer.Clear();
+            ListNoticesForPlayer.Clear();
 
             frame.Continue = false;
         }

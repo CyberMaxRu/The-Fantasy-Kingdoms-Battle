@@ -192,7 +192,7 @@ namespace Fantasy_Kingdoms_Battle
                 throw new Exception("Неизвестный тип");
 
             Construction.AddProduct(cp);
-            Construction.Player.AddEventForPlayer(cp, TypeEventForPlayer.Research);
+            Construction.Player.AddEventForPlayer(cp, TypeNoticeForPlayer.Research);
 
             Program.formMain.SetNeedRedrawFrame();
         }
@@ -344,7 +344,7 @@ namespace Fantasy_Kingdoms_Battle
             cp = new ConstructionProduct(Construction, ConstructionEvent);
             Construction.AddProduct(cp);
 
-            Construction.Player.AddEventForPlayer(cp, TypeEventForPlayer.MassEventBegin);
+            Construction.Player.AddEventForPlayer(cp, TypeNoticeForPlayer.MassEventBegin);
             //Cooldown = ConstructionEvent.Cooldown;
         }
 
@@ -403,7 +403,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (cp?.Counter == 0)
             {
-                Construction.Player.AddEventForPlayer(cp, TypeEventForPlayer.MassEventEnd);
+                Construction.Player.AddEventForPlayer(cp, TypeNoticeForPlayer.MassEventEnd);
 
                 cp = null;
                 Cooldown = ConstructionEvent.Cooldown;
@@ -475,7 +475,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Program.formMain.SetNeedRedrawFrame();
 
-            Construction.Player.AddEventForPlayer(cp, TypeEventForPlayer.Extension);
+            Construction.Player.AddEventForPlayer(cp, TypeNoticeForPlayer.Extension);
         }
 
         internal override int GetCost()
@@ -520,7 +520,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Program.formMain.SetNeedRedrawFrame();
 
-            Construction.Player.AddEventForPlayer(cp, TypeEventForPlayer.TournamentBegin);
+            Construction.Player.AddEventForPlayer(cp, TypeNoticeForPlayer.TournamentBegin);
         }
 
         internal override int GetCost()
