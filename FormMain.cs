@@ -567,7 +567,7 @@ namespace Fantasy_Kingdoms_Battle
                 labelDay = new VCToolLabel(bmpPreparedToolbar, Config.GridSize, 6, "", GUI_16_DAY);
                 labelDay.Click += LabelDay_Click;
                 labelDay.ShowHint += LabelDay_ShowHint;
-                labelDay.Width = 64;
+                labelDay.Width = 80;
                 labelBuilders = new VCToolLabel(bmpPreparedToolbar, labelDay.NextLeft() - 4, labelDay.ShiftY, "", GUI_16_BUILDER);
                 labelBuilders.ShowHint += LabelBuilders_ShowHint;
                 labelBuilders.Width = 88;
@@ -1004,8 +1004,9 @@ namespace Fantasy_Kingdoms_Battle
 
         private void LabelDay_ShowHint(object sender, EventArgs e)
         {
-            formHint.AddStep2Header("День игры");
-            formHint.AddStep5Description("День игры: " + lobby.Turn.ToString());
+            formHint.AddStep2Header("Ход игры");
+            formHint.AddStep5Description($"День: {lobby.Day}{Environment.NewLine}Неделя: {lobby.Week}{Environment.NewLine}Месяц: {lobby.Day}{Environment.NewLine}"
+                + $"Всего дней: {lobby.Turn}");
         }
         
         internal bool CheckForNewVersion()
@@ -1339,7 +1340,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(lobby.CurrentPlayer.GetTypePlayer() == TypePlayer.Human);
 
-            labelDay.Text = lobby.Turn.ToString();
+            labelDay.Text = $"{lobby.Month}.{lobby.Week}.{lobby.Day}";
 
             // Если этого игрока не отрисовывали, формируем заново вкладки
             if (curAppliedPlayer != lobby.CurrentPlayer)

@@ -23,6 +23,9 @@ namespace Fantasy_Kingdoms_Battle
             TypeLobby = tl;
             StateLobby = StateLobby.Start;
             Turn = 1;
+            Day = 1;
+            Week = 1;
+            Month = 1;
 
             // Создаем конфигурацию логов
             Lairs = new List<DescriptorConstruction>[TypeLobby.MapHeight, TypeLobby.MapWidth];
@@ -122,7 +125,9 @@ namespace Fantasy_Kingdoms_Battle
         internal Player[] Players { get; }
         internal Player CurrentPlayer { get; private set; }
         internal int Turn { get; private set; }// Текущий ход лобби
-        //internal int 
+        internal int Day { get; private set; }// День
+        internal int Week { get; private set; }// Неделя
+        internal int Month { get; private set; }// Месяц
         internal List<Battle> Battles { get; } = new List<Battle>();
         internal bool HumanIsWin { get; private set; }
         internal StateLobby StateLobby { get; set; }
@@ -362,6 +367,15 @@ namespace Fantasy_Kingdoms_Battle
 
             // Делаем начало хода
             Turn++;
+            Day++;
+            if (Day == 8)
+            {
+                Day = 1;
+                Week++;
+            }
+            if (Week == 5)
+                Month++;
+
             CurrentPlayer = null;
 
             int livePlayers = 0;
