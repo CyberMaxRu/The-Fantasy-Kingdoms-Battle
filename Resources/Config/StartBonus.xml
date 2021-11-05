@@ -11,15 +11,6 @@
   </StartBonus>
   <StartBonus>
     <Gold>0</Gold>
-    <Builders>0</Builders>
-    <PeasantHouse>0</PeasantHouse>
-    <HolyPlace>0</HolyPlace>
-    <Scouting>0</Scouting>
-    <Points>1</Points>
-    <MaxQuantity>0</MaxQuantity>
-  </StartBonus>
-  <StartBonus>
-    <Gold>0</Gold>
     <Builders>1</Builders>
     <PeasantHouse>0</PeasantHouse>
     <HolyPlace>0</HolyPlace>
