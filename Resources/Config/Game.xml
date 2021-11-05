@@ -88,6 +88,7 @@
     <HolyPlace>HolyPlace</HolyPlace>
     <TradePost>TradePost</TradePost>
     <CityGraveyard>CityGraveyard</CityGraveyard>
+    <Gold>Gold</Gold>
   </Links>
   <Warehouse>
     <Width>10</Width>
@@ -129,6 +130,5 @@
     <Battle2>195</Battle2>
     <NeighborCastle>196</NeighborCastle>
     <Cheating>253</Cheating>
-    <Gold>282</Gold>
   </Gui48>
 </Game>

@@ -23,15 +23,184 @@ namespace Fantasy_Kingdoms_Battle
             // 
             MaxLevelSkill = 3;
 
+            string nameResourceGold;
+
             //
             XmlDocument xmlDoc;
 
             // Загружаем конфигурацию игры
             Descriptor.Config = this;
-            ConstructionCellMenu.Config = this;
+            CellMenu.Config = this;
 
             xmlDoc = CreateXmlDocument("Config\\Game.xml");
-            LoadConfigGame(xmlDoc);
+            GridSize = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/GridSize").InnerText);
+            Debug.Assert(GridSize >= 2);
+            Debug.Assert(GridSize <= 20);
+            Debug.Assert(GridSize % 2 == 0);
+            GridSizeHalf = GridSize / 2;
+
+            MaxLengthObjectName = XmlUtils.GetIntegerNotNull(xmlDoc, "Game/Interface/MaxLengthObjectName");
+            Debug.Assert(MaxLengthObjectName > 20);
+            Debug.Assert(MaxLengthObjectName <= 63);
+
+            ShiftForBorder = new Point(Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/ShiftForBorderX").InnerText),
+                Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/ShiftForBorderY").InnerText));
+            Debug.Assert(ShiftForBorder.X >= 0);
+            Debug.Assert(ShiftForBorder.X <= 10);
+            Debug.Assert(ShiftForBorder.Y >= 0);
+            Debug.Assert(ShiftForBorder.Y <= 10);
+
+            // Т.к. ImageIndex у аватаров указан со смещением 1 и ImageIndexFirstAvatar указывается со смещением в 1, то уменьшаем итог на 1
+            ImageIndexFirstAvatar = XmlUtils.GetIntegerNotNull(xmlDoc, "Game/Interface/ImageIndexFirstAvatar") - 1;
+            QuantityInternalAvatars = XmlUtils.GetIntegerNotNull(xmlDoc, "Game/Interface/QuantityInternalAvatars");
+            ImageIndexExternalAvatar = ImageIndexFirstAvatar + QuantityInternalAvatars;
+            MaxQuantityExternalAvatars = XmlUtils.GetIntegerNotNull(xmlDoc, "Game/Interface/MaxQuantityExternalAvatars");
+            Debug.Assert(ImageIndexFirstAvatar > 0);
+            Debug.Assert(ImageIndexFirstAvatar < 240);
+            Debug.Assert(QuantityInternalAvatars > 1);
+            Debug.Assert(QuantityInternalAvatars < 64);
+            Debug.Assert(MaxQuantityExternalAvatars > 1);
+            Debug.Assert(MaxQuantityExternalAvatars < 64);
+            ImageIndexFirstItems = ImageIndexExternalAvatar + MaxQuantityExternalAvatars;
+
+            PlateWidth = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/PlateWidth").InnerText);
+            Debug.Assert(PlateWidth >= 2);
+            Debug.Assert(PlateWidth <= 8);
+            PlateHeight = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/PlateHeight").InnerText);
+            Debug.Assert(PlateHeight >= 2);
+            Debug.Assert(PlateHeight <= 8);
+            MinRowsEntities = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/MinRowsEntityInPlate").InnerText);
+            Debug.Assert(MinRowsEntities >= 2);
+            Debug.Assert(MinRowsEntities <= 6);
+
+            ConstructionMaxLines = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/ConstructionMaxLines").InnerText);
+            Debug.Assert(ConstructionMaxLines >= 2);
+            Debug.Assert(ConstructionMaxLines <= 5);
+
+            ConstructionMaxPos = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/ConstructionMaxPos").InnerText);
+            Debug.Assert(ConstructionMaxLines >= 2);
+            Debug.Assert(ConstructionMaxLines <= 5);
+
+            MaxElementInStartBonus = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/MaxElementInStartBonus").InnerText);
+            Debug.Assert(ConstructionMaxLines >= 1);
+            Debug.Assert(ConstructionMaxLines <= 10);
+
+            HeroInRow = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battlefield/HeroInRow").InnerText);
+            Debug.Assert(HeroInRow >= 3);
+            Debug.Assert(HeroInRow <= 14);
+            HeroRows = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battlefield/HeroRows").InnerText);
+            Debug.Assert(HeroRows >= 3);
+            Debug.Assert(HeroRows <= 14);
+            RowsBetweenSides = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battlefield/RowsBetweenSides").InnerText);
+            Debug.Assert(RowsBetweenSides >= 0);
+            Debug.Assert(RowsBetweenSides <= 4);
+
+            StepsInSecond = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battle/StepsInSecond").InnerText);
+            Debug.Assert(StepsInSecond >= 5);
+            Debug.Assert(StepsInSecond <= 50);
+            Debug.Assert(1000 % StepsInSecond == 0);
+            StepInMSec = 1000 / StepsInSecond;
+
+            MaxDurationBattleWithMonster = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battle/MaxDurationBattleWithMonster").InnerText);
+            Debug.Assert(MaxDurationBattleWithMonster >= 30);
+            Debug.Assert(MaxDurationBattleWithMonster <= 3600);
+
+            MaxDurationBattleWithPlayer = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battle/MaxDurationBattleWithMonster").InnerText);
+            Debug.Assert(MaxDurationBattleWithPlayer >= 30);
+            Debug.Assert(MaxDurationBattleWithPlayer <= 3600);
+
+            MaxFramesPerSecond = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battle/MaxFramesPerSecond").InnerText);
+            Debug.Assert(MaxFramesPerSecond >= 5);
+            Debug.Assert(MaxFramesPerSecond <= 100);
+
+            MaxDurationFrame = 1_000 / MaxFramesPerSecond;
+
+            MaxStatPointPerLevel = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Heroes/MaxStatPointPerLevel").InnerText);
+            Debug.Assert(MaxStatPointPerLevel >= 5);
+            Debug.Assert(MaxStatPointPerLevel <= 100);
+            double timeInTumbstone = XmlUtils.GetDouble(xmlDoc, "Game/Heroes/TimeInTumbstone");
+            Debug.Assert(timeInTumbstone >= 0);
+            Debug.Assert(timeInTumbstone <= 10);
+            StepsHeroInTumbstone = (int)(timeInTumbstone * StepsInSecond);
+            Debug.Assert(StepsHeroInTumbstone >= 10);
+            Debug.Assert(StepsHeroInTumbstone <= 1000);
+            double timeToDisappearance = XmlUtils.GetDouble(xmlDoc, "Game/Heroes/TimeToDisappearance");
+            Debug.Assert(timeToDisappearance >= 0);
+            Debug.Assert(timeToDisappearance <= 10);
+            UnitStepsTimeToDisappearance = (int)(timeToDisappearance * StepsInSecond);
+            Debug.Assert(StepsHeroInTumbstone >= UnitStepsTimeToDisappearance);
+            MaxCreatureAbilities = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Heroes/MaxAbilities").InnerText);
+            Debug.Assert(MaxCreatureAbilities >= 4);
+            Debug.Assert(MaxCreatureAbilities <= 16);
+            MaxCreatureSecondarySkills = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Heroes/MaxSecondarySkills").InnerText);
+            Debug.Assert(MaxCreatureSecondarySkills >= 4);
+            Debug.Assert(MaxCreatureSecondarySkills <= 16);
+
+            IDHeroAdvisor = xmlDoc.SelectSingleNode("Game/Links/HeroAdvisor").InnerText;
+            Debug.Assert(IDHeroAdvisor.Length > 0);
+            IDHeroPeasant = xmlDoc.SelectSingleNode("Game/Links/HeroPeasant").InnerText;
+            Debug.Assert(IDHeroPeasant.Length > 0);
+            IDConstructionCastle = xmlDoc.SelectSingleNode("Game/Links/ConstructionCastle").InnerText;
+            Debug.Assert(IDConstructionCastle.Length > 0);
+            IDPeasantHouse = xmlDoc.SelectSingleNode("Game/Links/PeasantHouse").InnerText;
+            Debug.Assert(IDPeasantHouse.Length > 0);
+            IDHolyPlace = xmlDoc.SelectSingleNode("Game/Links/HolyPlace").InnerText;
+            Debug.Assert(IDHolyPlace.Length > 0);
+            IDTradePost = xmlDoc.SelectSingleNode("Game/Links/TradePost").InnerText;
+            Debug.Assert(IDTradePost.Length > 0);
+            IDCityGraveyard = xmlDoc.SelectSingleNode("Game/Links/CityGraveyard").InnerText;
+            Debug.Assert(IDCityGraveyard.Length > 0);
+            nameResourceGold = xmlDoc.SelectSingleNode("Game/Links/Gold").InnerText;
+
+            WarehouseWidth = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Warehouse/Width").InnerText);
+            Debug.Assert(WarehouseWidth >= 5);
+            Debug.Assert(WarehouseWidth <= 30);
+            WarehouseHeight = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Warehouse/Height").InnerText);
+            Debug.Assert(WarehouseHeight >= 1);
+            Debug.Assert(WarehouseHeight <= 10);
+            WarehouseMaxCells = WarehouseWidth * WarehouseHeight;
+
+            // Цвета
+            CommonBorder = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Common/Border").InnerText);
+            CommonSelectedBorder = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Common/SelectedBorder").InnerText);
+            CommonCaptionPage = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Common/CaptionPage").InnerText);
+            CommonLevel = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Common/Level").InnerText);
+            CommonCost = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Common/Cost").InnerText);
+            CommonQuantity = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Common/Quantity").InnerText);
+            CommonPopupQuantity = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Common/PopupQuantity").InnerText);
+            CommonPopupQuantityBack = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Common/PopupQuantityBack").InnerText);
+
+            SelectedPlayerBorder = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Player/SelectedBorder").InnerText);
+            DamageToCastlePositive = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Player/DamageToCastlePositive").InnerText);
+            DamageToCastleNegative = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Player/DamageToCastleNegative").InnerText);
+
+            HintHeader = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Hint/Header").InnerText);
+            HintAction = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Hint/Action").InnerText);
+            HintDescription = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Hint/Description").InnerText);
+            HintIncome = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Hint/Income").InnerText);
+            HintParameter = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Hint/Parameter").InnerText);
+            HintRequirementsMet = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Hint/RequirementsMet").InnerText);
+            HintRequirementsNotMet = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Hint/RequirementsNotMet").InnerText);
+
+            BattlefieldSystemInfo = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Battlefield/SystemInfo").InnerText);
+            BattlefieldPlayerName = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Battlefield/PlayerName").InnerText);
+            BattlefieldPlayerHealth = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Battlefield/PlayerHealth").InnerText);
+            BattlefieldPlayerHealthNone = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Battlefield/PlayerHealthNone").InnerText);
+            BattlefieldGrid = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Battlefield/Grid").InnerText);
+            BattlefieldAllyColor = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Battlefield/AllyColor").InnerText);
+            BattlefieldEnemyColor = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Battlefield/EnemyColor").InnerText);
+            BattlefieldTextWin = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Battlefield/TextWin").InnerText);
+            BattlefieldTextDraw = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Battlefield/TextDraw").InnerText);
+            BattlefieldTextLose = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Battlefield/TextLose").InnerText);
+
+            UnitHealth = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Unit/Health").InnerText);
+            UnitHealthNone = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Unit/HealthNone").InnerText);
+            UnitNormalParam = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Unit/NormalParam").InnerText);
+            UnitLowNormalParam = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Unit/LowNormalParam").InnerText);
+            UnitHighNormalParam = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Unit/HighNormalParam").InnerText);
+
+            PenBorder = new Pen(CommonBorder);
+            PenSelectedBorder = new Pen(CommonSelectedBorder);
 
             XmlNode xmlGui = xmlDoc.SelectSingleNode("Game/Gui48");
             Gui48_Heroes = GetGui48ImageIndex("Heroes");
@@ -69,7 +238,6 @@ namespace Fantasy_Kingdoms_Battle
             Gui48_Battle2 = GetGui48ImageIndex("Battle2");
             Gui48_NeighborCastle = GetGui48ImageIndex("NeighborCastle");
             Gui48_Cheating = GetGui48ImageIndex("Cheating");
-            Gui48_Gold = GetGui48ImageIndex("Gold");
 
             int GetGui48ImageIndex(string name)
             {
@@ -125,6 +293,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Debug.Assert(BaseResources.Count > 0);
             BaseResources.Capacity = BaseResources.Count;
+            Gold = FindBaseResource(nameResourceGold);
 
             // Загрузка конфигураций лобби
             xmlDoc = CreateXmlDocument("Config\\TypeLobby.xml");
@@ -361,6 +530,7 @@ namespace Fantasy_Kingdoms_Battle
         internal bool AutoCreatedPlayer { get; }
 
         // Списки описателей
+        internal DescriptorBaseResource Gold { get; }
         internal List<DescriptorBaseResource> BaseResources { get; } = new List<DescriptorBaseResource>();
         internal List<DescriptorTypeConstruction> TypeConstructions { get; } = new List<DescriptorTypeConstruction>();
         internal List<DescriptorConstructionVisit> ConstructionsVisits { get; } = new List<DescriptorConstructionVisit>();
@@ -510,7 +680,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int Gui48_Battle2 { get; }
         internal int Gui48_NeighborCastle { get; }
         internal int Gui48_Cheating { get; }
-        internal int Gui48_Gold { get; }
 
         //
         internal Brush brushControl { get; private set; } = new SolidBrush(Color.White);
@@ -748,177 +917,6 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             throw new Exception("Тип ландшафта " + ID + " не найден.");
-        }
-
-        private void LoadConfigGame(XmlDocument xmlDoc)
-        {
-            GridSize = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/GridSize").InnerText);
-            Debug.Assert(GridSize >= 2);
-            Debug.Assert(GridSize <= 20);
-            Debug.Assert(GridSize % 2 == 0);
-            GridSizeHalf = GridSize / 2;
-
-            MaxLengthObjectName = XmlUtils.GetIntegerNotNull(xmlDoc, "Game/Interface/MaxLengthObjectName");
-            Debug.Assert(MaxLengthObjectName > 20);
-            Debug.Assert(MaxLengthObjectName <= 63);
-
-            ShiftForBorder = new Point(Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/ShiftForBorderX").InnerText),
-                Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/ShiftForBorderY").InnerText));
-            Debug.Assert(ShiftForBorder.X >= 0);
-            Debug.Assert(ShiftForBorder.X <= 10);
-            Debug.Assert(ShiftForBorder.Y >= 0);
-            Debug.Assert(ShiftForBorder.Y <= 10);
-
-            // Т.к. ImageIndex у аватаров указан со смещением 1 и ImageIndexFirstAvatar указывается со смещением в 1, то уменьшаем итог на 1
-            ImageIndexFirstAvatar = XmlUtils.GetIntegerNotNull(xmlDoc, "Game/Interface/ImageIndexFirstAvatar") - 1;
-            QuantityInternalAvatars = XmlUtils.GetIntegerNotNull(xmlDoc, "Game/Interface/QuantityInternalAvatars");
-            ImageIndexExternalAvatar = ImageIndexFirstAvatar + QuantityInternalAvatars;
-            MaxQuantityExternalAvatars = XmlUtils.GetIntegerNotNull(xmlDoc, "Game/Interface/MaxQuantityExternalAvatars");
-            Debug.Assert(ImageIndexFirstAvatar > 0);
-            Debug.Assert(ImageIndexFirstAvatar < 240);
-            Debug.Assert(QuantityInternalAvatars > 1);
-            Debug.Assert(QuantityInternalAvatars < 64);
-            Debug.Assert(MaxQuantityExternalAvatars > 1);
-            Debug.Assert(MaxQuantityExternalAvatars < 64);
-            ImageIndexFirstItems = ImageIndexExternalAvatar + MaxQuantityExternalAvatars;
-
-            PlateWidth = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/PlateWidth").InnerText);
-            Debug.Assert(PlateWidth >= 2);
-            Debug.Assert(PlateWidth <= 8);
-            PlateHeight = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/PlateHeight").InnerText);
-            Debug.Assert(PlateHeight >= 2);
-            Debug.Assert(PlateHeight <= 8);
-            MinRowsEntities = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/MinRowsEntityInPlate").InnerText);
-            Debug.Assert(MinRowsEntities >= 2);
-            Debug.Assert(MinRowsEntities <= 6);
-
-            ConstructionMaxLines = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/ConstructionMaxLines").InnerText);
-            Debug.Assert(ConstructionMaxLines >= 2);
-            Debug.Assert(ConstructionMaxLines <= 5);
-
-            ConstructionMaxPos = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/ConstructionMaxPos").InnerText);
-            Debug.Assert(ConstructionMaxLines >= 2);
-            Debug.Assert(ConstructionMaxLines <= 5);
-
-            MaxElementInStartBonus = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Interface/MaxElementInStartBonus").InnerText);
-            Debug.Assert(ConstructionMaxLines >= 1);
-            Debug.Assert(ConstructionMaxLines <= 10);
-
-            HeroInRow = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battlefield/HeroInRow").InnerText);
-            Debug.Assert(HeroInRow >= 3);
-            Debug.Assert(HeroInRow <= 14);
-            HeroRows = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battlefield/HeroRows").InnerText);
-            Debug.Assert(HeroRows >= 3);
-            Debug.Assert(HeroRows <= 14);
-            RowsBetweenSides = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battlefield/RowsBetweenSides").InnerText);
-            Debug.Assert(RowsBetweenSides >= 0);
-            Debug.Assert(RowsBetweenSides <= 4);
-
-            StepsInSecond = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battle/StepsInSecond").InnerText);
-            Debug.Assert(StepsInSecond >= 5);
-            Debug.Assert(StepsInSecond <= 50);
-            Debug.Assert(1000 % StepsInSecond == 0);
-            StepInMSec = 1000 / StepsInSecond;
-
-            MaxDurationBattleWithMonster = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battle/MaxDurationBattleWithMonster").InnerText);
-            Debug.Assert(MaxDurationBattleWithMonster >= 30);
-            Debug.Assert(MaxDurationBattleWithMonster <= 3600);
-
-            MaxDurationBattleWithPlayer = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battle/MaxDurationBattleWithMonster").InnerText);
-            Debug.Assert(MaxDurationBattleWithPlayer >= 30);
-            Debug.Assert(MaxDurationBattleWithPlayer <= 3600);
-
-            MaxFramesPerSecond = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Battle/MaxFramesPerSecond").InnerText);
-            Debug.Assert(MaxFramesPerSecond >= 5);
-            Debug.Assert(MaxFramesPerSecond <= 100);
-
-            MaxDurationFrame = 1_000 / MaxFramesPerSecond;
-
-            MaxStatPointPerLevel = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Heroes/MaxStatPointPerLevel").InnerText);
-            Debug.Assert(MaxStatPointPerLevel >= 5);
-            Debug.Assert(MaxStatPointPerLevel <= 100);
-            double timeInTumbstone = XmlUtils.GetDouble(xmlDoc, "Game/Heroes/TimeInTumbstone");
-            Debug.Assert(timeInTumbstone >= 0);
-            Debug.Assert(timeInTumbstone <= 10);
-            StepsHeroInTumbstone = (int)(timeInTumbstone * StepsInSecond);
-            Debug.Assert(StepsHeroInTumbstone >= 10);
-            Debug.Assert(StepsHeroInTumbstone <= 1000);
-            double timeToDisappearance = XmlUtils.GetDouble(xmlDoc, "Game/Heroes/TimeToDisappearance");
-            Debug.Assert(timeToDisappearance >= 0);
-            Debug.Assert(timeToDisappearance <= 10);
-            UnitStepsTimeToDisappearance = (int)(timeToDisappearance * StepsInSecond);
-            Debug.Assert(StepsHeroInTumbstone >= UnitStepsTimeToDisappearance);
-            MaxCreatureAbilities = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Heroes/MaxAbilities").InnerText);
-            Debug.Assert(MaxCreatureAbilities >= 4);
-            Debug.Assert(MaxCreatureAbilities <= 16);
-            MaxCreatureSecondarySkills = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Heroes/MaxSecondarySkills").InnerText);
-            Debug.Assert(MaxCreatureSecondarySkills >= 4);
-            Debug.Assert(MaxCreatureSecondarySkills <= 16);
-
-            IDHeroAdvisor = xmlDoc.SelectSingleNode("Game/Links/HeroAdvisor").InnerText;
-            Debug.Assert(IDHeroAdvisor.Length > 0);
-            IDHeroPeasant = xmlDoc.SelectSingleNode("Game/Links/HeroPeasant").InnerText;
-            Debug.Assert(IDHeroPeasant.Length > 0);
-            IDConstructionCastle = xmlDoc.SelectSingleNode("Game/Links/ConstructionCastle").InnerText;
-            Debug.Assert(IDConstructionCastle.Length > 0);
-            IDPeasantHouse = xmlDoc.SelectSingleNode("Game/Links/PeasantHouse").InnerText;
-            Debug.Assert(IDPeasantHouse.Length > 0);
-            IDHolyPlace = xmlDoc.SelectSingleNode("Game/Links/HolyPlace").InnerText;
-            Debug.Assert(IDHolyPlace.Length > 0);
-            IDTradePost = xmlDoc.SelectSingleNode("Game/Links/TradePost").InnerText;
-            Debug.Assert(IDTradePost.Length > 0);
-            IDCityGraveyard = xmlDoc.SelectSingleNode("Game/Links/CityGraveyard").InnerText;
-            Debug.Assert(IDCityGraveyard.Length > 0);
-
-            WarehouseWidth = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Warehouse/Width").InnerText);
-            Debug.Assert(WarehouseWidth >= 5);
-            Debug.Assert(WarehouseWidth <= 30);
-            WarehouseHeight = Convert.ToInt32(xmlDoc.SelectSingleNode("Game/Warehouse/Height").InnerText);
-            Debug.Assert(WarehouseHeight >= 1);
-            Debug.Assert(WarehouseHeight <= 10);
-            WarehouseMaxCells = WarehouseWidth * WarehouseHeight;
-
-            // Цвета
-            CommonBorder = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Common/Border").InnerText);
-            CommonSelectedBorder = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Common/SelectedBorder").InnerText);
-            CommonCaptionPage = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Common/CaptionPage").InnerText);
-            CommonLevel = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Common/Level").InnerText);
-            CommonCost = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Common/Cost").InnerText);
-            CommonQuantity = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Common/Quantity").InnerText);
-            CommonPopupQuantity = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Common/PopupQuantity").InnerText);
-            CommonPopupQuantityBack = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Common/PopupQuantityBack").InnerText);
-
-            SelectedPlayerBorder = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Player/SelectedBorder").InnerText);
-            DamageToCastlePositive = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Player/DamageToCastlePositive").InnerText);
-            DamageToCastleNegative = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Player/DamageToCastleNegative").InnerText);
-
-            HintHeader = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Hint/Header").InnerText);
-            HintAction = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Hint/Action").InnerText);
-            HintDescription = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Hint/Description").InnerText);
-            HintIncome = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Hint/Income").InnerText);
-            HintParameter = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Hint/Parameter").InnerText);
-            HintRequirementsMet = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Hint/RequirementsMet").InnerText);
-            HintRequirementsNotMet = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Hint/RequirementsNotMet").InnerText);
-
-            BattlefieldSystemInfo = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Battlefield/SystemInfo").InnerText);
-            BattlefieldPlayerName = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Battlefield/PlayerName").InnerText);
-            BattlefieldPlayerHealth = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Battlefield/PlayerHealth").InnerText);
-            BattlefieldPlayerHealthNone = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Battlefield/PlayerHealthNone").InnerText);
-            BattlefieldGrid = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Battlefield/Grid").InnerText);
-            BattlefieldAllyColor = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Battlefield/AllyColor").InnerText);
-            BattlefieldEnemyColor = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Battlefield/EnemyColor").InnerText);
-            BattlefieldTextWin = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Battlefield/TextWin").InnerText);
-            BattlefieldTextDraw = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Battlefield/TextDraw").InnerText);
-            BattlefieldTextLose = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Battlefield/TextLose").InnerText);
-
-            UnitHealth = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Unit/Health").InnerText);
-            UnitHealthNone = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Unit/HealthNone").InnerText);
-            UnitNormalParam = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Unit/NormalParam").InnerText);
-            UnitLowNormalParam = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Unit/LowNormalParam").InnerText);
-            UnitHighNormalParam = Color.FromName(xmlDoc.SelectSingleNode("Game/Colors/Unit/HighNormalParam").InnerText);
-
-            PenBorder = new Pen(CommonBorder);
-            PenSelectedBorder = new Pen(CommonSelectedBorder);
         }
 
         internal Color ColorEntity(bool ally)

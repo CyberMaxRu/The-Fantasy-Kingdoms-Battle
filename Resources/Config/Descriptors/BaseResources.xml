@@ -1,6 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Descriptors>
   <BaseResource>
+    <ID>Gold</ID>
+    <Name>Золото</Name>
+    <Descriptions>Основное платежное средство в Ардании</Descriptions>
+    <ImageIndex>281</ImageIndex>
+    <ImageIndex16>1</ImageIndex16>
+  </BaseResource>
+  <BaseResource>
     <ID>Wood</ID>
     <Name>Дерево</Name>
     <Descriptions>Используется для строительства сооружений, оружия</Descriptions>

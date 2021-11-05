@@ -40,7 +40,7 @@ namespace Fantasy_Kingdoms_Battle
                 nextTop = lblCaption.NextTop();
 
                 if (sb.Gold > 0)
-                    AddBonus(text, FormMain.Config.Gui48_Gold, "Золото", $"+{sb.Gold}");
+                    AddBonus(text, FormMain.Config.Gold.ImageIndex, FormMain.Config.Gold.Name, $"+{sb.Gold}");
                 if (sb.Builders > 0)
                     AddBonus(text, FormMain.Config.Gui48_Build, "Строители", $"+{sb.Builders}");
                 if (sb.PeasantHouse > 0)
