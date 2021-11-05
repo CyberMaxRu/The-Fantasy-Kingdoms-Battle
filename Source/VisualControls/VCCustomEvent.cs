@@ -42,5 +42,15 @@ namespace Fantasy_Kingdoms_Battle
 
             g.DrawImageUnscaled(bmpBackground, Left + 52, Top);
         }
+
+        internal void SetEvent(string caption, string text, Color colorText)
+        {
+            lblCaption.Text = caption;
+            lblText.Text = text;
+            lblText.Color = colorText;
+
+            lblCaption.Width = lblCaption.Font.WidthText(lblCaption.Text);
+            lblText.Width = lblText.Font.WidthText(lblText.Text);
+        }
     }
 }

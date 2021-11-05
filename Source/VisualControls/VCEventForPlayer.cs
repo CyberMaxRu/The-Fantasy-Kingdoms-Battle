@@ -67,12 +67,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Debug.Assert(nameText.Length > 0);
 
-            lblCaption.Text = nameEvent;
-            lblText.Text = nameText;
-            lblText.Color = colorNameEntity;
-
-            lblCaption.Width = lblCaption.Font.WidthText(lblCaption.Text);
-            lblText.Width = lblText.Font.WidthText(lblText.Text);
+            SetEvent(nameEvent, nameText, colorNameEntity);
 
             Width = 52 + 399;
         }
