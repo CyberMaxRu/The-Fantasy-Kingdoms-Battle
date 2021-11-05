@@ -58,7 +58,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 text.Height = lblCaption.NextTop() + (text.Controls[text.Controls.Count - 1].Height + FormMain.Config.GridSize) * 4;
                 lblCaption.Width = text.Width;
-                nextLeft = text.NextLeft() + FormMain.Config.GridSize;
+                nextLeft = text.NextLeft();
                 idx++;
 
                 listBoxes.Add(text);
@@ -82,7 +82,7 @@ namespace Fantasy_Kingdoms_Battle
                 parent.AddControl(evnt);
                 evnt.ShiftX = FormMain.Config.GridSize;
                 evnt.ShiftY = nextTop;
-                evnt.Width = 232;
+                evnt.Width = 216;
                 evnt.SetEvent(imageIndex, caption, text, Color.DarkGoldenrod);
                 evnt.ClickOnParent = true;
 
