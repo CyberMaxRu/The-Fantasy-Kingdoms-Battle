@@ -1364,7 +1364,7 @@ namespace Fantasy_Kingdoms_Battle
                         pageResultTurn.Page.AddControl(ep);
 
                     pageResultTurn.Page.ArrangeControl(ep);
-                    nextY += ep.NextTop();
+                    nextY = ep.NextTop();
                 }
             }
         }
