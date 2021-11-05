@@ -380,7 +380,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Construction.Player.Gold >= Construction.CostBuyOrUpgrade())
             {
-                Construction.Build();
+                Construction.Build(false);
 
                 Program.formMain.SetNeedRedrawFrame();
                 Program.formMain.PlayConstructionComplete();

@@ -59,7 +59,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(level <= 1);
             if (level == 1)
             {
-                Build();
+                Build(false);
                 DaysBuilded = TypeConstruction.Levels[1].DaysBuilding;
             }
 
@@ -109,7 +109,7 @@ namespace Fantasy_Kingdoms_Battle
         internal ConstructionProduct CurrentVisit { get; private set; }// Текущее активное посещение сооружения
         internal int[] SatisfactionNeeds { get; private set; }// Удовлетворяемые потребности
 
-        internal void Build()
+        internal void Build(bool needNotice)
         {
             if ((TypeConstruction.Category != CategoryConstruction.Lair) && (TypeConstruction.Category != CategoryConstruction.ElementLandscape))
             {
@@ -186,7 +186,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
-            if (TypeConstruction.IsInternalConstruction)
+            if (needNotice)
                 Player.AddNoticeForPlayer(this, TypeNoticeForPlayer.Build);
         }
 

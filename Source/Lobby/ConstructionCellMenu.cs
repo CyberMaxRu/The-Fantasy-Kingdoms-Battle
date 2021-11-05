@@ -243,7 +243,7 @@ namespace Fantasy_Kingdoms_Battle
             if (ConstructionForBuild != null)
             {
                 Debug.Assert(ConstructionForBuild.Level == 0);
-                ConstructionForBuild.Build();
+                ConstructionForBuild.Build(true);
                 ConstructionForBuild.X = Construction.X;
                 ConstructionForBuild.Y = Construction.Y;
                 ConstructionForBuild.Location = Construction.Location;
@@ -424,7 +424,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Execute()
         {
-            Construction.Build();
+            Construction.Build(true);
         }
 
         internal new DescriptorCellMenuForConstructionLevel Descriptor { get; }
