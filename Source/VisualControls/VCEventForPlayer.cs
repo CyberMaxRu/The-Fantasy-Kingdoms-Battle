@@ -10,24 +10,13 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal enum TypeEventForPlayer { Build, Research, Extension, MassEventBegin, MassEventEnd, TournamentBegin, TournamentEnd };
 
-    internal sealed class VCEventForPlayer : VisualControl
+    internal sealed class VCEventForPlayer : VCCustomEvent
     {
-        private VCCellSimple cell;
-        private static Bitmap bmpBackground;
-        private VCLabel lblCaption;
-        private VCLabel lblText;
-
-        public VCEventForPlayer(Entity entity, TypeEventForPlayer typeEvent) : base()
+        public VCEventForPlayer(Entity entity, TypeEventForPlayer typeEvent) : base(entity)
         {
-            Debug.Assert(entity != null);
-
-            Entity = entity;
             TypeEvent = typeEvent;
 
             Visible = false;
-
-            cell = new VCCellSimple(this, 0, 3);
-            cell.ImageIndex = Entity.GetImageIndex();
             cell.Click += Cell_Click;
             cell.RightClick += Cell_RightClick;
             cell.HighlightUnderMouse = true;
@@ -78,15 +67,14 @@ namespace Fantasy_Kingdoms_Battle
 
             Debug.Assert(nameText.Length > 0);
 
-            lblCaption = new VCLabel(this, cell.NextLeft(), 4, Program.formMain.fontMedCaptionC, Color.Gray, 16, nameEvent);
-            lblCaption.Width = lblCaption.Font.WidthText(lblCaption.Text);
-            lblCaption.ClickOnParent = true;
-            lblText = new VCLabel(this, lblCaption.ShiftX, 27, Program.formMain.fontMedCaptionC, colorNameEntity, 16, nameText);
-            lblText.Width = lblText.Font.WidthText(lblText.Text);
-            lblText.ClickOnParent = true;
+            lblCaption.Text = nameEvent;
+            lblText.Text = nameText;
+            lblText.Color = colorNameEntity;
 
-            Width = 399;
-            Height = 54;
+            lblCaption.Width = lblCaption.Font.WidthText(lblCaption.Text);
+            lblText.Width = lblText.Font.WidthText(lblText.Text);
+
+            Width = 52 + 399;
         }
 
         private void CloseSelf()
@@ -120,15 +108,5 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal TypeEventForPlayer TypeEvent { get; }
-
-        internal override void DrawBackground(Graphics g)
-        {
-            if (bmpBackground is null)
-                bmpBackground = Program.formMain.LoadBitmap("BackgroundEvent.png");
-
-            base.DrawBackground(g);
-
-            g.DrawImageUnscaled(bmpBackground, Left + 52, Top);
-        }
     }
 }
