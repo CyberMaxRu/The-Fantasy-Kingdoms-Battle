@@ -25,5 +25,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int Number { get; }
         internal int ImageIndex16 { get; }
+
+        protected override int ShiftImageIndex()
+        {
+            return FormMain.Config.ImageIndexFirstItems + 1;
+        }
     }
 }
