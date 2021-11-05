@@ -1055,7 +1055,6 @@ namespace Fantasy_Kingdoms_Battle
         protected void ApplyStartBonus(StartBonus sb)
         {
             IncomeGold(sb.Gold);
-            PointGreatness += sb.Greatness;
             Builders += sb.Builders;
             FreeBuilders += sb.Builders;
             CreateExternalConstructions(FormMain.Config.FindConstruction(FormMain.Config.IDPeasantHouse), 1, LocationCapital, sb.PeasantHouse);

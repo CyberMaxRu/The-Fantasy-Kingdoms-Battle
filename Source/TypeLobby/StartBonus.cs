@@ -18,7 +18,6 @@ namespace Fantasy_Kingdoms_Battle
         public StartBonus(XmlNode n)
         {
             Gold = XmlUtils.GetInteger(n, "Gold");
-            Greatness = XmlUtils.GetInteger(n, "Greatness");
             Builders = XmlUtils.GetInteger(n, "Builders");
             Scouting = XmlUtils.GetInteger(n, "Scouting");
             PeasantHouse = XmlUtils.GetInteger(n, "PeasantHouse");
@@ -31,8 +30,6 @@ namespace Fantasy_Kingdoms_Battle
 
             Debug.Assert(Gold >= 0);
             Debug.Assert(Gold <= 10000);
-            Debug.Assert(Greatness >= 0);
-            Debug.Assert(Greatness <= 10000);
             Debug.Assert(Builders >= 0);
             Debug.Assert(Builders <= 10);
             Debug.Assert(Scouting >= 0);
@@ -48,7 +45,6 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal int Gold { get; private set; }
-        internal int Greatness { get; private set; }
         internal int Builders { get; private set; }
         internal int Scouting { get; private set; }
         internal int PeasantHouse { get; private set; }
@@ -60,7 +56,6 @@ namespace Fantasy_Kingdoms_Battle
         internal void AddBonus(StartBonus sb)
         {
             Gold += sb.Gold;
-            Greatness += sb.Greatness;
             Builders += sb.Builders;
             Scouting += sb.Scouting;
             PeasantHouse += sb.PeasantHouse;
@@ -79,7 +74,6 @@ namespace Fantasy_Kingdoms_Battle
             StartBonus otherStartBonus = obj as StartBonus;
 
             return (Gold == otherStartBonus.Gold) 
-                && (Greatness == otherStartBonus.Greatness)
                 && (Scouting == otherStartBonus.Scouting)
                 && (PeasantHouse == otherStartBonus.PeasantHouse)
                 && (HolyPlace == otherStartBonus.HolyPlace)
