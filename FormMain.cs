@@ -70,9 +70,12 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCToolLabel labelDay;
         private readonly VCToolLabel labelBuilders;
         private readonly VCToolLabel labelGold;
-        private readonly VCToolLabel labelGreatness;
+        private readonly VCToolLabel labelWood;
+        private readonly VCToolLabel labelIron;
+        private readonly VCToolLabel labelStone;
         private readonly VCToolLabel labelHeroes;
         private readonly VCToolLabel labelCorruption;
+        private readonly VCToolLabel labelGreatness;
         private readonly VCLabel labelNamePlayer;
 
         private readonly VCIconButton48 btnInGameMenu;
@@ -183,6 +186,9 @@ namespace Fantasy_Kingdoms_Battle
         internal const int GUI_16_INTEREST_ATTACK = 23;
         internal const int GUI_16_INTEREST_OTHER = 24;
         internal const int GUI_16_PURSE = 25;
+        internal const int GUI_16_WOOD = 26;
+        internal const int GUI_16_IRON = 27;
+        internal const int GUI_16_STONE = 28;
 
         internal const int GUI_24_FIRE = 0;
         internal const int GUI_24_HEROES = 1;
@@ -564,21 +570,31 @@ namespace Fantasy_Kingdoms_Battle
                 labelDay.Click += LabelDay_Click;
                 labelDay.ShowHint += LabelDay_ShowHint;
                 labelDay.Width = 64;
-                labelBuilders = new VCToolLabel(bmpPreparedToolbar, labelDay.NextLeft(), labelDay.ShiftY, "", GUI_16_BUILDER);
+                labelBuilders = new VCToolLabel(bmpPreparedToolbar, labelDay.NextLeft() - 4, labelDay.ShiftY, "", GUI_16_BUILDER);
                 labelBuilders.ShowHint += LabelBuilders_ShowHint;
-                labelBuilders.Width = 112;
-                labelGold = new VCToolLabel(bmpPreparedToolbar, labelBuilders.NextLeft(), labelDay.ShiftY, "", GUI_16_COFFERS);
+                labelBuilders.Width = 88;
+                labelGold = new VCToolLabel(bmpPreparedToolbar, labelBuilders.NextLeft() - 4, labelDay.ShiftY, "", GUI_16_COFFERS);
                 labelGold.ShowHint += LabelGold_ShowHint;
-                labelGold.Width = 152;
-                labelGreatness = new VCToolLabel(bmpPreparedToolbar, labelGold.NextLeft(), labelDay.ShiftY, "", GUI_16_GREATNESS);
-                labelGreatness.ShowHint += LabelGreatness_ShowHint;
-                labelGreatness.Width = 152;
-                labelHeroes = new VCToolLabel(bmpPreparedToolbar, labelGreatness.NextLeft() + 288, labelDay.ShiftY, "", GUI_16_HEROES);
+                labelGold.Width = 88;
+                labelWood = new VCToolLabel(bmpPreparedToolbar, labelGold.NextLeft() - 4, labelDay.ShiftY, "", GUI_16_WOOD);
+                labelWood.ShowHint += LabelWood_ShowHint;
+                labelWood.Width = 88;
+                labelIron = new VCToolLabel(bmpPreparedToolbar, labelWood.NextLeft() - 4, labelDay.ShiftY, "", GUI_16_IRON);
+                labelIron.ShowHint += LabelIron_ShowHint;
+                labelIron.Width = 88;
+                labelStone = new VCToolLabel(bmpPreparedToolbar, labelIron.NextLeft() - 4, labelDay.ShiftY, "", GUI_16_STONE);
+                labelStone.ShowHint += LabelStone_ShowHint;
+                labelStone.Width = 88;
+
+                labelHeroes = new VCToolLabel(bmpPreparedToolbar, labelStone.NextLeft() + 240, labelDay.ShiftY, "", GUI_16_HEROES);
                 labelHeroes.ShowHint += LabelHeroes_ShowHint;
                 labelHeroes.Width = 96;
                 labelCorruption = new VCToolLabel(bmpPreparedToolbar, labelHeroes.NextLeft(), labelDay.ShiftY, "", GUI_16_CORRUPTION);
                 labelCorruption.ShowHint += LabelCorruption_ShowHint;
                 labelCorruption.Width = 128;
+                labelGreatness = new VCToolLabel(bmpPreparedToolbar, labelCorruption.NextLeft(), labelDay.ShiftY, "", GUI_16_GREATNESS);
+                labelGreatness.ShowHint += LabelGreatness_ShowHint;
+                labelGreatness.Width = 152;
 
                 labelNamePlayer = new VCLabel(bmpPreparedToolbar, 0, 0, fontMedCaptionC, Color.White, fontMedCaptionC.MaxHeightSymbol, "");
                 labelNamePlayer.StringFormat.LineAlignment = StringAlignment.Center;
@@ -813,6 +829,24 @@ namespace Fantasy_Kingdoms_Battle
                 throw;
                 //Environment.Exit(-1);
             }
+        }
+
+        private void LabelStone_ShowHint(object sender, EventArgs e)
+        {
+            formHint.AddStep2Header("Камень");
+            formHint.AddStep5Description("Количество камня на складах");
+        }
+
+        private void LabelIron_ShowHint(object sender, EventArgs e)
+        {
+            formHint.AddStep2Header("Железо");
+            formHint.AddStep5Description("Количество железа на складах");
+        }
+
+        private void LabelWood_ShowHint(object sender, EventArgs e)
+        {
+            formHint.AddStep2Header("Дерево");
+            formHint.AddStep5Description("Количество дерева на складах");
         }
 
         private void DrawPageLocation()
@@ -1270,6 +1304,9 @@ namespace Fantasy_Kingdoms_Battle
                     labelDay.Visible = true;
                     labelBuilders.Visible = true;
                     labelGold.Visible = true;
+                    labelWood.Visible = true;
+                    labelIron.Visible = true;
+                    labelStone.Visible = true;
                     labelGreatness.Visible = true;
                     labelHeroes.Visible = true;
                     labelCorruption.Visible = true;
@@ -1282,6 +1319,9 @@ namespace Fantasy_Kingdoms_Battle
                     labelDay.Visible = false;
                     labelBuilders.Visible = false;
                     labelGold.Visible = false;
+                    labelWood.Visible = false;
+                    labelIron.Visible = false;
+                    labelStone.Visible = false;
                     labelGreatness.Visible = false;
                     labelHeroes.Visible = false;
                     labelCorruption.Visible = false;
@@ -1730,7 +1770,7 @@ namespace Fantasy_Kingdoms_Battle
             //
             if ((Layers[0] == layerGame) && (lobby.CurrentPlayer != null) && MainControl.Visible)
             {
-                labelGold.Text = lobby.CurrentPlayer.Gold.ToString() + " (+" + lobby.CurrentPlayer.Income().ToString() + ")";
+                labelGold.Text = lobby.CurrentPlayer.Gold.ToString();
                 labelBuilders.Text = $"{curAppliedPlayer.FreeBuilders}/{curAppliedPlayer.Builders}";
                 labelGreatness.Text = curAppliedPlayer.LevelGreatness.ToString()
                     + " (+" + curAppliedPlayer.PointGreatnessPerDay().ToString() + ")"
