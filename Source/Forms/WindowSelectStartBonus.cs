@@ -26,15 +26,19 @@ namespace Fantasy_Kingdoms_Battle
             // Создаем ящики с выбором бонуса
             int nextLeft = FormMain.Config.GridSize;
             int nextTop;
+            int idx = 1;
             foreach (StartBonus sb in listStartBonuses)
             {
-                nextTop = FormMain.Config.GridSize;
-
                 VisualControl text = new VisualControl(ClientControl, nextLeft, FormMain.Config.GridSize);
+                VCLabel lblCaption = new VCLabel(text, 0, 4, Program.formMain.fontParagraphC, Color.MediumTurquoise, 24, $"Вариант {idx}");
+                lblCaption.StringFormat.LineAlignment = StringAlignment.Center;
                 text.PlaySoundOnEnter = true;
                 text.PlaySoundOnClick = true;
                 text.ShowBorder = true;
                 text.Click += Text_Click;
+
+                nextTop = lblCaption.NextTop();
+
                 if (sb.Gold > 0)
                     AddBonus(text, sb.Gold.ToString(), $"+{sb.Gold} золота", FormMain.GUI_16_GOLD);
                 if (sb.Greatness > 0)
@@ -52,7 +56,9 @@ namespace Fantasy_Kingdoms_Battle
 
                 text.Width = 160;
                 text.Height = 200;
+                lblCaption.Width = text.Width;
                 nextLeft = text.NextLeft() + FormMain.Config.GridSize;
+                idx++;
 
                 listBoxes.Add(text);
             }
