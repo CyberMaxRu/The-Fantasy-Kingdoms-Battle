@@ -12,7 +12,7 @@ namespace Fantasy_Kingdoms_Battle
 
     internal sealed class VCNoticeForPlayer : VCCustomNotice
     {
-        public VCNoticeForPlayer(Entity entity, TypeNoticeForPlayer typeNotice) : base()
+        public VCNoticeForPlayer(Entity entity, TypeNoticeForPlayer typeNotice) : base(52 + 399)
         {
             Debug.Assert(entity != null);
 
@@ -21,9 +21,9 @@ namespace Fantasy_Kingdoms_Battle
             TypeNotice = typeNotice;
 
             Visible = false;
-            cell.Click += Cell_Click;
-            cell.RightClick += Cell_RightClick;
-            cell.HighlightUnderMouse = true;
+            Cell.Click += Cell_Click;
+            Cell.RightClick += Cell_RightClick;
+            Cell.HighlightUnderMouse = true;
 
             string nameNotice;
             string nameText = "";
@@ -72,8 +72,6 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(nameText.Length > 0);
 
             SetNotice(Entity.GetImageIndex(), nameNotice, nameText, colorNameEntity);
-
-            Width = 52 + 399;
         }
 
         private void CloseSelf()

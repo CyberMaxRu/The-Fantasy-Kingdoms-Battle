@@ -10,36 +10,62 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal class VCCustomNotice : VisualControl
     {
-        protected readonly VCCellSimple cell;
+        private static List<Bitmap> cacheBackground = new List<Bitmap>();
+
         protected readonly VCLabel lblCaption;
         protected readonly VCLabel lblText;
-        private static Bitmap bmpBackground;
+        private readonly Bitmap bmpBackground;
 
-        public VCCustomNotice() : base()
+        public VCCustomNotice(int width) : base()
         {
-            cell = new VCCellSimple(this, 0, 3);
+            Cell = new VCCellSimple(this, 0, 3);
 
-            lblCaption = new VCLabel(this, cell.NextLeft(), 4, Program.formMain.fontMedCaptionC, Color.Gray, 16, "");
+            lblCaption = new VCLabel(this, Cell.NextLeft(), 4, Program.formMain.fontMedCaptionC, Color.Gray, 16, "");
             lblCaption.ClickOnParent = true;
 
             lblText = new VCLabel(this, lblCaption.ShiftX, 27, Program.formMain.fontMedCaptionC, Color.Gray, 16, "");
             lblText.ClickOnParent = true;
             Height = 54;
+            Width = width;
+
+            bmpBackground = PrepareBackground(width - 52);
         }
+
+        internal VCCellSimple Cell { get; }
 
         internal override void DrawBackground(Graphics g)
         {
-            if (bmpBackground is null)
-                bmpBackground = Program.formMain.LoadBitmap("BackgroundEvent.png");
-
             base.DrawBackground(g);
 
             g.DrawImageUnscaled(bmpBackground, Left + 52, Top);
         }
 
+        private Bitmap PrepareBackground(int width)
+        {
+            Debug.Assert(width >= 48);
+
+            foreach (Bitmap b in cacheBackground)
+            {
+                if (b.Width == width)
+                    return b;
+            }
+
+            Bitmap bmp = new Bitmap(width, Height);
+            int beginAlpha = 50;
+            float stepAlpha = width / beginAlpha;
+            // Инициализируем цветом и градиентной прозрачностью
+            for (int y = 0; y < bmp.Height; y++)
+                for (int x = 0; x < bmp.Width; x++)
+                {
+                    bmp.SetPixel(x, y, Color.FromArgb(Math.Max(0, Convert.ToInt32(beginAlpha - (x / stepAlpha))), Color.SkyBlue));
+                }
+
+            return bmp;
+        }
+
         internal void SetNotice(int imageIndex, string caption, string text, Color colorText)
         {
-            cell.ImageIndex = imageIndex;
+            Cell.ImageIndex = imageIndex;
             lblCaption.Text = caption;
             lblText.Text = text;
             lblText.Color = colorText;
