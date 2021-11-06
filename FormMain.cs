@@ -1585,7 +1585,7 @@ namespace Fantasy_Kingdoms_Battle
                     {
                         imgLocations[y, x] = new VCImage128(pageMap.Page, x * (imListObjects128.Size + Config.GridSize), y * (imListObjects128.Size + Config.GridSize));
                         imgLocations[y, x].ShowHint += Location_ShowHint;
-                        imgLocations[y, x].Click += Location_Click;
+                        imgLocations[y, x].Click += Map_Click;
                     }
 
                 pageMap.Page.ArrangeControls();
@@ -1598,16 +1598,15 @@ namespace Fantasy_Kingdoms_Battle
             lobby.Start();
         }
 
-        private void Location_Click(object sender, EventArgs e)
+        private void Map_Click(object sender, EventArgs e)
         {
             Location l = (sender as VCImage128).Entity as Location;
 
             imgLocations[curAppliedPlayer.CurrentLocation.Settings.Coord.Y, curAppliedPlayer.CurrentLocation.Settings.Coord.X].ManualSelected = false;
-
             SelectPlayerObject(l);
-            curAppliedPlayer.CurrentLocation = l;
-            UpdateNeighborhoods();
             imgLocations[curAppliedPlayer.CurrentLocation.Settings.Coord.Y, curAppliedPlayer.CurrentLocation.Settings.Coord.X].ManualSelected = true;
+
+            SetPageLocation(l, true);
         }
 
         private void Location_ShowHint(object sender, EventArgs e)
@@ -2629,6 +2628,10 @@ namespace Fantasy_Kingdoms_Battle
                 case ConstructionPage.Economic:
                     pageControl.ActivatePage(pageEconomicConstructions);
                     break;
+                case ConstructionPage.None:
+                    SetPageLocation(construction.Location, false);
+                    pageControl.ActivatePage(pageLocation);
+                    break;
                 default:
                     throw new Exception($"Необрабатывая страница: {construction.TypeConstruction.Page}.");                         
             }
@@ -2636,11 +2639,10 @@ namespace Fantasy_Kingdoms_Battle
             SelectPlayerObject(construction, selectPage);
         }
 
-        internal void ActivatePageLairs(Location l)
+        internal void SetPageLocation(Location l, bool showInfo)
         {
-            //Debug.Assert(pagesLairs[number].Visible);
-
-            //pagesLairs[number].DoClick();
+            curAppliedPlayer.CurrentLocation = l;
+            UpdateNeighborhoods();
         }
     }
 }
