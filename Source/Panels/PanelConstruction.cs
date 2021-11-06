@@ -197,7 +197,11 @@ namespace Fantasy_Kingdoms_Battle
 
                 if (Construction.TypeConstruction.PlayerCanBuild)
                 {
-                    if (Construction.Level > 0)
+                    if (Construction.ListQueueProcessing.Count > 0)
+                    {
+                        btnBuildOrUpgrade.Visible = false;
+                    }
+                    else if (Construction.Level > 0)
                     {
                         if (Construction.CanLevelUp())
                         {
