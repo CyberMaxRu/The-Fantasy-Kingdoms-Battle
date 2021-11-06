@@ -1132,7 +1132,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override int GetImageIndex()
         {
-            if (Player == Player.Lobby.CurrentPlayer)
+            if ((Player.Lobby.CurrentPlayer is null) || (Player == Player.Lobby.CurrentPlayer))
                 return ImageIndexLair();
             else
                 return FormMain.Config.Gui48_Battle;
