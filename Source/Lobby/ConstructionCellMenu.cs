@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace Fantasy_Kingdoms_Battle
 {
@@ -28,7 +29,9 @@ namespace Fantasy_Kingdoms_Battle
         internal virtual string GetText() => GetCost().ToString();
         internal abstract int GetCost();
         internal abstract int GetImageIndex();
+        internal virtual bool ButtonIsEnabled() => CheckRequirements() && (DaysProcessed == 0);
         internal virtual string GetLevel() => "";
+        internal virtual Color GetColorText() => FormMain.Config.CommonCost;
         internal virtual bool CheckRequirements() => true;
         internal virtual List<TextRequirement> GetTextRequirements() => new List<TextRequirement>();
         internal virtual void PrepareHint() { }
@@ -336,6 +339,11 @@ namespace Fantasy_Kingdoms_Battle
         internal override string GetLevel()
         {
             return Descriptor.Number.ToString();
+        }
+
+        internal override Color GetColorText()
+        {
+            return base.GetColorText();
         }
 
         internal override void PrepareHint()

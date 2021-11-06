@@ -207,8 +207,8 @@ namespace Fantasy_Kingdoms_Battle
                             btnBuildOrUpgrade.Text = Construction.CellMenuBuildOrLevelUp.GetCost().ToString();
                             btnBuildOrUpgrade.Level = Construction.CellMenuBuildOrLevelUp.GetLevel().ToString();
                             btnBuildOrUpgrade.ImageIndex = Construction.CellMenuBuildOrLevelUp.GetImageIndex();
-                            btnBuildOrUpgrade.ImageIsEnabled = Construction.CellMenuBuildOrLevelUp.CheckRequirements();
-                            btnBuildOrUpgrade.Color = btnBuildOrUpgrade.ImageIsEnabled ? Color.LimeGreen : Color.Gray;
+                            btnBuildOrUpgrade.ImageIsEnabled = Construction.CellMenuBuildOrLevelUp.ButtonIsEnabled();
+                            btnBuildOrUpgrade.Color = Construction.CellMenuBuildOrLevelUp.GetColorText();
                         }
                         else
                         {
@@ -232,8 +232,8 @@ namespace Fantasy_Kingdoms_Battle
                         btnBuildOrUpgrade.Text = Construction.CellMenuBuildOrLevelUp.GetCost().ToString();
                         btnBuildOrUpgrade.Level = Construction.CellMenuBuildOrLevelUp.GetLevel().ToString();
                         btnBuildOrUpgrade.ImageIndex = Construction.CellMenuBuildOrLevelUp.GetImageIndex();
-                        btnBuildOrUpgrade.ImageIsEnabled = Construction.CellMenuBuildOrLevelUp.CheckRequirements();
-                        btnBuildOrUpgrade.Color = btnBuildOrUpgrade.ImageIsEnabled ? Color.LimeGreen : Color.Gray;
+                        btnBuildOrUpgrade.ImageIsEnabled = Construction.CellMenuBuildOrLevelUp.ButtonIsEnabled();
+                        btnBuildOrUpgrade.Color = Construction.CellMenuBuildOrLevelUp.GetColorText();
                     }
                 }
                 else
