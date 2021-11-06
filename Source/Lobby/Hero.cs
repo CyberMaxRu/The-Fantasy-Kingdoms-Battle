@@ -12,20 +12,27 @@ namespace Fantasy_Kingdoms_Battle
     // Класс героя игрока
     internal sealed class Hero : Creature
     {
-        public Hero(DescriptorCreature creature, Construction pb, BattleParticipant bp) : base(creature, bp)
+        public Hero(Construction pb, BattleParticipant bp, DescriptorCreature creature) : base(creature, bp)
         {
-            Debug.Assert(Food != null);
-            Debug.Assert(Rest != null);
-            Debug.Assert(Entertainment != null);
-            Debug.Assert(Money != null);
-
             Construction = pb;
             Abode = Construction;
             DayOfHire = Player.Lobby.Turn;
 
-            FullName = (creature.PrefixName.Length > 0 ? creature.PrefixName + " " : "")
-                + GetRandomName(creature.NameFromTypeHero == null ? creature.Names : creature.NameFromTypeHero.Names)
-                + " " + GetRandomName(creature.SurnameFromTypeHero == null ? creature.Surnames : creature.Surnames);
+            if (creature.CategoryCreature == CategoryCreature.Hero)
+            {
+                Debug.Assert(Food != null);
+                Debug.Assert(Rest != null);
+                Debug.Assert(Entertainment != null);
+                Debug.Assert(Money != null);
+
+                FullName = (creature.PrefixName.Length > 0 ? creature.PrefixName + " " : "")
+                    + GetRandomName(creature.NameFromTypeHero == null ? creature.Names : creature.NameFromTypeHero.Names)
+                    + " " + GetRandomName(creature.SurnameFromTypeHero == null ? creature.Surnames : creature.Surnames);
+            }
+            else
+            {
+                FullName = TypeCreature.Name;
+            }
 
             //
             Initialize();
@@ -34,17 +41,6 @@ namespace Fantasy_Kingdoms_Battle
             {
                 return list.Count > 0 ? list[Player.Lobby.Rnd.Next(list.Count)] : "";
             }
-        }
-
-        public Hero(Construction pb, BattleParticipant bp, DescriptorCreature th) : base(th, bp)
-        {
-            Construction = pb;
-            Abode = Construction;
-            DayOfHire = Player.Lobby.Turn;
-            FullName = TypeCreature.Name;
-
-            //
-            Initialize();
         }
 
         internal Construction Construction { get; }// Здание, которому принадлежит герой
