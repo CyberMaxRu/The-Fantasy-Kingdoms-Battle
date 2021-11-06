@@ -29,7 +29,7 @@ namespace Fantasy_Kingdoms_Battle
         internal virtual string GetText() => GetCost().ToString();
         internal abstract int GetCost();
         internal abstract int GetImageIndex();
-        internal virtual bool ButtonIsEnabled() => CheckRequirements() && (DaysProcessed == 0);
+        internal virtual bool GetImageIsEnabled() => CheckRequirements() && (DaysProcessed == 0);
         internal virtual string GetLevel() => "";
         internal virtual Color GetColorText() => FormMain.Config.CommonCost;
         internal virtual bool CheckRequirements() => true;
@@ -343,7 +343,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override Color GetColorText()
         {
-            return base.GetColorText();
+            return GetImageIsEnabled() ? DaysLeft == 0 ? Color.LimeGreen : FormMain.Config.CommonCost : Color.Gray;
         }
 
         internal override void PrepareHint()

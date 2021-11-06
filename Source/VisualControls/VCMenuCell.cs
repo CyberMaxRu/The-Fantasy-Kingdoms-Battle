@@ -58,7 +58,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (research != null)
             {
-                ImageIndex = research.GetImageIndex();                
+                ImageIndex = research.GetImageIndex();
+                Color = research.GetColorText();
 
                 if (research.PosInQueue > 0)
                 {
@@ -87,7 +88,6 @@ namespace Fantasy_Kingdoms_Battle
                     ImageIsEnabled = true;
                     lblBanner.Visible = false;
                     Text = research.GetText();
-                    Color = research.GetColorText();
                     Level = research.GetLevel();
                 }
                 //ImageIsEnabled = research.CheckRequirements();
@@ -125,7 +125,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Visible && (ImageIndex != -1))
             {
-                if (research.ButtonIsEnabled())
+                if (research.GetImageIsEnabled())
                 {
                     if (MouseClicked && MouseOver)
                         g.DrawImageUnscaled(Program.formMain.ilMenuCellFilters.GetImage((int)MenuCellFilter.Press, true, false), Left, Top);
