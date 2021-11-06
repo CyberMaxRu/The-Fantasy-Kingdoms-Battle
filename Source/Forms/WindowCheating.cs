@@ -21,6 +21,8 @@ namespace Fantasy_Kingdoms_Battle
         private VCCheckBox chkbIgnoreRequirements;
         private VCCheckBox chkbIgnoreResources;
         private VCCheckBox chkbIgnoreBuilders;
+        private VCCheckBox chkbInstantlyBuilding;
+        private VCCheckBox chkbInstantlyResearch;
 
         public WindowCheating(Settings s) : base()
         {
@@ -40,7 +42,15 @@ namespace Fantasy_Kingdoms_Battle
             chkbIgnoreBuilders.Hint = "Игнорировать требования к наличию достаточного количества строителей";
             chkbIgnoreBuilders.Checked = settings.CheatingIgnoreBuilders;
 
-            btnShowAll = new VCButton(ClientControl, 0, chkbIgnoreBuilders.NextTop() + (FormMain.Config.GridSize * 2), "Открыть все локации");
+            chkbInstantlyBuilding = new VCCheckBox(ClientControl, 0, chkbIgnoreBuilders.NextTop(), "Мгновенная постройка сооружений");
+            chkbInstantlyBuilding.Hint = "Сооружения строятся сразу же, минуя очередь и процесс постройки";
+            chkbInstantlyBuilding.Checked = settings.CheatingInstantlyBuilding;
+
+            chkbInstantlyResearch = new VCCheckBox(ClientControl, 0, chkbInstantlyBuilding.NextTop(), "Мгновенное исследование в сооружении");
+            chkbInstantlyResearch.Hint = "Исследования, постройка и прочее в сооружении происходят сразу же";
+            chkbInstantlyResearch.Checked = settings.CheatingInstantlyResearch;
+
+            btnShowAll = new VCButton(ClientControl, 0, chkbInstantlyResearch.NextTop() + (FormMain.Config.GridSize * 2), "Открыть все локации");
             btnShowAll.Width = 240;
             btnShowAll.Click += BtnShowAll_Click;
 
@@ -70,6 +80,8 @@ namespace Fantasy_Kingdoms_Battle
             chkbIgnoreRequirements.Width = ClientControl.Width;
             chkbIgnoreResources.Width = ClientControl.Width;
             chkbIgnoreBuilders.Width = ClientControl.Width;
+            chkbInstantlyBuilding.Width = ClientControl.Width;
+            chkbInstantlyResearch.Width = ClientControl.Width;
 
             ApplyMaxSize();
         }
@@ -89,6 +101,8 @@ namespace Fantasy_Kingdoms_Battle
             chkbIgnoreRequirements.Checked = check;
             chkbIgnoreResources.Checked = check;
             chkbIgnoreBuilders.Checked = check;
+            chkbInstantlyBuilding.Checked = check;
+            chkbInstantlyResearch.Checked = check;
         }
 
         private void BtnResetAll_Click(object sender, EventArgs e)
@@ -106,6 +120,8 @@ namespace Fantasy_Kingdoms_Battle
             settings.CheatingIgnoreRequirements = chkbIgnoreRequirements.Checked;
             settings.CheatingIgnoreBaseResources = chkbIgnoreResources.Checked;
             settings.CheatingIgnoreBuilders = chkbIgnoreBuilders.Checked;
+            settings.CheatingInstantlyBuilding = chkbInstantlyBuilding.Checked;
+            settings.CheatingInstantlyResearch = chkbInstantlyResearch.Checked;
 
             CloseForm(DialogAction.OK);
         }
