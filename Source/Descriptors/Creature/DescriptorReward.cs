@@ -14,16 +14,16 @@ namespace Fantasy_Kingdoms_Battle
     {
         public DescriptorReward(XmlNode n) : base()
         {
-            Gold = GetInteger(n, "Gold");
+            Cost = new ListBaseResources(GetInteger(n, "Gold"));
             Greatness = GetInteger(n, "Greatness");
 
-            Debug.Assert(Gold >= 0);
-            Debug.Assert(Gold <= 50_000);
+            Debug.Assert(Cost.ValueGold() >= 0);
+            Debug.Assert(Cost.ValueGold() <= 50_000);
             Debug.Assert(Greatness >= 0);
             Debug.Assert(Greatness <= 10_000);
         }
 
-        internal int Gold { get; }
+        internal ListBaseResources Cost { get; }
         internal int Greatness { get; }
     }
 }

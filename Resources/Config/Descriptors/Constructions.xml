@@ -15,8 +15,10 @@
     <SoundSelect>guild_warrior_select.wav</SoundSelect>
     <Levels>
       <Level>
-        <Number>1</Number>guil
-        <Cost>550</Cost>
+        <Number>1</Number>
+        <Cost>
+          <Gold>550</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -24,7 +26,9 @@
       </Level>
       <Level>
         <Number>2</Number>
-        <Cost>550</Cost>
+        <Cost>
+          <Gold>550</Gold>
+        </Cost>
         <DaysProcessing>2</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -39,7 +43,9 @@
       </Level>
       <Level>
         <Number>3</Number>
-        <Cost>550</Cost>
+        <Cost>
+          <Gold>550</Gold>
+        </Cost>
         <DaysProcessing>3</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -52,20 +58,26 @@
         <Type>HireCreature</Type>
         <Entity>Warrior</Entity>
         <DaysProcessing>0</DaysProcessing>
-        <Cost>200</Cost>
+        <Cost>
+          <Gold>200</Gold>
+        </Cost>
       </CellMenu>
       <CellMenu>
         <Pos>3,1</Pos>
         <Type>Research</Type>
-        <Entity>CloseCombatCourse</Entity>        
-        <Cost>250</Cost>
+        <Entity>CloseCombatCourse</Entity>
+        <Cost>
+          <Gold>250</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
         <Entity>WarriorImpAttack</Entity>
-        <Cost>200</Cost>
+        <Cost>
+          <Gold>200</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -79,7 +91,9 @@
         <Pos>2,3</Pos>
         <Type>Research</Type>
         <Entity>WarriorMaimAttack</Entity>
-        <Cost>500</Cost>
+        <Cost>
+          <Gold>500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -93,7 +107,9 @@
         <Pos>3,3</Pos>
         <Type>Research</Type>
         <Entity>WarriorResistanceBuff</Entity>
-        <Cost>500</Cost>
+        <Cost>
+          <Gold>500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -121,7 +137,9 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>450</Cost>
+        <Cost>
+          <Gold>450</Gold>
+        </Cost>
         <Income>0</Income>
         <DaysProcessing>1</DaysProcessing>
         <Builders>1</Builders>
@@ -129,7 +147,9 @@
       </Level>
       <Level>
         <Number>2</Number>
-        <Cost>450</Cost>
+        <Cost>
+          <Gold>450</Gold>
+        </Cost>
         <DaysProcessing>2</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -144,7 +164,9 @@
       </Level>
       <Level>
         <Number>3</Number>
-        <Cost>450</Cost>
+        <Cost>
+          <Gold>450</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Builders>3</Builders>
         <Income>0</Income>
@@ -157,20 +179,26 @@
         <Type>HireCreature</Type>
         <Entity>Hunter</Entity>
         <DaysProcessing>0</DaysProcessing>
-        <Cost>150</Cost>
+        <Cost>
+          <Gold>150</Gold>
+        </Cost>
       </CellMenu>
       <CellMenu>
         <Pos>3,1</Pos>
         <Type>Research</Type>
         <Entity>FittingClothes</Entity>
-        <Cost>250</Cost>
+        <Cost>
+          <Gold>250</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
         <Entity>HunterImpAttack</Entity>
-        <Cost>200</Cost>
+        <Cost>
+          <Gold>200</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -184,7 +212,9 @@
         <Pos>2,3</Pos>
         <Type>Research</Type>
         <Entity>HunterStingShotAttack</Entity>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -198,7 +228,9 @@
         <Pos>3,3</Pos>
         <Type>Research</Type>
         <Entity>HunterManaburnAttack</Entity>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -226,7 +258,9 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>700</Cost>
+        <Cost>
+          <Gold>700</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -234,7 +268,9 @@
       </Level>
       <Level>
         <Number>2</Number>
-        <Cost>700</Cost>
+        <Cost>
+          <Gold>700</Gold>
+        </Cost>
         <DaysProcessing>2</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -249,7 +285,9 @@
       </Level>
       <Level>
         <Number>3</Number>
-        <Cost>700</Cost>
+        <Cost>
+          <Gold>700</Gold>
+        </Cost>
         <DaysProcessing>3</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -262,20 +300,26 @@
         <Type>HireCreature</Type>
         <Entity>Cleric</Entity>
         <DaysProcessing>0</DaysProcessing>
-        <Cost>350</Cost>
+        <Cost>
+          <Gold>350</Gold>
+        </Cost>
       </CellMenu>
       <CellMenu>
         <Pos>3,1</Pos>
         <Type>Research</Type>
         <Entity>HolyWater</Entity>
-        <Cost>250</Cost>
+        <Cost>
+          <Gold>250</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
         <Entity>HolyAttack</Entity>
-        <Cost>200</Cost>
+        <Cost>
+          <Gold>200</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -289,7 +333,9 @@
         <Pos>2,3</Pos>
         <Type>Research</Type>
         <Entity>ClericManaRegenBuff</Entity>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -303,7 +349,9 @@
         <Pos>3,3</Pos>
         <Type>Research</Type>
         <Entity>ClericKnockbackAttack</Entity>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -331,7 +379,9 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Builders>0</Builders>
         <Income>0</Income>
@@ -346,7 +396,9 @@
       </Level>
       <Level>
         <Number>2</Number>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
         <DaysProcessing>2</DaysProcessing>
         <Builders>0</Builders>
         <Income>0</Income>
@@ -366,7 +418,9 @@
       </Level>
       <Level>
         <Number>3</Number>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
         <DaysProcessing>3</DaysProcessing>
         <Builders>0</Builders>
         <Income>0</Income>
@@ -395,27 +449,35 @@
         <Type>HireCreature</Type>
         <Entity>Mage</Entity>
         <DaysProcessing>1</DaysProcessing>
-        <Cost>500</Cost>
+        <Cost>
+          <Gold>500</Gold>
+        </Cost>
       </CellMenu>
       <CellMenu>
         <Pos>3,1</Pos>
         <Type>Research</Type>
         <Entity>EnchantWeaponAttack</Entity>
-        <Cost>300</Cost>
+        <Cost>
+          <Gold>300</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>4,1</Pos>
         <Type>Research</Type>
         <Entity>MageFireballAttack</Entity>
-        <Cost>200</Cost>
+        <Cost>
+          <Gold>200</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
         <Entity>MageFreezeAttack</Entity>
-        <Cost>500</Cost>
+        <Cost>
+          <Gold>500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -429,7 +491,9 @@
         <Pos>3,2</Pos>
         <Type>Research</Type>
         <Entity>MageGuardianWind</Entity>
-        <Cost>750</Cost>
+        <Cost>
+          <Gold>750</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -443,7 +507,9 @@
         <Pos>4,2</Pos>
         <Type>Extension</Type>
         <Entity>Library</Entity>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -457,7 +523,9 @@
         <Pos>2,3</Pos>
         <Type>Research</Type>
         <Entity>MageFirestormAttack</Entity>
-        <Cost>2000</Cost>
+        <Cost>
+          <Gold>2000</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -485,7 +553,9 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>2500</Cost>
+        <Cost>
+          <Gold>2500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -500,7 +570,9 @@
       </Level>
       <Level>
         <Number>2</Number>
-        <Cost>2500</Cost>
+        <Cost>
+          <Gold>2500</Gold>
+        </Cost>
         <DaysProcessing>3</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -520,7 +592,9 @@
       </Level>
       <Level>
         <Number>3</Number>
-        <Cost>2500</Cost>
+        <Cost>
+          <Gold>2500</Gold>
+        </Cost>
         <DaysProcessing>3</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -545,27 +619,35 @@
         <Type>HireCreature</Type>
         <Entity>Elf</Entity>
         <DaysProcessing>1</DaysProcessing>
-        <Cost>700</Cost>
+        <Cost>
+          <Gold>700</Gold>
+        </Cost>
       </CellMenu>
       <CellMenu>
         <Pos>3,1</Pos>
         <Type>Research</Type>
         <Entity>ElvenSharpener</Entity>
-        <Cost>250</Cost>
+        <Cost>
+          <Gold>250</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>4,1</Pos>
         <Type>Research</Type>
         <Entity>ElixirSpeed</Entity>
-        <Cost>1500</Cost>
+        <Cost>
+          <Gold>1500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
         <Entity>ElfImpAttack</Entity>
-        <Cost>200</Cost>
+        <Cost>
+          <Gold>200</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -579,7 +661,9 @@
         <Pos>3,2</Pos>
         <Type>Research</Type>
         <Entity>ElfWine</Entity>
-        <Cost>1500</Cost>
+        <Cost>
+          <Gold>1500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -593,7 +677,9 @@
         <Pos>2,3</Pos>
         <Type>Research</Type>
         <Entity>ElfBuff</Entity>
-        <Cost>200</Cost>
+        <Cost>
+          <Gold>200</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -607,7 +693,9 @@
         <Pos>3,3</Pos>
         <Type>Research</Type>
         <Entity>ElfMagicArrow</Entity>
-        <Cost>300</Cost>
+        <Cost>
+          <Gold>300</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -635,7 +723,9 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>2000</Cost>
+        <Cost>
+          <Gold>2000</Gold>
+        </Cost>
         <DaysProcessing>2</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -651,7 +741,9 @@
       </Level>
       <Level>
         <Number>2</Number>
-        <Cost>2000</Cost>
+        <Cost>
+          <Gold>2000</Gold>
+        </Cost>
         <DaysProcessing>3</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -672,7 +764,9 @@
       </Level>
       <Level>
         <Number>3</Number>
-        <Cost>2500</Cost>
+        <Cost>
+          <Gold>2500</Gold>
+        </Cost>
         <DaysProcessing>4</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -707,20 +801,26 @@
         <Type>HireCreature</Type>
         <Entity>Dwarf</Entity>
         <DaysProcessing>1</DaysProcessing>
-        <Cost>700</Cost>
+        <Cost>
+          <Gold>700</Gold>
+        </Cost>
       </CellMenu>
       <CellMenu>
         <Pos>3,1</Pos>
         <Type>Research</Type>
         <Entity>SimpleRunes</Entity>
-        <Cost>250</Cost>
+        <Cost>
+          <Gold>250</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
         <Entity>DwarfImpAttack</Entity>
-        <Cost>300</Cost>
+        <Cost>
+          <Gold>300</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -734,7 +834,9 @@
         <Pos>3,2</Pos>
         <Type>Research</Type>
         <Entity>DwarfBerserkBuff</Entity>
-        <Cost>750</Cost>
+        <Cost>
+          <Gold>750</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -748,7 +850,9 @@
         <Pos>4,2</Pos>
         <Type>Research</Type>
         <Entity>DwarfBeer</Entity>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -767,7 +871,9 @@
         <Pos>2,3</Pos>
         <Type>Research</Type>
         <Entity>DwarfAntiBuildingAttack</Entity>
-        <Cost>500</Cost>
+        <Cost>
+          <Gold>500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -782,7 +888,9 @@
         <Type>Extension</Type>
         <Entity>DwarfForge</Entity>
         <DaysProcessing>2</DaysProcessing>
-        <Cost>2000</Cost>
+        <Cost>
+          <Gold>2000</Gold>
+        </Cost>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -809,7 +917,9 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>450</Cost>
+        <Cost>
+          <Gold>450</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -817,7 +927,9 @@
       </Level>
       <Level>
         <Number>2</Number>
-        <Cost>450</Cost>
+        <Cost>
+          <Gold>450</Gold>
+        </Cost>
         <DaysProcessing>2</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -832,7 +944,9 @@
       </Level>
       <Level>
         <Number>3</Number>
-        <Cost>450</Cost>
+        <Cost>
+          <Gold>450</Gold>
+        </Cost>
         <DaysProcessing>3</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -856,7 +970,9 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>450</Cost>
+        <Cost>
+          <Gold>450</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -871,7 +987,9 @@
       </Level>
       <Level>
         <Number>2</Number>
-        <Cost>450</Cost>
+        <Cost>
+          <Gold>450</Gold>
+        </Cost>
         <DaysProcessing>2</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -886,7 +1004,9 @@
       </Level>
       <Level>
         <Number>3</Number>
-        <Cost>450</Cost>
+        <Cost>
+          <Gold>450</Gold>
+        </Cost>
         <DaysProcessing>3</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -899,13 +1019,17 @@
         <Type>HireCreature</Type>
         <Entity>Rogue</Entity>
         <DaysProcessing>0</DaysProcessing>
-        <Cost>100</Cost>
+        <Cost>
+          <Gold>100</Gold>
+        </Cost>
       </CellMenu>
       <CellMenu>
         <Pos>3,1</Pos>
         <Type>Research</Type>
         <Entity>EnchantWeaponPoison</Entity>
-        <Cost>300</Cost>
+        <Cost>
+          <Gold>300</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
@@ -913,14 +1037,18 @@
         <Pos>4,1</Pos>
         <Type>Research</Type>
         <Entity>RoguePoisonAttack</Entity>
-        <Cost>200</Cost>
+        <Cost>
+          <Gold>200</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
         <Entity>RogueImpAttack</Entity>
-        <Cost>500</Cost>
+        <Cost>
+          <Gold>500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -934,7 +1062,9 @@
         <Pos>3,2</Pos>
         <Type>Research</Type>
         <Entity>RogueKickAttack</Entity>
-        <Cost>500</Cost>
+        <Cost>
+          <Gold>500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -948,7 +1078,9 @@
         <Pos>2,3</Pos>
         <Type>Research</Type>
         <Entity>StunAttack</Entity>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -976,7 +1108,9 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
+        <Cost>
+          <Gold>0</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Builders>0</Builders>
         <Income>1000</Income>
@@ -990,7 +1124,12 @@
       </Level>
       <Level>
         <Number>2</Number>
-        <Cost>2000</Cost>
+        <Cost>
+          <Gold>2000</Gold>
+          <Wood>200</Wood>
+          <Iron>100</Iron>
+          <Stone>500</Stone>
+        </Cost>
         <DaysProcessing>3</DaysProcessing>
         <Builders>2</Builders>
         <Income>1500</Income>
@@ -1026,7 +1165,10 @@
       </Level>
       <Level>
         <Number>3</Number>
-        <Cost>4000</Cost>
+        <Cost>
+          <Gold>4000</Gold>
+          <Stone>1000</Stone>
+        </Cost>
         <DaysProcessing>5</DaysProcessing>
         <Builders>3</Builders>
         <Income>2000</Income>
@@ -1076,27 +1218,35 @@
         <Type>Extra</Type>
         <Entity>Builder</Entity>
         <Cooldown>2</Cooldown>
-        <Cost>2500</Cost>
+        <Cost>
+          <Gold>2500</Gold>
+        </Cost>
       </CellMenu>
       <CellMenu>
         <Pos>3,1</Pos>
         <Type>Extra</Type>
         <Entity>LevelUp</Entity>
         <Cooldown>2</Cooldown>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
       </CellMenu>
       <CellMenu>
         <Pos>4,1</Pos>
         <Type>Extra</Type>
         <Entity>Research</Entity>
         <Cooldown>2</Cooldown>
-        <Cost>1500</Cost>
+        <Cost>
+          <Gold>1500</Gold>
+        </Cost>
       </CellMenu>
       <CellMenu>
         <Pos>2,3</Pos>
         <Type>Extension</Type>
         <Entity>Throne</Entity>
-        <Cost>5000</Cost>
+        <Cost>
+          <Gold>5000</Gold>
+        </Cost>
         <DaysProcessing>2</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -1123,7 +1273,9 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
+        <Cost>
+          <Gold>0</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Builders>0</Builders>
         <Income>50</Income>
@@ -1166,7 +1318,9 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
+        <Cost>
+          <Gold>0</Gold>
+        </Cost>
         <DaysProcessing>2</DaysProcessing>
         <Builders>1</Builders>
         <Income>250</Income>
@@ -1195,7 +1349,9 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>250</Cost>
+        <Cost>
+          <Gold>250</Gold>
+        </Cost>
         <DaysProcessing>3</DaysProcessing>
         <Builders>1</Builders>
         <Income>100</Income>
@@ -1224,14 +1380,18 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>500</Cost>
+        <Cost>
+          <Gold>500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Builders>1</Builders>
         <Income>175</Income>
       </Level>
       <Level>
         <Number>2</Number>
-        <Cost>1500</Cost>
+        <Cost>
+          <Gold>1500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Builders>1</Builders>
         <Income>300</Income>
@@ -1245,7 +1405,9 @@
       </Level>
       <Level>
         <Number>3</Number>
-        <Cost>3000</Cost>
+        <Cost>
+          <Gold>3000</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Builders>1</Builders>
         <Income>525</Income>
@@ -1285,28 +1447,36 @@
         <Pos>2,1</Pos>
         <Type>Research</Type>
         <Entity>Apple</Entity>
-        <Cost>250</Cost>
+        <Cost>
+          <Gold>250</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>3,1</Pos>
         <Type>Research</Type>
         <Entity>Wheat</Entity>
-        <Cost>500</Cost>
+        <Cost>
+          <Gold>500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>4,1</Pos>
         <Type>Research</Type>
         <Entity>Meat</Entity>
-        <Cost>750</Cost>
+        <Cost>
+          <Gold>750</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
         <Entity>GingerRoot</Entity>
-        <Cost>500</Cost>
+        <Cost>
+          <Gold>500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -1320,7 +1490,9 @@
         <Pos>3,2</Pos>
         <Type>Research</Type>
         <Entity>Amanita</Entity>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -1334,7 +1506,9 @@
         <Pos>4,2</Pos>
         <Type>Event</Type>
         <Entity>EventFair</Entity>
-        <Cost>1500</Cost>
+        <Cost>
+          <Gold>1500</Gold>
+        </Cost>
         <DaysProcessing>3</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -1348,7 +1522,9 @@
         <Pos>2,3</Pos>
         <Type>Research</Type>
         <Entity>CornedBeef</Entity>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -1375,14 +1551,18 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>500</Cost>
+        <Cost>
+          <Gold>500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Builders>1</Builders>
         <Income>50</Income>
       </Level>
       <Level>
         <Number>2</Number>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Builders>1</Builders>
         <Income>50</Income>
@@ -1396,7 +1576,9 @@
       </Level>
       <Level>
         <Number>3</Number>
-        <Cost>2000</Cost>
+        <Cost>
+          <Gold>2000</Gold>
+        </Cost>
         <Income>50</Income>
         <DaysProcessing>1</DaysProcessing>
         <Builders>1</Builders>
@@ -1414,14 +1596,18 @@
         <Pos>2,1</Pos>
         <Type>Research</Type>
         <Entity>ImproveAnvil</Entity>
-        <Cost>500</Cost>
+        <Cost>
+          <Gold>500</Gold>
+        </Cost>
         <DaysProcessing>3</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
         <Entity>ImproveForging</Entity>
-        <Cost>1500</Cost>
+        <Cost>
+          <Gold>1500</Gold>
+        </Cost>
         <DaysProcessing>4</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -1435,7 +1621,9 @@
         <Pos>3,2</Pos>
         <Type>Research</Type>
         <Entity>Sickle</Entity>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -1449,7 +1637,9 @@
         <Pos>2,3</Pos>
         <Type>Research</Type>
         <Entity>ImproveFounding</Entity>
-        <Cost>3000</Cost>
+        <Cost>
+          <Gold>3000</Gold>
+        </Cost>
         <DaysProcessing>3</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -1463,13 +1653,17 @@
         <Pos>4,1</Pos>
         <Type>Research</Type>
         <Entity>GroupArmourMetal1</Entity>
-        <Cost>250</Cost>
+        <Cost>
+          <Gold>250</Gold>
+        </Cost>
         <DaysProcessing>2</DaysProcessing>
         <CellMenu>
           <Pos>4,1</Pos>
           <Type>Research</Type>
           <Entity>GroupArmourMetal2</Entity>
-          <Cost>1000</Cost>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
           <DaysProcessing>2</DaysProcessing>
           <Requirements>
             <Requirement>
@@ -1482,7 +1676,9 @@
             <Pos>4,1</Pos>
             <Type>Research</Type>
             <Entity>GroupArmourMetal3</Entity>
-            <Cost>3000</Cost>
+            <Cost>
+              <Gold>3000</Gold>
+            </Cost>
             <DaysProcessing>3</DaysProcessing>
             <Requirements>
               <Requirement>
@@ -1495,7 +1691,9 @@
               <Pos>4,1</Pos>
               <Type>Research</Type>
               <Entity>GroupArmourMetal4</Entity>
-              <Cost>3500</Cost>
+              <Cost>
+                <Gold>3500</Gold>
+              </Cost>
               <DaysProcessing>4</DaysProcessing>
               <Requirements>
                 <Requirement>
@@ -1517,13 +1715,17 @@
         <Pos>4,2</Pos>
         <Type>Research</Type>
         <Entity>GroupWeaponMelee1</Entity>
-        <Cost>250</Cost>
+        <Cost>
+          <Gold>250</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <CellMenu>
           <Pos>4,2</Pos>
           <Type>Research</Type>
           <Entity>GroupWeaponMelee2</Entity>
-          <Cost>1000</Cost>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
           <DaysProcessing>2</DaysProcessing>
           <Requirements>
             <Requirement>
@@ -1536,7 +1738,9 @@
             <Pos>4,2</Pos>
             <Type>Research</Type>
             <Entity>GroupWeaponMelee3</Entity>
-            <Cost>3000</Cost>
+            <Cost>
+              <Gold>3000</Gold>
+            </Cost>
             <DaysProcessing>3</DaysProcessing>
             <Requirements>
               <Requirement>
@@ -1549,7 +1753,9 @@
               <Pos>4,2</Pos>
               <Type>Research</Type>
               <Entity>GroupWeaponMelee4</Entity>
-              <Cost>3500</Cost>
+              <Cost>
+                <Gold>3500</Gold>
+              </Cost>
               <DaysProcessing>4</DaysProcessing>
               <Requirements>
                 <Requirement>
@@ -1566,13 +1772,17 @@
         <Pos>4,3</Pos>
         <Type>Research</Type>
         <Entity>GroupArmourLeather1</Entity>
-        <Cost>250</Cost>
+        <Cost>
+          <Gold>250</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <CellMenu>
           <Pos>4,3</Pos>
           <Type>Research</Type>
           <Entity>GroupArmourLeather2</Entity>
-          <Cost>1000</Cost>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
           <DaysProcessing>2</DaysProcessing>
           <Requirements>
             <Requirement>
@@ -1585,7 +1795,9 @@
             <Pos>4,3</Pos>
             <Type>Research</Type>
             <Entity>GroupArmourLeather3</Entity>
-            <Cost>3000</Cost>
+            <Cost>
+              <Gold>3000</Gold>
+            </Cost>
             <DaysProcessing>3</DaysProcessing>
             <Requirements>
               <Requirement>
@@ -1598,7 +1810,9 @@
               <Pos>4,3</Pos>
               <Type>Research</Type>
               <Entity>GroupArmourLeather4</Entity>
-              <Cost>3500</Cost>
+              <Cost>
+                <Gold>3500</Gold>
+              </Cost>
               <DaysProcessing>4</DaysProcessing>
               <Requirements>
                 <Requirement>
@@ -1628,7 +1842,9 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>250</Cost>
+        <Cost>
+          <Gold>250</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -1646,7 +1862,9 @@
       </Level>
       <Level>
         <Number>2</Number>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -1671,7 +1889,9 @@
       </Level>
       <Level>
         <Number>3</Number>
-        <Cost>1500</Cost>
+        <Cost>
+          <Gold>1500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -1721,14 +1941,18 @@
         <Pos>2,1</Pos>
         <Type>Research</Type>
         <Entity>TavernSoup</Entity>
-        <Cost>250</Cost>
+        <Cost>
+          <Gold>250</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
         <Entity>TavernMeat</Entity>
-        <Cost>500</Cost>
+        <Cost>
+          <Gold>500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -1747,7 +1971,9 @@
         <Pos>3,2</Pos>
         <Type>Research</Type>
         <Entity>TavernBeer</Entity>
-        <Cost>500</Cost>
+        <Cost>
+          <Gold>500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -1766,7 +1992,9 @@
         <Pos>2,3</Pos>
         <Type>Event</Type>
         <Entity>EventFeast</Entity>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
         <DaysProcessing>2</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -1798,7 +2026,9 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>1500</Cost>
+        <Cost>
+          <Gold>1500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Builders>0</Builders>
         <Income>150</Income>
@@ -1812,7 +2042,9 @@
       </Level>
       <Level>
         <Number>2</Number>
-        <Cost>2500</Cost>
+        <Cost>
+          <Gold>2500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Builders>0</Builders>
         <Income>250</Income>
@@ -1826,7 +2058,9 @@
       </Level>
       <Level>
         <Number>3</Number>
-        <Cost>2500</Cost>
+        <Cost>
+          <Gold>2500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Builders>0</Builders>
         <Income>350</Income>
@@ -1844,14 +2078,18 @@
         <Pos>2,1</Pos>
         <Type>Research</Type>
         <Entity>AmuletOfRegeneration</Entity>
-        <Cost>250</Cost>
+        <Cost>
+          <Gold>250</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
         <Entity>RingOfProtection</Entity>
-        <Cost>500</Cost>
+        <Cost>
+          <Gold>500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -1865,7 +2103,9 @@
         <Pos>2,3</Pos>
         <Type>Research</Type>
         <Entity>ImpAmuletOfProtection</Entity>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -1879,14 +2119,18 @@
         <Pos>3,1</Pos>
         <Type>Research</Type>
         <Entity>Quiver</Entity>
-        <Cost>250</Cost>
+        <Cost>
+          <Gold>250</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>3,2</Pos>
         <Type>Research</Type>
         <Entity>SmallBag</Entity>
-        <Cost>500</Cost>
+        <Cost>
+          <Gold>500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -1900,13 +2144,17 @@
         <Pos>4,1</Pos>
         <Type>Research</Type>
         <Entity>GroupWeaponRange1</Entity>
-        <Cost>250</Cost>
+        <Cost>
+          <Gold>250</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <CellMenu>
           <Pos>4,1</Pos>
           <Type>Research</Type>
           <Entity>GroupWeaponRange2</Entity>
-          <Cost>1000</Cost>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
           <DaysProcessing>2</DaysProcessing>
           <Requirements>
             <Requirement>
@@ -1919,7 +2167,9 @@
             <Pos>4,1</Pos>
             <Type>Research</Type>
             <Entity>GroupWeaponRange3</Entity>
-            <Cost>3000</Cost>
+            <Cost>
+              <Gold>3000</Gold>
+            </Cost>
             <DaysProcessing>3</DaysProcessing>
             <Requirements>
               <Requirement>
@@ -1932,7 +2182,9 @@
               <Pos>4,1</Pos>
               <Type>Research</Type>
               <Entity>GroupWeaponRange4</Entity>
-              <Cost>3500</Cost>
+              <Cost>
+                <Gold>3500</Gold>
+              </Cost>
               <DaysProcessing>4</DaysProcessing>
               <Requirements>
                 <Requirement>
@@ -1949,13 +2201,17 @@
         <Pos>4,2</Pos>
         <Type>Research</Type>
         <Entity>GroupArmourMage1</Entity>
-        <Cost>250</Cost>
+        <Cost>
+          <Gold>250</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <CellMenu>
           <Pos>4,2</Pos>
           <Type>Research</Type>
           <Entity>GroupArmourMage2</Entity>
-          <Cost>1000</Cost>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
           <DaysProcessing>2</DaysProcessing>
           <Requirements>
             <Requirement>
@@ -1968,7 +2224,9 @@
             <Pos>4,2</Pos>
             <Type>Research</Type>
             <Entity>GroupArmourMage3</Entity>
-            <Cost>3000</Cost>
+            <Cost>
+              <Gold>3000</Gold>
+            </Cost>
             <DaysProcessing>3</DaysProcessing>
             <Requirements>
               <Requirement>
@@ -1981,7 +2239,9 @@
               <Pos>4,2</Pos>
               <Type>Research</Type>
               <Entity>GroupArmourMage4</Entity>
-              <Cost>3500</Cost>
+              <Cost>
+                <Gold>3500</Gold>
+              </Cost>
               <DaysProcessing>4</DaysProcessing>
               <Requirements>
                 <Requirement>
@@ -1998,13 +2258,17 @@
         <Pos>4,3</Pos>
         <Type>Research</Type>
         <Entity>GroupWeaponMage1</Entity>
-        <Cost>250</Cost>
+        <Cost>
+          <Gold>250</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <CellMenu>
           <Pos>4,3</Pos>
           <Type>Research</Type>
           <Entity>GroupWeaponMage2</Entity>
-          <Cost>1000</Cost>
+          <Cost>
+            <Gold>1000</Gold>
+          </Cost>
           <DaysProcessing>2</DaysProcessing>
           <Requirements>
             <Requirement>
@@ -2017,7 +2281,9 @@
             <Pos>4,3</Pos>
             <Type>Research</Type>
             <Entity>GroupWeaponMage3</Entity>
-            <Cost>3000</Cost>
+            <Cost>
+              <Gold>3000</Gold>
+            </Cost>
             <DaysProcessing>3</DaysProcessing>
             <Requirements>
               <Requirement>
@@ -2030,7 +2296,9 @@
               <Pos>4,3</Pos>
               <Type>Research</Type>
               <Entity>GroupWeaponMage4</Entity>
-              <Cost>3500</Cost>
+              <Cost>
+                <Gold>3500</Gold>
+              </Cost>
               <DaysProcessing>4</DaysProcessing>
               <Requirements>
                 <Requirement>
@@ -2060,21 +2328,27 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>1500</Cost>
+        <Cost>
+          <Gold>1500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Builders>1</Builders>
         <Income>200</Income>
       </Level>
       <Level>
         <Number>2</Number>
-        <Cost>2000</Cost>
+        <Cost>
+          <Gold>2000</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Builders>1</Builders>
         <Income>300</Income>
       </Level>
       <Level>
         <Number>3</Number>
-        <Cost>2500</Cost>
+        <Cost>
+          <Gold>2000</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Builders>1</Builders>
         <Income>500</Income>
@@ -2085,28 +2359,36 @@
         <Pos>2,1</Pos>
         <Type>Research</Type>
         <Entity>PotionOfHealth</Entity>
-        <Cost>150</Cost>
+        <Cost>
+          <Gold>150</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>3,1</Pos>
         <Type>Research</Type>
         <Entity>PotionOfMana</Entity>
-        <Cost>300</Cost>
+        <Cost>
+          <Gold>300</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>4,1</Pos>
         <Type>Research</Type>
         <Entity>PotionOfCheerfulness</Entity>
-        <Cost>200</Cost>
+        <Cost>
+          <Gold>200</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
         <Entity>ElixirMeleeProt</Entity>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -2120,7 +2402,9 @@
         <Pos>3,2</Pos>
         <Type>Research</Type>
         <Entity>ElixirRangeProt</Entity>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -2134,7 +2418,9 @@
         <Pos>4,2</Pos>
         <Type>Research</Type>
         <Entity>ElixirMagicProt</Entity>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -2148,7 +2434,9 @@
         <Pos>2,3</Pos>
         <Type>Research</Type>
         <Entity>ElixirStrength</Entity>
-        <Cost>2000</Cost>
+        <Cost>
+          <Gold>2000</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -2162,7 +2450,9 @@
         <Pos>3,3</Pos>
         <Type>Research</Type>
         <Entity>ElixirAccuracy</Entity>
-        <Cost>2000</Cost>
+        <Cost>
+          <Gold>2000</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -2176,7 +2466,9 @@
         <Pos>4,3</Pos>
         <Type>Research</Type>
         <Entity>ElixirWisdom</Entity>
-        <Cost>2000</Cost>
+        <Cost>
+          <Gold>2000</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -2203,7 +2495,9 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>500</Cost>
+        <Cost>
+          <Gold>500</Gold>
+        </Cost>
         <DaysProcessing>3</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -2221,7 +2515,9 @@
       </Level>
       <Level>
         <Number>2</Number>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
         <DaysProcessing>4</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -2239,7 +2535,9 @@
       </Level>
       <Level>
         <Number>3</Number>
-        <Cost>1500</Cost>
+        <Cost>
+          <Gold>1500</Gold>
+        </Cost>
         <DaysProcessing>6</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -2262,7 +2560,9 @@
         <Name>Беседки</Name>
         <Description>Беседки увеличат популярность {Парка}</Description>
         <ImageIndex>215</ImageIndex>
-        <Cost>500</Cost>
+        <Cost>
+          <Gold>500</Gold>
+        </Cost>
         <Interest>5</Interest>
         <AvailableForAll>true</AvailableForAll>
         <Needs>
@@ -2323,14 +2623,18 @@
         <Pos>2,1</Pos>
         <Type>Extension</Type>
         <Entity>Gazebo</Entity>
-        <Cost>500</Cost>
+        <Cost>
+          <Gold>500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Extension</Type>
         <Entity>Alley</Entity>
-        <Cost>1500</Cost>
+        <Cost>
+          <Gold>1500</Gold>
+        </Cost>
         <DaysProcessing>2</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -2344,7 +2648,9 @@
         <Pos>3,2</Pos>
         <Type>Extension</Type>
         <Entity>Maze</Entity>
-        <Cost>1500</Cost>
+        <Cost>
+          <Gold>1500</Gold>
+        </Cost>
         <DaysProcessing>2</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -2358,7 +2664,9 @@
         <Pos>2,3</Pos>
         <Type>Extension</Type>
         <Entity>Waterfall</Entity>
-        <Cost>2000</Cost>
+        <Cost>
+          <Gold>2000</Gold>
+        </Cost>
         <DaysProcessing>2</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -2372,7 +2680,9 @@
         <Pos>3,3</Pos>
         <Type>Extension</Type>
         <Entity>Pond</Entity>
-        <Cost>2500</Cost>
+        <Cost>
+          <Gold>2500</Gold>
+        </Cost>
         <DaysProcessing>3</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -2404,7 +2714,9 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>500</Cost>
+        <Cost>
+          <Gold>500</Gold>
+        </Cost>
         <DaysProcessing>2</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -2424,7 +2736,9 @@
       </Level>
       <Level>
         <Number>2</Number>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
         <DaysProcessing>2</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -2451,7 +2765,9 @@
       </Level>
       <Level>
         <Number>3</Number>
-        <Cost>2000</Cost>
+        <Cost>
+          <Gold>2000</Gold>
+        </Cost>
         <DaysProcessing>2</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -2517,14 +2833,18 @@
         <Pos>2,1</Pos>
         <Type>Extension</Type>
         <Entity>Paving</Entity>
-        <Cost>500</Cost>
+        <Cost>
+          <Gold>500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Extension</Type>
         <Entity>Fountain</Entity>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -2538,7 +2858,9 @@
         <Pos>3,2</Pos>
         <Type>Research</Type>
         <Entity>LuckyCoins</Entity>
-        <Cost>500</Cost>
+        <Cost>
+          <Gold>500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -2552,7 +2874,9 @@
         <Pos>2,3</Pos>
         <Type>Extension</Type>
         <Entity>Statue</Entity>
-        <Cost>1500</Cost>
+        <Cost>
+          <Gold>1500</Gold>
+        </Cost>
         <DaysProcessing>2</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -2566,7 +2890,9 @@
         <Pos>3,3</Pos>
         <Type>Research</Type>
         <Entity>Herald</Entity>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -2593,7 +2919,9 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>500</Cost>
+        <Cost>
+          <Gold>500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -2602,7 +2930,9 @@
       </Level>
       <Level>
         <Number>2</Number>
-        <Cost>500</Cost>
+        <Cost>
+          <Gold>500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -2626,7 +2956,9 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>500</Cost>
+        <Cost>
+          <Gold>500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -2635,7 +2967,9 @@
       </Level>
       <Level>
         <Number>2</Number>
-        <Cost>500</Cost>
+        <Cost>
+          <Gold>500</Gold>
+        </Cost>
         <DaysProcessing>2</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -2659,7 +2993,9 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -2676,7 +3012,9 @@
       </Level>
       <Level>
         <Number>2</Number>
-        <Cost>1500</Cost>
+        <Cost>
+          <Gold>1500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -2693,7 +3031,9 @@
       </Level>
       <Level>
         <Number>3</Number>
-        <Cost>2000</Cost>
+        <Cost>
+          <Gold>2000</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -2714,14 +3054,18 @@
         <Pos>2,1</Pos>
         <Type>Tournament</Type>
         <Entity>TournamentHandFight</Entity>
-        <Cost>500</Cost>
+        <Cost>
+          <Gold>500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Tournament</Type>
         <Entity>TournamentArcher</Entity>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -2735,7 +3079,9 @@
         <Pos>2,3</Pos>
         <Type>Tournament</Type>
         <Entity>TournamentMage</Entity>
-        <Cost>2000</Cost>
+        <Cost>
+          <Gold>2000</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -2762,21 +3108,27 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>1500</Cost>
+        <Cost>
+          <Gold>1500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
       </Level>
       <Level>
         <Number>2</Number>
-        <Cost>3000</Cost>
+        <Cost>
+          <Gold>3000</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
       </Level>
       <Level>
         <Number>3</Number>
-        <Cost>5000</Cost>
+        <Cost>
+          <Gold>5000</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -2787,21 +3139,27 @@
         <Pos>2,1</Pos>
         <Type>Research</Type>
         <Entity>HospitalHerbs</Entity>
-        <Cost>500</Cost>
+        <Cost>
+          <Gold>500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>3,1</Pos>
         <Type>Research</Type>
         <Entity>HospitalHealthPotion</Entity>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
         <Entity>ElixirAntipoison</Entity>
-        <Cost>500</Cost>
+        <Cost>
+          <Gold>500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -2815,7 +3173,9 @@
         <Pos>3,2</Pos>
         <Type>Research</Type>
         <Entity>ElixirRegeneration</Entity>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -2829,7 +3189,9 @@
         <Pos>2,3</Pos>
         <Type>Research</Type>
         <Entity>HospitalPowerTherapy</Entity>
-        <Cost>2500</Cost>
+        <Cost>
+          <Gold>2500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -2856,7 +3218,9 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -2864,7 +3228,9 @@
       </Level>
       <Level>
         <Number>2</Number>
-        <Cost>2500</Cost>
+        <Cost>
+          <Gold>2500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -2876,7 +3242,9 @@
         <Pos>2,2</Pos>
         <Type>HireCreature</Type>
         <Entity>Executioner</Entity>
-        <Cost>2500</Cost>
+        <Cost>
+          <Gold>2500</Gold>
+        </Cost>
         <Requirements>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2902,7 +3270,9 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>500</Cost>
+        <Cost>
+          <Gold>500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Builders>1</Builders>
         <Income>50</Income>
@@ -2920,7 +3290,9 @@
       </Level>
       <Level>
         <Number>2</Number>
-        <Cost>500</Cost>
+        <Cost>
+          <Gold>500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Builders>1</Builders>
         <Income>100</Income>
@@ -2938,7 +3310,9 @@
       </Level>
       <Level>
         <Number>3</Number>
-        <Cost>500</Cost>
+        <Cost>
+          <Gold>500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Builders>1</Builders>
         <Income>150</Income>
@@ -3040,14 +3414,18 @@
         <Pos>2,1</Pos>
         <Type>Extension</Type>
         <Entity>FruitTrees</Entity>
-        <Cost>500</Cost>
+        <Cost>
+          <Gold>500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Extension</Type>
         <Entity>FlowerGarden</Entity>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -3061,7 +3439,9 @@
         <Pos>3,2</Pos>
         <Type>Event</Type>
         <Entity>EventElvenMusic</Entity>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
         <DaysProcessing>3</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -3080,7 +3460,9 @@
         <Pos>2,3</Pos>
         <Type>Extension</Type>
         <Entity>Greenhouse</Entity>
-        <Cost>1500</Cost>
+        <Cost>
+          <Gold>1500</Gold>
+        </Cost>
         <DaysProcessing>3</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -3094,7 +3476,9 @@
         <Pos>3,3</Pos>
         <Type>Event</Type>
         <Entity>EventFireworks</Entity>
-        <Cost>2500</Cost>
+        <Cost>
+          <Gold>2500</Gold>
+        </Cost>
         <DaysProcessing>4</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -3123,7 +3507,9 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>3000</Cost>
+        <Cost>
+          <Gold>3000</Gold>
+        </Cost>
         <DaysProcessing>5</DaysProcessing>
         <Builders>3</Builders>
         <Income>0</Income>
@@ -3150,7 +3536,9 @@
         <Type>HireCreature</Type>
         <Entity>DarkPriest</Entity>
         <DaysProcessing>0</DaysProcessing>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
       </CellMenu>
     </CellsMenu>
   </Construction>
@@ -3171,7 +3559,9 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>3000</Cost>
+        <Cost>
+          <Gold>3000</Gold>
+        </Cost>
         <DaysProcessing>5</DaysProcessing>
         <Builders>3</Builders>
         <Income>0</Income>
@@ -3198,7 +3588,9 @@
         <Type>HireCreature</Type>
         <Entity>Priest</Entity>
         <DaysProcessing>0</DaysProcessing>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
       </CellMenu>
     </CellsMenu>
   </Construction>
@@ -3219,7 +3611,9 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>3000</Cost>
+        <Cost>
+          <Gold>3000</Gold>
+        </Cost>
         <DaysProcessing>5</DaysProcessing>
         <Builders>3</Builders>
         <Income>0</Income>
@@ -3246,7 +3640,9 @@
         <Type>HireCreature</Type>
         <Entity>Paladin</Entity>
         <DaysProcessing>0</DaysProcessing>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
       </CellMenu>
     </CellsMenu>
   </Construction>
@@ -3267,7 +3663,9 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>3000</Cost>
+        <Cost>
+          <Gold>3000</Gold>
+        </Cost>
         <DaysProcessing>5</DaysProcessing>
         <Builders>3</Builders>
         <Income>0</Income>
@@ -3294,7 +3692,9 @@
         <Type>HireCreature</Type>
         <Entity>BladeMaster</Entity>
         <DaysProcessing>0</DaysProcessing>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
       </CellMenu>
     </CellsMenu>
   </Construction>
@@ -3315,7 +3715,9 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>3000</Cost>
+        <Cost>
+          <Gold>3000</Gold>
+        </Cost>
         <DaysProcessing>5</DaysProcessing>
         <Builders>3</Builders>
         <Income>0</Income>
@@ -3342,7 +3744,9 @@
         <Type>HireCreature</Type>
         <Entity>BeastMaster</Entity>
         <DaysProcessing>0</DaysProcessing>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
       </CellMenu>
     </CellsMenu>
   </Construction>
@@ -3363,7 +3767,9 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>3000</Cost>
+        <Cost>
+          <Gold>3000</Gold>
+        </Cost>
         <DaysProcessing>5</DaysProcessing>
         <Builders>3</Builders>
         <Income>0</Income>
@@ -3390,7 +3796,9 @@
         <Type>HireCreature</Type>
         <Entity>Marksman</Entity>
         <DaysProcessing>0</DaysProcessing>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
       </CellMenu>
     </CellsMenu>
   </Construction>
@@ -3411,7 +3819,9 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>3000</Cost>
+        <Cost>
+          <Gold>3000</Gold>
+        </Cost>
         <DaysProcessing>5</DaysProcessing>
         <Builders>3</Builders>
         <Income>0</Income>
@@ -3438,7 +3848,9 @@
         <Type>HireCreature</Type>
         <Entity>IceMage</Entity>
         <DaysProcessing>0</DaysProcessing>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
       </CellMenu>
     </CellsMenu>
   </Construction>
@@ -3459,7 +3871,9 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>3000</Cost>
+        <Cost>
+          <Gold>3000</Gold>
+        </Cost>
         <DaysProcessing>5</DaysProcessing>
         <Builders>3</Builders>
         <Income>0</Income>
@@ -3486,7 +3900,9 @@
         <Type>HireCreature</Type>
         <Entity>DeathKnight</Entity>
         <DaysProcessing>0</DaysProcessing>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
       </CellMenu>
     </CellsMenu>
   </Construction>
@@ -3507,7 +3923,9 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>3000</Cost>
+        <Cost>
+          <Gold>3000</Gold>
+        </Cost>
         <DaysProcessing>5</DaysProcessing>
         <Builders>3</Builders>
         <Income>0</Income>
@@ -3534,7 +3952,9 @@
         <Type>HireCreature</Type>
         <Entity>FireMage</Entity>
         <DaysProcessing>0</DaysProcessing>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
       </CellMenu>
     </CellsMenu>
   </Construction>
@@ -3550,7 +3970,6 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -3582,7 +4001,6 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -3622,7 +4040,6 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -3662,7 +4079,6 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -3694,7 +4110,6 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -3734,7 +4149,6 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -3766,7 +4180,6 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -3806,7 +4219,6 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -3838,7 +4250,6 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -3878,7 +4289,6 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -3910,7 +4320,6 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -3942,7 +4351,6 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -3974,7 +4382,6 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4006,7 +4413,6 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4027,7 +4433,6 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4059,7 +4464,6 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4093,7 +4497,6 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
         <Income>0</Income>
       </Level>
     </Levels>
@@ -4157,7 +4560,6 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4180,14 +4582,18 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>250</Cost>
+        <Cost>
+          <Gold>250</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
       </Level>
       <Level>
         <Number>2</Number>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -4201,7 +4607,9 @@
       </Level>
       <Level>
         <Number>3</Number>
-        <Cost>1500</Cost>
+        <Cost>
+          <Gold>1500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -4225,7 +4633,9 @@
         <Type>Research</Type>
         <Type>Research</Type>
         <Entity>WolfInMenagerie</Entity>
-        <Cost>500</Cost>
+        <Cost>
+          <Gold>500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -4239,7 +4649,9 @@
         <Pos>3,1</Pos>
         <Type>Research</Type>
         <Entity>BearInMenagerie</Entity>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -4258,7 +4670,9 @@
         <Pos>2,2</Pos>
         <Type>Research</Type>
         <Entity>SerpentInMenagerie</Entity>
-        <Cost>750</Cost>
+        <Cost>
+          <Gold>750</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -4277,7 +4691,9 @@
         <Pos>2,3</Pos>
         <Type>Research</Type>
         <Entity>DragonInMenagerie</Entity>
-        <Cost>5000</Cost>
+        <Cost>
+          <Gold>5000</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Requirements>
           <Requirement>
@@ -4309,7 +4725,9 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Builders>1</Builders>
         <Income>250</Income>
@@ -4327,7 +4745,9 @@
       </Level>
       <Level>
         <Number>2</Number>
-        <Cost>2000</Cost>
+        <Cost>
+          <Gold>2000</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Builders>1</Builders>
         <Income>500</Income>
@@ -4352,7 +4772,9 @@
       </Level>
       <Level>
         <Number>3</Number>
-        <Cost>3000</Cost>
+        <Cost>
+          <Gold>3000</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Builders>1</Builders>
         <Income>750</Income>
@@ -4381,7 +4803,9 @@
         <Pos>2,1</Pos>
         <Type>Research</Type>
         <Entity>PlayingLotto</Entity>
-        <Cost>500</Cost>
+        <Cost>
+          <Gold>500</Gold>
+        </Cost>
         <Income>50</Income>
         <DaysProcessing>1</DaysProcessing>
       </CellMenu>
@@ -4389,7 +4813,9 @@
         <Pos>2,2</Pos>
         <Type>Research</Type>
         <Entity>Dice</Entity>
-        <Cost>1000</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Income>100</Income>
         <Requirements>
@@ -4404,7 +4830,9 @@
         <Pos>4,2</Pos>
         <Type>Research</Type>
         <Entity>Cider</Entity>
-        <Cost>500</Cost>
+        <Cost>
+          <Gold>500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Income>100</Income>
         <Requirements>
@@ -4424,7 +4852,9 @@
         <Pos>2,3</Pos>
         <Type>Research</Type>
         <Entity>PlayingCards</Entity>
-        <Cost>1500</Cost>
+        <Cost>
+          <Gold>1500</Gold>
+        </Cost>
         <DaysProcessing>1</DaysProcessing>
         <Income>200</Income>
         <Requirements>
@@ -4451,7 +4881,6 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4471,7 +4900,9 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
         <DaysProcessing>2</DaysProcessing>
         <Builders>1</Builders>
         <Income>100</Income>
@@ -4493,7 +4924,9 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
         <DaysProcessing>3</DaysProcessing>
         <Builders>1</Builders>
         <Income>100</Income>
@@ -4515,7 +4948,9 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
+        <Cost>
+          <Gold>1000</Gold>
+        </Cost>
         <DaysProcessing>4</DaysProcessing>
         <Builders>1</Builders>
         <Income>100</Income>
@@ -4537,7 +4972,9 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
+        <Cost>
+          <Gold>2500</Gold>
+        </Cost>
         <DaysProcessing>3</DaysProcessing>
         <Builders>3</Builders>
         <Income>00</Income>
@@ -4559,7 +4996,6 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4579,7 +5015,6 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4599,7 +5034,6 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4619,7 +5053,6 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
         <Visit>
@@ -4650,7 +5083,6 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4670,7 +5102,6 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
         <Visit>
@@ -4704,7 +5135,6 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4724,7 +5154,6 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4744,7 +5173,6 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4764,7 +5192,6 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4784,7 +5211,6 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4804,7 +5230,6 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4824,7 +5249,6 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4844,7 +5268,6 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4864,7 +5287,6 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4884,7 +5306,6 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4904,7 +5325,6 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
         <Income>00</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4924,7 +5344,6 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4944,7 +5363,6 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>
@@ -4964,7 +5382,9 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
+        <Cost>
+          <Gold>2500</Gold>
+        </Cost>
         <DaysProcessing>5</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -4986,7 +5406,9 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
+        <Cost>
+          <Gold>2000</Gold>
+        </Cost>
         <DaysProcessing>3</DaysProcessing>
         <Builders>1</Builders>
         <Income>0</Income>
@@ -5006,7 +5428,6 @@
     <Levels>
       <Level>
         <Number>1</Number>
-        <Cost>0</Cost>
         <Income>0</Income>
         <MaxInhabitant>100</MaxInhabitant>
       </Level>

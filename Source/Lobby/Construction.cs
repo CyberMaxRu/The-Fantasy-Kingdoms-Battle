@@ -100,7 +100,7 @@ namespace Fantasy_Kingdoms_Battle
         // Поддержка флага
         internal TypeFlag TypeFlag { get; private set; } = TypeFlag.None;// Тип установленного флага
         internal int DaySetFlag { get; private set; }// День установки флага
-        internal int SpendedGoldForSetFlag { get; private set; }// Сколько золота было потрачено на установку флага
+        internal ListBaseResources SpendedGoldForSetFlag { get; private set; }// Сколько ресурсов было потрачено на установку флага
         internal PriorityExecution PriorityFlag { get; private set; } = PriorityExecution.None;// Приоритет разведки/атаки
         internal List<Hero> listAttackedHero { get; } = new List<Hero>();// Список героев, откликнувшихся на флаг
 
@@ -137,8 +137,8 @@ namespace Fantasy_Kingdoms_Battle
             if ((TypeConstruction.Category != CategoryConstruction.Lair) && (TypeConstruction.Category != CategoryConstruction.ElementLandscape))
             {
                 Debug.Assert(Level < TypeConstruction.MaxLevel);
-                Debug.Assert(CheckRequirements());
-                Debug.Assert(Player.Gold >= CostBuyOrUpgrade());
+                //Debug.Assert(CheckRequirements());
+                //Debug.Assert(Player.BaseResources.ResourcesEnough(CostBuyOrUpgrade()));
 
                 Player.Constructed(this);
 
@@ -299,14 +299,9 @@ namespace Fantasy_Kingdoms_Battle
             return Level < TypeConstruction.MaxLevel;
         }
 
-        internal int CostBuyOrUpgradeForLevel(int level)
+        internal ListBaseResources CostBuyOrUpgrade()
         {
-            return TypeConstruction.Levels[level].Cost;
-        }
-
-        internal int CostBuyOrUpgrade()
-        {
-            return CanLevelUp() == true ? TypeConstruction.Levels[Level + 1].Cost : 0;
+            return CanLevelUp() == true ? TypeConstruction.Levels[Level + 1].Cost : null;
         }
 
         internal bool CheckRequirements()
@@ -316,7 +311,7 @@ namespace Fantasy_Kingdoms_Battle
                 return false;
 
             // Сначала проверяем наличие золота
-            if (!Player.CheckRequireGold(TypeConstruction.Levels[Level + 1].Cost))
+            if (!Player.CheckRequiredResources(TypeConstruction.Levels[Level + 1].Cost))
                 return false;
 
             // Проверяем наличие очков строительства
@@ -433,7 +428,7 @@ namespace Fantasy_Kingdoms_Battle
             return list;
         }
 
-        internal Hero HireHero(DescriptorCreature th, int gold)
+        internal Hero HireHero(DescriptorCreature th, ListBaseResources cost)
         {
             Debug.Assert(Heroes.Count < MaxHeroes());
             Debug.Assert(Player.CombatHeroes.Count < Player.Lobby.TypeLobby.MaxHeroes);
@@ -445,7 +440,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (gold > 0)
                 {
-                    Player.SpendResource(FormMain.Config.Gold, gold);
+                    Player.SpendResource(cost);
                     if (Player.Descriptor.TypePlayer == TypePlayer.Human)
                         Program.formMain.SetNeedRedrawFrame();
                 }
@@ -510,7 +505,7 @@ namespace Fantasy_Kingdoms_Battle
 
                         if (TypeConstruction.Reward != null)
                         {
-                            Program.formMain.formHint.AddStep7Reward(TypeConstruction.Reward.Gold);
+                            Program.formMain.formHint.AddStep7Reward(TypeConstruction.Reward.Cost.ValueGold());
                             Program.formMain.formHint.AddStep8Greatness(TypeConstruction.Reward.Greatness, 0);
                         }
                     }
@@ -654,13 +649,13 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal int CostScout()
+        internal ListBaseResources CostScout()
         {
             Debug.Assert(Hidden);
             AssertNotDestroyed();
 
             return PriorityFlag < PriorityExecution.Exclusive ?
-                Location.Settings.CostScout * Player.Lobby.TypeLobby.CoefFlagScout[(int)PriorityFlag + 1] / 100 : 0;
+                new ListBaseResources(Location.Settings.CostScout * Player.Lobby.TypeLobby.CoefFlagScout[(int)PriorityFlag + 1] / 100) : new ListBaseResources();
         }
 
         private void AssertNotHidden()
@@ -673,22 +668,22 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(!Destroyed, $"Логово {TypeConstruction.ID} игрока {Player.GetName()} уничтожено.");
         }
 
-        internal int CostAttack()
+        internal ListBaseResources CostAttack()
         {
             AssertNotHidden();
             AssertNotDestroyed();
 
             return PriorityFlag < PriorityExecution.Exclusive ?
-                Location.Settings.CostAttack * Player.Lobby.TypeLobby.CoefFlagAttack[(int)PriorityFlag + 1] / 100 : 0;
+                new ListBaseResources(Location.Settings.CostAttack * Player.Lobby.TypeLobby.CoefFlagAttack[(int)PriorityFlag + 1] / 100) : new ListBaseResources();
         }
 
-        internal int CostDefense()
+        internal ListBaseResources CostDefense()
         {
             AssertNotHidden();
             AssertNotDestroyed();
 
             return PriorityFlag < PriorityExecution.Exclusive ?
-                Location.Settings.CostDefense * Player.Lobby.TypeLobby.CoefFlagDefense[(int)PriorityFlag + 1] / 100 : 0;
+                new ListBaseResources(Location.Settings.CostDefense * Player.Lobby.TypeLobby.CoefFlagDefense[(int)PriorityFlag + 1] / 100) : new ListBaseResources();
         }
 
         internal string NameLair()
@@ -727,7 +722,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal int RequiredGold()
+        internal ListBaseResources RequiredGold()
         {
             AssertNotDestroyed();
 
@@ -748,7 +743,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             AssertNotDestroyed();
 
-            if (Player.Gold < RequiredGold())
+            if (!Player.CheckRequiredResources(RequiredGold()))
                 return false;
 
             switch (PriorityFlag)
@@ -828,9 +823,9 @@ namespace Fantasy_Kingdoms_Battle
 
             // 
 
-            int gold = RequiredGold();// На всякий случай запоминаем точное значение. вдруг потом при трате что-нибудь поменяется
-            Player.SpendResource(FormMain.Config.Gold, gold);
-            SpendedGoldForSetFlag += gold;
+            ListBaseResources cost = RequiredGold();// На всякий случай запоминаем точное значение. вдруг потом при трате что-нибудь поменяется
+            Player.SpendResource(cost);
+            SpendedGoldForSetFlag.AddResources(cost);
 
             if (DaySetFlag == 0)
             {
@@ -852,26 +847,26 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.LairsWithFlagChanged();
         }
 
-        internal int Cashback()
+        internal ListBaseResources Cashback()
         {
             Debug.Assert(PriorityFlag != PriorityExecution.None);
-            Debug.Assert(SpendedGoldForSetFlag > 0);
+            Debug.Assert(SpendedGoldForSetFlag.ExistsResources());
             Debug.Assert(DaySetFlag > 0);
             Debug.Assert(TypeFlag != TypeFlag.None);
             AssertNotDestroyed();
 
-            return DaySetFlag == Player.Lobby.Turn ? SpendedGoldForSetFlag : 0;
+            return DaySetFlag == Player.Lobby.Turn ? SpendedGoldForSetFlag : new ListBaseResources();
         }
 
         internal void CancelFlag()
         {
             Debug.Assert(PriorityFlag != PriorityExecution.None);
-            Debug.Assert(SpendedGoldForSetFlag > 0);
+            Debug.Assert(SpendedGoldForSetFlag.ExistsResources());
             Debug.Assert(DaySetFlag > 0);
             Debug.Assert(TypeFlag != TypeFlag.None);
             AssertNotDestroyed();
 
-            Player.ReturnResource(FormMain.Config.Gold, Cashback());
+            Player.ReturnResource(Cashback());
             DropFlag();
         }
 
@@ -944,7 +939,7 @@ namespace Fantasy_Kingdoms_Battle
             Player.RemoveFlag(this);
 
             TypeFlag = TypeFlag.None;
-            SpendedGoldForSetFlag = 0;
+            SpendedGoldForSetFlag = null;
             DaySetFlag = 0;
             TypeFlag = TypeFlag.None;
             PriorityFlag = PriorityExecution.None;
@@ -1055,12 +1050,12 @@ namespace Fantasy_Kingdoms_Battle
             // Раздаем награду. Открыть место могли без участия героев (заклинанием)
             if (listAttackedHero.Count > 0)
             {
-                Debug.Assert(SpendedGoldForSetFlag > 0);
+                Debug.Assert(SpendedGoldForSetFlag != null);
 
                 // Определяем, по сколько денег достается каждому герою
-                int goldPerHero = SpendedGoldForSetFlag / listAttackedHero.Count;
-                int delta = SpendedGoldForSetFlag - goldPerHero * listAttackedHero.Count;
-                Debug.Assert(goldPerHero * listAttackedHero.Count + delta == SpendedGoldForSetFlag);
+                int goldPerHero = SpendedGoldForSetFlag.ValueGold() / listAttackedHero.Count;
+                int delta = SpendedGoldForSetFlag.ValueGold() - goldPerHero * listAttackedHero.Count;
+                Debug.Assert(goldPerHero * listAttackedHero.Count + delta == SpendedGoldForSetFlag.ValueGold());
 
                 foreach (Hero h in listAttackedHero)
                     h.AddGold(goldPerHero);
@@ -1131,7 +1126,7 @@ namespace Fantasy_Kingdoms_Battle
             }
             Program.formMain.formHint.AddStep10DaysBuilding(-1, DayBuildingForLevel(requiredLevel));
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirements(requiredLevel));
-            Program.formMain.formHint.AddStep12Gold(CostBuyOrUpgradeForLevel(requiredLevel), Player.Gold >= CostBuyOrUpgradeForLevel(requiredLevel));
+            Program.formMain.formHint.AddStep12Gold(Player.BaseResources, TypeConstruction.Levels[requiredLevel].Cost);
             Program.formMain.formHint.AddStep13Builders(TypeConstruction.Levels[requiredLevel].Builders, Player.FreeBuilders >= TypeConstruction.Levels[requiredLevel].Builders);
         }
 
@@ -1398,10 +1393,10 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(ListQueueProcessing.IndexOf(cell) == -1);
             Debug.Assert(cell.DaysProcessed == 0);
             Debug.Assert(cell.PosInQueue == 0);
-            Debug.Assert(cell.PurchaseValue == 0);
+            Debug.Assert(cell.PurchaseValue is null);
 
-            cell.PurchaseValue = cell.GetCost();
-            Player.SpendResource(FormMain.Config.Gold, cell.PurchaseValue);
+            cell.PurchaseValue = new ListBaseResources(cell.GetCost());
+            Player.SpendResource(cell.PurchaseValue);
             ListQueueProcessing.Add(cell);
             //Player.AddEntityToQueueBuilding()
             cell.PosInQueue = ListQueueProcessing.Count;
@@ -1412,11 +1407,11 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(ListQueueProcessing.IndexOf(cell) != -1);
             Debug.Assert((cell.DaysLeft == 0) || (cell.DaysProcessed == 0));
             Debug.Assert(cell.PosInQueue > 0);
-            Debug.Assert(cell.PurchaseValue > 0);
+            Debug.Assert(cell.PurchaseValue != null);
 
             cell.PosInQueue = 0;
-            Player.ReturnResource(FormMain.Config.Gold, cell.PurchaseValue);
-            cell.PurchaseValue = 0;
+            Player.ReturnResource(cell.PurchaseValue);
+            cell.PurchaseValue = null;
             ListQueueProcessing.Remove(cell);
 
             for (int i = 0; i < ListQueueProcessing.Count; i++)

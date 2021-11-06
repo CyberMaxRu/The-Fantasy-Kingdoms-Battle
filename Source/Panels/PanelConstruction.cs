@@ -208,7 +208,7 @@ namespace Fantasy_Kingdoms_Battle
                             Debug.Assert(Construction.CellMenuBuildOrLevelUp != null, $"У {Construction.TypeConstruction.ID} не найдено действие в меню для улучшения.");
 
                             btnBuildOrUpgrade.Visible = true;
-                            btnBuildOrUpgrade.Text = Construction.CellMenuBuildOrLevelUp.GetCost().ToString();
+                            btnBuildOrUpgrade.Text = Construction.CellMenuBuildOrLevelUp.GetCost().ValueGold().ToString();
                             btnBuildOrUpgrade.Level = Construction.CellMenuBuildOrLevelUp.GetLevel().ToString();
                             btnBuildOrUpgrade.ImageIndex = Construction.CellMenuBuildOrLevelUp.GetImageIndex();
                             btnBuildOrUpgrade.ImageIsEnabled = Construction.CellMenuBuildOrLevelUp.GetImageIsEnabled();
@@ -233,7 +233,7 @@ namespace Fantasy_Kingdoms_Battle
                         Debug.Assert(Construction.CellMenuBuildOrLevelUp != null, $"У {Construction.TypeConstruction.ID} не найдено действие в меню для постройки.");
 
                         btnBuildOrUpgrade.Visible = true;
-                        btnBuildOrUpgrade.Text = Construction.CellMenuBuildOrLevelUp.GetCost().ToString();
+                        btnBuildOrUpgrade.Text = Construction.CellMenuBuildOrLevelUp.GetCost().ValueGold().ToString();
                         btnBuildOrUpgrade.Level = Construction.CellMenuBuildOrLevelUp.GetLevel().ToString();
                         btnBuildOrUpgrade.ImageIndex = Construction.CellMenuBuildOrLevelUp.GetImageIndex();
                         btnBuildOrUpgrade.ImageIsEnabled = Construction.CellMenuBuildOrLevelUp.GetImageIsEnabled();
@@ -255,7 +255,7 @@ namespace Fantasy_Kingdoms_Battle
                     btnAction.ImageIsEnabled = Construction.Player.ExistsFreeFlag();
                     int level = (int)(Construction.PriorityFlag + 1);
                     btnAction.Level = level == 0 ? "" : level.ToString();
-                    btnAction.Text = Construction.CheckFlagRequirements() ? Construction.RequiredGold().ToString() : "";
+                    btnAction.Text = Construction.CheckFlagRequirements() ? Construction.RequiredGold().ValueGold().ToString() : "";
                 }
 
                 Debug.Assert(btnAction.Visible || (!btnAction.Visible && (Construction.PriorityFlag == PriorityExecution.None)));
@@ -295,10 +295,10 @@ namespace Fantasy_Kingdoms_Battle
                 if (btnAttackHeroes.Visible)
                     btnAttackHeroes.Text = $"{Construction.listAttackedHero.Count}/{Construction.MaxHeroesForFlag()}";
 
-                lblRewardGold.Visible = !Construction.Hidden && (Construction.TypeConstruction.Reward != null) && (Construction.TypeConstruction.Reward.Gold > 0);
+                lblRewardGold.Visible = !Construction.Hidden && (Construction.TypeConstruction.Reward != null) && (Construction.TypeConstruction.Reward.Cost.ValueGold() > 0);
                 if (lblRewardGold.Visible)
                 {
-                    lblRewardGold.Text = Construction.TypeConstruction.Reward.Gold.ToString();
+                    lblRewardGold.Text = Construction.TypeConstruction.Reward.Cost.ValueGold().ToString();
                 }
 
                 lblRewardGreatness.Visible = !Construction.Hidden && (Construction.TypeConstruction.Reward != null) && (Construction.TypeConstruction.Reward.Greatness > 0);
@@ -424,7 +424,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (Construction.Hidden)
             {
-                if (Construction.Cashback() == 0)
+                if (!Construction.Cashback().ExistsResources())
                 {
                     Program.formMain.formHint.AddSimpleHint("Отмена флага разведки");
                 }
@@ -432,12 +432,12 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     Program.formMain.formHint.AddStep2Header("Отмена флага разведки");
                     Program.formMain.formHint.AddStep5Description("Возврат денег");
-                    Program.formMain.formHint.AddStep6Income(Construction.Cashback());
+                    Program.formMain.formHint.AddStep6Income(Construction.Cashback().ValueGold());
                 }
             }
             else
             {
-                if (Construction.Cashback() == 0)
+                if (!Construction.Cashback().ExistsResources())
                 {
                     Program.formMain.formHint.AddSimpleHint("Отмена флага атаки");
                 }
@@ -445,7 +445,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     Program.formMain.formHint.AddStep2Header("Отмена флага атаки");
                     Program.formMain.formHint.AddStep5Description("Возврат денег");
-                    Program.formMain.formHint.AddStep6Income(Construction.Cashback());
+                    Program.formMain.formHint.AddStep6Income(Construction.Cashback().ValueGold());
                 }
             }
         }
@@ -524,7 +524,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             Program.formMain.formHint.AddStep11Requirement(Construction.GetRequirements());
-            Program.formMain.formHint.AddStep12Gold(Construction.RequiredGold(), Construction.Player.Gold >= Construction.RequiredGold());
+            Program.formMain.formHint.AddStep12Gold(Construction.Player.BaseResources, Construction.RequiredGold());
         }
 
         private void BtnInhabitants_Click(object sender, EventArgs e)

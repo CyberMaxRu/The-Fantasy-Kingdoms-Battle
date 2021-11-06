@@ -18,7 +18,6 @@ namespace Fantasy_Kingdoms_Battle
                 Add(new BaseResource(br));
         }
 
-
         public ListBaseResources(XmlNode n) : base(FormMain.Config.BaseResources.Count)
         {
             foreach (DescriptorBaseResource br in FormMain.Config.BaseResources)
@@ -50,6 +49,14 @@ namespace Fantasy_Kingdoms_Battle
             }    
         }
 
+        public ListBaseResources(int gold) : base(FormMain.Config.BaseResources.Count)
+        {
+            foreach (DescriptorBaseResource br in FormMain.Config.BaseResources)
+                Add(new BaseResource(br));
+
+            this[FormMain.Config.Gold.Number].Quantity = gold;
+        }
+
         internal void AddResources(ListBaseResources qbr)
         {
             for (int i = 0; i < Count; i++)
@@ -69,6 +76,22 @@ namespace Fantasy_Kingdoms_Battle
             return false;
         }
 
+        internal int ValueGold()
+        {
+            return this[FormMain.Config.Gold.Number].Quantity;
+        }
+
+        internal bool ResourcesEnough(ListBaseResources listOther)
+        {
+            for (int i = 0; i < Count; i++)
+            {
+                if (this[i].Quantity < listOther[i].Quantity)
+                    return false;
+            }
+
+            return true;
+        }
+
         public override bool Equals(object obj)
         {
             ListBaseResources qbr = obj as ListBaseResources;
@@ -80,6 +103,11 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             return true;
+        }
+
+        public override string ToString()
+        {
+            throw new Exception("Нельзя список преобразовать в строку.");
         }
     }
 }

@@ -36,7 +36,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly VCLabelValue lblIncome;
         internal readonly VCLabelValue lblGreatnessAdd;
         internal readonly VCLabelValue lblBuildersPerDay;
-        internal readonly VCLabelValue lblGold;
+        internal readonly List<VCLabelValue> listRequiredResources = new List<VCLabelValue>();
         internal readonly VCLabelValue lblBuilders;
         internal readonly VCLabelValue lblHonor;
         internal readonly VCLabelValue lblEnthusiasm;
@@ -115,11 +115,7 @@ namespace Fantasy_Kingdoms_Battle
             lblTextForRequirement.Width = widthControl;
             lblTextForRequirement.StringFormat.Alignment = StringAlignment.Near;
 
-            lblGold = new VCLabelValue(this, FormMain.Config.GridSize, lblTextForRequirement.NextTop(), FormMain.Config.HintIncome, false);
-            lblGold.ImageIndex = FormMain.GUI_16_GOLD;
-            lblGold.Width = widthControl;
-
-            lblBuilders = new VCLabelValue(this, FormMain.Config.GridSize, lblGold.NextTop(), FormMain.Config.HintIncome, false);
+            lblBuilders = new VCLabelValue(this, FormMain.Config.GridSize, lblTextForRequirement.NextTop(), FormMain.Config.HintIncome, false);
             lblBuilders.ImageIndex = FormMain.GUI_16_BUILDER;
             lblBuilders.Width = widthControl;
 
@@ -266,7 +262,9 @@ namespace Fantasy_Kingdoms_Battle
             lblTextForRequirement.Visible = false;
             listRequirements.Clear();
 
-            lblGold.Visible = false;
+            foreach (VCLabel l in listRequiredResources)
+                l.Visible = false;
+
             lblBuilders.Visible = false;
             lblHonor.Visible = false;
             lblEnthusiasm.Visible = false;
@@ -649,9 +647,9 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void AddStep12Gold(int gold, bool goldEnough)
+        internal void AddStep12Gold(ListBaseResources ownRes, ListBaseResources requiresRes)
         {
-            if (gold > 0)
+            if (requiresRes.ExistsResources())
             {
                 if (!lblSeparateRequirement.Visible)
                 {
@@ -663,12 +661,45 @@ namespace Fantasy_Kingdoms_Battle
                     nextTop = lblTextForRequirement.NextTop();
                 }
 
-                lblGold.Color = ColorRequirements(goldEnough);
-                lblGold.Text = gold.ToString();
-                lblGold.ShiftY = nextTop;
-                lblGold.Visible = true;
+                VCLabelValue lbl = null;
+                int nextLeft = FormMain.Config.GridSize;
 
-                nextTop = lblGold.NextTop();
+                for (int i = 0; i < ownRes.Count; i++)
+                {
+                    if (requiresRes[i].Quantity > 0)
+                    {
+                        lbl = GetLabel(i);
+                        lbl.Visible = true;
+                        lbl.Color = ColorRequirements(ownRes[i].Quantity >= requiresRes[i].Quantity);
+                        lbl.Text = requiresRes[i].Quantity.ToString();
+                        lbl.ImageIndex = FormMain.Config.BaseResources[i].ImageIndex16;
+                        lbl.ShiftX = nextLeft;
+                        lbl.ShiftY = nextTop;
+
+                        nextLeft = lbl.NextLeft();
+                        if (nextLeft > Width)
+                        {
+                            nextLeft = 0;
+                            nextTop = lbl.NextTop();
+                        }
+                    }
+                }
+
+                if (lbl != null)
+                    nextTop = lbl.NextTop();
+
+                VCLabelValue GetLabel(int index)
+                {
+                    if (index < listRequiredResources.Count)
+                        return listRequiredResources[index];
+                    else
+                    {
+                        VCLabelValue l = new VCLabelValue(this, 0, 0, FormMain.Config.HintIncome, false);
+                        l.Width = 64;
+                        listRequiredResources.Add(l);
+                        return l;
+                    }
+                }
             }
         }
 

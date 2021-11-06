@@ -114,10 +114,10 @@ namespace Fantasy_Kingdoms_Battle
             LevelGreatness = 1;
             PointGreatnessForNextLevel = 100;
 
-            Hero king = Castle.HireHero(FormMain.Config.FindCreature("King"), 0);
-            Hero advisor = Castle.HireHero(FormMain.Config.FindCreature("Advisor"), 0);
-            Hero captain = Castle.HireHero(FormMain.Config.FindCreature("Captain"), 0);
-            Hero treasurer = Castle.HireHero(FormMain.Config.FindCreature("Treasurer"), 0);
+            Hero king = Castle.HireHero(FormMain.Config.FindCreature("King"), null);
+            Hero advisor = Castle.HireHero(FormMain.Config.FindCreature("Advisor"), null);
+            Hero captain = Castle.HireHero(FormMain.Config.FindCreature("Captain"), null);
+            Hero treasurer = Castle.HireHero(FormMain.Config.FindCreature("Treasurer"), null);
 
             //
             /*AddItem(new PlayerItem(FormMain.Config.FindItem("PotionOfHealth"), 10, true));
@@ -451,7 +451,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (IsLive == true)
             {
-                ReceivedResource(FormMain.Config.Gold, Income());
+                ReceivedResource(new ListBaseResources(Income()));
 
                 ValidateHeroes();
 
@@ -598,9 +598,9 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void Constructed(Construction pb)
         {
-            Debug.Assert(pb.CheckRequirements());
+            //Debug.Assert(pb.CheckRequirements());
 
-            SpendResource(FormMain.Config.Gold, pb.CostBuyOrUpgrade());
+            //SpendResource(pb.CostBuyOrUpgrade());
             if (!CheatingIgnoreBuilders)
                 FreeBuilders -= pb.TypeConstruction.Levels[pb.Level + 1].Builders;
             AddGreatness(pb.TypeConstruction.Levels[pb.Level + 1].GreatnessByConstruction);
@@ -785,12 +785,12 @@ namespace Fantasy_Kingdoms_Battle
             return pi;
         }
 
-        internal bool CheckRequireGold(int needGold)
+        internal bool CheckRequiredResources(ListBaseResources reqResources)
         {
             if (CheatingIgnoreBaseResources)
                 return true;
 
-            return Gold >= needGold;
+            return BaseResources.ResourcesEnough(reqResources);
         }
 
         internal bool CheckRequireBuilders(int needBuilders)
@@ -1052,13 +1052,13 @@ namespace Fantasy_Kingdoms_Battle
         {
             if (l.TypeConstruction.Reward != null)
             {
-                ReceivedResource(FormMain.Config.Gold, l.TypeConstruction.Reward.Gold);
+                ReceivedResource(l.TypeConstruction.Reward.Cost);
                 AddGreatness(l.TypeConstruction.Reward.Greatness);
             }
 
             if (l.TypeConstruction.HiddenReward != null)
             {
-                ReceivedResource(FormMain.Config.Gold, l.TypeConstruction.HiddenReward.Gold);
+                ReceivedResource(l.TypeConstruction.HiddenReward.Cost);
                 AddGreatness(l.TypeConstruction.HiddenReward.Greatness);
             }
         }
@@ -1118,51 +1118,69 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal void SpendResource(DescriptorBaseResource r, int value)
+        internal void SpendResource(ListBaseResources res)
         {
-            Debug.Assert(BaseResources[r.Number].Quantity >= 0);
-            Debug.Assert(BaseResources[r.Number].Quantity >= value);
+            if (res != null)
+            {
+                if (!CheatingIgnoreBaseResources)
+                {
+                    for (int i = 0; i < BaseResources.Count; i++)
+                    {
+                        Debug.Assert(BaseResources[i].Quantity >= 0);
+                        Debug.Assert(BaseResources[i].Quantity >= res[i].Quantity);
+                        Debug.Assert(res[i].Quantity >= 0);
 
+                        BaseResources[i].Quantity -= res[i].Quantity;
+                    }
+                }
+
+                UpdateResourceInCastle();
+            }
+        }
+
+        internal void ReturnResource(ListBaseResources res)
+        {
             if (!CheatingIgnoreBaseResources)
-                BaseResources[r.Number].Quantity -= value;
+            {
+                for (int i = 0; i < BaseResources.Count; i++)
+                {
+                    Debug.Assert(BaseResources[i].Quantity >= 0);
+                    Debug.Assert(BaseResources[i].Quantity <= Lobby.TypeLobby.MaxBaseResources[i].Quantity);
+                    Debug.Assert(res[i].Quantity >= 0);
 
-            UpdateResourceInCastle(r);
+                    BaseResources[i].Quantity += AllowAddBaseResource(res[i]);
+                }
+            }
+
+            UpdateResourceInCastle();
         }
 
-        internal void ReturnResource(DescriptorBaseResource r, int value)
+        internal void ReceivedResource(ListBaseResources res)
         {
-            Debug.Assert(BaseResources[r.Number].Quantity >= 0);
-            Debug.Assert(BaseResources[r.Number].Quantity <= Lobby.TypeLobby.MaxBaseResources[r.Number].Quantity);
-            Debug.Assert(value >= 0);
+            for (int i = 0; i < BaseResources.Count; i++)
+            {
+                Debug.Assert(BaseResources[i].Quantity >= 0);
+                Debug.Assert(BaseResources[i].Quantity <= Lobby.TypeLobby.MaxBaseResources[i].Quantity);
+                Debug.Assert(res[i].Quantity >= 0, $"Поступление ресурса {res[i].Descriptor.ID}: {res[i].Quantity}");
 
-            BaseResources[r.Number].Quantity += AllowAddBaseResource(r, value);
+                int addValue = AllowAddBaseResource(res[i]);
+                BaseResources[i].Quantity += addValue;
+                BaseResourcesCollected[i].Quantity += addValue;
+            }
 
-            UpdateResourceInCastle(r);
+            UpdateResourceInCastle();
         }
 
-        internal void ReceivedResource(DescriptorBaseResource r, int value)
+        private int AllowAddBaseResource(BaseResource r)
         {
-            Debug.Assert(BaseResources[r.Number].Quantity >= 0);
-            Debug.Assert(BaseResources[r.Number].Quantity <= Lobby.TypeLobby.MaxBaseResources[r.Number].Quantity);
-            Debug.Assert(value >= 0, $"Поступление ресурса {r.ID}: {value}");
-
-            int addValue = AllowAddBaseResource(r, value);
-            BaseResources[r.Number].Quantity += addValue;
-            BaseResourcesCollected[r.Number].Quantity += addValue;
-
-            UpdateResourceInCastle(r);
+            return BaseResources[r.Descriptor.Number].Quantity + r.Quantity <= Lobby.TypeLobby.MaxBaseResources[r.Descriptor.Number].Quantity
+                ? r.Quantity : Lobby.TypeLobby.MaxBaseResources[r.Descriptor.Number].Quantity - BaseResources[r.Descriptor.Number].Quantity;
         }
 
-        private int AllowAddBaseResource(DescriptorBaseResource r, int value)
+        private void UpdateResourceInCastle()
         {
-            return BaseResources[r.Number].Quantity + value <= Lobby.TypeLobby.MaxBaseResources[r.Number].Quantity
-                ? value : Lobby.TypeLobby.MaxBaseResources[r.Number].Quantity - BaseResources[r.Number].Quantity;
-        }
-
-        private void UpdateResourceInCastle(DescriptorBaseResource r)
-        {
-            if ((Castle != null) && (r == FormMain.Config.Gold))
-                Castle.Gold = BaseResources[r.Number].Quantity;
+            if (Castle != null)
+                Castle.Gold = BaseResources.ValueGold();
         }
 
         internal void AddGreatness(int greatness)
@@ -1198,8 +1216,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal bool CanBuildTypeConstruction(DescriptorConstruction type)
         {
-            // Сначала проверяем наличие золота
-            if (Gold < type.Levels[1].Cost)
+            // Сначала проверяем наличие ресурсов
+            if (!BaseResources.ResourcesEnough(type.Levels[1].Cost))
                 return false;
 
             // Проверяем наличие очков строительства
@@ -1229,7 +1247,7 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep9PlusBuilders(type.Levels[1].BuildersPerDay);
             Program.formMain.formHint.AddStep10DaysBuilding(-1, type.Levels[1].DaysProcessing);
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirementsBuildTypeConstruction(type));
-            Program.formMain.formHint.AddStep12Gold(type.Levels[1].Cost, Gold >= type.Levels[1].Cost);
+            Program.formMain.formHint.AddStep12Gold(BaseResources, type.Levels[1].Cost);
             Program.formMain.formHint.AddStep13Builders(type.Levels[1].Builders, FreeBuilders >= type.Levels[1].Builders);
         }
 

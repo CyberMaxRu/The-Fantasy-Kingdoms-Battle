@@ -23,7 +23,7 @@ namespace Fantasy_Kingdoms_Battle
 
             Program.formMain.formHint.AddStep2Header(TypeCreature.Name);
             Program.formMain.formHint.AddStep5Description(TypeCreature.Description);
-            Program.formMain.formHint.AddStep7Reward(TypeCreature.TypeReward.Gold);
+            Program.formMain.formHint.AddStep7Reward(TypeCreature.TypeReward.Cost.ValueGold());
             Program.formMain.formHint.AddStep8Greatness(TypeCreature.TypeReward.Greatness, 0);
         }
 

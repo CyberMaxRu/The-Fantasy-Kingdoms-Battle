@@ -21,7 +21,7 @@ namespace Fantasy_Kingdoms_Battle
             ForEntity = forEntity;
 
             Coord = GetPoint(n, "Pos");
-            Cost = GetInteger(n, "Cost");
+            Cost = new ListBaseResources(n.SelectSingleNode("Cost"));
             DaysProcessing = GetInteger(n, "DaysProcessing");
             LoadRequirements(this, Requirements, n);
 
@@ -36,7 +36,7 @@ namespace Fantasy_Kingdoms_Battle
             ForEntity = forEntity;
 
             Coord = coord;
-            Cost = GetInteger(n, "Cost");
+            Cost = new ListBaseResources(n.SelectSingleNode("Cost"));
             DaysProcessing = GetInteger(n, "DaysProcessing");
             LoadRequirements(this, Requirements, n);
 
@@ -48,7 +48,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal DescriptorEntity ForEntity { get; }
         internal Point Coord { get; }// Координаты ячейки
-        internal int Cost { get; }// Стоимость
+        internal ListBaseResources Cost { get; }// Стоимость
         internal int DaysProcessing { get; }// Количество дней для реализации действия
         internal List<Requirement> Requirements { get; } = new List<Requirement>();// Список требований
 
