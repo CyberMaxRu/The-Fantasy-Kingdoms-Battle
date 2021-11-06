@@ -1428,7 +1428,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(cell.PosInQueue > 0);
             Debug.Assert(cell.PurchaseValue > 0);
 
-            cell.PosInQueue = -1;
+            cell.PosInQueue = 0;
             Player.ReturnResource(FormMain.Config.Gold, cell.PurchaseValue);
             cell.PurchaseValue = 0;
             ListQueueProcessing.Remove(cell);
