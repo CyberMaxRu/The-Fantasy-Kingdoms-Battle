@@ -20,8 +20,8 @@
     <MaxQuantityFlags>7</MaxQuantityFlags>
     <MaxHeroesForScoutFlag>3</MaxHeroesForScoutFlag>
     <MaxHeroesForBattle>15</MaxHeroesForBattle>
-    <DayStartBattleBetweenPlayers>3</DayStartBattleBetweenPlayers>
-    <DaysBeforeNextBattleBetweenPlayers>1</DaysBeforeNextBattleBetweenPlayers>
+    <DayStartBattleBetweenPlayers>25</DayStartBattleBetweenPlayers>
+    <DaysBeforeNextBattleBetweenPlayers>5</DaysBeforeNextBattleBetweenPlayers>
     <StartBuilders>0</StartBuilders>
     <PointStartBonus>5</PointStartBonus>
     <StartScoutedLairs>2</StartScoutedLairs>
