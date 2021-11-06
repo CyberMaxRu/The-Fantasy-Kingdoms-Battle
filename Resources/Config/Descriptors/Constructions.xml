@@ -394,7 +394,7 @@
         <Pos>2,1</Pos>
         <Type>HireCreature</Type>
         <Entity>Mage</Entity>
-        <DaysProcessing>0</DaysProcessing>
+        <DaysProcessing>1</DaysProcessing>
         <Cost>500</Cost>
       </CellMenu>
       <CellMenu>
@@ -544,7 +544,7 @@
         <Pos>2,1</Pos>
         <Type>HireCreature</Type>
         <Entity>Elf</Entity>
-        <DaysProcessing>0</DaysProcessing>
+        <DaysProcessing>1</DaysProcessing>
         <Cost>700</Cost>
       </CellMenu>
       <CellMenu>
@@ -706,7 +706,7 @@
         <Pos>2,1</Pos>
         <Type>HireCreature</Type>
         <Entity>Dwarf</Entity>
-        <DaysProcessing>0</DaysProcessing>
+        <DaysProcessing>1</DaysProcessing>
         <Cost>700</Cost>
       </CellMenu>
       <CellMenu>
