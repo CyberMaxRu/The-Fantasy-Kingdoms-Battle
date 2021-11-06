@@ -302,6 +302,50 @@ namespace Fantasy_Kingdoms_Battle
         internal override bool InstantExecute() => Construction.Player.CheatingInstantlyBuilding;
     }
 
+    internal sealed class CellMenuConstructionLevelUp : ConstructionCellMenu
+    {
+        public CellMenuConstructionLevelUp(Construction c, DescriptorCellMenuForConstructionLevel d) : base(c, d)
+        {
+            Descriptor = d;
+        }
+
+        internal override void Execute()
+        {
+            Construction.Build(true);
+        }
+
+        internal new DescriptorCellMenuForConstructionLevel Descriptor { get; }
+
+        protected override bool ConstructionMustMeConstructed() => false;
+
+        internal override bool CheckRequirements()
+        {
+            return (Construction.Level + 1 == Descriptor.Number) && Construction.CheckRequirements();
+        }
+
+        internal override int GetCost()
+        {
+            return Descriptor.Cost;
+        }
+
+        internal override int GetImageIndex()
+        {
+            return Descriptor.Number == 1 ? Config.Gui48_Build : Config.Gui48_LevelUp;
+        }
+
+        internal override string GetLevel()
+        {
+            return Descriptor.Number == 1 ? "" : Descriptor.Number.ToString();
+        }
+
+        internal override void PrepareHint()
+        {
+            Construction.PrepareHintForBuildOrUpgrade(Descriptor.Number);
+        }
+
+        internal override bool InstantExecute() => Construction.Player.CheatingInstantlyBuilding;
+    }
+
     internal sealed class CellMenuConstructionHireCreature : ConstructionCellMenu
     {
         public CellMenuConstructionHireCreature(Construction c, DescriptorCellMenuForConstruction d) : base(c, d)
@@ -440,51 +484,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override bool InstantExecute() => Construction.Player.CheatingInstantlyResearch;
     }
-
-    internal sealed class CellMenuConstructionLevelUp : ConstructionCellMenu
-    {
-        public CellMenuConstructionLevelUp(Construction c, DescriptorCellMenuForConstructionLevel d) : base(c, d)
-        {
-            Descriptor = d;
-        }
-
-        internal override void Execute()
-        {
-            Construction.Build(true);
-        }
-
-        internal new DescriptorCellMenuForConstructionLevel Descriptor { get; }
-
-        protected override bool ConstructionMustMeConstructed() => false;
-
-        internal override bool CheckRequirements()
-        {
-            return (Construction.Level + 1 == Descriptor.Number) && Construction.CheckRequirements();
-        }
-
-        internal override int GetCost()
-        {
-            return Descriptor.Cost;
-        }
-
-        internal override int GetImageIndex()
-        {
-            return Descriptor.Number == 1 ? Config.Gui48_Build : Config.Gui48_LevelUp;
-        }
-
-        internal override string GetLevel()
-        {
-            return Descriptor.Number == 1 ? "" : Descriptor.Number.ToString();
-        }
-
-        internal override void PrepareHint()
-        {
-            Construction.PrepareHintForBuildOrUpgrade(Descriptor.Number);
-        }
-
-        internal override bool InstantExecute() => Construction.Player.CheatingInstantlyBuilding;
-    }
-
+    
     internal sealed class CellMenuConstructionExtension : ConstructionCellMenu
     {
         public CellMenuConstructionExtension(Construction c, DescriptorCellMenuForConstruction d) : base(c, d)
