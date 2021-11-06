@@ -34,6 +34,7 @@ namespace Fantasy_Kingdoms_Battle
         internal virtual void PrepareHint() { }
         internal abstract void Click();
         internal abstract void Execute();
+        internal abstract bool InstantExecute();
         internal virtual void PrepareTurn() { }
     }
 
@@ -114,13 +115,13 @@ namespace Fantasy_Kingdoms_Battle
 
                     Program.formMain.PlayPushButton();
 
-                    if (Descriptor.DaysProcessing > 0)
+                    if (InstantExecute() || (Descriptor.DaysProcessing == 0))
+                        Execute();
+                    else
                     {
                         Construction.AddEntityToQueueProcessing(this);
                         DaysLeft = Descriptor.DaysProcessing;
                     }
-                    else
-                        Execute();
                 }
             }
             else
@@ -209,6 +210,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             return Entity.ImageIndex;
         }
+
+        internal override bool InstantExecute() => Program.formMain.Settings.CheatingInstantlyResearch;
     }
 
     internal sealed class CellMenuConstructionBuild : ConstructionCellMenu
@@ -295,6 +298,8 @@ namespace Fantasy_Kingdoms_Battle
             //else
             //    Player.PrepareHintForBuildTypeConstruction(Research.Construction);
         }
+
+        internal override bool InstantExecute() => Program.formMain.Settings.CheatingInstantlyBuilding;
     }
 
     internal sealed class CellMenuConstructionHireCreature : ConstructionCellMenu
@@ -340,6 +345,8 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirements());
             Program.formMain.formHint.AddStep12Gold(GetCost(), GetCost() <= Construction.Player.Gold);
         }
+
+        internal override bool InstantExecute() => Program.formMain.Settings.CheatingInstantlyHire;
     }
 
     internal sealed class CellMenuConstructionEvent : ConstructionCellMenu
@@ -430,6 +437,8 @@ namespace Fantasy_Kingdoms_Battle
                 Cooldown--;
             }
         }
+
+        internal override bool InstantExecute() => Program.formMain.Settings.CheatingInstantlyResearch;
     }
 
     internal sealed class CellMenuConstructionLevelUp : ConstructionCellMenu
@@ -472,6 +481,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             Construction.PrepareHintForBuildOrUpgrade(Descriptor.Number);
         }
+
+        internal override bool InstantExecute() => Program.formMain.Settings.CheatingInstantlyBuilding;
     }
 
     internal sealed class CellMenuConstructionExtension : ConstructionCellMenu
@@ -519,6 +530,8 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirements());
             Program.formMain.formHint.AddStep12Gold(GetCost(), GetCost() <= Construction.Player.Gold);
         }
+
+        internal override bool InstantExecute() => Program.formMain.Settings.CheatingInstantlyResearch;
     }
 
     internal sealed class CellMenuConstructionTournament : ConstructionCellMenu
@@ -562,6 +575,8 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirements());
             Program.formMain.formHint.AddStep12Gold(GetCost(), GetCost() <= Construction.Player.Gold);
         }
+
+        internal override bool InstantExecute() => Program.formMain.Settings.CheatingInstantlyResearch;
     }
 
     internal enum TypeExtra { Builder, LevelUp, Research };
@@ -672,5 +687,7 @@ namespace Fantasy_Kingdoms_Battle
             if (Counter > 0)
                 Counter--;
         }
+
+        internal override bool InstantExecute() => Program.formMain.Settings.CheatingInstantlyResearch;
     }
 }
