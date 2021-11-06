@@ -23,6 +23,7 @@ namespace Fantasy_Kingdoms_Battle
         private VCCheckBox chkbIgnoreBuilders;
         private VCCheckBox chkbInstantlyBuilding;
         private VCCheckBox chkbInstantlyResearch;
+        private VCCheckBox chkbInstantlyHire;
 
         public WindowCheating(Settings s) : base()
         {
@@ -50,7 +51,11 @@ namespace Fantasy_Kingdoms_Battle
             chkbInstantlyResearch.Hint = "Исследования, постройка и прочее в сооружении происходят сразу же";
             chkbInstantlyResearch.Checked = settings.CheatingInstantlyResearch;
 
-            btnShowAll = new VCButton(ClientControl, 0, chkbInstantlyResearch.NextTop() + (FormMain.Config.GridSize * 2), "Открыть все локации");
+            chkbInstantlyHire = new VCCheckBox(ClientControl, 0, chkbInstantlyResearch.NextTop(), "Мгновенный найм");
+            chkbInstantlyHire.Hint = "Найм героев и иных существ происходит сразу же";
+            chkbInstantlyHire.Checked = settings.CheatingInstantlyHire;
+
+            btnShowAll = new VCButton(ClientControl, 0, chkbInstantlyHire.NextTop() + (FormMain.Config.GridSize * 2), "Открыть все локации");
             btnShowAll.Width = 240;
             btnShowAll.Click += BtnShowAll_Click;
 
@@ -82,6 +87,7 @@ namespace Fantasy_Kingdoms_Battle
             chkbIgnoreBuilders.Width = ClientControl.Width;
             chkbInstantlyBuilding.Width = ClientControl.Width;
             chkbInstantlyResearch.Width = ClientControl.Width;
+            chkbInstantlyHire.Width = ClientControl.Width;
 
             ApplyMaxSize();
         }
@@ -103,6 +109,7 @@ namespace Fantasy_Kingdoms_Battle
             chkbIgnoreBuilders.Checked = check;
             chkbInstantlyBuilding.Checked = check;
             chkbInstantlyResearch.Checked = check;
+            chkbInstantlyHire.Checked = check;
         }
 
         private void BtnResetAll_Click(object sender, EventArgs e)
@@ -122,6 +129,7 @@ namespace Fantasy_Kingdoms_Battle
             settings.CheatingIgnoreBuilders = chkbIgnoreBuilders.Checked;
             settings.CheatingInstantlyBuilding = chkbInstantlyBuilding.Checked;
             settings.CheatingInstantlyResearch = chkbInstantlyResearch.Checked;
+            settings.CheatingInstantlyHire = chkbInstantlyHire.Checked;
 
             CloseForm(DialogAction.OK);
         }
