@@ -88,7 +88,7 @@ namespace Fantasy_Kingdoms_Battle
                     break;
                 case TypeNoticeForPlayer.Explore:
                     Construction c = Entity as Construction;
-                    nameNotice = $"Найден объект в {c.Location.Settings.Name}:";
+                    nameNotice = $"Обнаружен объект в {c.Location.Settings.Name}:";
                     nameText = $"{c.NameLair()}";
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
