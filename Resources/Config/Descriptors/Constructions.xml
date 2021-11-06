@@ -49,6 +49,13 @@
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
+        <Type>HireCreature</Type>
+        <Entity>Warrior</Entity>
+        <DaysProcessing>0</DaysProcessing>
+        <Cost>200</Cost>
+      </CellMenu>
+      <CellMenu>
+        <Pos>3,1</Pos>
         <Type>Research</Type>
         <Entity>CloseCombatCourse</Entity>        
         <Cost>250</Cost>
@@ -147,6 +154,13 @@
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
+        <Type>HireCreature</Type>
+        <Entity>Hunter</Entity>
+        <DaysProcessing>0</DaysProcessing>
+        <Cost>150</Cost>
+      </CellMenu>
+      <CellMenu>
+        <Pos>3,1</Pos>
         <Type>Research</Type>
         <Entity>FittingClothes</Entity>
         <Cost>250</Cost>
@@ -245,6 +259,13 @@
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
+        <Type>HireCreature</Type>
+        <Entity>Cleric</Entity>
+        <DaysProcessing>0</DaysProcessing>
+        <Cost>350</Cost>
+      </CellMenu>
+      <CellMenu>
+        <Pos>3,1</Pos>
         <Type>Research</Type>
         <Entity>HolyWater</Entity>
         <Cost>250</Cost>
@@ -371,13 +392,20 @@
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
+        <Type>HireCreature</Type>
+        <Entity>Mage</Entity>
+        <DaysProcessing>0</DaysProcessing>
+        <Cost>500</Cost>
+      </CellMenu>
+      <CellMenu>
+        <Pos>3,1</Pos>
         <Type>Research</Type>
         <Entity>EnchantWeaponAttack</Entity>
         <Cost>300</Cost>
         <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
-        <Pos>3,1</Pos>
+        <Pos>4,1</Pos>
         <Type>Research</Type>
         <Entity>MageFireballAttack</Entity>
         <Cost>200</Cost>
@@ -514,13 +542,20 @@
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
+        <Type>HireCreature</Type>
+        <Entity>Elf</Entity>
+        <DaysProcessing>0</DaysProcessing>
+        <Cost>700</Cost>
+      </CellMenu>
+      <CellMenu>
+        <Pos>3,1</Pos>
         <Type>Research</Type>
         <Entity>ElvenSharpener</Entity>
         <Cost>250</Cost>
         <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
-        <Pos>3,1</Pos>
+        <Pos>4,1</Pos>
         <Type>Research</Type>
         <Entity>ElixirSpeed</Entity>
         <Cost>1500</Cost>
@@ -669,6 +704,13 @@
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
+        <Type>HireCreature</Type>
+        <Entity>Dwarf</Entity>
+        <DaysProcessing>0</DaysProcessing>
+        <Cost>700</Cost>
+      </CellMenu>
+      <CellMenu>
+        <Pos>3,1</Pos>
         <Type>Research</Type>
         <Entity>SimpleRunes</Entity>
         <Cost>250</Cost>
@@ -854,13 +896,21 @@
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
+        <Type>HireCreature</Type>
+        <Entity>Rogue</Entity>
+        <DaysProcessing>0</DaysProcessing>
+        <Cost>100</Cost>
+      </CellMenu>
+      <CellMenu>
+        <Pos>3,1</Pos>
         <Type>Research</Type>
         <Entity>EnchantWeaponPoison</Entity>
         <Cost>300</Cost>
         <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
-        <Pos>3,1</Pos>
+        <Pos>4,1</Pos>
+        <Pos>4,1</Pos>
         <Type>Research</Type>
         <Entity>RoguePoisonAttack</Entity>
         <Cost>200</Cost>
@@ -3087,6 +3137,15 @@
         </Requirements>
       </Level>
     </Levels>
+    <CellsMenu>
+      <CellMenu>
+        <Pos>2,1</Pos>
+        <Type>HireCreature</Type>
+        <Entity>DarkPriest</Entity>
+        <DaysProcessing>0</DaysProcessing>
+        <Cost>1000</Cost>
+      </CellMenu>
+    </CellsMenu>
   </Construction>
   <Construction>
     <ID>GuildPriest</ID>
@@ -3126,6 +3185,15 @@
         </Requirements>
       </Level>
     </Levels>
+    <CellsMenu>
+      <CellMenu>
+        <Pos>2,1</Pos>
+        <Type>HireCreature</Type>
+        <Entity>Priest</Entity>
+        <DaysProcessing>0</DaysProcessing>
+        <Cost>1000</Cost>
+      </CellMenu>
+    </CellsMenu>
   </Construction>
   <Construction>
     <ID>GuildPaladin</ID>
@@ -3165,6 +3233,15 @@
         </Requirements>
       </Level>
     </Levels>
+    <CellsMenu>
+      <CellMenu>
+        <Pos>2,1</Pos>
+        <Type>HireCreature</Type>
+        <Entity>Paladin</Entity>
+        <DaysProcessing>0</DaysProcessing>
+        <Cost>1000</Cost>
+      </CellMenu>
+    </CellsMenu>
   </Construction>
   <Construction>
     <ID>GuildBlademaster</ID>
@@ -3204,6 +3281,15 @@
         </Requirements>
       </Level>
     </Levels>
+    <CellsMenu>
+      <CellMenu>
+        <Pos>2,1</Pos>
+        <Type>HireCreature</Type>
+        <Entity>BladeMaster</Entity>
+        <DaysProcessing>0</DaysProcessing>
+        <Cost>1000</Cost>
+      </CellMenu>
+    </CellsMenu>
   </Construction>
   <Construction>
     <ID>GuildBeastmaster</ID>
@@ -3243,6 +3329,15 @@
         </Requirements>
       </Level>
     </Levels>
+    <CellsMenu>
+      <CellMenu>
+        <Pos>2,1</Pos>
+        <Type>HireCreature</Type>
+        <Entity>BeastMaster</Entity>
+        <DaysProcessing>0</DaysProcessing>
+        <Cost>1000</Cost>
+      </CellMenu>
+    </CellsMenu>
   </Construction>
   <Construction>
     <ID>GuildMarksman</ID>
@@ -3282,6 +3377,15 @@
         </Requirements>
       </Level>
     </Levels>
+    <CellsMenu>
+      <CellMenu>
+        <Pos>2,1</Pos>
+        <Type>HireCreature</Type>
+        <Entity>Marksman</Entity>
+        <DaysProcessing>0</DaysProcessing>
+        <Cost>1000</Cost>
+      </CellMenu>
+    </CellsMenu>
   </Construction>
   <Construction>
     <ID>GuildIceMage</ID>
@@ -3321,6 +3425,15 @@
         </Requirements>
       </Level>
     </Levels>
+    <CellsMenu>
+      <CellMenu>
+        <Pos>2,1</Pos>
+        <Type>HireCreature</Type>
+        <Entity>IceMage</Entity>
+        <DaysProcessing>0</DaysProcessing>
+        <Cost>1000</Cost>
+      </CellMenu>
+    </CellsMenu>
   </Construction>
   <Construction>
     <ID>GuildDeathKnight</ID>
@@ -3360,6 +3473,15 @@
         </Requirements>
       </Level>
     </Levels>
+    <CellsMenu>
+      <CellMenu>
+        <Pos>2,1</Pos>
+        <Type>HireCreature</Type>
+        <Entity>DeathKnight</Entity>
+        <DaysProcessing>0</DaysProcessing>
+        <Cost>1000</Cost>
+      </CellMenu>
+    </CellsMenu>
   </Construction>
   <Construction>
     <ID>GuildFireMage</ID>
@@ -3399,6 +3521,15 @@
         </Requirements>
       </Level>
     </Levels>
+    <CellsMenu>
+      <CellMenu>
+        <Pos>2,1</Pos>
+        <Type>HireCreature</Type>
+        <Entity>FireMage</Entity>
+        <DaysProcessing>0</DaysProcessing>
+        <Cost>1000</Cost>
+      </CellMenu>
+    </CellsMenu>
   </Construction>
   <Construction>
     <ID>GraveyardZombie</ID>
