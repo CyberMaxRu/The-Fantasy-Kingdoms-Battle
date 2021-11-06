@@ -308,7 +308,10 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Execute()
         {
-            Construction.HireHero(Creature, GetCost());
+            Hero h = Construction.HireHero(Creature, GetCost());
+
+            if (Descriptor.DaysProcessing > 0)
+                Construction.Player.AddNoticeForPlayer(h, TypeNoticeForPlayer.HireHero);
         }
 
         internal override int GetCost()
