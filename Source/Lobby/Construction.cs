@@ -187,7 +187,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             if (needNotice)
-                Player.AddNoticeForPlayer(this, TypeNoticeForPlayer.Build);
+                Player.AddNoticeForPlayer(this, Level == 1 ? TypeNoticeForPlayer.Build : TypeNoticeForPlayer.LevelUp);
         }
 
         private void CreateProducts()
