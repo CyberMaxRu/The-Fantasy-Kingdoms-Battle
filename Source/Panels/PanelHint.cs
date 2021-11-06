@@ -605,12 +605,13 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void AddStep10DaysBuilding(int daysPassed, int daysBuilding)
         {
-            Debug.Assert(daysBuilding > 0);
-
-            lblDaysBuilding.ShiftY = nextTop;
-            lblDaysBuilding.Text = (daysPassed >= 0 ? daysPassed.ToString() + "/" : "") + daysBuilding.ToString();
-            lblDaysBuilding.Visible = true;
-            nextTop = lblDaysBuilding.NextTop();
+            if (daysBuilding > 0)
+            {
+                lblDaysBuilding.ShiftY = nextTop;
+                lblDaysBuilding.Text = (daysPassed >= 0 ? daysPassed.ToString() + "/" : "") + daysBuilding.ToString();
+                lblDaysBuilding.Visible = true;
+                nextTop = lblDaysBuilding.NextTop();
+            }
         }
 
 
