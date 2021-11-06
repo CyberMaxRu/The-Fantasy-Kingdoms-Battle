@@ -408,28 +408,7 @@ namespace Fantasy_Kingdoms_Battle
             return list;
         }
 
-
-        internal Hero HireHero()
-        {
-            Debug.Assert(Heroes.Count < MaxHeroes());
-            Debug.Assert(Player.CombatHeroes.Count < Player.Lobby.TypeLobby.MaxHeroes);
-            //Debug.Assert(Player.Gold >= Construction.TrainedHero.Cost);
-
-            Hero h = new Hero(this, Player);
-
-            if (TypeConstruction.TrainedHero.Cost > 0)
-            {
-                Player.SpendResource(FormMain.Config.Gold, TypeConstruction.TrainedHero.Cost);
-                if (Player.Descriptor.TypePlayer == TypePlayer.Human)
-                    Program.formMain.SetNeedRedrawFrame();
-            }
-
-            AddHero(h);
-
-            return h;
-        }
-
-        internal Hero HireHero(DescriptorCreature th)
+        internal Hero HireHero(DescriptorCreature th, int gold)
         {
             Debug.Assert(Heroes.Count < MaxHeroes());
             Debug.Assert(Player.CombatHeroes.Count < Player.Lobby.TypeLobby.MaxHeroes);
@@ -439,9 +418,9 @@ namespace Fantasy_Kingdoms_Battle
 
             if (th.CategoryCreature != CategoryCreature.Citizen)
             {
-                if (TypeConstruction.TrainedHero.Cost > 0)
+                if (gold > 0)
                 {
-                    Player.SpendResource(FormMain.Config.Gold, TypeConstruction.TrainedHero.Cost);
+                    Player.SpendResource(FormMain.Config.Gold, gold);
                     if (Player.Descriptor.TypePlayer == TypePlayer.Human)
                         Program.formMain.SetNeedRedrawFrame();
                 }
@@ -459,14 +438,6 @@ namespace Fantasy_Kingdoms_Battle
 
             Heroes.Add(ph);
             Player.AddHero(ph);
-        }
-
-        internal bool CanTrainHero()
-        {
-            Debug.Assert(Heroes.Count <= MaxHeroes());
-            Debug.Assert(Player.CombatHeroes.Count <= Player.Lobby.TypeLobby.MaxHeroes);
-
-            return (Level > 0) && (Player.Gold >= TypeConstruction.TrainedHero.Cost) && (Heroes.Count < MaxHeroes()) && (Player.CombatHeroes.Count < Player.Lobby.TypeLobby.MaxHeroes);
         }
 
         internal bool MaxHeroesAtPlayer()
@@ -490,8 +461,8 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     Program.formMain.formHint.AddStep2Header(TypeConstruction.Name);
                     Program.formMain.formHint.AddStep4Level(Level > 0 ? "Уровень " + Level.ToString() + Environment.NewLine : "" + TypeConstruction.TypeConstruction.Name);
-                    Program.formMain.formHint.AddStep5Description(TypeConstruction.Description + ((Level > 0) && (TypeConstruction.TrainedHero != null) ? Environment.NewLine + Environment.NewLine
-                        + (!(TypeConstruction.TrainedHero is null) ? "Героев: " + Heroes.Count.ToString() + "/" + MaxHeroes().ToString() : "") : ""));
+                    Program.formMain.formHint.AddStep5Description(TypeConstruction.Description + ((Level > 0) && (Heroes.Count > 0) ? Environment.NewLine + Environment.NewLine
+                        + (Heroes.Count > 0 ? "Героев: " + Heroes.Count.ToString() + "/" + MaxHeroes().ToString() : "") : ""));
                     Program.formMain.formHint.AddStep6Income(Income());
                     Program.formMain.formHint.AddStep8Greatness(0, GreatnessPerDay());
                     Program.formMain.formHint.AddStep9PlusBuilders(BuildersPerDay());
@@ -1134,19 +1105,6 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirements(requiredLevel));
             Program.formMain.formHint.AddStep12Gold(CostBuyOrUpgradeForLevel(requiredLevel), Player.Gold >= CostBuyOrUpgradeForLevel(requiredLevel));
             Program.formMain.formHint.AddStep13Builders(TypeConstruction.Levels[requiredLevel].Builders, Player.FreeBuilders >= TypeConstruction.Levels[requiredLevel].Builders);
-        }
-
-        internal void PrepareHintForHireHero()
-        {
-            if (Heroes.Count < MaxHeroes())
-            {
-
-                Program.formMain.formHint.AddStep2Header(TypeConstruction.TrainedHero.Name);
-                Program.formMain.formHint.AddStep5Description(TypeConstruction.TrainedHero.Description);
-                if ((TypeConstruction.TrainedHero != null) && (TypeConstruction.TrainedHero.Cost > 0))
-                    Program.formMain.formHint.AddStep11Requirement(GetTextRequirementsHire());
-                Program.formMain.formHint.AddStep12Gold(TypeConstruction.TrainedHero.Cost, Player.Gold >= TypeConstruction.TrainedHero.Cost);
-            }
         }
 
         internal void PrepareHintForInhabitantCreatures()

@@ -47,6 +47,7 @@ namespace Fantasy_Kingdoms_Battle
             btnHeroes = new VCIconButton48(this, imgMapObject.ShiftX, imgMapObject.ShiftY, FormMain.Config.Gui48_Home);
             btnHeroes.Click += BtnHeroes_Click;
             btnHeroes.ShowHint += BtnHeroes_ShowHint;
+            btnHeroes.Visible = false;
 
             btnQueue = new VCIconButton48(this, imgMapObject.NextLeft(), btnHeroes.NextTop() + FormMain.Config.GridSize + FormMain.Config.GridSizeHalf, -1);
             btnQueue.ShowHint += BtnQueue_ShowHint;
@@ -233,18 +234,6 @@ namespace Fantasy_Kingdoms_Battle
                 }
                 else
                     btnBuildOrUpgrade.Visible = false;
-
-                if ((Construction.TypeConstruction.TrainedHero != null) && !(Construction.TypeConstruction.TrainedHero is null) && (Construction.Level > 0))
-                {
-                    btnHeroes.Text = Construction.Heroes.Count.ToString() + (Construction.Heroes.Count != Construction.MaxHeroes() ? "/" + Construction.MaxHeroes() : "");
-                    //btnHeroes.ImageIndex = Program.formMain.TreatImageIndex(Construction.TypeConstruction.TrainedHero.ImageIndex, Construction.Player);
-                    btnHeroes.Visible = true;
-                }
-                else
-                {
-                    btnHeroes.Text = "";
-                    btnHeroes.Visible = false;
-                }
             }
             else
             {

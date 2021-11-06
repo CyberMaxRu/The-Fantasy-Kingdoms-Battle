@@ -41,16 +41,8 @@ namespace Fantasy_Kingdoms_Battle
             else
                 PersistentStateHeroAtMap = FormMain.Config.FindStateCreature(NameStateCreature.Nothing.ToString());
 
-            if ((CategoryCreature == CategoryCreature.Citizen) || (CategoryCreature == CategoryCreature.Hero))
-            { 
-                Construction = FormMain.Config.FindConstruction(n.SelectSingleNode("Construction").InnerText);
-                Construction.TrainedHero = this;
-
-            }
-
             if (CategoryCreature == CategoryCreature.Hero)
             {
-                Cost = Convert.ToInt32(n.SelectSingleNode("Cost").InnerText);
                 CanBuild = Convert.ToBoolean(n.SelectSingleNode("CanBuild").InnerText);
                 PrefixName = XmlUtils.GetString(n, "PrefixName");
                 nameFromTypeHero = XmlUtils.GetString(n, "NameFromTypeHero");
@@ -208,11 +200,8 @@ namespace Fantasy_Kingdoms_Battle
                 LoadName("Names", "Name", Names);
                 LoadName("Surnames", "Surname", Surnames);
 
-                if (Cost > 0)
-                {
-                    Debug.Assert(((Names.Count > 0) && (nameFromTypeHero.Length == 0)) || ((Names.Count == 0) && (nameFromTypeHero.Length > 0)));
-                    Debug.Assert(((Surnames.Count > 0) && (surnameFromTypeHero.Length == 0)) || ((Surnames.Count == 0) && (surnameFromTypeHero.Length > 0)));
-                }
+                Debug.Assert(((Names.Count > 0) && (nameFromTypeHero.Length == 0)) || ((Names.Count == 0) && (nameFromTypeHero.Length > 0)));
+                Debug.Assert(((Surnames.Count > 0) && (surnameFromTypeHero.Length == 0)) || ((Surnames.Count == 0) && (surnameFromTypeHero.Length > 0)));
             }
 
             // Загружаем дефолтное оружие и доспехи
@@ -296,8 +285,6 @@ namespace Fantasy_Kingdoms_Battle
         internal double[] CoefficientFlags { get; }// Поправочные коэффициенты для флагов
         internal List<PriorityConstructionForShopping> PriorityConstructionForShoppings { get; } = new List<PriorityConstructionForShopping>();
         //internal (string, int)[] PriorityConstructionsForBuy;
-        internal int Cost { get; }
-        internal DescriptorConstruction Construction { get; }
         internal bool CanBuild { get; }
         internal Dictionary<DescriptorItem, int> CarryItems { get; } = new Dictionary<DescriptorItem, int>();
         internal List<(DescriptorItem item, int quantity)> Inventory { get; } = new List<(DescriptorItem item, int quantity)>();// Дефолтный Инвентарь

@@ -80,7 +80,7 @@ namespace Fantasy_Kingdoms_Battle
                             break;
                         if (CombatHeroes.Count == Lobby.TypeLobby.MaxHeroes)
                             break;
-                        bp.HireHero();
+                        //bp.HireHero();
                     }
                 }
             }

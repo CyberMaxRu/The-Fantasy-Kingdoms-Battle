@@ -85,6 +85,8 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(Coord.Equals(NextCell.Coord), $"У {NameEntity} в ячейку {Coord} вложена ячейка {NextCell.Coord}.");
             }
 
+            Debug.Assert(DaysProcessing >= 0, $"В {forConstruction.ID} отрицательное число дней процесса у {NameEntity}");
+
             if ((Type != TypeCellMenuForConstruction.HireCreature) && (Type != TypeCellMenuForConstruction.Extra) && (Type != TypeCellMenuForConstruction.Build))
             {
                 Debug.Assert(DaysProcessing > 0, $"В {forConstruction.ID} не указано дней процесса у {NameEntity}");
@@ -92,7 +94,10 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
             {
-                Debug.Assert(DaysProcessing == 0, $"В {forConstruction.ID} указано дней процесса у {NameEntity}");
+                if (Type != TypeCellMenuForConstruction.HireCreature)
+                {
+                    Debug.Assert(DaysProcessing == 0, $"В {forConstruction.ID} указано дней процесса у {NameEntity}");
+                }
             }
         }
 

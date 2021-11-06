@@ -12,7 +12,7 @@ namespace Fantasy_Kingdoms_Battle
     // Класс героя игрока
     internal sealed class Hero : Creature
     {
-        public Hero(Construction pb, BattleParticipant bp) : base(pb.TypeConstruction.TrainedHero, bp)
+        public Hero(DescriptorCreature creature, Construction pb, BattleParticipant bp) : base(creature, bp)
         {
             Debug.Assert(Food != null);
             Debug.Assert(Rest != null);
@@ -23,9 +23,9 @@ namespace Fantasy_Kingdoms_Battle
             Abode = Construction;
             DayOfHire = Player.Lobby.Turn;
 
-            FullName = (pb.TypeConstruction.TrainedHero.PrefixName.Length > 0 ? pb.TypeConstruction.TrainedHero.PrefixName + " " : "")
-                + GetRandomName(pb.TypeConstruction.TrainedHero.NameFromTypeHero == null ? pb.TypeConstruction.TrainedHero.Names : pb.TypeConstruction.TrainedHero.NameFromTypeHero.Names)
-                + " " + GetRandomName(pb.TypeConstruction.TrainedHero.SurnameFromTypeHero == null ? pb.TypeConstruction.TrainedHero.Surnames : pb.TypeConstruction.TrainedHero.Surnames);
+            FullName = (creature.PrefixName.Length > 0 ? creature.PrefixName + " " : "")
+                + GetRandomName(creature.NameFromTypeHero == null ? creature.Names : creature.NameFromTypeHero.Names)
+                + " " + GetRandomName(creature.SurnameFromTypeHero == null ? creature.Surnames : creature.Surnames);
 
             //
             Initialize();
@@ -314,7 +314,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.DoCustomDraw(g, x, y, drawState);
 
-            if (drawState && (TypeCreature.Construction.ID != "Castle"))
+            if (drawState && (Construction.TypeConstruction.ID != "Castle"))
                 Program.formMain.ilStateHero.DrawImage(g, StateCreature.ImageIndex, true, false, x - 7, y - 3);
         }
 

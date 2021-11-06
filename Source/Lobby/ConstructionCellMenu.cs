@@ -308,7 +308,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void Execute()
         {
-            Construction.HireHero(Creature);
+            Construction.HireHero(Creature, GetCost());
         }
 
         internal override int GetCost()
@@ -324,6 +324,12 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override void PrepareHint()
         {
+            /*Program.formMain.formHint.AddStep2Header(TypeConstruction.TrainedHero.Name);
+            Program.formMain.formHint.AddStep5Description(TypeConstruction.TrainedHero.Description);
+            if ((TypeConstruction.TrainedHero != null) && (TypeConstruction.TrainedHero.Cost > 0))
+                Program.formMain.formHint.AddStep11Requirement(GetTextRequirementsHire());
+            Program.formMain.formHint.AddStep12Gold(TypeConstruction.TrainedHero.Cost, Player.Gold >= TypeConstruction.TrainedHero.Cost);
+            */
             Program.formMain.formHint.AddStep2Header(Creature.Name, Creature.ImageIndex);
             Program.formMain.formHint.AddStep3Type("Найм");
             Program.formMain.formHint.AddStep5Description(Creature.Description);

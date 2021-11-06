@@ -8,8 +8,6 @@
     <CategoryCreature>Citizen</CategoryCreature>
     <TypeCreature>Human</TypeCreature>
     <Reward>0</Reward>
-    <Cost>0</Cost>
-    <Construction>Castle</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
   	<PersistentState>King</PersistentState>
@@ -23,8 +21,6 @@
     <CategoryCreature>Citizen</CategoryCreature>
     <TypeCreature>Human</TypeCreature>
 	  <Reward>0</Reward>
-	  <Cost>0</Cost>
-	  <Construction>Castle</Construction>
 	  <MaxLevel>100</MaxLevel>
 	  <CanBuild>False</CanBuild>
 	  <PersistentState>Advisor</PersistentState>
@@ -43,8 +39,6 @@
     <CategoryCreature>Citizen</CategoryCreature>
     <TypeCreature>Human</TypeCreature>
     <Reward>0</Reward>
-    <Cost>0</Cost>
-    <Construction>Castle</Construction>
     <MaxLevel>100</MaxLevel>
     <CanBuild>False</CanBuild>
     <PersistentState>Captain</PersistentState>

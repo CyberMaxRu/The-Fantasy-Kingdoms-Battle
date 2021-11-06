@@ -285,7 +285,6 @@ namespace Fantasy_Kingdoms_Battle
 
         //
         internal PanelConstruction Panel { get; set; }
-        internal DescriptorCreature TrainedHero { get; set; }
 
         // Свойства, относящиеся к логовам монстров
         internal List<MonsterLevelLair> Monsters { get; } = new List<MonsterLevelLair>();
