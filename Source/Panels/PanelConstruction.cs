@@ -17,7 +17,7 @@ namespace Fantasy_Kingdoms_Battle
         private readonly VCImage128 imgMapObject;
         private readonly VCIconButton48 btnHeroes;
         private readonly VCIconButton48 btnBuildOrUpgrade;
-        private readonly VCIconButton48 btnHireHero;
+        private readonly VCIconButton48 btnQueue;
         private readonly VCLabelValue lblIncome;
         private readonly VCLabelValue lblGreatness;
 
@@ -48,9 +48,8 @@ namespace Fantasy_Kingdoms_Battle
             btnHeroes.Click += BtnHeroes_Click;
             btnHeroes.ShowHint += BtnHeroes_ShowHint;
 
-            btnHireHero = new VCIconButton48(this, imgMapObject.NextLeft(), btnHeroes.NextTop() + FormMain.Config.GridSize + FormMain.Config.GridSizeHalf, -1);
-            btnHireHero.Click += BtnHireHero_Click;
-            btnHireHero.ShowHint += BtnHireHero_ShowHint;
+            btnQueue = new VCIconButton48(this, imgMapObject.NextLeft(), btnHeroes.NextTop() + FormMain.Config.GridSize + FormMain.Config.GridSizeHalf, -1);
+            btnQueue.ShowHint += BtnQueue_ShowHint;
 
             btnBuildOrUpgrade = new VCIconButton48(this, imgMapObject.NextLeft(), imgMapObject.NextTop(), FormMain.Config.Gui48_Build);
             btnBuildOrUpgrade.Click += BtnBuildOrUpgrade_Click;
@@ -109,6 +108,11 @@ namespace Fantasy_Kingdoms_Battle
             Click += ImgLair_Click;
         }
 
+        private void BtnQueue_ShowHint(object sender, EventArgs e)
+        {
+            Construction.ListQueueProcessing[0].PrepareHint();
+        }
+
         private void BtnHeroes_Click(object sender, EventArgs e)
         {
             SelectThisConstruction();
@@ -147,6 +151,17 @@ namespace Fantasy_Kingdoms_Battle
 
             lblNameMapObject.Text = Construction.NameLair();
             lblNameMapObject.Color = Construction.GetColorCaption();
+
+            if (Construction.ListQueueProcessing.Count > 0)
+            {
+                ConstructionCellMenu cm = Construction.ListQueueProcessing[0];
+                btnQueue.Visible = true;
+                btnQueue.ImageIndex = cm.GetImageIndex();
+                btnQueue.Text = cm.DaysLeft.ToString() + " д.";
+                btnQueue.Level = Construction.ListQueueProcessing.Count.ToString();
+            }
+            else
+                btnQueue.Visible = false;
 
             if (!Construction.Hidden && (Construction.TypeConstruction.IsOurConstruction || Construction.TypeConstruction.Category == CategoryConstruction.External))
             {
@@ -219,23 +234,6 @@ namespace Fantasy_Kingdoms_Battle
                 else
                     btnBuildOrUpgrade.Visible = false;
 
-                if ((Construction.TypeConstruction.TrainedHero != null) && (Construction.TypeConstruction.Category != CategoryConstruction.Economic))
-                {
-                    //btnHireHero.ImageIndex = (Construction.Level > 0) && ((Construction.Heroes.Count == Construction.MaxHeroes()) || (Construction.MaxHeroesAtPlayer() == true))  ? -1 : GuiUtils.GetImageIndexWithGray(btnHireHero.ImageList, c.TrainedHero.ImageIndex, Construction.CanTrainHero());
-                    if (Construction.Heroes.Count < Construction.MaxHeroes())
-                    {
-                        btnHireHero.Visible = true;
-                        btnHireHero.ImageIndex = ((Construction.Level > 0) && (Construction.MaxHeroesAtPlayer() == true)) ? -1 : Construction.TypeConstruction.TrainedHero.ImageIndex;
-                        btnHireHero.ImageIndex = Program.formMain.TreatImageIndex(Construction.TypeConstruction.TrainedHero.ImageIndex, Construction.Player);
-                        btnHireHero.ImageIsEnabled = Construction.CanTrainHero();
-                        btnHireHero.Text = (Construction.Level == 0) || (Construction.CanTrainHero() == true) ? Construction.TypeConstruction.TrainedHero.Cost.ToString() : "";
-                    }
-                    else
-                        btnHireHero.Visible = false;
-                }
-                else
-                    btnHireHero.Visible = false;
-
                 if ((Construction.TypeConstruction.TrainedHero != null) && !(Construction.TypeConstruction.TrainedHero is null) && (Construction.Level > 0))
                 {
                     btnHeroes.Text = Construction.Heroes.Count.ToString() + (Construction.Heroes.Count != Construction.MaxHeroes() ? "/" + Construction.MaxHeroes() : "");
@@ -253,7 +251,6 @@ namespace Fantasy_Kingdoms_Battle
                 lblIncome.Visible = false;
                 lblGreatness.Visible = false;
                 btnHeroes.Visible = false;
-                btnHireHero.Visible = false;
 
                 btnAction.Visible = Construction.Hidden || (Construction.TypeConstruction.Category == CategoryConstruction.Lair);
                 if (btnAction.Visible)
@@ -344,29 +341,9 @@ namespace Fantasy_Kingdoms_Battle
             Construction.PrepareHintForInhabitantCreatures();
         }
 
-        private void BtnHireHero_ShowHint(object sender, EventArgs e)
-        {
-            Construction.PrepareHintForHireHero();
-        }
-
         private void BtnBuildOrUpgrade_ShowHint(object sender, EventArgs e)
         {
             Construction.PrepareHintForBuildOrUpgrade(Construction.Level + 1);
-        }
-
-        private void BtnHireHero_Click(object sender, EventArgs e)
-        {
-            Debug.Assert(Construction.Player.Lobby.ID == Program.formMain.CurrentLobby.ID);
-            Debug.Assert(Construction.Level <= Construction.TypeConstruction.MaxLevel);
-
-            SelectThisConstruction();
-
-            if ((Construction.Level > 0) && (Construction.CanTrainHero() == true))
-            {
-                Construction.HireHero();
-                Program.formMain.UpdateListHeroes();
-                Program.formMain.SetNeedRedrawFrame();
-            }
         }
 
         private void BtnBuildOrUpgrade_Click(object sender, EventArgs e)
@@ -418,7 +395,6 @@ namespace Fantasy_Kingdoms_Battle
             {
                 btnHeroes.Visible = visible;
                 btnBuildOrUpgrade.Visible = visible;
-                btnHireHero.Visible = visible;
                 lblIncome.Visible = visible;
                 lblGreatness.Visible = visible;
 
