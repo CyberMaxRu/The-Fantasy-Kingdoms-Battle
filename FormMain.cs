@@ -1360,7 +1360,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     ep.ShiftY = nextY;
                     ep.Visible = true;
-                    if (ep.Parent is null)
+                    if ((ep.Parent is null) || (ep.Parent != pageResultTurn.Page))
                         pageResultTurn.Page.AddControl(ep);
 
                     pageResultTurn.Page.ArrangeControl(ep);

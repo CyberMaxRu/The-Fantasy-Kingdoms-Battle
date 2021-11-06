@@ -104,7 +104,7 @@ namespace Fantasy_Kingdoms_Battle
             CurrentLocation = LocationCapital;
 
             // Инициализация логов
-            ScoutRandomLair(lobby.TypeLobby.StartScoutedLairs);
+            ScoutRandomLair(lobby.TypeLobby.StartScoutedLairs, true);
 
             //
             Castle = GetPlayerConstruction(FormMain.Config.FindConstruction(FormMain.Config.IDConstructionCastle));
@@ -257,7 +257,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         //
-        protected void ScoutRandomLair(int scoutLaires)
+        protected void ScoutRandomLair(int scoutLaires, bool needNotice)
         {
             if (scoutLaires > 0)
             {
@@ -283,7 +283,7 @@ namespace Fantasy_Kingdoms_Battle
                 for (int i = 0; i < scouting; i++)
                 {
                     index = Lobby.Rnd.Next(lairs.Count);
-                    lairs[index].Unhide();
+                    lairs[index].Unhide(needNotice);
                     lairs.RemoveAt(index);
                 }
 
@@ -1069,7 +1069,7 @@ namespace Fantasy_Kingdoms_Battle
             CreateExternalConstructions(FormMain.Config.FindConstruction(FormMain.Config.IDPeasantHouse), 1, LocationCapital, sb.PeasantHouse);
             DescriptorConstruction holyPlace = FormMain.Config.FindConstruction(FormMain.Config.IDHolyPlace);
             CreateExternalConstructions(holyPlace, holyPlace.DefaultLevel, LocationCapital, sb.HolyPlace);
-            ScoutRandomLair(sb.Scouting);
+            ScoutRandomLair(sb.Scouting, true);
 
             startBonusApplied = true;
 
@@ -1375,7 +1375,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     if (lc.Hidden)
                     {
-                        lc.Unhide();
+                        lc.Unhide(false);
                     }
                 }
             }

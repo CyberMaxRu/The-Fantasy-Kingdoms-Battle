@@ -931,7 +931,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
 
-        internal void Unhide()
+        internal void Unhide(bool needNotice)
         {
             Debug.Assert(TypeConstruction.Category != CategoryConstruction.Guild);
             Debug.Assert(TypeConstruction.Category != CategoryConstruction.Economic);
@@ -943,6 +943,9 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(!Destroyed);
 
             Hidden = false;
+
+            if (needNotice)
+                Player.AddNoticeForPlayer(this, TypeNoticeForPlayer.Explore);
         }
 
         // Место разведано

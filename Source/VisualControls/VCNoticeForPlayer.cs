@@ -9,7 +9,7 @@ using System.Diagnostics;
 namespace Fantasy_Kingdoms_Battle
 {
     internal enum TypeNoticeForPlayer { Build, LevelUp, Research, Extension, HireHero, MassEventBegin, MassEventEnd, TournamentBegin, TournamentEnd,
-        ReceivedBaseResource};
+        ReceivedBaseResource, Explore };
 
     internal sealed class VCNoticeForPlayer : VCCustomNotice
     {
@@ -85,6 +85,12 @@ namespace Fantasy_Kingdoms_Battle
                     nameNotice = $"Поступил ресурс {br.Descriptor.Name}:";
                     nameText = $"+{br.Quantity}";
                     colorNameEntity = Color.LimeGreen;
+                    break;
+                case TypeNoticeForPlayer.Explore:
+                    Construction c = Entity as Construction;
+                    nameNotice = $"Найден объект в {c.Location.Settings.Name}:";
+                    nameText = $"{c.NameLair()}";
+                    colorNameEntity = Color.DarkGoldenrod;
                     break;
                 default:
                     throw new Exception($"Неизвестный тип события: {TypeNotice}.");
