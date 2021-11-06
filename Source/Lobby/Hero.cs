@@ -438,6 +438,8 @@ namespace Fantasy_Kingdoms_Battle
 
             // Перемещаем героя из его сооружения на кладбище
             NeedMoveToAbode = Player.Graveyard;
+
+            Player.AddNoticeForPlayer(this, TypeNoticeForPlayer.HeroIsDead);
         }
 
         internal string NameReasonOfDeath()

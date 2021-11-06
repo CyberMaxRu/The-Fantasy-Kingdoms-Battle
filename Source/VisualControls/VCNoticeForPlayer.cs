@@ -9,7 +9,7 @@ using System.Diagnostics;
 namespace Fantasy_Kingdoms_Battle
 {
     internal enum TypeNoticeForPlayer { Build, LevelUp, Research, Extension, HireHero, MassEventBegin, MassEventEnd, TournamentBegin, TournamentEnd,
-        ReceivedBaseResource, Explore };
+        ReceivedBaseResource, Explore, HeroIsDead };
 
     internal sealed class VCNoticeForPlayer : VCCustomNotice
     {
@@ -92,6 +92,12 @@ namespace Fantasy_Kingdoms_Battle
                     nameText = $"{c.NameLair()}";
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
+                case TypeNoticeForPlayer.HeroIsDead:
+                    Hero h = Entity as Hero;
+                    nameNotice = $"Герой погиб ({h.TypeCreature.Name}):";
+                    nameText = $"{h.FullName}";
+                    colorNameEntity = Color.SteelBlue;
+                    break;
                 default:
                     throw new Exception($"Неизвестный тип события: {TypeNotice}.");
             }
@@ -122,7 +128,10 @@ namespace Fantasy_Kingdoms_Battle
             if (Entity is Construction c)
                 Program.formMain.SelectConstruction(c);
             else if (Entity is Hero h)
-                Program.formMain.SelectPlayerObject(h);
+            {
+                if (h.IsLive)
+                    Program.formMain.SelectPlayerObject(h);
+            }
             else if (Entity is ConstructionProduct cp)
             {
                 Program.formMain.SelectConstruction(cp.Construction, 0);
