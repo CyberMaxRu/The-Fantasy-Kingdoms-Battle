@@ -409,6 +409,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Controls.IndexOf(vc) != -1);
 
             Controls.Remove(vc);
+            vc.Parent = null;
         }
 
         internal virtual Size MaxSize()
