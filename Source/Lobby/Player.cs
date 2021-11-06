@@ -291,7 +291,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        private void CreateExternalConstructions(DescriptorConstruction typeConstruction, int level, Location location, int quantity)
+        private void CreateExternalConstructions(DescriptorConstruction typeConstruction, int level, Location location, int quantity, TypeNoticeForPlayer typeNotice)
         {
             Debug.Assert((typeConstruction.Category == CategoryConstruction.External) || (typeConstruction.Category == CategoryConstruction.BasePlace) || (typeConstruction.Category == CategoryConstruction.Place));
             Debug.Assert(level <= typeConstruction.MaxLevel);
@@ -314,7 +314,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     index = Lobby.Rnd.Next(listEmptyPlaces.Count);
                     Construction empty = listEmptyPlaces[index];
-                    Construction pc = new Construction(this, typeConstruction, level, empty.X, empty.Y, empty.Location);
+                    Construction pc = new Construction(this, typeConstruction, level, empty.X, empty.Y, empty.Location, typeNotice);
                     location.Lairs[pc.Y, pc.X] = pc;
                     listEmptyPlaces.RemoveAt(index);
                     quantity--;
@@ -1074,9 +1074,9 @@ namespace Fantasy_Kingdoms_Battle
 
             Builders += sb.Builders;
             FreeBuilders += sb.Builders;
-            CreateExternalConstructions(FormMain.Config.FindConstruction(FormMain.Config.IDPeasantHouse), 1, LocationCapital, sb.PeasantHouse);
+            CreateExternalConstructions(FormMain.Config.FindConstruction(FormMain.Config.IDPeasantHouse), 1, LocationCapital, sb.PeasantHouse, TypeNoticeForPlayer.Build);
             DescriptorConstruction holyPlace = FormMain.Config.FindConstruction(FormMain.Config.IDHolyPlace);
-            CreateExternalConstructions(holyPlace, holyPlace.DefaultLevel, LocationCapital, sb.HolyPlace);
+            CreateExternalConstructions(holyPlace, holyPlace.DefaultLevel, LocationCapital, sb.HolyPlace, TypeNoticeForPlayer.Explore);
             ScoutRandomLair(sb.Scouting, true);
 
             startBonusApplied = true;

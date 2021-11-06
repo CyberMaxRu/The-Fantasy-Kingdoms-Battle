@@ -43,7 +43,7 @@ namespace Fantasy_Kingdoms_Battle
             //    Gold = Construction.GoldByConstruction;
         }
 
-        public Construction(Player p, DescriptorConstruction l, int level, int x, int y, Location location) : base(p.Lobby)
+        public Construction(Player p, DescriptorConstruction l, int level, int x, int y, Location location, TypeNoticeForPlayer typeNotice) : base(p.Lobby)
         {
             Player = p;
             TypeConstruction = l;
@@ -72,6 +72,9 @@ namespace Fantasy_Kingdoms_Battle
                 CreateMonsters();
 
             p.Constructions.Add(this);
+
+            if (typeNotice != TypeNoticeForPlayer.None)
+                Player.AddNoticeForPlayer(this, typeNotice);
         }
 
         internal DescriptorConstruction TypeConstruction { get; }
@@ -987,7 +990,7 @@ namespace Fantasy_Kingdoms_Battle
             // Ставим тип места, который должен быть после зачистки
             Debug.Assert(!(TypeConstruction.TypePlaceForConstruct is null));
 
-            Construction pl = new Construction(Player, TypeConstruction.TypePlaceForConstruct, TypeConstruction.DefaultLevel, X, Y, Location);
+            Construction pl = new Construction(Player, TypeConstruction.TypePlaceForConstruct, TypeConstruction.DefaultLevel, X, Y, Location, TypeNoticeForPlayer.None);
             pl.Hidden = false;
             Location.Lairs[Y, X] = pl;
         }

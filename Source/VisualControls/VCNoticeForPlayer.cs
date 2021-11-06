@@ -8,7 +8,7 @@ using System.Diagnostics;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal enum TypeNoticeForPlayer { Build, LevelUp, Research, Extension, HireHero, MassEventBegin, MassEventEnd, TournamentBegin, TournamentEnd,
+    internal enum TypeNoticeForPlayer { None, Build, LevelUp, Research, Extension, HireHero, MassEventBegin, MassEventEnd, TournamentBegin, TournamentEnd,
         ReceivedBaseResource, Explore, HeroIsDead };
 
     internal sealed class VCNoticeForPlayer : VCCustomNotice
@@ -16,6 +16,7 @@ namespace Fantasy_Kingdoms_Battle
         public VCNoticeForPlayer(Entity entity, TypeNoticeForPlayer typeNotice) : base(52 + 399)
         {
             Debug.Assert(entity != null);
+            Debug.Assert(typeNotice != TypeNoticeForPlayer.None);
 
             Entity = entity;
 
