@@ -194,8 +194,7 @@ namespace Fantasy_Kingdoms_Battle
             ExtraResearch = 0;
 
             foreach (Construction pc in Constructions)
-                if (pc.Level > 0)
-                    pc.PrepareTurn();
+                pc.PrepareTurn();
 
             List<Hero> listForDelete = new List<Hero>();
 

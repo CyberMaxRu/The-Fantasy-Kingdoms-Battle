@@ -138,7 +138,7 @@ namespace Fantasy_Kingdoms_Battle
             if (Level == 1)
             {
                 ValidateHeroes();
-                PrepareTurn();
+                //PrepareTurn();
             }
 
 
@@ -553,28 +553,42 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void PrepareTurn()
         {
-            Debug.Assert(Level > 0);
-
-            if (Lobby.Turn > 1)
+            if (Level > 0)
             {
-                if (TypeConstruction.Levels[Level].GreatnessPerDay > 0)
-                    Player.AddGreatness(GreatnessPerDay());
-            }
-
-            ConstructionProduct cp;
-            for (int i = 0; i < Visits.Count; )
-            {
-                cp = Visits[i];
-                if (cp.Duration > 0)
+                if (Lobby.Turn > 1)
                 {
-                    cp.Counter--;
-                    if (cp.Counter == 0)
-                        RemoveProduct(cp.Descriptor);
+                    if (TypeConstruction.Levels[Level].GreatnessPerDay > 0)
+                        Player.AddGreatness(GreatnessPerDay());
+                }
+
+                ConstructionProduct cp;
+                for (int i = 0; i < Visits.Count;)
+                {
+                    cp = Visits[i];
+                    if (cp.Duration > 0)
+                    {
+                        cp.Counter--;
+                        if (cp.Counter == 0)
+                            RemoveProduct(cp.Descriptor);
+                        else
+                            i++;
+                    }
                     else
                         i++;
                 }
-                else
-                    i++;
+
+                foreach (ConstructionCellMenu cm in Researches)
+                {
+                    cm.PrepareTurn();
+                }
+
+                if (TypeConstruction.ID != FormMain.Config.IDCityGraveyard)
+                {
+                    foreach (Hero h in Heroes)
+                    {
+                        h.PrepareTurn();
+                    }
+                }
             }
 
             if (ListQueueProcessing.Count > 0)
@@ -590,19 +604,6 @@ namespace Fantasy_Kingdoms_Battle
                     cm.Execute();
 
                     RemoveEntityFromQueueProcessing(cm);
-                }
-            }
-
-            foreach (ConstructionCellMenu cm in Researches)
-            {
-                cm.PrepareTurn();
-            }
-
-            if (TypeConstruction.ID != FormMain.Config.IDCityGraveyard)
-            {
-                foreach (Hero h in Heroes)
-                {
-                    h.PrepareTurn();
                 }
             }
         }
