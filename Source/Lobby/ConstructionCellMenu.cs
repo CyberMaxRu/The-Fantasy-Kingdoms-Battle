@@ -109,12 +109,18 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (CheckRequirements())
                 {
-                    Debug.Assert(Descriptor.DaysProcessing > 0);
+                    if (!(this is CellMenuConstructionHireCreature))
+                        Debug.Assert(Descriptor.DaysProcessing > 0);
 
                     Program.formMain.PlayPushButton();
-                    Construction.AddEntityToQueueProcessing(this);
 
-                    DaysLeft = Descriptor.DaysProcessing;
+                    if (Descriptor.DaysProcessing > 0)
+                    {
+                        Construction.AddEntityToQueueProcessing(this);
+                        DaysLeft = Descriptor.DaysProcessing;
+                    }
+                    else
+                        Execute();
                 }
             }
             else
