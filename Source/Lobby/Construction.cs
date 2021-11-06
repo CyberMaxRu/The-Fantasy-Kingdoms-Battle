@@ -41,6 +41,8 @@ namespace Fantasy_Kingdoms_Battle
             // Восстановить
             //if (Construction.HasTreasury)
             //    Gold = Construction.GoldByConstruction;
+
+            TuneCellMenuBuildOrUpgrade();
         }
 
         public Construction(Player p, DescriptorConstruction l, int level, int x, int y, Location location, TypeNoticeForPlayer typeNotice) : base(p.Lobby)
@@ -75,6 +77,8 @@ namespace Fantasy_Kingdoms_Battle
 
             if (typeNotice != TypeNoticeForPlayer.None)
                 Player.AddNoticeForPlayer(this, typeNotice);
+
+            TuneCellMenuBuildOrUpgrade();
         }
 
         internal DescriptorConstruction TypeConstruction { get; }
@@ -110,7 +114,23 @@ namespace Fantasy_Kingdoms_Battle
         internal List<ConstructionProduct> Abilities { get; } = new List<ConstructionProduct>();// Умения, доступные в строении
         internal ConstructionProduct MainVisit { get; private set; }// Основное посещение сооружения
         internal ConstructionProduct CurrentVisit { get; private set; }// Текущее активное посещение сооружения
+        internal CellMenuConstructionLevelUp CellMenuBuildOrLevelUp { get; private set; }// Действие для постройки/улучшения сооружения
         internal int[] SatisfactionNeeds { get; private set; }// Удовлетворяемые потребности
+
+        private void TuneCellMenuBuildOrUpgrade()
+        {
+            CellMenuBuildOrLevelUp = null;
+
+            // Сооружение не построено, ищем действие для постройки
+            foreach (ConstructionCellMenu cm in Researches)
+            {
+                if ((cm is CellMenuConstructionLevelUp cml) && (cml.Descriptor.Number == Level + 1))
+                {
+                    CellMenuBuildOrLevelUp = cml;
+                    break;
+                }
+            }
+        }
 
         internal void Build(bool needNotice)
         {
@@ -191,6 +211,8 @@ namespace Fantasy_Kingdoms_Battle
 
             if (needNotice)
                 Player.AddNoticeForPlayer(this, Level == 1 ? TypeNoticeForPlayer.Build : TypeNoticeForPlayer.LevelUp);
+
+            TuneCellMenuBuildOrUpgrade();
         }
 
         private void CreateProducts()

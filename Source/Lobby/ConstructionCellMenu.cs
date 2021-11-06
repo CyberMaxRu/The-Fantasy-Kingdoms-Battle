@@ -282,7 +282,7 @@ namespace Fantasy_Kingdoms_Battle
                 return TypeConstruction.Levels[1].Cost;
         }
 
-        internal override string GetLevel() => Program.formMain.Settings.ShowTypeCellMenu ? "c" : "";
+        internal override string GetLevel() => Program.formMain.Settings.ShowTypeCellMenu ? "1" : "";
 
         internal override int GetImageIndex()
         {
@@ -325,7 +325,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override int GetCost()
         {
-            return Descriptor.Cost;
+            return Construction.CostBuyOrUpgrade();
         }
 
         internal override int GetImageIndex()
@@ -335,7 +335,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override string GetLevel()
         {
-            return Descriptor.Number == 1 ? "" : Descriptor.Number.ToString();
+            return Descriptor.Number.ToString();
         }
 
         internal override void PrepareHint()

@@ -201,11 +201,13 @@ namespace Fantasy_Kingdoms_Battle
                     {
                         if (Construction.CanLevelUp())
                         {
+                            Debug.Assert(Construction.CellMenuBuildOrLevelUp != null, $"У {Construction.TypeConstruction.ID} не найдено действие в меню для улучшения.");
+
                             btnBuildOrUpgrade.Visible = true;
-                            btnBuildOrUpgrade.Text = Construction.CostBuyOrUpgrade().ToString();
-                            btnBuildOrUpgrade.Level = (Construction.Level + 1).ToString();
-                            btnBuildOrUpgrade.ImageIndex = FormMain.Config.Gui48_LevelUp;
-                            btnBuildOrUpgrade.ImageIsEnabled = Construction.CheckRequirements();
+                            btnBuildOrUpgrade.Text = Construction.CellMenuBuildOrLevelUp.GetCost().ToString();
+                            btnBuildOrUpgrade.Level = Construction.CellMenuBuildOrLevelUp.GetLevel().ToString();
+                            btnBuildOrUpgrade.ImageIndex = Construction.CellMenuBuildOrLevelUp.GetImageIndex();
+                            btnBuildOrUpgrade.ImageIsEnabled = Construction.CellMenuBuildOrLevelUp.CheckRequirements();
                             btnBuildOrUpgrade.Color = btnBuildOrUpgrade.ImageIsEnabled ? Color.LimeGreen : Color.Gray;
                         }
                         else
@@ -224,11 +226,13 @@ namespace Fantasy_Kingdoms_Battle
                     }
                     else
                     {
+                        Debug.Assert(Construction.CellMenuBuildOrLevelUp != null, $"У {Construction.TypeConstruction.ID} не найдено действие в меню для постройки.");
+
                         btnBuildOrUpgrade.Visible = true;
-                        btnBuildOrUpgrade.Text = Construction.CostBuyOrUpgrade().ToString();
-                        btnBuildOrUpgrade.Level = "";
-                        btnBuildOrUpgrade.ImageIndex = FormMain.Config.Gui48_Build;
-                        btnBuildOrUpgrade.ImageIsEnabled = (Construction.TypeConstruction.MaxLevel > 0) ? Construction.CheckRequirements() : true;
+                        btnBuildOrUpgrade.Text = Construction.CellMenuBuildOrLevelUp.GetCost().ToString();
+                        btnBuildOrUpgrade.Level = Construction.CellMenuBuildOrLevelUp.GetLevel().ToString();
+                        btnBuildOrUpgrade.ImageIndex = Construction.CellMenuBuildOrLevelUp.GetImageIndex();
+                        btnBuildOrUpgrade.ImageIsEnabled = Construction.CellMenuBuildOrLevelUp.CheckRequirements();
                         btnBuildOrUpgrade.Color = btnBuildOrUpgrade.ImageIsEnabled ? Color.LimeGreen : Color.Gray;
                     }
                 }
@@ -344,13 +348,7 @@ namespace Fantasy_Kingdoms_Battle
             if (Construction.TypeConstruction.ID == FormMain.Config.IDHolyPlace)
                 return;
 
-            if (Construction.Player.Gold >= Construction.CostBuyOrUpgrade())
-            {
-                Construction.Build(false);
-
-                Program.formMain.SetNeedRedrawFrame();
-                Program.formMain.PlayConstructionComplete();
-            }
+            Construction.CellMenuBuildOrLevelUp.Click();
         }
 
         protected override void SetEntity(Entity po)
