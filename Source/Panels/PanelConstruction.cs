@@ -153,6 +153,8 @@ namespace Fantasy_Kingdoms_Battle
             lblNameMapObject.Text = Construction.NameLair();
             lblNameMapObject.Color = Construction.GetColorCaption();
 
+            btnHeroes.Visible = false;
+
             if (Construction.ListQueueProcessing.Count > 0)
             {
                 ConstructionCellMenu cm = Construction.ListQueueProcessing[0];
