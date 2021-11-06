@@ -362,171 +362,6 @@
     </Surnames>
   </Creature>
   <Creature>
-    <ID>Rogue</ID>
-    <Name>Разбойница</Name>
-    <Description>- Любит деньги, охотно выполняет любые задания//- Умеет воровать//- Избегает серьезных боев</Description>
-    <ImageIndex>62</ImageIndex>
-    <CategoryCreature>Hero</CategoryCreature>
-    <TypeCreature>Human</TypeCreature>
-    <Reward>50</Reward>
-    <Cost>100</Cost>
-    <Construction>GuildRogue</Construction>
-    <MaxLevel>100</MaxLevel>
-    <CanBuild>False</CanBuild>
-    <TypeAttackMelee>Dagger</TypeAttackMelee>
-    <MeleeWeapon>WeaponRogue0</MeleeWeapon>
-    <Armour>ArmourRogue0</Armour>
-    <DefaultPositionPriority>20</DefaultPositionPriority>
-    <BaseParameters>
-      <Strength>10</Strength>
-      <Dexterity>20</Dexterity>
-      <Magic>10</Magic>
-      <Vitality>50</Vitality>
-      <SecondsToMove>1.5</SecondsToMove>
-      <Inititative>2</Inititative>
-      <CoefHealth>2</CoefHealth>
-      <CoefMana>1</CoefMana>
-      <CoefStamina>2</CoefStamina>
-    </BaseParameters>
-    <NextLevel>
-      <StatPoints>5</StatPoints>
-      <WeightStrength>25</WeightStrength>
-      <WeightDexterity>40</WeightDexterity>
-      <WeightMagic>10</WeightMagic>
-      <WeightVitality>25</WeightVitality>
-      <Health>3</Health>
-      <Mana>2</Mana>
-      <Stamina>2</Stamina>
-      <ResistMagic>0</ResistMagic>
-    </NextLevel>
-    <Abilities>
-      <Ability>RogueBasicAttack</Ability>
-      <Ability>RogueWoundAttack</Ability>
-    </Abilities>
-    <CarryItems>
-      <Item MaxQuantity="5">PotionOfHealth</Item>
-      <Item MaxQuantity="1">PotionOfMana</Item>
-    </CarryItems>
-    <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
-    <Perks>
-      <Perk>PerkRogue</Perk>
-    </Perks>
-    <Needs>
-      <Need>
-        <ID>Food</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
-      </Need>
-      <Need>
-        <ID>Rest</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
-      </Need>
-      <Need>
-        <ID>Entertainment</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
-      </Need>
-      <Need>
-        <ID>Money</ID>
-        <MinValueOnHire>10</MinValueOnHire>
-        <MaxValueOnHire>50</MaxValueOnHire>
-        <IncreasePerDay>10</IncreasePerDay>
-      </Need>
-    </Needs>
-    <CoefficientFlags>
-      <Scout>1.1</Scout>
-      <Attack>1</Attack>
-      <Defense>1</Defense>
-      <Battle>1</Battle>
-    </CoefficientFlags>
-    <Names>
-      <Name>Весси</Name>
-      <Name>Халелифь</Name>
-      <Name>Рори</Name>
-      <Name>Адралима</Name>
-      <Name>Глама</Name>
-      <Name>Саедия</Name>
-      <Name>Хаевия</Name>
-      <Name>Эвона</Name>
-      <Name>Халефь</Name>
-      <Name>Оссенна</Name>
-      <Name>Трелль</Name>
-      <Name>Кладина</Name>
-      <Name>Инарэ</Name>
-      <Name>Гвадэ</Name>
-      <Name>Виленара</Name>
-      <Name>Гвер</Name>
-      <Name>Ферлирмора</Name>
-      <Name>Мелчия</Name>
-      <Name>Марелеле</Name>
-      <Name>Марчия</Name>
-      <Name>Гривона</Name>
-      <Name>Тилиана</Name>
-      <Name>Мена</Name>
-      <Name>Сесайна</Name>
-      <Name>Мадис</Name>
-      <Name>Метреза</Name>
-      <Name>Аглорена</Name>
-      <Name>Флианна</Name>
-      <Name>Пали</Name>
-      <Name>Линель</Name>
-      <Name>Недана</Name>
-      <Name>Синна</Name>
-      <Name>Нерра</Name>
-      <Name>Фасиеда</Name>
-      <Name>Рошель</Name>
-      <Name>Висса</Name>
-      <Name>Гарена</Name>
-      <Name>Иланта</Name>
-      <Name>Рони</Name>
-      <Name>Даффи</Name>
-      <Name>Роберта</Name>
-      <Name>Тамми</Name>
-      <Name>Биида</Name>
-      <Name>Рина</Name>
-      <Name>Денетра</Name>
-      <Name>Свена</Name>
-    </Names>
-    <Surnames>
-      <Surname>, Дочь Щипача</Surname>
-      <Surname>, Дочь Неда</Surname>
-      <Surname>Проныра</Surname>
-      <Surname>Отъявленная</Surname>
-      <Surname>Воришка</Surname>
-      <Surname>из Алеи</Surname>
-      <Surname>Жадная</Surname>
-      <Surname>Отравительница</Surname>
-      <Surname>Сборщица</Surname>
-      <Surname>Быстрохватка</Surname>
-      <Surname>Скользящая</Surname>
-      <Surname>Долгого Ограбления</Surname>
-      <Surname>Без Боли</Surname>
-      <Surname>Очаровательная</Surname>
-      <Surname>Улыбчивая</Surname>
-      <Surname>Ваш Кошель</Surname>
-      <Surname>Тихий Нож</Surname>
-      <Surname>Леди Улиц</Surname>
-      <Surname>Уличная Тень</Surname>
-      <Surname>Незаметная</Surname>
-      <Surname>Тень</Surname>
-      <Surname>Грабительница</Surname>
-      <Surname>Шанс</Surname>
-      <Surname>Неприметная</Surname>
-      <Surname>Приметная</Surname>
-      <Surname>Ядналезвии</Surname>
-      <Surname>Коварная</Surname>
-      <Surname>Кривой Нож</Surname>
-      <Surname>, Дочь Харрета</Surname>
-      <Surname>, Дочь Разбойника</Surname>
-      <Surname>Убийца Вампиров</Surname>
-      <Surname>Ограбь</Surname>
-    </Surnames>
-  </Creature>
-  <Creature>
     <ID>Hunter</ID>
     <Name>Рейнджер</Name>
     <Description>- Любит выполнять задания исследования//- Лучше всего воюет против зверей</Description>
@@ -1437,6 +1272,171 @@
       <Surname>Хлопун</Surname>
       <Surname>Тощебород</Surname>
       <Surname>Колесовик</Surname>
+    </Surnames>
+  </Creature>
+  <Creature>
+    <ID>Rogue</ID>
+    <Name>Разбойница</Name>
+    <Description>- Любит деньги, охотно выполняет любые задания//- Умеет воровать//- Избегает серьезных боев</Description>
+    <ImageIndex>62</ImageIndex>
+    <CategoryCreature>Hero</CategoryCreature>
+    <TypeCreature>Human</TypeCreature>
+    <Reward>50</Reward>
+    <Cost>100</Cost>
+    <Construction>GuildRogue</Construction>
+    <MaxLevel>100</MaxLevel>
+    <CanBuild>False</CanBuild>
+    <TypeAttackMelee>Dagger</TypeAttackMelee>
+    <MeleeWeapon>WeaponRogue0</MeleeWeapon>
+    <Armour>ArmourRogue0</Armour>
+    <DefaultPositionPriority>20</DefaultPositionPriority>
+    <BaseParameters>
+      <Strength>10</Strength>
+      <Dexterity>20</Dexterity>
+      <Magic>10</Magic>
+      <Vitality>50</Vitality>
+      <SecondsToMove>1.5</SecondsToMove>
+      <Inititative>2</Inititative>
+      <CoefHealth>2</CoefHealth>
+      <CoefMana>1</CoefMana>
+      <CoefStamina>2</CoefStamina>
+    </BaseParameters>
+    <NextLevel>
+      <StatPoints>5</StatPoints>
+      <WeightStrength>25</WeightStrength>
+      <WeightDexterity>40</WeightDexterity>
+      <WeightMagic>10</WeightMagic>
+      <WeightVitality>25</WeightVitality>
+      <Health>3</Health>
+      <Mana>2</Mana>
+      <Stamina>2</Stamina>
+      <ResistMagic>0</ResistMagic>
+    </NextLevel>
+    <Abilities>
+      <Ability>RogueBasicAttack</Ability>
+      <Ability>RogueWoundAttack</Ability>
+    </Abilities>
+    <CarryItems>
+      <Item MaxQuantity="5">PotionOfHealth</Item>
+      <Item MaxQuantity="1">PotionOfMana</Item>
+    </CarryItems>
+    <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
+    <Perks>
+      <Perk>PerkRogue</Perk>
+    </Perks>
+    <Needs>
+      <Need>
+        <ID>Food</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Rest</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Entertainment</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+      <Need>
+        <ID>Money</ID>
+        <MinValueOnHire>10</MinValueOnHire>
+        <MaxValueOnHire>50</MaxValueOnHire>
+        <IncreasePerDay>10</IncreasePerDay>
+      </Need>
+    </Needs>
+    <CoefficientFlags>
+      <Scout>1.1</Scout>
+      <Attack>1</Attack>
+      <Defense>1</Defense>
+      <Battle>1</Battle>
+    </CoefficientFlags>
+    <Names>
+      <Name>Весси</Name>
+      <Name>Халелифь</Name>
+      <Name>Рори</Name>
+      <Name>Адралима</Name>
+      <Name>Глама</Name>
+      <Name>Саедия</Name>
+      <Name>Хаевия</Name>
+      <Name>Эвона</Name>
+      <Name>Халефь</Name>
+      <Name>Оссенна</Name>
+      <Name>Трелль</Name>
+      <Name>Кладина</Name>
+      <Name>Инарэ</Name>
+      <Name>Гвадэ</Name>
+      <Name>Виленара</Name>
+      <Name>Гвер</Name>
+      <Name>Ферлирмора</Name>
+      <Name>Мелчия</Name>
+      <Name>Марелеле</Name>
+      <Name>Марчия</Name>
+      <Name>Гривона</Name>
+      <Name>Тилиана</Name>
+      <Name>Мена</Name>
+      <Name>Сесайна</Name>
+      <Name>Мадис</Name>
+      <Name>Метреза</Name>
+      <Name>Аглорена</Name>
+      <Name>Флианна</Name>
+      <Name>Пали</Name>
+      <Name>Линель</Name>
+      <Name>Недана</Name>
+      <Name>Синна</Name>
+      <Name>Нерра</Name>
+      <Name>Фасиеда</Name>
+      <Name>Рошель</Name>
+      <Name>Висса</Name>
+      <Name>Гарена</Name>
+      <Name>Иланта</Name>
+      <Name>Рони</Name>
+      <Name>Даффи</Name>
+      <Name>Роберта</Name>
+      <Name>Тамми</Name>
+      <Name>Биида</Name>
+      <Name>Рина</Name>
+      <Name>Денетра</Name>
+      <Name>Свена</Name>
+    </Names>
+    <Surnames>
+      <Surname>, Дочь Щипача</Surname>
+      <Surname>, Дочь Неда</Surname>
+      <Surname>Проныра</Surname>
+      <Surname>Отъявленная</Surname>
+      <Surname>Воришка</Surname>
+      <Surname>из Алеи</Surname>
+      <Surname>Жадная</Surname>
+      <Surname>Отравительница</Surname>
+      <Surname>Сборщица</Surname>
+      <Surname>Быстрохватка</Surname>
+      <Surname>Скользящая</Surname>
+      <Surname>Долгого Ограбления</Surname>
+      <Surname>Без Боли</Surname>
+      <Surname>Очаровательная</Surname>
+      <Surname>Улыбчивая</Surname>
+      <Surname>Ваш Кошель</Surname>
+      <Surname>Тихий Нож</Surname>
+      <Surname>Леди Улиц</Surname>
+      <Surname>Уличная Тень</Surname>
+      <Surname>Незаметная</Surname>
+      <Surname>Тень</Surname>
+      <Surname>Грабительница</Surname>
+      <Surname>Шанс</Surname>
+      <Surname>Неприметная</Surname>
+      <Surname>Приметная</Surname>
+      <Surname>Ядналезвии</Surname>
+      <Surname>Коварная</Surname>
+      <Surname>Кривой Нож</Surname>
+      <Surname>, Дочь Харрета</Surname>
+      <Surname>, Дочь Разбойника</Surname>
+      <Surname>Убийца Вампиров</Surname>
+      <Surname>Ограбь</Surname>
     </Surnames>
   </Creature>
   <Creature>
