@@ -535,6 +535,14 @@ namespace Fantasy_Kingdoms_Battle
         internal Player Opponent { get { return opponent; } set { if (value != this) { if (opponent != value) { opponent = value; UpdateOpponent(); } } else new Exception("Нельзя указать оппонентов самого себя."); } }
         internal Construction FlagAttackToOpponent { get; private set; }
 
+        // Читинг
+        internal bool CheatingIgnoreRequirements { get; set; }
+        internal bool CheatingIgnoreBaseResources { get; set; }
+        internal bool CheatingIgnoreBuilders { get; set; }
+        internal bool CheatingInstantlyBuilding { get; set; }
+        internal bool CheatingInstantlyResearch { get; set; }
+        internal bool CheatingInstantlyHire { get; set; }
+
         private void UpdateOpponent()
         {
             if (opponent is null)
@@ -593,7 +601,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(pb.CheckRequirements());
 
             SpendResource(FormMain.Config.Gold, pb.CostBuyOrUpgrade());
-            if (!Program.formMain.Settings.CheatingIgnoreBuilders)
+            if (!CheatingIgnoreBuilders)
                 FreeBuilders -= pb.TypeConstruction.Levels[pb.Level + 1].Builders;
             AddGreatness(pb.TypeConstruction.Levels[pb.Level + 1].GreatnessByConstruction);
 
@@ -779,7 +787,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal bool CheckRequireGold(int needGold)
         {
-            if (Program.formMain.Settings.CheatingIgnoreBaseResources)
+            if (CheatingIgnoreBaseResources)
                 return true;
 
             return Gold >= needGold;
@@ -787,7 +795,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal bool CheckRequireBuilders(int needBuilders)
         {
-            if (Program.formMain.Settings.CheatingIgnoreBuilders)
+            if (CheatingIgnoreBuilders)
                 return true;
 
             return FreeBuilders >= needBuilders;
@@ -795,7 +803,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal bool CheckRequirements(List<Requirement> list)
         {
-            if (Program.formMain.Settings.CheatingIgnoreRequirements)
+            if (CheatingIgnoreRequirements)
                 return true;
 
             foreach (Requirement r in list)
@@ -1115,7 +1123,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(BaseResources[r.Number].Quantity >= 0);
             Debug.Assert(BaseResources[r.Number].Quantity >= value);
 
-            if (!Program.formMain.Settings.CheatingIgnoreBaseResources)
+            if (!CheatingIgnoreBaseResources)
                 BaseResources[r.Number].Quantity -= value;
 
             UpdateResourceInCastle(r);

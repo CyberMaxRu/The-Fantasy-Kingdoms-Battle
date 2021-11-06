@@ -877,7 +877,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnCheating_Click(object sender, EventArgs e)
         {
-            WindowCheating w = new WindowCheating(Settings);
+            WindowCheating w = new WindowCheating(curAppliedPlayer);
             w.ShowDialog();
         }
 

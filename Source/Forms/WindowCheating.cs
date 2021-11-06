@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Fantasy_Kingdoms_Battle
 {
     // Окно настройки читинга
     internal sealed class WindowCheating : VCForm
     {
-        private Settings settings;
+        private Player player;
 
         private VCButton btnShowAll;
 
@@ -25,35 +26,36 @@ namespace Fantasy_Kingdoms_Battle
         private VCCheckBox chkbInstantlyResearch;
         private VCCheckBox chkbInstantlyHire;
 
-        public WindowCheating(Settings s) : base()
+        public WindowCheating(Player p) : base()
         {
-            settings = s;
+            Debug.Assert(p != null);
+            player = p;
 
             windowCaption.Caption = "Настройка читинга";
 
             chkbIgnoreRequirements = new VCCheckBox(ClientControl, 0, 0, "Игнорировать требования к наличию сооружений и прочего");
             chkbIgnoreRequirements.Hint = "Игнорировать требования к наличию сооружений, исследований (кроме золота, строителей и тому подобного)";
-            chkbIgnoreRequirements.Checked = settings.CheatingIgnoreRequirements;
+            chkbIgnoreRequirements.Checked = player.CheatingIgnoreRequirements;
 
             chkbIgnoreResources = new VCCheckBox(ClientControl, 0, chkbIgnoreRequirements.NextTop(), "Игнорировать требования базовых ресурсов");
             chkbIgnoreResources.Hint = "Игнорировать требования к наличию достаточного количества базовых ресурсов и не тратить их";
-            chkbIgnoreResources.Checked = settings.CheatingIgnoreBaseResources;
+            chkbIgnoreResources.Checked = player.CheatingIgnoreBaseResources;
 
             chkbIgnoreBuilders = new VCCheckBox(ClientControl, 0, chkbIgnoreResources.NextTop(), "Игнорировать требования строителей");
             chkbIgnoreBuilders.Hint = "Игнорировать требования к наличию достаточного количества строителей";
-            chkbIgnoreBuilders.Checked = settings.CheatingIgnoreBuilders;
+            chkbIgnoreBuilders.Checked = player.CheatingIgnoreBuilders;
 
             chkbInstantlyBuilding = new VCCheckBox(ClientControl, 0, chkbIgnoreBuilders.NextTop(), "Мгновенная постройка сооружений");
             chkbInstantlyBuilding.Hint = "Сооружения строятся сразу же, минуя очередь и процесс постройки";
-            chkbInstantlyBuilding.Checked = settings.CheatingInstantlyBuilding;
+            chkbInstantlyBuilding.Checked = player.CheatingInstantlyBuilding;
 
             chkbInstantlyResearch = new VCCheckBox(ClientControl, 0, chkbInstantlyBuilding.NextTop(), "Мгновенное исследование в сооружении");
             chkbInstantlyResearch.Hint = "Исследования, постройка и прочее в сооружении происходят сразу же";
-            chkbInstantlyResearch.Checked = settings.CheatingInstantlyResearch;
+            chkbInstantlyResearch.Checked = player.CheatingInstantlyResearch;
 
             chkbInstantlyHire = new VCCheckBox(ClientControl, 0, chkbInstantlyResearch.NextTop(), "Мгновенный найм");
             chkbInstantlyHire.Hint = "Найм героев и иных существ происходит сразу же";
-            chkbInstantlyHire.Checked = settings.CheatingInstantlyHire;
+            chkbInstantlyHire.Checked = player.CheatingInstantlyHire;
 
             btnShowAll = new VCButton(ClientControl, 0, chkbInstantlyHire.NextTop() + (FormMain.Config.GridSize * 2), "Открыть все локации");
             btnShowAll.Width = 240;
@@ -124,12 +126,12 @@ namespace Fantasy_Kingdoms_Battle
 
         private void BtnAccept_Click(object sender, EventArgs e)
         {
-            settings.CheatingIgnoreRequirements = chkbIgnoreRequirements.Checked;
-            settings.CheatingIgnoreBaseResources = chkbIgnoreResources.Checked;
-            settings.CheatingIgnoreBuilders = chkbIgnoreBuilders.Checked;
-            settings.CheatingInstantlyBuilding = chkbInstantlyBuilding.Checked;
-            settings.CheatingInstantlyResearch = chkbInstantlyResearch.Checked;
-            settings.CheatingInstantlyHire = chkbInstantlyHire.Checked;
+            player.CheatingIgnoreRequirements = chkbIgnoreRequirements.Checked;
+            player.CheatingIgnoreBaseResources = chkbIgnoreResources.Checked;
+            player.CheatingIgnoreBuilders = chkbIgnoreBuilders.Checked;
+            player.CheatingInstantlyBuilding = chkbInstantlyBuilding.Checked;
+            player.CheatingInstantlyResearch = chkbInstantlyResearch.Checked;
+            player.CheatingInstantlyHire = chkbInstantlyHire.Checked;
 
             CloseForm(DialogAction.OK);
         }

@@ -73,14 +73,6 @@ namespace Fantasy_Kingdoms_Battle
         internal bool ShowShortNames { get; set; }
         internal bool ShowTypeCellMenu { get; set; }
 
-        // Читинг
-        internal bool CheatingIgnoreRequirements { get; set; }
-        internal bool CheatingIgnoreBaseResources { get; set; }
-        internal bool CheatingIgnoreBuilders { get; set; }
-        internal bool CheatingInstantlyBuilding { get; set; }
-        internal bool CheatingInstantlyResearch { get; set; }
-        internal bool CheatingInstantlyHire { get; set; }
-
         internal event EventHandler PlayMusicChanged;
 
         internal void SetDefault()
