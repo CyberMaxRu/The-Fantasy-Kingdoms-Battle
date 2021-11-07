@@ -49,7 +49,6 @@ namespace Fantasy_Kingdoms_Battle
                 surnameFromTypeHero = XmlUtils.GetString(n, "SurnameFromTypeHero");
             }
 
-            MaxConstructionForBuyPerDay = XmlUtils.GetInteger(n, "MaxConstructionForBuyPerDay");// NOT NULL
             MovePoints = GetInteger(n, "MovePoints");
 
             //Debug.Assert(Cost > 0);
@@ -238,13 +237,10 @@ namespace Fantasy_Kingdoms_Battle
             // Проверки корректности данных
             if (CategoryCreature == CategoryCreature.Hero)
             {
-                Debug.Assert(MaxConstructionForBuyPerDay > 0);
-
                 Debug.Assert(CoefficientFlags != null);
             }
             else
             {
-                Debug.Assert(MaxConstructionForBuyPerDay == 0);
                 Debug.Assert(PriorityConstructionForShoppings.Count == 0);
                 Debug.Assert(CoefficientFlags is null);
             }
@@ -289,7 +285,6 @@ namespace Fantasy_Kingdoms_Battle
         internal bool CanBuild { get; }
         internal Dictionary<DescriptorItem, int> CarryItems { get; } = new Dictionary<DescriptorItem, int>();
         internal List<(DescriptorItem item, int quantity)> Inventory { get; } = new List<(DescriptorItem item, int quantity)>();// Дефолтный Инвентарь
-        internal int MaxConstructionForBuyPerDay { get; }// Максимальное количество посещений сооружений для покупок в день
         internal string PrefixName { get; }
         internal List<string> Names { get; } = new List<string>();
         internal List<string> Surnames { get; } = new List<string>();

@@ -71,8 +71,6 @@ namespace Fantasy_Kingdoms_Battle
 
         //internal bool Selected { get; set; }
 
-        internal int CounterConstructionForBuy { get; private set; }// Счетчик сооружений для посещения для покупок
-
         // Увольнение героя
         internal void Dismiss()
         {
@@ -372,7 +370,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void Initialize()
         {
-            CounterConstructionForBuy = TypeCreature.MaxConstructionForBuyPerDay;
 
             // Считаем энтузиазм и лояльность
             PerksChanged();
@@ -397,8 +394,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal void DoShopping(Construction c)
         {
-            Debug.Assert(CounterConstructionForBuy > 0);
-
             bool shopped = false;
             bool abilityBought = false;
 
@@ -417,9 +412,6 @@ namespace Fantasy_Kingdoms_Battle
                     }
                 }
             }
-
-            if (shopped)
-                CounterConstructionForBuy--;
 
             if (abilityBought)
                 SortAbilities();

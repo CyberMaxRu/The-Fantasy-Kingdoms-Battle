@@ -177,7 +177,6 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-    <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
     <Perks>
       <Perk>PerkWarrior</Perk>
     </Perks>
@@ -413,7 +412,6 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-    <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
     <Perks>
       <Perk>PerkHunter</Perk>
     </Perks>
@@ -619,7 +617,6 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-    <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
     <Perks>
       <Perk>PerkCleric</Perk>
     </Perks>
@@ -805,7 +802,6 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-    <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
     <Perks>
       <Perk>PerkMage</Perk>
     </Perks>
@@ -990,7 +986,6 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-    <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
     <Perks>
       <Perk>PerkElf</Perk>
     </Perks>
@@ -1157,7 +1152,6 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-    <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
     <Perks>
       <Perk>PerkDwarf</Perk>
     </Perks>
@@ -1322,7 +1316,6 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-    <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
     <Perks>
       <Perk>PerkRogue</Perk>
     </Perks>
@@ -1492,7 +1485,6 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-    <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
     <Perks>
       <Perk>PerkDarkPriest</Perk>
     </Perks>
@@ -1626,7 +1618,6 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-    <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
     <Perks>
       <Perk>PerkPriest</Perk>
     </Perks>
@@ -1758,7 +1749,6 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-    <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
     <Perks>
       <Perk>PerkPaladin</Perk>
     </Perks>
@@ -1889,7 +1879,6 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-    <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
     <Perks>
       <Perk>PerkBladeMaster</Perk>
     </Perks>
@@ -2021,7 +2010,6 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-    <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
     <Perks>
       <Perk>PerkBeastMaster</Perk>
     </Perks>
@@ -2153,7 +2141,6 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-    <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
     <Perks>
       <Perk>PerkMarksman</Perk>
     </Perks>
@@ -2286,7 +2273,6 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-    <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
     <Perks>
       <Perk>PerkFireMage</Perk>
     </Perks>
@@ -2374,7 +2360,6 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-    <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
     <Perks>
       <Perk>PerkIceMage</Perk>
     </Perks>
@@ -2486,7 +2471,6 @@
       <Item MaxQuantity="5">PotionOfHealth</Item>
       <Item MaxQuantity="1">PotionOfMana</Item>
     </CarryItems>
-    <MaxConstructionForBuyPerDay>3</MaxConstructionForBuyPerDay>
     <Perks>
       <Perk>PerkDeathKnight</Perk>
     </Perks>

@@ -251,8 +251,8 @@ namespace Fantasy_Kingdoms_Battle
             // Выполняем покупки
             foreach (UnitOfQueueForBuy u in queueShopping)
             {
-                if (u.Hero.CounterConstructionForBuy > 0)
-                    u.Hero.DoShopping(u.Construction);
+                //if (u.Hero.CounterConstructionForBuy > 0)
+                //    u.Hero.DoShopping(u.Construction);
             }
         }
 
