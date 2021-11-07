@@ -50,6 +50,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             MaxConstructionForBuyPerDay = XmlUtils.GetInteger(n, "MaxConstructionForBuyPerDay");// NOT NULL
+            MovePoints = GetInteger(n, "MovePoints");
 
             //Debug.Assert(Cost > 0);
 
@@ -296,6 +297,7 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorCreature SurnameFromTypeHero { get; private set; }
         internal ListDescriptorPerks Perks { get; }// Дефолтные перки        
         internal List<DescriptorCreatureNeed> Needs { get; } = new List<DescriptorCreatureNeed>();// Потребности
+        internal int MovePoints { get; }// Очков движения по умолчанию
         //
 
         internal int MaxQuantityItem(DescriptorItem i)

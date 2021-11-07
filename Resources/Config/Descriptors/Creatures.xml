@@ -145,6 +145,7 @@
     <Armour>ArmourWarrior0</Armour>
     <DefaultPositionPriority>70</DefaultPositionPriority>
     <PrefixName>Сэр</PrefixName>
+    <MovePoints>15</MovePoints>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -373,6 +374,8 @@
     <RangeWeapon>BowHunter0</RangeWeapon>
     <Armour>ArmourHunter0</Armour>
     <DefaultPositionPriority>100</DefaultPositionPriority>
+    <Strength>20</Strength>
+    <MovePoints>15</MovePoints>
     <BaseParameters>
       <Strength>15</Strength>
       <Dexterity>20</Dexterity>
@@ -585,6 +588,7 @@
     <MeleeWeapon>WeaponCleric0</MeleeWeapon>
     <Armour>ArmourCleric0</Armour>
     <DefaultPositionPriority>200</DefaultPositionPriority>
+    <MovePoints>15</MovePoints>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -769,6 +773,7 @@
     <MeleeWeapon>StaffMage0</MeleeWeapon>
     <Armour>ArmourMage0</Armour>
     <DefaultPositionPriority>210</DefaultPositionPriority>
+    <MovePoints>15</MovePoints>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -955,6 +960,7 @@
     <RangeWeapon>BowElf0</RangeWeapon>
     <Armour>ArmourElf0</Armour>
     <DefaultPositionPriority>110</DefaultPositionPriority>
+    <MovePoints>15</MovePoints>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -1121,6 +1127,7 @@
     <MeleeWeapon>WeaponDwarf0</MeleeWeapon>
     <Armour>ArmourDwarf0</Armour>
     <DefaultPositionPriority>50</DefaultPositionPriority>
+    <MovePoints>15</MovePoints>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -1284,6 +1291,7 @@
     <MeleeWeapon>WeaponRogue0</MeleeWeapon>
     <Armour>ArmourRogue0</Armour>
     <DefaultPositionPriority>20</DefaultPositionPriority>
+    <MovePoints>15</MovePoints>
     <BaseParameters>
       <Strength>10</Strength>
       <Dexterity>20</Dexterity>
@@ -1450,6 +1458,7 @@
     <Armour>ArmourDarkPriest0</Armour>
     <DefaultPositionPriority>220</DefaultPositionPriority>
     <NameFromTypeHero>Cleric</NameFromTypeHero>
+    <MovePoints>15</MovePoints>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -1583,6 +1592,7 @@
     <Armour>ArmourPriest0</Armour>
     <DefaultPositionPriority>230</DefaultPositionPriority>
     <NameFromTypeHero>Cleric</NameFromTypeHero>
+    <MovePoints>15</MovePoints>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -1714,6 +1724,7 @@
     <DefaultPositionPriority>30</DefaultPositionPriority>
     <PrefixName>Брат</PrefixName>
     <NameFromTypeHero>Warrior</NameFromTypeHero>
+    <MovePoints>15</MovePoints>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -1844,6 +1855,7 @@
     <DefaultPositionPriority>10</DefaultPositionPriority>
     <PrefixName>Ярл</PrefixName>
     <NameFromTypeHero>Warrior</NameFromTypeHero>
+    <MovePoints>15</MovePoints>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -1972,6 +1984,7 @@
     <Armour>ArmourBeastMaster0</Armour>
     <DefaultPositionPriority>140</DefaultPositionPriority>
     <NameFromTypeHero>Hunter</NameFromTypeHero>
+    <MovePoints>15</MovePoints>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -2105,6 +2118,7 @@
     <Armour>ArmourMarksman0</Armour>
     <DefaultPositionPriority>130</DefaultPositionPriority>
     <NameFromTypeHero>Hunter</NameFromTypeHero>
+    <MovePoints>15</MovePoints>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -2238,6 +2252,7 @@
     <NameFromTypeHero>Mage</NameFromTypeHero>
     <SurnameFromTypeHero>Mage</SurnameFromTypeHero>
     <PrefixName>Мастер</PrefixName>
+    <MovePoints>15</MovePoints>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -2325,6 +2340,7 @@
     <Armour>ArmourIceMage0</Armour>
     <DefaultPositionPriority>260</DefaultPositionPriority>
     <NameFromTypeHero>Mage</NameFromTypeHero>
+    <MovePoints>15</MovePoints>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
@@ -2435,6 +2451,7 @@
     <Armour>ArmourDeathKnight0</Armour>
     <DefaultPositionPriority>80</DefaultPositionPriority>
     <NameFromTypeHero>Rogue</NameFromTypeHero>
+    <MovePoints>15</MovePoints>
     <BaseParameters>
       <Strength>20</Strength>
       <Dexterity>10</Dexterity>
