@@ -9,7 +9,7 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    class DescriptorConstructionVisit : DescriptorSmallEntity
+    class DescriptorConstructionVisit : DescriptorProduct
     {
         public DescriptorConstructionVisit(DescriptorCellMenuForConstructionLevel level, XmlNode n) : base(n)
         {

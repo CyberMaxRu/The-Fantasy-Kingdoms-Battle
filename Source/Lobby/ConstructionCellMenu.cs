@@ -505,12 +505,12 @@ namespace Fantasy_Kingdoms_Battle
         {
             RemoveSelf();
 
-            ConstructionProduct cp = new ConstructionProduct(Construction, Entity);
-            Construction.AddProduct(cp);
+            ConstructionExtension ce = new ConstructionExtension(Construction, Entity);
+            Construction.AddExtension(ce);
 
             Program.formMain.SetNeedRedrawFrame();
 
-            Construction.Player.AddNoticeForPlayer(cp, TypeNoticeForPlayer.Extension);
+            Construction.Player.AddNoticeForPlayer(ce, TypeNoticeForPlayer.Extension);
         }
 
         internal override ListBaseResources GetCost()
@@ -531,7 +531,7 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep3Type("Доп. сооружение");
             Program.formMain.formHint.AddStep5Description(Entity.Description);
             Program.formMain.formHint.AddStep6Income(Descriptor.Income);
-            Program.formMain.formHint.AddStep9Interest(Entity.Interest, true);
+            Program.formMain.formHint.AddStep9Interest(Entity.ModifyInterest, true);
             Program.formMain.formHint.AddStep9ListNeeds(Entity.ListNeeds, true);
             Program.formMain.formHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.DaysProcessing);
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirements());

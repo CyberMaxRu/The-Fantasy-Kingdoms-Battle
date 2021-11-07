@@ -9,7 +9,7 @@ using System.Xml;
 namespace Fantasy_Kingdoms_Battle
 {
     // Группа предметов
-    internal sealed class DescriptorGroupItems : DescriptorSmallEntity
+    internal sealed class DescriptorGroupItems : DescriptorProduct
     {
         public DescriptorGroupItems(XmlNode n) : base(n)
         {

@@ -9,16 +9,14 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal sealed class DescriptorConstructionExtension : DescriptorSmallEntity
+    internal sealed class DescriptorConstructionExtension : DescriptorEntityForConstruction
     {
-        public DescriptorConstructionExtension(DescriptorConstruction construction, XmlNode n) : base(n)
+        public DescriptorConstructionExtension(DescriptorConstruction construction, XmlNode n) : base(construction, n)
         {
-            Debug.Assert(Interest >= 0);
-            Debug.Assert(Interest <= 100);
+            Debug.Assert(ModifyInterest >= 0);
+            Debug.Assert(ModifyInterest <= 100);
 
-            Construction = construction;
-
-            Interest = GetInteger(n, "Interest");
+            ModifyInterest = GetInteger(n, "Interest");
             ListNeeds = new ListNeeds(n.SelectSingleNode("Needs"));
 
             foreach (DescriptorConstructionVisit cv in Config.ConstructionsVisits)
@@ -30,8 +28,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal DescriptorConstruction Construction { get; private set; }
-        internal int Interest { get; }// Интерес для посещения сооружения
+        internal int ModifyInterest { get; }// Изменение интереса к сооружению
         internal ListNeeds ListNeeds { get; }// Изменение удовлетворения потребностей героев
 
         internal override void TuneDeferredLinks()
@@ -55,7 +52,7 @@ namespace Fantasy_Kingdoms_Battle
                     if (cm is DescriptorCellMenuForConstructionLevel cmcl)
                         Description += Environment.NewLine + "    - { " + cmcl.ForEntity.Name + " (" + cmcl.Number.ToString() + " ур.)}";
                     else if (cm is DescriptorCellMenuForConstruction cmc)
-                        Description += Environment.NewLine + "    - {" + cmc.Entity.Name + "}" + (cmc.ForEntity.ID != Construction.ID ? " ({" + cm.ForEntity.Name + "})" : "");
+                        Description += Environment.NewLine + "    - {" + cmc.Entity.Name + "}" + (cmc.ForEntity.ID != Descriptor.ID ? " ({" + cm.ForEntity.Name + "})" : "");
                 }
             }
         }

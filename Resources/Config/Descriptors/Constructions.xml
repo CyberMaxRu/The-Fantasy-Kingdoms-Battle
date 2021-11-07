@@ -1426,6 +1426,7 @@
         <Name>Ярмарка</Name>
         <Description>Устроить ярмарку</Description>
         <ImageIndex>243</ImageIndex>
+        <Cost>0</Cost>
         <Duration>3</Duration>
         <Cooldown>10</Cooldown>
         <Interest>30</Interest>
@@ -1921,6 +1922,7 @@
         <Name>Пивной фестиваль</Name>
         <Description>Устроить пивной фестиваль</Description>
         <ImageIndex>225</ImageIndex>
+        <Cost>0</Cost>
         <Duration>1</Duration>
         <Cooldown>7</Cooldown>
         <Interest>40</Interest>
@@ -3373,6 +3375,7 @@
         <Name>Устроить фейерверк</Name>
         <Description>- От красочного фейерверка у подданных целую неделю будет хорошее настроение</Description>
         <ImageIndex>208</ImageIndex>
+        <Cost>0</Cost>
         <Duration>1</Duration>
         <Cooldown>7</Cooldown>
         <Interest>70</Interest>
@@ -3392,6 +3395,7 @@
         <Name>Концерт эльфийской музыки</Name>
         <Description>- Прослушивание известных и новых композиций эльфийской музыки благотворно влияет на подданных!</Description>
         <ImageIndex>232</ImageIndex>
+        <Cost>30</Cost>
         <Duration>1</Duration>
         <Cooldown>7</Cooldown>
         <Interest>50</Interest>

@@ -60,6 +60,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Source\Descriptors\Construction\DescriptorEntityForConstruction.cs" />
     <Compile Include="Source\Descriptors\DescriptorBaseResource.cs" />
     <Compile Include="Source\Descriptors\Construction\DescriptorConstructionExtension.cs" />
     <Compile Include="Source\Descriptors\Construction\DescriptorConstructionVisit.cs" />
@@ -76,15 +77,19 @@
     <Compile Include="Source\Descriptors\Creature\ListSmallEntity.cs" />
     <Compile Include="Source\Descriptors\Descriptor.cs" />
     <Compile Include="Source\Descriptors\DescriptorWithID.cs" />
+    <Compile Include="Source\Descriptors\Item\DescriptorProduct.cs" />
     <Compile Include="Source\Descriptors\Item\DescriptorResource.cs" />
     <Compile Include="Source\Descriptors\Location\DescriptorTypeLandscape.cs" />
     <Compile Include="Source\Forms\WindowCheating.cs" />
     <Compile Include="Source\Lobby\BaseResource.cs" />
     <Compile Include="Source\Lobby\BigEntity.cs" />
+    <Compile Include="Source\Lobby\ConstructionExtension.cs" />
     <Compile Include="Source\Lobby\ConstructionProduct.cs" />
+    <Compile Include="Source\Lobby\ConstructionResource.cs" />
     <Compile Include="Source\Lobby\CreatureNeed.cs" />
     <Compile Include="Source\Lobby\CreatureProperty.cs" />
     <Compile Include="Source\Lobby\EntityForCreature.cs" />
+    <Compile Include="Source\Lobby\EntityForConstruction.cs" />
     <Compile Include="Source\Lobby\GroupItem.cs" />
     <Compile Include="Source\Lobby\Location.cs" />
     <Compile Include="Source\Lobby\Perk.cs" />

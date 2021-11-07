@@ -7,40 +7,36 @@ using System.Diagnostics;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal sealed class ConstructionProduct : SmallEntity
+    internal sealed class ConstructionProduct : EntityForConstruction
     {
-        public ConstructionProduct(Construction construction, DescriptorAbility descriptor) : base()
+        public ConstructionProduct(Construction construction, DescriptorAbility descriptor) : base(construction)
         {
             Debug.Assert(descriptor != null);
 
-            Construction = construction;
             DescriptorAbility = descriptor;
             Descriptor = descriptor;
         }
 
-        public ConstructionProduct(Construction construction, DescriptorItem descriptor) : base()
+        public ConstructionProduct(Construction construction, DescriptorItem descriptor) : base(construction)
         {
             Debug.Assert(descriptor != null);
 
-            Construction = construction;
             DescriptorItem = descriptor;
             Descriptor = descriptor;
         }
 
-        public ConstructionProduct(Construction construction, DescriptorGroupItems descriptor) : base()
+        public ConstructionProduct(Construction construction, DescriptorGroupItems descriptor) : base(construction)
         {
             Debug.Assert(descriptor != null);
 
-            Construction = construction;
             DescriptorGroupItem = descriptor;
             Descriptor = descriptor;
         }
 
-        public ConstructionProduct(Construction construction, DescriptorConstructionEvent descriptor) : base()
+        public ConstructionProduct(Construction construction, DescriptorConstructionEvent descriptor) : base(construction)
         {
             Debug.Assert(descriptor != null);
 
-            Construction = construction;
             DescriptorConstructionEvent = descriptor;
             Descriptor = descriptor;
 
@@ -49,44 +45,21 @@ namespace Fantasy_Kingdoms_Battle
             Interest = descriptor.Interest;
         }
 
-        public ConstructionProduct(Construction construction, DescriptorConstructionVisit descriptor) : base()
+        public ConstructionProduct(Construction construction, DescriptorConstructionVisit descriptor) : base(construction)
         {
             Debug.Assert(descriptor != null);
 
-            Construction = construction;
             DescriptorConstructionVisit = descriptor;
             Descriptor = descriptor;
             Interest = descriptor.Interest;
         }
 
-        public ConstructionProduct(Construction construction, DescriptorConstructionExtension descriptor) : base()
-        {
-            Debug.Assert(descriptor != null);
-
-            Construction = construction;
-            DescriptorConstructionExtension = descriptor;
-            Descriptor = descriptor;
-            Interest = descriptor.Interest;
-        }
-
-        public ConstructionProduct(Construction construction, DescriptorResource descriptor) : base()
-        {
-            Debug.Assert(descriptor != null);
-
-            Construction = construction;
-            DescriptorResource = descriptor;
-            Descriptor = descriptor;
-        }
-
-        internal Construction Construction { get; }
-        internal DescriptorSmallEntity Descriptor { get; }
+        internal new DescriptorProduct Descriptor { get; }
         internal DescriptorAbility DescriptorAbility { get; }
         internal DescriptorItem DescriptorItem { get; }
         internal DescriptorGroupItems DescriptorGroupItem { get; }
         internal DescriptorConstructionEvent DescriptorConstructionEvent { get; }
         internal DescriptorConstructionVisit DescriptorConstructionVisit { get; }
-        internal DescriptorConstructionExtension DescriptorConstructionExtension { get; }
-        internal DescriptorResource DescriptorResource { get; }
         internal int Duration { get; private set; }// Длительность нахождения товара в сооружении
         internal int Counter { get; set; }// Счетчик дней товара в сооружении
         internal int Interest { get; set; }// Интерес героев к сущности
@@ -111,6 +84,11 @@ namespace Fantasy_Kingdoms_Battle
             return base.GetText();
         }
 
+        internal int GetCostGold()
+        {
+            return Descriptor.Cost;
+        }
+
         internal override void PrepareHint()
         {
             if (DescriptorConstructionEvent != null)
@@ -128,19 +106,14 @@ namespace Fantasy_Kingdoms_Battle
                     Program.formMain.formHint.AddStep3Type(DescriptorAbility.TypeAbility.Name);
                 if (DescriptorConstructionVisit != null)
                     Program.formMain.formHint.AddStep3Type("Посещение");
-                if (DescriptorResource != null)
-                    Program.formMain.formHint.AddStep3Type("Ресурс");
                 Program.formMain.formHint.AddStep5Description(Descriptor.Description);
+                Program.formMain.formHint.AddStep10CostGold(GetCostGold());
                 if (DescriptorConstructionVisit != null)
                     Program.formMain.formHint.AddStep9Interest(Interest, false);
                 if (DescriptorItem != null)
                     Program.formMain.formHint.AddStep9ListNeeds(DescriptorItem.ListNeeds, false);
-                if (DescriptorConstructionExtension != null)
-                    Program.formMain.formHint.AddStep9ListNeeds(DescriptorConstructionExtension.ListNeeds, true);
                 if (DescriptorConstructionEvent != null)
                     Program.formMain.formHint.AddStep9Interest(Interest, false);
-                if (DescriptorConstructionExtension != null)
-                    Program.formMain.formHint.AddStep9Interest(Interest, true);
                 if (DescriptorConstructionVisit != null)
                     Program.formMain.formHint.AddStep9ListNeeds(DescriptorConstructionVisit.ListNeeds, false);
             }

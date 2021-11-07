@@ -147,7 +147,7 @@ namespace Fantasy_Kingdoms_Battle
             {
                 panelInhabitants.ApplyList(Construction.Heroes);
 
-                btnProducts.Quantity = Construction.AllProducts.Count;
+                btnProducts.Quantity = Construction.ListEntities.Count;
                 btnInhabitants.Quantity = Construction.Heroes.Count;
             }
             else
@@ -172,7 +172,7 @@ namespace Fantasy_Kingdoms_Battle
 
             base.Draw(g);
 
-            void DrawList(VCLabel label, PanelWithPanelEntity panel, List<ConstructionProduct> list)
+            void DrawList<T>(VCLabel label, PanelWithPanelEntity panel, List<T> list) where T : EntityForConstruction
             {
                 if (list.Count > 0)
                 {

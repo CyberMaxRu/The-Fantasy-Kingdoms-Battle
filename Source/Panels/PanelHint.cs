@@ -44,6 +44,7 @@ namespace Fantasy_Kingdoms_Battle
         internal readonly VCLabelValue lblLuck;
         internal readonly VCLabelValue lblInterest;
         internal readonly VCLabelValue lblDaysBuilding;
+        internal readonly VCLabelValue lblCostGold;
         private readonly List<VCLabelValue> listLabelNeeds = new List<VCLabelValue>();
         internal readonly VCLabel lblSigner;
         internal readonly VCSeparator lblSeparateTooltip;
@@ -143,7 +144,11 @@ namespace Fantasy_Kingdoms_Battle
             lblDaysBuilding.ImageIndex = FormMain.GUI_16_DAY;
             lblDaysBuilding.Width = widthControl;
 
-            lblSigner = new VCLabel(this, FormMain.Config.GridSize, lblDaysBuilding.NextTop(), Program.formMain.fontSmallC, Color.SkyBlue, 16, "");
+            lblCostGold = new VCLabelValue(this, FormMain.Config.GridSize, lblDaysBuilding.NextTop(), FormMain.Config.HintIncome, false);
+            lblCostGold.ImageIndex = FormMain.GUI_16_GOLD;
+            lblCostGold.Width = widthControl;
+
+            lblSigner = new VCLabel(this, FormMain.Config.GridSize, lblCostGold.NextTop(), Program.formMain.fontSmallC, Color.SkyBlue, 16, "");
             lblSigner.StringFormat.Alignment = StringAlignment.Near;
             lblSigner.Width = widthControl;
 
@@ -272,6 +277,7 @@ namespace Fantasy_Kingdoms_Battle
             lblLuck.Visible = false;
             lblInterest.Visible = false;
             lblDaysBuilding.Visible = false;
+            lblCostGold.Visible = false;
 
             foreach (VCLabelValue ln in listLabelNeeds)
                 ln.Visible = false;
@@ -612,6 +618,16 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        internal void AddStep10CostGold(int cost)
+        {
+            if (cost > 0)
+            {
+                lblCostGold.ShiftY = nextTop;
+                lblCostGold.Text = cost.ToString();
+                lblCostGold.Visible = true;
+                nextTop = lblCostGold.NextTop();
+            }
+        }
 
         internal void AddStep10Requirement(string notEnoughrequirement)
         {

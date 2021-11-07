@@ -6,7 +6,7 @@
     <Description>Восстанавливает часть здоровья</Description>
     <ImageIndex>1</ImageIndex>
     <CategoryItem>Potion</CategoryItem>
-    <Cost>50</Cost>
+    <Cost>15</Cost>
     <Perk></Perk>
     <AvailableForAll>true</AvailableForAll>
   </Item>
@@ -17,7 +17,7 @@
     <Description>Восстанавливает часть маны</Description>
     <CategoryItem>Potion</CategoryItem>
     <CostExamine>300</CostExamine>
-    <Cost>50</Cost>
+    <Cost>30</Cost>
     <Perk></Perk>
     <Heroes>
       <Hero>Cleric</Hero>
