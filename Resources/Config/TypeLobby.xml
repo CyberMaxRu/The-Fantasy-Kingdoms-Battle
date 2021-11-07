@@ -31,7 +31,10 @@
     <MapHeight>5</MapHeight>
     <LairsWidth>4</LairsWidth>
     <LairsHeight>3</LairsHeight>
-    <LocationCapital>LocationCapital</LocationCapital>
+    <Capital>
+      <Location>LocationCapital</Location>
+      <CostMove>3</CostMove>
+    </Capital>
     <CoefficientFlags>
       <Scout>
         <Priority>

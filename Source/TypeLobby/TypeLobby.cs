@@ -33,6 +33,7 @@ namespace Fantasy_Kingdoms_Battle
             MapHeight = XmlUtils.GetInteger(n, "MapHeight");
             LairsWidth = XmlUtils.GetInteger(n, "LairsWidth");
             LairsHeight = XmlUtils.GetInteger(n, "LairsHeight");
+            CostMove = XmlUtils.GetIntegerNotNull(n, "Capital/CostMove");
 
             Debug.Assert(Name.Length > 0);
             Debug.Assert(QuantityPlayers >= 2);
@@ -113,7 +114,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Проверяем, что указаны все локации
-            string nameLocationCapital = XmlUtils.GetStringNotNull(n, "LocationCapital");
+            string nameLocationCapital = XmlUtils.GetStringNotNull(n, "Capital/Location");
 
             for (int y = 0; y < MapHeight; y++)
                 for (int x = 0; x < MapWidth; x++)
@@ -191,6 +192,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int LairsWidth { get; }
         internal int LairsHeight { get; }
         internal TypeLobbyLocationSettings LocationCapital { get; }// Локация столицы
+        internal int CostMove { get; }// Стоимость перемещения между объектами
         internal TypeLobbyLocationSettings[,] Locations { get; }
         internal int[] CoefFlagScout { get; }
         internal int[] CoefFlagAttack { get; }
