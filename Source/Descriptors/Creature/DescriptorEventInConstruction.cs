@@ -9,10 +9,12 @@ using System.Diagnostics;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс мероприятий в сооружении
-    internal sealed class DescriptorConstructionEvent : DescriptorProduct
+    internal sealed class DescriptorEventInConstruction : DescriptorEntityForCreature
     {
-        public DescriptorConstructionEvent(DescriptorConstruction descriptor, XmlNode n) : base(descriptor, n)
+        public DescriptorEventInConstruction(DescriptorConstruction descriptor, XmlNode n) : base(n)
         {
+            Descriptor = descriptor;
+
             Duration = XmlUtils.GetIntegerNotNull(n, "Duration");
             Cooldown = XmlUtils.GetIntegerNotNull(n, "Cooldown");
             Interest = XmlUtils.GetIntegerNotNull(n, "Interest");
@@ -26,8 +28,16 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Cooldown <= 100);
             Debug.Assert(Interest >= 1);
             Debug.Assert(Interest <= 100);
+
+            foreach (DescriptorEventInConstruction ce in Descriptor.Events)
+            {
+                Debug.Assert(ce.ID != ID);
+                Debug.Assert(ce.Name != Name);
+                Debug.Assert(ce.ImageIndex != ImageIndex);
+            }
         }
 
+        internal DescriptorConstruction Descriptor { get; }
         internal int Duration { get; }// Длительность (в днях)
         internal int Cooldown { get; }// Пауза до возможности снова использовать (в днях)
         internal int Interest { get; }// Интерес к событию

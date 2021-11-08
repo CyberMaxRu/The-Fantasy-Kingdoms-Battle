@@ -157,7 +157,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal new DescriptorCellMenuForConstruction Descriptor { get; }
-        internal DescriptorSmallEntity Entity { get; }
+        internal DescriptorEntityForCreature Entity { get; }
         internal override void PrepareHint()
         {
             string level = Entity is DescriptorAbility ta ? "Требуемый уровень: " + ta.MinUnitLevel.ToString() : "";
@@ -195,7 +195,7 @@ namespace Fantasy_Kingdoms_Battle
 
             ConstructionProduct cp;
             if (Entity is DescriptorItem di)
-                cp = new ConstructionProduct(Construction, di);
+                cp = new ConstructionProduct(Construction, di, );
             else if (Entity is DescriptorAbility da)
                 cp = new ConstructionProduct(Construction, da);
             else if (Entity is DescriptorGroupItems dgi)
@@ -406,10 +406,10 @@ namespace Fantasy_Kingdoms_Battle
         private ConstructionProduct cp;
         public CellMenuConstructionEvent(Construction c, DescriptorCellMenuForConstruction d) : base(c, d)
         {
-            ConstructionEvent = d.Entity as DescriptorConstructionEvent;            
+            ConstructionEvent = d.Entity as DescriptorEventInConstruction;            
         }
 
-        internal DescriptorConstructionEvent ConstructionEvent { get; }
+        internal DescriptorEventInConstruction ConstructionEvent { get; }
         internal int Cooldown { get; private set; }
 
         internal override void Execute()

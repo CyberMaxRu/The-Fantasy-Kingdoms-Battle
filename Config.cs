@@ -497,7 +497,7 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorTypeConstruction tc in TypeConstructions)
                 tc.TuneDeferredLinks();
 
-            foreach (DescriptorConstructionVisit cv in ConstructionsVisits)
+            foreach (DescriptorVisitToConstruction cv in ConstructionsVisits)
                 cv.TuneDeferredLinks();
 
             foreach (DescriptorConstruction c in Constructions)
@@ -532,8 +532,13 @@ namespace Fantasy_Kingdoms_Battle
         // Списки описателей
         internal DescriptorBaseResource Gold { get; }
         internal List<DescriptorBaseResource> BaseResources { get; } = new List<DescriptorBaseResource>();
+
+        // Товары в сооружениях
+        internal List<DescriptorConstructionProduct> ConstructionProducts { get; } = new List<DescriptorConstructionProduct>();
+
+        // Сооружения
         internal List<DescriptorTypeConstruction> TypeConstructions { get; } = new List<DescriptorTypeConstruction>();
-        internal List<DescriptorConstructionVisit> ConstructionsVisits { get; } = new List<DescriptorConstructionVisit>();
+        internal List<DescriptorVisitToConstruction> ConstructionsVisits { get; } = new List<DescriptorVisitToConstruction>();
         internal List<DescriptorConstruction> Constructions { get; } = new List<DescriptorConstruction>();
 
         // Существа
@@ -687,9 +692,9 @@ namespace Fantasy_Kingdoms_Battle
         internal Pen PenSelectedBorder { get; private set; }
 
         //
-        internal DescriptorConstructionVisit FindConstructionVisit(string ID)
+        internal DescriptorVisitToConstruction FindConstructionVisit(string ID)
         {
-            foreach (DescriptorConstructionVisit dcv in ConstructionsVisits)
+            foreach (DescriptorVisitToConstruction dcv in ConstructionsVisits)
             {
                 if (dcv.ID == ID)
                     return dcv;
@@ -1083,7 +1088,7 @@ namespace Fantasy_Kingdoms_Battle
             throw new Exception($"Текстура {id} не найдена.");
         }
 
-        internal void AddVisit(DescriptorConstructionVisit visit)
+        internal void AddVisit(DescriptorVisitToConstruction visit)
         {
             ConstructionsVisits.Add(visit);
         }

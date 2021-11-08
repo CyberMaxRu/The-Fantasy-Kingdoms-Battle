@@ -157,18 +157,26 @@ namespace Fantasy_Kingdoms_Battle
             XmlNode nodeEvents = n.SelectSingleNode("Events");
             if (nodeEvents != null)
             {
-                DescriptorConstructionEvent dcEvent;
+                DescriptorEventInConstruction dcEvent;
                 foreach (XmlNode l in nodeEvents.SelectNodes("Event"))
                 {
-                    dcEvent = new DescriptorConstructionEvent(this, l);
+                    dcEvent = new DescriptorEventInConstruction(this, l);
 
-                    foreach (DescriptorConstructionEvent dcEvent2 in Events)
+                    foreach (DescriptorEventInConstruction dcEvent2 in Events)
                     {
                         Debug.Assert(dcEvent2.ID != dcEvent.ID);
                     }
 
                     Events.Add(dcEvent);
                 }
+            }
+
+            // Загружаем информацию об улучшениях
+            XmlNode nodeImprovements = n.SelectSingleNode("Improvements");
+            if (nodeImprovements != null)
+            {
+                foreach (XmlNode l in nodeImprovements.SelectNodes("Improvement"))
+                    Improvements.Add(new DescriptorConstructionImprovement(this, l));
             }
 
             // Загружаем меню
@@ -279,7 +287,8 @@ namespace Fantasy_Kingdoms_Battle
         internal bool HasTreasury { get; }// Имеет собственную казну (Замок, гильдии, храмы)
         internal int GoldByConstruction { get; }// Количество золота в казне при постройке
         internal List<DescriptorConstructionExtension> Extensions { get; } = new List<DescriptorConstructionExtension>();
-        internal List<DescriptorConstructionEvent> Events { get; } = new List<DescriptorConstructionEvent>();
+        internal List<DescriptorEventInConstruction> Events { get; } = new List<DescriptorEventInConstruction>();
+        internal List<DescriptorConstructionImprovement> Improvements { get; } = new List<DescriptorConstructionImprovement>();
         internal List<DescriptorCellMenuForConstruction> ListResearches { get; } = new List<DescriptorCellMenuForConstruction>();
         internal DescriptorCellMenuForConstructionLevel[] Levels { get; }
 
@@ -313,7 +322,7 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorConstructionExtension ce in Extensions)
                 ce.TuneDeferredLinks();
 
-            foreach (DescriptorConstructionEvent ce in Events)
+            foreach (DescriptorEventInConstruction ce in Events)
                 ce.TuneDeferredLinks();
 
             foreach (DescriptorCellMenuForConstruction cm in ListResearches)
@@ -391,9 +400,9 @@ namespace Fantasy_Kingdoms_Battle
             return null;
         }
 
-        internal DescriptorConstructionEvent FindConstructionEvent(string IDEvent, bool mustBeExists = true)
+        internal DescriptorEventInConstruction FindConstructionEvent(string IDEvent, bool mustBeExists = true)
         {
-            foreach (DescriptorConstructionEvent dce in Events)
+            foreach (DescriptorEventInConstruction dce in Events)
             {
                 if (dce.ID == IDEvent)
                     return dce;

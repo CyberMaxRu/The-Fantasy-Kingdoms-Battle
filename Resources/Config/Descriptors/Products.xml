@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Descriptors>
+  <Product>
+    <ID>ProductCloseCombatCourse</ID>
+    <Entity>CloseCombatCourse</Entity>
+    <Cost>50</Cost>
+    <Quantity>2</Quantity>
+    <Duraion>0</Duraion>
+    <InternalRefresh>1</InternalRefresh>
+  </Product>
+</Descriptors>

@@ -19,7 +19,7 @@ namespace Fantasy_Kingdoms_Battle
             ModifyInterest = GetInteger(n, "Interest");
             ListNeeds = new ListNeeds(n.SelectSingleNode("Needs"));
 
-            foreach (DescriptorConstructionVisit cv in Config.ConstructionsVisits)
+            foreach (DescriptorVisitToConstruction cv in Config.ConstructionsVisits)
             {
                 Debug.Assert(cv.ID != ID);
                 Debug.Assert(cv.Name != Name);

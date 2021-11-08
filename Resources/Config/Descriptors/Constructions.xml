@@ -65,11 +65,11 @@
       <CellMenu>
         <Pos>3,1</Pos>
         <Type>Research</Type>
-        <Entity>CloseCombatCourse</Entity>
+        <Entity>ProductCloseCombatCourse</Entity>
+        <DaysProcessing>1</DaysProcessing>
         <Cost>
           <Gold>250</Gold>
         </Cost>
-        <DaysProcessing>1</DaysProcessing>
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
@@ -1592,6 +1592,32 @@
         </Requirements>
       </Level>
     </Levels>
+    <Improvements>
+      <Improvement>
+        <ID>ImproveForging</ID>
+        <Name>Улучшить проковку металла</Name>
+        <Description>Оружие и доспехи получают дополнительную прочность.</Description>
+        <ImageIndex>234</ImageIndex>
+      </Improvement>
+      <Improvement>
+        <ID>ImproveFounding</ID>
+        <Name>Улучшить технологию литья</Name>
+        <Description>Кузница может выпускать больше оружия и доспехов.</Description>
+        <ImageIndex>235</ImageIndex>
+      </Improvement>
+      <Improvement>
+        <ID>ImproveAnvil</ID>
+        <Name>Улучшить наковальни</Name>
+        <Description>- Кузница может выпускать больше оружия и доспехов.</Description>
+        <ImageIndex>236</ImageIndex>
+      </Improvement>
+      <Improvement>
+        <ID>ImproveSickle</ID>
+        <Name>Улучшить крестьянские орудия труда</Name>
+        <Description>- Увеличивает доход от крестьянских хозяйств.</Description>
+        <ImageIndex>237</ImageIndex>
+      </Improvement>
+    </Improvements>
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>

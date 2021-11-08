@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Diagnostics;
 using System.Drawing;
-using System.Deployment.Internal;
 using System.Windows.Forms;
 using static Fantasy_Kingdoms_Battle.XmlUtils;
 
@@ -78,6 +77,12 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Income >= 0);
             Debug.Assert(Cooldown >= 0);
 
+            XmlNode nodeProduct = n.SelectSingleNode("Product");
+            if (nodeProduct != null)
+            {
+                Product = new DescriptorProduct(nodeProduct);
+            }
+
             XmlNode next = n.SelectSingleNode("CellMenu");
             if (next != null)
             {
@@ -115,6 +120,7 @@ namespace Fantasy_Kingdoms_Battle
         internal TypeCellMenuForConstruction Type { get; }
         internal string NameEntity { get; set; }
         internal DescriptorEntity Entity { get; private set; }
+        internal DescriptorProduct Product { get; set; }
         internal int Income { get; }// Прибавление дохода
         internal int Cooldown { get; }
         internal DescriptorCellMenu NextCell { get; }
@@ -153,6 +159,8 @@ namespace Fantasy_Kingdoms_Battle
 
                 Debug.Assert(Entity != null);
             }
+
+            Product?.TuneDeferredLinks();
         }
     }
 
@@ -172,7 +180,7 @@ namespace Fantasy_Kingdoms_Battle
             XmlNode nv = n.SelectSingleNode("Visit");
             if (nv != null)
             {
-                DescriptorVisit = new DescriptorConstructionVisit(this, nv);
+                DescriptorVisit = new DescriptorVisitToConstruction(this, nv);
             }
 
             Extensions = new ListSmallEntity(forConstruction, n.SelectSingleNode("Entities"));
@@ -210,7 +218,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int GreatnessPerDay { get; }// Дает очков Величия в день
         internal int BuildersPerDay { get; }// Дает строителей в день
         internal ListSmallEntity Extensions { get; }// Сущности, относящиеся к уровню
-        internal DescriptorConstructionVisit DescriptorVisit { get;  }// Товар для посещения сооружения
+        internal DescriptorVisitToConstruction DescriptorVisit { get;  }// Товар для посещения сооружения
         internal ListDescriptorPerks ListPerks { get; }// Перки, которые дает уровень сооружения
 
         internal override void TuneDeferredLinks()

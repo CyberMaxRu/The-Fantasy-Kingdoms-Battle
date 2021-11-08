@@ -9,6 +9,14 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class ConstructionProduct : EntityForConstruction
     {
+        public ConstructionProduct(Construction construction, DescriptorEntityForCreature descriptor, int quantity, int cost, int duration) : base(construction)
+        {
+            Descriptor = descriptor;
+            QuantityPerDay = quantity;
+            Cost = cost;
+            Duration = duration;
+        }
+
         public ConstructionProduct(Construction construction, DescriptorAbility descriptor) : base(construction)
         {
             Debug.Assert(descriptor != null);
@@ -33,7 +41,7 @@ namespace Fantasy_Kingdoms_Battle
             Descriptor = descriptor;
         }
 
-        public ConstructionProduct(Construction construction, DescriptorConstructionEvent descriptor) : base(construction)
+        public ConstructionProduct(Construction construction, DescriptorEventInConstruction descriptor) : base(construction)
         {
             Debug.Assert(descriptor != null);
 
@@ -45,7 +53,7 @@ namespace Fantasy_Kingdoms_Battle
             Interest = descriptor.Interest;
         }
 
-        public ConstructionProduct(Construction construction, DescriptorConstructionVisit descriptor) : base(construction)
+        public ConstructionProduct(Construction construction, DescriptorVisitToConstruction descriptor) : base(construction)
         {
             Debug.Assert(descriptor != null);
 
@@ -54,16 +62,21 @@ namespace Fantasy_Kingdoms_Battle
             Interest = descriptor.Interest;
         }
 
-        internal new DescriptorProduct Descriptor { get; }
+        internal new DescriptorEntityForCreature Descriptor { get; }
         internal DescriptorAbility DescriptorAbility { get; }
         internal DescriptorItem DescriptorItem { get; }
         internal DescriptorGroupItems DescriptorGroupItem { get; }
-        internal DescriptorConstructionEvent DescriptorConstructionEvent { get; }
-        internal DescriptorConstructionVisit DescriptorConstructionVisit { get; }
+        internal DescriptorEventInConstruction DescriptorConstructionEvent { get; }
+        internal DescriptorVisitToConstruction DescriptorConstructionVisit { get; }
+        internal int QuantityPerDay { get; }// Количество товара в сооружении
         internal int Duration { get; private set; }// Длительность нахождения товара в сооружении
+        internal int Cost { get; }// Стоимость товара
+        internal int Interest { get; set; }// Интерес героев к сущности// !!! Удалить!!! брать из интереса товара
+
+    
+        internal int Quantity { get; set; }
         internal int Counter { get; set; }// Счетчик дней товара в сооружении
-        internal int Interest { get; set; }// Интерес героев к сущности
-        internal bool Enabled { get; set; } = true;// Товар доступен для продажи
+        internal bool Enabled { get; set; } = true;// Товар доступен для продажи// !!! Делать через 0 В количестве?!!!
 
         internal override int GetImageIndex()
         {
