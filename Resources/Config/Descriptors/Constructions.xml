@@ -74,7 +74,7 @@
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
-        <Entity>WarriorImpAttack</Entity>
+        <Entity>ProductWarriorImpAttack</Entity>
         <Cost>
           <Gold>200</Gold>
         </Cost>
@@ -90,7 +90,7 @@
       <CellMenu>
         <Pos>2,3</Pos>
         <Type>Research</Type>
-        <Entity>WarriorMaimAttack</Entity>
+        <Entity>ProductWarriorMaimAttack</Entity>
         <Cost>
           <Gold>500</Gold>
         </Cost>
@@ -106,7 +106,7 @@
       <CellMenu>
         <Pos>3,3</Pos>
         <Type>Research</Type>
-        <Entity>WarriorResistanceBuff</Entity>
+        <Entity>ProductWarriorResistanceBuff</Entity>
         <Cost>
           <Gold>500</Gold>
         </Cost>
@@ -186,7 +186,7 @@
       <CellMenu>
         <Pos>3,1</Pos>
         <Type>Research</Type>
-        <Entity>FittingClothes</Entity>
+        <Entity>ProductFittingClothes</Entity>
         <Cost>
           <Gold>250</Gold>
         </Cost>
@@ -195,7 +195,7 @@
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
-        <Entity>HunterImpAttack</Entity>
+        <Entity>ProductHunterImpAttack</Entity>
         <Cost>
           <Gold>200</Gold>
         </Cost>
@@ -211,7 +211,7 @@
       <CellMenu>
         <Pos>2,3</Pos>
         <Type>Research</Type>
-        <Entity>HunterStingShotAttack</Entity>
+        <Entity>ProductHunterStingShotAttack</Entity>
         <Cost>
           <Gold>1000</Gold>
         </Cost>
@@ -227,7 +227,7 @@
       <CellMenu>
         <Pos>3,3</Pos>
         <Type>Research</Type>
-        <Entity>HunterManaburnAttack</Entity>
+        <Entity>ProductHunterManaburnAttack</Entity>
         <Cost>
           <Gold>1000</Gold>
         </Cost>
@@ -307,7 +307,7 @@
       <CellMenu>
         <Pos>3,1</Pos>
         <Type>Research</Type>
-        <Entity>HolyWater</Entity>
+        <Entity>ProductHolyWater</Entity>
         <Cost>
           <Gold>250</Gold>
         </Cost>
@@ -316,7 +316,7 @@
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
-        <Entity>HolyAttack</Entity>
+        <Entity>ProductHolyAttack</Entity>
         <Cost>
           <Gold>200</Gold>
         </Cost>
@@ -332,7 +332,7 @@
       <CellMenu>
         <Pos>2,3</Pos>
         <Type>Research</Type>
-        <Entity>ClericManaRegenBuff</Entity>
+        <Entity>ProductClericManaRegenBuff</Entity>
         <Cost>
           <Gold>1000</Gold>
         </Cost>
@@ -348,7 +348,7 @@
       <CellMenu>
         <Pos>3,3</Pos>
         <Type>Research</Type>
-        <Entity>ClericKnockbackAttack</Entity>
+        <Entity>ProductClericKnockbackAttack</Entity>
         <Cost>
           <Gold>1000</Gold>
         </Cost>
@@ -456,7 +456,7 @@
       <CellMenu>
         <Pos>3,1</Pos>
         <Type>Research</Type>
-        <Entity>EnchantWeaponAttack</Entity>
+        <Entity>ProductEnchantWeaponAttack</Entity>
         <Cost>
           <Gold>300</Gold>
         </Cost>
@@ -465,7 +465,7 @@
       <CellMenu>
         <Pos>4,1</Pos>
         <Type>Research</Type>
-        <Entity>MageFireballAttack</Entity>
+        <Entity>ProductMageFireballAttack</Entity>
         <Cost>
           <Gold>200</Gold>
         </Cost>
@@ -474,7 +474,7 @@
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
-        <Entity>MageFreezeAttack</Entity>
+        <Entity>ProductMageFreezeAttack</Entity>
         <Cost>
           <Gold>500</Gold>
         </Cost>
@@ -490,7 +490,7 @@
       <CellMenu>
         <Pos>3,2</Pos>
         <Type>Research</Type>
-        <Entity>MageGuardianWind</Entity>
+        <Entity>ProductMageGuardianWind</Entity>
         <Cost>
           <Gold>750</Gold>
         </Cost>
@@ -522,7 +522,7 @@
       <CellMenu>
         <Pos>2,3</Pos>
         <Type>Research</Type>
-        <Entity>MageFirestormAttack</Entity>
+        <Entity>ProductMageFirestormAttack</Entity>
         <Cost>
           <Gold>2000</Gold>
         </Cost>
@@ -626,7 +626,7 @@
       <CellMenu>
         <Pos>3,1</Pos>
         <Type>Research</Type>
-        <Entity>ElvenSharpener</Entity>
+        <Entity>ProductElvenSharpener</Entity>
         <Cost>
           <Gold>250</Gold>
         </Cost>
@@ -635,7 +635,7 @@
       <CellMenu>
         <Pos>4,1</Pos>
         <Type>Research</Type>
-        <Entity>ElixirSpeed</Entity>
+        <Entity>ProductElixirSpeed</Entity>
         <Cost>
           <Gold>1500</Gold>
         </Cost>
@@ -644,7 +644,7 @@
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
-        <Entity>ElfImpAttack</Entity>
+        <Entity>ProductElfImpAttack</Entity>
         <Cost>
           <Gold>200</Gold>
         </Cost>
@@ -660,7 +660,7 @@
       <CellMenu>
         <Pos>3,2</Pos>
         <Type>Research</Type>
-        <Entity>ElfWine</Entity>
+        <Entity>ProductElfWine</Entity>
         <Cost>
           <Gold>1500</Gold>
         </Cost>
@@ -676,7 +676,7 @@
       <CellMenu>
         <Pos>2,3</Pos>
         <Type>Research</Type>
-        <Entity>ElfBuff</Entity>
+        <Entity>ProductElfBuff</Entity>
         <Cost>
           <Gold>200</Gold>
         </Cost>
@@ -692,7 +692,7 @@
       <CellMenu>
         <Pos>3,3</Pos>
         <Type>Research</Type>
-        <Entity>ElfMagicArrow</Entity>
+        <Entity>ProductElfMagicArrow</Entity>
         <Cost>
           <Gold>300</Gold>
         </Cost>
@@ -808,7 +808,7 @@
       <CellMenu>
         <Pos>3,1</Pos>
         <Type>Research</Type>
-        <Entity>SimpleRunes</Entity>
+        <Entity>ProductSimpleRunes</Entity>
         <Cost>
           <Gold>250</Gold>
         </Cost>
@@ -817,7 +817,7 @@
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
-        <Entity>DwarfImpAttack</Entity>
+        <Entity>ProductDwarfImpAttack</Entity>
         <Cost>
           <Gold>300</Gold>
         </Cost>
@@ -833,7 +833,7 @@
       <CellMenu>
         <Pos>3,2</Pos>
         <Type>Research</Type>
-        <Entity>DwarfBerserkBuff</Entity>
+        <Entity>ProductDwarfBerserkBuff</Entity>
         <Cost>
           <Gold>750</Gold>
         </Cost>
@@ -849,7 +849,7 @@
       <CellMenu>
         <Pos>4,2</Pos>
         <Type>Research</Type>
-        <Entity>DwarfBeer</Entity>
+        <Entity>ProductDwarfBeer</Entity>
         <Cost>
           <Gold>1000</Gold>
         </Cost>
@@ -870,7 +870,7 @@
       <CellMenu>
         <Pos>2,3</Pos>
         <Type>Research</Type>
-        <Entity>DwarfAntiBuildingAttack</Entity>
+        <Entity>ProductDwarfAntiBuildingAttack</Entity>
         <Cost>
           <Gold>500</Gold>
         </Cost>
@@ -1026,7 +1026,7 @@
       <CellMenu>
         <Pos>3,1</Pos>
         <Type>Research</Type>
-        <Entity>EnchantWeaponPoison</Entity>
+        <Entity>ProductEnchantWeaponPoison</Entity>
         <Cost>
           <Gold>300</Gold>
         </Cost>
@@ -1036,7 +1036,7 @@
         <Pos>4,1</Pos>
         <Pos>4,1</Pos>
         <Type>Research</Type>
-        <Entity>RoguePoisonAttack</Entity>
+        <Entity>ProductRoguePoisonAttack</Entity>
         <Cost>
           <Gold>200</Gold>
         </Cost>
@@ -1045,7 +1045,7 @@
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
-        <Entity>RogueImpAttack</Entity>
+        <Entity>ProductRogueImpAttack</Entity>
         <Cost>
           <Gold>500</Gold>
         </Cost>
@@ -1061,7 +1061,7 @@
       <CellMenu>
         <Pos>3,2</Pos>
         <Type>Research</Type>
-        <Entity>RogueKickAttack</Entity>
+        <Entity>ProductRogueKickAttack</Entity>
         <Cost>
           <Gold>500</Gold>
         </Cost>
@@ -1077,7 +1077,7 @@
       <CellMenu>
         <Pos>2,3</Pos>
         <Type>Research</Type>
-        <Entity>StunAttack</Entity>
+        <Entity>ProductStunAttack</Entity>
         <Cost>
           <Gold>1000</Gold>
         </Cost>
@@ -1447,7 +1447,7 @@
       <CellMenu>
         <Pos>2,1</Pos>
         <Type>Research</Type>
-        <Entity>Apple</Entity>
+        <Entity>ProductApple</Entity>
         <Cost>
           <Gold>250</Gold>
         </Cost>
@@ -1456,7 +1456,7 @@
       <CellMenu>
         <Pos>3,1</Pos>
         <Type>Research</Type>
-        <Entity>Wheat</Entity>
+        <Entity>ProductWheat</Entity>
         <Cost>
           <Gold>500</Gold>
         </Cost>
@@ -1465,7 +1465,7 @@
       <CellMenu>
         <Pos>4,1</Pos>
         <Type>Research</Type>
-        <Entity>Meat</Entity>
+        <Entity>ProductMeat</Entity>
         <Cost>
           <Gold>750</Gold>
         </Cost>
@@ -1474,7 +1474,7 @@
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
-        <Entity>GingerRoot</Entity>
+        <Entity>ProductGingerRoot</Entity>
         <Cost>
           <Gold>500</Gold>
         </Cost>
@@ -1490,7 +1490,7 @@
       <CellMenu>
         <Pos>3,2</Pos>
         <Type>Research</Type>
-        <Entity>Amanita</Entity>
+        <Entity>ProductAmanita</Entity>
         <Cost>
           <Gold>1000</Gold>
         </Cost>
@@ -1522,7 +1522,7 @@
       <CellMenu>
         <Pos>2,3</Pos>
         <Type>Research</Type>
-        <Entity>CornedBeef</Entity>
+        <Entity>ProductCornedBeef</Entity>
         <Cost>
           <Gold>1000</Gold>
         </Cost>
@@ -1622,7 +1622,7 @@
       <CellMenu>
         <Pos>2,1</Pos>
         <Type>Research</Type>
-        <Entity>ImproveAnvil</Entity>
+        <Entity>ProductImproveAnvil</Entity>
         <Cost>
           <Gold>500</Gold>
         </Cost>
@@ -1631,7 +1631,7 @@
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
-        <Entity>ImproveForging</Entity>
+        <Entity>ProductImproveForging</Entity>
         <Cost>
           <Gold>1500</Gold>
         </Cost>
@@ -1647,7 +1647,7 @@
       <CellMenu>
         <Pos>3,2</Pos>
         <Type>Research</Type>
-        <Entity>Sickle</Entity>
+        <Entity>ProductSickle</Entity>
         <Cost>
           <Gold>1000</Gold>
         </Cost>
@@ -1663,7 +1663,7 @@
       <CellMenu>
         <Pos>2,3</Pos>
         <Type>Research</Type>
-        <Entity>ImproveFounding</Entity>
+        <Entity>ProductImproveFounding</Entity>
         <Cost>
           <Gold>3000</Gold>
         </Cost>
@@ -1679,7 +1679,7 @@
       <CellMenu>
         <Pos>4,1</Pos>
         <Type>Research</Type>
-        <Entity>GroupArmourMetal1</Entity>
+        <Entity>ProductGroupArmourMetal1</Entity>
         <Cost>
           <Gold>250</Gold>
         </Cost>
@@ -1687,7 +1687,7 @@
         <CellMenu>
           <Pos>4,1</Pos>
           <Type>Research</Type>
-          <Entity>GroupArmourMetal2</Entity>
+          <Entity>ProductGroupArmourMetal2</Entity>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -1702,7 +1702,7 @@
           <CellMenu>
             <Pos>4,1</Pos>
             <Type>Research</Type>
-            <Entity>GroupArmourMetal3</Entity>
+            <Entity>ProductGroupArmourMetal3</Entity>
             <Cost>
               <Gold>3000</Gold>
             </Cost>
@@ -1717,7 +1717,7 @@
             <CellMenu>
               <Pos>4,1</Pos>
               <Type>Research</Type>
-              <Entity>GroupArmourMetal4</Entity>
+              <Entity>ProductGroupArmourMetal4</Entity>
               <Cost>
                 <Gold>3500</Gold>
               </Cost>
@@ -1741,7 +1741,7 @@
       <CellMenu>
         <Pos>4,2</Pos>
         <Type>Research</Type>
-        <Entity>GroupWeaponMelee1</Entity>
+        <Entity>ProductGroupWeaponMelee1</Entity>
         <Cost>
           <Gold>250</Gold>
         </Cost>
@@ -1749,7 +1749,7 @@
         <CellMenu>
           <Pos>4,2</Pos>
           <Type>Research</Type>
-          <Entity>GroupWeaponMelee2</Entity>
+          <Entity>ProductGroupWeaponMelee2</Entity>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -1764,7 +1764,7 @@
           <CellMenu>
             <Pos>4,2</Pos>
             <Type>Research</Type>
-            <Entity>GroupWeaponMelee3</Entity>
+            <Entity>ProductGroupWeaponMelee3</Entity>
             <Cost>
               <Gold>3000</Gold>
             </Cost>
@@ -1779,7 +1779,7 @@
             <CellMenu>
               <Pos>4,2</Pos>
               <Type>Research</Type>
-              <Entity>GroupWeaponMelee4</Entity>
+              <Entity>ProductGroupWeaponMelee4</Entity>
               <Cost>
                 <Gold>3500</Gold>
               </Cost>
@@ -1798,7 +1798,7 @@
       <CellMenu>
         <Pos>4,3</Pos>
         <Type>Research</Type>
-        <Entity>GroupArmourLeather1</Entity>
+        <Entity>ProductGroupArmourLeather1</Entity>
         <Cost>
           <Gold>250</Gold>
         </Cost>
@@ -1806,7 +1806,7 @@
         <CellMenu>
           <Pos>4,3</Pos>
           <Type>Research</Type>
-          <Entity>GroupArmourLeather2</Entity>
+          <Entity>ProductGroupArmourLeather2</Entity>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -1821,7 +1821,7 @@
           <CellMenu>
             <Pos>4,3</Pos>
             <Type>Research</Type>
-            <Entity>GroupArmourLeather3</Entity>
+            <Entity>ProductGroupArmourLeather3</Entity>
             <Cost>
               <Gold>3000</Gold>
             </Cost>
@@ -1836,7 +1836,7 @@
             <CellMenu>
               <Pos>4,3</Pos>
               <Type>Research</Type>
-              <Entity>GroupArmourLeather4</Entity>
+              <Entity>ProductGroupArmourLeather4</Entity>
               <Cost>
                 <Gold>3500</Gold>
               </Cost>
@@ -1968,7 +1968,7 @@
       <CellMenu>
         <Pos>2,1</Pos>
         <Type>Research</Type>
-        <Entity>TavernSoup</Entity>
+        <Entity>ProductTavernSoup</Entity>
         <Cost>
           <Gold>250</Gold>
         </Cost>
@@ -1977,7 +1977,7 @@
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
-        <Entity>TavernMeat</Entity>
+        <Entity>ProductTavernMeat</Entity>
         <Cost>
           <Gold>500</Gold>
         </Cost>
@@ -1998,7 +1998,7 @@
       <CellMenu>
         <Pos>3,2</Pos>
         <Type>Research</Type>
-        <Entity>TavernBeer</Entity>
+        <Entity>ProductTavernBeer</Entity>
         <Cost>
           <Gold>500</Gold>
         </Cost>
@@ -2105,7 +2105,7 @@
       <CellMenu>
         <Pos>2,1</Pos>
         <Type>Research</Type>
-        <Entity>AmuletOfRegeneration</Entity>
+        <Entity>ProductAmuletOfRegeneration</Entity>
         <Cost>
           <Gold>250</Gold>
         </Cost>
@@ -2114,7 +2114,7 @@
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
-        <Entity>RingOfProtection</Entity>
+        <Entity>ProductRingOfProtection</Entity>
         <Cost>
           <Gold>500</Gold>
         </Cost>
@@ -2130,7 +2130,7 @@
       <CellMenu>
         <Pos>2,3</Pos>
         <Type>Research</Type>
-        <Entity>ImpAmuletOfProtection</Entity>
+        <Entity>ProductImpAmuletOfProtection</Entity>
         <Cost>
           <Gold>1000</Gold>
         </Cost>
@@ -2146,7 +2146,7 @@
       <CellMenu>
         <Pos>3,1</Pos>
         <Type>Research</Type>
-        <Entity>Quiver</Entity>
+        <Entity>ProductQuiver</Entity>
         <Cost>
           <Gold>250</Gold>
         </Cost>
@@ -2155,7 +2155,7 @@
       <CellMenu>
         <Pos>3,2</Pos>
         <Type>Research</Type>
-        <Entity>SmallBag</Entity>
+        <Entity>ProductSmallBag</Entity>
         <Cost>
           <Gold>500</Gold>
         </Cost>
@@ -2171,7 +2171,7 @@
       <CellMenu>
         <Pos>4,1</Pos>
         <Type>Research</Type>
-        <Entity>GroupWeaponRange1</Entity>
+        <Entity>ProductGroupWeaponRange1</Entity>
         <Cost>
           <Gold>250</Gold>
         </Cost>
@@ -2179,7 +2179,7 @@
         <CellMenu>
           <Pos>4,1</Pos>
           <Type>Research</Type>
-          <Entity>GroupWeaponRange2</Entity>
+          <Entity>ProductGroupWeaponRange2</Entity>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -2194,7 +2194,7 @@
           <CellMenu>
             <Pos>4,1</Pos>
             <Type>Research</Type>
-            <Entity>GroupWeaponRange3</Entity>
+            <Entity>ProductGroupWeaponRange3</Entity>
             <Cost>
               <Gold>3000</Gold>
             </Cost>
@@ -2209,7 +2209,7 @@
             <CellMenu>
               <Pos>4,1</Pos>
               <Type>Research</Type>
-              <Entity>GroupWeaponRange4</Entity>
+              <Entity>ProductGroupWeaponRange4</Entity>
               <Cost>
                 <Gold>3500</Gold>
               </Cost>
@@ -2228,7 +2228,7 @@
       <CellMenu>
         <Pos>4,2</Pos>
         <Type>Research</Type>
-        <Entity>GroupArmourMage1</Entity>
+        <Entity>ProductGroupArmourMage1</Entity>
         <Cost>
           <Gold>250</Gold>
         </Cost>
@@ -2236,7 +2236,7 @@
         <CellMenu>
           <Pos>4,2</Pos>
           <Type>Research</Type>
-          <Entity>GroupArmourMage2</Entity>
+          <Entity>ProductGroupArmourMage2</Entity>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -2251,7 +2251,7 @@
           <CellMenu>
             <Pos>4,2</Pos>
             <Type>Research</Type>
-            <Entity>GroupArmourMage3</Entity>
+            <Entity>ProductGroupArmourMage3</Entity>
             <Cost>
               <Gold>3000</Gold>
             </Cost>
@@ -2266,7 +2266,7 @@
             <CellMenu>
               <Pos>4,2</Pos>
               <Type>Research</Type>
-              <Entity>GroupArmourMage4</Entity>
+              <Entity>ProductGroupArmourMage4</Entity>
               <Cost>
                 <Gold>3500</Gold>
               </Cost>
@@ -2285,7 +2285,7 @@
       <CellMenu>
         <Pos>4,3</Pos>
         <Type>Research</Type>
-        <Entity>GroupWeaponMage1</Entity>
+        <Entity>ProductGroupWeaponMage1</Entity>
         <Cost>
           <Gold>250</Gold>
         </Cost>
@@ -2293,7 +2293,7 @@
         <CellMenu>
           <Pos>4,3</Pos>
           <Type>Research</Type>
-          <Entity>GroupWeaponMage2</Entity>
+          <Entity>ProductGroupWeaponMage2</Entity>
           <Cost>
             <Gold>1000</Gold>
           </Cost>
@@ -2307,7 +2307,7 @@
           </Requirements>
           <CellMenu>
             <Pos>4,3</Pos>
-            <Type>Research</Type>
+            <Type>ProductResearch</Type>
             <Entity>GroupWeaponMage3</Entity>
             <Cost>
               <Gold>3000</Gold>
@@ -2323,7 +2323,7 @@
             <CellMenu>
               <Pos>4,3</Pos>
               <Type>Research</Type>
-              <Entity>GroupWeaponMage4</Entity>
+              <Entity>ProductGroupWeaponMage4</Entity>
               <Cost>
                 <Gold>3500</Gold>
               </Cost>
@@ -2386,7 +2386,7 @@
       <CellMenu>
         <Pos>2,1</Pos>
         <Type>Research</Type>
-        <Entity>PotionOfHealth</Entity>
+        <Entity>ProductPotionOfHealth</Entity>
         <Cost>
           <Gold>150</Gold>
         </Cost>
@@ -2395,7 +2395,7 @@
       <CellMenu>
         <Pos>3,1</Pos>
         <Type>Research</Type>
-        <Entity>PotionOfMana</Entity>
+        <Entity>ProductPotionOfMana</Entity>
         <Cost>
           <Gold>300</Gold>
         </Cost>
@@ -2413,7 +2413,7 @@
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
-        <Entity>ElixirMeleeProt</Entity>
+        <Entity>ProductElixirMeleeProt</Entity>
         <Cost>
           <Gold>1000</Gold>
         </Cost>
@@ -2429,7 +2429,7 @@
       <CellMenu>
         <Pos>3,2</Pos>
         <Type>Research</Type>
-        <Entity>ElixirRangeProt</Entity>
+        <Entity>ProductElixirRangeProt</Entity>
         <Cost>
           <Gold>1000</Gold>
         </Cost>
@@ -2445,7 +2445,7 @@
       <CellMenu>
         <Pos>4,2</Pos>
         <Type>Research</Type>
-        <Entity>ElixirMagicProt</Entity>
+        <Entity>ProductElixirMagicProt</Entity>
         <Cost>
           <Gold>1000</Gold>
         </Cost>
@@ -2461,7 +2461,7 @@
       <CellMenu>
         <Pos>2,3</Pos>
         <Type>Research</Type>
-        <Entity>ElixirStrength</Entity>
+        <Entity>ProductElixirStrength</Entity>
         <Cost>
           <Gold>2000</Gold>
         </Cost>
@@ -2477,7 +2477,7 @@
       <CellMenu>
         <Pos>3,3</Pos>
         <Type>Research</Type>
-        <Entity>ElixirAccuracy</Entity>
+        <Entity>ProductElixirAccuracy</Entity>
         <Cost>
           <Gold>2000</Gold>
         </Cost>
@@ -2493,7 +2493,7 @@
       <CellMenu>
         <Pos>4,3</Pos>
         <Type>Research</Type>
-        <Entity>ElixirWisdom</Entity>
+        <Entity>ProductElixirWisdom</Entity>
         <Cost>
           <Gold>2000</Gold>
         </Cost>
@@ -2885,7 +2885,7 @@
       <CellMenu>
         <Pos>3,2</Pos>
         <Type>Research</Type>
-        <Entity>LuckyCoins</Entity>
+        <Entity>ProductLuckyCoins</Entity>
         <Cost>
           <Gold>500</Gold>
         </Cost>
@@ -2917,7 +2917,7 @@
       <CellMenu>
         <Pos>3,3</Pos>
         <Type>Research</Type>
-        <Entity>Herald</Entity>
+        <Entity>ProductHerald</Entity>
         <Cost>
           <Gold>1000</Gold>
         </Cost>
@@ -3166,7 +3166,7 @@
       <CellMenu>
         <Pos>2,1</Pos>
         <Type>Research</Type>
-        <Entity>HospitalHerbs</Entity>
+        <Entity>ProductHospitalHerbs</Entity>
         <Cost>
           <Gold>500</Gold>
         </Cost>
@@ -3175,7 +3175,7 @@
       <CellMenu>
         <Pos>3,1</Pos>
         <Type>Research</Type>
-        <Entity>HospitalHealthPotion</Entity>
+        <Entity>ProductHospitalHealthPotion</Entity>
         <Cost>
           <Gold>1000</Gold>
         </Cost>
@@ -3184,7 +3184,7 @@
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
-        <Entity>ElixirAntipoison</Entity>
+        <Entity>ProductElixirAntipoison</Entity>
         <Cost>
           <Gold>500</Gold>
         </Cost>
@@ -3200,7 +3200,7 @@
       <CellMenu>
         <Pos>3,2</Pos>
         <Type>Research</Type>
-        <Entity>ElixirRegeneration</Entity>
+        <Entity>ProductElixirRegeneration</Entity>
         <Cost>
           <Gold>1000</Gold>
         </Cost>
@@ -3216,7 +3216,7 @@
       <CellMenu>
         <Pos>2,3</Pos>
         <Type>Research</Type>
-        <Entity>HospitalPowerTherapy</Entity>
+        <Entity>ProductHospitalPowerTherapy</Entity>
         <Cost>
           <Gold>2500</Gold>
         </Cost>
@@ -4662,7 +4662,7 @@
         <Pos>2,1</Pos>
         <Type>Research</Type>
         <Type>Research</Type>
-        <Entity>WolfInMenagerie</Entity>
+        <Entity>ProductWolfInMenagerie</Entity>
         <Cost>
           <Gold>500</Gold>
         </Cost>
@@ -4678,7 +4678,7 @@
       <CellMenu>
         <Pos>3,1</Pos>
         <Type>Research</Type>
-        <Entity>BearInMenagerie</Entity>
+        <Entity>ProductBearInMenagerie</Entity>
         <Cost>
           <Gold>1000</Gold>
         </Cost>
@@ -4699,7 +4699,7 @@
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
-        <Entity>SerpentInMenagerie</Entity>
+        <Entity>ProductSerpentInMenagerie</Entity>
         <Cost>
           <Gold>750</Gold>
         </Cost>
@@ -4720,7 +4720,7 @@
       <CellMenu>
         <Pos>2,3</Pos>
         <Type>Research</Type>
-        <Entity>DragonInMenagerie</Entity>
+        <Entity>ProductDragonInMenagerie</Entity>
         <Cost>
           <Gold>5000</Gold>
         </Cost>
@@ -4832,7 +4832,7 @@
       <CellMenu>
         <Pos>2,1</Pos>
         <Type>Research</Type>
-        <Entity>PlayingLotto</Entity>
+        <Entity>ProductPlayingLotto</Entity>
         <Cost>
           <Gold>500</Gold>
         </Cost>
@@ -4842,7 +4842,7 @@
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Research</Type>
-        <Entity>Dice</Entity>
+        <Entity>ProductDice</Entity>
         <Cost>
           <Gold>1000</Gold>
         </Cost>
@@ -4859,7 +4859,7 @@
       <CellMenu>
         <Pos>4,2</Pos>
         <Type>Research</Type>
-        <Entity>Cider</Entity>
+        <Entity>ProductCider</Entity>
         <Cost>
           <Gold>500</Gold>
         </Cost>
@@ -4881,7 +4881,7 @@
       <CellMenu>
         <Pos>2,3</Pos>
         <Type>Research</Type>
-        <Entity>PlayingCards</Entity>
+        <Entity>ProductPlayingCards</Entity>
         <Cost>
           <Gold>1500</Gold>
         </Cost>

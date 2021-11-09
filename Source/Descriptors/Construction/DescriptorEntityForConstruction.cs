@@ -15,6 +15,7 @@ namespace Fantasy_Kingdoms_Battle
         public DescriptorEntityForConstruction(DescriptorConstruction descriptor, XmlNode n) : base(n)
         {
             Descriptor = descriptor;
+            DescriptorProduct
         }
 
         internal DescriptorConstruction Descriptor { get; private set; }

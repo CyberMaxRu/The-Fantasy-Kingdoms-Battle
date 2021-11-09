@@ -534,7 +534,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<DescriptorBaseResource> BaseResources { get; } = new List<DescriptorBaseResource>();
 
         // Товары в сооружениях
-        internal List<DescriptorConstructionProduct> ConstructionProducts { get; } = new List<DescriptorConstructionProduct>();
+        internal List<DescriptorProduct> ConstructionProducts { get; } = new List<DescriptorProduct>();
 
         // Сооружения
         internal List<DescriptorTypeConstruction> TypeConstructions { get; } = new List<DescriptorTypeConstruction>();

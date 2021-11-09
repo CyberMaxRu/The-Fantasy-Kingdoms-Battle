@@ -60,14 +60,15 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Source\Descriptors\Construction\DescriptorCellMenuForConstruction.cs" />
     <Compile Include="Source\Descriptors\Construction\DescriptorConstructionImprovement.cs" />
     <Compile Include="Source\Descriptors\Construction\DescriptorEntityForConstruction.cs" />
     <Compile Include="Source\Descriptors\Creature\DescriptorEntityForCreature.cs" />
     <Compile Include="Source\Descriptors\DescriptorBaseResource.cs" />
     <Compile Include="Source\Descriptors\Construction\DescriptorConstructionExtension.cs" />
-    <Compile Include="Source\Descriptors\Creature\DescriptorVisitToConstruction.cs" />
+    <Compile Include="Source\Descriptors\Construction\DescriptorVisitToConstruction.cs" />
     <Compile Include="Source\Descriptors\Creature\DescriptorCreatureTypeInterest.cs" />
-    <Compile Include="Source\Descriptors\Creature\DescriptorEventInConstruction.cs" />
+    <Compile Include="Source\Descriptors\Construction\DescriptorEventInConstruction.cs" />
     <Compile Include="Source\Descriptors\Construction\DescriptorTypeConstruction.cs" />
     <Compile Include="Source\Descriptors\Creature\DescriptorNeed.cs" />
     <Compile Include="Source\Descriptors\Creature\DescriptorPoison.cs" />
@@ -95,7 +96,7 @@
     <Compile Include="Source\Lobby\Location.cs" />
     <Compile Include="Source\Lobby\Perk.cs" />
     <Compile Include="Source\Lobby\ListBaseResources.cs" />
-    <Compile Include="Source\Lobby\DescriptorProduct.cs" />
+    <Compile Include="Source\Descriptors\DescriptorProduct.cs" />
     <Compile Include="Source\Lobby\SecondarySkill.cs" />
     <Compile Include="Source\Lobby\SmallEntity.cs" />
     <Compile Include="Source\Lobby\Specialization.cs" />
