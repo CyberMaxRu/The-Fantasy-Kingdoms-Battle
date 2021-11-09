@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Diagnostics;
-using System.Xml;
-using static Fantasy_Kingdoms_Battle.XmlUtils;   
+﻿using System.Xml;
 
 
 namespace Fantasy_Kingdoms_Battle
@@ -15,9 +8,8 @@ namespace Fantasy_Kingdoms_Battle
         public DescriptorEntityForConstruction(DescriptorConstruction descriptor, XmlNode n) : base(n)
         {
             Descriptor = descriptor;
-            DescriptorProduct
         }
 
-        internal DescriptorConstruction Descriptor { get; private set; }
+        internal DescriptorConstruction Descriptor { get; }
     }
 }
