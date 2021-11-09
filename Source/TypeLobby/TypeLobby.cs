@@ -202,7 +202,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             foreach (TypeLobbyLocationSettings ls in Locations)
             {
-                ls.TuneDeferredLinks();
+                ls.TuneLinks();
             }
         }
     }

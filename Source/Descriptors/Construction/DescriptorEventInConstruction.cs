@@ -44,9 +44,9 @@ namespace Fantasy_Kingdoms_Battle
         internal string NameGoods { get; }// Наименование мероприятия-товара
         internal ListNeeds ListNeeds { get; }
 
-        internal override void TuneDeferredLinks()
+        internal override void TuneLinks()
         {
-            base.TuneDeferredLinks();
+            base.TuneLinks();
 
             ListNeeds.TuneDeferredLinks();
             Debug.Assert(ListNeeds.Count > 0);

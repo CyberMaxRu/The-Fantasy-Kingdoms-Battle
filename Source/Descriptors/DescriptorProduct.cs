@@ -35,9 +35,9 @@ namespace Fantasy_Kingdoms_Battle
         internal int Duration { get; }
         internal int InternalRefresh { get; }
 
-        internal override void TuneDeferredLinks()
+        internal override void TuneLinks()
         {
-            base.TuneDeferredLinks();
+            base.TuneLinks();
 
             Descriptor = Config.FindAbility(nameEntity, false);
             if (Descriptor is null)

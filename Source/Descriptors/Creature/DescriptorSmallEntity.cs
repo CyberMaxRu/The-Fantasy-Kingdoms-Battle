@@ -45,9 +45,9 @@ namespace Fantasy_Kingdoms_Battle
         protected override int ShiftImageIndex() => Config.ImageIndexFirstItems;
         protected virtual bool ForHeroes() => true;
 
-        internal override void TuneDeferredLinks()
+        internal override void TuneLinks()
         {
-            base.TuneDeferredLinks();
+            base.TuneLinks();
 
             if (ForHeroes())
             {

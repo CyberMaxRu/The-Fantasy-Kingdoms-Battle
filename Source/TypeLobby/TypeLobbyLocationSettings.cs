@@ -89,9 +89,9 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorConstruction DefaultConstruction { get; private set; }
         internal List<TypeLobbyLairSettings> LairsSettings { get; } = new List<TypeLobbyLairSettings>();// Настройки типов логов для слоя
 
-        internal override void TuneDeferredLinks()
+        internal override void TuneLinks()
         {
-            base.TuneDeferredLinks();
+            base.TuneLinks();
 
             TypeLandscape = FormMain.Config.FindTypeLandscape(nameTypeLandscape);
             nameTypeLandscape = "";

@@ -300,9 +300,9 @@ namespace Fantasy_Kingdoms_Battle
             return CarryItems.ContainsKey(i) ? CarryItems[i] : 0;
         }
 
-        internal override void TuneDeferredLinks()
+        internal override void TuneLinks()
         {
-            base.TuneDeferredLinks();
+            base.TuneLinks();
 
             if (nameFromTypeHero.Length > 0)
                 NameFromTypeHero = FormMain.Config.FindCreature(nameFromTypeHero);
@@ -349,7 +349,7 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (PriorityConstructionForShopping pc in PriorityConstructionForShoppings)
             {
-                pc.TuneDeferredLinks();
+                pc.TuneLinks();
             }
 
             /*foreach (Ability a in Abilities)
@@ -379,9 +379,9 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorConstruction Descriptor { get; private set; }
         internal PriorityBuy Priority { get; }
 
-        internal override void TuneDeferredLinks()
+        internal override void TuneLinks()
         {
-            base.TuneDeferredLinks();
+            base.TuneLinks();
 
             Descriptor = Config.FindConstruction(nameConstruction);
             nameConstruction = "";

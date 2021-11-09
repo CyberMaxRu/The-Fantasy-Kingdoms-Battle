@@ -47,9 +47,9 @@ namespace Fantasy_Kingdoms_Battle
             level = requiredLevel;
         }
 
-        internal override void TuneDeferredLinks()
+        internal override void TuneLinks()
         {
-            base.TuneDeferredLinks();
+            base.TuneLinks();
 
             construction = Config.FindConstruction(nameConstruction);
             nameConstruction = "";
@@ -87,9 +87,9 @@ namespace Fantasy_Kingdoms_Battle
             return new TextRequirement(CheckRequirement(p), $"Разрушить {construction.Name}: {p.LairsDestroyed(construction)}/{destroyed}");
         }
 
-        internal override void TuneDeferredLinks()
+        internal override void TuneLinks()
         {
-            base.TuneDeferredLinks();
+            base.TuneLinks();
 
             construction = Config.FindConstruction(nameConstruction);
             nameConstruction = "";
@@ -118,9 +118,9 @@ namespace Fantasy_Kingdoms_Battle
             return p.TypeConstructionBuilded(typeConstruction) >= quantity;
         }
 
-        internal override void TuneDeferredLinks()
+        internal override void TuneLinks()
         {
-            base.TuneDeferredLinks();
+            base.TuneLinks();
 
             typeConstruction = Config.FindTypeConstruction(nameTypeConstruction);
             nameTypeConstruction = "";
@@ -149,9 +149,9 @@ namespace Fantasy_Kingdoms_Battle
         internal override bool CheckRequirement(Player p) => p.FindConstruction(construction.ID).GoodsAvailabled(goods);        
         internal override TextRequirement GetTextRequirement(Player p) => new TextRequirement(CheckRequirement(p), $"{goods.Name} ({construction.Name})");
 
-        internal override void TuneDeferredLinks()
+        internal override void TuneLinks()
         {
-            base.TuneDeferredLinks();
+            base.TuneLinks();
 
             construction = Config.FindConstruction(nameConstruction);
             goods = Config.FindItem(nameGoods);
@@ -197,9 +197,9 @@ namespace Fantasy_Kingdoms_Battle
             return p.FindConstruction(Construction.ID).ExtensionAvailabled(Extension);
         }
 
-        internal override void TuneDeferredLinks()
+        internal override void TuneLinks()
         {
-            base.TuneDeferredLinks();
+            base.TuneLinks();
 
             Construction = Config.FindConstruction(nameConstruction);
             Extension = Construction.FindExtension(nameExtension, true);

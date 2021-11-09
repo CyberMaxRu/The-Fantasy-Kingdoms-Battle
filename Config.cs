@@ -456,61 +456,61 @@ namespace Fantasy_Kingdoms_Battle
 
             // Настраиваем связи
             foreach (DescriptorTypeLandscape tl in TypeLandscapes)
-                tl.TuneDeferredLinks();
+                tl.TuneLinks();
 
             foreach (DescriptorPoison p in Poisons)
-                p.TuneDeferredLinks();
+                p.TuneLinks();
 
             foreach (DescriptorTypeAbility ta in TypeAbilities)
-                ta.TuneDeferredLinks();
+                ta.TuneLinks();
 
             foreach (DescriptorAbility a in Abilities)
-                a.TuneDeferredLinks();
+                a.TuneLinks();
 
             foreach (DescriptorSpecialization s in Specializations)
-                s.TuneDeferredLinks();
+                s.TuneLinks();
 
             foreach (DescriptorSecondarySkill ss in SecondarySkills)
-                ss.TuneDeferredLinks();
+                ss.TuneLinks();
 
             foreach (DescriptorResource dr in Resources)
-                dr.TuneDeferredLinks();
+                dr.TuneLinks();
 
             foreach (DescriptorItem i in Items)
-                i.TuneDeferredLinks();
+                i.TuneLinks();
 
             foreach (DescriptorGroupItems i in GroupItems)
-                i.TuneDeferredLinks();
+                i.TuneLinks();
 
             foreach (DescriptorPropertyCreature pc in PropertiesCreature)
-                pc.TuneDeferredLinks();
+                pc.TuneLinks();
 
             foreach (DescriptorNeed pc in NeedsCreature)
-                pc.TuneDeferredLinks();
+                pc.TuneLinks();
 
             foreach (DescriptorCreature tc in Creatures)
-                tc.TuneDeferredLinks();
+                tc.TuneLinks();
 
             foreach (DescriptorBaseResource br in BaseResources)
-                br.TuneDeferredLinks();
+                br.TuneLinks();
 
             foreach (DescriptorTypeConstruction tc in TypeConstructions)
-                tc.TuneDeferredLinks();
+                tc.TuneLinks();
 
             foreach (DescriptorVisitToConstruction cv in ConstructionsVisits)
-                cv.TuneDeferredLinks();
+                cv.TuneLinks();
 
             foreach (DescriptorConstruction c in Constructions)
-                c.TuneDeferredLinks();
+                c.TuneLinks();
 
             foreach (TypeLobby tl in TypeLobbies)
                 tl.TuneDeferredLinks();
 
             foreach (DescriptorItem i in Items)
-                i.AfterTune();
+                i.AfterTuneLinks();
 
             foreach (DescriptorConstruction c in Constructions)
-                c.AfterTune();
+                c.AfterTuneLinks();
 
             // Вспомогательные методы
             XmlDocument CreateXmlDocument(string pathToXml)

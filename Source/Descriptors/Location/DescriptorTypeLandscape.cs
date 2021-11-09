@@ -42,9 +42,9 @@ namespace Fantasy_Kingdoms_Battle
         internal string NameTexture { get; }
         internal List<DescriptorConstruction> Elements { get; } = new List<DescriptorConstruction>();
 
-        internal override void TuneDeferredLinks()
+        internal override void TuneLinks()
         {
-            base.TuneDeferredLinks();
+            base.TuneLinks();
 
             foreach (string name in nameElements)
             {

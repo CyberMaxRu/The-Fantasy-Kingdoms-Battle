@@ -40,9 +40,9 @@ namespace Fantasy_Kingdoms_Battle
             return 0;
         }
 
-        internal override void TuneDeferredLinks()
+        internal override void TuneLinks()
         {
-            base.TuneDeferredLinks();
+            base.TuneLinks();
 
             ListNeeds.TuneDeferredLinks();
             Debug.Assert(ListNeeds.Count > 0);

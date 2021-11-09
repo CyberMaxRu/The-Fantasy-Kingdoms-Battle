@@ -51,12 +51,12 @@ namespace Fantasy_Kingdoms_Battle
         internal int DaysProcessing { get; }// Количество дней для реализации действия
         internal List<Requirement> Requirements { get; } = new List<Requirement>();// Список требований
 
-        internal override void TuneDeferredLinks()
+        internal override void TuneLinks()
         {
-            base.TuneDeferredLinks();
+            base.TuneLinks();
 
             foreach (Requirement r in Requirements)
-                r.TuneDeferredLinks();
+                r.TuneLinks();
         }
     }
 

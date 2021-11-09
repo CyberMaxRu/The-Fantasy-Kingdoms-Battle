@@ -145,9 +145,9 @@ namespace Fantasy_Kingdoms_Battle
 
         }*/
 
-        internal override void TuneDeferredLinks()
+        internal override void TuneLinks()
         {
-            base.TuneDeferredLinks();
+            base.TuneLinks();
 
             if (nameGroupItem.Length > 0)
             {
@@ -160,9 +160,9 @@ namespace Fantasy_Kingdoms_Battle
             ListNeeds.TuneDeferredLinks();
         }
 
-        internal override void AfterTune()
+        internal override void AfterTuneLinks()
         {
-            base.AfterTune();
+            base.AfterTuneLinks();
 
             if (UseForResearch.Count > 0)
             {

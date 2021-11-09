@@ -28,9 +28,9 @@ namespace Fantasy_Kingdoms_Battle
         internal string ShortName { get; }//
         internal List<DescriptorItem> Items { get; } = new List<DescriptorItem>();
         
-        internal override void TuneDeferredLinks()
+        internal override void TuneLinks()
         {
-            base.TuneDeferredLinks();
+            base.TuneLinks();
 
             // Проверяем, что списки доступных героев в списках группы и у предметов совпадают
             if (AvailableForAllHeroes)

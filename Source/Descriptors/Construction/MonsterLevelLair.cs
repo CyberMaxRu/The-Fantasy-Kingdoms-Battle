@@ -42,9 +42,9 @@ namespace Fantasy_Kingdoms_Battle
         internal int QuantityRespawn { get; }
         internal List<Monster> Monsters { get; } = new List<Monster>();
 
-        internal override void TuneDeferredLinks()
+        internal override void TuneLinks()
         {
-            base.TuneDeferredLinks();
+            base.TuneLinks();
 
             Monster = Config.FindCreature(idMonster);
             idMonster = "";

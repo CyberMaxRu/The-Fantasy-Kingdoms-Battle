@@ -306,9 +306,9 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.PlaySoundSelect(uriSoundSelect);
         }
 
-        internal override void TuneDeferredLinks()
+        internal override void TuneLinks()
         {
-            base.TuneDeferredLinks();
+            base.TuneLinks();
 
             /*if (Levels != null)
             {
@@ -320,17 +320,17 @@ namespace Fantasy_Kingdoms_Battle
             }*/
 
             foreach (DescriptorConstructionExtension ce in Extensions)
-                ce.TuneDeferredLinks();
+                ce.TuneLinks();
 
             foreach (DescriptorEventInConstruction ce in Events)
-                ce.TuneDeferredLinks();
+                ce.TuneLinks();
 
             foreach (DescriptorCellMenuForConstruction cm in ListResearches)
-                cm.TuneDeferredLinks();
+                cm.TuneLinks();
 
             foreach (MonsterLevelLair mll in Monsters)
             {
-                mll.TuneDeferredLinks();
+                mll.TuneLinks();
 
                 // Проверяем, что тип монстра не повторяется
                 foreach (MonsterLevelLair mlev in Monsters)
@@ -348,12 +348,12 @@ namespace Fantasy_Kingdoms_Battle
                 ListResearches.Remove(Levels[1]);
         }
 
-        internal override void AfterTune()
+        internal override void AfterTuneLinks()
         {
-            base.AfterTune();
+            base.AfterTuneLinks();
 
             foreach (DescriptorConstructionExtension ce in Extensions)
-                ce.AfterTune();
+                ce.AfterTuneLinks();
         }
 
         internal string GetTextConstructionNotBuilded()

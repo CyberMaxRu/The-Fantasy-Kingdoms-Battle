@@ -52,9 +52,9 @@ namespace Fantasy_Kingdoms_Battle
 
         internal ParamSecondSkill[] Levels { get; } = new ParamSecondSkill[(int)LevelSecondSkill.Expert + 1];
 
-        internal override void TuneDeferredLinks()
+        internal override void TuneLinks()
         {
-            base.TuneDeferredLinks();
+            base.TuneLinks();
         }
 
         /*protected override void DoPrepareHint()

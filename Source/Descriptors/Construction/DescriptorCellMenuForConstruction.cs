@@ -76,9 +76,9 @@ namespace Fantasy_Kingdoms_Battle
         internal int Cooldown { get; }
         internal DescriptorCellMenu NextCell { get; }
 
-        internal override void TuneDeferredLinks()
+        internal override void TuneLinks()
         {
-            base.TuneDeferredLinks();
+            base.TuneLinks();
 
             if ((NameEntity != null) && (Type != TypeCellMenuForConstruction.Extra))
             {
@@ -111,7 +111,7 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(Entity != null);
             }
 
-            Product?.TuneDeferredLinks();
+            Product?.TuneLinks();
         }
     }
 
@@ -172,9 +172,9 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorVisitToConstruction DescriptorVisit { get; }// Товар для посещения сооружения
         internal ListDescriptorPerks ListPerks { get; }// Перки, которые дает уровень сооружения
 
-        internal override void TuneDeferredLinks()
+        internal override void TuneLinks()
         {
-            base.TuneDeferredLinks();
+            base.TuneLinks();
 
             Extensions.TuneDeferredLinks();
             ListPerks.TuneDeferredLinks();
