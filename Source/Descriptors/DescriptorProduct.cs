@@ -44,10 +44,8 @@ namespace Fantasy_Kingdoms_Battle
                 Descriptor = Config.FindItem(nameEntity, false);
             if (Descriptor is null)
                 Descriptor = Config.FindGroupItem(nameEntity, false);
-            if (Descriptor is null)
-                Descriptor = Config.Find(nameEntity, false);
 
-            Debug.Assert(Descriptor != null;
+            Debug.Assert(Descriptor != null);
         }
     }
 }
