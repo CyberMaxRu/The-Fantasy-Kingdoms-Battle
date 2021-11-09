@@ -29,14 +29,14 @@ namespace Fantasy_Kingdoms_Battle
             CheckData();
         }
 
-        internal string ID { get; }// Уникальный (в пределах списка) код типа объекта
-        internal string Name { get => name; set { name = value; CheckData(); } }// Наименование типа объекта
+        internal string ID { get; }// Уникальный код сущности
+        internal string Name { get => name; set { name = value; CheckData(); } }// Наименование сущности
         
         private void CheckData()
         {
             Debug.Assert(ID.Length > 0);
             Debug.Assert(Name.Length > 0);
-            //Debug.Assert(Name.Length <= Config.MaxLengthObjectName);
+            Debug.Assert(Name.Length <= Config.MaxLengthObjectName);
         }
     }
 }
