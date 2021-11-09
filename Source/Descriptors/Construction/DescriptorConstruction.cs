@@ -157,12 +157,12 @@ namespace Fantasy_Kingdoms_Battle
             XmlNode nodeEvents = n.SelectSingleNode("Events");
             if (nodeEvents != null)
             {
-                DescriptorEventInConstruction dcEvent;
+                DescriptorConstructionEvent dcEvent;
                 foreach (XmlNode l in nodeEvents.SelectNodes("Event"))
                 {
-                    dcEvent = new DescriptorEventInConstruction(this, l);
+                    dcEvent = new DescriptorConstructionEvent(this, l);
 
-                    foreach (DescriptorEventInConstruction dcEvent2 in Events)
+                    foreach (DescriptorConstructionEvent dcEvent2 in Events)
                     {
                         Debug.Assert(dcEvent2.ID != dcEvent.ID);
                     }
@@ -177,6 +177,24 @@ namespace Fantasy_Kingdoms_Battle
             {
                 foreach (XmlNode l in nodeImprovements.SelectNodes("Improvement"))
                     Improvements.Add(new DescriptorConstructionImprovement(this, l));
+            }
+
+            // Загружаем информацию о товарах
+            XmlNode np = n.SelectSingleNode("Products");
+            if (np != null)
+            {
+                DescriptorProduct dp;
+                foreach (XmlNode l in np.SelectNodes("Product"))
+                {
+                    dp = new DescriptorProduct(this, l);
+
+                    foreach (DescriptorProduct dp2 in Products)
+                    {
+                        Debug.Assert(dp2.ID != dp.ID);
+                    }
+
+                    Products.Add(dp);
+                }
             }
 
             // Загружаем меню
@@ -286,8 +304,9 @@ namespace Fantasy_Kingdoms_Battle
         internal bool PlayerCanBuild { get; }// Игрок может строить сооружение
         internal bool HasTreasury { get; }// Имеет собственную казну (Замок, гильдии, храмы)
         internal int GoldByConstruction { get; }// Количество золота в казне при постройке
+        internal List<DescriptorProduct> Products { get; } = new List<DescriptorProduct>();
         internal List<DescriptorConstructionExtension> Extensions { get; } = new List<DescriptorConstructionExtension>();
-        internal List<DescriptorEventInConstruction> Events { get; } = new List<DescriptorEventInConstruction>();
+        internal List<DescriptorConstructionEvent> Events { get; } = new List<DescriptorConstructionEvent>();
         internal List<DescriptorConstructionImprovement> Improvements { get; } = new List<DescriptorConstructionImprovement>();
         internal List<DescriptorCellMenuForConstruction> ListResearches { get; } = new List<DescriptorCellMenuForConstruction>();
         internal DescriptorCellMenuForConstructionLevel[] Levels { get; }
@@ -319,10 +338,13 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }*/
 
+            foreach (DescriptorProduct dp in Products)
+                dp.TuneLinks();
+
             foreach (DescriptorConstructionExtension ce in Extensions)
                 ce.TuneLinks();
 
-            foreach (DescriptorEventInConstruction ce in Events)
+            foreach (DescriptorConstructionEvent ce in Events)
                 ce.TuneLinks();
 
             foreach (DescriptorCellMenuForConstruction cm in ListResearches)
@@ -400,9 +422,9 @@ namespace Fantasy_Kingdoms_Battle
             return null;
         }
 
-        internal DescriptorEventInConstruction FindConstructionEvent(string IDEvent, bool mustBeExists = true)
+        internal DescriptorConstructionEvent FindConstructionEvent(string IDEvent, bool mustBeExists = true)
         {
-            foreach (DescriptorEventInConstruction dce in Events)
+            foreach (DescriptorConstructionEvent dce in Events)
             {
                 if (dce.ID == IDEvent)
                     return dce;

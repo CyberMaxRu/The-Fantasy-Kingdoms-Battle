@@ -27,7 +27,9 @@ namespace Fantasy_Kingdoms_Battle
 
         internal string ShortName { get; }//
         internal List<DescriptorItem> Items { get; } = new List<DescriptorItem>();
-        
+
+        internal override string GetTypeEntity() => "Группа предметов";
+
         internal override void TuneLinks()
         {
             base.TuneLinks();

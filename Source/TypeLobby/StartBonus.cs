@@ -9,7 +9,9 @@ using System.Diagnostics;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс стартовых бонусов
+#pragma warning disable CS0659 // Тип переопределяет Object.Equals(object o), но не переопределяет Object.GetHashCode()
     internal sealed class StartBonus
+#pragma warning restore CS0659 // Тип переопределяет Object.Equals(object o), но не переопределяет Object.GetHashCode()
     {
         public StartBonus()
         {

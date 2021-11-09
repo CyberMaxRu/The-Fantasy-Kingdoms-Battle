@@ -194,11 +194,11 @@ namespace Fantasy_Kingdoms_Battle
             AddPerksToPlayer();
 
             // Добавляем товар посещения
-            if (TypeConstruction.Levels[Level].DescriptorVisit != null)
+            /*if (TypeConstruction.Levels[Level].DescriptorVisit != null)
             {
                 ConstructionProduct cpVisit = new ConstructionProduct(this, TypeConstruction.Levels[Level].DescriptorVisit);
                 AddProduct(cpVisit);
-            }
+            }*/
 
             // Инициализируем удовлетворяемые потребности
             SatisfactionNeeds = new int[FormMain.Config.NeedsCreature.Count];
@@ -222,10 +222,10 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (se is DescriptorConstructionExtension dce)
                     AddExtension(new ConstructionExtension(this, dce));
-                else if (se is DescriptorItem di)
+/*                else if (se is DescriptorItem di)
                     AddProduct(new ConstructionProduct(this, di));
                 else if (se is DescriptorResource dr)
-                    AddResource(new ConstructionResource(this, dr));
+                    AddResource(new ConstructionResource(this, dr));*/
                 else
                     throw new Exception($"Неизвестный товар: {se.ID}");
             }

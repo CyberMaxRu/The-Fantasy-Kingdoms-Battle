@@ -780,6 +780,17 @@ namespace Fantasy_Kingdoms_Battle
             throw new Exception($"Тип сооружения {ID} не найден.");
         }
 
+        internal DescriptorProduct FindProduct(string ID)
+        {
+            foreach (DescriptorProduct p in ConstructionProducts)
+            {
+                if (p.ID == ID)
+                    return p;
+            }
+
+            throw new Exception($"Товар {ID} не найден.");
+        }
+
         internal DescriptorTypeAbility FindTypeAbility(string ID)
         {
             foreach (DescriptorTypeAbility ta in TypeAbilities)

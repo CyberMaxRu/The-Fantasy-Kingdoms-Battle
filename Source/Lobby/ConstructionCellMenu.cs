@@ -147,39 +147,22 @@ namespace Fantasy_Kingdoms_Battle
 
             Descriptor = d;
 
-            Entity = Config.FindAbility(d.NameEntity, false);
-            if (Entity is null)
-                Entity = Config.FindItem(d.NameEntity, false);
-            if (Entity is null)
-                Entity = Config.FindGroupItem(d.NameEntity, false);
-
-            Debug.Assert(Entity != null, $"Для {c.TypeConstruction.ID} не найдена сущность {d.NameEntity}.");
+            Entity = Config.FindProduct(d.NameEntity);
         }
 
         internal new DescriptorCellMenuForConstruction Descriptor { get; }
-        internal DescriptorEntityForCreature Entity { get; }
+        internal DescriptorProduct Entity { get; }
         internal override void PrepareHint()
         {
-            string level = Entity is DescriptorAbility ta ? "Требуемый уровень: " + ta.MinUnitLevel.ToString() : "";
+            //string level = Entity is DescriptorAbility ta ? "Требуемый уровень: " + ta.MinUnitLevel.ToString() : "";
             Program.formMain.formHint.AddStep2Header(Entity.Name, GetImageIndex());
-            Program.formMain.formHint.AddStep3Type(NameType());
-            Program.formMain.formHint.AddStep4Level(level);
-            Program.formMain.formHint.AddStep5Description(Entity.Description);
+            Program.formMain.formHint.AddStep3Type(Entity.DescriptorEntity.GetTypeEntity());
+            //Program.formMain.formHint.AddStep4Level(level);
+            Program.formMain.formHint.AddStep5Description(Entity.Descriptor.Description);
             Program.formMain.formHint.AddStep6Income(Descriptor.Income);
             Program.formMain.formHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.DaysProcessing);
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirements());
             Program.formMain.formHint.AddStep12Gold(Construction.Player.BaseResources, GetCost());
-
-            string NameType()
-            {
-                if (Entity is DescriptorAbility)
-                    return "Умение";
-                if (Entity is DescriptorItem)
-                    return "Товар";
-                if (Entity is DescriptorGroupItems)
-                    return "Группа товаров";
-                throw new Exception("Тип исследования не определен.");
-            }
         }
 
         internal override ListBaseResources GetCost()
@@ -193,16 +176,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             RemoveSelf();
 
-            ConstructionProduct cp;
-            if (Entity is DescriptorItem di)
-                cp = new ConstructionProduct(Construction, di);
-            else if (Entity is DescriptorAbility da)
-                cp = new ConstructionProduct(Construction, da);
-            else if (Entity is DescriptorGroupItems dgi)
-                cp = new ConstructionProduct(Construction, dgi);
-            else
-                throw new Exception("Неизвестный тип");
-
+            ConstructionProduct cp = new ConstructionProduct(Construction, Entity);
             Construction.AddProduct(cp);
             Construction.Player.AddNoticeForPlayer(cp, TypeNoticeForPlayer.Research);
 
@@ -211,7 +185,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override int GetImageIndex()
         {
-            return Entity.ImageIndex;
+            return Entity.Descriptor.ImageIndex;
         }
 
         internal override bool InstantExecute() => Construction.Player.CheatingInstantlyResearch;
@@ -406,10 +380,12 @@ namespace Fantasy_Kingdoms_Battle
         private ConstructionProduct cp;
         public CellMenuConstructionEvent(Construction c, DescriptorCellMenuForConstruction d) : base(c, d)
         {
-            ConstructionEvent = d.Entity as DescriptorEventInConstruction;            
+            ConstructionEvent = d.Entity as DescriptorConstructionEvent;
+            Entity = Config.FindProduct(d.NameEntity);
         }
 
-        internal DescriptorEventInConstruction ConstructionEvent { get; }
+        internal DescriptorConstructionEvent ConstructionEvent { get; }
+        internal DescriptorProduct Entity { get; }
         internal int Cooldown { get; private set; }
 
         internal override void Execute()
@@ -417,7 +393,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Construction.Researches.IndexOf(this) != -1);
             Debug.Assert(cp is null);
 
-            cp = new ConstructionProduct(Construction, ConstructionEvent);
+            cp = new ConstructionProduct(Construction, Entity);
             Construction.AddProduct(cp);
 
             Construction.Player.AddNoticeForPlayer(cp, TypeNoticeForPlayer.MassEventBegin);
@@ -545,14 +521,15 @@ namespace Fantasy_Kingdoms_Battle
     {
         public CellMenuConstructionTournament(Construction c, DescriptorCellMenuForConstruction d) : base(c, d)
         {
-            Entity = Config.FindItem(d.NameEntity);
+            //Entity = Config.FindItem(d.NameEntity);
+            Entity = Config.FindProduct(d.NameEntity);
         }
 
-        internal DescriptorSmallEntity Entity { get; }
+        internal DescriptorProduct Entity { get; }
 
         internal override void Execute()
         {
-            ConstructionProduct cp = new ConstructionProduct(Construction, Entity as DescriptorItem);
+            ConstructionProduct cp = new ConstructionProduct(Construction, Entity);
             Construction.AddProduct(cp);
 
             Program.formMain.SetNeedRedrawFrame();

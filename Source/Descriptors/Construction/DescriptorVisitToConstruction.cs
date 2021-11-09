@@ -9,9 +9,9 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal sealed class DescriptorVisitToConstruction : DescriptorEntityForCreature
+    internal sealed class DescriptorVisitToConstruction : DescriptorEntityForConstruction
     {
-        public DescriptorVisitToConstruction(DescriptorCellMenuForConstructionLevel level, XmlNode n) : base(n)
+        public DescriptorVisitToConstruction(DescriptorCellMenuForConstructionLevel level, XmlNode n) : base(level.ForConstruction, n)
         {
             Debug.Assert(Interest >= 0);
             Debug.Assert(Interest <= 100);

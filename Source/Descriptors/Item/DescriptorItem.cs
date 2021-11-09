@@ -179,5 +179,6 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         protected override bool ForHeroes() => CategoryItem != CategoryItem.Monster;
+        internal override string GetTypeEntity() => "Предмет";
     }
 }

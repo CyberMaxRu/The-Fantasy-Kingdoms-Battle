@@ -38,6 +38,11 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
+        public DescriptorSmallEntity(string id, string name, string description, int imageIndex) : base(id, name, description, imageIndex)
+        {
+
+        }
+
         internal bool AvailableForAllHeroes { get; }// Сущность доступна всем существам
         internal List<DescriptorCreature> AvailableForHeroes { get; } = new List<DescriptorCreature>();
         internal List<DescriptorCellMenu> UseForResearch { get; } = new List<DescriptorCellMenu>();

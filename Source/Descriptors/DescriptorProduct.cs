@@ -11,11 +11,11 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal sealed class DescriptorProduct : DescriptorWithID
+    internal sealed class DescriptorProduct : DescriptorEntityForConstruction
     {
         private string nameEntity;
 
-        public DescriptorProduct(XmlNode n) : base(n)
+        public DescriptorProduct(DescriptorConstruction descriptor, XmlNode n) : base(descriptor, n)
         {
             nameEntity = GetStringNotNull(n, "Entity");
             Cost = GetIntegerNotNull(n, "Cost");
@@ -27,9 +27,11 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Debug.Assert(pd.ID != ID);
             }
+
+            Config.ConstructionProducts.Add(this);
         }
 
-        internal DescriptorEntityForCreature Descriptor { get; private set; }
+        internal DescriptorEntityForCreature DescriptorEntity { get; private set; }
         internal int Cost { get; }
         internal int Quantity { get; }
         internal int Duration { get; }
@@ -39,11 +41,11 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.TuneLinks();
 
-            Descriptor = Config.FindAbility(nameEntity, false);
-            if (Descriptor is null)
-                Descriptor = Config.FindItem(nameEntity, false);
-            if (Descriptor is null)
-                Descriptor = Config.FindGroupItem(nameEntity, false);
+            DescriptorEntity = Config.FindAbility(nameEntity, false);
+            if (DescriptorEntity is null)
+                DescriptorEntity = Config.FindItem(nameEntity, false);
+            if (DescriptorEntity is null)
+                DescriptorEntity = Config.FindGroupItem(nameEntity, false);
 
             Debug.Assert(Descriptor != null);
         }

@@ -52,6 +52,40 @@
         <MaxInhabitant>30</MaxInhabitant>
       </Level>
     </Levels>
+    <Products>
+      <Product>
+        <ID>ProductCloseCombatCourse</ID>
+        <Entity>CloseCombatCourse</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductWarriorImpAttack</ID>
+        <Entity>WarriorImpAttack</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductWarriorMaimAttack</ID>
+        <Entity>WarriorMaimAttack</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductWarriorResistanceBuff</ID>
+        <Entity>WarriorResistanceBuff</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+    </Products>
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
@@ -173,6 +207,40 @@
         <MaxInhabitant>30</MaxInhabitant>
       </Level>
     </Levels>
+    <Products>
+      <Product>
+        <ID>ProductFittingClothes</ID>
+        <Entity>FittingClothes</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductHunterImpAttack</ID>
+        <Entity>HunterImpAttack</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductHunterStingShotAttack</ID>
+        <Entity>HunterStingShotAttack</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductHunterManaburnAttack</ID>
+        <Entity>HunterManaburnAttack</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+    </Products>
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
@@ -294,6 +362,40 @@
         <MaxInhabitant>30</MaxInhabitant>
       </Level>
     </Levels>
+    <Products>
+      <Product>
+        <ID>ProductHolyWater</ID>
+        <Entity>HolyWater</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductHolyAttack</ID>
+        <Entity>HolyAttack</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductClericManaRegenBuff</ID>
+        <Entity>ClericManaRegenBuff</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductClericKnockbackAttack</ID>
+        <Entity>ClericKnockbackAttack</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+    </Products>
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
@@ -443,6 +545,48 @@
         <AvailableForAll>true</AvailableForAll>
       </Extension>
     </Extensions>
+    <Products>
+      <Product>
+        <ID>ProductEnchantWeaponAttack</ID>
+        <Entity>EnchantWeaponAttack</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductMageFireballAttack</ID>
+        <Entity>MageFireballAttack</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductMageFreezeAttack</ID>
+        <Entity>MageFreezeAttack</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductMageGuardianWind</ID>
+        <Entity>MageGuardianWind</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductMageFirestormAttack</ID>
+        <Entity>MageFirestormAttack</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+    </Products>
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
@@ -613,6 +757,56 @@
         </Requirements>
       </Level>
     </Levels>
+    <Products>
+      <Product>
+        <ID>ProductElvenSharpener</ID>
+        <Entity>ElvenSharpener</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductElixirSpeed</ID>
+        <Entity>ElixirSpeed</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductElfImpAttack</ID>
+        <Entity>ElfImpAttack</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductElfWine</ID>
+        <Entity>ElfWine</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductElfBuff</ID>
+        <Entity>ElfBuff</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductElfMagicArrow</ID>
+        <Entity>ElfMagicArrow</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+    </Products>
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
@@ -795,6 +989,48 @@
         <AvailableForAll>true</AvailableForAll>
       </Extension>
     </Extensions>
+    <Products>
+      <Product>
+        <ID>ProductSimpleRunes</ID>
+        <Entity>SimpleRunes</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductDwarfImpAttack</ID>
+        <Entity>DwarfImpAttack</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductDwarfBerserkBuff</ID>
+        <Entity>DwarfBerserkBuff</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductDwarfBeer</ID>
+        <Entity>DwarfBeer</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductDwarfAntiBuildingAttack</ID>
+        <Entity>DwarfAntiBuildingAttack</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+    </Products>
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
@@ -1013,6 +1249,48 @@
         <MaxInhabitant>30</MaxInhabitant>
       </Level>
     </Levels>
+    <Products>
+      <Product>
+        <ID>ProductEnchantWeaponPoison</ID>
+        <Entity>EnchantWeaponPoison</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductRoguePoisonAttack</ID>
+        <Entity>RoguePoisonAttack</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductRogueImpAttack</ID>
+        <Entity>RogueImpAttack</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductRogueKickAttack</ID>
+        <Entity>RogueKickAttack</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductStunAttack</ID>
+        <Entity>StunAttack</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+    </Products>
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
@@ -1443,6 +1721,64 @@
         </Needs>
       </Event>
     </Events>
+    <Products>
+      <Product>
+        <ID>ProductApple</ID>
+        <Entity>Apple</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductWheat</ID>
+        <Entity>Wheat</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductMeat</ID>
+        <Entity>Meat</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductGingerRoot</ID>
+        <Entity>GingerRoot</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductAmanita</ID>
+        <Entity>Amanita</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductCornedBeef</ID>
+        <Entity>CornedBeef</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductEventFair</ID>
+        <Entity>EventFair</Entity>
+        <Cost>100</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+    </Products>
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
@@ -1506,7 +1842,7 @@
       <CellMenu>
         <Pos>4,2</Pos>
         <Type>Event</Type>
-        <Entity>EventFair</Entity>
+        <Entity>ProductEventFair</Entity>
         <Cost>
           <Gold>1500</Gold>
         </Cost>
@@ -1618,6 +1954,136 @@
         <ImageIndex>237</ImageIndex>
       </Improvement>
     </Improvements>
+    <Products>
+      <Product>
+        <ID>ProductImproveAnvil</ID>
+        <Entity>ImproveAnvil</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductImproveForging</ID>
+        <Entity>ImproveForging</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductSickle</ID>
+        <Entity>Sickle</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductImproveFounding</ID>
+        <Entity>ImproveFounding</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductGroupArmourMetal1</ID>
+        <Entity>GroupArmourMetal1</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductGroupArmourMetal2</ID>
+        <Entity>GroupArmourMetal2</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductGroupArmourMetal3</ID>
+        <Entity>GroupArmourMetal3</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductGroupArmourMetal4</ID>
+        <Entity>GroupArmourMetal4</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductGroupWeaponMelee1</ID>
+        <Entity>GroupWeaponMelee1</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductGroupWeaponMelee2</ID>
+        <Entity>GroupWeaponMelee2</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductGroupWeaponMelee3</ID>
+        <Entity>GroupWeaponMelee3</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductGroupWeaponMelee4</ID>
+        <Entity>GroupWeaponMelee4</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductGroupArmourLeather1</ID>
+        <Entity>GroupArmourLeather1</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductGroupArmourLeather2</ID>
+        <Entity>GroupArmourLeather2</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductGroupArmourLeather3</ID>
+        <Entity>GroupArmourLeather3</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductGroupArmourLeather4</ID>
+        <Entity>GroupArmourLeather4</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+    </Products>
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
@@ -1964,6 +2430,40 @@
         </Needs>
       </Event>
     </Events>
+    <Products>
+      <Product>
+        <ID>ProductTavernSoup</ID>
+        <Entity>TavernSoup</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductTavernMeat</ID>
+        <Entity>TavernMeat</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductTavernBeer</ID>
+        <Entity>TavernBeer</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductEventFeast</ID>
+        <Entity>EventFeast</Entity>
+        <Cost>100</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+    </Products>
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
@@ -2019,7 +2519,7 @@
       <CellMenu>
         <Pos>2,3</Pos>
         <Type>Event</Type>
-        <Entity>EventFeast</Entity>
+        <Entity>ProductEventFeast</Entity>
         <Cost>
           <Gold>1000</Gold>
         </Cost>
@@ -2101,6 +2601,144 @@
         </Requirements>
       </Level>
     </Levels>
+    <Products>
+      <Product>
+        <ID>ProductAmuletOfRegeneration</ID>
+        <Entity>AmuletOfRegeneration</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductRingOfProtection</ID>
+        <Entity>RingOfProtection</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductImpAmuletOfProtection</ID>
+        <Entity>ImpAmuletOfProtection</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductQuiver</ID>
+        <Entity>Quiver</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductSmallBag</ID>
+        <Entity>SmallBag</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductGroupWeaponRange1</ID>
+        <Entity>GroupWeaponRange1</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductGroupWeaponRange2</ID>
+        <Entity>GroupWeaponRange2</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductGroupWeaponRange3</ID>
+        <Entity>GroupWeaponRange3</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductGroupWeaponRange4</ID>
+        <Entity>GroupWeaponRange4</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductGroupArmourMage1</ID>
+        <Entity>GroupArmourMage1</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductGroupArmourMage2</ID>
+        <Entity>GroupArmourMage2</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductGroupArmourMage3</ID>
+        <Entity>GroupArmourMage3</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductGroupArmourMage4</ID>
+        <Entity>GroupArmourMage4</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductGroupWeaponMage1</ID>
+        <Entity>GroupWeaponMage1</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductGroupWeaponMage2</ID>
+        <Entity>GroupWeaponMage2</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductGroupWeaponMage3</ID>
+        <Entity>GroupWeaponMage3</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductGroupWeaponMage4</ID>
+        <Entity>GroupWeaponMage4</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+    </Products>
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
@@ -2382,6 +3020,80 @@
         <Income>500</Income>
       </Level>
     </Levels>
+    <Products>
+      <Product>
+        <ID>ProductPotionOfHealth</ID>
+        <Entity>PotionOfHealth</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductPotionOfMana</ID>
+        <Entity>PotionOfMana</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductPotionOfCheerfulness</ID>
+        <Entity>PotionOfCheerfulness</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductElixirMeleeProt</ID>
+        <Entity>ElixirMeleeProt</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductElixirRangeProt</ID>
+        <Entity>ElixirRangeProt</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductElixirMagicProt</ID>
+        <Entity>ElixirMagicProt</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductElixirStrength</ID>
+        <Entity>ElixirStrength</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductElixirAccuracy</ID>
+        <Entity>ElixirAccuracy</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductElixirWisdom</ID>
+        <Entity>ElixirWisdom</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+    </Products>
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
@@ -2856,6 +3568,24 @@
         <AvailableForAll>true</AvailableForAll>
       </Extension>
     </Extensions>
+    <Products>
+      <Product>
+        <ID>ProductLuckyCoins</ID>
+        <Entity>LuckyCoins</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductHerald</ID>
+        <Entity>Herald</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+    </Products>
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
@@ -3162,6 +3892,48 @@
         <Income>0</Income>
       </Level>
     </Levels>
+    <Products>
+      <Product>
+        <ID>ProductHospitalHerbs</ID>
+        <Entity>HospitalHerbs</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductHospitalHealthPotion</ID>
+        <Entity>HospitalHealthPotion</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductElixirAntipoison</ID>
+        <Entity>ElixirAntipoison</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductElixirRegeneration</ID>
+        <Entity>ElixirRegeneration</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductHospitalPowerTherapy</ID>
+        <Entity>HospitalPowerTherapy</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+    </Products>
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
@@ -3439,6 +4211,24 @@
         </Needs>
       </Event>
     </Events>
+    <Products>
+      <Product>
+        <ID>ProductEventFireworks</ID>
+        <Entity>EventFireworks</Entity>
+        <Cost>150</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductEventElvenMusic</ID>
+        <Entity>EventElvenMusic</Entity>
+        <Cost>150</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+    </Products>
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
@@ -3468,7 +4258,7 @@
       <CellMenu>
         <Pos>3,2</Pos>
         <Type>Event</Type>
-        <Entity>EventElvenMusic</Entity>
+        <Entity>ProductEventElvenMusic</Entity>
         <Cost>
           <Gold>1000</Gold>
         </Cost>
@@ -3505,7 +4295,7 @@
       <CellMenu>
         <Pos>3,3</Pos>
         <Type>Event</Type>
-        <Entity>EventFireworks</Entity>
+        <Entity>ProductEventFireworks</Entity>
         <Cost>
           <Gold>2500</Gold>
         </Cost>
@@ -4657,6 +5447,40 @@
         </Requirements>
       </Level>
     </Levels>
+    <Products>
+      <Product>
+        <ID>ProductWolfInMenagerie</ID>
+        <Entity>WolfInMenagerie</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductBearInMenagerie</ID>
+        <Entity>BearInMenagerie</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductSerpentInMenagerie</ID>
+        <Entity>SerpentInMenagerie</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductDragonInMenagerie</ID>
+        <Entity>DragonInMenagerie</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+    </Products>
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
@@ -4828,6 +5652,40 @@
         </Visit>
       </Level>
     </Levels>
+    <Products>
+      <Product>
+        <ID>ProductPlayingLotto</ID>
+        <Entity>PlayingLotto</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductDice</ID>
+        <Entity>Dice</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductCider</ID>
+        <Entity>Cider</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductPlayingCards</ID>
+        <Entity>PlayingCards</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duraion>0</Duraion>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+    </Products>
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>

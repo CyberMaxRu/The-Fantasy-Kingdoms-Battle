@@ -14,57 +14,11 @@ namespace Fantasy_Kingdoms_Battle
             Product = product;
         }
 
-        public ConstructionProduct(Construction construction, DescriptorAbility descriptor) : base(construction)
-        {
-            Debug.Assert(descriptor != null);
-
-            DescriptorAbility = descriptor;
-            Descriptor = descriptor;
-        }
-
-        public ConstructionProduct(Construction construction, DescriptorItem descriptor) : base(construction)
-        {
-            Debug.Assert(descriptor != null);
-
-            DescriptorItem = descriptor;
-            Descriptor = descriptor;
-        }
-
-        public ConstructionProduct(Construction construction, DescriptorGroupItems descriptor) : base(construction)
-        {
-            Debug.Assert(descriptor != null);
-
-            DescriptorGroupItem = descriptor;
-            Descriptor = descriptor;
-        }
-
-        public ConstructionProduct(Construction construction, DescriptorEventInConstruction descriptor) : base(construction)
-        {
-            Debug.Assert(descriptor != null);
-
-            DescriptorConstructionEvent = descriptor;
-            Descriptor = descriptor;
-
-            Duration = descriptor.Duration;
-            Counter = Duration;
-            Interest = descriptor.Interest;
-        }
-
-        public ConstructionProduct(Construction construction, DescriptorVisitToConstruction descriptor) : base(construction)
-        {
-            Debug.Assert(descriptor != null);
-
-            DescriptorConstructionVisit = descriptor;
-            Descriptor = descriptor;
-            Interest = descriptor.Interest;
-        }
-
-        internal Construction Construction { get; }
         internal DescriptorProduct Product { get; }
         internal DescriptorAbility DescriptorAbility { get; }
         internal DescriptorItem DescriptorItem { get; }
         internal DescriptorGroupItems DescriptorGroupItem { get; }
-        internal DescriptorEventInConstruction DescriptorConstructionEvent { get; }
+        internal DescriptorConstructionEvent DescriptorConstructionEvent { get; }
         internal DescriptorVisitToConstruction DescriptorConstructionVisit { get; }
         internal int QuantityPerDay { get; }// Количество товара в сооружении
         internal int Duration { get; private set; }// Длительность нахождения товара в сооружении
@@ -97,7 +51,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int GetCostGold()
         {
-            return Descriptor.Cost;
+            return Product.Cost;
         }
 
         internal override void PrepareHint()

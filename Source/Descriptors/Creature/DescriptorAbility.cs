@@ -97,6 +97,8 @@ namespace Fantasy_Kingdoms_Battle
         internal int CoolDown { get; }
         internal List<Effect> Effects { get; } = new List<Effect>();
 
+        internal override string GetTypeEntity() => "Умение";
+
         /*protected override string GetCost()
         {
             switch (KindAbility)
