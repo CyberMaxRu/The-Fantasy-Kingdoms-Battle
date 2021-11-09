@@ -9,12 +9,9 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class ConstructionProduct : EntityForConstruction
     {
-        public ConstructionProduct(Construction construction, DescriptorEntityForCreature descriptor, int quantity, int cost, int duration) : base(construction)
+        public ConstructionProduct(Construction construction, DescriptorProduct product) : base(construction)
         {
-            Descriptor = descriptor;
-            QuantityPerDay = quantity;
-            Cost = cost;
-            Duration = duration;
+            Product = product;
         }
 
         public ConstructionProduct(Construction construction, DescriptorAbility descriptor) : base(construction)
@@ -62,7 +59,8 @@ namespace Fantasy_Kingdoms_Battle
             Interest = descriptor.Interest;
         }
 
-        internal new DescriptorEntityForCreature Descriptor { get; }
+        internal Construction Construction { get; }
+        internal DescriptorProduct Product { get; }
         internal DescriptorAbility DescriptorAbility { get; }
         internal DescriptorItem DescriptorItem { get; }
         internal DescriptorGroupItems DescriptorGroupItem { get; }

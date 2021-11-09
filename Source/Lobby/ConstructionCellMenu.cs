@@ -195,7 +195,7 @@ namespace Fantasy_Kingdoms_Battle
 
             ConstructionProduct cp;
             if (Entity is DescriptorItem di)
-                cp = new ConstructionProduct(Construction, di, );
+                cp = new ConstructionProduct(Construction, di);
             else if (Entity is DescriptorAbility da)
                 cp = new ConstructionProduct(Construction, da);
             else if (Entity is DescriptorGroupItems dgi)
