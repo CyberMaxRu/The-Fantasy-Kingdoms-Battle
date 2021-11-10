@@ -2945,8 +2945,8 @@
           </Requirements>
           <CellMenu>
             <Pos>4,3</Pos>
-            <Type>ProductResearch</Type>
-            <Entity>GroupWeaponMage3</Entity>
+            <Type>Research</Type>
+            <Entity>ProductGroupWeaponMage3</Entity>
             <Cost>
               <Gold>3000</Gold>
             </Cost>
