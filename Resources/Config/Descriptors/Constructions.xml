@@ -1973,7 +1973,7 @@
       </Product>
       <Product>
         <ID>ProductSickle</ID>
-        <Entity>Sickle</Entity>
+        <Entity>ImproveSickle</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
         <Duration>0</Duration>
@@ -3116,7 +3116,7 @@
       <CellMenu>
         <Pos>4,1</Pos>
         <Type>Research</Type>
-        <Entity>PotionOfCheerfulness</Entity>
+        <Entity>ProductPotionOfCheerfulness</Entity>
         <Cost>
           <Gold>200</Gold>
         </Cost>
@@ -3807,11 +3807,66 @@
         </Visit>
       </Level>
     </Levels>
+    <Tournaments>
+      <Tournament>
+        <ID>TournamentHandFight</ID>
+        <Name>Турнир по рукопашному бою</Name>
+        <Description>Провести турнир по рукопашному бою.</Description>
+        <ImageIndex>216</ImageIndex>
+        <Cooldown>5</Cooldown>
+        <Interest>10</Interest>
+        <AvailableForAll>true</AvailableForAll>
+      </Tournament>
+      <Tournament>
+        <ID>TournamentArcher</ID>
+        <Name>Турнир по стрельбе из лука</Name>
+        <Description>Провести турнир по стрельбе из лука.</Description>
+        <ImageIndex>217</ImageIndex>
+        <Cooldown>5</Cooldown>
+        <Interest>10</Interest>
+        <AvailableForAll>true</AvailableForAll>
+      </Tournament>
+      <Tournament>
+        <ID>TournamentMage</ID>
+        <Name>Магический турнир</Name>
+        <Description>Провести турнир по магическим дисциплинам.</Description>
+        <ImageIndex>218</ImageIndex>
+        <Cooldown>5</Cooldown>
+        <Interest>10</Interest>
+        <AvailableForAll>true</AvailableForAll>
+      </Tournament>    
+    </Tournaments>
+    <Products>
+      <Product>
+        <ID>ProductTournamentHandFight</ID>
+        <Entity>TournamentHandFight</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duration>0</Duration>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductTournamentArcher</ID>
+        <Entity>TournamentArcher</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duration>0</Duration>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+      <Product>
+        <ID>ProductTournamentMage</ID>
+        <Entity>TournamentMage</Entity>
+        <Cost>50</Cost>
+        <Quantity>5</Quantity>
+        <Duration>0</Duration>
+        <InternalRefresh>1</InternalRefresh>
+      </Product>
+    </Products>
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
         <Type>Tournament</Type>
-        <Entity>TournamentHandFight</Entity>
+        <Entity>ProductTournamentHandFight</Entity>
         <Cost>
           <Gold>500</Gold>
         </Cost>
@@ -3820,7 +3875,7 @@
       <CellMenu>
         <Pos>2,2</Pos>
         <Type>Tournament</Type>
-        <Entity>TournamentArcher</Entity>
+        <Entity>ProductTournamentArcher</Entity>
         <Cost>
           <Gold>1000</Gold>
         </Cost>
@@ -3836,7 +3891,7 @@
       <CellMenu>
         <Pos>2,3</Pos>
         <Type>Tournament</Type>
-        <Entity>TournamentMage</Entity>
+        <Entity>ProductTournamentMage</Entity>
         <Cost>
           <Gold>2000</Gold>
         </Cost>

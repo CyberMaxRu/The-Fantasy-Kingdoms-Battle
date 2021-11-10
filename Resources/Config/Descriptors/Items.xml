@@ -3049,30 +3049,6 @@
     <AvailableForAll>true</AvailableForAll>
   </Item>
   <Item>
-    <ID>TournamentHandFight</ID>
-    <Name>Турнир по рукопашному бою</Name>
-    <Description>Провести турнир по рукопашному бою.</Description>
-    <ImageIndex>216</ImageIndex>
-    <CategoryItem>Tournament</CategoryItem>
-    <AvailableForAll>true</AvailableForAll>
-  </Item>
-  <Item>
-    <ID>TournamentArcher</ID>
-    <Name>Турнир по стрельбе из лука</Name>
-    <Description>Провести турнир по стрельбе из лука.</Description>
-    <ImageIndex>217</ImageIndex>
-    <CategoryItem>Tournament</CategoryItem>
-    <AvailableForAll>true</AvailableForAll>
-  </Item>
-  <Item>
-    <ID>TournamentMage</ID>
-    <Name>Магический турнир</Name>
-    <Description>Провести турнир по магическим дисциплинам.</Description>
-    <ImageIndex>218</ImageIndex>
-    <CategoryItem>Tournament</CategoryItem>
-    <AvailableForAll>true</AvailableForAll>
-  </Item>
-  <Item>
     <ID>HospitalHerbs</ID>
     <Name>Лекарственные травы</Name>
     <Description>Изучить новые травы для лечения.</Description>

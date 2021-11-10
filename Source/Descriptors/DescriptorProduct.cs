@@ -32,6 +32,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal DescriptorEntityForCreature DescriptorEntity { get; private set; }
+        internal DescriptorEntityForConstruction EntityForConstruction { get; private set; }
         internal int Cost { get; }
         internal int Quantity { get; }
         internal int Duration { get; }
@@ -56,11 +57,29 @@ namespace Fantasy_Kingdoms_Battle
                 DescriptorEntity = Config.FindItem(nameEntity, false);
             if (DescriptorEntity is null)
                 DescriptorEntity = Config.FindGroupItem(nameEntity, false);
+            if ( DescriptorEntity is null)
+                DescriptorEntity = Config.FindGroupItem(nameEntity, false);
+            if (DescriptorEntity is null)
+            {
+                EntityForConstruction = Descriptor.FindConstructionEvent(nameEntity, false);
+                if (EntityForConstruction is null)
+                    EntityForConstruction = Descriptor.FindConstructionImprovement(nameEntity, false);
+                if (EntityForConstruction is null)
+                    EntityForConstruction = Descriptor.FindConstructionTournament(nameEntity, false);
+            }
 
-            Debug.Assert(DescriptorEntity != null, $"Сущность {nameEntity} не найдена.");
+            Debug.Assert((DescriptorEntity != null) || (EntityForConstruction != null), $"Сущность {nameEntity} не найдена.");
 
-            ImageIndex = DescriptorEntity.ImageIndex;
-            Name = DescriptorEntity.Name;
+            if (DescriptorEntity != null)
+            {
+                ImageIndex = DescriptorEntity.ImageIndex;
+                Name = DescriptorEntity.Name;
+            }
+            else
+            {
+                ImageIndex = EntityForConstruction.ImageIndex;
+                Name = EntityForConstruction.Name;
+            }
 
             nameEntity = "";
         }
