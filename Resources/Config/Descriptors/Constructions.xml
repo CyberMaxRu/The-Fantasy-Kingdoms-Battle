@@ -58,7 +58,7 @@
         <Entity>CloseCombatCourse</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -66,7 +66,7 @@
         <Entity>WarriorImpAttack</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -74,7 +74,7 @@
         <Entity>WarriorMaimAttack</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -82,7 +82,7 @@
         <Entity>WarriorResistanceBuff</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
     </Products>
@@ -213,7 +213,7 @@
         <Entity>FittingClothes</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -221,7 +221,7 @@
         <Entity>HunterImpAttack</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -229,7 +229,7 @@
         <Entity>HunterStingShotAttack</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -237,7 +237,7 @@
         <Entity>HunterManaburnAttack</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
     </Products>
@@ -368,7 +368,7 @@
         <Entity>HolyWater</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -376,7 +376,7 @@
         <Entity>HolyAttack</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -384,7 +384,7 @@
         <Entity>ClericManaRegenBuff</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -392,7 +392,7 @@
         <Entity>ClericKnockbackAttack</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
     </Products>
@@ -551,7 +551,7 @@
         <Entity>EnchantWeaponAttack</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -559,7 +559,7 @@
         <Entity>MageFireballAttack</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -567,7 +567,7 @@
         <Entity>MageFreezeAttack</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -575,7 +575,7 @@
         <Entity>MageGuardianWind</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -583,7 +583,7 @@
         <Entity>MageFirestormAttack</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
     </Products>
@@ -763,7 +763,7 @@
         <Entity>ElvenSharpener</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -771,7 +771,7 @@
         <Entity>ElixirSpeed</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -779,7 +779,7 @@
         <Entity>ElfImpAttack</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -787,7 +787,7 @@
         <Entity>ElfWine</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -795,7 +795,7 @@
         <Entity>ElfBuff</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -803,7 +803,7 @@
         <Entity>ElfMagicArrow</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
     </Products>
@@ -995,7 +995,7 @@
         <Entity>SimpleRunes</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -1003,7 +1003,7 @@
         <Entity>DwarfImpAttack</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -1011,7 +1011,7 @@
         <Entity>DwarfBerserkBuff</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -1019,7 +1019,7 @@
         <Entity>DwarfBeer</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -1027,7 +1027,7 @@
         <Entity>DwarfAntiBuildingAttack</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
     </Products>
@@ -1255,7 +1255,7 @@
         <Entity>EnchantWeaponPoison</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -1263,7 +1263,7 @@
         <Entity>RoguePoisonAttack</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -1271,7 +1271,7 @@
         <Entity>RogueImpAttack</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -1279,7 +1279,7 @@
         <Entity>RogueKickAttack</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -1287,7 +1287,7 @@
         <Entity>StunAttack</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
     </Products>
@@ -1727,7 +1727,7 @@
         <Entity>Apple</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -1735,7 +1735,7 @@
         <Entity>Wheat</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -1743,7 +1743,7 @@
         <Entity>Meat</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -1751,7 +1751,7 @@
         <Entity>GingerRoot</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -1759,7 +1759,7 @@
         <Entity>Amanita</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -1767,7 +1767,7 @@
         <Entity>CornedBeef</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -1775,7 +1775,7 @@
         <Entity>EventFair</Entity>
         <Cost>100</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
     </Products>
@@ -1960,7 +1960,7 @@
         <Entity>ImproveAnvil</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -1968,7 +1968,7 @@
         <Entity>ImproveForging</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -1976,7 +1976,7 @@
         <Entity>Sickle</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -1984,7 +1984,7 @@
         <Entity>ImproveFounding</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -1992,7 +1992,7 @@
         <Entity>GroupArmourMetal1</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -2000,7 +2000,7 @@
         <Entity>GroupArmourMetal2</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -2008,7 +2008,7 @@
         <Entity>GroupArmourMetal3</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -2016,7 +2016,7 @@
         <Entity>GroupArmourMetal4</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -2024,7 +2024,7 @@
         <Entity>GroupWeaponMelee1</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -2032,7 +2032,7 @@
         <Entity>GroupWeaponMelee2</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -2040,7 +2040,7 @@
         <Entity>GroupWeaponMelee3</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -2048,7 +2048,7 @@
         <Entity>GroupWeaponMelee4</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -2056,7 +2056,7 @@
         <Entity>GroupArmourLeather1</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -2064,7 +2064,7 @@
         <Entity>GroupArmourLeather2</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -2072,7 +2072,7 @@
         <Entity>GroupArmourLeather3</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -2080,7 +2080,7 @@
         <Entity>GroupArmourLeather4</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
     </Products>
@@ -2436,7 +2436,7 @@
         <Entity>TavernSoup</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -2444,7 +2444,7 @@
         <Entity>TavernMeat</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -2452,7 +2452,7 @@
         <Entity>TavernBeer</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -2460,7 +2460,7 @@
         <Entity>EventFeast</Entity>
         <Cost>100</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
     </Products>
@@ -2607,7 +2607,7 @@
         <Entity>AmuletOfRegeneration</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -2615,7 +2615,7 @@
         <Entity>RingOfProtection</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -2623,7 +2623,7 @@
         <Entity>ImpAmuletOfProtection</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -2631,7 +2631,7 @@
         <Entity>Quiver</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -2639,7 +2639,7 @@
         <Entity>SmallBag</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -2647,7 +2647,7 @@
         <Entity>GroupWeaponRange1</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -2655,7 +2655,7 @@
         <Entity>GroupWeaponRange2</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -2663,7 +2663,7 @@
         <Entity>GroupWeaponRange3</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -2671,7 +2671,7 @@
         <Entity>GroupWeaponRange4</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -2679,7 +2679,7 @@
         <Entity>GroupArmourMage1</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -2687,7 +2687,7 @@
         <Entity>GroupArmourMage2</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -2695,7 +2695,7 @@
         <Entity>GroupArmourMage3</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -2703,7 +2703,7 @@
         <Entity>GroupArmourMage4</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -2711,7 +2711,7 @@
         <Entity>GroupWeaponMage1</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -2719,7 +2719,7 @@
         <Entity>GroupWeaponMage2</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -2727,7 +2727,7 @@
         <Entity>GroupWeaponMage3</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -2735,7 +2735,7 @@
         <Entity>GroupWeaponMage4</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
     </Products>
@@ -3026,7 +3026,7 @@
         <Entity>PotionOfHealth</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -3034,7 +3034,7 @@
         <Entity>PotionOfMana</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -3042,7 +3042,7 @@
         <Entity>PotionOfCheerfulness</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -3050,7 +3050,7 @@
         <Entity>ElixirMeleeProt</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -3058,7 +3058,7 @@
         <Entity>ElixirRangeProt</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -3066,7 +3066,7 @@
         <Entity>ElixirMagicProt</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -3074,7 +3074,7 @@
         <Entity>ElixirStrength</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -3082,7 +3082,7 @@
         <Entity>ElixirAccuracy</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -3090,7 +3090,7 @@
         <Entity>ElixirWisdom</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
     </Products>
@@ -3574,7 +3574,7 @@
         <Entity>LuckyCoins</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -3582,7 +3582,7 @@
         <Entity>Herald</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
     </Products>
@@ -3898,7 +3898,7 @@
         <Entity>HospitalHerbs</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -3906,7 +3906,7 @@
         <Entity>HospitalHealthPotion</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -3914,7 +3914,7 @@
         <Entity>ElixirAntipoison</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -3922,7 +3922,7 @@
         <Entity>ElixirRegeneration</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -3930,7 +3930,7 @@
         <Entity>HospitalPowerTherapy</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
     </Products>
@@ -4217,7 +4217,7 @@
         <Entity>EventFireworks</Entity>
         <Cost>150</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -4225,7 +4225,7 @@
         <Entity>EventElvenMusic</Entity>
         <Cost>150</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
     </Products>
@@ -5453,7 +5453,7 @@
         <Entity>WolfInMenagerie</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -5461,7 +5461,7 @@
         <Entity>BearInMenagerie</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -5469,7 +5469,7 @@
         <Entity>SerpentInMenagerie</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -5477,7 +5477,7 @@
         <Entity>DragonInMenagerie</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
     </Products>
@@ -5658,7 +5658,7 @@
         <Entity>PlayingLotto</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -5666,7 +5666,7 @@
         <Entity>Dice</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -5674,7 +5674,7 @@
         <Entity>Cider</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
       <Product>
@@ -5682,7 +5682,7 @@
         <Entity>PlayingCards</Entity>
         <Cost>50</Cost>
         <Quantity>5</Quantity>
-        <Duraion>0</Duraion>
+        <Duration>0</Duration>
         <InternalRefresh>1</InternalRefresh>
       </Product>
     </Products>
