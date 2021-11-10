@@ -27,7 +27,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Interest >= 1);
             Debug.Assert(Interest <= 100);
 
-            foreach (DescriptorConstructionEvent ce in Descriptor.Events)
+            foreach (DescriptorConstructionEvent ce in Construction.Events)
             {
                 Debug.Assert(ce.ID != ID);
                 Debug.Assert(ce.Name != Name);

@@ -23,7 +23,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Interest >= 1);
             Debug.Assert(Interest <= 100);
 
-            foreach (DescriptorConstructionTournament ct in Descriptor.Tournaments)
+            foreach (DescriptorConstructionTournament ct in Construction.Tournaments)
             {
                 Debug.Assert(ct.ID != ID);
                 Debug.Assert(ct.Name != Name);

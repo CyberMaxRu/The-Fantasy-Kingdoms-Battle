@@ -1,16 +1,15 @@
 ﻿using System.Xml;
 
-
 namespace Fantasy_Kingdoms_Battle
 {
     internal abstract class DescriptorEntityForConstruction : DescriptorSmallEntity
     {
-        public DescriptorEntityForConstruction(DescriptorConstruction descriptor, XmlNode n) : base(n)
+        public DescriptorEntityForConstruction(DescriptorConstruction construction, XmlNode n) : base(n)
         {
-            Descriptor = descriptor;
+            Construction = construction;
         }
 
-        internal DescriptorConstruction Descriptor { get; }
+        internal DescriptorConstruction Construction { get; }
 
         internal abstract string GetTypeEntity();
     }

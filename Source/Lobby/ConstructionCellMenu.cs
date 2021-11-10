@@ -158,7 +158,7 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep2Header(Entity.Name, GetImageIndex());
             Program.formMain.formHint.AddStep3Type(Entity.DescriptorEntity != null ? Entity.DescriptorEntity.GetTypeEntity() : Entity.EntityForConstruction.GetTypeEntity());
             //Program.formMain.formHint.AddStep4Level(level);
-            Program.formMain.formHint.AddStep5Description(Entity.Descriptor.Description);
+            Program.formMain.formHint.AddStep5Description(Entity.Construction.Description);
             Program.formMain.formHint.AddStep6Income(Descriptor.Income);
             Program.formMain.formHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.DaysProcessing);
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirements());

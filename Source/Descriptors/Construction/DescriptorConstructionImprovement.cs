@@ -13,7 +13,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         public DescriptorConstructionImprovement(DescriptorConstruction construction, XmlNode n) : base(construction, n)
         {
-            foreach (DescriptorConstructionImprovement ce in Descriptor.Improvements)
+            foreach (DescriptorConstructionImprovement ce in Construction.Improvements)
             {
                 Debug.Assert(ce.ID != ID);
                 Debug.Assert(ce.Name != Name);

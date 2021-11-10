@@ -52,7 +52,7 @@ namespace Fantasy_Kingdoms_Battle
                     if (cm is DescriptorCellMenuForConstructionLevel cmcl)
                         Description += Environment.NewLine + "    - { " + cmcl.ForEntity.Name + " (" + cmcl.Number.ToString() + " ур.)}";
                     else if (cm is DescriptorCellMenuForConstruction cmc)
-                        Description += Environment.NewLine + "    - {" + cmc.Entity.Name + "}" + (cmc.ForEntity.ID != Descriptor.ID ? " ({" + cm.ForEntity.Name + "})" : "");
+                        Description += Environment.NewLine + "    - {" + cmc.Entity.Name + "}" + (cmc.ForEntity.ID != Construction.ID ? " ({" + cm.ForEntity.Name + "})" : "");
                 }
             }
         }

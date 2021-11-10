@@ -66,11 +66,11 @@ namespace Fantasy_Kingdoms_Battle
                 DescriptorEntity = Config.FindGroupItem(nameEntity, false);
             if (DescriptorEntity is null)
             {
-                EntityForConstruction = Descriptor.FindConstructionEvent(nameEntity, false);
+                EntityForConstruction = Construction.FindConstructionEvent(nameEntity, false);
                 if (EntityForConstruction is null)
-                    EntityForConstruction = Descriptor.FindConstructionImprovement(nameEntity, false);
+                    EntityForConstruction = Construction.FindConstructionImprovement(nameEntity, false);
                 if (EntityForConstruction is null)
-                    EntityForConstruction = Descriptor.FindConstructionTournament(nameEntity, false);
+                    EntityForConstruction = Construction.FindConstructionTournament(nameEntity, false);
             }
 
             Debug.Assert((DescriptorEntity != null) || (EntityForConstruction != null), $"Сущность {nameEntity} не найдена.");
