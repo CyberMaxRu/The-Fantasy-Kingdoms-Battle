@@ -185,7 +185,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override int GetImageIndex()
         {
-            return Entity.Descriptor.ImageIndex;
+            return Entity.ImageIndex;
         }
 
         internal override bool InstantExecute() => Construction.Player.CheatingInstantlyResearch;
