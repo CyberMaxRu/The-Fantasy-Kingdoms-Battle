@@ -57,10 +57,12 @@ namespace Fantasy_Kingdoms_Battle
             if (DescriptorEntity is null)
                 DescriptorEntity = Config.FindGroupItem(nameEntity, false);
 
-            Debug.Assert(DescriptorEntity != null);
+            Debug.Assert(DescriptorEntity != null, $"Сущность {nameEntity} не найдена.");
 
             ImageIndex = DescriptorEntity.ImageIndex;
             Name = DescriptorEntity.Name;
+
+            nameEntity = "";
         }
     }
 }
