@@ -42,11 +42,11 @@ namespace Fantasy_Kingdoms_Battle
             return nn is null ? 0 : string.IsNullOrEmpty(nn.InnerText) ? 0 : Convert.ToInt32(nn.InnerText);
         }
 
-        internal static int GetIntegerNotNull(XmlNode n, string name)
+        internal static int GetIntegerNotNull(XmlNode n, string name, string forEntity = "")
         {
             XmlNode nn = n.SelectSingleNode(name);
-            Debug.Assert(nn != null, $"Поле {name} отсутствует.");
-            Debug.Assert(nn.InnerText != null, $"У поля {name} нет значения.");
+            Debug.Assert(nn != null, $"Поле {(forEntity.Length > 0 ? forEntity + ".": "")}{name} отсутствует.");
+            Debug.Assert(nn.InnerText != null, $"У поля {(forEntity.Length > 0 ? forEntity : " ")}{name} нет значения.");
 
             return Convert.ToInt32(nn.InnerText);
         }
