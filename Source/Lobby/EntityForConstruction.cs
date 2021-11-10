@@ -8,9 +8,10 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal abstract class EntityForConstruction : SmallEntity
     {
-        public EntityForConstruction(Construction construction) : base()
+        public EntityForConstruction(Construction construction, DescriptorSmallEntity descriptor) : base()
         {
             Construction = construction;
+            Descriptor = descriptor;
         }
 
         internal Construction Construction { get; }

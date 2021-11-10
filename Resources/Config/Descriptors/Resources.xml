@@ -7,4 +7,11 @@
     <ImageIndex>266</ImageIndex>
     <AvailableForAll>true</AvailableForAll>
   </Resource>
+  <Resource>
+    <ID>ResourceWheat</ID>
+    <Name>Пшеница</Name>
+    <Description>- Пшеница.</Description>
+    <ImageIndex>240</ImageIndex>
+    <AvailableForAll>true</AvailableForAll>
+  </Resource>
 </Descriptors>

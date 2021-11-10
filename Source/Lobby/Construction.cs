@@ -222,10 +222,10 @@ namespace Fantasy_Kingdoms_Battle
             {
                 if (se is DescriptorConstructionExtension dce)
                     AddExtension(new ConstructionExtension(this, dce));
-/*                else if (se is DescriptorItem di)
-                    AddProduct(new ConstructionProduct(this, di));
                 else if (se is DescriptorResource dr)
-                    AddResource(new ConstructionResource(this, dr));*/
+                    AddResource(new ConstructionResource(this, dr)); 
+                /*else if (se is DescriptorItem di)
+                    AddProduct(new ConstructionProduct(this, di));*/
                 else
                     throw new Exception($"Неизвестный товар: {se.ID}");
             }

@@ -9,7 +9,7 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class ConstructionProduct : EntityForConstruction
     {
-        public ConstructionProduct(Construction construction, DescriptorProduct product) : base(construction)
+        public ConstructionProduct(Construction construction, DescriptorProduct product) : base(construction, product)
         {
             Product = product;
         }

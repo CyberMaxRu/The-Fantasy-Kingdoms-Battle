@@ -8,12 +8,12 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class ConstructionResource : EntityForConstruction
     {
-        public ConstructionResource(Construction construction, DescriptorResource descriptor) : base(construction)
+        public ConstructionResource(Construction construction, DescriptorResource descriptor) : base(construction, descriptor)
         {
-            Descriptor = descriptor;
+            DescriptorResource = descriptor;
         }
 
-        internal new DescriptorResource Descriptor { get; }
+        internal DescriptorResource DescriptorResource { get; }
 
         internal override int GetImageIndex()
         {

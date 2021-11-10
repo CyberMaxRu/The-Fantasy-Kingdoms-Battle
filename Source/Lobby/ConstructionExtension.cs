@@ -8,7 +8,7 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class ConstructionExtension : EntityForConstruction
     {
-        public ConstructionExtension(Construction construction, DescriptorConstructionExtension descriptor) : base(construction)
+        public ConstructionExtension(Construction construction, DescriptorConstructionExtension descriptor) : base(construction, descriptor)
         {
             Descriptor = descriptor;
         }
