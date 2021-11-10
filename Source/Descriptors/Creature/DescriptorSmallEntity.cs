@@ -36,6 +36,10 @@ namespace Fantasy_Kingdoms_Battle
                     availableForHeroesString.Add(nameHero);
                 }
             }
+
+            if ((availableForHeroesString is null) && ForHeroes())
+                AvailableForAllHeroes = true;
+
         }
 
         public DescriptorSmallEntity(string id, string name, string description, int imageIndex) : base(id, name, description, imageIndex)
@@ -61,7 +65,7 @@ namespace Fantasy_Kingdoms_Battle
             }
             else
             {
-                Debug.Assert(AvailableForAllHeroes == false);
+                //Debug.Assert(AvailableForAllHeroes == false);
                 Debug.Assert(availableForHeroesString is null);
             }
 

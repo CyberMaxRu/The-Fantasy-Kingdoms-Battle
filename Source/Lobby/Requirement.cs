@@ -135,7 +135,7 @@ namespace Fantasy_Kingdoms_Battle
         private string nameGoods;
 
         private DescriptorConstruction construction;
-        private DescriptorItem goods;
+        private DescriptorProduct goods;
 
         public RequirementGoods(DescriptorCellMenu forCellMenu, XmlNode n) : base(forCellMenu, n)
         {
@@ -154,14 +154,14 @@ namespace Fantasy_Kingdoms_Battle
             base.TuneLinks();
 
             construction = Config.FindConstruction(nameConstruction);
-            goods = Config.FindItem(nameGoods);
+            goods = Config.FindProduct(nameGoods);
             nameConstruction = "";
             nameGoods = "";
 
             bool founded = false;
             foreach (DescriptorCellMenuForConstruction cm in construction.ListResearches)
             {
-                if (cm.NameEntity == goods.ID)
+                if (cm.NameEntity == goods.Descriptor.ID)
                 {
                     founded = true;
                     break;

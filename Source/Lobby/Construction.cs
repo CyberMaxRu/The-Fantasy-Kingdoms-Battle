@@ -1372,7 +1372,7 @@ namespace Fantasy_Kingdoms_Battle
             return false;
         }
 
-        internal bool GoodsAvailabled(DescriptorItem item)
+        internal bool GoodsAvailabled(DescriptorProduct item)
         {
             foreach (ConstructionProduct cp in Goods)
             {

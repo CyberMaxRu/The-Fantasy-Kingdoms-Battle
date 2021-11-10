@@ -18,10 +18,10 @@ namespace Fantasy_Kingdoms_Battle
         public DescriptorProduct(DescriptorConstruction descriptor, XmlNode n) : base(descriptor, n)
         {
             nameEntity = GetStringNotNull(n, "Entity");
-            Cost = GetIntegerNotNull(n, "Cost");
-            Quantity = GetIntegerNotNull(n, "Quantity");
-            Duration = GetIntegerNotNull(n, "Duration");
-            InternalRefresh = GetIntegerNotNull(n, "InternalRefresh");
+            Cost = GetIntegerNotNull(n, "Cost", ID);
+            Quantity = GetIntegerNotNull(n, "Quantity", ID);
+            Duration = GetIntegerNotNull(n, "Duration", ID);
+            InternalRefresh = GetIntegerNotNull(n, "InternalRefresh", ID);
 
             foreach (DescriptorProduct pd in Config.ConstructionProducts)
             {
@@ -37,6 +37,16 @@ namespace Fantasy_Kingdoms_Battle
         internal int Duration { get; }
         internal int InternalRefresh { get; }
 
+        protected override string GetName(XmlNode n)
+        {
+            return "noname";
+        }
+
+        internal override int GetImageIndex(XmlNode n)
+        {
+            return 0;// Изначально устанавливаем ImageIndex в 0, а потом инициализируем при настройке связи
+        }
+
         internal override void TuneLinks()
         {
             base.TuneLinks();
@@ -48,6 +58,9 @@ namespace Fantasy_Kingdoms_Battle
                 DescriptorEntity = Config.FindGroupItem(nameEntity, false);
 
             Debug.Assert(Descriptor != null);
+
+            ImageIndex = DescriptorEntity.ImageIndex;
+            Name = DescriptorEntity.Name;
         }
     }
 }

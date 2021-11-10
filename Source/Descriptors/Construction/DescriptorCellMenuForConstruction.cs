@@ -86,11 +86,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     case TypeCellMenuForConstruction.Tournament:
                     case TypeCellMenuForConstruction.Research:
-                        Entity = FormMain.Config.FindAbility(NameEntity, false);
-                        if (Entity is null)
-                            Entity = FormMain.Config.FindItem(NameEntity, false);
-                        if (Entity is null)
-                            Entity = FormMain.Config.FindGroupItem(NameEntity, false);
+                        Entity = ForConstruction.FindProduct(NameEntity, true);
                         break;
                     case TypeCellMenuForConstruction.Extension:
                         Entity = ForConstruction.FindExtension(NameEntity, true);
@@ -108,7 +104,7 @@ namespace Fantasy_Kingdoms_Battle
                         throw new Exception($"Неизвестное действие: {Type}.");
                 }
 
-                Debug.Assert(Entity != null);
+                Debug.Assert(Entity != null, $"В {ForConstruction.ID} не найдено {NameEntity}");
             }
 
             Product?.TuneLinks();

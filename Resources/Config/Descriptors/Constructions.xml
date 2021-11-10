@@ -1099,7 +1099,7 @@
           <Requirement>
             <TypeRequirement>GoodsInConstruction</TypeRequirement>
             <Construction>Market</Construction>
-            <Goods>Wheat</Goods>
+            <Goods>ProductWheat</Goods>
           </Requirement>
         </Requirements>
       </CellMenu>
@@ -2486,7 +2486,7 @@
           <Requirement>
             <TypeRequirement>GoodsInConstruction</TypeRequirement>
             <Construction>Market</Construction>
-            <Goods>Meat</Goods>
+            <Goods>ProductMeat</Goods>
           </Requirement>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2507,7 +2507,7 @@
           <Requirement>
             <TypeRequirement>GoodsInConstruction</TypeRequirement>
             <Construction>Market</Construction>
-            <Goods>Wheat</Goods>
+            <Goods>ProductWheat</Goods>
           </Requirement>
           <Requirement>
             <TypeRequirement>BuildedConstruction</TypeRequirement>
@@ -2533,7 +2533,7 @@
           <Requirement>
             <TypeRequirement>GoodsInConstruction</TypeRequirement>
             <Construction>Tavern</Construction>
-            <Goods>TavernBeer</Goods>
+            <Goods>ProductTavernBeer</Goods>
           </Requirement>
         </Requirements>
       </CellMenu>
@@ -5636,7 +5636,7 @@
           <Requirement>
             <TypeRequirement>GoodsInConstruction</TypeRequirement>
             <Construction>Tavern</Construction>
-            <Goods>TavernBeer</Goods>
+            <Goods>ProductTavernBeer</Goods>
           </Requirement>
         </Requirements>
         <Visit>
@@ -5732,7 +5732,7 @@
           <Requirement>
             <TypeRequirement>GoodsInConstruction</TypeRequirement>
             <Construction>Market</Construction>
-            <Goods>Apple</Goods>
+            <Goods>ProductApple</Goods>
           </Requirement>
         </Requirements>
       </CellMenu>

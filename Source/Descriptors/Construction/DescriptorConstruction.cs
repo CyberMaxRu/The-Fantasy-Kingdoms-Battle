@@ -422,6 +422,20 @@ namespace Fantasy_Kingdoms_Battle
             return null;
         }
 
+        internal DescriptorProduct FindProduct(string idProduct, bool mustBeFound)
+        {
+            foreach (DescriptorProduct ce in Products)
+            {
+                if (ce.ID == idProduct)
+                    return ce;
+            }
+
+            if (mustBeFound)
+                throw new Exception($"Товар {idProduct} не найден в {ID}.");
+
+            return null;
+        }
+
         internal DescriptorConstructionEvent FindConstructionEvent(string IDEvent, bool mustBeExists = true)
         {
             foreach (DescriptorConstructionEvent dce in Events)

@@ -16,7 +16,7 @@ namespace Fantasy_Kingdoms_Battle
         public DescriptorWithID(XmlNode n) : base()
         {
             ID = GetStringNotNull(n, "ID");
-            name = GetStringNotNull(n, "Name");
+            name = GetName(n);
 
             CheckData();
         }
@@ -32,6 +32,11 @@ namespace Fantasy_Kingdoms_Battle
         internal string ID { get; }// Уникальный код сущности
         internal string Name { get => name; set { name = value; CheckData(); } }// Наименование сущности
         
+        protected virtual string GetName(XmlNode n)
+        {
+            return GetStringNotNull(n, "Name");
+        }
+
         private void CheckData()
         {
             Debug.Assert(ID.Length > 0);
