@@ -161,7 +161,7 @@ namespace Fantasy_Kingdoms_Battle
             bool founded = false;
             foreach (DescriptorCellMenuForConstruction cm in construction.ListResearches)
             {
-                if (cm.NameEntity == goods.Descriptor.ID)
+                if (cm.NameEntity == goods.ID)
                 {
                     founded = true;
                     break;

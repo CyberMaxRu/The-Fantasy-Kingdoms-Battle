@@ -57,7 +57,7 @@ namespace Fantasy_Kingdoms_Battle
             if (DescriptorEntity is null)
                 DescriptorEntity = Config.FindGroupItem(nameEntity, false);
 
-            Debug.Assert(Descriptor != null);
+            Debug.Assert(DescriptorEntity != null);
 
             ImageIndex = DescriptorEntity.ImageIndex;
             Name = DescriptorEntity.Name;
