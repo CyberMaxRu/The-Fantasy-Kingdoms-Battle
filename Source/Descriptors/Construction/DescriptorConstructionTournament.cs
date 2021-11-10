@@ -35,6 +35,11 @@ namespace Fantasy_Kingdoms_Battle
         internal int Interest { get; }// Интерес к событию
         internal ListNeeds ListNeeds { get; }
 
+        internal override string GetTypeEntity()
+        {
+            return "Турнир";
+        }
+
         internal override void TuneLinks()
         {
             base.TuneLinks();

@@ -3,7 +3,7 @@
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal class DescriptorEntityForConstruction : DescriptorSmallEntity
+    internal abstract class DescriptorEntityForConstruction : DescriptorSmallEntity
     {
         public DescriptorEntityForConstruction(DescriptorConstruction descriptor, XmlNode n) : base(n)
         {
@@ -11,5 +11,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal DescriptorConstruction Descriptor { get; }
+
+        internal abstract string GetTypeEntity();
     }
 }

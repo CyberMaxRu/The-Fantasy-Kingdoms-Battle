@@ -41,6 +41,11 @@ namespace Fantasy_Kingdoms_Battle
         internal string NameGoods { get; }// Наименование мероприятия-товара
         internal ListNeeds ListNeeds { get; }
 
+        internal override string GetTypeEntity()
+        {
+            return "Мероприятие";
+        }
+
         internal override void TuneLinks()
         {
             base.TuneLinks();

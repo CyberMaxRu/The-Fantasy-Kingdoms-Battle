@@ -56,5 +56,10 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
         }
+
+        internal override string GetTypeEntity()
+        {
+            return "Доп. сооружение";
+        }
     }
 }

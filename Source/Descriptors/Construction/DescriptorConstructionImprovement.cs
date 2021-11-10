@@ -20,5 +20,10 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(ce.ImageIndex != ImageIndex);
             }
         }
+
+        internal override string GetTypeEntity()
+        {
+            return "Улучшение";
+        }
     }
 }

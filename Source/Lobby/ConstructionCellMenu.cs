@@ -156,7 +156,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             //string level = Entity is DescriptorAbility ta ? "Требуемый уровень: " + ta.MinUnitLevel.ToString() : "";
             Program.formMain.formHint.AddStep2Header(Entity.Name, GetImageIndex());
-            Program.formMain.formHint.AddStep3Type(Entity.DescriptorEntity.GetTypeEntity());
+            Program.formMain.formHint.AddStep3Type(Entity.DescriptorEntity != null ? Entity.DescriptorEntity.GetTypeEntity() : Entity.EntityForConstruction.GetTypeEntity());
             //Program.formMain.formHint.AddStep4Level(level);
             Program.formMain.formHint.AddStep5Description(Entity.Descriptor.Description);
             Program.formMain.formHint.AddStep6Income(Descriptor.Income);

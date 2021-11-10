@@ -48,6 +48,11 @@ namespace Fantasy_Kingdoms_Battle
             return 0;// Изначально устанавливаем ImageIndex в 0, а потом инициализируем при настройке связи
         }
 
+        internal override string GetTypeEntity()
+        {
+            return DescriptorEntity.GetTypeEntity();
+        }
+
         internal override void TuneLinks()
         {
             base.TuneLinks();
