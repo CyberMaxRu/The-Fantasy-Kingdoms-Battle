@@ -84,6 +84,11 @@
     <Compile Include="Source\Descriptors\DescriptorWithID.cs" />
     <Compile Include="Source\Descriptors\Item\DescriptorResource.cs" />
     <Compile Include="Source\Descriptors\Location\DescriptorTypeLandscape.cs" />
+    <Compile Include="Source\Descriptors\Requirement\RequirementConstruction.cs" />
+    <Compile Include="Source\Descriptors\Requirement\RequirementDestroyedLairs.cs" />
+    <Compile Include="Source\Descriptors\Requirement\RequirementExtension.cs" />
+    <Compile Include="Source\Descriptors\Requirement\RequirementGoods.cs" />
+    <Compile Include="Source\Descriptors\Requirement\RequirementTypeConstruction.cs" />
     <Compile Include="Source\Forms\WindowCheating.cs" />
     <Compile Include="Source\Lobby\BaseResource.cs" />
     <Compile Include="Source\Lobby\BigEntity.cs" />
