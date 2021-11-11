@@ -8,7 +8,7 @@ namespace Fantasy_Kingdoms_Battle
 {
     public sealed class XmlUtils
     {
-        internal static void LoadRequirements(DescriptorCellMenu forCellMenu, List<Requirement> list, XmlNode n)
+        internal static void LoadRequirements(DescriptorCellMenu forCellMenu, List<DescriptorRequirement> list, XmlNode n)
         {
             XmlNode nr = n.SelectSingleNode("Requirements");
 

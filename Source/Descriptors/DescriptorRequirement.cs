@@ -9,14 +9,14 @@ using System.Xml;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс требования
-    internal abstract class Requirement : Descriptor
+    internal abstract class DescriptorRequirement : Descriptor
     {
-        public Requirement(DescriptorCellMenu forCellMenu, XmlNode n) : base()
+        public DescriptorRequirement(DescriptorCellMenu forCellMenu, XmlNode n) : base()
         {
             ForCellMenu = forCellMenu;
         }
 
-        public Requirement(DescriptorCellMenu forCellMenu) : base()
+        public DescriptorRequirement(DescriptorCellMenu forCellMenu) : base()
         {
             ForCellMenu = forCellMenu;
         }
@@ -26,7 +26,7 @@ namespace Fantasy_Kingdoms_Battle
         internal abstract TextRequirement GetTextRequirement(Player p);
     }
 
-    internal sealed class RequirementConstruction : Requirement
+    internal sealed class RequirementConstruction : DescriptorRequirement
     {
         private DescriptorConstruction construction;
         private string nameConstruction;
@@ -65,7 +65,7 @@ namespace Fantasy_Kingdoms_Battle
         }
     }
 
-    internal sealed class RequirementDestroyedLairs : Requirement
+    internal sealed class RequirementDestroyedLairs : DescriptorRequirement
     {
         private DescriptorConstruction construction;
         private string nameConstruction;
@@ -98,7 +98,7 @@ namespace Fantasy_Kingdoms_Battle
         }
     }
 
-    internal sealed class RequirementTypeConstruction : Requirement
+    internal sealed class RequirementTypeConstruction : DescriptorRequirement
     {
         private DescriptorTypeConstruction typeConstruction;
         private string nameTypeConstruction;
@@ -129,7 +129,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override TextRequirement GetTextRequirement(Player p) => new TextRequirement(CheckRequirement(p), $"Сооружение с типом \"{typeConstruction.Name}\": {quantity} шт.");
     }
 
-    internal sealed class RequirementGoods : Requirement
+    internal sealed class RequirementGoods : DescriptorRequirement
     {
         private string nameConstruction;
         private string nameGoods;
@@ -176,7 +176,7 @@ namespace Fantasy_Kingdoms_Battle
         }
     }
 
-    internal sealed class RequirementExtension : Requirement
+    internal sealed class RequirementExtension : DescriptorRequirement
     {
         private DescriptorConstruction Construction;
         private string nameConstruction;

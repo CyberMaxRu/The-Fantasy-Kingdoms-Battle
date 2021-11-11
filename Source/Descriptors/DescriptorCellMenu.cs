@@ -49,13 +49,13 @@ namespace Fantasy_Kingdoms_Battle
         internal Point Coord { get; }// Координаты ячейки
         internal ListBaseResources Cost { get; }// Стоимость
         internal int DaysProcessing { get; }// Количество дней для реализации действия
-        internal List<Requirement> Requirements { get; } = new List<Requirement>();// Список требований
+        internal List<DescriptorRequirement> Requirements { get; } = new List<DescriptorRequirement>();// Список требований
 
         internal override void TuneLinks()
         {
             base.TuneLinks();
 
-            foreach (Requirement r in Requirements)
+            foreach (DescriptorRequirement r in Requirements)
                 r.TuneLinks();
         }
     }

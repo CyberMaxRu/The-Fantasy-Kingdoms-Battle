@@ -801,12 +801,12 @@ namespace Fantasy_Kingdoms_Battle
             return FreeBuilders >= needBuilders;
         }
 
-        internal bool CheckRequirements(List<Requirement> list)
+        internal bool CheckRequirements(List<DescriptorRequirement> list)
         {
             if (CheatingIgnoreRequirements)
                 return true;
 
-            foreach (Requirement r in list)
+            foreach (DescriptorRequirement r in list)
             {
                 if (!r.CheckRequirement(this))
                     return false;
@@ -815,11 +815,11 @@ namespace Fantasy_Kingdoms_Battle
             return true;
         }
 
-        internal void TextRequirements(List<Requirement> listReq, List<TextRequirement> listTextReq)
+        internal void TextRequirements(List<DescriptorRequirement> listReq, List<TextRequirement> listTextReq)
         {
             Construction pb;
 
-            foreach (Requirement r in listReq)
+            foreach (DescriptorRequirement r in listReq)
             {
                 listTextReq.Add(r.GetTextRequirement(this));
             }
