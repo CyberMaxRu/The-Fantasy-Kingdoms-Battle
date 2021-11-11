@@ -26,7 +26,7 @@ namespace Fantasy_Kingdoms_Battle
             XmlNode nv = n.SelectSingleNode("Visit");
             if (nv != null)
             {
-                DescriptorVisit = new DescriptorVisitToConstruction(this, nv);
+                DescriptorVisit = new DescriptorConstructionVisit(this, nv);
             }
 
             Extensions = new ListSmallEntity(forConstruction, n.SelectSingleNode("Entities"));
@@ -64,7 +64,7 @@ namespace Fantasy_Kingdoms_Battle
         internal int GreatnessPerDay { get; }// Дает очков Величия в день
         internal int BuildersPerDay { get; }// Дает строителей в день
         internal ListSmallEntity Extensions { get; }// Сущности, относящиеся к уровню
-        internal DescriptorVisitToConstruction DescriptorVisit { get; }// Товар для посещения сооружения
+        internal DescriptorConstructionVisit DescriptorVisit { get; }// Товар для посещения сооружения
         internal ListDescriptorPerks ListPerks { get; }// Перки, которые дает уровень сооружения
 
         internal override void TuneLinks()

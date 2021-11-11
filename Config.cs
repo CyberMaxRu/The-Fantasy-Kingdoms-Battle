@@ -497,7 +497,7 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorTypeConstruction tc in TypeConstructions)
                 tc.TuneLinks();
 
-            foreach (DescriptorVisitToConstruction cv in ConstructionsVisits)
+            foreach (DescriptorConstructionVisit cv in ConstructionsVisits)
                 cv.TuneLinks();
 
             foreach (DescriptorConstruction c in Constructions)
@@ -538,7 +538,7 @@ namespace Fantasy_Kingdoms_Battle
 
         // Сооружения
         internal List<DescriptorTypeConstruction> TypeConstructions { get; } = new List<DescriptorTypeConstruction>();
-        internal List<DescriptorVisitToConstruction> ConstructionsVisits { get; } = new List<DescriptorVisitToConstruction>();
+        internal List<DescriptorConstructionVisit> ConstructionsVisits { get; } = new List<DescriptorConstructionVisit>();
         internal List<DescriptorConstruction> Constructions { get; } = new List<DescriptorConstruction>();
 
         // Существа
@@ -692,9 +692,9 @@ namespace Fantasy_Kingdoms_Battle
         internal Pen PenSelectedBorder { get; private set; }
 
         //
-        internal DescriptorVisitToConstruction FindConstructionVisit(string ID)
+        internal DescriptorConstructionVisit FindConstructionVisit(string ID)
         {
-            foreach (DescriptorVisitToConstruction dcv in ConstructionsVisits)
+            foreach (DescriptorConstructionVisit dcv in ConstructionsVisits)
             {
                 if (dcv.ID == ID)
                     return dcv;
@@ -1099,7 +1099,7 @@ namespace Fantasy_Kingdoms_Battle
             throw new Exception($"Текстура {id} не найдена.");
         }
 
-        internal void AddVisit(DescriptorVisitToConstruction visit)
+        internal void AddVisit(DescriptorConstructionVisit visit)
         {
             ConstructionsVisits.Add(visit);
         }

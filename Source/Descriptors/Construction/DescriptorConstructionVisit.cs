@@ -9,9 +9,9 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal sealed class DescriptorVisitToConstruction : DescriptorEntityForConstruction
+    internal sealed class DescriptorConstructionVisit : DescriptorEntityForConstruction
     {
-        public DescriptorVisitToConstruction(DescriptorCellMenuForConstructionLevel level, XmlNode n) : base(level.ForConstruction, n)
+        public DescriptorConstructionVisit(DescriptorCellMenuForConstructionLevel level, XmlNode n) : base(level.ForConstruction, n)
         {
             Debug.Assert(Interest >= 0);
             Debug.Assert(Interest <= 100);
@@ -22,7 +22,7 @@ namespace Fantasy_Kingdoms_Battle
             Interest = GetInteger(n, "Interest");
             ListNeeds = new ListNeeds(n.SelectSingleNode("Needs"));
 
-            foreach (DescriptorVisitToConstruction cv in Config.ConstructionsVisits)
+            foreach (DescriptorConstructionVisit cv in Config.ConstructionsVisits)
             {
                 Debug.Assert(cv.ID != ID);
                 Debug.Assert(cv.Name != Name);
