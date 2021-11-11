@@ -96,6 +96,8 @@ namespace Fantasy_Kingdoms_Battle
                     return new CellMenuConstructionLevelUp(c, d as DescriptorCellMenuForConstructionLevel);
                 case TypeCellMenuForConstruction.Extension:
                     return new CellMenuConstructionExtension(c, d);
+                case TypeCellMenuForConstruction.Improvement:
+                    return new CellMenuConstructionImprovement(c, d);
                 case TypeCellMenuForConstruction.Tournament:
                     return new CellMenuConstructionTournament(c, d);
                 case TypeCellMenuForConstruction.Extra:
@@ -511,6 +513,53 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep6Income(Descriptor.Income);
             Program.formMain.formHint.AddStep9Interest(Entity.ModifyInterest, true);
             Program.formMain.formHint.AddStep9ListNeeds(Entity.ListNeeds, true);
+            Program.formMain.formHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.DaysProcessing);
+            Program.formMain.formHint.AddStep11Requirement(GetTextRequirements());
+            Program.formMain.formHint.AddStep12Gold(Construction.Player.BaseResources, GetCost());
+        }
+
+        internal override bool InstantExecute() => Construction.Player.CheatingInstantlyResearch;
+    }
+
+    internal sealed class CellMenuConstructionImprovement : ConstructionCellMenu
+    {
+        public CellMenuConstructionImprovement(Construction c, DescriptorCellMenuForConstruction d) : base(c, d)
+        {
+            Entity = d.ForConstruction.FindConstructionImprovement(d.NameEntity, true);
+        }
+
+        internal DescriptorConstructionImprovement Entity { get; }
+
+        internal override void Execute()
+        {
+            RemoveSelf();
+
+            ConstructionImprovement ce = new ConstructionImprovement(Construction, Entity);
+            Construction.AddImprovement(ce);
+
+            Program.formMain.SetNeedRedrawFrame();
+
+            Construction.Player.AddNoticeForPlayer(ce, TypeNoticeForPlayer.Improvement);
+        }
+
+        internal override ListBaseResources GetCost()
+        {
+            return Descriptor.Cost;
+        }
+
+        internal override string GetLevel() => Program.formMain.Settings.ShowTypeCellMenu ? "у" : "";
+
+        internal override int GetImageIndex()
+        {
+            return Entity.ImageIndex;
+        }
+
+        internal override void PrepareHint()
+        {
+            Program.formMain.formHint.AddStep2Header(Entity.Name, Entity.ImageIndex);
+            Program.formMain.formHint.AddStep3Type("Улучшение");
+            Program.formMain.formHint.AddStep5Description(Entity.Description);
+            Program.formMain.formHint.AddStep6Income(Descriptor.Income);
             Program.formMain.formHint.AddStep10DaysBuilding(PosInQueue == 1 ? DaysProcessed : -1, Descriptor.DaysProcessing);
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirements());
             Program.formMain.formHint.AddStep12Gold(Construction.Player.BaseResources, GetCost());

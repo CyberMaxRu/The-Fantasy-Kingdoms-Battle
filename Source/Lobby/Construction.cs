@@ -107,6 +107,7 @@ namespace Fantasy_Kingdoms_Battle
         // Small-сущности в сооружении
         internal List<EntityForConstruction> ListEntities { get; } = new List<EntityForConstruction>();// Все сущности в сооружении
         internal List<ConstructionExtension> Extensions { get; } = new List<ConstructionExtension>();// Дополнения
+        internal List<ConstructionImprovement> Improvements { get; } = new List<ConstructionImprovement>();// Улучшения
         internal List<ConstructionResource> Resources { get; } = new List<ConstructionResource>();// Ресурсы
         internal List<ConstructionProduct> Goods { get; } = new List<ConstructionProduct>();// Товары, доступные в строении
         internal List<ConstructionProduct> Visits { get; } = new List<ConstructionProduct>();// Посещения, события, турниры
@@ -1247,6 +1248,14 @@ namespace Fantasy_Kingdoms_Battle
 
             if (MainVisit != null)
                 UpdateInterestMainVisit();
+        }
+
+        internal void AddImprovement(ConstructionImprovement improvement)
+        {
+            AddEntity(improvement);
+
+            // Прибавляем ее удовлетворение потребностей к текущим
+            Improvements.Add(improvement);
         }
 
         internal void AddResource(ConstructionResource resource)

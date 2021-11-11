@@ -11,7 +11,7 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal enum TypeCellMenuForConstruction { Research, Event, HireCreature, Build, LevelUp, Action, Extension, Tournament, Extra };
+    internal enum TypeCellMenuForConstruction { Research, Event, HireCreature, Build, LevelUp, Action, Extension, Tournament, Improvement, Extra };
 
     internal class DescriptorCellMenuForConstruction : DescriptorCellMenu
     {
@@ -91,6 +91,9 @@ namespace Fantasy_Kingdoms_Battle
                         break;
                     case TypeCellMenuForConstruction.Extension:
                         Entity = ForConstruction.FindExtension(NameEntity, true);
+                        break;
+                    case TypeCellMenuForConstruction.Improvement:
+                        Entity = ForConstruction.FindConstructionImprovement(NameEntity, true);
                         break;
                     case TypeCellMenuForConstruction.HireCreature:
                         Entity = FormMain.Config.FindCreature(NameEntity);

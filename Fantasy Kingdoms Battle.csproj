@@ -88,6 +88,7 @@
     <Compile Include="Source\Lobby\BaseResource.cs" />
     <Compile Include="Source\Lobby\BigEntity.cs" />
     <Compile Include="Source\Lobby\ConstructionExtension.cs" />
+    <Compile Include="Source\Lobby\ConstructionImprovement.cs" />
     <Compile Include="Source\Lobby\ConstructionProduct.cs" />
     <Compile Include="Source\Lobby\ConstructionResource.cs" />
     <Compile Include="Source\Lobby\CreatureNeed.cs" />

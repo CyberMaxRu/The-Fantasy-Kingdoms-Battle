@@ -1956,38 +1956,6 @@
     </Improvements>
     <Products>
       <Product>
-        <ID>ProductImproveAnvil</ID>
-        <Entity>ImproveAnvil</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
-      </Product>
-      <Product>
-        <ID>ProductImproveForging</ID>
-        <Entity>ImproveForging</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
-      </Product>
-      <Product>
-        <ID>ProductSickle</ID>
-        <Entity>ImproveSickle</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
-      </Product>
-      <Product>
-        <ID>ProductImproveFounding</ID>
-        <Entity>ImproveFounding</Entity>
-        <Cost>50</Cost>
-        <Quantity>5</Quantity>
-        <Duration>0</Duration>
-        <InternalRefresh>1</InternalRefresh>
-      </Product>
-      <Product>
         <ID>ProductGroupArmourMetal1</ID>
         <Entity>GroupArmourMetal1</Entity>
         <Cost>50</Cost>
@@ -2087,8 +2055,8 @@
     <CellsMenu>
       <CellMenu>
         <Pos>2,1</Pos>
-        <Type>Research</Type>
-        <Entity>ProductImproveAnvil</Entity>
+        <Type>Improvement</Type>
+        <Entity>ImproveAnvil</Entity>
         <Cost>
           <Gold>500</Gold>
         </Cost>
@@ -2096,8 +2064,8 @@
       </CellMenu>
       <CellMenu>
         <Pos>2,2</Pos>
-        <Type>Research</Type>
-        <Entity>ProductImproveForging</Entity>
+        <Type>Improvement</Type>
+        <Entity>ImproveForging</Entity>
         <Cost>
           <Gold>1500</Gold>
         </Cost>
@@ -2112,8 +2080,8 @@
       </CellMenu>
       <CellMenu>
         <Pos>3,2</Pos>
-        <Type>Research</Type>
-        <Entity>ProductSickle</Entity>
+        <Type>Improvement</Type>
+        <Entity>ImproveSickle</Entity>
         <Cost>
           <Gold>1000</Gold>
         </Cost>
@@ -2128,8 +2096,8 @@
       </CellMenu>
       <CellMenu>
         <Pos>2,3</Pos>
-        <Type>Research</Type>
-        <Entity>ProductImproveFounding</Entity>
+        <Type>Improvement</Type>
+        <Entity>ImproveFounding</Entity>
         <Cost>
           <Gold>3000</Gold>
         </Cost>

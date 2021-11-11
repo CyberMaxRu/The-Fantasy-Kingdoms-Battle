@@ -8,7 +8,7 @@ using System.Diagnostics;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal enum TypeNoticeForPlayer { None, Build, LevelUp, Research, Extension, HireHero, MassEventBegin, MassEventEnd, TournamentBegin, TournamentEnd,
+    internal enum TypeNoticeForPlayer { None, Build, LevelUp, Research, Extension, Improvement, HireHero, MassEventBegin, MassEventEnd, TournamentBegin, TournamentEnd,
         ReceivedBaseResource, Explore, HeroIsDead };
 
     internal sealed class VCNoticeForPlayer : VCCustomNotice
@@ -53,7 +53,12 @@ namespace Fantasy_Kingdoms_Battle
                     break;
                 case TypeNoticeForPlayer.Extension:
                     nameNotice = "Дополнительное сооружение построено:";
-                    nameText = (Entity as ConstructionProduct).Descriptor.Name;
+                    nameText = (Entity as ConstructionExtension).Descriptor.Name;
+                    colorNameEntity = Color.DarkGoldenrod;
+                    break;
+                case TypeNoticeForPlayer.Improvement:
+                    nameNotice = "Улучшение завершено:";
+                    nameText = (Entity as ConstructionImprovement).Descriptor.Name;
                     colorNameEntity = Color.DarkGoldenrod;
                     break;
                 case TypeNoticeForPlayer.HireHero:
@@ -136,6 +141,14 @@ namespace Fantasy_Kingdoms_Battle
             else if (Entity is ConstructionProduct cp)
             {
                 Program.formMain.SelectConstruction(cp.Construction, 0);
+            }
+            else if (Entity is ConstructionExtension ce)
+            {
+                Program.formMain.SelectConstruction(ce.Construction, 0);
+            }
+            else if (Entity is ConstructionImprovement ci)
+            {
+                Program.formMain.SelectConstruction(ci.Construction, 0);
             }
             else
                 throw new Exception("Неизвестная сущность.");
