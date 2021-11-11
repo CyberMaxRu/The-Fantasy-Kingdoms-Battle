@@ -3097,14 +3097,6 @@
     <AvailableForAll>true</AvailableForAll>
   </Item>
   <Item>
-    <ID>ElvenSharpener</ID>
-    <Name>Эльфийская заточка</Name>
-    <Description>Эльфы эффективно заточат оружие по своим секретным технологиям (+25% к минимальному урону, +10% к максимальному урону).</Description>
-    <ImageIndex>227</ImageIndex>
-    <CategoryItem>Thing</CategoryItem>
-    <AvailableForAll>true</AvailableForAll>
-  </Item>
-  <Item>
     <ID>SimpleRunes</ID>
     <Name>Простые руны</Name>
     <Description>Гномы готовы за небольшие деньги наковать на оружии простые руны, которые увеличат наносимый урон.</Description>

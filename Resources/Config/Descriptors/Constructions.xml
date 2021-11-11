@@ -757,6 +757,15 @@
         </Requirements>
       </Level>
     </Levels>
+    <Services>
+      <Service>
+        <ID>ElvenSharpener</ID>
+        <Name>Эльфийская заточка</Name>
+        <Description>Эльфы эффективно заточат оружие по своим секретным технологиям (+25% к минимальному урону, +10% к максимальному урону).</Description>
+        <ImageIndex>227</ImageIndex>
+        <AvailableForAll>true</AvailableForAll>
+      </Service>
+    </Services>
     <Products>
       <Product>
         <ID>ProductElvenSharpener</ID>

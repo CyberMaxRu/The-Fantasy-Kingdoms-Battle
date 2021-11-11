@@ -112,6 +112,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<ConstructionProduct> Goods { get; } = new List<ConstructionProduct>();// Товары, доступные в строении
         internal List<ConstructionProduct> Visits { get; } = new List<ConstructionProduct>();// Посещения, события, турниры
         internal List<ConstructionProduct> Abilities { get; } = new List<ConstructionProduct>();// Умения, доступные в строении
+        internal List<ConstructionProduct> Services { get; } = new List<ConstructionProduct>();// Услуги, доступные в строении
         internal ConstructionProduct MainVisit { get; private set; }// Основное посещение сооружения
         internal ConstructionProduct CurrentVisit { get; private set; }// Текущее активное посещение сооружения
         internal CellMenuConstructionLevelUp CellMenuBuildOrLevelUp { get; private set; }// Действие для постройки/улучшения сооружения
@@ -1278,6 +1279,11 @@ namespace Fantasy_Kingdoms_Battle
                 Goods.Add(cp);
             }
 
+            if (cp.Product.DescriptorEntity is DescriptorService)
+            {
+                Services.Add(cp);
+            }
+
             if ((cp.DescriptorConstructionVisit != null) || (cp.DescriptorConstructionEvent != null))
             {
                 Debug.Assert(Visits.Count <= 1);
@@ -1351,6 +1357,7 @@ namespace Fantasy_Kingdoms_Battle
                 Visits.Remove(cp);
                 Goods.Remove(cp);
                 Abilities.Remove(cp);
+                Services.Remove(cp);
             }
             else
                 throw new Exception($"Неизвестная сущность {entity.Descriptor.ID}.");

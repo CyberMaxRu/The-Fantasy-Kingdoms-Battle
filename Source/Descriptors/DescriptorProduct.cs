@@ -71,6 +71,8 @@ namespace Fantasy_Kingdoms_Battle
                     EntityForConstruction = Construction.FindConstructionImprovement(nameEntity, false);
                 if (EntityForConstruction is null)
                     EntityForConstruction = Construction.FindConstructionTournament(nameEntity, false);
+                if (EntityForConstruction is null)
+                    EntityForConstruction = Construction.FindConstructionService(nameEntity, false);
             }
 
             Debug.Assert((DescriptorEntity != null) || (EntityForConstruction != null), $"Сущность {nameEntity} не найдена.");

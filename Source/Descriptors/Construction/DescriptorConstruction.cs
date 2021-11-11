@@ -197,6 +197,14 @@ namespace Fantasy_Kingdoms_Battle
                     Improvements.Add(new DescriptorConstructionImprovement(this, l));
             }
 
+            // Загружаем информацию об услугах
+            XmlNode nodeServices = n.SelectSingleNode("Services");
+            if (nodeServices != null)
+            {
+                foreach (XmlNode l in nodeServices.SelectNodes("Service"))
+                    Services.Add(new DescriptorConstructionService(this, l));
+            }
+
             // Загружаем информацию о товарах
             XmlNode np = n.SelectSingleNode("Products");
             if (np != null)
@@ -327,6 +335,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<DescriptorConstructionEvent> Events { get; } = new List<DescriptorConstructionEvent>();
         internal List<DescriptorConstructionTournament> Tournaments { get; } = new List<DescriptorConstructionTournament>();
         internal List<DescriptorConstructionImprovement> Improvements { get; } = new List<DescriptorConstructionImprovement>();
+        internal List<DescriptorConstructionService> Services { get; } = new List<DescriptorConstructionService>();
         internal List<DescriptorCellMenuForConstruction> ListResearches { get; } = new List<DescriptorCellMenuForConstruction>();
         internal DescriptorCellMenuForConstructionLevel[] Levels { get; }
 
@@ -478,6 +487,20 @@ namespace Fantasy_Kingdoms_Battle
 
             if (mustBeExists)
                 throw new Exception($"Улучшение {idEntity} не найдено в {ID}.");
+
+            return null;
+        }
+
+        internal DescriptorConstructionService FindConstructionService(string idEntity, bool mustBeExists = true)
+        {
+            foreach (DescriptorConstructionService dce in Services)
+            {
+                if (dce.ID == idEntity)
+                    return dce;
+            }
+
+            if (mustBeExists)
+                throw new Exception($"Услуга {idEntity} не найдена в {ID}.");
 
             return null;
         }
