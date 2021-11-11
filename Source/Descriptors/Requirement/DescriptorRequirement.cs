@@ -41,9 +41,9 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(level >= 0);
         }
 
-        public RequirementConstruction(DescriptorCellMenu forCellMenu, string name, int requiredLevel) : base(forCellMenu)
+        public RequirementConstruction(DescriptorCellMenu forCellMenu, string requiredConstruction, int requiredLevel) : base(forCellMenu)
         {
-            nameConstruction = name;
+            nameConstruction = requiredConstruction;
             level = requiredLevel;
         }
 
