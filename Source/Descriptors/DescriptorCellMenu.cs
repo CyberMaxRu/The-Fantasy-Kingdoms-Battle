@@ -24,9 +24,7 @@ namespace Fantasy_Kingdoms_Battle
             DaysProcessing = GetInteger(n, "DaysProcessing");
             Requirements = new ListDescriptorRequirements(this, n.SelectSingleNode("Requirements"));
             
-            Debug.Assert(Coord.X >= 0);
             Debug.Assert(Coord.X <= Config.PlateWidth - 1);
-            Debug.Assert(Coord.Y >= 0);
             Debug.Assert(Coord.Y <= Config.PlateHeight - 1);
         }
 

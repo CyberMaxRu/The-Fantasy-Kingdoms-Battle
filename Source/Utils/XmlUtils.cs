@@ -83,6 +83,9 @@ namespace Fantasy_Kingdoms_Battle
             if (!int.TryParse(parts[0], out int x) || !int.TryParse(parts[1], out int y))
                 throw new Exception($"Не могу распарсить координаты: {pos}.");
 
+            Debug.Assert(x > 0);
+            Debug.Assert(y > 0);
+
             return new Point(x - 1, y - 1);
         }
 
