@@ -86,6 +86,7 @@
     <Compile Include="Source\Descriptors\DescriptorWithID.cs" />
     <Compile Include="Source\Descriptors\Item\DescriptorResource.cs" />
     <Compile Include="Source\Descriptors\Location\DescriptorTypeLandscape.cs" />
+    <Compile Include="Source\Descriptors\Requirement\ListDescriptorRequirements.cs" />
     <Compile Include="Source\Descriptors\Requirement\RequirementConstruction.cs" />
     <Compile Include="Source\Descriptors\Requirement\RequirementDestroyedLairs.cs" />
     <Compile Include="Source\Descriptors\Requirement\RequirementExtension.cs" />

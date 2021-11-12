@@ -22,8 +22,8 @@ namespace Fantasy_Kingdoms_Battle
             Coord = GetPoint(n, "Pos");
             Cost = new ListBaseResources(n.SelectSingleNode("Cost"));
             DaysProcessing = GetInteger(n, "DaysProcessing");
-            LoadRequirements(this, Requirements, n);
-
+            Requirements = new ListDescriptorRequirements(this, n.SelectSingleNode("Requirements"));
+            
             Debug.Assert(Coord.X >= 0);
             Debug.Assert(Coord.X <= Config.PlateWidth - 1);
             Debug.Assert(Coord.Y >= 0);
@@ -37,7 +37,7 @@ namespace Fantasy_Kingdoms_Battle
             Coord = coord;
             Cost = new ListBaseResources(n.SelectSingleNode("Cost"));
             DaysProcessing = GetInteger(n, "DaysProcessing");
-            LoadRequirements(this, Requirements, n);
+            Requirements = new ListDescriptorRequirements(this, n.SelectSingleNode("Requirements"));
 
             Debug.Assert(Coord.X >= 0);
             Debug.Assert(Coord.X <= Config.PlateWidth - 1);
@@ -49,15 +49,13 @@ namespace Fantasy_Kingdoms_Battle
         internal Point Coord { get; }// Координаты ячейки
         internal ListBaseResources Cost { get; }// Стоимость
         internal int DaysProcessing { get; }// Количество дней для реализации действия
-        internal List<DescriptorRequirement> Requirements { get; } = new List<DescriptorRequirement>();// Список требований
+        internal ListDescriptorRequirements Requirements { get; }// Список требований
 
         internal override void TuneLinks()
         {
             base.TuneLinks();
 
-            foreach (DescriptorRequirement r in Requirements)
-                r.TuneLinks();
+            Requirements.TuneLinks();
         }
     }
-
 }
