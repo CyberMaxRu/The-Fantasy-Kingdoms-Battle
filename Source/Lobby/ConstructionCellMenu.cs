@@ -18,7 +18,7 @@ namespace Fantasy_Kingdoms_Battle
             PosInQueue = 0;
         }
 
-        internal static Config Config { get; set; }
+        internal static Descriptors Config { get; set; }
         internal DescriptorCellMenu Descriptor { get; }
 
         internal int DaysProcessed { get; set; }// Количество дней, прошедшее с начала обработки действия ячейки

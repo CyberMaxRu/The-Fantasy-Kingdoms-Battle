@@ -571,10 +571,10 @@ namespace Fantasy_Kingdoms_Battle
                 labelBuilders.ShowHint += LabelBuilders_ShowHint;
                 labelBuilders.Width = 88;
 
-                labelsResources = new VCToolLabelResource[Config.BaseResources.Count];
+                labelsResources = new VCToolLabelResource[Descriptors.BaseResources.Count];
 
                 int nextLeft = labelBuilders.NextLeft() - 4;
-                foreach (DescriptorBaseResource br in Config.BaseResources)
+                foreach (DescriptorBaseResource br in Descriptors.BaseResources)
                 {
                     VCToolLabelResource lblRes = new VCToolLabelResource(bmpPreparedToolbar, nextLeft, labelDay.ShiftY, br);
                     lblRes.Width = 88;
@@ -1259,6 +1259,7 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal static Config Config { get; set; }
+        internal static Descriptors Descriptors { get; set; }
 
         internal void ShowCurrentPlayerLobby()
         {
@@ -1453,7 +1454,7 @@ namespace Fantasy_Kingdoms_Battle
 
             // Проходим по каждому зданию, создавая ему панель
             VisualControl parent;
-            foreach (DescriptorConstruction tck in Config.Constructions)
+            foreach (DescriptorConstruction tck in Descriptors.Constructions)
             {
                 if (tck.IsInternalConstruction)
                 {

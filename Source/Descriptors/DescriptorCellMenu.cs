@@ -31,14 +31,6 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal DescriptorActiveEntity ActiveEntity { get; }
-        internal DescriptorEntityForActiveEntity EntityForCreate { get; private set; }
         internal Point Coord { get; }// Координаты ячейки в меню
-
-        internal override void TuneLinks()
-        {
-            base.TuneLinks();
-
-            EntityForCreate = ActiveEntity. nameEntityForCreate
-        }
     }
 }
