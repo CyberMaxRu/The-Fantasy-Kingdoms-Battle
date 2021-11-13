@@ -10,9 +10,9 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal sealed class DescriptorCellMenuForConstructionLevel : DescriptorCellMenuForConstruction
+    internal sealed class DescriptorConstructionLevel : DescriptorEntityForConstruction
     {
-        public DescriptorCellMenuForConstructionLevel(DescriptorConstruction forConstruction, int number, Point coord, XmlNode n) : base(forConstruction, coord, n)
+        public DescriptorConstructionLevel(DescriptorConstruction forConstruction, int number, Point coord, XmlNode n) : base(forConstruction, coord, n)
         {
             Number = number;
             Builders = GetInteger(n, "Builders");
@@ -66,6 +66,11 @@ namespace Fantasy_Kingdoms_Battle
         internal ListSmallEntity Extensions { get; }// Сущности, относящиеся к уровню
         internal DescriptorConstructionVisit DescriptorVisit { get; }// Товар для посещения сооружения
         internal ListDescriptorPerks ListPerks { get; }// Перки, которые дает уровень сооружения
+
+        internal override string GetTypeEntity()
+        {
+            return "Повышение уровня";
+        }
 
         internal override void TuneLinks()
         {

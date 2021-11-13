@@ -11,7 +11,7 @@ namespace Fantasy_Kingdoms_Battle
 
 
     // Базовый тип существа
-    internal sealed class DescriptorCreature : DescriptorEntity
+    internal sealed class DescriptorCreature : DescriptorActiveEntity
     {
         private string nameMeleeWeapon;
         private string nameRangeWeapon;

@@ -17,7 +17,7 @@ namespace Fantasy_Kingdoms_Battle
         private DescriptorConstruction construction;
         private DescriptorProduct goods;
 
-        public RequirementGoods(DescriptorCellMenu forCellMenu, XmlNode n) : base(forCellMenu, n)
+        public RequirementGoods(DescriptorSmallEntity forEntity, XmlNode n) : base(forEntity, n)
         {
             nameConstruction = XmlUtils.GetStringNotNull(n, "Construction");
             nameGoods = XmlUtils.GetStringNotNull(n, "Goods");
@@ -39,7 +39,7 @@ namespace Fantasy_Kingdoms_Battle
             nameGoods = "";
 
             bool founded = false;
-            foreach (DescriptorCellMenuForConstruction cm in construction.ListResearches)
+            foreach (DescriptorCellMenuForConstruction cm in construction.CellsMenu)
             {
                 if (cm.NameEntity == goods.ID)
                 {

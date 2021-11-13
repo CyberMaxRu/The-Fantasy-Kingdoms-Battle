@@ -14,7 +14,7 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal class ListDescriptorRequirements : List<DescriptorRequirement>
     {
-        public ListDescriptorRequirements(DescriptorCellMenu forCellMenu, XmlNode n)
+        public ListDescriptorRequirements(DescriptorSmallEntity forEntity, XmlNode n)
         {
             if (n != null)
             {
@@ -23,22 +23,22 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     type = GetStringNotNull(r, "TypeRequirement");
                     if (type == "BuildedConstruction")
-                        Add(new RequirementConstruction(forCellMenu, r));
+                        Add(new RequirementConstruction(forEntity, r));
                     else if (type == "DestroyedLairs")
-                        Add(new RequirementDestroyedLairs(forCellMenu, r));
+                        Add(new RequirementDestroyedLairs(forEntity, r));
                     else if (type == "BuildedTypeConstruction")
-                        Add(new RequirementTypeConstruction(forCellMenu, r));
+                        Add(new RequirementTypeConstruction(forEntity, r));
                     else if (type == "GoodsInConstruction")
-                        Add(new RequirementGoods(forCellMenu, r));
+                        Add(new RequirementGoods(forEntity, r));
                     else if (type == "ExtensionInConstruction")
-                        Add(new RequirementExtension(forCellMenu, r));
+                        Add(new RequirementExtension(forEntity, r));
                     else
                         throw new Exception($"Неизвестный тип условия: {type}.");
                 }
             }
         }
 
-        internal DescriptorCellMenu CellMenu { get; }
+        internal DescriptorSmallEntity ForEntity { get; }
 
         internal void TuneLinks()
         {

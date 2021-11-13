@@ -93,7 +93,7 @@ namespace Fantasy_Kingdoms_Battle
                 case TypeCellMenuForConstruction.Event:
                     return new CellMenuConstructionEvent(c, d);
                 case TypeCellMenuForConstruction.LevelUp:
-                    return new CellMenuConstructionLevelUp(c, d as DescriptorCellMenuForConstructionLevel);
+                    return new CellMenuConstructionLevelUp(c, d as DescriptorConstructionLevel);
                 case TypeCellMenuForConstruction.Extension:
                     return new CellMenuConstructionExtension(c, d);
                 case TypeCellMenuForConstruction.Improvement:
@@ -283,7 +283,7 @@ namespace Fantasy_Kingdoms_Battle
 
     internal sealed class CellMenuConstructionLevelUp : ConstructionCellMenu
     {
-        public CellMenuConstructionLevelUp(Construction c, DescriptorCellMenuForConstructionLevel d) : base(c, d)
+        public CellMenuConstructionLevelUp(Construction c, DescriptorConstructionLevel d) : base(c, d)
         {
             Descriptor = d;
         }
@@ -293,7 +293,7 @@ namespace Fantasy_Kingdoms_Battle
             Construction.Build(true);
         }
 
-        internal new DescriptorCellMenuForConstructionLevel Descriptor { get; }
+        internal new DescriptorConstructionLevel Descriptor { get; }
 
         protected override bool ConstructionMustMeConstructed() => false;
 

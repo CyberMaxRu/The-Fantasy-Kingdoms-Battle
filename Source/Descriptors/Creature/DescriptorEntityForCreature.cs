@@ -8,7 +8,7 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal abstract class DescriptorEntityForCreature : DescriptorSmallEntity
+    internal abstract class DescriptorEntityForCreature : DescriptorEntityForActiveEntity
     {
         public DescriptorEntityForCreature(XmlNode n) : base(n)
         {

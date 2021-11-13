@@ -16,7 +16,7 @@ namespace Fantasy_Kingdoms_Battle
     internal enum TypeFlag { None, Scout, Attack, Defense, Battle };// Тип флага
 
     // Тип сооружения - базовый класс для всех зданий, построек и мест
-    internal sealed class DescriptorConstruction : DescriptorEntity
+    internal sealed class DescriptorConstruction : DescriptorActiveEntity
     {
         private readonly Uri uriSoundSelect;// Звук при выборе объекта
         private string nameTypePlaceForConstruct;
@@ -87,12 +87,12 @@ namespace Fantasy_Kingdoms_Battle
             if ((IsOurConstruction || (n.SelectSingleNode("Levels") != null)) && (MaxLevel > 0))
             {
                 // Для удобства уровень равен номеру позиции в массиве
-                Levels = new DescriptorCellMenuForConstructionLevel[MaxLevel + 1];
+                Levels = new DescriptorConstructionLevel[MaxLevel + 1];
 
                 XmlNode nl = n.SelectSingleNode("Levels");
                 if (nl != null)
                 {
-                    DescriptorCellMenuForConstructionLevel level;
+                    DescriptorConstructionLevel level;
                     int number;
 
                     foreach (XmlNode l in nl.SelectNodes("Level"))
@@ -100,7 +100,7 @@ namespace Fantasy_Kingdoms_Battle
                         number = GetIntegerNotNull(l, "Number");
                         Debug.Assert(number > 0);
                         Debug.Assert(Levels[number] == null);
-                        level = new DescriptorCellMenuForConstructionLevel(this, number, new Point(0, number - 1), l);
+                        level = new DescriptorConstructionLevel(this, number, new Point(0, number - 1), l);
                         if (number > 1)
                             level.Requirements.Insert(0, new RequirementConstruction(level, ID, number - 1));
 
@@ -120,7 +120,7 @@ namespace Fantasy_Kingdoms_Battle
 
                         Levels[number] = level;
                         CheckFreeCellMenu(level.Coord);
-                        ListResearches.Add(level);
+                        CellsMenu.Add(level);
                     }
 
                     Debug.Assert(Levels[0] is null);
@@ -150,6 +150,7 @@ namespace Fantasy_Kingdoms_Battle
                     }
 
                     Extensions.Add(ce);
+                    AddEntity(ce);
                 }
             }
 
@@ -234,12 +235,12 @@ namespace Fantasy_Kingdoms_Battle
                     research = new DescriptorCellMenuForConstruction(this, l);
                     CheckFreeCellMenu(research.Coord);
 
-                    foreach (DescriptorCellMenu tcm in ListResearches)
+                    foreach (DescriptorCellMenu tcm in CellsMenu)
                     {
                         //Debug.Assert(research.Construction. NameTypeObject != tcm.NameTypeObject, $"У {ID} в меню повторяется объект {research.NameTypeObject}.");
                     }
 
-                    ListResearches.Add(research);
+                    CellsMenu.Add(research);
                 }
             }
 
@@ -310,7 +311,7 @@ namespace Fantasy_Kingdoms_Battle
 
             void CheckFreeCellMenu(Point p)
             {
-                foreach (DescriptorCellMenuForConstruction cm in ListResearches)
+                foreach (DescriptorCellMenuForConstruction cm in CellsMenu)
                 {
                     Debug.Assert(!cm.Coord.Equals(p), $"У {ID} в ячейке ({p.X + 1}, {p.Y + 1}) уже есть сущность.");
                 }
@@ -336,8 +337,8 @@ namespace Fantasy_Kingdoms_Battle
         internal List<DescriptorConstructionTournament> Tournaments { get; } = new List<DescriptorConstructionTournament>();
         internal List<DescriptorConstructionImprovement> Improvements { get; } = new List<DescriptorConstructionImprovement>();
         internal List<DescriptorConstructionService> Services { get; } = new List<DescriptorConstructionService>();
-        internal List<DescriptorCellMenuForConstruction> ListResearches { get; } = new List<DescriptorCellMenuForConstruction>();
-        internal DescriptorCellMenuForConstructionLevel[] Levels { get; }
+        internal List<DescriptorCellMenuForConstruction> CellsMenu { get; } = new List<DescriptorCellMenuForConstruction>();
+        internal DescriptorConstructionLevel[] Levels { get; }
 
         //
         internal PanelConstruction Panel { get; set; }
@@ -375,7 +376,7 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorConstructionEvent ce in Events)
                 ce.TuneLinks();
 
-            foreach (DescriptorCellMenuForConstruction cm in ListResearches)
+            foreach (DescriptorCellMenuForConstruction cm in CellsMenu)
                 cm.TuneLinks();
 
             foreach (MonsterLevelLair mll in Monsters)
@@ -395,7 +396,7 @@ namespace Fantasy_Kingdoms_Battle
             nameTypePlaceForConstruct = null;
 
             if ((DefaultLevel == 1) && (Levels != null) && (Levels[1] != null))// Убрать вторую проверку после доработки логов
-                ListResearches.Remove(Levels[1]);
+                CellsMenu.Remove(Levels[1]);
         }
 
         internal override void AfterTuneLinks()

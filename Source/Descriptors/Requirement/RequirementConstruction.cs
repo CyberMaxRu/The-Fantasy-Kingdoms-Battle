@@ -15,7 +15,7 @@ namespace Fantasy_Kingdoms_Battle
         private string nameConstruction;
         private int level;
 
-        public RequirementConstruction(DescriptorCellMenu forCellMenu, XmlNode n) : base(forCellMenu, n)
+        public RequirementConstruction(DescriptorSmallEntity forEntity, XmlNode n) : base(forEntity, n)
         {
             nameConstruction = XmlUtils.GetStringNotNull(n, "Construction");
             level = XmlUtils.GetInteger(n, "Level");

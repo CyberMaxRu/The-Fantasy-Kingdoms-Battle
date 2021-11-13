@@ -11,7 +11,7 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class DescriptorConstructionVisit : DescriptorEntityForConstruction
     {
-        public DescriptorConstructionVisit(DescriptorCellMenuForConstructionLevel level, XmlNode n) : base(level.ForConstruction, n)
+        public DescriptorConstructionVisit(DescriptorConstructionLevel level, XmlNode n) : base(level.ForConstruction, n)
         {
             Debug.Assert(Interest >= 0);
             Debug.Assert(Interest <= 100);
@@ -31,7 +31,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal DescriptorCellMenuForConstructionLevel ConstructionLevel { get; }
+        internal DescriptorConstructionLevel ConstructionLevel { get; }
         internal int Interest { get; }// Интерес для посещения сооружения
         internal ListNeeds ListNeeds { get; }
 

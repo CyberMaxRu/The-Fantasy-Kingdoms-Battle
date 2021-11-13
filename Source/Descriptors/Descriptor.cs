@@ -1,5 +1,6 @@
 ﻿namespace Fantasy_Kingdoms_Battle
 {
+    // Базовый класс описателя
     internal abstract class Descriptor
     {
         internal static Config Config { get; set; }

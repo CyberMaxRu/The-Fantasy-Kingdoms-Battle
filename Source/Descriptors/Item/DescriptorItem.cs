@@ -170,10 +170,10 @@ namespace Fantasy_Kingdoms_Battle
 
                 foreach (DescriptorCellMenu cm in UseForResearch)
                 {
-                    if (cm is DescriptorCellMenuForConstructionLevel cmcl)
+                    if (cm is DescriptorConstructionLevel cmcl)
                         Description += Environment.NewLine + "    - { " + cmcl.ForEntity.Name + " (" + cmcl.Number.ToString() + " ур.)}";
                     else if (cm is DescriptorCellMenuForConstruction cmc)
-                        Description += Environment.NewLine + "    - {" + cmc.Entity.Name + "} ({" + cm.ForEntity.Name + "})";
+                        Description += Environment.NewLine + "    - {" + cmc.Entity.Name + "} ({" + cm.ActiveEntity.Name + "})";
                 }
             }
         }

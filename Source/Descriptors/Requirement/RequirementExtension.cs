@@ -16,7 +16,7 @@ namespace Fantasy_Kingdoms_Battle
         private DescriptorConstructionExtension Extension;
         private string nameExtension;
 
-        public RequirementExtension(DescriptorCellMenu forCellMenu, XmlNode n) : base(forCellMenu, n)
+        public RequirementExtension(DescriptorSmallEntity forEntity, XmlNode n) : base(forEntity, n)
         {
             nameConstruction = XmlUtils.GetStringNotNull(n, "Construction");
             nameExtension = XmlUtils.GetStringNotNull(n, "Extension");
@@ -40,7 +40,7 @@ namespace Fantasy_Kingdoms_Battle
             nameExtension = "";
 
             bool founded = false;
-            foreach (DescriptorCellMenuForConstruction cm in Construction.ListResearches)
+            foreach (DescriptorCellMenuForConstruction cm in Construction.CellsMenu)
                 if (cm.NameEntity == Extension.ID)
                 {
                     //cm.UseForResearches.Add(Goods);
@@ -48,11 +48,11 @@ namespace Fantasy_Kingdoms_Battle
                     break;
                 }
 
-            if (ForCellMenu is DescriptorCellMenuForConstruction cmc)
-                Debug.Assert(Extension.ID != cmc.NameEntity, $"Расширение {Extension.ID} требует само себя.");
+            if (ForEntity is DescriptorConstructionExtension dce)
+                Debug.Assert(Extension.ID != dce.ID, $"Расширение {Extension.ID} требует само себя.");
             Debug.Assert(founded, $"Расширение {Extension.ID} не найдено в {Construction.ID}.");
 
-            Extension.UseForResearch.Add(ForCellMenu);
+            Extension.UseForResearch.Add(ForEntity);
         }
 
         internal override TextRequirement GetTextRequirement(Player p)
