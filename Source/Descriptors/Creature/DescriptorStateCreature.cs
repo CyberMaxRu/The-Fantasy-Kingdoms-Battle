@@ -16,7 +16,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         public DescriptorStateCreature(XmlNode n) : base(n)
         {
-            foreach (DescriptorStateCreature sc in Config.StatesCreature)
+            foreach (DescriptorStateCreature sc in Descriptors.StatesCreature)
             {
                 Debug.Assert(sc.ID != ID);
                 Debug.Assert(sc.Name != Name);

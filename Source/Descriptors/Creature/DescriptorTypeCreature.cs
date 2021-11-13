@@ -10,7 +10,7 @@ namespace Fantasy_Kingdoms_Battle
         public DescriptorTypeCreature(XmlNode n) : base(n)
         {
             // Проверяем, что таких же ID и наименования нет
-            foreach (DescriptorTypeCreature kc in Config.TypeCreatures)
+            foreach (DescriptorTypeCreature kc in Descriptors.TypeCreatures)
             {
                 Debug.Assert(kc.ID != ID);
                 Debug.Assert(kc.Name != Name);

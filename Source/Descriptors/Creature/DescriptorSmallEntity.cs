@@ -51,7 +51,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<DescriptorCreature> AvailableForHeroes { get; } = new List<DescriptorCreature>();
         internal List<DescriptorSmallEntity> UseForResearch { get; } = new List<DescriptorSmallEntity>();
 
-        protected override int ShiftImageIndex() => Config.ImageIndexFirstItems;
+        protected override int ShiftImageIndex() => Descriptors.ImageIndexFirstItems;
         protected virtual bool ForHeroes() => true;
 
         internal override void TuneLinks()
@@ -72,7 +72,7 @@ namespace Fantasy_Kingdoms_Battle
             if (availableForHeroesString != null)
             {
                 foreach (string nameHero in availableForHeroesString)
-                    AvailableForHeroes.Add(Config.FindCreature(nameHero));
+                    AvailableForHeroes.Add(Descriptors.FindCreature(nameHero));
 
                 availableForHeroesString = null;
             }

@@ -29,7 +29,7 @@ namespace Fantasy_Kingdoms_Battle
             XmlDocument xmlDoc;
 
             // Загружаем конфигурацию игры
-            Descriptor.Config = this;
+            Descriptor.Descriptors = this;
             CellMenu.Config = this;
 
             xmlDoc = CreateXmlDocument("Config\\Game.xml");

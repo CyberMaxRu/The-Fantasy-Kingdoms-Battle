@@ -24,7 +24,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     idProperty = np.ChildNodes[i].Name;
                     valueProperty = Convert.ToInt32(np.ChildNodes[i].InnerText);
-                    dpc = Config.FindPropertyCreature(idProperty);
+                    dpc = Descriptors.FindPropertyCreature(idProperty);
 
                     // Проверяем, что нет повтора свойства
                     foreach ((DescriptorPropertyCreature, int) dpc2 in ListProperty)
@@ -41,7 +41,7 @@ namespace Fantasy_Kingdoms_Battle
             //Debug.Assert(Enthusiasm >= 0);
             //Debug.Assert(Luck >= 0);
 
-            foreach (DescriptorPerk dp in Config.Perks)
+            foreach (DescriptorPerk dp in Descriptors.Perks)
             {
                 Debug.Assert(dp.ID != ID);
                 Debug.Assert(dp.Name != Name);

@@ -121,7 +121,7 @@ namespace Fantasy_Kingdoms_Battle
                 foreach (XmlNode nnl in nn.SelectNodes("Need"))
                 {
                     NameNeedCreature idNeed = (NameNeedCreature)Enum.Parse(typeof(NameNeedCreature), GetStringNotNull(nnl, "ID"));
-                    DescriptorCreatureNeed cn = new DescriptorCreatureNeed(Config.FindNeedCreature(idNeed), nnl);
+                    DescriptorCreatureNeed cn = new DescriptorCreatureNeed(Descriptors.FindNeedCreature(idNeed), nnl);
 
                     foreach (DescriptorCreatureNeed cn2 in Needs)
                     {
@@ -383,7 +383,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.TuneLinks();
 
-            Descriptor = Config.FindConstruction(nameConstruction);
+            Descriptor = Descriptors.FindConstruction(nameConstruction);
             nameConstruction = "";
         }
     }

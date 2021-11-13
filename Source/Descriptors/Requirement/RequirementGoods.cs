@@ -33,8 +33,8 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.TuneLinks();
 
-            construction = Config.FindConstruction(nameConstruction);
-            goods = Config.FindProduct(nameGoods);
+            construction = Descriptors.FindConstruction(nameConstruction);
+            goods = Descriptors.FindProduct(nameGoods);
             nameConstruction = "";
             nameGoods = "";
 

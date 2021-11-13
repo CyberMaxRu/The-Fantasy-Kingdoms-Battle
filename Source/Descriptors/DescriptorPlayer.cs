@@ -23,6 +23,6 @@ namespace Fantasy_Kingdoms_Battle
 
         internal TypePlayer TypePlayer { get; }
 
-        protected override int ShiftImageIndex() => Config.ImageIndexFirstAvatar;
+        protected override int ShiftImageIndex() => Descriptors.ImageIndexFirstAvatar;
     }
 }

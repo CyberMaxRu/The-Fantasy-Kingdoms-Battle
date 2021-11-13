@@ -26,8 +26,8 @@ namespace Fantasy_Kingdoms_Battle
 
             Coord = coord;
 
-            Debug.Assert(Coord.X <= Config.PlateWidth - 1);
-            Debug.Assert(Coord.Y <= Config.PlateHeight - 1);
+            Debug.Assert(Coord.X <= Descriptors.PlateWidth - 1);
+            Debug.Assert(Coord.Y <= Descriptors.PlateHeight - 1);
         }
 
         internal DescriptorActiveEntity ActiveEntity { get; }

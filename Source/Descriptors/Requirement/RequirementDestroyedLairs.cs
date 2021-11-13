@@ -35,7 +35,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.TuneLinks();
 
-            construction = Config.FindConstruction(nameConstruction);
+            construction = Descriptors.FindConstruction(nameConstruction);
             nameConstruction = "";
 
             Debug.Assert(construction.Category == CategoryConstruction.Lair);

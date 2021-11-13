@@ -15,7 +15,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         public DescriptorPropertyCreature(XmlNode n) : base(n)
         {
-            Index = Config.PropertiesCreature.Count;
+            Index = Descriptors.PropertiesCreature.Count;
             NameType = GetStringNotNull(n, "NameType");
             MinValue = GetIntegerNotNull(n, "MinValue");
             MaxValue = GetIntegerNotNull(n, "MaxValue");

@@ -12,7 +12,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         public DescriptorResource(XmlNode n) : base(n)
         {
-            foreach (DescriptorResource dr in Config.Resources)
+            foreach (DescriptorResource dr in Descriptors.Resources)
             {
                 Debug.Assert(dr.ID != ID);
                 Debug.Assert(dr.Name != Name);

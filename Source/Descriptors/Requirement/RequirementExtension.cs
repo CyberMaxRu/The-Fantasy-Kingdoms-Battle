@@ -34,7 +34,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.TuneLinks();
 
-            Construction = Config.FindConstruction(nameConstruction);
+            Construction = Descriptors.FindConstruction(nameConstruction);
             Extension = Construction.FindExtension(nameExtension, true);
             nameConstruction = "";
             nameExtension = "";

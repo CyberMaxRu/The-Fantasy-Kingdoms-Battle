@@ -17,7 +17,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         public DescriptorAbility(XmlNode n) : base(n)
         {
-            TypeAbility = Config.FindTypeAbility(XmlUtils.GetStringNotNull(n, "TypeAbility"));
+            TypeAbility = Descriptors.FindTypeAbility(XmlUtils.GetStringNotNull(n, "TypeAbility"));
             TypeTarget = (TypeTarget)Enum.Parse(typeof(TypeTarget), n.SelectSingleNode("TypeTarget").InnerText);
             MinUnitLevel = Convert.ToInt32(n.SelectSingleNode("MinUnitLevel").InnerText);
             Ranged = Convert.ToBoolean(n.SelectSingleNode("Ranged").InnerText);
@@ -28,7 +28,7 @@ namespace Fantasy_Kingdoms_Battle
             ManaCost = n.SelectSingleNode("ManaCost") != null ? Convert.ToInt32(n.SelectSingleNode("ManaCost").InnerText) : 0;
 
             // Проверяем, что таких же ID и наименования нет
-            foreach (DescriptorAbility a in Config.Abilities)
+            foreach (DescriptorAbility a in Descriptors.Abilities)
             {
                 if (a.ID == ID)
                     throw new Exception("В конфигурации способностей повторяется ID = " + ID);

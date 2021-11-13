@@ -3,7 +3,7 @@
     // Базовый класс описателя
     internal abstract class Descriptor
     {
-        internal static Config Config { get; set; }
+        internal static Config Descriptors { get; set; }
 
         internal virtual void TuneLinks() { }
 

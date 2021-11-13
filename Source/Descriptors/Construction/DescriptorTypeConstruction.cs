@@ -12,7 +12,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         public DescriptorTypeConstruction(XmlNode n) : base(n)
         {
-            foreach (DescriptorTypeConstruction tc in Config.TypeConstructions)
+            foreach (DescriptorTypeConstruction tc in Descriptors.TypeConstructions)
             {
                 Debug.Assert(tc.ID != ID);
                 Debug.Assert(tc.Name != Name);

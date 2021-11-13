@@ -24,11 +24,11 @@ namespace Fantasy_Kingdoms_Battle
         public DescriptorConstruction(XmlNode n) : base(n)
         {
             if (GetString(n, "TypeConstruction").Length > 0)
-                TypeConstruction = Config.FindTypeConstruction(GetString(n, "TypeConstruction"));
+                TypeConstruction = Descriptors.FindTypeConstruction(GetString(n, "TypeConstruction"));
             Category = (CategoryConstruction)Enum.Parse(typeof(CategoryConstruction), GetStringNotNull(n, "Category"));
             IsInternalConstruction = (Category == CategoryConstruction.Guild) || (Category == CategoryConstruction.Economic) || (Category == CategoryConstruction.Temple) || (Category == CategoryConstruction.Military);
             IsOurConstruction = IsInternalConstruction || (Category == CategoryConstruction.External);
-            HasTreasury = (Category == CategoryConstruction.Guild) || (Category == CategoryConstruction.Temple) || (ID == Config.IDConstructionCastle);
+            HasTreasury = (Category == CategoryConstruction.Guild) || (Category == CategoryConstruction.Temple) || (ID == Descriptors.IDConstructionCastle);
             uriSoundSelect = new Uri(Program.formMain.dirResources + @"Sound\Interface\ConstructionSelect\" + GetStringNotNull(n, "SoundSelect"));
             nameTypePlaceForConstruct = GetString(n, "TypePlaceForConstruct");
             Debug.Assert(Name != nameTypePlaceForConstruct);
@@ -76,7 +76,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Проверяем, что таких же ID и наименования нет
-            foreach (DescriptorConstruction tec in Config.Constructions)
+            foreach (DescriptorConstruction tec in Descriptors.Constructions)
             {
                 Debug.Assert(tec.ID != ID);
                 Debug.Assert(tec.Name != Name);
@@ -391,7 +391,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             if (nameTypePlaceForConstruct.Length > 0)
-                TypePlaceForConstruct = Config.FindConstruction(nameTypePlaceForConstruct);
+                TypePlaceForConstruct = Descriptors.FindConstruction(nameTypePlaceForConstruct);
 
             nameTypePlaceForConstruct = null;
 

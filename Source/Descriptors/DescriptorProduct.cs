@@ -23,12 +23,12 @@ namespace Fantasy_Kingdoms_Battle
             Duration = GetIntegerNotNull(n, "Duration", ID);
             InternalRefresh = GetIntegerNotNull(n, "InternalRefresh", ID);
 
-            foreach (DescriptorProduct pd in Config.ConstructionProducts)
+            foreach (DescriptorProduct pd in Descriptors.ConstructionProducts)
             {
                 Debug.Assert(pd.ID != ID);
             }
 
-            Config.ConstructionProducts.Add(this);
+            Descriptors.ConstructionProducts.Add(this);
         }
 
         internal DescriptorEntityForCreature DescriptorEntity { get; private set; }
@@ -57,13 +57,13 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.TuneLinks();
 
-            DescriptorEntity = Config.FindAbility(nameEntity, false);
+            DescriptorEntity = Descriptors.FindAbility(nameEntity, false);
             if (DescriptorEntity is null)
-                DescriptorEntity = Config.FindItem(nameEntity, false);
+                DescriptorEntity = Descriptors.FindItem(nameEntity, false);
             if (DescriptorEntity is null)
-                DescriptorEntity = Config.FindGroupItem(nameEntity, false);
+                DescriptorEntity = Descriptors.FindGroupItem(nameEntity, false);
             if ( DescriptorEntity is null)
-                DescriptorEntity = Config.FindGroupItem(nameEntity, false);
+                DescriptorEntity = Descriptors.FindGroupItem(nameEntity, false);
             if (DescriptorEntity is null)
             {
                 EntityForConstruction = Construction.FindConstructionEvent(nameEntity, false);

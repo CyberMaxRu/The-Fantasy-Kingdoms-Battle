@@ -17,7 +17,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             ShortName = XmlUtils.GetStringNotNull(n, "ShortName");
             NameTypeAbility = (NameTypeAbility)Enum.Parse(typeof(NameTypeAbility), ID);
-            Pos = Config.TypeAbilities.Count + 1;
+            Pos = Descriptors.TypeAbilities.Count + 1;
         }
 
         internal string ShortName { get; }
