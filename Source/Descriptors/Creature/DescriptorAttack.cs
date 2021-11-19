@@ -18,7 +18,7 @@ namespace Fantasy_Kingdoms_Battle
             KindAttack = (KindAttack)Enum.Parse(typeof(KindAttack), XmlUtils.GetStringNotNull(n, "KindAttack"));
             IsWeapon = XmlUtils.GetBooleanNotNull(n, "IsWeapon");
 
-            foreach (DescriptorAttack ta in FormMain.Config.TypeAttacks)
+            foreach (DescriptorAttack ta in FormMain.Descriptors.TypeAttacks)
             {
                 Debug.Assert(ta.ID != ID);
                 Debug.Assert(ta.Name != Name);

@@ -203,7 +203,7 @@ namespace Fantasy_Kingdoms_Battle
             }*/
 
             // Инициализируем удовлетворяемые потребности
-            SatisfactionNeeds = new int[FormMain.Config.NeedsCreature.Count];
+            SatisfactionNeeds = new int[FormMain.Descriptors.NeedsCreature.Count];
             if (TypeConstruction.Levels[Level].DescriptorVisit != null)
             {
                 foreach ((DescriptorNeed, int) need in TypeConstruction.Levels[Level].DescriptorVisit.ListNeeds)

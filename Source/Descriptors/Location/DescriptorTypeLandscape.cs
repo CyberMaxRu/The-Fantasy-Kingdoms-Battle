@@ -48,7 +48,7 @@ namespace Fantasy_Kingdoms_Battle
 
             foreach (string name in nameElements)
             {
-                Elements.Add(FormMain.Config.FindConstruction(name));
+                Elements.Add(FormMain.Descriptors.FindConstruction(name));
             }
 
             nameElements = null;

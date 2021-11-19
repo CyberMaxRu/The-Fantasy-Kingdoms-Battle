@@ -12,15 +12,15 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class ListBaseResources : List<BaseResource>
     #pragma warning restore CS0659 // Тип переопределяет Object.Equals(object o), но не переопределяет Object.GetHashCode()
     {
-        public ListBaseResources() : base(FormMain.Config.BaseResources.Count)
+        public ListBaseResources() : base(FormMain.Descriptors.BaseResources.Count)
         {
-            foreach (DescriptorBaseResource br in FormMain.Config.BaseResources)
+            foreach (DescriptorBaseResource br in FormMain.Descriptors.BaseResources)
                 Add(new BaseResource(br));
         }
 
-        public ListBaseResources(XmlNode n) : base(FormMain.Config.BaseResources.Count)
+        public ListBaseResources(XmlNode n) : base(FormMain.Descriptors.BaseResources.Count)
         {
-            foreach (DescriptorBaseResource br in FormMain.Config.BaseResources)
+            foreach (DescriptorBaseResource br in FormMain.Descriptors.BaseResources)
                 Add(new BaseResource(br));
 
             if (n != null)
@@ -29,7 +29,7 @@ namespace Fantasy_Kingdoms_Battle
                 for (int i = 0; i < n.ChildNodes.Count; i++)
                 {
                     int value = Convert.ToInt32(n.ChildNodes[i].InnerText);
-                    res = FormMain.Config.FindBaseResource(n.ChildNodes[i].Name);
+                    res = FormMain.Descriptors.FindBaseResource(n.ChildNodes[i].Name);
                     Debug.Assert(this[res.Number].Quantity == 0);
                     Debug.Assert(value >= 0);
 
@@ -38,9 +38,9 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        public ListBaseResources(ListBaseResources qbr) : base(FormMain.Config.BaseResources.Count)
+        public ListBaseResources(ListBaseResources qbr) : base(FormMain.Descriptors.BaseResources.Count)
         {
-            foreach (DescriptorBaseResource br in FormMain.Config.BaseResources)
+            foreach (DescriptorBaseResource br in FormMain.Descriptors.BaseResources)
                 Add(new BaseResource(br));
 
             for (int i = 0; i < Count; i++)
@@ -49,12 +49,12 @@ namespace Fantasy_Kingdoms_Battle
             }    
         }
 
-        public ListBaseResources(int gold) : base(FormMain.Config.BaseResources.Count)
+        public ListBaseResources(int gold) : base(FormMain.Descriptors.BaseResources.Count)
         {
-            foreach (DescriptorBaseResource br in FormMain.Config.BaseResources)
+            foreach (DescriptorBaseResource br in FormMain.Descriptors.BaseResources)
                 Add(new BaseResource(br));
 
-            this[FormMain.Config.Gold.Number].Quantity = gold;
+            this[FormMain.Descriptors.Gold.Number].Quantity = gold;
         }
 
         internal void AddResources(ListBaseResources qbr)
@@ -78,7 +78,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int ValueGold()
         {
-            return this[FormMain.Config.Gold.Number].Quantity;
+            return this[FormMain.Descriptors.Gold.Number].Quantity;
         }
 
         internal bool ResourcesEnough(ListBaseResources listOther)

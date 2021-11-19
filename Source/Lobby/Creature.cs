@@ -29,8 +29,8 @@ namespace Fantasy_Kingdoms_Battle
                 AddAbility(ta);
             SortAbilities();
 
-            Specialization = new Specialization(this, FormMain.Config.FindSpecialization("SpeedMove"));
-            AddSecondarySkill(FormMain.Config.FindSecondarySkill("HealthSecSkill"));
+            Specialization = new Specialization(this, FormMain.Descriptors.FindSpecialization("SpeedMove"));
+            AddSecondarySkill(FormMain.Descriptors.FindSecondarySkill("HealthSecSkill"));
 
             // Загружаем дефолтный инвентарь
             foreach ((DescriptorItem, int) inv in TypeCreature.Inventory)
@@ -116,10 +116,10 @@ namespace Fantasy_Kingdoms_Battle
         internal DescriptorStateCreature StateCreature { get; private set; }// Состояние (на карте)
 
         // Характеристики
-        internal CreatureProperty Honor { get; } = new CreatureProperty(FormMain.Config.FindPropertyCreature(NamePropertyCreature.Honor));// Честь
-        internal CreatureProperty Enthusiasm { get; } = new CreatureProperty(FormMain.Config.FindPropertyCreature(NamePropertyCreature.Enthusiasm));// Энтузиазм
-        internal CreatureProperty Morale { get; } = new CreatureProperty(FormMain.Config.FindPropertyCreature(NamePropertyCreature.Morale));// Мораль
-        internal CreatureProperty Luck { get; } = new CreatureProperty(FormMain.Config.FindPropertyCreature(NamePropertyCreature.Luck));// Удача
+        internal CreatureProperty Honor { get; } = new CreatureProperty(FormMain.Descriptors.FindPropertyCreature(NamePropertyCreature.Honor));// Честь
+        internal CreatureProperty Enthusiasm { get; } = new CreatureProperty(FormMain.Descriptors.FindPropertyCreature(NamePropertyCreature.Enthusiasm));// Энтузиазм
+        internal CreatureProperty Morale { get; } = new CreatureProperty(FormMain.Descriptors.FindPropertyCreature(NamePropertyCreature.Morale));// Мораль
+        internal CreatureProperty Luck { get; } = new CreatureProperty(FormMain.Descriptors.FindPropertyCreature(NamePropertyCreature.Luck));// Удача
 
         // Потребности
         internal List<CreatureNeed> Needs { get; } = new List<CreatureNeed>();
@@ -199,7 +199,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(IsLive);
 
-            StateCreature = FormMain.Config.FindStateCreature(state.ToString());
+            StateCreature = FormMain.Descriptors.FindStateCreature(state.ToString());
         }
 
         internal int GetQuantityArrows()

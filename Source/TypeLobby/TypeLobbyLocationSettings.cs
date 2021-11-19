@@ -93,10 +93,10 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.TuneLinks();
 
-            TypeLandscape = FormMain.Config.FindTypeLandscape(nameTypeLandscape);
+            TypeLandscape = FormMain.Descriptors.FindTypeLandscape(nameTypeLandscape);
             nameTypeLandscape = "";
 
-            DefaultConstruction = FormMain.Config.FindConstruction(nameDefaultConstruction);
+            DefaultConstruction = FormMain.Descriptors.FindConstruction(nameDefaultConstruction);
             nameDefaultConstruction = "";
 
             foreach (TypeLobbyLairSettings ls in LairsSettings)

@@ -13,7 +13,7 @@ namespace Fantasy_Kingdoms_Battle
         public DescriptorPoison(XmlNode n) : base(n)
         {
 
-            foreach (DescriptorAttack ta in FormMain.Config.TypeAttacks)
+            foreach (DescriptorAttack ta in FormMain.Descriptors.TypeAttacks)
             {
                 Debug.Assert(ta.ID != ID);
                 Debug.Assert(ta.Name != Name);

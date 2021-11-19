@@ -22,24 +22,24 @@ namespace Fantasy_Kingdoms_Battle
         public DescriptorCreature(XmlNode n) : base(n)
         {
             CategoryCreature = (CategoryCreature)Enum.Parse(typeof(CategoryCreature), n.SelectSingleNode("CategoryCreature").InnerText);
-            TypeCreature = FormMain.Config.FindTypeCreature(XmlUtils.GetStringNotNull(n, "TypeCreature"));
+            TypeCreature = FormMain.Descriptors.FindTypeCreature(XmlUtils.GetStringNotNull(n, "TypeCreature"));
             MaxLevel = XmlUtils.GetInteger(n, "MaxLevel");
             DefaultPositionPriority = XmlUtils.GetInteger(n, "DefaultPositionPriority");
             if (CategoryCreature != CategoryCreature.Citizen)
             {
-                TypeAttackMelee = FormMain.Config.FindTypeAttack(XmlUtils.GetString(n, "TypeAttackMelee"));
+                TypeAttackMelee = FormMain.Descriptors.FindTypeAttack(XmlUtils.GetString(n, "TypeAttackMelee"));
                 Debug.Assert(TypeAttackMelee.KindAttack == KindAttack.Melee);
                 string typeAttackRange = XmlUtils.GetString(n, "TypeAttackRange");
                 if (typeAttackRange.Length > 0)
                 {
-                    TypeAttackRange = FormMain.Config.FindTypeAttack(typeAttackRange);
+                    TypeAttackRange = FormMain.Descriptors.FindTypeAttack(typeAttackRange);
                     Debug.Assert(TypeAttackRange.KindAttack == KindAttack.Range);
                 }
             }
             if (n.SelectSingleNode("PersistentState") != null)
-                PersistentStateHeroAtMap = FormMain.Config.FindStateCreature(XmlUtils.GetStringNotNull(n, "PersistentState"));
+                PersistentStateHeroAtMap = FormMain.Descriptors.FindStateCreature(XmlUtils.GetStringNotNull(n, "PersistentState"));
             else
-                PersistentStateHeroAtMap = FormMain.Config.FindStateCreature(NameStateCreature.Nothing.ToString());
+                PersistentStateHeroAtMap = FormMain.Descriptors.FindStateCreature(NameStateCreature.Nothing.ToString());
 
             if (CategoryCreature == CategoryCreature.Hero)
             {
@@ -77,7 +77,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 foreach (XmlNode l in na.SelectNodes("Ability"))
                 {
-                    a = FormMain.Config.FindAbility(l.InnerText);
+                    a = FormMain.Descriptors.FindAbility(l.InnerText);
 
                     // Проверяем, что такая способность не повторяется
                     foreach (DescriptorAbility a2 in Abilities)
@@ -98,7 +98,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 foreach (XmlNode l in ni.SelectNodes("Item"))
                 {
-                    di = FormMain.Config.FindItem(GetStringNotNull(l, "ID"));
+                    di = FormMain.Descriptors.FindItem(GetStringNotNull(l, "ID"));
 
                     // Проверяем, что такая способность не повторяется                    
                     foreach ((DescriptorItem, int) di2 in Inventory)
@@ -133,7 +133,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Проверяем, что таких же ID и наименования нет
-            foreach (DescriptorCreature h in FormMain.Config.Creatures)
+            foreach (DescriptorCreature h in FormMain.Descriptors.Creatures)
             {
                 if (h.ID == ID)
                 {
@@ -168,7 +168,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 foreach (XmlNode l in nc.SelectNodes("CarryItem"))
                 {
-                    item = FormMain.Config.FindItem(l.SelectSingleNode("Item").InnerText);
+                    item = FormMain.Descriptors.FindItem(l.SelectSingleNode("Item").InnerText);
                     maxQuantity = Convert.ToInt32(l.SelectSingleNode("Item").Attributes[0]);
 
                     Debug.Assert(maxQuantity > 0);
@@ -305,9 +305,9 @@ namespace Fantasy_Kingdoms_Battle
             base.TuneLinks();
 
             if (nameFromTypeHero.Length > 0)
-                NameFromTypeHero = FormMain.Config.FindCreature(nameFromTypeHero);
+                NameFromTypeHero = FormMain.Descriptors.FindCreature(nameFromTypeHero);
             if (surnameFromTypeHero.Length > 0)
-                SurnameFromTypeHero = FormMain.Config.FindCreature(surnameFromTypeHero);
+                SurnameFromTypeHero = FormMain.Descriptors.FindCreature(surnameFromTypeHero);
 
             nameFromTypeHero = "";
             surnameFromTypeHero = "";
@@ -325,7 +325,7 @@ namespace Fantasy_Kingdoms_Battle
             // Загружаем дефолтное оружие и доспехи
             if (nameMeleeWeapon.Length > 0)
             {
-                WeaponMelee = FormMain.Config.FindItem(nameMeleeWeapon);
+                WeaponMelee = FormMain.Descriptors.FindItem(nameMeleeWeapon);
                 nameMeleeWeapon = "";
 
                 //Debug.Assert(WeaponMelee.ClassHero == this);
@@ -333,7 +333,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (nameRangeWeapon.Length > 0)
             {
-                WeaponRange = FormMain.Config.FindItem(nameRangeWeapon);
+                WeaponRange = FormMain.Descriptors.FindItem(nameRangeWeapon);
                 nameRangeWeapon = "";
 
                 //Debug.Assert(WeaponMelee.ClassHero == this);
@@ -341,7 +341,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (nameArmour.Length > 0)
             {
-                Armour = FormMain.Config.FindItem(nameArmour);
+                Armour = FormMain.Descriptors.FindItem(nameArmour);
                 nameArmour = "";
 
                 //Debug.Assert(Armour.ClassHero == this);

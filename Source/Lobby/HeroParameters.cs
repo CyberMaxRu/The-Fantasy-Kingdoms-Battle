@@ -65,7 +65,7 @@ namespace Fantasy_Kingdoms_Battle
             Mana = Magic * CoefMana;
             Stamina = Vitality * CoefStamina;
 
-            ResistAttack = new Dictionary<DescriptorAttack, int>(FormMain.Config.TypeAttacks.Count);
+            ResistAttack = new Dictionary<DescriptorAttack, int>(FormMain.Descriptors.TypeAttacks.Count);
             XmlNode nra = n.SelectSingleNode("TypeAttackResist");
             if (nra != null)
             {
@@ -75,7 +75,7 @@ namespace Fantasy_Kingdoms_Battle
                 {
                     nameTypeAttack = l.InnerText;
                     val = Convert.ToInt32(l.Attributes["Value"].Value);
-                    ResistAttack.Add(FormMain.Config.FindTypeAttack(nameTypeAttack), val);
+                    ResistAttack.Add(FormMain.Descriptors.FindTypeAttack(nameTypeAttack), val);
                 }
             }
 

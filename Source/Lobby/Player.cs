@@ -47,7 +47,7 @@ namespace Fantasy_Kingdoms_Battle
             //
             BaseResources = new ListBaseResources(lobby.TypeLobby.BaseResources);
             if (Descriptor.TypePlayer == TypePlayer.Computer)
-                BaseResources[FormMain.Config.Gold.Number].Quantity = 100_000;
+                BaseResources[FormMain.Descriptors.Gold.Number].Quantity = 100_000;
 
             // Создаем справочик количества приоритетов флагов
             foreach (PriorityExecution pe in Enum.GetValues(typeof(PriorityExecution)))
@@ -77,7 +77,7 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Инициализация зданий
-            foreach (DescriptorConstruction tck in FormMain.Config.Constructions)
+            foreach (DescriptorConstruction tck in FormMain.Descriptors.Constructions)
             {
                 if (tck.IsInternalConstruction)
                     new Construction(this, tck, null);
@@ -475,7 +475,7 @@ namespace Fantasy_Kingdoms_Battle
         internal List<Construction> Constructions { get; } = new List<Construction>();
         internal int LevelCastle => Castle.Level;
         internal List<Hero> AllHeroes { get; } = new List<Hero>();
-        internal int Gold { get => BaseResources[FormMain.Config.Gold.Number].Quantity; }// Текущее количество золота
+        internal int Gold { get => BaseResources[FormMain.Descriptors.Gold.Number].Quantity; }// Текущее количество золота
         internal int GreatnessCollected { get; private set; }// Собрано величия за игру
         internal ListBaseResources BaseResources { get; }// Базовые ресурсы
         internal ListBaseResources BaseResourcesCollected { get; } = new ListBaseResources();// Собрано базовых ресурсов
@@ -556,7 +556,7 @@ namespace Fantasy_Kingdoms_Battle
             else
             {
                 Debug.Assert(FlagAttackToOpponent is null);
-                FlagAttackToOpponent = opponent.GetPlayerConstruction(FormMain.Config.FindConstruction(FormMain.Config.IDConstructionCastle));
+                FlagAttackToOpponent = opponent.GetPlayerConstruction(FormMain.Descriptors.FindConstruction(FormMain.Config.IDConstructionCastle));
                 FlagAttackToOpponent.AttackToCastle();
 
                 Debug.Assert(ListFlags.IndexOf(FlagAttackToOpponent) == -1);
@@ -1074,8 +1074,8 @@ namespace Fantasy_Kingdoms_Battle
 
             Builders += sb.Builders;
             FreeBuilders += sb.Builders;
-            CreateExternalConstructions(FormMain.Config.FindConstruction(FormMain.Config.IDPeasantHouse), 1, LocationCapital, sb.PeasantHouse, TypeNoticeForPlayer.Build);
-            DescriptorConstruction holyPlace = FormMain.Config.FindConstruction(FormMain.Config.IDHolyPlace);
+            CreateExternalConstructions(FormMain.Descriptors.FindConstruction(FormMain.Config.IDPeasantHouse), 1, LocationCapital, sb.PeasantHouse, TypeNoticeForPlayer.Build);
+            DescriptorConstruction holyPlace = FormMain.Descriptors.FindConstruction(FormMain.Config.IDHolyPlace);
             CreateExternalConstructions(holyPlace, holyPlace.DefaultLevel, LocationCapital, sb.HolyPlace, TypeNoticeForPlayer.Explore);
             ScoutRandomLair(sb.Scouting, true);
 

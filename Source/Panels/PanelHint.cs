@@ -548,7 +548,7 @@ namespace Fantasy_Kingdoms_Battle
                     {
                         lv = GetLabel(i);
                         lv.Visible = true;
-                        lv.ImageIndex = FormMain.Config.NeedsCreature[i].ImageIndex;
+                        lv.ImageIndex = FormMain.Descriptors.NeedsCreature[i].ImageIndex;
                         lv.Text = Utils.DecIntegerBy10(array[i]);
                         lv.ShiftY = nextTop;
 
@@ -688,7 +688,7 @@ namespace Fantasy_Kingdoms_Battle
                         lbl.Visible = true;
                         lbl.Color = ColorRequirements(ownRes[i].Quantity >= requiresRes[i].Quantity);
                         lbl.Text = requiresRes[i].Quantity.ToString();
-                        lbl.ImageIndex = FormMain.Config.BaseResources[i].ImageIndex16;
+                        lbl.ImageIndex = FormMain.Descriptors.BaseResources[i].ImageIndex16;
                         lbl.ShiftX = nextLeft;
                         lbl.ShiftY = nextTop;
 
