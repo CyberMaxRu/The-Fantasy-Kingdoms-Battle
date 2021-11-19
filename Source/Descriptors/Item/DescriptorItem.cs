@@ -173,7 +173,7 @@ namespace Fantasy_Kingdoms_Battle
                     if (cm is DescriptorConstructionLevel cmcl)
                         Description += Environment.NewLine + "    - { " + cmcl.ForEntity.Name + " (" + cmcl.Number.ToString() + " ур.)}";
                     else if (cm is DescriptorCellMenuForConstruction cmc)
-                        Description += Environment.NewLine + "    - {" + cmc.Entity.Name + "} ({" + cm.ActiveEntity.Name + "})";
+                        Description += Environment.NewLine + "    - {" + cmc.Entity.Name + "} ({" + cm.ForEntity.Name + "})";
                 }
             }
         }

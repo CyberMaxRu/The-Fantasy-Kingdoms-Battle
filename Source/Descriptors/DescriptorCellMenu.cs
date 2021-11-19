@@ -14,15 +14,13 @@ namespace Fantasy_Kingdoms_Battle
     // Класс описателя ячейки меню
     internal abstract class DescriptorCellMenu : Descriptor
     {
-        private string nameEntityForCreate;
-
         public DescriptorCellMenu(DescriptorActiveEntity activeEntity, XmlNode n) : this(activeEntity, GetPoint(n, "Pos"))
         {
         }
 
-        public DescriptorCellMenu(DescriptorActiveEntity activeEntity, Point coord) : base()
+        public DescriptorCellMenu(DescriptorActiveEntity forEntity, Point coord) : base()
         {
-            ActiveEntity = activeEntity;
+            ForEntity = forEntity;
 
             Coord = coord;
 
@@ -30,7 +28,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Coord.Y <= Descriptors.PlateHeight - 1);
         }
 
-        internal DescriptorActiveEntity ActiveEntity { get; }
+        internal DescriptorActiveEntity ForEntity { get; }
         internal Point Coord { get; }// Координаты ячейки в меню
     }
 }
