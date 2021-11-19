@@ -21,7 +21,7 @@ namespace Fantasy_Kingdoms_Battle
             DaysBuilded = 0;
 
             // Настраиваем исследования 
-            foreach (DescriptorCellMenuForConstruction d in TypeConstruction.CellsMenu)
+            foreach (DescriptorCellMenu d in TypeConstruction.CellsMenu)
                 Researches.Add(ConstructionCellMenu.Create(this, d));
 
             Hidden = !TypeConstruction.IsInternalConstruction && !location.Ownership;

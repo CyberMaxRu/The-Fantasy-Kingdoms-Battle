@@ -285,7 +285,6 @@ namespace Fantasy_Kingdoms_Battle
             }
 
 
-
             //else
             //    throw new Exception("В конфигурации логова у " + ID + " нет информации об уровнях. ");
         }
@@ -347,7 +346,7 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorConstructionEvent ce in Events)
                 ce.TuneLinks();
 
-            foreach (DescriptorCellMenuForConstruction cm in CellsMenu)
+            foreach (DescriptorCellMenu cm in CellsMenu)
                 cm.TuneLinks();
 
             foreach (MonsterLevelLair mll in Monsters)

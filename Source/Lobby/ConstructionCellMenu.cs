@@ -12,14 +12,16 @@ namespace Fantasy_Kingdoms_Battle
 
     internal abstract class CellMenu
     {
-        public CellMenu(DescriptorCellMenu d)
+        public CellMenu(BigEntity forEntity, DescriptorCellMenu d)
         {
+            BigEntity = forEntity;
             Descriptor = d;
             PosInQueue = 0;
         }
 
         internal static Descriptors Config { get; set; }
         internal DescriptorCellMenu Descriptor { get; }
+        internal BigEntity BigEntity { get; }
 
         internal int DaysProcessed { get; set; }// Количество дней, прошедшее с начала обработки действия ячейки
         internal int DaysLeft { get; set; }// Сколько дней осталось до окончания обработки действия
@@ -43,14 +45,12 @@ namespace Fantasy_Kingdoms_Battle
 
     internal abstract class ConstructionCellMenu : CellMenu
     {
-        public ConstructionCellMenu(Construction c, DescriptorCellMenuForConstruction d) : base(d)
+        public ConstructionCellMenu(Construction c, DescriptorCellMenu d) : base(c, d)
         {
             Construction = c;
-            Descriptor = d;
         }
 
         internal Construction Construction { get; }
-        internal new DescriptorCellMenuForConstruction Descriptor { get; }
 
         internal override bool CheckRequirements()
         {
@@ -80,7 +80,7 @@ namespace Fantasy_Kingdoms_Battle
             return Construction.GetResearchTextRequirements(this);
         }
 
-        internal static ConstructionCellMenu Create(Construction c, DescriptorCellMenuForConstruction d)
+        internal static ConstructionCellMenu Create(Construction c, DescriptorCellMenu d)
         {
             switch (d.Type)
             {
@@ -143,16 +143,13 @@ namespace Fantasy_Kingdoms_Battle
 
     internal sealed class CellMenuConstructionResearch : ConstructionCellMenu
     {
-        public CellMenuConstructionResearch(Construction c, DescriptorCellMenuForConstruction d) : base(c, d)
+        public CellMenuConstructionResearch(Construction c, DescriptorCellMenu d) : base(c, d)
         {
-            Debug.Assert(d.CostResources.ValueGold() > 0, $"У {d.NameEntity} не указана цена.");
+            Debug.Assert(d.CostResources.ValueGold() > 0, $"У {d.IDCreatedEntity} не указана цена.");
 
-            Descriptor = d;
-
-            Entity = Config.FindProduct(d.NameEntity);
+            Entity = Config.FindProduct(d.IDCreatedEntity);
         }
 
-        internal new DescriptorCellMenuForConstruction Descriptor { get; }
         internal DescriptorProduct Entity { get; }
         internal override void PrepareHint()
         {
@@ -195,11 +192,11 @@ namespace Fantasy_Kingdoms_Battle
 
     internal sealed class CellMenuConstructionBuild : ConstructionCellMenu
     {
-        public CellMenuConstructionBuild(Construction c, DescriptorCellMenuForConstruction d) : base(c, d)
+        public CellMenuConstructionBuild(Construction c, DescriptorCellMenu d) : base(c, d)
         {
-            Debug.Assert(d.CostResources.ValueGold() == 0, $"У {d.NameEntity} цена должна быть 0 (указана {d.CostResources.ValueGold()}).");
+            Debug.Assert(d.CostResources.ValueGold() == 0, $"У {d.IDCreatedEntity} цена должна быть 0 (указана {d.CostResources.ValueGold()}).");
 
-            TypeConstruction = Config.FindConstruction(d.NameEntity);
+            TypeConstruction = Config.FindConstruction(d.IDCreatedEntity);
             if (TypeConstruction.Category == CategoryConstruction.Temple)
                 ConstructionForBuild = c.Player.GetPlayerConstruction(TypeConstruction);
             else if (TypeConstruction.Category == CategoryConstruction.External)
@@ -332,7 +329,7 @@ namespace Fantasy_Kingdoms_Battle
 
     internal sealed class CellMenuConstructionHireCreature : ConstructionCellMenu
     {
-        public CellMenuConstructionHireCreature(Construction c, DescriptorCellMenuForConstruction d) : base(c, d)
+        public CellMenuConstructionHireCreature(Construction c, DescriptorCellMenu d) : base(c, d)
         {
             Creature = Config.FindCreature(d.NameEntity);
         }
@@ -380,7 +377,7 @@ namespace Fantasy_Kingdoms_Battle
     internal sealed class CellMenuConstructionEvent : ConstructionCellMenu
     {
         private ConstructionProduct cp;
-        public CellMenuConstructionEvent(Construction c, DescriptorCellMenuForConstruction d) : base(c, d)
+        public CellMenuConstructionEvent(Construction c, DescriptorCellMenu d) : base(c, d)
         {
             Debug.Assert(d.Entity is DescriptorProduct);
             Entity = d.Entity as DescriptorProduct;
@@ -474,9 +471,9 @@ namespace Fantasy_Kingdoms_Battle
     
     internal sealed class CellMenuConstructionExtension : ConstructionCellMenu
     {
-        public CellMenuConstructionExtension(Construction c, DescriptorCellMenuForConstruction d) : base(c, d)
+        public CellMenuConstructionExtension(Construction c, DescriptorCellMenu d) : base(c, d)
         {
-            Entity = d.ForEntity.FindExtension(d.NameEntity, true);
+            Entity = d.ForEntity.FindExtension(d.IDCreatedEntity, true);
         }
 
         internal DescriptorConstructionExtension Entity { get; }
@@ -523,9 +520,9 @@ namespace Fantasy_Kingdoms_Battle
 
     internal sealed class CellMenuConstructionImprovement : ConstructionCellMenu
     {
-        public CellMenuConstructionImprovement(Construction c, DescriptorCellMenuForConstruction d) : base(c, d)
+        public CellMenuConstructionImprovement(Construction c, DescriptorCellMenu d) : base(c, d)
         {
-            Entity = d.ForEntity.FindConstructionImprovement(d.NameEntity, true);
+            Entity = d.ForEntity.FindConstructionImprovement(d.IDCreatedEntity, true);
         }
 
         internal DescriptorConstructionImprovement Entity { get; }
@@ -570,10 +567,10 @@ namespace Fantasy_Kingdoms_Battle
 
     internal sealed class CellMenuConstructionTournament : ConstructionCellMenu
     {
-        public CellMenuConstructionTournament(Construction c, DescriptorCellMenuForConstruction d) : base(c, d)
+        public CellMenuConstructionTournament(Construction c, DescriptorCellMenu d) : base(c, d)
         {
             //Entity = Config.FindItem(d.NameEntity);
-            Entity = Config.FindProduct(d.NameEntity);
+            Entity = Config.FindProduct(d.IDCreatedEntity);
         }
 
         internal DescriptorProduct Entity { get; }
@@ -618,9 +615,9 @@ namespace Fantasy_Kingdoms_Battle
 
     internal sealed class CellMenuConstructionExtra : ConstructionCellMenu
     {
-        public CellMenuConstructionExtra(Construction c, DescriptorCellMenuForConstruction d) : base(c, d)
+        public CellMenuConstructionExtra(Construction c, DescriptorCellMenu d) : base(c, d)
         {
-            TypeExtra = (TypeExtra)Enum.Parse(typeof(TypeExtra), d.NameEntity);
+            TypeExtra = (TypeExtra)Enum.Parse(typeof(TypeExtra), d.IDCreatedEntity);
         }
 
         internal int Counter { get; set; }

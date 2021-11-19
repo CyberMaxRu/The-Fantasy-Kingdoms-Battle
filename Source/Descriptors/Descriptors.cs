@@ -75,7 +75,9 @@ namespace Fantasy_Kingdoms_Battle
             xmlDoc = CreateXmlDocument(@"Config\Descriptors\Constructions.xml");
             foreach (XmlNode n in xmlDoc.SelectNodes("/Descriptors/Construction"))
             {
-                Constructions.Add(new DescriptorConstruction(n));
+                DescriptorConstruction dc = new DescriptorConstruction(n);
+                Constructions.Add(dc);
+                AddEntity(dc);
             }
 
             // Загрузка ресурсов
@@ -285,6 +287,7 @@ namespace Fantasy_Kingdoms_Battle
         internal bool AutoCreatedPlayer { get; }
 
         // Списки описателей
+        internal Dictionary<string, DescriptorEntity> Entities { get; } = new Dictionary<string, DescriptorEntity>();// Список всех сущностей
         internal DescriptorBaseResource Gold { get; }
         internal List<DescriptorBaseResource> BaseResources { get; } = new List<DescriptorBaseResource>();
 
@@ -857,6 +860,21 @@ namespace Fantasy_Kingdoms_Battle
         internal void AddVisit(DescriptorConstructionVisit visit)
         {
             ConstructionsVisits.Add(visit);
+        }
+
+        internal void AddEntity(DescriptorEntity entity)
+        {
+            Debug.Assert(!Entities.ContainsKey(entity.ID));
+
+            Entities.Add(entity.ID, entity);
+        }
+
+        internal DescriptorEntity FindEntity(string id)
+        {
+            if (!Entities.TryGetValue(id, out DescriptorEntity entity))
+                throw new Exception($"Сущность {id} не найдена.");
+
+            return entity;
         }
     }
 }
