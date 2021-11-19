@@ -9,10 +9,6 @@ namespace Fantasy_Kingdoms_Battle
         public DescriptorEntityForConstruction(DescriptorConstruction construction, XmlNode n) : base(n)
         {
             Construction = construction;
-
-            Cost = new ListBaseResources(n.SelectSingleNode("Cost"));
-            DaysProcessing = GetInteger(n, "DaysProcessing");
-            Requirements = new ListDescriptorRequirements(this, n.SelectSingleNode("Requirements"));
         }
 
         internal DescriptorConstruction Construction { get; }

@@ -28,7 +28,8 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Coord.Y <= Descriptors.PlateHeight - 1);
         }
 
-        internal DescriptorActiveEntity ForEntity { get; }
-        internal Point Coord { get; }// Координаты ячейки в меню
+        internal DescriptorActiveEntity ForEntity { get; }// Для какой активной сущности
+        internal Point Coord { get; }// Координаты
+        internal string ActionCellMenu { get; }// Действие 
     }
 }
