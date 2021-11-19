@@ -9,40 +9,6 @@ using System.Drawing;
 
 namespace Fantasy_Kingdoms_Battle
 {
-
-    internal abstract class CellMenu
-    {
-        public CellMenu(BigEntity forEntity, DescriptorCellMenu d)
-        {
-            BigEntity = forEntity;
-            Descriptor = d;
-            PosInQueue = 0;
-        }
-
-        internal static Descriptors Config { get; set; }
-        internal DescriptorCellMenu Descriptor { get; }
-        internal BigEntity BigEntity { get; }
-
-        internal int DaysProcessed { get; set; }// Количество дней, прошедшее с начала обработки действия ячейки
-        internal int DaysLeft { get; set; }// Сколько дней осталось до окончания обработки действия
-        internal int PosInQueue { get; set; }// Номер в очереди
-        internal ListBaseResources PurchaseValue { get; set; }// Стоимость покупки
-
-        internal virtual string GetText() => GetCost().ValueGold().ToString();
-        internal abstract ListBaseResources GetCost();
-        internal abstract int GetImageIndex();
-        internal virtual bool GetImageIsEnabled() => CheckRequirements() && (DaysProcessed == 0);
-        internal virtual string GetLevel() => "";
-        internal virtual Color GetColorText() => FormMain.Config.CommonCost;
-        internal virtual bool CheckRequirements() => true;
-        internal virtual List<TextRequirement> GetTextRequirements() => new List<TextRequirement>();
-        internal virtual void PrepareHint() { }
-        internal abstract void Click();
-        internal abstract void Execute();
-        internal abstract bool InstantExecute();
-        internal virtual void PrepareTurn() { }
-    }
-
     internal abstract class CellMenuConstruction : CellMenu
     {
         public CellMenuConstruction(Construction c, DescriptorCellMenu d) : base(c, d)
