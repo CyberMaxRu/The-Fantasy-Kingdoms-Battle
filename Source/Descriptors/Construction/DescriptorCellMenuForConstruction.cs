@@ -17,7 +17,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         public DescriptorCellMenuForConstruction(DescriptorConstruction forConstruction, XmlNode n) : base(forConstruction, n)
         {
-            ForConstruction = forConstruction;
+            ForEntity = forConstruction;
 
             Type = (TypeCellMenuForConstruction)Enum.Parse(typeof(TypeCellMenuForConstruction), n.SelectSingleNode("Type").InnerText);
             NameEntity = GetStringNotNull(n, "Entity");
@@ -37,7 +37,7 @@ namespace Fantasy_Kingdoms_Battle
             XmlNode next = n.SelectSingleNode("CellMenu");
             if (next != null)
             {
-                NextCell = new DescriptorCellMenuForConstruction(ForConstruction, next);
+                NextCell = new DescriptorCellMenuForConstruction(ForEntity, next);
                 Debug.Assert(Coord.Equals(NextCell.Coord), $"У {NameEntity} в ячейку {Coord} вложена ячейка {NextCell.Coord}.");
             }
 
@@ -59,7 +59,7 @@ namespace Fantasy_Kingdoms_Battle
 
         public DescriptorCellMenuForConstruction(DescriptorConstruction forConstruction, Point coord, XmlNode n) : base(forConstruction, coord, n)
         {
-            ForConstruction = forConstruction;
+            ForEntity = forConstruction;
 
             Type = TypeCellMenuForConstruction.LevelUp;
             Income = GetInteger(n, "Income");
@@ -67,7 +67,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Income >= 0);
         }
 
-        internal DescriptorConstruction ForConstruction { get; }
+        internal new DescriptorConstruction ForEntity { get; }
         internal TypeCellMenuForConstruction Type { get; }
         internal string NameEntity { get; set; }
         internal DescriptorEntity Entity { get; private set; }
@@ -87,13 +87,13 @@ namespace Fantasy_Kingdoms_Battle
                     case TypeCellMenuForConstruction.Tournament:
                     case TypeCellMenuForConstruction.Research:
                     case TypeCellMenuForConstruction.Event:
-                        Entity = ForConstruction.FindProduct(NameEntity, true);
+                        Entity = ForEntity.FindProduct(NameEntity, true);
                         break;
                     case TypeCellMenuForConstruction.Extension:
-                        Entity = ForConstruction.FindExtension(NameEntity, true);
+                        Entity = ForEntity.FindExtension(NameEntity, true);
                         break;
                     case TypeCellMenuForConstruction.Improvement:
-                        Entity = ForConstruction.FindConstructionImprovement(NameEntity, true);
+                        Entity = ForEntity.FindConstructionImprovement(NameEntity, true);
                         break;
                     case TypeCellMenuForConstruction.HireCreature:
                         Entity = FormMain.Config.FindCreature(NameEntity);
@@ -105,7 +105,7 @@ namespace Fantasy_Kingdoms_Battle
                         throw new Exception($"Неизвестное действие: {Type}.");
                 }
 
-                Debug.Assert(Entity != null, $"В {ForConstruction.ID} не найдено {NameEntity}");
+                Debug.Assert(Entity != null, $"В {ForEntity.ID} не найдено {NameEntity}");
             }
 
             Product?.TuneLinks();

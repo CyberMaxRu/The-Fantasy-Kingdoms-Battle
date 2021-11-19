@@ -476,7 +476,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         public CellMenuConstructionExtension(Construction c, DescriptorCellMenuForConstruction d) : base(c, d)
         {
-            Entity = d.ForConstruction.FindExtension(d.NameEntity, true);
+            Entity = d.ForEntity.FindExtension(d.NameEntity, true);
         }
 
         internal DescriptorConstructionExtension Entity { get; }
@@ -525,7 +525,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         public CellMenuConstructionImprovement(Construction c, DescriptorCellMenuForConstruction d) : base(c, d)
         {
-            Entity = d.ForConstruction.FindConstructionImprovement(d.NameEntity, true);
+            Entity = d.ForEntity.FindConstructionImprovement(d.NameEntity, true);
         }
 
         internal DescriptorConstructionImprovement Entity { get; }
