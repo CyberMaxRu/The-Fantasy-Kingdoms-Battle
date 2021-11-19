@@ -16,7 +16,7 @@ namespace Fantasy_Kingdoms_Battle
         private DescriptorConstructionExtension Extension;
         private string nameExtension;
 
-        public RequirementExtension(DescriptorSmallEntity forEntity, XmlNode n) : base(forEntity, n)
+        public RequirementExtension(DescriptorEntity forEntity, XmlNode n) : base(forEntity, n)
         {
             nameConstruction = XmlUtils.GetStringNotNull(n, "Construction");
             nameExtension = XmlUtils.GetStringNotNull(n, "Extension");
@@ -52,7 +52,7 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(Extension.ID != dce.ID, $"Расширение {Extension.ID} требует само себя.");
             Debug.Assert(founded, $"Расширение {Extension.ID} не найдено в {Construction.ID}.");
 
-            Extension.UseForResearch.Add(ForEntity);
+            Extension.UseForResearch.Add(ForEntity as DescriptorSmallEntity);
         }
 
         internal override TextRequirement GetTextRequirement(Player p)

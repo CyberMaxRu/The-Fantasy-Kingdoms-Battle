@@ -145,7 +145,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         public CellMenuConstructionResearch(Construction c, DescriptorCellMenuForConstruction d) : base(c, d)
         {
-            Debug.Assert(d.Cost.ValueGold() > 0, $"У {d.NameEntity} не указана цена.");
+            Debug.Assert(d.CostResources.ValueGold() > 0, $"У {d.NameEntity} не указана цена.");
 
             Descriptor = d;
 
@@ -169,7 +169,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override ListBaseResources GetCost()
         {
-            return Descriptor.Cost;
+            return Descriptor.CostResources;
         }
 
         internal override string GetLevel() => Program.formMain.Settings.ShowTypeCellMenu ? "и" : "";
@@ -197,7 +197,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         public CellMenuConstructionBuild(Construction c, DescriptorCellMenuForConstruction d) : base(c, d)
         {
-            Debug.Assert(d.Cost.ValueGold() == 0, $"У {d.NameEntity} цена должна быть 0 (указана {d.Cost.ValueGold()}).");
+            Debug.Assert(d.CostResources.ValueGold() == 0, $"У {d.NameEntity} цена должна быть 0 (указана {d.CostResources.ValueGold()}).");
 
             TypeConstruction = Config.FindConstruction(d.NameEntity);
             if (TypeConstruction.Category == CategoryConstruction.Temple)
@@ -349,7 +349,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override ListBaseResources GetCost()
         {
-            return Descriptor.Cost;
+            return Descriptor.CostResources;
         }
         internal override string GetLevel() => Program.formMain.Settings.ShowTypeCellMenu ? "н" : "";
 
@@ -428,7 +428,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override ListBaseResources GetCost()
         {
-            return Descriptor.Cost;
+            return Descriptor.CostResources;
         }
 
         internal override string GetLevel() => Program.formMain.Settings.ShowTypeCellMenu ? "м" : "";
@@ -495,7 +495,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override ListBaseResources GetCost()
         {
-            return Descriptor.Cost;
+            return Descriptor.CostResources;
         }
 
         internal override string GetLevel() => Program.formMain.Settings.ShowTypeCellMenu ? "д" : "";
@@ -544,7 +544,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override ListBaseResources GetCost()
         {
-            return Descriptor.Cost;
+            return Descriptor.CostResources;
         }
 
         internal override string GetLevel() => Program.formMain.Settings.ShowTypeCellMenu ? "у" : "";
@@ -590,7 +590,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override ListBaseResources GetCost()
         {
-            return Descriptor.Cost;
+            return Descriptor.CostResources;
         }
 
         internal override string GetLevel() => Program.formMain.Settings.ShowTypeCellMenu ? "т" : "";
@@ -666,7 +666,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal override ListBaseResources GetCost()
         {
-            return Descriptor.Cost;
+            return Descriptor.CostResources;
         }
 
         internal override string GetText()

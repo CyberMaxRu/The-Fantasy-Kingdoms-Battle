@@ -224,26 +224,6 @@ namespace Fantasy_Kingdoms_Battle
                 }
             }
 
-            // Загружаем меню
-            XmlNode nr = n.SelectSingleNode("CellsMenu");
-            if (nr != null)
-            {
-                DescriptorCellMenuForConstruction research;
-
-                foreach (XmlNode l in nr.SelectNodes("CellMenu"))
-                {
-                    research = new DescriptorCellMenuForConstruction(this, l);
-                    CheckFreeCellMenu(research.Coord);
-
-                    foreach (DescriptorCellMenu tcm in CellsMenu)
-                    {
-                        //Debug.Assert(research.Construction. NameTypeObject != tcm.NameTypeObject, $"У {ID} в меню повторяется объект {research.NameTypeObject}.");
-                    }
-
-                    CellsMenu.Add(research);
-                }
-            }
-
             // Информация о монстрах
             ne = n.SelectSingleNode("Monsters");
             if (ne != null)
@@ -308,14 +288,6 @@ namespace Fantasy_Kingdoms_Battle
 
             //else
             //    throw new Exception("В конфигурации логова у " + ID + " нет информации об уровнях. ");
-
-            void CheckFreeCellMenu(Point p)
-            {
-                foreach (DescriptorCellMenuForConstruction cm in CellsMenu)
-                {
-                    Debug.Assert(!cm.Coord.Equals(p), $"У {ID} в ячейке ({p.X + 1}, {p.Y + 1}) уже есть сущность.");
-                }
-            }
         }
 
         internal DescriptorTypeConstruction TypeConstruction { get; }// Тип сооружения
@@ -337,7 +309,6 @@ namespace Fantasy_Kingdoms_Battle
         internal List<DescriptorConstructionTournament> Tournaments { get; } = new List<DescriptorConstructionTournament>();
         internal List<DescriptorConstructionImprovement> Improvements { get; } = new List<DescriptorConstructionImprovement>();
         internal List<DescriptorConstructionService> Services { get; } = new List<DescriptorConstructionService>();
-        internal List<DescriptorCellMenuForConstruction> CellsMenu { get; } = new List<DescriptorCellMenuForConstruction>();
         internal DescriptorConstructionLevel[] Levels { get; }
 
         //

@@ -14,7 +14,7 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal class ListDescriptorRequirements : List<DescriptorRequirement>
     {
-        public ListDescriptorRequirements(DescriptorSmallEntity forEntity, XmlNode n)
+        public ListDescriptorRequirements(DescriptorEntity forEntity, XmlNode n)
         {
             if (n != null)
             {
@@ -38,7 +38,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal DescriptorSmallEntity ForEntity { get; }
+        internal DescriptorEntity ForEntity { get; }
 
         internal void TuneLinks()
         {

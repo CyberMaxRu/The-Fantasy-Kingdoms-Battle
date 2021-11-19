@@ -107,17 +107,17 @@ namespace Fantasy_Kingdoms_Battle
             ScoutRandomLair(lobby.TypeLobby.StartScoutedLairs, true);
 
             //
-            Castle = GetPlayerConstruction(FormMain.Config.FindConstruction(FormMain.Config.IDConstructionCastle));
+            Castle = GetPlayerConstruction(FormMain.Descriptors.FindConstruction(FormMain.Config.IDConstructionCastle));
             Castle.Gold = Gold;
-            Graveyard = GetPlayerConstruction(FormMain.Config.FindConstruction(FormMain.Config.IDCityGraveyard));
+            Graveyard = GetPlayerConstruction(FormMain.Descriptors.FindConstruction(FormMain.Config.IDCityGraveyard));
 
             LevelGreatness = 1;
             PointGreatnessForNextLevel = 100;
 
-            Hero king = Castle.HireHero(FormMain.Config.FindCreature("King"), null);
-            Hero advisor = Castle.HireHero(FormMain.Config.FindCreature("Advisor"), null);
-            Hero captain = Castle.HireHero(FormMain.Config.FindCreature("Captain"), null);
-            Hero treasurer = Castle.HireHero(FormMain.Config.FindCreature("Treasurer"), null);
+            Hero king = Castle.HireHero(FormMain.Descriptors.FindCreature("King"), null);
+            Hero advisor = Castle.HireHero(FormMain.Descriptors.FindCreature("Advisor"), null);
+            Hero captain = Castle.HireHero(FormMain.Descriptors.FindCreature("Captain"), null);
+            Hero treasurer = Castle.HireHero(FormMain.Descriptors.FindCreature("Treasurer"), null);
 
             //
             /*AddItem(new PlayerItem(FormMain.Config.FindItem("PotionOfHealth"), 10, true));
