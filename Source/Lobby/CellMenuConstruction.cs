@@ -43,9 +43,9 @@ namespace Fantasy_Kingdoms_Battle
         internal virtual void PrepareTurn() { }
     }
 
-    internal abstract class ConstructionCellMenu : CellMenu
+    internal abstract class CellMenuConstruction : CellMenu
     {
-        public ConstructionCellMenu(Construction c, DescriptorCellMenu d) : base(c, d)
+        public CellMenuConstruction(Construction c, DescriptorCellMenu d) : base(c, d)
         {
             Construction = c;
         }
@@ -80,7 +80,7 @@ namespace Fantasy_Kingdoms_Battle
             return Construction.GetResearchTextRequirements(this);
         }
 
-        internal static ConstructionCellMenu Create(Construction c, DescriptorCellMenu d)
+        internal static CellMenuConstruction Create(Construction c, DescriptorCellMenu d)
         {
             switch (d.Type)
             {
@@ -141,7 +141,7 @@ namespace Fantasy_Kingdoms_Battle
         }
     }
 
-    internal sealed class CellMenuConstructionResearch : ConstructionCellMenu
+    internal sealed class CellMenuConstructionResearch : CellMenuConstruction
     {
         public CellMenuConstructionResearch(Construction c, DescriptorCellMenu d) : base(c, d)
         {
@@ -190,7 +190,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override bool InstantExecute() => Construction.Player.CheatingInstantlyResearch;
     }
 
-    internal sealed class CellMenuConstructionBuild : ConstructionCellMenu
+    internal sealed class CellMenuConstructionBuild : CellMenuConstruction
     {
         public CellMenuConstructionBuild(Construction c, DescriptorCellMenu d) : base(c, d)
         {
@@ -278,7 +278,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override bool InstantExecute() => Construction.Player.CheatingInstantlyBuilding;
     }
 
-    internal sealed class CellMenuConstructionLevelUp : ConstructionCellMenu
+    internal sealed class CellMenuConstructionLevelUp : CellMenuConstruction
     {
         public CellMenuConstructionLevelUp(Construction c, DescriptorConstructionLevel d) : base(c, d)
         {
@@ -327,7 +327,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override bool InstantExecute() => Construction.Player.CheatingInstantlyBuilding;
     }
 
-    internal sealed class CellMenuConstructionHireCreature : ConstructionCellMenu
+    internal sealed class CellMenuConstructionHireCreature : CellMenuConstruction
     {
         public CellMenuConstructionHireCreature(Construction c, DescriptorCellMenu d) : base(c, d)
         {
@@ -374,7 +374,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override bool InstantExecute() => Construction.Player.CheatingInstantlyHire;
     }
 
-    internal sealed class CellMenuConstructionEvent : ConstructionCellMenu
+    internal sealed class CellMenuConstructionEvent : CellMenuConstruction
     {
         private ConstructionProduct cp;
         public CellMenuConstructionEvent(Construction c, DescriptorCellMenu d) : base(c, d)
@@ -469,7 +469,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override bool InstantExecute() => Construction.Player.CheatingInstantlyResearch;
     }
     
-    internal sealed class CellMenuConstructionExtension : ConstructionCellMenu
+    internal sealed class CellMenuConstructionExtension : CellMenuConstruction
     {
         public CellMenuConstructionExtension(Construction c, DescriptorCellMenu d) : base(c, d)
         {
@@ -518,7 +518,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override bool InstantExecute() => Construction.Player.CheatingInstantlyResearch;
     }
 
-    internal sealed class CellMenuConstructionImprovement : ConstructionCellMenu
+    internal sealed class CellMenuConstructionImprovement : CellMenuConstruction
     {
         public CellMenuConstructionImprovement(Construction c, DescriptorCellMenu d) : base(c, d)
         {
@@ -565,7 +565,7 @@ namespace Fantasy_Kingdoms_Battle
         internal override bool InstantExecute() => Construction.Player.CheatingInstantlyResearch;
     }
 
-    internal sealed class CellMenuConstructionTournament : ConstructionCellMenu
+    internal sealed class CellMenuConstructionTournament : CellMenuConstruction
     {
         public CellMenuConstructionTournament(Construction c, DescriptorCellMenu d) : base(c, d)
         {
@@ -613,7 +613,7 @@ namespace Fantasy_Kingdoms_Battle
 
     internal enum TypeExtra { Builder, LevelUp, Research };
 
-    internal sealed class CellMenuConstructionExtra : ConstructionCellMenu
+    internal sealed class CellMenuConstructionExtra : CellMenuConstruction
     {
         public CellMenuConstructionExtra(Construction c, DescriptorCellMenu d) : base(c, d)
         {

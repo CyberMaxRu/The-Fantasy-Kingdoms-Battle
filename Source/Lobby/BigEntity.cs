@@ -14,7 +14,7 @@ namespace Fantasy_Kingdoms_Battle
 
         }
 
-        internal List<ConstructionCellMenu> Researches { get; } = new List<ConstructionCellMenu>();
+        internal List<CellMenuConstruction> Researches { get; } = new List<CellMenuConstruction>();
 
         internal abstract void ShowInfo(int selectPage = -1);
         internal abstract void HideInfo();
@@ -23,7 +23,7 @@ namespace Fantasy_Kingdoms_Battle
 
         protected void FillResearches(VCMenuCell[,] menu)
         {
-            foreach (ConstructionCellMenu pr in Researches)
+            foreach (CellMenuConstruction pr in Researches)
             {
                 if (!menu[pr.Descriptor.Coord.Y, pr.Descriptor.Coord.X].Used)
                 {

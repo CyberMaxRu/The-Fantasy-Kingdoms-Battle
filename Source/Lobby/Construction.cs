@@ -22,7 +22,7 @@ namespace Fantasy_Kingdoms_Battle
 
             // Настраиваем исследования 
             foreach (DescriptorCellMenu d in TypeConstruction.CellsMenu)
-                Researches.Add(ConstructionCellMenu.Create(this, d));
+                Researches.Add(CellMenuConstruction.Create(this, d));
 
             Hidden = !TypeConstruction.IsInternalConstruction && !location.Ownership;
 
@@ -67,7 +67,7 @@ namespace Fantasy_Kingdoms_Battle
 
             // Настраиваем исследования 
             foreach (DescriptorCellMenuForConstruction d in TypeConstruction.CellsMenu)
-                Researches.Add(ConstructionCellMenu.Create(this, d));
+                Researches.Add(CellMenuConstruction.Create(this, d));
 
             // Убрать эту проверку после настройки всех логов
             if (TypeConstruction.Monsters.Count > 0)
@@ -118,14 +118,14 @@ namespace Fantasy_Kingdoms_Battle
         internal CellMenuConstructionLevelUp CellMenuBuildOrLevelUp { get; private set; }// Действие для постройки/улучшения сооружения
         internal int[] SatisfactionNeeds { get; private set; }// Удовлетворяемые потребности
 
-        internal List<ConstructionCellMenu> ListQueueProcessing { get; } = new List<ConstructionCellMenu>();// Очередь обработки ячеек меню
+        internal List<CellMenuConstruction> ListQueueProcessing { get; } = new List<CellMenuConstruction>();// Очередь обработки ячеек меню
 
         private void TuneCellMenuBuildOrUpgrade()
         {
             CellMenuBuildOrLevelUp = null;
 
             // Сооружение не построено, ищем действие для постройки
-            foreach (ConstructionCellMenu cm in Researches)
+            foreach (CellMenuConstruction cm in Researches)
             {
                 if ((cm is CellMenuConstructionLevelUp cml) && (cml.Descriptor.Number == Level + 1))
                 {
@@ -174,8 +174,8 @@ namespace Fantasy_Kingdoms_Battle
             if ((TypeConstruction.Category != CategoryConstruction.Lair) && (TypeConstruction.Category != CategoryConstruction.ElementLandscape))
             {
                 // Убираем операцию постройки из меню
-                ConstructionCellMenu cmBuild = null;
-                foreach (ConstructionCellMenu cm in Researches)
+                CellMenuConstruction cmBuild = null;
+                foreach (CellMenuConstruction cm in Researches)
                 {
                     if (cm is CellMenuConstructionLevelUp cml)
                         if (cml.Descriptor.Number == Level)
@@ -571,7 +571,7 @@ namespace Fantasy_Kingdoms_Battle
                         i++;
                 }
 
-                foreach (ConstructionCellMenu cm in Researches)
+                foreach (CellMenuConstruction cm in Researches)
                 {
                     cm.PrepareTurn();
                 }
@@ -587,7 +587,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (ListQueueProcessing.Count > 0)
             {
-                ConstructionCellMenu cm = ListQueueProcessing[0];
+                CellMenuConstruction cm = ListQueueProcessing[0];
                 Debug.Assert(cm.DaysLeft > 0);
 
                 cm.DaysProcessed++;
@@ -613,7 +613,7 @@ namespace Fantasy_Kingdoms_Battle
             }
         }
 
-        internal List<TextRequirement> GetResearchTextRequirements(ConstructionCellMenu research)
+        internal List<TextRequirement> GetResearchTextRequirements(CellMenuConstruction research)
         {
             List<TextRequirement> list = new List<TextRequirement>();
 
@@ -1378,7 +1378,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal bool GoodsExists(DescriptorItem item)
         {
-            foreach (ConstructionCellMenu cm in Researches)
+            foreach (CellMenuConstruction cm in Researches)
             {
                 if (cm is CellMenuConstructionResearch cmr)
                     if (cmr.Entity.ID == item.ID)
@@ -1428,7 +1428,7 @@ namespace Fantasy_Kingdoms_Battle
             return text;
         }
 
-        internal void AddEntityToQueueProcessing(ConstructionCellMenu cell)
+        internal void AddEntityToQueueProcessing(CellMenuConstruction cell)
         {
             Debug.Assert(ListQueueProcessing.IndexOf(cell) == -1);
             Debug.Assert(cell.DaysProcessed == 0);
@@ -1442,7 +1442,7 @@ namespace Fantasy_Kingdoms_Battle
             cell.PosInQueue = ListQueueProcessing.Count;
         }
 
-        internal void RemoveEntityFromQueueProcessing(ConstructionCellMenu cell)
+        internal void RemoveEntityFromQueueProcessing(CellMenuConstruction cell)
         {
             Debug.Assert(ListQueueProcessing.IndexOf(cell) != -1);
             Debug.Assert((cell.DaysLeft == 0) || (cell.DaysProcessed == 0));

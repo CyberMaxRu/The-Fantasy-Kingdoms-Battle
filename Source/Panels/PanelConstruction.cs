@@ -157,7 +157,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Construction.ListQueueProcessing.Count > 0)
             {
-                ConstructionCellMenu cm = Construction.ListQueueProcessing[0];
+                CellMenuConstruction cm = Construction.ListQueueProcessing[0];
                 btnQueue.Visible = true;
                 btnQueue.ImageIndex = cm.GetImageIndex();
                 btnQueue.Text = cm.DaysLeft.ToString() + " д.";
