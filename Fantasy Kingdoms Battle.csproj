@@ -97,7 +97,7 @@
     <Compile Include="Source\Forms\WindowCheating.cs" />
     <Compile Include="Source\Lobby\BaseResource.cs" />
     <Compile Include="Source\Lobby\BigEntity.cs" />
-    <Compile Include="Source\Lobby\CellMenu.cs" />
+    <Compile Include="Source\Lobby\CellOfMenu.cs" />
     <Compile Include="Source\Lobby\ConstructionExtension.cs" />
     <Compile Include="Source\Lobby\ConstructionImprovement.cs" />
     <Compile Include="Source\Lobby\ConstructionProduct.cs" />

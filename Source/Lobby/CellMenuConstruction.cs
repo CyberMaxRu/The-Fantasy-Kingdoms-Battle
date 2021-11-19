@@ -9,7 +9,7 @@ using System.Drawing;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal abstract class CellMenuConstruction : CellMenu
+    internal abstract class CellMenuConstruction : CellOfMenu
     {
         public CellMenuConstruction(Construction c, DescriptorCellMenu d) : base(c, d)
         {

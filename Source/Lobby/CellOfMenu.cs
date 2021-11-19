@@ -9,9 +9,9 @@ using System.Drawing;
 
 namespace Fantasy_Kingdoms_Battle
 {
-    internal abstract class CellMenu
+    internal abstract class CellOfMenu
     {
-        public CellMenu(BigEntity forEntity, DescriptorCellMenu d)
+        public CellOfMenu(BigEntity forEntity, DescriptorCellMenu d)
         {
             BigEntity = forEntity;
             Descriptor = d;

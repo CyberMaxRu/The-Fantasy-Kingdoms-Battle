@@ -30,7 +30,7 @@ namespace Fantasy_Kingdoms_Battle
 
             // Загружаем конфигурацию игры
             Descriptor.Descriptors = this;
-            CellMenu.Config = this;
+            CellOfMenu.Config = this;
 
             // Загрузка типов ландшафта
             xmlDoc = CreateXmlDocument(@"Config\Descriptors\TypeLandscapes.xml");
