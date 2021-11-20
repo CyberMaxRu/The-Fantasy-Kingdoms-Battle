@@ -33,6 +33,8 @@ namespace Fantasy_Kingdoms_Battle
             this.name = name;
 
             CheckData();
+
+            Descriptors.AddEntity(this);
         }
 
         internal string ID { get; }// Уникальный код сущности
