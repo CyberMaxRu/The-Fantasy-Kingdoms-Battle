@@ -1217,7 +1217,7 @@ namespace Fantasy_Kingdoms_Battle
         internal bool CanBuildTypeConstruction(DescriptorConstruction type)
         {
             // Сначала проверяем наличие ресурсов
-            if (!BaseResources.ResourcesEnough(type.Levels[1].Cost))
+            if (!BaseResources.ResourcesEnough(type.Levels[1].Creating.CostResources))
                 return false;
 
             // Проверяем наличие очков строительства
@@ -1225,14 +1225,14 @@ namespace Fantasy_Kingdoms_Battle
                 return false;
 
             // Проверяем требования к зданиям
-            return CheckRequirements(type.Levels[1].Requirements);
+            return CheckRequirements(type.Levels[1].Creating.Requirements);
         }
 
         internal List<TextRequirement> GetTextRequirementsBuildTypeConstruction(DescriptorConstruction type)
         {
             List<TextRequirement> list = new List<TextRequirement>();
 
-            TextRequirements(type.Levels[1].Requirements, list);
+            TextRequirements(type.Levels[1].Creating.Requirements, list);
 
             return list;
         }
@@ -1242,12 +1242,12 @@ namespace Fantasy_Kingdoms_Battle
             Program.formMain.formHint.AddStep2Header(type.Name);
             Program.formMain.formHint.AddStep4Level("Уровень 1");
             Program.formMain.formHint.AddStep5Description(type.Description);
-            Program.formMain.formHint.AddStep6Income(type.Levels[1].Income);
+            //Program.formMain.formHint.AddStep6Income(type.Levels[1].Income);
             Program.formMain.formHint.AddStep8Greatness(type.Levels[1].GreatnessByConstruction, type.Levels[1].GreatnessPerDay);
             Program.formMain.formHint.AddStep9PlusBuilders(type.Levels[1].BuildersPerDay);
-            Program.formMain.formHint.AddStep10DaysBuilding(-1, type.Levels[1].DaysProcessing);
+            Program.formMain.formHint.AddStep10DaysBuilding(-1, type.Levels[1].Creating.DaysProcessing);
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirementsBuildTypeConstruction(type));
-            Program.formMain.formHint.AddStep12Gold(BaseResources, type.Levels[1].Cost);
+            Program.formMain.formHint.AddStep12Gold(BaseResources, type.Levels[1].Creating.CostResources);
             Program.formMain.formHint.AddStep13Builders(type.Levels[1].Builders, FreeBuilders >= type.Levels[1].Builders);
         }
 

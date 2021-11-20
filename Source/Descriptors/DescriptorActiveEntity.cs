@@ -25,7 +25,7 @@ namespace Fantasy_Kingdoms_Battle
 
                     foreach (DescriptorCellMenu cm in CellsMenu)
                     {
-                        Debug.Assert(!cm.Coord.Equals(p), $"У {ID} в ячейке ({p.X + 1}, {p.Y + 1}) уже есть сущность.");
+                        Debug.Assert(!cm.Coord.Equals(research.Coord), $"У {ID} в ячейке ({research.Coord.X + 1}, {research.Coord.Y + 1}) уже есть сущность.");
                     }
 
                     foreach (DescriptorCellMenu tcm in CellsMenu)

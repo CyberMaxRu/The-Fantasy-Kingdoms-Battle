@@ -11,12 +11,12 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class DescriptorConstructionVisit : DescriptorEntityForConstruction
     {
-        public DescriptorConstructionVisit(DescriptorConstructionLevel level, XmlNode n) : base(level.ForConstruction, n)
+        public DescriptorConstructionVisit(DescriptorConstructionLevel level, XmlNode n) : base(level.Construction, n)
         {
             Debug.Assert(Interest >= 0);
             Debug.Assert(Interest <= 100);
 
-            ImageIndex = level.ForConstruction.ImageIndex;
+            ImageIndex = level.Construction.ImageIndex;
             ConstructionLevel = level;
 
             Interest = GetInteger(n, "Interest");

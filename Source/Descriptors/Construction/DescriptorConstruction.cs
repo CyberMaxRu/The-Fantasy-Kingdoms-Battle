@@ -100,9 +100,9 @@ namespace Fantasy_Kingdoms_Battle
                         number = GetIntegerNotNull(l, "Number");
                         Debug.Assert(number > 0);
                         Debug.Assert(Levels[number] == null);
-                        level = new DescriptorConstructionLevel(this, number, new Point(0, number - 1), l);
-                        if (number > 1)
-                            level.Requirements.Insert(0, new RequirementConstruction(level, ID, number - 1));
+                        level = new DescriptorConstructionLevel(this, number, l);
+                        //if (number > 1)
+                        //    level.Requirements.Insert(0, new RequirementConstruction(level, ID, number - 1));
 
                         /*switch (TypeIncome)
                         {
@@ -118,9 +118,9 @@ namespace Fantasy_Kingdoms_Battle
                                 throw new Exception("Неизвестный тип дохода.");
                         }*/
 
-                        Levels[number] = level;
-                        CheckFreeCellMenu(level.Coord);
-                        CellsMenu.Add(level);
+                        //Levels[number] = level;
+                        //CheckFreeCellMenu(level.Coord);
+                        //CellsMenu.Add(level);
                     }
 
                     Debug.Assert(Levels[0] is null);
@@ -365,8 +365,8 @@ namespace Fantasy_Kingdoms_Battle
 
             nameTypePlaceForConstruct = null;
 
-            if ((DefaultLevel == 1) && (Levels != null) && (Levels[1] != null))// Убрать вторую проверку после доработки логов
-                CellsMenu.Remove(Levels[1]);
+            //if ((DefaultLevel == 1) && (Levels != null) && (Levels[1] != null))// Убрать вторую проверку после доработки логов
+            //    CellsMenu.Remove(Levels[1]);
         }
 
         internal override void AfterTuneLinks()

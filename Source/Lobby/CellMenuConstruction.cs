@@ -48,30 +48,30 @@ namespace Fantasy_Kingdoms_Battle
 
         internal static CellMenuConstruction Create(Construction c, DescriptorCellMenu d)
         {
-            switch (d.Type)
+            switch (d.Action)
             {
-                case TypeCellMenuForConstruction.Research:
+                case "Research":
                     return new CellMenuConstructionResearch(c, d);
-                case TypeCellMenuForConstruction.Build:
+                case "Build":
                     return new CellMenuConstructionBuild(c, d);
-                case TypeCellMenuForConstruction.HireCreature:
+                case "HireCreature":
                     return new CellMenuConstructionHireCreature(c, d);
-                case TypeCellMenuForConstruction.Event:
+                case "Event":
                     return new CellMenuConstructionEvent(c, d);
-                case TypeCellMenuForConstruction.LevelUp:
-                    return new CellMenuConstructionLevelUp(c, d as DescriptorConstructionLevel);
-                case TypeCellMenuForConstruction.Extension:
+                case "LevelUp":
+                    return new CellMenuConstructionLevelUp(c, d);
+                case "Extension":
                     return new CellMenuConstructionExtension(c, d);
-                case TypeCellMenuForConstruction.Improvement:
+                case "Improvement":
                     return new CellMenuConstructionImprovement(c, d);
-                case TypeCellMenuForConstruction.Tournament:
+                case "Tournament":
                     return new CellMenuConstructionTournament(c, d);
-                case TypeCellMenuForConstruction.Extra:
+                case "Extra":
                     return new CellMenuConstructionExtra(c, d);
                 //case TypeCellMenuForConstruction.Action:
                 //    break;
                 default:
-                    throw new Exception($"Неизвестный тип ячейки: {d.Type}");
+                    throw new Exception($"Неизвестный тип ячейки: {d.Action}");
             }
         }
 
@@ -221,7 +221,7 @@ namespace Fantasy_Kingdoms_Battle
             if (ConstructionForBuild != null)
                 return ConstructionForBuild.CostBuyOrUpgrade();
             else
-                return TypeConstruction.Levels[1].Cost;
+                return TypeConstruction.Levels[1].Creating.CostResources;
         }
 
         internal override string GetLevel() => Program.formMain.Settings.ShowTypeCellMenu ? "1" : "";
@@ -246,9 +246,9 @@ namespace Fantasy_Kingdoms_Battle
 
     internal sealed class CellMenuConstructionLevelUp : CellMenuConstruction
     {
-        public CellMenuConstructionLevelUp(Construction c, DescriptorConstructionLevel d) : base(c, d)
+        public CellMenuConstructionLevelUp(Construction c, DescriptorCellMenu d) : base(c, d)
         {
-            Descriptor = d;
+            Descriptor = d.CreatedEntity as DescriptorConstructionLevel;
         }
 
         internal override void Execute()

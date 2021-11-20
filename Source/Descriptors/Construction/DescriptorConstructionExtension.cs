@@ -47,12 +47,12 @@ namespace Fantasy_Kingdoms_Battle
             {
                 Description += Environment.NewLine + "- Необходимо для:";
 
-                foreach (DescriptorCellMenu cm in UseForResearch)
+                foreach (DescriptorSmallEntity cm in UseForResearch)
                 {
                     if (cm is DescriptorConstructionLevel cmcl)
-                        Description += Environment.NewLine + "    - { " + cmcl.ForEntity.Name + " (" + cmcl.Number.ToString() + " ур.)}";
-                    else if (cm is DescriptorCellMenuForConstruction cmc)
-                        Description += Environment.NewLine + "    - {" + cmc.Entity.Name + "}" + (cmc.ForEntity.ID != Construction.ID ? " ({" + cm.ForEntity.Name + "})" : "");
+                        Description += Environment.NewLine + "    - { " + cmcl.Construction.Name + " (" + cmcl.Number.ToString() + " ур.)}";
+                    //else if (cm is DescriptorCellMenuForConstruction cmc)
+                    //    Description += Environment.NewLine + "    - {" + cmc.Entity.Name + "}" + (cmc.ForEntity.ID != Construction.ID ? " ({" + cm.ForEntity.Name + "})" : "");
                 }
             }
         }

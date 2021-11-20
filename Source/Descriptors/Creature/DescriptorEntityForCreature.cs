@@ -15,11 +15,6 @@ namespace Fantasy_Kingdoms_Battle
 
         }
 
-        public DescriptorEntityForCreature(string id, string name, string description, int imageIndex) : base(id, name, description, imageIndex)
-        {
-
-        }
-
         internal abstract string GetTypeEntity();
     }
 }

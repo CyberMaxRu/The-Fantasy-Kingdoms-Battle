@@ -12,7 +12,7 @@ namespace Fantasy_Kingdoms_Battle
 {
     internal sealed class DescriptorConstructionLevel : DescriptorEntityForConstruction
     {
-        public DescriptorConstructionLevel(DescriptorConstruction forConstruction, int number, Point coord, XmlNode n) : base(forConstruction, coord, n)
+        public DescriptorConstructionLevel(DescriptorConstruction forConstruction, int number, XmlNode n) : base(forConstruction, n)
         {
             //Debug.Assert(Creating != null);// Для логов не надо
 

@@ -62,11 +62,11 @@ namespace Fantasy_Kingdoms_Battle
             if (level == 1)
             {
                 Build(false);
-                DaysBuilded = TypeConstruction.Levels[1].DaysProcessing;
+                DaysBuilded = TypeConstruction.Levels[1].Creating.DaysProcessing;
             }
 
             // Настраиваем исследования 
-            foreach (DescriptorCellMenuForConstruction d in TypeConstruction.CellsMenu)
+            foreach (DescriptorCellMenu d in TypeConstruction.CellsMenu)
                 Researches.Add(CellMenuConstruction.Create(this, d));
 
             // Убрать эту проверку после настройки всех логов
@@ -304,7 +304,7 @@ namespace Fantasy_Kingdoms_Battle
 
         internal ListBaseResources CostBuyOrUpgrade()
         {
-            return CanLevelUp() == true ? TypeConstruction.Levels[Level + 1].Cost : null;
+            return CanLevelUp() == true ? TypeConstruction.Levels[Level + 1].Creating.CostResources : null;
         }
 
         internal bool CheckRequirements()
@@ -314,7 +314,7 @@ namespace Fantasy_Kingdoms_Battle
                 return false;
 
             // Сначала проверяем наличие золота
-            if (!Player.CheckRequiredResources(TypeConstruction.Levels[Level + 1].Cost))
+            if (!Player.CheckRequiredResources(TypeConstruction.Levels[Level + 1].Creating.CostResources))
                 return false;
 
             // Проверяем наличие очков строительства
@@ -329,14 +329,14 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             // Проверяем требования к зданиям
-            return Player.CheckRequirements(TypeConstruction.Levels[Level + 1].Requirements);
+            return Player.CheckRequirements(TypeConstruction.Levels[Level + 1].Creating.Requirements);
         }
 
         internal List<TextRequirement> GetTextRequirements(int level)
         {
             List<TextRequirement> list = new List<TextRequirement>();
 
-            Player.TextRequirements(TypeConstruction.Levels[level].Requirements, list);
+            Player.TextRequirements(TypeConstruction.Levels[level].Creating.Requirements, list);
 
             foreach (ConstructionProduct cp in Visits)
             {
@@ -352,22 +352,22 @@ namespace Fantasy_Kingdoms_Battle
 
         internal int Income()
         {
-            return Level > 0 ? TypeConstruction.Levels[Level].Income : 0;
+            return 0;// Level > 0 ? TypeConstruction.Levels[Level].Income : 0;
         }
 
         internal bool DoIncome()
         {
-            return TypeConstruction.Levels[1].Income > 0;
+            return false;// TypeConstruction.Levels[1].Income > 0;
         }
 
         internal int IncomeForLevel(int level)
         {
-            return TypeConstruction.Levels[level].Income;
+            return 0;// TypeConstruction.Levels[level].Income;
         }
 
         internal int DayBuildingForLevel(int level)
         {
-            return TypeConstruction.Levels[level].DaysProcessing;
+            return TypeConstruction.Levels[level].Creating.DaysProcessing;
         }
 
         internal int GreatnesAddForLevel(int level)
@@ -624,7 +624,7 @@ namespace Fantasy_Kingdoms_Battle
                 if (Level == 0)
                     list.Add(new TextRequirement(false, "Сооружение не построено"));
 
-                Player.TextRequirements(research.Descriptor.Requirements, list);
+                Player.TextRequirements(research.Descriptor.CreatedEntity.Creating.Requirements, list);
             }
 
             return list;
@@ -1129,7 +1129,7 @@ namespace Fantasy_Kingdoms_Battle
             }
             Program.formMain.formHint.AddStep10DaysBuilding(-1, DayBuildingForLevel(requiredLevel));
             Program.formMain.formHint.AddStep11Requirement(GetTextRequirements(requiredLevel));
-            Program.formMain.formHint.AddStep12Gold(Player.BaseResources, TypeConstruction.Levels[requiredLevel].Cost);
+            Program.formMain.formHint.AddStep12Gold(Player.BaseResources, TypeConstruction.Levels[requiredLevel].Creating.CostResources);
             Program.formMain.formHint.AddStep13Builders(TypeConstruction.Levels[requiredLevel].Builders, Player.FreeBuilders >= TypeConstruction.Levels[requiredLevel].Builders);
         }
 

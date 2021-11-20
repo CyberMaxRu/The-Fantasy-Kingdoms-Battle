@@ -19,7 +19,6 @@ namespace Fantasy_Kingdoms_Battle
         {
             base.TuneLinks();
 
-            Requirements.TuneLinks();
         }
 
     }

@@ -50,7 +50,7 @@ namespace Fantasy_Kingdoms_Battle
         internal Point Coord { get; }// Координаты в меню
         internal string Action { get; }// Действие
         internal string IDCreatedEntity { get; private set; }// ID создаваемой сущности (если есть)
-        internal DescriptorEntity CreatedEntity { get; set; }// Описатель создаваемой сущности
+        internal DescriptorWithID CreatedEntity { get; set; }// Описатель создаваемой сущности
         internal int DaysCooldown { get; }// Количество дней до возобновления действия
         internal DescriptorCellMenu NextCell { get; }// Следующая ячейка
 
