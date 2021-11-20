@@ -10,11 +10,11 @@ using static Fantasy_Kingdoms_Battle.XmlUtils;
 namespace Fantasy_Kingdoms_Battle
 {
     // Класс монстров уровня логова
-    internal sealed class MonsterLevelLair : Descriptor
+    internal sealed class DescriptorConstructionLevelLair : Descriptor
     {
         private string idMonster;
 
-        public MonsterLevelLair(XmlNode n) : base()
+        public DescriptorConstructionLevelLair(XmlNode n) : base()
         {
             idMonster = n.SelectSingleNode("ID").InnerText;
             StartQuantity = GetInteger(n, "StartQuantity");

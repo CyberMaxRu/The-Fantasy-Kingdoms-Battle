@@ -641,7 +641,7 @@ namespace Fantasy_Kingdoms_Battle
             //Debug.Assert(TypeLair.Monsters.Count > 0);
 
             Monster lm;
-            foreach (MonsterLevelLair mll in TypeConstruction.Monsters)
+            foreach (DescriptorConstructionLevelLair mll in TypeConstruction.Monsters)
             {
                 for (int i = 0; i < mll.StartQuantity; i++)
                 {

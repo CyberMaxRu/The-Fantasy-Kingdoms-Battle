@@ -228,10 +228,10 @@ namespace Fantasy_Kingdoms_Battle
             ne = n.SelectSingleNode("Monsters");
             if (ne != null)
             {
-                MonsterLevelLair mll;
+                DescriptorConstructionLevelLair mll;
                 foreach (XmlNode l in ne.SelectNodes("Monster"))
                 {
-                    mll = new MonsterLevelLair(l);
+                    mll = new DescriptorConstructionLevelLair(l);
                     Monsters.Add(mll);
                 }
             }
@@ -314,7 +314,7 @@ namespace Fantasy_Kingdoms_Battle
         internal PanelConstruction Panel { get; set; }
 
         // Свойства, относящиеся к логовам монстров
-        internal List<MonsterLevelLair> Monsters { get; } = new List<MonsterLevelLair>();
+        internal List<DescriptorConstructionLevelLair> Monsters { get; } = new List<DescriptorConstructionLevelLair>();
         internal DescriptorReward Reward { get; }// Награда за зачистку логова
         internal DescriptorReward HiddenReward { get; }// Скрытая награда за зачистку логова
         internal DescriptorConstruction TypePlaceForConstruct { get; private set; }// Тип сооружения, на котором строится сооружение
@@ -349,12 +349,12 @@ namespace Fantasy_Kingdoms_Battle
             foreach (DescriptorCellMenu cm in CellsMenu)
                 cm.TuneLinks();
 
-            foreach (MonsterLevelLair mll in Monsters)
+            foreach (DescriptorConstructionLevelLair mll in Monsters)
             {
                 mll.TuneLinks();
 
                 // Проверяем, что тип монстра не повторяется
-                foreach (MonsterLevelLair mlev in Monsters)
+                foreach (DescriptorConstructionLevelLair mlev in Monsters)
                     if ((mlev != mll) && (mlev.Monster != null))
                         if (mlev.Monster == mll.Monster)
                             throw new Exception("Тип монстра " + mll.Monster.ID + " повторяется.");
