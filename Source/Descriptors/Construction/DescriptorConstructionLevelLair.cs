@@ -40,7 +40,6 @@ namespace Fantasy_Kingdoms_Battle
         internal int Level { get; }
         internal int DaysRespawn { get; }
         internal int QuantityRespawn { get; }
-        internal List<Monster> Monsters { get; } = new List<Monster>();
 
         internal override void TuneLinks()
         {
