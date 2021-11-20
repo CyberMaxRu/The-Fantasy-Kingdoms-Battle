@@ -23,6 +23,8 @@ namespace Fantasy_Kingdoms_Battle
                 Creating = new DescriptorCreating(this, nc);
 
             CheckData();
+
+            Descriptors.AddEntity(this);
         }
 
         public DescriptorWithID(string id, string name) : base()
