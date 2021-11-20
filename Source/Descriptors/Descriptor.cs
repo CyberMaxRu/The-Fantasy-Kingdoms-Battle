@@ -6,7 +6,6 @@
         internal static Descriptors Descriptors { get; set; }
 
         internal virtual void TuneLinks() { }
-
         internal virtual void AfterTuneLinks() { }
     }
 }
