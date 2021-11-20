@@ -287,7 +287,7 @@ namespace Fantasy_Kingdoms_Battle
         internal bool AutoCreatedPlayer { get; }
 
         // Списки описателей
-        internal Dictionary<string, DescriptorEntity> Entities { get; } = new Dictionary<string, DescriptorEntity>();// Список всех сущностей
+        internal SortedList<string, DescriptorEntity> Entities { get; } = new SortedList<string, DescriptorEntity>();// Список всех сущностей
         internal DescriptorBaseResource Gold { get; }
         internal List<DescriptorBaseResource> BaseResources { get; } = new List<DescriptorBaseResource>();
 

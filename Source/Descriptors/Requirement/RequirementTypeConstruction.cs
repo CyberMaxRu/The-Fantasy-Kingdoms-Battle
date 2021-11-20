@@ -15,7 +15,7 @@ namespace Fantasy_Kingdoms_Battle
         private string nameTypeConstruction;
         private int quantity;
 
-        public RequirementTypeConstruction(DescriptorEntity forEntity, XmlNode n) : base(forEntity, n)
+        public RequirementTypeConstruction(DescriptorWithID forEntity, XmlNode n) : base(forEntity, n)
         {
             nameTypeConstruction = XmlUtils.GetStringNotNull(n, "TypeConstruction");
             quantity = XmlUtils.GetInteger(n, "Quantity");

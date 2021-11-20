@@ -14,6 +14,5 @@ namespace Fantasy_Kingdoms_Battle
         public DescriptorEntityForActiveEntity(XmlNode n) : base(n)
         {
         }
-
     }
 }

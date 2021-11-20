@@ -18,6 +18,10 @@ namespace Fantasy_Kingdoms_Battle
             ID = GetStringNotNull(n, "ID");
             name = GetName(n);
 
+            XmlNode nc = n.SelectSingleNode("Creating");
+            if (nc != null)
+                Creating = new DescriptorCreating(this, nc);
+
             CheckData();
         }
 
@@ -31,7 +35,8 @@ namespace Fantasy_Kingdoms_Battle
 
         internal string ID { get; }// Уникальный код сущности
         internal string Name { get => name; set { name = value; CheckData(); } }// Наименование сущности
-        
+        internal DescriptorCreating Creating { get; }
+
         protected virtual string GetName(XmlNode n)
         {
             return GetStringNotNull(n, "Name");

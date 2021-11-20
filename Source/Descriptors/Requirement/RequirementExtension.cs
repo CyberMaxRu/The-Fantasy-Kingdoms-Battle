@@ -16,7 +16,7 @@ namespace Fantasy_Kingdoms_Battle
         private DescriptorConstructionExtension Extension;
         private string nameExtension;
 
-        public RequirementExtension(DescriptorEntity forEntity, XmlNode n) : base(forEntity, n)
+        public RequirementExtension(DescriptorWithID forEntity, XmlNode n) : base(forEntity, n)
         {
             nameConstruction = XmlUtils.GetStringNotNull(n, "Construction");
             nameExtension = XmlUtils.GetStringNotNull(n, "Extension");

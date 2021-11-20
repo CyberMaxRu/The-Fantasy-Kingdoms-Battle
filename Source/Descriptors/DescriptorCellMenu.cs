@@ -21,10 +21,7 @@ namespace Fantasy_Kingdoms_Battle
             Coord = GetPoint(n, "Pos");
             Action = GetStringNotNull(n, "Action");
             IDCreatedEntity = GetStringNotNull(n, "Entity");
-            DaysProcessing = GetInteger(n, "DaysProcessing");
             DaysCooldown = GetInteger(n, "DaysCooldown");
-            CostResources = new ListBaseResources(n.SelectSingleNode("Cost"));
-            Requirements = new ListDescriptorRequirements(forEntity, n.SelectSingleNode("Requirements"));
 
             XmlNode next = n.SelectSingleNode("CellMenu");
             if (next != null)
@@ -33,12 +30,9 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(Coord.Equals(NextCell.Coord), $"У {IDCreatedEntity} в ячейку {Coord} вложена ячейка {NextCell.Coord}.");
             }
 
-
             Debug.Assert(Coord.X <= Descriptors.PlateWidth - 1);
             Debug.Assert(Coord.Y <= Descriptors.PlateHeight - 1);
             Debug.Assert(IDCreatedEntity.Length > 0);
-            Debug.Assert(DaysProcessing >= 0, $"В {ForEntity.ID} отрицательное число дней процесса у {IDCreatedEntity}.");
-            Debug.Assert(DaysProcessing <= 100);
             Debug.Assert(DaysCooldown >= -1);
             Debug.Assert(DaysCooldown <= 100);
         }
@@ -48,9 +42,6 @@ namespace Fantasy_Kingdoms_Battle
             ForEntity = forEntity;
             Coord = coord;
 
-            CostResources = new ListBaseResources();
-            Requirements = new ListDescriptorRequirements(forEntity, null);
-
             Debug.Assert(Coord.X <= Descriptors.PlateWidth - 1);
             Debug.Assert(Coord.Y <= Descriptors.PlateHeight - 1);
         }
@@ -59,20 +50,16 @@ namespace Fantasy_Kingdoms_Battle
         internal Point Coord { get; }// Координаты в меню
         internal string Action { get; }// Действие
         internal string IDCreatedEntity { get; private set; }// ID создаваемой сущности (если есть)
-
-        //internal DescriptorEntity CreatedEntity { get; set; }// Описатель создаваемой сущности
-        internal DescriptorCellMenu NextCell { get; }// Следующая ячейка
-        internal int DaysProcessing { get; }// Количество дней для выполнения действия
+        internal DescriptorEntity CreatedEntity { get; set; }// Описатель создаваемой сущности
         internal int DaysCooldown { get; }// Количество дней до возобновления действия
-        internal ListBaseResources CostResources { get; }// Стоимость
-        internal ListDescriptorRequirements Requirements { get; }// Список требований для выполнения действия
+        internal DescriptorCellMenu NextCell { get; }// Следующая ячейка
 
         internal override void TuneLinks()
         {
             base.TuneLinks();
 
-            //CreatedEntity = Descriptors.FindEntity(IDCreatedEntity);
-            //IDCreatedEntity = "";
+            CreatedEntity = Descriptors.FindEntity(IDCreatedEntity);
+            IDCreatedEntity = "";
         }
     }
 }

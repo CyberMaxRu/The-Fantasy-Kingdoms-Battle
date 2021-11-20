@@ -14,6 +14,8 @@ namespace Fantasy_Kingdoms_Battle
     {
         public DescriptorConstructionLevel(DescriptorConstruction forConstruction, int number, Point coord, XmlNode n) : base(forConstruction, coord, n)
         {
+            //Debug.Assert(Creating != null);// Для логов не надо
+
             Number = number;
             Builders = GetInteger(n, "Builders");
             MaxInhabitant = GetInteger(n, "MaxInhabitant");
