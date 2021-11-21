@@ -80,6 +80,11 @@ namespace Fantasy_Kingdoms_Battle
             return "Повышение уровня";
         }
 
+        internal override int GetImageIndex(XmlNode n)
+        {
+            return GetIntegerNotNull(n, "Number") == 1 ? Config.Gui48_Build : Config.Gui48_LevelUp;
+        }
+
         internal override void TuneLinks()
         {
             base.TuneLinks();
