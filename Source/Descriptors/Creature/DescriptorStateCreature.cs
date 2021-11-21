@@ -12,7 +12,7 @@ namespace Fantasy_Kingdoms_Battle
     internal enum NameStateCreature { Nothing, DoScoutFlag, DoAttackFlag, DoDefenseFlag, BattleWithPlayer, InHome, Therapy, King, Advisor, Captain, Treasurer };
 
     // Класс описания состояния существ
-    internal sealed class DescriptorStateCreature : DescriptorEntity
+    internal sealed class DescriptorStateCreature : DescriptorVisual
     {
         public DescriptorStateCreature(XmlNode n) : base(n)
         {
