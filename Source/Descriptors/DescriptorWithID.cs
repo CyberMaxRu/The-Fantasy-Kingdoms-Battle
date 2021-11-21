@@ -23,8 +23,6 @@ namespace Fantasy_Kingdoms_Battle
                 Creating = new DescriptorCreating(this, nc);
 
             CheckData();
-
-            Descriptors.AddEntity(this);
         }
 
         public DescriptorWithID(string id, string name) : base()
@@ -33,8 +31,6 @@ namespace Fantasy_Kingdoms_Battle
             this.name = name;
 
             CheckData();
-
-            Descriptors.AddEntity(this);
         }
 
         internal string ID { get; }// Уникальный код сущности

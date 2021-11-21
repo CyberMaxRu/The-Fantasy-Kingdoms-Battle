@@ -15,6 +15,8 @@ namespace Fantasy_Kingdoms_Battle
             imageIndex = GetImageIndex(n);
 
             CheckData();
+
+            Descriptors.AddEntity(this);
         }
 
         public DescriptorEntity(string id, string name, string description, int imageIndex) : base(id, name)
@@ -23,6 +25,8 @@ namespace Fantasy_Kingdoms_Battle
             this.imageIndex = imageIndex;
 
             CheckData();
+
+            Descriptors.AddEntity(this);
         }
 
         internal string Description { get; set; }// Описание типа объекта

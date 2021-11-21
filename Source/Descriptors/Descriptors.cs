@@ -306,7 +306,7 @@ namespace Fantasy_Kingdoms_Battle
         internal bool AutoCreatedPlayer { get; }
 
         // Списки описателей
-        internal SortedList<string, DescriptorWithID> Entities { get; } = new SortedList<string, DescriptorWithID>();// Список всех сущностей
+        internal SortedList<string, DescriptorEntity> Entities { get; } = new SortedList<string, DescriptorEntity>();// Список всех сущностей
         internal DescriptorBaseResource Gold { get; }
         internal List<DescriptorBaseResource> BaseResources { get; } = new List<DescriptorBaseResource>();
 
@@ -592,16 +592,16 @@ namespace Fantasy_Kingdoms_Battle
             ConstructionsVisits.Add(visit);
         }
 
-        internal void AddEntity(DescriptorWithID entity)
+        internal void AddEntity(DescriptorEntity entity)
         {
             Debug.Assert(!Entities.ContainsKey(entity.ID));
 
             Entities.Add(entity.ID, entity);
         }
 
-        internal DescriptorWithID FindEntity(string id)
+        internal DescriptorEntity FindEntity(string id)
         {
-            if (!Entities.TryGetValue(id, out DescriptorWithID entity))
+            if (!Entities.TryGetValue(id, out DescriptorEntity entity))
                 throw new Exception($"Сущность {id} не найдена.");
 
             return entity;
