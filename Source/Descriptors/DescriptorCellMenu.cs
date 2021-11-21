@@ -20,8 +20,17 @@ namespace Fantasy_Kingdoms_Battle
 
             Coord = GetPoint(n, "Pos");
             Action = GetString(n, "Action");
-            IDCreatedEntity = GetStringNotNull(n, "Entity");
+            IDCreatedEntity = GetString(n, "Entity");
             DaysCooldown = GetInteger(n, "DaysCooldown");
+
+            if (Action.Length == 0)
+            {
+                Debug.Assert(IDCreatedEntity.Length > 0);
+            }
+            else
+            {
+                Debug.Assert(IDCreatedEntity.Length == 0, $"В {forEntity.ID} указано действие {Action} и указана сущность {IDCreatedEntity}.");
+            }
 
             XmlNode next = n.SelectSingleNode("CellMenu");
             if (next != null)
@@ -32,7 +41,6 @@ namespace Fantasy_Kingdoms_Battle
 
             Debug.Assert(Coord.X <= Config.PlateWidth - 1);
             Debug.Assert(Coord.Y <= Config.PlateHeight - 1);
-            Debug.Assert(IDCreatedEntity.Length > 0);
             Debug.Assert(DaysCooldown >= -1);
             Debug.Assert(DaysCooldown <= 100);
         }

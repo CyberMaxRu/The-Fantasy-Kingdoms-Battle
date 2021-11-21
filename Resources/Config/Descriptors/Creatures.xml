@@ -109,7 +109,11 @@
     <CategoryCreature>Citizen</CategoryCreature>
     <TypeCreature>Human</TypeCreature>
     <Reward>1</Reward>
-    <Cost>0</Cost>
+    <Creating>
+      <Cost>
+        <Gold>1000</Gold>
+      </Cost>
+    </Creating>
     <Construction>Castle</Construction>
     <MaxLevel>1</MaxLevel>
   </Creature>
