@@ -84,7 +84,7 @@ namespace Fantasy_Kingdoms_Battle
                 ToCentre();
             Program.formMain.LayerChanged();
 
-            if (FormMain.Config.AutoCreatedPlayer)
+            if (FormMain.Descriptors.AutoCreatedPlayer)
             {
                 WindowPlayerPreferences wpf = new WindowPlayerPreferences();
                 wpf.ShowDialog();

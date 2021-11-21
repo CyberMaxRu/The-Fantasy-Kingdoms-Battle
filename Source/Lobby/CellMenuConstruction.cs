@@ -113,7 +113,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(d.CreatedEntity.Creating.CostResources.ValueGold() > 0, $"У {d.IDCreatedEntity} не указана цена.");
 
-            Entity = Config.FindProduct(d.IDCreatedEntity);
+            Entity = Descriptors.FindProduct(d.IDCreatedEntity);
         }
 
         internal DescriptorProduct Entity { get; }
@@ -162,7 +162,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(d.CreatedEntity.Creating.CostResources.ValueGold() == 0, $"У {d.IDCreatedEntity} цена должна быть 0 (указана {d.CreatedEntity.Creating.CostResources.ValueGold()}).");
 
-            TypeConstruction = Config.FindConstruction(d.IDCreatedEntity);
+            TypeConstruction = Descriptors.FindConstruction(d.IDCreatedEntity);
             if (TypeConstruction.Category == CategoryConstruction.Temple)
                 ConstructionForBuild = c.Player.GetPlayerConstruction(TypeConstruction);
             else if (TypeConstruction.Category == CategoryConstruction.External)
@@ -297,7 +297,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         public CellMenuConstructionHireCreature(Construction c, DescriptorCellMenu d) : base(c, d)
         {
-            Creature = Config.FindCreature(d.IDCreatedEntity);
+            Creature = Descriptors.FindCreature(d.IDCreatedEntity);
         }
 
         internal DescriptorCreature Creature { get; private set; }
@@ -345,7 +345,7 @@ namespace Fantasy_Kingdoms_Battle
         private ConstructionProduct cp;
         public CellMenuConstructionEvent(Construction c, DescriptorCellMenu d) : base(c, d)
         {
-            Entity = Config.FindEntity(d.IDCreatedEntity) as DescriptorProduct;
+            Entity = Descriptors.FindEntity(d.IDCreatedEntity) as DescriptorProduct;
             Debug.Assert(Entity.EntityForConstruction is DescriptorConstructionEvent);
             ConstructionEvent = Entity.EntityForConstruction as DescriptorConstructionEvent;
         }
@@ -535,7 +535,7 @@ namespace Fantasy_Kingdoms_Battle
         public CellMenuConstructionTournament(Construction c, DescriptorCellMenu d) : base(c, d)
         {
             //Entity = Config.FindItem(d.NameEntity);
-            Entity = Config.FindProduct(d.IDCreatedEntity);
+            Entity = Descriptors.FindProduct(d.IDCreatedEntity);
         }
 
         internal DescriptorProduct Entity { get; }

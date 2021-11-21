@@ -47,7 +47,7 @@ namespace Fantasy_Kingdoms_Battle
                 if (sb.Builders > 0)
                     AddBonus(text, FormMain.Config.Gui48_Build, "Строители", $"+{sb.Builders}");
                 if (sb.PeasantHouse > 0)
-                    AddBonus(text, FormMain.Descriptors.FindConstruction(FormMain.Descriptors.IDPeasantHouse).ImageIndex, "Дом крестьян", $"+{sb.PeasantHouse}");
+                    AddBonus(text, FormMain.Descriptors.FindConstruction(FormMain.Config.IDPeasantHouse).ImageIndex, "Дом крестьян", $"+{sb.PeasantHouse}");
                 if (sb.HolyPlace > 0)
                     AddBonus(text, FormMain.Descriptors.FindConstruction(FormMain.Config.IDHolyPlace).ImageIndex, FormMain.Descriptors.FindConstruction(FormMain.Config.IDHolyPlace).Name, $"+{sb.HolyPlace}");
                 if (sb.Scouting > 0)

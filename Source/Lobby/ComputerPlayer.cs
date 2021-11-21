@@ -13,7 +13,7 @@ namespace Fantasy_Kingdoms_Battle
     {
         public ComputerPlayer(XmlNode n) : base(n, TypePlayer.Computer)
         {
-            foreach (ComputerPlayer cp in FormMain.Config.ComputerPlayers)
+            foreach (ComputerPlayer cp in FormMain.Descriptors.ComputerPlayers)
             {
                 Debug.Assert(ID != cp.ID);
                 Debug.Assert(Name != cp.Name);

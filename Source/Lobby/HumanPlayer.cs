@@ -18,14 +18,14 @@ namespace Fantasy_Kingdoms_Battle
 
             DirectoryAvatar = XmlUtils.GetString(n, "DirectoryAvatar");
 
-            foreach (HumanPlayer hp in FormMain.Config.HumanPlayers)
+            foreach (HumanPlayer hp in FormMain.Descriptors.HumanPlayers)
             {
                 Debug.Assert(ID != hp.ID);
                 Debug.Assert(Name != hp.Name);
                 Debug.Assert(ImageIndex != hp.ImageIndex);
             }
 
-            foreach (ComputerPlayer cp in FormMain.Config.ComputerPlayers)
+            foreach (ComputerPlayer cp in FormMain.Descriptors.ComputerPlayers)
             {
                 Debug.Assert(ID != cp.ID);
                 Debug.Assert(Name != cp.Name);
@@ -54,7 +54,7 @@ namespace Fantasy_Kingdoms_Battle
 
         private void DisableComputerPlayerByAvatar()
         {
-            foreach (ComputerPlayer cp in FormMain.Config.ComputerPlayers)
+            foreach (ComputerPlayer cp in FormMain.Descriptors.ComputerPlayers)
             {
                 if (cp.ImageIndex == ImageIndex)
                 {

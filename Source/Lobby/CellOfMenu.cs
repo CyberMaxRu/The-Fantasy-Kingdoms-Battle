@@ -18,7 +18,8 @@ namespace Fantasy_Kingdoms_Battle
             PosInQueue = 0;
         }
 
-        internal static Descriptors Config { get; set; }
+        internal static Descriptors Descriptors { get; set; }
+        internal static Config Config { get; set; }
         internal DescriptorCellMenu Descriptor { get; }
         internal BigEntity BigEntity { get; }
 

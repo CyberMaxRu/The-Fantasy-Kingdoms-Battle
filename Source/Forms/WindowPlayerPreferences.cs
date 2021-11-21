@@ -183,7 +183,7 @@ namespace Fantasy_Kingdoms_Battle
             btnDeleteAvatar.Enabled = btnChangeAvatar.Enabled;
 
             Program.formMain.CurrentHumanPlayer.ImageIndex = curImageIndexAvatar;
-            FormMain.Config.SaveHumanPlayers();
+            FormMain.Descriptors.SaveHumanPlayers();
         }
 
         private void BtnCancel_Click(object sender, EventArgs e)
@@ -213,7 +213,7 @@ namespace Fantasy_Kingdoms_Battle
 
             if (Program.formMain.CurrentHumanPlayer.Name != editName.Text)
             {
-                if (!FormMain.Config.CheckNonExistsNamePlayer(editName.Text))
+                if (!FormMain.Descriptors.CheckNonExistsNamePlayer(editName.Text))
                     {
                         WindowInfo.ShowInfo("Информация", "Выбранное имя уже используется другим игроком.\n\rВыберите другое имя.");
                         return;
@@ -225,7 +225,7 @@ namespace Fantasy_Kingdoms_Battle
                 }
 
                 Program.formMain.CurrentHumanPlayer.Name = editName.Text;
-                FormMain.Config.SaveHumanPlayers();
+                FormMain.Descriptors.SaveHumanPlayers();
                 if (Program.formMain.CurrentLobby != null)
                     Program.formMain.ShowCurrentPlayerLobby();
             }

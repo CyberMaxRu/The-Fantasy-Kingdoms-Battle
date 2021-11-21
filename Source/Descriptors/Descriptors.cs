@@ -30,7 +30,30 @@ namespace Fantasy_Kingdoms_Battle
 
             // Загружаем конфигурацию игры
             Descriptor.Descriptors = this;
-            CellOfMenu.Config = this;
+            CellOfMenu.Descriptors = this;
+
+            // Загрузка компьютерных игроков
+            xmlDoc = CreateXmlDocument("Config\\ComputerPlayers.xml");
+            foreach (XmlNode n in xmlDoc.SelectNodes("/ComputerPlayers/ComputerPlayer"))
+            {
+                ComputerPlayers.Add(new ComputerPlayer(n));
+            }
+
+            // Загрузка игроков-людей
+            if (File.Exists(pathResources + "Players.xml"))
+            {
+                xmlDoc = CreateXmlDocument("Players.xml");
+                foreach (XmlNode n in xmlDoc.SelectNodes("/Players/Player"))
+                {
+                    HumanPlayers.Add(new HumanPlayer(n));
+                }
+                AutoCreatedPlayer = false;
+            }
+            else
+            {
+                AddHumanPlayer("Игрок");
+                AutoCreatedPlayer = true;
+            }
 
             // Загрузка типов ландшафта
             xmlDoc = CreateXmlDocument(@"Config\Descriptors\TypeLandscapes.xml");
@@ -207,9 +230,6 @@ namespace Fantasy_Kingdoms_Battle
                 Creatures.Add(new DescriptorCreature(n));
             }
 
-            //
-            LoadTextures(pathResources);
-
             // Настраиваем связи
             foreach (DescriptorTypeLandscape tl in TypeLandscapes)
                 tl.TuneLinks();
@@ -322,131 +342,6 @@ namespace Fantasy_Kingdoms_Battle
 
         //
         private List<(string, Bitmap)> Textures = new List<(string, Bitmap)>();
-
-        // Константы
-        internal int GridSize { get; private set; }// Размер ячейки сетки
-        internal int GridSizeHalf { get; private set; }// Размер половины ячейки сетки
-        internal int MaxLengthObjectName { get; set; }// Максимальная длина имени объекта
-        internal Point ShiftForBorder { get; private set; }// Смещение иконки внутри рамки сущности
-        internal int ImageIndexFirstAvatar { get; private set; }// ImageIndex первого аватара игроков
-        internal int QuantityInternalAvatars { get; private set; }// Количество внутренних аватаров игроков
-        internal int ImageIndexExternalAvatar { get; private set; }// ImageIndex первого аватара игроков
-        internal int MaxQuantityExternalAvatars { get; private set; }// Количество внешних аватаров игроков
-        internal int ImageIndexLastAvatar { get; private set; }// ImageIndex последнего аватара (включая внешний)
-        internal int QuantityAllAvatars { get; private set; }// Общее количество аватаров
-        internal int ImageIndexFirstItems { get; private set; }// ImageIndex первого аватара игроков
-        internal int BorderInBigIcons => 1;// Прозрачный бордюр у иконок 128 * 128
-        internal int HeroInRow { get; private set; }// Героев в ряду
-        internal int HeroRows { get; private set; }// Рядов героев
-        internal int RowsBetweenSides { get; private set; }// Рядов между сторонами
-        internal int StepsInSecond { get; private set; }// Шагов в секунду
-        internal int StepInMSec { get; private set; }// Время шага в миллисекундах
-        internal int MaxDurationBattleWithMonster { get; private set; }// Максимальная длительность боя c монстрами в секундах
-        internal int MaxDurationBattleWithPlayer { get; private set; }// Максимальная длительность боя с другим игроком в секундах
-        internal int MaxFramesPerSecond { get; private set; }// Максимальная частота перерисовки кадров
-        internal int MaxDurationFrame { get; private set; }// Максимальная длительность кадра
-        internal int MaxStatPointPerLevel { get; private set; }
-        internal int StepsHeroInTumbstone { get; private set; }// Сколько шагов герой в могиле перед исчезновением
-        internal int UnitStepsTimeToDisappearance { get; private set; }// Сколько шагов могила юнита исчезает
-        internal int MaxCreatureAbilities { get; private set; }// Максимальное количество умений у существа
-        internal int MaxCreatureSecondarySkills { get; private set; }//Максимальное количество вторичных навыков у существа
-        internal int PlateWidth { get; private set; }// Количество ячеек на панели справа по горизонтали
-        internal int PlateHeight { get; private set; }// Количество ячеек на панели справа по вертикали
-        internal int MinRowsEntities { get; private set; }// Минимальное количество строк сущностей в панели справа
-        internal string IDHeroAdvisor { get; private set; }// ID типа героя - Советник
-        internal string IDHeroPeasant { get; private set; }// ID типа героя - крестьянин
-        internal string IDConstructionCastle { get; private set; }// ID Замка
-        internal string IDPeasantHouse { get; private set; }// ID крестьянского дома
-        internal string IDHolyPlace { get; private set; }// ID Святой земли
-        internal string IDTradePost { get; private set; }// ID торгового поста
-        internal string IDCityGraveyard { get; private set; }// ID торгового поста
-        internal int WarehouseWidth { get; private set; }// Количество ячеек в ряду склада
-        internal int WarehouseHeight { get; private set; }// Количество рядов ячеек склада
-        internal int WarehouseMaxCells { get; private set; }// Количество ячеек в складе
-        internal int ConstructionMaxLines { get; private set; }// Максимальное количество линий сооружений
-        internal int ConstructionMaxPos { get; private set; }// Максимальное количество позиций в линии сооружений
-        internal int MaxElementInStartBonus { get; private set; }// Максимальное количество позиций в одном варианте стартового бонуса
-
-        // Цвета
-        internal Color CommonBorder { get; private set; }
-        internal Color CommonSelectedBorder { get; private set; }
-        internal Color CommonCaptionPage { get; private set; }
-        internal Color CommonLevel { get; private set; }
-        internal Color CommonCost { get; private set; }
-        internal Color CommonQuantity { get; private set; }
-        internal Color CommonPopupQuantity { get; private set; }
-        internal Color CommonPopupQuantityBack { get; private set; }
-
-        internal Color SelectedPlayerBorder { get; private set; }
-        internal Color DamageToCastlePositive { get; private set; }
-        internal Color DamageToCastleNegative { get; private set; }
-
-        internal Color HintHeader { get; private set; }
-        internal Color HintAction { get; private set; }
-        internal Color HintDescription { get; private set; }
-        internal Color HintIncome { get; private set; }
-        internal Color HintParameter { get; private set; }
-        internal Color HintRequirementsMet { get; private set; }
-        internal Color HintRequirementsNotMet { get; private set; }
-
-        internal Color BattlefieldSystemInfo { get; private set; }
-        internal Color BattlefieldPlayerName { get; private set; }
-        internal Color BattlefieldPlayerHealth { get; private set; }
-        internal Color BattlefieldPlayerHealthNone { get; private set; }
-        internal Color BattlefieldGrid { get; private set; }
-        internal Color BattlefieldAllyColor { get; private set; }
-        internal Color BattlefieldEnemyColor { get; private set; }
-        internal Color BattlefieldTextWin { get; private set; }
-        internal Color BattlefieldTextDraw { get; private set; }
-        internal Color BattlefieldTextLose { get; private set; }
-
-        internal Color UnitHealth { get; private set; }
-        internal Color UnitHealthNone { get; private set; }
-        internal Color UnitNormalParam { get; private set; }
-        internal Color UnitLowNormalParam { get; private set; }
-        internal Color UnitHighNormalParam { get; private set; }
-
-        // Иконки GUI-48
-        internal int Gui48_Heroes { get; }
-        internal int Gui48_Guilds { get; }
-        internal int Gui48_Economy { get; }
-        internal int Gui48_Defense { get; }
-        internal int Gui48_Temple { get; }
-        internal int Gui48_LevelUp { get; }
-        internal int Gui48_Buy { get; }
-        internal int Gui48_Lobby { get; }
-        internal int Gui48_Dismiss { get; }
-        internal int Gui48_Battle { get; }
-        internal int Gui48_Peasant { get; }
-        internal int Gui48_Hourglass { get; }
-        internal int Gui48_Goods { get; }
-        internal int Gui48_Home { get; }
-        internal int Gui48_Inventory { get; }
-        internal int Gui48_Target { get; }
-        internal int Gui48_Book { get; }
-        internal int Gui48_Exit { get; }
-        internal int Gui48_FlagAttack { get; }
-        internal int Gui48_Tournament { get; }
-        internal int Gui48_Scroll { get; }
-        internal int Gui48_Settings { get; }
-        internal int Gui48_FlagScout { get; }
-        internal int Gui48_FlagCancel { get; }
-        internal int Gui48_Build { get; }
-        internal int Gui48_FlagDefense { get; }
-        internal int Gui48_Map { get; }
-        internal int Gui48_Background { get; }
-        internal int Gui48_ResultDay { get; }
-        internal int Gui48_Win { get; }
-        internal int Gui48_Draw { get; }
-        internal int Gui48_Defeat { get; }
-        internal int Gui48_Battle2 { get; }
-        internal int Gui48_NeighborCastle { get; }
-        internal int Gui48_Cheating { get; }
-
-        //
-        internal Brush brushControl { get; private set; } = new SolidBrush(Color.White);
-        internal Pen PenBorder { get; private set; }
-        internal Pen PenSelectedBorder { get; private set; }
 
         //
         internal DescriptorConstructionVisit FindConstructionVisit(string ID)
@@ -692,49 +587,24 @@ namespace Fantasy_Kingdoms_Battle
             throw new Exception("Тип ландшафта " + ID + " не найден.");
         }
 
-        internal Color ColorEntity(bool ally)
+        internal void AddVisit(DescriptorConstructionVisit visit)
         {
-            return ally ? BattlefieldAllyColor : BattlefieldEnemyColor;
+            ConstructionsVisits.Add(visit);
         }
 
-        internal Color ColorBorder(bool selected)
+        internal void AddEntity(DescriptorWithID entity)
         {
-            return selected ? CommonSelectedBorder : CommonBorder;
+            Debug.Assert(!Entities.ContainsKey(entity.ID));
+
+            Entities.Add(entity.ID, entity);
         }
 
-        internal Color ColorBorderPlayer(Player p)
+        internal DescriptorWithID FindEntity(string id)
         {
-            return p == p.Lobby.CurrentPlayer ? SelectedPlayerBorder : CommonBorder;
-        }
+            if (!Entities.TryGetValue(id, out DescriptorWithID entity))
+                throw new Exception($"Сущность {id} не найдена.");
 
-        internal Color ColorMapObjectCaption(bool allowed)
-        {
-            return allowed ? Color.LimeGreen : Color.Gray;
-        }
-
-        internal Pen GetPenBorder(bool selected)
-        {
-            return selected ? PenSelectedBorder : PenBorder;
-        }
-
-        internal Color ColorIncome(bool existIncome)
-        {
-            return existIncome ? HintIncome : Color.Gray;
-        }
-
-        internal Color ColorGreatness(bool existGreatness)
-        {
-            return existGreatness ? HintIncome : Color.Gray;
-        }
-
-        internal Color ColorCost(bool allowed, bool goldEnough)
-        {
-            if (allowed && goldEnough)
-                return Color.LimeGreen;
-            if (allowed && !goldEnough)
-                return Color.Red;
-
-            return Color.Gray;
+            return entity;
         }
 
         internal void AddHumanPlayer(string name)
@@ -775,7 +645,7 @@ namespace Fantasy_Kingdoms_Battle
                     break;
             }
 
-            HumanPlayers.Add(new HumanPlayer(id, name, "-", imageIndex + ImageIndexFirstAvatar));
+            HumanPlayers.Add(new HumanPlayer(id, name, "-", imageIndex + FormMain.Config.ImageIndexFirstAvatar));
 
             SaveHumanPlayers();
         }
@@ -799,23 +669,6 @@ namespace Fantasy_Kingdoms_Battle
             textWriter.Dispose();
         }
 
-        internal void SaveExternalAvatars()
-        {
-            XmlTextWriter textWriter = new XmlTextWriter(Program.formMain.dirResources + "ExternalAvatars.xml", Encoding.UTF8);
-            textWriter.WriteStartDocument();
-            textWriter.Formatting = Formatting.Indented;
-            textWriter.WriteStartElement("ExternalAvatars");
-
-            foreach (string ea in ExternalAvatars)
-            {
-                textWriter.WriteElementString("ExternalAvatar", ea);
-            }
-
-            textWriter.WriteEndElement();
-            textWriter.Close();
-            textWriter.Dispose();
-        }
-
         internal bool CheckNonExistsNamePlayer(string name)
         {
             foreach (ComputerPlayer cp in ComputerPlayers)
@@ -827,53 +680,6 @@ namespace Fantasy_Kingdoms_Battle
                     return false;
 
             return true;
-        }
-
-        internal void UpdateDataAboutAvatar()
-        {
-            QuantityAllAvatars = QuantityInternalAvatars + ExternalAvatars.Count;
-            ImageIndexLastAvatar = ImageIndexFirstAvatar + QuantityAllAvatars - 1;
-        }
-
-        private void LoadTextures(string pathResources)
-        {
-            string[] files = Directory.GetFiles(pathResources + @"Icons\Textures");
-            foreach (string filename in files)
-            {
-                Bitmap bmp = Program.formMain.LoadBitmap(Path.GetFileName(filename), @"Icons\Textures");
-                Textures.Add((Path.GetFileNameWithoutExtension(filename), bmp));
-            }
-        }
-
-        internal Bitmap GetTexture(string id)
-        {
-            foreach ((string, Bitmap) t in Textures)
-            {
-                if (t.Item1 == id)
-                    return t.Item2;
-            }
-
-            throw new Exception($"Текстура {id} не найдена.");
-        }
-
-        internal void AddVisit(DescriptorConstructionVisit visit)
-        {
-            ConstructionsVisits.Add(visit);
-        }
-
-        internal void AddEntity(DescriptorWithID entity)
-        {
-            Debug.Assert(!Entities.ContainsKey(entity.ID));
-
-            Entities.Add(entity.ID, entity);
-        }
-
-        internal DescriptorWithID FindEntity(string id)
-        {
-            if (!Entities.TryGetValue(id, out DescriptorWithID entity))
-                throw new Exception($"Сущность {id} не найдена.");
-
-            return entity;
         }
     }
 }

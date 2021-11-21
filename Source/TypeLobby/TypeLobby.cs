@@ -38,7 +38,7 @@ namespace Fantasy_Kingdoms_Battle
             Debug.Assert(Name.Length > 0);
             Debug.Assert(QuantityPlayers >= 2);
             Debug.Assert(QuantityPlayers >= 8);
-            Debug.Assert(QuantityPlayers <= FormMain.Config.ComputerPlayers.Count);
+            Debug.Assert(QuantityPlayers <= FormMain.Descriptors.ComputerPlayers.Count);
             Debug.Assert(QuantityPlayers % 2 == 0);
             Debug.Assert(MaxHeroes >= 1);
             Debug.Assert(MaxHeroes <= 100);// Здесь проверять через максим. число героев на поле боя
@@ -83,7 +83,7 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(BaseResources[i].Quantity <= MaxBaseResources[i].Quantity);
             }
 
-            foreach (TypeLobby t in FormMain.Config.TypeLobbies)
+            foreach (TypeLobby t in FormMain.Descriptors.TypeLobbies)
             {
                 if (Name == t.Name)
                     throw new Exception("Лобби с наименованием [" + Name + "] уже существует.");

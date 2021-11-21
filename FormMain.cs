@@ -407,11 +407,12 @@ namespace Fantasy_Kingdoms_Battle
                 // Загружаем конфигурацию
                 SetStage("Открываем сундуки");
                 _ = new Config(dirResources, this);
+                _ = new Descriptors(dirResources, this);
 
                 brushQuantity = new SolidBrush(Config.CommonQuantity);
                 brushCost = new SolidBrush(Config.CommonCost);
 
-                SelectHumanPlayer(Config.HumanPlayers[0]);
+                SelectHumanPlayer(Descriptors.HumanPlayers[0]);
 
                 // Загружаем иконки
                 SetStage("Рассматриваем картины");
@@ -547,7 +548,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 CellPlayer pp;
                 int nextLeftPanelPlayer = 0;
-                for (int i = 0; i < Config.TypeLobbies[0].QuantityPlayers; i++)
+                for (int i = 0; i < Descriptors.TypeLobbies[0].QuantityPlayers; i++)
                 {
                     pp = new CellPlayer(panelPlayers, nextLeftPanelPlayer);
                     nextLeftPanelPlayer = pp.NextLeft();
@@ -1563,7 +1564,7 @@ namespace Fantasy_Kingdoms_Battle
         {
             Debug.Assert(lobby == null);
 
-            lobby = new Lobby(Config.TypeLobbies[0]);
+            lobby = new Lobby(Descriptors.TypeLobbies[0]);
 
             for (int i = 0; i < panelPlayers.Controls.Count; i++)
             {
@@ -2394,7 +2395,7 @@ namespace Fantasy_Kingdoms_Battle
         internal void SelectHumanPlayer(HumanPlayer hp)
         {
             Debug.Assert(hp != null);
-            Debug.Assert(Config.HumanPlayers.IndexOf(hp) != -1);
+            Debug.Assert(Descriptors.HumanPlayers.IndexOf(hp) != -1);
 
             CurrentHumanPlayer = hp;
         }

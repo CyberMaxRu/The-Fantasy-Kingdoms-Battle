@@ -107,7 +107,7 @@ namespace Fantasy_Kingdoms_Battle
             {
 
                 List<ComputerPlayer> listCompPlayers = new List<ComputerPlayer>();
-                listCompPlayers.AddRange(FormMain.Config.ComputerPlayers.Where(cp => cp.Active));
+                listCompPlayers.AddRange(FormMain.Descriptors.ComputerPlayers.Where(cp => cp.Active));
                 Debug.Assert(listCompPlayers.Count >= TypeLobby.QuantityPlayers - 1);
 
                 int idx;

@@ -164,7 +164,7 @@ namespace Fantasy_Kingdoms_Battle
 
                 StartBonus GenerateNew(int points)
                 {
-                    foreach (StartBonus csb in FormMain.Config.StartBonuses)
+                    foreach (StartBonus csb in FormMain.Descriptors.StartBonuses)
                     {
                         csb.ClearQuantity();
                     }
@@ -176,7 +176,7 @@ namespace Fantasy_Kingdoms_Battle
                     {
                         // Выбираем случайный бонус из списка доступных, чтобы хватило оставшихся очков
                         listBonuses.Clear();
-                        listBonuses.AddRange(FormMain.Config.StartBonuses.Where(b => ((b.CurrentQuantity == -1) || (b.CurrentQuantity < b.MaxQuantity)) && (b.Points <= (points - sb.Points))));
+                        listBonuses.AddRange(FormMain.Descriptors.StartBonuses.Where(b => ((b.CurrentQuantity == -1) || (b.CurrentQuantity < b.MaxQuantity)) && (b.Points <= (points - sb.Points))));
                         Debug.Assert(listBonuses.Count > 0);
                         sb.AddBonus(listBonuses[lobby.Rnd.Next(listBonuses.Count)]);
                     }

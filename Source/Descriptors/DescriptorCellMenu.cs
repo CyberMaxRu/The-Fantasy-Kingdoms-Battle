@@ -30,8 +30,8 @@ namespace Fantasy_Kingdoms_Battle
                 Debug.Assert(Coord.Equals(NextCell.Coord), $"У {IDCreatedEntity} в ячейку {Coord} вложена ячейка {NextCell.Coord}.");
             }
 
-            Debug.Assert(Coord.X <= Descriptors.PlateWidth - 1);
-            Debug.Assert(Coord.Y <= Descriptors.PlateHeight - 1);
+            Debug.Assert(Coord.X <= Config.PlateWidth - 1);
+            Debug.Assert(Coord.Y <= Config.PlateHeight - 1);
             Debug.Assert(IDCreatedEntity.Length > 0);
             Debug.Assert(DaysCooldown >= -1);
             Debug.Assert(DaysCooldown <= 100);
@@ -42,8 +42,8 @@ namespace Fantasy_Kingdoms_Battle
             ForEntity = forEntity;
             Coord = coord;
 
-            Debug.Assert(Coord.X <= Descriptors.PlateWidth - 1);
-            Debug.Assert(Coord.Y <= Descriptors.PlateHeight - 1);
+            Debug.Assert(Coord.X <= Config.PlateWidth - 1);
+            Debug.Assert(Coord.Y <= Config.PlateHeight - 1);
         }
 
         internal DescriptorActiveEntity ForEntity { get; }// Для какой активной сущности

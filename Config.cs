@@ -18,6 +18,8 @@ namespace Fantasy_Kingdoms_Battle
         public Config(string pathResources, FormMain fm)
         {
             FormMain.Config = this;
+            Descriptor.Config = this;
+            CellOfMenu.Config = this;
             PathResources = pathResources;
 
             // 
@@ -25,6 +27,9 @@ namespace Fantasy_Kingdoms_Battle
 
             //
             XmlDocument xmlDoc;
+
+            //
+            LoadTextures(pathResources);
 
             // Загружаем конфигурацию игры
             xmlDoc = CreateXmlDocument("Config\\Game.xml");
@@ -249,29 +254,6 @@ namespace Fantasy_Kingdoms_Battle
                     break;
             }
 
-            // Загрузка компьютерных игроков
-            xmlDoc = CreateXmlDocument("Config\\ComputerPlayers.xml");
-            foreach (XmlNode n in xmlDoc.SelectNodes("/ComputerPlayers/ComputerPlayer"))
-            {
-                ComputerPlayers.Add(new ComputerPlayer(n));
-            }
-
-            // Загрузка игроков-людей
-            if (File.Exists(pathResources + "Players.xml"))
-            {
-                xmlDoc = CreateXmlDocument("Players.xml");
-                foreach (XmlNode n in xmlDoc.SelectNodes("/Players/Player"))
-                {
-                    HumanPlayers.Add(new HumanPlayer(n));
-                }
-                AutoCreatedPlayer = false;
-            }
-            else
-            {
-                AddHumanPlayer("Игрок");
-                AutoCreatedPlayer = true;
-            }
-
             // Вспомогательные методы
             XmlDocument CreateXmlDocument(string pathToXml)
             {
@@ -282,12 +264,6 @@ namespace Fantasy_Kingdoms_Battle
         }
 
         internal string PathResources { get; }
-        internal List<DescriptorTypeLandscape> TypeLandscapes { get; } = new List<DescriptorTypeLandscape>();
-        internal List<TypeLobby> TypeLobbies { get; } = new List<TypeLobby>();
-        internal List<StartBonus> StartBonuses { get; } = new List<StartBonus>();
-        internal List<ComputerPlayer> ComputerPlayers { get; } = new List<ComputerPlayer>();
-        internal List<HumanPlayer> HumanPlayers { get; } = new List<HumanPlayer>();
-        internal bool AutoCreatedPlayer { get; }
 
         internal int MaxLevelSkill { get; }
 
@@ -469,98 +445,6 @@ namespace Fantasy_Kingdoms_Battle
             return Color.Gray;
         }
 
-        internal void AddHumanPlayer(string name)
-        {
-            string id;
-            bool exist;
-            for (int i = 1; ; i++)
-            {
-                exist = false;
-                id = $"HumanPlayer{i}";
-                foreach (HumanPlayer hp in HumanPlayers)
-                {
-                    if (hp.ID == id)
-                    {
-                        exist = true;
-                        break;
-                    }
-                }
-
-                if (!exist)
-                    break;
-            }
-
-            int imageIndex;
-            for (imageIndex = 0; ; imageIndex++)
-            {
-                exist = false;
-                foreach (HumanPlayer hp in HumanPlayers)
-                {
-                    if (hp.ImageIndex == imageIndex)
-                    {
-                        exist = true;
-                        break;
-                    }
-                }
-
-                if (!exist)
-                    break;
-            }
-
-            HumanPlayers.Add(new HumanPlayer(id, name, "-", imageIndex + ImageIndexFirstAvatar));
-
-            SaveHumanPlayers();
-        }
-
-        internal void SaveHumanPlayers()
-        {
-            XmlTextWriter textWriter = new XmlTextWriter(Program.formMain.dirResources + "Players.xml", Encoding.UTF8);
-            textWriter.WriteStartDocument();
-            textWriter.Formatting = Formatting.Indented;
-
-            textWriter.WriteStartElement("Players");
-
-            // Записываем информацию об игроках
-            foreach (HumanPlayer hp in HumanPlayers)
-            {
-                hp.SaveToXml(textWriter);
-            }
-
-            textWriter.WriteEndElement();
-            textWriter.Close();
-            textWriter.Dispose();
-        }
-
-        internal void SaveExternalAvatars()
-        {
-            XmlTextWriter textWriter = new XmlTextWriter(Program.formMain.dirResources + "ExternalAvatars.xml", Encoding.UTF8);
-            textWriter.WriteStartDocument();
-            textWriter.Formatting = Formatting.Indented;
-            textWriter.WriteStartElement("ExternalAvatars");
-
-            foreach (string ea in ExternalAvatars)
-            {
-                textWriter.WriteElementString("ExternalAvatar", ea); 
-            }
-
-            textWriter.WriteEndElement();
-            textWriter.Close();
-            textWriter.Dispose();
-        }
-
-        internal bool CheckNonExistsNamePlayer(string name)
-        {
-            foreach (ComputerPlayer cp in ComputerPlayers)
-                if (cp.Name == name)
-                    return false;
-
-            foreach (HumanPlayer hp in HumanPlayers)
-                if (hp.Name == name)
-                    return false;
-
-            return true;
-        }
-
         internal void UpdateDataAboutAvatar()
         {
             QuantityAllAvatars = QuantityInternalAvatars + ExternalAvatars.Count;
@@ -586,6 +470,23 @@ namespace Fantasy_Kingdoms_Battle
             }
 
             throw new Exception($"Текстура {id} не найдена.");
+        }
+
+        internal void SaveExternalAvatars()
+        {
+            XmlTextWriter textWriter = new XmlTextWriter(Program.formMain.dirResources + "ExternalAvatars.xml", Encoding.UTF8);
+            textWriter.WriteStartDocument();
+            textWriter.Formatting = Formatting.Indented;
+            textWriter.WriteStartElement("ExternalAvatars");
+
+            foreach (string ea in ExternalAvatars)
+            {
+                textWriter.WriteElementString("ExternalAvatar", ea);
+            }
+
+            textWriter.WriteEndElement();
+            textWriter.Close();
+            textWriter.Dispose();
         }
     }
 }
